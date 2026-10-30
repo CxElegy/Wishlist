@@ -507,13 +507,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-30"
- },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
   "w": 1950,
   "h": 1097,
@@ -560,12 +553,6 @@
   "w": 1200,
   "h": 670,
   "target": 1280,
-  "v": 3
- },
- "https://cdn.gametoc.co.kr/news/photo/202610/112537_327288_452.jpg": {
-  "w": 1280,
-  "h": 853,
-  "target": 720,
   "v": 3
  },
  "https://cdn.gamevu.co.kr/news/photo/202610/61854_99991_4649.jpg": {
@@ -4265,6 +4252,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.eV-Ve5XVE2hKP4ERFi9EWA&pid=News&w=1200": {
+  "w": 700,
+  "h": 491,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.eb1q0cKGGyKjCIrKIpVqdg&pid=News&w=1200": {
   "w": 700,

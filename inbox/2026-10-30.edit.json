@@ -175,7 +175,8 @@
     9,
     43,
     48,
-    63
+    63,
+    64
    ]
   },
   {
@@ -200,7 +201,17 @@
    "refs": [
     26,
     4,
-    12
+    12,
+    66
+   ]
+  },
+  {
+   "headline": "GTA 6 Officially Reveals 12 New Screenshots and Gameplay Details",
+   "highlight": "12 New Screenshots",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    68
    ]
   }
  ],
@@ -455,7 +466,7 @@
  ],
  "_covered": {
   "漫威电影": 97,
-  "GTA 6": 63,
+  "GTA 6": 69,
   "三星手机": 33,
   "ILLIT": 30,
   "哈利波特剧集": 17,

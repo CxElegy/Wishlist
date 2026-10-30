@@ -1,10 +1,10 @@
 {
- "admin": "46f4ed73522e",
- "admin-ai": "141815fa13fa",
+ "admin": "87af14fdfd00",
+ "admin-ai": "456547b5ccfc",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "888340d6"
+   "b751264f"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "31390da49953",
+ "admin-emblem": "046e12452fdc",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f46acb27"
+   "184364c1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "d6e64c42b028",
+ "admin-now": "eed88169343c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8ec52c0f"
+   "bc7898a1"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "24cb5e83"
+   "036ad037"
   ]
  },
- "admin-system": "ff3168a15806",
+ "admin-system": "09392b16ceac",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "0fa29edc"
+   "2aa53c42"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e7490e65"
+   "b385e6c8"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "d04932cf"
   ]
  },
- "index": "d173e0e535b7",
+ "index": "2ccd93119094",
  "index_marks": {
   "front": [
    "トップ",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "6352c102"
+   "07e93a44"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "f8b5ba9f"
+   "f358fc8f"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "19b1dc0a"
   ]
  },
- "updated": "10.30 14:55",
+ "updated": "10.30 15:00",
  "wishlist": "3ffe0e7d185f"
 }
