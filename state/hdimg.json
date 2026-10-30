@@ -371,6 +371,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.hldycdn.com/afa21a70-ad36-43a1-bfcd-e969ed21041f.jpeg": {
+  "w": 1066,
+  "h": 602,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.hldycdn.com/bdaeb944-3649-41e9-a1cc-559b84e94c40.jpeg": {
   "w": 970,
   "h": 600,
@@ -676,6 +682,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.playforum.net/news/photo/202610/635726_67705_1837.jpg": {
+  "w": 960,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.sakigake.jp/newspack/PN2026102601001168.-.-.CI0003.jpg": {
   "w": 450,
   "h": 305,
@@ -940,6 +952,12 @@
   "target": 720,
   "v": 3
  },
+ "https://dn.gov.ua/storage/app/sites/1/newsoda2026/iv-kvartal/3010/2026103001.jpg": {
+  "w": 1820,
+  "h": 1024,
+  "target": 720,
+  "v": 3
+ },
  "https://economist.co.kr/data/ecn/image/2026/10/24/ecn20261024000021.800x.0.jpg": {
   "w": 800,
   "h": 562,
@@ -1101,6 +1119,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/post-images/ns-spoke-virtuspro-failure-23323.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://helios-i.mashable.com/imagery/articles/00neHlysIUGSvZO3qDRl3Xc/hero-image.fill.size_1200x675.v1793182424.jpg": {
@@ -2496,6 +2520,13 @@
    1024
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/1224658/13665354_615.jpg": {
+  "w": 615,
+  "h": 615,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.355
  },
  "https://news.walkerplus.com/article/1254137/14292686_615.jpg": {
   "w": 615,
@@ -3896,12 +3927,6 @@
   "target": 1280,
   "v": 3
  },
- "https://thecinemaholic.com/wp-content/uploads/2026/10/from2_3eb35a.png": {
-  "w": 1499,
-  "h": 752,
-  "target": 720,
-  "v": 3
- },
  "https://thedigestweb.com/files/topics/121958_ext_04_0_L.jpg": {
   "w": 1440,
   "h": 960,
@@ -4097,12 +4122,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.A-pOHl80NxSruwUBe_coHQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Atrc8zvAwiIrtr2ezW7inA&pid=News&w=512": {
   "w": 512,
   "h": 640,
@@ -4121,12 +4140,6 @@
    1219
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.CrHdDUfI1dO_Dwn25qQGVQ&pid=News&w=780": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
   "w": 700,
@@ -4165,12 +4178,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.OxiJ5-NxJTwjyR84qxjhBQ&pid=News&w=1080": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Q9dry0f98vaYnNMmJmWk5g&pid=News&w=1200": {
   "target": 720,
@@ -4255,6 +4262,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.YiFbXTcXoEbmYKDuPJ0wNQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4280,6 +4293,12 @@
    779
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.aNQyCOVWcCJu9MNX7Scj6w&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.b599IgmyuPGyJ7Vbvf8W-w&pid=News&w=1200": {
   "w": 700,
@@ -4395,9 +4414,9 @@
   "v": 3,
   "blur": 0.325
  },
- "https://www.bing.com/th?id=ONUT.nHblBEj4odbWt2GolGBuxg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.nUyMRSHbt5pKra0ftYoy6g&pid=News&w=1200": {
   "w": 700,
-  "h": 367,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -4433,12 +4452,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.q1hRkCdeN6YSKCvze8YhMg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
   "h": 380,
@@ -4455,6 +4468,12 @@
  "https://www.bing.com/th?id=ONUT.v9hYDJEHaKyaPgg3WjbTrw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.vrX5emCBpA0B9v3BiJu6SQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
   "target": 720,
   "v": 3
  },

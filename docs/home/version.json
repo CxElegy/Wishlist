@@ -1,32 +1,32 @@
 {
- "admin": "d0e02d7c4f0b",
- "admin-ai": "390be8bc20b3",
+ "admin": "ac619bbab4d4",
+ "admin-ai": "0fe0601bed74",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9be25349"
+   "00721a36"
   ],
   "tokens": [
    "AI 編集のトークン",
    "0afa7735"
   ]
  },
- "admin-boards": "ced8ed8ead88",
+ "admin-boards": "0153ceb22da1",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "141bca6e"
+   "8a751159"
   ],
   "votes": [
    "投票",
    "4a13bcc4"
   ]
  },
- "admin-emblem": "d5c9f8ab64f7",
+ "admin-emblem": "44e04cbd8ee4",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "971fe0ee"
+   "d47f7022"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "a68e788d804a",
  "admin-members_marks": {},
- "admin-now": "e3b9955baad7",
+ "admin-now": "382d83f23bd0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7e96aa69"
+   "17216e28"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "c4d8c18e"
+   "f4694639"
   ],
   "term-panel": [
    "ライブログ",
-   "e8553c71"
+   "7d50fe73"
   ]
  },
- "admin-system": "608945c03acf",
+ "admin-system": "edde2bfcb146",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b7ca1384"
+   "d8396bee"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "309c6c47"
+   "497fe400"
   ]
  },
  "admin_marks": {},
- "heat": "dfca92b1b9cd",
+ "heat": "5bce4ce33355",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "c720af87"
+   "eb0532d1"
   ],
   "ranking": [
    "ランキング",
-   "1f2b0bb3"
+   "b2780cf9"
   ]
  },
- "index": "9db1250b6fb2",
+ "index": "4214165862ef",
  "index_marks": {
   "front": [
    "トップ",
-   "e801f7ab"
+   "e5eb0cda"
   ],
   "picks": [
    "気になるかも？",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "47ecc38d"
+   "58aa6cd1"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "04fdfe4f"
+   "45512b30"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
