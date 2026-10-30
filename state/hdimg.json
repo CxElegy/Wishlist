@@ -1079,6 +1079,12 @@
   "target": 720,
   "v": 3
  },
+ "https://getyourcomicon.co.uk/wp-content/uploads/2026/10/AvengersDoomsday-OctDoomPoster-Header.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
  "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
   "w": 1200,
   "h": 675,
@@ -4240,19 +4246,6 @@
   "out": [
    1280,
    671
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.VDAPUdqXyfACkGa_Jd_2nw&pid=News&w=500": {
-  "w": 500,
-  "h": 281,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.537,
-  "local": "pics/27f4e922b27c37bf.webp",
-  "out": [
-   1280,
-   719
   ],
   "why": "看不清"
  },

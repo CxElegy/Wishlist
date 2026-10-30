@@ -1,6 +1,6 @@
 {
  "_covered": {
-  "漫威电影": 23,
+  "漫威电影": 53,
   "哈利波特剧集": 19,
   "GTA 6": 23,
   "A2O LITE": 9,
@@ -37,7 +37,16 @@
     16,
     2,
     19,
-    20
+    20,
+    44,
+    37,
+    30,
+    42,
+    49,
+    53,
+    46,
+    52,
+    38
    ],
    "image": "https://www.bing.com/th?id=ONUT.VCtl0_0zS7d6VwafdvBizg&pid=News&w=1200"
   },
@@ -47,7 +56,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    12
+    12,
+    45,
+    28
    ]
   },
   {
@@ -57,7 +68,8 @@
    "weight": "normal",
    "refs": [
     7,
-    18
+    18,
+    47
    ]
   },
   {
@@ -66,7 +78,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    24,
+    39
    ]
   },
   {
