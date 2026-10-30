@@ -522,11 +522,11 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
  },
- "https://cdn.gameabout.com/news/photo/202610/100858_198911_5534.jpg": {
-  "w": 600,
-  "h": 400,
+ "https://cdn.gameabout.com/news/photo/202610/100858_198912_230.jpg": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://cdn.gamemeca.com/data_center/345/722/20261027172433.webp": {
   "w": 1200,
@@ -593,19 +593,6 @@
   "h": 400,
   "target": 720,
   "v": 3
- },
- "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg": {
-  "w": 600,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.513,
-  "local": "pics/b84bf57f910f0c92.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
  },
  "https://cdn.livedoor.jp/kstyle/a2231d2c178b8fa2a4816938d1b3f2e2_WI.jpg": {
   "w": 1024,
@@ -2027,7 +2014,7 @@
   ],
   "why": "看不清"
  },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FJiji%252Fb2%252FJiji_3901317%252FJiji_3901317_1.jpg,zoom=560x320,quality=100,type=jpg": {
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252Fntv%252F3b%252Fntv_1488891772381823262%252Fntv_1488891772381823262_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "target": 720,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
@@ -4145,6 +4132,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.BizbljJ6e79nxoCcLSJNrw&pid=News&w=600": {
+  "w": 600,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.516,
+  "local": "pics/5d5012e4b0a03bef.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
   "h": 700,
@@ -5005,6 +5005,12 @@
  "https://www.whats-on-netflix.com/wp-content/uploads/2026/10/from-expanding-on-netflix.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.wowkorea.jp/img/Breaking/106/532601/623967_1280W.webp": {
+  "w": 1280,
+  "h": 960,
   "target": 1280,
   "v": 3
  },
