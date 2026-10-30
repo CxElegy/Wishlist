@@ -1,20 +1,11 @@
 {
  "date": "2026-10-30",
- "edit_sig": "e3662267ebf5",
+ "edit_sig": "693257a3ed59",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 10,
-     "source": "매경 게임진",
-     "title": "엔씨 신작 ‘아스트라에 오라티오’, “전투 흐름 개선…더 완성도 높일 것”",
-     "url": "https://game.mk.co.kr/news/it/12191417"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -42,8 +33,8 @@
      "date": "2026-10-30",
      "headline": "[인터뷰] 아스오라 “BM 피드백 반영해서 개선하겠다”",
      "highlight": "",
-     "image": "https://static.inven.co.kr/column/2026/10/27/news/i1759176400.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://cdn.gametoc.co.kr/news/photo/202610/112537_327288_452.jpg",
+     "image_via": "og:image",
      "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=112537",
      "weight": "normal"
     },
@@ -52,8 +43,9 @@
      "date": "2026-10-30",
      "headline": "‘아스오라’ 개발진에게 물었다, CBT 이후 무엇이 달라지나?",
      "highlight": "",
-     "image": "https://cdn.ipnn.co.kr/news/photo/202610/418071_79925_3013.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "PNN",
+     "source_icon": "https://cdn.ipnn.co.kr/favicon.ico",
      "url": "https://www.ipnn.co.kr/news/articleView.html?idxno=418071",
      "weight": "normal"
     },
@@ -75,6 +67,16 @@
      "image": "https://cdn.gamevu.co.kr/news/photo/202610/61854_99991_4649.jpg",
      "image_via": "og:image",
      "url": "https://www.gamevu.co.kr/news/articleView.html?idxno=61854",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "엔씨 신작 ‘아스트라에 오라티오’, “전투 흐름 개선…더 완성도 높일 것”",
+     "highlight": "",
+     "image": "https://static.mk.co.kr/facebook_mknews.jpg",
+     "image_via": "og:image",
+     "url": "https://game.mk.co.kr/news/it/12191417",
      "weight": "normal"
     }
    ],
@@ -123,22 +125,6 @@
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 70,
-     "source": "GTA BOOM",
-     "title": "GTA 6 Costs $80 if You Own a Console, $1,000 if You Don't",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQZE5xVkNKZUJqMC1ZLXFXT2FKNXBFMXJ5OXk0UzdzMjQzZXZESC11YzBqb0JRMTd1ZVhBUnltenlzOVQyX3pQcGFHZGF2MlFFU3k3UkZqQnQxc2l2VTRITlJIT2YxMVBnQWM0UmJ6QjhZbTRRclU5bVlRdHlRRTFRXzZlZnc?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 71,
-     "source": "Press Start Australia",
-     "title": "REMINDER: Grand Theft Auto 6 Physical Can Be Upgraded To Ultimate Edition And Amazon Has A Cheaper Price",
-     "url": "https://press-start.com.au/news/playstation/2026/10/30/reminder-grand-theft-auto-6-physical-can-be-upgraded-to-ultimate-edition-and-amazon-has-a-cheaper-price/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -274,15 +260,6 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 98,
-     "source": "myTV SUPER",
-     "title": "《變種特攻》X教授家中逝世晚年患兩種認知障礙症從演六十載擁3段婚姻《復仇者聯盟5》成遺作- 東張+",
-     "url": "https://news.google.com/rss/articles/CBMi9wRBVV95cUxNZGJGb2ZpUF9GVkkxYjA5cF90aG1KNm5wOUo2dWlKdWs1bU83bGVtTDBLZVdIcU55eF8wVEw5Ym1RY1QxbFM2SFZsRmxFb25PMjVmRVpNM1lmMDRtTVZZMEo0Z3J2emZqeVVCaldzS2o0ZTZUV3JTeVlrLVVxVXFxNWdIWHZCNVlXcndhVU81SDlZTVl3Xzd6b21NU3JCUDAyNFhtT0lrRkJadGtHYXd3UTU2Z2wxY2YtMnNtZjhsOGxJMG5INV9CemwtSzFGbExJV0lKM0lHNmcyZUJIeVBnWFNMeWREQk56U05KVzFOa3RTemlhS3F0XzlCWFpoclljMU11VHdSdVRPcHFoQVFaeU10SzdzUzdCY3pWdnFTQ1RCZ1lybVg3alRTY0hzc2J4QkJ6YmtTcE9nX2RiYmVhc0JVVXI1dnFuNUlnMFl5Z2pSV2U2SWpKYkxhdVZaYkkwUktKOTc0RE1tTHRJSk9ZdGZINkZTeVh4aHd1RnpLaERYblJPRWdDai1fTTRWNzBNa29ma1lPU2xWVDFubzNFYlRyQWctbkdvaDhtbU94d0VwT0dHcnQ1R25rYUM2am42ajVoLTJ3Vy1YRHVmYW1sQ0R1enBnTW5FVHdkbzFxWEdzNkUyUHdBa2c3elpDM1huSGhfd3pvY3lqV3JZazViS2JHckttekRaenkzM2Q5UHZOb1Rhdi1feHNoNFpBR1VNb0pJZWhnemNNUGM0S2ZlUlg0UWtfSHExdXl6SnFrQUpQTDA2RXdSSHFDQzIzTGZnV0RuSnJNYjlPYldIbUlGcEZMMFp3eENPLWxucnBZRmVxblpoUVFN?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -421,22 +398,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 37,
-     "source": "스포츠경향",
-     "title": "ILLIT filled the university festival with the sound of whistles",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9mYmdUUzl5SVBYaVdvQ3otc2ZKM1Z6UWc5Y3pRRGdhdVplTlZuaXYxOWNiNlozd3BOa0VjUFhfMVFraWFvU2haQXhNN3hTcWdia1pjSklRdno3MjJEUkNrZkZ3?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 38,
-     "source": "RBB TODAY",
-     "title": "ILLIT、「逮捕しちゃうぞ」替え歌で学生にエール 負傷発表のウォンヒとイロハも盛り上げた延世大学学園祭",
-     "url": "https://www.rbbtoday.com/article/2026/10/30/255205.html"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1316,9 +1277,8 @@
      "date": "2026-10-29",
      "headline": "李秀满新团炸场！A2O LITE《NEON》MCD初舞台直接杀疯了",
      "highlight": "",
-     "image": null,
-     "source": "搜狐网",
-     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
+     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1088209635_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     },
