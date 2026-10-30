@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-29T19:58:22+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-29T20:02:22+00:00",
 "text": "2026-10-30 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 4 版面） · token 新規入力 4.5万・キャッシュ読み 57.2万・出力 2,055",
 "level": "ok",
@@ -1812,5 +1807,10 @@
 "calls": 18,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-30T12:02:14+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
