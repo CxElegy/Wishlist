@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-10-30T11:24:25+00:00",
+ "changed": true,
+ "checked": "2026-10-30T11:54:05+00:00",
  "fired": {
-  "at": "2026-10-30T10:46:13+00:00",
+  "at": "2026-10-30T11:54:06+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,27 +12,53 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-30T10:46:13+00:00",
+    "at": "2026-10-30T11:54:06+00:00",
     "attempts": 1,
     "day": "2026-10-30",
-    "prog": 451,
-    "resp": "cse_01W4x6f6spqyW2xJa9mNaAuk",
-    "sig": "cb50aab40b6f"
+    "prog": 460,
+    "resp": "cse_01W4x6f7jiDdCTuKXebLgJJS",
+    "sig": "2cb53218b9ed"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "Vaundy",
+    "dota2",
+    "gelato pique",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
+   ],
    "last_batch": "2026-10-30T11:16:45+00:00",
    "last_error": {
     "at": "2026-10-30T10:53:27+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 460,
    "prog_day": "2026-10-30",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "Vaundy",
+    "gelato pique",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "漫威电影"
+   ],
+   "sig": "2cb53218b9ed",
    "token_cap": 1000000,
    "tokens_today": 541293,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 61 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
