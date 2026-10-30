@@ -1,8 +1,8 @@
 {
  "_covered": {
-  "漫威电影": 17,
-  "哈利波特剧集": 15,
-  "GTA 6": 14,
+  "漫威电影": 23,
+  "哈利波特剧集": 19,
+  "GTA 6": 23,
   "A2O LITE": 8,
   "三星手机": 8,
   "ILLIT": 5,
@@ -11,9 +11,9 @@
   "The Mandalorian": 3,
   "Vaundy": 3,
   "gelato pique": 3,
-  "Astrae Oratio": 2,
+  "Astrae Oratio": 5,
   "MMORPG 新作": 2,
-  "あつ森": 2,
+  "あつ森": 6,
   "dota2": 1,
   "日本顶级网球赛事": 1,
   "滑雪": 1
@@ -30,7 +30,9 @@
     6,
     3,
     16,
-    2
+    2,
+    19,
+    20
    ],
    "image": "https://www.bing.com/th?id=ONUT.VCtl0_0zS7d6VwafdvBizg&pid=News&w=1200"
   },
@@ -49,7 +51,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    18
    ]
   },
   {
@@ -87,7 +90,8 @@
     10,
     11,
     13,
-    5
+    5,
+    16
    ],
    "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/10/dominic-mclaughlin.jpg?q=49&fit=contain&w=750&h=422&dpr=2"
   },
@@ -98,7 +102,8 @@
    "weight": "normal",
    "refs": [
     12,
-    14
+    14,
+    18
    ],
    "event": {
     "date": "2026-12-25",
@@ -113,7 +118,8 @@
    "refs": [
     4,
     8,
-    1
+    1,
+    17
    ]
   }
  ],
@@ -158,12 +164,15 @@
    ]
   },
   {
-   "headline": "What Happens If You Cancel Your GTA 6 Preorder?",
-   "highlight": "",
+   "headline": "Grand Theft Auto VI: The Original Score Vinyl Is Up for Preorder (Not to Be Confused with GTA 6: The Album)",
+   "highlight": "Original Score",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    15,
+    19,
+    21,
+    20
    ]
   }
  ],
@@ -389,6 +398,24 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "Character Introduction - Kamikura Kotoha",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "150K Total Followers Commemorative Illustration",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "MMORPG 新作": [
@@ -434,6 +461,33 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "あつまれ どうぶつの森 うきうきウォッチ｜どうぶつの森のガチャガチャ 発売日・価格・設置場所",
+   "highlight": "発売日・価格・設置場所",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "「あつ森」で卒業式！「はんなんだいがく島」に行ってみたら学生時代のノスタルジーが満載だった",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "『あつ森』で再現した神田明神が神社界をざわつかせた？「途切れかけたカルチャーを繋ぐハブになりたい」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],

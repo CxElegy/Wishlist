@@ -36,17 +36,10 @@
   "v": 3
  },
  "http://n.sinaimg.cn/sinakd20261030ac/200/w640h360/20261030/26b9-24fb1a42955fbd686893da9d3952627b.jpg": {
-  "w": 640,
-  "h": 360,
   "target": 1280,
   "v": 3,
-  "blur": 0.539,
-  "local": "pics/33af9078c78eb98f.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
@@ -353,6 +346,12 @@
   "h": 1024,
   "target": 1280,
   "v": 3
+ },
+ "https://assets-prd.ignimgs.com/2026/10/30/untitled-design-1793387100239.png?width=1280&format=jpg&auto=webp&quality=80": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "https://assets.content.technologyadvice.com/Galaxy_Ultra_Phones_and_60_W_Charger_5670f752e2.webp": {
   "w": 1536,
@@ -716,10 +715,10 @@
   "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2025/08/Y889370_b.png": {
-  "w": 600,
-  "h": 600,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
   "w": 668,
@@ -1799,12 +1798,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.ltn.com.tw/Upload/3c/page/2026/10/24/261024-68052-1.png": {
-  "w": 1080,
-  "h": 682,
-  "target": 1280,
-  "v": 3
- },
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/26/5619207_2.jpg": {
   "w": 800,
   "h": 1069,
@@ -2410,6 +2403,18 @@
   "target": 1280,
   "v": 3,
   "blur": 0.328
+ },
+ "https://news.walkerplus.com/article/1007171/10055615_615.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
+ "https://news.walkerplus.com/article/1023819/10211254_615.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "https://news.walkerplus.com/article/1068055/10648734_615.jpg": {
   "w": 615,
@@ -3293,6 +3298,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://preview.redd.it/rstzspwbzjyh1.jpeg?width=640&crop=smart&auto=webp&s=dea8223c3f37acff79619cd55ab20194d0ece333": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
  "https://punchdrunkcritics.com/wp-content/uploads/2026/10/pdc_avengersdoomsday8.jpg": {
   "w": 1280,
   "h": 720,
@@ -4109,12 +4120,6 @@
  "https://www.bing.com/th?id=ONUT.LqQ7JkcDXFYBAyYiJRL7xQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.OSr2nthGtKiUsHWsgnkphg&pid=News&w=800": {
-  "w": 700,
-  "h": 525,
   "target": 720,
   "v": 3
  },
