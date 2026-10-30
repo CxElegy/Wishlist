@@ -1,10 +1,10 @@
 {
  "changed": false,
- "checked": "2026-10-30T00:45:12+00:00",
+ "checked": "2026-10-30T01:32:01+00:00",
  "fired": {
-  "at": "2026-10-30T00:45:12+00:00",
+  "at": "2026-10-30T01:32:01+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,62 +12,48 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-30T00:31:56+00:00",
-    "attempts": 2,
+    "at": "2026-10-30T01:32:01+00:00",
+    "attempts": 1,
     "day": "2026-10-30",
-    "prog": 209,
-    "resp": "cse_01W4x6f9EFyJL83YNnwoVRZ2",
-    "sig": "05efc91985c2"
+    "prog": 275,
+    "resp": "cse_01W4x6f8XsLtmyVzydBzXZbV",
+    "sig": "c574909445bf"
    },
    "items": [
-    "A2O LITE",
     "FROM",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
-    "The Mandalorian",
     "Vaundy",
-    "dota2",
     "gelato pique",
     "あつ森",
     "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
-    "日本顶级网球赛事",
     "滑雪",
-    "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-10-29T22:28:58+00:00",
+   "last_batch": "2026-10-30T01:19:23+00:00",
    "last_error": {
     "at": "2026-10-29T22:09:43+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 209,
+   "prog": 275,
    "prog_day": "2026-10-30",
    "ripe": [
-    "A2O LITE",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "The Mandalorian",
     "Vaundy",
-    "dota2",
     "gelato pique",
     "あつ森",
     "チェーンソーマン",
     "周杰伦",
     "哈利波特剧集",
-    "日本顶级网球赛事",
-    "漫威电影",
     "猫用品"
    ],
-   "sig": "199cd1b1edcc",
+   "sig": "c574909445bf",
    "token_cap": 1000000,
-   "tokens_today": 225760,
-   "why": "整理待ちの記事 81 件（18 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 296219,
+   "why": "整理待ちの記事 15 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
