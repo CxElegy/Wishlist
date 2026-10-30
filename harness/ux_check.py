@@ -470,6 +470,18 @@ def check_admin_coverage(pw, base, width):
     miss = [n for n in rest_boards(ses["access_token"])[0] if n not in names]
     if miss:
         bad.append(f"管理ページ④に出ない版面 {len(miss)} 個（{miss[:5]}）")
+    # ②全アカウントの投票：行は follows のアカウントを 1 つ残らず含み、店長（test1）の 👍👎 が 0 でない（feedback は店長の分が一番多い）
+    pg.goto(base + "admin-boards.html", wait_until="networkidle", timeout=60000)
+    pg.wait_for_selector("#wl-libvotes[data-n]", state="attached", timeout=30000)
+    vt = pg.evaluate("[...document.querySelectorAll('#wl-libvotes tr[data-id]')].map(r=>[r.dataset.id,+r.cells[1].textContent,+r.cells[2].textContent])")
+    fl0 = json.loads(urllib.request.urlopen(urllib.request.Request(
+        yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]["supabase_url"].rstrip("/") + "/rest/v1/follows?select=account",
+        headers={"apikey": yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]["supabase_key"], "Authorization": "Bearer " + ses["access_token"]}), timeout=30).read())
+    gone = sorted({f["account"] for f in fl0} - {r[0] for r in vt})
+    if gone:
+        bad.append(f"管理ページ②の投票に出ないアカウント {len(gone)} 個（{gone[:5]}）")
+    if not any(r[0] == "test1" and r[1] + r[2] > 0 for r in vt):
+        bad.append(f"管理ページ②の投票に店長（test1）の 👍👎 が 0：{vt[:3]}")
     # 区画ごとの「全員／ユーザーを選ぶ」（render.ADMIN_WHO の全部）：切り替えがある・選ぶと行が follows の通りに絞れる・全員に戻すと元の数
     sys.path.insert(0, str(ROOT / "scripts"))
     import render as _r
@@ -496,8 +508,9 @@ def check_admin_coverage(pw, base, width):
             continue
         pg.select_option(sel, acc)
         shown = pg.evaluate(f"[...document.querySelectorAll({json.dumps(rows)})].filter(x=>!x.hidden).length")
-        if shown != len(mine[acc]) or shown >= total:
-            bad.append(f"{page} の区画 {sec}：{acc} を選ぶと {shown} 行（期待 {len(mine[acc])}・全体 {total}）")
+        want_n = 1 if sec == "libvotes" else len(mine[acc])   # 投票はアカウントごとに 1 行
+        if shown != want_n or shown >= total:
+            bad.append(f"{page} の区画 {sec}：{acc} を選ぶと {shown} 行（期待 {want_n}・全体 {total}）")
         pg.select_option(sel, "")
         back = pg.evaluate(f"[...document.querySelectorAll({json.dumps(rows)})].filter(x=>!x.hidden).length")
         if back != total:
