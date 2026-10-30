@@ -508,6 +508,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
   "w": 1950,
   "h": 1097,
@@ -706,6 +712,12 @@
  "https://charagoo.jp/wp-content/uploads/2025/08/668w_668h-267.jpg": {
   "w": 668,
   "h": 668,
+  "target": 720,
+  "v": 3
+ },
+ "https://charagoo.jp/wp-content/uploads/2025/08/Y889370_b.png": {
+  "w": 600,
+  "h": 600,
   "target": 720,
   "v": 3
  },
@@ -1497,12 +1509,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fLoqD.img": {
-  "w": 2000,
-  "h": 1333,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fTEOJ.img": {
   "w": 1280,
   "h": 720,
@@ -2237,6 +2243,12 @@
   "target": 720,
   "v": 3
  },
+ "https://motoryokoblog.com/wp-content/uploads/2026/09/vaundy_8298_fv.png": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
  "https://mtnweekly.com/wp-content/uploads/2026/10/Nitro-Phase-2027-Motorhead-Snowboard-17.jpg": {
   "w": 1200,
   "h": 859,
@@ -2392,6 +2404,13 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1005677/10040979_615.jpg": {
+  "w": 615,
+  "h": 362,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.328
+ },
  "https://news.walkerplus.com/article/1068055/10648734_615.jpg": {
   "w": 615,
   "h": 997,
@@ -2511,6 +2530,19 @@
   "h": 615,
   "target": 720,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/150620/858239_615.jpg": {
+  "w": 615,
+  "h": 407,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.519,
+  "local": "pics/65967f4542997cae.webp",
+  "out": [
+   1280,
+   847
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/153903/881093_615.jpg": {
   "w": 615,
@@ -2978,6 +3010,12 @@
  "https://ni.yam.com/20261030/jp-atp-645910-1-261030120814554-623c4b763deef2a2.webp": {
   "w": 1066,
   "h": 602,
+  "target": 1280,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/479c408ffb674fc4bb52d68218865f6c.jpg": {
+  "w": 1600,
+  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -4036,6 +4074,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.J9WfbwisqQSccwlG4g-p2A&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.KOsfIlpysro4UjegnaF79g&pid=News&w=1200": {
   "w": 560,
   "h": 700,
@@ -4065,12 +4109,6 @@
  "https://www.bing.com/th?id=ONUT.LqQ7JkcDXFYBAyYiJRL7xQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.MvvcUhQ-JERkNgVfQ7FEXw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4322,6 +4360,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.oYu_7M9b14TrcwssI3hleQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 350,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.pY__MqddmbzgsqrIlk7pqw&pid=News&w=640": {
   "w": 640,
   "h": 360,
@@ -4391,6 +4435,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.yxsqhBeFT5a1oovlNUlv_A&pid=News&w=1200": {
+  "w": 700,
+  "h": 350,
+  "target": 720,
+  "v": 3
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
@@ -4513,6 +4563,12 @@
  "https://www.crank-in.net/img/db/267108025175442_1200.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.ctvnews.ca/resizer/v2/https%3A%2F%2Fd3g70guqh4mw9g.cloudfront.net%2F10-30-2026%2Ft_bdd41fc40179410dbf15662b9dfa23db_name_AM800_News_Halloween_Headquarters.jpg?smart=true&auth=d6435c2e899c137bf0e9268115fd3aede4fbbb81b224dea9191058e406a93950&width=1200&height=630": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
