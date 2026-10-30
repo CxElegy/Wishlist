@@ -1783,6 +1783,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null; if(ev==='SIGNED_OUT')signedOut=true;
+      window.WL_TOK=t; if(changed) document.dispatchEvent(new Event('wl-token'));   // ③エンブレムなど、別の部品が店長の令牌でライブラリを読むため
       if(changed||ev==='INITIAL_SESSION') setTimeout(refresh,0);   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
@@ -1799,7 +1800,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.31 00:43</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.31 00:46</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>

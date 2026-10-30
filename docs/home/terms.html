@@ -1779,6 +1779,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null; if(ev==='SIGNED_OUT')signedOut=true;
+      window.WL_TOK=t; if(changed) document.dispatchEvent(new Event('wl-token'));   // ③エンブレムなど、別の部品が店長の令牌でライブラリを読むため
       if(changed||ev==='INITIAL_SESSION') setTimeout(refresh,0);   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
