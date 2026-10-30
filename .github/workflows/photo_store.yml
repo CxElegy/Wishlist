@@ -12,9 +12,13 @@ on:
       minutes:
         description: "時間の予算（分）"
         default: "12"
+      chain:
+        description: "（自動）接着跑の第何回。10 回まで"
+        default: "0"
 
 permissions:
   contents: write
+  actions: write   # 順番待ちが残っていて増えたとき、自分で次の回を起こす
 
 concurrency:
   group: photo-store
@@ -54,3 +58,8 @@ jobs:
             sleep $((i * 5))
           done
           exit 1
+      - name: 接着跑（順番待ちが残っていて増えたとき）
+        if: steps.store.outputs.more == 'true' && inputs.chain < 10
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run photo_store.yml -f chain=$(( ${{ inputs.chain || '0' }} + 1 ))

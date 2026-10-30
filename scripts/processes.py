@@ -555,7 +555,7 @@ PROCESSES = [
     },
     {
         "id": "photostore", "name": "写真の一時保管", "en": "PHOTO STORE", "lane": "actions", "workflow": "photo_store.yml", "when": "3 時間ごと · 手で",
-        "trigger": "定時（17 */3 * * *）か workflow_dispatch（minutes、既定 12 分）",
+        "trigger": "定時（17 */3 * * *）か workflow_dispatch（minutes、既定 12 分・chain）。順番待ちが残り、この回で増えたなら gh workflow run で次の回（10 回まで）",
         "summary": "記事の主写真をよその原寸へ直リンクせず、先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置く。網页（render._pic）は置いてあれば先に読み、原寸は落ち先に残す。溜めない：いまのページに載っているか最後に使ってから 14 日以内だけ、全体 300MB 超えは古い順に消す（箱の中だけ）。",
         "files": [".github/workflows/photo_store.yml", "scripts/photo_store.py", "db/photos.sql"], "doc": "docs/rules/design.md",
         "uses": ["supabase"],
