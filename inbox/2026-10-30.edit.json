@@ -1,10 +1,37 @@
 {
  "漫威电影": [
   {
+   "headline": "Marvel Studios Honors Patrick Stewart and Confirms ‘Avengers: Doomsday’ Will Be His Final On-Screen Role",
+   "highlight": "Final On-Screen Role",
+   "blurb": "Marvel Studios and Kevin Feige paid tribute to Patrick Stewart, confirming ‘Avengers: Doomsday’ will be his last on-screen role.",
+   "weight": "lead",
+   "refs": [
+    43,
+    45,
+    54,
+    52,
+    59,
+    60,
+    44,
+    61,
+    63,
+    65,
+    41,
+    47,
+    49,
+    58,
+    48,
+    50,
+    51,
+    68
+   ],
+   "image": "https://cdn.marvel.com/content/2x/patrick_stewart_tribute.webp"
+  },
+  {
    "headline": "Robert Downey Jr's Doctor Doom Has an Army in New Look at 'Avengers: Doomsday'",
    "highlight": "Doctor Doom",
-   "blurb": "New international, IMAX and 4DX posters put Doctor Doom and his Latverian witches front and center, with theater merch revealed.",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     4,
     20,
@@ -21,19 +48,6 @@
     35
    ],
    "image": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2026/08/avengers-doomsday-poster.jpg"
-  },
-  {
-   "headline": "When is ‘Avengers: Doomsday’ releasing in India? Here’s all you need to know",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    15
-   ],
-   "event": {
-    "date": "2026-12-18",
-    "label": "公開日"
-   }
   },
   {
    "headline": "Marvel’s ‘Ghost Rider’ Production Grid Reveals Working Title, Shoot Window, and Real Story Behind \"Leaked\" Synopsis",
@@ -66,7 +80,8 @@
    "refs": [
     14,
     29,
-    32
+    32,
+    66
    ]
   }
  ],
@@ -319,7 +334,7 @@
   }
  ],
  "_covered": {
-  "漫威电影": 40,
+  "漫威电影": 71,
   "GTA 6": 39,
   "三星手机": 21,
   "ILLIT": 19,
