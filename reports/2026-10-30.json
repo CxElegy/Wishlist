@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "942b37941ef5",
+ "edit_sig": "473b55a54781",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -320,29 +320,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 20,
-     "source": "ETtoday星光雲| ETtoday新聞雲",
-     "title": "ILLIT健康問題接連爆！MOKA休養中 元禧、IROHA也掛彩",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBfOUVWTTRzcXV1cTBTbHBnMGluazZxVHJSMWJuekhnM2djZFFGd25zTlFKNFAxb1RmdkN2N1NqeVBRa3dNc0ZPMXJQSEQ5Z9IBTEFVX3lxTFBfQnFUekx3MGJiYXlLSkNqMTVyWDFPaXdhdDBXMkZoREpjT1YxU2loVEtSVkpfa1VOeElYQ3pMTl9fMGdlQnRUYVFyLUY?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 21,
-     "source": "https://ginzamag.com/",
-     "title": "ILLIT・WONHEE & IROHAにインタビュー。二人が見出す音楽の力",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBxcWdWeDloaV9PX241MXBDcVExdFVIb1BUNlFlVW9BZkFkZnc5MFZNdUlMdnUtd0Ezdmo3S2pMZ1Vwa2JoZi1EdzRsUk11ajhEOEpHbmFsMTNmWDBZ?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 22,
-     "source": "International Business Times",
-     "title": "ILLIT recruits Song Kang for “You’re Under Arrest” as it releases “BREAK EVEN”",
-     "url": "https://mx.ibtimes.com/illit-break-even-song-kang-video-3315"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -393,6 +370,16 @@
      "image": "https://phinf.wevpstatic.net/MjAyNjEwMjlfMjI5/MDAxNzkzMjg1NDExODQw.oVJRKHh23GSkawQwMiQTyTPyAkkFVU4DT3hvjlMwPS8g.CoQ_PypiDBmKFx9IxcD8ojzLvIO7RTrbNFzPzKrbsMgg.JPEG/image.jpg?type=w1414",
      "image_via": "og:image",
      "url": "https://weverse.io/illit/artist/0-181248755?hl=ko",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "ILLIT・WONHEE & IROHAにインタビュー。二人が見出す音楽の力",
+     "highlight": "",
+     "image": "https://api.ginzamag.com/wp-content/uploads/2026/10/illit-interview2611-ogp-1.jpg",
+     "image_via": "og:image",
+     "url": "https://ginzamag.com/categories/interview/604569",
      "weight": "normal"
     }
    ],
@@ -1063,9 +1050,8 @@
      "date": "2026-10-23",
      "headline": "李秀满在烤肉店豪爽支付顾客餐费，庆祝A2O LITE夺得音乐节目第一",
      "highlight": "夺得音乐节目第一",
-     "image": null,
-     "source": "亚洲日报",
-     "source_icon": "https://image.ajunews.com/images/site/img/ajunews/favicon_aju_cn.ico",
+     "image": "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif",
+     "image_via": "og:image",
      "url": "https://www.ajudaily.com/view/20261023092870270",
      "weight": "lead"
     },
@@ -1094,8 +1080,9 @@
      "date": "2026-10-29",
      "headline": "李秀满新团炸场！A2O LITE《NEON》MCD初舞台直接杀疯了",
      "highlight": "",
-     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "搜狐网",
+     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
      "url": "https://m.sohu.com/a/1088209635_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }

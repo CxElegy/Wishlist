@@ -261,6 +261,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://api.ginzamag.com/wp-content/uploads/2026/10/illit-interview2611-ogp-1.jpg": {
+  "w": 2500,
+  "h": 1313,
+  "target": 720,
+  "v": 3
+ },
  "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
   "w": 506,
   "h": 253,
@@ -1153,6 +1159,12 @@
   "w": 900,
   "h": 507,
   "target": 720,
+  "v": 3
+ },
+ "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif": {
+  "w": 594,
+  "h": 1056,
+  "target": 1280,
   "v": 3
  },
  "https://image.doctorbio.org/articles/01a17f8e-c761-79d5-a2a7-4dfc982a38f4/01a17f8e-c231-79d4-823c-26cb1bf89ee8.jpg": {
@@ -3145,12 +3157,6 @@
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
   "w": 760,
   "h": 1125,
-  "target": 720,
-  "v": 3
- },
- "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
-  "w": 360,
-  "h": 616,
   "target": 720,
   "v": 3
  },
