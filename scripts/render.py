@@ -719,7 +719,11 @@ ICON_NEXT_JS = ("var l=(this.dataset.icons||'').split(' ').filter(Boolean);"
                 "if(l.length){this.src=l.shift();this.dataset.icons=l.join(' ')}"
                 "else{var p=this.closest('.pic'),a=p.closest('article.card,article.wc,.pk');if(a){p.remove();a.classList.add('nophoto')}"
                 "else{p.classList.remove('icon');p.classList.add('none');this.remove()}}")
-ICON_LOAD_JS = "if(this.naturalWidth<32){" + ICON_NEXT_JS + "}"
+# 2026-10-30：上の 3 つを 1 枚ごとの onerror/onload に書くと HTML の半分（4.1MB のうち 2.1MB）が同じ文字の繰り返しだった。
+# 画像には data-e（r=背景を外す・s=主图を換える・i=来源图标）／data-l（i=読めたが小さい）の印だけ付け、処理は head の 1 か所が capture で受ける。
+IMG_FALLBACK_JS = ("(function(){var H={r:function(){this.remove()},s:function(){" + SWAP_JS + "},i:function(){" + ICON_NEXT_JS + "}};"
+                   "document.addEventListener('error',function(v){var t=v.target;if(t&&t.tagName==='IMG'&&H[t.dataset.e])H[t.dataset.e].call(t)},true);"
+                   "document.addEventListener('load',function(v){var t=v.target;if(t&&t.tagName==='IMG'&&t.dataset.l==='i'&&t.naturalWidth<32)H.i.call(t)},true)})();")
 
 
 def _icons(story):
@@ -765,15 +769,15 @@ def _pic(story):
     chain = list(dict.fromkeys(v for u in [img, *fbs] if u for v in (_img_url(u), _img_url(u, local=False))))
     fb = f' data-fb="{e(" ".join(chain[1:]))}"' if len(chain) > 1 else ""
     src = chain[0] if chain else None
-    tag = (f'<img class="bg" src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
-           f'<img src="{e(src)}"{fb} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="{e(SWAP_JS)}">') if src else ""
+    tag = (f'<img class="bg" src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
+           f'<img src="{e(src)}"{fb} alt="" loading="lazy" referrerpolicy="no-referrer" data-e="s">') if src else ""
     label = f'<span class="ph">{e(name)}</span>' if name else ""
     icons = _icons(story)
     icon = ""
     if icons:  # 有图时先不加载图标（data-icons 里排着），图全打不开才换上；没图就直接显示图标
         first, rest = (None, icons) if src else (icons[0], icons[1:])
         icon = (f'<img class="ico"{f" src={chr(34)}{e(first)}{chr(34)}" if first else ""} data-icons="{e(" ".join(rest))}" '
-                f'alt="" loading="lazy" referrerpolicy="no-referrer" onload="{e(ICON_LOAD_JS)}" onerror="{e(ICON_NEXT_JS)}">'
+                f'alt="" loading="lazy" referrerpolicy="no-referrer" data-e="i" data-l="i">'
                 f'<span class="src">{e(_source_name(story))}</span>')
     cls = "" if src else " icon" if icons else " none"
     return f'<div class="pic{cls}">{label}{tag}{icon}</div>'
@@ -1810,6 +1814,8 @@ EMB_JS = """
   addEventListener('load', ev => { if (okPic(ev.target)) ev.target.classList.add('ld'); }, true);
   const sweep = () => document.querySelectorAll('.pic img').forEach(i => { if (i.complete && i.naturalWidth || !i.getAttribute('src')) i.classList.add('ld'); });
   sweep(); document.querySelectorAll('.pic img').forEach(late);
+  // 最初の画面（と半画面ぶん先）の記事の写真は lazy を外して先に取る。ほかは lazy のまま（2026-10-30 最初のニュースを速く）
+  document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(i => { if (i.getBoundingClientRect().top < innerHeight * 1.5) { i.loading = 'eager'; i.fetchPriority = 'high'; } });
   // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）
   const room = el => { const band = el.parentElement, img = el.querySelector('img'); if (!band || !img) return;
     const go = () => { const b = band.getBoundingClientRect(), r = el.getBoundingClientRect();
@@ -3748,6 +3754,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 {LIKEFX_HEAD if fb else ""}
 {_live_head("index")}{f"<style>{BUSY_CSS}</style>" if busy else ""}
 <script>{EMB_HEAD_JS}</script>
+<script>{IMG_FALLBACK_JS}</script>
 </head>
 <body>
 <div class="page">

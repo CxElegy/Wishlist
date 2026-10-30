@@ -725,7 +725,7 @@ class BrokenPhotoBecomesTextCard(unittest.TestCase):
             pg = b.new_page()
             wc = "".join(f"<article class='wc{c}'>{render._pic(st)}<b>見出し</b></article>" for c in ("", " lead"))   # トップの写真の壁（2026-10-27）
             pk = f"<div class='pk'><a href='#'>{render._pic(st)}<span class='pkt'>t</span></a></div>"   # 気になるかも？
-            pg.set_content("<section><div class='grid'>" + "".join(cards) + "</div><div class='wall'>" + wc + "</div>" + pk + "</section>")
+            pg.set_content("<script>" + render.IMG_FALLBACK_JS + "</script><section><div class='grid'>" + "".join(cards) + "</div><div class='wall'>" + wc + "</div>" + pk + "</section>")
             pg.wait_for_timeout(1500)
             left = pg.evaluate("document.querySelectorAll('article .pic').length")
             plain = pg.evaluate("document.querySelectorAll('article.card.nophoto,article.wc.nophoto,.pk.nophoto').length")
