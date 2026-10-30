@@ -1,32 +1,32 @@
 {
- "admin": "8e92f6e1d702",
- "admin-ai": "86fa532ce02e",
+ "admin": "181b663b5077",
+ "admin-ai": "2b70968512dc",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8c7eadee"
+   "cd5b7511"
   ],
   "tokens": [
    "AI 編集のトークン",
    "da3de563"
   ]
  },
- "admin-boards": "53f9063f3272",
+ "admin-boards": "0be39382d4b1",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "0a5b6877"
+   "0122a90d"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "69ad664ee378",
+ "admin-emblem": "0e660c649836",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "94612f3f"
+   "d3205c14"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "992145489f71",
+ "admin-now": "347e7d2709c9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7e96aa69"
+   "6aaa925d"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "a752d9d7"
+   "3c47b7cd"
   ],
   "term-panel": [
    "ライブログ",
-   "ed49cdab"
+   "900157d0"
   ]
  },
- "admin-system": "430d1d5250aa",
+ "admin-system": "4e9265d006ae",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b7ca1384"
+   "6bb4ac49"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0c844129"
+   "b0901c0b"
   ]
  },
  "admin_marks": {},
- "heat": "650b31229e78",
+ "heat": "747f93639026",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "3b84eced"
+   "dc61031b"
   ],
   "ranking": [
    "ランキング",
-   "9946c7f4"
+   "924810d6"
   ]
  },
- "index": "04da92420d79",
+ "index": "9e35409443d5",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "fe4de40a"
+   "74e1ce48"
   ],
   "w-130724c0": [
    "猫用品",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "012f91bd"
+   "bb0f221a"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "37e2a8a0"
+   "99de211e"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "19b1dc0a"
   ]
  },
- "updated": "10.30 17:41",
+ "updated": "10.30 17:45",
  "wishlist": "3ffe0e7d185f"
 }

@@ -579,6 +579,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.ipnn.co.kr/news/photo/202610/418071_79925_3013.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg": {
   "target": 1280,
   "v": 3,
@@ -910,6 +916,12 @@
   "target": 720,
   "v": 3
  },
+ "https://escharts.com/metaImage/teams/legion-1?game=2&v=1793328616": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt859507d51581f713/6ae0fbc4f6e3e04aa497e290/gtaviluciaweightsfeatured.jpg?disable=upscale&width=1200&height=630&fit=crop": {
   "w": 1200,
   "h": 630,
@@ -1196,12 +1208,6 @@
   "target": 1280,
   "v": 3
  },
- "https://image-cdn.learnin.tw/bnextmedia/image/album/2026-10/img-mcp-096a69ce57966fc5.jpg?w=900&output=webp": {
-  "w": 900,
-  "h": 507,
-  "target": 720,
-  "v": 3
- },
  "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif": {
   "w": 594,
   "h": 1056,
@@ -1347,12 +1353,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://image.yomuno.jp/store/article/143573/header_image/large-e73b107d402fda65529bbc41a6ec7e72.jpeg": {
-  "w": 630,
-  "h": 420,
-  "target": 720,
   "v": 3
  },
  "https://image.zdnet.co.kr/2026/10/06/731eb9f33d6449f05ae02f0def03326c.jpg": {
@@ -1992,12 +1992,6 @@
    640
   ],
   "why": "看不清"
- },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252Fntv%252Ffb%252Fntv_1488789084582282187%252Fntv_1488789084582282187_1.jpg,zoom=560x320,quality=100,type=jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
  },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
@@ -4068,6 +4062,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.1fQveZyPmZIlNixQR5V80w&pid=News&w=800": {
+  "w": 700,
+  "h": 624,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.2lp2WqkTcKGG_YLk4raCTQ&pid=News&w=1200": {
   "w": 700,
   "h": 390,
@@ -4231,12 +4231,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
  },
- "https://www.bing.com/th?id=ONUT.UdZD2aE3gOR_Po4ANJ8axw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -4246,6 +4240,12 @@
  "https://www.bing.com/th?id=ONUT.Wgnw38sqkN-vD5tIA09_gQ&pid=News&w=650": {
   "w": 650,
   "h": 346,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Y4Wp2ewnZ6-_7QnNijF27Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -4312,6 +4312,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.eTBE9pQPPsrZYsd2mxgv6g&pid=News&w=1080": {
+  "w": 700,
+  "h": 394,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.eb1q0cKGGyKjCIrKIpVqdg&pid=News&w=1200": {
   "w": 700,
