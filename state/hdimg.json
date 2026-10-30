@@ -61,6 +61,19 @@
   ],
   "why": "看不清"
  },
+ "http://wx1.sinaimg.cn/middle/7d297217gy1iidjcjy46vj20m80m8tc6.jpg": {
+  "w": 800,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/d217daab3b0f5962.webp",
+  "out": [
+   800,
+   800
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
   "h": 1297,
@@ -676,6 +689,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
+ },
+ "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h.jpg": {
+  "w": 668,
+  "h": 668,
+  "target": 720,
+  "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2026/10/668w_668h-60.jpg": {
   "w": 668,
@@ -3191,6 +3210,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/78611/290/78611-290-c6ff8f8a26d80f4fb47b381b76d6866f-1923x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 897,
+  "h": 1260,
+  "target": 1280,
+  "v": 3
+ },
  "https://preview.redd.it/dmk7ksvn25xh1.jpeg?width=640&crop=smart&auto=webp&s=51dcd50276b5884cb711116b933b4e2ad2264603": {
   "w": 640,
   "h": 449,
@@ -3225,12 +3250,6 @@
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
   "w": 760,
   "h": 1125,
-  "target": 720,
-  "v": 3
- },
- "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
-  "w": 360,
-  "h": 616,
   "target": 720,
   "v": 3
  },
@@ -3740,6 +3759,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.349
+ },
+ "https://tennis.jp/wp-content/uploads/2026/10/Uchijima-20261026_03s-1024x682.jpg": {
+  "w": 1024,
+  "h": 682,
+  "target": 720,
+  "v": 3
  },
  "https://tennisconnected.com/wp-content/uploads/2026/03/alexandra-eala-joc481o-fonseca-get-03-17-26-e1773723674883.jpg.webp": {
   "w": 1500,

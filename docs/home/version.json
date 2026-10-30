@@ -1,10 +1,10 @@
 {
- "admin": "d01b6592416d",
- "admin-ai": "0bf44103dda7",
+ "admin": "0acfe0e72643",
+ "admin-ai": "22331bc69e60",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "a98a46aa"
+   "6980ff02"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "922c712f12b9",
+ "admin-emblem": "00f88c7bd88f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1cd6bd54"
+   "86e52d6f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "c73ec0789093",
+ "admin-now": "6cb9e0fb988d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8e86b1a9"
+   "edaf5c44"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "83072cc1"
   ]
  },
- "admin-system": "bbc8cec0f841",
+ "admin-system": "9fd420ed7970",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "29166d08"
+   "7576ef44"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "116c2f95"
+   "6dcda621"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "6c1dd3ec"
   ]
  },
- "index": "75189843e440",
+ "index": "309bfa2cde91",
  "index_marks": {
   "front": [
    "トップ",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "6377c0b4"
+   "67765656"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "03ae9ac2"
+   "9545257b"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "a0102643"
+   "fcaea495"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "f9867b27"
+   "d2b7c9db"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "d3cebc9f"
+   "ed172085"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 12:57",
+ "updated": "10.30 13:07",
  "wishlist": "7af11c19700f"
 }
