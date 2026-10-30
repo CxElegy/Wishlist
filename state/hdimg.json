@@ -561,12 +561,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.gametoc.co.kr/news/photo/202610/112537_327288_452.jpg": {
-  "w": 1280,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.gamevu.co.kr/news/photo/202610/61854_99991_4649.jpg": {
   "target": 720,
   "v": 3,
@@ -3313,12 +3307,6 @@
   "target": 720,
   "v": 3
  },
- "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
- },
  "https://r2-media.wdwnt.com/2026/10/the-art-of-the-mandalorian-and-grogu-cover-1.jpg": {
   "w": 1500,
   "h": 853,
@@ -3508,6 +3496,12 @@
  "https://static.gosugamers.net/8f/56/46/fa5291266f096ab3631803021c9b1f4ad32d17200a0373b390defac5cc.webp": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.inven.co.kr/column/2026/10/27/news/i1759176400.jpg": {
+  "w": 1920,
+  "h": 1349,
   "target": 720,
   "v": 3
  },

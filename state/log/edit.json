@@ -1,53 +1,5 @@
 [
 {
-"at": "2026-10-29T12:39:24+00:00",
-"text": "2026-10-29 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 11（17 版面・74 本・残り 2 版面） · token 新規入力 5.6万・キャッシュ読み 155.3万・出力 6,450",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.33,
-"mem_total": 16872808448,
-"mem_free": 15963590656,
-"disk_used": 10801532928,
-"disk_free": 30520975360,
-"disk_total": 41322508288,
-"peak": 276541440
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"ILLIT",
-"MMORPG 新作",
-"The Mandalorian",
-"Vaundy",
-"ぐでたま",
-"三星手机",
-"哈利波特剧集",
-"日本顶级网球赛事",
-"星巴克马克杯",
-"漫威电影",
-"猫用品",
-"绝区零"
-],
-"stories": 74,
-"left": 2,
-"edited": 23,
-"run": null,
-"tok": {
-"in": 44,
-"cw": 55746,
-"cr": 1552529,
-"out": 6450,
-"calls": 22,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1614769
-},
-{
 "at": "2026-10-29T12:44:16+00:00",
 "text": "2026-10-29 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 12（18 版面・75 本・残り 1 版面） · token 新規入力 5.7万・キャッシュ読み 163.7万・出力 6,887",
 "level": "ok",
@@ -1887,5 +1839,38 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 917902
+},
+{
+"at": "2026-10-30T08:04:39+00:00",
+"text": "2026-10-30 第 2 バッチを出刊：ぐでたま、チェーンソーマン（2 版面・7 本・残り 4 版面） · token 新規入力 2,831・キャッシュ読み 37.7万・出力 1,606",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.12,
+"mem_total": 16872808448,
+"mem_free": 15978164224,
+"disk_used": 10755997696,
+"disk_free": 30566510592,
+"disk_total": 41322508288,
+"peak": 300453888
+},
+"batch": 2,
+"boards": [
+"ぐでたま",
+"チェーンソーマン"
+],
+"stories": 7,
+"left": 4,
+"edited": 23,
+"run": 1793345914.245635,
+"tok": {
+"in": 9,
+"cw": 2822,
+"cr": 376586,
+"out": 1606,
+"calls": 5,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 381023
 }
 ]
