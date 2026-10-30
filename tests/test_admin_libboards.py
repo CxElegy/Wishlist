@@ -95,6 +95,26 @@ class LibEdit(unittest.TestCase):
         self.assertIn("管理ページ④に出ない版面", src)
 
 
+class LibVotes(unittest.TestCase):
+    def test_votes_panel(self):   # ②に「全アカウントの投票」：焼かない・店長の令牌の admin_votes() で読む・全員／ユーザーを選ぶ
+        out = render.render_admin({}, {"url": "https://x.supabase.co", "key": "k"}, "u")["admin-boards.html"]
+        self.assertIn('id="libvotes" hidden', out)
+        self.assertIn('id="wl-libvotes"><p class="empty">読み込み中', out)
+        self.assertIn("rpc('admin_votes')", render.AUTH_JS)
+        self.assertIn("libvotes", [s for _, s, _ in render.ADMIN_WHO])
+        i = render.AUTH_JS.index("function libvotes")
+        self.assertIn("whoMount(", render.AUTH_JS[i:i + 2500])
+        sql = (ROOT / "db" / "admin_votes.sql").read_text(encoding="utf-8")
+        self.assertIn("if not public.is_admin()", sql)
+        self.assertNotIn("to anon", sql)
+        self.assertNotIn("email", sql)
+
+    def test_account_filter_keys(self):   # アカウントごとの行は 'acc:<名前>' で follows のアカウントと結ぶ
+        w = render.AUTH_JS[render.AUTH_JS.index("function whoLoad"):render.AUTH_JS.index("window.WL_WHO")]
+        self.assertIn("'acc:'+f.account", w)
+        self.assertIn("'acc:test1'", w)
+
+
 class LibState(unittest.TestCase):
     def test_state_panel(self):   # ③に「ライブラリの版面ごとの状態」：焼かない・店長の令牌で読んだ boards.config から・全員／ユーザーを選ぶ
         out = render.render_admin({}, {"url": "https://x.supabase.co", "key": "k"}, "u")["admin-emblem.html"]
