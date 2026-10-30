@@ -1248,7 +1248,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
     members16:'<p class="st">読み込めませんでした：',
     lb1:'<table><thead><tr><th>版面<\/th><th>人数<\/th><th>小元素<\/th><th>配色（背景・文字・差し色）<\/th><\/tr><\/thead><tbody>',
-    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面<\/th><th>追う人<\/th><th>最新の日<\/th><th>記事<\/th><th>整理待ち<\/th><\/tr><\/thead><tbody>'}};
+    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面<\/th><th>追う人<\/th><th>最新の日<\/th><th>記事<\/th><th>整理待ち<\/th><th>載せた：待ち（前後）<\/th><\/tr><\/thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）'}};
   var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -1762,10 +1762,19 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     var box=document.getElementById('wl-libedit'); if(!box) return;
     var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
     sec.hidden=false;
-    rpc('admin_board_edit_state').then(function(rs){
-      rs=rs||[]; box.dataset.n=rs.length;
-      box.innerHTML='<p class="st">'+rs.length+L.lb8+'<\/p>'+L.le1+rs.map(function(r){
-        return '<tr data-id="'+r.board_id+'"><td>'+esc(r.name)+'<\/td><td>'+r.followers+'<\/td><td>'+(r.day||'—')+'<\/td><td>'+r.stories+'<\/td><td>'+r.pending+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+    Promise.all([rpc('admin_board_edit_state'),of(base+'/rest/v1/follows?select=account,board_id',{headers:{apikey:A.key,Authorization:'Bearer '+tok}}).then(function(r){return r.ok?r.json():[];}).catch(function(){return [];})]).then(function(v){
+      var rs=v[0]||[], fl=v[1]||[], who={}, accs=[];   // 版面→追う account（店長 test1・お客さま u_…）。メールは出さない
+      fl.forEach(function(f){(who[f.board_id]=who[f.board_id]||[]).push(f.account); if(accs.indexOf(f.account)<0) accs.push(f.account);});
+      accs.sort(function(a,b){return a==='test1'?-1:b==='test1'?1:a<b?-1:1;});
+      box.dataset.n=rs.length;
+      box.innerHTML='<p class="st"><\/p><p><label>'+L.le2+' <select data-who><option value="">'+L.le3+'<\/option>'+accs.map(function(a){return '<option value="'+esc(a)+'">'+(a==='test1'?L.le4:esc(a))+'<\/option>';}).join('')+'<\/select><\/label><\/p>'+L.le1+rs.map(function(r){
+        var tot=r.stories+r.pending, w=tot?Math.round(r.stories/tot*100):0;
+        return '<tr data-id="'+r.board_id+'"><td>'+esc(r.name)+'<\/td><td>'+r.followers+'<\/td><td>'+(r.day||'—')+'<\/td><td>'+r.stories+'<\/td><td>'+r.pending+'<\/td>'+
+          '<td><span style="display:inline-block;width:96px;height:8px;background:#8884;border:1px solid"><i style="display:block;height:100%;width:'+w+'%;background:#4a8fe7"><\/i><\/span><\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+      var sel=box.querySelector('[data-who]'), st=box.querySelector('p.st');
+      function show(){var a=sel.value, n=0; box.querySelectorAll('tr[data-id]').forEach(function(tr){var ok=!a||(who[tr.dataset.id]||[]).indexOf(a)>=0; tr.hidden=!ok; if(ok) n++;});
+        box.dataset.shown=n; st.textContent=n+L.lb8;}
+      sel.onchange=show; show();
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
   }
   function refresh(){
