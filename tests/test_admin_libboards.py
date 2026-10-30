@@ -75,3 +75,14 @@ class LibBoards(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LibEdit(unittest.TestCase):
+    def test_edit_state_panel(self):
+        out = render.render_admin({}, {"url": "https://x.supabase.co", "key": "k"}, "u")["admin-ai.html"]
+        self.assertIn('id="libedit" hidden', out)
+        self.assertIn('id="wl-libedit"><p class="empty">読み込み中', out)
+        self.assertIn("admin_board_edit_state", render.AUTH_JS)
+        sql = (ROOT / "db" / "admin_board_edit.sql").read_text(encoding="utf-8")
+        self.assertIn("if not public.is_admin()", sql)
+        self.assertNotIn("to anon", sql)
