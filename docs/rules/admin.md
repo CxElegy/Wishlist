@@ -8,7 +8,7 @@
 - ④AI 編集の「ライブラリの全版面の AI 編集」＝RPC `admin_board_edit_state()`（`db/admin_board_edit.sql`、is_admin のみ）。版面の数は ②③ と同じ boards の数。各行に「載せた：整理待ち」の棒（ライブラリの版面には集めた数がなく、前後はこの 2 つ）と「全員／ユーザーを選ぶ」（店長の令牌で `follows` を読む）。店長の版面だけの前後は上の「AI 編集の前後」（`edit_diff`）。
 - 点検：`ux_check.check_admin_coverage`（店長でログイン）が ②③ の版面の数 ＝ boards の数を見る。区画を足す・変えるときは同じ読み方を使う（店長だけの一覧を別に作らない）。
 - **「全員／ユーザーを選ぶ」は部品 1 つ**（2026-10-30 r2f3）：`AUTH_JS` の `WL_WHO.mount(置き場, 行の選び方, 行→版面 id)`。店長の令牌で `follows` を 1 回読み、選んだ account が追う版面だけを残す（メールは出さない）。区画ごとに作らない。入れた区画は `render.ADMIN_WHO`（②ライブラリの版面・③小元素の管理の札・④ライブラリの全版面）、入れない区画は `render.ADMIN_WHO_NO` に理由を書く。**区画を足したらどちらかに書く**（tests/test_admin_libboards.py が漏れ 0 を数える）。ux_check（店長ログインの回）が区画ごとに account を選び、行数が follows の通りか・「全員」で元に戻るかを見る。
-- 未対応（BACKLOG）：投票・欲しい物と写真・篇幅・言語・tokens／editdiff の全アカウント分、ライブラリの版面ごとの状態表（収集・AI 編集・設計・小元素）。ここは元のデータの読み口（is_admin の RPC）から作る。
+- 未対応（BACKLOG）：投票・欲しい物と写真・篇幅・言語・editdiff の全アカウント分、ライブラリの版面ごとの状態表（収集・AI 編集・設計・小元素）。ここは元のデータの読み口（is_admin の RPC）から作る。
 
 
 ## 管理ページ（docs/admin.html）
@@ -70,3 +70,5 @@
   **新加一个仕组み就在 `PROCESSES` 里加一项，再放进 `ARCH` 的某个框、在 `EDGES` 连上线**；改了某个仕组み的逻辑，也同步改它的流程。
   新加框（`ARCH` 的 zone）时，同时加进 `processes.CSS` 两处 `grid-template-areas`（PC・手机）：不在里面的名字会生成暗黑的列，4 列被挤成 24px（2026-10-25 「そのほか」框 `etc` 就是这样坏的）。图里部品札的说明只显示 3 行（全文在 title 和流程图）。`tests/test_arch_layout.py` 和 `harness/ux_check.py` 的「管理ページ 全体の構成」检查。
   GitHub Actions 框仕组み最多（7 个），PC 上占 2 列 × 3 行、框内 2 列（`column-count:2`）；只占 1 列时它高 5,129px，把 Supabase・Pages・Discord 推到 y≈5,000、别的框下面空 3,500〜4,800px（2026-10-25）。`ux_check` 查框下面的空白 ≤ 800px。
+
+- ④の tokens（2026-10-31）：AI 編集は店長の inbox の 1 本だけで、お客さまの版面専用の編集はまだ無い（`board_stories` に書く所がない）→ 実行ログのトークンがそのまま全アカウント分の合計。画面に一言入れた。お客さま専用の編集を作るときは、版面ごとに token を残して足し上げる。
