@@ -1,10 +1,10 @@
 {
- "changed": true,
- "checked": "2026-10-30T08:59:22+00:00",
+ "changed": false,
+ "checked": "2026-10-30T09:24:30+00:00",
  "fired": {
-  "at": "2026-10-30T09:09:53+00:00",
+  "at": "2026-10-30T09:24:30+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -22,58 +22,51 @@
    "items": [
     "Astrae Oratio",
     "BLEACH Mirrors High",
-    "GTA 6",
     "MMORPG 新作",
     "gelato pique",
     "チェーンソーマン",
-    "周杰伦",
     "哈利波特剧集",
-    "日本顶级网球赛事",
     "滑雪"
    ],
-   "last_batch": "2026-10-30T08:16:08+00:00",
+   "last_batch": "2026-10-30T09:12:55+00:00",
    "last_error": {
     "at": "2026-10-30T08:55:48+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 439,
+   "prog": 451,
    "prog_day": "2026-10-30",
-   "ripe": [
-    "GTA 6",
-    "周杰伦",
-    "日本顶级网球赛事"
-   ],
-   "sig": "6b044dad686f",
+   "ripe": [],
+   "sig": "a0ff083b3734",
    "token_cap": 1000000,
-   "tokens_today": 532436,
-   "why": "整理待ちの記事 21 件（10 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 587266,
+   "why": "整理待ちの記事 9 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "周杰伦",
-    "Astrae Oratio",
-    "ILLIT"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "e3518002b73d",
+   "sig": "b6804aff6de5",
    "waiting": [
     "A2O LITE",
+    "Astrae Oratio",
     "FROM",
+    "GTA 6",
+    "ILLIT",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
