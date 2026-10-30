@@ -482,6 +482,12 @@ def check_admin_coverage(pw, base, width):
         bad.append(f"管理ページ②の投票に出ないアカウント {len(gone)} 個（{gone[:5]}）")
     if not any(r[0] == "test1" and r[1] + r[2] > 0 for r in vt):
         bad.append(f"管理ページ②の投票に店長（test1）の 👍👎 が 0：{vt[:3]}")
+    # ②全アカウントの篇幅・写真・依頼：行は follows のアカウントを 1 つ残らず含む（言語の人数の行もある）
+    pg.wait_for_selector("#wl-libaccts[data-n]", state="attached", timeout=30000)
+    ac = pg.evaluate("[...document.querySelectorAll('#wl-libaccts tr[data-id]')].map(r=>r.dataset.id)")
+    gone = sorted({f["account"] for f in fl0} - set(ac))
+    if gone or not pg.evaluate("/\\d/.test(document.querySelector('#wl-libaccts p').textContent)"):
+        bad.append(f"管理ページ②の篇幅・写真・依頼に出ないアカウント {len(gone)} 個（{gone[:5]}）または言語の人数なし")
     # 区画ごとの「全員／ユーザーを選ぶ」（render.ADMIN_WHO の全部）：切り替えがある・選ぶと行が follows の通りに絞れる・全員に戻すと元の数
     sys.path.insert(0, str(ROOT / "scripts"))
     import render as _r
@@ -508,7 +514,7 @@ def check_admin_coverage(pw, base, width):
             continue
         pg.select_option(sel, acc)
         shown = pg.evaluate(f"[...document.querySelectorAll({json.dumps(rows)})].filter(x=>!x.hidden).length")
-        want_n = 1 if sec == "libvotes" else len(mine[acc])   # 投票はアカウントごとに 1 行
+        want_n = 1 if sec in ("libvotes", "libaccts") else len(mine[acc])   # 投票はアカウントごとに 1 行
         if shown != want_n or shown >= total:
             bad.append(f"{page} の区画 {sec}：{acc} を選ぶと {shown} 行（期待 {want_n}・全体 {total}）")
         pg.select_option(sel, "")
