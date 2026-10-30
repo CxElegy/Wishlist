@@ -216,7 +216,7 @@ def main(argv):
     path = os.environ.get("GITHUB_OUTPUT")
     if path:
         with open(path, "a", encoding="utf-8") as f:
-            f.write(f"changed={'true' if s['new'] or s['gone'] else 'false'}\n")
+            f.write(f"changed={'true' if s['new'] or s['gone'] else 'false'}\nmore={'true' if s['wait'] and s['new'] else 'false'}\n")
 
 
 if __name__ == "__main__":
