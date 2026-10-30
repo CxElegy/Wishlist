@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "4246379abd77",
+ "edit_sig": "9868c6617e84",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -468,14 +468,14 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "47都道府県の地域限定ぐでたまのステッカーが発売され、ファンから歓喜の声が上がっている。",
      "date": "2026-10-27",
      "headline": "「これならコンプリートできる」と『ぐでたま』ファンも歓喜、47都道府県の地域限定ぐでたまのステッカーが発売",
-     "highlight": "",
+     "highlight": "47都道府県の地域限定",
      "image": "https://news.walkerplus.com/article/1005677/10040979_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1005677/",
-     "weight": "hero"
+     "weight": "lead"
     },
     {
      "blurb": "",
@@ -485,7 +485,7 @@
      "image": "https://news.walkerplus.com/article/150620/858239_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/150620/",
-     "weight": "hero"
+     "weight": "normal"
     }
    ],
    "subtitle": "Gudetama",
@@ -539,15 +539,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 4,
-     "source": "CTV News",
-     "title": "This year’s top Halloween trends include Spider-Man, The Mandalorian, K-Pop Demon Hunters, and more",
-     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNUGUwNHZHbzBFRjF1ZmZVRUdaUzVUOUxQREIybjkySFZVMXBJcGlXYnlUXzlSdktYLXp2d3laaHNJamRtN3hxMGZEXy0xZlpIMFBHVk9kRFppUnNGazFvQkNKWjB6OFp0RUEyckk5VXJjMWlrNm5DUENQWEo5VnBVbU54UVk0a2pHZ21vQnJNX2hkX0N4SDBOY1RWNFp3TkJvR1gxVGUxbXhRS1Jjb2lNX2c3SGNiMExuYUktTGFacUpPU2NRMEZ2VS1EcVlQUHZ3TXc?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -741,59 +732,9 @@
    }
   },
   {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-   "facts": [],
-   "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "#绝区零# DDD @ DorahDew ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBfcGpKWXZZcGEwcHVHczZoTFhJV0tuZHVVak0ydVhUNFlXSWQ3bllGQWNQdW9Vc3dDYW5sMk9YWlZKS1FMTUdIQ2p0eFUwd01Wb1dkdmZFZjRCOEI2NDNKOFZXQQ?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 2,
-     "source": "手机新浪网",
-     "title": "#崩坏星穹铁道[超话]##绝区零卡芙卡知更鸟##绝区零崩坏星穹铁道联动# 绝区零卡芙卡和知更鸟档案[哇] ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE05dzdJMTlQa05uR3J1dUkwYWJCLVpRVWdBa3ZsTVpRWXk2RlZRMDZPS2pybjdvOE1RengzcjNnangzZnV2NmZsbnV6V3lrcXFqUWd6X3psYjFMMTd5WWJfdldRSQ?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "ゼンレスゾーンゼロ",
-   "theme": {
-    "accent": "#A9898A",
-    "alt_accent": "#856062",
-    "alt_bg": "#F2EDEE",
-    "alt_fg": "#1E1A18",
-    "bg": "#1E1516",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 2,
-     "source": "EGamersWorld",
-     "title": "GTA 6, Xbox’s New Direction, and OG’s Dota 2 Rebuild: What’s Shaping Gaming in 2026?",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNdW54LUstb2pqeklaOERRbm1EM2hoVzQzMnRfcTRSYkJoNV9sY29fNFQtNkNac2xuMldYVVhzaGNXY0k2a3VZSmpFSVpXZ251ekNKV28ySHg5V29fUFN4R0VXTTM2UmN6bkZNRm00MElHa1hHYWRudU1kNG8yRVRxcmJZSXAwVTgtNGRBT3ljN3hTUDYwSkE?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 3,
-     "source": "Esports.gg",
-     "title": "Dota 2 PARI Universe: All teams, schedules, results, and more",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQVERQdmNZVWVUMFE5QUlPR2M1ZWdNWGVDb1Y2dXk1aGg2TnZQaUpfU3pBVTY4SDlLQ1hFZVRpNlV2eGlzeTZJWHpwXzdOVHMwSUktQUhZU3ozWG92cXB2WElGQUpyQ3RsRm1VQzVOTEVJcDJxMlZUR1BJRmJhaktvcGVMLUVIOGpBNnRxTWljQlF0M28?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -805,6 +746,17 @@
      "image_via": "AI 挑选",
      "url": "https://hawk.live/posts/ramzes666-reflects-future-dota-2-pro-scene",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "Dota 2 PARI Universe: All teams, schedules, results, and more",
+     "highlight": "",
+     "image": null,
+     "source": "Esports.gg",
+     "source_icon": "https://www.google.com/s2/favicons?domain=esports.gg&sz=128",
+     "url": "https://esports.gg/news/dota-2/dota-2-pari-universe-all-teams-schedules-results-and-more/",
+     "weight": "normal"
     }
    ],
    "subtitle": "Dota 2",
@@ -823,15 +775,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-10-26",
-     "n": 9,
-     "source": "wowKorea",
-     "title": "「A2O LITE」のデビュー曲「NEON」をキレッキレで踊るイ・スマン？ サニー（少女時代）、叔父のAI動画をさらし、テギョン（2PM）も「大丈夫？」",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5id2pzOVhjdTV5VjN2aU1WNFJIVU9GY3ljSTJiM2xXVFNiTmt1Y2t5MDF5dm1Fd1U3eVUzUmx3eU5Ba2NDT3ptVHNpdXJqY1J4N1owcmNHeVo?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -873,6 +816,16 @@
      "image_via": "og:image",
      "url": "http://k.sina.com.cn/article_3212093237_mbf74a735033019e8s.html",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "「A2O LITE」のデビュー曲「NEON」をキレッキレで踊るイ・スマン？ サニー（少女時代）、叔父のAI動画をさらし、テギョン（2PM）も「大丈夫？」",
+     "highlight": "",
+     "image": "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp",
+     "image_via": "og:image",
+     "url": "https://www.wowkorea.jp/news/read/539189.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "",
@@ -891,22 +844,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "Sortir à Paris",
-     "title": "World of Warcraft Forever: release date and new features in Blizzard’s MMORPG",
-     "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOUVFTSjloUWVIb3JDcEtVNDJNdTNMLUdiNkV0VVlHa2dXNEhUazFBc1lTaEtyQmp1ZWNqY3N4MUNzclJWcWVUMTJ3aTVGVEhaYmZuWUE1TUhBdUQwLThsWW9LTzdDeGMxdGhnNFRkclE5QXNqajBubUU3SDNtMGd2UDZBVXNxcXlYcUpWRHlNM2I3R09PTXMtT2tQNUFFYVFuaUxsbVBfN1FqbUZlVEYzZnVIaUpIblZmYmNZLXRnckludUZOZGN0UWxUZDBSLVF3bHVKbjZxTFRVaDBGYTVJYTJPQ3hFb00?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 4,
-     "source": "Sortir à Paris",
-     "title": "World of Warcraft Forever：BlizzardのMMORPG、発売日と新要素",
-     "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNdWw2bld5VWQyeHVpNUdPU0xuRnhNVTctVGpwZlhQaUJRWHRfNkg4UFJiMUppVlZIM2dSR0ttaHNxVGZld19qRHFCTy1sVFRHUHljajlfNVlNRklsTzljQ2lpaFhyQVVuMGgzMDFfNkJKMTR1ZWtWbzBLNUlUdEk3SDdKUmE4a1RMMlpvd2Y4RDY4MDR0SGROZ19sNld3WURSMjRSU1ZyQUU0Qm42MjdYcV9oLWcxaXVjLURrWk1yQWxiTE5Qd09mbzBDcHR6ZEU3LTkyRjFrYzVDc2JMMURv?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -932,6 +869,16 @@
      "image_via": "og:image",
      "url": "https://finance.yahoo.com/technology/articles/citadel-opens-next-wave-closed-222200009.html",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "World of Warcraft Forever：BlizzardのMMORPG、発売日と新要素",
+     "highlight": "",
+     "image": "https://cdn.sortiraparis.com/images/80/66131/1332847-world-of-warcraft-forever-date-de-sortie-et-nouveautes-du-mmorpg-de-blizzard.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sortiraparis.com/ja/pari-de-nani-o-suru-ka/gemu/articles/356575-world-of-warcraft-forever-no-fa-mai-rito-blizzardnommorpgno-xin-yao-su",
+     "weight": "normal"
     }
    ],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
@@ -950,15 +897,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 2,
-     "source": "スポニチ on MSN",
-     "title": "【女子テニス】東レPPO日本勢全滅…加藤未唯 ダブルス準々決勝敗退「厳しい」",
-     "url": "https://www.msn.com/ja-jp/news/other/%E5%A5%B3%E5%AD%90%E3%83%86%E3%83%8B%E3%82%B9-%E6%9D%B1%E3%83%ACppo%E6%97%A5%E6%9C%AC%E5%8B%A2%E5%85%A8%E6%BB%85-%E5%8A%A0%E8%97%A4%E6%9C%AA%E5%94%AF-%E3%83%80%E3%83%96%E3%83%AB%E3%82%B9%E6%BA%96%E3%80%85%E6%B1%BA%E5%8B%9D%E6%95%97%E9%80%80-%E5%8E%B3%E3%81%97%E3%81%84/ar-AA2gqJxa"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -970,6 +908,16 @@
      "image_via": "AI 挑选",
      "url": "https://sports.yahoo.co.jp/video/player/28486248",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "【女子テニス】東レPPO日本勢全滅…加藤未唯 ダブルス準々決勝敗退「厳しい」",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gr17e.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/news/other/%E5%A5%B3%E5%AD%90%E3%83%86%E3%83%8B%E3%82%B9-%E6%9D%B1%E3%83%ACppo%E6%97%A5%E6%9C%AC%E5%8B%A2%E5%85%A8%E6%BB%85-%E5%8A%A0%E8%97%A4%E6%9C%AA%E5%94%AF-%E3%83%80%E3%83%96%E3%83%AB%E3%82%B9%E6%BA%96%E3%80%85%E6%B1%BA%E5%8B%9D%E6%95%97%E9%80%80-%E5%8E%B3%E3%81%97%E3%81%84/ar-AA2gqJxa",
+     "weight": "normal"
     }
    ],
    "subtitle": "ATP・WTA ツアー 日本開催",
@@ -1021,17 +969,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "MGM+'s smash-hit thriller From is now a No. 1 streaming hit on Netflix.",
      "date": "2026-10-29",
-     "n": 1,
-     "source": "Collider on MSN",
-     "title": "One of TV's best sci-fi thrillers officially becomes Netflix's No. 1 series in America",
-     "url": "https://www.msn.com/en-us/entertainment/tv/one-of-tv-s-best-sci-fi-thrillers-officially-becomes-netflix-s-no-1-series-in-america/ar-AA2gpgi2"
+     "headline": "One of TV's best sci-fi thrillers officially becomes Netflix's No. 1 series in America",
+     "highlight": "No. 1 series in America",
+     "image": "https://www.bing.com/th?id=ONUT.yxsqhBeFT5a1oovlNUlv_A&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/entertainment/tv/one-of-tv-s-best-sci-fi-thrillers-officially-becomes-netflix-s-no-1-series-in-america/ar-AA2gpgi2",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
@@ -1048,17 +998,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "ペットイベント「インターペット」で、わんにゃんWalkerの表紙パネル展が開催中。",
      "date": "2026-10-26",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "＜画像13 / 18＞ペットイベント「インターペット」でわんにゃんWalker表紙パネル展を開催中",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE91Q0l0ODlHbF94UFU0QWlmc25xb1J5X3A5VGpxYVJWXzNTbXZ1WHBJTGxQXzVaWlhsU1o0NlN3bVgwYUNNSTFoaVJfOFRkTUhVSE1yb2tRbThDZ2FXSUs5M3JEVy1wVW9S?oc=5"
+     "headline": "ペットイベント「インターペット」でわんにゃんWalker表紙パネル展を開催中",
+     "highlight": "表紙パネル展",
+     "image": "https://news.walkerplus.com/article/40701/210689_615.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.walkerplus.com/article/40701/image210701.html",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -1092,6 +1044,31 @@
     "alt_fg": "#F6F1E7",
     "bg": "#F6F1E7",
     "fg": "#1E3932",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
+   "facts": [],
+   "last": {
+    "date": "2026-10-30",
+    "headline": "Reduce digital eye strain with new Zenless Zone Zero inspired eyewear",
+    "url": "https://www.msn.com/en-us/lifestyle/other/reduce-digital-eye-strain-with-new-zenless-zone-zero-inspired-eyewear/ar-AA2gmRJr"
+   },
+   "name": "绝区零",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#A9898A",
+    "alt_accent": "#856062",
+    "alt_bg": "#F2EDEE",
+    "alt_fg": "#1E1A18",
+    "bg": "#1E1516",
+    "fg": "#F4EEE4",
     "font": "serif",
     "split": true
    }

@@ -695,6 +695,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.sortiraparis.com/images/80/66131/1332847-world-of-warcraft-forever-date-de-sortie-et-nouveautes-du-mmorpg-de-blizzard.jpg": {
+  "w": 1800,
+  "h": 1012,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg": {
   "w": 600,
   "h": 338,
@@ -1697,6 +1703,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gr17e.img": {
+  "w": 1200,
+  "h": 908,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2grasE.img": {
   "w": 1280,
   "h": 720,
@@ -2579,6 +2591,19 @@
   "h": 410,
   "target": 720,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/40701/210689_615.jpg": {
+  "w": 615,
+  "h": 409,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.469,
+  "local": "pics/4cf93c6633890c83.webp",
+  "out": [
+   1280,
+   851
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/49841/268597_615.jpg": {
   "w": 615,
@@ -3871,6 +3896,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://thecinemaholic.com/wp-content/uploads/2026/10/from2_3eb35a.png": {
+  "w": 1499,
+  "h": 752,
+  "target": 720,
+  "v": 3
+ },
  "https://thedigestweb.com/files/topics/121958_ext_04_0_L.jpg": {
   "w": 1440,
   "h": 960,
@@ -4462,8 +4493,15 @@
  "https://www.bing.com/th?id=ONUT.yxsqhBeFT5a1oovlNUlv_A&pid=News&w=1200": {
   "w": 700,
   "h": 350,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.444,
+  "local": "pics/688612b3622e5ba6.webp",
+  "out": [
+   1280,
+   640
+  ],
+  "why": "看不清"
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
@@ -4996,6 +5034,12 @@
   "w": 1280,
   "h": 960,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
   "v": 3
  },
  "https://x0.ifengimg.com/res/2026/7DB009EBC78419C0A22C491DF17530B86991AC52_size23_w689_h293.jpg": {
