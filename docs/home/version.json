@@ -1,6 +1,6 @@
 {
  "admin": "d01b6592416d",
- "admin-ai": "9c25a8ca42dd",
+ "admin-ai": "6e980e647241",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "9fd59001"
+   "da28769a"
   ]
  },
  "admin-boards": "0be39382d4b1",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "e4e0c332d8a0",
+ "admin-emblem": "c940d6d086bd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "cc819ef4"
+   "ce1a63e1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "2230593a0c08",
+ "admin-now": "214e2f5a5514",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2cfd9178"
+   "ed2128eb"
   ]
  },
- "admin-system": "def24b312b3c",
+ "admin-system": "0c5309d90730",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "4015eca9"
+   "e281ff14"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "924810d6"
   ]
  },
- "index": "12eb810eb7e6",
+ "index": "316628223135",
  "index_marks": {
   "front": [
    "トップ",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "1d508a76"
+   "c22a6e99"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "4b029795"
+   "9c2d09bc"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "48a804a9"
+   "5c95c3a1"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -196,6 +196,6 @@
    "19b1dc0a"
   ]
  },
- "updated": "10.30 17:56",
+ "updated": "10.30 18:01",
  "wishlist": "3ffe0e7d185f"
 }
