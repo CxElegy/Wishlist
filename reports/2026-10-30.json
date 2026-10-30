@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "b545595d6e45",
+ "edit_sig": "942b37941ef5",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -461,36 +461,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 15,
-     "source": "朝日新聞",
-     "title": "大坂、２回戦で敗退 テニスの東レ・パンパシフィック・オープン ２９日",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5jM3J0eE5DYmVUWXJtZXQxX0JFV0I1X0V6QlVRTHdKeHpLSUw3QkVib2RuSFBpRmN1V2ViRzllTjRCNzNKWnlQMkkzN09BcWVwLXdDb2RGUG9CYWcy?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 16,
-     "source": "朝日新聞デジタル",
-     "title": "大坂、2回戦で敗退 テニスの東レ・パンパシフィック・オープン 29日",
-     "url": "https://www.asahi.com/articles/DA3S16577657.html"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 17,
-     "source": "Yahoo!ニュース",
-     "title": "トップシードのルバキナが初戦突破、年末世界ナンバーワンが東京で確定 [東レPPOテニス]（テニスマガジンONLINE）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE14bTM5emVuRU9hUkZrbzNpZFpDN2RyY2RtX28zenp1b1FpQ2xQTGJxb3JXNkd3YlRKSjlYMDdWNmFYWVN5aXVrWE9nUDJNMGZwdHdqUHQ2dlRYdnpyUFJLcGhuS2l0UnZjTEQ3RVllQ1FIUm9lb3ZSck40N1JFMVU?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 18,
-     "source": "Reuters on MSN",
-     "title": "テニス＝大坂8強逃す、18歳ポハンコバに敗戦 東レパンパシOP",
-     "url": "https://www.msn.com/ja-jp/sports/other/%E3%83%86%E3%83%8B%E3%82%B9-%E5%A4%A7%E5%9D%828%E5%BC%B7%E9%80%83%E3%81%99-18%E6%AD%B3%E3%83%9D%E3%83%8F%E3%83%B3%E3%82%B3%E3%83%90%E3%81%AB%E6%95%97%E6%88%A6-%E6%9D%B1%E3%83%AC%E3%83%91%E3%83%B3%E3%83%91%E3%82%B7%EF%BD%8F%EF%BD%90/ar-AA2gmYYe"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1093,8 +1063,9 @@
      "date": "2026-10-23",
      "headline": "李秀满在烤肉店豪爽支付顾客餐费，庆祝A2O LITE夺得音乐节目第一",
      "highlight": "夺得音乐节目第一",
-     "image": "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif",
-     "image_via": "og:image",
+     "image": null,
+     "source": "亚洲日报",
+     "source_icon": "https://image.ajunews.com/images/site/img/ajunews/favicon_aju_cn.ico",
      "url": "https://www.ajudaily.com/view/20261023092870270",
      "weight": "lead"
     },

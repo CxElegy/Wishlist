@@ -341,7 +341,7 @@
   "三星手机": 21,
   "ILLIT": 19,
   "哈利波特剧集": 14,
-  "日本顶级网球赛事": 14,
+  "日本顶级网球赛事": 18,
   "dota2": 9,
   "MMORPG 新作": 10,
   "BLEACH Mirrors High": 4,
@@ -370,7 +370,10 @@
     1,
     7,
     13,
-    12
+    12,
+    15,
+    16,
+    18
    ],
    "image": "https://www.nikkansports.com/sports/news/img/202610290001904-w500_3.jpg"
   },
@@ -408,7 +411,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    11
+    11,
+    17
    ]
   }
  ],
