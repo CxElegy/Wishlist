@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "13058f6312af",
+ "edit_sig": "60d1625ea58f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -32,8 +32,8 @@
      "date": "2026-10-30",
      "headline": "아스트라에 오라티오 개발진, '수동 조작' 재미, '편의성 강화', 'BM개편' 등 완성도 높인다",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.BizbljJ6e79nxoCcLSJNrw&pid=News&w=600",
-     "image_via": "条目自带（Bing 缩略图）",
+     "image": "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg",
+     "image_via": "og:image",
      "url": "https://www.khgames.co.kr/news/articleView.html?idxno=309806",
      "weight": "normal"
     },
@@ -52,8 +52,9 @@
      "date": "2026-10-30",
      "headline": "‘아스오라’ 개발진에게 물었다, CBT 이후 무엇이 달라지나?",
      "highlight": "",
-     "image": "https://cdn.ipnn.co.kr/news/photo/202610/418071_79925_3013.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "PNN",
+     "source_icon": "https://cdn.ipnn.co.kr/favicon.ico",
      "url": "https://www.ipnn.co.kr/news/articleView.html?idxno=418071",
      "weight": "normal"
     },
@@ -448,43 +449,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 47,
-     "source": "YouTube · ILLIT",
-     "title": "[행운의 편지🍀] 이 숏폼을 마주친 당신, 뭐가됐든 아일릿이 응원합니다🫵 #체포하겠어 #You_re_Under_Arrest #ILLIT #아일릿",
-     "url": "https://www.youtube.com/watch?v=jZdypIULOrw"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 48,
-     "source": "Yahoo!ニュース",
-     "title": "ILLIT、大学祭で新曲「You're Under Arrest」を披露！歌詞の一部を替え学生たちの就職活動を応援",
-     "url": "https://news.yahoo.co.jp/articles/5f2f1e9de69b704158f7281b8fa2bb44846485ee"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 49,
-     "source": "KPOP monster",
-     "title": "ILLIT、大学祭で学生たちに「就活突破」のエール！ 新曲「You’re Under Arrest」の歌詞をユニークに変更、会場がホイッスルの大合唱に",
-     "url": "https://www.kpopmonster.jp/?p=178618"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 50,
-     "source": "JTBC",
-     "title": "[피플]‘역시 중독성 맛집’ 아일릿, 리스너 마음도 ‘체포하겠어’",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE11alhFb3ZzRF82V3VDTXEzTks1VGhNSWlLUFA1YlZYTG5NZTJHZ2psSVZZYVJOdXBkVG5hTVZnMWZnNWhCc25GTkE0T29GOVhibkJDZg?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 51,
-     "source": "Forbes",
-     "title": "ILLIT 'BREAK EVEN' Sells Over 380,000 Copies For Career-Best Sales Day",
-     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPVFUxOXF0SDVpRUd3RmlqaEFnOGQ0OVF2cl9iVkRQSEdsRFRQdGxJMmRoZzBPWkxJTGE2XzVVOUhfSWRHZDF1d01OQkswbU9MV1Bid0J3eVloU0xraTFpYm5LUFI3LW9nOUk3cUJYTUgyVmgwN1NYbmlLZUFKbVpZUG1zM2s1SEVsSEIydy1FZ2YyOG9PZ0hac2hORWJIb0hXMGE0NVNB?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1127,29 +1091,6 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "Real Sound",
-     "title": "Ado、アニメ『デモンズ・クレスト』OPテーマ「シンカ」配信リリース SKYんによるジャケット公開も",
-     "url": "https://realsound.jp/2026/10/post-2570274.html"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 4,
-     "source": "MeMeOn 迷迷音",
-     "title": "認識 Vaundy：用現代美術設計思維，打造令和流行樂的新解答",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0zR09ONnMySHRKMzVPdUxBeFo5a1JNVWJpVjRwWkZMYXdOM2xTTEh6RFBmUDk2Rkh4akRTV1lNVDFBSU1zZ1UtQl93OFhwaVZFS3lEV2xoRVdvdw?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 5,
-     "source": "サンレコ",
-     "title": "Vaundyの5年前の曲が今1位に！？『しわあわせ』『怪獣の花唄』のトラック・メイクを分析",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE8ya2pNdHBudVRQSlBjemc3Z28wSjlycFU1eG1Ka2pnY1Z3UjVzWkFOcW1VY204aU5TR25YQjY0OVFsNjJSSm1XMTl4WU9MUG95QzdkSTZhZVppYmZpbUpqUC1mcw?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1161,6 +1102,16 @@
      "image_via": "og:image",
      "url": "https://note.com/hitomeblog_t/n/nf1595775d6bf?hl=en",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "Vaundyの5年前の曲が今1位に！？『しわあわせ』『怪獣の花唄』のトラック・メイクを分析",
+     "highlight": "5年前の曲が今1位に",
+     "image": "https://cdn.image.st-hatena.com/image/scale/34bc434840d3d1c882498735e0c17b56655ba5b3/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fr%2Frittor_snrec%2F20261028%2F20261028112645.png",
+     "image_via": "og:image",
+     "url": "https://www.snrec.jp/entry/ex/column/viral-hits-lab16",
+     "weight": "normal"
     }
    ],
    "subtitle": "演唱会",
@@ -1179,51 +1130,8 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 16,
-     "source": "Yahoo新聞",
-     "title": "周杰倫加持！vivo X500系列、X Fold6摺疊旗艦開賣 價格規格優惠一次看",
-     "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxOdWNjV2tOTU84LVJOaGlyMmpUZmhUUm5LZDB0MGRUeml5OFBSbVcxWVBPSkMwVWxDamdDWm90Tmc5UlltV0FOdEJLV0E5S1k2enNoR01kUUhqYVRLbi1uQ3ktV1ZZeG1BUG81VXZkVVJnVHU0cXM3Q1VxLUY0ai1LeTBjOEhlUWk4eEZfSkFUQWUtMk00MEMxaEQ0WFBJU2xxTGNmb29uRlJuN003WWxxQUlmcENBRkJLWi1McnBxb2xCMnZhTXBUblMtSTk2WnZhYnQ5N2phc25hOWdGcU9RaDFvbTJaamlDa3hybU1YVVlrdkViX095Zm9wdVpCakdFM2FMMTM0OA?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 17,
-     "source": "Mashdigi",
-     "title": "vivo X500系列機海、大折疊旗艦X Fold6登台：攜手周杰倫、外掛增距鏡，挑戰行動影像天花板",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9TemNONGRsSklfc0tpT3VtQ092NHhOTHBOUEdSN3RjX3JKemdHYWRDNmVzX3dKcjJ0SHE1UUJVQ2pUTDhYUmVxOGVGZno2S1U3T2xIOWw0ZXItRWdRNTZmVlV4R0NOQksxUmt1ZXpOWTUwUQ?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 18,
-     "source": "硬是要學",
-     "title": "vivo X500 系列台灣上市！周杰倫晴天濾鏡、2 億畫素蔡司長焦、X Fold6 售價與優惠整理",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOYVA4MUcxX2ZNY3E1clpZNWp0cW90bWhDZU5SdDQ5bm13ZTZYM0ZwYkZjMzlTLW9MSVVObVdzTVpoSkVFYmVYYXR5a25Ia2F4ZGJSbEZnZ2NXQWZERGhCUVVRUHV3Yzh3RHhiaVJpZEUzNnNPcExFZ1lYN0o0cV9nYWJSemlFM0tiUW9ESmtmUTdfWllvc1E?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-30",
-     "headline": "來這買vivo X500、V80 周杰倫限定好禮、新加坡演唱會一次擁有",
-     "highlight": "",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gp01C.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/zh-tw/news/living/%E4%BE%86%E9%80%99%E8%B2%B7vivo-x500-v80-%E5%91%A8%E6%9D%B0%E5%80%AB%E9%99%90%E5%AE%9A%E5%A5%BD%E7%A6%AE-%E6%96%B0%E5%8A%A0%E5%9D%A1%E6%BC%94%E5%94%B1%E6%9C%83%E4%B8%80%E6%AC%A1%E6%93%81%E6%9C%89/ar-AA2goFPw",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-25",
-     "headline": "周杰伦老歌又火了！12年前写的歌曲《怎么了》，曾在演唱会被歌迷安可",
-     "highlight": "",
-     "image": "https://inews.gtimg.com/news_ls/O3dSoUQme_hUlBJ8Wst37Rs8GwCfCj53Od700IImhx4YkAA/0",
-     "image_via": "og:image",
-     "url": "https://news.qq.com/rain/a/20261025V0BZRP00",
-     "weight": "hero"
-    },
     {
      "blurb": "ツアー・新曲の新情報はなし。本人が29日にSNSでテニス中のエピソードを投稿。",
      "date": "2026-10-28",
@@ -1233,6 +1141,26 @@
      "image_via": "AI 挑选",
      "url": "https://star.ettoday.net/news/3263077",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "周杰伦成为第一个在墨尔本大型场馆开唱的中国歌手！",
+     "highlight": "第一个在墨尔本大型场馆开唱",
+     "image": "https://inews.gtimg.com/news_ls/OVzsrSYhJcUdGuwDJFQvF5pXlCV8uAnlTxAUnMl4VFiGAAA/0",
+     "image_via": "og:image",
+     "url": "https://news.qq.com/rain/a/20261029V01P4B00",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "周杰伦老歌又火了！12年前写的歌曲《怎么了》，曾在演唱会被歌迷安可",
+     "highlight": "",
+     "image": "https://inews.gtimg.com/news_ls/O3dSoUQme_hUlBJ8Wst37Rs8GwCfCj53Od700IImhx4YkAA/0",
+     "image_via": "og:image",
+     "url": "https://news.qq.com/rain/a/20261025V0BZRP00",
+     "weight": "normal"
     }
    ],
    "subtitle": "周杰倫",

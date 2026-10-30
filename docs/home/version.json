@@ -1,32 +1,32 @@
 {
- "admin": "933d836f17dd",
- "admin-ai": "4e89475b04de",
+ "admin": "8175d05c296a",
+ "admin-ai": "dc38abe5bdd0",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d3d192ba"
+   "efdc7076"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "dea1bdc3"
+   "0420814b"
   ]
  },
- "admin-boards": "e05141e53a33",
+ "admin-boards": "8a79331ccb0b",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "8e2f1890"
+   "9f03557b"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "27f5459b380b",
+ "admin-emblem": "955dbeb13727",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4bc48443"
+   "da78ccf0"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "6b4654a105b5",
+ "admin-now": "c090dd9df3d6",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e920f9ec"
+   "756dc3b5"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c80958c5"
+   "7bf01677"
   ]
  },
- "admin-system": "107f2c075281",
+ "admin-system": "3e85a33a4424",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "bee59ef2"
+   "c5129b34"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b6745d56"
+   "ed50da9f"
   ]
  },
  "admin_marks": {},
- "heat": "b5b62b5a1e74",
+ "heat": "cba2acd54365",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "bc0bdabd"
+   "4ae32a5b"
   ],
   "ranking": [
    "ランキング",
-   "f5ef8676"
+   "3679934b"
   ]
  },
- "index": "c396eef0fad1",
+ "index": "142d49326395",
  "index_marks": {
   "front": [
    "トップ",
-   "a2cacdfc"
+   "d7d18368"
   ],
   "picks": [
    "気になるかも？",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "37d538b1"
+   "3cd1e45b"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "480a225b"
+   "3bab0166"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "b4d4ecba"
+   "e1cfb3ba"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "c2bddac4"
   ]
  },
- "updated": "10.30 21:14",
+ "updated": "10.30 21:21",
  "wishlist": "3ffe0e7d185f"
 }

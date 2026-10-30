@@ -28,7 +28,6 @@
   "https://news.livedoor.com/article/detail/32691267/": "https://www.bing.com/th?id=ONUT.585AXRfL_8k6iLulkr5P9w&pid=News&w=600",
   "https://news.livedoor.com/topics/detail/32677643/": "https://image.news.livedoor.com/newsimage/stf/a/8/a84a9_1830_709a350d_14660206.jpg",
   "https://news.mydrivers.com/1/1160/1160968.htm": "https://img1.mydrivers.com/img/20261027/Sfe466081-bb4e-4ee2-9120-ef5e3fc8da67.png",
-  "https://news.qq.com/rain/a/20261029V01P4B00": "https://inews.gtimg.com/news_ls/OVzsrSYhJcUdGuwDJFQvF5pXlCV8uAnlTxAUnMl4VFiGAAA/0",
   "https://news.yahoo.co.jp/articles/b99312a43ff734cc77e4fc9aeb6e2215c0067751": "https://www.bing.com/th?id=ONUT.8As_DJmA332KXtNmDDXTIQ&pid=News&w=1080",
   "https://nijimen.kusuguru.co.jp/topics/645125": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/7c033deae70845d99df67c2390632314.jpg",
   "https://note.com/kimonoclub/n/n81583111eff7?hl=en": "https://www.bing.com/th?id=ONUT.xJ4TPQ2Ls59Z59VRELT6pw&pid=News&w=1200",
@@ -1500,27 +1499,6 @@
   },
   {
    "batch": 5,
-   "because": "周杰伦",
-   "date": "2026-10-28",
-   "hits": [],
-   "image": "https://inews.gtimg.com/news_ls/OVzsrSYhJcUdGuwDJFQvF5pXlCV8uAnlTxAUnMl4VFiGAAA/0",
-   "kind": "board",
-   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
-   "score": 6,
-   "source": "QQ News",
-   "taste": [
-    [
-     "作品:周杰伦",
-     2
-    ]
-   ],
-   "title": "周杰伦成为第一个在墨尔本大型场馆开唱的中国歌手！",
-   "url": "https://news.qq.com/rain/a/20261029V01P4B00",
-   "words": [],
-   "work": "周杰伦"
-  },
-  {
-   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-10-28",
    "hits": [],
@@ -1541,7 +1519,7 @@
    "work": "BLEACH Mirrors High"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-10-28",
    "hits": [],
@@ -1646,7 +1624,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 7,
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-10-30",
    "hits": [],
@@ -1739,7 +1717,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 8,
+   "batch": 7,
    "because": "FROM",
    "date": "2026-10-28",
    "hits": [],
