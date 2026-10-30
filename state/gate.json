@@ -1,6 +1,6 @@
 {
- "changed": true,
- "checked": "2026-10-30T08:05:55+00:00",
+ "changed": false,
+ "checked": "2026-10-30T08:26:27+00:00",
  "fired": {
   "at": "2026-10-30T08:11:38+00:00",
   "results": {
@@ -19,34 +19,20 @@
     "resp": "cse_01W4x6f77Zq5HJ5awgTbcLqA",
     "sig": "676dfdd2eddd"
    },
-   "items": [
-    "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
-    "ぐでたま",
-    "チェーンソーマン",
-    "漫威电影"
-   ],
-   "last_batch": "2026-10-30T07:50:16+00:00",
+   "items": [],
+   "last_batch": "2026-10-30T08:16:08+00:00",
    "last_error": {
     "at": "2026-10-30T07:44:50+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 409,
+   "need": false,
+   "prog": 417,
    "prog_day": "2026-10-30",
-   "ripe": [
-    "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
-    "ぐでたま",
-    "チェーンソーマン",
-    "漫威电影"
-   ],
-   "sig": "de362f860172",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 516257,
-   "why": "整理待ちの記事 8 件（6 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 532436,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
