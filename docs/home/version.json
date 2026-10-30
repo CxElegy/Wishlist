@@ -1,10 +1,10 @@
 {
- "admin": "dbd459213c97",
- "admin-ai": "b3097ea56571",
+ "admin": "3457f0307b9f",
+ "admin-ai": "a3c97effb820",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "3c505e5b"
+   "f09fd026"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "7c6836fde978",
+ "admin-emblem": "570f061e7d1f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "112a5597"
+   "fb269958"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "60ffaa9fb58e",
+ "admin-now": "8348efbb2798",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9e2bf29e"
+   "350e78f2"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "da98c238"
+   "9e155abe"
   ]
  },
- "admin-system": "d0526f99eaf4",
+ "admin-system": "11104c092956",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "5b4efe8f"
+   "2d3e9a47"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "f29de690"
   ]
  },
- "index": "930d1998af51",
+ "index": "b7b0a0df6483",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "17a8d6da"
+   "da04a65c"
   ],
   "w-130724c0": [
    "猫用品",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "c8fc1881"
+   "67968c69"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "8d1b200e"
+   "90880d33"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "8f50899d"
+   "480a225b"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "c2bddac4"
   ]
  },
- "updated": "10.30 21:00",
+ "updated": "10.30 21:08",
  "wishlist": "3ffe0e7d185f"
 }
