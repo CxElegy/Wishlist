@@ -220,7 +220,8 @@
   "dota2": 4,
   "绝区零": 3,
   "The Mandalorian": 2,
-  "あつ森": 2
+  "あつ森": 2,
+  "Vaundy": 2
  },
  "A2O LITE": [
   {
@@ -407,6 +408,19 @@
     2
    ],
    "image": "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200"
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy 小巨蛋首日：四面台雷射燈光秀爆棚、感性喊話「全在音樂裡」全場大合唱掀翻屋頂",
+   "highlight": "小巨蛋首日",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://news.videoland.com.tw/newsphoto/enews_20261113102_BB5495.webp"
   }
  ]
 }
