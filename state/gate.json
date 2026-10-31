@@ -1,10 +1,10 @@
 {
- "changed": true,
- "checked": "2026-10-31T14:18:41+00:00",
+ "changed": false,
+ "checked": "2026-10-31T14:43:32+00:00",
  "fired": {
-  "at": "2026-10-31T14:18:41+00:00",
+  "at": "2026-10-31T14:43:32+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T13:08:51+00:00",
+    "at": "2026-10-31T14:43:32+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 350,
-    "resp": "cse_01W4x6f5f57W4dhvr2gPnRdM",
-    "sig": "e0cbc2764967"
+    "prog": 362,
+    "resp": "cse_01W4x6f7DtqoGsqJvQdpGdas",
+    "sig": "0d2fe4b1d516"
    },
    "items": [
     "BLEACH Mirrors High",
@@ -38,11 +38,21 @@
    "need": true,
    "prog": 362,
    "prog_day": "2026-10-31",
-   "ripe": [],
-   "sig": "be2aded8328c",
+   "ripe": [
+    "BLEACH Mirrors High",
+    "MMORPG 新作",
+    "gelato pique",
+    "あつ森",
+    "三星手机",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影",
+    "猫用品"
+   ],
+   "sig": "0d2fe4b1d516",
    "token_cap": 1000000,
    "tokens_today": 888815,
-   "why": "整理待ちの記事 11 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 11 件（9 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
