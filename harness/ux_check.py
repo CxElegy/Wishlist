@@ -580,6 +580,62 @@ def check_customer_admin_pages(pw, base, width):
     return bad
 
 
+# お客さまが管理ページの網址を直に開いたとき：門が出る・全ユーザーの行が 0・メニューに管理の入口がない（BACKLOG 2026-10-31 r2）
+ROWS_JS = """() => ({gate: !!document.querySelector('.wl-gate'), gateTxt: (document.querySelector('.wl-gate')||{}).innerText||'',
+ gateOn: document.documentElement.dataset.gate,
+ rows: document.querySelectorAll('#wl-members tr[data-mail], [id^="wl-lib"] tr, [id^="wl-lib"][data-n]').length,
+ vis: [...document.querySelectorAll('body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(script):not(style)')].filter(e=>e.offsetParent!==null&&e.getBoundingClientRect().height>20).length,
+ menu: document.querySelectorAll('.wl-auth [data-go="admin"], .wl-auth a[href*="admin"]').length,
+ user: !!document.querySelector('.wl-auth .menu')})"""
+CUSTOMER_PAGES = ("test-a", "test-c")
+
+
+def check_customer_admin_pages(pw, base, width):
+    """test-a・test-c でログインして admin*.html 7 枚を直に開く。門（.wl-gate）が出て、全ユーザーの行（#wl-members・#wl-lib*）が 0、
+    見える中身が門だけ、右上のメニューに管理の入口がない。トップの最初の画面のメニューも。門が出ない（enforce が外れた）なら ✗。"""
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    bad = []
+    for who in CUSTOMER_PAGES:
+        try:
+            ses = session(WHO[who])
+        except urllib.error.HTTPError:
+            bad.append(f"{who} がログインできない（点検できていない）")
+            continue
+        for f in ["index.html"] + ADMIN_FILES:
+            pg = b.new_page(viewport={"width": width, "height": 900})
+            pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+            pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}", ses)
+            pg.goto(base + (f if f != "index.html" else ""), wait_until="domcontentloaded", timeout=60000)
+            pg.wait_for_timeout(5000)   # お客さまの最初の画面は document.open で書き替わる。落ち着いてから札を探す
+            try:
+                pg.wait_for_selector(".wl-auth .menu", state="attached", timeout=30000)
+            except Exception:  # noqa: BLE001
+                pass
+            if f != "index.html":
+                try:
+                    pg.wait_for_selector(".wl-gate", timeout=20000)
+                except Exception:  # noqa: BLE001
+                    pass
+            pg.wait_for_timeout(2500)   # 門の裏で RPC が走っても行が描かれないことを見る
+            st = pg.evaluate(ROWS_JS)
+            pg.close()
+            tag = f"{who} {f} {width}px"
+            if not st["user"]:
+                bad.append(f"{tag} ログインの札が出ていない（点検できていない）")
+            if st["menu"]:
+                bad.append(f"{tag} メニューに管理の入口 {st['menu']} 個")
+            if f == "index.html":
+                continue
+            if not st["gate"] or st["gateOn"] != "1" or "店長だけ" not in st["gateTxt"]:
+                bad.append(f"{tag} 門が出ない（管理ページの中身が見える）")
+            if st["rows"]:
+                bad.append(f"{tag} 全ユーザーの行・件数が {st['rows']} 個 DOM にある")
+            if st["vis"]:
+                bad.append(f"{tag} 門のほかに見える中身 {st['vis']} 個")
+    b.close()
+    return bad
+
+
 def check_admin_coverage(pw, base, width):
     """管理ページ②版面（店長でログイン）に出る版面の数＝ライブラリの版面の数（HARNESS §2-5）。店長の合言葉が要る：
     UX_ADMIN_EMAIL・UX_ADMIN_PASSWORD（Actions の Secrets）。なければ None（未確認。✓ とは言わない）。"""
@@ -1105,6 +1161,13 @@ def main(argv):
             else:
                 fails += bool(bad)
                 print(("✗ " if bad else "✓ ") + "管理ページの網羅：" + ("、".join(bad) if bad else "ライブラリの版面の数と同じ"))
+        for w in ([] if a.fast else a.widths.split(",")):   # お客さまが管理ページを直に開く
+            try:
+                bad = check_customer_admin_pages(pw, a.base, int(w))
+            except Exception as ex:  # noqa: BLE001
+                bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + f"お客さまが管理ページを直に開く {w}px：" + ("、".join(bad[:4]) if bad else f"{'・'.join(CUSTOMER_PAGES)} × 7 枚：門が出る・全ユーザーの行 0・メニューに入口なし"))
         for w in ([] if a.fast else sorted({*a.widths.split(","), "520"}, key=int)):   # 演出のはみ出し（390・520・1400）
             try:
                 bad = check_fx_edge(pw, a.base, int(w))

@@ -4842,7 +4842,8 @@ AUTH_JS = r"""
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]&&!(OWN&&tok)?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();libedit();libvotes();libaccts();libplace();
+      .then(function(){document.dispatchEvent(new Event('wl-role'));   // 役目が決まった合図（③エンブレムが、店長のときだけライブラリを読む）
+        mine();chip();gate();readOnlyNote();members();libboards();libedit();libvotes();libaccts();libplace();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
           var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
@@ -6047,11 +6048,11 @@ EMM_JS = r"""
   function bts0(){return document.querySelector('.emm-boards');}
   var libDone=false;   // ライブラリの全部の版面（②と同じ：店長の令牌で読む・followers 0 も含める）。店長以外は何も足さない
   function loadLib(){
-    if(libDone||!window.WL_TOK||!CFG.url||!window.fetch)return;libDone=true;
+    if(libDone||!window.WL_TOK||document.documentElement.dataset.role!=='admin'||!CFG.url||!window.fetch)return;libDone=true;   // 店長だけ（お客さまの画面に全ユーザーの行を作らない。2026-10-31）
     fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/boards?select=id,name,followers,config&order=followers.desc,id',{headers:{apikey:CFG.key,Authorization:'Bearer '+window.WL_TOK}})
       .then(function(r){return r.ok?r.json():[];}).then(function(rows){
         var bts=document.querySelector('.emm-boards');if(bts)bts.dataset.lib=rows.length;addLib(rows);whoTabs();libState(rows);},function(){libDone=false;});}
-  document.addEventListener('wl-token',loadLib);loadLib();
+  document.addEventListener('wl-token',loadLib);document.addEventListener('wl-role',loadLib);loadLib();
   function paint(){
     [].forEach.call(document.querySelectorAll('.emm-tile'),function(t){
       var r=req[key(t)],s=sent[key(t)],old=t.querySelector('.emm-st');if(old)old.remove();
