@@ -31,6 +31,13 @@ class PhotoStore(unittest.TestCase):
             seen, want, total = P.scan(d, ['<img src="https://z.example/c.jpg" data-e="s">'])
             self.assertEqual(set(want), {k, k2, k3})
 
+    def test_scan_puts_section_lead_first(self):
+        # 置く順：各版面の先頭の写真が先（2 枚目以降より前）
+        seen, want = set(), {}
+        P.scan_text(['<section><img src="https://x/a1.jpg" data-e="r"><img src="https://x/a1.jpg" data-e="s"><img src="https://x/a2.jpg" data-e="s">'
+                     '<section><img src="https://x/b1.jpg" data-e="s">'], seen, want)
+        self.assertEqual(list(want.values()), ["https://x/a1.jpg", "https://x/b1.jpg", "https://x/a2.jpg"])
+
     def test_render_pic_gives_srcset_and_small_bg(self):
         import render
         u = "https://x.example/a.jpg"
