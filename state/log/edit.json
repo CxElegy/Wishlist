@@ -1,52 +1,5 @@
 [
 {
-"at": "2026-10-30T18:56:01+00:00",
-"text": "2026-10-31 第 3 バッチを出刊：Astrae Oratio、MMORPG 新作、dota2、gelato pique、あつ森、日本顶级网球赛事 ほか 1（7 版面・10 本・今日の整理待ちは全部終わり） · token 新規入力 9,230・キャッシュ読み 93.1万・出力 4,037",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.2,
-"mem_total": 16872808448,
-"mem_free": 15784857600,
-"disk_used": 10751545344,
-"disk_free": 30570962944,
-"disk_total": 41322508288,
-"peak": 413216768
-},
-"batch": 3,
-"boards": [
-"Astrae Oratio",
-"MMORPG 新作",
-"dota2",
-"gelato pique",
-"あつ森",
-"日本顶级网球赛事",
-"滑雪"
-],
-"stories": 10,
-"left": 0,
-"edited": 17,
-"run": 1793385314.575146,
-"tok": {
-"in": 18,
-"cw": 9212,
-"cr": 931304,
-"out": 4037,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 944571,
-"secs": 1247,
-"run_tok": {
-"in": 63,
-"cw": 71124,
-"cr": 2689788,
-"out": 13984,
-"calls": 34,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-30T19:47:55+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1934,5 +1887,37 @@
 "calls": 26,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-31T21:50:03+00:00",
+"text": "2026-11-01 第 1 バッチを出刊：GTA 6（1 版面・4 本・残り 2 版面） · token 新規入力 3.9万・キャッシュ読み 40.7万・出力 1,629",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.48,
+"mem_total": 16872808448,
+"mem_free": 15980904448,
+"disk_used": 10012004352,
+"disk_free": 31271530496,
+"disk_total": 41283534848,
+"peak": 336162816
+},
+"batch": 1,
+"boards": [
+"GTA 6"
+],
+"stories": 4,
+"left": 2,
+"edited": 18,
+"run": 1793483171.18788,
+"tok": {
+"in": 14,
+"cw": 39072,
+"cr": 406549,
+"out": 1629,
+"calls": 7,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 447264
 }
 ]
