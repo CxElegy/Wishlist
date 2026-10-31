@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-31T09:55:07+00:00",
+ "checked": "2026-10-31T10:23:04+00:00",
  "fired": {
-  "at": "2026-10-31T08:38:45+00:00",
+  "at": "2026-10-31T10:23:04+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,27 +12,49 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T08:38:45+00:00",
+    "at": "2026-10-31T10:23:04+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 295,
-    "resp": "cse_01W4x6f5V2rteogGp13Gd1nb",
-    "sig": "25d5e05922d3"
+    "prog": 297,
+    "resp": "cse_01W4x6f5UtgbhHHqsgC1x4zR",
+    "sig": "67a2ac6a86fb"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
+   ],
    "last_batch": "2026-10-31T08:50:02+00:00",
    "last_error": {
     "at": "2026-10-31T01:21:10+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 297,
    "prog_day": "2026-10-31",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "A2O LITE",
+    "ILLIT",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "漫威电影"
+   ],
+   "sig": "67a2ac6a86fb",
    "token_cap": 1000000,
    "tokens_today": 710418,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 42 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -42,14 +64,14 @@
     "漫威电影",
     "dota2",
     "哈利波特剧集",
-    "FROM",
-    "GTA 6"
+    "FROM"
    ],
    "need": true,
-   "sig": "fb45bbdcac7a",
+   "sig": "a8c97c70d221",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "あつ森",
@@ -57,7 +79,7 @@
     "周杰伦",
     "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
