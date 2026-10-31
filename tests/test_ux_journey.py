@@ -227,3 +227,46 @@ class LoginMoreMenu(unittest.TestCase):
         self.assertIn("@media (min-width:561px) and (max-width:760px)", t)
         self.assertIn(".wl-auth>button.more{display:none}", t)
         self.assertEqual(t.count("addMore(box,keepOpen)"), 3)
+
+
+class LoginDockCheck(unittest.TestCase):
+    """札の境目（560|561・760|761）を ux_check の既定の回で見る（2026-11-01：既定の幅 1400/390 は 561〜760 を通らず、「⋯」の出る幅・開け閉めを誰も点検していなかった）。"""
+    @staticmethod
+    def uc():
+        import sys, pathlib
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check
+        return ux_check
+
+    def test_widths_cover_both_sides_of_each_edge(self):
+        w = self.uc().DOCK_WIDTHS
+        for x in (390, 560, 561, 700, 760, 761):
+            self.assertIn(x, w)
+
+    def test_dock_rules(self):
+        u = self.uc()
+        one = {"vis": ["more"], "exp": "false", "away": False, "has": True}
+        chips = {"vis": ["new home", "login"], "exp": "false", "away": False, "has": True}
+        opened = {"vis": ["new home", "login", "more"], "exp": "true", "away": False, "has": True}
+        self.assertEqual(u.dock_bad(700, one, opened, {"away": False}, {"away": True}), [])
+        self.assertEqual(u.dock_bad(390, chips), [])
+        self.assertEqual(u.dock_bad(1000, chips), [])
+        # 壊れ方：⋯ が 390・761 に漏れる／700 に札が戻る／押しても開かない／開いたまましまう／閉じてもしまわない
+        self.assertTrue(u.dock_bad(390, one))
+        self.assertTrue(u.dock_bad(761, opened))
+        self.assertTrue(u.dock_bad(700, opened))
+        self.assertTrue(u.dock_bad(700, one, one))
+        self.assertTrue(u.dock_bad(700, one, opened, {"away": True}, {"away": True}))
+        self.assertTrue(u.dock_bad(700, one, opened, {"away": False}, {"away": False}))
+        self.assertTrue(u.dock_bad(700, None))
+
+    def test_main_runs_dock_for_three_kinds_by_default(self):
+        s = open(self.uc().__file__, encoding="utf-8").read()
+        self.assertIn('("guest", "test-a", "test-b")', s)
+        self.assertIn("check_dock(pw, a.base, who, w)", s)
+        i = s.index("check_dock(pw, a.base, who, w)")
+        self.assertNotIn("if a.fast:\n                continue", s[i - 400:i])   # --fast でも走る
+
+    def test_open_dock_is_not_hidden_on_scroll(self):
+        t = open(__import__("render").__file__, encoding="utf-8").read()
+        self.assertIn("b.classList.contains('open')&&innerWidth>560", t)

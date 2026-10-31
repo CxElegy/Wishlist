@@ -604,7 +604,7 @@ PROCESSES = [
             {"id": "p4i", "kind": "step", "lane": "actions", "title": "画像の読み込みを軽く", "x": "全部の画像",
              "text": "画像 1 枚ごとの onerror は書かず data-e の印だけ（処理は head の IMG_FALLBACK_JS 1 か所）· 最初の 3 枚の主图だけ HTML で eager＋fetchpriority=high（_eager_first）· ux_check が HTML の重さと onerror 数を数える"},
             {"id": "p4t", "kind": "step", "lane": "actions", "title": "スマホ（760px 以下）の右下の札（561〜760 は「⋯」で開く）", "x": "AUTH_CSS",
-             "text": "body の下に札の高さ（72px＋safe-area）の空き · 下へ読むあいだは札をしまう · ux_check が一番下で札と重なる字を数える（最初の画面・設定・殻のページ・管理ページ 7 枚）· 店長・お客さまの殻（data-mine=2）も同じ safe-area の値 · tests が試作ページまで数える"},
+             "text": "body の下に札の高さ（72px＋safe-area）の空き · 下へ読むあいだは札をしまう（開いているメニュー・561〜760 で開いた「⋯」はしまわない）· ux_check の「札の境目」（guest・test-a・test-b × 390/560/561/700/760/761/1000、--fast でも走る）が幅ごとの見える子・「⋯」の開け閉め・しまう動きを数える · ux_check が一番下で札と重なる字を数える（最初の画面・設定・殻のページ・管理ページ 7 枚）· 店長・お客さまの殻（data-mine=2）も同じ safe-area の値 · tests が試作ページまで数える"},
             {"id": "p5", "kind": "table", "lane": "actions", "title": "版面の組み方",
              "rows": [("写真の壁", "15 枚（スマホ 6）· 16:10"), ("普通の記事", "1 行 3 枚まで · 4 枚 = 2 + 2"), ("篇幅", "S 3 / M 4 / L 10 件"),
                       ("本文の区切り", "目次と同じ 板块 → 小分類 の順に並べ、小分類が変わる所に細い見出し（板块の札・件数）"),
