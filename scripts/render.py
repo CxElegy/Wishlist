@@ -4235,7 +4235,7 @@ AUTH_JS = r"""
     members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
     members16:'<p class="st">読み込めませんでした：',
     lb1:'<table><thead><tr><th>版面</th><th>人数</th><th>小元素</th><th>配色（背景・文字・差し色）</th></tr></thead><tbody>',
-    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面</th><th>追う人</th><th>最新の日</th><th>記事</th><th>整理待ち</th><th>載せた：待ち（前後）</th></tr></thead><tbody>',lv1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>👍（今の票）</th><th>👎（今の票）</th><th>この 7 日に押した回数</th><th>最後の投票</th><th>最近の票</th></tr></thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）',la1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>追う版面</th><th>分量 S</th><th>M</th><th>L</th><th>写真の受付（済 / 全部）</th><th>関注項の依頼（待ち / 全部）</th><th>置いた板块</th><th>小分類つき</th><th>見たい種類で絞り</th><th>乗換駅つき</th><th>画面の言語</th></tr></thead><tbody>',lp1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>版面</th><th>置いた板块</th><th>並び</th><th>篇幅</th><th>分け方</th><th>小分類</th><th>見たい種類</th><th>乗換駅</th></tr></thead><tbody>',la2:'画面の言語（登録した人の数）：'}};
+    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面</th><th>追う人</th><th>最新の日</th><th>記事</th><th>整理待ち</th><th>載せた：待ち（前後）</th></tr></thead><tbody>',lv1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>👍（今の票）</th><th>👎（今の票）</th><th>この 7 日に押した回数</th><th>最後の投票</th><th>最近の票</th></tr></thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）',la1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>追う版面</th><th>分量 S</th><th>M</th><th>L</th><th>写真の受付（済 / 全部）</th><th>関注項の依頼（待ち / 全部）</th><th>置いた板块</th><th>小分類つき</th><th>見たい種類で絞り</th><th>乗換駅つき</th><th>画面の言語</th></tr></thead><tbody>',lp2:'：',lp4:'・',lp3:'全部',lp1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>版面</th><th>置いた板块</th><th>並び</th><th>分量</th><th>分け方</th><th>小分類</th><th>見たい種類</th><th>乗換駅</th></tr></thead><tbody>',la2:'画面の言語（登録した人の数）：'}};
   var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -4816,11 +4816,11 @@ AUTH_JS = r"""
     var box=document.getElementById('wl-libplace'); if(!box) return;
     var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
     sec.hidden=false;
-    var kv=function(o){return Object.keys(o||{}).map(function(k){return esc(k)+'：'+esc(Array.isArray(o[k])?o[k].join('・'):String(o[k]));}).join('<br>')||'—';};
+    var kv=function(o){return Object.keys(o||{}).map(function(k){return esc(k)+L.lp2+esc(Array.isArray(o[k])?o[k].join(L.lp4):String(o[k]));}).join('<br>')||'—';};
     rpc('admin_follow_rows').then(function(rs){
       rs=rs||[]; box.dataset.n=rs.length;
       box.innerHTML=L.lp1+rs.map(function(r){
-        return '<tr data-id="'+esc(r.account)+'" data-b="'+r.board_id+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'</td><td>'+esc(r.name)+'</td><td>'+esc(r.section||'—')+'</td><td>'+r.pos+'</td><td>'+esc(r.size||'—')+'</td><td>'+esc(r.scheme||'—')+'</td><td>'+kv(r.subs)+'</td><td>'+((r.media||[]).map(esc).join('・')||'全部')+'</td><td>'+kv(r.also)+'</td></tr>';}).join('')+'</tbody></table>';
+        return '<tr data-id="'+esc(r.account)+'" data-b="'+r.board_id+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'</td><td>'+esc(r.name)+'</td><td>'+esc(r.section||'—')+'</td><td>'+r.pos+'</td><td>'+esc(r.size||'—')+'</td><td>'+esc(r.scheme||'—')+'</td><td>'+kv(r.subs)+'</td><td>'+((r.media||[]).map(esc).join(L.lp4)||L.lp3)+'</td><td>'+kv(r.also)+'</td></tr>';}).join('')+'</tbody></table>';
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'</p>';});
   }
