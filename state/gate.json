@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-31T11:01:23+00:00",
+ "changed": true,
+ "checked": "2026-10-31T11:09:04+00:00",
  "fired": {
-  "at": "2026-10-31T11:01:24+00:00",
+  "at": "2026-10-31T11:53:53+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,45 +12,45 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T10:23:04+00:00",
+    "at": "2026-10-31T11:53:53+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 297,
-    "resp": "cse_01W4x6f5UtgbhHHqsgC1x4zR",
-    "sig": "67a2ac6a86fb"
+    "prog": 328,
+    "resp": "cse_01W4x6f9Dpfpw917wdUnwZJi",
+    "sig": "6c3b56884616"
    },
    "items": [
-    "A2O LITE",
     "GTA 6",
-    "ILLIT",
+    "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
+    "チェーンソーマン",
     "三星手机",
     "日本顶级网球赛事",
     "星巴克马克杯",
     "滑雪",
+    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-10-31T10:30:04+00:00",
+   "last_batch": "2026-10-31T10:36:28+00:00",
    "last_error": {
     "at": "2026-10-31T01:21:10+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 310,
+   "prog": 328,
    "prog_day": "2026-10-31",
    "ripe": [
-    "A2O LITE",
-    "ILLIT",
+    "GTA 6",
     "三星手机",
-    "日本顶级网球赛事"
+    "漫威电影"
    ],
-   "sig": "a39a87dd0656",
+   "sig": "6c3b56884616",
    "token_cap": 1000000,
-   "tokens_today": 757544,
-   "why": "整理待ちの記事 29 件（12 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 765489,
+   "why": "整理待ちの記事 26 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -60,22 +60,22 @@
     "漫威电影",
     "dota2",
     "哈利波特剧集",
-    "FROM"
+    "FROM",
+    "GTA 6",
+    "The Mandalorian"
    ],
    "need": true,
-   "sig": "a8c97c70d221",
+   "sig": "eabaca846657",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
-    "The Mandalorian",
     "Vaundy",
     "あつ森",
     "ぐでたま",
     "周杰伦",
     "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
