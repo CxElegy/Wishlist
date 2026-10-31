@@ -42,6 +42,14 @@ FONTS = (
     "&family=Anton&family=Yusei+Magic&family=JetBrains+Mono:wght@500;700&display=swap"
 )
 
+
+def font_link(u):
+    """Web フォントの CSS は描画を止めない（media=print で取り、届いたら all に）。遅い回線で最初の表示が
+    よそのサーバー（fonts.googleapis.com）の往復 4 回分待たされていた（2026-10-31 Fast 3G の LCP 4.3→1.2 秒）。display=swap なので字は先に出る"""
+    return (f'<link rel="stylesheet" href="{u}" media="print" onload="this.media=\'all\'">'
+            f'<noscript><link rel="stylesheet" href="{u}"></noscript>')
+
+
 CSS = """
 :root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;--good:#1F7A55;--discord:#5865F2;
  --by-ai:#6B3FC4;--by-rule:#1F7A55;   /* 流れの図：AI（Claude）が判断する手順 / 規則（プログラム）で決まる手順 */
@@ -1863,7 +1871,7 @@ EMB_JS = """
 })();
 """
 # 擬音の書体（使う文字だけ）と粒のライブラリ canvas-confetti（読めなくても演出は自作の粒で動く）
-LIKEFX_HEAD = (f'<link rel="stylesheet" href="{e(likefx.SFX_FONT)}">'
+LIKEFX_HEAD = (font_link(e(likefx.SFX_FONT)) +
                f'<script src="{likefx.CONFETTI_JS}" defer crossorigin="anonymous"></script>')
 
 
@@ -1977,7 +1985,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
 <title>{T["title"]}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+{font_link(FONTS)}
 <style>{CSS}
 .page{{display:flex;flex-direction:column;gap:18px;max-width:760px;padding-bottom:48px}}
 .back{{display:inline-flex;align-items:center;gap:8px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.15em}}
@@ -2290,7 +2298,7 @@ def render_wishlist(wishes, works, updated, finds=(), db=None):
 <title>愿望清单</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+{font_link(FONTS)}
 <style>{CSS}
 .page{{display:flex;flex-direction:column;align-items:stretch;max-width:1200px;padding-bottom:40px}}
 .sec.wish{{background:none}}
@@ -3778,7 +3786,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <title>ウォッチリスト通信</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+{font_link(FONTS)}
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
 {LIKEFX_HEAD if fb else ""}
 {_live_head("index")}{f"<style>{BUSY_CSS}</style>" if busy else ""}
@@ -5548,7 +5556,7 @@ def render_terms(updated=""):
 <title>利用規約・プライバシーポリシー</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+{font_link(FONTS)}
 <style>{CSS}{HEAT_PAGE_CSS}{TERMS_PAGE_CSS}</style>
 {_account_tag("terms")}
 </head>
@@ -5658,7 +5666,7 @@ def render_themes(items, updated):
 <title>テーマ見本</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+{font_link(FONTS)}
 <style>{CSS}{HEAT_PAGE_CSS}{THEMES_PAGE_CSS}</style>
 {LIKEFX_HEAD}{_account_tag("themes")}
 </head>
@@ -5695,7 +5703,7 @@ def render_heat(analysis, works, updated):
 <title>話題度アナリシス</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+{font_link(FONTS)}
 <style>{CSS}{HEAT_PAGE_CSS}</style>
 {_live_head("heat")}
 </head>
@@ -6953,7 +6961,7 @@ def render_admin(data, db, updated):
 <title>{e(title)}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+{font_link(FONTS)}
 <style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{ADMIN_NAV_CSS}{processes.CSS}{overview.CSS}{livelog.CSS}</style>
 {_live_head("admin", ver)}
 </head>

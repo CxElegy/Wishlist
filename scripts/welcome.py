@@ -505,7 +505,7 @@ def build(out=OUT, base="", cards=None):
 <title>ウォッチリスト通信</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{render.FONTS}">
+{render.font_link(render.FONTS)}
 <style>{render.CSS}{CSS}</style>
 </head>
 <body>
