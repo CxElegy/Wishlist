@@ -348,6 +348,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://appmedia.jp/wp-content/uploads/2025/06/144853_efkn3.webp": {
+  "w": 750,
+  "h": 1000,
+  "target": 1280,
+  "v": 3
+ },
  "https://appmedia.jp/wp-content/uploads/2026/10/173706_th2s4.webp": {
   "w": 740,
   "h": 389,
@@ -467,6 +473,12 @@
   "w": 1280,
   "h": 671,
   "target": 1280,
+  "v": 3
+ },
+ "https://assets.st-note.com/production/uploads/images/330082392/rectangle_large_type_2_89c337205af2acc7902811716b84524e.jpg?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
   "v": 3
  },
  "https://assets.topics.apps-jp.nintendo.com/image/2026/10/23020211541109/1280/75f00733c8034255a6f7adac9aaedde0.jpg": {
@@ -793,6 +805,12 @@
   "w": 1200,
   "h": 1200,
   "target": 1280,
+  "v": 3
+ },
+ "https://charagoo.jp/wp-content/uploads/2026/09/chainsawman-comic-latest-eyecatch-20260930.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2026/10/668w_668h-60.jpg": {
@@ -3141,12 +3159,6 @@
   "v": 3,
   "blur": 0.359
  },
- "https://p2.bahamut.com.tw/B/2KU/24/0d3b2c13e6191e4cf08cdb7eca20xy05.PNG": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://p2.bahamut.com.tw/B/2KU/34/9e75d3a03377619005b741850420w965.JPG": {
   "w": 1279,
   "h": 720,
@@ -3940,6 +3952,12 @@
   "target": 720,
   "v": 3
  },
+ "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -4250,8 +4268,15 @@
  "https://www.bing.com/th?id=ONUT.W1G2VreXiwD9CotCTi8Wmg&pid=News&w=700": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.445,
+  "local": "pics/46cc984a605c4e37.webp",
+  "out": [
+   1280,
+   669
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.Wgnw38sqkN-vD5tIA09_gQ&pid=News&w=650": {
   "w": 650,
@@ -4632,6 +4657,12 @@
   "v": 3
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2023/03/21/the-mandalorian-season-3-timeline.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg": {
   "w": 1600,
   "h": 900,
   "target": 1280,

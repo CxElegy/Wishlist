@@ -47,6 +47,7 @@
     {
      "date": "2026-10-31T09:15:06+00:00",
      "image": "",
+     "link": "https://appmedia.jp/bleach-mh/80523292",
      "n": 1,
      "seen": "2026-10-31T18:16:18+00:00",
      "site": "https://appmedia.jp",
@@ -1286,6 +1287,7 @@
     {
      "date": "2026-10-28T22:26:53+00:00",
      "image": "",
+     "link": "https://www.dexerto.com/anime/chainsaw-man-movie-reze-arc-details-2457767/",
      "n": 1,
      "seen": "2026-10-31T18:41:44+00:00",
      "site": "https://www.dexerto.com",
@@ -1297,7 +1299,9 @@
     },
     {
      "date": "2026-10-25T22:11:35+00:00",
-     "image": "",
+     "image": "https://charagoo.jp/wp-content/uploads/2026/09/chainsawman-comic-latest-eyecatch-20260930.png",
+     "image_via": "og:image",
+     "link": "https://charagoo.jp/chainsawman-comic-latest/",
      "n": 2,
      "seen": "2026-10-31T18:41:44+00:00",
      "site": "https://charagoo.jp",
@@ -2350,7 +2354,8 @@
     },
     {
      "date": "2026-10-29T20:19:00+00:00",
-     "image": "",
+     "image": "https://assets.st-note.com/production/uploads/images/330082392/rectangle_large_type_2_89c337205af2acc7902811716b84524e.jpg?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
      "n": 2,
      "seen": "2026-10-31T18:41:09+00:00",
      "source": "note",

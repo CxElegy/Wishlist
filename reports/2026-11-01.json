@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "9f0744cede0b",
+ "edit_sig": "1bea46120c74",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -35,17 +35,19 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】星2松本乱菊の評価と性能【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1yZzM3OGRfbzlMd184TkVxd2RpSGwxRFF5cUN4MU1BRExRd0QxNXp4cXFaV2dKZU1TODRkZmdRRDUydXhzdV91UHNYSV80Uzg?oc=5"
+     "headline": "【ミラハイ】星2松本乱菊の評価と性能【BLEACHミラーズハイ】",
+     "highlight": "星2松本乱菊の評価と性能",
+     "image": "https://appmedia.jp/wp-content/uploads/2025/06/144853_efkn3.webp",
+     "image_via": "AI 挑选",
+     "url": "https://appmedia.jp/bleach-mh/80523292",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -381,15 +383,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 7,
-     "source": "Gizmochina",
-     "title": "Galaxy S27 Ultra Roundup: Will this be Samsung’s next breakthrough flagship?",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNM0FpblVuVTZNai1vNTczSlpneF8tSDdieFFMeXFmYUo1UGw5TENNcjVUVG5FLVR2UVVBeDZ5LXVvckZJTXgxa3dBZGI1MWNsMjB6Xy1ma1lZUkwybTlzdlVrY1Z4QS1VS0V0ZW5yeC14eUdIamNKbHVCXzFURlhtTm05QWc1Y3RUQjl1V3RrRWNhY3JNc0I0ZEttZjQxQy1SNVBYaWVocm9NY0VBdm5OZnV3?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -455,24 +448,29 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-28",
-     "n": 1,
-     "source": "Dexerto",
-     "title": "Chainsaw Man movie: Everything we know so far",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5DZmtTWDhIQ00zRVlpSWZzU1I3RS1BMVpwQm1BRGZYMFRLZnFhYkdWdVdxU2FVVUFoMHl1SGt5TGoyUDdKUGduLUR1N3Zyc2h2VzhUTGZZUXpyY1JFazRiZUVZcUZLR3dFeUZBVlFUYmh0Z2llaXoyTmZGaHJHOGM?oc=5"
+     "headline": "Chainsaw Man movie: Everything we know so far",
+     "highlight": "",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.dexerto.com/anime/chainsaw-man-movie-reze-arc-details-2457767/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-25",
-     "n": 2,
-     "source": "キャラグー",
-     "title": "チェンソーマンは全24巻で完結【2026年10月】最新刊24巻の発売日・全巻一覧",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBfb2ZkVjd2Y0hVOWFIQ0liTmtITnBSQzA1NlRSUE1OV1FKN0lBNDhnWUpvTWtzb2dibjZFUVFhbFlqNUYxZU5jQjJtTWhURmlOa3c5ZTR3WWg?oc=5"
+     "headline": "チェンソーマンは全24巻で完結【2026年10月】最新刊24巻の発売日・全巻一覧",
+     "highlight": "全24巻で完結",
+     "image": "https://charagoo.jp/wp-content/uploads/2026/09/chainsawman-comic-latest-eyecatch-20260930.png",
+     "image_via": "og:image",
+     "url": "https://charagoo.jp/chainsawman-comic-latest/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -682,15 +680,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 5,
-     "source": "Dexerto",
-     "title": "Dota 2 ranks explained: Seasonal medals, MMR distribution, & more",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQUXQyWnBTMl9OVnFfRk9fQnBaaF9QYVJobkFUUktxSmwzalAxYzRjaXFVdFpkM09SQmU1TXl1QnVweTY0MkI0TGl5cGw2Nk93NmhQZWl2VEZIV0M0bjJLWXBtMGx3WnFwMXhmSjd1dWpxaWFXRGp0elQyWXR5RHBWOWgzTUVLTEtfMURRazA1UTRPeGpLQ3ZkdUNn?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -809,24 +798,29 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-29",
-     "n": 1,
-     "source": "note",
-     "title": "【2026-2027シーズン】主要スキー場のリフト券・シーズン券「早割」総まとめ！関東発の人気ゲレンデ網羅版",
-     "url": "https://note.com/jwax_snow/n/n8e30e01cccdc"
+     "headline": "【2026-2027シーズン】主要スキー場のリフト券・シーズン券「早割」総まとめ！関東発の人気ゲレンデ網羅版",
+     "highlight": "「早割」総まとめ",
+     "image": "https://www.bing.com/th?id=ONUT.W1G2VreXiwD9CotCTi8Wmg&pid=News&w=700",
+     "image_via": "AI 挑选",
+     "url": "https://note.com/jwax_snow/n/n8e30e01cccdc",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-29",
-     "n": 2,
-     "source": "note",
-     "title": "リフト券1万円時代。それでも僕らは滑りたい。",
-     "url": "https://note.com/williamteru/n/n71b257c4aa8d"
+     "headline": "リフト券1万円時代。それでも僕らは滑りたい。",
+     "highlight": "リフト券1万円時代",
+     "image": "https://assets.st-note.com/production/uploads/images/330082392/rectangle_large_type_2_89c337205af2acc7902811716b84524e.jpg?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/williamteru/n/n71b257c4aa8d",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",

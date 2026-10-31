@@ -174,7 +174,8 @@
    "blurb": "Samsung Galaxy S27 series rumors point to a four-device lineup, including a compact S27 Pro model.",
    "weight": "lead",
    "refs": [
-    4
+    4,
+    7
    ],
    "image": "https://www.bing.com/th?id=ONUT.--mgxyoUCtdILyFPRlKNpw&pid=News&w=1200"
   },
@@ -213,16 +214,19 @@
   "漫威电影": 15,
   "ILLIT": 8,
   "日本顶级网球赛事": 7,
-  "三星手机": 6,
+  "三星手机": 7,
   "A2O LITE": 11,
   "周杰伦": 5,
   "哈利波特剧集": 5,
-  "dota2": 4,
+  "dota2": 5,
   "绝区零": 3,
   "The Mandalorian": 2,
   "あつ森": 2,
   "Vaundy": 2,
-  "Astrae Oratio": 2
+  "Astrae Oratio": 2,
+  "チェーンソーマン": 2,
+  "滑雪": 2,
+  "BLEACH Mirrors High": 1
  },
  "A2O LITE": [
   {
@@ -434,6 +438,60 @@
     1
    ],
    "image": "https://cimg.kgl-systems.io/camion/files/famitsu/90760/aa839759a0cb2b5faf193087bc933268f.jpg"
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man movie: Everything we know so far",
+   "highlight": "",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg"
+  },
+  {
+   "headline": "チェンソーマンは全24巻で完結【2026年10月】最新刊24巻の発売日・全巻一覧",
+   "highlight": "全24巻で完結",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "【2026-2027シーズン】主要スキー場のリフト券・シーズン券「早割」総まとめ！関東発の人気ゲレンデ網羅版",
+   "highlight": "「早割」総まとめ",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.W1G2VreXiwD9CotCTi8Wmg&pid=News&w=700"
+  },
+  {
+   "headline": "リフト券1万円時代。それでも僕らは滑りたい。",
+   "highlight": "リフト券1万円時代",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "【ミラハイ】星2松本乱菊の評価と性能【BLEACHミラーズハイ】",
+   "highlight": "星2松本乱菊の評価と性能",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://appmedia.jp/wp-content/uploads/2025/06/144853_efkn3.webp"
   }
  ]
 }
