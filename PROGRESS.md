@@ -198,3 +198,4 @@
 2026-10-31 r1：審査待ちの欄＋縦長の写真 5 案（docs/testground/photo-fit.html）を作った | PR 後に記す・ページを 1400/390 で確認（横あふれ 0） | 次：②小カード案・③○× 作り直し見本
 2026-10-31 r1：②小さいカード 3 案（docs/testground/small-card.html、見える割合 いま 50→案1 56・案2 85・案3 65%）。1400/390 横あふれ 0 | 次：③○× 作り直し見本
 2026-10-31 r2：お客さまが admin_ の関数から中身を読めない点検 (#660)。本番 DB は admin_ 16 関数、15 は is_admin() の守り・admin_email_for は anon/authenticated とも不可。check_customer_admin_rpc 本番で漏れ 0。次：店長ログインの回(UX_ADMIN_*)。
+2026-10-31 r2f1：管理者の中身の点検を強めた（②管理ページ直開き check_customer_admin_pages・ログイン 3 人未満は ✗・admin_email_for は権限を本番で確認・公開の書き換え関数の穴は tests/test_open_definer.py で固定し BACKLOG [?]）。本番で漏れ 0。次：[?] の答え待ち。
