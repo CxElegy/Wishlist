@@ -4812,7 +4812,7 @@ AUTH_JS = r"""
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'</p>';});
   }
-  function libplace(){   // ②置き方・関注項の中身：follows の 1 行 = 1 行（板块・並び・篇幅・分け方・小分類・見たい種類・乗換駅）。admin_follow_rows は店長だけ
+  function libplace(){   // ②置き方・関注項の中身：follows の 1 行 = 1 行（板块・並び・分量・分け方・小分類・見たい種類・乗換駅）。admin_follow_rows は店長だけ
     var box=document.getElementById('wl-libplace'); if(!box) return;
     var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
     sec.hidden=false;
