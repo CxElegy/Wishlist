@@ -1801,6 +1801,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gszOJ.img": {
+  "w": 1672,
+  "h": 941,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img": {
   "w": 1200,
   "h": 675,
@@ -1934,6 +1940,12 @@
  "https://img.sbs.co.kr/newsnet/etv/upload/2026/10/26/30001095755_1280.jpg": {
   "w": 1200,
   "h": 852,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.sportsbull.jp/raw/t2m8VMS5AgyOd1ngRNI4M1BYyyaofcW7fQOmvQWf.jpg": {
+  "w": 1024,
+  "h": 576,
   "target": 720,
   "v": 3
  },
@@ -3136,6 +3148,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010007-tennisnet-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1581,
+  "target": 720,
+  "v": 3,
+  "local": "pics/689a47536791db8f.webp",
+  "out": [
+   1280,
+   920
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00035851-tennismagv-000-1-view.jpg?exp=10800": {
   "w": 1280,
   "h": 960,
@@ -3704,6 +3728,12 @@
    854
   ],
   "why": "看不清"
+ },
+ "https://static.sanyonews.jp/image/article/size1/1/e/0/d/1e0d2095580507b3e9abebc10c592444_1.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg": {
   "w": 451,
@@ -4421,12 +4451,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.e8lh6PItyZ8cgFr5XolDkA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.eGSpHzdASzB76oQ6bAamTg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4439,12 +4463,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.eIqBVt3K7_cJQ1FtOQuIyw&pid=News&w=1076": {
-  "w": 627,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.eb1q0cKGGyKjCIrKIpVqdg&pid=News&w=1200": {
   "w": 700,
@@ -4599,6 +4617,12 @@
    640
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.z_OFnfXcwpfQqM9E2znaDg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,

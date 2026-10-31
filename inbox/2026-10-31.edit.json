@@ -3,9 +3,9 @@
   "漫威电影": 74,
   "哈利波特剧集": 26,
   "GTA 6": 42,
-  "A2O LITE": 20,
-  "三星手机": 23,
-  "ILLIT": 11,
+  "A2O LITE": 25,
+  "三星手机": 27,
+  "ILLIT": 14,
   "周杰伦": 22,
   "BLEACH Mirrors High": 4,
   "The Mandalorian": 8,
@@ -15,7 +15,7 @@
   "MMORPG 新作": 17,
   "あつ森": 8,
   "dota2": 5,
-  "日本顶级网球赛事": 7,
+  "日本顶级网球赛事": 13,
   "滑雪": 3,
   "チェーンソーマン": 5,
   "ぐでたま": 2,
@@ -309,7 +309,9 @@
    "refs": [
     2,
     9,
-    23
+    23,
+    25,
+    24
    ]
   },
   {
@@ -327,7 +329,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
+    10,
+    27
+   ]
+  },
+  {
+   "headline": "갤럭시S27 프로, 울트라 기능 이렇게나 포함된다",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    26
    ]
   }
  ],
@@ -339,7 +351,8 @@
    "weight": "lead",
    "refs": [
     3,
-    4
+    4,
+    12
    ],
    "image": "https://k-plaza.com/wp-content/uploads/2026/10/ILLIT-2-3.jpg"
   },
@@ -380,6 +393,15 @@
    "refs": [
     8,
     11
+   ]
+  },
+  {
+   "headline": "HANA・JISOO＆MOMOKA、ILLIT公演にサプライズ登場 会場どよめき＆歓声",
+   "highlight": "サプライズ登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
    ]
   }
  ],
@@ -762,7 +784,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    9
    ]
   },
   {
@@ -799,6 +822,25 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  },
+  {
+   "headline": "世界13位シュナイデル 東レPPO初V王手、大坂なおみ撃破の18歳にストレート勝ち＜女子テニス＞",
+   "highlight": "初V王手",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    8
+   ]
+  },
+  {
+   "headline": "世界1位ルバキナが首の痛みで東レPPO準々決勝を棄権…フェルナンデスが不戦勝で4強",
+   "highlight": "ルバキナが",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
    ]
   }
  ],
