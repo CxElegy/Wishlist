@@ -172,7 +172,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     first = pg.evaluate(FIRST_JS)
     dom_lead = lead_outside_bad(pg.content()) if not page else []   # 2026-10-31：ログイン中の DOM（お客さま）にも同じ数え方
     covered = []
-    if width <= 560:   # 2026-10-27：右下の札が一番下の字を隠す。下までスクロールして札の矩形と重なる字の要素を数える
+    if width <= 760:   # 2026-10-27：右下の札が一番下の字を隠す。下までスクロールして札の矩形と重なる字の要素を数える
         for _ in range(8):   # 写真が読み込まれて高さが伸びるので、本当の底に着くまで（伸びが止まるまで）くり返す
             pg.evaluate("window.scrollTo(0,document.documentElement.scrollHeight)")
             pg.wait_for_timeout(700)
@@ -856,7 +856,7 @@ def check_admin_pages(pw, base, width, out):
                 bad.append(f"{f} E16 目の線がずれた小元素 {ey['off']} 枚（{ey['n']} 枚中。札 short {ey['short']} 枚は別）")
             print(f"  [管理ページ小元素] 顔そろえの置き方 {ey['n']} 枚・目の線ずれ {ey['off']}・札 short {ey['short']}")
         cov = []
-        if width <= 560:   # 2026-10-27：管理ページ 7 枚も右下の札が一番下の字を隠さない（最初の画面・設定と同じ規則）
+        if width <= 760:   # 2026-10-27：管理ページ 7 枚も右下の札が一番下の字を隠さない（最初の画面・設定と同じ規則）
             for _ in range(6):
                 pg.evaluate("window.scrollTo(0,document.documentElement.scrollHeight)")
                 pg.wait_for_timeout(500)
