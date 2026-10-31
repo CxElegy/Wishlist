@@ -21,7 +21,8 @@
   "ぐでたま": 2,
   "绝区零": 2,
   "FROM": 2,
-  "猫用品": 1
+  "猫用品": 1,
+  "星巴克马克杯": 2
  },
  "漫威电影": [
   {
@@ -869,6 +870,26 @@
     1
    ],
    "image": "https://news.walkerplus.com/article/40701/210689_615.jpg"
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "Starbucks' 2026 Holiday Merchandise Arrives at Walt Disney World Locations",
+   "highlight": "2026 Holiday Merchandise",
+   "blurb": "Starbucks' 2026 holiday merchandise has arrived at Walt Disney World locations of the coffeehouse chain.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "New travel case, glass mug join Starbucks Traditions holiday lineup",
+   "highlight": "glass mug",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }

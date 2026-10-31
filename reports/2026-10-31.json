@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "3d4ca28145c9",
+ "edit_sig": "e3da75d02e64",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -396,24 +396,29 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Starbucks' 2026 holiday merchandise has arrived at Walt Disney World locations of the coffeehouse chain.",
      "date": "2026-10-30",
-     "n": 1,
-     "source": "Laughing Place",
-     "title": "Starbucks' 2026 Holiday Merchandise Arrives at Walt Disney World Locations",
-     "url": "https://www.laughingplace.com/disney-merchandise/starbucks-2026-holiday-merchandise-walt-disney-world/"
+     "headline": "Starbucks' 2026 Holiday Merchandise Arrives at Walt Disney World Locations",
+     "highlight": "2026 Holiday Merchandise",
+     "image": "https://www.laughingplace.com/uploads/media/2026/10/Starbucks-Walt-Disney-World-Holiday-2026-Merchandise_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.laughingplace.com/disney-merchandise/starbucks-2026-holiday-merchandise-walt-disney-world/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-30",
-     "n": 2,
-     "source": "Daily Tribune",
-     "title": "New travel case, glass mug join Starbucks Traditions holiday lineup",
-     "url": "https://tribune.net.ph/2026/10/31/new-travel-case-glass-mug-join-starbucks-traditions-holiday-lineup"
+     "headline": "New travel case, glass mug join Starbucks Traditions holiday lineup",
+     "highlight": "glass mug",
+     "image": "https://images.assettype.com/tribune/2026-10-31/qersbcvw/star.jpg?w=1200&auto=format&q=70&rect=0%2C1090%2C6000%2C3375&h=675&fit=crop",
+     "image_via": "og:image",
+     "url": "https://tribune.net.ph/2026/10/31/new-travel-case-glass-mug-join-starbucks-traditions-holiday-lineup",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
