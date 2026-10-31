@@ -3217,7 +3217,7 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/7e10236f584544168fe27b2aaa233045.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/b711b2d8f2fe4a02b2c39b1d29cf343a.jpg": {
@@ -4267,6 +4267,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.H_wI2uCPh02bfIBIqbwryA&pid=News&w=600": {
+  "w": 600,
+  "h": 297,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.JK_4PVtqefmAFdl_CApeqA&pid=News&w=700": {
   "w": 700,
   "h": 466,
@@ -5166,7 +5172,7 @@
  "https://www.uqwimax.jp/common2/images/ogp.png": {
   "w": 1200,
   "h": 630,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.whats-on-netflix.com/wp-content/uploads/2026/10/from-expanding-on-netflix.jpg": {
@@ -5175,17 +5181,24 @@
   "target": 1280,
   "v": 3
  },
- "https://www.wowkorea.jp/img/Breaking/106/532431/623798_1280W.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-31"
- },
  "https://www.wowkorea.jp/img/Breaking/106/532601/623967_1280W.webp": {
   "w": 1280,
   "h": 960,
   "target": 1280,
   "v": 3
+ },
+ "https://www.wowkorea.jp/img/Breaking/106/532624/623990_tmb.webp": {
+  "w": 320,
+  "h": 240,
+  "target": 720,
+  "v": 3,
+  "blur": 0.466,
+  "local": "pics/f163a43d40100387.webp",
+  "out": [
+   720,
+   540
+  ],
+  "why": "看不清"
  },
  "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp": {
   "w": 1280,

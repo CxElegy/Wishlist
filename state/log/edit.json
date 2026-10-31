@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-30T11:16:45+00:00",
-"text": "2026-10-30 第 3 バッチを出刊：BLEACH Mirrors High（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 6,885・キャッシュ読み 52.2万・出力 2,401",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.21,
-"mem_total": 16872808448,
-"mem_free": 15937552384,
-"disk_used": 10756124672,
-"disk_free": 30566383616,
-"disk_total": 41322508288,
-"peak": 336572416
-},
-"batch": 3,
-"boards": [
-"BLEACH Mirrors High"
-],
-"stories": 1,
-"left": 0,
-"edited": 23,
-"run": 1793357222.8663476,
-"tok": {
-"in": 13,
-"cw": 6872,
-"cr": 522360,
-"out": 2401,
-"calls": 7,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 531646,
-"secs": 1783,
-"run_tok": {
-"in": 34,
-"cw": 50292,
-"cr": 1199802,
-"out": 5589,
-"calls": 18,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-30T12:02:14+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1865,5 +1824,37 @@
 "calls": 23,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-31T12:02:08+00:00",
+"text": "2026-10-31 第 1 バッチを出刊：三星手机（1 版面・6 本・残り 5 版面） · token 新規入力 4.5万・キャッシュ読み 60.8万・出力 3,364",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.22,
+"mem_total": 16872808448,
+"mem_free": 15987105792,
+"disk_used": 10010988544,
+"disk_free": 31272546304,
+"disk_total": 41283534848,
+"peak": 330932224
+},
+"batch": 1,
+"boards": [
+"三星手机"
+],
+"stories": 6,
+"left": 5,
+"edited": 23,
+"run": 1793447700.6447883,
+"tok": {
+"in": 20,
+"cw": 44834,
+"cr": 607965,
+"out": 3364,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 656183
 }
 ]
