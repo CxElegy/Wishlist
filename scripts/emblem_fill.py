@@ -473,6 +473,10 @@ def subjects(item, kind, hi):
         rest = [w for w in rest if w in miss] + [w for w in rest if w in redo and w not in miss] + [w for w in rest if w not in redo and w not in miss]
         if len(rest) <= STEP:
             return rest or who[:1]
+        rnd = item.get("_round")
+        if rnd is not None:   # 後台の回の通し番号（record の rounds）：先頭を毎回試し直さず、名簿の残りを STEP 人ずつ順に 1 周する（同じ時間内の再実行でも同じ人に戻らない）
+            k = rnd * STEP % len(rest)
+            return (rest[k:] + rest[:k])[:STEP]
         # 名簿の上（主役：ちいかわ・ハチワレ・うさぎ）の HEAD 人はいつも先に。残りは回ごとにずらす（見つからない人で止まらない）
         head, tail = rest[:HEAD], rest[HEAD:]
         k = int(time.time() // 3600) * (STEP - len(head)) % len(tail)   # 1 回に試す幅だけ進める（STEP ずつだと 60 人の後ろ半分に届かなかった）
@@ -2048,10 +2052,27 @@ def due(prog, items, now):
         if st["state"] == "ok" and not broken_cuts(item) and not unbreak_due and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
         if (e.get("state") == "failed" and not os.environ.get("EMBLEM_RETRY_NOW")
-                and e.get("material") == material(item) and not broken_cuts(item) and not unbreak_due):   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
+                and e.get("material") == material(item) and not broken_cuts(item) and not unbreak_due
+                and (e.get("exhausted") or passes_left(item, e) <= 0)):   # 名簿にまだ試していない人がいる失敗は、1 周するまで止めない（先頭の 10 人だけで凍っていた：漫威电影 3/81）   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
             continue                                                            # 壊れた小元素（頭が切れた・ぼやけた）が出ている版面も待たずに外して取り直す
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
     return [r[3] for r in sorted(rows, key=lambda r: r[:3])]
+
+
+def passes_left(item, e):
+    """名簿の残りを STEP 人ずつ試して 1 周するまで、あと何回か（キャラ・グループ。名簿が STEP 人以内なら 0）。
+    失敗の版面は、先頭の STEP 人が全員だめでも残りの人を試していない（BLEACH 162 人・漫威电影 77 人が 1 回で止まった）。1 周して 0 枚なら止める。"""
+    if kind_of(item) not in ("character", "group") or not item.get("emblem_who"):
+        return 0
+    have = {n for x in item.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
+    rest = [w for w in item["emblem_who"][:rule(item)[3]] if w not in have and not (kind_of(item) == "character" and emblem.not_character(w))]
+    need = -(-len(rest) // STEP) if len(rest) > STEP else 0
+    return need - round_of(e)
+
+
+def round_of(e):
+    """この版面の今の規則での回の通し番号（規則の版が変わったら 0 から数え直し）。"""
+    return int(e.get("rounds") or 0) if e.get("rounds_v") == rule_versions() else 0
 
 
 def waiting(prog, items, now):
@@ -2886,6 +2907,13 @@ def record(prog, item, result, now):
     for k in ("steps", "material"):
         if k in result:
             e[k] = result[k]
+    if result["state"] == "ok" or "tried" not in result:   # 回の通し番号：ok で数え直し。途中（時間切れ）の回は数えない
+        if result["state"] == "ok":
+            e.pop("rounds", None)
+            e.pop("rounds_v", None)
+    else:
+        e["rounds"] = round_of(e) + 1
+        e["rounds_v"] = rule_versions()
     if result.get("exhausted"):
         e["exhausted"] = True
     else:
@@ -2986,6 +3014,7 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
             ilog(f"開始（いま {fresh_have(item)}）")
             live(name, "emblem", "work", "小元素を集めています", per_board + 3)
             t_item, before = time.time(), fresh_have(item)
+            item["_round"] = round_of(prog["items"].get(name) or {})
             item["_recount"] = (prog["items"].get(name) or {}).get("names_v") != NAMES_V   # 名簿の規則の版が上がった：名簿がそろっていても 1 回数え直す
             try:
                 result = fill(item, ilog)

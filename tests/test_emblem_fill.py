@@ -526,6 +526,52 @@ class Background(unittest.TestCase):
         self.assertEqual(prog["items"]["zero"]["state"], "running")
         self.assertEqual(prog["summary"], {"ok": 1, "total": 4})
 
+    def test_failed_with_untried_roster_runs_until_one_full_pass(self):
+        """失敗でも名簿にまだ試していない人が STEP 人より多いなら、先頭の STEP 人だけで凍らせず 1 周するまで続ける（漫威电影 3/81・BLEACH 38/200 が 1 回で止まっていた）。"""
+        it = {"name": "big", "emblem_kind": "character", "emblem_pool": 35, "emblem_who": [f"p{i}" for i in range(35)], "emblem": []}
+        prog = {"items": {"big": {"state": "failed", "material": ef.material(it)}}}
+        due = lambda: [i["name"] for i in ef.due(prog, [it], "2026-10-31T00:00:00+00:00")]   # noqa: E731
+        self.assertEqual(due(), ["big"])   # 35 人・1 回 10 人 = 4 回で 1 周：0 回目はまだ
+        for n in (1, 3):
+            prog["items"]["big"].update(rounds=n, rounds_v=ef.rule_versions())
+            self.assertEqual(due(), ["big"])
+        prog["items"]["big"].update(rounds=4)
+        self.assertEqual(due(), [])   # 1 周して 0 枚 → 材料が変わるまで待つ
+        prog["items"]["big"].update(rounds_v={"NAMES_V": -1, "BROKEN_V": -1})
+        self.assertEqual(due(), ["big"])   # 規則の版が変わったら 0 回目から
+        prog["items"]["big"].update(rounds=0, exhausted=True)
+        self.assertEqual(due(), [])   # 残り全員を試して尽きた失敗は今までどおり待つ
+
+    def test_subjects_rotate_with_round_and_cover_everyone(self):
+        it = {"name": "big", "emblem_kind": "character", "emblem_pool": 35, "emblem_who": [f"p{i}" for i in range(35)], "emblem": []}
+        seen = []
+        for r in range(4):
+            seen += ef.subjects({**it, "_round": r}, "character", 35)
+        self.assertEqual(set(seen), set(it["emblem_who"]))   # 4 回で全員に順が来る
+        self.assertEqual(ef.subjects({**it, "_round": 0}, "character", 35), it["emblem_who"][:10])   # 同じ時間内の再実行でも同じ人に戻らない（時刻に頼らない）
+
+    def test_record_counts_rounds(self):
+        it = {"name": "big", "emblem_kind": "character", "emblem_pool": 35, "emblem_who": [f"p{i}" for i in range(35)], "emblem": []}
+        prog = {"items": {}}
+        for n in (1, 2):
+            ef.record(prog, it, {"state": "failed", "tried": {}, "note": "x"}, "t")
+            self.assertEqual(prog["items"]["big"]["rounds"], n)
+        ef.record(prog, it, {"state": "running", "note": "時間切れ"}, "t")   # 途中の回は数えない
+        self.assertEqual(prog["items"]["big"]["rounds"], 2)
+        ef.record(prog, it, {"state": "ok", "tried": {}, "note": "x"}, "t")
+        self.assertNotIn("rounds", prog["items"]["big"])
+
+    def test_real_failed_boards_with_untried_names_are_due(self):
+        """点検（本番の items.yaml・進捗）：失敗で、名簿にまだ試していない人が多い版面は due() に入る（凍っていない）。"""
+        import json
+        items = [i for i in ef.load_items() if i.get("emblem_who")]
+        prog = json.loads((ef.ROOT / "state" / "emblem_progress.json").read_text(encoding="utf-8"))
+        names = {i["name"] for i in ef.due(prog, items, "2026-10-31T00:00:00+00:00")}
+        for i in items:
+            e = prog["items"].get(i["name"]) or {}
+            if e.get("state") == "failed" and not e.get("exhausted") and ef.passes_left(i, e) > 0:
+                self.assertIn(i["name"], names, f"{i['name']} は名簿の残りを試していないのに凍っている")
+
     def test_due_order_and_failed_skip(self):
         now = "2026-10-17T00:00:00+00:00"
         prog = ef.sync_progress({"items": {}}, self.items)
