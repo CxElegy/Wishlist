@@ -11,7 +11,7 @@
   "The Mandalorian": 8,
   "Vaundy": 9,
   "gelato pique": 8,
-  "Astrae Oratio": 5,
+  "Astrae Oratio": 7,
   "MMORPG 新作": 17,
   "あつ森": 8,
   "dota2": 5,
@@ -567,7 +567,8 @@
    "blurb": "아스트라에 오라티오 테스트에 대한 반응이 긍정적이었고 게임의 매력을 알렸다는 평가.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    6
    ],
    "image": "https://cdn.gameinsight.co.kr/news/photo/202610/36920_90717_3439.jpg"
   },
@@ -596,6 +597,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "엔씨 아스오라, “전투 템포 개선·수동 조작 재미 강화”",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],

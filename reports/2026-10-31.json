@@ -1,27 +1,11 @@
 {
  "date": "2026-10-31",
- "edit_sig": "5cbd80ec4000",
+ "edit_sig": "af798559ae03",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 6,
-     "source": "더게임스",
-     "title": "\" '아스트라에 오라티오' 국경 뛰어넘는 재미 확인 \"",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1ZUm8yOS1TdUpPVjdxMzA2QTlweXJ2bTZheHFqUFZLb2tTbXIxRmk0aXFQR2l6aHBfQ3FHb1pwSHZXSXdmcEpqWExfeU1wX3Jaa3lVc2Exd3NtUDZKUnN2N0ZLdnhhTHpnbUVmcA?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 7,
-     "source": "뉴스투온",
-     "title": "엔씨 아스오라, “전투 템포 개선·수동 조작 재미 강화”",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBMWms0T3ctS3hncTB2UXZWWllTZjRyLWo4QTVYYjV0M1YyZGNjaXg4ZThNclZPcWRwR0wxTk05a0pDdVAtekFiNU5yRnVkNDV6dXF6bEVqbzZYSzhQRzNld2J5LVhrSUoyby03VQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -63,6 +47,16 @@
      "source": "r/Astrae_Oratio",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.reddit.com&sz=128",
      "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xjc1x8/150k_total_followers_commemorative_illustration/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "엔씨 아스오라, “전투 템포 개선·수동 조작 재미 강화”",
+     "highlight": "",
+     "image": "https://cdn.newstoon.co.kr/news/photo/202610/81715_104460_512.jpg",
+     "image_via": "og:image",
+     "url": "https://www.newstoon.co.kr/news/articleView.html?idxno=81715",
      "weight": "normal"
     }
    ],
