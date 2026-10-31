@@ -1252,7 +1252,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
     members16:'<p class="st">読み込めませんでした：',
     lb1:'<table><thead><tr><th>版面<\/th><th>人数<\/th><th>小元素<\/th><th>配色（背景・文字・差し色）<\/th><\/tr><\/thead><tbody>',
-    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面<\/th><th>追う人<\/th><th>最新の日<\/th><th>記事<\/th><th>整理待ち<\/th><th>載せた：待ち（前後）<\/th><\/tr><\/thead><tbody>',lv1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>👍（今の票）<\/th><th>👎（今の票）<\/th><th>この 7 日に押した回数<\/th><th>最後の投票<\/th><th>最近の票<\/th><\/tr><\/thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）',la1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>追う版面<\/th><th>分量 S<\/th><th>M<\/th><th>L<\/th><th>写真の受付（済 / 全部）<\/th><th>関注項の依頼（待ち / 全部）<\/th><\/tr><\/thead><tbody>',la2:'画面の言語（登録した人の数）：'}};
+    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面<\/th><th>追う人<\/th><th>最新の日<\/th><th>記事<\/th><th>整理待ち<\/th><th>載せた：待ち（前後）<\/th><\/tr><\/thead><tbody>',lv1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>👍（今の票）<\/th><th>👎（今の票）<\/th><th>この 7 日に押した回数<\/th><th>最後の投票<\/th><th>最近の票<\/th><\/tr><\/thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）',la1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>追う版面<\/th><th>分量 S<\/th><th>M<\/th><th>L<\/th><th>写真の受付（済 / 全部）<\/th><th>関注項の依頼（待ち / 全部）<\/th><th>置いた板块<\/th><th>小分類つき<\/th><th>見たい種類で絞り<\/th><th>乗換駅つき<\/th><\/tr><\/thead><tbody>',la2:'画面の言語（登録した人の数）：'}};
   var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -1819,13 +1819,13 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     var box=document.getElementById('wl-libaccts'); if(!box) return;
     var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
     sec.hidden=false;
-    Promise.all([rpc('admin_accounts'),rpc('admin_ui_langs'),whoLoad()]).then(function(v){
-      var rs=v[0]||[], by={}; rs.forEach(function(r){by[r.account]=r;});
+    Promise.all([rpc('admin_accounts'),rpc('admin_ui_langs'),whoLoad(),rpc('admin_follow_detail')]).then(function(v){
+      var rs=v[0]||[], by={}, fd={}; rs.forEach(function(r){by[r.account]=r;}); (v[3]||[]).forEach(function(r){fd[r.account]=r;});
       v[2].accs.forEach(function(a){ if(!by[a]) rs.push(by[a]={account:a,boards:0,sz_s:0,sz_m:0,sz_l:0,photos:0,photos_done:0,reqs:0,reqs_wait:0}); });
       rs.sort(function(a,b){return a.account==='test1'?-1:b.account==='test1'?1:a.account<b.account?-1:1;});
       box.dataset.n=rs.length;
       box.innerHTML='<p>'+L.la2+(v[1]||[]).map(function(x){return esc(x.lang)+' '+x.n;}).join(' · ')+'<\/p>'+L.la1+rs.map(function(r){
-        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+r.boards+'<\/td><td>'+r.sz_s+'<\/td><td>'+r.sz_m+'<\/td><td>'+r.sz_l+'<\/td><td>'+r.photos_done+' / '+r.photos+'<\/td><td>'+r.reqs_wait+' / '+r.reqs+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+r.boards+'<\/td><td>'+r.sz_s+'<\/td><td>'+r.sz_m+'<\/td><td>'+r.sz_l+'<\/td><td>'+r.photos_done+' / '+r.photos+'<\/td><td>'+r.reqs_wait+' / '+r.reqs+'<\/td>'+(function(d){d=d||{};return '<td>'+(d.sections||0)+'<\/td><td>'+(d.with_subs||0)+'<\/td><td>'+(d.with_media||0)+'<\/td><td>'+(d.with_also||0)+'<\/td>';})(fd[r.account])+'<\/tr>';}).join('')+'<\/tbody><\/table>';
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
   }
@@ -1867,7 +1867,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.31 09:19</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.31 09:23</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
