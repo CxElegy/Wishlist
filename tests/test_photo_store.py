@@ -117,5 +117,19 @@ class PhotoStore(unittest.TestCase):
             self.assertEqual(json.loads(st.read_text())["p"][k]["at"], P.day())
 
 
+class LeadOutside(unittest.TestCase):
+    """ux_check.lead_outside_bad：先頭の写真が置き場の外に残る版面を数える（SVG・GIF は例外）。"""
+
+    def test_counts_and_exempts(self):
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check as U
+        sec = lambda k, u: f'<section data-k="{k}"><img src="{u}" data-e="s"></section>'
+        store = "https://s.example/storage/v1/object/public/photos/abc-400.webp"
+        h = sec("a", store) + sec("b", "pics/x.webp") + sec("c", "https://x.example/w.svg") + sec("d", "https://x.example/g.gif")
+        self.assertEqual(U.lead_outside_bad(h), [])
+        self.assertIn("1 件", U.lead_outside_bad(h + sec("e", "https://x.example/big.jpg"))[0])
+
+
+
 if __name__ == "__main__":
     unittest.main()

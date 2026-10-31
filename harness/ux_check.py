@@ -441,6 +441,29 @@ def ahead_bad(html):
     return bad
 
 
+def lead_outside_bad(html):
+    """各版面の先頭の写真（data-e="s"）で置き場にも本站の pics/ にも無いものを数える。0 でなければ ✗（2026-10-31 星巴克马克杯：原寸 jpg のまま Fast 3G で届かない）。
+    例外（置き場へ縮められない・縮める要がない）：SVG・GIF・ICO は原寸のまま（軽い／動く）、state/photo_store.json の x（取れない・壊れた・64px 未満＝shrink が None）に載る分。"""
+    import hashlib
+    import html as html_lib
+    try:
+        x = set(json.loads((ROOT / "state" / "photo_store.json").read_text(encoding="utf-8")).get("x", {}))
+    except (OSError, ValueError):
+        x = set()
+    out = []
+    for s in re.split(r"(?=<section\b[^>]*\bdata-k=)", html)[1:]:
+        m = re.search(r'<img src="([^"]*)"[^>]*data-e="s"', s[:8000])
+        if not m:
+            continue
+        u = html_lib.unescape(m.group(1))
+        if "/storage/v1/object/public/photos/" in u or not u.startswith("http"):
+            continue
+        if re.search(r"\.(svg|gif|ico)(\?|$)", u, re.I) or hashlib.sha1(u.encode("utf-8")).hexdigest()[:16] in x:
+            continue
+        out.append(re.search(r'data-k="([^"]*)"', s).group(1))
+    return [f"先頭の写真が置き場に無い版面 {len(out)} 件（{out[:4]}）。SVG・GIF・取れない分を除いても残る＝photo_store の置く順／取りこぼし"] if out else []
+
+
 def check_public_leak(base):
     """公開の HTML（だれでも開ける管理ページなど）にお客さまだけの版面の名前が焼かれていない（HARNESS §2-5・BACKLOG：公開の場所にお客さまの中身を出さない）。
     お客さまだけの名前 ＝ test-a が読める版面 − ログインなしが読める版面。"""
@@ -1142,7 +1165,7 @@ def main(argv):
             print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
         try:   # HTML の重さ・画像 1 枚ごとのハンドラ（ログインなしで取れる店長のページ）
             html = urllib.request.urlopen(urllib.request.Request(a.base, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
-            bad = html_weight_bad(html) + photo_cache_bad(html) + ahead_bad(html)
+            bad = html_weight_bad(html) + photo_cache_bad(html) + ahead_bad(html) + lead_outside_bad(html)
         except Exception as ex:  # noqa: BLE001
             bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
         fails += bool(bad)
