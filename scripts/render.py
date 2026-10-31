@@ -3186,6 +3186,7 @@ FIT_JS = """
     // 期限切れ・削除された図の代わりに返ってくる 1×1 の空白（Yahoo の exp= 付き画像など）は「開けない」と同じ扱い：次の候補へ
     if (img.naturalWidth && img.naturalWidth < 3 && img.naturalHeight < 3 && img.onerror) { img.onerror(); return; }
     if (!p || !img.naturalWidth || !p.clientHeight) return;
+    p._ok = 1;   // 一度は測れた（隠れた版面の写真は、見えるようになったとき下の ResizeObserver が測る）
     const nat = img.naturalWidth / img.naturalHeight;
     const pk = p.closest('.pk');
     const sm = p.closest('article.card:not(.hero):not(.lead):not(.wide), .wc:not(.lead), a.tape');
@@ -3258,9 +3259,17 @@ FIT_JS = """
     sz(0); let h = need(); sz(h); p.style.height = '0px'; h = Math.max(h, need()); sz(h);
   };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
-    img.addEventListener('load', () => fit(img));
     if (img.complete) fit(img);
   });
+  // 隠れていた版面（1 列のタブなど）が見えるようになったとき、まだ測っていない写真の枠を測る（390px で大きいカードの枠が絞られないままだった）
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(es => es.forEach(({target: p}) => { const i = p.querySelector('img:not(.bg):not(.ico)'); if (i && !p._ok && i.naturalWidth && p.clientHeight) fit(i); }));
+    const seen = new WeakSet(), obs = r => r.querySelectorAll && r.querySelectorAll('.pic').forEach(p => { if (!seen.has(p)) { seen.add(p); ro.observe(p); } });
+    obs(document);
+    new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => n.nodeType === 1 && obs(n)))).observe(document.body, {childList: true, subtree: true});   // あとから JS で足された版面の写真も
+  }
+  // あとから足された写真（JS で作った版面）の load も拾う（load は泡立たないので capture で）
+  document.addEventListener('load', e => { const i = e.target; if (i.tagName === 'IMG' && i.matches('.pic img:not(.bg):not(.ico)')) fit(i); }, true);
   let t;
   addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit); wall(); }, 200); });
   // 写真の壁を右の列とそろえる：右の列の高さに収まる段数だけカードを出し、残りの数十 px は各段の写真枠に等分して足す（空白を作らない）
