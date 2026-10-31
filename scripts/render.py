@@ -3194,17 +3194,21 @@ FIT_JS = """
     }
     // 枠の大きさは変えない（写真の壁は 16:10 のまま段の高さがそろう）。写真は切らない：ほぼ同じ比率（切れるのは 8% まで）のときだけ埋め、
     // そうでなければぼかしの上に全体を見せる。配図は文字・ロゴ入りのバナーが多く、端を切ると欠ける（2026-10-17 ユーザー指摘）
+    const big = p.closest('article.hero, article.lead, article.wide');
+    if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
     const r = nat / (p.clientWidth / p.clientHeight);
     p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);
     narrow(img, p, nat, r);
   };
   // 大きいカード（.hero・.lead・.wide）で写真が枠より細いとき：ぼかしで埋めず、枠を写真の幅に絞り、空いた横に同じ版面の次の記事を置く。
   // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.25 倍まで）
+  const unnarrow = (c, p) => {
+    const nx = c.querySelector(':scope > .nx, :scope > .txt > .nx'); if (nx) nx.remove();
+    c.classList.remove('nw'); p.style.width = p.style.height = p.style.aspectRatio = '';
+  };
   const narrow = (img, p, nat, r) => {
     const c = p.closest('article.hero, article.lead, article.wide');
     if (!c) return;
-    const nx = c.querySelector(':scope > .nx, :scope > .txt > .nx'); if (nx) nx.remove();
-    c.classList.remove('nw'); p.style.width = p.style.height = p.style.aspectRatio = '';
     if (p.classList.contains('fill') || r > 1) return;
     if (innerWidth <= 760) { p.style.aspectRatio = 'auto'; p.style.height = Math.min(p.clientWidth / nat, p.clientWidth * 1.25) + 'px'; return; }
     const sz = h => { p.style.height = h + 'px'; p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
