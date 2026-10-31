@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-30T23:20:54+00:00",
+ "checked": "2026-10-31T00:01:33+00:00",
  "fired": {
-  "at": "2026-10-30T23:26:32+00:00",
+  "at": "2026-10-31T00:01:33+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,66 +12,76 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-30T22:55:58+00:00",
+    "at": "2026-10-31T00:01:33+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 144,
-    "resp": "cse_01W4x6f7aV63amRiB3LxhfH6",
-    "sig": "42b194e6168b"
+    "prog": 183,
+    "resp": "cse_01W4x6f8NhCgrE7LsMoj5dtb",
+    "sig": "b65eebef93a6"
    },
    "items": [
     "A2O LITE",
+    "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "MMORPG 新作",
     "The Mandalorian",
+    "Vaundy",
     "dota2",
     "gelato pique",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
-    "滑雪"
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影"
    ],
-   "last_batch": "2026-10-30T23:13:44+00:00",
+   "last_batch": "2026-10-30T23:22:19+00:00",
    "last_error": {
     "at": "2026-10-30T23:01:25+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 180,
+   "prog": 183,
    "prog_day": "2026-10-31",
    "ripe": [
-    "哈利波特剧集"
+    "A2O LITE",
+    "GTA 6",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "漫威电影"
    ],
-   "sig": "5ac7cec26b38",
+   "sig": "b65eebef93a6",
    "token_cap": 1000000,
-   "tokens_today": 291974,
-   "why": "整理待ちの記事 14 件（10 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 295517,
+   "why": "整理待ちの記事 34 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
-   ],
-   "need": true,
-   "sig": "b6804aff6de5",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
+    "BLEACH Mirrors High",
+    "哈利波特剧集",
+    "漫威电影",
     "GTA 6",
-    "ILLIT",
+    "A2O LITE",
     "The Mandalorian",
     "Vaundy",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "78aa54494444",
+   "waiting": [
+    "Astrae Oratio",
+    "FROM",
+    "ILLIT",
     "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
