@@ -200,3 +200,4 @@
 2026-10-31 r2：お客さまが admin_ の関数から中身を読めない点検 (#660)。本番 DB は admin_ 16 関数、15 は is_admin() の守り・admin_email_for は anon/authenticated とも不可。check_customer_admin_rpc 本番で漏れ 0。次：店長ログインの回(UX_ADMIN_*)。
 2026-10-31 r2f1：管理者の中身の点検を強めた（②管理ページ直開き check_customer_admin_pages・ログイン 3 人未満は ✗・admin_email_for は権限を本番で確認・公開の書き換え関数の穴は tests/test_open_definer.py で固定し BACKLOG [?]）。本番で漏れ 0。次：[?] の答え待ち。
 2026-10-31 r2f2：公開の書き換え関数の点検を引数名→「anon・SECURITY DEFINER・書き換え・守りなし」全体に（署名ごと・revoke 反映）。本番で数え直し 6 つ（5 つは承認待ち [?]、live_report は設計）。tests/test_emblem_face の手元だけ落ち 3 件＝モデルがある手元だけ走る（CI は skip）＋収集で画像が作り直され測り値が変わった→固定の画像 tests/fixtures/emblems に | 次：ux_check 全体を --who 別に background で
+2026-10-31 r2f2 第 3 回：PR #664 合併。本番 pg_proc で書き換え関数の穴 6 件に確定。ux_check を background で走らせ guest ✗ は E10・E15 のみ・test-a ✗ 0 | 次：小元素 E15/E10 の規則
