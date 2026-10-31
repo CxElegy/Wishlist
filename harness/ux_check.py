@@ -480,7 +480,39 @@ def check_public_leak(base):
                     open_fn.append(fn)
     if open_fn:
         bad.append(f"ログインなしで実行できる管理者用の関数 {len(open_fn)} 個（{open_fn}）")
+    bad += check_customer_admin_rpc(s)
     return bad, len(only)
+
+
+def check_customer_admin_rpc(s):
+    """ログインしたお客さま（test-a〜e）が admin_ の読む関数（引数なし）を呼んでも中身が返らない（空・エラーのみ）。
+    名前が admin_ で始まる全部を db/*.sql から数える。引数のある関数（admin_invite・admin_user_* など書き換え）は呼ばず、
+    定義に is_admin() の守りがあることだけ見る。一つでも漏れたら ✗（BACKLOG：全ユーザーの中身は管理者だけ）。"""
+    fns = {}
+    for f in sorted((ROOT / "db").glob("*.sql")):
+        for m in re.finditer(r"create\s+(?:or\s+replace\s+)?function\s+public\.(admin_\w+)\s*\(([^)]*)\)(.*?)\$\$\s*;", f.read_text(encoding="utf-8"), re.S | re.I):
+            fns[m.group(1)] = (m.group(2).strip(), m.group(3))
+    bad = []
+    for fn, (args, body) in fns.items():
+        if args and "is_admin()" not in body and fn != "admin_email_for":
+            bad.append(f"{fn} に is_admin() の守りがない")
+    reads = [fn for fn, (args, _) in fns.items() if not args]
+    leaks = []
+    for e in ("test-a", "test-b", "test-c", "test-d", "test-e"):
+        try:
+            tok = session(e + "@example.com")["access_token"]
+        except urllib.error.HTTPError:
+            continue
+        for fn in reads:
+            try:
+                r = journey_rpc(s["supabase_url"], s["supabase_key"], tok, fn, {}).strip()
+            except urllib.error.HTTPError:
+                continue
+            if r not in ("", "[]", "{}", "null"):
+                leaks.append(f"{e}:{fn}")
+    if leaks:
+        bad.append(f"お客さまが管理者用の関数から中身を読めた {len(leaks)} 件（{leaks[:4]}）")
+    return bad
 
 
 def check_admin_coverage(pw, base, width):
