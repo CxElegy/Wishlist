@@ -1,14 +1,14 @@
 {
- "admin": "3675a3efc360",
- "admin-ai": "6f03dd66091f",
+ "admin": "81d7a6120c78",
+ "admin-ai": "58679be333d6",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "707531ab"
+   "608b7ef2"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "acac446b"
+   "8b2acbd1"
   ]
  },
  "admin-boards": "582cc5f95290",
@@ -22,11 +22,11 @@
    "0e38ce7a"
   ]
  },
- "admin-emblem": "5db94ad9455e",
+ "admin-emblem": "925d8aa21233",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "41bb7c78"
+   "ffb1a208"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "9f83cbcbc85f",
  "admin-members_marks": {},
- "admin-now": "b8188af802d7",
+ "admin-now": "4583db515b9f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "ea50046d"
+   "7448a621"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "00598ff9"
+   "4338765a"
   ]
  },
- "admin-system": "3813db789505",
+ "admin-system": "c22391647fd3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "15a5f83d"
+   "29861e3a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a92a01a0"
+   "39b8640e"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "2348d13d"
   ]
  },
- "index": "54e1576c0b8c",
+ "index": "a6bfe4d28fc9",
  "index_marks": {
   "front": [
    "トップ",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "7b565f17"
+   "3a9af0a8"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "dc53f9d9"
+   "8f1c2e43"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "e25addcd"
+   "d4f8cfa5"
   ],
   "w-f303ad09": [
    "绝区零",
    "8ea232b0"
   ]
  },
- "updated": "10.31 19:31",
- "wishlist": "9bcc39369688"
+ "updated": "10.31 19:36",
+ "wishlist": "cd9bec2c2213"
 }
