@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "c4a22fc8f7ef",
+ "edit_sig": "c7ae959dddb9",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -29,10 +29,8 @@
      "date": "2026-10-30",
      "headline": "아스트라에 오라티오 \"테스트 반응 긍정적, 게임의 매력 알렸다\"",
      "highlight": "테스트 반응 긍정적",
-     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-     "image_via": "作品封面",
-     "source": "게임인사이트",
-     "source_icon": "https://cdn.gameinsight.co.kr/image/logo/favicon.png",
+     "image": "https://cdn.gameinsight.co.kr/news/photo/202610/36920_90717_3439.jpg",
+     "image_via": "AI 挑选",
      "url": "https://www.gameinsight.co.kr/news/articleView.html?idxno=36920",
      "weight": "lead"
     },
@@ -524,34 +522,8 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 7,
-     "source": "山陽新聞",
-     "title": "【gelato pique(ジェラート ピケ)】10/9(金)にアーバンドック ららぽーと豊洲店、10/30(金)にシャミネ松江店に新店舗オープン！限定アイテムの柴犬をあしらったルームウェアを発売",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1mYmdPeGtwUm41MmpCX1ZEZHhOTXFEMDBFNWt2U2ZHZDlUMDlNQ1VyTnQ4cnI4SEtnXzlHQU1MakdYa242aV9KOXJiRzhxeUIyS1E?oc=5"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 8,
-     "source": "note",
-     "title": "ジェラート ピケって、何者なんだろう。",
-     "url": "https://note.com/dekajiri/n/n6f84689f5edf"
-    }
-   ],
    "section": "好物",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-31",
-     "headline": "（写真）ジェラピケ「福袋」11．2から抽選販売開始！ 人気アイテム5点を詰め込んだ全3種類",
-     "highlight": "",
-     "image": "https://www.crank-in.net/img/db/267101267147283_1200.jpg",
-     "image_via": "og:image",
-     "url": "https://www.crank-in.net/trend/gallery/item/193241",
-     "weight": "hero"
-    },
     {
      "blurb": "ジェラートピケのロングパンツがAmazonセールに登場。シンプルでクールなワンマイルウェア。",
      "date": "2026-10-29",
@@ -584,6 +556,20 @@
      "image": "https://assets.hldycdn.com/3dc087d1-da01-4814-9152-a9a130722989.jpeg",
      "image_via": "og:image",
      "url": "https://www.haveagood-holiday.com/zh-TW/articles/gelato-pique-peanuts-10th-anniversary-collection-2026",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "event": {
+      "date": "2026-11-02",
+      "label": "抽選販売開始"
+     },
+     "headline": "ジェラピケ「福袋」11．2から抽選販売開始！ 人気アイテム5点を詰め込んだ全3種類",
+     "highlight": "11．2から抽選販売開始",
+     "image": "https://www.crank-in.net/img/db/267101267147283_1200.jpg",
+     "image_via": "og:image",
+     "url": "https://www.crank-in.net/trend/gallery/item/193241",
      "weight": "normal"
     }
    ],
