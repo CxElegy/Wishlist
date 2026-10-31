@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "e961eb0b4287",
+ "edit_sig": "21f6f22c833d",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -547,22 +547,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "アニメ！アニメ！",
-     "title": "劇場版「チェンソーマン レゼ篇」の配信はどこで見れる？9月19日からAmazonプライムビデオで独占配信",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1CRThUaVYzaTdLRTZRTE5OTEFCSkRZanpfc21ocUllNWVOalM3MDBWZ3h6UTNxWWJHQS1TVF9yTTdCTjJnTnJxaFY1cXI5VGdCX0JYVnoxNmRzLXpPcU9lYVRR?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 4,
-     "source": "ナタリー",
-     "title": "劇場版「チェンソーマン レゼ篇」×グラニフ アイス食べたら疲れた | ルーズフィットシャツ（7900円） [画像ギャラリー 19/28]",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1DbU9xR05lRXVwSGJwcC1kQlFmOFZxYm1GaTNuTWFoQzhqcDl5bW9KNXlSTTM1OHF6enlGTHdCRV9jSUI4Y3MyM2tpOWd2YVhDaVc5OE5LVzQ0Z2NSTll6ZQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -583,6 +567,16 @@
      "image": "https://charagoo.jp/wp-content/uploads/2026/09/chainsawman-comic-latest-eyecatch-20260930.png",
      "image_via": "og:image",
      "url": "https://charagoo.jp/chainsawman-comic-latest/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "劇場版「チェンソーマン レゼ篇」の配信はどこで見れる？Amazonプライムビデオで独占配信",
+     "highlight": "Amazonプライムビデオで独占配信",
+     "image": "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/929908.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://animeanime.jp/article/2026/09/11/102841.html",
      "weight": "normal"
     }
    ],
