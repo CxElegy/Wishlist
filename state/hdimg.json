@@ -296,7 +296,7 @@
  "https://animeanime.jp/imgs/ogp_f/949515.jpg": {
   "w": 600,
   "h": 840,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://animetv-jp.net/wp-content/uploads/2026/10/filters_quality95formatwebp-2026-10-29T082640.562.webp": {
@@ -898,6 +898,12 @@
   "w": 1200,
   "h": 676,
   "target": 1280,
+  "v": 3
+ },
+ "https://dam.mediacorp.sg/image/upload/s--kiXcjCJ4--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/mediacorp/8days/image/2026/10/29/look_back_1a.jpg?itok=DGkWB0ZY": {
+  "w": 1200,
+  "h": 676,
+  "target": 720,
   "v": 3
  },
  "https://dapsmagic.com/wp-content/uploads/2026/10/The-Mandalorian-Cookbook-1.jpg": {
@@ -3991,7 +3997,7 @@
  "https://urepia.ismcdn.jp/mwimgs/1/1/-/img_112a1472dbe89d85e13b023c8e77891688904.jpg": {
   "w": 1280,
   "h": 853,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://urepia.ismcdn.jp/mwimgs/8/9/-/img_8908df67a2145b0646452913d11f8c07276921.jpg": {
@@ -4214,6 +4220,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-31"
+ },
+ "https://www.bing.com/th?id=ONUT.Q9dry0f98vaYnNMmJmWk5g&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
