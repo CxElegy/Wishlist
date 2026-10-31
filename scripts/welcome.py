@@ -628,7 +628,9 @@ def build_all():
 def build_if_stale(hours=24):
     """digest.py render から呼ぶ：入口が古いとき（または無いとき）だけ作り直す。ネットにつながらなくても落ちない。"""
     import time
-    if OUT.exists() and "wl-cfg" in OUT.read_text(encoding="utf-8")[:200000] and time.time() - OUT.stat().st_mtime < hours * 3600:
+    old = OUT.read_text(encoding="utf-8") if OUT.exists() else ""
+    # 24 時間たっていなくても、描画を止めるフォント link が残る古い出力は作り直す（render.yml は入口を24時間おきにしか作らず、2026-10-28 の版が本番に残った）
+    if old and "wl-cfg" in old[:200000] and not render.blocking_font_links(old) and time.time() - OUT.stat().st_mtime < hours * 3600:
         return
     try:
         build_all()

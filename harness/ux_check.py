@@ -44,6 +44,8 @@ from playwright.sync_api import sync_playwright
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import emb_check  # noqa: E402
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+import render  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WHO = {"guest": None, "test-a": "test-a@example.com", "test-b": "test-b@example.com", "test-c": "test-c@example.com"}
@@ -1179,6 +1181,18 @@ def main(argv):
             n_ex = lead_outside(html)[1]
         except Exception as ex:  # noqa: BLE001
             bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+        try:   # 本番の入口・本体の頁に、描画を止める Web フォントの link が残っていない（生成が古いままだと残る）
+            root = a.base.rstrip("/").rsplit("/", 1)[0] + "/"
+            blk = {}
+            for pg_ in (root, a.base, a.base.rstrip("/") + "/wishlist.html", a.base.rstrip("/") + "/heat.html", a.base.rstrip("/") + "/settings.html"):
+                h_ = urllib.request.urlopen(urllib.request.Request(pg_, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
+                if render.blocking_font_links(h_):
+                    blk[pg_] = render.blocking_font_links(h_)
+            bad = [f"止める font link：{blk}"] if blk else []
+        except Exception as ex:  # noqa: BLE001
+            bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+        fails += bool(bad)
+        print(("✗ " if bad else "✓ ") + "Web フォントが描画を止めない（入口＋本体 4 頁）：" + ("、".join(bad) if bad else "止める link 0 件"))
         fails += bool(bad)
         print(("✗ " if bad else "✓ ") + "最初に取る HTML：" + ("、".join(bad) if bad else f"軽い・画像 1 枚ごとのハンドラ 0・最初の写真は eager・先頭の写真の例外 {n_ex} 件"))
         try:   # 先取りが実際に走ったか（字面でなく時間）：ふつうの回線で 12 秒のうちに全版面の先頭が届き、先頭以外の写真も取りに行っている

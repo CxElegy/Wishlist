@@ -42,6 +42,18 @@ class FontsDoNotBlockPaint(unittest.TestCase):
         self.assertIn('media="print" onload="this.media=\'all\'"', h)
         self.assertIn("<noscript>", h)
 
+    def test_generated_pages_have_no_blocking_font_link(self):
+        """生成済みの docs/index.html と docs/home/*.html を数える（ソースが直っても古い出力が本番に残るのを見つける）"""
+        docs = pathlib.Path(render.__file__).resolve().parent.parent / "docs"
+        pages = [docs / "index.html"] + sorted((docs / "home").glob("*.html"))
+        bad = {p.name: render.blocking_font_links(p.read_text(encoding="utf-8")) for p in pages}
+        self.assertEqual({k: v for k, v in bad.items() if v}, {})
+
+    def test_blocking_font_links_counts_only_blocking(self):
+        u = "https://fonts.googleapis.com/css2?family=A"
+        self.assertEqual(render.blocking_font_links(render.font_link(u)), 0)
+        self.assertEqual(render.blocking_font_links(f'<link rel="stylesheet" href="{u}">'), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
