@@ -564,19 +564,19 @@ def check_admin_coverage(pw, base, width):
     for f in fx:
         e = exp.setdefault(f["account"], [set(), 0, 0, 0])
         e[0].add(f.get("section")); e[1] += bool(f.get("subs")); e[2] += bool(f.get("media")); e[3] += bool(f.get("also"))
-    cells = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#wl-libaccts tr[data-id]')].map(r=>[r.dataset.id,[...r.cells].slice(7,11).map(c=>+c.textContent)]))")
+    cells = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#wl-libaccts tr[data-id]')].map(r=>[r.dataset.id,['sec','subs','media','also'].map(k=>+r.querySelector('[data-k='+k+']').textContent)]))")
     for a_, e in exp.items():
         w = [len(e[0]), e[1], e[2], e[3]]
         if cells.get(a_) != w:
             bad.append(f"②全アカウント表の {a_}：置いた板块・小分類・見たい種類・乗換駅 は {cells.get(a_)}、follows の本物は {w}")
     pg.wait_for_selector("#wl-libplace[data-n]", state="attached", timeout=30000)
-    pl = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#wl-libplace tr[data-id]')].map(r=>[r.dataset.id+'/'+r.dataset.b,[...r.cells].map(c=>c.textContent)]))")
+    pl = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#wl-libplace tr[data-id]')].map(r=>[r.dataset.id+'/'+r.dataset.b,Object.fromEntries([...r.querySelectorAll('[data-k]')].map(c=>[c.dataset.k,c.textContent]))]))")
     if len(pl) != len(fx):
         bad.append(f"②置き方・関注項の表 {len(pl)} 行、follows は {len(fx)} 行")
     for f in fx:
         g = pl.get(f"{f['account']}/{f['board_id']}")
-        if not g or g[2] != (f.get("section") or "—") or g[3] != str(f.get("pos")) or g[4] != (f.get("size") or "—") \
-                or (g[6] == "—") == bool(f.get("subs")) or (g[8] == "—") == bool(f.get("also")) or (g[7] == "全部") == bool(f.get("media")):
+        if not g or g.get("sec") != (f.get("section") or "—") or g.get("pos") != str(f.get("pos")) or g.get("size") != (f.get("size") or "—") \
+                or (g.get("subs") == "—") == bool(f.get("subs")) or (g.get("also") == "—") == bool(f.get("also")) or (g.get("media") == "全部") == bool(f.get("media")):
             bad.append(f"②置き方・関注項の表：{f['account']}/{f['board_id']} は {g}、follows は {f.get('section')}・{f.get('pos')}・{f.get('size')}")
             break
     # 区画ごとの「全員／ユーザーを選ぶ」（render.ADMIN_WHO の全部）：切り替えがある・選ぶと行が follows の通りに絞れる・全員に戻すと元の数

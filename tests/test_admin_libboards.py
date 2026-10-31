@@ -67,6 +67,24 @@ class LibBoards(unittest.TestCase):
                     self.assertNotIn("anon", m.group(2), f"{f.name}: {m.group(1)}")
         self.assertIn("from anon;", (ROOT / "db" / "board_emblem.sql").read_text(encoding="utf-8"))
 
+    def test_admin_functions_guarded_or_not_granted(self):
+        """db/*.sql：authenticated に grant した admin_ の関数は、本体に is_admin() の守りがある（お客さまが店長の中身を引けない）。守りのないものは grant しない（admin_email_for の漏れの型）。"""
+        import re
+        sql = "\n".join(f.read_text(encoding="utf-8") for f in sorted((ROOT / "db").glob("*.sql")))
+        granted = {m.group(1) for m in re.finditer(r"^grant\s+execute\s+on\s+function\s+public\.(admin_\w+)\s*\([^)]*\)\s+to\s+[^;]*authenticated", sql, re.M | re.I)}
+        self.assertTrue(granted)
+        for fn in sorted(granted):
+            bodies = re.findall(r"create\s+or\s+replace\s+function\s+public\." + fn + r"\s*\(.*?\n\$\$;", sql, re.S | re.I)
+            self.assertTrue(bodies, fn)
+            self.assertIn("is_admin()", bodies[-1], f"{fn} に is_admin() の守りがない")
+
+    def test_ux_check_admin_cells_by_key_not_index(self):
+        """管理ページ②の値照合は列の位置でなく data-k で読む（列を足しても取り違えない）。"""
+        u = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
+        self.assertNotIn("slice(7,11)", u)
+        self.assertNotIn("g[2] != (f.get", u)
+        self.assertIn("data-k=", render.AUTH_JS)
+
     def test_published_html_has_no_board_rows(self):
         """公開の docs/home/admin-boards.html に版面の行（名前）が焼かれていない。ライブラリの欄は空の入れ物だけ。"""
         f = ROOT / "docs" / "home" / "admin-boards.html"
@@ -221,4 +239,4 @@ class LibPlace(unittest.TestCase):
             self.assertEqual(h.count("<th>"), n, key)
             r = js[js.index(rowfn):]
             r = r[:r.index("}).join('')+'</tbody>")]
-            self.assertEqual(r.count("<td>"), n, rowfn)
+            self.assertEqual(r.count("<td"), n, rowfn)
