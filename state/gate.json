@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-31T18:36:28+00:00",
+ "checked": "2026-10-31T19:05:20+00:00",
  "fired": {
-  "at": "2026-10-31T18:23:54+00:00",
+  "at": "2026-10-31T19:05:21+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,34 +20,22 @@
     "sig": "c03b086da5b3"
    },
    "items": [
-    "A2O LITE",
     "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "漫威电影",
-    "绝区零"
+    "Vaundy"
    ],
-   "last_batch": "2026-10-31T15:04:45+00:00",
+   "last_batch": "2026-10-31T18:38:22+00:00",
    "last_error": {
     "at": "2026-10-31T13:17:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 0,
+   "prog": 70,
    "prog_day": "2026-11-01",
    "ripe": [],
-   "sig": "a80fc5f308c4",
+   "sig": "9014efd45c39",
    "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "今日の新着はすべて AI 編集済み"
+   "tokens_today": 73030,
+   "why": "整理待ちの記事 3 件（2 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -57,14 +45,14 @@
     "dota2",
     "哈利波特剧集",
     "漫威电影",
-    "FROM",
-    "GTA 6"
+    "FROM"
    ],
    "need": true,
-   "sig": "769203044573",
+   "sig": "e11b0aad640b",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "あつ森",
@@ -72,7 +60,7 @@
     "周杰伦",
     "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
