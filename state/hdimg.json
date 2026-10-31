@@ -354,12 +354,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets-prd.ignimgs.com/2026/10/30/untitled-design-1793387100239.png?width=1280&format=jpg&auto=webp&quality=80": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-31"
- },
  "https://assets.content.technologyadvice.com/Galaxy_Ultra_Phones_and_60_W_Charger_5670f752e2.webp": {
   "w": 1536,
   "h": 1024,
@@ -1739,6 +1733,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gmL1z.img": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gq0T0.img": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
