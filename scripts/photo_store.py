@@ -105,14 +105,19 @@ def user_pages(base, keyv):
 
 
 def scan_text(texts, seen, want):
+    """want は「どの版面の先頭の写真か」を先に入れる（置く順：先頭が置き場に無い版面から。Fast 3G で先頭が届かない根）。"""
     pre = f"/storage/v1/object/public/{BUCKET}/"
+    lead, rest = {}, {}
     for text in texts:
-        for src in IMG_RE.findall(text):
-            src = html.unescape(src)
-            if pre in src:
-                seen.add(src.rsplit("/", 1)[-1].split("-")[0])
-            elif src.startswith("http"):
-                want[key(src)] = src
+        for part in text.split("<section")[1:] or [text]:
+            for i, src in enumerate(IMG_RE.findall(part)):
+                src = html.unescape(src)
+                if pre in src:
+                    seen.add(src.rsplit("/", 1)[-1].split("-")[0])
+                elif src.startswith("http"):
+                    (lead if i < 2 else rest)[key(src)] = src
+    for k, u in {**lead, **{k: u for k, u in rest.items() if k not in lead}}.items():
+        want[k] = u
 
 
 def scan(site=None, extra=()):

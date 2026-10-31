@@ -560,7 +560,7 @@ PROCESSES = [
         "files": [".github/workflows/photo_store.yml", "scripts/photo_store.py", "db/photos.sql"], "doc": "docs/rules/design.md",
         "uses": ["supabase"],
         "flow": [
-            {"id": "ph1", "kind": "step", "lane": "actions", "title": "公開ページの主写真を数える（scan）", "text": "docs/home/*.html ＋お客さまのページ（Storage pages/ をサービス鍵で読む）の写真（data-e=s 主写真・r ぼかし／ギャラリー／欲しい物）。店長もお客さまも同じ置き場・網址ごとに 1 回。置いてあるものは最後に使った日を更新、置いてないものは取る候補"},
+            {"id": "ph1", "kind": "step", "lane": "actions", "title": "公開ページの主写真を数える（scan）", "text": "docs/home/*.html ＋お客さまのページ（Storage pages/ をサービス鍵で読む）の写真（data-e=s 主写真・r ぼかし／ギャラリー／欲しい物）。店長もお客さまも同じ置き場・網址ごとに 1 回。置く順は「各版面の先頭の写真」が先（Fast 3G で先頭が届かない版面を先に直す）。置いてあるものは最後に使った日を更新、置いてないものは取る候補"},
             {"id": "ph2", "kind": "step", "lane": "actions", "title": "取って縮めて上げる（fetch・shrink・upload）", "uses": ["supabase"], "x": "8 並列・12 分まで",
              "text": "Referer なしで取り、幅 400／800 の webp に縮める（拡大しない・64px 未満・動くものは置かない）。取れなかった網址は 1 日あけて取り直す。上げるときの Cache-Control は public, max-age=31536000, immutable（ファイル名が指紋なので変わらない。GET は CDN が HIT）"},
             {"id": "ph2b", "kind": "step", "lane": "actions", "title": "前に上げた分の cache-control を付け直す（rehead）", "uses": ["supabase"], "x": "時間の半分まで",
