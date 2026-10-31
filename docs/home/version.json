@@ -1,14 +1,14 @@
 {
- "admin": "6e6d0c454e58",
- "admin-ai": "862cebf55edd",
+ "admin": "13c7dc095109",
+ "admin-ai": "91cfeaa0c898",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f6f952d9"
+   "dcc7184c"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "cef1e4ef"
+   "3ab5fb2e"
   ]
  },
  "admin-boards": "41960963fb2f",
@@ -22,11 +22,11 @@
    "0e38ce7a"
   ]
  },
- "admin-emblem": "6d01b806b1f8",
+ "admin-emblem": "f347f374854b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "5c3d2f1d"
+   "d061fa7a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "bf5eee914c1a",
  "admin-members_marks": {},
- "admin-now": "8f1fb8866eb3",
+ "admin-now": "f50507919228",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "08356a79"
+   "f930b545"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "1f8ae58f"
+   "212a50df"
   ]
  },
- "admin-system": "da5cd955dd24",
+ "admin-system": "f3a228e4e249",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "03398ee8"
+   "c87f4d9a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "086b3b3b"
+   "fc9ae133"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "4671eb69"
   ]
  },
- "index": "ed0f7e955548",
+ "index": "fdc0c7fdf321",
  "index_marks": {
   "front": [
    "トップ",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "7671472e"
+   "220bccac"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "90f4d314"
+   "ecd8847d"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "538928bc"
+   "2d075573"
   ],
   "w-f303ad09": [
    "绝区零",
    "5426efac"
   ]
  },
- "updated": "10.31 23:50",
+ "updated": "10.31 23:53",
  "wishlist": "bb7fb5460908"
 }
