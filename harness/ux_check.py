@@ -311,9 +311,16 @@ def check_dock(pw, base, who, width):
     if WHO[who]:
         pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}", session(WHO[who]))
         pg.goto(base, wait_until="domcontentloaded", timeout=60000)
-    pg.wait_for_selector(".wl-auth > *", state="attached", timeout=30000)
-    pg.wait_for_timeout(1500)
-    st = pg.evaluate(DOCK_JS)
+    st, last = None, None
+    for _ in range(25):   # ログイン中は本人のページ（me.html）へ移るので、移り終えて札の見え方が 2 回続けて同じになるまで待つ
+        pg.wait_for_timeout(1200)
+        try:
+            st = pg.evaluate(DOCK_JS)
+        except Exception:  # noqa: BLE001  移動の途中
+            continue
+        if st and st["vis"] and st == last:
+            break
+        last = st
     clicked = opened = closed = None
     if st and 561 <= width <= 760 and st["has"]:
         def sc(y):
