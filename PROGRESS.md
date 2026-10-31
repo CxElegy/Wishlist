@@ -205,3 +205,4 @@
 2026-10-31 r1：審査待ち③ 小元素の選び方の作り直し見本 emblem-pick-2.html (#668)。規則 harness/emblem_pick_rules.py、印との一致 新しい 28/36・× を出す 0/16・○ 13/17。ux_check --fast ✗ 0 | 次：顔なし ○5 枚の扱い（案 A/B）と Ikkaku 型を聞く、④前からの 3 つ
 2026-10-31 小元素の規則に本番の数え(--audit 340 枚中 × 32)と点検(tests/test_emblem_pick_rules.py)を足した (r1f1)。次：外れ 3 型と別の版面の検証
 2026-10-31 r3：小元素の凍結を直した（PR #667）。根＝先頭 10 人が全員だめだと failed になり材料同じで永久に凍る（漫威电影 3/81 ほか店長 8 版面・お客さまも）。名簿を 1 周するまで続ける rounds/passes_left。tests 全緑・ux_check --fast ✗ 0。次：background の結果で 3→n を本番で確認、主役が別人で落ちる側の根。
+2026-10-31 r1f1：写真の先取り（#670）の点検を足した：ux_check.ahead_bad が「1 版面ずつ・low／high・2.5 秒の上限・load 待ちでない」を数え、tests/test_images が実物の EMB_JS を照らす。本番は render.yml 実行中で旧版のまま、Fast 3G 測定は未 | 次：本番に出たら photo_time.py --slow／ux_check --fast
