@@ -113,6 +113,15 @@ button{font-family:inherit}
 .nx b{font:700 13px/1.4 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .nx a:hover b{text-decoration:underline;text-underline-offset:3px}
 .nx>i{grid-column:1/-1;font:700 11px var(--font-mono);letter-spacing:.12em;font-style:normal;opacity:.7}
+/* 小さいカード・気になるかも（F-16 続き）：縦長・正方形の写真は枠を写真の幅に絞り（.sb）、空いた横に見出しなど字の列を置く。幅・高さは FIT_JS が決める */
+.sb>.pic{aspect-ratio:auto;justify-self:start;align-self:start}
+.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-content:start}
+.card.sb:not(.mini)>.pic,.wc.sb>.pic{grid-column:1;grid-row:1/span 9}
+.card.sb:not(.mini)>*:not(.pic):not(.lk),.wc.sb>*:not(.pic):not(.lk):not(.tg){grid-column:2}
+.card.mini.sb{grid-template-columns:auto minmax(0,1fr)}
+.tape.sb{grid-template-columns:6px auto minmax(0,1fr)}.tape.sb>.pic{grid-column:2;grid-row:1/3;margin-bottom:6px}.tape.sb>.lbl{grid-column:3;grid-row:1/3}
+.pk.sb>a{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:start}
+.pk.sb .pic{--pko:0px}.pk.sb .pkt{margin:0;padding:12px 12px 10px}.pk.sb.big .pkt{margin:0;padding:18px 18px 14px}
 /* ---------- 報頭 ---------- */
 .mast{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px 20px}
 .mast .mtitle{display:flex;align-items:flex-end;gap:14px;min-width:0}
@@ -3179,17 +3188,21 @@ FIT_JS = """
     if (!p || !img.naturalWidth || !p.clientHeight) return;
     const nat = img.naturalWidth / img.naturalHeight;
     const pk = p.closest('.pk');
+    const sm = p.closest('article.card:not(.hero):not(.lead):not(.wide), .wc:not(.lead), a.tape');
+    if (pk || sm) unside(pk || sm, p);
     if (pk) {   // 気になるかも？：写真は切らない（文字入りのバナーが多い）。下に重なる札の分（--pko）は写真の外
       const pko = parseFloat(getComputedStyle(p).getPropertyValue('--pko')) || 0;
       p.style.height = p.style.aspectRatio = p.style.minHeight = '';
-      if (innerWidth <= 760) {   // 1 列：枠を写真の比率にする（縦長すぎ・横長すぎは 1.1〜1.5 倍の範囲でぼかしを足す）
-        const w = p.clientWidth, h = Math.min(Math.max(w / nat, w / 1.5), w * 1.1);
+      if (innerWidth <= 760) {   // 1 列：枠を写真の比率にする（縦長は 1.5 倍まで・横長は 1.5:1 まで）。それでも細い写真は枠を絞って字を横に（.sb）
+        const w = p.clientWidth, h = Math.min(Math.max(w / nat, w / 1.5), w * 1.5);
         Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', height: (h + pko) + 'px'});
         p.classList.remove('fill');
+        if (nat < 0.75 / 1.5) side(pk, p, nat, Math.round(w * 0.8));
         return;
       }
       const r = nat / (p.clientWidth / Math.max(1, p.clientHeight - pko));
       p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);   // ほぼ同じ比率のときだけ埋める（切れるのは 8% まで）
+      if (!p.classList.contains('fill') && r < 0.75) side(pk, p, nat, p.clientHeight);   // 写真が枠より細い：空いた横に札を置く
       return;
     }
     // 枠の大きさは変えない（写真の壁は 16:10 のまま段の高さがそろう）。写真は切らない：ほぼ同じ比率（切れるのは 8% まで）のときだけ埋め、
@@ -3199,9 +3212,21 @@ FIT_JS = """
     const r = nat / (p.clientWidth / p.clientHeight);
     p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);
     narrow(img, p, nat, r);
+    if (sm && !p.classList.contains('fill') && r < 0.75) side(sm, p, nat, p.clientHeight);   // 小さいカード：枠を写真の幅に絞り、見出しを横へ
+  };
+  // 小さいカード・気になるかも：写真が枠より細いとき、ぼかしでも空白でも埋めず、枠を写真の幅に絞って字の列を横に置く（.sb）。
+  // 字の列が 100px 未満になるほど狭いカードは枠を写真の比率に（点検 gap が数える）
+  const unside = (c, p) => { c.classList.remove('sb'); p.style.width = p.style.height = p.style.aspectRatio = ''; };
+  const side = (c, p, nat, h) => {
+    const cw = (c.querySelector(':scope > a:not(.lk)') || c).clientWidth || c.clientWidth;
+    const w = Math.min(Math.round(h * nat), Math.round(cw * 0.5));
+    if (cw - w < 100 || h < 40) {   // 字の列が取れないほど狭いカード：枠を写真の比率にする（縦は幅の 1.1 倍まで）
+      const pw = p.clientWidth; p.style.aspectRatio = 'auto'; p.style.height = Math.min(pw / nat, pw * 1.1) + 'px'; return;
+    }
+    p.style.height = h + 'px'; p.style.width = w + 'px'; c.classList.add('sb');
   };
   // 大きいカード（.hero・.lead・.wide）で写真が枠より細いとき：ぼかしで埋めず、枠を写真の幅に絞り、空いた横に同じ版面の次の記事を置く。
-  // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.25 倍まで）
+  // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.6 倍まで）
   const unnarrow = (c, p) => {
     const nx = c.querySelector(':scope > .nx, :scope > .txt > .nx'); if (nx) nx.remove();
     c.classList.remove('nw'); p.style.width = p.style.height = p.style.aspectRatio = '';
@@ -3210,7 +3235,7 @@ FIT_JS = """
     const c = p.closest('article.hero, article.lead, article.wide');
     if (!c) return;
     if (p.classList.contains('fill') || r > 1) return;
-    if (innerWidth <= 760) { p.style.aspectRatio = 'auto'; p.style.height = Math.min(p.clientWidth / nat, p.clientWidth * 1.25) + 'px'; return; }
+    if (innerWidth <= 760) { p.style.aspectRatio = 'auto'; p.style.height = Math.min(p.clientWidth / nat, p.clientWidth * 1.6) + 'px'; return; }
     const sz = h => { p.style.height = h + 'px'; p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
     sz(p.clientHeight);
     c.classList.add('nw');
@@ -3243,7 +3268,7 @@ FIT_JS = """
     const w = document.querySelector('.mgrid > .wall'), side = document.querySelector('.mgrid > .fside');
     if (!w) return;
     const cards = [...w.querySelectorAll(':scope > .wc')];
-    cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p) p.style.height = ''; });
+    cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p && !c.classList.contains('sb')) p.style.height = ''; });
     if (side) side.style.minHeight = '';
     if (innerWidth <= 760) return;
     // 2 列しか入らない幅（右の列が下に回る）では大きい 1 枚＋4 枚まで
