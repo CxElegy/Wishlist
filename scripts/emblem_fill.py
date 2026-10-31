@@ -2361,7 +2361,7 @@ def broken_image(im, photo, whole=False):
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 13   # 13：実写の版面は、名簿の先頭で小元素がいない人がいれば、外した網址の札を全部 1 回解く（release_head_rejects：画像の名前が役名で出演者の名前に当たらなかった）。 12：名簿の先頭 3 人で小元素がいない人の外した網址の札を 1 回解いて今の規則で見直す（release_head_rejects：Crystal Maiden の公式の立ち絵）。 11：小さいだけで外した縮めた網址の絵を emblem_reject に入れない・前の分は戻す（wide_retry：dota2 89 枚が大きい幅で取り直されなかった）。 10：顔なしの ③（図・小さすぎ：nk = replace）を替える対象に（replace_nf）。 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+BROKEN_V = 13   # 13：実写の版面は、外した網址の札を全部 1 回解く（先頭が埋まっていても。名簿の後ろの人の分の古い札）（release_head_rejects：画像の名前が役名で出演者の名前に当たらなかった）。 12：名簿の先頭 3 人で小元素がいない人の外した網址の札を 1 回解いて今の規則で見直す（release_head_rejects：Crystal Maiden の公式の立ち絵）。 11：小さいだけで外した縮めた網址の絵を emblem_reject に入れない・前の分は戻す（wide_retry：dota2 89 枚が大きい幅で取り直されなかった）。 10：顔なしの ③（図・小さすぎ：nk = replace）を替える対象に（replace_nf）。 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
 
 RULE_VERSION_NAMES = ("NAMES_V", "BROKEN_V")   # 規則の版は 1 か所：上がると失敗の待ちを解く（店長 material・お客さま library_emblem.due）。*_V を足したらここにも（tests が拦める）
 
@@ -2780,11 +2780,12 @@ def release_head_rejects(item, log=print):
     if int(item.get("emblem_headv") or 0) >= BROKEN_V or kind_of(item) not in ("character", "group"):
         return 0
     miss = head_missing(item)
-    if not miss:
-        return 0
-    free = {u for w in miss for u in head_reject_urls(item, w)}
-    if live_action(item):   # 実写は画像の名前が役名（Iron_Man_…）・動画の場面は番号（ytimg）で、出演者の名前では見つからない：その版面の外した画像を全部解く（漫威电影：Iron Man・Cassie の今なら通る絵が前の規則の札で残っていた）
+    if live_action(item):   # 実写は画像の名前が役名（Iron_Man_…）・動画の場面は番号（ytimg）で、出演者の名前では見つからない：先頭が埋まっていても、その版面の外した画像を全部 1 回解く（漫威电影：Iron Man・Cassie、哈利波特剧集・The Mandalorian：名簿の後ろの人の分に前の規則の札が残っていた）
         free = set(item.get("emblem_reject") or [])
+    elif miss:
+        free = {u for w in miss for u in head_reject_urls(item, w)}
+    else:
+        return 0
     with WRITE_LOCK:
         if free:
             _set_field(item["name"], "emblem_reject", json.dumps([u for u in item.get("emblem_reject") or [] if u not in free], ensure_ascii=False)

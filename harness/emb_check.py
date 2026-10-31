@@ -26,6 +26,7 @@
   E22 顔なし ①② を体の枠でそろえていない  顔なしの cutout で nk が keep・symbol なのに a.nb（x.bb から render が作る）がない（render の .nb が効いていない）。
   E24 縮めた幅の絵が reject に残る  縮めた網址（Fandom の scale-to-width-down/400 など）で小さいと測れて外した絵（wide_retry）が emblem_reject に残り、その人にまだ小元素がない数（0 であること。大きい幅で取り直せる絵が二度と選ばれない：dota2 Crystal Maiden）。BROKEN_V 11 の unbreak が抜く。\n  E25 待ちの理由に時間が出る  失敗した版面の note に「◯時間後」「◯:◯◯ から」が残る（店長の state/emblem_progress.json・お客さまの boards.config.emblem_state）。小元素は時間では待たない（材料の指紋が変わるまで・2026-10-29）。0 であること。時間切れ・例外は指紋を残さず次の見回りですぐ。
   E23 測ったキーが落ちた  店長の items.yaml とお客さまの版面（boards.config.emblem）で nfv（顔なしを測った版）があるのに nk か bb がない小元素（_store が書いたキーが emblem.EMBLEM_KEEP から漏れた印。0 であること）。
+  E26 実写の札が古い版のまま  実写の版面（emblem_people）で emblem_reject が残り emblem_headv < BROKEN_V の数（stale_live_rejects。release_head_rejects が先頭の欠け方に関わらず実写の札を 1 回解く。0 に向かう：哈利波特剧集・The Mandalorian・漫威电影）
   E17（続き）顔なしの 3 分け ①keep ②symbol ③replace の数（情報）も出す：emblem_face.none_kind。
   E17 顔が測れない理由別の数（情報：✗ にしない）  顔なし（測ったが顔がない：網页の nf）の cutout を emblem_face.none_reason の札で数える。sheet＝向きを並べた図・small＝顔らしい箱はあるが小さい・noface＝箱がない（怪物・武器・物・覆面）。測り方の足りない（見つかる顔を見落とした）ものを増やさないための数え直しの材料
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
@@ -258,6 +259,17 @@ def head_missing():
         if miss:
             out[it["name"]] = miss
     return out
+
+
+def stale_live_rejects(items=None, broken=None):
+    """E26：実写の版面（emblem_people）で、外した画像の札（emblem_reject）が残るのに、札を今の規則で見直した版（emblem_headv）が BROKEN_V より古い版面 → ['版面 札n枚']。
+    後台が回れば release_head_rejects が 1 回で解く（先頭が埋まっていても）ので 0 に向かう。回っていない・実写の入口で解いていないと残る（哈利波特剧集・The Mandalorian）。"""
+    if broken is None:
+        broken = int(re.search(r"^BROKEN_V = (\d+)", (ROOT / "scripts" / "emblem_fill.py").read_text(encoding="utf-8"), re.M).group(1))
+    if items is None:
+        items = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", [])
+    return [f"{it['name']} 札{len(it['emblem_reject'])}枚（版 {int(it.get('emblem_headv') or 0)} < {broken}）" for it in items
+            if it.get("emblem_kind") == "character" and it.get("emblem_people") and it.get("emblem_reject") and int(it.get("emblem_headv") or 0) < broken]
 
 
 def head_cause_text(board, names, progress=None):
@@ -635,6 +647,7 @@ def check(pg, who, width, out, full=False, guest=False):
     if guest:
         found["E24"] = narrow_small_rejects()
         found["E25"] = time_waits()
+        found["E26"] = stale_live_rejects()
     if guest:
         try:
             cl = closeup_left()
@@ -658,7 +671,7 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る", "E25": "待ちの理由に時間が出る"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る", "E25": "待ちの理由に時間が出る", "E26": "実写の外した画像の札が古い版のまま"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     if DRIFT:
         bad.append(f"E7 順番しだい 検出器のしきい値が標準でない回が {len(DRIFT)} 回（{DRIFT[0]}）：変えた所が戻していない（emblem_face._boxes と同じ型）")
