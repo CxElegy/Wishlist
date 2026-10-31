@@ -1,10 +1,10 @@
 {
  "changed": false,
- "checked": "2026-10-31T04:11:34+00:00",
+ "checked": "2026-10-31T05:25:50+00:00",
  "fired": {
-  "at": "2026-10-31T04:11:34+00:00",
+  "at": "2026-10-31T05:25:50+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T03:32:22+00:00",
+    "at": "2026-10-31T05:25:50+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 217,
-    "resp": "cse_01W4x6f7yMVndv5h9T85iYiS",
-    "sig": "a2067880426c"
+    "prog": 237,
+    "resp": "cse_01W4x6f5fb7aphf1aYWM2AnB",
+    "sig": "e8649225150a"
    },
    "items": [
     "A2O LITE",
@@ -38,11 +38,21 @@
    "need": true,
    "prog": 237,
    "prog_day": "2026-10-31",
-   "ripe": [],
-   "sig": "9c6cb5227f1b",
+   "ripe": [
+    "A2O LITE",
+    "ILLIT",
+    "The Mandalorian",
+    "Vaundy",
+    "gelato pique",
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "猫用品"
+   ],
+   "sig": "e8649225150a",
    "token_cap": 1000000,
    "tokens_today": 536666,
-   "why": "整理待ちの記事 12 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 12 件（9 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
