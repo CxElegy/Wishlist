@@ -1827,11 +1827,18 @@ EMB_JS = """
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(i => { if (i.getBoundingClientRect().top < innerHeight * 1.5) { i.loading = 'eager'; i.fetchPriority = 'high'; } });
   // 版面の先頭の写真（ぼかしの下絵と本物）は、最初の画面が済んだあと暇なときに 3 版面ずつ先に取っておく。目次から版面へ飛んだとき、そこで取り始めるとぼかしのまま数秒かかる
   // （2026-10-31 The Mandalorian）。目次へ指・マウスが近づいたら、その版面の先頭を最優先で取る。通信量を減らす設定（saveData）の人にはしない
-  const lead = s => [...s.querySelectorAll('.pic')].slice(0, 1).flatMap(p => [...p.querySelectorAll('img:not(.ico)')]);
-  const pull = (s, hi) => lead(s).forEach(i => { if (i.loading === 'lazy') { i.loading = 'eager'; i.fetchPriority = hi ? 'high' : 'low'; } });
-  const idle = f => window.requestIdleCallback ? requestIdleCallback(f, { timeout: 1500 }) : setTimeout(f, 400);
+  // 2 周する：1 周目は全版面の先頭の 1 枚（3 版面ずつ）、2 周目（1 周目の写真が届いてから）は版面の上から 1.5 画面ぶんに入る写真の続き（「もっと」「好きかも」の最初の数枚・最大 4 枚）。
+  // 一度に多く頼むと後ろの版面の先頭が遅れるので、先頭を全部頼んでから続きを頼む。飛んだ先で 2 枚目以降がぼかしのままになるのを防ぐ
+  const lead = (s, more) => { const top = s.getBoundingClientRect().top, ps = [...s.querySelectorAll('.pic')];
+    return ps.filter((p, k) => more ? k > 0 && k < 4 && p.getBoundingClientRect().top - top < innerHeight * 1.5 : k < 1).flatMap(p => [...p.querySelectorAll('img:not(.ico)')]); };
+  const wait = [];   // 1 周目で頼んだ写真が届くのを待つための印
+  const pull = (s, hi, more) => lead(s, more).forEach(i => { if (i.loading === 'lazy') { i.loading = 'eager'; i.fetchPriority = hi ? 'high' : 'low';
+    if (!hi && !more && !(i.complete && i.naturalWidth)) wait.push(new Promise(r => { i.addEventListener('load', r, { once: true }); i.addEventListener('error', r, { once: true }); })); } });
+  const idle = f => window.requestIdleCallback ? requestIdleCallback(f, { timeout: 300 }) : setTimeout(f, 300);
   const secs = [...document.querySelectorAll('section[data-k]')];
-  const ahead = () => { let n = 0; const step = () => { secs.slice(n, n + 1).forEach(s => pull(s)); n += 1; if (n < secs.length) idle(step); }; step(); };
+  const ahead = () => { let n = 0, more = 0; const step = () => { secs.slice(n, n + 3).forEach(s => pull(s, 0, more)); n += 3;
+    if (n < secs.length) return idle(step); if (more) return;
+    Promise.race([Promise.all(wait), new Promise(r => setTimeout(r, 10000))]).then(() => { more = 1; n = 0; idle(step); }); }; step(); };   // 続きは先頭が届いてから（10 秒たっても届かなければ頼む）
   // 開始は「最初の画面の写真が済んだとき」か「2.5 秒たったとき」の早いほう（load を待つと Fast 3G で目次から飛んだ先が 507ms 遅れた。2026-10-31）。優先度は low なので最初の画面の邪魔をしない
   if (!(navigator.connection && navigator.connection.saveData)) { let on = 0; const start = () => { if (!on) { on = 1; idle(ahead); } };
     const first = [...document.querySelectorAll('.pic img:not(.bg):not(.ico)')].filter(i => i.loading === 'eager' && !(i.complete && i.naturalWidth));

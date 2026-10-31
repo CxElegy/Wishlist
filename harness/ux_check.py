@@ -428,7 +428,7 @@ def ahead_bad(html):
     if "const ahead" not in html:
         bad.append("版面の先頭の写真を先に取る JS（ahead）がない（目次から飛ぶとぼかしのまま数秒）")
     else:   # 2026-10-31 根：開始を window load に置くと Fast 3G で遅い／一度に多く取ると最初の画面の邪魔。その書き方に戻っていないか数える
-        for need, why in (("slice(n, n + 1)", "1 版面ずつ"), ("hi ? 'high' : 'low'", "ahead は low・目次に近づいたときだけ high"), ("setTimeout(start, 2500)", "開始に 2.5 秒の上限")):
+        for need, why in (("slice(n, n + 3)", "3 版面ずつの 2 周（先頭→続き）"), ("timeout: 300", "暇待ちは 300ms の上限（1.5 秒ずつだと Fast 3G で 25 版面に 1 分近くかかった）"), ("hi ? 'high' : 'low'", "ahead は low・目次に近づいたときだけ high"), ("setTimeout(start, 2500)", "開始に 2.5 秒の上限")):
             if need not in html:
                 bad.append(f"ahead の書き方が戻っている：{why}（{need}）がない")
         if re.search(r"addEventListener\('load',[^;]{0,120}(start|ahead)", html):
@@ -1145,6 +1145,16 @@ def main(argv):
             bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
         fails += bool(bad)
         print(("✗ " if bad else "✓ ") + "最初に取る HTML：" + ("、".join(bad) if bad else "軽い・画像 1 枚ごとのハンドラ 0・最初の写真は eager"))
+        try:   # 先取りが実際に走ったか（字面でなく時間）：ふつうの回線で 12 秒のうちに全版面の先頭が届き、先頭以外の写真も取りに行っている
+            import ahead_time
+            m = ahead_time.measure(pw, a.base, 1400, 12)
+            bad = ([f"先頭が届かない版面 {len(m['miss'])}（例 {m['miss'][:3]}）"] if m["miss"] else []) + ([f"先頭が取れ終わるのに {m['secs'][-1]:.1f} 秒（12 秒を超えた）"] if m["secs"] and m["secs"][-1] > 12 else []) \
+                + (["先頭以外の写真を先に取りに行っていない"] if m["rest"] and m["rest_got"] < m["n"] else [])
+            msg = f"版面 {m['n']}・先頭が全部届くのは {m['secs'][-1]:.1f} 秒・先頭以外 {m['rest_got']} 枚を先取り" if m["secs"] else ""
+        except Exception as ex:  # noqa: BLE001
+            bad, msg = [f"測れなかった（{type(ex).__name__}: {str(ex)[:120]}）"], ""
+        fails += bool(bad)
+        print(("✗ " if bad else "✓ ") + "写真の先取りの実測（ログインなし・1400）：" + ("、".join(bad) if bad else msg))
         if not a.fast:   # 公開の HTML にお客さまだけの版面の名前が 0 件・店長でログインした管理ページの版面の数＝ライブラリの数
             try:
                 bad, n = check_public_leak(a.base)
