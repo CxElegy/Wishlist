@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-31T17:24:21+00:00",
+ "checked": "2026-10-31T18:23:54+00:00",
  "fired": {
-  "at": "2026-10-31T16:04:02+00:00",
+  "at": "2026-10-31T18:23:54+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,51 +12,79 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T16:04:02+00:00",
+    "at": "2026-10-31T18:23:54+00:00",
     "attempts": 1,
-    "day": "2026-10-31",
-    "prog": 373,
-    "resp": "cse_01W4x6f6mkyGCAVcdeHj3LeK",
-    "sig": "8513303d0827"
+    "day": "2026-11-01",
+    "prog": 0,
+    "resp": "cse_01W4x6f86rSiox8yBw63nRb4",
+    "sig": "c03b086da5b3"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "漫威电影",
+    "绝区零"
+   ],
    "last_batch": "2026-10-31T15:04:45+00:00",
    "last_error": {
     "at": "2026-10-31T13:17:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 0,
    "prog_day": "2026-11-01",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
-   "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "今日の新着はすべて AI 編集済み"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "ripe": [
     "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
     "GTA 6",
+    "ILLIT",
     "The Mandalorian",
-    "Vaundy",
     "dota2",
     "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
+    "日本顶级网球赛事",
     "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "c03b086da5b3",
+   "token_cap": 1000000,
+   "tokens_today": 0,
+   "why": "整理待ちの記事 73 件（14 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "BLEACH Mirrors High",
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "FROM",
+    "GTA 6",
+    "あつ森",
+    "A2O LITE",
+    "Vaundy",
+    "周杰伦",
+    "The Mandalorian",
+    "Astrae Oratio",
+    "绝区零",
+    "ぐでたま"
+   ],
+   "need": true,
+   "sig": "1db900241769",
+   "waiting": [],
+   "why": "足りない 15 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
