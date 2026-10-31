@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>小さいカードの写真と札</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 「気になるかも？」の小さいカード：写真の見える面積と札の比率の案。トークンは scripts/render.py の :root と同じ */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--shadow:4px 4px 0 var(--ink);--skew:-8deg;--muted:rgba(26,28,34,.62)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.7 var(--font-sans)}
+header{background:var(--ink);color:var(--card);padding:24px}
+header small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+header h1{margin:0;font:900 24px/1.3 var(--font-sans)}
+header a{color:var(--gold);font-size:13px}
+main{max-width:1120px;margin:0 auto;padding:24px 16px 80px;display:flex;flex-direction:column;gap:36px}
+.lead{background:var(--card);border:2px solid var(--ink);padding:14px 18px}.lead p{margin:0 0 6px}
+.tg{display:inline-block;background:var(--alert);color:#FFF;padding:0 10px;transform:skewX(var(--skew));font:900 13px/1.7 var(--font-sans)}
+.plan{display:flex;flex-direction:column;gap:10px}
+.plan h2{margin:0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font:900 20px/1.4 var(--font-sans)}
+.pc{font-size:13.5px;color:var(--muted);display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}.pc b{color:var(--ink)}
+.row{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.fr{background:var(--paper);border:2px dashed rgba(26,28,34,.4);padding:22px 14px 14px;position:relative}
+.fr::before{content:attr(data-w);position:absolute;top:-10px;left:10px;background:var(--ink);color:var(--gold);font:700 11px var(--font-mono);padding:0 8px}
+.fr.w{flex:1 1 640px;display:grid;grid-template-columns:repeat(3,minmax(0,220px));gap:26px 22px;min-width:0}
+.fr.n{flex:0 0 390px;width:390px;max-width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
+.pk{position:relative;display:flex;flex-direction:column;min-width:0}
+.pic{position:relative;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);background:#d8d2c6;overflow:hidden}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:4px;background:var(--card);box-shadow:var(--shadow);padding:10px 12px 8px;transform:rotate(-1deg)}
+.pkt .why{font:700 12px/1.4 var(--font-sans)}
+.pkt b{font:900 12.5px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pkt small{font:700 10px var(--font-mono);color:var(--muted)}
+.vis{grid-column:1/-1;margin-top:8px;font:700 11px var(--font-mono);color:var(--muted)}
+/* いま：16:10 の写真に札が 18px 重なる */
+.now .pic{aspect-ratio:16/10}.now .pkt{margin:-18px 8px 0}
+/* 案 1：札を写真の下に重ねない。写真の形は 4:3 */
+.p1 .pic{aspect-ratio:4/3}.p1 .pkt{margin:10px 0 0}
+/* 案 2：写真は正方形に近く（1:1）、札は写真の左下に小さく重ねる。見出し 1 行 */
+.p2 .pic{aspect-ratio:1/1}
+.p2 .pkt{position:absolute;left:-4px;bottom:-4px;right:28%;margin:0;padding:6px 8px 5px}
+.p2 .pkt .why,.p2 .pkt small{display:none}.p2 .pkt b{-webkit-line-clamp:2;font-size:11.5px}
+/* 案 3：札が写真の横。写真 3:2、見出しは写真の下に細い帯（札は小さく見出しだけ） */
+.p3 .pic{aspect-ratio:3/2}.p3 .pkt{margin:8px 0 0;padding:6px 10px;transform:none;box-shadow:none;border-left:5px solid var(--rose)}
+.p3 .pkt .why{display:none}
+a.back{display:inline-block}
+.dec{background:var(--card);border:2px solid var(--ink);padding:14px 18px}.dec h2{margin:0 0 6px;font:900 16px var(--font-sans)}
+</style>
+</head>
+<body>
+<header><small>TESTGROUND · 審査待ち</small><h1>「気になるかも？」の小さいカード：写真の見える面積</h1><a href="index.html">← テストグラウンドへ戻る</a></header>
+<main>
+<section class="lead">
+  <p><b>決めてほしいこと</b>：小さいカードは札が写真に重なって、写真の見える面積が小さい（特に縦長・正方形）。写真と札の比率を 1〜3 のどれにするか選んでください。</p>
+  <p>写真は本物（チェーンソーマン・BLEACH・横長の見本）。各案を <b>PC の 3 列</b>と <b>スマホの 2 列（390px）</b>で並べ、各カードの下に「写真が見える割合」（枠の面積に対し札で隠れない分）を実測しています。写真の形は 横長・正方形・縦長 の 3 つ。</p>
+  <p>実測（PC）：いま 50% → 案 1 56%・案 2 85%・案 3 65%。おすすめは <b>案 1</b>（ひと言の理由を残したまま少し広がり、字も読みやすい）。写真を最優先にするなら案 2（理由のひと言が消える）。</p>
+</section>
+<div id="plans"></div>
+<section class="dec"><h2>答えをもらったら</h2><p style="margin:0">選んだ比率を `render.py` の `.pk .pic`／`.pkt` に入れ、「気になるかも？」を 1 画面に収める計算（fitPk の最小 72px）もこの比率で直す。</p><a class="back" href="index.html">← テストグラウンドへ戻る</a></section>
+</main>
+<script>
+const P='https://bzokpnbcjscbcehdxtjq.supabase.co/storage/v1/object/public/photos/';
+const SH=[['横長 16:9','b988a9dc75cb3f61','Chainsaw Man: Crocs 新作コラボを発表'],['正方形','576986ae1d78e465','『BLEACH』新作スマホゲーム「BLEACH Mirrors High」が10月28日にサービス開始'],['縦長','3440100181f2d1f1','『チェンソーマン 刺客篇』制作決定！興収96億円突破の新作']];
+const PLANS=[['now','いま','札が写真に 18px 重なる・写真は 16:10','横長なら十分／縦長・正方形は札で顔が隠れる'],
+ ['p1','案 1','札を写真の下へ（重ねない）・写真は 4:3','写真が一番広い・字が読みやすい／カードが少し縦に長い'],
+ ['p2','案 2','写真を正方形に近く・札は左下に小さく重ねる（見出しだけ）','写真が主役・縦長も顔が残る／札が小さく、ひと言（why）が消える'],
+ ['p3','案 3','写真 3:2・見出しは下の細い帯（札の影・傾きなし）','カードが低く 4 枚並べやすい／P5 の札らしさが薄れる']];
+const card=(c,s,i)=>`<div class="pk"><div class="pic"><img src="${P+s[1]}-400.webp" alt="" referrerpolicy="no-referrer"></div><div class="pkt"><span class="why">フォロー中の「チェーンソーマン」</span><b>${s[2]}</b><small>walkerplus.com · 10.29</small></div></div>`;
+const pl=document.getElementById('plans');
+PLANS.forEach(p=>{
+ const sec=document.createElement('section');sec.className='plan '+p[0];
+ sec.innerHTML=`<h2><span class="tg">${p[1]}</span>${p[2]}</h2><div class="pc"><span><b>良い・困る</b>：${p[3]}</span><span class="rate"></span></div><div class="row"><div class="fr w" data-w="PC 3 列">${SH.map((s,i)=>card(p,s,i)).join('')}</div><div class="fr n" data-w="スマホ 390 2 列">${[SH[0],SH[2]].map((s,i)=>card(p,s,i)).join('')}</div></div>`;
+ pl.appendChild(sec);
+});
+function measure(){
+ document.querySelectorAll('.plan').forEach(sec=>{
+  const out=[];
+  sec.querySelectorAll('.fr').forEach(fr=>{
+   const v=[...fr.querySelectorAll('.pk')].map(pk=>{
+    const pic=pk.querySelector('.pic').getBoundingClientRect(),t=pk.querySelector('.pkt').getBoundingClientRect();
+    const ov=Math.max(0,Math.min(pic.right,t.right)-Math.max(pic.left,t.left))*Math.max(0,Math.min(pic.bottom,t.bottom)-Math.max(pic.top,t.top));
+    return Math.round((pic.width*pic.height-ov)/(pk.getBoundingClientRect().width*pk.getBoundingClientRect().height)*100);
+   });
+   const vc=document.createElement('div');vc.className='vis';vc.textContent='写真が見える割合（カード全体に対し）：'+v.join('% / ')+'%';
+   if(!fr.querySelector('.vis'))fr.appendChild(vc);
+   fr.style.position='relative';
+  });
+ });
+}
+addEventListener('load',()=>setTimeout(measure,300));
+</script>
+</body>
+</html>
