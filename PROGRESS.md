@@ -203,3 +203,4 @@
 2026-10-31 r2f2 第 3 回：PR #664 合併。本番 pg_proc で書き換え関数の穴 6 件に確定。ux_check を background で走らせ guest ✗ は E10・E15 のみ・test-a ✗ 0 | 次：小元素 E15/E10 の規則
 2026-10-31 r2f1：お客さまが管理ページを直に開く点検 check_customer_admin_gate (#662)。test-a・test-c × 7 枚 × 1400/390 で門・行 0・入口 0 ✓。漏れ 1 件修正（③loadLib を店長だけに）。ux_check 全体：②は ✓、残 ✗ は小元素 E10/E15・E2 | 次：小元素の E10/E15
 2026-10-31 r1：審査待ち③ 小元素の選び方の作り直し見本 emblem-pick-2.html (#668)。規則 harness/emblem_pick_rules.py、印との一致 新しい 28/36・× を出す 0/16・○ 13/17。ux_check --fast ✗ 0 | 次：顔なし ○5 枚の扱い（案 A/B）と Ikkaku 型を聞く、④前からの 3 つ
+2026-10-31 小元素の規則に本番の数え(--audit 340 枚中 × 32)と点検(tests/test_emblem_pick_rules.py)を足した (r1f1)。次：外れ 3 型と別の版面の検証
