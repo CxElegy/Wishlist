@@ -153,6 +153,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         plates:document.querySelectorAll('.pic.icon,.pic.none').length,
         ph:[...document.querySelectorAll('img[data-e="s"],img[data-e="r"]')].map(i=>i.currentSrc||i.src).filter(u=>{try{return new URL(u).origin!==location.origin}catch(x){return false}}).reduce((a,u)=>{a[0]++;if(/[/]storage[/]v1[/]object[/]public[/]photos[/]/.test(u))a[1]++;return a},[0,0]),
         frames:document.querySelectorAll('section.sec .pic').length,
+        tint:[...document.querySelectorAll('section.sec .pic')].filter(x=>x.querySelector('img[data-e="s"][src*="/object/public/photos/"]')).reduce((a,x)=>{a[0]++;if(/background/.test(x.getAttribute('style')||''))a[1]++;return a},[0,0]),
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
@@ -224,6 +225,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"記事が札（写真が出ない。開けない写真は字だけの形に落とす）{len(heads)}：" + "・".join(heads[:4]))
     if nohead:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
         bad.append(f"版面の頭が写真なし（字だけの形）{len(nohead)}：" + "・".join(nohead[:4]))
+    if st["tint"][0] and st["tint"][1] < st["tint"][0] * 0.95:   # 2026-10-31 写真 0.5 秒：置き場の写真の枠は色だけの下絵（style の background）を持つ
+        bad.append(f"写真の枠に色の下絵がない {st['tint'][0] - st['tint'][1]}／{st['tint'][0]}")
     if st["plates"]:
         print(f"  札 {st['plates']}／写真枠 {st['frames']}（{who} {width}px。0 が目標）")
     if near:

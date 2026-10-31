@@ -565,6 +565,8 @@ PROCESSES = [
              "text": "Referer なしで取り、幅 400／800 の webp に縮める（拡大しない・64px 未満・動くものは置かない）。取れなかった網址は 1 日あけて取り直す。上げるときの Cache-Control は public, max-age=31536000, immutable（ファイル名が指紋なので変わらない。GET は CDN が HIT）"},
             {"id": "ph2b", "kind": "step", "lane": "actions", "title": "前に上げた分の cache-control を付け直す（rehead）", "uses": ["supabase"], "x": "時間の半分まで",
              "text": "state の cc 印がない写真（前は public・14 日で上げた分）を、同じ中身で 400／800 とも public・1 年・immutable に上げ直し、cc=1 の印を付ける。残りがあり進んだ回は次の回を起こす（stat の cc・cc_wait は管理ページ ① のメーター）"},
+            {"id": "ph2c", "kind": "step", "lane": "actions", "title": "平均の色を state に残す（tint）", "x": "上げるとき 1 回・色のない昔の分は置いてある 400 から",
+             "text": "上げる 400 の webp を 1 画素に縮めて #rrggbb にし state の c に残す（色のない分は公開の 400 を読んで埋め直す）。render._pic が置き場の写真の枠に style=background として埋める＝色だけの下絵が通信 0 で最初の描画から出る"},
             {"id": "ph3", "kind": "step", "lane": "actions", "title": "古いものを消す（evict）", "uses": ["supabase"],
              "text": "ページに載っていない＆最後に使ってから 14 日超え、なお上限 300MB 超えなら古い順。消すのは photos の箱の中だけ"},
             {"id": "ph4", "kind": "store", "lane": "repo", "title": "state/photo_store.json", "text": "指紋ごとの最後に使った日・大きさ。render が読む"},
@@ -577,7 +579,7 @@ PROCESSES = [
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。",
         "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py", "harness/d5_sample.py"], "doc": "docs/rules/design.md", "uses": ["facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
-            {"id": "p1ph", "kind": "step", "lane": "actions", "title": "主写真は写真の一時保管を先に（render._pic）", "uses": ["supabase"], "text": "state/photo_store.json に置いてある写真なら Storage の 800 の網址を先頭に（srcset で 400／800・ぼかしは 400・ギャラリーと欲しい物は 400）、原寸は data-fb の落ち先に（落ちるとき SWAP_JS が srcset を外す）。最初の主写真は eager＋fetchpriority=high＋<head> の <link rel=preload>（_eager_first）、上げるときの cache-control は public・1 年・immutable（GET では CDN が HIT）、前に上げた分〔14 日のまま〕は photo_store が時間の余りで上げ直す（state の cc 印）。版面の先頭の写真は最初の画面が済んだあと EMB_JS の ahead が 3 版面ずつ先に取り、目次へ近づいたらその版面を最優先で取る（目次から飛んでぼかしのまま数秒、を防ぐ）。ux_check が一時保管の割合（店長もお客さまも）・srcset・preload・全版面の先頭の写真 16 枚の cache-control・ahead を点検、harness/photo_time.py が最初の画面の主写真の届く時刻を測る。管理ページ ① のメーターもここ（流程 photostore）"},
+            {"id": "p1ph", "kind": "step", "lane": "actions", "title": "主写真は写真の一時保管を先に（render._pic）", "uses": ["supabase"], "text": "state/photo_store.json に置いてある写真なら Storage の 800 の網址を先頭に（srcset で 400／800・ぼかしは 400・ギャラリーと欲しい物は 400）、原寸は data-fb の落ち先に（落ちるとき SWAP_JS が srcset を外す）。最初の主写真は eager＋fetchpriority=high＋<head> の <link rel=preload>（_eager_first）、上げるときの cache-control は public・1 年・immutable（GET では CDN が HIT）、前に上げた分〔14 日のまま〕は photo_store が時間の余りで上げ直す（state の cc 印）。版面の先頭の写真は最初の画面が済んだあと EMB_JS の ahead が 3 版面ずつ先に取り、目次へ近づいたらその版面を最優先で取る（目次から飛んでぼかしのまま数秒、を防ぐ）。置き場の写真の枠には平均色の下絵（style=background・photo_store の c）、写真のない推薦（.pk）は札でなく字だけの形（.nophoto）。ux_check が一時保管の割合（店長もお客さまも）・枠の色の下絵・srcset・preload・全版面の先頭の写真 16 枚の cache-control・ahead を点検、harness/photo_time.py が最初の画面の主写真の届く時刻を測る。管理ページ ① のメーターもここ（流程 photostore）"},
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める", "text": "checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
             {"id": "p2b", "kind": "decision", "lane": "actions", "title": "報告が最新の edit.json を取り込んでいる？",

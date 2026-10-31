@@ -71,6 +71,23 @@ class PhotoStore(unittest.TestCase):
         finally:
             P.urllib.request.urlopen, P._req = orig, orig_req
 
+    def test_tint_is_inlined_as_color_underlay(self):
+        """色だけの下絵（2026-10-31）：置いてある写真は平均色を枠の style に埋める（通信 0 で出る）。色のない分は style なし。"""
+        import render
+        from PIL import Image
+        b = io.BytesIO()
+        Image.new("RGB", (80, 80), (255, 0, 0)).save(b, "PNG")
+        self.assertEqual(P.tint(b.getvalue()), "#ff0000")
+        u = "https://x.example/a.jpg"
+        k = P.key(u)
+        try:
+            P._CACHE[:] = [{"base": "https://s.example", "p": {k: {"at": 1, "b": 5, "c": "#ff0000"}}, "x": {}, "stat": {}}]
+            self.assertIn('<div class="pic" style="background:#ff0000">', render._pic({"image": u, "title": "t"}))
+            P._CACHE[:] = [{"base": "https://s.example", "p": {k: {"at": 1, "b": 5}}, "x": {}, "stat": {}}]
+            self.assertIn('<div class="pic">', render._pic({"image": u, "title": "t"}))
+        finally:
+            P._CACHE[:] = []
+
     def test_shrink_never_upscales(self):
         from PIL import Image
         b = io.BytesIO()

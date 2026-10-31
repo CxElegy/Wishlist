@@ -85,6 +85,15 @@ class VoteButtons(unittest.TestCase):
         self.assertNotIn('class="vote"', out)
         self.assertNotIn("<script>", out)
 
+    def test_pick_without_photo_is_text_only(self):
+        """写真のない推薦（MondoXbox 2026-10-31）：出典アイコンの札でなく字だけの形。写真のある推薦は今までどおり。"""
+        out = render._picks([self.PICK], [])
+        self.assertIn(" nophoto", out)
+        self.assertNotIn('<div class="pic', out)
+        out = render._picks([{**self.PICK, "image": "https://i.example/a.jpg"}], [])
+        self.assertNotIn("nophoto", out)
+        self.assertIn('<div class="pic', out)
+
     def test_buttons_carry_vote_data(self):
         out = render._picks([self.PICK], [], {"url": "https://x.supabase.co", "key": "sb_publishable_k"})
         self.assertIn('data-vote="1"', out)
