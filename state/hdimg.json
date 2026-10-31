@@ -574,12 +574,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.gamemeca.com/gmdata/0001/782/442/gm176120_261027-risell-yy4.webp": {
-  "w": 1200,
-  "h": 670,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.gamemeca.com/gmdata/0001/782/498/gm977274_thumb___30.webp": {
   "w": 1200,
   "h": 670,
@@ -726,6 +720,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.3
+ },
+ "https://cdn.tgdaily.co.kr/news/photo/202610/407725_211766_111.jpg": {
+  "w": 1280,
+  "h": 799,
+  "target": 720,
+  "v": 3
  },
  "https://cdn.utaten.com/uploads/images/kentei/kentei/1174/2c512f1f2055341b9217e039060ef29b1b188e85.jpeg?r=2026103103": {
   "w": 1200,
@@ -3993,6 +3993,12 @@
   "target": 720,
   "v": 3
  },
+ "https://urepia.ismcdn.jp/mwimgs/1/1/-/img_112a1472dbe89d85e13b023c8e77891688904.jpg": {
+  "w": 1280,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "https://urepia.ismcdn.jp/mwimgs/8/9/-/img_8908df67a2145b0646452913d11f8c07276921.jpg": {
   "w": 2000,
   "h": 2000,
@@ -4209,12 +4215,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.OxiJ5-NxJTwjyR84qxjhBQ&pid=News&w=1080": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-31"
- },
- "https://www.bing.com/th?id=ONUT.Q9dry0f98vaYnNMmJmWk5g&pid=News&w=1200": {
   "target": 720,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
