@@ -163,6 +163,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         dup:[...document.querySelectorAll('[id]')].map(x=>x.id).filter((v,i,a)=>a.indexOf(v)!==i).slice(0,3),
         blur:document.querySelectorAll('img.bg').length,
         loose:innerWidth<=760?0:[...document.querySelectorAll('article.hero,article.lead,article.wide')].filter(c=>{const p=c.querySelector('.pic'),i=p&&p.querySelector('img:not(.ico)');return i&&i.complete&&i.naturalWidth&&p.offsetParent&&!c.classList.contains('nw')&&!p.classList.contains('fill')&&(i.naturalWidth/i.naturalHeight)<(p.clientWidth/p.clientHeight)*0.92}).length,
+        gap:[...document.querySelectorAll('section.sec article.card,section.sec .wc,section.sec a.tape,.pk')].filter(c=>{const p=c.querySelector('.pic'),i=p&&p.querySelector('img:not(.ico)');if(!i||!p.offsetParent||c.classList.contains('nophoto')||p.matches('.icon,.none')||p.classList.contains('fill')||!i.complete||!i.naturalWidth)return false;return 1-Math.min(i.clientWidth,i.clientHeight*i.naturalWidth/i.naturalHeight)/Math.max(1,p.clientWidth)>0.25}).length,
         sw:document.documentElement.scrollWidth})""", BOXES)
     near = [] if page else pg.evaluate(NEAR_JS)
     fails = pg.evaluate(FAILS_JS) if (st["nohead"] or st["heads"]) else []
@@ -220,6 +221,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"写真 {st['ph'][0]} 枚のうち一時保管から出たのは {st['ph'][1]} 枚（半分未満）")
     if st.get("pkv"):   # 2026-10-31：「気になるかも？」の小さいカードで写真の見える高さがカードの 45% 未満（帯のように細い）
         bad.append(f"小さいカードの写真が細い（見える高さ 45% 未満）{st['pkv']} 枚")
+    if st["gap"]:   # 2026-10-31 F-16 続き：全部の画像の場所（大・小のカード・壁・テープ・気になるかも）で、写真が枠の幅の 25% 超を空けたまま（空いた横を情報に使っていない）。1400 / 390 とも数える
+        bad.append(f"写真の余白（空いた横が情報なし）：{st['gap']} 枚")
     if st["blur"] or st["loose"]:   # 2026-10-31 F-16：ぼかしで余白を埋めない（img.bg 0）。大きいカードで写真が枠より細いのに枠を絞っていない（.nw なし）のも✗
         bad.append(f"写真の余白：ぼかし {st['blur']} 枚・枠を絞っていない大きいカード {st['loose']} 枚")
     if st["sw"] > width:
