@@ -137,9 +137,10 @@ def _models():
 class Anime(unittest.TestCase):
     """アニメ・ゲームの絵の顔（2 段目 relax・3 段目 weak）と、測り済みの値が変わらないこと。docs/home/emblems/ の既存の画像だけ。"""
 
-    def img(self, name):
+    def img(self, name, live=False):
+        """既定は tests/fixtures/emblems/ の固定の画像（docs/home/emblems/ は後の収集で作り直され、測り値が変わる：2026-10-29 に Timmy が顔なしになり手元だけ落ちた）。live=True は今の画像。"""
         from PIL import Image
-        im = Image.open(ROOT / "docs" / "home" / "emblems" / name)
+        im = Image.open(ROOT / ("docs/home" if live else "tests/fixtures") / "emblems" / name)
         im.load()
         return im
 
@@ -171,7 +172,7 @@ class Anime(unittest.TestCase):
             for x in it.get("emblem") or []:
                 f = x.get("face") if isinstance(x, dict) else None
                 if f and f[0] and str(x.get("image", "")).startswith("emblems/") and n < 12 and zlib.crc32(x["image"].encode()) % 25 == 0:
-                    self.assertEqual(ef.measure(self.img(x["image"].split("/", 1)[1])), f, x["image"])
+                    self.assertEqual(ef.measure(self.img(x["image"].split("/", 1)[1], live=True)), f, x["image"])
                     n += 1
         self.assertGreaterEqual(n, 5)
 
