@@ -1,6 +1,6 @@
 {
- "admin": "cdfdbb47f2bf",
- "admin-ai": "ab5117b74634",
+ "admin": "485a2e1b6c3e",
+ "admin-ai": "61c552ce0af2",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -22,11 +22,11 @@
    "d0c0ea84"
   ]
  },
- "admin-emblem": "25297aaba08d",
+ "admin-emblem": "e8a2208f7c11",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "77ec2747"
+   "a5ac67bc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,20 +34,20 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "481ce572"
+   "26aba23a"
   ],
   "emblems": [
    "小元素",
-   "7ee9582a"
+   "35646615"
   ]
  },
  "admin-members": "e487ef6425c2",
  "admin-members_marks": {},
- "admin-now": "eaf490724ed6",
+ "admin-now": "4e8e6aab7810",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f0208ee8"
+   "1c7f160c"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "4c67f4b4"
+   "e2cbbdf4"
   ]
  },
- "admin-system": "8c456e0fa111",
+ "admin-system": "59d5d3b9aea2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f2692179"
+   "75ed1271"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "67d5adc5"
+   "1bf381fa"
   ]
  },
  "admin_marks": {},
@@ -196,6 +196,6 @@
    "21f24690"
   ]
  },
- "updated": "11.01 05:38",
- "wishlist": "4f2b28fcf258"
+ "updated": "11.01 05:57",
+ "wishlist": "8747309e845c"
 }
