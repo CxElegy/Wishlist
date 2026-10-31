@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-31T21:30:51+00:00",
+ "changed": true,
+ "checked": "2026-10-31T21:45:11+00:00",
  "fired": {
-  "at": "2026-10-31T20:57:29+00:00",
+  "at": "2026-10-31T21:45:12+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,52 +12,66 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T20:31:12+00:00",
+    "at": "2026-10-31T21:45:12+00:00",
     "attempts": 1,
     "day": "2026-11-01",
-    "prog": 82,
-    "resp": "cse_01W4x6f6GUpvfeJPfCa93LWp",
-    "sig": "91b0a9c51b77"
+    "prog": 98,
+    "resp": "cse_01W4x6f6uUoSzdN8pKFVpubX",
+    "sig": "2111d2d1fc78"
    },
-   "items": [],
+   "items": [
+    "GTA 6",
+    "dota2",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "漫威电影",
+    "绝区零"
+   ],
    "last_batch": "2026-10-31T21:05:28+00:00",
    "last_error": {
     "at": "2026-10-31T13:17:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 98,
    "prog_day": "2026-11-01",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "GTA 6",
+    "日本顶级网球赛事",
+    "漫威电影"
+   ],
+   "sig": "2111d2d1fc78",
    "token_cap": 1000000,
    "tokens_today": 141563,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 21 件（9 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "チェーンソーマン"
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦",
+    "绝区零"
    ],
    "need": true,
-   "sig": "f34c0f7d308e",
+   "sig": "c8530d605b12",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
-    "ぐでたま",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "ぐでたま"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 13 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
