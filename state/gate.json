@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-10-31T19:27:09+00:00",
+ "changed": false,
+ "checked": "2026-10-31T20:31:12+00:00",
  "fired": {
-  "at": "2026-10-31T19:27:09+00:00",
+  "at": "2026-10-31T20:31:12+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,15 +12,14 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T19:27:09+00:00",
+    "at": "2026-10-31T20:31:12+00:00",
     "attempts": 1,
     "day": "2026-11-01",
-    "prog": 70,
-    "resp": "cse_01W4x6f82zGs486YbpYNSLsG",
-    "sig": "a5093ee29068"
+    "prog": 82,
+    "resp": "cse_01W4x6f6GUpvfeJPfCa93LWp",
+    "sig": "91b0a9c51b77"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "Vaundy",
@@ -31,26 +30,25 @@
     "哈利波特剧集",
     "日本顶级网球赛事",
     "滑雪",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-10-31T18:38:22+00:00",
+   "last_batch": "2026-10-31T19:32:20+00:00",
    "last_error": {
     "at": "2026-10-31T13:17:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 70,
+   "prog": 82,
    "prog_day": "2026-11-01",
    "ripe": [
-    "A2O LITE",
-    "漫威电影"
+    "BLEACH Mirrors High",
+    "Vaundy"
    ],
-   "sig": "a5093ee29068",
+   "sig": "91b0a9c51b77",
    "token_cap": 1000000,
-   "tokens_today": 73030,
-   "why": "整理待ちの記事 28 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 119261,
+   "why": "整理待ちの記事 16 件（12 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -59,14 +57,14 @@
     "チェーンソーマン",
     "dota2",
     "哈利波特剧集",
-    "漫威电影",
-    "FROM"
+    "漫威电影"
    ],
    "need": true,
-   "sig": "e11b0aad640b",
+   "sig": "9a98912fe894",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "FROM",
     "GTA 6",
     "The Mandalorian",
     "Vaundy",
@@ -75,7 +73,7 @@
     "周杰伦",
     "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 10 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
