@@ -4213,6 +4213,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.KI8fsHi9gp5vLVhvIUhm6Q&pid=News&w=1024": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.427,
+  "local": "pics/837e165175ef20d0.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.KOsfIlpysro4UjegnaF79g&pid=News&w=1200": {
   "w": 560,
   "h": 700,
@@ -5120,18 +5133,11 @@
   "target": 1280,
   "v": 3
  },
- "https://www.wowkorea.jp/img/news/107/539918/456791_tmb.webp": {
-  "w": 320,
-  "h": 240,
+ "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp": {
+  "w": 1280,
+  "h": 960,
   "target": 720,
-  "v": 3,
-  "blur": 0.525,
-  "local": "pics/6ad71ae670ebb53e.webp",
-  "out": [
-   720,
-   540
-  ],
-  "why": "看不清"
+  "v": 3
  },
  "https://x0.ifengimg.com/res/2026/7DB009EBC78419C0A22C491DF17530B86991AC52_size23_w689_h293.jpg": {
   "w": 689,
