@@ -42,6 +42,19 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261030ac/200/w640h360/20261030/26b9-24fb1a42955fbd686893da9d3952627b.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.539,
+  "local": "pics/33af9078c78eb98f.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
@@ -669,12 +682,6 @@
   "w": 1560,
   "h": 876,
   "target": 1280,
-  "v": 3
- },
- "https://cdn.mdtoday.co.kr/news/photo/202609/611993_313929_4730.jpg": {
-  "w": 600,
-  "h": 400,
-  "target": 720,
   "v": 3
  },
  "https://cdn.mediaus.co.kr/news/photo/202610/318631_233956_4423.jpg": {
@@ -3330,6 +3337,12 @@
   "target": 720,
   "v": 3
  },
+ "https://photo.jtbc.co.kr/news/jam_photo/202610/26/1067d1c8-184f-44fb-9a79-6e8e0c5dea40.jpg": {
+  "w": 560,
+  "h": 1249,
+  "target": 720,
+  "v": 3
+ },
  "https://photo.newsen.com/news_photo/2026/10/28/202610281514112310_1.jpg": {
   "w": 650,
   "h": 557,
@@ -4418,12 +4431,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ZihHWBLSjGNMY8YZXiPRsQ&pid=News&w=1080": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-31"
- },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4585,6 +4592,19 @@
   "v": 3,
   "blur": 0.415
  },
+ "https://www.bing.com/th?id=ONUT.sATBcmuNDOB5Bz9Z0O6Bgw&pid=News&w=1080": {
+  "w": 700,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.504,
+  "local": "pics/b79823db1b59abee.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.v9hYDJEHaKyaPgg3WjbTrw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4596,12 +4616,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.vrX5emCBpA0B9v3BiJu6SQ&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-31"
  },
  "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200": {
   "w": 700,
@@ -4764,6 +4778,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/10_6f3cce.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/Ghost-Rider-Connor-Storrie.jpg?resize=1200,630": {
@@ -5048,6 +5068,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.sammyfans.com/wp-content/uploads/2026/10/galaxy-s27-series-img.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.ssnp.co.jp/uploads/2026/10/261028sutaba_r-18.jpg": {
   "w": 1300,
   "h": 1097,
@@ -5221,12 +5247,6 @@
  "https://x0.ifengimg.com/res/2026/B6494457AC45B537C3995C763F802BF7716E55E8_size897_w1207_h2458.png": {
   "w": 1207,
   "h": 2458,
-  "target": 1280,
-  "v": 3
- },
- "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-8e21309f0ab9e8f398f424861f3ba0bb/images/6f61845a-c66c-4ff2-ad6c-d882f54b595a.jpg": {
-  "w": 1920,
-  "h": 1080,
   "target": 1280,
   "v": 3
  },
