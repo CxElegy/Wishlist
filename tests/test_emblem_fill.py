@@ -2101,6 +2101,31 @@ class FindSources(unittest.TestCase):
             self.assertEqual(ef.release_head_rejects(item, log=lambda *_: None), 2)
         self.assertIn("[]", calls[0][1])
 
+    def test_release_head_rejects_live_action_even_when_head_filled(self):
+        """実写は先頭の 3 人が埋まっていても、外した画像の札を 1 回解く（名簿の後ろの人の分の古い札：哈利波特剧集・The Mandalorian）。版が追いついたら解かない。"""
+        item = {"name": "H", "emblem_kind": "character", "emblem_people": True, "emblem_who": ["A", "B", "C", "D"],
+                "emblem": [{"subject": "A"}, {"subject": "B"}, {"subject": "C"}], "emblem_reject": ["https://x/Harry_Potter.png"]}
+        self.assertEqual(ef.head_missing(item), [])
+        with mock.patch.object(ef, "_set_field") as sf:
+            self.assertEqual(ef.release_head_rejects(item, log=lambda *_: None), 1)
+            self.assertEqual(ef.release_head_rejects({**item, "emblem_headv": ef.BROKEN_V}, log=lambda *_: None), 0)
+        self.assertEqual(sf.call_args_list[0].args[1], "emblem_reject")
+        plain = {**item, "emblem_people": False}   # 実写でない版面は今までどおり先頭が欠けたときだけ
+        with mock.patch.object(ef, "_set_field"):
+            self.assertEqual(ef.release_head_rejects(plain, log=lambda *_: None), 0)
+
+    def test_stale_live_rejects_counts_boards_with_old_version(self):
+        """E26：実写で札が残り版が古い版面を数える。版が追いつけば 0、札がなければ 0、実写でなければ数えない。本番の items.yaml は数だけ出す。"""
+        import sys
+        sys.path.insert(0, str(ef.ROOT / "harness"))
+        import emb_check
+        base = {"emblem_kind": "character", "emblem_people": True, "emblem_reject": ["u"]}
+        items = [{"name": "old", **base, "emblem_headv": 12}, {"name": "new", **base, "emblem_headv": 13},
+                 {"name": "none", **base, "emblem_reject": [], "emblem_headv": 0}, {"name": "anime", **base, "emblem_people": False}]
+        self.assertEqual(emb_check.stale_live_rejects(items, 13), ["old 札1枚（版 12 < 13）"])
+        self.assertEqual(emb_check.stale_live_rejects(items, ef.BROKEN_V), ["old 札1枚（版 12 < %d）" % ef.BROKEN_V])
+        print("E26 本番", len(emb_check.stale_live_rejects()))
+
     def test_head_causes_records_reason_per_lead(self):
         """E15 の原因：先頭の人ごとに外した理由を残す（役（出演者）の subject も同じ人）。試したのに記録がなければ「候補なし」、試さなければ「今回は対象外」。"""
         by_who = {"Thor（Chris Hemsworth）": {"顔なし": 2, "別人": 1}, "Other": {"遠景": 9}}
