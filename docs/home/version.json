@@ -1,14 +1,14 @@
 {
- "admin": "f61f88abb91b",
- "admin-ai": "cbc33ca23b08",
+ "admin": "39eb3be95cab",
+ "admin-ai": "1540b95b00e8",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5cde0b44"
+   "0817f57c"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "69936a22"
+   "613f7bc3"
   ]
  },
  "admin-boards": "336aa688ce14",
@@ -22,11 +22,11 @@
    "0e38ce7a"
   ]
  },
- "admin-emblem": "a07da21c8963",
+ "admin-emblem": "3f6ef9a7a957",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "09fb7ad0"
+   "0abace2a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,15 +43,15 @@
  },
  "admin-members": "ef5efe2e0ccd",
  "admin-members_marks": {},
- "admin-now": "bbb9b18f29d6",
+ "admin-now": "b11d7b18561d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "10e2bf6d"
+   "af8a00da"
   ],
   "queue": [
    "いまの状況",
-   "bd36a802"
+   "d44bd83d"
   ],
   "status": [
    "運行状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "e3b68cd2"
+   "9f3551b9"
   ]
  },
- "admin-system": "19f3a235e206",
+ "admin-system": "11991b9c07b3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "266bd71d"
+   "69bc3bfd"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "539d2a17"
+   "949e596c"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "4671eb69"
   ]
  },
- "index": "2e4f8887cbb1",
+ "index": "c4d970635162",
  "index_marks": {
   "front": [
    "トップ",
-   "c31edfca"
+   "5b7db31d"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "acce27e5"
+   "9aee2c64"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "9022f1a7"
+   "6f10e8fc"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "b4c3766e"
+   "e4f1b031"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "5426efac"
   ]
  },
- "updated": "10.31 22:12",
+ "updated": "10.31 22:18",
  "wishlist": "286c1a9ff766"
 }
