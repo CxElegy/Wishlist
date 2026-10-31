@@ -131,7 +131,7 @@ class LibBoards(unittest.TestCase):
     def test_customer_admin_page_checks_and_role_guards(self):
         # お客さまが admin*.html を直に開く点検がある・全ユーザーの行を作る部品は店長のときだけ動く（2026-10-31）
         ux = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
-        self.assertIn("def check_customer_admin_pages", ux)
+        self.assertIn("def check_customer_admin_gate", ux)
         src = (ROOT / "scripts" / "render.py").read_text(encoding="utf-8")
         self.assertIn("document.documentElement.dataset.role!=='admin'||!CFG.url", src)   # ③の loadLib
         for fn in ("libboards", "libedit", "libvotes", "libaccts", "libplace"):

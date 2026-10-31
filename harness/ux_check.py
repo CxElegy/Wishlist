@@ -590,7 +590,7 @@ ROWS_JS = """() => ({gate: !!document.querySelector('.wl-gate'), gateTxt: (docum
 CUSTOMER_PAGES = ("test-a", "test-c")
 
 
-def check_customer_admin_pages(pw, base, width):
+def check_customer_admin_gate(pw, base, width):
     """test-a・test-c でログインして admin*.html 7 枚を直に開く。門（.wl-gate）が出て、全ユーザーの行（#wl-members・#wl-lib*）が 0、
     見える中身が門だけ、右上のメニューに管理の入口がない。トップの最初の画面のメニューも。門が出ない（enforce が外れた）なら ✗。"""
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
@@ -1163,7 +1163,7 @@ def main(argv):
                 print(("✗ " if bad else "✓ ") + "管理ページの網羅：" + ("、".join(bad) if bad else "ライブラリの版面の数と同じ"))
         for w in ([] if a.fast else a.widths.split(",")):   # お客さまが管理ページを直に開く
             try:
-                bad = check_customer_admin_pages(pw, a.base, int(w))
+                bad = check_customer_admin_gate(pw, a.base, int(w))
             except Exception as ex:  # noqa: BLE001
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
