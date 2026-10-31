@@ -1260,6 +1260,32 @@ class Ladder(unittest.TestCase):
         self.assertEqual(r["state"], "ok")
         self.assertEqual([x["added"] for x in r["steps"]], [1, 1])
 
+    def test_cut_failure_retries_next_candidate_in_same_round(self):
+        """切り抜きの検査で外れた人は、同じ回のうちに同じ人の次の候補で取り直す（漫威电影：Iron Man の 1 枚目が外れて 2 枚目が次の回まで待たされた）。"""
+        ef.gather = lambda item, log, tried: [{"subject": "a", "image": "a1", "source": "Fandom"}, {"subject": "a", "image": "a2", "source": "Fandom"}]
+        ef.gather_wide = ef.gather_pages = lambda item, log, tried: []
+        self.items[0]["emblem_who"] = ["a"]
+
+        def pick(item, good, **k):   # 同じ人は 1 枚。外れた画像（emblem_reject）は選ばない
+            bad = set(item.get("emblem_reject") or [])
+            have = {x["subject"] for x in item.get("emblem") or []}
+            return [i + 1 for i, c in enumerate(good) if c["image"] not in bad and c["subject"] not in have][:1]
+        ef.auto_pick = pick
+        done = []
+
+        def commit(item, good, picks, log=print):   # 1 枚目は切り抜きで外れる
+            for n in picks:
+                c = good[n - 1]
+                done.append(c["image"])
+                if c["image"] == "a1":
+                    self.items[0]["emblem_reject"] = ["a1"]
+                else:
+                    self.items[0]["emblem"] = [{"subject": c["subject"], "image": c["image"]}]
+        ef.commit = commit
+        r = ef.fill_one(self.items[0], log=lambda m: None)
+        self.assertEqual(done, ["a1", "a2"])
+        self.assertEqual(r["state"], "ok")
+
     def test_failed_names_people_without_image(self):
         ef.gather_wide = lambda item, log, tried: []   # b には候補が 1 つもない
         r = ef.fill_one(self.items[0], log=lambda m: None)
@@ -2062,6 +2088,18 @@ class FindSources(unittest.TestCase):
         self.assertNotIn("crystal_maiden", calls[0][1])
         self.assertEqual(calls[1][0], "emblem_headv")
         self.assertEqual(ef.head_reject_urls({"emblem_reject": [cm]}, "ヒカル"), [])
+
+    def test_release_head_rejects_live_action_frees_all_rejects(self):
+        """実写は画像の名前が役名（Iron_Man_…）・動画の場面は番号で、出演者の名前に当たらない：先頭の人が欠けた版面の外した画像は全部解く（漫威电影）。"""
+        urls = ["https://static.wikia.nocookie.net/marvel/images/a/a1/Iron_Man_Endgame.png/revision/latest?cb=1", "https://i.ytimg.com/vi/abc/hq1.jpg"]
+        item = {"name": "M", "emblem_kind": "character", "emblem_people": True, "wiki": "en:Marvel Cinematic Universe",
+                "emblem_who": ["Robert Downey Jr.", "Chris Hemsworth", "Anthony Mackie"], "emblem": [], "emblem_reject": urls}
+        self.assertTrue(ef.live_action(item))
+        self.assertEqual(ef.head_reject_urls(item, "Robert Downey Jr."), [])
+        calls = []
+        with mock.patch.object(ef, "_set_field", side_effect=lambda n, k, v: calls.append((k, v))):
+            self.assertEqual(ef.release_head_rejects(item, log=lambda *_: None), 2)
+        self.assertIn("[]", calls[0][1])
 
     def test_head_causes_records_reason_per_lead(self):
         """E15 の原因：先頭の人ごとに外した理由を残す（役（出演者）の subject も同じ人）。試したのに記録がなければ「候補なし」、試さなければ「今回は対象外」。"""
