@@ -331,11 +331,12 @@ def check_dock(pw, base, who, width, page=""):
             pg.evaluate(f"window.scrollTo(0,{y})")
             pg.wait_for_timeout(500)
             return pg.evaluate(DOCK_JS)
-        closed = sc(900)   # 閉じたまま下へ → しまう
+        scrolls = pg.evaluate("document.documentElement.scrollHeight>innerHeight+300")   # 門だけの短いページ（管理の訪問者）は下へ読めない＝しまう動きは見ない
+        closed = sc(900) if scrolls else None   # 閉じたまま下へ → しまう
         sc(0)
         pg.click(".wl-auth > .more")
         clicked = pg.evaluate(DOCK_JS)
-        opened = sc(900)   # 開いたまま下へ → しまわない
+        opened = sc(900) if scrolls else None   # 開いたまま下へ → しまわない
         sc(0)
         pg.click(".wl-auth > .more")
         again = pg.evaluate(DOCK_JS)
