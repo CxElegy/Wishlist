@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ログインの札の場所（561〜760px）</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 561〜760px（分割した窓・小さいタブレット）でログインの札をどこに置くか。トークンは scripts/render.py の :root と同じ */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--rose:#B8336A;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--shadow:4px 4px 0 var(--ink);--skew:-8deg;--muted:rgba(26,28,34,.62)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.7 var(--font-sans)}
+header{background:var(--ink);color:var(--card);padding:24px}
+header small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+header h1{margin:0;font:900 24px/1.3 var(--font-sans)}
+header a{color:var(--gold);font-size:13px}
+main{max-width:1120px;margin:0 auto;padding:24px 16px 80px;display:flex;flex-direction:column;gap:28px}
+.lead{background:var(--card);border:2px solid var(--ink);padding:14px 18px}.lead p{margin:0 0 6px}
+.tg{display:inline-block;background:var(--alert);color:#FFF;padding:0 10px;transform:skewX(var(--skew));font:900 13px/1.7 var(--font-sans)}
+.row{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.plan{flex:1 1 360px;display:flex;flex-direction:column;gap:8px}
+.plan h2{margin:0;font:900 19px/1.4 var(--font-sans)}
+.pc{font-size:13.5px;color:var(--muted)}.pc b{color:var(--ink)}
+/* 700px 幅の「窓」を縮めて見せる（実寸 700px・外が狭いときは横に動かす） */
+.win{overflow:auto;border:2px dashed rgba(26,28,34,.4);padding:22px 8px 8px;position:relative}
+.win::before{content:"幅 700px の窓";position:absolute;top:2px;left:8px;background:var(--ink);color:var(--gold);font:700 11px var(--font-mono);padding:0 8px}
+.page{position:relative;width:700px;height:420px;background:var(--paper);border:2px solid var(--ink);overflow:hidden}
+.page .hd{height:44px;background:var(--ink);color:var(--card);padding:10px 14px;font:900 15px var(--font-sans)}
+.page .body{padding:14px 16px;display:grid;gap:8px}
+.page h3{margin:0;display:inline-block;background:var(--rose);color:#fff;padding:2px 14px;transform:skewX(var(--skew));font:900 24px/1.4 var(--font-sans);justify-self:start}
+.page p{margin:0;font-size:14px}
+.page .poster{height:150px;background:#d8d2c6;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.tag{position:absolute;z-index:3;display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--gold);border:2px solid var(--ink);box-shadow:var(--shadow);font:900 13px var(--font-sans)}
+.a .tag{right:12px;bottom:12px}
+.b .tag{right:12px;top:50px}
+.c .tag{right:12px;bottom:12px;padding:6px 8px}.c .tag span{display:none}
+.vis{font:700 11px var(--font-mono);color:var(--muted)}
+</style>
+</head>
+<body>
+<header><small>TESTGROUND</small><h1>ログインの札の場所（561〜760px）</h1><a href="index.html">← テストグラウンド</a></header>
+<main>
+  <section class="lead">
+    <p><span class="tg">決めること</span> 分割した窓や小さいタブレット（561〜760px）で、ログインの札をどこに置くか。</p>
+    <p>560px 以下（スマホ）はもう右下に固定して、一番下に札の高さ分の空きを取り、字が隠れないようにしてあります。ここだけ、まだ右上のままです。</p>
+  </section>
+  <div class="row">
+    <div class="plan"><h2>案 A　スマホと同じ右下にそろえる（おすすめ）</h2>
+      <div class="pc"><b>良い点</b> 窓を縮めても同じ場所。見出しや日付に重ならない。親指で届く。<br><b>困る点</b> 本文の最後が札に隠れるので、下に 72px の空きを足す（スマホで済み）。</div>
+      <div class="win"><div class="page a"><div class="hd">ウォッチリスト</div><div class="body"><h3>チェーンソーマン</h3><p>見出しの右上は空いたまま。</p><div class="poster"></div><p>最後の字が札の下に隠れないよう、下に空きを取る。</p></div><div class="tag">test-a <span>お客さま</span></div></div></div>
+    </div>
+    <div class="plan"><h2>案 B　今のまま右上</h2>
+      <div class="pc"><b>良い点</b> 変更なし。パソコンと同じ場所。<br><b>困る点</b> 版面の見出し・日付の右端に重なる。スマホ（右下）とも場所が違う。</div>
+      <div class="win"><div class="page b"><div class="hd">ウォッチリスト</div><div class="body"><h3>チェーンソーマン</h3><p>見出しの右に札が重なる位置。</p><div class="poster"></div><p>右上の帯・日付と同じ高さ。</p></div><div class="tag">test-a <span>お客さま</span></div></div></div>
+    </div>
+    <div class="plan"><h2>案 C　右下で、下へ読み進める間は丸いアイコンだけ</h2>
+      <div class="pc"><b>良い点</b> 字に重なる面積が最小。スマホの「スクロール中は札をしまう」動きに近い。<br><b>困る点</b> 何のボタンか分かりにくい（アイコンだけ）。</div>
+      <div class="win"><div class="page c"><div class="hd">ウォッチリスト</div><div class="body"><h3>チェーンソーマン</h3><p>札は小さい丸。</p><div class="poster"></div><p>止まると文字つきに戻る。</p></div><div class="tag">test-a <span>お客さま</span></div></div></div>
+    </div>
+  </div>
+  <p class="vis">本番に出すときは render.py の @media (max-width:560px) を 760px までにするだけ（案 A）。いまの 390px は変えない。</p>
+</main>
+</body>
+</html>
