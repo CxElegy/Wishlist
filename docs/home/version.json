@@ -1,32 +1,32 @@
 {
- "admin": "81d7a6120c78",
- "admin-ai": "58679be333d6",
+ "admin": "3569c256d945",
+ "admin-ai": "8101dfd164f2",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "608b7ef2"
+   "d20378cd"
   ],
   "tokens": [
    "AI 編集のトークン",
    "8b2acbd1"
   ]
  },
- "admin-boards": "582cc5f95290",
+ "admin-boards": "24d60bd76b07",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "dab508ac"
+   "4948500e"
   ],
   "votes": [
    "投票",
    "0e38ce7a"
   ]
  },
- "admin-emblem": "925d8aa21233",
+ "admin-emblem": "be2415d294a9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ffb1a208"
+   "3f7e5887"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,7 +34,7 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "b54bff62"
+   "b887b1cd"
   ],
   "emblems": [
    "小元素",
@@ -43,11 +43,11 @@
  },
  "admin-members": "9f83cbcbc85f",
  "admin-members_marks": {},
- "admin-now": "4583db515b9f",
+ "admin-now": "cdf2c994accc",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7448a621"
+   "b7475e0e"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "830a63e6"
+   "a7d9bf07"
   ],
   "term-panel": [
    "ライブログ",
-   "4338765a"
+   "d5a8a06a"
   ]
  },
- "admin-system": "c22391647fd3",
+ "admin-system": "3cea8fe75507",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "29861e3a"
+   "4fce6928"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "39b8640e"
+   "7d07b857"
   ]
  },
  "admin_marks": {},
- "heat": "3bc2cd82f861",
+ "heat": "5cc683987c7f",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "c15384d6"
+   "9922541e"
   ],
   "ranking": [
    "ランキング",
-   "2348d13d"
+   "58c12871"
   ]
  },
- "index": "a6bfe4d28fc9",
+ "index": "b41012cf8bca",
  "index_marks": {
   "front": [
    "トップ",
@@ -196,6 +196,6 @@
    "8ea232b0"
   ]
  },
- "updated": "10.31 19:36",
- "wishlist": "cd9bec2c2213"
+ "updated": "10.31 19:38",
+ "wishlist": "9bcc39369688"
 }

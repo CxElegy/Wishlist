@@ -54,7 +54,6 @@
   "https://utaten.com/kentei/index/1174/": "https://cdn.utaten.com/uploads/images/kentei/kentei/1174/2c512f1f2055341b9217e039060ef29b1b188e85.jpeg?r=2026103103",
   "https://webun.jp/articles/-/1119302": "https://www.bing.com/th?id=ONUT.Atrc8zvAwiIrtr2ezW7inA&pid=News&w=512",
   "https://www.2news.com/news/local/black-cat-adoption-trends-around-halloween/article_f4a15846-a198-4a3a-af4f-4a393d308346.html": "https://bloximages.newyork1.vip.townnews.com/2news.com/content/tncms/assets/v3/editorial/f/4a/f4a15846-a198-4a3a-af4f-4a393d308346/6ae13df9256cf.preview.jpg?crop=1920%2C1008%2C0%2C35&resize=1200%2C630&order=crop%2Cresize",
-  "https://www.8days.sg/seeanddo/streamit/movie-review-hirokazu-koreeda-look-back-2026-865251": "https://dam.mediacorp.sg/image/upload/s--kiXcjCJ4--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/mediacorp/8days/image/2026/10/29/look_back_1a.jpg?itok=DGkWB0ZY",
   "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/grand-theft-auto-vi-looms-as-rockstar-s-uk-staff-vote-on-union-recognition/70437132": "https://mdb.ad-hoc-news.de/bild/bild-2836747_1920_1080.webp",
   "https://www.androidpolice.com/mint-mobile-deal-50percent-off-galaxy-s26-discount/": "https://static0.anpoimages.com/wordpress/wp-content/uploads/wm/2026/04/img_3419.jpg?w=1600&h=900&fit=crop",
   "https://www.cinemacafe.net/article/2026/10/26/113608.html": "https://www.cinemacafe.net/imgs/ogp_f/841987.jpg",
@@ -80,6 +79,7 @@
   "https://www.rohto.co.jp/news/release/2026/1028_01": "https://www.rohto.co.jp/news/release/2026/-/media/cojp/news/release/2026/1028_01/261028_01.png",
   "https://www.sammyfans.com/2026/10/29/samsung-galaxy-s27-to-feature-distinct-identities/": "https://www.sammyfans.com/wp-content/uploads/2026/10/galaxy-s27-series-img.jpg",
   "https://www.sanyonews.jp/article/1912545": "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg",
+  "https://www.sanyonews.jp/article/1942385?kw=%E7%A6%8F%E7%A5%B1": "https://static.sanyonews.jp/image/article/size1/7/a/9/8/7a9874075471c27e646838f53ce747be_1.jpg",
   "https://www.sina.cn/news/detail/5358586324059403.html": "http://wx2.sinaimg.cn/middle/008t7Pxtgy1iifkalrz44j32rg28qkjl.jpg",
   "https://www.ssnp.co.jp/foodservice/709219/": "https://www.ssnp.co.jp/uploads/2026/10/261028sutaba_r-18.jpg",
   "https://www.svg.com/2296612/what-happens-cancel-gta-6-preorder/": "https://www.svg.com/img/gallery/what-happens-if-you-cancel-your-gta-6-preorder/l-intro-1793030057.jpg",
@@ -1055,6 +1055,60 @@
   },
   {
    "batch": 1,
+   "because": "チェーンソーマン",
+   "date": "2026-10-31",
+   "hits": [],
+   "image": "https://static.sanyonews.jp/image/article/size1/7/a/9/8/7a9874075471c27e646838f53ce747be_1.jpg",
+   "kind": "board",
+   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
+   "score": 8,
+   "source": "山陽新聞",
+   "taste": [
+    [
+     "作品:チェーンソーマン",
+     5
+    ]
+   ],
+   "title": "チェンソーマン作者の藤本タツキ『ダンダダン』イラスト描く 「エグくなってる」「自然過ぎて天才」と大反響",
+   "url": "https://www.sanyonews.jp/article/1942385?kw=%E7%A6%8F%E7%A5%B1",
+   "words": [],
+   "work": "チェーンソーマン"
+  },
+  {
+   "batch": 1,
+   "because": "三星手机",
+   "date": "2026-10-31",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.e8lh6PItyZ8cgFr5XolDkA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "score": 8,
+   "source": "베타뉴스 on MSN",
+   "taste": [
+    [
+     "galaxy",
+     7
+    ],
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
+    ]
+   ],
+   "title": "갤럭시S27 프로, 울트라 기능 이렇게나 포함된다",
+   "url": "https://www.msn.com/ko-kr/%EA%B8%B0%EC%88%A0/%EC%86%8C%EB%B9%84%EC%9E%90-%EC%A0%84%EC%9E%90-%EA%B8%B0%EA%B8%B0/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%ED%94%84%EB%A1%9C-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%A0%87%EA%B2%8C%EB%82%98-%ED%8F%AC%ED%95%A8%EB%90%9C%EB%8B%A4/ar-AA2gsEHa",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 2,
    "because": "GTA 6",
    "date": "2026-10-30",
    "hits": [],
@@ -1171,40 +1225,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 2,
-   "because": "三星手机",
-   "date": "2026-10-30",
-   "hits": [
-    "三星 Galaxy"
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.z_OFnfXcwpfQqM9E2znaDg&pid=News&w=1200",
-   "kind": "board",
-   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
-   "score": 8,
-   "source": "PhoneArena on MSN",
-   "taste": [
-    [
-     "galaxy",
-     7
-    ],
-    [
-     "三星 Galaxy",
-     7
-    ],
-    [
-     "作品:三星手机",
-     7
-    ]
-   ],
-   "title": "Latest Galaxy S27 battery leak suggests Samsung is repeating its old mistakes",
-   "url": "https://www.msn.com/en-us/technology/consumer-electronics/latest-galaxy-s27-battery-leak-suggests-samsung-is-repeating-its-old-mistakes/ar-AA2gpds0",
-   "words": [
-    "galaxy"
-   ],
-   "work": "三星手机"
-  },
-  {
-   "batch": 2,
+   "batch": 3,
    "because": "gelato pique",
    "date": "2026-10-29",
    "hits": [],
@@ -1223,27 +1244,6 @@
    "url": "https://news.livedoor.com/article/detail/32691267/",
    "words": [],
    "work": "gelato pique"
-  },
-  {
-   "batch": 3,
-   "because": "チェーンソーマン",
-   "date": "2026-10-29",
-   "hits": [],
-   "image": "https://dam.mediacorp.sg/image/upload/s--kiXcjCJ4--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/mediacorp/8days/image/2026/10/29/look_back_1a.jpg?itok=DGkWB0ZY",
-   "kind": "board",
-   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
-   "score": 8,
-   "source": "8days.sg",
-   "taste": [
-    [
-     "作品:チェーンソーマン",
-     5
-    ]
-   ],
-   "title": "Look Back Review: Hirokazu Kore-eda’s Live-Action Adaptation Of A Manga By Chainsaw Man Creator Looks Stunning — So Why Does It Feel So Empty?",
-   "url": "https://www.8days.sg/seeanddo/streamit/movie-review-hirokazu-koreeda-look-back-2026-865251",
-   "words": [],
-   "work": "チェーンソーマン"
   },
   {
    "batch": 3,

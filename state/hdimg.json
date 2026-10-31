@@ -911,12 +911,6 @@
   "target": 1280,
   "v": 3
  },
- "https://dam.mediacorp.sg/image/upload/s--kiXcjCJ4--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/mediacorp/8days/image/2026/10/29/look_back_1a.jpg?itok=DGkWB0ZY": {
-  "w": 1200,
-  "h": 676,
-  "target": 720,
-  "v": 3
- },
  "https://dapsmagic.com/wp-content/uploads/2026/10/The-Mandalorian-Cookbook-1.jpg": {
   "w": 1280,
   "h": 720,
@@ -3751,6 +3745,12 @@
  "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg": {
   "w": 640,
   "h": 433,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/7/a/9/8/7a9874075471c27e646838f53ce747be_1.jpg": {
+  "w": 640,
+  "h": 360,
   "target": 720,
   "v": 3
  },
