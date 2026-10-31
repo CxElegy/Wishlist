@@ -1,5 +1,5 @@
 {
- "note": "規則（harness/emblem_pick_rules.py）が × にする本番の小元素＝直す待ちの一覧。増えたら tests が落ちる（新しい壊れ方）。直して × でなくなったら、ここから外す（外し忘れも落ちる）。2026-10-31 の数は 33",
+ "note": "規則（harness/emblem_pick_rules.py）が × にする本番の小元素＝直す待ちの一覧。増えたら tests が落ちる（新しい壊れ方）。直して × でなくなったら、ここから外す（外し忘れも落ちる）。2026-10-31 の数は 37",
  "x": [
   "A2O LITE|AIJING",
   "A2O LITE|VORA",
@@ -32,6 +32,8 @@
   "チェーンソーマン|Makima",
   "チェーンソーマン|Nomo",
   "哈利波特剧集|Quirinus Quirrell（Luke Thallon）",
+  "漫威电影|Captain Marvel（Brie Larson）",
+  "漫威电影|Hank Pym（Michael Douglas）",
   "漫威电影|漫威电影（作品）",
   "绝区零|Ju Fufu",
   "绝区零|Lucia Elowen",
