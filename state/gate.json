@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-31T06:07:42+00:00",
+ "checked": "2026-10-31T07:32:36+00:00",
  "fired": {
-  "at": "2026-10-31T06:07:42+00:00",
+  "at": "2026-10-31T07:32:36+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,85 +12,61 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T05:25:50+00:00",
+    "at": "2026-10-31T07:32:36+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 237,
-    "resp": "cse_01W4x6f5fb7aphf1aYWM2AnB",
-    "sig": "e8649225150a"
+    "prog": 290,
+    "resp": "cse_01W4x6f7643uHDKn9nxViYux",
+    "sig": "93a93f75e8d6"
    },
    "items": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
+    "Astrae Oratio",
     "あつ森",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
     "日本顶级网球赛事",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "猫用品"
+    "滑雪"
    ],
-   "last_batch": "2026-10-31T05:44:53+00:00",
+   "last_batch": "2026-10-31T07:05:04+00:00",
    "last_error": {
     "at": "2026-10-31T01:21:10+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 239,
+   "prog": 290,
    "prog_day": "2026-10-31",
    "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "星巴克马克杯",
-    "漫威电影",
-    "猫用品"
+    "あつ森",
+    "日本顶级网球赛事",
+    "滑雪"
    ],
-   "sig": "b522e8f32244",
+   "sig": "93a93f75e8d6",
    "token_cap": 1000000,
-   "tokens_today": 584510,
-   "why": "整理待ちの記事 49 件（17 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 621377,
+   "why": "整理待ちの記事 7 件（4 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "漫威电影"
+    "チェーンソーマン",
+    "漫威电影",
+    "dota2",
+    "哈利波特剧集",
+    "FROM",
+    "GTA 6"
    ],
    "need": true,
-   "sig": "a13740a33d82",
+   "sig": "fb45bbdcac7a",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
-    "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
     "周杰伦",
-    "哈利波特剧集",
     "绝区零"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 13 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
