@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "931013daca98",
+ "edit_sig": "9be021c1ddcb",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,8 +23,9 @@
      "date": "2026-10-30",
      "headline": "'아스오라' 앞에 국경 없다...\"오타쿠는 위 아 더 월드\"",
      "highlight": "",
-     "image": "https://cdn.playforum.net/news/photo/202610/635726_67705_1837.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "플레이포럼",
+     "source_icon": "https://cdn.playforum.net/favicon.ico",
      "url": "https://www.playforum.net/news/articleView.html?idxno=635726",
      "weight": "normal"
     },
@@ -76,22 +77,6 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 5,
-     "source": "GNN 新聞網",
-     "title": "【電玩瘋】手機週報《魔物獵人：旅人》、《ONE PIECE 海洋盛宴》與《BLEACH Mirrors High》等遊戲",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9wX0k2N3hrcVlQV0VjREZWNm5LTHFzTG1odWduc3BaSjE3WVNkQS1sczhGYlNmcVYtQ3dndkpCUFhaS1FaenpCVjdtVVJ3YjZDMXplNjhDRUI?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 6,
-     "source": "GameWith",
-     "title": "BLEACH Mirrors Highの評価とアプリ情報",
-     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE9GOE5IdGs0M0s1VlpjUGxfbHpTWDJkRkpna1RvSElQMmhqQWd5ZUh6RER0cy1TZGQ2OVhNb2ZITTFCbGVZcWJv?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -405,8 +390,8 @@
      "date": "2026-10-26",
      "headline": "아일릿, 이번엔 관계의 ‘손익분기점’ 따진다…10월 ‘BREAK EVEN’ 컴백",
      "highlight": "BREAK EVEN",
-     "image": "https://cdn.mdtoday.co.kr/news/photo/202609/611993_313929_4730.jpg",
-     "image_via": "og:image",
+     "image": "https://photo.jtbc.co.kr/news/jam_photo/202610/26/1067d1c8-184f-44fb-9a79-6e8e0c5dea40.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.mdtoday.co.kr/news/articleView.html?idxno=611993",
      "weight": "normal"
     },
@@ -578,15 +563,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 9,
-     "source": "TRILL",
-     "title": "【2027年福袋】11／2抽選応募スタート！ジェラピケ「HAPPY BOX 2027」",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9EZ2l5R3ZJNWRSQ2NBZnhxY3VOald4Q2ZZa0JDMDZzSXNiekFPQXY3TWZZUG55bG9rcExfSVEzaXdhTWFGQ2hGY3BUSjNBMGc?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -827,15 +803,6 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 10,
-     "source": "GameWith",
-     "title": "あつ森攻略｜あつまれどうぶつの森",
-     "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE9qdDl1eTMtam5PdElqc2JIVWhxTlNaMm5zazJob2d4YUNzNmdYSl9HZ1ZoOWd0Y1hQU3JHVC1seWQ4T00?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1142,15 +1109,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 18,
-     "source": "GamesRadar+",
-     "title": "Final Fantasy 14: Evercold gets a four week delay - the MMO's new expansion now launches in next year's very busy February season",
-     "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxPdXl3cS1xdzJwZEZVT3FVTnhUTXJxLWlqUVdfeXhHMnlNazRyT1NuUjdBd2N4SzVJZ29pN0x2bWdHSDU5ekJIZVNmX08tdUk0SG9fS3ZqdjFvanlJYm9HcUdHNUYxcFdzel8wU28zcDk2cnMwVTNGelV6VWRYME9hYnBPandBcWF4bThYcnlKTlBqOU1SazI4R1kwcHF6V0s3OHZsTlNpeHgzV1hHd1lFMlJyRmd4UGtjRlZ1MnBXUVpUZFpjLUlYbVpvZklHR3duSVdfVDFTSEhiWkNRRjgtbFRJU0tzc0VoQ1VCSTNJZEhoMnBXQUpVLUdVWllYX3BLdHc?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1229,8 +1187,8 @@
      "date": "2026-10-31",
      "headline": "世界23位フェルナンデス 初の東レPPO決勝進出、ストレート勝ちでツアー7度目V王手＜女子テニス＞",
      "highlight": "初の東レPPO決勝進出",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-3-view.jpg?exp=10800",
-     "image_via": "og:image",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-3-view.jpg?pri=l&w=640&h=420&exp=10800",
+     "image_via": "正文图",
      "url": "https://news.yahoo.co.jp/articles/c280789146fe29ba7f23db78d2fdf324517ab7b0",
      "weight": "normal"
     },
@@ -1402,22 +1360,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 6,
-     "source": "Sur in English",
-     "title": "Work or have coffee surrounded by cats: the world’s first feline-friendly co-working space is in Malaga",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNWnJWYm5CdVc4QjNoSzVzNHFqTlVDS2dkNG1WUzBvNXdDbjF6SGF5UUxvaUdfMVF0X29ibXNHUk9WUjYzbGw3TElMTmFGSy1xRXlSV2N5NGxtY01wME95dFVTSmxWQ0h1bkVpZUg4Q0FwRWd2cUhMdTdDbndWLVRJdUZzMXI?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 7,
-     "source": "ライブドアニュース",
-     "title": "猫の寿命を延ばすことが期待される薬『AIM』とは？腎臓病の治療への効果や現在の研究状況",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFA1TmxmMUVBeEVvRVp2ZkNYVHQtdUMyY1JhOWMtMTRwTnRySGFPQmRyemprM3VxV200bjFkZkhlLTVsZmlIWjRJd09iajB0RjlhalY2QXFFMFR6VHk5dENF?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {

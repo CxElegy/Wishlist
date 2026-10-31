@@ -677,12 +677,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.mdtoday.co.kr/news/photo/202609/611993_313929_4730.jpg": {
-  "w": 600,
-  "h": 400,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.mediaus.co.kr/news/photo/202610/318631_233956_4423.jpg": {
   "w": 960,
   "h": 639,
@@ -692,12 +686,6 @@
  "https://cdn.newstoon.co.kr/news/photo/202610/81715_104460_512.jpg": {
   "w": 600,
   "h": 400,
-  "target": 720,
-  "v": 3
- },
- "https://cdn.playforum.net/news/photo/202610/635726_67705_1837.jpg": {
-  "w": 960,
-  "h": 640,
   "target": 720,
   "v": 3
  },
@@ -3163,15 +3151,16 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-3-view.jpg?exp=10800": {
-  "w": 2200,
-  "h": 1445,
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-3-view.jpg?pri=l&w=640&h=420&exp=10800": {
+  "w": 640,
+  "h": 420,
   "target": 1280,
   "v": 3,
-  "local": "pics/4a5deeb46c3382cf.webp",
+  "blur": 0.609,
+  "local": "pics/f0df7cddb5868180.webp",
   "out": [
    1280,
-   841
+   840
   ],
   "why": "期限付きの網址"
  },
@@ -3373,6 +3362,12 @@
  "https://photo.jtbc.co.kr/news/jam_photo/202610/25/1a03e766-71d1-41fa-a0e3-714412135388.jpg": {
   "w": 560,
   "h": 784,
+  "target": 720,
+  "v": 3
+ },
+ "https://photo.jtbc.co.kr/news/jam_photo/202610/26/1067d1c8-184f-44fb-9a79-6e8e0c5dea40.jpg": {
+  "w": 560,
+  "h": 1249,
   "target": 720,
   "v": 3
  },

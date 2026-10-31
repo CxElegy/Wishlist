@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-30T13:22:54+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-30T13:29:26+00:00",
 "text": "2026-10-30 第 1 バッチを出刊：BLEACH Mirrors High、FROM、GTA 6、ILLIT、The Mandalorian、dota2 ほか 6（12 版面・61 本・残り 4 版面） · token 新規入力 4.3万・キャッシュ読み 86.2万・出力 3,314",
 "level": "ok",
@@ -1859,5 +1854,37 @@
 "calls": 40,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-31T14:53:16+00:00",
+"text": "2026-10-31 第 1 バッチを出刊：BLEACH Mirrors High（1 版面・3 本・残り 4 版面） · token 新規入力 4.2万・キャッシュ読み 39.7万・出力 2,349",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.3,
+"mem_total": 16872808448,
+"mem_free": 16004452352,
+"disk_used": 10011873280,
+"disk_free": 31271661568,
+"disk_total": 41283534848,
+"peak": 329023488
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High"
+],
+"stories": 3,
+"left": 4,
+"edited": 23,
+"run": 1793457873.7395191,
+"tok": {
+"in": 14,
+"cw": 41665,
+"cr": 396976,
+"out": 2349,
+"calls": 7,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 441004
 }
 ]
