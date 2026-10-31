@@ -1,14 +1,14 @@
 {
- "admin": "f29c1286cd13",
- "admin-ai": "f3a4f2383893",
+ "admin": "d94ca959595d",
+ "admin-ai": "1b025ed4c45b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8931fd98"
+   "eb04100c"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e7fa6022"
+   "3dbbd213"
   ]
  },
  "admin-boards": "85852bb83f4e",
@@ -22,11 +22,11 @@
    "ddb5f3f0"
   ]
  },
- "admin-emblem": "79b9b89b1273",
+ "admin-emblem": "737e5a8f71c6",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "01399c62"
+   "2f7a9ae6"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0aa841405d91",
  "admin-members_marks": {},
- "admin-now": "1b00f5b1b48f",
+ "admin-now": "a0cc2c5291c0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "58c95bb4"
+   "2d34b7fc"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c08ae554"
+   "b6ec174f"
   ]
  },
- "admin-system": "7fd9118ad15f",
+ "admin-system": "669e00df32cf",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1d7f1864"
+   "c31b9e42"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e737b51d"
+   "0b81b21b"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "51cdfbba"
   ]
  },
- "index": "db194c644909",
+ "index": "a633e86e9f5c",
  "index_marks": {
   "front": [
    "トップ",
-   "012912fa"
+   "d3f85f8a"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "bd09903c"
+   "f61bd52b"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "fe0c2f1e"
+   "42de275d"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "8ea232b0"
   ]
  },
- "updated": "10.31 14:32",
+ "updated": "10.31 14:44",
  "wishlist": "8f338b3417b7"
 }
