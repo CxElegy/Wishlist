@@ -273,6 +273,67 @@ def cover_bad(c):
     return [f"右下の札が一番下の字を隠す（{len(c)}：" + "・".join(c) + "）"] if c else []
 
 
+DOCK_WIDTHS = (390, 560, 561, 700, 760, 761, 1000)   # 2026-11-01：札の境目（560|561・760|761）の両側と真ん中。既定の 1400/390 だけでは 561〜760 を見ない
+DOCK_JS = """()=>{const b=document.querySelector('.wl-auth');if(!b)return null;const v=e=>e.checkVisibility?e.checkVisibility({checkVisibilityCSS:true}):!!e.offsetParent;
+ const m=b.querySelector(':scope>.more');return {vis:[...b.children].filter(v).map(e=>e.classList.contains('more')?'more':(e.className||e.tagName)),
+ exp:m?m.getAttribute('aria-expanded'):null,away:b.classList.contains('away'),has:!!m}}"""
+
+
+def dock_bad(width, st, clicked=None, opened_scroll=None, closed_scroll=None):
+    """札（.wl-auth）の子のうち見えるものが幅ごとの決まりどおりか。st/clicked は DOCK_JS の結果。
+    ≤560・≥761：「⋯」は出ず、札は見える。561〜760：「⋯」だけ。押すと開き（aria-expanded=true・札が見える）、もう一度で閉じる。
+    開いたまま下へ読み進めても札をしまわない（opened_scroll.away=False）・閉じていればしまう（closed_scroll.away=True）。"""
+    if not st:
+        return ["札（.wl-auth）がない"]
+    bad, vis = [], st["vis"]
+    if not 561 <= width <= 760:
+        if "more" in vis:
+            bad.append(f"{width}px に「⋯」が出ている（{vis}）")
+        if not [x for x in vis if x != "more"]:
+            bad.append(f"{width}px に札が見えない")
+        return bad
+    if vis != ["more"]:
+        bad.append(f"{width}px の札は「⋯」だけのはず（見えるもの：{vis}）")
+    if clicked is not None:
+        if not [x for x in clicked["vis"] if x != "more"] or clicked["exp"] != "true":
+            bad.append(f"{width}px で「⋯」を押しても開かない（{clicked['vis']}・expanded={clicked['exp']}）")
+    if opened_scroll is not None and opened_scroll["away"]:
+        bad.append(f"{width}px で「⋯」を開いたまま下へ読むと札ごとしまう")
+    if closed_scroll is not None and not closed_scroll["away"]:
+        bad.append(f"{width}px で閉じているのに下へ読んでも札をしまわない")
+    return bad
+
+
+def check_dock(pw, base, who, width):
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    pg = b.new_page(viewport={"width": width, "height": 900})
+    pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+    if WHO[who]:
+        pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}", session(WHO[who]))
+        pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+    pg.wait_for_selector(".wl-auth > *", state="attached", timeout=30000)
+    pg.wait_for_timeout(1500)
+    st = pg.evaluate(DOCK_JS)
+    clicked = opened = closed = None
+    if st and 561 <= width <= 760 and st["has"]:
+        def sc(y):
+            pg.evaluate(f"window.scrollTo(0,{y})")
+            pg.wait_for_timeout(500)
+            return pg.evaluate(DOCK_JS)
+        closed = sc(900)   # 閉じたまま下へ → しまう
+        sc(0)
+        pg.click(".wl-auth > .more")
+        clicked = pg.evaluate(DOCK_JS)
+        opened = sc(900)   # 開いたまま下へ → しまわない
+        sc(0)
+        pg.click(".wl-auth > .more")
+        again = pg.evaluate(DOCK_JS)
+        if again and again["vis"] != ["more"]:
+            clicked = {**clicked, "exp": "false", "vis": again["vis"]}   # もう一度押しても閉じない
+    b.close()
+    return dock_bad(width, st, clicked, opened, closed)
+
+
 def first_screen_bad(f, gap=8):
     """f = FIRST_JS の結果。壊れ方を文にして返す（単体テストで足りない所を見分ける）。"""
     if not f:
@@ -1167,6 +1228,15 @@ def main(argv):
                 fails += bool(bad)
                 print(("✗ " if bad else "✓ ") + f"{who}{' ' + page.split('.')[0] if page else ''} {w}x{h}px：" + ("、".join(bad) if bad else
                       f"版面 {st.get('secs')}・記事 {st.get('arts')}・写真 {st.get('pics')}・本人のページ {'はい' if st.get('own') else 'いいえ'}"))
+        for who in [x for x in a.who.split(",") if x in ("guest", "test-a", "test-b")]:   # 札の境目（既定の幅では見ない 561〜760 を含む）
+            bad = []
+            for w in DOCK_WIDTHS:
+                try:
+                    bad += check_dock(pw, a.base, who, w)
+                except Exception as ex:  # noqa: BLE001
+                    bad.append(f"{w}px 開けなかった（{type(ex).__name__}: {str(ex)[:100]}）")
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + f"{who} 札の境目 {'/'.join(map(str, DOCK_WIDTHS))}px：" + ("、".join(bad) if bad else "幅ごとの札・「⋯」の開け閉め・しまう動きどおり"))
         for w in a.widths.split(","):
             try:
                 bad = check_admin(pw, a.base, int(w), out)

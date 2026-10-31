@@ -4457,7 +4457,7 @@ AUTH_JS = r"""
   document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree,.wl-mine'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
   // スマホ（右下に固定）：下へ読み進めると札をしまい、上へ戻す・ページの上と下の端で出す（本文の写真・文字に重ねたままにしない。よくある「下へで隠す・上へで出す」）
   (function(){var y0=scrollY,mq=matchMedia('(max-width:760px)');
-    function set(off){var b=document.querySelector('.wl-auth');if(b&&!(off&&b.querySelector('.menu:not([hidden])')))b.classList.toggle('away',off);}
+    function set(off){var b=document.querySelector('.wl-auth');if(b&&!(off&&(b.querySelector('.menu:not([hidden])')||(b.classList.contains('open')&&innerWidth>560))))b.classList.toggle('away',off);}   // 開いている札（メニュー・561〜760 の「⋯」）はしまわない
     addEventListener('scroll',function(){if(!mq.matches)return set(false);var y=scrollY,end=innerHeight+y>=document.documentElement.scrollHeight-8;
       if(y>y0+4&&y>120&&!end)set(true);else if(y<y0-4||end||y<=120)set(false);y0=y;},{passive:true});})();
   function addMore(box,keepOpen){   // 561〜760px だけ見える「⋯」：押すと札が開く（CSS .more）
