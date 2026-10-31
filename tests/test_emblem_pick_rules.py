@@ -11,7 +11,7 @@ sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 import emblem_pick_rules as R  # noqa: E402
 
-QUEUE = json.loads((ROOT / "harness" / "labels" / "emblem_x_queue.json").read_text())["x"]   # 直す待ちの × の一覧（2026-10-31：32）
+SHELF = json.loads((ROOT / "harness" / "labels" / "emblem_x_queue.json").read_text())   # × の棚（上限と理由の種類）。名前の一覧は本番の入れ替えですぐずれるので持たない
 
 
 class PickRules(unittest.TestCase):
@@ -27,9 +27,8 @@ class PickRules(unittest.TestCase):
         rows, sm = R.audit_production()
         self.assertGreater(sm["n"], 300)
         self.assertEqual(sm["n"], sm["o"] + sm["x"] + sm["-"])
-        xs = {f"{r[0]}|{r[1]}" for r in rows if r[2] == "x"}
-        self.assertEqual(sorted(xs - set(QUEUE)), [], "待ちの一覧にない × が出た（新しい壊れ方）。直すか、直す待ちとして一覧に足す")
-        self.assertEqual(sorted(set(QUEUE) - xs), [], "もう × でない小元素が一覧に残っている。harness/labels/emblem_x_queue.json から外す（棚を下げる）")
+        self.assertLessEqual(sm["x"], SHELF["shelf"], "× が棚を超えた（新しい壊れ方か本番の入れ替え）。名前は --audit で見て、規則で直す")
+        self.assertEqual(sorted(set(sm["x_by_reason"]) - set(SHELF["reasons"])), [], "知らない理由の × が出た（新しい壊れ方）。理由を足すか規則で直す")
 
 
 if __name__ == "__main__":
