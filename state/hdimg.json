@@ -4030,6 +4030,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.asahicom.jp/imgopt/img/0512f9fa68/hw640/AS20261031002946.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.471,
+  "local": "pics/0ac7491d311320bd.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
+ },
  "https://www.billboard-japan.com/common/sys/img/news/00000166/166889/image.jpg": {
   "w": 999,
   "h": 999,
@@ -4128,6 +4141,19 @@
   "out": [
    1280,
    669
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.644,
+  "local": "pics/45d8e8296dea3cb4.webp",
+  "out": [
+   720,
+   720
   ],
   "why": "看不清"
  },
@@ -4545,12 +4571,6 @@
    640
   ],
   "why": "看不清"
- },
- "https://www.bleachernation.com/wp-content/uploads/2026/10/httpscdn.dataskrive.comapiassetAnwVcDz.jpg": {
-  "w": 999,
-  "h": 562,
-  "target": 1280,
-  "v": 3
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,

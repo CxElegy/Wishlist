@@ -48,6 +48,7 @@
   "https://utaten.com/kentei/index/1174/": "https://cdn.utaten.com/uploads/images/kentei/kentei/1174/2c512f1f2055341b9217e039060ef29b1b188e85.jpeg?r=2026103103",
   "https://webun.jp/articles/-/1119302": "https://www.bing.com/th?id=ONUT.Atrc8zvAwiIrtr2ezW7inA&pid=News&w=512",
   "https://woman.tvbs.com.tw/fashion/68177": "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp",
+  "https://www.bleachernation.com/picks/2026/10/31/fernandez-vs-shnaider-prediction-at-the-toray-pan-pacific-open-tennis-saturday-october-31/": "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300",
   "https://www.chinatimes.com/realtimenews/20261029004039-260421": "https://images.chinatimes.com/newsphoto/2026-10-29/656/20261029004040.jpg",
   "https://www.crank-in.net/trend/item/193422/1": "https://www.bing.com/th?id=ONUT.KOsfIlpysro4UjegnaF79g&pid=News&w=1200",
   "https://www.crank-in.net/trend/sweets/193398": "https://www.crank-in.net/img/db/263101289203384_1200.jpg",
@@ -1655,6 +1656,21 @@
   },
   {
    "batch": 6,
+   "because": "日本顶级网球赛事",
+   "date": "2026-10-31",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300",
+   "kind": "board",
+   "score": 4,
+   "source": "Bleacher Nation",
+   "taste": [],
+   "title": "Fernandez vs. Shnaider Prediction at the Toray Pan Pacific Open Tennis – Saturday, October 31",
+   "url": "https://www.bleachernation.com/picks/2026/10/31/fernandez-vs-shnaider-prediction-at-the-toray-pan-pacific-open-tennis-saturday-october-31/",
+   "words": [],
+   "work": "日本顶级网球赛事"
+  },
+  {
+   "batch": 7,
    "because": "滑雪",
    "date": "2026-10-30",
    "hits": [],
@@ -2076,11 +2092,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [

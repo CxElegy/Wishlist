@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "a8eb90b54715",
+ "edit_sig": "e52077003941",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -345,40 +345,28 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 9,
-     "source": "テニスマガジンONLINE",
-     "title": "東レ パンパシフィックオープン、大会最終日の試合予定",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1TejFuSzJDUzRfTnpIdEdqRXdEMEktc0hERTJsd3NrMEJBSjd5Rzg1czJpajZOcUZlVXpJUXZLa1FtYXVGWGlyZlU3cy1LUmVUVUVsaTdsLVpHUQ?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 10,
-     "source": "テニスマガジンONLINE",
-     "title": "シュナイダー＆フェルナンデスとダブロウスキー／ステファニー＆エラーニ／パオリーニが決勝に進出 [東レPPO]",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1FN1ZUYllIQ0dYbkdVa1liN0pMUmY2WXJvVmpnX3BmRnJBM1NhN2xDRFhDYjhTcGd4Ym1pQlBZZnN2ME9WVDNpeGVrTl9tbzk1UjJwNHRyRjZOdw?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 11,
-     "source": "朝日新聞デジタル",
-     "title": "ポハンコバ惜敗 テニスの東レ・パンパシフィック・オープン 31日",
-     "url": "https://www.asahi.com/articles/DA3S16579040.html"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
-     "blurb": "On Saturday, Leylah Annie Fernandez (No. 23) takes on Diana Shnaider (No. 13) in the final at the Toray Pan Pacific Open.",
+     "blurb": "東レPPOはシングルス決勝がシュナイダー対フェルナンデスに。ポハンコバは準決勝でシュナイダーに4-6、6-7で惜敗。",
      "date": "2026-10-31",
-     "headline": "Fernandez vs. Shnaider Prediction at the Toray Pan Pacific Open Tennis – Saturday, October 31",
-     "highlight": "Fernandez vs. Shnaider",
-     "image": "https://www.bleachernation.com/wp-content/uploads/2026/10/httpscdn.dataskrive.comapiassetAnwVcDz.jpg",
-     "image_via": "og:image",
-     "url": "https://www.bleachernation.com/picks/2026/10/31/fernandez-vs-shnaider-prediction-at-the-toray-pan-pacific-open-tennis-saturday-october-31/",
+     "headline": "シュナイダー＆フェルナンデスとダブロウスキー／ステファニー＆エラーニ／パオリーニが決勝に進出",
+     "highlight": "決勝に進出",
+     "image": "https://www.asahicom.jp/imgopt/img/0512f9fa68/hw640/AS20261031002946.jpg",
+     "image_via": "正文图（其它来源）（6 枚から）",
+     "url": "https://tennismagazine.jp/article/detail/35862",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "東レ パンパシフィックオープン、大会最終日の試合予定",
+     "highlight": "大会最終日の試合予定",
+     "image": null,
+     "source": "テニスマガジンONLINE",
+     "source_icon": "https://www.google.com/s2/favicons?domain=tennismagazine.jp&sz=128",
+     "url": "https://tennismagazine.jp/article/detail/35871",
+     "weight": "normal"
     },
     {
      "blurb": "",
