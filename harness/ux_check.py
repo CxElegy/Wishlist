@@ -374,7 +374,22 @@ def html_weight_bad(html):
         bad.append(f"一時保管の主写真 {len(st)} 枚のうち srcset がないのが {nosrc} 枚")
     if 'fetchpriority="high"' not in html and 'data-e="s"' in html:
         bad.append("最初の写真に loading=eager / fetchpriority=high がない（LCP の先読み）")
+    if 'rel="preload" as="image"' not in html and kept:
+        bad.append("最初の主写真の <link rel=preload> が <head> にない（本文の読み取りを待たず取る）")
     return bad
+
+
+def photo_cache_bad(html, get=None):
+    """一時保管の写真を GET したとき cache-control が public で max-age が 1 日以上（HEAD は private,no-cache に見えるので GET で）。2026-10-31 写真 0.5 秒。"""
+    m = re.search(r'<img src="([^"]*/storage/v1/object/public/photos/[^"]*)"', html)
+    if not m:
+        return []
+    def head(u):
+        r = urllib.request.urlopen(urllib.request.Request(u, headers=BROWSER_HEADERS), timeout=30)
+        return r.headers.get("cache-control", "")
+    cc = (get or head)(re.sub(r"&amp;", "&", m.group(1)))
+    age = re.search(r"max-age=(\d+)", cc)
+    return [] if "public" in cc and age and int(age.group(1)) >= 86400 else [f"一時保管の写真の cache-control が「{cc}」（public・1 日以上にする）"]
 
 
 def check_public_leak(base):
@@ -923,7 +938,7 @@ def main(argv):
             print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
         try:   # HTML の重さ・画像 1 枚ごとのハンドラ（ログインなしで取れる店長のページ）
             html = urllib.request.urlopen(urllib.request.Request(a.base, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
-            bad = html_weight_bad(html)
+            bad = html_weight_bad(html) + photo_cache_bad(html)
         except Exception as ex:  # noqa: BLE001
             bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
         fails += bool(bad)

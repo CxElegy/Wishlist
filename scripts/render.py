@@ -4936,7 +4936,18 @@ EAGER_N = 3
 def _eager_first(html_, n=EAGER_N):
     """最初の n 枚の記事の写真（主图）だけ lazy を外して先に取る。実行時の JS では先読み（preload scanner）に間に合わない
     ので HTML に直接書く（2026-10-30 最初のニュースを速く）。bg（ぼかし）は lazy のまま。"""
-    return re.sub(r'(<img src="[^"]*"[^>]*?) loading="lazy"([^>]*data-e="s">)', r'\1 loading="eager" fetchpriority="high"\2', html_, count=n)
+    pat = r'(<img src="[^"]*"[^>]*?) loading="lazy"([^>]*data-e="s">)'
+    first = re.search(pat, html_)
+    out = re.sub(pat, r'\1 loading="eager" fetchpriority="high"\2', html_, count=n)
+    if first and "<head>" in out:   # 最初の主写真は <head> の先頭で preload（本文の読み取りを待たず、通信を HTML と並べる。2026-10-31 写真 0.5 秒）
+        tag = first.group(0)
+        g = lambda a_: (m := re.search(rf'\b{a_}="([^"]*)"', tag)) and m.group(1)
+        link = f'<link rel="preload" as="image" fetchpriority="high" href="{g("src")}"'
+        if g("srcset"):
+            link += f' imagesrcset="{g("srcset")}" imagesizes="{g("sizes") or "100vw"}"'
+        cs = '<meta charset="utf-8">'
+        out = out.replace(cs, cs + link + ">", 1) if cs in out.split("</head>")[0] else out.replace("<head>", "<head>" + link + ">", 1)
+    return out
 
 
 def page_marks(html_):

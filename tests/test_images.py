@@ -731,6 +731,17 @@ class ImagesTest(unittest.TestCase):
         self.assertEqual(h.count('loading="eager"'), 3)
         self.assertNotIn('class="bg" src="https://a/0.jpg" alt="" loading="eager"', h)
 
+    def test_first_photo_preloaded_and_cache_check(self):
+        """最初の主写真は <head> の preload（srcset つき）。一時保管の cache-control 点検が public／max-age を見分ける。"""
+        import render
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check
+        h = render._eager_first('<head><meta charset="utf-8"></head><img src="https://s/storage/v1/object/public/photos/a-800.webp" srcset="https://s/a-400.webp 400w, https://s/a-800.webp 800w" sizes="100vw" loading="lazy" data-e="s">')
+        self.assertIn('<link rel="preload" as="image" fetchpriority="high" href="https://s/storage/v1/object/public/photos/a-800.webp" imagesrcset=', h)
+        self.assertLess(h.index("<meta charset"), h.index("rel=\"preload\""))
+        self.assertEqual(ux_check.photo_cache_bad(h, lambda u: "public, max-age=1209600"), [])
+        self.assertEqual(len(ux_check.photo_cache_bad(h, lambda u: "private, no-cache")), 1)
+
     def test_render_icon_fallback_order(self):
         """兜底顺序：自己的图 → 作品封面 → 来源图标（存的 → 完整域名 → 主域名）→ 作品名封面块。"""
         import render
