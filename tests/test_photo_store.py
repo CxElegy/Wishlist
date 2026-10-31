@@ -44,6 +44,33 @@ class PhotoStore(unittest.TestCase):
         self.assertIn(f'srcset="https://s.example/storage/v1/object/public/photos/{k}-400.webp 400w, https://s.example/storage/v1/object/public/photos/{k}-800.webp 800w"', h)
         self.assertIn(f'data-fb="{u}"', h)
 
+    def test_old_uploads_get_immutable_cache_header(self):
+        """前に上げた分（cc の印なし）を、同じ中身で CACHE 付きに上げ直し、印を付ける。新しい分は最初から印つき。"""
+        sent, k = [], P.key("https://x.example/a.jpg")
+        P._req = lambda base, keyv, path, data=None, method="POST", ctype="image/webp", extra=None: sent.append((path, extra))
+        class R:
+            def __enter__(s): return s
+            def __exit__(s, *a): pass
+            def read(s): return b"x"
+        orig, orig_req = P.urllib.request.urlopen, P._req
+        P.urllib.request.urlopen = lambda *a, **kw: R()
+        try:
+            with tempfile.TemporaryDirectory() as d:
+                d = pathlib.Path(d)
+                (d / "i.html").write_text('<img src="https://x.example/a.jpg" data-e="s">', encoding="utf-8")
+                st = d / "s.json"
+                st.write_text(json.dumps({"base": "https://s.example", "p": {k: {"at": 1, "b": 5}}}), encoding="utf-8")
+                s = P.run(site=d, path=st, base="https://s.example", keyv="k")
+                self.assertEqual((s["cc"], s["cc_wait"]), (1, 0))
+                self.assertEqual(json.loads(st.read_text())["p"][k]["cc"], 1)
+                self.assertEqual(len(sent), 2)      # 400 と 800
+                self.assertTrue(all(e["Cache-Control"] == P.CACHE for _, e in sent))
+                sent.clear()
+                P.run(site=d, path=st, base="https://s.example", keyv="k")
+                self.assertEqual(sent, [])          # 印があれば上げ直さない
+        finally:
+            P.urllib.request.urlopen, P._req = orig, orig_req
+
     def test_shrink_never_upscales(self):
         from PIL import Image
         b = io.BytesIO()

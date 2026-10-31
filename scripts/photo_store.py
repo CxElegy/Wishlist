@@ -147,9 +147,25 @@ def _req(base, keyv, path, data=None, method="POST", ctype="image/webp", extra=N
         r.read()
 
 
+CACHE = "public, max-age=31536000, immutable"   # ファイル名が中身の指紋なので変わらない
+
+
 def upload(base, keyv, k, sizes):
     for w, b in sizes.items():
-        _req(base, keyv, f"{BUCKET}/{name(k, w)}", b, extra={"x-upsert": "true", "Cache-Control": "public, max-age=31536000, immutable"})
+        _req(base, keyv, f"{BUCKET}/{name(k, w)}", b, extra={"x-upsert": "true", "Cache-Control": CACHE})
+
+
+def rehead(base, keyv, k):
+    """前に上げた分（cache-control が public, max-age=1209600 のまま）を、同じ中身で上げ直して CACHE にする。"""
+    try:
+        sizes = {}
+        for w in WIDTHS:
+            with urllib.request.urlopen(urllib.request.Request(public(base, k, w), headers={"User-Agent": UA}), timeout=30) as r:
+                sizes[w] = r.read()
+        upload(base, keyv, k, sizes)
+        return k, True
+    except Exception:  # noqa: BLE001  次の回にまた試す
+        return k, False
 
 
 def remove(base, keyv, ks):
@@ -203,12 +219,24 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                     break
                 for k, n in ex.map(lambda t: one(base, keyv, *t), todo[i:i + workers * 4]):
                     if n:
-                        p[k] = {"at": today, "b": n}
+                        p[k] = {"at": today, "b": n, "cc": 1}
                         x.pop(k, None)
                         new += 1
                     else:
                         x[k] = today
                         bad += 1
+    cc = 0
+    old = [k for k, v in p.items() if not v.get("cc")]   # cc = 1 は CACHE 付きで上げ済み。ないものは上げ直す（時間の余りで・8 並列）
+    if old and base and keyv:
+        end = time.time() + minutes * 30
+        with ThreadPoolExecutor(workers) as ex:
+            for i in range(0, len(old), workers * 4):
+                if time.time() > end:
+                    break
+                for k, ok in ex.map(lambda k: rehead(base, keyv, k), old[i:i + workers * 4]):
+                    if ok:
+                        p[k]["cc"] = 1
+                        cc += 1
     for k in [k for k, d in x.items() if today - d > KEEP_DAYS]:
         del x[k]
     gone = evict(p, seen, today)
@@ -219,7 +247,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     used = sum(v["b"] for v in p.values())
     hit = len(seen)
     stat = {"n": len(p), "bytes": used, "cap": CAP, "gone": len(gone), "new": new, "bad": bad, "pics": total, "hit": hit,
-            "wait": max(0, len(todo) - new - bad), "day": today}
+            "wait": max(0, len(todo) - new - bad), "day": today, "cc": cc, "cc_wait": sum(1 for v in p.values() if not v.get("cc"))}
     out = {"base": base or st["base"], "p": p, "x": x, "stat": stat}
     (path or STATE).parent.mkdir(parents=True, exist_ok=True)
     (path or STATE).write_text(json.dumps(out, ensure_ascii=False, sort_keys=True, separators=(",", ":")), encoding="utf-8")
@@ -235,11 +263,11 @@ def main(argv):
     if not (base and keyv):
         raise SystemExit("supabase_url か SUPABASE_SERVICE_KEY がありません")
     s = run(minutes, base, keyv)
-    print(f"写真の一時保管：{s['n']} 枚・{s['bytes'] // 1024 // 1024}MB（上限 {s['cap'] // 1024 // 1024}MB）／新しく {s['new']}・取れず {s['bad']}・消した {s['gone']}・順番待ち {s['wait']}／主写真 {s['pics']} 枚のうち一時保管から {s['hit']}")
+    print(f"写真の一時保管：{s['n']} 枚・{s['bytes'] // 1024 // 1024}MB（上限 {s['cap'] // 1024 // 1024}MB）／新しく {s['new']}・取れず {s['bad']}・消した {s['gone']}・順番待ち {s['wait']}・cache 付け直し {s['cc']}（残り {s['cc_wait']}）／主写真 {s['pics']} 枚のうち一時保管から {s['hit']}")
     path = os.environ.get("GITHUB_OUTPUT")
     if path:
         with open(path, "a", encoding="utf-8") as f:
-            f.write(f"changed={'true' if s['new'] or s['gone'] else 'false'}\nmore={'true' if s['wait'] and s['new'] else 'false'}\n")
+            f.write(f"changed={'true' if s['new'] or s['gone'] or s['cc'] else 'false'}\nmore={'true' if (s['wait'] and s['new']) or (s['cc_wait'] and s['cc']) else 'false'}\n")
 
 
 if __name__ == "__main__":

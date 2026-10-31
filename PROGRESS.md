@@ -187,3 +187,4 @@
 
 - 2026-10-31 r2f1 管理ページ全ユーザー管理の指摘直し：置き方・関注項の中身を follows 1 行ずつ②に（RPC admin_follow_rows・admin_account_langs で言語も account に結ぶ・本番に適用・anon 不可を確認）。ux_check は値を follows と照合、列数ずれ(10/11)を直した。tests 緑。次：設定の書き換え・tokens。
 - 2026-10-31 r1：写真 0.5 秒 第 1 回。最初の主写真を head で preload・cache-control immutable・ux_check 点検（PR #646）。確かめ：本番に preload あり・スマホ開始 627→256ms。次：④置く順・色の下絵。
+- 2026-10-31 r1f1：写真 0.5 秒 第 2 回。根＝Mandalorian の主写真は lazy で目次から飛んで初めて取っていた。全版面の先頭の写真を先に取る（ahead）・既存写真の cache 上げ直し・点検を全版面に広げ・photo_time.py・settings 素の箱の race。確かめ：PC 365〜572ms。次：上げ直しの完了・色の下絵。
