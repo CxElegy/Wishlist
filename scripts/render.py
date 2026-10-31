@@ -801,12 +801,13 @@ def _pic(story):
     fbs = story.get("_fbs") if story.get("_fbs") is not None else [story.get("_cover")]
     # 第一张是 src，其余按顺序备用。本站的高清版打不开时还有原图
     chain = list(dict.fromkeys(v for u in [img, *fbs] if u for v in (_img_url(u), _img_url(u, local=False))))
-    big = small = None
-    if chain and (big := photo_store.stored(chain[0])):   # 写真の一時保管に置いてあれば先頭に（原寸は落ち先に残る）
-        chain.insert(0, big)
-        small = photo_store.stored(chain[1], 400)
-    fb = f' data-fb="{e(" ".join(chain[1:]))}"' if len(chain) > 1 else ""
-    src = chain[0] if chain else None
+    big = photo_store.stored(chain[0]) if chain else None
+    small = photo_store.stored(chain[0], 400) if big else None
+    # 写真の一時保管に置いてある網址は、先頭だけでなく落ち先（data-fb）も置き場の写真を先に（原寸は各々のすぐ後に残る）。
+    # 先頭が開けず落ち先へ替わっても原寸の外部画像に戻らない（2026-11-01 dota2：先頭の 17173 が落ち、置き場にある Steam の原寸 jpg が出ていた）
+    exp = [v for u in chain for v in (photo_store.stored(u), u) if v]
+    fb = f' data-fb="{e(" ".join(exp[1:]))}"' if len(exp) > 1 else ""
+    src = exp[0] if exp else None
     # 一時保管の写真は幅 400／800 を srcset で渡す（小さい画面・小さい枠は 400）。背景のぼかしは 400 で足りる
     srcset = f' srcset="{e(small)} 400w, {e(big)} 800w" sizes="(max-width:700px) 100vw, 33vw"' if small else ""
     tag = (f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer" data-e="s">') if src else ""
@@ -819,7 +820,7 @@ def _pic(story):
                 f'alt="" loading="lazy" referrerpolicy="no-referrer" data-e="i" data-l="i">'
                 f'<span class="src">{e(_source_name(story))}</span>')
     cls = "" if src else " icon" if icons else " none"
-    col = photo_store.tint_css(chain[1] if big else chain[0]) if chain else None   # 色だけの下絵（写真が届く前から枠に色が出る）
+    col = photo_store.tint_css(chain[0]) if chain else None   # 色だけの下絵（写真が届く前から枠に色が出る）
     sty = f' style="background:{col}"' if col and re.fullmatch(r"#[0-9a-f]{6}", col) else ""
     return f'<div class="pic{cls}"{sty}>{label}{tag}{icon}</div>'
 

@@ -51,6 +51,20 @@ class PhotoStore(unittest.TestCase):
         self.assertIn(f'srcset="https://s.example/storage/v1/object/public/photos/{k}-400.webp 400w, https://s.example/storage/v1/object/public/photos/{k}-800.webp 800w"', h)
         self.assertIn(f'data-fb="{u}"', h)
 
+    def test_render_pic_fallbacks_prefer_stored_copy(self):
+        """先頭が開けず落ち先へ替わるとき、置き場にある落ち先は置き場の写真が先（原寸の外部画像へ戻らない。2026-11-01 dota2）。"""
+        import render
+        u1, u2 = "https://x.example/a.jpg", "https://y.example/b.jpg"
+        k2 = P.key(u2)
+        P._CACHE[:] = [{"base": "https://s.example", "p": {k2: {"at": 1, "b": 5}}, "x": {}, "stat": {}}]
+        try:
+            h = render._pic({"image": u1, "_fbs": [u2], "title": "t"})
+        finally:
+            P._CACHE[:] = []
+        s2 = f"https://s.example/storage/v1/object/public/photos/{k2}-800.webp"
+        self.assertIn(f'src="{u1}"', h)
+        self.assertIn(f'data-fb="{s2} {u2}"', h)
+
     def test_old_uploads_get_immutable_cache_header(self):
         """前に上げた分（cc の印なし）を、同じ中身で CACHE 付きに上げ直し、印を付ける。新しい分は最初から印つき。"""
         sent, k = [], P.key("https://x.example/a.jpg")
