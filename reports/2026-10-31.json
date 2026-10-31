@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "e3da75d02e64",
+ "edit_sig": "f8b86e359017",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1023,8 +1023,8 @@
      "date": "2026-10-26",
      "headline": "「A2O LITE」のデビュー曲「NEON」をキレッキレで踊るイ・スマン？ サニー（少女時代）、叔父のAI動画をさらし、テギョン（2PM）も「大丈夫？」",
      "highlight": "",
-     "image": "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp",
-     "image_via": "og:image",
+     "image": "https://www.wowkorea.jp/img/news/107/539918/456791_tmb.webp",
+     "image_via": "正文图",
      "url": "https://www.wowkorea.jp/news/read/539189.html",
      "weight": "normal"
     }
@@ -1258,22 +1258,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 2,
-     "source": "ウォーカープラス",
-     "title": "＜画像6 / 35＞「どやねこ展」でドヤ顔のかわいらしいネコたちが大集合！【写真特集】",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1XdTUzQThsYnQzVmM5Vl9Hbm9ZTEVDNzhNc1MxQzB6UXFQVF9Ra1U3MVh1VjU1SXJaMXJDX1UwVVJ6OFdnZTk1Uko3SkR5R2RVZWhtWjZpRE5QTFVtS000ZjVlZURFZzhzaXlRT3BQVzRUc0JLU0RMTl9Lbw?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 3,
-     "source": "朝日新聞デジタル",
-     "title": "「うちの猫、救急病院に連れて行くべき？」いざというとき、あなたは判断できますか？",
-     "url": "https://www.asahi.com/and/pressrelease/16993703"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1285,6 +1269,26 @@
      "image_via": "AI 挑选",
      "url": "https://www.walkerplus.com/article/40701/image210701.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "「どやねこ展」でドヤ顔のかわいらしいネコたちが大集合！【写真特集】",
+     "highlight": "どやねこ展",
+     "image": "https://news.walkerplus.com/article/137001/766899_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/trend/matome/article/137001/image766909.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "「うちの猫、救急病院に連れて行くべき？」いざというとき、あなたは判断できますか？",
+     "highlight": "",
+     "image": "https://www.asahi.com/and/ogp/ogp_and.png",
+     "image_via": "og:image",
+     "url": "https://www.asahi.com/and/pressrelease/16993703",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",

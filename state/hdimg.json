@@ -2561,8 +2561,15 @@
  "https://news.walkerplus.com/article/137001/766899_615.jpg": {
   "w": 615,
   "h": 410,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.703,
+  "local": "pics/7e3e9530aa2a8e4d.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/1422988/17878260_615.jpg": {
   "w": 615,
@@ -4113,6 +4120,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.asahi.com/and/ogp/ogp_and.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://www.billboard-japan.com/common/sys/img/news/00000166/166889/image.jpg": {
   "w": 999,
   "h": 999,
@@ -4191,6 +4204,12 @@
  "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
   "w": 700,
   "h": 508,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.H_wI2uCPh02bfIBIqbwryA&pid=News&w=600": {
+  "w": 600,
+  "h": 297,
   "target": 720,
   "v": 3
  },
@@ -5101,11 +5120,18 @@
   "target": 1280,
   "v": 3
  },
- "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp": {
-  "w": 1280,
-  "h": 960,
+ "https://www.wowkorea.jp/img/news/107/539918/456791_tmb.webp": {
+  "w": 320,
+  "h": 240,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "blur": 0.525,
+  "local": "pics/6ad71ae670ebb53e.webp",
+  "out": [
+   720,
+   540
+  ],
+  "why": "看不清"
  },
  "https://x0.ifengimg.com/res/2026/7DB009EBC78419C0A22C491DF17530B86991AC52_size23_w689_h293.jpg": {
   "w": 689,
