@@ -2,7 +2,7 @@
  "_covered": {
   "漫威电影": 79,
   "哈利波特剧集": 26,
-  "GTA 6": 45,
+  "GTA 6": 49,
   "A2O LITE": 25,
   "三星手机": 32,
   "ILLIT": 14,
@@ -191,14 +191,17 @@
    }
   },
   {
-   "headline": "Grand Theft Auto VI's graphics are noticeably more detailed than in 2023.",
-   "highlight": "",
+   "headline": "Announcing Grand Theft Auto VI: The Album, Coming November 19",
+   "highlight": "November 19",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1,
-    24
-   ]
+    49
+   ],
+   "event": {
+    "date": "2026-11-19",
+    "label": "配信日"
+   }
   },
   {
    "headline": "GTA 6 map size is so big it rivals GTA 4, GTA 5, and Red Dead Redemption 2's combined",
@@ -207,7 +210,8 @@
    "weight": "normal",
    "refs": [
     40,
-    42
+    42,
+    47
    ]
   }
  ],

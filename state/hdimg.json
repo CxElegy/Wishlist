@@ -42,12 +42,6 @@
   "target": 720,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261030ac/200/w640h360/20261030/26b9-24fb1a42955fbd686893da9d3952627b.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-31"
- },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
@@ -1060,12 +1054,6 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
-  "v": 3
- },
- "https://gamegpu.com/images/1_2026/NEWS/Q4/okt/30/2026_gpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/okt/30/2026_gpu.webp?width=1920&height=1080": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
   "v": 3
  },
  "https://gamenewsplus.net/wp-content/uploads/2026/10/GTA-6-REVIEW-CODES.webp": {
@@ -2168,6 +2156,12 @@
   "h": 1080,
   "target": 720,
   "v": 3
+ },
+ "https://media-rockstargames-com.akamaized.net/tina-uploads/posts/7599a881942544/50105de3da220dff6dd47fad6865b1912e7466ca.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "https://media.eiga.com/images/movie/100938/photo/86db6065986a9eef.jpg": {
   "w": 566,
@@ -4424,6 +4418,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.ZihHWBLSjGNMY8YZXiPRsQ&pid=News&w=1080": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4597,6 +4597,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.vrX5emCBpA0B9v3BiJu6SQ&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
  "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4758,12 +4764,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/10_6f3cce.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/Ghost-Rider-Connor-Storrie.jpg?resize=1200,630": {
@@ -5046,12 +5046,6 @@
   "w": 664,
   "h": 664,
   "target": 720,
-  "v": 3
- },
- "https://www.sammyfans.com/wp-content/uploads/2026/10/galaxy-s27-series-img.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://www.ssnp.co.jp/uploads/2026/10/261028sutaba_r-18.jpg": {
