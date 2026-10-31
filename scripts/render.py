@@ -6048,11 +6048,13 @@ EMM_JS = r"""
       host.insertBefore(d,sh);});
     if(n)paint();}
   var ST={ok:'済',running:'待ち（次の回で動く）',failed:'失敗（新しい材料が来るまで待つ）'};
+  var ed={};   // 版面 id → admin_board_edit_state の行（店長だけ。記事を集めた最新の日と件数）
+  function storyCell(id){var e=ed[id];return e&&e.day?e.day+' · '+e.stories+' 本'+(e.pending?'（整理待ち '+e.pending+'）':''):'まだ';}
   function libState(rows){   // ライブラリの全版面ごとの小元素の状態（boards.config から。名前は焼かない）
     var box=$('wl-libstate'),sec=box&&box.closest('section');if(!box)return;sec.hidden=false;box.dataset.n=rows.length;
-    box.innerHTML='<table class="wl-tbl"><thead><tr><th>版面</th><th>人数</th><th>小元素</th><th>状態</th><th>前回</th><th>メモ</th></tr></thead><tbody>'+rows.map(function(r){
+    box.innerHTML='<table class="wl-tbl"><thead><tr><th>版面</th><th>人数</th><th>小元素</th><th>状態</th><th>前回</th><th>記事（最新の日）</th><th>設計</th><th>メモ</th></tr></thead><tbody>'+rows.map(function(r){
       var c=r.config||{},s=c.emblem_state||{},n=(c.emblem||[]).length,at=s.at?new Date(s.at*1000).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
-      return '<tr data-id="'+r.id+'"><td>'+esc(r.name)+'</td><td>'+(r.followers||0)+'</td><td>'+n+'</td><td>'+esc(ST[s.state]||(n?'—':'まだ'))+'</td><td>'+at+'</td><td>'+esc(s.note||'')+'</td></tr>';}).join('')+'</tbody></table>';
+      return '<tr data-id="'+r.id+'"><td>'+esc(r.name)+'</td><td>'+(r.followers||0)+'</td><td>'+n+'</td><td>'+esc(ST[s.state]||(n?'—':'まだ'))+'</td><td>'+at+'</td><td data-k="stories">'+esc(storyCell(r.id))+'</td><td data-k="design">'+(c.theme?'配色'+(c.motif?'・主題':''):'まだ')+'</td><td>'+esc(s.note||'')+'</td></tr>';}).join('')+'</tbody></table>';
     if(window.WL_WHO)window.WL_WHO.mount(box,'tr[data-id]',function(el){return [el.dataset.id];});}
   function whoTabs(){if(window.WL_WHO&&bts0())window.WL_WHO.mount(bts0().parentNode,'.emm-bt',function(el){return [el.dataset.bid||'shop'];});}
   function bts0(){return document.querySelector('.emm-boards');}
@@ -6061,7 +6063,9 @@ EMM_JS = r"""
     if(libDone||!window.WL_TOK||document.documentElement.dataset.role!=='admin'||!CFG.url||!window.fetch)return;libDone=true;   // 店長だけ（お客さまの画面に全ユーザーの行を作らない。2026-10-31）
     fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/boards?select=id,name,followers,config&order=followers.desc,id',{headers:{apikey:CFG.key,Authorization:'Bearer '+window.WL_TOK}})
       .then(function(r){return r.ok?r.json():[];}).then(function(rows){
-        var bts=document.querySelector('.emm-boards');if(bts)bts.dataset.lib=rows.length;addLib(rows);whoTabs();libState(rows);},function(){libDone=false;});}
+        var bts=document.querySelector('.emm-boards');if(bts)bts.dataset.lib=rows.length;addLib(rows);whoTabs();
+        fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/rpc/admin_board_edit_state',{method:'POST',headers:{apikey:CFG.key,Authorization:'Bearer '+window.WL_TOK,'Content-Type':'application/json'},body:'{}'})
+          .then(function(r){return r.ok?r.json():[];}).catch(function(){return [];}).then(function(es){(es||[]).forEach(function(e){ed[e.board_id]=e;});libState(rows);});},function(){libDone=false;});}
   document.addEventListener('wl-token',loadLib);document.addEventListener('wl-role',loadLib);loadLib();
   function paint(){
     [].forEach.call(document.querySelectorAll('.emm-tile'),function(t){

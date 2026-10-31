@@ -188,6 +188,9 @@ class LibState(unittest.TestCase):
         self.assertIn('id="wl-libstate"><p class="empty">読み込み中', out)
         self.assertIn("function libState", render.EMM_JS)
         self.assertIn("emblem_state", render.EMM_JS)
+        self.assertIn("admin_board_edit_state", render.EMM_JS)   # 収集（記事）の列は③も④と同じ RPC から
+        self.assertIn('data-k="stories"', render.EMM_JS)
+        self.assertIn('data-k="design"', render.EMM_JS)
         self.assertIn("libstate", [s for _, s, _ in render.ADMIN_WHO])
 
 
