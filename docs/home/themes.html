@@ -1170,6 +1170,14 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 .wl-auth{top:auto;bottom:12px;right:12px;transition:transform .25s ease,opacity .25s ease}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}
   .wl-auth.away{transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none}}
 @media (max-width:560px) and (prefers-reduced-motion:reduce){.wl-auth{transition:none}}
+.wl-auth>button.more{display:none}
+/* 561〜760px（分割した窓・小さいタブレット）：右下に「⋯」だけ。押すと札とログインが開く（2026-11-01，用户定的：3 点のメニューの中でログイン） */
+@media (min-width:561px) and (max-width:760px){body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+.wl-auth{top:auto;bottom:12px;right:12px;transition:transform .25s ease,opacity .25s ease;flex-direction:column;align-items:flex-end}
+.wl-auth.away{transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none}
+.wl-auth>button.more{display:flex;justify-content:center;min-width:44px;padding:4px 10px;font-size:20px;line-height:1;order:9}
+.wl-auth:not(.open)>:not(.more){display:none!important}
+.wl-auth.open .menu{position:static;margin-top:0}.wl-auth .shop{display:none}}
 </style><script>
 (function(){
   var A={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js", "page": "themes", "terms": 3, "termsUrl": "terms.html", "start": "../#name", "home": "../?stay", "secs": [["\u5f71\u89c6", "\u4f5c\u54c1", "#9B3FB5"], ["\u6e38\u620f", "\u30b2\u30fc\u30e0", "#2F5BD3"], ["\u6f14\u51fa", "\u97f3\u697d\u30fb\u30e9\u30a4\u30d6", "#BB265A"], ["\u8fd0\u52a8", "\u30b9\u30dd\u30fc\u30c4", "#156A48"], ["\u597d\u7269", "\u30b7\u30e7\u30c3\u30d4\u30f3\u30b0", "#985315"], ["\u751f\u6d3b", "\u66ae\u3089\u3057\u30fb\u8da3\u5473", "#6E6A12"], ["\u51fa\u884c", "\u304a\u3067\u304b\u3051\u30fb\u30a2\u30fc\u30c8", "#0F6B78"], ["\u5176\u4ed6", "\u305d\u306e\u4ed6", ""]], "items": [["Astrae Oratio", "\u6e38\u620f"], ["BLEACH Mirrors High", "\u6e38\u620f"], ["GTA 6", "\u6e38\u620f"], ["MMORPG \u65b0\u4f5c", "\u6e38\u620f"], ["\u6ed1\u96ea", "\u8fd0\u52a8"], ["\u6f2b\u5a01\u7535\u5f71", "\u5f71\u89c6"], ["FROM", "\u5f71\u89c6"], ["\u54c8\u5229\u6ce2\u7279\u5267\u96c6", "\u5f71\u89c6"], ["ILLIT", "\u6f14\u51fa"], ["\u661f\u5df4\u514b\u9a6c\u514b\u676f", "\u597d\u7269"], ["\u732b\u7528\u54c1", "\u751f\u6d3b"], ["\u65e5\u672c\u9876\u7ea7\u7f51\u7403\u8d5b\u4e8b", "\u8fd0\u52a8"], ["\u4e09\u661f\u624b\u673a", "\u597d\u7269"], ["gelato pique", "\u597d\u7269"], ["\u3050\u3067\u305f\u307e", "\u597d\u7269"], ["\u30c1\u30a7\u30fc\u30f3\u30bd\u30fc\u30de\u30f3", "\u5f71\u89c6"], ["The Mandalorian", "\u5f71\u89c6"], ["\u3042\u3064\u68ee", "\u6e38\u620f"], ["Vaundy", "\u6f14\u51fa"], ["\u5468\u6770\u4f26", "\u6f14\u51fa"], ["\u7edd\u533a\u96f6", "\u6e38\u620f"], ["dota2", "\u6e38\u620f"], ["A2O LITE", "\u6f14\u51fa"]]}, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
@@ -1369,10 +1377,15 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   },true);
   document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree,.wl-mine'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
   // スマホ（右下に固定）：下へ読み進めると札をしまい、上へ戻す・ページの上と下の端で出す（本文の写真・文字に重ねたままにしない。よくある「下へで隠す・上へで出す」）
-  (function(){var y0=scrollY,mq=matchMedia('(max-width:560px)');
+  (function(){var y0=scrollY,mq=matchMedia('(max-width:760px)');
     function set(off){var b=document.querySelector('.wl-auth');if(b&&!(off&&b.querySelector('.menu:not([hidden])')))b.classList.toggle('away',off);}
     addEventListener('scroll',function(){if(!mq.matches)return set(false);var y=scrollY,end=innerHeight+y>=document.documentElement.scrollHeight-8;
       if(y>y0+4&&y>120&&!end)set(true);else if(y<y0-4||end||y<=120)set(false);y0=y;},{passive:true});})();
+  function addMore(box,keepOpen){   // 561〜760px だけ見える「⋯」：押すと札が開く（CSS .more）
+    var m=document.createElement('button');m.type='button';m.className='more';m.textContent='⋯';m.setAttribute('aria-haspopup','true');m.setAttribute('aria-label','menu');
+    if(keepOpen)box.classList.add('open');m.setAttribute('aria-expanded',String(box.classList.contains('open')));
+    m.onclick=function(){var o=box.classList.toggle('open');m.setAttribute('aria-expanded',String(o));};box.appendChild(m);
+  }
   function chip(keepOpen){
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
     var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
@@ -1384,7 +1397,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
         '<a class="about" href="'+esc(HOME)+L.chip4;
       var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=email]').focus();};
-      bindLogin(box); return;
+      bindLogin(box); addMore(box,keepOpen); return;
     }
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
     // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
@@ -1398,6 +1411,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       L.chip10;
     var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
     b.onclick=function(){var o=menu.hidden;menu.hidden=!o;b.setAttribute('aria-expanded',String(o));};
+    addMore(box,keepOpen);
     menu.querySelector('[data-out]').onclick=logout;
     var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
     var pb=menu.querySelector('[data-pw]'); if(pb) pb.onclick=function(){   // ログインしたまま新しいパスワードに
@@ -1868,7 +1882,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       .then(function(){document.dispatchEvent(new Event('wl-role'));   // 役目が決まった合図（③エンブレムが、店長のときだけライブラリを読む）
         mine();chip();gate();readOnlyNote();members();libboards();libedit();libvotes();libaccts();libplace();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
-          var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
+          var b=document.querySelector('.wl-auth>button.in'); if(b){var m=document.querySelector('.wl-auth>button.more'); if(m&&!m.parentNode.classList.contains('open')) m.click(); b.click();}
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
         }});
   }
@@ -1899,7 +1913,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>11.01 04:51</b></div></div></header>
+<div class="meta"><small>更新</small><b>11.01 05:02</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
