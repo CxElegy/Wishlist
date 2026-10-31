@@ -1,32 +1,32 @@
 {
- "admin": "012710aa7c6c",
- "admin-ai": "4ce106f8bfb7",
+ "admin": "b0144af702bf",
+ "admin-ai": "21a6bcaf82eb",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ad7ce77e"
+   "95e6f7fa"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ed648b4b"
   ]
  },
- "admin-boards": "8daa7b21cb73",
+ "admin-boards": "57a77e492cd2",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "73786e89"
+   "4090f8fc"
   ],
   "votes": [
    "投票",
    "4a13bcc4"
   ]
  },
- "admin-emblem": "7b53378cbdef",
+ "admin-emblem": "9be0c0dd9e20",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e511ae85"
+   "7397fee4"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,30 +43,30 @@
  },
  "admin-members": "44fc36dd8f41",
  "admin-members_marks": {},
- "admin-now": "17bf5926c37e",
+ "admin-now": "4b0c6259b951",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e96a3df5"
+   "668bb786"
   ],
   "queue": [
    "いまの状況",
-   "0e4cd4fc"
+   "253a9248"
   ],
   "status": [
    "運行状況",
-   "48682aff"
+   "847dfa67"
   ],
   "term-panel": [
    "ライブログ",
-   "0bec0c9c"
+   "b3ee3d2e"
   ]
  },
- "admin-system": "4ec0658fb9e6",
+ "admin-system": "93fa13dc7edc",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b7ca1384"
+   "8c914f96"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "97f0ce48"
+   "8b8d80c2"
   ]
  },
  "admin_marks": {},
- "heat": "a334e1a0db30",
+ "heat": "1b27e636c929",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "6921e290"
+   "bee57e6f"
   ],
   "ranking": [
    "ランキング",
-   "d8bb624f"
+   "3b843159"
   ]
  },
- "index": "452e7509d126",
+ "index": "7f264a0b31f4",
  "index_marks": {
   "front": [
    "トップ",
-   "6a1bb301"
+   "25e576ae"
   ],
   "picks": [
    "気になるかも？",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "b560615e"
+   "71fbfb01"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "8ea232b0"
   ]
  },
- "updated": "10.31 11:44",
+ "updated": "10.31 11:46",
  "wishlist": "3b31118b3205"
 }

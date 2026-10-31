@@ -2540,6 +2540,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.walkerplus.com/article/137001/766899_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/1422988/17878260_615.jpg": {
   "w": 615,
   "h": 360,
@@ -4115,6 +4121,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.4SG1MA6TdPJ9wlN2-6HDsA&pid=News&w=1200": {
+  "w": 700,
+  "h": 392,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.585AXRfL_8k6iLulkr5P9w&pid=News&w=600": {
   "w": 600,
   "h": 391,
@@ -4155,12 +4167,6 @@
  "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
   "w": 700,
   "h": 508,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.H_wI2uCPh02bfIBIqbwryA&pid=News&w=600": {
-  "w": 600,
-  "h": 297,
   "target": 720,
   "v": 3
  },
@@ -4278,12 +4284,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.YiFbXTcXoEbmYKDuPJ0wNQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4309,12 +4309,6 @@
    779
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.aNQyCOVWcCJu9MNX7Scj6w&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.b599IgmyuPGyJ7Vbvf8W-w&pid=News&w=1200": {
   "w": 700,
@@ -4514,6 +4508,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.zgMXWPbXfoFp-IVg-NLg3w&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
   "h": 700,
@@ -4635,6 +4635,12 @@
  "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/Ghost-Rider-Connor-Storrie.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.crank-in.net/img/db/267101267147283_1200.jpg": {
+  "w": 1200,
+  "h": 1602,
   "target": 1280,
   "v": 3
  },
