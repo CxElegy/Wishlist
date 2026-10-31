@@ -23,9 +23,8 @@
      "date": "2026-10-30",
      "headline": "'아스오라' 앞에 국경 없다...\"오타쿠는 위 아 더 월드\"",
      "highlight": "",
-     "image": null,
-     "source": "플레이포럼",
-     "source_icon": "https://cdn.playforum.net/favicon.ico",
+     "image": "https://cdn.playforum.net/news/photo/202610/635726_67705_1837.jpg",
+     "image_via": "og:image",
      "url": "https://www.playforum.net/news/articleView.html?idxno=635726",
      "weight": "normal"
     },
@@ -126,8 +125,62 @@
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
    "facts": [],
    "name": "GTA 6",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 50,
+     "source": "Techritual",
+     "title": "《GTA6》將推出超過 170 種動物 特色系統增強玩家互動體驗",
+     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE90T1FPRzBWSjBDeDFXWHo0ZU9fTnlpT3NCdEwtX2xvZkE3LXNreTQ2cVhxb2ctZHp2cEJpRVZTbXBRQzluQjc0TVMtNFdBTUpfWDh1ZzZZU1E?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 51,
+     "source": "Sole Retriever",
+     "title": "Travis Scott’s Cactus Jack x Rockstar Games x Nike Air Force 1 Low GTA 6 Pack Releases November 2026",
+     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPV1dNQUlrVEFaMXQ3QWNYRWcyTUYwLTNpNDBKSzAwelNUTFVEU25rbTNuOU9iRWx1OElYN3AxUmdDTWFLUHU1czlJWm9LLV84ZC1hR0dyLUs4Z2V1YnRXd0NyQ3FOa2EwR25iek8yQnBGa1BTal90V0NyRUt5Q1djaHI0WmZLOS1qMFlpYWNwcVBVNWVPS1BLTHlsVEFIZlo1eUprYlVHRXc4aW1nMGpZZlVkODI5ZU9oU0Mtcmx2Z212aXlOZlNYNVNJMjNaTXo4c08zaDFVUmFiZw?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 52,
+     "source": "https://tech-insider.org/",
+     "title": "3 Unconfirmed GTA 6 Features: Map, Police, Cars [2026]",
+     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNVTNnTU1yX2Z1dEJQZjFOOUtOd29OWXpQcGNLYXpHQkE3ZHdYTDFhTE1MVWNvMjRBZWxXbnFpdkt1WXQ0RFpCTjZVbnZlTWllQnZXZWU2Tlg0UGJVb090TkoybUdTRkFBSlBqeUlpbWJZNndVVFhGcVZMNFZoUG9pLXhZNTdPbkpxdTJPcWtuYw?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 54,
+     "source": "YAHOO!",
+     "title": "I'm 100% here for a more realistic GTA 6, one I believe won't come at the expense of its usual chaos",
+     "url": "https://tech.yahoo.com/gaming/articles/im-100-more-realistic-gta-130000256.html"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 55,
+     "source": "Polygon.com",
+     "title": "5 Must-Play New Xbox Games Coming in November, Including GTA 6",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1VVThNQUlzamdlTEJVaVc1ODNOYnR3R2JLemlHLUNWblJ1ek0xUXh3bkhYQTh2cHF0ek1wZll6UmxWb0h6WHRhOEVBZFZSNFBtUHhLQ0FSR2JaMzV5LVN3M0VFcw?oc=5"
+    },
+    {
+     "date": "2026-10-29",
+     "n": 56,
+     "source": "PC Gamer",
+     "title": "GTA 6: What we know about Rockstar's return to Vice City",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBGOUcwTXhWQnBHeE55NnlZWVpKSmtJSlpiV1BoUWlBVDhVV0dsSWh0MjhFRlh1V3R2RHFqc05jZlI2cnNHWGdXeGpJQVc0NDROUWJMT2ZhdXh4amVmdW5MVFM4WQ?oc=5"
+    }
+   ],
    "section": "游戏",
    "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "When will Grand Theft Auto VI launch on PC? Analyst reveals when the highly anticipated port could arrive",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gu6rC.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/when-will-grand-theft-auto-vi-launch-on-pc-analyst-reveals-when-the-highly-anticipated-port-could-arrive/ar-AA2gtiiz",
+     "weight": "hero"
+    },
     {
      "blurb": "Rockstar North's Rob Nelson went into greater detail about GTA 6's \"Criminal\" system, where players decide what kind of criminal to be.",
      "date": "2026-10-30",
@@ -175,16 +228,6 @@
      "image_via": "og:image",
      "url": "https://www.rockstargames.com/newswire/article/7599a881942544/announcing-grand-theft-auto-vi-the-album-coming-november-19",
      "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-30",
-     "headline": "GTA 6 map size is so big it rivals GTA 4, GTA 5, and Red Dead Redemption 2's combined",
-     "highlight": "map size is so big",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gq0T0.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/en-us/entertainment/gaming/gta-6-map-size-is-so-big-it-rivals-gta-4-gta-5-and-red-dead-redemption-2s-combined/ar-AA2gqdhE",
-     "weight": "normal"
     }
    ],
    "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
@@ -203,6 +246,43 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 81,
+     "source": "IMDb",
+     "title": "Ioan Gruffudd Is Ready to Stretch Back Into the MCU as Reed Richards",
+     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBmZEJJckRVdlhCal9NMnRsTFlOQ2tkRHZsYVA0ZmdsbWxxc3RKMXQ3QzhxRkdmcFBBQ3BHS0VvMzNheU0ydFpzUFZjOEJWWFh5bWV2RjRyR3dKRHVhVUdWaWxjOGZqQU0?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 82,
+     "source": "IMDb",
+     "title": "Marvel Reportedly Plans ‘Midnight Sons’ After Ryan Gosling’s ‘Ghost Rider’",
+     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBaaDBKc1JnQTdnM082bU5sd2NiZVpiYTc4Rmk4SHJ5bkJyZ1V5dUFmNHZPbDF4aHZwWkR4cXVlclcxSEt1MGtEVzMyR2ZpTmZWa195bDFOQnhtZV9tbnFXY2tIZVlTcW8?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 83,
+     "source": "WDW News Today",
+     "title": "AMC Theatres Reveals 'Avengers: Doomsday' Popcorn Bucket, Collectibles",
+     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQMXhpWWx2MkRrdURCT2dyNlh0RWlmTVMxUFdOc2ZackZQQUd1XzNMNkFXTEl5bXJfMmNjVi1KdU43U29MSXpWSWtYenlNLUdTRlpaRGJSQzdlOERqclNYc3JpMU42MllURGF6R01uZWxrUll6Y3JDNmQxR25UZDZ4cXpleG1RNEQ1bmV5NEVXdW1vTGh6RVhCSg?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 84,
+     "source": "The Film Theorists on MSN",
+     "title": "The Fantastic Four: First steps trailer and the MCU reboot theory",
+     "url": "https://www.msn.com/en-us/news/other/the-fantastic-four-first-steps-trailer-and-the-mcu-reboot-theory/vi-AA2gtOqx"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 85,
+     "source": "FandomWire",
+     "title": "MCU Greenlights the Only Superhero Movie That Rivals Doctor Strange (Report)",
+     "url": "https://fandomwire.com/mcu-greenlights-midnight-sons-report/"
+    }
+   ],
    "section": "影视",
    "stories": [
     {
@@ -272,6 +352,29 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 28,
+     "source": "Moneycontrol",
+     "title": "Harry Potter series to premiere on December 25, makers unveil new poster featuring Dominic McLaughlin",
+     "url": "https://www.moneycontrol.com/entertainment/harry-potter-series-to-premiere-on-december-25-makers-unveil-new-poster-featuring-dominic-mclaughlin-article-14065110.html"
+    },
+    {
+     "date": "2026-10-30",
+     "n": 29,
+     "source": "腾讯网",
+     "title": "剧版《哈利·波特》又放猛料！《无耻之徒》男星拿下分院帽，幽灵阵容也揭晓",
+     "url": "https://news.qq.com/rain/a/20261031A0CL5Y00"
+    },
+    {
+     "date": "2026-10-27",
+     "n": 30,
+     "source": "MuggleNet",
+     "title": "HBO’s Harry Potter TV Series Cast: Every Confirmed Actor So Far",
+     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1RMEZNR0tUM21jWUNmUnA3c29CbkVYaXBpb2ZJYVFiLThLa3lYelhzVXVRSFpBRHU2MzZ1SjEwejM1MkVmU0lFOHh0Rm93aWVIeFAtWXA2NTJaR3ZETG9BS29icjJtc1NDbWlOaXpBVG9aUQ?oc=5"
+    }
+   ],
    "section": "影视",
    "stories": [
     {
@@ -325,6 +428,50 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 15,
+     "source": "韓スタ！",
+     "title": "【イベントレポ】｢R U Next?｣発・日本人MOKAとIROHA所属 K-POP人気ガールグループ ILLIT (アイリット)、魔法のホイッスルをピピピーッ！韓国・延世大学大学祭で新曲｢You’re Under Arrest｣を披露",
+     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE03XzlBRjNuUUxfcHFfQkVXMXJRX1JDZXV4SVdaUFEzMGRkdGlFZ3hrd2ZnMmV3OV85d2tMM3J0Zk9tMl9pNi0xWXpR?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 16,
+     "source": "YouTube · ILLIT",
+     "title": "#체포하겠어 🚨 with @DAY6Official @BRANDNEWMUSIC_OFFICIAL #YoungK #한해 #You_re_Under_Arrest #ILLIT #아일릿",
+     "url": "https://www.youtube.com/watch?v=ABjEWJOl74o"
+    },
+    {
+     "date": "2026-10-30",
+     "n": 17,
+     "source": "USENの音楽情報サイト",
+     "title": "ILLITの5th Mini Album、「オリコンデイリーアルバムランキング」上位にランクイン！ タイトル曲「You're Under Arrest」が好調、「It's Me」も人気... 世界で2曲そろってヒットの兆し",
+     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQZ2U1ZHFxd2pOaHJzNnl0eVZxTVVfMzNlOHRmaEN0QnhTM0EyU0FFLW54MG5wUHc0eU5SNHNIOVBJOHk0QTlhWGFxUjMxRjZMMWtaUFhHdGxDSUlHVmxDNFBYODJwb05SUkREMXo3c21IbkNzRXlhUkU3Nm85V3BOUFQxeGJnY0pFSkY4eGJvbWpTZw?oc=5"
+    },
+    {
+     "date": "2026-10-30",
+     "n": 18,
+     "source": "山陽新聞",
+     "title": "ILLIT・MOKA、活動休止発表「当面は治療に専念する」 活動再開は「回復状況を慎重に確認したうえで改めてご案内」【報告全文】",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE8tWkFsU1dKQU8zRTMyN1FsM0E1ckNBZERQN2NaN3RZZTVzSjQ1WThJdmNPYkhENlZMZldKc1BIaWZzSk1iMjgydUFNbUVEMXVyMXc?oc=5"
+    },
+    {
+     "date": "2026-10-29",
+     "n": 19,
+     "source": "www.bntnews.co.kr",
+     "title": "아일릿, 연세대 축제서 호루라기 떼창",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBPNUhocU5VN1VlWGk3QXN5UXhOaUZPbmdNaVhxeWNOMlF3d3dvRDdpVFdSZjJyOWhmM2MyLTBRSUY3dWVEdnlYaUVqQjFUY05XdnlfZmg1OEl2ajRacjVzeWJjN2Y?oc=5"
+    },
+    {
+     "date": "2026-10-26",
+     "n": 20,
+     "source": "SBS 뉴스",
+     "title": "'체포하겠어'로 컴백한 아일릿…\"우리 음악의 강점인 중독성 극대화\"",
+     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBUbTQ5T0JoNUE2OWQ0aVVEbVYxLXRjV1VZc3cxU0NMVkxhNy1MYUhwSGozRkszYU5Bd3dFMXRkbFFmdGIyRDNzVW1CNmR4b1puVjZHT05kOW5yOGJZTEFUREZ4OGx0TFJzb0E?oc=5"
+    }
+   ],
    "section": "演出",
    "stories": [
     {
@@ -457,6 +604,36 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 34,
+     "source": "Vietnam.vn",
+     "title": "预计 Galaxy S27 Ultra 将采用全球版骁龙芯片，并配备升级后的 5700 mAh 电池。",
+     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQc3pGM2VzcjBtT1lFRzlhM3YtTFpjS1RFd0JVR3ZEOS02NTIwNEtnNVBTcXFLMi01UjZELW9Pdl9GcDc3eVdhRzdaX1M3d2NJaHp6TW9IeWJEZ29FbmxCcm5MTTNUT2tfTVY0di16MWlXUFpwV09abFVTaEd5RHRxUzRuQ1hCNEVnV0FfOU1Fa2g4UldSbF9pdGx0YzE5bVVsSjBPMjROb0hsanNWaFlua0dneXlreGM?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 35,
+     "source": "Geeky Gadgets",
+     "title": "Rumor Mill: New Samsung Galaxy S27 Ultra Leak Teases Major Hardware Shifts",
+     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-series-rumors/"
+    },
+    {
+     "date": "2026-10-29",
+     "n": 36,
+     "source": "Nokiapoweruser",
+     "title": "Samsung’s New Galaxy S27 Pro Leaks: Bold Redesign Ditching Classic Look",
+     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOa0FkeW12NUhidkY4amloVS1Ma0hUT1UySmJBMWtCSDhvUC0xZE8yZWtyV0Z1YVphRktVemFXWDNBb0tFbUV1dUY5RUlvRjZHOW5VaVk4SGtab0pWLTM1YU56YjRHZW83VmtQcE9rR0g5UXhpbm1KaXBHVXBUbzFhVEhWcw?oc=5"
+    },
+    {
+     "date": "2026-10-26",
+     "n": 37,
+     "source": "Gadget Hacks",
+     "title": "Samsung Galaxy S27 Price Leaks: Why Your Tier May Cost More",
+     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOUmJYNlZqLVk3c0RtVjJQY21pMEN3UWJVbGZQLWVULTRSMFJtSU5iT3VNTXdUdmY2ZVNsbWpPM2tfdkN2bXpkTFBQTExnTURIUFlNRzVjZl9HdWlaaTJ6TGZjOUFOaExzTDkwamNVemJLeFJ2ZUJxUURodzlOZ25KSl9xUDVmanZQODZvX25NZXlEcUNnbDN4NV8yM1Q?oc=5"
+    }
+   ],
    "section": "好物",
    "stories": [
     {
@@ -717,6 +894,15 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 11,
+     "source": "Zoom TV",
+     "title": "Resident Evil Reboot Nears Domestic Box Office Milestone Against The Mandalorian And Grogu",
+     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxORGNiZlI3RGw4VUFfMHNVaFU2ay10ZV91YzhFY242b1k1YmQ1RFY2WllNNG9jTUp6eFN4dllkU2U3UHM2ekRfdUxrOWk3ekF4cjN0cU1aY1RfTjhYOXJLMFhHYTZuOTZQX0RlYjZqdjJIYnRFMFRzWENiTTNpZUd6SE5LR1RlMUd2V3pOLXFTRHVHc2d5bVhQTV9ieVNPMzlDeEVlaG1faXVaVzV6bHNuLVh6aHlOQzFaUFRaQ3BNNWJZQTllTGhWVVNFamRndDZYcWhURHZwRWNxd2dKUEE?oc=5"
+    }
+   ],
    "section": "影视",
    "stories": [
     {
@@ -776,6 +962,15 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 11,
+     "source": "note",
+     "title": "【ゲーム感想】初！あつ森ハロウィン！",
+     "url": "https://note.com/dear_oriole1078/n/nc507e12375f4"
+    }
+   ],
    "section": "游戏",
    "stories": [
     {
@@ -894,6 +1089,29 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 23,
+     "source": "風傳媒",
+     "title": "聯手周杰倫+蔡司！vivo X500系列、摺疊旗艦X Fold6登台總座：記憶體漲勢恐延續到這一年| 劉芯衣| 新聞",
+     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5oWDUxbG5CVFM1WnlKdDRsQTVWeDUwWW9kLXhzajlqbDJMMVJjSFlzRTA5X0pTb2Y4MFZxVFY4cVIxN1dWdEIxbFlRNGR5QQ?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 24,
+     "source": "鏡週刊Mirror Media",
+     "title": "周杰倫前得力助手攻進好萊塢！創「AI界奧斯卡」 烏克蘭得主戰火下失聯",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1aMmdEWWlDNXR0TmhGZ2JBT3dyX0JwN19xU3NlaGp3VHJRX3VvX3EweHl1UnFJdGVscG10TldxZHBMajRLVWlrTHR3UHF6OHJseGs5S2hHQkRSaG1MSTgtOEFINDnSAWhBVV95cUxNMllzLTRXM01RTDJWdkMyR0JwRVhXUnctMm94NFhVNVJ0V1Y4OGZUTjZLbFF4OTQyUEltUkJzdzhpRFlaZE5PWjU2UjhGSjBuSVhxWmFxb2hxNkQ3ZnBzd3UwSDY2ODZNdA?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 25,
+     "source": "ET Fashion",
+     "title": "周杰倫PHANTACI首聯名迪士尼玩捉迷藏！胡迪變潮T、毛絨玩偶也必收",
+     "url": "https://fashion.ettoday.net/news/3263399"
+    }
+   ],
    "section": "演出",
    "stories": [
     {
@@ -940,9 +1158,73 @@
    }
   },
   {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
+   "facts": [],
+   "name": "绝区零",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 4,
+     "source": "新浪网",
+     "title": "#绝区零# az @ ネタバレあり @ az79709363 ​",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBPYzBtTUVMVGRNcGhYSFVRNk5Xem5JakVXdjJRX0c1WnJUTEt4SEVTeGpZQlptT3FPTGdCMjdobWowVFpfckg5amcwTHpWS0JjVURmblpwWkI3U3hHNDhJN0N5OA?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 5,
+     "source": "17173",
+     "title": "《绝区零》空巡局巡查档案丨贝克福德街异象",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9qbDlBdGphaGRvMEY2NDJtQWI5bEc0eWxzdzFKVUE3SFRkNF94S25QdHozdzlYSkFjdVZtMHFqWjRjQThESHMzVzNkUV91bzdCdVJ6WE5waTJ3SThIamR5YjdqdFc?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 6,
+     "source": "17173",
+     "title": "《绝区零》生日快乐菲欧妮丨否极泰来",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE0yaDRJYk1zeFIyaGhQQVlPR3ktM2xoaGxMcWRSbTR1TTlra0ZXbjdxOGdZeFZoaFJOOUFZcS13ODZkWmMxSVpJeVZHRmdnNlA2bkpudXpidzltNUFuMXJWQzNmOUw?oc=5"
+    }
+   ],
+   "section": "游戏",
+   "stories": [],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#A9898A",
+    "alt_accent": "#856062",
+    "alt_bg": "#F2EDEE",
+    "alt_fg": "#1E1A18",
+    "bg": "#1E1516",
+    "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 7,
+     "source": "Hawk Live",
+     "title": "Arteezy Shares His Expectations for the New Dota 2 Patch",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFAwcWZ2S0VmRVNrTTNKX2dSOTJaMkdZT2QxUzRpekFIM0FRWlYtUU1zQW5LUEY1WmVjM1lmT0hTaFc4ck5JUVlsYkl4dmIybk9VbDFJQnZUXzlLN3lzanY4Uko0UHBTRG9KWFpYN2xiVWVURURKQUhF?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 8,
+     "source": "17173",
+     "title": "《刀塔2》关山难越……PVISION再次被Spirit淘汰！",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9FTzlMbjFTVk1wMFQwd1RMazZQbEx1TkV3ejluUGVVOF9uNjBYbEcyaVpkdDU0VUxweVV5c21kcF9ka3BzRGVTeVNVR3Y1Z1MzclpkeWUxRlZqOUlSR2JteHItdGY?oc=5"
+    },
+    {
+     "date": "2026-10-30",
+     "n": 9,
+     "source": "Bluesky",
+     "title": "My favorite reads are when /r/dota2 tries to explain the memes about the Chinese teams and it takes like two paragraphs and starts with \"So, first you have to understand the rise and fall of the Han d",
+     "url": "https://bsky.app/profile/proactiveretcon.bsky.social/post/3mz2nkg4vpc2k"
+    }
+   ],
    "section": "游戏",
    "stories": [
     {
@@ -1013,6 +1295,22 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 26,
+     "source": "아시아뉴스통신",
+     "title": "'인기가요' 라인업, 아이브·라이즈·A2O LITE 등 출격",
+     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9fSTl1RHNiUC1oY3J6aDdzaGRYNlJEdC15M3d6SDFFM2d4MnhfdzhBekJ3UXFHZ091cDhWVHJHWGxaaTB5UmtqVFd5MGVLOEFUY1NTblFaSl91aE5U?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 27,
+     "source": "ｄメニューニュース",
+     "title": "「撮るなら何する？」ユ・ジェソクとキム・グァンギュ、「A2O LITE」のカバーダンスに挑戦",
+     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOeUlMbXBianItX2tnbFd1Q0sxRGNFdXlTTFB0dHJ3OHYxN2Y4bFA2WlBRei1ZdU1pUjJkUjlOOHdGeVBha0M0Yk93bGc4QWQ2M3NkUzVFZDZmUE9NNkdzNUdjeWJ6SllIb2hZTkQ4cVVsOExwV2NhRFUzcEo0LS1ETlFsOExnWnNqbFlCa2tkTdIBlAFBVV95cUxPQVFGT09iUzY0R0pJTDJrcW1wWmxjVm5lU0czSTZxY1pSUGVIMGtlNE5QSGxSb1VCZGRHUVV6S2N4VDJGdnQtS1BFVzUzMWNSaDdYNmVMTXJVUWZRelBNRVhoRlFDSkRMLWdRVm1GVFR5X3h0czZFWmlxYWJtVnJuN0ZBdi1ubkVOeHY2UlJLRGppa1py?oc=5"
+    }
+   ],
    "section": "演出",
    "stories": [
     {
@@ -1139,6 +1437,50 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
+   "pending": [
+    {
+     "date": "2026-10-31",
+     "n": 18,
+     "source": "スポーツナビ",
+     "title": "【ダブルス準決勝】T.ミハリコバ＆O.ニコルズ vs S.エラーニ＆J.パオリーニ ハイライト│東レ パン パシフィック オープンテニス2026",
+     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5rUmMtU05GOE5SVmxNbjN1YUhSY29ZdFNmZjFIc2NvblFOSWhqMEJJQUVxOHhvUmtSTmJRUE82U1h5dGlkRjJVQk82Z3BnSkxQaEliRHBPZDQtRlBu?oc=5"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 19,
+     "source": "Bleacher Nation",
+     "title": "Fernandez vs. Shnaider Prediction at the Toray Pan Pacific Open Tennis – Saturday, October 31",
+     "url": "https://www.bleachernation.com/picks/2026/10/31/fernandez-vs-shnaider-prediction-at-the-toray-pan-pacific-open-tennis-saturday-october-31/"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 20,
+     "source": "ESPN",
+     "title": "2026 Toray Pan Pacific Open Tennis Scores",
+     "url": "https://www.espn.co.uk/tennis/scoreboard/tournament/_/year/2026/eventId/264-2026"
+    },
+    {
+     "date": "2026-10-31",
+     "n": 21,
+     "source": "まるスポ",
+     "title": "【東レPPO】大坂なおみ破った18歳ポハンコバが4強！パークスにもストレート勝ち",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE55bnNKa2VoNE56VFg5cXh5T0E2Q2dyTDVaQ05Hd01CSDZXeW9zWFBEZjdFdzhOTWQ1ODd3dG5mTDVqZHpBNXVqMVRTV2J2X1ZBV3c?oc=5"
+    },
+    {
+     "date": "2026-10-30",
+     "n": 22,
+     "source": "Rappler",
+     "title": "Tokyo thriller: Alex Eala exits Toray Pan Pacific Open after loss to Diana Shnaider",
+     "url": "https://www.rappler.com/people/athletes/alex-eala-diana-shnaider-tennis-toray-pan-pacific-open-october-30-2026/"
+    },
+    {
+     "date": "2026-10-30",
+     "n": 23,
+     "source": "Sportskeeda",
+     "title": "Leylah Fernandez vs Kamilla Rakhimova preview, head-to-head, odds, prediction & betting tips | Pan Pacific Open 2026 semifinal",
+     "url": "https://www.sportskeeda.com/tennis/leylah-fernandez-vs-kamilla-rakhimova-preview-head-to-head-odds-prediction-betting-tips-pan-pacific-open-2026-semifinal"
+    }
+   ],
    "section": "运动",
    "stories": [
     {
@@ -1396,31 +1738,6 @@
     "bg": "#FBF4EA",
     "fg": "#3A2C24",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-   "facts": [],
-   "last": {
-    "date": "2026-10-30",
-    "headline": "Reduce digital eye strain with new Zenless Zone Zero inspired eyewear",
-    "url": "https://www.msn.com/en-us/lifestyle/other/reduce-digital-eye-strain-with-new-zenless-zone-zero-inspired-eyewear/ar-AA2gmRJr"
-   },
-   "name": "绝区零",
-   "quiet": true,
-   "section": "游戏",
-   "status": "",
-   "stories": [],
-   "subtitle": "ゼンレスゾーンゼロ",
-   "theme": {
-    "accent": "#A9898A",
-    "alt_accent": "#856062",
-    "alt_bg": "#F2EDEE",
-    "alt_fg": "#1E1A18",
-    "bg": "#1E1516",
-    "fg": "#F4EEE4",
-    "font": "serif",
     "split": true
    }
   }

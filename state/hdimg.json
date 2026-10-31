@@ -17,6 +17,12 @@
   "target": 720,
   "v": 3
  },
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/edQSgIbugixFodf.jpg": {
+  "w": 1080,
+  "h": 608,
+  "target": 720,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261024ac/320/w480h640/20261024/cef3-f3703591f04152f5c3ced0ef85f5b044.jpg": {
   "w": 480,
   "h": 640,
@@ -695,6 +701,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.playforum.net/news/photo/202610/635726_67705_1837.jpg": {
+  "w": 960,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.sakigake.jp/newspack/PN2026102601001168.-.-.CI0003.jpg": {
   "w": 450,
   "h": 305,
@@ -1108,6 +1120,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/arteezy-criticized-matchmaking-dota-2-23924.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/dota-2-update-25379.jpg": {
@@ -1784,12 +1802,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gq0T0.img": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gqMt6.img": {
   "target": 1280,
   "v": 3,
@@ -1817,6 +1829,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gszOJ.img": {
   "w": 1672,
   "h": 941,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gu6rC.img": {
+  "w": 1280,
+  "h": 960,
   "target": 1280,
   "v": 3
  },
@@ -2194,12 +2212,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://mdb.ad-hoc-news.de/bild/bild-2836747_1920_1080.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
   "v": 3
  },
  "https://media-rockstargames-com.akamaized.net/tina-uploads/posts/7599a881942544/50105de3da220dff6dd47fad6865b1912e7466ca.jpg": {
@@ -4288,6 +4300,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.67uzpSK-g6jNybD0I5wWVw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4319,15 +4337,34 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
+ "https://www.bing.com/th?id=ONUT.BP8KJxUcdJBT6VvG9AhadQ&pid=News&w=1200": {
   "w": 700,
-  "h": 508,
+  "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.JK_4PVtqefmAFdl_CApeqA&pid=News&w=700": {
+ "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200": {
   "w": 700,
-  "h": 466,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.644,
+  "local": "pics/45d8e8296dea3cb4.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
+  "w": 700,
+  "h": 508,
   "target": 720,
   "v": 3
  },
@@ -4375,12 +4412,6 @@
   "h": 366,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.OxiJ5-NxJTwjyR84qxjhBQ&pid=News&w=1080": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-31"
  },
  "https://www.bing.com/th?id=ONUT.Q9dry0f98vaYnNMmJmWk5g&pid=News&w=1200": {
   "w": 700,
@@ -4461,6 +4492,12 @@
  "https://www.bing.com/th?id=ONUT.Wgnw38sqkN-vD5tIA09_gQ&pid=News&w=650": {
   "w": 650,
   "h": 346,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.YgElKJpt--2KxNwQLCn6Fw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4559,6 +4596,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.j987asPSKJqIW8Q-2NgNJA&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.kQ4dry7TSi0lf6kAkumLsQ&pid=News&w=1200": {
   "w": 700,
   "h": 467,
@@ -4618,6 +4661,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.qzkwWXvb2zJKkK_uOecA1A&pid=News&w=640": {
+  "w": 640,
+  "h": 330,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
   "h": 380,
@@ -4647,12 +4696,6 @@
  "https://www.bing.com/th?id=ONUT.vDZa7P5IMjufjiwPFObTHg&pid=News&w=700": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.wb3hjMx4FJ2UDTj3g7uEPg&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
   "target": 720,
   "v": 3
  },
