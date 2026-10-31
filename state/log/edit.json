@@ -1,48 +1,5 @@
 [
 {
-"at": "2026-10-30T13:29:26+00:00",
-"text": "2026-10-30 第 1 バッチを出刊：BLEACH Mirrors High、FROM、GTA 6、ILLIT、The Mandalorian、dota2 ほか 6（12 版面・61 本・残り 4 版面） · token 新規入力 4.3万・キャッシュ読み 86.2万・出力 3,314",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.18,
-"mem_total": 16872808448,
-"mem_free": 15870402560,
-"disk_used": 10786955264,
-"disk_free": 30535553024,
-"disk_total": 41322508288,
-"peak": 318570496
-},
-"batch": 1,
-"boards": [
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"ILLIT",
-"The Mandalorian",
-"dota2",
-"gelato pique",
-"チェーンソーマン",
-"三星手机",
-"星巴克马克杯",
-"漫威电影",
-"猫用品"
-],
-"stories": 61,
-"left": 4,
-"edited": 23,
-"run": null,
-"tok": {
-"in": 27,
-"cw": 42710,
-"cr": 861956,
-"out": 3314,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 908007
-},
-{
 "at": "2026-10-30T13:41:51+00:00",
 "text": "2026-10-30 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT、MMORPG 新作 ほか 10（16 版面・81 本・今日の整理待ちは全部終わり） · token 新規入力 4.8万・キャッシュ読み 137.4万・出力 5,556",
 "level": "ok",
@@ -1886,5 +1843,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 441004
+},
+{
+"at": "2026-10-31T15:04:45+00:00",
+"text": "2026-10-31 第 2 バッチを出刊：三星手机（1 版面・6 本・今日の整理待ちは全部終わり） · token 新規入力 3,524・キャッシュ読み 21.5万・出力 1,144",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.45,
+"mem_total": 16872808448,
+"mem_free": 15982333952,
+"disk_used": 10027409408,
+"disk_free": 31256125440,
+"disk_total": 41283534848,
+"peak": 336211968
+},
+"batch": 2,
+"boards": [
+"三星手机"
+],
+"stories": 6,
+"left": 0,
+"edited": 23,
+"run": 1793457873.7395191,
+"tok": {
+"in": 5,
+"cw": 3519,
+"cr": 215336,
+"out": 1144,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 220004,
+"secs": 1211,
+"run_tok": {
+"in": 19,
+"cw": 45184,
+"cr": 612312,
+"out": 3493,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

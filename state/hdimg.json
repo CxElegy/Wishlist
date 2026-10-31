@@ -677,6 +677,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.mdtoday.co.kr/news/photo/202609/611993_313929_4730.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.mediaus.co.kr/news/photo/202610/318631_233956_4423.jpg": {
   "w": 960,
   "h": 639,
@@ -1753,6 +1759,12 @@
    853
   ],
   "why": "看不清"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gkADM.img": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2glAYg.img": {
   "w": 1600,
@@ -3151,16 +3163,15 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-3-view.jpg?pri=l&w=640&h=420&exp=10800": {
-  "w": 640,
-  "h": 420,
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-3-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1445,
   "target": 1280,
   "v": 3,
-  "blur": 0.609,
-  "local": "pics/f0df7cddb5868180.webp",
+  "local": "pics/4a5deeb46c3382cf.webp",
   "out": [
    1280,
-   840
+   841
   ],
   "why": "期限付きの網址"
  },
@@ -3362,12 +3373,6 @@
  "https://photo.jtbc.co.kr/news/jam_photo/202610/25/1a03e766-71d1-41fa-a0e3-714412135388.jpg": {
   "w": 560,
   "h": 784,
-  "target": 720,
-  "v": 3
- },
- "https://photo.jtbc.co.kr/news/jam_photo/202610/26/1067d1c8-184f-44fb-9a79-6e8e0c5dea40.jpg": {
-  "w": 560,
-  "h": 1249,
   "target": 720,
   "v": 3
  },
@@ -4523,12 +4528,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.g-0qsLkNMF7kfJppi1dAhQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ghPPO0q95yYTjDKycYEn6g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4612,6 +4611,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.397
+ },
+ "https://www.bing.com/th?id=ONUT.q1hRkCdeN6YSKCvze8YhMg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
