@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-31T19:05:20+00:00",
+ "checked": "2026-10-31T19:27:09+00:00",
  "fired": {
-  "at": "2026-10-31T19:05:21+00:00",
+  "at": "2026-10-31T19:27:09+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,16 +12,28 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T18:23:54+00:00",
+    "at": "2026-10-31T19:27:09+00:00",
     "attempts": 1,
     "day": "2026-11-01",
-    "prog": 0,
-    "resp": "cse_01W4x6f86rSiox8yBw63nRb4",
-    "sig": "c03b086da5b3"
+    "prog": 70,
+    "resp": "cse_01W4x6f82zGs486YbpYNSLsG",
+    "sig": "a5093ee29068"
    },
    "items": [
+    "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
-    "Vaundy"
+    "Vaundy",
+    "dota2",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-10-31T18:38:22+00:00",
    "last_error": {
@@ -31,11 +43,14 @@
    "need": true,
    "prog": 70,
    "prog_day": "2026-11-01",
-   "ripe": [],
-   "sig": "9014efd45c39",
+   "ripe": [
+    "A2O LITE",
+    "漫威电影"
+   ],
+   "sig": "a5093ee29068",
    "token_cap": 1000000,
    "tokens_today": 73030,
-   "why": "整理待ちの記事 3 件（2 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 28 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
