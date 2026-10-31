@@ -26,6 +26,11 @@ class PhotoSide(unittest.TestCase):
         for sel in (".card.sb:not(.mini)", ".wc.sb", ".card.mini.sb", ".tape.sb", ".pk.sb>a"):
             self.assertIn(sel, src)
 
+    def test_late_and_hidden_photos_get_fitted(self):
+        js = render.FIT_JS   # 隠れた版面・あとから JS で足された版面の写真も測る（390px で大きいカードの枠が絞られないままだった）
+        for s in ("new ResizeObserver", "new MutationObserver", "p._ok = 1", "document.addEventListener('load'"):
+            self.assertIn(s, js)
+
     def test_wall_keeps_side_height(self):
         self.assertIn("!c.classList.contains('sb')", render.FIT_JS)
 
