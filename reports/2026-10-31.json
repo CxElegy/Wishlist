@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "a1d1b3c0c09b",
+ "edit_sig": "bbc2f0db42f8",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,8 +23,9 @@
      "date": "2026-10-30",
      "headline": "'아스오라' 앞에 국경 없다...\"오타쿠는 위 아 더 월드\"",
      "highlight": "",
-     "image": "https://cdn.playforum.net/news/photo/202610/635726_67705_1837.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "플레이포럼",
+     "source_icon": "https://cdn.playforum.net/favicon.ico",
      "url": "https://www.playforum.net/news/articleView.html?idxno=635726",
      "weight": "normal"
     },
@@ -432,36 +433,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 16,
-     "source": "Vietnam.vn",
-     "title": "갤럭시 S27 배터리에 대한 중요 정보가 유출되었습니다.",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBUQXVrX0ZvQ1dNVDU1bmFFNnVqZWdXOTJwR3EtNHcxREZTTzhfR1dWMTV6QVp1ajE4SWR0bzExclpCTzBzVHp6cUU2YVF2RkcyWGs5bUxNckw0OXJCclg4R0JOY042VlIzWG5CUUpWS3d1a0JNT0E?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 17,
-     "source": "Vietnam.vn",
-     "title": "Galaxy S27のバッテリーに関する重要な情報が漏洩しました。",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1WVGlBSThFV1d6LS1SYTliTHBQS3hpNlNURmVuaHFBa2RRVFZGdkZJM2dNUmNTUzFQODFoTkdra2ZBcG1Hak01MXBIRUFwbWhMbFgxZFliQmw4UkxybVN6Q0ZmM2puS20wWXpYY1p5a1R6cnZqZlE?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 18,
-     "source": "Vietnam.vn",
-     "title": "Important information about the Galaxy S27 battery has been leaked.",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBLazBtYnkwSUNFR0VYY1dZaGdVYzhtT1A2RTRKMGdObTZKRnVXMTdmc2UxMFZRZ3Rib1J6RWlNTThQU3pMcGNVd1U4cC1kSnVMWkxycWd1aENKQUktY05oTDZYVmVDMUtva2N6ZEl5RmtZZThxTWc?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 19,
-     "source": "Notebookcheck CN",
-     "title": "Galaxy S27 新机信息曝光，确认充电速度令人失望",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1MYnFWYzJTcmY2SVYyYXdLMmZaeDE0WXhQeFEwS2RHMVlQcTRRVDRVS1g2NjRpaTN0aWdITWxHZHUxZy04NXdyMXZCdU5JSHgtUnZKaVM1Unc0QTZjNmVOV0xueWNPM3pLQUE?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
