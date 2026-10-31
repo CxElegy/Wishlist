@@ -3287,6 +3287,12 @@
   "v": 3,
   "blur": 0.359
  },
+ "https://p2.bahamut.com.tw/B/2KU/24/0d3b2c13e6191e4cf08cdb7eca20xy05.PNG": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://p2.bahamut.com.tw/B/2KU/34/9e75d3a03377619005b741850420w965.JPG": {
   "w": 1279,
   "h": 720,
@@ -3593,6 +3599,12 @@
  "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://s1.ppllstatics.com/surinenglish/www/multimedia/local/2026/10/15/gato7-kLVC--1200x840@Diario%20Sur.jpg": {
+  "w": 1200,
+  "h": 840,
   "target": 720,
   "v": 3
  },
@@ -4273,12 +4285,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.H_wI2uCPh02bfIBIqbwryA&pid=News&w=600": {
-  "w": 600,
-  "h": 297,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.JK_4PVtqefmAFdl_CApeqA&pid=News&w=700": {
   "w": 700,
   "h": 466,
@@ -4482,6 +4488,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.g-0qsLkNMF7kfJppi1dAhQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ghPPO0q95yYTjDKycYEn6g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4498,6 +4510,12 @@
  "https://www.bing.com/th?id=ONUT.h-a0kXMRJuiF2YDt_UZ_Jg&pid=News&w=626": {
   "w": 626,
   "h": 352,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.iHx2LhxPFVKnreDkQMExPA&pid=News&w=1200": {
+  "w": 700,
+  "h": 400,
   "target": 720,
   "v": 3
  },
@@ -4559,12 +4577,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.397
- },
- "https://www.bing.com/th?id=ONUT.q1hRkCdeN6YSKCvze8YhMg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
@@ -5094,12 +5106,6 @@
   "w": 1600,
   "h": 898,
   "target": 1280,
-  "v": 3
- },
- "https://www.svg.com/img/gallery/what-happens-if-you-cancel-your-gta-6-preorder/l-intro-1793030057.jpg": {
-  "w": 1600,
-  "h": 899,
-  "target": 720,
   "v": 3
  },
  "https://www.syfy.com/sites/syfy/files/2026/10/article-promotes-1825x1217_25.jpg": {
