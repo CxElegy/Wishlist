@@ -226,3 +226,4 @@
 - 2026-10-31 r3 hr33：本番の LCP 中央値 4.6→1.14 秒（lcp.py 3 回、PR #683）。HTML を分ける案Aは不要。ux_check --fast ✗ 5 件は先頭の写真が置き場に無い版面（photo_store の続き）で今回と無関係。次：photo_time.py で最初の写真の届く時刻。
 - 2026-10-31 r3 hr33：入口 docs/index.html が止める font link のまま本番に残っていた（入口は24時間おきの作り直しで、source を直しても古い出力が残る）。welcome.build_if_stale が止める link を見つけたら作り直す形に、render.blocking_font_links＋tests/test_perf.py が生成済みの入口と docs/home を数え、ux_check が本番の入口＋本体 4 頁を数える。次：合併後に本番で入口を確かめ。
 - 2026-10-31 r1 hr35：縦長写真のぼかしをやめた（F-16・案A）。_pic は img.bg を出さず、hero・lead・wide は枠を写真の幅に絞って空いた横に同じ版面の次の記事（.nx）。手元の本番データで img.bg 0・大きいカード 10 枚が絞られ・1400 の見た目を確認。次：合併後 ux_check と 390px、小さいカードの余白。
+- 2026-10-31 r1 hr35 続き：#689 合併後の ux_check が「枠を絞っていない大きいカード」を数えた（本番 3〜9 枚）。根：2 回目の load・resize で絞った枠のまま比率を測り r≈1 で絞りが外れた。unnarrow で元の枠に戻してから測る形に。手元で 0 を確認。
