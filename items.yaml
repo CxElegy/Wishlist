@@ -1375,6 +1375,7 @@ items:
     motif: concert          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Vaundy", why: "本人", image: "emblems/vaundy-vaundy.webp", source: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg", page: "https://ja.wikipedia.org/wiki/Vaundy", shape: "cutout", face: [0.51, 0.196, 0.564, 0.498, 387, 292]}
+      - {subject: "Vaundy 2", why: "Vaundy（30 日分・要約にも名前）", image: "emblems/vaundy-vaundy-2.webp", source: "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg", page: "https://news.google.com/rss/articles/CBMihgFBVV95cUxQdUI5bC1mcFRDb1I4RjFWang4YmRzOVRCZk5xZ2laZ1ZVaFg0UVJlYUtjY1l0eW1WTDBVQXQxdmNNMm14a1pibXNzMElacXRNTDFGaUw3RTRrMVIwY1VDOHBEQ2x6MTcySGpRNExicWxlMWx4Ui1iQXdzQk5HVzhDdkI4R2pBdw?oc=5", shape: "cutout", face: [0.246, 0.144, 0.382, 0.445, 384, 403]}
     type: event
     section: "演出"
     size: S
