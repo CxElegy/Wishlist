@@ -1828,11 +1828,14 @@ EMB_JS = """
   // 版面の先頭の写真（ぼかしの下絵と本物）は、最初の画面が済んだあと暇なときに 3 版面ずつ先に取っておく。目次から版面へ飛んだとき、そこで取り始めるとぼかしのまま数秒かかる
   // （2026-10-31 The Mandalorian）。目次へ指・マウスが近づいたら、その版面の先頭を最優先で取る。通信量を減らす設定（saveData）の人にはしない
   const lead = s => [...s.querySelectorAll('.pic')].slice(0, 1).flatMap(p => [...p.querySelectorAll('img:not(.ico)')]);
-  const pull = (s, hi) => lead(s).forEach(i => { if (i.loading === 'lazy') { i.loading = 'eager'; if (hi) i.fetchPriority = 'high'; } });
+  const pull = (s, hi) => lead(s).forEach(i => { if (i.loading === 'lazy') { i.loading = 'eager'; i.fetchPriority = hi ? 'high' : 'low'; } });
   const idle = f => window.requestIdleCallback ? requestIdleCallback(f, { timeout: 1500 }) : setTimeout(f, 400);
   const secs = [...document.querySelectorAll('section[data-k]')];
-  const ahead = () => { let n = 0; const step = () => { secs.slice(n, n + 3).forEach(s => pull(s)); n += 3; if (n < secs.length) idle(step); }; step(); };
-  if (!(navigator.connection && navigator.connection.saveData)) { if (document.readyState === 'complete') idle(ahead); else addEventListener('load', () => idle(ahead)); }
+  const ahead = () => { let n = 0; const step = () => { secs.slice(n, n + 1).forEach(s => pull(s)); n += 1; if (n < secs.length) idle(step); }; step(); };
+  // 開始は「最初の画面の写真が済んだとき」か「2.5 秒たったとき」の早いほう（load を待つと Fast 3G で目次から飛んだ先が 507ms 遅れた。2026-10-31）。優先度は low なので最初の画面の邪魔をしない
+  if (!(navigator.connection && navigator.connection.saveData)) { let on = 0; const start = () => { if (!on) { on = 1; idle(ahead); } };
+    const first = [...document.querySelectorAll('.pic img:not(.bg):not(.ico)')].filter(i => i.loading === 'eager' && !(i.complete && i.naturalWidth));
+    Promise.all(first.map(i => new Promise(r => { i.addEventListener('load', r, { once: true }); i.addEventListener('error', r, { once: true }); }))).then(start); setTimeout(start, 2500); }
   const near = ev => { const a = ev.target.closest && ev.target.closest('a[href^="#"]'), s = a && document.getElementById(a.getAttribute('href').slice(1)); if (s) pull(s.closest('section') || s, true); };
   ['pointerover', 'touchstart', 'focusin'].forEach(n => document.addEventListener(n, near, { passive: true }));
   // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）
