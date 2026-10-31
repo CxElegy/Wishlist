@@ -184,4 +184,6 @@
 2026-10-31 r4 管理ページ②に全アカウントの分量・写真の受付・依頼・言語を足した（RPC admin_accounts／admin_ui_langs・店長のみ）。PR #638。tests 緑（emblem_face 3 件は環境で main も失敗）。次：関注項の中身・置き方。
 - 2026-10-31 r1f1 写真の一時保管 続き：PR #641 srcset・全種類の写真・お客さまのページを同じ置き場に・ux_check に割合と srcset・publish を状態 1 ファイルに。本番 1168/1346 枚。LCP 実測 4.4〜7.8 秒（>2.5）。次：③HTML を分ける（案A）。
 - 2026-10-31 r2 管理ページ②の全アカウント表に置いた板块・小分類つき・見たい種類・乗換駅つきを足した（RPC admin_follow_detail・店長のみ・本番に適用）。tests 緑（emblem_face 3 件は環境で main も失敗）。次：tokens はお客さまの版面の編集待ち。
+
+- 2026-10-31 r2f1 管理ページ全ユーザー管理の指摘直し：置き方・関注項の中身を follows 1 行ずつ②に（RPC admin_follow_rows・admin_account_langs で言語も account に結ぶ・本番に適用・anon 不可を確認）。ux_check は値を follows と照合、列数ずれ(10/11)を直した。tests 緑。次：設定の書き換え・tokens。
 - 2026-10-31 r1：写真 0.5 秒 第 1 回。最初の主写真を head で preload・cache-control immutable・ux_check 点検（PR #646）。確かめ：本番に preload あり・スマホ開始 627→256ms。次：④置く順・色の下絵。

@@ -514,9 +514,34 @@ def check_admin_coverage(pw, base, width):
     gone = sorted({f["account"] for f in fl0} - set(ac))
     if gone or not pg.evaluate("/\\d/.test(document.querySelector('#wl-libaccts p').textContent)"):
         bad.append(f"管理ページ②の篇幅・写真・依頼に出ないアカウント {len(gone)} 個（{gone[:5]}）または言語の人数なし")
-    nc = pg.evaluate("[...document.querySelectorAll('#wl-libaccts tr[data-id]')].filter(r=>r.cells.length!==%d).length" % 10)
-    if nc:
-        bad.append(f"管理ページ②の全アカウント表で、置き方・関注項の列（10 列）がない行 {nc}")
+    nc = pg.evaluate("(()=>{const n=document.querySelectorAll('#wl-libaccts thead th').length;return [n,[...document.querySelectorAll('#wl-libaccts tr[data-id]')].filter(r=>r.cells.length!==n).length]})()")
+    if not nc[0] or nc[1]:
+        bad.append(f"管理ページ②の全アカウント表で、列の数（見出し {nc[0]}）と合わない行 {nc[1]}")
+    # 値の照合（数があるだけで通さない）：follows の本物から account ごとの 置いた板块・小分類つき・見たい種類・乗換駅つき を数え、画面の表と合わせる。
+    # ＋置き方・関注項の中身の表（#wl-libplace）は follows の行と 1 行ずつ 板块・並び・篇幅・小分類・見たい種類・乗換駅 が合う
+    s1 = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    fx = json.loads(urllib.request.urlopen(urllib.request.Request(
+        s1["supabase_url"].rstrip("/") + "/rest/v1/follows?select=account,board_id,section,pos,size,subs,media,also",
+        headers={"apikey": s1["supabase_key"], "Authorization": "Bearer " + ses["access_token"]}), timeout=30).read())
+    exp = {}
+    for f in fx:
+        e = exp.setdefault(f["account"], [set(), 0, 0, 0])
+        e[0].add(f.get("section")); e[1] += bool(f.get("subs")); e[2] += bool(f.get("media")); e[3] += bool(f.get("also"))
+    cells = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#wl-libaccts tr[data-id]')].map(r=>[r.dataset.id,[...r.cells].slice(7,11).map(c=>+c.textContent)]))")
+    for a_, e in exp.items():
+        w = [len(e[0]), e[1], e[2], e[3]]
+        if cells.get(a_) != w:
+            bad.append(f"②全アカウント表の {a_}：置いた板块・小分類・見たい種類・乗換駅 は {cells.get(a_)}、follows の本物は {w}")
+    pg.wait_for_selector("#wl-libplace[data-n]", state="attached", timeout=30000)
+    pl = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#wl-libplace tr[data-id]')].map(r=>[r.dataset.id+'/'+r.dataset.b,[...r.cells].map(c=>c.textContent)]))")
+    if len(pl) != len(fx):
+        bad.append(f"②置き方・関注項の表 {len(pl)} 行、follows は {len(fx)} 行")
+    for f in fx:
+        g = pl.get(f"{f['account']}/{f['board_id']}")
+        if not g or g[2] != (f.get("section") or "—") or g[3] != str(f.get("pos")) or g[4] != (f.get("size") or "—") \
+                or (g[6] == "—") == bool(f.get("subs")) or (g[8] == "—") == bool(f.get("also")) or (g[7] == "全部") == bool(f.get("media")):
+            bad.append(f"②置き方・関注項の表：{f['account']}/{f['board_id']} は {g}、follows は {f.get('section')}・{f.get('pos')}・{f.get('size')}")
+            break
     # 区画ごとの「全員／ユーザーを選ぶ」（render.ADMIN_WHO の全部）：切り替えがある・選ぶと行が follows の通りに絞れる・全員に戻すと元の数
     sys.path.insert(0, str(ROOT / "scripts"))
     import render as _r
