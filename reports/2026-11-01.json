@@ -1,29 +1,24 @@
 {
  "date": "2026-11-01",
- "edit_sig": "c173e9401b8c",
+ "edit_sig": "9f0744cede0b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-28",
-     "n": 1,
-     "source": "ファミ通",
-     "title": "『アストラエ・オラティオ』鏡原はるの素顔に驚き、ふたつの怪談がつながるアキナ編に夢中。CBTで見えてきた新伝奇魔法RPG『アスオラ』の深み",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1SclNkeDNWSGVORDVxV3hpMzJKLV9FT0R0UldUSFlOZjVGcy1vc1FxSko4WDlVMXBnVWJzNHNBaXlXOEo2QmV3Slp5MTFLemNHTDI4dlF1MXBTbGVKMmlEbWdnQnpmSDA2UWc?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 2,
-     "source": "r/Astrae_Oratio",
-     "title": "Shunin and Riria [@Je_o_mo]",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xk5uri/shunin_and_riria_je_o_mo/"
+     "headline": "『アストラエ・オラティオ』鏡原はるの素顔に驚き、ふたつの怪談がつながるアキナ編に夢中。CBTで見えてきた新伝奇魔法RPG『アスオラ』の深み",
+     "highlight": "CBTで見えてきた",
+     "image": "https://cimg.kgl-systems.io/camion/files/famitsu/90760/aa839759a0cb2b5faf193087bc933268f.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.famitsu.com/article/images/202610/90760/899755",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
