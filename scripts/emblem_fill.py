@@ -2659,7 +2659,7 @@ def official_swap(item, log=print):
         return 0
     rows_out = []
     for x in item.get("emblem") or []:
-        if isinstance(x, dict) and x.get("subject") in swapped and "Fandom" in (x.get("why") or ""):
+        if isinstance(x, dict) and x.get("subject") in swapped and emblem.fandom_sourced(x):
             url, out, fs = swapped[x["subject"]]
             slug = emblem.slugify(name, x["subject"])
             emblem.save_cut(out, slug)
