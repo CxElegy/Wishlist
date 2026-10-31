@@ -65,6 +65,15 @@ button{font-family:inherit}
 .nx b{font:700 13px/1.4 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .nx a:hover b{text-decoration:underline;text-underline-offset:3px}
 .nx>i{grid-column:1/-1;font:700 11px var(--font-mono);letter-spacing:.12em;font-style:normal;opacity:.7}
+/* 小さいカード・気になるかも（F-16 続き）：縦長・正方形の写真は枠を写真の幅に絞り（.sb）、空いた横に見出しなど字の列を置く。幅・高さは FIT_JS が決める */
+.sb>.pic{aspect-ratio:auto;justify-self:start;align-self:start}
+.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-content:start}
+.card.sb:not(.mini)>.pic,.wc.sb>.pic{grid-column:1;grid-row:1/span 9}
+.card.sb:not(.mini)>*:not(.pic):not(.lk),.wc.sb>*:not(.pic):not(.lk):not(.tg){grid-column:2}
+.card.mini.sb{grid-template-columns:auto minmax(0,1fr)}
+.tape.sb{grid-template-columns:6px auto minmax(0,1fr)}.tape.sb>.pic{grid-column:2;grid-row:1/3;margin-bottom:6px}.tape.sb>.lbl{grid-column:3;grid-row:1/3}
+.pk.sb>a{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:start}
+.pk.sb .pic{--pko:0px}.pk.sb .pkt{margin:0;padding:12px 12px 10px}.pk.sb.big .pkt{margin:0;padding:18px 18px 14px}
 /* ---------- 報頭 ---------- */
 .mast{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px 20px}
 .mast .mtitle{display:flex;align-items:flex-end;gap:14px;min-width:0}
@@ -1546,7 +1555,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-members" content="ef5efe2e0ccd"><style>
+<meta name="wl-ver" data-page="admin-members" content="bf5eee914c1a"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2432,7 +2441,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ⑥ お客さまと店長</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.31 23:35</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.31 23:46</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html" aria-current="page"><span>⑥ お客さまと店長</span></a></li></ul></nav>
