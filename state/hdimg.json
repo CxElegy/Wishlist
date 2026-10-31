@@ -3135,6 +3135,12 @@
   "target": 720,
   "v": 3
  },
+ "https://pbs.twimg.com/media/HV2owztbkAA-3Gf?format=webp&name=medium": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/01/35473388.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
   "w": 799,
   "h": 532,
@@ -4073,8 +4079,15 @@
  "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.508,
+  "local": "pics/d541f2cab9454e7e.webp",
+  "out": [
+   1280,
+   669
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.D_p3v1j8ixiEz09Y8oiA-A&pid=News&w=1200": {
   "w": 700,
@@ -4314,8 +4327,15 @@
  "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.627,
+  "local": "pics/62f9d420d412009c.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.iOLgomJRjCnpWxI4P5DdVg&pid=News&w=1200": {
   "w": 700,

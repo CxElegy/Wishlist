@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "1de73a7d48e8",
+ "edit_sig": "c3addafc143c",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -383,24 +383,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "The video explains how Ahmed Best’s Kelerin Beck helps Grogu escape during the Order 66 flashback in The Mandalorian.",
      "date": "2026-10-31",
-     "n": 1,
-     "source": "Red Five on MSN",
-     "title": "Ahmed Best’s Kelerin Beck rescues Grogu in The Mandalorian",
-     "url": "https://www.msn.com/en-us/entertainment/tv/ahmed-best-s-kelerin-beck-rescues-grogu-in-the-mandalorian/vi-AA2gugZd"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 2,
-     "source": "Zoom TV",
-     "title": "Resident Evil Reboot Nears Domestic Box Office Milestone Against The Mandalorian And Grogu",
-     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxORGNiZlI3RGw4VUFfMHNVaFU2ay10ZV91YzhFY242b1k1YmQ1RFY2WllNNG9jTUp6eFN4dllkU2U3UHM2ekRfdUxrOWk3ekF4cjN0cU1aY1RfTjhYOXJLMFhHYTZuOTZQX0RlYjZqdjJIYnRFMFRzWENiTTNpZUd6SE5LR1RlMUd2V3pOLXFTRHVHc2d5bVhQTV9ieVNPMzlDeEVlaG1faXVaVzV6bHNuLVh6aHlOQzFaUFRaQ3BNNWJZQTllTGhWVVNFamRndDZYcWhURHZwRWNxd2dKUEE?oc=5"
+     "headline": "Ahmed Best’s Kelerin Beck rescues Grogu in The Mandalorian",
+     "highlight": "Kelerin Beck rescues Grogu",
+     "image": "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/entertainment/tv/ahmed-best-s-kelerin-beck-rescues-grogu-in-the-mandalorian/vi-AA2gugZd",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -417,24 +412,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-10-30",
-     "n": 1,
-     "source": "note",
-     "title": "4歳半の娘と遊んだSwitchソフト3本。ゲームデビューから3か月の感想",
-     "url": "https://note.com/nayutalog/n/n9628fe36d33d"
-    },
-    {
+     "blurb": "あつ森を今年の夏から始めた人の、初めてのハロウィンの感想。",
      "date": "2026-10-31",
-     "n": 2,
-     "source": "note",
-     "title": "【ゲーム感想】初！あつ森ハロウィン！",
-     "url": "https://note.com/dear_oriole1078/n/nc507e12375f4"
+     "headline": "【ゲーム感想】初！あつ森ハロウィン！",
+     "highlight": "初！あつ森ハロウィン",
+     "image": "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://note.com/dear_oriole1078/n/nc507e12375f4",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -828,7 +818,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-10-31",

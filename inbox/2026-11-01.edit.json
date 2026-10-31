@@ -208,7 +208,9 @@
   "周杰伦": 5,
   "哈利波特剧集": 5,
   "dota2": 4,
-  "绝区零": 3
+  "绝区零": 3,
+  "The Mandalorian": 2,
+  "あつ森": 2
  },
  "A2O LITE": [
   {
@@ -362,6 +364,30 @@
    "refs": [
     3
    ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Ahmed Best’s Kelerin Beck rescues Grogu in The Mandalorian",
+   "highlight": "Kelerin Beck rescues Grogu",
+   "blurb": "The video explains how Ahmed Best’s Kelerin Beck helps Grogu escape during the Order 66 flashback in The Mandalorian.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200"
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "【ゲーム感想】初！あつ森ハロウィン！",
+   "highlight": "初！あつ森ハロウィン",
+   "blurb": "あつ森を今年の夏から始めた人の、初めてのハロウィンの感想。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200"
   }
  ]
 }
