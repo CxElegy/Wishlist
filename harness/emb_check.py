@@ -366,6 +366,16 @@ def fandom_over_official(official=None, items=None):
     return out
 
 
+def board_items(rows):
+    """boards（ライブラリ）の行 [{name, config}] → items.yaml の項目と同じ形（site・emblem_kind・emblem・emblem_who）。お客さまの版面を店長と同じ点検で数える入口。"""
+    return [{"name": r.get("name"), **{k: (r.get("config") or {}).get(k) for k in ("site", "icon", "emblem_kind", "emblem", "emblem_who", "emblem_people")}} for r in rows]
+
+
+def boards_fandom_over_official(rows, official=None):
+    """E21 のお客さまの版面の分：boards の行で、Fandom の絵のまま／名簿の上位でいないのに公式サイトに立ち絵がある人 → {版面: [人]}（店長の fandom_over_official と同じ数え方）。"""
+    return fandom_over_official(official=official, items=board_items(rows))
+
+
 def official_blind(items=None):
     """E27（情報）：公式サイトがあるキャラの版面で、公式サイトの HTML から人物の絵が 1 枚も見つからない版面 → [版面]。
     JS で描く公式（Astrae Oratio・GTA 6・绝区零…）は今の読み方では主な手段にならない。数を出して減らす（0 にはできない版面もある）。"""
@@ -688,6 +698,10 @@ def check(pg, who, width, out, full=False, guest=False):
             found["E21"] = [f"{k}：{'・'.join(v[:6])}（{len(v)} 人）" for k, v in fandom_over_official().items()]   # ✗：公式の立ち絵があるのに使っていない人（Fandom の絵のまま・小元素がいない）
         except Exception as e:  # noqa: BLE001
             print(f"  情報 E21 数えられなかった：{e}")
+        try:
+            found["E21"] += [f"お客さまの版面 {k}：{'・'.join(v[:6])}（{len(v)} 人）" for k, v in boards_fandom_over_official(boards_rows()).items()]
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E21 お客さまの版面を数えられなかった：{e}")
         try:
             blind = official_blind()
             if blind:

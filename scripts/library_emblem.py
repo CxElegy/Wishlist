@@ -333,6 +333,48 @@ def stage_holds(item, emblems, hold, pend, fetch=None):
     return rows, dropped, {s: n for s, n in new.items() if s in cur and n is not None}
 
 
+def official_swap_board(item, emblems, fetch=None):
+    """前に Fandom から取った小元素を公式サイトの立ち絵に取り直す（店長の emblem_fill.official_swap と同じ入口 official_cut・1 回 OFFICIAL_PER_ROUND 人）。
+    入れ替えた絵は手元（sandbox の emblems/）に置く：あとの stash が公開の箱へ上げる。→ (新しい小元素, 入れ替えた人数)"""
+    import emblem
+    import emblem_fill
+    if item.get("emblem_kind") != "character" or item.get("emblem_people"):
+        return emblems, 0
+    cur = {**item, "emblem": emblems}
+    rows = emblem_fill.fandom_rows(cur)[:emblem_fill.OFFICIAL_PER_ROUND]
+    skip = set(item.get("emblem_reject") or []) | {u for x in emblems or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
+    swapped = {}
+    for x in rows:
+        try:
+            emblem_fill._check_time()
+        except emblem_fill.OutOfTime:
+            break
+        try:
+            import urllib.request
+            from PIL import Image
+            ou = str(x.get("image") or "")
+            orig = Image.open(io.BytesIO((fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read()))(ou))) if ou.startswith("http") else None
+            got = emblem_fill.official_cut(cur, x, skip, orig)
+        except Exception:
+            continue
+        if got:
+            swapped[x["subject"]] = got
+    out = []
+    for x in emblems or []:
+        if isinstance(x, dict) and x.get("subject") in swapped and any(x is r for r in rows):
+            url, cut, fs = swapped[x["subject"]]
+            slug = emblem.slugify(item["name"], x["subject"]) + "-off"
+            emblem.save_cut(cut, slug)
+            y = {k: v for k, v in x.items() if k not in emblem.EMBLEM_MEASURED}
+            y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：Fandom から取り直し）")
+            if fs is not None:
+                y["fs"] = fs
+            out.append(y)
+        else:
+            out.append(x)
+    return out, len(swapped)
+
+
 def closeup_fields(pend, who):
     """胸像待ちの boards.config に書く分。待ちの人 {人: 取れなかった回数}（なくなれば None で消す）・各人の次に試す見込み・版面の見込み
     （店長の state/emblem_closeup*.json と同じ式 emblem_fill.close_plan）。点検 emb_check E20 が読む。"""
@@ -390,6 +432,8 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
             if gone:   # 外して元の画像は emblem_reject・人は emblem_redo → 次の回に胸像を探す
                 got["emblem_reject"] = list(dict.fromkeys(list(got.get("emblem_reject") or []) + [g.get("source") or g["image"] for g in gone]))
                 got["emblem_redo"] = list(dict.fromkeys(list(got.get("emblem_redo") or []) + [g["subject"] for g in gone if g.get("subject")]))
+        if got.get("emblem"):   # 公式サイトがあるのに Fandom の絵の人を公式に（店長の official_swap と同じ。点検 E21 がお客さまの版面も数える）
+            got["emblem"], _ = official_swap_board({**item, **got}, got["emblem"], fetch)
         stem = board.get("wd") or f"b{board['id']}"
         cfg = board.get("config") or {}
         add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}

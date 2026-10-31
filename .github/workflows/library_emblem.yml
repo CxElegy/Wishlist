@@ -47,6 +47,12 @@ jobs:
         run: python scripts/library_emblem.py --check
       - if: steps.check.outputs.due == 'true'
         run: pip install -q "rembg[cpu]>=2.0.60,<3"
+      # JS で描く公式サイト（Astrae Oratio など）の人物の絵を読むため、本物のブラウザ（scrapling）。入れられなければ SCRAPLING_BROWSER を立てず HTML だけで続ける
+      - name: 本物のブラウザ（scrapling・公式サイトの人物の絵）
+        if: steps.check.outputs.due == 'true'
+        continue-on-error: true
+        run: scrapling install && echo "SCRAPLING_BROWSER=1" >> "$GITHUB_ENV"
+
       - name: 模型的缓存（店長の後台と同じ）
         if: steps.check.outputs.due == 'true'
         uses: actions/cache@v4

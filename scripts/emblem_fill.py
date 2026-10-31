@@ -2639,6 +2639,14 @@ def fandom_rows(item):
             and x.get("shape") == "cutout" and emblem.official_for(item, x)]
 
 
+def official_cut(item, x, skip, orig=None):
+    """Fandom の小元素 x を替える公式サイトの立ち絵（店長の official_swap・お客さまの library_emblem.official_swap_board の同じ入口）→ (網址, 切り抜き, fs) か None。
+    顔だけのアップ・傷のあるものは取らない。"""
+    got = emblem.find_bust(None, _base_subject(x["subject"]), word=re.split(r"[\s(]", _base_subject(x["subject"]))[0], skip=skip, orig=orig,
+                           official=emblem.official_for(item, x))
+    return got if got and closeup_of(got[1]) is not True and not broken_image(got[1], False) else None
+
+
 def official_swap(item, log=print):
     """前に Fandom から取った小元素（規則「公式が先」の前の分）を、公式サイトの立ち絵に取り直す（胸像の入れ替えと同じ入れ替え方：
     取れた人から入れ替え・取れなければ元のまま。元より質が下がるものは取らない）。1 回 OFFICIAL_PER_ROUND 人。→ 入れ替えた人数。"""
@@ -2660,12 +2668,11 @@ def official_swap(item, log=print):
         except Exception:
             orig = None
         try:
-            got = emblem.find_bust(None, _base_subject(x["subject"]), word=re.split(r"[\s(]", _base_subject(x["subject"]))[0], skip=skip, orig=orig,
-                                   official=emblem.official_for(item, x))
+            got = official_cut(item, x, skip, orig)
         except Exception as e:
             log(f"  [公式へ] {x['subject']}：{e}")
             continue
-        if got and closeup_of(got[1]) is not True and not broken_image(got[1], False):
+        if got:
             swapped[x["subject"]] = got
     if not swapped:
         return 0

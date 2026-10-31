@@ -1155,6 +1155,8 @@ def official_pages(site, extra=2):
         html = _OFFICIAL_HTML[site] if site in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(site, _get(site, 1_500_000).decode("utf-8", "replace"))
     except Exception:
         return out
+    if not OFFICIAL_PATH.search(html):   # JS で描く公式（Astrae Oratio）：本物のブラウザで開いた HTML に替える（SCRAPLING_BROWSER=1 のときだけ・1 回の実行で版面ごとに 1 度）
+        html = _rendered_html(site) or html
     out.append((html, site))
     host = urllib.parse.urlparse(site).netloc
     seen = {site}
@@ -1168,6 +1170,15 @@ def official_pages(site, extra=2):
         except Exception:
             continue
     return out
+
+
+def _rendered_html(url):
+    """JS を動かした後の HTML（scripts/images.py の _browser_html：SCRAPLING_BROWSER=1・持ち時間つき）。開けなければ None。"""
+    try:
+        import images
+        return images._browser_html(url)
+    except Exception:
+        return None
 
 
 _OFFICIAL_INDEX = {}
@@ -1193,14 +1204,56 @@ def official_images(site, words, limit=6):
     if not site:
         return []
     ws = {official_key(w) for w in words if len(w) >= 3}
-    return [u for keys, u in official_index(site) if ws & keys][:limit]
+    return ([u for keys, u in official_index(site) if ws & keys] or official_person_images(site, ws))[:limit]
+
+
+OFFICIAL_PERSON = re.compile(r'href=["\']([^"\'#?]*/(?:chara|characters?|members?|cast)/([^/"\'#?]+)/?)["\']', re.I)
+PERSON_PREF = re.compile(r"(?<![a-z])(?:cut|body|stand|full|portrait|visual|chara)(?![a-z])", re.I)   # 語の切れ目で（standard の stand に当たらない）
+PERSON_SKIP = re.compile(r"card|logo|nav|poster|banner|thumb|icon|btn|sns|promo|module|-sp\b|_sp\b", re.I)
+
+
+def official_person_images(site, ws, limit=3):
+    """一覧のページに載るのが名前とリンクだけの公式（Marvel：/characters は名前の一覧、絵は /characters/<名前> の中）：一覧からリンクした
+    その人のページを 1 枚だけ開き（名前の語が 2 つ以上、1 語だけの名前は 1 つ一致するページ。取り違えを避ける）、そのページの絵（og:image と、パスが立ち絵らしいもの）→ [網址]。"""
+    if not ws:
+        return []
+    need = min(2, len(ws))
+    best = None
+    for html, base in official_pages(site):
+        for m in OFFICIAL_PERSON.finditer(html):
+            keys = {official_key(s) for s in re.split(r"[-_.\s]+", m.group(2)) if s}
+            hit = len(ws & keys)
+            if hit >= need and (best is None or (hit, -len(keys)) > best[0]):
+                best = ((hit, -len(keys)), urllib.parse.urljoin(base, m.group(1)))
+    if not best:
+        return []
+    u = best[1]
+    try:
+        page = _OFFICIAL_HTML[u] if u in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(u, _get(u, 1_500_000).decode("utf-8", "replace"))
+    except Exception:
+        return []
+    og = re.findall(r'(?:property|name)=["\']og:image["\'][^>]*content=["\']([^"\']+)', page, re.I) + re.findall(r'content=["\']([^"\']+)["\'][^>]*(?:property|name)=["\']og:image', page, re.I)
+    imgs = [urllib.parse.urljoin(u, x.replace("&amp;", "&")) for x in re.findall(r'(?:src|data-src)=["\']([^"\'\s,]+\.(?:png|webp|jpe?g))', page, re.I)]
+    pref = [i for i in imgs if PERSON_PREF.search(urllib.parse.urlparse(i).path) and not PERSON_SKIP.search(urllib.parse.urlparse(i).path)]
+    out = []
+    for i in pref + [urllib.parse.urljoin(u, x) for x in og]:
+        if i not in out:
+            out.append(i)
+    return out[:limit]
 
 
 def official_site(item):
     """その関注項の公式サイト：site、なければ目次のアイコンの出どころの網域。"""
-    s = item.get("site") or (item.get("icon") or {}).get("source") or ""
+    s = item.get("site") or ""
+    if not s:   # site がなければアイコンの出どころ。ただし wiki・画像の置き場・配信網は公式ではない（ぐでたま：upload.wikimedia.org）
+        s = (item.get("icon") or {}).get("source") or ""
+        if NOT_OFFICIAL_HOST.search(urllib.parse.urlparse(str(s)).netloc):
+            return None
     m = re.match(r"^(https?://[^/]+)", str(s))
     return (m.group(1) + "/") if m else None
+
+
+NOT_OFFICIAL_HOST = re.compile(r"wiki(?:media|pedia|a)|fandom|anilist|steamstatic|akamai|cloudfront|imgur|amazonaws|googleusercontent|cdn\.", re.I)
 
 
 def fandom_sourced(x):
