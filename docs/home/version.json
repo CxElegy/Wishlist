@@ -1,32 +1,32 @@
 {
- "admin": "1a52b2321d6a",
- "admin-ai": "8eb46a64674f",
+ "admin": "f29c1286cd13",
+ "admin-ai": "f3a4f2383893",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "fb4e4f9b"
+   "8931fd98"
   ],
   "tokens": [
    "AI 編集のトークン",
    "e7fa6022"
   ]
  },
- "admin-boards": "189423670fa3",
+ "admin-boards": "85852bb83f4e",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "4090f8fc"
+   "d2571f26"
   ],
   "votes": [
    "投票",
    "ddb5f3f0"
   ]
  },
- "admin-emblem": "7de2748750f3",
+ "admin-emblem": "98663456762a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3b639187"
+   "ae77ad8b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0aa841405d91",
  "admin-members_marks": {},
- "admin-now": "71f24c3447fd",
+ "admin-now": "a2806d10ff40",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b9be3228"
+   "58c95bb4"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "847dfa67"
+   "9ded2321"
   ],
   "term-panel": [
    "ライブログ",
-   "4f91d73b"
+   "1647deb1"
   ]
  },
- "admin-system": "9c0a2a29d82c",
+ "admin-system": "668c05fc10a8",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a7488efd"
+   "bd8b5401"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "93061ce3"
+   "1bee626b"
   ]
  },
  "admin_marks": {},
- "heat": "b6677d1bc108",
+ "heat": "f1a06ab20442",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "2e1e6c60"
+   "9067ec38"
   ],
   "ranking": [
    "ランキング",
-   "13e3a4e9"
+   "51cdfbba"
   ]
  },
- "index": "5503012097f8",
+ "index": "db194c644909",
  "index_marks": {
   "front": [
    "トップ",
-   "9d7db376"
+   "012912fa"
   ],
   "picks": [
    "気になるかも？",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "2bf7074b"
+   "d0e37149"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "a8371bb3"
+   "fe0c2f1e"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "b7f0c644"
+   "f43f7ccc"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
