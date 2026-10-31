@@ -214,7 +214,7 @@ PROCESSES = [
             {"id": "auto", "kind": "decision", "lane": "actions", "title": "自動補完で目標に届いた？",
              "text": "「小元素の自動補完」が規則だけで集める（実写は作り直しの剧だけ前の役者の画像を外す：is_remake）", "no": "失敗の理由と助言が管理ページに出る。手で頼まれたら下へ"},
             {"id": "pick", "kind": "step", "lane": "ai", "title": "一覧を目で見て番号を選ぶ（頼まれたときだけ）", "by": "ai",
-             "text": "外した画像は emblem_reject に書く（二度と自動で選ばれない）· 管理ページの「違う」「替える」は見た目の鍵（emblem_fill.look_of）も emblem_reject_look に残す（お客さまの版面は library_emblem が config に）", "uses": ["claude"]},
+             "text": "切り抜きの検査で外れた人は、同じ回のうちに同じ人の次の候補で取り直す（PICK_PASSES 3 回）· 外した画像は emblem_reject に書く（自動では選ばれない。規則の版 BROKEN_V が上がると、名簿の先頭で小元素がいない人の分だけ 1 回解く：実写の版面は全部。「違う」は見た目の鍵で残る）· 管理ページの「違う」「替える」は見た目の鍵（emblem_fill.look_of）も emblem_reject_look に残す（お客さまの版面は library_emblem が config に）", "uses": ["claude"]},
             {"id": "write", "kind": "store", "lane": "repo", "title": "items.yaml · docs/home/emblems/*.webp"},
         ],
     },

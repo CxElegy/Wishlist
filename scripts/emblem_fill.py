@@ -80,6 +80,7 @@ RULES = {
 # 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
+PICK_PASSES = 3   # fill_one：1 つの段で、切り抜きの検査に外れた人の次の候補を取り直す回数（最初を含む）
 NAMES_V = 12   # 12：フランチャイズ（subs.kind シリーズ）の名簿は中の作品（P179）の出演者を出た回数の順に（franchise_cast：漫威电影が Avengers: Doomsday 1 作の出演者 33 人で、Iron Man・Cap の主役が入らず 3 枚止まりだった）。 11：種族・役割・名無し（Wyverians・Hunter・Traveler・Manekin）を名簿から外す（emblem.NOT_CHAR）。 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
@@ -2175,8 +2176,15 @@ def fill_one(item, log=print):
             picks = auto_pick(fresh, good, web=False, strict=True)
             with WRITE_LOCK:
                 before_step = status(fresh)["have"]
-                if picks:
-                    commit(fresh, good, picks, log=log)
+                nxt = picks
+                for k in range(PICK_PASSES):   # 切り抜きの検査で外れた人は、同じ回のうちに同じ人の次の候補で取り直す（外れた画像は commit が emblem_reject に入れるので、次の auto_pick は別の候補。漫威电影：Iron Man の 1 枚目が外れて、通る 2 枚目が次の回まで待たされた）
+                    if not nxt:
+                        break
+                    commit(fresh, good, nxt, log=log)
+                    fresh = next((i for i in load_items() if i["name"] == item["name"]), fresh)
+                    if k + 1 < PICK_PASSES:
+                        nxt = [n for n in auto_pick(fresh, good, web=False, strict=True) if n not in picks]
+                        picks = picks + nxt
                 fresh = next((i for i in load_items() if i["name"] == item["name"]), fresh)
             added_step = max(0, status(fresh)["have"] - before_step)
             if len(picks) > added_step:   # 書いたが切り抜きの検査（穴・端で切れた・にじみ）で落ちた
@@ -2353,7 +2361,7 @@ def broken_image(im, photo, whole=False):
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 12   # 12：名簿の先頭 3 人で小元素がいない人の外した網址の札を 1 回解いて今の規則で見直す（release_head_rejects：Crystal Maiden の公式の立ち絵）。 11：小さいだけで外した縮めた網址の絵を emblem_reject に入れない・前の分は戻す（wide_retry：dota2 89 枚が大きい幅で取り直されなかった）。 10：顔なしの ③（図・小さすぎ：nk = replace）を替える対象に（replace_nf）。 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+BROKEN_V = 13   # 13：実写の版面は、名簿の先頭で小元素がいない人がいれば、外した網址の札を全部 1 回解く（release_head_rejects：画像の名前が役名で出演者の名前に当たらなかった）。 12：名簿の先頭 3 人で小元素がいない人の外した網址の札を 1 回解いて今の規則で見直す（release_head_rejects：Crystal Maiden の公式の立ち絵）。 11：小さいだけで外した縮めた網址の絵を emblem_reject に入れない・前の分は戻す（wide_retry：dota2 89 枚が大きい幅で取り直されなかった）。 10：顔なしの ③（図・小さすぎ：nk = replace）を替える対象に（replace_nf）。 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
 
 RULE_VERSION_NAMES = ("NAMES_V", "BROKEN_V")   # 規則の版は 1 か所：上がると失敗の待ちを解く（店長 material・お客さま library_emblem.due）。*_V を足したらここにも（tests が拦める）
 
@@ -2775,6 +2783,8 @@ def release_head_rejects(item, log=print):
     if not miss:
         return 0
     free = {u for w in miss for u in head_reject_urls(item, w)}
+    if live_action(item):   # 実写は画像の名前が役名（Iron_Man_…）・動画の場面は番号（ytimg）で、出演者の名前では見つからない：その版面の外した画像を全部解く（漫威电影：Iron Man・Cassie の今なら通る絵が前の規則の札で残っていた）
+        free = set(item.get("emblem_reject") or [])
     with WRITE_LOCK:
         if free:
             _set_field(item["name"], "emblem_reject", json.dumps([u for u in item.get("emblem_reject") or [] if u not in free], ensure_ascii=False)
