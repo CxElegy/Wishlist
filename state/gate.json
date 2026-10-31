@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-10-31T02:27:15+00:00",
+ "changed": true,
+ "checked": "2026-10-31T03:32:22+00:00",
  "fired": {
-  "at": "2026-10-31T02:27:15+00:00",
+  "at": "2026-10-31T03:32:22+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,35 +12,46 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T02:27:15+00:00",
+    "at": "2026-10-31T03:32:22+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 213,
-    "resp": "cse_01W4x6f8F8XqAmr3rrjFW2w5",
-    "sig": "67a060d8e3a4"
+    "prog": 217,
+    "resp": "cse_01W4x6f7yMVndv5h9T85iYiS",
+    "sig": "a2067880426c"
    },
    "items": [
-    "BLEACH Mirrors High",
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
     "Vaundy",
-    "哈利波特剧集"
+    "gelato pique",
+    "チェーンソーマン",
+    "三星手机",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "漫威电影",
+    "猫用品"
    ],
-   "last_batch": "2026-10-31T01:27:36+00:00",
+   "last_batch": "2026-10-31T02:34:33+00:00",
    "last_error": {
     "at": "2026-10-31T01:21:10+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 213,
+   "prog": 217,
    "prog_day": "2026-10-31",
    "ripe": [
-    "BLEACH Mirrors High",
-    "Vaundy",
-    "哈利波特剧集"
+    "GTA 6",
+    "MMORPG 新作",
+    "三星手机",
+    "漫威电影"
    ],
-   "sig": "67a060d8e3a4",
+   "sig": "a2067880426c",
    "token_cap": 1000000,
-   "tokens_today": 443085,
-   "why": "整理待ちの記事 4 件（3 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 485879,
+   "why": "整理待ちの記事 32 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
