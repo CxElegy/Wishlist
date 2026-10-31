@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-31T23:21:24+00:00",
+ "checked": "2026-10-31T23:49:46+00:00",
  "fired": {
-  "at": "2026-10-31T23:21:24+00:00",
+  "at": "2026-10-31T23:49:46+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,19 +12,23 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-31T21:45:12+00:00",
+    "at": "2026-10-31T23:49:46+00:00",
     "attempts": 1,
     "day": "2026-11-01",
-    "prog": 98,
-    "resp": "cse_01W4x6f6uUoSzdN8pKFVpubX",
-    "sig": "2111d2d1fc78"
+    "prog": 110,
+    "resp": "cse_01W4x6f7kkj74v75nA3LKBfw",
+    "sig": "27a75eb5f209"
    },
    "items": [
+    "GTA 6",
+    "MMORPG 新作",
+    "The Mandalorian",
     "dota2",
     "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
    "last_batch": "2026-10-31T21:57:51+00:00",
@@ -35,36 +39,46 @@
    "need": true,
    "prog": 110,
    "prog_day": "2026-11-01",
-   "ripe": [],
-   "sig": "e3f8777124ec",
-   "token_cap": 1000000,
-   "tokens_today": 188457,
-   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [
-    "BLEACH Mirrors High"
-   ],
-   "need": true,
-   "sig": "b6804aff6de5",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
+   "ripe": [
     "GTA 6",
     "The Mandalorian",
-    "Vaundy",
     "dota2",
-    "あつ森",
-    "ぐでたま",
     "チェーンソーマン",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "27a75eb5f209",
+   "token_cap": 1000000,
+   "tokens_today": 188457,
+   "why": "整理待ちの記事 26 件（10 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "BLEACH Mirrors High",
+    "漫威电影",
+    "GTA 6",
+    "The Mandalorian",
+    "周杰伦",
+    "绝区零"
+   ],
+   "need": true,
+   "sig": "7379fa124f21",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "FROM",
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "哈利波特剧集"
+   ],
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
