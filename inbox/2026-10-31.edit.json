@@ -1,12 +1,12 @@
 {
  "_covered": {
-  "漫威电影": 53,
+  "漫威电影": 57,
   "哈利波特剧集": 22,
-  "GTA 6": 29,
-  "A2O LITE": 9,
-  "三星手机": 11,
+  "GTA 6": 32,
+  "A2O LITE": 12,
+  "三星手机": 15,
   "ILLIT": 8,
-  "周杰伦": 7,
+  "周杰伦": 11,
   "BLEACH Mirrors High": 3,
   "The Mandalorian": 4,
   "Vaundy": 6,
@@ -46,7 +46,8 @@
     53,
     46,
     52,
-    38
+    38,
+    56
    ],
    "image": "https://www.bing.com/th?id=ONUT.VCtl0_0zS7d6VwafdvBizg&pid=News&w=1200"
   },
@@ -199,7 +200,8 @@
     15,
     19,
     21,
-    20
+    20,
+    30
    ]
   }
  ],
@@ -224,12 +226,13 @@
    ]
   },
   {
-   "headline": "【A2O LITE】話題のK-POPガールズグループ・A2O LITEのクイズに挑戦！",
-   "highlight": "",
+   "headline": "A2O LITE, 日 오리콘 급상승 1위·빌보드 재팬 4위…열도 강타",
+   "highlight": "오리콘 급상승 1위",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    10,
+    12
    ]
   },
   {
@@ -274,7 +277,8 @@
    "refs": [
     4,
     1,
-    7
+    7,
+    12
    ]
   },
   {
@@ -374,6 +378,15 @@
    "refs": [
     3,
     4
+   ]
+  },
+  {
+   "headline": "传老公周杰伦巡演遇舞台事故 昆凌认有被吓倒翌日即飞当地探班",
+   "highlight": "舞台事故",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
    ]
   }
  ],
