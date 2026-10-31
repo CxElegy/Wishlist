@@ -203,6 +203,165 @@
   "漫威电影": 9,
   "ILLIT": 8,
   "日本顶级网球赛事": 7,
-  "三星手机": 6
- }
+  "三星手机": 6,
+  "A2O LITE": 5,
+  "周杰伦": 5,
+  "哈利波特剧集": 5,
+  "dota2": 4,
+  "绝区零": 3
+ },
+ "A2O LITE": [
+  {
+   "headline": "Why did A2O LITE's \"NEON\" become a hit in Japan? 7 stages from a TikTok buzz to a streaming hit",
+   "highlight": "7 stages",
+   "blurb": "A song that goes viral on TikTok does not necessarily get listened to on streaming platforms. The note piece looks at the data behind NEON's rise in Japan.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200"
+  },
+  {
+   "headline": "「撮るなら何する？」ユ・ジェソクとキム・グァンギュ、「A2O LITE」のカバーダンスに挑戦",
+   "highlight": "カバーダンスに挑戦",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "'인기가요' 라인업, 아이브·라이즈·A2O LITE 등 출격",
+   "highlight": "A2O LITE",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "A2O LITEのAIJING、両親の賃金未払い疑惑で批判 同グループXILIは「天使の家族」と称賛",
+   "highlight": "賃金未払い疑惑",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰倫PHANTACI首聯名迪士尼玩捉迷藏！胡迪變潮T、毛絨玩偶也必收",
+   "highlight": "首聯名迪士尼",
+   "blurb": "周杰倫潮流品牌 PHANTACI迎來創立20週年，首度攜手迪士尼推出 Disney｜PHANTACI 聯名企劃，以「PHANTA LAND」為主題。演唱会・新歌の新情報は今回なし。",
+   "weight": "lead",
+   "refs": [
+    5
+   ],
+   "image": "https://cdn2.ettoday.net/images/8991/8991590.jpg"
+  },
+  {
+   "headline": "聯手周杰倫+蔡司！vivo X500系列、摺疊旗艦X Fold6登台總座",
+   "highlight": "聯手周杰倫+蔡司",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "懷念故友方大同！葛仲珊出手了 衝葛萊美廝殺周杰倫、蔡依林",
+   "highlight": "衝葛萊美",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter series to premiere on December 25, makers unveil new poster featuring Dominic McLaughlin",
+   "highlight": "premiere on December 25",
+   "blurb": "HBO’s Harry Potter and the Philosopher’s Stone series will premiere on December 25 on JioHotstar in India, with a new poster. 日本の配信先は今回も未発表。",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2026-12-25",
+    "label": "放送開始"
+   }
+  },
+  {
+   "headline": "Shameless star cast as voice of the Sorting Hat in new Harry Potter series",
+   "highlight": "Sorting Hat",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    4
+   ]
+  },
+  {
+   "headline": "Harry Potter: Snape Actor Paapa Essiedu Officially Opens up About Death Threats Ahead of Premiere",
+   "highlight": "Death Threats",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "《刀塔2》关山难越……PVISION再次被Spirit淘汰！",
+   "highlight": "PVISION再次被Spirit淘汰",
+   "blurb": "PVISION再次被Spirit淘汰。",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/rLMNpIbugixFofw.png"
+  },
+  {
+   "headline": "1win Officially Announced a Roster Change for Dota 2",
+   "highlight": "Roster Change",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Arteezy Shares His Expectations for the New Dota 2 Patch",
+   "highlight": "New Dota 2 Patch",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "《绝区零》空巡局巡查档案丨贝克福德街异象",
+   "highlight": "贝克福德街异象",
+   "blurb": "《绝区零》空巡局巡查档案：贝克福德街异象。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg"
+  },
+  {
+   "headline": "《绝区零》生日快乐菲欧妮丨否极泰来",
+   "highlight": "生日快乐菲欧妮",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ]
 }

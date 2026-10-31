@@ -8,12 +8,18 @@
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/cfpbAMbufCaDAAa.png": {
   "w": 1080,
   "h": 1399,
+  "target": 1280,
+  "v": 3
+ },
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/kfVLPSbugixDdgD.jpg": {
+  "w": 1080,
+  "h": 1670,
   "target": 1280,
   "v": 3
  },
@@ -746,6 +752,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn2.ettoday.net/images/8991/8991590.jpg": {
+  "w": 2000,
+  "h": 2500,
+  "target": 1280,
+  "v": 3
+ },
  "https://charagoo.jp/wp-content/uploads/2025/08/668w_668h-267.jpg": {
   "w": 668,
   "h": 668,
@@ -1034,6 +1046,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/31122626/harry-potter-reboot-snape-update.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://gamefragger.com/images/articles/banners/bleach-mirrors-high-introduces-10-new-characters-designed-by-tite-kubo-ahead-of-its-launch-ab30039.jpg": {
   "w": 1500,
   "h": 844,
@@ -1080,6 +1098,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/1win-introduced-stand-25399.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/arteezy-criticized-matchmaking-dota-2-23924.jpg": {
@@ -1178,6 +1202,12 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
+  "v": 3
+ },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/rLMNpIbugixFofw.png": {
+  "w": 1080,
+  "h": 601,
+  "target": 1280,
   "v": 3
  },
  "https://i.cdn.newsbytesapp.com/images/l144_20281793008781.jpg": {
@@ -1468,12 +1498,24 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.moneycontrol.com/static-mcnews/2026/10/20261031131011_hp-new.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://images.prismic.io/unext/rmYm_uID2RgCcG2Q_20216MAMAAWARDS_release.jpg?auto=format,compress&rect=0,0,1920,1080&w=640&h=360": {
   "w": 640,
   "h": 360,
   "target": 1280,
   "v": 3,
   "blur": 0.357
+ },
+ "https://images.storm.mg/cloud/145f1fafcd8d43ef3fc7cbe0b3d7925ea8c91a20.jpg?url=s3%3A%2F%2Fnew-storm-public-resource%2Fgallery%2F2243695%2FWwEwMDF9UsriKEzITP8c7F8ze5TXTTqdfrIwd6EO.jpg&g=sm&h=900&resize=fill&w=1600&format=jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
  },
  "https://images.techeblog.com/wp-content/uploads/2026/10/30154400/google-pixel-11-pro-smartphone-2026.jpg": {
   "w": 960,
@@ -1930,6 +1972,19 @@
   ],
   "why": "看不清"
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261031wow034.jpg": {
+  "w": 640,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.563,
+  "local": "pics/89ac15a62ba24679.webp",
+  "out": [
+   1280,
+   600
+  ],
+  "why": "看不清"
+ },
  "https://img.toy-people.com/member/179319829696_1200.jpg": {
   "w": 668,
   "h": 668,
@@ -1995,6 +2050,12 @@
   "why": "看不清"
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-27/v6k9lcewuo3hsf2qq0go5jyd.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://kagit-media.atreez.cc/uploads/2026-10-30/i1d2joh29o153ez1gglsfaot.jpg": {
   "w": 1600,
   "h": 900,
   "target": 720,
@@ -3074,6 +3135,18 @@
   "target": 720,
   "v": 3
  },
+ "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/01/35473388.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
+  "w": 799,
+  "h": 532,
+  "target": 720,
+  "v": 3,
+  "local": "pics/424067d40835eec9.webp",
+  "out": [
+   799,
+   532
+  ],
+  "why": "期限付きの網址"
+ },
  "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414": {
   "w": 1414,
   "h": 1207,
@@ -3536,6 +3609,12 @@
   "v": 3,
   "blur": 0.291
  },
+ "https://static.the-independent.com/2026/10/31/16/40/GettyImages-2171004928.jpg?trim=0,0,2777,0&width=1200&height=800&crop=1200:800": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://static.tweaktown.com/news/1/1/114388_1_gta-6-npcs-get-personality-traits-that-decide-whether-they-flee-or-fight-back_full.png": {
   "w": 1500,
   "h": 844,
@@ -3873,6 +3952,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.anewsa.com/news_images/2026/10/22/mark/20261022200800.jpg": {
+  "w": 580,
+  "h": 387,
+  "target": 720,
+  "v": 3
+ },
  "https://www.appbank.net/wp-content/uploads/2026/10/20261028_091828_781_01.webp": {
   "w": 1793,
   "h": 1251,
@@ -3948,12 +4033,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.67uzpSK-g6jNybD0I5wWVw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4009,6 +4088,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.434,
+  "local": "pics/5173ca935a6ed0a5.webp",
+  "out": [
+   1280,
+   669
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.KI8fsHi9gp5vLVhvIUhm6Q&pid=News&w=1024": {
   "w": 700,
   "h": 393,
@@ -4048,12 +4140,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.KqSdTU3lCrVBOAmgf5Ps1g&pid=News&w=799": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.LqQ7JkcDXFYBAyYiJRL7xQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4069,6 +4155,12 @@
  "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
   "h": 467,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Tj8p-NB1h9oLCIVz3xJdmA&pid=News&w=656": {
+  "w": 534,
+  "h": 356,
   "target": 720,
   "v": 3
  },
@@ -4213,6 +4305,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.h-a0kXMRJuiF2YDt_UZ_Jg&pid=News&w=626": {
+  "w": 626,
+  "h": 352,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4222,12 +4320,6 @@
  "https://www.bing.com/th?id=ONUT.iOLgomJRjCnpWxI4P5DdVg&pid=News&w=1200": {
   "w": 700,
   "h": 367,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.j987asPSKJqIW8Q-2NgNJA&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
   "target": 720,
   "v": 3
  },

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "0f617e9fdea8",
+ "edit_sig": "1de73a7d48e8",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -153,45 +153,43 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "HBO’s Harry Potter and the Philosopher’s Stone series will premiere on December 25 on JioHotstar in India, with a new poster. 日本の配信先は今回も未発表。",
      "date": "2026-10-31",
-     "n": 1,
-     "source": "The Independent",
-     "title": "Shameless star cast as voice of the Sorting Hat in new Harry Potter series",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxORnNST3JpeTRHVjRGWUNVYWhyZGNiaHVtNVQ0YkVJTDktZjQwU2xlSS0zUkVBZEJPSVgzSGF2ZXM4NmxLSjl2REdNTHpiRllkZ2Rsd19rRThWZ01oZ1E2UFdqTnRydlNXNHNxUW4zVWY4Rm9faHY1SmZLMjlPX0Y1cHdwa29qa05WVkk4bWlZOU1YQS1ZMUJ3cGlrcDhXY2VDRE1aUmZJLURtSnVpWThUR0hvOXo?oc=5"
+     "event": {
+      "date": "2026-12-25",
+      "label": "放送開始"
+     },
+     "headline": "Harry Potter series to premiere on December 25, makers unveil new poster featuring Dominic McLaughlin",
+     "highlight": "premiere on December 25",
+     "image": "https://images.moneycontrol.com/static-mcnews/2026/10/20261031131011_hp-new.jpg",
+     "image_via": "og:image",
+     "url": "https://www.moneycontrol.com/entertainment/harry-potter-series-to-premiere-on-december-25-makers-unveil-new-poster-featuring-dominic-mclaughlin-article-14065110.html",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 2,
-     "source": "FandomWire",
-     "title": "Harry Potter: Snape Actor Paapa Essiedu Officially Opens up About Death Threats Ahead of Premiere",
-     "url": "https://fandomwire.com/harry-potter-snape-actor-paapa-essiedu-death-threats/"
+     "headline": "Shameless star cast as voice of the Sorting Hat in new Harry Potter series",
+     "highlight": "Sorting Hat",
+     "image": "https://static.the-independent.com/2026/10/31/16/40/GettyImages-2171004928.jpg?trim=0,0,2777,0&width=1200&height=800&crop=1200:800",
+     "image_via": "og:image",
+     "url": "https://www.independent.co.uk/arts-entertainment/tv/news/harry-potter-series-cast-latest-sorting-hat-b3076890.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 3,
-     "source": "Moneycontrol",
-     "title": "Harry Potter series to premiere on December 25, makers unveil new poster featuring Dominic McLaughlin",
-     "url": "https://www.moneycontrol.com/entertainment/harry-potter-series-to-premiere-on-december-25-makers-unveil-new-poster-featuring-dominic-mclaughlin-article-14065110.html"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 4,
-     "source": "腾讯网",
-     "title": "剧版《哈利·波特》又放猛料！《无耻之徒》男星拿下分院帽，幽灵阵容也揭晓",
-     "url": "https://news.qq.com/rain/a/20261031A0CL5Y00"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 5,
-     "source": "MuggleNet",
-     "title": "HBO’s Harry Potter TV Series Cast: Every Confirmed Actor So Far",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1RMEZNR0tUM21jWUNmUnA3c29CbkVYaXBpb2ZJYVFiLThLa3lYelhzVXVRSFpBRHU2MzZ1SjEwejM1MkVmU0lFOHh0Rm93aWVIeFAtWXA2NTJaR3ZETG9BS29icjJtc1NDbWlOaXpBVG9aUQ?oc=5"
+     "headline": "Harry Potter: Snape Actor Paapa Essiedu Officially Opens up About Death Threats Ahead of Premiere",
+     "highlight": "Death Threats",
+     "image": "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/31122626/harry-potter-reboot-snape-update.jpg",
+     "image_via": "og:image",
+     "url": "https://fandomwire.com/harry-potter-snape-actor-paapa-essiedu-death-threats/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -487,45 +485,39 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "周杰倫潮流品牌 PHANTACI迎來創立20週年，首度攜手迪士尼推出 Disney｜PHANTACI 聯名企劃，以「PHANTA LAND」為主題。演唱会・新歌の新情報は今回なし。",
      "date": "2026-10-31",
-     "n": 1,
-     "source": "网易新闻客户端",
-     "title": "1997年周杰伦初次登台影像，白衣少年青涩腼腆，当众被嘲咬字不清",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9MV0JJQ2NmamlqRE5qbVRMbGpLZjI0RmhhM2tTWDl3VHZaVHc3SkpDRnd1VG1rR3BPZnZlbFZiU2VQTTlBb1k1bk5UZ29iYTVnMkpJ?oc=5"
+     "headline": "周杰倫PHANTACI首聯名迪士尼玩捉迷藏！胡迪變潮T、毛絨玩偶也必收",
+     "highlight": "首聯名迪士尼",
+     "image": "https://cdn2.ettoday.net/images/8991/8991590.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://fashion.ettoday.net/news/3263399",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 2,
-     "source": "噓！星聞",
-     "title": "懷念故友方大同！葛仲珊出手了 衝葛萊美廝殺周杰倫、蔡依林",
-     "url": "https://stars.udn.com/star/story/10092/9849566"
+     "headline": "聯手周杰倫+蔡司！vivo X500系列、摺疊旗艦X Fold6登台總座",
+     "highlight": "聯手周杰倫+蔡司",
+     "image": "https://images.storm.mg/cloud/145f1fafcd8d43ef3fc7cbe0b3d7925ea8c91a20.jpg?url=s3%3A%2F%2Fnew-storm-public-resource%2Fgallery%2F2243695%2FWwEwMDF9UsriKEzITP8c7F8ze5TXTTqdfrIwd6EO.jpg&g=sm&h=900&resize=fill&w=1600&format=jpg",
+     "image_via": "og:image",
+     "url": "https://www.storm.mg/article/11177383",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 3,
-     "source": "風傳媒",
-     "title": "聯手周杰倫+蔡司！vivo X500系列、摺疊旗艦X Fold6登台總座：記憶體漲勢恐延續到這一年| 劉芯衣| 新聞",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5oWDUxbG5CVFM1WnlKdDRsQTVWeDUwWW9kLXhzajlqbDJMMVJjSFlzRTA5X0pTb2Y4MFZxVFY4cVIxN1dWdEIxbFlRNGR5QQ?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 4,
-     "source": "鏡週刊Mirror Media",
-     "title": "周杰倫前得力助手攻進好萊塢！創「AI界奧斯卡」 烏克蘭得主戰火下失聯",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1aMmdEWWlDNXR0TmhGZ2JBT3dyX0JwN19xU3NlaGp3VHJRX3VvX3EweHl1UnFJdGVscG10TldxZHBMajRLVWlrTHR3UHF6OHJseGs5S2hHQkRSaG1MSTgtOEFINDnSAWhBVV95cUxNMllzLTRXM01RTDJWdkMyR0JwRVhXUnctMm94NFhVNVJ0V1Y4OGZUTjZLbFF4OTQyUEltUkJzdzhpRFlaZE5PWjU2UjhGSjBuSVhxWmFxb2hxNkQ3ZnBzd3UwSDY2ODZNdA?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 5,
-     "source": "ET Fashion",
-     "title": "周杰倫PHANTACI首聯名迪士尼玩捉迷藏！胡迪變潮T、毛絨玩偶也必收",
-     "url": "https://fashion.ettoday.net/news/3263399"
+     "headline": "懷念故友方大同！葛仲珊出手了 衝葛萊美廝殺周杰倫、蔡依林",
+     "highlight": "衝葛萊美",
+     "image": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/01/35473388.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600",
+     "image_via": "og:image",
+     "url": "https://stars.udn.com/star/story/10092/9849566",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",
@@ -542,31 +534,29 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "《绝区零》空巡局巡查档案：贝克福德街异象。",
      "date": "2026-10-31",
-     "n": 1,
-     "source": "新浪网",
-     "title": "#绝区零# az @ ネタバレあり @ az79709363 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBPYzBtTUVMVGRNcGhYSFVRNk5Xem5JakVXdjJRX0c1WnJUTEt4SEVTeGpZQlptT3FPTGdCMjdobWowVFpfckg5amcwTHpWS0JjVURmblpwWkI3U3hHNDhJN0N5OA?oc=5"
+     "headline": "《绝区零》空巡局巡查档案丨贝克福德街异象",
+     "highlight": "贝克福德街异象",
+     "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg",
+     "image_via": "AI 挑选",
+     "url": "http://news.17173.com/content/10312026/182613757.shtml",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 2,
-     "source": "17173",
-     "title": "《绝区零》空巡局巡查档案丨贝克福德街异象",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9qbDlBdGphaGRvMEY2NDJtQWI5bEc0eWxzdzFKVUE3SFRkNF94S25QdHozdzlYSkFjdVZtMHFqWjRjQThESHMzVzNkUV91bzdCdVJ6WE5waTJ3SThIamR5YjdqdFc?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 3,
-     "source": "17173",
-     "title": "《绝区零》生日快乐菲欧妮丨否极泰来",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE0yaDRJYk1zeFIyaGhQQVlPR3ktM2xoaGxMcWRSbTR1TTlra0ZXbjdxOGdZeFZoaFJOOUFZcS13ODZkWmMxSVpJeVZHRmdnNlA2bkpudXpidzltNUFuMXJWQzNmOUw?oc=5"
+     "headline": "《绝区零》生日快乐菲欧妮丨否极泰来",
+     "highlight": "生日快乐菲欧妮",
+     "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/kfVLPSbugixDdgD.jpg",
+     "image_via": "正文图",
+     "url": "http://news.17173.com/content/10312026/182553288.shtml",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -583,38 +573,39 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "PVISION再次被Spirit淘汰。",
      "date": "2026-10-31",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "1win Officially Announced a Roster Change for Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9nOFJSSFRKSDNUdldtaXNwLS1CLWRMT3dkZTd5LTUtc0ZTeTIySTNCbkF1c1ptTWJsV1ZDRlU1Z1AyY2l2STRxejk5WWUwbms2UXBnZVo2ZC1QOThpa0kya0JHWl9wRDB0QUxNeTNIQk10ajB1dFZReGp3?oc=5"
+     "headline": "《刀塔2》关山难越……PVISION再次被Spirit淘汰！",
+     "highlight": "PVISION再次被Spirit淘汰",
+     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/rLMNpIbugixFofw.png",
+     "image_via": "AI 挑选",
+     "url": "http://news.17173.com/content/10312026/182710728.shtml",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 2,
-     "source": "Hawk Live",
-     "title": "Arteezy Shares His Expectations for the New Dota 2 Patch",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFAwcWZ2S0VmRVNrTTNKX2dSOTJaMkdZT2QxUzRpekFIM0FRWlYtUU1zQW5LUEY1WmVjM1lmT0hTaFc4ck5JUVlsYkl4dmIybk9VbDFJQnZUXzlLN3lzanY4Uko0UHBTRG9KWFpYN2xiVWVURURKQUhF?oc=5"
+     "headline": "1win Officially Announced a Roster Change for Dota 2",
+     "highlight": "Roster Change",
+     "image": "https://hawk.live/storage/images/posts/1win-introduced-stand-25399.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/1win-officially-announced-roster-change-dota-2",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 3,
-     "source": "17173",
-     "title": "《刀塔2》关山难越……PVISION再次被Spirit淘汰！",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9FTzlMbjFTVk1wMFQwd1RMazZQbEx1TkV3ejluUGVVOF9uNjBYbEcyaVpkdDU0VUxweVV5c21kcF9ka3BzRGVTeVNVR3Y1Z1MzclpkeWUxRlZqOUlSR2JteHItdGY?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 4,
-     "source": "Bluesky",
-     "title": "My favorite reads are when /r/dota2 tries to explain the memes about the Chinese teams and it takes like two paragraphs and starts with \"So, first you have to understand the rise and fall of the Han d",
-     "url": "https://bsky.app/profile/proactiveretcon.bsky.social/post/3mz2nkg4vpc2k"
+     "headline": "Arteezy Shares His Expectations for the New Dota 2 Patch",
+     "highlight": "New Dota 2 Patch",
+     "image": "https://hawk.live/storage/images/posts/arteezy-criticized-matchmaking-dota-2-23924.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/arteezy-shares-expectations-new-dota-2-patch",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -631,45 +622,49 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
-     "date": "2026-10-31",
-     "n": 1,
-     "source": "Kagit",
-     "title": "A2O LITEのAIJING、両親の賃金未払い疑惑で批判 同グループXILIは「天使の家族」と称賛",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9XRENxUXUydzd1MkMzV1BzbkM2MTZzN0FCQkVaZUJKajBZcVU3V05HZzFqbERPVHRIMEhzLXdsY2R3bG1SYWZVdmpFd19LZFFBUWpmZ0V0V0o?oc=5"
-    },
-    {
+     "blurb": "A song that goes viral on TikTok does not necessarily get listened to on streaming platforms. The note piece looks at the data behind NEON's rise in Japan.",
      "date": "2026-10-30",
-     "n": 2,
-     "source": "note",
-     "title": "[A2O LITE] The talk of TikTok! 3 \"Real Korean phrases you can use right now for fan activities\" learned from the lyrics of the viral song \"NEON\"",
-     "url": "https://note.com/haruharu_korean/n/n8c7fdddd869f?hl=en"
+     "headline": "Why did A2O LITE's \"NEON\" become a hit in Japan? 7 stages from a TikTok buzz to a streaming hit",
+     "highlight": "7 stages",
+     "image": "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://note.com/ryosuke2121/n/n4be88b9d48d9?hl=en",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "note",
-     "title": "Why did A2O LITE's \"NEON\" become a hit in Japan? 7 stages from a TikTok buzz to a streaming hit",
-     "url": "https://note.com/ryosuke2121/n/n4be88b9d48d9?hl=en"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 4,
-     "source": "아시아뉴스통신",
-     "title": "'인기가요' 라인업, 아이브·라이즈·A2O LITE 등 출격",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9fSTl1RHNiUC1oY3J6aDdzaGRYNlJEdC15M3d6SDFFM2d4MnhfdzhBekJ3UXFHZ091cDhWVHJHWGxaaTB5UmtqVFd5MGVLOEFUY1NTblFaSl91aE5U?oc=5"
+     "headline": "「撮るなら何する？」ユ・ジェソクとキム・グァンギュ、「A2O LITE」のカバーダンスに挑戦",
+     "highlight": "カバーダンスに挑戦",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261031wow034.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/wowkorea/entertainment/wowkorea-20261031wow034",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 5,
-     "source": "ｄメニューニュース",
-     "title": "「撮るなら何する？」ユ・ジェソクとキム・グァンギュ、「A2O LITE」のカバーダンスに挑戦",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOeUlMbXBianItX2tnbFd1Q0sxRGNFdXlTTFB0dHJ3OHYxN2Y4bFA2WlBRei1ZdU1pUjJkUjlOOHdGeVBha0M0Yk93bGc4QWQ2M3NkUzVFZDZmUE9NNkdzNUdjeWJ6SllIb2hZTkQ4cVVsOExwV2NhRFUzcEo0LS1ETlFsOExnWnNqbFlCa2tkTdIBlAFBVV95cUxPQVFGT09iUzY0R0pJTDJrcW1wWmxjVm5lU0czSTZxY1pSUGVIMGtlNE5QSGxSb1VCZGRHUVV6S2N4VDJGdnQtS1BFVzUzMWNSaDdYNmVMTXJVUWZRelBNRVhoRlFDSkRMLWdRVm1GVFR5X3h0czZFWmlxYWJtVnJuN0ZBdi1ubkVOeHY2UlJLRGppa1py?oc=5"
+     "headline": "'인기가요' 라인업, 아이브·라이즈·A2O LITE 등 출격",
+     "highlight": "A2O LITE",
+     "image": "https://www.anewsa.com/news_images/2026/10/22/mark/20261022200800.jpg",
+     "image_via": "og:image",
+     "url": "https://www.anewsa.com/detail.php?number=3213263",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "A2O LITEのAIJING、両親の賃金未払い疑惑で批判 同グループXILIは「天使の家族」と称賛",
+     "highlight": "賃金未払い疑惑",
+     "image": "https://kagit-media.atreez.cc/uploads/2026-10-30/i1d2joh29o153ez1gglsfaot.jpg",
+     "image_via": "og:image",
+     "url": "https://kagit.kr/ja/posts/aijing-wage-dispute",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
