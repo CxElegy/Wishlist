@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "b7d05ee33bd9",
+ "edit_sig": "a1d1b3c0c09b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -189,43 +189,6 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 58,
-     "source": "SlashFilm",
-     "title": "VisionQuest's Showrunner Confirmed A Major Marvel Cameo Most Fans Missed",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPcXZ6MWVySnVackpteWMteVNDOGp0Y0hOVTNXVWZRazZkTlBrS3Q3S0ZhX3Uxb0xjTE5pZG8wVjNGSXcxQWZVR0JkOE01SGR0blNhSU9QSWZxb0Y0Z3Jyc0pFUjdZTlRMU09NRjdnMEVhc251akZPYk40RXFOTTY4WTByanFOYklnaEE?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 59,
-     "source": "BGR on MSN",
-     "title": "5 Biggest Avengers Missing From Doomsday's Confirmed Cast List",
-     "url": "https://www.msn.com/en-us/news/other/5-biggest-avengers-missing-from-doomsdays-confirmed-cast-list/ar-AA2gs1lF"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 60,
-     "source": "DW.com",
-     "title": "漫威《永恆族》：趙婷的超級英雄電影",
-     "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNZXlyaDdkdkRnZEhRNVNUNnJubGVjRDZuaXpObnllTWdLQUdrRVFxRmVmT3Q4a0RhMFRyWmNTN3RUVDVMUmZHamEzc29jMzVKVjEtRXdiUHFEUGx4U2hEV0NKWEpqVUZIb184a0hwV2ZpMWx5T2NyeGdhOTBRSzJubDdsT2p3SzktUXhaQVB3eDJlZDc2N1pFTlk3SEw5Z0wybDFnT1BtTGZ2LWRmc0hVX0VxeUE2b2NFdEYzWU1jbi11WTVRNV9WODRyYXJTSVRaRVdXNDlmcENuNlI4WUcwQmtDeDg4eHd4c3BRbTY3aXFLMUNzamlV?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 61,
-     "source": "ComicBook.com",
-     "title": "Avengers: Doomsday Theory Casts Doctor Strange As An Agent of Doom Since Infinity War",
-     "url": "https://comicbook.com/movies/feature/avengers-doomsday-theory-casts-doctor-strange-as-an-agent-of-doom-since-infinity-war/"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 62,
-     "source": "ComicBook.com",
-     "title": "Jennifer Lawrence Has a Surprising Response to Returning as Mystique In a Future MCU Movie",
-     "url": "https://comicbook.com/movies/news/jennifer-lawrence-has-a-surprising-response-to-returning-as-mystique-in-a-future-mcu-movie/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -1130,22 +1093,26 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-27",
-     "headline": "Citadel Opens Next Wave of Closed Beta After High Demand for Its Browser Gunship MMO",
-     "highlight": "",
-     "image": "https://s.yimg.com/lo/mysterio/api/64f7780b11b03d1beb12b4f748d418164ce06b93ccccd826296df220d2b67849/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fglobenewswire.com%2F27189a6532558515a61ef9efb58f06cb.png",
-     "image_via": "og:image",
-     "url": "https://finance.yahoo.com/technology/articles/citadel-opens-next-wave-closed-222200009.html",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-30",
      "headline": "World of Warcraft Forever：BlizzardのMMORPG、発売日と新要素",
      "highlight": "",
      "image": "https://cdn.sortiraparis.com/images/80/66131/1332847-world-of-warcraft-forever-date-de-sortie-et-nouveautes-du-mmorpg-de-blizzard.jpg",
      "image_via": "og:image",
      "url": "https://www.sortiraparis.com/ja/pari-de-nani-o-suru-ka/gemu/articles/356575-world-of-warcraft-forever-no-fa-mai-rito-blizzardnommorpgno-xin-yao-su",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "event": {
+      "date": "2027-02-23",
+      "label": "発売日"
+     },
+     "headline": "「FFXIV」ファンフェスまとめ！最新拡張「白銀のワンダラー」は2027年2月23日発売",
+     "highlight": "2027年2月23日発売",
+     "image": "https://game.watch.impress.co.jp/img/gmw/list/2152/831/1.jpg",
+     "image_via": "og:image",
+     "url": "https://game.watch.impress.co.jp/docs/news/2152831.html",
      "weight": "normal"
     }
    ],
