@@ -280,7 +280,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     hit = len(seen)
     stat = {"n": len(p), "bytes": used, "cap": CAP, "gone": len(gone), "new": new, "bad": bad, "pics": total, "hit": hit,
             "wait": max(0, len(todo) - new - bad), "day": today, "cc": cc, "cc_wait": sum(1 for v in p.values() if not v.get("cc")),
-            "tint": sum(1 for v in p.values() if v.get("c"))}
+            "nc": nc, "tint": sum(1 for v in p.values() if v.get("c"))}
     out = {"base": base or st["base"], "p": p, "x": x, "stat": stat}
     (path or STATE).parent.mkdir(parents=True, exist_ok=True)
     (path or STATE).write_text(json.dumps(out, ensure_ascii=False, sort_keys=True, separators=(",", ":")), encoding="utf-8")
@@ -300,7 +300,7 @@ def main(argv):
     path = os.environ.get("GITHUB_OUTPUT")
     if path:
         with open(path, "a", encoding="utf-8") as f:
-            f.write(f"changed={'true' if s['new'] or s['gone'] or s['cc'] else 'false'}\nmore={'true' if (s['wait'] and s['new']) or (s['cc_wait'] and s['cc']) else 'false'}\n")
+            f.write(f"changed={'true' if s['new'] or s['gone'] or s['cc'] or s['nc'] else 'false'}\nmore={'true' if (s['wait'] and s['new']) or (s['cc_wait'] and s['cc']) else 'false'}\n")
 
 
 if __name__ == "__main__":

@@ -566,7 +566,7 @@ PROCESSES = [
             {"id": "ph2b", "kind": "step", "lane": "actions", "title": "前に上げた分の cache-control を付け直す（rehead）", "uses": ["supabase"], "x": "時間の半分まで",
              "text": "state の cc 印がない写真（前は public・14 日で上げた分）を、同じ中身で 400／800 とも public・1 年・immutable に上げ直し、cc=1 の印を付ける。残りがあり進んだ回は次の回を起こす（stat の cc・cc_wait は管理ページ ① のメーター）"},
             {"id": "ph2c", "kind": "step", "lane": "actions", "title": "平均の色を state に残す（tint）", "x": "上げるとき 1 回・色のない昔の分は置いてある 400 から",
-             "text": "上げる 400 の webp を 1 画素に縮めて #rrggbb にし state の c に残す（色のない分は公開の 400 を読んで埋め直す）。render._pic が置き場の写真の枠に style=background として埋める＝色だけの下絵が通信 0 で最初の描画から出る"},
+             "text": "上げる 400 の webp を 1 画素に縮めて #rrggbb にし state の c に残す（色のない分は公開の 400 を読んで埋め直す）。色を足しただけの回も state を発布する（stat の nc）。render._pic が置き場の写真の枠に style=background として埋める＝色だけの下絵が通信 0 で最初の描画から出る"},
             {"id": "ph3", "kind": "step", "lane": "actions", "title": "古いものを消す（evict）", "uses": ["supabase"],
              "text": "ページに載っていない＆最後に使ってから 14 日超え、なお上限 300MB 超えなら古い順。消すのは photos の箱の中だけ"},
             {"id": "ph4", "kind": "store", "lane": "repo", "title": "state/photo_store.json", "text": "指紋ごとの最後に使った日・大きさ。render が読む"},
