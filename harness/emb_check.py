@@ -272,6 +272,11 @@ def stale_live_rejects(items=None, broken=None):
             if it.get("emblem_kind") == "character" and it.get("emblem_people") and it.get("emblem_reject") and int(it.get("emblem_headv") or 0) < broken]
 
 
+def boards_stale_live_rejects(rows, broken=None):
+    """E26 のお客さまの版面の分：boards の行 [{name, config}] の config で、店長の stale_live_rejects と同じ式。"""
+    return [f"お客さま {s}" for s in stale_live_rejects([{"name": r.get("name"), "emblem_kind": "character", **(r.get("config") or {})} for r in rows], broken)]
+
+
 def head_cause_text(board, names, progress=None):
     """E15 の原因：state/emblem_progress.json の funnel.heads（emblem_fill.head_causes が後台の回ごとに書く、人ごとの外した理由）を読む。記録がなければ「原因の記録なし」（次の回で出る）。"""
     if progress is None:
@@ -648,6 +653,10 @@ def check(pg, who, width, out, full=False, guest=False):
         found["E24"] = narrow_small_rejects()
         found["E25"] = time_waits()
         found["E26"] = stale_live_rejects()
+        try:
+            found["E26"] += boards_stale_live_rejects(boards_rows())
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E26 お客さまの版面を数えられなかった：{e}")
     if guest:
         try:
             cl = closeup_left()

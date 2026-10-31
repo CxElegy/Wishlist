@@ -2050,6 +2050,7 @@ def due(prog, items, now):
         hint = any(item.get(k) for k in ("emblem_fandom", "emblem_api", "emblem_category", "anilist_id", "wikidata"))
         recount = item.get("emblem_category") and not item.get("emblem_pool")   # 分類はあるのに数えられなかった（429）：版を待たずに次の回も
         unbreak_due = any(x.get("v", 1) < BROKEN_V for x in broken.get(item["name"]) or [])   # 前の規則で外した小元素の見直し待ち
+        unbreak_due = unbreak_due or reject_release_due(item)   # 外した画像の札の見直し待ち（規則の版が上がった後 1 回）
         if st["state"] == "ok" and not broken_cuts(item) and not unbreak_due and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
         if (e.get("state") == "failed" and not os.environ.get("EMBLEM_RETRY_NOW")
@@ -2771,6 +2772,14 @@ def head_reject_urls(item, who):
         if all(w in flat for w in toks) or any(len(w) >= 5 and w in flat for w in toks):
             out.append(u)
     return out
+
+
+def reject_release_due(item):
+    """外した画像の札を今の規則で見直す番（release_head_rejects がまだ解いていない）か。実写は札が残っていれば、ほかは先頭の人が欠けて札があれば。
+    後台の due も同じ式を見る：そろった（ok）・失敗で材料が同じ版面は due が飛ばすので、見直しの入口に着けなかった（哈利波特剧集・The Mandalorian が headv 無しのまま）。"""
+    if int(item.get("emblem_headv") or 0) >= BROKEN_V or kind_of(item) not in ("character", "group") or not item.get("emblem_reject"):
+        return False
+    return live_action(item) or bool(head_missing(item))
 
 
 def release_head_rejects(item, log=print):
