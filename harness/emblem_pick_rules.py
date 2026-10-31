@@ -143,7 +143,7 @@ def summary(rows):
     return out
 
 
-if __name__ == "__main__" and "--audit" not in sys.argv:
+if __name__ == "__main__" and not {"--audit", "--library"} & set(sys.argv):
     rows, sm = evaluate()
     for r in rows:
         print(("  " if r[3] == r[4] else "✗ "), r[0][:3], r[1][:5], r[2][:22].ljust(22), "印", r[3], "規則", r[4], r[5])
@@ -171,6 +171,44 @@ def audit_production():
             key = r[3].split("（")[0]
             why[key] = why.get(key, 0) + 1
     return rows, dict(n=len(rows), missing=missing, **cnt, x_by_reason=why)
+
+LIB_URL = "https://bzokpnbcjscbcehdxtjq.supabase.co/rest/v1/boards?select=id,config&limit=500"
+LIB_KEY = "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC"   # 公開の鍵（網頁にも入っている）。見えるのは公開の版面だけ
+
+
+def audit_library():
+    """ライブラリの版面（お客さまの版面）の小元素にも同じ規則を当てる → (行, 集計)。行＝(版面 id, 名前, 判定, 理由)。
+    網につなぐ（公開の鍵で読める版面だけ。RLS で見えない版面は数えられない＝集計の boards に見えた数）。"""
+    import urllib.request
+    req = urllib.request.Request(LIB_URL, headers={"apikey": LIB_KEY})
+    boards = json.load(urllib.request.urlopen(req, timeout=60))
+    rows, bad = [], 0
+    for b in boards:
+        for e in (b.get("config") or {}).get("emblem") or []:
+            try:
+                if e["image"].startswith("http"):
+                    raw = urllib.request.urlopen(e["image"], timeout=30).read()
+                else:   # 店長の版面と同じ絵を指す相対の道（docs/home）
+                    raw = (ROOT / "docs" / "home" / e["image"]).read_bytes()
+                v, why = original_verdict(trim(Image.open(io.BytesIO(raw))))
+            except Exception as ex:
+                print("read fail:", type(ex).__name__, ex, file=sys.stderr)
+                bad += 1
+                continue
+            rows.append((b["id"], e["subject"], v, why))
+    cnt = {k: sum(r[2] == k for r in rows) for k in "ox-"}
+    return rows, dict(boards=len(boards), n=len(rows), unreadable=bad, **cnt)
+
+
+if __name__ == "__main__" and "--library" in sys.argv:
+    rows, sm = audit_library()
+    by = {}
+    for r in rows:
+        if r[2] == "x":
+            by.setdefault(r[0], []).append(r[1])
+    for b, ns in sorted(by.items(), key=lambda t: -len(t[1])):
+        print(f"board {b}: x {len(ns)}  {', '.join(ns[:6])}")
+    print(json.dumps(sm, ensure_ascii=False, indent=1))
 
 if __name__ == "__main__" and "--audit" in sys.argv:
     rows, sm = audit_production()

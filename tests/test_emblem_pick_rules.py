@@ -1,4 +1,5 @@
 """小元素の選び方の規則（harness/emblem_pick_rules.py）の点検：規則が動くこと・今の本番の小元素を数えること。"""
+import json
 import pathlib
 import sys
 import unittest
@@ -10,7 +11,7 @@ sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 import emblem_pick_rules as R  # noqa: E402
 
-X_CEILING = 40   # 2026-10-31 の数は 32（小さすぎる 14・顔のアップ 18）。規則に当たる絵を増やさない棚
+QUEUE = json.loads((ROOT / "harness" / "labels" / "emblem_x_queue.json").read_text())["x"]   # 直す待ちの × の一覧（2026-10-31：32）
 
 
 class PickRules(unittest.TestCase):
@@ -26,7 +27,9 @@ class PickRules(unittest.TestCase):
         rows, sm = R.audit_production()
         self.assertGreater(sm["n"], 300)
         self.assertEqual(sm["n"], sm["o"] + sm["x"] + sm["-"])
-        self.assertLessEqual(sm["x"], X_CEILING, f"規則が × にする小元素が増えた：{sm['x_by_reason']}")
+        xs = {f"{r[0]}|{r[1]}" for r in rows if r[2] == "x"}
+        self.assertEqual(sorted(xs - set(QUEUE)), [], "待ちの一覧にない × が出た（新しい壊れ方）。直すか、直す待ちとして一覧に足す")
+        self.assertEqual(sorted(set(QUEUE) - xs), [], "もう × でない小元素が一覧に残っている。harness/labels/emblem_x_queue.json から外す（棚を下げる）")
 
 
 if __name__ == "__main__":
