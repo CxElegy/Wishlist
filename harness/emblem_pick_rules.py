@@ -143,8 +143,41 @@ def summary(rows):
     return out
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and "--audit" not in sys.argv:
     rows, sm = evaluate()
     for r in rows:
         print(("  " if r[3] == r[4] else "✗ "), r[0][:3], r[1][:5], r[2][:22].ljust(22), "印", r[3], "規則", r[4], r[5])
+    print(json.dumps(sm, ensure_ascii=False, indent=1))
+
+
+def audit_production():
+    """今ある小元素（items.yaml の全版面）に同じ規則を当てて数える → (行, 集計)。行＝(版面, 名前, 判定, 理由)。
+    規則は本番に未適用。ここで数えた × は「本番に今出ていて、規則なら出さない」絵＝同じ壊れ方の範囲。"""
+    items = yaml.safe_load((ROOT / "items.yaml").read_text())
+    items = items["items"] if isinstance(items, dict) else items
+    rows, missing = [], 0
+    for it in items:
+        for e in it.get("emblem") or []:
+            p = ROOT / "docs" / "home" / (e.get("image") or "")
+            if not e.get("image") or not p.is_file():
+                missing += 1
+                continue
+            v, why = original_verdict(trim(Image.open(p)))
+            rows.append((it["name"], e["subject"], v, why))
+    cnt = {k: sum(r[2] == k for r in rows) for k in "ox-"}
+    why = {}
+    for r in rows:
+        if r[2] == "x":
+            key = r[3].split("（")[0]
+            why[key] = why.get(key, 0) + 1
+    return rows, dict(n=len(rows), missing=missing, **cnt, x_by_reason=why)
+
+if __name__ == "__main__" and "--audit" in sys.argv:
+    rows, sm = audit_production()
+    by = {}
+    for r in rows:
+        if r[2] == "x":
+            by.setdefault(r[0], []).append(r[1])
+    for b, ns in sorted(by.items(), key=lambda t: -len(t[1])):
+        print(f"{b}: x {len(ns)}  {', '.join(ns[:6])}")
     print(json.dumps(sm, ensure_ascii=False, indent=1))
