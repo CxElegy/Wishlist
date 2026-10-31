@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "5b8bfceea329",
+ "edit_sig": "cd60b917670c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,10 +13,8 @@
      "date": "2026-10-30",
      "headline": "아스트라에 오라티오 \"테스트 반응 긍정적, 게임의 매력 알렸다\"",
      "highlight": "테스트 반응 긍정적",
-     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-     "image_via": "作品封面",
-     "source": "게임인사이트",
-     "source_icon": "https://cdn.gameinsight.co.kr/image/logo/favicon.png",
+     "image": "https://cdn.gameinsight.co.kr/news/photo/202610/36920_90717_3439.jpg",
+     "image_via": "AI 挑选",
      "url": "https://www.gameinsight.co.kr/news/articleView.html?idxno=36920",
      "weight": "lead"
     },
@@ -25,9 +23,8 @@
      "date": "2026-10-30",
      "headline": "'아스오라' 앞에 국경 없다...\"오타쿠는 위 아 더 월드\"",
      "highlight": "",
-     "image": null,
-     "source": "플레이포럼",
-     "source_icon": "https://cdn.playforum.net/favicon.ico",
+     "image": "https://cdn.playforum.net/news/photo/202610/635726_67705_1837.jpg",
+     "image_via": "og:image",
      "url": "https://www.playforum.net/news/articleView.html?idxno=635726",
      "weight": "normal"
     },
@@ -1233,57 +1230,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 11,
-     "source": "GAME Watch",
-     "title": "「FFXIV」と「エヴァ」コラボの予告編が公開！吉田P「ミサトさんも出r……」エヴァらしいミサトさんのナレーション入り。鋭意制作進行中",
-     "url": "https://game.watch.impress.co.jp/docs/news/2152847.html"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 12,
-     "source": "GAME Watch",
-     "title": "「FFXIV：白銀のワンダラー」、「FF7R」コラボレイドのスケジュールが明らかに。零式の後に改を実装野村哲也氏によるKVも公開",
-     "url": "https://game.watch.impress.co.jp/docs/news/2152846.html"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 13,
-     "source": "Gamer",
-     "title": "ほっこり系MMO「クロスランド」が11月16日に発売！不思議で美しく絶えず移り変わる世界で自分の居場所を作ろう",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9FZFRxUzNfR3pxWGtHUFVib3BzYl9JX2VpZUh1Y252RUlQRktjYS1BRE9UXzBJd0NOdlR1V1ItWmhPUW52dTdMcFlJbFhCekZWM2Q5YQ?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 14,
-     "source": "GAME Watch",
-     "title": "「FFXIV：白銀のワンダラー」ベンチマークソフトは12月下旬ごろにリリース。新しいキャラメイク機能もテスト可能",
-     "url": "https://game.watch.impress.co.jp/docs/news/2152839.html"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 15,
-     "source": "GAME Watch",
-     "title": "「FFXIV：白銀のワンダラー」、シーズンパスは導入しないと改めて宣言。「アドベンチャラーアクティビティ」のUIなどもお披露目",
-     "url": "https://game.watch.impress.co.jp/docs/news/2152838.html"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 16,
-     "source": "GAME Watch",
-     "title": "「FFXIV：白銀のワンダラー」2つの新エリアが公開！プレーヤータウン「ヒャルタドナ」もお披露目",
-     "url": "https://game.watch.impress.co.jp/docs/news/2152835.html"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 17,
-     "source": "4Gamer.net",
-     "title": "「ファイナルファンタジーXIV：白銀のワンダラー」のアーリーアクセスは2027年2月19日にスタート。最新ジョブの遠隔物理DPS“ゼファー”も発表に",
-     "url": "https://www.4gamer.net/games/199/G019924/20261031010/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1314,14 +1260,14 @@
      "blurb": "",
      "date": "2026-10-31",
      "event": {
-      "date": "2027-02-23",
-      "label": "発売日"
+      "date": "2027-02-19",
+      "label": "アーリーアクセス"
      },
-     "headline": "「FFXIV」ファンフェスまとめ！最新拡張「白銀のワンダラー」は2027年2月23日発売",
-     "highlight": "2027年2月23日発売",
-     "image": "https://game.watch.impress.co.jp/img/gmw/list/2152/831/10.png",
+     "headline": "「FFXIV：白銀のワンダラー」のアーリーアクセスは2027年2月19日にスタート，最新ジョブ“ゼファー”も発表",
+     "highlight": "2027年2月19日",
+     "image": "https://www.4gamer.net/games/199/G019924/20261031010/SS/003.jpg",
      "image_via": "og:image",
-     "url": "https://game.watch.impress.co.jp/docs/news/2152831.html",
+     "url": "https://www.4gamer.net/games/199/G019924/20261031010/",
      "weight": "normal"
     }
    ],
