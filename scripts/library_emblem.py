@@ -166,6 +166,7 @@ def board_item(board, follow, get=None):
     item.update(name=board["name"], type=user_pages.TYPE_OF_SEC.get(sec, "category"),
                 keywords=cfg.get("keywords") or [board["name"]])
     item.setdefault("emblem_kind", kind_for(sec, (follow or {}).get("subs"), human))
+    item["_round"] = rounds_of(cfg)   # 店長と同じ：名簿の残りを STEP 人ずつ順に 1 周する
     if item["emblem_kind"] == "character":   # 名簿（roster）と Fandom の立ち絵の手がかり。前の回に書いたもの・店長の手書きが先
         if wd.get("anilist") and str(wd["anilist"]).isdigit():
             item.setdefault("anilist_id", int(wd["anilist"]))
@@ -424,6 +425,8 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
     note = str(r.get("note") or "").replace("新しい記事・手がかりが来たらすぐ、来なくても規則を直したらもう一度", "手がかり・規則の版が変わったらすぐもう一度")  # 記事は見ない（店長の文のままだと中身と合わない）
     add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES,
                          "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}   # bv：公開の箱の小元素を見直した壊れ方の規則の版   # 名簿の規則の版（上がると、そろった版面も 1 回名簿を数え直す）
+    if add["emblem_state"]["state"] != "ok" and note != "時間切れ":
+        add["emblem_state"]["rounds"] = rounds_of(cfg) + 1   # 回の通し番号（規則の版が変わると 0 から）
     if add["emblem_state"]["state"] == "failed" and note != "時間切れ":   # 材料の指紋を残す（時間切れ・例外は残さない＝次の見回りですぐ）
         add["emblem_state"]["m"] = material({**cfg, **add})
     return add
@@ -524,6 +527,23 @@ def serve(board, follow, upload, base, get=None):
     return add
 
 
+def rounds_of(c):
+    """この版面の今の規則での回の通し番号（emblem_state.rounds。名簿・壊れ方の規則の版が変わったら 0 から）。"""
+    import emblem_fill
+    st = (c or {}).get("emblem_state") or {}
+    return int(st.get("rounds") or 0) if st.get("nv") == emblem_fill.NAMES_V and int(st.get("bv") or 0) == emblem_fill.BROKEN_V else 0
+
+
+def passes_left(b):
+    """届かなかった版面で、名簿の残りを 1 周するまであと何回か（店長の emblem_fill.passes_left と同じ規則。先頭の STEP 人だけで止めない）。"""
+    import emblem_fill
+    c = cfg(b)
+    try:
+        return emblem_fill.passes_left({**c, "emblem_kind": c.get("emblem_kind") or "topic"}, {"rounds": rounds_of(c), "rounds_v": emblem_fill.rule_versions()})
+    except Exception:
+        return 0
+
+
 def due(boards, now):
     """やる順：まだ一度も試していない版面 → 0 枚の版面（エンブレムが出ていない：途中・届かなかったもの）→ 途中（running）→
     届かなかったものは材料（手がかり・規則の版）が変わったときだけ（時間では待たない）。済み（ok）は飛ばす。
@@ -542,7 +562,7 @@ def due(boards, now):
             out.append((1 if zero else 3, st.get("at", 0), b))
         elif st.get("state") != "ok" and (st.get("nv") != names_v or int(st.get("bv") or 0) < emblem_fill.BROKEN_V):   # 届かなかった版面も、規則の版が上がったらすぐ
             out.append((1 if zero else 1.5, st.get("at", 0), b))
-        elif st.get("state") != "ok" and st.get("m") != material(cfg(b)):   # 届かなかった版面：手がかりが変わった・時間切れで指紋がない → 次の見回りですぐ（変わらなければ何時間でも試さない）
+        elif st.get("state") != "ok" and (st.get("m") != material(cfg(b)) or passes_left(b) > 0):   # 届かなかった版面：手がかりが変わった・時間切れで指紋がない → 次の見回りですぐ（変わらなければ何時間でも試さない）
             out.append((1 if zero else 3, st.get("at", 0), b))
         elif st.get("nv") != names_v and (st.get("state") == "ok" or any(cfg(b).get(k) for k in NAMES_HINT)):
             # そろっていても、届かなかったキャラの版面も、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）

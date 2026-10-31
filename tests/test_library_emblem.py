@@ -185,6 +185,16 @@ class Fill(unittest.TestCase):
               {"id": 12, "config": {"emblem_state": {"state": "failed", "at": now - 60, "have": 49, "v": le.RULES, "nv": nv}}}]   # 公開の箱の小元素を今の壊れ方の規則で見ていない → 待たない
         self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 2, 7, 10, 12, 9, 4, 8, 6, 11])   # 指紋のない古い失敗（2・11）は 1 回だけ（指紋が付く）
 
+    def test_due_failed_with_untried_roster_until_one_pass(self):
+        """届かなかった版面でも名簿にまだ試していない人が多ければ、1 周するまで次の見回りでも続ける（店長 emblem_fill と同じ規則）。"""
+        nv = emblem_fill.NAMES_V
+        cfg0 = {"emblem_kind": "character", "emblem_who": [f"p{i}" for i in range(35)], "emblem_pool": 35, "emblem_fandom": "x"}
+        st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V, "m": le.material(cfg0)}
+        for rounds, want in ((0, [1]), (3, [1]), (4, [])):
+            b = {"id": 1, "config": {**cfg0, "emblem_state": {**st, "rounds": rounds}}}
+            self.assertEqual([x["id"] for x in le.due([b], 10 ** 4)], want, rounds)
+        self.assertEqual(le.rounds_of({"emblem_state": {**st, "rounds": 3, "nv": nv - 1}}), 0)   # 規則の版が変わったら 0 から
+
     def test_due_waits_for_material_not_time(self):
         """届かなかった版面は、何日たっても手がかり・規則の版が同じなら試さない（待ちが見回りで増えない）。変わったらすぐ。"""
         nv = emblem_fill.NAMES_V
