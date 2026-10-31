@@ -128,6 +128,11 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     pg.goto(base + page, wait_until="domcontentloaded", timeout=60000)
     pg.wait_for_timeout(wait * 1000)
     settle(pg)
+    if page == "settings.html" and WHO[who]:   # 2026-10-31：本人の設定ページに描き替わる途中の「待ち」の箱（.wl-wait）を素の箱と数えた。描き替わる（wl-own が出て箱が消える）まで最大 SETTLE_S 秒待ってから数える。それでも残れば本物の✗
+        try:
+            pg.wait_for_function("b=>!!document.querySelector('meta[name=\"wl-own\"]')&&![...document.querySelectorAll(b)].some(x=>x.offsetParent)", arg=BOXES, timeout=SETTLE_S * 1000)
+        except Exception:  # noqa: BLE001
+            pass
     if not page:   # 2026-10-27：loading=lazy の写真は下までスクロールしないと読み込まれず、開けない写真（札）を数え損ねる。下まで読んでから数える
         for y in range(0, 40000, 800):
             pg.evaluate(f"window.scrollTo(0,{y})")
@@ -379,17 +384,49 @@ def html_weight_bad(html):
     return bad
 
 
-def photo_cache_bad(html, get=None):
-    """一時保管の写真を GET したとき cache-control が public で max-age が 1 日以上（HEAD は private,no-cache に見えるので GET で）。2026-10-31 写真 0.5 秒。"""
-    m = re.search(r'<img src="([^"]*/storage/v1/object/public/photos/[^"]*)"', html)
-    if not m:
+SAMPLE_N = 16
+
+
+def lead_photos(html):
+    """版面ごとの先頭の記事の写真（本物の 800 とぼかしの 400）の網址。一時保管から出たものだけ、重複なし。"""
+    out = []
+    for sec in re.split(r"(?=<section\b[^>]*\bdata-k=)", html)[1:]:
+        for m in re.finditer(r'<img (?:class="bg" )?src="([^"]*/storage/v1/object/public/photos/[^"]*)"', sec[:6000]):
+            out.append(re.sub(r"&amp;", "&", m.group(1)))
+    return list(dict.fromkeys(out))
+
+
+def photo_cache_bad(html, get=None, n=SAMPLE_N):
+    """一時保管の写真を GET したとき cache-control が public で max-age が 1 日以上（HEAD は private,no-cache に見えるので GET で）。
+    最初の 1 枚だけでなく、全版面の先頭の写真（400 も 800 も）から n 枚を等間隔に（2026-10-31 写真 0.5 秒：The Mandalorian は最初の写真ではない）。
+    max-age が 1 年未満（前に上げた分が 14 日のまま）も数える。"""
+    urls = lead_photos(html)
+    if not urls:
         return []
     def head(u):
         r = urllib.request.urlopen(urllib.request.Request(u, headers=BROWSER_HEADERS), timeout=30)
         return r.headers.get("cache-control", "")
-    cc = (get or head)(re.sub(r"&amp;", "&", m.group(1)))
-    age = re.search(r"max-age=(\d+)", cc)
-    return [] if "public" in cc and age and int(age.group(1)) >= 86400 else [f"一時保管の写真の cache-control が「{cc}」（public・1 日以上にする）"]
+    step = max(1, len(urls) // n)
+    bad = []
+    for u in urls[::step][:n]:
+        cc = (get or head)(u)
+        age = re.search(r"max-age=(\d+)", cc)
+        if not ("public" in cc and age and int(age.group(1)) >= 31536000):
+            bad.append(cc)
+    return [f"一時保管の写真 {min(len(urls), n)} 枚のうち {len(bad)} 枚の cache-control が public・1 年でない（例「{bad[0]}」）"] if bad else []
+
+
+def ahead_bad(html):
+    """全版面の先頭の写真を先に取る JS（EMB_JS の ahead）があり、先頭の写真が一時保管から出ている版面の割合が半分以上か。"""
+    bad = []
+    if "const ahead" not in html:
+        bad.append("版面の先頭の写真を先に取る JS（ahead）がない（目次から飛ぶとぼかしのまま数秒）")
+    secs = re.split(r"(?=<section\b[^>]*\bdata-k=)", html)[1:]
+    secs = [s for s in secs if '<img src="' in s[:8000] and 'data-e="s"' in s[:8000]]
+    kept = sum("/storage/v1/object/public/photos/" in (re.search(r'<img src="([^"]*)"[^>]*data-e="s"', s[:8000]) or [0, ""])[1] for s in secs)
+    if secs and kept * 2 < len(secs):
+        bad.append(f"先頭の写真が一時保管から出た版面 {kept}/{len(secs)}（半分未満）")
+    return bad
 
 
 def check_public_leak(base):
@@ -938,7 +975,7 @@ def main(argv):
             print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
         try:   # HTML の重さ・画像 1 枚ごとのハンドラ（ログインなしで取れる店長のページ）
             html = urllib.request.urlopen(urllib.request.Request(a.base, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
-            bad = html_weight_bad(html) + photo_cache_bad(html)
+            bad = html_weight_bad(html) + photo_cache_bad(html) + ahead_bad(html)
         except Exception as ex:  # noqa: BLE001
             bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
         fails += bool(bad)

@@ -1822,6 +1822,16 @@ EMB_JS = """
   sweep(); document.querySelectorAll('.pic img').forEach(late);
   // 最初の画面（と半画面ぶん先）の記事の写真は lazy を外して先に取る。ほかは lazy のまま（2026-10-30 最初のニュースを速く）
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(i => { if (i.getBoundingClientRect().top < innerHeight * 1.5) { i.loading = 'eager'; i.fetchPriority = 'high'; } });
+  // 版面の先頭の写真（ぼかしの下絵と本物）は、最初の画面が済んだあと暇なときに 3 版面ずつ先に取っておく。目次から版面へ飛んだとき、そこで取り始めるとぼかしのまま数秒かかる
+  // （2026-10-31 The Mandalorian）。目次へ指・マウスが近づいたら、その版面の先頭を最優先で取る。通信量を減らす設定（saveData）の人にはしない
+  const lead = s => [...s.querySelectorAll('.pic')].slice(0, 1).flatMap(p => [...p.querySelectorAll('img:not(.ico)')]);
+  const pull = (s, hi) => lead(s).forEach(i => { if (i.loading === 'lazy') { i.loading = 'eager'; if (hi) i.fetchPriority = 'high'; } });
+  const idle = f => window.requestIdleCallback ? requestIdleCallback(f, { timeout: 1500 }) : setTimeout(f, 400);
+  const secs = [...document.querySelectorAll('section[data-k]')];
+  const ahead = () => { let n = 0; const step = () => { secs.slice(n, n + 3).forEach(s => pull(s)); n += 3; if (n < secs.length) idle(step); }; step(); };
+  if (!(navigator.connection && navigator.connection.saveData)) { if (document.readyState === 'complete') idle(ahead); else addEventListener('load', () => idle(ahead)); }
+  const near = ev => { const a = ev.target.closest && ev.target.closest('a[href^="#"]'), s = a && document.getElementById(a.getAttribute('href').slice(1)); if (s) pull(s.closest('section') || s, true); };
+  ['pointerover', 'touchstart', 'focusin'].forEach(n => document.addEventListener(n, near, { passive: true }));
   // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）
   const room = el => { const band = el.parentElement, img = el.querySelector('img'); if (!band || !img) return;
     const go = () => { const b = band.getBoundingClientRect(), r = el.getBoundingClientRect();

@@ -739,8 +739,20 @@ class ImagesTest(unittest.TestCase):
         h = render._eager_first('<head><meta charset="utf-8"></head><img src="https://s/storage/v1/object/public/photos/a-800.webp" srcset="https://s/a-400.webp 400w, https://s/a-800.webp 800w" sizes="100vw" loading="lazy" data-e="s">')
         self.assertIn('<link rel="preload" as="image" fetchpriority="high" href="https://s/storage/v1/object/public/photos/a-800.webp" imagesrcset=', h)
         self.assertLess(h.index("<meta charset"), h.index("rel=\"preload\""))
-        self.assertEqual(ux_check.photo_cache_bad(h, lambda u: "public, max-age=1209600"), [])
-        self.assertEqual(len(ux_check.photo_cache_bad(h, lambda u: "private, no-cache")), 1)
+        # 点検は最初の 1 枚でなく、全版面の先頭の写真（400 も 800 も）を数える。14 日のまま（前に上げた分）も ✗
+        P = "https://s/storage/v1/object/public/photos/"
+        page = "".join(f'<section data-k="b{i}"><img class="bg" src="{P}{i}-400.webp" data-e="r"><img src="{P}{i}-800.webp" data-e="s"></section>' for i in range(4))
+        self.assertEqual(ux_check.photo_cache_bad(page, lambda u: "public, max-age=31536000, immutable"), [])
+        self.assertEqual(len(ux_check.photo_cache_bad(page, lambda u: "public, max-age=1209600")), 1)
+        self.assertEqual(len(ux_check.photo_cache_bad(page, lambda u: "private, no-cache")), 1)
+        seen = []
+        ux_check.photo_cache_bad(page, lambda u: seen.append(u) or "public, max-age=31536000", n=8)
+        self.assertEqual(len(seen), 8)      # 4 版面 × (400・800)：最初の版面だけではない
+        self.assertEqual(len(ux_check.ahead_bad(page)), 1)      # ahead の JS がない
+        self.assertEqual(ux_check.ahead_bad(page + "const ahead"), [])
+        # 版面の先頭の写真を先に取る JS が EMB_JS にある（目次から飛ぶ前に取っておく）
+        self.assertIn("const ahead", render.EMB_JS)
+        self.assertIn("'touchstart'", render.EMB_JS)
 
     def test_render_icon_fallback_order(self):
         """兜底顺序：自己的图 → 作品封面 → 来源图标（存的 → 完整域名 → 主域名）→ 作品名封面块。"""
