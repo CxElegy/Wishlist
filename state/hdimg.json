@@ -3100,6 +3100,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-2-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1445,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/9516059a080c12b3.webp",
+  "out": [
+   1280,
+   841
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00035851-tennismagv-000-1-view.jpg?exp=10800": {
   "w": 1280,
   "h": 960,
@@ -4075,6 +4087,12 @@
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
   "w": 495,
   "h": 619,
+  "target": 720,
+  "v": 3
+ },
+ "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp": {
+  "w": 1200,
+  "h": 628,
   "target": 720,
   "v": 3
  },
@@ -5165,6 +5183,12 @@
   "v": 3
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-8e21309f0ab9e8f398f424861f3ba0bb/images/7f3721c0-58ce-4391-a385-023452ad923d.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-8e21309f0ab9e8f398f424861f3ba0bb/images/cac613fb-5447-459e-8615-ff73ed06f6be.jpg": {
   "w": 1920,
   "h": 1080,
   "target": 1280,

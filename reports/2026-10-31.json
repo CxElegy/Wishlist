@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "43ff86d36c17",
+ "edit_sig": "5cbd80ec4000",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -723,22 +723,6 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 7,
-     "source": "X",
-     "title": "あつ森プレイヤーたちがハロウィン島で大盛り上がり",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBWN3JUY1RBbjBVV1JKNlV6Z2tKQk9DTlNrZjZsYjByQ3l0ZHpaZlZiZHlLcHdzZjNCYVhWcDd6dVNkR3d6YU1jNDV1cS1hZmhiYVpJak1XVQ?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 8,
-     "source": "note",
-     "title": "【あつ森ver】まるでハワイのペンション！な親戚宅をつくってみた",
-     "url": "https://note.com/niirii/n/n1f10f23cafee"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1092,22 +1076,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 6,
-     "source": "Yahoo!ニュース",
-     "title": "世界23位フェルナンデス 初の東レPPO決勝進出、ストレート勝ちでツアー7度目V王手＜女子テニス＞（tennis365.net）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9Fb1BtdUhJVmVURmpsckVrc1FpTWpNQ1hUQUxGeXNIVlRkZ0s1cXZxeXFRTV81TVMzQXVBdDVqa181TlFIV25NLUNBMUhDQ0g4MDhTN2pHRUxIejdzSXY4WlRwYUpGRTdQTTl2UXdoUTItcVNVT3hZZWNwQWtVMTQ?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 7,
-     "source": "スポーツナビ",
-     "title": "【準々決勝】A.イアラ vs D.シュナイダー ハイライト│東レ パン パシフィック オープンテニス2026",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9xQVkwZWtXemtpTTk5bUkyVFZFY0NWU3cta3hqQThSX08zeHZhZmhJMnc0OWJRWUNneVVXal95QTNhb2FBNG8xS05lZXFQYWpQWi1NRmlOX3c2eWM1?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1119,6 +1087,16 @@
      "image_via": "AI 挑选",
      "url": "https://sports.yahoo.co.jp/video/player/28486248",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "世界23位フェルナンデス 初の東レPPO決勝進出、ストレート勝ちでツアー7度目V王手＜女子テニス＞",
+     "highlight": "初の東レPPO決勝進出",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-2-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/c280789146fe29ba7f23db78d2fdf324517ab7b0",
+     "weight": "normal"
     },
     {
      "blurb": "",
@@ -1149,6 +1127,16 @@
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/123aecf61c0495c6ad8cc996e6bb046665d07b16",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "【準々決勝】A.イアラ vs D.シュナイダー ハイライト│東レ パン パシフィック オープンテニス2026",
+     "highlight": "準々決勝",
+     "image": "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-8e21309f0ab9e8f398f424861f3ba0bb/images/cac613fb-5447-459e-8615-ff73ed06f6be.jpg",
+     "image_via": "og:image",
+     "url": "https://sports.yahoo.co.jp/video/player/28495026",
+     "weight": "normal"
     }
    ],
    "subtitle": "ATP・WTA ツアー 日本開催",
@@ -1167,15 +1155,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "日テレNEWS NNN on MSN",
-     "title": "信州のウインターシーズン幕開け!軽井沢のスキー場が今季の営業スタート【長野】",
-     "url": "https://www.msn.com/ja-jp/video/other/%E4%BF%A1%E5%B7%9E%E3%81%AE%E3%82%A6%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%E5%B9%95%E9%96%8B%E3%81%91-%E8%BB%BD%E4%BA%95%E6%B2%A2%E3%81%AE%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4%E3%81%8C%E4%BB%8A%E5%AD%A3%E3%81%AE%E5%96%B6%E6%A5%AD%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88-%E9%95%B7%E9%87%8E/vi-AA2gsbwL"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1191,6 +1170,16 @@
      "image_via": "AI 挑选",
      "url": "https://n.yam.com/Article/20261030136426",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "信州のウインターシーズン幕開け!軽井沢のスキー場が今季の営業スタート【長野】",
+     "highlight": "軽井沢のスキー場が今季の営業スタート",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2grWl7.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/video/other/%E4%BF%A1%E5%B7%9E%E3%81%AE%E3%82%A6%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%E5%B9%95%E9%96%8B%E3%81%91-%E8%BB%BD%E4%BA%95%E6%B2%A2%E3%81%AE%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4%E3%81%8C%E4%BB%8A%E5%AD%A3%E3%81%AE%E5%96%B6%E6%A5%AD%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88-%E9%95%B7%E9%87%8E/vi-AA2gsbwL",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
