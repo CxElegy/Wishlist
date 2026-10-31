@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-31T07:32:36+00:00",
+ "checked": "2026-10-31T07:51:58+00:00",
  "fired": {
-  "at": "2026-10-31T07:32:36+00:00",
+  "at": "2026-10-31T07:51:58+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -34,11 +34,12 @@
    "prog": 290,
    "prog_day": "2026-10-31",
    "ripe": [
+    "Astrae Oratio",
     "あつ森",
     "日本顶级网球赛事",
     "滑雪"
    ],
-   "sig": "93a93f75e8d6",
+   "sig": "60fbac06455e",
    "token_cap": 1000000,
    "tokens_today": 621377,
    "why": "整理待ちの記事 7 件（4 版面・AI 編集まで版面に載らない）"
@@ -51,14 +52,14 @@
     "漫威电影",
     "dota2",
     "哈利波特剧集",
-    "FROM",
-    "GTA 6"
+    "FROM"
    ],
    "need": true,
-   "sig": "fb45bbdcac7a",
+   "sig": "a8c97c70d221",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "あつ森",
@@ -66,7 +67,7 @@
     "周杰伦",
     "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
