@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-31T18:23:54+00:00",
+ "checked": "2026-10-31T18:36:28+00:00",
  "fired": {
   "at": "2026-10-31T18:23:54+00:00",
   "results": {
@@ -43,24 +43,11 @@
    "need": true,
    "prog": 0,
    "prog_day": "2026-11-01",
-   "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "The Mandalorian",
-    "dota2",
-    "あつ森",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "漫威电影",
-    "绝区零"
-   ],
-   "sig": "c03b086da5b3",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
    "tokens_today": 0,
-   "why": "整理待ちの記事 73 件（14 版面・AI 編集まで版面に載らない）"
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
@@ -71,20 +58,21 @@
     "哈利波特剧集",
     "漫威电影",
     "FROM",
-    "GTA 6",
-    "あつ森",
-    "A2O LITE",
-    "Vaundy",
-    "周杰伦",
-    "The Mandalorian",
-    "Astrae Oratio",
-    "绝区零",
-    "ぐでたま"
+    "GTA 6"
    ],
    "need": true,
-   "sig": "1db900241769",
-   "waiting": [],
-   "why": "足りない 15 版面（Actions で Python が埋める）"
+   "sig": "769203044573",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "The Mandalorian",
+    "Vaundy",
+    "あつ森",
+    "ぐでたま",
+    "周杰伦",
+    "绝区零"
+   ],
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
