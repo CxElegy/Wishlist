@@ -17,6 +17,7 @@
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
   E21 公式があるのに使っていない（✗）  名簿の人で、画像の出どころが Fandom なのに公式サイトに同じ人の立ち絵がある、または名簿の上位 30 人で小元素がいないのに公式に立ち絵がある（「いない」）数。gather 系の全入口と名簿を回す順（subjects）で公式が先かを実際の名簿で数える
+  E28 はみ出し・立体（✗）  小元素の上の縁が帯の上の縁より絵の高さの 5% 以上外にある（POP_MIN）・帯の線より下を切っている（clip-path：下のニュースの字・👍 に重ならない）・影（drop-shadow）がある（2026-10-31 案 A）
   E27 公式の人物の絵を読めない版面（情報）  公式サイトがあるキャラの版面で、HTML から人物の絵が 1 枚も見つからない（JS で描く公式など）数
   E19 公式があるのにアップのまま（情報：✗ にしない）  顔だけのアップ（fs > 0.5）が残る小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数を版面ごとに出す。公式が先の規則が gather・控え・入れ替えの全部の入口に効いているかの数え直し（0 に向かう）
   E20 胸像待ちが回っていない  state/emblem_closeup.json の待ちの人に「次に試す見込み」next がない・版面の見込み（emblem_closeup_eta.json）がない・毎回探す名簿の上位の next が 3 時間より古い（後台が回っていない）。close_plan の保存が全部の入口で効いているかの数え。お客さまの版面の分は boards.config.emblem_closeup（待ち）に emblem_closeup_next・_eta がないか・古いかを同じ式で数える（boards_closeup_bad）。入口が close_round を使うかは tests/test_emblem_fill.py も数える\n  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
@@ -57,6 +58,7 @@ SMALL_SIDE = 256   # emblem.BUST_MIN_SIDE と同じ（emblem は import しな�
 CLOSEUP_FS = 0.5   # emblem.CLOSEUP と同じ（試験で一致を見る）
 import emblem_face  # noqa: E402  （E17 の理由の札。import の時点では pathlib だけ）
 FIRST_BOARD = "はじめに"   # user_pages.FIRST_BOARD
+POP_MIN = 0.05   # E28：帯の上の縁から絵の高さの 5% 以上はみ出す（案 A は 15%。傾き +5° の写真・測りの誤差を引いた下限。以前の 390px は 0 未満＝帯の中に収まっていた）
 SAME_BITS = 4              # emblem_fill.SAME_BITS
 TOP_MAX, TOP_TOUCH = 0.5, 0.03   # emblem.TOP_MAX・TOP_TOUCH（取るときの規則）。emblem を import すると sources の opener が入り Wikimedia が 403 を返す（E2 を見誤った）
 BAD_SOURCE = re.compile(r"trophy|ssbb|ssb4|ssbu|amiibo|figurine|statue|sticker|(?:^|[/_ ])(?:item|weapon|artifact|material|furnishing)_", re.I)   # emblem.BAD_SOURCE と同じ：別の作品（大乱闘のフィギュア・amiibo）・持ち物の絵
@@ -97,7 +99,9 @@ MEAS = r"""async (i) => { const q = () => { const s = document.querySelectorAll(
   let ov = 0;   // 字そのもの（行ごとの矩形）で測る。.title の箱は display:block で右に空きがあり、箱の端どうしの重なりを見誤った（2026-10-24 マンダロリアン 390）
   if (t) { const rg = document.createRange(); rg.selectNodeContents(t);
     for (const tr of rg.getClientRects()) ov += Math.max(0, Math.min(tr.right, r.right) - Math.max(tr.left, r.left)) * Math.max(0, Math.min(tr.bottom, r.bottom) - Math.max(tr.top, r.top)); }
-  return {src: img.getAttribute('src'), ok: img.naturalWidth > 1, h: Math.round(r.height), off: Math.round(r.right - innerWidth), ov: Math.round(ov)}; }"""
+  const bd = s.querySelector('.band'), bb = bd && bd.getBoundingClientRect(), ein = s.querySelector('.emb-in');   // E28：帯の上の縁から外へ出た割合・帯の線より下へ出た量・影
+  return {src: img.getAttribute('src'), ok: img.naturalWidth > 1, h: Math.round(r.height), off: Math.round(r.right - innerWidth), ov: Math.round(ov),
+    pop: bb ? +((bb.top - r.top) / r.height).toFixed(2) : null, clip: getComputedStyle(s.querySelector('.emb')).clipPath !== 'none', sh: !!ein && /drop-shadow/.test(getComputedStyle(ein).filter)}; }"""
 
 _files, _why = {}, {}   # 開けなかった理由（E2 の行に出す）
 
@@ -556,7 +560,7 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 21)} | {"E22": [], "E23": [], "E24": []}
+    found = {f"E{n}": [] for n in range(1, 21)} | {"E22": [], "E23": [], "E24": [], "E28": []}
     nomodel = False
     nf_why = {}   # E17：顔が測れない理由の札 → [版面 名前]
     nf_kind = {}  # E17：顔なしの 3 分け（nk：keep ①・symbol ②・replace ③・? = まだ測り直していない）→ [版面 名前]
@@ -640,6 +644,8 @@ def check(pg, who, width, out, full=False, guest=False):
                 found["E5"].append(f"{s['k']} {name} +{m['off']}px")
             if m["ov"] > 0:
                 found["E6"].append(f"{s['k']} {name}")
+            if m.get("pop") is not None and (m["pop"] < POP_MIN or not m["clip"] or not m["sh"]):   # E28
+                found["E28"].append(f"{s['k']} {name} はみ出し {m['pop']:.0%}・線より下を切る {'あり' if m['clip'] else 'なし'}・影 {'あり' if m['sh'] else 'なし'}")
             if full:
                 el = pg.query_selector_all("section.sec")[s["i"]].query_selector(".emb")
                 try:
@@ -717,7 +723,7 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る", "E25": "待ちの理由に時間が出る", "E26": "実写の外した画像の札が古い版のまま"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る", "E25": "待ちの理由に時間が出る", "E26": "実写の外した画像の札が古い版のまま", "E28": "小元素が帯の上へはみ出していない・本文に重なる・影がない"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     if DRIFT:
         bad.append(f"E7 順番しだい 検出器のしきい値が標準でない回が {len(DRIFT)} 回（{DRIFT[0]}）：変えた所が戻していない（emblem_face._boxes と同じ型）")
