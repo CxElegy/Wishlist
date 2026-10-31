@@ -427,6 +427,12 @@ def ahead_bad(html):
     bad = []
     if "const ahead" not in html:
         bad.append("版面の先頭の写真を先に取る JS（ahead）がない（目次から飛ぶとぼかしのまま数秒）")
+    else:   # 2026-10-31 根：開始を window load に置くと Fast 3G で遅い／一度に多く取ると最初の画面の邪魔。その書き方に戻っていないか数える
+        for need, why in (("slice(n, n + 1)", "1 版面ずつ"), ("hi ? 'high' : 'low'", "ahead は low・目次に近づいたときだけ high"), ("setTimeout(start, 2500)", "開始に 2.5 秒の上限")):
+            if need not in html:
+                bad.append(f"ahead の書き方が戻っている：{why}（{need}）がない")
+        if re.search(r"addEventListener\('load',[^;]{0,120}(start|ahead)", html):
+            bad.append("ahead の開始が window load 待ち（Fast 3G で目次から飛んだ先が遅れる）")
     secs = re.split(r"(?=<section\b[^>]*\bdata-k=)", html)[1:]
     secs = [s for s in secs if '<img src="' in s[:8000] and 'data-e="s"' in s[:8000]]
     kept = sum("/storage/v1/object/public/photos/" in (re.search(r'<img src="([^"]*)"[^>]*data-e="s"', s[:8000]) or [0, ""])[1] for s in secs)
