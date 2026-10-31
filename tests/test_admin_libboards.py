@@ -121,6 +121,12 @@ class LibBoards(unittest.TestCase):
         self.assertIn("ANON_OK_FN", src)
         for name in ("def check_public_leak", "def check_admin_coverage", "UX_ADMIN_EMAIL"):
             self.assertIn(name, src)
+        self.assertIn("def check_customer_admin_rpc", src)   # お客さまが admin_ を呼んでも中身が返らない点検
+
+    def test_admin_menu_entry_only_for_admin_role(self):
+        # お客さまのメニューに「管理ページへ」を出さない：chip6 は role==='admin' のときだけ連結される
+        src = (ROOT / "scripts" / "render.py").read_text(encoding="utf-8")
+        self.assertEqual(src.count("(role==='admin'&&page!=='admin'?L.chip6:'')"), 1)
 
 
 
