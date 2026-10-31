@@ -189,3 +189,4 @@
 - 2026-10-31 r1：写真 0.5 秒 第 1 回。最初の主写真を head で preload・cache-control immutable・ux_check 点検（PR #646）。確かめ：本番に preload あり・スマホ開始 627→256ms。次：④置く順・色の下絵。
 - 2026-10-31 r1f1：写真 0.5 秒 第 2 回。根＝Mandalorian の主写真は lazy で目次から飛んで初めて取っていた。全版面の先頭の写真を先に取る（ahead）・既存写真の cache 上げ直し・点検を全版面に広げ・photo_time.py・settings 素の箱の race。確かめ：PC 365〜572ms。次：上げ直しの完了・色の下絵。
 - 2026-10-31 r2f2 管理ページ②の指摘直し：ux_check の表のマスを列の位置（slice(7,11)・g[2]..）でなく data-k で読む・tests が admin_ の関数の is_admin() 守りと位置読みなしを数える・admin_email_for を authenticated から revoke（本番適用・anon/auth とも不可を確認）。店長ログインの回（UX_ADMIN_*）は鍵がなく未実行のまま。次：③の cells.slice(1,4) も data-k に。
+- 2026-10-31 r1f1：写真 0.5 秒 第 2 回の本番確認（PR #648）。上げ直し 639 枚・cache-control 1 年 immutable・HIT。ux_check の cache ✗ は消えた。残る ✗ は picks の札 1（BACKLOG に段）。
