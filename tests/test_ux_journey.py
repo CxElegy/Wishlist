@@ -218,3 +218,12 @@ class Settle(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LoginMoreMenu(unittest.TestCase):
+    def test_more_button_between_561_and_760(self):
+        """561〜760px は右下の「⋯」だけ（押すと札・ログインが開く）。それ以外の幅では出さない。"""
+        t = open(__import__("render").__file__, encoding="utf-8").read()
+        self.assertIn("@media (min-width:561px) and (max-width:760px)", t)
+        self.assertIn(".wl-auth>button.more{display:none}", t)
+        self.assertEqual(t.count("addMore(box,keepOpen)"), 3)

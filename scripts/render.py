@@ -4247,6 +4247,14 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 .wl-auth{top:auto;bottom:12px;right:12px;transition:transform .25s ease,opacity .25s ease}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}
   .wl-auth.away{transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none}}
 @media (max-width:560px) and (prefers-reduced-motion:reduce){.wl-auth{transition:none}}
+.wl-auth>button.more{display:none}
+/* 561〜760px（分割した窓・小さいタブレット）：右下に「⋯」だけ。押すと札とログインが開く（2026-11-01，用户定的：3 点のメニューの中でログイン） */
+@media (min-width:561px) and (max-width:760px){body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+.wl-auth{top:auto;bottom:12px;right:12px;transition:transform .25s ease,opacity .25s ease;flex-direction:column;align-items:flex-end}
+.wl-auth.away{transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none}
+.wl-auth>button.more{display:flex;justify-content:center;min-width:44px;padding:4px 10px;font-size:20px;line-height:1;order:9}
+.wl-auth:not(.open)>:not(.more){display:none!important}
+.wl-auth.open .menu{position:static;margin-top:0}.wl-auth .shop{display:none}}
 """
 
 AUTH_JS = r"""
@@ -4448,10 +4456,15 @@ AUTH_JS = r"""
   },true);
   document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree,.wl-mine'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
   // スマホ（右下に固定）：下へ読み進めると札をしまい、上へ戻す・ページの上と下の端で出す（本文の写真・文字に重ねたままにしない。よくある「下へで隠す・上へで出す」）
-  (function(){var y0=scrollY,mq=matchMedia('(max-width:560px)');
+  (function(){var y0=scrollY,mq=matchMedia('(max-width:760px)');
     function set(off){var b=document.querySelector('.wl-auth');if(b&&!(off&&b.querySelector('.menu:not([hidden])')))b.classList.toggle('away',off);}
     addEventListener('scroll',function(){if(!mq.matches)return set(false);var y=scrollY,end=innerHeight+y>=document.documentElement.scrollHeight-8;
       if(y>y0+4&&y>120&&!end)set(true);else if(y<y0-4||end||y<=120)set(false);y0=y;},{passive:true});})();
+  function addMore(box,keepOpen){   // 561〜760px だけ見える「⋯」：押すと札が開く（CSS .more）
+    var m=document.createElement('button');m.type='button';m.className='more';m.textContent='⋯';m.setAttribute('aria-haspopup','true');m.setAttribute('aria-label','menu');
+    if(keepOpen)box.classList.add('open');m.setAttribute('aria-expanded',String(box.classList.contains('open')));
+    m.onclick=function(){var o=box.classList.toggle('open');m.setAttribute('aria-expanded',String(o));};box.appendChild(m);
+  }
   function chip(keepOpen){
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
     var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
@@ -4463,7 +4476,7 @@ AUTH_JS = r"""
         '<a class="about" href="'+esc(HOME)+L.chip4;
       var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=email]').focus();};
-      bindLogin(box); return;
+      bindLogin(box); addMore(box,keepOpen); return;
     }
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
     // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
@@ -4477,6 +4490,7 @@ AUTH_JS = r"""
       L.chip10;
     var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
     b.onclick=function(){var o=menu.hidden;menu.hidden=!o;b.setAttribute('aria-expanded',String(o));};
+    addMore(box,keepOpen);
     menu.querySelector('[data-out]').onclick=logout;
     var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
     var pb=menu.querySelector('[data-pw]'); if(pb) pb.onclick=function(){   // ログインしたまま新しいパスワードに
@@ -4947,7 +4961,7 @@ AUTH_JS = r"""
       .then(function(){document.dispatchEvent(new Event('wl-role'));   // 役目が決まった合図（③エンブレムが、店長のときだけライブラリを読む）
         mine();chip();gate();readOnlyNote();members();libboards();libedit();libvotes();libaccts();libplace();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
-          var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
+          var b=document.querySelector('.wl-auth>button.in'); if(b){var m=document.querySelector('.wl-auth>button.more'); if(m&&!m.parentNode.classList.contains('open')) m.click(); b.click();}
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
         }});
   }
