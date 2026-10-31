@@ -787,7 +787,9 @@ def _pic(story):
                 f'alt="" loading="lazy" referrerpolicy="no-referrer" data-e="i" data-l="i">'
                 f'<span class="src">{e(_source_name(story))}</span>')
     cls = "" if src else " icon" if icons else " none"
-    return f'<div class="pic{cls}">{label}{tag}{icon}</div>'
+    col = photo_store.tint_css(chain[1] if big else chain[0]) if chain else None   # 色だけの下絵（写真が届く前から枠に色が出る）
+    sty = f' style="background:{col}"' if col and re.fullmatch(r"#[0-9a-f]{6}", col) else ""
+    return f'<div class="pic{cls}"{sty}>{label}{tag}{icon}</div>'
 
 
 def _card(story, cls, side, level="h3", blurb=False):
@@ -1530,9 +1532,9 @@ def _picks(picks, works, feedback=None):
                     + f'<span>{_vote_buttons()}</span>'
                     + f'<small></small></div>')
         return (
-            f'<div class="pk{" big" if big else ""}" data-u="{e(x["url"])}" data-s="{x.get("score") or 4}" '
+            f'<div class="pk{" big" if big else ""}{"" if _has_photo(story) else " nophoto"}" data-u="{e(x["url"])}" data-s="{x.get("score") or 4}" '
             f'data-w="{e(x["work"])}"{_fx(x["work"])} data-key="{e("|".join(x.get("words") or []))}"{" data-f=1" if follow else ""}{" data-new=1" if x.get("explore") else ""}>'
-            f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
+            f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story) if _has_photo(story) else ""}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
             f'<b>{e(x["title"])}</b>'
             f'<span class="why">{why_html}</span>'

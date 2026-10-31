@@ -74,6 +74,14 @@ def stored(url, w=800):
     return public(st["base"], k, w) if st["base"] and k in st["p"] else None
 
 
+def tint_css(url):
+    """render 用：置いてある写真の平均色（#rrggbb）、なければ None。"""
+    if not _CACHE:
+        _CACHE.append(load())
+    v = _CACHE[0]["p"].get(key(url))
+    return (v or {}).get("c") or None
+
+
 def pages(site=None):
     return sorted((site or sitedir.SITE_DIR).glob("*.html"))
 
@@ -130,6 +138,22 @@ def shrink(data):
         v.save(b, "WEBP", quality=80, method=4)
         out[w] = b.getvalue()
     return out
+
+
+def tint(data):
+    """画像の平均の色（#rrggbb）。ページの写真の枠の下絵に埋める：通信 0 で、写真が届くまでの間も色だけは出る（2026-10-31 写真 0.5 秒）。"""
+    from PIL import Image
+    im = Image.open(io.BytesIO(data)).convert("RGB").resize((1, 1), Image.BOX)
+    return "#%02x%02x%02x" % im.getpixel((0, 0))
+
+
+def tint_of(base, k):
+    """置いてある 400 の写真から色を取る（色のない昔の分の埋め直し）。取れなければ None。"""
+    try:
+        with urllib.request.urlopen(urllib.request.Request(public(base, k, 400), headers={"User-Agent": UA}), timeout=30) as r:
+            return k, tint(r.read())
+    except Exception:  # noqa: BLE001  次の回にまた試す
+        return k, None
 
 
 def fetch(url):
@@ -195,7 +219,7 @@ def one(base, keyv, k, url):
         if not sizes:
             return k, None
         upload(base, keyv, k, sizes)
-        return k, sum(len(b) for b in sizes.values())
+        return k, (sum(len(b) for b in sizes.values()), tint(sizes[WIDTHS[0]]))
     except Exception:  # noqa: BLE001  取れない・壊れた画像・箱へ上げられない。次の日に取り直す
         return k, None
 
@@ -219,7 +243,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                     break
                 for k, n in ex.map(lambda t: one(base, keyv, *t), todo[i:i + workers * 4]):
                     if n:
-                        p[k] = {"at": today, "b": n, "cc": 1}
+                        p[k] = {"at": today, "b": n[0], "cc": 1, "c": n[1]}
                         x.pop(k, None)
                         new += 1
                     else:
@@ -237,6 +261,14 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                     if ok:
                         p[k]["cc"] = 1
                         cc += 1
+    nc = 0
+    nocol = [k for k, v in p.items() if not v.get("c")]   # 色（下絵）のない分は置いてある 400 から取る
+    if nocol and base:
+        with ThreadPoolExecutor(workers) as ex:
+            for k, c in ex.map(lambda k: tint_of(base, k), nocol[:2000]):
+                if c:
+                    p[k]["c"] = c
+                    nc += 1
     for k in [k for k, d in x.items() if today - d > KEEP_DAYS]:
         del x[k]
     gone = evict(p, seen, today)
@@ -247,7 +279,8 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     used = sum(v["b"] for v in p.values())
     hit = len(seen)
     stat = {"n": len(p), "bytes": used, "cap": CAP, "gone": len(gone), "new": new, "bad": bad, "pics": total, "hit": hit,
-            "wait": max(0, len(todo) - new - bad), "day": today, "cc": cc, "cc_wait": sum(1 for v in p.values() if not v.get("cc"))}
+            "wait": max(0, len(todo) - new - bad), "day": today, "cc": cc, "cc_wait": sum(1 for v in p.values() if not v.get("cc")),
+            "tint": sum(1 for v in p.values() if v.get("c"))}
     out = {"base": base or st["base"], "p": p, "x": x, "stat": stat}
     (path or STATE).parent.mkdir(parents=True, exist_ok=True)
     (path or STATE).write_text(json.dumps(out, ensure_ascii=False, sort_keys=True, separators=(",", ":")), encoding="utf-8")
