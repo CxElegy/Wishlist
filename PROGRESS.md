@@ -221,3 +221,5 @@
 - 2026-10-31 r2f2：写真の先頭の点検をお客さまにも。ux_check の lead_outside を DOM 向けに（属性の順を問わない）、check() で test-a・b・c の描いたあとの DOM にも当て、例外〔SVG/GIF/ICO・x〕の数を「最初に取る HTML」の行に出す。test 追加・unittest 1098 OK。本番の店長 HTML は先頭 0 件・例外 0 件。次：ahead_time.py --slow で Fast 3G の全版面の実測
 - 2026-10-31 r3f1 hr31：実写は先頭が埋まっていても外した画像の札を 1 回解く（release_head_rejects・哈利波特剧集 20 枚・The Mandalorian 21 枚）＋emb_check E26（実写で札が残り版が古い：本番 items.yaml 4 版面）＋tests 2 本。次：合併後 background で E26 0・漫威电影 headv 13 を本番で確認。
 - 2026-10-31 r3f1 hr31：#681 の本番確認。漫威电影 have 5→10・headv 13 が 4 版面・E26 残り 2（哈利波特剧集・The Mandalorian、次の回で解く）。次：その 2 版面と E26 0 を確認。
+
+- 2026-10-31 r3 hr33：最初のニュースの遅さの根を測り直し：LCP の要素は H2（4.6 秒）で、Google Fonts の CSS が描画を止めていた。font_link で止めない形に（手元の再現 4.3→1.2 秒・PR #683）。次：合併後に本番の lcp.py。
