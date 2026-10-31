@@ -2322,6 +2322,24 @@ class FindSources(unittest.TestCase):
             got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
         self.assertEqual((got["emblem_who"], got["emblem_roles"]), (["A", "B", "C"], {"B": "Hulk", "C": "Doctor Doom", "A": "Thor"}))
 
+    def test_franchise_cast_ranked_by_works(self):
+        """フランチャイズ（シリーズ）の名簿は中の作品をまたいで出た回数の多い順：主役（3 作に出た人）が 1 作だけの人より先。"""
+        def get(p):
+            if p.get("list") == "search":
+                return {"query": {"search": [{"title": "Q10"}, {"title": "Q11"}, {"title": "Q12"}]}}
+            if p.get("props") == "claims":
+                cl = lambda *ids: {"claims": {"P161": [{"mainsnak": {"datavalue": {"value": {"id": i}}}} for i in ids]}}
+                return {"entities": {"Q10": cl("Q1", "Q2"), "Q11": cl("Q1", "Q3", "Q1"), "Q12": cl("Q1", "Q2")}}
+            return {"entities": {q: {"labels": {"en": {"value": n}}} for q, n in (("Q1", "Star"), ("Q2", "Second"), ("Q3", "Cameo"))}}
+        self.assertEqual(ef.franchise_cast("Q9", get), ["Star", "Second", "Cameo"])
+        self.assertTrue(ef.is_franchise({"wikidata": "Q9", "subs": {"kind": "シリーズ"}}))
+        self.assertFalse(ef.is_franchise({"wikidata": "Q9", "subs": {"kind": "作品"}}))
+
+    def test_real_live_action_series_use_franchise_cast(self):
+        """点検：実写（emblem_people）で subs.kind がシリーズの版面は全部 franchise の名簿の道に入る（漫威电影のように 1 作の出演者だけに戻らない）。"""
+        live = [i for i in ef.load_items() if ef.live_action(i) and "シリーズ" in str((i.get("subs") or {}).get("kind") or "")]
+        self.assertTrue(all(ef.is_franchise(i) for i in live), [i["name"] for i in live if not ef.is_franchise(i)])
+
     def test_cast_section_lines(self):
         s = ("* [[Dominic McLaughlin]] as [[Harry Potter (character)|Harry Potter]]\n* Arabella Stanton as [[Hermione Granger]], a student\n"
              "* ''[[Paapa Essiedu]]'' as Severus Snape\n* A note without the word\n")

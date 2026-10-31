@@ -80,7 +80,7 @@ RULES = {
 # 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
-NAMES_V = 11   # 11：種族・役割・名無し（Wyverians・Hunter・Traveler・Manekin）を名簿から外す（emblem.NOT_CHAR）。 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
+NAMES_V = 12   # 12：フランチャイズ（subs.kind シリーズ）の名簿は中の作品（P179）の出演者を出た回数の順に（franchise_cast：漫威电影が Avengers: Doomsday 1 作の出演者 33 人で、Iron Man・Cap の主役が入らず 3 枚止まりだった）。 11：種族・役割・名無し（Wyverians・Hunter・Traveler・Manekin）を名簿から外す（emblem.NOT_CHAR）。 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -876,6 +876,34 @@ def wd_cast(qid, get=None, title=None):
     return [n for n in out if n]
 
 
+FRANCHISE_TOP = 60   # フランチャイズの名簿の上限（作品をまたいで出た回数の多い順）。CEIL(200) まで広げると 1 回に試す 10 人では一生終わらない
+
+
+def franchise_cast(qid, get=None):
+    """フランチャイズ（漫威电影＝MCU）の名簿：中の作品（Wikidata の P179「シリーズ」がこの項目の作品）の出演者（P161）を全部集め、
+    出た作品の数が多い順（同数は先に見つけた順）に FRANCHISE_TOP 人まで。1 作品（Avengers: Doomsday）の出演者だけだと
+    Iron Man・Captain America・Black Widow のような主役が名簿に入らなかった（2026-10-31）。→ [英語の名前]"""
+    get = get or _wd_get
+    works = [m["title"] for m in (get({"action": "query", "list": "search", "srsearch": f"haswbstatement:P179={qid}", "srlimit": 100})
+                                  .get("query") or {}).get("search") or [] if re.fullmatch(r"Q\d+", m.get("title", ""))]
+    count = {}
+    for i in range(0, len(works), 8):   # claims は大きい（50 件を 1 回で引くと返事が大きすぎる）
+        for ent in (get({"action": "wbgetentities", "ids": "|".join(works[i:i + 8]), "props": "claims"}).get("entities") or {}).values():
+            for a in {((c.get("mainsnak") or {}).get("datavalue") or {}).get("value", {}).get("id") for c in (ent.get("claims") or {}).get("P161") or []} - {None}:
+                count[a] = count.get(a, 0) + 1
+    top = sorted(count, key=lambda a: -count[a])[:FRANCHISE_TOP]   # sorted は安定：同数は先に見つけた順
+    out = {}
+    for i in range(0, len(top), 50):
+        for q, e in (get({"action": "wbgetentities", "ids": "|".join(top[i:i + 50]), "props": "labels", "languages": "en"}).get("entities") or {}).items():
+            out[q] = ((e.get("labels") or {}).get("en") or {}).get("value")
+    return [out[a] for a in top if out.get(a)]
+
+
+def is_franchise(item):
+    """シリーズ・フランチャイズの版面（subs.kind がシリーズ）で Wikidata の番号がある。"""
+    return bool(item.get("wikidata")) and "シリーズ" in str((item.get("subs") or {}).get("kind") or "")
+
+
 HAND_CATEGORIES = ("Heroes",)   # 手で数えた人数があるときだけ見る分類名（dota2 のヒーロー 126 人＝Dota 2 Wiki の Heroes）
 
 
@@ -942,7 +970,8 @@ def live_cast(item, log=print):
             arts = [("en", t) for t in [wd_enwiki(item["wikidata"])] if t]
         except Exception as e:
             log(f"  [名簿] {item['name']}：{e}")
-    tries = [lambda: wd_cast(item["wikidata"])] if item.get("wikidata") else []
+    tries = [lambda: franchise_cast(item["wikidata"])] if is_franchise(item) else []   # フランチャイズは中の作品の出演者を出た回数の順に先頭へ
+    tries += [lambda: wd_cast(item["wikidata"])] if item.get("wikidata") else []
     tries += [lambda a=a: wd_cast(None, title=a) for a in arts] + [lambda a=a: wiki_cast(*a) for a in arts]
     for f in tries:
         try:
