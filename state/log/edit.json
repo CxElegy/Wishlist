@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-30T03:47:41+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-30T03:52:39+00:00",
 "text": "2026-10-30 第 1 バッチを出刊：A2O LITE、Astrae Oratio、GTA 6、ILLIT、漫威电影（5 版面・28 本・残り 5 版面） · token 新規入力 5.6万・キャッシュ読み 118.5万・出力 6,833",
 "level": "ok",
@@ -1720,5 +1715,46 @@
 "at": "2026-10-31T01:21:10+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
+},
+{
+"at": "2026-10-31T01:27:36+00:00",
+"text": "2026-10-31 第 1 バッチを出刊：dota2（1 版面・4 本・今日の整理待ちは全部終わり） · token 新規入力 4.5万・キャッシュ読み 102.2万・出力 4,557",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.17,
+"mem_total": 16872808448,
+"mem_free": 15746719744,
+"disk_used": 10745036800,
+"disk_free": 30538498048,
+"disk_total": 41283534848,
+"peak": 457625600
+},
+"batch": 1,
+"boards": [
+"dota2"
+],
+"stories": 4,
+"left": 0,
+"edited": 22,
+"run": 1793409323.5582728,
+"tok": {
+"in": 31,
+"cw": 45324,
+"cr": 1022252,
+"out": 4557,
+"calls": 16,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1072164,
+"secs": 733,
+"run_tok": {
+"in": 31,
+"cw": 45324,
+"cr": 1022252,
+"out": 4557,
+"calls": 16,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

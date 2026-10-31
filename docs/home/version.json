@@ -1,32 +1,32 @@
 {
- "admin": "b65d27cb9375",
- "admin-ai": "3b4664816c24",
+ "admin": "179feb339ed1",
+ "admin-ai": "2e1fcea6b1c7",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "73c32d2a"
+   "087143bf"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "12b4465f"
+   "6bdc28df"
   ]
  },
- "admin-boards": "b84b91b5aa75",
+ "admin-boards": "b95a3102dcb4",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "6f36aa38"
+   "73786e89"
   ],
   "votes": [
    "投票",
    "4a13bcc4"
   ]
  },
- "admin-emblem": "4871b4beb75a",
+ "admin-emblem": "9481e99c921f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "45d65da6"
+   "8fcf982c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e13ea9e6dd7b",
  "admin-members_marks": {},
- "admin-now": "1f744dff3028",
+ "admin-now": "68cc081dea38",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "82ed04d3"
+   "0b8c4088"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "15ba0be7"
+   "71bc8eff"
   ]
  },
- "admin-system": "596085940fc7",
+ "admin-system": "bdda3173160c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9664d902"
+   "f527eda4"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e966051a"
+   "7eb6b4db"
   ]
  },
  "admin_marks": {},
- "heat": "2e5f59f23a07",
+ "heat": "a8ca5525f567",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "51bad0e8"
+   "004c9afd"
   ],
   "ranking": [
    "ランキング",
-   "d4c89b45"
+   "cea06c87"
   ]
  },
- "index": "780ab33a6cb6",
+ "index": "c070523abdbc",
  "index_marks": {
   "front": [
    "トップ",
-   "50802bde"
+   "dde05e14"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "c57ed6fa"
+   "cb1b28b7"
   ],
   "w-130724c0": [
    "猫用品",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "4529f1a9"
+   "0632e0f5"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "d1030e72"
+   "e40566a7"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -173,11 +173,11 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "064053cb"
+   "08603364"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "d709d4b9"
+   "4f35ed96"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "ea519bdd"
   ]
  },
- "updated": "10.31 10:17",
- "wishlist": "7ddd5a66c682"
+ "updated": "10.31 10:27",
+ "wishlist": "4aa1ee37f606"
 }
