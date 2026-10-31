@@ -520,6 +520,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cancam.jp/wp-content/uploads/2026/10/29/st.jpg": {
+  "w": 1280,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://cassette.sphdigital.com.sg/image/straitstimes/471748c9ccceaa172a5ac0334afb2f6eec4efd1dd02aedea7f278b1f7ae11cad?w=1200": {
   "w": 1200,
   "h": 630,
@@ -1119,7 +1125,7 @@
  "https://hawk.live/storage/images/posts/kuroky-speaks-mistakes-career-25397.jpg": {
   "w": 1200,
   "h": 628,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/meepo-removed-dota-2-25143.jpg": {
@@ -5181,24 +5187,17 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.wowkorea.jp/img/Breaking/106/532431/623798_1280W.webp": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3
+ },
  "https://www.wowkorea.jp/img/Breaking/106/532601/623967_1280W.webp": {
   "w": 1280,
   "h": 960,
   "target": 1280,
   "v": 3
- },
- "https://www.wowkorea.jp/img/Breaking/106/532624/623990_tmb.webp": {
-  "w": 320,
-  "h": 240,
-  "target": 720,
-  "v": 3,
-  "blur": 0.466,
-  "local": "pics/f163a43d40100387.webp",
-  "out": [
-   720,
-   540
-  ],
-  "why": "看不清"
  },
  "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp": {
   "w": 1280,

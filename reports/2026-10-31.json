@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "73c1edfb1ea5",
+ "edit_sig": "07bab27a2bb0",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -399,15 +399,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 3,
-     "source": "CanCam.jp",
-     "title": "スタバ2027福袋の中身は？ ゴールドに輝く特別仕様のマグ＆ベアリスタも♡ 【11／4抽選受付開始】",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE9xMTJNUy1JY0Y0LXFvVVJHc1dya1l6Nzk2Y2RIcHh6SVZFM1hua2loSGoxQ25IcWZVMExJWVVadW5PYUk1LUtpOFhn?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -428,6 +419,20 @@
      "image": "https://images.assettype.com/tribune/2026-10-31/qersbcvw/star.jpg?w=1200&auto=format&q=70&rect=0%2C1090%2C6000%2C3375&h=675&fit=crop",
      "image_via": "og:image",
      "url": "https://tribune.net.ph/2026/10/31/new-travel-case-glass-mug-join-starbucks-traditions-holiday-lineup",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "event": {
+      "date": "2026-11-04",
+      "label": "抽選受付開始"
+     },
+     "headline": "スタバ2027福袋の中身は？ ゴールドに輝く特別仕様のマグ＆ベアリスタも",
+     "highlight": "2027福袋",
+     "image": "https://cancam.jp/wp-content/uploads/2026/10/29/st.jpg",
+     "image_via": "og:image",
+     "url": "https://cancam.jp/archives/1771439",
      "weight": "normal"
     }
    ],
@@ -771,15 +776,6 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 9,
-     "source": "Notebookcheck",
-     "title": "Nintendo launches free Zelda designs in Animal Crossing: New Horizons for 40th anniversary",
-     "url": "https://www.notebookcheck.net/Nintendo-launches-free-Zelda-designs-in-Animal-Crossing-New-Horizons-for-40th-anniversary.1438627.0.html"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -944,45 +940,9 @@
    }
   },
   {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-   "facts": [],
-   "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 3,
-     "source": "Howl.Link",
-     "title": "【Zenless Zone Zero】フィオニー実装されたらやってみたかったこと【ゼンレスゾーンゼロ】 #ゲーム実況 #ゼンゼロ #フィオニー",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE0zYkZySS1LT1FTSWR5ZnZiOHRxOFZMTEt4TjhNRllaejNQR2dpelJ6elVTLXRBbGxxeHZB?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "ゼンレスゾーンゼロ",
-   "theme": {
-    "accent": "#A9898A",
-    "alt_accent": "#856062",
-    "alt_bg": "#F2EDEE",
-    "alt_fg": "#1E1A18",
-    "bg": "#1E1516",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 6,
-     "source": "Hawk Live",
-     "title": "Kuroky Names the Biggest Mistake of His Professional Dota 2 Career",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNcVhna0k0MEFlek1YSG5XNUh3WUI1NmN5WHZIXzFoZ3NPQm00dWhPOWZfalJRSTB0QThwQWRkU2YxcXA0WElNV3JlZFo5OHE4TXlmTWc4a0piZFgzajFtRjJOemVUSjQ3S1dFdjI0Mm8tVk9nN2ItTUlXRl9DWUNqZnoyeVpnUQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1025,6 +985,16 @@
      "image_via": "og:image",
      "url": "https://dn.gov.ua/en/news/liha-veteranskoho-kibersportu-tryvaie-reiestratsiia-na-turnir-iz-cs2-ta-dota-2",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "Kuroky Names the Biggest Mistake of His Professional Dota 2 Career",
+     "highlight": "",
+     "image": "https://hawk.live/storage/images/posts/kuroky-speaks-mistakes-career-25397.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/kuroky-names-biggest-mistake-professional-dota-2-career",
+     "weight": "normal"
     }
    ],
    "subtitle": "Dota 2",
@@ -1060,8 +1030,8 @@
      "date": "2026-10-30",
      "headline": "[ショーチャンピオン_1分間のライブ配信] A2O LITE_ _ RADAの＜NEON＞",
      "highlight": "",
-     "image": "https://www.wowkorea.jp/img/Breaking/106/532624/623990_tmb.webp",
-     "image_via": "正文图",
+     "image": "https://www.wowkorea.jp/img/Breaking/106/532431/623798_1280W.webp",
+     "image_via": "og:image",
      "url": "https://www.wowkorea.jp/Breaking/read/532431.html",
      "weight": "normal"
     },
@@ -1277,15 +1247,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 4,
-     "source": "日刊スポーツ",
-     "title": "スキーシーズン到来 軽井沢プリンスホテルスキー場が長野県内のトップを切ってゲレンデ開き",
-     "url": "https://www.nikkansports.com/general/nikkan/news/202610310001499.html"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1430,6 +1391,31 @@
     "bg": "#FBF4EA",
     "fg": "#3A2C24",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
+   "facts": [],
+   "last": {
+    "date": "2026-10-30",
+    "headline": "Reduce digital eye strain with new Zenless Zone Zero inspired eyewear",
+    "url": "https://www.msn.com/en-us/lifestyle/other/reduce-digital-eye-strain-with-new-zenless-zone-zero-inspired-eyewear/ar-AA2gmRJr"
+   },
+   "name": "绝区零",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#A9898A",
+    "alt_accent": "#856062",
+    "alt_bg": "#F2EDEE",
+    "alt_fg": "#1E1A18",
+    "bg": "#1E1516",
+    "fg": "#F4EEE4",
+    "font": "serif",
     "split": true
    }
   }

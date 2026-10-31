@@ -13,16 +13,16 @@
   "gelato pique": 8,
   "Astrae Oratio": 7,
   "MMORPG 新作": 17,
-  "あつ森": 8,
-  "dota2": 5,
+  "あつ森": 9,
+  "dota2": 6,
   "日本顶级网球赛事": 13,
-  "滑雪": 3,
+  "滑雪": 4,
   "チェーンソーマン": 5,
   "ぐでたま": 2,
-  "绝区零": 2,
+  "绝区零": 3,
   "FROM": 2,
   "猫用品": 5,
-  "星巴克马克杯": 2
+  "星巴克马克杯": 3
  },
  "漫威电影": [
   {
@@ -692,7 +692,8 @@
    "blurb": "A Zelda DLC for Animal Crossing: New Horizons is officially announced as part of The Legend of Zelda's 40th anniversary celebrations.",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    9
    ],
    "image": "https://www.bing.com/th?id=ONUT.ybfuzUti5i3iqvG7yuCIlg&pid=News&w=500"
   },
@@ -769,6 +770,15 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "Kuroky Names the Biggest Mistake of His Professional Dota 2 Career",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -871,7 +881,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    4
    ]
   }
  ],
@@ -1012,6 +1023,19 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "スタバ2027福袋の中身は？ ゴールドに輝く特別仕様のマグ＆ベアリスタも",
+   "highlight": "2027福袋",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2026-11-04",
+    "label": "抽選受付開始"
+   }
   }
  ]
 }
