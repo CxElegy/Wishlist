@@ -5,12 +5,6 @@
   "target": 720,
   "v": 3
  },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
-  "w": 1080,
-  "h": 608,
-  "target": 1280,
-  "v": 3
- },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
@@ -1231,6 +1225,12 @@
  "https://hype.my/wp-content/uploads/2026/10/edit-6-1.webp": {
   "w": 1920,
   "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
+  "w": 1080,
+  "h": 608,
   "target": 720,
   "v": 3
  },
@@ -3159,6 +3159,12 @@
   "v": 3,
   "blur": 0.359
  },
+ "https://p2.bahamut.com.tw/B/2KU/24/0d3b2c13e6191e4cf08cdb7eca20xy05.PNG": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://p2.bahamut.com.tw/B/2KU/34/9e75d3a03377619005b741850420w965.JPG": {
   "w": 1279,
   "h": 720,
@@ -4372,6 +4378,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.h-a0kXMRJuiF2YDt_UZ_Jg&pid=News&w=626": {
+  "w": 626,
+  "h": 352,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200": {
   "w": 700,

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "1bea46120c74",
+ "edit_sig": "525a56fdf9f2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -194,15 +194,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 6,
-     "source": "SSBCrack",
-     "title": "HBO’s Upcoming “Harry Potter” Series Features Paapa Essiedu's Unique Take on Severus Snape",
-     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOVGhaY0VuWFBvQnZ5OHJ6OHpTc2hORXBpZ0YxUE5PV2N5cU5PUHFuYzhLOHlMSk5DNFZmM1NyVVVBVUN1czE4VkJDcURTbjRvWEJBNk9haTFBSTJSMUd6eGExaVoteHJjX2F5aEwzckFrY2diM2ViamptdUFQXzI5b1BTdXBJa0VwbmdyeWNXWmtRa2tqV1I2RTdvaTJLdEZMb3plQkhSYzZHTTMxdU5pYWxZNA?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -315,15 +306,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 8,
-     "source": "ABEMA",
-     "title": "最終日 シングルス決勝 【木下グループジャパンオープンテニスウィメンズ】",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE53ZExQZ2xBOGplM09vTFp4SFRmNGRTd2NVSVRaUGtrVUdpRG5WN28weXExQ01TcjF2SEl1UjRraXJCU2NqaGh4ODlpUjBILXA3TFA2YnpiaFRBZDJIbklROXBNbGJIVnBUdjUwTkd3bHQ5dw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -574,15 +556,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 6,
-     "source": "虎扑体育网",
-     "title": "[流言板]留几手发视频谈到周杰伦，称周杰伦很聪明在大陆、台湾两头挣",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBzSXJfQy0zbkhBWDF0dDU2NW9ydHJOQkJreU1yVTJFbTU2WVA0X2JCcmFaQWo0V1dZS08zNTdKLWlqYkJ2VjJ5WXNJcEVhUQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -632,15 +605,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 4,
-     "source": "17173",
-     "title": "《绝区零》养成指南上新丨赛维里安养成材料预告",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE4xYnMzTU9CWHZXelpESFB1VjVSUHBDdnN0YWxUSkYwTkQtTE84ckJhVmktaVdoRHpYTEplaXByVDFadWJSYU9acTQyMmVYeEI4S1dlNzNEUVdyU0h3am9GaHUwVDc?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -661,6 +625,16 @@
      "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/kfVLPSbugixDdgD.jpg",
      "image_via": "正文图",
      "url": "http://news.17173.com/content/10312026/182553288.shtml",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "《绝区零》养成指南上新丨赛维里安养成材料预告",
+     "highlight": "赛维里安养成材料预告",
+     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png",
+     "image_via": "JSON-LD",
+     "url": "http://news.17173.com/content/10312026/182648461.shtml",
      "weight": "normal"
     }
    ],
@@ -836,33 +810,6 @@
   {
    "cover": null,
    "facts": [],
-   "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 1,
-     "source": "Facebook",
-     "title": "Peter the First Cat has some strong preferences that we're celebrating for National Cat Day today. I hope cat owners across our state have a wonderful day and lots of time with your cats! #NationalCat",
-     "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOZE04cGlJMUtWNUU4ZUhtZ0dFQnZrQXRveHlBSkRnYWlUeGxBRUF6ckNLNlo0SGhjNEZEUndSWGtORl9NVmpBTlpCTHV6OWk1LVVmSTRqeFg1QV82M19NVkhST1c4dWQxVzlTRGtBcktIVVV5Rl8zbEE3TDgxS1NfUkZxbnowNzRjbXFnODlPSlA5UmplUmRpSWFnWVlhNUNVaHZuLWIwTDFoREJuRThLVjBqQlltazNyVGxMS2c3em1veFVocjdpVHBSakpQR21JWXludGs4OA?oc=5"
-    }
-   ],
-   "section": "生活",
-   "stories": [],
-   "subtitle": "猫グッズ · 家里两只猫",
-   "theme": {
-    "accent": "#E8875B",
-    "alt_accent": "#F3B6B0",
-    "alt_bg": "#3A2C24",
-    "alt_fg": "#FBF4EA",
-    "bg": "#FBF4EA",
-    "fg": "#3A2C24",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "last": {
     "date": "2026-10-31",
     "headline": "엑스엘게임즈 '아키에이지 크로니클', 11월4일 스팀 앞서해보기 출시",
@@ -932,6 +879,31 @@
     "bg": "#F6F1E7",
     "fg": "#1E3932",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-31",
+    "headline": "ペットイベント「インターペット」でわんにゃんWalker表紙パネル展を開催中",
+    "url": "https://www.walkerplus.com/article/40701/image210701.html"
+   },
+   "name": "猫用品",
+   "quiet": true,
+   "section": "生活",
+   "status": "",
+   "stories": [],
+   "subtitle": "猫グッズ · 家里两只猫",
+   "theme": {
+    "accent": "#E8875B",
+    "alt_accent": "#F3B6B0",
+    "alt_bg": "#3A2C24",
+    "alt_fg": "#FBF4EA",
+    "bg": "#FBF4EA",
+    "fg": "#3A2C24",
+    "font": "sans",
     "split": true
    }
   },
