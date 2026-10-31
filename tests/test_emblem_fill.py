@@ -2126,6 +2126,32 @@ class FindSources(unittest.TestCase):
         self.assertEqual(emb_check.stale_live_rejects(items, ef.BROKEN_V), ["old 札1枚（版 12 < %d）" % ef.BROKEN_V])
         print("E26 本番", len(emb_check.stale_live_rejects()))
 
+    def test_due_includes_boards_with_unreleased_live_rejects(self):
+        """そろった（ok）・失敗で材料が同じ実写の版面でも、札の見直し（release_head_rejects）が済むまで due に残る。済めば元どおり飛ばす（哈利波特剧集・The Mandalorian）。"""
+        base = {"name": "H", "emblem_kind": "character", "emblem_people": True, "emblem_who": ["A"], "emblem": [{"subject": "A"}], "emblem_reject": ["https://x/a.png"]}
+        self.assertTrue(ef.reject_release_due(base))
+        self.assertFalse(ef.reject_release_due({**base, "emblem_headv": ef.BROKEN_V}))
+        self.assertFalse(ef.reject_release_due({**base, "emblem_reject": []}))
+        self.assertFalse(ef.reject_release_due({**base, "emblem_people": False}))   # 実写でなく先頭も埋まっている
+        with mock.patch.object(ef, "status", return_value={"state": "ok", "have": 1, "target": 1, "kind": "character"}), \
+                mock.patch.object(ef, "broken_cuts", return_value=[]), mock.patch.object(ef, "_broken_log", return_value={}), \
+                mock.patch.object(ef, "closeup_state", return_value={}):
+            self.assertEqual(ef.due({"items": {}}, [base], 0), [base])
+            self.assertEqual(ef.due({"items": {}}, [{**base, "emblem_headv": ef.BROKEN_V}], 0), [])
+
+    def test_board_item_carries_reject_and_headv_for_release(self):
+        """お客さまの版面も店長と同じ release_head_rejects を通る：config の emblem_reject・emblem_headv が items.yaml の 1 項目として fill_one に渡る。E26 のお客さま分も数える。"""
+        import sys
+        sys.path.insert(0, str(ef.ROOT / "harness"))
+        import emb_check
+        import library_emblem as le
+        cfg = {"emblem_people": True, "emblem_reject": ["https://x/a.png"], "emblem_headv": 12, "emblem_kind": "character"}
+        item = le.board_item({"name": "B", "config": cfg}, {"section": "影视"}, get=lambda *a, **k: {})
+        self.assertEqual((item["emblem_reject"], item["emblem_headv"]), (["https://x/a.png"], 12))
+        self.assertTrue(ef.reject_release_due(item))
+        rows = [{"name": "B", "config": cfg}, {"name": "ok", "config": {**cfg, "emblem_headv": ef.BROKEN_V}}, {"name": "anime", "config": {"emblem_reject": ["u"]}}]
+        self.assertEqual(emb_check.boards_stale_live_rejects(rows, ef.BROKEN_V), ["お客さま B 札1枚（版 12 < %d）" % ef.BROKEN_V])
+
     def test_head_causes_records_reason_per_lead(self):
         """E15 の原因：先頭の人ごとに外した理由を残す（役（出演者）の subject も同じ人）。試したのに記録がなければ「候補なし」、試さなければ「今回は対象外」。"""
         by_who = {"Thor（Chris Hemsworth）": {"顔なし": 2, "別人": 1}, "Other": {"遠景": 9}}
