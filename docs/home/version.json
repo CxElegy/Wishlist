@@ -1,14 +1,14 @@
 {
- "admin": "35d75926ddd3",
- "admin-ai": "239aa2612f42",
+ "admin": "cfd58680ca15",
+ "admin-ai": "13bfc21eebbc",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f0516a61"
+   "d447bbd5"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f6eca672"
+   "d9cdc4a0"
   ]
  },
  "admin-boards": "c844f6d3314e",
@@ -22,11 +22,11 @@
    "d0c0ea84"
   ]
  },
- "admin-emblem": "0bea14d5486a",
+ "admin-emblem": "34c3162d79c1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "9d7bfd5a"
+   "367fd305"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "bf5eee914c1a",
  "admin-members_marks": {},
- "admin-now": "ce6385d09d97",
+ "admin-now": "763cb8291f75",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2580229a"
+   "4d5da0a8"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "192abd9a"
+   "1296cee6"
   ]
  },
- "admin-system": "a281989c0f7a",
+ "admin-system": "5f0dd760b0bb",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "84facc14"
+   "75ed1271"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "77609800"
+   "659aba7f"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "3a8f787b"
   ]
  },
- "index": "314ffe5f6b04",
+ "index": "21ee6ac48198",
  "index_marks": {
   "front": [
    "トップ",
-   "0e380e0a"
+   "3dc2ce05"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "1fa7d89b"
+   "b3a83535"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "6d0c6cec"
+   "af9048e2"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "9d513945"
+   "deb6a9c2"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,11 +145,11 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "d7d63438"
+   "e40b049b"
   ],
   "w-9cb26dba": [
    "FROM",
-   "03cf15b5"
+   "5f42b728"
   ],
   "w-b867582f": [
    "あつ森",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "730d229a"
+   "c164bb57"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "daab3e4b"
+   "21f24690"
   ]
  },
- "updated": "11.01 04:30",
+ "updated": "11.01 04:38",
  "wishlist": "aa5f0ddfbe6b"
 }
