@@ -1,10 +1,10 @@
 {
- "admin": "b0144af702bf",
- "admin-ai": "21a6bcaf82eb",
+ "admin": "f5e75ff86fb6",
+ "admin-ai": "637161be03de",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "95e6f7fa"
+   "3589aacf"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "4a13bcc4"
   ]
  },
- "admin-emblem": "9be0c0dd9e20",
+ "admin-emblem": "e827666036c3",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "7397fee4"
+   "91344730"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,15 +43,15 @@
  },
  "admin-members": "44fc36dd8f41",
  "admin-members_marks": {},
- "admin-now": "4b0c6259b951",
+ "admin-now": "39c88013c4b8",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "668bb786"
+   "61dccba7"
   ],
   "queue": [
    "いまの状況",
-   "253a9248"
+   "0e4cd4fc"
   ],
   "status": [
    "運行状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b3ee3d2e"
+   "9d3fe9d8"
   ]
  },
- "admin-system": "93fa13dc7edc",
+ "admin-system": "0a55ef642b5b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "8c914f96"
+   "db1d058b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8b8d80c2"
+   "01ab133a"
   ]
  },
  "admin_marks": {},
- "heat": "1b27e636c929",
+ "heat": "d098202c0c60",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "bee57e6f"
+   "2e1e6c60"
   ],
   "ranking": [
    "ランキング",
-   "3b843159"
+   "13e3a4e9"
   ]
  },
- "index": "7f264a0b31f4",
+ "index": "fc2f22d06d8a",
  "index_marks": {
   "front": [
    "トップ",
-   "25e576ae"
+   "0c190581"
   ],
   "picks": [
    "気になるかも？",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "71fbfb01"
+   "1c223336"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "8ea232b0"
   ]
  },
- "updated": "10.31 11:46",
+ "updated": "10.31 11:47",
  "wishlist": "3b31118b3205"
 }
