@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-30T02:29:37+00:00",
-"text": "2026-10-30 第 21 バッチを出刊：滑雪（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 890・キャッシュ読み 21.3万・出力 613",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.21,
-"mem_total": 16872808448,
-"mem_free": 15956017152,
-"disk_used": 11006824448,
-"disk_free": 30315683840,
-"disk_total": 41322508288,
-"peak": 293584896
-},
-"batch": 21,
-"boards": [
-"滑雪"
-],
-"stories": 2,
-"left": 0,
-"edited": 22,
-"run": 1793320385.394475,
-"tok": {
-"in": 4,
-"cw": 886,
-"cr": 213405,
-"out": 613,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 214908,
-"secs": 6992,
-"run_tok": {
-"in": 122,
-"cw": 78861,
-"cr": 5428774,
-"out": 17832,
-"calls": 61,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-30T03:47:41+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1756,5 +1715,10 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1061398
+},
+{
+"at": "2026-10-31T01:21:10+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]

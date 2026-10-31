@@ -371,6 +371,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.hldycdn.com/3dc087d1-da01-4814-9152-a9a130722989.jpeg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
  "https://assets.hldycdn.com/afa21a70-ad36-43a1-bfcd-e969ed21041f.jpeg": {
   "w": 1066,
   "h": 602,
@@ -1745,6 +1751,12 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gqMt6.img": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gr17e.img": {
   "w": 1200,
@@ -4228,6 +4240,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.OxiJ5-NxJTwjyR84qxjhBQ&pid=News&w=1080": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
  "https://www.bing.com/th?id=ONUT.Q9dry0f98vaYnNMmJmWk5g&pid=News&w=1200": {
   "target": 720,
   "v": 3,
@@ -4303,6 +4321,12 @@
   "h": 367,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ZihHWBLSjGNMY8YZXiPRsQ&pid=News&w=1080": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
@@ -4449,12 +4473,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.325
- },
- "https://www.bing.com/th?id=ONUT.nUyMRSHbt5pKra0ftYoy6g&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.nmQBPUIe6hJu6JWV3BuQPQ&pid=News&w=1200": {
   "w": 700,
@@ -4670,6 +4688,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.ctvnews.ca/resizer/v2/https%3A%2F%2Fd3g70guqh4mw9g.cloudfront.net%2F10-30-2026%2Ft_bdd41fc40179410dbf15662b9dfa23db_name_AM800_News_Halloween_Headquarters.jpg?smart=true&auth=d6435c2e899c137bf0e9268115fd3aede4fbbb81b224dea9191058e406a93950&width=1200&height=630": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/18/FfMzG-6VEAA3Gtv-e1666114081464.jpg": {
   "w": 900,
   "h": 508,
@@ -4699,6 +4723,12 @@
   "h": 600,
   "target": 1280,
   "v": 3
+ },
+ "https://www.fanthatracks.com/wp-content/uploads/2026/06/artofmandoandgrogu_cover_3a.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
   "w": 1000,

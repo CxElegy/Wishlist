@@ -8,19 +8,19 @@
   "ILLIT": 8,
   "周杰伦": 11,
   "BLEACH Mirrors High": 3,
-  "The Mandalorian": 4,
+  "The Mandalorian": 6,
   "Vaundy": 6,
-  "gelato pique": 3,
+  "gelato pique": 5,
   "Astrae Oratio": 5,
-  "MMORPG 新作": 4,
+  "MMORPG 新作": 5,
   "あつ森": 6,
-  "dota2": 3,
+  "dota2": 5,
   "日本顶级网球赛事": 5,
-  "滑雪": 1,
+  "滑雪": 2,
   "チェーンソーマン": 1,
   "ぐでたま": 2,
   "绝区零": 2,
-  "FROM": 1,
+  "FROM": 2,
   "猫用品": 1
  },
  "漫威电影": [
@@ -431,6 +431,24 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "The Mandalorian’s Ming-Na Wen Poses a Question to Star Wars Fans in New Video",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Take a look inside The Art of Star Wars: The Mandalorian and Grogu",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "Vaundy": [
@@ -473,6 +491,28 @@
     1
    ],
    "image": "https://news.walkerplus.com/article/1180815/12665527_615.jpg"
+  },
+  {
+   "headline": "ジェラピケ×セサミストリートのコラボアイテム新作が発売！本田翼の着こなしがかわいすぎるルームウェアなど全67アイテム",
+   "highlight": "全67アイテム",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "gelato pique 為慶祝與Peanuts 合作 10 週年，推出史努比與好友的標誌性條紋居家服系列，11 月 6 日正式開賣",
+   "highlight": "11 月 6 日正式開賣",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ],
+   "event": {
+    "date": "2026-11-06",
+    "label": "発売日"
+   }
   }
  ],
  "Astrae Oratio": [
@@ -545,7 +585,8 @@
    "weight": "normal",
    "refs": [
     4,
-    3
+    3,
+    5
    ]
   }
  ],
@@ -616,6 +657,24 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "NS Speculated on When the Next Major Patch for Dota 2 Will Be Released",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Veterans Esports League: Registration is Open for the CS2 and Dota 2 Tournament",
+   "highlight": "Registration is Open",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "日本顶级网球赛事": [
@@ -664,7 +723,8 @@
    "blurb": "長野白馬的相撲娛樂秀將於2027年1月16至22日登場，11月2日開賣。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    2
    ],
    "event": {
     "date": "2026-11-02",
@@ -715,6 +775,15 @@
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.yxsqhBeFT5a1oovlNUlv_A&pid=News&w=1200"
+  },
+  {
+   "headline": "From season 4 ending explained: Who dies, and what happens to Fatima?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "猫用品": [
