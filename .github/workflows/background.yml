@@ -104,6 +104,11 @@ jobs:
           key: wishlist-http-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: wishlist-http-
 
+      # JS で描く公式サイト（Astrae Oratio など）の人物の絵を読むため、本物のブラウザ（scrapling）。入れられなければ SCRAPLING_BROWSER を立てず HTML だけで続ける
+      - name: 本物のブラウザ（scrapling・公式サイトの人物の絵）
+        continue-on-error: true
+        run: scrapling install && echo "SCRAPLING_BROWSER=1" >> "$GITHUB_ENV"
+
       - name: 小元素补全（Python，不用 AI · 6 本并行 · 取法分 3 段）
         id: fill
         if: steps.gate.outputs.emblem == 'true'

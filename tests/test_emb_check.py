@@ -181,6 +181,70 @@ class CloseupOfficial(unittest.TestCase):
         got = emb_check.fandom_over_official(official=lambda i, s: ["u"] if "Rukia" in s or "Ichigo" in s else [], items=[it])
         self.assertEqual(got, {"A": ["Rukia Kuchiki（いない）"]})
 
+    def test_e21_counts_customer_boards_too(self):
+        """E21 は店長の items.yaml だけでなく、ライブラリの版面（boards.config）も同じ数え方で数える。"""
+        rows = [{"name": "Cust", "config": {"emblem_kind": "character", "site": "https://o/", "emblem": [{"subject": "Ichigo", "why": "Ichigo（Fandom のページ）"}, {"subject": "Ai", "why": "Ai（公式サイトの立ち絵）"}]}},
+                {"name": "NoSite", "config": {"emblem_kind": "character", "emblem": [{"subject": "Ichigo", "why": "Fandom"}]}}]
+        got = emb_check.boards_fandom_over_official(rows, official=lambda it, s: ["u"] if it.get("site") else [])
+        self.assertEqual(got, {"Cust": ["Ichigo"]})
+
+    def test_board_swap_replaces_fandom_with_official(self):
+        """お客さまの版面の Fandom の絵を公式の立ち絵に替える（店長の official_swap と同じ入口 official_cut）。固定は替えない・取れなければ元のまま。"""
+        import library_emblem as le
+        import emblem_fill as ef
+        from PIL import Image
+        em = [{"subject": "Ichigo", "why": "Ichigo（Fandom のページ）", "shape": "cutout", "image": "emblems/a.webp", "source": "f1"},
+              {"subject": "Rukia", "why": "Rukia（Fandom のページ）", "shape": "cutout", "image": "emblems/b.webp", "source": "f2", "lock": True},
+              {"subject": "Renji", "why": "Renji（Fandom のページ）", "shape": "cutout", "image": "emblems/c.webp", "source": "f3"}]
+        item = {"name": "Cust", "emblem_kind": "character", "site": "https://o/"}
+        img = Image.new("RGBA", (400, 600), (255, 0, 0, 255))
+        with mock.patch.object(ef.emblem, "official_for", return_value=["u"]), \
+                mock.patch.object(ef, "official_cut", side_effect=lambda it, x, skip, orig=None: ("https://o/char/i.webp", img, 0.3) if x["subject"] == "Ichigo" else None), \
+                mock.patch.object(ef.emblem, "save_cut"):
+            out, n = le.official_swap_board(item, em, fetch=lambda u: b"")
+        self.assertEqual(n, 1)
+        self.assertEqual(out[0]["source"], "https://o/char/i.webp")
+        self.assertIn("公式サイトの立ち絵", out[0]["why"])
+        self.assertEqual(out[1:], em[1:])
+        self.assertEqual(emb_check.boards_fandom_over_official([{"name": "C", "config": {**item, "emblem": out}}], official=lambda it, s: ["u"]), {"C": ["Rukia", "Renji"]})
+
+    def test_official_person_page_one_level_deeper(self):
+        """一覧が名前のリンクだけの公式（Marvel）：一覧からその人のページを開き、cut の絵を取る。1 語だけ当たる別人（spider-man）は取らない。"""
+        import emblem
+        emblem._OFFICIAL_HTML.clear()
+        emblem._OFFICIAL_INDEX.clear()
+        top = '<a href="/characters">c</a>'
+        lst = '<a href="/characters/iron-man-tony-stark">x</a><a href="/characters/spider-man-peter-parker">y</a><a href="/characters/thor">t</a>'
+        page = '<meta property="og:image" content="https://cdn/x_mas.webp"><img src="/c/002irm_cut_dsk_01.webp"><img src="/c/promo_module_standard_dsk.webp">'
+        pages = {"https://m.example/": top, "https://m.example/characters": lst, "https://m.example/characters/iron-man-tony-stark": page}
+        with mock.patch.object(emblem, "_get", side_effect=lambda u, n=0: pages[u].encode()):
+            self.assertEqual(emblem.official_images("https://m.example/", ["Iron", "Man"]), ["https://m.example/c/002irm_cut_dsk_01.webp", "https://cdn/x_mas.webp"])
+            self.assertEqual(emblem.official_images("https://m.example/", ["Hulk", "Man"]), [])
+        emblem._OFFICIAL_HTML.clear()
+        emblem._OFFICIAL_INDEX.clear()
+
+    def test_official_rendered_html_fallback(self):
+        """トップの HTML に人物の絵がない（JS で描く公式）ときだけ、本物のブラウザで開いた HTML（images._browser_html）に替える。ブラウザが無ければ元のまま。"""
+        import emblem
+        import images
+        emblem._OFFICIAL_HTML.clear()
+        emblem._OFFICIAL_INDEX.clear()
+        rendered = '<img src="/img/character/artwork/tsubasa.webp">'
+        with mock.patch.object(emblem, "_get", return_value=b"<html></html>"), mock.patch.object(images, "_browser_html", return_value=rendered) as bh:
+            self.assertEqual(emblem.official_images("https://js.example/", ["Tsubasa"]), ["https://js.example/img/character/artwork/tsubasa.webp"])
+            bh.assert_called_once()
+        emblem._OFFICIAL_HTML.clear()
+        emblem._OFFICIAL_INDEX.clear()
+        with mock.patch.object(emblem, "_get", return_value=b"<html></html>"), mock.patch.object(images, "_browser_html", return_value=None):
+            self.assertEqual(emblem.official_images("https://js.example/", ["Tsubasa"]), [])
+        emblem._OFFICIAL_HTML.clear()
+        emblem._OFFICIAL_INDEX.clear()
+
+    def test_official_site_ignores_wiki_icon_host(self):
+        import emblem
+        self.assertIsNone(emblem.official_site({"icon": {"source": "https://upload.wikimedia.org/a.jpg"}}))
+        self.assertEqual(emblem.official_site({"site": "https://www.x.com/VI", "icon": {"source": "https://upload.wikimedia.org/a.jpg"}}), "https://www.x.com/")
+
     def test_official_blind_counts_sites_without_person_art(self):
         import emblem
         it = lambda n, s: {"name": n, "emblem_kind": "character", "site": s}
