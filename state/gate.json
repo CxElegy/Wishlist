@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-10-31T08:19:34+00:00",
+ "changed": true,
+ "checked": "2026-10-31T09:55:07+00:00",
  "fired": {
   "at": "2026-10-31T08:38:45+00:00",
   "results": {
@@ -19,24 +19,20 @@
     "resp": "cse_01W4x6f5V2rteogGp13Gd1nb",
     "sig": "25d5e05922d3"
    },
-   "items": [
-    "Astrae Oratio"
-   ],
-   "last_batch": "2026-10-31T07:39:51+00:00",
+   "items": [],
+   "last_batch": "2026-10-31T08:50:02+00:00",
    "last_error": {
     "at": "2026-10-31T01:21:10+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 295,
+   "need": false,
+   "prog": 297,
    "prog_day": "2026-10-31",
-   "ripe": [
-    "Astrae Oratio"
-   ],
-   "sig": "25d5e05922d3",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 664977,
-   "why": "整理待ちの記事 2 件（1 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 710418,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
@@ -46,14 +42,14 @@
     "漫威电影",
     "dota2",
     "哈利波特剧集",
-    "FROM"
+    "FROM",
+    "GTA 6"
    ],
    "need": true,
-   "sig": "a8c97c70d221",
+   "sig": "fb45bbdcac7a",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "あつ森",
@@ -61,7 +57,7 @@
     "周杰伦",
     "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
