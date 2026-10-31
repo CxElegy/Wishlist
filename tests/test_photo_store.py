@@ -63,7 +63,8 @@ class PhotoStore(unittest.TestCase):
             P._CACHE[:] = []
         s2 = f"https://s.example/storage/v1/object/public/photos/{k2}-800.webp"
         self.assertIn(f'src="{u1}"', h)
-        self.assertIn(f'data-fb="{s2} {u2}"', h)
+        self.assertIn(f'data-fb="{s2}"', h)
+        self.assertNotIn(u2, h)   # 置き場にある落ち先の原寸は出さない
 
     def test_old_uploads_get_immutable_cache_header(self):
         """前に上げた分（cc の印なし）を、同じ中身で CACHE 付きに上げ直し、印を付ける。新しい分は最初から印つき。"""
