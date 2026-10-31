@@ -996,7 +996,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 </style>
-<meta name="wl-ver" data-page="heat" content="98243087ba36"><style>
+<meta name="wl-ver" data-page="heat" content="2e5f59f23a07"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1254,7 +1254,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
     members16:'<p class="st">読み込めませんでした：',
     lb1:'<table><thead><tr><th>版面<\/th><th>人数<\/th><th>小元素<\/th><th>配色（背景・文字・差し色）<\/th><\/tr><\/thead><tbody>',
-    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面<\/th><th>追う人<\/th><th>最新の日<\/th><th>記事<\/th><th>整理待ち<\/th><th>載せた：待ち（前後）<\/th><\/tr><\/thead><tbody>',lv1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>👍（今の票）<\/th><th>👎（今の票）<\/th><th>この 7 日に押した回数<\/th><th>最後の投票<\/th><th>最近の票<\/th><\/tr><\/thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）',la1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>追う版面<\/th><th>分量 S<\/th><th>M<\/th><th>L<\/th><th>写真の受付（済 / 全部）<\/th><th>関注項の依頼（待ち / 全部）<\/th><th>置いた板块<\/th><th>小分類つき<\/th><th>見たい種類で絞り<\/th><th>乗換駅つき<\/th><\/tr><\/thead><tbody>',la2:'画面の言語（登録した人の数）：'}};
+    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面<\/th><th>追う人<\/th><th>最新の日<\/th><th>記事<\/th><th>整理待ち<\/th><th>載せた：待ち（前後）<\/th><\/tr><\/thead><tbody>',lv1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>👍（今の票）<\/th><th>👎（今の票）<\/th><th>この 7 日に押した回数<\/th><th>最後の投票<\/th><th>最近の票<\/th><\/tr><\/thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）',la1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>追う版面<\/th><th>分量 S<\/th><th>M<\/th><th>L<\/th><th>写真の受付（済 / 全部）<\/th><th>関注項の依頼（待ち / 全部）<\/th><th>置いた板块<\/th><th>小分類つき<\/th><th>見たい種類で絞り<\/th><th>乗換駅つき<\/th><th>画面の言語<\/th><\/tr><\/thead><tbody>',lp2:'：',lp4:'・',lp3:'全部',lp1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>版面<\/th><th>置いた板块<\/th><th>並び<\/th><th>分量<\/th><th>分け方<\/th><th>小分類<\/th><th>見たい種類<\/th><th>乗換駅<\/th><\/tr><\/thead><tbody>',la2:'画面の言語（登録した人の数）：'}};
   var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -1821,13 +1821,25 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     var box=document.getElementById('wl-libaccts'); if(!box) return;
     var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
     sec.hidden=false;
-    Promise.all([rpc('admin_accounts'),rpc('admin_ui_langs'),whoLoad(),rpc('admin_follow_detail')]).then(function(v){
-      var rs=v[0]||[], by={}, fd={}; rs.forEach(function(r){by[r.account]=r;}); (v[3]||[]).forEach(function(r){fd[r.account]=r;});
+    Promise.all([rpc('admin_accounts'),rpc('admin_ui_langs'),whoLoad(),rpc('admin_follow_detail'),rpc('admin_account_langs')]).then(function(v){
+      var rs=v[0]||[], by={}, fd={}, lg={}; (v[4]||[]).forEach(function(r){lg[r.account]=r.lang;}); rs.forEach(function(r){by[r.account]=r;}); (v[3]||[]).forEach(function(r){fd[r.account]=r;});
       v[2].accs.forEach(function(a){ if(!by[a]) rs.push(by[a]={account:a,boards:0,sz_s:0,sz_m:0,sz_l:0,photos:0,photos_done:0,reqs:0,reqs_wait:0}); });
       rs.sort(function(a,b){return a.account==='test1'?-1:b.account==='test1'?1:a.account<b.account?-1:1;});
       box.dataset.n=rs.length;
       box.innerHTML='<p>'+L.la2+(v[1]||[]).map(function(x){return esc(x.lang)+' '+x.n;}).join(' · ')+'<\/p>'+L.la1+rs.map(function(r){
-        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+r.boards+'<\/td><td>'+r.sz_s+'<\/td><td>'+r.sz_m+'<\/td><td>'+r.sz_l+'<\/td><td>'+r.photos_done+' / '+r.photos+'<\/td><td>'+r.reqs_wait+' / '+r.reqs+'<\/td>'+(function(d){d=d||{};return '<td>'+(d.sections||0)+'<\/td><td>'+(d.with_subs||0)+'<\/td><td>'+(d.with_media||0)+'<\/td><td>'+(d.with_also||0)+'<\/td>';})(fd[r.account])+'<\/tr>';}).join('')+'<\/tbody><\/table>';
+        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+r.boards+'<\/td><td>'+r.sz_s+'<\/td><td>'+r.sz_m+'<\/td><td>'+r.sz_l+'<\/td><td>'+r.photos_done+' / '+r.photos+'<\/td><td>'+r.reqs_wait+' / '+r.reqs+'<\/td>'+(function(d){d=d||{};return '<td>'+(d.sections||0)+'<\/td><td>'+(d.with_subs||0)+'<\/td><td>'+(d.with_media||0)+'<\/td><td>'+(d.with_also||0)+'<\/td>';})(fd[r.account])+'<td>'+esc(lg[r.account]||'—')+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+      whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
+    }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
+  }
+  function libplace(){   // ②置き方・関注項の中身：follows の 1 行 = 1 行（板块・並び・分量・分け方・小分類・見たい種類・乗換駅）。admin_follow_rows は店長だけ
+    var box=document.getElementById('wl-libplace'); if(!box) return;
+    var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
+    sec.hidden=false;
+    var kv=function(o){return Object.keys(o||{}).map(function(k){return esc(k)+L.lp2+esc(Array.isArray(o[k])?o[k].join(L.lp4):String(o[k]));}).join('<br>')||'—';};
+    rpc('admin_follow_rows').then(function(rs){
+      rs=rs||[]; box.dataset.n=rs.length;
+      box.innerHTML=L.lp1+rs.map(function(r){
+        return '<tr data-id="'+esc(r.account)+'" data-b="'+r.board_id+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+esc(r.name)+'<\/td><td>'+esc(r.section||'—')+'<\/td><td>'+r.pos+'<\/td><td>'+esc(r.size||'—')+'<\/td><td>'+esc(r.scheme||'—')+'<\/td><td>'+kv(r.subs)+'<\/td><td>'+((r.media||[]).map(esc).join(L.lp4)||L.lp3)+'<\/td><td>'+kv(r.also)+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
   }
@@ -1836,7 +1848,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]&&!(OWN&&tok)?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();libedit();libvotes();libaccts();
+      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();libedit();libvotes();libaccts();libplace();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
           var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
@@ -1870,7 +1882,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.31</b></div>
-<div class="meta"><small>更新</small><b>10.31 09:58</b></div></div>
+<div class="meta"><small>更新</small><b>10.31 10:01</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
