@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "babce0e548b3",
+ "edit_sig": "91c93e6d9587",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,8 +13,10 @@
      "date": "2026-10-30",
      "headline": "아스트라에 오라티오 \"테스트 반응 긍정적, 게임의 매력 알렸다\"",
      "highlight": "테스트 반응 긍정적",
-     "image": "https://cdn.gameinsight.co.kr/news/photo/202610/36920_90717_3439.jpg",
-     "image_via": "AI 挑选",
+     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+     "image_via": "作品封面",
+     "source": "게임인사이트",
+     "source_icon": "https://cdn.gameinsight.co.kr/image/logo/favicon.png",
      "url": "https://www.gameinsight.co.kr/news/articleView.html?idxno=36920",
      "weight": "lead"
     },
@@ -69,16 +71,6 @@
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-28",
-     "headline": "BLEACH Mirrors High Now Available! Features Ichigo Kurosaki and Rukia Kuchiki Giveaways Alongside a Campaign to Win Autograph Boards From the Voice Cast",
-     "highlight": "",
-     "image": "https://i0.wp.com/uploads.saigacdn.com/2026/10/bleach-mh-00.jpg?resize=1200,630",
-     "image_via": "og:image",
-     "url": "https://saiganak.com/release/bleach-mh/",
-     "weight": "hero"
-    },
-    {
      "blurb": "星3朽木白哉の評価と性能をまとめた攻略記事。",
      "date": "2026-10-29",
      "headline": "【ミラハイ】星3朽木白哉の評価と性能【BLEACHミラーズハイ】",
@@ -96,6 +88,16 @@
      "image": "https://appmedia.jp/wp-content/uploads/2026/10/182616_ik0dw.webp",
      "image_via": "og:image",
      "url": "https://appmedia.jp/bleach-mh/80531035",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "BLEACH Mirrors High Now Available! Features Ichigo Kurosaki and Rukia Kuchiki Giveaways Alongside a Campaign to Win Autograph Boards From the Voice Cast",
+     "highlight": "Now Available",
+     "image": "https://i0.wp.com/uploads.saigacdn.com/2026/10/bleach-mh-00.jpg?resize=1200,630",
+     "image_via": "og:image",
+     "url": "https://saiganak.com/release/bleach-mh/",
      "weight": "normal"
     }
    ],
@@ -258,15 +260,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 23,
-     "source": "Entertainment Times on MSN",
-     "title": "'Harry Potter' star Paapa Essiedu addresses backlash over Snape casting; says support keeps him going",
-     "url": "https://www.msn.com/en-in/entertainment/celebrities/harry-potter-star-paapa-essiedu-addresses-backlash-over-snape-casting-says-support-keeps-him-going/ar-AA2grkcP"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -713,22 +706,6 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 7,
-     "source": "NOWnews今日新聞",
-     "title": "撞期Vaundy也不怕！藤井風穿藍白拖衝高雄世運 18首神曲一次看",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAtMktDQU9SQl96c3NUQ0VHZUFocEVMRy1kVXMtbVJVLW5Hb3pDemktLXZYLXVDLVRhNENiX1FVbU5LSHo2bndkbUI2UUJYUF9mVWfSAVJBVV95cUxQLTJLQ0FPUkJfenNzVENFR2VBaHBFTEctZFVzLW1SVS1uR296Q3ppLS12WC11Qy1UYTRDYl9RVW1OS0h6Nm53ZG1CNlFCWFBfZlVn?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 8,
-     "source": "NOWnews今日新聞",
-     "title": "日本音源億級霸王來了！Vaundy小巨蛋連嗨2天 22首必唱歌單預測",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBycWlqTzg3NkpVZmdtVHdHYUdsSW1JRG9GckRNdzl1QUc3eTcwTnA5UFJrMFBOVUZYMmRmN3pQWUVWRkhaVEkyQzFFUXBMZkwyTVHSAVJBVV95cUxQcnFpak84NzZKVWZnbVR3R2FHbEltSURvRnJETXc5dUFHN3k3ME5wOVBSazBQTlVGWDJkZjd6UFlFVkZIWlRJMkMxRVFwTGZMMk1R?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {

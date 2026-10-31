@@ -1,15 +1,15 @@
 {
  "_covered": {
   "漫威电影": 57,
-  "哈利波特剧集": 22,
+  "哈利波特剧集": 23,
   "GTA 6": 32,
   "A2O LITE": 12,
   "三星手机": 15,
   "ILLIT": 8,
   "周杰伦": 11,
-  "BLEACH Mirrors High": 3,
+  "BLEACH Mirrors High": 4,
   "The Mandalorian": 6,
-  "Vaundy": 6,
+  "Vaundy": 8,
   "gelato pique": 5,
   "Astrae Oratio": 5,
   "MMORPG 新作": 5,
@@ -142,7 +142,8 @@
     4,
     8,
     1,
-    17
+    17,
+    23
    ]
   }
  ],
@@ -408,6 +409,15 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "BLEACH Mirrors High Now Available! Features Ichigo Kurosaki and Rukia Kuchiki Giveaways Alongside a Campaign to Win Autograph Boards From the Voice Cast",
+   "highlight": "Now Available",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],

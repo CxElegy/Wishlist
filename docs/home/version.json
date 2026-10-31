@@ -1,14 +1,14 @@
 {
- "admin": "8d70cef2c494",
- "admin-ai": "eae249300827",
+ "admin": "012710aa7c6c",
+ "admin-ai": "4ce106f8bfb7",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "087143bf"
+   "ad7ce77e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "d93fcae1"
+   "ed648b4b"
   ]
  },
  "admin-boards": "8daa7b21cb73",
@@ -22,11 +22,11 @@
    "4a13bcc4"
   ]
  },
- "admin-emblem": "912370403d39",
+ "admin-emblem": "d2540264be7d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "77488849"
+   "7b9b43a1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,15 +43,15 @@
  },
  "admin-members": "44fc36dd8f41",
  "admin-members_marks": {},
- "admin-now": "2b0e5cc98780",
+ "admin-now": "17bf5926c37e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0b8c4088"
+   "e96a3df5"
   ],
   "queue": [
    "いまの状況",
-   "253a9248"
+   "0e4cd4fc"
   ],
   "status": [
    "運行状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "42d77c9d"
+   "0bec0c9c"
   ]
  },
- "admin-system": "1eaef9ffcf92",
+ "admin-system": "8e056f467c5c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f527eda4"
+   "b7ca1384"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "38d720ac"
+   "07c4cdca"
   ]
  },
  "admin_marks": {},
- "heat": "0f66a4d2cc8b",
+ "heat": "a334e1a0db30",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "004c9afd"
+   "6921e290"
   ],
   "ranking": [
    "ランキング",
-   "cea06c87"
+   "d8bb624f"
   ]
  },
- "index": "7b1a0e28e9eb",
+ "index": "1a5d90f75cd0",
  "index_marks": {
   "front": [
    "トップ",
-   "da4d9874"
+   "803fb120"
   ],
   "picks": [
    "気になるかも？",
@@ -157,11 +157,11 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "e40566a7"
+   "34d249ce"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "9dfa0765"
+   "ee210038"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -196,6 +196,6 @@
    "ea519bdd"
   ]
  },
- "updated": "10.31 11:33",
+ "updated": "10.31 11:38",
  "wishlist": "3b31118b3205"
 }
