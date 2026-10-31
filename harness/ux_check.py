@@ -359,7 +359,7 @@ def rest_boards(tok=None, exact=False):
     return [x["name"] for x in rows], int(r.headers.get("Content-Range", "0-0/0").split("/")[-1])
 
 
-HTML_MAX_MB = 2.6   # 2026-10-30：店長のページ 4.1MB→2.1MB。画像 1 枚ごとの onerror が戻ると倍になるので、ここを超えたら ✗
+HTML_MAX_MB = 2.8   # 2026-10-31：2.6→2.8（色の下絵 1170 枚×31B＝36KB が増えた。倍に戻る検出が目的）。2026-10-30：店長のページ 4.1MB→2.1MB。画像 1 枚ごとの onerror が戻ると倍になるので、ここを超えたら ✗
 IMG_MAX = 4500
 
 
