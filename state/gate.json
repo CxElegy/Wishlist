@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-10-31T14:43:32+00:00",
+ "changed": true,
+ "checked": "2026-10-31T15:22:06+00:00",
  "fired": {
   "at": "2026-10-31T14:43:32+00:00",
   "results": {
@@ -19,49 +19,28 @@
     "resp": "cse_01W4x6f7DtqoGsqJvQdpGdas",
     "sig": "0d2fe4b1d516"
    },
-   "items": [
-    "BLEACH Mirrors High",
-    "MMORPG 新作",
-    "gelato pique",
-    "あつ森",
-    "三星手机",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影",
-    "猫用品"
-   ],
-   "last_batch": "2026-10-31T13:37:15+00:00",
+   "items": [],
+   "last_batch": "2026-10-31T15:04:45+00:00",
    "last_error": {
     "at": "2026-10-31T13:17:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 362,
+   "need": false,
+   "prog": 373,
    "prog_day": "2026-10-31",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "MMORPG 新作",
-    "gelato pique",
-    "あつ森",
-    "三星手机",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影",
-    "猫用品"
-   ],
-   "sig": "0d2fe4b1d516",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 888815,
-   "why": "整理待ちの記事 11 件（9 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 937511,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "f34c0f7d308e",
+   "sig": "b6804aff6de5",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
@@ -72,12 +51,13 @@
     "dota2",
     "あつ森",
     "ぐでたま",
+    "チェーンソーマン",
     "周杰伦",
     "哈利波特剧集",
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 13 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
