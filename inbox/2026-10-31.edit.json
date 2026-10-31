@@ -12,7 +12,7 @@
   "Vaundy": 8,
   "gelato pique": 5,
   "Astrae Oratio": 5,
-  "MMORPG 新作": 5,
+  "MMORPG 新作": 10,
   "あつ森": 6,
   "dota2": 5,
   "日本顶级网球赛事": 5,
@@ -607,6 +607,29 @@
     4,
     3,
     5
+   ]
+  },
+  {
+   "headline": "「FFXIV」ファンフェスまとめ！最新拡張「白銀のワンダラー」は2027年2月23日発売",
+   "highlight": "2027年2月23日発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    9
+   ],
+   "event": {
+    "date": "2027-02-23",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "「FFXIV：白銀のワンダラー」、新ジョブ「ゼファー」発表！クロスボウを使いこなす遠隔物理DPS",
+   "highlight": "新ジョブ「ゼファー」",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
