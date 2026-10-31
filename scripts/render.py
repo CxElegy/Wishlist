@@ -4235,7 +4235,7 @@ AUTH_JS = r"""
     members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
     members16:'<p class="st">読み込めませんでした：',
     lb1:'<table><thead><tr><th>版面</th><th>人数</th><th>小元素</th><th>配色（背景・文字・差し色）</th></tr></thead><tbody>',
-    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面</th><th>追う人</th><th>最新の日</th><th>記事</th><th>整理待ち</th><th>載せた：待ち（前後）</th></tr></thead><tbody>',lv1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>👍（今の票）</th><th>👎（今の票）</th><th>この 7 日に押した回数</th><th>最後の投票</th><th>最近の票</th></tr></thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）',la1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>追う版面</th><th>分量 S</th><th>M</th><th>L</th><th>写真の受付（済 / 全部）</th><th>関注項の依頼（待ち / 全部）</th><th>置いた板块</th><th>小分類つき</th><th>見たい種類で絞り</th><th>乗換駅つき</th></tr></thead><tbody>',la2:'画面の言語（登録した人の数）：'}};
+    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面</th><th>追う人</th><th>最新の日</th><th>記事</th><th>整理待ち</th><th>載せた：待ち（前後）</th></tr></thead><tbody>',lv1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>👍（今の票）</th><th>👎（今の票）</th><th>この 7 日に押した回数</th><th>最後の投票</th><th>最近の票</th></tr></thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）',la1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>追う版面</th><th>分量 S</th><th>M</th><th>L</th><th>写真の受付（済 / 全部）</th><th>関注項の依頼（待ち / 全部）</th><th>置いた板块</th><th>小分類つき</th><th>見たい種類で絞り</th><th>乗換駅つき</th><th>画面の言語</th></tr></thead><tbody>',lp1:'<table class="wl-tbl"><thead><tr><th>アカウント</th><th>版面</th><th>置いた板块</th><th>並び</th><th>篇幅</th><th>分け方</th><th>小分類</th><th>見たい種類</th><th>乗換駅</th></tr></thead><tbody>',la2:'画面の言語（登録した人の数）：'}};
   var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -4802,13 +4802,25 @@ AUTH_JS = r"""
     var box=document.getElementById('wl-libaccts'); if(!box) return;
     var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
     sec.hidden=false;
-    Promise.all([rpc('admin_accounts'),rpc('admin_ui_langs'),whoLoad(),rpc('admin_follow_detail')]).then(function(v){
-      var rs=v[0]||[], by={}, fd={}; rs.forEach(function(r){by[r.account]=r;}); (v[3]||[]).forEach(function(r){fd[r.account]=r;});
+    Promise.all([rpc('admin_accounts'),rpc('admin_ui_langs'),whoLoad(),rpc('admin_follow_detail'),rpc('admin_account_langs')]).then(function(v){
+      var rs=v[0]||[], by={}, fd={}, lg={}; (v[4]||[]).forEach(function(r){lg[r.account]=r.lang;}); rs.forEach(function(r){by[r.account]=r;}); (v[3]||[]).forEach(function(r){fd[r.account]=r;});
       v[2].accs.forEach(function(a){ if(!by[a]) rs.push(by[a]={account:a,boards:0,sz_s:0,sz_m:0,sz_l:0,photos:0,photos_done:0,reqs:0,reqs_wait:0}); });
       rs.sort(function(a,b){return a.account==='test1'?-1:b.account==='test1'?1:a.account<b.account?-1:1;});
       box.dataset.n=rs.length;
       box.innerHTML='<p>'+L.la2+(v[1]||[]).map(function(x){return esc(x.lang)+' '+x.n;}).join(' · ')+'</p>'+L.la1+rs.map(function(r){
-        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'</td><td>'+r.boards+'</td><td>'+r.sz_s+'</td><td>'+r.sz_m+'</td><td>'+r.sz_l+'</td><td>'+r.photos_done+' / '+r.photos+'</td><td>'+r.reqs_wait+' / '+r.reqs+'</td>'+(function(d){d=d||{};return '<td>'+(d.sections||0)+'</td><td>'+(d.with_subs||0)+'</td><td>'+(d.with_media||0)+'</td><td>'+(d.with_also||0)+'</td>';})(fd[r.account])+'</tr>';}).join('')+'</tbody></table>';
+        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'</td><td>'+r.boards+'</td><td>'+r.sz_s+'</td><td>'+r.sz_m+'</td><td>'+r.sz_l+'</td><td>'+r.photos_done+' / '+r.photos+'</td><td>'+r.reqs_wait+' / '+r.reqs+'</td>'+(function(d){d=d||{};return '<td>'+(d.sections||0)+'</td><td>'+(d.with_subs||0)+'</td><td>'+(d.with_media||0)+'</td><td>'+(d.with_also||0)+'</td>';})(fd[r.account])+'<td>'+esc(lg[r.account]||'—')+'</td></tr>';}).join('')+'</tbody></table>';
+      whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
+    }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'</p>';});
+  }
+  function libplace(){   // ②置き方・関注項の中身：follows の 1 行 = 1 行（板块・並び・篇幅・分け方・小分類・見たい種類・乗換駅）。admin_follow_rows は店長だけ
+    var box=document.getElementById('wl-libplace'); if(!box) return;
+    var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
+    sec.hidden=false;
+    var kv=function(o){return Object.keys(o||{}).map(function(k){return esc(k)+'：'+esc(Array.isArray(o[k])?o[k].join('・'):String(o[k]));}).join('<br>')||'—';};
+    rpc('admin_follow_rows').then(function(rs){
+      rs=rs||[]; box.dataset.n=rs.length;
+      box.innerHTML=L.lp1+rs.map(function(r){
+        return '<tr data-id="'+esc(r.account)+'" data-b="'+r.board_id+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'</td><td>'+esc(r.name)+'</td><td>'+esc(r.section||'—')+'</td><td>'+r.pos+'</td><td>'+esc(r.size||'—')+'</td><td>'+esc(r.scheme||'—')+'</td><td>'+kv(r.subs)+'</td><td>'+((r.media||[]).map(esc).join('・')||'全部')+'</td><td>'+kv(r.also)+'</td></tr>';}).join('')+'</tbody></table>';
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'</p>';});
   }
@@ -4817,7 +4829,7 @@ AUTH_JS = r"""
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]&&!(OWN&&tok)?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();libedit();libvotes();libaccts();
+      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();libedit();libvotes();libaccts();libplace();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
           var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
@@ -6778,7 +6790,7 @@ ADMIN_PAGE_JS = """
 # (ファイル, 印, 名前, 中身の説明, 欄の id)。前の網址 admin.html#<id> はトップの JS がその欄のあるページへ送る。
 ADMIN_PAGES = [
     ("admin-now.html", "①", "いま", "ライブログ・運行状況・次の実行・Actions と依頼", ["term-panel", "status", "nextrun", "queue"]),
-    ("admin-boards.html", "②", "版面", "ウォッチ項目の表・ライブラリの全版面・投票", ["items", "libboards", "libvotes", "libaccts", "votes"]),
+    ("admin-boards.html", "②", "版面", "ウォッチ項目の表・ライブラリの全版面・投票", ["items", "libboards", "libvotes", "libaccts", "libplace", "votes"]),
     ("admin-emblem.html", "③", "エンブレム", "小元素の管理（替える・固定・外す）・進捗・版面ごとの状態・判断の例", ["emblem-manage", "emblems", "backend", "libstate", "emblem-ex"]),
     ("admin-ai.html", "④", "AI 編集", "トークン・編集の前後", ["tokens", "editdiff", "libedit"]),
     ("admin-system.html", "⑤", "しくみ", "全体図・詳しい図・リソース・並列と制限", ["ov", "procs", "res"]),
@@ -6786,7 +6798,7 @@ ADMIN_PAGES = [
 ]
 # 全区画に「全員／ユーザーを選ぶ」（AUTH_JS の WL_WHO 1 つ）：入れた区画（ページ, 区画 id, 行の選び方）と、入れない区画の理由。
 # 区画を足したらどちらかに書く（tests/test_admin_libboards.py が漏れを数える・ux_check が選んで絞れるか見る）。
-ADMIN_WHO = [("admin-boards.html", "libboards", "tr[data-id]"), ("admin-ai.html", "libedit", "tr[data-id]"), ("admin-boards.html", "libvotes", "tr[data-id]"), ("admin-boards.html", "libaccts", "tr[data-id]"), ("admin-emblem.html", "emblem-manage", ".emm-bt"), ("admin-emblem.html", "libstate", "tr[data-id]")]
+ADMIN_WHO = [("admin-boards.html", "libboards", "tr[data-id]"), ("admin-ai.html", "libedit", "tr[data-id]"), ("admin-boards.html", "libvotes", "tr[data-id]"), ("admin-boards.html", "libaccts", "tr[data-id]"), ("admin-boards.html", "libplace", "tr[data-id]"), ("admin-emblem.html", "emblem-manage", ".emm-bt"), ("admin-emblem.html", "libstate", "tr[data-id]")]
 ADMIN_WHO_NO = {
     "term-panel": "裏の仕組みの全体のログ（ユーザーごとではない）", "status": "仕組みの運行状況", "nextrun": "仕組みの次の実行", "queue": "仕組みの待ち行列",
     "items": "店長の items.yaml の表（お客さまの版面は ② ライブラリの版面）", "votes": "店長の投票（feedback.json・前回の収集時点の作品ごと）。全アカウント分は ② ライブラリの全アカウントの投票",
@@ -6878,6 +6890,7 @@ def render_admin(data, db, updated):
         "libboards": '<section class="panel" id="libboards" hidden><h2 class="sh"><span>ライブラリの版面</span><small>お客さまの版面も全部 · 配色を替える（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libboards"><p class="empty">読み込み中…</p></div></section>'
                      '<p class="empty">この欄は店長がログインしたときだけ出ます。</p>',
         "libvotes": '<section class="panel" id="libvotes" hidden><h2 class="sh"><span>全アカウントの投票</span><small>👍 / 👎 · お客さまの分も全部（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libvotes"><p class="empty">読み込み中…</p></div></section>',
+        "libplace": '<section class="panel" id="libplace" hidden><h2 class="sh"><span>全アカウントの置き方・関注項の中身</span><small>板块・並び・篇幅・分け方・小分類・見たい種類・乗換駅（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libplace"><p class="empty">読み込み中…</p></div></section>',
         "libaccts": '<section class="panel" id="libaccts" hidden><h2 class="sh"><span>全アカウントの篇幅・写真・依頼・言語</span><small>お客さまの分も全部（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libaccts"><p class="empty">読み込み中…</p></div></section>',
         "libedit": '<section class="panel" id="libedit" hidden><h2 class="sh"><span>ライブラリの全版面の AI 編集</span><small>お客さまの版面も全部 · 最新の日の記事と整理待ち（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libedit"><p class="empty">読み込み中…</p></div></section>',
         "libstate": '<section class="panel" id="libstate" hidden><h2 class="sh"><span>ライブラリの版面ごとの状態</span><small>お客さまの版面も全部 · 小元素の枚数と進み具合（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libstate"><p class="empty">読み込み中…</p></div></section>',

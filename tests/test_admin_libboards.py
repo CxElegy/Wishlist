@@ -197,3 +197,28 @@ class LibAccts(unittest.TestCase):
         self.assertEqual(fd.count("if not public.is_admin()"), 1)
         self.assertNotIn("to anon", fd)
         self.assertNotIn("email", fd)
+
+
+class LibPlace(unittest.TestCase):
+    def test_place_panel(self):   # ②置き方・関注項の中身（follows 1 行 = 1 行）と account ごとの言語
+        out = render.render_admin({}, {"url": "https://x.supabase.co", "key": "k"}, "u")["admin-boards.html"]
+        self.assertIn('id="libplace" hidden', out)
+        self.assertIn('id="wl-libplace"><p class="empty">読み込み中', out)
+        self.assertIn("rpc('admin_follow_rows')", render.AUTH_JS)
+        self.assertIn("rpc('admin_account_langs')", render.AUTH_JS)
+        self.assertIn("libplace", [s for _, s, _ in render.ADMIN_WHO])
+        sql = (ROOT / "db" / "admin_follow_rows.sql").read_text(encoding="utf-8")
+        self.assertEqual(sql.count("if not public.is_admin()"), 2)
+        self.assertNotIn("to anon", sql)
+        self.assertNotRegex(sql, r"returns table \([^)]*email")
+        for col in ("section", "pos", "size", "subs", "media", "also", "scheme"):   # follows の置き方・中身の列を全部読む
+            self.assertIn(col, sql)
+        # 表の見出しの数 ＝ 行の列の数（10 と 11 のずれを二度と作らない）
+        js = render.AUTH_JS if "la1:" in render.AUTH_JS else (ROOT / "scripts" / "render.py").read_text(encoding="utf-8")
+        for key, rowfn, n in (("la1:", "function libaccts", 12), ("lp1:", "function libplace", 9)):
+            h = js[js.index(key):]
+            h = h[:h.index("</tr>")]
+            self.assertEqual(h.count("<th>"), n, key)
+            r = js[js.index(rowfn):]
+            r = r[:r.index("}).join('')+'</tbody>")]
+            self.assertEqual(r.count("<td>"), n, rowfn)
