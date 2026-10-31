@@ -645,7 +645,9 @@ class EmblemStaysOutOfText(unittest.TestCase):
     def test_rules(self):
         import render
         css = render.STYLES if hasattr(render, "STYLES") else open(render.__file__, encoding="utf-8").read()
-        self.assertIn("@keyframes embdrift{from{translate:0 0}to{translate:0 -36px}}", css)   # 上へだけ浮く
+        self.assertIn("@keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 18px);rotate:-3deg}}", css)   # 上へ浮く（下は +6px まで。clip-path が帯の線より下を切る）・案 A の持ち上げ --lift
+        self.assertIn("--r:.15", css)   # 案 A：絵の高さの 15% を帯の上の縁から外へ
+        self.assertIn("const place = el =>", render.EMB_JS)   # 帯の高さを測って --s・--lift を決める
         self.assertIn(".emb{clip-path:inset(-100vh -100vw -14px -100vw)}", css)             # 帯の線より下は見せない（フチと影の分だけ余裕）
         self.assertNotIn("margin-bottom:calc(var(--bz) * (var(--bf) - 1))", css)              # 絵は線より上に置く（足が切れない）
         self.assertIn("band.style.paddingRight", render.EMB_JS)                              # 本当の幅だけ帯の右を空ける
