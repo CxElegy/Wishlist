@@ -1616,7 +1616,8 @@ SHUFFLE_JS = """
     const sm = q('.pk:not(.big)'), big = wishGrid.querySelector('.pk.big'), bigPic = big && big.querySelector('.pic');
     if (over > 0 && sm.length > 1) {
       const h = Math.max(...sm.map(k => k.querySelector('.pic')?.getBoundingClientRect().height || 0));
-      wishGrid.style.setProperty('--pkh', Math.max(72, h - over / 2) + 'px');
+      const w0 = sm[0].querySelector('.pic')?.getBoundingClientRect().width || 0;
+      wishGrid.style.setProperty('--pkh', Math.max(72, w0 * 0.9, h - over / 2) + 'px');   // 床＝幅の 90%（札 18px を除いても写真がカードの 55% 以上見える。2026-10-31 帯のように細くなった）
     }
     // 大きい 1 枚は横の 2 段とちょうど同じ高さに（下端をそろえる）
     if (bigPic && sm.length >= 3) {
@@ -3148,8 +3149,8 @@ FIT_JS = """
     if (pk) {   // 気になるかも？：写真は切らない（文字入りのバナーが多い）。下に重なる札の分（--pko）は写真の外
       const pko = parseFloat(getComputedStyle(p).getPropertyValue('--pko')) || 0;
       p.style.height = p.style.aspectRatio = p.style.minHeight = '';
-      if (innerWidth <= 760) {   // 1 列：枠を写真の比率にする（縦長すぎ・横長すぎは 1.1〜2.4 倍の範囲でぼかしを足す）
-        const w = p.clientWidth, h = Math.min(Math.max(w / nat, w / 2.4), w * 1.1);
+      if (innerWidth <= 760) {   // 1 列：枠を写真の比率にする（縦長すぎ・横長すぎは 1.1〜1.5 倍の範囲でぼかしを足す）
+        const w = p.clientWidth, h = Math.min(Math.max(w / nat, w / 1.5), w * 1.1);
         Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', height: (h + pko) + 'px'});
         p.classList.remove('fill');
         return;
