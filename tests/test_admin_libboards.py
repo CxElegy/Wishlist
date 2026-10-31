@@ -192,3 +192,8 @@ class LibAccts(unittest.TestCase):
         self.assertEqual(sql.count("if not public.is_admin()"), 2)
         self.assertNotIn("to anon", sql)
         self.assertNotIn("email", sql)
+        self.assertIn("rpc('admin_follow_detail')", render.AUTH_JS)   # 置き方・関注項の中身（follows の section/subs/media/also）
+        fd = (ROOT / "db" / "admin_follow_detail.sql").read_text(encoding="utf-8")
+        self.assertEqual(fd.count("if not public.is_admin()"), 1)
+        self.assertNotIn("to anon", fd)
+        self.assertNotIn("email", fd)

@@ -499,6 +499,9 @@ def check_admin_coverage(pw, base, width):
     gone = sorted({f["account"] for f in fl0} - set(ac))
     if gone or not pg.evaluate("/\\d/.test(document.querySelector('#wl-libaccts p').textContent)"):
         bad.append(f"管理ページ②の篇幅・写真・依頼に出ないアカウント {len(gone)} 個（{gone[:5]}）または言語の人数なし")
+    nc = pg.evaluate("[...document.querySelectorAll('#wl-libaccts tr[data-id]')].filter(r=>r.cells.length!==%d).length" % 10)
+    if nc:
+        bad.append(f"管理ページ②の全アカウント表で、置き方・関注項の列（10 列）がない行 {nc}")
     # 区画ごとの「全員／ユーザーを選ぶ」（render.ADMIN_WHO の全部）：切り替えがある・選ぶと行が follows の通りに絞れる・全員に戻すと元の数
     sys.path.insert(0, str(ROOT / "scripts"))
     import render as _r
