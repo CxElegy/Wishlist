@@ -484,34 +484,99 @@ def check_public_leak(base):
     return bad, len(only)
 
 
+def _rpc_denied(s, tok, fn, body):
+    """RPC を呼んで permission denied（実行権なし）か。True=denied・False=関数まで届いた（成功・別のエラー）。"""
+    try:
+        journey_rpc(s["supabase_url"], s["supabase_key"], tok, fn, body)
+        return False
+    except urllib.error.HTTPError as ex:
+        msg = ex.read().decode("utf-8", "replace")
+        return "permission denied" in msg or "42501" in msg
+
+
 def check_customer_admin_rpc(s):
-    """ログインしたお客さま（test-a〜e）が admin_ の読む関数（引数なし）を呼んでも中身が返らない（空・エラーのみ）。
-    名前が admin_ で始まる全部を db/*.sql から数える。引数のある関数（admin_invite・admin_user_* など書き換え）は呼ばず、
-    定義に is_admin() の守りがあることだけ見る。一つでも漏れたら ✗（BACKLOG：全ユーザーの中身は管理者だけ）。"""
+    """ログインしたお客さま（test-a〜e）が admin_ の関数から中身を読めない。名前が admin_ で始まる全部を db/*.sql から数える。
+    ・引数なし（読む）：お客さまで呼んで空・エラーのみ
+    ・引数あり（書き換え）：呼ばず、定義の is_admin() の守りを見る。守りのないものは名前で例外にせず、
+      本番で anon・お客さまとも「permission denied」（実行権なし）であることを実際に呼んで確かめる（あとで grant されたら ✗）
+    ・実際に試せたお客さまの数を数え、3 人に届かなければ ✗（ログインできず黙って通るのを防ぐ）。"""
     fns = {}
     for f in sorted((ROOT / "db").glob("*.sql")):
         for m in re.finditer(r"create\s+(?:or\s+replace\s+)?function\s+public\.(admin_\w+)\s*\(([^)]*)\)(.*?)\$\$\s*;", f.read_text(encoding="utf-8"), re.S | re.I):
             fns[m.group(1)] = (m.group(2).strip(), m.group(3))
     bad = []
-    for fn, (args, body) in fns.items():
-        if args and "is_admin()" not in body and fn != "admin_email_for":
-            bad.append(f"{fn} に is_admin() の守りがない")
+    dummy = {"text": "", "bigint": 0, "int": 0, "integer": 0, "jsonb": {}, "boolean": False}
+
+    def body_of(args):
+        out = {}
+        for arg in filter(None, (x.strip() for x in args.split(","))):
+            nm, ty = arg.split()[:2]
+            out[nm] = dummy.get(ty, "")
+        return out
     reads = [fn for fn, (args, _) in fns.items() if not args]
-    leaks = []
+    unguarded = [fn for fn, (args, body) in fns.items() if args and "is_admin()" not in body]
+    leaks, tested, failed = [], [], []
     for e in ("test-a", "test-b", "test-c", "test-d", "test-e"):
         try:
             tok = session(e + "@example.com")["access_token"]
         except urllib.error.HTTPError:
+            failed.append(e)
             continue
+        tested.append(e)
         for fn in reads:
             try:
                 r = journey_rpc(s["supabase_url"], s["supabase_key"], tok, fn, {}).strip()
-            except urllib.error.HTTPError:
+            except urllib.error.HTTPError as ex:
+                if ex.code in (401, 403, 404) or ex.code == 400 and "PGRST202" in ex.read().decode("utf-8", "replace"):
+                    continue   # 実行権なし・本番にまだ無い関数
+                leaks.append(f"{e}:{fn}:HTTP{ex.code}")   # 想定外のエラーは黙って通さない
                 continue
             if r not in ("", "[]", "{}", "null"):
                 leaks.append(f"{e}:{fn}")
+        for fn in unguarded:
+            if not _rpc_denied(s, tok, fn, body_of(fns[fn][0])):
+                leaks.append(f"{e}:{fn}:守りなしで実行できる")
+    for fn in unguarded:
+        if not _rpc_denied(s, s["supabase_key"], fn, body_of(fns[fn][0])):
+            leaks.append(f"anon:{fn}:守りなしで実行できる")
+    if len(tested) < 3:
+        bad.append(f"お客さまでログインできたのは {len(tested)} 人だけ（{tested}、できなかった {failed}）。3 人に届かないので点検にならない")
     if leaks:
-        bad.append(f"お客さまが管理者用の関数から中身を読めた {len(leaks)} 件（{leaks[:4]}）")
+        bad.append(f"お客さまが管理者用の関数から中身を読めた・実行できた {len(leaks)} 件（{leaks[:4]}）")
+    print(f"  admin_ の関数 {len(fns)} 個（読む {len(reads)}・守りなし {unguarded}）× お客さま {len(tested)} 人を点検")
+    return bad
+
+
+def check_customer_admin_pages(pw, base, width):
+    """お客さま（test-a）が管理ページの網址（docs/home/admin*.html 全部）を直に開いても、全ユーザーの中身が出ない：
+    render.ADMIN_WHO の表の行が 0・ページの文字に他のお客さまの名前（test-b〜e）が 0・店長の入口を書いた「管理ページへ」のリンクが 0。"""
+    import importlib
+    sys.path.insert(0, str(ROOT / "scripts"))
+    r_ = importlib.import_module("render")
+    ses = session("test-a@example.com")
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    pg = b.new_page(viewport={"width": width, "height": 900})
+    bad = []
+    try:
+        pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+        pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}", ses)
+        pages = sorted(f.name for f in (ROOT / "docs" / "home").glob("admin*.html"))
+        sels = sorted({row for _, _, row in r_.ADMIN_WHO})
+        for f in pages:
+            pg.goto(base + f, wait_until="networkidle", timeout=60000)
+            pg.wait_for_timeout(2500)   # 読み込み後の RPC が返るのを待つ
+            rows = pg.evaluate("sels=>sels.reduce((n,s)=>n+[...document.querySelectorAll('section:not([hidden]) '+s)].filter(e=>e.offsetParent).length,0)", sels)
+            txt = pg.evaluate("document.body.innerText")
+            names = [e for e in ("test-b", "test-c", "test-d", "test-e") if e in txt]
+            if rows or names:
+                bad.append(f"{f}：お客さま(test-a)に表の行 {rows}・他のお客さまの名前 {names}")
+        pg.goto(base, wait_until="networkidle", timeout=60000)
+        n = pg.evaluate("[...document.querySelectorAll('a[href*=\"admin\"]')].filter(a=>a.offsetParent||a.closest('[role=menu],.menu,nav')).length")
+        if n:
+            bad.append(f"お客さま(test-a)のページに管理ページへのリンク {n} 個")
+    finally:
+        b.close()
+    print(f"  管理ページ {len(pages)} 枚 × お客さま test-a を点検")
     return bad
 
 
@@ -1025,6 +1090,12 @@ def main(argv):
                 bad, n = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"], 0
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + "公開の HTML にお客さまだけの版面の名前：" + ("、".join(bad) if bad else f"{n} 件の名前が 0 か所"))
+            try:
+                bad = check_customer_admin_pages(pw, a.base, 1400)
+            except Exception as ex:  # noqa: BLE001
+                bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + "お客さまが管理ページを直に開いても全ユーザーの中身が出ない：" + ("、".join(bad) if bad else "表の行 0・他の名前 0・入口 0"))
             try:
                 bad = check_admin_coverage(pw, a.base, 1400)
             except Exception as ex:  # noqa: BLE001
