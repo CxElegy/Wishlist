@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-30T06:35:53+00:00",
-"text": "2026-10-30 第 15 バッチを出刊：滑雪（1 版面・4 本・今日の整理待ちは全部終わり） · token 新規入力 1,231・キャッシュ読み 8.8万・出力 438",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.32,
-"mem_total": 16872808448,
-"mem_free": 15961968640,
-"disk_used": 10942054400,
-"disk_free": 30380453888,
-"disk_total": 41322508288,
-"peak": 297639936
-},
-"batch": 15,
-"boards": [
-"滑雪"
-],
-"stories": 4,
-"left": 0,
-"edited": 23,
-"run": 1793335875.9349003,
-"tok": {
-"in": 2,
-"cw": 1229,
-"cr": 88303,
-"out": 438,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 89972,
-"secs": 6278,
-"run_tok": {
-"in": 74,
-"cw": 61052,
-"cr": 2802191,
-"out": 11820,
-"calls": 39,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-30T07:44:50+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1769,5 +1728,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 176527
+},
+{
+"at": "2026-10-31T06:37:02+00:00",
+"text": "2026-10-31 第 13 バッチを出刊：ILLIT（1 版面・5 本・残り 6 版面） · token 新規入力 1,827・キャッシュ読み 17.7万・出力 599",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.27,
+"mem_total": 16872808448,
+"mem_free": 16021143552,
+"disk_used": 10207105024,
+"disk_free": 31076429824,
+"disk_total": 41283534848,
+"peak": 289153024
+},
+"batch": 13,
+"boards": [
+"ILLIT"
+],
+"stories": 5,
+"left": 6,
+"edited": 22,
+"run": 1793424450.4242082,
+"tok": {
+"in": 4,
+"cw": 1823,
+"cr": 177257,
+"out": 599,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 179683
 }
 ]
