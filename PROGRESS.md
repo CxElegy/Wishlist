@@ -224,3 +224,4 @@
 
 - 2026-10-31 r3 hr33：最初のニュースの遅さの根を測り直し：LCP の要素は H2（4.6 秒）で、Google Fonts の CSS が描画を止めていた。font_link で止めない形に（手元の再現 4.3→1.2 秒・PR #683）。次：合併後に本番の lcp.py。
 - 2026-10-31 r3 hr33：本番の LCP 中央値 4.6→1.14 秒（lcp.py 3 回、PR #683）。HTML を分ける案Aは不要。ux_check --fast ✗ 5 件は先頭の写真が置き場に無い版面（photo_store の続き）で今回と無関係。次：photo_time.py で最初の写真の届く時刻。
+- 2026-10-31 r3 hr33：入口 docs/index.html が止める font link のまま本番に残っていた（入口は24時間おきの作り直しで、source を直しても古い出力が残る）。welcome.build_if_stale が止める link を見つけたら作り直す形に、render.blocking_font_links＋tests/test_perf.py が生成済みの入口と docs/home を数え、ux_check が本番の入口＋本体 4 頁を数える。次：合併後に本番で入口を確かめ。

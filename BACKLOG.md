@@ -395,3 +395,4 @@
 - [ ] ux_check 本番 390px の ✗ 2 件（r4f1 2026-10-29 --fast：guest「近さ」星巴克马克杯 中 24px／間 24px、test-a「版面の頭が写真なし」生成AI）。規則で直し、同じ壊れ方を全版面で数える
 
 - [ ] 管理ページ③：収集の「最新の日」はお客さまの版面の記事集めができてから意味が出る（board_stories 0 行）。それまで列は「まだ」のまま。
+- [ ] Web フォントを止めない形に：実験用の頁も（優先度低・本番ではない。2026-10-31 r3 hr33 で数えた：docs/design/*.html 7 件〔`<link href=… rel=stylesheet>` の書き順〕・docs/testground/*.html 20 件・生成元の harness/emblem_pick_page.py と emblem_pick_rules_page.py の 2 件に止める link が残る。入口と docs/home/ は 0 件）。直すなら生成元を render.font_link に寄せ、blocking_font_links で数える。docs/design は手書きなので対象外にしてもよい（本番の LCP に関わらない）

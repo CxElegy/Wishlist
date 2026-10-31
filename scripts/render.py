@@ -50,6 +50,12 @@ def font_link(u):
             f'<noscript><link rel="stylesheet" href="{u}"></noscript>')
 
 
+def blocking_font_links(html):
+    """描画を止める Web フォントの stylesheet link の数（noscript の保険と media=print は数えない）。生成済みの頁・入口の点検用"""
+    h = re.sub(r"<noscript>.*?</noscript>", "", html, flags=re.S)
+    return sum('media="print"' not in l and 'rel="stylesheet"' in l and "fonts.googleapis.com" in l for l in re.findall(r"<link\b[^>]*>", h))
+
+
 CSS = """
 :root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;--good:#1F7A55;--discord:#5865F2;
  --by-ai:#6B3FC4;--by-rule:#1F7A55;   /* 流れの図：AI（Claude）が判断する手順 / 規則（プログラム）で決まる手順 */
