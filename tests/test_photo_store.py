@@ -47,7 +47,7 @@ class PhotoStore(unittest.TestCase):
             h = render._pic({"image": u, "title": "t"})
         finally:
             P._CACHE[:] = []
-        self.assertIn(f'<img class="bg" src="https://s.example/storage/v1/object/public/photos/{k}-400.webp"', h)
+        self.assertNotIn('class="bg"', h)   # ぼかしの背景は出さない（F-16）
         self.assertIn(f'srcset="https://s.example/storage/v1/object/public/photos/{k}-400.webp 400w, https://s.example/storage/v1/object/public/photos/{k}-800.webp 800w"', h)
         self.assertIn(f'data-fb="{u}"', h)
 

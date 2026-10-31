@@ -774,7 +774,7 @@ class ImagesTest(unittest.TestCase):
         self.assertIn("p.classList.add('icon')", render.IMG_FALLBACK_JS)  # 图全打不开：换成来源图标（処理は head の 1 か所）
         self.assertNotIn("onerror", html)  # 1 枚ごとの onerror/onload は HTML を倍にする（2026-10-30）：印 data-e だけ
         self.assertNotIn("onload", html)
-        self.assertEqual(html.count('data-e="'), 3)
+        self.assertEqual(html.count('data-e="'), 2)
         # 没图：直接显示图标，完整域名在前、主域名在后（news.17173.com 有 32px，17173.com 只有 16px）
         html = render._pic({"image": None, "_fbs": [], "url": "https://news.17173.com/a", "_work": "MMO"})
         self.assertIn('class="pic icon"', html)

@@ -90,7 +90,6 @@ button{font-family:inherit}
 .pic{position:relative;overflow:hidden;aspect-ratio:16/9;background:color-mix(in srgb,currentColor 8%,transparent)}
 .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .pic.fill img:not(.bg):not(.ico){object-fit:cover}
-.pic.fill img.bg{display:none}
 .pic .ph{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px;text-align:center;
  font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;text-shadow:0 1px 2px color-mix(in srgb,var(--ink) 70%,transparent);
  background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,linear-gradient(color-mix(in srgb,var(--ink) 34%,transparent),color-mix(in srgb,var(--ink) 34%,transparent)),var(--ac,var(--rose))}   /* 明るい作品色でも白い字が読めるよう墨を 34% 重ねる */
@@ -102,7 +101,18 @@ button{font-family:inherit}
  background:#FFFFFF;border-radius:14px;padding:6px;box-shadow:0 1px 4px rgba(0,0,0,.18)}
 .pic.icon .src{max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:700 13px var(--font-sans);opacity:.75}
 .pic:not(.icon) img.ico,.pic:not(.icon) .src{display:none}
-.pic img.bg{object-fit:cover;filter:blur(18px) brightness(.85);transform:scale(1.15)}
+/* 縦長・正方形の写真（F-16，2026-10-31）：ぼかしで余白を埋めない。大きいカード（.hero・.lead・.wide）は枠を写真の幅に絞り（.nw）、
+   空いた横に同じ版面の次の記事（.nx）を置く。小さいカードは薄い地の上に写真全体 */
+.card.nw .pic{justify-self:start;align-self:start}
+.hero.nw{grid-template-columns:auto minmax(0,1fr)}.card.wide.nw{grid-template-columns:auto minmax(0,1fr)}
+.lead.nw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;align-content:start}.lead.nw>*:not(.pic){margin-bottom:8px}
+.lead.nw>.pic{grid-column:1;grid-row:1/span 9}.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
+.nx{position:relative;z-index:2;display:grid;grid-template-columns:repeat(var(--nxn,2),minmax(0,1fr));gap:12px;margin-top:6px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.nx a{display:flex;flex-direction:column;gap:5px;min-width:0;color:inherit;text-decoration:none}
+.nx img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
+.nx b{font:700 13px/1.4 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nx a:hover b{text-decoration:underline;text-underline-offset:3px}
+.nx>i{grid-column:1/-1;font:700 11px var(--font-mono);letter-spacing:.12em;font-style:normal;opacity:.7}
 /* ---------- 報頭 ---------- */
 .mast{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px 20px}
 .mast .mtitle{display:flex;align-items:flex-end;gap:14px;min-width:0}
@@ -444,7 +454,7 @@ button{font-family:inherit}
 .pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
 .pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
 .pk .pic{--pko:18px}.pk.big .pic{--pko:40px}  /* 下に手書きの札（.pkt）が重なる高さ：写真はその上に収め、重なる帯はぼかしだけ */
-.pk .pic img:not(.bg):not(.ico){bottom:var(--pko)}.pk .pic.fill img.bg{display:block}
+.pk .pic img:not(.bg):not(.ico){bottom:var(--pko)}
 .pk.big .pic{aspect-ratio:4/3}
 .pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:5px;min-width:0;margin:-18px 10px 0;padding:14px 14px 10px;background:var(--card);
  box-shadow:var(--shadow);transform:rotate(-1deg)}
@@ -790,8 +800,7 @@ def _pic(story):
     src = chain[0] if chain else None
     # 一時保管の写真は幅 400／800 を srcset で渡す（小さい画面・小さい枠は 400）。背景のぼかしは 400 で足りる
     srcset = f' srcset="{e(small)} 400w, {e(big)} 800w" sizes="(max-width:700px) 100vw, 33vw"' if small else ""
-    tag = (f'<img class="bg" src="{e(small or src)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
-           f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer" data-e="s">') if src else ""
+    tag = (f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer" data-e="s">') if src else ""
     label = f'<span class="ph">{e(name)}</span>' if name else ""
     icons = _icons(story)
     icon = ""
@@ -3187,6 +3196,37 @@ FIT_JS = """
     // そうでなければぼかしの上に全体を見せる。配図は文字・ロゴ入りのバナーが多く、端を切ると欠ける（2026-10-17 ユーザー指摘）
     const r = nat / (p.clientWidth / p.clientHeight);
     p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);
+    narrow(img, p, nat, r);
+  };
+  // 大きいカード（.hero・.lead・.wide）で写真が枠より細いとき：ぼかしで埋めず、枠を写真の幅に絞り、空いた横に同じ版面の次の記事を置く。
+  // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.25 倍まで）
+  const narrow = (img, p, nat, r) => {
+    const c = p.closest('article.hero, article.lead, article.wide');
+    if (!c) return;
+    const nx = c.querySelector(':scope > .nx, :scope > .txt > .nx'); if (nx) nx.remove();
+    c.classList.remove('nw'); p.style.width = p.style.height = p.style.aspectRatio = '';
+    if (p.classList.contains('fill') || r > 1) return;
+    if (innerWidth <= 760) { p.style.aspectRatio = 'auto'; p.style.height = Math.min(p.clientWidth / nat, p.clientWidth * 1.25) + 'px'; return; }
+    const sz = h => { p.style.height = h + 'px'; p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
+    sz(p.clientHeight);
+    c.classList.add('nw');
+    const sec = c.closest('section'); if (!sec) return;
+    const here = img.currentSrc || img.src;
+    const more = [...sec.querySelectorAll('article.card, article.wc')].filter(a => a !== c && a.querySelector('a.lk[href]') && a.querySelector('.pic img:not(.ico)') && !a.classList.contains('nophoto'))
+      .map(a => ({u: a.querySelector('a.lk').href, i: a.querySelector('.pic img:not(.ico)'), t: (a.querySelector('h2, h3') || a.querySelector(':scope > b') || {}).textContent}))
+      .filter(x => x.t && x.i.src && x.i.src !== here).slice(0, 3);
+    const host = c.classList.contains('lead') ? c : (c.querySelector(':scope > .txt') || c);
+    if (more.length < 2 || host.clientWidth < 260) return;
+    const d = document.createElement('div'); d.className = 'nx'; d.style.setProperty('--nxn', more.length);
+    d.innerHTML = '<i>同じ版面の次のニュース</i>';
+    more.forEach(x => { const a = document.createElement('a'); a.href = x.u; a.target = '_blank'; a.rel = 'noopener';
+      const im = document.createElement('img'); im.src = x.i.currentSrc || x.i.src; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer';
+      const b = document.createElement('b'); b.textContent = x.t.trim(); a.append(im, b); d.append(a); });
+    host.append(d);
+    // 文字の列と次の記事を足した高さまで、写真の枠を伸ばす（縦長の写真ほど大きく見せる。左下を空けない）
+    // 枠の高さは「文字の列＋次の記事」の高さ（枠自身が行を押し広げないよう、測るときは枠の高さを 0 にする）
+    const need = () => host === c ? d.getBoundingClientRect().bottom - p.getBoundingClientRect().top : host.offsetHeight;
+    sz(0); let h = need(); sz(h); p.style.height = '0px'; h = Math.max(h, need()); sz(h);
   };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     img.addEventListener('load', () => fit(img));
