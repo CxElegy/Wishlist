@@ -149,7 +149,7 @@ def _req(base, keyv, path, data=None, method="POST", ctype="image/webp", extra=N
 
 def upload(base, keyv, k, sizes):
     for w, b in sizes.items():
-        _req(base, keyv, f"{BUCKET}/{name(k, w)}", b, extra={"x-upsert": "true", "Cache-Control": "max-age=1209600"})
+        _req(base, keyv, f"{BUCKET}/{name(k, w)}", b, extra={"x-upsert": "true", "Cache-Control": "public, max-age=31536000, immutable"})
 
 
 def remove(base, keyv, ks):
