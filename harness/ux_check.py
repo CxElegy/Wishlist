@@ -304,13 +304,17 @@ def dock_bad(width, st, clicked=None, opened_scroll=None, closed_scroll=None):
     return bad
 
 
-def check_dock(pw, base, who, width):
+DOCK_PAGES = ("settings.html", "wishlist.html", "heat.html", "themes.html", "terms.html", "admin.html")   # 2026-11-01：AUTH_JS を持つ home/ の他のページ（いままで点検が開くのはトップ／本人のページ 1 枚だけだった）
+DOCK_PAGE_WIDTHS = (390, 700, 761)   # 他のページは ≤560・561〜760・≥761 の各 1 つ
+
+
+def check_dock(pw, base, who, width, page=""):
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
     pg = b.new_page(viewport={"width": width, "height": 900})
-    pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+    pg.goto(base + page, wait_until="domcontentloaded", timeout=60000)
     if WHO[who]:
         pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}", session(WHO[who]))
-        pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+        pg.goto(base + page, wait_until="domcontentloaded", timeout=60000)
     st, last = None, None
     for _ in range(25):   # ログイン中は本人のページ（me.html）へ移るので、移り終えて札の見え方が 2 回続けて同じになるまで待つ
         pg.wait_for_timeout(1200)
@@ -327,18 +331,19 @@ def check_dock(pw, base, who, width):
             pg.evaluate(f"window.scrollTo(0,{y})")
             pg.wait_for_timeout(500)
             return pg.evaluate(DOCK_JS)
-        closed = sc(900)   # 閉じたまま下へ → しまう
+        scrolls = pg.evaluate("document.documentElement.scrollHeight>innerHeight+300")   # 門だけの短いページ（管理の訪問者）は下へ読めない＝しまう動きは見ない
+        closed = sc(900) if scrolls else None   # 閉じたまま下へ → しまう
         sc(0)
         pg.click(".wl-auth > .more")
         clicked = pg.evaluate(DOCK_JS)
-        opened = sc(900)   # 開いたまま下へ → しまわない
+        opened = sc(900) if scrolls else None   # 開いたまま下へ → しまわない
         sc(0)
         pg.click(".wl-auth > .more")
         again = pg.evaluate(DOCK_JS)
         if again and again["vis"] != ["more"]:
             clicked = {**clicked, "exp": "false", "vis": again["vis"]}   # もう一度押しても閉じない
     b.close()
-    return dock_bad(width, st, clicked, opened, closed)
+    return [f"{page}：{x}" if page else x for x in dock_bad(width, st, clicked, opened, closed)]
 
 
 def first_screen_bad(f, gap=8):
@@ -1242,8 +1247,14 @@ def main(argv):
                     bad += check_dock(pw, a.base, who, w)
                 except Exception as ex:  # noqa: BLE001
                     bad.append(f"{w}px 開けなかった（{type(ex).__name__}: {str(ex)[:100]}）")
+            for pgname in (DOCK_PAGES if who == "guest" else DOCK_PAGES[:1] if who == "test-a" else ()):   # 他のページ：訪問者は 5 枚・test-a は設定（本人のページへ移る道）
+                for w in DOCK_PAGE_WIDTHS:
+                    try:
+                        bad += check_dock(pw, a.base, who, w, pgname)
+                    except Exception as ex:  # noqa: BLE001
+                        bad.append(f"{pgname} {w}px 開けなかった（{type(ex).__name__}: {str(ex)[:100]}）")
             fails += bool(bad)
-            print(("✗ " if bad else "✓ ") + f"{who} 札の境目 {'/'.join(map(str, DOCK_WIDTHS))}px：" + ("、".join(bad) if bad else "幅ごとの札・「⋯」の開け閉め・しまう動きどおり"))
+            print(("✗ " if bad else "✓ ") + f"{who} 札の境目 {'/'.join(map(str, DOCK_WIDTHS))}px（＋他のページ {len(DOCK_PAGES) if who == 'guest' else 1 if who == 'test-a' else 0} 枚 × {'/'.join(map(str, DOCK_PAGE_WIDTHS))}px）：" + ("、".join(bad) if bad else "幅ごとの札・「⋯」の開け閉め・しまう動きどおり"))
         for w in a.widths.split(","):
             try:
                 bad = check_admin(pw, a.base, int(w), out)

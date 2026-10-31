@@ -267,6 +267,33 @@ class LoginDockCheck(unittest.TestCase):
         i = s.index("check_dock(pw, a.base, who, w)")
         self.assertNotIn("if a.fast:\n                continue", s[i - 400:i])   # --fast でも走る
 
+    def test_dock_check_visits_other_pages(self):
+        """札の点検が開くのは 1 枚だけではない：AUTH_JS を持つ他のページも幅を変えて開く。"""
+        u = self.uc()
+        for f in ("settings.html", "wishlist.html", "heat.html", "themes.html", "terms.html", "admin.html"):
+            self.assertIn(f, u.DOCK_PAGES)
+        for x in (390, 700, 761):
+            self.assertIn(x, u.DOCK_PAGE_WIDTHS)
+        s = open(u.__file__, encoding="utf-8").read()
+        self.assertIn("check_dock(pw, a.base, who, w, pgname)", s)
+
+    def test_every_auth_page_carries_dock_css_and_guard(self):
+        """札（.wl-auth）を持つ home/ の全ページが 561〜760 の CSS と「開いたままならしまわない」の守りを持つ（数える）。
+        持たないのは殻の me.html（ログインの部品を入れない）だけ。"""
+        import pathlib
+        home = pathlib.Path(__file__).resolve().parent.parent / "docs" / "home"
+        pages = [p for p in home.glob("*.html") if ".wl-auth{position:fixed" in p.read_text(encoding="utf-8")]
+        self.assertGreaterEqual(len(pages), 13)   # トップ・設定・欲しい物・話題度・テーマ・規約・管理 8 枚
+        for p in pages:
+            s = p.read_text(encoding="utf-8")
+            self.assertIn("@media (min-width:561px) and (max-width:760px)", s, p.name)
+            self.assertIn(".wl-auth>button.more{display:none}", s, p.name)
+            self.assertIn("b.classList.contains('open')&&innerWidth>560", s, p.name)
+        self.assertNotIn("me.html", [p.name for p in pages])
+        # 点検が開くページに漏れがない（トップ index と admin-* 6 枚〔admin.html と同じ殻〕を除く全部）
+        mine = set(self.uc().DOCK_PAGES)
+        self.assertEqual({p.name for p in pages if p.stem != "index" and not p.stem.startswith("admin-")} - mine, set())
+
     def test_open_dock_is_not_hidden_on_scroll(self):
         t = open(__import__("render").__file__, encoding="utf-8").read()
         self.assertIn("b.classList.contains('open')&&innerWidth>560", t)
