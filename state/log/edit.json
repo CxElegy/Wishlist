@@ -1,48 +1,5 @@
 [
 {
-"at": "2026-10-30T12:21:45+00:00",
-"text": "2026-10-30 第 3 バッチを出刊：ILLIT、Vaundy、周杰伦（3 版面・13 本・今日の整理待ちは全部終わり） · token 新規入力 3,115・キャッシュ読み 16.0万・出力 1,348",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.28,
-"mem_total": 16872808448,
-"mem_free": 15881179136,
-"disk_used": 10879070208,
-"disk_free": 30443438080,
-"disk_total": 41322508288,
-"peak": 338739200
-},
-"batch": 3,
-"boards": [
-"ILLIT",
-"Vaundy",
-"周杰伦"
-],
-"stories": 13,
-"left": 0,
-"edited": 23,
-"run": 1793361315.5802443,
-"tok": {
-"in": 3,
-"cw": 3112,
-"cr": 159546,
-"out": 1348,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 164009,
-"secs": 1590,
-"run_tok": {
-"in": 49,
-"cw": 54041,
-"cr": 1731331,
-"out": 7787,
-"calls": 26,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-30T13:22:54+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1861,5 +1818,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 2529915
+},
+{
+"at": "2026-10-31T13:37:15+00:00",
+"text": "2026-10-31 第 2 バッチを出刊：チェーンソーマン（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4,788・キャッシュ読み 52.4万・出力 1,743",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.39,
+"mem_total": 16872808448,
+"mem_free": 15804878848,
+"disk_used": 10848604160,
+"disk_free": 30434930688,
+"disk_total": 41283534848,
+"peak": 421494784
+},
+"batch": 2,
+"boards": [
+"チェーンソーマン"
+],
+"stories": 5,
+"left": 0,
+"edited": 23,
+"run": 1793452190.7742376,
+"tok": {
+"in": 11,
+"cw": 4777,
+"cr": 524388,
+"out": 1743,
+"calls": 6,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 530919,
+"secs": 1645,
+"run_tok": {
+"in": 85,
+"cw": 61348,
+"cr": 2990751,
+"out": 8650,
+"calls": 40,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

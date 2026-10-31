@@ -17,13 +17,6 @@
   "target": 720,
   "v": 3
  },
- "http://n.sinaimg.cn/gp/278/w690h388/20261021/90af-f7e9067a8943d02ba5e746f2a5c6cfab.jpg": {
-  "w": 690,
-  "h": 388,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.334
- },
  "http://n.sinaimg.cn/sinakd20261024ac/320/w480h640/20261024/cef3-f3703591f04152f5c3ced0ef85f5b044.jpg": {
   "w": 480,
   "h": 640,
@@ -343,12 +336,6 @@
   "target": 720,
   "v": 3
  },
- "https://apps-island.com/wp-content/uploads/2020/10/newgameapp.png": {
-  "w": 500,
-  "h": 281,
-  "target": 720,
-  "v": 3
- },
  "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3781255026102026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.26&fp-y=0.2&h=630&w=1200&s=b39ff38e4d5a957487b66c3b3a8a9b59": {
   "w": 1200,
   "h": 630,
@@ -376,6 +363,12 @@
  "https://assets.games.gg/grand_theft_auto_vi_tv_spot_differences_og_050838fff630dd6fe366a7bb_4d02128e8a.webp": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
+  "w": 1350,
+  "h": 1350,
   "target": 1280,
   "v": 3
  },
@@ -502,6 +495,12 @@
   ],
   "why": "看不清"
  },
+ "https://automaton-media.com/en/wp-content/uploads/2026/10/20261030-74586-001.jpg": {
+  "w": 1626,
+  "h": 912,
+  "target": 720,
+  "v": 3
+ },
  "https://biz.chosun.com/resizer/v2/VEQEHTQKPFIUHCV27Z6TKRHCJQ.jpg?auth=555511c856fc73df5cea9de84cf146538b636aa4d16d22132390d7a860683067&width=1200&height=630&smart=true": {
   "w": 1200,
   "h": 630,
@@ -514,12 +513,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.386
- },
- "https://bloximages.newyork1.vip.townnews.com/2news.com/content/tncms/assets/v3/editorial/f/4a/f4a15846-a198-4a3a-af4f-4a393d308346/6ae13df9256cf.preview.jpg?crop=1920%2C1008%2C0%2C35&resize=1200%2C630&order=crop%2Cresize": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
  },
  "https://bloximages.newyork1.vip.townnews.com/griffindailynews.com/content/tncms/assets/v3/editorial/a/b9/ab90c9fc-1c26-5ebd-8b60-3f8328044d5c/6a13c291b798b.image.jpg?crop=1762%2C926%2C0%2C124&resize=1200%2C631&order=crop%2Cresize": {
   "w": 1200,
@@ -684,6 +677,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.mdtoday.co.kr/news/photo/202609/611993_313929_4730.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.mediaus.co.kr/news/photo/202610/318631_233956_4423.jpg": {
   "w": 960,
   "h": 639,
@@ -725,6 +724,12 @@
   "w": 1800,
   "h": 1012,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.sounova.com/upload/VDnplFoqnmnxzxylWKNWq.webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg": {
@@ -916,6 +921,12 @@
   "w": 1200,
   "h": 676,
   "target": 1280,
+  "v": 3
+ },
+ "https://dam.mediacorp.sg/image/upload/s--kiXcjCJ4--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/mediacorp/8days/image/2026/10/29/look_back_1a.jpg?itok=DGkWB0ZY": {
+  "w": 1200,
+  "h": 676,
+  "target": 720,
   "v": 3
  },
  "https://dapsmagic.com/wp-content/uploads/2026/10/The-Mandalorian-Cookbook-1.jpg": {
@@ -1139,12 +1150,6 @@
   "w": 1200,
   "h": 628,
   "target": 720,
-  "v": 3
- },
- "https://helios-i.mashable.com/imagery/articles/00neHlysIUGSvZO3qDRl3Xc/hero-image.fill.size_1200x675.v1793182424.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://helios-i.mashable.com/imagery/articles/07l2BXjqfJ2dP4CDKSsUlz8/hero-image.fill.size_1200x675.v1792766091.jpg": {
@@ -1430,6 +1435,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.chinatimes.com/newsphoto/2026-10-29/656/20261029004040.jpg": {
+  "w": 656,
+  "h": 492,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.445,
+  "local": "pics/bc94994262cbc0d1.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
+ },
  "https://images.chinatimes.com/newsphoto/2026-10-31/656/20261031001708.jpg": {
   "w": 656,
   "h": 437,
@@ -1479,12 +1497,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.jkn.co.kr/data/images/full/109/60/1096035.jpg?v=1793169679&width=1200": {
-  "w": 1000,
-  "h": 1000,
-  "target": 1280,
-  "v": 3
- },
  "https://images.khan.co.kr/article/2026/10/23/news-p.v1.20261023.0671972ae03442a7bf73b2f031c49090_P1.jpg": {
   "w": 1200,
   "h": 665,
@@ -1527,6 +1539,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.357
+ },
+ "https://images.techeblog.com/wp-content/uploads/2026/10/30154400/google-pixel-11-pro-smartphone-2026.jpg": {
+  "w": 960,
+  "h": 961,
+  "target": 1280,
+  "v": 3
  },
  "https://images.thedirect.com/media/article_full/1000009740_ybMftis.jpg": {
   "w": 1280,
@@ -1871,6 +1889,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/559841.png?date=1784519404": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.khan.co.kr/news/2026/10/29/news-p.v1.20261028.62e9dd8e67f8479fbfbefc3d4a51da99_P1.jpg": {
   "w": 1200,
   "h": 800,
@@ -1942,12 +1966,6 @@
   "w": 1024,
   "h": 576,
   "target": 720,
-  "v": 3
- },
- "https://img.topics.smt.news.goo.ne.jp/-/20261028100531/img/trend_x2.png": {
-  "w": 960,
-  "h": 520,
-  "target": 1280,
   "v": 3
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100207.jpg": {
@@ -2103,6 +2121,19 @@
   ],
   "why": "看不清"
  },
+ "https://k.sinaimg.cn/n/news/310/w710h400/20260924/b740-844acda14750cc33f86c14ae04c2f09b.jpg/w710h400z1l50t1q75b76.jpg?by=comos": {
+  "w": 710,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.435,
+  "local": "pics/56352aeae181c752.webp",
+  "out": [
+   1280,
+   721
+  ],
+  "why": "看不清"
+ },
  "https://kagit-media.atreez.cc/uploads/2026-10-27/v6k9lcewuo3hsf2qq0go5jyd.jpg": {
   "w": 1600,
   "h": 900,
@@ -2120,6 +2151,13 @@
   "h": 801,
   "target": 1280,
   "v": 3
+ },
+ "https://kyodonewsprwire.jp/prwfile/release/M108544/202610298931/_prw_PI3lg_aWjGsQKL.jpg": {
+  "w": 800,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
  },
  "https://lasisa.net/wp-content/uploads/2027/10/20261029_sbuxbag_01.jpg": {
   "w": 1200,
@@ -2364,6 +2402,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.327
+ },
+ "https://news-images.tvbs.com.tw/api/v1/image/01a180f6-d9c0-7361-b4ea-f2b27ab420d7.jpg?t=16x9&wp=l,t&c=146,109,1773,1024&w=1200&h=675": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnQPUzVN95p8yqnKJxK5c3z8SNd1lEVn53rak9OLWAnFn4rPntJAWIzGnBkiFnP68AKeT8CP0jt79U3DujKPbvLZlPE1NPxPRBWL8kUcSFH0Y": {
   "w": 750,
@@ -2692,6 +2736,13 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/26656/115602_615.jpg": {
+  "w": 615,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.401
+ },
  "https://news.walkerplus.com/article/40701/210689_615.jpg": {
   "w": 615,
   "h": 409,
@@ -2841,18 +2892,6 @@
   "out": [
    1280,
    927
-  ],
-  "why": "期限付きの網址"
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261024-00403060-otonans-000-1-view.jpg?exp=10800": {
-  "w": 1122,
-  "h": 611,
-  "target": 720,
-  "v": 3,
-  "local": "pics/733da39c0935addd.webp",
-  "out": [
-   1122,
-   611
   ],
   "why": "期限付きの網址"
  },
@@ -3124,19 +3163,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-11803116-asahiand-000-1-view.jpg?exp=10800": {
-  "w": 640,
-  "h": 640,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.616,
-  "local": "pics/3f97b53757033f57.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-3-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1445,
@@ -3191,6 +3217,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://ni.yam.com/20261028/58209971f014950270ea0797d4e8e71e-678e09ac9a31d48c.webp": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://ni.yam.com/20261028/jp-atp-644249-1-261028065001627-7e3992de8906e940.webp": {
   "w": 840,
   "h": 560,
@@ -3200,12 +3232,6 @@
  "https://ni.yam.com/20261030/jp-atp-645910-1-261030120814554-623c4b763deef2a2.webp": {
   "w": 1066,
   "h": 602,
-  "target": 1280,
-  "v": 3
- },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/2d9aa7a41d8741fbb277324d667914c1.jpg": {
-  "w": 1200,
-  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -3232,6 +3258,13 @@
   "h": 630,
   "target": 1280,
   "v": 3
+ },
+ "https://nimage.g-enews.com/phpwas/restmb_allidxmake.php?idx=999&simg=2026103008311007907139bf6e4b2106101378.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-10-31"
  },
  "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg": {
   "w": 1024,
@@ -3278,6 +3311,12 @@
  "https://olimg.3dmgame.com/uploads/images/raiders/20240801/1722474179_466511.jpg": {
   "w": 1728,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://omocoro.jp/assets/uploads/2026/09/17902073034glat.jpg": {
+  "w": 837,
+  "h": 555,
   "target": 1280,
   "v": 3
  },
@@ -3334,12 +3373,6 @@
  "https://photo.jtbc.co.kr/news/jam_photo/202610/25/1a03e766-71d1-41fa-a0e3-714412135388.jpg": {
   "w": 560,
   "h": 784,
-  "target": 720,
-  "v": 3
- },
- "https://photo.jtbc.co.kr/news/jam_photo/202610/26/1067d1c8-184f-44fb-9a79-6e8e0c5dea40.jpg": {
-  "w": 560,
-  "h": 1249,
   "target": 720,
   "v": 3
  },
@@ -3842,12 +3875,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.anpoimages.com/wordpress/wp-content/uploads/wm/2026/04/img_3419.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/03/harry-potter-season-1-alastair-stout-dominic-mclaughlin-arabella-stanton.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -4079,6 +4106,12 @@
   "target": 720,
   "v": 3
  },
+ "https://times-abema.ismcdn.jp/mwimgs/7/1/1200w/img_7103bfc7486a0c2fd80d9bffc573a7e04410796.jpg": {
+  "w": 1200,
+  "h": 1697,
+  "target": 1280,
+  "v": 3
+ },
  "https://tk.ismcdn.jp/mwimgs/c/2/1200xm/img_c2b201ad86a1a37839adff402839c48e392341.jpg": {
   "w": 1200,
   "h": 675,
@@ -4112,12 +4145,6 @@
  "https://urepia.ismcdn.jp/mwimgs/8/9/-/img_8908df67a2145b0646452913d11f8c07276921.jpg": {
   "w": 2000,
   "h": 2000,
-  "target": 1280,
-  "v": 3
- },
- "https://urepia.ismcdn.jp/mwimgs/9/f/-/img_9f0e16825892da92c7175ca1d118299a103028.jpg": {
-  "w": 1280,
-  "h": 914,
   "target": 1280,
   "v": 3
  },
@@ -4155,6 +4182,12 @@
   "w": 900,
   "h": 600,
   "target": 720,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/29/1793282040355_honor_magic_9_pro_max_design.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/30/1793356261242_screenshot-2026-10-30-112555-1793334537356715650470-56-0-331-525-crop-17933350432051572197109.png": {
@@ -4617,6 +4650,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.wb3hjMx4FJ2UDTj3g7uEPg&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4661,12 +4700,6 @@
    640
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.z_OFnfXcwpfQqM9E2znaDg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
@@ -4737,19 +4770,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.cinemacafe.net/imgs/ogp_f/841987.jpg": {
-  "w": 600,
-  "h": 428,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.595,
-  "local": "pics/789850095585c8a4.webp",
-  "out": [
-   1280,
-   913
-  ],
-  "why": "看不清"
- },
  "https://www.comicbasics.com/wp-content/uploads/2025/11/X-Men-.webp": {
   "w": 1200,
   "h": 675,
@@ -4792,6 +4812,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.crank-in.net/img/db/263101289203384_1200.jpg": {
+  "w": 1200,
+  "h": 960,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.crank-in.net/img/db/267101267147283_1200.jpg": {
   "w": 1200,
   "h": 1602,
@@ -4807,6 +4833,12 @@
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/18/FfMzG-6VEAA3Gtv-e1666114081464.jpg": {
   "w": 900,
   "h": 508,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/22/4-121.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -4913,32 +4945,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.inside-games.jp/imgs/ogp_f/1774489.webp": {
-  "w": 600,
-  "h": 600,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.5,
-  "local": "pics/68287dc1846506b9.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
- "https://www.inside-games.jp/imgs/ogp_f/1799137.jpg": {
-  "w": 600,
-  "h": 428,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.651,
-  "local": "pics/669505249fc2a59a.webp",
-  "out": [
-   1280,
-   913
-  ],
-  "why": "看不清"
- },
  "https://www.inside-games.jp/imgs/ogp_f/1799460.jpg": {
   "w": 600,
   "h": 370,
@@ -5042,12 +5048,6 @@
   "w": 2000,
   "h": 1500,
   "target": 720,
-  "v": 3
- },
- "https://www.ocregister.com/wp-content/uploads/2026/10/OCR-L-HALLOWEEN-DINE-1027-01.jpg?w=2000&h=1287": {
-  "w": 2000,
-  "h": 1287,
-  "target": 1280,
   "v": 3
  },
  "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/8.jpg?resize=1200,630": {
