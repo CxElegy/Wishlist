@@ -749,12 +749,13 @@ class ImagesTest(unittest.TestCase):
         ux_check.photo_cache_bad(page, lambda u: seen.append(u) or "public, max-age=31536000", n=8)
         self.assertEqual(len(seen), 8)      # 4 版面 × (400・800)：最初の版面だけではない
         self.assertEqual(len(ux_check.ahead_bad(page)), 1)      # ahead の JS がない
-        good = page + "const ahead = 1; slice(n, n + 1) fetchPriority = hi ? 'high' : 'low'; setTimeout(start, 2500)"
+        good = page + "const ahead = 1; slice(n, n + 3) timeout: 300 fetchPriority = hi ? 'high' : 'low'; setTimeout(start, 2500)"
         self.assertEqual(ux_check.ahead_bad(good), [])
-        self.assertEqual(len(ux_check.ahead_bad(good.replace("slice(n, n + 1)", "slice(n, n + 3)"))), 1)       # 3 版面ずつに戻った
+        self.assertEqual(len(ux_check.ahead_bad(good.replace("slice(n, n + 3)", "slice(n, n + 1)"))), 1)       # 1 版面ずつ（遅い）に戻った
+        self.assertEqual(len(ux_check.ahead_bad(good.replace("timeout: 300", "timeout: 1500"))), 1)     # 暇待ち 1.5 秒に戻った
         self.assertEqual(len(ux_check.ahead_bad(good + " addEventListener('load', () => idle(ahead))")), 1)   # load 待ちに戻った
         self.assertEqual(len(ux_check.ahead_bad(good.replace("'low'", "'auto'"))), 1)                         # low をやめた
-        for s in ("slice(n, n + 1)", "hi ? 'high' : 'low'", "setTimeout(start, 2500)"):
+        for s in ("slice(n, n + 3)", "timeout: 300", "hi ? 'high' : 'low'", "setTimeout(start, 2500)"):
             self.assertIn(s, render.EMB_JS)            # 実物の JS が点検の印を満たす
         self.assertIsNone(__import__("re").search(r"addEventListener\('load',[^;]{0,120}(start|ahead)", render.EMB_JS))
         # 版面の先頭の写真を先に取る JS が EMB_JS にある（目次から飛ぶ前に取っておく）
