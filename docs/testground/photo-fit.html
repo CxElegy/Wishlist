@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>縦長の写真の置き方 5 案</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 審査待ち：版面の主写真が縦長・正方形のとき、左右のぼかしの余白を何に使うか（DESIGN_PRINCIPLES F-16）。
+   写真と記事の題はチェーンソーマンの版面の本物（docs/home）。トークンは render.py の :root と同じ。本番は変わらない */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--shadow:4px 4px 0 var(--ink);--skew:-8deg;--muted:rgba(26,28,34,.62);
+ --bg:#211712;--fg:#F4EEE4;--acc:#DD8355}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.7 var(--font-sans)}
+a{color:inherit}
+header{background:var(--ink);color:var(--card);padding:24px}
+header small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+h1{margin:0;font:900 24px/1.3 var(--font-sans)}
+header p{margin:6px 0 0;color:rgba(251,248,241,.8);font-size:14px;max-width:760px}
+main{max-width:1180px;margin:0 auto;padding:22px 16px 80px;display:flex;flex-direction:column;gap:30px}
+.bar{position:sticky;top:0;z-index:5;background:var(--card);border:2px solid var(--ink);padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;box-shadow:var(--shadow)}
+.bar b{font:900 14px var(--font-sans)}
+.bar button{font:700 14px var(--font-sans);padding:8px 14px;min-height:44px;border:2px solid var(--ink);background:#fff;cursor:pointer}
+.bar button[aria-pressed=true]{background:var(--ink);color:var(--gold)}
+.bar small{color:var(--muted);flex-basis:100%}
+.plan h2{margin:0 0 4px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font:900 20px/1.4 var(--font-sans)}
+.tg{display:inline-block;background:var(--alert);color:#fff;padding:0 10px;transform:skewX(var(--skew));font:900 13px/1.7 var(--font-sans)}
+.tg.rec{background:var(--rose)}
+.plan p{margin:0 0 10px;font-size:14px}
+.plan p b{font-weight:900}
+.pros{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:13px;color:var(--muted);margin-bottom:12px}
+@media(max-width:700px){.pros{grid-template-columns:1fr}}
+.frames{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.fr{background:var(--bg);color:var(--fg);padding:16px;border:2px solid var(--ink);box-shadow:var(--shadow);container-type:inline-size;min-width:0}
+.fr.pc{flex:1 1 640px;max-width:100%}
+.fr.sp{flex:0 0 390px;width:390px;max-width:100%}
+.fr>i{display:block;font:700 11px var(--font-mono);letter-spacing:.14em;color:var(--acc);font-style:normal;margin-bottom:8px}
+/* 部品 */
+.ph{position:relative;overflow:hidden;background:#3a2a20;border:2px solid #000;box-shadow:6px 6px 0 #000;flex:none}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph.blur{aspect-ratio:16/9}
+.ph.blur img.bg{position:absolute;inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);filter:blur(18px) saturate(1.2);opacity:.9}
+.ph.blur img.fg{position:relative;object-fit:contain}
+.ttl{font:900 clamp(18px,3.4cqw,28px)/1.35 var(--font-sans);margin:0}
+.meta{font:500 12px var(--font-sans);opacity:.75}
+.kick{display:inline-block;background:var(--acc);color:#1E1A18;padding:0 8px;transform:skewX(var(--skew));font:900 12px/1.7 var(--font-sans);margin-right:8px}
+.mini{display:flex;flex-direction:column;gap:6px;min-width:0;text-decoration:none}
+.mini .ph{aspect-ratio:4/3;box-shadow:4px 4px 0 #000}
+.mini b{font:700 13px/1.4 var(--font-sans)}
+.mini small{font:500 11px var(--font-sans);opacity:.7}
+.row{display:flex;gap:18px;align-items:flex-start}
+.col{display:flex;flex-direction:column;gap:12px;min-width:0}
+.lbl{font:700 11px var(--font-mono);letter-spacing:.12em;color:var(--acc);margin:0 0 6px}
+/* 現状（ぼかし） */
+.now .ph{width:100%}
+.now .t{margin-top:12px}
+/* 案 A */
+.A .row{--pw:min(46%,340px)}
+.A .row>.ph{width:var(--pw)}
+.A .row>.col{flex:1;min-width:0}
+.A .mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@container (max-width:520px){.A .row>.col{flex:none;width:100%}.A .row{flex-direction:column}.A .row>.ph{width:100%;max-width:340px}
+ .A .mini-grid{display:flex;overflow-x:auto;gap:12px;padding-bottom:8px;scroll-snap-type:x mandatory}.A .mini{flex:0 0 150px;scroll-snap-align:start}}
+/* 案 B */
+.B .row>.ph{width:min(40%,300px)}
+.B .side{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
+.B .emb{display:flex;align-items:flex-end;gap:14px}
+.B .emb img{width:110px;height:auto;filter:drop-shadow(4px 4px 0 #000)}
+.B .emb p{margin:0;font:700 13px/1.5 var(--font-sans)}
+.B table{border-collapse:collapse;width:100%;font-size:12px}
+.B td{padding:3px 0}
+.B td:first-child{width:46%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:0}
+.B .barx{height:10px;background:var(--acc);box-shadow:2px 2px 0 #000}
+.B td:last-child{text-align:right;font-family:var(--font-mono);padding-left:8px}
+@container (max-width:520px){.B .row{flex-direction:column}.B .row>.ph{width:100%;max-width:220px}}
+/* 案 C */
+.C .row>.ph{width:min(34%,230px)}
+.C .col{flex:1}
+.C .ttl{font-size:clamp(22px,4.6cqw,38px)}
+.C .chips{display:flex;flex-wrap:wrap;gap:6px}
+.C .chips span{border:2px solid var(--fg);padding:0 10px;font:700 12px/1.8 var(--font-sans)}
+@container (max-width:520px){.C .row{gap:12px}.C .row>.ph{width:38%}.C .ttl{font-size:19px}}
+/* 案 D */
+.D .mag{display:block}
+.D .mag .ph{float:left;width:min(44%,320px);margin:0 20px 10px 0}
+.D .mag .ttl{margin-bottom:8px}
+.D .mag ul{margin:10px 0 0;padding-left:1.1em;font-size:13px;line-height:1.7}
+.D .mag li{margin-bottom:4px}
+.D .mag::after{content:"";display:block;clear:both}
+@container (max-width:520px){.D .mag .ph{width:46%;margin-right:12px}.D .mag ul{font-size:12px}}
+/* 案 E */
+.E .col2{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;align-items:start}
+.E .col2 .ph{box-shadow:4px 4px 0 #000}
+.E .stack{display:grid;gap:12px}
+.E .stack .ph{aspect-ratio:1/1}
+.E .t{margin-top:12px}
+.nofix{font-size:13px;opacity:.8}
+.val{margin:8px 0 0;font:700 12px var(--font-mono);color:var(--muted)}
+.foot{border:2px solid var(--ink);background:var(--card);padding:14px 18px;font-size:14px}
+.foot ul{margin:6px 0 0;padding-left:1.2em}
+</style>
+</head>
+<body>
+<header><small>TESTGROUND · 審査待ち</small><h1>縦長の写真の置き方：左右の余白を何に使うか</h1>
+<p>チェーンソーマンの版面の本物の写真と記事で比べます。案を選ぶには「どの案か」だけ教えてください。下のボタンで写真の形を 3 つに切り替えられます（横長は全案とも今のまま）。</p></header>
+<main>
+  <div class="bar" role="group" aria-label="写真の形">
+    <b>写真の形：</b>
+    <button data-shape="tall" aria-pressed="true">縦長のポスター（幅/高さ 0.71）</button>
+    <button data-shape="sq" aria-pressed="false">正方形（1.0）</button>
+    <button data-shape="wide" aria-pressed="false">横長（1.78・今のまま）</button>
+    <small>左の枠＝パソコン幅（約 1000px）、右の枠＝スマホ幅（390px）。ぼかしの面積（ぼかしで埋まっている割合）を各枠の下に数字で出します。</small>
+  </div>
+  <div id="plans"></div>
+  <section class="foot"><b>決めてほしいこと</b>
+    <ul><li>どの案を既定にするか（おすすめ：案 A。「もっと見る」の記事が隠れているのがもったいない、への答えにもなる）</li>
+    <li>スマホ（390px）で縦長の写真は：全幅で出す／幅を絞って横に次の記事を置く</li>
+    <li>案を決めたら、ぼかしの余白は全部の画像の場所（主写真・気になるかも・似たジャンル・もっと見る・欲しい物・お客さまのページ）で同じ規則になります。</li></ul></section>
+</main>
+<script>
+/* 本物の写真（Supabase Storage の公開バケット）と、チェーンソーマンの版面の記事の題 */
+var B='https://bzokpnbcjscbcehdxtjq.supabase.co/storage/v1/object/public/photos/';
+var P={tall:{id:'3440100181f2d1f1',w:615,h:870,ratio:615/870},sq:{id:'576986ae1d78e465',w:800,h:801,ratio:1},wide:{id:'b988a9dc75cb3f61',w:800,h:450,ratio:800/450}};
+var TITLE='『チェンソーマン 刺客篇』制作決定！興収96億円突破の『レゼ篇』に続く新作';
+var NEXT=[
+ {id:'677ac35b7c142d32',t:'劇場版「チェンソーマン レゼ篇」×グラニフ',s:'natalie.mu'},
+ {id:'d69e2f077cd6a058',t:'劇場版「チェンソーマン レゼ篇」とグラニフのコラボレーションアイテム',s:'natalie.mu'},
+ {id:'a81942fed283c600',t:'劇場版「チェンソーマン レゼ篇」のオリジナルラテ全3種',s:'natalie.mu'},
+ {id:'10514806bb3e6e98',t:'「MAPPA EXPO 15th Anniversary」東京会場の後期が開幕！',s:'nijimen'}
+];
+var HEADS=['アパレル製品における劇場版『チェンソーマン レゼ篇』のライセンス契約締結のお知らせ','劇場版『チェンソーマン レゼ篇』 めじるしアクセサリー1｜ガチャガチャ 発売日・価格','劇場版「チェンソーマン レゼ篇」×グラニフ','BANPRESTOプライズ「GLITTER＆GLAMOURS-REZE-」2026年11月登場！','グラニフ×劇場版「チェンソーマン レゼ篇」コラボグッズが11月3日発売！'];
+var SRC=[['charagoo.jp',8],['note.com',5],['dexerto.com',5],['msn.com',4],['natalie.mu',3]];
+function img(id,sz,cls){return '<img'+(cls?' class="'+cls+'"':'')+' src="'+B+id+'-'+(sz||800)+'.webp" alt="" loading="lazy" referrerpolicy="no-referrer">'}
+function mini(n){return '<a class="mini" href="#" onclick="return false"><div class="ph">'+img(n.id,400)+'</div><b>'+n.t+'</b><small>'+n.s+'</small></a>'}
+function head(){return '<span class="kick">ニュース</span><span class="meta">10.31 · walkerplus.com</span>'}
+function ttl(){return '<h3 class="ttl">'+TITLE+'</h3>'}
+/* 写真ぶん（枠の形は写真の形に合わせる＝ぼかしを使わない） */
+function photo(s,extra){var p=P[s];return '<div class="ph" data-fit style="aspect-ratio:'+p.w+'/'+p.h+(extra||'')+'">'+img(p.id,800)+'</div>'}
+var PLANS={
+ now:function(s){var p=P[s];return '<div class="now"><div class="ph blur" data-blur>'+img(p.id,400,'bg')+img(p.id,800,'fg')+'</div><div class="t">'+head()+ttl()+'</div></div>'},
+ A:function(s){if(s=='wide')return PLANS.now(s);return '<div class="row">'+photo(s)+'<div class="col"><div>'+head()+ttl()+'</div><p class="lbl">もっと見る</p><div class="mini-grid">'+NEXT.slice(0,3).map(mini).join('')+'</div></div></div>'},
+ B:function(s){if(s=='wide')return PLANS.now(s);return '<div class="row">'+photo(s)+'<div class="side"><div>'+head()+ttl()+'</div><div class="emb"><img src="../home/emblems/pochita.webp" alt=""><p>この版面の看板：ポチタ<br><small class="meta">版面の小元素（見本は 1 人）</small></p></div><div><p class="lbl">この版面の出典 上位（59 件中）</p><table>'+SRC.map(function(r){return '<tr><td>'+r[0]+'</td><td><div class="barx" style="width:'+(r[1]*100/8)+'%"></div></td><td>'+r[1]+'</td></tr>'}).join('')+'</table></div></div></div>'},
+ C:function(s){if(s=='wide')return PLANS.now(s);return '<div class="row">'+photo(s)+'<div class="col"><div>'+head()+'</div>'+ttl()+'<div class="chips"><span>劇場版</span><span>レゼ篇</span><span>制作決定</span></div><p class="meta">写真の枠を縦長に合わせて細くしただけ。空いた横は見出しと札に使う（情報の量は今と同じ）。</p></div></div>'},
+ D:function(s){if(s=='wide')return PLANS.now(s);return '<div class="mag">'+photo(s)+head()+ttl()+'<ul>'+HEADS.map(function(h){return '<li>'+h+'</li>'}).join('')+'</ul></div>'},
+ E:function(s){if(s=='wide')return PLANS.now(s);var o=s=='tall'?['54e0b151e8495152','576986ae1d78e465']:['3440100181f2d1f1','54e0b151e8495152'];
+  return '<div class="col2"><div class="big">'+photo(s)+'</div><div class="stack"><div class="ph">'+img(o[0],400)+'</div><div class="ph">'+img(o[1],400)+'</div></div></div><div class="t">'+head()+ttl()+'<p class="meta">写真 3 枚は同じ版面の別の記事のもの（見本）。本番は同じ記事の写真があるときだけ。</p></div>'}
+};
+var INFO=[
+ ['now','今（比較用）','ぼかしの枠に写真を入れる','決まった横長の枠＋ぼかし。縦長だと左右がぼかしで埋まる。',''],
+ ['A','案 A　写真の横に次の記事の縦カード','おすすめ','良い：情報が増える・押せる。「もっと見る・57 件」が隠れているのへの答えにもなる。','困る：主役の記事と見分けにくい（札や大きさで差を付ける）。'],
+ ['B','案 B　写真の横に人物（小元素）と出典の数字','','良い：版面の看板らしくなる。','困る：小元素の当たり外れが目立つ。数字は小さな表で、押せない。'],
+ ['C','案 C　写真を細くして見出しの列を広げる','','良い：作りが小さい。ぼかしがなくなる。','困る：情報は増えない。'],
+ ['D','案 D　雑誌風：縦長を左の柱に、本文が回り込む','','良い：読み物らしく、縦長が主役。','困る：回り込む文は同じ版面の見出し並びで、本物の要約ではない。'],
+ ['E','案 E　同じ版面の写真を 2〜3 枚のコラージュ','','良い：写真だけで賑やか。','困る：同じ記事の写真が複数ある時だけ。ないと A〜C に戻る。']];
+var cur='tall';
+function frame(cls,lab,html){return '<div class="fr '+cls+'"><i>'+lab+'</i><div class="body">'+html+'</div><p class="val"></p></div>'}
+function render(){
+  var out='';
+  INFO.forEach(function(x){
+    var k=x[0],f=PLANS[k];
+    out+='<section class="plan '+k+'"><h2>'+(x[2]=='おすすめ'?'<span class="tg rec">おすすめ</span>':'<span class="tg">'+(k=='now'?'今':'案')+'</span>')+x[1]+'</h2>'
+      +'<div class="pros"><span>'+x[3]+'</span><span>'+x[4]+'</span></div>'
+      +'<div class="frames">'+frame('pc','PC 1000px',f(cur))+frame('sp','SP 390px',f(cur))+'</div></section>';
+  });
+  document.getElementById('plans').innerHTML=out;
+  setTimeout(measure,600);
+}
+/* ぼかしで埋まっている面積の割合：枠の面積のうち、写真がのらない所（今の案だけ出る） */
+function measure(){
+  document.querySelectorAll('.fr').forEach(function(fr){
+    var v=fr.querySelector('.val'),b=fr.querySelector('[data-blur]');
+    if(b){var im=b.querySelector('img.fg'),r=b.getBoundingClientRect(),ratio=P[cur].ratio;
+      var fw=Math.min(r.width,r.height*ratio),fh=fw/ratio;v.textContent='ぼかしの面積：'+Math.round((1-fw*fh/(r.width*r.height))*100)+'%（写真は枠の '+Math.round(fw*fh*100/(r.width*r.height))+'%）'}
+    else{v.textContent='ぼかしの面積：0%（枠は写真の形・左右の空きは情報）'}
+  });
+}
+document.querySelectorAll('.bar button').forEach(function(b){b.addEventListener('click',function(){
+  cur=b.dataset.shape;document.querySelectorAll('.bar button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});render()})});
+render();
+</script>
+</body>
+</html>
