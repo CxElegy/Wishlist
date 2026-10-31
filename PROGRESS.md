@@ -218,3 +218,4 @@
 
 - 2026-10-31 r3 hr31：漫威电影の小元素 4 枚止まりの根を規則で直した（BROKEN_V 13・実写は外した画像の札を全部解く／切り抜きで外れた人は同じ回で次の候補・PICK_PASSES 3）。手元で 1 回分（10 人）の枚数 0→4。残る壁は切り抜きの検査の厳しさと名簿後ろの人の画像の少なさ。次：本番の rounds・have を確かめる。
 - 2026-10-31 r2f1：写真の置く順の続き。ux_check に lead_outside_bad〔先頭の写真が置き場の外に残る版面を数え 0 以外は ✗。SVG・GIF・shrink できない分は例外〕＋test。本番の render が終わるまで星巴克 2 件で ✗。次：render 後に ahead_time.py --slow と ux_check で 0 を確かめる
+- 2026-10-31 r2f2：写真の先頭の点検をお客さまにも。ux_check の lead_outside を DOM 向けに（属性の順を問わない）、check() で test-a・b・c の描いたあとの DOM にも当て、例外〔SVG/GIF/ICO・x〕の数を「最初に取る HTML」の行に出す。test 追加・unittest 1098 OK。本番の店長 HTML は先頭 0 件・例外 0 件。次：ahead_time.py --slow で Fast 3G の全版面の実測

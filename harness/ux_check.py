@@ -165,6 +165,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
     heads = nohead_real(sorted(set(st["heads"])), fails) if st["heads"] else []
     first = pg.evaluate(FIRST_JS)
+    dom_lead = lead_outside_bad(pg.content()) if not page else []   # 2026-10-31：ログイン中の DOM（お客さま）にも同じ数え方
     covered = []
     if width <= 560:   # 2026-10-27：右下の札が一番下の字を隠す。下までスクロールして札の矩形と重なる字の要素を数える
         for _ in range(8):   # 写真が読み込まれて高さが伸びるので、本当の底に着くまで（伸びが止まるまで）くり返す
@@ -176,6 +177,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         pg.evaluate("window.scrollTo(0,0)")
     pg.screenshot(path=str(out / f"{who}-{page.split('.')[0] + '-' if page else ''}{width}x{height}.png"))
     bad = []
+    bad += dom_lead
     if not page and emb != "off":
         bad += emb_check.check(pg, who, width, out, full=emb == "full", guest=not WHO[who])
     b.close()
@@ -441,26 +443,34 @@ def ahead_bad(html):
     return bad
 
 
-def lead_outside_bad(html):
-    """各版面の先頭の写真（data-e="s"）で置き場にも本站の pics/ にも無いものを数える。0 でなければ ✗（2026-10-31 星巴克马克杯：原寸 jpg のまま Fast 3G で届かない）。
-    例外（置き場へ縮められない・縮める要がない）：SVG・GIF・ICO は原寸のまま（軽い／動く）、state/photo_store.json の x（取れない・壊れた・64px 未満＝shrink が None）に載る分。"""
+def lead_outside(html):
+    """(置き場の外に残る先頭の写真の版面 key, 例外で見逃した数)。先頭 = 各版面の最初の img[data-e="s"]。属性の順は問わない（描いたあとの DOM でも読める）。"""
     import hashlib
     import html as html_lib
     try:
         x = set(json.loads((ROOT / "state" / "photo_store.json").read_text(encoding="utf-8")).get("x", {}))
     except (OSError, ValueError):
         x = set()
-    out = []
+    out, exempt = [], 0
     for s in re.split(r"(?=<section\b[^>]*\bdata-k=)", html)[1:]:
-        m = re.search(r'<img src="([^"]*)"[^>]*data-e="s"', s[:8000])
+        tag = next((g for g in re.findall(r"<img\b[^>]*>", s[:12000]) if re.search(r'\bdata-e="s"', g)), None)
+        m = tag and re.search(r'\bsrc="([^"]*)"', tag)
         if not m:
             continue
         u = html_lib.unescape(m.group(1))
         if "/storage/v1/object/public/photos/" in u or not u.startswith("http"):
             continue
         if re.search(r"\.(svg|gif|ico)(\?|$)", u, re.I) or hashlib.sha1(u.encode("utf-8")).hexdigest()[:16] in x:
+            exempt += 1
             continue
         out.append(re.search(r'data-k="([^"]*)"', s).group(1))
+    return out, exempt
+
+
+def lead_outside_bad(html):
+    """先頭の写真が置き場にも本站の pics/ にも無い版面を数える。0 でなければ ✗（2026-10-31 星巴克马克杯：原寸 jpg のまま Fast 3G で届かない）。
+    店長の HTML だけでなくログイン中の DOM（test-a・b・c）にも同じ数え方（お客さまも同じ規則）。例外（縮められない）は SVG・GIF・ICO と photo_store.json の x。例外の数は ✓ の行に出す（隠さない）。"""
+    out, _ = lead_outside(html)
     return [f"先頭の写真が置き場に無い版面 {len(out)} 件（{out[:4]}）。SVG・GIF・取れない分を除いても残る＝photo_store の置く順／取りこぼし"] if out else []
 
 
@@ -1166,10 +1176,11 @@ def main(argv):
         try:   # HTML の重さ・画像 1 枚ごとのハンドラ（ログインなしで取れる店長のページ）
             html = urllib.request.urlopen(urllib.request.Request(a.base, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
             bad = html_weight_bad(html) + photo_cache_bad(html) + ahead_bad(html) + lead_outside_bad(html)
+            n_ex = lead_outside(html)[1]
         except Exception as ex:  # noqa: BLE001
             bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
         fails += bool(bad)
-        print(("✗ " if bad else "✓ ") + "最初に取る HTML：" + ("、".join(bad) if bad else "軽い・画像 1 枚ごとのハンドラ 0・最初の写真は eager"))
+        print(("✗ " if bad else "✓ ") + "最初に取る HTML：" + ("、".join(bad) if bad else f"軽い・画像 1 枚ごとのハンドラ 0・最初の写真は eager・先頭の写真の例外 {n_ex} 件"))
         try:   # 先取りが実際に走ったか（字面でなく時間）：ふつうの回線で 12 秒のうちに全版面の先頭が届き、先頭以外の写真も取りに行っている
             import ahead_time
             m = ahead_time.measure(pw, a.base, 1400, 12)

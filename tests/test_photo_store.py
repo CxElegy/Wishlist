@@ -128,6 +128,9 @@ class LeadOutside(unittest.TestCase):
         h = sec("a", store) + sec("b", "pics/x.webp") + sec("c", "https://x.example/w.svg") + sec("d", "https://x.example/g.gif")
         self.assertEqual(U.lead_outside_bad(h), [])
         self.assertIn("1 件", U.lead_outside_bad(h + sec("e", "https://x.example/big.jpg"))[0])
+        self.assertEqual(U.lead_outside(h)[1], 2)   # 例外 2 件（svg・gif）は数を出す
+        dom = '<section data-k="z"><img data-e="s" class="a" src="https://x.example/big.jpg"></section>'   # 描いたあとの DOM は属性の順が違う
+        self.assertEqual(U.lead_outside(dom)[0], ["z"])
 
 
 
