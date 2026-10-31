@@ -39,6 +39,7 @@ import pathlib
 import re
 import sys
 import threading
+import unicodedata
 import time
 import urllib.error
 import urllib.parse
@@ -1134,23 +1135,53 @@ OFFICIAL_SKIP = re.compile(r"thumb|icon|logo|-sp\b|_sp\b|/sp/|banner|btn|button|
 _OFFICIAL_HTML = {}   # 公式サイトのトップ：名簿の人ごとに取り直さない（1 回の実行の間だけ）
 
 
+def official_key(w):
+    """名前の語を、ローマ字の書き方の違い（Tōshirō・Toushiro・Toshiro）が同じになる形に。長音の記号・ou・oo・uu を 1 つの母音に。"""
+    s = unicodedata.normalize("NFKD", str(w).lower())
+    s = "".join(ch for ch in s if not unicodedata.combining(ch))
+    return re.sub(r"ou|oo|uu", lambda m: m.group(0)[0], s)
+
+
+OFFICIAL_LIST = re.compile(r'href=["\']([^"\'#?]*(?:/chara|/character|/member|/cast)[^"\'#?]*?/?)["\']', re.I)
+
+
+def official_pages(site, extra=2):
+    """公式サイトのトップ＋そこからリンクしているキャラクター一覧のページ（/character・/chara・/member・/cast、同じ網域、最大 extra 枚）の HTML → [(html, 網址)]。
+    トップに一覧がなくても、一覧のページがあれば人物の絵を見つけられる。1 回の実行の間は取り直さない。"""
+    out = []
+    try:
+        html = _OFFICIAL_HTML[site] if site in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(site, _get(site, 1_500_000).decode("utf-8", "replace"))
+    except Exception:
+        return out
+    out.append((html, site))
+    host = urllib.parse.urlparse(site).netloc
+    seen = {site}
+    for m in OFFICIAL_LIST.finditer(html):
+        u = urllib.parse.urljoin(site, m.group(1))
+        if len(seen) > extra or u in seen or urllib.parse.urlparse(u).netloc != host or re.search(r"\.(png|webp|jpe?g|css|js)$", u, re.I):
+            continue
+        seen.add(u)
+        try:
+            out.append((_OFFICIAL_HTML[u] if u in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(u, _get(u, 1_500_000).decode("utf-8", "replace")), u))
+        except Exception:
+            continue
+    return out
+
+
 def official_images(site, words, limit=6):
     """公式サイトのトップページにあるキャラの絵（パスに char/member/cast… とそのキャラの名前の語が入るもの）→ [網址]。
     BLEACH Mirrors High の公式サイトは /top/character/ichigo/body.webp（透明背景の公式立ち絵）。名前の語はパスの区切りごとに一致を見る（姓でも名でも）。"""
     if not site:
         return []
-    ws = {w.lower() for w in words if len(w) >= 3}
-    try:
-        html = _OFFICIAL_HTML[site] if site in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(site, _get(site, 1_500_000).decode("utf-8", "replace"))
-    except Exception:
-        return []
+    ws = {official_key(w) for w in words if len(w) >= 3}
     out = []
-    for m in re.finditer(r'(?:src|data-src|srcset)=["\']([^"\'\s,]+\.(?:png|webp|jpe?g))', html, re.I):
-        u = urllib.parse.urljoin(site, m.group(1).replace("&amp;", "&"))
-        path = urllib.parse.urlparse(u).path
-        if u not in out and OFFICIAL_PATH.search(path) and not OFFICIAL_SKIP.search(path) \
-                and ws & set(re.split(r"[/_.\-\s]+", path.lower())):
-            out.append(u)
+    for html, base in official_pages(site):
+        for m in re.finditer(r'(?:src|data-src|srcset)=["\']([^"\'\s,]+\.(?:png|webp|jpe?g))', html, re.I):
+            u = urllib.parse.urljoin(base, m.group(1).replace("&amp;", "&"))
+            path = urllib.parse.urlparse(u).path
+            if u not in out and OFFICIAL_PATH.search(path) and not OFFICIAL_SKIP.search(path) \
+                    and ws & {official_key(s) for s in re.split(r"[/_.\-\s]+", path)}:
+                out.append(u)
     return out[:limit]
 
 
@@ -1164,7 +1195,9 @@ def official_site(item):
 def fandom_sourced(x):
     """出どころが Fandom の小元素か。公式サイトから取り直した行の why「公式サイトの立ち絵：Fandom から取り直し」は数えない（数えると毎回取り直す・E21 が減らない）。"""
     w = x.get("why") or ""
-    return "Fandom" in w and "公式サイトの" not in w
+    if "公式サイトの" in w:
+        return False
+    return "Fandom" in w or bool(re.search(r"(?:wikia|fandom)\.", str(x.get("source") or "")))   # why に書き忘れた Fandom 由来（Renji：Brave Souls の公式イラスト）も数える
 
 
 def official_for(item, x):

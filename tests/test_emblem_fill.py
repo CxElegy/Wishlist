@@ -2399,6 +2399,22 @@ class FindSources(unittest.TestCase):
         self.assertEqual(em.official_site({"icon": {"source": "https://s.example/ogp/a.jpg"}}), "https://s.example/")
         self.assertTrue(em.SCENE_FILE.search("File:Ep308IchigoBankai.png") and not em.SCENE_FILE.search("File:Ep363HitsugayaProfile.png"))
 
+    def test_official_name_spelling_and_list_page(self):
+        """公式のローマ字は Tōshirō でなく toushiro：長音の書き方の違いは同じ人（official_key）。トップに絵がなくても、リンクしている一覧のページ（/character）から取る。
+        出どころが wikia の行は why に Fandom と書き忘れても Fandom 由来（fandom_sourced＝E21・official_swap の対象）。"""
+        em = ef.emblem
+        em._OFFICIAL_HTML.clear()
+        self.assertEqual(em.official_key("Tōshirō"), em.official_key("Toushiro"))
+        self.assertNotEqual(em.official_key("Rukia"), em.official_key("Renji"))
+        pages = {"https://s.example/": '<a href="/character/">キャラ</a><a href="https://other.example/character/">x</a>',
+                 "https://s.example/character/": '<img src="/img/character/toushiro/body.webp"><img src="/img/character/thumb/toushiro.webp">'}
+        with mock.patch.object(em, "_get", side_effect=lambda u, n=0: pages[u].encode()):
+            self.assertEqual(em.official_images("https://s.example/", ["Tōshirō", "Hitsugaya"]), ["https://s.example/img/character/toushiro/body.webp"])
+        em._OFFICIAL_HTML.clear()
+        self.assertTrue(em.fandom_sourced({"why": "Renji の公式イラスト", "source": "https://static.wikia.nocookie.net/bleach/a.png"}))
+        self.assertFalse(em.fandom_sourced({"why": "Renji（公式サイトの立ち絵：Fandom から取り直し）", "source": "https://static.wikia.nocookie.net/x.png"}))
+        self.assertFalse(em.fandom_sourced({"why": "x", "source": "https://s.example/a.png"}))
+
     def test_known_first_puts_other_versions_last(self):
         """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""
         who = ["Red (Adventures)", "Ash Ketchum", "Gold (Adventures)", "Goh", "Red (Origins)", "Roy"]
