@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "014c354510d9",
+ "edit_sig": "56667303d32c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,10 +13,8 @@
      "date": "2026-10-30",
      "headline": "아스트라에 오라티오 \"테스트 반응 긍정적, 게임의 매력 알렸다\"",
      "highlight": "테스트 반응 긍정적",
-     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-     "image_via": "作品封面",
-     "source": "게임인사이트",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.gameinsight.co.kr&sz=128",
+     "image": "https://cdn.gameinsight.co.kr/news/photo/202610/36920_90717_3439.jpg",
+     "image_via": "AI 挑选",
      "url": "https://www.gameinsight.co.kr/news/articleView.html?idxno=36920",
      "weight": "lead"
     },
@@ -1007,29 +1005,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "Yahoo!ニュース",
-     "title": "ワイルドカードの期待に応えた18歳ポハンコバがWTA500大会で初のツアー4強入り [東レPPOテニス]（テニスマガジンONLINE）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5fMl9WWDkxQUVlMmFNRkU4NFhweDlkSGkwWmZiRlVTQkdlRFpZMXR1OG51Zk9HQmg4UWNiNFZmUzlOOHF6cG9XOUJvdm01aWI5ajFHNko4RkotNUFJVEM3cG44bmh2SDJUU2pOS09MdXlvWVk4SGtmdXNJQUtpMm8?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 4,
-     "source": "スポニチ Sponichi Annex",
-     "title": "＜東レ・パンパシフィック・オープン第3日＞ダブルス1回戦、勝利し笑顔を見せる加藤未唯（左）（撮影・小海途 良幹）",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOQXFPTVJldk9GM3ZtWHduRVA5MVNvS2lXTkpnUExFNVI5LWl5NFFJWVRMeGZnc2FQeG03Z0hmNmI4eE9McGpmanVGMVJRb041QWFQaGN0NjJiU2kwdzBMTmxidE5hT3ZLWlE2NVRGeWJNYUxQQ3lnd044QzBGOXowVjc1cmo4bWRwM1ZMOQ?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 5,
-     "source": "Yahoo!ニュース",
-     "title": "大坂なおみ 昨年ウィンブルドンジュニア女王にストレートで屈す 真っ赤な着物風ガウンで登場もまさかの敗戦 東レ・パンパシフィックＯＰ（スポーツ報知）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1mUzU0R21BcFJnMzFDcFlTUFROVExGekc3Ti1hdTVnVEVsYktobWNMeWlxbE5mdHRqVGNoUTIwUWIzYlZGNEdURjJPM2pTRl8zaVlDb3ltNmMyM2hFVHhkMEpxZlNvOWhqTTU5QnhDOThFYWhDV3YxdElGZ01EM0k?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1050,6 +1025,26 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gr17e.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/ja-jp/news/other/%E5%A5%B3%E5%AD%90%E3%83%86%E3%83%8B%E3%82%B9-%E6%9D%B1%E3%83%ACppo%E6%97%A5%E6%9C%AC%E5%8B%A2%E5%85%A8%E6%BB%85-%E5%8A%A0%E8%97%A4%E6%9C%AA%E5%94%AF-%E3%83%80%E3%83%96%E3%83%AB%E3%82%B9%E6%BA%96%E3%80%85%E6%B1%BA%E5%8B%9D%E6%95%97%E9%80%80-%E5%8E%B3%E3%81%97%E3%81%84/ar-AA2gqJxa",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "ワイルドカードの期待に応えた18歳ポハンコバがWTA500大会で初のツアー4強入り",
+     "highlight": "初のツアー4強入り",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00035851-tennismagv-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/3fd5748125bbeb81bcfc015d6aa67c690e04b02f",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "大坂なおみ 昨年ウィンブルドンジュニア女王にストレートで屈す 東レ・パンパシフィックＯＰ",
+     "highlight": "ストレートで屈す",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-10291189-sph-000-4-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/123aecf61c0495c6ad8cc996e6bb046665d07b16",
      "weight": "normal"
     }
    ],

@@ -555,6 +555,13 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameinsight.co.kr/news/photo/202610/36920_90717_3439.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-10-31"
+ },
  "https://cdn.gamemeca.com/data_center/345/722/20261027172433.webp": {
   "w": 1200,
   "h": 676,
@@ -3018,6 +3025,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-10291189-sph-000-4-view.jpg?exp=10800": {
+  "w": 1142,
+  "h": 1200,
+  "target": 720,
+  "v": 3,
+  "local": "pics/82c6f9e7a26c3ffd.webp",
+  "out": [
+   1142,
+   1200
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-90025195-tsk-000-1-thumb.jpg?exp=10800": {
   "w": 640,
   "h": 360,
@@ -3053,6 +3072,18 @@
   "out": [
    1280,
    1280
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00035851-tennismagv-000-1-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3,
+  "local": "pics/74332c5ed39668ec.webp",
+  "out": [
+   1280,
+   960
   ],
   "why": "期限付きの網址"
  },
