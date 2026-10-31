@@ -5,12 +5,12 @@
   "GTA 6": 42,
   "A2O LITE": 20,
   "三星手机": 23,
-  "ILLIT": 8,
+  "ILLIT": 11,
   "周杰伦": 16,
   "BLEACH Mirrors High": 4,
   "The Mandalorian": 6,
   "Vaundy": 8,
-  "gelato pique": 5,
+  "gelato pique": 8,
   "Astrae Oratio": 5,
   "MMORPG 新作": 17,
   "あつ森": 6,
@@ -342,7 +342,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    9,
+    10
    ]
   },
   {
@@ -369,7 +371,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    11
    ]
   }
  ],
@@ -534,6 +537,19 @@
    "event": {
     "date": "2026-11-06",
     "label": "発売日"
+   }
+  },
+  {
+   "headline": "ジェラピケ「福袋」11．2から抽選販売開始！ 人気アイテム5点を詰め込んだ全3種類",
+   "highlight": "11．2から抽選販売開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ],
+   "event": {
+    "date": "2026-11-02",
+    "label": "抽選販売開始"
    }
   }
  ],
