@@ -1,14 +1,14 @@
 {
- "admin": "4d74966fdb28",
- "admin-ai": "f1f440347fcc",
+ "admin": "f29c1286cd13",
+ "admin-ai": "e9031f0f5446",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "44e928f1"
+   "467d3086"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "2ab22222"
+   "4fbd5542"
   ]
  },
  "admin-boards": "0be297039677",
@@ -22,11 +22,11 @@
    "ddb5f3f0"
   ]
  },
- "admin-emblem": "ca650a316e35",
+ "admin-emblem": "d1a0d7b17811",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "6cb1b6fc"
+   "2795ca5d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "e76b51ba"
+   "e0d1a9df"
   ]
  },
  "admin-members": "0aa841405d91",
  "admin-members_marks": {},
- "admin-now": "82edead01d28",
+ "admin-now": "aee9d4a3b68d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b62d6315"
+   "6c96f0ca"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "80f5b0e5"
+   "cade9d56"
   ]
  },
- "admin-system": "030462999a6b",
+ "admin-system": "f5b594a6947f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "15eba6a4"
+   "1d7f1864"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "79ca1407"
+   "479bf08d"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "1e37e407"
   ]
  },
- "index": "0d13a07ea167",
+ "index": "98e61e44f085",
  "index_marks": {
   "front": [
    "トップ",
-   "012912fa"
+   "2b88b321"
   ],
   "picks": [
    "気になるかも？",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "02f9e4a8"
+   "54c46411"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "1c223336"
+   "7f202b1d"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "8ea232b0"
   ]
  },
- "updated": "10.31 14:55",
+ "updated": "10.31 14:56",
  "wishlist": "8f338b3417b7"
 }
