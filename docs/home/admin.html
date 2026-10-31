@@ -1536,7 +1536,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin" content="179feb339ed1"><style>
+<meta name="wl-ver" data-page="admin" content="8d70cef2c494"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2367,7 +2367,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       rs.sort(function(a,b){return a.account==='test1'?-1:b.account==='test1'?1:a.account<b.account?-1:1;});
       box.dataset.n=rs.length;
       box.innerHTML='<p>'+L.la2+(v[1]||[]).map(function(x){return esc(x.lang)+' '+x.n;}).join(' · ')+'<\/p>'+L.la1+rs.map(function(r){
-        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+r.boards+'<\/td><td>'+r.sz_s+'<\/td><td>'+r.sz_m+'<\/td><td>'+r.sz_l+'<\/td><td>'+r.photos_done+' / '+r.photos+'<\/td><td>'+r.reqs_wait+' / '+r.reqs+'<\/td>'+(function(d){d=d||{};return '<td>'+(d.sections||0)+'<\/td><td>'+(d.with_subs||0)+'<\/td><td>'+(d.with_media||0)+'<\/td><td>'+(d.with_also||0)+'<\/td>';})(fd[r.account])+'<td>'+esc(lg[r.account]||'—')+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+r.boards+'<\/td><td>'+r.sz_s+'<\/td><td>'+r.sz_m+'<\/td><td>'+r.sz_l+'<\/td><td>'+r.photos_done+' / '+r.photos+'<\/td><td>'+r.reqs_wait+' / '+r.reqs+'<\/td>'+(function(d){d=d||{};return '<td data-k="sec">'+(d.sections||0)+'<\/td><td data-k="subs">'+(d.with_subs||0)+'<\/td><td data-k="media">'+(d.with_media||0)+'<\/td><td data-k="also">'+(d.with_also||0)+'<\/td>';})(fd[r.account])+'<td>'+esc(lg[r.account]||'—')+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
   }
@@ -2379,7 +2379,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     rpc('admin_follow_rows').then(function(rs){
       rs=rs||[]; box.dataset.n=rs.length;
       box.innerHTML=L.lp1+rs.map(function(r){
-        return '<tr data-id="'+esc(r.account)+'" data-b="'+r.board_id+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+esc(r.name)+'<\/td><td>'+esc(r.section||'—')+'<\/td><td>'+r.pos+'<\/td><td>'+esc(r.size||'—')+'<\/td><td>'+esc(r.scheme||'—')+'<\/td><td>'+kv(r.subs)+'<\/td><td>'+((r.media||[]).map(esc).join(L.lp4)||L.lp3)+'<\/td><td>'+kv(r.also)+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+        return '<tr data-id="'+esc(r.account)+'" data-b="'+r.board_id+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+esc(r.name)+'<\/td><td data-k="sec">'+esc(r.section||'—')+'<\/td><td data-k="pos">'+r.pos+'<\/td><td data-k="size">'+esc(r.size||'—')+'<\/td><td data-k="scheme">'+esc(r.scheme||'—')+'<\/td><td data-k="subs">'+kv(r.subs)+'<\/td><td data-k="media">'+((r.media||[]).map(esc).join(L.lp4)||L.lp3)+'<\/td><td data-k="also">'+kv(r.also)+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
   }
@@ -2421,7 +2421,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.31 11:00</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.31 11:03</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html" aria-current="page"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>

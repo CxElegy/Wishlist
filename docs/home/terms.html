@@ -1821,7 +1821,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       rs.sort(function(a,b){return a.account==='test1'?-1:b.account==='test1'?1:a.account<b.account?-1:1;});
       box.dataset.n=rs.length;
       box.innerHTML='<p>'+L.la2+(v[1]||[]).map(function(x){return esc(x.lang)+' '+x.n;}).join(' · ')+'<\/p>'+L.la1+rs.map(function(r){
-        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+r.boards+'<\/td><td>'+r.sz_s+'<\/td><td>'+r.sz_m+'<\/td><td>'+r.sz_l+'<\/td><td>'+r.photos_done+' / '+r.photos+'<\/td><td>'+r.reqs_wait+' / '+r.reqs+'<\/td>'+(function(d){d=d||{};return '<td>'+(d.sections||0)+'<\/td><td>'+(d.with_subs||0)+'<\/td><td>'+(d.with_media||0)+'<\/td><td>'+(d.with_also||0)+'<\/td>';})(fd[r.account])+'<td>'+esc(lg[r.account]||'—')+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+r.boards+'<\/td><td>'+r.sz_s+'<\/td><td>'+r.sz_m+'<\/td><td>'+r.sz_l+'<\/td><td>'+r.photos_done+' / '+r.photos+'<\/td><td>'+r.reqs_wait+' / '+r.reqs+'<\/td>'+(function(d){d=d||{};return '<td data-k="sec">'+(d.sections||0)+'<\/td><td data-k="subs">'+(d.with_subs||0)+'<\/td><td data-k="media">'+(d.with_media||0)+'<\/td><td data-k="also">'+(d.with_also||0)+'<\/td>';})(fd[r.account])+'<td>'+esc(lg[r.account]||'—')+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
   }
@@ -1833,7 +1833,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     rpc('admin_follow_rows').then(function(rs){
       rs=rs||[]; box.dataset.n=rs.length;
       box.innerHTML=L.lp1+rs.map(function(r){
-        return '<tr data-id="'+esc(r.account)+'" data-b="'+r.board_id+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+esc(r.name)+'<\/td><td>'+esc(r.section||'—')+'<\/td><td>'+r.pos+'<\/td><td>'+esc(r.size||'—')+'<\/td><td>'+esc(r.scheme||'—')+'<\/td><td>'+kv(r.subs)+'<\/td><td>'+((r.media||[]).map(esc).join(L.lp4)||L.lp3)+'<\/td><td>'+kv(r.also)+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+        return '<tr data-id="'+esc(r.account)+'" data-b="'+r.board_id+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+esc(r.name)+'<\/td><td data-k="sec">'+esc(r.section||'—')+'<\/td><td data-k="pos">'+r.pos+'<\/td><td data-k="size">'+esc(r.size||'—')+'<\/td><td data-k="scheme">'+esc(r.scheme||'—')+'<\/td><td data-k="subs">'+kv(r.subs)+'<\/td><td data-k="media">'+((r.media||[]).map(esc).join(L.lp4)||L.lp3)+'<\/td><td data-k="also">'+kv(r.also)+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
   }
