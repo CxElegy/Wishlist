@@ -545,9 +545,9 @@ class Background(unittest.TestCase):
     def test_subjects_rotate_with_round_and_cover_everyone(self):
         it = {"name": "big", "emblem_kind": "character", "emblem_pool": 35, "emblem_who": [f"p{i}" for i in range(35)], "emblem": []}
         seen = []
-        for r in range(4):
+        for r in range(5):
             seen += ef.subjects({**it, "_round": r}, "character", 35)
-        self.assertEqual(set(seen), set(it["emblem_who"]))   # 4 回で全員に順が来る
+        self.assertEqual(set(seen), set(it["emblem_who"]))   # 5 回で全員に順が来る（先頭の欠けた 3 人は毎回入るので、残りの 7 人ずつ）
         self.assertEqual(ef.subjects({**it, "_round": 0}, "character", 35), it["emblem_who"][:10])   # 同じ時間内の再実行でも同じ人に戻らない（時刻に頼らない）
 
     def test_record_counts_rounds(self):
@@ -2360,6 +2360,7 @@ class FindSources(unittest.TestCase):
         """名簿の取り方（gather）も公式サイトの立ち絵が先：公式で取れた人は Fandom に行かず、取れない人だけ Fandom（トップは 1 回しか取りに行かない）。"""
         em = ef.emblem
         em._OFFICIAL_HTML.clear()
+        em._OFFICIAL_INDEX.clear()
         html = b'<img src="/top/character/ichigo/body.webp">'
         item = {"name": "BLEACH", "type": "anime", "emblem_kind": "character", "site": "https://s.example/", "emblem_fandom": "bleach",
                 "emblem_who": ["Ichigo Kurosaki", "Rukia Kuchiki"]}
@@ -2378,6 +2379,7 @@ class FindSources(unittest.TestCase):
         """名前を広げる（gather_wide）も公式が先：公式で取れた人は Fandom の別名を引かない。"""
         em = ef.emblem
         em._OFFICIAL_HTML.clear()
+        em._OFFICIAL_INDEX.clear()
         item = {"name": "BLEACH", "type": "anime", "emblem_kind": "character", "site": "https://s.example/", "emblem_fandom": "bleach",
                 "emblem_who": ["Ichigo Kurosaki", "Rukia Kuchiki"]}
         with mock.patch.object(em, "_get", return_value=b'<img src="/top/character/ichigo/body.webp">'), \
@@ -2390,6 +2392,7 @@ class FindSources(unittest.TestCase):
         """胸像の入れ替えは公式サイトの立ち絵が先：パスに char… と名前の語が入るものだけ（-sp・サムネ・ロゴ・ほかのキャラは除く）。site がなければアイコンの出どころの網域。"""
         em = ef.emblem
         em._OFFICIAL_HTML.clear()
+        em._OFFICIAL_INDEX.clear()
         html = ('<img src="/top/character/ichigo/body.webp"><img src="/top/character/ichigo/body-sp.webp">'
                 '<img data-src="/assets/character/thumb_01.jpg"><img src="/top/character/rukia/body.webp"><img src="/common/logo.webp">')
         with mock.patch.object(em, "_get", return_value=html.encode()):
@@ -2404,6 +2407,7 @@ class FindSources(unittest.TestCase):
         出どころが wikia の行は why に Fandom と書き忘れても Fandom 由来（fandom_sourced＝E21・official_swap の対象）。"""
         em = ef.emblem
         em._OFFICIAL_HTML.clear()
+        em._OFFICIAL_INDEX.clear()
         self.assertEqual(em.official_key("Tōshirō"), em.official_key("Toushiro"))
         self.assertNotEqual(em.official_key("Rukia"), em.official_key("Renji"))
         pages = {"https://s.example/": '<a href="/character/">キャラ</a><a href="https://other.example/character/">x</a>',
@@ -2411,9 +2415,42 @@ class FindSources(unittest.TestCase):
         with mock.patch.object(em, "_get", side_effect=lambda u, n=0: pages[u].encode()):
             self.assertEqual(em.official_images("https://s.example/", ["Tōshirō", "Hitsugaya"]), ["https://s.example/img/character/toushiro/body.webp"])
         em._OFFICIAL_HTML.clear()
+        em._OFFICIAL_INDEX.clear()
         self.assertTrue(em.fandom_sourced({"why": "Renji の公式イラスト", "source": "https://static.wikia.nocookie.net/bleach/a.png"}))
         self.assertFalse(em.fandom_sourced({"why": "Renji（公式サイトの立ち絵：Fandom から取り直し）", "source": "https://static.wikia.nocookie.net/x.png"}))
         self.assertFalse(em.fandom_sourced({"why": "x", "source": "https://s.example/a.png"}))
+
+    def test_official_candidates_are_auto_pickable(self):
+        """official_cands が作る候補の取り方（source）は、定時の後台が自動で選んでよい取り方（AUTO_SOURCES）に入っていて、Fandom より先に選ぶ。
+        入っていなかったので、公式の立ち絵の候補が毎回「名前の合わない候補」で外れ、Rukia・Kisuke は名簿に戻らなかった。"""
+        item = {"name": "A", "emblem_kind": "character", "site": "https://s.example/", "emblem_who": ["Rukia Kuchiki"], "emblem": []}
+        cands = []
+        with mock.patch.object(ef.emblem, "official_for", return_value=["https://s.example/top/character/rukia/body.webp"]):
+            self.assertEqual(ef.official_cands(item, "Rukia Kuchiki", cands, {}), 1)
+        self.assertIn(cands[0]["source"], ef.AUTO_SOURCES["character"])
+        good = [{"subject": "Rukia Kuchiki", "image": "https://x.example/Rukia.png", "source": "Fandom"}, {**cands[0], "shape": "cutout"}]
+        self.assertEqual(ef.auto_pick(item, good, web=False, strict=True), [2])   # 公式が先・1 人 1 枚
+
+    def test_official_key_spelling_variants(self):
+        """ヘボン式と訓令式・m/n の違いも同じ人（綴り違いで公式を取り逃さない）。別の人は混ざらない。"""
+        em = ef.emblem
+        for a, b in (("Hitsugaya", "Hitugaya"), ("Shimbashi", "Sinbasi"), ("Jin", "Zin"), ("Tōshirō", "Toushiro"), ("Chad", "Tad")):
+            self.assertEqual(em.official_key(a), em.official_key(b), (a, b))
+        for a, b in (("Rukia", "Renji"), ("Ichigo", "Ichika"), ("Kenpachi", "Kensei")):
+            self.assertNotEqual(em.official_key(a), em.official_key(b), (a, b))
+
+    def test_subjects_keeps_head_and_official_people_every_round(self):
+        """名簿を回す順（_round）でも、主役が欠けた人と公式に立ち絵がある人は毎回先頭（BLEACH Rukia・Kisuke が何周も取られなかった）。"""
+        who = [f"P{i} Name{i}" for i in range(40)]
+        who[1], who[25] = "Rukia Kuchiki", "Kisuke Urahara"
+        item = {"name": "A", "emblem_kind": "character", "site": "https://s.example/", "emblem_who": who, "emblem": [{"subject": "P0 Name0"}, {"subject": "P2 Name2"}]}
+        with mock.patch.object(ef.emblem, "official_for", side_effect=lambda it, x: ["u"] if x["subject"] in ("Kisuke Urahara",) else []):
+            for rnd in range(6):
+                got = ef.subjects({**item, "_round": rnd}, "character", 200)
+                self.assertEqual(got[:2], ["Rukia Kuchiki", "Kisuke Urahara"], rnd)
+                self.assertEqual(len(got), ef.STEP)
+            seen = {n for rnd in range(6) for n in ef.subjects({**item, "_round": rnd}, "character", 200)}
+            self.assertGreater(len(seen), 30)   # 先頭の 2 人を毎回入れても、残りは 1 周する
 
     def test_known_first_puts_other_versions_last(self):
         """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""

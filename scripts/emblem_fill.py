@@ -463,6 +463,11 @@ def twemoji(emoji):
 HEAD = 5   # 名簿の上から何人は毎回先に集める（主役が後回しにならない）
 
 
+def official_has(item, w):
+    """公式サイトにその人の立ち絵があるか（名簿の取り方の先頭に置く人を決める）。"""
+    return bool(item.get("site") or item.get("icon")) and item.get("emblem_kind") == "character" and not item.get("emblem_people") and bool(emblem.official_for(item, {"subject": w}))
+
+
 def subjects(item, kind, hi):
     """収集する対象の名前。emblem_who（メンバー・キャラの名前）があればそれ、なければ種類ごとの決め方。"""
     who = [w for w in item.get("emblem_who") or [] if kind != "character" or not emblem.not_character(w)]   # もうある名簿にも（あつ森の Player・Parents）
@@ -471,10 +476,16 @@ def subjects(item, kind, hi):
         rest = [w for w in who[:hi] if w not in have]
         redo = {n for s in item.get("emblem_redo") or [] for n in _who_of(s)}   # 管理ページで「別の写真に替える」を押した人は先に
         miss = head_missing(item)   # 名簿の先頭 3 人で小元素がいない人は、別の写真に替える人（redo）より先（BLEACH Rukia：redo 48 人の後ろで何時間も対象に入らなかった：E15）
-        rest = [w for w in rest if w in miss] + [w for w in rest if w in redo and w not in miss] + [w for w in rest if w not in redo and w not in miss]
+        first = [w for w in rest if w in miss] + [w for w in rest if w not in miss and official_has(item, w)]   # 主役が欠けた人と、公式サイトの立ち絵がある人は回しに入れず毎回先に（BLEACH Rukia・Kisuke：回しの先頭から外れて何周も取られなかった）
+        first = first[:STEP // 2]   # 取れないまま居座っても半分まで（残りは回しに入る）
+        rest = first + [w for w in rest if w in redo and w not in first] + [w for w in rest if w not in redo and w not in first]
         if len(rest) <= STEP:
             return rest or who[:1]
         rnd = item.get("_round")
+        if rnd is not None and len(first) < STEP:
+            tail = rest[len(first):]
+            k = rnd * (STEP - len(first)) % len(tail)
+            return first + (tail[k:] + tail[:k])[:STEP - len(first)]
         if rnd is not None:   # 後台の回の通し番号（record の rounds）：先頭を毎回試し直さず、名簿の残りを STEP 人ずつ順に 1 周する（同じ時間内の再実行でも同じ人に戻らない）
             k = rnd * STEP % len(rest)
             return (rest[k:] + rest[:k])[:STEP]
@@ -1847,6 +1858,7 @@ def source_chain(item):
 # 自動で選ぶときの、取り方の優先順。ブランドは公式ロゴ（Wikidata P154・公式サイト）、主題は Wikidata・Commons・Twemoji を先に
 PICK_ORDER = ["直接指定", "出演者の記事の役の写真", "作品の剧照", "役の記事", "作品の動画の場面", "作品の主な画像", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
 PICK_ORDER_BY_KIND = {
+    "character": ["直接指定", "公式サイト"] + [s for s in PICK_ORDER if s not in ("直接指定", "公式サイト")],   # 公式の立ち絵が先
     "brand": ["直接指定", "Wikidata", "公式サイト", "Wikimedia Commons", "Wikipedia", "Twemoji", WEB],
     "topic": ["直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],
 }
@@ -1855,7 +1867,7 @@ PICK_ORDER_BY_KIND = {
 # 定時の後台（strict）で自動で選んでよい取り方。絵のキャラは名前が一般的な言葉（Juggernaut・Axe）だと
 # Wikipedia・Commons で別物に当たるので、キャラ専用の取り方だけ。人物（本人確認するもの）は Web 画像検索以外ならよい
 AUTO_SOURCES = {
-    "character": {"直接指定", "Fandom"},
+    "character": {"直接指定", "公式サイト", "Fandom"},   # 公式サイト＝official_cands（名簿の取り方の先頭）。ここに無かったので、公式の立ち絵の候補が作られても毎回「名前の合わない候補」で外れていた（BLEACH Rukia・Kisuke）
     "brand": {"直接指定", "Wikidata", "公式サイト", "Wikimedia Commons"},
     "topic": {"直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji"},
 }

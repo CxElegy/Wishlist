@@ -16,7 +16,8 @@
   E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く。残りの人が全員「画像のない人」＝候補が尽きた版面〔exhausted〕は ✗ にせず、下の「情報」に名前を出す）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
-  E21 公式があるのに Fandom から取った（情報）  名簿の人で、画像の出どころが Fandom なのに公式サイトに同じ人の立ち絵がある数。gather 系の全入口で公式が先かを実際の名簿で数える
+  E21 公式があるのに使っていない（✗）  名簿の人で、画像の出どころが Fandom なのに公式サイトに同じ人の立ち絵がある、または名簿の上位 30 人で小元素がいないのに公式に立ち絵がある（「いない」）数。gather 系の全入口と名簿を回す順（subjects）で公式が先かを実際の名簿で数える
+  E27 公式の人物の絵を読めない版面（情報）  公式サイトがあるキャラの版面で、HTML から人物の絵が 1 枚も見つからない（JS で描く公式など）数
   E19 公式があるのにアップのまま（情報：✗ にしない）  顔だけのアップ（fs > 0.5）が残る小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数を版面ごとに出す。公式が先の規則が gather・控え・入れ替えの全部の入口に効いているかの数え直し（0 に向かう）
   E20 胸像待ちが回っていない  state/emblem_closeup.json の待ちの人に「次に試す見込み」next がない・版面の見込み（emblem_closeup_eta.json）がない・毎回探す名簿の上位の next が 3 時間より古い（後台が回っていない）。close_plan の保存が全部の入口で効いているかの数え。お客さまの版面の分は boards.config.emblem_closeup（待ち）に emblem_closeup_next・_eta がないか・古いかを同じ式で数える（boards_closeup_bad）。入口が close_round を使うかは tests/test_emblem_fill.py も数える\n  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
   E17 人でない名前   キャラの版面で、名簿（emblem_who）の先頭 10 人に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる
@@ -356,8 +357,26 @@ def fandom_over_official(official=None, items=None):
         if it.get("emblem_kind") != "character" or it.get("emblem_people"):
             continue
         bad = [x["subject"] for x in it.get("emblem") or [] if isinstance(x, dict) and emblem.fandom_sourced(x) and official(it, x["subject"])]
+        # 小元素がまだいない人（名簿の上位）にも公式の立ち絵がある：回しの順で後ろに回って何周も取られなかった（BLEACH Rukia・Kisuke）
+        import emblem_fill
+        have = {_n for x in it.get("emblem") or [] if isinstance(x, dict) for _n in emblem_fill._who_of(x.get("subject"))}
+        bad += [f"{w}（いない）" for w in (it.get("emblem_who") or [])[:30] if not emblem.not_character(w) and not emblem_fill._who_of(w) & have and official(it, w)]
         if bad:
             out[it["name"]] = bad
+    return out
+
+
+def official_blind(items=None):
+    """E27（情報）：公式サイトがあるキャラの版面で、公式サイトの HTML から人物の絵が 1 枚も見つからない版面 → [版面]。
+    JS で描く公式（Astrae Oratio・GTA 6・绝区零…）は今の読み方では主な手段にならない。数を出して減らす（0 にはできない版面もある）。"""
+    import emblem
+    out = []
+    for it in items if items is not None else yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", []):
+        if it.get("emblem_kind") != "character" or it.get("emblem_people"):
+            continue
+        site = emblem.official_site(it)
+        if site and not emblem.official_index(site):
+            out.append(it["name"])
     return out
 
 
@@ -666,11 +685,15 @@ def check(pg, who, width, out, full=False, guest=False):
             print(f"  情報 E19 数えられなかった：{e}")
     if guest:
         try:
-            fo = fandom_over_official()
-            print(f"  情報 E21 公式サイトに立ち絵があるのに Fandom から取った人 {sum(len(v) for v in fo.values())} 人（{len(fo)} 版面）"
-                  + "".join(f"\n    {k}：{'・'.join(v[:4])}" for k, v in fo.items()))
+            found["E21"] = [f"{k}：{'・'.join(v[:6])}（{len(v)} 人）" for k, v in fandom_over_official().items()]   # ✗：公式の立ち絵があるのに使っていない人（Fandom の絵のまま・小元素がいない）
         except Exception as e:  # noqa: BLE001
             print(f"  情報 E21 数えられなかった：{e}")
+        try:
+            blind = official_blind()
+            if blind:
+                print(f"  情報 E27 公式サイトを読んでも人物の絵が 0 枚の版面（JS で描く・一覧が別の網址）{len(blind)}：" + "・".join(blind))
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E27 数えられなかった：{e}")
     if guest and (ex := exhausted()):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
     if nf_why:
