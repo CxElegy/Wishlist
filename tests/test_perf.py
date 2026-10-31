@@ -28,5 +28,20 @@ class Fonts(unittest.TestCase):
                              src.count('href="https://fonts.gstatic.com" crossorigin>'), f)
 
 
+class FontsDoNotBlockPaint(unittest.TestCase):
+    """Google Fonts の CSS を描画を止める <link rel=stylesheet> で読まない（Fast 3G の最初の表示 4.3→1.2 秒、2026-10-31）。
+    render.py・welcome.py のどの頁でも font_link を通す（連動の範囲：本体 7 頁＋入口＋擬音の書体）"""
+    def test_no_blocking_font_stylesheet_in_sources(self):
+        for f in ("render.py", "welcome.py"):
+            src = (pathlib.Path(render.__file__).parent / f).read_text(encoding="utf-8")
+            self.assertNotRegex(src, r'<link rel="stylesheet" href="\{[^}]*FONTS[^}]*\}">', f)
+            self.assertNotIn('<link rel="stylesheet" href="{e(likefx.SFX_FONT)}">', src, f)
+
+    def test_font_link_is_swapped_in_after_load(self):
+        h = render.font_link(render.FONTS)
+        self.assertIn('media="print" onload="this.media=\'all\'"', h)
+        self.assertIn("<noscript>", h)
+
+
 if __name__ == "__main__":
     unittest.main()
