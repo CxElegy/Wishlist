@@ -174,6 +174,19 @@ class CloseupOfficial(unittest.TestCase):
         got = emb_check.fandom_over_official(official=lambda it, s: ["u"] if s in ("Ichigo", "Ai") else [], items=items)
         self.assertEqual(got, {"A": ["Ichigo"]})
 
+    def test_e21_counts_roster_people_without_emblem(self):
+        """E21 は ✗：Fandom の絵のまま、に加えて、名簿の上位で小元素がまだいないのに公式に立ち絵がある人（いない）も数える。"""
+        it = {"name": "A", "emblem_kind": "character", "emblem_who": ["Ichigo Kurosaki", "Rukia Kuchiki", "Nobody Here"],
+              "emblem": [{"subject": "Ichigo Kurosaki", "shape": "cutout", "why": "公式サイトの立ち絵"}]}
+        got = emb_check.fandom_over_official(official=lambda i, s: ["u"] if "Rukia" in s or "Ichigo" in s else [], items=[it])
+        self.assertEqual(got, {"A": ["Rukia Kuchiki（いない）"]})
+
+    def test_official_blind_counts_sites_without_person_art(self):
+        import emblem
+        it = lambda n, s: {"name": n, "emblem_kind": "character", "site": s}
+        with mock.patch.object(emblem, "official_index", side_effect=lambda site: [({"x"}, "u")] if "ok" in site else []):
+            self.assertEqual(emb_check.official_blind(items=[it("A", "https://ok.example/"), it("B", "https://js.example/"), {"name": "C", "emblem_kind": "character"}]), ["B"])
+
     def test_official_retaken_row_is_not_fandom(self):
         """「公式サイトの立ち絵：Fandom から取り直し」の行は取り直し済み＝E21 にも fandom_rows にも数えない。"""
         import emblem_fill as ef

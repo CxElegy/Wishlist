@@ -1139,7 +1139,9 @@ def official_key(w):
     """名前の語を、ローマ字の書き方の違い（Tōshirō・Toushiro・Toshiro）が同じになる形に。長音の記号・ou・oo・uu を 1 つの母音に。"""
     s = unicodedata.normalize("NFKD", str(w).lower())
     s = "".join(ch for ch in s if not unicodedata.combining(ch))
-    return re.sub(r"ou|oo|uu", lambda m: m.group(0)[0], s)
+    s = re.sub(r"ou|oo|uu", lambda m: m.group(0)[0], s)
+    s = re.sub(r"m(?=[bp])", "n", s)   # Shimbun = Shinbun
+    return re.sub(r"sh|ch|ts|j|fu", lambda m: {"sh": "s", "ch": "t", "ts": "t", "j": "z", "fu": "hu"}[m.group(0)], s)   # ヘボン式 = 訓令式（Hitsugaya/Hitugaya・Jin/Zin）
 
 
 OFFICIAL_LIST = re.compile(r'href=["\']([^"\'#?]*(?:/chara|/character|/member|/cast)[^"\'#?]*?/?)["\']', re.I)
@@ -1168,21 +1170,30 @@ def official_pages(site, extra=2):
     return out
 
 
+_OFFICIAL_INDEX = {}
+
+
+def official_index(site):
+    """公式サイトの人物の絵 → [(パスの語の official_key の集合, 網址)]。1 回の実行の間は作り直さない（名簿の全員を調べても HTML を読むのは 1 回）。"""
+    if site not in _OFFICIAL_INDEX:
+        out = []
+        for html, base in official_pages(site):
+            for m in re.finditer(r'(?:src|data-src|srcset)=["\']([^"\'\s,]+\.(?:png|webp|jpe?g))', html, re.I):
+                u = urllib.parse.urljoin(base, m.group(1).replace("&amp;", "&"))
+                path = urllib.parse.urlparse(u).path
+                if OFFICIAL_PATH.search(path) and not OFFICIAL_SKIP.search(path) and u not in {x[1] for x in out}:
+                    out.append(({official_key(s) for s in re.split(r"[/_.\-\s]+", path) if s}, u))
+        _OFFICIAL_INDEX[site] = out
+    return _OFFICIAL_INDEX[site]
+
+
 def official_images(site, words, limit=6):
     """公式サイトのトップページにあるキャラの絵（パスに char/member/cast… とそのキャラの名前の語が入るもの）→ [網址]。
     BLEACH Mirrors High の公式サイトは /top/character/ichigo/body.webp（透明背景の公式立ち絵）。名前の語はパスの区切りごとに一致を見る（姓でも名でも）。"""
     if not site:
         return []
     ws = {official_key(w) for w in words if len(w) >= 3}
-    out = []
-    for html, base in official_pages(site):
-        for m in re.finditer(r'(?:src|data-src|srcset)=["\']([^"\'\s,]+\.(?:png|webp|jpe?g))', html, re.I):
-            u = urllib.parse.urljoin(base, m.group(1).replace("&amp;", "&"))
-            path = urllib.parse.urlparse(u).path
-            if u not in out and OFFICIAL_PATH.search(path) and not OFFICIAL_SKIP.search(path) \
-                    and ws & {official_key(s) for s in re.split(r"[/_.\-\s]+", path)}:
-                out.append(u)
-    return out[:limit]
+    return [u for keys, u in official_index(site) if ws & keys][:limit]
 
 
 def official_site(item):
