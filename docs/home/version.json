@@ -1,32 +1,32 @@
 {
- "admin": "99158a6922dc",
- "admin-ai": "554b8755a941",
+ "admin": "49c7f1d6433d",
+ "admin-ai": "91fd06287fc9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "41d45ed1"
+   "2bc148f2"
   ],
   "tokens": [
    "AI 編集のトークン",
    "5c1d5f6b"
   ]
  },
- "admin-boards": "005b529e8fd8",
+ "admin-boards": "1c29eb3edfb9",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "94c95f38"
+   "5f4bb58c"
   ],
   "votes": [
    "投票",
    "d0c0ea84"
   ]
  },
- "admin-emblem": "1bbcdd41e5a9",
+ "admin-emblem": "65def7d2ad16",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3bad42e4"
+   "572b74e6"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "8ba4ed3ebb44",
  "admin-members_marks": {},
- "admin-now": "c2a1eb13f75e",
+ "admin-now": "d3d411753492",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "75458d30"
+   "2ecb390e"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "582c758e"
+   "8ca01a63"
   ],
   "term-panel": [
    "ライブログ",
-   "cdba3ad6"
+   "cbbb913c"
   ]
  },
- "admin-system": "d9f20f257d9a",
+ "admin-system": "808eed08750c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ac7ce0d8"
+   "22f4806d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e3e5a7d6"
+   "4cd50637"
   ]
  },
  "admin_marks": {},
- "heat": "e65faeed9c86",
+ "heat": "b474677d8c20",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "b69b9a57"
+   "7bfe8d59"
   ],
   "ranking": [
    "ランキング",
-   "4b97fb49"
+   "d6de8acb"
   ]
  },
- "index": "4dda9d2a5616",
+ "index": "d70a1471971d",
  "index_marks": {
   "front": [
    "トップ",
-   "f13247d4"
+   "30baa881"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "ab480bc6"
+   "39dfe5ad"
   ],
   "w-130724c0": [
    "猫用品",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "5f42b728"
+   "03cf15b5"
   ],
   "w-b867582f": [
    "あつ森",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "c2e56085"
+   "51accace"
   ]
  },
- "updated": "11.01 08:40",
- "wishlist": "fbdd1f47f902"
+ "updated": "11.01 08:35",
+ "wishlist": "4f2b28fcf258"
 }
