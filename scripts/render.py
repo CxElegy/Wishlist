@@ -1612,7 +1612,7 @@ def _picks(picks, works, feedback=None, used=None):
     shuffle = (f'<div class="pknav"><button type="button" class="shuffle back" aria-label="前のおすすめに戻る" disabled>◀◀ 前へ</button>'
                f'<button type="button" class="shuffle next" aria-label="ほかのおすすめを見る">▶▶ 入れ替え<small>全 {len(picks)} 件</small></button></div>'
                if rest else "")
-    return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>気になるかも<em>？</em></h2><span class="flag">店長のおすすめ</span>'
+    return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>気になるかも<em>？</em></h2><span class="flag">{PICKS_FLAG}</span>'
             f'<span>欲しい物リスト・フォロー中の版面・👍したニュースから選びました{"。👍 / 👎 で好みを教えてください" if feedback else ""}'
             f' · <a href="wishlist.html">♥ 欲しい物リスト</a></span>{shuffle}</div>'
             f'{body}</section>' + (f"<script>{SHUFFLE_JS}</script>" if shuffle else ""))
@@ -1741,13 +1741,23 @@ def _vote_buttons():
             f'<i>{_THUMB_DOWN}<span>興味なし</span></i></button>')
 
 
+PICKS_FLAG = "店長のおすすめ"   # 「気になるかも？」の札。お客さまのページは user_pages.build が SETTINGS_JA["picks_flag"] にする
+
 VOTE_JS = """
 (() => {
-  const cfg = __CFG__, KEY = 'wishlist-votes';
+  // お客さま本人のページ（meta wl-own）：票は本人の account へ（my_vote_add / my_votes_own、ログインの鍵つき）。店長のページは今までどおり
+  const OWN = !!document.querySelector('meta[name="wl-own"]');
+  const cfg = __CFG__, KEY = OWN ? 'wishlist-votes-own' : 'wishlist-votes';
   let mine = {};
   try { mine = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (_) {}
   const headers = { apikey: cfg.key, 'Content-Type': 'application/json', Prefer: 'return=minimal' };
   if (cfg.key.startsWith('eyJ')) headers.Authorization = 'Bearer ' + cfg.key;
+  const authHeaders = () => {
+    if (!OWN) return headers;
+    let tok = '';
+    try { tok = (JSON.parse(localStorage.getItem('wl-auth') || '{}') || {}).access_token || ''; } catch (_) {}
+    return tok ? { ...headers, Authorization: 'Bearer ' + tok } : headers;
+  };
   const boxes = [];   // [控件, 数据, 投踩后变淡的元素, 提示文字]
   const paint = url => boxes.forEach(([box, data, dim, tip]) => {
     if (data.url !== url) return;
@@ -1759,8 +1769,11 @@ VOTE_JS = """
   });
   // 押した瞬間に画面を変える（楽観的更新）。保存は裏で、同じ記事の票は順番に送る。失敗したら元に戻す
   const saved = { ...mine }, queue = {}, touched = new Set();
-  const send = (data, v) => fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/feedback',
-    { method: 'POST', headers, body: JSON.stringify({ ...data, vote: v, account: window.WL_ACCOUNT || 'test1' }), keepalive: true })
+  const send = (data, v) => fetch(cfg.url.replace(/\\/$/, '') + (OWN ? '/rest/v1/rpc/my_vote_add' : '/rest/v1/feedback'),
+    { method: 'POST', headers: authHeaders(), keepalive: true, body: JSON.stringify(OWN
+      ? { p_url: data.url, p_vote: v, p_kind: data.kind || null, p_title: data.title || null, p_work: data.work || null,
+          p_because: data.because || null, p_hits: data.hits || null, p_words: data.words || null }
+      : { ...data, vote: v, account: window.WL_ACCOUNT || 'test1' }) })
     .then(async r => { if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120)); });
   const fxOf = el => (el.closest('[data-fx]') || {}).dataset?.fx || 'pop';   // 版面のテーマの演出（likefx.py）
   const embOf = el => {   // いまその作品の版面に出ている小元素の画像（👍 の演出で一緒に飛ぶ）
@@ -1812,7 +1825,8 @@ VOTE_JS = """
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
   new Set(boxes.map(b => b[1].url)).forEach(paint);
   // 数据库里「我点过的票」为准：换浏览器、换手机、清了缓存也显示成按过的样子（db/my_votes.sql）
-  fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/rpc/my_votes', { method: 'POST', headers, body: JSON.stringify({ p_account: window.WL_ACCOUNT || 'test1' }) })
+  fetch(cfg.url.replace(/\\/$/, '') + (OWN ? '/rest/v1/rpc/my_votes_own' : '/rest/v1/rpc/my_votes'),
+    { method: 'POST', headers: authHeaders(), body: JSON.stringify(OWN ? {} : { p_account: window.WL_ACCOUNT || 'test1' }) })
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(rows => {
       const old = mine;
@@ -1955,6 +1969,7 @@ SETTINGS_ZH = {
 SETTINGS_JA = {
     "lang": "ja", "also": "⇄ {} にも", "first_board": "はじめに", "title": "設定", "back": "← 自分のページへ", "back_href": "./", "updated": "更新", "add": "＋ 追いかけるものを足す", "links": "",
     # 0 個の人の入口の文字（設定ページ・最初のポスター・本人のページの静かな版面）。Python 側の日本語はここに置く（tests が数える）
+    "picks_flag": "あなたへのおすすめ",
     "none_hint": "まだ何も追いかけていません。選ぶと、ここで版面の大きさを決められます。", "pick": "追いかけるものを選ぶ →",
     "start_h": "最初の 1 つを選ぼう", "start_p": "好きな作品・人・場所を選ぶと、記事がここに並びます。",
     "none_status": "まだ何も追いかけていません。選ぶボタンは上のポスターにあります。", "out": "外す", "collecting": "記事を集めています。集まりしだい、ここに並びます", "out_aria": " を外す", "other": "その他",
@@ -4392,8 +4407,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-mine="2"] .wl-off{display:none!important}
-html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .swish,
-html[data-mine="2"] .vt,html[data-mine="2"] .vote,html[data-mine="2"] [data-vote]{display:none!important}
+html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .swish{display:none!important}
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}
 @media (max-width:560px){html[data-mine="2"] body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.wl-cards>a.np{display:flex}}

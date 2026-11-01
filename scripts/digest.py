@@ -1674,6 +1674,11 @@ def load_feedback():
             print(f"投票：从数据库读到 {len(rows)} 条", file=sys.stderr)
     except Exception as err:
         print(f"  [投票] 读数据库失败，用上次存的：{err}", file=sys.stderr)
+    return latest_votes(rows)
+
+
+def latest_votes(rows):
+    """票の行（古い順）から、網址ごとの最後の票（撤回の 0 は除く）。店長もお客さまも同じ規則。"""
     latest = {}
     for r in rows:
         if r.get("url") and r.get("vote") in (-1, 0, 1):
@@ -1960,14 +1965,17 @@ def page_stories():
     return urls, [t for t in titles if t]
 
 
-def recommend(force_discover=False):
+def recommend(force_discover=False, user=None):
     """「我会喜欢？」：从最近收集到的消息里挑推荐，写进 state/recommend.json，网页读它。四种来源，每条写明真实的理由：
     - wish：标题命中愿望清单里某件东西的喜好标签（likes），够分才推荐 →「因为你想要「那件东西」」；
     - board：关注的版面里收集到、但没上版面的其他消息（按投票学到的口味排）→「你关注的「作品」还有这条」；
     - follow / hesitate：同类新发现（见 discover）；
     赞过的消息和候选有共同的喜好 / 是同一个作品时，理由写「因为你赞过「那条」」。
+    user（お客さま本人の分、user_pages.py）= {"votes": 本人の票, "wishes": 本人の欲しい物, "works": 本人が追いかけている版面の名前,
+    "on_page": (本人のページにある記事の網址の集合, 見出し)}：同じ規則を本人の票で回す。ネットは使わず（写真は候補の写真か前回の写真）、
+    state には書かず、{"picks", "taste"} を返す。票がまだない人は、追いかけている版面の新着から（版面の基礎点）。
     已经在网页版面里的消息（和别家报道的同一件事）不推荐：版面里已经看得到。不让 AI 联网，只用收集到的消息。"""
-    wishes = [w for w in load_wishlist() if w.get("likes")]
+    wishes = [w for w in (user["wishes"] if user else load_wishlist()) if w.get("likes")]
     common = {_like_key(k) for w in wishes for label, kws in w["likes"].items()
               if label in (w.get("basics") or []) for k in kws}
     old = load_json(RECOMMEND_FILE) or {}
@@ -1976,7 +1984,8 @@ def recommend(force_discover=False):
     misses = {u: d for u, d in (old.get("image_misses") or {}).items() if d == today}
     images = {u: i for u, i in old.get("images", {}).items() if i or u in misses}
     wish_urls = {w.get("url") for w in wishes}
-    votes = load_feedback()
+    votes = user["votes"] if user else load_feedback()
+    fimg = (lambda chosen, refs, url: chosen or images.get(url)) if user else find_image   # 本人の分はネットで写真を探さない
     taste = learn_taste(votes, wishes, common)
     disliked = {r["url"] for r in votes if r["vote"] < 0}
     disliked_grams = [_title_grams(r.get("title") or "", []) for r in votes if r["vote"] < 0]
@@ -2000,12 +2009,14 @@ def recommend(force_discover=False):
                 return r["title"]
         return None
 
-    on_page, page_titles = page_stories()
-    found = sorted(discover(force_discover, taste), key=lambda x: x.get("date") or "", reverse=True)
+    on_page, page_titles = (set(user["on_page"][0]), list(user["on_page"][1])) if user else page_stories()
+    raw = ([x for x in (load_json(DISCOVER_FILE) or {}).get("entries", []) if x.get("item") in user["works"] and not x.get("probe")]
+           if user else discover(force_discover, taste))   # 本人の分は、店長が集めた同類のうち本人の版面のものだけ
+    found = sorted(raw, key=lambda x: x.get("date") or "", reverse=True)
     probes = [x for x in found if x.get("probe")]
     found = [x for x in found if not x.get("probe")]
     entries = [(d, path.stem, item["name"]) for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]
-               for item in load_json(path)["items"] for d in item["entries"]]
+               for item in load_json(path)["items"] for d in item["entries"] if not user or item["name"] in user["works"]]
     recent = sorted(INBOX_DIR.glob("????-??-??.json"))[-BOARD_DAYS:]
     recent = {p.stem for p in recent}
     pool, board = [], {}
@@ -2075,7 +2086,7 @@ def recommend(force_discover=False):
             continue
         used |= key
         if url not in images:
-            images[url] = find_image(d.get("image"), [entry_from_dict(d)], url)
+            images[url] = fimg(d.get("image"), [entry_from_dict(d)], url)
         grams.append(g)
         picks.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
                       "image": images[url], "because": w["name"], "hits": hits, "score": score, "kind": "wish",
@@ -2099,7 +2110,7 @@ def recommend(force_discover=False):
         if taken(url) or any(b["url"] == url for b in boards):
             continue
         if url not in images:
-            images[url] = find_image(d.get("image"), [entry_from_dict(d)], url)
+            images[url] = fimg(d.get("image"), [entry_from_dict(d)], url)
         grams.append(g)
         per[work] = per.get(work, 0) + 1
         boards.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
@@ -2125,7 +2136,7 @@ def recommend(force_discover=False):
             if url in voted or url in seen_urls or url in on_page or dedupe.same(x["title"]):
                 continue
             if url not in images:
-                images[url] = find_image(x.get("image"), [entry_from_dict(x)], url)
+                images[url] = fimg(x.get("image"), [entry_from_dict(x)], url)
             seen_urls.add(url)
             got.append((x, images[url], url))
         got.sort(key=lambda c: not c[1])  # 有图的排前面（sort 是稳定的：同样有图时保持按时间）
@@ -2143,6 +2154,8 @@ def recommend(force_discover=False):
     keep = {p["url"] for p in picks}
     # 投票から学んだ口味の上位（トップの右の「あなたの好み」に出す）
     top = sorted(((k, v) for k, v in taste.items() if v > 0), key=lambda kv: -kv[1])[:8]
+    if user:
+        return {"picks": picks, "taste": [[k, v] for k, v in top]}
     misses.update({u: today for u, i in images.items() if not i and u not in misses})
     save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep},
                                "image_misses": {u: d for u, d in misses.items() if u in keep},

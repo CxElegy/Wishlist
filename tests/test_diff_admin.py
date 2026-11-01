@@ -29,6 +29,19 @@ class Roots(unittest.TestCase):
         line = self.SRC.split('html[data-mine="2"] .mastwish', 1)[1].split("\n", 1)[0]
         self.assertNotIn(".hm", line)   # 今日の最高（話題度）は店長と同じに出す
 
+    def test_votes_and_picks_not_hidden_for_customers(self):
+        line = self.SRC.split('html[data-mine="2"] .mastwish', 1)[1].split("\n", 1)[0]
+        for k in (".vt", ".vote", "[data-vote]", ".picks"):
+            self.assertNotIn(k, line)   # 👍👎・気になるかも？は店長と同じに出す（本人の票で）
+
+    def test_own_votes_go_to_own_rpc(self):
+        js = self.SRC.split('VOTE_JS = """', 1)[1].split('"""', 1)[0]
+        for k in ("my_vote_add", "my_votes_own", "wl-own", "wishlist-votes-own"):
+            self.assertIn(k, js)   # お客さまの票は本人の account の関数へ。店長の記憶（wishlist-votes）とも混ぜない
+
+    def test_next_step_only_wishlist(self):
+        self.assertEqual(set(diff_admin.NEXT_STEP), {"目次：欲しい物へのリンク", "見出し：欲しい物リストのボタン"})
+
     def test_nav_one_per_section_level(self):
         self.assertIn("①b", self.SRC)   # 板块が多くても各板块の駅が 1 つは見える
 
