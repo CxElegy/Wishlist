@@ -33,7 +33,7 @@ class GapAll(unittest.TestCase):
     def test_measured_ratio_is_a_failure(self):
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "harness"))
         import ux_check
-        self.assertEqual(ux_check.measured_bad({"loose": [0, 0], "pkcut": [100, 80], "pkv": [10, 10]}), [])
+        self.assertEqual(ux_check.measured_bad({"loose": [0, 0], "pkcut": [100, 95], "pkv": [10, 10]}), [])
         out = ux_check.measured_bad({"pkcut": [1000, 130]})   # 1,394 枚中 130 枚しか測れなかった型
         self.assertEqual(len(out), 1)
         self.assertIn("pkcut", out[0])
