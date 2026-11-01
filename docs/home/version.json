@@ -1,14 +1,14 @@
 {
- "admin": "f0401e331d97",
- "admin-ai": "cdd7f6c0981c",
+ "admin": "0c638910d4bb",
+ "admin-ai": "8151a1cac97d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "fb46295a"
+   "c2decaf7"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f4bf41aa"
+   "378d6673"
   ]
  },
  "admin-boards": "a000730d1be7",
@@ -22,11 +22,11 @@
    "08555d22"
   ]
  },
- "admin-emblem": "c0d6f79b9723",
+ "admin-emblem": "8a9b23297a2a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "39058d16"
+   "6ae71c31"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "8abf9e9aac30",
  "admin-members_marks": {},
- "admin-now": "6ebc573db859",
+ "admin-now": "f9f10ca0597f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "88bd5f8d"
+   "761ac555"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b6263d5c"
+   "27bd415e"
   ]
  },
- "admin-system": "99e074b6d9a5",
+ "admin-system": "2a46a3b16ad9",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d08c7e73"
+   "1783aa2d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ac49a90d"
+   "3f020c9b"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "d1d14aa7"
   ]
  },
- "index": "d0f937056de3",
+ "index": "e89c464bd80c",
  "index_marks": {
   "front": [
    "トップ",
-   "45b148e3"
+   "4a9bfa71"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "0201cf78"
+   "8426fd3d"
   ],
   "w-130724c0": [
    "猫用品",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "4181cd77"
+   "8af9f24a"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "da8f191a"
+   "cdda5fe1"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "5180b5ba"
+   "7e4d69f1"
   ],
   "w-f303ad09": [
    "绝区零",
-   "5b8a2005"
+   "50994219"
   ]
  },
- "updated": "11.01 22:40",
+ "updated": "11.01 22:46",
  "wishlist": "fbf04bc62cad"
 }
