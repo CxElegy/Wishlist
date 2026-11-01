@@ -34,3 +34,14 @@ class MasonTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class MasonOlderTest(unittest.TestCase):
+    def test_closed_older_not_wrapped(self):
+        # 閉じた「もっと見る」を包むと、隠れた写真の測りが 0 のまま写真の余白の点検に数えられた（2026-11-02）
+        self.assertIn("(old && !g.closest('details').open)", render.FIT_JS)
+
+    def test_sb_card_has_no_row_gap(self):
+        # 写真の枠は 9 行にまたがる。字の入らない行にも行の隙間が付いてカードが 73〜86px 高くなっていた
+        self.assertIn("column-gap:12px;row-gap:0;align-content:start}", render.CSS)
+        self.assertIn(":not(:last-child){margin-bottom:8px}", render.CSS)
