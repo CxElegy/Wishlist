@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "9a912e39c52a",
+ "edit_sig": "8d5e22bc35d6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -64,22 +64,6 @@
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 27,
-     "source": "Athlon Sports",
-     "title": "GTA 6 Has More Sports Activities Than You Might Expect — Here’s What’s Included",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1hRWJCVHlXTEVOc0sxdUxuWlBYMlFJLWUtX0lEaUs3Z3hkbV8wM0tTZjhPdzY1X25Hamhjb3JuUk5xR0dldkNaaXhBdmg5ZkdZRTVjUklaMG15RE9OcXY5eUt6ckgxUkFrV1k1Q2cya3Jmd2tROFlQYVlsbE0?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 28,
-     "source": "Collider",
-     "title": "2 of Rockstar's Biggest Games Officially Removed From PlayStation Plus Mere Days Before 'GTA 6'",
-     "url": "https://collider.com/gta-5-red-dead-redemption-2-leaving-playstation-plus-november-2026/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -332,24 +316,34 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "スタバ福袋2027は9500円で前年から700円の値上げ。ゴールドのマグ＆ベアリスタが当たる企画も。",
      "date": "2026-10-31",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "スタバ福袋2027は9500円、前年から700円値上げ。中身はどう変わった？ゴールドのマグ＆ベアリスタが当たる企画も（LIMO）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1MU3B1VGZZdGU2cUxPMExaM0VMMUVwUlJxTThVUGY1TXd1clZISEwyYjRBc1hNNGpGc2ppUjNtNnZtS2RKZ0pCa2s0WUlwUkVTY1M1WGFkR3JURUxQaFRZRE1FaHZPSklmTWtpcVQ1N09jR2gzZTI5TlVsTVZyT3M?oc=5"
+     "headline": "スタバ福袋2027は9500円、前年から700円値上げ。中身はどう変わった？ゴールドのマグ＆ベアリスタが当たる企画も",
+     "highlight": "9500円",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00144577-toushin-000-1-view.png?fmt=jpeg&q=85&exp=10800",
+     "image_via": "AI 挑选",
+     "price": {
+      "now": "¥9,500",
+      "off": "",
+      "was": "¥8,800"
+     },
+     "url": "https://news.yahoo.co.jp/articles/a50aabea5051c91d1123b5f1cb20b4f37cbb193b",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-29",
-     "n": 2,
-     "source": "ウォーカープラス",
-     "title": "渋かわいいマグカップ!? スタバから熊本限定で発売！",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5falU5NjV2YWRFQkt5dUFsUi1rUEJDU21YTFhoOVpnalhjM2k0d0p0N2t4X1NlemVPZkp1NGd1Y0pXYkoxSldWczZKa3FfMXlKXzhQZdIBWkFVX3lxTE8xTXV3eURYSlR6NUVXVmVNV0VRX3d1N3VUUjRvVlQ2S0ZaWjVBLVFKMllhNWxzRmU3VDBtWGxxMnNtTjlJWmJ5Q2VHeUdXSHN0YkJnbDd1V1ppdw?oc=5"
+     "headline": "渋かわいいマグカップ!? スタバから熊本限定で発売！",
+     "highlight": "熊本限定",
+     "image": "https://news.walkerplus.com/article/198076/1194751_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/198076/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
@@ -569,15 +563,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 6,
-     "source": "Finestre sull'Arte",
-     "title": "Alberto Angela arrives at Lucca Comics & Games dressed as... a Mandalorian from Star Wars!",
-     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPNl9VWHdJWG1ubG4zaGlVbjFPTXZLS1FpM1dhNWZxZTh4TlFQb1pRS3VoWDhrR05vSWtNU1gwSnh2V3d2a2x3Y25IdkxCeHdSY2xVb05HeDhMVTNmU0dIaFhvVVNzTHYySWFIMHFEbkNUNjhFc05hZ3lhQWZ5V1BLWTh4eWhfaHFIRVNhWjA3MVUzanRjSXlfZ21acWtJc2R3VGE3azU2X3MyRXRCTTY4WGVMTk1jTDZUM3VtX1RjbmNTMXVKbnE0TGxn?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -770,8 +755,8 @@
      "date": "2026-10-31",
      "headline": "《绝区零》养成指南上新丨赛维里安养成材料预告",
      "highlight": "赛维里安养成材料预告",
-     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png",
-     "image_via": "JSON-LD",
+     "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png",
+     "image_via": "正文图（2 枚から）",
      "url": "http://news.17173.com/content/10312026/182648461.shtml",
      "weight": "normal"
     },
@@ -809,8 +794,8 @@
      "date": "2026-10-31",
      "headline": "《刀塔2》关山难越……PVISION再次被Spirit淘汰！",
      "highlight": "PVISION再次被Spirit淘汰",
-     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/rLMNpIbugixFofw.png",
-     "image_via": "AI 挑选",
+     "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/edQSgIbugixFodf.jpg",
+     "image_via": "正文图（6 枚から）",
      "url": "http://news.17173.com/content/10312026/182710728.shtml",
      "weight": "lead"
     },
@@ -851,15 +836,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 12,
-     "source": "브런치",
-     "title": "A2O LITE, 무대 하나로 보여준 본질",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBQVEFvX042cnJsWFR5NTcybHBDZzB0Y2w3aGk3Z0VpZEVDRG52Z2E5U29VZDdIUmMwb2U4OC1pYjhPWlE2cno3WHk0dXEyQQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -995,15 +971,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 2,
-     "source": "PC Gamer",
-     "title": "How fast do you type, and has playing MMOs improved your typing in any way?",
-     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdnJHQWZGRWVFMnd1dTNCaHFNQW56OXJ5ZUVteDJRSUpGV0hRX25LM2VLejBRMHljNURkX21TVThwNWxybVRnMjduS01VUTFacy1CMVNaa2NQZnNtdGE3WFRCc3VFeXlsTnk4QnhpaDBKZDJnTDdfSFlKVURpNW0tVk5fOWtidU01Y1FKX2FHZ21HSDdGZzJWY0FaaWFxWEpWcm5ldE1jaHpLdXFL?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1055,7 +1022,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-10-31",

@@ -245,17 +245,17 @@
   }
  ],
  "_covered": {
-  "GTA 6": 26,
+  "GTA 6": 28,
   "漫威电影": 26,
   "ILLIT": 8,
   "日本顶级网球赛事": 11,
   "三星手机": 9,
-  "A2O LITE": 11,
+  "A2O LITE": 12,
   "周杰伦": 11,
   "哈利波特剧集": 11,
   "dota2": 6,
   "绝区零": 7,
-  "The Mandalorian": 5,
+  "The Mandalorian": 6,
   "あつ森": 2,
   "Vaundy": 2,
   "Astrae Oratio": 2,
@@ -263,7 +263,8 @@
   "滑雪": 2,
   "BLEACH Mirrors High": 1,
   "猫用品": 1,
-  "MMORPG 新作": 1
+  "MMORPG 新作": 2,
+  "星巴克马克杯": 2
  },
  "A2O LITE": [
   {
@@ -606,6 +607,32 @@
     1
    ],
    "image": "https://egamers.io/wp-content/uploads/2026/10/outer-ring-mmos-next-update-brings-desert-pvp-loot-stealing-and-new-bosses.jpg"
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "スタバ福袋2027は9500円、前年から700円値上げ。中身はどう変わった？ゴールドのマグ＆ベアリスタが当たる企画も",
+   "highlight": "9500円",
+   "blurb": "スタバ福袋2027は9500円で前年から700円の値上げ。ゴールドのマグ＆ベアリスタが当たる企画も。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "price": {
+    "now": "¥9,500",
+    "was": "¥8,800",
+    "off": ""
+   },
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00144577-toushin-000-1-view.png?fmt=jpeg&q=85&exp=10800"
+  },
+  {
+   "headline": "渋かわいいマグカップ!? スタバから熊本限定で発売！",
+   "highlight": "熊本限定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }
