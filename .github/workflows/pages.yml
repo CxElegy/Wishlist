@@ -12,7 +12,7 @@ on:
     branches: [main]
     paths: ["docs/**", ".github/workflows/pages.yml"]   # BACKLOG・PROGRESS・state だけの push では公開しない
   workflow_run:   # bot（GITHUB_TOKEN）の push は push 触発を起こさない → docs/ を push する回が終わったら公開する
-    workflows: ["网页立即更新", "关注清单通信", "后台作業", "写真の一時保管", "ライブラリへ写す", "网页请求"]
+    workflows: ["网页立即更新", "关注清单通信", "后台作業", "网页请求"]   # docs/ を git add する回だけ（写真の一時保管・ライブラリへ写すは state・items.yaml だけ＝公開が空振りするので入れない。tests が両方向で数える）
     types: [completed]
   workflow_dispatch:
 

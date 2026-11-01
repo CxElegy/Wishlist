@@ -159,7 +159,7 @@ jobs:
             if python scripts/pull_rebase.py; then
               python scripts/digest.py render
               git add docs
-              git diff --cached --quiet || git commit -q -m "重新生成网页"
+              git diff --cached --quiet || git commit -q --amend --no-edit   # 上の「后台作業」の提交に畳む（別の提交を足さない＝main の提交が 1 回につき 1 つ）
               git push && exit 0
             else
               git rebase --abort || true
