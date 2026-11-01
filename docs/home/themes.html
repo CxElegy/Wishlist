@@ -1414,10 +1414,11 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=email]').focus();};
       bindLogin(box); addMore(box,keepOpen); return;
     }
+    // 役割の札は店長だけ（2026-11-02，用户定的：一般のユーザーは名前だけ。「お客さま」は言わない）
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
     // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
     box.innerHTML=(role!=='admin'&&SHOP&&!isMine()?L.chip2:'')+'<a class="new home" href="'+esc(HOME)+L.chip1+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'<\/span>'+
-      '<span class="nm">'+esc(sh)+'<\/span><span class="rl '+esc(role)+'">'+esc(label)+'<\/span><\/button>'+
+      '<span class="nm">'+esc(sh)+'<\/span>'+(role==='admin'?'<span class="rl admin">'+esc(label)+'<\/span>':'')+'<\/button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+L.chip5+
       (role==='admin'&&page!=='admin'?L.chip6:'')+
       (tok?L.chip7:'')+
@@ -1928,7 +1929,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>11.02 01:42</b></div></div></header>
+<div class="meta"><small>更新</small><b>11.02 02:04</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
