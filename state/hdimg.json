@@ -5,12 +5,6 @@
   "target": 720,
   "v": 3
  },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
-  "w": 1080,
-  "h": 608,
-  "target": 720,
-  "v": 3
- },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
@@ -726,6 +720,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.mhnse.com/mhnsports/2026/10/29161611/thumb_ccms_80682.jpeg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.newstoon.co.kr/news/photo/202610/81715_104460_512.jpg": {
   "w": 600,
   "h": 400,
@@ -779,12 +779,6 @@
  "https://cdn.tgdaily.co.kr/news/photo/202610/407725_211766_111.jpg": {
   "w": 1280,
   "h": 799,
-  "target": 720,
-  "v": 3
- },
- "https://cdn.utaten.com/uploads/images/kentei/kentei/1174/2c512f1f2055341b9217e039060ef29b1b188e85.jpeg?r=2026103103": {
-  "w": 1200,
-  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -1274,6 +1268,12 @@
  "https://hype.my/wp-content/uploads/2026/10/edit-6-1.webp": {
   "w": 1920,
   "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
+  "w": 1080,
+  "h": 608,
   "target": 720,
   "v": 3
  },
@@ -2069,19 +2069,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261031wow034.jpg": {
-  "w": 640,
-  "h": 300,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.563,
-  "local": "pics/89ac15a62ba24679.webp",
-  "out": [
-   1280,
-   600
-  ],
-  "why": "看不清"
- },
  "https://img.toy-people.com/member/179319829696_1200.jpg": {
   "w": 668,
   "h": 668,
@@ -2155,7 +2142,7 @@
  "https://kagit-media.atreez.cc/uploads/2026-10-30/i1d2joh29o153ez1gglsfaot.jpg": {
   "w": 1600,
   "h": 900,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://kubrick.htvapps.com/htv-prod/images/8597236e-02f2-41ea-b263-0d7e83f76fb3.png?crop=1.00xw%3A0.789xh%3B0%2C0.0269xh&resize=1200%3A*": {
@@ -2453,6 +2440,12 @@
   "w": 1024,
   "h": 683,
   "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/953358_1.jpg": {
+  "w": 1024,
+  "h": 683,
+  "target": 720,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/10/HVmuJmVWsAAndQw.jpg": {

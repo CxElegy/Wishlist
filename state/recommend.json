@@ -48,8 +48,8 @@
   "https://times.abema.tv/zt/articles/-/10284560": "https://times-abema.ismcdn.jp/mwimgs/0/3/1200w/img_03b65a1001af09aa2423289fa7b7f08b578497.jpg",
   "https://topics.smt.docomo.ne.jp/amp/article/tvasahinews/business/tvasahinews-000544430": "https://img.topics.smt.news.goo.ne.jp/picture/tvasahinews/m_tvasahinews-000544430.jpg",
   "https://toyokeizai.net/articles/-/962632": "https://tk.ismcdn.jp/mwimgs/c/2/1200xm/img_c2b201ad86a1a37839adff402839c48e392341.jpg",
-  "https://utaten.com/kentei/index/1174/": "https://cdn.utaten.com/uploads/images/kentei/kentei/1174/2c512f1f2055341b9217e039060ef29b1b188e85.jpeg?r=2026103103",
   "https://webun.jp/articles/-/1119302": "https://www.bing.com/th?id=ONUT.Atrc8zvAwiIrtr2ezW7inA&pid=News&w=512",
+  "https://www.anewsa.com/detail.php?number=3213263": "https://www.anewsa.com/news_images/2026/10/22/mark/20261022200800.jpg",
   "https://www.asiae.co.kr/article/2026102914192350651": "https://cphoto.asiae.co.kr/listimglink/1/2026082716365095566_1787816210.jpg",
   "https://www.bleachernation.com/picks/2026/10/31/fernandez-vs-shnaider-prediction-at-the-toray-pan-pacific-open-tennis-saturday-october-31/": "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300",
   "https://www.chinatimes.com/realtimenews/20261029004039-260421": "https://images.chinatimes.com/newsphoto/2026-10-29/656/20261029004040.jpg",
@@ -1487,6 +1487,27 @@
   },
   {
    "batch": 5,
+   "because": "A2O LITE",
+   "date": "2026-10-31",
+   "hits": [],
+   "image": "https://www.anewsa.com/news_images/2026/10/22/mark/20261022200800.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "아시아뉴스통신",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "'인기가요' 라인업, 아이브·라이즈·A2O LITE 등 출격",
+   "url": "https://www.anewsa.com/detail.php?number=3213263",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-10-31",
    "hits": [],
@@ -1526,27 +1547,6 @@
    "url": "https://www.sohu.com/a/1095584739_122094388",
    "words": [],
    "work": "周杰伦"
-  },
-  {
-   "batch": 5,
-   "because": "A2O LITE",
-   "date": "2026-10-30",
-   "hits": [],
-   "image": "https://cdn.utaten.com/uploads/images/kentei/kentei/1174/2c512f1f2055341b9217e039060ef29b1b188e85.jpeg?r=2026103103",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "UtaTen",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "【A2O LITE】話題のK-POPガールズグループ・A2O LITEのクイズに挑戦！",
-   "url": "https://utaten.com/kentei/index/1174/",
-   "words": [],
-   "work": "A2O LITE"
   },
   {
    "batch": 5,
@@ -2133,11 +2133,11 @@
    8
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
