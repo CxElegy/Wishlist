@@ -6,6 +6,7 @@
 import pathlib
 import sys
 import tempfile
+import re
 import unittest
 from unittest import mock
 
@@ -208,3 +209,10 @@ class SoftenLoudAlt(unittest.TestCase):
             return render.render([issue], order=["X"])
         self.assertRegex(page("#EC1D24", "#FFFFFF"), r'<section[^>]*class="sec[^"]*\bsoftalt\b')
         self.assertNotRegex(page("#F1EEE6", "#1A1C22"), r'<section[^>]*class="sec[^"]*\bsoftalt\b')
+
+    def test_older_cards_all_c3_so_masonry_can_stack_them(self):
+        """過去のニュースは最後の行も c3（c4/c6/c12 に広げない）：広げた行は固定の行になり、積み上げ（mason）に入れず底が空く（2026-11-02）。"""
+        for n in (1, 2, 3, 5, 6, 7, 10):
+            html = render._older([story(i, "lead" if i == 0 else "normal") for i in range(n)], "2026-11-01")
+            spans = re.findall(r'<article class="card (?:nophoto )?a (c\d+)', html)
+            self.assertEqual(spans, ["c3"] * n, n)

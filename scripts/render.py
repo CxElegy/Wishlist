@@ -366,7 +366,8 @@ button{font-family:inherit}
 .rs1{grid-row:span 1}.rs2{grid-row:span 2}.rs3{grid-row:span 3}.rs4{grid-row:span 4}
 /* 小さいカードの段（JS の mason が .mas に包む）：決まった升目で同じ段の背をそろえず、1px の行に 1 枚ずつ一番低い列へ積む。中身の高さで詰まり、段の途中に空きが出ない（2026-11-02 L1・L2） */
 .mas{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:22px;grid-auto-rows:1px;align-items:start;margin-bottom:-28px}
-.mas>.card.c4,.mas>.side{grid-column:auto;align-self:start}.mas>.card.c8{grid-column:span 2;align-self:start}
+.older .mas{grid-template-columns:repeat(4,minmax(0,1fr))}  /* 過去のニュース（c3）も同じ積み方で 4 列 */
+.mas>.card.c4,.mas>.card.c3,.mas>.side{grid-column:auto;align-self:start}.mas>.card.c8{grid-column:span 2;align-self:start}
 .mas>.side{display:flex;flex-direction:column;gap:28px}
 .side h3{font-size:20px;line-height:1.4}
 .s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}
@@ -636,7 +637,7 @@ button{font-family:inherit}
  .hero{grid-template-columns:1fr}.hero h2,.lead h2{font-size:22px}
  .lead,.s12,.s6,.s4{grid-column:span 12}.rs1,.rs2,.rs3,.rs4{grid-row:auto}
  .card.mini{grid-template-columns:110px minmax(0,1fr)}
- .mas{display:contents}.mas>.card.c4,.mas>.card.c8{grid-column:span 12;grid-row:auto!important}.mas>.side{display:contents}
+ .mas{display:contents}.mas>.card.c4,.mas>.card.c3,.mas>.card.c8{grid-column:span 12;grid-row:auto!important}.mas>.side{display:contents}
  .calm{flex-wrap:wrap;gap:12px;padding:4px 14px 16px}.calm .pic{display:none}
  .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
 }
@@ -1218,7 +1219,7 @@ def _older(stories, today, more=0, texts=()):
     if not stories:
         return (f'<details class="older"><summary>過去のニュース · {len(texts)} 件<span></span></summary>'
                 f'{_brief(texts)}</details>')
-    packed = _pack(stories, lambda s: 3)
+    packed = [(s, 3) for s in stories]   # 全部 c3：最後の行を c4/c6/c12 に広げない（広げると固定の行になり、mason が積めない。2026-11-02）
     first, last = stories[-1].get("date") or stories[-1]["_issue"], stories[0].get("date") or stories[0]["_issue"]
     rng = f"{first[5:].replace('-', '.')} – {last[5:].replace('-', '.')}"
     cards = "".join(_tcard(s, w, i, today, small=True) for i, (s, w) in enumerate(packed))
@@ -3362,8 +3363,14 @@ FIT_JS = """
   let mt; const mro = window.ResizeObserver && new ResizeObserver(() => { clearTimeout(mt); mt = setTimeout(mason, 60); });
   const mason = () => {
     document.querySelectorAll('section.sec .grid').forEach(g => {
-      if (g.closest('.older') || !g.offsetParent) return;
+      if (!g.offsetParent) return;
+      const old = !!g.closest('.older');   // 過去のニュース：c3 の記事が全部同じ積み方（閉じていると高さ 0 なので、開いたとき〔toggle〕に積む）
       let m = g.querySelector(':scope > .mas');
+      if (!m && old) {
+        const ks = [...g.children].filter(k => k.matches('article.card'));
+        if (ks.length < 2) return;
+        m = document.createElement('div'); m.className = 'mas'; g.insertBefore(m, ks[0]); ks.forEach(c => { m.append(c); mro && mro.observe(c); });
+      }
       if (!m) {
         const ks = [...g.children], ok = k => k.matches('article.card.mini.c4, .side'), run = [];
         let i = ks.findIndex(k => k.matches('article.card.lead.c8') && ks[ks.indexOf(k) + 1] && ks[ks.indexOf(k) + 1].matches('.side'));
@@ -3379,18 +3386,20 @@ FIT_JS = """
       span();
       // 終わりの列の底がでこぼこ（80px 超）なら、最後の 5 枚以内の並び順を入れ替えて、列の底の差が一番小さい順にする（日付の順は 5 枚の中だけ前後する）
       {
-        const hs = c => c.getBoundingClientRect().height + gap, minis = [...m.children].filter(c => c.matches('.mini')), lead = m.querySelector(':scope > .lead'), sd = m.querySelector(':scope > .side');
-        const base = lead ? [hs(lead), hs(lead), sd ? hs(sd) : 0] : [0, 0, 0], K = Math.min(5, minis.length), head = minis.slice(0, minis.length - K), tail = minis.slice(minis.length - K);
+        const hs = c => c.getBoundingClientRect().height + gap, minis = [...m.children].filter(c => old || c.matches('.mini')), lead = m.querySelector(':scope > .lead'), sd = m.querySelector(':scope > .side');
+        const base = old ? [0, 0, 0, 0] : lead ? [hs(lead), hs(lead), sd ? hs(sd) : 0] : [0, 0, 0], K = Math.min(old ? 9 : 5, minis.length), head = minis.slice(0, minis.length - K), tail = minis.slice(minis.length - K);
         const run = order => { const c = base.slice(); order.forEach(k => { const i = c.indexOf(Math.min(...c)); c[i] += hs(k); }); return Math.max(...c) - Math.min(...c); };
+        // 過去のニュースは最後の 9 枚の入れ替えが多すぎる（9! 通り）ので、決まった種の乱数で 600 通りを試す
+        const samp = (a, n) => { let s = 7; const r = () => (s = (s * 1103515245 + 12345) % 2147483648) / 2147483648; return Array.from({length: n}, () => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; }); };
         const perms = a => a.length < 2 ? [a] : a.flatMap((x, i) => perms([...a.slice(0, i), ...a.slice(i + 1)]).map(r => [x, ...r]));
         if (innerWidth > 760) {
           const cur = run([...head, ...tail]);
-          if (cur > 60) { const best = perms(tail).map(o => [run([...head, ...o]), o]).sort((x, y) => x[0] - y[0])[0]; if (best[0] < cur - 20) best[1].forEach(c => m.append(c)); }
+          if (cur > 60) { const best = (old ? samp(tail, 600) : perms(tail)).map(o => [run([...head, ...o]), o]).sort((x, y) => x[0] - y[0])[0]; if (best[0] < cur - 20) best[1].forEach(c => m.append(c)); }
         }
       }
       const bot = k => k.getBoundingClientRect().bottom, cs = [...m.children], T = Math.max(...cs.map(bot));
       // 各列の最後の小さいカードは、底の差だけ写真の枠を伸ばす（顔・題字が 6 割以上残る位置で切れるときだけ。主役の位置が無い絵は切れるのが 12% 以内の所まで）。伸ばせない絵は空けたまま（ux_check の gridHole が数える）
-      const cols = {}; cs.forEach(c => { if (c.matches('.mini')) { const x = Math.round(c.offsetLeft / 20); if (!cols[x] || bot(c) > bot(cols[x])) cols[x] = c; } });
+      const cols = {}; cs.forEach(c => { if (old || c.matches('.mini')) { const x = Math.round(c.offsetLeft / 20); if (!cols[x] || bot(c) > bot(cols[x])) cols[x] = c; } });
       Object.values(cols).forEach(c => {
         const p = c.querySelector(':scope > .pic'), s = Math.floor(T - bot(c)); if (!p || s < 12 || c.matches('.sb')) return;
         const w = p.clientWidth, img = p.querySelector('img:not(.bg):not(.ico)'), h = p.clientHeight;
@@ -3405,6 +3414,7 @@ FIT_JS = """
     });
   };
   mason();
+  document.querySelectorAll('details.older').forEach(d => d.addEventListener('toggle', () => d.open && setTimeout(mason, 0)));
   const spans = () => { clearTimeout(spt); spt = setTimeout(() => { document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(); }, 150); };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     if (img.complete) fit(img);
