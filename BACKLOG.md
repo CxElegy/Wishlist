@@ -5,6 +5,11 @@
 
 ## いちばん先（目標：お客さまが登録して、自分の版面を毎日読める。HARNESS「目標から決める」）
 
+- [ ] 【依頼】**最優先**：同じ版面に同じ記事が 2 回出ている → 置き方の考えから全部書き直す（2026-11-01 ユーザー：滑雪の版面のスクショ〔主写真の下の「同じ版面の次のニュース」3 件と、右の列の 3 件が同じ記事〕「同じ版面に同じ内容があるのはあり得ない、設計ロジックを直して、全部書き直してください」）。DESIGN_PRINCIPLES G に **L7「同じ記事は 1 ページに 1 回だけ」**を足した。
+  - 根：縦長の写真・空きを埋める「同じ版面の次のニュース」（#689〜#691・#725・#731）が、版面のほかの場所に何を置いたかを見ずに「次の記事」を取っている＝埋める部品ごとに記事を選んでいて、版面・ページ全体で 1 つの「もう出した」を持っていない。入口の会話が本番の店長のページで数えた：記事の網址 1,355 のうち 25 本が 2 回出ている（埋める部品の中の記事は数えていないので本当はもっと多い）。
+  - 書き直し：版面を作るとき、**記事の割り当てを 1 か所で先に決めてから並べる**（主写真 → 見出し → 右の列 → 下の段 → 空きを埋める部品、の順に、出していない記事だけを渡す）。ページ全体でも 1 つの「もう出した」（気になるかも・ほかの注目・各版面）。空きを埋める記事が足りなければ、埋めずに枠を詰める（L1・L2）。今ある埋める部品（次のニュース・縦長の横・小カード・.nx・.pkgrid）を全部この割り当てに乗せ替える。店長とお客さまの全ページ。
+  - 点検：ux_check に「1 ページに同じ記事（網址・見出し）が 2 回以上」を数える点検を足し、1 つでも ✗。tests にも割り当ての関数で同じ記事が 2 回出ないこと。直す前と後の数（今 25 本以上）と、滑雪の版面の前後のスクショを PR に。
+  - 同じ考えでほかに：同じ出来事の別の記事（言語違い・出典違い）が並ぶ所は A6 の束ねで 1 本に（C3）。
 - [x] （済 2026-11-01 r1 https://github.com/CxElegy/Wishlist/pull/735 ：pages.yml を合併。workflow_dispatch で build・deploy とも success、push の回は dispatch に cancel された〔concurrency 動作〕。残り＝ユーザーが Settings → Pages の Source を「GitHub Actions」に切り替える。切り替えて 1 回緑になったら pages.yml の deploy の continue-on-error を外す。物差し＝切り替え後 24h で pages 失敗 0）【依頼】**最優先**：Pages の公開（pages build and deployment）が何度も失敗してメールが来る（2026-11-01 ユーザー：受信トレイのスクショ〔Run failed: pages build and deployment が 30 分おき〕「老是ci fail 你改改呀 肯定有问题」）。
   - 入口の会話が調べた根（2026-11-01）：直近 24 時間で pages build and deployment が **30 回中 8 回失敗**、全部 deploy の段で `Deployment request failed … due to in progress deployment. Please cancel <前の commit> first`。build は成功している＝**main への push が多すぎて（24 時間で 312 コミット）、前の公開が終わる前に次の公開が始まりぶつかる**。中身の壊れではないが、失敗のたびにユーザーへメールが行く。CI 检查は 14 回中 2 回失敗（PR の途中、直してから合併）。
   - 直し方（両方）：①**公開を GitHub Actions のワークフローに移す**：`.github/workflows/pages.yml`（push to main と workflow_dispatch、`actions/upload-pages-artifact` で docs/ を、`actions/deploy-pages`、`concurrency: {group: pages, cancel-in-progress: true}`＝古い公開は取り消して最新だけ出す）。合併したら、**ユーザーが Settings → Pages → Build and deployment の Source を「GitHub Actions」に切り替える**（入口の会話がユーザーに頼む。切り替え前に pages.yml が main に入っていること。切り替えないと今の失敗は止まらない）。②**main への push を減らす**：BACKLOG・PROGRESS・状態ファイルの小さな更新は、まとめて 1 回にする（係ごとに段の終わりで 1 回、render の再生成は 10 分に 1 回まで）。
