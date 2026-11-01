@@ -659,6 +659,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.hk01.com/di/media/images/dw/20261030/1192902154348662784394527.jpeg/e-uyNhCRFct32XLa6IFt3g1HmZWdd6HD1SW9t9Ulvbc": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
+ },
  "https://cdn.image.st-hatena.com/image/scale/34bc434840d3d1c882498735e0c17b56655ba5b3/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fr%2Frittor_snrec%2F20261028%2F20261028112645.png": {
   "w": 1300,
   "h": 731,
@@ -1119,12 +1125,6 @@
   "target": 1280,
   "v": 3
  },
- "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/31122626/harry-potter-reboot-snape-update.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://gamefragger.com/images/articles/banners/bleach-mirrors-high-introduces-10-new-characters-designed-by-tite-kubo-ahead-of-its-launch-ab30039.jpg": {
   "w": 1500,
   "h": 844,
@@ -1274,12 +1274,6 @@
  "https://hype.my/wp-content/uploads/2026/10/edit-6-1.webp": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
-  "v": 3
- },
- "https://i.cdn.newsbytesapp.com/images/l144_17801793486882.jpg": {
-  "w": 1440,
-  "h": 810,
   "target": 720,
   "v": 3
  },
@@ -2486,6 +2480,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news.ssbcrack.com/wp-content/uploads/2026/10/HBOs-Upcoming-Harry-Potter-Series-Features-Paapa-Essiedus-Unique-Take.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
+ },
  "https://news.videoland.com.tw/newsphoto/enews_20261113102_BB5495.webp": {
   "w": 2000,
   "h": 1334,
@@ -3437,12 +3437,6 @@
   ],
   "why": "看不清"
  },
- "https://r2-media.wdwnt.com/2026/10/RDJ_PeanutsDoomsday_Halloween_featured.png": {
-  "w": 1155,
-  "h": 770,
-  "target": 720,
-  "v": 3
- },
  "https://r2-media.wdwnt.com/2026/10/amc-theaters-avengers-doomsday-novelties-2.jpg": {
   "w": 949,
   "h": 536,
@@ -3737,12 +3731,6 @@
   "v": 3
  },
  "https://static.tweaktown.com/news/1/1/114388_1_gta-6-npcs-get-personality-traits-that-decide-whether-they-flee-or-fight-back_full.png": {
-  "w": 1500,
-  "h": 844,
-  "target": 720,
-  "v": 3
- },
- "https://static.tweaktown.com/news/1/1/114424_3_gta-vis-210gb-download-could-cost-an-extra-euro-11-55-in-france-if-new-data-tax-becomes-law_full.png": {
   "w": 1500,
   "h": 844,
   "target": 720,
@@ -4186,6 +4174,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.BTdgKkvR_eUV1LxbureJwA&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
+ },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
   "h": 590,
@@ -4458,6 +4452,12 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.bNObN6-deyIJ_E7mMwkmuA&pid=News&w=500": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
  },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,

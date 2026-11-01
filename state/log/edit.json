@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-30T23:22:19+00:00",
-"text": "2026-10-31 第 3 バッチを出刊：哈利波特剧集（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 2,392・キャッシュ読み 21.9万・出力 1,151",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.27,
-"mem_total": 16872808448,
-"mem_free": 15925035008,
-"disk_used": 10934104064,
-"disk_free": 30388404224,
-"disk_total": 41322508288,
-"peak": 265334784
-},
-"batch": 3,
-"boards": [
-"哈利波特剧集"
-],
-"stories": 3,
-"left": 0,
-"edited": 22,
-"run": 1793401006.6033876,
-"tok": {
-"in": 6,
-"cw": 2386,
-"cr": 219203,
-"out": 1151,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 222746,
-"secs": 1533,
-"run_tok": {
-"in": 33,
-"cw": 46256,
-"cr": 1101939,
-"out": 4758,
-"calls": 17,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-31T00:07:26+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2042,5 +2001,10 @@
 "calls": 19,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-01T05:38:10+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
