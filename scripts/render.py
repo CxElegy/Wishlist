@@ -4135,9 +4135,9 @@ LIVE_CSS = """
 .fresh{outline:3px solid var(--gold);outline-offset:3px}
 .wl-live .wl-to{color:var(--gold);text-decoration:underline;text-underline-offset:3px;font-weight:900}
 .wl-live span{min-width:0}
-.fresh-tag{position:absolute;top:6px;right:6px;z-index:6;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
+.fresh-tag{display:inline-block;align-self:flex-start;margin:0 8px 6px 0;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
  box-shadow:2px 2px 0 var(--ink);font:900 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.08em;pointer-events:none}
-section.fresh{position:relative}
+.when b.fresh-tag{margin:0;background:var(--alert);color:#FFF!important;box-shadow:none;transform:none;padding:2px 7px 1px;font:900 10px/1.4 var(--font-sans);letter-spacing:.14em}  /* L8：札は字に重ねず日付の行の流れの中。NEW と たった今 は同じ意味なので 1 つ（NEW の札を置き換える） */
 @media (prefers-reduced-motion:no-preference){.fresh{animation:wlfresh 1.6s ease-out 3}}
 @keyframes wlfresh{50%{outline-color:var(--rose)}}
 """
@@ -4185,14 +4185,17 @@ LIVE_JS = """
     function back(){var s=was.at&&document.getElementById(was.at[0]);if(s)to(s.getBoundingClientRect().top+pageYOffset-was.at[1]);else if(was.y)to(was.y);}
     if('scrollRestoration' in history)history.scrollRestoration='manual';
     back();addEventListener('load',back);
+    function tag(c,txt){var w=c.querySelector('.when'),b=w&&w.querySelector('b');   // L8：札は流れの中（日付の行の NEW を置き換える／なければ先頭に並べる）
+      if(b){b.textContent=txt;b.className='fresh-tag';return;}
+      var t=document.createElement('span');t.className='fresh-tag';t.textContent=txt;if(w)w.insertBefore(t,w.firstChild);else c.insertBefore(t,c.firstChild);}
     var n=0,by={},order=[];   // by[版面の id] = 新しい記事の数
     keyed().forEach(function(x){var c=x[1];if(was.keys&&!was.keys[x[0]]&&c&&!c.classList.contains('fresh')){
-      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;
+      c.classList.add('fresh');tag(c,T.tag);n++;
       var sec=c.closest('section[id]');if(sec){if(!by[sec.id]){by[sec.id]=0;order.push(sec);}by[sec.id]++;}}});
     var other=[];   // 新しい記事はないが中身が変わった版面・パネル（話題度・小元素・順位など）
     if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
       if(h&&h!==s.getAttribute('data-h')){if(!by[s.id]){other.push(s);}
-        if(s.classList.contains('panel')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);}}});
+        if(s.classList.contains('panel')){s.classList.add('fresh');tag(s,T.upd);}}});
     var items=order.map(function(s){return [label(s),T.n.replace('%n',by[s.id]),s.id];}).concat(other.map(function(s){return [label(s),T.m,s.id];}));
     var shown=items.slice(0,4),rest=items.length-shown.length;
     if(items.length||n){toast(ZH?'有新内容':'更新しました',false,shown);
