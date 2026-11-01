@@ -34,15 +34,59 @@ def story(a):
                 src=src.get_text(strip=True) if src else "", big="burst" in str(a)[:600] or "重大" in a.get_text())
 
 
+def emoji(u):
+    """絵文字の絵（twemoji）は写真ではない。主役にも「写真 1 回」の数にも入れない。"""
+    return "twemoji" in u or u.endswith(".svg")
+
+
+def photo_key(u, cache={}):
+    """同じ写真か見分ける鍵：画像の 9x8 の差分ハッシュ（取れなければ URL そのもの）。URL が違っても同じ写真を 1 回にするため（L7）。"""
+    if u in cache:
+        return cache[u]
+    k = u
+    try:
+        import io
+        from PIL import Image
+        if u.startswith("http"):
+            import requests
+            data = requests.get(u, timeout=15).content
+        else:
+            data = (OUT.parent / u).read_bytes()
+        g = Image.open(io.BytesIO(data)).convert("L").resize((9, 8))
+        px = list(g.tobytes())
+        k = "".join("1" if px[r * 9 + c] > px[r * 9 + c + 1] else "0" for r in range(8) for c in range(8))
+    except Exception:
+        pass
+    cache[u] = k
+    return k
+
+
+def same_photo(a, b):
+    """鍵が URL のままなら完全一致、ハッシュ同士なら差が 3 ビット以内を同じ写真とみなす。"""
+    if len(a) == 64 and len(b) == 64:
+        return sum(x != y for x, y in zip(a, b)) <= 3
+    return a == b
+
+
 def assign(stories, used):
     """記事の割り当て（ここだけ）：ページ全体で同じ記事を 2 回出さない（L7）。
     hero＝写真のある最初の 1 本、rail＝次の RAIL 本、grid＝12 の倍数（4・3・2 列のどれでも最後の段が満ちる）、残りは more。"""
     fresh = []
+    used.setdefault("p", [])
     for s in stories:
         k = (s["href"], norm(s["title"]))
         if not s["href"] or s["href"] in used["h"] or k[1] in used["t"]:
             continue
-        used["h"].add(s["href"]); used["t"].add(k[1]); fresh.append(s)
+        used["h"].add(s["href"]); used["t"].add(k[1])
+        if s["img"] and emoji(s["img"]):
+            s = dict(s, img="")   # 絵文字の絵は字だけのカードにする
+        if s["img"]:
+            pk = photo_key(s["img"]) if used.get("hash") else s["img"]
+            if any(same_photo(pk, q) for q in used["p"]):
+                s = dict(s, img="")   # 同じ写真は 1 回だけ（記事は残し、2 枚目からは字だけ）
+            else:
+                used["p"].append(pk)
+        fresh.append(s)
     withp = [s for s in fresh if s["img"]]
     hero = [withp[0]] if withp else fresh[:1]
     rest = [s for s in fresh if s not in hero]
@@ -50,6 +94,12 @@ def assign(stories, used):
     n = len(rest) - len(rest) % 12 if len(rest) >= 12 else len(rest) - len(rest) % 6
     n = min(n, GRID) if n else 0
     return hero, rail, rest[:n], rest[n:]
+
+
+def split_more(more):
+    """もっと見る：12 の倍数だけ格子、あまり（11 本まで）は見出しの一覧に回す。格子の最後の段に穴が出ない（L2）。"""
+    n = len(more) - len(more) % 12
+    return more[:n], more[n:]
 
 
 def card(s, role):
@@ -79,7 +129,10 @@ def board(name, parts, nstories, emb=("", ""), sid=""):
     hero, rail, grid, more = parts
     top = "".join(card(s, "hero") for s in hero) + (f'<div class="rail">{"".join(card(s, "rail") for s in rail)}</div>' if rail else "")
     g = f'<div class="gr" data-n="{len(grid)}">{"".join(card(s, "grid") for s in grid)}</div>' if grid else ""
-    m = (f'<details class="more"><summary>もっと見る（{len(more)}）</summary><div class="gr">{"".join(card(s, "grid") for s in more)}</div></details>'
+    mg, ml = split_more(more)
+    m = (f'<details class="more"><summary>もっと見る（{len(more)}）</summary>'
+         + (f'<div class="gr">{"".join(card(s, "grid") for s in mg)}</div>' if mg else "")
+         + (f'<div class="rail ls">{"".join(card(s, "rail") for s in ml)}</div>' if ml else "") + '</details>'
          if more else "")
     band = (f'<span class="emb"><img src="{html.escape(emb[0])}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></span>'
             if emb[0] else "")
@@ -124,7 +177,7 @@ h3{margin:0;font:700 14px/1.5 var(--f);display:-webkit-box;-webkit-line-clamp:3;
 .rail .cd a{flex-direction:row;align-items:flex-start;gap:12px}.rail .pic{flex:0 0 38%;aspect-ratio:3/2}
 .np .tx{border-left:4px solid var(--ink);padding:12px 14px;flex:1;background:var(--card)}.np.grid .tx{justify-content:center}
 .more{margin-top:var(--g)}.more summary{cursor:pointer;font:900 14px var(--f);padding:10px 0;border-top:var(--bw) solid var(--ink)}
-.more .gr{margin-top:var(--g)}
+.more .gr,.more .ls{margin-top:var(--g)}.ls{display:flex;flex-direction:column}.rail.ls .pic{flex:0 0 clamp(110px,20%,200px)}
 .note{background:var(--card);border:2px solid var(--ink);padding:14px 18px;max-width:1468px;margin:24px auto 0}.note p{margin:4px 0}
 /* 方向 A 新聞の紙面割り：細い罫・明朝の見出し・影なし・列の間に縦罫 */
 [data-dir=news]{--bw:1px}[data-dir=news] h3,[data-dir=news] .bd h2{font-family:var(--s)}
@@ -151,8 +204,11 @@ JS = "document.getElementById('openall').onclick=e=>{const o=e.target.getAttribu
 def main():
     from bs4 import BeautifulSoup   # 見本づくりの手元だけで要る（CI の試験は assign だけ）
     s = BeautifulSoup(SRC.read_text(encoding="utf-8"), "lxml")
-    used = {"h": set(), "t": set()}
+    used = {"h": set(), "t": set(), "hash": True}
     out, dup, toc = [], 0, []
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(16) as ex:   # 写真の鍵は先に並べて取る（1 枚ずつだと 5 分かかる）
+        list(ex.map(photo_key, {story(a)["img"] for a in s.select("article.card,.pk") if story(a)["img"]}))
     for sid, name in PLACES:
         el = s.select_one("section.front") if sid == "front" else s.select_one("#picks") if sid == "picks" else s.select_one("#" + sid)
         if el is None:
