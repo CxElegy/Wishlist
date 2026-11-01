@@ -311,6 +311,7 @@ PROCESSES = [
             {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "定時タスクごとのトークン（Secret ROUTINE_FIRE_TOKEN など）が要る · AI 編集は溜まった版面だけ編集する（edit-queue = edit_ripe ＋ やり直し）",
              "uses": ["claude"]},
             {"id": "g7", "kind": "store", "lane": "repo", "title": "state/gate.json · state/log/gate.json", "text": "判断が変わったとき（最初の判断・小元素のあとの判断）・Claude を本当に起こしたとき・収集を起こそうとしたとき（起こせなかったときも）だけコミット（GATE_FIRE が開いているだけでは足さない）"},
+            {"id": "g8", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "後台作業が網页を発布したあと。新しい記事の写真が次の定時（3 時間ごと）まで原寸のまま届かないように。取れなかった分は 1 日あけるので回り続けない。"},
         ],
     },
     {
@@ -352,6 +353,7 @@ PROCESSES = [
              "uses": ["urgent", "fallback"], "yes": "すぐ「重大」で載せる＋Discord", "no": "版面の下の「整理待ち N 件」（折りたたみ・原題だけ）"},
             {"id": "c9", "kind": "step", "lane": "actions", "title": "出刊 → 通知 → push", "text": "push に失敗したら 3 回まで取り直す · 網页の生成に失敗してもデータは push（WL_RENDER_SOFT、次の生成で作り直す）· このあとゲートが AI 編集を起こす",
              "uses": ["pending", "discord"]},
+            {"id": "c9p", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "push のあと。収集の回で入った新しい記事の写真が次の定時（3 時間ごと）まで原寸の外部画像のまま届くのを防ぐ（ux_check「先頭の写真が置き場に無い」の根）。render.yml・後台作業も同じ段を持つ。"},
             {"id": "c10", "kind": "step", "lane": "actions", "title": "お客さまの版面を集める", "x": "×4 · 8 分まで",
              "text": "一度はログインした人だけ · 選んだもののうち店長のページに版面がないものだけ（店長にあるものは店長の版面を見せる）· 1 人 1 回 10 版面・全員の 1 つ目から · ログは数だけ · 同じ規則で集めて Supabase の user_boards に本人の account で · 前の段が失敗しても走る・失敗しても止めない（continue-on-error）· job の timeout の 3 分前に締め切る · 様子はライブログへ",
              "uses": ["userfeed", "gnews", "bing", "intel", "match", "spam", "fallback", "lang", "supabase"]},
@@ -559,7 +561,7 @@ PROCESSES = [
     },
     {
         "id": "photostore", "name": "写真の一時保管", "en": "PHOTO STORE", "lane": "actions", "workflow": "photo_store.yml", "when": "3 時間ごと · 手で",
-        "trigger": "定時（17 */3 * * *）・render.yml の作り直しのあと置いていない写真があるときか workflow_dispatch（minutes、既定 12 分・chain）。順番待ちが残り、この回で増えたなら gh workflow run で次の回（10 回まで）",
+        "trigger": "定時（17 */3 * * *）・render.yml・digest.yml・background.yml が網页を発布したあと置いていない写真があるとき（photo_store.py --kick）か workflow_dispatch（minutes、既定 12 分・chain）。順番待ちが残り、この回で増えたなら gh workflow run で次の回（10 回まで）",
         "summary": "記事の主写真をよその原寸へ直リンクせず、先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置く。網页（render._pic）は置いてあれば先に読み、原寸は落ち先に残す。溜めない：いまのページに載っているか最後に使ってから 14 日以内だけ、全体 300MB 超えは古い順に消す（箱の中だけ）。",
         "files": [".github/workflows/photo_store.yml", "scripts/photo_store.py", "db/photos.sql"], "doc": "docs/rules/design.md",
         "uses": ["supabase"],
@@ -585,7 +587,7 @@ PROCESSES = [
         "flow": [
             {"id": "p1fnt", "kind": "step", "lane": "actions", "title": "Web フォントの CSS は描画を止めない（render.font_link）", "text": "fonts.googleapis.com の stylesheet を media=print で取り、届いたら all に（noscript に保険）。display=swap なので字は先に出る。前は遠いサーバーへの往復 4 回ぶん最初の表示が止まり、Fast 3G の LCP が 4.3 秒だった（止めないと 1.2 秒）。本体 7 頁・入口・擬音の書体すべてが font_link を通り、tests/test_perf.py がソースと生成済みの docs/index.html・docs/home/*.html の止める link を数える。入口は描画を止める link が残る古い出力なら 24 時間を待たず作り直す（welcome.build_if_stale）。ux_check が本番の入口＋本体 4 頁も数える"},
             {"id": "p1ph", "kind": "step", "lane": "actions", "title": "主写真は写真の一時保管を先に（render._pic）", "uses": ["supabase"], "text": "全部の写真に data-m（顔・題字の分布）を付け、FIT_JS cropAt が切る場所すべて（小さいカード PC／スマホ・c3・mini・wc・tape・主写真）で主役が 6 割以上残る位置で切る（残らない絵・測っていない絵は全体表示）。縦長の主写真の横に出す「同じ版面の次のニュース」(.nx) の 3:2 のサムネも data-m を引き継いで同じ cropAt を通し、残らなければ .whole で全体表示。ux_check pkcut が全部の .fill と .nx を数える。state/photo_store.json に置いてある写真なら Storage の 800 の網址を先頭に（srcset で 400／800・ぼかしは 400・ギャラリーと欲しい物は 400）、原寸は data-fb の落ち先に（落ち先の写真も置いてあれば原寸でなく置き場の写真に替える＝先頭が開けなくても原寸の外部画像に戻らない〔SWAP_JS は版面にすでにある網址を飛ばすので、並べると飛ばされた置き場の代わりに原寸が出る〕。落ちるとき SWAP_JS が srcset を外す）。最初の主写真は eager＋fetchpriority=high＋<head> の <link rel=preload>（_eager_first）、上げるときの cache-control は public・1 年・immutable（GET では CDN が HIT）、前に上げた分〔14 日のまま〕は photo_store が時間の余りで上げ直す（state の cc 印）。版面の先頭の写真は最初の画面の写真が済んだとき（または 2.5 秒後）から EMB_JS の ahead が 3 版面ずつ（暇待ち 300ms 上限）優先度 low で先に取り、先頭が届いてから（10 秒で打ち切り）版面の上から 1.5 画面ぶんの続き（最大 4 枚）を取り、目次へ近づいたらその版面を最優先で取る（目次から飛んでぼかしのまま数秒、を防ぐ）。ux_check は字面に加え harness/ahead_time.py で実際に全版面の先頭が 12 秒以内に届くかも測る。置き場の写真の枠には平均色の下絵（style=background・photo_store の c）、写真のない推薦（.pk）は札でなく字だけの形（.nophoto）。気になるかも？の小カードは枠に合わせて切るとき、一時保管が測った顔・題字の分布（data-m）から主役が6割以上残る位置で切り（cropAt・data-keep）、残らない絵は全体表示。ux_check が一時保管の割合（店長もお客さまも）・枠の色の下絵・srcset・preload・全版面の先頭の写真 16 枚の cache-control・ahead を点検、harness/photo_time.py が最初の画面の主写真の届く時刻を測る。管理ページ ① のメーターもここ（流程 photostore）"},
-            {"id": "p1pst", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --todo）", "uses": ["supabase"], "text": "作り直して発布したあと、state/photo_store.json に無く今日取れなかったのでもない写真が 1 枚でもあれば gh workflow run photo_store.yml。新しい記事の写真が次の定時（3 時間ごと）まで原寸の外部画像のまま届く、を防ぐ（ux_check「先頭の写真が置き場に無い」の根）。取れなかった分は 1 日あけるので回り続けない。"},
+            {"id": "p1pst", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "作り直して発布したあと（digest・background・requests の発布も同じ段：tests/test_photo_kick.py が数える）、state/photo_store.json に無く今日取れなかったのでもない写真が 1 枚でもあれば gh workflow run photo_store.yml。新しい記事の写真が次の定時（3 時間ごと）まで原寸の外部画像のまま届く、を防ぐ（ux_check「先頭の写真が置き場に無い」の根）。取れなかった分は 1 日あけるので回り続けない。"},
             {"id": "p1pic", "kind": "step", "lane": "web", "title": "写真の余白はぼかさず情報で使う（render._pic・FIT_JS narrow）", "text": "img.bg のぼかしは出さない（F-16）。大きいカード（hero・lead・wide）で写真が枠より細いときは枠を写真の幅に絞り（.nw）、空いた横に同じ版面の次の記事 2〜3 件（.nx）。1 列は枠を写真の比率に（幅の 1.6 倍まで）。小さいカード（c3・mini・wc・tape）と「気になるかも」も同じ規則：写真が枠より 25% 以上細いときは枠を写真の幅に絞り、見出し・札の列を横に置く（.sb・side）。字の列が 100px 取れない狭いカードは枠を写真の比率に。load・resize のたびに元へ戻してから測り直す（unnarrow・unside）。隠れた版面・あとから足された写真は ResizeObserver・MutationObserver・load の capture で測り漏らさない。ux_check が img.bg 0・絞っていない大きいカード 0・全部のカードで空いた横 25% 超 0（gap・1400 と 390）を数える"},
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める", "text": "checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
@@ -731,6 +733,7 @@ PROCESSES = [
             {"id": "q3", "kind": "decision", "lane": "actions", "title": "待ちの依頼がある？", "no": "何もしない"},
             {"id": "q4", "kind": "step", "lane": "actions", "title": "検査して items.yaml に書く", "text": "「删」（edit ＋ _delete）はその 1 段を消し、下級は parent を外して残す · 管理ページの小元素の「違う」（押して理由を選ぶ：emblem_rules.REJECT_REASONS の 10 種＋ひとこと · edit ＋ _emblem_reject、版面ごとに 1 件・50 枚まで）はその小元素を外して元の画像を emblem_reject に・倉庫の webp も消す・理由と取り方（why）・網域を state/emblem_rejects.json に（管理ページ「「違う」の理由」で数え、溜まった理由の近い判断を締める）（足りない分は次の後台で別の画像）・同じ依頼で _emblem_swap（同じ人の別の写真に替える：元の画像は emblem_reject・人は emblem_redo で次の集めの先頭に）と _emblem_lock（lock: true の固定：名簿外し・検査外し・作り直しで替えない）、_emblem_cands（候補を集める人）と _emblem_pick（並んだ候補の 1 枚を選ぶ。並んでいない網址は断る）は state/emblem_cands.json に積む（入れ替えと候補集めは次の後台の頭、emblem_cands.run_shop）も · 使える項目だけ · 板块は表にあるものだけ · 上級は今ある・上級のない項だけ、板块は上級に合わせる · 外した小元素の絵の見た目（差分ハッシュ）も emblem_reject_look に残す（次の集めで、網址が違っても同じ絵は emblem_fill.check が落とす：違い ≤ 8 ビット） · 済み・見送りを返す · checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）：待っている間に前の回が足した emblem_redo などを古い版で上書きしない（pull --rebase -X theirs は同じ行なら自分の版が勝つ）· push する workflow（background・render・library・library_emblem・digest・requests）は全部この ref を持つ。足し忘れは tests/test_workflow_ref.py（CI）が拦める", "uses": ["taxonomy"]},
             {"id": "q5", "kind": "decision", "lane": "actions", "title": "新しい関注項？", "no": "ページ生成だけ"},
+            {"id": "q5p", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "ページ生成・push のあと。render を発布する workflow は全部この段を持つ（tests/test_photo_kick.py）。"},
             {"id": "q6", "kind": "step", "lane": "actions", "title": "すぐ収集 → AI 編集が版面を設計", "by": "ai"},
         ],
     },

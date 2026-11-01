@@ -79,6 +79,11 @@ jobs:
           done
           echo "NEW_ITEMS=$(python scripts/digest.py new-items)" >> "$GITHUB_ENV"
 
+      - name: 置いていない写真があれば一時保管を起こす
+        if: steps.check.outputs.go
+        continue-on-error: true
+        run: python scripts/photo_store.py --kick
+
       # 新加的关注项：马上跑一次完整的收集（收集新闻 → 简报 → Discord「新增关注项」通知 → 叫 AI 编辑）
       - name: 新关注项 → 立刻收集新闻
         if: steps.check.outputs.go && env.NEW_ITEMS != ''

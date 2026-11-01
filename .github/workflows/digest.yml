@@ -25,6 +25,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # 置いていない写真があれば写真の一時保管を起こす
 
 concurrency:
   group: digest
@@ -116,6 +117,13 @@ jobs:
             sleep $((i * 5))
           done
           exit 1
+
+      # 収集の回で入った新しい記事の写真も、次の定時（3 時間ごと）まで原寸のまま届かないように：発布のあと置いていない写真があれば一時保管を起こす
+      - name: 置いていない写真があれば一時保管を起こす
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/photo_store.py --kick
 
       # 收集完：版面ごとに溜まったら（gate.edit_ripe：整理待ち 3 件以上・最古が 2 小时・初めての版面）经ゲート（gate.py fire）立刻叫 AI 编辑，
       # 不等 9:00 / 18:00（2026-10-24 用户定的）。新加的关注项另加 GATE_NOW=edit。编辑中（60 分以内）・停滞・一時停止・GATE_FIRE=0・1 日的 token 上限照样守，
