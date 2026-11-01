@@ -254,15 +254,15 @@
   "周杰伦": 11,
   "哈利波特剧集": 11,
   "dota2": 6,
-  "绝区零": 7,
+  "绝区零": 8,
   "The Mandalorian": 6,
   "あつ森": 2,
   "Vaundy": 2,
   "Astrae Oratio": 2,
-  "チェーンソーマン": 4,
+  "チェーンソーマン": 5,
   "滑雪": 2,
   "BLEACH Mirrors High": 1,
-  "猫用品": 1,
+  "猫用品": 2,
   "MMORPG 新作": 2,
   "星巴克马克杯": 2
  },
@@ -464,6 +464,15 @@
     5,
     6
    ]
+  },
+  {
+   "headline": "绝区零11月1日兑换码2026",
+   "highlight": "兑换码",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "The Mandalorian": [
@@ -540,7 +549,8 @@
    "blurb": "",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    5
    ],
    "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg"
   },
@@ -596,7 +606,18 @@
    "image": "https://appmedia.jp/wp-content/uploads/2025/06/144853_efkn3.webp"
   }
  ],
- "猫用品": [],
+ "猫用品": [
+  {
+   "headline": "大栄工業、ペット用品&POMのキャットステップをMakuakeで開始へ",
+   "highlight": "Makuakeで開始",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/10/941580_2.jpg"
+  }
+ ],
  "MMORPG 新作": [
   {
    "headline": "Outer Ring MMO’s next update brings desert PvP, loot stealing and new bosses",

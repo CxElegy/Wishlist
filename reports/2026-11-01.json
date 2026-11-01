@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "8d5e22bc35d6",
+ "edit_sig": "4c1ed3e1af94",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -509,16 +509,6 @@
     {
      "blurb": "",
      "date": "2026-10-28",
-     "headline": "Chainsaw Man Season 2: Everything we know – cast, plot, more",
-     "highlight": "",
-     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/07/03/chainsaw-man-chapter-170.jpg",
-     "image_via": "og:image",
-     "url": "https://www.dexerto.com/tv-movies/chainsaw-man-season-2-details-2012239/",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-28",
      "headline": "Chainsaw Man movie: Everything we know so far",
      "highlight": "",
      "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg",
@@ -719,15 +709,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 8,
-     "source": "3DM",
-     "title": "绝区零11月1日兑换码2026",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5nVFNWblhxOUgyVzlSY3BHY29Kd0RFaEV2US1fRHRQX1FkTG5qT2JjcG5HbHlqY0xqWHJxeVd1NUJOaXRfcE1YTERROFc0MzYt?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -768,6 +749,16 @@
      "image": "https://assets.mmoexp.com/images/202610/6fddef34feaf47b9fde27c6f004d0ff52ea8ae33.jpg",
      "image_via": "正文图（3 枚から）",
      "url": "https://www.mmoexp.com/News/zenless-zone-zero-version-3-3-latest-news-phiony-severian-release-free-rewards-and-version-3-4-collaboration-details.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "绝区零11月1日兑换码2026",
+     "highlight": "兑换码",
+     "image": "https://olimg.3dmgame.com/uploads/images/raiders/20240801/1722474179_466511.jpg",
+     "image_via": "正文图（3 枚から）",
+     "url": "https://m.3dmgame.com/ol/gl/357518.html",
      "weight": "normal"
     }
    ],
@@ -944,17 +935,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-29",
-     "n": 2,
-     "source": "Dellows News",
-     "title": "大栄工業、ペット用品&POMのキャットステップをMakuakeで開始へ",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5HOHR4UFgzNThsLXJkaXRneFkxcm5KTDdocnkzcG83akl2WEtmaHhicjJwQ3MzczJMT2NpbG5GZ1FJUGNwTmJuRFhNenNZTmc2SnFfeUlFZmtKUXBuMlFENGstTG12UjJY?oc=5"
+     "headline": "大栄工業、ペット用品&POMのキャットステップをMakuakeで開始へ",
+     "highlight": "Makuakeで開始",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/941580_2.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.dellows.jp/941580/?from=related-reading-list",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -1022,7 +1015,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "last": {
     "date": "2026-10-31",

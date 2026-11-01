@@ -1,32 +1,32 @@
 {
- "admin": "0e4b3f0943de",
- "admin-ai": "a1e33a8347e1",
+ "admin": "5bd56a60a572",
+ "admin-ai": "f4426f5f8f75",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "90f4ea7a"
+   "83ac1bf7"
   ],
   "tokens": [
    "AI 編集のトークン",
    "64e9919b"
   ]
  },
- "admin-boards": "f319abae7c25",
+ "admin-boards": "986e40cd4520",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "453e8e5b"
+   "470be9d9"
   ],
   "votes": [
    "投票",
    "d0c0ea84"
   ]
  },
- "admin-emblem": "d9a3f78ae308",
+ "admin-emblem": "8da364cc9d5c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "9979b8d4"
+   "5ad5a3b8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "801b64a07afa",
  "admin-members_marks": {},
- "admin-now": "f58c38039ad9",
+ "admin-now": "a4c9cfdafeb0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f26400b3"
+   "2f2fbd60"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "d2f5c201"
   ]
  },
- "admin-system": "d5c2fd996a39",
+ "admin-system": "cf682232b42f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "41f996ad"
+   "2a333f9d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -78,7 +78,7 @@
   ]
  },
  "admin_marks": {},
- "heat": "8a01ca8faf44",
+ "heat": "f6dbccce1cbb",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "85249fcf"
+   "a139231b"
   ],
   "ranking": [
    "ランキング",
-   "df5a1f80"
+   "280accef"
   ]
  },
- "index": "418049ccc617",
+ "index": "62568d754eff",
  "index_marks": {
   "front": [
    "トップ",
-   "e8943b4f"
+   "bf5f317b"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "a1f66f83"
+   "281e273d"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "16889230"
+   "87bfb908"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "3343665c"
+   "2547866c"
   ]
  },
- "updated": "11.01 13:25",
+ "updated": "11.01 13:35",
  "wishlist": "9ac53c3cde5e"
 }
