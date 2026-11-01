@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-01T07:17:42+00:00",
+ "checked": "2026-11-01T08:10:45+00:00",
  "fired": {
-  "at": "2026-11-01T07:18:06+00:00",
+  "at": "2026-11-01T08:11:19+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-01T06:38:42+00:00",
+    "at": "2026-11-01T08:11:19+00:00",
     "attempts": 1,
     "day": "2026-11-01",
-    "prog": 164,
-    "resp": "cse_01W4x6f62QzzDjwuKenCnQzq",
-    "sig": "189cae106a0d"
+    "prog": 176,
+    "resp": "cse_01W4x6f6KmXHUCDT28J77r9J",
+    "sig": "b3c67c5501d3"
    },
    "items": [
     "MMORPG 新作",
@@ -38,11 +38,18 @@
    "need": true,
    "prog": 176,
    "prog_day": "2026-11-01",
-   "ripe": [],
-   "sig": "a0d8670aa04b",
+   "ripe": [
+    "MMORPG 新作",
+    "Vaundy",
+    "gelato pique",
+    "三星手机",
+    "滑雪",
+    "绝区零"
+   ],
+   "sig": "b3c67c5501d3",
    "token_cap": 1000000,
    "tokens_today": 459313,
-   "why": "整理待ちの記事 15 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 15 件（9 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
