@@ -3104,6 +3104,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00010004-tennisnet-000-2-view.jpg?exp=10800": {
+  "w": 1135,
+  "h": 856,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/811cd092c675a17f.webp",
+  "out": [
+   1135,
+   856
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00144577-toushin-000-1-view.png?fmt=jpeg&q=85&exp=10800": {
   "w": 859,
   "h": 646,
@@ -3113,6 +3125,31 @@
   "out": [
    859,
    646
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-10174731-it_nlab-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1238,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/f6010cc1d4eb94bb.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-11803680-asahiand-000-1-view.jpg?exp=10800": {
+  "w": 640,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.689,
+  "local": "pics/be03f1f5f4d56cf6.webp",
+  "out": [
+   1280,
+   1280
   ],
   "why": "期限付きの網址"
  },

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "fd07faa5dddd",
+ "edit_sig": "a0a91200a6d1",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -135,22 +135,6 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 31,
-     "source": "Deadline",
-     "title": "Robert Downey Jr. & Pedro Pascal Serve MCU Role Reversal For Halloween: “Costume Swap!”",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNOExXTU9MaTlpUGI0MHIxUnpnX0UwbFdFOTRhMDAyZ0R1ZjQ5SkRveXZNQ2pabGw5WmZwUWREVUh0MnI3bkx6cDFmTUZRU2R6ZFFKRl9BRUNSbVNDS2Q1azVDQUgxUmZTa29jdnBEdFdGblhGd3BFYzF4alFpWFo1cFR0bmREb2NRSDdYcnZxV1Z4YUh5U1ZUeWQxd2M4c1U?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 32,
-     "source": "MensXP",
-     "title": "The Only Marvel Actor Who Fought Doctor Doom Twice Before Avengers: Doomsday",
-     "url": "https://www.mensxp.com/entertainment/hollywood/186589-marvel-actor-fought-doctor-doom-twice-before-avengers-doomsday.html"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -376,22 +360,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 12,
-     "source": "Yahoo!ニュース",
-     "title": "【女子テニス】ロシア出身のシュナイデルが初制覇、ツアー通算6勝目 東レPPO（スポニチアネックス）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1IcTkzQ3hDY3NMU19xODJSc0hheGJKRHJzSTVZMzJUSXIzcTBSU0kyclJhS05YdURsNXV0V0JpUFpmQkhRSWhJTF9sNi12ZVpoQ0pTMFdKaXk5WWE3SF90MlFILUFJRFpTNFhab3FWazVsQ2pyLUY4TFNYaWRnVEU?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 13,
-     "source": "Yahoo!ニュース",
-     "title": "激闘制し東レPPO初優勝！ 22歳シュナイデル 13年ぶり左利き対決の決勝制す＜女子テニス＞（tennis365.net）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9JS1o3dm9XNnZyVnFwQjRCeTU4Y1EtTlNTdU5xUFBsTjd3M0IzT3ljbHYxNjVZQ2ZreEtTZUU0cmxpOVFpYm1rVHk1NlNqRlNMdFV3Z253aHJKNWlPSjJFOGZsb2haU0JseEJjWVFUWjFzVk5zTkdHNW9DZGJWMUk?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -442,6 +410,16 @@
      "image": "https://www.rappler.com/tachyon/2026/09/alex-eala-us-open-august-2026.jpg",
      "image_via": "og:image",
      "url": "https://www.rappler.com/people/athletes/alex-eala-diana-shnaider-tennis-toray-pan-pacific-open-october-30-2026/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "激闘制し東レPPO初優勝！ 22歳シュナイデル 13年ぶり左利き対決の決勝制す",
+     "highlight": "東レPPO初優勝",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00010004-tennisnet-000-2-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/34c94ed921d21f2bd00f3f07d0fea1526599a270",
      "weight": "normal"
     }
    ],
@@ -530,17 +508,19 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "「A4サイズぴったり」「全色欲しくなる！」と好評のトートバッグ。",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "「義母に褒められました」 ジェラートピケの“2000円台トート”が大好評 「A4サイズぴったり」「全色欲しくなる！」（ねとらぼ）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE84ZTY3c2hTN3BwRFVtYnU3RzZkOWZoNGY1d0kxblZORnBOTUMzUUlsSUdzRUpWc1pqZnpCclQ2QkYya2JiRldtc2ZORkx0UWZwVHRNZEZSVVJwaDJVZlFvV09aRzVxNXB3TGFxY3pXMXh2Nno1YVVPclE0UXZCUDQ?oc=5"
+     "headline": "「義母に褒められました」 ジェラートピケの“2000円台トート”が大好評",
+     "highlight": "2000円台トート",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-10174731-it_nlab-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/a300e5b171cddc3527eddf1533496a37db9af1d4",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",
@@ -1014,15 +994,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 3,
-     "source": "Yahoo!ニュース",
-     "title": "あなたの推しはどれ？ 【カフェ・ベローチェ】「ベストメニュー総選挙」11/1〜開催。限定黒ねこグッズの販売も",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBQcG5rc2tsX1R1a3ZpWHIxeWVtb0tKem0yamFsZktCcS12bTFjRmhpTlVBV05WR0VlZWEycVI4VXNWZU1uOGdjSVR4bC1OVkE1T0NVUlBIQ0paVkVLdnF5WDhfR21YLXVEV0RBZ1d4LUc0eC1zWjlObzZ6REVCS2c?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1034,6 +1005,16 @@
      "image_via": "AI 挑选",
      "url": "https://news.dellows.jp/941580/?from=related-reading-list",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "【カフェ・ベローチェ】「ベストメニュー総選挙」11/1〜開催。限定黒ねこグッズの販売も",
+     "highlight": "限定黒ねこグッズ",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-11803680-asahiand-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/a4ec9702715ee72b90b19685dd5cae755f41c1d7",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
