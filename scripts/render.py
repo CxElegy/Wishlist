@@ -3214,6 +3214,8 @@ FIT_JS = """
     img.dataset.keep = Math.round(keep * 100);
     return true;
   };
+  // 枠の比率は写真自身の箱の小数の大きさで測る（clientWidth/Height は整数に丸まり、328×183.6 が 328×184 になって 8% の境目で fill が誤って付いた。点検〔pkcut〕も同じ箱を測る）
+  const boxW = (img, d) => img.getBoundingClientRect().width || d, boxH = (img, d) => img.getBoundingClientRect().height || d;
   const fit = img => {
     const p = img.closest('.pic');
     // 期限切れ・削除された図の代わりに返ってくる 1×1 の空白（Yahoo の exp= 付き画像など）は「開けない」と同じ扱い：次の候補へ
@@ -3235,7 +3237,7 @@ FIT_JS = """
         if (!p.classList.contains('fill') && nat < 0.75 / 1.5) side(pk, p, nat, Math.round(w * 0.8));
         return;
       }
-      const r = nat / (p.clientWidth / Math.max(1, p.clientHeight - pko));
+      const r = nat / (boxW(img, p.clientWidth) / Math.max(1, boxH(img, p.clientHeight - pko)));
       // 比率が違っても、顔・題字（data-m）が 6 割以上残る位置で切れるなら切る（案 2）。残らない絵は今までどおり全体を見せる
       p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r));
       if (!p.classList.contains('fill') && r < 0.75) side(pk, p, nat, p.clientHeight);   // 写真が枠より細い：空いた横に札を置く
@@ -3245,7 +3247,7 @@ FIT_JS = """
     // そうでなければぼかしの上に全体を見せる。配図は文字・ロゴ入りのバナーが多く、端を切ると欠ける（2026-10-17 ユーザー指摘）
     const big = p.closest('article.hero, article.lead, article.wide');
     if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
-    const r = nat / (p.clientWidth / p.clientHeight);
+    const r = nat / (boxW(img, p.clientWidth) / boxH(img, p.clientHeight));
     // 切る場所はどこも同じ規則：主役（顔・題字）が 6 割以上残る位置で切れるなら切る。0.75 より細い絵は、切らずに枠を絵の幅に絞る narrow・side が受ける
     p.classList.toggle('fill', (r >= 0.75 && cropAt(img, r)) || Math.abs(Math.log(r)) < 0.08);
     if (r < 0.75) { img.style.objectPosition = ''; delete img.dataset.keep; }
