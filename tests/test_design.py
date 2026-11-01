@@ -52,7 +52,7 @@ class StoryProximity(unittest.TestCase):
         self.assertGreaterEqual(mrow, 3 * inner)
 
     def test_cards_closed_by_line(self):
-        self.assertIn(".grid>.card:not(.hero),.side>.card{padding-bottom:16px;border-bottom:1px solid", render.CSS)
+        self.assertIn(".grid>.card:not(.hero),.mas>.card,.side>.card{padding-bottom:16px;border-bottom:1px solid", render.CSS)
 
 
 class Tokens(unittest.TestCase):

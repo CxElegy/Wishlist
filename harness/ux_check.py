@@ -132,7 +132,7 @@ def measured_bad(m, lo=MEASURED_MIN):
 # ハリー・ポッターの大きいカードの下が約 350px 空いた）。①壁（.wall）の列ごとに、一番低い列の底からの差が小さいか（空き面積 / 壁の面積）
 # ②カードの枠の中で、中身の一番下から枠の下までの空き（枠の高さの 30% 超かつ 70px 超）のカードの数。わざと空ける休みは 1 画面に 1 か所までなので、
 # ②は 1 版面あたり 2 枚まで許す（外れ値）。1400・390 とも数える（390 は 1 列なので①は 0）
-HOLE_JS = """()=>{const out={wall:0,wallArea:0,wallPct:0,cards:0,wc:0,n:0,eg:[],gridHole:0,gridEg:[],gridSkip:0};
+HOLE_JS = """()=>{const out={wall:0,wallArea:0,wallPct:0,cards:0,wc:0,n:0,eg:[],gridHole:0,gridEg:[],gridSkip:0,noMas:0};
 const vis=e=>e.offsetParent&&e.getClientRects().length&&(!e.checkVisibility||e.checkVisibility({contentVisibilityAuto:true,visibilityProperty:true}));   // 閉じた「もっと見る」（content-visibility で隠れる）は数えない
 document.querySelectorAll('.wall').forEach(w=>{const cs=[...w.querySelectorAll(':scope>.wc')].filter(vis);if(cs.length<2)return;
  const wr=w.getBoundingClientRect(),lefts=[...new Set(cs.map(c=>Math.round(c.offsetLeft/20)))];
@@ -148,11 +148,12 @@ const holeOf=(g,sel,label,inner)=>{if(!vis(g)||g.closest('.older'))return;const 
  const all=[...g.querySelectorAll(sel)],cs=all.filter(vis).map(c=>{const r=c.getBoundingClientRect();let b=0;(inner?[...c.querySelectorAll(inner)]:[...c.children]).forEach(k=>{if(getComputedStyle(k).position!=='absolute')b=Math.max(b,k.getBoundingClientRect().bottom)});   // 記事の中身の下（伸ばされた枠の下ではない。.pk は札〔.pkt〕の下）
   return {left:r.left,right:r.right,top:r.top,height:r.height,bottom:Math.min(r.bottom,(b||r.bottom)+(parseFloat(getComputedStyle(c).paddingBottom)||0))}});
  if(cs.length<2)return;if(cs.length<all.length||cs.some(r=>r.height<20||r.top<gr.top-4)){out.gridSkip++;return}
- const top=Math.min(...cs.map(r=>r.top)),bot=Math.max(...cs.map(r=>r.bottom)),w=Math.max(...cs.map(r=>r.right))-Math.min(...cs.map(r=>r.left));let hole=0,mx=0;
+ if(!g.querySelector(':scope>.mas')&&label!=='気になるかも')out.noMas++;   // mason が包まなかった並び（c6・c12・wide・hero など）の数
+ const tail=g.querySelector(':scope>.mas')?160:80,top=Math.min(...cs.map(r=>r.top)),bot=Math.max(...cs.map(r=>r.bottom)),w=Math.max(...cs.map(r=>r.right))-Math.min(...cs.map(r=>r.left));let hole=0,mx=0;
  for(let x=Math.min(...cs.map(r=>r.left))+4;x<Math.max(...cs.map(r=>r.right));x+=16){const iv=cs.filter(r=>r.left-12<=x&&r.right+12>x).map(r=>[r.top,r.bottom]).sort((a,b)=>a[0]-b[0]);let y=top;
-  iv.forEach(v=>{if(v[0]-y>=40){hole+=(v[0]-y)*16;mx=Math.max(mx,v[0]-y)}y=Math.max(y,v[1])});if(bot-y>=80){hole+=(bot-y)*16;mx=Math.max(mx,bot-y)}}   // 最後の段の底のでこぼこは中身の高さの違い（80px 未満は数えない）。記事と記事のあいだは 40px から
+  iv.forEach(v=>{if(v[0]-y>=40){hole+=(v[0]-y)*16;mx=Math.max(mx,v[0]-y)}y=Math.max(y,v[1])});if(bot-y>=tail){hole+=(bot-y)*16;mx=Math.max(mx,bot-y)}}   // 最後の段の底のでこぼこは中身の高さの違い（80px 未満は数えない。積み上げ .mas は列の底が 1 枚分まで違うのがふつうなので 160px 未満。2026-11-02 mason）。記事と記事のあいだは 40px から
  const pct=100*hole/(w*(bot-top));if(pct>2){out.gridHole++;out.gridEg.length<4&&out.gridEg.push(label+' '+Math.round(pct)+'%・最大 '+Math.round(mx)+'px')}};
-document.querySelectorAll('section.sec .grid').forEach(g=>holeOf(g,':scope>article.card,:scope>.side>article.card',(g.closest('section.sec').dataset.k||'').slice(0,12)));
+document.querySelectorAll('section.sec .grid').forEach(g=>holeOf(g,':scope>article.card,:scope>.side>article.card,:scope>.mas>article.card,:scope>.mas>.side>article.card',(g.closest('section.sec').dataset.k||'').slice(0,12)));
 document.querySelectorAll('.picks .pkgrid').forEach(g=>holeOf(g,':scope>.pk','気になるかも','.pkt,:scope>*:not(a)'));
 document.querySelectorAll('section.sec article.card,.wc').forEach(c=>{if(!vis(c)||c.classList.contains('mini'))return;out.n++;
  const r=c.getBoundingClientRect();let b=0;[...c.children].forEach(k=>{const s=getComputedStyle(k);if(s.position==='absolute'||!vis(k))return;b=Math.max(b,k.getBoundingClientRect().bottom)});
@@ -332,7 +333,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     if hole["wallPct"] > 8:   # 2026-11-01 L1・L2：壁の列の底がそろっていない（空き面積が壁の 8% 超）
         bad.append(f"ほかの注目ニュースの壁の下が空いている（空き {hole['wallPct']}%）")
     if hole["gridHole"]:   # 2026-11-01 L2：版面の中の記事の並びで、記事の外の空きが 3% 超の版面
-        bad.append(f"記事の並びに空きがある：{hole['gridHole']} 並び " + "・".join(hole["gridEg"]))
+        bad.append(f"記事の並びに空きがある：{hole['gridHole']} 並び（うち mason 外 {hole['noMas']}） " + "・".join(hole["gridEg"]))
     if hole["wc"]:   # 同じく：ほかの注目ニュースの壁のカードは中身で高さが決まる（1 枚でも枠の 30% 超・70px 超が空いたら ✗）
         bad.append(f"壁のカードの下が空いている：{hole['wc']} 枚 " + "・".join(hole["eg"]))
     if hole["cards"] - hole["wc"] > 2:   # 版面の中のカード：同じく空き（枠の 30% 超・70px 超）が 3 枚以上
