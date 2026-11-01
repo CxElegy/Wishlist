@@ -245,3 +245,4 @@
 2026-11-01 r1f1: 切る位置の規則（cropAt）をスマホ .pk・c3・mini・wc・tape・主写真へ。data-m を全部の写真に・pkcut を全部の .fill に。テスト 1135 OK。次: 合併後 ux_check と 390px の確認。
 2026-11-01 r1: Wikimedia への直リンクの小元素 10 件（三星手机ほか）を倉庫へ置く規則 localize_remote。PR #713。本番 guest ux_check で E1・E2 なし。次: E4 Pochita 85px（全身の絵の下限）。
 - 2026-11-01 r2：ux_check E4（Pochita 85px）＝_body_len のしゃがみ見積もりを 1.4 倍までに。PR #714。本番 guest 1400 で E4 0。次：周杰伦の先頭の写真（photo_store 待ち）
+- 2026-11-01 r3：ux_check 残り（先頭の写真が置き場に無い）の根＝render のあと写真の一時保管を起こさない → render.yml に `photo_store.py --todo`＋起こす段・test。次：合併後 photo_store の回が起きたか・guest ux_check で picks の ✗ 0 を確かめ。dota2 の頭（17173 取れず）は残り。

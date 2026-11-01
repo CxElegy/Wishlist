@@ -16,6 +16,17 @@ class PhotoStore(unittest.TestCase):
         self.assertEqual(P.evict(p, set(), 120, keep_days=14, cap=10**9), ["a"])      # 載っていない 14 日超え
         self.assertEqual(P.evict({"b": p["b"], "c": p["c"]}, {"b"}, 120, cap=15), ["c"])  # 上限超え：載っていないものから古い順
 
+    def test_todo_count_skips_stored_and_recent_failures(self):
+        # render のあと、置いていない写真があれば一時保管を起こす印。取れなかった分は 1 日あけるので回り続けない
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            urls = [f"https://x.example/{c}.jpg" for c in "abc"]
+            (d / "i.html").write_text("".join(f'<img src="{u}" alt="" data-e="s">' for u in urls), encoding="utf-8")
+            ks = [P.key(u) for u in urls]
+            st = d / "st.json"
+            st.write_text(json.dumps({"base": "", "p": {ks[0]: {"at": P.day(), "b": 1}}, "x": {ks[1]: P.day()}, "stat": {}}), encoding="utf-8")
+            self.assertEqual(P.todo_count(st, d), 1)   # a は置いてある・b は今日取れなかった・c だけ残り
+
     def test_scan_and_stored(self):
         with tempfile.TemporaryDirectory() as d:
             d = pathlib.Path(d)

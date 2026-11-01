@@ -129,6 +129,15 @@ def scan(site=None, extra=()):
     return seen, want, len(seen | set(want))
 
 
+def todo_count(path=None, site=None):
+    """まだ置いていなくて、取り直してよい写真の数（render のあと、1 枚でもあれば写真の一時保管を起こす印）。
+    取れなかった分は RETRY_DAYS あけるので、取れない写真で起こし続けることはない。"""
+    st = load(path)
+    _, want, _ = scan(site)
+    today = day()
+    return sum(1 for k in want if k not in st["p"] and today - st["x"].get(k, -9) >= RETRY_DAYS)
+
+
 def shrink(data):
     """原寸 → {幅: webp のバイト列}。縮めるだけで拡大しない。読めない・小さすぎる画像は None。"""
     from PIL import Image
@@ -352,6 +361,9 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
 
 
 def main(argv):
+    if "--todo" in argv:   # render.yml：置いていない写真の数だけ出す（Supabase に触らない）
+        print(todo_count())
+        return
     import digest
     minutes = float(argv[argv.index("--minutes") + 1]) if "--minutes" in argv else 10
     settings, _ = digest.load_config()
