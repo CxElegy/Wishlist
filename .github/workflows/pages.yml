@@ -1,0 +1,51 @@
+name: Pages 公開
+
+# 公開（docs/）を Actions で行う（2026-11-01 ユーザー「老是ci fail」）。
+# 前は GitHub 標準の「pages build and deployment」が main の push のたびに走り、24 時間に 312 コミットで
+# 「in progress deployment, cancel <前の commit> first」と 8/30 回ぶつかって失敗メールが来た。
+# ここは concurrency で古い公開を取り消して最新だけを出す（ぶつからない）。
+# 使う前に 1 回：Settings → Pages → Build and deployment → Source を「GitHub Actions」に切り替える。
+# 戻すとき：Source を「Deploy from a branch（main / docs）」に戻し、このファイルを消す。
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**", ".github/workflows/pages.yml"]   # BACKLOG・PROGRESS・state だけの push では公開しない
+  workflow_run:   # bot（GITHUB_TOKEN）の push は push 触発を起こさない → docs/ を push する回が終わったら公開する
+    workflows: ["网页立即更新", "关注清单通信", "后台作業", "写真の一時保管", "ライブラリへ写す", "网页请求"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true   # 公開が重なったら古いほうを止めて最新だけ出す
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main   # workflow_run でも いまの main の先頭
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Source を切り替える前は deploy が必ず断られる。失敗メールを増やさないため落ちても赤にしない
+    # （切り替えて 1 回緑になったら、この行を消して本当の失敗が見えるようにする。BACKLOG に書いた）
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.dep.outputs.page_url }}
+    steps:
+      - id: dep
+        uses: actions/deploy-pages@v4

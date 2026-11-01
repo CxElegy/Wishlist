@@ -5,7 +5,10 @@ name: 反映待ちの帯を消す
 # 公開が始まる 30 秒前より前に始まった行だけ（いま書かれたばかりの行は次の公開まで残す）。
 
 on:
-  page_build:
+  page_build:   # 旧：ブランチからの公開
+  workflow_run:    # 新：Actions の公開（pages.yml）が終わったとき（Actions の公開は page_build を起こさない）
+    workflows: ["Pages 公開"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
