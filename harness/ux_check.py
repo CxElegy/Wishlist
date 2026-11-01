@@ -1380,11 +1380,16 @@ def main(argv):
     ap.add_argument("--fast", action="store_true", help="札・枠組みだけを速く（小元素 off・待ち 6 秒・最初の画面と設定だけ）")
     ap.add_argument("--part", default="all", choices=("all", "who", "global"),
                     help="分けて走らせる用：who＝人ごとの画面・札の境目だけ／global＝管理ページ・HTML・公開の漏れなど人に依らない点検だけ（harness/ux_all.py が使う）")
+    ap.add_argument("--diff-admin", action="store_true", help="店長のページ（ログインなし）とお客さまのページを部品の有無で比べ、違いを 1 行ずつ出す（harness/diff_admin.py）")
     ap.add_argument("--journey", action="store_true", help="1 日通し（空のアカウントで押して通す）だけを走らせる")
     a = ap.parse_args(argv)
     if a.fast:
         a.emb = "off"
     out = pathlib.Path(a.out)
+    if a.diff_admin:
+        import diff_admin
+        with sync_playwright() as pw:
+            return diff_admin.run(pw, a.base, [x for x in a.who.split(",") if x != "guest"], [int(w) for w in a.widths.split(",")], session, WHO)
     out.mkdir(parents=True, exist_ok=True)
     fails = 0
     with sync_playwright() as pw:

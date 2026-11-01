@@ -26,6 +26,7 @@ import urllib.request
 import zoneinfo
 
 import digest
+import heat
 import render
 import sources
 import taxonomy
@@ -191,7 +192,7 @@ def user_issue(items, shop_issue, rows, deadline, themes):
     return {"date": date, "no": (shop_issue or {}).get("no", 0), "items": blocks}
 
 
-def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None):
+def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None, heat_in=None):
     """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）、chosen = 本人の nav_schemes {板块: id}。
     pages（dict）を渡すと、設定ページ（settings.html）もそこに入れる。"""
     items = user_items(own_picks(follows, (prefs or {}).get("picks"), (prefs or {}).get("sizes")), shop_items)
@@ -207,12 +208,17 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     order = [i["name"] for _, i in items_o] or [FIRST_BOARD]
     tz = digest.display_tz(settings)
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
+    # 話題度（目次の「今日の最高」・版面の数字）も店長と同じ heat.compute：本人の版面の名前で、店長と同じ受信箱・出刊・外の信号から測る
+    # （本人だけの版面は記事が薄く低く出る。同じ規則で測るだけ）。heat_in = (受信箱の files, 新しい順の出刊, 信号, 今日)
+    heat_scores = {}
+    if heat_in:
+        heat_scores = heat.compute(items, heat_in[0], [issue] + heat_in[1], *heat_in[2:])   # 本人の号を先に：本人だけの版面の記事も数える（同じ記事は 1 回）
     render.AUTH_DB = {"url": settings.get("supabase_url") or "", "key": settings.get("supabase_key") or ""}
     render.AUTH_ITEMS = [[i["name"], digest.section_of(i)] for i in shop_items if not i.get("parent")]
     html_ = render.render([issue], settings.get("nav_style", "line"), order, updated, [], [],
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")},
                           {i["name"]: i["size"] for i in items if i.get("size")},
-                          {i["name"]: render.template_for(i) for i in items}, themes, [], {},
+                          {i["name"]: render.template_for(i) for i in items}, themes, [], heat_scores,
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")}, {n: v for n, v in subs.items() if v},
                           settings.get("nav_hide", render.NAV_HIDE),
@@ -251,6 +257,8 @@ def main(argv):
     shop_issue = digest.load_json(reports[-1]) if reports else None
     themes = digest.load_json(digest.THEMES_FILE) or {}
     deadline = time.time() + IMG_BUDGET_S
+    heat_in = (sorted(digest.INBOX_DIR.glob("????-??-??.json")), [digest.load_json(p) for p in reversed(reports[-14:])],
+               digest.load_json(digest.HEAT_FILE) or {}, (shop_issue or {}).get("date") or dt.date.today().isoformat())
     if argv[:1] == ["--local"]:
         out = pathlib.Path(argv[1])
         data = json.loads(pathlib.Path(argv[2]).read_text(encoding="utf-8"))   # [{email, account, prefs, rows: [...]}]
@@ -259,7 +267,7 @@ def main(argv):
             rows = {norm(r["item"]): r for r in u.get("rows", [])}
             pages = {}
             (out / f"{u['account']}.html").write_text(build(u["email"], u["prefs"], rows, shop_items, shop_issue, settings, deadline, themes,
-                                                            u.get("follows"), u.get("schemes"), pages), encoding="utf-8")
+                                                            u.get("follows"), u.get("schemes"), pages, heat_in), encoding="utf-8")
             for name, h in pages.items():
                 (out / f"{u['account']}.{name}").write_text(h, encoding="utf-8")
         return
@@ -273,7 +281,7 @@ def main(argv):
             chosen = {r["section"]: r["scheme"] for r in _supa(f"/rest/v1/nav_schemes?account=eq.{acct}&select=section,scheme") or []}
             pages = {}
             html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline,
-                          themes, follows, chosen, pages)
+                          themes, follows, chosen, pages, heat_in)
             for name, h in {"index.html": html_, **pages}.items():
                 _supa(f"/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}", h.encode("utf-8"), "POST", "text/html; charset=utf-8")
             made += 1
