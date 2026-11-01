@@ -157,6 +157,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg": {
+  "w": 1269,
+  "h": 708,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/535ccb7cb030968c.webp",
+  "out": [
+   1269,
+   708
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
   "h": 1777,
@@ -1152,7 +1165,7 @@
  "https://gazlog.jp/wp-content/uploads/2026/11/image.png": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://gdm-universal-media.b-cdn.net/epicstream/d674716a-ghost-rider.webp?width=1600&height=840": {
@@ -1300,6 +1313,19 @@
   "h": 810,
   "target": 720,
   "v": 3
+ },
+ "https://i.epochtimes.com/assets/uploads/2026/08/id14830870-20260816-mark-disney09-800x335.jpg": {
+  "w": 800,
+  "h": 335,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.495,
+  "local": "pics/725be4a106d772de.webp",
+  "out": [
+   1280,
+   536
+  ],
+  "why": "看不清"
  },
  "https://i0.wp.com/cdnbunny.ubergizmo.com/wp-content/uploads/2026/10/Huawei-Matebook-Fold.jpg": {
   "w": 1000,
@@ -1943,6 +1969,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1489552407197877875/origin_1.jpg": {
+  "w": 360,
+  "h": 360,
+  "target": 720,
+  "v": 3,
+  "blur": 0.565,
+  "local": "pics/a98334cfc34269d5.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://img.khan.co.kr/news/2026/10/29/news-p.v1.20261028.62e9dd8e67f8479fbfbefc3d4a51da99_P1.jpg": {
   "w": 1200,
   "h": 800,
@@ -2013,6 +2052,12 @@
  "https://img.sportsbull.jp/raw/t2m8VMS5AgyOd1ngRNI4M1BYyyaofcW7fQOmvQWf.jpg": {
   "w": 1024,
   "h": 576,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.tenasia.co.kr/photo/202610/ZA.46024882.1.jpg": {
+  "w": 1200,
+  "h": 799,
   "target": 720,
   "v": 3
  },
@@ -2344,12 +2389,6 @@
   "target": 720,
   "v": 3
  },
- "https://mobamag.com/wp-content/uploads/2026/10/DSC09626.jpg": {
-  "w": 1200,
-  "h": 701,
-  "target": 1280,
-  "v": 3
- },
  "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
   "w": 1920,
   "h": 1080,
@@ -2470,18 +2509,6 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/901015_1.jpg": {
   "w": 1024,
   "h": 576,
-  "target": 720,
-  "v": 3
- },
- "https://news.dellows.jp/wp-content/uploads/2026/10/941580_2.jpg": {
-  "w": 1024,
-  "h": 683,
-  "target": 1280,
-  "v": 3
- },
- "https://news.dellows.jp/wp-content/uploads/2026/10/953358_1.jpg": {
-  "w": 1024,
-  "h": 683,
   "target": 720,
   "v": 3
  },
@@ -2833,6 +2860,19 @@
   "out": [
    1280,
    853
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/77844/439414_615.jpg": {
+  "w": 615,
+  "h": 439,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.517,
+  "local": "pics/4de2efbd1758fd34.webp",
+  "out": [
+   1280,
+   914
   ],
   "why": "看不清"
  },
@@ -3317,6 +3357,12 @@
   "target": 720,
   "v": 3
  },
+ "https://pbs.twimg.com/media/HV_PYlpWYAAdxwV?format=webp&name=large": {
+  "w": 1024,
+  "h": 1360,
+  "target": 720,
+  "v": 3
+ },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/01/35473388.jpg&M=1&s=Y&x=0&y=503&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
   "w": 799,
   "h": 532,
@@ -3573,12 +3619,6 @@
  "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png": {
   "w": 1200,
   "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://s1.ppllstatics.com/surinenglish/www/multimedia/local/2026/10/15/gato7-kLVC--1200x840@Diario%20Sur.jpg": {
-  "w": 1200,
-  "h": 840,
   "target": 720,
   "v": 3
  },
@@ -3887,12 +3927,6 @@
   "target": 720,
   "v": 3
  },
- "https://staticg.sportskeeda.com/editor/2026/10/f97dc-17934430484356-1920.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://statics-prod.mirrordaily.news/images/f211b6c1-51ee-48b0-8c00-36437b0529f0.webp": {
   "w": 1600,
   "h": 1069,
@@ -4080,6 +4114,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/01/1793518918872_17935120288761292194897526244225522898744703979080a956beb782b93abdd1c5fd744a01c5dd-17935123162911346392751-53-0-1188-2168-crop-17935125067981749509703.webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
   "w": 495,
   "h": 619,
@@ -4190,6 +4230,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.-1guXKpbnvtpi-CrRUX12g&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.-VhpE4N1wgEtnT0i8NhqaA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4271,12 +4317,6 @@
    1079
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.BZEKF9StmB28pHdwM4Do3g&pid=News&w=1024": {
-  "w": 700,
-  "h": 494,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.BeTNXc2enqmqjkeMNmLA0g&pid=News&w=1200": {
   "w": 700,
@@ -4380,6 +4420,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.N-f2Ky3IkMTQMcFoucfixQ&pid=News&w=640": {
+  "w": 640,
+  "h": 425,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.OxiJ5-NxJTwjyR84qxjhBQ&pid=News&w=1080": {
   "w": 700,
   "h": 367,
@@ -4395,6 +4441,12 @@
  "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
   "h": 467,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Tj8p-NB1h9oLCIVz3xJdmA&pid=News&w=656": {
+  "w": 534,
+  "h": 356,
   "target": 720,
   "v": 3
  },
@@ -4475,12 +4527,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.XXrD_Fc1YPyiodtT1w0aQg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4520,17 +4566,11 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.bDcLjK1l3e8oPmQR9FGTgg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.bBSzeS_-6fCEDPuSaAJ-3Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.bNObN6-deyIJ_E7mMwkmuA&pid=News&w=500": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-01"
  },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
@@ -4581,6 +4621,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.hoCWrR0b03Tw66q5NIPW7g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200": {
   "w": 700,
@@ -4653,12 +4699,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.397
- },
- "https://www.bing.com/th?id=ONUT.qzkwWXvb2zJKkK_uOecA1A&pid=News&w=640": {
-  "w": 640,
-  "h": 330,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
@@ -4823,12 +4863,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.crank-in.net/img/db/263101289203384_1200.jpg": {
-  "w": 1200,
-  "h": 960,
-  "target": 1280,
-  "v": 3
- },
  "https://www.crank-in.net/img/db/267101267147283_1200.jpg": {
   "w": 1200,
   "h": 1602,
@@ -4892,12 +4926,6 @@
  "https://www.fashion-press.net//img/news/152479/MHc.jpg": {
   "w": 1000,
   "h": 1000,
-  "target": 720,
-  "v": 3
- },
- "https://www.finestresullarte.info/rivista/immagini/2026/fn/alberto-angela-star-wars-5.jpg": {
-  "w": 1200,
-  "h": 616,
   "target": 720,
   "v": 3
  },
