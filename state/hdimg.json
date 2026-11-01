@@ -905,19 +905,6 @@
   ],
   "why": "看不清"
  },
- "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_HV8V1mcaEAA8sS4_20261031.webp": {
-  "w": 355,
-  "h": 200,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.442,
-  "local": "pics/027b9f43daa9c6c6.webp",
-  "out": [
-   1065,
-   600
-  ],
-  "why": "看不清"
- },
  "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_a2o_aijing_5156_20261015.webp": {
   "w": 452,
   "h": 300,
@@ -3740,12 +3727,6 @@
   "target": 1280,
   "v": 3
  },
- "https://storage.ctinews.com/compression/files/default/cut-1793538777-XNKpkSx.jpg": {
-  "w": 1547,
-  "h": 2319,
-  "target": 720,
-  "v": 3
- },
  "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261027005537": {
   "w": 640,
   "h": 450,
@@ -3868,6 +3849,12 @@
   "target": 720,
   "v": 3
  },
+ "https://unipa.co/blog/wp-content/uploads/2026/11/E7720FD2-96FE-48D2-AFF6-89ADC03DFDD8.jpg": {
+  "w": 1920,
+  "h": 1281,
+  "target": 1280,
+  "v": 3
+ },
  "https://uptodate.tokyo/wp-content/uploads/2026/10/IMG_8254_130F8CA7-819x1024.jpeg": {
   "w": 819,
   "h": 1024,
@@ -3976,6 +3963,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.anewsa.com/news_images/2026/11/01/mark/20261101211331.jpg": {
+  "w": 580,
+  "h": 387,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.533,
+  "local": "pics/52ff25bdbc1dfd6f.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
+ },
  "https://www.appbank.net/wp-content/uploads/2026/10/20261028_091828_781_01.webp": {
   "w": 1793,
   "h": 1251,
@@ -4057,12 +4057,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.-YWbxebzD2ERR4MMfG4n3Q&pid=News&w=1100": {
-  "w": 700,
-  "h": 326,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.4J2nRakvD3RS1jr8Nsjp5A&pid=News&w=650": {
   "w": 650,
   "h": 341,
@@ -4127,6 +4121,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.DZk25STm_5UmPzohkmMQ0g&pid=News&w=912": {
+  "w": 700,
+  "h": 392,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
@@ -4606,6 +4606,12 @@
  "https://www.crank-in.net/img/db/267108025175442_1200.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/07/ChainsawMan.jpg": {
+  "w": 1600,
+  "h": 900,
   "target": 720,
   "v": 3
  },
