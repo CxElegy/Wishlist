@@ -45,3 +45,6 @@ class MasonOlderTest(unittest.TestCase):
         # 写真の枠は 9 行にまたがる。字の入らない行にも行の隙間が付いてカードが 73〜86px 高くなっていた
         self.assertIn("column-gap:12px;row-gap:0;align-content:start}", render.CSS)
         self.assertIn(":not(:last-child){margin-bottom:8px}", render.CSS)
+
+    def test_sb_card_extra_height_goes_to_third_row(self):
+        self.assertIn(".card.sb:not(.mini){grid-template-rows:auto auto minmax(0,1fr)}", render.CSS)
