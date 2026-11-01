@@ -148,11 +148,11 @@ const holeOf=(g,sel,label,inner)=>{if(!vis(g)||g.closest('.older'))return;const 
  const all=[...g.querySelectorAll(sel)],cs=all.filter(vis).map(c=>{const r=c.getBoundingClientRect();let b=0;(inner?[...c.querySelectorAll(inner)]:[...c.children]).forEach(k=>{if(getComputedStyle(k).position!=='absolute')b=Math.max(b,k.getBoundingClientRect().bottom)});   // 記事の中身の下（伸ばされた枠の下ではない。.pk は札〔.pkt〕の下）
   return {left:r.left,right:r.right,top:r.top,height:r.height,bottom:Math.min(r.bottom,(b||r.bottom)+(parseFloat(getComputedStyle(c).paddingBottom)||0))}});
  if(cs.length<2)return;if(cs.length<all.length||cs.some(r=>r.height<20||r.top<gr.top-4)){out.gridSkip++;return}
- const top=Math.min(...cs.map(r=>r.top)),bot=Math.max(...cs.map(r=>r.bottom)),w=Math.max(...cs.map(r=>r.right))-Math.min(...cs.map(r=>r.left));let hole=0,mx=0;
+ const tail=g.querySelector(':scope>.mas')?160:80,top=Math.min(...cs.map(r=>r.top)),bot=Math.max(...cs.map(r=>r.bottom)),w=Math.max(...cs.map(r=>r.right))-Math.min(...cs.map(r=>r.left));let hole=0,mx=0;
  for(let x=Math.min(...cs.map(r=>r.left))+4;x<Math.max(...cs.map(r=>r.right));x+=16){const iv=cs.filter(r=>r.left-12<=x&&r.right+12>x).map(r=>[r.top,r.bottom]).sort((a,b)=>a[0]-b[0]);let y=top;
-  iv.forEach(v=>{if(v[0]-y>=40){hole+=(v[0]-y)*16;mx=Math.max(mx,v[0]-y)}y=Math.max(y,v[1])});if(bot-y>=80){hole+=(bot-y)*16;mx=Math.max(mx,bot-y)}}   // 最後の段の底のでこぼこは中身の高さの違い（80px 未満は数えない）。記事と記事のあいだは 40px から
+  iv.forEach(v=>{if(v[0]-y>=40){hole+=(v[0]-y)*16;mx=Math.max(mx,v[0]-y)}y=Math.max(y,v[1])});if(bot-y>=tail){hole+=(bot-y)*16;mx=Math.max(mx,bot-y)}}   // 最後の段の底のでこぼこは中身の高さの違い（80px 未満は数えない。積み上げ .mas は列の底が 1 枚分まで違うのがふつうなので 160px 未満。2026-11-02 mason）。記事と記事のあいだは 40px から
  const pct=100*hole/(w*(bot-top));if(pct>2){out.gridHole++;out.gridEg.length<4&&out.gridEg.push(label+' '+Math.round(pct)+'%・最大 '+Math.round(mx)+'px')}};
-document.querySelectorAll('section.sec .grid').forEach(g=>holeOf(g,':scope>article.card,:scope>.side>article.card',(g.closest('section.sec').dataset.k||'').slice(0,12)));
+document.querySelectorAll('section.sec .grid').forEach(g=>holeOf(g,':scope>article.card,:scope>.side>article.card,:scope>.mas>article.card,:scope>.mas>.side>article.card',(g.closest('section.sec').dataset.k||'').slice(0,12)));
 document.querySelectorAll('.picks .pkgrid').forEach(g=>holeOf(g,':scope>.pk','気になるかも','.pkt,:scope>*:not(a)'));
 document.querySelectorAll('section.sec article.card,.wc').forEach(c=>{if(!vis(c)||c.classList.contains('mini'))return;out.n++;
  const r=c.getBoundingClientRect();let b=0;[...c.children].forEach(k=>{const s=getComputedStyle(k);if(s.position==='absolute'||!vis(k))return;b=Math.max(b,k.getBoundingClientRect().bottom)});

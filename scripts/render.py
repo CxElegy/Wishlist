@@ -348,7 +348,7 @@ button{font-family:inherit}
 .card{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0}
 /* 記事の近さ（2026-10-24，用户定的）：写真が上の記事か下の記事か迷わせない。同じ記事の中の隙間（8px）は記事どうしの隙間の 1/3 以下、
    記事は下の線で閉じる（.mini と同じ線）。ux_check の「近さ」が測る */
-.grid>.card:not(.hero),.side>.card{padding-bottom:16px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
+.grid>.card:not(.hero),.mas>.card,.side>.card{padding-bottom:16px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
 .card.m{color:var(--fg);--ac:var(--acc)}
 .card.a{color:var(--afg);--ac:var(--aacc)}
 .card .pic{border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
@@ -364,6 +364,10 @@ button{font-family:inherit}
 .lead h2{font-size:28px;line-height:1.4}
 .side{display:contents}  /* 右の記事は升目の 1 段ずつに置く（2026-11-01 L2）：大きい記事（.lead）は右の記事の数だけ段をまたぎ、段の高さは中身で決まる。下の段は一番短い列の下から始まる */
 .rs1{grid-row:span 1}.rs2{grid-row:span 2}.rs3{grid-row:span 3}.rs4{grid-row:span 4}
+/* 小さいカードの段（JS の mason が .mas に包む）：決まった升目で同じ段の背をそろえず、1px の行に 1 枚ずつ一番低い列へ積む。中身の高さで詰まり、段の途中に空きが出ない（2026-11-02 L1・L2） */
+.mas{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:22px;grid-auto-rows:1px;align-items:start;margin-bottom:-28px}
+.mas>.card.c4,.mas>.side{grid-column:auto;align-self:start}.mas>.card.c8{grid-column:span 2;align-self:start}
+.mas>.side{display:flex;flex-direction:column;gap:28px}
 .side h3{font-size:20px;line-height:1.4}
 .s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}
 .blurb{margin:0;font-size:15px;line-height:1.75;opacity:.85}
@@ -391,9 +395,9 @@ button{font-family:inherit}
 .card.c8 h3{font-size:24px;line-height:1.4}.card.c6 h3{font-size:21px;line-height:1.4}
 .card.c4 h3,.card.c3 h3{font-size:17px;line-height:1.45}
 .grid>.hero .pic{aspect-ratio:auto;height:280px}
-.grid>.lead .pic{aspect-ratio:auto;height:260px}
-.grid>.lead h2,.card.wide h3,.mini h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.grid>.lead .blurb,.card.wide .blurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.grid>.lead .pic,.mas>.lead .pic{aspect-ratio:auto;height:260px}
+.grid>.lead h2,.mas>.lead h2,.card.wide h3,.mini h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.grid>.lead .blurb,.mas>.lead .blurb,.card.wide .blurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card.mini{display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:6px 14px;align-content:start;
  padding-bottom:14px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
 .mini .pic{grid-row:span 2;align-self:start;aspect-ratio:4/3}
@@ -628,10 +632,11 @@ button{font-family:inherit}
  .grid{padding:16px 14px 18px;gap:24px 14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}.pend summary{padding:10px 14px}.pend ul{padding:0 14px 12px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
- .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:22px}
+ .grid>.hero .pic,.grid>.lead .pic,.mas>.lead .pic{height:200px}.grid>.lead h2,.mas>.lead h2{font-size:22px}
  .hero{grid-template-columns:1fr}.hero h2,.lead h2{font-size:22px}
  .lead,.s12,.s6,.s4{grid-column:span 12}.rs1,.rs2,.rs3,.rs4{grid-row:auto}
  .card.mini{grid-template-columns:110px minmax(0,1fr)}
+ .mas{display:contents}.mas>.card.c4,.mas>.card.c8{grid-column:span 12;grid-row:auto!important}.mas>.side{display:contents}
  .calm{flex-wrap:wrap;gap:12px;padding:4px 14px 16px}.calm .pic{display:none}
  .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
 }
@@ -3352,7 +3357,55 @@ FIT_JS = """
     h0 = h; c._span();
   };
   let spt;   // 右の記事の写真が届いて高さが変わったら、大きい記事の高さをそろえ直す
-  const spans = () => { clearTimeout(spt); spt = setTimeout(() => document.querySelectorAll('.grid > .lead.nw').forEach(l => l._span && l._span()), 150); };
+  // 版面の中の記事は 1px の行に 1 枚ずつ、一番低い列へ積む（CSS の自動配置がそうなる）。大きい記事（c8）は 2 列分・右の記事（.side）は 1 列の縦の束。
+  // 決まった升目で同じ段の背をそろえると、背の違う記事の下が空く根（L1・L2）を、升目をやめて直す。中身の高さで詰まり、段の途中に空きが出ない
+  let mt; const mro = window.ResizeObserver && new ResizeObserver(() => { clearTimeout(mt); mt = setTimeout(mason, 60); });
+  const mason = () => {
+    document.querySelectorAll('section.sec .grid').forEach(g => {
+      if (g.closest('.older') || !g.offsetParent) return;
+      let m = g.querySelector(':scope > .mas');
+      if (!m) {
+        const ks = [...g.children], ok = k => k.matches('article.card.mini.c4, .side'), run = [];
+        let i = ks.findIndex(k => k.matches('article.card.lead.c8') && ks[ks.indexOf(k) + 1] && ks[ks.indexOf(k) + 1].matches('.side'));
+        if (i < 0) i = ks.findIndex(ok);
+        if (i < 0) return;
+        for (let j = i; j < ks.length && (j === i && ks[j].matches('article.card.lead.c8') || ok(ks[j])); j++) run.push(ks[j]);
+        if (run.length < 4) return;
+        m = document.createElement('div'); m.className = 'mas'; g.insertBefore(m, run[0]); run.forEach(c => { m.append(c); mro && mro.observe(c); });
+      }
+      const gap = parseFloat(getComputedStyle(g).rowGap) || 28;
+      const span = () => [...m.children].forEach(c => { c.style.gridRow = 'span ' + Math.max(1, Math.ceil(c.getBoundingClientRect().height + gap)); });
+      [...m.children].forEach(c => { const p = c.querySelector(':scope > .pic'); if (p && p._sl) { p.style.height = p._sl.h; p.style.aspectRatio = p._sl.a; p.classList.toggle('fill', p._sl.f); p._sl = null; } });   // 前の伸ばしを戻してから測る
+      span();
+      // 終わりの列の底がでこぼこ（80px 超）なら、最後の 5 枚以内の並び順を入れ替えて、列の底の差が一番小さい順にする（日付の順は 5 枚の中だけ前後する）
+      {
+        const hs = c => c.getBoundingClientRect().height + gap, minis = [...m.children].filter(c => c.matches('.mini')), lead = m.querySelector(':scope > .lead'), sd = m.querySelector(':scope > .side');
+        const base = lead ? [hs(lead), hs(lead), sd ? hs(sd) : 0] : [0, 0, 0], K = Math.min(5, minis.length), head = minis.slice(0, minis.length - K), tail = minis.slice(minis.length - K);
+        const run = order => { const c = base.slice(); order.forEach(k => { const i = c.indexOf(Math.min(...c)); c[i] += hs(k); }); return Math.max(...c) - Math.min(...c); };
+        const perms = a => a.length < 2 ? [a] : a.flatMap((x, i) => perms([...a.slice(0, i), ...a.slice(i + 1)]).map(r => [x, ...r]));
+        if (innerWidth > 760) {
+          const cur = run([...head, ...tail]);
+          if (cur > 60) { const best = perms(tail).map(o => [run([...head, ...o]), o]).sort((x, y) => x[0] - y[0])[0]; if (best[0] < cur - 20) best[1].forEach(c => m.append(c)); }
+        }
+      }
+      const bot = k => k.getBoundingClientRect().bottom, cs = [...m.children], T = Math.max(...cs.map(bot));
+      // 各列の最後の小さいカードは、底の差だけ写真の枠を伸ばす（顔・題字が 6 割以上残る位置で切れるときだけ。主役の位置が無い絵は切れるのが 12% 以内の所まで）。伸ばせない絵は空けたまま（ux_check の gridHole が数える）
+      const cols = {}; cs.forEach(c => { if (c.matches('.mini')) { const x = Math.round(c.offsetLeft / 20); if (!cols[x] || bot(c) > bot(cols[x])) cols[x] = c; } });
+      Object.values(cols).forEach(c => {
+        const p = c.querySelector(':scope > .pic'), s = Math.floor(T - bot(c)); if (!p || s < 12 || c.matches('.sb')) return;
+        const w = p.clientWidth, img = p.querySelector('img:not(.bg):not(.ico)'), h = p.clientHeight;
+        let to = Math.min(Math.round(c.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(c).paddingBottom) || 0) - p.getBoundingClientRect().top) + s, Math.round(w * 1.5));
+        if (img && img.naturalWidth && !img.dataset.m) to = Math.min(to, Math.floor(Math.exp(0.12) * w * img.naturalHeight / img.naturalWidth));
+        if (!w || to < h + 6) return;
+        if (img && !(img.naturalWidth && (img.dataset.m ? cropAt(img, img.naturalWidth / img.naturalHeight / (w / to)) : true))) { cropAt(img, 1); return; }
+        p._sl = {h: p.style.height, a: p.style.aspectRatio, f: p.classList.contains('fill')};
+        p.style.aspectRatio = 'auto'; p.style.height = to + 'px'; p.classList.add('fill');
+      });
+      span();
+    });
+  };
+  mason();
+  const spans = () => { clearTimeout(spt); spt = setTimeout(() => { document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(); }, 150); };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     if (img.complete) fit(img);
   });
