@@ -48,11 +48,11 @@
   }
  ],
  "_covered": {
-  "GTA 6": 9,
-  "Vaundy": 8,
+  "GTA 6": 11,
+  "Vaundy": 9,
   "漫威电影": 10,
-  "日本顶级网球赛事": 3,
-  "The Mandalorian": 3,
+  "日本顶级网球赛事": 4,
+  "The Mandalorian": 5,
   "A2O LITE": 3,
   "周杰伦": 3,
   "ILLIT": 1,
@@ -61,7 +61,8 @@
   "あつ森": 1,
   "三星手机": 1,
   "哈利波特剧集": 1,
-  "星巴克马克杯": 1
+  "星巴克马克杯": 1,
+  "チェーンソーマン": 1
  },
  "Vaundy": [
   {
@@ -74,7 +75,8 @@
     2,
     5,
     1,
-    7
+    7,
+    9
    ],
    "image": "https://news-images.tvbs.com.tw/api/v1/image/01a1974f-ad5d-72be-a75b-2f6f484ae1a6.jpg?t=4x3&c=0,525,2668,2526&w=1200&h=675"
   },
@@ -165,7 +167,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    4
    ]
   }
  ],
@@ -310,5 +313,6 @@
    },
    "image": "https://image.news.livedoor.com/newsimage/stf/4/a/4a2f3_1729_761f0180_688787ab.jpg"
   }
- ]
+ ],
+ "チェーンソーマン": []
 }
