@@ -105,7 +105,7 @@ COMPONENTS = {
     "octree": {"kind": "algo", "name": "減色 FASTOCTREE 16 色", "spec": "背景 = 最多色 · 強調 = 彩度^1.5 · WCAG 4.5:1",
                "what": "theme.from_image：Pillow quantize。読めるまで明るさを ±0.04 ずつ動かす"},
     "fit": {"kind": "algo", "name": "写真のはめ方 FIT_JS", "spec": "|ln(画像比 / 枠比)| < 0.08 のときだけ埋める（切れるのは 8% まで）· ほかはぼかし背景に全体 · 気になるかも？はスマホで枠を写真の比率に · 気になるかも？の小さいカードは PC で 1 画面に詰めても写真枠の高さの床＝幅の 90%（見える高さ≥カードの 55%）",
-            "what": "render.py：どんな比率の配図でも同じ枠に入れ、写真は切らない（文字・ロゴ入りのバナーが欠けるため）。枠の大きさは変えないので壁の段はそろう。L7：「同じ版面の次のニュース」に出した記事は元のカードを畳む（.nxd）＝同じ記事は版面に 1 回だけ"},
+            "what": "render.py：どんな比率の配図でも同じ枠に入れ、写真は切らない（文字・ロゴ入りのバナーが欠けるため）。枠の大きさは変えないので壁の段はそろう。L7：「同じ版面の次のニュース」に出した記事は元のカードを畳む（.nxd）＝同じ記事は版面に 1 回だけ。ページ全体も：トップ（ポスター・ほかの注目）に出た記事は版面から外し（_without）、予定・次のニュースとの二重は上から順に後ろのカードを畳む（.dupd・once）"},
     "ahash": {"kind": "algo", "name": "差分ハッシュ 9×8", "spec": "ハミング距離 ≤ 4 は同じ画像",
               "what": "emblem_fill._hash：網址が違う同じ写真を 1 枚に"},
     "logolocal": {"kind": "rule", "name": "Wikimedia の小元素は倉庫に置く（emblem_fill.localize_remote）", "spec": "image が Wikimedia の網址（commons Special:FilePath・upload.wikimedia.org）の小元素は、ブラウザから直接つなぐと 403 で出ない（三星手机 Samsung wordmark.svg：E1・E2）ので、決まった UA・1 本ずつの取り方（wikihttp）で取って docs/home/emblems/ に置き、image を相対パスに・元の網址は source に。名簿を確かめる回ごとに全部の版面へ",
