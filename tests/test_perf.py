@@ -64,5 +64,21 @@ class LoadListener(unittest.TestCase):
             self.assertEqual(n, 0, f"{f.name}: window で load/error を capture している {n} か所")
 
 
+class TinyStandIn(unittest.TestCase):
+    """防盗链の小さい代用画像（dota2 の 17173：989 バイト）が頭の写真を落とした根：onerror 属性は 10-30 から無い。"""
+
+    def test_fit_hands_tiny_images_to_the_document_error_listener(self):
+        src = pathlib.Path(render.__file__).read_text(encoding="utf-8")
+        self.assertNotIn("img.onerror", src)
+        self.assertIn("naturalWidth < 32 && img.naturalHeight < 32) { img.dispatchEvent(new Event('error'))", src)
+
+
+
+class TinyUxCheck(unittest.TestCase):
+    def test_ux_check_counts_tiny(self):
+        s = (pathlib.Path(__file__).parent.parent / "harness" / "ux_check.py").read_text(encoding="utf-8")
+        self.assertIn("tiny:", s)
+        self.assertIn("小さい代用画像", s)
+
 if __name__ == "__main__":
     unittest.main()

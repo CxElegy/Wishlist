@@ -247,6 +247,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         pics:[...document.querySelectorAll('section.sec article img')].length,
         heads:[...document.querySelectorAll('.pic.icon,.pic.none')].filter(x=>!x.closest('.nav,.fside')).map(x=>(x.closest('section.sec')||{dataset:{k:'トップ'}}).dataset.k),
         nohead:[...document.querySelectorAll('section.sec')].filter(s=>{const h=s.querySelector('.grid article.card.hero,.grid article.card.wide');return h&&h.classList.contains('nophoto')}).map(s=>s.dataset.k),
+        tiny:[...document.querySelectorAll('section.sec img[data-e]')].filter(i=>i.complete&&i.naturalWidth>0&&i.naturalWidth<32&&i.naturalHeight<32).length,
         plates:document.querySelectorAll('.pic.icon,.pic.none').length,
         pkv:[...document.querySelectorAll('.pk:not(.big):not(.nophoto)')].filter(k=>k.offsetParent).map(k=>{const c=k.getBoundingClientRect(),p=k.querySelector('.pic').getBoundingClientRect(),o=parseFloat(getComputedStyle(k.querySelector('.pic')).getPropertyValue('--pko'))||0;return (p.height-o)/c.height}).filter(v=>v<0.45).length,
         pkcut:[...document.querySelectorAll('section.sec .pic.fill img[data-e="s"]:not(.bg):not(.ico),section.sec .nx img[data-e="s"]:not(.whole)')].filter(i=>{if(!i.offsetParent||!i.naturalWidth)return false;const b=i.getBoundingClientRect();return Math.abs(Math.log((i.naturalWidth/i.naturalHeight)/(b.width/b.height)))>=0.08&&!(+i.dataset.keep>=60)}).length,
@@ -352,6 +353,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
     if heads:   # 2026-10-25：記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：版面の全部の記事に、さらにトップ（#front の article.wc）も。開けない写真は render.SWAP_JS が .nophoto に落とす
         bad.append(f"記事が札（写真が出ない。開けない写真は字だけの形に落とす）{len(heads)}：" + "・".join(heads[:4]))
+    if st.get("tiny"):   # 2026-11-01：防盗链の小さい代用画像（<32px 角）が写真の枠に残っている＝FIT_JS が error を投げて次の候補へ替えるはずが動いていない（dota2 の頭）
+        bad.append(f"小さい代用画像が写真の枠に残っている {st['tiny']}")
     if nohead:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
         bad.append(f"版面の頭が写真なし（字だけの形）{len(nohead)}：" + "・".join(nohead[:4]))
     if st["tint"][0] and st["tint"][1] < st["tint"][0] * 0.95:   # 2026-10-31 写真 0.5 秒：置き場の写真の枠は色だけの下絵（style の background）を持つ
