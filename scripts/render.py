@@ -106,7 +106,7 @@ button{font-family:inherit}
 .card.nw .pic{justify-self:start;align-self:start}
 .hero.nw{grid-template-columns:auto minmax(0,1fr)}.card.wide.nw{grid-template-columns:auto minmax(0,1fr)}
 .lead.nw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;align-content:start}.lead.nw>*:not(.pic){margin-bottom:8px}
-.lead.nw>.pic{grid-column:1;grid-row:1}.lead.nw.ls>.nx:not(.pic):not(.lk):not(.xplay){grid-column:1/-1;grid-template-columns:repeat(var(--nxn,2),minmax(0,190px))}.lead.nw>.ltx{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:8px;min-width:0;margin-bottom:0}.lead.nw>.ltx>*{margin-bottom:0}  /* .ls = 横長の写真：写真の形のまま幅の半分、次のニュースは横いっぱい */.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
+.lead.nw>.pic{grid-column:1;grid-row:1}.lead.nw.ls>.nx:not(.pic):not(.lk):not(.xplay){grid-column:1/-1;grid-template-columns:repeat(var(--nxn,2),minmax(0,var(--nxw,190px)))}.lead.nw>.ltx{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:8px;min-width:0;margin-bottom:0}.lead.nw>.ltx>*{margin-bottom:0}  /* .ls = 横長の写真：写真の形のまま幅の半分、次のニュースは横いっぱい */.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
 .nx{position:relative;z-index:2;display:grid;grid-template-columns:repeat(var(--nxn,2),minmax(0,1fr));gap:12px;margin-top:6px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
 .nx a{display:flex;flex-direction:column;gap:5px;min-width:0;color:inherit;text-decoration:none}
 .nx img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
@@ -462,6 +462,7 @@ button{font-family:inherit}
 .pksub span{font:500 12px var(--font-sans);letter-spacing:0;opacity:.75}
 .pk{position:relative;display:flex;flex-direction:column;gap:0;min-width:0;color:var(--ink)}
 .pk.big{grid-column:span 2;grid-row:span 2;align-self:stretch}
+.pkgrid>.pk:not(.big){align-self:stretch}.pkgrid>.pk:not(.big):not(.sb) .pic{flex:1 1 auto}  /* 同じ段の札の高さをそろえる：余った高さは写真の枠が受ける（札の下に空きを残さない：L2） */
 .pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:160px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
 .pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
 .pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
@@ -3270,9 +3271,9 @@ FIT_JS = """
   // 大きいカード（.hero・.lead・.wide）で写真が枠より細いとき：ぼかしで埋めず、枠を写真の幅に絞り、空いた横に同じ版面の次の記事を置く。
   // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.6 倍まで）
   const unnarrow = (c, p) => {
-    const nx = c.querySelector(':scope > .nx, :scope > .txt > .nx'); if (nx) nx.remove();
+    c.querySelectorAll(':scope > .nx, :scope > .txt > .nx, :scope > .ltx > .nx').forEach(n => n.remove());   // 字の列の中の次のニュースも消す（残ると字の列をほどいたとき大きい記事の直下の子になり、2 段目に 170px の空きを作った：ILLIT 型）
     const lt = c.querySelector(':scope > .ltx'); if (lt) { while (lt.firstChild) c.insertBefore(lt.firstChild, lt); lt.remove(); }
-    c.classList.remove('nw', 'tall', 'ls'); p.style.width = p.style.height = p.style.aspectRatio = '';
+    c.classList.remove('nw', 'tall', 'ls'); c.style.alignSelf = ''; c._span = null; p.style.width = p.style.height = p.style.aspectRatio = '';
   };
   const narrow = (img, p, nat, r) => {
     const c = p.closest('article.hero, article.lead, article.wide');
@@ -3306,13 +3307,33 @@ FIT_JS = """
     const sz = ls ? place : h => { p.style.height = h + 'px'; p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
     sz(p.clientHeight);
     c.classList.add('nw'); if (ls) c.classList.add('ls');
+    // 版面の升目（.grid）：右の記事が段をまたぐ高さ（S）と大きい記事の高さをそろえる（どちらが低くても下に空きが残る：L2，ILLIT 型・滑雪型とも）。
+    // 横長（.ls）は次のニュースの写真の幅（--nxw）で、縦長は写真の枠を伸ばして。右の記事の写真が届いて高さが変わったら呼び直す（spans）
+    const sd = c.parentElement && c.parentElement.classList.contains('grid') ? [...c.parentElement.querySelectorAll(':scope > .side > .card')] : [];
+    let h0 = null;
+    c._span = () => {
+      if (!sd.length) return;
+      if (ls) {
+        const d = c.querySelector(':scope > .nx'); if (!d) return;
+        const S = sd.reduce((s, k) => s + k.getBoundingClientRect().height, 0) + (parseFloat(getComputedStyle(c.parentElement).rowGap) || 0) * (sd.length - 1);
+        c.style.alignSelf = 'start'; let w = parseFloat(d.style.getPropertyValue('--nxw')) || 190;
+        for (let i = 0; i < 3; i++) { const E = c.getBoundingClientRect().height - S; if (Math.abs(E) < 6) break;
+          w = Math.max(110, Math.min(260, Math.round(w - 1.5 * E))); d.style.setProperty('--nxw', w + 'px'); place(); }
+        c.style.alignSelf = ''; return;
+      }
+      if (h0 === null) return;
+      sz(h0); c.style.alignSelf = 'stretch';   // 枠を伸ばす前の高さに戻してから、右の記事の高さ（段をまたぐ）まで伸ばす。字の列があふれるなら戻す
+      const need = () => (c.querySelector(':scope > .ltx') || c).offsetHeight;
+      const to = Math.floor(c.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(c).paddingBottom) || 0) - p.getBoundingClientRect().top);
+      if (to > h0 + 2) { sz(to); if (need() > to + 2) sz(h0); }
+    };
     const sec = c.closest('section'); if (!sec) return;
     const here = img.currentSrc || img.src;
     const more = [...sec.querySelectorAll('article.card, article.wc')].filter(a => a !== c && a.querySelector('a.lk[href]') && a.querySelector('.pic img:not(.ico)') && !a.classList.contains('nophoto'))
       .map(a => ({u: a.querySelector('a.lk').href, i: a.querySelector('.pic img:not(.ico)'), t: (a.querySelector('h2, h3') || a.querySelector(':scope > b') || {}).textContent}))
       .filter(x => x.t && x.i.src && x.i.src !== here).slice(0, 3);
     const host = c.classList.contains('lead') ? (ls ? c : c.querySelector(':scope > .ltx')) : (c.querySelector(':scope > .txt') || c);
-    if (more.length < 2 || host.clientWidth < 260) { if (ls) c.classList.remove('ls'); return; }
+    if (more.length < 2 || host.clientWidth < 260) { if (ls) c.classList.remove('ls'); else { h0 = p.clientHeight; c._span(); } return; }
     const d = document.createElement('div'); d.className = 'nx'; d.style.setProperty('--nxn', more.length);
     d.innerHTML = '<i>同じ版面の次のニュース</i>';
     more.forEach(x => { const a = document.createElement('a'); a.href = x.u; a.target = '_blank'; a.rel = 'noopener';
@@ -3326,12 +3347,16 @@ FIT_JS = """
     // 文字の列と次の記事を足した高さまで、写真の枠を伸ばす（縦長の写真ほど大きく見せる。左下を空けない）
     // 枠の高さは「文字の列＋次の記事」の高さ（枠自身が行を押し広げないよう、測るときは枠の高さを 0 にする）
     const need = () => host === c ? d.getBoundingClientRect().bottom - p.getBoundingClientRect().top : host.offsetHeight;
-    if (ls) { place(); return; }
+    if (ls) { place(); c._span(); return; }
     sz(0); let h = need(); sz(h); p.style.height = '0px'; h = Math.max(h, need()); sz(h);
+    h0 = h; c._span();
   };
+  let spt;   // 右の記事の写真が届いて高さが変わったら、大きい記事の高さをそろえ直す
+  const spans = () => { clearTimeout(spt); spt = setTimeout(() => document.querySelectorAll('.grid > .lead.nw').forEach(l => l._span && l._span()), 150); };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     if (img.complete) fit(img);
   });
+  spans();
   // 隠れていた版面（1 列のタブなど）が見えるようになったとき、まだ測っていない写真の枠を測る（390px で大きいカードの枠が絞られないままだった）
   if (window.ResizeObserver) {
     const ro = new ResizeObserver(es => es.forEach(({target: p}) => { const i = p.querySelector('img:not(.bg):not(.ico)'); if (i && !p._ok && i.naturalWidth && p.clientHeight) fit(i); }));
@@ -3340,9 +3365,9 @@ FIT_JS = """
     new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => n.nodeType === 1 && obs(n)))).observe(document.body, {childList: true, subtree: true});   // あとから JS で足された版面の写真も
   }
   // あとから足された写真（JS で作った版面）の load も拾う（load は泡立たないので capture で）
-  document.addEventListener('load', e => { const i = e.target; if (i.tagName === 'IMG' && i.matches('.pic img:not(.bg):not(.ico)')) fit(i); }, true);
+  document.addEventListener('load', e => { const i = e.target; if (i.tagName === 'IMG' && i.matches('.pic img:not(.bg):not(.ico)')) { fit(i); spans(); } }, true);
   let t;
-  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit); wall(); }, 200); });
+  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit); wall(); spans(); }, 200); });
   // 写真の壁（2026-11-01 並べ方の考え L1・L2）：カードの高さは中身で決まる。決まった升目に入れて背をそろえ、下を空けない。
   // 1px の行に 1 枚ずつ置き（上から一番低い列へ・大きい 1 枚は隣り合う 2 列の低いほうへ）、右の列の高さに合う枚数を選ぶ。
   // 列ごとの底の差は、その列のカードの写真枠に等分して足す（足す量が少ない枚数を選ぶ）。右の列は壁の高さまで欲しい物・予定の行を出す
