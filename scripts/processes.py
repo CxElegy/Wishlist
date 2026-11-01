@@ -627,7 +627,7 @@ PROCESSES = [
             {"id": "p5d", "kind": "step", "lane": "actions", "title": "試作ページ d5 の殻を合わせる", "x": "殻がずれたときだけ",
              "text": "harness/d5_sample.py --if-stale：testground の d5-now・d5-new が今の render.AUTH_CSS と違うときだけ作り直す（毎回だと 3MB の写しが履歴に積もる）· 失敗しても発布は止めない · tests が同じずれを PR で止める"},
             {"id": "p5e", "kind": "step", "lane": "actions", "title": "並べ方の全体見本 layout-v2", "x": "手元で作る（審査待ち）",
-             "text": "scripts/layout_sample.py：本番 docs/home/ の記事から testground/layout-v2.html を作る · 記事の割り当て 1 か所（ページ全体で同じ記事 1 回）・カード 1 種類・並べる器 1 種類 · 新聞／雑誌／P5 の 3 方向を切り替えて見比べる · 本番は入れ替えない（OK が出てから）"},
+             "text": "scripts/layout_sample.py：本番 docs/home/ の記事から testground/layout-v2.html を作る · 記事の割り当て 1 か所（ページ全体で同じ記事 1 回）・カード 1 種類・並べる器 1 種類 · 新聞／雑誌／P5 の 3 方向を切り替えて見比べる · 左の目次・版面の小元素の帯・「もっと見る」全部開くの切り替えつき（第二版）・本番は入れ替えない（OK が出てから）"},
             {"id": "p6", "kind": "store", "lane": "repo", "title": "docs/home/*.html", "text": "店長のページ（網址 /home/ はみんな同じ・中身はログインした人で決まる、旧 /test1/・/shop/ は飛ぶだけ）· docs/test2/ は 2026-10-19〜21 の凍結した写し · docs/index.html は入口"},
             {"id": "p6a", "kind": "store", "lane": "repo", "title": "管理ページ 7 枚", "x": "render.ADMIN_PAGES",
              "text": "admin.html（トップ：6 枚のカードと数）＋ admin-now（①いま）・admin-boards（②版面）・admin-emblem（③エンブレム）・admin-ai（④AI 編集）・admin-system（⑤しくみ）・admin-members（⑥お客さまと店長）。"
