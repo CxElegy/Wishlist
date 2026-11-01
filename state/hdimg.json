@@ -581,6 +581,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.daily.hankooki.com/news/photo/202610/1420312_1599110_4057.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg": {
   "w": 1280,
   "h": 720,
@@ -729,7 +735,7 @@
  "https://cdn.mhnse.com/mhnsports/2026/10/29161611/thumb_ccms_80682.jpeg": {
   "w": 1200,
   "h": 800,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.newstoon.co.kr/news/photo/202610/81715_104460_512.jpg": {
@@ -1141,6 +1147,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://gazlog.jp/wp-content/uploads/2026/11/image.png": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://gdm-universal-media.b-cdn.net/epicstream/d674716a-ghost-rider.webp?width=1600&height=840": {
@@ -1627,6 +1639,18 @@
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/1000012072.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://images.thedirect.com/media/article_full/1000012095.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://images.thedirect.com/media/article_full/1000012096.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -2318,6 +2342,12 @@
   "w": 1312,
   "h": 875,
   "target": 720,
+  "v": 3
+ },
+ "https://mobamag.com/wp-content/uploads/2026/10/DSC09626.jpg": {
+  "w": 1200,
+  "h": 701,
+  "target": 1280,
   "v": 3
  },
  "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
@@ -3110,15 +3140,16 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00010004-tennisnet-000-2-view.jpg?exp=10800": {
-  "w": 1135,
-  "h": 856,
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00000014-jij_afp-000-3-view.jpg?pri=l&w=640&h=426&exp=10800": {
+  "w": 640,
+  "h": 427,
   "target": 1280,
   "v": 3,
-  "local": "pics/811cd092c675a17f.webp",
+  "blur": 0.499,
+  "local": "pics/78d0567a67a0f597.webp",
   "out": [
-   1135,
-   856
+   1280,
+   854
   ],
   "why": "期限付きの網址"
  },
@@ -3464,12 +3495,6 @@
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
   "w": 760,
   "h": 1125,
-  "target": 720,
-  "v": 3
- },
- "https://r2-media.wdwnt.com/2026/10/amc-theaters-avengers-doomsday-novelties-2.jpg": {
-  "w": 949,
-  "h": 536,
   "target": 720,
   "v": 3
  },
@@ -3862,6 +3887,12 @@
   "target": 720,
   "v": 3
  },
+ "https://staticg.sportskeeda.com/editor/2026/10/f97dc-17934430484356-1920.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://statics-prod.mirrordaily.news/images/f211b6c1-51ee-48b0-8c00-36437b0529f0.webp": {
   "w": 1600,
   "h": 1069,
@@ -4046,7 +4077,7 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/31/1793434884463_img_d76e95fd.jpeg": {
   "w": 1200,
   "h": 630,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
@@ -4483,12 +4514,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.bBSzeS_-6fCEDPuSaAJ-3Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.bDcLjK1l3e8oPmQR9FGTgg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4778,12 +4803,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://www.comicbasics.com/wp-content/uploads/2026/10/ioan-gruffudd-reed-richards.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  },
  "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/10_6f3cce.jpg?resize=1200,630": {

@@ -1228,7 +1228,9 @@
     },
     {
      "date": "2026-11-01T07:58:01+00:00",
-     "image": "",
+     "image": "https://images.thedirect.com/media/article_full/1000012096.jpg",
+     "image_via": "og:image",
+     "link": "https://thedirect.com/article/marvel-studios-deadpool-avengers-doomsday-cameo",
      "n": 36,
      "seen": "2026-11-01T09:24:45+00:00",
      "site": "https://thedirect.com",
@@ -1240,7 +1242,9 @@
     },
     {
      "date": "2026-11-01T07:45:34+00:00",
-     "image": "",
+     "image": "https://images.thedirect.com/media/article_full/1000012095.jpg",
+     "image_via": "og:image",
+     "link": "https://thedirect.com/article/marvel-studios-guardians-of-the-galaxy-james-gunn-revival",
      "n": 37,
      "seen": "2026-11-01T09:24:45+00:00",
      "site": "https://thedirect.com",
@@ -1868,6 +1872,7 @@
     {
      "date": "2026-11-01T07:37:25+00:00",
      "image": "",
+     "link": "https://news.yahoo.co.jp/articles/6a7bdc82c3a9ca295857d0f97dde0078851d1885",
      "n": 15,
      "seen": "2026-11-01T09:24:49+00:00",
      "site": "https://news.yahoo.co.jp",
@@ -2089,7 +2094,9 @@
     },
     {
      "date": "2026-11-01T09:04:28+00:00",
-     "image": "",
+     "image": "https://mobamag.com/wp-content/uploads/2026/10/DSC09626.jpg",
+     "image_via": "og:image",
+     "link": "https://mobamag.com/phone/galaxy-s27-leak-202610/",
      "n": 12,
      "seen": "2026-11-01T09:25:15+00:00",
      "site": "https://mobamag.com",
@@ -2102,6 +2109,7 @@
     {
      "date": "2026-11-01T09:04:00+00:00",
      "image": "",
+     "link": "https://sumahodigest.com/?p=75288",
      "n": 13,
      "seen": "2026-11-01T09:25:15+00:00",
      "site": "https://sumahodigest.com",
@@ -2113,7 +2121,9 @@
     },
     {
      "date": "2026-11-01T08:41:00+00:00",
-     "image": "",
+     "image": "https://gazlog.jp/wp-content/uploads/2026/11/image.png",
+     "image_via": "og:image",
+     "link": "https://gazlog.jp/entry/galaxy-s27-charge-speed-25w-same-again/",
      "n": 14,
      "seen": "2026-11-01T09:25:15+00:00",
      "site": "https://gazlog.jp",
@@ -2126,6 +2136,7 @@
     {
      "date": "2026-11-01T07:20:54+00:00",
      "image": "",
+     "link": "https://www.sammyfans.com/2026/11/01/samsung-galaxy-s27-charge-7-generations-0-progress/amp/",
      "n": 15,
      "seen": "2026-11-01T09:25:15+00:00",
      "site": "https://www.sammyfans.com",
@@ -2137,7 +2148,9 @@
     },
     {
      "date": "2026-11-01T06:00:00+00:00",
-     "image": "",
+     "image": "https://cdn.daily.hankooki.com/news/photo/202610/1420312_1599110_4057.jpg",
+     "image_via": "JSON-LD",
+     "link": "https://daily.hankooki.com/news/articleView.html?idxno=1420312",
      "n": 16,
      "seen": "2026-11-01T09:25:15+00:00",
      "site": "https://daily.hankooki.com",
@@ -3857,6 +3870,7 @@
     {
      "date": "2026-11-01T09:11:15+00:00",
      "image": "",
+     "link": "https://asiaent.net/neon-music-show-wins/",
      "n": 22,
      "seen": "2026-11-01T09:25:29+00:00",
      "site": "https://asiaent.net",
@@ -3881,6 +3895,7 @@
     {
      "date": "2026-10-30T07:00:00+00:00",
      "image": "",
+     "link": "https://asiaent.net/a2o-lite-neon-billboard/",
      "n": 24,
      "seen": "2026-11-01T09:25:29+00:00",
      "site": "https://asiaent.net",

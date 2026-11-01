@@ -66,30 +66,21 @@
    "image": "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/31070737/midnight-sons-1024x576.jpg"
   },
   {
-   "headline": "AMC Theatres Reveals 'Avengers: Doomsday' Popcorn Bucket, Collectibles",
-   "highlight": "Popcorn Bucket",
+   "headline": "Marvel Studios Finally Confirms Deadpool's Return, Right As Ryan Reynolds' 'Avengers Doomsday' Appearance Speculation Hits A New High",
+   "highlight": "Confirms Deadpool's Return",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    36
    ]
   },
   {
-   "headline": "‘Avengers: Doomsday’ Presales Are Reportedly Rewriting the Box Office Playbook",
-   "highlight": "Presales",
+   "headline": "Marvel Studios Announces First-Ever 'Guardians of the Galaxy' Revival Without James Gunn",
+   "highlight": "Guardians of the Galaxy",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    29
-   ]
-  },
-  {
-   "headline": "Ioan Gruffudd Is Ready to Stretch Back Into the MCU as Reed Richards",
-   "highlight": "Reed Richards",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5
+    37
    ]
   },
   {
@@ -99,6 +90,15 @@
    "weight": "normal",
    "refs": [
     13
+   ]
+  },
+  {
+   "headline": "‘Avengers: Doomsday’ Presales Are Reportedly Rewriting the Box Office Playbook",
+   "highlight": "Presales",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    29
    ]
   }
  ],
@@ -143,10 +143,27 @@
  ],
  "日本顶级网球赛事": [
   {
+   "headline": "シュナイダーが東レPPO優勝、フェルナンデスとのフルセットマッチ制す",
+   "highlight": "東レPPO優勝",
+   "blurb": "女子シングルス決勝でシュナイダーが6-4、5-7、6-2でフェルナンデスを下し、今季初タイトルを獲得。",
+   "weight": "lead",
+   "refs": [
+    15,
+    17,
+    13,
+    12,
+    14,
+    19,
+    16,
+    18
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00000014-jij_afp-000-3-view.jpg?pri=l&w=640&h=426&exp=10800"
+  },
+  {
    "headline": "シュナイダー＆フェルナンデスとダブロウスキー／ステファニー＆エラーニ／パオリーニが決勝に進出",
    "highlight": "決勝に進出",
-   "blurb": "東レPPOはシングルス決勝がシュナイダー対フェルナンデスに。ポハンコバは準決勝でシュナイダーに4-6、6-7で惜敗。",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     10,
     11,
@@ -178,7 +195,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    20
    ]
   },
   {
@@ -188,16 +206,6 @@
    "weight": "normal",
    "refs": [
     6
-   ]
-  },
-  {
-   "headline": "激闘制し東レPPO初優勝！ 22歳シュナイデル 13年ぶり左利き対決の決勝制す",
-   "highlight": "東レPPO初優勝",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    13,
-    12
    ]
   }
  ],
@@ -234,11 +242,12 @@
    ]
   },
   {
-   "headline": "预计 Galaxy S27 Ultra 将采用全球版骁龙芯片，并配备升级后的 5700 mAh 电池。",
-   "highlight": "5700 mAh 电池",
+   "headline": "Galaxy S27 UltraのExynos 2700搭載説に新展開 欧州版はSnapdragon採用が有力か",
+   "highlight": "Snapdragon採用が有力",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    13,
     3,
     1,
     2
@@ -253,16 +262,44 @@
     9,
     8
    ]
+  },
+  {
+   "headline": "【噂】「Galaxy S27」シリーズは2027年1月発表か。例年より1カ月早まる可能性",
+   "highlight": "2027年1月発表",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
+  },
+  {
+   "headline": "Galaxy S27の充電速度は2020年のGalaxy S20と同じ25Wか。日本向けも安全認証を通過",
+   "highlight": "25W",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    15
+   ]
+  },
+  {
+   "headline": "삼성D, 갤S27 프로에도 '프라이버시 OLED'…이달부터 생산",
+   "highlight": "프라이버시 OLED",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
   }
  ],
  "_covered": {
   "GTA 6": 32,
-  "漫威电影": 32,
+  "漫威电影": 44,
   "ILLIT": 8,
-  "日本顶级网球赛事": 13,
-  "三星手机": 11,
-  "A2O LITE": 21,
-  "周杰伦": 14,
+  "日本顶级网球赛事": 20,
+  "三星手机": 17,
+  "A2O LITE": 24,
+  "周杰伦": 18,
   "哈利波特剧集": 11,
   "dota2": 6,
   "绝区零": 10,
@@ -285,7 +322,8 @@
    "blurb": "A song that goes viral on TikTok does not necessarily get listened to on streaming platforms. The note piece looks at the data behind NEON's rise in Japan.",
    "weight": "lead",
    "refs": [
-    3
+    3,
+    23
    ],
    "image": "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200"
   },
@@ -295,17 +333,19 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
+    24,
     13,
     18,
     20
    ]
   },
   {
-   "headline": "A2O LITE, 일본 오리콘 급상승 1위…음악방송 6관왕 달성 ('NEON')",
-   "highlight": "오리콘 급상승 1위",
+   "headline": "イ・スマンプロデュースの大型新人A2O LITE、デビュー曲「NEON」で韓国音楽番組3冠達成！日本本格上陸前にチャートを席巻",
+   "highlight": "韓国音楽番組3冠",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    22,
     16,
     17
    ]

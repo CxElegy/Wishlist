@@ -82,6 +82,7 @@
   "https://www.tgdaily.co.kr/news/articleView.html?idxno=407725": "https://cdn.tgdaily.co.kr/news/photo/202610/407725_211766_111.jpg",
   "https://www.ubergizmo.com/2026/10/samsung-galaxy-z-tab-rumor/": "https://i0.wp.com/cdnbunny.ubergizmo.com/wp-content/uploads/2026/10/Huawei-Matebook-Fold.jpg",
   "https://www.vietnam.vn/ja/chiec-flagship-trung-quoc-ban-chay-nhat-nam-nay": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/29/1793282040355_honor_magic_9_pro_max_design.jpeg",
+  "https://www.vietnam.vn/zh-cn/galaxy-s27-ultra-du-kien-dung-chip-snapdragon-toan-cau-cung-vien-pin-nang-cap-5-700-mah": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/31/1793434884463_img_d76e95fd.jpeg",
   "https://www.walkerplus.com/article/1026125/image10233236.html": "https://news.walkerplus.com/article/1026125/10233248_615.jpg",
   "https://www.walkerplus.com/article/1316147/image15894893.html": "https://news.walkerplus.com/article/1316147/15894888_615.jpg",
   "https://www.walkerplus.com/article/1422988/image17878271.html": "https://news.walkerplus.com/article/1422988/17878260_615.jpg",
@@ -1061,6 +1062,39 @@
   },
   {
    "batch": 1,
+   "because": "三星手机",
+   "date": "2026-10-31",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/31/1793434884463_img_d76e95fd.jpeg",
+   "kind": "board",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "score": 8,
+   "source": "Vietnam.vn",
+   "taste": [
+    [
+     "galaxy",
+     7
+    ],
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
+    ]
+   ],
+   "title": "预计 Galaxy S27 Ultra 将采用全球版骁龙芯片，并配备升级后的 5700 mAh 电池。",
+   "url": "https://www.vietnam.vn/zh-cn/galaxy-s27-ultra-du-kien-dung-chip-snapdragon-toan-cau-cung-vien-pin-nang-cap-5-700-mah",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 2,
    "because": "あつ森",
    "date": "2026-10-31",
    "hits": [
@@ -1177,7 +1211,7 @@
    "work": "Astrae Oratio"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "三星手机",
    "date": "2026-10-30",
    "hits": [
@@ -1326,7 +1360,7 @@
    "work": "星巴克马克杯"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "gelato pique",
    "date": "2026-10-28",
    "hits": [],
@@ -1431,7 +1465,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-10-31",
    "hits": [],
@@ -1536,7 +1570,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "The Mandalorian",
    "date": "2026-10-29",
    "hits": [],
@@ -1641,7 +1675,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "Vaundy",
    "date": "2026-10-26",
    "hits": [],
