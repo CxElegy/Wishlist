@@ -301,16 +301,16 @@
   "三星手机": 17,
   "A2O LITE": 24,
   "周杰伦": 18,
-  "哈利波特剧集": 11,
+  "哈利波特剧集": 13,
   "dota2": 6,
   "绝区零": 10,
   "The Mandalorian": 6,
   "あつ森": 2,
-  "Vaundy": 4,
+  "Vaundy": 5,
   "Astrae Oratio": 2,
   "チェーンソーマン": 5,
-  "滑雪": 4,
-  "BLEACH Mirrors High": 1,
+  "滑雪": 5,
+  "BLEACH Mirrors High": 3,
   "猫用品": 3,
   "MMORPG 新作": 3,
   "星巴克马克杯": 2,
@@ -424,7 +424,9 @@
    "weight": "normal",
    "refs": [
     1,
-    4
+    4,
+    12,
+    13
    ]
   },
   {
@@ -583,7 +585,8 @@
     1,
     2,
     3,
-    4
+    4,
+    5
    ],
    "image": "https://news.videoland.com.tw/newsphoto/enews_20261113102_BB5495.webp"
   }
@@ -668,6 +671,15 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "長野県「戸狩温泉スキー場」がリニューアルオープン！日本最長のモーグルバーンや「焼肉ジャンボ」プロデュース店が新登場",
+   "highlight": "リニューアルオープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "BLEACH Mirrors High": [
@@ -680,6 +692,15 @@
     1
    ],
    "image": "https://appmedia.jp/wp-content/uploads/2025/06/144853_efkn3.webp"
+  },
+  {
+   "headline": "【ミラハイ】星3黒崎一護の評価と性能【BLEACHミラーズハイ】",
+   "highlight": "星3黒崎一護の評価と性能",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "猫用品": [

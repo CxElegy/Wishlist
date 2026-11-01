@@ -349,10 +349,10 @@
   "v": 3
  },
  "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
-  "w": 506,
-  "h": 253,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
  },
  "https://appmedia.jp/wp-content/uploads/2025/06/144841_zw02r.webp": {
   "w": 750,
@@ -664,6 +664,12 @@
   "h": 399,
   "target": 720,
   "v": 3
+ },
+ "https://cdn.hk01.com/di/media/images/dw/20261030/1192902154348662784394527.jpeg/e-uyNhCRFct32XLa6IFt3g1HmZWdd6HD1SW9t9Ulvbc": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
  },
  "https://cdn.image.st-hatena.com/image/scale/34bc434840d3d1c882498735e0c17b56655ba5b3/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fr%2Frittor_snrec%2F20261028%2F20261028112645.png": {
   "w": 1300,
@@ -1125,12 +1131,6 @@
   "target": 1280,
   "v": 3
  },
- "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/31122626/harry-potter-reboot-snape-update.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://gamefragger.com/images/articles/banners/bleach-mirrors-high-introduces-10-new-characters-designed-by-tite-kubo-ahead-of-its-launch-ab30039.jpg": {
   "w": 1500,
   "h": 844,
@@ -1286,12 +1286,6 @@
  "https://hype.my/wp-content/uploads/2026/10/edit-6-1.webp": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
-  "v": 3
- },
- "https://i.cdn.newsbytesapp.com/images/l144_17801793486882.jpg": {
-  "w": 1440,
-  "h": 810,
   "target": 720,
   "v": 3
  },
@@ -2516,6 +2510,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news.ssbcrack.com/wp-content/uploads/2026/10/HBOs-Upcoming-Harry-Potter-Series-Features-Paapa-Essiedus-Unique-Take.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
+ },
  "https://news.videoland.com.tw/newsphoto/enews_20261113102_BB5495.webp": {
   "w": 2000,
   "h": 1334,
@@ -2631,10 +2631,10 @@
   "v": 3
  },
  "https://news.walkerplus.com/article/1316147/15894888_615.jpg": {
-  "w": 615,
-  "h": 410,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
  },
  "https://news.walkerplus.com/article/1317098/15915699_615.jpg": {
   "w": 615,
@@ -3791,12 +3791,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.tweaktown.com/news/1/1/114424_3_gta-vis-210gb-download-could-cost-an-extra-euro-11-55-in-france-if-new-data-tax-becomes-law_full.png": {
-  "w": 1500,
-  "h": 844,
-  "target": 720,
-  "v": 3
- },
  "https://static.wixstatic.com/media/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg": {
   "w": 1000,
   "h": 667,
@@ -4086,6 +4080,12 @@
   "target": 720,
   "v": 3
  },
+ "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -4252,6 +4252,12 @@
   "h": 640,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.BTdgKkvR_eUV1LxbureJwA&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-01"
  },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
