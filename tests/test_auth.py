@@ -70,6 +70,11 @@ class AuthTag(unittest.TestCase):
         self.assertEqual(set(render.ROLE_JA), {"admin", "user", "guest"})
         self.assertEqual(render.ROLE_JA["admin"], "店長")   # 運営者 = 店長（「店長のおすすめ」と同じ設定）
 
+    def test_role_badge_admin_only(self):   # 2026-11-02：一般のユーザーは名前だけ。役割の札は店長だけ
+        js = render.AUTH_JS
+        self.assertIn("role==='admin'?'<span class=\"rl admin\">", js)
+        self.assertNotIn("'<span class=\"rl '+esc(role)", js)
+
     def test_terms_page(self):
         html = render.render_terms("10.21")
         self.assertIn(f"第 {render.TERMS_VERSION} 版", html)

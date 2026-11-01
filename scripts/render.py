@@ -4696,10 +4696,11 @@ AUTH_JS = r"""
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=email]').focus();};
       bindLogin(box); addMore(box,keepOpen); return;
     }
+    // 役割の札は店長だけ（2026-11-02，用户定的：一般のユーザーは名前だけ。「お客さま」は言わない）
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
     // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
     box.innerHTML=(role!=='admin'&&SHOP&&!isMine()?L.chip2:'')+'<a class="new home" href="'+esc(HOME)+L.chip1+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
-      '<span class="nm">'+esc(sh)+'</span><span class="rl '+esc(role)+'">'+esc(label)+'</span></button>'+
+      '<span class="nm">'+esc(sh)+'</span>'+(role==='admin'?'<span class="rl admin">'+esc(label)+'</span>':'')+'</button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+L.chip5+
       (role==='admin'&&page!=='admin'?L.chip6:'')+
       (tok?L.chip7:'')+

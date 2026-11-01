@@ -582,7 +582,7 @@ PROCESSES = [
     {
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
-        "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。全身の小元素の高さは「目から足」をそろえ、しゃがみの見積もりは 1.4 倍まで（体の大きいマスコットが 100px を割らない）。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。",
+        "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。全身の小元素の高さは「目から足」をそろえ、しゃがみの見積もりは 1.4 倍まで（体の大きいマスコットが 100px を割らない）。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。ログイン中の右上の役割の札（AUTH_JS）は店長だけ、一般のユーザーは名前だけ。",
         "files": [".github/workflows/render.yml", ".github/workflows/pages.yml", ".github/workflows/live_clear.yml", "scripts/render.py", "scripts/lang.py", "harness/d5_sample.py"], "doc": "docs/rules/design.md", "uses": ["facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
             {"id": "p1fnt", "kind": "step", "lane": "actions", "title": "Web フォントの CSS は描画を止めない（render.font_link）", "text": "fonts.googleapis.com の stylesheet を media=print で取り、届いたら all に（noscript に保険）。display=swap なので字は先に出る。前は遠いサーバーへの往復 4 回ぶん最初の表示が止まり、Fast 3G の LCP が 4.3 秒だった（止めないと 1.2 秒）。本体 7 頁・入口・擬音の書体すべてが font_link を通り、tests/test_perf.py がソースと生成済みの docs/index.html・docs/home/*.html の止める link を数える。入口は描画を止める link が残る古い出力なら 24 時間を待たず作り直す（welcome.build_if_stale）。ux_check が本番の入口＋本体 4 頁も数える"},
@@ -651,7 +651,7 @@ PROCESSES = [
              "text": "is_admin_email が invites 表（role=admin）を見る",
              "yes": "パスワードの欄を出す（まだ決めていなければ、はじめの 1 回ここで決める）→ signInWithPassword で管理者のセッション（Supabase が覚える・メールは送らない）", "no": "そのまま一般ユーザー（運営者のページは見るだけ）", "uses": ["invite"]},
             {"id": "a3", "kind": "step", "lane": "web", "title": "身份を確かめる",
-             "text": "auth_enforced・my_role・can_edit(このページの account) を読み、<html> に data-role / data-lock を付ける。ページの JS の Supabase 呼び出しにログインした人の鍵を付ける", "uses": ["roles"]},
+             "text": "auth_enforced・my_role・can_edit(このページの account) を読み、<html> に data-role / data-lock を付ける。ページの JS の Supabase 呼び出しにログインした人の鍵を付ける。右上の役割の札は店長だけ（一般のユーザーは名前だけ。2026-11-02）", "uses": ["roles"]},
             {"id": "a3m", "kind": "decision", "lane": "web", "title": "お客さま（店長でない人）がログインしている？",
              "text": "簡報・欲しい物・話題度・設定。アカウントは 1 つずつ独立（2026-10-22）。ログインを覚えているブラウザは、決まるまで店長の中身を隠す",
              "yes": "自分のページ：my_page()（本人の行だけ）→「〇〇さんのページ」・自分のキーワード（prefs.picks）。設定でキーワードを足す・外す・元に戻す（my_keywords_set、200 個まで）。目次は「ページ」「キーワード」だけ（まだ使えないものは出さない）。仕組みの説明・準備中・店長のページへの切り替えは出さない（impeccable clarify・distill、onboarding の空の状態）。ログインの知らせからの呼び出しは setTimeout で後に回す（Supabase 公式）",

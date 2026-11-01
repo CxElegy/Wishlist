@@ -295,6 +295,10 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     pg.screenshot(path=str(out / f"{who}-{page.split('.')[0] + '-' if page else ''}{width}x{height}.png"))
     bad = []
     bad += dom_lead
+    if WHO[who] and who != "admin":   # 2026-11-02：一般のユーザーには役割の札（お客さま）を出さない。札は店長だけ
+        rl = pg.evaluate("[...document.querySelectorAll('.wl-auth .rl')].filter(e=>e.offsetParent).map(e=>e.textContent.trim())")
+        if rl:
+            bad.append(f"E-rl：役割の札が出ている {rl[:3]}（一般のユーザーは名前だけ）")
     if not page and emb != "off":
         bad += emb_check.check(pg, who, width, out, full=emb == "full", guest=not WHO[who])
     b.close()
