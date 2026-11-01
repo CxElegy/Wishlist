@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-01T19:54:38+00:00",
+ "checked": "2026-11-01T21:17:43+00:00",
  "fired": {
-  "at": "2026-11-01T19:54:56+00:00",
+  "at": "2026-11-01T21:18:04+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-01T19:11:52+00:00",
+    "at": "2026-11-01T21:18:04+00:00",
     "attempts": 1,
     "day": "2026-11-02",
-    "prog": 31,
-    "resp": "cse_01W4x6f99xmDX2ErNfinUcgd",
-    "sig": "9928e2d21786"
+    "prog": 46,
+    "resp": "cse_01W4x6f7x4sEC4Vhzp8GrL8E",
+    "sig": "74ca588f9e18"
    },
    "items": [
     "GTA 6",
@@ -34,11 +34,17 @@
    "need": true,
    "prog": 46,
    "prog_day": "2026-11-02",
-   "ripe": [],
-   "sig": "b89f36a434cb",
+   "ripe": [
+    "GTA 6",
+    "The Mandalorian",
+    "Vaundy",
+    "チェーンソーマン",
+    "日本顶级网球赛事"
+   ],
+   "sig": "74ca588f9e18",
    "token_cap": 1000000,
    "tokens_today": 118204,
-   "why": "整理待ちの記事 7 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 7 件（5 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
