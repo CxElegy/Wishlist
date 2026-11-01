@@ -700,6 +700,25 @@ def lead_outside_bad(html):
     return [f"先頭の写真が置き場に無い版面 {len(out)} 件（{out[:4]}）。SVG・GIF・取れない分を除いても残る＝photo_store の置く順／取りこぼし"] if out else []
 
 
+def check_board_designs():
+    """ライブラリの版面（お客さま test-a〜e が読めるもの＋ログインなしが読めるもの）で、config に motif・theme のないもの 0
+    （2026-11-02：AI のデザインの回が走っていない版面は、種類からの仮の主題で出るだけで section の m- class の点検をすり抜けた）。→ (✗ の一覧, 数)"""
+    s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    base, key = s["supabase_url"].rstrip("/"), s["supabase_key"]
+    seen = {}
+    for e in (None, "test-a", "test-b", "test-c", "test-d", "test-e"):
+        try:
+            tok = session(e + "@example.com")["access_token"] if e else key
+        except urllib.error.HTTPError:
+            continue
+        r = urllib.request.urlopen(urllib.request.Request(base + "/rest/v1/boards?select=id,name,config",
+                                   headers={"apikey": key, "Authorization": "Bearer " + tok}), timeout=30)
+        for b in json.loads(r.read()):
+            seen[b["id"]] = b
+    miss = [b["id"] for b in seen.values() if not ((b.get("config") or {}).get("motif") and (b.get("config") or {}).get("theme"))]
+    return ([f"デザイン（motif・theme）のないライブラリの版面 {len(miss)}/{len(seen)}：id " + "・".join(map(str, miss[:8]))] if miss else []), len(seen)
+
+
 def check_public_leak(base):
     """公開の HTML（だれでも開ける管理ページなど）にお客さまだけの版面の名前が焼かれていない（HARNESS §2-5・BACKLOG：公開の場所にお客さまの中身を出さない）。
     お客さまだけの名前 ＝ test-a が読める版面 − ログインなしが読める版面。"""
@@ -1460,6 +1479,12 @@ def main(argv):
                 bad, n = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"], 0
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + "公開の HTML にお客さまだけの版面の名前：" + ("、".join(bad) if bad else f"{n} 件の名前が 0 か所"))
+            try:
+                bad, n = check_board_designs()
+            except Exception as ex:  # noqa: BLE001
+                bad, n = [f"読めなかった（{type(ex).__name__}: {str(ex)[:120]}）"], 0
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + "ライブラリの版面で motif・theme のないもの：" + ("、".join(bad) if bad else f"{n} 版面すべてにある"))
             try:
                 bad = check_customer_admin_pages(pw, a.base, 1400)
             except Exception as ex:  # noqa: BLE001
