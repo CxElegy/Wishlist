@@ -1,32 +1,32 @@
 {
- "admin": "7b13d9101c8d",
- "admin-ai": "6b74b1416da2",
+ "admin": "7e9e1070be14",
+ "admin-ai": "8a8517e97f09",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d5ee3810"
+   "99478ea9"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "ad576eec"
+   "1d6fdc32"
   ]
  },
- "admin-boards": "f01c7f5986bd",
+ "admin-boards": "eb51daa0ae94",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "6a390c2f"
+   "77d85577"
   ],
   "votes": [
    "投票",
    "05938a02"
   ]
  },
- "admin-emblem": "3951eb544175",
+ "admin-emblem": "04d4249b3ad3",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "2ea55b63"
+   "1e073d9d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0909acaf7db3",
  "admin-members_marks": {},
- "admin-now": "e65fed64d315",
+ "admin-now": "79484d99cd59",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "310ce61a"
+   "2f2fbd60"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "cf08c388"
+   "2c097a2a"
   ]
  },
- "admin-system": "ede2980f3b12",
+ "admin-system": "a99b0e83eef1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cd22bf4e"
+   "2a333f9d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "34bb071a"
+   "13ec4477"
   ]
  },
  "admin_marks": {},
- "heat": "737fedcad582",
+ "heat": "1a877ebba78a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "8610cff5"
+   "c269aa8d"
   ],
   "ranking": [
    "ランキング",
-   "754454a5"
+   "7c7645fd"
   ]
  },
- "index": "069b4ead95ac",
+ "index": "55efaecd2000",
  "index_marks": {
   "front": [
    "トップ",
-   "06c82d7e"
+   "3d66e898"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "163d6dea"
+   "6e915430"
   ],
   "w-130724c0": [
    "猫用品",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "4021abc5"
+   "52addba1"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "08eae6d3"
+   "540a964f"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "24bb9288"
+   "5696330d"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
