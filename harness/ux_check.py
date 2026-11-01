@@ -153,7 +153,7 @@ const holeOf=(g,sel,label,inner)=>{if(!vis(g)||g.closest('.older'))return;const 
   iv.forEach(v=>{if(v[0]-y>=40){hole+=(v[0]-y)*16;mx=Math.max(mx,v[0]-y)}y=Math.max(y,v[1])});if(bot-y>=80){hole+=(bot-y)*16;mx=Math.max(mx,bot-y)}}   // 最後の段の底のでこぼこは中身の高さの違い（80px 未満は数えない）。記事と記事のあいだは 40px から
  const pct=100*hole/(w*(bot-top));if(pct>2){out.gridHole++;out.gridEg.length<4&&out.gridEg.push(label+' '+Math.round(pct)+'%・最大 '+Math.round(mx)+'px')}};
 document.querySelectorAll('section.sec .grid').forEach(g=>holeOf(g,':scope>article.card,:scope>.side>article.card',(g.closest('section.sec').dataset.k||'').slice(0,12)));
-document.querySelectorAll('.picks .pkgrid').forEach(g=>holeOf(g,':scope>.pk','気になるかも','.pkt'));
+document.querySelectorAll('.picks .pkgrid').forEach(g=>holeOf(g,':scope>.pk','気になるかも','.pkt,:scope>*:not(a)'));
 document.querySelectorAll('section.sec article.card,.wc').forEach(c=>{if(!vis(c)||c.classList.contains('mini'))return;out.n++;
  const r=c.getBoundingClientRect();let b=0;[...c.children].forEach(k=>{const s=getComputedStyle(k);if(s.position==='absolute'||!vis(k))return;b=Math.max(b,k.getBoundingClientRect().bottom)});
  const pb=parseFloat(getComputedStyle(c).paddingBottom)||0,blank=r.bottom-pb-b;
