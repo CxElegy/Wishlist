@@ -104,6 +104,11 @@ button{font-family:inherit}
 /* 縦長・正方形の写真（F-16，2026-10-31）：ぼかしで余白を埋めない。大きいカード（.hero・.lead・.wide）は枠を写真の幅に絞り（.nw）、
    空いた横に同じ版面の次の記事（.nx）を置く。小さいカードは薄い地の上に写真全体 */
 .card.nw .pic{justify-self:start;align-self:start}
+/* 縦長の主写真の大きい記事（.lead.nw、ls でない）：右の記事の列と底をそろえる（L2、2026-11-01）。大きい記事を升目の高さまで伸ばし、枠は字の列の高さ（--ph）以上で行いっぱいに。
+   大きい記事のほうが高いときは（ls も）右の記事を各段の高さまで伸ばし、段のあいだに空きを散らす（下の段は大きい記事の底から始まる） */
+.grid>.lead.nw:not(.ls){align-self:stretch;align-content:stretch}
+.grid>.lead.nw:not(.ls)>.pic{align-self:stretch;height:auto!important;min-height:var(--ph,0px)}
+.grid:has(>.lead.nw) .side>.card{align-self:stretch}
 .hero.nw{grid-template-columns:auto minmax(0,1fr)}.card.wide.nw{grid-template-columns:auto minmax(0,1fr)}
 .lead.nw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;align-content:start}.lead.nw>*:not(.pic){margin-bottom:8px}
 .lead.nw>.pic{grid-column:1;grid-row:1}.lead.nw.ls>.nx:not(.pic):not(.lk):not(.xplay){grid-column:1/-1;grid-template-columns:repeat(var(--nxn,2),minmax(0,190px))}.lead.nw>.ltx{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:8px;min-width:0;margin-bottom:0}.lead.nw>.ltx>*{margin-bottom:0}  /* .ls = 横長の写真：写真の形のまま幅の半分、次のニュースは横いっぱい */.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
@@ -3270,9 +3275,9 @@ FIT_JS = """
   // 大きいカード（.hero・.lead・.wide）で写真が枠より細いとき：ぼかしで埋めず、枠を写真の幅に絞り、空いた横に同じ版面の次の記事を置く。
   // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.6 倍まで）
   const unnarrow = (c, p) => {
-    const nx = c.querySelector(':scope > .nx, :scope > .txt > .nx'); if (nx) nx.remove();
     const lt = c.querySelector(':scope > .ltx'); if (lt) { while (lt.firstChild) c.insertBefore(lt.firstChild, lt); lt.remove(); }
-    c.classList.remove('nw', 'tall', 'ls'); p.style.width = p.style.height = p.style.aspectRatio = '';
+    c.querySelectorAll('.nx').forEach(n => n.remove());   // 字の列を開いたあとに消す（先に消すと .ltx の中の次のニュースが残り、測り直すたびに増えた：2026-11-01）
+    c.classList.remove('nw', 'tall', 'ls'); p.style.width = p.style.height = p.style.aspectRatio = ''; p.style.removeProperty('--ph');
   };
   const narrow = (img, p, nat, r) => {
     const c = p.closest('article.hero, article.lead, article.wide');
@@ -3303,7 +3308,7 @@ FIT_JS = """
     if (c.classList.contains('lead') && !c.querySelector(':scope > .ltx')) {   // 字の列を 1 つの箱に（写真の枠が何段にまたがるかを決めない）
       const bx = document.createElement('div'); bx.className = 'ltx';
       [...c.children].filter(k => k !== p && !k.matches('.lk, .xplay, .nx')).forEach(k => bx.append(k)); c.insertBefore(bx, c.querySelector(':scope > .nx')); }
-    const sz = ls ? place : h => { p.style.height = h + 'px'; p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
+    const sz = ls ? place : h => { p.style.height = h + 'px'; p.style.setProperty('--ph', h + 'px'); p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
     sz(p.clientHeight);
     c.classList.add('nw'); if (ls) c.classList.add('ls');
     const sec = c.closest('section'); if (!sec) return;
@@ -3327,7 +3332,7 @@ FIT_JS = """
     // 枠の高さは「文字の列＋次の記事」の高さ（枠自身が行を押し広げないよう、測るときは枠の高さを 0 にする）
     const need = () => host === c ? d.getBoundingClientRect().bottom - p.getBoundingClientRect().top : host.offsetHeight;
     if (ls) { place(); return; }
-    sz(0); let h = need(); sz(h); p.style.height = '0px'; h = Math.max(h, need()); sz(h);
+    sz(0); let h = need(); sz(h); p.style.height = '0px'; p.style.setProperty('--ph', '0px'); h = Math.max(h, need()); sz(h);
   };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     if (img.complete) fit(img);

@@ -259,6 +259,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
         dup:[...document.querySelectorAll('[id]')].map(x=>x.id).filter((v,i,a)=>a.indexOf(v)!==i).slice(0,3),
         blur:document.querySelectorAll('img.bg').length,
+        nxdup:[...document.querySelectorAll('section.sec article')].filter(a=>a.querySelectorAll('.nx').length>1).length,   // 2026-11-01：測り直すたびに「同じ版面の次のニュース」が増えた（unnarrow が字の列の中を消し残した）
+        leadgap:innerWidth<=760?0:[...document.querySelectorAll('section.sec .grid>.lead.nw:not(.ls)')].filter(c=>{const r=c.getBoundingClientRect(),g=[...c.parentElement.querySelectorAll(':scope>.side>article.card')].map(a=>a.getBoundingClientRect()).filter(x=>x.left>=r.right-2&&x.top<r.bottom);return g.length&&Math.abs(Math.max(...g.map(x=>x.bottom))-r.bottom)>12}).length,   // 縦長の主写真の大きい記事の底が右の記事の列の底とずれた版面（L2）
         loose:innerWidth<=760?0:[...document.querySelectorAll('article.hero,article.lead,article.wide')].filter(c=>{const p=c.querySelector('.pic'),i=p&&p.querySelector('img:not(.ico)');return i&&i.complete&&i.naturalWidth&&p.offsetParent&&!c.classList.contains('nw')&&!p.classList.contains('fill')&&(i.naturalWidth/i.naturalHeight)<(p.clientWidth/p.clientHeight)*0.92}).length,
         sw:document.documentElement.scrollWidth})""", BOXES)
     meas = pg.evaluate(MEASURED_JS) if not page else {}
@@ -329,6 +331,10 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"写真の余白（空いた横が情報なし）：{gp['bad']} / {gp['n']} 枚 " + "・".join(gp["eg"]))
     if hole["wallPct"] > 8:   # 2026-11-01 L1・L2：壁の列の底がそろっていない（空き面積が壁の 8% 超）
         bad.append(f"ほかの注目ニュースの壁の下が空いている（空き {hole['wallPct']}%）")
+    if st.get("nxdup"):
+        bad.append(f"「同じ版面の次のニュース」が 2 つ以上ある記事：{st['nxdup']} 件")
+    if st.get("leadgap"):
+        bad.append(f"縦長の主写真の大きい記事の底が右の記事の列とずれている（12px 超）：{st['leadgap']} 版面")
     if hole["gridHole"]:   # 2026-11-01 L2：版面の中の記事の並びで、記事の外の空きが 3% 超の版面
         bad.append(f"版面の記事の並びに空きがある：{hole['gridHole']} 版面 " + "・".join(hole["gridEg"]))
     if hole["wc"]:   # 同じく：ほかの注目ニュースの壁のカードは中身で高さが決まる（1 枚でも枠の 30% 超・70px 超が空いたら ✗）

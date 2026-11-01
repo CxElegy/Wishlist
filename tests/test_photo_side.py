@@ -50,6 +50,28 @@ class PhotoSide(unittest.TestCase):
         self.assertIn("写真の余白（空いた横が情報なし）", u)
 
 
+
+class LeadBottomAlign(unittest.TestCase):
+    """2026-11-01 L2：縦長の主写真の大きい記事は右の記事の列と底をそろえる。測り直しで次のニュースが増えない"""
+
+    def test_unnarrow_opens_text_column_before_removing_nx(self):
+        js = render.FIT_JS
+        a = js.index("const unnarrow =")
+        body = js[a:js.index("const narrow =", a)]
+        self.assertLess(body.index("lt.remove()"), body.index("querySelectorAll('.nx')"))   # 字の列（.ltx）の中の .nx も消す
+        self.assertNotIn("':scope > .nx, :scope > .txt > .nx'", body)
+
+    def test_css_stretches_lead_and_side(self):
+        src = (ROOT / "scripts" / "render.py").read_text(encoding="utf-8")
+        for s in (".grid>.lead.nw:not(.ls){align-self:stretch", "min-height:var(--ph,0px)", ".grid:has(>.lead.nw) .side>.card{align-self:stretch}"):
+            self.assertIn(s, src)
+        self.assertEqual(render.FIT_JS.count("setProperty('--ph'"), 2)   # sz と、測るときの 0 のとき
+
+    def test_ux_check_counts_dup_and_gap(self):
+        u = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
+        for s in ("nxdup:", "leadgap:", "「同じ版面の次のニュース」が 2 つ以上ある記事"):
+            self.assertIn(s, u)
+
 if __name__ == "__main__":
     unittest.main()
 
