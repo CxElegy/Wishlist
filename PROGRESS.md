@@ -242,3 +242,4 @@
 - 2026-11-01 r2：依頼の係。段 9（公式の立ち絵）を [x]：E27 の 4 版面は規則の「公式にいない人は今までの取り方」で決まり。本番 ux_check guest --fast の ✗ は dota2 の頭が写真なし・Vaundy の先頭が届かないのみ（既知・別の段）。photo_time 390px 0.5 秒超え 0。次＝Vaundy の先頭の写真。
 - 2026-11-01 小元素のはみ出し・立体 案 A を本番へ（r1・依頼の係）：render.py の .emb（--r .15・右へ 6px・墨の硬い影 4px＋ぼかし・写真は 0.82 倍 +5°）と EMB_JS place（帯の高さを測って --s 最大 1.15・--lift）。390px で帯の中に収まっていた（はみ出し 0 未満）を 5〜26% に。ux_check emb_check E28。次：合併後の本番 ux_check
 2026-11-01 r1: 小カードの切る位置を顔・題字の分布から決める（photo_store m・cropAt）。PR #708。本番 m 1500 枚・ux_check guest 1400 は dota2 のみ ✗。次: 他の小カード・スマホ。
+2026-11-01 r1f1: 切る位置の規則（cropAt）をスマホ .pk・c3・mini・wc・tape・主写真へ。data-m を全部の写真に・pkcut を全部の .fill に。テスト 1135 OK。次: 合併後 ux_check と 390px の確認。

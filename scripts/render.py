@@ -794,7 +794,7 @@ def _img_url(u, local=True):
     return u
 
 
-def _pic(story, focus=False):
+def _pic(story):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
     兜底顺序：自己的图 → _fbs 里的备用图（作品封面）→ 来源网站的图标和网站名 → 作品名排版的封面块。
     前一个打不开（防盗链、网站删图、图标太小……）网页上自动换下一个。"""
@@ -812,7 +812,7 @@ def _pic(story, focus=False):
     src = exp[0] if exp else None
     # 一時保管の写真は幅 400／800 を srcset で渡す（小さい画面・小さい枠は 400）。背景のぼかしは 400 で足りる
     srcset = f' srcset="{e(small)} 400w, {e(big)} 800w" sizes="(max-width:700px) 100vw, 33vw"' if small else ""
-    ms = photo_store.mass_css(chain[0]) if focus and chain else None   # 小さいカードの切る位置の材料（顔・題字の分布）
+    ms = photo_store.mass_css(chain[0]) if chain else None   # 切る位置の材料（顔・題字の分布）
     dm = f' data-m="{ms}"' if ms else ""
     tag = (f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer"{dm} data-e="s">') if src else ""
     label = f'<span class="ph">{e(name)}</span>' if name else ""
@@ -1571,7 +1571,7 @@ def _picks(picks, works, feedback=None):
         return (
             f'<div class="pk{" big" if big else ""}{"" if _has_photo(story) else " nophoto"}" data-u="{e(x["url"])}" data-s="{x.get("score") or 4}" '
             f'data-w="{e(x["work"])}"{_fx(x["work"])} data-key="{e("|".join(x.get("words") or []))}"{" data-f=1" if follow else ""}{" data-new=1" if x.get("explore") else ""}>'
-            f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story, True) if _has_photo(story) else ""}'
+            f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story) if _has_photo(story) else ""}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
             f'<b>{e(x["title"])}</b>'
             f'<span class="why">{why_html}</span>'
@@ -3193,7 +3193,7 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
 # どんな記事の写真でも同じ型に収まる。スクリプトがないときは全部「全体を表示」
 FIT_JS = """
 (() => {
-  // 小さいカード：枠に合わせて切るとき、主役（顔・題字）の分布 data-m「横;縦」が最も残る位置を探す。残る割合を data-keep（%）に残す（点検が数える）。
+  // 写真を枠に合わせて切るとき（小さいカード・気になるかも・主写真・c3・mini・wc・tape すべて）、主役（顔・題字）の分布 data-m「横;縦」が最も残る位置を探す。残る割合を data-keep（%）に残す（点検が数える）。
   // 切れる長さが枠の 45% を切る細長い絵・6 割残らない絵は false（全体表示）
   const cropAt = (img, r) => {
     img.style.objectPosition = ''; delete img.dataset.keep;
@@ -3227,8 +3227,9 @@ FIT_JS = """
       if (innerWidth <= 760) {   // 1 列：枠を写真の比率にする（縦長は 1.5 倍まで・横長は 1.5:1 まで）。それでも細い写真は枠を絞って字を横に（.sb）
         const w = p.clientWidth, h = Math.min(Math.max(w / nat, w / 1.5), w * 1.5);
         Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', height: (h + pko) + 'px'});
-        p.classList.remove('fill');
-        if (nat < 0.75 / 1.5) side(pk, p, nat, Math.round(w * 0.8));
+        // 枠の比率の上限・下限に当たって写真と合わない（細長い・横長すぎる）ときも、PC と同じ規則：主役が残る位置で切れるなら切る
+        p.classList.toggle('fill', cropAt(img, nat / (w / h)) || Math.abs(Math.log(nat / (w / h))) < 0.08);
+        if (!p.classList.contains('fill') && nat < 0.75 / 1.5) side(pk, p, nat, Math.round(w * 0.8));
         return;
       }
       const r = nat / (p.clientWidth / Math.max(1, p.clientHeight - pko));
@@ -3242,7 +3243,9 @@ FIT_JS = """
     const big = p.closest('article.hero, article.lead, article.wide');
     if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
     const r = nat / (p.clientWidth / p.clientHeight);
-    p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);
+    // 切る場所はどこも同じ規則：主役（顔・題字）が 6 割以上残る位置で切れるなら切る。0.75 より細い絵は、切らずに枠を絵の幅に絞る narrow・side が受ける
+    p.classList.toggle('fill', (r >= 0.75 && cropAt(img, r)) || Math.abs(Math.log(r)) < 0.08);
+    if (r < 0.75) { img.style.objectPosition = ''; delete img.dataset.keep; }
     narrow(img, p, nat, r);
     if (sm && !p.classList.contains('fill') && r < 0.75) side(sm, p, nat, p.clientHeight);   // 小さいカード：枠を写真の幅に絞り、見出しを横へ
   };
