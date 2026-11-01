@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-01T15:58:29+00:00",
+ "changed": true,
+ "checked": "2026-11-01T16:17:32+00:00",
  "fired": {
   "at": "2026-11-01T15:58:45+00:00",
   "results": {
@@ -19,32 +19,20 @@
     "resp": "cse_01W4x6f8yhrga45KAhHszyPN",
     "sig": "f3497b02db4d"
    },
-   "items": [
-    "A2O LITE",
-    "GTA 6",
-    "Vaundy",
-    "日本顶级网球赛事",
-    "漫威电影"
-   ],
+   "items": [],
    "last_batch": "2026-11-01T15:27:49+00:00",
    "last_error": {
     "at": "2026-11-01T15:21:24+00:00",
     "text": "出刊に失敗：unhashable type: 'dict'"
    },
-   "need": true,
-   "prog": 276,
-   "prog_day": "2026-11-01",
-   "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "Vaundy",
-    "日本顶级网球赛事",
-    "漫威电影"
-   ],
-   "sig": "4ac98d2c8027",
+   "need": false,
+   "prog": 0,
+   "prog_day": "2026-11-02",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 766525,
-   "why": "整理待ちの記事 8 件（5 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
