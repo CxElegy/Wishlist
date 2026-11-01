@@ -110,7 +110,7 @@ dispatchEvent(new Event('resize'));await new Promise(r=>setTimeout(r,600));retur
 RESTORE_JS = "()=>{(window.__hid||[]).forEach(e=>{e.hidden=true});window.__hid=[]}"
 # 候補 N・測れた M（loose は 1400 のみ）。M/N が MEASURED_MIN を下回れば ✗（取りこぼしを「0」と言わない）
 MEASURED_JS = """()=>{const ok=i=>i&&i.complete&&i.naturalWidth;
-const lc=innerWidth<=760?[]:[...document.querySelectorAll('article.hero,article.lead,article.wide')].filter(c=>c.querySelector('.pic img:not(.ico)')&&!c.classList.contains('nw')&&!c.querySelector('.pic').classList.contains('fill'));
+const lc=innerWidth<=760?[]:[...document.querySelectorAll('article.hero,article.lead,article.wide')].filter(c=>c.querySelector('.pic img:not(.ico)')&&!c.classList.contains('nw')&&!c.classList.contains('dupd')&&!c.classList.contains('nxd')&&!c.querySelector('.pic').classList.contains('fill'));   /* 畳んだカード（L7）は候補でない */
 const pc=[...document.querySelectorAll('section.sec .pic.fill img[data-e="s"]:not(.bg):not(.ico),section.sec .nx img[data-e="s"]:not(.whole)')];
 const kc=[...document.querySelectorAll('.pk:not(.big):not(.nophoto)')];
 return{loose:[lc.length,lc.filter(c=>{const p=c.querySelector('.pic');return ok(p.querySelector('img:not(.ico)'))&&p.offsetParent}).length],
