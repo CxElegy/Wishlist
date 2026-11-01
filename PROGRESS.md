@@ -244,3 +244,4 @@
 2026-11-01 r1: 小カードの切る位置を顔・題字の分布から決める（photo_store m・cropAt）。PR #708。本番 m 1500 枚・ux_check guest 1400 は dota2 のみ ✗。次: 他の小カード・スマホ。
 2026-11-01 r1f1: 切る位置の規則（cropAt）をスマホ .pk・c3・mini・wc・tape・主写真へ。data-m を全部の写真に・pkcut を全部の .fill に。テスト 1135 OK。次: 合併後 ux_check と 390px の確認。
 2026-11-01 r1: Wikimedia への直リンクの小元素 10 件（三星手机ほか）を倉庫へ置く規則 localize_remote。PR #713。本番 guest ux_check で E1・E2 なし。次: E4 Pochita 85px（全身の絵の下限）。
+- 2026-11-01 r2：ux_check E4（Pochita 85px）＝_body_len のしゃがみ見積もりを 1.4 倍までに。PR #714。本番 guest 1400 で E4 0。次：周杰伦の先頭の写真（photo_store 待ち）
