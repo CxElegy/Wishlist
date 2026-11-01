@@ -75,6 +75,7 @@
   "https://www.sina.cn/news/detail/5358586324059403.html": "http://wx2.sinaimg.cn/middle/008t7Pxtgy1iifkalrz44j32rg28qkjl.jpg",
   "https://www.sina.cn/news/detail/5359474912273486.html": "https://k.sinaimg.cn/n/news/310/w710h400/20260924/b740-844acda14750cc33f86c14ae04c2f09b.jpg/w710h400z1l50t1q75b76.jpg?by=comos",
   "https://www.sina.cn/news/detail/5360163282224918.html": "http://wx2.sinaimg.cn/middle/90b10eb9ly1iilrcv25w7j214a1kvkjl.jpg",
+  "https://www.ski-japan.or.jp/game/81336/": "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png",
   "https://www.sohu.com/a/1095584739_122094388": "https://www.bing.com/th?id=ONUT.eJ7vSfk48ayvzNOnIfG_cQ&pid=News&w=1200",
   "https://www.soompi.com/article/1883259wpp/a2o-lite-ive-seventeens-jxj-and-bts-top-circle-weekly-charts": "https://www.bing.com/th?id=ONUT.f9biWkL7lfnDYnUUD4WdAQ&pid=News&w=1200",
   "https://www.tgdaily.co.kr/news/articleView.html?idxno=407725": "https://cdn.tgdaily.co.kr/news/photo/202610/407725_211766_111.jpg",
@@ -1440,27 +1441,6 @@
   },
   {
    "batch": 4,
-   "because": "BLEACH Mirrors High",
-   "date": "2026-11-01",
-   "hits": [],
-   "image": "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png",
-   "kind": "board",
-   "liked": "【ミラハイ】配信日や事前登録など最新情報まとめ【BLEACH Mirrors High】",
-   "score": 6,
-   "source": "AppMedia",
-   "taste": [
-    [
-     "作品:BLEACH Mirrors High",
-     2
-    ]
-   ],
-   "title": "【ミラハイ】星3黒崎一護の評価と性能【BLEACHミラーズハイ】",
-   "url": "https://appmedia.jp/bleach-mh/80523169",
-   "words": [],
-   "work": "BLEACH Mirrors High"
-  },
-  {
-   "batch": 5,
    "because": "漫威电影",
    "date": "2026-10-31",
    "hits": [],
@@ -1565,7 +1545,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-10-31",
    "hits": [],
@@ -1582,6 +1562,27 @@
    ],
    "title": "【電玩瘋】手機週報《魔物獵人：旅人》、《ONE PIECE 海洋盛宴》與《BLEACH Mirrors High》等遊戲",
    "url": "https://gnn.gamer.com.tw/detail.php?sn=314286",
+   "words": [],
+   "work": "BLEACH Mirrors High"
+  },
+  {
+   "batch": 6,
+   "because": "BLEACH Mirrors High",
+   "date": "2026-10-29",
+   "hits": [],
+   "image": "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png",
+   "kind": "board",
+   "liked": "【ミラハイ】配信日や事前登録など最新情報まとめ【BLEACH Mirrors High】",
+   "score": 6,
+   "source": "AppMedia",
+   "taste": [
+    [
+     "作品:BLEACH Mirrors High",
+     2
+    ]
+   ],
+   "title": "【ミラハイ】星2バンビの評価と性能【BLEACHミラーズハイ】",
+   "url": "https://appmedia.jp/bleach-mh/80523241",
    "words": [],
    "work": "BLEACH Mirrors High"
   },
@@ -1717,15 +1718,15 @@
   {
    "batch": 7,
    "because": "滑雪",
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "hits": [],
-   "image": "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp",
+   "image": "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png",
    "kind": "board",
    "score": 4,
-   "source": "女人我最大",
+   "source": "全日本スキー・スノーボード連盟",
    "taste": [],
-   "title": "始祖鳥新品「神級外套」時隔25年回歸！斜拉鍊防風降摩擦、雪靴「一鞋兩穿」成話題焦點",
-   "url": "https://woman.tvbs.com.tw/fashion/68177",
+   "title": "Report 令和8年度JSPO公認スキー・スノーボードコーチ2養成講習会 専門科目集合講習会（カテゴリー1（JP）",
+   "url": "https://www.ski-japan.or.jp/game/81336/",
    "words": [],
    "work": "滑雪"
   },
@@ -2118,11 +2119,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2130,19 +2131,15 @@
    8
   ],
   [
-   "三星 Galaxy",
-   7
-  ],
-  [
    "作品:三星手机",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]

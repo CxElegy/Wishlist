@@ -5,12 +5,6 @@
   "target": 720,
   "v": 3
  },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
-  "w": 1080,
-  "h": 608,
-  "target": 720,
-  "v": 3
- },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
@@ -1302,6 +1296,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
+  "w": 1080,
+  "h": 608,
+  "target": 720,
+  "v": 3
+ },
  "https://i.cdn.newsbytesapp.com/images/l144_17801793486882.jpg": {
   "w": 1440,
   "h": 810,
@@ -2389,6 +2389,12 @@
   "target": 720,
   "v": 3
  },
+ "https://mobamag.com/wp-content/uploads/2026/10/DSC09626.jpg": {
+  "w": 1200,
+  "h": 701,
+  "target": 1280,
+  "v": 3
+ },
  "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
   "w": 1920,
   "h": 1080,
@@ -2510,6 +2516,12 @@
   "w": 1024,
   "h": 576,
   "target": 720,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/941580_2.jpg": {
+  "w": 1024,
+  "h": 683,
+  "target": 1280,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/10/HVmuJmVWsAAndQw.jpg": {
@@ -3927,6 +3939,12 @@
   "target": 720,
   "v": 3
  },
+ "https://staticg.sportskeeda.com/editor/2026/10/f97dc-17934430484356-1920.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://statics-prod.mirrordaily.news/images/f211b6c1-51ee-48b0-8c00-36437b0529f0.webp": {
   "w": 1600,
   "h": 1069,
@@ -4023,6 +4041,19 @@
   "h": 1697,
   "target": 1280,
   "v": 3
+ },
+ "https://tjniigata.jp/assets/uploads/2026/10/458b656d0bcddf383b765c24dcc0ebf3-760x508.jpeg": {
+  "w": 760,
+  "h": 508,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.46,
+  "local": "pics/1c65a8fc0057ac2d.webp",
+  "out": [
+   1280,
+   856
+  ],
+  "why": "看不清"
  },
  "https://tk.ismcdn.jp/mwimgs/c/2/1200xm/img_c2b201ad86a1a37839adff402839c48e392341.jpg": {
   "w": 1200,
@@ -4125,12 +4156,6 @@
   "h": 619,
   "target": 720,
   "v": 3
- },
- "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-01"
  },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
@@ -4565,12 +4590,6 @@
    852
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.bBSzeS_-6fCEDPuSaAJ-3Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
@@ -5092,6 +5111,12 @@
  "https://www.rohto.co.jp/news/release/2026/-/media/cojp/news/release/2026/1028_01/261028_01.png": {
   "w": 664,
   "h": 664,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png": {
+  "w": 1000,
+  "h": 608,
   "target": 720,
   "v": 3
  },
