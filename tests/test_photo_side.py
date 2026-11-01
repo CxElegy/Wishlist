@@ -32,7 +32,17 @@ class PhotoSide(unittest.TestCase):
             self.assertIn(s, js)
 
     def test_wall_keeps_side_height(self):
-        self.assertIn("!c.classList.contains('sb')", render.FIT_JS)
+        # 壁が足した高さは足す前（fit が決めた .sb の写真枠の高さ）に戻す。空にして fit の高さを消さない
+        self.assertIn("p.dataset.add === '-' ? '' : p.dataset.add", render.FIT_JS)
+
+    def test_wall_packs_by_content_height(self):
+        """2026-11-01 L1・L2：壁のカードは中身の高さで詰める（升目で背をそろえて下を空けない）。"""
+        js, src = render.FIT_JS, (ROOT / "scripts" / "render.py").read_text(encoding="utf-8")
+        for s in ("c.style.gridRow = (y + 1)", "w.style.gridAutoRows = '1px'", "w.style.alignItems = 'start'"):
+            self.assertIn(s, js)
+        self.assertNotIn(".wc.lead{grid-column:span 2;grid-row:span 2}", src)   # 大きい 1 枚は行を 2 つ占めて伸ばさない
+        self.assertIn("const GAP = 18", js)
+        self.assertIn("HOLE_JS", (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8"))   # 点検：カードの中の空白
 
     def test_ux_check_counts_gap_everywhere(self):
         u = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
