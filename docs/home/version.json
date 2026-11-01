@@ -1,32 +1,32 @@
 {
- "admin": "166df99e3a7d",
- "admin-ai": "58b6d89f522e",
+ "admin": "db6f715a0afc",
+ "admin-ai": "2df9db3eb25e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "58f61e81"
+   "1dc1a07c"
   ],
   "tokens": [
    "AI 編集のトークン",
    "40f4be25"
   ]
  },
- "admin-boards": "4ef92db2683a",
+ "admin-boards": "a9aa6ed4d462",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5f4bb58c"
+   "05ed9ed9"
   ],
   "votes": [
    "投票",
    "d0c0ea84"
   ]
  },
- "admin-emblem": "362542b41e51",
+ "admin-emblem": "b5b305be7b68",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d16d3e08"
+   "0a2114a5"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "8ba4ed3ebb44",
  "admin-members_marks": {},
- "admin-now": "2aa4b00bb870",
+ "admin-now": "a386d21a5412",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c64d25ec"
+   "a894afbe"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2ca30833"
+   "0c3ed20f"
   ]
  },
- "admin-system": "561e876446d6",
+ "admin-system": "f464eb0354f7",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3d71929f"
+   "30edc2c5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0e8dc7cd"
+   "641062c6"
   ]
  },
  "admin_marks": {},
- "heat": "a186ed73a41d",
+ "heat": "0eb01c6bdbc8",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "7bfe8d59"
+   "cb1925b2"
   ],
   "ranking": [
    "ランキング",
-   "d6de8acb"
+   "7aaf5e6e"
   ]
  },
- "index": "91022437089e",
+ "index": "3eec906d8b72",
  "index_marks": {
   "front": [
    "トップ",
-   "30baa881"
+   "fdd7c01c"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "89051f70"
+   "38f496aa"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "006c3913"
+   "ccce23ca"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "03cf15b5"
+   "5f42b728"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "43cd90d9"
+   "7059ab08"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "fe4add77"
+   "d0e0f6d7"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "51accace"
+   "8d5d3780"
   ]
  },
- "updated": "11.01 08:52",
+ "updated": "11.01 09:02",
  "wishlist": "fbdd1f47f902"
 }

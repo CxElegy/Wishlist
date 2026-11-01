@@ -5,12 +5,6 @@
   "target": 720,
   "v": 3
  },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
-  "w": 1080,
-  "h": 608,
-  "target": 720,
-  "v": 3
- },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
@@ -659,6 +653,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.image.st-hatena.com/image/scale/5e1902cc44de1b97876b6af8384beda23f56fc11/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2FM%2FMORE_SMILEs%2F20261101%2F20261101080020.png": {
+  "w": 1300,
+  "h": 726,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.ipnn.co.kr/news/photo/202610/418071_79925_3013.jpg": {
   "w": 600,
   "h": 400,
@@ -1246,6 +1246,18 @@
   "target": 720,
   "v": 3
  },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
+  "w": 1080,
+  "h": 608,
+  "target": 720,
+  "v": 3
+ },
+ "https://i.cdn.newsbytesapp.com/images/l144_17801793486882.jpg": {
+  "w": 1440,
+  "h": 810,
+  "target": 720,
+  "v": 3
+ },
  "https://i.cdn.newsbytesapp.com/images/l144_20281793008781.jpg": {
   "w": 1440,
   "h": 810,
@@ -1799,6 +1811,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gu6rC.img": {
   "w": 1280,
   "h": 960,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gv1JW.img": {
+  "w": 1456,
+  "h": 819,
   "target": 1280,
   "v": 3
  },
@@ -3339,12 +3357,6 @@
   "target": 1280,
   "v": 3
  },
- "https://preview.redd.it/rstzspwbzjyh1.jpeg?width=640&crop=smart&auto=webp&s=dea8223c3f37acff79619cd55ab20194d0ece333": {
-  "w": 640,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
  "https://punchdrunkcritics.com/wp-content/uploads/2026/10/pdc_avengersdoomsday8.jpg": {
   "w": 1280,
   "h": 720,
@@ -4398,12 +4410,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.fkRsatZLkqOkdHHtPPC43g&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ghPPO0q95yYTjDKycYEn6g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4795,6 +4801,12 @@
   "w": 2560,
   "h": 1441,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/THND-FF-000193-H-2026.jpg?w=1296&h=730&crop=1": {
+  "w": 1296,
+  "h": 730,
+  "target": 720,
   "v": 3
  },
  "https://www.inside-games.jp/imgs/ogp_f/1799460.jpg": {
