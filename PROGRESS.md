@@ -243,3 +243,4 @@
 - 2026-11-01 小元素のはみ出し・立体 案 A を本番へ（r1・依頼の係）：render.py の .emb（--r .15・右へ 6px・墨の硬い影 4px＋ぼかし・写真は 0.82 倍 +5°）と EMB_JS place（帯の高さを測って --s 最大 1.15・--lift）。390px で帯の中に収まっていた（はみ出し 0 未満）を 5〜26% に。ux_check emb_check E28。次：合併後の本番 ux_check
 2026-11-01 r1: 小カードの切る位置を顔・題字の分布から決める（photo_store m・cropAt）。PR #708。本番 m 1500 枚・ux_check guest 1400 は dota2 のみ ✗。次: 他の小カード・スマホ。
 2026-11-01 r1f1: 切る位置の規則（cropAt）をスマホ .pk・c3・mini・wc・tape・主写真へ。data-m を全部の写真に・pkcut を全部の .fill に。テスト 1135 OK。次: 合併後 ux_check と 390px の確認。
+2026-11-01 r1: Wikimedia への直リンクの小元素 10 件（三星手机ほか）を倉庫へ置く規則 localize_remote。PR #713。本番 guest ux_check で E1・E2 なし。次: E4 Pochita 85px（全身の絵の下限）。
