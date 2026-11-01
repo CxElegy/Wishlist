@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-31T23:46:37+00:00",
+ "changed": true,
+ "checked": "2026-10-31T23:55:07+00:00",
  "fired": {
-  "at": "2026-10-31T23:46:37+00:00",
+  "at": "2026-11-01T00:04:56+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -40,29 +40,6 @@
    "prog": 110,
    "prog_day": "2026-11-01",
    "ripe": [
-    "dota2",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "绝区零"
-   ],
-   "sig": "dca2f1af3f97",
-   "token_cap": 1000000,
-   "tokens_today": 188457,
-   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [
-    "BLEACH Mirrors High"
-   ],
-   "need": true,
-   "sig": "b6804aff6de5",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
     "GTA 6",
     "The Mandalorian",
     "dota2",
