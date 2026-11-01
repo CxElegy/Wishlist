@@ -3,7 +3,6 @@
 ③board()＝並べる器 1 種類 で 7 つの場所（DESIGN_PRINCIPLES G・L1〜L11）を組む。本番は入れ替えない。"""
 import html, re
 from pathlib import Path
-from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "docs/home/index.html"
@@ -126,6 +125,7 @@ JS = "document.querySelectorAll('.ctl button').forEach(b=>b.onclick=()=>{documen
 
 
 def main():
+    from bs4 import BeautifulSoup   # 見本づくりの手元だけで要る（CI の試験は assign だけ）
     s = BeautifulSoup(SRC.read_text(encoding="utf-8"), "lxml")
     used = {"h": set(), "t": set()}
     out, dup = [], 0
