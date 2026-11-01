@@ -5,6 +5,12 @@
   "target": 720,
   "v": 3
  },
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
+  "w": 1080,
+  "h": 608,
+  "target": 720,
+  "v": 3
+ },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
@@ -14,6 +20,12 @@
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/cfpbAMbufCaDAAa.png": {
   "w": 1080,
   "h": 1399,
+  "target": 1280,
+  "v": 3
+ },
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/edQSgIbugixFodf.jpg": {
+  "w": 1080,
+  "h": 608,
   "target": 1280,
   "v": 3
  },
@@ -1263,18 +1275,6 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
-  "v": 3
- },
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
-  "w": 1080,
-  "h": 608,
-  "target": 720,
-  "v": 3
- },
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/rLMNpIbugixFofw.png": {
-  "w": 1080,
-  "h": 601,
-  "target": 1280,
   "v": 3
  },
  "https://i.cdn.newsbytesapp.com/images/l144_17801793486882.jpg": {
@@ -2600,6 +2600,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1316147/15894888_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/1317098/15915699_615.jpg": {
   "w": 615,
   "h": 870,
@@ -3856,12 +3862,6 @@
   "target": 720,
   "v": 3
  },
- "https://staticg.sportskeeda.com/editor/2026/10/f97dc-17934430484356-1920.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://statics-prod.mirrordaily.news/images/f211b6c1-51ee-48b0-8c00-36437b0529f0.webp": {
   "w": 1600,
   "h": 1069,
@@ -4052,12 +4052,6 @@
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
   "w": 495,
   "h": 619,
-  "target": 720,
-  "v": 3
- },
- "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp": {
-  "w": 1200,
-  "h": 628,
   "target": 720,
   "v": 3
  },
@@ -4489,6 +4483,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.bBSzeS_-6fCEDPuSaAJ-3Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.bDcLjK1l3e8oPmQR9FGTgg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4652,12 +4652,6 @@
  "https://www.bing.com/th?id=ONUT.v9hYDJEHaKyaPgg3WjbTrw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.wb3hjMx4FJ2UDTj3g7uEPg&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
   "target": 720,
   "v": 3
  },
