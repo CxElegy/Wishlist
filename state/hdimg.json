@@ -5,12 +5,6 @@
   "target": 720,
   "v": 3
  },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
-  "w": 1080,
-  "h": 608,
-  "target": 720,
-  "v": 3
- },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
@@ -20,12 +14,6 @@
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/cfpbAMbufCaDAAa.png": {
   "w": 1080,
   "h": 1399,
-  "target": 1280,
-  "v": 3
- },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/edQSgIbugixFodf.jpg": {
-  "w": 1080,
-  "h": 608,
   "target": 1280,
   "v": 3
  },
@@ -1277,6 +1265,18 @@
   "target": 720,
   "v": 3
  },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
+  "w": 1080,
+  "h": 608,
+  "target": 720,
+  "v": 3
+ },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/rLMNpIbugixFofw.png": {
+  "w": 1080,
+  "h": 601,
+  "target": 1280,
+  "v": 3
+ },
  "https://i.cdn.newsbytesapp.com/images/l144_17801793486882.jpg": {
   "w": 1440,
   "h": 810,
@@ -1528,12 +1528,6 @@
    853
   ],
   "why": "看不清"
- },
- "https://images.chinatimes.com/newsphoto/2026-11-01/656/20261101000985.jpg": {
-  "w": 656,
-  "h": 895,
-  "target": 1280,
-  "v": 3
  },
  "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/10/1280/720/darwin-cat-food.png?ve=1&tl=1": {
   "w": 1280,
@@ -3218,6 +3212,18 @@
   "h": 675,
   "target": 720,
   "v": 3
+ },
+ "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/01/35473388.jpg&M=1&s=Y&x=0&y=503&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
+  "w": 799,
+  "h": 532,
+  "target": 720,
+  "v": 3,
+  "local": "pics/bd10250802dad9fd.webp",
+  "out": [
+   799,
+   532
+  ],
+  "why": "期限付きの網址"
  },
  "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414": {
   "w": 1414,
