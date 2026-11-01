@@ -142,7 +142,7 @@ document.querySelectorAll('.wall').forEach(w=>{const cs=[...w.querySelectorAll('
   const b=Math.max(...m.map(c=>c.offsetTop+c.offsetHeight));hole+=(W-b)*(wr.width/lefts.length)});
  out.wall+=hole;out.wallArea+=W*wr.width});
 out.wallPct=out.wallArea?Math.round(100*out.wall/out.wallArea):0;
-// 版面の中の記事の並び（.grid、2026-11-01 L2）：記事の外の空き（x を 16px ごとに縦に見て、記事と記事のあいだ・列の底が 80px 以上空いた所）の面積が、並びの 3% を超える版面を数える。
+// 版面の中の記事の並び（.grid、2026-11-01 L2）：記事の外の空き（x を 16px ごとに縦に見て、記事と記事のあいだ・列の底が 100px 以上空いた所）の面積が、並びの 3% を超える版面を数える。
 // 上の段と下の段のあいだの横いっぱいの空き・右の列だけ短くて下に空く所（滑雪の例）がここに出る
 document.querySelectorAll('section.sec .grid').forEach(g=>{if(!vis(g)||g.closest('.older'))return;   // 「もっと見る」の中は content-visibility で描かれない記事があるので測らない
  const gr=g.getBoundingClientRect();
@@ -150,7 +150,7 @@ document.querySelectorAll('section.sec .grid').forEach(g=>{if(!vis(g)||g.closest
   return {left:r.left,right:r.right,top:r.top,height:r.height,bottom:Math.min(r.bottom,(b||r.bottom)+(parseFloat(getComputedStyle(c).paddingBottom)||0))}});if(cs.length<3||cs.length<all.length||cs.some(r=>r.height<20||r.top<gr.top-4))return;   // 一部が描かれていない（content-visibility）並びは測らない
  const top=Math.min(...cs.map(r=>r.top)),bot=Math.max(...cs.map(r=>r.bottom)),w=Math.max(...cs.map(r=>r.right))-Math.min(...cs.map(r=>r.left));let hole=0,mx=0;
  for(let x=Math.min(...cs.map(r=>r.left))+4;x<Math.max(...cs.map(r=>r.right));x+=16){const iv=cs.filter(r=>r.left-12<=x&&r.right+12>x).map(r=>[r.top,r.bottom]).sort((a,b)=>a[0]-b[0]);let y=top;
-  iv.forEach(v=>{if(v[0]-y>=80){hole+=(v[0]-y)*16;mx=Math.max(mx,v[0]-y)}y=Math.max(y,v[1])});if(bot-y>=80){hole+=(bot-y)*16;mx=Math.max(mx,bot-y)}}
+  iv.forEach(v=>{if(v[0]-y>=100){hole+=(v[0]-y)*16;mx=Math.max(mx,v[0]-y)}y=Math.max(y,v[1])});if(bot-y>=100){hole+=(bot-y)*16;mx=Math.max(mx,bot-y)}}
  const pct=100*hole/(w*(bot-top));if(pct>3){out.gridHole++;out.gridEg.length<3&&out.gridEg.push((g.closest('section.sec').dataset.k||'').slice(0,12)+' '+Math.round(pct)+'%・最大 '+Math.round(mx)+'px')}});
 document.querySelectorAll('section.sec article.card,.wc').forEach(c=>{if(!vis(c)||c.classList.contains('mini'))return;out.n++;
  const r=c.getBoundingClientRect();let b=0;[...c.children].forEach(k=>{const s=getComputedStyle(k);if(s.position==='absolute'||!vis(k))return;b=Math.max(b,k.getBoundingClientRect().bottom)});
