@@ -107,6 +107,7 @@ button{font-family:inherit}
 .hero.nw{grid-template-columns:auto minmax(0,1fr)}.card.wide.nw{grid-template-columns:auto minmax(0,1fr)}
 .lead.nw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;align-content:start}.lead.nw>*:not(.pic){margin-bottom:8px}
 .lead.nw>.pic{grid-column:1;grid-row:1}.lead.nw.ls>.nx:not(.pic):not(.lk):not(.xplay){grid-column:1/-1;grid-template-columns:repeat(var(--nxn,2),minmax(0,var(--nxw,190px)))}.lead.nw>.ltx{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:8px;min-width:0;margin-bottom:0}.lead.nw>.ltx>*{margin-bottom:0}  /* .ls = 横長の写真：写真の形のまま幅の半分、次のニュースは横いっぱい */.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
+.nxd{display:none!important}   /* L7：次のニュースに出した記事の元のカード（同じ記事を 2 回出さない） */
 .nx{position:relative;z-index:2;display:grid;grid-template-columns:repeat(var(--nxn,2),minmax(0,1fr));gap:12px;margin-top:6px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
 .nx a{display:flex;flex-direction:column;gap:5px;min-width:0;color:inherit;text-decoration:none}
 .nx img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
@@ -3277,6 +3278,7 @@ FIT_JS = """
   // 大きいカード（.hero・.lead・.wide）で写真が枠より細いとき：ぼかしで埋めず、枠を写真の幅に絞り、空いた横に同じ版面の次の記事を置く。
   // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.6 倍まで）
   const unnarrow = (c, p) => {
+    (c._nxSrc || []).forEach(a => a.classList.remove('nxd')); c._nxSrc = null;   // L7：次のニュースに使った記事は元のカードを畳んでいた。次のニュースを外すなら元のカードを戻す
     c.querySelectorAll(':scope > .nx, :scope > .txt > .nx, :scope > .ltx > .nx').forEach(n => n.remove());   // 字の列の中の次のニュースも消す（残ると字の列をほどいたとき大きい記事の直下の子になり、2 段目に 170px の空きを作った：ILLIT 型）
     const lt = c.querySelector(':scope > .ltx'); if (lt) { while (lt.firstChild) c.insertBefore(lt.firstChild, lt); lt.remove(); }
     c.classList.remove('nw', 'tall', 'ls'); c.style.alignSelf = ''; c._span = null; p.style.width = p.style.height = p.style.aspectRatio = '';
@@ -3335,11 +3337,12 @@ FIT_JS = """
     };
     const sec = c.closest('section'); if (!sec) return;
     const here = img.currentSrc || img.src;
-    const more = [...sec.querySelectorAll('article.card, article.wc')].filter(a => a !== c && a.querySelector('a.lk[href]') && a.querySelector('.pic img:not(.ico)') && !a.classList.contains('nophoto'))
-      .map(a => ({u: a.querySelector('a.lk').href, i: a.querySelector('.pic img:not(.ico)'), t: (a.querySelector('h2, h3') || a.querySelector(':scope > b') || {}).textContent}))
-      .filter(x => x.t && x.i.src && x.i.src !== here).slice(0, 3);
+    const more = [...sec.querySelectorAll('article.card, article.wc')].filter(a => a !== c && !a.classList.contains('nxd') && !a.closest('.older') && a.querySelector('a.lk[href]') && a.querySelector('.pic img:not(.ico)') && !a.classList.contains('nophoto'))
+      .map(a => ({u: a.querySelector('a.lk').href, i: a.querySelector('.pic img:not(.ico)'), t: (a.querySelector('h2, h3') || a.querySelector(':scope > b') || {}).textContent, a}))
+      .filter(x => x.t && x.i.src && x.i.src !== here).sort((x, y) => !!x.a.closest('.side') - !!y.a.closest('.side')).slice(0, 3);
     const host = c.classList.contains('lead') ? (ls ? c : c.querySelector(':scope > .ltx')) : (c.querySelector(':scope > .txt') || c);
     if (more.length < 2 || host.clientWidth < 260) { if (ls) c.classList.remove('ls'); else { h0 = p.clientHeight; c._span(); } return; }
+    c._nxSrc = more.map(x => x.a); c._nxSrc.forEach(a => a.classList.add('nxd'));   // L7：同じ記事は 1 ページに 1 回。次のニュースに出した記事は、元のカードを畳む（nxd）
     const d = document.createElement('div'); d.className = 'nx'; d.style.setProperty('--nxn', more.length);
     d.innerHTML = '<i>同じ版面の次のニュース</i>';
     more.forEach(x => { const a = document.createElement('a'); a.href = x.u; a.target = '_blank'; a.rel = 'noopener';
