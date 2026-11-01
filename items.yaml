@@ -816,7 +816,7 @@ items:
     emblem_subject: Starbucks
     motif: cafe          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "スターバックスのロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png", page: "https://en.wikipedia.org/wiki/File:Starbucks_Corporation_Logo_2011.svg", shape: "logo"}
+      - {subject: "スターバックスのロゴ", why: "ブランドの顔（公式ロゴ）", image: "emblems/ea63faf0.webp", source: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png", page: "https://en.wikipedia.org/wiki/File:Starbucks_Corporation_Logo_2011.svg", shape: "logo", ar: 1.014}
     subtitle: スターバックス マグ · 日本优先 · 海外好设计
     type: category
     section: 好物
@@ -1051,7 +1051,7 @@ items:
     emblem_subject: Samsung
     motif: tech          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Samsung のロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung%20wordmark.svg?width=500", page: "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg", shape: "logo"}
+      - {subject: "Samsung のロゴ", why: "ブランドの顔（公式ロゴ）", image: "emblems/samsung.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung%20wordmark.svg?width=500", page: "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg", shape: "logo", ar: 0.154}
     subtitle: Galaxy S27 Ultra · S27 Pro · 系列情报
     type: product
     section: "好物"

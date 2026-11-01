@@ -2160,7 +2160,7 @@ def fill_one(item, log=print):
             log(f"  [名簿] {item['name']}：{e}")
     if unbreak(item, log) | release_head_rejects(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
-    if off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log) | drop_closeups(item, log) | official_swap(item, log):
+    if localize_remote(item, log) | off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log) | drop_closeups(item, log) | official_swap(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
     if status(item)["state"] == "ok":   # 名簿を数え直しても足りている（名簿を確かめに来ただけ）：集めない
         st = status(item)
@@ -2903,6 +2903,32 @@ def drop_same(item, log=print):
             _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
     log(f"  [外した] {item['name']}：同じ画像の小元素 {len(gone)} 枚（{'、'.join(b.get('subject', '') for b in gone)}）")
     return len(gone)
+
+
+def localize_remote(item, log=print):
+    """Wikimedia に直接つなぐ logo / icon を倉庫（emblems/）に置く。ブラウザからの直リンクは Wikimedia が 403 にする
+    （三星手机の Samsung wordmark.svg：E1 出ない・E2 読めない）。取るのはこちら（決まった UA・1 本ずつ）。→ 置いた枚数。"""
+    from wikihttp import is_wikimedia
+    ems, n = list(item.get("emblem") or []), 0
+    for x in ems:
+        u = str(x.get("image") or "") if isinstance(x, dict) else ""
+        if x.get("shape") not in ("logo", "icon") or not u.startswith("http") or not is_wikimedia(u):
+            continue
+        slug = emblem.slugify(item["name"], x.get("subject", ""))
+        try:
+            got = emblem.wordmark_local(u, slug)
+            if got:
+                x.update(source=u, image=got[0], ar=got[1])
+            else:
+                x.update(source=u, image=emblem.logo_local(u, slug))
+            n += 1
+        except Exception as e:
+            log(f"  [ロゴ] {item['name']} {x.get('subject')}：{e}")
+    if n:
+        with WRITE_LOCK:
+            emblem.write_item(item["name"], ems, None)
+        log(f"  [倉庫へ] {item['name']}：Wikimedia へ直接つなぐロゴ {n} 枚を置いた")
+    return n
 
 
 def drop_broken(item, log=print):
