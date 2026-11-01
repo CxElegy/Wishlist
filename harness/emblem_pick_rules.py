@@ -158,6 +158,8 @@ def audit_production():
     rows, missing = [], 0
     for it in items:
         for e in it.get("emblem") or []:
+            if e.get("shape") in ("logo", "icon", "badge"):   # 人物の切り抜きの規則：ロゴ・アイコン・ポスター（倉庫に置いた Wikimedia の絵）は当てない
+                continue
             p = ROOT / "docs" / "home" / (e.get("image") or "")
             if not e.get("image") or not p.is_file():
                 missing += 1

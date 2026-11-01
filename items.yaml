@@ -346,11 +346,11 @@ items:
     emblem_max: 6
     motif: rune          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Blade & Soul", why: "この主題の代表作「Blade & Soul」の記事の画像（キービジュアル・パッケージ）", image: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/Blade_%26_Soul.jpg/500px-Blade_%26_Soul.jpg", page: "https://en.wikipedia.org/wiki/Blade_%26_Soul", shape: "badge", ar: 1.414}
-      - {subject: "Aion 2", why: "この主題の代表作「Aion 2」の記事の画像（キービジュアル・パッケージ）", image: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Aion_2%2C_game_poster.jpg/500px-Aion_2%2C_game_poster.jpg", page: "https://en.wikipedia.org/wiki/Aion_2", shape: "badge", ar: 1.474}
-      - {subject: "ArcheAge", why: "この主題の代表作「ArcheAge」の記事の画像（キービジュアル・パッケージ）", image: "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/ArcheAge_Logo.png/500px-ArcheAge_Logo.png", page: "https://en.wikipedia.org/wiki/ArcheAge", shape: "cutout"}
-      - {subject: "Throne and Liberty", why: "この主題の代表作「Throne and Liberty」の記事の画像（キービジュアル・パッケージ）", image: "https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Project_TL_logo.png/500px-Project_TL_logo.png", page: "https://en.wikipedia.org/wiki/Throne_and_Liberty", shape: "cutout"}
-      - {subject: "Honor of Kings: World", why: "この主題の代表作「Honor of Kings: World」の記事の画像（キービジュアル・パッケージ）", image: "https://thumb.wikimedia.org/wikipedia/en/thumb/7/7d/Honor_of_Kings_logo.png/500px-Honor_of_Kings_logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Honor_of_Kings", shape: "cutout"}
+      - {subject: "Blade & Soul", why: "この主題の代表作「Blade & Soul」の記事の画像（キービジュアル・パッケージ）", image: "emblems/mmorpg-blade-soul.webp", source: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/Blade_%26_Soul.jpg/500px-Blade_%26_Soul.jpg", page: "https://en.wikipedia.org/wiki/Blade_%26_Soul", shape: "badge", ar: 1.414}
+      - {subject: "Aion 2", why: "この主題の代表作「Aion 2」の記事の画像（キービジュアル・パッケージ）", image: "emblems/mmorpg-aion-2.webp", source: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Aion_2%2C_game_poster.jpg/500px-Aion_2%2C_game_poster.jpg", page: "https://en.wikipedia.org/wiki/Aion_2", shape: "badge", ar: 1.474}
+      - {subject: "ArcheAge", why: "この主題の代表作「ArcheAge」の記事の画像（キービジュアル・パッケージ）", image: "emblems/mmorpg-archeage.webp", source: "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/ArcheAge_Logo.png/500px-ArcheAge_Logo.png", page: "https://en.wikipedia.org/wiki/ArcheAge", shape: "logo", ar: 0.908}
+      - {subject: "Throne and Liberty", why: "この主題の代表作「Throne and Liberty」の記事の画像（キービジュアル・パッケージ）", image: "emblems/mmorpg-throne-and-liberty.webp", source: "https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Project_TL_logo.png/500px-Project_TL_logo.png", page: "https://en.wikipedia.org/wiki/Throne_and_Liberty", shape: "logo", ar: 0.471}
+      - {subject: "Honor of Kings: World", why: "この主題の代表作「Honor of Kings: World」の記事の画像（キービジュアル・パッケージ）", image: "emblems/mmorpg-honor-of-kings-world.webp", source: "https://thumb.wikimedia.org/wikipedia/en/thumb/7/7d/Honor_of_Kings_logo.png/500px-Honor_of_Kings_logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Honor_of_Kings", shape: "logo", ar: 0.332}
       - {subject: "1f409 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f409.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 近期上线 · 测试 · 新公布的网游
     type: category
@@ -404,7 +404,7 @@ items:
     motif: snow          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "スキーヤー", why: "版面の主題（スキー）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26f7.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
-      - {subject: "滑雪", why: "主題を表す画像", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Skier-carving-a-turn.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Skier-carving-a-turn.jpg", shape: "badge", ar: 0.656}
+      - {subject: "滑雪", why: "主題を表す画像", image: "emblems/438ec89d.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/Skier-carving-a-turn.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Skier-carving-a-turn.jpg", shape: "badge", ar: 0.656}
       - {subject: "1f3c2 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3c2.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 日本雪场 · 雪板装备 · 2026-27
     size: L
@@ -593,7 +593,7 @@ items:
       - {subject: "Sara Myers（Avery Konrad）", why: "Sara Myers（Avery Konrad）：Fandom の役の記事の代表画像", image: "emblems/from-sara-myers-avery-konrad.webp", source: "https://static.wikia.nocookie.net/from/images/e/e4/Sarah_Myers_Season_3.png/revision/latest/scale-to-width-down/400?cb=20241106135838", page: "https://from.fandom.com/wiki/Sara_Myers", shape: "cutout", fs: 0.318, face: [0.318, 0.132, 0.485, 0.498, 316, 381]}
       - {subject: "Kenny Liu（Ricky He）", why: "Kenny Liu（Ricky He）：Fandom の役の記事の代表画像", image: "emblems/from-kenny-liu-ricky-he.webp", source: "https://static.wikia.nocookie.net/from/images/1/1a/Kenny_Liu_pro.jpeg/revision/latest/scale-to-width-down/400?cb=20230530003332", page: "https://from.fandom.com/wiki/Kenny_Liu", shape: "cutout", fs: 0.342, face: [0.342, 0.102, 0.359, 0.466, 283, 356]}
       - {subject: "Tillie（Deborah Grover）", why: "Tillie（Deborah Grover）：Fandom の役の記事の代表画像", image: "emblems/from-tillie-deborah-grover.webp", source: "https://static.wikia.nocookie.net/from/images/1/13/Tillie_pro.jpeg/revision/latest/scale-to-width-down/400?cb=20260316230242", page: "https://from.fandom.com/wiki/Tillie", shape: "cutout", fs: 0.375, face: [0.375, 0.142, 0.533, 0.524, 338, 368]}
-      - {subject: "FROM（作品）", why: "FROM のポスター・キービジュアル（Wikipedia の記事の代表画像）", image: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/From_title_card.jpg/500px-From_title_card.jpg", page: "https://en.wikipedia.org/wiki/From_(TV_series)", shape: "badge", ar: 0.494, work: true}
+      - {subject: "FROM（作品）", why: "FROM のポスター・キービジュアル（Wikipedia の記事の代表画像）", image: "emblems/from-from.webp", source: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/From_title_card.jpg/500px-From_title_card.jpg", page: "https://en.wikipedia.org/wiki/From_(TV_series)", shape: "badge", ar: 0.494, work: true}
       - {subject: "Julie Matthews（Hannah Cheramy）", why: "Julie Matthews（Hannah Cheramy）：Fandom の役の記事の代表画像", image: "emblems/from-julie-matthews-hannah-cheramy.webp", source: "https://static.wikia.nocookie.net/from/images/9/92/Julie_Matthews_Season_3.png/revision/latest/scale-to-width-down/400?cb=20241104221127", page: "https://from.fandom.com/wiki/Julie_Matthews", shape: "cutout", face: [0.385, 0.162, 0.493, 0.51, 386, 335]}
       - {subject: "Tian-Chen Liu（Elizabeth Moy）", why: "Tian-Chen Liu（Elizabeth Moy）：Fandom の役の記事の代表画像", image: "emblems/from-tian-chen-liu-elizabeth-moy.webp", source: "https://static.wikia.nocookie.net/from/images/3/3b/Tian_Chen_Liu_pro.jpeg/revision/latest/scale-to-width-down/400?cb=20230525212600", page: "https://from.fandom.com/wiki/Tian-Chen_Liu", shape: "cutout", fs: 0.375, face: [0.375, 0.088, 0.553, 0.511, 391, 421]}
       - {subject: "Bing-Qian Liu（Simon Sinn）", why: "Bing-Qian Liu（Simon Sinn）：Fandom の役の記事の代表画像", image: "emblems/from-bing-qian-liu-simon-sinn.webp", source: "https://static.wikia.nocookie.net/from/images/a/a1/Bing-Qian_Liu_%28From_S2%29.png/revision/latest/scale-to-width-down/400?cb=20260926061534", page: "https://from.fandom.com/wiki/Bing-Qian_Liu", shape: "cutout", face: [0.72, 0.101, 0.561, 0.497, 385, 345]}
@@ -816,7 +816,7 @@ items:
     emblem_subject: Starbucks
     motif: cafe          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "スターバックスのロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png", page: "https://en.wikipedia.org/wiki/File:Starbucks_Corporation_Logo_2011.svg", shape: "logo"}
+      - {subject: "スターバックスのロゴ", why: "ブランドの顔（公式ロゴ）", image: "emblems/ea63faf0.webp", source: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png", page: "https://en.wikipedia.org/wiki/File:Starbucks_Corporation_Logo_2011.svg", shape: "logo", ar: 1.014}
     subtitle: スターバックス マグ · 日本优先 · 海外好设计
     type: category
     section: 好物
@@ -968,7 +968,7 @@ items:
     motif: court          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "テニスボール", why: "版面の主題（テニス）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3be.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
-      - {subject: "Japan Open Tennis Championships", why: "主題を表す画像", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ariake%20tennis%20park.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Ariake_tennis_park.jpg", shape: "badge", ar: 0.562}
+      - {subject: "Japan Open Tennis Championships", why: "主題を表す画像", image: "emblems/japan-open-tennis-championships.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/Ariake%20tennis%20park.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Ariake_tennis_park.jpg", shape: "badge", ar: 0.562}
       - {subject: "1f3c6 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3c6.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: ATP・WTA ツアー 日本開催
     size: L
@@ -1051,7 +1051,7 @@ items:
     emblem_subject: Samsung
     motif: tech          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Samsung のロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung%20wordmark.svg?width=500", page: "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg", shape: "logo"}
+      - {subject: "Samsung のロゴ", why: "ブランドの顔（公式ロゴ）", image: "emblems/samsung.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung%20wordmark.svg?width=500", page: "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg", shape: "logo", ar: 0.154}
     subtitle: Galaxy S27 Ultra · S27 Pro · 系列情报
     type: product
     section: "好物"
