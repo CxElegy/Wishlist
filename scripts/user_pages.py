@@ -192,11 +192,34 @@ def user_issue(items, shop_issue, rows, deadline, themes):
     return {"date": date, "no": (shop_issue or {}).get("no", 0), "items": blocks}
 
 
-def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None, heat_in=None):
+def prev_issue(items, shop_issue):
+    """前の号（店長の号）の、本人が追いかけている店長と同じ版面の分。店長のページが何号分を render に渡すのと同じに、本人のページも
+    過去の号を渡す（「もっと見る」の過去のニュース・これからの予定は過去の号の記事から出る）。本人だけの版面は最新の号の分しかない。"""
+    sb = {b["name"]: b for b in (shop_issue or {}).get("items", [])}
+    blocks = [{**sb[i["name"]], "stories": (sb[i["name"]].get("stories") or [])[:digest.SIZE_STORIES.get(i.get("size") or "M", STORIES_PER_BOARD)],
+               "section": i.get("section") or sb[i["name"]].get("section")} for i in items if i.get("_shop") and i["name"] in sb]
+    return {"date": shop_issue["date"], "no": shop_issue.get("no", 0), "items": blocks} if blocks else None
+
+
+def own_recommend(votes, items, issue):
+    """「気になるかも？」と好みの言葉：店長と同じ digest.recommend を本人の票で回す（本人の版面に出ている記事は除く）。
+    欲しい物はまだ本人の分がないので空。失敗してもページは出す（おすすめなしで）。"""
+    try:
+        stories = [s for b in issue["items"] for s in b.get("stories") or []]
+        return digest.recommend(user={"votes": votes or [], "wishes": [], "works": {i["name"] for i in items if i.get("_shop")},
+                                      "on_page": ({s["url"] for s in stories}, [s["headline"] for s in stories])})
+    except Exception as ex:  # noqa: BLE001
+        print(f"::warning::own recommend failed ({type(ex).__name__})")
+        return {"picks": [], "taste": []}
+
+
+def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None, heat_in=None, votes=None,
+          shop_prev=()):
     """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）、chosen = 本人の nav_schemes {板块: id}。
     pages（dict）を渡すと、設定ページ（settings.html）もそこに入れる。"""
     items = user_items(own_picks(follows, (prefs or {}).get("picks"), (prefs or {}).get("sizes")), shop_items)
     issue = user_issue(items, shop_issue, rows, deadline, themes)
+    issues = [issue] + [p for p in (prev_issue(items, s) for s in shop_prev or ()) if p]   # 新しい順（店長のページと同じ並べ方）
     schemes = own_schemes(chosen)
     subs = {i["name"]: own_sub(i, schemes) for i in items}
     secs = list(render.SECTIONS)
@@ -213,12 +236,14 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     heat_scores = {}
     if heat_in:
         heat_scores = heat.compute(items, heat_in[0], [issue] + heat_in[1], *heat_in[2:])   # 本人の号を先に：本人だけの版面の記事も数える（同じ記事は 1 回）
+    rec = own_recommend(votes, items, issue)
+    render.PICKS_FLAG = render.SETTINGS_JA["picks_flag"]
     render.AUTH_DB = {"url": settings.get("supabase_url") or "", "key": settings.get("supabase_key") or ""}
     render.AUTH_ITEMS = [[i["name"], digest.section_of(i)] for i in shop_items if not i.get("parent")]
-    html_ = render.render([issue], settings.get("nav_style", "line"), order, updated, [], [],
+    html_ = render.render(issues, settings.get("nav_style", "line"), order, updated, [], digest.pack_batches(rec["picks"]),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")},
                           {i["name"]: i["size"] for i in items if i.get("size")},
-                          {i["name"]: render.template_for(i) for i in items}, themes, [], heat_scores,
+                          {i["name"]: render.template_for(i) for i in items}, themes, rec["taste"], heat_scores,
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")}, {n: v for n, v in subs.items() if v},
                           settings.get("nav_hide", render.NAV_HIDE),
@@ -257,6 +282,7 @@ def main(argv):
     shop_issue = digest.load_json(reports[-1]) if reports else None
     themes = digest.load_json(digest.THEMES_FILE) or {}
     deadline = time.time() + IMG_BUDGET_S
+    prev = [digest.load_json(p) for p in reversed(reports[-digest.ISSUES_ON_PAGE:-1])]   # 最新の号の前の号（新しい順）
     heat_in = (sorted(digest.INBOX_DIR.glob("????-??-??.json")), [digest.load_json(p) for p in reversed(reports[-14:])],
                digest.load_json(digest.HEAT_FILE) or {}, (shop_issue or {}).get("date") or dt.date.today().isoformat())
     if argv[:1] == ["--local"]:
@@ -267,7 +293,7 @@ def main(argv):
             rows = {norm(r["item"]): r for r in u.get("rows", [])}
             pages = {}
             (out / f"{u['account']}.html").write_text(build(u["email"], u["prefs"], rows, shop_items, shop_issue, settings, deadline, themes,
-                                                            u.get("follows"), u.get("schemes"), pages, heat_in), encoding="utf-8")
+                                                            u.get("follows"), u.get("schemes"), pages, heat_in, u.get("votes"), prev), encoding="utf-8")
             for name, h in pages.items():
                 (out / f"{u['account']}.{name}").write_text(h, encoding="utf-8")
         return
@@ -280,8 +306,9 @@ def main(argv):
             follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(name,config)&order=pos")
             chosen = {r["section"]: r["scheme"] for r in _supa(f"/rest/v1/nav_schemes?account=eq.{acct}&select=section,scheme") or []}
             pages = {}
+            votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
             html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline,
-                          themes, follows, chosen, pages, heat_in)
+                          themes, follows, chosen, pages, heat_in, votes, prev)
             for name, h in {"index.html": html_, **pages}.items():
                 _supa(f"/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}", h.encode("utf-8"), "POST", "text/html; charset=utf-8")
             made += 1

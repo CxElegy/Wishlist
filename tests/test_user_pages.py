@@ -57,6 +57,27 @@ class Items(unittest.TestCase):
         self.assertEqual(out[0]["match"], ["広島旅行"])
 
 
+class Picks(unittest.TestCase):
+    """気になるかも？は店長と同じ digest.recommend を本人の票で回す。票も本人の分だけ。"""
+
+    def test_latest_votes_drop_undone(self):
+        import digest
+        rows = [{"url": "u1", "vote": 1}, {"url": "u1", "vote": 0}, {"url": "u2", "vote": -1}, {"url": "u3", "vote": 1}]
+        self.assertEqual({r["url"] for r in digest.latest_votes(rows)}, {"u2", "u3"})
+
+    def test_recommend_for_user_is_pure(self):
+        import digest
+        before = digest.RECOMMEND_FILE.read_bytes() if digest.RECOMMEND_FILE.exists() else None
+        r = digest.recommend(user={"votes": [], "wishes": [], "works": set(), "on_page": (set(), [])})
+        self.assertEqual(r["picks"], [])   # 追いかけている版面がなければおすすめもなし
+        after = digest.RECOMMEND_FILE.read_bytes() if digest.RECOMMEND_FILE.exists() else None
+        self.assertEqual(before, after)    # 店長の state には書かない
+
+    def test_page_has_own_vote_functions(self):
+        h = render.render([{"date": "2026-11-02", "no": 1, "items": []}], picks=[], feedback={"url": "https://x.supabase.co", "key": "k"})
+        self.assertIn("my_vote_add", h)
+
+
 class Follows(unittest.TestCase):
     """置く板块・小分類・篇幅・並びはライブラリの follows から（picks は follows にまだないものだけ）。"""
     FOL = [{"pos": 1, "section": "游戏", "subs": {"platform": "スマホ", "status": "運営中"}, "size": "L", "boards": {"name": "原神"}},
