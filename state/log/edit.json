@@ -1,50 +1,5 @@
 [
 {
-"at": "2026-10-31T00:16:08+00:00",
-"text": "2026-10-31 第 1 バッチを出刊：A2O LITE、Astrae Oratio、GTA 6、ILLIT、あつ森、ぐでたま ほか 8（14 版面・45 本・今日の整理待ちは全部終わり） · token 新規入力 4.6万・キャッシュ読み 101.1万・出力 4,571",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.22,
-"mem_total": 16872808448,
-"mem_free": 15897350144,
-"disk_used": 10792136704,
-"disk_free": 30530371584,
-"disk_total": 41322508288,
-"peak": 298721280
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"GTA 6",
-"ILLIT",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"三星手机",
-"周杰伦",
-"日本顶级网球赛事",
-"星巴克马克杯",
-"漫威电影",
-"猫用品",
-"绝区零"
-],
-"stories": 45,
-"left": 0,
-"edited": 22,
-"run": null,
-"tok": {
-"in": 31,
-"cw": 45549,
-"cr": 1011247,
-"out": 4571,
-"calls": 16,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1061398
-},
-{
 "at": "2026-10-31T01:21:10+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2031,5 +1986,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 826531
+},
+{
+"at": "2026-11-01T06:48:18+00:00",
+"text": "2026-11-01 第 2 バッチを出刊：周杰伦（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 1,064・キャッシュ読み 14.7万・出力 751",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.4,
+"mem_total": 16872808448,
+"mem_free": 15991357440,
+"disk_used": 10015916032,
+"disk_free": 31267618816,
+"disk_total": 41283534848,
+"peak": 315686912
+},
+"batch": 2,
+"boards": [
+"周杰伦"
+],
+"stories": 3,
+"left": 0,
+"edited": 20,
+"run": 1793515196.0404751,
+"tok": {
+"in": 3,
+"cw": 1061,
+"cr": 147381,
+"out": 751,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 149196,
+"secs": 503,
+"run_tok": {
+"in": 28,
+"cw": 45944,
+"cr": 925632,
+"out": 4123,
+"calls": 15,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
