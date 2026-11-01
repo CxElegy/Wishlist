@@ -3434,7 +3434,7 @@ FIT_JS = """
   };
   once();
   mason();
-  document.querySelectorAll('details.older').forEach(d => d.addEventListener('toggle', () => d.open && setTimeout(mason, 0)));
+  document.addEventListener('toggle', e => e.target.matches && e.target.matches('details.older[open]') && setTimeout(mason, 0), true);   // toggle は泡立たない：document で捕まえる（お客さまの版面は JS で描き直されるので、描いた後の details にも効く）
   const spans = () => { clearTimeout(spt); spt = setTimeout(() => { document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(); }, 150); };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     if (img.complete) fit(img);
