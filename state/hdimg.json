@@ -5,12 +5,6 @@
   "target": 720,
   "v": 3
  },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
-  "w": 1080,
-  "h": 608,
-  "target": 720,
-  "v": 3
- },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
@@ -20,12 +14,6 @@
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/cfpbAMbufCaDAAa.png": {
   "w": 1080,
   "h": 1399,
-  "target": 1280,
-  "v": 3
- },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/edQSgIbugixFodf.jpg": {
-  "w": 1080,
-  "h": 608,
   "target": 1280,
   "v": 3
  },
@@ -1288,6 +1276,20 @@
   "h": 1080,
   "target": 720,
   "v": 3
+ },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/iuTNdTbugixEyix.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-01"
+ },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/rLMNpIbugixFofw.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-01"
  },
  "https://i.cdn.newsbytesapp.com/images/l144_17801793486882.jpg": {
   "w": 1440,
@@ -3926,6 +3928,12 @@
   "target": 720,
   "v": 3
  },
+ "https://staticg.sportskeeda.com/editor/2026/10/f97dc-17934430484356-1920.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://statics-prod.mirrordaily.news/images/f211b6c1-51ee-48b0-8c00-36437b0529f0.webp": {
   "w": 1600,
   "h": 1069,
@@ -4002,6 +4010,12 @@
  "https://thesource.com/wp-content/uploads/2026/10/Screenshot-2026-10-24-at-3.30.47-PM.jpg": {
   "w": 852,
   "h": 458,
+  "target": 720,
+  "v": 3
+ },
+ "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=1600,fit=cover,bg=white,f=auto,quality=high,sharpen=2,g=face/21/2026/10/2026102618252436679_1.jpg": {
+  "w": 1200,
+  "h": 1600,
   "target": 720,
   "v": 3
  },
@@ -4565,12 +4579,6 @@
    852
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.bBSzeS_-6fCEDPuSaAJ-3Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
