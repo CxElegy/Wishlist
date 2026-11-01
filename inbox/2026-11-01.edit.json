@@ -262,7 +262,8 @@
   "チェーンソーマン": 4,
   "滑雪": 2,
   "BLEACH Mirrors High": 1,
-  "猫用品": 1
+  "猫用品": 1,
+  "MMORPG 新作": 1
  },
  "A2O LITE": [
   {
@@ -589,5 +590,17 @@
    "image": "https://appmedia.jp/wp-content/uploads/2025/06/144853_efkn3.webp"
   }
  ],
- "猫用品": []
+ "猫用品": [],
+ "MMORPG 新作": [
+  {
+   "headline": "Outer Ring MMO’s next update brings desert PvP, loot stealing and new bosses",
+   "highlight": "desert PvP",
+   "blurb": "Outer Ring MMO’s next update adds desert PvP, loot stealing and new bosses. 次回テスト・リリース日は未発表。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://egamers.io/wp-content/uploads/2026/10/outer-ring-mmos-next-update-brings-desert-pvp-loot-stealing-and-new-bosses.jpg"
+  }
+ ]
 }

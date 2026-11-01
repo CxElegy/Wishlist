@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "fd7723eb2a4a",
+ "edit_sig": "89bd5fd51e46",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -119,8 +119,8 @@
      "date": "2026-10-31",
      "headline": "GTA VI's 210GB download could cost an extra €11.55 in France if a new data tax becomes law",
      "highlight": "210GB download",
-     "image": "https://static.tweaktown.com/news/1/1/114424_3_gta-vis-210gb-download-could-cost-an-extra-euro-11-55-in-france-if-new-data-tax-becomes-law_full.png",
-     "image_via": "og:image",
+     "image": "https://cdn.hk01.com/di/media/images/dw/20261030/1192902154348662784394527.jpeg/e-uyNhCRFct32XLa6IFt3g1HmZWdd6HD1SW9t9Ulvbc",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.tweaktown.com/news/114424/gta-vis-210gb-download-could-cost-an-extra-euro11-55-in-france-if-a-new-data-tax-becomes-law/index.html",
      "weight": "normal"
     },
@@ -785,6 +785,19 @@
      "image_via": "og:image",
      "url": "https://www.storm.mg/article/11177383",
      "weight": "normal"
+<<<<<<< HEAD
+=======
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "懷念故友方大同！葛仲珊出手了 衝葛萊美廝殺周杰倫、蔡依林",
+     "highlight": "衝葛萊美",
+     "image": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/01/35473388.jpg&M=1&s=Y&x=0&y=503&sw=1280&sh=853&sl=W&fw=800&exp=3600",
+     "image_via": "og:image",
+     "url": "https://stars.udn.com/star/story/10092/9849566",
+     "weight": "normal"
+>>>>>>> 8bc01f3 (编排 2026-11-01：MMORPG 新作)
     }
    ],
    "subtitle": "周杰倫",
@@ -976,8 +989,8 @@
      "date": "2026-10-30",
      "headline": "パダ（S.E.S.）、“生みの親”イ・スマンの再出発を応援「今、デビューしていたらその中に私がいる」…「A2O SOUL」＆「A2O LITE」に熱視線",
      "highlight": "イ・スマンの再出発を応援",
-     "image": "https://www.wowkorea.jp/img/news/107/536956/453389_1280W.webp",
-     "image_via": "og:image",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/wowkorea/wowkorea_536956_0-enlarge.jpg",
+     "image_via": "转载 news.infoseek.co.jp",
      "url": "https://www.wowkorea.jp/news/read/536956.html",
      "weight": "normal"
     }
@@ -1064,9 +1077,12 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Outer Ring MMO’s next update adds desert PvP, loot stealing and new bosses. 次回テスト・リリース日は未発表。",
      "date": "2026-10-31",
+<<<<<<< HEAD
      "n": 1,
      "source": "eGamers.io",
      "title": "Outer Ring MMO’s next update brings desert PvP, loot stealing and new bosses",
@@ -1078,10 +1094,16 @@
      "source": "PC Gamer",
      "title": "How fast do you type, and has playing MMOs improved your typing in any way?",
      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdnJHQWZGRWVFMnd1dTNCaHFNQW56OXJ5ZUVteDJRSUpGV0hRX25LM2VLejBRMHljNURkX21TVThwNWxybVRnMjduS01VUTFacy1CMVNaa2NQZnNtdGE3WFRCc3VFeXlsTnk4QnhpaDBKZDJnTDdfSFlKVURpNW0tVk5fOWtidU01Y1FKX2FHZ21HSDdGZzJWY0FaaWFxWEpWcm5ldE1jaHpLdXFL?oc=5"
+=======
+     "headline": "Outer Ring MMO’s next update brings desert PvP, loot stealing and new bosses",
+     "highlight": "desert PvP",
+     "image": "https://egamers.io/wp-content/uploads/2026/10/outer-ring-mmos-next-update-brings-desert-pvp-loot-stealing-and-new-bosses.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://egamers.io/outer-ring-mmos-next-update-brings-desert-pvp-loot-stealing-and-new-bosses/",
+     "weight": "lead"
+>>>>>>> 8bc01f3 (编排 2026-11-01：MMORPG 新作)
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
