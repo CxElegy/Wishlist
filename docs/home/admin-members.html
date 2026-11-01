@@ -1570,7 +1570,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-members" content="fb30c1aba988"><style>
+<meta name="wl-ver" data-page="admin-members" content="726c0baf6199"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1581,9 +1581,9 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 .fresh{outline:3px solid var(--gold);outline-offset:3px}
 .wl-live .wl-to{color:var(--gold);text-decoration:underline;text-underline-offset:3px;font-weight:900}
 .wl-live span{min-width:0}
-.fresh-tag{position:absolute;top:6px;right:6px;z-index:6;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
+.fresh-tag{display:inline-block;align-self:flex-start;margin:0 8px 6px 0;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
  box-shadow:2px 2px 0 var(--ink);font:900 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.08em;pointer-events:none}
-section.fresh{position:relative}
+.when b.fresh-tag{margin:0;background:var(--alert);color:#FFF!important;box-shadow:none;transform:none;padding:2px 7px 1px;font:900 10px/1.4 var(--font-sans);letter-spacing:.14em}  /* L8：札は字に重ねず日付の行の流れの中。NEW と たった今 は同じ意味なので 1 つ（NEW の札を置き換える） */
 @media (prefers-reduced-motion:no-preference){.fresh{animation:wlfresh 1.6s ease-out 3}}
 @keyframes wlfresh{50%{outline-color:var(--rose)}}
 </style><script>window.WL_ACCOUNT="test1";</script><style>
@@ -2470,7 +2470,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ⑥ お客さまと店長</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.01 23:41</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.02 00:19</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html" aria-current="page"><span>⑥ お客さまと店長</span></a></li></ul></nav>
@@ -2985,14 +2985,17 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     function back(){var s=was.at&&document.getElementById(was.at[0]);if(s)to(s.getBoundingClientRect().top+pageYOffset-was.at[1]);else if(was.y)to(was.y);}
     if('scrollRestoration' in history)history.scrollRestoration='manual';
     back();addEventListener('load',back);
+    function tag(c,txt){var w=c.querySelector('.when'),b=w&&w.querySelector('b');   // L8：札は流れの中（日付の行の NEW を置き換える／なければ先頭に並べる）
+      if(b){b.textContent=txt;b.className='fresh-tag';return;}
+      var t=document.createElement('span');t.className='fresh-tag';t.textContent=txt;if(w)w.insertBefore(t,w.firstChild);else c.insertBefore(t,c.firstChild);}
     var n=0,by={},order=[];   // by[版面の id] = 新しい記事の数
     keyed().forEach(function(x){var c=x[1];if(was.keys&&!was.keys[x[0]]&&c&&!c.classList.contains('fresh')){
-      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;
+      c.classList.add('fresh');tag(c,T.tag);n++;
       var sec=c.closest('section[id]');if(sec){if(!by[sec.id]){by[sec.id]=0;order.push(sec);}by[sec.id]++;}}});
     var other=[];   // 新しい記事はないが中身が変わった版面・パネル（話題度・小元素・順位など）
     if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
       if(h&&h!==s.getAttribute('data-h')){if(!by[s.id]){other.push(s);}
-        if(s.classList.contains('panel')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);}}});
+        if(s.classList.contains('panel')){s.classList.add('fresh');tag(s,T.upd);}}});
     var items=order.map(function(s){return [label(s),T.n.replace('%n',by[s.id]),s.id];}).concat(other.map(function(s){return [label(s),T.m,s.id];}));
     var shown=items.slice(0,4),rest=items.length-shown.length;
     if(items.length||n){toast(ZH?'有新内容':'更新しました',false,shown);
