@@ -322,19 +322,20 @@
   "A2O LITE": 28,
   "周杰伦": 21,
   "哈利波特剧集": 13,
-  "dota2": 6,
-  "绝区零": 10,
-  "The Mandalorian": 6,
-  "あつ森": 2,
+  "dota2": 8,
+  "绝区零": 12,
+  "The Mandalorian": 7,
+  "あつ森": 4,
   "Vaundy": 5,
   "Astrae Oratio": 2,
-  "チェーンソーマン": 5,
+  "チェーンソーマン": 6,
   "滑雪": 8,
   "BLEACH Mirrors High": 3,
-  "猫用品": 3,
+  "猫用品": 5,
   "MMORPG 新作": 3,
   "星巴克马克杯": 2,
-  "gelato pique": 1
+  "gelato pique": 1,
+  "ぐでたま": 1
  },
  "A2O LITE": [
   {
@@ -494,6 +495,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "《刀塔2》北美仅剩的职业战队，杀进了胜者组决赛！",
+   "highlight": "胜者组决赛",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "绝区零": [
@@ -552,6 +562,15 @@
    "refs": [
     9
    ]
+  },
+  {
+   "headline": "『原神』『ゼンゼロ』などのHoYoverse新作『プチプラネット』がニンテンドースイッチ2でも配信決定！",
+   "highlight": "配信決定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
   }
  ],
  "The Mandalorian": [
@@ -594,6 +613,15 @@
     2
    ],
    "image": "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200"
+  },
+  {
+   "headline": "もののふのちょうこくの偽物の見分け方 | 本物との違い【あつ森】",
+   "highlight": "偽物の見分け方",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "Vaundy": [
@@ -752,6 +780,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "クランベリーは猫の膀胱炎に効果がある？研究からわかった可能性と注意点【獣医師執筆】",
+   "highlight": "猫の膀胱炎",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "MMORPG 新作": [
@@ -810,6 +847,18 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "難波にアメリカ西海岸がテーマのぐでたまカフェ登場",
+   "highlight": "ぐでたまカフェ登場",
+   "blurb": "難波にアメリカ西海岸テーマのぐでたまカフェが登場。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/77844/439414_615.jpg"
   }
  ]
 }

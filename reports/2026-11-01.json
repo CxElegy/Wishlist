@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "edit_sig": "a2de2175adb2",
+ "edit_sig": "3b78fec49fda",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -631,14 +631,14 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "難波にアメリカ西海岸テーマのぐでたまカフェが登場。",
      "date": "2026-10-29",
      "headline": "難波にアメリカ西海岸がテーマのぐでたまカフェ登場",
-     "highlight": "",
+     "highlight": "ぐでたまカフェ登場",
      "image": "https://news.walkerplus.com/article/77844/439414_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/77844/",
-     "weight": "hero"
+     "weight": "lead"
     }
    ],
    "subtitle": "Gudetama",
@@ -663,15 +663,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 6,
-     "source": "Howl.Link",
-     "title": "Chainsaw Man (@CSMvizuals) on X",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE54Zzl5dzBrZ1dTNmJDRDJwWXdGcGp6dmNmWldGWlhFdDlvWFphODhsV3RmbjBWeTNVSnpR?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -721,15 +712,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 7,
-     "source": "khorasantimes.com",
-     "title": "Star Wars The Mandalorian Graphic T-Shirt Size Small Gray Cotton khorasantimes.com",
-     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPLWNQQ2kzcW15LWhLSEpGUFIyZWxsUVB6UTJwUG5wREhILXRUalRwTGw4ZWh3SUVDZG5XMG84NWJFYXpjNE5SbGdNUGZoc2Rkemp1eTNXYkFfTTA4NTR2QzFseFliZUVwTW5IUkRZSTQtLVBVTEtRaVdLV2ZxMzRJRnJoQ1kzajRiUFY4X3c5UmtpejBLb2djbDlxWlRjRTEyX3VmeS1mc1IxRHdQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -779,22 +761,6 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 3,
-     "source": "GameWith",
-     "title": "もののふのちょうこくの偽物の見分け方 | 本物との違い【あつ森】",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1JMDZuVC1tQ01jSWNPNnhxd2luME5hR25SNkRnaXpPYUpoODVvNzMyQTNoakFiZVJTX1JzV1ZqY25xbnphT1BpbGhVXzNfend5bTh4aExha2FGYVBO?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 4,
-     "source": "note",
-     "title": "Nono-chan, living life in real-life Animal Crossing.",
-     "url": "https://note.com/nono_hsp_write/n/nf95ae985938b?hl=en"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -806,6 +772,16 @@
      "image_via": "AI 挑选",
      "url": "https://note.com/dear_oriole1078/n/nc507e12375f4",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "もののふのちょうこくの偽物の見分け方 | 本物との違い【あつ森】",
+     "highlight": "偽物の見分け方",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/198867.png?date=1587708186",
+     "image_via": "JSON-LD",
+     "url": "https://gamewith.jp/atsumori/article/show/198867",
+     "weight": "normal"
     }
    ],
    "subtitle": "あつまれ どうぶつの森",
@@ -918,29 +894,8 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 12,
-     "source": "ｄメニューニュース",
-     "title": "『原神』『ゼンゼロ』などのHoYoverse新作『プチプラネット』がニンテンドースイッチ2でも配信決定！自分だけの星を育てる基本無料のスローライフゲーム",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOQk9qMjhISWJqN1V2b2p5T1ByS2tLUUNEZC1VUUk4aC1PYU95OFBpd2NzQ0JuZlYtR3pJZG1wVXRiUjM4NWV4VEFhNzZUMGVya25jakl0N2t0YWpFU1RVMXJqaHdrMG9VcGhGclMyb204VnVTVFh0YVJUMEFUWVpLQnlSYnJZNGNyM2ZuOUJkR2MwZ09O0gGHAUFVX3lxTE0zV3RSRDNJRm1tWVB1T1FUV2J3Tm9uRFNtcDlCeXROSlZKTXc3TGxaRmdBU1FTTGlucFZzcWdZU1dfRGVURjF2ai1TblppY0RjWHU3VjRjaGVkNlhUeUU5dWJaZlB2QnlLdmgtQXo3a2ZuallHaWRZR0pmNXEydncwZnFhVFptVQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-31",
-     "headline": "#ゼンレスゾーンゼロ 】 スタレコラボに向けてシーズン1アウトロ「涙と過去を埋めて」やります！大人気のあの方に会いに行きます【月銀ミツル】",
-     "highlight": "",
-     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-     "image_via": "作品封面",
-     "source": "Howl.Link",
-     "source_icon": "https://www.youtube.com/s/desktop/e358493a/img/favicon_144x144.png",
-     "url": "https://t.co/pCqzagDLev",
-     "weight": "hero"
-    },
     {
      "blurb": "《绝区零》空巡局巡查档案：贝克福德街异象。",
      "date": "2026-10-31",
@@ -966,7 +921,7 @@
      "date": "2026-10-31",
      "headline": "《绝区零》养成指南上新丨赛维里安养成材料预告",
      "highlight": "赛维里安养成材料预告",
-     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/iuTNdTbugixEyix.jpg",
+     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png",
      "image_via": "JSON-LD",
      "url": "http://news.17173.com/content/10312026/182648461.shtml",
      "weight": "normal"
@@ -979,6 +934,16 @@
      "image": "https://assets.mmoexp.com/images/202610/6fddef34feaf47b9fde27c6f004d0ff52ea8ae33.jpg",
      "image_via": "正文图（3 枚から）",
      "url": "https://www.mmoexp.com/News/zenless-zone-zero-version-3-3-latest-news-phiony-severian-release-free-rewards-and-version-3-4-collaboration-details.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "绝区零11月1日兑换码2026",
+     "highlight": "兑换码",
+     "image": "https://olimg.3dmgame.com/uploads/images/raiders/20240801/1722474179_466511.jpg",
+     "image_via": "正文图（3 枚から）",
+     "url": "https://m.3dmgame.com/ol/gl/357518.html",
      "weight": "normal"
     }
    ],
@@ -998,22 +963,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 7,
-     "source": "CryptoRank",
-     "title": "Catcher Predict：“Dota 2：Team Yandex 对阵 GamerLegion - PARI Universe 季后赛” “在白天结束” 胜率飙升40.5%",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TbUdkek43Uy1Cc2VZdlJJMVVXR1NUWGthSUl3TEZ3VTJyRmNmOERaTFVTTUdUaC13Ymh6OWVnbUFVUUxSbHBDWktoSjdpTWlRLURUdUMyUXhoS2xh?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 8,
-     "source": "17173",
-     "title": "《刀塔2》北美仅剩的职业战队，杀进了胜者组决赛！",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE94Z1ctaXA4eTRQTWtBbUZ0Qlg2eDFQQmNRbFhwcmFiNTdSR2FBV1RraDZlSm9TS2RqVkJUNmdDVXF1RllQd191WTJaYlEwMUNEazI4SnBSSk1ORXk1eDh4QjhwVEM?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1021,8 +970,8 @@
      "date": "2026-10-31",
      "headline": "《刀塔2》关山难越……PVISION再次被Spirit淘汰！",
      "highlight": "PVISION再次被Spirit淘汰",
-     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/rLMNpIbugixFofw.png",
-     "image_via": "AI 挑选",
+     "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/edQSgIbugixFodf.jpg",
+     "image_via": "正文图（6 枚から）",
      "url": "http://news.17173.com/content/10312026/182710728.shtml",
      "weight": "lead"
     },
@@ -1044,6 +993,17 @@
      "image": "https://hawk.live/storage/images/posts/arteezy-criticized-matchmaking-dota-2-23924.jpg",
      "image_via": "og:image",
      "url": "https://hawk.live/posts/arteezy-shares-expectations-new-dota-2-patch",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "《刀塔2》北美仅剩的职业战队，杀进了胜者组决赛！",
+     "highlight": "胜者组决赛",
+     "image": null,
+     "source": "17173",
+     "source_icon": "https://www.google.com/s2/favicons?domain=news.17173.com&sz=128",
+     "url": "http://news.17173.com/content/10312026/202609295.shtml",
      "weight": "normal"
     }
    ],
@@ -1089,8 +1049,8 @@
      "date": "2026-10-30",
      "headline": "A2O LITEのデビュー曲NEONが米ビルボード2部門でTOP10入り",
      "highlight": "米ビルボード2部門でTOP10入り",
-     "image": "https://img.tenasia.co.kr/photo/202610/ZA.46024882.1.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/953358_1.jpg",
+     "image_via": "og:image",
      "url": "https://asiaent.net/a2o-lite-neon-billboard/",
      "weight": "normal"
     },
@@ -1220,22 +1180,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "千葉テレビ放送株式会社",
-     "title": "クランベリーは猫の膀胱炎に効果がある？研究からわかった可能性と注意点【獣医師執筆】",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBYUzVGWE8xWm9xZjZLb3BiOXItNG9RNjIxX0RVSFFYS3BNY3RMWnBHMHlyOVgzZS1Qd3ppV1FNcnRQQm9KdmY0MjV5N0dIZ1ZKcDMzLU0xVzlQQWM3OFlV?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 5,
-     "source": "Vietnam.vn",
-     "title": "Revealing the luxurious life of feline 'emperors and princesses': delicious food, private air-conditioned rooms, and being cared for like family.",
-     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOSU5aRW1sSDVXUTBmbS02dUxTUGdXRWFiYTlzbkwycldQYXdCdjhOc2Q4RFBseGwwSEJyQjRmNGRuUXk5R2cwcXJGWWlpRldHSUxNNHo3OVRqelZCMjFOc0gya25CMVdGQ05IZ1dNWV9MajR0dTVENVAzWk1rY2l0d3ozQ2h1REVxS2tJV1VObjViQnNWYjg5cWVRM0diMzlsTE1EQzBvamFzTW1DOF9nWjkyTm9aQ0hrV1BDZmhTN0NiNjdy?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1256,6 +1200,16 @@
      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-11803680-asahiand-000-1-view.jpg?exp=10800",
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/a4ec9702715ee72b90b19685dd5cae755f41c1d7",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "クランベリーは猫の膀胱炎に効果がある？研究からわかった可能性と注意点【獣医師執筆】",
+     "highlight": "猫の膀胱炎",
+     "image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1489552407197877875/origin_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.chiba-tv.com/plus/detail/2026112182613",
      "weight": "normal"
     }
    ],

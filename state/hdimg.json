@@ -17,6 +17,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/edQSgIbugixFodf.jpg": {
+  "w": 1080,
+  "h": 608,
+  "target": 1280,
+  "v": 3
+ },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/kfVLPSbugixDdgD.jpg": {
   "w": 1080,
   "h": 1670,
@@ -127,6 +133,19 @@
   "local": "pics/89913e3d3e5f238a.webp",
   "out": [
    1024,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx2.sinaimg.cn/middle/90b10eb9ly1iilrcv25w7j214a1kvkjl.jpg": {
+  "w": 1450,
+  "h": 2047,
+  "target": 720,
+  "v": 3,
+  "local": "pics/22e4f1ec30e6a642.webp",
+  "out": [
+   907,
    1280
   ],
   "why": "防盗链",
@@ -904,19 +923,6 @@
   "target": 720,
   "v": 3
  },
- "https://cphoto.asiae.co.kr/listimglink/1/2026082716365095566_1787816210.jpg": {
-  "w": 745,
-  "h": 558,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.482,
-  "local": "pics/ad64650e4d61baa3.webp",
-  "out": [
-   1280,
-   959
-  ],
-  "why": "看不清"
- },
  "https://d.ibtimes.co.uk/en/full/1837366/gta-6.png": {
   "w": 1600,
   "h": 900,
@@ -990,6 +996,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://di2ponv0v5otw.cloudfront.net/posts/2026/09/17/6aac9c93a2c54094c40adc2a/l_wp_6aac9c9424cc87b56e101ef0.webp": {
+  "w": 1000,
+  "h": 1330,
+  "target": 720,
   "v": 3
  },
  "https://dispatch.cdnser.be/cms-content/uploads/2026/10/23/e702cf71-0542-45aa-8abe-f9eb62c65c63.jpg": {
@@ -1277,19 +1289,11 @@
   "target": 720,
   "v": 3
  },
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/iuTNdTbugixEyix.jpg": {
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
+  "w": 1080,
+  "h": 608,
   "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-01"
- },
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/rLMNpIbugixFofw.png": {
-  "target": 1280,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-01"
+  "v": 3
  },
  "https://i.cdn.newsbytesapp.com/images/l144_17801793486882.jpg": {
   "w": 1440,
@@ -1316,12 +1320,6 @@
   ],
   "why": "看不清"
  },
- "https://i0.wp.com/cdnbunny.ubergizmo.com/wp-content/uploads/2026/10/Huawei-Matebook-Fold.jpg": {
-  "w": 1000,
-  "h": 560,
-  "target": 1280,
-  "v": 3
- },
  "https://i0.wp.com/disneyworldfan.jp/wp-content/uploads/2026/10/wdw-holiday-2026-pastel-display.jpeg?fit=2048%2C1536&ssl=1": {
   "w": 2048,
   "h": 1536,
@@ -1332,6 +1330,12 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
+  "v": 3
+ },
+ "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/02/LR-7414.jpg?fit=1920%2C1079&ssl=1": {
+  "w": 1920,
+  "h": 1079,
+  "target": 1280,
   "v": 3
  },
  "https://i0.wp.com/jpstargazer.com/wp-content/uploads/2026/04/FotoJet-1.jpg?fit=1200%2C773&ssl=1": {
@@ -1386,6 +1390,19 @@
   "out": [
    1280,
    576
+  ],
+  "why": "看不清"
+ },
+ "https://i3n.news1.kr/system/photos/2026/10/27/8182136/high.jpg": {
+  "w": 428,
+  "h": 579,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.616,
+  "local": "pics/80e14988d0cdf445.webp",
+  "out": [
+   946,
+   1280
   ],
   "why": "看不清"
  },
@@ -1952,6 +1969,12 @@
   ],
   "why": "看不清"
  },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/198867.png?date=1587708186": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/554986.png?date=1775803395": {
   "w": 1200,
   "h": 630,
@@ -1961,13 +1984,13 @@
  "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1489552407197877875/origin_1.jpg": {
   "w": 360,
   "h": 360,
-  "target": 720,
+  "target": 1280,
   "v": 3,
-  "blur": 0.565,
+  "blur": 0.683,
   "local": "pics/a98334cfc34269d5.webp",
   "out": [
-   720,
-   720
+   1080,
+   1080
   ],
   "why": "看不清"
  },
@@ -2041,12 +2064,6 @@
  "https://img.sportsbull.jp/raw/t2m8VMS5AgyOd1ngRNI4M1BYyyaofcW7fQOmvQWf.jpg": {
   "w": 1024,
   "h": 576,
-  "target": 720,
-  "v": 3
- },
- "https://img.tenasia.co.kr/photo/202610/ZA.46024882.1.jpg": {
-  "w": 1200,
-  "h": 799,
   "target": 720,
   "v": 3
  },
@@ -2517,6 +2534,12 @@
   "w": 1024,
   "h": 683,
   "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/953358_1.jpg": {
+  "w": 1024,
+  "h": 683,
+  "target": 720,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/10/HVmuJmVWsAAndQw.jpg": {
@@ -3151,6 +3174,19 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-11803116-asahiand-000-1-view.jpg?exp=10800": {
+  "w": 640,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.616,
+  "local": "pics/3f97b53757033f57.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-3-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1445,
@@ -3333,12 +3369,6 @@
   "target": 1280,
   "v": 3
  },
- "https://omocoro.jp/assets/uploads/2026/09/17902073034glat.jpg": {
-  "w": 837,
-  "h": 555,
-  "target": 1280,
-  "v": 3
- },
  "https://oss.5eplay.com/cloudx/p/admin5e/home/dbfplkkconkip2fe7ge0.jpg?x-oss-process=image/format,jpg,image/quality,q_10": {
   "w": 800,
   "h": 509,
@@ -3436,6 +3466,12 @@
   "target": 720,
   "v": 3
  },
+ "https://pokemongohub.net/wp-content/uploads/2026/10/IMG_7061-Li-Ke-scaled.jpeg": {
+  "w": 2560,
+  "h": 1179,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/14685/994/14685-994-c26c451d29ca3cd34fd598df0e05b477-3900x2759.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1781,
   "h": 1260,
@@ -3526,19 +3562,6 @@
   "target": 1280,
   "v": 3
  },
- "https://px1img.getnews.jp/thumb/card/3751939.jpg": {
-  "w": 600,
-  "h": 600,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.703,
-  "local": "pics/ce21bdecf725094d.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
   "w": 760,
   "h": 1125,
@@ -3587,12 +3610,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/50e16f6675607fefdfa6bf4797107205671f0f44bc0c80207e3297d96e54a3af/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fplaystation_lifestyle_666%2Fe3ff7e3ed3c352117bcaa32b20ef69ae.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/7dc940cb64e006a0125c7d9e0b9de842d75c3557798abcc3b0823042a67e808f/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpeople_218%2F62e06a2909da57162cd55f6cddeb727b.jpg": {
   "w": 1200,
   "h": 800,
@@ -3620,6 +3637,12 @@
  "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://s1.ppllstatics.com/surinenglish/www/multimedia/local/2026/10/15/gato7-kLVC--1200x840@Diario%20Sur.jpg": {
+  "w": 1200,
+  "h": 840,
   "target": 720,
   "v": 3
  },
@@ -4050,12 +4073,6 @@
   ],
   "why": "看不清"
  },
- "https://tk.ismcdn.jp/mwimgs/c/2/1200xm/img_c2b201ad86a1a37839adff402839c48e392341.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://today-obs.line-scdn.net/0hyA9Kp778Jm4EMjrrBnpZOTxkKh83VDxnJl1rDSExeA17HjU8awZ1DSRicEJ6UWZsJFduDyAyfFYoUmIwbw/w1200": {
   "w": 1000,
   "h": 667,
@@ -4351,6 +4368,13 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.D4Jt49GVvRyi9uPlvpoPAQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 341,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.405
+ },
  "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300": {
   "w": 300,
   "h": 300,
@@ -4399,19 +4423,6 @@
   "out": [
    1280,
    719
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.KOsfIlpysro4UjegnaF79g&pid=News&w=1200": {
-  "w": 560,
-  "h": 700,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.482,
-  "local": "pics/c6cd7ed963c64002.webp",
-  "out": [
-   1024,
-   1280
   ],
   "why": "看不清"
  },
@@ -4901,6 +4912,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/04/16/grass-type-pokemon-weaknesses-1.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2026/10/31/sneaker-market-romania.jpg": {
   "w": 1600,
   "h": 900,
@@ -5082,6 +5099,12 @@
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6YouTube.jpg": {
   "w": 2000,
   "h": 1500,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/8.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
