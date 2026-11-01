@@ -13,6 +13,7 @@
 1. 进入仓库 `CxElegy/Wishlist`，分支 `main`，先 `git pull --rebase`。
    **先做版面设计**：`items.yaml` 里 `notes` 有「从网页设置页加进来的」、但还没有 `motif` 的关注项，按 `TEMPLATES.md` 开头的表把版面设计一遍：
    ① 主题 `motif`、② 配色 `theme`（暗底 / 浅底按气质）、③ 小元素 `emblem`（`scripts/emblem.py`）、④ 点 👍 的演出 `like_fx`。没有就跳过。
+   **ライブラリの版面も同じ回で**（お客さまだけが追う版面を含む・誰が追っているかで分けない）：`python scripts/library_design.py --list` で motif・theme のない版面が出たら、版面ごとに ①②④ を決めて案 JSON（`{"版面id": {"motif":…, "theme":{bg,fg,accent,alt_bg,alt_fg,alt_accent,font,split}, "like_fx":…}}`）を作り `--apply 案.json`（boards.config に足すだけ。service key が要る）。`--check` が 0 を返すまで。ux_check が「ライブラリの版面で motif・theme のないもの 0」を数える。
    另外：**小元素补齐**——先 `pip install -q -r requirements.txt "rembg[cpu]" "opencv-python-headless<5"`（抠图和本人确认用，第一次会下载模型），再 `python scripts/emblem_fill.py --audit`，
    `✗`（0 张）和 `△`（没到目标）的关注项，按 `TEMPLATES.md`「补齐的流程」逐个补：先写好 `emblem_kind` / `emblem_who`，
    `emblem_fill.py "名" ` 出候选一览，**看图**选号码 `--commit`。不要写 `emblem_skip`（没有这条退路了）。
