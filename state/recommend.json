@@ -46,9 +46,9 @@
   "https://thedirect.com/article/spider-man-beyond-the-spider-verse-trailer-spoilers-movie": "https://images.thedirect.com/media/article_full/1000012056.jpg",
   "https://times.abema.tv/zh/articles/-/10277597": "https://times-abema.ismcdn.jp/mwimgs/7/1/1200w/img_7103bfc7486a0c2fd80d9bffc573a7e04410796.jpg",
   "https://times.abema.tv/zt/articles/-/10284560": "https://times-abema.ismcdn.jp/mwimgs/0/3/1200w/img_03b65a1001af09aa2423289fa7b7f08b578497.jpg",
-  "https://topics.smt.docomo.ne.jp/amp/article/tvasahinews/business/tvasahinews-000544430": "https://img.topics.smt.news.goo.ne.jp/picture/tvasahinews/m_tvasahinews-000544430.jpg",
   "https://toyokeizai.net/articles/-/962632": "https://tk.ismcdn.jp/mwimgs/c/2/1200xm/img_c2b201ad86a1a37839adff402839c48e392341.jpg",
   "https://webun.jp/articles/-/1119302": "https://www.bing.com/th?id=ONUT.Atrc8zvAwiIrtr2ezW7inA&pid=News&w=512",
+  "https://woman.tvbs.com.tw/fashion/68177": "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp",
   "https://www.anewsa.com/detail.php?number=3213263": "https://www.anewsa.com/news_images/2026/10/22/mark/20261022200800.jpg",
   "https://www.asiae.co.kr/article/2026102914192350651": "https://cphoto.asiae.co.kr/listimglink/1/2026082716365095566_1787816210.jpg",
   "https://www.bleachernation.com/picks/2026/10/31/fernandez-vs-shnaider-prediction-at-the-toray-pan-pacific-open-tennis-saturday-october-31/": "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300",
@@ -1697,21 +1697,6 @@
   },
   {
    "batch": 7,
-   "because": "滑雪",
-   "date": "2026-11-01",
-   "hits": [],
-   "image": "https://img.topics.smt.news.goo.ne.jp/picture/tvasahinews/m_tvasahinews-000544430.jpg",
-   "kind": "board",
-   "score": 4,
-   "source": "ｄメニューニュース",
-   "taste": [],
-   "title": "スノーシーズン到来 軽井沢のスキー場で初滑り 雨少なく人工雪が順調",
-   "url": "https://topics.smt.docomo.ne.jp/amp/article/tvasahinews/business/tvasahinews-000544430",
-   "words": [],
-   "work": "滑雪"
-  },
-  {
-   "batch": 7,
    "because": "日本顶级网球赛事",
    "date": "2026-10-31",
    "hits": [],
@@ -1737,6 +1722,21 @@
    "taste": [],
    "title": "「The Sumo Show HIRAKUZA in HAKUBA」將於2027 年 1 月 16 日至22 日在白馬舉行，門票將於11 月 2 日開售",
    "url": "https://www.haveagood-holiday.com/zh-TW/articles/sumo-show-hirakuza-hakuba-2027-17724",
+   "words": [],
+   "work": "滑雪"
+  },
+  {
+   "batch": 7,
+   "because": "滑雪",
+   "date": "2026-10-29",
+   "hits": [],
+   "image": "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp",
+   "kind": "board",
+   "score": 4,
+   "source": "女人我最大",
+   "taste": [],
+   "title": "始祖鳥新品「神級外套」時隔25年回歸！斜拉鍊防風降摩擦、雪靴「一鞋兩穿」成話題焦點",
+   "url": "https://woman.tvbs.com.tw/fashion/68177",
    "words": [],
    "work": "滑雪"
   },
@@ -2133,15 +2133,15 @@
    8
   ],
   [
+   "三星 Galaxy",
+   7
+  ],
+  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
-   7
-  ],
-  [
-   "三星 Galaxy",
    7
   ],
   [

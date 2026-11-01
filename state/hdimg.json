@@ -2066,8 +2066,15 @@
  "https://img.topics.smt.news.goo.ne.jp/picture/tvasahinews/m_tvasahinews-000544430.jpg": {
   "w": 640,
   "h": 360,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.482,
+  "local": "pics/838a7585dc44a234.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "https://img.toy-people.com/member/179319829696_1200.jpg": {
   "w": 668,
@@ -3812,6 +3819,12 @@
   "target": 720,
   "v": 3
  },
+ "https://staticg.sportskeeda.com/editor/2026/10/f97dc-17934430484356-1920.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://statics-prod.mirrordaily.news/images/f211b6c1-51ee-48b0-8c00-36437b0529f0.webp": {
   "w": 1600,
   "h": 1069,
@@ -4005,6 +4018,12 @@
   "target": 720,
   "v": 3
  },
+ "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -4077,6 +4096,12 @@
    852
   ],
   "why": "看不清"
+ },
+ "https://www.atpress.ne.jp/attachments/xdQ17YR5DjrI8TfBymJd.jpg": {
+  "w": 4590,
+  "h": 3060,
+  "target": 720,
+  "v": 3
  },
  "https://www.billboard-japan.com/common/sys/img/news/00000166/166889/image.jpg": {
   "w": 999,
