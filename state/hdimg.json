@@ -598,6 +598,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.gamemeca.com/data_center/346/073/20261030120706.webp": {
+  "w": 1200,
+  "h": 673,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/gmdata/0001/782/498/gm977274_thumb___30.webp": {
   "w": 1200,
   "h": 670,
@@ -1380,6 +1386,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.377
+ },
+ "https://image.news.livedoor.com/newsimage/stf/4/a/4a2f3_1729_761f0180_688787ab.jpg": {
+  "w": 650,
+  "h": 434,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.475,
+  "local": "pics/e98cd9e161267ff8.webp",
+  "out": [
+   1280,
+   855
+  ],
+  "why": "看不清"
  },
  "https://image.news.livedoor.com/newsimage/stf/4/e/4e81b_1845_d512e374_4cea4b62.jpg": {
   "w": 1200,
@@ -2311,6 +2330,19 @@
   "h": 859,
   "target": 720,
   "v": 3
+ },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/17/179220187710248295_664_2000.JPEG": {
+  "w": 600,
+  "h": 337,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.433,
+  "local": "pics/ac34360f0384746b.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
   "w": 664,
@@ -3493,6 +3525,12 @@
  "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png": {
   "w": 1434,
   "h": 948,
+  "target": 1280,
+  "v": 3
+ },
+ "https://scontent-ord5-2.xx.fbcdn.net/v/t39.99422-6/876484255_1157327520291324_5431409659308718322_n.png?stp=dst-jpg_tt6&cstp=mx966x544&ctp=s966x544&_nc_cat=107&ccb=1-7&_nc_sid=cae128&_nc_ohc=EENmlNSPC7kQ7kNvwGeBGdF&_nc_oc=AdpduWggoDoHM7uge8SrTz4ikJwcIGxdc-DSaELnpFqLbA_qFQcTeW4hzU-Onr_Y1uw&_nc_zt=14&_nc_ht=scontent-ord5-2.xx&_nc_gid=wuclD_ELfu_Bx0h_Tc_RFQ&_nc_ss=7b20f&oh=00_AQTnGrLFnqClMDWUswsxjdPrfA2ds4IPaWVYNLB4PigYHQ&oe=6AED61C8": {
+  "w": 966,
+  "h": 544,
   "target": 1280,
   "v": 3
  },

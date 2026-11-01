@@ -1,14 +1,14 @@
 {
- "admin": "23c8d9bc5d4f",
- "admin-ai": "27411ed6752a",
+ "admin": "16ebc3098236",
+ "admin-ai": "3c1243b9a114",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "48a2e4fa"
+   "d5ee3810"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "4f33057c"
+   "8be57602"
   ]
  },
  "admin-boards": "084012b5e12a",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "4c9bea75be72",
+ "admin-emblem": "e8428efe6146",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3527a889"
+   "ff7df60f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "a1d4e66cf1bf",
  "admin-members_marks": {},
- "admin-now": "3d9d9596070f",
+ "admin-now": "77133464da87",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8bd458ec"
+   "310ce61a"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "41280560"
+   "3db3b18a"
   ]
  },
- "admin-system": "43b8d2eebe9a",
+ "admin-system": "8f5e45d735c1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3ad84207"
+   "cd22bf4e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "49a62337"
+   "315611ce"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "754454a5"
   ]
  },
- "index": "d7cab8f3513c",
+ "index": "fb72d1b4d5c9",
  "index_marks": {
   "front": [
    "トップ",
-   "309fd1b2"
+   "36de993b"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "7a6e0843"
+   "80aeaee7"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "8f99e74c"
+   "8a94b78f"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -133,11 +133,11 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "bbbcc174"
+   "a05e6291"
   ],
   "w-6676e624": [
    "三星手机",
-   "843ccd7b"
+   "5a79e74c"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,15 +145,15 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "a5bdfe15"
+   "0f723ef4"
   ],
   "w-9cb26dba": [
    "FROM",
-   "4181cd77"
+   "8af9f24a"
   ],
   "w-b867582f": [
    "あつ森",
-   "833434e6"
+   "9969bfbd"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "21f86a97"
+   "e3a46f29"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "540a964f"
+   "08eae6d3"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "cab11a91"
+   "deae56d4"
   ],
   "w-f303ad09": [
    "绝区零",
    "1f366455"
   ]
  },
- "updated": "11.02 04:28",
- "wishlist": "70fdc32ec062"
+ "updated": "11.02 04:40",
+ "wishlist": "6af1ad052ad7"
 }

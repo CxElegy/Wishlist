@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "0489d8bc0353",
+ "edit_sig": "7b99b80fce82",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
@@ -189,17 +189,19 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "Facebook",
-     "title": "With the clock counting down to 'Harry Potter's Christmas debut, Paapa Essiedu is addressing the ongoing controversy around the show. Read more below.",
-     "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQSkRFbU92d3JxVmhRX2ZQV3YxbW10azgxRWd0WklvV2QxTWM2eW1FVzhoYm1hMzYtb1haRGYxQ2lUN3FrU0ZnQmRsM2VZZVFOQUpvRTc4MlkwMVNCYlZSeENTRTAzQ0ZKaGVEN2NrcEJMYUFPdUdpY1VuZVU5cHozSEhLRDJJeUJieDdUQWFQZkMwd2hXVWl0YnBXSUhjQTlFSmRtV1FyWlN5SU83c3ViVzRCLUJXSTZoVUh2NEt3SnRoNF9ybEs5YjNWSXowRFAyNUpRSg?oc=5"
+     "headline": "With the clock counting down to 'Harry Potter's Christmas debut, Paapa Essiedu is addressing the ongoing controversy around the show.",
+     "highlight": "Christmas debut",
+     "image": "https://scontent-ord5-2.xx.fbcdn.net/v/t39.99422-6/876484255_1157327520291324_5431409659308718322_n.png?stp=dst-jpg_tt6&cstp=mx966x544&ctp=s966x544&_nc_cat=107&ccb=1-7&_nc_sid=cae128&_nc_ohc=EENmlNSPC7kQ7kNvwGeBGdF&_nc_oc=AdpduWggoDoHM7uge8SrTz4ikJwcIGxdc-DSaELnpFqLbA_qFQcTeW4hzU-Onr_Y1uw&_nc_zt=14&_nc_ht=scontent-ord5-2.xx&_nc_gid=wuclD_ELfu_Bx0h_Tc_RFQ&_nc_ss=7b20f&oh=00_AQTnGrLFnqClMDWUswsxjdPrfA2ds4IPaWVYNLB4PigYHQ&oe=6AED61C8",
+     "image_via": "og:image",
+     "url": "https://www.facebook.com/deadline/posts/with-the-clock-counting-down-to-harry-potters-christmas-debut-paapa-essiedu-is-a/1478285297505139/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -245,17 +247,23 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "中目黒のスタバ ロースタリー 東京が、ホリデーシーズン向けグッズを発売する。11月2日から、パールストラップ付きボトルやブーツ型マグなどが店頭に並ぶ。",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "ライブドアニュース",
-     "title": "【明日発売】中目黒・スタバ「ロースタリー 東京」にホリデーグッズ登場！ パールストラップ付きボトルなど展開",
-     "url": "https://news.livedoor.com/article/detail/32707473/"
+     "event": {
+      "date": "2026-11-02",
+      "label": "発売日"
+     },
+     "headline": "【明日発売】中目黒・スタバ「ロースタリー 東京」にホリデーグッズ登場！ パールストラップ付きボトルなど展開",
+     "highlight": "明日発売",
+     "image": "https://image.news.livedoor.com/newsimage/stf/4/a/4a2f3_1729_761f0180_688787ab.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.livedoor.com/article/detail/32707473/",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
@@ -320,17 +328,19 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "搜狐网",
-     "title": "三星Galaxy S27 Ultra散热问题未解决 Exynos 2700或重新回归",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9saktnakdnVGRlbWI1S2NmaC1qR1JTVmRWVHV4TzRRc3R4cXpvTVVOOVlaWEVwRVdEU2xZRjBjTk5ud2kxaEtBTTROUDBiZDMzVXNv?oc=5"
+     "headline": "三星Galaxy S27 Ultra散热问题未解决 Exynos 2700或重新回归",
+     "highlight": "Exynos 2700",
+     "image": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/17/179220187710248295_664_2000.JPEG",
+     "image_via": "正文图（2 枚から）",
+     "url": "https://timeline.sohu.com/news/xgOfd6UTI5",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",
@@ -435,17 +445,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Animal Crossing distributes Zelda designs for the 40th anniversary.",
      "date": "2026-10-30",
-     "n": 1,
-     "source": "GameMeca",
-     "title": "Animal Crossing: New Horizons begins distribution of The Legend of Zelda My Designs",
-     "url": "https://www.gamemeca.com/en/view.php?gid=1782683"
+     "headline": "Animal Crossing: New Horizons begins distribution of The Legend of Zelda My Designs",
+     "highlight": "Zelda My Designs",
+     "image": "https://cdn.gamemeca.com/data_center/346/073/20261030120706.webp",
+     "image_via": "AI 挑选",
+     "url": "https://www.gamemeca.com/en/view.php?gid=1782683",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",

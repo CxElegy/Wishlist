@@ -57,7 +57,11 @@
   "周杰伦": 3,
   "ILLIT": 1,
   "MMORPG 新作": 1,
-  "dota2": 1
+  "dota2": 1,
+  "あつ森": 1,
+  "三星手机": 1,
+  "哈利波特剧集": 1,
+  "星巴克马克杯": 1
  },
  "Vaundy": [
   {
@@ -255,6 +259,56 @@
     1
    ],
    "image": "https://cms-cdn-rg-prod-bemymedia-com.s3.us-east-2.amazonaws.com/article_cover_pari_universe_2026_11_01_a45145eb22.jpg"
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "Animal Crossing: New Horizons begins distribution of The Legend of Zelda My Designs",
+   "highlight": "Zelda My Designs",
+   "blurb": "Animal Crossing distributes Zelda designs for the 40th anniversary.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://cdn.gamemeca.com/data_center/346/073/20261030120706.webp"
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "三星Galaxy S27 Ultra散热问题未解决 Exynos 2700或重新回归",
+   "highlight": "Exynos 2700",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "With the clock counting down to 'Harry Potter's Christmas debut, Paapa Essiedu is addressing the ongoing controversy around the show.",
+   "highlight": "Christmas debut",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "【明日発売】中目黒・スタバ「ロースタリー 東京」にホリデーグッズ登場！ パールストラップ付きボトルなど展開",
+   "highlight": "明日発売",
+   "blurb": "中目黒のスタバ ロースタリー 東京が、ホリデーシーズン向けグッズを発売する。11月2日から、パールストラップ付きボトルやブーツ型マグなどが店頭に並ぶ。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-11-02",
+    "label": "発売日"
+   },
+   "image": "https://image.news.livedoor.com/newsimage/stf/4/a/4a2f3_1729_761f0180_688787ab.jpg"
   }
  ]
 }
