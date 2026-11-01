@@ -116,9 +116,10 @@ button{font-family:inherit}
 .nx>i{grid-column:1/-1;font:700 11px var(--font-mono);letter-spacing:.12em;font-style:normal;opacity:.7}
 /* 小さいカード・気になるかも（F-16 続き）：縦長・正方形の写真は枠を写真の幅に絞り（.sb）、空いた横に見出しなど字の列を置く。幅・高さは FIT_JS が決める */
 .sb>.pic{aspect-ratio:auto;justify-self:start;align-self:start}
-.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-content:start}
+.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:0;align-content:start}  /* 写真の枠は 9 行にまたがり、字の入らない行にも行の隙間（8px）が 7 つ付いて、カードが字より 73〜86px 高くなっていた（2026-11-02）：隙間は字の部品の下の余白で付ける */
 .card.sb:not(.mini)>.pic,.wc.sb>.pic{grid-column:1;grid-row:1/span 9}
 .card.sb:not(.mini)>*:not(.pic):not(.lk),.wc.sb>*:not(.pic):not(.lk):not(.tg){grid-column:2}
+.card.sb:not(.mini)>*:not(.pic):not(.lk):not(:last-child),.wc.sb>*:not(.pic):not(.lk):not(.tg):not(:last-child){margin-bottom:8px}
 .card.mini.sb{grid-template-columns:auto minmax(0,1fr)}
 .tape.sb{grid-template-columns:6px auto minmax(0,1fr)}.tape.sb>.pic{grid-column:2;grid-row:1/3;margin-bottom:6px}.tape.sb>.lbl{grid-column:3;grid-row:1/3}
 .pk.sb>a{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:start}
@@ -3363,8 +3364,8 @@ FIT_JS = """
   let mt; const mro = window.ResizeObserver && new ResizeObserver(() => { clearTimeout(mt); mt = setTimeout(mason, 60); });
   const mason = () => {
     document.querySelectorAll('section.sec .grid').forEach(g => {
-      if (!g.offsetParent) return;
-      const old = !!g.closest('.older');   // 過去のニュース：c3 の記事が全部同じ積み方（閉じていると高さ 0 なので、開いたとき〔toggle〕に積む）
+      const old = !!g.closest('.older');
+      if (!g.offsetParent || (old && !g.closest('details').open)) return;   // 閉じた「もっと見る」は包まない（包むと隠れた写真の測りが 0 のまま、点検の写真の余白に数えられた）。開いたとき toggle で積む   // 過去のニュース：c3 の記事が全部同じ積み方（閉じていると高さ 0 なので、開いたとき〔toggle〕に積む）
       let m = g.querySelector(':scope > .mas');
       if (!m && old) {
         const ks = [...g.children].filter(k => k.matches('article.card'));
