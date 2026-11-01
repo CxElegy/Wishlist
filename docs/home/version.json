@@ -1,14 +1,14 @@
 {
- "admin": "53562c557882",
- "admin-ai": "2c6759d112fa",
+ "admin": "44c53ec24d80",
+ "admin-ai": "060d62b8fb01",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ee72f7bb"
+   "29469236"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "1466f359"
+   "bd779308"
   ]
  },
  "admin-boards": "232c8d2edd75",
@@ -22,11 +22,11 @@
    "d0c0ea84"
   ]
  },
- "admin-emblem": "dbd263e6a29d",
+ "admin-emblem": "88f7abe32561",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "bf35c20c"
+   "00c7f105"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d546cadbddf3",
  "admin-members_marks": {},
- "admin-now": "42e0ebb2f3e0",
+ "admin-now": "fa5aca895117",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f5ab7a08"
+   "2f2fbd60"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "0599a233"
+   "1ed94e5e"
   ]
  },
- "admin-system": "1a6c82f199a4",
+ "admin-system": "921d141b77e6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "95524ca7"
+   "2a333f9d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ec685973"
+   "98c23ce8"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "15476741"
   ]
  },
- "index": "1490403e9d38",
+ "index": "da2e897ce383",
  "index_marks": {
   "front": [
    "トップ",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "a2d3c1e1"
+   "094e2ef5"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "b0fbdb5b"
+   "07d1861e"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -196,6 +196,6 @@
    "af2b18a6"
   ]
  },
- "updated": "11.01 20:49",
+ "updated": "11.01 21:29",
  "wishlist": "db8008f5b2be"
 }
