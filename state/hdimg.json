@@ -855,6 +855,19 @@
   "target": 720,
   "v": 3
  },
+ "https://d.ibtimes.co.uk/en/full/1817694/gta-6.png?w=736&f=50aadc0d8c247bb5fb98a13a7e098e74": {
+  "w": 736,
+  "h": 490,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.473,
+  "local": "pics/4b8d8460d82f4b1e.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
+ },
  "https://d10tw3woq6mt3i.cloudfront.net/wp-content/uploads/2026/10/kyd_2095579_698526-08.jpg": {
   "w": 1200,
   "h": 800,
@@ -1763,6 +1776,12 @@
   "w": 1456,
   "h": 819,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwwQn.img": {
+  "w": 780,
+  "h": 438,
+  "target": 720,
   "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img": {
@@ -3618,6 +3637,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/10/gta-6-dog-poop-gameplay.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/10/samsung-galaxy-z-fold744-1.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3984,12 +4009,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.AM4RIKeZ5vCdGGwTqPOUgg&pid=News&w=780": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
   "h": 590,
@@ -4002,6 +4021,12 @@
    1079
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.BeTNXc2enqmqjkeMNmLA0g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200": {
   "w": 700,
@@ -4270,6 +4295,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.hoCWrR0b03Tw66q5NIPW7g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200": {
   "w": 700,
@@ -4608,6 +4639,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.hotnewhiphop.com/imgprst/2292x1200-fit-81-auto/2026/11/2024-03-03T221019Z_926622727_MT1USATODAY22685665_RTRMADP_3_NCAA-WOMENS-BASKETBALL-OHIO-ST-AT-IOWA-scaled.jpg": {
+  "w": 2292,
+  "h": 1200,
+  "target": 720,
+  "v": 3
+ },
  "https://www.inside-games.jp/imgs/ogp_f/1799460.jpg": {
   "w": 600,
   "h": 370,
@@ -4794,6 +4831,12 @@
  "https://www.techjuice.pk/wp-content/uploads/2026/10/samsungs-new-exynos-modem-could-improve-battery-life-in-galaxy-s27-techjuice-259011.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.teepr.com/wp-content/uploads/2026/11/1952868-photo1.jpg": {
+  "w": 1200,
+  "h": 628,
   "target": 720,
   "v": 3
  },
