@@ -249,10 +249,11 @@ button{font-family:inherit}
 .mgrid .wc:nth-child(4){--r:.5deg}.mgrid .wc:nth-child(5){--r:-1.2deg}.mgrid .wc:nth-child(6){--r:.9deg}
 .mgrid .wc:nth-child(7){--r:-.4deg}.mgrid .wc:nth-child(8){--r:1deg}.mgrid .wc:nth-child(9){--r:-.7deg}
 .fside .agenda{transform:rotate(.7deg)}.fside .swish{transform:rotate(-.9deg)}
-.wc.lead{grid-column:span 2;grid-row:span 2}
+.wc.lead{grid-column:span 2}.wc.lead.tall{grid-column:auto}  /* 高さは中身で決まる（行は WALL_JS が 1px 単位で置く）。縦長の写真の大きい 1 枚は 2 列に広げず写真の形の 1 列（.tall）*/
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
-.wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
-.wc.lead .pic{flex:1;aspect-ratio:auto;min-height:200px}  /* 大きい一枚は横の 2 枚と同じ高さ：写真は端を少し切って埋める */
+.wall{align-items:stretch}  /* JS なしの形：同じ段は同じ高さ。JS があれば中身の高さで詰めて並べる（2026-11-01 L1・L2：升目で背をそろえて下を空けない） */
+.wc.lead .pic{aspect-ratio:16/10}
+.wc:not(.sb) .pic{flex:1 0 auto}  /* 列の底をそろえるとき余りは写真の枠が受ける */
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
 .wc.nophoto{justify-content:flex-start;padding:16px 12px 12px;border-left:5px solid var(--sc)}.wc.nophoto b{-webkit-line-clamp:6;min-height:0}.wc.lead.nophoto b{font-size:24px;-webkit-line-clamp:7}  /* 写真が開けないトップのカード（SWAP_JS）：字だけの形 */
 .wc .tg{position:absolute;left:-8px;top:-13px;z-index:2;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの上の縁に（写真に重ねない） */
@@ -3266,13 +3267,19 @@ FIT_JS = """
   // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.6 倍まで）
   const unnarrow = (c, p) => {
     const nx = c.querySelector(':scope > .nx, :scope > .txt > .nx'); if (nx) nx.remove();
-    c.classList.remove('nw'); p.style.width = p.style.height = p.style.aspectRatio = '';
+    c.classList.remove('nw', 'tall'); p.style.width = p.style.height = p.style.aspectRatio = '';
   };
   const narrow = (img, p, nat, r) => {
     const c = p.closest('article.hero, article.lead, article.wide');
     if (!c) return;
     if (p.classList.contains('fill') || r > 1) return;
     if (innerWidth <= 760) { p.style.aspectRatio = 'auto'; p.style.height = Math.min(p.clientWidth / nat, p.clientWidth * 1.6) + 'px'; return; }
+    // 壁の大きい 1 枚（.wc.lead）：写真の形で枠を決める（L1）。縦長（0.9 未満）は 2 列に広げず 1 列の縦長カード、正方形に近い写真は 2 列のまま正方形まで。次の記事は足さない（壁の中の別の版面の記事は「同じ版面」ではない）
+    if (c.classList.contains('wc')) {
+      c.classList.toggle('tall', nat < 0.9);
+      p.style.aspectRatio = Math.max(nat < 0.9 ? Math.max(nat, 0.6) : Math.max(nat, 1), 0.1).toFixed(3); p.style.height = '';
+      p.classList.toggle('fill', nat >= 0.6); return;
+    }
     const sz = h => { p.style.height = h + 'px'; p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
     sz(p.clientHeight);
     c.classList.add('nw');
@@ -3312,49 +3319,77 @@ FIT_JS = """
   document.addEventListener('load', e => { const i = e.target; if (i.tagName === 'IMG' && i.matches('.pic img:not(.bg):not(.ico)')) fit(i); }, true);
   let t;
   addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit); wall(); }, 200); });
-  // 写真の壁を右の列とそろえる：右の列の高さに収まる段数だけカードを出し、残りの数十 px は各段の写真枠に等分して足す（空白を作らない）
+  // 写真の壁（2026-11-01 並べ方の考え L1・L2）：カードの高さは中身で決まる。決まった升目に入れて背をそろえ、下を空けない。
+  // 1px の行に 1 枚ずつ置き（上から一番低い列へ・大きい 1 枚は隣り合う 2 列の低いほうへ）、右の列の高さに合う枚数を選ぶ。
+  // 列ごとの底の差は、その列のカードの写真枠に等分して足す（足す量が少ない枚数を選ぶ）。右の列は壁の高さまで欲しい物・予定の行を出す
   const wall = () => {
     const w = document.querySelector('.mgrid > .wall'), side = document.querySelector('.mgrid > .fside');
     if (!w) return;
-    const cards = [...w.querySelectorAll(':scope > .wc')];
-    cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p && !c.classList.contains('sb')) p.style.height = ''; });
+    const GAP = 18, cards = [...w.querySelectorAll(':scope > .wc')];
+    cards.forEach(c => { c.hidden = false; c.style.gridColumn = c.style.gridRow = c.style.minHeight = '';
+      const p = c.querySelector('.pic'); if (p && p.dataset.add) { p.style.height = p.dataset.add === '-' ? '' : p.dataset.add; delete p.dataset.add; } });   // 足す前の高さに戻す（.sb の写真枠は fit が決めた高さを持つ）
+    w.style.gridAutoRows = w.style.rowGap = w.style.alignItems = '';
     if (side) side.style.minHeight = '';
     if (innerWidth <= 760) return;
-    // 2 列しか入らない幅（右の列が下に回る）では大きい 1 枚＋4 枚まで
-    if (getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) { cards.forEach((c, i) => { c.hidden = i >= 5; }); return; }
-    // 「ほかの注目ニュース」全体（見出し・棚の帯まで）を 1 画面に収める：画面の高さから見出しと棚の帯の分を引いたのが壁と右の列の上限
     const hh = sel => document.querySelector(sel)?.getBoundingClientRect().height || 0;
     const target = Math.max(520, innerHeight - (hh('.spot > .sh') || 56) - (hh('.spot > .shelfbox > summary') || 44) - 22 * 2 - 24);
+    const cols = getComputedStyle(w).gridTemplateColumns.split(' ').length;
+    const beside = side && side.offsetLeft > w.offsetLeft + w.offsetWidth / 2;   // 右の列が壁の横にある（2 列しか入らない幅では下に回る）
+    let ag = [], wi = [], order = [];
     if (side) {
       // 入りきらないときは欲しい物（3 件目以降）→ 予定（4 件目以降）→ 欲しい物（2 件目）→ 予定（2・3 件目）の順に下から隠す
-      const rows = sel => [...side.querySelectorAll(sel)];
-      const ag = rows('.agenda li'), wi = rows('.swish li');
-      const order = [...wi.slice(2).reverse(), ...ag.slice(3).reverse(), ...wi.slice(1, 2), ...ag.slice(1, 3).reverse()];
+      ag = [...side.querySelectorAll('.agenda li')]; wi = [...side.querySelectorAll('.swish li')];
+      order = [...wi.slice(2).reverse(), ...ag.slice(3).reverse(), ...wi.slice(1, 2), ...ag.slice(1, 3).reverse()];
       [...ag, ...wi].forEach(l => l.hidden = false);
-      for (const l of order) { if (side.getBoundingClientRect().height <= target) break; l.hidden = true; }
+      if (beside) for (const l of order) { if (side.getBoundingClientRect().height <= target) break; l.hidden = true; }
     }
-    // 大きい 1 枚（2 列 × 2 段）＋横の (列数 − 2) × 2 枚で 2 段、そのあと列数ずつ 1 段
-    const cols = getComputedStyle(w).gridTemplateColumns.split(' ').length;
-    const upto = r => 1 + (cols - 2) * 2 + (r - 2) * cols;
-    let rows = 2;
-    const show = r => cards.forEach((c, i) => { c.hidden = i >= upto(r); });
-    show(rows);
-    while (upto(rows + 1) <= cards.length) {
-      show(rows + 1);
-      if (w.getBoundingClientRect().height > target) { show(rows); break; }
-      rows++;
+    const S = beside ? side.getBoundingClientRect().height : target;
+    // 自然な高さ（中身だけ）を測る。.tall の大きい 1 枚は 1 列、そうでない大きい 1 枚は 2 列
+    w.style.alignItems = 'start';
+    const H = cards.map(c => c.offsetHeight), span = cards.map(c => (c.classList.contains('lead') && !c.classList.contains('tall') && cols >= 2) ? 2 : 1);
+    const bot = Array(cols).fill(0), col = Array(cols).fill(0).map(() => []), put = [];
+    let best = null;
+    cards.forEach((c, i) => {
+      let j = 0, y = Infinity;
+      for (let a = 0; a + span[i] <= cols; a++) { const v = Math.max(...bot.slice(a, a + span[i])); if (v < y) { y = v; j = a; } }
+      for (let a = j; a < j + span[i]; a++) { bot[a] = y + H[i] + GAP; col[a].push(i); }
+      put.push({j, y});
+      const n = i + 1, W = Math.max(...bot) - GAP;
+      if (n < Math.min(3, cards.length)) return;
+      // 足す量（その列の写真枠に対する割合の最大）と、右の列との高さの差
+      let rel = 0;
+      for (let a = 0; a < cols; a++) { const d = W - (bot[a] - GAP), pics = col[a].filter(k => span[k] === 1 || !cards[k].classList.contains('lead')).reduce((s, k) => s + (cards[k].querySelector('.pic')?.offsetHeight || 80), 0);
+        if (d > 0) rel = Math.max(rel, d / Math.max(1, pics)); }
+      const cost = rel + Math.abs(W - S) / S;
+      if (!best || cost < best.cost - 1e-6) best = {n, cost, W, bot: bot.slice(), pos: put.slice(), col: col.map(c => c.slice())};
+    });
+    if (!best) return;
+    // 置く：選んだ枚数だけ出し、列ごとの底の差をその列の（大きい 1 枚でない）カードの写真枠に等分して足す
+    cards.forEach((c, i) => { c.hidden = i >= best.n; });
+    const ext = Array(cards.length).fill(0);
+    for (let a = 0; a < cols; a++) {
+      const d = best.W - (best.bot[a] - GAP), ks = best.col[a].filter(k => !(span[k] === 2));
+      if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], d / ks.length); });
     }
-    // 左の壁と右の列の上端・下端をそろえる：高いほうに合わせ、壁は各段の写真枠に等分して足し、右の列は最後の箱が伸びる
-    const H = Math.max(w.getBoundingClientRect().height, side ? side.getBoundingClientRect().height : 0);
-    if (side) side.style.minHeight = H + 'px';
-    const gap = H - w.getBoundingClientRect().height;
-    if (gap > 0) {
-      const add = gap / rows;
-      cards.filter(c => !c.hidden && !c.classList.contains('lead')).forEach(c => {
-        const p = c.querySelector('.pic'); if (p) p.style.height = (p.getBoundingClientRect().height + add) + 'px';
-      });
+    // 2 列にまたがる大きい 1 枚の下で、2 つの列が別々に伸びると上の位置がずれるので、列ごとに下から積み直す
+    const y0 = Array(cols).fill(0), place = [];
+    for (let i = 0; i < best.n; i++) {
+      const j = best.pos[i].j, k = span[i], y = Math.max(...y0.slice(j, j + k)), h = Math.round(H[i] + ext[i]);
+      place.push([i, j, k, y, h]); for (let a = j; a < j + k; a++) y0[a] = y + h + GAP;
+    }
+    w.style.gridAutoRows = '1px'; w.style.rowGap = '0';
+    place.forEach(([i, j, k, y, h]) => { const c = cards[i]; c.style.gridColumn = (j + 1) + ' / span ' + k; c.style.gridRow = (y + 1) + ' / span ' + (h + GAP);
+      if (ext[i] > 0.5) { c.style.minHeight = h + 'px'; const p = c.querySelector('.pic'); if (p && c.classList.contains('sb')) { p.dataset.add = p.style.height || '-'; p.style.height = Math.round(p.offsetHeight + ext[i]) + 'px'; } } });
+    // 右の列：壁の高さまで、隠した欲しい物・予定の行を戻す（戻して壁を超えたらまた隠す）。余りは最後の箱が受ける
+    const Wf = Math.max(...y0) - GAP;
+    if (side && beside) {
+      for (const l of order.slice().reverse()) { if (!l.hidden) continue; l.hidden = false; if (side.getBoundingClientRect().height > Wf) l.hidden = true; }
+      side.style.minHeight = Wf + 'px';
     }
   };
+  // 写真・字体が届いて高さが変わったら詰め直す（1 フレームにまとめる）。足した分で自分の大きさが変わっても、同じ結果になるので繰り返さない
+  let wq = 0; const wallSoon = () => { if (!wq) wq = requestAnimationFrame(() => { wq = 0; wall(); }); };
+  if (window.ResizeObserver) { const ro = new ResizeObserver(wallSoon); document.querySelectorAll('.mgrid > .wall > .wc').forEach(c => ro.observe(c)); }
   wall();
   if (document.fonts) document.fonts.ready.then(wall);
   addEventListener('load', wall);

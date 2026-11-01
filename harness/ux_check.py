@@ -122,6 +122,26 @@ def measured_bad(m, lo=MEASURED_MIN):
     """候補のうち測れた割合が lo 未満の種類（loose / pkcut / pkv）を ✗ の文にして返す。候補 0 は問題なし。"""
     return [f"{k} を測れなかった：{n - got} / {n} 件（読み込み切れ・非表示のまま）" for k, (n, got) in m.items() if n and got < n * lo]
 
+# 2026-11-01 並べ方の考え L1・L2（DESIGN_PRINCIPLES G）：カードの空白の割合。決まった升目で背をそろえると、中身の少ないカードの下が空く（ほかの注目ニュースで
+# ハリー・ポッターの大きいカードの下が約 350px 空いた）。①壁（.wall）の列ごとに、一番低い列の底からの差が小さいか（空き面積 / 壁の面積）
+# ②カードの枠の中で、中身の一番下から枠の下までの空き（枠の高さの 30% 超かつ 70px 超）のカードの数。わざと空ける休みは 1 画面に 1 か所までなので、
+# ②は 1 版面あたり 2 枚まで許す（外れ値）。1400・390 とも数える（390 は 1 列なので①は 0）
+HOLE_JS = """()=>{const out={wall:0,wallArea:0,wallPct:0,cards:0,wc:0,n:0,eg:[]};
+const vis=e=>e.offsetParent&&e.getClientRects().length&&(!e.checkVisibility||e.checkVisibility({contentVisibilityAuto:true,visibilityProperty:true}));   // 閉じた「もっと見る」（content-visibility で隠れる）は数えない
+document.querySelectorAll('.wall').forEach(w=>{const cs=[...w.querySelectorAll(':scope>.wc')].filter(vis);if(cs.length<2)return;
+ const wr=w.getBoundingClientRect(),lefts=[...new Set(cs.map(c=>Math.round(c.offsetLeft/20)))];
+ if(lefts.length<2)return;
+ const W=Math.max(...cs.map(c=>c.offsetTop+c.offsetHeight));let hole=0;
+ lefts.forEach(l=>{const m=cs.filter(c=>Math.round(c.offsetLeft/20)===l||(c.offsetWidth>1.6*cs[cs.length-1].offsetWidth&&c.offsetLeft<l*20+10&&c.offsetLeft+c.offsetWidth>l*20+10));
+  const b=Math.max(...m.map(c=>c.offsetTop+c.offsetHeight));hole+=(W-b)*(wr.width/lefts.length)});
+ out.wall+=hole;out.wallArea+=W*wr.width});
+out.wallPct=out.wallArea?Math.round(100*out.wall/out.wallArea):0;
+document.querySelectorAll('section.sec article.card,.wc').forEach(c=>{if(!vis(c)||c.classList.contains('mini'))return;out.n++;
+ const r=c.getBoundingClientRect();let b=0;[...c.children].forEach(k=>{const s=getComputedStyle(k);if(s.position==='absolute'||!vis(k))return;b=Math.max(b,k.getBoundingClientRect().bottom)});
+ const pb=parseFloat(getComputedStyle(c).paddingBottom)||0,blank=r.bottom-pb-b;
+ if(blank>70&&blank>0.3*r.height){out.cards++;if(c.classList.contains('wc'))out.wc++;out.eg.length<3&&out.eg.push((c.dataset.k||c.className).slice(0,20)+' '+Math.round(blank)+'px')}});
+return out}"""
+
 
 # 2026-10-27：手元の回線（点検の箱のプロキシ）だけで開けない写真を ✗ に数えない。ブラウザで開けなかった写真を、
 # ブラウザと同じ頭で取り直して画像が返れば「サイトの欠陥ではない」（AOL・Yahoo の写真が guest・test-a の版面の頭で ✗ になった）
@@ -228,6 +248,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     gp = pg.evaluate(GAP_JS) if not page else {"n": 0, "bad": 0, "unread": 0, "eg": []}
     if not page:
         pg.evaluate(RESTORE_JS)
+    hole = pg.evaluate(HOLE_JS) if not page else {"wallPct": 0, "cards": 0, "wc": 0, "n": 0, "eg": []}
     near = [] if page else pg.evaluate(NEAR_JS)
     fails = pg.evaluate(FAILS_JS) if (st["nohead"] or st["heads"]) else []
     nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
@@ -289,6 +310,12 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"小さいカードの写真が細い（見える高さ 45% 未満）{st['pkv']} 枚")
     if gp["bad"]:   # 2026-10-31 F-16 続き：全部の画像の場所（大・小のカード・壁・テープ・気になるかも）で、写真が枠の幅の 25% 超を空けたまま（空いた横を情報に使っていない）。1400 / 390 とも数える。2026-11-01：全候補を読み込んでから（GAP_JS）
         bad.append(f"写真の余白（空いた横が情報なし）：{gp['bad']} / {gp['n']} 枚 " + "・".join(gp["eg"]))
+    if hole["wallPct"] > 8:   # 2026-11-01 L1・L2：壁の列の底がそろっていない（空き面積が壁の 8% 超）
+        bad.append(f"ほかの注目ニュースの壁の下が空いている（空き {hole['wallPct']}%）")
+    if hole["wc"]:   # 同じく：ほかの注目ニュースの壁のカードは中身で高さが決まる（1 枚でも枠の 30% 超・70px 超が空いたら ✗）
+        bad.append(f"壁のカードの下が空いている：{hole['wc']} 枚 " + "・".join(hole["eg"]))
+    if hole["cards"] - hole["wc"] > 2:   # 版面の中のカード：同じく空き（枠の 30% 超・70px 超）が 3 枚以上
+        bad.append(f"カードの下が空いている：{hole['cards']} / {hole['n']} 枚 " + "・".join(hole["eg"]))
     if gp["n"] and gp["unread"] > gp["n"] * 0.25:   # 読めない写真が多い（回線切れ）のに「余白 0」と言わない
         bad.append(f"写真の余白を測れなかった：{gp['unread']} / {gp['n']} 枚（読み込み切れ）")
     if st["blur"] or st["loose"]:   # 2026-10-31 F-16：ぼかしで余白を埋めない（img.bg 0）。大きいカードで写真が枠より細いのに枠を絞っていない（.nw なし）のも✗
