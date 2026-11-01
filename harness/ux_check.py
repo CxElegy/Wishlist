@@ -261,6 +261,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
+        wrongLink:[...document.querySelectorAll('.nx a[href]')].filter(a=>{if(!a.offsetParent)return false;const r=a.getBoundingClientRect();if(!r.width||r.bottom<0||r.top>innerHeight)return false;const e=document.elementFromPoint(r.left+r.width/2,Math.min(r.top+r.height/2,innerHeight-1));const l=e&&e.closest('a[href]');return !l||l.href!==a.href}).length,   /* 2026-11-01 L10：次のニュースの真ん中を押して開く網址が、その記事の網址と同じか（画面に入っている分） */
         sameStory:(c=>{document.querySelectorAll('a.lk[href],.nx a[href],.agenda li a[href],.pk a[href]').forEach(a=>{if((a.offsetParent||a.closest('details'))&&!a.closest('.nxd,.dupd'))c[a.href]=(c[a.href]||0)+1});return Object.values(c).filter(v=>v>1).length})({}),   /* ページ全体（ポスター・ほかの注目・予定・各版面・次のニュース。2026-11-01 L7） */
         dup:[...document.querySelectorAll('[id]')].map(x=>x.id).filter((v,i,a)=>a.indexOf(v)!==i).slice(0,3),
         blur:document.querySelectorAll('img.bg').length,
@@ -306,6 +307,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
             bad.append(f"素の箱 {st['boxes']} 個（本人の設定ページではない）")
         if WHO[who] and page == "settings.html" and not st["own"]:
             bad.append("本人の設定ページではない")
+        if st.get("wrongLink"):   # 2026-11-01 L10：押した所の記事へ行く
+            bad.append(f"次のニュースを押すと別の記事へ行く：{st['wrongLink']} 件")
         if st.get("sameStory"):   # 2026-11-01 L7：同じ記事は 1 ページ（版面）に 1 回だけ（次のニュースと元のカードの二重・本番で 33 本）
             bad.append(f"同じ記事がページに 2 回以上：{st['sameStory']} 本")
         if st["dup"]:   # 2026-10-27：素の箱を 2 回描いて id mine・wl-addn が重なった（同じ id の部品を数える）

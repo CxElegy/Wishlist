@@ -122,7 +122,7 @@ class VoteButtons(unittest.TestCase):
         out = render._tcard({"url": "https://ex.com/a", "headline": "标题", "date": "2026-10-13", "_issue": "2026-10-13"}, 4, 0, "2026-10-16", mini=True)
         self.assertTrue(out.startswith('<article class="card'))
         self.assertIn('<a class="lk" href="https://ex.com/a" target="_blank" rel="noopener" aria-label="标题"></a>', out)
-        self.assertIn(":is(.card,.top,.wc) :is(.vt,.vt *,.startgo){pointer-events:auto}", render.CSS)
+        self.assertIn(":is(.card,.top,.wc) :is(.vt,.vt *,.startgo,.nx a,.nx a *){pointer-events:auto}", render.CSS)
         # 押した瞬間に画面を変え、保存は裏で（失敗したら戻す）；大きな 👍 のアニメーション
         self.assertIn("paint(url); window.likeFx(btn, v, fxOf(btn), embOf(btn));", render.VOTE_JS)
         self.assertNotIn("%s", render.VOTE_JS)
