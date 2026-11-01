@@ -37,6 +37,19 @@ class Items(unittest.TestCase):
             self.assertIn(render.template_for(i) or "x", list(render.MOTIFS) + ["x"])
             self.assertNotEqual(render.template_for(i), "", i["name"])   # motif のない版面 0
 
+    def test_every_type_gets_a_motif(self):
+        # TYPE_OF_SEC の全 type（5種）で、motif なしの本人の版面にも主題が付く
+        fol = [{"pos": i, "section": s, "boards": {"name": "版面" + s, "config": {}}} for i, s in enumerate(user_pages.TYPE_OF_SEC)]
+        items = user_pages.user_items(user_pages.own_picks(fol, [{"name": "版面" + s, "sec": s} for s in user_pages.TYPE_OF_SEC]), [])
+        self.assertEqual({i["type"] for i in items}, set(user_pages.TYPE_OF_SEC.values()))
+        for i in items:
+            self.assertIn(render.template_for(i), render.MOTIFS, i["name"])
+
+    def test_ux_check_counts_plain_sections(self):
+        src = (ROOT / "harness" / "ux_check.py").read_text()
+        self.assertIn("plain:[...document.querySelectorAll('section.sec[data-k]:not(.wish)')]", src)
+        self.assertIn("主題（m- class）のない素の版面", src)
+
     def test_own_board_and_dupes(self):
         out = user_pages.user_items([{"name": "広島旅行", "sec": "出行"}, {"name": "広島 旅行", "sec": "出行"}, {"name": ""}], self.SHOP)
         self.assertEqual([i["name"] for i in out], ["広島旅行"])
