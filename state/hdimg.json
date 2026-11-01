@@ -5,6 +5,12 @@
   "target": 720,
   "v": 3
  },
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/GEsLtLbugltBetk.jpg": {
+  "w": 1080,
+  "h": 608,
+  "target": 720,
+  "v": 3
+ },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
@@ -127,6 +133,19 @@
   "local": "pics/89913e3d3e5f238a.webp",
   "out": [
    1024,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx2.sinaimg.cn/middle/90b10eb9ly1iilrcv25w7j214a1kvkjl.jpg": {
+  "w": 1450,
+  "h": 2047,
+  "target": 720,
+  "v": 3,
+  "local": "pics/22e4f1ec30e6a642.webp",
+  "out": [
+   907,
    1280
   ],
   "why": "防盗链",
@@ -1912,6 +1931,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/02/phpaaG8yo.jpg": {
+  "w": 800,
+  "h": 533,
+  "target": 720,
+  "v": 3
+ },
  "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg": {
   "w": 800,
   "h": 588,
@@ -2309,12 +2334,6 @@
  "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
-  "v": 3
- },
- "https://motoryokoblog.com/wp-content/uploads/2026/09/vaundy_8298_fv.png": {
-  "w": 1200,
-  "h": 628,
   "target": 720,
   "v": 3
  },
@@ -3034,6 +3053,19 @@
   "out": [
    1280,
    912
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-11803116-asahiand-000-1-view.jpg?exp=10800": {
+  "w": 640,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.616,
+  "local": "pics/3f97b53757033f57.webp",
+  "out": [
+   1280,
+   1280
   ],
   "why": "期限付きの網址"
  },
@@ -4073,12 +4105,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.-1guXKpbnvtpi-CrRUX12g&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.-VhpE4N1wgEtnT0i8NhqaA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4117,12 +4143,6 @@
    1079
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.BeTNXc2enqmqjkeMNmLA0g&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200": {
   "w": 700,
@@ -4214,19 +4234,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.MmCzzg57yAob47X3m5CTGQ&pid=News&w=640": {
-  "w": 640,
-  "h": 640,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.627,
-  "local": "pics/16f584edd578291b.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.N-f2Ky3IkMTQMcFoucfixQ&pid=News&w=640": {
   "w": 640,
   "h": 425,
@@ -4239,15 +4246,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
+ "https://www.bing.com/th?id=ONUT.QJsCxJg4g5Fe62mOD-ZJnA&pid=News&w=1200": {
   "w": 700,
-  "h": 467,
+  "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Tj8p-NB1h9oLCIVz3xJdmA&pid=News&w=656": {
-  "w": 534,
-  "h": 356,
+ "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
+  "w": 700,
+  "h": 467,
   "target": 720,
   "v": 3
  },
@@ -4651,12 +4658,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2021/12/11/Dexerto-Header.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-02"
- },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/07/ChainsawMan.jpg": {
   "w": 1600,
   "h": 900,
@@ -4819,6 +4820,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.laughingplace.com/uploads/media/2026/11/Avengers-Doomsday-El-Capitan-Theatre-Offers-Limited-Edition-%E2%80%9CAvengers-Doomsday%E2%80%9D-Charity-Pins-Benefiting-Variety.png": {
+  "w": 1023,
+  "h": 574,
+  "target": 720,
   "v": 3
  },
  "https://www.nikkansports.com/sports/news/img/202610280000508-w500_1.jpg": {
