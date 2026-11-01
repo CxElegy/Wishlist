@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # 置いていない写真があれば写真の一時保管を起こす
 
 concurrency:
   group: render
@@ -54,3 +55,14 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         run: python scripts/user_pages.py
+
+      # 新しい記事の写真は、3 時間ごとの回まで置き場に無く、原寸の外部画像のまま届く（ux_check「先頭の写真が置き場に無い」の根）。
+      # 作り直したあと、置いていない写真が 1 枚でもあれば写真の一時保管を起こす（取れなかった分は 1 日あけるので回り続けない）
+      - name: 置いていない写真があれば一時保管を起こす
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(python scripts/photo_store.py --todo)
+          echo "置いていない写真 $n 枚"
+          [ "$n" -gt 0 ] && gh workflow run photo_store.yml || true
