@@ -3629,6 +3629,11 @@ NAV_JS = """
         const rr = fitR(p);
         if (rr) { plan = p; r = rr; lvl = 1; }
       }
+      if (lvl < 0) {   // ①b 板块が多くて「ほか N 件」の行まで入らないとき：ほかの板块は新着の 1 件だけ（行は 30px まで。板块 8 つでも駅が見える。2026-11-02）
+        const p = L.map((l, i) => i === k ? {...full(i), labs: false} : {items: topN(l, 1), more: 0});
+        const rr = fitR(p);
+        if (rr) { plan = p; r = rr; lvl = 1; }
+      }
       for (const labs of [true, false]) {   // ② ほかは見出しだけ、いまの板块は全部
         if (lvl >= 0) break;
         const p = L.map((_, i) => i === k ? {...full(i), labs: labs && subsK} : null);
@@ -4387,7 +4392,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-mine="2"] .wl-off{display:none!important}
-html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .swish,html[data-mine="2"] .nav .logo .hm,
+html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .swish,
 html[data-mine="2"] .vt,html[data-mine="2"] .vote,html[data-mine="2"] [data-vote]{display:none!important}
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}

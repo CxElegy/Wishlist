@@ -558,7 +558,7 @@ PROCESSES = [
             {"id": "le4", "kind": "store", "lane": "web", "title": "公開の箱 emblems と boards.config", "uses": ["supabase"],
              "text": "画像 = emblems/<Wikidata の番号か b+id>-<中身の指紋 10 字>.webp（版面の名前は出さない）· config.emblem・theme・emblem_*（手がかり）・emblem_state {state, have, at, note}（note の「もう一度」は材料の指紋 m が変わったときに書き換える）"},
             {"id": "le5", "kind": "step", "lane": "actions", "title": "お客さまのページを作り直す（user_pages.py）",
-             "text": "follows の boards(name,config) から emblem・theme を版面に（店長の版面と同じ render._emblem）。小元素の画像は decode 後に .ld で透明→不透明（パッと出ない・1 画面目は eager）。版面 0 個の人は render._front が「最初の 1 つを選ぶ」ボタンを主役に（新着なしの帯・棚の数なし）"},
+             "text": "follows の boards(name,config) から emblem・theme を版面に（店長の版面と同じ render._emblem）。小元素の画像は decode 後に .ld で透明→不透明（パッと出ない・1 画面目は eager）。版面 0 個の人は render._front が「最初の 1 つを選ぶ」ボタンを主役に（新着なしの帯・棚の数なし）。話題度は店長と同じ heat.compute（本人の号を先に・受信箱と信号は店長と同じ）→ 目次の「今日の最高」・版面の数字。目次は板块が多くても各板块の駅を 1 つ（render ①b）。点検 = ux_check --diff-admin（店長のページとの違いを 1 行ずつ）"},
         ],
     },
     {
