@@ -71,6 +71,7 @@ button{font-family:inherit}
 .card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:0;align-content:start}  /* 写真の枠は 9 行にまたがり、字の入らない行にも行の隙間（8px）が 7 つ付いて、カードが字より 73〜86px 高くなっていた（2026-11-02）：隙間は字の部品の下の余白で付ける */
 .card.sb:not(.mini)>.pic,.wc.sb>.pic{grid-column:1;grid-row:1/span 9}
 .card.sb:not(.mini)>*:not(.pic):not(.lk),.wc.sb>*:not(.pic):not(.lk):not(.tg){grid-column:2}
+.card.sb:not(.mini){grid-template-rows:auto auto minmax(0,1fr)}  /* 写真の枠が字より高いとき、余りを字の入らない行に分けず 3 行目が受ける（390px で 27px 余計に高くなっていた） */
 .card.sb:not(.mini)>*:not(.pic):not(.lk):not(:last-child),.wc.sb>*:not(.pic):not(.lk):not(.tg):not(:last-child){margin-bottom:8px}
 .card.mini.sb{grid-template-columns:auto minmax(0,1fr)}
 .tape.sb{grid-template-columns:6px auto minmax(0,1fr)}.tape.sb>.pic{grid-column:2;grid-row:1/3;margin-bottom:6px}.tape.sb>.lbl{grid-column:3;grid-row:1/3}
@@ -912,7 +913,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="6170dde0baea"><style>
+<meta name="wl-ver" data-page="wishlist" content="fbf04bc62cad"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1812,7 +1813,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>11.01 22:18</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>11.01 22:26</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
