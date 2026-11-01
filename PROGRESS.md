@@ -257,3 +257,4 @@
 - 2026-11-01 r1f1：版面の中の .grid〔滑雪の例〕を中身の高さで詰める〔右の記事を升目の 1 段ずつ・大きい記事は段をまたぐ・横長の主写真は写真の形〕・#728。本番の滑雪 1400：上の段 561→507px・下の段の始まり 609→555px・色の帯なし。ux_check に gridHole。次：ILLIT 型（縦長の主写真）の 84px の空き
 - 2026-11-01 縦長の主写真（ILLIT 型）の空きを規則で直す・gridHole の緩めを戻し .pkgrid と 2 記事の並びも測る（r1f2）。ILLIT 空き 0（1400・768）・気になるかも 0。残り＝テニス 53px・星巴克 67px（次の段に足した）
 2026-11-01 r1: Pages 公開を Actions の pages.yml に（#735）・dispatch で build/deploy success・次＝ユーザーが Source を GitHub Actions に切替→continue-on-error を外す
+2026-11-01 r1f1：Pages 別の目の指摘〔#736〕：harness/pages_health.py〔標準の回が残る＝Source 未切り替え・24h 失敗 8〕・空振りの公開 2 つを外す・試験を両方向に・後台の提交を畳む。本番 ux_check guest --fast の ✗ は記事の並びの空き 2 件〔テニス・マグカップ、docs 無変更で別の段〕。次＝ユーザーが Source 切替〔BACKLOG [?]〕→continue-on-error を外す
