@@ -71,6 +71,17 @@ def session(email):
 # loading=lazy・横に流れるテープ・折りたたみ・pkpool〔[hidden] の予備〕は i.complete / offsetParent で飛ばされた）。
 # 候補を全部 loading=eager にして読み込みを待ち（最大 8 秒・同時 60 枚）、[hidden] の祖先は測る間だけ外して数える。
 # 読めなかった写真は unread で返し、候補の 25% を超えたら ✗（読めないまま「余白 0」と言わない）。
+# 2026-11-01 スクロールで写真が出ない：届いたのに透明のまま（.ld が付かない）写真が 3 秒の保険まで色の枠だった（load は window まで上がらない）。
+# 人の速さ（1 画面 / 0.35 秒）で下まで動き、画面に入った写真が「届いたのに opacity < 0.5」のまま 1 秒を超えたものを数える。
+HIDDEN_JS = """async()=>{const S='.pic img:not(.bg):not(.ico)',first=new Map(),bad=new Set();let seen=0;
+  const look=()=>document.querySelectorAll(S).forEach(i=>{const b=i.getBoundingClientRect();if(!i.offsetParent||b.width<20||b.bottom<=0||b.top>=innerHeight)return;
+    if(!(i.complete&&i.naturalWidth>0))return;const now=performance.now();
+    if(+getComputedStyle(i).opacity>=0.5){first.delete(i);return}
+    if(!first.has(i))first.set(i,now);else if(now-first.get(i)>1000)bad.add(i)});
+  const H=document.documentElement.scrollHeight,vh=innerHeight;
+  for(let y=0;y<Math.min(H,24000);y+=vh){scrollTo(0,y);for(let k=0;k<7;k++){await new Promise(r=>setTimeout(r,50));look()}seen++}
+  scrollTo(0,0);return {n:seen,bad:bad.size,eg:[...bad].slice(0,3).map(i=>((i.closest('section')||{dataset:{}}).dataset.k||'?')+' '+(i.currentSrc||i.src).split('/').pop().slice(0,20))}}"""
+
 GAP_JS = """async()=>{const S='section.sec article.card,section.sec .wc,section.sec a.tape,.pk';
 const cs=[...document.querySelectorAll(S)].map(c=>{const p=c.querySelector('.pic');return{c,p,i:p&&p.querySelector('img:not(.ico)')}}).filter(o=>o.i&&!o.c.classList.contains('nophoto')&&!o.p.matches('.icon,.none'));
 const hid=new Set();cs.forEach(o=>{for(let e=o.c;e;e=e.parentElement)if(e.hidden)hid.add(e)});hid.forEach(e=>{e.hidden=false});
@@ -180,6 +191,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
             pg.wait_for_function("b=>!!document.querySelector('meta[name=\"wl-own\"]')&&![...document.querySelectorAll(b)].some(x=>x.offsetParent)", arg=BOXES, timeout=SETTLE_S * 1000)
         except Exception:  # noqa: BLE001
             pass
+    hid = pg.evaluate(HIDDEN_JS) if not page else {"bad": 0, "eg": []}
     if not page:   # 2026-10-27：loading=lazy の写真は下までスクロールしないと読み込まれず、開けない写真（札）を数え損ねる。下まで読んでから数える
         for y in range(0, 40000, 800):
             pg.evaluate(f"window.scrollTo(0,{y})")
@@ -281,6 +293,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"写真の余白を測れなかった：{gp['unread']} / {gp['n']} 枚（読み込み切れ）")
     if st["blur"] or st["loose"]:   # 2026-10-31 F-16：ぼかしで余白を埋めない（img.bg 0）。大きいカードで写真が枠より細いのに枠を絞っていない（.nw なし）のも✗
         bad.append(f"写真の余白：ぼかし {st['blur']} 枚・枠を絞っていない大きいカード {st['loose']} 枚")
+    if hid["bad"]:   # 2026-11-01：届いたのに 1 秒を超えて透明のまま（画面に入っているのに色の枠だけ）
+        bad.append(f"写真が届いたのに出ない（透明のまま 1 秒超）{hid['bad']} 枚 " + "・".join(hid["eg"]))
     if st["sw"] > width:
         bad.append(f"横にはみ出す（{st['sw']}px）")
     bad += cover_bad(covered)
