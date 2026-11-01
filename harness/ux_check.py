@@ -1189,6 +1189,44 @@ JOURNEY_TIMEOUT = 6000
 PICK_RE = "好きなものを選ぶ|追いかけるものを選ぶ|追いかけるものを足す"   # 空の最初の画面の入口の文言（言い回しが変わったらここ 1 か所）
 
 
+REVIEW_JS = """() => { const f = document.getElementById('rv-answer');
+ return {has: !!f, why: !!document.getElementById('rv-why') || /なぜ/.test(document.body.innerText) && /何が変わる/.test(document.body.innerText),
+  btn: f ? f.querySelectorAll('button[data-c]').length : 0, sw: f ? Math.ceil(f.getBoundingClientRect().right) : 0} }"""
+
+
+def check_review_pages(pw, base, width):
+    """審査待ちの見本（testground/index.html の欄）を開き、押して選べる・保存ボタンがある・3 行がある・横にはみ出さないを数える。"""
+    import review_pages
+    up = base.rstrip("/").rsplit("/", 1)[0] + "/testground/"
+    idx = urllib.request.urlopen(urllib.request.Request(up, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
+    names = review_pages.pending_pages(idx)
+    b = pw.chromium.launch()
+    bad = []
+    try:
+        pg = b.new_page(viewport={"width": width, "height": 800})
+        for n in names:
+            pg.goto(up + n, wait_until="domcontentloaded", timeout=60000)
+            pg.wait_for_timeout(800)
+            st = pg.evaluate(REVIEW_JS)
+            if n == "face-size.html":
+                st["btn"] = st["btn"] or pg.locator("#save").count()
+                st["has"] = st["has"] or bool(pg.locator("#save").count())
+            if not st["has"] or st["btn"] < 1 and n != "face-size.html":
+                bad.append(f"{n} に答える欄がない")
+            elif n != "face-size.html":
+                pg.locator("#rv-answer button[data-c]").first.click()
+                pg.locator("#rv-answer .go").click()
+                if not pg.locator("#rv-answer .msg").inner_text().strip():
+                    bad.append(f"{n} 保存を押しても何も出ない")
+            if not st["why"]:
+                bad.append(f"{n} に なぜ／何が変わる がない")
+            if st["sw"] > width + 2:
+                bad.append(f"{n} 答える欄が横にはみ出す（{st['sw']}px）")
+    finally:
+        b.close()
+    return bad, len(names)
+
+
 def press(pg, target, label, timeout=JOURNEY_TIMEOUT):
     """本物のクリック（Playwright は、上に別の部品が重なっていれば押せずに待って落ちる）。押せなければ理由を返す。"""
     try:
@@ -1447,6 +1485,12 @@ def main(argv):
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
+            try:   # 審査待ちの見本が触れて保存できる（2026-11-02）
+                bad, n_rv = check_review_pages(pw, a.base, int(w))
+            except Exception as ex:  # noqa: BLE001
+                bad, n_rv = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"], 0
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + f"審査待ちの見本 {w}px：" + ("、".join(bad) if bad else f"{n_rv} 枚とも選べて保存を押せる・3 行あり・はみ出しなし"))
         try:   # HTML の重さ・画像 1 枚ごとのハンドラ（ログインなしで取れる店長のページ）
             html = urllib.request.urlopen(urllib.request.Request(a.base, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
             bad = html_weight_bad(html) + photo_cache_bad(html) + ahead_bad(html) + lead_outside_bad(html)
