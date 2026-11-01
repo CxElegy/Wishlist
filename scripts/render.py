@@ -107,7 +107,7 @@ button{font-family:inherit}
 .hero.nw{grid-template-columns:auto minmax(0,1fr)}.card.wide.nw{grid-template-columns:auto minmax(0,1fr)}
 .lead.nw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;align-content:start}.lead.nw>*:not(.pic){margin-bottom:8px}
 .lead.nw>.pic{grid-column:1;grid-row:1}.lead.nw.ls>.nx:not(.pic):not(.lk):not(.xplay){grid-column:1/-1;grid-template-columns:repeat(var(--nxn,2),minmax(0,var(--nxw,190px)))}.lead.nw>.ltx{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:8px;min-width:0;margin-bottom:0}.lead.nw>.ltx>*{margin-bottom:0}  /* .ls = 横長の写真：写真の形のまま幅の半分、次のニュースは横いっぱい */.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
-.nxd{display:none!important}   /* L7：次のニュースに出した記事の元のカード（同じ記事を 2 回出さない） */
+.nxd,.dupd{display:none!important}   /* L7：次のニュースに出した記事の元のカード（同じ記事を 2 回出さない） */
 .nx{position:relative;z-index:2;display:grid;grid-template-columns:repeat(var(--nxn,2),minmax(0,1fr));gap:12px;margin-top:6px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
 .nx a{display:flex;flex-direction:column;gap:5px;min-width:0;color:inherit;text-decoration:none}
 .nx img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
@@ -2737,7 +2737,8 @@ def _side(works, today, wishes=(), taste=()):
     return f'<aside class="fside">{"".join(out)}</aside>' if out else ""
 
 
-def _front(works, today, updated, themes=None, wishes=(), taste=()):
+def _front(works, today, updated, themes=None, wishes=(), taste=(), used=None):
+    """used：トップ（ポスター・ほかの注目）に出した記事の網址を入れて返す（L7：版面には同じ記事を出さない）。"""
     """トップ：直近一週間の総覧。
     - ポスター：直近一週間でいちばん重要な 1 本（同じ重要度なら新しいほう）。地色はその記事の写真から
     - ほかの注目ニュース：次に重要な写真つきの記事（SPOT_COUNT 本）の写真の壁（文字だけの一覧は出さない）
@@ -2750,6 +2751,8 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     chosen = _front_pick(ranked, SPOT_COUNT)
     top_w, top = chosen[0] if chosen else (None, None)
     more = chosen[1:]
+    if used is not None:
+        used.update(x["url"] for _, x in chosen)
 
     start = next((w["start"] for w in works if w.get("start")), "") if works and all(w.get("start") for w in works) else ""
     d = dt.date.fromisoformat(today)
@@ -3338,7 +3341,7 @@ FIT_JS = """
     };
     const sec = c.closest('section'); if (!sec) return;
     const here = img.currentSrc || img.src;
-    const more = [...sec.querySelectorAll('article.card, article.wc')].filter(a => a !== c && !a.classList.contains('nxd') && !a.closest('.older') && a.querySelector('a.lk[href]') && a.querySelector('.pic img:not(.ico)') && !a.classList.contains('nophoto'))
+    const more = [...sec.querySelectorAll('article.card, article.wc')].filter(a => a !== c && !a.classList.contains('nxd') && !a.classList.contains('dupd') && !a.closest('.older') && a.querySelector('a.lk[href]') && a.querySelector('.pic img:not(.ico)') && !a.classList.contains('nophoto'))
       .map(a => ({u: a.querySelector('a.lk').href, i: a.querySelector('.pic img:not(.ico)'), t: (a.querySelector('h2, h3') || a.querySelector(':scope > b') || {}).textContent, a}))
       .filter(x => x.t && x.i.src && x.i.src !== here).sort((x, y) => !!x.a.closest('.side') - !!y.a.closest('.side')).slice(0, 3);
     const host = c.classList.contains('lead') ? (ls ? c : c.querySelector(':scope > .ltx')) : (c.querySelector(':scope > .txt') || c);
@@ -3417,6 +3420,18 @@ FIT_JS = """
       span();
     });
   };
+  // L7 同じ記事は 1 ページに 1 回（ページ全体）：上から順（ポスター → ほかの注目 → 予定 → 各版面）に見て、もう出した記事のカードは畳む（dupd）。
+  // 見えている所だけ数える（スマホで消える右の列・7 枚目以降の壁は数えない）。閉じた「もっと見る」の中は数える。次のニュースの小さい記事も「出した」に数える
+  const once = () => {
+    document.querySelectorAll('.dupd').forEach(x => x.classList.remove('dupd'));
+    const seen = new Set();
+    document.querySelectorAll('.poster .top a.lk[href], .wc a.lk[href], .agenda li a[href], section.sec a.lk[href], section.sec .nx a[href]').forEach(a => {
+      if (!(a.offsetParent || a.closest('details')) || a.closest('.nxd')) return;
+      if (!seen.has(a.href)) { seen.add(a.href); return; }
+      if (!a.closest('.nx')) { const h = a.closest('article, li'); if (h) h.classList.add('dupd'); }
+    });
+  };
+  once();
   mason();
   document.querySelectorAll('details.older').forEach(d => d.addEventListener('toggle', () => d.open && setTimeout(mason, 0)));
   const spans = () => { clearTimeout(spt); spt = setTimeout(() => { document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(); }, 150); };
@@ -3434,7 +3449,7 @@ FIT_JS = """
   // あとから足された写真（JS で作った版面）の load も拾う（load は泡立たないので capture で）
   document.addEventListener('load', e => { const i = e.target; if (i.tagName === 'IMG' && i.matches('.pic img:not(.bg):not(.ico)')) { fit(i); spans(); } }, true);
   let t;
-  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit); wall(); spans(); }, 200); });
+  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { once(); document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit); wall(); spans(); }, 200); });
   // 写真の壁（2026-11-01 並べ方の考え L1・L2）：カードの高さは中身で決まる。決まった升目に入れて背をそろえ、下を空けない。
   // 1px の行に 1 枚ずつ置き（上から一番低い列へ・大きい 1 枚は隣り合う 2 列の低いほうへ）、右の列の高さに合う枚数を選ぶ。
   // 列ごとの底の差は、その列のカードの写真枠に等分して足す（足す量が少ない枚数を選ぶ）。右の列は壁の高さまで欲しい物・予定の行を出す
@@ -3994,6 +4009,11 @@ def _dedupe_parents(works, parents):
     return works
 
 
+def _without(works, urls):
+    """L7 同じ記事は 1 ページに 1 回：トップに出した記事（urls）を各版面から外した写し。残りの記事が繰り上がる。"""
+    return [{**w, "stories": [x for x in w["stories"] if x["url"] not in urls]} for w in works] if urls else works
+
+
 def _sub_heads(works, subs, parents):
     """本文の版面を目次と同じ「板块 → 小分類」で区切る：小分類が変わる所に細い見出し（板块が変わる所は板块の札も）。
     目立たせない（メインは各版面）。下級は上級の小分類（目次と同じ）。小分類がなければ区切らない。"""
@@ -4049,9 +4069,10 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
     # id 保留 issue-日期：Discord 通知里的链接指向这里
+    front_used = set()
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新 {updated}">'
-            + _front(works, latest["date"], updated, themes, wishes, taste) + _picks(picks, works, fb)
-            + _sub_heads(works, subs, parents) + "</div>")
+            + _front(works, latest["date"], updated, themes, wishes, taste, front_used) + _picks(picks, works, fb)
+            + _sub_heads(_without(works, front_used), subs, parents) + "</div>")
     parts = [body]
     return _board_marks(f"""<!doctype html>
 <html lang="ja">

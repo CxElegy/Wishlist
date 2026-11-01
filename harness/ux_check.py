@@ -261,7 +261,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
-        sameStory:[...document.querySelectorAll('section.sec')].reduce((n,s)=>{const c={};s.querySelectorAll('a.lk[href],.nx a[href]').forEach(a=>{if(a.offsetParent)c[a.href]=(c[a.href]||0)+1});return n+Object.values(c).filter(v=>v>1).length},0),
+        sameStory:(c=>{document.querySelectorAll('a.lk[href],.nx a[href],.agenda li a[href]').forEach(a=>{if((a.offsetParent||a.closest('details'))&&!a.closest('.nxd,.dupd'))c[a.href]=(c[a.href]||0)+1});return Object.values(c).filter(v=>v>1).length})({}),   /* ページ全体（ポスター・ほかの注目・予定・各版面・次のニュース。2026-11-01 L7） */
         dup:[...document.querySelectorAll('[id]')].map(x=>x.id).filter((v,i,a)=>a.indexOf(v)!==i).slice(0,3),
         blur:document.querySelectorAll('img.bg').length,
         loose:innerWidth<=760?0:[...document.querySelectorAll('article.hero,article.lead,article.wide')].filter(c=>{const p=c.querySelector('.pic'),i=p&&p.querySelector('img:not(.ico)');return i&&i.complete&&i.naturalWidth&&p.offsetParent&&!c.classList.contains('nw')&&!p.classList.contains('fill')&&(i.naturalWidth/i.naturalHeight)<(p.clientWidth/p.clientHeight)*0.92}).length,
@@ -307,7 +307,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         if WHO[who] and page == "settings.html" and not st["own"]:
             bad.append("本人の設定ページではない")
         if st.get("sameStory"):   # 2026-11-01 L7：同じ記事は 1 ページ（版面）に 1 回だけ（次のニュースと元のカードの二重・本番で 33 本）
-            bad.append(f"同じ記事が版面に 2 回以上：{st['sameStory']} 本")
+            bad.append(f"同じ記事がページに 2 回以上：{st['sameStory']} 本")
         if st["dup"]:   # 2026-10-27：素の箱を 2 回描いて id mine・wl-addn が重なった（同じ id の部品を数える）
             bad.append("同じ id が 2 回：" + "・".join(st["dup"]))
         if not (st["mast"] and st["token"]):
