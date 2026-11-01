@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-01T04:17:43+00:00",
+ "checked": "2026-11-01T05:17:45+00:00",
  "fired": {
   "at": "2026-11-01T04:18:09+00:00",
   "results": {
@@ -19,38 +19,20 @@
     "resp": "cse_01W4x6f5urrS6ePYzsqEV12y",
     "sig": "b205345b7806"
    },
-   "items": [
-    "A2O LITE",
-    "GTA 6",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "チェーンソーマン",
-    "星巴克马克杯",
-    "猫用品",
-    "绝区零"
-   ],
-   "last_batch": "2026-11-01T03:23:24+00:00",
+   "items": [],
+   "last_batch": "2026-11-01T04:36:18+00:00",
    "last_error": {
     "at": "2026-10-31T13:17:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 146,
+   "need": false,
+   "prog": 156,
    "prog_day": "2026-11-01",
-   "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "チェーンソーマン",
-    "星巴克马克杯",
-    "猫用品",
-    "绝区零"
-   ],
-   "sig": "b205345b7806",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 301598,
-   "why": "整理待ちの記事 10 件（8 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 355368,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
