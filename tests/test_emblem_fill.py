@@ -1771,6 +1771,15 @@ class Framing(unittest.TestCase):
         self.assertAlmostEqual(alts[0]["body"][5], 0.8)
         self.assertGreater(alts[3]["body"][5], 0.5)      # 目から足（0.5）より長く測る = 大きくしすぎない
 
+    def test_crouch_estimate_capped(self):
+        import render
+        stand = {"body": [0.1, 0.9, 0.5, 0.5, 0.40]}
+        blob = {"body": [0.06, 0.998, 0.5, 0.692, 0.73]}   # ポチタ型：体が目から足よりずっと大きいマスコット。見積もりが 1.8 倍になり 85px に縮んだ（ux_check E4）
+        alts = [dict(stand), dict(stand), dict(stand), blob]
+        render._body_len(alts)
+        self.assertLessEqual(blob["body"][5], 0.938 * render.BODY_CROUCH_MAX + 0.001)
+        self.assertGreater(blob["body"][5], 0.938)
+
     def test_cut_and_full_compared_separately(self):
         import render
         cut = {"body": [0.2, 2.2, 0.5, 0.6, 0.9]}
