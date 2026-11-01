@@ -120,6 +120,7 @@ button{font-family:inherit}
 .card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:0;align-content:start}  /* 写真の枠は 9 行にまたがり、字の入らない行にも行の隙間（8px）が 7 つ付いて、カードが字より 73〜86px 高くなっていた（2026-11-02）：隙間は字の部品の下の余白で付ける */
 .card.sb:not(.mini)>.pic,.wc.sb>.pic{grid-column:1;grid-row:1/span 9}
 .card.sb:not(.mini)>*:not(.pic):not(.lk),.wc.sb>*:not(.pic):not(.lk):not(.tg){grid-column:2}
+.card.sb:not(.mini){grid-template-rows:auto auto minmax(0,1fr)}  /* 写真の枠が字より高いとき、余りを字の入らない行に分けず 3 行目が受ける（390px で 27px 余計に高くなっていた） */
 .card.sb:not(.mini)>*:not(.pic):not(.lk):not(:last-child),.wc.sb>*:not(.pic):not(.lk):not(.tg):not(:last-child){margin-bottom:8px}
 .card.mini.sb{grid-template-columns:auto minmax(0,1fr)}
 .tape.sb{grid-template-columns:6px auto minmax(0,1fr)}.tape.sb>.pic{grid-column:2;grid-row:1/3;margin-bottom:6px}.tape.sb>.lbl{grid-column:3;grid-row:1/3}
