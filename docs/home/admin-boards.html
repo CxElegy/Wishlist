@@ -58,7 +58,7 @@ button{font-family:inherit}
 .card.nw .pic{justify-self:start;align-self:start}
 .hero.nw{grid-template-columns:auto minmax(0,1fr)}.card.wide.nw{grid-template-columns:auto minmax(0,1fr)}
 .lead.nw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;align-content:start}.lead.nw>*:not(.pic){margin-bottom:8px}
-.lead.nw>.pic{grid-column:1;grid-row:1}.lead.nw.ls>.nx:not(.pic):not(.lk):not(.xplay){grid-column:1/-1;grid-template-columns:repeat(var(--nxn,2),minmax(0,190px))}.lead.nw>.ltx{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:8px;min-width:0;margin-bottom:0}.lead.nw>.ltx>*{margin-bottom:0}  /* .ls = 横長の写真：写真の形のまま幅の半分、次のニュースは横いっぱい */.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
+.lead.nw>.pic{grid-column:1;grid-row:1}.lead.nw.ls>.nx:not(.pic):not(.lk):not(.xplay){grid-column:1/-1;grid-template-columns:repeat(var(--nxn,2),minmax(0,var(--nxw,190px)))}.lead.nw>.ltx{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:8px;min-width:0;margin-bottom:0}.lead.nw>.ltx>*{margin-bottom:0}  /* .ls = 横長の写真：写真の形のまま幅の半分、次のニュースは横いっぱい */.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
 .nx{position:relative;z-index:2;display:grid;grid-template-columns:repeat(var(--nxn,2),minmax(0,1fr));gap:12px;margin-top:6px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
 .nx a{display:flex;flex-direction:column;gap:5px;min-width:0;color:inherit;text-decoration:none}
 .nx img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
@@ -579,6 +579,7 @@ button{font-family:inherit}
 .pksub span{font:500 12px var(--font-sans);letter-spacing:0;opacity:.75}
 .pk{position:relative;display:flex;flex-direction:column;gap:0;min-width:0;color:var(--ink)}
 .pk.big{grid-column:span 2;grid-row:span 2;align-self:stretch}
+.pkgrid>.pk:not(.big){align-self:stretch}.pkgrid>.pk:not(.big):not(.sb) .pic{flex:1 1 auto}  /* 同じ段の札の高さをそろえる：余った高さは写真の枠が受ける（札の下に空きを残さない：L2） */
 .pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:160px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
 .pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
 .pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
@@ -1559,7 +1560,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-boards" content="3fc1b7188724"><style>
+<meta name="wl-ver" data-page="admin-boards" content="90d2a257e1c6"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2459,7 +2460,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ② 版面</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.01 17:32</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.01 18:00</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html" aria-current="page"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
