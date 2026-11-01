@@ -651,7 +651,7 @@ PROCESSES = [
              "text": "is_admin_email が invites 表（role=admin）を見る",
              "yes": "パスワードの欄を出す（まだ決めていなければ、はじめの 1 回ここで決める）→ signInWithPassword で管理者のセッション（Supabase が覚える・メールは送らない）", "no": "そのまま一般ユーザー（運営者のページは見るだけ）", "uses": ["invite"]},
             {"id": "a3", "kind": "step", "lane": "web", "title": "身份を確かめる",
-             "text": "auth_enforced・my_role・can_edit(このページの account) を読み、<html> に data-role / data-lock を付ける。ページの JS の Supabase 呼び出しにログインした人の鍵を付ける", "uses": ["roles"]},
+             "text": "auth_enforced・my_role・can_edit(このページの account) を読み、<html> に data-role / data-lock を付ける。ページの JS の Supabase 呼び出しにログインした人の鍵を付ける。右上の役割の札は店長だけ（一般のユーザーは名前だけ。2026-11-02）", "uses": ["roles"]},
             {"id": "a3m", "kind": "decision", "lane": "web", "title": "お客さま（店長でない人）がログインしている？",
              "text": "簡報・欲しい物・話題度・設定。アカウントは 1 つずつ独立（2026-10-22）。ログインを覚えているブラウザは、決まるまで店長の中身を隠す",
              "yes": "自分のページ：my_page()（本人の行だけ）→「〇〇さんのページ」・自分のキーワード（prefs.picks）。設定でキーワードを足す・外す・元に戻す（my_keywords_set、200 個まで）。目次は「ページ」「キーワード」だけ（まだ使えないものは出さない）。仕組みの説明・準備中・店長のページへの切り替えは出さない（impeccable clarify・distill、onboarding の空の状態）。ログインの知らせからの呼び出しは setTimeout で後に回す（Supabase 公式）",
