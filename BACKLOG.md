@@ -5,6 +5,11 @@
 
 ## いちばん先（目標：お客さまが登録して、自分の版面を毎日読める。HARNESS「目標から決める」）
 
+- [ ] 【依頼】**最優先**：Pages の公開（pages build and deployment）が何度も失敗してメールが来る（2026-11-01 ユーザー：受信トレイのスクショ〔Run failed: pages build and deployment が 30 分おき〕「老是ci fail 你改改呀 肯定有问题」）。
+  - 入口の会話が調べた根（2026-11-01）：直近 24 時間で pages build and deployment が **30 回中 8 回失敗**、全部 deploy の段で `Deployment request failed … due to in progress deployment. Please cancel <前の commit> first`。build は成功している＝**main への push が多すぎて（24 時間で 312 コミット）、前の公開が終わる前に次の公開が始まりぶつかる**。中身の壊れではないが、失敗のたびにユーザーへメールが行く。CI 检查は 14 回中 2 回失敗（PR の途中、直してから合併）。
+  - 直し方（両方）：①**公開を GitHub Actions のワークフローに移す**：`.github/workflows/pages.yml`（push to main と workflow_dispatch、`actions/upload-pages-artifact` で docs/ を、`actions/deploy-pages`、`concurrency: {group: pages, cancel-in-progress: true}`＝古い公開は取り消して最新だけ出す）。合併したら、**ユーザーが Settings → Pages → Build and deployment の Source を「GitHub Actions」に切り替える**（入口の会話がユーザーに頼む。切り替え前に pages.yml が main に入っていること。切り替えないと今の失敗は止まらない）。②**main への push を減らす**：BACKLOG・PROGRESS・状態ファイルの小さな更新は、まとめて 1 回にする（係ごとに段の終わりで 1 回、render の再生成は 10 分に 1 回まで）。
+  - 物差し：切り替えた後 24 時間で pages の失敗 0、ユーザーへの失敗メールが来ない。CI 检查は push 前に手元で全部の試験を通してから（HARNESS の決まり）。
+  - 前に戻す方法：Settings → Pages の Source を「Deploy from a branch（main / docs）」に戻し、pages.yml を消す。
 - [x] 【依頼】（済 2026-11-01 r1 https://github.com/CxElegy/Wishlist/pull/723：根＝写真が届いたら .ld を付ける load の聞き手が window だった〔load は window まで上がらない〕ので一度も動かず、3 秒の保険まで透明。document に。本番 390：0.3 秒以内 33%→100%、1400：58%→100%。ux_check に HIDDEN_JS・tests/test_perf。残り＝他の ✗ は dota2 の頭の写真・小カード切り 1 枚〔別の段〕）**最優先**：下へスクロールすると写真が出ず色の枠のまま（2026-11-01 ユーザー：Astrae Oratio の版面のスクショ〔小さいカード 6 枚が色の枠だけ〕「在页面往下翻的时候还是会出现这样图片不出现的情况」「继续帮我解决」）。
   - 入口の会話が本番で見たこと（2026-11-01）：写真が無いのではない。該当のカードは `<img src=photos/347537f2773bdfce-800.webp srcset=…400/800 loading="lazy">` があり、置き場の写真も 200・CDN HIT（9〜17KB、こちらから 0.4 秒）。店長のページは `loading="lazy"` が 2,880 枚、色の下絵の枠 1,244 個。→ 「読み込みが始まるのが遅い／始まっても並んで待つ／読み込んだのに見せない」のどれか。
   - 確かめ方（数字で）：Playwright で 1400／390、ふつうの回線と Fast 3G で、ページを上から下へ人の速さ（1 秒に 1〜2 画面）でスクロールし、**写真が画面に入った時刻と表示された時刻の差**を全部の img で取る。画面に入って 0.3 秒以内に出ている割合・出るまでの最大を版面ごとに。原因を分ける：①native lazy の読み始めの距離が足りない ②同時に読む数が多く並ぶ（2,880 枚）③JS（先取りの鎖・cropAt・FIT_JS・色の下絵のフェード）が読み込み後も隠している ④置き場の CDN が遠い（Supabase はシドニー）。
