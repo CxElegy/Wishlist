@@ -106,7 +106,7 @@ button{font-family:inherit}
 .card.nw .pic{justify-self:start;align-self:start}
 .hero.nw{grid-template-columns:auto minmax(0,1fr)}.card.wide.nw{grid-template-columns:auto minmax(0,1fr)}
 .lead.nw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;align-content:start}.lead.nw>*:not(.pic){margin-bottom:8px}
-.lead.nw>.pic{grid-column:1;grid-row:1/span 9}.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
+.lead.nw>.pic{grid-column:1;grid-row:1}.lead.nw.ls>.nx:not(.pic):not(.lk):not(.xplay){grid-column:1/-1;grid-template-columns:repeat(var(--nxn,2),minmax(0,190px))}.lead.nw>.ltx{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:8px;min-width:0;margin-bottom:0}.lead.nw>.ltx>*{margin-bottom:0}  /* .ls = 横長の写真：写真の形のまま幅の半分、次のニュースは横いっぱい */.lead.nw>*:not(.pic):not(.lk):not(.xplay){grid-column:2}
 .nx{position:relative;z-index:2;display:grid;grid-template-columns:repeat(var(--nxn,2),minmax(0,1fr));gap:12px;margin-top:6px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
 .nx a{display:flex;flex-direction:column;gap:5px;min-width:0;color:inherit;text-decoration:none}
 .nx img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
@@ -344,7 +344,7 @@ button{font-family:inherit}
 .fact .label{font:700 11px var(--font-sans);letter-spacing:.14em;opacity:.8}
 .fact .new{color:var(--aac);opacity:1}
 .fact a{text-decoration:underline;text-underline-offset:3px}
-.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px 22px;padding:20px 26px 22px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px 22px;padding:20px 26px 22px;align-items:start}  /* 同じ段で背の低い記事を一番高い記事に伸ばさない（下が空く：L2） */
 .card{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0}
 /* 記事の近さ（2026-10-24，用户定的）：写真が上の記事か下の記事か迷わせない。同じ記事の中の隙間（8px）は記事どうしの隙間の 1/3 以下、
    記事は下の線で閉じる（.mini と同じ線）。ux_check の「近さ」が測る */
@@ -362,7 +362,8 @@ button{font-family:inherit}
 .hero h2{font-size:30px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}
 .lead{grid-column:span 8}
 .lead h2{font-size:28px;line-height:1.4}
-.side{grid-column:span 4;display:flex;flex-direction:column;gap:14px}
+.side{display:contents}  /* 右の記事は升目の 1 段ずつに置く（2026-11-01 L2）：大きい記事（.lead）は右の記事の数だけ段をまたぎ、段の高さは中身で決まる。下の段は一番短い列の下から始まる */
+.rs1{grid-row:span 1}.rs2{grid-row:span 2}.rs3{grid-row:span 3}.rs4{grid-row:span 4}
 .side h3{font-size:20px;line-height:1.4}
 .s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}
 .blurb{margin:0;font-size:15px;line-height:1.75;opacity:.85}
@@ -628,7 +629,7 @@ button{font-family:inherit}
  .card.c8 h3,.card.wide h3{font-size:21px}
  .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:22px}
  .hero{grid-template-columns:1fr}.hero h2,.lead h2{font-size:22px}
- .lead,.side,.s12,.s6,.s4{grid-column:span 12}
+ .lead,.s12,.s6,.s4{grid-column:span 12}.rs1,.rs2,.rs3,.rs4{grid-row:auto}
  .card.mini{grid-template-columns:110px minmax(0,1fr)}
  .calm{flex-wrap:wrap;gap:12px;padding:4px 14px 16px}.calm .pic{display:none}
  .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
@@ -1032,7 +1033,7 @@ def _render_rows(rows, today):
             if len(cards) == 1:
                 out.append(_tcard(cards[0], 12, i, today))
             else:
-                out.append(_tcard(cards[0], 8, i, today))
+                out.append(_tcard(cards[0], 8, i, today).replace('class="card ', f'class="card rs{len(cards) - 1} ', 1))
                 out.append('<div class="side">' + "".join(_tcard(c, 4, i, today, mini=True) for c in cards[1:]) + "</div>")
         elif len(cards) == 1:  # 只有一张：小卡片占整行会空出一大片，做成左图右字的横长卡片
             out.append(_tcard(cards[0], 12, i, today))
@@ -3269,7 +3270,8 @@ FIT_JS = """
   // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.6 倍まで）
   const unnarrow = (c, p) => {
     const nx = c.querySelector(':scope > .nx, :scope > .txt > .nx'); if (nx) nx.remove();
-    c.classList.remove('nw', 'tall'); p.style.width = p.style.height = p.style.aspectRatio = '';
+    const lt = c.querySelector(':scope > .ltx'); if (lt) { while (lt.firstChild) c.insertBefore(lt.firstChild, lt); lt.remove(); }
+    c.classList.remove('nw', 'tall', 'ls'); p.style.width = p.style.height = p.style.aspectRatio = '';
   };
   const narrow = (img, p, nat, r) => {
     const c = p.closest('article.hero, article.lead, article.wide');
@@ -3282,16 +3284,34 @@ FIT_JS = """
       p.style.aspectRatio = Math.max(nat < 0.9 ? Math.max(nat, 0.6) : Math.max(nat, 1), 0.1).toFixed(3); p.style.height = '';
       p.classList.toggle('fill', nat >= 0.6); return;
     }
-    const sz = h => { p.style.height = h + 'px'; p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
+    // 版面の大きい 1 枚の横長の写真（nat>=1。枠が写真より横に長いだけ）：枠は写真の形から決める（L1）。幅は半分・高さは写真の形（字の列の高さまで、顔・題字が 6 割残る位置で切れるなら伸ばす）。
+    // 上下に色の帯を出さず、枠を字の列の高さに引き伸ばさない。次のニュースは横いっぱい（.ls）
+    const ls = c.classList.contains('lead') && nat >= 1;
+    const place = () => {
+      const cw = c.clientWidth, nxe = c.querySelector(':scope > .nx'), top = c.getBoundingClientRect().top;
+      const kids = [c.querySelector(':scope > .ltx')];
+      const at = f => { const w = Math.round(cw * f), whole = Math.round(w / nat); p.style.width = w + 'px'; p.style.height = whole + 'px';
+        return {w, whole, ht: Math.round(Math.max(0, ...kids.map(k => k.getBoundingClientRect().bottom)) - top)}; };
+      // 幅は写真の高さと字の列の高さが一番近くなる所（4〜6 割）：写真の下に空きを残さない
+      const best = [0.4, 0.45, 0.5, 0.55, 0.6].map(at).sort((x, y) => Math.abs(x.ht - x.whole) - Math.abs(y.ht - y.whole))[0];
+      const h = Math.max(best.whole, Math.min(best.ht, Math.round(best.whole * 1.12)));
+      const ok = h > best.whole + 2 && cropAt(img, nat / (best.w / h));
+      if (!ok) cropAt(img, 1);
+      p.style.width = best.w + 'px'; p.style.height = (ok ? h : best.whole) + 'px'; p.classList.add('fill');
+    };
+    if (c.classList.contains('lead') && !c.querySelector(':scope > .ltx')) {   // 字の列を 1 つの箱に（写真の枠が何段にまたがるかを決めない）
+      const bx = document.createElement('div'); bx.className = 'ltx';
+      [...c.children].filter(k => k !== p && !k.matches('.lk, .xplay, .nx')).forEach(k => bx.append(k)); c.insertBefore(bx, c.querySelector(':scope > .nx')); }
+    const sz = ls ? place : h => { p.style.height = h + 'px'; p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
     sz(p.clientHeight);
-    c.classList.add('nw');
+    c.classList.add('nw'); if (ls) c.classList.add('ls');
     const sec = c.closest('section'); if (!sec) return;
     const here = img.currentSrc || img.src;
     const more = [...sec.querySelectorAll('article.card, article.wc')].filter(a => a !== c && a.querySelector('a.lk[href]') && a.querySelector('.pic img:not(.ico)') && !a.classList.contains('nophoto'))
       .map(a => ({u: a.querySelector('a.lk').href, i: a.querySelector('.pic img:not(.ico)'), t: (a.querySelector('h2, h3') || a.querySelector(':scope > b') || {}).textContent}))
       .filter(x => x.t && x.i.src && x.i.src !== here).slice(0, 3);
-    const host = c.classList.contains('lead') ? c : (c.querySelector(':scope > .txt') || c);
-    if (more.length < 2 || host.clientWidth < 260) return;
+    const host = c.classList.contains('lead') ? (ls ? c : c.querySelector(':scope > .ltx')) : (c.querySelector(':scope > .txt') || c);
+    if (more.length < 2 || host.clientWidth < 260) { if (ls) c.classList.remove('ls'); return; }
     const d = document.createElement('div'); d.className = 'nx'; d.style.setProperty('--nxn', more.length);
     d.innerHTML = '<i>同じ版面の次のニュース</i>';
     more.forEach(x => { const a = document.createElement('a'); a.href = x.u; a.target = '_blank'; a.rel = 'noopener';
@@ -3305,6 +3325,7 @@ FIT_JS = """
     // 文字の列と次の記事を足した高さまで、写真の枠を伸ばす（縦長の写真ほど大きく見せる。左下を空けない）
     // 枠の高さは「文字の列＋次の記事」の高さ（枠自身が行を押し広げないよう、測るときは枠の高さを 0 にする）
     const need = () => host === c ? d.getBoundingClientRect().bottom - p.getBoundingClientRect().top : host.offsetHeight;
+    if (ls) { place(); return; }
     sz(0); let h = need(); sz(h); p.style.height = '0px'; h = Math.max(h, need()); sz(h);
   };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {

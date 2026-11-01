@@ -132,7 +132,7 @@ def measured_bad(m, lo=MEASURED_MIN):
 # ハリー・ポッターの大きいカードの下が約 350px 空いた）。①壁（.wall）の列ごとに、一番低い列の底からの差が小さいか（空き面積 / 壁の面積）
 # ②カードの枠の中で、中身の一番下から枠の下までの空き（枠の高さの 30% 超かつ 70px 超）のカードの数。わざと空ける休みは 1 画面に 1 か所までなので、
 # ②は 1 版面あたり 2 枚まで許す（外れ値）。1400・390 とも数える（390 は 1 列なので①は 0）
-HOLE_JS = """()=>{const out={wall:0,wallArea:0,wallPct:0,cards:0,wc:0,n:0,eg:[]};
+HOLE_JS = """()=>{const out={wall:0,wallArea:0,wallPct:0,cards:0,wc:0,n:0,eg:[],gridHole:0,gridEg:[]};
 const vis=e=>e.offsetParent&&e.getClientRects().length&&(!e.checkVisibility||e.checkVisibility({contentVisibilityAuto:true,visibilityProperty:true}));   // 閉じた「もっと見る」（content-visibility で隠れる）は数えない
 document.querySelectorAll('.wall').forEach(w=>{const cs=[...w.querySelectorAll(':scope>.wc')].filter(vis);if(cs.length<2)return;
  const wr=w.getBoundingClientRect(),lefts=[...new Set(cs.map(c=>Math.round(c.offsetLeft/20)))];
@@ -142,6 +142,16 @@ document.querySelectorAll('.wall').forEach(w=>{const cs=[...w.querySelectorAll('
   const b=Math.max(...m.map(c=>c.offsetTop+c.offsetHeight));hole+=(W-b)*(wr.width/lefts.length)});
  out.wall+=hole;out.wallArea+=W*wr.width});
 out.wallPct=out.wallArea?Math.round(100*out.wall/out.wallArea):0;
+// 版面の中の記事の並び（.grid、2026-11-01 L2）：記事の外の空き（x を 16px ごとに縦に見て、記事と記事のあいだ・列の底が 80px 以上空いた所）の面積が、並びの 3% を超える版面を数える。
+// 上の段と下の段のあいだの横いっぱいの空き・右の列だけ短くて下に空く所（滑雪の例）がここに出る
+document.querySelectorAll('section.sec .grid').forEach(g=>{if(!vis(g)||g.closest('.older'))return;   // 「もっと見る」の中は content-visibility で描かれない記事があるので測らない
+ const gr=g.getBoundingClientRect();
+ const all=[...g.querySelectorAll(':scope>article.card,:scope>.side>article.card')],cs=all.filter(vis).map(c=>{const r=c.getBoundingClientRect();let b=0;[...c.children].forEach(k=>{if(getComputedStyle(k).position!=='absolute')b=Math.max(b,k.getBoundingClientRect().bottom)});   // 記事の中身の下（伸ばされた枠の下ではない）
+  return {left:r.left,right:r.right,top:r.top,height:r.height,bottom:Math.min(r.bottom,(b||r.bottom)+(parseFloat(getComputedStyle(c).paddingBottom)||0))}});if(cs.length<3||cs.length<all.length||cs.some(r=>r.height<20||r.top<gr.top-4))return;   // 一部が描かれていない（content-visibility）並びは測らない
+ const top=Math.min(...cs.map(r=>r.top)),bot=Math.max(...cs.map(r=>r.bottom)),w=Math.max(...cs.map(r=>r.right))-Math.min(...cs.map(r=>r.left));let hole=0,mx=0;
+ for(let x=Math.min(...cs.map(r=>r.left))+4;x<Math.max(...cs.map(r=>r.right));x+=16){const iv=cs.filter(r=>r.left-12<=x&&r.right+12>x).map(r=>[r.top,r.bottom]).sort((a,b)=>a[0]-b[0]);let y=top;
+  iv.forEach(v=>{if(v[0]-y>=80){hole+=(v[0]-y)*16;mx=Math.max(mx,v[0]-y)}y=Math.max(y,v[1])});if(bot-y>=80){hole+=(bot-y)*16;mx=Math.max(mx,bot-y)}}
+ const pct=100*hole/(w*(bot-top));if(pct>3){out.gridHole++;out.gridEg.length<3&&out.gridEg.push((g.closest('section.sec').dataset.k||'').slice(0,12)+' '+Math.round(pct)+'%・最大 '+Math.round(mx)+'px')}});
 document.querySelectorAll('section.sec article.card,.wc').forEach(c=>{if(!vis(c)||c.classList.contains('mini'))return;out.n++;
  const r=c.getBoundingClientRect();let b=0;[...c.children].forEach(k=>{const s=getComputedStyle(k);if(s.position==='absolute'||!vis(k))return;b=Math.max(b,k.getBoundingClientRect().bottom)});
  const pb=parseFloat(getComputedStyle(c).paddingBottom)||0,blank=r.bottom-pb-b;
@@ -254,7 +264,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     gp = pg.evaluate(GAP_JS) if not page else {"n": 0, "bad": 0, "unread": 0, "eg": []}
     if not page:
         pg.evaluate(RESTORE_JS)
-    hole = pg.evaluate(HOLE_JS) if not page else {"wallPct": 0, "cards": 0, "wc": 0, "n": 0, "eg": []}
+    hole = pg.evaluate(HOLE_JS) if not page else {"wallPct": 0, "cards": 0, "wc": 0, "n": 0, "eg": [], "gridHole": 0, "gridEg": []}
     near = [] if page else pg.evaluate(NEAR_JS)
     fails = pg.evaluate(FAILS_JS) if (st["nohead"] or st["heads"]) else []
     nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
@@ -318,6 +328,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"写真の余白（空いた横が情報なし）：{gp['bad']} / {gp['n']} 枚 " + "・".join(gp["eg"]))
     if hole["wallPct"] > 8:   # 2026-11-01 L1・L2：壁の列の底がそろっていない（空き面積が壁の 8% 超）
         bad.append(f"ほかの注目ニュースの壁の下が空いている（空き {hole['wallPct']}%）")
+    if hole["gridHole"]:   # 2026-11-01 L2：版面の中の記事の並びで、記事の外の空きが 3% 超の版面
+        bad.append(f"版面の記事の並びに空きがある：{hole['gridHole']} 版面 " + "・".join(hole["gridEg"]))
     if hole["wc"]:   # 同じく：ほかの注目ニュースの壁のカードは中身で高さが決まる（1 枚でも枠の 30% 超・70px 超が空いたら ✗）
         bad.append(f"壁のカードの下が空いている：{hole['wc']} 枚 " + "・".join(hole["eg"]))
     if hole["cards"] - hole["wc"] > 2:   # 版面の中のカード：同じく空き（枠の 30% 超・70px 超）が 3 枚以上
