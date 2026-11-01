@@ -200,10 +200,11 @@ button{font-family:inherit}
 .mgrid .wc:nth-child(4){--r:.5deg}.mgrid .wc:nth-child(5){--r:-1.2deg}.mgrid .wc:nth-child(6){--r:.9deg}
 .mgrid .wc:nth-child(7){--r:-.4deg}.mgrid .wc:nth-child(8){--r:1deg}.mgrid .wc:nth-child(9){--r:-.7deg}
 .fside .agenda{transform:rotate(.7deg)}.fside .swish{transform:rotate(-.9deg)}
-.wc.lead{grid-column:span 2;grid-row:span 2}
+.wc.lead{grid-column:span 2}.wc.lead.tall{grid-column:auto}  /* 高さは中身で決まる（行は WALL_JS が 1px 単位で置く）。縦長の写真の大きい 1 枚は 2 列に広げず写真の形の 1 列（.tall）*/
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
-.wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
-.wc.lead .pic{flex:1;aspect-ratio:auto;min-height:200px}  /* 大きい一枚は横の 2 枚と同じ高さ：写真は端を少し切って埋める */
+.wall{align-items:stretch}  /* JS なしの形：同じ段は同じ高さ。JS があれば中身の高さで詰めて並べる（2026-11-01 L1・L2：升目で背をそろえて下を空けない） */
+.wc.lead .pic{aspect-ratio:16/10}
+.wc:not(.sb) .pic{flex:1 0 auto}  /* 列の底をそろえるとき余りは写真の枠が受ける */
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
 .wc.nophoto{justify-content:flex-start;padding:16px 12px 12px;border-left:5px solid var(--sc)}.wc.nophoto b{-webkit-line-clamp:6;min-height:0}.wc.lead.nophoto b{font-size:24px;-webkit-line-clamp:7}  /* 写真が開けないトップのカード（SWAP_JS）：字だけの形 */
 .wc .tg{position:absolute;left:-8px;top:-13px;z-index:2;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの上の縁に（写真に重ねない） */
@@ -1915,7 +1916,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>11.01 15:53</b></div></div></header>
+<div class="meta"><small>更新</small><b>11.01 15:59</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
