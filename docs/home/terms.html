@@ -299,7 +299,7 @@ button{font-family:inherit}
 .card{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0}
 /* 記事の近さ（2026-10-24，用户定的）：写真が上の記事か下の記事か迷わせない。同じ記事の中の隙間（8px）は記事どうしの隙間の 1/3 以下、
    記事は下の線で閉じる（.mini と同じ線）。ux_check の「近さ」が測る */
-.grid>.card:not(.hero),.side>.card{padding-bottom:16px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
+.grid>.card:not(.hero),.mas>.card,.side>.card{padding-bottom:16px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
 .card.m{color:var(--fg);--ac:var(--acc)}
 .card.a{color:var(--afg);--ac:var(--aacc)}
 .card .pic{border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
@@ -315,6 +315,10 @@ button{font-family:inherit}
 .lead h2{font-size:28px;line-height:1.4}
 .side{display:contents}  /* 右の記事は升目の 1 段ずつに置く（2026-11-01 L2）：大きい記事（.lead）は右の記事の数だけ段をまたぎ、段の高さは中身で決まる。下の段は一番短い列の下から始まる */
 .rs1{grid-row:span 1}.rs2{grid-row:span 2}.rs3{grid-row:span 3}.rs4{grid-row:span 4}
+/* 小さいカードの段（JS の mason が .mas に包む）：決まった升目で同じ段の背をそろえず、1px の行に 1 枚ずつ一番低い列へ積む。中身の高さで詰まり、段の途中に空きが出ない（2026-11-02 L1・L2） */
+.mas{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:22px;grid-auto-rows:1px;align-items:start;margin-bottom:-28px}
+.mas>.card.c4,.mas>.side{grid-column:auto;align-self:start}.mas>.card.c8{grid-column:span 2;align-self:start}
+.mas>.side{display:flex;flex-direction:column;gap:28px}
 .side h3{font-size:20px;line-height:1.4}
 .s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}
 .blurb{margin:0;font-size:15px;line-height:1.75;opacity:.85}
@@ -342,9 +346,9 @@ button{font-family:inherit}
 .card.c8 h3{font-size:24px;line-height:1.4}.card.c6 h3{font-size:21px;line-height:1.4}
 .card.c4 h3,.card.c3 h3{font-size:17px;line-height:1.45}
 .grid>.hero .pic{aspect-ratio:auto;height:280px}
-.grid>.lead .pic{aspect-ratio:auto;height:260px}
-.grid>.lead h2,.card.wide h3,.mini h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.grid>.lead .blurb,.card.wide .blurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.grid>.lead .pic,.mas>.lead .pic{aspect-ratio:auto;height:260px}
+.grid>.lead h2,.mas>.lead h2,.card.wide h3,.mini h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.grid>.lead .blurb,.mas>.lead .blurb,.card.wide .blurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card.mini{display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:6px 14px;align-content:start;
  padding-bottom:14px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
 .mini .pic{grid-row:span 2;align-self:start;aspect-ratio:4/3}
@@ -778,10 +782,11 @@ button{font-family:inherit}
  .grid{padding:16px 14px 18px;gap:24px 14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}.pend summary{padding:10px 14px}.pend ul{padding:0 14px 12px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
- .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:22px}
+ .grid>.hero .pic,.grid>.lead .pic,.mas>.lead .pic{height:200px}.grid>.lead h2,.mas>.lead h2{font-size:22px}
  .hero{grid-template-columns:1fr}.hero h2,.lead h2{font-size:22px}
  .lead,.s12,.s6,.s4{grid-column:span 12}.rs1,.rs2,.rs3,.rs4{grid-row:auto}
  .card.mini{grid-template-columns:110px minmax(0,1fr)}
+ .mas{display:contents}.mas>.card.c4,.mas>.card.c8{grid-column:span 12;grid-row:auto!important}.mas>.side{display:contents}
  .calm{flex-wrap:wrap;gap:12px;padding:4px 14px 16px}.calm .pic{display:none}
  .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
 }
