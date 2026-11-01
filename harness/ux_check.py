@@ -1318,6 +1318,8 @@ def main(argv):
     ap.add_argument("--widths", default="1400,390")
     ap.add_argument("--emb", default="quick", choices=("quick", "full", "off"))
     ap.add_argument("--fast", action="store_true", help="札・枠組みだけを速く（小元素 off・待ち 6 秒・最初の画面と設定だけ）")
+    ap.add_argument("--part", default="all", choices=("all", "who", "global"),
+                    help="分けて走らせる用：who＝人ごとの画面・札の境目だけ／global＝管理ページ・HTML・公開の漏れなど人に依らない点検だけ（harness/ux_all.py が使う）")
     ap.add_argument("--journey", action="store_true", help="1 日通し（空のアカウントで押して通す）だけを走らせる")
     a = ap.parse_args(argv)
     if a.fast:
@@ -1333,7 +1335,7 @@ def main(argv):
                 print(("✗ " if bad else "✓ ") + f"1 日通し {w}px：" + ("、".join(bad) if bad else "入口 → ログイン → 足す → 自分のページ → 設定 → 外す"))
             print(f"1 日通し：✗ {fails} 件")
             return 1 if fails else 0
-        for who in a.who.split(","):
+        for who in (a.who.split(",") if a.part != "global" else []):
             runs = runs_for(who, a.widths.split(","), a.fast)
             for w, page, h in runs:
                 for tries in range(3):   # 2026-11-01：ライブ更新の再読み込みで 'Execution context was destroyed'・回線切れは測りそこない。2 回までやり直す
@@ -1347,7 +1349,7 @@ def main(argv):
                 fails += bool(bad)
                 print(("✗ " if bad else "✓ ") + f"{who}{' ' + page.split('.')[0] if page else ''} {w}x{h}px：" + ("、".join(bad) if bad else
                       f"版面 {st.get('secs')}・記事 {st.get('arts')}・写真 {st.get('pics')}・本人のページ {'はい' if st.get('own') else 'いいえ'}"))
-        for who in [x for x in a.who.split(",") if x in ("guest", "test-a", "test-b")]:   # 札の境目（既定の幅では見ない 561〜760 を含む）
+        for who in [x for x in a.who.split(",") if x in ("guest", "test-a", "test-b") and a.part != "global"]:   # 札の境目（既定の幅では見ない 561〜760 を含む）
             bad = []
             for w in DOCK_WIDTHS:
                 try:
@@ -1362,6 +1364,9 @@ def main(argv):
                         bad.append(f"{pgname} {w}px 開けなかった（{type(ex).__name__}: {str(ex)[:100]}）")
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"{who} 札の境目 {'/'.join(map(str, DOCK_WIDTHS))}px（＋他のページ {len(DOCK_PAGES) if who == 'guest' else 1 if who == 'test-a' else 0} 枚 × {'/'.join(map(str, DOCK_PAGE_WIDTHS))}px）：" + ("、".join(bad) if bad else "幅ごとの札・「⋯」の開け閉め・しまう動きどおり"))
+        if a.part == "who":
+            print(f"点検：✗ {fails} 件")
+            return 1 if fails else 0
         for w in a.widths.split(","):
             try:
                 bad = check_admin(pw, a.base, int(w), out)
