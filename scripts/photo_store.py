@@ -152,6 +152,57 @@ def tint(data):
     return "#%02x%02x%02x" % im.getpixel((0, 0))
 
 
+def mass(data, bins=12):
+    """切る位置を決める材料（2026-11-01 小カード案 2）：絵の「主役」の分布を横・縦それぞれ bins 区間の整数（合計 100）で返す。
+    主役 = 顔（正面向きの検出）と、題字・ロゴ・人物の輪郭が多い所（輪郭の濃さ）。顔があれば半分を顔、残りを輪郭に配る。
+    render の小さいカードが、枠に合わせて切るとき主役が 6 割以上残る位置を選び、残らない絵は切らずに全体を見せる。読めなければ None。"""
+    import cv2
+    import numpy as np
+    from PIL import Image
+    im = Image.open(io.BytesIO(data)).convert("L")
+    g = np.asarray(im, dtype=np.float32)
+    if g.shape[0] < 16 or g.shape[1] < 16:
+        return None
+    mag = np.hypot(cv2.Sobel(g, cv2.CV_32F, 1, 0), cv2.Sobel(g, cv2.CV_32F, 0, 1))
+    edge = cv2.blur(mag, (9, 9)) ** 1.5
+    edge /= edge.sum() or 1.0
+    m = edge
+    try:
+        casc = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+        faces = casc.detectMultiScale(g.astype(np.uint8), 1.15, 5, minSize=(max(24, g.shape[1] // 14),) * 2)
+    except Exception:  # noqa: BLE001  顔の検出が使えなくても輪郭だけで測る
+        faces = []
+    if len(faces):
+        f = np.zeros_like(g)
+        for x, y, w, h in faces:
+            f[y:y + h, x:x + w] += 1.0
+        m = 0.5 * edge + 0.5 * f / f.sum()
+
+    def prof(v):
+        b = np.array_split(v, bins)
+        s = np.array([x.sum() for x in b])
+        s = s / (s.sum() or 1.0) * 100
+        return [int(round(x)) for x in s]
+    return [prof(m.sum(axis=0)), prof(m.sum(axis=1))]
+
+
+def mass_of(base, k):
+    """置いてある 400 の写真から mass を取る（持たない昔の分の埋め直し）。取れない写真は [] （測れない＝切らない）。"""
+    try:
+        with urllib.request.urlopen(urllib.request.Request(public(base, k, 400), headers={"User-Agent": UA}), timeout=30) as r:
+            return k, mass(r.read()) or []
+    except Exception:  # noqa: BLE001  次の回にまた試す
+        return k, None
+
+
+def mass_css(url):
+    """render 用：data-m に入れる文字列「横の分布;縦の分布」。測っていない・測れない写真は None。"""
+    if not _CACHE:
+        _CACHE.append(load())
+    v = (_CACHE[0]["p"].get(key(url)) or {}).get("m")
+    return ";".join(",".join(map(str, a)) for a in v) if v else None
+
+
 def tint_of(base, k):
     """置いてある 400 の写真から色を取る（色のない昔の分の埋め直し）。取れなければ None。"""
     try:
@@ -224,7 +275,7 @@ def one(base, keyv, k, url):
         if not sizes:
             return k, None
         upload(base, keyv, k, sizes)
-        return k, (sum(len(b) for b in sizes.values()), tint(sizes[WIDTHS[0]]))
+        return k, (sum(len(b) for b in sizes.values()), tint(sizes[WIDTHS[0]]), mass(sizes[WIDTHS[0]]) or [])
     except Exception:  # noqa: BLE001  取れない・壊れた画像・箱へ上げられない。次の日に取り直す
         return k, None
 
@@ -248,7 +299,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                     break
                 for k, n in ex.map(lambda t: one(base, keyv, *t), todo[i:i + workers * 4]):
                     if n:
-                        p[k] = {"at": today, "b": n[0], "cc": 1, "c": n[1]}
+                        p[k] = {"at": today, "b": n[0], "cc": 1, "c": n[1], "m": n[2]}
                         x.pop(k, None)
                         new += 1
                     else:
@@ -274,6 +325,14 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                 if c:
                     p[k]["c"] = c
                     nc += 1
+    nm = 0
+    nomass = [k for k, v in p.items() if "m" not in v]   # 主役の分布のない分も置いてある 400 から測る（1 回 1500 枚まで）
+    if nomass and base:
+        with ThreadPoolExecutor(workers) as ex:
+            for k, m in ex.map(lambda k: mass_of(base, k), nomass[:1500]):
+                if m is not None:
+                    p[k]["m"] = m
+                    nm += 1
     for k in [k for k, d in x.items() if today - d > KEEP_DAYS]:
         del x[k]
     gone = evict(p, seen, today)
@@ -285,7 +344,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     hit = len(seen)
     stat = {"n": len(p), "bytes": used, "cap": CAP, "gone": len(gone), "new": new, "bad": bad, "pics": total, "hit": hit,
             "wait": max(0, len(todo) - new - bad), "day": today, "cc": cc, "cc_wait": sum(1 for v in p.values() if not v.get("cc")),
-            "nc": nc, "tint": sum(1 for v in p.values() if v.get("c"))}
+            "nc": nc, "tint": sum(1 for v in p.values() if v.get("c")), "nm": nm, "nm_wait": sum(1 for v in p.values() if "m" not in v), "mass": sum(1 for v in p.values() if v.get("m"))}
     out = {"base": base or st["base"], "p": p, "x": x, "stat": stat}
     (path or STATE).parent.mkdir(parents=True, exist_ok=True)
     (path or STATE).write_text(json.dumps(out, ensure_ascii=False, sort_keys=True, separators=(",", ":")), encoding="utf-8")
@@ -305,7 +364,7 @@ def main(argv):
     path = os.environ.get("GITHUB_OUTPUT")
     if path:
         with open(path, "a", encoding="utf-8") as f:
-            f.write(f"changed={'true' if s['new'] or s['gone'] or s['cc'] or s['nc'] else 'false'}\nmore={'true' if (s['wait'] and s['new']) or (s['cc_wait'] and s['cc']) else 'false'}\n")
+            f.write(f"changed={'true' if s['new'] or s['gone'] or s['cc'] or s['nc'] or s['nm'] else 'false'}\nmore={'true' if (s['wait'] and s['new']) or (s['cc_wait'] and s['cc']) or (s['nm_wait'] and s['nm']) else 'false'}\n")
 
 
 if __name__ == "__main__":

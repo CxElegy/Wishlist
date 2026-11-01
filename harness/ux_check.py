@@ -154,6 +154,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         nohead:[...document.querySelectorAll('section.sec')].filter(s=>{const h=s.querySelector('.grid article.card.hero,.grid article.card.wide');return h&&h.classList.contains('nophoto')}).map(s=>s.dataset.k),
         plates:document.querySelectorAll('.pic.icon,.pic.none').length,
         pkv:[...document.querySelectorAll('.pk:not(.big):not(.nophoto)')].filter(k=>k.offsetParent).map(k=>{const c=k.getBoundingClientRect(),p=k.querySelector('.pic').getBoundingClientRect(),o=parseFloat(getComputedStyle(k.querySelector('.pic')).getPropertyValue('--pko'))||0;return (p.height-o)/c.height}).filter(v=>v<0.45).length,
+        pkcut:[...document.querySelectorAll('.pk:not(.big) .pic.fill img:not(.bg):not(.ico)')].filter(i=>{if(!i.offsetParent||!i.naturalWidth)return false;const b=i.getBoundingClientRect();return Math.abs(Math.log((i.naturalWidth/i.naturalHeight)/(b.width/b.height)))>=0.08&&!(+i.dataset.keep>=60)}).length,
         ph:[...document.querySelectorAll('img[data-e="s"],img[data-e="r"]')].map(i=>i.currentSrc||i.src).filter(u=>{try{return new URL(u).origin!==location.origin}catch(x){return false}}).reduce((a,u)=>{a[0]++;if(/[/]storage[/]v1[/]object[/]public[/]photos[/]/.test(u))a[1]++;return a},[0,0]),
         frames:document.querySelectorAll('section.sec .pic').length,
         tint:[...document.querySelectorAll('section.sec .pic')].filter(x=>x.querySelector('img[data-e="s"][src*="/object/public/photos/"]')).reduce((a,x)=>{a[0]++;if(/background/.test(x.getAttribute('style')||''))a[1]++;return a},[0,0]),
@@ -219,6 +220,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
     if not page and st["ph"][0] >= 20 and st["ph"][1] * 2 < st["ph"][0]:   # 2026-10-31：店長もお客さまも同じ写真の一時保管（主写真・ぼかし・ギャラリー・欲しい物）。半分も使われていない
         bad.append(f"写真 {st['ph'][0]} 枚のうち一時保管から出たのは {st['ph'][1]} 枚（半分未満）")
+    if st.get("pkcut"):   # 2026-11-01 小カード案 2：枠に合わせて切っている写真は、顔・題字が 6 割以上残る位置で切ったもの（data-keep）だけ
+        bad.append(f"小さいカードの写真を主役を測らずに切っている {st['pkcut']} 枚")
     if st.get("pkv"):   # 2026-10-31：「気になるかも？」の小さいカードで写真の見える高さがカードの 45% 未満（帯のように細い）
         bad.append(f"小さいカードの写真が細い（見える高さ 45% 未満）{st['pkv']} 枚")
     if st["gap"]:   # 2026-10-31 F-16 続き：全部の画像の場所（大・小のカード・壁・テープ・気になるかも）で、写真が枠の幅の 25% 超を空けたまま（空いた横を情報に使っていない）。1400 / 390 とも数える
