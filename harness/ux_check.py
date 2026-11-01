@@ -88,6 +88,30 @@ hid.forEach(e=>{e.hidden=true});
 return{n:cs.length,bad,unread,eg}}"""
 
 
+# 2026-11-01（連動の範囲）：loose / pkcut / pkv も同じ i.complete / offsetParent で、読み込み前・[hidden] の写真を飛ばしていた。
+# st を数える前に全部の写真を読み込み・[hidden] の祖先を外し（RESTORE_JS で戻す）、数えた後に「測れた数 / 候補の数」を MEASURED_JS で出す。
+LOADALL_JS = """async()=>{const L=[...document.querySelectorAll('section.sec img:not(.ico),.pk img:not(.ico)')];
+const hid=new Set();L.forEach(i=>{for(let e=i;e;e=e.parentElement)if(e.hidden)hid.add(e)});hid.forEach(e=>{e.hidden=false});window.__hid=[...hid];
+L.forEach(i=>{i.loading='eager';if(i.dataset.src&&!i.src)i.src=i.dataset.src});
+const wait=i=>new Promise(r=>{if(i.complete)return r();const t=setTimeout(r,8000);i.addEventListener('load',()=>{clearTimeout(t);r()},{once:true});i.addEventListener('error',()=>{clearTimeout(t);r()},{once:true})});
+for(let k=0;k<L.length;k+=60)await Promise.all(L.slice(k,k+60).map(wait));
+dispatchEvent(new Event('resize'));await new Promise(r=>setTimeout(r,600));return L.length}"""
+RESTORE_JS = "()=>{(window.__hid||[]).forEach(e=>{e.hidden=true});window.__hid=[]}"
+# 候補 N・測れた M（loose は 1400 のみ）。M/N が MEASURED_MIN を下回れば ✗（取りこぼしを「0」と言わない）
+MEASURED_JS = """()=>{const ok=i=>i&&i.complete&&i.naturalWidth;
+const lc=innerWidth<=760?[]:[...document.querySelectorAll('article.hero,article.lead,article.wide')].filter(c=>c.querySelector('.pic img:not(.ico)')&&!c.classList.contains('nw')&&!c.querySelector('.pic').classList.contains('fill'));
+const pc=[...document.querySelectorAll('section.sec .pic.fill img[data-e="s"]:not(.bg):not(.ico),section.sec .nx img[data-e="s"]:not(.whole)')];
+const kc=[...document.querySelectorAll('.pk:not(.big):not(.nophoto)')];
+return{loose:[lc.length,lc.filter(c=>{const p=c.querySelector('.pic');return ok(p.querySelector('img:not(.ico)'))&&p.offsetParent}).length],
+pkcut:[pc.length,pc.filter(i=>ok(i)&&i.offsetParent).length],pkv:[kc.length,kc.filter(k=>k.offsetParent).length]}}"""
+MEASURED_MIN = 0.75
+
+
+def measured_bad(m, lo=MEASURED_MIN):
+    """候補のうち測れた割合が lo 未満の種類（loose / pkcut / pkv）を ✗ の文にして返す。候補 0 は問題なし。"""
+    return [f"{k} を測れなかった：{n - got} / {n} 件（読み込み切れ・非表示のまま）" for k, (n, got) in m.items() if n and got < n * lo]
+
+
 # 2026-10-27：手元の回線（点検の箱のプロキシ）だけで開けない写真を ✗ に数えない。ブラウザで開けなかった写真を、
 # ブラウザと同じ頭で取り直して画像が返れば「サイトの欠陥ではない」（AOL・Yahoo の写真が guest・test-a の版面の頭で ✗ になった）
 FAIL_JS = ("window.__imgFail=[];addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.src&&!t.classList.contains('bg')){"
@@ -162,6 +186,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
             pg.wait_for_timeout(80)
         pg.evaluate("window.scrollTo(0,0)")
         pg.wait_for_timeout(3000)
+    if not page:
+        pg.evaluate(LOADALL_JS)   # 2026-11-01：loose / pkcut / pkv も全部読み込んでから数える
     st = pg.evaluate("""b=>({text:document.body?document.body.innerText.replace(/\\s+/g,'').length:0,
         secs:document.querySelectorAll('section.sec').length,front:!!document.getElementById('front'),
         boxes:[...document.querySelectorAll(b)].filter(x=>x.offsetParent).length,
@@ -186,7 +212,10 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         blur:document.querySelectorAll('img.bg').length,
         loose:innerWidth<=760?0:[...document.querySelectorAll('article.hero,article.lead,article.wide')].filter(c=>{const p=c.querySelector('.pic'),i=p&&p.querySelector('img:not(.ico)');return i&&i.complete&&i.naturalWidth&&p.offsetParent&&!c.classList.contains('nw')&&!p.classList.contains('fill')&&(i.naturalWidth/i.naturalHeight)<(p.clientWidth/p.clientHeight)*0.92}).length,
         sw:document.documentElement.scrollWidth})""", BOXES)
+    meas = pg.evaluate(MEASURED_JS) if not page else {}
     gp = pg.evaluate(GAP_JS) if not page else {"n": 0, "bad": 0, "unread": 0, "eg": []}
+    if not page:
+        pg.evaluate(RESTORE_JS)
     near = [] if page else pg.evaluate(NEAR_JS)
     fails = pg.evaluate(FAILS_JS) if (st["nohead"] or st["heads"]) else []
     nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
@@ -241,6 +270,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
     if not page and st["ph"][0] >= 20 and st["ph"][1] * 2 < st["ph"][0]:   # 2026-10-31：店長もお客さまも同じ写真の一時保管（主写真・ぼかし・ギャラリー・欲しい物）。半分も使われていない
         bad.append(f"写真 {st['ph'][0]} 枚のうち一時保管から出たのは {st['ph'][1]} 枚（半分未満）")
+    bad += measured_bad(meas)   # 2026-11-01：測れた数 / 候補の数
     if st.get("pkcut"):   # 2026-11-01 小カード案 2：枠に合わせて切っている写真は、顔・題字が 6 割以上残る位置で切ったもの（data-keep）だけ
         bad.append(f"写真を主役を測らずに切っている（小さいカード・主写真・c3・mini・wc・tape すべて）{st['pkcut']} 枚")
     if st.get("pkv"):   # 2026-10-31：「気になるかも？」の小さいカードで写真の見える高さがカードの 45% 未満（帯のように細い）
