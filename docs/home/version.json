@@ -1,6 +1,6 @@
 {
- "admin": "7831bf22b494",
- "admin-ai": "a7c30b053c1a",
+ "admin": "335468386cac",
+ "admin-ai": "487761f4dab7",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -11,7 +11,7 @@
    "c41ca4cb"
   ]
  },
- "admin-boards": "6ff9db83c525",
+ "admin-boards": "3fc1b7188724",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
@@ -22,7 +22,7 @@
    "d0c0ea84"
   ]
  },
- "admin-emblem": "36ebb3dafc91",
+ "admin-emblem": "79cd1c936556",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
@@ -41,9 +41,9 @@
    "cbef9a4f"
   ]
  },
- "admin-members": "7a4f97490d00",
+ "admin-members": "67406b771a35",
  "admin-members_marks": {},
- "admin-now": "280a79243678",
+ "admin-now": "feceba625d94",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -51,7 +51,7 @@
   ],
   "queue": [
    "いまの状況",
-   "46345f52"
+   "5edb12f4"
   ],
   "status": [
    "運行状況",
@@ -62,7 +62,7 @@
    "73ab6249"
   ]
  },
- "admin-system": "57fa72e1b20e",
+ "admin-system": "58e93ecbd4e6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -70,15 +70,15 @@
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "33bdfe42"
+   "638a56b3"
   ],
   "res": [
    "リソース・並列と制限",
-   "344bebc4"
+   "3621f39f"
   ]
  },
  "admin_marks": {},
- "heat": "4e8c83cea820",
+ "heat": "954aa7257785",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -93,7 +93,7 @@
    "6505ffda"
   ]
  },
- "index": "e580623e1b83",
+ "index": "fbb3e29ec94f",
  "index_marks": {
   "front": [
    "トップ",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "50c7acd2"
+   "0c8a175e"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "a14fe094"
+   "76734311"
   ],
   "w-6676e624": [
    "三星手机",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "6dfdcbcf"
+   "8a20cd0b"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "80e15be3"
+   "adc28c7c"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "0554fb5a"
+   "f994605d"
   ],
   "w-f303ad09": [
    "绝区零",
    "f9a90df9"
   ]
  },
- "updated": "11.01 16:21",
- "wishlist": "fd52ee83a2c7"
+ "updated": "11.01 16:50",
+ "wishlist": "ebbd13cdf6dd"
 }
