@@ -62,7 +62,4 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          n=$(python scripts/photo_store.py --todo)
-          echo "置いていない写真 $n 枚"
-          [ "$n" -gt 0 ] && gh workflow run photo_store.yml || true
+        run: python scripts/photo_store.py --kick

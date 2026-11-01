@@ -9,6 +9,7 @@ render.py の _pic は置いてあるものなら 800 の網址を先頭にし�
 全体が上限（300MB）を超えたら古い順に消す。消すのは photos の箱の中だけ。
 
     python scripts/photo_store.py [--minutes 10]     # photo_store.yml（SUPABASE_SERVICE_KEY）
+    python scripts/photo_store.py --kick             # render のあと（digest・background・render.yml）：置いていない写真があれば photo_store.yml を起こす
 """
 
 import hashlib
@@ -361,8 +362,15 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
 
 
 def main(argv):
-    if "--todo" in argv:   # render.yml：置いていない写真の数だけ出す（Supabase に触らない）
+    if "--todo" in argv:   # 置いていない写真の数だけ出す（Supabase に触らない）
         print(todo_count())
+        return
+    if "--kick" in argv:   # render を発布する全部の workflow の最後の段（tests/test_photo_kick.py が数える）：1 枚でも置いていなければ一時保管を起こす
+        n = todo_count()
+        print(f"置いていない写真 {n} 枚")
+        if n > 0:
+            import subprocess
+            subprocess.run(["gh", "workflow", "run", "photo_store.yml"], check=False)
         return
     import digest
     minutes = float(argv[argv.index("--minutes") + 1]) if "--minutes" in argv else 10

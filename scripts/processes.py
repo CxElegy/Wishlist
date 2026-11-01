@@ -311,6 +311,7 @@ PROCESSES = [
             {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "定時タスクごとのトークン（Secret ROUTINE_FIRE_TOKEN など）が要る · AI 編集は溜まった版面だけ編集する（edit-queue = edit_ripe ＋ やり直し）",
              "uses": ["claude"]},
             {"id": "g7", "kind": "store", "lane": "repo", "title": "state/gate.json · state/log/gate.json", "text": "判断が変わったとき（最初の判断・小元素のあとの判断）・Claude を本当に起こしたとき・収集を起こそうとしたとき（起こせなかったときも）だけコミット（GATE_FIRE が開いているだけでは足さない）"},
+            {"id": "g8", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "後台作業が網页を発布したあと。新しい記事の写真が次の定時（3 時間ごと）まで原寸のまま届かないように。取れなかった分は 1 日あけるので回り続けない。"},
         ],
     },
     {
@@ -352,6 +353,7 @@ PROCESSES = [
              "uses": ["urgent", "fallback"], "yes": "すぐ「重大」で載せる＋Discord", "no": "版面の下の「整理待ち N 件」（折りたたみ・原題だけ）"},
             {"id": "c9", "kind": "step", "lane": "actions", "title": "出刊 → 通知 → push", "text": "push に失敗したら 3 回まで取り直す · 網页の生成に失敗してもデータは push（WL_RENDER_SOFT、次の生成で作り直す）· このあとゲートが AI 編集を起こす",
              "uses": ["pending", "discord"]},
+            {"id": "c9p", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "push のあと。収集の回で入った新しい記事の写真が次の定時（3 時間ごと）まで原寸の外部画像のまま届くのを防ぐ（ux_check「先頭の写真が置き場に無い」の根）。render.yml・後台作業も同じ段を持つ。"},
             {"id": "c10", "kind": "step", "lane": "actions", "title": "お客さまの版面を集める", "x": "×4 · 8 分まで",
              "text": "一度はログインした人だけ · 選んだもののうち店長のページに版面がないものだけ（店長にあるものは店長の版面を見せる）· 1 人 1 回 10 版面・全員の 1 つ目から · ログは数だけ · 同じ規則で集めて Supabase の user_boards に本人の account で · 前の段が失敗しても走る・失敗しても止めない（continue-on-error）· job の timeout の 3 分前に締め切る · 様子はライブログへ",
              "uses": ["userfeed", "gnews", "bing", "intel", "match", "spam", "fallback", "lang", "supabase"]},
@@ -559,7 +561,7 @@ PROCESSES = [
     },
     {
         "id": "photostore", "name": "写真の一時保管", "en": "PHOTO STORE", "lane": "actions", "workflow": "photo_store.yml", "when": "3 時間ごと · 手で",
-        "trigger": "定時（17 */3 * * *）・render.yml の作り直しのあと置いていない写真があるときか workflow_dispatch（minutes、既定 12 分・chain）。順番待ちが残り、この回で増えたなら gh workflow run で次の回（10 回まで）",
+        "trigger": "定時（17 */3 * * *）・render.yml・digest.yml・background.yml が網页を発布したあと置いていない写真があるとき（photo_store.py --kick）か workflow_dispatch（minutes、既定 12 分・chain）。順番待ちが残り、この回で増えたなら gh workflow run で次の回（10 回まで）",
         "summary": "記事の主写真をよその原寸へ直リンクせず、先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置く。網页（render._pic）は置いてあれば先に読み、原寸は落ち先に残す。溜めない：いまのページに載っているか最後に使ってから 14 日以内だけ、全体 300MB 超えは古い順に消す（箱の中だけ）。",
         "files": [".github/workflows/photo_store.yml", "scripts/photo_store.py", "db/photos.sql"], "doc": "docs/rules/design.md",
         "uses": ["supabase"],

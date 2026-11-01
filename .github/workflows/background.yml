@@ -168,6 +168,13 @@ jobs:
           done
           exit 1
 
+      # 収集の回で入った新しい記事の写真も、次の定時（3 時間ごと）まで原寸のまま届かないように：発布のあと置いていない写真があれば一時保管を起こす
+      - name: 置いていない写真があれば一時保管を起こす
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/photo_store.py --kick
+
       # bot の push では library.yml（items.yaml の push で走る）が起きない：ライブラリの店長の版面の写し（boards.config）が次の定時まで古いまま
       # （BLEACH Mirrors High が items.yaml では名簿 476・小元素 19 なのに boards では 6 のまま）→ items.yaml を変えた回は自分で起こす
       - name: ライブラリへ写す（items.yaml を変えた回）
