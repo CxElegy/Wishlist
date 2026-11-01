@@ -41,3 +41,18 @@ class GapAll(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FitAndRetry(unittest.TestCase):
+    def test_fit_measures_image_box_not_rounded_client(self):
+        r = (pathlib.Path(__file__).resolve().parents[1] / "scripts" / "render.py").read_text(encoding="utf-8")
+        j = r[r.index('FIT_JS = """'):]
+        self.assertNotIn("nat / (p.clientWidth / p.clientHeight)", j)   # 328x183.6 が 184 に丸まり 8% の境目で fill が誤って付いた
+        self.assertIn("boxW(img, p.clientWidth)", j)
+
+    def test_retry_and_bar(self):
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "harness"))
+        import ux_check
+        self.assertTrue(ux_check.retryable(Exception("Page.evaluate: Execution context was destroyed")))
+        self.assertFalse(ux_check.retryable(ValueError("x")))
+        self.assertEqual(len(ux_check.measured_bad({"pkcut": [100, 80]})), 1)   # 8 割では通さない

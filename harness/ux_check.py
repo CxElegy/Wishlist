@@ -104,7 +104,13 @@ const pc=[...document.querySelectorAll('section.sec .pic.fill img[data-e="s"]:no
 const kc=[...document.querySelectorAll('.pk:not(.big):not(.nophoto)')];
 return{loose:[lc.length,lc.filter(c=>{const p=c.querySelector('.pic');return ok(p.querySelector('img:not(.ico)'))&&p.offsetParent}).length],
 pkcut:[pc.length,pc.filter(i=>ok(i)&&i.offsetParent).length],pkv:[kc.length,kc.filter(k=>k.offsetParent).length]}}"""
-MEASURED_MIN = 0.75
+MEASURED_MIN = 0.9   # 0.75 では 4 分の 1 が測れなくても通った（2026-11-01）
+
+
+def retryable(ex):
+    """ライブ更新でページが入れ替わった（Execution context was destroyed）・網の切断は、やり直せば通る。"""
+    s = str(ex)
+    return any(k in s for k in ("Execution context was destroyed", "navigation", "ws_closed", "Target closed", "net::ERR"))
 
 
 def measured_bad(m, lo=MEASURED_MIN):
@@ -1289,10 +1295,14 @@ def main(argv):
         for who in a.who.split(","):
             runs = runs_for(who, a.widths.split(","), a.fast)
             for w, page, h in runs:
-                try:
-                    st, bad = check(pw, a.base, who, w, out, page, a.emb if h == 900 else "off", h, FAST_S if a.fast else WATCH_S if h == 900 else 10)
-                except Exception as ex:  # noqa: BLE001
-                    st, bad = {}, [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+                for tries in range(3):   # 2026-11-01：ライブ更新の再読み込みで 'Execution context was destroyed'・回線切れは測りそこない。2 回までやり直す
+                    try:
+                        st, bad = check(pw, a.base, who, w, out, page, a.emb if h == 900 else "off", h, FAST_S if a.fast else WATCH_S if h == 900 else 10)
+                        break
+                    except Exception as ex:  # noqa: BLE001
+                        st, bad = {}, [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+                        if not retryable(ex):
+                            break
                 fails += bool(bad)
                 print(("✗ " if bad else "✓ ") + f"{who}{' ' + page.split('.')[0] if page else ''} {w}x{h}px：" + ("、".join(bad) if bad else
                       f"版面 {st.get('secs')}・記事 {st.get('arts')}・写真 {st.get('pics')}・本人のページ {'はい' if st.get('own') else 'いいえ'}"))
