@@ -39,7 +39,6 @@
   "https://note.com/dekajiri/n/n6f84689f5edf?hl=en": "https://www.bing.com/th?id=ONUT.v9hYDJEHaKyaPgg3WjbTrw&pid=News&w=1200",
   "https://note.com/niirii/n/n1f10f23cafee": "https://www.bing.com/th?id=ONUT.ycPAcx3nYoQxy3yywESEkQ&pid=News&w=1200",
   "https://pokemongohub.net/post/ar/halloween-2026-ar-photography-showcase/": "https://pokemongohub.net/wp-content/uploads/2026/10/IMG_7061-Li-Ke-scaled.jpeg",
-  "https://propakistani.pk/2026/11/01/buying-gta-6-could-save-you-5000/": "https://www.bing.com/th?id=ONUT.hoCWrR0b03Tw66q5NIPW7g&pid=News&w=1200",
   "https://prtimes.jp/main/html/rd/p/000000815.000009170.html": "https://prcdn.freetls.fastly.net/release_image/9170/815/9170-815-b39d1cf6c6d941cce13c14cb5322a682-1110x1330.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://sounova.com/anime/kuromi-first-theatrical-movie-2027": "https://cdn.sounova.com/upload/VDnplFoqnmnxzxylWKNWq.webp",
   "https://t.co/hzXT9mIOsK": "https://pbs.twimg.com/media/HV_PYlpWYAAdxwV?format=webp&name=large",
@@ -80,6 +79,7 @@
   "https://www.sohu.com/a/1095584739_122094388": "https://www.bing.com/th?id=ONUT.eJ7vSfk48ayvzNOnIfG_cQ&pid=News&w=1200",
   "https://www.soompi.com/article/1883259wpp/a2o-lite-ive-seventeens-jxj-and-bts-top-circle-weekly-charts": "https://www.bing.com/th?id=ONUT.f9biWkL7lfnDYnUUD4WdAQ&pid=News&w=1200",
   "https://www.surinenglish.com/lifestyle/work-have-coffee-20261030000500-nt.html": "https://s1.ppllstatics.com/surinenglish/www/multimedia/local/2026/10/15/gato7-kLVC--1200x840@Diario%20Sur.jpg",
+  "https://www.teepr.com/1952868/teepr/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8Bvi/": "https://www.teepr.com/wp-content/uploads/2026/11/1952868-photo1.jpg",
   "https://www.tgdaily.co.kr/news/articleView.html?idxno=407725": "https://cdn.tgdaily.co.kr/news/photo/202610/407725_211766_111.jpg",
   "https://www.vietnam.vn/en/he-lo-cuoc-song-xa-hoa-hoang-thuong-cong-chua-meo-an-ngon-o-phong-may-lanh-rieng-cham-nhu-nguoi-than": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/01/1793518918872_17935120288761292194897526244225522898744703979080a956beb782b93abdd1c5fd744a01c5dd-17935123162911346392751-53-0-1188-2168-crop-17935125067981749509703.webp",
   "https://www.vietnam.vn/ja/chiec-flagship-trung-quoc-ban-chay-nhat-nam-nay": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/29/1793282040355_honor_magic_9_pro_max_design.jpeg",
@@ -969,6 +969,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-01",
+   "hits": [],
+   "image": "https://www.teepr.com/wp-content/uploads/2026/11/1952868-photo1.jpg",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "TEEPR 亮新聞",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "俠盜獵車手VI傳容量210GB！開玩前得先「清硬碟」",
+   "url": "https://www.teepr.com/1952868/teepr/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8Bvi/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "绝区零",
    "date": "2026-11-01",
    "hits": [],
@@ -1052,7 +1073,7 @@
    "work": "チェーンソーマン"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "猫用品",
    "date": "2026-11-01",
    "hits": [],
@@ -1071,27 +1092,6 @@
    "url": "https://www.vietnam.vn/en/he-lo-cuoc-song-xa-hoa-hoang-thuong-cong-chua-meo-an-ngon-o-phong-may-lanh-rieng-cham-nhu-nguoi-than",
    "words": [],
    "work": "猫用品"
-  },
-  {
-   "batch": 2,
-   "because": "GTA 6",
-   "date": "2026-10-31",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.hoCWrR0b03Tw66q5NIPW7g&pid=News&w=1200",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "ProPakistani",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "Buying GTA 6 Could Save You $5,000",
-   "url": "https://propakistani.pk/2026/11/01/buying-gta-6-could-save-you-5000/",
-   "words": [],
-   "work": "GTA 6"
   },
   {
    "batch": 2,
@@ -2082,11 +2082,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2094,11 +2094,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [

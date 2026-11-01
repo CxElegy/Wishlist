@@ -1,35 +1,5 @@
 [
 {
-"at": "2026-10-31T06:22:27+00:00",
-"text": "2026-10-31 第 10 バッチを出刊：（新しく終わった版面なし）（0 版面・0 本・残り 9 版面） · token 新規入力 868・キャッシュ読み 8.4万・出力 303",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.45,
-"mem_total": 16872808448,
-"mem_free": 16013791232,
-"disk_used": 10200260608,
-"disk_free": 31083274240,
-"disk_total": 41283534848,
-"peak": 289169408
-},
-"batch": 10,
-"boards": [],
-"stories": 0,
-"left": 9,
-"edited": 22,
-"run": 1793424450.4242082,
-"tok": {
-"in": 2,
-"cw": 866,
-"cr": 84158,
-"out": 303,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 85329
-},
-{
 "at": "2026-10-31T06:27:35+00:00",
 "text": "2026-10-31 第 11 バッチを出刊：チェーンソーマン（1 版面・3 本・残り 8 版面） · token 新規入力 1,970・キャッシュ読み 25.7万・出力 1,293",
 "level": "ok",
@@ -2035,5 +2005,49 @@
 "calls": 21,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-01T22:40:57+00:00",
+"text": "2026-11-02 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作 ほか 7（13 版面・13 本・残り 2 版面） · token 新規入力 4.0万・キャッシュ読み 59.0万・出力 2,022",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.24,
+"mem_total": 16872808448,
+"mem_free": 15996088320,
+"disk_used": 10016112640,
+"disk_free": 31267422208,
+"disk_total": 41283534848,
+"peak": 289148928
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"GTA 6",
+"ILLIT",
+"MMORPG 新作",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"哈利波特剧集",
+"星巴克马克杯",
+"绝区零"
+],
+"stories": 13,
+"left": 2,
+"edited": 15,
+"run": null,
+"tok": {
+"in": 19,
+"cw": 39574,
+"cr": 590420,
+"out": 2022,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 632035
 }
 ]
