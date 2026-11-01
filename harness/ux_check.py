@@ -257,6 +257,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         pkcut:[...document.querySelectorAll('section.sec .pic.fill img[data-e="s"]:not(.bg):not(.ico),section.sec .nx img[data-e="s"]:not(.whole)')].filter(i=>{if(!i.offsetParent||!i.naturalWidth)return false;const b=i.getBoundingClientRect();return Math.abs(Math.log((i.naturalWidth/i.naturalHeight)/(b.width/b.height)))>=0.08&&!(+i.dataset.keep>=60)}).length,
         ph:[...document.querySelectorAll('img[data-e="s"],img[data-e="r"]')].map(i=>i.currentSrc||i.src).filter(u=>{try{return new URL(u).origin!==location.origin}catch(x){return false}}).reduce((a,u)=>{a[0]++;if(/[/]storage[/]v1[/]object[/]public[/]photos[/]/.test(u))a[1]++;return a},[0,0]),
         frames:document.querySelectorAll('section.sec .pic').length,
+        plain:[...document.querySelectorAll('section.sec[data-k]:not(.wish)')].filter(s=>![...s.classList].some(c=>/^m-/.test(c))).map(s=>s.dataset.k),
         tint:[...document.querySelectorAll('section.sec .pic')].filter(x=>x.querySelector('img[data-e="s"][src*="/object/public/photos/"]')).reduce((a,x)=>{a[0]++;if(/background/.test(x.getAttribute('style')||''))a[1]++;return a},[0,0]),
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
@@ -376,6 +377,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
     if heads:   # 2026-10-25：記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：版面の全部の記事に、さらにトップ（#front の article.wc）も。開けない写真は render.SWAP_JS が .nophoto に落とす
         bad.append(f"記事が札（写真が出ない。開けない写真は字だけの形に落とす）{len(heads)}：" + "・".join(heads[:4]))
+    if st.get("plain"):   # 2026-11-02：版面の主題（section の m- class）がない素の版面。店長もお客さまも全部の版面が主題を持つ（誰かだけ素にしない）
+        bad.append(f"主題（m- class）のない素の版面 {len(st['plain'])}：" + "・".join(st["plain"][:4]))
     if st.get("tiny"):   # 2026-11-01：防盗链の小さい代用画像（<32px 角）が写真の枠に残っている＝FIT_JS が error を投げて次の候補へ替えるはずが動いていない（dota2 の頭）
         bad.append(f"小さい代用画像が写真の枠に残っている {st['tiny']}")
     if nohead:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
