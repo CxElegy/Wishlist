@@ -610,7 +610,7 @@ PROCESSES = [
             {"id": "p4s", "kind": "step", "lane": "actions", "title": "版面 0 個の人の最初の画面", "x": "block.start のとき",
              "text": "主役 = 「選ぶ」ボタン 1 つ · 目次の件数・静かな版面の tag・棚は「新着なし」と言わず出さない · 文字は render.SETTINGS_JA / SETTINGS_ZH の表（設定ページの「⇄ にも」・静かな版面の名前も。直書きなし・tests PyWording が user_pages 全体と own 経路の関数を数える） · ボタンは .top の中でも押せる（pointer-events は継承されるので .startgo に auto を明示、ux_check が真ん中を押して当たるか見る）"},
             {"id": "p4i", "kind": "step", "lane": "actions", "title": "画像の読み込みを軽く", "x": "全部の画像",
-             "text": "画像 1 枚ごとの onerror は書かず data-e の印だけ（処理は head の IMG_FALLBACK_JS 1 か所）· 最初の 3 枚の主图だけ HTML で eager＋fetchpriority=high（_eager_first）· ux_check が HTML の重さと onerror 数を数える"},
+             "text": "画像 1 枚ごとの onerror は書かず data-e の印だけ（処理は head の IMG_FALLBACK_JS 1 か所。FIT_JS は 32px 角未満の代用画像に error を投げて同じ処理へ）· 最初の 3 枚の主图だけ HTML で eager＋fetchpriority=high（_eager_first）· ux_check が HTML の重さと onerror 数を数える"},
             {"id": "p4t", "kind": "step", "lane": "actions", "title": "スマホ（760px 以下）の右下の札（561〜760 は「⋯」で開く）", "x": "AUTH_CSS",
              "text": "body の下に札の高さ（72px＋safe-area）の空き · 下へ読むあいだは札をしまう（開いているメニュー・561〜760 で開いた「⋯」はしまわない）· ux_check の「札の境目」（guest・test-a・test-b × 390/560/561/700/760/761/1000、--fast でも走る）が幅ごとの見える子・「⋯」の開け閉め・しまう動きを数える · ux_check が一番下で札と重なる字を数える（最初の画面・設定・殻のページ・管理ページ 7 枚）· 店長・お客さまの殻（data-mine=2）も同じ safe-area の値 · tests が試作ページまで数える"},
             {"id": "p5", "kind": "table", "lane": "actions", "title": "版面の組み方",
