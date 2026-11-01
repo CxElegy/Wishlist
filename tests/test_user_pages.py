@@ -25,6 +25,18 @@ class Items(unittest.TestCase):
         self.assertEqual(it["motif"], "leaf")       # 主題・配色は店長のものをそのまま
         self.assertNotIn("parent", it)              # 上下級は本人のページには持ち込まない
 
+    def test_every_board_gets_a_motif(self):
+        # 店長と同じ：AI の設計がまだない版面（誰が追っていても）は種類からの仮の主題、ある版面は boards.config の主題をそのまま
+        fol = [{"pos": 0, "section": "影视", "boards": {"name": "葬送のフリーレン", "config": {"motif": "film", "like_fx": "pop"}}},
+               {"pos": 1, "section": "游戏", "boards": {"name": "原神", "config": {}}}]
+        items = user_pages.user_items(user_pages.own_picks(fol, [{"name": "葬送のフリーレン"}, {"name": "原神"}]), [])
+        by = {i["name"]: i for i in items}
+        self.assertEqual(by["葬送のフリーレン"]["motif"], "film")
+        self.assertEqual(by["葬送のフリーレン"]["like_fx"], "pop")
+        for i in items:
+            self.assertIn(render.template_for(i) or "x", list(render.MOTIFS) + ["x"])
+            self.assertNotEqual(render.template_for(i), "", i["name"])   # motif のない版面 0
+
     def test_own_board_and_dupes(self):
         out = user_pages.user_items([{"name": "広島旅行", "sec": "出行"}, {"name": "広島 旅行", "sec": "出行"}, {"name": ""}], self.SHOP)
         self.assertEqual([i["name"] for i in out], ["広島旅行"])

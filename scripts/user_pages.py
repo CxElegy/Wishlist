@@ -37,7 +37,7 @@ TYPE_OF_SEC = {"游戏": "game", "影视": "anime", "演出": "event", "运动":
 IMG_PER_BOARD = 3        # 1 版面で写真を探す記事の数（頭から）
 IMG_BUDGET_S = 240       # 1 回の写真探しの合計時間（秒）
 STORIES_PER_BOARD = 8
-BOARD_DESIGN = ("emblem", "theme")   # ライブラリの版面の共有のデザイン（boards.config、library_emblem.py が規則で作る）
+BOARD_DESIGN = ("emblem", "theme", "motif", "like_fx")   # ライブラリの版面の共有のデザイン（boards.config、library_emblem.py が規則で作る）
 FIRST_BOARD = render.SETTINGS_JA["first_board"]   # 版面が 0 個の人のページに置く静かな版面の名前（文字は表）
 ADD_URL = "../?add"       # 追いかけるものを足す流れ（入口と同じ、render.AUTH_JS の ADD）
 
@@ -132,7 +132,9 @@ def user_items(picks, shop_items):
             it["_shop"] = True
         else:
             it = {"name": name, "type": TYPE_OF_SEC.get(sec, "category"), "section": sec or taxonomy.classify(name),
-                  "keywords": [name], "match": [name], "subs": dict(p.get("subs") or {}), **(p.get("design") or {})}
+                  "keywords": [name], "match": [name], "subs": dict(p.get("subs") or {}),
+                  "notes": render.WEB_ITEM_MARK,   # motif がまだない版面も、種類からの仮の主題を使う（render.template_for）。素の箱にしない
+                  **(p.get("design") or {})}
         if p.get("size") in ("S", "M", "L"):
             it["size"] = p["size"]
         out.append(it)
