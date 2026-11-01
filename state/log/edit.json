@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-30T21:56:57+00:00",
-"text": "2026-10-31 第 1 バッチを出刊：MMORPG 新作（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 4.9万・キャッシュ読み 122.7万・出力 6,105",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.2,
-"mem_total": 16872808448,
-"mem_free": 15801884672,
-"disk_used": 10791440384,
-"disk_free": 30531067904,
-"disk_total": 41322508288,
-"peak": 377888768
-},
-"batch": 1,
-"boards": [
-"MMORPG 新作"
-],
-"stories": 3,
-"left": 0,
-"edited": 22,
-"run": 1793397042.1373925,
-"tok": {
-"in": 39,
-"cw": 48505,
-"cr": 1226689,
-"out": 6105,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1281338,
-"secs": 375,
-"run_tok": {
-"in": 39,
-"cw": 48505,
-"cr": 1226689,
-"out": 6105,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-30T23:01:25+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2008,5 +1967,35 @@
 "calls": 14,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-01T02:40:44+00:00",
+"text": "2026-11-01 第 3 バッチを出刊：（新しく終わった版面なし）（0 版面・0 本・残り 3 版面） · token 新規入力 2,691・キャッシュ読み 35.7万・出力 1,407",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.19,
+"mem_total": 16872808448,
+"mem_free": 15941365760,
+"disk_used": 10035527680,
+"disk_free": 31248007168,
+"disk_total": 41283534848,
+"peak": 378535936
+},
+"batch": 3,
+"boards": [],
+"stories": 0,
+"left": 3,
+"edited": 19,
+"run": 1793499541.6418767,
+"tok": {
+"in": 9,
+"cw": 2682,
+"cr": 356514,
+"out": 1407,
+"calls": 5,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 360612
 }
 ]

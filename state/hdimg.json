@@ -659,12 +659,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.hk01.com/di/media/images/dw/20261030/1192902154348662784394527.jpeg/e-uyNhCRFct32XLa6IFt3g1HmZWdd6HD1SW9t9Ulvbc": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.image.st-hatena.com/image/scale/34bc434840d3d1c882498735e0c17b56655ba5b3/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fr%2Frittor_snrec%2F20261028%2F20261028112645.png": {
   "w": 1300,
   "h": 731,
@@ -818,12 +812,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.408
- },
- "https://charagoo.jp/wp-content/uploads/2025/12/1000241578_1.jpg": {
-  "w": 1200,
-  "h": 1200,
-  "target": 1280,
-  "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
   "w": 668,
@@ -1089,12 +1077,6 @@
   "target": 720,
   "v": 3
  },
- "https://fashionsnap-assets.com/asset/format=auto,width=1280,height=670,gravity=auto,fit=pad/article/images/2026/10/4391e66c-3e00-4d45-93a2-8da921055001.jpg": {
-  "w": 1280,
-  "h": 670,
-  "target": 720,
-  "v": 3
- },
  "https://file2.nocutnews.co.kr/newsroom/image/2026/10/26/202610261525493793_0.jpg": {
   "w": 710,
   "h": 473,
@@ -1295,15 +1277,6 @@
   "target": 720,
   "v": 3
  },
-<<<<<<< HEAD
-=======
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
-  "w": 1080,
-  "h": 608,
-  "target": 720,
-  "v": 3
- },
->>>>>>> 8bc01f3 (编排 2026-11-01：MMORPG 新作)
  "https://i.cdn.newsbytesapp.com/images/l144_17801793486882.jpg": {
   "w": 1440,
   "h": 810,
@@ -1389,19 +1362,6 @@
   ],
   "why": "看不清"
  },
- "https://i3n.news1.kr/system/photos/2026/10/27/8182136/high.jpg": {
-  "w": 428,
-  "h": 579,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.616,
-  "local": "pics/80e14988d0cdf445.webp",
-  "out": [
-   946,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif": {
   "w": 594,
   "h": 1056,
@@ -1467,6 +1427,12 @@
  "https://image.news.livedoor.com/newsimage/stf/a/8/a84a9_1830_709a350d_14660206.jpg": {
   "w": 1200,
   "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/stf/c/7/c7922_476_3a661761_2ebbdbee.jpg": {
+  "w": 620,
+  "h": 465,
   "target": 720,
   "v": 3
  },
@@ -1536,6 +1502,19 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://images.chinatimes.com/newsphoto/2026-10-29/656/20261029004040.jpg": {
+  "w": 656,
+  "h": 492,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.445,
+  "local": "pics/bc94994262cbc0d1.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
  },
  "https://images.chinatimes.com/newsphoto/2026-10-31/656/20261031001708.jpg": {
   "w": 656,
@@ -2285,12 +2264,6 @@
   ],
   "why": "看不清"
  },
- "https://media.image.infoseek.co.jp/isnews/photos/wowkorea/wowkorea_536956_0-enlarge.jpg": {
-  "w": 640,
-  "h": 756,
-  "target": 720,
-  "v": 3
- },
  "https://media.image.infoseek.co.jp/isnews/photos/wowkorea/wowkorea_540202_0-enlarge.jpg": {
   "w": 640,
   "h": 352,
@@ -2403,19 +2376,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.327
- },
- "https://newportal.portal.auone.jp/media/thumbnails/2026/10/31/https___news_jp_i_1489084295262028343_w400.webp": {
-  "w": 400,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.641,
-  "local": "pics/f3bb43669dc040dc.webp",
-  "out": [
-   1200,
-   1200
-  ],
-  "why": "看不清"
  },
  "https://news-images.tvbs.com.tw/api/v1/image/01a180f6-d9c0-7361-b4ea-f2b27ab420d7.jpg?t=16x9&wp=l,t&c=146,109,1773,1024&w=1200&h=675": {
   "w": 1200,
@@ -2652,6 +2612,13 @@
    853
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/1422988/17878260_615.jpg": {
+  "w": 615,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.412
  },
  "https://news.walkerplus.com/article/1445517/18700633_615.jpg": {
   "w": 615,
@@ -3252,21 +3219,6 @@
   "target": 720,
   "v": 3
  },
-<<<<<<< HEAD
-=======
- "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/01/35473388.jpg&M=1&s=Y&x=0&y=503&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
-  "w": 799,
-  "h": 532,
-  "target": 720,
-  "v": 3,
-  "local": "pics/bd10250802dad9fd.webp",
-  "out": [
-   799,
-   532
-  ],
-  "why": "期限付きの網址"
- },
->>>>>>> 8bc01f3 (编排 2026-11-01：MMORPG 新作)
  "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414": {
   "w": 1414,
   "h": 1207,
@@ -3477,12 +3429,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://rocketnews24.com/wp-content/uploads/sites/2/2026/10/collage_76c46d.jpg?w=1200&h=630&crop=1": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/07e140aab69c4cebab526813467e217fc16a2097940b3f6f8daf5ac5327d227e/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennishead_808%2Feb0a17f6b0185d978d5ed70f18760cad.jpg": {
@@ -3760,6 +3706,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.tweaktown.com/news/1/1/114424_3_gta-vis-210gb-download-could-cost-an-extra-euro-11-55-in-france-if-new-data-tax-becomes-law_full.png": {
+  "w": 1500,
+  "h": 844,
+  "target": 720,
+  "v": 3
+ },
  "https://static.wixstatic.com/media/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg": {
   "w": 1000,
   "h": 667,
@@ -3770,6 +3722,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2022/05/Avengers-group.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/03/screenshot-2026-03-24-at-16-35-49.png?w=1600&h=900&fit=crop": {
@@ -3784,27 +3742,18 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/copy-of-collider-template-14.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://static0.dualshockersimages.com/wordpress/wp-content/uploads/2026/10/players-are-freaking-out-over-gta-6s-download-size-1.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 1280,
   "v": 3
  },
-<<<<<<< HEAD
  "https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/10/samsung-galaxy-z-fold744-1.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 1280,
   "v": 3
  },
-=======
->>>>>>> 8bc01f3 (编排 2026-11-01：MMORPG 新作)
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2026/08/avengers-doomsday-poster.jpg": {
   "w": 1280,
   "h": 1920,
@@ -4287,6 +4236,19 @@
   "out": [
    1280,
    719
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.KOsfIlpysro4UjegnaF79g&pid=News&w=1200": {
+  "w": 560,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.482,
+  "local": "pics/c6cd7ed963c64002.webp",
+  "out": [
+   1024,
+   1280
   ],
   "why": "看不清"
  },
@@ -4996,15 +4958,6 @@
   "target": 720,
   "v": 3
  },
-<<<<<<< HEAD
-=======
- "https://www.oppo.com/content/dam/oppo_com/oppo/event-page-asset/warm-up/find-x10-series-launch/en/v1/assets/videos-preview-uranus_1920_poster-1-81cd78.jpg.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
-  "v": 3
- },
->>>>>>> 8bc01f3 (编排 2026-11-01：MMORPG 新作)
  "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/al.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
@@ -5162,6 +5115,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.wowkorea.jp/img/news/107/536956/453389_1280W.webp": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3
+ },
  "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp": {
   "w": 1280,
   "h": 960,
@@ -5180,6 +5139,12 @@
    544
   ],
   "why": "看不清"
+ },
+ "https://x0.ifengimg.com/res/2026/B6494457AC45B537C3995C763F802BF7716E55E8_size897_w1207_h2458.png": {
+  "w": 1207,
+  "h": 2458,
+  "target": 1280,
+  "v": 3
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-8e21309f0ab9e8f398f424861f3ba0bb/images/7f3721c0-58ce-4391-a385-023452ad923d.jpg": {
   "w": 1920,
