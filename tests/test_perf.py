@@ -55,5 +55,14 @@ class FontsDoNotBlockPaint(unittest.TestCase):
         self.assertEqual(render.blocking_font_links(f'<link rel="stylesheet" href="{u}">'), 1)
 
 
+class LoadListener(unittest.TestCase):
+    def test_img_load_never_listened_on_window(self):
+        """load / error は window まで上がらない（DOM の決まり）。window の capture で聞く写真の .ld は一度も付かず、
+        届いた写真が 3 秒の保険まで透明だった（2026-11-01）。document で聞く。"""
+        for f in sorted(pathlib.Path(render.__file__).parent.glob("*.py")):
+            n = len(re.findall(r"(?<![.\w])addEventListener\(\s*['\"](?:load|error)['\"][^\n]*?,\s*true\s*\)", f.read_text(encoding="utf-8")))
+            self.assertEqual(n, 0, f"{f.name}: window で load/error を capture している {n} か所")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1859,7 +1859,7 @@ EMB_JS = """
     (img.decode ? img.decode() : Promise.reject()).then(show, show); late(img); });
   // 記事の写真（.pic）も届いたら .ld で出す。あとから JS が作る写真も拾うので load は capture で受ける。3 秒たっても届かなければ出す
   const okPic = i => i.matches && i.matches('.pic img') && i.naturalWidth;
-  addEventListener('load', ev => { if (okPic(ev.target)) ev.target.classList.add('ld'); }, true);
+  document.addEventListener('load', ev => { if (okPic(ev.target)) ev.target.classList.add('ld'); }, true);   // window ではなく document：load は window まで上がらない（DOM の決まり）。window だと一度も呼ばれず、届いた写真が 3 秒の保険まで透明のままだった（2026-11-01）
   const sweep = () => document.querySelectorAll('.pic img').forEach(i => { if (i.complete && i.naturalWidth || !i.getAttribute('src')) i.classList.add('ld'); });
   sweep(); document.querySelectorAll('.pic img').forEach(late);
   // 最初の画面（と半画面ぶん先）の記事の写真は lazy を外して先に取る。ほかは lazy のまま（2026-10-30 最初のニュースを速く）
