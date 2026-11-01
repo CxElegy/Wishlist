@@ -247,3 +247,4 @@
 - 2026-11-01 r2：ux_check E4（Pochita 85px）＝_body_len のしゃがみ見積もりを 1.4 倍までに。PR #714。本番 guest 1400 で E4 0。次：周杰伦の先頭の写真（photo_store 待ち）
 - 2026-11-01 r3：ux_check 残り（先頭の写真が置き場に無い）の根＝render のあと写真の一時保管を起こさない → render.yml に `photo_store.py --todo`＋起こす段・test。次：合併後 photo_store の回が起きたか・guest ux_check で picks の ✗ 0 を確かめ。dota2 の頭（17173 取れず）は残り。
 - 2026-11-01 r3f1：#716 の連動漏れ＝収集の回〔digest.yml・background.yml〕の発布に写真の一時保管を起こす段が無かった→`photo_store.py --kick` に共通化し 3 workflow に足す・tests/test_photo_kick.py（render を呼ぶ workflow を数える）。次：合併後 collect の回のあと photo_store が起きたか確認
+- 2026-11-01 r1：ux_check「写真の余白」を全候補（1,394 枚中 約 130 → 1,374 測定）で数える形に（GAP_JS・読めない 25% 超は ✗）。本番 guest 1400/390 とも bad 0。次：②人ごと・ページごとに分けて 1 回 500 秒以内（BACKLOG の ux_check 再走の段）
