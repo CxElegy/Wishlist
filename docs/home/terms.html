@@ -61,6 +61,7 @@ button{font-family:inherit}
 .nx{position:relative;z-index:2;display:grid;grid-template-columns:repeat(var(--nxn,2),minmax(0,1fr));gap:12px;margin-top:6px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
 .nx a{display:flex;flex-direction:column;gap:5px;min-width:0;color:inherit;text-decoration:none}
 .nx img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
+.nx img.whole{object-fit:contain;background:color-mix(in srgb,currentColor 8%,transparent)}
 .nx b{font:700 13px/1.4 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .nx a:hover b{text-decoration:underline;text-underline-offset:3px}
 .nx>i{grid-column:1/-1;font:700 11px var(--font-mono);letter-spacing:.12em;font-style:normal;opacity:.7}
