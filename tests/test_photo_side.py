@@ -58,3 +58,17 @@ class CropEverywhere(unittest.TestCase):
     def test_ux_check_counts_cut_everywhere(self):
         u = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
         self.assertIn("section.sec .pic.fill img[data-e=\"s\"]", u)
+
+
+class NextNewsCrop(unittest.TestCase):
+    """2026-11-01 主写真の横の「同じ版面の次のニュース」(.nx) も 3:2 に切るので、同じ cropAt を通す（取りこぼし）"""
+    def test_nx_uses_cropat_or_whole(self):
+        js = render.FIT_JS
+        self.assertIn("im.dataset.m = x.i.dataset.m", js)
+        self.assertIn("cropAt(im, r)", js)
+        self.assertIn("classList.toggle('whole'", js)
+        self.assertIn(".nx img.whole{object-fit:contain", render.CSS if hasattr(render, "CSS") else (ROOT / "scripts" / "render.py").read_text(encoding="utf-8"))
+
+    def test_ux_check_counts_nx(self):
+        u = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
+        self.assertIn('section.sec .nx img[data-e="s"]:not(.whole)', u)

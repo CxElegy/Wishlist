@@ -110,6 +110,7 @@ button{font-family:inherit}
 .nx{position:relative;z-index:2;display:grid;grid-template-columns:repeat(var(--nxn,2),minmax(0,1fr));gap:12px;margin-top:6px;padding-top:10px;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
 .nx a{display:flex;flex-direction:column;gap:5px;min-width:0;color:inherit;text-decoration:none}
 .nx img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
+.nx img.whole{object-fit:contain;background:color-mix(in srgb,currentColor 8%,transparent)}
 .nx b{font:700 13px/1.4 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .nx a:hover b{text-decoration:underline;text-underline-offset:3px}
 .nx>i{grid-column:1/-1;font:700 11px var(--font-mono);letter-spacing:.12em;font-style:normal;opacity:.7}
@@ -3285,6 +3286,10 @@ FIT_JS = """
     d.innerHTML = '<i>同じ版面の次のニュース</i>';
     more.forEach(x => { const a = document.createElement('a'); a.href = x.u; a.target = '_blank'; a.rel = 'noopener';
       const im = document.createElement('img'); im.src = x.i.currentSrc || x.i.src; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer';
+      // 3:2 に切る所も同じ規則：主役（data-m）が 6 割以上残る位置で切る。残らなければ切らず全体表示（.nx img.whole）
+      if (x.i.dataset.m) im.dataset.m = x.i.dataset.m; if (x.i.dataset.e) im.dataset.e = x.i.dataset.e;
+      const cut = () => { const r = im.naturalWidth / im.naturalHeight / 1.5; im.classList.toggle('whole', !(Math.abs(Math.log(r)) < 0.08 || cropAt(im, r))); };
+      im.addEventListener('load', cut); if (im.complete && im.naturalWidth) cut();
       const b = document.createElement('b'); b.textContent = x.t.trim(); a.append(im, b); d.append(a); });
     host.append(d);
     // 文字の列と次の記事を足した高さまで、写真の枠を伸ばす（縦長の写真ほど大きく見せる。左下を空けない）
