@@ -15,7 +15,7 @@ class MasonTest(unittest.TestCase):
         for s in ("const mason = ", "'span ' + Math.max(1, Math.ceil(", "perms(tail)"):
             self.assertEqual(js.count(s), 1, s)
         self.assertEqual(js.count("m.className = 'mas'"), 2)   # 版面の小さいカードの束・過去のニュース（.older）の束
-        self.assertIn("addEventListener('toggle'", js)   # 閉じていると高さ 0：開いたときに積む
+        self.assertIn("document.addEventListener('toggle'", js)   # 閉じていると高さ 0：開いたときに積む
 
     def test_css_masonry_rows_are_1px_and_mobile_unwraps(self):
         css = render.CSS
