@@ -22,6 +22,7 @@
 | `docs/rules/library.md` | ライブラリ・お客さまのアカウント（全文） | `library.py`・`db/library.sql`・お客さまの版面 |
 | `docs/rules/login.md` | ログイン（全文）・お客さまの記事集め（`userfeed.py`） | ログイン・`AUTH_JS`・`db/auth*.sql`・`userfeed.py`・`user_boards` |
 | `docs/rules/lang.md` | 读者的语言：主言語・副言語 | `lang.py`・言語の去重 |
+| `docs/rules/free-tier.md` | 無料の枠で回し続ける（測った事実・点検は本番の写真を落とさない・配信の見張り・写真の置き場の案） | Supabase の Storage・点検（Playwright）・新しく配るものを足す |
 
 ## スキル（2026-10-22，用户定的）
 
