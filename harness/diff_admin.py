@@ -55,7 +55,7 @@ DATA_WAIT = {"これからの予定": "日程は AI 編集で付く（お客さ�
 MUST = {"test-a": {"気になるかも？の棚", "気になるかも？の 1 枚"}}
 PROBE = """(parts)=>{const vis=x=>x.offsetParent||x.getClientRects().length;const o={};
 for(const [k,s] of Object.entries(parts)){try{o[k]=[...document.querySelectorAll(s)].filter(vis).length}catch(e){o[k]=-1}}
-o.__admin_link=[...document.querySelectorAll('a[href*="admin"]')].filter(vis).length;return o}"""
+o.__start=[...document.querySelectorAll('.startgo')].filter(vis).length;o.__admin_link=[...document.querySelectorAll('a[href*="admin"]')].filter(vis).length;return o}"""
 
 
 def probe(pw, base, who, width, page, session, who_map):
@@ -98,7 +98,7 @@ def run(pw, base, who_list, widths, session, who_map):
                     continue
                 u = probe(pw, base, who, w, page, session, who_map)
                 if page == "":
-                    empty[(who, w)] = u.get("版面", 0) == 0
+                    empty[(who, w)] = u.get("__start", 0) > 0   # 「最初の 1 つを選ぶ」の主役ボタンがある = 版面 0 個（静かな版面「はじめに」だけ）
                 e0 = empty.get((who, w), False)
                 d, nx, dw = diff(admin, u, False, who, e0), diff(admin, u, True, who, e0), diff(admin, u, False, who, e0, True)
                 fails += len(d)
