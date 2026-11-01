@@ -571,7 +571,7 @@ PROCESSES = [
              "text": "上げる 400 の webp を 1 画素に縮めて #rrggbb にし state の c に残す（色のない分は公開の 400 を読んで埋め直す）。色を足しただけの回も state を発布する（stat の nc）。render._pic が置き場の写真の枠に style=background として埋める＝色だけの下絵が通信 0 で最初の描画から出る"},
             {"id": "ph3", "kind": "step", "lane": "actions", "title": "古いものを消す（evict）", "uses": ["supabase"],
              "text": "ページに載っていない＆最後に使ってから 14 日超え、なお上限 300MB 超えなら古い順。消すのは photos の箱の中だけ"},
-            {"id": "ph4", "kind": "store", "lane": "repo", "title": "state/photo_store.json", "text": "指紋ごとの最後に使った日・大きさ。render が読む"},
+            {"id": "ph4", "kind": "store", "lane": "repo", "title": "state/photo_store.json", "text": "指紋ごとの最後に使った日・大きさ・平均色・主役の分布 m（顔と題字・輪郭の濃さを横・縦 12 区間で。小さいカードが主役の 6 割以上残る位置で切る材料）。render が読む"},
             {"id": "ph5", "kind": "step", "lane": "actions", "title": "状態だけ発布して網页の作り直しを起こす", "text": "置いた・消したものがあるときだけ。state/photo_store.json 1 ファイルを最新の main に載せ直して push（数秒・5 回まで）、作り直しは render.yml を起こす〔前は 3 分の作り直しの間に main が進んで push が 3 回負け、記録を失った〕"},
         ],
     },

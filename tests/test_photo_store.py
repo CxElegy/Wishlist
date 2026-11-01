@@ -149,5 +149,26 @@ class LeadOutside(unittest.TestCase):
 
 
 
+class PhotoMass(unittest.TestCase):
+    def _png(self, draw):
+        from PIL import Image, ImageDraw
+        im = Image.new("RGB", (300, 600), (200, 200, 200))
+        draw(ImageDraw.Draw(im))
+        b = io.BytesIO()
+        im.save(b, "PNG")
+        return b.getvalue()
+
+    def test_mass_follows_the_busy_part(self):
+        # 縦長の絵の下のほうだけに文字のような細かい線がある → 縦の分布は下に寄り、合計は約 100
+        def d(g):
+            for y in range(420, 560, 8):
+                g.line([(40, y), (260, y)], fill=(0, 0, 0), width=3)
+        m = P.mass(self._png(d))
+        self.assertEqual(len(m), 2)
+        self.assertTrue(95 <= sum(m[1]) <= 105)
+        self.assertGreater(sum(m[1][7:]), 80)
+        self.assertEqual(P.mass_css("http://none.example/x.jpg"), None)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -794,7 +794,7 @@ def _img_url(u, local=True):
     return u
 
 
-def _pic(story):
+def _pic(story, focus=False):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
     兜底顺序：自己的图 → _fbs 里的备用图（作品封面）→ 来源网站的图标和网站名 → 作品名排版的封面块。
     前一个打不开（防盗链、网站删图、图标太小……）网页上自动换下一个。"""
@@ -812,7 +812,9 @@ def _pic(story):
     src = exp[0] if exp else None
     # 一時保管の写真は幅 400／800 を srcset で渡す（小さい画面・小さい枠は 400）。背景のぼかしは 400 で足りる
     srcset = f' srcset="{e(small)} 400w, {e(big)} 800w" sizes="(max-width:700px) 100vw, 33vw"' if small else ""
-    tag = (f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer" data-e="s">') if src else ""
+    ms = photo_store.mass_css(chain[0]) if focus and chain else None   # 小さいカードの切る位置の材料（顔・題字の分布）
+    dm = f' data-m="{ms}"' if ms else ""
+    tag = (f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer"{dm} data-e="s">') if src else ""
     label = f'<span class="ph">{e(name)}</span>' if name else ""
     icons = _icons(story)
     icon = ""
@@ -1569,7 +1571,7 @@ def _picks(picks, works, feedback=None):
         return (
             f'<div class="pk{" big" if big else ""}{"" if _has_photo(story) else " nophoto"}" data-u="{e(x["url"])}" data-s="{x.get("score") or 4}" '
             f'data-w="{e(x["work"])}"{_fx(x["work"])} data-key="{e("|".join(x.get("words") or []))}"{" data-f=1" if follow else ""}{" data-new=1" if x.get("explore") else ""}>'
-            f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story) if _has_photo(story) else ""}'
+            f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story, True) if _has_photo(story) else ""}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
             f'<b>{e(x["title"])}</b>'
             f'<span class="why">{why_html}</span>'
@@ -3191,6 +3193,24 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
 # どんな記事の写真でも同じ型に収まる。スクリプトがないときは全部「全体を表示」
 FIT_JS = """
 (() => {
+  // 小さいカード：枠に合わせて切るとき、主役（顔・題字）の分布 data-m「横;縦」が最も残る位置を探す。残る割合を data-keep（%）に残す（点検が数える）。
+  // 切れる長さが枠の 45% を切る細長い絵・6 割残らない絵は false（全体表示）
+  const cropAt = (img, r) => {
+    img.style.objectPosition = ''; delete img.dataset.keep;
+    const m = (img.dataset.m || '').split(';').map(s => s.split(',').map(Number));
+    if (m.length !== 2 || m[0].length < 2 || m[1].length < 2 || Math.abs(Math.log(r)) < 0.08) return false;
+    const horiz = r > 1, a = m[horiz ? 0 : 1], q = horiz ? 1 / r : r, n = a.length, tot = a.reduce((s, v) => s + v, 0) || 1;
+    if (q < 0.45) return false;
+    const C = t => { const x = Math.min(Math.max(t, 0), 1) * n, i = Math.min(Math.floor(x), n - 1); let s = 0; for (let j = 0; j < i; j++) s += a[j]; return s + a[i] * (x - i); };
+    let best = -1, at = 0;
+    for (let k = 0; k <= 24; k++) { const o = (1 - q) * k / 24, v = C(o + q) - C(o); if (v > best) { best = v; at = o; } }
+    const keep = best / tot;
+    if (keep < 0.6) return false;
+    const pos = (1 - q) > 0.001 ? at / (1 - q) * 100 : 50;
+    img.style.objectPosition = horiz ? pos + '% 50%' : '50% ' + pos + '%';
+    img.dataset.keep = Math.round(keep * 100);
+    return true;
+  };
   const fit = img => {
     const p = img.closest('.pic');
     // 期限切れ・削除された図の代わりに返ってくる 1×1 の空白（Yahoo の exp= 付き画像など）は「開けない」と同じ扱い：次の候補へ
@@ -3212,7 +3232,8 @@ FIT_JS = """
         return;
       }
       const r = nat / (p.clientWidth / Math.max(1, p.clientHeight - pko));
-      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);   // ほぼ同じ比率のときだけ埋める（切れるのは 8% まで）
+      // 比率が違っても、顔・題字（data-m）が 6 割以上残る位置で切れるなら切る（案 2）。残らない絵は今までどおり全体を見せる
+      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r));
       if (!p.classList.contains('fill') && r < 0.75) side(pk, p, nat, p.clientHeight);   // 写真が枠より細い：空いた横に札を置く
       return;
     }
