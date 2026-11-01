@@ -22,7 +22,7 @@ class SameStoryOnce(unittest.TestCase):
     def test_page_wide_pass_exists(self):
         self.assertIn("const once = () =>", RENDER)   # ポスター → 壁 → 予定 → 版面の順に、もう出した記事のカードを畳む
         self.assertIn(".nxd,.dupd{display:none!important}", RENDER)
-        self.assertIn("a.lk[href],.nx a[href],.agenda li a[href]", UX)   # 点検は版面の中だけでなくページ全体
+        self.assertIn("a.lk[href],.nx a[href],.agenda li a[href],.pk a[href]", UX)   # 点検は版面の中だけでなくページ全体
 
     def test_front_stories_leave_the_boards(self):
         """実際に描く：トップ（ポスター・ほかの注目）に出た記事は、版面の HTML に 2 回目が出ない。"""
@@ -44,6 +44,17 @@ class SameStoryOnce(unittest.TestCase):
         body = page.split('class="subhead"')[-1] if 'class="subhead"' in page else page[page.index("</section>", page.index('id="front"')):]
         for u in used:
             self.assertNotIn(u + '"', body, u)
+
+    def test_picks_are_in_the_rule(self):
+        """気になるかも（.pk）も対象：once() が数え、トップに出た記事は _picks が外す。"""
+        self.assertIn(".agenda li a[href], .pk a[href], section.sec a.lk[href]", RENDER)
+        self.assertIn("_picks(picks, works, fb, front_used)", RENDER)
+        sys.path.insert(0, str(R / "scripts"))
+        import render
+        pk = lambda u: {"title": f"t{u}", "url": f"https://example.com/{u}", "work": "A", "source": "s", "date": "2026-10-12", "hits": [], "because": "x"}
+        h = render._picks([pk(1), pk(2)], [{"name": "A", "_thumb": None}], None, {"https://example.com/1"})
+        self.assertNotIn("example.com/1\"", h)
+        self.assertIn("example.com/2", h)
 
 
 if __name__ == "__main__":

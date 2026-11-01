@@ -1552,12 +1552,13 @@ def _why(x):
 WORK_KEY = "作品:"  # 投票学到的口味里，按作品记的那一类（和 digest.WORK_KEY 一致）
 
 
-def _picks(picks, works, feedback=None):
+def _picks(picks, works, feedback=None, used=None):
     """「我会喜欢？」角落：按愿望清单的喜好，从收集到的消息里挑的推荐，每条写明推荐理由。
     feedback 配好了 Supabase（url、key）时，每条下面有 👍 / 👎，投票直接写进数据库，下次出刊时学习。"""
     # 垃圾页（digest.is_spam）はここでも落とす：recommend.json は別の仕組み（後台作業）が古い内容で書き戻すことがあり、
     # 作る側で除いていても古いファイルから戻ってくる（2026-10-19 Unisba Media が推薦に残った）
-    picks = [x for x in picks or [] if not _spam(x.get("title") or "", x.get("url") or "")]
+    picks = [x for x in picks or [] if not _spam(x.get("title") or "", x.get("url") or "")
+             and x.get("url") not in (used or ())]   # L7：トップ（ポスター・ほかの注目）に出した記事は推薦にも出さない。版面との二重は once()（入れ替えても効く）
     if not picks:
         return ""
     covers = {w["name"]: [w["_thumb"]] if w.get("_thumb") else [] for w in works}
@@ -3426,10 +3427,10 @@ FIT_JS = """
   const once = () => {
     document.querySelectorAll('.dupd').forEach(x => x.classList.remove('dupd'));
     const seen = new Set();
-    document.querySelectorAll('.poster .top a.lk[href], .wc a.lk[href], .agenda li a[href], section.sec a.lk[href], section.sec .nx a[href]').forEach(a => {
+    document.querySelectorAll('.poster .top a.lk[href], .wc a.lk[href], .agenda li a[href], .pk a[href], section.sec a.lk[href], section.sec .nx a[href]').forEach(a => {
       if (!(a.offsetParent || a.closest('details')) || a.closest('.nxd')) return;
       if (!seen.has(a.href)) { seen.add(a.href); return; }
-      if (!a.closest('.nx')) { const h = a.closest('article, li'); if (h) h.classList.add('dupd'); }
+      if (!a.closest('.nx')) { const h = a.closest('article, li, .pk'); if (h) h.classList.add('dupd'); }
     });
   };
   once();
@@ -4072,7 +4073,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     front_used = set()
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新 {updated}">'
-            + _front(works, latest["date"], updated, themes, wishes, taste, front_used) + _picks(picks, works, fb)
+            + _front(works, latest["date"], updated, themes, wishes, taste, front_used) + _picks(picks, works, fb, front_used)
             + _sub_heads(_without(works, front_used), subs, parents) + "</div>")
     parts = [body]
     return _board_marks(f"""<!doctype html>
