@@ -1329,6 +1329,7 @@ CARD_AR = (0.95, 1.6)   # emblem.CARD_AR と同じ：カード（4:5）の窓で
 
 
 BODY_CROUCH = 1.15   # 「体の大きさ ÷ 目から足の長さ」が版面の中央値のこれ倍を超える = しゃがんでいる・前かがみ
+BODY_CROUCH_MAX = 1.4   # 立ったときの長さの見積もりは、目から足の 1.4 倍まで（人がしゃがんで縮む限り）。それ以上に体が大きいのはマスコット・怪物（Pochita 1.8 倍）で、見積もりに従うと E4 の下限 100px を割る
 
 
 def _body_len(alts):
@@ -1345,7 +1346,7 @@ def _body_len(alts):
             if len(b) != 5:
                 continue
             leg = b[1] - b[0]
-            b.append(round(max(leg, b[4] / ratio) if b[4] / leg > ratio * BODY_CROUCH else leg, 3))
+            b.append(round(min(max(leg, b[4] / ratio), leg * BODY_CROUCH_MAX) if b[4] / leg > ratio * BODY_CROUCH else leg, 3))
 
 
 EMB_TOP = 12   # 版面の顔に出す小元素の数の下限（これか集まった枚数の 2 割の多いほう）。開いて最初に出る 1 枚は EMB_JS が上位 3 人から

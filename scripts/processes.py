@@ -580,7 +580,7 @@ PROCESSES = [
     {
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
-        "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。",
+        "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。全身の小元素の高さは「目から足」をそろえ、しゃがみの見積もりは 1.4 倍まで（体の大きいマスコットが 100px を割らない）。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。",
         "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py", "harness/d5_sample.py"], "doc": "docs/rules/design.md", "uses": ["facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
             {"id": "p1fnt", "kind": "step", "lane": "actions", "title": "Web フォントの CSS は描画を止めない（render.font_link）", "text": "fonts.googleapis.com の stylesheet を media=print で取り、届いたら all に（noscript に保険）。display=swap なので字は先に出る。前は遠いサーバーへの往復 4 回ぶん最初の表示が止まり、Fast 3G の LCP が 4.3 秒だった（止めないと 1.2 秒）。本体 7 頁・入口・擬音の書体すべてが font_link を通り、tests/test_perf.py がソースと生成済みの docs/index.html・docs/home/*.html の止める link を数える。入口は描画を止める link が残る古い出力なら 24 時間を待たず作り直す（welcome.build_if_stale）。ux_check が本番の入口＋本体 4 頁も数える"},
