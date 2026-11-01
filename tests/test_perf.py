@@ -73,5 +73,12 @@ class TinyStandIn(unittest.TestCase):
         self.assertIn("naturalWidth < 32 && img.naturalHeight < 32) { img.dispatchEvent(new Event('error'))", src)
 
 
+
+class TinyUxCheck(unittest.TestCase):
+    def test_ux_check_counts_tiny(self):
+        s = (pathlib.Path(__file__).parent.parent / "harness" / "ux_check.py").read_text(encoding="utf-8")
+        self.assertIn("tiny:", s)
+        self.assertIn("小さい代用画像", s)
+
 if __name__ == "__main__":
     unittest.main()

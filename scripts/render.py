@@ -3220,7 +3220,7 @@ FIT_JS = """
   const fit = img => {
     const p = img.closest('.pic');
     // 期限切れ・削除された図の代わりに返ってくる 1×1 の空白・防盗链の小さい代用画像（17173 の 989 バイト）は「開けない」と同じ扱い：次の候補へ。
-    // 2026-11-01：以前は img.onerror を呼んでいたが、10-30 から onerror 属性が無く（data-e＋document の捕捉）一度も動いていなかった。error を投げて同じ処理に渡す
+    // 2026-11-01：以前は onerror 属性の関数を呼んでいたが、10-30 から onerror 属性が無く（data-e＋document の捕捉）一度も動いていなかった。error を投げて同じ処理に渡す
     if (img.dataset.e && img.naturalWidth && img.naturalWidth < 32 && img.naturalHeight < 32) { img.dispatchEvent(new Event('error')); return; }
     if (!p || !img.naturalWidth || !p.clientHeight) return;
     p._ok = 1;   // 一度は測れた（隠れた版面の写真は、見えるようになったとき下の ResizeObserver が測る）
