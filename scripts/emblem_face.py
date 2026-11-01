@@ -374,3 +374,26 @@ def audit(items):
             rows.append({"name": it["name"], "n": len(em), "none": flags["none"], "small": flags["small"], "big": flags["big"], "short": flags["short"],
                          "unmeasured": flags.get("unmeasured", 0), "spread": round(max(shares) / min(shares), 3) if shares else 1.0})
     return rows
+
+
+# ---- 表示した顔の px（2026-11-02 ユーザー：人物は顔の大きさをそろえる。全身と胸像で基準を分ける）----
+EMB_H, LEG, LEGC, BMAX = 156, 116, 290, 200   # render.CSS の .emb 高さ・--leg・--legc・--bmax（1400px 幅）
+CLASSES = {"bust": "胸像（顔が枠の 32%）", "cut": "上半身に切った立ち絵", "full": "全身（等身）", "big": "全身（頭の大きいキャラ）"}
+BIG_HEAD = 0.2   # 全身で 顔の高さ ÷ 絵の高さ がこれ以上 = 頭の大きいキャラ（マスコット・デフォルメ）
+
+
+def face_class(body, fs):
+    """人物の小元素の型。body = render の a["body"]（なければ None）、fs = 顔の高さ ÷ 絵の高さ。"""
+    if not body:
+        return "bust"
+    return "cut" if body[1] > 1 else ("big" if fs >= BIG_HEAD else "full")
+
+
+def shown_face_px(fs, body=None, m=None):
+    """今の CSS で、1400px 幅に表示される顔の高さ（px）。body = [目, 足, …, 目から足の長さ(6 番目があれば)]、m = 胸像の倍率(fit)。"""
+    if not fs:
+        return None
+    if body:
+        bl = body[5] if len(body) > 5 else body[1] - body[0]
+        return round(fs * min((LEGC if body[1] > 1 else LEG) / bl, BMAX), 1)
+    return round(EMB_H * fs * m, 1) if m else None

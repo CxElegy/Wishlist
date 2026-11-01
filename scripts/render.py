@@ -1412,6 +1412,8 @@ def _emblem(items, ring="accent"):
         if isinstance(fs, (int, float)) and 0.05 < fs <= 1:
             a["fs"] = float(fs)
         fc = x.get("face")
+        if a.get("body") and isinstance(fc, list) and fc and isinstance(fc[0], (int, float)) and fc[0] > 0:
+            a["bf"] = float(fc[0])   # 全身の顔の高さ ÷ 絵の高さ：点検（emb_check E29）が表示した顔の px を数える材料
         if not a.get("body") and a["shape"] == "cutout" and isinstance(fc, list) and len(fc) == 6 and all(isinstance(v, (int, float)) for v in fc):
             m, _ = emblem_face.fit(fc)   # 測ってある顔：拡大も縮小もして、顔の高さをそろえる
             if m:

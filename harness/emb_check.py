@@ -563,6 +563,7 @@ def check(pg, who, width, out, full=False, guest=False):
     found = {f"E{n}": [] for n in range(1, 21)} | {"E22": [], "E23": [], "E24": [], "E28": []}
     nomodel = False
     nf_why = {}   # E17：顔が測れない理由の札 → [版面 名前]
+    px_by = {}    # E29：型 → [表示した顔の px]
     nf_kind = {}  # E17：顔なしの 3 分け（nk：keep ①・symbol ②・replace ③・? = まだ測り直していない）→ [版面 名前]
     src_of = sources()
     shots, embdir = [], out / "emb"
@@ -619,6 +620,11 @@ def check(pg, who, width, out, full=False, guest=False):
             hashes[name] = h
             if BAD_SOURCE.search(urllib.parse.unquote(src.split("?")[0].split("//", 1)[-1].split("/", 1)[-1])):
                 found["E9"].append(f"{s['k']} {name}（{src.rsplit('/', 1)[-1][:40]}）")
+        for a in s["alts"]:   # E29：型ごとに、表示した顔の px
+            if a["shape"] == "cutout":
+                fs_, bd = a.get("bf") or a.get("fs"), a.get("body")
+                if (px := emblem_face.shown_face_px(fs_, bd, a.get("m"))):
+                    px_by.setdefault(emblem_face.face_class(bd, fs_), []).append(px)
         shares = [a["fs"] * a["m"] for a in s["alts"] if a.get("m") and a.get("fs") and a["shape"] == "cutout" and not a.get("body")]   # 顔の高さ ÷ 枠の高さ（版面の中の全候補）
         shares = [v for v in shares if abs(v - FACE_TARGET) <= FACE_TARGET * FACE_TOL]   # そろえきれず札のついたもの（big/small）は別の段（BACKLOG：別の写真に替える）
         if shares and max(shares) / min(shares) > 1.25:
@@ -716,6 +722,9 @@ def check(pg, who, width, out, full=False, guest=False):
             print(f"  情報 E27 数えられなかった：{e}")
     if guest and (ex := exhausted()):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
+    if px_by:
+        print("  情報 E29 表示した顔の高さ px（最大÷最小。基準待ち・✗ にしない）：" + "・".join(
+            f"{emblem_face.CLASSES[k]} {len(v)} 枚 {min(v):.0f}〜{max(v):.0f}px（{max(v) / min(v):.2f} 倍）" for k, v in sorted(px_by.items())))
     if nf_why:
         print(f"  情報 E17 顔が測れない {sum(map(len, nf_why.values()))} 枚の理由：" + "・".join(f"{k} {len(v)}（{emblem_face.NONE_REASONS[k]}）" for k, v in sorted(nf_why.items())))
     if nf_kind:

@@ -194,3 +194,14 @@ class Threshold(unittest.TestCase):
         ef._boxes(Image.new("RGBA", (120, 120), (200, 120, 90, 255)), weak=True)
         self.assertAlmostEqual(face_id.engine()[0].getScoreThreshold(), face_id.SCORE, places=5)
 
+
+
+class ShownFacePx(unittest.TestCase):
+    def test_class_and_px(self):
+        self.assertEqual(ef.face_class(None, 0.3), "bust")
+        self.assertEqual(ef.face_class([0.1, 2.0, 0.5, 0.5, 0.9], 0.2), "cut")
+        self.assertEqual(ef.face_class([0.1, 0.9, 0.5, 0.5, 0.8], 0.1), "full")
+        self.assertEqual(ef.face_class([0.1, 0.9, 0.5, 0.5, 0.8], 0.3), "big")
+        self.assertEqual(ef.shown_face_px(0.1, [0.1, 0.9, 0.5, 0.5, 0.8, 0.8]), 14.5)   # 116 / 0.8 = 145 → 顔 14.5px
+        self.assertEqual(ef.shown_face_px(0.32, None, 1.0), 49.9)
+        self.assertIsNone(ef.shown_face_px(0, None, 1.0))
