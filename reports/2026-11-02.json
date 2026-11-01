@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "54ce3066c6b5",
+ "edit_sig": "51c0f7247453",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
@@ -102,45 +102,49 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Doomsday is the biggest release of the year, with the MCU film beating Supergirl's box office run in presales.",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "Murphy's Multiverse",
-     "title": "Marvel’s Midnight Sons: Release Speculation, Cast, Characters, and Everything We Know",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPcnlVMVdCc2c5eFFGYnBRTl9pQU5PSzQ1bVgySlJuM3E1OU8xSEN6V3pLNnVEdXk0Zk12c1ZWRXQ1NEJUZGc2dlhjSDd5OUlkVXAzNGxGWTM2TlB0RlBYa05BM1cwdThRWHhWc1EyZVZCOHdkTko3QnJsU1pKcDlCaWZ6Ui1NVDhValBxdExoTjJPeEN4cjdNemRR?oc=5"
+     "headline": "Avengers: Doomsday Officially Beats Supergirl Box Office Nearly 2 Months Before Release",
+     "highlight": "Beats Supergirl Box Office",
+     "image": "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/01071523/avengers-1024x576.webp",
+     "image_via": "AI 挑选",
+     "url": "https://fandomwire.com/avengers-doomsday-presales-surpass-supergirl-box-office/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 2,
-     "source": "SlashFilm",
-     "title": "One Of Marvel Comics' Greatest Modern Writers Is A Secret MCU Consultant",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQaTR0MGtteWRob3hObHRDSDM0VDM2SXZRQUxnNGdkcUNXT0JwMVJpVlVDX0tkN2JZVHc3bDZZWWpFcnVZUXJPU2pRUW90Z0s5aG1NNEdPdHlVVXh6WUlqVEsxY01sSFltcGU4YTRnWWw4TlVWbUZXVjE3bktBLUF5YWNka25zVzNIVENkNnR0ZnZOejdvSkE0QzVJV2VuUmtiYWdSMmZkZC1HQjcyMFZj?oc=5"
+     "headline": "Marvel’s Midnight Sons: Release Speculation, Cast, Characters, and Everything We Know",
+     "highlight": "Midnight Sons",
+     "image": "https://assets.murphysmultiverse.com/uploads/2026/11/midnight-sons-main.webp",
+     "image_via": "og:image",
+     "url": "https://www.murphysmultiverse.com/marvel-midnight-sons-movie-mcu-cast-characters-release-date/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-30",
-     "n": 3,
-     "source": "ScreenRant",
-     "title": "5 Years Later, The MCU Brings Back Shang-Chi's Ten Rings With A Surprising Twist",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9TTVNHVGwzY095VDZ0RXlrZmJoU0IyQ3Y5ejhLak13aFFWenQ2UzM0bU1mTTlUUzZaTGppQWhWSzRDMkZDRUtGR1M0M0xSdjlfcXZIUkVKV21nd2Vkd091SnZDeUtxbnVWZFduUg?oc=5"
+     "headline": "5 Years Later, The MCU Brings Back Shang-Chi's Ten Rings With A Surprising Twist",
+     "highlight": "Ten Rings",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/01/shang-chi-with-the-ten-rings.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/shang-chi-ten-rings-mcu-return-twist/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 4,
-     "source": "IMDb",
-     "title": "‘Avengers: Doomsday’ Presales Reportedly Catch Up to ‘Supergirl’s Entire Box Office Run More Than a Month Early",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5VYUo5eUhtYUg5MHdWOXc2TnFoZU5KQzdqQ29lRldOZ190LTJvU0dTYjV3bHR0a3hYWU5kSWJ1d2dyWnlzLWplZ3k1dC1KTW1FdUNmeDlqX2NoMVVkVFQwNW9jbjFjWDg?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 5,
-     "source": "FandomWire",
-     "title": "Avengers: Doomsday Officially Beats Supergirl Box Office Nearly 2 Months Before Release",
-     "url": "https://fandomwire.com/avengers-doomsday-presales-surpass-supergirl-box-office/"
+     "headline": "One Of Marvel Comics' Greatest Modern Writers Is A Secret MCU Consultant",
+     "highlight": "Secret MCU Consultant",
+     "image": "https://www.slashfilm.com/img/gallery/one-of-marvel-comics-greatest-modern-writers-is-a-secret-mcu-consultant/l-intro-1793015723.jpg",
+     "image_via": "og:image",
+     "url": "https://www.slashfilm.com/2296548/marvel-comics-greatest-modern-writer-secret-mcu-consultant-jonathan-hickman/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",
@@ -238,31 +242,29 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "東レPPOテニス2026、シュナイデルがフルセットの熱戦を制して初戴冠。",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "THE DIGEST",
-     "title": "【画像】フルセットの熱戦を制したシュナイダーがPPO初戴冠。ダブルスはエラニ/パオリーニのイタリアペアが優勝｜東レPPOテニス",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBaLVBZVmZnUWJ5MDRORzJLaHpmaTU0T3BnZHFrNkNBaHl5QzAxUEFNaExqOEFyampKX2JqTHU2eEtFaE9GUUlXQWhWOHVBZlhnUWU4VzZqd2pSa1U?oc=5"
+     "headline": "22歳のシュナイデルが今季初Vを達成！【東レPPOテニス2026】",
+     "highlight": "今季初V",
+     "image": "https://tennis.jp/wp-content/uploads/2026/11/01c7c148e69a113ad7caf41c67a44fc4-1024x682.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://tennis.jp/news/archives/348830",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 2,
-     "source": "tennis.jp",
-     "title": "22歳のシュナイデルが今季初Vを達成！【東レPPOテニス2026】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFA0UG1YRmZJN09jcThRZFFoNWpjZ3dvUnZIeUNsZGRmUWNCcjNxaXBmR2Ywc2d5LUpRdFVsVzRabGhaRUpsS1NWcFB2V0ZqRTQ?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 3,
-     "source": "Yahoo!ニュース",
-     "title": "パリ五輪金メダルペアのエラーニ／パオリーニがマッチ15連勝中だったダブロウスキー／ステファニーを倒して今季初優勝 [東レPPOテニス]（テニスマガジンONLINE）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5PamNfemxubFcxYTladG45WGlKdXk3VWRHQXFKTDg4X01qVkdHVkZISzUwX2g4V2tTWXVnbmRiZUh6NjRXdW16SWtLU0l0RDJMZFJNLURYckFLZW5JWGRxSV80MHNIOF9TSnVhNHBLZTBkRGZyZ0d5eC1ZVml6LUk?oc=5"
+     "headline": "パリ五輪金メダルペアのエラーニ／パオリーニがマッチ15連勝中だったダブロウスキー／ステファニーを倒して今季初優勝",
+     "highlight": "今季初優勝",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00035877-tennismagv-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/c36ef63237853b7c2f2cbefef6318880f136753a",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
@@ -306,31 +308,29 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Robert Downey Jr. introduced Pedro Pascal as 'the Real Mandalorian' to Halloween fans.",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "Comic Basics",
-     "title": "Robert Downey Jr. Hilariously Introduces Pedro Pascal as 'the Real Mandalorian' to Halloween Fans",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNNmxJei0zWXM2Zk03TlNfQlFmX2VuenFBS3o4YzdXVE43bW5KY2NHUnNscmR3bFJDaXI5dVdXd1JVR3JadkNPaGl4UDBERWp5X0tHaF9qRkE0NHlKdzEyeGV2MnFvWlpQRTdNc0pFeG9ZT1B5T1IwdWNvcUp0RDlxSkNQaklKSUdEUzdXRjg1REN5QU1FZnlGZXczVjFobkx2WENXZjhuV1Y3NW1jRkE4cWpIOWtIN24xQUcyaFdCRHY?oc=5"
+     "headline": "Robert Downey Jr. Hilariously Introduces Pedro Pascal as 'the Real Mandalorian' to Halloween Fans",
+     "highlight": "the Real Mandalorian",
+     "image": "https://www.comicbasics.com/wp-content/uploads/2026/11/Robert-Downey-Pedro-Pascal.webp",
+     "image_via": "AI 挑选",
+     "url": "https://www.comicbasics.com/robert-downey-jr-hilariously-introduces-pedro-pascal-as-the-real-mandalorian-to-halloween-fans/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 2,
-     "source": "Bluesky",
-     "title": "Robert Downey Jr. and Pedro Pascal with fans. Downey yelled out to them to “come meet the real Mandalorian.” (📸: Patrick07612186 | Twitter/X)",
-     "url": "https://bsky.app/profile/dailycosmicmarvel.bsky.social/post/3mzawupcn6c27"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 3,
-     "source": "The Film Theorists on MSN",
-     "title": "The Mandalorian may back the Star Wars Empire's philosophy",
-     "url": "https://www.msn.com/en-us/news/other/the-mandalorian-may-back-the-star-wars-empires-philosophy/vi-AA2gwrkc"
+     "headline": "The Mandalorian may back the Star Wars Empire's philosophy",
+     "highlight": "Empire's philosophy",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwNJE.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/the-mandalorian-may-back-the-star-wars-empires-philosophy/vi-AA2gwrkc",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -374,68 +374,37 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 1,
-     "source": "民視新聞網",
-     "title": "音樂鬼才Vaundy首攻台！小巨蛋四面台無螢幕炸裂萬人 嗨喊台語「多謝」",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1Dc0NnSDl5QVNFRDkwTWljU3BZWS1rcDBfTDdTQmlqVV9vWWtZbkxrVHNSX3JIMG9aNzVNUjVjVFoyaUw0Z0Qybk1RU01hSGhmMVdvRXhObDJCNVBxNks2Sw?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 2,
-     "source": "中時新聞網",
-     "title": "嗨翻2.6萬人！Vaundy連兩天小巨蛋開唱 IG驚喜直播秀台粉熱情",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1NLXpPeHBSMHd6UlhjOFBUbWRPYWxURDYwbGJzOE5Ybm1nRU9WT0hsRG9XVEhiYTIzTm9mbTVnRzZLWDRQNDJsRjU5d1Vla0wyTkQtOUJwRnRyZEN3UUtxcjFLQ2VzdFJ3MXhEODV3?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 3,
-     "source": "Facebook",
-     "title": "天啊！粉絲也太幸福 #Vaundy #小巨蛋",
-     "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNOE82akVTd0tVZ3JZS0RZN1ctOHphT2tmSXFoQWkzTmVZNHRPZktDZlVKQk56SVc4OF9PeV9sLWNmb1loOFNNeTZZR3JzYVBmdHF4bzJHMGtscXRhdy1Jak44RzZVRy1ibDc0aXROOVpLZjVfeVpudktQZkxQeE1iS1h3OTVUOTBYWm8xa1BRVXdNbkRrbFNWa0pSWTJYMFJYV3MwdThmMmFZdF9BTUNjYVk1LVo4Uk40b1dCWEhrQkdidlByd0Jwb2Fic2pKYnk0UkJDN2tuZ3RueGMyMzNfOUowdWlJNFhlQ0k4ZVNlbTZVT1k3LWYxd1RR?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "自由娛樂",
-     "title": "（直擊）Vaundy攻蛋唱一半突開IG直播！1.3萬台粉歌聲傳向全球",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5xR2MzSkxINXZrcng3S3kwVTZvbV93VVNTVFJxbi1qN0tHOVVVU2wySVBUd2pzajRsaE80SXkwd1E4dDUzb04waHBkLW5rVXItSUpvRTBEcW9qZl8y?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 6,
-     "source": "TVBS新聞網",
-     "title": "直擊／Vaundy小巨蛋開唱嗨翻2.6萬台粉！狂喊4次台語「多謝」 突襲開IG直播獻全世界",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5KQVNNU3BQcmVSejNEaVJCbjNocUxVRTc5NVgtZXdqUzh4NnNxTUZQRWMyNUJyZDRSRHdKX3pyWXhZbXVVRWt2UXBlS1pCZElncG9CR0hIcUNQOWM5bWFHVlBn?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 7,
-     "source": "壹蘋新聞網",
-     "title": "直擊｜Vaundy小巨蛋喊「多蝦」嗨翻2.6萬人次！不信台粉日文吐槽：騙人",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQdFRxZm5ycGV2YTNRQ2xwREtZY1VjTXNmRUt1b2hLY1llcUpNbmhQQ0RtT1I3ZHNwY1F5Y2FMbVNPdUJpZmFSMDF3WWF1U1FEZndWRXJiMF9IakhmanNaVTVwODJnX2NiSGxHbDh0dGZRMDV6WldZRWdMRHZPQjBrRUJZU0FqbjdxR0E?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 8,
-     "source": "中天新聞網",
-     "title": "直擊/Vaundy小巨蛋連唱兩天！四面台零螢幕 〈怪獣の花唄〉萬人合唱掀高潮",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9CYkVoR3YxTjBoQ1dmbmExNHJtNlBJMFROeUpScTRwaGYxMHFlSU1kRmpHWmpwSm5IbmstMmFXVXg3bjFSNzJpOTVoTDYxY05fUzk4?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
+     "blurb": "Vaundy 連兩天登台北小巨蛋，約 2.6 萬人到場，現場突然開 IG 直播。",
+     "date": "2026-11-01",
+     "headline": "直擊／Vaundy小巨蛋開唱嗨翻2.6萬台粉！狂喊4次台語「多謝」 突襲開IG直播獻全世界",
+     "highlight": "2.6萬台粉",
+     "image": "https://news-images.tvbs.com.tw/api/v1/image/01a1974f-ad5d-72be-a75b-2f6f484ae1a6.jpg?t=4x3&c=0,525,2668,2526&w=1200&h=675",
+     "image_via": "AI 挑选",
+     "url": "http://news.tvbs.com.tw/entertainment/jk-pop/4044412",
+     "weight": "lead"
+    },
+    {
      "blurb": "",
      "date": "2026-11-01",
-     "headline": "Vaundy台北小巨蛋辦演唱會（3） (圖)",
-     "highlight": "",
-     "image": "https://s.yimg.com/lo/mysterio/api/4b1ca35178ca0000b85d604edcd7e460285f827229c1796480b9b8a56f5c58a8/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fcna.com.tw%2Fb9b0206ddb673c7fbafe6258de0f9198.jpg",
+     "headline": "（直擊）Vaundy攻蛋唱一半突開IG直播！1.3萬台粉歌聲傳向全球",
+     "highlight": "IG直播",
+     "image": "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/01/phpu8QrkM.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://ent.ltn.com.tw/news/breakingnews/5626067",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "直擊/Vaundy小巨蛋連唱兩天！四面台零螢幕 〈怪獣の花唄〉萬人合唱掀高潮",
+     "highlight": "四面台零螢幕",
+     "image": "https://storage.ctinews.com/compression/files/default/cut-1793538777-XNKpkSx.jpg",
      "image_via": "og:image",
-     "url": "https://tw.news.yahoo.com/vaundy%E5%8F%B0%E5%8C%97%E5%B0%8F%E5%B7%A8%E8%9B%8B%E8%BE%A6%E6%BC%94%E5%94%B1%E6%9C%83-3-%E5%9C%96-134206690.html",
-     "weight": "hero"
+     "url": "https://ctinews.com/news/items/rbW4mZgoaL",
+     "weight": "normal"
     }
    ],
    "subtitle": "演唱会",
@@ -515,31 +484,19 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
-     "date": "2026-11-01",
-     "n": 1,
-     "source": "아시아뉴스통신",
-     "title": "A2O LITE, '인기가요'서 아이브·엔믹스 꺾고 1위!",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1vbl94UGlhM3V5M2kxMlRFSGtfM2VuVjlDbVZ4OHJaNDRzOURDTTR2RzV4RTgyOXl3WDFzVDB5aFE3ODdZT1lHMDRLSmU0RDA3ODJ6Z2NOQU1meWhwbmtTRERoZi1HZGY1X2Y3Q3ZpMVR6azY5?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 2,
-     "source": "아시아뉴스통신",
-     "title": "A2O LITE在《人气歌谣》中击败IVE和NMIXX夺得第一！",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE52TzYyNGxTYk1YaG9DTUJiMWpmRUFIdWRqcnJmX2VSTnJXdGZOWTNCeWpVRERZS2hlSTRFS1JyNDBDWi13OElyMGRGZlhsMjZEU1FHQW5mc3hpSmNNM2FURWc1Q1J4Nk9UY0VMMWZSYU9zYjU0?oc=5"
-    },
-    {
+     "blurb": "A2O LITE が「Neon」で IVE・NMIXX を抑え、音楽番組で 7 冠目。",
      "date": "2026-10-31",
-     "n": 3,
-     "source": "デバク",
-     "title": "A2O LITE、IVE・NMIXXおさえ「Neon」7冠目！20261031「ウマチュン」",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9UREF1NkU5Yl9sQUQ5cUl5QjZUTGtmYld0ZnBLdFBqUTJtZF9ocHpxMUNOTnQ2cnpJODRUZXB5SS1oNUJOU1poT2NEUWpzVHZrQ1QxV2dlUnFQT0tMTTRTZ181RQ?oc=5"
+     "headline": "A2O LITE、IVE・NMIXXおさえ「Neon」7冠目！20261031「ウマチュン」",
+     "highlight": "7冠目",
+     "image": "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_HV8V1mcaEAA8sS4_20261031.webp",
+     "image_via": "AI 挑选",
+     "url": "https://daebak.tokyo/2026/10/31/a2o-lite-neon-7h-win/",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
@@ -678,7 +635,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "last": {
     "date": "2026-11-01",

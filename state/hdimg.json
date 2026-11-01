@@ -420,6 +420,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.murphysmultiverse.com/uploads/2026/11/midnight-sons-main.webp": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.st-note.com/production/uploads/images/327624810/rectangle_large_type_2_aed04e16319fb3675554717e75078d48.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -899,6 +905,19 @@
   ],
   "why": "看不清"
  },
+ "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_HV8V1mcaEAA8sS4_20261031.webp": {
+  "w": 355,
+  "h": 200,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.442,
+  "local": "pics/027b9f43daa9c6c6.webp",
+  "out": [
+   1065,
+   600
+  ],
+  "why": "看不清"
+ },
  "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_a2o_aijing_5156_20261015.webp": {
   "w": 452,
   "h": 300,
@@ -1049,6 +1068,12 @@
   "w": 1600,
   "h": 900,
   "target": 720,
+  "v": 3
+ },
+ "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/01071523/avengers-1024x576.webp": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
   "v": 3
  },
  "https://gamefragger.com/images/articles/banners/bleach-mirrors-high-introduces-10-new-characters-designed-by-tite-kubo-ahead-of-its-launch-ab30039.jpg": {
@@ -1456,12 +1481,6 @@
   ],
   "why": "看不清"
  },
- "https://images.chinatimes.com/newsphoto/2026-11-01/656/20261101002918.jpg": {
-  "w": 656,
-  "h": 437,
-  "target": 720,
-  "v": 3
- },
  "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/10/1280/720/darwin-cat-food.png?ve=1&tl=1": {
   "w": 1280,
   "h": 720,
@@ -1778,6 +1797,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwNJE.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwwQn.img": {
   "w": 780,
   "h": 438,
@@ -1855,6 +1880,12 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/26/5619207_2.jpg": {
   "w": 800,
   "h": 1069,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/01/phpu8QrkM.jpg": {
+  "w": 800,
+  "h": 1199,
   "target": 1280,
   "v": 3
  },
@@ -2258,6 +2289,12 @@
   "target": 720,
   "v": 3
  },
+ "https://motoryokoblog.com/wp-content/uploads/2026/09/vaundy_8298_fv.png": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://mtnweekly.com/wp-content/uploads/2026/10/Nitro-Phase-2027-Motorhead-Snowboard-17.jpg": {
   "w": 1200,
   "h": 859,
@@ -2294,6 +2331,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://news-images.tvbs.com.tw/api/v1/image/01a1974f-ad5d-72be-a75b-2f6f484ae1a6.jpg?t=4x3&c=0,525,2668,2526&w=1200&h=675": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnQPUzVN95p8yqnKJxK5c3z8SNd1lEVn53rak9OLWAnFn4rPntJAWIzGnBkiFnP68AKeT8CP0jt79U3DujKPbvLZlPE1NPxPRBWL8kUcSFH0Y": {
@@ -3020,6 +3063,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00035877-tennismagv-000-1-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3,
+  "local": "pics/85f8ccd6cc174728.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261101-00144577-toushin-000-1-view.png?fmt=jpeg&q=85&exp=10800": {
   "w": 859,
   "h": 646,
@@ -3370,12 +3425,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/4b1ca35178ca0000b85d604edcd7e460285f827229c1796480b9b8a56f5c58a8/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fcna.com.tw%2Fb9b0206ddb673c7fbafe6258de0f9198.jpg": {
-  "w": 1200,
-  "h": 801,
-  "target": 1280,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/7dc940cb64e006a0125c7d9e0b9de842d75c3557798abcc3b0823042a67e808f/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpeople_218%2F62e06a2909da57162cd55f6cddeb727b.jpg": {
   "w": 1200,
   "h": 800,
@@ -3434,12 +3483,6 @@
   "w": 1434,
   "h": 948,
   "target": 1280,
-  "v": 3
- },
- "https://scontent-iad6-1.xx.fbcdn.net/v/t39.99422-6/884924425_1153682347015371_581249059817294694_n.png?stp=dst-jpg_tt6&cstp=mx1080x1350&ctp=p600x600&_nc_cat=106&ccb=1-7&_nc_sid=cae128&_nc_ohc=lcncj-l2RjEQ7kNvwHX17X2&_nc_oc=Adom7sZ3URvPuiGe1Ef6zbmF9H9MEnezo405iRaJW04wjJ9daQuST12YMb_owZDCl00&_nc_zt=14&_nc_ht=scontent-iad6-1.xx&_nc_gid=iIckfm1CjDiFv5Z8vwMt9g&_nc_ss=7b20f&oh=00_AQTDYolEtE2XTjMOykCKnoBHNuuXAq5zAomLDnHvvH7YUA&oe=6AED3230": {
-  "w": 600,
-  "h": 750,
-  "target": 720,
   "v": 3
  },
  "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
@@ -3673,6 +3716,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/01/shang-chi-with-the-ten-rings.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://staticg.sportskeeda.com/editor/2026/10/e55d0-17932176639486-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3689,6 +3738,12 @@
   "w": 1600,
   "h": 1069,
   "target": 1280,
+  "v": 3
+ },
+ "https://storage.ctinews.com/compression/files/default/cut-1793538777-XNKpkSx.jpg": {
+  "w": 1547,
+  "h": 2319,
+  "target": 720,
   "v": 3
  },
  "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261027005537": {
@@ -3738,6 +3793,12 @@
   "w": 1024,
   "h": 682,
   "target": 720,
+  "v": 3
+ },
+ "https://tennis.jp/wp-content/uploads/2026/11/01c7c148e69a113ad7caf41c67a44fc4-1024x682.jpg": {
+  "w": 1024,
+  "h": 682,
+  "target": 1280,
   "v": 3
  },
  "https://tennisconnected.com/wp-content/uploads/2026/03/alexandra-eala-joc481o-fonseca-get-03-17-26-e1773723674883.jpg.webp": {
@@ -3996,6 +4057,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.-YWbxebzD2ERR4MMfG4n3Q&pid=News&w=1100": {
+  "w": 700,
+  "h": 326,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.4J2nRakvD3RS1jr8Nsjp5A&pid=News&w=650": {
   "w": 650,
   "h": 341,
@@ -4111,6 +4178,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.LqQ7JkcDXFYBAyYiJRL7xQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.N-f2Ky3IkMTQMcFoucfixQ&pid=News&w=640": {
   "w": 640,
@@ -4506,6 +4579,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.comicbasics.com/wp-content/uploads/2026/11/Robert-Downey-Pedro-Pascal.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/10_6f3cce.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
@@ -4753,6 +4832,12 @@
  "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png": {
   "w": 1000,
   "h": 608,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.slashfilm.com/img/gallery/one-of-marvel-comics-greatest-modern-writers-is-a-secret-mcu-consultant/l-intro-1793015723.jpg": {
+  "w": 1600,
+  "h": 899,
   "target": 720,
   "v": 3
  },

@@ -1,32 +1,32 @@
 {
- "admin": "b79435537326",
- "admin-ai": "dbd06b7e0eca",
+ "admin": "4faead82be06",
+ "admin-ai": "bcc725aafefe",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "7c6c61f5"
+   "22b3e0c9"
   ],
   "tokens": [
    "AI 編集のトークン",
    "10b7a9f3"
   ]
  },
- "admin-boards": "c1d1e6cee736",
+ "admin-boards": "5af0ba422412",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5b394e52"
+   "4dfc032a"
   ],
   "votes": [
    "投票",
    "05938a02"
   ]
  },
- "admin-emblem": "2a35124a0f3e",
+ "admin-emblem": "2859936592b8",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f22a07c1"
+   "839d8a09"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "993011042005",
  "admin-members_marks": {},
- "admin-now": "cd4ce50831e2",
+ "admin-now": "898a91315906",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5421e221"
+   "2ce4f9a1"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "349e172f"
   ]
  },
- "admin-system": "a5e085d820c9",
+ "admin-system": "26e66fe01537",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "daebd076"
+   "c4a79cb6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d2287343"
+   "e746718d"
   ]
  },
  "admin_marks": {},
- "heat": "ef12996a17eb",
+ "heat": "3d29b11a21ae",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "d7e20c72"
+   "4b768c47"
   ],
   "ranking": [
    "ランキング",
-   "a9b1b613"
+   "6e03f717"
   ]
  },
- "index": "6053e305299b",
+ "index": "a5b1e9f3e0e9",
  "index_marks": {
   "front": [
    "トップ",
-   "afa9c6df"
+   "76399d79"
   ],
   "picks": [
    "気になるかも？",
@@ -121,15 +121,15 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "0ce4509e"
+   "c7c7253f"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "71db17c1"
+   "a69a0623"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "198ee32f"
+   "a323e598"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -161,11 +161,11 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "0364e440"
+   "e8e12da4"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "93cedf3d"
+   "21f86a97"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "2589a0f1"
+   "be9289e4"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "a5689cf0"
+   "adfe32b6"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "1f366455"
   ]
  },
- "updated": "11.02 01:35",
+ "updated": "11.02 01:42",
  "wishlist": "18ac14d63d63"
 }

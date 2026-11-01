@@ -48,6 +48,143 @@
   }
  ],
  "_covered": {
-  "GTA 6": 9
- }
+  "GTA 6": 9,
+  "Vaundy": 8,
+  "漫威电影": 5,
+  "日本顶级网球赛事": 3,
+  "The Mandalorian": 3,
+  "A2O LITE": 3
+ },
+ "Vaundy": [
+  {
+   "headline": "直擊／Vaundy小巨蛋開唱嗨翻2.6萬台粉！狂喊4次台語「多謝」 突襲開IG直播獻全世界",
+   "highlight": "2.6萬台粉",
+   "blurb": "Vaundy 連兩天登台北小巨蛋，約 2.6 萬人到場，現場突然開 IG 直播。",
+   "weight": "lead",
+   "refs": [
+    6,
+    2,
+    5,
+    1,
+    7
+   ],
+   "image": "https://news-images.tvbs.com.tw/api/v1/image/01a1974f-ad5d-72be-a75b-2f6f484ae1a6.jpg?t=4x3&c=0,525,2668,2526&w=1200&h=675"
+  },
+  {
+   "headline": "（直擊）Vaundy攻蛋唱一半突開IG直播！1.3萬台粉歌聲傳向全球",
+   "highlight": "IG直播",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "直擊/Vaundy小巨蛋連唱兩天！四面台零螢幕 〈怪獣の花唄〉萬人合唱掀高潮",
+   "highlight": "四面台零螢幕",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  }
+ ],
+ "漫威电影": [
+  {
+   "headline": "Avengers: Doomsday Officially Beats Supergirl Box Office Nearly 2 Months Before Release",
+   "highlight": "Beats Supergirl Box Office",
+   "blurb": "Doomsday is the biggest release of the year, with the MCU film beating Supergirl's box office run in presales.",
+   "weight": "lead",
+   "refs": [
+    5,
+    4
+   ],
+   "image": "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/01071523/avengers-1024x576.webp"
+  },
+  {
+   "headline": "Marvel’s Midnight Sons: Release Speculation, Cast, Characters, and Everything We Know",
+   "highlight": "Midnight Sons",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "5 Years Later, The MCU Brings Back Shang-Chi's Ten Rings With A Surprising Twist",
+   "highlight": "Ten Rings",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "One Of Marvel Comics' Greatest Modern Writers Is A Secret MCU Consultant",
+   "highlight": "Secret MCU Consultant",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "22歳のシュナイデルが今季初Vを達成！【東レPPOテニス2026】",
+   "highlight": "今季初V",
+   "blurb": "東レPPOテニス2026、シュナイデルがフルセットの熱戦を制して初戴冠。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ],
+   "image": "https://tennis.jp/wp-content/uploads/2026/11/01c7c148e69a113ad7caf41c67a44fc4-1024x682.jpg"
+  },
+  {
+   "headline": "パリ五輪金メダルペアのエラーニ／パオリーニがマッチ15連勝中だったダブロウスキー／ステファニーを倒して今季初優勝",
+   "highlight": "今季初優勝",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Robert Downey Jr. Hilariously Introduces Pedro Pascal as 'the Real Mandalorian' to Halloween Fans",
+   "highlight": "the Real Mandalorian",
+   "blurb": "Robert Downey Jr. introduced Pedro Pascal as 'the Real Mandalorian' to Halloween fans.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://www.comicbasics.com/wp-content/uploads/2026/11/Robert-Downey-Pedro-Pascal.webp"
+  },
+  {
+   "headline": "The Mandalorian may back the Star Wars Empire's philosophy",
+   "highlight": "Empire's philosophy",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "A2O LITE、IVE・NMIXXおさえ「Neon」7冠目！20261031「ウマチュン」",
+   "highlight": "7冠目",
+   "blurb": "A2O LITE が「Neon」で IVE・NMIXX を抑え、音楽番組で 7 冠目。",
+   "weight": "lead",
+   "refs": [
+    3,
+    1,
+    2
+   ],
+   "image": "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_HV8V1mcaEAA8sS4_20261031.webp"
+  }
+ ]
 }
