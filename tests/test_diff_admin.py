@@ -22,6 +22,28 @@ class Diff(unittest.TestCase):
         self.assertTrue(all(v for v in diff_admin.ADMIN_ONLY.values()))   # 「管理なので無し」は理由を名前で書く
 
 
+class Waits(unittest.TestCase):
+    def test_data_wait_is_not_a_failure_but_must_is(self):
+        admin = {"これからの予定": 1, "気になるかも？の棚": 1}
+        self.assertEqual(diff_admin.diff(admin, {}, who="test-b"), [])                 # 材料がない人はデータ待ち
+        self.assertEqual(diff_admin.diff(admin, {}, who="test-b", wait=True), ["これからの予定", "気になるかも？の棚"])
+        self.assertEqual(diff_admin.diff(admin, {}, who="test-a"), ["気になるかも？の棚"])   # test-a は材料が十分：出なければ ✗
+
+    def test_empty_account_skips_board_parts_only(self):
+        admin = {"版面": 1, "目次：ロゴ": 1}
+        self.assertEqual(diff_admin.diff(admin, {}, empty=True), ["目次：ロゴ"])         # 枠組みは版面 0 個でも比べる
+
+    def test_agenda_comes_from_past_issues_too(self):
+        import render
+        import user_pages
+        st = {"headline": "発売日", "url": "https://e.com/a", "event": {"date": "2026-11-20", "label": "発売"}}
+        old = {"date": "2026-10-30", "no": 1, "items": [{"name": "X", "section": "游戏", "stories": [st]}]}
+        p = user_pages.prev_issue([{"name": "X", "_shop": True, "size": "L", "section": "游戏"}], old)   # 過去の号の分も本人のページに渡る
+        self.assertEqual(p["items"][0]["stories"][0]["event"]["label"], "発売")
+        self.assertIn('class="agenda"', render._agenda(p["items"], "2026-11-02"))   # 日程が付けば、本人のページでも同じ部品で出る
+        self.assertIsNone(user_pages.prev_issue([{"name": "Y", "_shop": True}], old))   # 追っていない版面だけの号は渡さない
+
+
 class Roots(unittest.TestCase):
     SRC = (ROOT / "scripts" / "render.py").read_text(encoding="utf-8")
 

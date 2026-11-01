@@ -201,12 +201,29 @@ def prev_issue(items, shop_issue):
     return {"date": shop_issue["date"], "no": shop_issue.get("no", 0), "items": blocks} if blocks else None
 
 
-def own_recommend(votes, items, issue):
+def spare_entries(items, rows):
+    """本人だけの版面（店長の収集にないもの）で、集めたのに版面に載らなかった記事（篇幅の分を超えた後ろ）。
+    店長の「版面に載らなかった他のニュース」と同じ出どころ（digest.recommend の board）。"""
+    out = []
+    for it in items:
+        if it.get("_shop"):
+            continue
+        cap = digest.SIZE_STORIES.get(it.get("size") or "M", STORIES_PER_BOARD)
+        for r in ((rows.get(norm(it["name"])) or {}).get("stories") or [])[cap:]:
+            day = str(r.get("date") or "")[:10] or dt.date.today().isoformat()
+            if r.get("title") and r.get("url"):
+                out.append(({"title": r["title"], "url": r["url"], "source": r.get("source") or "", "date": day,
+                             "image": r.get("image") or "", "summary": r.get("summary") or ""}, day, it["name"]))
+    return out
+
+
+def own_recommend(votes, items, issue, rows=None):
     """「気になるかも？」と好みの言葉：店長と同じ digest.recommend を本人の票で回す（本人の版面に出ている記事は除く）。
     欲しい物はまだ本人の分がないので空。失敗してもページは出す（おすすめなしで）。"""
     try:
         stories = [s for b in issue["items"] for s in b.get("stories") or []]
         return digest.recommend(user={"votes": votes or [], "wishes": [], "works": {i["name"] for i in items if i.get("_shop")},
+                                      "entries": spare_entries(items, rows or {}),
                                       "on_page": ({s["url"] for s in stories}, [s["headline"] for s in stories])})
     except Exception as ex:  # noqa: BLE001
         print(f"::warning::own recommend failed ({type(ex).__name__})")
@@ -236,7 +253,7 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     heat_scores = {}
     if heat_in:
         heat_scores = heat.compute(items, heat_in[0], [issue] + heat_in[1], *heat_in[2:])   # 本人の号を先に：本人だけの版面の記事も数える（同じ記事は 1 回）
-    rec = own_recommend(votes, items, issue)
+    rec = own_recommend(votes, items, issue, rows)
     render.PICKS_FLAG = render.SETTINGS_JA["picks_flag"]
     render.AUTH_DB = {"url": settings.get("supabase_url") or "", "key": settings.get("supabase_key") or ""}
     render.AUTH_ITEMS = [[i["name"], digest.section_of(i)] for i in shop_items if not i.get("parent")]

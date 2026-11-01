@@ -41,6 +41,18 @@ NEXT_STEP = {
     "目次：欲しい物へのリンク": "欲しい物は本人の分が要る（BACKLOG [?]：置き場の表を足すかどうか）",
     "見出し：欲しい物リストのボタン": "同上",
 }
+# 版面が 1 つもない人（test-c）は、版面から出る部品を持たなくてよい（最初の画面は「最初の 1 つを選ぶ」の別の主役、DESIGN）。枠組み（目次・ロゴ・見出し）は比べる
+BOARD_ONLY = {"トップのポスター", "ポスター：重大の札", "ポスター：👍👎", "ほかの注目ニュース", "気になるかも？の棚", "気になるかも？の 1 枚", "これからの予定", "版面",
+              "版面：主題の飾り（m- class）", "版面：小元素", "版面：記事の 👍👎", "版面：札（重大・新着など）", "版面：「もっと見る」の過去のニュース",
+              "版面：小分類の見出し", "版面：写真", "版面：話題度の数字", "目次：板块の札", "目次：駅（作品の札）", "設定：関注項の一覧"}
+# 中身（データ）がないと出ない部品：部品は同じで、本人の版面にその材料がまだない。△ で出し ✗ には数えない。
+#   これからの予定 = 記事に日程（event）が付いてから＝お客さまの版面の AI 編集はまだ（BACKLOG「お客さま専用の編集待ち」）
+#   もっと見る = 過去の号がある版面だけ ／ 気になるかも？ = 版面に載らなかった記事があるときだけ（MUST の人では必ず出す）
+DATA_WAIT = {"これからの予定": "日程は AI 編集で付く（お客さまの版面の編集は未対応）",
+             "版面：「もっと見る」の過去のニュース": "過去の号がまだない版面",
+             "気になるかも？の棚": "版面に載らなかった記事がまだない", "気になるかも？の 1 枚": "同上"}
+# 材料が十分あるはずの人は、データ待ちにしない（出なければ ✗）：test-a は版面 40 個・記事 400 本超
+MUST = {"test-a": {"気になるかも？の棚", "気になるかも？の 1 枚"}}
 PROBE = """(parts)=>{const vis=x=>x.offsetParent||x.getClientRects().length;const o={};
 for(const [k,s] of Object.entries(parts)){try{o[k]=[...document.querySelectorAll(s)].filter(vis).length}catch(e){o[k]=-1}}
 o.__admin_link=[...document.querySelectorAll('a[href*="admin"]')].filter(vis).length;return o}"""
@@ -60,19 +72,24 @@ def probe(pw, base, who, width, page, session, who_map):
     return r
 
 
-def diff(admin, user, later=False):
-    """店長にあってお客さまにない部品（ADMIN_ONLY を除く）。later=True なら次の段で直すもの（NEXT_STEP）だけ、False ならそれを除く。"""
+def diff(admin, user, later=False, who="", empty=False, wait=False):
+    """店長にあってお客さまにない部品（ADMIN_ONLY を除く）。later=True なら次の段で直すもの（NEXT_STEP）だけ、False ならそれを除く。
+    empty = 版面が 1 つもない人（BOARD_ONLY は比べない）。wait=True なら DATA_WAIT（データ待ち）だけを返す。MUST の人は DATA_WAIT でも ✗。"""
     out = []
     for k, n in admin.items():
-        if k.startswith("__"):
+        if k.startswith("__") or n <= 0 or user.get(k, 0) != 0 or k in ADMIN_ONLY or (k in NEXT_STEP) != later:
             continue
-        if n > 0 and user.get(k, 0) == 0 and k not in ADMIN_ONLY and (k in NEXT_STEP) == later:
-            out.append(k)
+        if empty and k in BOARD_ONLY:
+            continue
+        if (k in DATA_WAIT and k not in MUST.get(who, ())) != wait:
+            continue
+        out.append(k)
     return out
 
 
 def run(pw, base, who_list, widths, session, who_map):
     fails = 0
+    empty = {}   # (人, 幅) → 版面が 1 つもない（index を先に比べる）
     for page in ("", "settings.html"):
         for w in widths:
             admin = probe(pw, base, "guest", w, page, session, who_map)
@@ -80,11 +97,16 @@ def run(pw, base, who_list, widths, session, who_map):
                 if who == "guest":
                     continue
                 u = probe(pw, base, who, w, page, session, who_map)
-                d, nx = diff(admin, u), diff(admin, u, True)
+                if page == "":
+                    empty[(who, w)] = u.get("版面", 0) == 0
+                e0 = empty.get((who, w), False)
+                d, nx, dw = diff(admin, u, False, who, e0), diff(admin, u, True, who, e0), diff(admin, u, False, who, e0, True)
                 fails += len(d)
                 tag = f"{who} {page.split('.')[0] or 'index'} {w}px"
                 print(("✗ " if d else "✓ ") + f"店長との違い {tag}：" + ("、".join(d) if d else "なし（管理なしを除く）"))
                 if nx:
                     print(f"△ 次の段で直す {tag}：" + "、".join(nx))
+                if dw:
+                    print(f"△ データ待ち（部品は同じ・材料がまだない） {tag}：" + "、".join(dw))
     print(f"店長との違い：✗ {fails} 件")
     return 1 if fails else 0

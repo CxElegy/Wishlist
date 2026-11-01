@@ -65,6 +65,15 @@ class Picks(unittest.TestCase):
         rows = [{"url": "u1", "vote": 1}, {"url": "u1", "vote": 0}, {"url": "u2", "vote": -1}, {"url": "u3", "vote": 1}]
         self.assertEqual({r["url"] for r in digest.latest_votes(rows)}, {"u2", "u3"})
 
+    def test_spare_stories_become_candidates(self):
+        import digest
+        rows = {user_pages.norm("京都"): {"stories": [{"title": f"t{i}", "url": f"https://e.com/{i}", "date": "2026-11-02"} for i in range(8)]}}
+        out = user_pages.spare_entries([{"name": "京都", "size": "S"}, {"name": "店長と同じ", "_shop": True}], rows)
+        self.assertEqual([d["title"] for d, _, _ in out], ["t3", "t4", "t5", "t6", "t7"])   # S は 3 本。後ろの 5 本が候補
+        r = digest.recommend(user={"votes": [], "wishes": [], "works": set(), "entries": out, "on_page": (set(), [])})
+        self.assertTrue(r["picks"])        # 票がなくても、追いかけている版面の載らなかった記事から出る
+        self.assertEqual({p["work"] for p in r["picks"]}, {"京都"})
+
     def test_recommend_for_user_is_pure(self):
         import digest
         before = digest.RECOMMEND_FILE.read_bytes() if digest.RECOMMEND_FILE.exists() else None
