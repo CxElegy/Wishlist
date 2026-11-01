@@ -29,6 +29,12 @@ class LogoLocal(unittest.TestCase):
         self.assertEqual(got[1]["image"], "emblems/x.webp")   # 人物の絵は触らない
         self.assertTrue(got[2]["image"].startswith("https://cdn.jsdelivr"))   # Wikimedia 以外は触らない
 
+    def test_badge_photo_goes_local_too(self):
+        item = {"name": "FROM", "emblem": [{"subject": "a", "image": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/x.jpg/500px-x.jpg", "shape": "badge"}]}
+        with mock.patch.object(ef.emblem, "photo_local", return_value=("emblems/p.webp", 1.4)), mock.patch.object(ef.emblem, "write_item") as w:
+            self.assertEqual(ef.localize_remote(item), 1)
+        self.assertEqual((w.call_args[0][1][0]["image"], w.call_args[0][1][0]["ar"]), ("emblems/p.webp", 1.4))
+
     def test_failure_leaves_it(self):
         item = {"name": "x", "emblem": [{"subject": "a", "image": COMMONS, "shape": "logo"}]}
         with mock.patch.object(ef.emblem, "wordmark_local", side_effect=OSError("403")), \
@@ -37,10 +43,10 @@ class LogoLocal(unittest.TestCase):
         w.assert_not_called()
 
     def test_items_yaml_has_no_remote_wikimedia_logo(self):
-        """live：items.yaml の logo / icon に Wikimedia への直リンクが 0（同じ壊れ方を数える点検）"""
+        """live：items.yaml の 小元素に Wikimedia への直リンクが 0（同じ壊れ方を数える点検）"""
         d = yaml.safe_load((pathlib.Path(__file__).resolve().parent.parent / "items.yaml").read_text(encoding="utf-8"))
         bad = [(i["name"], x.get("subject")) for i in d["items"] for x in i.get("emblem") or []
-               if x.get("shape") in ("logo", "icon") and str(x.get("image", "")).startswith("http") and is_wikimedia(x["image"])]
+               if str(x.get("image", "")).startswith("http") and is_wikimedia(x["image"])]
         self.assertEqual(bad, [])
 
 

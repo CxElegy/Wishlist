@@ -2906,28 +2906,34 @@ def drop_same(item, log=print):
 
 
 def localize_remote(item, log=print):
-    """Wikimedia に直接つなぐ logo / icon を倉庫（emblems/）に置く。ブラウザからの直リンクは Wikimedia が 403 にする
+    """Wikimedia に直接つなぐ小元素（logo・icon・badge・cutout）を倉庫（emblems/）に置く。ブラウザからの直リンクは Wikimedia が 403 にする
     （三星手机の Samsung wordmark.svg：E1 出ない・E2 読めない）。取るのはこちら（決まった UA・1 本ずつ）。→ 置いた枚数。"""
     from wikihttp import is_wikimedia
     ems, n = list(item.get("emblem") or []), 0
     for x in ems:
         u = str(x.get("image") or "") if isinstance(x, dict) else ""
-        if x.get("shape") not in ("logo", "icon") or not u.startswith("http") or not is_wikimedia(u):
+        if not u.startswith("http") or not is_wikimedia(u):
             continue
         slug = emblem.slugify(item["name"], x.get("subject", ""))
         try:
-            got = emblem.wordmark_local(u, slug)
-            if got:
-                x.update(source=u, image=got[0], ar=got[1])
-            else:
-                x.update(source=u, image=emblem.logo_local(u, slug))
+            if emblem_face.logo_named(x):   # 名前が logo の cutout（ArcheAge_Logo.png）は人物でなくロゴ：shape も logo に
+                got = emblem.wordmark_local(u, slug)
+                if got:
+                    x.update(source=u, image=got[0], ar=got[1], shape="logo")
+                else:
+                    x.update(source=u, image=emblem.logo_local(u, slug), shape="logo")
+            else:   # 写真・ポスター・透明な絵：そのまま置く
+                got = emblem.photo_local(u, slug)
+                x.update(source=u, image=got[0])
+                if x.get("shape") == "badge" and not x.get("ar"):
+                    x["ar"] = got[1]
             n += 1
         except Exception as e:
             log(f"  [ロゴ] {item['name']} {x.get('subject')}：{e}")
     if n:
         with WRITE_LOCK:
             emblem.write_item(item["name"], ems, None)
-        log(f"  [倉庫へ] {item['name']}：Wikimedia へ直接つなぐロゴ {n} 枚を置いた")
+        log(f"  [倉庫へ] {item['name']}：Wikimedia へ直接つなぐ小元素 {n} 枚を置いた")
     return n
 
 

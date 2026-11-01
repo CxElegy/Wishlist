@@ -705,6 +705,16 @@ def logo_local(url, slug):
     return f"emblems/{slug}.webp"
 
 
+def photo_local(url, slug):
+    """写真・ポスター（badge）や透明な絵（cutout）をそのまま倉庫に置く（切らない・地も抜かない）→ (相対パス, 高さ÷幅)。"""
+    from PIL import Image
+    img = Image.open(io.BytesIO(_get(url))).convert("RGBA")
+    img.thumbnail((520, 520))
+    EMB_DIR.mkdir(parents=True, exist_ok=True)
+    img.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=90, method=6)
+    return f"emblems/{slug}.webp", round(img.size[1] / img.size[0], 3)
+
+
 def wordmark_local(url, slug):
     """作品の主な画像がタイトルロゴ（文字だけ・地が透明か一色）なら倉庫に置く → (相対パス, 高さ÷幅, 板つきか)。写真・ポスターなら None。
     カードに入れると白い板の中に小さな字が浮くだけ（The Mandalorian）なので、ロゴそのものを大きく貼る。

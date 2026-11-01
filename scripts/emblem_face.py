@@ -279,7 +279,8 @@ LOGO_NAME = re.compile(r"logo|wordmark|ロゴ", re.I)
 def logo_named(x):
     """画像の名前が logo のもの（shape が cutout のまま網址で引いた Wikipedia の ArcheAge_Logo.png など）は、人物でなくロゴ：顔を測らず切り抜き扱いにしない。"""
     import urllib.parse
-    return x.get("shape") in ("logo", "icon") or bool(LOGO_NAME.search(urllib.parse.unquote(str(x.get("image") or "").split("?")[0].rsplit("/", 1)[-1])))
+    return x.get("shape") in ("logo", "icon") or any(   # 倉庫に置いた絵（emblems/mmorpg-archeage.webp）は名前が変わるので、元の網址（source）の名前も見る
+        LOGO_NAME.search(urllib.parse.unquote(str(x.get(k) or "").split("?")[0].rsplit("/", 1)[-1])) for k in ("image", "source"))
 
 
 def _files(item, root):
