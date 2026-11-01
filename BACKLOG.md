@@ -5,7 +5,7 @@
 
 ## いちばん先（目標：お客さまが登録して、自分の版面を毎日読める。HARNESS「目標から決める」）
 
-- [~] （開始 2026-11-01 18:40 JST・持ち主 r1・依頼の係・最終 2026-11-01 18:40 JST）【依頼】**最優先**：Pages の公開（pages build and deployment）が何度も失敗してメールが来る（2026-11-01 ユーザー：受信トレイのスクショ〔Run failed: pages build and deployment が 30 分おき〕「老是ci fail 你改改呀 肯定有问题」）。
+- [x] （済 2026-11-01 r1 https://github.com/CxElegy/Wishlist/pull/735 ：pages.yml を合併。workflow_dispatch で build・deploy とも success、push の回は dispatch に cancel された〔concurrency 動作〕。残り＝ユーザーが Settings → Pages の Source を「GitHub Actions」に切り替える。切り替えて 1 回緑になったら pages.yml の deploy の continue-on-error を外す。物差し＝切り替え後 24h で pages 失敗 0）【依頼】**最優先**：Pages の公開（pages build and deployment）が何度も失敗してメールが来る（2026-11-01 ユーザー：受信トレイのスクショ〔Run failed: pages build and deployment が 30 分おき〕「老是ci fail 你改改呀 肯定有问题」）。
   - 入口の会話が調べた根（2026-11-01）：直近 24 時間で pages build and deployment が **30 回中 8 回失敗**、全部 deploy の段で `Deployment request failed … due to in progress deployment. Please cancel <前の commit> first`。build は成功している＝**main への push が多すぎて（24 時間で 312 コミット）、前の公開が終わる前に次の公開が始まりぶつかる**。中身の壊れではないが、失敗のたびにユーザーへメールが行く。CI 检查は 14 回中 2 回失敗（PR の途中、直してから合併）。
   - 直し方（両方）：①**公開を GitHub Actions のワークフローに移す**：`.github/workflows/pages.yml`（push to main と workflow_dispatch、`actions/upload-pages-artifact` で docs/ を、`actions/deploy-pages`、`concurrency: {group: pages, cancel-in-progress: true}`＝古い公開は取り消して最新だけ出す）。合併したら、**ユーザーが Settings → Pages → Build and deployment の Source を「GitHub Actions」に切り替える**（入口の会話がユーザーに頼む。切り替え前に pages.yml が main に入っていること。切り替えないと今の失敗は止まらない）。②**main への push を減らす**：BACKLOG・PROGRESS・状態ファイルの小さな更新は、まとめて 1 回にする（係ごとに段の終わりで 1 回、render の再生成は 10 分に 1 回まで）。
   - 物差し：切り替えた後 24 時間で pages の失敗 0、ユーザーへの失敗メールが来ない。CI 检查は push 前に手元で全部の試験を通してから（HARNESS の決まり）。
