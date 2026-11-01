@@ -1971,7 +1971,7 @@ def recommend(force_discover=False, user=None):
     - board：关注的版面里收集到、但没上版面的其他消息（按投票学到的口味排）→「你关注的「作品」还有这条」；
     - follow / hesitate：同类新发现（见 discover）；
     赞过的消息和候选有共同的喜好 / 是同一个作品时，理由写「因为你赞过「那条」」。
-    user（お客さま本人の分、user_pages.py）= {"votes": 本人の票, "wishes": 本人の欲しい物, "works": 本人が追いかけている版面の名前,
+    user（お客さま本人の分、user_pages.py）= {"votes": 本人の票, "wishes": 本人の欲しい物, "works": 店長の収集にもある版面の名前, "entries": 本人だけの版面で載らなかった記事,
     "on_page": (本人のページにある記事の網址の集合, 見出し)}：同じ規則を本人の票で回す。ネットは使わず（写真は候補の写真か前回の写真）、
     state には書かず、{"picks", "taste"} を返す。票がまだない人は、追いかけている版面の新着から（版面の基礎点）。
     已经在网页版面里的消息（和别家报道的同一件事）不推荐：版面里已经看得到。不让 AI 联网，只用收集到的消息。"""
@@ -2017,8 +2017,12 @@ def recommend(force_discover=False, user=None):
     found = [x for x in found if not x.get("probe")]
     entries = [(d, path.stem, item["name"]) for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]
                for item in load_json(path)["items"] for d in item["entries"] if not user or item["name"] in user["works"]]
+    if user:   # 本人だけの版面（店長の収集にないもの）は、集めた記事のうち版面に載らなかった分（user["entries"] = [(記事, 日, 版面)]）
+        entries += user.get("entries", [])
     recent = sorted(INBOX_DIR.glob("????-??-??.json"))[-BOARD_DAYS:]
     recent = {p.stem for p in recent}
+    if user:
+        recent |= {day for _, day, _ in user.get("entries", [])}
     pool, board = [], {}
     for d, day, work in entries + [(x, (x.get("date") or "")[:10], None) for x in probes]:
         if is_spam(d["title"], d.get("link") or d["url"]):
