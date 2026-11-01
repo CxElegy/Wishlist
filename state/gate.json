@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-01T12:37:11+00:00",
+ "checked": "2026-11-01T13:29:09+00:00",
  "fired": {
-  "at": "2026-11-01T12:37:11+00:00",
+  "at": "2026-11-01T13:29:10+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,8 +20,6 @@
     "sig": "cf20a4c1747b"
    },
    "items": [
-    "A2O LITE",
-    "GTA 6",
     "ILLIT",
     "The Mandalorian",
     "dota2",
@@ -30,56 +28,46 @@
     "チェーンソーマン",
     "三星手机",
     "周杰伦",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-01T12:29:25+00:00",
+   "last_batch": "2026-11-01T12:43:18+00:00",
    "last_error": {
     "at": "2026-11-01T12:24:09+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 232,
+   "prog": 256,
    "prog_day": "2026-11-01",
-   "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影"
-   ],
-   "sig": "cf20a4c1747b",
+   "ripe": [],
+   "sig": "2554bdf37555",
    "token_cap": 1000000,
-   "tokens_today": 625273,
-   "why": "整理待ちの記事 38 件（15 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 673269,
+   "why": "整理待ちの記事 14 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "漫威电影",
-    "GTA 6",
-    "あつ森",
-    "A2O LITE",
-    "The Mandalorian",
-    "周杰伦",
-    "绝区零",
-    "ぐでたま"
-   ],
-   "need": true,
-   "sig": "30f6159e2c5e",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
-    "哈利波特剧集"
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 5 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
