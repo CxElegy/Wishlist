@@ -369,6 +369,7 @@ button{font-family:inherit}
 .rs1{grid-row:span 1}.rs2{grid-row:span 2}.rs3{grid-row:span 3}.rs4{grid-row:span 4}
 /* 小さいカードの段（JS の mason が .mas に包む）：決まった升目で同じ段の背をそろえず、1px の行に 1 枚ずつ一番低い列へ積む。中身の高さで詰まり、段の途中に空きが出ない（2026-11-02 L1・L2） */
 .mas{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:22px;grid-auto-rows:1px;align-items:start;margin-bottom:-28px}
+.mas.mas2{grid-template-columns:repeat(2,minmax(0,1fr))}.mas>.card.c6{grid-column:auto;align-self:start}  /* c6 の小さいカード 4 枚以上は 2 列 */
 .older .mas{grid-template-columns:repeat(4,minmax(0,1fr))}  /* 過去のニュース（c3）も同じ積み方で 4 列 */
 .mas>.card.c4,.mas>.card.c3,.mas>.side{grid-column:auto;align-self:start}.mas>.card.c8{grid-column:span 2;align-self:start}
 .mas>.side{display:flex;flex-direction:column;gap:28px}
@@ -640,7 +641,7 @@ button{font-family:inherit}
  .hero{grid-template-columns:1fr}.hero h2,.lead h2{font-size:22px}
  .lead,.s12,.s6,.s4{grid-column:span 12}.rs1,.rs2,.rs3,.rs4{grid-row:auto}
  .card.mini{grid-template-columns:110px minmax(0,1fr)}
- .mas{display:contents}.mas>.card.c4,.mas>.card.c3,.mas>.card.c8{grid-column:span 12;grid-row:auto!important}.mas>.side{display:contents}
+ .mas{display:contents}.mas>.card.c4,.mas>.card.c6,.mas>.card.c3,.mas>.card.c8{grid-column:span 12;grid-row:auto!important}.mas>.side{display:contents}
  .calm{flex-wrap:wrap;gap:12px;padding:4px 14px 16px}.calm .pic{display:none}
  .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
 }
@@ -3381,13 +3382,13 @@ FIT_JS = """
         m = document.createElement('div'); m.className = 'mas'; g.insertBefore(m, ks[0]); ks.forEach(c => { m.append(c); mro && mro.observe(c); });
       }
       if (!m) {
-        const ks = [...g.children], ok = k => k.matches('article.card.mini.c4, .side'), run = [];
+        const ks = [...g.children], ok = k => k.matches('article.card.mini.c4, article.card.mini.c6, .side'), run = [];   // c6〔お客さまの版面の 4 枚の並び〕は 2 列の束
         let i = ks.findIndex(k => k.matches('article.card.lead.c8') && ks[ks.indexOf(k) + 1] && ks[ks.indexOf(k) + 1].matches('.side'));
         if (i < 0) i = ks.findIndex(ok);
         if (i < 0) return;
         for (let j = i; j < ks.length && (j === i && ks[j].matches('article.card.lead.c8') || ok(ks[j])); j++) run.push(ks[j]);
         if (run.length < 4) return;
-        m = document.createElement('div'); m.className = 'mas'; g.insertBefore(m, run[0]); run.forEach(c => { m.append(c); mro && mro.observe(c); });
+        m = document.createElement('div'); m.className = run.some(k => k.matches('.c6')) ? 'mas mas2' : 'mas'; g.insertBefore(m, run[0]); run.forEach(c => { m.append(c); mro && mro.observe(c); });
       }
       const gap = parseFloat(getComputedStyle(g).rowGap) || 28;
       const span = () => [...m.children].forEach(c => { c.style.gridRow = 'span ' + Math.max(1, Math.ceil(c.getBoundingClientRect().height + gap)); });
@@ -3396,7 +3397,7 @@ FIT_JS = """
       // 終わりの列の底がでこぼこ（80px 超）なら、最後の 5 枚以内の並び順を入れ替えて、列の底の差が一番小さい順にする（日付の順は 5 枚の中だけ前後する）
       {
         const hs = c => c.getBoundingClientRect().height + gap, minis = [...m.children].filter(c => old || c.matches('.mini')), lead = m.querySelector(':scope > .lead'), sd = m.querySelector(':scope > .side');
-        const base = old ? [0, 0, 0, 0] : lead ? [hs(lead), hs(lead), sd ? hs(sd) : 0] : [0, 0, 0], K = Math.min(old ? 9 : 5, minis.length), head = minis.slice(0, minis.length - K), tail = minis.slice(minis.length - K);
+        const base = old ? [0, 0, 0, 0] : m.classList.contains('mas2') ? [0, 0] : lead ? [hs(lead), hs(lead), sd ? hs(sd) : 0] : [0, 0, 0], K = Math.min(old ? 9 : 5, minis.length), head = minis.slice(0, minis.length - K), tail = minis.slice(minis.length - K);
         const run = order => { const c = base.slice(); order.forEach(k => { const i = c.indexOf(Math.min(...c)); c[i] += hs(k); }); return Math.max(...c) - Math.min(...c); };
         // 過去のニュースは最後の 9 枚の入れ替えが多すぎる（9! 通り）ので、決まった種の乱数で 600 通りを試す
         const samp = (a, n) => { let s = 7; const r = () => (s = (s * 1103515245 + 12345) % 2147483648) / 2147483648; return Array.from({length: n}, () => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; }); };

@@ -48,3 +48,9 @@ class MasonOlderTest(unittest.TestCase):
 
     def test_sb_card_extra_height_goes_to_third_row(self):
         self.assertIn(".card.sb:not(.mini){grid-template-rows:auto auto minmax(0,1fr)}", render.CSS)
+
+    def test_mini_c6_runs_get_two_columns(self):
+        # お客さまの版面の 4 枚の並び（mini c6）も mason の外に出さない：2 列の束（.mas2）
+        self.assertIn("article.card.mini.c6", render.FIT_JS)
+        self.assertIn("'mas mas2'", render.FIT_JS)
+        self.assertIn(".mas.mas2{grid-template-columns:repeat(2,minmax(0,1fr))}", render.CSS)
