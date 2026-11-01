@@ -67,6 +67,27 @@ def session(email):
     return out
 
 
+# 2026-11-01：「写真の余白」は、画面に入って読み込み済みの写真しか数えていなかった（本番 1400 で候補 1,394 枚のうち測れたのは約 130 枚。
+# loading=lazy・横に流れるテープ・折りたたみ・pkpool〔[hidden] の予備〕は i.complete / offsetParent で飛ばされた）。
+# 候補を全部 loading=eager にして読み込みを待ち（最大 8 秒・同時 60 枚）、[hidden] の祖先は測る間だけ外して数える。
+# 読めなかった写真は unread で返し、候補の 25% を超えたら ✗（読めないまま「余白 0」と言わない）。
+GAP_JS = """async()=>{const S='section.sec article.card,section.sec .wc,section.sec a.tape,.pk';
+const cs=[...document.querySelectorAll(S)].map(c=>{const p=c.querySelector('.pic');return{c,p,i:p&&p.querySelector('img:not(.ico)')}}).filter(o=>o.i&&!o.c.classList.contains('nophoto')&&!o.p.matches('.icon,.none'));
+const hid=new Set();cs.forEach(o=>{for(let e=o.c;e;e=e.parentElement)if(e.hidden)hid.add(e)});hid.forEach(e=>{e.hidden=false});
+const wait=i=>new Promise(r=>{if(i.complete)return r();const t=setTimeout(r,8000);i.addEventListener('load',()=>{clearTimeout(t);r()},{once:true});i.addEventListener('error',()=>{clearTimeout(t);r()},{once:true})});
+cs.forEach(o=>{o.i.loading='eager';if(o.i.dataset.src&&!o.i.src)o.i.src=o.i.dataset.src});
+for(let k=0;k<cs.length;k+=60)await Promise.all(cs.slice(k,k+60).map(o=>wait(o.i)));
+dispatchEvent(new Event('resize'));   // 予備を出すときと同じ（render.py の入れ替え）：FIT_JS が枠に合わせ直す
+await new Promise(r=>setTimeout(r,600));
+let unread=0,bad=0;const eg=[];
+cs.forEach(o=>{const i=o.i,p=o.p;if(!i.complete||!i.naturalWidth){unread++;return}
+ if(p.classList.contains('fill'))return;   // 枠いっぱいに切ってある（FIT_JS が合わせ直したあとで判る）
+ if(!p.offsetParent&&!p.getClientRects().length){unread++;return}
+ if(1-Math.min(i.clientWidth,i.clientHeight*i.naturalWidth/i.naturalHeight)/Math.max(1,p.clientWidth)>0.25){bad++;eg.length<3&&eg.push((o.c.className||o.c.tagName)+' '+i.currentSrc.slice(-40))}});
+hid.forEach(e=>{e.hidden=true});
+return{n:cs.length,bad,unread,eg}}"""
+
+
 # 2026-10-27：手元の回線（点検の箱のプロキシ）だけで開けない写真を ✗ に数えない。ブラウザで開けなかった写真を、
 # ブラウザと同じ頭で取り直して画像が返れば「サイトの欠陥ではない」（AOL・Yahoo の写真が guest・test-a の版面の頭で ✗ になった）
 FAIL_JS = ("window.__imgFail=[];addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.src&&!t.classList.contains('bg')){"
@@ -164,8 +185,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         dup:[...document.querySelectorAll('[id]')].map(x=>x.id).filter((v,i,a)=>a.indexOf(v)!==i).slice(0,3),
         blur:document.querySelectorAll('img.bg').length,
         loose:innerWidth<=760?0:[...document.querySelectorAll('article.hero,article.lead,article.wide')].filter(c=>{const p=c.querySelector('.pic'),i=p&&p.querySelector('img:not(.ico)');return i&&i.complete&&i.naturalWidth&&p.offsetParent&&!c.classList.contains('nw')&&!p.classList.contains('fill')&&(i.naturalWidth/i.naturalHeight)<(p.clientWidth/p.clientHeight)*0.92}).length,
-        gap:[...document.querySelectorAll('section.sec article.card,section.sec .wc,section.sec a.tape,.pk')].filter(c=>{const p=c.querySelector('.pic'),i=p&&p.querySelector('img:not(.ico)');if(!i||!p.offsetParent||c.classList.contains('nophoto')||p.matches('.icon,.none')||p.classList.contains('fill')||!i.complete||!i.naturalWidth)return false;return 1-Math.min(i.clientWidth,i.clientHeight*i.naturalWidth/i.naturalHeight)/Math.max(1,p.clientWidth)>0.25}).length,
         sw:document.documentElement.scrollWidth})""", BOXES)
+    gp = pg.evaluate(GAP_JS) if not page else {"n": 0, "bad": 0, "unread": 0, "eg": []}
     near = [] if page else pg.evaluate(NEAR_JS)
     fails = pg.evaluate(FAILS_JS) if (st["nohead"] or st["heads"]) else []
     nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
@@ -224,8 +245,10 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"写真を主役を測らずに切っている（小さいカード・主写真・c3・mini・wc・tape すべて）{st['pkcut']} 枚")
     if st.get("pkv"):   # 2026-10-31：「気になるかも？」の小さいカードで写真の見える高さがカードの 45% 未満（帯のように細い）
         bad.append(f"小さいカードの写真が細い（見える高さ 45% 未満）{st['pkv']} 枚")
-    if st["gap"]:   # 2026-10-31 F-16 続き：全部の画像の場所（大・小のカード・壁・テープ・気になるかも）で、写真が枠の幅の 25% 超を空けたまま（空いた横を情報に使っていない）。1400 / 390 とも数える
-        bad.append(f"写真の余白（空いた横が情報なし）：{st['gap']} 枚")
+    if gp["bad"]:   # 2026-10-31 F-16 続き：全部の画像の場所（大・小のカード・壁・テープ・気になるかも）で、写真が枠の幅の 25% 超を空けたまま（空いた横を情報に使っていない）。1400 / 390 とも数える。2026-11-01：全候補を読み込んでから（GAP_JS）
+        bad.append(f"写真の余白（空いた横が情報なし）：{gp['bad']} / {gp['n']} 枚 " + "・".join(gp["eg"]))
+    if gp["n"] and gp["unread"] > gp["n"] * 0.25:   # 読めない写真が多い（回線切れ）のに「余白 0」と言わない
+        bad.append(f"写真の余白を測れなかった：{gp['unread']} / {gp['n']} 枚（読み込み切れ）")
     if st["blur"] or st["loose"]:   # 2026-10-31 F-16：ぼかしで余白を埋めない（img.bg 0）。大きいカードで写真が枠より細いのに枠を絞っていない（.nw なし）のも✗
         bad.append(f"写真の余白：ぼかし {st['blur']} 枚・枠を絞っていない大きいカード {st['loose']} 枚")
     if st["sw"] > width:

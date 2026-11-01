@@ -36,7 +36,7 @@ class PhotoSide(unittest.TestCase):
 
     def test_ux_check_counts_gap_everywhere(self):
         u = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
-        self.assertIn("gap:[...document.querySelectorAll('section.sec article.card,section.sec .wc,section.sec a.tape,.pk')]", u)
+        self.assertIn("const S='section.sec article.card,section.sec .wc,section.sec a.tape,.pk'", u)   # GAP_JS（全候補を読み込んでから数える）
         self.assertIn("写真の余白（空いた横が情報なし）", u)
 
 
