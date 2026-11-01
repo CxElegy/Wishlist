@@ -50,10 +50,14 @@
  "_covered": {
   "GTA 6": 9,
   "Vaundy": 8,
-  "漫威电影": 5,
+  "漫威电影": 10,
   "日本顶级网球赛事": 3,
   "The Mandalorian": 3,
-  "A2O LITE": 3
+  "A2O LITE": 3,
+  "周杰伦": 3,
+  "ILLIT": 1,
+  "MMORPG 新作": 1,
+  "dota2": 1
  },
  "Vaundy": [
   {
@@ -97,7 +101,8 @@
    "weight": "lead",
    "refs": [
     5,
-    4
+    4,
+    9
    ],
    "image": "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/01071523/avengers-1024x576.webp"
   },
@@ -126,6 +131,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "James Spader Says Marvel Fans Keep Asking Him if Ultron Will Return in AVENGERS: DOOMSDAY",
+   "highlight": "Ultron",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ],
@@ -185,6 +199,62 @@
     2
    ],
    "image": "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_HV8V1mcaEAA8sS4_20261031.webp"
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦抖音账号0作品，开号一天涨粉破千万",
+   "highlight": "涨粉破千万",
+   "blurb": "周杰伦新开抖音账号，尚无作品，一天粉丝就破千万。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "2005 年 11 月 1 日，周杰伦把萧邦写进了歌里",
+   "highlight": "《夜曲》",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "“무례했다” 아일릿, 손지창에 말실수 후 사과…”곧 60인데” (‘사당귀’) [종합]",
+   "highlight": "사과",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg"
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "도깨비의 세계, 출시 직후 구글 플레이 매출 1위",
+   "highlight": "매출 1위",
+   "blurb": "카카오게임즈가 10월 8일 정식 출시한 MMORPG ‘도깨비의 세계’가 출시 초반부터 흥행하고 있다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwy5g.img"
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "Yandex vs. Spirit Set for PARI Universe Dota 2 Final",
+   "highlight": "Dota 2 Final",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://cms-cdn-rg-prod-bemymedia-com.s3.us-east-2.amazonaws.com/article_cover_pari_universe_2026_11_01_a45145eb22.jpg"
   }
  ]
 }

@@ -49,12 +49,12 @@
   "https://times.abema.tv/zh/articles/-/10277597": "https://times-abema.ismcdn.jp/mwimgs/7/1/1200w/img_7103bfc7486a0c2fd80d9bffc573a7e04410796.jpg",
   "https://times.abema.tv/zt/articles/-/10284560": "https://times-abema.ismcdn.jp/mwimgs/0/3/1200w/img_03b65a1001af09aa2423289fa7b7f08b578497.jpg",
   "https://topics.smt.docomo.ne.jp/article/insidegames/trend/insidegames-190213?fm=latestnews": "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-190213.jpg",
-  "https://tvreport.co.kr/broadcast/article/1087538/": "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg",
   "https://www.agara.co.jp/article/706847": "https://www.bing.com/th?id=ONUT.N-f2Ky3IkMTQMcFoucfixQ&pid=News&w=640",
   "https://www.anewsa.com/detail.php?number=3213263": "https://www.anewsa.com/news_images/2026/10/22/mark/20261022200800.jpg",
   "https://www.bleachernation.com/picks/2026/10/31/fernandez-vs-shnaider-prediction-at-the-toray-pan-pacific-open-tennis-saturday-october-31/": "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300",
   "https://www.chinatimes.com/realtimenews/20261029004039-260421": "https://images.chinatimes.com/newsphoto/2026-10-29/656/20261029004040.jpg",
   "https://www.dexerto.com/anime/chainsaw-man-episode-1-review-gripping-start-to-a-gory-series-1952242/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/07/ChainsawMan.jpg",
+  "https://www.dexerto.com/dota2/dota-2-ranks-explained-seasonal-medals-mmr-distribution-1718475/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2021/12/11/Dexerto-Header.jpg",
   "https://www.dexerto.com/pokemon/grass-type-pokemon-weaknesses-2649794/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/04/16/grass-type-pokemon-weaknesses-1.jpg",
   "https://www.finestresullarte.info/en/news/alberto-angela-arrives-at-lucca-comics-amp-games-dressed-as-a-mandalorian-from-star-wars": "https://www.finestresullarte.info/rivista/immagini/2026/fn/alberto-angela-star-wars-5.jpg",
   "https://www.forbes.com/sites/dbloom/2026/10/31/as-gta-vi-looms-the--game-industry-faces-a-painful-transition/": "https://www.bing.com/th?id=ONUT.BeTNXc2enqmqjkeMNmLA0g&pid=News&w=1200",
@@ -1033,27 +1033,6 @@
   },
   {
    "batch": 1,
-   "because": "ILLIT",
-   "date": "2026-11-01",
-   "hits": [],
-   "image": "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg",
-   "kind": "board",
-   "liked": "李沅禧出席香奈儿活动",
-   "score": 8,
-   "source": "TV리포트",
-   "taste": [
-    [
-     "作品:ILLIT",
-     6
-    ]
-   ],
-   "title": "“무례했다” 아일릿, 손지창에 말실수 후 사과…”곧 60인데” (‘사당귀’) [종합]",
-   "url": "https://tvreport.co.kr/broadcast/article/1087538/",
-   "words": [],
-   "work": "ILLIT"
-  },
-  {
-   "batch": 1,
    "because": "猫用品",
    "date": "2026-11-01",
    "hits": [],
@@ -1074,7 +1053,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "GTA 6",
    "date": "2026-10-31",
    "hits": [],
@@ -1191,7 +1170,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "あつ森",
    "date": "2026-10-31",
    "hits": [
@@ -1320,7 +1299,7 @@
    "work": "gelato pique"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "チェーンソーマン",
    "date": "2026-10-28",
    "hits": [],
@@ -1425,7 +1404,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-01",
    "hits": [],
@@ -1530,7 +1509,7 @@
    "work": "哈利波特剧集"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-10-31",
    "hits": [],
@@ -1635,7 +1614,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 7,
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-10-26",
    "hits": [],
@@ -1654,6 +1633,27 @@
    "url": "https://note.com/sakai_naoto/n/n97d894ffc8ee?hl=en",
    "words": [],
    "work": "Vaundy"
+  },
+  {
+   "batch": 7,
+   "because": "dota2",
+   "date": "2026-10-24",
+   "hits": [],
+   "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2021/12/11/Dexerto-Header.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "Dexerto",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "Dota 2 ranks explained: Seasonal medals, MMR distribution, & more",
+   "url": "https://www.dexerto.com/dota2/dota-2-ranks-explained-seasonal-medals-mmr-distribution-1718475/",
+   "words": [],
+   "work": "dota2"
   },
   {
    "batch": 7,
@@ -2104,11 +2104,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2116,15 +2116,15 @@
    8
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
    "三星 Galaxy",
    7
   ],
   [
    "作品:三星手机",
-   7
-  ],
-  [
-   "galaxy",
    7
   ]
  ]

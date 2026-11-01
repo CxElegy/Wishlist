@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "51c0f7247453",
+ "edit_sig": "0489d8bc0353",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
@@ -91,17 +91,19 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "카카오게임즈가 10월 8일 정식 출시한 MMORPG ‘도깨비의 세계’가 출시 초반부터 흥행하고 있다.",
      "date": "2026-10-29",
-     "n": 1,
-     "source": "조선일보 on MSN",
-     "title": "도깨비의 세계, 출시 직후 구글 플레이 매출 1위",
-     "url": "https://www.msn.com/ko-kr/gaming/mmo/%EB%8F%84%EA%B9%A8%EB%B9%84%EC%9D%98-%EC%84%B8%EA%B3%84-%EC%B6%9C%EC%8B%9C-%EC%A7%81%ED%9B%84-%EA%B5%AC%EA%B8%80-%ED%94%8C%EB%A0%88%EC%9D%B4-%EB%A7%A4%EC%B6%9C-1%EC%9C%84/ar-AA2gwXkS"
+     "headline": "도깨비의 세계, 출시 직후 구글 플레이 매출 1위",
+     "highlight": "매출 1위",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwy5g.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/ko-kr/gaming/mmo/%EB%8F%84%EA%B9%A8%EB%B9%84%EC%9D%98-%EC%84%B8%EA%B3%84-%EC%B6%9C%EC%8B%9C-%EC%A7%81%ED%9B%84-%EA%B5%AC%EA%B8%80-%ED%94%8C%EB%A0%88%EC%9D%B4-%EB%A7%A4%EC%B6%9C-1%EC%9C%84/ar-AA2gwXkS",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -118,43 +120,6 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 6,
-     "source": "IMDb",
-     "title": "New ‘Avengers: Doomsday’ Standee Puts Black Panther, Thor and Yelena Front and Center in China",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9WYmJJUTRHNUdzN09QNXFUZmhRVkpjczQ1TzR2R3A0QXl1dnVlWnBpVkt5ekNJN1ZYWU5ENnp6RFhWLVZKQnFiNkN5S2RaQVlHanYtbnhvZE1vRUoxb0YtMjFxSnN1c1E?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 7,
-     "source": "FanPiece",
-     "title": "Marvel 最強雙人組排名出爐：Spider-Man 與 Human Torch 登頂",
-     "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxPNjVoeS00OGQ5VFRvbmhqTmNjdzBJSXp5elg1ZFpEUnJxR2I4YVBNUUo5SUVvZHo2S0NZWVJWd2RHN3F1Z3N0Ulk2TFd1anFtN3VTSmw0Ukwzem5SMzV4RFliUkdDTUxKdlh2YllSQ3QxX2VVUHRqdV9xWGxnT2RPSUdLVVNlR0pzZVUwRkd4SW9VbmlvZC1WcE1nY3EwWUppcnQ1ZVVWbmUwZndOZkRPTi1ZclNBSk03RDVJQlZVNGp4bVhaSFREaDFJVXBmdXBNWHJuR1Y2WmVIVzdBYzRzbVoxcDJxeXNWSjhNWVNmcGJpanNFejV0WVllclRWb0t2Z0Myc3hWa3pKS3BFbVBLa0Q4SVFjcDB6enZwTQ?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 8,
-     "source": "GeekTyrant",
-     "title": "James Spader Says Marvel Fans Keep Asking Him if Ultron Will Return in AVENGERS: DOOMSDAY",
-     "url": "https://geektyrant.com/news/james-spader-says-marvel-fans-keep-asking-him-if-ultron-will-return-in-avengers-doomsday"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 9,
-     "source": "Bam Smack Pow on MSN",
-     "title": "Avengers: Doomsday pre-sales are already making MCU box office history",
-     "url": "https://www.msn.com/en-us/entertainment/movies/avengers-doomsday-pre-sales-are-already-making-mcu-box-office-history/ar-AA2gwP1Q"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 10,
-     "source": "Cinemablend",
-     "title": "Avengers: Doomsday: Release Date, Cast, And Other Things We Know",
-     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOaTMwODJUVFNiQ1ZKT0pMSkZ1MklVWGxxLTFDMzN0TldYRWhmeExFLUYxOTNwS09LSjRBM2d2UWZ3d0RWellVVUtzamJIcHBLSEZyYzlqdGNQMmx2bk1DMWRsRHNjTnFTTURRS1FzU2NvR3VzQmJUQzdIS3hXX21weXhkMmd2dmtsVHdfOTdTUmNwZFF1aE9rUGNXTXVXb2pUTm05N0FaYnEzVnNQUUJiRFQtOHRONmM?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -195,6 +160,16 @@
      "image": "https://www.slashfilm.com/img/gallery/one-of-marvel-comics-greatest-modern-writers-is-a-secret-mcu-consultant/l-intro-1793015723.jpg",
      "image_via": "og:image",
      "url": "https://www.slashfilm.com/2296548/marvel-comics-greatest-modern-writer-secret-mcu-consultant-jonathan-hickman/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "James Spader Says Marvel Fans Keep Asking Him if Ultron Will Return in AVENGERS: DOOMSDAY",
+     "highlight": "Ultron",
+     "image": "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w",
+     "image_via": "og:image",
+     "url": "https://geektyrant.com/news/james-spader-says-marvel-fans-keep-asking-him-if-ultron-will-return-in-avengers-doomsday",
      "weight": "normal"
     }
    ],
@@ -241,17 +216,19 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "TV리포트",
-     "title": "“무례했다” 아일릿, 손지창에 말실수 후 사과…”곧 60인데” (‘사당귀’) [종합]",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9QRms1YkY2SEtrd3RfU05WUEdOWnc3UzBDSTNCSlZWOVZubkhSemJVV2d1dkd1UWx0SW53MlZqVkVaVUJrbzhrUXlGWG1kMmRLQ2NWS0llWHZwcTZ5a0HSAWNBVV95cUxQUVg4amxJWnlVMVl5d0NxUkMwdkpxVXk5bVZYc1Q0WkM3Nm1INW1TMVNJakR0cTZ2VjdvTFdaUTdEU2tBQ0VaMUdqY1dkZ0FvMUx0RFlzdUVXZl8xc1NjZmdWTjQ?oc=5"
+     "headline": "“무례했다” 아일릿, 손지창에 말실수 후 사과…”곧 60인데” (‘사당귀’) [종합]",
+     "highlight": "사과",
+     "image": "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://tvreport.co.kr/broadcast/article/1087538/",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",
@@ -534,31 +511,31 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "周杰伦新开抖音账号，尚无作品，一天粉丝就破千万。",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "2005 年 11 月 1 日，周杰伦把萧邦写进了歌里|周杰伦|方文山|11 月的萧邦|夜曲_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5ZTGpuR2h1Z3UxRjRNdDFfcEQ4SUFLUTRwRloxMTY5c1lpbnBkTHE0NnF5UEtHNW5rNzNxVm5PNVptODZXVk9Yc1hLZUJteUVtN1dwLXhBNlFfV1F3TDdrZzVvZw?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 2,
+     "headline": "周杰伦抖音账号0作品，开号一天涨粉破千万",
+     "highlight": "涨粉破千万",
+     "image": null,
      "source": "网易新闻客户端",
-     "title": "周杰伦抖音账号0作品，开号一天涨粉破千万",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9PR2kwNU9JdVZJdncyYk5raDZYWWxReHF5U0w4WVFuUHNMOW9kNWtMNnRVckxWWVIyV1FIYTJILUpUVklXSUFmV093ZFl0OFkweVNjZTh2R19XcVg5MU9HdGlXMA?oc=5"
+     "source_icon": "https://static.ws.126.net/163/frontend/images/logo-netease-144.png",
+     "url": "https://c.m.163.com/news/v/VK36F99R5.html?spss=expand",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-31",
-     "n": 3,
-     "source": "三立新聞網SETN.com",
-     "title": "「E奶辣模」為周杰倫瞎砸2萬元 自爆手控熱愛大肚男",
-     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE1kTExCQnpQWTVsa3M1UXA1MzFkZUlIVUJkNXo2b0tXTnB2NGNvMkhtS0diNktOS2J6WnJmVmR3YWQtWThiZEg40gFLQVVfeXFMUHZJdFlHdDhpTDRyanFxTGY4YWdFTXE5c3dacDRiVVRGcERMYVZrb19SRWowZDVubFRxQUJHZm4zQzI5VWE0cmpnMW5v?oc=5"
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "2005 年 11 月 1 日，周杰伦把萧邦写进了歌里",
+     "highlight": "《夜曲》",
+     "image": null,
+     "source": "手机新浪网",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
+     "url": "https://www.sina.cn/news/detail/5360563489345117.html",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",
@@ -575,17 +552,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "RG.org",
-     "title": "Yandex vs. Spirit Set for PARI Universe Dota 2 Final",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQMHVTY0VBcWpBbW9vb3YwZTBTY0YzdmgxZ3JRejJoR01HeXVSX0dPMF8yOGlGN3BmSlZleXdzSHNUVGZpTDNYYlVBSDNQN1pUa0wxd0JWeXMzc3VDb1VxcUxDSWgxbTVRVUdIQ1d5eDczb3RCank0dno3djdJak1fYVc3YW10UGRsZVR3dF8yNHVISU9YdThhVFlocHZBamhwNW5FTw?oc=5"
+     "headline": "Yandex vs. Spirit Set for PARI Universe Dota 2 Final",
+     "highlight": "Dota 2 Final",
+     "image": "https://cms-cdn-rg-prod-bemymedia-com.s3.us-east-2.amazonaws.com/article_cover_pari_universe_2026_11_01_a45145eb22.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://rg.org/news/esports/pari-universe-grand-final-team-yandex-team-spirit-gamerlegion-third-dota-2",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -609,8 +588,8 @@
      "date": "2026-10-31",
      "headline": "A2O LITE、IVE・NMIXXおさえ「Neon」7冠目！20261031「ウマチュン」",
      "highlight": "7冠目",
-     "image": "https://www.anewsa.com/news_images/2026/11/01/mark/20261101211331.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_HV8V1mcaEAA8sS4_20261031.webp",
+     "image_via": "AI 挑选",
      "url": "https://daebak.tokyo/2026/10/31/a2o-lite-neon-7h-win/",
      "weight": "lead"
     }
@@ -703,7 +682,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "last": {
     "date": "2026-10-31",
@@ -753,7 +732,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-11-01",

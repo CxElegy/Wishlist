@@ -54,6 +54,12 @@
   "target": 720,
   "v": 3
  },
+ "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
+ },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
   "h": 338,
@@ -831,6 +837,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cms-cdn-rg-prod-bemymedia-com.s3.us-east-2.amazonaws.com/article_cover_pari_universe_2026_11_01_a45145eb22.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
+ },
  "https://columbiachronicle.com/wp-content/uploads/2026/10/1COVER_APPROVED_AC_WWDragShow-8-1200x800.jpg": {
   "w": 1200,
   "h": 800,
@@ -887,10 +899,10 @@
   "v": 3
  },
  "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg": {
-  "w": 1459,
-  "h": 800,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
  },
  "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_A2O-LIT_20261028.webp": {
   "w": 355,
@@ -904,6 +916,12 @@
    406
   ],
   "why": "看不清"
+ },
+ "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_HV8V1mcaEAA8sS4_20261031.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
  },
  "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_a2o_aijing_5156_20261015.webp": {
   "w": 452,
@@ -1795,6 +1813,12 @@
   "h": 438,
   "target": 720,
   "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwy5g.img": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img": {
   "w": 1200,
@@ -3963,19 +3987,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.anewsa.com/news_images/2026/11/01/mark/20261101211331.jpg": {
-  "w": 580,
-  "h": 387,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.533,
-  "local": "pics/52ff25bdbc1dfd6f.webp",
-  "out": [
-   1280,
-   854
-  ],
-  "why": "看不清"
- },
  "https://www.appbank.net/wp-content/uploads/2026/10/20261028_091828_781_01.webp": {
   "w": 1793,
   "h": 1251,
@@ -4608,6 +4619,12 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2021/12/11/Dexerto-Header.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/07/ChainsawMan.jpg": {
   "w": 1600,
