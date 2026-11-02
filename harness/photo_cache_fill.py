@@ -36,7 +36,7 @@ def main():
         if (browser.CACHE / name).is_file():
             continue
         try:
-            got += len(browser.storage_bytes(u))
+            got += len(browser.storage_bytes(u, fill=True) or b"")
         except Exception as e:  # noqa: BLE001  1 枚の失敗で止めない
             print("落とせない", u, e)
     left = sum(1 for n in want if not (browser.CACHE / n).is_file())

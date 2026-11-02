@@ -34,12 +34,15 @@ def _name(url):
     return url.split("?")[0].rsplit("/", 1)[-1]
 
 
-def storage_bytes(url, headers=None, timeout=30):
-    """写真・小元素の中身。state/photo_cache/ に写しがあればそれ、なければ 1 回だけ落として写しを作る（同じ網址は 2 度と落とさない）。"""
+def storage_bytes(url, headers=None, timeout=30, fill=False):
+    """写真・小元素の中身。写しがあればそれ。無ければ None（点検は本番から落とさない）。
+    落として写しを作るのは fill=True で呼ぶ harness/photo_cache_fill.py だけ（tests/test_browser_guard.py が数える）。"""
     global _allow
     f = CACHE / _name(url)
     if f.is_file():
         return f.read_bytes()
+    if not fill:
+        return None
     _allow = True
     try:
         data = _real_urlopen(urllib.request.Request(url, headers=headers or {}), timeout=timeout).read()
@@ -53,10 +56,13 @@ def storage_bytes(url, headers=None, timeout=30):
 _heads = {}
 
 
-def storage_head(url, headers=None, timeout=30):
-    """cache-control だけ見たいとき：Range で 1 バイトだけ。同じ網址は 1 回の点検で 1 回。"""
+def storage_head(url, headers=None, timeout=30, fill=False):
+    """cache-control だけ見たいとき：Range で 1 バイトだけ。同じ網址は 1 回の点検で 1 回。
+    本番へ出るので fill=True のときだけ（既定は None＝測らない）。"""
     global _allow
     if url not in _heads:
+        if not fill:
+            return None
         _allow = True
         try:
             r = _real_urlopen(urllib.request.Request(url, headers={**(headers or {}), "Range": "bytes=0-0"}), timeout=timeout)

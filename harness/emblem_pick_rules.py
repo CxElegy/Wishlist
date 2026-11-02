@@ -192,6 +192,8 @@ def audit_library():
             try:
                 if e["image"].startswith("http"):
                     raw = storage_bytes(e["image"]) if PATTERN.match(e["image"]) else urllib.request.urlopen(e["image"], timeout=30).read()
+                    if raw is None:
+                        raise RuntimeError("写しに無い（本番から落とさない）")
                 else:   # 店長の版面と同じ絵を指す相対の道（docs/home）
                     raw = (ROOT / "docs" / "home" / e["image"]).read_bytes()
                 v, why = original_verdict(trim(Image.open(io.BytesIO(raw))))

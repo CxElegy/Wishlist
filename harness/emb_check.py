@@ -116,6 +116,9 @@ def _get(url):
             try:
                 hd = {"User-Agent": "wishlist-ux-check (https://cxelegy.github.io/Wishlist/)"}
                 data = storage_bytes(url, hd, 20) if PATTERN.match(url) else urllib.request.urlopen(urllib.request.Request(url, headers=hd), timeout=20).read()
+                if data is None:   # 写しに無い：本番から落とさない（photo_cache.yml が埋める）
+                    img, _why[url] = None, "写しに無い"
+                    break
                 if b"<svg" in data[:4096]:   # 記号（Twemoji）・SVG のロゴ：開けて <svg があればよい（画素の点検はしない）
                     img = "svg"
                 else:
