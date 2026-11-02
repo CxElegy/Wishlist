@@ -1,4 +1,6 @@
 from playwright.sync_api import sync_playwright
+import sys; sys.path.insert(0, '/path/to/Wishlist')  # リポジトリの根
+from harness.browser import launch  # p.chromium.launch は直接呼ばない（本番の写真を毎回落として Supabase 月 5 GB を食う）
 
 # Example: Capturing console logs during browser automation
 
@@ -7,7 +9,7 @@ url = 'http://localhost:5173'  # Replace with your URL
 console_logs = []
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=True)
+    browser = launch(p, headless=True)
     page = browser.new_page(viewport={'width': 1920, 'height': 1080})
 
     # Set up console log capture
