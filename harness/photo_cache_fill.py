@@ -3,6 +3,7 @@ docs/ の html にある Supabase の写真・小元素の網址のうち、写�
 html に無くなった写しは消す（溜めない）。"""
 import re
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -11,6 +12,7 @@ import browser  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 URL = re.compile(r"https://[^/\"'\s)]+\.supabase\.co/storage/[^\"'\s)<>]+")
 MAX_BYTES = 100 * 1024 * 1024   # 1 回で落とす量（初回に全部落とすと日の枠を食うので数日に分ける）
+MAX_SECONDS = 12 * 60           # 時間の上限（workflow の 20 分で切られる前に止め、写しを保存させる）
 
 
 def urls():
@@ -27,9 +29,9 @@ def main():
     gone = [f for f in browser.CACHE.iterdir() if f.is_file() and f.name not in want]
     for f in gone:
         f.unlink()
-    got = 0
+    got, t0 = 0, time.time()
     for name, u in want.items():
-        if got >= MAX_BYTES:
+        if got >= MAX_BYTES or time.time() - t0 > MAX_SECONDS:
             break
         if (browser.CACHE / name).is_file():
             continue
