@@ -1,32 +1,32 @@
 {
- "admin": "c1a13a5dcfd9",
- "admin-ai": "879719269890",
+ "admin": "3419ad2cd5b2",
+ "admin-ai": "936ed9a63d33",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6b99b313"
+   "3ba27089"
   ],
   "tokens": [
    "AI 編集のトークン",
    "29342dac"
   ]
  },
- "admin-boards": "4fb82e3b3320",
+ "admin-boards": "0a3be5a07fc3",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "14513385"
+   "5395d4ba"
   ],
   "votes": [
    "投票",
    "05938a02"
   ]
  },
- "admin-emblem": "aeeb129f1a29",
+ "admin-emblem": "2ca9936be51e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d845f3d0"
+   "0254aac1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0909acaf7db3",
  "admin-members_marks": {},
- "admin-now": "4e3cdc92fb2e",
+ "admin-now": "9c8fd0768f00",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2df466cf"
+   "eb864312"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "1119a3dc"
   ]
  },
- "admin-system": "aa93fe51c3a3",
+ "admin-system": "b89f22be2401",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c243d9ef"
+   "e4e711d4"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2b1187e3"
+   "971c77a0"
   ]
  },
  "admin_marks": {},
- "heat": "5c2940d0b4cf",
+ "heat": "6cbf2c5852b7",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "b630719f"
+   "433048f4"
   ],
   "ranking": [
    "ランキング",
-   "34e3c14f"
+   "55301399"
   ]
  },
- "index": "5141a892127e",
+ "index": "cec76f0258d5",
  "index_marks": {
   "front": [
    "トップ",
-   "3412157b"
+   "1c57bc4a"
   ],
   "picks": [
    "気になるかも？",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "26fb16df"
+   "9969bfbd"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "acf99408"
+   "5696330d"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "e9225bbc"
   ]
  },
- "updated": "11.02 16:10",
+ "updated": "11.02 16:12",
  "wishlist": "624b849d0226"
 }

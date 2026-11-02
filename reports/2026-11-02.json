@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "0e467d3eeb73",
+ "edit_sig": "9152552c0309",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -594,34 +594,8 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 15,
-     "source": "Bella.tw儂儂",
-     "title": "直擊｜日本鬼才Vaundy首攻蛋狂吸2.6萬人！《鏈鋸人》動漫神曲狂炸，突開IG直播全球放送",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1vUF9zV19NMTI1LXBOV05oakFNZ0s4Z2dRTkY3WDAyOGIzY1RuT0RGTU9kblhTZF9tYUxickw1QlhabUNtNVJTOWR0akdsOGRXR2hTQnJWeEFNTTVBVDlrd3Jvc2FGTVpHdnRwUTUzVElDcHBaS19FcjAtYw?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 16,
-     "source": "中央社 CNA",
-     "title": "Vaundy小巨蛋開唱歌單驚喜二度衝下台跟歌迷互動| 娛樂",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1xamJ4eGRxTHltOFlLMkI4Yk9mMGJOQjZ1bnRkMHo5djltUl90UURyQnNSYTEzUHNVemhlZVdTY3dZUnZVR1JsNG9aYURicXBQX2hfNlRZbUpVSjNzeVNr?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-02",
-     "headline": "Vaundy 台灣演唱會 5 大亮點回顧！連喊四次台語「多謝」、突襲 IG 直播將台北歌迷聲音傳向世界",
-     "highlight": "",
-     "image": "https://cdn-origin.cool-style.com.tw/cool/2026/11/woghdh.webp",
-     "image_via": "og:image",
-     "url": "https://www.cool-style.com.tw/wd2/archives/1358684-vaundy-%E5%8F%B0%E7%81%A3%E6%BC%94%E5%94%B1%E6%9C%83-5-%E5%A4%A7%E4%BA%AE%E9%BB%9E%E5%9B%9E%E9%A1%A7%EF%BC%81%E9%80%A3%E5%96%8A%E5%9B%9B%E6%AC%A1%E5%8F%B0%E8%AA%9E%E3%80%8C%E5%A4%9A%E8%AC%9D%E3%80%8D",
-     "weight": "hero"
-    },
     {
      "blurb": "Vaundy 連兩天登台北小巨蛋，約 2.6 萬人到場，現場突然開 IG 直播。",
      "date": "2026-11-01",
@@ -640,6 +614,16 @@
      "image": "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/01/phpu8QrkM.jpg",
      "image_via": "JSON-LD",
      "url": "https://ent.ltn.com.tw/news/breakingnews/5626067",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "直擊/Vaundy小巨蛋連唱兩天！四面台零螢幕 〈怪獣の花唄〉萬人合唱掀高潮",
+     "highlight": "四面台零螢幕",
+     "image": "https://storage.ctinews.com/compression/files/default/cut-1793538777-XNKpkSx.jpg",
+     "image_via": "og:image",
+     "url": "https://ctinews.com/news/items/rbW4mZgoaL",
      "weight": "normal"
     }
    ],
