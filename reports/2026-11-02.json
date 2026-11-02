@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "24849e45ffe2",
+ "edit_sig": "3a0d19ac0647",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -741,33 +741,27 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 4,
-     "source": "Hotspawn",
-     "title": "All Multi-Time TI Winners In Dota 2 [Full List]",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE00UmRjRUhHOGZfV0w2LWZ6Nll0ZzVUQlZVWDVJVnYwZ3hBa0tRY1F4VlozWmpKREJTdWdqY2tsMElZdUhPWmJvUnhlTzFIVG84bXo4VkQ0NktxS3haYm1SdUZlcG5KanlJbW5ybzNBc2N5UmZ1akZwSmlGN1Q?oc=5"
-    },
-    {
-     "date": "2026-11-02",
-     "n": 5,
-     "source": "Esports.gg",
-     "title": "Team Spirit ends Team Yandex’s dominant run to claim Dota 2 PARI Universe title",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOYXlBUVF2eUdRYlZMYnhMZExYd1I4VGdCRUhfeEpZanRhN2JTMklSaTNIcHlBZEdYY08zT0lXSDRvQ0V0NVdjMkxZWlNBaWdMcHdYY2RHZUFocmQ5UTE0ZDczZDRNSF9ZMlNjcTd1YjItbjBWRkdldW9Qa20walJvTkJMUUNZOHE5a1F6LWNuZ2s1bUVw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-01",
-     "headline": "Yandex vs. Spirit Set for PARI Universe Dota 2 Final",
-     "highlight": "Dota 2 Final",
+     "blurb": "Team Spirit beat Team Yandex in the grand final to win the PARI Universe title.",
+     "date": "2026-11-02",
+     "headline": "Team Spirit ends Team Yandex’s dominant run to claim Dota 2 PARI Universe title",
+     "highlight": "claim Dota 2 PARI Universe title",
      "image": "https://cms-cdn-rg-prod-bemymedia-com.s3.us-east-2.amazonaws.com/article_cover_pari_universe_2026_11_01_a45145eb22.jpg",
      "image_via": "AI 挑选",
-     "url": "https://rg.org/news/esports/pari-universe-grand-final-team-yandex-team-spirit-gamerlegion-third-dota-2",
+     "url": "https://esports.gg/news/dota-2/team-spirit-defeat-team-yandex-to-win-dota-2-pari-universe/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "All Multi-Time TI Winners In Dota 2 [Full List]",
+     "highlight": "",
+     "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/All-Multi-Time-TI-Winners-in-Dota-2.jpg",
+     "image_via": "og:image",
+     "url": "https://www.hotspawn.com/dota2/guide/all-multi-time-ti-winners-in-dota-2",
+     "weight": "normal"
     }
    ],
    "subtitle": "Dota 2",

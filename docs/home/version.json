@@ -1,14 +1,14 @@
 {
- "admin": "783918d564c3",
- "admin-ai": "7d156edbf17f",
+ "admin": "eb82a4cae22f",
+ "admin-ai": "cac0ca33c956",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "2bf4a330"
+   "b94bf0e7"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "00bf8495"
+   "3a5377f6"
   ]
  },
  "admin-boards": "87714b16ffb7",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "b5c57df2d1d0",
+ "admin-emblem": "c0c50d758c3e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "df899875"
+   "42583bf2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0909acaf7db3",
  "admin-members_marks": {},
- "admin-now": "04f518b29e80",
+ "admin-now": "fd44595fbdfc",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e61d05ba"
+   "5542b44e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "511c4b6b"
+   "f60f27b1"
   ]
  },
- "admin-system": "d53dbd08024a",
+ "admin-system": "4f54da28376e",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "506d917e"
+   "1a45e1ca"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "655bc52b"
+   "c4b4a8d2"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "d056493e"
   ]
  },
- "index": "7dbb64e45585",
+ "index": "cb8eb9d082ab",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "6e915430"
+   "24ac50f5"
   ],
   "w-130724c0": [
    "猫用品",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "26fb16df"
+   "9969bfbd"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -196,6 +196,6 @@
    "9bd2013e"
   ]
  },
- "updated": "11.02 16:28",
+ "updated": "11.02 16:32",
  "wishlist": "624b849d0226"
 }

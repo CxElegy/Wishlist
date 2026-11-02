@@ -62,7 +62,7 @@
   "周杰伦": 7,
   "ILLIT": 11,
   "MMORPG 新作": 4,
-  "dota2": 3,
+  "dota2": 5,
   "あつ森": 1,
   "三星手机": 14,
   "哈利波特剧集": 1,
@@ -370,14 +370,24 @@
  ],
  "dota2": [
   {
-   "headline": "Yandex vs. Spirit Set for PARI Universe Dota 2 Final",
-   "highlight": "Dota 2 Final",
-   "blurb": "",
+   "headline": "Team Spirit ends Team Yandex’s dominant run to claim Dota 2 PARI Universe title",
+   "highlight": "claim Dota 2 PARI Universe title",
+   "blurb": "Team Spirit beat Team Yandex in the grand final to win the PARI Universe title.",
    "weight": "lead",
    "refs": [
+    5,
     1
    ],
    "image": "https://cms-cdn-rg-prod-bemymedia-com.s3.us-east-2.amazonaws.com/article_cover_pari_universe_2026_11_01_a45145eb22.jpg"
+  },
+  {
+   "headline": "All Multi-Time TI Winners In Dota 2 [Full List]",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "あつ森": [
