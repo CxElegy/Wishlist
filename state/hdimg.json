@@ -1398,6 +1398,19 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/e/3/e3880_760_2488439_20261028_181544_size640wh_51793488.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.6,
+  "local": "pics/f8b7b73545e84180.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
+ },
  "https://image.news.livedoor.com/newsimage/stf/f/f/ff326_1847_e12f636a1a8a860958b052fc0f578b98.jpg": {
   "w": 700,
   "h": 467,
@@ -2718,6 +2731,18 @@
    1024
   ],
   "why": "看不清"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261005-00089990-famitsu-000-4-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/04882ce193ce5a19.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "期限付きの網址"
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261027-00010001-tennisnet-000-1-view.jpg?exp=10800": {
   "w": 2178,

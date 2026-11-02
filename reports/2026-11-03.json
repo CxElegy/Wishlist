@@ -1,22 +1,24 @@
 {
  "date": "2026-11-03",
- "edit_sig": "b45d50433b22",
+ "edit_sig": "db7a7fe0e676",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "『アストラエ・オラティオ』のCBTリポート。百杏の必殺技や上司・愛の言動を紹介。",
      "date": "2026-11-02",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "『アストラエ・オラティオ』百杏の必殺技がセクシーすぎて唖然。令嬢・璃々愛の口からまさかの下ネタ。主人公を「性的に気に入った」と断言する上司・愛の真意も気になる【CBTリポート】（ファミ通.com）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5Vd25malFOWDdqbnRiN0RaTzI0QUFDZ3BLdnRONFNnVmdCMlcwRndLSFRJOG9pQVptZ1lrUERKNnVyZURobENfTS1sMUtNZW1JZGZOX0xQWDZJYVN4MVJqczhpUnZLdjR1elFqT21hWXBzTWZUQlVrV29QVExxVjg?oc=5"
+     "headline": "『アストラエ・オラティオ』百杏の必殺技がセクシーすぎて唖然。主人公を「性的に気に入った」と断言する上司・愛の真意も気になる【CBTリポート】",
+     "highlight": "CBTリポート",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261005-00089990-famitsu-000-4-view.jpg?exp=10800",
+     "image_via": "AI 挑选",
+     "url": "https://news.yahoo.co.jp/articles/1c46027316cf731819744a16a84c451e6fd96dfb",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -691,17 +693,19 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "大坂なおみが東レPPOの初戦を突破し、娘の存在と有明への思いを語った。",
      "date": "2026-10-28",
-     "n": 1,
-     "source": "ライブドアニュース",
-     "title": "大坂なおみが東レPPO初戦を突破、娘の存在と有明への思いを語る (2026年10月28日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBvSmpKRld1XzVIdFM3a3dMa0FYRmNuSXpvTGU1bEtGT0hyT240MGVVTzAtQVRiZzJTSHppUlNsTVByWGswQ2NTdWhWekhjNFBlOWFNdDFXOGpPTFJ0cEE?oc=5"
+     "headline": "大坂なおみが東レPPO初戦を突破、娘の存在と有明への思いを語る",
+     "highlight": "東レPPO初戦を突破",
+     "image": "https://image.news.livedoor.com/newsimage/stf/e/3/e3880_760_2488439_20261028_181544_size640wh_51793488.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.livedoor.com/topics/detail/32678248/",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",

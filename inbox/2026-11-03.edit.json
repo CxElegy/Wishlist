@@ -60,7 +60,9 @@
   "哈利波特剧集": 4,
   "あつ森": 3,
   "ILLIT": 2,
-  "周杰伦": 2
+  "周杰伦": 2,
+  "Astrae Oratio": 1,
+  "日本顶级网球赛事": 1
  },
  "GTA 6": [
   {
@@ -287,6 +289,30 @@
    "refs": [
     2
    ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "『アストラエ・オラティオ』百杏の必殺技がセクシーすぎて唖然。主人公を「性的に気に入った」と断言する上司・愛の真意も気になる【CBTリポート】",
+   "highlight": "CBTリポート",
+   "blurb": "『アストラエ・オラティオ』のCBTリポート。百杏の必殺技や上司・愛の言動を紹介。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261005-00089990-famitsu-000-4-view.jpg?exp=10800"
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "大坂なおみが東レPPO初戦を突破、娘の存在と有明への思いを語る",
+   "highlight": "東レPPO初戦を突破",
+   "blurb": "大坂なおみが東レPPOの初戦を突破し、娘の存在と有明への思いを語った。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://image.news.livedoor.com/newsimage/stf/e/3/e3880_760_2488439_20261028_181544_size640wh_51793488.jpg"
   }
  ]
 }
