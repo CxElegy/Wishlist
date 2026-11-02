@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "9152552c0309",
+ "edit_sig": "53df905dd652",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -710,34 +710,8 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 3,
-     "source": "note",
-     "title": "PS5 무료 게임은 정말 재미있을까? [젠레스 존 제로 편]",
-     "url": "https://note.com/ripe_violet9645/n/n1d74b5a46b94?hl=ko"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 5,
-     "source": "note",
-     "title": "PS5の無料ゲームは本当に面白いのか？【ゼンレスゾーンゼロ編】",
-     "url": "https://note.com/ripe_violet9645/n/n1d74b5a46b94"
-    }
-   ],
    "section": "游戏",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-30",
-     "headline": "ゼンレスゾーンゼロ Ver.3.3予告番組の最新予想！新キャラ・復刻・スタレコラボを徹底考察",
-     "highlight": "",
-     "image": "https://assets.mmoexp.com/images/202610/6fddef34feaf47b9fde27c6f004d0ff52ea8ae33.jpg",
-     "image_via": "正文图（3 枚から）",
-     "url": "https://www.mmoexp.com/News/zenless-zone-zero-version-3-3-preview-latest-predictions-for-new-characters-reruns-a-star-rail-collaboration.html",
-     "weight": "hero"
-    },
     {
      "blurb": "スシローと『ゼンレスゾーンゼロ』の初コラボが決定。限定ミニフィギュアや描き下ろしグッズが登場する。",
      "date": "2026-11-01",
@@ -747,6 +721,16 @@
      "image_via": "og:image",
      "url": "https://www.sanyonews.jp/article/1936811?kw=2024%3Cbr%20/%3E%20%20%20%20%20%20%3C/a%3E%3C/p%3E%3Cp%3E%20%20%20%20%20%20%3Ca%20href=",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "ゼンレスゾーンゼロ Ver.3.3予告番組の最新予想！新キャラ・復刻・スタレコラボを徹底考察",
+     "highlight": "Ver.3.3予告番組",
+     "image": "https://assets.mmoexp.com/images/202610/6fddef34feaf47b9fde27c6f004d0ff52ea8ae33.jpg",
+     "image_via": "正文图（3 枚から）",
+     "url": "https://www.mmoexp.com/News/zenless-zone-zero-version-3-3-preview-latest-predictions-for-new-characters-reruns-a-star-rail-collaboration.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",
