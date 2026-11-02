@@ -299,3 +299,4 @@
 - 2026-11-03 休止モードの続き（#799）：入口が #796 のあと古いまま SB_DEG 無しだった根を規則（render.with_sb_deg・入口の作り直し条件・tests が docs/ を数える）で直し、本人の殻・見本の審査にも。live_log 溜め置き・user_pages 指紋・見回り間引き。本番 abort で 16 ページ OK。次：24h 後のログで回数を測る。
 2026-11-03 r1f1 sb_down_check の ✗ が出たり出なかったり（me.html 1400）＝固定 3.5 秒待ちで、殻から ./ へ飛んだ先の読み込みの呼び出しが「押したあと」に数えられた。落ち着くまで待つ settle・呼ばないページは 1 回呼んで案内を確かめる・休止にならないなら ✗。アプリ側の漏れなし（殻はログインなしで Supabase を呼ばない）。次：本番 1 回・24 時間後に Supabase ログ
 2026-11-03 r1f1 egress (1) ④：本番 5 ページ 写真 184 件 Pages 100%・storage 0・query_logs 45 分 0 件。/p/ の 404 10 枚の根（新しい写真は取り込み前）を photo_cache の追従で直す・見本の storage 直書きを /p/ に・pages_served.py と tests。次＝マージ後 photo_cache 起動→404 0 を確認
+2026-11-03 r1f2 sb_down_check：呼ばない 4 ページ（face-size・layout-v2・wishes・product-head）は probe 後 hits.clear() で案内 1 の点検が常に偽＝漏れ。probed 旗で案内 1・dataset.sb=down を assert、tests に固定（#805）。手元 16 ページ×1400/390 全部 OK。次：本番で 1 回・ux_check・24h ログ数え

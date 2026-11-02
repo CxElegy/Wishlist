@@ -46,6 +46,7 @@ def check(pw, base, mode, shots):
         for w, h in ((1400, 900), (390, 844)):
             ctx = b.new_context(viewport={"width": w, "height": h})
             hits = []
+            probed = False
 
             def block(route, _req=None):
                 hits.append(route.request.url)
@@ -59,7 +60,11 @@ def check(pw, base, mode, shots):
             settle(p, hits)
             if not hits:   # 読み込みで Supabase を呼ばないページ：1 回だけ呼んで（止めてある）案内の出方を実際に見る
                 p.evaluate("()=>fetch('https://probe.supabase.co/rest/v1/rpc/x').catch(()=>0)")
-                p.wait_for_timeout(300)
+                probed = True
+                try:
+                    p.wait_for_function("()=>document.documentElement.dataset.sb==='down'", timeout=2000)
+                except Exception:  # noqa: BLE001
+                    pass
                 hits.clear()
             elif not p.evaluate("()=>document.documentElement.dataset.sb==='down'"):
                 bad.append(f"✗ {page_ or '入口'} {w}: 呼んだのに休止中にならない")
@@ -78,8 +83,10 @@ def check(pw, base, mode, shots):
             tag = f"{page_ or '入口'} {w}"
             if r["ov"] > 1:
                 bad.append(f"✗ {tag}: 横スクロール {r['ov']}px")
-            if r["note"] != 1 and hits:
-                bad.append(f"✗ {tag}: 案内の 1 行が {r['note']} 個（Supabase 呼び出し {len(hits)} 回あったのに）")
+            if r["note"] != 1 and (hits or probed):   # 呼ばないページも 1 回呼んだので（probed）案内が 1 つ出るはず
+                bad.append(f"✗ {tag}: 案内の 1 行が {r['note']} 個（Supabase 呼び出し {len(hits)} 回・点検の呼び出し {int(probed)}）")
+            if probed and r["down"] != "down":
+                bad.append(f"✗ {tag}: 点検の呼び出しのあと休止中（dataset.sb）にならない")
             if len(hits) > MAX_CALLS:
                 bad.append(f"✗ {tag}: Supabase を {len(hits)} 回呼んだ（呼び直し。上限 {MAX_CALLS}）")
             if len(hits) > before:
