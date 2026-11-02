@@ -59,9 +59,13 @@ class Photos(unittest.TestCase):
             self.assertEqual(len(g) + len(rest), n)
 
 
-@unittest.skipUnless(PAGE.exists(), "見本がない")
 class Page(unittest.TestCase):
-    html = PAGE.read_text(encoding="utf-8") if PAGE.exists() else ""
+    """_after.html は .gitignore（storage の網址を含む）なので、CI ではここで本番 docs/home/ から作る。"""
+    @classmethod
+    def setUpClass(cls):
+        from scripts import layout_sample
+        layout_sample.main()
+        cls.html = PAGE.read_text(encoding="utf-8")
 
     def test_card_img_urls_unique(self):
         u = re.findall(r'<article class="cd[^>]*><a[^>]*><span class="pic"[^>]*><img src="([^"]+)"', self.html)
@@ -84,3 +88,39 @@ class Page(unittest.TestCase):
     def test_text_card_has_no_pic_hole(self):
         for a in re.findall(r'<article class="cd [^"]*\bnp\b[^"]*">.*?</article>', self.html, re.S):
             self.assertNotIn('class="pic"', a)
+
+
+import hashlib, json
+from scripts import layout_sample
+
+
+class Measured(unittest.TestCase):
+    """layout_ba.py が撮って数えた数字（measure.json）を CI で数える：新しい並べ方が前より悪くない（2026-11-02 の指摘：数字が文章に印字されるだけだった）。"""
+    m = json.loads((Path(__file__).resolve().parent.parent / "docs/testground/layout-v2/measure.json").read_text(encoding="utf-8"))
+
+    def test_not_stale(self):   # CSS を変えたら layout_ba.py をやり直して数字を撮り直す
+        self.assertEqual(self.m["css_sha"], hashlib.sha256((layout_sample.CSS + layout_sample.JS).encode()).hexdigest()[:16])
+
+    def test_every_place_measured(self):
+        self.assertEqual(sorted(self.m["places"]), sorted(sid for sid, _ in layout_sample.PLACES))
+        for sid, d in self.m["places"].items():
+            self.assertEqual(sorted(d), ["1400", "390"], sid)
+
+    def test_after_has_no_inner_hole_and_no_more_holes(self):
+        for sid, d in self.m["places"].items():
+            for w, x in d.items():
+                self.assertEqual(x["after"]["inner"], 0, f"{sid} {w}: 中が空いたカード")
+                self.assertLessEqual(x["after"]["blank"], max(x["before"]["blank"], 0.01), f"{sid} {w}: 穴が前より増えた")
+
+    def test_unmeasurable_photo_numbers_say_so(self):   # 写しが足りない場所は「測れず」と書く（0→0 と書かない）
+        h = (Path(__file__).resolve().parent.parent / "docs/testground/layout-v2.html").read_text(encoding="utf-8")
+        for sid, c in self.m["photos"].items():
+            if c["storage"] > c["cached"]:
+                sec = re.search(rf'<section class="pl" id="s-{sid}".*?</section>', h, re.S).group(0)
+                self.assertIn("測れず", sec, sid)
+
+    def test_notes_differ_per_place(self):
+        h = (Path(__file__).resolve().parent.parent / "docs/testground/layout-v2.html").read_text(encoding="utf-8")
+        notes = re.findall(r'<p class="bad">(.*?)</p>', h)
+        self.assertGreater(len(notes), 8)
+        self.assertEqual(len(notes), len(set(notes)))   # 全部の場所に同じ文を貼らない

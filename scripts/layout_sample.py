@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "docs/home/index.html"
 OUT = ROOT / "docs/testground/_after.html"
 PLACES = [("w-79b3c280", "滑雪"), ("w-130724c0", "猫用品"), ("w-cdea10ae", "チェーンソーマン"), ("front", "ほかの注目"),
-          ("picks", "気になるかも？"), ("w-bf928230", "Astrae Oratio"), ("w-c1c3e0ed", "BLEACH Mirrors High")]
+          ("picks", "気になるかも？"), ("w-bf928230", "Astrae Oratio"), ("w-c1c3e0ed", "BLEACH Mirrors High"), ("w-0242c181", "dota2")]
 RAIL, GRID = 3, 12
 DUPS = {}   # 場所ごとの（本番の記事数, 新しい並べ方で出す数）
 
@@ -180,6 +180,7 @@ main{min-width:0;padding:24px 0 80px;display:flex;flex-direction:column;gap:56px
 h3{margin:0;font:700 14px/1.5 var(--f);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .hero h3{font:900 clamp(20px,2.4vw,28px)/1.35 var(--f);-webkit-line-clamp:4}
 .rail .cd a{flex-direction:row;align-items:flex-start;gap:12px}.rail .pic{flex:0 0 38%;aspect-ratio:3/2}
+@media(min-width:901px){.top>.rail .cd .pic{align-self:stretch;aspect-ratio:auto;min-height:80px}}   /* 先頭の高さに伸ばした右の札：余った高さは写真が引き受ける（札の下に空きを作らない・L2） */
 .np .tx{border-left:4px solid var(--ink);padding:12px 14px;flex:1;background:var(--card)}.np.grid .tx{justify-content:center}
 .more{margin-top:var(--g)}.more summary{cursor:pointer;font:900 14px var(--f);padding:10px 0;border-top:var(--bw) solid var(--ink)}
 .more .gr,.more .ls{margin-top:var(--g)}.ls{display:flex;flex-direction:column}.rail.ls .pic{flex:0 0 clamp(110px,20%,200px)}

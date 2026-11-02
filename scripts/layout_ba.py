@@ -20,8 +20,18 @@ OUT = ROOT / "docs/testground/layout-v2.html"
 IMG = ROOT / "docs/testground/layout-v2"
 SUPA = ("https://bzokpnbcjscbcehdxtjq.supabase.co", "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC")
 WIDTHS = (1400, 390)
-# 場所ごとの「今の本番で困っていること」（ユーザーの指摘・測った事実）。直った所は数字から作る。
-NOTE = "指摘のあった場所（空白・重複・写真の大きさ）。数字は 2 つの画面を同じ幅で同じ方法で数えたもの"
+# 場所ごとの「指摘された困りごと」（ユーザーの言葉・測った事実）。数字の文は place_html が測った値から作る（場所ごとに違う）。
+WHY = {
+    "w-79b3c280": "大きい記事の下と、右の列の札の下に空きが出る（升目に置いて背の高いほうへ伸ばしていた）",
+    "w-130724c0": "先頭の 1 本のほかが「もっと見る」の中に隠れ、版面の中身がほとんど見えない",
+    "w-cdea10ae": "大きいカードの下の列が空いていた",
+    "front": "左に大きい 1 枚、右に細い列 2 枚だけで、右と大きい 1 枚の下が空いたまま続く",
+    "picks": "並んだ小さいカードの写真・札の大きさがそろわない（スマホで写真だけ小さく細いものがある）",
+    "w-bf928230": "同じ記事・同じ写真が、ほかの版面（BLEACH など）と二度出る。先頭の 7 本のあとは隠れる",
+    "w-c1c3e0ed": "先頭の 1 本のほかが「もっと見る」の中に隠れ、この版面の中身がほとんど見えない",
+    "w-0242c181": "dota2：頭の写真が小さい代用画像に落ちる・同じ記事の二度出し",
+}
+DEFERRED = "iPhone の版面・ゼルダ／モンハンの小元素・スマホの一覧の個別の画面は、お客さま（test-a）の版面で店長のページに無いため、この見本の範囲外（BACKLOG に次の段として残した）"
 
 MEASURE = """([sel,cardSel])=>{const s=document.querySelector(sel);if(!s)return null;const sr=s.getBoundingClientRect();
  const cs=[...s.querySelectorAll(cardSel)].filter(c=>{const r=c.getBoundingClientRect();return r.width>8&&r.height>8&&c.offsetParent!==null&&!c.closest('details:not([open])')});
@@ -77,25 +87,58 @@ def pct(x):
     return f"{round(x * 100)}%"
 
 
-def place_html(sid, name, r, dups):
+def coverage():
+    """本番の各場所の写真が、手元の写し（browser.CACHE）にどれだけあるか。{sid: (storage の写真の数, 写しにある数)}。"""
+    from bs4 import BeautifulSoup
+    import browser
+    s = BeautifulSoup((ROOT / "docs/home/index.html").read_text(encoding="utf-8"), "lxml")
+    out = {}
+    for sid, _n in ls.PLACES:
+        el = s.select_one("section.front" if sid == "front" else "#" + sid)
+        names = {browser._name(i["src"]) for i in (el.select("img[src]") if el else []) if browser.PATTERN.match(i["src"])}
+        out[sid] = (len(names), sum((browser.CACHE / n).is_file() for n in names))
+    return out
+
+
+def judge(b, a, small=0.03):
+    """前と後の 1 つの数字の言い方：差なし／減った（直った）／増えた（まだ）。小さい同士は「差なし」＝直ったとは言わない。"""
+    if max(b, a) <= small:
+        return "前から小さい（差なし）"
+    return "減った" if a < b else "同じ" if a == b else "増えた（まだ）"
+
+
+def place_html(sid, name, r, dups, cov):
     e = html.escape
     d = {w: r.get((sid, w)) for w in WIDTHS}
     if not all(d.values()) or not all(v.get("before") and v.get("after") for v in d.values()):
         return ""
     n, shown = dups.get(sid, (0, 0))
+    tot, have = cov.get(sid, (0, 0))
+    unk = tot > have   # 写真の写しが足りない＝写真の有無・大きさは測れない（穴・中が空いたカードは枠の形で決まるので測れる）
     lines = []
     for w, lab in ((1400, "PC"), (390, "スマホ")):
         b, a = d[w]["before"], d[w]["after"]
-        lines.append(f"{lab}：穴 <b>{pct(b['blank'])} → {pct(a['blank'])}</b>・中が空いたカード <b>{b['inner']} → {a['inner']}</b> 枚・写真なし {b['noimg']} → {a['noimg']} 枚・画面に出る記事（もっと見るは閉じたまま） {b['cards']} → {a['cards']} 本")
+        ph = f"写真なし 測れず（写しが {have}/{tot} 枚）" if unk else f"写真なし {b['noimg']} → {a['noimg']} 枚"
+        lines.append(f"{lab}：穴 <b>{pct(b['blank'])} → {pct(a['blank'])}</b>（{judge(b['blank'], a['blank'])}）・中が空いたカード <b>{b['inner']} → {a['inner']}</b> 枚"
+                     f"（{judge(b['inner'], a['inner'], 0)}）・{ph}・画面に出る記事（もっと見るは閉じたまま） {b['cards']} → {a['cards']} 本")
     both = "".join(
         f'<div class="vw v{w}"><div class="pair"><figure><figcaption><b class="tg b">今の本番</b></figcaption><img loading="lazy" src="layout-v2/{sid}-{w}-before.webp" alt="{e(name)}の今の本番（{w}px）"></figure>'
         f'<figure><figcaption><b class="tg a">新しい並べ方</b></figcaption><img loading="lazy" src="layout-v2/{sid}-{w}-after.webp" alt="{e(name)}の新しい並べ方（{w}px）"></figure></div></div>'
         for w in WIDTHS)
-    return (f'<section class="pl" id="s-{sid}" data-sid="{sid}"><h2>{e(name)}</h2><p class="bad"><b>今の困りごと</b> {e(NOTE)}</p>{both}'
-            f'<ul class="fix"><li>直した規則：同じ記事・同じ写真はページ全体で 1 回だけ（この場所で外した重なり <b>{n - shown}</b> 本）・升目の最後の段に穴を作らない・右の列は先頭の高さにそろえる・写真のない記事は字だけの札</li>'
-            + "".join(f"<li>{x}</li>" for x in lines) + '</ul>'
+    dupl = f"<li>この場所で外した重なり（同じ記事・同じ写真）<b>{n - shown}</b> 本</li>" if n - shown else ""
+    return (f'<section class="pl" id="s-{sid}" data-sid="{sid}"><h2>{e(name)}</h2><p class="bad"><b>指摘された困りごと</b> {e(WHY.get(sid, "空白・重複・写真の大きさ"))}</p>{both}'
+            f'<ul class="fix">' + dupl + "".join(f"<li>{x}</li>" for x in lines) + '</ul>'
             f'<div class="ans" role="group" aria-label="{e(name)}の答え"><button class="ok" data-v="ok" aria-pressed="false">○ 直った</button>'
             f'<button class="ng" data-v="ng" aria-pressed="false">× まだ</button><input type="text" maxlength="200" placeholder="まだのとき：どこが気になるか（任意）" aria-label="メモ"></div></section>')
+
+
+def count_html():
+    """先頭に出す記事の数は、並べ方が直ったかとは別の質問（○× に混ぜない）。"""
+    return ('<section class="pl" id="s-count" data-sid="_count"><h2>先頭に出す記事の数</h2><p class="bad"><b>聞きたいこと</b> 新しい並べ方は、版面の先頭に最大 16 本を出します'
+            '（今の本番は 1〜9 本）。並べ方の直し（上の ○×）とは別に、この数だけ答えてください。</p>'
+            '<div class="ans" role="group" aria-label="先頭に出す数の答え"><button class="ok" data-v="ok" aria-pressed="false">16 本でよい</button>'
+            '<button class="ng" data-v="many" aria-pressed="false">多い</button><button class="ng" data-v="few" aria-pressed="false">少ない</button>'
+            '<input type="text" maxlength="200" placeholder="たとえば何本がよいか（任意）" aria-label="メモ"></div></section>')
 
 
 PAGE = """<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>並べ方の前と後</title>
@@ -125,7 +168,7 @@ figure img{display:block;width:100%;height:auto;border:2px solid var(--ink);back
 <header><small>審査待ち（並べ方）</small><h1>並べ方の「今の本番」と「新しい並べ方」</h1></header>
 <main>
 <div class="why"><p><b>なぜ聞くか</b>頼まれたのは並べ方のロジック（空白・同じ記事の二度出し・写真の大きさ・押した所へ行く）で、見た目の方向ではありません。前の見本（新聞・雑誌・P5 の 3 案）は、見た目を聞いてしまっていたので外しました。</p>
-<p><b>今の見た目</b>見た目は今の P5（太い枠・硬い影・傾けた札）のまま。下は、指摘のあった場所ごとの「今の本番」（左）と「新しい並べ方」（右）です。「穴」は、カードのすき間（約 40px）より大きい空きの面積の割合です。「新しい並べ方」は先頭に出す記事の数を増やしています。多すぎるときは × のメモに書いてください。</p>
+<p><b>今の見た目</b>見た目は今の P5（太い枠・硬い影・傾けた札）のまま。下は、指摘のあった場所ごとの「今の本番」（左）と「新しい並べ方」（右）です。「穴」は、カードのすき間（約 40px）より大きい空きの面積の割合です。「新しい並べ方」は先頭に出す記事の数を増やしています（その数だけは一番下で別に聞きます）。</p>\n<p><b>直した規則</b>同じ記事・同じ写真はページ全体で 1 回だけ・升目の最後の段に穴を作らない・右の列は先頭の高さにそろえ、余った高さは写真が引き受ける・写真のない記事は字だけの札。場所ごとに、効いた所だけ数字が動きます（前から小さい所は「差なし」と書きます）。</p>\n<p><b>この見本に無いもの</b>@@DEFERRED@@。</p>
 <p><b>答えで何が変わるか</b>○ なら、本番のこの場所を新しい並べ方に入れ替えます（全部の版面・店長とお客さま共通の規則）。× なら、そこだけ直して作り直します。本番の写真は無料の枠の都合で灰色の所があります。</p></div>
 <div class="bar" role="group" aria-label="幅の切り替え"><button data-w="1400" aria-pressed="true">PC（1400px）</button><button data-w="390" aria-pressed="false">スマホ（390px）</button><a href="index.html">← テストグラウンド</a></div>
 @@PLACES@@
@@ -153,17 +196,28 @@ document.getElementById("save").onclick=function(){var m=document.getElementById
 </script></body></html>"""
 
 
+def dump_measure(res, cov):
+    """測った数字を倉庫に残す（tests/test_layout_sample.py が「後が前より悪くない」を CI で数える）。"""
+    import hashlib
+    m = {"css_sha": hashlib.sha256((ls.CSS + ls.JS).encode()).hexdigest()[:16], "places": {}}
+    for (sid, w), d in res.items():
+        m["places"].setdefault(sid, {})[str(w)] = {s: {k: (round(v, 4) if isinstance(v, float) else v) for k, v in x.items() if k in ("cards", "blank", "inner", "noimg")} for s, x in d.items()}
+    m["photos"] = {sid: {"storage": a, "cached": b} for sid, (a, b) in cov.items()}
+    (IMG / "measure.json").write_text(json.dumps(m, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
+
+
 def main():
     from browser import launch
     dups = ls.main()
     res = shoot(launch)
-    parts = [place_html(sid, name, res, dups) for sid, name in ls.PLACES]
+    cov = coverage()
+    dump_measure(res, cov)
+    parts = [place_html(sid, name, res, dups, cov) for sid, name in ls.PLACES]
     parts = [p for p in parts if p]
-    page = (PAGE.replace("@@PLACES@@", "".join(parts)).replace("@@URL@@", SUPA[0]).replace("@@KEY@@", SUPA[1]).replace("@@N@@", str(len(parts))))
+    n = len(parts) + 1
+    page = (PAGE.replace("@@PLACES@@", "".join(parts) + count_html()).replace("@@URL@@", SUPA[0]).replace("@@KEY@@", SUPA[1]).replace("@@N@@", str(n)).replace("@@DEFERRED@@", html.escape(DEFERRED)))
     OUT.write_text(page, encoding="utf-8")
-    (ROOT / "state").mkdir(exist_ok=True)
     print("written", OUT, len(parts), "places")
-    print(json.dumps({f"{k[0]}-{k[1]}": {s: {x: v for x, v in m.items() if x in ("cards", "blank", "noimg")} for s, m in d.items()} for k, d in res.items()}, ensure_ascii=False, indent=0)[:3000])
 
 
 if __name__ == "__main__":
