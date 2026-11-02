@@ -10,7 +10,14 @@ Settings の Source は API の入口が止められているので、標準の�
 import argparse
 import datetime as dt
 import json
+import re
 import subprocess
+import sys
+import urllib.request
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import browser  # noqa: F401  urllib の止め（free-tier.md）を通す。ここで読むのは Pages だけ
 
 LEGACY = "pages build and deployment"
 OURS = "Pages 公開"
@@ -54,11 +61,66 @@ def gh_runs(repo, since):
     return runs
 
 
+ROOT = Path(__file__).resolve().parent.parent
+PAGES_P = "https://cxelegy.github.io/Wishlist/p"
+READY = 0.99   # 載っている写真のうち Pages に並んでいる割合がこれ以上で旗を on にしてよい
+
+
+def wanted(docs):
+    """docs の html が使う写真の名前（<指紋>-<幅>.webp。Supabase の網址でも Pages の網址でも）。"""
+    out = set()
+    for f in Path(docs).rglob("*.html"):
+        out |= set(re.findall(r"/(?:photos|p)/([0-9a-f]{16}-\d+\.webp)", f.read_text(encoding="utf-8", errors="ignore")))
+    return out
+
+
+def photos_verdict(manifest, want, sample_ok=True):
+    """(ok, 一行)。manifest＝公開中の Pages の p/manifest.json（取れなければ None＝Source が未切り替え、または写真なしの公開）。"""
+    if not manifest or not manifest.get("n"):
+        return False, "Pages に写真がない（Source 未切り替え、または写しが空）"
+    have = set(manifest.get("names", []))
+    cov = len(want & have) / len(want) if want else 0
+    if cov < READY:
+        return False, "載っている写真 %d 枚のうち Pages に並んでいるのは %.1f%%（%.0f%% 以上で on）" % (len(want), cov * 100, READY * 100)
+    if not sample_ok:
+        return False, "並んでいるはずの写真の抜き取りが 200 でない"
+    return True, "Pages に写真 %d 枚・載っている %d 枚の %.1f%% が並ぶ → 旗を on にしてよい" % (manifest["n"], len(want), cov * 100)
+
+
+def live_manifest():
+    try:
+        return json.loads(urllib.request.urlopen(PAGES_P + "/manifest.json", timeout=30).read())
+    except Exception:  # noqa: BLE001  404（未切り替え）・通信失敗
+        return None
+
+
+def sample_ok(manifest, k=5):
+    names = (manifest or {}).get("names", [])[:: max(1, len((manifest or {}).get("names", [])) // k)][:k]
+    try:
+        return all(urllib.request.urlopen(urllib.request.Request("%s/%s" % (PAGES_P, n), method="HEAD"), timeout=30).status == 200 for n in names)
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def photos_main(set_flag):
+    m = live_manifest()
+    ok, line = photos_verdict(m, wanted(ROOT / "docs"), sample_ok(m) if m else False)
+    print("%s %s" % ("✓" if ok else "✗", line))
+    if set_flag:
+        (ROOT / "state" / "pages_photos.json").write_text(json.dumps({"on": ok}) + "\n", encoding="utf-8")
+        print("旗 on =", ok)
+    raise SystemExit(0 if ok else 1)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--hours", type=int, default=24)
     ap.add_argument("--repo", default="CxElegy/Wishlist")
+    ap.add_argument("--photos", action="store_true", help="写真を Pages から配ってよいかを判定（旗 state/pages_photos.json）")
+    ap.add_argument("--set", action="store_true", help="--photos の結果を旗に書く")
     a = ap.parse_args()
+    if a.photos:
+        photos_main(a.set)
     now = dt.datetime.now(dt.timezone.utc)
     s = summarize(gh_runs(a.repo, (now - dt.timedelta(hours=a.hours)).strftime("%Y-%m-%d")), now, a.hours)
     n = subprocess.run(["git", "log", "origin/main", "--since=%d hours ago" % a.hours, "--format=%an"], capture_output=True, text=True).stdout.split()
