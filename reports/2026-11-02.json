@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "afb59e0c9e08",
+ "edit_sig": "ca68ea44adc4",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
@@ -346,29 +346,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 2,
-     "source": "ShiftDelete.Net",
-     "title": "Galaxy S27 Ultra Release Date, Price and Specs: What We Know",
-     "url": "https://shiftdelete.net/en/galaxy-s27-ultra"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 3,
-     "source": "Nokiapoweruser",
-     "title": "Galaxy S27 Ultra Leaks Surface—And It Gives Serious Midrange Vibes",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQM29UR1BTc253U0tmSVVMYlh1bGdTRWY5WDhuRU9CSTY3LVhtVWRIVzJwN3BuLWdiRElNMXpHQjdyU1FyLW1pVF9IakZLcUJoZlVvYVlsVFliTVh6Z0RVek5rRi0wZUtvWk8wUHlCVFh6SVBIX2NROFVBOG40dWtHWjB3ck0zNTdf?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "スマホダイジェスト",
-     "title": "Galaxy S27 ProではExynos 2700の性能制限を緩和か、Samsungの半導体部門とモバイル部門が共同開発",
-     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE10bG5PeEJJaklCQVhMT0NuX19OVkJXdlFLSlU5OWtwU00zSUdtdHNBZGRPQ3FxcmpORDU5NHhlRmhpTkhKNlltTg?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -380,6 +357,26 @@
      "image_via": "正文图（2 枚から）",
      "url": "https://timeline.sohu.com/news/xgOfd6UTI5",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "Galaxy S27 ProではExynos 2700の性能制限を緩和か、Samsungの半導体部門とモバイル部門が共同開発",
+     "highlight": "Exynos 2700の性能制限を緩和か",
+     "image": "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-01-172731.jpg",
+     "image_via": "og:image",
+     "url": "https://sumahodigest.com/?p=75350",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "Galaxy S27 Ultra Release Date, Price and Specs: What We Know",
+     "highlight": "",
+     "image": "https://en.shiftdelete.net/wp-content/uploads/2026/11/galaxy-s27-ultra-release-date-price-specs.webp",
+     "image_via": "og:image",
+     "url": "https://shiftdelete.net/en/galaxy-s27-ultra",
+     "weight": "normal"
     }
    ],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
@@ -882,7 +879,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-11-01",
