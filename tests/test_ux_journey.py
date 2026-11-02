@@ -5,6 +5,10 @@ import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
 import ux_check  # noqa: E402
+import pathlib as _pl
+import sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 try:
     from playwright.sync_api import sync_playwright
@@ -28,7 +32,7 @@ class Press(unittest.TestCase):
     def run_press(self, html):
         with sync_playwright() as pw:
             try:
-                b = pw.chromium.launch()
+                b = launch(pw)
             except Exception as ex:  # noqa: BLE001
                 self.skipTest(f"ブラウザがない：{ex}")
             pg = b.new_page()
@@ -62,7 +66,7 @@ class ImgFail(unittest.TestCase):
         # お客さまのページは me.html が document.open で書き替える。error の聞き手が消えても、外された写真の網址は残る（test-a の頭の誤判定）
         with sync_playwright() as pw:
             try:
-                b = pw.chromium.launch()
+                b = launch(pw)
             except Exception as ex:  # noqa: BLE001
                 self.skipTest(f"ブラウザがない：{ex}")
             pg = b.new_page()
@@ -81,7 +85,7 @@ class ImgFail(unittest.TestCase):
         # document.open のあと error の聞き手が消え、外されもしない（DOM に残る）開けない写真も FAILS_JS が数える
         with sync_playwright() as pw:
             try:
-                b = pw.chromium.launch()
+                b = launch(pw)
             except Exception as ex:  # noqa: BLE001
                 self.skipTest(f"ブラウザがない：{ex}")
             pg = b.new_page()
@@ -117,7 +121,7 @@ class Copy(unittest.TestCase):
         html = '<b hidden>追いかけるものを選ぶ</b><a href="#x" onclick="document.title=\'pushed\'">追いかけるものを選ぶ →</a>'
         with sync_playwright() as pw:
             try:
-                b = pw.chromium.launch()
+                b = launch(pw)
             except Exception as ex:  # noqa: BLE001
                 self.skipTest(f"ブラウザがない：{ex}")
             pg = b.new_page()
@@ -180,7 +184,7 @@ class CoverTest(unittest.TestCase):
         for pad, want in (("0", 1), ("72px", 0)):
             with sync_playwright() as pw:
                 try:
-                    b = pw.chromium.launch()
+                    b = launch(pw)
                 except Exception as ex:  # noqa: BLE001
                     self.skipTest(f"ブラウザがない：{ex}")
                 pg = b.new_page(viewport={"width": 390, "height": 600})
@@ -205,7 +209,7 @@ class Settle(unittest.TestCase):
         late = "<body>x<script>setTimeout(()=>{document.body.innerText='あ'.repeat(150)},1500)</script>"
         with sync_playwright() as pw:
             try:
-                b = pw.chromium.launch()
+                b = launch(pw)
             except Exception as ex:  # noqa: BLE001
                 self.skipTest(f"ブラウザがない：{ex}")
             pg = b.new_page()

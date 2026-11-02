@@ -149,6 +149,7 @@ export class Browser {
     const p = new Page(this, targetId, sessionId);
     await p.send('Page.enable');
     await p.send('Runtime.enable');
+    await p.send('Network.enable'); await p.send('Network.setBlockedURLs', { urls: ['*.supabase.co/storage/*'] });   // 写真の配信を食わない（docs/rules/free-tier.md）
     await p.setViewport({ width, height, dsf, mobile });
     if (reducedMotion) {
       await p.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });

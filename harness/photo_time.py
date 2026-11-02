@@ -6,6 +6,10 @@ import json
 import sys
 
 from playwright.sync_api import sync_playwright
+import pathlib as _pl
+import sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 BASE = "https://cxelegy.github.io/Wishlist/home/"
 LIMIT_MS = 500
@@ -16,7 +20,7 @@ const out=[];document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(i=
 
 
 def once(pw, base, width, slow):
-    b = pw.chromium.launch()
+    b = launch(pw, photos=True)
     ctx = b.new_context(viewport={"width": width, "height": 844 if width < 600 else 900}, is_mobile=width < 600)
     pg = ctx.new_page()
     if slow:

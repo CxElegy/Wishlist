@@ -7,6 +7,10 @@ import json
 import os
 import pathlib
 import sys
+import pathlib as _pl
+import sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -59,7 +63,7 @@ o.__start=[...document.querySelectorAll('.startgo')].filter(vis).length;o.__admi
 
 
 def probe(pw, base, who, width, page, session, who_map):
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     pg = b.new_page(viewport={"width": width, "height": 900})
     pg.goto(base, wait_until="domcontentloaded", timeout=60000)
     if who_map.get(who):

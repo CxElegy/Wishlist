@@ -11,6 +11,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from scripts.layout_sample import photo_key, same_photo, emoji  # noqa: E402
+import pathlib as _pl
+import sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 JS = """()=>{const o={over:document.documentElement.scrollWidth-innerWidth,toc:0,boards:0,badToc:0,imgs:[],gridHole:[],blank:[],hero:[],npPic:0};
  o.toc=document.querySelectorAll('.toc a').length;o.boards=document.querySelectorAll('section.bd').length;
@@ -30,7 +34,7 @@ def check(url):
     from playwright.sync_api import sync_playwright
     bad, seen = [], []
     with sync_playwright() as p:
-        b = p.chromium.launch()
+        b = launch(p)
         for w in (1400, 768, 390):
             pg = b.new_page(viewport={"width": w, "height": 900})
             pg.goto(url, wait_until="load", timeout=60000)

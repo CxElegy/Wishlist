@@ -7,6 +7,10 @@ import json
 import sys
 
 from playwright.sync_api import sync_playwright
+import pathlib as _pl
+import sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 BASE = "https://cxelegy.github.io/Wishlist/home/"
 JS = """()=>{const res={};performance.getEntriesByType('resource').forEach(e=>{res[e.name]=Math.round(e.responseEnd)});
@@ -17,7 +21,7 @@ return secs.map(s=>{const pics=[...s.querySelectorAll('.pic')];const get=p=>[...
 
 def measure(pw, base, width, wait, slow=False):
     """先取りの実測：{版面数, 先頭が届いた数, 届かない版面, 先頭の届く秒の並び, 先頭以外の枚数と届いた数}"""
-    b = pw.chromium.launch()
+    b = launch(pw, photos=True)
     ctx = b.new_context(viewport={"width": width, "height": 844 if width < 600 else 900}, is_mobile=width < 600)
     pg = ctx.new_page()
     if slow:
