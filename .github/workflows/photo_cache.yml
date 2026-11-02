@@ -4,6 +4,9 @@ name: photo cache
 on:
   schedule:
     - cron: "23 19 * * *"    # 日本時間 4:23
+  workflow_run:   # 新しい写真は render のあとに html へ載る → その回で写しに足し、Pages に出し直す（毎日 1 回だと最大 1 日 /p/ が 404 になった。2026-11-03）
+    workflows: ["网页立即更新"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       max_mb:
@@ -14,6 +17,7 @@ concurrency:
   cancel-in-progress: false
 permissions:
   contents: read
+  actions: write   # 写しが増えたら pages.yml を起こす
 jobs:
   fill:
     runs-on: ubuntu-latest
@@ -34,9 +38,15 @@ jobs:
           path: .photo_cache
           key: wl-photo-cache-${{ github.run_id }}
           restore-keys: wl-photo-cache-
-      - run: python harness/photo_cache_fill.py
+      - id: fill
+        run: python harness/photo_cache_fill.py
       - uses: actions/cache/save@v4
-        if: always()
+        if: always() && steps.fill.outputs.changed == 'true'   # 変わらない回は保存しない（200 MB の写しで他の cache を押し出さない）
         with:
           path: .photo_cache
           key: wl-photo-cache-${{ github.run_id }}
+      - name: 写しが変わったら Pages を出し直す
+        if: steps.fill.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
