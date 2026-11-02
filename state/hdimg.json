@@ -61,6 +61,12 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261102ac/533/w480h853/20261102/e56b-ace4d496e360754bfe6f92bf53c346e4.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 1280,
+  "v": 3
+ },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
@@ -1360,6 +1366,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i0.wp.com/mag.digle.tokyo/wp-content/uploads/2026/11/jeremy-quartus-artist-photo-max1200.jpg?fit=1024%2C720&ssl=1": {
+  "w": 1024,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://i0.wp.com/uploads.saigacdn.com/2026/10/bleach-mh-00.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
@@ -1692,6 +1704,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dbXs8.img": {
+  "w": 1672,
+  "h": 941,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g0tNg.img": {
   "w": 600,
   "h": 422,
@@ -1880,12 +1898,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-02"
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gxwpL.img": {
-  "w": 656,
-  "h": 875,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gzdcy.img": {
   "target": 1280,
   "v": 3,
@@ -1982,12 +1994,6 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/26/5619207_2.jpg": {
   "w": 800,
   "h": 1069,
-  "target": 1280,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/01/phpu8QrkM.jpg": {
-  "w": 800,
-  "h": 1199,
   "target": 1280,
   "v": 3
  },
@@ -4312,12 +4318,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.B9TPH9WvJNBINxP9PcfIkA&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
   "h": 590,
@@ -4369,13 +4369,19 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.H87z8nd2fXIkGMiRbC7LBg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.HjeGMMYXgbmzjn-V0TeSDw&pid=News&w=1200": {
   "w": 700,
-  "h": 525,
+  "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.HjeGMMYXgbmzjn-V0TeSDw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.IsCsM32HGVEd1-rVQcCL-g&pid=News&w=1200": {
+  "w": 700,
+  "h": 350,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.JGhdnkKQKA6wxK53zpzbdQ&pid=News&w=700": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -4432,6 +4438,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.P98iv5Emdiu3Jj3K1m3BDA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Q9DYmmOSMoTI09R8xAau7A&pid=News&w=966": {
   "w": 700,
   "h": 393,
@@ -4444,9 +4456,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Rn-T-P86E3OwYx77_kx53g&pid=News&w=700": {
+ "https://www.bing.com/th?id=ONUT.RCCH4rx-bMsgoFAX7yxOhg&pid=News&w=900": {
   "w": 700,
-  "h": 393,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -4585,9 +4597,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.f9biWkL7lfnDYnUUD4WdAQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
+ "https://www.bing.com/th?id=ONUT.gJxd0yVCDExsPUkYwn7D6Q&pid=News&w=600": {
+  "w": 600,
+  "h": 338,
   "target": 720,
   "v": 3
  },
@@ -4656,12 +4668,6 @@
   "v": 3,
   "blur": 0.325
  },
- "https://www.bing.com/th?id=ONUT.mgy75Bodj0TOSpGosRjdmQ&pid=News&w=1080": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.pY__MqddmbzgsqrIlk7pqw&pid=News&w=640": {
   "w": 640,
   "h": 360,
@@ -4689,9 +4695,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.v9hYDJEHaKyaPgg3WjbTrw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.wQOqZ4TNOZcRaO1c0g6wbQ&pid=News&w=1200": {
   "w": 700,
-  "h": 366,
+  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -4788,12 +4794,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://www.comicbasics.com/wp-content/uploads/2026/06/blade.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/06/slika_2026-06-29_160304513.webp": {
@@ -5068,6 +5068,12 @@
   "w": 1000,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.shanethegamer.com/wp-content/uploads/2026/08/stg-social-1024.png": {
+  "w": 1024,
+  "h": 1024,
+  "target": 720,
   "v": 3
  },
  "https://www.starwarsnewsnet.com/wp-content/uploads/2026/10/Nightmare_on_Nevarro_header.jpg": {
