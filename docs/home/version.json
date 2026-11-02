@@ -1,17 +1,17 @@
 {
- "admin": "297569c98fa7",
- "admin-ai": "d740268fc9e7",
+ "admin": "470cd9cdef02",
+ "admin-ai": "554ea85e1e3b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c47e7410"
+   "bd77d0ed"
   ],
   "tokens": [
    "AI 編集のトークン",
    "3a68df03"
   ]
  },
- "admin-boards": "355edee749f1",
+ "admin-boards": "3655c046fe92",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "1c23d004c69e",
+ "admin-emblem": "569585714d9a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "642e9468"
+   "00c89ed9"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "2fc9249d62eb",
  "admin-members_marks": {},
- "admin-now": "08e79bb7b186",
+ "admin-now": "bc0645ea76fc",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "812133e4"
+   "9092d695"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "6c33a3de"
+   "f437e6a4"
   ]
  },
- "admin-system": "e270e50b38d2",
+ "admin-system": "32a902a81db2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ff097b52"
+   "c22e3a64"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a349a6d9"
+   "6846af8e"
   ]
  },
  "admin_marks": {},
- "heat": "a29ea5c75d52",
+ "heat": "23b49b1e90d2",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -93,11 +93,11 @@
    "39b08acf"
   ]
  },
- "index": "6814b6f27bb5",
+ "index": "7f048749b7d0",
  "index_marks": {
   "front": [
    "トップ",
-   "a8153af7"
+   "0454a0c7"
   ],
   "picks": [
    "気になるかも？",
@@ -165,19 +165,19 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "5ff98561"
+   "b760b90d"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "44cc14e8"
+   "18d0053f"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "75ed4a75"
+   "597bccb0"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "1ef27b96"
+   "4f6a3634"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "5bb96a19"
+   "34b9545b"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -197,5 +197,5 @@
   ]
  },
  "updated": "11.03 07:31",
- "wishlist": "aae216be19f1"
+ "wishlist": "b659a52de977"
 }
