@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-02T10:30:36+00:00",
+ "checked": "2026-11-02T12:17:35+00:00",
  "fired": {
-  "at": "2026-11-02T10:30:36+00:00",
+  "at": "2026-11-02T12:17:51+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-02T09:31:58+00:00",
+    "at": "2026-11-02T12:17:51+00:00",
     "attempts": 1,
     "day": "2026-11-02",
-    "prog": 178,
-    "resp": "cse_01W4x6f7HNBhxh9Rrsq6gTxu",
-    "sig": "7cb77334c787"
+    "prog": 214,
+    "resp": "cse_01W4x6f8fZCq5iovGxZHa8Kz",
+    "sig": "3959d31e0745"
    },
    "items": [
     "The Mandalorian",
@@ -38,11 +38,21 @@
    "need": true,
    "prog": 214,
    "prog_day": "2026-11-02",
-   "ripe": [],
-   "sig": "08d546056ad5",
+   "ripe": [
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "gelato pique",
+    "ぐでたま",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "滑雪",
+    "猫用品"
+   ],
+   "sig": "3959d31e0745",
    "token_cap": 1000000,
    "tokens_today": 628860,
-   "why": "整理待ちの記事 10 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 10 件（9 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
