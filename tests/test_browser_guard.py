@@ -178,6 +178,29 @@ class NoFillByDefault(unittest.TestCase):
         self.assertEqual(out[0], "0")
         self.assertFalse(pathlib.Path(out[1]).is_relative_to(ROOT), "写しの置き場が作業ツリーの中")
 
+    def test_storage_reads_never_download_without_fill(self):
+        """写しが無いとき storage_bytes／storage_head は網に出ず None。fill=True で呼ぶのは photo_cache_fill.py だけ（2026-11-02 別の目の指摘：Python 側の点検が写し無しで本番から落としていた）。"""
+        import sys
+        import tempfile
+        sys.path.insert(0, str(ROOT / "harness"))
+        import browser
+        u = "https://x.supabase.co/storage/v1/object/public/photos/nocache-800.webp"
+        seen = []
+        old, oldreal = browser.CACHE, browser._real_urlopen
+        try:
+            browser.CACHE = pathlib.Path(tempfile.mkdtemp())
+            browser._real_urlopen = lambda *a, **k: seen.append(a) or (_ for _ in ()).throw(AssertionError("網に出た"))
+            self.assertIsNone(browser.storage_bytes(u))
+            self.assertIsNone(browser.storage_head(u))
+            self.assertEqual(seen, [])
+        finally:
+            browser.CACHE, browser._real_urlopen = old, oldreal
+        bad = [f.name for f in (ROOT / "harness").glob("*.py") if f.name not in ("browser.py", "photo_cache_fill.py")
+               and re.search(r"storage_(bytes|head)\([^\n]*fill\s*=\s*(?!False)", f.read_text(encoding="utf-8"))
+               and "WL_ALLOW_PHOTOS" not in f.read_text(encoding="utf-8")]
+        self.assertEqual(bad, [], "fill=True で本番から落としてよいのは photo_cache_fill.py だけ（head は WL_ALLOW_PHOTOS=1 のときだけ）")
+        self.assertIn("fill=True", (ROOT / "harness" / "photo_cache_fill.py").read_text(encoding="utf-8"))
+
     def test_only_fill_job_downloads(self):
         bad = [f.name for f in (ROOT / "harness").glob("*.py") if f.name not in ("browser.py", "photo_cache_fill.py")
                and "WL_PHOTO_FILL_MAX" in f.read_text(encoding="utf-8")]

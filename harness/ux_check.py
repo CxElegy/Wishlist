@@ -187,7 +187,7 @@ def server_opens(url):
     """写真の網址を、Referer なしのブラウザの頭で取り直して画像が返るか。"""
     try:
         if PATTERN.match(url):   # Supabase の配信は写し経由（なければ 1 回だけ落として写しを作る）。urlopen は止めに拒まれる
-            return len(storage_bytes(url, BROWSER_HEADERS, 20)) > 0
+            return bool(storage_bytes(url, BROWSER_HEADERS, 20))   # 写しに無ければ確かめられない＝False（本番から落とさない）
         r = urllib.request.urlopen(urllib.request.Request(url, headers=BROWSER_HEADERS), timeout=20)
         return r.status == 200 and r.headers.get("content-type", "").startswith("image/")
     except RuntimeError:   # 止めの拒み：「開けない」と読み替えず、そのまま出す
@@ -646,11 +646,13 @@ def photo_cache_bad(html, get=None, n=SAMPLE_N):
     if not urls:
         return []
     def head(u):   # 1 バイトだけ・同じ網址は 1 回（free-tier.md：以前は 16 枚×ページ×アカウントを丸ごと GET）
-        return storage_head(u, BROWSER_HEADERS)
+        return storage_head(u, BROWSER_HEADERS, fill=os.environ.get("WL_ALLOW_PHOTOS") == "1")   # 本番へ出るので WL_ALLOW_PHOTOS=1 のときだけ。無ければ None＝測らない
     step = max(1, len(urls) // n)
     bad = []
     for u in urls[::step][:n]:
         cc = (get or head)(u)
+        if cc is None:
+            continue
         age = re.search(r"max-age=(\d+)", cc)
         if not ("public" in cc and age and int(age.group(1)) >= 31536000):
             bad.append(cc)
