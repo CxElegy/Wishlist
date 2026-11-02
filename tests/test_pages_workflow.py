@@ -85,3 +85,62 @@ class PagesHealth(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PagesPhotos(unittest.TestCase):
+    """写真・小元素を Pages から配る（2026-11-03）：公開物に docs/p/ を足す・旗が off の間は今のまま・on にしてよい条件。"""
+    @classmethod
+    def setUpClass(cls):
+        import sys
+        sys.path.insert(0, str(ROOT / "harness"))
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import pages_health
+        import pages_photos
+        import photo_store
+        cls.h, cls.s, cls.P = pages_health, pages_photos, photo_store
+
+    def test_workflow_stages_photos_before_upload(self):
+        t = (WF / "pages.yml").read_text()
+        self.assertLess(t.index("pages_photos.py"), t.index("upload-pages-artifact"))
+        self.assertIn("actions/cache/restore", t)
+
+    def test_stage_copies_only_image_names_and_writes_manifest(self):
+        import json
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            (d / "c").mkdir()
+            (d / "c" / "0123456789abcdef-800.webp").write_bytes(b"x")
+            (d / "c" / "notes.txt").write_bytes(b"x")
+            self.assertEqual(self.s.stage(d / "c", d / "docs"), 1)
+            m = json.loads((d / "docs" / "p" / "manifest.json").read_text())
+            self.assertEqual(m["names"], ["0123456789abcdef-800.webp"])
+
+    def test_flag_default_off_and_url_switch(self):
+        P = self.P
+        k = "0123456789abcdef"
+        P._CACHE[:] = [{"base": "https://s.example", "p": {k: {}}, "x": {}, "stat": {}}]
+        old = list(P._ON)
+        try:
+            P._ON[:] = [False]
+            P._CACHE[0]["p"] = {P.key("http://o/a.jpg"): {}}
+            self.assertEqual(P.stored("http://o/a.jpg"), P.public("https://s.example", P.key("http://o/a.jpg")))
+            P._ON[:] = [True]
+            self.assertEqual(P.stored("http://o/a.jpg", 400), f"{P.PAGES_BASE}/{P.key('http://o/a.jpg')}-400.webp")
+            seen, want = set(), {}
+            P.scan_text([f'<img src="{P.PAGES_BASE}/{k}-800.webp" data-e="s">'], seen, want)
+            self.assertEqual((seen, want), ({k}, {}))   # Pages の網址を「原寸」と読んで取りに行かない
+        finally:
+            P._ON[:] = old
+            P._CACHE[:] = []
+
+    def test_committed_flag_is_json(self):
+        import json
+        self.assertIn("on", json.loads((ROOT / "state" / "pages_photos.json").read_text()))
+
+    def test_photos_verdict(self):
+        want = {f"{i:016x}-800.webp" for i in range(100)}
+        self.assertFalse(self.h.photos_verdict(None, want)[0])
+        self.assertFalse(self.h.photos_verdict({"n": 50, "names": sorted(want)[:50]}, want)[0])
+        self.assertFalse(self.h.photos_verdict({"n": 100, "names": sorted(want)}, want, sample_ok=False)[0])
+        self.assertTrue(self.h.photos_verdict({"n": 100, "names": sorted(want)}, want)[0])

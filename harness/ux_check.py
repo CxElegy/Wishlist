@@ -49,6 +49,11 @@ import render  # noqa: E402
 import pathlib as _pl
 import sys as _sys
 _sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+def is_stored(u):
+    """写真の一時保管から出た網址か（Supabase の photos でも、配信を移したあとの Pages の /p/ でも）。"""
+    return "/storage/v1/object/public/photos/" in u or "/Wishlist/p/" in u
+
+
 from browser import CACHE, PATTERN, launch, storage_bytes, storage_head  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -288,7 +293,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         ph:[...document.querySelectorAll('img[data-e="s"],img[data-e="r"]')].map(i=>i.currentSrc||i.src).filter(u=>{try{return new URL(u).origin!==location.origin}catch(x){return false}}).reduce((a,u)=>{a[0]++;if(/[/]storage[/]v1[/]object[/]public[/]photos[/]/.test(u))a[1]++;return a},[0,0]),
         frames:document.querySelectorAll('section.sec .pic').length,
         plain:[...document.querySelectorAll('section.sec[data-k]:not(.wish)')].filter(s=>![...s.classList].some(c=>/^m-/.test(c))).map(s=>s.dataset.k),
-        tint:[...document.querySelectorAll('section.sec .pic')].filter(x=>x.querySelector('img[data-e="s"][src*="/object/public/photos/"]')).reduce((a,x)=>{a[0]++;if(/background/.test(x.getAttribute('style')||''))a[1]++;return a},[0,0]),
+        tint:[...document.querySelectorAll('section.sec .pic')].filter(x=>x.querySelector('img[data-e="s"]:is([src*="/object/public/photos/"],[src*="/Wishlist/p/"])')).reduce((a,x)=>{a[0]++;if(/background/.test(x.getAttribute('style')||''))a[1]++;return a},[0,0]),
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
@@ -636,10 +641,10 @@ def html_weight_bad(html):
     if imgs > IMG_MAX:
         bad.append(f"<img> {imgs} 枚（上限 {IMG_MAX}）")
     mains = re.findall(r'<img src="([^"]*)"[^>]*?data-e="s">', html)
-    kept = sum("/storage/v1/object/public/photos/" in s for s in mains)
+    kept = sum(is_stored(s) for s in mains)
     if kept and kept * 2 < len(mains):   # 一時保管が動いているのに半分も使われていない（photo_store の取りこぼし・render の外れ）
         bad.append(f"主写真 {len(mains)} 枚のうち写真の一時保管から出たのは {kept} 枚（半分未満）")
-    st = re.findall(r'<img src="[^"]*/storage/v1/object/public/photos/[^"]*"([^>]*?)data-e="s">', html)
+    st = re.findall(r'<img src="[^"]*(?:/storage/v1/object/public/photos/|/Wishlist/p/)[^"]*"([^>]*?)data-e="s">', html)
     nosrc = sum("srcset=" not in x for x in st)
     if nosrc:   # 一時保管の幅 400 を置いても srcset で渡さなければ使われない（2026-10-31）
         bad.append(f"一時保管の主写真 {len(st)} 枚のうち srcset がないのが {nosrc} 枚")
@@ -657,7 +662,7 @@ def lead_photos(html):
     """版面ごとの先頭の記事の写真（本物の 800 とぼかしの 400）の網址。一時保管から出たものだけ、重複なし。"""
     out = []
     for sec in re.split(r"(?=<section\b[^>]*\bdata-k=)", html)[1:]:
-        for m in re.finditer(r'<img (?:class="bg" )?src="([^"]*/storage/v1/object/public/photos/[^"]*)"', sec[:6000]):
+        for m in re.finditer(r'<img (?:class="bg" )?src="([^"]*(?:/storage/v1/object/public/photos/|/Wishlist/p/)[^"]*)"', sec[:6000]):
             out.append(re.sub(r"&amp;", "&", m.group(1)))
     return list(dict.fromkeys(out))
 
@@ -696,7 +701,7 @@ def ahead_bad(html):
             bad.append("ahead の開始が window load 待ち（Fast 3G で目次から飛んだ先が遅れる）")
     secs = re.split(r"(?=<section\b[^>]*\bdata-k=)", html)[1:]
     secs = [s for s in secs if '<img src="' in s[:8000] and 'data-e="s"' in s[:8000]]
-    kept = sum("/storage/v1/object/public/photos/" in (re.search(r'<img src="([^"]*)"[^>]*data-e="s"', s[:8000]) or [0, ""])[1] for s in secs)
+    kept = sum(is_stored((re.search(r'<img src="([^"]*)"[^>]*data-e="s"', s[:8000]) or [0, ""])[1]) for s in secs)
     if secs and kept * 2 < len(secs):
         bad.append(f"先頭の写真が一時保管から出た版面 {kept}/{len(secs)}（半分未満）")
     return bad
@@ -717,7 +722,7 @@ def lead_outside(html):
         if not m:
             continue
         u = html_lib.unescape(m.group(1))
-        if "/storage/v1/object/public/photos/" in u or not u.startswith("http"):
+        if is_stored(u) or not u.startswith("http"):
             continue
         if re.search(r"\.(svg|gif|ico)(\?|$)", u, re.I) or hashlib.sha1(u.encode("utf-8")).hexdigest()[:16] in x:
             exempt += 1
