@@ -1,10 +1,10 @@
 {
- "admin": "cdb2fb164c34",
- "admin-ai": "fb48d4424f60",
+ "admin": "2e4dacbdbddd",
+ "admin-ai": "180778ebfb57",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "875134e6"
+   "aa0ac8c5"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "378181b0a7a0",
+ "admin-emblem": "dd11db53b2a2",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "2c3bee25"
+   "fe19bc10"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0909acaf7db3",
  "admin-members_marks": {},
- "admin-now": "c26cabde4758",
+ "admin-now": "127449c77cb7",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "57356bed"
+   "fc1870ab"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "63f18ff3"
   ]
  },
- "admin-system": "6ea691a46a58",
+ "admin-system": "beb44e1fb8bd",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3964458a"
+   "0fa1b208"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,11 +93,11 @@
    "5cd0cf63"
   ]
  },
- "index": "91f167b5cb00",
+ "index": "fd2b67100565",
  "index_marks": {
   "front": [
    "トップ",
-   "2a26bcb8"
+   "df62b661"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "d1e0855e"
+   "0295c185"
   ],
   "w-130724c0": [
    "猫用品",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "46833263"
+   "fe71cf86"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "26fb16df"
+   "9969bfbd"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "7d9cb6e9"
+   "54b0b01d"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "5b734005"
+   "a5c17641"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "57919582"
+   "23b2d10e"
   ],
   "w-f303ad09": [
    "绝区零",
    "a70854d6"
   ]
  },
- "updated": "11.03 04:43",
+ "updated": "11.03 04:52",
  "wishlist": "aae216be19f1"
 }

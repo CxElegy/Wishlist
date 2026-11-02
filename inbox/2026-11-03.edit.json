@@ -55,7 +55,12 @@
   "GTA 6": 20,
   "三星手机": 13,
   "A2O LITE": 5,
-  "MMORPG 新作": 5
+  "MMORPG 新作": 5,
+  "dota2": 4,
+  "哈利波特剧集": 4,
+  "あつ森": 3,
+  "ILLIT": 2,
+  "周杰伦": 2
  },
  "GTA 6": [
   {
@@ -223,6 +228,64 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "BetBoom Put Dota 2 Division On Hold After Less Than Two Months – What Went Wrong?",
+   "highlight": "On Hold",
+   "blurb": "BetBoom has put its Dota 2 division on hold after less than two months, moving all five players to the bench after a post-TI slump.",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ],
+   "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg"
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "David Threlfall voices the Sorting Hat in HBO's Harry Potter",
+   "highlight": "David Threlfall",
+   "blurb": "David Threlfall will voice the Sorting Hat in HBO's Harry Potter series.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://www.voiceoverherald.com/wp-content/uploads/2026/11/hero-16.jpg"
+  },
+  {
+   "headline": "Paapa Essiedu Praises ‘Hardworking’ Child Stars of Harry Potter for Taking on ‘Huge Weight’ of Iconic Roles",
+   "highlight": "Paapa Essiedu",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "あつ森": [],
+ "ILLIT": [
+  {
+   "headline": "ILLIT・IROHA、11歳での単身渡韓当時の心境告白 “初出し”好きなアイスクリームの味も",
+   "highlight": "11歳での単身渡韓",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦《可爱女人》的诞生",
+   "highlight": "《可爱女人》",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
    ]
   }
  ]

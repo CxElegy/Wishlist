@@ -64,7 +64,6 @@
   "https://www.elle.com/tw/life/hot-news/g74268035/2026-halloween/": "https://hips.hearstapps.com/hmg-prod/images/c4c89ef7-9d3e-4795-9ed4-8a3a6fe8487e.png?crop=1.00xw:1.00xh;0,0&resize=1200:*",
   "https://www.finestresullarte.info/en/news/alberto-angela-arrives-at-lucca-comics-amp-games-dressed-as-a-mandalorian-from-star-wars": "https://www.finestresullarte.info/rivista/immagini/2026/fn/alberto-angela-star-wars-5.jpg",
   "https://www.geeky-gadgets.com/galaxy-s27-ultra-rumors-4/": "https://www.bing.com/th?id=ONUT.HjeGMMYXgbmzjn-V0TeSDw&pid=News&w=1200",
-  "https://www.hotspawn.com/dota2/news/betboom-put-dota-2-division-on-hold-after-less-than-two-months-what-went-wrong": "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg",
   "https://www.msn.com/en-us/entertainment/celebrities/harry-potter-s-paapa-essiedu-defends-casting-in-j-k-rowling-series/ar-AA2guHXq": "https://www.bing.com/th?id=ONUT.Q9DYmmOSMoTI09R8xAau7A&pid=News&w=966",
   "https://www.msn.com/en-us/entertainment/movies/from-dune-to-avengers-doomsday-see-collectibles-coming-to-theaters/ar-AA2grdIB": "https://www.bing.com/th?id=ONUT.0VaUXKFI8aiXAqoshqt8JA&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/4-reasons-the-harry-potter-tv-series-should-focus-more-on-character-building-than-the-movies-did/ar-AA2gAvLu": "https://www.bing.com/th?id=ONUT.Nd044nfDUdY2nVSo8VWSSA&pid=News&w=912",
@@ -73,6 +72,7 @@
   "https://www.rohto.co.jp/news/release/2026/1028_01": "https://www.rohto.co.jp/news/release/2026/-/media/cojp/news/release/2026/1028_01/261028_01.png",
   "https://www.sanyonews.jp/photo/detail?article_id=1886409": "https://static.sanyonews.jp/image/article/size1/8/1/1/a/811a050bd30998cb3cf0de1055e43bea_1.jpg",
   "https://www.setn.com/news/149144": "https://attach.setn.com/newsimages/2016/05/23/537350-PH.jpg",
+  "https://www.shanethegamer.com/research/the-international-prize-pool/": "https://www.shanethegamer.com/wp-content/uploads/2026/08/stg-social-1024.png",
   "https://www.sina.cn/news/detail/5356822332443719.html": "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg",
   "https://www.sina.cn/news/detail/5359474912273486.html": "https://k.sinaimg.cn/n/news/1_img/upload/d8010f78/213/w2048h1365/20261102/a8a0-af62ed6facd88229ec0b593b1f51616d.jpg/w710h400z1l50t1q7538e.jpg?by=comos",
   "https://www.ski-japan.or.jp/game/81336/": "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png",
@@ -1505,27 +1505,6 @@
   },
   {
    "batch": 5,
-   "because": "dota2",
-   "date": "2026-11-02",
-   "hits": [],
-   "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "Hotspawn",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "BetBoom Put Dota 2 Division On Hold After Less Than Two Months – What Went Wrong?",
-   "url": "https://www.hotspawn.com/dota2/news/betboom-put-dota-2-division-on-hold-after-less-than-two-months-what-went-wrong",
-   "words": [],
-   "work": "dota2"
-  },
-  {
-   "batch": 6,
    "because": "Vaundy",
    "date": "2026-11-02",
    "hits": [],
@@ -1563,6 +1542,27 @@
    ],
    "title": "Polymarket's Dota 2 Game 2 Winner Odds for potn9ki Rise 23.3 Points",
    "url": "https://www.binance.com/en/square/post/383999231349891",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 6,
+   "because": "dota2",
+   "date": "2026-11-02",
+   "hits": [],
+   "image": "https://www.shanethegamer.com/wp-content/uploads/2026/08/stg-social-1024.png",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "Shane the Gamer",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "The International Prize Pool: Dota 2’s Record-Breaking Payouts",
+   "url": "https://www.shanethegamer.com/research/the-international-prize-pool/",
    "words": [],
    "work": "dota2"
   },
@@ -2048,7 +2048,7 @@
    8
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
@@ -2056,7 +2056,7 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ]
  ]

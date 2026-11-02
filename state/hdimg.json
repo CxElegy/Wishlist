@@ -1281,6 +1281,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i2.hoopchina.com.cn/bbs-editor-web/17929066518581.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://i2023.danews.cc/upload/doc/202610/30/6ae4560c6b44e.png": {
   "w": 1269,
   "h": 846,
@@ -1581,6 +1587,12 @@
   "w": 650,
   "h": 428,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gBmSm.img": {
+  "w": 1500,
+  "h": 1000,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ga95n.img": {
@@ -3522,6 +3534,19 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/f/8/b/d/f8bd2b2118acbdc9ac4460fb4323d2e5_1.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.497,
+  "local": "pics/90e14222565355cf.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://static.sanyonews.jp/image/article/size1/f/a/5/3/fa53d6bb2a79d4838238076752cf8fcd_1.jpg": {
   "w": 640,
   "h": 360,
@@ -4588,7 +4613,7 @@
  "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg": {
   "w": 1199,
   "h": 800,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.inside-games.jp/imgs/ogp_f/1799460.jpg": {
@@ -4695,6 +4720,12 @@
   "w": 1000,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.shanethegamer.com/wp-content/uploads/2026/08/stg-social-1024.png": {
+  "w": 1024,
+  "h": 1024,
+  "target": 720,
   "v": 3
  },
  "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png": {
@@ -4815,6 +4846,12 @@
  "https://www.uqwimax.jp/common2/images/ogp.png": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.voiceoverherald.com/wp-content/uploads/2026/11/hero-16.jpg": {
+  "w": 1600,
+  "h": 888,
   "target": 1280,
   "v": 3
  },
