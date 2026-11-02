@@ -35,3 +35,10 @@
 - Pages の目安：公開物 1 GB まで・月 100 GB・1 時間 10 回の公開まで。公開の回数は今も多い（打ち消し多数）ので、写真の取り込みは公開 1 回にまとめる。
 - 切り替えまでは今の Supabase のまま（点検を止めたので 1 日 0.1〜0.2 GB）。
 - 案A-2（切り替えができないとき）：写真だけの別のリポジトリ＋Pages、毎日まるごと 1 コミットに置き換え（歴史を増やさない）。リポジトリと書き込みの鍵はユーザーが作る。
+
+## 実装（2026-11-02）
+
+- 点検のブラウザは `harness/browser.py` の `launch(pw)` だけで開く。開いたページは `*.supabase.co/storage/` を取りに行かず、`state/photo_cache/<ファイル名>` の写しがあればそれ、なければ灰色の画像を返す。直接の `chromium.launch` は `tests/test_browser_guard.py` が CI で拦める。
+- 配信の時間そのものを測る `photo_time.py`・`lcp.py`・`ahead_time.py` は `launch(pw, photos=True)`＝環境変数 `WL_ALLOW_PHOTOS=1` を付けたときだけ（付けない限り走らない）。
+- 設計の道具（`.claude/skills/design-taste-frontend` の inspect）は CDP の `Network.setBlockedURLs` で同じ止め。
+- 配る量の見込み：点検由来 0（残りは読者の 1 日 2 千回ほど＝0.1〜0.2 GB）。

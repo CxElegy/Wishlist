@@ -35,6 +35,10 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import ux_check  # noqa: E402
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
 import progress_notify  # noqa: E402
+import pathlib as _pl
+import sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 UI = re.compile(r"^(scripts/(render|user_pages|welcome|theme|likefx|emblem)\.py|templates/|sections\.yaml|docs/home/[^/]+\.js)")
 VIEWS = [("guest", 1400), ("test-a", 1400), ("test-a", 390)]
@@ -131,7 +135,7 @@ def shoot(out, where=None):
     counts, rects = {}, {}
     page, sel = (where[0], where[1]) if where else ("", None)
     with sync_playwright() as pw:
-        b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+        b = launch(pw)
         for who, w in VIEWS:
             name = f"{who}-{w}"
             try:

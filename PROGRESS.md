@@ -281,3 +281,4 @@
 - 2026-11-02 r1f1 ユーザーのページ＝店長 ②（#765・#766）：👍👎を本人の account へ（my_vote_add・my_votes_own、本番で test-a の票が u_ 行・test-b/店長と混ざらない・guest 拒否を確認）・気になるかも？を本人の票と版面の載らなかった記事から・過去の号も渡す。本番 --diff-admin：test-a/b/c × 1400/390 で ✗0（残り＝欲しい物 2 件は [?]、予定・もっと見るはデータ待ち）。次＝欲しい物の置き場（ユーザーの答え待ち）・お客さまの版面の AI 編集
 - 2026-11-02 r2 小元素の顔の大きさ：表示した顔の px を型ごとに測る〔emblem_face.shown_face_px・emb_check E29 情報〕。店長 283 枚：胸像 50px 前後でそろい、全身 8〜86px・上半身 11〜58px がばらつく。基準 3 案を testground/face-size.html に出し BACKLOG を [?]。次＝答えで CSS と E29 を ✗ に
 - 2026-11-02 r1：顔の大きさの審査 1 段目（394 枚を 4 分類で並べ押して直す・保存は review_save→review_answers）。PR #770。確かめ：1400/390 で押す→保存・本番 200・ux_check の ✗ は既存の E10/E15/E24 で今回と無関係。次：店長の答え待ち→2 段目
+- 2026-11-02 r1 依頼の係：写真の配信止め ①② — 点検のブラウザを harness/browser.py の launch に 1 本化（*.supabase.co/storage/ は写し/灰色で返す・配信を測る 3 本は WL_ALLOW_PHOTOS=1 のみ）・直接 chromium.launch を拦める tests/test_browser_guard。tests 1223 通過。次＝③毎日の見張り（管理ページ・150 MB/日 Discord）

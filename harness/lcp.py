@@ -6,6 +6,10 @@ import statistics
 import sys
 
 from playwright.sync_api import sync_playwright
+import pathlib as _pl
+import sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 BASE = "https://cxelegy.github.io/Wishlist/home/"
 JS = """()=>new Promise(r=>{let v=0,u='';new PerformanceObserver(l=>{for(const e of l.getEntries()){v=e.startTime;u=e.url||e.element&&e.element.tagName||''}}).observe({type:'largest-contentful-paint',buffered:true});
@@ -13,7 +17,7 @@ setTimeout(()=>r([v,u]),6000)})"""
 
 
 def once(pw, base):
-    b = pw.chromium.launch()
+    b = launch(pw, photos=True)
     ctx = b.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2, is_mobile=True)
     pg = ctx.new_page()
     c = ctx.new_cdp_session(pg)

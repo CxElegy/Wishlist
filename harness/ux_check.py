@@ -46,6 +46,10 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import emb_check  # noqa: E402
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
 import render  # noqa: E402
+import pathlib as _pl
+import sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WHO = {"guest": None, "test-a": "test-a@example.com", "test-b": "test-b@example.com", "test-c": "test-c@example.com"}
@@ -212,7 +216,7 @@ def settle(pg):
 
 
 def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_S):
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)   # Actions では入っている Chrome（UX_CHANNEL=chrome）
+    b = launch(pw)   # Actions では入っている Chrome（UX_CHANNEL=chrome）
     pg = b.new_page(viewport={"width": width, "height": height})
     loads, errors = [], []
     pg.on("load", lambda: loads.append(pg.url))
@@ -453,7 +457,7 @@ DOCK_PAGE_WIDTHS = (390, 700, 761)   # 他のページは ≤560・561〜760・�
 
 
 def check_dock(pw, base, who, width, page=""):
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     pg = b.new_page(viewport={"width": width, "height": 900})
     pg.goto(base + page, wait_until="domcontentloaded", timeout=60000)
     if WHO[who]:
@@ -532,7 +536,7 @@ ARCH_JS = """()=>{const GAP=%d;const s=document.querySelector('#arch');if(!s)ret
 
 
 def check_admin(pw, base, width, out):
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     pg = b.new_page(viewport={"width": width, "height": 900})
     pg.goto(base + "admin-system.html", wait_until="networkidle", timeout=60000)   # ⑤しくみ（管理ページは 6 つ）
     pg.wait_for_timeout(3000)
@@ -838,7 +842,7 @@ def check_customer_admin_pages(pw, base, width):
     sys.path.insert(0, str(ROOT / "scripts"))
     r_ = importlib.import_module("render")
     ses = session("test-a@example.com")
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     pg = b.new_page(viewport={"width": width, "height": 900})
     bad = []
     try:
@@ -877,7 +881,7 @@ CUSTOMER_PAGES = ("test-a", "test-c")
 def check_customer_admin_gate(pw, base, width):
     """test-a・test-c でログインして admin*.html 7 枚を直に開く。門（.wl-gate）が出て、全ユーザーの行（#wl-members・#wl-lib*）が 0、
     見える中身が門だけ、右上のメニューに管理の入口がない。トップの最初の画面のメニューも。門が出ない（enforce が外れた）なら ✗。"""
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     bad = []
     for who in CUSTOMER_PAGES:
         try:
@@ -933,7 +937,7 @@ def check_admin_coverage(pw, base, width):
         headers={"apikey": k, "Content-Type": "application/json"}), timeout=30).read())
     ses["expires_at"] = int(time.time()) + int(ses.get("expires_in", 3600))
     want = rest_boards(ses["access_token"])[1]
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     pg = b.new_page(viewport={"width": width, "height": 900})
     pg.goto(base, wait_until="domcontentloaded", timeout=60000)
     pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}", ses)
@@ -1063,7 +1067,7 @@ def check_admin_coverage(pw, base, width):
 
 def check_admin_pages(pw, base, width, out):
     """管理ページのトップと 6 つの別ページ：開ける・切り替え（7 つのリンク）・横にはみ出さない・JS のエラーなし・前の欄が全部どこかにある。"""
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     sys.path.insert(0, str(ROOT / "scripts"))
     import render as _r
     bad, ids, h3 = [], set(), set()
@@ -1139,7 +1143,7 @@ return [...new Set(out)];}"""
 def check_fx_edge(pw, base, width):
     """👍 の演出（likefx 20 種）の札・字・👍 本体が、端の 👍（左上・右上・左下）を押しても画面の外へ切れないか。
     テーマ見本ページで likeFx を直接押し、0.15〜0.85 秒の間に見える部品の矩形を測る（粒・光・輪は除く）。2026-10-29 ユーザー指摘「イイネ！が左へ切れる」。"""
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     pg = b.new_page(viewport={"width": width, "height": 900})
     pg.goto(base + "themes.html", wait_until="domcontentloaded", timeout=60000)
     pg.wait_for_function("()=>window.likeFx", timeout=30000)
@@ -1151,9 +1155,9 @@ def check_fx_edge(pw, base, width):
 
 def check_emb_fade(pw, base, width):
     """小元素の「パッ」：画像を 1.5 秒遅らせ、出る前は透明で場所（高さ）が変わらず、届いたら不透明になるか。"""
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     pg = b.new_page(viewport={"width": width, "height": 900})
-    pg.route("**/*", lambda r: (time.sleep(1.5), r.continue_()) if r.request.resource_type == "image" else r.continue_())
+    pg.route("**/*", lambda r: (time.sleep(1.5), r.fallback()) if r.request.resource_type == "image" else r.fallback())   # fallback = 外側の写真止めに渡す
     pg.goto(base, wait_until="domcontentloaded", timeout=60000)
     q = "()=>{const i=document.querySelector('.emb img'),e=i&&i.closest('.emb');return i?{o:+getComputedStyle(i).opacity,h:e.offsetHeight,ld:i.classList.contains('ld')}:null}"
     qp = "()=>{const i=document.querySelector('.pic img:not(.bg):not(.ico)');return i?{o:+getComputedStyle(i).opacity,ld:i.classList.contains('ld')}:null}"
@@ -1231,7 +1235,7 @@ def journey(pw, base, width, out):
     bad, errors, n = [], [], [0]
     entry = base.rstrip("/").rsplit("/", 1)[0] + "/"   # 入口（/home/ の 1 つ上）
     s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
-    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    b = launch(pw)
     pg = b.new_page(viewport={"width": width, "height": 900})
     pg.on("pageerror", lambda e: errors.append(str(e)[:120]))
 

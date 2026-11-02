@@ -20,6 +20,10 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts
 import processes  # noqa: E402
 import render  # noqa: E402
 import theme  # noqa: E402
+import pathlib as _pl
+import sys as _sys
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
+from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 PAPER, WHITE = theme._rgb("#EDEBE6"), (255, 255, 255)
 
@@ -721,7 +725,7 @@ class BrokenPhotoBecomesTextCard(unittest.TestCase):
                  render._tcard({**st, "weight": "normal"}, 4, 0, "2026-10-26", small=True)]
         with sync_playwright() as pw:
             try:
-                b = pw.chromium.launch()
+                b = launch(pw)
             except Exception as ex:  # noqa: BLE001
                 self.skipTest(f"ブラウザがない：{ex}")
             pg = b.new_page()
