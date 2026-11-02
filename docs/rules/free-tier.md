@@ -77,3 +77,9 @@ Supabase のメール（2026-11-03）：cached egress 19.2 GB / 5.5 GB、11/5 �
 - Firebase（Firestore）：読み取り 1 日 5 万回の上限・SQL なし。作り直しが大きい。
 - Neon／Turso：Postgres／SQLite の置き場だけで、配信の枠は Supabase と同じ程度。ログインは別に要る。
 → 今の問題は「データベース」ではなく「ファイルの配信」だったので、移る利点が小さい。ファイルを Pages に出した後でも足りなくなったら（読者が数百人規模）、Cloudflare R2 に本人のページを移すのが次の一手。
+
+## 落ち先の決まり（2026-11-03，写真を Pages から配ったあと）
+
+- 公開の docs/ に Supabase storage の網址を書くのは `data-fb`（開けないときの落ち先）だけ。今ある 1 件は ig-articles（media 箱。インスタの網址は切れるので自前で持つ記事の写真）の落ち先。photos 箱の網址は落ち先にも書かない。見本ページ（testground）も Pages の `/p/` を直書きする。`tests/test_pages_served.py` が docs/ を数えて 0 を保つ。
+- 新しい写真が `/p/` で 404 になる穴：photo_store が置いた写真は、render が html に載せてから写しに入る。以前は毎日 1 回の取り込みだけで最大 1 日 404（本番で 10 枚。見た目は原寸の外部画像へ落ちる）。直し：photo_cache.yml が render（网页立即更新）のあとにも走り、写しが変わったら pages.yml を起こす。
+- 本番の確かめは `python harness/pages_served.py`（1 回・共通の launch）：画像の取得先を数え、Pages 99% 以上・storage 0・/p/ の 200・304 以外 0 を見る。小元素は `home/emblems/`（docs 内、Pages）で、もともと storage を通らない。

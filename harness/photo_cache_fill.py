@@ -54,6 +54,9 @@ def main():
             print("落とせない", u, e)
     left = sum(1 for n in want if not (browser.CACHE / n).is_file())
     print(f"網址 {len(want)} · 消した {len(gone)} · 今回 {got / 1e6:.1f} MB · 残り {left}")
+    if os.environ.get("GITHUB_OUTPUT"):   # 変わったときだけ写しを保存し、Pages を出し直す
+        with open(os.environ["GITHUB_OUTPUT"], "a") as o:
+            o.write(f"changed={'true' if got or gone else 'false'}\n")
 
 
 if __name__ == "__main__":
