@@ -2,7 +2,7 @@
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@playwright/mcp@0.0.83", "--headless", "--isolated", "--executable-path", "/opt/pw-browsers/chromium", "--viewport-size", "1400,900"]
+      "args": ["-y", "@playwright/mcp@0.0.83", "--headless", "--isolated", "--executable-path", "/opt/pw-browsers/chromium", "--viewport-size", "1400,900", "--init-page", "harness/mcp_init_page.js"]
     }
   }
 }

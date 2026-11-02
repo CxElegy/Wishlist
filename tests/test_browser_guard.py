@@ -20,6 +20,90 @@ class BrowserGuard(unittest.TestCase):
                         bad.append(f"{f.relative_to(ROOT)}:{n}")
         self.assertEqual(bad, [], "ブラウザは harness/browser.py の launch(pw) で開く")
 
+    def test_no_direct_launch_js(self):
+        """.mjs・.claude/skills の道具も（2026-11-02：RAW は *.py しか見ていなかった）。止め（setBlockedURLs / supabase.co/storage の route）を持つか、読み込む先がローカルだけと許可リストにあるもの。"""
+        LOCAL_ONLY = {".claude/skills/diagram/shot.mjs"}   # file:// の自作 HTML だけ開く
+        bad = []
+        for pat in ("harness/**/*.mjs", "harness/**/*.js", ".claude/skills/**/*.mjs", ".claude/skills/**/*.js"):
+            for f in ROOT.glob(pat):
+                if "node_modules" in f.parts:
+                    continue
+                s = f.read_text(encoding="utf-8")
+                rel = str(f.relative_to(ROOT))
+                if re.search(r"\b(chromium|firefox|webkit)\.(launch|connect)|puppeteer", s) and rel not in LOCAL_ONLY \
+                        and "setBlockedURLs" not in s and "supabase.co/storage" not in s and "supabase\\.co" not in s:
+                    bad.append(rel)
+        self.assertEqual(bad, [], "止めのない JS のブラウザ起動")
+        # inspect.mjs・scenes.mjs は Browser.launch（lib/cdp.mjs）経由：そこに止めがあること
+        self.assertIn("setBlockedURLs", (ROOT / ".claude/skills/design-taste-frontend/scripts/lib/cdp.mjs").read_text())
+
+    def test_urllib_guard(self):
+        """harness の Python は urllib.request を使うなら browser を import する（= urlopen が supabase.co/storage を拒む）。requests・httpx は使わない。"""
+        bad = []
+        for f in (ROOT / "harness").glob("*.py"):
+            s = f.read_text(encoding="utf-8")
+            if re.search(r"^\s*(import|from) (requests|httpx|aiohttp)\b", s, re.M):
+                bad.append(f"{f.name}: requests/httpx は使わない（止めを通らない）")
+            if f.name != "browser.py" and re.search(r"^\s*import urllib\.request", s, re.M) and not re.search(r"^\s*(import browser|from browser import)", s, re.M):
+                bad.append(f"{f.name}: urllib を使うのに browser を import していない")
+        self.assertEqual(bad, [])
+
+    def test_urlopen_storage_refused_and_cached(self):
+        import sys
+        import tempfile
+        sys.path.insert(0, str(ROOT / "harness"))
+        import browser
+        import urllib.request
+        u = "https://x.supabase.co/storage/v1/object/public/photos/zz-800.webp"
+        with self.assertRaises(RuntimeError):
+            urllib.request.urlopen(u)
+        with self.assertRaises(RuntimeError):
+            urllib.request.urlopen(urllib.request.Request(u))
+        old = browser.CACHE
+        try:
+            browser.CACHE = pathlib.Path(tempfile.mkdtemp())
+            (browser.CACHE / "zz-800.webp").write_bytes(b"abc")
+            self.assertEqual(browser.storage_bytes(u), b"abc")   # 写しがあれば網に出ない
+        finally:
+            browser.CACHE = old
+
+    def test_fulfill_fills_cache_once(self):
+        import sys
+        import tempfile
+        sys.path.insert(0, str(ROOT / "harness"))
+        import browser
+
+        class Resp:
+            ok = True
+            def body(self): return b"IMG"
+
+        class Route:
+            n = 0
+            out = None
+            def __init__(s, u): s.request = type("R", (), {"url": u})
+            def fetch(s, **k): Route.n += 1; return Resp()
+            def fulfill(s, **k): s.out = k
+
+        old, browser.CACHE = browser.CACHE, pathlib.Path(tempfile.mkdtemp())
+        try:
+            u = "https://x.supabase.co/storage/v1/object/public/photos/qq-800.webp?v=1"
+            browser._fulfill(Route(u))
+            r2 = Route(u)
+            browser._fulfill(r2)
+            self.assertEqual(Route.n, 1)                 # 2 回目は写しから
+            self.assertEqual(r2.out["body"], b"IMG")
+        finally:
+            browser.CACHE = old
+
+    def test_playwright_mcp_guarded(self):
+        """係が自分で開く Playwright MCP も同じ止め（--init-page）。"""
+        import json
+        args = json.loads((ROOT / ".mcp.json").read_text())["mcpServers"]["playwright"]["args"]
+        self.assertIn("--init-page", args)
+        f = ROOT / args[args.index("--init-page") + 1]
+        self.assertTrue(f.is_file())
+        self.assertIn("supabase", f.read_text())
+
     def test_storage_blocked(self):
         import sys
         sys.path.insert(0, str(ROOT / "harness"))
