@@ -51,6 +51,23 @@ def name(k, w=800):
     return f"{k}-{w}.webp"
 
 
+# 配信を GitHub Pages に移す旗（2026-11-03：Supabase の cached egress が枠超え。docs/rules/free-tier.md）。
+# 旗 state/pages_photos.json の on が真なら、render は写真の網址を Pages の /p/<指紋>-<幅>.webp にする。
+# on にしてよい条件は harness/pages_health.py --photos が判定する（Pages の公開物に写真がそろっているとき）。
+PAGES_BASE = "https://cxelegy.github.io/Wishlist/p"
+PAGES_FLAG = ROOT / "state" / "pages_photos.json"
+_ON = []
+
+
+def pages_on():
+    if not _ON:
+        try:
+            _ON.append(bool(json.loads(PAGES_FLAG.read_text(encoding="utf-8")).get("on")))
+        except (OSError, ValueError):
+            _ON.append(False)
+    return _ON[0]
+
+
 def public(base, k, w=800):
     return f"{base.rstrip('/')}/storage/v1/object/public/{BUCKET}/{name(k, w)}"
 
@@ -72,7 +89,9 @@ def stored(url, w=800):
         _CACHE.append(load())
     st = _CACHE[0]
     k = key(url)
-    return public(st["base"], k, w) if st["base"] and k in st["p"] else None
+    if not (st["base"] and k in st["p"]):
+        return None
+    return f"{PAGES_BASE}/{name(k, w)}" if pages_on() else public(st["base"], k, w)
 
 
 def tint_css(url):
@@ -113,7 +132,7 @@ def scan_text(texts, seen, want):
         for part in text.split("<section")[1:] or [text]:
             for i, src in enumerate(IMG_RE.findall(part)):
                 src = html.unescape(src)
-                if pre in src:
+                if pre in src or src.startswith(PAGES_BASE + "/"):   # 置き場から出ている（Supabase でも Pages でも）
                     seen.add(src.rsplit("/", 1)[-1].split("-")[0])
                 elif src.startswith("http"):
                     (lead if i < 2 else rest)[key(src)] = src

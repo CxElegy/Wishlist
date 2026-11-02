@@ -1,6 +1,7 @@
 """写しを埋める 1 日 1 回の決まった 1 つの仕事（photo_cache.yml）。点検・係は写しを読むだけで本番から落とさない（browser.FILL_MAX=0）。
 docs/ の html にある Supabase の写真・小元素の網址のうち、写しに無いものだけを 1 回の上限バイト数まで落とす（残りは翌日）。
 html に無くなった写しは消す（溜めない）。"""
+import json
 import re
 import sys
 import time
@@ -15,11 +16,22 @@ MAX_BYTES = 100 * 1024 * 1024   # 1 回で落とす量（初回に全部落と�
 MAX_SECONDS = 12 * 60           # 時間の上限（workflow の 20 分で切られる前に止め、写しを保存させる）
 
 
+PAGES = re.compile(r"https://cxelegy\.github\.io/Wishlist/p/([0-9a-f]{16}-\d+\.webp)")   # 旗 on のあとの網址（落とし先は Supabase の photos のまま）
+
+
 def urls():
     seen = {}
+    base = ""
+    try:
+        base = json.loads((ROOT / "state" / "photo_store.json").read_text(encoding="utf-8")).get("base", "").rstrip("/")
+    except (OSError, ValueError):
+        pass
     for f in (ROOT / "docs").rglob("*.html"):
-        for u in URL.findall(f.read_text(encoding="utf-8", errors="ignore")):
+        text = f.read_text(encoding="utf-8", errors="ignore")
+        for u in URL.findall(text):
             seen.setdefault(browser._name(u), u)
+        for n in PAGES.findall(text) if base else ():
+            seen.setdefault(n, f"{base}/storage/v1/object/public/photos/{n}")
     return seen
 
 
