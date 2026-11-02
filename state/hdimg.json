@@ -762,6 +762,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.sounova.com/upload/VDnplFoqnmnxzxylWKNWq.webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.sounova.com/upload/XZB9zcSxrtYsJDQAP55HB.webp": {
   "w": 1200,
   "h": 630,
@@ -1363,12 +1369,6 @@
  "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/f11b72944191583acc795f222d479ac4.jpeg?fit=1125%2C750&ssl=1": {
   "w": 1125,
   "h": 750,
-  "target": 1280,
-  "v": 3
- },
- "https://i0.wp.com/mag.digle.tokyo/wp-content/uploads/2026/11/jeremy-quartus-artist-photo-max1200.jpg?fit=1024%2C720&ssl=1": {
-  "w": 1024,
-  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -2000,7 +2000,7 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/01/phpu8QrkM.jpg": {
   "w": 800,
   "h": 1199,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg": {
@@ -2236,6 +2236,13 @@
   ],
   "why": "看不清"
  },
+ "https://k.sinaimg.cn/n/news/1_img/upload/d8010f78/213/w2048h1365/20261102/a8a0-af62ed6facd88229ec0b593b1f51616d.jpg/w710h400z1l50t1q7538e.jpg?by=comos": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-02"
+ },
  "https://kagit-media.atreez.cc/uploads/2026-10-27/v6k9lcewuo3hsf2qq0go5jyd.jpg": {
   "w": 1600,
   "h": 900,
@@ -2259,6 +2266,13 @@
   "h": 801,
   "target": 1280,
   "v": 3
+ },
+ "https://kyodonewsprwire.jp/prwfile/release/M108544/202610298931/_prw_PI3lg_aWjGsQKL.jpg": {
+  "w": 800,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
  },
  "https://lasisa.net/wp-content/uploads/2027/10/20261029_sbuxbag_01.jpg": {
   "w": 1200,
@@ -3955,6 +3969,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://storage.ctinews.com/compression/files/default/cut-1793538777-XNKpkSx.jpg": {
+  "w": 1547,
+  "h": 2319,
+  "target": 720,
+  "v": 3
+ },
  "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261027005537": {
   "w": 640,
   "h": 450,
@@ -4434,19 +4454,6 @@
   "h": 466,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.U4e88_DnYQb6ae0Iwr7XgQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.432,
-  "local": "pics/5d9720f46f110db1.webp",
-  "out": [
-   1280,
-   671
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.UBRO9CAO0UKiuMrm--RzFg&pid=News&w=1200": {
   "w": 700,
