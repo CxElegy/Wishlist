@@ -53,18 +53,18 @@
   }
  ],
  "_covered": {
-  "GTA 6": 35,
+  "GTA 6": 44,
   "Vaundy": 16,
   "漫威电影": 30,
   "日本顶级网球赛事": 10,
   "The Mandalorian": 6,
-  "A2O LITE": 20,
+  "A2O LITE": 25,
   "周杰伦": 7,
-  "ILLIT": 11,
-  "MMORPG 新作": 4,
+  "ILLIT": 19,
+  "MMORPG 新作": 8,
   "dota2": 5,
   "あつ森": 2,
-  "三星手机": 14,
+  "三星手机": 21,
   "哈利波特剧集": 1,
   "星巴克马克杯": 1,
   "チェーンソーマン": 5,
@@ -276,6 +276,25 @@
     15,
     17
    ]
+  },
+  {
+   "headline": "A2O LITEのAIJING、ダンスの実力に振付師も驚き「20時間も教えていない」（動画あり）",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22
+   ]
+  },
+  {
+   "headline": "A2O LITE『NEON』がネオンメイクブームを巻き起こす",
+   "highlight": "ネオンメイクブーム",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23,
+    24
+   ]
   }
  ],
  "周杰伦": [
@@ -327,7 +346,9 @@
     5,
     8,
     9,
-    10
+    10,
+    14,
+    18
    ]
   },
   {
@@ -348,14 +369,44 @@
     1
    ],
    "image": "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg"
+  },
+  {
+   "headline": "日本人メンバーが活動休止中のILLIT、メンバー2人が相次いで負傷…事務所「回復に向かっている」",
+   "highlight": "メンバー2人が相次いで負傷",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
+   ]
+  },
+  {
+   "headline": "ILLIT WONHEE愛牌romand 10週年快閃店來了！999元彩妝杯任選任裝、抽抽樂100%中獎",
+   "highlight": "romand 10週年快閃店",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
+   ]
   }
  ],
  "MMORPG 新作": [
   {
+   "headline": "세시소프트, 풀 3D 무협 MMORPG ‘천상비M2’ 사전예약 시작",
+   "highlight": "사전예약 시작",
+   "blurb": "세시소프트가 11월 2일 풀 3D 무협 MMORPG ‘천상비M2’의 사전예약을 시작했다.",
+   "weight": "hero",
+   "refs": [
+    5,
+    8,
+    6,
+    7
+   ]
+  },
+  {
    "headline": "도깨비의 세계, 출시 직후 구글 플레이 매출 1위",
    "highlight": "매출 1위",
    "blurb": "카카오게임즈가 10월 8일 정식 출시한 MMORPG ‘도깨비의 세계’가 출시 초반부터 흥행하고 있다.",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     1
    ],
@@ -424,7 +475,8 @@
    "refs": [
     4,
     9,
-    12
+    12,
+    18
    ]
   },
   {
@@ -445,7 +497,13 @@
     14,
     7,
     13,
-    10
+    10,
+    16,
+    17,
+    15,
+    19,
+    20,
+    21
    ]
   },
   {

@@ -689,6 +689,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.livedoor.jp/kstyle/ab5e045fe60d0218b0020ef9390be269_WI.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
+ },
  "https://cdn.livedoor.jp/kstyle/b4d9d285e668cb548e563e3d7218ddeb_WI.jpg": {
   "w": 1024,
   "h": 576,
@@ -1379,6 +1385,12 @@
   ],
   "why": "看不清"
  },
+ "https://igcazquhkwxtqsaqpznx.supabase.co/storage/v1/object/public/media/ig-articles/18025431548949698/0.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
+ },
  "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif": {
   "w": 594,
   "h": 1056,
@@ -1874,6 +1886,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gzdcy.img": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img": {
   "w": 1200,
   "h": 675,
@@ -2155,6 +2173,12 @@
   "h": 316,
   "target": 720,
   "v": 3
+ },
+ "https://imgs.niusnews.com/upload/posts/posts_image3_142367_1793609614.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
  },
  "https://inews.gtimg.com/news_ls/O3dSoUQme_hUlBJ8Wst37Rs8GwCfCj53Od700IImhx4YkAA/0": {
   "w": 1920,
