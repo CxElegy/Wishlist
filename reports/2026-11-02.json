@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "572acb67b268",
+ "edit_sig": "fee8417fcacc",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -775,10 +775,14 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "ジェラート ピケとジョエル・ロブションのコラボに新作が登場。発売日は“いい夫婦”の日（11月22日）。",
      "date": "2026-11-01",
-     "headline": "画像12 / 24＞ジェラート ピケとジョエル・ロブションのコラボコレクションに待望の新作登場！発売日は“いい夫婦”の日",
-     "highlight": "",
+     "event": {
+      "date": "2026-11-22",
+      "label": "発売日"
+     },
+     "headline": "ジェラート ピケとジョエル・ロブションのコラボコレクションに待望の新作登場！発売日は“いい夫婦”の日",
+     "highlight": "発売日は“いい夫婦”の日",
      "image": "https://news.walkerplus.com/article/1167698/12406746_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1167698/image12406734.html",
@@ -793,7 +797,7 @@
      "source": "KNB WEB",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.knb.ne.jp&sz=128",
      "url": "https://www.knb.ne.jp/nannan/7983/?category=3",
-     "weight": "lead"
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",
@@ -903,15 +907,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 7,
-     "source": "Bluesky",
-     "title": "It is extremely funny to me that in The Mandalorian of all shows the canonical in-universe response to someone saying this shit is to take out a gun and shoot them Moreover, ICE must be destroyed",
-     "url": "https://bsky.app/profile/miawong.bsky.social/post/3mzcqruhd722c"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -993,16 +988,6 @@
    "stories": [
     {
      "blurb": "",
-     "date": "2026-10-30",
-     "headline": "Vaundy演唱會10/31、11/1小巨蛋登場！入場時間、周邊販售、入場動線一次看",
-     "highlight": "",
-     "image": "https://s.yimg.com/lo/mysterio/api/7084938cb3ba0b996089e099971aac95d446d6cf068c871bead1e8b7d36bfa3d/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2F%25E6%2597%25A5%25E9%259F%25B3%25E6%25A8%2582%25E9%25AC%25BC%25E6%2589%258Dvaundy%25E5%25B0%2587%25E6%2596%25BC10%2F31%25E3%2580%258111%2F1%25E5%2594%25B1%25E9%2580%25B2%25E5%258F%25B0%25E5%258C%2597%25E5%25B0%258F%25E5%25B7%25A8%25E8%259B%258B%25E3%2580%2582%25EF%25BC%2588%25E5%259C%2596%25EF%25BC%258F%25E5%25A5%25BD%25E7%258E%25A9%25E5%259C%258B%25E9%259A%259B%25E6%2596%2587%25E5%258C%2596%25EF%25BC%2589",
-     "image_via": "og:image",
-     "url": "https://tw.news.yahoo.com/vaundy%E6%BC%94%E5%94%B1%E6%9C%831031%E3%80%81111%E5%B0%8F%E5%B7%A8%E8%9B%8B%E7%99%BB%E5%A0%B4%EF%BC%81%E6%99%82%E9%96%93%E5%9C%B0%E9%BB%9E%E3%80%81%E5%94%AE%E7%A5%A8%E6%99%82%E9%96%93%E3%80%81%E7%A5%A8%E5%83%B9%E5%BA%A7%E4%BD%8D%E4%B8%80%E6%AC%A1%E7%9C%8B-110100614.html",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
      "date": "2026-11-02",
      "headline": "Jeremy Quartus、n-bunaとVaundyを迎えた新曲「僕らの事にさせて」——11月4日に配信リリース",
      "highlight": "",
@@ -1020,6 +1005,16 @@
      "image_via": "AI 挑选",
      "url": "http://news.tvbs.com.tw/entertainment/jk-pop/4044412",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "（直擊）Vaundy攻蛋唱一半突開IG直播！1.3萬台粉歌聲傳向全球",
+     "highlight": "IG直播",
+     "image": "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/01/phpu8QrkM.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://ent.ltn.com.tw/news/breakingnews/5626067",
+     "weight": "normal"
     }
    ],
    "subtitle": "演唱会",
@@ -1166,13 +1161,6 @@
    "facts": [],
    "name": "dota2",
    "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 6,
-     "source": "GosuGamers",
-     "title": "Natus Vincere vs Nemiga Gaming Live Score on 2026-11-02 of Dota 2 EPL Masters III",
-     "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxPUFV1RTNPVFVUT2Vab3FrbTJkckZuX0dDak9fM0h0U2E4S0ViUlhaU2ZLbXY1SXRGd2pOeFhRbmRSUWVjcG5vUlg0UXB3Mm9URmNVTzdUZU1KeTUtRjZkdm5OV0NyWS1lUEZxQmp1MDZYUEZtelFzOHd2aEdSZlpSQ2h5aHpSRXFoSzd4MWJoNkhKZi1hY2s3d0Vycjk5RTJRY3RkNDBuR3Ria1MzRTZuRjh1WjBad2xQZm1MX3VWWU50U05YT2JpbUpLVWZ0a1RyYjhhUlhkNkl3eHJmUU0zQlJ5WC1tUTBnYlJLeXRDNU14al9wbjhaUjdLdDlSUQ?oc=5"
-    },
     {
      "date": "2026-11-02",
      "n": 7,
@@ -1333,22 +1321,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 2,
-     "source": "にいがた経済新聞",
-     "title": "【ポケモンと雪山デビュー】小学生以下1800円でリフト乗り放題、県内2スキー場も対象",
-     "url": "https://www.niikei.jp/2083640/"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "Board of the World",
-     "title": "Ride Moderator Snowboard Review: Too Much Board for the Park?",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFB6NDdSUlZLb1hvOVV0a2JaN1hKNkxia3A4ejcySm5qQzRqN3UweUY2QTdySm1veVJCM0VJcWIwTHZUZU4wdS1oSGRmMzFZX1ZBcUNraW1nRzRDbEQ2RHF6UmttVlF6aHJXVjJTYk1ERHZLUQ?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1356,10 +1328,30 @@
      "date": "2026-10-30",
      "headline": "Yuki Ito Wins 4th Consecutive Title - All Japan Ski Jumping Championships Normal Hill",
      "highlight": "4th Consecutive Title",
-     "image": "https://assets.st-note.com/production/uploads/images/330287586/rectangle_large_type_2_99c66dc9e66b41bca6cce01107428ae4.jpeg?fit=bounds&quality=85&width=1280",
-     "image_via": "og:image",
+     "image": "https://assets.st-note.com/img/1793367734-jeSHEaRgbTc053M1Y4ZDNWKB.jpg?width=1200",
+     "image_via": "AI 挑选",
      "url": "https://note.com/sports_watcher/n/naf5379c64c01?hl=en",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "【ポケモンと雪山デビュー】小学生以下1800円でリフト乗り放題、県内2スキー場も対象",
+     "highlight": "1800円",
+     "image": "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png",
+     "image_via": "og:image",
+     "url": "https://www.niikei.jp/2083640/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "Ride Moderator Snowboard Review: Too Much Board for the Park?",
+     "highlight": "",
+     "image": "https://www.boardoftheworld.com/wp-content/uploads/2025/12/Ride-Moderator-Review-Header.jpg",
+     "image_via": "og:image",
+     "url": "https://www.boardoftheworld.com/ride-moderator-snowboard-review/",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
@@ -1375,7 +1367,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "last": {
     "date": "2026-10-31",

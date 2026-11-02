@@ -5,12 +5,6 @@
   "target": 720,
   "v": 3
  },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/GEsLtLbugltBetk.jpg": {
-  "w": 1080,
-  "h": 608,
-  "target": 720,
-  "v": 3
- },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/YKIiiHbugixDwka.jpg": {
   "w": 1080,
   "h": 608,
@@ -438,6 +432,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.st-note.com/img/1793367734-jeSHEaRgbTc053M1Y4ZDNWKB.jpg?width=1200": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.st-note.com/production/uploads/images/327624810/rectangle_large_type_2_aed04e16319fb3675554717e75078d48.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -472,12 +472,6 @@
   "w": 1280,
   "h": 670,
   "target": 720,
-  "v": 3
- },
- "https://assets.st-note.com/production/uploads/images/330287586/rectangle_large_type_2_99c66dc9e66b41bca6cce01107428ae4.jpeg?fit=bounds&quality=85&width=1280": {
-  "w": 1280,
-  "h": 670,
-  "target": 1280,
   "v": 3
  },
  "https://assets.topics.apps-jp.nintendo.com/image/2026/10/23020211541109/1280/75f00733c8034255a6f7adac9aaedde0.jpg": {
@@ -1477,6 +1471,13 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/9/c/9c1c6_230_85e6733222f24b2ba1625b34d8e28d75.jpg": {
+  "w": 615,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.419
+ },
  "https://image.news.livedoor.com/newsimage/stf/a/8/a84a9_1830_709a350d_14660206.jpg": {
   "w": 1200,
   "h": 900,
@@ -1997,6 +1998,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/01/phpu8QrkM.jpg": {
+  "w": 800,
+  "h": 1199,
+  "target": 720,
+  "v": 3
+ },
  "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg": {
   "w": 800,
   "h": 588,
@@ -2329,12 +2336,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.image.infoseek.co.jp/isnews/photos/ntv/ntv_2026102805814811_0-enlarge.jpg": {
-  "w": 550,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg": {
   "w": 2000,
   "h": 2000,
@@ -2434,12 +2435,6 @@
   "target": 720,
   "v": 3
  },
- "https://motoryokoblog.com/wp-content/uploads/2026/09/vaundy_8298_fv.png": {
-  "w": 1200,
-  "h": 628,
-  "target": 720,
-  "v": 3
- },
  "https://mtnweekly.com/wp-content/uploads/2026/10/Nitro-Phase-2027-Motorhead-Snowboard-17.jpg": {
   "w": 1200,
   "h": 859,
@@ -2488,12 +2483,6 @@
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnQPUzVN95p8yqnKJxK5c3z8SNd1lEVn53rak9OLWAnFn4rPntJAWIzGnBkiFnP68AKeT8CP0jt79U3DujKPbvLZlPE1NPxPRBWL8kUcSFH0Y": {
   "w": 750,
   "h": 563,
-  "target": 720,
-  "v": 3
- },
- "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnTKpo7ENlHPYvn6qfviEGehMtdrTNw4nXX768REAAbeAZvYWyXIHG5APX2kgX30iLvHTMfAfCZLKjwZX36MOEmPonhDsHBHKLpQnsbDXmTB4p6frGgbNYUvB-l0vchwpoA==": {
-  "w": 934,
-  "h": 701,
   "target": 720,
   "v": 3
  },
@@ -2638,13 +2627,6 @@
   "target": 720,
   "v": 3
  },
- "https://news.walkerplus.com/article/1026125/10233248_615.jpg": {
-  "w": 615,
-  "h": 265,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.376
- },
  "https://news.walkerplus.com/article/1068055/10648734_615.jpg": {
   "w": 615,
   "h": 997,
@@ -2745,13 +2727,6 @@
    853
   ],
   "why": "看不清"
- },
- "https://news.walkerplus.com/article/1422988/17878260_615.jpg": {
-  "w": 615,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.412
  },
  "https://news.walkerplus.com/article/1445517/18700633_615.jpg": {
   "w": 615,
@@ -3403,12 +3378,6 @@
  "https://p2.bahamut.com.tw/B/2KU/24/0d3b2c13e6191e4cf08cdb7eca20xy05.PNG": {
   "w": 1280,
   "h": 720,
-  "target": 720,
-  "v": 3
- },
- "https://pbs.twimg.com/media/HV2owztbkAA-3Gf?format=webp&name=medium": {
-  "w": 1200,
-  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -4462,6 +4431,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.ThClThAslw1x8dUbgCXR1Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 359,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.UBRO9CAO0UKiuMrm--RzFg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4668,12 +4643,24 @@
   "v": 3,
   "blur": 0.325
  },
+ "https://www.bing.com/th?id=ONUT.mE2FUn7owzlfVfqDYZZW-g&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.pY__MqddmbzgsqrIlk7pqw&pid=News&w=640": {
   "w": 640,
   "h": 360,
   "target": 1280,
   "v": 3,
   "blur": 0.397
+ },
+ "https://www.bing.com/th?id=ONUT.qzPvzurZgbnCGfyUo-HS6g&pid=News&w=640": {
+  "w": 640,
+  "h": 427,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
@@ -4904,12 +4891,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.finestresullarte.info/rivista/immagini/2026/fn/alberto-angela-star-wars-5.jpg": {
-  "w": 1200,
-  "h": 616,
-  "target": 720,
-  "v": 3
- },
  "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/og-esports.webp?v=32e8ecb2d051e367153db4e5417a973fcfe59790": {
   "w": 1200,
   "h": 630,
@@ -5008,6 +4989,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
+  "w": 410,
+  "h": 231,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.604,
+  "local": "pics/d15a0fe49c108015.webp",
+  "out": [
+   1230,
+   693
+  ],
+  "why": "看不清"
+ },
  "https://www.nikkansports.com/sports/news/img/202610280000508-w500_1.jpg": {
   "w": 500,
   "h": 666,
@@ -5058,12 +5052,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.rohto.co.jp/news/release/2026/-/media/cojp/news/release/2026/1028_01/261028_01.png": {
-  "w": 664,
-  "h": 664,
-  "target": 720,
-  "v": 3
- },
  "https://www.sammyfans.com/wp-content/uploads/2026/10/samsung-galaxy-s26-ultra-sg26u-img-1000x600.jpg": {
   "w": 1000,
   "h": 600,
@@ -5073,6 +5061,12 @@
  "https://www.shanethegamer.com/wp-content/uploads/2026/08/stg-social-1024.png": {
   "w": 1024,
   "h": 1024,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png": {
+  "w": 1000,
+  "h": 608,
   "target": 720,
   "v": 3
  },
