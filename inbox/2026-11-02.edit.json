@@ -63,7 +63,8 @@
   "三星手机": 4,
   "哈利波特剧集": 1,
   "星巴克马克杯": 1,
-  "チェーンソーマン": 3
+  "チェーンソーマン": 3,
+  "绝区零": 2
  },
  "Vaundy": [
   {
@@ -426,6 +427,18 @@
     "label": "発売日"
    },
    "image": "https://static.sanyonews.jp/image/article/size1/4/d/4/f/4d4f13d5e99de3f5780b3e1d0970b701_1.jpg"
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "スシロー×RPG『ゼンレスゾーンゼロ』初コラボ決定 限定ミニフィギュアや描き下ろしグッズ登場",
+   "highlight": "初コラボ決定",
+   "blurb": "スシローと『ゼンレスゾーンゼロ』の初コラボが決定。限定ミニフィギュアや描き下ろしグッズが登場する。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/0/7/1/2/0712a2cf3028db7b536452ff4246228f_1.jpg"
   }
  ]
 }

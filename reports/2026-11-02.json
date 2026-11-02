@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "435324a9ff9d",
+ "edit_sig": "2986913ed465",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
@@ -631,26 +631,17 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 2,
-     "source": "Howl.Link",
-     "title": "【ゼンレスゾーンゼロ】 フィオニーで、最大収益 : 1400万 を目指す 4日目 【ベーグル計画】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBRTlNaUmhJNUlUanN5cVhkY08tcEYtR2ROMUk0ZkpGbk9SdGdnM1pxZ3BuOXR3Y3M3cUFF?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "スシローと『ゼンレスゾーンゼロ』の初コラボが決定。限定ミニフィギュアや描き下ろしグッズが登場する。",
      "date": "2026-11-01",
      "headline": "スシロー×RPG『ゼンレスゾーンゼロ』初コラボ決定 限定ミニフィギュアや描き下ろしグッズ登場",
-     "highlight": "",
+     "highlight": "初コラボ決定",
      "image": "https://static.sanyonews.jp/image/article/size1/0/7/1/2/0712a2cf3028db7b536452ff4246228f_1.jpg",
      "image_via": "og:image",
      "url": "https://www.sanyonews.jp/article/1936811?kw=2024%3Cbr%20/%3E%20%20%20%20%20%20%3C/a%3E%3C/p%3E%3Cp%3E%20%20%20%20%20%20%3Ca%20href=",
-     "weight": "hero"
+     "weight": "lead"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",
@@ -863,7 +854,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "last": {
     "date": "2026-11-01",
