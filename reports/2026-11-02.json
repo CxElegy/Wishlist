@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "387cb690bb07",
+ "edit_sig": "24849e45ffe2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -109,15 +109,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 4,
-     "source": "Enduins",
-     "title": "Classic MMORPG Fairyland Online Opens Steam Wishlists Ahead of Q4 2026 Global Release",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPZ3V2ZVo0RHdqNjNxX1pRU2prOUZUSVpFekd4Z1M2Q3F6WGRiamZJZVIyQjFEbERabXFGTGdJb2d3Rk1VMFJPNFR2clVqcDd0REtJMzM5bE1ZS0lfYkR5bXNEc09UUFl6RjE0WjNkOFJpMS1HRDdjelV6TlhOOG5YSzFwMGx5TzBZcE9uZlY1ZzFpamxUbG9pSlJ0Ty1xYW11WWM1d21lbjJ5MGtTaDU1N2dXTkg?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -129,6 +120,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.msn.com/ko-kr/gaming/mmo/%EB%8F%84%EA%B9%A8%EB%B9%84%EC%9D%98-%EC%84%B8%EA%B3%84-%EC%B6%9C%EC%8B%9C-%EC%A7%81%ED%9B%84-%EA%B5%AC%EA%B8%80-%ED%94%8C%EB%A0%88%EC%9D%B4-%EB%A7%A4%EC%B6%9C-1%EC%9C%84/ar-AA2gwXkS",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "Classic MMORPG Fairyland Online Opens Steam Wishlists Ahead of Q4 2026 Global Release",
+     "highlight": "Q4 2026 Global Release",
+     "image": "https://www.enduins.com/wp-content/uploads/2026/11/885312770_5459321004292964_867917521919741544_n.jpg",
+     "image_via": "og:image",
+     "url": "https://www.enduins.com/news/classic-mmorpg-fairyland-online-opens-steam-wishlists-ahead-of-q4-2026-global-release",
+     "weight": "normal"
     }
    ],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
