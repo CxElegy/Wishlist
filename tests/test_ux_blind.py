@@ -44,7 +44,8 @@ class Blind(unittest.TestCase):
         """灰色の 8x8 で狂う点検（measured_bad・pkcut・pkv・余白・loose・tiny）は blind のとき ✗ にならない。1 つでも外れたら数えて落とす。"""
         for needle in ('[] if blind else measured_bad(meas)', 'st.get("pkcut") and not blind', 'st.get("pkv") and not blind',
                        'gp["bad"] and not blind', 'gp["unread"] > gp["n"] * 0.25 and not blind',
-                       'st["loose"] and not blind', 'st.get("tiny") and not blind'):
+                       'st["loose"] and not blind', 'st.get("tiny") and not blind',
+                       '[] if blind else dom_lead', 'not page and not blind and st["ph"][0]', 'if heads and not blind', 'if nohead and not blind'):
             self.assertEqual(SRC.count(needle), 1, needle)
 
 

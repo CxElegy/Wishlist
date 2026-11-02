@@ -201,7 +201,7 @@ def blind_note(blind):
     global _blind_said
     if blind and not _blind_said:
         _blind_said = True
-        print(f"・写しが空（{CACHE}）：写真が灰色なので、写真の大きさ・形を測る点検（loose・pkcut・pkv・余白・小さい代用画像）と版面の頭の写真の「開く・開かない」は測れず、✗ にしない（photo_cache.yml が埋めた写しがある環境で走らせる）")
+        print(f"・写しが空（{CACHE}）：写真が灰色なので、写真の大きさ・形を測る点検（loose・pkcut・pkv・余白・小さい代用画像）と、灰色が引き起こす写真の差し替え（一時保管から出た枚数・DOM の先頭の写真・版面の頭の写真）は測れず、✗ にしない（photo_cache.yml が埋めた写しがある環境で走らせる）")
 
 
 def server_opens(url):
@@ -327,7 +327,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         pg.evaluate("window.scrollTo(0,0)")
     pg.screenshot(path=str(out / f"{who}-{page.split('.')[0] + '-' if page else ''}{width}x{height}.png"))
     bad = []
-    bad += dom_lead
+    bad += [] if blind else dom_lead   # 灰色の 8x8 は FIT_JS が「防盗链の代用画像」と見て別の候補へ替える＝DOM の先頭の写真が置き場の外になる
     if WHO[who] and who != "admin":   # 2026-11-02：一般のユーザーには役割の札（お客さま）を出さない。札は店長だけ
         rl = pg.evaluate("[...document.querySelectorAll('.wl-auth .rl')].filter(e=>e.offsetParent).map(e=>e.textContent.trim())")
         if rl:
@@ -372,7 +372,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append("同じ id が 2 回：" + "・".join(st["dup"]))
     if not (st["nav"] and st["mast"] and st["token"]):
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
-    if not page and st["ph"][0] >= 20 and st["ph"][1] * 2 < st["ph"][0]:   # 2026-10-31：店長もお客さまも同じ写真の一時保管（主写真・ぼかし・ギャラリー・欲しい物）。半分も使われていない
+    if not page and not blind and st["ph"][0] >= 20 and st["ph"][1] * 2 < st["ph"][0]:   # 2026-10-31：店長もお客さまも同じ写真の一時保管（主写真・ぼかし・ギャラリー・欲しい物）。半分も使われていない
         bad.append(f"写真 {st['ph'][0]} 枚のうち一時保管から出たのは {st['ph'][1]} 枚（半分未満）")
     bad += [] if blind else measured_bad(meas)   # 2026-11-01：測れた数 / 候補の数
     if st.get("pkcut") and not blind:   # 2026-11-01 小カード案 2：枠に合わせて切っている写真は、顔・題字が 6 割以上残る位置で切ったもの（data-keep）だけ
@@ -407,13 +407,13 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append("ポスターの写真が出ていない")
     if st["arts"] and st["empty"]:   # 2026-10-24：記事が 8 本あってもポスターが「直近 7 日は新着なし」（写真のある記事がない）
         bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
-    if heads:   # 2026-10-25：記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：版面の全部の記事に、さらにトップ（#front の article.wc）も。開けない写真は render.SWAP_JS が .nophoto に落とす
+    if heads and not blind:   # 2026-10-25：記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：版面の全部の記事に、さらにトップ（#front の article.wc）も。開けない写真は render.SWAP_JS が .nophoto に落とす
         bad.append(f"記事が札（写真が出ない。開けない写真は字だけの形に落とす）{len(heads)}：" + "・".join(heads[:4]))
     if st.get("plain"):   # 2026-11-02：版面の主題（section の m- class）がない素の版面。店長もお客さまも全部の版面が主題を持つ（誰かだけ素にしない）
         bad.append(f"主題（m- class）のない素の版面 {len(st['plain'])}：" + "・".join(st["plain"][:4]))
     if st.get("tiny") and not blind:   # 2026-11-01：防盗链の小さい代用画像（<32px 角）が写真の枠に残っている＝FIT_JS が error を投げて次の候補へ替えるはずが動いていない（dota2 の頭）
         bad.append(f"小さい代用画像が写真の枠に残っている {st['tiny']}")
-    if nohead:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
+    if nohead and not blind:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
         bad.append(f"版面の頭が写真なし（字だけの形）{len(nohead)}：" + "・".join(nohead[:4]))
     if st["tint"][0] and st["tint"][1] < st["tint"][0] * 0.95:   # 2026-10-31 写真 0.5 秒：置き場の写真の枠は色だけの下絵（style の background）を持つ
         bad.append(f"写真の枠に色の下絵がない {st['tint'][0] - st['tint'][1]}／{st['tint'][0]}")
