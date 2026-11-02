@@ -15,6 +15,7 @@ import urllib.request
 import yaml
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import sbstate  # noqa: E402
 import sitedir  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -37,9 +38,13 @@ def report(board, proc, state, note=None, eta_min=None):
             "p_eta_min": None if eta_min is None else max(1, round(eta_min))}
     req = urllib.request.Request(f"{url}/rest/v1/rpc/live_report", data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
                                  headers={"apikey": key, "Content-Type": "application/json"}, method="POST")
+    if sbstate.LIMITED:   # 402 を見たあとは呼び直さない
+        return
     try:
         urllib.request.urlopen(req, timeout=15).read()
     except Exception as err:  # noqa: BLE001
+        if getattr(err, "code", None) == 402:
+            sbstate.mark_limited("live_report")
         print(f"  （版面の状態を書けなかった：{board} {state}：{err}）", file=sys.stderr)
 
 
