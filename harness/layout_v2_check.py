@@ -73,7 +73,7 @@ def check(url):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--url", default=(ROOT / "docs/testground/layout-v2.html").as_uri())
+    ap.add_argument("--url", default=(ROOT / "docs/testground/_after.html").as_uri())
     a = ap.parse_args()
     bad, n = check(a.url)
     print(f"layout-v2 点検：写真 {n} 枚")
