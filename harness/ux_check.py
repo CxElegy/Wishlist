@@ -49,7 +49,7 @@ import render  # noqa: E402
 import pathlib as _pl
 import sys as _sys
 _sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
-from browser import PATTERN, launch, storage_bytes, storage_head  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
+from browser import CACHE, PATTERN, launch, storage_bytes, storage_head  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WHO = {"guest": None, "test-a": "test-a@example.com", "test-b": "test-b@example.com", "test-c": "test-c@example.com"}
@@ -183,11 +183,33 @@ BROWSER_HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Appl
                    "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"}
 
 
+CACHE_MIN = 50   # 写しがこれ未満なら「写しが空」。写真が灰色の 8x8 になるので、写真の大きさ・形を測る点検は測れない（2026-11-02）
+_blind_said = False
+
+
+def cache_blind(root=None):
+    """写しが空（CACHE_MIN 未満）か。空なら写真は灰色の 8x8：その大きさ・縦横比を測る点検（loose・pkcut・pkv・写真の余白・小さい代用画像）は
+    「壊れている」でなく「測れず」。✗ にせず、理由を 1 行だけ出して飛ばす。"""
+    d = root or CACHE
+    try:
+        return sum(1 for f in d.iterdir() if f.suffix in (".webp", ".png", ".jpg", ".jpeg")) < CACHE_MIN
+    except OSError:
+        return True
+
+
+def blind_note(blind):
+    global _blind_said
+    if blind and not _blind_said:
+        _blind_said = True
+        print(f"・写しが空（{CACHE}）：写真が灰色なので、写真の大きさ・形を測る点検（loose・pkcut・pkv・余白・小さい代用画像）と版面の頭の写真の「開く・開かない」は測れず、✗ にしない（photo_cache.yml が埋めた写しがある環境で走らせる）")
+
+
 def server_opens(url):
-    """写真の網址を、Referer なしのブラウザの頭で取り直して画像が返るか。"""
+    """写真の網址を、Referer なしのブラウザの頭で取り直して画像が返るか。写しが無くて確かめられないときは None（False＝壊れている、とは別）。"""
     try:
         if PATTERN.match(url):   # Supabase の配信は写し経由（なければ 1 回だけ落として写しを作る）。urlopen は止めに拒まれる
-            return bool(storage_bytes(url, BROWSER_HEADERS, 20))   # 写しに無ければ確かめられない＝False（本番から落とさない）
+            b = storage_bytes(url, BROWSER_HEADERS, 20)   # 写しに無ければ確かめられない＝None（本番から落とさない。False にしない）
+            return None if b is None else bool(b)
         r = urllib.request.urlopen(urllib.request.Request(url, headers=BROWSER_HEADERS), timeout=20)
         return r.status == 200 and r.headers.get("content-type", "").startswith("image/")
     except RuntimeError:   # 止めの拒み：「開けない」と読み替えず、そのまま出す
@@ -202,7 +224,7 @@ def nohead_real(nohead, fails, opens=server_opens):
     out = []
     for k in nohead:
         srcs = [s for kk, s in fails if kk == k]
-        if not srcs or not all(opens(s) for s in dict.fromkeys(srcs)):
+        if not srcs or any(opens(s) is False for s in dict.fromkeys(srcs)):   # None（測れず）は壊れ扱いにしない
             out.append(k)
     return out
 
@@ -287,6 +309,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     if not page:
         pg.evaluate("document.querySelectorAll('details.older').forEach(d=>d.open=false)")
     near = [] if page else pg.evaluate(NEAR_JS)
+    blind = cache_blind()
+    blind_note(blind)
     fails = pg.evaluate(FAILS_JS) if (st["nohead"] or st["heads"]) else []
     nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
     heads = nohead_real(sorted(set(st["heads"])), fails) if st["heads"] else []
@@ -350,12 +374,12 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
     if not page and st["ph"][0] >= 20 and st["ph"][1] * 2 < st["ph"][0]:   # 2026-10-31：店長もお客さまも同じ写真の一時保管（主写真・ぼかし・ギャラリー・欲しい物）。半分も使われていない
         bad.append(f"写真 {st['ph'][0]} 枚のうち一時保管から出たのは {st['ph'][1]} 枚（半分未満）")
-    bad += measured_bad(meas)   # 2026-11-01：測れた数 / 候補の数
-    if st.get("pkcut"):   # 2026-11-01 小カード案 2：枠に合わせて切っている写真は、顔・題字が 6 割以上残る位置で切ったもの（data-keep）だけ
+    bad += [] if blind else measured_bad(meas)   # 2026-11-01：測れた数 / 候補の数
+    if st.get("pkcut") and not blind:   # 2026-11-01 小カード案 2：枠に合わせて切っている写真は、顔・題字が 6 割以上残る位置で切ったもの（data-keep）だけ
         bad.append(f"写真を主役を測らずに切っている（小さいカード・主写真・c3・mini・wc・tape すべて）{st['pkcut']} 枚")
-    if st.get("pkv"):   # 2026-10-31：「気になるかも？」の小さいカードで写真の見える高さがカードの 45% 未満（帯のように細い）
+    if st.get("pkv") and not blind:   # 2026-10-31：「気になるかも？」の小さいカードで写真の見える高さがカードの 45% 未満（帯のように細い）
         bad.append(f"小さいカードの写真が細い（見える高さ 45% 未満）{st['pkv']} 枚")
-    if gp["bad"]:   # 2026-10-31 F-16 続き：全部の画像の場所（大・小のカード・壁・テープ・気になるかも）で、写真が枠の幅の 25% 超を空けたまま（空いた横を情報に使っていない）。1400 / 390 とも数える。2026-11-01：全候補を読み込んでから（GAP_JS）
+    if gp["bad"] and not blind:   # 2026-10-31 F-16 続き：全部の画像の場所（大・小のカード・壁・テープ・気になるかも）で、写真が枠の幅の 25% 超を空けたまま（空いた横を情報に使っていない）。1400 / 390 とも数える。2026-11-01：全候補を読み込んでから（GAP_JS）
         bad.append(f"写真の余白（空いた横が情報なし）：{gp['bad']} / {gp['n']} 枚 " + "・".join(gp["eg"]))
     if hole["wallPct"] > 8:   # 2026-11-01 L1・L2：壁の列の底がそろっていない（空き面積が壁の 8% 超）
         bad.append(f"ほかの注目ニュースの壁の下が空いている（空き {hole['wallPct']}%）")
@@ -367,9 +391,9 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"壁のカードの下が空いている：{hole['wc']} 枚 " + "・".join(hole["eg"]))
     if hole["cards"] - hole["wc"] > 2:   # 版面の中のカード：同じく空き（枠の 30% 超・70px 超）が 3 枚以上
         bad.append(f"カードの下が空いている：{hole['cards']} / {hole['n']} 枚 " + "・".join(hole["eg"]))
-    if gp["n"] and gp["unread"] > gp["n"] * 0.25:   # 読めない写真が多い（回線切れ）のに「余白 0」と言わない
+    if gp["n"] and gp["unread"] > gp["n"] * 0.25 and not blind:   # 読めない写真が多い（回線切れ）のに「余白 0」と言わない
         bad.append(f"写真の余白を測れなかった：{gp['unread']} / {gp['n']} 枚（読み込み切れ）")
-    if st["blur"] or st["loose"]:   # 2026-10-31 F-16：ぼかしで余白を埋めない（img.bg 0）。大きいカードで写真が枠より細いのに枠を絞っていない（.nw なし）のも✗
+    if st["blur"] or (st["loose"] and not blind):   # 2026-10-31 F-16：ぼかしで余白を埋めない（img.bg 0）。大きいカードで写真が枠より細いのに枠を絞っていない（.nw なし）のも✗
         bad.append(f"写真の余白：ぼかし {st['blur']} 枚・枠を絞っていない大きいカード {st['loose']} 枚")
     if hid["bad"]:   # 2026-11-01：届いたのに 1 秒を超えて透明のまま（画面に入っているのに色の枠だけ）
         bad.append(f"写真が届いたのに出ない（透明のまま 1 秒超）{hid['bad']} 枚 " + "・".join(hid["eg"]))
@@ -387,7 +411,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"記事が札（写真が出ない。開けない写真は字だけの形に落とす）{len(heads)}：" + "・".join(heads[:4]))
     if st.get("plain"):   # 2026-11-02：版面の主題（section の m- class）がない素の版面。店長もお客さまも全部の版面が主題を持つ（誰かだけ素にしない）
         bad.append(f"主題（m- class）のない素の版面 {len(st['plain'])}：" + "・".join(st["plain"][:4]))
-    if st.get("tiny"):   # 2026-11-01：防盗链の小さい代用画像（<32px 角）が写真の枠に残っている＝FIT_JS が error を投げて次の候補へ替えるはずが動いていない（dota2 の頭）
+    if st.get("tiny") and not blind:   # 2026-11-01：防盗链の小さい代用画像（<32px 角）が写真の枠に残っている＝FIT_JS が error を投げて次の候補へ替えるはずが動いていない（dota2 の頭）
         bad.append(f"小さい代用画像が写真の枠に残っている {st['tiny']}")
     if nohead:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
         bad.append(f"版面の頭が写真なし（字だけの形）{len(nohead)}：" + "・".join(nohead[:4]))
