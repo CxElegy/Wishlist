@@ -1,14 +1,14 @@
 {
- "admin": "ce57f3124f29",
- "admin-ai": "957eaa87a2be",
+ "admin": "98d29c7fcc4f",
+ "admin-ai": "6760e1a0900a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "92275c0b"
+   "5a1de716"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "a21bcae1"
+   "7b70b83e"
   ]
  },
  "admin-boards": "1104b6b1b9ba",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "e0ee5f114c6f",
+ "admin-emblem": "d6d68e0c45ba",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1bc8c857"
+   "11ccd21c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0909acaf7db3",
  "admin-members_marks": {},
- "admin-now": "3efff10d087c",
+ "admin-now": "9ba77a217041",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5c295831"
+   "8c5a900d"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "ea335c9a"
+   "fd368f66"
   ]
  },
- "admin-system": "d7a501cd98e3",
+ "admin-system": "3dce91340c40",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "fd967483"
+   "aba619bc"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ac0c76eb"
+   "c8b88e45"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "b1ea33af"
   ]
  },
- "index": "0d065b8ecbe2",
+ "index": "7ccf52e98f08",
  "index_marks": {
   "front": [
    "トップ",
-   "2bddc0fd"
+   "a223c630"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "b7bb4ec9"
+   "82b8ddad"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -149,15 +149,15 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "4181cd77"
+   "8af9f24a"
   ],
   "w-b867582f": [
    "あつ森",
-   "26fb16df"
+   "9969bfbd"
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "f5616bf3"
+   "b6ddcac5"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "a0edd872"
+   "99392391"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "eec194c5"
+   "171d552e"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "8c246508"
+   "4a1c22d7"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "9bd2013e"
   ]
  },
- "updated": "11.03 00:36",
+ "updated": "11.03 00:49",
  "wishlist": "41032c69c7f8"
 }
