@@ -282,3 +282,4 @@
 - 2026-11-02 r2 小元素の顔の大きさ：表示した顔の px を型ごとに測る〔emblem_face.shown_face_px・emb_check E29 情報〕。店長 283 枚：胸像 50px 前後でそろい、全身 8〜86px・上半身 11〜58px がばらつく。基準 3 案を testground/face-size.html に出し BACKLOG を [?]。次＝答えで CSS と E29 を ✗ に
 - 2026-11-02 r1：顔の大きさの審査 1 段目（394 枚を 4 分類で並べ押して直す・保存は review_save→review_answers）。PR #770。確かめ：1400/390 で押す→保存・本番 200・ux_check の ✗ は既存の E10/E15/E24 で今回と無関係。次：店長の答え待ち→2 段目
 - 2026-11-02 r1 依頼の係：写真の配信止め ①② — 点検のブラウザを harness/browser.py の launch に 1 本化（*.supabase.co/storage/ は写し/灰色で返す・配信を測る 3 本は WL_ALLOW_PHOTOS=1 のみ）・直接 chromium.launch を拦める tests/test_browser_guard。tests 1223 通過。次＝③毎日の見張り（管理ページ・150 MB/日 Discord）
+- 2026-11-02 r1f1 写真の配信止めの続き（#774）：urllib の storage 読み・Playwright MCP・JS も止め、写しは読む時に作る（state/photo_cache 1097 枚 46 MB を 1 度）。tests 1228 通過。ux_check 本番：guest/test-a は走った分で ✗ は E4・E10・E15・E24・heat 札重なり（E4・heat 札は写真と無関係に見えるが基準未確認）、完走は 15 分超。次＝③毎日の見張り（管理ページ・150 MB/日 Discord）と ④24 時間後のログ実測
