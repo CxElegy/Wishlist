@@ -57,6 +57,37 @@ class BrowserGuard(unittest.TestCase):
                 bad.append(f"{f.name}: urllib を使うのに browser を import していない")
         self.assertEqual(bad, [])
 
+    def test_no_swallowed_guard_and_no_raw_storage_read(self):
+        """止めの RuntimeError を except Exception が飲み込まない・storage の網址を直接 urlopen／requests しない（2026-11-02：ux_check.server_opens が 4 か所目だった）。"""
+        import sys
+        sys.path.insert(0, str(ROOT / "harness"))
+        import ux_check
+        import browser
+        calls = []
+        old = browser.storage_bytes
+        try:
+            ux_check.storage_bytes = lambda u, h=None, t=0: calls.append(u) or b"IMG"
+            self.assertTrue(ux_check.server_opens("https://abc.supabase.co/storage/v1/object/public/photos/x.webp"))
+            def boom(*a, **k): raise RuntimeError("guard")
+            ux_check.storage_bytes = boom
+            with self.assertRaises(RuntimeError):
+                ux_check.server_opens("https://abc.supabase.co/storage/v1/object/public/photos/x.webp")
+        finally:
+            ux_check.storage_bytes = old
+        self.assertEqual(len(calls), 1)
+        # 静的に数える：harness で urlopen を使う所が PATTERN／storage_bytes を通るか、storage を読まないもの
+        bad = []
+        for f in (ROOT / "harness").glob("*.py"):
+            if f.name == "browser.py":
+                continue
+            s = f.read_text(encoding="utf-8")
+            for m in re.finditer(r"urlopen\(([^\n]*)", s):
+                if "supabase.co/storage" in m.group(1):
+                    bad.append(f"{f.name}: storage の網址を直接 urlopen")
+        lay = (ROOT / "scripts" / "layout_sample.py").read_text(encoding="utf-8")
+        self.assertIn("/storage/v1/", lay)   # 写真の網址が storage なら requests.get に行かない
+        self.assertEqual(bad, [])
+
     def test_urlopen_storage_refused_and_cached(self):
         import sys
         import tempfile
