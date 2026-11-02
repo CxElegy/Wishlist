@@ -762,12 +762,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.sounova.com/upload/VDnplFoqnmnxzxylWKNWq.webp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.sounova.com/upload/XZB9zcSxrtYsJDQAP55HB.webp": {
   "w": 1200,
   "h": 630,
@@ -2070,6 +2064,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100425.jpg": {
+  "w": 560,
+  "h": 560,
+  "target": 720,
+  "v": 3
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/inredweb/m_inredweb-108030.jpg": {
   "w": 640,
   "h": 410,
@@ -2236,19 +2236,6 @@
   ],
   "why": "看不清"
  },
- "https://k.sinaimg.cn/n/news/310/w710h400/20260924/b740-844acda14750cc33f86c14ae04c2f09b.jpg/w710h400z1l50t1q75b76.jpg?by=comos": {
-  "w": 710,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.435,
-  "local": "pics/56352aeae181c752.webp",
-  "out": [
-   1280,
-   721
-  ],
-  "why": "看不清"
- },
  "https://kagit-media.atreez.cc/uploads/2026-10-27/v6k9lcewuo3hsf2qq0go5jyd.jpg": {
   "w": 1600,
   "h": 900,
@@ -2272,13 +2259,6 @@
   "h": 801,
   "target": 1280,
   "v": 3
- },
- "https://kyodonewsprwire.jp/prwfile/release/M108544/202610298931/_prw_PI3lg_aWjGsQKL.jpg": {
-  "w": 800,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402
  },
  "https://lasisa.net/wp-content/uploads/2027/10/20261029_sbuxbag_01.jpg": {
   "w": 1200,
@@ -3588,7 +3568,7 @@
  "https://rinewstoday.com/wp-content/uploads/2026/11/qtq80-w9db4Q.jpeg": {
   "w": 1254,
   "h": 836,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/07e140aab69c4cebab526813467e217fc16a2097940b3f6f8daf5ac5327d227e/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennishead_808%2Feb0a17f6b0185d978d5ed70f18760cad.jpg": {
@@ -4454,6 +4434,19 @@
   "h": 466,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.U4e88_DnYQb6ae0Iwr7XgQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.432,
+  "local": "pics/5d9720f46f110db1.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.UBRO9CAO0UKiuMrm--RzFg&pid=News&w=1200": {
   "w": 700,

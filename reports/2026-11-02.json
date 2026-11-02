@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "c3b3c59f29e3",
+ "edit_sig": "c43833584a3a",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -430,15 +430,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 11,
-     "source": "スポーツナビ",
-     "title": "【決勝】L.フェルナンデス vs D.シュナイダー ハイライト│東レ パン パシフィック オープンテニス2026",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE4yMnE0NXdtZW42eGwwTzNWVXM0TTFDM3NQWHdGbGdSb0c3OWxQcFMzV19nN2hEM01KUlZiOHBobzAtSHpTUmwzV3VOUURLWjFwb2x3ekRkeHM4TUtI?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1040,15 +1031,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 3,
-     "source": "RINewsToday",
-     "title": "New Cat Food Study Finds Heavy Metals Widespread and Major Differences by Protein Source",
-     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxONGxyWDlObGsySDR0RVBFeDF0U2tzLWY3c1pZdllMbnA4YzY2SWxDU1hzdDVONDhDVkRlQVZGX0lJVWpzbHR6WThxaXlDeW91NzRxVXBNWDNjRThfV3l1YVA1RkFrWDV1QzhzQzVRSzRDbk5WanlwLVRCQlNrRmRrbWlXOGoxQTlGUThleFNYWUEyOVFiR0ZiVW5zRTdJdTdpMi1GSXRqOTFENTNDVGlsTzlPaw?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1060,6 +1042,16 @@
      "image_via": "og:image",
      "url": "https://news.livedoor.com/topics/detail/32711309/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "New Cat Food Study Finds Heavy Metals Widespread and Major Differences by Protein Source",
+     "highlight": "Heavy Metals",
+     "image": "https://rinewstoday.com/wp-content/uploads/2026/11/qtq80-w9db4Q.jpeg",
+     "image_via": "og:image",
+     "url": "https://rinewstoday.com/new-cat-food-study-finds-heavy-metals-widespread-and-major-differences-by-protein-source/",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
