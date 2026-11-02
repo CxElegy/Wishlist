@@ -55,9 +55,15 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - uses: actions/cache/restore@v4   # 写しを読むだけ（埋めるのは photo_cache.yml）
+        with:
+          path: .photo_cache
+          key: wl-photo-cache-none
+          restore-keys: wl-photo-cache-
       - run: pip install playwright pyyaml pillow   # ブラウザは Actions に入っている Chrome を使う（すぐ撮り始めて Before を間に合わせる）
       - name: Before / After を撮って送る
         env:
+          WL_PHOTO_CACHE: ${{ github.workspace }}/.photo_cache
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_BODY: ${{ github.event.pull_request.body }}
         run: python harness/before_after.py "${{ github.event.pull_request.merge_commit_sha }}" "${{ github.event.pull_request.number }}" "$PR_TITLE" "${{ github.event.pull_request.html_url }}"
@@ -100,10 +106,18 @@ jobs:
         if: steps.pend.outputs.n != '0'
         with:
           python-version: "3.12"
+      - uses: actions/cache/restore@v4   # 写しを読むだけ
+        if: steps.pend.outputs.n != '0'
+        with:
+          path: .photo_cache
+          key: wl-photo-cache-none
+          restore-keys: wl-photo-cache-
       - if: steps.pend.outputs.n != '0'
         run: pip install playwright pyyaml pillow
       - name: After を撮って送る
         if: steps.pend.outputs.n != '0'
+        env:
+          WL_PHOTO_CACHE: ${{ github.workspace }}/.photo_cache
         run: python harness/before_after.py later "${{ github.event.workflow_run.name }}" "${{ github.event.workflow_run.run_started_at }}" "$RUNNER_TEMP/bap"
       - name: 送った Before を消す
         if: steps.pend.outputs.n != '0'

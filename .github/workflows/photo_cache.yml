@@ -1,0 +1,36 @@
+# 点検用の写真の写しを埋める「1 日 1 回の決まった 1 つの仕事」（docs/rules/free-tier.md）。
+# 点検・係は写しを読むだけ。本番の Supabase から落とすのはここだけ（1 回 100 MB まで・写しに無いものだけ）。
+name: photo cache
+on:
+  schedule:
+    - cron: "23 19 * * *"    # 日本時間 4:23
+  workflow_dispatch:
+concurrency:
+  group: photo-cache
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      WL_PHOTO_CACHE: ${{ github.workspace }}/.photo_cache
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/cache/restore@v4
+        with:
+          path: .photo_cache
+          key: wl-photo-cache-${{ github.run_id }}
+          restore-keys: wl-photo-cache-
+      - run: python harness/photo_cache_fill.py
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .photo_cache
+          key: wl-photo-cache-${{ github.run_id }}

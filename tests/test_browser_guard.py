@@ -127,15 +127,22 @@ class BrowserGuard(unittest.TestCase):
             def fulfill(s, **k): s.out = k
 
         old, browser.CACHE = browser.CACHE, pathlib.Path(tempfile.mkdtemp())
+        oldmax, oldfills = browser.FILL_MAX, browser._fills
         try:
             u = "https://x.supabase.co/storage/v1/object/public/photos/qq-800.webp?v=1"
+            browser.FILL_MAX, browser._fills = 0, 0           # 既定：落とさず灰色
+            r0 = Route(u)
+            browser._fulfill(r0)
+            self.assertEqual(Route.n, 0)
+            self.assertEqual(r0.out["body"], browser.GRAY)
+            browser.FILL_MAX = 1                              # 明示したときだけ 1 回落とす
             browser._fulfill(Route(u))
             r2 = Route(u)
             browser._fulfill(r2)
             self.assertEqual(Route.n, 1)                 # 2 回目は写しから
             self.assertEqual(r2.out["body"], b"IMG")
         finally:
-            browser.CACHE = old
+            browser.CACHE, browser.FILL_MAX, browser._fills = old, oldmax, oldfills
 
     def test_playwright_mcp_guarded(self):
         """係が自分で開く Playwright MCP も同じ止め（--init-page）。"""
@@ -156,3 +163,26 @@ class BrowserGuard(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class NoFillByDefault(unittest.TestCase):
+    """写しの空を本番で埋め直さない（2026-11-02）：既定で落とさない・写しは作業ツリーの外・埋めるのは photo_cache.yml だけ。"""
+
+    def test_defaults(self):
+        import os
+        import subprocess
+        import sys
+        env = {k: v for k, v in os.environ.items() if not k.startswith("WL_PHOTO")}
+        out = subprocess.run([sys.executable, "-c", "import sys;sys.path.insert(0,'harness');import browser as b;print(b.FILL_MAX, b.CACHE)"],
+                             cwd=ROOT, env=env, capture_output=True, text=True, check=True).stdout.split()
+        self.assertEqual(out[0], "0")
+        self.assertFalse(pathlib.Path(out[1]).is_relative_to(ROOT), "写しの置き場が作業ツリーの中")
+
+    def test_only_fill_job_downloads(self):
+        bad = [f.name for f in (ROOT / "harness").glob("*.py") if f.name not in ("browser.py", "photo_cache_fill.py")
+               and "WL_PHOTO_FILL_MAX" in f.read_text(encoding="utf-8")]
+        bad += [f.name for f in (ROOT / ".github" / "workflows").glob("*.yml") if "WL_PHOTO_FILL_MAX" in f.read_text(encoding="utf-8")]
+        self.assertEqual(bad, [], "写しを埋めるのは photo_cache.yml の 1 つだけ（WL_PHOTO_FILL_MAX を明示しない）")
+        wf = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")
+        self.assertIn("photo_cache_fill.py", wf)
+        self.assertIn("cron", wf)

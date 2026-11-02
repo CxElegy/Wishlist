@@ -8,7 +8,8 @@ import re
 import urllib.request
 from pathlib import Path
 
-CACHE = Path(__file__).resolve().parent.parent / "state" / "photo_cache"
+# 写しは作業ツリーの外の共通の場所（係・実行同士で共有。作業ツリーは毎回まっさらで、中に置くと毎回落とし直す）。上書き：WL_PHOTO_CACHE
+CACHE = Path(os.environ.get("WL_PHOTO_CACHE") or Path.home() / ".cache" / "wl_photo_cache")
 PATTERN = re.compile(r"https://[^/]+\.supabase\.co/storage/")
 GRAY = base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAEUlEQVR4nGNoaGgYFUQAANbVRbl3EF3BAAAAAElFTkSuQmCC")
 
@@ -66,7 +67,9 @@ def storage_head(url, headers=None, timeout=30):
     return _heads[url]
 
 
-FILL_MAX = int(os.environ.get("WL_PHOTO_FILL_MAX", "300"))   # 写しが空のとき 1 つのプロセスが落とす上限（暴走止め）
+# 既定 0＝点検は本番から落とさない（写しが無ければ灰色）。写しを埋めるのは毎日 1 回の photo_cache.yml（harness/photo_cache_fill.py）だけ。
+# 8x8 の灰色で測りが狂う点検だけ WL_PHOTO_FILL_MAX を明示する。
+FILL_MAX = int(os.environ.get("WL_PHOTO_FILL_MAX", "0"))
 _fills = 0
 
 
