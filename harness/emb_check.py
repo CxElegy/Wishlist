@@ -53,6 +53,8 @@ from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
+sys.path.insert(0, str(ROOT / "harness"))
+from browser import PATTERN, storage_bytes  # noqa: E402  Supabase の写真は写しから（free-tier.md）
 import cutshape  # noqa: E402  （numpy・OpenCV・PIL だけ。emblem は import しない）
 SMALL_SIDE = 256   # emblem.BUST_MIN_SIDE と同じ（emblem は import しない）
 CLOSEUP_FS = 0.5   # emblem.CLOSEUP と同じ（試験で一致を見る）
@@ -112,7 +114,8 @@ def _get(url):
         img = None
         for _ in range(2):
             try:
-                data = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "wishlist-ux-check (https://cxelegy.github.io/Wishlist/)"}), timeout=20).read()
+                hd = {"User-Agent": "wishlist-ux-check (https://cxelegy.github.io/Wishlist/)"}
+                data = storage_bytes(url, hd, 20) if PATTERN.match(url) else urllib.request.urlopen(urllib.request.Request(url, headers=hd), timeout=20).read()
                 if b"<svg" in data[:4096]:   # 記号（Twemoji）・SVG のロゴ：開けて <svg があればよい（画素の点検はしない）
                     img = "svg"
                 else:

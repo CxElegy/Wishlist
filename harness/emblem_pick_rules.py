@@ -13,6 +13,8 @@ from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
+sys.path.insert(0, str(ROOT / "harness"))
+from browser import PATTERN, storage_bytes  # noqa: E402  Supabase の写真は写しから（free-tier.md）
 import emblem  # noqa: E402
 
 COMMIT = "135c63b8"          # ユーザーが印を付けた見本の版（2026-10-26）。絵は今と違うので、この版の絵で数える
@@ -189,7 +191,7 @@ def audit_library():
         for e in (b.get("config") or {}).get("emblem") or []:
             try:
                 if e["image"].startswith("http"):
-                    raw = urllib.request.urlopen(e["image"], timeout=30).read()
+                    raw = storage_bytes(e["image"]) if PATTERN.match(e["image"]) else urllib.request.urlopen(e["image"], timeout=30).read()
                 else:   # 店長の版面と同じ絵を指す相対の道（docs/home）
                     raw = (ROOT / "docs" / "home" / e["image"]).read_bytes()
                 v, why = original_verdict(trim(Image.open(io.BytesIO(raw))))

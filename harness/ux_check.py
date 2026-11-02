@@ -49,7 +49,7 @@ import render  # noqa: E402
 import pathlib as _pl
 import sys as _sys
 _sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
-from browser import launch  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
+from browser import launch, storage_head  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WHO = {"guest": None, "test-a": "test-a@example.com", "test-b": "test-b@example.com", "test-c": "test-c@example.com"}
@@ -622,7 +622,7 @@ def html_weight_bad(html):
     return bad
 
 
-SAMPLE_N = 16
+SAMPLE_N = 6
 
 
 def lead_photos(html):
@@ -641,9 +641,8 @@ def photo_cache_bad(html, get=None, n=SAMPLE_N):
     urls = lead_photos(html)
     if not urls:
         return []
-    def head(u):
-        r = urllib.request.urlopen(urllib.request.Request(u, headers=BROWSER_HEADERS), timeout=30)
-        return r.headers.get("cache-control", "")
+    def head(u):   # 1 バイトだけ・同じ網址は 1 回（free-tier.md：以前は 16 枚×ページ×アカウントを丸ごと GET）
+        return storage_head(u, BROWSER_HEADERS)
     step = max(1, len(urls) // n)
     bad = []
     for u in urls[::step][:n]:

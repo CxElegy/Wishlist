@@ -18,6 +18,8 @@ import pathlib
 import sys
 import urllib.request
 
+import browser  # noqa: F401  Supabase の写真を urlopen で読まない止め（free-tier.md）
+
 JST = dt.timezone(dt.timedelta(hours=9))
 FAST_EVERY = 5 * 60       # 最初の 1 時間：5 分おき
 FAST_TIMES = 12
