@@ -47,7 +47,9 @@ def photo_key(u, cache={}):
     try:
         import io
         from PIL import Image
-        if u.startswith("http"):
+        if "/storage/v1/" in u:   # Supabase の配信は点検・生成で読まない（free-tier.md）：写しがあればそれ、なければ網址のまま
+            data = (Path(__file__).resolve().parent.parent / "state" / "photo_cache" / u.split("?")[0].rsplit("/", 1)[-1]).read_bytes()
+        elif u.startswith("http"):
             import requests
             data = requests.get(u, timeout=15).content
         else:

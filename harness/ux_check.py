@@ -49,7 +49,7 @@ import render  # noqa: E402
 import pathlib as _pl
 import sys as _sys
 _sys.path.insert(0, str(_pl.Path(__file__).resolve().parent.parent / "harness"))
-from browser import launch, storage_head  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
+from browser import PATTERN, launch, storage_bytes, storage_head  # noqa: E402  点検のブラウザは共通の 1 か所から（free-tier.md）
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WHO = {"guest": None, "test-a": "test-a@example.com", "test-b": "test-b@example.com", "test-c": "test-c@example.com"}
@@ -186,8 +186,12 @@ BROWSER_HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Appl
 def server_opens(url):
     """写真の網址を、Referer なしのブラウザの頭で取り直して画像が返るか。"""
     try:
+        if PATTERN.match(url):   # Supabase の配信は写し経由（なければ 1 回だけ落として写しを作る）。urlopen は止めに拒まれる
+            return len(storage_bytes(url, BROWSER_HEADERS, 20)) > 0
         r = urllib.request.urlopen(urllib.request.Request(url, headers=BROWSER_HEADERS), timeout=20)
         return r.status == 200 and r.headers.get("content-type", "").startswith("image/")
+    except RuntimeError:   # 止めの拒み：「開けない」と読み替えず、そのまま出す
+        raise
     except Exception:
         return False
 
