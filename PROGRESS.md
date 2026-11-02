@@ -291,3 +291,4 @@
 2026-11-02 r1f1 Python 側 storage_bytes/head を写し無しは None に（PR #784）・photo_cache 手動実行 success（2509 網址・残り 311）・ux_check は係の写しが空で灰色の ✗ 多数（実害か未判別）・次: ux 用に cache を読む回
 2026-11-02 r1f2 ux_check の写し空＝「測れず」（✗ にしない）：server_opens None・nohead_real・pkcut/pkv/余白/loose/tiny を blind で飛ばす・tests/test_ux_blind.py。確かめ：手元のテスト。次: 係の写しを埋める・settings 素の箱 1 件の切り分け
 2026-11-02 r1f2 続き：写しが空のとき、灰色が引き起こす差し替え（一時保管の枚数・DOM の先頭の写真・版面の頭）も「測れず」。guest 1400 が ✓ に（残るのは heat の札重なり 33＝実害の疑い）。
+- 2026-11-02 r1 依頼の係：free-tier.md 決まり 2 を「ハーネスの見回りが query_logs で毎日数える」に書き換え（sbp_ トークンは Actions に置かない）。コード無し。次：写真を Pages へ移した後に管理ページ表示を見直す。
