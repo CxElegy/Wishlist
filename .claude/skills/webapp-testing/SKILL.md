@@ -52,9 +52,11 @@ python scripts/with_server.py \
 To create an automation script, include only Playwright logic (servers are managed automatically):
 ```python
 from playwright.sync_api import sync_playwright
+import sys; sys.path.insert(0, '/path/to/Wishlist')  # リポジトリの根
+from harness.browser import launch  # p.chromium.launch は直接呼ばない（本番の写真を毎回落として Supabase 月 5 GB を食う）
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=True) # Always launch chromium in headless mode
+    browser = launch(p, headless=True) # Always launch chromium in headless mode via harness/browser.py
     page = browser.new_page()
     page.goto('http://localhost:5173') # Server already running and ready
     page.wait_for_load_state('networkidle') # CRITICAL: Wait for JS to execute

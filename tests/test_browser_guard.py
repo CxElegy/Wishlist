@@ -11,13 +11,15 @@ RAW = re.compile(r"\bchromium\.launch\(|\bchromium\.connect|launch_persistent_co
 class BrowserGuard(unittest.TestCase):
     def test_no_direct_launch(self):
         bad = []
-        for d in ("harness", "tests", "scripts"):
-            for f in (ROOT / d).glob("*.py"):
-                if f.name in ("browser.py", "test_browser_guard.py"):
-                    continue
-                for n, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
-                    if RAW.search(line):
-                        bad.append(f"{f.relative_to(ROOT)}:{n}")
+        files = [f for d in ("harness", "tests", "scripts") for f in (ROOT / d).glob("*.py")]
+        files += (ROOT / ".claude" / "skills").glob("**/*.py")   # スキルの例も（2026-11-02：抜けていた）
+        files += (ROOT / ".claude" / "skills").glob("**/SKILL.md")   # 手本のコードも
+        for f in files:
+            if f.name in ("browser.py", "test_browser_guard.py"):
+                continue
+            for n, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
+                if RAW.search(line):
+                    bad.append(f"{f.relative_to(ROOT)}:{n}")
         self.assertEqual(bad, [], "ブラウザは harness/browser.py の launch(pw) で開く")
 
     def test_no_direct_launch_js(self):

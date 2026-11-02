@@ -137,6 +137,7 @@
       "source": "anthropics/skills",
       "sourceType": "github",
       "skillPath": "skills/webapp-testing/SKILL.md",
+      "localPatch": "2026-11-02 launch(pw) via harness/browser.py (free-tier.md); computedHash is upstream's",
       "computedHash": "ad5b1fc52807e9afa4635e59218a026b164dc58b6c3f41b0f7c644dcd6ccf572"
     }
   }

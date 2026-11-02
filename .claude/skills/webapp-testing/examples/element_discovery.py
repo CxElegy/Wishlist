@@ -1,9 +1,11 @@
 from playwright.sync_api import sync_playwright
+import sys; sys.path.insert(0, '/path/to/Wishlist')  # リポジトリの根
+from harness.browser import launch  # p.chromium.launch は直接呼ばない（本番の写真を毎回落として Supabase 月 5 GB を食う）
 
 # Example: Discovering buttons and other elements on a page
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=True)
+    browser = launch(p, headless=True)
     page = browser.new_page()
 
     # Navigate to page and wait for it to fully load
