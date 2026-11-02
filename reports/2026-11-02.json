@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "7aa7c9fb1c88",
+ "edit_sig": "ea083066e69c",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
@@ -718,33 +718,6 @@
   {
    "cover": null,
    "facts": [],
-   "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 1,
-     "source": "ｄメニューニュース",
-     "title": "ついしまい忘れちゃう？ 猫が舌を出しっぱなしにする理由を獣医師が解説（ねこのきもち WEB MAGAZINE）",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNekstYkJQek9wYmxHVk9zQ3VsT3VJcm9UZ3ZpeE4wUTY2d3B2dU1VeWxVLUgzYUVlUVJJUjFxR0g4VjlOYlZYNlRqQ190Tks4N0E3Ujh0YW1nSDNpcExRSU8zc3VaMGtQUy1SQ2xCekFEaHpjY2tzelNSZV9UOVhDag?oc=5"
-    }
-   ],
-   "section": "生活",
-   "stories": [],
-   "subtitle": "猫グッズ · 家里两只猫",
-   "theme": {
-    "accent": "#E8875B",
-    "alt_accent": "#F3B6B0",
-    "alt_bg": "#3A2C24",
-    "alt_fg": "#FBF4EA",
-    "bg": "#FBF4EA",
-    "fg": "#3A2C24",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "滑雪",
    "pending": [
     {
@@ -841,6 +814,31 @@
     "bg": "#0F1512",
     "fg": "#ECE7DC",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-01",
+    "headline": "大栄工業、ペット用品&POMのキャットステップをMakuakeで開始へ",
+    "url": "https://news.dellows.jp/941580/?from=related-reading-list"
+   },
+   "name": "猫用品",
+   "quiet": true,
+   "section": "生活",
+   "status": "",
+   "stories": [],
+   "subtitle": "猫グッズ · 家里两只猫",
+   "theme": {
+    "accent": "#E8875B",
+    "alt_accent": "#F3B6B0",
+    "alt_bg": "#3A2C24",
+    "alt_fg": "#FBF4EA",
+    "bg": "#FBF4EA",
+    "fg": "#3A2C24",
+    "font": "sans",
     "split": true
    }
   },
