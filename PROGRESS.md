@@ -283,3 +283,4 @@
 - 2026-11-02 r1：顔の大きさの審査 1 段目（394 枚を 4 分類で並べ押して直す・保存は review_save→review_answers）。PR #770。確かめ：1400/390 で押す→保存・本番 200・ux_check の ✗ は既存の E10/E15/E24 で今回と無関係。次：店長の答え待ち→2 段目
 - 2026-11-02 r1 依頼の係：写真の配信止め ①② — 点検のブラウザを harness/browser.py の launch に 1 本化（*.supabase.co/storage/ は写し/灰色で返す・配信を測る 3 本は WL_ALLOW_PHOTOS=1 のみ）・直接 chromium.launch を拦める tests/test_browser_guard。tests 1223 通過。次＝③毎日の見張り（管理ページ・150 MB/日 Discord）
 - 2026-11-02 r1f1 写真の配信止めの続き（#774）：urllib の storage 読み・Playwright MCP・JS も止め、写しは読む時に作る（state/photo_cache 1097 枚 46 MB を 1 度）。tests 1228 通過。ux_check 本番：guest/test-a は走った分で ✗ は E4・E10・E15・E24・heat 札重なり（E4・heat 札は写真と無関係に見えるが基準未確認）、完走は 15 分超。次＝③毎日の見張り（管理ページ・150 MB/日 Discord）と ④24 時間後のログ実測
+- 2026-11-02 r1 依頼の係：無料枠の残り出どころ #777 — HARNESS に「その場も launch」1 行・workflow が playwright 直起動しない点検（0 件）。確かめ：全 1229 テスト OK・CI 緑。ux_check は写真を読む本番ページを開くので今回は回さず（段の決まり）。次：pages.yml（案A 2 段目）、毎日の見張り。
