@@ -63,7 +63,7 @@
   "三星手机": 4,
   "哈利波特剧集": 1,
   "星巴克马克杯": 1,
-  "チェーンソーマン": 1
+  "チェーンソーマン": 3
  },
  "Vaundy": [
   {
@@ -384,5 +384,20 @@
    "image": "https://image.news.livedoor.com/newsimage/stf/4/a/4a2f3_1729_761f0180_688787ab.jpg"
   }
  ],
- "チェーンソーマン": []
+ "チェーンソーマン": [
+  {
+   "headline": "漫画『チェンソーマン』第2部完結 コミックス最終24巻は6月4日発売",
+   "highlight": "第2部完結",
+   "blurb": "漫画『チェンソーマン』第2部が完結。コミックス最終24巻は6月4日に発売される。",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2027-06-04",
+    "label": "発売日"
+   },
+   "image": "https://static.sanyonews.jp/image/article/size1/4/d/4/f/4d4f13d5e99de3f5780b3e1d0970b701_1.jpg"
+  }
+ ]
 }

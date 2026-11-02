@@ -2367,6 +2367,19 @@
   "target": 720,
   "v": 3
  },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/17/179220187710248295_664_2000.JPEG": {
+  "w": 600,
+  "h": 337,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.433,
+  "local": "pics/ac34360f0384746b.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
   "w": 664,
   "h": 497,
@@ -3655,6 +3668,19 @@
   ],
   "why": "看不清"
  },
+ "https://static.sanyonews.jp/image/article/size1/4/d/4/f/4d4f13d5e99de3f5780b3e1d0970b701_1.jpg": {
+  "w": 406,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.422,
+  "local": "pics/7e8f1f08c791d915.webp",
+  "out": [
+   812,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg": {
   "w": 640,
   "h": 433,
@@ -3853,12 +3879,6 @@
  "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-29-073255.jpg": {
   "w": 1678,
   "h": 929,
-  "target": 720,
-  "v": 3
- },
- "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-01-172731-1200x664.jpg": {
-  "w": 1200,
-  "h": 664,
   "target": 720,
   "v": 3
  },

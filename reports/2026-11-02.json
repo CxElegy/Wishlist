@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "e7edb75879fb",
+ "edit_sig": "2bd75aacc623",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
@@ -448,8 +448,8 @@
      "date": "2026-11-01",
      "headline": "三星Galaxy S27 Ultra散热问题未解决 Exynos 2700或重新回归",
      "highlight": "Exynos 2700",
-     "image": "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-01-172731.jpg",
-     "image_via": "同一件事的别家报道 sumahodigest.com",
+     "image": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/17/179220187710248295_664_2000.JPEG",
+     "image_via": "正文图（2 枚から）",
      "url": "https://timeline.sohu.com/news/xgOfd6UTI5",
      "weight": "lead"
     },
@@ -458,8 +458,8 @@
      "date": "2026-11-01",
      "headline": "Galaxy S27 ProではExynos 2700の性能制限を緩和か、Samsungの半導体部門とモバイル部門が共同開発",
      "highlight": "Exynos 2700の性能制限を緩和か",
-     "image": "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-01-172731-1200x664.jpg",
-     "image_via": "正文图",
+     "image": "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-01-172731.jpg",
+     "image_via": "og:image",
      "url": "https://sumahodigest.com/?p=75350",
      "weight": "normal"
     },
@@ -498,20 +498,6 @@
    "name": "チェーンソーマン",
    "pending": [
     {
-     "date": "2026-11-01",
-     "n": 2,
-     "source": "Bella.tw儂儂 on MSN",
-     "title": "日本鬼才Vaundy首攻蛋狂吸2.6萬人!《鏈鋸人》動漫神曲狂炸，突開IG直播全球放送",
-     "url": "https://www.msn.com/zh-tw/lifestyle/beauty/%E6%97%A5%E6%9C%AC%E9%AC%BC%E6%89%8Dvaundy%E9%A6%96%E6%94%BB%E8%9B%8B%E7%8B%82%E5%90%B826%E8%90%AC%E4%BA%BA-%E9%8F%88%E9%8B%B8%E4%BA%BA-%E5%8B%95%E6%BC%AB%E7%A5%9E%E6%9B%B2%E7%8B%82%E7%82%B8-%E7%AA%81%E9%96%8Big%E7%9B%B4%E6%92%AD%E5%85%A8%E7%90%83%E6%94%BE%E9%80%81/ar-AA2gxpjE"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 3,
-     "source": "山陽新聞",
-     "title": "漫画『チェンソーマン』第2部完結 コミックス最終24巻は6月4日発売",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5sZDBhYk42MTBjb3hGLTR2UGU3QThCSVRNY3pYYS1KUGEtVzBpOW9DMklrd0dWYzFJUVU0aURjOVlfWjVhOUJXNjMxV00zcl9SRnllczNZekx5UHhMTjhGTU8zME9nUUxBcllURA?oc=5"
-    },
-    {
      "date": "2026-10-31",
      "n": 4,
      "source": "キャラグー",
@@ -520,7 +506,22 @@
     }
    ],
    "section": "影视",
-   "stories": [],
+   "stories": [
+    {
+     "blurb": "漫画『チェンソーマン』第2部が完結。コミックス最終24巻は6月4日に発売される。",
+     "date": "2026-11-01",
+     "event": {
+      "date": "2027-06-04",
+      "label": "発売日"
+     },
+     "headline": "漫画『チェンソーマン』第2部完結 コミックス最終24巻は6月4日発売",
+     "highlight": "第2部完結",
+     "image": "https://static.sanyonews.jp/image/article/size1/4/d/4/f/4d4f13d5e99de3f5780b3e1d0970b701_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/1894206?rct=movie_animation",
+     "weight": "lead"
+    }
+   ],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -681,7 +682,7 @@
      "highlight": "涨粉破千万",
      "image": null,
      "source": "网易新闻客户端",
-     "source_icon": "https://static.ws.126.net/163/frontend/images/logo-netease-114.png",
+     "source_icon": "https://static.ws.126.net/163/frontend/images/logo-netease-144.png",
      "url": "https://c.m.163.com/news/v/VK36F99R5.html?spss=expand",
      "weight": "lead"
     },
@@ -791,20 +792,6 @@
    "facts": [],
    "name": "A2O LITE",
    "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "스포츠동아",
-     "title": "“같은 노래, 다른 첫 장면”…A2O LITE ‘NEON’ 무대의 비밀",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9Xc29PNmRWUUN2Vk9peXZ6Vy03MU1SZkJFOWZTMEpzcDI5dG4zVDFONWFXTC1DbW5iTVo4RHdEakpycndHLU1tSXl5eGJfRUVGRkctUkRTLWdSOHVGTjZkTTNvSXd6MzRIZkxrcTJn?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 5,
-     "source": "톱스타뉴스",
-     "title": "A2O LITE, 데뷔곡 ‘NEON’으로 음악방송 8관왕…‘인기가요’ 2주 연속 1위",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBlOWRUM1otTGVHeUxEdHRBNkJTUzZTaGFScGdjV3M1c3dScTNlSlJjTDJDbG5sSjNFaWZtM1pKSkxsbnRxaUxjMDZ5WTJHTGZPNm5MNjZtVHQ3b0F0MHJHeHBpSU5MVVo3VUNURU8zREVydw?oc=5"
-    },
     {
      "date": "2026-11-02",
      "n": 6,
@@ -1009,7 +996,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "last": {
     "date": "2026-10-31",
@@ -1034,7 +1021,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-11-01",
