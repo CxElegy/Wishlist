@@ -288,3 +288,4 @@
 - 2026-11-02 r1f1 無料枠の別の目の指摘：係が使うスキル webapp-testing（SKILL.md＋examples 3 本）が chromium.launch を直接教えていた→ launch(pw) に書き換え・skills-lock に localPatch。test_no_direct_launch の走査に .claude/skills の *.py・SKILL.md を足し（前は 0 件と数えていた）、同じ壊れ方を数える。連動の範囲 4 件。次：pages.yml（案A 2 段目）。
 - 2026-11-02 r1 依頼の係：無料枠・写しの空を本番で埋め直す漏れ — 写しを ~/.cache/wl_photo_cache へ・FILL_MAX 既定 0・photo_cache.yml（1 日 1 回）・tests NoFillByDefault。確かめ：手元のテスト（PR の CI）。本番の写真を読むブラウザは回していない。次：Pages への移行（ユーザーの Source 切り替え待ち）。
 - 2026-11-02 r1 依頼の係：#782 合併。photo_cache.yml を手で起こすと 20 分で切られた（逐次 DL）→ 12 分の時間上限を足した（cache は保存された）。ux_check は本番の写真を読むため回していない。
+2026-11-02 r1f1 Python 側 storage_bytes/head を写し無しは None に（PR #784）・photo_cache 手動実行 success（2509 網址・残り 311）・ux_check は係の写しが空で灰色の ✗ 多数（実害か未判別）・次: ux 用に cache を読む回
