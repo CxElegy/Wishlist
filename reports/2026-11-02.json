@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "53df905dd652",
+ "edit_sig": "0e39353c9df6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -468,22 +468,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 4,
-     "source": "キャラグー",
-     "title": "チェンソーマンLuminastaパワーの入荷日・価格｜プライズ",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5rTXNWMlNpLVNmMWZMb3lSNnJGNVIwbWp2MlpHUk1reTROUTdiOGVQaHR1dTFSd1RyNk1OaWh2bngyeVJmUHVGN1Y2VTlGNndKM1l3am9TQQ?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 5,
-     "source": "ナタリー",
-     "title": "劇場版「チェンソーマン レゼ篇」×グラニフ ポチタ | スウェットパンツ（7900円） [画像ギャラリー 21/28]",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1CczE1T0FXNXdjYS1RcUVGSlZUdGVBWkJrZV81VHFwN3N0YjBQaGhnaEwxNTZPcWJnanVyMHZvdGJZNE9rczZ5TlJMRmpGV1VOalBuaWxTMl9Tc3lxTXNQdA?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -499,6 +483,29 @@
      "image_via": "AI 挑选",
      "url": "https://www.sanyonews.jp/article/1894206?rct=movie_animation",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "劇場版「チェンソーマン レゼ篇」×グラニフ ポチタ スウェットパンツ（7900円）",
+     "highlight": "7900円",
+     "image": "https://ogre.natalie.mu/media/news/eiga/2026/1028/chainsawman_graniph_20261028_22.jpg?impolicy=ogp_face_crop",
+     "image_via": "og:image",
+     "price": {
+      "now": "7,900円"
+     },
+     "url": "https://natalie.mu/eiga/gallery/news/695686/3003302",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "チェンソーマンLuminastaパワーの入荷日・価格",
+     "highlight": "",
+     "image": "https://charagoo.jp/wp-content/uploads/2026/02/D123285_01.webp",
+     "image_via": "og:image",
+     "url": "https://charagoo.jp/prize/item/fc72d7eccf44/",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",

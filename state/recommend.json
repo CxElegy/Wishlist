@@ -8,7 +8,6 @@
  "images": {
   "http://news.17173.com/content/11012026/211238542.shtml": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/GEsLtLbugltBetk.jpg",
   "http://www.excite.co.jp/news/article/Prtimes_2026-11-02-16333-238/": null,
-  "https://ascii.jp/elem/000/004/447/4447809/": "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122",
   "https://automaton-media.com/en/news/open-world-anime-style-detective-arpg-silver-palace-gets-december-14-global-release-date/": "https://automaton-media.com/en/wp-content/uploads/2026/10/20261030-74586-001.jpg",
   "https://buzzap.jp/news/20261030-xiaomi-poco-f7-ultra-ultimate-price-down/": "https://buzzap.net/images/2026/10/30/poco-f7-ultra/top.jpg",
   "https://collider.com/best-superhero-movies-of-2008-ranked/": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/copy-of-collider-template-14.jpg?w=1600&h=900&fit=crop",
@@ -27,6 +26,7 @@
   "https://motoryokoblog.com/?p=8298": "https://motoryokoblog.com/wp-content/uploads/2026/09/vaundy_8298_fv.png",
   "https://n.yam.com/Article/20261028746360": "https://ni.yam.com/20261028/58209971f014950270ea0797d4e8e71e-678e09ac9a31d48c.webp",
   "https://news.gamebase.com.tw/news/detail/99441811": "https://image.gamebase.com.tw/gb_img/6/004/520/4520236.jpg?og=y",
+  "https://news.google.com/rss/articles/CBMiVEFVX3lxTE90d1l4ZktRcWtQdXRRcThoZ0FqYkZwazl4c1ZHVmFSSWlaUDBjNEZvODc0SXIydmUwSjlDZ3ZpMjBiNkdsMWxiU1JjZW4za1dKbXpzZw?oc=5": "https://prcdn.freetls.fastly.net/release_image/16333/244/16333-244-3c5b0c510c040c9265a80785f2d48064-2560x1920.jpg",
   "https://news.infoseek.co.jp/article/ntv_2026102805814811/": "https://media.image.infoseek.co.jp/isnews/photos/ntv/ntv_2026102805814811_0-enlarge.jpg",
   "https://news.infoseek.co.jp/article/oshiraku_28731/": "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg",
   "https://news.infoseek.co.jp/article/wowkorea_540202/": "https://media.image.infoseek.co.jp/isnews/photos/wowkorea/wowkorea_540202_0-enlarge.jpg",
@@ -1875,12 +1875,12 @@
    "hits": [
     "无线直发夹"
    ],
-   "image": "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122",
+   "image": "https://prcdn.freetls.fastly.net/release_image/16333/244/16333-244-3c5b0c510c040c9265a80785f2d48064-2560x1920.jpg",
    "kind": "hesitate",
    "source": "ASCII.jp",
    "taste": [],
    "title": "家でも外出先でも使いやすい自立式ヘアアイロン。大容量5000mAhバッテリー搭載で海外使用もできる『マイナスイオンコードレスアイロン』新発売！",
-   "url": "https://ascii.jp/elem/000/004/447/4447809/",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE90d1l4ZktRcWtQdXRRcThoZ0FqYkZwazl4c1ZHVmFSSWlaUDBjNEZvODc0SXIydmUwSjlDZ3ZpMjBiNkdsMWxiU1JjZW4za1dKbXpzZw?oc=5",
    "words": [
     "スチーマー",
     "ヘアアイロン"
@@ -2126,11 +2126,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2138,11 +2138,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
