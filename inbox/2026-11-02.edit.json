@@ -56,7 +56,7 @@
   "The Mandalorian": 6,
   "A2O LITE": 14,
   "周杰伦": 5,
-  "ILLIT": 1,
+  "ILLIT": 4,
   "MMORPG 新作": 1,
   "dota2": 3,
   "あつ森": 1,
@@ -292,10 +292,28 @@
  ],
  "ILLIT": [
   {
+   "headline": "「ILLIT」、5thミニアルバムが初動44万枚突破！新記録を更新し、グローバルチャートでも存在感",
+   "highlight": "初動44万枚突破",
+   "blurb": "ILLITの5thミニアルバムが初動44万枚を突破し、自己新記録を更新。グローバルチャートでも存在感を示した。",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ILLIT、初のライブツアー日本公演開幕「これからも一緒にいてくださったらうれしいです！」 Japan 2ndシングル詳細発表",
+   "highlight": "Japan 2ndシングル詳細発表",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
    "headline": "“무례했다” 아일릿, 손지창에 말실수 후 사과…”곧 60인데” (‘사당귀’) [종합]",
    "highlight": "사과",
    "blurb": "",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     1
    ],

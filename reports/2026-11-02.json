@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "730850127f9c",
+ "edit_sig": "9124729b48dd",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
@@ -218,31 +218,28 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 2,
-     "source": "Howl.Link",
-     "title": "아일릿(ILLIT) - It’s Me [열린 음악회/Open Concert] | KBS 261101 방송",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBBVi12SkxTbjN0TlY5QXJQOGpkRVNsT2VQNG9ORmhlcWNDUkN3RUh1LS1pdTdkdERPTDFV?oc=5"
-    },
-    {
-     "date": "2026-11-02",
-     "n": 3,
-     "source": "wowKorea",
-     "title": "「ILLIT」、5thミニアルバムが初動44万枚突破！新記録を更新し、グローバルチャートでも存在感",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5MUVRIekFMaXR6enU1dU1GV0pZMi1qWGMwVWVzX1dzLU9qVDE4UHZXV3FtUXVHaG04SjBXek9BcE5jRVlZNk5VZ0w4Uk1wTTJoREpmakxYdWRudw?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "山陽新聞",
-     "title": "ILLIT、初のライブツアー日本公演開幕「これからも一緒にいてくださったらうれしいです！」 Japan 2ndシングル詳細発表",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9wV2hFRTltdk9iQjlPMDRRMHFTOGw3TmtSdmRHSC12SFFxUG4wb1ZkTHVjWHE1MnJSVDY4S0E0LWZicUJGQXNBV2NqREVtcUdtcV9qSkFTeENqejg?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
+    {
+     "blurb": "ILLITの5thミニアルバムが初動44万枚を突破し、自己新記録を更新。グローバルチャートでも存在感を示した。",
+     "date": "2026-11-02",
+     "headline": "「ILLIT」、5thミニアルバムが初動44万枚突破！新記録を更新し、グローバルチャートでも存在感",
+     "highlight": "初動44万枚突破",
+     "image": "https://www.wowkorea.jp/img/topic/32/164799/325063_640W.webp",
+     "image_via": "正文图",
+     "url": "https://www.wowkorea.jp/topic/read/164799.html",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "ILLIT、初のライブツアー日本公演開幕「これからも一緒にいてくださったらうれしいです！」 Japan 2ndシングル詳細発表",
+     "highlight": "Japan 2ndシングル詳細発表",
+     "image": "https://static.sanyonews.jp/image/article/size1/d/d/3/e/dd3e16fa11d27187f9d798ff4daf507d_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1938240?kw=NIB",
+     "weight": "normal"
+    },
     {
      "blurb": "",
      "date": "2026-11-01",
@@ -251,7 +248,7 @@
      "image": "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg",
      "image_via": "AI 挑选",
      "url": "https://tvreport.co.kr/broadcast/article/1087538/",
-     "weight": "lead"
+     "weight": "normal"
     }
    ],
    "subtitle": "アイリット · 日本公演特别关注",
