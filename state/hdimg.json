@@ -1400,7 +1400,7 @@
  "https://image.news.livedoor.com/newsimage/stf/3/9/39a35_1847_06d0a347c0bc0e78ba3647993ecd3a77.jpg": {
   "w": 1000,
   "h": 667,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/4/4/440f4_1845_54580daa_3b96419f.jpg": {
@@ -2019,6 +2019,12 @@
  "https://img.sportsbull.jp/raw/t2m8VMS5AgyOd1ngRNI4M1BYyyaofcW7fQOmvQWf.jpg": {
   "w": 1024,
   "h": 576,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100425.jpg": {
+  "w": 560,
+  "h": 560,
   "target": 720,
   "v": 3
  },

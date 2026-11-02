@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "dd2d3784e30b",
+ "edit_sig": "4848f89ffce3",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -823,17 +823,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-02",
-     "n": 2,
-     "source": "ライブドアニュース",
-     "title": "猫グッズのなかで『大型・高額な物』4選 選び方には要注意？失敗しないためのポイントも (2026年11月2日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1JNjN6QndfZ2tET3FWQmt4czQ1OERILXdQX3NvN0xQZG9wcFFvdy1XdktaZXQ1STNXYTVVRHdrRkFYNWYtOXN2UmZYeXpCU21pVFVpdjktVmdQUzdjTlE?oc=5"
+     "headline": "猫グッズのなかで『大型・高額な物』4選 選び方には要注意？失敗しないためのポイントも",
+     "highlight": "大型・高額な物",
+     "image": "https://image.news.livedoor.com/newsimage/stf/3/9/39a35_1847_06d0a347c0bc0e78ba3647993ecd3a77.jpg",
+     "image_via": "og:image",
+     "url": "https://news.livedoor.com/topics/detail/32711309/",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
