@@ -30,6 +30,7 @@ import likefx
 import livelog
 import overview
 import photo_store
+import sbstate
 import sitedir
 import taxonomy
 import theme
@@ -4326,10 +4327,50 @@ def busy_plan(names=(), db=None):
     return {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "", "ids": {n: _wid(n) for n in names}}
 
 
+# ---- Supabase が 402・通信失敗のときの縮退（2026-11-03，用户定的：11/5 以降は全 API が 402 になりうる）----------------
+# どのページにも一番先に入れる 1 つの部品。window.fetch を 1 回だけ包み、*.supabase.co の /rest・/auth・/functions が
+# 402（無料枠超過）・520 以上・通信失敗で返ったら「休止中」にする：以降の Supabase 呼び出しは網に出ず、すぐ 503 を返す
+# （呼び直さない）。ページは静的なまま見せ、下に 1 行だけ案内する（エラーの箱は出さない）。402 は 10 分、同じタブで覚える
+# （次のページも最初から網に出ない）。各ページの JS は呼び出しごとに直さない＝ここ 1 か所が規則。
+SB_DEG_JS = r"""
+(function(){
+  if(!window.fetch||window.WL_SB) return;
+  var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false;
+  var MSG='いま、ログインと 👍👎 の機能を休止しています。記事はこれまでどおり読めます。';
+  function sb(u){return /^https:\/\/[a-z0-9]+\.supabase\.co\/(rest|auth|functions)\//.test(u);}
+  try{ var t=+sessionStorage.getItem(K); if(t&&Date.now()-t<600000){ down=true; paused=true; } }catch(e){}
+  function note(){
+    if(document.querySelector('.wl-sbnote')) return;
+    if(!document.body){ document.addEventListener('DOMContentLoaded',note); return; }
+    var s=document.createElement('style');
+    s.textContent='.wl-sbnote{position:fixed;left:12px;bottom:12px;z-index:80;max-width:min(560px,calc(100vw - 24px));padding:6px 12px;border:2px solid var(--ink,#111);background:var(--gold,#ffd84a);color:var(--ink,#111);box-shadow:3px 3px 0 var(--ink,#111);font:700 13px/1.5 var(--font-sans,sans-serif)}@media(max-width:700px){.wl-sbnote{bottom:68px}}';   // 狭い画面は右下の札（ログイン）の上へ
+    document.head.appendChild(s);
+    var d=document.createElement('div'); d.className='wl-sbnote'; d.setAttribute('role','status'); d.textContent=MSG; document.body.appendChild(d);
+    var el=document.getElementById('sb-state'); if(el){ el.dataset.state='limited'; el.textContent='Supabase：制限中（この画面で通信が止まりました）'; }
+  }
+  function trip(code){
+    if(down&&R.dataset.sb) return;
+    down=true; R.dataset.sb='down';
+    if(code===402){ try{ sessionStorage.setItem(K,String(Date.now())); }catch(e){} }
+    note();
+  }
+  if(paused){ R.dataset.sb='down'; note(); }
+  window.WL_SB={isDown:function(){return down;}};
+  window.fetch=function(input,init){
+    var u=typeof input==='string'?input:(input&&input.url)||'';
+    if(!sb(u)) return of(input,init);
+    if(down) return Promise.resolve(new Response('{"message":"いま、ログインの機能を休止しています"}',{status:503,headers:{'Content-Type':'application/json'}}));
+    return of(input,init).then(function(r){ if(r.status===402||r.status>=520) trip(r.status); return r; },function(e){ trip(0); throw e; });
+  };
+})();
+"""
+SB_DEG_TAG = "<script>" + SB_DEG_JS + "</script>"
+
+
 def _account_tag(page=""):
     """網页が Supabase に渡すアカウント（db/accounts.sql の p_account）。ページごとの JS は window.WL_ACCOUNT を読む。
     ログイン（AUTH_JS）も一緒に入れる：どのページにも右上のログインボタンが出る。"""
-    return f'<script>window.WL_ACCOUNT={json.dumps(sitedir.NAME)};</script>{_auth_tag(page)}'
+    return f'<script>window.WL_ACCOUNT={json.dumps(sitedir.NAME)};</script>{SB_DEG_TAG}{_auth_tag(page)}'
 
 
 # ---- ログイン（2026-10-20，用户定的）-------------------------------------------------------------
@@ -6527,12 +6568,23 @@ def _photo_meter(st):
                    f' · 主写真 {pics} 枚のうち一時保管から {st.get("hit", 0)}（{round(100 * st.get("hit", 0) / pics) if pics else 0}%）'))
 
 
+def _sb_line(st=None):
+    """管理ページの 1 行：Supabase が使えているか（Actions が書いた state/supabase_status.json。402＝無料枠超過で制限中）。
+    開いたこの画面で通信が止まれば、SB_DEG_JS が #sb-state を「制限中」に書き換える。"""
+    st = sbstate.load() if st is None else st
+    lim = st.get("status") == "limited"
+    when = (st.get("since") if lim else st.get("at")) or ""
+    when = f' · {e(when[5:16].replace("T", " "))} UTC から' if lim and when else (f' · 最後に確認 {e(when[5:16].replace("T", " "))} UTC' if when else "")
+    txt = f"Supabase：制限中（402・無料枠超過）。ページは静的に見えます{when}" if lim else f"Supabase：正常{when}"
+    return f'<p id="sb-state" class="sbline" data-state="{"limited" if lim else "ok"}"><b>{e(txt)}</b></p>'
+
+
 def _admin_resources(res):
     """リソース：容量（リポジトリ・公開ページ）、仕組みごとの最近の実行のサーバー（メモリ・ディスク・CPU）、トークン。"""
     if not res:
         return ""
     sz, lim = res.get("sizes") or {}, res.get("limits") or {}
-    cap = (_meter("リポジトリ", sz.get("repo", 0), lim.get("repo"), "GitHub は 1GB 未満を推奨（5GB で警告）")
+    cap = (_sb_line() + _meter("リポジトリ", sz.get("repo", 0), lim.get("repo"), "GitHub は 1GB 未満を推奨（5GB で警告）")
            + _meter("公開ページ（docs/）", sz.get("pages", 0), lim.get("pages"),
                     f'GitHub Pages は 1GB まで · うち小元素の画像 {_mb(sz.get("emblems", 0))}')
            + _photo_meter(photo_store.load()["stat"])
@@ -6847,6 +6899,8 @@ ADMIN_PAGE_CSS = """
 .mt.warn .mt-bar i{background:repeating-linear-gradient(-45deg,var(--alert) 0 6px,color-mix(in srgb,var(--alert) 70%,var(--card)) 6px 12px);background-size:17px 17px}
 .mt-n{grid-column:1/-1;font:500 var(--fs-label)/1.5 var(--font-sans);opacity:.8}
 .mt-x{margin:0 0 14px;font:500 var(--fs-label)/1.6 var(--font-sans);opacity:.85}.mt-x a{text-decoration:underline}
+.sbline{margin:0 0 12px;padding:6px 10px;border:2px solid var(--ink);background:var(--card);font-size:13px}
+.sbline[data-state=limited]{background:var(--gold)}
 .srv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .srv li{padding:10px 12px;background:var(--card);border:1.5px solid var(--ink)}
 .srv li>b{font:900 13px var(--font-sans)}.srv li>small{display:block;margin:2px 0 8px;font:500 var(--fs-label)/1.5 var(--font-sans);opacity:.85}

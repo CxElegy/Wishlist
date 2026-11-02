@@ -21,6 +21,7 @@ import os
 import pathlib
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import zoneinfo
@@ -28,6 +29,7 @@ import zoneinfo
 import digest
 import heat
 import render
+import sbstate
 import sources
 import taxonomy
 import theme
@@ -285,9 +287,18 @@ def _supa(path, data=None, method="GET", ctype="application/json"):
     if method != "GET" and "/storage/" in path:
         h["Authorization"] = f"Bearer {key}"
         h["x-upsert"] = "true"
+    if sbstate.LIMITED:
+        raise sbstate.Limited(path)
     req = urllib.request.Request(base + path, data=data, headers=h, method=method)
-    with urllib.request.urlopen(req, timeout=60) as r:
-        body = r.read().decode("utf-8")
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            body = r.read().decode("utf-8")
+    except urllib.error.HTTPError as err:
+        if err.code == 402:   # 無料枠超過：飛ばして終わる（落とさない。次の回が作り直す）
+            sbstate.mark_limited(path.split("?")[0])
+            raise sbstate.Limited(path) from None
+        raise
+    sbstate.mark_ok()
     return json.loads(body) if body.strip().startswith(("[", "{")) else body
 
 
@@ -314,7 +325,11 @@ def main(argv):
             for name, h in pages.items():
                 (out / f"{u['account']}.{name}").write_text(h, encoding="utf-8")
         return
-    users = _supa("/rest/v1/rpc/userfeed_users", json.dumps({"p_limit": 1000}).encode(), "POST")
+    try:
+        users = _supa("/rest/v1/rpc/userfeed_users", json.dumps({"p_limit": 1000}).encode(), "POST")
+    except sbstate.Limited:
+        print("::warning::Supabase が 402（制限中）：お客さまのページ作りを飛ばす。制限が外れたら次の回が作る")
+        return
     made = failed = 0
     for u in users or []:
         acct = account_of(u["email"])
@@ -329,6 +344,9 @@ def main(argv):
             for name, h in {"index.html": html_, **pages}.items():
                 _supa(f"/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}", h.encode("utf-8"), "POST", "text/html; charset=utf-8")
             made += 1
+        except sbstate.Limited:
+            print("::warning::Supabase が 402（制限中）：残りのお客さまのページ作りを飛ばす")
+            return
         except Exception as ex:  # noqa: BLE001  1 人の失敗でほかの人を止めない。ログは数と種類だけ（名前・メールは出さない：Actions のログは公開）
             failed += 1
             print(f"::warning::1 人分のページを作れなかった（{type(ex).__name__}）")

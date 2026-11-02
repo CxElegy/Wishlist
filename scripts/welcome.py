@@ -507,6 +507,7 @@ def build(out=OUT, base="", cards=None):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {render.font_link(render.FONTS)}
 <style>{render.CSS}{CSS}</style>
+{render.SB_DEG_TAG}
 </head>
 <body>
 <section class="scr on" id="s-home"><div class="wrap">
