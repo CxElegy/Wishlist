@@ -70,7 +70,8 @@
   "チェーンソーマン": 5,
   "绝区零": 5,
   "猫用品": 1,
-  "gelato pique": 1
+  "gelato pique": 1,
+  "滑雪": 1
  },
  "Vaundy": [
   {
@@ -546,6 +547,17 @@
   {
    "headline": "【2027福袋まとめ第1弾】早くもスタート！ジェラート・ピケ、焼肉キング、久世福商店、DEAN & DELUCA、Zoff",
    "highlight": "2027福袋",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "Yuki Ito Wins 4th Consecutive Title - All Japan Ski Jumping Championships Normal Hill",
+   "highlight": "4th Consecutive Title",
    "blurb": "",
    "weight": "lead",
    "refs": [

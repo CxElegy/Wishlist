@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "05cb28e7d63c",
+ "edit_sig": "dd2d3784e30b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -850,17 +850,19 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-30",
-     "n": 1,
-     "source": "note",
-     "title": "Yuki Ito Wins 4th Consecutive Title - All Japan Ski Jumping Championships Normal Hill",
-     "url": "https://note.com/sports_watcher/n/naf5379c64c01?hl=en"
+     "headline": "Yuki Ito Wins 4th Consecutive Title - All Japan Ski Jumping Championships Normal Hill",
+     "highlight": "4th Consecutive Title",
+     "image": "https://assets.st-note.com/production/uploads/images/330287586/rectangle_large_type_2_99c66dc9e66b41bca6cce01107428ae4.jpeg?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/sports_watcher/n/naf5379c64c01?hl=en",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
