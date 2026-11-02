@@ -60,12 +60,6 @@
   "target": 720,
   "v": 3
  },
- "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-02"
- },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
   "h": 338,
@@ -1135,6 +1129,12 @@
   "target": 720,
   "v": 3
  },
+ "https://geektyrant.com/news/marvels-visionquest-trailer-unleashes-ultron-and-sets-vision-on-a-dangerous-new-journey?format=300w": {
+  "w": 2500,
+  "h": 1344,
+  "target": 720,
+  "v": 3
+ },
  "https://getyourcomicon.co.uk/wp-content/uploads/2026/10/AvengersDoomsday-OctDoomPoster-Header.webp": {
   "w": 1200,
   "h": 720,
@@ -1856,6 +1856,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-02"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gxwpL.img": {
+  "w": 656,
+  "h": 875,
+  "target": 1280,
+  "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img": {
   "w": 1200,
@@ -4292,6 +4298,12 @@
  "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
   "h": 467,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Tj8p-NB1h9oLCIVz3xJdmA&pid=News&w=656": {
+  "w": 534,
+  "h": 356,
   "target": 720,
   "v": 3
  },

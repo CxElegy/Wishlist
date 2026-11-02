@@ -66,6 +66,7 @@
   "https://www.msn.com/en-us/entertainment/movies/avengers-doomsday-pre-sales-are-already-making-mcu-box-office-history/ar-AA2gwP1Q": "https://www.bing.com/th?id=ONUT.DZk25STm_5UmPzohkmMQ0g&pid=News&w=912",
   "https://www.msn.com/en-us/gaming/rockstar-games/gta-6-lead-channels-the-spirit-of-skyrim-era-todd-howard-you-can-go-anywhere-any-random-location/ar-AA2gxqYU": "https://www.bing.com/th?id=ONUT.QJsCxJg4g5Fe62mOD-ZJnA&pid=News&w=1200",
   "https://www.msn.com/ja-jp/technology/%E5%85%A8%E8%88%AC/%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88-%E3%81%8C%E5%85%A8%E5%9B%BD%E5%88%9D%E3%83%95%E3%83%A9%E3%82%A4%E3%83%88%E3%81%A7%E9%95%B7%E5%B4%8E%E7%A9%BA%E6%B8%AF%E3%81%AB-%E4%BA%BA%E6%B0%97%E6%BC%AB%E7%94%BB%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%AE%E6%A9%9F%E4%BD%93%E3%81%AB%E5%B1%95%E6%9C%9B%E3%83%87%E3%83%83%E3%82%AD%E3%81%AF400%E4%BA%BA%E8%B6%85%E3%81%AE%E3%83%95%E3%82%A1%E3%83%B3-%E3%81%AC%E3%81%84%E3%81%90%E3%82%8B%E3%81%BF%E3%81%A8%E4%B8%80%E7%B7%92%E3%81%AB%E6%92%AE%E3%82%8C%E3%81%9F%E3%82%89/ar-AA2fyBxF": "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640",
+  "https://www.msn.com/zh-tw/entertainment/news/%E6%9B%BE%E5%90%88%E4%BD%9C%E5%91%A8%E6%9D%B0%E5%80%AB-%E5%8F%B0%E8%A3%BD%E7%89%87%E4%BA%BA%E9%97%96%E5%A5%BD%E8%90%8A%E5%A1%A2%E5%89%B5%E7%AB%8B-ai%E7%95%8C%E5%A5%A7%E6%96%AF%E5%8D%A1/ar-AA2gsknx": "https://www.bing.com/th?id=ONUT.Tj8p-NB1h9oLCIVz3xJdmA&pid=News&w=656",
   "https://www.msn.com/zh-tw/lifestyle/beauty/%E6%97%A5%E6%9C%AC%E9%AC%BC%E6%89%8Dvaundy%E9%A6%96%E6%94%BB%E8%9B%8B%E7%8B%82%E5%90%B826%E8%90%AC%E4%BA%BA-%E9%8F%88%E9%8B%B8%E4%BA%BA-%E5%8B%95%E6%BC%AB%E7%A5%9E%E6%9B%B2%E7%8B%82%E7%82%B8-%E7%AA%81%E9%96%8Big%E7%9B%B4%E6%92%AD%E5%85%A8%E7%90%83%E6%94%BE%E9%80%81/ar-AA2gxpjE": "https://www.bing.com/th?id=ONUT.KuANXPF_xhGoSqoT_5A9WA&pid=News&w=1200",
   "https://www.news1.kr/world/latin-america/6333781": "https://i3n.news1.kr/system/photos/2026/10/27/8182136/high.jpg",
   "https://www.nownews.com/news/6886769": "https://media.nownews.com/nn_media/thumbnail/2026/10/1793021523355-111816baf98c406c8940b6651069038e-1200x675.webp?unShow=false",
@@ -1393,6 +1394,27 @@
   },
   {
    "batch": 4,
+   "because": "周杰伦",
+   "date": "2026-10-30",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.Tj8p-NB1h9oLCIVz3xJdmA&pid=News&w=656",
+   "kind": "board",
+   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
+   "score": 7,
+   "source": "中時新聞網 on MSN",
+   "taste": [
+    [
+     "作品:周杰伦",
+     3
+    ]
+   ],
+   "title": "曾合作周杰倫！台製片人闖好萊塢創立「AI界奧斯卡」",
+   "url": "https://www.msn.com/zh-tw/entertainment/news/%E6%9B%BE%E5%90%88%E4%BD%9C%E5%91%A8%E6%9D%B0%E5%80%AB-%E5%8F%B0%E8%A3%BD%E7%89%87%E4%BA%BA%E9%97%96%E5%A5%BD%E8%90%8A%E5%A1%A2%E5%89%B5%E7%AB%8B-ai%E7%95%8C%E5%A5%A7%E6%96%AF%E5%8D%A1/ar-AA2gsknx",
+   "words": [],
+   "work": "周杰伦"
+  },
+  {
+   "batch": 4,
    "because": "The Mandalorian",
    "date": "2026-11-01",
    "hits": [],
@@ -1413,7 +1435,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "漫威电影",
    "date": "2026-11-01",
    "hits": [],
@@ -1518,7 +1540,7 @@
    "work": "哈利波特剧集"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "A2O LITE",
    "date": "2026-10-31",
    "hits": [],
@@ -1623,7 +1645,7 @@
    "work": "dota2"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "dota2",
    "date": "2026-10-30",
    "hits": [],
@@ -1710,7 +1732,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 7,
+   "batch": 8,
    "because": "滑雪",
    "date": "2026-10-30",
    "hits": [],
@@ -2113,11 +2135,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2129,11 +2151,11 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ]
  ]
