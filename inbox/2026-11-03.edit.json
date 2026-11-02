@@ -62,7 +62,12 @@
   "ILLIT": 2,
   "周杰伦": 2,
   "Astrae Oratio": 1,
-  "日本顶级网球赛事": 1
+  "日本顶级网球赛事": 1,
+  "The Mandalorian": 2,
+  "gelato pique": 2,
+  "チェーンソーマン": 2,
+  "滑雪": 2,
+  "Vaundy": 1
  },
  "GTA 6": [
   {
@@ -314,5 +319,90 @@
    ],
    "image": "https://image.news.livedoor.com/newsimage/stf/e/3/e3880_760_2488439_20261028_181544_size640wh_51793488.jpg"
   }
- ]
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "'The Mandalorian' brings Zeb Orrelios from 'Star Wars Rebels' into live action",
+   "highlight": "Zeb Orrelios",
+   "blurb": "Zeb Orrelios from Star Wars Rebels joins The Mandalorian in live action.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://helios-i.mashable.com/imagery/articles/04Mt2Vvjp0ZGJArOgVNvySL/hero-image.fill.size_1200x675.v1680102816.jpg"
+  },
+  {
+   "headline": "Grogu meets Stewie in a short crossover clip of Family Guy and The Mandalorian and Grogu",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "Gelato Pique Lucky Bag 2027 Lottery Starts 11/2! Summary of Differences and Prices for A, B, and Men's",
+   "highlight": "Lottery Starts 11/2",
+   "blurb": "Gelato Pique Lucky Bag 2027 lottery starts 11/2; the article summarizes differences and prices for A, B and the men's bag.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://assets.st-note.com/production/uploads/images/331098575/rectangle_large_type_2_9b82fb756293cf90250b185b774ebcde.png?fit=bounds&quality=85&width=1280"
+  },
+  {
+   "headline": "【ジェラートピケ】のロングパンツがAmazonセールに登場中！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "『チェンソーマン レゼ篇』最後の舞台あいさつ21日開催で特典配布 登壇は戸谷菊之介・上田麗奈ら4人",
+   "highlight": "最後の舞台あいさつ21日開催",
+   "blurb": "『チェンソーマン レゼ篇』の最後の舞台あいさつが21日に開催され、特典が配布される。登壇は戸谷菊之介・上田麗奈ら4人。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size3/f/a/b/0/fab0f14b6c9201506a133ea3a6c2d90c_1.jpg"
+  },
+  {
+   "headline": "Chainsaw Man Reze Arc Inspires Stylish New Apparel Collection",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "スキー場を選ぶから、地域を旅するへ。雪山をつなぐバスと共通シーズン券",
+   "highlight": "Tohoku Deep Trail",
+   "blurb": "ネコマ マウンテンと蔵王温泉スキー場を起点とする広域連携「Tohoku Deep Trail」。直行バスと両スキー場のリフト券が発表された。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.l6kuKQHh7tgR0uUB0f--7A&pid=News&w=1200"
+  },
+  {
+   "headline": "【軽井沢プリンスホテルスキー場】10月31日オープン「スノーマンパーク」の拡大やデビューパーク無料化",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "Vaundy": []
 }

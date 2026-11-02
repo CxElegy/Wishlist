@@ -628,7 +628,9 @@
     },
     {
      "date": "2026-10-29T03:00:00+00:00",
-     "image": "",
+     "image": "https://crea.bunshun.jp/common/crea/images/crea-ogp-image.png",
+     "image_via": "og:image",
+     "link": "https://crea.bunshun.jp/ud/pressrelease/6abf68357079c840d900000b",
      "n": 2,
      "seen": "2026-11-02T19:24:45+00:00",
      "site": "https://crea.bunshun.jp",
@@ -1295,7 +1297,9 @@
    "entries": [
     {
      "date": "2026-11-01T19:15:41+00:00",
-     "image": "",
+     "image": "https://news.walkerplus.com/article/1176865/12571500_615.jpg",
+     "image_via": "og:image",
+     "link": "https://www.walkerplus.com/article/1176865/image12571507.html",
      "n": 1,
      "seen": "2026-11-02T19:25:18+00:00",
      "site": "https://www.walkerplus.com",
@@ -1418,6 +1422,7 @@
     {
      "date": "2026-11-02T09:46:25+00:00",
      "image": "",
+     "link": "https://www.sanyonews.jp/photo/detail?article_id=1886409",
      "n": 1,
      "seen": "2026-11-02T19:25:21+00:00",
      "site": "https://www.sanyonews.jp",
@@ -1429,7 +1434,8 @@
     },
     {
      "date": "2026-11-02T08:38:00+00:00",
-     "image": "",
+     "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2026/11/chainsaw-man-reze-arc-inspires-stylish-new-apparel-collection-gamerant-feature.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
      "n": 2,
      "seen": "2026-11-02T19:25:21+00:00",
      "source": "Game Rant",
@@ -1455,6 +1461,7 @@
     {
      "date": "2026-10-31T15:25:33+00:00",
      "image": "",
+     "link": "https://mashable.com/article/star-wars-the-mandalorian-zeb-orrelios-rebels-cameo",
      "n": 1,
      "seen": "2026-11-02T19:25:22+00:00",
      "site": "https://mashable.com",
@@ -1466,7 +1473,9 @@
     },
     {
      "date": "2026-10-26T20:09:00+00:00",
-     "image": "",
+     "image": "https://www.joblo.com/wp-content/uploads/2026/05/Stewie-and-Grogu.jpg",
+     "image_via": "og:image",
+     "link": "https://www.joblo.com/grogu-stewie-crossover/",
      "n": 2,
      "seen": "2026-11-02T19:25:22+00:00",
      "site": "https://www.joblo.com",

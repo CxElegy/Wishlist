@@ -390,6 +390,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/331098575/rectangle_large_type_2_9b82fb756293cf90250b185b774ebcde.png?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.st-note.com/production/uploads/images/331192082/rectangle_large_type_2_84e57a535a3d74978c2a58f5339023ea.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -854,6 +860,12 @@
   "target": 720,
   "v": 3
  },
+ "https://crea.bunshun.jp/common/crea/images/crea-ogp-image.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://d.ibtimes.co.uk/en/full/1817694/gta-6.png?w=736&f=50aadc0d8c247bb5fb98a13a7e098e74": {
   "w": 736,
   "h": 490,
@@ -1150,6 +1162,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://helios-i.mashable.com/imagery/articles/04Mt2Vvjp0ZGJArOgVNvySL/hero-image.fill.size_1200x675.v1680102816.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://hiphopwired.com/wp-content/uploads/sites/43/2026/10/image-collage-15.jpg?quality=85&strip=all&w=1680&crop=0,0,100,960px": {
@@ -3534,12 +3552,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.sanyonews.jp/image/article/size1/8/1/1/a/811a050bd30998cb3cf0de1055e43bea_1.jpg": {
-  "w": 452,
-  "h": 640,
-  "target": 720,
-  "v": 3
- },
  "https://static.sanyonews.jp/image/article/size1/d/d/3/e/dd3e16fa11d27187f9d798ff4daf507d_1.jpg": {
   "w": 640,
   "h": 480,
@@ -3578,6 +3590,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.291
+ },
+ "https://static.sanyonews.jp/image/article/size3/f/a/b/0/fab0f14b6c9201506a133ea3a6c2d90c_1.jpg": {
+  "w": 304,
+  "h": 320,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.622,
+  "local": "pics/2eb61838cfd5b6a4.webp",
+  "out": [
+   912,
+   960
+  ],
+  "why": "看不清"
  },
  "https://static.the-independent.com/2026/10/31/16/40/GettyImages-2171004928.jpg?trim=0,0,2777,0&width=1200&height=800&crop=1200:800": {
   "w": 1200,
@@ -3628,6 +3653,12 @@
   "v": 3
  },
  "https://static0.dualshockersimages.com/wordpress/wp-content/uploads/2026/10/players-are-freaking-out-over-gta-6s-download-size-1.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2026/11/chainsaw-man-reze-arc-inspires-stylish-new-apparel-collection-gamerant-feature.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 1280,
@@ -4130,6 +4161,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.KuANXPF_xhGoSqoT_5A9WA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.N-f2Ky3IkMTQMcFoucfixQ&pid=News&w=640": {
   "w": 640,
   "h": 425,
@@ -4342,8 +4379,9 @@
  "https://www.bing.com/th?id=ONUT.l6kuKQHh7tgR0uUB0f--7A&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.337
  },
  "https://www.bing.com/th?id=ONUT.m1s4FTAqSRNpAB8tWY7sCQ&pid=News&w=1200": {
   "w": 700,
@@ -4657,6 +4695,12 @@
  "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg": {
   "w": 1392,
   "h": 934,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.joblo.com/wp-content/uploads/2026/05/Stewie-and-Grogu.jpg": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
