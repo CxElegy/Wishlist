@@ -94,7 +94,7 @@
 3. **考えを決める**：`.claude/skills/design-taste-frontend` の考え（その作品・その人のものからしか出てこない 1 つの考え）で方向を決める。どこにでもある型（真ん中に大見出し＋3 枚のカード、ふわっとした色のにじみ、意味のないアイコン、作った数字）は使わない。
 4. **設計する**：Figma の MCP がつながっていれば、Figma で見本を作って写真を撮る（get_screenshot）。なければテストグラウンドに HTML の見本。見た目を変えるものは、あなたに見本を見せて決めてもらう（上の決まり）。
 5. **作る**：店長と同じ部品（render.py・令牌）で。
-6. **確かめる**：Playwright（`.mcp.json` の playwright MCP、または `harness/ux_check.py`）で 1400 / 390 px を開いて押して写真を撮る。`node .claude/skills/design-taste-frontend/scripts/inspect.mjs <網址> --widths 1440,390 --allow <下の許すもの>`（Chrome は `--no-sandbox` が要る：CHROME_PATH に包みの shell を渡す）の FAIL が 0 になるまで直す。画像が出ない・読み込みが遅いもここで見る。
+6. **確かめる**：Playwright（`.mcp.json` の playwright MCP、または `harness/ux_check.py`）で 1400 / 390 px を開いて押して写真を撮る。`node .claude/skills/design-taste-frontend/scripts/inspect.mjs <網址> --widths 1440,390 --allow <下の許すもの>`（Chrome は `--no-sandbox` が要る：CHROME_PATH に包みの shell を渡す）の FAIL が 0 になるまで直す。画像が出ない・読み込みが遅いもここで見る。**その場で書くスクリプトも `harness/browser.py` の `launch(pw)`（または `.mcp.json` の Playwright MCP）で開く。`chromium.launch` を直接呼ばない**（本番の写真を毎回落として Supabase の月 5 GB を食う。2026-11-02、free-tier.md）。workflow も playwright を直接起動せず `harness/*.py` を呼ぶ（tests/test_browser_guard.py が数える）。
 7. **見せる**：合併すると Discord に Before / After（変わった所の赤枠・切り抜き）。PR の説明に `画面：<ページ> <セレクタ> — <どこを見る>` を書く。
 
 **どれとどれが一組かを迷わせない（ゲシュタルト、2026-10-24，用户定的：スマホで「真ん中の写真が上の記事か下の記事か分かりづらい」）**：

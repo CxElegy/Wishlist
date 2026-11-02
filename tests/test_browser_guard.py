@@ -37,6 +37,15 @@ class BrowserGuard(unittest.TestCase):
         # inspect.mjs・scenes.mjs は Browser.launch（lib/cdp.mjs）経由：そこに止めがあること
         self.assertIn("setBlockedURLs", (ROOT / ".claude/skills/design-taste-frontend/scripts/lib/cdp.mjs").read_text())
 
+    def test_workflows_do_not_launch_browser(self):
+        """workflow の run: に playwright を直接起動する行（python -c / heredoc / node -e）を書かない。ブラウザは harness/*.py（browser.launch 経由）だけ。"""
+        bad = []
+        for f in (ROOT / ".github" / "workflows").glob("*.yml"):
+            for n, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
+                if re.search(r"sync_playwright|async_playwright|chromium\.launch|puppeteer|npx playwright (screenshot|open|codegen)", line):
+                    bad.append(f"{f.name}:{n}")
+        self.assertEqual(bad, [], "workflow が playwright を直接起動している")
+
     def test_urllib_guard(self):
         """harness の Python は urllib.request を使うなら browser を import する（= urlopen が supabase.co/storage を拒む）。requests・httpx は使わない。"""
         bad = []
