@@ -1,34 +1,11 @@
 {
  "date": "2026-11-02",
- "edit_sig": "606daa21388f",
+ "edit_sig": "afb59e0c9e08",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 17,
-     "source": "ComicBook.com",
-     "title": "Rockstar Games Confirms GTA 6 Upgrade From GTA 5 and RDR2 That Every Fan Wanted",
-     "url": "https://comicbook.com/gaming/news/gta-6-grand-theft-auto-v-red-dead-redemption-2-rockstar-games-upgrade/"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 18,
-     "source": "SuperDope.Games",
-     "title": "中国玩家傻眼了！《GTA 6》还没发售先出事，惊传多个国家无法上架",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1jWHJ1VFB1RTlxNW1hWkM0SmpON3hUR2N5aVVMdXI5ZE95SjVBcU1PTGtuRzVZUkVJRkdJN28wTGxVdTJLMEFURndPQWY0aElKTEoyQQ?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 19,
-     "source": "SuperDope.Games",
-     "title": "《GTA 6》一發售誰還想訓練？NBA球星笑稱教練球探也會沉迷！",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBJaHhKdWZmME9UeG9lbHItaGhNMmNPb0QxWUV4NllrSlFfLVU0enZhenR1TVRWRE5Qb25HZ0plZ2prVnpKUm5CeWdsb0EzeU9iUEh6aQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -53,16 +30,6 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-01",
-     "headline": "Change these PlayStation 5 settings before GTA 6 comes out",
-     "highlight": "PlayStation 5 settings",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwwQn.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/en-us/news/other/change-these-playstation-5-settings-before-gta-6-comes-out/ar-AA2gx37L",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-28",
      "headline": "GTA 6 file size revealed at 210GB, but SSD upgrades aren't the answer if you're already running out of space",
      "highlight": "210GB",
@@ -74,11 +41,21 @@
     {
      "blurb": "",
      "date": "2026-11-01",
-     "headline": "Travis Scott’s GTA 6 Air Force 1 Collection Is Reportedly On The Way",
-     "highlight": "Air Force 1",
-     "image": "https://www.hotnewhiphop.com/imgprst/2292x1200-fit-81-auto/2026/11/2024-03-03T221019Z_926622727_MT1USATODAY22685665_RTRMADP_3_NCAA-WOMENS-BASKETBALL-OHIO-ST-AT-IOWA-scaled.jpg",
+     "headline": "GTA 6 lets you break up Jason and Lucia if you want",
+     "highlight": "",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/10/jason_and_lucia_beach_landscape.jpg?w=1600&h=900&fit=crop",
+     "image_via": "同一件事的别家报道 collider.com",
+     "url": "https://www.gamesradar.com/games/grand-theft-auto/gta-6-lets-you-break-up-jason-and-lucia-if-you-want-and-we-can-thank-red-dead-redemption-2s-arthur-morgan-for-the-choice/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "Rockstar Games Confirms GTA 6 Upgrade From GTA 5 and RDR2 That Every Fan Wanted",
+     "highlight": "",
+     "image": "https://comicbook.com/wp-content/uploads/sites/4/2026/11/g-t-a-6.png?resize=2000,1125",
      "image_via": "og:image",
-     "url": "https://www.hotnewhiphop.com/1015278-travis-scotts-gta-6-air-force-1-sneaker-news",
+     "url": "https://comicbook.com/gaming/news/gta-6-grand-theft-auto-v-red-dead-redemption-2-rockstar-games-upgrade/",
      "weight": "normal"
     }
    ],
@@ -880,7 +857,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "last": {
     "date": "2026-10-31",

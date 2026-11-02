@@ -879,6 +879,12 @@
   "target": 720,
   "v": 3
  },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/11/g-t-a-6.png?resize=2000,1125": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
+ },
  "https://contents.oricon.co.jp/upimg/news/2489000/2488838/20261026_131022_p_o_70946089.jpg": {
   "w": 862,
   "h": 1150,
@@ -1837,12 +1843,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwwQn.img": {
-  "w": 780,
-  "h": 438,
-  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gwy5g.img": {
@@ -3748,6 +3748,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/10/jason_and_lucia_beach_landscape.jpg?w=1600&h=900&fit=crop": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
+ },
  "https://static0.dualshockersimages.com/wordpress/wp-content/uploads/2026/10/players-are-freaking-out-over-gta-6s-download-size-1.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -4783,12 +4789,6 @@
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/THND-FF-000193-H-2026.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
-  "target": 720,
-  "v": 3
- },
- "https://www.hotnewhiphop.com/imgprst/2292x1200-fit-81-auto/2026/11/2024-03-03T221019Z_926622727_MT1USATODAY22685665_RTRMADP_3_NCAA-WOMENS-BASKETBALL-OHIO-ST-AT-IOWA-scaled.jpg": {
-  "w": 2292,
-  "h": 1200,
   "target": 720,
   "v": 3
  },
