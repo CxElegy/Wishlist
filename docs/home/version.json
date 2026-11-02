@@ -1,6 +1,6 @@
 {
  "admin": "eb82a4cae22f",
- "admin-ai": "cac0ca33c956",
+ "admin-ai": "2999d8265813",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "3a5377f6"
+   "25ab167b"
   ]
  },
  "admin-boards": "87714b16ffb7",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "c0c50d758c3e",
+ "admin-emblem": "8a6918f626bf",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "42583bf2"
+   "e71dad30"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "0909acaf7db3",
  "admin-members_marks": {},
- "admin-now": "fd44595fbdfc",
+ "admin-now": "f8cef2c936e5",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "f60f27b1"
+   "5b585e1e"
   ]
  },
- "admin-system": "4f54da28376e",
+ "admin-system": "3813e088ac7a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1a45e1ca"
+   "572ea811"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c4b4a8d2"
+   "782eac75"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "d056493e"
   ]
  },
- "index": "cb8eb9d082ab",
+ "index": "65606554889d",
  "index_marks": {
   "front": [
    "トップ",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "9969bfbd"
+   "26fb16df"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "93a3e8e3"
+   "592842d0"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "9bd2013e"
   ]
  },
- "updated": "11.02 16:32",
+ "updated": "11.02 16:33",
  "wishlist": "624b849d0226"
 }
