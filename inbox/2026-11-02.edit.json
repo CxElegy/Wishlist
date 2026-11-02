@@ -65,18 +65,19 @@
   "周杰伦": 13,
   "ILLIT": 21,
   "MMORPG 新作": 10,
-  "dota2": 6,
+  "dota2": 7,
   "あつ森": 2,
   "三星手机": 33,
-  "哈利波特剧集": 1,
+  "哈利波特剧集": 2,
   "星巴克马克杯": 1,
   "チェーンソーマン": 5,
   "绝区零": 5,
   "猫用品": 3,
-  "gelato pique": 2,
+  "gelato pique": 3,
   "滑雪": 3,
-  "Astrae Oratio": 2,
-  "ぐでたま": 1
+  "Astrae Oratio": 3,
+  "ぐでたま": 1,
+  "BLEACH Mirrors High": 1
  },
  "Vaundy": [
   {
@@ -592,6 +593,15 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "HBO Casts New Actors for Harry Potter Series",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "星巴克马克杯": [
@@ -709,7 +719,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    3
    ]
   }
  ],
@@ -753,6 +764,15 @@
     1
    ],
    "image": "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp"
+  },
+  {
+   "headline": "[인터뷰] 엔씨 '아스오라', CBT 이후 기대감⬆.. \"서브컬처 팬분들을 위해 최선 다할 것\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "ぐでたま": [
@@ -766,5 +786,6 @@
    ],
    "image": "https://news.walkerplus.com/article/90965/509951_615.jpg"
   }
- ]
+ ],
+ "BLEACH Mirrors High": []
 }

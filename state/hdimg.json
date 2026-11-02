@@ -897,6 +897,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-02"
  },
+ "https://coconutsjapan.com/wp-content/uploads/2026/11/gelatopique_gaikan_adb.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://columbiachronicle.com/wp-content/uploads/2026/10/1COVER_APPROVED_AC_WWDragShow-8-1200x800.jpg": {
   "w": 1200,
   "h": 800,
@@ -1144,6 +1150,12 @@
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/01071523/avengers-1024x576.webp": {
   "w": 1024,
   "h": 576,
+  "target": 1280,
+  "v": 3
+ },
+ "https://game.donga.com/media/__sized__/images/2026/11/2/a391124390284ba0-thumbnail-960x540-70.jpg": {
+  "w": 811,
+  "h": 540,
   "target": 1280,
   "v": 3
  },
@@ -2381,6 +2393,12 @@
  "https://media.nownews.com/nn_media/thumbnail/2026/10/1793021523355-111816baf98c406c8940b6651069038e-1200x675.webp?unShow=false": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.se7en.ws/1600x900/smart/jpeg/ixbt-data/1733200/68c83daf-31ff-4361-959e-dfffe45cc539.jpg": {
+  "w": 1214,
+  "h": 607,
   "target": 720,
   "v": 3
  },
