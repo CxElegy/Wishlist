@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-02T22:17:51+00:00",
+ "checked": "2026-11-02T23:27:57+00:00",
  "fired": {
-  "at": "2026-11-02T22:18:12+00:00",
+  "at": "2026-11-02T23:27:57+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,43 +12,46 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-02T22:18:12+00:00",
+    "at": "2026-11-02T23:27:57+00:00",
     "attempts": 1,
     "day": "2026-11-03",
-    "prog": 83,
-    "resp": "cse_01W4x6f4uUzqpWRxuUpDcZCJ",
-    "sig": "97eae31d0401"
+    "prog": 94,
+    "resp": "cse_01W4x6f8i32iXWjYdJTMXb5m",
+    "sig": "c3389a13f338"
    },
    "items": [
+    "A2O LITE",
+    "FROM",
+    "GTA 6",
+    "ILLIT",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "gelato pique",
     "チェーンソーマン",
-    "滑雪",
-    "猫用品",
+    "三星手机",
+    "周杰伦",
+    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-02T19:56:17+00:00",
+   "last_batch": "2026-11-02T22:31:54+00:00",
    "last_error": {
     "at": "2026-11-02T09:38:45+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 83,
+   "prog": 94,
    "prog_day": "2026-11-03",
    "ripe": [
-    "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
-    "チェーンソーマン",
-    "滑雪",
-    "猫用品",
-    "绝区零"
+    "GTA 6",
+    "dota2",
+    "三星手机",
+    "漫威电影"
    ],
-   "sig": "97eae31d0401",
+   "sig": "c3389a13f338",
    "token_cap": 1000000,
-   "tokens_today": 77991,
-   "why": "整理待ちの記事 11 件（7 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 135853,
+   "why": "整理待ちの記事 63 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
