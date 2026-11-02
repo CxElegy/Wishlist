@@ -1,6 +1,6 @@
 {
  "admin": "a7a278fb754a",
- "admin-ai": "a1c72649fba7",
+ "admin-ai": "281f30950df2",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "85fd2011"
+   "6f5a7380"
   ]
  },
  "admin-boards": "4fb82e3b3320",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "dae21869c68a",
+ "admin-emblem": "1784ef946579",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "499ac7f1"
+   "c17e3a32"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "0909acaf7db3",
  "admin-members_marks": {},
- "admin-now": "cf33f940c844",
+ "admin-now": "ee7e6d857d79",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "0d2a7eea"
+   "205d744c"
   ]
  },
- "admin-system": "c0e34777c59f",
+ "admin-system": "123783264740",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "da804ed2"
+   "5409640f"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "34e3c14f"
   ]
  },
- "index": "efb6f839c5ec",
+ "index": "34d7a5288489",
  "index_marks": {
   "front": [
    "トップ",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "6d947b0f"
+   "050e0b06"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "9969bfbd"
+   "26fb16df"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -196,6 +196,6 @@
    "e9225bbc"
   ]
  },
- "updated": "11.02 15:56",
+ "updated": "11.02 15:57",
  "wishlist": "624b849d0226"
 }
