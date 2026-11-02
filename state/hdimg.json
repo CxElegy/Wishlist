@@ -1170,6 +1170,18 @@
   "target": 720,
   "v": 3
  },
+ "https://helios-i.mashable.com/imagery/articles/02aC6cl7XAkZgt0MfrP6aCN/hero-image.fill.size_1200x675.v1793633323.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-03"
+ },
+ "https://helios-i.mashable.com/imagery/articles/04Mt2Vvjp0ZGJArOgVNvySL/hero-image.fill.size_1200x675.v1680102816.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-03"
+ },
  "https://hiphopwired.com/wp-content/uploads/sites/43/2026/10/image-collage-15.jpg?quality=85&strip=all&w=1680&crop=0,0,100,960px": {
   "w": 1680,
   "h": 960,
@@ -1250,12 +1262,6 @@
    536
   ],
   "why": "看不清"
- },
- "https://i.tribune.com.pk/media/images/untitled-design1793629329-0/untitled-design1793629329-0-640x480.webp": {
-  "w": 640,
-  "h": 480,
-  "target": 720,
-  "v": 3
  },
  "https://i0.wp.com/disneyworldfan.jp/wp-content/uploads/2026/10/wdw-holiday-2026-pastel-display.jpeg?fit=2048%2C1536&ssl=1": {
   "w": 2048,
@@ -1576,11 +1582,11 @@
   "target": 1280,
   "v": 3
  },
- "https://images.thedirect.com/media/article_full/IMG_5835.jpg": {
-  "w": 1280,
-  "h": 720,
+ "https://images.thedirect.com/media/article_full/namor_new_costume_doomsday.jpg": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-03"
  },
  "https://images.thedirect.com/media/photos/team1.png": {
   "w": 800,
@@ -2087,12 +2093,6 @@
   "w": 640,
   "h": 330,
   "target": 720,
-  "v": 3
- },
- "https://insider-gaming.com/wp-content/uploads/2026/11/Brian_Heder_landscape-scaled.jpg": {
-  "w": 2560,
-  "h": 1440,
-  "target": 1280,
   "v": 3
  },
  "https://journalarta.com/wp-content/uploads/2026/10/samsung-may-use-snapdragon-8-elite-gen-6-extreme-in-europe-f-source-ai-ja-discover-1536x864.jpg": {
@@ -3141,6 +3141,12 @@
   "h": 630,
   "target": 1280,
   "v": 3
+ },
+ "https://nokiapoweruser.com/wp-content/uploads/2026/08/One-UI-9.5-Is-Real-Samsungs-Next-Gen-Software-Spotted-for-the-First-Time.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-03"
  },
  "https://nokiapoweruser.com/wp-content/uploads/2026/08/Samsung-Galaxy-S27-Pro.jpeg": {
   "w": 1024,
@@ -4693,6 +4699,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.hotspawn.com/wp-content/uploads/2026/06/Things-You-Should-Know-Before-Playing-Dota-2.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-03"
+ },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/All-Multi-Time-TI-Winners-in-Dota-2.jpg": {
   "w": 1200,
   "h": 675,
@@ -4822,6 +4834,12 @@
   "h": 608,
   "target": 720,
   "v": 3
+ },
+ "https://www.slashfilm.com/img/gallery/marvels-x-men-movie-casts-the-long-walk-and-hunger-games-actor-as-iceman/l-intro-1793652691.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-03"
  },
  "https://www.starwarsnewsnet.com/wp-content/uploads/2026/10/Nightmare_on_Nevarro_header.jpg": {
   "w": 2000,

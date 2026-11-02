@@ -8,7 +8,6 @@
  },
  "images": {
   "http://k.sina.com.cn/article_1308889783_m4e0412b703301kove.html?cre=tianyi&mod=pcent&loc=12&r=0&rfunc=12&tj=cxvertical_pc_ent&tr=12&from=ent&subch=oent": "http://n.sinaimg.cn/sinakd20261102ac/533/w480h853/20261102/e56b-ace4d496e360754bfe6f92bf53c346e4.jpg",
-  "http://news.17173.com/content/11022026/155734588.shtml": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/jiYOExbugnugEqu.jpg",
   "http://www.excite.co.jp/news/article/Prtimes_2026-11-02-16333-238/": null,
   "https://ascii.jp/elem/000/004/447/4447809/": "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122",
   "https://automaton-media.com/en/news/open-world-anime-style-detective-arpg-silver-palace-gets-december-14-global-release-date/": "https://automaton-media.com/en/wp-content/uploads/2026/10/20261030-74586-001.jpg",
@@ -66,6 +65,7 @@
   "https://www.dexerto.com/pokemon/cat-pokemon-list-1495201/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/03/05/cat-pokemon.jpg",
   "https://www.elle.com/tw/life/hot-news/g74268035/2026-halloween/": "https://hips.hearstapps.com/hmg-prod/images/c4c89ef7-9d3e-4795-9ed4-8a3a6fe8487e.png?crop=1.00xw:1.00xh;0,0&resize=1200:*",
   "https://www.geeky-gadgets.com/galaxy-s27-ultra-rumors-4/": "https://www.bing.com/th?id=ONUT.HjeGMMYXgbmzjn-V0TeSDw&pid=News&w=1200",
+  "https://www.hotspawn.com/dota2/guide/what-to-know-before-playing-dota-2": "https://www.hotspawn.com/wp-content/uploads/2026/06/Things-You-Should-Know-Before-Playing-Dota-2.jpg",
   "https://www.msn.com/en-us/entertainment/celebrities/harry-potter-s-paapa-essiedu-defends-casting-in-j-k-rowling-series/ar-AA2guHXq": "https://www.bing.com/th?id=ONUT.Q9DYmmOSMoTI09R8xAau7A&pid=News&w=966",
   "https://www.msn.com/en-us/entertainment/movies/from-dune-to-avengers-doomsday-see-collectibles-coming-to-theaters/ar-AA2grdIB": "https://www.bing.com/th?id=ONUT.0VaUXKFI8aiXAqoshqt8JA&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/4-reasons-the-harry-potter-tv-series-should-focus-more-on-character-building-than-the-movies-did/ar-AA2gAvLu": "https://www.bing.com/th?id=ONUT.Nd044nfDUdY2nVSo8VWSSA&pid=News&w=912",
@@ -1000,27 +1000,6 @@
   },
   {
    "batch": 1,
-   "because": "チェーンソーマン",
-   "date": "2026-11-02",
-   "hits": [],
-   "image": "https://static.sanyonews.jp/image/article/size1/8/1/1/a/811a050bd30998cb3cf0de1055e43bea_1.jpg",
-   "kind": "board",
-   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
-   "score": 8,
-   "source": "山陽新聞",
-   "taste": [
-    [
-     "作品:チェーンソーマン",
-     5
-    ]
-   ],
-   "title": "『チェンソーマン レゼ篇』最後の舞台あいさつ21日開催で特典配布 登壇は戸谷菊之介・上田麗奈ら4人",
-   "url": "https://www.sanyonews.jp/photo/detail?article_id=1886409",
-   "words": [],
-   "work": "チェーンソーマン"
-  },
-  {
-   "batch": 1,
    "because": "GTA 6",
    "date": "2026-11-02",
    "hits": [],
@@ -1041,7 +1020,7 @@
    "work": "GTA 6"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "三星手机",
    "date": "2026-11-02",
    "hits": [
@@ -1421,7 +1400,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "A2O LITE",
    "date": "2026-11-02",
    "hits": [],
@@ -1442,7 +1421,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-11-01",
    "hits": [],
@@ -1506,6 +1485,27 @@
   },
   {
    "batch": 5,
+   "because": "dota2",
+   "date": "2026-11-02",
+   "hits": [],
+   "image": "https://www.hotspawn.com/wp-content/uploads/2026/06/Things-You-Should-Know-Before-Playing-Dota-2.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "Hotspawn",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "8 Things You Should Know Before Playing Dota 2",
+   "url": "https://www.hotspawn.com/dota2/guide/what-to-know-before-playing-dota-2",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 5,
    "because": "Vaundy",
    "date": "2026-11-02",
    "hits": [],
@@ -1526,7 +1526,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "dota2",
    "date": "2026-11-02",
    "hits": [],
@@ -1543,27 +1543,6 @@
    ],
    "title": "Polymarket's Dota 2 Game 2 Winner Odds for potn9ki Rise 23.3 Points",
    "url": "https://www.binance.com/en/square/post/383999231349891",
-   "words": [],
-   "work": "dota2"
-  },
-  {
-   "batch": 6,
-   "because": "dota2",
-   "date": "2026-11-02",
-   "hits": [],
-   "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/jiYOExbugnugEqu.jpg",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "17173",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "《刀塔2》没了崩溃哥，Spirit依然能夺冠！？Spirit总决赛横扫Yandex",
-   "url": "http://news.17173.com/content/11022026/155734588.shtml",
    "words": [],
    "work": "dota2"
   },
@@ -1605,21 +1584,6 @@
   },
   {
    "batch": 6,
-   "because": "滑雪",
-   "date": "2026-10-31",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.l6kuKQHh7tgR0uUB0f--7A&pid=News&w=1200",
-   "kind": "board",
-   "score": 4,
-   "source": "note",
-   "taste": [],
-   "title": "スキー場を選ぶから、地域を旅するへ。雪山をつなぐバスと共通シーズン券",
-   "url": "https://note.com/williamteru/n/n65d9b7248c0b",
-   "words": [],
-   "work": "滑雪"
-  },
-  {
-   "batch": 7,
    "because": "日本顶级网球赛事",
    "date": "2026-10-31",
    "hits": [],
@@ -1649,7 +1613,7 @@
    "work": "日本顶级网球赛事"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "滑雪",
    "date": "2026-10-30",
    "hits": [],

@@ -11,32 +11,42 @@
    "image": "https://images2.minutemediacdn.com/image/upload/c_crop,x_291,y_64,w_1932,h_1086/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m6ekgecrgnj4vwnmff.jpg"
   },
   {
+   "headline": "Marvel's X-Men Movie Casts The Long Walk And Hunger Games Actor As Iceman",
+   "highlight": "Iceman",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    33,
+    24,
+    38,
+    39,
+    47,
+    31,
+    32,
+    34,
+    35
+   ]
+  },
+  {
+   "headline": "Marvel Studios Reveals Best Look Yet at Namor's New Avengers: Doomsday Suit",
+   "highlight": "Namor",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    46,
+    29
+   ]
+  },
+  {
    "headline": "‘Avengers: Doomsday’ Outgrosses ‘Supergirl’ 46 Days Before Release",
    "highlight": "46 Days Before Release",
    "blurb": "",
    "weight": "normal",
    "refs": [
     8,
-    10
-   ]
-  },
-  {
-   "headline": "Avengers: Doomsday Officially Features 7 Pre-MCU Marvel Actors",
-   "highlight": "7 Pre-MCU Marvel Actors",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
-  },
-  {
-   "headline": "Hayley Atwell says she shot several \"different storylines\" for her return as Peggy Carter",
-   "highlight": "different storylines",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2,
-    19
+    10,
+    25
    ]
   },
   {
@@ -46,17 +56,18 @@
    "weight": "normal",
    "refs": [
     14,
-    4
+    4,
+    26
    ]
   }
  ],
  "_covered": {
-  "漫威电影": 23,
-  "GTA 6": 20,
-  "三星手机": 13,
+  "漫威电影": 49,
+  "GTA 6": 35,
+  "三星手机": 20,
   "A2O LITE": 5,
   "MMORPG 新作": 5,
-  "dota2": 4,
+  "dota2": 8,
   "哈利波特剧集": 4,
   "あつ森": 3,
   "ILLIT": 2,
@@ -78,7 +89,8 @@
    "blurb": "Grand Theft Auto 6 is nearly here, and its preload date has been confirmed ahead of the November 19 launch.",
    "weight": "hero",
    "refs": [
-    11
+    11,
+    35
    ],
    "event": {
     "date": "2026-11-19",
@@ -104,7 +116,9 @@
    "refs": [
     14,
     12,
-    16
+    16,
+    26,
+    34
    ]
   },
   {
@@ -138,7 +152,10 @@
     2,
     5,
     6,
-    9
+    9,
+    14,
+    16,
+    18
    ],
    "image": "https://9to5google.com/wp-content/uploads/sites/4/2026/02/galaxy-s26-ultra-privacy-display-17.jpg?quality=82&strip=all&resize=1200,628"
   },
@@ -148,7 +165,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    17
    ]
   },
   {
@@ -175,7 +193,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    12
+    12,
+    15
+   ]
+  },
+  {
+   "headline": "First Sighting: Samsung One UI 9.5 Test Build Officially Surfaces for Galaxy S27 Ultra",
+   "highlight": "One UI 9.5",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
    ]
   }
  ],
@@ -248,9 +276,20 @@
    "weight": "lead",
    "refs": [
     2,
-    1
+    1,
+    5,
+    7
    ],
    "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg"
+  },
+  {
+   "headline": "《刀塔2》没了崩溃哥，Spirit依然能夺冠！？Spirit总决赛横扫Yandex",
+   "highlight": "Spirit依然能夺冠",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "哈利波特剧集": [

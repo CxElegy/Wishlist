@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-01T13:45:59+00:00",
-"text": "2026-11-01 第 1 バッチを出刊：ILLIT（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4.0万・キャッシュ読み 46.6万・出力 2,055",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.3,
-"mem_total": 16872808448,
-"mem_free": 15943348224,
-"disk_used": 10014425088,
-"disk_free": 31269109760,
-"disk_total": 41283534848,
-"peak": 326938624
-},
-"batch": 1,
-"boards": [
-"ILLIT"
-],
-"stories": 5,
-"left": 0,
-"edited": 21,
-"run": 1793540434.4415553,
-"tok": {
-"in": 16,
-"cw": 39728,
-"cr": 465641,
-"out": 2055,
-"calls": 8,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 507440,
-"secs": 326,
-"run_tok": {
-"in": 16,
-"cw": 39728,
-"cr": 465641,
-"out": 2055,
-"calls": 8,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-01T15:21:24+00:00",
 "text": "出刊に失敗：unhashable type: 'dict'",
 "level": "error"
@@ -1963,5 +1922,10 @@
 "calls": 30,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-02T23:32:55+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
