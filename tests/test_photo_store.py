@@ -10,6 +10,12 @@ import photo_store as P  # noqa: E402
 
 
 class PhotoStore(unittest.TestCase):
+    def setUp(self):
+        # 旗 state/pages_photos.json の本物の値に左右されない（これらは Supabase 側の網址を確かめる）
+        self._on = list(P._ON)
+        P._ON[:] = [False]
+        self.addCleanup(lambda: P._ON.__setitem__(slice(None), self._on))
+
     def test_evict_age_then_cap(self):
         p = {"a": {"at": 100, "b": 10}, "b": {"at": 120, "b": 10}, "c": {"at": 119, "b": 10}}
         self.assertEqual(P.evict(p, {"a"}, 120, keep_days=14, cap=10**9), [])        # a は載っている → 古くても残る
