@@ -1,5 +1,6 @@
 """Supabase が 402 でも落ちない・静的に見える（2026-11-03）：Actions の書き込みは飛ばして続き、網页は 1 行の案内だけ。"""
 import io
+import json
 import pathlib
 import sys
 import tempfile
@@ -64,6 +65,62 @@ class PageSide(unittest.TestCase):
         self.assertIn("WL_SB", tag)
         self.assertLess(tag.index("WL_SB"), tag.find("wl-auth") if "wl-auth" in tag else len(tag))
         self.assertEqual(render._live_head("admin").count("window.WL_SB="), 1)
+
+    def test_every_static_page_that_calls_supabase_has_it(self):
+        """docs/ の html で Supabase を呼ぶものは全部、休止の部品を持つ（入口・本人のページの殻・見本の審査が抜けていた）。
+        test2 は凍結（呼ばれても本番の account が違う・もう配らない）なので数えない。"""
+        docs = pathlib.Path(render.__file__).resolve().parent.parent / "docs"
+        miss = [str(f.relative_to(docs)) for f in docs.rglob("*.html") if "test2" not in f.parts
+                and render.with_sb_deg(f.read_text(encoding="utf-8")) != f.read_text(encoding="utf-8")]
+        self.assertEqual(miss, [])
+
+    def test_outbox_keeps_rows_until_written(self):
+        import tempfile
+        p = pathlib.Path(tempfile.mkdtemp()) / "o.json"
+        self.assertEqual(sbstate.outbox_take("live_log", p), [])
+        self.assertFalse(p.exists())
+        sbstate.outbox_put("live_log", [{"t": 1}], p)
+        sbstate.outbox_put("live_log", [{"t": 2}], p)
+        self.assertEqual([r["t"] for r in sbstate.outbox_take("live_log", p)], [1, 2])
+        self.assertEqual(sbstate.outbox_take("live_log", p), [])
+
+    def test_live_mark_does_not_resend_same(self):
+        calls = []
+        with mock.patch.object(digest, "supabase", lambda *a, **k: calls.append(a)), mock.patch.dict(digest._LIVE_SENT, clear=True):
+            digest.live_mark("B", "fetch")
+            digest.live_mark("B", "fetch")
+            digest.live_mark("B", "found", found=2)
+        self.assertEqual(len(calls), 2)
+
+    def test_busy_polls_slower_when_idle(self):
+        self.assertIn("live.length?30000:120000", render.BUSY_JS)
+
+    def test_user_pages_skip_unchanged(self):
+        import user_pages
+        sent = []
+        fp = {}
+
+        def fake(path, data=None, method="GET", ctype=""):
+            if path.endswith("_fp/all.json"):
+                if method == "GET":
+                    return dict(fp)
+                fp.update(json.loads(data))
+                return ""
+            if "userfeed_users" in path:
+                return [{"email": "a@example.com", "prefs": {}}]
+            if "/storage/" in path:
+                sent.append(path)
+                return ""
+            return []
+        with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages, "build", lambda *a, **k: "<html>x</html>"), \
+                mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), mock.patch.object(user_pages.render, "photo_opens", None, create=True):
+            user_pages.main([])
+            user_pages.main([])
+            user_pages.main(["--force"])
+        self.assertEqual(len(sent), 2)   # 1 回目と --force だけ
+
+    def test_entrance_rebuilds_without_it(self):
+        self.assertIn("render.SB_DEG_TAG in old", pathlib.Path(welcome.__file__).read_text(encoding="utf-8"))
 
     def test_entrance_has_it(self):
         self.assertIn("SB_DEG_TAG", pathlib.Path(welcome.__file__).read_text(encoding="utf-8"))

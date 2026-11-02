@@ -15,7 +15,38 @@ button.save{margin-left:auto;background:var(--rose);color:#fff;border:2px solid 
 .c img{display:block;margin:0 auto;height:84px;max-width:100%;object-fit:contain;background:repeating-conic-gradient(#0001 0 25%,#0000 0 50%) 0 0/12px 12px}
 .c i{display:block;font-style:normal;font-weight:900;margin-top:2px;font-size:12px}.c.ch i{color:var(--rose)}.c small{display:block;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lock{margin-top:18px;color:var(--mut);font-size:13px}</style>
-<header><small>審査 · 顔の大きさ · 1 段目 / 全 8 段</small><h1>1 段目　これは何の絵？（分類）</h1></header>
+<header><script>
+(function(){
+  if(!window.fetch||window.WL_SB) return;
+  var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false;
+  var MSG='いま、ログインと 👍👎 の機能を休止しています。記事はこれまでどおり読めます。';
+  function sb(u){return /^https:\/\/[a-z0-9]+\.supabase\.co\/(rest|auth|functions)\//.test(u);}
+  try{ var t=+sessionStorage.getItem(K); if(t&&Date.now()-t<600000){ down=true; paused=true; } }catch(e){}
+  function note(){
+    if(document.querySelector('.wl-sbnote')) return;
+    if(!document.body){ document.addEventListener('DOMContentLoaded',note); return; }
+    var s=document.createElement('style');
+    s.textContent='.wl-sbnote{position:fixed;left:12px;bottom:12px;z-index:80;max-width:min(560px,calc(100vw - 24px));padding:6px 12px;border:2px solid var(--ink,#111);background:var(--gold,#ffd84a);color:var(--ink,#111);box-shadow:3px 3px 0 var(--ink,#111);font:700 13px/1.5 var(--font-sans,sans-serif)}@media(max-width:700px){.wl-sbnote{bottom:68px}}';   // 狭い画面は右下の札（ログイン）の上へ
+    document.head.appendChild(s);
+    var d=document.createElement('div'); d.className='wl-sbnote'; d.setAttribute('role','status'); d.textContent=MSG; document.body.appendChild(d);
+    var el=document.getElementById('sb-state'); if(el){ el.dataset.state='limited'; el.textContent='Supabase：制限中（この画面で通信が止まりました）'; }
+  }
+  function trip(code){
+    if(down&&R.dataset.sb) return;
+    down=true; R.dataset.sb='down';
+    if(code===402){ try{ sessionStorage.setItem(K,String(Date.now())); }catch(e){} }
+    note();
+  }
+  if(paused){ R.dataset.sb='down'; note(); }
+  window.WL_SB={isDown:function(){return down;}};
+  window.fetch=function(input,init){
+    var u=typeof input==='string'?input:(input&&input.url)||'';
+    if(!sb(u)) return of(input,init);
+    if(down) return Promise.resolve(new Response('{"message":"いま、ログインの機能を休止しています"}',{status:503,headers:{'Content-Type':'application/json'}}));
+    return of(input,init).then(function(r){ if(r.status===402||r.status>=520) trip(r.status); return r; },function(e){ trip(0); throw e; });
+  };
+})();
+</script><small>審査 · 顔の大きさ · 1 段目 / 全 8 段</small><h1>1 段目　これは何の絵？（分類）</h1></header>
 <main>
 <ol class="steps"><li class="on">1 分類</li><li>2 顔の枠</li><li>3 胸像</li><li>4 全身</li><li>5 釣り合い</li><li>6 ロゴ</li><li>7 物</li><li>8 本物のページ</li></ol>
 <div class="why">

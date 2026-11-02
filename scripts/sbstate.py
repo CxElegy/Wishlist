@@ -58,6 +58,29 @@ def mark_ok(path=None):
         _write({"status": "ok", "at": _now(), "was_limited_since": cur.get("since")}, path)
 
 
+# 書けなかった公開データの置き場（state/sb_outbox.json）。印（db_news.json など）で送り直せるもの〔news・stories・価格〕は要らない。
+# 印のない一過性の行〔live_log〕だけ、制限中は ここに溜め、次に書けた回が先に送る。お客さまのデータ〔👍・本人のページ〕は溜めない。
+OUTBOX = FILE.parent / "sb_outbox.json"
+OUTBOX_CAP = 400
+
+
+def outbox_put(name, rows, path=None):
+    p = path or OUTBOX
+    d = load(p)
+    d[name] = (d.get(name, []) + list(rows))[-OUTBOX_CAP:]
+    _write(d, p)
+
+
+def outbox_take(name, path=None):
+    """溜めた行を取り出す（空にする）。無ければ []（ファイルは作らない）。"""
+    p = path or OUTBOX
+    d = load(p)
+    rows = d.pop(name, [])
+    if rows:
+        _write(d, p)
+    return rows
+
+
 def is_limit(err):
     """HTTPError / RuntimeError('HTTP 402：…') が 402 か。"""
     return getattr(err, "code", None) == 402 or str(err).startswith("HTTP 402")

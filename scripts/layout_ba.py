@@ -216,7 +216,8 @@ def main():
     parts = [p for p in parts if p]
     n = len(parts) + 1
     page = (PAGE.replace("@@PLACES@@", "".join(parts) + count_html()).replace("@@URL@@", SUPA[0]).replace("@@KEY@@", SUPA[1]).replace("@@N@@", str(n)).replace("@@DEFERRED@@", html.escape(DEFERRED)))
-    OUT.write_text(page, encoding="utf-8")
+    import render
+    OUT.write_text(render.with_sb_deg(page), encoding="utf-8")
     print("written", OUT, len(parts), "places")
 
 

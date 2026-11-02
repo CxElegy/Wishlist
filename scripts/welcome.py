@@ -631,7 +631,8 @@ def build_if_stale(hours=24):
     import time
     old = OUT.read_text(encoding="utf-8") if OUT.exists() else ""
     # 24 時間たっていなくても、描画を止めるフォント link が残る古い出力は作り直す（render.yml は入口を24時間おきにしか作らず、2026-10-28 の版が本番に残った）
-    if old and "wl-cfg" in old[:200000] and not render.blocking_font_links(old) and time.time() - OUT.stat().st_mtime < hours * 3600:
+    # 休止モードの部品（render.SB_DEG_TAG）が入っていない出力も作り直す（#796 のあと入口だけ 24 時間古いまま本番に残った）
+    if old and "wl-cfg" in old[:200000] and render.SB_DEG_TAG in old and not render.blocking_font_links(old) and time.time() - OUT.stat().st_mtime < hours * 3600:
         return
     try:
         build_all()

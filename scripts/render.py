@@ -4308,7 +4308,9 @@ BUSY_JS = """
         bar.innerHTML='<i class="bf"></i><i class="br"></i><span class="bt"></span>';sec.insertBefore(bar,sec.firstChild);}
       bar.style.setProperty('--bp',o.pc==null?'0%':Math.max(3,Math.min(97,o.pc*100)).toFixed(1)+'%');
       bar.querySelector('.bt').textContent=o.text;});}
-  paint();read();setInterval(paint,20000);setInterval(read,30000);
+  // 見回りは、動いている作業があるとき 30 秒・無いとき 120 秒（無料枠：開いている画面ごとの API 呼び出しを減らす）
+  paint();read();setInterval(paint,20000);
+  (function tick(){setTimeout(function(){read();tick();},live.length?30000:120000);})();
   document.addEventListener('visibilitychange',function(){if(!document.hidden)read();});
 })();
 """
@@ -4365,6 +4367,14 @@ SB_DEG_JS = r"""
 })();
 """
 SB_DEG_TAG = "<script>" + SB_DEG_JS + "</script>"
+
+
+def with_sb_deg(page):
+    """Supabase を呼ぶ静的なページ（本人のページの殻・テストグラウンドの審査・入口）に SB_DEG_TAG を最初に 1 回入れる。
+    入れ方の規則はここ 1 か所：docs/ の Supabase を呼ぶ html は全部これを通る（tests/test_sb_degrade.py が docs/ を数える）。"""
+    if "window.WL_SB=" in page or not re.search(r"supabase\.co(?!/storage)|rest/v1|createClient", page):
+        return page
+    return re.sub(r"<head[^>]*>", lambda m: m.group(0) + SB_DEG_TAG, page, count=1)
 
 
 def _account_tag(page=""):
@@ -5887,7 +5897,7 @@ def render_me():
     Supabase Storage pages/<account>/index.html を読み、そのページに替える（scripts/user_pages.py が作ったもの、店長と同じ枠組み）。
     ログインしていない → 店長のページへ。読めない（まだ作られていない・つながらない）→ 店長のページの前の画面（?own=0）。"""
     cfg = json.dumps({"url": AUTH_DB.get("url") or "", "key": AUTH_DB.get("key") or "", "lib": SUPABASE_JS})
-    return f"""<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    return f"""<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">{SB_DEG_TAG}
 <meta name="robots" content="noindex"><title>ウォッチリスト通信</title>
 <style>{re.search(r":root\{[^}]*\}", CSS).group(0)}html,body{{margin:0;background:var(--paper);color:var(--ink);font:700 14px/1.6 var(--font-sans)}}
 .ld{{position:fixed;inset:0;display:grid;place-items:center}}.ld b{{background:var(--ink);color:var(--card);padding:.5em 1em;transform:rotate(-2deg);box-shadow:4px 4px 0 var(--rose)}}</style>
