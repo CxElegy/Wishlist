@@ -136,5 +136,16 @@ class PageSide(unittest.TestCase):
         self.assertIn('data-state="ok"', render._sb_line({}))
 
 
+
+class SbDownCheckStable(unittest.TestCase):
+    """harness/sb_down_check.py は固定の待ちでなく落ち着くまで待ち、呼ばないページも 1 回呼んで案内を確かめる（me.html の 1400 で ✗ が出たり出なかったりした）。"""
+
+    def test_settles_and_probes(self):
+        src = (pathlib.Path(__file__).resolve().parent.parent / "harness" / "sb_down_check.py").read_text(encoding="utf-8")
+        self.assertIn("def settle(", src)
+        self.assertNotIn("wait_for_timeout(3500)", src)
+        self.assertIn("probe.supabase.co", src)
+
+
 if __name__ == "__main__":
     unittest.main()

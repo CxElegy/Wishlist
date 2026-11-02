@@ -22,6 +22,23 @@ PAGES = ["", "home/index.html", "home/settings.html", "home/wishlist.html", "hom
 MAX_CALLS = 8
 
 
+def settle(p, hits, limit=12000):
+    """読み込みが落ち着くまで待つ（2026-11-03：me.html は殻から ./ へ飛ぶので、固定 3.5 秒だと飛んだ先の読み込みの呼び出しが
+    「押したあと」に数えられて ✗ が出たり出なかったりした）。呼び出しの数と網址が 1.5 秒変わらない間を待つ（上限 limit ms）。"""
+    last, quiet, t = None, 0, 0
+    while t < limit and quiet < 1500:
+        p.wait_for_timeout(250)
+        t += 250
+        cur = (len(hits), p.url)
+        quiet = quiet + 250 if cur == last else 0
+        last = cur
+    if hits:   # 呼び出しがあれば休止中になるまで少し待つ（先頭の呼び出しが返って印が付く）
+        try:
+            p.wait_for_function("()=>document.documentElement.dataset.sb==='down'", timeout=2000)
+        except Exception:  # noqa: BLE001
+            pass
+
+
 def check(pw, base, mode, shots):
     bad = []
     b = launch(pw)
@@ -39,7 +56,13 @@ def check(pw, base, mode, shots):
             ctx.route(SB, block)
             p = ctx.new_page()
             p.goto(base + page_, wait_until="domcontentloaded", timeout=30000)
-            p.wait_for_timeout(3500)
+            settle(p, hits)
+            if not hits:   # 読み込みで Supabase を呼ばないページ：1 回だけ呼んで（止めてある）案内の出方を実際に見る
+                p.evaluate("()=>fetch('https://probe.supabase.co/rest/v1/rpc/x').catch(()=>0)")
+                p.wait_for_timeout(300)
+                hits.clear()
+            elif not p.evaluate("()=>document.documentElement.dataset.sb==='down'"):
+                bad.append(f"✗ {page_ or '入口'} {w}: 呼んだのに休止中にならない")
             before = len(hits)
             for sel in ("[data-vote]", ".wl-auth > button"):   # 押しても網に出ない（休止中）
                 el = p.query_selector(sel)
