@@ -335,6 +335,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-02"
+ },
  "https://appmedia.jp/wp-content/uploads/2026/10/173706_th2s4.webp": {
   "w": 740,
   "h": 389,

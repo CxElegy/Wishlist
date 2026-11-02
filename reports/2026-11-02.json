@@ -1,29 +1,24 @@
 {
  "date": "2026-11-02",
- "edit_sig": "4848f89ffce3",
+ "edit_sig": "da065e5c6d9f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "「行政×魔法」テーマのストーリーとリアルタイム×コマンドバトルの手触りが楽しい。",
      "date": "2026-11-02",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "新伝奇魔法RPG『アストラエ・オラティオ』CBTレポート｜「行政×魔法」テーマのストーリーとリアルタイム×コマンドバトルの手触りが楽しい",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5XdUJSMFBENHZGNjdYdjFSeTFSeFZqRHMwcUhVY2YwTU03UTJoelVZT01rWjJMeGVlWlpDYk8yTDVWd0N5NlFiVmJMcXRCaWZXMEhyTF9n?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 2,
-     "source": "r/Astrae_Oratio",
-     "title": "Erin WIP",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xktunj/erin_wip/"
+     "headline": "新伝奇魔法RPG『アストラエ・オラティオ』CBTレポート",
+     "highlight": "CBTレポート",
+     "image": "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp",
+     "image_via": "AI 挑选",
+     "url": "https://appmedia.jp/preceding-play/80489629",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",

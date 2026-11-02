@@ -71,7 +71,8 @@
   "绝区零": 5,
   "猫用品": 2,
   "gelato pique": 1,
-  "滑雪": 1
+  "滑雪": 1,
+  "Astrae Oratio": 2
  },
  "Vaundy": [
   {
@@ -573,6 +574,18 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "新伝奇魔法RPG『アストラエ・オラティオ』CBTレポート",
+   "highlight": "CBTレポート",
+   "blurb": "「行政×魔法」テーマのストーリーとリアルタイム×コマンドバトルの手触りが楽しい。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp"
   }
  ]
 }
