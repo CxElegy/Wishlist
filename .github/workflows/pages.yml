@@ -51,9 +51,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    # Source を切り替える前は deploy が必ず断られる。失敗メールを増やさないため落ちても赤にしない
-    # （切り替えて 1 回緑になったら、この行を消して本当の失敗が見えるようにする。BACKLOG に書いた）
-    continue-on-error: true
     environment:
       name: github-pages
       url: ${{ steps.dep.outputs.page_url }}
