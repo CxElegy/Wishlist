@@ -50,7 +50,6 @@
   "https://topics.smt.docomo.ne.jp/article/insidegames/trend/insidegames-190213?fm=latestnews": "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-190213.jpg",
   "https://unipa.co/blog/13059/vaundy-taipei-arena-2026-asia-tour-final": "https://unipa.co/blog/wp-content/uploads/2026/11/AFA2B08C-8600-4A2E-B145-FC4D9D6A361B.jpg",
   "https://www.agara.co.jp/article/706847": "https://www.bing.com/th?id=ONUT.N-f2Ky3IkMTQMcFoucfixQ&pid=News&w=640",
-  "https://www.anewsa.com/detail.php?number=3213263": "https://www.anewsa.com/news_images/2026/10/22/mark/20261022200800.jpg",
   "https://www.bleachernation.com/picks/2026/10/31/fernandez-vs-shnaider-prediction-at-the-toray-pan-pacific-open-tennis-saturday-october-31/": "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300",
   "https://www.chinatimes.com/realtimenews/20261029004039-260421": "https://images.chinatimes.com/newsphoto/2026-10-29/656/20261029004040.jpg",
   "https://www.dexerto.com/pokemon/grass-type-pokemon-weaknesses-2649794/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/04/16/grass-type-pokemon-weaknesses-1.jpg",
@@ -82,6 +81,7 @@
   "https://www.soompi.com/article/1883259wpp/a2o-lite-ive-seventeens-jxj-and-bts-top-circle-weekly-charts": "https://www.bing.com/th?id=ONUT.f9biWkL7lfnDYnUUD4WdAQ&pid=News&w=1200",
   "https://www.teepr.com/1952868/teepr/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8Bvi/": "https://www.teepr.com/wp-content/uploads/2026/11/1952868-photo1.jpg",
   "https://www.tgdaily.co.kr/news/articleView.html?idxno=407725": "https://cdn.tgdaily.co.kr/news/photo/202610/407725_211766_111.jpg",
+  "https://www.topstarnews.net/news/articleView.html?idxno=16265761": "https://cdn.topstarnews.net/news/photo/202611/16265761_2074495_2253_crop.jpg",
   "https://www.vietnam.vn/en/he-lo-cuoc-song-xa-hoa-hoang-thuong-cong-chua-meo-an-ngon-o-phong-may-lanh-rieng-cham-nhu-nguoi-than": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/01/1793518918872_17935120288761292194897526244225522898744703979080a956beb782b93abdd1c5fd744a01c5dd-17935123162911346392751-53-0-1188-2168-crop-17935125067981749509703.webp",
   "https://www.vietnam.vn/ja/chiec-flagship-trung-quoc-ban-chay-nhat-nam-nay": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/29/1793282040355_honor_magic_9_pro_max_design.jpeg",
   "https://www.vietnam.vn/zh-cn/galaxy-s27-ultra-du-kien-dung-chip-snapdragon-toan-cau-cung-vien-pin-nang-cap-5-700-mah": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/31/1793434884463_img_d76e95fd.jpeg",
@@ -1414,6 +1414,27 @@
   },
   {
    "batch": 4,
+   "because": "A2O LITE",
+   "date": "2026-11-01",
+   "hits": [],
+   "image": "https://cdn.topstarnews.net/news/photo/202611/16265761_2074495_2253_crop.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "톱스타뉴스",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "A2O LITE, 데뷔곡 ‘NEON’으로 음악방송 8관왕…‘인기가요’ 2주 연속 1위",
+   "url": "https://www.topstarnews.net/news/articleView.html?idxno=16265761",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 5,
    "because": "漫威电影",
    "date": "2026-11-01",
    "hits": [],
@@ -1518,7 +1539,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "哈利波特剧集",
    "date": "2026-10-31",
    "hits": [],
@@ -1537,27 +1558,6 @@
    "url": "https://www.msn.com/en-us/entertainment/celebrities/harry-potter-s-paapa-essiedu-defends-casting-in-j-k-rowling-series/ar-AA2guHXq",
    "words": [],
    "work": "哈利波特剧集"
-  },
-  {
-   "batch": 6,
-   "because": "A2O LITE",
-   "date": "2026-10-31",
-   "hits": [],
-   "image": "https://www.anewsa.com/news_images/2026/10/22/mark/20261022200800.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "아시아뉴스통신",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "'인기가요' 라인업, 아이브·라이즈·A2O LITE 등 출격",
-   "url": "https://www.anewsa.com/detail.php?number=3213263",
-   "words": [],
-   "work": "A2O LITE"
   },
   {
    "batch": 6,
@@ -2134,11 +2134,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2146,11 +2146,11 @@
    8
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [

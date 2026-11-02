@@ -2367,16 +2367,16 @@
   "target": 720,
   "v": 3
  },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/17/179220187710248295_664_2000.JPEG": {
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/17/179220187718646740_664_2000.JPEG": {
   "w": 600,
-  "h": 337,
+  "h": 325,
   "target": 1280,
   "v": 3,
-  "blur": 0.433,
-  "local": "pics/ac34360f0384746b.webp",
+  "blur": 0.423,
+  "local": "pics/33b8e9b22c02d063.webp",
   "out": [
    1280,
-   719
+   693
   ],
   "why": "看不清"
  },
@@ -4090,12 +4090,6 @@
  "https://www.androidauthority.com/wp-content/uploads/2026/05/Samsung-Galaxy-S26-Ultra-home-screen-black-cat-scaled.jpg": {
   "w": 2560,
   "h": 1440,
-  "target": 720,
-  "v": 3
- },
- "https://www.anewsa.com/news_images/2026/10/22/mark/20261022200800.jpg": {
-  "w": 580,
-  "h": 387,
   "target": 720,
   "v": 3
  },
