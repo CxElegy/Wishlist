@@ -648,7 +648,7 @@ PROCESSES = [
         "when": "ページを開いたとき · ログイン・ログアウトしたとき",
         "trigger": "どのページでも右上の「ログイン」（メールアドレスだけ）。開いたときに身份を確かめ、見るだけかどうかを決める",
         "summary": "访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもメールアドレスだけで始められ（重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。",
-        "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql", "db/board_theme.sql"], "doc": "docs/rules/login.md",
+        "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK / SB_DEG_JS / _sb_line）", "scripts/sbstate.py", "scripts/welcome.py", "scripts/digest.py（supabase の 402）", "scripts/user_pages.py", "scripts/livestatus.py", "harness/sb_down_check.py", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql", "db/board_theme.sql"], "doc": "docs/rules/login.md",
         "flow": [
             {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
              "text": "何のサイトか・店長のページの本物の画面。メール・パスワードと規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → 候補のタイルを押して選ぶ・名前でも足せる（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
@@ -660,6 +660,9 @@ PROCESSES = [
             {"id": "a2", "kind": "decision", "lane": "web", "title": "管理者のメール？",
              "text": "is_admin_email が invites 表（role=admin）を見る",
              "yes": "パスワードの欄を出す（まだ決めていなければ、はじめの 1 回ここで決める）→ signInWithPassword で管理者のセッション（Supabase が覚える・メールは送らない）", "no": "そのまま一般ユーザー（運営者のページは見るだけ）", "uses": ["invite"]},
+            {"id": "a2s", "kind": "decision", "lane": "web", "title": "Supabase が 402（無料枠超過）・通信失敗？",
+             "text": "SB_DEG_JS（どのページも最初に入れる 1 か所）が window.fetch を包み、*.supabase.co の /rest・/auth・/functions が 402・520 以上・通信失敗で返ったら休止中にする。Actions 側は digest.supabase / user_pages / livestatus が 402 を見たら None で飛ばす（sbstate）。点検は harness/sb_down_check.py（Supabase を page.route で止めて 1400/390）",
+             "yes": "以降の Supabase 呼び出しは網に出ず 503（呼び直さない・402 は 10 分同じタブで覚える）。ページは静的なまま、下に 1 行「いま、ログインと 👍👎 の機能を休止しています」。管理ページは「Supabase：制限中」の 1 行。Actions は落とさず続け、同期の印が進まないので制限が外れた次の回が送り直す", "no": "そのまま"},
             {"id": "a3", "kind": "step", "lane": "web", "title": "身份を確かめる",
              "text": "auth_enforced・my_role・can_edit(このページの account) を読み、<html> に data-role / data-lock を付ける。ページの JS の Supabase 呼び出しにログインした人の鍵を付ける。右上の役割の札は店長だけ（一般のユーザーは名前だけ。2026-11-02）", "uses": ["roles"]},
             {"id": "a3m", "kind": "decision", "lane": "web", "title": "お客さま（店長でない人）がログインしている？",

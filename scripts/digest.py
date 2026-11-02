@@ -40,6 +40,7 @@ import images
 import intel
 import lang
 import render
+import sbstate
 import sitedir
 import sources
 import taxonomy
@@ -1058,13 +1059,20 @@ def supabase(path, body=None, prefer=None, method=None):
         headers["Content-Type"] = "application/json"
     if prefer:
         headers["Prefer"] = prefer
+    if sbstate.LIMITED:   # この回はもう 402 を見た：呼び直さない（没配置と同じに None。印が進まないので次の回が送り直す）
+        return None
     req = urllib.request.Request(f"{base}/rest/v1/{path}", data=data, headers=headers, method=method)
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             text = resp.read().decode("utf-8")
     except urllib.error.HTTPError as err:
+        if err.code == 402:   # 無料枠超過（Fair Use）：ジョブを落とさず飛ばす
+            sbstate.mark_limited(path.split("?")[0])
+            print(f"  [数据库] Supabase が 402（制限中）：{path.split('?')[0]} は飛ばす。制限が外れたら次の回が送り直す", file=sys.stderr)
+            return None
         detail = err.read().decode("utf-8", "replace")[:300]
         raise RuntimeError(f"HTTP {err.code}：{detail}") from None
+    sbstate.mark_ok()
     return json.loads(text) if text.strip() else []
 
 
