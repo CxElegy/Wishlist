@@ -432,12 +432,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets.murphysmultiverse.com/uploads/2026/11/midnight-sons-main.webp": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://assets.st-note.com/production/uploads/images/327624810/rectangle_large_type_2_aed04e16319fb3675554717e75078d48.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -2367,16 +2361,16 @@
   "target": 720,
   "v": 3
  },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/17/179220187718646740_664_2000.JPEG": {
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/17/179220187710248295_664_2000.JPEG": {
   "w": 600,
-  "h": 325,
+  "h": 337,
   "target": 1280,
   "v": 3,
-  "blur": 0.423,
-  "local": "pics/33b8e9b22c02d063.webp",
+  "blur": 0.433,
+  "local": "pics/ac34360f0384746b.webp",
   "out": [
    1280,
-   693
+   719
   ],
   "why": "看不清"
  },
@@ -4670,6 +4664,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.comicbasics.com/wp-content/uploads/2026/06/blade.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/06/slika_2026-06-29_160304513.webp": {
