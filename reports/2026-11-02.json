@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "edit_sig": "3a0d19ac0647",
+ "edit_sig": "05cb28e7d63c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -436,17 +436,21 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-02",
-     "n": 1,
+     "headline": "【2027福袋まとめ第1弾】早くもスタート！ジェラート・ピケ、焼肉キング、久世福商店、DEAN & DELUCA、Zoff",
+     "highlight": "2027福袋",
+     "image": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+     "image_via": "作品封面",
      "source": "KNB WEB",
-     "title": "【2027福袋まとめ第1弾】早くもスタート！ジェラート・ピケ、焼肉キング、久世福商店、DEAN & DELUCA、Zoff",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9PZ21LNmVncERDaHlleGdoZXBCbEtTZE15QVBnQnctRlNnd2h0SDZaVGtlazl3eFpWSHBiTXVXNG9hdDdFQWROYnlWQ05NSlBWLWxPaFpxaXg?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.knb.ne.jp&sz=128",
+     "url": "https://www.knb.ne.jp/nannan/7983/?category=3",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",
