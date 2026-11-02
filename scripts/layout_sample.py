@@ -1,4 +1,6 @@
-"""testground/layout-v2.html：記事の並べ方を 1 つの仕組みで作り直した全体見本（本物のデータ・審査待ち）。
+"""「新しい並べ方」の描画（P5 の今の見た目のまま）。docs/testground/_after.html に作る（倉庫に入れない・storage の網址を含むので）。
+scripts/layout_ba.py が、これと本番の同じ場所を撮って testground/layout-v2.html（前／後）にする。
+記事の並べ方を 1 つの仕組みで作り直した全体見本（本物のデータ）。
 本番の docs/home/index.html から記事を読み、①assign()＝記事の割り当て 1 か所（同じ記事は 1 回）②card()＝カード 1 種類
 ③board()＝並べる器 1 種類 で 7 つの場所（DESIGN_PRINCIPLES G・L1〜L11）を組む。本番は入れ替えない。"""
 import html, os, re
@@ -6,10 +8,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "docs/home/index.html"
-OUT = ROOT / "docs/testground/layout-v2.html"
+OUT = ROOT / "docs/testground/_after.html"
 PLACES = [("w-79b3c280", "滑雪"), ("w-130724c0", "猫用品"), ("w-cdea10ae", "チェーンソーマン"), ("front", "ほかの注目"),
           ("picks", "気になるかも？"), ("w-bf928230", "Astrae Oratio"), ("w-c1c3e0ed", "BLEACH Mirrors High")]
 RAIL, GRID = 3, 12
+DUPS = {}   # 場所ごとの（本番の記事数, 新しい並べ方で出す数）
 
 
 def norm(t):
@@ -20,14 +23,14 @@ def story(a):
     """記事 1 つを読む（article.card か .pk）。リンク・題・写真・日付・出典。"""
     lk = a.select_one("a[href]")
     img = a.select_one("img[data-e=s]")
-    t = a.select_one("h2,h3,.pkt b") or a
+    t = a.select_one("h2,h3,.pkt b") or (lk if lk is not None and lk.get("aria-label") else None) or a
     when = a.select_one(".when")
     src = a.select_one(".src,.from")
     pic = a.select_one(".pic")
     isrc = (img.get("src") if img else "") or ""
     if isrc and not isrc.startswith(("http", "data:")):
         isrc = "../home/" + isrc   # 本番の相対パスを testground から読めるように
-    return dict(href=(lk or {}).get("href", "") if lk else "", title=t.get_text(" ", strip=True),
+    return dict(href=(lk or {}).get("href", "") if lk else "", title=(t.get("aria-label") if t is lk else t.get_text(" ", strip=True)),
                 img=isrc, ph=(a.select_one(".ph").get_text(strip=True) if a.select_one(".ph") else ""),
                 bg=re.sub(r".*background:([^;]+).*", r"\1", pic.get("style", "")) if pic and "background" in pic.get("style", "") else "#d8d2c6",
                 when=(when.find(string=True, recursive=False) or "").strip() if when else "",
@@ -163,8 +166,8 @@ main{min-width:0;padding:24px 0 80px;display:flex;flex-direction:column;gap:56px
 .more[open] summary{border-bottom:var(--bw) solid var(--ink)}
 .bd>header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:var(--bw) solid var(--ink);margin-bottom:var(--g);padding-bottom:6px}
 .bd h2{margin:0;font:900 26px/1.3 var(--f)}.bd header small{font:700 11px var(--m);color:var(--muted)}
-.top{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:var(--g);margin-bottom:var(--g);align-items:start}
-.rail{display:flex;flex-direction:column;gap:var(--gi)}
+.top{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:var(--g);margin-bottom:var(--g);align-items:stretch}
+.rail{display:flex;flex-direction:column;gap:var(--gi)}.top>.rail>.cd{flex:1 1 0;min-height:0}.top>.rail .cd a{height:100%}
 .gr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--g)}
 .gr[data-n="6"]{grid-template-columns:repeat(3,minmax(0,1fr))}
 .cd a{display:flex;flex-direction:column;gap:8px;height:100%}
@@ -198,9 +201,10 @@ h3{margin:0;font:700 14px/1.5 var(--f);display:-webkit-box;-webkit-line-clamp:3;
 @media (max-width:900px){.top{grid-template-columns:1fr}.gr,.gr[data-n="6"]{grid-template-columns:repeat(3,minmax(0,1fr))}.gr[data-n="12"]{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:600px){.ctl{padding:6px 12px;gap:6px}.ctl button{font-size:12px;padding:2px 8px}.note{margin:12px 16px 0;padding:10px 14px;font-size:13px}.gr,.gr[data-n="6"],.gr[data-n="12"]{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gi) 14px}.bd h2{font-size:22px}[data-dir=mag]{--g:20px}
 .rail .pic{flex-basis:34%}.emb{width:56px;height:56px}}
+body.shot .ctl,body.shot .note,body.shot .toc{display:none}body.shot .wrap{display:block;max-width:1052px;margin:0;padding:0}body.shot main{padding:0;gap:0}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 """
-JS = "document.getElementById('openall').onclick=e=>{const o=e.target.getAttribute('aria-pressed')!=='true';e.target.setAttribute('aria-pressed',o);document.querySelectorAll('.more').forEach(d=>d.open=o)};document.querySelectorAll('.ctl button').forEach(b=>b.onclick=()=>{document.body.dataset.dir=b.dataset.d;document.querySelectorAll('.ctl button').forEach(x=>x.setAttribute('aria-pressed',x===b))})"
+JS = "if(location.search.indexOf('shot')>=0)document.body.classList.add('shot');document.getElementById('openall').onclick=e=>{const o=e.target.getAttribute('aria-pressed')!=='true';e.target.setAttribute('aria-pressed',o);document.querySelectorAll('.more').forEach(d=>d.open=o)};document.querySelectorAll('.ctl button').forEach(b=>b.onclick=()=>{document.body.dataset.dir=b.dataset.d;document.querySelectorAll('.ctl button').forEach(x=>x.setAttribute('aria-pressed',x===b))})"
 
 
 def main():
@@ -215,24 +219,25 @@ def main():
         el = s.select_one("section.front") if sid == "front" else s.select_one("#picks") if sid == "picks" else s.select_one("#" + sid)
         if el is None:
             continue
-        sel = ".pk" if sid == "picks" else "article.card"
+        sel = ".pk" if sid == "picks" else "article.top,article.wc" if sid == "front" else "article.card"
         st = [story(a) for a in el.select(sel)]
         parts = assign(st, used)
         dup += len(st) - sum(map(len, parts))
+        DUPS[sid] = (len(st), sum(map(len, parts)))
         out.append(board(name, parts, len(st), emblem(el), "p-" + sid))
         toc.append((("p-" + sid), name))
     note = ('<div class="note"><p><b>審査待ち：記事の並べ方の作り直し（DESIGN G・L1〜L11）</b>　本物のデータ（本番 docs/home/ から）で、'
             '記事の割り当て 1 か所・カード 1 種類・並べる器 1 種類。同じ記事の二度出しは取り除いた数：<b>%d</b>。</p>'
-            '<p>上の A / B / C で方向を切り替えて見比べてください（1400 / 768 / 390）。今の本番：'
+            '<p>見た目は今の P5 のまま（方向の切り替えは外しました）。今の本番：'
             '<a href="../home/">店長のページ</a>。本番はまだ入れ替えていません。</p></div>' % dup)
     OUT.write_text(f'''<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>並べ方の作り直し見本</title><meta name="robots" content="noindex">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Noto+Serif+JP:wght@300;500;700&family=JetBrains+Mono:wght@700&display=swap">
-<style>{CSS}</style></head><body data-dir="news">
-<div class="ctl"><a href="index.html">← テストグラウンド</a><button data-d="news" aria-pressed="true">A 新聞の紙面割り</button>
-<button data-d="mag" aria-pressed="false">B 雑誌の見開き</button><button data-d="p5" aria-pressed="false">C P5 強め</button><button id="openall" aria-pressed="false">もっと見る を全部開く</button></div>
+<style>{CSS}</style></head><body data-dir="p5">
+<div class="ctl"><a href="index.html">← テストグラウンド</a><button id="openall" aria-pressed="false">もっと見る を全部開く</button></div>
 {note}<div class="wrap"><nav class="toc" aria-label="場所"><b>この見本の場所</b>{"".join(f'<a href="#{i}">{html.escape(n)}</a>' for i, n in toc)}</nav><main>{"".join(out)}</main></div><script>{JS}</script></body></html>''', encoding="utf-8")
     print("written", OUT, "dup removed", dup)
+    return dict(DUPS)
 
 
 if __name__ == "__main__":

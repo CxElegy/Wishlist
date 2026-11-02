@@ -26,7 +26,7 @@ import re
 from pathlib import Path
 from scripts.layout_sample import assign, split_more, emoji, same_photo
 
-PAGE = Path(__file__).resolve().parent.parent / "docs/testground/layout-v2.html"
+PAGE = Path(__file__).resolve().parent.parent / "docs/testground/_after.html"
 
 
 def st(i, img):
