@@ -183,8 +183,9 @@ def page(title, kicker, why, body, pid):
 
 
 def main():
-    (OUT / "product-head.html").write_text(product_page(), encoding="utf-8")
-    (OUT / "wishes.html").write_text(wishes_page(), encoding="utf-8")
+    import render
+    (OUT / "product-head.html").write_text(render.with_sb_deg(product_page()), encoding="utf-8")
+    (OUT / "wishes.html").write_text(render.with_sb_deg(wishes_page()), encoding="utf-8")
     print("written product-head.html wishes.html")
 
 

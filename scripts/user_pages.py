@@ -330,7 +330,17 @@ def main(argv):
     except sbstate.Limited:
         print("::warning::Supabase が 402（制限中）：お客さまのページ作りを飛ばす。制限が外れたら次の回が作る")
         return
-    made = failed = 0
+    made = failed = skipped = 0
+    force = "--force" in argv
+    fp_path = "/storage/v1/object/pages/_fp/all.json"   # 置いたページの指紋（全員で 1 つ。本人のページと同じ非公開の箱）
+    try:
+        fps = _supa(fp_path)
+        fps = fps if isinstance(fps, dict) else {}
+    except sbstate.Limited:
+        return
+    except Exception:  # noqa: BLE001  まだ無い・読めない → 全部置く
+        fps = {}
+    new_fps = dict(fps)
     for u in users or []:
         acct = account_of(u["email"])
         try:
@@ -342,7 +352,12 @@ def main(argv):
             html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline,
                           themes, follows, chosen, pages, heat_in, votes, prev)
             for name, h in {"index.html": html_, **pages}.items():
+                fp = hashlib.sha1(h.encode("utf-8")).hexdigest()
+                if not force and fps.get(f"{acct}/{name}") == fp:   # 変わっていないページは落とし直さない（無料枠・置き場の写しも守る）
+                    skipped += 1
+                    continue
                 _supa(f"/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}", h.encode("utf-8"), "POST", "text/html; charset=utf-8")
+                new_fps[f"{acct}/{name}"] = fp
             made += 1
         except sbstate.Limited:
             print("::warning::Supabase が 402（制限中）：残りのお客さまのページ作りを飛ばす")
@@ -350,7 +365,12 @@ def main(argv):
         except Exception as ex:  # noqa: BLE001  1 人の失敗でほかの人を止めない。ログは数と種類だけ（名前・メールは出さない：Actions のログは公開）
             failed += 1
             print(f"::warning::1 人分のページを作れなかった（{type(ex).__name__}）")
-    print(f"お客さまのページ：{made} 人分を作って置いた・失敗 {failed}")
+    if new_fps != fps:
+        try:
+            _supa(fp_path, json.dumps(new_fps, sort_keys=True).encode(), "POST", "application/json")
+        except Exception:  # noqa: BLE001  指紋が書けなくても次の回が全部置き直すだけ
+            pass
+    print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}）・失敗 {failed}")
     if failed and not made:
         raise SystemExit(1)
 

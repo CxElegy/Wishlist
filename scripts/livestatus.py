@@ -134,7 +134,10 @@ class Lines:
 
     def _post(self, rows):
         import digest
-        digest.supabase("live_log", rows, "return=minimal", method="POST")
+        import sbstate
+        rows = sbstate.outbox_take("live_log") + rows   # 制限中に溜めた分を先に
+        if digest.supabase("live_log", rows, "return=minimal", method="POST") is None and sbstate.LIMITED:
+            sbstate.outbox_put("live_log", rows)
 
     def prune(self):
         """2 日より前の行を消す（書く側が自分で片付ける）。"""

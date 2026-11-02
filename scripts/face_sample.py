@@ -45,7 +45,8 @@ def build():
     now = (f"今の本番：胸像 {cnt['bust']} 枚の顔は {rows['bust'][0]:.0f}〜{rows['bust'][1]:.0f}px、全身 {cnt['full']} 枚の顔は {rows['full'][0]:.0f}〜{rows['full'][1]:.0f}px"
            f"（最大÷最小 {rows['bust'][1] / rows['bust'][0]:.1f} 倍と {rows['full'][1] / rows['full'][0]:.1f} 倍）。ロゴ {cnt['logo']} 枚・物や生き物 {cnt['thing']} 枚は顔を測らない。")
     page = PAGE.replace("@@DATA@@", data).replace("@@NOW@@", html.escape(now)).replace("@@URL@@", SUPA[0]).replace("@@KEY@@", SUPA[1]).replace("@@N@@", str(len(em)))
-    OUT.write_text(page, encoding="utf-8")
+    import render
+    OUT.write_text(render.with_sb_deg(page), encoding="utf-8")
     return OUT
 
 

@@ -16,7 +16,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from browser import launch  # noqa: E402
 
 SB = re.compile(r"https://[a-z0-9]+\.supabase\.co/(rest|auth|functions)/")
-PAGES = ["", "home/index.html", "home/settings.html", "home/wishlist.html", "home/admin.html"]
+PAGES = ["", "home/index.html", "home/settings.html", "home/wishlist.html", "home/admin.html", "home/heat.html", "home/themes.html",
+         "home/terms.html", "home/me.html", "home/admin-members.html", "home/admin-boards.html", "home/admin-now.html",
+         "testground/face-size.html", "testground/layout-v2.html", "testground/wishes.html", "testground/product-head.html"]
 MAX_CALLS = 8
 
 
@@ -48,7 +50,8 @@ def check(pw, base, mode, shots):
                         pass
             p.wait_for_timeout(800)
             r = p.evaluate("""()=>({ov:document.documentElement.scrollWidth-innerWidth, note:document.querySelectorAll('.wl-sbnote').length,
-                 down:document.documentElement.dataset.sb||'', text:((document.querySelector('main')||document.body).innerText||'').trim().length})""")
+                 down:document.documentElement.dataset.sb||'', text:((document.querySelector('main')||document.body).innerText||'').trim().length,
+                 err:Array.from(document.querySelectorAll('.err,.error,[role=alert]')).filter(e=>e.offsetParent).length})""")
             tag = f"{page_ or '入口'} {w}"
             if r["ov"] > 1:
                 bad.append(f"✗ {tag}: 横スクロール {r['ov']}px")
@@ -58,7 +61,9 @@ def check(pw, base, mode, shots):
                 bad.append(f"✗ {tag}: Supabase を {len(hits)} 回呼んだ（呼び直し。上限 {MAX_CALLS}）")
             if len(hits) > before:
                 bad.append(f"✗ {tag}: 休止中なのに押したら網に出た（+{len(hits) - before}）")
-            if r["text"] < 50:
+            if r["err"]:
+                bad.append(f"✗ {tag}: エラーの箱が {r['err']} 個（休止中は案内の 1 行だけ）")
+            if r["text"] < 50 and not page_.endswith("me.html"):   # me.html は読み込み中の殻（字は「読み込み中…」だけ）
                 bad.append(f"✗ {tag}: 本文が空")
             print(f"{tag:28s} 呼び出し {len(hits):2d} · 案内 {r['note']} · 休止 {r['down'] or '-'} · 余り {r['ov']}px")
             if shots:

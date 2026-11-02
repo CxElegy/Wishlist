@@ -2873,11 +2873,19 @@ def _run_min(proc, default_secs):
     return runlog.typical(proc, "secs", default_secs) / 60
 
 
+_LIVE_SENT = {}   # (版面, proc) → 最後に書いた内容。同じなら書かない
+
+
 def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"):
     """简报网页的版面「更新中」条（render.BUSY_JS 读 Supabase 的 live_status()）：这个版面现在在做什么。
     state：fetch（正在找新记事）/ found（有新记事：网页上显示「新着 N 件 · AI 整理待ち」——新记事等 AI 编辑整理后才成为报道，
     出刊后先列在版面底部的「整理待ち」里，要紧消息除外）；None = 删掉这一行（没有新记事，条消失）。
-    board=None 且 state=None：删掉这个 proc 的全部行（每次收集开始时清空）。失败也不影响收集本身。"""
+    board=None 且 state=None：删掉这个 proc 的全部行（每次收集开始时清空）。失败也不影响收集本身。
+    同じ内容を同じ処理の中で二度書かない（無料枠：API の呼び出しを減らす。_LIVE_SENT が前に書いた内容）。"""
+    sig = (state, found, str(started), str(eta))
+    if _LIVE_SENT.get((board, proc)) == sig:
+        return
+    _LIVE_SENT[(board, proc)] = sig
     try:
         if state is None:
             q = f"proc=eq.{proc}" + (f"&board=eq.{urllib.parse.quote(board)}" if board else "")
