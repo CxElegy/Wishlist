@@ -1099,6 +1099,8 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 .mt.warn .mt-bar i{background:repeating-linear-gradient(-45deg,var(--alert) 0 6px,color-mix(in srgb,var(--alert) 70%,var(--card)) 6px 12px);background-size:17px 17px}
 .mt-n{grid-column:1/-1;font:500 var(--fs-label)/1.5 var(--font-sans);opacity:.8}
 .mt-x{margin:0 0 14px;font:500 var(--fs-label)/1.6 var(--font-sans);opacity:.85}.mt-x a{text-decoration:underline}
+.sbline{margin:0 0 12px;padding:6px 10px;border:2px solid var(--ink);background:var(--card);font-size:13px}
+.sbline[data-state=limited]{background:var(--gold)}
 .srv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .srv li{padding:10px 12px;background:var(--card);border:1.5px solid var(--ink)}
 .srv li>b{font:900 13px var(--font-sans)}.srv li>small{display:block;margin:2px 0 8px;font:500 var(--fs-label)/1.5 var(--font-sans);opacity:.85}
@@ -1570,7 +1572,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-members" content="0909acaf7db3"><style>
+<meta name="wl-ver" data-page="admin-members" content="2fc9249d62eb"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1586,7 +1588,38 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 .when b.fresh-tag{margin:0;background:var(--alert);color:#FFF!important;box-shadow:none;transform:none;padding:2px 7px 1px;font:900 10px/1.4 var(--font-sans);letter-spacing:.14em}  /* L8：札は字に重ねず日付の行の流れの中。NEW と たった今 は同じ意味なので 1 つ（NEW の札を置き換える） */
 @media (prefers-reduced-motion:no-preference){.fresh{animation:wlfresh 1.6s ease-out 3}}
 @keyframes wlfresh{50%{outline-color:var(--rose)}}
-</style><script>window.WL_ACCOUNT="test1";</script><style>
+</style><script>window.WL_ACCOUNT="test1";</script><script>
+(function(){
+  if(!window.fetch||window.WL_SB) return;
+  var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false;
+  var MSG='いま、ログインと 👍👎 の機能を休止しています。記事はこれまでどおり読めます。';
+  function sb(u){return /^https:\/\/[a-z0-9]+\.supabase\.co\/(rest|auth|functions)\//.test(u);}
+  try{ var t=+sessionStorage.getItem(K); if(t&&Date.now()-t<600000){ down=true; paused=true; } }catch(e){}
+  function note(){
+    if(document.querySelector('.wl-sbnote')) return;
+    if(!document.body){ document.addEventListener('DOMContentLoaded',note); return; }
+    var s=document.createElement('style');
+    s.textContent='.wl-sbnote{position:fixed;left:12px;bottom:12px;z-index:80;max-width:min(560px,calc(100vw - 24px));padding:6px 12px;border:2px solid var(--ink,#111);background:var(--gold,#ffd84a);color:var(--ink,#111);box-shadow:3px 3px 0 var(--ink,#111);font:700 13px/1.5 var(--font-sans,sans-serif)}@media(max-width:700px){.wl-sbnote{bottom:68px}}';   // 狭い画面は右下の札（ログイン）の上へ
+    document.head.appendChild(s);
+    var d=document.createElement('div'); d.className='wl-sbnote'; d.setAttribute('role','status'); d.textContent=MSG; document.body.appendChild(d);
+    var el=document.getElementById('sb-state'); if(el){ el.dataset.state='limited'; el.textContent='Supabase：制限中（この画面で通信が止まりました）'; }
+  }
+  function trip(code){
+    if(down&&R.dataset.sb) return;
+    down=true; R.dataset.sb='down';
+    if(code===402){ try{ sessionStorage.setItem(K,String(Date.now())); }catch(e){} }
+    note();
+  }
+  if(paused){ R.dataset.sb='down'; note(); }
+  window.WL_SB={isDown:function(){return down;}};
+  window.fetch=function(input,init){
+    var u=typeof input==='string'?input:(input&&input.url)||'';
+    if(!sb(u)) return of(input,init);
+    if(down) return Promise.resolve(new Response('{"message":"いま、ログインの機能を休止しています"}',{status:503,headers:{'Content-Type':'application/json'}}));
+    return of(input,init).then(function(r){ if(r.status===402||r.status>=520) trip(r.status); return r; },function(e){ trip(0); throw e; });
+  };
+})();
+</script><style>
 .wl-auth{position:fixed;top:10px;right:12px;z-index:90;display:flex;align-items:center;gap:8px;font:700 13px/1.4 var(--font-sans)}
 .wl-auth .shop{padding:2px 9px;background:var(--ink);color:var(--card);font:500 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.06em;transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--rose)}
 .wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
@@ -2470,7 +2503,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ⑥ お客さまと店長</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.03 07:12</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.03 07:20</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html" aria-current="page"><span>⑥ お客さまと店長</span></a></li></ul></nav>
