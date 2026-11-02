@@ -28,7 +28,8 @@
    "weight": "normal",
    "refs": [
     1,
-    16
+    16,
+    46
    ]
   },
   {
@@ -48,23 +49,25 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    17
+    17,
+    9,
+    51
    ]
   }
  ],
  "_covered": {
-  "GTA 6": 44,
+  "GTA 6": 56,
   "Vaundy": 17,
-  "漫威电影": 33,
+  "漫威电影": 40,
   "日本顶级网球赛事": 10,
   "The Mandalorian": 7,
   "A2O LITE": 25,
-  "周杰伦": 7,
+  "周杰伦": 13,
   "ILLIT": 19,
   "MMORPG 新作": 8,
   "dota2": 6,
   "あつ森": 2,
-  "三星手机": 21,
+  "三星手机": 33,
   "哈利波特剧集": 1,
   "星巴克马克杯": 1,
   "チェーンソーマン": 5,
@@ -72,7 +75,8 @@
   "猫用品": 2,
   "gelato pique": 2,
   "滑雪": 3,
-  "Astrae Oratio": 2
+  "Astrae Oratio": 2,
+  "ぐでたま": 1
  },
  "Vaundy": [
   {
@@ -194,6 +198,15 @@
    "weight": "normal",
    "refs": [
     16
+   ]
+  },
+  {
+   "headline": "Avengers Doomsday 2026 trailer - Victor Von Doom's transformation into Doctor Doom",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    37
    ]
   }
  ],
@@ -335,6 +348,20 @@
    "refs": [
     6
    ]
+  },
+  {
+   "headline": "周杰伦广州演唱会12月4日至6日天河体育中心开唱",
+   "highlight": "12月4日至6日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ],
+   "event": {
+    "date": "2026-12-04",
+    "label": "ライブ",
+    "place": "広州・天河体育中心"
+   }
   }
  ],
  "ILLIT": [
@@ -466,8 +493,10 @@
    "weight": "lead",
    "refs": [
     1,
-    5
-   ]
+    5,
+    27
+   ],
+   "image": "https://gazlog.jp/wp-content/uploads/2026/11/image-4.png"
   },
   {
    "headline": "Galaxy S27 ProではExynos 2700の性能制限を緩和か、Samsungの半導体部門とモバイル部門が共同開発",
@@ -505,7 +534,17 @@
     15,
     19,
     20,
-    21
+    21,
+    29,
+    22,
+    31,
+    28,
+    23,
+    24,
+    25,
+    26,
+    30,
+    32
    ]
   },
   {
@@ -515,6 +554,15 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra takes design notes from iPhone 17 Pro",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    33
    ]
   }
  ],
@@ -679,6 +727,18 @@
     1
    ],
    "image": "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp"
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "「ぐでたまカフェ」が西武池袋本店に期間限定オープン！",
+   "highlight": "期間限定オープン",
+   "blurb": "「ぐでたまカフェ」が西武池袋本店に期間限定でオープン。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/90965/509951_615.jpg"
   }
  ]
 }
