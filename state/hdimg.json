@@ -60,6 +60,12 @@
   "target": 720,
   "v": 3
  },
+ "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
   "h": 338,
@@ -757,6 +763,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.topstarnews.net/news/photo/202611/16265761_2074495_2253_crop.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-09-15/bd684897-4842-422e-9319-9faff2a5569f.jpg": {
   "w": 1200,
   "h": 800,
@@ -1126,12 +1138,6 @@
  "https://gdm-universal-media.b-cdn.net/epicstream/d674716a-ghost-rider.webp?width=1600&height=840": {
   "w": 1493,
   "h": 840,
-  "target": 720,
-  "v": 3
- },
- "https://geektyrant.com/news/marvels-visionquest-trailer-unleashes-ultron-and-sets-vision-on-a-dangerous-new-journey?format=300w": {
-  "w": 2500,
-  "h": 1344,
   "target": 720,
   "v": 3
  },
@@ -2360,19 +2366,6 @@
   "h": 859,
   "target": 720,
   "v": 3
- },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/17/179220187710248295_664_2000.JPEG": {
-  "w": 600,
-  "h": 337,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.433,
-  "local": "pics/ac34360f0384746b.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
  },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
   "w": 664,
@@ -3863,10 +3856,16 @@
   "target": 720,
   "v": 3
  },
+ "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-01-172731-1200x664.jpg": {
+  "w": 1200,
+  "h": 664,
+  "target": 720,
+  "v": 3
+ },
  "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-01-172731.jpg": {
   "w": 1752,
   "h": 970,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://sundayguardianlive.com/wp-content/uploads/2026/10/untitled-design-2026-10-22t133839925.png": {
