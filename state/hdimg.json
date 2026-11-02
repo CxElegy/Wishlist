@@ -2275,12 +2275,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.image.infoseek.co.jp/isnews/photos/ntv/ntv_2026102805814811_0-enlarge.jpg": {
-  "w": 550,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg": {
   "w": 2000,
   "h": 2000,
@@ -3280,6 +3274,12 @@
  "https://nokiapoweruser.com/wp-content/uploads/2026/08/galaxy-S27.jpeg": {
   "w": 683,
   "h": 1024,
+  "target": 720,
+  "v": 3
+ },
+ "https://nokiapoweruser.com/wp-content/uploads/2026/10/snapdragon.jpeg": {
+  "w": 1024,
+  "h": 559,
   "target": 720,
   "v": 3
  },
@@ -4583,6 +4583,12 @@
   "v": 3,
   "blur": 0.397
  },
+ "https://www.bing.com/th?id=ONUT.qzPvzurZgbnCGfyUo-HS6g&pid=News&w=640": {
+  "w": 640,
+  "h": 427,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
   "h": 380,
@@ -4958,6 +4964,12 @@
   "w": 664,
   "h": 664,
   "target": 720,
+  "v": 3
+ },
+ "https://www.sammyfans.com/wp-content/uploads/2026/10/samsung-galaxy-s26-ultra-sg26u-img-1000x600.jpg": {
+  "w": 1000,
+  "h": 600,
+  "target": 1280,
   "v": 3
  },
  "https://www.slashfilm.com/img/gallery/one-of-marvel-comics-greatest-modern-writers-is-a-secret-mcu-consultant/l-intro-1793015723.jpg": {

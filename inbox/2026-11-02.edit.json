@@ -64,7 +64,7 @@
   "MMORPG 新作": 3,
   "dota2": 3,
   "あつ森": 1,
-  "三星手机": 4,
+  "三星手机": 14,
   "哈利波特剧集": 1,
   "星巴克马克杯": 1,
   "チェーンソーマン": 3,
@@ -370,7 +370,8 @@
    "blurb": "",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    5
    ]
   },
   {
@@ -379,7 +380,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    9,
+    12
    ]
   },
   {
@@ -389,6 +392,27 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Samsung begins Galaxy S27 Pro Privacy Display production ahead of early 2027 launch",
+   "highlight": "Privacy Display production",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    7,
+    13,
+    10
+   ]
+  },
+  {
+   "headline": "Samsung Exynos 2700 Enters Mass Production: Can the 2nm Silicon Power the Galaxy S27 Ultra?",
+   "highlight": "Mass Production",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
