@@ -1,32 +1,32 @@
 {
- "admin": "eb82a4cae22f",
- "admin-ai": "d168a9246a51",
+ "admin": "d73043bfbeec",
+ "admin-ai": "c6cb80004f22",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "59af5094"
+   "e0be7976"
   ],
   "tokens": [
    "AI 編集のトークン",
    "c7aaf24d"
   ]
  },
- "admin-boards": "6e0ffcd660e0",
+ "admin-boards": "c4c8d7f0d497",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "1f0f04a6"
+   "39777100"
   ],
   "votes": [
    "投票",
    "05938a02"
   ]
  },
- "admin-emblem": "9256db7c5149",
+ "admin-emblem": "36f93a0a0df7",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "8cb5d021"
+   "45f7422b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0909acaf7db3",
  "admin-members_marks": {},
- "admin-now": "16d61f86ef58",
+ "admin-now": "c7864fb3c5c4",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5117c37a"
+   "58ea42a9"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "b19788cd"
+   "fc258b96"
   ],
   "term-panel": [
    "ライブログ",
-   "98b9c13c"
+   "f37d6f67"
   ]
  },
- "admin-system": "6813e7021e35",
+ "admin-system": "8f45d4cbc4b3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4223df8e"
+   "19c43ca9"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1f9aba8e"
+   "360eb4f0"
   ]
  },
  "admin_marks": {},
- "heat": "ee663052f158",
+ "heat": "e943bd7fc511",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "4d079de8"
+   "96307904"
   ],
   "ranking": [
    "ランキング",
-   "e968aa46"
+   "5b4b1362"
   ]
  },
- "index": "403b3c6ed74a",
+ "index": "b4b2f21047b7",
  "index_marks": {
   "front": [
    "トップ",
-   "21cbafd3"
+   "a8d13a66"
   ],
   "picks": [
    "気になるかも？",
@@ -149,11 +149,11 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "8af9f24a"
+   "4181cd77"
   ],
   "w-b867582f": [
    "あつ森",
-   "26fb16df"
+   "9969bfbd"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "5696330d"
+   "acf99408"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "65f6c654"
+   "e9225bbc"
   ]
  },
- "updated": "11.02 14:24",
- "wishlist": "8c0d7f3c8500"
+ "updated": "11.02 14:29",
+ "wishlist": "a0f7f1661a09"
 }
