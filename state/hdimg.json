@@ -17,6 +17,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/jiYOExbugnugEqu.jpg": {
+  "w": 1080,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/kfVLPSbugixDdgD.jpg": {
   "w": 1080,
   "h": 1670,
@@ -848,6 +854,12 @@
   "target": 720,
   "v": 3
  },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/11/Mandalorian-Helmet-Header.jpg?resize=2000,1125": {
+  "w": 2000,
+  "h": 1125,
+  "target": 720,
+  "v": 3
+ },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/11/g-t-a-6.png?resize=2000,1125": {
   "w": 2000,
   "h": 1125,
@@ -1156,18 +1168,6 @@
   "w": 1200,
   "h": 628,
   "target": 720,
-  "v": 3
- },
- "https://helios-i.mashable.com/imagery/articles/02aC6cl7XAkZgt0MfrP6aCN/hero-image.fill.size_1200x675.v1793633323.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://helios-i.mashable.com/imagery/articles/04Mt2Vvjp0ZGJArOgVNvySL/hero-image.fill.size_1200x675.v1680102816.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://hiphopwired.com/wp-content/uploads/sites/43/2026/10/image-collage-15.jpg?quality=85&strip=all&w=1680&crop=0,0,100,960px": {
@@ -2089,6 +2089,12 @@
   "target": 720,
   "v": 3
  },
+ "https://insider-gaming.com/wp-content/uploads/2026/11/Brian_Heder_landscape-scaled.jpg": {
+  "w": 2560,
+  "h": 1440,
+  "target": 1280,
+  "v": 3
+ },
  "https://journalarta.com/wp-content/uploads/2026/10/samsung-may-use-snapdragon-8-elite-gen-6-extreme-in-europe-f-source-ai-ja-discover-1536x864.jpg": {
   "w": 1536,
   "h": 864,
@@ -2324,6 +2330,19 @@
   ],
   "why": "看不清"
  },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/11/02/179358926125212344_664_2000.JPEG": {
+  "w": 640,
+  "h": 662,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.601,
+  "local": "pics/6dc68b8e27c5eafe.webp",
+  "out": [
+   1237,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://newportal.portal.auone.jp/media/thumbnails/2026/10/28/https___news_jp_i_1488317094651085808_w700.webp": {
   "w": 700,
   "h": 327,
@@ -2342,6 +2361,13 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26hDqX7YN3T-8sSQMP263OksHDBSL10NdP2CYNgCRQLE1Klc0W0MLJabxSct6s7yj1isryUApIKuQwcmo4nG1-bctEtMXxKNwO0Kwv5oA9RqKPzAzF-deb7U3r9IQA0CrTQ==": {
+  "w": 702,
+  "h": 702,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.256
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnQPUzVN95p8yqnKJxK5c3z8SNd1lEVn53rak9OLWAnFn4rPntJAWIzGnBkiFnP68AKeT8CP0jt79U3DujKPbvLZlPE1NPxPRBWL8kUcSFH0Y": {
   "w": 750,
@@ -4135,12 +4161,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.JgN6yWv-f8SBdjn_aPXAuw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.KI8fsHi9gp5vLVhvIUhm6Q&pid=News&w=1024": {
   "w": 700,
   "h": 393,
@@ -4312,6 +4332,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.e2-5ydT3n45NPgWaJqAk0Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.eGSpHzdASzB76oQ6bAamTg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4389,6 +4415,12 @@
   "v": 3,
   "blur": 0.337
  },
+ "https://www.bing.com/th?id=ONUT.lIwv-woGvoduFzy5m79Gfw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.m1s4FTAqSRNpAB8tWY7sCQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4422,12 +4454,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.wQOqZ4TNOZcRaO1c0g6wbQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200": {
   "w": 700,
@@ -4625,12 +4651,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.finestresullarte.info/rivista/immagini/2026/fn/alberto-angela-star-wars-5.jpg": {
-  "w": 1200,
-  "h": 616,
-  "target": 720,
-  "v": 3
- },
  "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/og-esports.webp?v=32e8ecb2d051e367153db4e5417a973fcfe59790": {
   "w": 1200,
   "h": 630,
@@ -4797,12 +4817,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.shanethegamer.com/wp-content/uploads/2026/08/stg-social-1024.png": {
-  "w": 1024,
-  "h": 1024,
-  "target": 720,
-  "v": 3
- },
  "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png": {
   "w": 1000,
   "h": 608,
@@ -4916,6 +4930,12 @@
   "w": 836,
   "h": 478,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.tvinsider.com/wp-content/uploads/2026/03/FROM_S4E1_Harold-Perrineau-as-Boyd-Stevens-1420x798.jpg": {
+  "w": 1420,
+  "h": 798,
+  "target": 720,
   "v": 3
  },
  "https://www.uqwimax.jp/common2/images/ogp.png": {
