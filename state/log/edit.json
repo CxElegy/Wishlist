@@ -1,59 +1,5 @@
 [
 {
-"at": "2026-10-31T08:50:02+00:00",
-"text": "2026-10-31 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 17（23 版面・82 本・今日の整理待ちは全部終わり） · token 新規入力 4.3万・キャッシュ読み 85.7万・出力 2,525",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.53,
-"mem_total": 16872808448,
-"mem_free": 15996297216,
-"disk_used": 10746396672,
-"disk_free": 30537138176,
-"disk_total": 41283534848,
-"peak": 299163648
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"ILLIT",
-"MMORPG 新作",
-"The Mandalorian",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"三星手机",
-"周杰伦",
-"哈利波特剧集",
-"日本顶级网球赛事",
-"星巴克马克杯",
-"滑雪",
-"漫威电影",
-"猫用品",
-"绝区零"
-],
-"stories": 82,
-"left": 0,
-"edited": 23,
-"run": null,
-"tok": {
-"in": 29,
-"cw": 42887,
-"cr": 857406,
-"out": 2525,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 902847
-},
-{
 "at": "2026-10-31T10:30:04+00:00",
 "text": "2026-10-31 第 1 バッチを出刊：周杰伦（1 版面・3 本・残り 4 版面） · token 新規入力 4.3万・キャッシュ読み 106.1万・出力 3,670",
 "level": "ok",
@@ -2047,5 +1993,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 149129
+},
+{
+"at": "2026-11-02T02:49:19+00:00",
+"text": "2026-11-02 第 7 バッチを出刊：GTA 6（1 版面・5 本・残り 5 版面） · token 新規入力 1,705・キャッシュ読み 22.7万・出力 725",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.3,
+"mem_total": 16872808448,
+"mem_free": 15956361216,
+"disk_used": 10918887424,
+"disk_free": 30364647424,
+"disk_total": 41283534848,
+"peak": 345214976
+},
+"batch": 7,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 5,
+"edited": 15,
+"run": 1793586067.5869951,
+"tok": {
+"in": 6,
+"cw": 1699,
+"cr": 227472,
+"out": 725,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 229902
 }
 ]
