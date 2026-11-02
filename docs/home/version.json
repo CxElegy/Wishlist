@@ -1,14 +1,14 @@
 {
- "admin": "e675d11e0a5c",
- "admin-ai": "35866f917061",
+ "admin": "a0de86456532",
+ "admin-ai": "f5deac4df96f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "073fa42f"
+   "d1b5dd0f"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0850fba9"
+   "25a11cfa"
   ]
  },
  "admin-boards": "36ae12e3a707",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "dc21a0dab9b0",
+ "admin-emblem": "80fb7f00aaab",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ea2a39e1"
+   "917159dc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "2fc9249d62eb",
  "admin-members_marks": {},
- "admin-now": "4250fc0394a2",
+ "admin-now": "5ab7f12deea2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "517b1c9d"
+   "2f2fbd60"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "215d919b"
+   "75212e81"
   ]
  },
- "admin-system": "e3b70d1bac83",
+ "admin-system": "b41ff6e2ae86",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a0b02c05"
+   "2a333f9d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "155fd9ab"
+   "199413d5"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "5cd0cf63"
   ]
  },
- "index": "408a95fc8a84",
+ "index": "d803527941d4",
  "index_marks": {
   "front": [
    "トップ",
-   "fc51f5c0"
+   "6907c09f"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "f92b718a"
+   "d087b4ef"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "a06cbdb7"
+   "6031a06c"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "26fb16df"
+   "9969bfbd"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,19 +165,19 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "5ff98561"
+   "49cf9adc"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "3af7e8da"
+   "44cc14e8"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "01139c9c"
+   "75ed4a75"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "3a2cc1c9"
+   "1ef27b96"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "a70854d6"
   ]
  },
- "updated": "11.03 07:24",
+ "updated": "11.03 07:31",
  "wishlist": "b659a52de977"
 }

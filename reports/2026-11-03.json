@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "edit_sig": "4031f21035de",
+ "edit_sig": "abf1cca2c417",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -304,17 +304,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "經典獸醫漫畫《動物のお医者さん》首次推出正式周邊，哈士奇チョビ與關西腔貓ミケ登場。",
      "date": "2026-11-02",
-     "n": 1,
-     "source": "蕃新聞",
-     "title": "經典獸醫漫畫《動物のお医者さん》首推正式周邊 哈士奇チョビ、關西腔貓ミケ登場",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1kSWN4YzYxWTA1YVpBd0RROUpKcjE0cUw3MmtXb3E1S0pVNmhzaHBGRW5wNVJpY2cwUlhYWW01N0RtRy1qeUxqbnV3T2hNRUZyMkE?oc=5"
+     "headline": "經典獸醫漫畫《動物のお医者さん》首推正式周邊 哈士奇チョビ、關西腔貓ミケ登場",
+     "highlight": "首推正式周邊",
+     "image": "https://ni.yam.com/20261103/jp-prt-27516-144-1-261102170146629-547e866ef3ccf8a6.webp",
+     "image_via": "AI 挑选",
+     "url": "https://n.yam.com/Article/20261103573492",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -545,33 +547,6 @@
     "bg": "#F6F2EA",
     "fg": "#1D2430",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-   "facts": [],
-   "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 1,
-     "source": "Howl.Link",
-     "title": "【ゼンゼロ初心者】ボンボンバック情報求む！初心者ベーグル計画！【ゼンレスゾーンゼロ／zenlesszonezero／甘衣あぷる】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9yRGRxYUNHYUtvRFN1TnlMMHNTRzAzYnV5M1NrRjBEQnl0OXhGMVhGdUlrZ2luck5rS1g0?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "ゼンレスゾーンゼロ",
-   "theme": {
-    "accent": "#A9898A",
-    "alt_accent": "#856062",
-    "alt_bg": "#F2EDEE",
-    "alt_fg": "#1E1A18",
-    "bg": "#1E1516",
-    "fg": "#F4EEE4",
-    "font": "serif",
     "split": true
    }
   },
@@ -857,6 +832,31 @@
     "alt_fg": "#1C1826",
     "bg": "#15131C",
     "fg": "#EEEAF4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
+   "facts": [],
+   "last": {
+    "date": "2026-11-02",
+    "headline": "スシロー×RPG『ゼンレスゾーンゼロ』初コラボ決定 限定ミニフィギュアや描き下ろしグッズ登場",
+    "url": "https://www.sanyonews.jp/article/1936811?kw=2024%3Cbr%20/%3E%20%20%20%20%20%20%3C/a%3E%3C/p%3E%3Cp%3E%20%20%20%20%20%20%3Ca%20href="
+   },
+   "name": "绝区零",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#A9898A",
+    "alt_accent": "#856062",
+    "alt_bg": "#F2EDEE",
+    "alt_fg": "#1E1A18",
+    "bg": "#1E1516",
+    "fg": "#F4EEE4",
     "font": "serif",
     "split": true
    }
