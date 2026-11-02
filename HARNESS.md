@@ -300,6 +300,7 @@
 
 0. **ユーザーより先に見つける**（2026-10-24，用户定的：「ハーネスが自分でテストして issue を見つける。今は自分で見に行かないといけない」）：
    合併のあと必ず `python harness/ux_check.py`（本番を ログインなし・test-a・test-b・test-c × 1400・390 px で開き、開き直しのくり返し・白い画面・素の箱・枠組み・はみ出し・JS のエラー・エンブレムの E1〜E10（harness/emb_check.py）・記事の近さ（harness/near.js）を見る）。小元素の規則を変えた段は `--emb full`（候補を全部差し替えて測り、写真の一覧 `harness/shots/emb/sheet-*.png`）。
+   **走らせてよいのは、本番の写真の配信を止められた状態（`WL_PHOTO_FILL_MAX` を付けない＝既定 0、または写しが十分）のときだけ**。写しは `~/.cache/wl_photo_cache`（`WL_PHOTO_CACHE` で上書き）で、埋めるのは毎日 1 回の `photo_cache.yml`（`harness/photo_cache_fill.py`）だけ。点検・係は読むだけで、本番から落とさない（`WL_PHOTO_FILL_MAX` を付けて回さない）。1 回に timeout を付け、くり返し回さない。
    ✗ が出たら次の段より先に直す（ユーザーに見つけさせない）。新しい壊れ方を見つけたら、それを見る項目を ux_check.py に足す。
 
 1. `python -m unittest discover -s tests` と `python scripts/check_arch.py origin/main`

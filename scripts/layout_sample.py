@@ -1,7 +1,7 @@
 """testground/layout-v2.html：記事の並べ方を 1 つの仕組みで作り直した全体見本（本物のデータ・審査待ち）。
 本番の docs/home/index.html から記事を読み、①assign()＝記事の割り当て 1 か所（同じ記事は 1 回）②card()＝カード 1 種類
 ③board()＝並べる器 1 種類 で 7 つの場所（DESIGN_PRINCIPLES G・L1〜L11）を組む。本番は入れ替えない。"""
-import html, re
+import html, os, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -48,7 +48,7 @@ def photo_key(u, cache={}):
         import io
         from PIL import Image
         if "/storage/v1/" in u:   # Supabase の配信は点検・生成で読まない（free-tier.md）：写しがあればそれ、なければ網址のまま
-            data = (Path(__file__).resolve().parent.parent / "state" / "photo_cache" / u.split("?")[0].rsplit("/", 1)[-1]).read_bytes()
+            data = (Path(os.environ.get("WL_PHOTO_CACHE") or Path.home() / ".cache" / "wl_photo_cache") / u.split("?")[0].rsplit("/", 1)[-1]).read_bytes()
         elif u.startswith("http"):
             import requests
             data = requests.get(u, timeout=15).content
