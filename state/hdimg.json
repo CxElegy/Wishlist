@@ -2393,12 +2393,6 @@
   "target": 1280,
   "v": 3
  },
- "https://news-images.tvbs.com.tw/api/v1/image/01a196cb-62e7-7249-8ff9-114e486dda48.jpg?t=16x9&c=0,718,4096,3022&w=1200&h=675": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://news-images.tvbs.com.tw/api/v1/image/01a1974f-ad5d-72be-a75b-2f6f484ae1a6.jpg?t=4x3&c=0,525,2668,2526&w=1200&h=675": {
   "w": 1200,
   "h": 675,
@@ -3692,6 +3686,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/d/d/3/e/dd3e16fa11d27187f9d798ff4daf507d_1.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/f/6/1/0/f610e91defae6ca42d132f9a72a9e0cf_1.jpg": {
   "w": 490,
   "h": 640,
@@ -4167,6 +4167,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.B9TPH9WvJNBINxP9PcfIkA&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
   "h": 590,
@@ -4300,15 +4306,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Tj8p-NB1h9oLCIVz3xJdmA&pid=News&w=656": {
-  "w": 534,
-  "h": 356,
+ "https://www.bing.com/th?id=ONUT.Rn-T-P86E3OwYx77_kx53g&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Tv_Ol6MuMTlCKXxnYT8QiQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
+ "https://www.bing.com/th?id=ONUT.Tj8p-NB1h9oLCIVz3xJdmA&pid=News&w=656": {
+  "w": 534,
+  "h": 356,
   "target": 720,
   "v": 3
  },
@@ -4383,6 +4389,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.XB4jn5MpynAmv_FUCMaE7w&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4408,12 +4420,6 @@
    779
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.aT_rK4hNSYK86Ez_jm-GfA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.b599IgmyuPGyJ7Vbvf8W-w&pid=News&w=1200": {
   "w": 700,
@@ -4920,12 +4926,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png": {
-  "w": 1000,
-  "h": 608,
-  "target": 720,
-  "v": 3
- },
  "https://www.slashfilm.com/img/gallery/one-of-marvel-comics-greatest-modern-writers-is-a-secret-mcu-consultant/l-intro-1793015723.jpg": {
   "w": 1600,
   "h": 899,
@@ -5078,6 +5078,12 @@
   "v": 3
  },
  "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.wowkorea.jp/img/topic/32/164799/325063_1280W.jpg": {
   "w": 1280,
   "h": 960,
   "target": 720,
