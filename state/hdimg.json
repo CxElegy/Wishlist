@@ -1170,17 +1170,11 @@
   "target": 720,
   "v": 3
  },
- "https://helios-i.mashable.com/imagery/articles/02aC6cl7XAkZgt0MfrP6aCN/hero-image.fill.size_1200x675.v1793633323.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-03"
- },
  "https://helios-i.mashable.com/imagery/articles/04Mt2Vvjp0ZGJArOgVNvySL/hero-image.fill.size_1200x675.v1680102816.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-03"
+  "v": 3
  },
  "https://hiphopwired.com/wp-content/uploads/sites/43/2026/10/image-collage-15.jpg?quality=85&strip=all&w=1680&crop=0,0,100,960px": {
   "w": 1680,
@@ -3783,6 +3777,12 @@
  "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-01-172731.jpg": {
   "w": 1752,
   "h": 970,
+  "target": 1280,
+  "v": 3
+ },
+ "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-02-172831.jpg": {
+  "w": 1555,
+  "h": 1031,
   "target": 1280,
   "v": 3
  },
