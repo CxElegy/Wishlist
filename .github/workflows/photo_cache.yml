@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: "23 19 * * *"    # 日本時間 4:23
   workflow_dispatch:
+    inputs:
+      max_mb:
+        description: "今回落とす上限 MB（初回に全部埋めるときだけ 400。ふだんは 100）"
+        default: "100"
 concurrency:
   group: photo-cache
   cancel-in-progress: false
@@ -13,9 +17,11 @@ permissions:
 jobs:
   fill:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 50
     env:
       WL_PHOTO_CACHE: ${{ github.workspace }}/.photo_cache
+      WL_FILL_MAX_MB: ${{ inputs.max_mb }}
+      WL_FILL_MAX_MIN: ${{ inputs.max_mb && 40 || 12 }}
     steps:
       - uses: actions/checkout@v5
         with:
