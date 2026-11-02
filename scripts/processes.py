@@ -318,7 +318,7 @@ PROCESSES = [
         "id": "collect", "name": "ニュース収集", "en": "COLLECT", "lane": "actions",
         "schedule": [(h, 17) for h in range(0, 24, 2)], "workflow": "digest.yml", "when": "2 時間ごと · 関注清单・愿望清单を変えた合併のとき（コードだけの合併では集めない、網页は render.yml）· 6 本並列",
         "trigger": "2 時間ごと（日本時間 奇数時 17 分）／ 定時が抜けて 150 分あいたら後台のゲートが起こす（collect_watch）／ 毎週月曜 9:47 に周報",
-        "summary": "関注項ごとにニュース・SNS・価格を集めて inbox に溜め、出刊・通知・ページ生成までつなぐ。",
+        "summary": "関注項ごとにニュース・SNS・価格を集めて inbox に溜め、出刊・通知・ページ生成までつなぐ。。Supabase が 402 の間は書き込みを飛ばして続け（印が進まない＝制限が外れた次の回が送り直す）、同じ live_status は二度書かない。",
         "files": [".github/workflows/digest.yml", "scripts/digest.py", "scripts/sources.py", "scripts/intel.py", "intel/japan.yaml", "scripts/userfeed.py", "db/user_boards.sql"], "doc": "README.md",
         "uses": ["gnews", "bing", "reddit", "steam", "gdelt", "youtube", "bluesky", "mastodon", "intel", "dedupe", "spam", "srcfilter", "match", "userfeed"],
         "flow": [
