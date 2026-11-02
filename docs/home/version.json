@@ -1,10 +1,10 @@
 {
- "admin": "e01d9d3caee7",
- "admin-ai": "e77f6b769ecf",
+ "admin": "a7a278fb754a",
+ "admin-ai": "a1c72649fba7",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "a08598b2"
+   "46671111"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "801df2e15b8a",
+ "admin-emblem": "dae21869c68a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "132a7569"
+   "499ac7f1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0909acaf7db3",
  "admin-members_marks": {},
- "admin-now": "a729eebcdc99",
+ "admin-now": "cf33f940c844",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "414dbab4"
+   "77453388"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "0d2a7eea"
   ]
  },
- "admin-system": "855ab4b69beb",
+ "admin-system": "c0e34777c59f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b5698948"
+   "797bfcb3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "34e3c14f"
   ]
  },
- "index": "f6e0767cc7c0",
+ "index": "efb6f839c5ec",
  "index_marks": {
   "front": [
    "トップ",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "846373f5"
+   "f504091f"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "26fb16df"
+   "9969bfbd"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -196,6 +196,6 @@
    "e9225bbc"
   ]
  },
- "updated": "11.02 15:53",
+ "updated": "11.02 15:56",
  "wishlist": "624b849d0226"
 }

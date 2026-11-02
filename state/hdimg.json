@@ -1862,6 +1862,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s.msn.cn/tenant/amp/entityid/AA2guyRk.img": {
+  "w": 500,
+  "h": 815,
+  "target": 720,
+  "v": 3
+ },
  "https://img.biggo.com/teH3NbIxFSt-CqvQ3yCIx_NPe2np828iadfx9SgSY7c/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwLzBiNDEzMTQzLTI1NmYtNGE2OC05ODM1LTVhZWNkNTUxNjM3NV8xNzkzMjc4NjkwX2RlZmF1bHQuanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -2272,6 +2278,12 @@
  "https://media.image.infoseek.co.jp/isnews/photos/nikkansports/nikkansports_202610260001341_0-enlarge.jpg": {
   "w": 500,
   "h": 333,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/ntv/ntv_2026102805814811_0-enlarge.jpg": {
+  "w": 550,
+  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -4583,12 +4595,6 @@
   "v": 3,
   "blur": 0.397
  },
- "https://www.bing.com/th?id=ONUT.qzPvzurZgbnCGfyUo-HS6g&pid=News&w=640": {
-  "w": 640,
-  "h": 427,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
   "h": 380,
@@ -4970,12 +4976,6 @@
   "w": 1000,
   "h": 600,
   "target": 1280,
-  "v": 3
- },
- "https://www.slashfilm.com/img/gallery/one-of-marvel-comics-greatest-modern-writers-is-a-secret-mcu-consultant/l-intro-1793015723.jpg": {
-  "w": 1600,
-  "h": 899,
-  "target": 720,
   "v": 3
  },
  "https://www.starwarsnewsnet.com/wp-content/uploads/2026/10/Nightmare_on_Nevarro_header.jpg": {
