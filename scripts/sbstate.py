@@ -81,6 +81,32 @@ def outbox_take(name, path=None):
     return rows
 
 
+_MEMO = {}
+
+
+def memo(key, ttl, fn):
+    """同じ処理の中で同じ読み取りを何度も網に出さない（Actions の見回りの API 回数を減らす）。
+    Actions（SUPABASE_SERVICE_KEY あり）のときだけ ttl 秒覚える。試験・手元では毎回 fn。"""
+    import os
+    import time
+    if not os.environ.get("SUPABASE_SERVICE_KEY"):
+        return fn()
+    hit = _MEMO.get(key)
+    if hit and time.time() - hit[0] < ttl:
+        return hit[1]
+    val = fn()
+    _MEMO[key] = (time.time(), val)
+    return val
+
+
+def need_db(msg):
+    """DB が要る道具が DB を得られなかったとき：制限中（402）なら緑で終える（次の回が拾う）、それ以外は今までどおり落とす。"""
+    if LIMITED:
+        print(f"Supabase が制限中（402）なので何もせず終える：{msg}")
+        raise SystemExit(0)
+    raise SystemExit(msg)
+
+
 def is_limit(err):
     """HTTPError / RuntimeError('HTTP 402：…') が 402 か。"""
     return getattr(err, "code", None) == 402 or str(err).startswith("HTTP 402")

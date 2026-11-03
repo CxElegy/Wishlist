@@ -1670,6 +1670,10 @@ def sync_db():
 
 
 def load_feedback():
+    return sbstate.memo("feedback", 120, _load_feedback)
+
+
+def _load_feedback():
     """「我会喜欢？」上的 👍 / 👎：投票存在 Supabase（Postgres）的 feedback 表里，网页直接写入。
     有 SUPABASE_SERVICE_KEY 时从数据库读出全部投票，顺便存一份到 state/feedback.json；
     读不到（本地运行、没配置、数据库暂时连不上）就用上次存的那份。返回每个链接最新的一票。"""
@@ -1712,6 +1716,10 @@ SIZE_STORIES = {"S": 3, "M": 5, "L": 8}   # 篇幅 → 每期最多几条报道�
 
 
 def load_nav_schemes(settings):
+    return sbstate.memo("nav_schemes", 120, lambda: _load_nav_schemes(settings))
+
+
+def _load_nav_schemes(settings):
     """板块ごとに選んだ「小分類の分け方」。⚙ 設定ページで選ぶ → Supabase の nav_schemes 表（db/nav_schemes.sql）。
     SUPABASE_SERVICE_KEY があれば表を読み、state/nav_schemes.json に写しを残す（読めなければ前回の写し）。
     候補（settings.sub_schemes）にない値・選んでいない板块は候補の 1 番目。返り値：{板块: 分け方の id}。"""
@@ -1763,6 +1771,10 @@ def sub_of(item, scheme):
 
 @functools.lru_cache(maxsize=None)
 def load_sizes():
+    return sbstate.memo("sizes", 120, _load_sizes)
+
+
+def _load_sizes():
     """每个关注项的篇幅 S / M / L，在数据库 sizes 表里管理（建表语句在 db/sizes.sql），网页上不显示。
     有 SUPABASE_SERVICE_KEY 时从数据库读，顺便存一份到 state/sizes.json；读不到就用上次存的那份。
     返回 {关注项: "S" | "M" | "L"}，表里没有的关注项按 M。
@@ -3548,6 +3560,10 @@ EDIT_BATCH = 1   # AI 编辑一次编几个版面：编好就出刊・推送，�
 
 
 def edit_control():
+    return sbstate.memo("edit_control", 60, _edit_control)
+
+
+def _edit_control():
     """AI 编辑的开关（Supabase edit_control_get()，db/edit_control.sql）→ {"mode": run|step|pause, "redo": [版面…]}。读不到就当作 run。"""
     import livestatus
     url, key = livestatus._db()
@@ -3575,6 +3591,7 @@ def set_edit_control(mode=None, redo_clear=None):
                                  headers={"apikey": key, "Content-Type": "application/json"})
     try:
         urllib.request.urlopen(req, timeout=15).read()
+        sbstate._MEMO.pop("edit_control", None)
     except Exception as err:  # noqa: BLE001
         print(f"  （AI 编辑的开关写不进去：{err}）", file=sys.stderr)
 

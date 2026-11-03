@@ -18,6 +18,8 @@ import urllib.parse
 
 import yaml
 
+import sbstate
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PERSONAL = ("section", "subs", "also", "size", "priority")   # 人ごとの置き方（follows の列）。ほかは版面の共有の設定（boards.config）
 SHOP = "test1"
@@ -208,7 +210,7 @@ def push_shop(items):
             digest.supabase(f"boards?key=eq.{urllib.parse.quote(old)}", {"key": board_key(item), "wd": item["wikidata"]}, method="PATCH")
     got = digest.supabase("boards?on_conflict=key&select=id,key", boards, prefer="resolution=merge-duplicates,return=representation")
     if got is None:
-        raise SystemExit("SUPABASE_SERVICE_KEY がないので書けません")
+        sbstate.need_db("SUPABASE_SERVICE_KEY がないので書けません")
     ids = {r["key"]: r["id"] for r in got}
     for child, parent in parents.items():
         digest.supabase(f"boards?key=eq.{urllib.parse.quote(child)}", {"parent_id": ids[parent]}, method="PATCH")
@@ -615,7 +617,7 @@ def push_users(db=None, get=_wd_get):
     db = db or digest.supabase
     users, _ = userfeed.fetch_all(db, "rpc/userfeed_users", {})
     if users is None:
-        raise SystemExit("SUPABASE_SERVICE_KEY がないので書けません")
+        sbstate.need_db("SUPABASE_SERVICE_KEY がないので書けません")
     boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names,wd,created_by&order=id")
     have, _ = userfeed.fetch_all(db, "follows?select=account,board_id,section,subs&account=like.u_*&order=account,board_id")
     by_id = {b["id"]: b for b in boards or []}

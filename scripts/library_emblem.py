@@ -24,6 +24,8 @@ import urllib.request
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
+import sbstate  # noqa: E402
+
 BUCKET = "emblems"
 MATERIAL_KEYS = ("emblem_who", "emblem_urls", "emblem_fandom", "emblem_category", "anilist_id", "wiki", "site", "emblem_reject", "emblem_icon", "emblem_pool")
 
@@ -654,6 +656,11 @@ def main(argv):
         raise SystemExit("SUPABASE_SERVICE_KEY がありません")
     shop = {f["board_id"] for f in digest.supabase("follows?account=eq.test1&select=board_id") or []}
     boards = [b for b in digest.supabase("boards?select=id,name,wd,config&order=id") or [] if b["id"] not in shop]
+    if sbstate.LIMITED:   # 402：読めなかった。書かず、待ちなしで緑のまま終える（次の回が拾う）
+        print("ライブラリの小元素：Supabase が制限中（402）。何もしない")
+        if "--check" in argv:
+            _out(due="false")
+        return
     for b in boards:   # 管理ページの 替える・固定・外す の依頼を先に反映（替える・外すは次の due で同じ人の別の写真を探す）
         add = apply_requests(cfg(b))
         if add:
