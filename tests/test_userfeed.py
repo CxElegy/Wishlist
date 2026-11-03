@@ -457,7 +457,7 @@ class Sql(unittest.TestCase):
     def test_page_reads_my_boards(self):
         import render
         for w in ("rpc('my_boards')", "今日の主なニュース", "気になるかも？", "まだ記事が見つかっていません", "100 個まで", "wl-cards",
-                  "'&pick='", "new Event('wl-nav')", "R._wlmb", "clearInterval(R._wlub);R._wlmb=null"):
+                  "'&pick='", "new Event('wl-nav')", "R._wlmb", "R._wlload=null;R._wlmb=null"):
             self.assertIn(w, render.AUTH_JS)
         self.assertIn("document.addEventListener('wl-nav'", render.NAV_JS)   # 目次は足した駅を数え直す
         for w in ("いま集めに行っています", "1〜2 時間", "👍👎 を押すと"):   # できないことを約束しない
