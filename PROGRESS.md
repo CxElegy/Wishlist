@@ -317,3 +317,4 @@
 2026-11-03 f2f2：E24 が 18 のまま（background 41603590213 は gate が「仕事なし」で小元素の段を飛ばした）の根＝解く入口 release_small_rejects に着く番 due が、そろった・失敗で材料が同じ版面を飛ばす。due に stale_narrow_rejects を足し tests。次：合併後 background を dispatch し E24 を数える
 2026-11-03 f1：お客さまの「ほかの注目ニュース」の空白＝確認のみ（店長と同じ _front＋WALL_JS・本番 ux_check test-a/test-b 1400/390 の壁の空き ✓・test-c は壁なし）。コード変更なし。E24：background 41607700962・41609761853 とも success（f2f2 が確認の続き）。次：E15→E10（f2f2 持ち）。
 2026-11-03 f1f1：壁の空き＝#834 の [x] を [~] に戻した。根：HOLE_JS が壁の中の列の底しか見ず、壁が右の列より低い空き〔カード 2〜4 枚〕を数えず、写しが空では写真の形も出ない。手元の画像で形ごとに測ると 10 中 8 組が右の列と 12〜30% 差。FIT_JS wall が差 6 割までは写真枠を右の列の高さまで伸ばす・ux_check sidePct・tests/test_wall_shapes.py。確かめ：テストは直す前 8 組 ✗・直した後 全部 ✓。次：写しのある環境で test-a 1400/390。
+- 2026-11-03 f1：E24 確認＝background run 41607700962 成功・main の narrow_small_rejects()=0。ux_check は回線切れで測れず。次：E15→E10。
