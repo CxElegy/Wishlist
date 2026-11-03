@@ -313,3 +313,4 @@
 2026-11-03 r2f2：#826 合併後 本番 ux_all --fast（test-a/b/c × 1400/390 ＋ global）7 回 ✓・✗ 0・未完 0。前の /p/ 失敗 14 は再現せず。次：11/4 01:30 UTC の egress 数え直し。
 2026-11-03 plan1：計画。egress 24h 数え直し・11/5 朝の本物の 402 確認・heat.html 札・小元素 E10/E15/E24 を型で・ほかの注目の空白を店長と同じ部品に、の 5 段を BACKLOG に足した（product-head の Switch 2 補足は既にあり）。次：11/4 01:30 UTC の数え直し。
 2026-11-03 f1：heat.html の「札が字に重なる」（1400＝43・390＝80）の根は話題度グラフの字 .cl どうしの衝突（等級名×右端の値・最初の日×7 日おきの日・縦軸 0×横軸）。_chart で規則化し局所描画で 0/0。PR 本件。次：合併後 ux_check 1 回
+2026-11-03 f2：E24（縮めた網址で小さいだけの絵が reject に残る・dota2 11＋BLEACH MH 5）の根は、reject に入れる道 4 つのうち drop_broken だけが wide_retry を除いていたこと。reject_srcs 1 か所に統一・release_small_rejects で前の分を 1 回解く・E24 点検は解いた後も小さい絵を数えない。tests 追加。次：合併後の取り直しで E24 が減るか、E15（漫威・FROM・A2O LITE）。

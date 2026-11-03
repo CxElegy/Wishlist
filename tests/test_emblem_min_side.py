@@ -5,6 +5,7 @@ import pathlib
 import tempfile
 import sys
 import unittest
+import yaml
 from unittest import mock
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
@@ -112,7 +113,7 @@ class WideRetry(unittest.TestCase):
     def test_drop_broken_keeps_narrow_small_out_of_reject(self):
         import emblem_fill as ef
         src = inspect.getsource(ef.drop_broken)
-        self.assertIn("wide_retry", src)
+        self.assertIn("reject_srcs", src)
 
     def test_unbreak_frees_narrow_small_source(self):
         import json
@@ -160,6 +161,34 @@ class WideRetryEverywhere(unittest.TestCase):
         self.assertEqual(emb_check.narrow_small_rejects(items, rec), ["M CM"])
         items[0]["emblem_reject"] = []   # unbreak が抜いたあと
         self.assertEqual(emb_check.narrow_small_rejects(items, rec), [])
+
+    def test_every_reject_road_goes_through_reject_srcs(self):
+        """emblem_reject に外した絵の網址を足す道（drop_broken・drop_closeups・stage_closeups・drop_same）は reject_srcs 1 か所を通る（E24：道ごとに入れて残った）。"""
+        import re
+        import emblem_fill as ef
+        src = pathlib.Path(ef.__file__).read_text(encoding="utf-8")
+        self.assertEqual(src.count('[b.get("source") or b["image"] for b in'), 2)   # reject_srcs 本体と、出演者の基準の道（小ささと無関係）
+        self.assertGreaterEqual(len(re.findall(r"reject_srcs\(", src)), 5)
+        small = {"subject": "CM", "source": self.NARROW, "image": "e/a.webp", "face": [0.1, 0.1, 0.5, 0.5, 390, 247]}
+        big = {"subject": "B", "source": "http://s/b.png", "image": "e/b.webp"}
+        self.assertEqual(ef.reject_srcs([small, big]), ["http://s/b.png"])
+
+    def test_release_small_rejects_once(self):
+        import json
+        import emblem
+        import emblem_fill as ef
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        (tmp / "state").mkdir()
+        x = {"subject": "CM", "image": "emblems/gone.webp", "source": self.NARROW, "face": [0.1, 0.1, 0.5, 0.5, 390, 247]}
+        (tmp / "state" / "emblem_broken.json").write_text(json.dumps({"M": [{"v": 13, "emblem": x}]}), encoding="utf-8")
+        (tmp / "items.yaml").write_text(f'items:\n  - name: M\n    emblem_kind: character\n    emblem_reject: ["{self.NARROW}", "http://s/z"]\n    emblem: []\n', encoding="utf-8")
+        with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(emblem, "ROOT", tmp):
+            item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+            self.assertEqual(ef.release_small_rejects(item, log=lambda *_: None), 1)
+            got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+            self.assertEqual(got["emblem_reject"], ["http://s/z"])
+            got["emblem_reject"] = [self.NARROW]   # 大きい幅でも小さく、また reject に入った
+            self.assertEqual(ef.release_small_rejects(got, log=lambda *_: None), 0)   # 2 回目は解かない
 
     def test_head_cause_text_reads_recorded_reasons(self):
         """E15 に原因を添える：progress の funnel.heads を読み、記録がなければ「原因の記録なし」。"""

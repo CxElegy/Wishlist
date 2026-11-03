@@ -327,6 +327,8 @@ def narrow_small_rejects(items=None, broken=None):
         have = {ef._name_key(x.get("subject")) for x in it.get("emblem") or [] if isinstance(x, dict)}
         for e in broken.get(it["name"]) or []:
             x = e.get("emblem") or {}
+            if e.get("rel"):   # 1 回解いて大きい幅でも小さかった（release_small_rejects）：本当に小さい絵
+                continue
             if (x.get("source") or x.get("image")) in rej and ef.wide_retry(x) and ef._name_key(x.get("subject")) not in have:
                 out.append(f"{it['name']} {x.get('subject')}")
     return out
