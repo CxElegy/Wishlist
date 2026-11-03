@@ -28,9 +28,10 @@ def board_emblems(settings):
     try:
         base = settings["supabase_url"].rstrip("/")
         key = os.environ.get("SUPABASE_SERVICE_KEY") or settings["supabase_key"]   # 非公開の版面（boards_visible）は secret key でないと見えない。読むだけ
-        req = urllib.request.Request(base + "/rest/v1/boards?select=config", headers={"apikey": key, "Authorization": "Bearer " + key})
+        req = urllib.request.Request(base + "/rest/v1/boards?select=config", headers={"apikey": key, **({"Authorization": "Bearer " + key} if key.startswith("eyJ") else {})})   # 新しい sb_secret_ は apikey だけ（digest.supabase と同じ）
         return set(EMB.findall(urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")))
-    except Exception:  # noqa: BLE001
+    except Exception as e:  # noqa: BLE001
+        print("小元素の名前を DB から読めない", type(e).__name__, str(e)[:120])
         return set()
 
 
