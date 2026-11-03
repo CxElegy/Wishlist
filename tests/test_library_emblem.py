@@ -208,6 +208,16 @@ class Fill(unittest.TestCase):
             self.assertEqual([x["id"] for x in le.due([b], 10 ** 4)], [1])   # 規則の版が上がった
         self.assertEqual([x["id"] for x in le.due([{"id": 1, "config": {**cfg0, "emblem_state": {k: v for k, v in st.items() if k != "m"}}}], 10 ** 4)], [1])   # 時間切れ・例外（指紋なし）
 
+    def test_due_takes_board_with_stale_narrow_reject(self):
+        """済み・材料待ちの版面でも、名簿の先頭の欠けた人の縮めた網址の札が解けていなければ番に入る（E24：漫威电影 Chris Hemsworth）。解いた（emblem_small_tried）あとは入らない。"""
+        u = "https://static.wikia.nocookie.net/x/images/1/1f/Thor-chris-hemsworth-2.jpg/revision/latest/scale-to-width-down/600?cb=1"
+        cfg0 = {"emblem_fandom": "mcu", "emblem_who": ["Chris Hemsworth"], "emblem_reject": [u], "emblem": []}
+        st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "m": le.material(cfg0)}
+        b = {"id": 1, "name": "M", "config": {**cfg0, "emblem_state": st}}
+        self.assertEqual([x["id"] for x in le.due([b], 10 ** 4)], [1])
+        b["config"]["emblem_small_tried"] = [u]
+        self.assertEqual(le.due([b], 10 ** 4), [])
+
     def test_no_time_wait_left(self):
         """待ちを時間で決める定数・文言が小元素の仕組みに残っていない（2026-10-29：RETRY_HOURS 廃止）。"""
         import re

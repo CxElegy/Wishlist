@@ -619,6 +619,8 @@ def due(boards, now):
             out.append((1.8 if st.get("state") == "ok" else 1 if zero else 1.5, st.get("at", 0), b))   # 済みの数え直しは軽い（名簿を数えるだけ）ので途中（2）より先：最後だと 41 版面の後ろで 4 時間たっても回らなかった（ポケモンの名簿の順）
         elif cfg(b).get("emblem_closeup"):   # 顔だけのアップを段階的に入れ替え中（胸像を探す・3 回で外す）：待たずに次の回も
             out.append((1.6, st.get("at", 0), b))
+        elif emblem_fill.stale_narrow_rejects({"name": b.get("name"), "emblem_kind": "character", **cfg(b)}):   # 解けていない縮めた網址の札（E24）：済み・材料待ちでも 1 回回して fill_one の release_small_rejects に着く
+            out.append((1.5, st.get("at", 0), b))
         elif not zero and int(st.get("bv") or 0) < emblem_fill.BROKEN_V:
             # 公開の箱の小元素を今の壊れ方の規則（頭が切れた・ぼやけた）でまだ見ていない版面は、届かなかった・済みでも待たずに 1 回（ポケモンが 24 時間待ち）
             out.append((1.5, st.get("at", 0), b))
