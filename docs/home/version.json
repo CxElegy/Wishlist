@@ -1,6 +1,6 @@
 {
- "admin": "476644f09ecd",
- "admin-ai": "b218cbc7a178",
+ "admin": "e5a5df6811d9",
+ "admin-ai": "98e0fc73eb6d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,10 +8,10 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e4bf945e"
+   "06fb4925"
   ]
  },
- "admin-boards": "3e4350519f9a",
+ "admin-boards": "0f2442d7a469",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
@@ -22,11 +22,11 @@
    "da73324c"
   ]
  },
- "admin-emblem": "853810eafde8",
+ "admin-emblem": "f428f680796d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "372cc66e"
+   "1c6915f0"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -41,9 +41,9 @@
    "01c93c8a"
   ]
  },
- "admin-members": "bb1026326551",
+ "admin-members": "b47ea04f7895",
  "admin-members_marks": {},
- "admin-now": "c80ec4d5e72f",
+ "admin-now": "85bbe35615bd",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -51,7 +51,7 @@
   ],
   "queue": [
    "いまの状況",
-   "c5c9ddd5"
+   "3e6a6061"
   ],
   "status": [
    "運行状況",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "dfa38a2d"
+   "cac4c1cb"
   ]
  },
- "admin-system": "960bcabefe82",
+ "admin-system": "c340c4d30d97",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -70,15 +70,15 @@
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "83dca51e"
+   "4ab57678"
   ],
   "res": [
    "リソース・並列と制限",
-   "e8218649"
+   "d7d2cdf4"
   ]
  },
  "admin_marks": {},
- "heat": "9467adcc221c",
+ "heat": "13ada4cf770b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "4d4c9919"
+   "b4ae2c71"
   ],
   "ranking": [
    "ランキング",
    "bd43694a"
   ]
  },
- "index": "0af680058c06",
+ "index": "d50b5f3f078b",
  "index_marks": {
   "front": [
    "トップ",
-   "60c1b515"
+   "10abcbd6"
   ],
   "picks": [
    "気になるかも？",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "595b5d1d"
+   "f68bd7a2"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "9b053f71"
+   "b3055abc"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "3ec634f1"
   ]
  },
- "updated": "11.03 16:48",
+ "updated": "11.03 16:52",
  "wishlist": "be6553ed5cb9"
 }
