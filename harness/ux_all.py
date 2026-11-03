@@ -12,7 +12,7 @@ WHO = "guest,test-a,test-b,test-c"
 
 def units(who, widths):
     u = [(f"{w_}-{x}", ["--part", "who", "--who", w_, "--widths", str(x)]) for w_ in who for x in widths]
-    return u + [("global", ["--part", "global", "--widths", ",".join(map(str, widths))])]
+    return [("global", ["--part", "global", "--widths", ",".join(map(str, widths))])] + u   # 一番長い global を最初に始める（最後だと持ち時間が足りない）
 
 
 def run(name, args, extra, deadline=None):
@@ -46,9 +46,12 @@ def main(argv):
     ap.add_argument("--jobs", type=int, default=4)
     ap.add_argument("--fast", action="store_true")
     ap.add_argument("--budget", type=int, default=BUDGET)
+    ap.add_argument("--only", default="", help="走らせる回の名前だけ（前の回で「走らなかった」と出たもの。例 test-b-390,test-b-1400）")
     a = ap.parse_args(argv)
     extra = ["--fast"] if a.fast else []
     us = units(a.who.split(","), [int(x) for x in a.widths.split(",")])
+    if a.only:
+        us = [u for u in us if u[0] in a.only.split(",")]
     lines, fails, undone = [], 0, 0
     deadline = time.time() + a.budget
     with cf.ThreadPoolExecutor(a.jobs) as ex:
@@ -61,8 +64,11 @@ def main(argv):
             lines += new
             print("\n".join(new), flush=True)
     lines.append(f"全体：✗ {fails} 件・最後まで走らなかった回 {undone}（回の数 {len(us)}）")
+    left = [l.split("：")[0][2:] for l in lines if l[:1] == "✗" and "最後まで走らなかった" in l]
+    if left:   # 続きの回：次の 1 回でこれだけ走らせる
+        lines.append("続き：python harness/ux_all.py" + (" --fast" if a.fast else "") + " --only " + ",".join(left))
     s = "\n".join(lines)
-    print(lines[-1], flush=True)
+    print("\n".join(lines[-2:] if left else lines[-1:]), flush=True)
     (OUT / "ux_summary.txt").write_text(s + "\n", encoding="utf-8")
     return 1 if fails or undone else 0
 

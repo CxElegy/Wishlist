@@ -1506,16 +1506,19 @@ def main(argv):
         print(("✗ " if bad else "✓ ") + "Web フォントが描画を止めない（入口＋本体 4 頁）：" + ("、".join(bad) if bad else "止める link 0 件"))
         fails += bool(bad)
         print(("✗ " if bad else "✓ ") + "最初に取る HTML：" + ("、".join(bad) if bad else f"軽い・画像 1 枚ごとのハンドラ 0・最初の写真は eager・先頭の写真の例外 {n_ex} 件"))
-        try:   # 先取りが実際に走ったか（字面でなく時間）：ふつうの回線で 12 秒のうちに全版面の先頭が届き、先頭以外の写真も取りに行っている
-            import ahead_time
-            m = ahead_time.measure(pw, a.base, 1400, 12)
-            bad = ([f"先頭が届かない版面 {len(m['miss'])}（例 {m['miss'][:3]}）"] if m["miss"] else []) + ([f"先頭が取れ終わるのに {m['secs'][-1]:.1f} 秒（12 秒を超えた）"] if m["secs"] and m["secs"][-1] > 12 else []) \
-                + (["先頭以外の写真を先に取りに行っていない"] if m["rest"] and m["rest_got"] < m["n"] else [])
-            msg = f"版面 {m['n']}・先頭が全部届くのは {m['secs'][-1]:.1f} 秒・先頭以外 {m['rest_got']} 枚を先取り" if m["secs"] else ""
-        except Exception as ex:  # noqa: BLE001
-            bad, msg = [f"測れなかった（{type(ex).__name__}: {str(ex)[:120]}）"], ""
-        fails += bool(bad)
-        print(("✗ " if bad else "✓ ") + "写真の先取りの実測（ログインなし・1400）：" + ("、".join(bad) if bad else msg))
+        if os.environ.get("WL_ALLOW_PHOTOS") != "1":   # 本番の写真を読み込む実測は許可があるときだけ。launch(photos=True) の SystemExit が点検全体を落としていた（global が最後まで走らなかった根・2026-11-03）
+            print("– 写真の先取りの実測：測れず（WL_ALLOW_PHOTOS=1 のときだけ。本番の写真を読み込むため・free-tier.md）")
+        else:
+            try:   # 先取りが実際に走ったか（字面でなく時間）：ふつうの回線で 12 秒のうちに全版面の先頭が届き、先頭以外の写真も取りに行っている
+                import ahead_time
+                m = ahead_time.measure(pw, a.base, 1400, 12)
+                bad = ([f"先頭が届かない版面 {len(m['miss'])}（例 {m['miss'][:3]}）"] if m["miss"] else []) + ([f"先頭が取れ終わるのに {m['secs'][-1]:.1f} 秒（12 秒を超えた）"] if m["secs"] and m["secs"][-1] > 12 else []) \
+                    + (["先頭以外の写真を先に取りに行っていない"] if m["rest"] and m["rest_got"] < m["n"] else [])
+                msg = f"版面 {m['n']}・先頭が全部届くのは {m['secs'][-1]:.1f} 秒・先頭以外 {m['rest_got']} 枚を先取り" if m["secs"] else ""
+            except Exception as ex:  # noqa: BLE001
+                bad, msg = [f"測れなかった（{type(ex).__name__}: {str(ex)[:120]}）"], ""
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + "写真の先取りの実測（ログインなし・1400）：" + ("、".join(bad) if bad else msg))
         if a.part != "who":   # 写真の配り先（2026-11-03）：ログイン中も Pages 99% 以上・Supabase storage 0・/p/ の失敗 0。本番は 1 回だけ開く（storage は route で止まる）
             try:
                 r = subprocess.run([sys.executable, str(ROOT / "harness" / "pages_served.py"), "--pages", "", "--who", ",".join(x for x in a.who.split(",") if x in ("test-a", "test-b", "test-c")), "--timeout", "60"],
