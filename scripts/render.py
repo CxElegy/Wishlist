@@ -3535,8 +3535,10 @@ FIT_JS = """
     // 置く：選んだ枚数だけ出し、列ごとの底の差をその列の（大きい 1 枚でない）カードの写真枠に等分して足す
     cards.forEach((c, i) => { c.hidden = i >= best.n; });
     const ext = Array(cards.length).fill(0);
+    // 右の列より壁が低いとき（カードが少ない版面）は、右の列の高さまで写真枠を伸ばす（壁の下が空かない）。差が壁の 6 割までのとき
+    const Wt = (beside && S > best.W && S - best.W <= .6 * best.W) ? S : best.W;
     for (let a = 0; a < cols; a++) {
-      const d = best.W - (best.bot[a] - GAP), ks = best.col[a].filter(k => !(span[k] === 2));
+      const d = Wt - (best.bot[a] - GAP), ks = best.col[a].filter(k => !(span[k] === 2));
       if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], d / ks.length); });
     }
     // 2 列にまたがる大きい 1 枚の下で、2 つの列が別々に伸びると上の位置がずれるので、列ごとに下から積み直す

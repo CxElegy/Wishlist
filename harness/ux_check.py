@@ -152,6 +152,9 @@ document.querySelectorAll('.wall').forEach(w=>{const cs=[...w.querySelectorAll('
   const b=Math.max(...m.map(c=>c.offsetTop+c.offsetHeight));hole+=(W-b)*(wr.width/lefts.length)});
  out.wall+=hole;out.wallArea+=W*wr.width});
 out.wallPct=out.wallArea?Math.round(100*out.wall/out.wallArea):0;
+// 壁と右の列（.fside）の高さの差：壁のほうが低いと、壁の下が右の列の高さまで空く（カードが 2〜3 枚の版面）。壁の中の列の底の差（上）は見ない所
+out.sidePct=0;{const m=document.querySelector('.mgrid'),w=m&&m.querySelector(':scope>.wall'),s=m&&m.querySelector(':scope>.fside');
+ if(w&&s&&vis(w)&&vis(s)&&s.offsetLeft>w.offsetLeft+w.offsetWidth/2){const wh=w.getBoundingClientRect().height,sh=s.getBoundingClientRect().height;out.sidePct=sh>wh?Math.round(100*(sh-wh)/sh):0}}
 // 記事の並びの空き（2026-11-01 L2。.grid＝版面の中の記事／.pkgrid＝気になるかも）：記事の外の空き（x を 16px ごとに縦に見て、記事と記事のあいだ・列の底が 40px 以上空いた所。ふつうのすき間は 28px）の面積が、並びの 2% を超えるものを数える。
 // 数え方を緩めない（84px の空きを見逃した 100px への緩めは戻した）。2 記事の並び（大きい記事＋右 1 件）も測る。描かれていない記事がある並び（content-visibility）は測れないので gridSkip に数えて出す
 const holeOf=(g,sel,label,inner)=>{if(!vis(g))return;const gr=g.getBoundingClientRect();
@@ -389,6 +392,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"写真の余白（空いた横が情報なし）：{gp['bad']} / {gp['n']} 枚 " + "・".join(gp["eg"]))
     if hole["wallPct"] > 8:   # 2026-11-01 L1・L2：壁の列の底がそろっていない（空き面積が壁の 8% 超）
         bad.append(f"ほかの注目ニュースの壁の下が空いている（空き {hole['wallPct']}%）")
+    if hole.get("sidePct", 0) > 8:   # 壁が右の列より低い（カードが少ない版面）：壁の下が右の列の高さまで空く。写真の形によらず数える
+        bad.append(f"ほかの注目ニュースの壁が右の列より低い（差 {hole['sidePct']}%）")
     if hole.get("noMasBig"):   # 同じ壊れ方の見張り：積み上げに入らなかった 4 枚以上の並び（固定の行のまま空きが出る）
         bad.append(f"積み上げ（mason）に入らない 4 枚以上の並び：{hole['noMasBig']}")
     if hole["gridHole"]:   # 2026-11-01 L2：版面の中の記事の並びで、記事の外の空きが 3% 超の版面
