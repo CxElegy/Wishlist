@@ -1,14 +1,14 @@
 {
- "admin": "4c470da8f050",
- "admin-ai": "d637f311497e",
+ "admin": "e76df8f2a578",
+ "admin-ai": "2a2a21920739",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "cbe5e000"
+   "d2aa7f8e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "93dddfb9"
+   "741f47c1"
   ]
  },
  "admin-boards": "f1ac221acd8d",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "fcd1962517a6",
+ "admin-emblem": "f3f13f29ace5",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1d6cc156"
+   "936904fe"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "2d261bc27cad",
+ "admin-now": "93732aebe1fa",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "a259fd6e"
+   "00bafdb9"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "5353e886"
+   "6f57e61a"
   ]
  },
- "admin-system": "2fdd1e22ac14",
+ "admin-system": "879a1ef99864",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a0ba7b89"
+   "2df7f767"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "693a08ec"
+   "ecc9f4aa"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "9dbe529f"
   ]
  },
- "index": "3298d7ef22cc",
+ "index": "859f26e3507d",
  "index_marks": {
   "front": [
    "トップ",
-   "3bc26df9"
+   "2382c34b"
   ],
   "picks": [
    "気になるかも？",
@@ -105,11 +105,11 @@
   ],
   "w-0242c181": [
    "dota2",
-   "cd07239c"
+   "e4086756"
   ],
   "w-130724c0": [
    "猫用品",
-   "a27cf05e"
+   "aaa4da5e"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "676d8e16"
+   "dc6fb473"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,11 +145,11 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1bf68dc3"
+   "5ad67ba1"
   ],
   "w-9cb26dba": [
    "FROM",
-   "352040e3"
+   "04c2d9e6"
   ],
   "w-b867582f": [
    "あつ森",
@@ -196,6 +196,6 @@
    "9be760a1"
   ]
  },
- "updated": "11.04 05:37",
+ "updated": "11.04 05:41",
  "wishlist": "65bedbb4e63c"
 }
