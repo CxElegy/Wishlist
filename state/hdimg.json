@@ -196,6 +196,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/7d297217gy1iip1fj6973j20yi1a0wvz.jpg": {
+  "w": 1242,
+  "h": 1656,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/006f16759f7934fa.webp",
+  "out": [
+   960,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "https://0.soompi.io/wp-content/uploads/2026/10/28063552/SM-A2O-LITE.jpg": {
   "w": 1200,
   "h": 800,
@@ -1329,6 +1342,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2026/08/BLEACH-Mirrors-High-launch-cover.jpg": {
+  "w": 1200,
+  "h": 624,
+  "target": 1280,
+  "v": 3
+ },
  "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/b6a7982bb6fb0304d3a0a296e505d4e7.webp?fit=900%2C1200&ssl=1": {
   "w": 900,
   "h": 1200,
@@ -2446,6 +2465,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.327
+ },
+ "https://newportal.portal.auone.jp/media/thumbnails/2026/10/29/https___news_jp_i_1488377450411262807_w700.webp": {
+  "w": 700,
+  "h": 299,
+  "target": 720,
+  "v": 3
  },
  "https://news-images.tvbs.com.tw/api/v1/image/01a1974f-ad5d-72be-a75b-2f6f484ae1a6.jpg?t=4x3&c=0,525,2668,2526&w=1200&h=675": {
   "w": 1200,
@@ -3817,12 +3842,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.wixstatic.com/media/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg/v1/fill/w_1000,h_566,al_c,q_85,usm_0.66_1.00_0.01/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg": {
-  "w": 1000,
-  "h": 566,
-  "target": 720,
-  "v": 3
- },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/03/harry-potter-season-1-alastair-stout-dominic-mclaughlin-arabella-stanton.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -4910,6 +4929,13 @@
   "h": 1080,
   "target": 1280,
   "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-03"
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
   "w": 410,

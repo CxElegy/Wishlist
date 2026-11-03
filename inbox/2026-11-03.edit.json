@@ -93,18 +93,19 @@
   "哈利波特剧集": 6,
   "あつ森": 3,
   "ILLIT": 26,
-  "周杰伦": 5,
+  "周杰伦": 6,
   "Astrae Oratio": 1,
   "日本顶级网球赛事": 3,
-  "The Mandalorian": 7,
-  "gelato pique": 5,
+  "The Mandalorian": 8,
+  "gelato pique": 6,
   "チェーンソーマン": 11,
   "滑雪": 4,
   "Vaundy": 5,
-  "猫用品": 5,
+  "猫用品": 6,
   "绝区零": 4,
   "FROM": 2,
-  "星巴克马克杯": 3
+  "星巴克马克杯": 3,
+  "BLEACH Mirrors High": 1
  },
  "GTA 6": [
   {
@@ -515,6 +516,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "Apple Music盘点国语流行：2026年度最佳前十，周杰伦《那天下雨了》入围",
+   "highlight": "《那天下雨了》",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "Astrae Oratio": [
@@ -618,7 +628,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    6
    ]
   },
   {
@@ -756,6 +767,15 @@
    "refs": [
     5
    ]
+  },
+  {
+   "headline": "冬場は猫が水を飲む量が減る？ 飼い主さんが行っている対策と獣医師解説",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "绝区零": [
@@ -814,6 +834,17 @@
     "label": "発売日",
     "place": "シンガポール"
    }
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "BLEACH Mirrors High redeem codes and how to use them (October 2026)",
+   "highlight": "redeem codes",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }
