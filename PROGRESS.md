@@ -327,3 +327,4 @@
 - 2026-11-03 f3：11/4 ゲート再実行＝全部 ✓（Pages 6076 枚・載る 5416 枚の 100.0%・/p/ 失敗 0・storage 0・sb_down_check OK）。BACKLOG の初回 ✗ を [x]。架構図：不用改（文書のみ）。次：11/4 01:30 UTC 以降の 24h 数え。
 2026-11-03 f4：Pages 公開物の大きさの見張り（manifest.bytes・pages_health --size・ゲートに 1 行）。架構図：processes.py p7 に 1 文。次：公開後に --size の値を書く、11/4 01:30 UTC 以降の egress 24h 数え。
 2026-11-03 f4b：公開物の大きさの見張りの穴 4 つを直した（ゲートの測れず＝ - ・定時の記録と赤・管理ページの 1 行・manifest.bytes に manifest 自身も入れた）。連動の範囲：見張りを走らせる所 2（photo_cache.yml・ゲート）、tests が数える。架構図：processes.py p7 に 1 文。次：公開後に最初の値を PROGRESS へ。
+2026-11-03 f4c：PR #847 合併・本番で確かめ：公開物 225 MB＝1 GB の 21%（pages_health --size ✓）、photo_cache.yml が state/pages_size.json をコミット（Actions 成功）。次：翌日に「前回より」が出るか。
