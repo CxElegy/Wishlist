@@ -1511,9 +1511,15 @@
           return h("li", {}, h("b", {}, x.name), h("span", {}, ` · ${x.action === "edit" ? "修改" : "新增"} · ${ago(x.created_at)}`),
             h("strong", {class: "st-" + cls}, text));
         }));
-        clearTimeout(timer);
-        if (list.some(x => x.status === "pending")) timer = setTimeout(loadQueue, 15000);
-      }).catch(() => { clearTimeout(timer); timer = setTimeout(loadQueue, 30000); });
+        qNeed = list.some(x => x.status === "pending"); qFail = false; qArm();
+      }).catch(() => { qNeed = qFail = true; qArm(); });
+  }
+  // 読み直しは WL_SB.every 1 本（放置 10 分で 5 分おき・30 分で止まる・402 の休止中は網に出ない）。every が無いときだけ従来の setTimeout
+  let qNeed = false, qFail = false, qOn = false;
+  function qArm() {
+    if (!qNeed) { clearTimeout(timer); return; }
+    if (window.WL_SB && WL_SB.every) { if (!qOn) { qOn = true; WL_SB.every(() => { if (qNeed) loadQueue(); }, () => qFail ? 30000 : 15000); } return; }
+    if (!window.WL_SB) { clearTimeout(timer); timer = setTimeout(loadQueue, qFail ? 30000 : 15000); }
   }
 
   // ---------- 入口 ----------
