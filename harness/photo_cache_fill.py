@@ -69,7 +69,9 @@ def board_urls():
 def main():
     want = urls()
     try:
-        for n, u in board_urls().items():
+        b = board_urls()
+        print(f"お客さまの小元素 {len(b)} 種（鍵：{'secret' if os.environ.get('SUPABASE_SERVICE_KEY') else 'anon＝非公開の版面は見えない'}）")
+        for n, u in b.items():
             want.setdefault(n, u)
     except Exception:  # noqa: BLE001
         pass
