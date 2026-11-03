@@ -82,6 +82,7 @@ class FillFollowsRender(unittest.TestCase):
         self.assertNotIn(".src=x.image", js)
         self.assertNotIn("$('emm-img').src=t.dataset.img", js)
         self.assertIn("var PGB='';", js)
+        self.assertNotIn("im.src=c.image", js)   # 候補の写真も pg() を通す
         fn = js[js.index("function pg(u)"):js.index("var lib={}")]
         u = "https://x.supabase.co/storage/v1/object/public/emblems/Q1-ab.webp"
         out = subprocess.run(["node", "-e", "var PGB=process.argv[1];%s;console.log(pg(process.argv[2]),pg('https://i.example/a.jpg'))" % fn, "", u],
