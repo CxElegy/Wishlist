@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 DOCS = ROOT / "docs"
 SHAPES = {"W": (800, 450), "S": (600, 600), "T": (400, 600), "V": (300, 900)}   # 横長・正方形・縦長・細長
+WIDTHS = (1400, 1100, 768)   # 壁が右の列の横に並ぶ幅と、1 列になる手前の幅
 COMBOS = ["WW", "TW", "VV", "WWW", "TWW", "SSS", "VWT", "TTT", "WWWW", "TVWS"]
 
 
@@ -48,9 +49,9 @@ class WallShapes(unittest.TestCase):
                 b = launch(pw)
             except Exception as ex:   # noqa: BLE001
                 self.skipTest(f"ブラウザが開けない：{ex}")
-            for shapes in COMBOS:
+            for shapes, vw in itertools.product(COMBOS, WIDTHS):
                 n = len(shapes)
-                pg = b.new_page(viewport={"width": 1400, "height": 900})
+                pg = b.new_page(viewport={"width": vw, "height": 900})
                 html = src[:a] + "".join(cards[:n]) + src[z:]
                 smap = {}
                 for c, s in zip(cards[:n], shapes):
@@ -71,7 +72,7 @@ class WallShapes(unittest.TestCase):
                 pg.wait_for_timeout(1200)
                 h = pg.evaluate(ux_check.HOLE_JS)
                 if h["wallPct"] > 8 or h["sidePct"] > 8:
-                    bad.append(f"{shapes}: 壁の中 {h['wallPct']}%・右の列との差 {h['sidePct']}%")
+                    bad.append(f"{vw}px {shapes}: 壁の中 {h['wallPct']}%・右の列との差 {h['sidePct']}%")
                 pg.close()
             b.close()
         self.assertEqual(bad, [], "写真の形で壁に空きが出る組み合わせ（W 横長・S 正方形・T 縦長・V 細長）")
