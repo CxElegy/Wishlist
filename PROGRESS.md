@@ -339,3 +339,4 @@
 - 2026-11-03 f2f1：recover の抜け直し。見本 6 枚（testground）が古い休止の部品のまま→with_sb_deg が古い版を取り替え、docs/ 全部に function recover() があるかを tests で数える。管理ページ（POST の admin_*・my_role・can_edit）は読む呼び出しと見なされず戻らなかった→READ を広げた。sb_down_check --mode recover を 4 ページ×1400/390 に（入力中は読み直さないことも）、全部 OK。次：render 後に ux_check、11/5 朝の本番 402 の実機確認。
 - 2026-11-04 hr72 f1：#855 合併（休止の recover の抜け直し：見本 6 枚＋admin の READ）。本番 sb_down_check --mode recover = 全部 OK（4 ページ×1400/390、admin 6 回→案内 0）。注意：合併直後は Pages が古い admin のまま〔render 再生成の後に反映〕で ✗ が出る→反映を待ってから点検。残り：E15→E10→③WW→④。
 - 2026-11-04 f2f2：③の別の目の指摘。壁の試験が CI で skip（playwright 未導入）だった＝赤と緑の差の原因。試験に「右の列 +14 行」と 390px を追加（手元で全部緑 161s）。実写の写しでの本番測定は未（写し空）。次：CI にブラウザ試験を入れる段（BACKLOG）。
+- 2026-11-04 f3：11/4 夜ゲート。free_tier_gate = ✗1（Pages の写真 98.6%・80 枚欠け）。根＝photo_cache.yml の cache/save が『Unable to reserve cache』を警告だけで緑のまま終了＝2 回写しが保存されず。保存の確認→別名で再保存→赤、を足す（tests 追加）。dispatch の再実行で 100.0%（6400 枚）。他は ✓（storage 0・sb_down_check 全部 OK・公開物 230MB=21%）。次：合併後にゲートをもう 1 回。
