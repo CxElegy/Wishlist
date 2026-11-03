@@ -3541,7 +3541,10 @@ FIT_JS = """
     cards.forEach((c, i) => { c.hidden = i >= best.n; });
     const ext = Array(cards.length).fill(0);
     // 右の列より壁が低いとき（カードが少ない版面）は、右の列の高さまで写真枠を伸ばす（壁の下が空かない）。差が壁の 6 割までのとき
-    const Wt = (beside && S > best.W && S - best.W <= .6 * best.W) ? S : best.W;
+    // その前に、壁の 1.6 倍より右の列が高ければ、右の列の欲しい物・予定の行を下から隠して差を縮める（写真枠を伸ばしすぎない）
+    let S2 = S;
+    if (beside && S > best.W * 1.6) { for (const l of order) { if (l.hidden) continue; if (side.getBoundingClientRect().height <= best.W * 1.6) break; l.hidden = true; } S2 = side.getBoundingClientRect().height; }
+    const Wt = (beside && S2 > best.W && S2 - best.W <= .6 * best.W) ? S2 : best.W;
     for (let a = 0; a < cols; a++) {
       const d = Wt - (best.bot[a] - GAP), ks = best.col[a].filter(k => !(span[k] === 2));
       if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], d / ks.length); });
