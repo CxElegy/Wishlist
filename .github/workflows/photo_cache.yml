@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: "23 19 * * *"    # 日本時間 4:23
   workflow_run:   # 新しい写真は render のあとに html へ載る → その回で写しに足し、Pages に出し直す（毎日 1 回だと最大 1 日 /p/ が 404 になった。2026-11-03）
-    workflows: ["网页立即更新"]
+    workflows: ["网页立即更新", "Pages 公開"]   # 編排・后台作業の push（render を通らない）で増えた写真も次の回で拾う。変わらなければ pages を起こさず止まる（輪にならない）
     types: [completed]
   workflow_dispatch:
     inputs:
