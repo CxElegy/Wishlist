@@ -225,6 +225,12 @@
   "target": 720,
   "v": 3
  },
+ "https://9to5toys.com/wp-content/uploads/sites/5/2026/11/LEGO-Star-Wars-AT-RT-Attack-0e9739.webp?resize=1200,628": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
  "https://afpbb.ismcdn.jp/mwimgs/7/f/1000x/img_7f9796789ecc5949a099ce4d5b98fb5582038.jpg": {
   "w": 1000,
   "h": 666,
@@ -1528,12 +1534,6 @@
   ],
   "why": "看不清"
  },
- "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_600,w_1086,h_610/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m6fgknrd6mjbchzet0.jpg": {
-  "w": 1440,
-  "h": 810,
-  "target": 1280,
-  "v": 3
- },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_291,y_64,w_1932,h_1086/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m6ekgecrgnj4vwnmff.jpg": {
   "w": 1440,
   "h": 810,
@@ -1586,6 +1586,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gFTDS.img": {
   "w": 1672,
   "h": 941,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gG5lk.img": {
+  "w": 1456,
+  "h": 819,
   "target": 720,
   "v": 3
  },
@@ -1880,12 +1886,6 @@
   "w": 800,
   "h": 1199,
   "target": 1280,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/03/5628427_2.jpg": {
-  "w": 800,
-  "h": 1053,
-  "target": 720,
   "v": 3
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
@@ -3897,12 +3897,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.HjeGMMYXgbmzjn-V0TeSDw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3957,6 +3951,12 @@
  "https://www.bing.com/th?id=ONUT.P98iv5Emdiu3Jj3K1m3BDA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Q7ahsEjWT_M9ehvGsyRquA&pid=News&w=800": {
+  "w": 700,
+  "h": 474,
   "target": 720,
   "v": 3
  },

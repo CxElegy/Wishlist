@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-02T08:35:38+00:00",
-"text": "2026-11-02 第 2 バッチを出刊：あつ森（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 1,211・キャッシュ読み 14.0万・出力 683",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.48,
-"mem_total": 16872808448,
-"mem_free": 16030650368,
-"disk_used": 10916130816,
-"disk_free": 30367404032,
-"disk_total": 41283534848,
-"peak": 287744000
-},
-"batch": 2,
-"boards": [
-"あつ森"
-],
-"stories": 1,
-"left": 0,
-"edited": 20,
-"run": 1793607661.8326254,
-"tok": {
-"in": 3,
-"cw": 1208,
-"cr": 139581,
-"out": 683,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 141475,
-"secs": 877,
-"run_tok": {
-"in": 30,
-"cw": 42258,
-"cr": 985809,
-"out": 3545,
-"calls": 16,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-02T09:38:45+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2052,5 +2011,37 @@
 "calls": 18,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-03T22:14:49+00:00",
+"text": "2026-11-04 第 1 バッチを出刊：dota2（1 版面・2 本・残り 11 版面） · token 新規入力 4.8万・キャッシュ読み 124.0万・出力 5,048",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.35,
+"mem_total": 16872804352,
+"mem_free": 15919390720,
+"disk_used": 10022318080,
+"disk_free": 31261216768,
+"disk_total": 41283534848,
+"peak": 351784960
+},
+"batch": 1,
+"boards": [
+"dota2"
+],
+"stories": 2,
+"left": 11,
+"edited": 10,
+"run": 1793743771.3678608,
+"tok": {
+"in": 38,
+"cw": 47736,
+"cr": 1239922,
+"out": 5048,
+"calls": 20,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1292744
 }
 ]

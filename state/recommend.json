@@ -63,7 +63,6 @@
   "https://www.dealmoon.ca/product/lego-lucky-cat-building-kit-280-pieces-ages-9/3932502": null,
   "https://www.gamemeca.com/zh/view.php?gid=1782736": "https://cdn.gamemeca.com/gmdata/0001/782/736/gm360686_pk.webp",
   "https://www.gameres.com/901203255.html": "https://img.gameres.com/media/portal/article/2026/10/1792458279_5d4cf7b6.jpg",
-  "https://www.geeky-gadgets.com/galaxy-s27-ultra-rumors-4/": "https://www.bing.com/th?id=ONUT.HjeGMMYXgbmzjn-V0TeSDw&pid=News&w=1200",
   "https://www.giantfreakinrobot.com/ent/the-spirit-1987-nana-visitor-pilot.html": "https://www.giantfreakinrobot.com/wp-content/uploads/2024/02/The-Spirit-Nana-Visitor.jpg",
   "https://www.instyle.com/katy-perry-daughter-daisy-6-hello-kitty-halloween-costumes-12213858": "https://www.instyle.com/thmb/5X2OlA0zsRrJVqY7M4J7S7noDsQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-23014120872-724903041fca453aa8629b5cc1328be9.jpg",
   "https://www.jaturi.kr/news/articleView.html?idxno=27771": null,
@@ -1167,39 +1166,6 @@
   },
   {
    "batch": 3,
-   "because": "三星手机",
-   "date": "2026-11-02",
-   "hits": [
-    "三星 Galaxy"
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.HjeGMMYXgbmzjn-V0TeSDw&pid=News&w=1200",
-   "kind": "board",
-   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
-   "score": 8,
-   "source": "Geeky Gadgets",
-   "taste": [
-    [
-     "galaxy",
-     7
-    ],
-    [
-     "三星 Galaxy",
-     7
-    ],
-    [
-     "作品:三星手机",
-     7
-    ]
-   ],
-   "title": "Samsung’s Unexpected Strategy for the Galaxy S27 Ultra",
-   "url": "https://www.geeky-gadgets.com/galaxy-s27-ultra-rumors-4/",
-   "words": [
-    "galaxy"
-   ],
-   "work": "三星手机"
-  },
-  {
-   "batch": 3,
    "because": "gelato pique",
    "date": "2026-11-01",
    "hits": [],
@@ -1283,7 +1249,7 @@
    "work": "gelato pique"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "周杰伦",
    "date": "2026-11-02",
    "hits": [],
@@ -1388,7 +1354,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "A2O LITE",
    "date": "2026-11-03",
    "hits": [],
@@ -1493,7 +1459,7 @@
    "work": "dota2"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "Vaundy",
    "date": "2026-11-01",
    "hits": [],
@@ -1965,11 +1931,11 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]

@@ -1,359 +1,403 @@
 {
-  "GTA 6": [
-    {
-      "headline": "Grand Theft Auto 6 pre-load begins on 10th November, file size and regional timings released",
-      "highlight": "pre-load begins on 10th November",
-      "blurb": "Grand Theft Auto 6 will be downloadable at midnight in your local time on PlayStation 5, and 12am GMT on Xbox consoles. File size is up to 212GB.",
-      "weight": "hero",
-      "refs": [
-        15,
-        19,
-        7,
-        6,
-        4,
-        3,
-        21,
-        14,
-        16,
-        1,
-        2,
-        5,
-        22,
-        23,
-        28,
-        29,
-        30,
-        31,
-        32,
-        33,
-        35,
-        36,
-        39,
-        40
-      ],
-      "event": {
-        "date": "2026-11-10",
-        "label": "プリロード開始"
-      },
-      "image": "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200"
-    },
-    {
-      "headline": "Is GTA VI the biggest entertainment launch in history?",
-      "highlight": "biggest entertainment launch",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        17
-      ]
-    },
-    {
-      "headline": "Jerry Fort, Who Went Viral for His Wish to Play ‘GTA 6,’ Dies at 25",
-      "highlight": "Dies at 25",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        18,
-        8
-      ]
-    },
-    {
-      "headline": "GTA 6 Physical Release Date Explained – Why Some Orders Arrive Early",
-      "highlight": "Why Some Orders Arrive Early",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        10,
-        13,
-        27,
-        38,
-        34
-      ]
-    },
-    {
-      "headline": "A Millionaire Says GTA 6 Is Actually a Smart Financial Investment. Here’s His Reasoning.",
-      "highlight": "Smart Financial Investment",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        12,
-        9
-      ]
-    }
-  ],
-  "漫威电影": [
-    {
-      "headline": "New 'Avengers: Doomsday' trailer drops at D23 featuring Robert Downey Jr. and more",
-      "highlight": "New 'Avengers: Doomsday' trailer",
-      "blurb": "New 'Avengers: Doomsday' trailer dropped at D23 featuring Robert Downey Jr. and more.",
-      "weight": "lead",
-      "refs": [
-        14
-      ],
-      "image": "https://cdn.abcotvs.com/dip/images/19681555_081426-cc-getty-d23-ent-showcase-doomsday-cast-img.jpg"
-    },
-    {
-      "headline": "WWE Announces Avengers: Doomsday-Themed Worlds Collide for Two-Day December Event",
-      "highlight": "Worlds Collide",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        7,
-        8,
-        3,
-        11,
-        9,
-        10,
-        13,
-        6,
-        2,
-        29,
-        30,
-        33
-      ],
-      "event": {
-        "date": "2026-12-15",
-        "label": "イベント",
-        "place": "ESPN Wide World of Sports"
-      }
-    },
-    {
-      "headline": "New ‘Avengers: Doomsday’ Promo Art Frames Doom, the X-Men and Wakanda’s Heroes in Striking Circular Portraits",
-      "highlight": "Promo Art",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4,
-        24
-      ]
-    },
-    {
-      "headline": "Marvel's 'X-Men' Reboot Eyes Jackie Chan's Best Student To Star as Iceman",
-      "highlight": "Iceman",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        15,
-        1,
-        31,
-        35,
-        36,
-        18,
-        19
-      ]
-    },
-    {
-      "headline": "Disney says Avengers: Doomsday presales top $50 million",
-      "highlight": "top $50 million",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        28,
-        21,
-        34
-      ]
-    }
-  ],
-  "哈利波特剧集": [
-    {
-      "headline": "How Harry Potter Star Paapa Essiedu Feels About Severus Snape Casting Backlash",
-      "highlight": "Snape Casting Backlash",
-      "blurb": "TVLine reports on how Paapa Essiedu feels about the backlash over his Severus Snape casting.",
-      "weight": "lead",
-      "refs": [
-        1
-      ],
-      "image": "https://www.tvline.com/img/gallery/how-harry-potter-star-paapa-essiedu-feels-about-severus-snape-casting-backlash/paapa-essiedu-says-hes-received-death-threats-1793718244.jpg"
-    },
-    {
-      "headline": "HBO's Harry Potter Show Is Wiping Out a 25-Year-Old Hermione Mistake",
-      "highlight": "25-Year-Old Hermione Mistake",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "HBO's new Harry Potter series reveals redesigned wands, Hedwig and a $20 chocolate frog",
-      "highlight": "$20 chocolate frog",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        5,
-        3
-      ],
-      "price": {
-        "now": "$20"
-      }
-    },
-    {
-      "headline": "New Harry Potter TV stars to miss Oxford Street lights switch-on",
-      "highlight": "miss Oxford Street lights switch-on",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    }
-  ],
-  "三星手机": [
-    {
-      "headline": "Galaxy S27+は複数の認証機関に登場、45Wの急速充電はGalaxy S26+と同じ",
-      "highlight": "45Wの急速充電",
-      "blurb": "Galaxy S27+は複数の認証機関に登場しており、45Wの急速充電機能はGalaxy S26+と同じであることが確認されている。",
-      "weight": "lead",
-      "refs": [
-        2,
-        10
-      ],
-      "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793712043011_img_cd6fc2d9.jpeg"
-    },
-    {
-      "headline": "Samsung is bringing a flagship feature Apple can’t match to cheaper Galaxy S27 models",
-      "highlight": "cheaper Galaxy S27 models",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        5,
-        1
-      ]
-    },
-    {
-      "headline": "갤럭시 S27 Pro는 사생활 침해를 방지하는 프라이버시 디스플레이 화면을 사용하며",
-      "highlight": "프라이버시 디스플레이",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3,
-        6
-      ]
-    },
-    {
-      "headline": "The Real Reason Samsung Might Hand the Galaxy S27 Ultra to Qualcomm Worldwide",
-      "highlight": "Qualcomm Worldwide",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "Galaxy S27 Ultra dummy shows a wider camera bar and one fewer lens",
-      "highlight": "wider camera bar",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        8,
-        9,
-        7
-      ]
-    },
-    {
-      "headline": "RAM Crisis Threatens the Price of the Galaxy S27 Ultra 1 TB More Expensive",
-      "highlight": "Galaxy S27 Ultra 1 TB",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        11
-      ]
-    }
-  ],
-  "周杰伦": [
-    {
-      "headline": "周杰伦 IG 更新：网球亚军与星巴克太妃广告",
-      "highlight": "网球亚军",
-      "blurb": "周杰伦在 IG 更新网球亚军与星巴克太妃系列饮品广告。",
-      "weight": "lead",
-      "refs": [
-        4,
-        1,
-        5,
-        7,
-        6
-      ]
-    },
-    {
-      "headline": "周杰倫又入手埃貢席勒名畫 驚人價格曝光",
-      "highlight": "驚人價格曝光",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "周杰伦在自己节目里浅唱《本草纲目》，松弛感直接拉满！",
-      "highlight": "浅唱《本草纲目》",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    }
-  ],
-  "_covered": {
-    "GTA 6": 40,
-    "漫威电影": 39,
-    "三星手机": 11,
-    "哈利波特剧集": 5,
-    "周杰伦": 8,
-    "dota2": 2,
-    "星巴克马克杯": 2,
-    "A2O LITE": 1,
-    "猫用品": 1
+ "GTA 6": [
+  {
+   "headline": "Grand Theft Auto 6 pre-load begins on 10th November, file size and regional timings released",
+   "highlight": "pre-load begins on 10th November",
+   "blurb": "Grand Theft Auto 6 will be downloadable at midnight in your local time on PlayStation 5, and 12am GMT on Xbox consoles. File size is up to 212GB.",
+   "weight": "hero",
+   "refs": [
+    15,
+    19,
+    7,
+    6,
+    4,
+    3,
+    21,
+    14,
+    16,
+    1,
+    2,
+    5,
+    22,
+    23,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    35,
+    36,
+    39,
+    40,
+    53,
+    56,
+    61,
+    57,
+    58,
+    44,
+    47,
+    48,
+    51,
+    59,
+    60,
+    62,
+    63,
+    64,
+    45
+   ],
+   "event": {
+    "date": "2026-11-10",
+    "label": "プリロード開始"
+   },
+   "image": "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200"
   },
-  "dota2": [
-    {
-      "headline": "BetBoom Team暫停Dota 2運作，五名選手全數轉為不活躍狀態",
-      "highlight": "暫停Dota 2運作",
-      "blurb": "BetBoom Team暫停Dota 2運作，五名選手全數轉為不活躍狀態。",
-      "weight": "lead",
-      "refs": [
-        2
-      ],
-      "image": "https://games.gg/cdn-cgi/image/width=1200,height=675,fit=cover,format=auto/https://assets.games.gg/betboom_team_dota_2_roster_inactive_hero_ca2afb8c0c_389dafbd50.webp"
-    },
-    {
-      "headline": "Kiyotaka Comments on His Return to Professional Dota 2",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    }
-  ],
-  "星巴克马克杯": [
-    {
-      "headline": "【スタバ福袋キタ！】2027年の中身は何？1,000個限定ゴールドのマグ＆ベアリスが欲しすぎる！",
-      "highlight": "1,000個限定ゴールドのマグ",
-      "blurb": "スターバックス2027年福袋の中身。1,000個限定のゴールドのマグ＆ベアリスタに注目。",
-      "weight": "lead",
-      "refs": [
-        2
-      ],
-      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800"
-    },
-    {
-      "headline": "Disney and Starbucks Are Mint to Be: See the New Holiday Tumblers, Mug and More",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    }
-  ],
-  "A2O LITE": [],
-  "猫用品": [
-    {
-      "headline": "獣医師セミナー 猫の糖尿病",
-      "highlight": "猫の糖尿病",
-      "blurb": "レッツエンジョイ東京が紹介する、猫の糖尿病をテーマにした獣医師セミナー。",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    }
-  ]
+  {
+   "headline": "Is GTA VI the biggest entertainment launch in history?",
+   "highlight": "biggest entertainment launch",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
+   ]
+  },
+  {
+   "headline": "Jerry Fort, Who Went Viral for His Wish to Play ‘GTA 6,’ Dies at 25",
+   "highlight": "Dies at 25",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18,
+    8,
+    49
+   ]
+  },
+  {
+   "headline": "GTA 6 Physical Release Date Explained – Why Some Orders Arrive Early",
+   "highlight": "Why Some Orders Arrive Early",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    13,
+    27,
+    38,
+    34,
+    43
+   ]
+  },
+  {
+   "headline": "A Millionaire Says GTA 6 Is Actually a Smart Financial Investment. Here’s His Reasoning.",
+   "highlight": "Smart Financial Investment",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12,
+    9
+   ]
+  }
+ ],
+ "漫威电影": [
+  {
+   "headline": "New 'Avengers: Doomsday' trailer drops at D23 featuring Robert Downey Jr. and more",
+   "highlight": "New 'Avengers: Doomsday' trailer",
+   "blurb": "New 'Avengers: Doomsday' trailer dropped at D23 featuring Robert Downey Jr. and more.",
+   "weight": "lead",
+   "refs": [
+    14,
+    42
+   ],
+   "image": "https://cdn.abcotvs.com/dip/images/19681555_081426-cc-getty-d23-ent-showcase-doomsday-cast-img.jpg"
+  },
+  {
+   "headline": "WWE Announces Avengers: Doomsday-Themed Worlds Collide for Two-Day December Event",
+   "highlight": "Worlds Collide",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    8,
+    3,
+    11,
+    9,
+    10,
+    13,
+    6,
+    2,
+    29,
+    30,
+    33,
+    44,
+    45
+   ],
+   "event": {
+    "date": "2026-12-15",
+    "label": "イベント",
+    "place": "ESPN Wide World of Sports"
+   }
+  },
+  {
+   "headline": "New ‘Avengers: Doomsday’ Promo Art Frames Doom, the X-Men and Wakanda’s Heroes in Striking Circular Portraits",
+   "highlight": "Promo Art",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    24,
+    43,
+    47
+   ]
+  },
+  {
+   "headline": "Marvel's 'X-Men' Reboot Eyes Jackie Chan's Best Student To Star as Iceman",
+   "highlight": "Iceman",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15,
+    1,
+    31,
+    35,
+    36,
+    18,
+    19
+   ]
+  },
+  {
+   "headline": "Disney says Avengers: Doomsday presales top $50 million",
+   "highlight": "top $50 million",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    28,
+    21,
+    34
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "How Harry Potter Star Paapa Essiedu Feels About Severus Snape Casting Backlash",
+   "highlight": "Snape Casting Backlash",
+   "blurb": "TVLine reports on how Paapa Essiedu feels about the backlash over his Severus Snape casting.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.tvline.com/img/gallery/how-harry-potter-star-paapa-essiedu-feels-about-severus-snape-casting-backlash/paapa-essiedu-says-hes-received-death-threats-1793718244.jpg"
+  },
+  {
+   "headline": "HBO's Harry Potter Show Is Wiping Out a 25-Year-Old Hermione Mistake",
+   "highlight": "25-Year-Old Hermione Mistake",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "HBO's new Harry Potter series reveals redesigned wands, Hedwig and a $20 chocolate frog",
+   "highlight": "$20 chocolate frog",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    3
+   ],
+   "price": {
+    "now": "$20"
+   }
+  },
+  {
+   "headline": "New Harry Potter TV stars to miss Oxford Street lights switch-on",
+   "highlight": "miss Oxford Street lights switch-on",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Galaxy S27+は複数の認証機関に登場、45Wの急速充電はGalaxy S26+と同じ",
+   "highlight": "45Wの急速充電",
+   "blurb": "Galaxy S27+は複数の認証機関に登場しており、45Wの急速充電機能はGalaxy S26+と同じであることが確認されている。",
+   "weight": "lead",
+   "refs": [
+    15,
+    2,
+    10
+   ],
+   "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793712043011_img_cd6fc2d9.jpeg"
+  },
+  {
+   "headline": "Samsung is bringing a flagship feature Apple can’t match to cheaper Galaxy S27 models",
+   "highlight": "cheaper Galaxy S27 models",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    1
+   ]
+  },
+  {
+   "headline": "갤럭시 S27 Pro는 사생활 침해를 방지하는 프라이버시 디스플레이 화면을 사용하며",
+   "highlight": "프라이버시 디스플레이",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    6,
+    14
+   ]
+  },
+  {
+   "headline": "The Real Reason Samsung Might Hand the Galaxy S27 Ultra to Qualcomm Worldwide",
+   "highlight": "Qualcomm Worldwide",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    17
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra dummy shows a wider camera bar and one fewer lens",
+   "highlight": "wider camera bar",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    9,
+    7,
+    12,
+    13
+   ]
+  },
+  {
+   "headline": "RAM Crisis Threatens the Price of the Galaxy S27 Ultra 1 TB More Expensive",
+   "highlight": "Galaxy S27 Ultra 1 TB",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦 IG 更新：网球亚军与星巴克太妃广告",
+   "highlight": "网球亚军",
+   "blurb": "周杰伦在 IG 更新网球亚军与星巴克太妃系列饮品广告。",
+   "weight": "lead",
+   "refs": [
+    4,
+    1,
+    5,
+    7,
+    6
+   ]
+  },
+  {
+   "headline": "周杰倫又入手埃貢席勒名畫 驚人價格曝光",
+   "highlight": "驚人價格曝光",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "周杰伦在自己节目里浅唱《本草纲目》，松弛感直接拉满！",
+   "highlight": "浅唱《本草纲目》",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "_covered": {
+  "GTA 6": 64,
+  "漫威电影": 49,
+  "三星手机": 17,
+  "哈利波特剧集": 5,
+  "周杰伦": 8,
+  "dota2": 6,
+  "星巴克马克杯": 2,
+  "A2O LITE": 1,
+  "猫用品": 1,
+  "The Mandalorian": 4
+ },
+ "dota2": [
+  {
+   "headline": "BetBoom TeamがDota 2の活動を休止、選手5名全員が非アクティブに",
+   "highlight": "選手5名全員が非アクティブ",
+   "blurb": "BetBoom TeamがDota 2の活動を休止し、選手5名全員が非アクティブ状態に移行した。",
+   "weight": "lead",
+   "refs": [
+    5,
+    2,
+    3
+   ],
+   "image": "https://games.gg/cdn-cgi/image/width=1200,height=675,fit=cover,format=auto/https://assets.games.gg/betboom_team_dota_2_roster_inactive_hero_ca2afb8c0c_389dafbd50.webp"
+  },
+  {
+   "headline": "Kiyotaka Comments on His Return to Professional Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "【スタバ福袋キタ！】2027年の中身は何？1,000個限定ゴールドのマグ＆ベアリスが欲しすぎる！",
+   "highlight": "1,000個限定ゴールドのマグ",
+   "blurb": "スターバックス2027年福袋の中身。1,000個限定のゴールドのマグ＆ベアリスタに注目。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800"
+  },
+  {
+   "headline": "Disney and Starbucks Are Mint to Be: See the New Holiday Tumblers, Mug and More",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "A2O LITE": [],
+ "猫用品": [
+  {
+   "headline": "獣医師セミナー 猫の糖尿病",
+   "highlight": "猫の糖尿病",
+   "blurb": "レッツエンジョイ東京が紹介する、猫の糖尿病をテーマにした獣医師セミナー。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "LEGO's Star Wars AT-RT Attack set lets you create your own Mandalorian and Grogu adventures at $36",
+   "highlight": "at $36",
+   "blurb": "LEGO's Star Wars AT-RT Attack set lets you build your own Mandalorian and Grogu adventures at $36.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "price": {
+    "now": "$36"
+   }
+  }
+ ]
 }
