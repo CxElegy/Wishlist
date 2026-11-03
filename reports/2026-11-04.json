@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "edit_sig": "d853cf8294a7",
+ "edit_sig": "0c01b135395a",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?bqVdDUNTL2GwsM_MMMW0M",
@@ -206,24 +206,29 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "スターバックス2027年福袋の中身。1,000個限定のゴールドのマグ＆ベアリスタに注目。",
      "date": "2026-11-03",
-     "n": 1,
-     "source": "The Main Street Mouse",
-     "title": "Disney and Starbucks Are Mint to Be: See the New Holiday Tumblers, Mug and More",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxONFpqWmhLbzk3SjFvTkRkUjkzN2kzYjJBRmNYbW1HaG5xdGlnUzRHTEhqLWVpaExSN2RoVFZLRHAzNnFsVVFHU2p6RXBLWEhMQWJ0ZkpBTmtsY0taVmJQTjhpNHExZWxWRWhqR0RHOVlISmY0SUxkd3VzMnVKN2E4VVFYNXhpeVFIUTVPNmxrN0NObkE?oc=5"
+     "headline": "【スタバ福袋キタ！】2027年の中身は何？1,000個限定ゴールドのマグ＆ベアリスが欲しすぎる！",
+     "highlight": "1,000個限定ゴールドのマグ",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800",
+     "image_via": "AI 挑选",
+     "url": "https://news.yahoo.co.jp/articles/d2ae505a4e7aa397af23edd16c1b05537d44b3a6",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-03",
-     "n": 2,
-     "source": "Yahoo!ニュース",
-     "title": "【スタバ福袋キタ！】2027年の中身は何？1,000個限定ゴールドのマグ＆ベアリスが欲しすぎる！（MEN’S NON-NO WEB）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1OalU3NG5VZ2VBdURpeWlZdk1pbzFKWGEwdW11S0p6WVhhX2RlLU1sM2RQdUtSV1ZRZ1dyU1hMMm84dzkyUzQzQlVJUzBhRmlnV2M0Umk2dVB6VzZFMmdjY0RzVkx2NXhrVkpVMzd5VV9qMWoyMEgxY0ZHYjJuNTQ?oc=5"
+     "headline": "Disney and Starbucks Are Mint to Be: See the New Holiday Tumblers, Mug and More",
+     "highlight": "",
+     "image": "https://themainstreetmouse.com/wp-content/uploads/2026/11/Disney-and-Starbucks-Mint-to-Be-holiday-tumblers-at-the-Disneyland-Resort.jpg",
+     "image_via": "og:image",
+     "url": "https://themainstreetmouse.com/2026/11/03/disney-starbucks-mint-to-be-holiday-collection/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
@@ -240,17 +245,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "レッツエンジョイ東京が紹介する、猫の糖尿病をテーマにした獣医師セミナー。",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "レッツエンジョイ東京",
-     "title": "獣医師セミナー 猫の糖尿病｜レッツエンジョイ東京",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9JeEg2aHV6UDBVbExVYUxQZ2JXMXI1b0Zqa29MU2U3bTdYcnQ4REprbGRmUEszc3pLY2lMRG9hT0NhcGhUbGZXSFh6VFcwOE9ZVHc?oc=5"
+     "headline": "獣医師セミナー 猫の糖尿病",
+     "highlight": "猫の糖尿病",
+     "image": "https://rstatic.enjoytokyo.jp/assets/images/event_draft/af/2089496/img_1.jpg?1792987562&p=t&w=1200",
+     "image_via": "og:image",
+     "url": "https://www.enjoytokyo.jp/event/2089496/",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -376,24 +383,29 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "BetBoom Team暫停Dota 2運作，五名選手全數轉為不活躍狀態。",
      "date": "2026-11-03",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "Kiyotaka Comments on His Return to Professional Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBza1Mtc1BodEhMTldPMTZnRzFtMDFmUklzUVRqcE1VdUpWLW5IOTBHQzh1dm5OcGRHN3NHWW5kM1VEako3UmRJbG5TbTI2bl9LNVp4ZTE5RnVqZnY3eU4zbWpQY0I3RjhFOTlYX0lfOHJYVThDV2M4?oc=5"
+     "headline": "BetBoom Team暫停Dota 2運作，五名選手全數轉為不活躍狀態",
+     "highlight": "暫停Dota 2運作",
+     "image": "https://games.gg/cdn-cgi/image/width=1200,height=675,fit=cover,format=auto/https://assets.games.gg/betboom_team_dota_2_roster_inactive_hero_ca2afb8c0c_389dafbd50.webp",
+     "image_via": "AI 挑选",
+     "url": "https://games.gg/zh-Hant/news/betboom-team%E6%9A%AB%E5%81%9Cdota-2%E9%81%8B%E4%BD%9C%E4%BA%94%E5%90%8D%E9%81%B8%E6%89%8B%E5%85%A8%E6%95%B8%E8%BD%89%E7%82%BA%E4%B8%8D%E6%B4%BB%E8%BA%8D%E7%8B%80%E6%85%8B/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-03",
-     "n": 2,
-     "source": "games.gg",
-     "title": "BetBoom Team暫停Dota 2運作，五名選手全數轉為不活躍狀態",
-     "url": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxONVZUVTc1czcyLWowbnVLVzlkWHptUFFQaWE1RzdCeEV3d0wxaE5MQjNna2l0bW9jOV9KZldjdTh0TTdPdF9DdVdFWk8yaFlVQ05NNE1iSl9ZN0l4M2JXNzlhYldMU3hjWXJkZXdPTUxQV2VST1l0dlUtcU8tMU8xSGJPdzhYN1NMTVc0eTBjUmxkYUxRUl8zZjFiMkFQVy1KNHQ5bklKN0FfbC1RZVVOLXNKenNXVFN0cjlTYnNYVnNOV3JHU0twMWFLN1BzWUUyYS1Gc0tJT1RzZ0tWR3lSRmR1Y1NSNklrWVdaSmNST3FXWU83VzNKQldsZTcwSGlVYTAyT3Q2RksyUFphUXlTZWZIcU5Rb2xkVkYyQTlnYmpwVjFKcXNaRUNR?oc=5"
+     "headline": "Kiyotaka Comments on His Return to Professional Dota 2",
+     "highlight": "",
+     "image": "https://hawk.live/storage/images/posts/kiyotaka-compete-dota-2-tournament-25193.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/kiyotaka-comments-return-professional-dota-2",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -403,33 +415,6 @@
     "bg": "#17100F",
     "fg": "#F4EEE4",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 1,
-     "source": "wowKorea",
-     "title": "[入徳直カム]エイトゥオライトヤング - ニオン [Meltin 'FanCam] A2O LITE_ _ YOUNG - NEON@MCOUNTDOWN_20",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5ic2c0SlZ6ek1CQ1oyQmdVWmVQblBYTi1XV2dmZVRaTzVKQ1NFNWFNLUVRbm41Y2U5V2NfY0NkQVJtUldWSFdlM18xbi1EbWRaWnFwMzZDY3FaNzBKTWc?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "",
-   "theme": {
-    "accent": "#B5285F",
-    "alt_accent": "#F07AA8",
-    "alt_bg": "#1E1218",
-    "alt_fg": "#F4EEE4",
-    "bg": "#FBEFF4",
-    "fg": "#1E1A18",
-    "font": "sans",
     "split": true
    }
   },
@@ -780,6 +765,31 @@
     "bg": "#1E1516",
     "fg": "#F4EEE4",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-03",
+    "headline": "A2O LITE、IVEおさえ「Neon」9冠目！20261102「Show K",
+    "url": "https://daebak.tokyo/2026/11/02/a2o-lite-neon-9th-win/"
+   },
+   "name": "A2O LITE",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "",
+   "theme": {
+    "accent": "#B5285F",
+    "alt_accent": "#F07AA8",
+    "alt_bg": "#1E1218",
+    "alt_fg": "#F4EEE4",
+    "bg": "#FBEFF4",
+    "fg": "#1E1A18",
+    "font": "sans",
     "split": true
    }
   }

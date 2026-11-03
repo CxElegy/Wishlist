@@ -882,12 +882,6 @@
   "target": 1280,
   "v": 3
  },
- "https://d3c6c8kv4if4l0.cloudfront.net/www/ProductionArticleCoverImage/38593/headline/2026092913312948914o.jpg": {
-  "w": 1280,
-  "h": 960,
-  "target": 1280,
-  "v": 3
- },
  "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg": {
   "w": 1459,
   "h": 800,
@@ -965,12 +959,6 @@
  "https://egamers.io/wp-content/uploads/2026/10/outer-ring-mmos-next-update-brings-desert-pvp-loot-stealing-and-new-bosses.jpg": {
   "w": 1200,
   "h": 676,
-  "target": 1280,
-  "v": 3
- },
- "https://en.koreadaily.com/wp-content/uploads/2026/11/e8705de8-8f99-44dd-8c72-eded2c9785b1.jpg": {
-  "w": 1280,
-  "h": 840,
   "target": 1280,
   "v": 3
  },
@@ -1058,6 +1046,12 @@
   "target": 720,
   "v": 3
  },
+ "https://games.gg/cdn-cgi/image/width=1200,height=675,fit=cover,format=auto/https://assets.games.gg/betboom_team_dota_2_roster_inactive_hero_ca2afb8c0c_389dafbd50.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://gazlog.jp/wp-content/uploads/2026/11/image-4.png": {
   "w": 1920,
   "h": 1080,
@@ -1103,7 +1097,7 @@
  "https://hawk.live/storage/images/posts/kiyotaka-compete-dota-2-tournament-25193.jpg": {
   "w": 1200,
   "h": 628,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/kuroky-speaks-mistakes-career-25397.jpg": {
@@ -1145,6 +1139,12 @@
  "https://hermes.media.static.aol.com/media/2026/11/02/d62fe923-b60d-35bd-825f-6f8d3011d950/e90ae037-3503-466a-b1fd-c708ddb41280.jpg": {
   "w": 3000,
   "h": 977,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hips.hearstapps.com/hmg-prod/images/c4c89ef7-9d3e-4795-9ed4-8a3a6fe8487e.png?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
+  "w": 1200,
+  "h": 600,
   "target": 1280,
   "v": 3
  },
@@ -1235,6 +1235,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/02/LR-7414.jpg?fit=1920%2C1079&ssl=1": {
+  "w": 1920,
+  "h": 1079,
+  "target": 1280,
+  "v": 3
+ },
  "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/b6a7982bb6fb0304d3a0a296e505d4e7.webp?fit=900%2C1200&ssl=1": {
   "w": 900,
   "h": 1200,
@@ -1270,6 +1276,13 @@
   "h": 1080,
   "target": 1280,
   "v": 3
+ },
+ "https://i2023.danews.cc/upload/doc/202610/30/6ae4560c6b44e.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-04"
  },
  "https://igcazquhkwxtqsaqpznx.supabase.co/storage/v1/object/public/media/ig-articles/18025431548949698/0.jpg": {
   "w": 1080,
@@ -1393,19 +1406,6 @@
   "h": 542,
   "target": 720,
   "v": 3
- },
- "https://imageio.forbes.com/specials-images/imageserve/21cd8d8c62ba728ff40340883ec70ef8/0x0.jpg?format=jpg&height=491&width=655&fit=bounds": {
-  "w": 416,
-  "h": 278,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.637,
-  "local": "pics/864e4a356d2c3422.webp",
-  "out": [
-   1248,
-   834
-  ],
-  "why": "看不清"
  },
  "https://images.assettype.com/tribune/2026-10-31/qersbcvw/star.jpg?w=1200&auto=format&q=70&rect=0%2C1090%2C6000%2C3375&h=675&fit=crop": {
   "w": 1200,
@@ -1874,6 +1874,12 @@
  "https://img.sportsbull.jp/raw/t2m8VMS5AgyOd1ngRNI4M1BYyyaofcW7fQOmvQWf.jpg": {
   "w": 1024,
   "h": 576,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100425.jpg": {
+  "w": 560,
+  "h": 560,
   "target": 720,
   "v": 3
  },
@@ -2378,6 +2384,13 @@
   ],
   "why": "看不清"
  },
+ "https://news.walkerplus.com/article/1422988/17878260_615.jpg": {
+  "w": 615,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.412
+ },
  "https://news.walkerplus.com/article/1446866/18749265_615.jpg": {
   "w": 615,
   "h": 383,
@@ -2794,16 +2807,16 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?exp=10800": {
-  "w": 644,
-  "h": 500,
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800": {
+  "w": 640,
+  "h": 497,
   "target": 1280,
   "v": 3,
-  "blur": 0.386,
-  "local": "pics/2b4ba85b2b0f7323.webp",
+  "blur": 0.404,
+  "local": "pics/25cc67e1d4748796.webp",
   "out": [
-   644,
-   500
+   640,
+   497
   ],
   "why": "期限付きの網址"
  },
@@ -3099,8 +3112,9 @@
  "https://rstatic.enjoytokyo.jp/assets/images/event_draft/af/2089496/img_1.jpg?1792987562&p=t&w=1200": {
   "w": 480,
   "h": 640,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.411
  },
  "https://s.yimg.com/lo/mysterio/api/1d7971b9f60cd6df7fd47c87ac4359f0aeab95b8509a40ddb5d511cef6189e11/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fparade_pets_articles_328%2F6992a3b38b62095b4e6a5ddf6090e11d.jpg": {
   "w": 1200,
@@ -3541,6 +3555,12 @@
   "target": 720,
   "v": 3
  },
+ "https://themainstreetmouse.com/wp-content/uploads/2026/11/Disney-and-Starbucks-Mint-to-Be-holiday-tumblers-at-the-Disneyland-Resort.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=1600,fit=cover,bg=white,f=auto,quality=high,sharpen=2,g=face/21/2026/10/2026102618252436679_1.jpg": {
   "w": 1200,
   "h": 1600,
@@ -3551,12 +3571,6 @@
   "w": 1200,
   "h": 1601,
   "target": 720,
-  "v": 3
- },
- "https://times-abema.ismcdn.jp/mwimgs/a/9/1200w/img_a9fd7725fc59411368c4728f5042c56e80587.jpg": {
-  "w": 1200,
-  "h": 670,
-  "target": 1280,
   "v": 3
  },
  "https://tjniigata.jp/assets/uploads/2026/10/458b656d0bcddf383b765c24dcc0ebf3-760x508.jpeg": {
@@ -4079,6 +4093,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.kmyRK2XqbDABaHcLtgUdBw&pid=News&w=1080": {
+  "w": 700,
+  "h": 350,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.l6kuKQHh7tgR0uUB0f--7A&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4268,6 +4288,12 @@
   "v": 3
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/03/05/cat-pokemon.jpg": {
   "w": 1600,
   "h": 900,
   "target": 1280,

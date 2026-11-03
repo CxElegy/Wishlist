@@ -236,6 +236,64 @@
   "漫威电影": 16,
   "三星手机": 5,
   "哈利波特剧集": 5,
-  "周杰伦": 4
- }
+  "周杰伦": 4,
+  "dota2": 2,
+  "星巴克马克杯": 2,
+  "A2O LITE": 1,
+  "猫用品": 1
+ },
+ "dota2": [
+  {
+   "headline": "BetBoom Team暫停Dota 2運作，五名選手全數轉為不活躍狀態",
+   "highlight": "暫停Dota 2運作",
+   "blurb": "BetBoom Team暫停Dota 2運作，五名選手全數轉為不活躍狀態。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://games.gg/cdn-cgi/image/width=1200,height=675,fit=cover,format=auto/https://assets.games.gg/betboom_team_dota_2_roster_inactive_hero_ca2afb8c0c_389dafbd50.webp"
+  },
+  {
+   "headline": "Kiyotaka Comments on His Return to Professional Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "【スタバ福袋キタ！】2027年の中身は何？1,000個限定ゴールドのマグ＆ベアリスが欲しすぎる！",
+   "highlight": "1,000個限定ゴールドのマグ",
+   "blurb": "スターバックス2027年福袋の中身。1,000個限定のゴールドのマグ＆ベアリスタに注目。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800"
+  },
+  {
+   "headline": "Disney and Starbucks Are Mint to Be: See the New Holiday Tumblers, Mug and More",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "A2O LITE": [],
+ "猫用品": [
+  {
+   "headline": "獣医師セミナー 猫の糖尿病",
+   "highlight": "猫の糖尿病",
+   "blurb": "レッツエンジョイ東京が紹介する、猫の糖尿病をテーマにした獣医師セミナー。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }
