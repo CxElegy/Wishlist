@@ -930,7 +930,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="7f39eb67f435"><style>
+<meta name="wl-ver" data-page="wishlist" content="d35062993593"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -969,7 +969,21 @@ html{scroll-behavior:smooth}
     note();
   }
   if(paused){ R.dataset.sb='down'; note(); }
-  window.WL_SB={isDown:function(){return down;}};
+  // 放置したタブの見回りを止める（2026-11-03）：見回り（setInterval の代わり）は every(fn, ms|関数) 1 本。触らない 10 分を超えたら
+  // 5 分おき以上、30 分で止まる。触る・スクロール・タブに戻る で止まっていた分をすぐ 1 回読んで再開する。呼ぶ側は直さなくてよい
+  var last=Date.now(), ps=[], IDLE1=600000, IDLE2=1800000;
+  function every(fn,ms){
+    var p={t:0,fn:fn};
+    function gap(){var i=Date.now()-last,m=typeof ms==='function'?ms():ms;return i>=IDLE2?-1:(i>=IDLE1?Math.max(m,300000):m);}
+    p.loop=function(){clearTimeout(p.t);var g=gap();if(g<0)return;
+      p.t=setTimeout(function(){if(!document.hidden&&!down)p.fn();p.loop();},g);};
+    ps.push(p);p.loop();
+  }
+  function touch(){var was=Date.now()-last>=IDLE1;last=Date.now();
+    if(was)ps.forEach(function(p){if(!document.hidden&&!down)p.fn();p.loop();});}
+  ['pointerdown','keydown','touchstart','wheel','scroll'].forEach(function(e){addEventListener(e,touch,{passive:true,capture:true});});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)touch();});
+  window.WL_SB={isDown:function(){return down;},every:every};
   window.fetch=function(input,init){
     var u=typeof input==='string'?input:(input&&input.url)||'';
     if(!sb(u)) return of(input,init);
@@ -1414,8 +1428,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     // お客さま → 访客（ログアウト・「見つかりません」）：showMine が版面・駅・目次の網址を書き換えているので、開き直して店長のページに戻す
     // 本人のページの中では、ログインの確かめの途中で一瞬「お客さまでない」と出ても開き直さない。開き直すのはログアウトしたときだけ
     if(!on&&OWN){if(signedOut)location.reload();return;}
-    if(!on&&R.dataset.mine==='2'){R.dataset.mine='0';clearInterval(R._wlub);location.reload();return;}
-    if(!on){R.dataset.mine='0';clearInterval(R._wlub);R._wlmb=null;if(box) box.remove();var b0=document.querySelector('.wl-mybar');if(b0)b0.remove();
+    if(!on&&R.dataset.mine==='2'){R.dataset.mine='0';R._wlload=null;location.reload();return;}
+    if(!on){R.dataset.mine='0';R._wlload=null;R._wlmb=null;if(box) box.remove();var b0=document.querySelector('.wl-mybar');if(b0)b0.remove();
       document.querySelectorAll('.wl-off').forEach(function(x){x.classList.remove('wl-off');});return;}
     if(R.dataset.mine!=='2') R.dataset.mine='1';
     if(!box)box=soleBox();
@@ -1644,7 +1658,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     function load(){if(!tok||!wait.length)return;rpc('my_boards').then(function(r){var sig=JSON.stringify((r&&r.boards)||[]);
         if(sig===R._wlsig&&!bad)return;R._wlsig=sig;bad=false;mineB={};((r&&r.boards)||[]).forEach(function(b){if(b&&b.name)mineB[norm(b.name)]=b;});R._wlmb=mineB;draw();},
       function(){if(!Object.keys(mineB).length&&!bad){bad=true;draw();}});}
-    load();clearInterval(R._wlub);R._wlub=setInterval(function(){if(!document.hidden)load();},5*60e3);   // 開いている間も 5 分ごとに読み直す（集まりしだい本物の版面に）
+    load();if(!R._wlub){R._wlub=1;if(window.WL_SB&&WL_SB.every)WL_SB.every(function(){R._wlload&&R._wlload();},5*60e3);else setInterval(function(){if(!document.hidden&&R._wlload)R._wlload();},5*60e3);}R._wlload=load;   // 開いている間も 5 分ごとに読み直す（集まりしだい本物の版面に）
   }
   // 選んだものがまだないとき・設定の「外す」の画面（足すのは入口と同じ「ジャンル → 左右に払うカード → 確認」＝ ADD。ここは押して選ぶ・外す）
   function drawMine(box,p,err){
@@ -1861,7 +1875,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>11.04 00:50</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>11.04 00:52</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">

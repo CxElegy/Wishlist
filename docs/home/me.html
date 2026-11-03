@@ -21,7 +21,21 @@
     note();
   }
   if(paused){ R.dataset.sb='down'; note(); }
-  window.WL_SB={isDown:function(){return down;}};
+  // 放置したタブの見回りを止める（2026-11-03）：見回り（setInterval の代わり）は every(fn, ms|関数) 1 本。触らない 10 分を超えたら
+  // 5 分おき以上、30 分で止まる。触る・スクロール・タブに戻る で止まっていた分をすぐ 1 回読んで再開する。呼ぶ側は直さなくてよい
+  var last=Date.now(), ps=[], IDLE1=600000, IDLE2=1800000;
+  function every(fn,ms){
+    var p={t:0,fn:fn};
+    function gap(){var i=Date.now()-last,m=typeof ms==='function'?ms():ms;return i>=IDLE2?-1:(i>=IDLE1?Math.max(m,300000):m);}
+    p.loop=function(){clearTimeout(p.t);var g=gap();if(g<0)return;
+      p.t=setTimeout(function(){if(!document.hidden&&!down)p.fn();p.loop();},g);};
+    ps.push(p);p.loop();
+  }
+  function touch(){var was=Date.now()-last>=IDLE1;last=Date.now();
+    if(was)ps.forEach(function(p){if(!document.hidden&&!down)p.fn();p.loop();});}
+  ['pointerdown','keydown','touchstart','wheel','scroll'].forEach(function(e){addEventListener(e,touch,{passive:true,capture:true});});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)touch();});
+  window.WL_SB={isDown:function(){return down;},every:every};
   window.fetch=function(input,init){
     var u=typeof input==='string'?input:(input&&input.url)||'';
     if(!sb(u)) return of(input,init);
