@@ -68,6 +68,15 @@ def pages_on():
     return _ON[0]
 
 
+EMBLEM_URL = re.compile(r"https://[^/\"'\s]+\.supabase\.co/storage/v1/object/public/emblems/([0-9A-Za-z_.-]+\.webp)")
+
+
+def emblems_to_pages(html):
+    """お客さまのページの小元素（ライブラリの boards.config.emblem の網址＝Supabase の emblems 箱）を Pages の /p/<名前> に書き換える。
+    旗 off ならそのまま。写しの対象は harness/photo_cache_fill（boards の config から同じ名前を数える）。2026-11-03：ログイン中の storage 取得 19 件の根。"""
+    return EMBLEM_URL.sub(lambda m: f"{PAGES_BASE}/{m.group(1)}", html) if pages_on() else html
+
+
 def public(base, k, w=800):
     return f"{base.rstrip('/')}/storage/v1/object/public/{BUCKET}/{name(k, w)}"
 

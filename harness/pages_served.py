@@ -41,7 +41,7 @@ def main():
     ap.add_argument("--timeout", type=int, default=120)
     a = ap.parse_args()
     from playwright.sync_api import sync_playwright
-    count, bad, seen, hosts = Counter(), [], set(), Counter()
+    count, bad, seen, hosts, stor = Counter(), [], set(), Counter(), []
     with sync_playwright() as pw:
         b = launch(pw)
         runs = [(p, None) for p in a.pages.split(",") if a.pages] + [("home/", w) for w in a.who.split(",") if w]
@@ -52,7 +52,7 @@ def main():
                 pg.goto(BASE + "home/", wait_until="domcontentloaded", timeout=a.timeout * 1000)
                 pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}",
                             ux_check.session(ux_check.WHO[who]))
-            pg.on("request", lambda r: (seen.add(r.url), count.update([classify(r.url)]), hosts.update([re.sub(r"^https?://([^/]+).*", r"\1", r.url)] if classify(r.url) == "other" else [])) if r.resource_type == "image" and r.url not in seen else None)
+            pg.on("request", lambda r: (seen.add(r.url), count.update([classify(r.url)]), stor.append((who or path, r.url)) if classify(r.url) == "storage" else None, hosts.update([re.sub(r"^https?://([^/]+).*", r"\1", r.url)] if classify(r.url) == "other" else [])) if r.resource_type == "image" and r.url not in seen else None)
             pg.on("response", lambda r: bad.append((r.status, r.url)) if "/Wishlist/p/" in r.url and r.status not in (200, 304) else None)
             pg.goto(BASE + path, wait_until="domcontentloaded", timeout=a.timeout * 1000)
             if who:   # 殻から本人のページ（wl-own）に替わるまで待つ。替わらなければ ✗ 扱いにするため数を出す
@@ -71,6 +71,8 @@ def main():
         b.close()
     ok, line = verdict(count, bad)
     print("  Pages の外から出た画像（原寸の外部画像＝/p/ が無いときの落ち先）", sum(hosts.values()), "件・上位", hosts.most_common(4))
+    for w, u in stor[:20]:   # どの写真が /p/ に無く Supabase に落ちたか（原因を数える元）
+        print("  storage", w, u)
     for s, u in bad[:20]:
         print("  失敗", s, u)
     print(("✓ " if ok else "✗ ") + line)

@@ -28,6 +28,7 @@ import zoneinfo
 
 import digest
 import heat
+import photo_store
 import render
 import sbstate
 import sources
@@ -275,8 +276,8 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     # 本人のページの印（AUTH_JS が「自分のページの中」と分かるように。もう一度読み替えない）
     mark = f'<head><meta name="wl-own" content="{render.e(email)}">'
     if pages is not None:
-        pages["settings.html"] = settings_page(prefs, items, schemes, settings, updated).replace("<head>", mark, 1)
-    return html_.replace("<head>", mark, 1)
+        pages["settings.html"] = photo_store.emblems_to_pages(settings_page(prefs, items, schemes, settings, updated).replace("<head>", mark, 1))
+    return photo_store.emblems_to_pages(html_.replace("<head>", mark, 1))
 
 
 def _supa(path, data=None, method="GET", ctype="application/json"):

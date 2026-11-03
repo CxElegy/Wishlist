@@ -6,6 +6,7 @@ import os
 import re
 import sys
 import time
+import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -17,7 +18,19 @@ MAX_BYTES = int(float(os.environ.get("WL_FILL_MAX_MB") or 100) * 1024 * 1024)   
 MAX_SECONDS = int(os.environ.get("WL_FILL_MAX_MIN") or 12) * 60   # 時間の上限（workflow の timeout より前に止め、写しを保存させる）
 
 
+EMB = re.compile(r"/storage/v1/object/public/emblems/([0-9A-Za-z_.-]+\.webp)")
 PAGES = re.compile(r"https://cxelegy\.github\.io/Wishlist/p/([0-9a-f]{16}-\d+\.webp)")   # 旗 on のあとの網址（落とし先は Supabase の photos のまま）
+
+
+def board_emblems(settings):
+    """お客さまの版面の小元素（boards.config の emblems 箱の網址）。docs/ の html に無いので DB から名前を数える（読むだけ・1 回の GET）。
+    user_pages が /p/ に書き換える対象と同じ名前。取れなければ空（次の回で足す）。"""
+    try:
+        base, key = settings["supabase_url"].rstrip("/"), settings["supabase_key"]
+        req = urllib.request.Request(base + "/rest/v1/boards?select=config", headers={"apikey": key, "Authorization": "Bearer " + key})
+        return set(EMB.findall(urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")))
+    except Exception:  # noqa: BLE001
+        return set()
 
 
 def urls():
@@ -44,8 +57,20 @@ def urls():
     return seen
 
 
+def board_urls():
+    """DB から数える小元素の取得先（{名前: 網址}）。urls() とは別（試験はネットに出ない）。"""
+    import yaml
+    st = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("settings") or {}
+    return {n: f"{st['supabase_url'].rstrip('/')}/storage/v1/object/public/emblems/{n}" for n in board_emblems(st)}
+
+
 def main():
     want = urls()
+    try:
+        for n, u in board_urls().items():
+            want.setdefault(n, u)
+    except Exception:  # noqa: BLE001
+        pass
     browser.CACHE.mkdir(parents=True, exist_ok=True)
     gone = [f for f in browser.CACHE.iterdir() if f.is_file() and f.name not in want]
     for f in gone:
