@@ -5,6 +5,7 @@
   "https://www.jaturi.kr/news/articleView.html?idxno=27771": "2026-11-03"
  },
  "images": {
+  "http://k.sina.com.cn/article_1308889783_m4e0412b703301kove.html?cre=tianyi&mod=pcent&loc=12&r=0&rfunc=12&tj=cxvertical_pc_ent&tr=12&from=ent&subch=oent": "http://n.sinaimg.cn/sinakd20261102ac/533/w480h853/20261102/e56b-ace4d496e360754bfe6f92bf53c346e4.jpg",
   "http://www.excite.co.jp/news/article/Prtimes_2026-11-02-16333-238/": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FPrtimes%252Ffc%252FPrtimes_2026-11-02-16333-238%252FPrtimes_2026-11-02-16333-238_1.jpg,zoom=1200,quality=70,type=jpg",
   "https://9to5google.com/2026/11/02/some-samsung-galaxy-phones-are-having-android-auto-issues-with-one-ui-9/": "https://9to5google.com/wp-content/uploads/sites/4/2025/06/Galaxy-S25-Ultra-camera-system-4.jpg?quality=82&strip=all&resize=1200,628",
   "https://9to5toys.com/2026/11/03/belkin-mandalorian-magnetic-power-bank/": "https://9to5toys.com/wp-content/uploads/sites/5/2026/11/Belkin-Mandalorian-edition-metal-Magnetic-Power-Bank-6f4731.webp?resize=1200,628",
@@ -19,7 +20,6 @@
   "https://games.gg/news/betboom-team-dota-2-roster-inactive/": "https://assets.games.gg/betboom_team_dota_2_roster_inactive_og_a611ffe91c_96ff5bf3b3.webp",
   "https://kai-you.net/article/97042": "https://img.kai-you.net/storage/2026/11/44d15073-efd6-4811-b4ba-966e390d33ce/main/mappa_sponsored.webp",
   "https://limo.media/articles/-/144235": "https://limo.ismcdn.jp/mwimgs/f/9/1200w/img_f9fc3d848c723be08212ba0eb6301ed5130258.jpg",
-  "https://m.zhibo8.com/news/web/other/2026-11-04/6aea07ff28ae0native.htm": "http://tu.duoduocdn.com/uploads/day_220711/m_62cb74c49e1e3.jpg",
   "https://mezamashi.media/articles/-/368575": "https://mezamashi.ismcdn.jp/mwimgs/a/7/1200xm/img_a751d99a9da2327f93af5791b20ce6fc1582493.jpg",
   "https://n.yam.com/Article/20261028746360": "https://ni.yam.com/20261028/58209971f014950270ea0797d4e8e71e-678e09ac9a31d48c.webp",
   "https://news.gamebase.com.tw/news/detail/99441811": "https://image.gamebase.com.tw/gb_img/6/004/520/4520236.jpg?og=y",
@@ -1309,21 +1309,21 @@
   {
    "batch": 4,
    "because": "周杰伦",
-   "date": "2026-11-03",
+   "date": "2026-11-02",
    "hits": [],
-   "image": "http://tu.duoduocdn.com/uploads/day_220711/m_62cb74c49e1e3.jpg",
+   "image": "http://n.sinaimg.cn/sinakd20261102ac/533/w480h853/20261102/e56b-ace4d496e360754bfe6f92bf53c346e4.jpg",
    "kind": "board",
    "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
    "score": 7,
-   "source": "直播吧",
+   "source": "手机新浪网",
    "taste": [
     [
      "作品:周杰伦",
      3
     ]
    ],
-   "title": "有进步！周杰伦获得ITF国际网球大师赛MT400男双及混双亚军",
-   "url": "https://m.zhibo8.com/news/web/other/2026-11-04/6aea07ff28ae0native.htm",
+   "title": "周杰伦广州演唱会12月4日至6日天河体育中心开唱",
+   "url": "http://k.sina.com.cn/article_1308889783_m4e0412b703301kove.html?cre=tianyi&mod=pcent&loc=12&r=0&rfunc=12&tj=cxvertical_pc_ent&tr=12&from=ent&subch=oent",
    "words": [],
    "work": "周杰伦"
   },
@@ -1952,11 +1952,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1968,11 +1968,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ]
  ]
