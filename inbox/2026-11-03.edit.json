@@ -69,23 +69,24 @@
  "_covered": {
   "漫威电影": 62,
   "GTA 6": 43,
-  "三星手机": 20,
+  "三星手机": 21,
   "A2O LITE": 7,
-  "MMORPG 新作": 5,
+  "MMORPG 新作": 6,
   "dota2": 8,
   "哈利波特剧集": 4,
   "あつ森": 3,
   "ILLIT": 7,
-  "周杰伦": 2,
+  "周杰伦": 3,
   "Astrae Oratio": 1,
   "日本顶级网球赛事": 1,
-  "The Mandalorian": 2,
-  "gelato pique": 2,
+  "The Mandalorian": 4,
+  "gelato pique": 3,
   "チェーンソーマン": 5,
   "滑雪": 2,
-  "Vaundy": 1,
+  "Vaundy": 2,
   "猫用品": 1,
-  "绝区零": 1
+  "绝区零": 2,
+  "FROM": 2
  },
  "GTA 6": [
   {
@@ -211,6 +212,15 @@
    "refs": [
     19
    ]
+  },
+  {
+   "headline": "Galaxy S27 Plusの国内発売が確実に ドコモ・ソフトバンク・SIMフリー版の型番が発見",
+   "highlight": "国内発売が確実に",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    21
+   ]
   }
  ],
  "A2O LITE": [
@@ -289,6 +299,15 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "Loftia early access review: An MMO reimagining the cozy life sim",
+   "highlight": "Loftia",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -421,7 +440,8 @@
    "blurb": "Zeb Orrelios from Star Wars Rebels joins The Mandalorian in live action.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    4
    ],
    "image": "https://helios-i.mashable.com/imagery/articles/04Mt2Vvjp0ZGJArOgVNvySL/hero-image.fill.size_1200x675.v1680102816.jpg"
   },
@@ -453,6 +473,15 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "ジェラート ピケから“子犬スヌーピー”デザインが初登場！家族全員でリンクコーデできる新作70アイテム以上",
+   "highlight": "“子犬スヌーピー”",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
@@ -501,7 +530,17 @@
    ]
   }
  ],
- "Vaundy": [],
+ "Vaundy": [
+  {
+   "headline": "Jeremy Quartus、Vaundyプロデュース＆n-bunaギター参加の新曲「僕らの事にさせて」MV公開",
+   "highlight": "MV公開",
+   "blurb": "Vaundyがプロデュースし、n-bunaがギターで参加した Jeremy Quartus の新曲「僕らの事にさせて」のMVが公開された。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "猫用品": [
   {
    "headline": "經典獸醫漫畫《動物のお医者さん》首推正式周邊 哈士奇チョビ、關西腔貓ミケ登場",
@@ -514,5 +553,27 @@
    "image": "https://ni.yam.com/20261103/jp-prt-27516-144-1-261102170146629-547e866ef3ccf8a6.webp"
   }
  ],
- "绝区零": []
+ "绝区零": [
+  {
+   "headline": "ゼンレスゾーンゼロVer.3.3ポリクローム配布量まとめ！無課金で87連を目指す全18カ所の獲得ガイド",
+   "highlight": "Ver.3.3ポリクローム配布量",
+   "blurb": "ゼンレスゾーンゼロ Ver.3.3 のポリクローム配布量をまとめた攻略ガイド。無課金で87連を目指す全18カ所の獲得方法を紹介。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "Why Isn’t ‘From’ Getting a Season 6? Creators Explain the Show’s ‘Endgame’",
+   "highlight": "Season 6",
+   "blurb": "Creators explain why FROM won't return after Season 5 and the show's planned endgame.",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ]
+  }
+ ]
 }

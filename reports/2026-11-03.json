@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "edit_sig": "174cc71dfae0",
+ "edit_sig": "ff1cec6d73b4",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -76,9 +76,8 @@
      "date": "2026-11-02",
      "headline": "Analyst Says First-Day ‘Grand Theft Auto VI’ Sales Could Reach $4.5 Billion",
      "highlight": "$4.5 Billion",
-     "image": null,
-     "source": "Media Play News",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.mediaplaynews.com&sz=128",
+     "image": "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.mediaplaynews.com/analyst-says-first-day-grand-theft-auto-vi-sales-could-reach-4-5-billion/",
      "weight": "normal"
     },
@@ -109,15 +108,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 6,
-     "source": "TheGamer on MSN",
-     "title": "Loftia early access review: An MMO reimagining the cozy life sim",
-     "url": "https://www.msn.com/en-us/news/other/loftia-early-access-review-an-mmo-reimagining-the-cozy-life-sim/ar-AA2gCzWW"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -346,16 +336,6 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-02",
-     "headline": "Galaxy S27 Plusの国内発売が確実に ドコモ・ソフトバンク・SIMフリー版の型番が発見",
-     "highlight": "",
-     "image": "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-02-172831.jpg",
-     "image_via": "og:image",
-     "url": "https://sumahodigest.com/?p=75446",
-     "weight": "hero"
-    },
-    {
      "blurb": "Galaxy S27 Pro と Ultra に、輝度を高めたプライバシーディスプレイが載るとの報道。",
      "date": "2026-11-02",
      "headline": "サムスンのGalaxy S27 ProとUltra、輝度向上のプライバシーディスプレイ搭載か＝報道",
@@ -414,6 +394,16 @@
      "image_via": "og:image",
      "url": "https://nokiapoweruser.com/samsung-galaxy-s27-ultra-one-ui-9-5-first-build-leak/",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "Galaxy S27 Plusの国内発売が確実に ドコモ・ソフトバンク・SIMフリー版の型番が発見",
+     "highlight": "国内発売が確実に",
+     "image": "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-02-172831.jpg",
+     "image_via": "og:image",
+     "url": "https://sumahodigest.com/?p=75446",
+     "weight": "normal"
     }
    ],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
@@ -432,15 +422,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 3,
-     "source": "ウォーカープラス",
-     "title": "画像13 / 30＞ジェラート ピケから“子犬スヌーピー”デザインが初登場！家族全員でリンクコーデできる新作70アイテム以上",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9DV3ZkUnFOUTNhZGd3YV9vRkNpWGl4OV85dHJfLU9CQWpLdzFHdUhvbzZrX0NjWWhCWHFDbTJCZWg5WTJmWTdIazA5ckI5S0oxTFI2b1JZLVlJSEJLOU9zd1BmM0pXY0FRdHJmNGd3?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -461,6 +442,16 @@
      "image": "https://news.walkerplus.com/article/1176865/12571500_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1176865/image12571507.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "ジェラート ピケから“子犬スヌーピー”デザインが初登場！家族全員でリンクコーデできる新作70アイテム以上",
+     "highlight": "“子犬スヌーピー”",
+     "image": "https://news.walkerplus.com/article/1304639/15595279_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1304639/image15595292.html",
      "weight": "normal"
     }
    ],
@@ -525,22 +516,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 3,
-     "source": "ComicBook.com",
-     "title": "Best Mandalorian Helmets: Which Replica is Worth Your Money?",
-     "url": "https://comicbook.com/crate/mandalorian-helmets-for-cosplay/"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 4,
-     "source": "Mashable",
-     "title": "'The Mandalorian' brings Lizzo and Jack Black into the Star Wars universe",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFAzNWd1NWVPU1BLcnhLMDU3bEZ0WVRHdUZjOTdacXA3MjByTzZGSE9UXzcxd0FDT2hGYWVfT3J2a0poa2d0NFpqWTVxSm9MLWZaajNuVnYtUFlpVm0tZzZkbWdtbWMzbHJkbjREc2pOSjI?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -583,14 +558,14 @@
    "section": "演出",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "Vaundyがプロデュースし、n-bunaがギターで参加した Jeremy Quartus の新曲「僕らの事にさせて」のMVが公開された。",
      "date": "2026-11-02",
-     "headline": "Jeremy Quartus、Vaundyプロデュース＆n-bunaギター参加の新曲「僕らの事にさせて」MV公開 (音楽ナタリー)",
-     "highlight": "",
+     "headline": "Jeremy Quartus、Vaundyプロデュース＆n-bunaギター参加の新曲「僕らの事にさせて」MV公開",
+     "highlight": "MV公開",
      "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26hDqX7YN3T-8sSQMP263OksHDBSL10NdP2CYNgCRQLE1Klc0W0MLJabxSct6s7yj1isryUApIKuQwcmo4nG1-bctEtMXxKNwO0Kwv5oA9RqKPzAzF-deb7U3r9IQA0CrTQ==",
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/4ef5fa75c78c56a7eecf3ea49ed7e99f1bfa2a5f/images/000",
-     "weight": "hero"
+     "weight": "lead"
     }
    ],
    "subtitle": "演唱会",
@@ -611,16 +586,6 @@
    "name": "周杰伦",
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-02",
-     "headline": "曾是周杰伦MV女主，3次吸毒入狱，被摘除4处器官的她，如今后悔吗",
-     "highlight": "",
-     "image": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/11/02/179358926125212344_664_2000.JPEG",
-     "image_via": "正文图（6 枚から）",
-     "url": "https://timeline.sohu.com/news/kvFdqulgRy",
-     "weight": "hero"
-    },
     {
      "blurb": "",
      "date": "2026-10-30",
@@ -651,14 +616,14 @@
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "ゼンレスゾーンゼロ Ver.3.3 のポリクローム配布量をまとめた攻略ガイド。無課金で87連を目指す全18カ所の獲得方法を紹介。",
      "date": "2026-10-30",
      "headline": "ゼンレスゾーンゼロVer.3.3ポリクローム配布量まとめ！無課金で87連を目指す全18カ所の獲得ガイド",
-     "highlight": "",
+     "highlight": "Ver.3.3ポリクローム配布量",
      "image": "https://assets.mmoexp.com/images/202610/6fddef34feaf47b9fde27c6f004d0ff52ea8ae33.jpg",
      "image_via": "正文图（3 枚から）",
      "url": "https://www.mmoexp.com/News/zenless-zone-zero-version-3-3-polychrome-guide-how-to-get-87-free-pulls-from-all-18-sources-f2p-guide.html",
-     "weight": "hero"
+     "weight": "lead"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",
@@ -873,24 +838,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Creators explain why FROM won't return after Season 5 and the show's planned endgame.",
      "date": "2026-11-02",
-     "n": 1,
-     "source": "TV Insider",
-     "title": "'FROM' Season 6: Why the Series Won't Return After Season 5 and What the Creators Say",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQUGlOQnpoX3JOZG53cXFGZ1M0Ul92aE1lU0dnaHEzNWE2TVZqeUVMT3g4N3JBV0kwd1M1bU8zcUFmM0RINHlhLW9BSDMzM01yelVsNnpMdzkxVU5PSHI1X0U1X2l1UmY3cjNWeDQ5WjVLbmxlUmRvMFJOeTIySVNXeWhVMlRHQnNTTU13WlJ1YXUxOHU0T1FIb0dn?oc=5"
-    },
-    {
-     "date": "2026-11-02",
-     "n": 2,
-     "source": "IMDb",
-     "title": "Why Isn’t ‘From’ Getting a Season 6? Creators Explain the Show’s ‘Endgame’",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5SblZoTVJROV9xMXMwcmVYRm5jdlRLUTJ5cUgxbFc1T0JjREI2QmVGWTZJQzQwMnpaeGxIZDFvZnRGMFlRaU9rOW9WM0FrdTh5XzR0M1VaM2Y5Q0M2OTlzWkVabFNjUQ?oc=5"
+     "headline": "Why Isn’t ‘From’ Getting a Season 6? Creators Explain the Show’s ‘Endgame’",
+     "highlight": "Season 6",
+     "image": "https://www.tvinsider.com/wp-content/uploads/2026/03/FROM_S4E1_Harold-Perrineau-as-Boyd-Stevens-1420x798.jpg",
+     "image_via": "og:image（其它来源）",
+     "url": "https://www.imdb.com/news/ni66092420/?ref_=nwc_art_perm",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
