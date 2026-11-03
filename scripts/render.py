@@ -6503,7 +6503,7 @@ EMM_JS = r"""
     $('emm-img').src=pg(t.dataset.img);$('emm-name').textContent=t.dataset.subj||'小元素';$('emm-why').textContent=t.dataset.why?'取り方：'+t.dataset.why:'';
     var cs=[],box=$('emm-cands');try{cs=JSON.parse(t.dataset.cands||'[]');}catch(e){}
     box.innerHTML='';cs.forEach(function(c){var b=document.createElement('button'),im=document.createElement('img');b.type='button';b.className='emm-cand';b.dataset.u=c.image;b.title=c.why||'';
-      im.alt='候補';im.loading='lazy';im.src=c.image;b.appendChild(im);box.appendChild(b);});
+      im.alt='候補';im.loading='lazy';im.src=pg(c.image);b.appendChild(im);box.appendChild(b);});
     $('emm-cands-t').textContent=cs.length?'候補 '+cs.length+' 枚。押して決める（今の写真と入れ替わり、そのまま固定）':t.dataset.wait==='1'?'集めています。次の後台作業のあと（1 時間ほど）にここに並びます':'まだ候補がありません。集める依頼を送ると、次の後台作業のあと（1 時間ほど）に並びます';
     $('emm-cands-go').hidden=cs.length>0||t.dataset.wait==='1';
     $('emm-lock-t').textContent=lock?'固定をはずす':'この写真で固定';
