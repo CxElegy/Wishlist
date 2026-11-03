@@ -1,6 +1,6 @@
 {
  "admin": "210f1c8b2471",
- "admin-ai": "ae7efb810ac9",
+ "admin-ai": "5659b5e05b03",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "bbbc70b1"
+   "cd62d095"
   ]
  },
  "admin-boards": "f1ac221acd8d",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "abe8e508bca1",
+ "admin-emblem": "a6ef22bfc729",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "7c868a71"
+   "8f1aa1cd"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "1e2ff3091441",
+ "admin-now": "06155f4810a3",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "6a5e423c"
+   "d3f1c8a2"
   ]
  },
- "admin-system": "6ba1ee1742d2",
+ "admin-system": "f92a77ca6b79",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9c3faedb"
+   "dc494f27"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "029623d0"
+   "80e010b2"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "9dbe529f"
   ]
  },
- "index": "94cbe78c801f",
+ "index": "054142fb833f",
  "index_marks": {
   "front": [
    "トップ",
-   "4e3ee8a7"
+   "f36d8dc4"
   ],
   "picks": [
    "気になるかも？",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "595b5d1d"
+   "f68bd7a2"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "d7a7de10"
+   "7fbd8b0d"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "1aaa3285"
+   "25b5f963"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "9be760a1"
   ]
  },
- "updated": "11.04 05:59",
+ "updated": "11.04 06:22",
  "wishlist": "65bedbb4e63c"
 }
