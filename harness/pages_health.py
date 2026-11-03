@@ -123,6 +123,33 @@ def photos_main(set_flag):
     raise SystemExit(0 if ok else 1)
 
 
+LIMIT = 1 << 30   # GitHub Pages の公開物の目安 1 GB
+WARN = 0.7        # これを超えたら ✗（古い写真を外す規則は消すことなので [?] で聞く）
+
+
+def size_verdict(manifest, prev=None):
+    """(ok, 一行)。manifest["bytes"]＝pages_photos.stage が書いた公開物の合計。prev＝前の測定（バイト）。"""
+    b = (manifest or {}).get("bytes")
+    if not b:
+        return None, "測れず：公開中の manifest に bytes が無い（次の公開から入る）"
+    grow = "" if not prev else "・前回より %+.1f MB" % ((b - prev) / 1e6)
+    return b <= LIMIT * WARN, "公開物 %.0f MB＝1 GB の %.0f%%（%d%% 超で ✗）%s" % (b / 1e6, b / LIMIT * 100, WARN * 100, grow)
+
+
+def size_main(set_flag):
+    f = ROOT / "state" / "pages_size.json"
+    try:
+        prev = json.loads(f.read_text(encoding="utf-8")).get("bytes")
+    except (OSError, ValueError):
+        prev = None
+    m = live_manifest()
+    ok, line = size_verdict(m, prev)
+    print("%s %s" % ("-" if ok is None else "✓" if ok else "✗", line))
+    if set_flag and ok is not None:
+        f.write_text(json.dumps({"bytes": m["bytes"]}) + "\n", encoding="utf-8")
+    raise SystemExit(2 if ok is None else 0 if ok else 1)
+
+
 def emblems_missing(names, manifest):
     """boards の小元素の名前のうち、Pages の p/manifest.json に無いもの（足りない名前）。manifest が None なら全部。"""
     have = set((manifest or {}).get("names", []))
@@ -160,7 +187,10 @@ def main():
     ap.add_argument("--photos", action="store_true", help="写真を Pages から配ってよいかを判定（旗 state/pages_photos.json）")
     ap.add_argument("--set", action="store_true", help="--photos の結果を旗に書く")
     ap.add_argument("--emblems", action="store_true", help="boards の小元素の名前 ⊆ Pages の写し")
+    ap.add_argument("--size", action="store_true", help="公開物の大きさ（1 GB の何 %）。--set で今回の値を state/pages_size.json に残す")
     a = ap.parse_args()
+    if a.size:
+        size_main(a.set)
     if a.emblems:
         emblems_main()
     if a.photos:

@@ -116,6 +116,20 @@ class PagesPhotos(unittest.TestCase):
             m = json.loads((d / "docs" / "p" / "manifest.json").read_text())
             self.assertEqual(m["names"], ["0123456789abcdef-800.webp"])
 
+    def test_manifest_has_bytes_and_size_verdict(self):
+        import json
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            (d / "c").mkdir()
+            (d / "c" / "0123456789abcdef-800.webp").write_bytes(b"x" * 10)
+            self.s.stage(d / "c", d / "docs")
+            self.assertGreaterEqual(json.loads((d / "docs" / "p" / "manifest.json").read_text())["bytes"], 10)
+        h = self.h
+        self.assertIsNone(h.size_verdict({})[0])
+        self.assertTrue(h.size_verdict({"bytes": 100 << 20}, 90 << 20)[0])
+        self.assertFalse(h.size_verdict({"bytes": int(h.LIMIT * 0.71)})[0])
+
     def test_flag_default_off_and_url_switch(self):
         P = self.P
         k = "0123456789abcdef"

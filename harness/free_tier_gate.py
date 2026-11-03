@@ -79,6 +79,7 @@ def steps(skip_prod=False):
     if not skip_prod:
         out.append(sh("docs の storage 網址 0・写真は Pages（pages_served）", [PY, "harness/pages_served.py"], 600))
         out.append(sh("写真の旗を on にしてよい（pages_health --photos）", [PY, "harness/pages_health.py", "--photos"], 300))
+        out.append(sh("公開物が 1 GB の 70% 以下（pages_health --size。測れずは次の公開から）", [PY, "harness/pages_health.py", "--size"], 120))
         out.append(sh("Supabase が止まっても崩れない（sb_down_check）", [PY, "harness/sb_down_check.py"], 900))
     return out
 
