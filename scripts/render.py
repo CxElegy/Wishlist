@@ -523,6 +523,10 @@ button{font-family:inherit}
 .pkgrid:not(.row):has(.pk.big:first-child):has(.pk:nth-child(7)):not(:has(.pk:nth-child(8))) .pk:nth-child(n+6){grid-column:span 2}
 .pkgrid:not(.row):has(.pk.big:first-child):has(.pk:nth-child(8)):not(:has(.pk:nth-child(9))) .pk:nth-child(8){grid-column:span 2}
 }
+/* 761〜1200px は 2 列：大きい 1 枚が 1 行を占めるので、全部で偶数枚だと最後の行の右が空く→最後の 1 枚を 2 列に伸ばす。.row（大きい札なし）は全部で奇数枚のとき（2026-11-03） */
+@media (min-width:761px) and (max-width:1200px){
+.pkgrid:not(.row):has(.pk.big:first-child) .pk:nth-child(even):last-child,.pkgrid.row .pk:nth-child(odd):last-child{grid-column:1/-1}
+}
 .pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
 .pk.big .vote{margin:12px 24px 0}
 .vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}

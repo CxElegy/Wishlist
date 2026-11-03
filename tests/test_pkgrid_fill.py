@@ -14,9 +14,9 @@ JS = """()=>{const g=document.querySelector('.pkgrid'),gr=g.getBoundingClientRec
  return {gap:Math.round(worst),n:cs.length}}"""   # 列ごとに、その列の札の底と並び全体の底の差（札のない列は全体）
 
 
-def page(n):
-    cards = "".join(f'<div class="pk{" big" if i == 0 else ""}"><a><div class="pic" style="min-height:120px"></div><div class="pkt"><b>t{i}</b></div></a></div>' for i in range(n))
-    return f"<!doctype html><meta charset=utf-8><style>{render.CSS}</style><body><div style='width:1300px'><div class=pkgrid>{cards}</div></div></body>"
+def page(n, row=False):
+    cards = "".join(f'<div class="pk{" big" if i == 0 and not row else ""}"><a><div class="pic" style="min-height:120px"></div><div class="pkt"><b>t{i}</b></div></a></div>' for i in range(n))
+    return f"<!doctype html><meta charset=utf-8><style>{render.CSS}</style><body><div style='width:1300px'><div class='pkgrid{" row" if row else ""}'>{cards}</div></div></body>"
 
 
 class PkgridFill(unittest.TestCase):
@@ -34,10 +34,13 @@ class PkgridFill(unittest.TestCase):
             except Exception as ex:  # noqa: BLE001  CI にブラウザが無いとき
                 self.skipTest("ブラウザなし: %s" % str(ex)[:80])
             pg = b.new_page(viewport={"width": 1400, "height": 900})
-            for n in range(1, 10):
-                pg.set_content(page(n))
-                r = pg.evaluate(JS)
-                self.assertLessEqual(r["gap"], 4, "札 %d 枚：どこかの列の下が %dpx 空いている" % (n, r["gap"]))
+            for w in (1400, 1200, 1100, 900, 761):   # 761〜1200px も 4 列のまま（2026-11-03：2/4/6/8 枚で穴）
+                pg.set_viewport_size({"width": w, "height": 900})
+                for n in range(1, 10):
+                    for row in (False, True) if w < 1201 else (False,):   # .row（似たジャンルの新着）は 2 列の幅だけ
+                        pg.set_content(page(n, row).replace("1300px", "100%"))
+                        r = pg.evaluate(JS)
+                        self.assertLessEqual(r["gap"], 4, "幅 %d・札 %d 枚・row=%s：どこかの列の下が %dpx 空いている" % (w, n, row, r["gap"]))
             b.close()
 
 
