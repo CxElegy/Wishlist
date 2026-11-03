@@ -182,7 +182,9 @@
    "blurb": "TVLine reports on how Paapa Essiedu feels about the backlash over his Severus Snape casting.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    6,
+    7
    ],
    "image": "https://www.tvline.com/img/gallery/how-harry-potter-star-paapa-essiedu-feels-about-severus-snape-casting-backlash/paapa-essiedu-says-hes-received-death-threats-1793718244.jpg"
   },
@@ -322,13 +324,17 @@
   "GTA 6": 64,
   "漫威电影": 49,
   "三星手机": 17,
-  "哈利波特剧集": 5,
+  "哈利波特剧集": 7,
   "周杰伦": 8,
   "dota2": 6,
   "星巴克马克杯": 2,
   "A2O LITE": 1,
   "猫用品": 1,
-  "The Mandalorian": 4
+  "The Mandalorian": 4,
+  "ILLIT": 2,
+  "MMORPG 新作": 2,
+  "あつ森": 2,
+  "チェーンソーマン": 2
  },
  "dota2": [
   {
@@ -398,6 +404,68 @@
    "price": {
     "now": "$36"
    }
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT・YUNAH、小さい頃の夢は「良いお母さん」 IROHAの意外な回答にはスタジオどよめき",
+   "highlight": "IROHAの意外な回答",
+   "blurb": "ILLITのYUNAHが幼い頃の夢は「良いお母さん」と明かし、IROHAの意外な回答にスタジオがどよめいた。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "【YouTubeチャート】EBiDANが3週連続首位 ILLITが3位浮上",
+   "highlight": "ILLITが3位浮上",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "ArcheAge Chronicles Early Access Pre-Load is Live, XL Adds Some Support For Two New Languages",
+   "highlight": "Pre-Load is Live",
+   "blurb": "ArcheAge Chronicles Early Access begins today, and XL has shared more answers to community questions.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "MMORPG『Legend of YMIR』、新規・復帰ユーザー向け招待イベント「エインヘリャルの同行」特設ページをオープン",
+   "highlight": "招待イベント",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "任天堂公开《集合啦!动物森友会》两款《塞尔达传说》主题设计!",
+   "highlight": "《塞尔达传说》主题设计",
+   "blurb": "任天堂为《集合啦！动物森友会》公开两款《塞尔达传说》主题免费设计，分别为三角力量T恤和克洛格。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "「足元にポチタが…！」『チェンソーマン』×クロックス初コラボ 愛らしい表情を再現したモデルなど全4種類",
+   "highlight": "×クロックス初コラボ",
+   "blurb": "『チェンソーマン』×クロックスの初コラボ。愛らしい表情を再現したモデルなど全4種類。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }

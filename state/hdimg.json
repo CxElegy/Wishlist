@@ -1776,6 +1776,13 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s.msn.cn/tenant/amp/entityid/AA2gjyCu.img": {
+  "w": 800,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.354
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2guyRk.img": {
   "w": 500,
   "h": 815,
@@ -3120,6 +3127,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/56498/354/56498-354-5fb6b62d9a4e4546bf8060a1ac4e3fd6-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/78611/290/78611-290-c6ff8f8a26d80f4fb47b381b76d6866f-1923x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 897,
   "h": 1260,
@@ -3235,6 +3248,19 @@
   "target": 720,
   "v": 3
  },
+ "https://saga.ismcdn.jp/mwimgs/b/9/1200m/img_b9b8e9d1da6ceb1645444cae6286af1366110.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.421,
+  "local": "pics/93954d00159cb9f3.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://samsungmagazine.eu/wp-content/uploads/2026/05/Galaxy-S26-110.jpg": {
   "w": 1900,
   "h": 1425,
@@ -3326,6 +3352,19 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/4/0/e/2/40e2f70bbd3700dd0b35cd4fb1252459_1.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.433,
+  "local": "pics/276de6a87c2b5cc1.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://static.sanyonews.jp/image/article/size1/4/d/4/f/4d4f13d5e99de3f5780b3e1d0970b701_1.jpg": {
   "w": 406,
   "h": 640,
@@ -3363,6 +3402,13 @@
   "h": 360,
   "target": 720,
   "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/d/b/3/b/db3bbbdba3c8e92815679ecd49c5a40c_1.jpg": {
+  "w": 640,
+  "h": 468,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.301
  },
  "https://static.sanyonews.jp/image/article/size1/d/d/3/e/dd3e16fa11d27187f9d798ff4daf507d_1.jpg": {
   "w": 640,
@@ -3978,6 +4024,13 @@
    671
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.SdDKKuSrrQgIVsVVJWcARA&pid=News&w=700": {
+  "w": 700,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.344
  },
  "https://www.bing.com/th?id=ONUT.UBRO9CAO0UKiuMrm--RzFg&pid=News&w=1200": {
   "w": 700,
