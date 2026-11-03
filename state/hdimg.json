@@ -2353,6 +2353,12 @@
   "target": 720,
   "v": 3
  },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/14/179197850424419605_664_2000.JPEG": {
+  "w": 664,
+  "h": 443,
+  "target": 720,
+  "v": 3
+ },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
   "w": 664,
   "h": 497,
@@ -3125,6 +3131,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00000020-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 533,
+  "target": 720,
+  "v": 3,
+  "local": "pics/b8ef5dec4fb19d0a.webp",
+  "out": [
+   800,
+   533
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsbytes.ph/wp-content/uploads/2026/10/PT-sports.jpg": {
   "w": 1162,
   "h": 641,
@@ -3364,6 +3382,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/24668/4126/24668-4126-35b6c0468c123b2a7ec48caf59a324b6-3520x1980.jpg": {
+  "w": 3520,
+  "h": 1980,
+  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/33064/2374/33064-2374-aafbde6387e9d7b24dd5643746614460-3900x2601.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
