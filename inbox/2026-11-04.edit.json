@@ -325,16 +325,21 @@
   "漫威电影": 49,
   "三星手机": 17,
   "哈利波特剧集": 7,
-  "周杰伦": 8,
+  "周杰伦": 9,
   "dota2": 6,
   "星巴克马克杯": 2,
-  "A2O LITE": 1,
-  "猫用品": 1,
+  "A2O LITE": 2,
+  "猫用品": 3,
   "The Mandalorian": 4,
   "ILLIT": 2,
   "MMORPG 新作": 2,
   "あつ森": 2,
-  "チェーンソーマン": 2
+  "チェーンソーマン": 2,
+  "Vaundy": 1,
+  "绝区零": 1,
+  "Astrae Oratio": 1,
+  "滑雪": 1,
+  "日本顶级网球赛事": 1
  },
  "dota2": [
   {
@@ -380,7 +385,26 @@
    ]
   }
  ],
- "A2O LITE": [],
+ "A2O LITE": [
+  {
+   "headline": "[入徳直カム]エイトゥオライトヤング - ニオン [Meltin 'FanCam] A2O LITE",
+   "highlight": "A2O LITE",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "A2O LITE《NEON》掀起荧光妆热潮",
+   "highlight": "《NEON》",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "猫用品": [
   {
    "headline": "獣医師セミナー 猫の糖尿病",
@@ -389,6 +413,24 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "もっとも多い猫の寝方は「横向き寝」！寝姿でわかる猫の気持ちを獣医師が解説",
+   "highlight": "横向き寝",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Stock up on cat litter with up to 25% off at Chewy and save on our favorite litter boxes",
+   "highlight": "up to 25% off",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ],
@@ -462,6 +504,41 @@
    "headline": "「足元にポチタが…！」『チェンソーマン』×クロックス初コラボ 愛らしい表情を再現したモデルなど全4種類",
    "highlight": "×クロックス初コラボ",
    "blurb": "『チェンソーマン』×クロックスの初コラボ。愛らしい表情を再現したモデルなど全4種類。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "【オリコン】Ayumu Imazu「結び」で自身初の1位 Vaundy「しわあわせ」5年半を経て初TOP5",
+   "highlight": "初TOP5",
+   "blurb": "Vaundy「しわあわせ」が配信開始から5年半を経て初のTOP5入り。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "绝区零": [],
+ "Astrae Oratio": [
+  {
+   "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+   "highlight": "TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+   "blurb": "엔씨가 삼성전자와 손잡고 TGS 2026에서 ‘아스트라에 오라티오’를 첫 시연한다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "滑雪": [],
+ "日本顶级网球赛事": [
+  {
+   "headline": "シュナイダー＆エラーニ／パオリーニが今季初優勝 [東レPPO]",
+   "highlight": "今季初優勝",
+   "blurb": "",
    "weight": "lead",
    "refs": [
     1

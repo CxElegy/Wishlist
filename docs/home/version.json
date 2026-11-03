@@ -1,14 +1,14 @@
 {
- "admin": "9b1c884c9211",
- "admin-ai": "ff2a94e57ffc",
+ "admin": "89c4cb4d40af",
+ "admin-ai": "bc0d43646ae9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "7eb6d7b6"
+   "61467e71"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e129a194"
+   "1e72ef40"
   ]
  },
  "admin-boards": "f06091abd8b2",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "230011183805",
+ "admin-emblem": "57cfc101c4f1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "56bf0d2d"
+   "316d52ec"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "0145b042bdbd",
+ "admin-now": "ea39063c2e49",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e60a8d1e"
+   "754e042a"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a79cae66"
+   "f01366fd"
   ]
  },
- "admin-system": "42261de11c4f",
+ "admin-system": "01b982ee0756",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c4a79cb6"
+   "2a333f9d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b626e839"
+   "7d0a428a"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "9b431300"
   ]
  },
- "index": "d7c6de71596b",
+ "index": "eba1738f6ef9",
  "index_marks": {
   "front": [
    "トップ",
-   "0af23f33"
+   "1361a892"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "aaa4da5e"
+   "a920ac2f"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "92e6a9d3"
+   "00640520"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "4a0dcd54"
+   "6ff1abeb"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "1af05db9"
+   "f006be86"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "0e453f79"
+   "9d466ed9"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "9be760a1"
   ]
  },
- "updated": "11.04 07:23",
+ "updated": "11.04 07:27",
  "wishlist": "9772b58d6183"
 }

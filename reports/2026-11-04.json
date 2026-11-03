@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "edit_sig": "aa7d8cb7097d",
+ "edit_sig": "0d27445a6940",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?bqVdDUNTL2GwsM_MMMW0M",
@@ -255,22 +255,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 2,
-     "source": "Business Insider",
-     "title": "Stock up on cat litter with up to 25% off at Chewy and save on our favorite litter boxes",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9tTzBBWUVDdU9OR0x5SjBISGMwNzViU0RZNU1WaTc4OUlBYmNxNl9WbmNBWjFEVElFeTJFUlE4OUtGQjhYcGVRTGZNRWwxMG42VU90VEU1SWI3ejJPYThRY3FfSEFvX3llU3k3VG14LTZhOTdyMEF5WktyTQ?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 3,
-     "source": "ｄメニューニュース",
-     "title": "もっとも多い猫の寝方は「横向き寝」！寝姿でわかる猫の気持ちを獣医師が解説（ねこのきもち WEB MAGAZINE）",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNcDQ5MWU0RDJFaEZLcmR5Z0JUcC1OYUdwNVF6ZWZRWXgwQ0MzckJkTnF2R0d6WGxVOVhVaXVBeFVRbHdIR0ZVOXFLeTgza1VDcFE4d045VFItWGg2UTV3YnROYjJDblV5akRFWlVkUkRkZHVxdlVuZmo0dnNmekhqMw?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -282,6 +266,26 @@
      "image_via": "og:image",
      "url": "https://www.enjoytokyo.jp/event/2089496/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "もっとも多い猫の寝方は「横向き寝」！寝姿でわかる猫の気持ちを獣医師が解説",
+     "highlight": "横向き寝",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100433.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/cat_benesse/life/cat_benesse-100433",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "Stock up on cat litter with up to 25% off at Chewy and save on our favorite litter boxes",
+     "highlight": "up to 25% off",
+     "image": "https://i.insider.com/6aea26f34b5ca383fe7cf285?width=1200&format=jpeg",
+     "image_via": "og:image",
+     "url": "https://www.businessinsider.com/guides/deals/cat-litter-deals-2026-11-3",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
@@ -475,17 +479,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "Vaundy「しわあわせ」が配信開始から5年半を経て初のTOP5入り。",
      "date": "2026-11-03",
-     "n": 1,
-     "source": "佐賀新聞",
-     "title": "【オリコン】Ayumu Imazu「結び」で自身初の1位 Vaundy「しわあわせ」5年半を経て初TOP5【ストリーミング上位動向】",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE8zd1pwVlM3SEd6Y0t3VGhMWi00enVFbjlWbTFTQmg0X24xclJVVDNydUMtVTJyR3p5VTQxSDBEYlE2bXE4c2owemV6YmZXaWt1STJpN1duSHl5ZDlLYnBaRkdYU2s?oc=5"
+     "headline": "【オリコン】Ayumu Imazu「結び」で自身初の1位 Vaundy「しわあわせ」5年半を経て初TOP5",
+     "highlight": "初TOP5",
+     "image": "https://saga.ismcdn.jp/mwimgs/1/0/1200m/img_10aac7ffa9445b5c6654ce01bd27821f89845.jpg",
+     "image_via": "og:image",
+     "url": "https://www.saga-s.co.jp/articles/gallery/1809956?ph=1",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
@@ -502,15 +508,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 9,
-     "source": "360娱乐",
-     "title": "相差14岁的婚姻走过11年，周杰伦病痛夜昆凌彻夜守护，剖腹产后他推轮椅煲汤",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFB3dWVtckJUWnByWXZPbVpLZmlFdGRZUnJOZXY3YzdxMVRYYWtxX2JNbGdnbHBkaTg0Rzh2UVJwZC1hZmtGRzY4bVBmbw?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -540,7 +537,7 @@
      "highlight": "浅唱《本草纲目》",
      "image": null,
      "source": "网易新闻客户端",
-     "source_icon": "https://static.ws.126.net/163/frontend/images/logo-netease-114.png",
+     "source_icon": "https://static.ws.126.net/163/frontend/images/logo-netease-144.png",
      "url": "https://c.m.163.com/news/v/VK9RVCCQQ.html",
      "weight": "normal"
     }
@@ -554,33 +551,6 @@
     "bg": "#F6F2EA",
     "fg": "#1D2430",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-   "facts": [],
-   "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 1,
-     "source": "GameRes游资网",
-     "title": "为什么原神和绝区零都是三渲二，很多人却觉得三渲二游戏消失了？",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1xZ0gxV0VEbV93bXEtUG9zenk0OThnRXg3T1ZCN2tvbmp6NkloVF8yd21QQWtGblFXN21ZUEw0Ni1Yd09KNUZtSDJ2QXhaSGc?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "ゼンレスゾーンゼロ",
-   "theme": {
-    "accent": "#A9898A",
-    "alt_accent": "#856062",
-    "alt_bg": "#F2EDEE",
-    "alt_fg": "#1E1A18",
-    "bg": "#1E1516",
-    "fg": "#F4EEE4",
-    "font": "serif",
     "split": true
    }
   },
@@ -627,17 +597,29 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "[入徳直カム]エイトゥオライトヤング - ニオン [Meltin 'FanCam] A2O LITE",
+     "highlight": "A2O LITE",
+     "image": "https://www.wowkorea.jp/img/Breaking/106/531949/623322_1280W.webp",
+     "image_via": "og:image",
+     "url": "https://www.wowkorea.jp/Breaking/read/531949.html",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-11-02",
-     "n": 2,
-     "source": "PAP Magazine",
-     "title": "A2O LITE《NEON》掀起荧光妆热潮",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbUdISmlQWnNRV0o3ODdsMmFtOUpBWU9YWXBnTG5rREpYdU1DRVhkS0FaWExIbDJYUHVteUxCU1JfMU1qVzNvLXZQc243LVk1UDV4aG82ZWxvS3BmdUNwY3MxNXphNjVNd25Xbi15bVFYQ21VNUIwNmFWQWIzUEdfSUhXTkZ6dVU?oc=5"
+     "headline": "A2O LITE《NEON》掀起荧光妆热潮",
+     "highlight": "《NEON》",
+     "image": "https://igcazquhkwxtqsaqpznx.supabase.co/storage/v1/object/public/media/ig-articles/18025431548949698/0.jpg",
+     "image_via": "og:image",
+     "url": "https://www.pap-magazine.com/zh/article/a2o-lite-neon-inspired-neon-makeup-trend",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
@@ -654,17 +636,21 @@
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "엔씨가 삼성전자와 손잡고 TGS 2026에서 ‘아스트라에 오라티오’를 첫 시연한다.",
      "date": "2026-11-01",
-     "n": 1,
+     "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+     "highlight": "TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+     "image_via": "作品封面",
      "source": "쿠키뉴스",
-     "title": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연 [쿠키 게임]",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE10ODFGNkJDdW00M0RVZ3FqY0p1Rkp1ZEQ4YnE1SmpxVlZNcFRhZXRVU0ZHUWwySmltTzJ3MU9TUVJ0WVlWTkdQTVNid2E1Tk4xc1BQLWoxMGR0VkpPTzRqQ21zaw?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.kukinews.com&sz=128",
+     "url": "https://www.kukinews.com/article/view/kuk202609110059",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -717,33 +703,6 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 1,
-     "source": "日本経済新聞",
-     "title": "日本スキー場開発[6040]：事業計画及び成長可能性に関する事項 2026年10月30日(適時開示) ：日経会社情報DIGITAL",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5tTkhqWVVBeUJfaEFWNXJVbkxGcWZRWEx3OWI3TjgyMzJERGh3Z1hkV2gxZ0xRY0REeVU4R3RBbF9jTjRSZk1UWkZhSWtPV3Q5SURfMGk4Tm5veWF1S0g4cUswSENkT1JVYnc?oc=5"
-    }
-   ],
-   "section": "运动",
-   "stories": [],
-   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
-   "theme": {
-    "accent": "#D9412B",
-    "alt_accent": "#8EC5E8",
-    "alt_bg": "#14233A",
-    "alt_fg": "#F4F8FB",
-    "bg": "#F4F8FB",
-    "fg": "#14233A",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
@@ -786,17 +745,19 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "テニスマガジンONLINE",
-     "title": "シュナイダー＆エラーニ／パオリーニが今季初優勝 [東レPPO]",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1PcmJCUktwV0R1cmRqTkRVZndVUy1ReE4wRUlGLWt6MmNGQTdXQ1QwRENnYUhqdzRJLVNFaGxNZlVsRldYaWdNWmhmZ1E1VHVWOHhrZ2oxbnFxM1pxQkVKXzBFbw?oc=5"
+     "headline": "シュナイダー＆エラーニ／パオリーニが今季初優勝 [東レPPO]",
+     "highlight": "今季初優勝",
+     "image": "https://www.bing.com/th?id=ONUT.m8kazEwLDrWIXrHAlYQCLw&pid=News&w=1200",
+     "image_via": "转载 news.yahoo.co.jp（Bing 缩略图）",
+     "url": "https://tennismagazine.jp/article/detail/35871?page=2",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
@@ -831,6 +792,31 @@
     "bg": "#F7F0E9",
     "fg": "#1E1A18",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-03",
+    "headline": "スキー場を選ぶから、地域を旅するへ。雪山をつなぐバスと共通シーズン券",
+    "url": "https://note.com/williamteru/n/n65d9b7248c0b"
+   },
+   "name": "滑雪",
+   "quiet": true,
+   "section": "运动",
+   "status": "",
+   "stories": [],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
     "split": true
    }
   },
@@ -906,6 +892,31 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
+   "facts": [],
+   "last": {
+    "date": "2026-11-03",
+    "headline": "ゼンレスゾーンゼロVer.3.3ポリクローム配布量まとめ！無課金で87連を目指す全18カ所の獲得ガイド",
+    "url": "https://www.mmoexp.com/News/zenless-zone-zero-version-3-3-polychrome-guide-how-to-get-87-free-pulls-from-all-18-sources-f2p-guide.html"
+   },
+   "name": "绝区零",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#A9898A",
+    "alt_accent": "#856062",
+    "alt_bg": "#F2EDEE",
+    "alt_fg": "#1E1A18",
+    "bg": "#1E1516",
+    "fg": "#F4EEE4",
+    "font": "serif",
     "split": true
    }
   }
