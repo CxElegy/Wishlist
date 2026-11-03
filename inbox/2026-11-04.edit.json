@@ -203,7 +203,8 @@
       "blurb": "Galaxy S27+は複数の認証機関に登場しており、45Wの急速充電機能はGalaxy S26+と同じであることが確認されている。",
       "weight": "lead",
       "refs": [
-        2
+        2,
+        10
       ],
       "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793712043011_img_cd6fc2d9.jpeg"
     },
@@ -223,7 +224,8 @@
       "blurb": "",
       "weight": "normal",
       "refs": [
-        3
+        3,
+        6
       ]
     },
     {
@@ -233,6 +235,26 @@
       "weight": "normal",
       "refs": [
         4
+      ]
+    },
+    {
+      "headline": "Galaxy S27 Ultra dummy shows a wider camera bar and one fewer lens",
+      "highlight": "wider camera bar",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        8,
+        9,
+        7
+      ]
+    },
+    {
+      "headline": "RAM Crisis Threatens the Price of the Galaxy S27 Ultra 1 TB More Expensive",
+      "highlight": "Galaxy S27 Ultra 1 TB",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        11
       ]
     }
   ],
@@ -269,7 +291,7 @@
   "_covered": {
     "GTA 6": 40,
     "漫威电影": 39,
-    "三星手机": 5,
+    "三星手机": 11,
     "哈利波特剧集": 5,
     "周杰伦": 4,
     "dota2": 2,
