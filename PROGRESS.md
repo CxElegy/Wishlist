@@ -310,3 +310,4 @@
 - 2026-11-03 r2：photo_cache 取り込み後の pages_served --who test-a,test-b,test-c（本番 1 回）＝455 件 Pages 100.0%・storage 0・/p/ 失敗 0 ✓。ux_check 時間切れは ux_all（#822）で解消済みを確認。次：24 時間通しの egress を 11/4 01:30 UTC に query_logs で数える。
 2026-11-03 r2f1：egress 小さい係 ①②の続き（#824＋本件）管理ページ小元素 pg()・候補写真も pg()。docs/ の storage 網址 0（data-fb 除く）。boards の小元素名 660＝manifest の小元素 660（DB 数え・MCP）。boards 64 件に photos 箱の画像 0。tests 1288 OK。次：24 時間通しの egress を 11/4 01:30 UTC に
 2026-11-03 r2f2：egress ①② 別の目の指摘を直す。小元素名の集合を md5 で突き合わせ（DB 660＝manifest 660・⊆ 証明）、boards/board_stories の非小元素 storage 網址 0 を pages_health --emblems と photo_cache.yml の毎回の点検に。/p/ 名は docs 2715・store 5224 とも manifest に全部ある。次：本番 ux_all --fast を 1 回。
+2026-11-03 r2f2：#826 合併後 本番 ux_all --fast（test-a/b/c × 1400/390 ＋ global）7 回 ✓・✗ 0・未完 0。前の /p/ 失敗 14 は再現せず。次：11/4 01:30 UTC の egress 数え直し。
