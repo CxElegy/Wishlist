@@ -73,7 +73,7 @@
   "漫威电影": 68,
   "GTA 6": 47,
   "三星手机": 24,
-  "A2O LITE": 7,
+  "A2O LITE": 9,
   "MMORPG 新作": 9,
   "dota2": 8,
   "哈利波特剧集": 4,
@@ -81,13 +81,13 @@
   "ILLIT": 15,
   "周杰伦": 3,
   "Astrae Oratio": 1,
-  "日本顶级网球赛事": 1,
-  "The Mandalorian": 4,
+  "日本顶级网球赛事": 3,
+  "The Mandalorian": 6,
   "gelato pique": 3,
   "チェーンソーマン": 8,
   "滑雪": 2,
-  "Vaundy": 2,
-  "猫用品": 1,
+  "Vaundy": 3,
+  "猫用品": 3,
   "绝区零": 2,
   "FROM": 2
  },
@@ -435,9 +435,19 @@
    "blurb": "大坂なおみが東レPPOの初戦を突破し、娘の存在と有明への思いを語った。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    3
    ],
    "image": "https://image.news.livedoor.com/newsimage/stf/e/3/e3880_760_2488439_20261028_181544_size640wh_51793488.jpg"
+  },
+  {
+   "headline": "＜東レ・パンパシフィック・オープン最終日＞ダブルス決勝、フォトセッションに臨む",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "The Mandalorian": [
@@ -459,6 +469,24 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Coming soon: huge mag on 'The Mandalorian and Grogu'",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "New Star Wars book reveals unexpected '90s as inspiration for The Mandalorian and Grogu",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -568,6 +596,24 @@
     1
    ],
    "image": "https://ni.yam.com/20261103/jp-prt-27516-144-1-261102170146629-547e866ef3ccf8a6.webp"
+  },
+  {
+   "headline": "日本KEYUCA響應11月22日「感謝寵物日」 買寵物用品捐助動物基金救援犬貓",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Marshalls' Holiday Advent Calendar Packs 24 Cat Toys Into One Christmas Countdown",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "绝区零": [

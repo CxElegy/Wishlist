@@ -472,6 +472,12 @@
   "target": 720,
   "v": 3
  },
+ "https://beforesandafters.com/wp-content/uploads/2026/11/Screenshot-2026-11-03-at-11.34.49-am.jpg": {
+  "w": 1280,
+  "h": 485,
+  "target": 1280,
+  "v": 3
+ },
  "https://biz.chosun.com/resizer/v2/VEQEHTQKPFIUHCV27Z6TKRHCJQ.jpg?auth=555511c856fc73df5cea9de84cf146538b636aa4d16d22132390d7a860683067&width=1200&height=630&smart=true": {
   "w": 1200,
   "h": 630,
@@ -912,7 +918,7 @@
  "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/03014721/pet-prt-42258-683-1-261102174718333.jpeg": {
   "w": 1500,
   "h": 1329,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://d2me2qg8dfiw8u.cloudfront.net/content/uploads/2026/10/Swiatek-Chwalinska-Svitolina.jpg": {
@@ -1981,6 +1987,12 @@
  "https://img.sportsbull.jp/raw/t2m8VMS5AgyOd1ngRNI4M1BYyyaofcW7fQOmvQWf.jpg": {
   "w": 1024,
   "h": 576,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100425.jpg": {
+  "w": 560,
+  "h": 560,
   "target": 720,
   "v": 3
  },
@@ -3799,6 +3811,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/12/mandalorian-grogu.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
   "w": 1200,
   "h": 653,
@@ -4014,6 +4032,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/01/1793518918872_17935120288761292194897526244225522898744703979080a956beb782b93abdd1c5fd744a01c5dd-17935123162911346392751-53-0-1188-2168-crop-17935125067981749509703.webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/02/1793627802067_img_2abc25fc.jpeg": {
@@ -4259,12 +4283,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.N-f2Ky3IkMTQMcFoucfixQ&pid=News&w=640": {
-  "w": 640,
-  "h": 425,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Nd044nfDUdY2nVSo8VWSSA&pid=News&w=912": {
   "w": 700,
@@ -4833,6 +4851,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-03"
+ },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
   "w": 410,
   "h": 231,
@@ -4907,6 +4932,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-03"
+ },
+ "https://www.sponichi.co.jp/sports/news/2026/11/02/jpeg/20261102s10028000053000p_view.webp": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
  },
  "https://www.starwarsnewsnet.com/wp-content/uploads/2026/10/Nightmare_on_Nevarro_header.jpg": {
   "w": 2000,
