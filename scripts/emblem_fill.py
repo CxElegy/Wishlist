@@ -2062,7 +2062,8 @@ def due(prog, items, now):
         hint = any(item.get(k) for k in ("emblem_fandom", "emblem_api", "emblem_category", "anilist_id", "wikidata"))
         recount = item.get("emblem_category") and not item.get("emblem_pool")   # 分類はあるのに数えられなかった（429）：版を待たずに次の回も
         unbreak_due = any(x.get("v", 1) < BROKEN_V for x in broken.get(item["name"]) or [])   # 前の規則で外した小元素の見直し待ち
-        unbreak_due = unbreak_due or reject_release_due(item)   # 外した画像の札の見直し待ち（規則の版が上がった後 1 回）
+        unbreak_due = unbreak_due or reject_release_due(item)   # 外した画像の札の見直し待ち（規則の版が上がった後 1 回）   # 縮めた網址の札（stale_narrow_rejects）は fill_one の release_small_rejects でしか解けないので、あれば番に入れる（そろった・失敗で材料が同じ版面は due が飛ばし、E24 が 18 のまま残った）
+        unbreak_due = unbreak_due or bool(stale_narrow_rejects(item, broken.get(item["name"])))
         if st["state"] == "ok" and not broken_cuts(item) and not unbreak_due and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
         if (e.get("state") == "failed" and not os.environ.get("EMBLEM_RETRY_NOW")
