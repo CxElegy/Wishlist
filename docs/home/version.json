@@ -1,32 +1,32 @@
 {
- "admin": "2d38586f1b11",
- "admin-ai": "cbbe9c598d2d",
+ "admin": "24f4349d60d9",
+ "admin-ai": "90fc02bfa133",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "33b91647"
+   "7f3d627c"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "405c16d5"
+   "ab0eb69e"
   ]
  },
- "admin-boards": "46ce973ef07a",
+ "admin-boards": "00cb0fe8f0f3",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "20ef9d62"
+   "25ffb11e"
   ],
   "votes": [
    "投票",
    "05938a02"
   ]
  },
- "admin-emblem": "29e59bfc9c08",
+ "admin-emblem": "5e8c2c1d9c63",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "42ca35ef"
+   "0189b8e2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "78d285cd7757",
  "admin-members_marks": {},
- "admin-now": "9af4c826e7a0",
+ "admin-now": "b6a2290d02a2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "28273101"
+   "93bcb77f"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "641a81da"
+   "43f2e4d8"
   ]
  },
- "admin-system": "b33981805548",
+ "admin-system": "e1d574e8d85b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "139a9330"
+   "cd22bf4e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "6a6a3a61"
+   "07c1fa31"
   ]
  },
  "admin_marks": {},
- "heat": "f038282e6ad7",
+ "heat": "24878596a4da",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "77a19cbb"
+   "de130f32"
   ],
   "ranking": [
    "ランキング",
-   "acf50f27"
+   "8bf434c4"
   ]
  },
- "index": "f5675bd4381f",
+ "index": "d26f4b30321e",
  "index_marks": {
   "front": [
    "トップ",
-   "e52b8108"
+   "60c1b515"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "0d1fd64a"
+   "ab0a6ca2"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "4ac972ad"
+   "9519b04b"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "56cb9101"
+   "c792f945"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "fe2d57ad"
+   "094a75d8"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "3ec634f1"
   ]
  },
- "updated": "11.03 14:49",
+ "updated": "11.03 14:55",
  "wishlist": "bc8461df4e5d"
 }

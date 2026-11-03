@@ -1680,6 +1680,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCv4j.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ga95n.img": {
   "w": 1200,
   "h": 675,
@@ -2362,6 +2368,12 @@
  "https://mtnweekly.com/wp-content/uploads/2026/10/Nitro-Phase-2027-Motorhead-Snowboard-17.jpg": {
   "w": 1200,
   "h": 859,
+  "target": 720,
+  "v": 3
+ },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/14/179197850424419605_664_2000.JPEG": {
+  "w": 664,
+  "h": 443,
   "target": 720,
   "v": 3
  },
@@ -3392,7 +3404,7 @@
  "https://prcdn.freetls.fastly.net/release_image/24668/4126/24668-4126-35b6c0468c123b2a7ec48caf59a324b6-3520x1980.jpg": {
   "w": 3520,
   "h": 1980,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/33064/2374/33064-2374-aafbde6387e9d7b24dd5643746614460-3900x2601.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3440,7 +3452,7 @@
  "https://research.image.itmedia.co.jp/wp-content/uploads/2026/11/1793603711_ec60eab7bddbf45a46b1e3d98529e5c5.jpg": {
   "w": 1200,
   "h": 630,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2026/10/avengers-4-1793169416.jpg": {

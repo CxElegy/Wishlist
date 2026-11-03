@@ -75,20 +75,20 @@
   "三星手机": 29,
   "A2O LITE": 9,
   "MMORPG 新作": 16,
-  "dota2": 8,
-  "哈利波特剧集": 4,
+  "dota2": 9,
+  "哈利波特剧集": 5,
   "あつ森": 3,
   "ILLIT": 19,
   "周杰伦": 5,
   "Astrae Oratio": 1,
   "日本顶级网球赛事": 3,
   "The Mandalorian": 6,
-  "gelato pique": 3,
+  "gelato pique": 4,
   "チェーンソーマン": 8,
-  "滑雪": 2,
+  "滑雪": 4,
   "Vaundy": 3,
   "猫用品": 3,
-  "绝区零": 2,
+  "绝区零": 4,
   "FROM": 2
  },
  "GTA 6": [
@@ -338,7 +338,8 @@
     2,
     1,
     5,
-    7
+    7,
+    9
    ],
    "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg"
   },
@@ -371,6 +372,15 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "Harry Potter: Wizards of Baking hosts on the new season",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -548,6 +558,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "【サンリオ×ジェラピケ】「かわいすぎて癒やされる」「もこもこで幸せ」「秋の新作ルームウェア」3選",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "チェーンソーマン": [
@@ -602,6 +621,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "【苗場スキー場】秋の滞在価値向上へ宿泊者限定「アクティビティフリー」を拡充し、新たに「ディスクゴルフ」を導入",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
