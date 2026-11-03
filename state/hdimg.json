@@ -60,6 +60,19 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261103ac/200/w640h360/20261103/92bc-f5a952f2db2693439249c45b3f1b76f8.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.525,
+  "local": "pics/531e60a2bbf0183d.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
@@ -3836,12 +3849,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.wixstatic.com/media/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg/v1/fill/w_1000,h_566,al_c,q_85,usm_0.66_1.00_0.01/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg": {
-  "w": 1000,
-  "h": 566,
-  "target": 720,
-  "v": 3
- },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/03/harry-potter-season-1-alastair-stout-dominic-mclaughlin-arabella-stanton.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -4936,6 +4943,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
   "w": 410,
   "h": 231,
@@ -4997,6 +5010,12 @@
   "w": 1000,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.sankei.com/resizer/v2/65EOE3WOE5ID5LTHGWNOHP3EKM.jpg?auth=f68ce2a975a4f94ed9b2100ebe18fe73b3574057ecfe11db389cef0f860abb75&quality=50&smart=true&width=1200&height=675": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png": {

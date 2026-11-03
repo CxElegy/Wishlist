@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "edit_sig": "c85630933cbb",
+ "edit_sig": "1eed91c09d8a",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -86,8 +86,8 @@
      "date": "2026-11-02",
      "headline": "Analyst Says First-Day ‘Grand Theft Auto VI’ Sales Could Reach $4.5 Billion",
      "highlight": "$4.5 Billion",
-     "image": "https://static.wixstatic.com/media/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg/v1/fill/w_1000,h_566,al_c,q_85,usm_0.66_1.00_0.01/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.mediaplaynews.com/analyst-says-first-day-grand-theft-auto-vi-sales-could-reach-4-5-billion/",
      "weight": "normal"
     },
@@ -398,15 +398,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 7,
-     "source": "IndexBox",
-     "title": "Cat Litter Mat Set Market To 2035: Premiumization and PET Humanization Drive Growth - News and Statistics",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPWnNoU2ZQTkdfOFdoSEJra09nVnFqamd2NG41dDN6Y0xfeWNJYWE5aEJ0SGY0Mm5QZTRaY0hzZnE4S2YxQ3FCX2JtWkVGaWtGVkVvRzByYlBqcHlHdEkyMDRFTVgyal8wTmpuUnMzdm9CMHVYX3FlS3dyREFtQUlva1RjMmhveWkxS01CSWkxSURSbmpqbG8tQnVDREttc244UWFTUjNfVHFoNTdlM1dVZGJKRDAyZm1fNmdwQUN3?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -807,15 +798,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 7,
-     "source": "手机新浪网",
-     "title": "周杰伦回应打网球拿亚军：怪一下球拍，不然能拿冠军",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5JRjNvTUFhNmhMX0t4MnBObFRmbEd0Wk9aZnlRaDhRbVQwM3JiallFODlDTnJaSHAxbnBlT0FBMnNjVDdVUVI5SWIyTndyUnBnd1RwYUpRLWFrMTNwZ184SDJ6Sm0xOWdXRGtlUUdyR25wQQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -836,6 +818,16 @@
      "image": "http://wx4.sinaimg.cn/middle/7d297217gy1iip1fj6973j20yi1a0wvz.jpg",
      "image_via": "正文图（本站保存）",
      "url": "https://www.sina.cn/news/detail/5361200788670674.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "周杰伦回应打网球拿亚军：怪一下球拍，不然能拿冠军",
+     "highlight": "",
+     "image": "http://n.sinaimg.cn/sinakd20261103ac/200/w640h360/20261103/92bc-f5a952f2db2693439249c45b3f1b76f8.jpg",
+     "image_via": "og:image",
+     "url": "http://k.sina.com.cn/article_5876448064_m15e437b4003301vw14.html",
      "weight": "normal"
     }
    ],
@@ -1071,15 +1063,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "産経ニュース",
-     "title": "東レPPOで初優勝を遂げたディアナ・シュナイデル（C）ORICON NewS inc.",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOUXdSalZnUmJSd0xVTWxTUXpQMnQ1V29QZjBHVG1hU3Z3UUdWdWd6cjlXYjVoWC1PSnlLZTNRODlFcEJ3ZnM2YW1yN1ktY0xBWGk0Ykp3OGtoRFR3d2tFeGQ2OEFYajlCMkR4bXNiandlWWVRaXFKczZIenV2M1Jac2FwX05ZVjR4ODJXcFJQSTJsTkpBQXliY1hFejNJNDF4S1E?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1100,6 +1083,16 @@
      "image": "https://www.sponichi.co.jp/sports/news/2026/11/02/jpeg/20261102s10028000053000p_view.webp",
      "image_via": "og:image",
      "url": "https://www.sponichi.co.jp/sports/news/2026/11/02/gazo/20261102s10028000053000p.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "東レPPOで初優勝を遂げたディアナ・シュナイデル",
+     "highlight": "",
+     "image": "https://www.sankei.com/resizer/v2/65EOE3WOE5ID5LTHGWNOHP3EKM.jpg?auth=f68ce2a975a4f94ed9b2100ebe18fe73b3574057ecfe11db389cef0f860abb75&quality=50&smart=true&width=1200&height=675",
+     "image_via": "og:image",
+     "url": "https://www.sankei.com/article/20261101-KQRIAS35F5IKDPAJ634J2IBHCY/photo/65EOE3WOE5ID5LTHGWNOHP3EKM/",
      "weight": "normal"
     }
    ],
