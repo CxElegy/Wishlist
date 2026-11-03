@@ -119,5 +119,12 @@ class FillFollowsRender(unittest.TestCase):
         self.assertIn("changed=", (ROOT / "harness" / "photo_cache_fill.py").read_text(encoding="utf-8"))
 
 
+    def test_photo_cache_save_is_verified(self):
+        """cache/save は「Unable to reserve cache」を警告だけで緑のまま終える（2026-11-03：80 枚が Pages に載らなかった）→ lookup-only で探し、無ければ別の名前で再保存、それでも無ければ赤。"""
+        t = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")
+        self.assertEqual(t.count("lookup-only: true"), 2)
+        self.assertIn("wl-photo-cache-${{ github.run_id }}-retry", t)
+        self.assertIn("exit 1", t)
+
 if __name__ == "__main__":
     unittest.main()

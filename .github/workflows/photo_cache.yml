@@ -62,6 +62,31 @@ jobs:
         with:
           path: .photo_cache
           key: wl-photo-cache-${{ github.run_id }}
+      # 2026-11-03：save が「Unable to reserve cache」と警告だけで終わり（緑のまま）、80 枚が Pages に載らなかった。入ったかを探し、無ければ別の名前でもう 1 回、それでも無ければ赤にする
+      - id: chk
+        if: always() && steps.fill.outputs.changed == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: .photo_cache
+          key: wl-photo-cache-${{ github.run_id }}
+          lookup-only: true
+      - uses: actions/cache/save@v4
+        if: always() && steps.fill.outputs.changed == 'true' && steps.chk.outputs.cache-hit != 'true'
+        with:
+          path: .photo_cache
+          key: wl-photo-cache-${{ github.run_id }}-retry
+      - id: chk2
+        if: always() && steps.fill.outputs.changed == 'true' && steps.chk.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: .photo_cache
+          key: wl-photo-cache-${{ github.run_id }}-retry
+          lookup-only: true
+      - name: 写しが保存できたか（どちらの名前にも無ければ赤）
+        if: always() && steps.fill.outputs.changed == 'true' && steps.chk.outputs.cache-hit != 'true' && steps.chk2.outputs.cache-hit != 'true'
+        run: |
+          echo "::error::写しが保存できなかった（2 回とも）。Pages に新しい写真が載らない"
+          exit 1
       - name: 写しが変わったら Pages を出し直す
         if: steps.fill.outputs.changed == 'true'
         env:
