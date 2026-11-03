@@ -20,6 +20,9 @@ PAGES = ["", "home/index.html", "home/settings.html", "home/wishlist.html", "hom
          "home/terms.html", "home/me.html", "home/admin-members.html", "home/admin-boards.html", "home/admin-now.html",
          "testground/face-size.html", "testground/layout-v2.html", "testground/wishes.html", "testground/product-head.html"]
 MAX_CALLS = 8
+# 戻る点検の対象：Supabase を読み込みで呼ぶ本人のページ全種（一覧・設定・愿望清单・管理）。入力欄のある設定・愿望清单では入力中に読み直さないかも見る
+RECOVER_PAGES = ["home/index.html", "home/settings.html", "home/wishlist.html", "home/admin.html"]
+FOCUS_PAGES = ("home/settings.html", "home/wishlist.html")
 
 
 def settle(p, hits, limit=12000):
@@ -109,7 +112,7 @@ def recover(pw, base):
     案内が消え・休止の印が外れ・（読み直しのあと）呼び出しが通る。まだ 402 の間は 10 分待って同じ網に 1 回だけ。"""
     bad = []
     b = launch(pw)
-    for page_ in ("home/index.html", "home/wishlist.html"):
+    for page_ in RECOVER_PAGES:
         for w, h in ((1400, 900), (390, 844)):
             ctx = b.new_context(viewport={"width": w, "height": h})
             st = {"code": 402, "n": 0}
@@ -141,12 +144,15 @@ def recover(pw, base):
                 bad.append(f"✗ {tag}: 11 分後の試しが 1 回でない／案内が消えた（網 +{st['n'] - n0}）")
             st["code"] = 200
             p.clock.fast_forward(11 * 60000)
+            focused = p.evaluate("()=>{var i=[].slice.call(document.querySelectorAll('input:not([type=hidden]):not([type=checkbox]),textarea')).find(function(e){return e.offsetParent;});if(i){i.focus();window.__keep=1;}return !!i&&document.activeElement===i}") if page_ in FOCUS_PAGES else False
             p.mouse.wheel(0, 50)
             try:
                 p.wait_for_function("()=>!document.documentElement.dataset.sb&&!document.querySelector('.wl-sbnote')", timeout=5000)
             except Exception:  # noqa: BLE001
                 bad.append(f"✗ {tag}: 402 が終わっても案内が消えない")
             p.wait_for_timeout(1500)
+            if focused and p.evaluate("()=>window.__keep||0") != 1:   # 入力中は読み直さない（書きかけを消さない）
+                bad.append(f"✗ {tag}: 入力中なのに読み直した")
             if p.evaluate("()=>document.documentElement.dataset.sb||''") == "down":
                 bad.append(f"✗ {tag}: 戻ったのに休止のまま")
             print(f"{tag:28s} 網 {st['n']} 回 · 案内 {p.evaluate('()=>document.querySelectorAll(\".wl-sbnote\").length')}")
