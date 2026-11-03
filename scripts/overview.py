@@ -266,7 +266,8 @@ JS = """
     if(c&&Date.now()-c.t<170000){runs=c.j.workflow_runs||[];paint();return;}
     fetch('https://api.github.com/repos/'+A.repo+'/actions/runs?per_page=30').then(function(r){if(!r.ok)throw 0;return r.json();})
       .then(function(j){runs=j.workflow_runs||[];paint();}).catch(function(){});}
-  loadBoards();loadRuns();setInterval(function(){if(!document.hidden)loadBoards();},30000);setInterval(function(){if(!document.hidden)loadRuns();},180000);
+  var EV=(window.WL_SB&&WL_SB.every)||function(f,ms){setInterval(function(){if(!document.hidden)f();},ms);};   // 放置したタブは Supabase を読み直さない
+  loadBoards();loadRuns();EV(loadBoards,30000);setInterval(function(){if(!document.hidden)loadRuns();},180000);
   setInterval(paint,60000);
 })();
 """

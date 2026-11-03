@@ -242,3 +242,25 @@ class IdleTabs(unittest.TestCase):
         for call in ("WL_SB.every(read,", "WL_SB.every(function(){R._wlload", "WL_SB.every(loadLive,", "WL_SB.every(loadDb,"):
             self.assertEqual(src.count(call), 1, call)
         self.assertNotIn("clearInterval(R._wlub)", src)
+
+    def test_no_raw_setinterval_toward_supabase_in_scripts(self):
+        """scripts/ 全体（管理ページの livelog.py・overview.py も）：Supabase を読む見回りは every 経由。生の setInterval に残してよいのは
+        GitHub／Pages／画面の描き直しだけ（下の許可表）。WL_SB を通る行（every が無いときの代わり）は数えない。"""
+        import re
+        ok = {"loadRuns", "loadLogs", "paint", "check", "maybe", "tick"}
+        bad = []
+        for f in sorted((ROOT / "scripts").glob("*.py")):
+            for n, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
+                if "setInterval(" not in line or "WL_SB" in line or "EV=" in line:
+                    continue
+                for m in re.finditer(r"setInterval\((.*?)(?:,\s*\w+\)|\);|$)", line):
+                    names = set(re.findall(r"\b(load\w+|paint|check|maybe|tick)\b", m.group(1)))
+                    if names - ok:
+                        bad.append(f"{f.name}:{n} {sorted(names - ok)}")
+        self.assertEqual(bad, [])
+
+    def test_admin_pollers_use_every(self):
+        for fn, calls in (("livelog.py", ("EV(loadLines,3000)", "EV(loadBoards,20000)", "EV(loadCtl,20000)")), ("overview.py", ("EV(loadBoards,30000)",))):
+            src = (ROOT / "scripts" / fn).read_text(encoding="utf-8")
+            for c in calls:
+                self.assertEqual(src.count(c), 1, c)

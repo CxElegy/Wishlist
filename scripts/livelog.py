@@ -166,9 +166,10 @@ JS = """
         add({at:x.at,p:x.proc,b:x.board||'',t:x.text,lv:x.level||'info'},Date.now()-new Date(x.at)<600000);lid=Math.max(lid,x.id);});
         if(l&&l.length){try{localStorage.setItem(LK,String(lid));}catch(e){}tick('作業中 · '+(l[l.length-1].board||'')+' '+l[l.length-1].text.slice(0,40));}})
       .catch(function(){});}
+  var EV=(window.WL_SB&&WL_SB.every)||function(f,ms){setInterval(function(){if(!document.hidden)f();},ms);};   // 放置したタブは Supabase を読み直さない（render の every）
   loadBoards();loadRuns();loadLogs();loadLines();
-  setInterval(function(){if(!document.hidden)loadLines();},3000);
-  setInterval(function(){if(!document.hidden)loadBoards();},20000);
+  EV(loadLines,3000);
+  EV(loadBoards,20000);
   setInterval(function(){if(!document.hidden)loadRuns();},180000);
   setInterval(function(){if(!document.hidden)loadLogs();},120000);
   // AI 編集のコントロール（db/edit_control.sql）
@@ -189,6 +190,6 @@ JS = """
       add({at:new Date().toISOString(),p:'edit',b:k==='redo'?eb.value:'',t:'管理ページ：'+(k==='redo'?'やり直しに入れた':(MODES[k]||[k])[0]+' に切り替え'),lv:'info'},true);
       if(k==='run'||k==='step')return wake();msg(k==='pause'?'一時停止にしました · いま編集中の版面が終わったら止まります':'やり直しに入れました · 次に AI 編集が動くとき、いちばん先にやります（すぐなら「次の 1 版面」）','ok');})
       .catch(function(){msg('データベースに届きませんでした','ng');}).then(function(){setTimeout(function(){b.disabled=false;},3000);});});
-  loadCtl();setInterval(function(){if(!document.hidden)loadCtl();},20000);
+  loadCtl();EV(loadCtl,20000);
 })();
 """
