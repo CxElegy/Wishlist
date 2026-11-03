@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-03T14:39:28+00:00",
+ "checked": "2026-11-03T15:29:01+00:00",
  "fired": {
-  "at": "2026-11-03T14:39:28+00:00",
+  "at": "2026-11-03T15:29:20+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-03T13:18:03+00:00",
+    "at": "2026-11-03T15:29:20+00:00",
     "attempts": 1,
     "day": "2026-11-03",
-    "prog": 362,
-    "resp": "cse_01W4x6f8JhLXXdFr2Ek6Vrxz",
-    "sig": "6ed807abf9f7"
+    "prog": 408,
+    "resp": "cse_01W4x6f9XxLZxerL7PK66q2j",
+    "sig": "dd158f19d304"
    },
    "items": [
     "BLEACH Mirrors High",
@@ -37,11 +37,20 @@
    "need": true,
    "prog": 408,
    "prog_day": "2026-11-03",
-   "ripe": [],
-   "sig": "ec3888cbc7b3",
+   "ripe": [
+    "BLEACH Mirrors High",
+    "MMORPG 新作",
+    "dota2",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "猫用品"
+   ],
+   "sig": "dd158f19d304",
    "token_cap": 1000000,
    "tokens_today": 531057,
-   "why": "整理待ちの記事 11 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 11 件（8 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
