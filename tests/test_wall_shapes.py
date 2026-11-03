@@ -15,6 +15,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 DOCS = ROOT / "docs"
 SHAPES = {"W": (800, 450), "S": (600, 600), "T": (400, 600), "V": (300, 900)}   # 横長・正方形・縦長・細長
 WIDTHS = (1400, 1100, 768)   # 壁が右の列の横に並ぶ幅と、1 列になる手前の幅
+NARROW = 390   # 1 列になる幅（壁は右の列の下に回る）。空きでなく、並びの崩れ（横にはみ出す・カードの間が開く）を数える
+MANY = 14      # 右の列の欲しい物・予定の行を増やす数（隠しても壁の 1.6 倍に収まらない場合の、壁を伸ばしきれない形を作る）
 COMBOS = ["WW", "TW", "VV", "WWW", "TWW", "SSS", "VWT", "TTT", "WWWW", "TVWS"]
 
 
@@ -23,6 +25,21 @@ def _png(w, h):
     b = io.BytesIO()
     Image.new("RGB", (w, h), (120, 140, 170)).save(b, "PNG")
     return b.getvalue()
+
+
+NARROW_JS = """()=>{const w=document.querySelector('.mgrid>.wall');const cs=[...(w?w.querySelectorAll(':scope>.wc'):[])].filter(c=>c.offsetParent);
+let gap=0;cs.forEach((c,i)=>{if(i)gap=Math.max(gap,c.offsetTop-(cs[i-1].offsetTop+cs[i-1].offsetHeight))});
+return {over:Math.max(0,document.documentElement.scrollWidth-innerWidth),gap:Math.round(gap)}}"""
+
+
+def _many(tail, k):
+    """右の列（</div><aside…）の予定・欲しい物の行を k 行ずつに増やす（同じ行を写す）"""
+    if not k:
+        return tail
+    def grow(m):
+        li = re.findall(r"<li\b.*?</li>", m.group(2), re.S)
+        return m.group(1) + m.group(2) + "".join(li[i % len(li)] for i in range(k)) + m.group(3) if li else m.group(0)
+    return re.sub(r'(<div class="(?:agenda|sbox swish)">.*?<ol>)(.*?)(</ol>)', grow, tail, flags=re.S)
 
 
 class WallShapes(unittest.TestCase):
@@ -49,10 +66,13 @@ class WallShapes(unittest.TestCase):
                 b = launch(pw)
             except Exception as ex:   # noqa: BLE001
                 self.skipTest(f"ブラウザが開けない：{ex}")
-            for shapes, vw in itertools.product(COMBOS, WIDTHS):
+            runs = [(s, w, 0) for s, w in itertools.product(COMBOS, WIDTHS)]
+            runs += [(s, w, MANY) for s, w in itertools.product(("WW", "TW", "WWW"), WIDTHS[:2])]   # 右の列が長い版面（欲しい物・予定が多い人）
+            runs += [(s, NARROW, 0) for s in ("WW", "WWWW", "TVWS")]
+            for shapes, vw, many in runs:
                 n = len(shapes)
                 pg = b.new_page(viewport={"width": vw, "height": 900})
-                html = src[:a] + "".join(cards[:n]) + src[z:]
+                html = src[:a] + "".join(cards[:n]) + _many(src[z:], many)
                 smap = {}
                 for c, s in zip(cards[:n], shapes):
                     for u in re.findall(r'<img[^>]*src="([^"]+)"', c):
@@ -70,9 +90,15 @@ class WallShapes(unittest.TestCase):
                 pg.route(re.compile(r".*"), rt)
                 pg.goto("http://wl.test/home/index.html", wait_until="load", timeout=30000)
                 pg.wait_for_timeout(1200)
-                h = pg.evaluate(ux_check.HOLE_JS)
-                if h["wallPct"] > 8 or h["sidePct"] > 8:
-                    bad.append(f"{vw}px {shapes}: 壁の中 {h['wallPct']}%・右の列との差 {h['sidePct']}%")
+                tag = f"{vw}px {shapes}" + (f"・右の列 +{many} 行" if many else "")
+                if vw == NARROW:
+                    o = pg.evaluate(NARROW_JS)
+                    if o["over"] or o["gap"] > 40:
+                        bad.append(f"{tag}: 横にはみ出し {o['over']}px・カードの間 {o['gap']}px")
+                else:
+                    h = pg.evaluate(ux_check.HOLE_JS)
+                    if h["wallPct"] > 8 or h["sidePct"] > 8:
+                        bad.append(f"{tag}: 壁の中 {h['wallPct']}%・右の列との差 {h['sidePct']}%")
                 pg.close()
             b.close()
         self.assertEqual(bad, [], "写真の形で壁に空きが出る組み合わせ（W 横長・S 正方形・T 縦長・V 細長）")
