@@ -1,6 +1,6 @@
 {
- "admin": "c634a4cfe4fe",
- "admin-ai": "5a868519643b",
+ "admin": "d9e3516ec0b2",
+ "admin-ai": "dc38f5860940",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,10 +8,10 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "4187944a"
+   "c0e930db"
   ]
  },
- "admin-boards": "baae641c6fb8",
+ "admin-boards": "4c5f30081f64",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "b4e885ee8532",
+ "admin-emblem": "39434b776ca3",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "afb1d581"
+   "74d164d1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -41,9 +41,9 @@
    "5c79e8b6"
   ]
  },
- "admin-members": "cf5c00e182d6",
+ "admin-members": "29f2efb2b6fb",
  "admin-members_marks": {},
- "admin-now": "79b6f849a23e",
+ "admin-now": "5864ba443d4e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -51,7 +51,7 @@
   ],
   "queue": [
    "いまの状況",
-   "25b070c5"
+   "be400bdc"
   ],
   "status": [
    "運行状況",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c55e5437"
+   "511f5b96"
   ]
  },
- "admin-system": "8e5c21d5c6c4",
+ "admin-system": "a7d1a0600796",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1a139a79"
+   "d64f3249"
   ]
  },
  "admin_marks": {},
- "heat": "51d26d7486c6",
+ "heat": "1c2603e9e06f",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -93,11 +93,11 @@
    "20e38e14"
   ]
  },
- "index": "1dec025aa620",
+ "index": "f2998a0e8024",
  "index_marks": {
   "front": [
    "トップ",
-   "ff53f0c0"
+   "58b90b46"
   ],
   "picks": [
    "気になるかも？",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "595b5d1d"
+   "f68bd7a2"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "16de65c4"
+   "b6070168"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "3ec634f1"
   ]
  },
- "updated": "11.03 11:49",
- "wishlist": "297bb16a855a"
+ "updated": "11.03 11:52",
+ "wishlist": "ce9266f962e6"
 }
