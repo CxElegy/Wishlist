@@ -6436,6 +6436,8 @@ EMM_JS = r"""
   var AL={swap:'替える',cands:'候補を集める',pick:'候補から決める',lock:'固定',unlock:'固定をはずす',drop:'外す'},RL={};
   [].forEach.call(sheet.querySelectorAll('[data-chips=drop] [data-r]'),function(b){RL[b.dataset.r]=b.textContent;});
   function key(t){return t.dataset.b+'|'+t.dataset.img;}
+  var PGB='';   // 旗 on のとき render が Pages の /p の網址を入れる。お客さまの小元素（emblems 箱）の表示だけ /p/ に替える（キーは元の網址のまま）
+  function pg(u){var m=PGB&&/^https?:\/\/[^\/]+\.supabase\.co\/storage\/v1\/object\/public\/emblems\/([0-9A-Za-z_.-]+\.webp)/.exec(u||'');return m?PGB+'/'+m[1]:u;}
   var lib={};   // お客さまの版面（ライブラリ）：名前 → 版面の id。店長（管理者）でログインしているときだけ読める（RLS）
   function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
   function addLib(rows){
@@ -6457,7 +6459,7 @@ EMM_JS = r"""
         tl.dataset.cands=JSON.stringify(((r.config.emblem_cands||{})[x.subject||'']||[]).filter(function(c){return !em.some(function(y){return y.image===c.image;});}).map(function(c){return {image:c.image,why:c.why||''};}));
         tl.dataset.wait=((r.config.emblem_want||[]).indexOf(x.subject||'')>=0)?'1':'0';tl.setAttribute('aria-haspopup','dialog');
         tl.innerHTML='<span class="emm-ph"><img alt="" loading="lazy"></span><b></b><small></small>';
-        tl.querySelector('img').src=x.image;tl.querySelector('b').textContent=x.subject||'小元素';tl.querySelector('small').textContent=x.why||'';g.appendChild(tl);});
+        tl.querySelector('img').src=pg(x.image);tl.querySelector('b').textContent=x.subject||'小元素';tl.querySelector('small').textContent=x.why||'';g.appendChild(tl);});
       host.insertBefore(d,sh);});
     if(n)paint();}
   var ST={ok:'済',running:'待ち（次の回で動く）',failed:'失敗（新しい材料が来るまで待つ）'};
@@ -6498,7 +6500,7 @@ EMM_JS = r"""
   function close(){sheet.hidden=true;if(cur)cur.focus();cur=null;}
   function open(t){
     cur=t;anchor=t;var lock=t.dataset.lock==='1';
-    $('emm-img').src=t.dataset.img;$('emm-name').textContent=t.dataset.subj||'小元素';$('emm-why').textContent=t.dataset.why?'取り方：'+t.dataset.why:'';
+    $('emm-img').src=pg(t.dataset.img);$('emm-name').textContent=t.dataset.subj||'小元素';$('emm-why').textContent=t.dataset.why?'取り方：'+t.dataset.why:'';
     var cs=[],box=$('emm-cands');try{cs=JSON.parse(t.dataset.cands||'[]');}catch(e){}
     box.innerHTML='';cs.forEach(function(c){var b=document.createElement('button'),im=document.createElement('img');b.type='button';b.className='emm-cand';b.dataset.u=c.image;b.title=c.why||'';
       im.alt='候補';im.loading='lazy';im.src=c.image;b.appendChild(im);box.appendChild(b);});
@@ -7399,7 +7401,8 @@ def render_admin(data, db, updated):
 </html>
 """, updated)
 
-    js = (f'<script type="application/json" id="adm-cfg">{cfg}</script><script>{ADMIN_PAGE_JS}</script><script>{EMM_JS}</script>'
+    emm_js = EMM_JS.replace("var PGB='';", "var PGB='%s';" % photo_store.PAGES_BASE) if photo_store.pages_on() else EMM_JS
+    js = (f'<script type="application/json" id="adm-cfg">{cfg}</script><script>{ADMIN_PAGE_JS}</script><script>{emm_js}</script>'
           f'<script>{overview.JS}</script><script>{livelog.JS.replace("__ACC__", sitedir.NAME)}</script><script>{processes.JS}</script>')
     hub = ('<p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを見るためのページです。下の 6 つから選んでください。'
            'データを変えることはできません（できるのは「今すぐ実行」で裏の仕組みを定時より早く動かすことと、小元素の「替える・固定・外す」だけ）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>'

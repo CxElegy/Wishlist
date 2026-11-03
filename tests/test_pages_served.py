@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 import pages_served  # noqa: E402
+sys.path.insert(0, str(ROOT / "scripts"))
 
 STORAGE = re.compile(r"https://[^/\"'\s]+\.supabase\.co/storage/")
 FB = re.compile(r'\sdata-fb="[^"]*"')   # 落ち先の欄。/p/ が開けないときだけ読む（free-tier.md「落ち先の決まり」）
@@ -72,6 +73,29 @@ class FillFollowsRender(unittest.TestCase):
         finally:
             photo_store._ON[:] = []
         self.assertTrue(pages_photos.NAME.fullmatch("Q123-ab12.webp"))
+
+    def test_admin_emblem_js_goes_through_pages(self):
+        """管理ページ③は店長の令牌で boards を読み、小元素の src を JS で作る（HTML に焼かない）。旗 off は Supabase のまま、on は /p/ 。"""
+        import subprocess
+        import render
+        js = render.EMM_JS
+        self.assertNotIn(".src=x.image", js)
+        self.assertNotIn("$('emm-img').src=t.dataset.img", js)
+        self.assertIn("var PGB='';", js)
+        fn = js[js.index("function pg(u)"):js.index("var lib={}")]
+        u = "https://x.supabase.co/storage/v1/object/public/emblems/Q1-ab.webp"
+        out = subprocess.run(["node", "-e", "var PGB=process.argv[1];%s;console.log(pg(process.argv[2]),pg('https://i.example/a.jpg'))" % fn, "", u],
+                             capture_output=True, text=True).stdout.split()
+        self.assertEqual(out, [u, "https://i.example/a.jpg"])   # 旗 off
+        out = subprocess.run(["node", "-e", "var PGB=process.argv[1];%s;console.log(pg(process.argv[2]),pg('https://i.example/a.jpg'))" % fn, "P", u],
+                             capture_output=True, text=True).stdout.split()
+        self.assertEqual(out, ["P/Q1-ab.webp", "https://i.example/a.jpg"])   # 旗 on
+
+    def test_emblems_missing(self):
+        import pages_health
+        self.assertEqual(pages_health.emblems_missing({"a.webp", "b.webp"}, {"names": ["a.webp"]}), ["b.webp"])
+        self.assertEqual(pages_health.emblems_missing({"a.webp"}, None), ["a.webp"])
+        self.assertEqual(pages_health.emblems_missing(set(), {"names": []}), [])
 
     def test_photo_cache_runs_after_render_and_republishes(self):
         """新しい写真は render のあとに html へ載る。毎日 1 回だと最大 1 日 /p/ が 404 になった（2026-11-03：10 枚）→ render のあとに写しを足し、変わったら Pages を出し直す。"""

@@ -123,13 +123,36 @@ def photos_main(set_flag):
     raise SystemExit(0 if ok else 1)
 
 
+def emblems_missing(names, manifest):
+    """boards の小元素の名前のうち、Pages の p/manifest.json に無いもの（足りない名前）。manifest が None なら全部。"""
+    have = set((manifest or {}).get("names", []))
+    return sorted(set(names) - have)
+
+
+def emblems_main():
+    """--emblems：ライブラリの boards.config の小元素の名前 ⊆ Pages の写し。足りない数を出す（DB は読むだけ・1 回の GET。鍵は SUPABASE_SERVICE_KEY、無ければ anon＝公開の版面だけ）。"""
+    import photo_cache_fill as f
+    txt = (ROOT / "items.yaml").read_text(encoding="utf-8")
+    st = {k: (re.search(r"^\s*%s:\s*[\"']?([^\s\"']+)" % k, txt, re.M) or [None, ""])[1] for k in ("supabase_url", "supabase_key")}
+    names = f.board_emblems(st)
+    if not names:
+        print("測れず：boards の小元素の名前を読めない（鍵なし・網なし。anon は非公開の版面が見えない）")
+        raise SystemExit(2)
+    miss = emblems_missing(names, live_manifest())
+    print("%s boards の小元素 %d 種のうち Pages に無い %d 種 %s" % ("✓" if names and not miss else "✗", len(names), len(miss), miss[:5]))
+    raise SystemExit(0 if names and not miss else 1)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--hours", type=int, default=24)
     ap.add_argument("--repo", default="CxElegy/Wishlist")
     ap.add_argument("--photos", action="store_true", help="写真を Pages から配ってよいかを判定（旗 state/pages_photos.json）")
     ap.add_argument("--set", action="store_true", help="--photos の結果を旗に書く")
+    ap.add_argument("--emblems", action="store_true", help="boards の小元素の名前 ⊆ Pages の写し")
     a = ap.parse_args()
+    if a.emblems:
+        emblems_main()
     if a.photos:
         photos_main(a.set)
     now = dt.datetime.now(dt.timezone.utc)
