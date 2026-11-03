@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "edit_sig": "b07a0288d2e1",
+ "edit_sig": "e7cb2009e1bb",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -103,8 +103,8 @@
      "date": "2026-11-02",
      "headline": "Analyst Says First-Day ‘Grand Theft Auto VI’ Sales Could Reach $4.5 Billion",
      "highlight": "$4.5 Billion",
-     "image": "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://static.wixstatic.com/media/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg/v1/fill/w_1000,h_566,al_c,q_85,usm_0.66_1.00_0.01/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.mediaplaynews.com/analyst-says-first-day-grand-theft-auto-vi-sales-could-reach-4-5-billion/",
      "weight": "normal"
     },
@@ -351,31 +351,44 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "限定トートやステンレスボトル入りで豪華な2027年のスタバ福袋。オンライン抽選は11/4 10時から受付開始。",
      "date": "2026-11-03",
-     "n": 1,
-     "source": "oneone宇宙",
-     "title": "2026「布丁狗30週年」穿上星巴克制服太Q！11/10新加坡限定聯名開賣，絨毛玩偶、保溫瓶、馬克杯與包袋必收",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE55b2ZoRUU4YlVQZGNfbURGX1BtaHNIZ3NCZnpwbk5kWldCYWNSb09jUGhWYXBpVnBlSEdrSTZuVUI1T2Z5UGcwTGRadmJNMDVRb09j?oc=5"
+     "headline": "黄金のマグ&テディは誰の手に！？ 【スタバ福袋】11/4（水）10時〜オンライン抽選受付開始",
+     "highlight": "11/4（水）10時〜オンライン抽選受付開始",
+     "image": "https://p.potaufeu.asahi.com/dcd1-p/picture/31517714/72243b8d2254b36daa8010677f8b393f.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.asahi.com/and/w/article/17017076",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-03",
-     "n": 2,
-     "source": "朝日新聞",
-     "title": "黄金のマグ&テディは誰の手に！？ 【スタバ福袋】11/4（水）10時〜オンライン抽選受付開始。限定トートやステンレスボトル入りで豪華",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE10ZzgyWWkzX1RadFZMMk9sdXR5MmdOUUoyWkZMWTVhaGoxUUdMSHpyRHRTS1pod3prWlBEVlVsWHc0TkRXZFVQT05KOXZ4REVycXFBX1lMUQ?oc=5"
+     "headline": "【スタバ新作グッズ】ホリデーシーズンを華やかに彩る限定アイテム全21種類を一挙公開！",
+     "highlight": "全21種類",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010003-cancam-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/2f9358a8d038d6bb122dd58f9cbc9701293b1660",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-03",
-     "n": 3,
-     "source": "Yahoo!ニュース",
-     "title": "【スタバ新作グッズ】ホリデーシーズンを華やかに彩る限定アイテム全21種類を一挙公開！",
-     "url": "https://news.yahoo.co.jp/articles/2f9358a8d038d6bb122dd58f9cbc9701293b1660"
+     "event": {
+      "date": "2026-11-10",
+      "label": "発売日",
+      "place": "シンガポール"
+     },
+     "headline": "2026「布丁狗30週年」穿上星巴克制服太Q！11/10新加坡限定聯名開賣",
+     "highlight": "11/10",
+     "image": "https://d89889xojlqhy.cloudfront.net/upload/featured/878a2e413e4afc0aad075f02f55f1e48.jpg",
+     "image_via": "og:image",
+     "url": "https://universe.oneone.com.tw/posts/7263",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
