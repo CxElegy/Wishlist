@@ -246,6 +246,18 @@ class WideRetryEverywhere(unittest.TestCase):
         got["emblem_reject"] = [self.NARROW]   # 大きい幅でも小さく、また reject に入った
         self.assertEqual(ef.release_small_rejects(got, log=lambda *_: None), 0)
 
+    def test_due_takes_item_with_stale_narrow_reject(self):
+        """そろった・失敗で材料が同じ版面でも、解けていない縮めた網址の札があれば後台の番に入る（gate が「仕事なし」で release_small_rejects に着かなかった：E24 が 18 のまま）。"""
+        import json
+        ef, x = self._world(self.NARROW)
+        (ef.ROOT / "state" / "emblem_broken.json").write_text(json.dumps({"M": [{"v": 13, "emblem": x}]}), encoding="utf-8")
+        it = {"name": "M", "emblem_kind": "character", "emblem_reject": [self.NARROW], "emblem": [], "emblem_headv": 99}
+        names = lambda: [i["name"] for i in ef.due({"items": {}}, [it], None)]
+        with mock.patch.object(ef, "status", lambda i: {"state": "ok", "have": 5, "target": 5, "kind": "character"}), mock.patch.object(ef, "broken_cuts", lambda i: []):
+            self.assertEqual(names(), ["M"])
+            it["emblem_small_tried"] = [self.NARROW]   # 解いたあとは番に入れない
+            self.assertEqual(names(), [])
+
     def test_customer_board_stale_narrow_rejects_counted_and_released(self):
         """お客さまの版面（config の emblem_reject）：名簿の先頭の欠けた人のファイル名に当たる縮めた網址を、点検 E24 が数え、同じ式で解く。"""
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
