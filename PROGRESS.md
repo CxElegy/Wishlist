@@ -304,3 +304,4 @@
 - 2026-11-03 r2：休止モード③④ #806（library 系の 402 緑終了・読み取りの使い回し）。CI 緑・合併。確かめ：全試験 OK。次：24 時間後に nav_schemes 等の回数を数える。
 2026-11-03 r1f1 ux_check の止めが pages 箱まで灰色にしていた（ログイン後 12 件 ✗ の根）を直す。確かめ：✗ 12→3（別の件を BACKLOG へ）。写真の 404 10 枚は photo_cache 追従＋再 render で 0。次＝残り 3 件
 2026-11-03 r1f2 egress ④ 続き：#812＝はじめに版面の主題（user_pages motifs）・気になるかも 5 枚未満の穴（CSS :has）・pages_served --who。本番ログイン中で /p/ 404 251（写しが docs/ の html だけ見て pages 箱の写真 1,194 枚が漏れ）→ photo_cache_fill が photo_store の全部を対象に。次：合併→photo_cache 1 回→--who と ux_check を本番で・24h の egress。
+- 2026-11-03 気になるかもの穴を 761〜1200px（2 列）にも規則で（r1f1）。札が全部で偶数枚の大きい 1 枚＋小札、.row が奇数枚で最後の行の右が空いた→最後の 1 枚を 2 列に。tests/test_pkgrid_fill を 5 幅（1400/1200/1100/900/761）×1〜9 枚×(.row) に広げ穴 0。本番の /home/ がその枚数・幅になるかは ux_check で。次：ux_check の gridHole を 1100px でも
