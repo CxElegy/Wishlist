@@ -2,6 +2,7 @@
 import pathlib
 import sys
 import unittest
+from unittest import mock
 
 import yaml
 
@@ -87,6 +88,38 @@ class Wikidata(unittest.TestCase):
         self.assertEqual(keys["あつ森"], "wd:Q64566657")
         self.assertEqual(keys["漫威电影"], "wd:Q642878")
         self.assertTrue(keys["猫用品"].startswith("n:"))
+
+
+class PutConfig(unittest.TestCase):
+    """boards.config の書き込み：同じ中身（at だけ違う）なら PATCH しない／boards の PATCH は put_config だけ（無料枠）。"""
+    def run_put(self, cur, add):
+        import library
+        calls = []
+
+        def fake(path, body=None, **kw):
+            calls.append((path, kw.get("method")))
+            return [{"config": cur}] if body is None else None
+        with mock.patch("digest.supabase", fake):
+            new = library.put_config(1, add)
+        return new, [c for c in calls if c[1] == "PATCH"]
+
+    def test_same_but_at_no_patch(self):
+        cur = {"theme": {"bg": "#fff"}, "emblem_state": {"state": "ok", "have": 5, "at": 100}}
+        new, patches = self.run_put(cur, {"emblem_state": {"state": "ok", "have": 5, "at": 999}})
+        self.assertEqual(patches, [])
+        self.assertEqual(new["emblem_state"]["have"], 5)
+
+    def test_changed_patches(self):
+        cur = {"emblem_state": {"state": "running", "have": 3, "at": 100}}
+        _, patches = self.run_put(cur, {"emblem_state": {"state": "ok", "have": 5, "at": 100}})
+        self.assertEqual(len(patches), 1)
+
+    def test_no_direct_boards_config_patch(self):
+        import re
+        root = pathlib.Path(__file__).resolve().parent.parent / "scripts"
+        bad = [f.name for f in root.glob("*.py") if f.name != "library.py"
+               and re.search(r'boards\?id=eq\.[^"]*",\s*\{"config"', f.read_text(encoding="utf-8"))]
+        self.assertEqual(bad, [], "boards.config は library.put_config で書く")
 
 
 if __name__ == "__main__":
