@@ -272,6 +272,27 @@ def head_missing():
     return out
 
 
+REASON_BUCKET = {"別人": "別人", "顔なし": "顔なし", "遠景": "顔なし", "何人も写っている": "何人も写る"}   # 残りは「出尽くし・重複」＝候補が足りないだけ
+
+
+def reason_counts(items, live=()):
+    """E10（目標未達の版面の funnel.rejected）と E15（funnel.heads）の外した理由を 4 つに振り分けて数える（1 人ずつ直さず、いちばん多い理由の規則を見るため）。
+    items = state/emblem_progress.json の items、live = 実写（emblem_people）の版面名。→ {"E10": {理由: 件}, "E15": {理由: 件}, "別人の実写": 件}"""
+    out = {"E10": {}, "E15": {}, "別人の実写": 0}
+    for k, v in items.items():
+        f = v.get("funnel") or {}
+        if v.get("state") == "failed" and not v.get("exhausted") and (v.get("target") or 0) - (v.get("have") or 0) > 1:
+            for r, n in (f.get("rejected") or {}).items():
+                b = REASON_BUCKET.get(r, "出尽くし・重複")
+                out["E10"][b] = out["E10"].get(b, 0) + n
+                out["別人の実写"] += n if r == "別人" and k in live else 0
+        for d in (f.get("heads") or {}).values():
+            for r, n in d.items():
+                b = REASON_BUCKET.get(r, "出尽くし・重複")
+                out["E15"][b] = out["E15"].get(b, 0) + n
+    return out
+
+
 def stale_live_rejects(items=None, broken=None):
     """E26：実写の版面（emblem_people）で、外した画像の札（emblem_reject）が残るのに、札を今の規則で見直した版（emblem_headv）が BROKEN_V より古い版面 → ['版面 札n枚']。
     後台が回れば release_head_rejects が 1 回で解く（先頭が埋まっていても）ので 0 に向かう。回っていない・実写の入口で解いていないと残る（哈利波特剧集・The Mandalorian）。"""
@@ -687,6 +708,13 @@ def check(pg, who, width, out, full=False, guest=False):
         found["E10"] = [f"{k} {v}" for k, v in stuck().items()]
     if guest:
         found["E15"] = [f"{k} {'・'.join(v)}（{head_cause_text(k, v)}）" for k, v in head_missing().items()]
+    if guest:
+        try:
+            _its = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", [])
+            _rc = reason_counts(json.loads((ROOT / "state" / "emblem_progress.json").read_text(encoding="utf-8")).get("items", {}), {i["name"] for i in _its if i.get("emblem_people")})
+            print("  情報 E10・E15 の外した理由（多い順）：" + "；".join(f"{e} " + "・".join(f"{k} {n}" for k, n in sorted(d.items(), key=lambda kv: -kv[1])) for e, d in _rc.items() if e != "別人の実写" and d) + f"（別人のうち実写の版面 {_rc['別人の実写']}）")
+        except (OSError, ValueError) as e:
+            print(f"  情報 E10・E15 の理由を数えられなかった：{e}")
     if guest and (cs := closeup_stage()):
         print("  情報：胸像待ち（顔だけのアップの入れ替え中）" + "・".join(f"{k} {n} 人（3 回を超えた {len(o)} 人：{'、'.join(o[:5])}）" for k, (n, o) in cs.items()))
         for ln in closeup_eta_lines():
