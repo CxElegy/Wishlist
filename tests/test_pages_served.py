@@ -113,7 +113,7 @@ class FillFollowsRender(unittest.TestCase):
     def test_photo_cache_runs_after_render_and_republishes(self):
         """新しい写真は render のあとに html へ載る。毎日 1 回だと最大 1 日 /p/ が 404 になった（2026-11-03：10 枚）→ render のあとに写しを足し、変わったら Pages を出し直す。"""
         t = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")
-        self.assertIn('workflows: ["网页立即更新"]', t)
+        self.assertIn('workflows: ["网页立即更新", "Pages 公開"]', t)   # 編排・后台作業の push は render を通らない → Pages 公開の後にも（2026-11-03 ゲート 98.3% の根）
         self.assertIn("steps.fill.outputs.changed", t)
         self.assertIn("gh workflow run pages.yml", t)
         self.assertIn("changed=", (ROOT / "harness" / "photo_cache_fill.py").read_text(encoding="utf-8"))

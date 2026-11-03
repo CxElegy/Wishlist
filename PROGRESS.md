@@ -322,3 +322,4 @@
 - 2026-11-03 f1f1：E24 データ側 [x]：library_emblem run 41626091935 のあと店長 0・版面側（DB 64 版面の縮めた札 21）0。画面 ux_check は未測。次：E15→E10。
 2026-11-03 plan1：次の段 4 つを BACKLOG に足した（Pages 公開物 1GB／月帯域の見張り・Actions の応答バイト数え・test-c 最初の画面の導線・11/4 本番ゲート 1 コマンド）。コード変更なし、架構図：不用改。次：先頭の段から。
 2026-11-03 f2：11/4 の本番ゲートを 1 コマンドに（harness/free_tier_gate.py・tests/test_free_tier_gate.py）。架構図：不用改（harness のみ）。次：11/4 に実行して全部 ✓ を確かめる。
+- 2026-11-03 f2f1 別の目の指摘：ゲートの穴（--skip-prod が「入れ終わり」と出す・走査が狭い・FILL_MAX 無点検・main 無試験）を直し、Pages 98.3% の根（photo_cache が render 後だけ）を Pages 公開後にも走らせて直す。確かめ：手元の全テスト。本番のゲートは回していない。次：合併後 pages_health --photos を 1 回、11/4 朝にゲート。
