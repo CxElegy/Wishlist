@@ -1,14 +1,14 @@
 {
- "admin": "e2d37e87a000",
- "admin-ai": "8e5887f57866",
+ "admin": "0b013493c08d",
+ "admin-ai": "9367297198de",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "b00eb058"
+   "98017573"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7719c7b7"
+   "61947dcc"
   ]
  },
  "admin-boards": "f608dd42bd95",
@@ -22,11 +22,11 @@
    "da73324c"
   ]
  },
- "admin-emblem": "d065b9aeb095",
+ "admin-emblem": "0ccab6043ac6",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "87e90710"
+   "26b4d0c8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b47ea04f7895",
  "admin-members_marks": {},
- "admin-now": "e73eb1882865",
+ "admin-now": "543c3591fdd7",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "487a2cab"
+   "0f05e97a"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "30d07106"
+   "5e768823"
   ]
  },
- "admin-system": "44e692edab8b",
+ "admin-system": "56f70e84a930",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "afe9675d"
+   "d2f42dbe"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2c991734"
+   "82627fd5"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "2a01b9bc"
   ]
  },
- "index": "6f1689cae657",
+ "index": "0a8feeca483c",
  "index_marks": {
   "front": [
    "トップ",
-   "76de4a40"
+   "98d9c14f"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "aeb42a89"
+   "069d4c0f"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "3607b28b"
+   "572c6e88"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "f68bd7a2"
+   "595b5d1d"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "9f767d70"
+   "147074aa"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "e20da04d"
+   "67aed53d"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "81aa23f0"
+   "161ee257"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "3ec634f1"
   ]
  },
- "updated": "11.03 22:40",
+ "updated": "11.03 22:55",
  "wishlist": "7f39eb67f435"
 }
