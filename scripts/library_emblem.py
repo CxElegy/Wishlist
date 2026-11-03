@@ -664,9 +664,7 @@ def main(argv):
     for b in boards:   # 管理ページの 替える・固定・外す の依頼を先に反映（替える・外すは次の due で同じ人の別の写真を探す）
         add = apply_requests(cfg(b))
         if add:
-            cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
-            b["config"] = {**cur, **add}
-            digest.supabase(f"boards?id=eq.{b['id']}", {"config": b["config"]}, method="PATCH")
+            b["config"] = library.put_config(b["id"], add)
     for b in boards:   # 候補から選ぶ（入れ替え・候補集め）。名前は出さない
         if cfg(b).get("emblem_want") or cfg(b).get("emblem_picks"):
             f = (digest.supabase(f"follows?board_id=eq.{b['id']}&select=section,subs&order=created_at&limit=1") or [{}])[0]
@@ -675,9 +673,7 @@ def main(argv):
             except Exception as ex:  # noqa: BLE001
                 print(f"候補から選ぶ：1 版面で失敗 {type(ex).__name__}")
                 continue
-            cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
-            b["config"] = {**cur, **add}
-            digest.supabase(f"boards?id=eq.{b['id']}", {"config": b["config"]}, method="PATCH")
+            b["config"] = library.put_config(b["id"], add)
     for b in boards:   # 顔を測っていない小元素のある版面（前に作ったもの）を測る。1 回済めば次からは何もしない
         if end - time.time() < PER_BOARD_S:
             break
@@ -687,9 +683,7 @@ def main(argv):
             except Exception:  # noqa: BLE001
                 continue
             if n:
-                cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
-                b["config"] = {**cur, "emblem": em}
-                digest.supabase(f"boards?id=eq.{b['id']}", {"config": b["config"]}, method="PATCH")
+                b["config"] = library.put_config(b["id"], {"emblem": em})
     todo = due(boards, time.time())
     if "--check" in argv:   # 待ちはある？（library_emblem.yml の見回り：空なら重い道具を入れずに終える）
         _out(due="true" if todo else "false")
@@ -709,8 +703,7 @@ def main(argv):
             continue
         except Exception as ex:  # noqa: BLE001  1 版面の失敗でほかを止めない（名前は出さない）
             add = {"emblem_state": {"state": "failed", "have": 0, "at": int(time.time()), "note": type(ex).__name__}}
-        cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
-        digest.supabase(f"boards?id=eq.{b['id']}", {"config": {**cur, **add}}, method="PATCH")
+        library.put_config(b["id"], add)
         st = add["emblem_state"]["state"]
         done[st] = done.get(st, 0) + 1
         gained += int(add["emblem_state"].get("have") or 0) > int((cfg(b).get("emblem_state") or {}).get("have") or 0)

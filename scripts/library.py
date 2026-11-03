@@ -200,6 +200,27 @@ def shop_rows(items):
     return boards, parents, follows
 
 
+def _same_cfg(a, b):
+    """config が同じか（emblem_state.at＝時刻だけは見ない）。"""
+    def strip(c):
+        c = dict(c or {})
+        if isinstance(c.get("emblem_state"), dict):
+            c["emblem_state"] = {k: v for k, v in c["emblem_state"].items() if k != "at"}
+        return c
+    return strip(a) == strip(b)
+
+
+def put_config(bid, add):
+    """boards.config に add を足して書く。今の config と同じなら（at だけ違っても）PATCH しない（無料枠：同じ中身の書き込みを 0 に）。
+    → 足したあとの config。boards の config の書き込みは全部ここを通す（tests が直書きを数える）。"""
+    import digest
+    cur = (digest.supabase(f"boards?id=eq.{bid}&select=config") or [{}])[0].get("config") or {}
+    new = {**cur, **add}
+    if not _same_cfg(new, cur):
+        digest.supabase(f"boards?id=eq.{bid}", {"config": new}, method="PATCH")
+    return new
+
+
 def push_shop(items):
     """店長の版面をライブラリへ（何度流しても同じ：key・(account, board_id) で上書き）。"""
     import digest

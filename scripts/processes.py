@@ -524,7 +524,7 @@ PROCESSES = [
                       ("題材で引かない", "category で記事名がないもの（MMORPG 新作・猫用品…）")]},
             {"id": "lb2b", "kind": "step", "lane": "web", "title": "名前の印の行を番号の印に書き換える", "uses": ["supabase"], "text": "n:… → wd:…（行を増やさない）"},
             {"id": "lb3", "kind": "step", "lane": "actions", "title": "共有の設定と人ごとの置き方に分ける", "text": "板块・小分類・乗換・篇幅・優先 = 人ごと（follows）、ほか = 版面（boards.config）"},
-            {"id": "lb4", "kind": "store", "lane": "web", "title": "boards・follows（test1）に上書き", "uses": ["supabase"], "text": "何度流しても同じ。追いかけている人数はトリガーで数える"},
+            {"id": "lb4", "kind": "store", "lane": "web", "title": "boards・follows（test1）に上書き", "uses": ["supabase"], "text": "何度流しても同じ。追いかけている人数はトリガーで数える。boards.config の書き込みは library.put_config 1 か所：今の config と同じ（emblem_state.at の時刻だけ違う）なら PATCH しない＝小元素・デザインの回が同じ結果を書き直さない（無料枠）"},
             {"id": "lb5", "kind": "step", "lane": "web", "title": "お客さまの選んだものを読む（userfeed_users）", "uses": ["supabase"], "text": "一度はログインした人の app_users.prefs.picks · 1 人 100 個まで（MAX_FOLLOWS）"},
             {"id": "lb6", "kind": "step", "lane": "ext", "title": "1 つずつ版面に決める（library.plan_users）", "x": "間 1 秒",
              "text": "① もうある版面と名前（そろえたもの）が同じ → その版面 ② 店長の版面と同じ library.find_wikidata（名前だけの版面として）：Wikidata を名前で検索（ja → en、7 件）、候補の項目を引き（検索の返事は前方一致の名前だけで別名が見えない：京都市の別名「京都」）、名前か別名が同じ候補のうち、点 = Wikipedia の言語数 ×2（名前 label が同じ）×2（説明が選んだ板块に入る taxonomy.classify。メディアミックスの作品全体は作品・ゲーム・グッズ・音楽・おでかけのどれにも入る）が一番高いもの（3 字までの英数字は別名だけなら板块に入るときだけ、曖昧さ回避・一覧は除く）→ wd:Q… ③ なければ名前の印 n:…。断られたら残りは次の回"},

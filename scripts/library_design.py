@@ -42,7 +42,7 @@ def _boards():
 
 
 def main(argv):
-    import digest
+    import library
     import likefx
     import render
     boards = _boards()
@@ -61,8 +61,7 @@ def main(argv):
             if bad:
                 raise SystemExit(f"版面 {b['id']}：" + "・".join(bad))
             add = {k: d[k] for k in ("motif", "theme", "like_fx") if d.get(k)}
-            cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
-            digest.supabase(f"boards?id=eq.{b['id']}", {"config": {**cur, **add}}, method="PATCH")
+            library.put_config(b["id"], add)
             done += 1
         print(f"足した版面 {done}")
         return 0
