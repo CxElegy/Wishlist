@@ -305,3 +305,4 @@
 2026-11-03 r1f1 ux_check の止めが pages 箱まで灰色にしていた（ログイン後 12 件 ✗ の根）を直す。確かめ：✗ 12→3（別の件を BACKLOG へ）。写真の 404 10 枚は photo_cache 追従＋再 render で 0。次＝残り 3 件
 2026-11-03 r1f2 egress ④ 続き：#812＝はじめに版面の主題（user_pages motifs）・気になるかも 5 枚未満の穴（CSS :has）・pages_served --who。本番ログイン中で /p/ 404 251（写しが docs/ の html だけ見て pages 箱の写真 1,194 枚が漏れ）→ photo_cache_fill が photo_store の全部を対象に。次：合併→photo_cache 1 回→--who と ux_check を本番で・24h の egress。
 - 2026-11-03 気になるかもの穴を 761〜1200px（2 列）にも規則で（r1f1）。札が全部で偶数枚の大きい 1 枚＋小札、.row が奇数枚で最後の行の右が空いた→最後の 1 枚を 2 列に。tests/test_pkgrid_fill を 5 幅（1400/1200/1100/900/761）×1〜9 枚×(.row) に広げ穴 0。本番の /home/ がその枚数・幅になるかは ux_check で。次：ux_check の gridHole を 1100px でも
+- 2026-11-03 r1：pages_served --who 再測（本番 1 回）Pages 95.8%・storage 19・/p/ 失敗 0＝19 件は全部お客さまの版面の小元素（emblems 箱）。#818：user_pages が旗 on で /p/ に書き換え・ux_all に全体の持ち時間 540 秒。photo_cache は anon で名前 0 件→ service key で読む（続き）。次：写しが埋まり user_pages→pages のあと pages_served --who 1 回で storage 0

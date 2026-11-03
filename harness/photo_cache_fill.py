@@ -23,10 +23,11 @@ PAGES = re.compile(r"https://cxelegy\.github\.io/Wishlist/p/([0-9a-f]{16}-\d+\.w
 
 
 def board_emblems(settings):
-    """お客さまの版面の小元素（boards.config の emblems 箱の網址）。docs/ の html に無いので DB から名前を数える（読むだけ・1 回の GET）。
+    """お客さまの版面の小元素（boards.config の emblems 箱の網址。anon は非公開の版面が見えないので Actions では SUPABASE_SERVICE_KEY で読む）。docs/ の html に無いので DB から名前を数える（読むだけ・1 回の GET）。
     user_pages が /p/ に書き換える対象と同じ名前。取れなければ空（次の回で足す）。"""
     try:
-        base, key = settings["supabase_url"].rstrip("/"), settings["supabase_key"]
+        base = settings["supabase_url"].rstrip("/")
+        key = os.environ.get("SUPABASE_SERVICE_KEY") or settings["supabase_key"]   # 非公開の版面（boards_visible）は secret key でないと見えない。読むだけ
         req = urllib.request.Request(base + "/rest/v1/boards?select=config", headers={"apikey": key, "Authorization": "Bearer " + key})
         return set(EMB.findall(urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")))
     except Exception:  # noqa: BLE001

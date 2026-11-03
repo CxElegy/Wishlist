@@ -26,6 +26,7 @@ jobs:
       WL_PHOTO_CACHE: ${{ github.workspace }}/.photo_cache
       WL_FILL_MAX_MB: ${{ inputs.max_mb }}
       WL_FILL_MAX_MIN: ${{ inputs.max_mb && 40 || 12 }}
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}   # boards.config の小元素の名前を読むだけ（非公開の版面は anon に見えない）
     steps:
       - uses: actions/checkout@v5
         with:
