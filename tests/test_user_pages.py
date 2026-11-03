@@ -45,6 +45,13 @@ class Items(unittest.TestCase):
         for i in items:
             self.assertIn(render.template_for(i), render.MOTIFS, i["name"])
 
+    def test_empty_account_start_board_has_motif(self):
+        """版面 0 個の人（test-c）の「はじめに」も他の版面と同じ主題（section の m- class）を持つ。素の版面にしない。"""
+        import yaml
+        settings = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+        html = user_pages.build("x@example.com", {}, {}, [], {"date": "2026-11-03", "no": 1}, settings, 0, {})
+        self.assertRegex(html, r'<section[^>]*data-k="%s"[^>]*class="sec m-\w+' % user_pages.FIRST_BOARD)
+
     def test_ux_check_counts_plain_sections(self):
         src = (ROOT / "harness" / "ux_check.py").read_text()
         self.assertIn("plain:[...document.querySelectorAll('section.sec[data-k]:not(.wish)')]", src)
