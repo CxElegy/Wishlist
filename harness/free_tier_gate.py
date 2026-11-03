@@ -23,11 +23,25 @@ def token_hits(root=ROOT):
     hits = []
     for d in SCAN_DIRS:
         for p in sorted((root / d).rglob("*")):
-            if p.suffix not in SCAN_EXT or not p.is_file() or p.name == "free_tier_gate.py" or "node_modules" in p.parts:
+            if p.suffix not in SCAN_EXT or not p.is_file() or p.name == "free_tier_gate.py" or {"node_modules", "worktrees"} & set(p.parts):   # .claude/worktrees は git 管理外の別の写し（本物は追跡される側）
                 continue
             for i, ln in enumerate(p.read_text(encoding="utf-8", errors="ignore").splitlines(), 1):
                 if TOKEN.search(ln) and not ln.lstrip().startswith("#"):
                     hits.append("%s:%d" % (p.relative_to(root), i))
+    return hits
+
+
+STORAGE = re.compile(r"https://[^/\"' ]+\.supabase\.co/storage/v1/(?:object|render/image)/public/")
+
+
+def storage_url_hits(root=ROOT):
+    """docs/ の静的な html・js に Supabase storage の公開網址があれば (パス:件数)。data-fb など、ブラウザが後で使う落ち先も数える（pages_served は実際の取得しか数えない）。"""
+    hits = []
+    for p in sorted((root / "docs").rglob("*")):
+        if p.suffix in (".html", ".js") and p.is_file():
+            n = len(STORAGE.findall(p.read_text(encoding="utf-8", errors="ignore")))
+            if n:
+                hits.append("%s:%d" % (p.relative_to(root), n))
     return hits
 
 
@@ -57,6 +71,8 @@ def sh(name, cmd, timeout):
 def steps(skip_prod=False):
     t = token_hits()
     out = [("個人アクセストークンの混入 0", not t, "なし" if not t else "あり " + ", ".join(t[:5]))]
+    s = storage_url_hits()
+    out.append(("docs の静的な storage 網址 0（data-fb 含む）", not s, "なし" if not s else "あり " + ", ".join(s[:5])))
     f = fill_max_problems()
     out.append(("FILL_MAX は 0 のまま", not f, "そのまま" if not f else "; ".join(f[:3])))
     out.append(sh("写真を本番から落とす道 0", [PY, "-m", "unittest", "tests.test_browser_guard"], 300))
