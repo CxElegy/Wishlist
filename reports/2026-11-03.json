@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "edit_sig": "fc5d82d74a68",
+ "edit_sig": "2852a87dccac",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -931,29 +931,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 20,
-     "source": "Korea JoongAng Daily",
-     "title": "aespa, ILLIT, Stray Kids and more to perform at Japan's FNS Music Festival",
-     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPWktiZlZ2NENpRjJIeFl4cFhYczZaSUJhb0NlNXpFVlFRRUVNX05XVmdYZlBGZHFxakRpektWVDhsbHh0U1p0TVQ4ZFZpQlgyRng4Vks2a3FVMTd6dkVqUC1vYVVCZVFZZ1F5Q0FTTWlDQ01IZXpJb1BieE1ESlV0MWhsZHpuRUNpQ2FxWmhHQVhCUFpDb0t0a1RvNlRpZ09YZ1dLdmZaVGRfc2pQeXJobXhfOTR0U195RDBOTDV3LTdRbEJxV19GSQ?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 21,
-     "source": "ｄメニューニュース",
-     "title": "モカ不在で4人体制のILLIT、ウォンヒとイロハの負傷を発表 同日の学園祭は振付など一部調整【全文】",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPS0RHRkczMXZFNjFzZVdRZTVEMmxVVHFFVkQ5dGlaSUE0TVNEQ2lKY1lTU0hfZWdoNThzN1pEUVczZE0ycjRmUEkxWUFLRzJpOXlOcnBETWo2dlhqTE55WmZnZFBVZHU1dHBoUGRMV0lWbWxNdE5JUURiemNGZ2JnTjFhZEdZZzlmR09QWkV5aF8taHp40gGaAUFVX3lxTE1CaTZlaGlCZThsbGJQWW1jdTZBR0FKdld6UE52ekZNblVEOEp0U0JlN3BYRzRHcTdRLXVjWmxlbE5fVjk4Nnc5MmxTdG1HajZCLVJfMUw1aTNZUVczUC1NcHJEVEh1QXJTTVVYcnlibWlvWFNqczhVaGI4Y2t3bnR1dXpjVWlhQWwyVFp6S3J4RHE5eERzaTBwcnc?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 22,
-     "source": "Weverse",
-     "title": "ILLIT 커뮤니티 포스트 - 글릿 어디 도망가면 체포할거야~~~~~~~",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5manFOUDA0N3NCX1VfbWRLWHFOR0l6Z1dBNm1EYWZOdXVnYTdGZFF6aUxldEhLOEM4ZW54eFNUd1JmbGFYbEw1eEZjMUlBb2NDMC05OTB2RFBRdGNlNVE?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1004,6 +981,16 @@
      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261102-00000037-cdj-000-1-view.jpg?exp=10800",
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/04cd78829b6ea7ae72f1abd5a44cdae98470b66c",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "モカ不在で4人体制のILLIT、ウォンヒとイロハの負傷を発表 同日の学園祭は振付など一部調整",
+     "highlight": "負傷を発表",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162326.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/sportsseoulweb/entertainment/sportsseoulweb-162326",
      "weight": "normal"
     }
    ],
