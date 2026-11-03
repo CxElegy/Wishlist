@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-02T23:27:57+00:00",
+ "checked": "2026-11-03T00:00:41+00:00",
  "fired": {
-  "at": "2026-11-02T23:27:57+00:00",
+  "at": "2026-11-03T00:00:42+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -24,9 +24,9 @@
     "FROM",
     "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "gelato pique",
     "チェーンソーマン",
     "三星手机",
@@ -34,35 +34,36 @@
     "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-02T22:31:54+00:00",
+   "last_batch": "2026-11-02T23:38:19+00:00",
    "last_error": {
-    "at": "2026-11-02T09:38:45+00:00",
+    "at": "2026-11-02T23:32:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 94,
+   "prog": 146,
    "prog_day": "2026-11-03",
    "ripe": [
     "GTA 6",
-    "dota2",
-    "三星手机",
+    "ILLIT",
+    "チェーンソーマン",
     "漫威电影"
    ],
-   "sig": "c3389a13f338",
+   "sig": "dd72c77ef01a",
    "token_cap": 1000000,
-   "tokens_today": 135853,
-   "why": "整理待ちの記事 63 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 187527,
+   "why": "整理待ちの記事 41 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "FROM"
+   ],
+   "need": true,
+   "sig": "38d8470fe56d",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
-    "FROM",
     "GTA 6",
     "The Mandalorian",
     "Vaundy",
@@ -75,7 +76,7 @@
     "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
