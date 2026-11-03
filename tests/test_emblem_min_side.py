@@ -269,6 +269,15 @@ class WideRetryEverywhere(unittest.TestCase):
         rows[0]["config"]["emblem_small_tried"] = [u]
         self.assertEqual(emb_check.narrow_small_rejects([], boards=rows), [])
 
+    def test_library_emblem_counts_stale_narrow_over_all_boards(self):
+        """全部の版面を service key で数える道（library_emblem.narrow_stale_count）：公開の key の点検が見えない版面の分もここで数える。"""
+        import library_emblem as le
+        ef, _ = self._world(self.NARROW)
+        u = "https://static.wikia.nocookie.net/dota2_gamepedia/images/a/a1/Crystal_Maiden.png/revision/latest/scale-to-width-down/400?cb=1"
+        boards = [{"name": "A", "config": {"emblem_who": ["Crystal Maiden"], "emblem_reject": [u], "emblem": []}},
+                  {"name": "B", "config": {"emblem_who": ["Crystal Maiden"], "emblem_reject": [u], "emblem_small_tried": [u], "emblem": []}}]
+        self.assertEqual(le.narrow_stale_count(boards), (1, ["A"]))
+
     def test_head_cause_text_reads_recorded_reasons(self):
         """E15 に原因を添える：progress の funnel.heads を読み、記録がなければ「原因の記録なし」。"""
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
