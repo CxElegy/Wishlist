@@ -25,23 +25,17 @@ class PkgridFill(unittest.TestCase):
             self.assertIn(k, render.CSS)
 
     def test_no_hole_in_last_row_1400(self):
-        try:
-            from playwright.sync_api import sync_playwright
-            sys.path.insert(0, str(ROOT / "harness"))
-            from browser import launch
-            pw = sync_playwright().start()
+        sys.path.insert(0, str(ROOT / "harness"))
+        from browser import launch
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as pw:   # with で閉じる（start() のままだと後ろの試験が「asyncio loop の中」で落ちる）
             b = launch(pw)
-        except Exception as ex:  # noqa: BLE001
-            self.skipTest("ブラウザなし: %s" % ex)
-        try:
             pg = b.new_page(viewport={"width": 1400, "height": 900})
             for n in range(1, 10):
                 pg.set_content(page(n))
                 r = pg.evaluate(JS)
                 self.assertLessEqual(r["gap"], 4, "札 %d 枚：どこかの列の下が %dpx 空いている" % (n, r["gap"]))
-        finally:
             b.close()
-            pw.stop()
 
 
 if __name__ == "__main__":
