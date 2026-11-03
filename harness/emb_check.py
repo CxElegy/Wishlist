@@ -311,27 +311,19 @@ def dropped_keys(items=None):
             if isinstance(x, dict) and x.get("nfv") == emblem_face.NONE_V and not (x.get("nk") and x.get("bb"))]
 
 
-def narrow_small_rejects(items=None, broken=None):
-    """E24：縮めた幅（400）で小さいと測れて外した絵（emblem_fill.wide_retry）の網址が emblem_reject に残り、その人にまだ小元素がない → [版面 主題]。
-    大きい幅で取り直せる絵が二度と選ばれない壊れ方（dota2 Crystal Maiden 390×247・#602）。BROKEN_V 11 の unbreak が抜く。外す道（drop_broken・stage_closeups・drop_closeups・drop_same）のうち「小さいだけ」で外すのは drop_broken だけ。
-    お客さま側は library_emblem.unbroken が reject に入れない（tests/test_emblem_min_side.py が数える）。"""
+def narrow_small_rejects(items=None, broken=None, boards=None):
+    """E24：縮めた幅（400）で小さいと測れて外した絵の網址が emblem_reject に残り、取り直しの番が来ていない（emblem_fill.stale_narrow_rejects：その人にまだ小元素がなく、emblem_small_tried にない）→ [版面 主題]。
+    大きい幅で取り直せる絵が二度と選ばれない壊れ方（dota2 Crystal Maiden 390×247・#602）。店長は state/emblem_broken.json、お客さまの版面（boards = [{name, config}]）は名簿の先頭の欠けた人のファイル名で数える。
+    外す道はどれも emblem_fill.reject_srcs を通る（tests/test_emblem_min_side.py が道ごとに走らせて確かめる）。"""
     sys.path.insert(0, str(ROOT / "scripts"))
     import emblem_fill as ef
     items = items if items is not None else yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", [])
     if broken is None:
         p = ROOT / "state" / "emblem_broken.json"
         broken = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
-    out = []
-    for it in items:
-        rej = set(it.get("emblem_reject") or [])
-        have = {ef._name_key(x.get("subject")) for x in it.get("emblem") or [] if isinstance(x, dict)}
-        for e in broken.get(it["name"]) or []:
-            x = e.get("emblem") or {}
-            if e.get("rel"):   # 1 回解いて大きい幅でも小さかった（release_small_rejects）：本当に小さい絵
-                continue
-            if (x.get("source") or x.get("image")) in rej and ef.wide_retry(x) and ef._name_key(x.get("subject")) not in have:
-                out.append(f"{it['name']} {x.get('subject')}")
-    return out
+    rows = [(f"{it['name']} ", it, broken.get(it["name"])) for it in items]
+    rows += [(f"お客さま {r.get('name')} ", {"name": r.get("name"), "emblem_kind": "character", **(r.get("config") or {})}, None) for r in boards or []]
+    return [pre + str(w) for pre, it, br in rows for w in ef.stale_narrow_rejects(it, br).values()]
 
 
 def boards_dropped_keys(rows):
@@ -480,13 +472,19 @@ def boards_closeup_bad(rows, now=None):
     return closeup_wait_bad(st, eta, now), len(st)
 
 
+_BOARDS = []   # 1 回の点検で boards を取るのは 1 回（E20・E23・E24・E26 が同じ行を読む。Supabase の egress を増やさない）
+
+
 def boards_rows():
     """boards（ライブラリ）の行。SUPABASE_SERVICE_KEY があれば全部、なければ公開の key で見える分だけ（店長がフォローしている版面）。"""
     import os
+    if _BOARDS:
+        return _BOARDS[0]
     s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("settings") or {}
     key = os.environ.get("SUPABASE_SERVICE_KEY") or s["supabase_key"]
     req = urllib.request.Request(f"{s['supabase_url']}/rest/v1/boards?select=name,config&limit=1000", headers={"apikey": key, "Authorization": f"Bearer {key}"})
-    return json.loads(urllib.request.urlopen(req, timeout=20).read())
+    _BOARDS[:] = [json.loads(urllib.request.urlopen(req, timeout=20).read())]
+    return _BOARDS[0]
 
 
 def boards_closeup_lines():
@@ -700,6 +698,10 @@ def check(pg, who, width, out, full=False, guest=False):
             print(f"  情報 E23 お客さまの版面を数えられなかった：{e}")
     if guest:
         found["E24"] = narrow_small_rejects()
+        try:
+            found["E24"] += narrow_small_rejects([], boards=boards_rows())
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E24 お客さまの版面を数えられなかった：{e}")
         found["E25"] = time_waits()
         found["E26"] = stale_live_rejects()
         try:
