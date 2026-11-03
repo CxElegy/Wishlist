@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "edit_sig": "40648838b5aa",
+ "edit_sig": "3b471afb3a97",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -76,8 +76,8 @@
      "date": "2026-11-02",
      "headline": "Analyst Says First-Day ‘Grand Theft Auto VI’ Sales Could Reach $4.5 Billion",
      "highlight": "$4.5 Billion",
-     "image": "https://static.wixstatic.com/media/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg/v1/fill/w_1000,h_566,al_c,q_85,usm_0.66_1.00_0.01/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.mediaplaynews.com/analyst-says-first-day-grand-theft-auto-vi-sales-could-reach-4-5-billion/",
      "weight": "normal"
     },
@@ -770,22 +770,13 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 10,
-     "source": "Negitaku",
-     "title": "「BetBoom Team」Dota 2部門、一時活動休止へ",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFB1RlJIMkdnMExucDZzN0R3SVZhckJJeWJOVnduQjFDZ09mYVFRb3F4cjcwUzVGWFVSbGN2bFBsdXBuTGM0bXFWNFF2emYxQQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
-     "blurb": "BetBoom has put its Dota 2 division on hold after less than two months, moving all five players to the bench after a post-TI slump.",
+     "blurb": "",
      "date": "2026-11-02",
-     "headline": "BetBoom Put Dota 2 Division On Hold After Less Than Two Months – What Went Wrong?",
-     "highlight": "On Hold",
+     "headline": "BetBoom Put Dota 2 Division On Hold After Less Than Two Months",
+     "highlight": "",
      "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg",
      "image_via": "AI 挑选",
      "url": "https://www.hotspawn.com/dota2/news/betboom-put-dota-2-division-on-hold-after-less-than-two-months-what-went-wrong",
