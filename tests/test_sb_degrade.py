@@ -2,6 +2,7 @@
 import io
 import json
 import pathlib
+import re
 import sys
 import tempfile
 import unittest
@@ -129,6 +130,27 @@ class PageSide(unittest.TestCase):
         js = render.SB_DEG_JS
         for must in ("r.status===402", "status:503", "sessionStorage", "wl-sbnote"):
             self.assertIn(must, js)
+
+    def test_script_recovers_when_limit_ends(self):
+        """休止から 10 分後、触ったときに読むだけの呼び出し（GET・get_*・my_votes・live_boards）を 1 回試し、通れば案内を消して読み直す。
+        書く呼び出し（my_vote_add など）は試しに使わない。"""
+        js = render.SB_DEG_JS
+        for must in ("function recover()", "function up()", "RETRY=600000", "location.reload()", "recover();"):
+            self.assertIn(must, js)
+        m = re.search(r"READ=/(.+?)/;", js.replace("\\/", "/"))
+        self.assertTrue(m)
+        rd = re.compile(m.group(1))
+        for ok in ("/rest/v1/rpc/my_votes", "/rest/v1/rpc/live_boards", "/rest/v1/rpc/get_photo_inbox", "/rest/v1/rpc/my_votes_own"):
+            self.assertTrue(rd.search(ok), ok)
+        for ng in ("/rest/v1/rpc/my_vote_add", "/rest/v1/rpc/submit_item", "/rest/v1/rpc/run_now", "/rest/v1/rpc/my_keywords_set"):
+            self.assertFalse(rd.search(ng), ng)
+
+    def test_outbox_flushes_once_and_empties(self):
+        import tempfile
+        d = pathlib.Path(tempfile.mkdtemp()) / "ob.json"
+        sbstate.outbox_put("live_log", [{"a": 1}, {"a": 2}], d)
+        self.assertEqual(sbstate.outbox_take("live_log", d), [{"a": 1}, {"a": 2}])
+        self.assertEqual(sbstate.outbox_take("live_log", d), [])   # 二度目は空＝二重に書かない
 
     def test_admin_line(self):
         self.assertIn("制限中", render._sb_line({"status": "limited", "since": "2026-11-03T01:02:03Z"}))
