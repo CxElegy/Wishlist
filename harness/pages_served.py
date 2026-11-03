@@ -1,5 +1,6 @@
 """本番のページが写真・小元素をどこから取るかを数える（2026-11-03 Supabase egress 対策 ④）。
-    python harness/pages_served.py [--pages home/,home/heat.html,...]
+    python harness/pages_served.py [--pages home/,home/heat.html,...] [--who test-a,test-b,test-c]
+--who：ログイン中のお客さまのページ（Supabase の pages 箱の HTML）も同じ条件で数える（ログインは認証だけ。storage は止まる）。
 各ページを 1 回だけ開き（共通の launch：Supabase の storage は route で止まる）、画像の取得を網域別に数える。
 ✓ 条件：写真の 99% 以上が Pages の /Wishlist/p/ 、Supabase storage への取得 0、/p/ の失敗（200・304 以外）0。失敗は網址と状態を出す。"""
 import argparse
@@ -36,23 +37,36 @@ def verdict(count, bad):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pages", default=DEFAULT)
+    ap.add_argument("--who", default="", help="ログインして home/ を開く人（test-a,test-b,test-c）")
     ap.add_argument("--timeout", type=int, default=120)
     a = ap.parse_args()
     from playwright.sync_api import sync_playwright
     count, bad, seen, hosts = Counter(), [], set(), Counter()
     with sync_playwright() as pw:
         b = launch(pw)
-        for path in a.pages.split(","):
+        runs = [(p, None) for p in a.pages.split(",") if a.pages] + [("home/", w) for w in a.who.split(",") if w]
+        for path, who in runs:
             pg = b.new_page(viewport={"width": 1400, "height": 900})
+            if who:   # 認証の呼び出しだけ本番に当たる（storage は route で止まる）。ux_check と同じ入り方
+                import ux_check
+                pg.goto(BASE + "home/", wait_until="domcontentloaded", timeout=a.timeout * 1000)
+                pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}",
+                            ux_check.session(ux_check.WHO[who]))
             pg.on("request", lambda r: (seen.add(r.url), count.update([classify(r.url)]), hosts.update([re.sub(r"^https?://([^/]+).*", r"\1", r.url)] if classify(r.url) == "other" else [])) if r.resource_type == "image" and r.url not in seen else None)
             pg.on("response", lambda r: bad.append((r.status, r.url)) if "/Wishlist/p/" in r.url and r.status not in (200, 304) else None)
             pg.goto(BASE + path, wait_until="domcontentloaded", timeout=a.timeout * 1000)
+            if who:   # 殻から本人のページ（wl-own）に替わるまで待つ。替わらなければ ✗ 扱いにするため数を出す
+                try:
+                    pg.wait_for_function("!!document.querySelector('meta[name=\"wl-own\"]')", timeout=30000)
+                except Exception:  # noqa: BLE001
+                    print("  本人のページに替わらなかった", who)
+                    bad.append((0, who + " の本人のページが開かない"))
             h = pg.evaluate("document.body.scrollHeight")
             for y in range(0, h, 900):
                 pg.evaluate("y=>scrollTo(0,y)", y)
                 pg.wait_for_timeout(120)
             pg.wait_for_timeout(2500)
-            print(path or "(入口)", dict(count))
+            print(who or path or "(入口)", dict(count))
             pg.close()
         b.close()
     ok, line = verdict(count, bad)

@@ -259,10 +259,13 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     render.PICKS_FLAG = render.SETTINGS_JA["picks_flag"]
     render.AUTH_DB = {"url": settings.get("supabase_url") or "", "key": settings.get("supabase_key") or ""}
     render.AUTH_ITEMS = [[i["name"], digest.section_of(i)] for i in shop_items if not i.get("parent")]
+    motifs = {i["name"]: render.template_for(i) for i in items}
+    if not items:   # 版面 0 個の「はじめに」も種類（category）から主題を持つ：お客さまも店長と同じ P5 の枠組み（素の版面にしない）
+        motifs[FIRST_BOARD] = render.template_for({"type": "category", "notes": render.WEB_ITEM_MARK})
     html_ = render.render(issues, settings.get("nav_style", "line"), order, updated, [], digest.pack_batches(rec["picks"]),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")},
                           {i["name"]: i["size"] for i in items if i.get("size")},
-                          {i["name"]: render.template_for(i) for i in items}, themes, rec["taste"], heat_scores,
+                          motifs, themes, rec["taste"], heat_scores,
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")}, {n: v for n, v in subs.items() if v},
                           settings.get("nav_hide", render.NAV_HIDE),
