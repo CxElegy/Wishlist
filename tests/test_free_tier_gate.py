@@ -79,6 +79,22 @@ class GateTest(unittest.TestCase):
         self.assertFalse(any("pages_served" in n or "sb_down" in n or "pages_health" in n for n in names))
         self.assertEqual(g.main.__name__, "main")
 
+    def test_soft_exit_is_unknown_not_fail(self):
+        # --size の 測れず（終了コード 2）は ✗ ではない（2026-11-03 別の目の指摘：ラベルと動きが食い違っていた）
+        n, ok, _ = g.sh("x", [sys.executable, "-c", "raise SystemExit(2)"], 30, soft=(2,))
+        self.assertIsNone(ok)
+        self.assertFalse(g.sh("x", [sys.executable, "-c", "raise SystemExit(2)"], 30)[1])
+        self.assertFalse(g.sh("x", [sys.executable, "-c", "raise SystemExit(1)"], 30, soft=(2,))[1])
+        code, lines = g.report([("a", True, "x"), ("s", None, "測れず")], False)
+        self.assertEqual(code, 0)
+        self.assertTrue(lines[0].startswith("✓") and lines[1].startswith("-"))
+        self.assertIn("測れず 1 件", lines[-1])
+        self.assertEqual(g.report([("s", None, "測れず"), ("b", False, "y")], False)[0], 1)
+
+    def test_size_step_is_soft_on_2(self):
+        t = (Path(g.__file__)).read_text(encoding="utf-8")
+        self.assertIn('"--size"], 120, soft=(2,)', t)
+
     def test_timeout_is_fail(self):
         n, ok, line = g.sh("x", [sys.executable, "-c", "import time;time.sleep(5)"], 1)
         self.assertFalse(ok)

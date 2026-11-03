@@ -326,3 +326,4 @@
 - 2026-11-03 f2f2 別の目の指摘（続き）：token 走査が git 管理外の .claude/worktrees の写しを拾う→見ない／docs の静的な data-fb に storage 網址が 1 件残る（render._pic が落ち先に入れていた）→入れない＋free_tier_gate に docs 静的 storage 網址 0 の点検を足した。連動の範囲：docs の html・js 全部（1 件）。架構図：processes.py p1ph に 1 文。次：render 後に gate --skip-prod が全部 ✓ か確かめる。
 - 2026-11-03 f3：11/4 ゲート再実行＝全部 ✓（Pages 6076 枚・載る 5416 枚の 100.0%・/p/ 失敗 0・storage 0・sb_down_check OK）。BACKLOG の初回 ✗ を [x]。架構図：不用改（文書のみ）。次：11/4 01:30 UTC 以降の 24h 数え。
 2026-11-03 f4：Pages 公開物の大きさの見張り（manifest.bytes・pages_health --size・ゲートに 1 行）。架構図：processes.py p7 に 1 文。次：公開後に --size の値を書く、11/4 01:30 UTC 以降の egress 24h 数え。
+2026-11-03 f4b：公開物の大きさの見張りの穴 4 つを直した（ゲートの測れず＝ - ・定時の記録と赤・管理ページの 1 行・manifest.bytes に manifest 自身も入れた）。連動の範囲：見張りを走らせる所 2（photo_cache.yml・ゲート）、tests が数える。架構図：processes.py p7 に 1 文。次：公開後に最初の値を PROGRESS へ。

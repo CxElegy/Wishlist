@@ -136,18 +136,33 @@ def size_verdict(manifest, prev=None):
     return b <= LIMIT * WARN, "公開物 %.0f MB＝1 GB の %.0f%%（%d%% 超で ✗）%s" % (b / 1e6, b / LIMIT * 100, WARN * 100, grow)
 
 
+def size_prev(stored, today):
+    """前回（前の日）のバイト。きょうの記録が既にあれば、その前（prev）。"""
+    s = stored or {}
+    return s.get("prev") if s.get("date") == today else s.get("bytes")
+
+
+def size_next(stored, b, today):
+    """--set で書く記録。きょうの分が既にあれば None（1 日 1 回だけ書く＝コミットが増えない）。"""
+    if (stored or {}).get("date") == today:
+        return None
+    return {"bytes": b, "date": today, "prev": (stored or {}).get("bytes")}
+
+
 def size_main(set_flag):
     f = ROOT / "state" / "pages_size.json"
+    today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
     try:
-        prev = json.loads(f.read_text(encoding="utf-8")).get("bytes")
+        stored = json.loads(f.read_text(encoding="utf-8"))
     except (OSError, ValueError):
-        prev = None
+        stored = None
     m = live_manifest()
-    ok, line = size_verdict(m, prev)
+    ok, line = size_verdict(m, size_prev(stored, today))
     print("%s %s" % ("-" if ok is None else "✓" if ok else "✗", line))
-    if set_flag and ok is not None:
-        f.write_text(json.dumps({"bytes": m["bytes"]}) + "\n", encoding="utf-8")
-    raise SystemExit(2 if ok is None else 0 if ok else 1)
+    new = size_next(stored, m["bytes"], today) if set_flag and ok is not None else None
+    if new:
+        f.write_text(json.dumps(new) + "\n", encoding="utf-8")
+    raise SystemExit(2 if ok is None else 0 if ok else 1)   # 2＝測れず（失敗ではない。ゲートは - と出す）
 
 
 def emblems_missing(names, manifest):

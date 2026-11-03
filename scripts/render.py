@@ -6622,12 +6622,31 @@ def _sb_line(st=None):
     return f'<p id="sb-state" class="sbline" data-state="{"limited" if lim else "ok"}"><b>{e(txt)}</b></p>'
 
 
+PAGES_SIZE_FILE = pathlib.Path(__file__).resolve().parent.parent / "state" / "pages_size.json"
+
+
+def _pages_size_line(st=None):
+    """管理ページの 1 行：公開物（写真込み）が Pages の目安 1 GB の何 %か（photo_cache.yml が 1 日 1 回 state/pages_size.json に書く）。70% 超で金色。"""
+    if st is None:
+        try:
+            st = json.loads(PAGES_SIZE_FILE.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            st = {}
+    b = st.get("bytes")
+    if not b:
+        return '<p id="pages-size" class="sbline" data-state="none"><b>公開物の大きさ：まだ測っていません（次の公開のあとの回から）</b></p>'
+    pct, prev = b / 1024 ** 3 * 100, st.get("prev")
+    grow = f" · 前回より {(b - prev) / 1048576:+.1f} MB" if prev else ""
+    txt = f"公開物（写真込み）：{_mb(b)}＝Pages の目安 1 GB の {pct:.0f}%{grow} · {st.get('date') or ''}"
+    return f'<p id="pages-size" class="sbline" data-state="{"limited" if pct > 70 else "ok"}"><b>{e(txt)}</b></p>'
+
+
 def _admin_resources(res):
     """リソース：容量（リポジトリ・公開ページ）、仕組みごとの最近の実行のサーバー（メモリ・ディスク・CPU）、トークン。"""
     if not res:
         return ""
     sz, lim = res.get("sizes") or {}, res.get("limits") or {}
-    cap = (_sb_line() + _meter("リポジトリ", sz.get("repo", 0), lim.get("repo"), "GitHub は 1GB 未満を推奨（5GB で警告）")
+    cap = (_sb_line() + _pages_size_line() + _meter("リポジトリ", sz.get("repo", 0), lim.get("repo"), "GitHub は 1GB 未満を推奨（5GB で警告）")
            + _meter("公開ページ（docs/）", sz.get("pages", 0), lim.get("pages"),
                     f'GitHub Pages は 1GB まで · うち小元素の画像 {_mb(sz.get("emblems", 0))}')
            + _photo_meter(photo_store.load()["stat"])
