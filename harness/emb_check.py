@@ -472,6 +472,7 @@ def boards_closeup_bad(rows, now=None):
     return closeup_wait_bad(st, eta, now), len(st)
 
 
+_BOARDS_FULL = []
 _BOARDS = []   # 1 回の点検で boards を取るのは 1 回（E20・E23・E24・E26 が同じ行を読む。Supabase の egress を増やさない）
 
 
@@ -484,7 +485,15 @@ def boards_rows():
     key = os.environ.get("SUPABASE_SERVICE_KEY") or s["supabase_key"]
     req = urllib.request.Request(f"{s['supabase_url']}/rest/v1/boards?select=name,config&limit=1000", headers={"apikey": key, "Authorization": f"Bearer {key}"})
     _BOARDS[:] = [json.loads(urllib.request.urlopen(req, timeout=20).read())]
+    _BOARDS_FULL[:] = [bool(os.environ.get("SUPABASE_SERVICE_KEY"))]
     return _BOARDS[0]
+
+
+def boards_coverage():
+    """お客さまの版面の点検がどこまで見えているか → (読めた版面数, 全部読めたか)。公開の key は店長がフォローした分（64 中 23）しか読めない。
+    全部読めない点検の「0」は『残りは未測』なので、E24 の行に必ずこの範囲を出す（library_emblem.yml の回は service key で全部を数えて log に出す）。"""
+    rows = boards_rows()
+    return len(rows), bool(_BOARDS_FULL and _BOARDS_FULL[0])
 
 
 def boards_closeup_lines():
@@ -700,6 +709,8 @@ def check(pg, who, width, out, full=False, guest=False):
         found["E24"] = narrow_small_rejects()
         try:
             found["E24"] += narrow_small_rejects([], boards=boards_rows())
+            n, full = boards_coverage()
+            print(f"  情報 E24 お客さまの版面 {n} 件を数えた（{'service key＝全部' if full else '公開の key＝見える分だけ。残りは未測：library_emblem の回の log「E24 お客さま」の行を見る'}）")
         except Exception as e:  # noqa: BLE001
             print(f"  情報 E24 お客さまの版面を数えられなかった：{e}")
         found["E25"] = time_waits()

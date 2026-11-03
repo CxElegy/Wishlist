@@ -627,6 +627,14 @@ def due(boards, now):
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]
 
 
+def narrow_stale_count(boards):
+    """E24 のお客さまの版面の分（全部の版面を service key で）：縮めた網址が reject に残り取り直しの番が来ていない版面 → (数, 名前の一覧)。
+    公開の key の点検（harness/emb_check E24）は一部の版面しか読めないので、全部を数えるのはこの回（Actions の log に出る）。"""
+    import emblem_fill
+    bad = [b.get("name") for b in boards if emblem_fill.stale_narrow_rejects({"name": b.get("name"), "emblem_kind": "character", **cfg(b)})]
+    return len(bad), bad
+
+
 def _upload(base, key):
     def up(name, data):
         req = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/{BUCKET}/{name}", data=data, method="POST",
@@ -693,6 +701,8 @@ def main(argv):
     if "--check" in argv:   # 待ちはある？（library_emblem.yml の見回り：空なら重い道具を入れずに終える）
         _out(due="true" if todo else "false")
         print(f"ライブラリの小元素：待ち {len(todo)} 版面")
+        n, who = narrow_stale_count(boards)
+        print(f"E24 お客さま {n} 件（全 {len(boards)} 版面・service key）{'：' + '・'.join(map(str, who[:10])) if n else ''}")
         return
     done = {"ok": 0, "running": 0, "failed": 0, "blocked": 0}
     tried = gained = 0
@@ -714,6 +724,8 @@ def main(argv):
         gained += int(add["emblem_state"].get("have") or 0) > int((cfg(b).get("emblem_state") or {}).get("have") or 0)
     # 空になるまで：時間切れで残った版面か途中（running）があり、この回で 1 版面でも増えたなら次の回をすぐ起こす（増えなければ止める）
     _out(worked="true" if tried else "false", more="true" if gained and (len(todo) > tried or done["running"]) else "false")
+    n, who = narrow_stale_count(boards)
+    print(f"E24 お客さま {n} 件（全 {len(boards)} 版面・service key）{'：' + '・'.join(map(str, who[:10])) if n else ''}")
     print(f"ライブラリの小元素：対象 {len(todo)} 版面（店長の版面を除く {len(boards)}）・"
           f"そろった {done['ok']}・途中 {done['running']}・届かない {done['failed']}・Wikidata に断られて次へ {done['blocked']}")
 

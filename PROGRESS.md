@@ -320,3 +320,5 @@
 - 2026-11-03 f1：E24 確認＝background run 41607700962 成功・main の narrow_small_rejects()=0。ux_check は回線切れで測れず。次：E15→E10。
 - 2026-11-03 f1f1：E24 の [x] を [~] に戻した（別の目の指摘）。店長 narrow_small_rejects()=0 は再確認、版面側は DB 64 版面のうち縮めた札のある 21 を同じ関数で数えて 1 件（原神 Xiangling）。library_emblem.yml は #832 のあと未実行だったので dispatch（run 41626091935）。画面（ux_check）は未測。次：その run のあと版面側を数え直して 0 なら [x]（データ側のみ・画面未測と明記）。
 - 2026-11-03 f1f1：E24 データ側 [x]：library_emblem run 41626091935 のあと店長 0・版面側（DB 64 版面の縮めた札 21）0。画面 ux_check は未測。次：E15→E10。
+
+- 2026-11-03 f1f2：E24 版面側を繰り返せる点検に：emb_check が数えた版面数と key の種類（公開＝23/64 は未測あり）を出し、library_emblem の回が service key で全版面を数えて log に「E24 お客さま N 件」。tests 追加。ux_check E24 の画面は未測のまま（Playwright MCP 不通・本番は 1 回だけ）。次：合併後の library_emblem run の log で N を確認→E15。
