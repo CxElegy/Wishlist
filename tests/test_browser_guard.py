@@ -159,6 +159,9 @@ class BrowserGuard(unittest.TestCase):
         import browser
         self.assertTrue(browser.PATTERN.match("https://x.supabase.co/storage/v1/object/public/photos/a-800.webp"))
         self.assertFalse(browser.PATTERN.match("https://x.supabase.co/rest/v1/rpc/f"))
+        # 本人のページの箱（ログインして download）は止めない：灰色の画像が HTML になり test-a〜c が「素の箱」になった（2026-11-03）
+        self.assertFalse(browser.PATTERN.match("https://x.supabase.co/storage/v1/object/pages/uid/index.html"))
+        self.assertFalse(browser.PATTERN.match("https://x.supabase.co/storage/v1/object/authenticated/pages/uid/index.html"))
 
 
 if __name__ == "__main__":

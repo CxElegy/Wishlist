@@ -302,3 +302,4 @@
 2026-11-03 r1f2 sb_down_check：呼ばない 4 ページ（face-size・layout-v2・wishes・product-head）は probe 後 hits.clear() で案内 1 の点検が常に偽＝漏れ。probed 旗で案内 1・dataset.sb=down を assert、tests に固定（#805）。手元 16 ページ×1400/390 全部 OK。次：本番で 1 回・ux_check・24h ログ数え
 
 - 2026-11-03 r2：休止モード③④ #806（library 系の 402 緑終了・読み取りの使い回し）。CI 緑・合併。確かめ：全試験 OK。次：24 時間後に nav_schemes 等の回数を数える。
+2026-11-03 r1f1 ux_check の止めが pages 箱まで灰色にしていた（ログイン後 12 件 ✗ の根）を直す。確かめ：✗ 12→3（別の件を BACKLOG へ）。写真の 404 10 枚は photo_cache 追従＋再 render で 0。次＝残り 3 件

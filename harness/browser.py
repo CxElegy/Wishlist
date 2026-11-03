@@ -10,7 +10,9 @@ from pathlib import Path
 
 # 写しは作業ツリーの外の共通の場所（係・実行同士で共有。作業ツリーは毎回まっさらで、中に置くと毎回落とし直す）。上書き：WL_PHOTO_CACHE
 CACHE = Path(os.environ.get("WL_PHOTO_CACHE") or Path.home() / ".cache" / "wl_photo_cache")
-PATTERN = re.compile(r"https://[^/]+\.supabase\.co/storage/")
+# 止めるのは公開の箱（photos・emblems・media）だけ。本人のページ（pages 箱の /object/pages/…。ログインして download する）は止めない：
+# 止めると test-a〜c が灰色の画像を HTML として受け取り「素の箱」になり、ログイン後の点検が全部 ✗ になった（2026-11-03）
+PATTERN = re.compile(r"https://[^/]+\.supabase\.co/storage/v1/(?:object|render/image)/public/")
 GRAY = base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAEUlEQVR4nGNoaGgYFUQAANbVRbl3EF3BAAAAAElFTkSuQmCC")
 
 
