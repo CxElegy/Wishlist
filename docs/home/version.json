@@ -1,32 +1,32 @@
 {
- "admin": "210f1c8b2471",
- "admin-ai": "5659b5e05b03",
+ "admin": "4c470da8f050",
+ "admin-ai": "bc12c917c0b1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ee772d78"
+   "68d508a5"
   ],
   "tokens": [
    "AI 編集のトークン",
    "cd62d095"
   ]
  },
- "admin-boards": "f1ac221acd8d",
+ "admin-boards": "d8b4d17fb1ae",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "d5c5eda5"
+   "63c98361"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "2e62d0f10a4d",
+ "admin-emblem": "81a6b2f9803f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "733142e8"
+   "5e9cf5f7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "06155f4810a3",
+ "admin-now": "8a7b16323658",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "48c778f8"
+   "5e68ecbf"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "fea0c3b7"
+   "c6d40e8c"
   ],
   "term-panel": [
    "ライブログ",
-   "d3f1c8a2"
+   "e813852c"
   ]
  },
- "admin-system": "5bac653fdfdd",
+ "admin-system": "cb95651f71ec",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "efb4ef24"
+   "ee10cb02"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9b46e48e"
+   "1e632004"
   ]
  },
  "admin_marks": {},
- "heat": "adfcbe327ba4",
+ "heat": "5f1b299804e0",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "1980ef5a"
+   "3747007c"
   ],
   "ranking": [
    "ランキング",
-   "9dbe529f"
+   "73c85ecd"
   ]
  },
- "index": "9d4c36f54e47",
+ "index": "d3742a1277fb",
  "index_marks": {
   "front": [
    "トップ",
-   "f36d8dc4"
+   "71644d46"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "b4ab8115"
+   "edc413be"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,15 +145,15 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "5ad67ba1"
+   "1bf68dc3"
   ],
   "w-9cb26dba": [
    "FROM",
-   "04c2d9e6"
+   "352040e3"
   ],
   "w-b867582f": [
    "あつ森",
-   "f68bd7a2"
+   "595b5d1d"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "7fbd8b0d"
+   "d7a7de10"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "25b5f963"
+   "1aaa3285"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "9be760a1"
   ]
  },
- "updated": "11.04 06:33",
+ "updated": "11.04 07:01",
  "wishlist": "65bedbb4e63c"
 }
