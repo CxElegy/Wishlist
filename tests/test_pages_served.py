@@ -98,6 +98,18 @@ class FillFollowsRender(unittest.TestCase):
         self.assertEqual(pages_health.emblems_missing({"a.webp"}, None), ["a.webp"])
         self.assertEqual(pages_health.emblems_missing(set(), {"names": []}), [])
 
+    def test_storage_leaks_counts_non_emblem(self):
+        import pages_health
+        e = "https://x.supabase.co/storage/v1/object/public/emblems/Q1-ab.webp"
+        self.assertEqual(pages_health.storage_leaks(e), 0)
+        self.assertEqual(pages_health.storage_leaks(e + " https://x.supabase.co/storage/v1/object/public/photos/aa-400.webp"), 1)
+        self.assertEqual(pages_health.storage_leaks(None), 0)
+
+    def test_photo_cache_checks_emblems_with_key(self):
+        """鍵のある回（photo_cache.yml）で boards の小元素 ⊆ 写し・storage 網址 0 を毎回数える（警告として見える。手で数えた 1 回で終わらせない）。"""
+        t = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")
+        self.assertIn("pages_health.py --emblems", t)
+
     def test_photo_cache_runs_after_render_and_republishes(self):
         """新しい写真は render のあとに html へ載る。毎日 1 回だと最大 1 日 /p/ が 404 になった（2026-11-03：10 枚）→ render のあとに写しを足し、変わったら Pages を出し直す。"""
         t = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")

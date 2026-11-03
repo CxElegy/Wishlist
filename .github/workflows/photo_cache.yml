@@ -41,6 +41,9 @@ jobs:
           restore-keys: wl-photo-cache-
       - id: fill
         run: python harness/photo_cache_fill.py
+      - name: boards の小元素 ⊆ 写し・storage 網址 0 を数える（足りなければ警告。写しの追加は Pages 公開のあとに manifest へ出る）
+        if: always()
+        run: python harness/pages_health.py --emblems || echo "::warning::boards の小元素が Pages の写しに足りない、または boards に storage の網址がある（上の行）"
       - uses: actions/cache/save@v4
         if: always() && steps.fill.outputs.changed == 'true'   # 変わらない回は保存しない（200 MB の写しで他の cache を押し出さない）
         with:

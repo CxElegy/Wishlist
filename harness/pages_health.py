@@ -129,6 +129,14 @@ def emblems_missing(names, manifest):
     return sorted(set(names) - have)
 
 
+LEAK = re.compile(r"supabase\.co/storage/(?!v1/object/public/emblems/)")
+
+
+def storage_leaks(text):
+    """boards.config・board_stories にある Supabase storage の網址のうち小元素（emblems 箱）以外の数。JS の記事カードは photos 箱を書き換えないので 0 でなければ egress の穴（story の画像が photos 箱になった）。"""
+    return len(LEAK.findall(text or ""))
+
+
 def emblems_main():
     """--emblems：ライブラリの boards.config の小元素の名前 ⊆ Pages の写し。足りない数を出す（DB は読むだけ・1 回の GET。鍵は SUPABASE_SERVICE_KEY、無ければ anon＝公開の版面だけ）。"""
     import photo_cache_fill as f
@@ -138,9 +146,11 @@ def emblems_main():
     if not names:
         print("測れず：boards の小元素の名前を読めない（鍵なし・網なし。anon は非公開の版面が見えない）")
         raise SystemExit(2)
+    leaks = storage_leaks(f.board_text(st) + f.board_text(st, "board_stories", "*"))
+    print("%s boards・board_stories の小元素以外の storage 網址 %d 件" % ("✓" if not leaks else "✗", leaks))
     miss = emblems_missing(names, live_manifest())
     print("%s boards の小元素 %d 種のうち Pages に無い %d 種 %s" % ("✓" if names and not miss else "✗", len(names), len(miss), miss[:5]))
-    raise SystemExit(0 if names and not miss else 1)
+    raise SystemExit(0 if names and not miss and not leaks else 1)
 
 
 def main():
