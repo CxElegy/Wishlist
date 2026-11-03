@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "edit_sig": "acf24caca7d4",
+ "edit_sig": "40648838b5aa",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -76,8 +76,8 @@
      "date": "2026-11-02",
      "headline": "Analyst Says First-Day ‘Grand Theft Auto VI’ Sales Could Reach $4.5 Billion",
      "highlight": "$4.5 Billion",
-     "image": "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://static.wixstatic.com/media/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg/v1/fill/w_1000,h_566,al_c,q_85,usm_0.66_1.00_0.01/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.mediaplaynews.com/analyst-says-first-day-grand-theft-auto-vi-sales-could-reach-4-5-billion/",
      "weight": "normal"
     },
@@ -614,15 +614,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 7,
-     "source": "www.auroradesio.it",
-     "title": "The Mandalorian Atst - THE MANDALORIAN Chapter 4 Concept Art Features Cara Dune The AT ST",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9HRTlEMlpSb0pSR2lMTk9faC1kOTk0RTR3Sm43Q0hCNEo4Tm1FaGFGMUwyeUtaZE1yT1drUDNYcGpqdXRRTnlwaG83OHV6bEJraVNv?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -650,9 +641,8 @@
      "date": "2026-11-03",
      "headline": "Coming soon: huge mag on 'The Mandalorian and Grogu'",
      "highlight": "",
-     "image": null,
-     "source": "befores & afters",
-     "source_icon": "https://www.google.com/s2/favicons?domain=beforesandafters.com&sz=128",
+     "image": "https://beforesandafters.com/wp-content/uploads/2026/11/Screenshot-2026-11-03-at-11.34.49-am.jpg",
+     "image_via": "og:image",
      "url": "https://beforesandafters.com/2026/11/03/coming-soon-huge-mag-on-the-mandalorian-and-grogu/",
      "weight": "normal"
     },
