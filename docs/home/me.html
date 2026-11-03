@@ -1,7 +1,7 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script>
 (function(){
   if(!window.fetch||window.WL_SB) return;
-  var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false, downAt=0, lastGet=null, probing=false, RETRY=600000, READ=/\/rpc\/(get_[a-z_]+|my_votes|my_votes_own|live_boards)(\?|$)/;
+  var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false, downAt=0, lastGet=null, probing=false, RETRY=600000, READ=/\/rpc\/(get_[a-z_]+|my_votes|my_votes_own|live_boards|my_role|my_page|my_boards|can_edit|is_admin|auth_enforced|admin_(accounts|account_langs|board_edit_state|follow_detail|follow_rows|list_invites|ui_langs|users|votes))(\?|$)/;
   var MSG='いま、ログインと 👍👎 の機能を休止しています。記事はこれまでどおり読めます。';
   function sb(u){return /^https:\/\/[a-z0-9]+\.supabase\.co\/(rest|auth|functions)\//.test(u);}
   try{ var t=+sessionStorage.getItem(K); if(t&&Date.now()-t<RETRY){ down=true; paused=true; downAt=t; } }catch(e){}

@@ -1,6 +1,6 @@
 {
- "admin": "6e12ba42bedf",
- "admin-ai": "b56cb4415d67",
+ "admin": "31fa89fb440a",
+ "admin-ai": "b174bc2c034e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -11,7 +11,7 @@
    "93dddfb9"
   ]
  },
- "admin-boards": "32228c2fb5ee",
+ "admin-boards": "f1ac221acd8d",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "f5f8909b2a89",
+ "admin-emblem": "b87c234ecdbb",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ee29f984"
+   "f62f36f5"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -41,9 +41,9 @@
    "47688dd6"
   ]
  },
- "admin-members": "1b3cde67a165",
+ "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "8c56ba5f90e7",
+ "admin-now": "866d194e3ea9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -51,7 +51,7 @@
   ],
   "queue": [
    "いまの状況",
-   "c6452281"
+   "fbe0df06"
   ],
   "status": [
    "運行状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "4460dfed"
+   "5e03f14b"
   ]
  },
- "admin-system": "e11a92974da2",
+ "admin-system": "d20e827e185d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "534836bd"
+   "cd5e109a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d29d26a5"
+   "eba68151"
   ]
  },
  "admin_marks": {},
- "heat": "0a927332a783",
+ "heat": "adfcbe327ba4",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -93,11 +93,11 @@
    "9dbe529f"
   ]
  },
- "index": "187e990d7ba1",
+ "index": "611fe064c572",
  "index_marks": {
   "front": [
    "トップ",
-   "a50c9378"
+   "2b6fd793"
   ],
   "picks": [
    "気になるかも？",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "595b5d1d"
+   "f68bd7a2"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "d7a7de10"
+   "7fbd8b0d"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "1aaa3285"
+   "25b5f963"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "9be760a1"
   ]
  },
- "updated": "11.04 04:32",
- "wishlist": "3c5b9f1239c7"
+ "updated": "11.04 04:33",
+ "wishlist": "d1872aba5fcc"
 }
