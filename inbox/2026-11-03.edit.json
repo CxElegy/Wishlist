@@ -89,7 +89,7 @@
   "三星手机": 53,
   "A2O LITE": 16,
   "MMORPG 新作": 22,
-  "dota2": 10,
+  "dota2": 13,
   "哈利波特剧集": 6,
   "あつ森": 3,
   "ILLIT": 26,
@@ -384,7 +384,9 @@
     1,
     5,
     7,
-    9
+    9,
+    11,
+    12
    ],
    "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg"
   },
@@ -394,7 +396,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    13
    ]
   }
  ],
