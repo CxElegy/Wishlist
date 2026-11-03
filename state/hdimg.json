@@ -1170,9 +1170,21 @@
   "target": 720,
   "v": 3
  },
+ "https://helios-i.mashable.com/imagery/articles/02aC6cl7XAkZgt0MfrP6aCN/hero-image.fill.size_1200x675.v1793633323.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://helios-i.mashable.com/imagery/articles/04Mt2Vvjp0ZGJArOgVNvySL/hero-image.fill.size_1200x675.v1680102816.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hermes.media.static.aol.com/media/2026/11/02/d62fe923-b60d-35bd-825f-6f8d3011d950/e90ae037-3503-466a-b1fd-c708ddb41280.jpg": {
+  "w": 3000,
+  "h": 977,
   "target": 1280,
   "v": 3
  },
@@ -2051,6 +2063,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
+ },
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FPrtimes%252Ffc%252FPrtimes_2026-11-02-16333-238%252FPrtimes_2026-11-02-16333-238_1.jpg,zoom=1200,quality=70,type=jpg": {
+  "w": 1200,
+  "h": 901,
+  "target": 720,
+  "v": 3
  },
  "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252Fntv%252F3b%252Fntv_1488891772381823262%252Fntv_1488891772381823262_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "w": 560,
