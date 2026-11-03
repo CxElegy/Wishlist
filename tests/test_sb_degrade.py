@@ -231,3 +231,14 @@ class SupabaseNoneExitsGoThroughNeedDb(unittest.TestCase):
                     if (f.name, i + 1) not in self.KEY_MISSING:
                         bad.append(f"{f.name}:{i + 1}")
         self.assertEqual(bad, [], "supabase() の None のあとは sbstate.need_db を通す")
+
+
+class IdleTabs(unittest.TestCase):
+    """放置したタブの Supabase 見回りは every() 1 本（2026-11-03）：生の setInterval で live_boards・my_boards・依頼を読み直さない。"""
+
+    def test_pollers_use_every(self):
+        src = (ROOT / "scripts" / "render.py").read_text(encoding="utf-8")
+        self.assertIn("every:every", src)
+        for call in ("WL_SB.every(read,", "WL_SB.every(function(){R._wlload", "WL_SB.every(loadLive,", "WL_SB.every(loadDb,"):
+            self.assertEqual(src.count(call), 1, call)
+        self.assertNotIn("clearInterval(R._wlub)", src)

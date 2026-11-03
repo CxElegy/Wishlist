@@ -331,3 +331,4 @@
 
 - 2026-11-03 f1f2：E24 版面側を繰り返せる点検に：emb_check が数えた版面数と key の種類（公開＝23/64 は未測あり）を出し、library_emblem の回が service key で全版面を数えて log に「E24 お客さま N 件」。tests 追加。ux_check E24 の画面は未測のまま（Playwright MCP 不通・本番は 1 回だけ）。次：合併後の library_emblem run の log で N を確認→E15。
 - 2026-11-03 plan1b 計画の係：段 4 つ＋[?] 1 つ（放置タブの呼び出し・402 から戻る点検・worktree 掃除〔160 個〕・BACKLOG 438 KB を縮める・公開の表を Pages JSON から読む案）。架構図：不用改（文書のみ）。次：各段を取る。
+- 2026-11-04 f1 放置タブの Supabase 見回りを止める（SB_DEG_JS の every・4 か所・harness/idle_check.py：1 時間 24 回・2 時間後 0・触れば再開）。次：402 から戻る点検
