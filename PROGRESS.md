@@ -334,3 +334,5 @@
 - 2026-11-04 f1 放置タブの Supabase 見回りを止める（SB_DEG_JS の every・4 か所・harness/idle_check.py：1 時間 24 回・2 時間後 0・触れば再開）。次：402 から戻る点検
 - 2026-11-04 f1 放置タブ続き：管理ページ（livelog.py 3 本・overview.py 1 本）の Supabase 見回りも every 経由に。tests＝scripts/ 全体の生の setInterval 点検、idle_check＝admin-now を 200 返しで放置（30 分〜2 時間 0）。次：402 から戻る点検
 - 2026-11-04 f1f2 放置タブ続き：設定ページ additem.js の loadQueue（setTimeout 自己呼び出し 15/30 秒）を WL_SB.every 経由に（PR #852）。tests＝docs/home/*.js の自己呼び出し点検、idle_check＝設定ページ 30 分〜2 時間 0 回（最初の 1 分 2 回・36 分まで 45 回）。本番 additem.js 反映済み・ux_check ✗ 0。次：402→200 復帰の点検（sb_down_check）。
+
+- 2026-11-03 f2：402 が終わったら自動で元に戻る（SB_DEG_JS recover・sb_down_check --mode recover 全部 OK・outbox 二重書き 0 を tests）。次：11/5 朝の本番 402 の実機確認。

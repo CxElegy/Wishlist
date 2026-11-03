@@ -104,15 +104,67 @@ def check(pw, base, mode, shots):
     return bad
 
 
+def recover(pw, base):
+    """制限が終わったら自動で元に戻るか（2026-11-03）：402 で休止 → 応答を 200 に切り替え → 時計を 11 分進めて触る →
+    案内が消え・休止の印が外れ・（読み直しのあと）呼び出しが通る。まだ 402 の間は 10 分待って同じ網に 1 回だけ。"""
+    bad = []
+    b = launch(pw)
+    for page_ in ("home/index.html", "home/wishlist.html"):
+        for w, h in ((1400, 900), (390, 844)):
+            ctx = b.new_context(viewport={"width": w, "height": h})
+            st = {"code": 402, "n": 0}
+
+            def route(r, _req=None):
+                st["n"] += 1
+                if st["code"] == 402:
+                    return r.fulfill(status=402, content_type="application/json", body='{"message":"Fair Use"}')
+                return r.fulfill(status=200, content_type="application/json", body="[]")
+
+            ctx.route(SB, route)
+            p = ctx.new_page()
+            p.clock.install()
+            p.goto(base + page_, wait_until="domcontentloaded", timeout=30000)
+            settle(p, [1] * st["n"])
+            tag = f"{page_} {w}"
+            if p.evaluate("()=>document.documentElement.dataset.sb") != "down":
+                bad.append(f"✗ {tag}: 402 で休止にならない（この点検の前提）")
+            n0 = st["n"]
+            p.clock.fast_forward(5 * 60000)
+            p.mouse.wheel(0, 50)
+            p.wait_for_timeout(500)
+            if st["n"] != n0:
+                bad.append(f"✗ {tag}: 休止 5 分で網に出た（10 分は待つ）")
+            p.clock.fast_forward(6 * 60000)
+            p.mouse.wheel(0, 50)   # まだ 402：試すのは 1 回だけ
+            p.wait_for_timeout(500)
+            if st["n"] != n0 + 1 or p.evaluate("()=>document.querySelectorAll('.wl-sbnote').length") != 1:
+                bad.append(f"✗ {tag}: 11 分後の試しが 1 回でない／案内が消えた（網 +{st['n'] - n0}）")
+            st["code"] = 200
+            p.clock.fast_forward(11 * 60000)
+            p.mouse.wheel(0, 50)
+            try:
+                p.wait_for_function("()=>!document.documentElement.dataset.sb&&!document.querySelector('.wl-sbnote')", timeout=5000)
+            except Exception:  # noqa: BLE001
+                bad.append(f"✗ {tag}: 402 が終わっても案内が消えない")
+            p.wait_for_timeout(1500)
+            if p.evaluate("()=>document.documentElement.dataset.sb||''") == "down":
+                bad.append(f"✗ {tag}: 戻ったのに休止のまま")
+            print(f"{tag:28s} 網 {st['n']} 回 · 案内 {p.evaluate('()=>document.querySelectorAll(\".wl-sbnote\").length')}")
+            ctx.close()
+    b.close()
+    return bad
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="https://cxelegy.github.io/Wishlist/")
-    ap.add_argument("--mode", default="abort", choices=["abort", "402"])
+    ap.add_argument("--mode", default="abort", choices=["abort", "402", "recover"])
     ap.add_argument("--shots", default="")
     a = ap.parse_args()
     from playwright.sync_api import sync_playwright
     with sync_playwright() as pw:
-        bad = check(pw, a.base if a.base.endswith("/") else a.base + "/", a.mode, a.shots)
+        base = a.base if a.base.endswith("/") else a.base + "/"
+        bad = recover(pw, base) if a.mode == "recover" else check(pw, base, a.mode, a.shots)
     print("\n".join(bad) or "全部 OK")
     sys.exit(1 if bad else 0)
 
