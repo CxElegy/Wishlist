@@ -626,6 +626,14 @@ button{font-family:inherit}
  .pkgrid:not(.row) .pk:not(.big) .taste{display:none}  /* 「あなたの投票」は大きい 1 枚だけ */
 }
 @media (min-width:761px) and (max-height:1000px){.pkgrid:not(.row) .pk:not(.big) .tags{display:none}}
+/* 札が 5 枚未満の並びは、4 列のまま右が空かない：大きい 1 枚（2×2）＋小さい札を、枚数に合わせて 3 列／最後の 1 枚を伸ばして埋める（test-b 1400：2 枚で右半分が空いた 17%・ux_check の gridHole） */
+@media (min-width:1201px){
+.pkgrid:not(.row):has(.pk.big:first-child):not(:has(.pk:nth-child(4))){grid-template-columns:repeat(3,minmax(0,1fr))}
+.pkgrid:not(.row):has(.pk.big:first-child):not(:has(.pk:nth-child(3))) .pk:nth-child(2){grid-row:span 2}
+.pkgrid:not(.row):has(.pk.big:first-child):not(:has(.pk:nth-child(2))){grid-template-columns:minmax(0,1fr)}
+.pkgrid:not(.row):has(.pk.big:first-child):not(:has(.pk:nth-child(2))) .pk.big{grid-column:1}
+.pkgrid:not(.row):has(.pk.big:first-child):has(.pk:nth-child(4)):not(:has(.pk:nth-child(5))) .pk:nth-child(4){grid-column:span 2}
+}
 .pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
 .pk.big .vote{margin:12px 24px 0}
 .vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
