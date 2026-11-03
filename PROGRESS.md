@@ -312,3 +312,4 @@
 2026-11-03 r2f2：egress ①② 別の目の指摘を直す。小元素名の集合を md5 で突き合わせ（DB 660＝manifest 660・⊆ 証明）、boards/board_stories の非小元素 storage 網址 0 を pages_health --emblems と photo_cache.yml の毎回の点検に。/p/ 名は docs 2715・store 5224 とも manifest に全部ある。次：本番 ux_all --fast を 1 回。
 2026-11-03 r2f2：#826 合併後 本番 ux_all --fast（test-a/b/c × 1400/390 ＋ global）7 回 ✓・✗ 0・未完 0。前の /p/ 失敗 14 は再現せず。次：11/4 01:30 UTC の egress 数え直し。
 2026-11-03 plan1：計画。egress 24h 数え直し・11/5 朝の本物の 402 確認・heat.html 札・小元素 E10/E15/E24 を型で・ほかの注目の空白を店長と同じ部品に、の 5 段を BACKLOG に足した（product-head の Switch 2 補足は既にあり）。次：11/4 01:30 UTC の数え直し。
+2026-11-03 f1：heat.html の「札が字に重なる」（1400＝43・390＝80）の根は話題度グラフの字 .cl どうしの衝突（等級名×右端の値・最初の日×7 日おきの日・縦軸 0×横軸）。_chart で規則化し局所描画で 0/0。PR 本件。次：合併後 ux_check 1 回

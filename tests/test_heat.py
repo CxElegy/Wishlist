@@ -197,3 +197,24 @@ class GroupOrder(unittest.TestCase):
                                         for n, us in by.items()]}, f)
         f.close()
         return f.name
+
+
+class ChartLabels(unittest.TestCase):
+    """話題度グラフの字の札どうしが重ならない（2026-11-03、heat.html の「札が字に重なる」80 の根）。"""
+
+    def test_labels_do_not_collide(self):
+        import re
+        import render
+        for n in (14, 28, 29, 30):   # 最初の日と 7 日おきの日が隣り合う長さを含む
+            pts = [(day(n - 1 - i), 65) for i in range(n)]
+            html = render._chart(pts, "line", "--ink", "点", ymax=100, bands=[(60, "盛り上がり")], caption="x")
+            xt = re.findall(r'class="cl xt" style="left:([\d.]+)%', html)
+            xs = [float(a) for a in xt]
+            self.assertTrue(all(b - a >= 9 for a, b in zip(xs, xs[1:])), (n, xs))   # 日付の字（約 32px/640）が触れない
+            self.assertNotIn(">盛り上がり<", html)   # 右端の値（65）と同じ高さの等級名は出さない
+            self.assertIn('class="cl yt z"', html)   # 縦軸の 0 は線の上
+
+    def test_band_name_kept_when_far(self):
+        import render
+        html = render._chart([(day(1), 90), (day(0), 90)], "line", "--ink", "点", ymax=100, bands=[(60, "盛り上がり")], caption="x")
+        self.assertIn(">盛り上がり<", html)
