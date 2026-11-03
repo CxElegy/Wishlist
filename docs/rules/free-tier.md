@@ -83,3 +83,7 @@ Supabase のメール（2026-11-03）：cached egress 19.2 GB / 5.5 GB、11/5 �
 - 公開の docs/ に Supabase storage の網址を書くのは `data-fb`（開けないときの落ち先）だけ。今ある 1 件は ig-articles（media 箱。インスタの網址は切れるので自前で持つ記事の写真）の落ち先。photos 箱の網址は落ち先にも書かない。見本ページ（testground）も Pages の `/p/` を直書きする。`tests/test_pages_served.py` が docs/ を数えて 0 を保つ。
 - 新しい写真が `/p/` で 404 になる穴：photo_store が置いた写真は、render が html に載せてから写しに入る。以前は毎日 1 回の取り込みだけで最大 1 日 404（本番で 10 枚。見た目は原寸の外部画像へ落ちる）。直し：photo_cache.yml が render（网页立即更新）のあとにも走り、写しが変わったら pages.yml を起こす。
 - 本番の確かめは `python harness/pages_served.py`（1 回・共通の launch）：画像の取得先を数え、Pages 99% 以上・storage 0・/p/ の 200・304 以外 0 を見る。小元素は `home/emblems/`（docs 内、Pages）で、もともと storage を通らない。
+
+## 11/4 の本番ゲート（2026-11-03）
+
+`python harness/free_tier_gate.py` が全部 ✓ なら入れ終わり。トークン混入 0・写真を本番から落とす道 0・pages_served・pages_health --photos・sb_down_check を順に走らせる（本番に向ける 3 つは各 1 回・timeout 付き）。手元だけは `--skip-prod`。

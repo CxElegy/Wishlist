@@ -321,3 +321,4 @@
 - 2026-11-03 f1f1：E24 の [x] を [~] に戻した（別の目の指摘）。店長 narrow_small_rejects()=0 は再確認、版面側は DB 64 版面のうち縮めた札のある 21 を同じ関数で数えて 1 件（原神 Xiangling）。library_emblem.yml は #832 のあと未実行だったので dispatch（run 41626091935）。画面（ux_check）は未測。次：その run のあと版面側を数え直して 0 なら [x]（データ側のみ・画面未測と明記）。
 - 2026-11-03 f1f1：E24 データ側 [x]：library_emblem run 41626091935 のあと店長 0・版面側（DB 64 版面の縮めた札 21）0。画面 ux_check は未測。次：E15→E10。
 2026-11-03 plan1：次の段 4 つを BACKLOG に足した（Pages 公開物 1GB／月帯域の見張り・Actions の応答バイト数え・test-c 最初の画面の導線・11/4 本番ゲート 1 コマンド）。コード変更なし、架構図：不用改。次：先頭の段から。
+2026-11-03 f2：11/4 の本番ゲートを 1 コマンドに（harness/free_tier_gate.py・tests/test_free_tier_gate.py）。架構図：不用改（harness のみ）。次：11/4 に実行して全部 ✓ を確かめる。
