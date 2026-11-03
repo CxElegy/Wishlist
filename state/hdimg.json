@@ -70,7 +70,7 @@
  "http://n.sinaimg.cn/sinakd20261103ac/533/w480h853/20261103/018c-f87859f0c231c1c90b09f81f870c783f.jpg": {
   "w": 480,
   "h": 853,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
@@ -488,9 +488,9 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.abcotvs.com/dip/images/19681471_081426-cc-gma-d23-ent-showcase-doom-2-img.jpg?w=1600": {
-  "w": 1600,
-  "h": 900,
+ "https://cdn.abcotvs.com/dip/images/19681555_081426-cc-getty-d23-ent-showcase-doomsday-cast-img.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -1563,6 +1563,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gDfUy.img": {
   "w": 4096,
   "h": 2730,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gFTDS.img": {
+  "w": 1672,
+  "h": 941,
   "target": 720,
   "v": 3
  },
@@ -3144,6 +3150,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/9c1db0b2193c5a337e0daf05c5e78ced7e7032a80604692a1b2806bfb8334e03/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgadget_review_articles_822%2Fa427d5671b74c83dbfc8ef5e7c3ca37a.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/a1aa3c08f2f7c5c7d6d1680bd734ae04d2e4b73f9606048d47d1d9d195bd1f49/lightyear_networkapi/resizefill_w976%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
   "w": 976,
   "h": 549,
@@ -3202,6 +3214,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://sm.mashable.com/t/mashable_sea/article/s/samsung-ga/samsung-galaxy-s27-pro-and-ultra-might-fix-the-most-annoying_25dh.1200.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://smhn.info/wp-content/uploads/2026/10/galaxy-s27-pro-case-dwaybox.webp": {
@@ -3343,6 +3361,12 @@
   ],
   "why": "看不清"
  },
+ "https://static.standard.co.uk/2026/11/02/16/2268333737..?width=1200&auto=webp&quality=75": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://static.the-independent.com/2026/10/31/16/40/GettyImages-2171004928.jpg?trim=0,0,2777,0&width=1200&height=800&crop=1200:800": {
   "w": 1200,
   "h": 800,
@@ -3395,6 +3419,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/08/iceman-x-men.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2026/08/avengers-doomsday-poster.jpg": {
@@ -3620,6 +3650,18 @@
   "target": 720,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793711119437_img_de5997df.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793712043011_img_cd6fc2d9.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
   "w": 495,
   "h": 619,
@@ -3788,12 +3830,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.IZ3DpJljLzdpwnwiKn6JAw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3833,9 +3869,21 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Nd044nfDUdY2nVSo8VWSSA&pid=News&w=912": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.P98iv5Emdiu3Jj3K1m3BDA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Q7ahsEjWT_M9ehvGsyRquA&pid=News&w=800": {
+  "w": 700,
+  "h": 474,
   "target": 720,
   "v": 3
  },
@@ -3844,6 +3892,19 @@
   "h": 467,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.564,
+  "local": "pics/91ea897b31fad847.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.UBRO9CAO0UKiuMrm--RzFg&pid=News&w=1200": {
   "w": 700,
@@ -3868,6 +3929,12 @@
  "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.VAzWoZBCJrssyq3mDYv8Kw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3961,12 +4028,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.fwEspnHMewMExFfKTRvwmw&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.gJxd0yVCDExsPUkYwn7D6Q&pid=News&w=600": {
   "w": 600,
   "h": 338,
@@ -3999,12 +4060,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.i35JVlGJfc7aaIRLt-KFOw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.iOLgomJRjCnpWxI4P5DdVg&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -4030,6 +4085,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.337
+ },
+ "https://www.bing.com/th?id=ONUT.lIwv-woGvoduFzy5m79Gfw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.m1s4FTAqSRNpAB8tWY7sCQ&pid=News&w=1200": {
   "w": 700,
@@ -4158,6 +4219,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.comicbasics.com/wp-content/uploads/2026/10/avengers-doomsday2.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Robert-Downey-Pedro-Pascal.webp": {
   "w": 1200,
   "h": 675,
@@ -4249,6 +4316,12 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-1.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
@@ -4480,9 +4553,34 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.tvline.com/img/gallery/how-harry-potter-star-paapa-essiedu-feels-about-severus-snape-casting-backlash/paapa-essiedu-says-hes-received-death-threats-1793718244.jpg": {
+  "w": 780,
+  "h": 438,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.578,
+  "local": "pics/ff52c74e2ed73132.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.uqwimax.jp/common2/images/ogp.png": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.vice.com/wp-content/uploads/sites/2/2026/11/GTA-6-Physical-Release-Date-Explained-Why-Some-Orders-Arrive-Early.png?w=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.vice.com/wp-content/uploads/sites/2/2026/11/Jerry-Fort-Who-Went-Viral-for-His-Wish-to-Play-GTA-6-Dies-at-25.jpg?w=2000": {
+  "w": 2000,
+  "h": 1125,
   "target": 1280,
   "v": 3
  },
@@ -4540,6 +4638,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://www.wrestlezone.com/wp-content/uploads/sites/8/2026/07/wwe-worlds-collide-green.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
  },
  "https://www.ytn.co.kr/img/comm/ytn_sns_default.jpg": {
   "w": 558,
