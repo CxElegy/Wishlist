@@ -1588,7 +1588,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-boards" content="225a78350d17"><style>
+<meta name="wl-ver" data-page="admin-boards" content="eb9f50b3742a"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1607,10 +1607,10 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 </style><script>window.WL_ACCOUNT="test1";</script><script>
 (function(){
   if(!window.fetch||window.WL_SB) return;
-  var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false;
+  var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false, downAt=0, lastGet=null, probing=false, RETRY=600000, READ=/\/rpc\/(get_[a-z_]+|my_votes|my_votes_own|live_boards)(\?|$)/;
   var MSG='いま、ログインと 👍👎 の機能を休止しています。記事はこれまでどおり読めます。';
   function sb(u){return /^https:\/\/[a-z0-9]+\.supabase\.co\/(rest|auth|functions)\//.test(u);}
-  try{ var t=+sessionStorage.getItem(K); if(t&&Date.now()-t<600000){ down=true; paused=true; } }catch(e){}
+  try{ var t=+sessionStorage.getItem(K); if(t&&Date.now()-t<RETRY){ down=true; paused=true; downAt=t; } }catch(e){}
   function note(){
     if(document.querySelector('.wl-sbnote')) return;
     if(!document.body){ document.addEventListener('DOMContentLoaded',note); return; }
@@ -1622,11 +1622,25 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
   }
   function trip(code){
     if(down&&R.dataset.sb) return;
-    down=true; R.dataset.sb='down';
+    down=true; downAt=Date.now(); R.dataset.sb='down';
     if(code===402){ try{ sessionStorage.setItem(K,String(Date.now())); }catch(e){} }
     note();
   }
   if(paused){ R.dataset.sb='down'; note(); }
+  // 制限が終わったら元に戻る（2026-11-03）：休止から 10 分たって、触る・タブに戻ったとき、最後に見た GET を 1 回だけ試す。
+  // 通れば案内を消し、入力中でなければ読み直す（ページの JS は最初からやり直す）。まだ 402 なら 10 分待つ。放置のタブは触らないので呼ばない
+  function up(){
+    down=false; paused=false; delete R.dataset.sb; try{ sessionStorage.removeItem(K); }catch(e){}
+    var n=document.querySelector('.wl-sbnote'); if(n) n.remove();
+    var a=document.activeElement; if(!(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))) location.reload();
+  }
+  function recover(){
+    if(!down||probing||!lastGet||Date.now()-downAt<RETRY) return;
+    probing=true;
+    of(lastGet[0],lastGet[1]).then(function(r){ probing=false;
+      if(r.status===402||r.status>=520){ downAt=Date.now(); if(r.status===402){ try{ sessionStorage.setItem(K,String(downAt)); }catch(e){} } } else up();
+    },function(){ probing=false; downAt=Date.now(); });
+  }
   // 放置したタブの見回りを止める（2026-11-03）：見回り（setInterval の代わり）は every(fn, ms|関数) 1 本。触らない 10 分を超えたら
   // 5 分おき以上、30 分で止まる。触る・スクロール・タブに戻る で止まっていた分をすぐ 1 回読んで再開する。呼ぶ側は直さなくてよい
   var last=Date.now(), ps=[], IDLE1=600000, IDLE2=1800000;
@@ -1637,7 +1651,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
       p.t=setTimeout(function(){if(!document.hidden&&!down)p.fn();p.loop();},g);};
     ps.push(p);p.loop();
   }
-  function touch(){var was=Date.now()-last>=IDLE1;last=Date.now();
+  function touch(){var was=Date.now()-last>=IDLE1;last=Date.now();recover();
     if(was)ps.forEach(function(p){if(!document.hidden&&!down)p.fn();p.loop();});}
   ['pointerdown','keydown','touchstart','wheel','scroll'].forEach(function(e){addEventListener(e,touch,{passive:true,capture:true});});
   document.addEventListener('visibilitychange',function(){if(!document.hidden)touch();});
@@ -1645,6 +1659,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
   window.fetch=function(input,init){
     var u=typeof input==='string'?input:(input&&input.url)||'';
     if(!sb(u)) return of(input,init);
+    if(typeof input==='string'&&(!init||!init.method||init.method==='GET'||READ.test(u))) lastGet=[u,init];   // 試しに使うのは読むだけの呼び出し（GET と読む RPC）
     if(down) return Promise.resolve(new Response('{"message":"いま、ログインの機能を休止しています"}',{status:503,headers:{'Content-Type':'application/json'}}));
     return of(input,init).then(function(r){ if(r.status===402||r.status>=520) trip(r.status); return r; },function(e){ trip(0); throw e; });
   };
@@ -2533,7 +2548,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ② 版面</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.04 03:24</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.04 03:47</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html" aria-current="page"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
