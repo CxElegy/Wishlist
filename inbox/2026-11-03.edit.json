@@ -93,9 +93,9 @@
   "GTA 6": 82,
   "三星手机": 65,
   "A2O LITE": 19,
-  "MMORPG 新作": 22,
-  "dota2": 13,
-  "哈利波特剧集": 6,
+  "MMORPG 新作": 23,
+  "dota2": 15,
+  "哈利波特剧集": 8,
   "あつ森": 3,
   "ILLIT": 30,
   "周杰伦": 6,
@@ -103,14 +103,14 @@
   "日本顶级网球赛事": 3,
   "The Mandalorian": 11,
   "gelato pique": 6,
-  "チェーンソーマン": 11,
+  "チェーンソーマン": 13,
   "滑雪": 4,
   "Vaundy": 5,
   "猫用品": 6,
   "绝区零": 4,
   "FROM": 2,
   "星巴克马克杯": 3,
-  "BLEACH Mirrors High": 1
+  "BLEACH Mirrors High": 2
  },
  "GTA 6": [
   {
@@ -391,6 +391,15 @@
     5,
     20
    ]
+  },
+  {
+   "headline": "아키에이지 크로니클, 패링이 존재하는 'MMORPG의 액션 감각'",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23
+   ]
   }
  ],
  "dota2": [
@@ -407,7 +416,9 @@
     7,
     9,
     11,
-    12
+    12,
+    14,
+    15
    ],
    "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg"
   },
@@ -451,6 +462,16 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "HBO Harry Potter child stars pulled from London event amid trans rights petition",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    8
    ]
   }
  ],
@@ -707,6 +728,15 @@
    "refs": [
     6
    ]
+  },
+  {
+   "headline": "チェンソーマン カプセルフィギュアコレクションの設置場所・発売日・ラインナップ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
+   ]
   }
  ],
  "滑雪": [
@@ -874,6 +904,15 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "BLEACH Mirrors High Officially Launches for Android and iOS",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]

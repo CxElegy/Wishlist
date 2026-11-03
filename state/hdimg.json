@@ -775,6 +775,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://charagoo.jp/wp-content/uploads/2025/08/1000182846_1.jpg": {
+  "w": 1200,
+  "h": 1200,
+  "target": 720,
+  "v": 3
+ },
  "https://charagoo.jp/wp-content/uploads/2025/08/668w_668h-267.jpg": {
   "w": 668,
   "h": 668,
@@ -2917,18 +2923,6 @@
   ],
   "why": "看不清"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261005-00089990-famitsu-000-4-view.jpg?exp=10800": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/04882ce193ce5a19.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261027-00010001-tennisnet-000-1-view.jpg?exp=10800": {
   "w": 2178,
   "h": 1635,
@@ -3839,6 +3833,12 @@
  "https://static.tweaktown.com/news/1/1/114424_3_gta-vis-210gb-download-could-cost-an-extra-euro-11-55-in-france-if-new-data-tax-becomes-law_full.png": {
   "w": 1500,
   "h": 844,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.wixstatic.com/media/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg/v1/fill/w_1000,h_566,al_c,q_85,usm_0.66_1.00_0.01/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg": {
+  "w": 1000,
+  "h": 566,
   "target": 720,
   "v": 3
  },
@@ -4815,6 +4815,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.enduins.com/wp-content/uploads/2026/10/unnamed-13.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://www.enduins.com/wp-content/uploads/2026/11/885312770_5459321004292964_867917521919741544_n.jpg": {
   "w": 2048,
   "h": 1360,
@@ -4929,13 +4935,6 @@
   "h": 1080,
   "target": 1280,
   "v": 3
- },
- "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-03"
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
   "w": 410,
@@ -5099,6 +5098,12 @@
  "https://www.thefirsttimes.jp/admin/wp-content/uploads/2026/10/20261028-ts-115801-1200x630.jpg": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.thepinknews.com/wp-content/uploads/2026/11/hbo-harry-potter-child-stars-london-event-protest.jpg": {
+  "w": 1996,
+  "h": 1000,
   "target": 1280,
   "v": 3
  },

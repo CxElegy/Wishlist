@@ -1,49 +1,11 @@
 {
  "date": "2026-11-03",
- "edit_sig": "8f8234fc14e2",
+ "edit_sig": "c85630933cbb",
  "items": [
-  {
-   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-   "facts": [],
-   "name": "Astrae Oratio",
-   "section": "游戏",
-   "stories": [
-    {
-     "blurb": "『アストラエ・オラティオ』のCBTリポート。百杏の必殺技や上司・愛の言動を紹介。",
-     "date": "2026-11-02",
-     "headline": "『アストラエ・オラティオ』百杏の必殺技がセクシーすぎて唖然。主人公を「性的に気に入った」と断言する上司・愛の真意も気になる【CBTリポート】",
-     "highlight": "CBTリポート",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261005-00089990-famitsu-000-4-view.jpg?exp=10800",
-     "image_via": "AI 挑选",
-     "url": "https://news.yahoo.co.jp/articles/1c46027316cf731819744a16a84c451e6fd96dfb",
-     "weight": "lead"
-    }
-   ],
-   "subtitle": "アストラエ・オラティオ",
-   "theme": {
-    "accent": "#C27270",
-    "alt_accent": "#A14744",
-    "alt_bg": "#F6EAE9",
-    "alt_fg": "#1E1A18",
-    "bg": "#211212",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 2,
-     "source": "Enduins",
-     "title": "BLEACH Mirrors High Officially Launches for Android and iOS",
-     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxONW1uZURvR2VoNGFaaWZOZk9WSTVQTGhCcXl0dUZwOElpTG96Y19EM3FtYzdTRktqWmVQUzhsMkxvZmhGdjJOOW43RUJGYkg1R1haOVpXQjU0Wjkzc2tiRHJaZXNnT2lBdGhrTkU1T0JZcTlfVWx0Z0F0dTVMdUR4YUI0NUt5U0JLSy04azEtUDF1QQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -55,6 +17,16 @@
      "image_via": "og:image",
      "url": "https://gamingonphone.com/guides/bleach-mirrors-high-redeem-codes-and-how-to-use-them/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "BLEACH Mirrors High Officially Launches for Android and iOS",
+     "highlight": "",
+     "image": "https://www.enduins.com/wp-content/uploads/2026/10/unnamed-13.webp",
+     "image_via": "og:image",
+     "url": "https://www.enduins.com/news/bleach-mirrors-high-officially-launches-for-android-and-ios",
+     "weight": "normal"
     }
    ],
    "subtitle": "死神 新作手游",
@@ -114,8 +86,8 @@
      "date": "2026-11-02",
      "headline": "Analyst Says First-Day ‘Grand Theft Auto VI’ Sales Could Reach $4.5 Billion",
      "highlight": "$4.5 Billion",
-     "image": "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://static.wixstatic.com/media/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg/v1/fill/w_1000,h_566,al_c,q_85,usm_0.66_1.00_0.01/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.mediaplaynews.com/analyst-says-first-day-grand-theft-auto-vi-sales-could-reach-4-5-billion/",
      "weight": "normal"
     },
@@ -146,15 +118,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 23,
-     "source": "게임인사이트",
-     "title": "아키에이지 크로니클, 패링이 존재하는 'MMORPG의 액션 감각'",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9wR3JMNm9Iay1TMHVnaVg2a1JnUHV3RVBLV0FtbEZJYjFNQVQyQzlWbU9nWFRXaVE3S2pjdk1aTEdqRHNrMWRsbjc0VnVSYUpDWkR3QV85OUJVT1VFMThqOC15NDRjbUJiRGlKSWtMaXfSAXRBVV95cUxQb05Ia08yejJ1VUQ3VGNtTXZRSl8tYVF1eEdIMl9LdWpUWFBhVHFaOW5BcWItTnp0dF9zZE9JT0NzTVNZVW02b0M3aDU5WXh6YVBkTlAxeVM5X1hDNVhMZ2hFWU5MWDZxN0ZEZEV6a29ydDdobQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -322,22 +285,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 7,
-     "source": "PinkNews",
-     "title": "HBO Harry Potter child stars pulled from London event amid trans rights petition",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOWnhyTlVWazRKdVZuS29PSnNrVDF4UmE5elcyYVhwdkp3Q0VmM3NpaHBOSTl5QUd5akV6YVhaQVNQWDlxOXFaX0hOUm1TelJCVks1M2UtWFdpUDdKZEp0TGU3SzV5dXdmME82OUo4dnhoTWlSRm01TjFxdFdiQ21kWDUtM0dSOXAyNWpfNTR3?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 8,
-     "source": "The Sun",
-     "title": "Child stars of new Harry Potter series won't appear at Oxford Street Christmas event over trans-rights protests",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNbTByNjd2T0JYRjV1Q1M1RklYU29sS21SLVRORktGWVdkR2R1YS0yOVM0eHdPcEE2bWxwa0pWTnM2dzhJSnM3MTFYQnBaNDdBekRaN0VUVjFCLVdTUEoxXzRTZktwSzc0MG50VkVzOTVtOC1hYUZaU1M2VEJ2LWlOczRPbnlSMUx3YzRrMWJRcVNoTnRSdjNNalVqcHhMVFU?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -368,6 +315,16 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCv4j.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/en-us/entertainment/celebrities/harry-potter-wizards-of-baking-hosts-on-the-new-season/vi-AA2gCMS2",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "HBO Harry Potter child stars pulled from London event amid trans rights petition",
+     "highlight": "",
+     "image": "https://www.thepinknews.com/wp-content/uploads/2026/11/hbo-harry-potter-child-stars-london-event-protest.jpg",
+     "image_via": "og:image",
+     "url": "https://www.thepinknews.com/2026/11/03/harry-potter-oxford-street-lights-london-2026/",
      "weight": "normal"
     }
    ],
@@ -683,22 +640,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 12,
-     "source": "KAI-YOU",
-     "title": "アニメスタジオMAPPA、卓球女子の橋本帆乃香選手とスポンサー契約 個人アスリートの支援は初",
-     "url": "https://kai-you.net/article/97042"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 13,
-     "source": "キャラグー",
-     "title": "チェンソーマン カプセルフィギュアコレクションの設置場所・発売日・ラインナップ｜ガチャガチャ",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBmbVVqZy1rQXF2QmJ2aVhBSENVbXJPeXU4dlo4c2U5MWFFTjBQOEdVY3F0Vy1rV3ZNc2pJaEtWSl9kdWUtcVFXamtaT3JyaWhmLW1RRFpjVQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -729,6 +670,16 @@
      "image": "https://hobby.dengeki.com/ss/hobby/2026/11/card3_FmusjesKofmvSBqSbbHH5uJl04E6Nqo6_nnkxuZU5zH3we3fm_rwfAjNWbGgMltqM.jpg",
      "image_via": "og:image",
      "url": "https://hobby.dengeki.com/news/3216552/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "チェンソーマン カプセルフィギュアコレクションの設置場所・発売日・ラインナップ",
+     "highlight": "",
+     "image": "https://charagoo.jp/wp-content/uploads/2025/08/1000182846_1.jpg",
+     "image_via": "og:image",
+     "url": "https://charagoo.jp/gacha/item/08aa9cc53d4c/",
      "weight": "normal"
     }
    ],
@@ -933,22 +884,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 14,
-     "source": "games.gg",
-     "title": "BetBoom Team's Dota 2 pause leaves all five players inactive",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBiajlsdzZBTXowSHVUZlpBMFdPeUJSUDlxWGM1bkdvdmpWSmFEejZ1WkpoYlVyeXZQVHJMY0N0eFBPc0VUX2dsYjR3dTZWWXRCZWtKdVM1SWxSYzlfV08yU19mTFV6UFhybnc?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 15,
-     "source": "games.gg",
-     "title": "BetBoom Team Dota 2 暂停：五名选手均进入休眠状态",
-     "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxOQXRmTl9QZU1YTkNHRjBzT1dyZHNfZzA3ellzaG00dWU2UXFSVFNoQ1JacEhVbEszZk5rTjN4bTdPa3g5YlhoSzdQWTVSZGp2OHhZTDg0UVNqcl8xbHIwR2JoRjM4SF9PX2RNbEhfLV9Ea3JSTEdLUE1PdVNOSEJWdldpemwzQ21CeGYzVTlOTHdPMjljYk5odW95Q3BUYmYzc2dRbzF6ZHVXcHZwNElmTXVKQVVlcXI3dDNoSjlvbHVINkZvQzYzWFIzRTJhRVNRbEFneUhUclJ4bTZYX1BtMFRmWUNjU01KZkd6TmVfZ3lLLUo3NVdRb1Rn?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1205,6 +1140,31 @@
     "alt_fg": "#0F1512",
     "bg": "#0F1512",
     "fg": "#ECE7DC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "last": {
+    "date": "2026-11-02",
+    "headline": "新伝奇魔法RPG『アストラエ・オラティオ』CBTレポート",
+    "url": "https://appmedia.jp/preceding-play/80489629"
+   },
+   "name": "Astrae Oratio",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#C27270",
+    "alt_accent": "#A14744",
+    "alt_bg": "#F6EAE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211212",
+    "fg": "#F4EEE4",
     "font": "serif",
     "split": true
    }
