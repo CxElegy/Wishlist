@@ -86,4 +86,4 @@ Supabase のメール（2026-11-03）：cached egress 19.2 GB / 5.5 GB、11/5 �
 
 ## 11/4 の本番ゲート（2026-11-03）
 
-`python harness/free_tier_gate.py` が全部 ✓ なら入れ終わり。トークン混入 0・写真を本番から落とす道 0・pages_served・pages_health --photos・sb_down_check を順に走らせる（本番に向ける 3 つは各 1 回・timeout 付き）。手元だけは `--skip-prod`。
+`python harness/free_tier_gate.py` が全部 ✓ なら入れ終わり。トークン混入 0（.claude/worktrees は見ない）・docs の静的な storage 網址 0（data-fb 含む）・写真を本番から落とす道 0・pages_served・pages_health --photos・sb_down_check を順に走らせる（本番に向ける 3 つは各 1 回・timeout 付き）。手元だけは `--skip-prod`。

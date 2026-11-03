@@ -32,6 +32,25 @@ class GateTest(unittest.TestCase):
             (r / "docs/note.md").write_text("SUPABASE_ACCESS_TOKEN は置かない\n", encoding="utf-8")
             self.assertEqual(sorted(g.token_hits(r)), [".claude/s.json:1", "docs/a.js:1", "docs/a.js:2", "harness/x.py:1", "state/s.json:1"])   # .md は見ない・JS の // は # ではないので数える
 
+    def test_scan_skips_nested_worktrees(self):
+        with tempfile.TemporaryDirectory() as d:
+            r = Path(d)
+            for sub in g.SCAN_DIRS:
+                (r / sub).mkdir(parents=True)
+            w = r / ".claude/worktrees/agent-x/hermes"
+            w.mkdir(parents=True)
+            (w / "c.yaml").write_text("k: SUPABASE_ACCESS_TOKEN\n", encoding="utf-8")
+            self.assertEqual(g.token_hits(r), [])
+
+    def test_storage_url_in_static_html_counted(self):
+        u = "https://abc.supabase.co/storage/v1/object/public/media/x.jpg"
+        with tempfile.TemporaryDirectory() as d:
+            r = Path(d)
+            (r / "docs/home").mkdir(parents=True)
+            (r / "docs/home/a.html").write_text('<img src="/p/a.webp" data-fb="%s">' % u, encoding="utf-8")
+            (r / "docs/home/b.html").write_text('<img src="/p/b.webp">', encoding="utf-8")
+            self.assertEqual(g.storage_url_hits(r), ["docs/home/a.html:1"])
+
     def test_fill_max_stays_zero(self):
         self.assertEqual(g.fill_max_problems(), [])
         with tempfile.TemporaryDirectory() as d:
@@ -56,7 +75,7 @@ class GateTest(unittest.TestCase):
 
     def test_steps_skip_prod_has_only_static(self):
         names = [n for n, _, _ in g.steps(skip_prod=True)]
-        self.assertEqual(len(names), 3)
+        self.assertEqual(len(names), 4)
         self.assertFalse(any("pages_served" in n or "sb_down" in n or "pages_health" in n for n in names))
         self.assertEqual(g.main.__name__, "main")
 

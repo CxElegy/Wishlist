@@ -825,6 +825,9 @@ def _img_url(u, local=True):
     return u
 
 
+_STORAGE_RE = re.compile(r"https://[^/]+\.supabase\.co/storage/v1/(?:object|render/image)/public/")
+
+
 def _pic(story):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
     兜底顺序：自己的图 → _fbs 里的备用图（作品封面）→ 来源网站的图标和网站名 → 作品名排版的封面块。
@@ -839,7 +842,9 @@ def _pic(story):
     # 先頭が開けず落ち先へ替わっても原寸の外部画像に戻らない（2026-11-01 dota2：先頭の 17173 が落ち、置き場にある Steam の原寸 jpg が出ていた）
     # 落ち先は置き場の写真「に替える」（原寸を後ろに並べない：SWAP_JS は同じ版面にすでにある網址を飛ばすので、置き場の写真が飛ばされると原寸が代わりに出る）
     exp = ([big] if big else []) + chain[:1] + [photo_store.stored(u) or u for u in chain[1:]]
-    fb = f' data-fb="{e(" ".join(exp[1:]))}"' if len(exp) > 1 else ""
+    # 落ち先に Supabase storage の公開網址は入れない（Pages の写しが落ちたとき storage へ戻ると無料枠の egress を使う。2026-11-03 gate 指摘）
+    fbl = [u for u in exp[1:] if not _STORAGE_RE.match(u)]
+    fb = f' data-fb="{e(" ".join(fbl))}"' if fbl else ""
     src = exp[0] if exp else None
     # 一時保管の写真は幅 400／800 を srcset で渡す（小さい画面・小さい枠は 400）。背景のぼかしは 400 で足りる
     srcset = f' srcset="{e(small)} 400w, {e(big)} 800w" sizes="(max-width:700px) 100vw, 33vw"' if small else ""

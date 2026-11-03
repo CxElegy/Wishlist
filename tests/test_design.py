@@ -700,6 +700,15 @@ class PhotolessHeadTest(unittest.TestCase):
             self.assertTrue(render.photo_opens("https://x.example/c.jpg"))
         render._OPENS_MEMO.clear()
 
+    def test_pic_fallback_never_lists_supabase_storage(self):
+        import render
+        u = "https://abc.supabase.co/storage/v1/object/public/media/ig/0.jpg"
+        st = self.st(1, "normal", "https://i.example/1.jpg")
+        st["_fbs"] = [u, "https://i.example/2.jpg"]
+        h = render._pic(st)
+        self.assertNotIn("supabase.co/storage", h)
+        self.assertIn("i.example/2.jpg", h)
+
     def test_textonly_card_has_no_pic(self):
         import render
         h = render._tcard(self.st(1, "normal", None), 4, 0, "2026-10-25", mini=True)
