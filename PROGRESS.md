@@ -311,3 +311,4 @@
 2026-11-03 r2f1：egress 小さい係 ①②の続き（#824＋本件）管理ページ小元素 pg()・候補写真も pg()。docs/ の storage 網址 0（data-fb 除く）。boards の小元素名 660＝manifest の小元素 660（DB 数え・MCP）。boards 64 件に photos 箱の画像 0。tests 1288 OK。次：24 時間通しの egress を 11/4 01:30 UTC に
 2026-11-03 r2f2：egress ①② 別の目の指摘を直す。小元素名の集合を md5 で突き合わせ（DB 660＝manifest 660・⊆ 証明）、boards/board_stories の非小元素 storage 網址 0 を pages_health --emblems と photo_cache.yml の毎回の点検に。/p/ 名は docs 2715・store 5224 とも manifest に全部ある。次：本番 ux_all --fast を 1 回。
 2026-11-03 r2f2：#826 合併後 本番 ux_all --fast（test-a/b/c × 1400/390 ＋ global）7 回 ✓・✗ 0・未完 0。前の /p/ 失敗 14 は再現せず。次：11/4 01:30 UTC の egress 数え直し。
+2026-11-03 plan1：計画。egress 24h 数え直し・11/5 朝の本物の 402 確認・heat.html 札・小元素 E10/E15/E24 を型で・ほかの注目の空白を店長と同じ部品に、の 5 段を BACKLOG に足した（product-head の Switch 2 補足は既にあり）。次：11/4 01:30 UTC の数え直し。
