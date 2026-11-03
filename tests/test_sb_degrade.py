@@ -145,6 +145,10 @@ class SbDownCheckStable(unittest.TestCase):
         self.assertIn("def settle(", src)
         self.assertNotIn("wait_for_timeout(3500)", src)
         self.assertIn("probe.supabase.co", src)
+        # 呼ばないページの点検の呼び出しのあとも案内を確かめる（hits.clear() で条件が常に偽になっていた）
+        self.assertIn("probed = True", src)
+        self.assertIn("(hits or probed)", src)
+        self.assertIn('probed and r["down"] != "down"', src)
 
 
 if __name__ == "__main__":
