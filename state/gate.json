@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-03T19:18:08+00:00",
+ "checked": "2026-11-03T20:32:53+00:00",
  "fired": {
-  "at": "2026-11-03T19:18:27+00:00",
+  "at": "2026-11-03T20:32:54+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,37 +12,50 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-03T19:18:27+00:00",
+    "at": "2026-11-03T20:32:54+00:00",
     "attempts": 1,
     "day": "2026-11-04",
-    "prog": 51,
-    "resp": "cse_01W4x6f7xkXnDyZV6vLqZJEW",
-    "sig": "1377e4aa6b8e"
+    "prog": 57,
+    "resp": "cse_01W4x6f8G5Ks1UUsoqdPUUKi",
+    "sig": "9d5bb449944f"
    },
    "items": [
     "A2O LITE",
+    "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy",
     "dota2",
-    "星巴克马克杯",
-    "猫用品"
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
-   "last_batch": "2026-11-03T16:37:18+00:00",
+   "last_batch": "2026-11-03T19:25:27+00:00",
    "last_error": {
     "at": "2026-11-02T23:32:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 51,
+   "prog": 57,
    "prog_day": "2026-11-04",
    "ripe": [
-    "A2O LITE",
-    "dota2",
-    "星巴克马克杯",
-    "猫用品"
+    "GTA 6",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
    ],
-   "sig": "1377e4aa6b8e",
+   "sig": "9d5bb449944f",
    "token_cap": 1000000,
-   "tokens_today": 60744,
-   "why": "整理待ちの記事 6 件（4 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 113234,
+   "why": "整理待ちの記事 67 件（17 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
