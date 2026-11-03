@@ -180,3 +180,54 @@ class MemoAndNeedDb(unittest.TestCase):
         with self.assertRaises(SystemExit) as c:
             sbstate.need_db("x")
         self.assertEqual(c.exception.code, "x")
+
+
+class LibraryGreenOn402(unittest.TestCase):
+    """402 で DB が読めない（supabase() が None）ときの library 系の入口は、制限中なら緑（終了 0）で終える。"""
+
+    def setUp(self):
+        sbstate.LIMITED = True
+        self.p = [mock.patch.object(digest, "supabase", return_value=None),
+                  mock.patch.object(digest, "load_config", return_value=({"supabase_url": "https://x.supabase.co"}, [])),
+                  mock.patch.dict("os.environ", {"SUPABASE_SERVICE_KEY": "k"})]
+        for x in self.p:
+            x.start()
+
+    def tearDown(self):
+        for x in self.p:
+            x.stop()
+        sbstate.LIMITED = False
+
+    def test_entries_exit_green(self):
+        import library
+        import library_design
+        import library_emblem
+        item = {"name": "テスト", "section": "x"}
+        with self.assertRaises(SystemExit) as c:
+            library.push_shop([item])
+        self.assertEqual(c.exception.code, 0)
+        with self.assertRaises(SystemExit) as c:
+            library_design.main([])
+        self.assertEqual(c.exception.code, 0)
+        library_emblem.main([])   # 例外なしで戻る（緑）
+
+
+class SupabaseNoneExitsGoThroughNeedDb(unittest.TestCase):
+    """新しい道具が古い書き方（supabase() が None → 素の SystemExit）を写すと 402 で赤になる。DB 読み出しの None の直後の SystemExit は need_db を通す。"""
+
+    # 鍵・網址がない（402 でない）ことを見る終わり方。402 は LIMITED を見る側で扱う
+    KEY_MISSING = {("library_emblem.py", 656), ("photo_store.py", 400), ("user_pages.py", 283)}
+
+    def test_no_bare_exit_after_none_check(self):
+        import re
+        bad = []
+        for f in sorted((ROOT / "scripts").glob("*.py")):
+            lines = f.read_text(encoding="utf-8").splitlines()
+            for i, ln in enumerate(lines):
+                if "raise SystemExit(" not in ln or f.name == "sbstate.py":
+                    continue
+                head = "\n".join(lines[max(0, i - 3):i])
+                if re.search(r"\bis None\b|if not (got|rows|users|r)\b", head) and "supabase" in "\n".join(lines[max(0, i - 8):i]):
+                    if (f.name, i + 1) not in self.KEY_MISSING:
+                        bad.append(f"{f.name}:{i + 1}")
+        self.assertEqual(bad, [], "supabase() の None のあとは sbstate.need_db を通す")
