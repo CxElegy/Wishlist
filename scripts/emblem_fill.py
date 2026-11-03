@@ -2360,6 +2360,58 @@ def wide_retry(x):
             and len(f) >= 6 and min(f[4], f[5]) < emblem.BUST_MIN_SIDE)
 
 
+def reject_srcs(item, bad, persist=True):
+    """外した小元素 → emblem_reject に入れる元の網址。外す道（drop_broken・drop_closeups・stage_closeups・drop_same・お客さまの closeups）が同じ 1 か所を通る（E24）。
+    縮めた幅で小さいだけ（wide_retry）の絵は、その網址について最初の 1 回は入れず（item["emblem_small_tried"] に記録して次の回に大きい幅で取り直す）、
+    2 回目からは入れる（取り直しても外れたものを回し続けない）。記録は item の項目なので、お客さまの版面（一時の場所で回して config に戻す）も同じ。persist=False は呼び側が書く。"""
+    tried = list(item.get("emblem_small_tried") or [])
+    out = []
+    for b in bad:
+        s = b.get("source") or b["image"]
+        if wide_retry(b) and s not in tried:
+            tried.append(s)
+        else:
+            out.append(s)
+    if tried != list(item.get("emblem_small_tried") or []):
+        item["emblem_small_tried"] = tried
+        if persist:
+            with WRITE_LOCK:
+                _set_field(item["name"], "emblem_small_tried", json.dumps(tried, ensure_ascii=False) + "   # 縮めた網址で小さいと外し、大きい幅で取り直した分（1 回だけ。reject_srcs）")
+    return out
+
+
+def stale_narrow_rejects(item, broken=None):
+    """前の道で emblem_reject に入った縮めた網址のうち、取り直しの番が来ていないもの（その人にまだ小元素がなく、emblem_small_tried にない）→ {網址: 人}。
+    店長は state/emblem_broken.json（broken = この版面の分）で小ささを確かめ、お客さまは記録がないので名簿の先頭の欠けた人のファイル名で当てる。release_small_rejects と点検 E24 が同じ式を使う。"""
+    rej = set(item.get("emblem_reject") or [])
+    tried = set(item.get("emblem_small_tried") or [])
+    have = {_name_key(x.get("subject")) for x in item.get("emblem") or [] if isinstance(x, dict)}
+    out = {}
+    for e in broken or []:
+        x = e.get("emblem") or {}
+        if x.get("source") in rej and wide_retry(x) and _name_key(x.get("subject")) not in have:
+            out[x["source"]] = x.get("subject")
+    for w in head_missing(item):
+        for u in head_reject_urls(item, w):
+            if emblem.narrow_source(u):
+                out.setdefault(u, w)
+    return {u: w for u, w in out.items() if u not in tried}
+
+
+def release_small_rejects(item, log=print):
+    """stale_narrow_rejects の札を解き、emblem_small_tried に入れる（次の回に大きい幅で取り直し、まだ小さければ reject_srcs が 2 回目で入れる）。毎回・冪等。→ 解いた数。"""
+    stale = stale_narrow_rejects(item, _broken_log().get(item["name"]))
+    if not stale:
+        return 0
+    tried = list(dict.fromkeys(list(item.get("emblem_small_tried") or []) + list(stale)))
+    with WRITE_LOCK:
+        _set_field(item["name"], "emblem_small_tried", json.dumps(tried, ensure_ascii=False) + "   # 縮めた網址で小さいと外し、大きい幅で取り直した分（1 回だけ。reject_srcs）")
+        _set_field(item["name"], "emblem_reject", json.dumps([u for u in item.get("emblem_reject") or [] if u not in stale], ensure_ascii=False)
+                   + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+    log(f"  [戻した] {item['name']}：小さいだけで外した縮めた網址の札 {len(stale)} 枚を解く（次の回に大きい幅で取り直す）")
+    return len(stale)
+
+
 def broken_image(im, photo, whole=False):
     """切り抜き 1 枚（PIL）が壊れているか：切れ端・上の端の半分以上が人物（TOP_MAX：コマの切り抜き）・頭のてっぺん・額が上の端で切れた・写真がぼやけた。broken_cuts とお客さまの版面（library_emblem）で同じ。"""
     if emblem.is_sliver(*im.size) or not whole and (emblem.head_cut(im) or emblem.top_share(im) > emblem.TOP_MAX or emblem.top_share(im) > emblem.TOP_TOUCH and emblem.forehead_cut(im)):   # whole：公式の全身の絵（body の足の裏が画像の中）は上の端が絵そのもの（ポチタの持ち手）で、枠で切れたのではない   # 頭のてっぺん・額まで切れた前からの切り抜き（check_whole と同じ：額は上の端に TOP_TOUCH 以上当たっているときだけ見る。The Mandalorian Gideon 1.0%・Mayfeld 0.3% は頭が全部入っている）
@@ -2609,7 +2661,7 @@ def stage_closeups(item, bad, log=print):
                 rows.append(y)
             elif not any(x is d for d in dropped):
                 rows.append(x)
-        rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + list(slugs.values()) + [d.get("source") or d["image"] for d in dropped]))
+        rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + list(slugs.values()) + reject_srcs(item, dropped)))
         redo = list(dict.fromkeys(list(item.get("emblem_redo") or []) + [d["subject"] for d in dropped if d.get("subject")]))
         with WRITE_LOCK:
             emblem.write_item(name, rows, None)
@@ -2717,7 +2769,7 @@ def drop_closeups(item, log=print, only=None):
     if only is None and total and (len(bad) / total >= CLOSE_HOLD or item["name"] in closeup_state()):
         return sum(stage_closeups(item, bad, log))
     keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
-    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in bad]))
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + reject_srcs(item, bad)))
     redo = list(dict.fromkeys(list(item.get("emblem_redo") or []) + [b["subject"] for b in bad if b.get("subject")]))
     with WRITE_LOCK:
         emblem.write_item(item["name"], keep, None)
@@ -2896,7 +2948,7 @@ def drop_same(item, log=print):
         return 0
     gone = files + looks
     keep = [x for x in item.get("emblem") or [] if not any(x is b for b in gone)]
-    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in looks]))
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + reject_srcs(item, looks)))
     with WRITE_LOCK:
         emblem.write_item(item["name"], keep, None)
         if looks:
@@ -2939,6 +2991,8 @@ def localize_remote(item, log=print):
 
 def drop_broken(item, log=print):
     """broken_cuts を外し、元の画像を emblem_reject に（次は同じ人の次の候補）。→ 外した枚数。直せる形の傷は先に repair_flat で直す。同じ画像（drop_same）も。"""
+    if release_small_rejects(item, log):
+        item = next((i for i in load_items() if i["name"] == item["name"]), item)
     repair_flat(item, log)
     n = drop_same(item, log)
     if n:
@@ -2953,7 +3007,7 @@ def drop_broken(item, log=print):
         d.setdefault(item["name"], []).extend({"v": BROKEN_V, "emblem": b} for b in bad)
         _broken_log(d)
     keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
-    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in bad if not wide_retry(b)]))
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + reject_srcs(item, bad)))
     with WRITE_LOCK:
         emblem.write_item(item["name"], keep, None)
         _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")

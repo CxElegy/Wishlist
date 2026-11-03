@@ -5,6 +5,7 @@ import pathlib
 import tempfile
 import sys
 import unittest
+import yaml
 from unittest import mock
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
@@ -112,7 +113,7 @@ class WideRetry(unittest.TestCase):
     def test_drop_broken_keeps_narrow_small_out_of_reject(self):
         import emblem_fill as ef
         src = inspect.getsource(ef.drop_broken)
-        self.assertIn("wide_retry", src)
+        self.assertIn("reject_srcs", src)
 
     def test_unbreak_frees_narrow_small_source(self):
         import json
@@ -160,6 +161,101 @@ class WideRetryEverywhere(unittest.TestCase):
         self.assertEqual(emb_check.narrow_small_rejects(items, rec), ["M CM"])
         items[0]["emblem_reject"] = []   # unbreak が抜いたあと
         self.assertEqual(emb_check.narrow_small_rejects(items, rec), [])
+
+    def _world(self, src):
+        """items.yaml 1 項目（emblem 1 枚・NARROW か wide の元の網址）を一時の場所に作り、ef・emblem をそこへ向ける。"""
+        import emblem
+        import emblem_fill as ef
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        (tmp / "state").mkdir()
+        (tmp / "items.yaml").write_text('items:\n  - name: M\n    emblem_kind: character\n    emblem_reject: ["http://s/z"]\n    emblem: []\n', encoding="utf-8")
+        x = {"subject": "CM", "image": "emblems/cm.webp", "source": src, "face": [0.1, 0.1, 0.5, 0.5, 390, 247]}
+        patches = [mock.patch.object(ef, "ROOT", tmp), mock.patch.object(emblem, "ROOT", tmp), mock.patch.object(emblem, "write_item", lambda *a, **k: None)]
+        for q in patches:
+            q.start()
+            self.addCleanup(q.stop)
+        return ef, x
+
+    def _item(self, ef):
+        return yaml.safe_load((ef.ROOT / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+
+    def _roads(self, ef, x):
+        """外す道 4 つを実際に走らせる（外す相手だけ差し替える）：名前 → 1 回走らせる関数 f(item)。"""
+        quiet = lambda *_: None   # noqa: E731
+        return {
+            "drop_broken": lambda it: self._with(
+                [mock.patch.object(ef, "broken_cuts", lambda _i: [x]), mock.patch.object(ef, "repair_flat", lambda *a, **k: 0),
+                 mock.patch.object(ef, "drop_same", lambda *a, **k: 0), mock.patch.object(ef.emblem_face, "measure_item", lambda *a, **k: 0)],
+                lambda: ef.drop_broken(it, log=quiet)),
+            "drop_closeups": lambda it: self._with(
+                [mock.patch.object(ef, "closeup_cuts", lambda _i, _o=None: ([x], 0, 1))],
+                lambda: ef.drop_closeups(it, log=quiet, only={x["source"]})),
+            "stage_closeups": lambda it: self._with(
+                [mock.patch.object(ef, "bust_replacement", lambda *a, **k: None), mock.patch.object(ef, "CLOSE_TRIES", 1),
+                 mock.patch.object(ef, "close_top", lambda *a: False), mock.patch.object(ef, "closeup_state", lambda d=None: {}),
+                 mock.patch.object(ef, "closeup_eta_state", lambda d=None: {})],
+                lambda: ef.stage_closeups(it, [x], log=quiet)),
+            "drop_same": lambda it: self._with(
+                [mock.patch.object(ef, "same_pics", lambda *a, **k: ([], [x]))],
+                lambda: ef.drop_same(it, log=quiet)),
+        }
+
+    @staticmethod
+    def _with(ps, f):
+        for q in ps:
+            q.start()
+        try:
+            return f()
+        finally:
+            for q in ps:
+                q.stop()
+
+    def test_every_reject_road_withholds_narrow_small_once(self):
+        """外す道 4 つを走らせる：縮めた網址の小さいだけの絵は 1 回目は reject に入れず emblem_small_tried に記録、2 回目（取り直してもまた外れた）は入れる。回し続けない。"""
+        for road in ("drop_broken", "drop_closeups", "stage_closeups", "drop_same"):
+            with self.subTest(road=road):
+                ef, x = self._world(self.NARROW)
+                run = self._roads(ef, x)[road]
+                run(self._item(ef))
+                got = self._item(ef)
+                self.assertNotIn(self.NARROW, got["emblem_reject"])
+                self.assertEqual(got["emblem_small_tried"], [self.NARROW])
+                run(got)
+                self.assertIn(self.NARROW, self._item(ef)["emblem_reject"])   # 2 回目は入れる
+
+    def test_every_reject_road_rejects_wide_small_at_once(self):
+        """縮めていない網址（save_cut が大きい幅で取っても小さい絵＝本当に小さい）は 1 回目から reject。縮めた網址の道（取り直す）と違うことを道ごとに確かめる。"""
+        wide = self.NARROW.replace("/400", "/1200")
+        for road in ("drop_broken", "drop_closeups", "stage_closeups", "drop_same"):
+            with self.subTest(road=road):
+                ef, x = self._world(wide)
+                self._roads(ef, x)[road](self._item(ef))
+                got = self._item(ef)
+                self.assertIn(wide, got["emblem_reject"])
+                self.assertNotIn("emblem_small_tried", got)
+
+    def test_release_small_rejects_once(self):
+        """前の道で reject に入った縮めた網址は 1 回だけ解く（emblem_small_tried に入れる）。大きい幅でもまた小さくて reject に入ったものは、2 回目は解かない。"""
+        import json
+        ef, x = self._world(self.NARROW)
+        (ef.ROOT / "state" / "emblem_broken.json").write_text(json.dumps({"M": [{"v": 13, "emblem": x}]}), encoding="utf-8")
+        (ef.ROOT / "items.yaml").write_text(f'items:\n  - name: M\n    emblem_kind: character\n    emblem_reject: ["{self.NARROW}", "http://s/z"]\n    emblem: []\n', encoding="utf-8")
+        self.assertEqual(ef.release_small_rejects(self._item(ef), log=lambda *_: None), 1)
+        got = self._item(ef)
+        self.assertEqual(got["emblem_reject"], ["http://s/z"])
+        got["emblem_reject"] = [self.NARROW]   # 大きい幅でも小さく、また reject に入った
+        self.assertEqual(ef.release_small_rejects(got, log=lambda *_: None), 0)
+
+    def test_customer_board_stale_narrow_rejects_counted_and_released(self):
+        """お客さまの版面（config の emblem_reject）：名簿の先頭の欠けた人のファイル名に当たる縮めた網址を、点検 E24 が数え、同じ式で解く。"""
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import emb_check
+        ef, _ = self._world(self.NARROW)
+        u = "https://static.wikia.nocookie.net/dota2_gamepedia/images/a/a1/Crystal_Maiden.png/revision/latest/scale-to-width-down/400?cb=1"
+        rows = [{"name": "B", "config": {"emblem_who": ["Crystal Maiden"], "emblem_reject": [u, "http://s/z"], "emblem": []}}]
+        self.assertEqual(emb_check.narrow_small_rejects([], boards=rows), ["お客さま B Crystal Maiden"])
+        rows[0]["config"]["emblem_small_tried"] = [u]
+        self.assertEqual(emb_check.narrow_small_rejects([], boards=rows), [])
 
     def test_head_cause_text_reads_recorded_reasons(self):
         """E15 に原因を添える：progress の funnel.heads を読み、記録がなければ「原因の記録なし」。"""

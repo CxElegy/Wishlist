@@ -432,7 +432,10 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
                 pend = {}
             touched = True
             if gone:   # 外して元の画像は emblem_reject・人は emblem_redo → 次の回に胸像を探す
-                got["emblem_reject"] = list(dict.fromkeys(list(got.get("emblem_reject") or []) + [g.get("source") or g["image"] for g in gone]))
+                m = {**item, **got}   # 縮めた網址で小さいだけの絵は店長と同じ reject_srcs（1 回は入れず取り直す。記録 emblem_small_tried は config へ）
+                got["emblem_reject"] = list(dict.fromkeys(list(got.get("emblem_reject") or []) + emblem_fill.reject_srcs(m, gone, persist=False)))
+                if m.get("emblem_small_tried"):
+                    got["emblem_small_tried"] = m["emblem_small_tried"]
                 got["emblem_redo"] = list(dict.fromkeys(list(got.get("emblem_redo") or []) + [g["subject"] for g in gone if g.get("subject")]))
         if got.get("emblem"):   # 公式サイトがあるのに Fandom の絵の人を公式に（店長の official_swap と同じ。点検 E21 がお客さまの版面も数える）
             got["emblem"], _ = official_swap_board({**item, **got}, got["emblem"], fetch)
