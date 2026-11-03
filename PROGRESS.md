@@ -320,5 +320,13 @@
 - 2026-11-03 f1：E24 確認＝background run 41607700962 成功・main の narrow_small_rejects()=0。ux_check は回線切れで測れず。次：E15→E10。
 - 2026-11-03 f1f1：E24 の [x] を [~] に戻した（別の目の指摘）。店長 narrow_small_rejects()=0 は再確認、版面側は DB 64 版面のうち縮めた札のある 21 を同じ関数で数えて 1 件（原神 Xiangling）。library_emblem.yml は #832 のあと未実行だったので dispatch（run 41626091935）。画面（ux_check）は未測。次：その run のあと版面側を数え直して 0 なら [x]（データ側のみ・画面未測と明記）。
 - 2026-11-03 f1f1：E24 データ側 [x]：library_emblem run 41626091935 のあと店長 0・版面側（DB 64 版面の縮めた札 21）0。画面 ux_check は未測。次：E15→E10。
+2026-11-03 plan1：次の段 4 つを BACKLOG に足した（Pages 公開物 1GB／月帯域の見張り・Actions の応答バイト数え・test-c 最初の画面の導線・11/4 本番ゲート 1 コマンド）。コード変更なし、架構図：不用改。次：先頭の段から。
+2026-11-03 f2：11/4 の本番ゲートを 1 コマンドに（harness/free_tier_gate.py・tests/test_free_tier_gate.py）。架構図：不用改（harness のみ）。次：11/4 に実行して全部 ✓ を確かめる。
+- 2026-11-03 f2f1 別の目の指摘：ゲートの穴（--skip-prod が「入れ終わり」と出す・走査が狭い・FILL_MAX 無点検・main 無試験）を直し、Pages 98.3% の根（photo_cache が render 後だけ）を Pages 公開後にも走らせて直す。確かめ：手元の全テスト。本番のゲートは回していない。次：合併後 pages_health --photos を 1 回、11/4 朝にゲート。
+- 2026-11-03 f2f2 別の目の指摘（続き）：token 走査が git 管理外の .claude/worktrees の写しを拾う→見ない／docs の静的な data-fb に storage 網址が 1 件残る（render._pic が落ち先に入れていた）→入れない＋free_tier_gate に docs 静的 storage 網址 0 の点検を足した。連動の範囲：docs の html・js 全部（1 件）。架構図：processes.py p1ph に 1 文。次：render 後に gate --skip-prod が全部 ✓ か確かめる。
+- 2026-11-03 f3：11/4 ゲート再実行＝全部 ✓（Pages 6076 枚・載る 5416 枚の 100.0%・/p/ 失敗 0・storage 0・sb_down_check OK）。BACKLOG の初回 ✗ を [x]。架構図：不用改（文書のみ）。次：11/4 01:30 UTC 以降の 24h 数え。
+2026-11-03 f4：Pages 公開物の大きさの見張り（manifest.bytes・pages_health --size・ゲートに 1 行）。架構図：processes.py p7 に 1 文。次：公開後に --size の値を書く、11/4 01:30 UTC 以降の egress 24h 数え。
+2026-11-03 f4b：公開物の大きさの見張りの穴 4 つを直した（ゲートの測れず＝ - ・定時の記録と赤・管理ページの 1 行・manifest.bytes に manifest 自身も入れた）。連動の範囲：見張りを走らせる所 2（photo_cache.yml・ゲート）、tests が数える。架構図：processes.py p7 に 1 文。次：公開後に最初の値を PROGRESS へ。
+2026-11-03 f4c：PR #847 合併・本番で確かめ：公開物 225 MB＝1 GB の 21%（pages_health --size ✓）、photo_cache.yml が state/pages_size.json をコミット（Actions 成功）。次：翌日に「前回より」が出るか。
 
 - 2026-11-03 f1f2：E24 版面側を繰り返せる点検に：emb_check が数えた版面数と key の種類（公開＝23/64 は未測あり）を出し、library_emblem の回が service key で全版面を数えて log に「E24 お客さま N 件」。tests 追加。ux_check E24 の画面は未測のまま（Playwright MCP 不通・本番は 1 回だけ）。次：合併後の library_emblem run の log で N を確認→E15。

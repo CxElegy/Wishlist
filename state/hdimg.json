@@ -196,6 +196,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/7d297217gy1iip1fj6973j20yi1a0wvz.jpg": {
+  "w": 1242,
+  "h": 1656,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/006f16759f7934fa.webp",
+  "out": [
+   960,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "https://0.soompi.io/wp-content/uploads/2026/10/28063552/SM-A2O-LITE.jpg": {
   "w": 1200,
   "h": 800,
@@ -221,6 +234,12 @@
   "v": 3
  },
  "https://9to5google.com/wp-content/uploads/sites/4/2026/10/S26-Ultra-Pixel-11-Pro-and-iPhone-17-Pro.jpg?quality=82&strip=all&resize=1200,628": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://9to5toys.com/wp-content/uploads/sites/5/2026/11/Belkin-Mandalorian-edition-metal-Magnetic-Power-Bank-6f4731.webp?resize=1200,628": {
   "w": 1200,
   "h": 628,
   "target": 720,
@@ -333,6 +352,12 @@
  "https://assets.content.technologyadvice.com/Screenshot_2026_10_12_at_4_46_57_PM_4e1a5e9138.webp": {
   "w": 1788,
   "h": 1312,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets.games.gg/betboom_team_dota_2_roster_inactive_og_a611ffe91c_96ff5bf3b3.webp": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -872,12 +897,6 @@
   "target": 720,
   "v": 3
  },
- "https://comicbook.com/wp-content/uploads/sites/4/2026/11/Mandalorian-Helmet-Header.jpg?resize=2000,1125": {
-  "w": 2000,
-  "h": 1125,
-  "target": 720,
-  "v": 3
- },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/11/g-t-a-6.png?resize=2000,1125": {
   "w": 2000,
   "h": 1125,
@@ -1323,6 +1342,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2026/08/BLEACH-Mirrors-High-launch-cover.jpg": {
+  "w": 1200,
+  "h": 624,
+  "target": 1280,
+  "v": 3
+ },
  "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/b6a7982bb6fb0304d3a0a296e505d4e7.webp?fit=900%2C1200&ssl=1": {
   "w": 900,
   "h": 1200,
@@ -1674,12 +1699,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCUz3.img": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCv4j.img": {
   "w": 1280,
   "h": 720,
@@ -1954,6 +1973,12 @@
   ],
   "why": "看不清"
  },
+ "https://img.kai-you.net/storage/2026/11/44d15073-efd6-4811-b4ba-966e390d33ce/main/mappa_sponsored.webp": {
+  "w": 1280,
+  "h": 842,
+  "target": 720,
+  "v": 3
+ },
  "https://img.khan.co.kr/news/2026/10/29/news-p.v1.20261028.62e9dd8e67f8479fbfbefc3d4a51da99_P1.jpg": {
   "w": 1200,
   "h": 800,
@@ -2018,12 +2043,6 @@
  "https://img.sportsbull.jp/raw/t2m8VMS5AgyOd1ngRNI4M1BYyyaofcW7fQOmvQWf.jpg": {
   "w": 1024,
   "h": 576,
-  "target": 720,
-  "v": 3
- },
- "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100425.jpg": {
-  "w": 560,
-  "h": 560,
   "target": 720,
   "v": 3
  },
@@ -2446,6 +2465,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.327
+ },
+ "https://newportal.portal.auone.jp/media/thumbnails/2026/10/29/https___news_jp_i_1488377450411262807_w700.webp": {
+  "w": 700,
+  "h": 299,
+  "target": 720,
+  "v": 3
  },
  "https://news-images.tvbs.com.tw/api/v1/image/01a1974f-ad5d-72be-a75b-2f6f484ae1a6.jpg?t=4x3&c=0,525,2668,2526&w=1200&h=675": {
   "w": 1200,
@@ -3817,12 +3842,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.wixstatic.com/media/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg/v1/fill/w_1000,h_566,al_c,q_85,usm_0.66_1.00_0.01/51a29a_ec2a33bbfbb04ddfb0011193f22e3667~mv2.jpg": {
-  "w": 1000,
-  "h": 566,
-  "target": 720,
-  "v": 3
- },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/03/harry-potter-season-1-alastair-stout-dominic-mclaughlin-arabella-stanton.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -4118,12 +4137,6 @@
   "target": 720,
   "v": 3
  },
- "https://win.gg/wp-content/uploads/2026/11/BetBoom_Team_win_PGL_Wallachia_Season_8.jpg.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://wotpack.ru/wp-content/uploads/2026/10/v-zzz-pokazali-geympley-pevitsy-galovianki-i-sanbringer.jpg": {
   "w": 1920,
   "h": 1080,
@@ -4151,7 +4164,7 @@
  "https://www.androidauthority.com/wp-content/uploads/2026/11/Pixel-11-Pro-vs-S27-Ultra.jpeg": {
   "w": 1600,
   "h": 900,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.androidheadlines.com/wp-content/uploads/2026/11/Samsung-Galaxy-S26-Ultra-vs-Galaxy-S27-Ultra-vs-iPhone-18-Pro-AH-36.jpg": {
@@ -4868,6 +4881,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.indexbox.io/landing/img/blog/custom-report-v2/world-kw-cat-litter-mat-set-840-market-analysis-forecast-size-trends-and-insights-1793626891.webp": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://www.inside-games.jp/imgs/ogp_f/1799460.jpg": {
   "w": 600,
   "h": 370,
@@ -4910,6 +4929,13 @@
   "h": 1080,
   "target": 1280,
   "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-03"
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
   "w": 410,

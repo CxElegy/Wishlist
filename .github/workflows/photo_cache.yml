@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: "23 19 * * *"    # 日本時間 4:23
   workflow_run:   # 新しい写真は render のあとに html へ載る → その回で写しに足し、Pages に出し直す（毎日 1 回だと最大 1 日 /p/ が 404 になった。2026-11-03）
-    workflows: ["网页立即更新"]
+    workflows: ["网页立即更新", "Pages 公開"]   # 編排・后台作業の push（render を通らない）で増えた写真も次の回で拾う。変わらなければ pages を起こさず止まる（輪にならない）
     types: [completed]
   workflow_dispatch:
     inputs:
@@ -16,7 +16,7 @@ concurrency:
   group: photo-cache
   cancel-in-progress: false
 permissions:
-  contents: read
+  contents: write   # state/pages_size.json（公開物の大きさ。1 日 1 回）を書く
   actions: write   # 写しが増えたら pages.yml を起こす
 jobs:
   fill:
@@ -44,6 +44,19 @@ jobs:
       - name: boards の小元素 ⊆ 写し・storage 網址 0 を数える（足りなければ警告。写しの追加は Pages 公開のあとに manifest へ出る）
         if: always()
         run: python harness/pages_health.py --emblems || echo "::warning::boards の小元素が Pages の写しに足りない、または boards に storage の網址がある（上の行）"
+      - name: 公開物の大きさを測る（1 GB の 70% 超で赤。測れず＝まだ bytes が無いのは失敗にしない。記録は 1 日 1 回）
+        if: always()
+        run: |
+          rc=0
+          python harness/pages_health.py --size --set || rc=$?
+          if [ -n "$(git status --porcelain state/pages_size.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add state/pages_size.json
+            git commit -q -m "公開物の大きさを記録"
+            for i in 1 2 3; do git pull -q --rebase && git push && break; sleep $((i * 5)); done
+          fi
+          [ "$rc" -ne 1 ]
       - uses: actions/cache/save@v4
         if: always() && steps.fill.outputs.changed == 'true'   # 変わらない回は保存しない（200 MB の写しで他の cache を押し出さない）
         with:

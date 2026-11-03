@@ -38,7 +38,8 @@
     78,
     92,
     95,
-    97
+    97,
+    100
    ]
   },
   {
@@ -56,7 +57,11 @@
     90,
     88,
     93,
-    96
+    96,
+    99,
+    101,
+    103,
+    105
    ]
   },
   {
@@ -84,27 +89,28 @@
   }
  ],
  "_covered": {
-  "漫威电影": 97,
-  "GTA 6": 71,
-  "三星手机": 53,
-  "A2O LITE": 16,
+  "漫威电影": 105,
+  "GTA 6": 82,
+  "三星手机": 65,
+  "A2O LITE": 19,
   "MMORPG 新作": 22,
   "dota2": 13,
   "哈利波特剧集": 6,
   "あつ森": 3,
-  "ILLIT": 26,
-  "周杰伦": 5,
+  "ILLIT": 30,
+  "周杰伦": 6,
   "Astrae Oratio": 1,
   "日本顶级网球赛事": 3,
-  "The Mandalorian": 7,
-  "gelato pique": 5,
+  "The Mandalorian": 11,
+  "gelato pique": 6,
   "チェーンソーマン": 11,
   "滑雪": 4,
   "Vaundy": 5,
-  "猫用品": 5,
+  "猫用品": 6,
   "绝区零": 4,
   "FROM": 2,
-  "星巴克马克杯": 3
+  "星巴克马克杯": 3,
+  "BLEACH Mirrors High": 1
  },
  "GTA 6": [
   {
@@ -114,7 +120,8 @@
    "weight": "hero",
    "refs": [
     11,
-    35
+    35,
+    77
    ],
    "event": {
     "date": "2026-11-19",
@@ -130,7 +137,8 @@
    "refs": [
     6,
     8,
-    70
+    70,
+    76
    ]
   },
   {
@@ -154,7 +162,8 @@
    "refs": [
     10,
     40,
-    64
+    64,
+    75
    ]
   },
   {
@@ -189,7 +198,10 @@
     28,
     35,
     47,
-    42
+    42,
+    54,
+    59,
+    63
    ],
    "image": "https://9to5google.com/wp-content/uploads/sites/4/2026/02/galaxy-s26-ultra-privacy-display-17.jpg?quality=82&strip=all&resize=1200,628"
   },
@@ -221,7 +233,8 @@
    "refs": [
     25,
     10,
-    27
+    27,
+    62
    ]
   },
   {
@@ -273,7 +286,11 @@
     43,
     51,
     45,
-    53
+    53,
+    57,
+    55,
+    60,
+    61
    ]
   }
  ],
@@ -285,7 +302,9 @@
    "weight": "lead",
    "refs": [
     5,
-    15
+    15,
+    18,
+    19
    ],
    "image": "https://pimg.mk.co.kr/news/cms/202611/02/news-p.v1.20261102.38754aba13554c18858c66f209ad7fff_R.jpg"
   },
@@ -308,7 +327,8 @@
    "refs": [
     4,
     11,
-    14
+    14,
+    17
    ]
   },
   {
@@ -472,7 +492,8 @@
     17,
     16,
     20,
-    24
+    24,
+    29
    ]
   },
   {
@@ -514,6 +535,15 @@
    "weight": "lead",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Apple Music盘点国语流行：2026年度最佳前十，周杰伦《那天下雨了》入围",
+   "highlight": "《那天下雨了》",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -578,7 +608,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    9
    ]
   },
   {
@@ -588,6 +619,15 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "Image EngineがThe Mandalorian & GroguのVFX内訳を公開",
+   "highlight": "VFX内訳",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -618,7 +658,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    6
    ]
   },
   {
@@ -756,6 +797,15 @@
    "refs": [
     5
    ]
+  },
+  {
+   "headline": "冬場は猫が水を飲む量が減る？ 飼い主さんが行っている対策と獣医師解説",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "绝区零": [
@@ -814,6 +864,17 @@
     "label": "発売日",
     "place": "シンガポール"
    }
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "BLEACH Mirrors High redeem codes and how to use them (October 2026)",
+   "highlight": "redeem codes",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }

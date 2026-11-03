@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-03T11:28:53+00:00",
+ "checked": "2026-11-03T13:17:46+00:00",
  "fired": {
-  "at": "2026-11-03T11:28:53+00:00",
+  "at": "2026-11-03T13:18:03+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,40 +12,39 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-03T10:35:03+00:00",
+    "at": "2026-11-03T13:18:03+00:00",
     "attempts": 1,
     "day": "2026-11-03",
-    "prog": 310,
-    "resp": "cse_01W4x6f8eRkTkmikPqcNnVkB",
-    "sig": "340365e80840"
+    "prog": 362,
+    "resp": "cse_01W4x6f8JhLXXdFr2Ek6Vrxz",
+    "sig": "6ed807abf9f7"
    },
    "items": [
     "BLEACH Mirrors High",
     "The Mandalorian",
-    "dota2",
     "gelato pique",
-    "チェーンソーマン",
     "周杰伦",
-    "星巴克马克杯",
     "猫用品"
    ],
-   "last_batch": "2026-11-03T11:14:43+00:00",
+   "last_batch": "2026-11-03T11:28:34+00:00",
    "last_error": {
     "at": "2026-11-02T23:32:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 353,
+   "prog": 362,
    "prog_day": "2026-11-03",
    "ripe": [
-    "dota2",
-    "チェーンソーマン",
-    "星巴克马克杯"
+    "BLEACH Mirrors High",
+    "The Mandalorian",
+    "gelato pique",
+    "周杰伦",
+    "猫用品"
    ],
-   "sig": "6041fce5a0ac",
+   "sig": "6ed807abf9f7",
    "token_cap": 1000000,
-   "tokens_today": 502443,
-   "why": "整理待ちの記事 14 件（8 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 510079,
+   "why": "整理待ちの記事 5 件（5 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,

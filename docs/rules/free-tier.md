@@ -33,6 +33,7 @@
 - 本人だけのページ（pages の箱）・データベース・ログインは Supabase のまま（公開できないので）。
 - 小元素（emblems 89 MB）も同じ公開物に入れる（配信は小さいが、同じ考え）。
 - Pages の目安：公開物 1 GB まで・月 100 GB・1 時間 10 回の公開まで。公開の回数は今も多い（打ち消し多数）ので、写真の取り込みは公開 1 回にまとめる。
+- 公開物の大きさの見張り（2026-11-03）：`pages.yml` の stage が manifest に bytes（docs 全部＋manifest 自身）を書く。`photo_cache.yml` が公開のあと・毎日 `pages_health.py --size --set` で測り、1 GB の 70% 超で赤（測れず＝bytes がまだ無いのは失敗にしない）。記録 `state/pages_size.json` は 1 日 1 回（前の日との増え方）。管理ページ「リソース」の先頭に 1 行。70% を超えたら古い写真を外す規則は消すことなので [?] で聞く。
 - 切り替えまでは今の Supabase のまま（点検を止めたので 1 日 0.1〜0.2 GB）。
 - 案A-2（切り替えができないとき）：写真だけの別のリポジトリ＋Pages、毎日まるごと 1 コミットに置き換え（歴史を増やさない）。リポジトリと書き込みの鍵はユーザーが作る。
 
@@ -83,3 +84,7 @@ Supabase のメール（2026-11-03）：cached egress 19.2 GB / 5.5 GB、11/5 �
 - 公開の docs/ に Supabase storage の網址を書くのは `data-fb`（開けないときの落ち先）だけ。今ある 1 件は ig-articles（media 箱。インスタの網址は切れるので自前で持つ記事の写真）の落ち先。photos 箱の網址は落ち先にも書かない。見本ページ（testground）も Pages の `/p/` を直書きする。`tests/test_pages_served.py` が docs/ を数えて 0 を保つ。
 - 新しい写真が `/p/` で 404 になる穴：photo_store が置いた写真は、render が html に載せてから写しに入る。以前は毎日 1 回の取り込みだけで最大 1 日 404（本番で 10 枚。見た目は原寸の外部画像へ落ちる）。直し：photo_cache.yml が render（网页立即更新）のあとにも走り、写しが変わったら pages.yml を起こす。
 - 本番の確かめは `python harness/pages_served.py`（1 回・共通の launch）：画像の取得先を数え、Pages 99% 以上・storage 0・/p/ の 200・304 以外 0 を見る。小元素は `home/emblems/`（docs 内、Pages）で、もともと storage を通らない。
+
+## 11/4 の本番ゲート（2026-11-03）
+
+`python harness/free_tier_gate.py` が全部 ✓ なら入れ終わり。トークン混入 0（.claude/worktrees は見ない）・docs の静的な storage 網址 0（data-fb 含む）・写真を本番から落とす道 0・pages_served・pages_health --photos・sb_down_check を順に走らせる（本番に向ける 3 つは各 1 回・timeout 付き）。手元だけは `--skip-prod`。

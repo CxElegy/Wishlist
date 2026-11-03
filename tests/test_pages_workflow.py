@@ -2,6 +2,7 @@
 import datetime as dt
 import importlib.util
 import re
+import sys
 import unittest
 from pathlib import Path
 
@@ -115,6 +116,64 @@ class PagesPhotos(unittest.TestCase):
             self.assertEqual(self.s.stage(d / "c", d / "docs"), 1)
             m = json.loads((d / "docs" / "p" / "manifest.json").read_text())
             self.assertEqual(m["names"], ["0123456789abcdef-800.webp"])
+
+    def test_manifest_has_bytes_and_size_verdict(self):
+        import json
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            (d / "c").mkdir()
+            (d / "c" / "0123456789abcdef-800.webp").write_bytes(b"x" * 10)
+            self.s.stage(d / "c", d / "docs")
+            self.assertGreaterEqual(json.loads((d / "docs" / "p" / "manifest.json").read_text())["bytes"], 10)
+        h = self.h
+        self.assertIsNone(h.size_verdict({})[0])
+        self.assertTrue(h.size_verdict({"bytes": 100 << 20}, 90 << 20)[0])
+        self.assertFalse(h.size_verdict({"bytes": int(h.LIMIT * 0.71)})[0])
+
+    def test_manifest_bytes_covers_whole_docs_incl_manifest(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            (d / "c").mkdir()
+            (d / "c" / "0123456789abcdef-800.webp").write_bytes(b"x" * 1000)
+            (d / "docs").mkdir()
+            (d / "docs" / "a.html").write_bytes(b"y" * 500)
+            self.s.stage(d / "c", d / "docs")
+            import json
+            tot = sum(f.stat().st_size for f in (d / "docs").rglob("*") if f.is_file())
+            self.assertEqual(json.loads((d / "docs" / "p" / "manifest.json").read_text())["bytes"], tot)
+
+    def test_size_record_once_a_day_and_growth(self):
+        h = self.h
+        self.assertEqual(h.size_next(None, 5, "d1"), {"bytes": 5, "date": "d1", "prev": None})
+        s = h.size_next({"bytes": 5, "date": "d1", "prev": None}, 9, "d2")
+        self.assertEqual(s, {"bytes": 9, "date": "d2", "prev": 5})
+        self.assertIsNone(h.size_next(s, 11, "d2"))   # 同じ日は書かない（コミットが増えない）
+        self.assertEqual(h.size_prev(s, "d3"), 9)
+        self.assertEqual(h.size_prev(s, "d2"), 5)
+        self.assertIsNone(h.size_prev(None, "d2"))
+
+    def test_size_watch_runs_on_schedule_and_in_gate(self):
+        # 見張りは定時の回と本番ゲートの両方（2026-11-03：ゲートと手動だけでは 70% を誰も気づかなかった）
+        root = Path(__file__).resolve().parent.parent
+        wf = [p.name for p in (root / ".github" / "workflows").glob("*.yml") if "pages_health.py --size" in p.read_text(encoding="utf-8")]
+        self.assertEqual(wf, ["photo_cache.yml"])
+        t = (root / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")
+        self.assertIn("cron:", t)
+        self.assertIn("contents: write", t)
+        self.assertIn('[ "$rc" -ne 1 ]', t)   # 測れず（2）は失敗にしない
+        self.assertIn("--size", (root / "harness" / "free_tier_gate.py").read_text(encoding="utf-8"))
+
+    def test_admin_pages_size_line(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import render
+        self.assertIn('data-state="none"', render._pages_size_line({}))
+        ok = render._pages_size_line({"bytes": 300 << 20, "prev": 290 << 20, "date": "2026-11-04"})
+        self.assertIn('data-state="ok"', ok)
+        self.assertIn("+10.0 MB", ok)
+        self.assertIn("29%", ok)
+        self.assertIn('data-state="limited"', render._pages_size_line({"bytes": 800 << 20}))
 
     def test_flag_default_off_and_url_switch(self):
         P = self.P

@@ -825,6 +825,9 @@ def _img_url(u, local=True):
     return u
 
 
+_STORAGE_RE = re.compile(r"https://[^/]+\.supabase\.co/storage/v1/(?:object|render/image)/public/")
+
+
 def _pic(story):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
     兜底顺序：自己的图 → _fbs 里的备用图（作品封面）→ 来源网站的图标和网站名 → 作品名排版的封面块。
@@ -839,7 +842,9 @@ def _pic(story):
     # 先頭が開けず落ち先へ替わっても原寸の外部画像に戻らない（2026-11-01 dota2：先頭の 17173 が落ち、置き場にある Steam の原寸 jpg が出ていた）
     # 落ち先は置き場の写真「に替える」（原寸を後ろに並べない：SWAP_JS は同じ版面にすでにある網址を飛ばすので、置き場の写真が飛ばされると原寸が代わりに出る）
     exp = ([big] if big else []) + chain[:1] + [photo_store.stored(u) or u for u in chain[1:]]
-    fb = f' data-fb="{e(" ".join(exp[1:]))}"' if len(exp) > 1 else ""
+    # 落ち先に Supabase storage の公開網址は入れない（Pages の写しが落ちたとき storage へ戻ると無料枠の egress を使う。2026-11-03 gate 指摘）
+    fbl = [u for u in exp[1:] if not _STORAGE_RE.match(u)]
+    fb = f' data-fb="{e(" ".join(fbl))}"' if fbl else ""
     src = exp[0] if exp else None
     # 一時保管の写真は幅 400／800 を srcset で渡す（小さい画面・小さい枠は 400）。背景のぼかしは 400 で足りる
     srcset = f' srcset="{e(small)} 400w, {e(big)} 800w" sizes="(max-width:700px) 100vw, 33vw"' if small else ""
@@ -6617,12 +6622,31 @@ def _sb_line(st=None):
     return f'<p id="sb-state" class="sbline" data-state="{"limited" if lim else "ok"}"><b>{e(txt)}</b></p>'
 
 
+PAGES_SIZE_FILE = pathlib.Path(__file__).resolve().parent.parent / "state" / "pages_size.json"
+
+
+def _pages_size_line(st=None):
+    """管理ページの 1 行：公開物（写真込み）が Pages の目安 1 GB の何 %か（photo_cache.yml が 1 日 1 回 state/pages_size.json に書く）。70% 超で金色。"""
+    if st is None:
+        try:
+            st = json.loads(PAGES_SIZE_FILE.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            st = {}
+    b = st.get("bytes")
+    if not b:
+        return '<p id="pages-size" class="sbline" data-state="none"><b>公開物の大きさ：まだ測っていません（次の公開のあとの回から）</b></p>'
+    pct, prev = b / 1024 ** 3 * 100, st.get("prev")
+    grow = f" · 前回より {(b - prev) / 1048576:+.1f} MB" if prev else ""
+    txt = f"公開物（写真込み）：{_mb(b)}＝Pages の目安 1 GB の {pct:.0f}%{grow} · {st.get('date') or ''}"
+    return f'<p id="pages-size" class="sbline" data-state="{"limited" if pct > 70 else "ok"}"><b>{e(txt)}</b></p>'
+
+
 def _admin_resources(res):
     """リソース：容量（リポジトリ・公開ページ）、仕組みごとの最近の実行のサーバー（メモリ・ディスク・CPU）、トークン。"""
     if not res:
         return ""
     sz, lim = res.get("sizes") or {}, res.get("limits") or {}
-    cap = (_sb_line() + _meter("リポジトリ", sz.get("repo", 0), lim.get("repo"), "GitHub は 1GB 未満を推奨（5GB で警告）")
+    cap = (_sb_line() + _pages_size_line() + _meter("リポジトリ", sz.get("repo", 0), lim.get("repo"), "GitHub は 1GB 未満を推奨（5GB で警告）")
            + _meter("公開ページ（docs/）", sz.get("pages", 0), lim.get("pages"),
                     f'GitHub Pages は 1GB まで · うち小元素の画像 {_mb(sz.get("emblems", 0))}')
            + _photo_meter(photo_store.load()["stat"])
