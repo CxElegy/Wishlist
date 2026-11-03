@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-03T15:29:01+00:00",
+ "checked": "2026-11-03T16:17:57+00:00",
  "fired": {
   "at": "2026-11-03T15:29:20+00:00",
   "results": {
@@ -19,38 +19,20 @@
     "resp": "cse_01W4x6f9XxLZxerL7PK66q2j",
     "sig": "dd158f19d304"
    },
-   "items": [
-    "BLEACH Mirrors High",
-    "MMORPG 新作",
-    "dota2",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "猫用品"
-   ],
-   "last_batch": "2026-11-03T13:55:34+00:00",
+   "items": [],
+   "last_batch": "2026-11-03T15:50:42+00:00",
    "last_error": {
     "at": "2026-11-02T23:32:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 408,
-   "prog_day": "2026-11-03",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "MMORPG 新作",
-    "dota2",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "猫用品"
-   ],
-   "sig": "dd158f19d304",
+   "need": false,
+   "prog": 0,
+   "prog_day": "2026-11-04",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 531057,
-   "why": "整理待ちの記事 11 件（8 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
