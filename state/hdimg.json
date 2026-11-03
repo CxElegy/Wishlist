@@ -72,6 +72,12 @@
   "target": 720,
   "v": 3
  },
+ "http://www.emoneynews.co.kr/news/photo/202611/131132_54553_2647.jpg": {
+  "w": 620,
+  "h": 465,
+  "target": 720,
+  "v": 3
+ },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
   "h": 338,
@@ -712,6 +718,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.utaten.com/uploads/images/specialArticle/10324/3f786fa5a4cc1739c2291e08bfcf1e7e52140a71.jpeg?type=original?r=2026110310": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://cdn.wccftech.com/wp-content/uploads/2026/11/PlayStation-5-Firmware-War-GTA-6-Requirement-1920x1080.jpg": {
@@ -3615,6 +3627,12 @@
   ],
   "why": "看不清"
  },
+ "https://static.sanyonews.jp/image/article/size1/e/c/a/0/eca06632b083f3de1ab03c597fe95639_1.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/f/6/1/0/f610e91defae6ca42d132f9a72a9e0cf_1.jpg": {
   "w": 490,
   "h": 640,
@@ -4536,7 +4554,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.chosun.com/resizer/v2/G5SDINLDHFRWGZBRGYZWCNLCGA.jpg?auth=739573127a990fd5ef680a1b099c16fa28b384086240fdaa5d7bc97289559047&width=650&height=341&smart=true": {
+  "w": 650,
+  "h": 341,
+  "target": 720,
+  "v": 3
+ },
  "https://www.chosun.com/resizer/v2/GJRTKNRZMM2DMOJQMFSDGYLGMY.jpg?auth=8a5eb0aa84747556c5a4e55d75865c57b2924996f369fc0ebb3782e718271fd4&width=650&height=341&smart=true": {
+  "w": 650,
+  "h": 341,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.chosun.com/resizer/v2/GRRGEZLFMNRDKMJRHFTDQOLFGQ.jpg?auth=17b2e81095ed2008e940901c41615dd4ee9b25ccba9b7c7613555cf1c8f39a2b&width=650&height=341&smart=true": {
   "w": 650,
   "h": 341,
   "target": 720,
@@ -5022,6 +5052,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://www.ytn.co.kr/img/comm/ytn_sns_default.jpg": {
+  "w": 558,
+  "h": 279,
+  "target": 720,
+  "v": 3
  },
  "https://x0.ifengimg.com/res/2026/3E7CCE8D8CEB92144553F3E09AEA46382E327286_size30_w600_h568.jpg": {
   "w": 600,

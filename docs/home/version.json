@@ -1,10 +1,10 @@
 {
- "admin": "523e322b6adb",
- "admin-ai": "7f8d6db0860d",
+ "admin": "ada59a87c98e",
+ "admin-ai": "44d1b1cb0a06",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "7ce98d37"
+   "77dfd183"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "db427f57eeb0",
+ "admin-emblem": "1995a15d4e6d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "54e835b0"
+   "81c58090"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf5c00e182d6",
  "admin-members_marks": {},
- "admin-now": "23c5f4a3078c",
+ "admin-now": "82aa7b679124",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9d44b29e"
+   "df2f3047"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "a680e6a0"
   ]
  },
- "admin-system": "de66dec042b0",
+ "admin-system": "92c4263d2f2c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "58262a07"
+   "c970c51a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,11 +93,11 @@
    "c05b694d"
   ]
  },
- "index": "9f9ab18e210a",
+ "index": "9ebffc938ab8",
  "index_marks": {
   "front": [
    "トップ",
-   "b176c32d"
+   "9ce57de3"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "ec063601"
+   "1ff76ca3"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "f68bd7a2"
+   "595b5d1d"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "5ec51dcf"
+   "b0b48c28"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "71e7e8bd"
+   "38574a50"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "7dd29051"
+   "c821247b"
   ],
   "w-f303ad09": [
    "绝区零",
    "0fb95fb6"
   ]
  },
- "updated": "11.03 10:31",
+ "updated": "11.03 10:42",
  "wishlist": "e08eaef311ad"
 }

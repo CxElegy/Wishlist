@@ -7,6 +7,7 @@
  },
  "images": {
   "http://k.sina.com.cn/article_1308889783_m4e0412b703301kove.html?cre=tianyi&mod=pcent&loc=12&r=0&rfunc=12&tj=cxvertical_pc_ent&tr=12&from=ent&subch=oent": "http://n.sinaimg.cn/sinakd20261102ac/533/w480h853/20261102/e56b-ace4d496e360754bfe6f92bf53c346e4.jpg",
+  "http://www.emoneynews.co.kr/news/articleView.html?idxno=131132": "http://www.emoneynews.co.kr/news/photo/202611/131132_54553_2647.jpg",
   "http://www.excite.co.jp/news/article/Prtimes_2026-11-02-16333-238/": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FPrtimes%252Ffc%252FPrtimes_2026-11-02-16333-238%252FPrtimes_2026-11-02-16333-238_1.jpg,zoom=1200,quality=70,type=jpg",
   "https://ascii.jp/elem/000/004/447/4447809/": "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122",
   "https://automaton-media.com/en/news/open-world-anime-style-detective-arpg-silver-palace-gets-december-14-global-release-date/": "https://automaton-media.com/en/wp-content/uploads/2026/10/20261030-74586-001.jpg",
@@ -958,6 +959,27 @@
   },
   {
    "batch": 1,
+   "because": "ILLIT",
+   "date": "2026-11-02",
+   "hits": [],
+   "image": "http://www.emoneynews.co.kr/news/photo/202611/131132_54553_2647.jpg",
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "이머니뉴스",
+   "taste": [
+    [
+     "作品:ILLIT",
+     6
+    ]
+   ],
+   "title": "아일릿, 3년 연속 日 대표 연말 방송 ‘FNS 가요제’ 출격",
+   "url": "http://www.emoneynews.co.kr/news/articleView.html?idxno=131132",
+   "words": [],
+   "work": "ILLIT"
+  },
+  {
+   "batch": 1,
    "because": "绝区零",
    "date": "2026-11-02",
    "hits": [],
@@ -1053,7 +1075,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "绝区零",
    "date": "2026-11-01",
    "hits": [],
@@ -1170,7 +1192,7 @@
    "work": "チェーンソーマン"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "猫用品",
    "date": "2026-11-01",
    "hits": [],
@@ -1295,7 +1317,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "周杰伦",
    "date": "2026-11-01",
    "hits": [],
@@ -1400,7 +1422,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-11-02",
    "hits": [],
@@ -1505,7 +1527,7 @@
    "work": "dota2"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-11-02",
    "hits": [],
@@ -1598,7 +1620,7 @@
    "work": "FROM"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "日本顶级网球赛事",
    "date": "2026-10-31",
    "hits": [],
@@ -2062,11 +2084,11 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ]
  ]

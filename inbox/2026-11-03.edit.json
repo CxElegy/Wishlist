@@ -68,20 +68,20 @@
  ],
  "_covered": {
   "漫威电影": 62,
-  "GTA 6": 35,
+  "GTA 6": 43,
   "三星手机": 20,
-  "A2O LITE": 5,
+  "A2O LITE": 7,
   "MMORPG 新作": 5,
   "dota2": 8,
   "哈利波特剧集": 4,
   "あつ森": 3,
-  "ILLIT": 2,
+  "ILLIT": 7,
   "周杰伦": 2,
   "Astrae Oratio": 1,
   "日本顶级网球赛事": 1,
   "The Mandalorian": 2,
   "gelato pique": 2,
-  "チェーンソーマン": 2,
+  "チェーンソーマン": 5,
   "滑雪": 2,
   "Vaundy": 1,
   "猫用品": 1,
@@ -132,7 +132,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
+    10,
+    40
    ]
   },
   {
@@ -241,6 +242,24 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "A2O LITE(エーツーオーライト)メンバーの身長や年齢などプロフィールを紹介！",
+   "highlight": "プロフィール",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "현직변호사가 본 A2O LITE 아이찡 '빚투' 논란",
+   "highlight": "'빚투' 논란",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "MMORPG 新作": [
@@ -328,6 +347,35 @@
    "weight": "lead",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "休養中のILLIT・MOKA、韓国公演を客席から応援「ILLITはいつでも5人」 新曲をステージ初披露",
+   "highlight": "ILLITはいつでも5人",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ILLIT to Perform at Japan's FNS Song Festival for Third Year",
+   "highlight": "FNS Song Festival",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "headline": "ILLIT Dominates Global Charts With Fifth Mini-Album 'BREAK EVEN'",
+   "highlight": "BREAK EVEN",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -420,12 +468,15 @@
    "image": "https://static.sanyonews.jp/image/article/size3/f/a/b/0/fab0f14b6c9201506a133ea3a6c2d90c_1.jpg"
   },
   {
-   "headline": "Chainsaw Man Reze Arc Inspires Stylish New Apparel Collection",
-   "highlight": "",
+   "headline": "劇場版『チェンソーマン レゼ篇』×グラニフ第2弾が11月3日発売！レゼのプール長袖Tやポチタのバッグ、カフェ「二道」のマグなど全19種",
+   "highlight": "11月3日発売",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    4,
+    2,
+    3,
+    5
    ]
   }
  ],
