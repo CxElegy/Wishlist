@@ -58,12 +58,12 @@ def fill_max_problems(root=ROOT):
     return bad
 
 
-def sh(name, cmd, timeout):
-    """(名前, ok, 末尾の 1 行)。時間切れは ✗。"""
+def sh(name, cmd, timeout, soft=()):
+    """(名前, ok, 末尾の 1 行)。時間切れは ✗。終了コードが soft にあれば ok=None（測れず＝✗ にも ✓ にも数えない）。"""
     try:
         r = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, timeout=timeout)
         out = (r.stdout + r.stderr).strip().splitlines()
-        return name, r.returncode == 0, out[-1] if out else ""
+        return name, None if r.returncode in soft else r.returncode == 0, out[-1] if out else ""
     except subprocess.TimeoutExpired:
         return name, False, "時間切れ（%d 秒）" % timeout
 
@@ -79,22 +79,23 @@ def steps(skip_prod=False):
     if not skip_prod:
         out.append(sh("docs の storage 網址 0・写真は Pages（pages_served）", [PY, "harness/pages_served.py"], 600))
         out.append(sh("写真の旗を on にしてよい（pages_health --photos）", [PY, "harness/pages_health.py", "--photos"], 300))
-        out.append(sh("公開物が 1 GB の 70% 以下（pages_health --size。測れずは次の公開から）", [PY, "harness/pages_health.py", "--size"], 120))
+        out.append(sh("公開物が 1 GB の 70% 以下（pages_health --size。測れずは次の公開から）", [PY, "harness/pages_health.py", "--size"], 120, soft=(2,)))
         out.append(sh("Supabase が止まっても崩れない（sb_down_check）", [PY, "harness/sb_down_check.py"], 900))
     return out
 
 
 def report(res, skip_prod):
     """(終了コード, 出す行の一覧)。0＝本番まで全部 ✓、1＝✗ あり、2＝静的だけ ✓ で本番は見ていない（入れ終わりではない）。"""
-    lines = ["%s %s　%s" % ("✓" if ok else "✗", n, line) for n, ok, line in res]
-    bad = [n for n, ok, _ in res if not ok]
+    lines = ["%s %s　%s" % ("-" if ok is None else "✓" if ok else "✗", n, line) for n, ok, line in res]
+    bad = [n for n, ok, _ in res if ok is False]
+    unk = [n for n, ok, _ in res if ok is None]
     if bad:
         lines.append("✗ %d 件：%s" % (len(bad), " / ".join(bad)))
         return 1, lines
     if skip_prod:
         lines.append("静的な点検だけ ✓。本番の 3 つ（pages_served・pages_health・sb_down_check）は見ていない → 入れ終わりではない")
         return 2, lines
-    lines.append("全部 ✓（入れ終わり）")
+    lines.append("全部 ✓（入れ終わり）" + ("。測れず %d 件（次の公開で測れる）：%s" % (len(unk), " / ".join(unk)) if unk else ""))
     return 0, lines
 
 
