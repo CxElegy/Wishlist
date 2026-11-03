@@ -63,6 +63,7 @@ def gh_runs(repo, since):
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGES_P = "https://cxelegy.github.io/Wishlist/p"
+WIDTHS = (400, 800)   # scripts/photo_store.py の WIDTHS と同じ
 READY = 0.99   # 載っている写真のうち Pages に並んでいる割合がこれ以上で旗を on にしてよい
 
 
@@ -72,6 +73,16 @@ def wanted(docs):
     for f in Path(docs).rglob("*.html"):
         out |= set(re.findall(r"/(?:photos|p)/([0-9a-f]{16}-\d+\.webp)", f.read_text(encoding="utf-8", errors="ignore")))
     return out
+
+
+def wanted_from_store(path=None):
+    """state/photo_store.json の p（置き場にある写真の指紋）× 幅の名前。docs/*.html に載らない写真（お客さまの pages 箱だけにある写真）も数える。"""
+    f = Path(path) if path else ROOT / "state" / "photo_store.json"
+    try:
+        p = json.loads(f.read_text(encoding="utf-8")).get("p", {})
+    except (OSError, ValueError):
+        return set()
+    return {"%s-%d.webp" % (k, w) for k in p for w in WIDTHS}
 
 
 def photos_verdict(manifest, want, sample_ok=True):
@@ -104,7 +115,7 @@ def sample_ok(manifest, k=5):
 
 def photos_main(set_flag):
     m = live_manifest()
-    ok, line = photos_verdict(m, wanted(ROOT / "docs"), sample_ok(m) if m else False)
+    ok, line = photos_verdict(m, wanted(ROOT / "docs") | wanted_from_store(), sample_ok(m) if m else False)
     print("%s %s" % ("✓" if ok else "✗", line))
     if set_flag:
         (ROOT / "state" / "pages_photos.json").write_text(json.dumps({"on": ok}) + "\n", encoding="utf-8")

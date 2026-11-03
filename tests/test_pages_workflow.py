@@ -144,3 +144,23 @@ class PagesPhotos(unittest.TestCase):
         self.assertFalse(self.h.photos_verdict({"n": 50, "names": sorted(want)[:50]}, want)[0])
         self.assertFalse(self.h.photos_verdict({"n": 100, "names": sorted(want)}, want, sample_ok=False)[0])
         self.assertTrue(self.h.photos_verdict({"n": 100, "names": sorted(want)}, want)[0])
+
+
+class PagesWantedFromStore(unittest.TestCase):
+    """99% の判定の分母に、置き場（photo_store.json の p）にだけある写真も入れる（お客さまの pages 箱の写真は docs/*.html に載らない）。"""
+    def test_store_names_added(self):
+        import json
+        import sys
+        import tempfile
+        sys.path.insert(0, str(ROOT / "harness"))
+        import pages_health
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "s.json"
+            f.write_text(json.dumps({"p": {"0123456789abcdef": {}}}))
+            self.assertEqual(pages_health.wanted_from_store(f), {"0123456789abcdef-400.webp", "0123456789abcdef-800.webp"})
+            self.assertEqual(pages_health.wanted_from_store(Path(d) / "none.json"), set())
+        ok, _ = pages_health.photos_verdict({"n": 1, "names": ["0123456789abcdef-400.webp"]}, {"0123456789abcdef-400.webp", "0123456789abcdef-800.webp"})
+        self.assertFalse(ok)   # 置き場にあるのに Pages に並んでいない写真は 99% を割る
+        import photo_store  # noqa: F401  幅の定義が同じ
+        self.assertEqual(pages_health.WIDTHS, photo_store.WIDTHS)
+

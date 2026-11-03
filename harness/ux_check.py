@@ -34,6 +34,7 @@ import json
 import os
 import pathlib
 import re
+import subprocess
 import sys
 import time
 import urllib.error
@@ -1515,6 +1516,16 @@ def main(argv):
             bad, msg = [f"測れなかった（{type(ex).__name__}: {str(ex)[:120]}）"], ""
         fails += bool(bad)
         print(("✗ " if bad else "✓ ") + "写真の先取りの実測（ログインなし・1400）：" + ("、".join(bad) if bad else msg))
+        if a.part != "who":   # 写真の配り先（2026-11-03）：ログイン中も Pages 99% 以上・Supabase storage 0・/p/ の失敗 0。本番は 1 回だけ開く（storage は route で止まる）
+            try:
+                r = subprocess.run([sys.executable, str(ROOT / "harness" / "pages_served.py"), "--pages", "", "--who", ",".join(x for x in a.who.split(",") if x in ("test-a", "test-b", "test-c")), "--timeout", "60"],
+                                   capture_output=True, text=True, timeout=300)
+                last = (r.stdout.strip().splitlines() or ["（出力なし）"])[-1]
+                bad = [] if r.returncode == 0 else [last[:200]]
+            except Exception as ex:  # noqa: BLE001
+                bad, last = [f"測れなかった（{type(ex).__name__}: {str(ex)[:120]}）"], ""
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + "ログイン中の写真の配り先（pages_served）：" + ("、".join(bad) if bad else last.lstrip("✓ ")))
         if not a.fast:   # 公開の HTML にお客さまだけの版面の名前が 0 件・店長でログインした管理ページの版面の数＝ライブラリの数
             try:
                 bad, n = check_public_leak(a.base)
