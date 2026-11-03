@@ -22,17 +22,22 @@ EMB = re.compile(r"/storage/v1/object/public/emblems/([0-9A-Za-z_.-]+\.webp)")
 PAGES = re.compile(r"https://cxelegy\.github\.io/Wishlist/p/([0-9a-f]{16}-\d+\.webp)")   # 旗 on のあとの網址（落とし先は Supabase の photos のまま）
 
 
+def board_text(settings, table="boards", cols="config"):
+    """DB の表を 1 回の GET で文字にして返す（読むだけ。鍵は SUPABASE_SERVICE_KEY、無ければ anon）。取れなければ空。"""
+    try:
+        base = settings["supabase_url"].rstrip("/")
+        key = os.environ.get("SUPABASE_SERVICE_KEY") or settings["supabase_key"]   # 非公開の版面（boards_visible）は secret key でないと見えない
+        req = urllib.request.Request("%s/rest/v1/%s?select=%s" % (base, table, cols), headers={"apikey": key, **({"Authorization": "Bearer " + key} if key.startswith("eyJ") else {})})   # 新しい sb_secret_ は apikey だけ（digest.supabase と同じ）
+        return urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+    except Exception as e:  # noqa: BLE001
+        print("DB を読めない", table, type(e).__name__, str(e)[:120])
+        return ""
+
+
 def board_emblems(settings):
     """お客さまの版面の小元素（boards.config の emblems 箱の網址。anon は非公開の版面が見えないので Actions では SUPABASE_SERVICE_KEY で読む）。docs/ の html に無いので DB から名前を数える（読むだけ・1 回の GET）。
     user_pages が /p/ に書き換える対象と同じ名前。取れなければ空（次の回で足す）。"""
-    try:
-        base = settings["supabase_url"].rstrip("/")
-        key = os.environ.get("SUPABASE_SERVICE_KEY") or settings["supabase_key"]   # 非公開の版面（boards_visible）は secret key でないと見えない。読むだけ
-        req = urllib.request.Request(base + "/rest/v1/boards?select=config", headers={"apikey": key, **({"Authorization": "Bearer " + key} if key.startswith("eyJ") else {})})   # 新しい sb_secret_ は apikey だけ（digest.supabase と同じ）
-        return set(EMB.findall(urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")))
-    except Exception as e:  # noqa: BLE001
-        print("小元素の名前を DB から読めない", type(e).__name__, str(e)[:120])
-        return set()
+    return set(EMB.findall(board_text(settings)))
 
 
 def urls():
