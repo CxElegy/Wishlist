@@ -153,3 +153,30 @@ class SbDownCheckStable(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class MemoAndNeedDb(unittest.TestCase):
+    def tearDown(self):
+        sbstate.LIMITED = False
+        sbstate._MEMO.clear()
+
+    def test_memo_reuses_only_in_actions(self):
+        n = []
+        with mock.patch.dict("os.environ", {"SUPABASE_SERVICE_KEY": "k"}):
+            for _ in range(3):
+                sbstate.memo("t", 60, lambda: n.append(1) or 1)
+        self.assertEqual(len(n), 1)
+        with mock.patch.dict("os.environ", {}, clear=True):
+            sbstate.memo("t2", 60, lambda: n.append(1))
+            sbstate.memo("t2", 60, lambda: n.append(1))
+        self.assertEqual(len(n), 3)
+
+    def test_need_db_green_when_limited(self):
+        sbstate.LIMITED = True
+        with self.assertRaises(SystemExit) as c:
+            sbstate.need_db("x")
+        self.assertEqual(c.exception.code, 0)
+        sbstate.LIMITED = False
+        with self.assertRaises(SystemExit) as c:
+            sbstate.need_db("x")
+        self.assertEqual(c.exception.code, "x")

@@ -8,6 +8,8 @@ SUPABASE_SERVICE_KEY が要る（読む・config に足すだけ）。"""
 import json
 import sys
 
+import sbstate
+
 THEME_KEYS = ("bg", "fg", "accent", "alt_bg", "alt_fg", "alt_accent")
 
 
@@ -35,7 +37,7 @@ def _boards():
     import digest
     rows = digest.supabase("boards?select=id,name,config&order=id")
     if rows is None:
-        raise SystemExit("SUPABASE_SERVICE_KEY がありません")
+        sbstate.need_db("SUPABASE_SERVICE_KEY がありません")
     return rows
 
 
