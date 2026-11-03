@@ -29,7 +29,9 @@
     57,
     58,
     50,
-    54
+    54,
+    63,
+    66
    ]
   },
   {
@@ -51,7 +53,8 @@
    "refs": [
     8,
     10,
-    25
+    25,
+    68
    ]
   },
   {
@@ -67,21 +70,21 @@
   }
  ],
  "_covered": {
-  "漫威电影": 62,
-  "GTA 6": 43,
+  "漫威电影": 68,
+  "GTA 6": 47,
   "三星手机": 21,
   "A2O LITE": 7,
-  "MMORPG 新作": 6,
+  "MMORPG 新作": 9,
   "dota2": 8,
   "哈利波特剧集": 4,
   "あつ森": 3,
-  "ILLIT": 7,
+  "ILLIT": 15,
   "周杰伦": 3,
   "Astrae Oratio": 1,
   "日本顶级网球赛事": 1,
   "The Mandalorian": 4,
   "gelato pique": 3,
-  "チェーンソーマン": 5,
+  "チェーンソーマン": 8,
   "滑雪": 2,
   "Vaundy": 2,
   "猫用品": 1,
@@ -284,12 +287,14 @@
    "image": "https://massivelyop.com/wp-content/uploads/2023/08/monsters-and-memories-spooky-scary-skeletons.jpg"
   },
   {
-   "headline": "主打劍靈養成體驗東方仙俠 MMO《最強劍尊：吃最軟的飯，做最硬的劍》全平台正式上市",
-   "highlight": "全平台正式上市",
+   "headline": "웹젠, 뮤 IP 신작 MMORPG '뮤 테오스' 공개",
+   "highlight": "뮤 테오스",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    8,
+    9,
+    7
    ]
   },
   {
@@ -299,15 +304,6 @@
    "weight": "normal",
    "refs": [
     5
-   ]
-  },
-  {
-   "headline": "Loftia early access review: An MMO reimagining the cozy life sim",
-   "highlight": "Loftia",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
    ]
   }
  ],
@@ -378,23 +374,31 @@
    ]
   },
   {
-   "headline": "ILLIT to Perform at Japan's FNS Song Festival for Third Year",
-   "highlight": "FNS Song Festival",
+   "headline": "ILLIT、フジ『FNS歌謡祭』に3年連続出演決定",
+   "highlight": "3年連続出演決定",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    12,
     5,
     6,
-    7
+    7,
+    10,
+    13,
+    11,
+    8,
+    9
    ]
   },
   {
-   "headline": "ILLIT Dominates Global Charts With Fifth Mini-Album 'BREAK EVEN'",
-   "highlight": "BREAK EVEN",
+   "headline": "ILLIT新曲『逮捕しちゃうぞ』、韓中日チャート席巻…『Magnetic』に続くヒット予告",
+   "highlight": "韓中日チャート席巻",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    15,
+    4,
+    14
    ]
   }
  ],
@@ -505,7 +509,17 @@
     4,
     2,
     3,
-    5
+    5,
+    7
+   ]
+  },
+  {
+   "headline": "圧倒的造形！劇場版『チェンソーマン レゼ篇』レゼ／ボムとチェンソーマン＆ビームの1/4スケールスタチューフィギュアがプライム1スタジオから登場！",
+   "highlight": "1/4スケールスタチュー",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],

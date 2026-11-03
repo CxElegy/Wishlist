@@ -521,6 +521,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.digitaltoday.co.kr/news/photo/202611/712083_659560_3537.png": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
   "w": 1950,
   "h": 1097,
@@ -840,6 +846,12 @@
   "w": 2000,
   "h": 1125,
   "target": 1280,
+  "v": 3
+ },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/05/Magneto-Vol-3.jpg?resize=2000,1125": {
+  "w": 2000,
+  "h": 1125,
+  "target": 720,
   "v": 3
  },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/From-Seasons-1-2-3-Recap-Explained-How-to-Watch-4.jpg?resize=2000,1125": {
@@ -1224,6 +1236,12 @@
    914
   ],
   "why": "看不清"
+ },
+ "https://hobby.dengeki.com/ss/hobby/2026/11/card3_FmusjesKofmvSBqSbbHH5uJl04E6Nqo6_nnkxuZU5zH3we3fm_rwfAjNWbGgMltqM.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
  },
  "https://holrmagazine.com/wp-content/uploads/2026/10/screenshot-2026-10-29t093053.578-e1793246738872.png": {
   "w": 750,
@@ -1822,12 +1840,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gzdcy.img": {
   "w": 1200,
   "h": 800,
-  "target": 1280,
-  "v": 3
- },
- "https://img-s.msn.cn/tenant/amp/entityid/AA2gBe6L.img": {
-  "w": 1080,
-  "h": 607,
   "target": 1280,
   "v": 3
  },
@@ -3240,9 +3252,9 @@
   "v": 3,
   "blur": 0.359
  },
- "https://p2.bahamut.com.tw/B/2KU/12/085c68470d62e6da2f0c426e1c20yec5.JPG": {
-  "w": 827,
-  "h": 466,
+ "https://pbs.twimg.com/media/HV_PYlpWYAAdxwV?format=webp&name=large": {
+  "w": 1024,
+  "h": 1360,
   "target": 720,
   "v": 3
  },
@@ -4230,12 +4242,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.KuANXPF_xhGoSqoT_5A9WA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.N-f2Ky3IkMTQMcFoucfixQ&pid=News&w=640": {
   "w": 640,
   "h": 425,
@@ -4890,12 +4896,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-03"
- },
- "https://www.sportsworldi.com/content/image/2026/11/03/20261103504460.jpg": {
-  "w": 1200,
-  "h": 901,
-  "target": 720,
-  "v": 3
  },
  "https://www.starwarsnewsnet.com/wp-content/uploads/2026/10/Nightmare_on_Nevarro_header.jpg": {
   "w": 2000,
