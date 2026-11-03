@@ -7,7 +7,7 @@ import shutil
 import sys
 from pathlib import Path
 
-NAME = re.compile(r"[0-9a-z][0-9a-z_-]*\.(webp|jpg|png)")   # photos・emblems の箱のファイル名（指紋-幅.webp ほか）
+NAME = re.compile(r"[0-9A-Za-z][0-9A-Za-z_-]*\.(webp|jpg|png)")   # photos・emblems の箱のファイル名（指紋-幅.webp ほか）
 
 
 def stage(cache, docs):

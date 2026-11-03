@@ -12,6 +12,13 @@ class UxAll(unittest.TestCase):
     def test_each_unit_fits_limit(self):
         self.assertLessEqual(ux_all.LIMIT, 500)
 
+    def test_budget_below_tool_limit_and_spent_budget_skips_start(self):
+        self.assertLess(ux_all.BUDGET, 600)
+        import time
+        name, done, bad = ux_all.run("x", ["--part", "global"], [], time.time() - 1)   # 持ち時間なし：始めず「走らなかった」
+        self.assertFalse(done)
+        self.assertEqual(bad, [])
+
 
 if __name__ == "__main__":
     unittest.main()

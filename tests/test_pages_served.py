@@ -6,6 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "harness"))
+sys.path.insert(0, str(ROOT / "scripts"))
 import pages_served  # noqa: E402
 
 STORAGE = re.compile(r"https://[^/\"'\s]+\.supabase\.co/storage/")
@@ -57,6 +58,20 @@ class FillFollowsRender(unittest.TestCase):
         p = json.loads((ROOT / "state" / "photo_store.json").read_text(encoding="utf-8")).get("p", {})
         miss = [f"{k}-{w}.webp" for k in p for w in (400, 800) if f"{k}-{w}.webp" not in want]
         self.assertEqual(miss[:3], [], "写しの対象に入っていない写真が %d 枚" % len(miss))
+
+    def test_user_emblems_go_through_pages(self):
+        """お客さまのページの小元素（emblems 箱）も旗 on なら /p/ に書き換わり、pages_photos が大文字の名前（Wikidata の Q…）も並べる。"""
+        import photo_store
+        import pages_photos
+        photo_store._ON[:] = [True]
+        try:
+            h = 'a&quot;https://x.supabase.co/storage/v1/object/public/emblems/Q123-ab12.webp&quot; https://x.supabase.co/storage/v1/object/public/photos/aa-400.webp'
+            out = photo_store.emblems_to_pages(h)
+            self.assertIn(photo_store.PAGES_BASE + "/Q123-ab12.webp&quot;", out)
+            self.assertIn("/object/public/photos/aa-400.webp", out)   # 写真は別の規則（stored）
+        finally:
+            photo_store._ON[:] = []
+        self.assertTrue(pages_photos.NAME.fullmatch("Q123-ab12.webp"))
 
     def test_photo_cache_runs_after_render_and_republishes(self):
         """新しい写真は render のあとに html へ載る。毎日 1 回だと最大 1 日 /p/ が 404 になった（2026-11-03：10 枚）→ render のあとに写しを足し、変わったら Pages を出し直す。"""
