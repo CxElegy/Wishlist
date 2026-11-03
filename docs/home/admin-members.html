@@ -1588,7 +1588,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-members" content="bc2878a40046"><style>
+<meta name="wl-ver" data-page="admin-members" content="bb1026326551"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2519,7 +2519,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ⑥ お客さまと店長</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.03 15:03</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.03 15:26</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html" aria-current="page"><span>⑥ お客さまと店長</span></a></li></ul></nav>
@@ -2730,7 +2730,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     $('emm-img').src=pg(t.dataset.img);$('emm-name').textContent=t.dataset.subj||'小元素';$('emm-why').textContent=t.dataset.why?'取り方：'+t.dataset.why:'';
     var cs=[],box=$('emm-cands');try{cs=JSON.parse(t.dataset.cands||'[]');}catch(e){}
     box.innerHTML='';cs.forEach(function(c){var b=document.createElement('button'),im=document.createElement('img');b.type='button';b.className='emm-cand';b.dataset.u=c.image;b.title=c.why||'';
-      im.alt='候補';im.loading='lazy';im.src=c.image;b.appendChild(im);box.appendChild(b);});
+      im.alt='候補';im.loading='lazy';im.src=pg(c.image);b.appendChild(im);box.appendChild(b);});
     $('emm-cands-t').textContent=cs.length?'候補 '+cs.length+' 枚。押して決める（今の写真と入れ替わり、そのまま固定）':t.dataset.wait==='1'?'集めています。次の後台作業のあと（1 時間ほど）にここに並びます':'まだ候補がありません。集める依頼を送ると、次の後台作業のあと（1 時間ほど）に並びます';
     $('emm-cands-go').hidden=cs.length>0||t.dataset.wait==='1';
     $('emm-lock-t').textContent=lock?'固定をはずす':'この写真で固定';
