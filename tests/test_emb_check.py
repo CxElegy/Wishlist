@@ -297,5 +297,16 @@ class CloseupOfficial(unittest.TestCase):
         self.assertIn("| official_swap(item, log)", src)
 
 
+class ReasonCounts(unittest.TestCase):
+    def test_buckets(self):
+        items = {"A": {"state": "failed", "have": 1, "target": 9, "funnel": {"rejected": {"別人": 5, "遠景": 1, "顔なし": 2, "何人も写っている": 3, "画像のない人": 4}, "heads": {"X": {"別人": 2}}}},
+                 "B": {"state": "failed", "have": 8, "target": 9, "funnel": {"rejected": {"別人": 99}}},   # 残り 1 枚は数えない
+                 "C": {"state": "ok", "funnel": {"rejected": {"別人": 99}}}}
+        r = emb_check.reason_counts(items, {"A"})
+        self.assertEqual(r["E10"], {"別人": 5, "顔なし": 3, "何人も写る": 3, "出尽くし・重複": 4})
+        self.assertEqual(r["E15"], {"別人": 2})
+        self.assertEqual(r["別人の実写"], 5)
+
+
 if __name__ == "__main__":
     unittest.main()
