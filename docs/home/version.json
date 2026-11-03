@@ -1,10 +1,10 @@
 {
- "admin": "abef90de46da",
- "admin-ai": "64c984aa5bd5",
+ "admin": "c634a4cfe4fe",
+ "admin-ai": "5a868519643b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "bfe8607d"
+   "5b50678e"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "05938a02"
   ]
  },
- "admin-emblem": "97a84ca3d02e",
+ "admin-emblem": "b4e885ee8532",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "9ae6af04"
+   "afb1d581"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf5c00e182d6",
  "admin-members_marks": {},
- "admin-now": "78016d41c7e5",
+ "admin-now": "79b6f849a23e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7c831429"
+   "5e52c605"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "c55e5437"
   ]
  },
- "admin-system": "0374ee1cc690",
+ "admin-system": "8e5c21d5c6c4",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "8825658e"
+   "019a4f54"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,11 +93,11 @@
    "20e38e14"
   ]
  },
- "index": "b799e80f4459",
+ "index": "1dec025aa620",
  "index_marks": {
   "front": [
    "トップ",
-   "58b90b46"
+   "ff53f0c0"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "8596e2ee"
+   "32dba746"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "ab0a6ca2"
+   "0d1fd64a"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "f68bd7a2"
+   "595b5d1d"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "b6070168"
+   "16de65c4"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "3ec634f1"
   ]
  },
- "updated": "11.03 11:39",
+ "updated": "11.03 11:49",
  "wishlist": "297bb16a855a"
 }
