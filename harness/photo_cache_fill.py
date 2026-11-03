@@ -60,16 +60,19 @@ def urls():
 
 
 def board_urls():
-    """DB から数える小元素の取得先（{名前: 網址}）。urls() とは別（試験はネットに出ない）。"""
-    import yaml
-    st = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("settings") or {}
+    """DB から数える小元素の取得先（{名前: 網址}）。urls() とは別（試験はネットに出ない）。
+    Actions の runner には PyYAML が無い（2026-11-03：import yaml が握りつぶされ 0 件だった）→ items.yaml は正規表現で読む。"""
+    txt = (ROOT / "items.yaml").read_text(encoding="utf-8")
+    st = {k: (re.search(rf"^\s*{k}:\s*[\"']?([^\s\"']+)", txt, re.M) or [None, ""])[1] for k in ("supabase_url", "supabase_key")}
     return {n: f"{st['supabase_url'].rstrip('/')}/storage/v1/object/public/emblems/{n}" for n in board_emblems(st)}
 
 
 def main():
     want = urls()
     try:
-        for n, u in board_urls().items():
+        b = board_urls()
+        print(f"お客さまの小元素 {len(b)} 種（鍵：{'secret' if os.environ.get('SUPABASE_SERVICE_KEY') else 'anon＝非公開の版面は見えない'}）")
+        for n, u in b.items():
             want.setdefault(n, u)
     except Exception:  # noqa: BLE001
         pass
