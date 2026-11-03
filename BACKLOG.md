@@ -547,3 +547,5 @@
 - [ ] 管理ページ③：収集の「最新の日」はお客さまの版面の記事集めができてから意味が出る（board_stories 0 行）。それまで列は「まだ」のまま。
 - [ ] Web フォントを止めない形に：実験用の頁も（優先度低・本番ではない。2026-10-31 r3 hr33 で数えた：docs/design/*.html 7 件〔`<link href=… rel=stylesheet>` の書き順〕・docs/testground/*.html 20 件・生成元の harness/emblem_pick_page.py と emblem_pick_rules_page.py の 2 件に止める link が残る。入口と docs/home/ は 0 件）。直すなら生成元を render.font_link に寄せ、blocking_font_links で数える。docs/design は手書きなので対象外にしてもよい（本番の LCP に関わらない）
 - [ ] 写真を Pages に移したあと、写真の配信の数（query_logs）を管理ページのリソースに出すか見直す（free-tier.md 決まり 2）。
+- [ ] （2026-11-03 r1f1 egress ④ の ux_check --fast：harness/browser.py の止めが本人のページの箱まで灰色にしていて test-a〜c が全部「素の箱」✗ だったのを直した後に残る 3 件）test-b 1400「記事の並びに空きがある 17%」・test-c 1400/390「主題（m- class）のない素の版面 1：はじめに」。規則で直す（はじめに版面にも主題を。test-b は並びの詰め）。同じ考えで：pages_served.py を ux_check の本番の回に 1 行足す（Pages 99%・storage 0）。
+
