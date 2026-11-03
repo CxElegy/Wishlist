@@ -5479,13 +5479,21 @@ def _chart(points, kind, color, unit, ymax=None, bands=(), partial_last=False, c
     svg, labels = [], []
     lab = lambda cls, x, yy, text: labels.append(
         f'<span class="cl {cls}" style="left:{x / W * 100:.2f}%;top:{yy / H * 100:.2f}%">{e(text)}</span>')
+    # 札どうしを重ねない規則（2026-11-03、heat.html の「札が字に重なる」80 の根）：同じ枠の字は箱が触れる前に間引く。
+    # ①右端の値（end）に近い等級の名前は出さない（線の色と計算方法に書いてある）②横軸の最初の日は、次の日付と字の幅より近ければ出さない
+    # ③縦軸の 0 は線の上に乗せ、横軸の日付（線の下）と縦に触れない
+    y_end = y(points[-1][1]) if kind != "bar" else None
     for v, name in bands:  # 等級の境目（話題度）
         svg.append(f'<line class="band" x1="{L}" x2="{L + pw}" y1="{y(v):.1f}" y2="{y(v):.1f}"/>')
-        lab("bl", L + pw + 4, y(v), name)
+        if y_end is None or abs(y(v) - y_end) >= 14:
+            lab("bl", L + pw + 4, y(v), name)
     for t in ([0, 50, 100] if bands else [0, top / 2, top]):
         svg.append(f'<line class="grid" x1="{L}" x2="{L + pw}" y1="{y(t):.1f}" y2="{y(t):.1f}"/>')
-        lab("yt", L - 6, y(t), _compact(t))
+        lab("yt z" if t == 0 else "yt", L - 6, y(t), _compact(t))
+    gap = math.ceil(58 / band)   # 日付の字（390px 幅で約 32px）が入る日数
     for i, (d, _) in enumerate(points):
+        if i == 0 and n > 1 and (n - 1) % 7 != 0 and ((n - 1) % 7) < gap:
+            continue
         if i == 0 or i == n - 1 or (n - 1 - i) % 7 == 0:
             lab("xt", L + band * (i + .5), H - B + 6, _md_day(d))
     if kind == "bar":
@@ -5779,7 +5787,7 @@ td.na,.scale i.na{background:repeating-linear-gradient(45deg,transparent 0 4px,c
 .plot{position:relative}
 .chart{display:block;width:100%;height:168px;overflow:visible}
 .cl{position:absolute;font:500 11px/1 var(--font-mono);color:color-mix(in srgb,var(--ink) 70%,transparent);white-space:nowrap;pointer-events:none}
-.cl.yt{transform:translate(-100%,-50%)}.cl.xt{transform:translate(-50%,0)}.cl.bl{transform:translate(0,-50%);font-family:var(--font-sans)}
+.cl.yt{transform:translate(-100%,-50%)}.cl.yt.z{transform:translate(-100%,-100%)}.cl.xt{transform:translate(-50%,0)}.cl.bl{transform:translate(0,-50%);font-family:var(--font-sans)}
 .cl.end{transform:translate(0,-50%);color:var(--ink);font-weight:700}
 .cd{position:absolute;width:8px;height:8px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 2px var(--card);pointer-events:none}
 .chart .grid{stroke:color-mix(in srgb,var(--ink) 12%,transparent);stroke-width:1;vector-effect:non-scaling-stroke}
