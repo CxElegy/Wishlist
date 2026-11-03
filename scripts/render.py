@@ -518,6 +518,10 @@ button{font-family:inherit}
 .pkgrid:not(.row):has(.pk.big:first-child):not(:has(.pk:nth-child(2))){grid-template-columns:minmax(0,1fr)}
 .pkgrid:not(.row):has(.pk.big:first-child):not(:has(.pk:nth-child(2))) .pk.big{grid-column:1}
 .pkgrid:not(.row):has(.pk.big:first-child):has(.pk:nth-child(4)):not(:has(.pk:nth-child(5))) .pk:nth-child(4){grid-column:span 2}
+/* 6〜8 枚：大きい 1 枚（2×2）の右の 4 マス＋下の段が 4 列だと最後の行が 1〜3 枚で右が空く（2026-11-03）。6 枚＝3 列（2＋3 でぴったり）／7 枚＝最後の 2 枚が各 2 列／8 枚＝最後の 1 枚が 2 列 */
+.pkgrid:not(.row):has(.pk.big:first-child):has(.pk:nth-child(6)):not(:has(.pk:nth-child(7))){grid-template-columns:repeat(3,minmax(0,1fr))}
+.pkgrid:not(.row):has(.pk.big:first-child):has(.pk:nth-child(7)):not(:has(.pk:nth-child(8))) .pk:nth-child(n+6){grid-column:span 2}
+.pkgrid:not(.row):has(.pk.big:first-child):has(.pk:nth-child(8)):not(:has(.pk:nth-child(9))) .pk:nth-child(8){grid-column:span 2}
 }
 .pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
 .pk.big .vote{margin:12px 24px 0}
