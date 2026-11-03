@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "edit_sig": "785d419b221c",
+ "edit_sig": "acf24caca7d4",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -333,22 +333,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 4,
-     "source": "ananweb",
-     "title": "お話を伺った方",
-     "url": "https://ananweb.jp/categories/lifestyle/112527"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 5,
-     "source": "ウォーカープラス",
-     "title": "北千住でニャンともかわいいネコグッズを発見！",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE10dFh5elVMTDh3bmh1NnhwOGthdlJJVmhINXJDeUtFV1JGRFBYOW5mcG5aY2M1T2VrdndnWS1oZFk2a1VNelRsMjVwOTZsM0F6RnpZ0gFYQVVfeXFMTTI1RHkydUtRa0xUUTVFSnQ5UkU4U3lheHJTOTlPUFlXOEFEZ2xjSTNiMXZTSzZEcE5ZOTVGc1M3Tzc5eHZIUDN5Q0d6Z0s2SlNWWnBXYjBLOQ?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -379,6 +363,16 @@
      "image": "https://s.yimg.com/lo/mysterio/api/4259e26fbf554c10714840081485bf314ae0d3c36d95d8eff0d01e96b60c8e90/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fb8404a94b12c684c14c3b7d050d31df3.jpg",
      "image_via": "og:image",
      "url": "https://www.yahoo.com/lifestyle/articles/marshalls-holiday-advent-calendar-packs-091700832.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-31",
+     "headline": "北千住でニャンともかわいいネコグッズを発見！",
+     "highlight": "ネコグッズ",
+     "image": "https://news.walkerplus.com/article/62090/345989_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/62090/",
      "weight": "normal"
     }
    ],
