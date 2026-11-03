@@ -1,32 +1,32 @@
 {
- "admin": "656ba78a002d",
- "admin-ai": "c2a8ca48098f",
+ "admin": "5ec603b23278",
+ "admin-ai": "26f306ba1a6c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "70fcc6e0"
+   "fd845b58"
   ],
   "tokens": [
    "AI 編集のトークン",
    "9ea6ad79"
   ]
  },
- "admin-boards": "4052a9147143",
+ "admin-boards": "f608dd42bd95",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "f675ff48"
+   "5c29db18"
   ],
   "votes": [
    "投票",
    "da73324c"
   ]
  },
- "admin-emblem": "a91ea0498c63",
+ "admin-emblem": "7aa5fc13f0d1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "7648a117"
+   "0449dccd"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b47ea04f7895",
  "admin-members_marks": {},
- "admin-now": "f2b155b6965e",
+ "admin-now": "f98a063ffaf1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "00f922ed"
+   "77b70330"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "76d0b25d"
+   "a3528df4"
   ],
   "term-panel": [
    "ライブログ",
-   "18b3bfd9"
+   "dce0d4c8"
   ]
  },
- "admin-system": "78c5dad84758",
+ "admin-system": "4bfc49b7886f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cf399ee1"
+   "24961704"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "eecfc623"
+   "e17e35a7"
   ]
  },
  "admin_marks": {},
- "heat": "8913ac4b05df",
+ "heat": "a05c563d1132",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "ffc3fe7f"
+   "2ab0a500"
   ],
   "ranking": [
    "ランキング",
-   "fd72a1be"
+   "2a01b9bc"
   ]
  },
- "index": "977a90254845",
+ "index": "7d83d1a8ff70",
  "index_marks": {
   "front": [
    "トップ",
-   "7897469d"
+   "83f0581a"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "480a52be"
+   "b803f717"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "f68bd7a2"
+   "595b5d1d"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "9f767d70"
+   "147074aa"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "3ec634f1"
   ]
  },
- "updated": "11.03 22:21",
+ "updated": "11.03 22:30",
  "wishlist": "7f39eb67f435"
 }
