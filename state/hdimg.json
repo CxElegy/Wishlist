@@ -72,12 +72,6 @@
   "target": 720,
   "v": 3
  },
- "http://www.emoneynews.co.kr/news/photo/202611/131132_54553_2647.jpg": {
-  "w": 620,
-  "h": 465,
-  "target": 720,
-  "v": 3
- },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
   "h": 338,
@@ -848,12 +842,6 @@
   "target": 1280,
   "v": 3
  },
- "https://comicbook.com/wp-content/uploads/sites/4/2026/05/Magneto-Vol-3.jpg?resize=2000,1125": {
-  "w": 2000,
-  "h": 1125,
-  "target": 720,
-  "v": 3
- },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/From-Seasons-1-2-3-Recap-Explained-How-to-Watch-4.jpg?resize=2000,1125": {
   "w": 2000,
   "h": 1125,
@@ -906,6 +894,12 @@
  "https://d10tw3woq6mt3i.cloudfront.net/wp-content/uploads/2026/10/kyd_2095579_698526-08.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/03014721/pet-prt-42258-683-1-261102174718333.jpeg": {
+  "w": 1500,
+  "h": 1329,
   "target": 720,
   "v": 3
  },
@@ -1650,6 +1644,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCQ4v.img": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCUz3.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ga95n.img": {
   "w": 1200,
   "h": 675,
@@ -1819,6 +1825,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s.msn.cn/tenant/amp/entityid/AA2gBe6L.img": {
+  "w": 1080,
+  "h": 607,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img": {
   "w": 1200,
   "h": 675,
@@ -1957,12 +1969,6 @@
  "https://img.sportsbull.jp/raw/t2m8VMS5AgyOd1ngRNI4M1BYyyaofcW7fQOmvQWf.jpg": {
   "w": 1024,
   "h": 576,
-  "target": 720,
-  "v": 3
- },
- "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100425.jpg": {
-  "w": 560,
-  "h": 560,
   "target": 720,
   "v": 3
  },
@@ -2619,6 +2625,13 @@
   ],
   "why": "看不清"
  },
+ "https://news.walkerplus.com/article/1422988/17878260_615.jpg": {
+  "w": 615,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.412
+ },
  "https://news.walkerplus.com/article/1445517/18700633_615.jpg": {
   "w": 615,
   "h": 769,
@@ -3008,19 +3021,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-11803116-asahiand-000-1-view.jpg?exp=10800": {
-  "w": 640,
-  "h": 640,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.616,
-  "local": "pics/3f97b53757033f57.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261031-00010005-tennisnet-000-3-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1445,
@@ -3246,12 +3246,6 @@
   "target": 720,
   "v": 3
  },
- "https://pbs.twimg.com/media/HV_PYlpWYAAdxwV?format=webp&name=large": {
-  "w": 1024,
-  "h": 1360,
-  "target": 720,
-  "v": 3
- },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/01/35473388.jpg&M=1&s=Y&x=0&y=503&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
   "w": 799,
   "h": 532,
@@ -3372,6 +3366,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/49599/255/49599-255-219b496ab286fc7c50b671150bf6c71d-3900x2194.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2240,
+  "h": 1260,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/78611/290/78611-290-c6ff8f8a26d80f4fb47b381b76d6866f-1923x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 897,
   "h": 1260,
@@ -3399,6 +3399,12 @@
  "https://r2-media.wdwnt.com/2026/10/the-art-of-the-mandalorian-and-grogu-cover-1.jpg": {
   "w": 1500,
   "h": 853,
+  "target": 720,
+  "v": 3
+ },
+ "https://research.image.itmedia.co.jp/wp-content/uploads/2026/11/1793603711_ec60eab7bddbf45a46b1e3d98529e5c5.jpg": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -3442,6 +3448,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/4259e26fbf554c10714840081485bf314ae0d3c36d95d8eff0d01e96b60c8e90/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fb8404a94b12c684c14c3b7d050d31df3.jpg": {
+  "w": 1200,
+  "h": 1600,
+  "target": 720,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/7dc940cb64e006a0125c7d9e0b9de842d75c3557798abcc3b0823042a67e808f/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpeople_218%2F62e06a2909da57162cd55f6cddeb727b.jpg": {
@@ -3974,12 +3986,6 @@
   "target": 1280,
   "v": 3
  },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/01/1793518918872_17935120288761292194897526244225522898744703979080a956beb782b93abdd1c5fd744a01c5dd-17935123162911346392751-53-0-1188-2168-crop-17935125067981749509703.webp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/02/1793627802067_img_2abc25fc.jpeg": {
   "w": 1200,
   "h": 630,
@@ -4106,12 +4112,6 @@
  "https://www.bing.com/th?id=ONUT.-_9JYmjcgKMvv4EArjByzQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.00FNMx3zgCnZq6cVYAaV2w&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
   "target": 720,
   "v": 3
  },
@@ -4890,6 +4890,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-03"
+ },
+ "https://www.sportsworldi.com/content/image/2026/11/03/20261103504460.jpg": {
+  "w": 1200,
+  "h": 901,
+  "target": 720,
+  "v": 3
  },
  "https://www.starwarsnewsnet.com/wp-content/uploads/2026/10/Nightmare_on_Nevarro_header.jpg": {
   "w": 2000,

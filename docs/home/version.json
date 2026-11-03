@@ -1,32 +1,32 @@
 {
- "admin": "13f5c85e7c50",
- "admin-ai": "562d53b1af84",
+ "admin": "5f9d33b72df7",
+ "admin-ai": "80b6084f68fa",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f930c0ba"
+   "d80c9481"
   ],
   "tokens": [
    "AI 編集のトークン",
    "4b7ea034"
   ]
  },
- "admin-boards": "6e2030c98d54",
+ "admin-boards": "e35fcba0ade2",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "f68d5ef2"
+   "aea5bfe6"
   ],
   "votes": [
    "投票",
    "05938a02"
   ]
  },
- "admin-emblem": "d096763180e2",
+ "admin-emblem": "1ddf9a78fab4",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1ab12f57"
+   "ef41bf9e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf5c00e182d6",
  "admin-members_marks": {},
- "admin-now": "5f009d57cf4d",
+ "admin-now": "fc18fd750309",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2f2fbd60"
+   "848959d5"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "2a2a8e23"
+   "35bf2b02"
   ],
   "term-panel": [
    "ライブログ",
-   "c5b1da8f"
+   "ddfa19c0"
   ]
  },
- "admin-system": "94dd94f929ef",
+ "admin-system": "873c7bdb379d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2a333f9d"
+   "fb35dda1"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "06c7a357"
+   "80a8b0c9"
   ]
  },
  "admin_marks": {},
- "heat": "804b46c8c84c",
+ "heat": "db70be239ae0",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "681270b3"
+   "de24bef9"
   ],
   "ranking": [
    "ランキング",
-   "b2ffbdca"
+   "7525dd25"
   ]
  },
- "index": "56b05d03dea5",
+ "index": "339b7955016a",
  "index_marks": {
   "front": [
    "トップ",
-   "10abcbd6"
+   "e4f16964"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "6763aa92"
+   "37d50fbb"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -141,11 +141,11 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "34d4a90c"
+   "4ac972ad"
   ],
   "w-7a894105": [
    "周杰伦",
-   "d85b1ac8"
+   "457c34ec"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "fe2d57ad"
+   "57918f3e"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "3ec634f1"
   ]
  },
- "updated": "11.03 11:26",
+ "updated": "11.03 11:27",
  "wishlist": "297bb16a855a"
 }
