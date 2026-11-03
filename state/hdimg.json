@@ -527,12 +527,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.digitaltoday.co.kr/news/photo/202611/712083_659560_3537.png": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
   "w": 1950,
   "h": 1097,
@@ -594,6 +588,12 @@
   "v": 3
  },
  "https://cdn.gamemeca.com/gmdata/0001/782/802/gm478912_thumb_M2_.webp": {
+  "w": 1200,
+  "h": 670,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn.gamemeca.com/gmdata/0001/782/838/gm622601_Untitled-1.webp": {
   "w": 1200,
   "h": 670,
   "target": 1280,
@@ -718,12 +718,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://cdn.topstarnews.net/news/photo/202611/16265761_2074495_2253_crop.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://cdn.utaten.com/uploads/images/specialArticle/10324/3f786fa5a4cc1739c2291e08bfcf1e7e52140a71.jpeg?type=original?r=2026110310": {

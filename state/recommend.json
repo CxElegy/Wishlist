@@ -47,6 +47,7 @@
   "https://t.co/hzXT9mIOsK": "https://pbs.twimg.com/media/HV_PYlpWYAAdxwV?format=webp&name=large",
   "https://thedirect.com/article/marvel-studios-storm-training-photo-mcu-x-men-daredevil": "https://www.bing.com/th?id=ONUT.e2-5ydT3n45NPgWaJqAk0Q&pid=News&w=1200",
   "https://thedirect.com/article/spider-man-beyond-the-spider-verse-trailer-spoilers-movie": "https://images.thedirect.com/media/article_full/1000012056.jpg",
+  "https://timeline.sohu.com/news/GCBJUuY4GS": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/14/179197850424419605_664_2000.JPEG",
   "https://topics.smt.docomo.ne.jp/amp/article/fushinsha_joho/region/fushinsha_joho-1489484091463139582": "https://img.topics.smt.news.goo.ne.jp/region_tmb/16_9/262072.png?fushinsha_joho-1489484091463139582",
   "https://topics.smt.docomo.ne.jp/article/cat_benesse/life/cat_benesse-100425": "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100425.jpg",
   "https://traxion.gg/cpm-2-is-the-pcs-latest-open-world-driving-game-but-it-needs-more-time-in-the-oven/": "https://traxion.gg/wp-content/uploads/2026/10/CPM2_FI.jpg",
@@ -77,7 +78,6 @@
   "https://www.ski-japan.or.jp/game/81336/": "https://www.ski-japan.or.jp/wp-content/uploads/1_講義.png",
   "https://www.soompi.com/article/1883629wpp/watch-a2o-lite-takes-9th-win-for-neon-on-new-music-show-show-k-pop": "https://www.bing.com/th?id=ONUT.RCCH4rx-bMsgoFAX7yxOhg&pid=News&w=900",
   "https://www.tehrantimes.com/news/531702/Mokri-s-Black-Rabbit-White-Rabbit-wins-at-63rd-International": "https://media.tehrantimes.com/d/t/2026/11/01/4/6242024.jpg?ts=1793535295479",
-  "https://www.topstarnews.net/news/articleView.html?idxno=16265761": "https://cdn.topstarnews.net/news/photo/202611/16265761_2074495_2253_crop.jpg",
   "https://www.toy-people.com/en/?p=115398": "https://img.toy-people.com/member/179241036689_1200.png",
   "https://www.tvinsider.com/1301371/from-season-6-ending-episodes-premiere-trailer-details-more/": "https://www.tvinsider.com/wp-content/uploads/2026/03/FROM_S4E1_Harold-Perrineau-as-Boyd-Stevens-1420x798.jpg",
   "https://www.vietnam.vn/en/he-lo-cuoc-song-xa-hoa-hoang-thuong-cong-chua-meo-an-ngon-o-phong-may-lanh-rieng-cham-nhu-nguoi-than": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/01/1793518918872_17935120288761292194897526244225522898744703979080a956beb782b93abdd1c5fd744a01c5dd-17935123162911346392751-53-0-1188-2168-crop-17935125067981749509703.webp",
@@ -1381,6 +1381,27 @@
   },
   {
    "batch": 4,
+   "because": "A2O LITE",
+   "date": "2026-11-02",
+   "hits": [],
+   "image": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/14/179197850424419605_664_2000.JPEG",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "搜狐网",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "出现即出圈，A2O LITE野心不小",
+   "url": "https://timeline.sohu.com/news/GCBJUuY4GS",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 4,
    "because": "哈利波特剧集",
    "date": "2026-11-02",
    "hits": [],
@@ -1401,7 +1422,7 @@
    "work": "哈利波特剧集"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "The Mandalorian",
    "date": "2026-11-02",
    "hits": [],
@@ -1439,27 +1460,6 @@
    ],
    "title": "Watch: A2O LITE Takes 9th Win For \"NEON\" On New Music Show \"SHOW K-POP\"",
    "url": "https://www.soompi.com/article/1883629wpp/watch-a2o-lite-takes-9th-win-for-neon-on-new-music-show-show-k-pop",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 5,
-   "because": "A2O LITE",
-   "date": "2026-11-01",
-   "hits": [],
-   "image": "https://cdn.topstarnews.net/news/photo/202611/16265761_2074495_2253_crop.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "톱스타뉴스",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "A2O LITE, 데뷔곡 ‘NEON’으로 음악방송 8관왕…‘인기가요’ 2주 연속 1위",
-   "url": "https://www.topstarnews.net/news/articleView.html?idxno=16265761",
    "words": [],
    "work": "A2O LITE"
   },
@@ -2038,11 +2038,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2050,15 +2050,15 @@
    8
   ],
   [
+   "作品:三星手机",
+   7
+  ],
+  [
    "galaxy",
    7
   ],
   [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "作品:三星手机",
    7
   ]
  ]
