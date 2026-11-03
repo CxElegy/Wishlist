@@ -71,15 +71,15 @@
  ],
  "_covered": {
   "漫威电影": 68,
-  "GTA 6": 47,
-  "三星手机": 24,
+  "GTA 6": 59,
+  "三星手机": 29,
   "A2O LITE": 9,
-  "MMORPG 新作": 9,
+  "MMORPG 新作": 16,
   "dota2": 8,
   "哈利波特剧集": 4,
   "あつ森": 3,
-  "ILLIT": 15,
-  "周杰伦": 3,
+  "ILLIT": 19,
+  "周杰伦": 5,
   "Astrae Oratio": 1,
   "日本顶级网球赛事": 3,
   "The Mandalorian": 6,
@@ -167,7 +167,8 @@
     16,
     18,
     22,
-    23
+    23,
+    28
    ],
    "image": "https://9to5google.com/wp-content/uploads/sites/4/2026/02/galaxy-s26-ultra-privacy-display-17.jpg?quality=82&strip=all&resize=1200,628"
   },
@@ -192,12 +193,14 @@
    ]
   },
   {
-   "headline": "三星S27通过新认证 有线快充仍维持25W与上代持平",
+   "headline": "サムスン Galaxy S27はバッテリー容量は増えたのに、有線充電の性能は向上していないのか？",
    "highlight": "25W",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
+    25,
+    10,
+    27
    ]
   },
   {
@@ -226,6 +229,15 @@
    "weight": "normal",
    "refs": [
     21
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra goes head-to-head with Pixel 11 Pro, iPhone 18 Pro, and S26 Ultra in new leak",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    29
    ]
   }
  ],
@@ -290,14 +302,20 @@
    "image": "https://massivelyop.com/wp-content/uploads/2023/08/monsters-and-memories-spooky-scary-skeletons.jpg"
   },
   {
-   "headline": "웹젠, 뮤 IP 신작 MMORPG '뮤 테오스' 공개",
+   "headline": "早い育成を強調したMMO、WEBZENの新作『ミュー テオス』BI公開",
    "highlight": "뮤 테오스",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    10,
     8,
     9,
-    7
+    7,
+    12,
+    13,
+    14,
+    15,
+    11
    ]
   },
   {
@@ -390,7 +408,9 @@
     13,
     11,
     8,
-    9
+    9,
+    17,
+    16
    ]
   },
   {
@@ -401,7 +421,17 @@
    "refs": [
     15,
     4,
-    14
+    14,
+    19
+   ]
+  },
+  {
+   "headline": "ILLIT、5thミニ・アルバム『BREAK EVEN』が前作の初動売上記録を更新 高い人気を証明",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
    ]
   }
  ],

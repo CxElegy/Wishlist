@@ -2365,12 +2365,6 @@
   "target": 720,
   "v": 3
  },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/14/179197850424419605_664_2000.JPEG": {
-  "w": 664,
-  "h": 443,
-  "target": 720,
-  "v": 3
- },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
   "w": 664,
   "h": 497,
@@ -2381,19 +2375,6 @@
   "out": [
    1280,
    958
-  ],
-  "why": "看不清"
- },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/11/02/179358926125212344_664_2000.JPEG": {
-  "w": 640,
-  "h": 662,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.601,
-  "local": "pics/6dc68b8e27c5eafe.webp",
-  "out": [
-   1237,
-   1280
   ],
   "why": "看不清"
  },
@@ -3140,6 +3121,18 @@
   "out": [
    1280,
    1280
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261102-00000037-cdj-000-1-view.jpg?exp=10800": {
+  "w": 480,
+  "h": 640,
+  "target": 720,
+  "v": 3,
+  "local": "pics/36f94e65d8a671ee.webp",
+  "out": [
+   480,
+   640
   ],
   "why": "期限付きの網址"
  },
@@ -4076,6 +4069,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.androidauthority.com/wp-content/uploads/2026/11/Pixel-11-Pro-vs-S27-Ultra.jpeg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://www.androidheadlines.com/wp-content/uploads/2026/11/Samsung-Galaxy-S26-Ultra-vs-Galaxy-S27-Ultra-vs-iPhone-18-Pro-AH-36.jpg": {
   "w": 1600,
   "h": 900,
@@ -4851,13 +4850,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-03"
- },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
   "w": 410,
   "h": 231,
@@ -5118,8 +5110,9 @@
  "https://x0.ifengimg.com/res/2026/3E7CCE8D8CEB92144553F3E09AEA46382E327286_size30_w600_h568.jpg": {
   "w": 600,
   "h": 568,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.305
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-8e21309f0ab9e8f398f424861f3ba0bb/images/7f3721c0-58ce-4391-a385-023452ad923d.jpg": {
   "w": 1920,
