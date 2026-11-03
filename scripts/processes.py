@@ -569,7 +569,7 @@ PROCESSES = [
     {
         "id": "photostore", "name": "写真の一時保管", "en": "PHOTO STORE", "lane": "actions", "workflow": "photo_store.yml", "when": "3 時間ごと · 手で",
         "trigger": "定時（17 */3 * * *）・render.yml・digest.yml・background.yml が網页を発布したあと置いていない写真があるとき（photo_store.py --kick）か workflow_dispatch（minutes、既定 12 分・chain）。順番待ちが残り、この回で増えたなら gh workflow run で次の回（10 回まで）",
-        "summary": "記事の主写真をよその原寸へ直リンクせず、先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置く。網页（render._pic）は置いてあれば先に読み、原寸は落ち先に残す。溜めない：いまのページに載っているか最後に使ってから 14 日以内だけ、全体 300MB 超えは古い順に消す（箱の中だけ）。 配る先は旗 state/pages_photos.json（既定 off）：on のとき網址は Pages の /p/<指紋>-<幅>.webp〔pages.yml が写しから並べる。photo_store.stored・scan_text が両方の網址を読む〕。",
+        "summary": "記事の主写真をよその原寸へ直リンクせず、先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置く。網页（render._pic）は置いてあれば先に読み、原寸は落ち先に残す。溜めない：いまのページに載っているか最後に使ってから 14 日以内だけ、全体 300MB 超えは古い順に消す（箱の中だけ）。 配る先は旗 state/pages_photos.json（既定 off）：on のとき網址は Pages の /p/<指紋>-<幅>.webp〔pages.yml が写しから並べる。photo_store.stored・scan_text が両方の網址を読む〕。 お客さまの版面の小元素（emblems 箱）も同じ：photo_store.emblems_to_pages が /p/<名前> に書き換える。",
         "files": [".github/workflows/photo_store.yml", "scripts/photo_store.py", "db/photos.sql"], "doc": "docs/rules/design.md",
         "uses": ["supabase"],
         "flow": [
@@ -654,7 +654,7 @@ PROCESSES = [
         "id": "login", "name": "ログインと権限", "en": "LOGIN", "lane": "web",
         "when": "ページを開いたとき · ログイン・ログアウトしたとき",
         "trigger": "どのページでも右上の「ログイン」（メールアドレスだけ）。開いたときに身份を確かめ、見るだけかどうかを決める",
-        "summary": "版面 0 個の人の「はじめに」も種類の主題を持つ（user_pages の motifs）。访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもメールアドレスだけで始められ（重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。。休止中（402）の状態は sbstate.py が state/supabase_status.json に 1 つだけ書き、見回りの読み取りは sbstate.memo で使い回す",
+        "summary": "版面 0 個の人の「はじめに」も種類の主題を持つ（user_pages の motifs）。本人のページ・設定ページの小元素の網址は旗 on なら Pages の /p/ に書き換えて置く（ログイン中の Supabase storage 取得 0・2026-11-03）。访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもメールアドレスだけで始められ（重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。。休止中（402）の状態は sbstate.py が state/supabase_status.json に 1 つだけ書き、見回りの読み取りは sbstate.memo で使い回す",
         "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK / SB_DEG_JS / _sb_line）", "scripts/sbstate.py", "scripts/welcome.py", "scripts/digest.py（supabase の 402）", "scripts/user_pages.py", "scripts/livestatus.py", "harness/sb_down_check.py", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql", "db/board_theme.sql"], "doc": "docs/rules/login.md",
         "flow": [
             {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
