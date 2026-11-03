@@ -16,7 +16,8 @@ def stage(cache, docs):
     names = sorted(f.name for f in Path(cache).iterdir() if f.is_file() and NAME.fullmatch(f.name)) if Path(cache).is_dir() else []
     for n in names:
         shutil.copyfile(Path(cache) / n, out / n)
-    (out / "manifest.json").write_text(json.dumps({"n": len(names), "names": names}), encoding="utf-8")
+    size = sum(f.stat().st_size for f in Path(docs).rglob("*") if f.is_file())   # 公開物の合計（Pages は 1 GB まで）
+    (out / "manifest.json").write_text(json.dumps({"n": len(names), "names": names, "bytes": size}), encoding="utf-8")
     return len(names)
 
 

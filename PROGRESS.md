@@ -325,3 +325,4 @@
 - 2026-11-03 f2f1 別の目の指摘：ゲートの穴（--skip-prod が「入れ終わり」と出す・走査が狭い・FILL_MAX 無点検・main 無試験）を直し、Pages 98.3% の根（photo_cache が render 後だけ）を Pages 公開後にも走らせて直す。確かめ：手元の全テスト。本番のゲートは回していない。次：合併後 pages_health --photos を 1 回、11/4 朝にゲート。
 - 2026-11-03 f2f2 別の目の指摘（続き）：token 走査が git 管理外の .claude/worktrees の写しを拾う→見ない／docs の静的な data-fb に storage 網址が 1 件残る（render._pic が落ち先に入れていた）→入れない＋free_tier_gate に docs 静的 storage 網址 0 の点検を足した。連動の範囲：docs の html・js 全部（1 件）。架構図：processes.py p1ph に 1 文。次：render 後に gate --skip-prod が全部 ✓ か確かめる。
 - 2026-11-03 f3：11/4 ゲート再実行＝全部 ✓（Pages 6076 枚・載る 5416 枚の 100.0%・/p/ 失敗 0・storage 0・sb_down_check OK）。BACKLOG の初回 ✗ を [x]。架構図：不用改（文書のみ）。次：11/4 01:30 UTC 以降の 24h 数え。
+2026-11-03 f4：Pages 公開物の大きさの見張り（manifest.bytes・pages_health --size・ゲートに 1 行）。架構図：processes.py p7 に 1 文。次：公開後に --size の値を書く、11/4 01:30 UTC 以降の egress 24h 数え。
