@@ -259,6 +259,32 @@ class IdleTabs(unittest.TestCase):
                         bad.append(f"{f.name}:{n} {sorted(names - ok)}")
         self.assertEqual(bad, [])
 
+    def test_no_self_rescheduling_supabase_reader_in_static_js(self):
+        """scripts/ の外の静的ファイル（docs/home/*.js、設定ページの additem.js など）：Supabase（rest/v1）を読む関数が
+        setTimeout(自分, n) で自分を呼び直す、または setInterval で回すのは every を通さない見回り＝放置タブで止まらない。
+        WL_SB を通る行（every が無いときの代わり）は数えない。"""
+        import re
+        bad = []
+        for f in sorted((ROOT / "docs" / "home").glob("*.js")):
+            src = f.read_text(encoding="utf-8")
+            lines = src.splitlines()
+            for n, line in enumerate(lines, 1):
+                if "WL_SB" in line:
+                    continue
+                for m in re.finditer(r"setTimeout\((\w+),|setInterval\((\w+)", line):
+                    name = m.group(1) or m.group(2)
+                    d = re.search(r"function\s+" + name + r"\b", src)
+                    if not d:
+                        continue
+                    body = src[d.start():d.start() + 2500]
+                    if "rest/v1" in body or ".rpc(" in body:
+                        bad.append(f"{f.name}:{n} {name}")
+        self.assertEqual(bad, [])
+
+    def test_additem_load_queue_uses_every(self):
+        src = (ROOT / "docs" / "home" / "additem.js").read_text(encoding="utf-8")
+        self.assertEqual(src.count("WL_SB.every(() => { if (qNeed) loadQueue(); }"), 1)
+
     def test_admin_pollers_use_every(self):
         for fn, calls in (("livelog.py", ("EV(loadLines,3000)", "EV(loadBoards,20000)", "EV(loadCtl,20000)")), ("overview.py", ("EV(loadBoards,30000)",))):
             src = (ROOT / "scripts" / fn).read_text(encoding="utf-8")

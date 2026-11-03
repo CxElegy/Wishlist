@@ -57,14 +57,41 @@ def admin(pw):
     return {"最初の1分": first, "36分まで": a, "30分〜2時間": n["v"] - a}
 
 
+def settings(pw):
+    """設定ページ（additem.js の loadQueue）を放置：list_item_requests を「pending が残っている」で返し続け、数だけ見る。
+    pending のままでも 30 分過ぎたら増えない。本番には出さない（file:// ＋ route.fulfill）。"""
+    b = launch(pw)
+    p = b.new_context().new_page()
+    n = {"v": 0}
+
+    def cnt(route):
+        if "list_item_requests" in route.request.url:
+            n["v"] += 1
+            body = '[{"name":"x","action":"add","status":"pending","created_at":"2026-11-03T00:00:00Z"}]'
+        else:
+            body = "[]"
+        route.fulfill(status=200, content_type="application/json", body=body)
+    p.route("**/*.supabase.co/**", cnt)
+    p.clock.install(time=0)
+    p.goto("file://" + str(ROOT / "docs" / "home" / "settings.html"), wait_until="domcontentloaded")
+    p.clock.run_for(60000)
+    first = n["v"]
+    p.clock.run_for(2160000)
+    a = n["v"]
+    p.clock.run_for(5400000)
+    b.close()
+    return {"最初の1分": first, "36分まで": a, "30分〜2時間": n["v"] - a}
+
+
 def main():
     from playwright.sync_api import sync_playwright
     with sync_playwright() as pw:
         o = run(pw)
         ad = admin(pw)
-    print(o, ad)
+        st = settings(pw)
+    print(o, ad, st)
     ok = 19 <= o["10分まで"] <= 21 and 3 <= o["10〜30分"] <= 5 and o["30分〜2時間"] == 0 and o["触った直後"] >= 1
-    ok = ok and ad["30分〜2時間"] == 0
+    ok = ok and ad["30分〜2時間"] == 0 and st["30分〜2時間"] == 0 and st["最初の1分"] >= 2
     print("✓ 放置で止まり、触れば戻る" if ok else "✗ 放置の見回りが規則どおりでない")
     return 0 if ok else 1
 
