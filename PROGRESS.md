@@ -315,3 +315,4 @@
 2026-11-03 f1：heat.html の「札が字に重なる」（1400＝43・390＝80）の根は話題度グラフの字 .cl どうしの衝突（等級名×右端の値・最初の日×7 日おきの日・縦軸 0×横軸）。_chart で規則化し局所描画で 0/0。PR 本件。次：合併後 ux_check 1 回
 2026-11-03 f2f1：E24 の続き（PR #830 の指摘）：reject_srcs(item, bad) に 1 回だけの記録 emblem_small_tried（店長もお客さまの config も。取り直しても外れたら 2 回目で reject）、processes.py の owner 札の kind を戻し bust に文を移した、お客さまの split_closeups も同じ道、E24 は stale_narrow_rejects で店長＋boards.config を数える、tests は道 4 つを実際に走らせる。次：合併後 ux_check、E10・E15。
 2026-11-03 f2f2：E24 が 18 のまま（background 41603590213 は gate が「仕事なし」で小元素の段を飛ばした）の根＝解く入口 release_small_rejects に着く番 due が、そろった・失敗で材料が同じ版面を飛ばす。due に stale_narrow_rejects を足し tests。次：合併後 background を dispatch し E24 を数える
+2026-11-03 f1：お客さまの「ほかの注目ニュース」の空白＝確認のみ（店長と同じ _front＋WALL_JS・本番 ux_check test-a/test-b 1400/390 の壁の空き ✓・test-c は壁なし）。コード変更なし。E24：background 41607700962・41609761853 とも success（f2f2 が確認の続き）。次：E15→E10（f2f2 持ち）。
