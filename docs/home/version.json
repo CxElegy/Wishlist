@@ -1,14 +1,14 @@
 {
- "admin": "bd7850b15c76",
- "admin-ai": "fe4c52be7993",
+ "admin": "c8f26e6d799f",
+ "admin-ai": "3f2a975cd6dd",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "98017573"
+   "7472f3ef"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "81639c52"
+   "c75eb847"
   ]
  },
  "admin-boards": "1a0efa87c335",
@@ -22,11 +22,11 @@
    "da73324c"
   ]
  },
- "admin-emblem": "8ea575f0aefe",
+ "admin-emblem": "1c8488773d38",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "25650c0f"
+   "9e93a3ce"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b47ea04f7895",
  "admin-members_marks": {},
- "admin-now": "5942ee7d5435",
+ "admin-now": "9177c590f4f6",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5069a86e"
+   "8cd20ea6"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "762d1665"
+   "43be13de"
   ]
  },
- "admin-system": "6d644bb9f586",
+ "admin-system": "a38e8af6d4e5",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d2f42dbe"
+   "41f996ad"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9d8c322c"
+   "2a3415f7"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "2a01b9bc"
   ]
  },
- "index": "0ac9ea854eea",
+ "index": "e60e18746665",
  "index_marks": {
   "front": [
    "トップ",
-   "7767e49b"
+   "458891c4"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "8596e2ee"
+   "c659dd88"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -157,11 +157,11 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "50b95c3a"
+   "db03a812"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "096de272"
+   "ea031cf8"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "fe08c777"
+   "f2660d14"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "81aa23f0"
+   "af081776"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "3ec634f1"
   ]
  },
- "updated": "11.04 00:33",
+ "updated": "11.04 00:40",
  "wishlist": "7f39eb67f435"
 }
