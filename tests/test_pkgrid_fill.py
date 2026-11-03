@@ -27,8 +27,10 @@ class PkgridFill(unittest.TestCase):
     def test_no_hole_in_last_row_1400(self):
         try:
             from playwright.sync_api import sync_playwright
+            sys.path.insert(0, str(ROOT / "harness"))
+            from browser import launch
             pw = sync_playwright().start()
-            b = pw.chromium.launch()
+            b = launch(pw)
         except Exception as ex:  # noqa: BLE001
             self.skipTest("ブラウザなし: %s" % ex)
         try:
