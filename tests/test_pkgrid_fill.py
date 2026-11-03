@@ -29,7 +29,10 @@ class PkgridFill(unittest.TestCase):
         from browser import launch
         from playwright.sync_api import sync_playwright
         with sync_playwright() as pw:   # with で閉じる（start() のままだと後ろの試験が「asyncio loop の中」で落ちる）
-            b = launch(pw)
+            try:
+                b = launch(pw)
+            except Exception as ex:  # noqa: BLE001  CI にブラウザが無いとき
+                self.skipTest("ブラウザなし: %s" % str(ex)[:80])
             pg = b.new_page(viewport={"width": 1400, "height": 900})
             for n in range(1, 10):
                 pg.set_content(page(n))
