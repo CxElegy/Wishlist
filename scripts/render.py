@@ -4361,7 +4361,7 @@ def busy_plan(names=(), db=None):
 SB_DEG_JS = r"""
 (function(){
   if(!window.fetch||window.WL_SB) return;
-  var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false, downAt=0, lastGet=null, probing=false, RETRY=600000, READ=/\/rpc\/(get_[a-z_]+|my_votes|my_votes_own|live_boards)(\?|$)/;
+  var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false, downAt=0, lastGet=null, probing=false, RETRY=600000, READ=/\/rpc\/(get_[a-z_]+|my_votes|my_votes_own|live_boards|my_role|my_page|my_boards|can_edit|is_admin|auth_enforced|admin_(accounts|account_langs|board_edit_state|follow_detail|follow_rows|list_invites|ui_langs|users|votes))(\?|$)/;
   var MSG='いま、ログインと 👍👎 の機能を休止しています。記事はこれまでどおり読めます。';
   function sb(u){return /^https:\/\/[a-z0-9]+\.supabase\.co\/(rest|auth|functions)\//.test(u);}
   try{ var t=+sessionStorage.getItem(K); if(t&&Date.now()-t<RETRY){ down=true; paused=true; downAt=t; } }catch(e){}
@@ -4425,7 +4425,11 @@ SB_DEG_TAG = "<script>" + SB_DEG_JS + "</script>"
 def with_sb_deg(page):
     """Supabase を呼ぶ静的なページ（本人のページの殻・テストグラウンドの審査・入口）に SB_DEG_TAG を最初に 1 回入れる。
     入れ方の規則はここ 1 か所：docs/ の Supabase を呼ぶ html は全部これを通る（tests/test_sb_degrade.py が docs/ を数える）。"""
-    if "window.WL_SB=" in page or not re.search(r"supabase\.co(?!/storage)|rest/v1|createClient", page):
+    if "window.WL_SB=" in page:   # 古い部品（recover の無い版）は今の版に取り替える（手で置いた見本が古いまま残った）
+        if "function recover()" in page:
+            return page
+        return re.sub(r"<script>(?:(?!</script>).)*?window\.WL_SB=.*?</script>", lambda m: SB_DEG_TAG, page, count=1, flags=re.S)
+    if not re.search(r"supabase\.co(?!/storage)|rest/v1|createClient", page):
         return page
     return re.sub(r"<head[^>]*>", lambda m: m.group(0) + SB_DEG_TAG, page, count=1)
 

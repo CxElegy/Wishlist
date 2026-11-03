@@ -75,6 +75,20 @@ class PageSide(unittest.TestCase):
                 and render.with_sb_deg(f.read_text(encoding="utf-8")) != f.read_text(encoding="utf-8")]
         self.assertEqual(miss, [])
 
+    def test_every_page_with_the_degrade_script_can_recover(self):
+        """休止の部品を持つ docs/ の html は全部、今の版（recover あり）。古い版は 402 が終わっても戻らない（見本 6 枚が古いまま残った）。"""
+        docs = pathlib.Path(render.__file__).resolve().parent.parent / "docs"
+        old = [str(f.relative_to(docs)) for f in docs.rglob("*.html") if "test2" not in f.parts
+               and "window.WL_SB=" in (s := f.read_text(encoding="utf-8")) and "function recover()" not in s]
+        self.assertEqual(old, [])
+
+    def test_stale_script_is_replaced_not_doubled(self):
+        stale = "<html><head><script>window.WL_SB={};/*old*/</script></head><body></body></html>"
+        out = render.with_sb_deg(stale)
+        self.assertEqual(out.count("window.WL_SB="), 1)
+        self.assertIn("function recover()", out)
+        self.assertEqual(render.with_sb_deg(out), out)
+
     def test_outbox_keeps_rows_until_written(self):
         import tempfile
         p = pathlib.Path(tempfile.mkdtemp()) / "o.json"
