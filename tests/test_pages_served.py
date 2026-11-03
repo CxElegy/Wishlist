@@ -49,6 +49,15 @@ class Verdict(unittest.TestCase):
 
 
 class FillFollowsRender(unittest.TestCase):
+    def test_cache_covers_every_stored_photo(self):
+        """photo_store.stored() が /p/ の網址を出せる写真（置き場の全部・400 と 800）は、docs/ に無くても（お客さまのページ）写しの対象。漏れると /p/ が 404 → Supabase に戻る。"""
+        import json
+        import photo_cache_fill
+        want = photo_cache_fill.urls()
+        p = json.loads((ROOT / "state" / "photo_store.json").read_text(encoding="utf-8")).get("p", {})
+        miss = [f"{k}-{w}.webp" for k in p for w in (400, 800) if f"{k}-{w}.webp" not in want]
+        self.assertEqual(miss[:3], [], "写しの対象に入っていない写真が %d 枚" % len(miss))
+
     def test_photo_cache_runs_after_render_and_republishes(self):
         """新しい写真は render のあとに html へ載る。毎日 1 回だと最大 1 日 /p/ が 404 になった（2026-11-03：10 枚）→ render のあとに写しを足し、変わったら Pages を出し直す。"""
         t = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")

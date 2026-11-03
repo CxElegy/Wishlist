@@ -33,6 +33,14 @@ def urls():
             seen.setdefault(browser._name(u), u)
         for n in PAGES.findall(text) if base else ():
             seen.setdefault(n, f"{base}/storage/v1/object/public/photos/{n}")
+    # 置き場にある写真は全部（2026-11-03）：お客さまのページ（Supabase の pages 箱）は docs/ に無く、render と同じ photo_store.stored() が /p/ の網址を出すので、
+    # docs/ だけ見ると 1,194 枚が /p/ で 404（ログイン中の画面で落ち先の Supabase に戻り egress になる）。stored() が出せる名前＝写しの対象。
+    try:
+        for k in json.loads((ROOT / "state" / "photo_store.json").read_text(encoding="utf-8")).get("p", {}) if base else ():
+            for w in (400, 800):
+                seen.setdefault(f"{k}-{w}.webp", f"{base}/storage/v1/object/public/photos/{k}-{w}.webp")
+    except (OSError, ValueError):
+        pass
     return seen
 
 
