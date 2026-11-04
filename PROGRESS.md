@@ -365,3 +365,5 @@
 - 2026-11-04 f3f2：402 の通しの最後の穴（収集の本体）。fake402_check に `digest all`・`digest ingest`・`repair-images` を足した（止める口 WL_COLLECT_LIMIT・WL_REPAIR_LIMIT、外の網は閉じたプロキシ）。見つけた本物の穴：repair-images が網エラーで報道の画像を外す（直す前 reports/ 4621 バイト縮み→直した後 0）。images.unusable で直した。本体は reports/inbox 縮み 0。次：photo_cache_fill・pages_health の入口、404 が多い回の門。
 
 - 2026-11-04 f4：ログイン中のページを開くたびの user_login（書き込みつき）を、同意済みなら 1 時間に 1 回までにした（render.py の me.chk）。連動の範囲：user_login の呼び口 2 つのうち開く時の 1 つ（ログイン直後は必ず呼ぶ）。点検：ux_check の「本番への要求 n 件」で user_login が 1 回目だけになること。次：本番で ux_check を 1 回測る。
+
+- 2026-11-04 f1：test_wall_shapes 赤の根＝FIT_JS wall() が 2 列の大きい 1 枚だけの列を伸ばさず、壁 3 枚以上で隣の列が高いと 9% 空いた（生成ページの先頭が .tall でなくなって表に出た）。列に大きい 1 枚しかないときはその 1 枚が伸びる（#890、試験は緩めず手元と CI 緑）。#889 を更新して合併。連動の範囲：壁を持つ全版面（同じ FIT_JS）。確かめ：本番 test-a 1400 --fast で壁の ✗ なし（残る ✗ は先頭の写真が置き場に無い 26 件＝402 で photo_store が書けない件・別）。未：合併後の user_login 回数は ux_check に数える行が無く未測定。
