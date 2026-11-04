@@ -8,7 +8,7 @@ OUT = HERE / "shots"
 LIMIT = 480
 BUDGET = 540   # 全体の上限（秒）。呼び出し側の 600 秒の道具より手前で、終わった回の ✓/✗ を必ず出す
 WHO = "guest,test-a,test-b,test-c"
-SB_N = [0, 0]   # 全部の回の合計：本番の /rest/v1/（python）・ブラウザから本番へ（2026-11-04 egress）
+SB_N = [0, 0]   # 全部の回の合計：本番への REST 読み（python）・ブラウザから本番へ（2026-11-04 egress）
 
 
 def units(who, widths):
@@ -34,7 +34,7 @@ def run(name, args, extra, deadline=None):
         if not cut:
             break
     out += "" if done else f"\n[ux_all] {name}：持ち時間（1 回 {LIMIT} 秒・全体 {BUDGET} 秒）以内に終わらなかった\n"
-    for i, pat in enumerate((r"/rest/v1/ への要求 (\d+) 件", r"ブラウザから本番へ (\d+) 件")):
+    for i, pat in enumerate((r"本番の \S+ への要求 (\d+) 件", r"ブラウザから本番へ (\d+) 件")):
         SB_N[i] += sum(int(x) for x in re.findall(pat, out))
     OUT.mkdir(exist_ok=True)
     (OUT / f"ux_{name}.txt").write_text(out, encoding="utf-8")
@@ -66,7 +66,7 @@ def main(argv):
             new += ["    " + b[:220] for b in bad]
             lines += new
             print("\n".join(new), flush=True)
-    lines.append(f"本番の Supabase への要求（全部の回の合計）：python の /rest/v1/ {SB_N[0]} 件・ブラウザから {SB_N[1]} 件（写しが空の最初の回が最大。2 回目からは 0 に近い）")
+    lines.append(f"本番の Supabase への要求（全部の回の合計）：python の REST 読み {SB_N[0]} 件・ブラウザから {SB_N[1]} 件（写しが空の最初の回が最大。2 回目からは 0 に近い）")
     lines.append(f"全体：✗ {fails} 件・最後まで走らなかった回 {undone}（回の数 {len(us)}）")
     left = [l.split("：")[0][2:] for l in lines if l[:1] == "✗" and "最後まで走らなかった" in l]
     if left:   # 続きの回：次の 1 回でこれだけ走らせる
