@@ -160,6 +160,27 @@ def sb_open(req, timeout=30):
         raise
 
 
+class NotCached(Exception):
+    """Supabase の storage の中身が写しに無い（egress 緊急：storage から落とさない。次の回に写しが埋まれば読める）。"""
+
+
+def storage_read(url, timeout=20):
+    """URL の中身。Supabase の storage（*.supabase.co/storage/）は写し（WL_PHOTO_CACHE、埋めるのは photo_cache.yml だけ）からだけ読み、
+    無ければ NotCached（網に出ない＝cached egress を足さない。2026-11-04）。ほかの URL は普通に取る。"""
+    import os
+    import pathlib
+    import re
+    import urllib.request
+    if re.match(r"https://[^/]+\.supabase\.co/storage/", url):
+        cache = pathlib.Path(os.environ.get("WL_PHOTO_CACHE") or pathlib.Path.home() / ".cache" / "wl_photo_cache")
+        f = cache / url.split("?")[0].rsplit("/", 1)[-1]
+        if not f.is_file():
+            raise NotCached(f.name)
+        return f.read_bytes()
+    with urllib.request.urlopen(url, timeout=timeout) as r:
+        return r.read()
+
+
 def is_limit(err):
     """HTTPError / RuntimeError('HTTP 402：…') が 402 か。"""
     return getattr(err, "code", None) == 402 or str(err).startswith("HTTP 402")

@@ -386,7 +386,7 @@ class EveryCallGoesThroughSbstate(unittest.TestCase):
     """Actions が Supabase（rest・rpc・storage・auth）へ出る呼び出しは sbstate.sb_open か、402 を自分で扱う名簿の中だけ（2026-11-04）。
     直書きを足すと 402 を見落として呼び続ける。"""
     # Request(…supabase の道…) か、storage の網址を作る public( の行から 8 行以内に sb_open が無ければ直書き
-    PAT = re.compile(r"Request\(.*(/rest/v1|/storage/v1|/auth/v1)|(?<!def )\bpublic\(")
+    PAT = re.compile(r"Request\(.*(/rest/v1|/storage/v1|/auth/v1)|(?<!def )\bpublic\(|lambda \w+: *urllib\.request\.urlopen\(\w+")
     # 402 を自分で扱う・網に出ない行だけ（ファイル全体は除外しない）。key = ファイル名、値 = {行の字面: 理由}
     ALLOW = {
         "digest.py": {'f"{base}/rest/v1/{path}"': "supabase() 本体：402 を mark_limited して None"},
@@ -412,6 +412,11 @@ class EveryCallGoesThroughSbstate(unittest.TestCase):
         f.write_text('def g(base,k):\n    with urllib.request.urlopen(urllib.request.Request(public(base, k, 400))) as r:\n        pass\n', encoding="utf-8")
         self.assertEqual(len(self.scan([f])), 1)
 
+    def test_pat_sees_lambda_urlopen(self):
+        f = pathlib.Path(tempfile.mkdtemp()) / "x.py"
+        f.write_text('fetch = lambda u: urllib.request.urlopen(u, timeout=20).read()\n', encoding="utf-8")
+        self.assertEqual(len(self.scan([f])), 1)
+
     def test_no_direct_supabase_calls(self):
         self.assertEqual(self.scan(), [], "sbstate.sb_open を通す（または ALLOW に理由つきで足す）")
 
@@ -428,3 +433,36 @@ class EveryCallGoesThroughSbstate(unittest.TestCase):
                 sbstate.sb_open(req, 5)
             self.assertEqual(m.call_count, 1)   # 2 回目は網に出ない
             self.assertEqual(sbstate.load(tmp)["status"], "limited")
+
+
+class StorageReadsComeFromCopy(unittest.TestCase):
+    """storage の中身（色・主役・上げ直し・小元素の点検）は写しから読み、網に出ない（cached egress 緊急 2026-11-04）。"""
+    U = "https://x.supabase.co/storage/v1/object/public/photos/abcd-400.webp"
+
+    def test_missing_copy_never_hits_network(self):
+        d = pathlib.Path(tempfile.mkdtemp())
+        with mock.patch.dict("os.environ", {"WL_PHOTO_CACHE": str(d)}), mock.patch("urllib.request.urlopen") as m:
+            with self.assertRaises(sbstate.NotCached):
+                sbstate.storage_read(self.U)
+            m.assert_not_called()
+
+    def test_reads_copy(self):
+        d = pathlib.Path(tempfile.mkdtemp())
+        (d / "abcd-400.webp").write_bytes(b"img")
+        with mock.patch.dict("os.environ", {"WL_PHOTO_CACHE": str(d)}):
+            self.assertEqual(sbstate.storage_read(self.U + "?v=1"), b"img")
+
+    def test_photo_store_backfills_do_not_hit_network(self):
+        import photo_store
+        d = pathlib.Path(tempfile.mkdtemp())
+        with mock.patch.dict("os.environ", {"WL_PHOTO_CACHE": str(d)}), mock.patch("urllib.request.urlopen") as m:
+            self.assertEqual(photo_store.tint_of("https://x.supabase.co", "abcd"), ("abcd", None))
+            self.assertEqual(photo_store.mass_of("https://x.supabase.co", "abcd"), ("abcd", None))
+            self.assertEqual(photo_store.rehead("https://x.supabase.co", "k", "abcd"), ("abcd", False))
+            m.assert_not_called()
+
+    def test_workflows_restore_copy(self):
+        for f in ("photo_store.yml", "library_emblem.yml"):
+            s = (ROOT / ".github" / "workflows" / f).read_text(encoding="utf-8")
+            self.assertIn("WL_PHOTO_CACHE", s, f)
+            self.assertIn("wl-photo-cache-", s, f)

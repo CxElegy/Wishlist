@@ -239,7 +239,7 @@ def unbroken(emblems, photo, fetch=None):
     from PIL import Image
     import emblem
     import emblem_fill
-    fetch = fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read())
+    fetch = fetch or sbstate.storage_read
     out, hashes, small = [], [], 0
     for x in emblems or []:
         u = str(x.get("image") or "") if isinstance(x, dict) else ""
@@ -271,7 +271,7 @@ def split_closeups(emblems, fetch=None, staged=False):
     import urllib.request
     from PIL import Image
     import emblem_fill
-    fetch = fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read())
+    fetch = fetch or sbstate.storage_read
     keep, gone = [], []
     for x in emblems or []:
         u = str(x.get("image") or "") if isinstance(x, dict) else ""
@@ -309,7 +309,7 @@ def stage_holds(item, emblems, hold, pend, fetch=None):
             import urllib.request
             from PIL import Image
             ou = str(by[s].get("image") or "")
-            orig = Image.open(io.BytesIO((fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read()))(ou))) if ou.startswith("http") else None
+            orig = Image.open(io.BytesIO((fetch or sbstate.storage_read)(ou))) if ou.startswith("http") else None
         except Exception:
             orig = None
         got = emblem_fill.bust_replacement(item, by[s], skip, orig=orig)
@@ -355,7 +355,7 @@ def official_swap_board(item, emblems, fetch=None):
             import urllib.request
             from PIL import Image
             ou = str(x.get("image") or "")
-            orig = Image.open(io.BytesIO((fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read()))(ou))) if ou.startswith("http") else None
+            orig = Image.open(io.BytesIO((fetch or sbstate.storage_read)(ou))) if ou.startswith("http") else None
             got = emblem_fill.official_cut(cur, x, skip, orig)
         except Exception:
             continue
@@ -391,7 +391,7 @@ def measure_faces(emblems, fetch=None):
     import urllib.request
     from PIL import Image
     import emblem_face
-    get = fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read())
+    get = fetch or sbstate.storage_read
 
     def load(u):
         try:
