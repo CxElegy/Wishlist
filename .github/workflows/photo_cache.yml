@@ -57,13 +57,22 @@ jobs:
             for i in 1 2 3; do git pull -q --rebase && git push && break; sleep $((i * 5)); done
           fi
           [ "$rc" -ne 1 ]
-      - name: 古い写しを最新 1 つだけ残して消す（run ごとに 200 MB 前後を保存するので、10 GB の枠を食い切って「Unable to reserve cache」になった。2026-11-04）
-        if: always() && steps.fill.outputs.changed == 'true'
+      - name: 古い cache を各名前で最新 1 つだけ残して消す（run_id ごとに新しいキーで保存する形は 10 GB の枠を食い切り「Unable to reserve cache」になった。2026-11-04）。保存の有無に関わらず毎回。他の workflow の run_id キー（ask-state・wishlist-http・wd-facts）もここで一括（枠は共有）
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh cache list --key wl-photo-cache- --sort created_at --order desc --limit 100 --json id --jq '.[1:][].id' \
-            | while read -r id; do gh cache delete "$id" || true; done
+          for p in wl-photo-cache- ask-state- wishlist-http- wd-facts-; do
+            if ! ids=$(gh cache list --key "$p" --sort created_at --order desc --limit 100 --json id --jq '.[1:][].id'); then
+              echo "::warning::gh cache list が失敗（$p。権限 actions: write が要る）。古い cache が消えず枠が埋まるかもしれない"
+              continue
+            fi
+            for id in $ids; do gh cache delete "$id" || echo "::warning::gh cache delete $id が失敗（$p）"; done
+          done
+          {
+            echo "### cache の残り（消したあと）"
+            gh cache list --limit 100 --json key,sizeInBytes --jq '"- 合計 \(map(.sizeInBytes) | add // 0 | . / 1048576 | floor) MB（\(length) 件）", (.[:10][] | "- \(.key)：\(.sizeInBytes / 1048576 | floor) MB")' || echo "- 一覧が読めず"
+          } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/cache/save@v4
         if: always() && steps.fill.outputs.changed == 'true'   # 変わらない回は保存しない（200 MB の写しで他の cache を押し出さない）
         with:
