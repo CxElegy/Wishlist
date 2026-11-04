@@ -1,10 +1,10 @@
 {
- "admin": "869a912970a3",
- "admin-ai": "b603b54cd882",
+ "admin": "88afada21f0b",
+ "admin-ai": "52f78f62e4b3",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6dbfe3b2"
+   "397aab2d"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "7936e2b0ae09",
+ "admin-emblem": "593722782b2a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "30478f98"
+   "ab7dc4b1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "d401540a3c59",
+ "admin-now": "d8a0934b3936",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "6bfe972c"
+   "397df979"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "30796d45"
   ]
  },
- "admin-system": "d3724e3dd23d",
+ "admin-system": "f7ddbf371ab0",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "31929f73"
+   "afe9675d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a8ce9ae6"
+   "73e33d7e"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "6ec5dc38"
   ]
  },
- "index": "c4319443ae88",
+ "index": "9a2527923586",
  "index_marks": {
   "front": [
    "トップ",
-   "ada4a5b6"
+   "945929e5"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "b6c6083e"
+   "999c9882"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "2df9ca77"
+   "7a654e2b"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "91250090"
+   "48f55481"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1bf68dc3"
+   "f41110e9"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "12a4fe9d"
+   "9c2bcea6"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,15 +165,15 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "7e5dbe4c"
+   "663ae7d6"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "89bfa027"
+   "ea90bbf4"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "c92191f2"
+   "c98b95ff"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "25b5f963"
+   "1aaa3285"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "83d32c01"
+   "cfdd70bf"
   ],
   "w-f303ad09": [
    "绝区零",
    "31cc20b6"
   ]
  },
- "updated": "11.04 17:17",
+ "updated": "11.04 17:23",
  "wishlist": "73cc532fca13"
 }

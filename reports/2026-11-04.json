@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "edit_sig": "b6803c0c81e7",
+ "edit_sig": "1fa0b1097302",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?bqVdDUNTL2GwsM_MMMW0M",
@@ -409,22 +409,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 5,
-     "source": "ライブドアニュース",
-     "title": "【画像】猫の5匹に1匹が「寄生虫」をうつして人間が腸の感染症に…最新の研究で判明 1/3",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5yYlMzdnlNOWQxUkh6dHFlV3RFZ2FIdzdRRlNHTXYtcnNWM3p4XzlFelVVVEpJQTNGZXR2R3RfcXhJVlNfMUNJNmhDSDNLeTljN1hOek9CaVcwWFRFYnVSUDVLLTRJZTZIbmdpMTJSQ2U4bHV6VHExU2ZvX1k?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 6,
-     "source": "ねこちゃんホンポ on MSN",
-     "title": "猫がかかる『猫伝染性腹膜炎（FIP）』ってどんな病気? 治らないと考えられていた理由や現在の治療法もご紹介",
-     "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%8C%E3%81%8B%E3%81%8B%E3%82%8B-%E7%8C%AB%E4%BC%9D%E6%9F%93%E6%80%A7%E8%85%B9%E8%86%9C%E7%82%8E-fip-%E3%81%A3%E3%81%A6%E3%81%A9%E3%82%93%E3%81%AA%E7%97%85%E6%B0%97-%E6%B2%BB%E3%82%89%E3%81%AA%E3%81%84%E3%81%A8%E8%80%83%E3%81%88%E3%82%89%E3%82%8C%E3%81%A6%E3%81%84%E3%81%9F%E7%90%86%E7%94%B1%E3%82%84%E7%8F%BE%E5%9C%A8%E3%81%AE%E6%B2%BB%E7%99%82%E6%B3%95%E3%82%82%E3%81%94%E7%B4%B9%E4%BB%8B/ar-AA2gGQzf"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -465,6 +449,16 @@
      "image": "https://image.news.livedoor.com/newsimage/stf/4/6/465bd_1847_ce4a9d1774e415dca60581965e972361.jpg",
      "image_via": "og:image",
      "url": "https://news.livedoor.com/article/detail/32725298/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "猫がかかる『猫伝染性腹膜炎（FIP）』ってどんな病気? 治らないと考えられていた理由や現在の治療法もご紹介",
+     "highlight": "現在の治療法",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gGO37.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%8C%E3%81%8B%E3%81%8B%E3%82%8B-%E7%8C%AB%E4%BC%9D%E6%9F%93%E6%80%A7%E8%85%B9%E8%86%9C%E7%82%8E-fip-%E3%81%A3%E3%81%A6%E3%81%A9%E3%82%93%E3%81%AA%E7%97%85%E6%B0%97-%E6%B2%BB%E3%82%89%E3%81%AA%E3%81%84%E3%81%A8%E8%80%83%E3%81%88%E3%82%89%E3%82%8C%E3%81%A6%E3%81%84%E3%81%9F%E7%90%86%E7%94%B1%E3%82%84%E7%8F%BE%E5%9C%A8%E3%81%AE%E6%B2%BB%E7%99%82%E6%B3%95%E3%82%82%E3%81%94%E7%B4%B9%E4%BB%8B/ar-AA2gGQzf",
      "weight": "normal"
     }
    ],
@@ -647,8 +641,8 @@
      "date": "2026-11-04",
      "headline": "갤럭시 A58 충전 사양 공개…차세대 갤럭시S27보다 빠르다",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.8rO94w-BYXuId_5v9sP-qw&pid=News&w=800",
-     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "image": "https://images.kbench.com/kbench/article/thumbnail/283048_thumb.jpg",
+     "image_via": "JSON-LD",
      "url": "https://kbench.com/?q=node/283048",
      "weight": "normal"
     }
@@ -700,7 +694,7 @@
      "date": "2026-11-03",
      "headline": "「PEANUTS」スヌーピーたちが”もこもこ”ボーダー服でキュート♪「ジェラート ピケ」コラボ10周年記念コレクションが登場",
      "highlight": "コラボ10周年記念コレクション",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gIDo3.img",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gIXCL.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/ja-jp/news/other/peanuts-%E3%82%B9%E3%83%8C%E3%83%BC%E3%83%94%E3%83%BC%E3%81%9F%E3%81%A1%E3%81%8C-%E3%82%82%E3%81%93%E3%82%82%E3%81%93-%E3%83%9C%E3%83%BC%E3%83%80%E3%83%BC%E6%9C%8D%E3%81%A7%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%88-%E3%82%B8%E3%82%A7%E3%83%A9%E3%83%BC%E3%83%88-%E3%83%94%E3%82%B1-%E3%82%B3%E3%83%A9%E3%83%9C10%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2gHPZD",
      "weight": "normal"
@@ -748,22 +742,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 6,
-     "source": "shiritomo",
-     "title": "チェンソーマンレゼ篇、グラニフ新コラボ11月3日発売――マキマのコスプレが1400いいね超を集める",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBlU0p3UDNxX09EeHQ4ZmF2WTM2VVBRY1YtRHRZTC1VR0U0Z21xYVNaYWlpX2dzVGlFUjJJVUhONkQ2ejlKRmc?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 7,
-     "source": "Yahoo!ニュース",
-     "title": "『チェンソーマン』『進撃の巨人』制作のアニメスタジオ、卓球女子選手とスポンサー契約を締結「アスリートの皆様に深い敬意」",
-     "url": "https://news.yahoo.co.jp/articles/326ba989e773dfcff4b219c4887f80522e256eb4"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -794,6 +772,16 @@
      "image": "https://charagoo.jp/wp-content/uploads/2026/05/a9d03dca-75b7-4bf6-bd54-ccc832f5dd36.webp",
      "image_via": "og:image",
      "url": "https://charagoo.jp/chainsawman-lottery/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "チェンソーマンレゼ篇、グラニフ新コラボ11月3日発売――マキマのコスプレが1400いいね超を集める",
+     "highlight": "11月3日発売",
+     "image": "https://hashout.jp/wp-content/uploads/2026/11/2117660655016718415-img-1-1200x675.png",
+     "image_via": "og:image",
+     "url": "https://hashout.jp/anime/13777/",
      "weight": "normal"
     }
    ],
@@ -893,15 +881,6 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "Bella.tw儂儂",
-     "title": "Vaundy 突襲 IG 直播，分享了哪些歌曲？",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB6MnQ3NWdJeTM0WkRDN2tRTnY0N3MtRXdvSVVqUF9JSnZCdG9zOVUxeWVRLW5mNU5XdTFTM2dXZ004ampheG1QdXdteWxNaVhONWI2YjgweFFsMm1WTm0xbFMwTy1SNl84?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1012,8 +991,8 @@
      "date": "2026-11-03",
      "headline": "周杰倫又入手埃貢席勒名畫 驚人價格曝光",
      "highlight": "驚人價格曝光",
-     "image": "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/03/5628427_2.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://i01.ftnn.com.tw/a/26/307/26307091517658703d556b.png",
+     "image_via": "og:image（其它来源）",
      "url": "https://ent.ltn.com.tw/news/breakingnews/5628427",
      "weight": "normal"
     },
@@ -1084,20 +1063,6 @@
    "facts": [],
    "name": "dota2",
    "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 7,
-     "source": "Esports Charts",
-     "title": "1win Essence III - Dota 2 - 視聴率、概要、賞金総額",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBvRkhLcmw2aXlzMFlJQkFKYTJBb0dYTDIxaC1jNEdfUTdDUHo3WE1paWpxajhNaWk0MWtmNWE1aXNHeVdneEtjZG9na2c1dk9VUGpBRDJyWG9Oc0VBb2RQZDlpeFpUb3oyRHc?oc=5"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 8,
-     "source": "CryptoRank",
-     "title": "Catcher Predict：“Dota 2：Team Spirit 对阵 OG - PARI Universe 季后赛” “白天结束” 胜率暴跌40.5%",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5LUWVBREREeFBOTjZfbTZkaEJtelZERWsyOFN6aHV5OFduMFdWOW5uWlFNZHBJY0gxdnhVTk45cndNQnI2dDFWLW1UT09EdllEcktxUVU3Z1dZMG1L?oc=5"
-    },
     {
      "date": "2026-11-04",
      "n": 9,
@@ -1181,8 +1146,8 @@
      "date": "2026-11-03",
      "headline": "[S이슈] A2O LITE, 데뷔하자마자 인기돌풍의 이유는?",
      "highlight": "인기돌풍",
-     "image": "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200",
+     "image_via": "Bing 缩略图",
      "url": "https://www.stardailynews.co.kr/news/articleView.html?idxno=601301",
      "weight": "normal"
     },
@@ -1414,13 +1379,6 @@
    "name": "ILLIT",
    "pending": [
     {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "山陽新聞",
-     "title": "ILLIT・IROHA、リハーサル中に足首を捻挫「体調を見ながら、公演への出演を柔軟に調整する予定」【報告全文】",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9nS1ZZeW1IV0x0NlNWeElfTEh1QTVRQ1ZJdlJ3eU5LMVFieVV5cndlTHZJOHhoZnJxdGtQUXVCNUlJTWJCQm5xV1pTeVFaQ05zcTc4aEMzUXB3bWpfaGdabzNYbW5OajA?oc=5"
-    },
-    {
      "date": "2026-11-03",
      "n": 5,
      "source": "서울경제TV on MSN",
@@ -1458,6 +1416,16 @@
      "image": "https://img.newspim.com/news/2026/11/04/261104105439682_w.jpg",
      "image_via": "转载 www.newspim.com",
      "url": "https://www.beyondpost.co.kr/view.php?ud=202611041009498173d3244b4fed_30",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "ILLIT・IROHA、リハーサル中に足首を捻挫「体調を見ながら、公演への出演を柔軟に調整する予定」",
+     "highlight": "足首を捻挫",
+     "image": "https://static.sanyonews.jp/image/article/size1/2/f/a/d/2fad61127a6842248d305ff76caa749d_1.jpg",
+     "image_via": "正文图（6 枚から）",
+     "url": "https://www.sanyonews.jp/photo/detail?article_id=2006754",
      "weight": "normal"
     }
    ],

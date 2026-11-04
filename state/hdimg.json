@@ -262,6 +262,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://api.ananweb.jp/wp-content/uploads/2026/10/9fd0294dfd845126ca4be6c72dc245a3.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://api.ginzamag.com/wp-content/uploads/2026/10/illit-interview2611-ogp-1.jpg": {
   "w": 2500,
   "h": 1313,
@@ -748,12 +754,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg": {
-  "w": 1800,
-  "h": 1086,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.utaten.com/uploads/images/specialArticle/10324/3f786fa5a4cc1739c2291e08bfcf1e7e52140a71.jpeg?type=original?r=2026110310": {
   "w": 1200,
   "h": 630,
@@ -1170,7 +1170,7 @@
  "https://hashout.jp/wp-content/uploads/2026/11/2117660655016718415-img-1-1200x675.png": {
   "w": 1200,
   "h": 675,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/1win-introduced-stand-25399.jpg": {
@@ -1348,6 +1348,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://i01.ftnn.com.tw/a/26/307/26307091517658703d556b.png": {
+  "w": 660,
+  "h": 371,
+  "target": 720,
   "v": 3
  },
  "https://i1.ytimg.com/vi/49i2KUiKOlQ/hqdefault.jpg": {
@@ -1547,6 +1553,19 @@
   "target": 720,
   "v": 3
  },
+ "https://images.kbench.com/kbench/article/thumbnail/283048_thumb.jpg": {
+  "w": 300,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.548,
+  "local": "pics/a5e4e136c5f615fb.webp",
+  "out": [
+   900,
+   900
+  ],
+  "why": "看不清"
+ },
  "https://images.khan.co.kr/article/2026/10/23/news-p.v1.20261023.0671972ae03442a7bf73b2f031c49090_P1.jpg": {
   "w": 1200,
   "h": 665,
@@ -1699,13 +1718,19 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gGO37.img": {
+  "w": 700,
+  "h": 467,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gHRQW.img": {
   "w": 1200,
   "h": 630,
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gIDo3.img": {
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gIXCL.img": {
   "w": 640,
   "h": 740,
   "target": 720,
@@ -1984,12 +2009,6 @@
   "w": 800,
   "h": 1199,
   "target": 1280,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/03/5628427_2.jpg": {
-  "w": 800,
-  "h": 1053,
-  "target": 720,
   "v": 3
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
@@ -3506,6 +3525,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/2/f/a/d/2fad61127a6842248d305ff76caa749d_1.jpg": {
+  "w": 427,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/4/0/e/2/40e2f70bbd3700dd0b35cd4fb1252459_1.jpg": {
   "w": 640,
   "h": 360,
@@ -4071,19 +4096,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.8rO94w-BYXuId_5v9sP-qw&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.583,
-  "local": "pics/90fcfa14a239bc37.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.9AH223Bi43tFD3n3jJ2TLA&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -4142,6 +4154,12 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.EW1pch74J120jfzPa9FcTg&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.EbRbcwgvvTzXm_FlFtxhMQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -4338,6 +4356,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200": {
+  "w": 700,
+  "h": 422,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
   "h": 281,
@@ -4453,19 +4477,6 @@
   "out": [
    1280,
    1280
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.spQgCTNKHOGCSjDNmtO62Q&pid=News&w=400": {
-  "w": 400,
-  "h": 400,
-  "target": 720,
-  "v": 3,
-  "blur": 0.459,
-  "local": "pics/56309568d1ac599f.webp",
-  "out": [
-   720,
-   720
   ],
   "why": "看不清"
  },
