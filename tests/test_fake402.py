@@ -1,5 +1,6 @@
 """偽の 402 を相手に Actions の入口を通しで走らせ、docs/・state/ が縮まない・入口が落ちないことを見る（harness/fake402_check.py）。
 2026-11-04：11/5 以降は全部の回が 402 に当たる。部品単体ではなく入口ごとに、名簿（ALLOW）に無い縮みが 0。"""
+import os
 import pathlib
 import re
 import sys
@@ -11,6 +12,8 @@ import fake402_check  # noqa: E402
 
 
 class Fake402(unittest.TestCase):
+    # 重い（全入口を通しで走らせる）。ci.yml の全試験に入れると 25 分を超えたので、.github/workflows/fake402.yml が WL_FAKE402=1 で別に回す
+    @unittest.skipUnless(os.environ.get("WL_FAKE402") == "1", "重い通し点検は fake402.yml が回す（手元は WL_FAKE402=1）")
     def test_entries_do_not_shrink_under_402(self):
         bad = fake402_check.run()
         self.assertEqual(bad, [], "\n".join(bad))
