@@ -621,6 +621,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.gamemeca.com/gmdata/0001/782/912/gm617101_261104-risell-tt4.webp": {
+  "w": 1200,
+  "h": 670,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.gametoc.co.kr/news/photo/202610/112537_327288_452.jpg": {
   "w": 1280,
   "h": 853,
@@ -746,6 +752,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg": {
+  "w": 1800,
+  "h": 1086,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.utaten.com/uploads/images/specialArticle/10324/3f786fa5a4cc1739c2291e08bfcf1e7e52140a71.jpeg?type=original?r=2026110310": {
@@ -1613,12 +1625,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2axpaI.img": {
-  "w": 1280,
-  "h": 742,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cflpr.img": {
   "w": 1920,
   "h": 1080,
@@ -1680,7 +1686,7 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gIuHQ.img": {
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gIfD9.img": {
   "w": 640,
   "h": 740,
   "target": 1280,
@@ -4250,19 +4256,6 @@
   "out": [
    1280,
    852
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200": {
-  "w": 700,
-  "h": 422,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.467,
-  "local": "pics/13a66f0bb765ca3c.webp",
-  "out": [
-   1280,
-   772
   ],
   "why": "看不清"
  },

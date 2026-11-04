@@ -378,7 +378,7 @@
   "猫用品": 4,
   "The Mandalorian": 5,
   "ILLIT": 3,
-  "MMORPG 新作": 9,
+  "MMORPG 新作": 18,
   "あつ森": 3,
   "チェーンソーマン": 5,
   "Vaundy": 3,
@@ -577,7 +577,8 @@
     7,
     2,
     6,
-    4
+    4,
+    10
    ],
    "image": "https://www.bing.com/th?id=ONUT.AqFGAOPiUknUmy3Gx9ZeQw&pid=News&w=1200"
   },
@@ -596,7 +597,31 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    14,
+    17,
+    13
+   ]
+  },
+  {
+   "headline": "デモが人気を博したライフシムMMO「Loftia」の早期アクセス版が本日発売、ローンチトレーラーも",
+   "highlight": "早期アクセス版が本日発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15,
+    16
+   ]
+  },
+  {
+   "headline": "「かゆい所に手が届く」オディンQはハードコアを狙ったMMORPG",
+   "highlight": "オディンQ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18,
+    11,
+    12
    ]
   }
  ],
