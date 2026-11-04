@@ -3,7 +3,7 @@ name: 402 通し点検
 # 偽の 402 に Actions の入口を当てて縮みを数える（harness/fake402_check.py）。ci.yml の全試験に入れると単独で長く
 # （25 分の上限を超えて PR #893 が cancelled になった 2026-11-04）、ここへ分けた。tests/test_fake402.py の重い 1 本は
 # 環境変数 WL_FAKE402=1 のときだけ走る（ci.yml では skip）＝ここが「必ず通る」チェック。
-# 必須にする条件：scripts/・.github/workflows/・harness/fake402_check.py を触った PR（render.py は scripts/ の中）。
+# 必須にする条件：scripts/・.github/workflows/・harness/fake402_check.py・harness/fake_clock/ を触った PR（render.py は scripts/ の中）。
 # 触っていない PR は最初の判定の step で残りを飛ばして緑で終わる（チェック名が毎回出る＝必須チェックにしても待ちぼうけにならない）。
 # 毎日の定時（日本時間 5:07）と手動でも回す。網は 127.0.0.1 の偽サーバーだけ（本番の Supabase には出ない）。
 
@@ -36,7 +36,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             git diff --name-only "origin/${{ github.base_ref }}...HEAD" > /tmp/changed.txt
-            if grep -Eq '^(scripts/|\.github/workflows/|harness/fake402_check\.py|tests/test_fake402\.py)' /tmp/changed.txt; then
+            if grep -Eq '^(scripts/|\.github/workflows/|harness/fake402_check\.py|harness/fake_clock/|tests/test_fake402\.py)' /tmp/changed.txt; then
               echo "run=1" >> "$GITHUB_OUTPUT"
             else
               echo "run=0" >> "$GITHUB_OUTPUT"
