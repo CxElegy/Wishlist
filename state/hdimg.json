@@ -183,19 +183,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx4.sinaimg.cn/middle/66104c95gy1iiqh1y4fjmj210o27ou0x.jpg": {
-  "w": 1320,
-  "h": 2868,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/349ce49c119b95aa.webp",
-  "out": [
-   589,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx4.sinaimg.cn/middle/7d297217gy1iip1fj6973j20yi1a0wvz.jpg": {
   "w": 1242,
   "h": 1656,
@@ -319,12 +306,6 @@
   "target": 720,
   "v": 3
  },
- "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122": {
-  "w": 800,
-  "h": 600,
-  "target": 720,
-  "v": 3
- },
  "https://assets.content.technologyadvice.com/Comparing_Smartphones_in_a_Modern_Store_17c6a030a3.webp": {
   "w": 1672,
   "h": 941,
@@ -334,6 +315,12 @@
  "https://assets.content.technologyadvice.com/Screenshot_2026_10_12_at_4_46_57_PM_4e1a5e9138.webp": {
   "w": 1788,
   "h": 1312,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets.hldycdn.com/1fd58c0b-7575-4a90-9f8d-483ddad8da73.jpeg": {
+  "w": 704,
+  "h": 329,
   "target": 720,
   "v": 3
  },
@@ -487,12 +474,6 @@
  "https://biz.chosun.com/resizer/v2/VEQEHTQKPFIUHCV27Z6TKRHCJQ.jpg?auth=555511c856fc73df5cea9de84cf146538b636aa4d16d22132390d7a860683067&width=1200&height=630&smart=true": {
   "w": 1200,
   "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://bleedingcool.com/wp-content/uploads/2026/07/L1050980-Edit-2-2000x1125.jpg": {
-  "w": 2000,
-  "h": 1125,
   "target": 720,
   "v": 3
  },
@@ -717,12 +698,6 @@
   "w": 1800,
   "h": 1012,
   "target": 1280,
-  "v": 3
- },
- "https://cdn.sounova.com/upload/XZB9zcSxrtYsJDQAP55HB.webp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg": {
@@ -1597,6 +1572,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA25JWan.img": {
+  "w": 2000,
+  "h": 1000,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cflpr.img": {
   "w": 1920,
   "h": 1080,
@@ -2145,13 +2126,6 @@
   ],
   "why": "看不清"
  },
- "https://k.sinaimg.cn/n/news/1_img/upload/d8010f78/213/w2048h1365/20261102/a8a0-af62ed6facd88229ec0b593b1f51616d.jpg/w710h400z1l50t1q7538e.jpg?by=comos": {
-  "w": 710,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.346
- },
  "https://kagit-media.atreez.cc/uploads/2026-10-30/i1d2joh29o153ez1gglsfaot.jpg": {
   "w": 1600,
   "h": 900,
@@ -2292,12 +2266,6 @@
   "target": 1280,
   "v": 3
  },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/11/02/179358926125212344_664_2000.JPEG": {
-  "w": 640,
-  "h": 662,
-  "target": 720,
-  "v": 3
- },
  "https://newportal.portal.auone.jp/media/cp/202/スポーツ報知ロゴ.png": {
   "w": 1452,
   "h": 430,
@@ -2416,12 +2384,11 @@
   "target": 720,
   "v": 3
  },
- "https://news.walkerplus.com/article/1026125/10233248_615.jpg": {
+ "https://news.walkerplus.com/article/1133922/11697468_615.jpg": {
   "w": 615,
-  "h": 265,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.376
+  "h": 346,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/114103/628731_615.jpg": {
   "w": 615,
@@ -3073,6 +3040,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/16333/244/16333-244-3c5b0c510c040c9265a80785f2d48064-2560x1920.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1680,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/163718/90/163718-90-05a90f266b3f82d8c94cbd1c9aec72fd-1491x1055.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1491,
   "h": 1055,
@@ -3189,6 +3162,12 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/876527c0122ebf5081552cda6551c04bb68b2866991d61061f6df6aa5e318a00/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgamespot_323%2Fa42bcb13f916e625ccffd69f27f53b9d.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/8a7fde0e61e5380dce092e51376327adbec125e399d9bdafa175f191b9c8729b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgiant_freakin_robot_articles_628%2F779db09d14c0ce35a3e667737435b51a.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3494,12 +3473,6 @@
   "v": 3
  },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/04/emma-watson-as-hermione-granger-from-harry-potter-and-the-chamber-of-secrets.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/06/avengers-endgame-chris-evans.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 720,
@@ -3934,6 +3907,12 @@
    669
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.CaUEP9VO4Qp_oyc3UjMZUQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
@@ -4521,12 +4500,6 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
- "https://www.giantfreakinrobot.com/wp-content/uploads/2024/02/The-Spirit-Nana-Visitor.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,

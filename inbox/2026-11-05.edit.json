@@ -3,7 +3,7 @@
   "漫威电影": 56,
   "三星手机": 21,
   "GTA 6": 36,
-  "チェーンソーマン": 7,
+  "チェーンソーマン": 9,
   "A2O LITE": 6,
   "dota2": 5,
   "周杰伦": 5,
@@ -219,6 +219,28 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "Marimo Craft to Exhibit at Animate Girls Festival 2026 in Ikebukuro on November 7 and 8",
+   "highlight": "November 7 and 8",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ],
+   "event": {
+    "date": "2026-11-07",
+    "label": "出展"
+   }
+  },
+  {
+   "headline": "TVアニメ「チェンソーマン」のアウトドアグッズが登場！AOZORAGEAR online SHOP、アニメイトにて販売",
+   "highlight": "アウトドアグッズが登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
    ]
   }
  ],
