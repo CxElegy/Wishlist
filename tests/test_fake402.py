@@ -18,6 +18,14 @@ class Fake402(unittest.TestCase):
         bad = fake402_check.run()
         self.assertEqual(bad, [], "\n".join(bad))
 
+    def test_fake_clock_skips_sleep(self):
+        """偽の時計：PYTHONPATH に足すと time.sleep が 0.02 秒に縮む（再試行の待ちで入口が長くならない）。"""
+        import subprocess
+        env = {**os.environ, "PYTHONPATH": str(ROOT / "harness" / "fake_clock")}
+        r = subprocess.run([sys.executable, "-c", "import time;t=time.time();time.sleep(30);print(time.time()-t<2)"],
+                           env=env, capture_output=True, text=True, timeout=60)
+        self.assertEqual(r.stdout.strip(), "True", r.stderr)
+
     def test_allowlist_has_reasons(self):
         for f, why in fake402_check.ALLOW.items():
             self.assertTrue(why.strip(), f)
