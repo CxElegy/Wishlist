@@ -69,7 +69,7 @@ jobs:
         run: python scripts/library.py --push
       - name: Wikidata の引いた結果（お客さまの分、倉庫に入れない）
         if: ${{ !inputs.compare }}
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: state/wd_facts.json
           key: wd-facts-${{ github.run_id }}
@@ -87,3 +87,18 @@ jobs:
             git push -q && break
             if git pull --rebase -q; then :; else git rebase --abort || true; sleep 5; fi
           done
+      - uses: actions/cache/save@v4
+        if: always() && !inputs.compare
+        with:
+          path: state/wd_facts.json
+          key: wd-facts-${{ github.run_id }}
+      - id: wdchk
+        if: always() && !inputs.compare
+        uses: actions/cache/restore@v4
+        with:
+          path: state/wd_facts.json
+          key: wd-facts-${{ github.run_id }}
+          lookup-only: true
+      - name: Wikidata の結果の保存が拒まれたら警告（save は拒まれても緑のまま。2026-11-04）
+        if: always() && !inputs.compare && steps.wdchk.outputs.cache-hit != 'true'
+        run: echo "::warning::Wikidata の cache が保存できなかった（書き込みが拒まれた？）。次の回は空から始まる"
