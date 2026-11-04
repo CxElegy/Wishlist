@@ -11,6 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import browser  # noqa: E402
+import sbread  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 URL = re.compile(r"https://[^/\"'\s)]+\.supabase\.co/storage/[^\"'\s)<>]+")
@@ -27,8 +28,7 @@ def board_text(settings, table="boards", cols="config"):
     try:
         base = settings["supabase_url"].rstrip("/")
         key = os.environ.get("SUPABASE_SERVICE_KEY") or settings["supabase_key"]   # 非公開の版面（boards_visible）は secret key でないと見えない
-        req = urllib.request.Request("%s/rest/v1/%s?select=%s" % (base, table, cols), headers={"apikey": key, **({"Authorization": "Bearer " + key} if key.startswith("eyJ") else {})})   # 新しい sb_secret_ は apikey だけ（digest.supabase と同じ）
-        return urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+        return sbread.get("%s/rest/v1/%s?select=%s" % (base, table, cols), key, ttl=0)   # 0＝毎日の写し作りは新しい写真の網址を見落とさないため毎回読む（1 日 1 回・boards と board_stories の 2 GET のみ）[0].decode("utf-8", "replace")
     except Exception as e:  # noqa: BLE001
         print("DB を読めない", table, type(e).__name__, str(e)[:120])
         return ""

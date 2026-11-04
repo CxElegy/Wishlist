@@ -45,6 +45,7 @@ from playwright.sync_api import sync_playwright
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import emb_check  # noqa: E402
+import sbread  # noqa: E402
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
 import render  # noqa: E402
 import pathlib as _pl
@@ -624,10 +625,9 @@ def rest_boards(tok=None, exact=False):
     """boards を REST で読む（tok なし＝ログインなし）。(名前の一覧, 本当の件数) を返す。"""
     s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
     base, key = s["supabase_url"].rstrip("/"), s["supabase_key"]
-    h = {"apikey": key, "Authorization": "Bearer " + (tok or key), "Prefer": "count=exact"}
-    r = urllib.request.urlopen(urllib.request.Request(base + "/rest/v1/boards?select=id,name", headers=h), timeout=30)
-    rows = json.loads(r.read())
-    return [x["name"] for x in rows], int(r.headers.get("Content-Range", "0-0/0").split("/")[-1])
+    body, cr = sbread.get(base + "/rest/v1/boards?select=id,name", key, tok, prefer="count=exact")
+    rows = json.loads(body)
+    return [x["name"] for x in rows], int((cr or "0-0/0").split("/")[-1])
 
 
 HTML_MAX_MB = 2.8   # 2026-10-31：2.6→2.8（色の下絵 1170 枚×31B＝36KB が増えた。倍に戻る検出が目的）。2026-10-30：店長のページ 4.1MB→2.1MB。画像 1 枚ごとの onerror が戻ると倍になるので、ここを超えたら ✗
@@ -755,11 +755,9 @@ def check_board_designs():
             tok = session(e + "@example.com")["access_token"] if e else key
         except urllib.error.HTTPError:
             continue
-        r = urllib.request.urlopen(urllib.request.Request(base + "/rest/v1/boards?select=id,name,config",
-                                   headers={"apikey": key, "Authorization": "Bearer " + tok}), timeout=30)
-        for b in json.loads(r.read()):
+        for b in json.loads(sbread.get(base + "/rest/v1/boards?select=id,name,config->motif,config->theme", key, tok)[0]):
             seen[b["id"]] = b
-    miss = [b["id"] for b in seen.values() if not ((b.get("config") or {}).get("motif") and (b.get("config") or {}).get("theme"))]
+    miss = [b["id"] for b in seen.values() if not (b.get("motif") and b.get("theme"))]
     return ([f"デザイン（motif・theme）のないライブラリの版面 {len(miss)}/{len(seen)}：id " + "・".join(map(str, miss[:8]))] if miss else []), len(seen)
 
 
@@ -997,9 +995,7 @@ def check_admin_coverage(pw, base, width):
         bad.append(f"ライブラリの版面 {want} に対して管理ページ③の版面ごとの状態は {ls[0]}（行 {ls[1]}）")
     # 中身：各行の人数・小元素の枚数・状態の札が boards.config と一致（人数 0・失敗・まだ の版面も）
     s0 = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
-    brs = json.loads(urllib.request.urlopen(urllib.request.Request(
-        s0["supabase_url"].rstrip("/") + "/rest/v1/boards?select=id,followers,config",
-        headers={"apikey": s0["supabase_key"], "Authorization": "Bearer " + ses["access_token"]}), timeout=30).read())
+    brs = json.loads(sbread.get(s0["supabase_url"].rstrip("/") + "/rest/v1/boards?select=id,followers,config", s0["supabase_key"], ses["access_token"])[0])
     cells = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#wl-libstate tr[data-id]')].map(r=>[r.dataset.id,[...r.cells].slice(1,4).map(c=>c.textContent).concat([...r.querySelectorAll('[data-k]')].map(c=>c.textContent))]))")
     lab = {"ok": "済", "running": "待ち", "failed": "失敗"}
     for b in brs:
@@ -1026,9 +1022,8 @@ def check_admin_coverage(pw, base, width):
     pg.goto(base + "admin-boards.html", wait_until="networkidle", timeout=60000)
     pg.wait_for_selector("#wl-libvotes[data-n]", state="attached", timeout=30000)
     vt = pg.evaluate("[...document.querySelectorAll('#wl-libvotes tr[data-id]')].map(r=>[r.dataset.id,+r.cells[1].textContent,+r.cells[2].textContent])")
-    fl0 = json.loads(urllib.request.urlopen(urllib.request.Request(
-        yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]["supabase_url"].rstrip("/") + "/rest/v1/follows?select=account",
-        headers={"apikey": yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]["supabase_key"], "Authorization": "Bearer " + ses["access_token"]}), timeout=30).read())
+    _s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    fl0 = json.loads(sbread.get(_s["supabase_url"].rstrip("/") + "/rest/v1/follows?select=account", _s["supabase_key"], ses["access_token"])[0])
     gone = sorted({f["account"] for f in fl0} - {r[0] for r in vt})
     if gone:
         bad.append(f"管理ページ②の投票に出ないアカウント {len(gone)} 個（{gone[:5]}）")
@@ -1046,9 +1041,7 @@ def check_admin_coverage(pw, base, width):
     # 値の照合（数があるだけで通さない）：follows の本物から account ごとの 置いた板块・小分類つき・見たい種類・乗換駅つき を数え、画面の表と合わせる。
     # ＋置き方・関注項の中身の表（#wl-libplace）は follows の行と 1 行ずつ 板块・並び・篇幅・小分類・見たい種類・乗換駅 が合う
     s1 = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
-    fx = json.loads(urllib.request.urlopen(urllib.request.Request(
-        s1["supabase_url"].rstrip("/") + "/rest/v1/follows?select=account,board_id,section,pos,size,subs,media,also",
-        headers={"apikey": s1["supabase_key"], "Authorization": "Bearer " + ses["access_token"]}), timeout=30).read())
+    fx = json.loads(sbread.get(s1["supabase_url"].rstrip("/") + "/rest/v1/follows?select=account,board_id,section,pos,size,subs,media,also", s1["supabase_key"], ses["access_token"])[0])
     exp = {}
     for f in fx:
         e = exp.setdefault(f["account"], [set(), 0, 0, 0])
@@ -1072,9 +1065,7 @@ def check_admin_coverage(pw, base, width):
     sys.path.insert(0, str(ROOT / "scripts"))
     import render as _r
     s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
-    fl = json.loads(urllib.request.urlopen(urllib.request.Request(
-        s["supabase_url"].rstrip("/") + "/rest/v1/follows?select=account,board_id",
-        headers={"apikey": s["supabase_key"], "Authorization": "Bearer " + ses["access_token"]}), timeout=30).read())
+    fl = json.loads(sbread.get(s["supabase_url"].rstrip("/") + "/rest/v1/follows?select=account,board_id", s["supabase_key"], ses["access_token"])[0])
     mine = {}
     for f in fl:
         mine.setdefault(f["account"], set()).add(f["board_id"])
@@ -1584,6 +1575,7 @@ def main(argv):
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"小元素の出方（遅い回線）{w}px：" + ("、".join(bad) if bad else "パッと出ない"))
     print(f"点検：✗ {fails} 件")
+    print(sbread.line())
     return 1 if fails else 0
 
 

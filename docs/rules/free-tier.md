@@ -88,3 +88,9 @@ Supabase のメール（2026-11-03）：cached egress 19.2 GB / 5.5 GB、11/5 �
 ## 11/4 の本番ゲート（2026-11-03）
 
 `python harness/free_tier_gate.py` が全部 ✓ なら入れ終わり。トークン混入 0（.claude/worktrees は見ない）・docs の静的な storage 網址 0（data-fb 含む）・写真を本番から落とす道 0・pages_served・pages_health --photos・sb_down_check を順に走らせる（本番に向ける 3 つは各 1 回・timeout 付き）。手元だけは `--skip-prod`。
+
+## 点検の道具の本番読み（2026-11-04・egress）
+
+- 本番の REST 読みは `harness/sbread.py` の 1 か所。既定は毎回本番（直した直後を比べる ux_check は古い写しで偽の緑にしない）。写し（`~/.cache/wl_sb_read`）は `ttl=` を渡した読み（emb_check・emblem_pick_rules の品質の見回り）だけ。写しには secret key で読んだ非公開の版面も平文で入る＝手元・Actions の一時領域だけ、リポジトリ・Pages・artifact に出さない。
+- `photo_cache_fill.py` は毎日 1 回（photo_cache.yml）・boards と board_stories の 2 GET で、新しい写真を見落とさないため `ttl=0`。
+- 点検の最後に「本番の /rest/v1/ への要求（python）・ブラウザから（rest・rpc・auth 別）」を出す。ux_check の login（/auth/v1/token）と rpc の POST は書き込み／認証なので写さない。

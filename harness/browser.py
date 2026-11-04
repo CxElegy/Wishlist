@@ -6,6 +6,7 @@ import base64
 import os
 import re
 import urllib.request
+
 from pathlib import Path
 
 # 写しは作業ツリーの外の共通の場所（係・実行同士で共有。作業ツリーは毎回まっさらで、中に置くと毎回落とし直す）。上書き：WL_PHOTO_CACHE
@@ -108,6 +109,7 @@ def _fulfill(route):
 def guard(target):
     """Page か BrowserContext に写真の配信止めを付ける"""
     target.route(PATTERN, _fulfill)
+    target.on("request", lambda r: __import__("sbread").browser_hit(r.url))   # 点検 1 回のブラウザからの Supabase 要求を数える（ux_check の最後に出る）
     return target
 
 
