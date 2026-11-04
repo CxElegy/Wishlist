@@ -11,6 +11,8 @@ import time
 import urllib.request
 from pathlib import Path
 
+import browser  # noqa: F401  urllib の止め（free-tier.md）。browser 側は sbread を使う時に読む（循環しない）
+
 DIR = Path(os.environ.get("WL_SB_CACHE") or Path.home() / ".cache" / "wl_sb_read")
 TTL = int(os.environ.get("WL_SB_TTL") or 0)
 _n = {"net": 0, "hit": 0, "bytes": 0, "br": 0}
