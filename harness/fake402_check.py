@@ -248,6 +248,8 @@ def run(only=None, keep=False, workers=None):
     dead = "http://127.0.0.1:9"
     env = {**os.environ, "SUPABASE_SERVICE_KEY": "fake", "PYTHONIOENCODING": "utf-8", "NO_PROXY": "127.0.0.1,localhost", "no_proxy": "127.0.0.1,localhost",
            **{k: dead for k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY", "all_proxy")}}
+    # 偽の時計：再試行の待ち（time.sleep）を飛ばす。待ちが 50〜90 秒あった入口（library --refresh・repair-images）が数秒になる
+    env["PYTHONPATH"] = os.pathsep.join(filter(None, [str(ROOT / "harness" / "fake_clock"), env.get("PYTHONPATH")]))
     for k in ("DISCORD_WEBHOOK_URL", "SBSTATE_PING"):
         env.pop(k, None)
     todo = [(i, n, a, s) for i, (n, a, s) in enumerate(ENTRIES) if not only or n == only]
