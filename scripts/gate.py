@@ -397,7 +397,7 @@ def edit_mode(env=None):
             req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_get", method="POST",
                                          data=json.dumps({"p_account": sitedir.NAME}).encode("utf-8"),
                                          headers={"apikey": key, "Content-Type": "application/json"})
-            return (json.loads(urllib.request.urlopen(req, timeout=15).read() or b"{}") or {}).get("mode") or "run"
+            return (json.loads(sbstate.sb_open(req, 15).read() or b"{}") or {}).get("mode") or "run"
         return sbstate.memo("edit_mode", 60, _get)
     except Exception:  # noqa: BLE001
         return "run"

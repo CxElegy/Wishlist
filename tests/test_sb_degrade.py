@@ -344,3 +344,46 @@ class IdleTabs(unittest.TestCase):
             src = (ROOT / "scripts" / fn).read_text(encoding="utf-8")
             for c in calls:
                 self.assertEqual(src.count(c), 1, c)
+
+
+class EveryCallGoesThroughSbstate(unittest.TestCase):
+    """Actions が Supabase（rest・rpc・storage・auth）へ出る呼び出しは sbstate.sb_open か、402 を自分で扱う名簿の中だけ（2026-11-04）。
+    直書きを足すと 402 を見落として呼び続ける。"""
+    PAT = re.compile(r"Request\(.*(/rest/v1|/storage/v1|/auth/v1)")
+    # 402 を自分で扱う（理由つき）。key = ファイル名:Request 行の一部
+    ALLOW = {
+        "digest.py": "supabase() 本体：402 を mark_limited して None",
+        "user_pages.py": "_req：402 を mark_limited して Limited",
+        "photo_cache_fill.py": "1 日 1 回・1 GET・失敗は空で続ける（photo_cache.yml）",
+        "emb_check.py": "係の手元の点検（Actions でない）・読むだけ 1 回",
+        "ux_check.py": "係の手元の点検（Actions でない）・本番を読むだけ・各段 1 回",
+    }
+
+    def scan(self):
+        bad = []
+        for sub in ("scripts", "harness"):
+            for f in sorted((ROOT / sub).glob("*.py")):
+                if f.name in self.ALLOW:
+                    continue
+                lines = f.read_text(encoding="utf-8").splitlines()
+                for i, ln in enumerate(lines):
+                    if self.PAT.search(ln) and "sb_open" not in "\n".join(lines[i:i + 8]):
+                        bad.append(f"{sub}/{f.name}:{i + 1}")
+        return bad
+
+    def test_no_direct_supabase_calls(self):
+        self.assertEqual(self.scan(), [], "sbstate.sb_open を通す（または ALLOW に理由つきで足す）")
+
+    def test_sb_open_402_marks_limited_and_stops(self):
+        tmp = pathlib.Path(tempfile.mkdtemp()) / "s.json"
+        with mock.patch.object(sbstate, "FILE", tmp), mock.patch.object(sbstate, "LIMITED", False), \
+                mock.patch.object(sbstate, "_ping", return_value=False), \
+                mock.patch("urllib.request.urlopen", side_effect=_err(402)) as m:
+            import urllib.request
+            req = urllib.request.Request("https://x.supabase.co/rest/v1/rpc/edit_control_get")
+            with self.assertRaises(sbstate.Limited):
+                sbstate.sb_open(req, 5)
+            with self.assertRaises(sbstate.Limited):
+                sbstate.sb_open(req, 5)
+            self.assertEqual(m.call_count, 1)   # 2 回目は網に出ない
+            self.assertEqual(sbstate.load(tmp)["status"], "limited")

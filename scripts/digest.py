@@ -3573,7 +3573,7 @@ def _edit_control():
                                  data=json.dumps({"p_account": sitedir.NAME}).encode("utf-8"),
                                  headers={"apikey": key, "Content-Type": "application/json"})
     try:
-        d = json.loads(urllib.request.urlopen(req, timeout=15).read() or b"{}") or {}
+        d = json.loads(sbstate.sb_open(req, 15).read() or b"{}") or {}
         return {"mode": d.get("mode") if d.get("mode") in ("run", "step", "pause") else "run", "redo": list(d.get("redo") or [])}
     except Exception as err:  # noqa: BLE001
         print(f"  （AI 编辑的开关读不到，当作 run：{err}）", file=sys.stderr)
@@ -3590,7 +3590,7 @@ def set_edit_control(mode=None, redo_clear=None):
     req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_set", data=body, method="POST",
                                  headers={"apikey": key, "Content-Type": "application/json"})
     try:
-        urllib.request.urlopen(req, timeout=15).read()
+        sbstate.sb_open(req, 15).read()
         sbstate._MEMO.pop("edit_control", None)
     except Exception as err:  # noqa: BLE001
         print(f"  （AI 编辑的开关写不进去：{err}）", file=sys.stderr)

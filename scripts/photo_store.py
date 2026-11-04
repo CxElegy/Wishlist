@@ -25,6 +25,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import sbstate  # noqa: E402
 import sitedir  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -121,13 +122,13 @@ def user_pages(base, keyv):
     try:
         req = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/list/pages", data=json.dumps({"prefix": "", "limit": 1000}).encode(),
                                      method="POST", headers={"apikey": keyv, "Authorization": f"Bearer {keyv}", "Content-Type": "application/json"})
-        folders = [d["name"] for d in json.loads(urllib.request.urlopen(req, timeout=30).read()) if d.get("name")]
+        folders = [d["name"] for d in json.loads(sbstate.sb_open(req, 30).read()) if d.get("name")]
     except Exception:  # noqa: BLE001
         return out
     for fo in folders:
         try:
             r = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/pages/{fo}/index.html", headers={"apikey": keyv, "Authorization": f"Bearer {keyv}"})
-            out.append(urllib.request.urlopen(r, timeout=30).read().decode("utf-8", "replace"))
+            out.append(sbstate.sb_open(r, 30).read().decode("utf-8", "replace"))
         except Exception:  # noqa: BLE001
             continue
     return out
@@ -261,7 +262,7 @@ def fetch(url):
 def _req(base, keyv, path, data=None, method="POST", ctype="image/webp", extra=None):
     h = {"apikey": keyv, "Authorization": f"Bearer {keyv}", "Content-Type": ctype, **(extra or {})}
     req = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/{path}", data=data, method=method, headers=h)
-    with urllib.request.urlopen(req, timeout=60) as r:
+    with sbstate.sb_open(req, 60) as r:
         r.read()
 
 
