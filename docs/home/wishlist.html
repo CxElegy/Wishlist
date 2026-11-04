@@ -930,7 +930,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="73cc532fca13"><style>
+<meta name="wl-ver" data-page="wishlist" content="df46b7cbc665"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1865,7 +1865,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   }
   function start(){
     if(me&&me.admin){ me.admin=false; saveMe(me); }   // メールの確認を待っていた人（前の仕組み）
-    if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
+    // 規約に同意済みで 1 時間以内に確かめたなら呼ばない（ページを開くたびの user_login は Supabase の読み書きと egress を食う）
+    if(me&&me.name&&!me.admin&&((me.v||0)<TV||Date.now()-(me.chk||0)>3600000)) rpc('user_login',{p_name:me.name}).then(function(r){ me.chk=Date.now(); if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } else saveMe(me); })
       .catch(function(e){ if(/*data*/ /見つかりません|登録されていません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
     var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
     if(err){ toast(sayErr(err)); if(history.replaceState) history.replaceState(null,'',location.pathname); }
@@ -1890,7 +1891,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>11.04 23:21</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>11.04 23:25</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
