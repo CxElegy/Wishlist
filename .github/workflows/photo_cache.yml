@@ -98,13 +98,21 @@ jobs:
           path: .photo_cache
           key: wl-photo-cache-${{ github.run_id }}-retry
           lookup-only: true
-      - name: 写しが保存できたか（どちらの名前にも無ければ赤）
+      # 2026-11-04 の実測：掃除のあとでも workflow_run の回だけ「cache write denied: token has no writable scopes」で 2 回とも保存が拒まれた（run 127）。同じ main の workflow_dispatch の回は 1 回目で保存できた（run 128）＝枠でなく、その回の書き込みの権限。
+      # → workflow_run の回で入らなかったら、赤にせず workflow_dispatch で自分を起こし直す（書ける回で埋め直す）。dispatch の回が入らなければ赤（輪にならない）
+      - name: 写しが保存できたか（どちらの名前にも無ければ、workflow_run の回は dispatch で起こし直す・dispatch の回は赤）
         if: always() && steps.fill.outputs.changed == 'true' && steps.chk.outputs.cache-hit != 'true' && steps.chk2.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          echo "::error::写しが保存できなかった（2 回とも）。Pages に新しい写真が載らない"
-          exit 1
-      - name: 写しが変わったら Pages を出し直す
-        if: steps.fill.outputs.changed == 'true'
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "::error::写しが保存できなかった（dispatch の回でも 2 回とも）。Pages に新しい写真が載らない"
+            exit 1
+          fi
+          echo "::warning::${{ github.event_name }} の回では写しを保存できなかった。workflow_dispatch で起こし直す（書ける回で埋め直す）"
+          gh workflow run photo_cache.yml --ref main
+      - name: 写しが変わったら Pages を出し直す（保存できた回だけ）
+        if: steps.fill.outputs.changed == 'true' && (steps.chk.outputs.cache-hit == 'true' || steps.chk2.outputs.cache-hit == 'true')
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run pages.yml --ref main
