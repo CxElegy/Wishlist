@@ -5,6 +5,7 @@
 - Wikipedia：実写・AniList にないもの。検索の 1 位の記事の閲覧数（Pageviews API）。
 結果は state/emblem_fame.json に残す（同じ人は 30 日は引き直さない）。版面の 1 つずつ `python scripts/emblem_fame.py <版面の名前>`。
 """
+import nostorage  # noqa: F401  公開の箱を落とさない止め（全部の網の道）
 import json
 import math
 import pathlib

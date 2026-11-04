@@ -5,9 +5,13 @@ Supabase の写真の配信が点検で 1 日 11 GB になった（枠は月 5 G
 import base64
 import os
 import re
+import sys
 import urllib.request
 
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+import nostorage   # noqa: E402  網の道ぜんぶの止め（fill のときだけ allowed()）
 
 # 写しは作業ツリーの外の共通の場所（係・実行同士で共有。作業ツリーは毎回まっさらで、中に置くと毎回落とし直す）。上書き：WL_PHOTO_CACHE
 CACHE = Path(os.environ.get("WL_PHOTO_CACHE") or Path.home() / ".cache" / "wl_photo_cache")
@@ -48,7 +52,8 @@ def storage_bytes(url, headers=None, timeout=30, fill=False):
         return None
     _allow = True
     try:
-        data = _real_urlopen(urllib.request.Request(url, headers=headers or {}), timeout=timeout).read()
+        with nostorage.allowed():
+            data = _real_urlopen(urllib.request.Request(url, headers=headers or {}), timeout=timeout).read()
     finally:
         _allow = False
     CACHE.mkdir(parents=True, exist_ok=True)

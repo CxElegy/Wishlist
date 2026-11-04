@@ -212,3 +212,47 @@ class NoFillByDefault(unittest.TestCase):
         wf = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")
         self.assertIn("photo_cache_fill.py", wf)
         self.assertIn("cron", wf)
+
+
+class ScriptsStorageGuard(unittest.TestCase):
+    """網を使う scripts/・harness/ のどれも、import を辿ると nostorage（公開の箱 photos を落とさない止め）に着く（2026-11-04 egress 緊急）。
+    urllib だけでなく requests・urllib3・curl_cffi・httpx も数える。"""
+    NET = re.compile(r"urllib\.request|^\s*(?:import|from) (?:requests|curl_cffi|scrapling|httpx|aiohttp|urllib3)\b|\burlopen\b", re.M)
+
+    def test_every_network_module_reaches_nostorage(self):
+        files = {f.stem: f for d in ("scripts", "harness") for f in (ROOT / d).glob("*.py")}
+        imp = {n: {m for m in re.findall(r"^\s*(?:import|from)\s+(\w+)", f.read_text(encoding="utf-8"), re.M) if m in files} for n, f in files.items()}
+
+        def reach(n):
+            seen, st = set(), [n]
+            while st:
+                for m in imp[st.pop()]:
+                    if m not in seen:
+                        seen.add(m)
+                        st.append(m)
+            return seen
+        bad = [n for n, f in files.items() if n != "nostorage" and self.NET.search(f.read_text(encoding="utf-8")) and "nostorage" not in reach(n)]
+        self.assertEqual(bad, [], "網を使うのに nostorage に着かない（import nostorage を足す）")
+
+    def test_refuses_public_storage_on_every_path_and_allows_fill(self):
+        import http.client
+        import sys
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import nostorage
+        u = "/storage/v1/object/public/photos/a-800.webp"
+        c = http.client.HTTPSConnection("x.supabase.co")
+        with self.assertRaises(RuntimeError):
+            c.putrequest("GET", u)
+        with self.assertRaises(RuntimeError):
+            import urllib.request
+            urllib.request.urlopen("https://x.supabase.co" + u)
+        try:
+            from urllib3.connectionpool import HTTPSConnectionPool
+        except ImportError:
+            HTTPSConnectionPool = None
+        if HTTPSConnectionPool:
+            with self.assertRaises(RuntimeError):
+                HTTPSConnectionPool("x.supabase.co").urlopen("GET", u)
+        c.putrequest("POST", "/storage/v1/object/photos/a.webp")   # アップロードは止めない
+        with nostorage.allowed():
+            nostorage.refuse("https://x.supabase.co" + u)

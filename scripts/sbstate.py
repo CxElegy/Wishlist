@@ -5,6 +5,7 @@ Actions の書き込み・読み込みは、402 が来たら「データベー�
 state の印（db_news.json など）が進まないので、制限が外れた次の回が自動でまとめて送り直す。
 状態は state/supabase_status.json に 1 つだけ（正常⇄制限中が変わったときだけ書く＝コミットが増えない）。管理ページの 1 行が読む。
 """
+import nostorage  # noqa: F401  公開の箱を落とさない止め（全部の網の道）
 import datetime as dt
 import json
 import pathlib
