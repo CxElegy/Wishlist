@@ -2500,7 +2500,8 @@ class FindSources(unittest.TestCase):
             tmp = pathlib.Path(d)
             (tmp / "items.yaml").write_text('items:\n  - name: FROM\n    type: show\n    emblem_kind: character\n', encoding="utf-8")
             item = {"name": "FROM", "type": "show", "emblem_kind": "character", "emblem_people": True, "wikidata": "Q9", "emblem_who": ["B"]}
-            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef, "wd_cast", return_value=["A", "B", "C"]):
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef, "wd_cast", return_value=["A", "B", "C"]), \
+                 mock.patch.object(ef, "wd_enwiki", return_value=None):   # 本物の Wikidata を引かない（CI で 23 分待って落ちた・2026-11-04）
                 self.assertEqual(ef.roster(item, log=lambda *_: None), 3)
             got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
         self.assertEqual((got["emblem_pool"], got["emblem_who"]), (3, ["B", "A", "C"]))
