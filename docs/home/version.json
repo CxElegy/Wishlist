@@ -1,32 +1,32 @@
 {
- "admin": "5e8d84e418df",
- "admin-ai": "46a87bd511bb",
+ "admin": "dd3efa64770b",
+ "admin-ai": "8bb553129403",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d14a255b"
+   "afd5c9ee"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "65a8276c"
+   "156ec32e"
   ]
  },
- "admin-boards": "7c84e11926e0",
+ "admin-boards": "1fa54a95ef55",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "af52b551"
+   "81b036c6"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "509d6f0586f9",
+ "admin-emblem": "5490eaa6da23",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "610046f8"
+   "3325fe63"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "d0eabc89"
+   "6b03df41"
   ]
  },
  "admin-members": "aacefc722651",
  "admin-members_marks": {},
- "admin-now": "02744f2f3e66",
+ "admin-now": "f219afd4c8db",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "33dbe1cb"
+   "4615a0f7"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "7004c909"
+   "f2c47367"
   ]
  },
- "admin-system": "48cbd7612d31",
+ "admin-system": "78d73251edcc",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9e3ba371"
+   "0aa7ade3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "76e76046"
+   "00c9e6d4"
   ]
  },
  "admin_marks": {},
- "heat": "245417cb51a0",
+ "heat": "26e09be0808d",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "578af8d6"
+   "c1777b4f"
   ],
   "ranking": [
    "ランキング",
-   "f450ff65"
+   "32f341e1"
   ]
  },
- "index": "b497b0059891",
+ "index": "d5ac7bf2bee9",
  "index_marks": {
   "front": [
    "トップ",
-   "2b10dddf"
+   "2996e238"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "50622331"
+   "b58353f8"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "edc413be"
+   "7e26fa6f"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "267a5110"
+   "ab00bfcd"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1bf68dc3"
+   "f41110e9"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -196,6 +196,6 @@
    "6bcd4bfe"
   ]
  },
- "updated": "11.05 00:32",
+ "updated": "11.05 02:15",
  "wishlist": "5712af2f67cf"
 }

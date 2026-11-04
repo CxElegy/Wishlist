@@ -1407,6 +1407,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i01.ftnn.com.tw/a/26/307/26307091517658703d556b.png": {
+  "w": 660,
+  "h": 371,
+  "target": 720,
+  "v": 3
+ },
  "https://i1.ytimg.com/vi/pjnY80oiVT0/hqdefault.jpg": {
   "w": 480,
   "h": 360,
@@ -1769,6 +1775,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gG5lk.img": {
+  "w": 1456,
+  "h": 819,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gGO37.img": {
   "w": 700,
   "h": 467,
@@ -2072,12 +2084,6 @@
   "w": 800,
   "h": 1199,
   "target": 1280,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/03/5628427_2.jpg": {
-  "w": 800,
-  "h": 1053,
-  "target": 720,
   "v": 3
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
@@ -2457,12 +2463,6 @@
   "w": 1396,
   "h": 878,
   "target": 1280,
-  "v": 3
- },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/14/179197850424419605_664_2000.JPEG": {
-  "w": 664,
-  "h": 443,
-  "target": 720,
   "v": 3
  },
  "https://newportal.portal.auone.jp/media/cp/202/スポーツ報知ロゴ.png": {
@@ -3489,6 +3489,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/d5b2963e91fc2d316d9d6f6e53f254393b82519145a3e0ecae21293adae93f07/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fqsr_204%2F5a88e020c3906552adea83c635e69778.jpg": {
+  "w": 1200,
+  "h": 700,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/f0ad7d42651cab0d9735499a50c58fddb47974f3984a93991f2ae0ac0ced48fd/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2F10-31-kklive-taiwan_3560.jpg": {
   "w": 1200,
   "h": 1563,
@@ -4164,6 +4170,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.-qjUr9wjHyFd6cI8gLcY-A&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.513,
+  "local": "pics/f014fef6f9c6978a.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.4J2nRakvD3RS1jr8Nsjp5A&pid=News&w=650": {
   "w": 650,
   "h": 341,
@@ -4237,12 +4256,6 @@
  "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
   "w": 700,
   "h": 508,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.IGMXPkqt6th3aXa9FKCnzg&pid=News&w=960": {
-  "w": 700,
-  "h": 408,
   "target": 720,
   "v": 3
  },
@@ -4668,6 +4681,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.chosun.com/resizer/v2/HFTGMMDFHA3TQOJUGFRDMMBWMM.png?auth=32a1d0b3faf455c68b249360b57676779016a328d9b025e0f81a67162aad050a&width=650&height=341&smart=true": {
+  "w": 650,
+  "h": 341,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.539,
+  "local": "pics/30f623000d45d986.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清"
+ },
  "https://www.chosun.com/resizer/v2/MU2WEZJSGBTDGNTBMI4TSNZYHE.jpg?auth=da2cb2cc4c9c3562f81b3037ed00ec0ed703a11c0e2a2ab70038f4005788fe99&width=650&height=341&smart=true": {
   "w": 650,
   "h": 341,
@@ -4690,12 +4716,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://www.comicbasics.com/wp-content/uploads/2026/10/avengers-doomsday2.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Robert-Downey-Pedro-Pascal.webp": {
@@ -5165,12 +5185,6 @@
    960
   ],
   "why": "看不清"
- },
- "https://www.wrestlezone.com/wp-content/uploads/sites/8/2026/07/wwe-worlds-collide-green.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
  },
  "https://www.yonex.co.jp/ogp.jpg": {
   "w": 1200,
