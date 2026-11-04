@@ -1,32 +1,32 @@
 {
- "admin": "8ce7519bc60a",
- "admin-ai": "a256047872dc",
+ "admin": "869a912970a3",
+ "admin-ai": "b603b54cd882",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "da1e9613"
+   "6dbfe3b2"
   ],
   "tokens": [
    "AI 編集のトークン",
    "95d6f0f4"
   ]
  },
- "admin-boards": "182a3a9d8e94",
+ "admin-boards": "bdc591b20838",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "99619d4f"
+   "3e49e747"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "2b202c9063cd",
+ "admin-emblem": "f67e6cfd82bb",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "fc5f91d6"
+   "a20787c1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "8c42bfa619f4",
+ "admin-now": "28e7564a7ed0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "33621380"
+   "6bfe972c"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "fe84a826"
+   "9ce63ce4"
   ],
   "term-panel": [
    "ライブログ",
-   "19798ab0"
+   "ffd640bd"
   ]
  },
- "admin-system": "dcd071c85f69",
+ "admin-system": "a8a3ec296e37",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "645605ae"
+   "1da94ebd"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e720c9cd"
+   "cabcfd48"
   ]
  },
  "admin_marks": {},
- "heat": "535782d5984b",
+ "heat": "bea97fe13c66",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "2cab7534"
+   "81db8e53"
   ],
   "ranking": [
    "ランキング",
-   "c294e338"
+   "6ec5dc38"
   ]
  },
- "index": "0e465121ed05",
+ "index": "7c9099f6792b",
  "index_marks": {
   "front": [
    "トップ",
-   "ada4a5b6"
+   "945929e5"
   ],
   "picks": [
    "気になるかも？",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "f41110e9"
+   "1bf68dc3"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "12a4fe9d"
+   "9c2bcea6"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "7e5dbe4c"
+   "663ae7d6"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "be423eb2"
+   "f6866d6a"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "25b5f963"
+   "1aaa3285"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "31cc20b6"
   ]
  },
- "updated": "11.04 17:04",
- "wishlist": "37339ac813cd"
+ "updated": "11.04 17:12",
+ "wishlist": "73cc532fca13"
 }
