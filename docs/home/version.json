@@ -1,14 +1,14 @@
 {
- "admin": "0e3b491dc410",
- "admin-ai": "b9504804736d",
+ "admin": "27102e4d212b",
+ "admin-ai": "d6060fc254b6",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "91ce301a"
+   "018bd853"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "b08b52bc"
+   "ddd7f683"
   ]
  },
  "admin-boards": "aad5d7ef7998",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "1a38f13310ce",
+ "admin-emblem": "83dfd67c0cd8",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "fef20e20"
+   "750f47e7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "4e24f8a9cd60",
+ "admin-now": "605bbbe53780",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2ba10671"
+   "165865a5"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c0c67f23"
+   "524ef23f"
   ]
  },
- "admin-system": "afbc51b87d3d",
+ "admin-system": "d957db3508d6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a23a9eed"
+   "89be2fa5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "25306058"
+   "8199e0dc"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "5ea73fff"
   ]
  },
- "index": "6e2a29aa51f4",
+ "index": "fd46337d815f",
  "index_marks": {
   "front": [
    "トップ",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "d655ca48"
+   "5610aa99"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1bf68dc3"
+   "f41110e9"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "8e7ecaa6"
+   "d8a34935"
   ],
   "w-f303ad09": [
    "绝区零",
    "f00e4634"
   ]
  },
- "updated": "11.04 21:29",
+ "updated": "11.04 21:37",
  "wishlist": "73cc532fca13"
 }
