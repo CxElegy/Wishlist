@@ -26,6 +26,7 @@ import pathlib
 import random
 import re
 import sys
+import threading
 import time
 import urllib.parse
 import urllib.error
@@ -2888,16 +2889,55 @@ def _run_min(proc, default_secs):
 _LIVE_SENT = {}   # (版面, proc) → 最後に書いた内容。同じなら書かない
 
 
+LIVE_FETCH_SHOW_SEC = 20   # 「記事を探しています」は、これより長く探している版面だけに出す（すぐ終わる版面は POST と DELETE の 2 回が無駄だった）
+LIVE_EMBLEM_GAP_SEC = 30   # 小元素の段の名前（emblem:…）の書き換えは版面ごとにこれだけ空ける
+_LIVE_ROW = {}     # (版面, proc) → データベースに行を書いたか（書いていない行の DELETE は送らない）
+_LIVE_TIMER = {}   # (版面, proc) → 「探しています」を遅らせて書く Timer
+_LIVE_LAST = {}    # (版面, proc) → 最後に書いた時刻（monotonic）
+_LIVE_LOCK = threading.Lock()
+
+
 def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"):
     """简报网页的版面「更新中」条（render.BUSY_JS 读 Supabase 的 live_status()）：这个版面现在在做什么。
     state：fetch（正在找新记事）/ found（有新记事：网页上显示「新着 N 件 · AI 整理待ち」——新记事等 AI 编辑整理后才成为报道，
     出刊后先列在版面底部的「整理待ち」里，要紧消息除外）；None = 删掉这一行（没有新记事，条消失）。
     board=None 且 state=None：删掉这个 proc 的全部行（每次收集开始时清空）。失败也不影响收集本身。
-    同じ内容を同じ処理の中で二度書かない（無料枠：API の呼び出しを減らす。_LIVE_SENT が前に書いた内容）。"""
+    無料枠（API の呼び出しを減らす）：①同じ内容は二度書かない（_LIVE_SENT）②fetch は LIVE_FETCH_SHOW_SEC 秒かかった版面だけ書く
+    ③書いていない行の DELETE は送らない（収集の最初に proc 全部を消してある）④小元素の段の書き換えは LIVE_EMBLEM_GAP_SEC 秒に 1 回。"""
     sig = (state, found, str(started), str(eta))
-    if _LIVE_SENT.get((board, proc)) == sig:
+    key = (board, proc)
+    if _LIVE_SENT.get(key) == sig:
         return
-    _LIVE_SENT[(board, proc)] = sig
+    if state and str(state).startswith("emblem:") and time.monotonic() - _LIVE_LAST.get(key, -1e9) < LIVE_EMBLEM_GAP_SEC:
+        return   # 段の名前だけの更新：次の段でまた書く（sig も更新しない）
+    _LIVE_SENT[key] = sig
+    with _LIVE_LOCK:
+        tm = _LIVE_TIMER.pop(key, None)
+        if tm:
+            tm.cancel()
+        if state == "fetch" and board:
+            tm = threading.Timer(LIVE_FETCH_SHOW_SEC, _live_write, (board, proc, state, found, started, eta, key))
+            tm.daemon = True
+            _LIVE_TIMER[key] = tm
+            tm.start()
+            return
+        if state is None and board and not _LIVE_ROW.get(key):
+            return   # 書いていない行は消すものがない
+    _live_write(board, proc, state, found, started, eta, key)
+
+
+def _live_write(board, proc, state, found, started, eta, key):
+    with _LIVE_LOCK:
+        if state == "fetch":
+            if _LIVE_TIMER.get(key) is None:   # もう済んだ（別の live_mark が Timer を外した）
+                return
+            _LIVE_TIMER.pop(key, None)
+        if state is None and not board:
+            for k in [k for k in _LIVE_ROW if k[1] == proc]:
+                _LIVE_ROW.pop(k)
+        else:
+            _LIVE_ROW[key] = state is not None
+        _LIVE_LAST[key] = time.monotonic()
     try:
         if state is None:
             q = f"proc=eq.{proc}" + (f"&board=eq.{urllib.parse.quote(board)}" if board else "")
