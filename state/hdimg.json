@@ -179,7 +179,7 @@
  "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg": {
   "w": 1752,
   "h": 2830,
-  "target": 720,
+  "target": 1280,
   "v": 3,
   "local": "pics/8ece44eb568b58e4.webp",
   "out": [
@@ -3266,6 +3266,12 @@
   "target": 720,
   "v": 3
  },
+ "https://photo.newsen.com/news_photo/2026/11/04/202611040945376310_51.jpg": {
+  "w": 650,
+  "h": 490,
+  "target": 720,
+  "v": 3
+ },
  "https://pickcon.co.kr/site/data/img_dir/2026/10/26/2026102680187_0.jpg": {
   "w": 900,
   "h": 1262,
@@ -4419,7 +4425,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=700": {
   "w": 700,
   "h": 422,
   "target": 720,

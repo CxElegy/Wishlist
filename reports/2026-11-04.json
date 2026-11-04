@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "edit_sig": "e2953997e6c7",
+ "edit_sig": "cc6f5a3fd043",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -911,15 +911,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 11,
-     "source": "新浪网",
-     "title": "2026 年 11 月 3 日音乐榜单：A2O LITE 与 RESCENE 双冠",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9oRi02TEZqSVVqODZYTmVWaURldC1qcmY4VmlkQWhRQ1FPbTRWcjF1anBRN0lkOUZJZW52RTl2dTVrUnZacEgtZlFGZ0stN0psNU04SHlWekZyc3JCeThDRUtUUQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -947,7 +938,7 @@
      "date": "2026-11-03",
      "headline": "[S이슈] A2O LITE, 데뷔하자마자 인기돌풍의 이유는?",
      "highlight": "인기돌풍",
-     "image": "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200",
+     "image": "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=700",
      "image_via": "Bing 缩略图",
      "url": "https://www.stardailynews.co.kr/news/articleView.html?idxno=601301",
      "weight": "normal"
@@ -960,6 +951,16 @@
      "image": "https://image.inews24.com/v1/cfffa618f78d76.jpg",
      "image_via": "og:image",
      "url": "http://www.inews24.com/view/2021702",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "2026 年 11 月 3 日音乐榜单：A2O LITE 与 RESCENE 双冠",
+     "highlight": "双冠",
+     "image": "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5361523818235818.html",
      "weight": "normal"
     }
    ],

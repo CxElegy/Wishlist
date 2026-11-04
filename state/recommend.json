@@ -77,11 +77,11 @@
   "https://www.msn.com/ko-kr/%EA%B8%B0%EC%88%A0/%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4-%EB%B0%8F-%EB%94%94%EB%B0%94%EC%9D%B4%EC%8A%A4/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%ED%94%84%EB%A1%9C-%EA%B8%B0%EC%96%B4%EC%9D%B4-%EC%9D%B4-cpu-%EB%82%B4%EC%9E%A5%ED%95%B4-%EC%B6%9C%EC%8B%9C%ED%95%98%EB%82%98/ar-AA2gIJxK": "https://www.bing.com/th?id=ONUT.aBIaUASFji8bSUZw5xhQkw&pid=News&w=1200",
   "https://www.msn.com/zh-tw/news/other/%E5%91%A8%E6%9D%B0%E5%80%AB%E9%96%8B%E9%81%8E%E7%9A%84-%E8%BB%8A%E7%A5%9E%E5%BA%A7%E9%A7%95-%E5%A6%82%E6%9E%9C%E5%9B%9E%E6%AD%B8-%E6%83%B3%E5%83%8F%E5%9C%96%E9%87%8D%E7%8F%BE%E7%B6%93%E5%85%B8%E7%86%8A%E8%B2%93%E9%85%8D%E8%89%B2-%E8%BB%8A%E8%BF%B7%E7%9C%8B%E4%BA%86%E5%A5%BD%E6%83%B3%E8%A6%81/ar-AA2gCGfB": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCQ4v.img",
   "https://www.newsbreak.com/animal-of-things-308620312/4978668818050-rabbit-hunting-season-in-new-york-dates-limits-and-rules-for-cottontails-and-hare": "https://img.particlenews.com/img/id/2cj1zQ_1GdcY14P00",
+  "https://www.newsen.com/news_view.php?uid=202611040945376310&code=100100": "https://photo.newsen.com/news_photo/2026/11/04/202611040945376310_51.jpg",
   "https://www.nikkei.com/nkd/disclosure/tdnr/20261030560696/": "https://www.nikkei.com/nkd/disclosure/tdnr/20261030560696/thumbnail/?ttype=ogp",
   "https://www.setn.com/news/149144": "https://attach.setn.com/newsimages/2016/05/23/537350-PH.jpg",
   "https://www.sina.cn/news/detail/5356822332443719.html": "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg",
   "https://www.sina.cn/news/detail/5359474912273486.html": "https://k.sinaimg.cn/n/news/1_img/upload/d8010f78/213/w2048h1365/20261102/a8a0-af62ed6facd88229ec0b593b1f51616d.jpg/w710h400z1l50t1q7538e.jpg?by=comos",
-  "https://www.sina.cn/news/detail/5361523818235818.html": "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg",
   "https://www.sina.cn/news/detail/5361545670297206.html": "http://wx2.sinaimg.cn/middle/90b10eb9ly1iiq64fm5aaj20ts1jkqpq.jpg",
   "https://www.techeblog.com/samsung-galaxy-camera-android-specs-hands-on-release/": "https://images.techeblog.com/wp-content/uploads/2026/11/02234424/samsung-galaxy-camera.jpg",
   "https://www.tehrantimes.com/news/531702/Mokri-s-Black-Rabbit-White-Rabbit-wins-at-63rd-International": "https://media.tehrantimes.com/d/t/2026/11/01/4/6242024.jpg?ts=1793535295479",
@@ -1358,27 +1358,6 @@
   },
   {
    "batch": 4,
-   "because": "A2O LITE",
-   "date": "2026-11-04",
-   "hits": [],
-   "image": "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "新浪网",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "2026 年 11 月 3 日音乐榜单：A2O LITE 与 RESCENE 双冠",
-   "url": "https://www.sina.cn/news/detail/5361523818235818.html",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-04",
    "hits": [],
@@ -1399,7 +1378,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-04",
    "hits": [],
@@ -1418,6 +1397,27 @@
    "url": "https://finance.yahoo.com/media-advertising/articles/doomsday-arrived-even-super-heroes-100000775.html",
    "words": [],
    "work": "漫威电影"
+  },
+  {
+   "batch": 5,
+   "because": "A2O LITE",
+   "date": "2026-11-04",
+   "hits": [],
+   "image": "https://photo.newsen.com/news_photo/2026/11/04/202611040945376310_51.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "뉴스엔",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "A2O LITE 아니었다‥리센느, 11월 신인 아이돌 브랜드평판 1위",
+   "url": "https://www.newsen.com/news_view.php?uid=202611040945376310&code=100100",
+   "words": [],
+   "work": "A2O LITE"
   },
   {
    "batch": 5,
@@ -2138,11 +2138,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2154,11 +2154,11 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ]
  ]
