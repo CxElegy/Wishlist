@@ -116,24 +116,6 @@ def pages(site=None):
     return sorted((site or sitedir.SITE_DIR).glob("*.html"))
 
 
-def user_pages(base, keyv):
-    """お客さまのページ（Storage の pages/<本人>/*.html。user_pages.py が作る）の本文。店長と同じ置き場を使うため、写真を数える。取れなければ空。"""
-    out = []
-    try:
-        req = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/list/pages", data=json.dumps({"prefix": "", "limit": 1000}).encode(),
-                                     method="POST", headers={"apikey": keyv, "Authorization": f"Bearer {keyv}", "Content-Type": "application/json"})
-        folders = [d["name"] for d in json.loads(sbstate.sb_open(req, 30).read()) if d.get("name")]
-    except Exception:  # noqa: BLE001
-        return out
-    for fo in folders:
-        try:
-            r = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/pages/{fo}/index.html", headers={"apikey": keyv, "Authorization": f"Bearer {keyv}"})
-            out.append(sbstate.sb_open(r, 30).read().decode("utf-8", "replace"))
-        except Exception:  # noqa: BLE001
-            continue
-    return out
-
-
 def scan_text(texts, seen, want):
     """want は「どの版面の先頭の写真か」を先に入れる（置く順：先頭が置き場に無い版面から。Fast 3G で先頭が届かない根）。"""
     pre = f"/storage/v1/object/public/{BUCKET}/"
@@ -326,7 +308,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     base = base or ""
     st = load(path)
     p, x = st["p"], st["x"]
-    seen, want, total = scan(site, user_pages(base, keyv) if base and keyv else ())
+    seen, want, total = scan(site)   # お客さまのページ（storage の pages/）は読まない：3 時間ごとに全部落とすと cached egress を使う（2026-11-04）
     today = day()
     seen |= set(want) & set(p)   # 置いたが、まだ網页を作り直していない分
     for k in seen & set(p):
@@ -377,7 +359,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                     nm += 1
     for k in [k for k, d in x.items() if today - d > KEEP_DAYS]:
         del x[k]
-    gone = evict(p, seen, today)
+    gone = evict(p, seen, today, keep_days=10 ** 6)   # お客さまのページを数えないので、載っていない＝使われていないとは言えない：日数では消さず、上限（CAP）超えだけ古い順
     if gone and base and keyv:
         remove(base, keyv, gone)
     for k in gone:

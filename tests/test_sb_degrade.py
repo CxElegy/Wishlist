@@ -418,6 +418,23 @@ class EveryCallGoesThroughSbstate(unittest.TestCase):
         f.write_text('fetch = lambda u: urllib.request.urlopen(u, timeout=20).read()\n', encoding="utf-8")
         self.assertEqual(len(self.scan([f])), 1)
 
+    def test_storage_object_urls_are_writes_only(self):
+        """storage の非公開の道（/storage/v1/object/<箱>/…・list）を作る行は書き込みだけ。読みは storage_read（写し）か Pages から（2026-11-04：user_pages の全ページ読みが毎回 egress だった）。"""
+        ok = {"library_emblem.py": ['/storage/v1/object/{BUCKET}/{name}'], "photo_store.py": ['/storage/v1/object/{path}'],
+              "user_pages.py": ['/storage/v1/object/pages/_fp/all.json', '/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}']}
+        bad = []
+        for sub in ("scripts", "harness"):
+            for f in sorted((ROOT / sub).glob("*.py")):
+                for i, ln in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
+                    if re.search(r"/storage/v1/object/(?!public/)", ln) and not any(s in ln for s in ok.get(f.name, [])) and "re.compile" not in ln:
+                        bad.append(f"{sub}/{f.name}:{i}")
+        self.assertEqual(bad, [])
+
+    def test_photo_store_does_not_list_storage(self):
+        src = (ROOT / "scripts" / "photo_store.py").read_text(encoding="utf-8")
+        self.assertNotIn("object/list/", src)
+        self.assertNotIn("def user_pages", src)
+
     def test_no_direct_supabase_calls(self):
         self.assertEqual(self.scan(), [], "sbstate.sb_open を通す（または ALLOW に理由つきで足す）")
 
