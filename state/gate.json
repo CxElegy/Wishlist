@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-04T06:27:43+00:00",
+ "checked": "2026-11-04T08:00:54+00:00",
  "fired": {
-  "at": "2026-11-04T06:28:02+00:00",
+  "at": "2026-11-04T08:01:12+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-04T05:31:53+00:00",
+    "at": "2026-11-04T08:01:12+00:00",
     "attempts": 1,
     "day": "2026-11-04",
-    "prog": 259,
-    "resp": "cse_01W4x6f8auQzj1Wm3RTeyBno",
-    "sig": "fee65bab23ec"
+    "prog": 313,
+    "resp": "cse_01W4x6f6YU1kmk9JGJqhKmt6",
+    "sig": "2ab8ade48142"
    },
    "items": [
     "ILLIT",
@@ -36,11 +36,19 @@
    "need": true,
    "prog": 313,
    "prog_day": "2026-11-04",
-   "ripe": [],
-   "sig": "702621efe8ac",
+   "ripe": [
+    "ILLIT",
+    "Vaundy",
+    "dota2",
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "猫用品",
+    "绝区零"
+   ],
+   "sig": "2ab8ade48142",
    "token_cap": 1000000,
    "tokens_today": 485912,
-   "why": "整理待ちの記事 10 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 10 件（7 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
