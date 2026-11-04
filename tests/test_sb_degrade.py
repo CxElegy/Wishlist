@@ -391,7 +391,8 @@ class EveryCallGoesThroughSbstate(unittest.TestCase):
     ALLOW = {
         "digest.py": {'f"{base}/rest/v1/{path}"': "supabase() 本体：402 を mark_limited して None"},
         "user_pages.py": {"/storage/v1/": "_req：402 を mark_limited して Limited"},
-        "photo_store.py": {'else public(st["base"]': "網址を返すだけ（render 用・取得しない）"},
+        "photo_store.py": {'else public(st["base"]': "網址を返すだけ（render 用・取得しない）",
+                           "sbstate.storage_read(public(": "写しを読む（storage の網に出ない・NotCached）"},
         "photo_cache_fill.py": {"/rest/v1/": "1 日 1 回・1 GET・失敗は空で続ける（photo_cache.yml）"},
         "emb_check.py": {"/rest/v1/": "係の手元の点検（Actions でない）・読むだけ 1 回"},
         "ux_check.py": {"/": "係の手元の点検（Actions でない）・本番を読むだけ・各段 1 回"},
