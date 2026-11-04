@@ -385,27 +385,32 @@ class IdleTabs(unittest.TestCase):
 class EveryCallGoesThroughSbstate(unittest.TestCase):
     """Actions が Supabase（rest・rpc・storage・auth）へ出る呼び出しは sbstate.sb_open か、402 を自分で扱う名簿の中だけ（2026-11-04）。
     直書きを足すと 402 を見落として呼び続ける。"""
-    PAT = re.compile(r"Request\(.*(/rest/v1|/storage/v1|/auth/v1)")
-    # 402 を自分で扱う（理由つき）。key = ファイル名:Request 行の一部
+    # Request(…supabase の道…) か、storage の網址を作る public( の行から 8 行以内に sb_open が無ければ直書き
+    PAT = re.compile(r"Request\(.*(/rest/v1|/storage/v1|/auth/v1)|(?<!def )\bpublic\(")
+    # 402 を自分で扱う・網に出ない行だけ（ファイル全体は除外しない）。key = ファイル名、値 = {行の字面: 理由}
     ALLOW = {
-        "digest.py": "supabase() 本体：402 を mark_limited して None",
-        "user_pages.py": "_req：402 を mark_limited して Limited",
-        "photo_cache_fill.py": "1 日 1 回・1 GET・失敗は空で続ける（photo_cache.yml）",
-        "emb_check.py": "係の手元の点検（Actions でない）・読むだけ 1 回",
-        "ux_check.py": "係の手元の点検（Actions でない）・本番を読むだけ・各段 1 回",
+        "digest.py": {'f"{base}/rest/v1/{path}"': "supabase() 本体：402 を mark_limited して None"},
+        "user_pages.py": {"/storage/v1/": "_req：402 を mark_limited して Limited"},
+        "photo_store.py": {'else public(st["base"]': "網址を返すだけ（render 用・取得しない）"},
+        "photo_cache_fill.py": {"/rest/v1/": "1 日 1 回・1 GET・失敗は空で続ける（photo_cache.yml）"},
+        "emb_check.py": {"/rest/v1/": "係の手元の点検（Actions でない）・読むだけ 1 回"},
+        "ux_check.py": {"/": "係の手元の点検（Actions でない）・本番を読むだけ・各段 1 回"},
     }
 
-    def scan(self):
+    def scan(self, files=None):
         bad = []
-        for sub in ("scripts", "harness"):
-            for f in sorted((ROOT / sub).glob("*.py")):
-                if f.name in self.ALLOW:
-                    continue
-                lines = f.read_text(encoding="utf-8").splitlines()
-                for i, ln in enumerate(lines):
-                    if self.PAT.search(ln) and "sb_open" not in "\n".join(lines[i:i + 8]):
-                        bad.append(f"{sub}/{f.name}:{i + 1}")
+        for f in files or [x for sub in ("scripts", "harness") for x in sorted((ROOT / sub).glob("*.py"))]:
+            ok = self.ALLOW.get(f.name, {})
+            lines = f.read_text(encoding="utf-8").splitlines()
+            for i, ln in enumerate(lines):
+                if self.PAT.search(ln) and not any(s in ln for s in ok) and "sb_open" not in "\n".join(lines[i:i + 8]):
+                    bad.append(f"{f.parent.name}/{f.name}:{i + 1}")
         return bad
+
+    def test_pat_sees_public_urlopen(self):
+        f = pathlib.Path(tempfile.mkdtemp()) / "x.py"
+        f.write_text('def g(base,k):\n    with urllib.request.urlopen(urllib.request.Request(public(base, k, 400))) as r:\n        pass\n', encoding="utf-8")
+        self.assertEqual(len(self.scan([f])), 1)
 
     def test_no_direct_supabase_calls(self):
         self.assertEqual(self.scan(), [], "sbstate.sb_open を通す（または ALLOW に理由つきで足す）")
