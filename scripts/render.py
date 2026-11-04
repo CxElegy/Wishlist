@@ -3546,7 +3546,9 @@ FIT_JS = """
     if (beside && S > best.W * 1.6) { for (const l of order) { if (l.hidden) continue; if (side.getBoundingClientRect().height <= best.W * 1.6) break; l.hidden = true; } S2 = side.getBoundingClientRect().height; }
     const Wt = (beside && S2 > best.W && S2 - best.W <= .6 * best.W) ? S2 : best.W;
     for (let a = 0; a < cols; a++) {
-      const d = Wt - (best.bot[a] - GAP), ks = best.col[a].filter(k => !(span[k] === 2));
+      const d = Wt - (best.bot[a] - GAP);
+      let ks = best.col[a].filter(k => !(span[k] === 2));
+      if (!ks.length) ks = best.col[a];   // 列に大きい 1 枚（2 列）しかないときは、その 1 枚が伸びる（隣が 3 枚以上で高いとき、その下が空かない）
       if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], d / ks.length); });
     }
     // 2 列にまたがる大きい 1 枚の下で、2 つの列が別々に伸びると上の位置がずれるので、列ごとに下から積み直す
