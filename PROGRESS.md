@@ -352,3 +352,4 @@
 - 2026-11-04 plan1d：#875 の確かめ。pages_served（test-a/b/c × 1 回）= Pages 100.0%・storage 0・/p/ 失敗 0（426 件）。次：PR #876 合併後に ux_check。
 - 2026-11-04 plan1d：#876 合併。ux_check --who guest は pages_served が分母 0 で ✗（点検の穴・BACKLOG に段）。他は ✓。
 - 2026-11-04 f1：photo cache の赤（30 回中 6 回）の根＝run ごとの 200 MB 保存で cache 枠が満杯。保存前に古い写しを最新 1 つだけ残して削除する 1 手を追加（tests 1 件・processes.py pg6）。確かめ：合併後の photo cache が緑か 24 時間見る。
+- 2026-11-04 f1f1：#878 の続き。掃除を毎回・run_id キー 4 名前（連動の範囲 4 件：photo・ask-state・wishlist-http・wd-facts）・失敗は警告・tests/test_cache_keys.py（全 workflow 数え）。全試験 1343 OK。直ったかは未確認（保存が起きた回の要約と 24 時間緑で見る）。

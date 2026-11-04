@@ -110,13 +110,6 @@ class FillFollowsRender(unittest.TestCase):
         t = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")
         self.assertIn("pages_health.py --emblems", t)
 
-    def test_photo_cache_prunes_old_copies_before_saving(self):
-        """run ごとに 200 MB 前後を保存して枠 10 GB を食い切り「Unable to reserve cache」で赤になった（2026-11-04：30 回中 6 回）→ 保存の前に古い写しを最新 1 つだけ残して消す。"""
-        t = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")
-        self.assertIn("gh cache delete", t)
-        self.assertLess(t.index("gh cache delete"), t.index("actions/cache/save@v4"))
-        self.assertIn("actions: write", t)
-
     def test_photo_cache_runs_after_render_and_republishes(self):
         """新しい写真は render のあとに html へ載る。毎日 1 回だと最大 1 日 /p/ が 404 になった（2026-11-03：10 枚）→ render のあとに写しを足し、変わったら Pages を出し直す。"""
         t = (ROOT / ".github" / "workflows" / "photo_cache.yml").read_text(encoding="utf-8")
