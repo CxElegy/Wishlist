@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "edit_sig": "7a6d07041e40",
+ "edit_sig": "b6803c0c81e7",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?bqVdDUNTL2GwsM_MMMW0M",
@@ -858,36 +858,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 6,
-     "source": "아이뉴스24",
-     "title": "[창간22년] A2O LITE \"'올해의 신인' 신기해⋯이수만·써니 '자신 믿으라' 조언\"(인터뷰)",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFB0ZVNOcGhQU29kR2VQTXI2WHFUZkxXYVp2R2RGRG03Z1o0dlIxOC1XMld3ZjNrT0U5Q29Tc21oNXBrWWVQeUJNZlJpQQ?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 7,
-     "source": "아이뉴스24",
-     "title": "[창간22년] A2O LITE, 데뷔부터 일냈다⋯가요계 '올해의 신인'",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5tMUVpTDZOTHFySVBWMVJHZm9uckxEVTZkaFdrMTFBSGdMMjYzbXNCSVJDV1VlSmpiYmlYYmE2akYxcHNyVlFWX1hNNA?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 8,
-     "source": "텐아시아",
-     "title": "리센느, 컴백하자마자 A2O LITE 올라섰다…멜론차트 정상",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBfSWl5c1JjNm9jb2dudVVudXZYYVVSYnVxZmZuYmwzd2xMTUg2VndZWFd4WGpkaG1oX1ZPS2dHTzRqQ1R5TXpUS01LNEUzR1E3RG85WUQ3U29HNjQ?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 9,
-     "source": "Howl.Link",
-     "title": "[K-Fancam] A2O LITE 라다 직캠 'NEON' (A2O LITE RADA Fancam) @뮤직뱅크(Music Bank) 261030",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBJenAzVno4OXNsUkQ3SU1tQTVrb1JHdmtvSkw2bUh2VjNNVHduTzhiNnN3RFlOckpVR0Zn?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -918,6 +888,16 @@
      "image": "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg",
      "image_via": "og:image",
      "url": "https://www.stardailynews.co.kr/news/articleView.html?idxno=601301",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "[창간22년] A2O LITE \"'올해의 신인' 신기해⋯이수만·써니 '자신 믿으라' 조언\"(인터뷰)",
+     "highlight": "",
+     "image": "https://image.inews24.com/v1/cfffa618f78d76.jpg",
+     "image_via": "og:image",
+     "url": "http://www.inews24.com/view/2021702",
      "weight": "normal"
     }
    ],

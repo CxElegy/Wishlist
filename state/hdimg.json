@@ -1383,8 +1383,15 @@
  "https://image.inews24.com/v1/cfffa618f78d76.jpg": {
   "w": 580,
   "h": 386,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.462,
+  "local": "pics/3b5497bed0a3e8a8.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
  },
  "https://image.news.livedoor.com/newsimage/stf/1/7/17f3f_1815_517adb37_effde14d.jpg": {
   "w": 850,
@@ -3144,6 +3151,12 @@
  "https://photo.newsen.com/news_photo/2026/10/28/202610281514112310_1.jpg": {
   "w": 650,
   "h": 557,
+  "target": 720,
+  "v": 3
+ },
+ "https://photo.newsen.com/news_photo/2026/11/04/202611040945376310_51.jpg": {
+  "w": 650,
+  "h": 490,
   "target": 720,
   "v": 3
  },
