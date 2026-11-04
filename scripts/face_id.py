@@ -10,6 +10,7 @@ Wikipedia や Commons の記事には、本人と関係のない画像（絵画�
 呼び出し側は「顔の有無だけ」の確認に下げる（その旨をログに出す）。
 """
 
+import nostorage  # noqa: F401  公開の箱を落とさない止め（全部の網の道）
 import os
 import pathlib
 import threading

@@ -13,6 +13,7 @@ Claude のクラウドのコンテナ・GitHub Actions は IP をほかの人と
 があれば API（api.php・rest.php）に Authorization: Bearer を付け、上限はアカウントごとに数えられる（IP に左右されない）。
 画像（upload.wikimedia.org）には付けない。トークンが拒まれたら（401 / 403）付けずに続ける。
 """
+import nostorage  # noqa: F401  公開の箱を落とさない止め（全部の網の道）
 import os
 import pathlib
 import threading

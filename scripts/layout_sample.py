@@ -3,6 +3,7 @@ scripts/layout_ba.py が、これと本番の同じ場所を撮って testground
 記事の並べ方を 1 つの仕組みで作り直した全体見本（本物のデータ）。
 本番の docs/home/index.html から記事を読み、①assign()＝記事の割り当て 1 か所（同じ記事は 1 回）②card()＝カード 1 種類
 ③board()＝並べる器 1 種類 で 7 つの場所（DESIGN_PRINCIPLES G・L1〜L11）を組む。本番は入れ替えない。"""
+import nostorage  # noqa: F401  公開の箱を落とさない止め（全部の網の道）
 import html, os, re
 from pathlib import Path
 
