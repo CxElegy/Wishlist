@@ -1,0 +1,60 @@
+name: 402 通し点検
+
+# 偽の 402 に Actions の入口を当てて縮みを数える（harness/fake402_check.py）。ci.yml の全試験に入れると単独で長く
+# （25 分の上限を超えて PR #893 が cancelled になった 2026-11-04）、ここへ分けた。tests/test_fake402.py の重い 1 本は
+# 環境変数 WL_FAKE402=1 のときだけ走る（ci.yml では skip）＝ここが「必ず通る」チェック。
+# 必須にする条件：scripts/・.github/workflows/・harness/fake402_check.py を触った PR（render.py は scripts/ の中）。
+# 触っていない PR は最初の判定の step で残りを飛ばして緑で終わる（チェック名が毎回出る＝必須チェックにしても待ちぼうけにならない）。
+# 毎日の定時（日本時間 5:07）と手動でも回す。網は 127.0.0.1 の偽サーバーだけ（本番の Supabase には出ない）。
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  schedule:
+    - cron: "7 20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fake402-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fake402:
+    name: 402 通し点検
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: 触ったファイルで走らせるか決める
+        id: gate
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git diff --name-only "origin/${{ github.base_ref }}...HEAD" > /tmp/changed.txt
+            if grep -Eq '^(scripts/|\.github/workflows/|harness/fake402_check\.py|tests/test_fake402\.py)' /tmp/changed.txt; then
+              echo "run=1" >> "$GITHUB_OUTPUT"
+            else
+              echo "run=0" >> "$GITHUB_OUTPUT"
+              echo "scripts/・workflows・fake402_check を触っていない PR なので点検は飛ばす（毎日の定時で回る）"
+            fi
+          else
+            echo "run=1" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.gate.outputs.run == '1'
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - if: steps.gate.outputs.run == '1'
+        run: pip install -r requirements.txt
+      - name: 偽の 402 を当てる（入口を並べて走らせる）
+        if: steps.gate.outputs.run == '1'
+        env:
+          WL_FAKE402: "1"
+          WL_FAKE402_WORKERS: "4"
+        run: python harness/fake402_check.py
