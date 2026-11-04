@@ -71,6 +71,7 @@ NO_HITS = {
     "library_watch": "Supabase を使わない（scripts/library_watch.py に sbread・sbstate・supabase が無い）。ローカルの写しを数えるだけ",
     "collect_watch": "Supabase を使わない（scripts/collect_watch.py に sbread・sbstate・supabase が無い）",
     "gate check": "ローカルの state/ から作り直す値だけ。Supabase を読む edit_mode は gate fire の側（そちらは 402 を 1 回受ける）",
+    "gate fire": "AI 編集の整理待ちがあるときだけ edit_mode（Supabase）を読む。待ちが無い回（CI の写しの state/ による）は 0 回で正しい＝手元と CI で回数が違う",
     "photo_store --kick": "ローカルで置いていない枚数を数え、あれば gh で photo_store.yml を起こすだけ（Supabase に触らない）",
     "new-items": "ローカルの inbox/ を読むだけ",
     "unedited": "ローカルの inbox/・edit.json を読むだけ",
