@@ -88,7 +88,6 @@
   "https://www.vietnam.vn/ja/chiec-flagship-trung-quoc-ban-chay-nhat-nam-nay": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/29/1793282040355_honor_magic_9_pro_max_design.jpeg",
   "https://www.walkerplus.com/article/1026125/image10233236.html": "https://news.walkerplus.com/article/1026125/10233248_615.jpg",
   "https://www.walkerplus.com/article/211869/image1303161.html": "https://news.walkerplus.com/article/211869/1303155_615.jpg",
-  "https://www.yahoo.com/entertainment/movies/articles/dunkin-enlists-actor-channing-tatum-144553180.html": "https://www.bing.com/th?id=ONUT.IGMXPkqt6th3aXa9FKCnzg&pid=News&w=960",
   "https://www.yahoo.com/entertainment/tv/articles/harry-potter-paapa-essiedu-brutally-004500908.html": "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960",
   "https://www.youtube.com/watch?v=pjnY80oiVT0": "https://i1.ytimg.com/vi/pjnY80oiVT0/hqdefault.jpg"
  },
@@ -1402,27 +1401,6 @@
    "because": "漫威电影",
    "date": "2026-11-04",
    "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.IGMXPkqt6th3aXa9FKCnzg&pid=News&w=960",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "Yahoo",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Dunkin’ Enlists Actor Channing Tatum for ‘Avengers: Doomsday’ Campaign",
-   "url": "https://www.yahoo.com/entertainment/movies/articles/dunkin-enlists-actor-channing-tatum-144553180.html",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 5,
-   "because": "漫威电影",
-   "date": "2026-11-04",
-   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.ZuMjDJWmJ-jDa0XVQ51nTQ&pid=News&w=1200",
    "kind": "board",
    "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
@@ -1503,7 +1481,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-02",
    "hits": [],
@@ -1608,7 +1586,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 7,
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-10-30",
    "hits": [],
@@ -2149,15 +2127,15 @@
    8
   ],
   [
-   "三星 Galaxy",
-   7
-  ],
-  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
+   7
+  ],
+  [
+   "三星 Galaxy",
    7
   ]
  ]
