@@ -1,6 +1,6 @@
 {
  "admin": "4553c6a40eb3",
- "admin-ai": "4cac2a95aca6",
+ "admin-ai": "5dcf3d99ea09",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "9cee78e0"
+   "03785d10"
   ]
  },
  "admin-boards": "bdc591b20838",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "33cbb6ce5936",
+ "admin-emblem": "752789a270b4",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "6c37e261"
+   "028b3b05"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "79516e3f"
+   "a983d6bb"
   ]
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "2e6c914e1190",
+ "admin-now": "538e50015dc7",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "1f393357"
+   "7aca23c5"
   ],
   "queue": [
    "いまの状況",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "e1fa71aa"
+   "833b5ef5"
   ]
  },
- "admin-system": "2ab0fab9c5e2",
+ "admin-system": "2af40c653bca",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a00cee23"
+   "5db9553d"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "6ec5dc38"
   ]
  },
- "index": "54a4265f445e",
+ "index": "f29d96714007",
  "index_marks": {
   "front": [
    "トップ",
-   "945929e5"
+   "ada4a5b6"
   ],
   "picks": [
    "気になるかも？",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "9c2bcea6"
+   "12a4fe9d"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "663ae7d6"
+   "7e5dbe4c"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "6a14cfbe"
+   "fb1a9706"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "dbb0397b"
   ]
  },
- "updated": "11.04 17:31",
+ "updated": "11.04 17:32",
  "wishlist": "73cc532fca13"
 }
