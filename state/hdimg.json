@@ -73,12 +73,6 @@
   ],
   "why": "看不清"
  },
- "http://n.sinaimg.cn/sinakd20261103ac/533/w480h853/20261103/018c-f87859f0c231c1c90b09f81f870c783f.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 1280,
-  "v": 3
- },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
@@ -90,6 +84,19 @@
   "h": 1080,
   "target": 720,
   "v": 3
+ },
+ "http://tu.duoduocdn.com/uploads/day_261104/202611040024134632_thumb.jpg": {
+  "w": 300,
+  "h": 200,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.608,
+  "local": "pics/f456da5569855f75.webp",
+  "out": [
+   900,
+   600
+  ],
+  "why": "看不清"
  },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
@@ -729,6 +736,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg": {
+  "w": 1800,
+  "h": 1086,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.utaten.com/uploads/images/specialArticle/10324/3f786fa5a4cc1739c2291e08bfcf1e7e52140a71.jpeg?type=original?r=2026110310": {
   "w": 1200,
   "h": 630,
@@ -1295,6 +1308,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i01.ftnn.com.tw/a/26/307/26307091517658703d556b.png": {
+  "w": 660,
+  "h": 371,
+  "target": 720,
+  "v": 3
+ },
  "https://i1.ytimg.com/vi/49i2KUiKOlQ/hqdefault.jpg": {
   "w": 480,
   "h": 360,
@@ -1556,6 +1575,12 @@
   "w": 1440,
   "h": 810,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2axpaI.img": {
+  "w": 1280,
+  "h": 742,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cflpr.img": {
@@ -1899,12 +1924,6 @@
   "w": 800,
   "h": 1199,
   "target": 1280,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/03/5628427_2.jpg": {
-  "w": 800,
-  "h": 1053,
-  "target": 720,
   "v": 3
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
@@ -3158,12 +3177,6 @@
   "target": 1280,
   "v": 3
  },
- "https://preview.redd.it/p7ligtlkkyxh1.jpeg?width=640&crop=smart&auto=webp&s=683d8e8c0370d803c24f0f290da3cf4e91824fab": {
-  "w": 640,
-  "h": 853,
-  "target": 1280,
-  "v": 3
- },
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
   "w": 760,
   "h": 1125,
@@ -3937,6 +3950,13 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.AqFGAOPiUknUmy3Gx9ZeQw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.413
+ },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
   "h": 590,
@@ -4062,13 +4082,6 @@
    671
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.SdDKKuSrrQgIVsVVJWcARA&pid=News&w=700": {
-  "w": 700,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.344
  },
  "https://www.bing.com/th?id=ONUT.UBRO9CAO0UKiuMrm--RzFg&pid=News&w=1200": {
   "w": 700,

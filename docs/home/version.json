@@ -1,14 +1,14 @@
 {
- "admin": "7bd34f82fc7f",
- "admin-ai": "ba2db467ad88",
+ "admin": "ba5ecfd9cd7a",
+ "admin-ai": "4b3b249749bb",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "a32c5271"
+   "edd9b0b9"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c3abaa4b"
+   "4ff083e0"
   ]
  },
  "admin-boards": "f512b7573ca3",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "20f9cf9d3e98",
+ "admin-emblem": "d763cce9d5cc",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "2f05d1df"
+   "01010283"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "32a4e4b4e643",
+ "admin-now": "660ec4c9652f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7eb57af9"
+   "dfd5115f"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "5878bf26"
+   "39009f7b"
   ]
  },
- "admin-system": "9ce3a4a05d9d",
+ "admin-system": "4f258510f32d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e88a8549"
+   "cbdb8fad"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "614cdaf3"
+   "f6509e05"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "591ab662"
   ]
  },
- "index": "73b2f38604d5",
+ "index": "b13e1bc9bbe5",
  "index_marks": {
   "front": [
    "トップ",
-   "ab05cbce"
+   "ee5f5167"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "6ff1abeb"
+   "df8d8f93"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1bf68dc3"
+   "fe026e29"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "f006be86"
+   "8c78e65f"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "6f60276f"
+   "4760122a"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "9be760a1"
   ]
  },
- "updated": "11.04 10:40",
+ "updated": "11.04 10:48",
  "wishlist": "9772b58d6183"
 }
