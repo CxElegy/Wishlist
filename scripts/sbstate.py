@@ -38,13 +38,30 @@ def _now():
     return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _ping(text):
+    """状態が変わった瞬間だけ Discord に 1 通（DISCORD_WEBHOOK_URL が無ければ何もしない・失敗しても続ける）。"""
+    import os
+    import urllib.request
+    url = os.environ.get("DISCORD_WEBHOOK_URL")
+    if not url:
+        return False
+    try:
+        req = urllib.request.Request(url, data=json.dumps({"content": text, "allowed_mentions": {"parse": []}}).encode(),
+                                     headers={"Content-Type": "application/json", "User-Agent": "wishlist-sbstate"})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return 200 <= r.status < 300
+    except Exception:
+        return False
+
+
 def mark_limited(where="", path=None):
-    """402 を見た。状態が変わるときだけ書く（since は最初に見た時刻のまま）。"""
+    """402 を見た。状態が変わるときだけ書く（since は最初に見た時刻のまま）。入った瞬間だけ Discord に 1 通。"""
     global LIMITED
     LIMITED = True
     cur = load(path)
     if cur.get("status") != "limited":
         _write({"status": "limited", "since": _now(), "at": _now(), "where": where[:80]}, path)
+        _ping("Supabase が制限中（402・無料枠超過）に入りました。ページは静的のまま、👍・ログインは休止します。収集は止まらず、解けた次の回が送り直します。管理ページ https://cxelegy.github.io/Wishlist/home/admin.html")
 
 
 def mark_ok(path=None):
@@ -56,6 +73,7 @@ def mark_ok(path=None):
     cur = load(path)
     if cur.get("status") == "limited":
         _write({"status": "ok", "at": _now(), "was_limited_since": cur.get("since")}, path)
+        _ping(f"Supabase の制限（402）が解けました（{cur.get('since', '?')} から）。通常に戻ります。")
 
 
 # 書けなかった公開データの置き場（state/sb_outbox.json）。印（db_news.json など）で送り直せるもの〔news・stories・価格〕は要らない。

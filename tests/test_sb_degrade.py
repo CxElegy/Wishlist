@@ -53,6 +53,24 @@ class ActionsSide(unittest.TestCase):
             digest.sync_news()
         sv.assert_not_called()
 
+    def test_state_change_pings_once(self):
+        """402 に入った時と戻った時だけ 1 通。同じ状態の間は送らない。"""
+        with mock.patch.object(sbstate, "_ping") as pg:
+            sbstate.mark_limited("a", self.tmp)
+            sbstate.mark_limited("b", self.tmp)
+            self.assertEqual(pg.call_count, 1)
+            sbstate._OK = False
+            sbstate.mark_ok(self.tmp)
+            sbstate._OK = False
+            sbstate.mark_ok(self.tmp)
+            self.assertEqual(pg.call_count, 2)
+        self.assertIn("解けました", pg.call_args[0][0])
+
+    def test_ping_silent_without_webhook(self):
+        with mock.patch.dict("os.environ", {}, clear=True), mock.patch("urllib.request.urlopen") as u:
+            self.assertFalse(sbstate._ping("x"))
+        u.assert_not_called()
+
     def test_recovers_to_ok(self):
         sbstate.mark_limited("x", self.tmp)
         sbstate._OK = False
