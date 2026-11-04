@@ -3127,6 +3127,7 @@
     {
      "date": "2026-11-04T05:03:45+00:00",
      "image": "",
+     "link": "https://report.iko-yo.net/articles/35399",
      "n": 1,
      "seen": "2026-11-04T05:25:23+00:00",
      "site": "https://report.iko-yo.net",
@@ -3138,7 +3139,9 @@
     },
     {
      "date": "2026-11-04T04:01:45+00:00",
-     "image": "",
+     "image": "https://cdn.sanity.io/images/3pe6cvt2/production/e4efc28ffea4d7fe6b1286a37cdd0b8c57cb8352-1080x1350.png?rect=0,392,1080,567&w=1200&h=630&q=80&auto=format",
+     "image_via": "og:image",
+     "link": "https://www.k-trendtimes.com/articles/4-900-22-off-261104",
      "n": 2,
      "seen": "2026-11-04T05:25:23+00:00",
      "site": "https://www.k-trendtimes.com",
@@ -3151,6 +3154,7 @@
     {
      "date": "2026-11-04T03:22:03+00:00",
      "image": "",
+     "link": "https://www.mori.co.jp/press/release/261104_1/",
      "n": 3,
      "seen": "2026-11-04T05:25:23+00:00",
      "site": "https://www.mori.co.jp",
@@ -3162,7 +3166,9 @@
     },
     {
      "date": "2026-11-04T03:00:07+00:00",
-     "image": "",
+     "image": "https://prcdn.freetls.fastly.net/release_image/18505/4588/18505-4588-6da0e3b8955146d5278f20bd62d31ceb-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "link": "https://prtimes.jp/main/html/rd/p/000004588.000018505.html",
      "n": 4,
      "seen": "2026-11-04T05:25:23+00:00",
      "site": "https://prtimes.jp",
@@ -3185,7 +3191,9 @@
     },
     {
      "date": "2026-11-01T07:00:00+00:00",
-     "image": "",
+     "image": "https://news.walkerplus.com/article/1006798/10051123_615.jpg",
+     "image_via": "og:image",
+     "link": "https://www.walkerplus.com/article/1006798/",
      "n": 6,
      "seen": "2026-11-04T05:25:23+00:00",
      "site": "https://www.walkerplus.com",

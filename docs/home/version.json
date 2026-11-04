@@ -1,32 +1,32 @@
 {
- "admin": "2e19fab9a6b8",
- "admin-ai": "09997af966c9",
+ "admin": "c8bf6ff77e3a",
+ "admin-ai": "25be5fbfb7f3",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "e39bb559"
+   "4f1a165f"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "5e66c741"
+   "9c3f4e35"
   ]
  },
- "admin-boards": "9cd680cdf796",
+ "admin-boards": "182a3a9d8e94",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "90a83ebb"
+   "99619d4f"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "68db45a53b91",
+ "admin-emblem": "3465d52f5990",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3c9856cc"
+   "8f6cf0c8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "cd1a8ebb6036",
+ "admin-now": "05500f6dc4b1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4ddd7d32"
+   "079ff843"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "bbc56c1c"
+   "4240e5b2"
   ]
  },
- "admin-system": "42ca520b844a",
+ "admin-system": "6be907aee032",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "87642914"
+   "3d71929f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "79354c84"
+   "cb8a5701"
   ]
  },
  "admin_marks": {},
- "heat": "2e070e017b91",
+ "heat": "535782d5984b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e5b0b76d"
+   "2cab7534"
   ],
   "ranking": [
    "ランキング",
-   "5f13094e"
+   "c294e338"
   ]
  },
- "index": "10e6c922b914",
+ "index": "ff1f0e31abd5",
  "index_marks": {
   "front": [
    "トップ",
-   "51c234f3"
+   "945929e5"
   ],
   "picks": [
    "気になるかも？",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "43445dd3"
+   "cbeca638"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "83d32c01"
+   "a54ab18c"
   ],
   "w-f303ad09": [
    "绝区零",
    "31cc20b6"
   ]
  },
- "updated": "11.04 14:54",
+ "updated": "11.04 14:58",
  "wishlist": "37339ac813cd"
 }
