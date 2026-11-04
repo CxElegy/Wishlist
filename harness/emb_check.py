@@ -54,6 +54,7 @@ from PIL import Image
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "harness"))
+import sbread  # noqa: E402
 from browser import PATTERN, storage_bytes  # noqa: E402  Supabase の写真は写しから（free-tier.md）
 import cutshape  # noqa: E402  （numpy・OpenCV・PIL だけ。emblem は import しない）
 SMALL_SIDE = 256   # emblem.BUST_MIN_SIDE と同じ（emblem は import しない）
@@ -504,8 +505,7 @@ def boards_rows():
         return _BOARDS[0]
     s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("settings") or {}
     key = os.environ.get("SUPABASE_SERVICE_KEY") or s["supabase_key"]
-    req = urllib.request.Request(f"{s['supabase_url']}/rest/v1/boards?select=name,config&limit=1000", headers={"apikey": key, "Authorization": f"Bearer {key}"})
-    _BOARDS[:] = [json.loads(urllib.request.urlopen(req, timeout=20).read())]
+    _BOARDS[:] = [json.loads(sbread.get(f"{s['supabase_url']}/rest/v1/boards?select=name,config&limit=1000", key, timeout=20)[0])]
     _BOARDS_FULL[:] = [bool(os.environ.get("SUPABASE_SERVICE_KEY"))]
     return _BOARDS[0]
 

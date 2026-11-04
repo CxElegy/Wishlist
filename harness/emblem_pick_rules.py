@@ -14,6 +14,7 @@ from PIL import Image
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "harness"))
+import sbread  # noqa: E402
 from browser import PATTERN, storage_bytes  # noqa: E402  Supabase の写真は写しから（free-tier.md）
 import emblem  # noqa: E402
 
@@ -184,8 +185,7 @@ def audit_library():
     """ライブラリの版面（お客さまの版面）の小元素にも同じ規則を当てる → (行, 集計)。行＝(版面 id, 名前, 判定, 理由)。
     網につなぐ（公開の鍵で読める版面だけ。RLS で見えない版面は数えられない＝集計の boards に見えた数）。"""
     import urllib.request
-    req = urllib.request.Request(LIB_URL, headers={"apikey": LIB_KEY})
-    boards = json.load(urllib.request.urlopen(req, timeout=60))
+    boards = json.loads(sbread.get(LIB_URL, LIB_KEY, timeout=60)[0])
     rows, bad = [], 0
     for b in boards:
         for e in (b.get("config") or {}).get("emblem") or []:
