@@ -48,7 +48,6 @@
   "https://t.co/J2phBwQa7c": null,
   "https://tech.news.am/en/news/8039": "https://tech.news.am/storage/media/26/10/28/stb9cBQnDAIxuMLy.webp",
   "https://thedirect.com/article/spider-man-beyond-the-spider-verse-trailer-spoilers-movie": "https://images.thedirect.com/media/article_full/1000012056.jpg",
-  "https://timeline.sohu.com/news/GCBJUuY4GS": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/14/179197850424419605_664_2000.JPEG",
   "https://topics.smt.docomo.ne.jp/amp/article/asahi_region/nation/asahi_region-ASVB03R7YVB0TLTB00FM": "https://img.topics.smt.news.goo.ne.jp/picture/asahi_region/m_asahi_region-ASVB03R7YVB0TLTB00FM.jpg",
   "https://topics.smt.docomo.ne.jp/amp/article/fushinsha_joho/region/fushinsha_joho-1489482078579015805": "https://img.topics.smt.news.goo.ne.jp/region_tmb/16_9/262129.png?fushinsha_joho-1489482078579015805",
   "https://topics.smt.docomo.ne.jp/amp/article/fushinsha_joho/region/fushinsha_joho-1489484091463139582": "https://img.topics.smt.news.goo.ne.jp/region_tmb/16_9/262072.png?fushinsha_joho-1489484091463139582",
@@ -80,6 +79,7 @@
   "https://www.sina.cn/news/detail/5356822332443719.html": "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg",
   "https://www.sina.cn/news/detail/5359474912273486.html": "https://k.sinaimg.cn/n/news/1_img/upload/d8010f78/213/w2048h1365/20261102/a8a0-af62ed6facd88229ec0b593b1f51616d.jpg/w710h400z1l50t1q7538e.jpg?by=comos",
   "https://www.sina.cn/news/detail/5361545670297206.html": "http://wx2.sinaimg.cn/middle/90b10eb9ly1iiq64fm5aaj20ts1jkqpq.jpg",
+  "https://www.stardailynews.co.kr/news/articleView.html?idxno=601301": "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg",
   "https://www.techeblog.com/samsung-galaxy-camera-android-specs-hands-on-release/": "https://images.techeblog.com/wp-content/uploads/2026/11/02234424/samsung-galaxy-camera.jpg",
   "https://www.techjuice.pk/a-bizarre-xbox-series-x-bite-console-unveiled-for-gta-6-launch/": "https://www.bing.com/th?id=ONUT.Duj3IwA6VUH9d7-r2vQeEw&pid=News&w=1200",
   "https://www.tehrantimes.com/news/531702/Mokri-s-Black-Rabbit-White-Rabbit-wins-at-63rd-International": "https://media.tehrantimes.com/d/t/2026/11/01/4/6242024.jpg?ts=1793535295479",
@@ -1419,6 +1419,27 @@
   },
   {
    "batch": 5,
+   "because": "A2O LITE",
+   "date": "2026-11-03",
+   "hits": [],
+   "image": "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "스타데일리뉴스",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "[S이슈] A2O LITE, 데뷔하자마자 인기돌풍의 이유는?",
+   "url": "https://www.stardailynews.co.kr/news/articleView.html?idxno=601301",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 5,
    "because": "哈利波特剧集",
    "date": "2026-11-03",
    "hits": [],
@@ -1481,7 +1502,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-02",
    "hits": [],
@@ -1500,27 +1521,6 @@
    "url": "https://note.com/yonabe_kobo/n/n6c7936011bec?hl=en",
    "words": [],
    "work": "BLEACH Mirrors High"
-  },
-  {
-   "batch": 6,
-   "because": "A2O LITE",
-   "date": "2026-11-02",
-   "hits": [],
-   "image": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/14/179197850424419605_664_2000.JPEG",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "搜狐网",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "出现即出圈，A2O LITE野心不小",
-   "url": "https://timeline.sohu.com/news/GCBJUuY4GS",
-   "words": [],
-   "work": "A2O LITE"
   },
   {
    "batch": 6,
@@ -2127,7 +2127,7 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
@@ -2135,7 +2135,7 @@
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ]
  ]
