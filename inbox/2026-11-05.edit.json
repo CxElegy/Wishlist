@@ -2,7 +2,7 @@
  "_covered": {
   "漫威电影": 40,
   "三星手机": 21,
-  "GTA 6": 19,
+  "GTA 6": 36,
   "チェーンソーマン": 7,
   "A2O LITE": 6,
   "dota2": 5,
@@ -138,7 +138,9 @@
     5,
     15,
     9,
-    10
+    10,
+    33,
+    32
    ],
    "event": {
     "date": "2026-11-10",
@@ -153,7 +155,9 @@
    "weight": "normal",
    "refs": [
     1,
-    11
+    11,
+    28,
+    29
    ]
   },
   {
@@ -163,6 +167,25 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "GTA 6 Sells Nearly 8 Million Copies Before It Even Launches, Report Says",
+   "highlight": "Nearly 8 Million Copies",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23,
+    25
+   ]
+  },
+  {
+   "headline": "GTA 6全新「Focus」功能曝光靈感源自《荒野大鏢客2》鷹眼",
+   "highlight": "Focus",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    24
    ]
   }
  ],
