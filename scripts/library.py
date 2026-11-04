@@ -233,11 +233,14 @@ def push_shop(items):
         if board_key(item).startswith("wd:"):
             old = "n:" + norm_name(item["name"])
             digest.supabase(f"boards?key=eq.{urllib.parse.quote(old)}", {"key": board_key(item), "wd": item["wikidata"]}, method="PATCH")
-    got = digest.supabase("boards?on_conflict=key&select=id,key", boards, prefer="resolution=merge-duplicates,return=representation")
+    got = digest.supabase("boards?on_conflict=key&select=id,key,parent_id", boards, prefer="resolution=merge-duplicates,return=representation")
     if got is None:
         sbstate.need_db("SUPABASE_SERVICE_KEY がないので書けません")
     ids = {r["key"]: r["id"] for r in got}
+    cur = {r["key"]: r.get("parent_id") for r in got}
     for child, parent in parents.items():
+        if cur.get(child) == ids[parent]:   # 上級が同じなら書かない（無料枠：毎回 18 回の PATCH を 0 に）
+            continue
         digest.supabase(f"boards?key=eq.{urllib.parse.quote(child)}", {"parent_id": ids[parent]}, method="PATCH")
     rows = [{**{k: v for k, v in f.items() if k != "key"}, "board_id": ids[f["key"]]} for f in follows]
     digest.supabase("follows?on_conflict=account,board_id", rows, prefer="resolution=merge-duplicates")
