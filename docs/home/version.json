@@ -1,32 +1,32 @@
 {
- "admin": "89c4cb4d40af",
- "admin-ai": "90929904e699",
+ "admin": "7bd34f82fc7f",
+ "admin-ai": "ba2db467ad88",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "61467e71"
+   "a32c5271"
   ],
   "tokens": [
    "AI 編集のトークン",
    "c3abaa4b"
   ]
  },
- "admin-boards": "f06091abd8b2",
+ "admin-boards": "f512b7573ca3",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "263ca9db"
+   "8a5ec7c6"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "a9793f092780",
+ "admin-emblem": "41f946c3ee49",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "75eb8509"
+   "d20a5fd7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "699346cfa047",
+ "admin-now": "e5413cfc4a7f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2f2fbd60"
+   "7eb57af9"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "c6d40e8c"
+   "234c5220"
   ],
   "term-panel": [
    "ライブログ",
-   "9f0cc216"
+   "35fbf027"
   ]
  },
- "admin-system": "b8e84e072f34",
+ "admin-system": "8b206f686e4a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2a333f9d"
+   "ea66abf1"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f1717eae"
+   "bd573cf1"
   ]
  },
  "admin_marks": {},
- "heat": "9db7f76ea742",
+ "heat": "79e8fa4dc0d7",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "ddb3a9c2"
+   "e58e6c18"
   ],
   "ranking": [
    "ランキング",
-   "9b431300"
+   "591ab662"
   ]
  },
- "index": "8b77cf6576d5",
+ "index": "6f030d936ca6",
  "index_marks": {
   "front": [
    "トップ",
-   "4b799d6e"
+   "26f94f83"
   ],
   "picks": [
    "気になるかも？",
@@ -145,15 +145,15 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "5ad67ba1"
+   "1bf68dc3"
   ],
   "w-9cb26dba": [
    "FROM",
-   "04c2d9e6"
+   "352040e3"
   ],
   "w-b867582f": [
    "あつ森",
-   "12a4fe9d"
+   "9c2bcea6"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "6f60276f"
+   "5772c1c4"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -181,11 +181,11 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "9d466ed9"
+   "01f55a3b"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "25b5f963"
+   "1aaa3285"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "9be760a1"
   ]
  },
- "updated": "11.04 10:24",
+ "updated": "11.04 10:32",
  "wishlist": "9772b58d6183"
 }
