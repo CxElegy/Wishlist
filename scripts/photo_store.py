@@ -226,9 +226,9 @@ def mass(data, bins=12):
 
 
 def _get(base, k, w):
-    """置いてある写真の取得は sbstate.sb_open 経由（402 で呼び続けない）。Limited は呼び元の except で次の回へ。"""
-    with sbstate.sb_open(urllib.request.Request(public(base, k, w), headers={"User-Agent": UA}), 30) as r:
-        return r.read()
+    """置いてある写真の中身は写し（WL_PHOTO_CACHE、埋めるのは photo_cache.yml）から読む。Supabase の storage からは落とさない
+    （cached egress 緊急 2026-11-04：色・主役・上げ直しの埋め直しが毎回 storage から読んでいた）。写しに無ければ NotCached ＝次の回に回す。"""
+    return sbstate.storage_read(public(base, k, w))
 
 
 def mass_of(base, k):

@@ -32,6 +32,7 @@ jobs:
     timeout-minutes: 50
     env:
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      WL_PHOTO_CACHE: ${{ github.workspace }}/.photo_cache
       WIKIMEDIA_TOKEN: ${{ secrets.WIKIMEDIA_TOKEN }}
     steps:
       - uses: actions/checkout@v5
@@ -42,6 +43,11 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - uses: actions/cache/restore@v4   # 写しを読むだけ（埋めるのは photo_cache.yml）。storage から落とさない（cached egress 緊急 2026-11-04）
+        with:
+          path: .photo_cache
+          key: wl-photo-cache-none
+          restore-keys: wl-photo-cache-
       - name: 待ちはある？（なければここで終わる）
         id: check
         run: python scripts/library_emblem.py --check
