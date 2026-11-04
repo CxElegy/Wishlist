@@ -225,11 +225,16 @@ def mass(data, bins=12):
     return [prof(m.sum(axis=0)), prof(m.sum(axis=1))]
 
 
+def _get(base, k, w):
+    """置いてある写真の取得は sbstate.sb_open 経由（402 で呼び続けない）。Limited は呼び元の except で次の回へ。"""
+    with sbstate.sb_open(urllib.request.Request(public(base, k, w), headers={"User-Agent": UA}), 30) as r:
+        return r.read()
+
+
 def mass_of(base, k):
     """置いてある 400 の写真から mass を取る（持たない昔の分の埋め直し）。取れない写真は [] （測れない＝切らない）。"""
     try:
-        with urllib.request.urlopen(urllib.request.Request(public(base, k, 400), headers={"User-Agent": UA}), timeout=30) as r:
-            return k, mass(r.read()) or []
+        return k, mass(_get(base, k, 400)) or []
     except Exception:  # noqa: BLE001  次の回にまた試す
         return k, None
 
@@ -245,8 +250,7 @@ def mass_css(url):
 def tint_of(base, k):
     """置いてある 400 の写真から色を取る（色のない昔の分の埋め直し）。取れなければ None。"""
     try:
-        with urllib.request.urlopen(urllib.request.Request(public(base, k, 400), headers={"User-Agent": UA}), timeout=30) as r:
-            return k, tint(r.read())
+        return k, tint(_get(base, k, 400))
     except Exception:  # noqa: BLE001  次の回にまた試す
         return k, None
 
@@ -279,8 +283,7 @@ def rehead(base, keyv, k):
     try:
         sizes = {}
         for w in WIDTHS:
-            with urllib.request.urlopen(urllib.request.Request(public(base, k, w), headers={"User-Agent": UA}), timeout=30) as r:
-                sizes[w] = r.read()
+            sizes[w] = _get(base, k, w)
         upload(base, keyv, k, sizes)
         return k, True
     except Exception:  # noqa: BLE001  次の回にまた試す
@@ -346,7 +349,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                         bad += 1
     cc = 0
     old = [k for k, v in p.items() if not v.get("cc")]   # cc = 1 は CACHE 付きで上げ済み。ないものは上げ直す（時間の余りで・8 並列）
-    if old and base and keyv:
+    if old and base and keyv and not sbstate.LIMITED:
         end = time.time() + minutes * 30
         with ThreadPoolExecutor(workers) as ex:
             for i in range(0, len(old), workers * 4):
@@ -358,7 +361,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                         cc += 1
     nc = 0
     nocol = [k for k, v in p.items() if not v.get("c")]   # 色（下絵）のない分は置いてある 400 から取る
-    if nocol and base:
+    if nocol and base and not sbstate.LIMITED:
         with ThreadPoolExecutor(workers) as ex:
             for k, c in ex.map(lambda k: tint_of(base, k), nocol[:2000]):
                 if c:
@@ -366,7 +369,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                     nc += 1
     nm = 0
     nomass = [k for k, v in p.items() if "m" not in v]   # 主役の分布のない分も置いてある 400 から測る（1 回 1500 枚まで）
-    if nomass and base:
+    if nomass and base and not sbstate.LIMITED:
         with ThreadPoolExecutor(workers) as ex:
             for k, m in ex.map(lambda k: mass_of(base, k), nomass[:1500]):
                 if m is not None:
