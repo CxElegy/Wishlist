@@ -37,6 +37,7 @@ jobs:
     timeout-minutes: 40   # 収集は 18 分で締め切り（digest.COLLECT_DEADLINE_MIN）、残りは出刊・通知・push の分
     env:
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      SBSTATE_PING: "1"   # 402 に入った・戻った Discord 1 通は、state を commit するこの回だけが送る（scripts/sbstate.py）
       TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
       REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
       REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}

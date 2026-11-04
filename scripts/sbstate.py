@@ -38,13 +38,48 @@ def _now():
     return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _ping(text):
+    """状態が変わった瞬間だけ Discord に 1 通（DISCORD_WEBHOOK_URL が無ければ何もしない・失敗しても続ける）。"""
+    import os
+    import urllib.request
+    url = os.environ.get("DISCORD_WEBHOOK_URL")
+    if not url:
+        return False
+    try:
+        req = urllib.request.Request(url, data=json.dumps({"content": text, "allowed_mentions": {"parse": []}}).encode(),
+                                     headers={"Content-Type": "application/json", "User-Agent": "wishlist-sbstate"})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return 200 <= r.status < 300
+    except Exception:
+        return False
+
+
+def _announce(path=None):
+    """Discord に 1 通は「状態を git に残す回」だけが送る（SBSTATE_PING=1・digest.yml）。ほかの回は状態を書くだけで送らない。
+    告げた状態は told に残す。git に残らない回が毎回「まだ告げていない」と見て送り直すのを防ぐ（2026-11-04）。"""
+    import os
+    if not os.environ.get("SBSTATE_PING"):
+        return
+    cur = load(path)
+    st = cur.get("status", "ok")
+    if st == cur.get("told", "ok"):
+        return
+    if st == "limited":
+        text = "Supabase が制限中（402・無料枠超過）に入りました。ページは静的のまま、👍・ログインは休止します。収集は止まらず、解けた次の回が送り直します。管理ページ https://cxelegy.github.io/Wishlist/home/admin.html"
+    else:
+        text = f"Supabase の制限（402）が解けました（{cur.get('since') or cur.get('was_limited_since', '?')} から）。通常に戻ります。"
+    _ping(text)
+    _write({**cur, "told": st}, path)
+
+
 def mark_limited(where="", path=None):
-    """402 を見た。状態が変わるときだけ書く（since は最初に見た時刻のまま）。"""
+    """402 を見た。状態が変わるときだけ書く（since は最初に見た時刻のまま）。告げるのは _announce。"""
     global LIMITED
     LIMITED = True
     cur = load(path)
     if cur.get("status") != "limited":
-        _write({"status": "limited", "since": _now(), "at": _now(), "where": where[:80]}, path)
+        _write({"status": "limited", "since": _now(), "at": _now(), "where": where[:80], "told": cur.get("told", "ok")}, path)
+    _announce(path)
 
 
 def mark_ok(path=None):
@@ -55,7 +90,8 @@ def mark_ok(path=None):
     _OK = path is None
     cur = load(path)
     if cur.get("status") == "limited":
-        _write({"status": "ok", "at": _now(), "was_limited_since": cur.get("since")}, path)
+        _write({"status": "ok", "at": _now(), "was_limited_since": cur.get("since"), "told": cur.get("told", "ok")}, path)
+    _announce(path)
 
 
 # 書けなかった公開データの置き場（state/sb_outbox.json）。印（db_news.json など）で送り直せるもの〔news・stories・価格〕は要らない。

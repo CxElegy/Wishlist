@@ -53,6 +53,60 @@ class ActionsSide(unittest.TestCase):
             digest.sync_news()
         sv.assert_not_called()
 
+    def test_state_change_pings_once(self):
+        """402 に入った時と戻った時だけ 1 通。同じ状態の間は送らない。"""
+        with mock.patch.dict("os.environ", {"SBSTATE_PING": "1"}), mock.patch.object(sbstate, "_ping") as pg:
+            sbstate.mark_limited("a", self.tmp)
+            sbstate.mark_limited("b", self.tmp)
+            self.assertEqual(pg.call_count, 1)
+            sbstate._OK = False
+            sbstate.mark_ok(self.tmp)
+            sbstate._OK = False
+            sbstate.mark_ok(self.tmp)
+            self.assertEqual(pg.call_count, 2)
+        self.assertIn("解けました", pg.call_args[0][0])
+
+    def test_cross_run_dedupe_without_git(self):
+        """回をまたぐ：commit しない回（SBSTATE_PING なし）は何回 402 を見ても送らず、commit する回が 1 回だけ送る。
+        commit しない回の書いた状態は捨てられる（毎回 checkout し直し）＝新しいファイルから始めても送らない。"""
+        with mock.patch.object(sbstate, "_ping") as pg:
+            for _ in range(3):   # commit しない回が 3 回（毎回ファイル無しから）
+                self.tmp.unlink(missing_ok=True)
+                sbstate.mark_limited("live_clear", self.tmp)
+            self.assertEqual(pg.call_count, 0)
+            with mock.patch.dict("os.environ", {"SBSTATE_PING": "1"}):
+                self.tmp.unlink(missing_ok=True)
+                sbstate.mark_limited("digest", self.tmp)      # commit する回：入った 1 通
+                sbstate.mark_limited("digest2", self.tmp)
+                self.assertEqual(pg.call_count, 1)
+                # 次の回：commit 済みの limited を checkout。commit しない回が先に ok に戻して捨てても、ここは影響されない
+                sbstate._OK = False
+                sbstate.mark_ok(self.tmp)                      # 戻った 1 通
+                self.assertEqual(pg.call_count, 2)
+                sbstate._OK = False
+                sbstate.mark_ok(self.tmp)
+                self.assertEqual(pg.call_count, 2)
+            # requests.yml のように commit するが送らない回が limited を残した後、digest が 402 を見たら入った 1 通
+            self.tmp.unlink(missing_ok=True)
+            sbstate.mark_limited("requests", self.tmp)
+            with mock.patch.dict("os.environ", {"SBSTATE_PING": "1"}):
+                sbstate.mark_limited("digest", self.tmp)
+            self.assertEqual(pg.call_count, 3)
+
+    def test_only_digest_pings_and_it_commits_state(self):
+        """Discord に送れる回は state を commit する回だけ。sbstate に届く workflow で SBSTATE_PING を持つものは state を git add する。"""
+        root = pathlib.Path(__file__).resolve().parent.parent / ".github" / "workflows"
+        for f in root.glob("*.yml"):
+            t = f.read_text(encoding="utf-8")
+            if "SBSTATE_PING" in t:
+                self.assertIn("DISCORD_WEBHOOK_URL", t, f.name)
+                self.assertRegex(t, r"git add [^\n]*\bstate\b", f.name)
+
+    def test_ping_silent_without_webhook(self):
+        with mock.patch.dict("os.environ", {}, clear=True), mock.patch("urllib.request.urlopen") as u:
+            self.assertFalse(sbstate._ping("x"))
+        u.assert_not_called()
+
     def test_recovers_to_ok(self):
         sbstate.mark_limited("x", self.tmp)
         sbstate._OK = False
