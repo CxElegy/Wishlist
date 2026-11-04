@@ -1,14 +1,14 @@
 {
- "admin": "137c024a879f",
- "admin-ai": "7a3b62faf71c",
+ "admin": "fd1e69c2f88b",
+ "admin-ai": "1976b89775ca",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d6b70b51"
+   "b18f1d07"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "4ff083e0"
+   "668c23eb"
   ]
  },
  "admin-boards": "b0b127e42dfe",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "e691b750ef78",
+ "admin-emblem": "768eddf4f2c2",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "245019d3"
+   "0d955510"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "7cc0eb69eeaa",
+ "admin-now": "1b2374528d7c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "96e68795"
+   "f719ebd3"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "58ab87d1"
+   "d7d10495"
   ]
  },
- "admin-system": "27c1934522ee",
+ "admin-system": "04fca1026350",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d5e3707f"
+   "97b468c6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8caf3043"
+   "1d96b7e9"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "9c34a7e8"
   ]
  },
- "index": "8822665be0bd",
+ "index": "ecefb3f1e061",
  "index_marks": {
   "front": [
    "トップ",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "aae6cb09"
+   "0f457114"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "1cd8d062"
+   "13343615"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1bf68dc3"
+   "f41110e9"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "0183476a"
+   "bacb0e94"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "6576ed80"
+   "4ab23a95"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "4028fc46"
   ]
  },
- "updated": "11.04 11:45",
- "wishlist": "9772b58d6183"
+ "updated": "11.04 11:51",
+ "wishlist": "37339ac813cd"
 }

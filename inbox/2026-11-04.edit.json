@@ -49,7 +49,9 @@
     73,
     74,
     75,
-    81
+    81,
+    86,
+    87
    ],
    "event": {
     "date": "2026-11-10",
@@ -195,7 +197,10 @@
    "refs": [
     1,
     6,
-    7
+    7,
+    8,
+    9,
+    11
    ],
    "image": "https://www.tvline.com/img/gallery/how-harry-potter-star-paapa-essiedu-feels-about-severus-snape-casting-backlash/paapa-essiedu-says-hes-received-death-threats-1793718244.jpg"
   },
@@ -227,7 +232,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    10
    ]
   }
  ],
@@ -243,6 +249,17 @@
     10
    ],
    "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793712043011_img_cd6fc2d9.jpeg"
+  },
+  {
+   "headline": "Galaxy S27 ProはS27 Ultraと異なるSnapdragonを搭載か 最上位モデルとのチップ差別化が判明",
+   "highlight": "異なるSnapdragonを搭載か",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22,
+    24,
+    23
+   ]
   },
   {
    "headline": "Samsung is bringing a flagship feature Apple can’t match to cheaper Galaxy S27 models",
@@ -341,10 +358,10 @@
   }
  ],
  "_covered": {
-  "GTA 6": 82,
+  "GTA 6": 89,
   "漫威电影": 55,
-  "三星手机": 21,
-  "哈利波特剧集": 7,
+  "三星手机": 24,
+  "哈利波特剧集": 11,
   "周杰伦": 16,
   "dota2": 6,
   "星巴克马克杯": 2,
@@ -352,9 +369,9 @@
   "猫用品": 3,
   "The Mandalorian": 4,
   "ILLIT": 2,
-  "MMORPG 新作": 6,
+  "MMORPG 新作": 9,
   "あつ森": 2,
-  "チェーンソーマン": 2,
+  "チェーンソーマン": 5,
   "Vaundy": 1,
   "绝区零": 1,
   "Astrae Oratio": 1,
@@ -500,11 +517,12 @@
  ],
  "MMORPG 新作": [
   {
-   "headline": "ArcheAge Chronicles Early Access Pre-Load is Live, XL Adds Some Support For Two New Languages",
-   "highlight": "Pre-Load is Live",
-   "blurb": "ArcheAge Chronicles Early Access begins today, and XL has shared more answers to community questions.",
+   "headline": "買い切りオープンワールドアクションMMO『ArcheAge Chronicles』早期アクセス開始！パリィありバトルに生活要素も充実",
+   "highlight": "早期アクセス開始",
+   "blurb": "暫定日本語対応ですでに2万人以上が集まっている。",
    "weight": "lead",
    "refs": [
+    7,
     2,
     6,
     4
@@ -548,7 +566,27 @@
    "blurb": "『チェンソーマン』×クロックスの初コラボ。愛らしい表情を再現したモデルなど全4種類。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    3
+   ],
+   "image": "https://saga.ismcdn.jp/mwimgs/b/9/1200m/img_b9b8e9d1da6ceb1645444cae6286af1366110.jpg"
+  },
+  {
+   "headline": "「そこにいる、アクリルスタンド」両面アクスタシリーズ「いるすた」に、劇場版『チェンソーマン レゼ篇』が",
+   "highlight": "劇場版『チェンソーマン レゼ篇』",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "チェンソーマンの一番くじ最新一覧｜発売予定とコンビニ取扱店舗",
+   "highlight": "一番くじ最新一覧",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
