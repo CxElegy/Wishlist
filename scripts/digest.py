@@ -2951,6 +2951,8 @@ def _ingest_one(item, raw, bconf, settings, facts, seen, now, compare, dry_run, 
 def ingest(dry_run=False):
     """收集本期原始条目到 inbox/。返回写入的文件路径（没有新内容时返回 None）。"""
     settings, items = load_config()
+    if os.environ.get("WL_COLLECT_LIMIT"):   # 試験用の止める口（harness/fake402_check.py）：先頭の N 版面だけ取る。本番では設定しない
+        items = items[:int(os.environ["WL_COLLECT_LIMIT"])]
     now = dt.datetime.now(dt.timezone.utc)
     # “每天一期”按你所在时区的日期划分（默认北京时间）
     today = now.astimezone(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
@@ -3828,16 +3830,21 @@ def repair_images():
                     first_user.setdefault(st["image"], st["url"])
     used = set(first_user)
     author_imgs = images.author_seen()
-    fixed = dropped = still = 0
+    fixed = dropped = still = looked = 0
+    limit = int(os.environ.get("WL_REPAIR_LIMIT") or 0)
     for path, rep_ in reports:
         changed = False
         for b in rep_["items"]:
             keep = []
             for st in b["stories"]:
+                if limit and looked >= limit:   # 試験用の止める口（harness/fake402_check.py）：先頭の N 件だけ見て、残りは触らない
+                    keep.append(st)
+                    continue
+                looked += 1
                 img = st.get("image")
                 bad = (not img or st.get("image_via") == "作品封面" or "验证不了" in (st.get("image_via") or "")
                        or images.is_bing_thumb(img)  # Bing 的缩略图是 Bing 裁过的（横长的图变成竖的一截），先找原文的图
-                       or not images.check(img, _saved_ref(st))[0]  # 图后来被删、或者不合格（太小、打不开）
+                       or images.unusable(img, _saved_ref(st))  # 图后来被删、或者不合格（太小、打不开）
                        or images.GENERIC.search(urllib.parse.urlparse(img).path)
                        or img in author_imgs  # 書いた人の顔写真だと分かった画像（同じ出来事の別の記事から借りたものも）
                        or first_user.get(img) not in (None, st["url"]))
@@ -3859,7 +3866,7 @@ def repair_images():
                         used.add(res.image)
                         fixed += 1
                     elif img and (images.GENERIC.search(urllib.parse.urlparse(img).path) or first_user.get(img) != st["url"] or img in author_imgs
-                                  or "验证不了" in (st.get("image_via") or "") or not images.check(img, _saved_ref(st))[0]):
+                                  or "验证不了" in (st.get("image_via") or "") or images.unusable(img, _saved_ref(st))):
                         st["image"], changed = None, True  # 错的图宁可不放（网页上用作品封面或作品名封面块）
                         st.pop("image_via", None)
                         still += 1

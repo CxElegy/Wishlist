@@ -300,7 +300,19 @@ def check(url, referer=None):
     else:
         result = _inspect(f.body, f.headers.get("content-type", ""))
     _checks[key] = result
+    if not result[0] and (f.error or f.status == 429 or (f.status or 0) >= 500):
+        _transient.add(key)   # 網の不調・限流・サーバー側の不調：「この画像はだめ」の判定ではない
     return result
+
+
+_transient = set()
+
+
+def unusable(url, referer=None):
+    """画像が本当に使えない（404・小さい・画像でない等）。網エラー・タイムアウト・429・5xx は「分からない」なので False
+    （外の網が落ちた回に、報道の画像を外さないため。2026-11-04）。"""
+    ok, _ = check(url, referer)
+    return not ok and ((url, referer) if referer else url) not in _transient
 
 
 def size_of(why):

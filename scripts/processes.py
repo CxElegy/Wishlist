@@ -87,7 +87,7 @@ COMPONENTS = {
                "what": "edit-brief を束ごとに並べ（2 本目からは題 60 字だけ）、前回の編集（_covered）のあとは新しい束と記事が増えた束だけ・今の記事は 1 行ずつ。過去 7 日（4,707 件）で束 3,936・誤まとめ 6〜8、AI に渡す字数 29% 減（1 日 2 回の編集で試算）"},
     "imgpick": {"kind": "algo", "name": "配図の選び方 images.pick", "spec": "短辺 ≥200 · 長辺 ≥300 · 8MB まで · 1 件 60 秒・12 枚まで · TLS は ALPN http/1.1（ブラウザと同じ。ないと i0.wp.com が 404）· おすすめの「図なし」は翌日もう一度探す · おすすめカードは図が全部開けなくても来源サイトの图标に退ける（空の枠にしない）",
                 "what": "書いた人の顔写真（Gravatar・avatar・author の画像）は og・JSON-LD から除く（images.AUTHOR_IMG）。JSON-LD は Person / author 欄 / #authorImage の image も除き、分かった顔写真は state/author_imgs.json に覚えて、別の記事から借りる時（同じ出来事の別家報道）も保存済みの記事の洗い直し（repair_images）も使わない（代わりの画像が見つからないときは画像なしにする：書いた人の顔写真を残さない）。AI 指定 → 記事の画像 → og:image → JSON-LD → 動画の表紙（<video poster>：虎扑の動画帖など）→ 本文 → Bing の縮小画像 → 転載ページ。ロゴ・既定画像（logo / noimage / placeholder / default_image / no_photo / NowPrinting / blank.png：サイトの占位図）は除く。作品の表紙にも使わない。"
-                        "Bing の縮小画像（bing.com/th）は Bing が切った一部分なので原文の図の後ろ。repair-images（収集の手動実行）で既刊も直す"},
+                        "Bing の縮小画像（bing.com/th）は Bing が切った一部分なので原文の図の後ろ。repair-images（収集の手動実行）で既刊も直す。画像が網エラー・タイムアウト・429・5xx で開けなかっただけ（images.unusable が False）なら外さない＝外の網が落ちた回に報道の画像を消さない"},
     "imgsibling": {"kind": "rule", "name": "別のサイトへ回る same_event / retry_images", "spec": "同じ出来事 = 作品名を除いた共通の語 ≥ 2（StoryDeduper と同じ）· 別の記事 4 本まで · 引用された原題「…」でも転載を探す · 図なし・図が開けなくなった（dead）は 6 時間ごとに出刊のたび再探し（1 回 6 件・1 件 25 秒・直近 8 日）· 単色の空白図（標準偏差 < 3）は使わない",
                    "what": "原文が人機検証・限流・一時的に開けない（ナタリーの 405 など）ときも止まらず、同じ出来事を報じた別のサイトの記事の図 → 転載へ進む。それでもないものは後の出刊で自動でもう一度（state/img_retry.json）"},
     "imgsharp": {"kind": "rule", "name": "より大きい予告画像 / 防盗链の再試行", "spec": "og:image・JSON-LD の長辺 < 1000 なら同じページの大きい方 · 403 は原文ページを Referer に 3 枚まで",

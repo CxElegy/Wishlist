@@ -46,7 +46,14 @@ ENTRIES = [
     ("clear-waits", ["scripts/livestatus.py", "clear-waits"], 300),
     ("gate fire", ["scripts/gate.py", "fire"], 300),
     ("emblem_fill", ["scripts/emblem_fill.py", "--background", "--minutes", "1"], 300),
+    # 収集の本体（digest.yml の bare `python scripts/digest.py`）と ingest。外の網は無い（= 外の網が落ちた回）。先頭 3 版面だけ（WL_COLLECT_LIMIT）
+    ("digest all", ["scripts/digest.py"], 900),
+    ("digest ingest", ["scripts/digest.py", "ingest"], 900),
+    ("repair-images", ["scripts/digest.py", "repair-images"], 900),
 ]
+# 入口ごとに足す環境変数（試験用の止める口）
+ENTRY_ENV = {"digest all": {"WL_COLLECT_LIMIT": "3"}, "digest ingest": {"WL_COLLECT_LIMIT": "3"},
+             "repair-images": {"WL_REPAIR_LIMIT": "40"}}
 # 入口を走らせない物（理由つき）。workflow の入口の数え漏れ点検（tests）はここも名簿として見る。キー = 「スクリプト 最初の引数」
 NOT_COVERED = {
     "scripts/check_arch.py": "CI の点検。Supabase に触らない",
@@ -56,8 +63,6 @@ NOT_COVERED = {
     "harness/pages_photos.py": "Pages の写真の写しを公開物に並べるだけ（git に入れない）。Supabase に触らない",
     "harness/before_after.py": "Discord への Before/After だけ。Supabase に触らない",
     "harness/d5_sample.py": "テストグラウンドの見本を作るだけ。Supabase に触らない",
-    "scripts/digest.py repair-images": "外の網（記事の画像・原文）に出るので偽サーバーだけに閉じられない。網の無い手元では reports/*.json を 1350 行縮めた（402 とは別の原因：網なし）＝別の段で切り分ける",
-    "scripts/digest.py": "収集の本体。外の網（各情報源）に出るので偽サーバーだけに閉じられず 600 秒でも終わらない。別の段で収集を止める口を足してから入れる",
     "harness/photo_cache_fill.py": "走らせない（無料枠の決まり）。取り先は state/photo_store.json の base ＝本番の storage で、偽サーバーに差せない。走らせると本番の Supabase に出て、手元の写し（~/.cache/wl_photo_cache）も消す。取り先を差せる形にしてから入口に足す（別の段）",
     "harness/pages_health.py": "Pages の健康を数える読み取り（boards を読むだけで docs/・state/ に書かない）。402 なら測れずで終わる。別の段で入口に足す",
 }
@@ -66,6 +71,7 @@ NO_HITS = {
     "library_watch": "Supabase を使わない（scripts/library_watch.py に sbread・sbstate・supabase が無い）。ローカルの写しを数えるだけ",
     "collect_watch": "Supabase を使わない（scripts/collect_watch.py に sbread・sbstate・supabase が無い）",
     "gate check": "ローカルの state/ から作り直す値だけ。Supabase を読む edit_mode は gate fire の側（そちらは 402 を 1 回受ける）",
+    "gate fire": "AI 編集の整理待ちがあるときだけ edit_mode（Supabase）を読む。待ちが無い回（CI の写しの state/ による）は 0 回で正しい＝手元と CI で回数が違う",
     "photo_store --kick": "ローカルで置いていない枚数を数え、あれば gh で photo_store.yml を起こすだけ（Supabase に触らない）",
     "new-items": "ローカルの inbox/ を読むだけ",
     "unedited": "ローカルの inbox/・edit.json を読むだけ",
@@ -87,7 +93,15 @@ ALLOW = {
     "state/log/gate.json": "同上の履歴",
     "state/emblem_progress.json": "last_run（最後の 1 回の記録）を上書きするだけ。進捗の本体は変わらない（done が空の回は記録が短い）",
     "state/log/emblem.json": "同上の回の記録（最後の回が置き換わる）",
+    "state/log/collect.json": "実行ログは件数の上限で古い順に落とす（回の記録が増えれば古い行が出ていく）",
+    "state/recommend.json": "推薦は inbox の窓から毎回作り直す（候補が 1〜数件入れ替わる）。RATIO の割合を超えて縮めば赤",
+    "state/hdimg.json": "高画質化の記録は今の報告・推薦の窓にある画像だけ残す（窓から出たものが落ちる）",
+    "state/img_retry.json": "画像の再試行の記録は期限が来たものを落とす",
 }
+# 名簿の中でも、元のバイト数のこの割合を超えて縮んだら赤（窓の入れ替わりは数 % で、空にされたら 100 %）
+RATIO = {"state/recommend.json": 0.2, "state/hdimg.json": 0.2, "state/img_retry.json": 0.3, "state/log/collect.json": 0.5}
+# 縮んでよいファイルの数の上限つきの名簿（前方一致）。
+ALLOW_COUNT = {"docs/home/pics/": (10, "hdimg が使わなくなった写しを消す（窓から出た分）。10 枚を超える消え方は赤")}
 WATCH = ("docs/", "state/", "inbox/", "reports/", "items.yaml", "wishlist.yaml")
 
 
@@ -186,7 +200,11 @@ def run(only=None, keep=False):
     d = pathlib.Path(tempfile.mkdtemp(prefix="fake402_"))
     prepare(d, srv.server_address[1])
     FAKE[0] = f"http://127.0.0.1:{srv.server_address[1]}"
-    env = {**os.environ, "SUPABASE_SERVICE_KEY": "fake", "HTTPS_PROXY": "", "https_proxy": "", "PYTHONIOENCODING": "utf-8"}
+    # 外の網は「落ちている」状態にする：プロキシを閉じたポートに向ける（接続拒否＝網エラー）。この環境は直につなぐと遮断ページが 404/403 を返すので、
+    # 空にするだけでは「網エラー」ではなく「404 の判定」になってしまう。偽サーバー（127.0.0.1）だけは除外する
+    dead = "http://127.0.0.1:9"
+    env = {**os.environ, "SUPABASE_SERVICE_KEY": "fake", "PYTHONIOENCODING": "utf-8", "NO_PROXY": "127.0.0.1,localhost", "no_proxy": "127.0.0.1,localhost",
+           **{k: dead for k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY", "all_proxy")}}
     for k in ("DISCORD_WEBHOOK_URL", "SBSTATE_PING"):
         env.pop(k, None)
     rows, bad = [], []
@@ -195,11 +213,20 @@ def run(only=None, keep=False):
             continue
         h0, t0 = len(_H.hits), time.time()
         try:
-            rc = subprocess.run([PY, *args], cwd=d, env=env, capture_output=True, text=True, timeout=sec).returncode
+            rc = subprocess.run([PY, *args], cwd=d, env={**env, **ENTRY_ENV.get(name, {})}, capture_output=True, text=True, timeout=sec).returncode
         except subprocess.TimeoutExpired:
             rc = "timeout"
         s = shrunk(d)
         bad_files = {f: n for f, n in s.items() if f not in ALLOW}
+        for f, n in s.items():
+            old = len(_git(d, "show", f"HEAD:{f}").encode())
+            if f in RATIO and n > old * RATIO[f]:
+                bad_files[f] = n
+        for pre, (mx, _) in ALLOW_COUNT.items():
+            hit = [f for f in bad_files if f.startswith(pre)]
+            if len(hit) <= mx:
+                for f in hit:
+                    bad_files.pop(f)
         rows.append((name, rc, len(_H.hits) - h0, sum(s.values()), bad_files, int(time.time() - t0)))
         if rc != RC_OK.get(name, (0,))[0]:
             bad.append(f"{name}：終了コード {rc}（402 で落ちてはいけない）")
