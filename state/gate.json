@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-04T21:17:44+00:00",
+ "checked": "2026-11-04T22:13:13+00:00",
  "fired": {
-  "at": "2026-11-04T21:20:30+00:00",
+  "at": "2026-11-04T22:20:29+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-04T20:03:23+00:00",
+    "at": "2026-11-04T22:20:29+00:00",
     "attempts": 1,
     "day": "2026-11-05",
-    "prog": 126,
-    "resp": "cse_01W4x6f5CiM8ZZGZJQnGxBqe",
-    "sig": "1eb86e569096"
+    "prog": 165,
+    "resp": "cse_01W4x6f6yCJA6a7pDHm1gqfK",
+    "sig": "00f1ee2c2209"
    },
    "items": [
     "A2O LITE",
@@ -36,11 +36,19 @@
    "need": true,
    "prog": 165,
    "prog_day": "2026-11-05",
-   "ripe": [],
-   "sig": "ef921cce0823",
+   "ripe": [
+    "A2O LITE",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦"
+   ],
+   "sig": "00f1ee2c2209",
    "token_cap": 1000000,
    "tokens_today": 167226,
-   "why": "整理待ちの記事 8 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 8 件（7 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
