@@ -231,7 +231,7 @@ PROCESSES = [
         "uses": ["bust", "owner", "facefit", "roster", "logolocal", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
         "flow": [
             {"id": "b0", "kind": "step", "lane": "actions", "title": "候補から選ぶ（管理ページの 🔍）",
-             "text": "後台の頭で、積んだ依頼を先に：選ばれた候補は今の写真と入れ替えて固定（apply_pick）、「集めて」の人は候補を 4〜6 枚（emblem_cands.find：下の取り方の段と同じ順・Web 画像検索も使う・今ある／外した画像は除く）→ state/emblem_cands.json → 管理ページ「小元素」の札に並ぶ · checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
+             "text": "〔2026-11-04 公開の箱 photos は scripts/nostorage.py が止める：この流れの Python は写真を本番から落とさない〕 後台の頭で、積んだ依頼を先に：選ばれた候補は今の写真と入れ替えて固定（apply_pick）、「集めて」の人は候補を 4〜6 枚（emblem_cands.find：下の取り方の段と同じ順・Web 画像検索も使う・今ある／外した画像は除く）→ state/emblem_cands.json → 管理ページ「小元素」の札に並ぶ · checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "b1", "kind": "decision", "lane": "actions", "title": "ゲート：足りない版面がある？",
              "text": "目標未満 · 失敗した版面は「新しい記事・手がかりが来た」（材料の指紋が変わった）ら対象に戻る（時間では待たない） · ただし名簿にまだ試していない人が STEP 人より多い失敗は、名簿を STEP 人ずつ 1 周するまで（emblem_fill.passes_left・進捗の rounds・subjects の _round。お客さまの版面は library_emblem.passes_left）続ける。先頭の 10 人だけで凍らせない · 胸像待ち（state/emblem_closeup.json）の版面は待たずに毎回",
              "uses": ["gate"], "no": "何もしない（Actions 20 秒で終わり）"},
@@ -660,7 +660,7 @@ PROCESSES = [
         "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK / SB_DEG_JS / _sb_line）", "scripts/sbstate.py", "scripts/welcome.py", "scripts/digest.py（supabase の 402）", "scripts/user_pages.py", "scripts/livestatus.py", "harness/sb_down_check.py", "harness/fake402_check.py", "harness/fake_clock/sitecustomize.py", ".github/workflows/fake402.yml", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql", "db/board_theme.sql"], "doc": "docs/rules/login.md",
         "flow": [
             {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
-             "text": "何のサイトか・店長のページの本物の画面。メール・パスワードと規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → 候補のタイルを押して選ぶ・名前でも足せる（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
+             "text": "〔2026-11-04 公開の箱 photos は scripts/nostorage.py が止める：この流れの Python は写真を本番から落とさない〕 何のサイトか・店長のページの本物の画面。メール・パスワードと規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → 候補のタイルを押して選ぶ・名前でも足せる（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
             {"id": "a1", "kind": "step", "lane": "web", "title": "右上の「はじめのページ」（入口 ../?stay、見るだけでもログイン中でもいつも見える）/「ログイン」",
              "text": "だれでもメールアドレス＋パスワード（2026-10-21：ユーザー名 → メールだけ → メール＋パスワード）。ログイン = signInWithPassword → user_login（規約の版）。新しく始める（入口）＝メールが未登録かを打つたびに確かめ（name_available）、パスワード 8 文字以上を 2 回、規約に同意 → user_signup（p_password つき）→ そのままログイン。このブラウザが覚える（ログアウトまで）。退会の機能はなし", "uses": ["maillink", "terms"]},
             {"id": "a1b", "kind": "decision", "lane": "web", "title": "同意した版 ＜ いまの版？",
