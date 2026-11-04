@@ -233,6 +233,9 @@ def own_recommend(votes, items, issue, rows=None):
         return {"picks": [], "taste": []}
 
 
+IMGS_PATH = "/storage/v1/object/pages/_fp/imgs.json"   # 写真の網址の一覧（非公開の箱・アカウントは持たない）
+
+
 def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None, heat_in=None, votes=None,
           shop_prev=()):
     """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）、chosen = 本人の nav_schemes {板块: id}。
@@ -345,6 +348,7 @@ def main(argv):
     except Exception:  # noqa: BLE001  まだ無い・読めない → 全部置く
         fps = {}
     new_fps = dict(fps)
+    imgs = {}   # 作ったページの原寸の写真の網址（置き場に未収のもの）。photo_store が読んでお客さまの写真も置き場に入れる
     for u in users or []:
         acct = account_of(u["email"])
         try:
@@ -355,6 +359,7 @@ def main(argv):
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
             html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline,
                           themes, follows, chosen, pages, heat_in, votes, prev)
+            photo_store.scan_text([html_, *pages.values()], set(), imgs)
             for name, h in {"index.html": html_, **pages}.items():
                 fp = hashlib.sha1(h.encode("utf-8")).hexdigest()
                 if not force and fps.get(f"{acct}/{name}") == fp:   # 変わっていないページは落とし直さない（無料枠・置き場の写しも守る）
@@ -373,6 +378,11 @@ def main(argv):
         try:
             _supa(fp_path, json.dumps(new_fps, sort_keys=True).encode(), "POST", "application/json")
         except Exception:  # noqa: BLE001  指紋が書けなくても次の回が全部置き直すだけ
+            pass
+    if made and not failed:   # 全員作れた回だけ（一部の失敗で前の網址を消さない）。pages/ は読まず、この 1 本だけを photo_store が読む
+        try:
+            _supa(IMGS_PATH, json.dumps(sorted(imgs.values())).encode("utf-8"), "POST", "application/json")
+        except Exception:  # noqa: BLE001  書けなくても次の回が書く
             pass
     print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}）・失敗 {failed}")
     if failed and not made:

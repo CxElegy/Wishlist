@@ -132,12 +132,23 @@ def scan_text(texts, seen, want):
         want[k] = u
 
 
-def scan(site=None, extra=()):
+def user_imgs(base, keyv):
+    """お客さまのページの写真の網址（user_pages が組み立て時に書く pages/_fp/imgs.json の 1 本だけ・小さい）。pages/ の一覧・本文は読まない。取れなければ空。"""
+    try:
+        req = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/pages/_fp/imgs.json", headers={"apikey": keyv, "Authorization": f"Bearer {keyv}"})
+        return [u for u in json.loads(sbstate.sb_open(req, 30).read()) if isinstance(u, str) and u.startswith("http")]
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def scan(site=None, extra=(), urls=()):
     """公開ページ（＋お客さまのページ extra）の写真を数える。→ (載っている指紋の集合, {指紋: 原寸の網址}（まだ置いていないもの）, 写真の種類の数)。
     店長もお客さまも、主写真・ぼかし・ギャラリー・欲しい物の写真を同じ置き場で（網址ごとに 1 回）。"""
     seen, want = set(), {}
     scan_text([f.read_text(encoding="utf-8") for f in pages(site)], seen, want)
     scan_text(extra, seen, want)
+    for u in urls:   # 店長の網页に無いお客さまの写真（後ろに足す：置く順は店長の先頭の写真が先）
+        want.setdefault(key(u), u)
     return seen, want, len(seen | set(want))
 
 
@@ -308,7 +319,8 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     base = base or ""
     st = load(path)
     p, x = st["p"], st["x"]
-    seen, want, total = scan(site)   # お客さまのページ（storage の pages/）は読まない：3 時間ごとに全部落とすと cached egress を使う（2026-11-04）
+    # お客さまのページ（storage の pages/）は読まない：3 時間ごとに全部落とすと cached egress を使う（2026-11-04）。写真の網址の小さな 1 本だけ読む
+    seen, want, total = scan(site, urls=user_imgs(base, keyv) if base and keyv else ())
     today = day()
     seen |= set(want) & set(p)   # 置いたが、まだ網页を作り直していない分
     for k in seen & set(p):
