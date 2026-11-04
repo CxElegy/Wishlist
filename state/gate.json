@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-04T13:17:44+00:00",
+ "checked": "2026-11-04T14:17:37+00:00",
  "fired": {
-  "at": "2026-11-04T13:18:03+00:00",
+  "at": "2026-11-04T14:17:52+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-04T12:28:19+00:00",
+    "at": "2026-11-04T14:17:52+00:00",
     "attempts": 1,
     "day": "2026-11-04",
-    "prog": 373,
-    "resp": "cse_01W4x6f9H2udGPpToE5XjHf1",
-    "sig": "6af5b0d539a9"
+    "prog": 441,
+    "resp": "cse_01W4x6f6NGquJ5DCFmMKthLa",
+    "sig": "8eec7a32db3f"
    },
    "items": [
     "A2O LITE",
@@ -35,11 +35,18 @@
    "need": true,
    "prog": 441,
    "prog_day": "2026-11-04",
-   "ripe": [],
-   "sig": "c55d966fda9b",
+   "ripe": [
+    "A2O LITE",
+    "Vaundy",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "滑雪",
+    "猫用品"
+   ],
+   "sig": "8eec7a32db3f",
    "token_cap": 1000000,
    "tokens_today": 632143,
-   "why": "整理待ちの記事 10 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 10 件（6 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
