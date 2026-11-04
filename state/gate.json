@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-04T04:17:41+00:00",
+ "checked": "2026-11-04T05:17:44+00:00",
  "fired": {
   "at": "2026-11-04T04:18:01+00:00",
   "results": {
@@ -19,36 +19,20 @@
     "resp": "cse_01W4x6f5MSTh82v8YdkJXgRa",
     "sig": "23a685660076"
    },
-   "items": [
-    "BLEACH Mirrors High",
-    "FROM",
-    "ILLIT",
-    "The Mandalorian",
-    "Vaundy",
-    "あつ森",
-    "猫用品",
-    "绝区零"
-   ],
-   "last_batch": "2026-11-04T03:03:15+00:00",
+   "items": [],
+   "last_batch": "2026-11-04T04:42:20+00:00",
    "last_error": {
-    "at": "2026-11-02T23:32:55+00:00",
+    "at": "2026-11-04T04:26:16+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 250,
+   "need": false,
+   "prog": 259,
    "prog_day": "2026-11-04",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "FROM",
-    "ILLIT",
-    "The Mandalorian",
-    "Vaundy",
-    "猫用品"
-   ],
-   "sig": "23a685660076",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 370521,
-   "why": "整理待ちの記事 9 件（8 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 424431,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
