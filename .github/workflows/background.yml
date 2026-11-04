@@ -98,7 +98,7 @@ jobs:
 
       - name: Wikimedia の応答のキャッシュ（requests-cache・同じものを取り直さない）
         if: steps.gate.outputs.emblem == 'true'
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: ~/.cache/wishlist-http
           key: wishlist-http-${{ github.run_id }}-${{ github.run_attempt }}
@@ -116,6 +116,22 @@ jobs:
         run: |
           pip install -q "rembg[cpu]>=2.0.60,<3"
           python scripts/emblem_fill.py --background --minutes "${{ inputs.minutes || '40' }}" --workers 6
+
+      - uses: actions/cache/save@v4
+        if: always() && steps.gate.outputs.emblem == 'true'
+        with:
+          path: ~/.cache/wishlist-http
+          key: wishlist-http-${{ github.run_id }}-${{ github.run_attempt }}
+      - id: httpchk
+        if: always() && steps.gate.outputs.emblem == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/wishlist-http
+          key: wishlist-http-${{ github.run_id }}-${{ github.run_attempt }}
+          lookup-only: true
+      - name: Wikimedia 応答の保存が拒まれたら警告（save は拒まれても緑のまま。2026-11-04 photo cache で token has no writable scopes）
+        if: always() && steps.gate.outputs.emblem == 'true' && steps.httpchk.outputs.cache-hit != 'true'
+        run: echo "::warning::Wikimedia 応答の cache が保存できなかった（書き込みが拒まれた？）。次の回は空から始まる"
 
       - name: 还有活 → 自己再起一次（最多接着 3 次）
         id: more

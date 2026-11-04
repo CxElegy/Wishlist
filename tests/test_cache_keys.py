@@ -48,6 +48,27 @@ class CacheKeysPruned(unittest.TestCase):
         self.assertIn("gh workflow run photo_cache.yml", tail)
         self.assertIn("cache-hit == 'true'", tail.split("Pages を出し直す")[1])
 
+    def test_no_combined_cache_action_on_run_id_keys(self):
+        """actions/cache@v4（restore と post-save が一体）は保存が拒まれても警告だけで緑＝気づけない。run_id キーは restore と save を分け、save のあとに lookup-only で探して無ければ警告する（background.yml の wishlist-http・library.yml の wd-facts。2026-11-04）。"""
+        for f in sorted(WF.glob("*.yml")):
+            t = f.read_text(encoding="utf-8")
+            for m in re.finditer(r"uses:\s*actions/cache@v\d+\s*\n(?:.*\n)*?\s*key:[ \t]*(.+)", t):
+                self.assertNotIn("run_id", m.group(1), f"{f.name}: run_id キーは actions/cache@v4 でなく restore＋save＋lookup-only の確かめで")
+
+    def test_every_run_id_save_is_verified(self):
+        for f in sorted(WF.glob("*.yml")):
+            t = f.read_text(encoding="utf-8")
+            saves = re.findall(r"uses:\s*actions/cache/save@v\d+\s*\n(?:.*\n)*?\s*key:[ \t]*(.+)", t)
+            ids = [k for k in saves if "run_id" in k]
+            if f.name == "ask_remind.yml":
+                continue  # 1 回きりの状態の保存（失敗しても次の問い合わせで作り直す）
+            if f.name == "photo_cache.yml":
+                self.assertIn("lookup-only: true", t)
+                continue
+            for k in ids:
+                self.assertIn("lookup-only: true", t, f"{f.name}: {k} の保存が入ったかを確かめていない")
+                self.assertIn("保存が拒まれたら警告", t, f"{f.name}: 拒まれたときの警告が無い")
+
 
 if __name__ == "__main__":
     unittest.main()
