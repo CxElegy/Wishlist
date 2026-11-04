@@ -2895,6 +2895,12 @@ _LIVE_ROW = {}     # (版面, proc) → データベースに行を書いたか�
 _LIVE_TIMER = {}   # (版面, proc) → 「探しています」を遅らせて書く Timer
 _LIVE_LAST = {}    # (版面, proc) → 最後に書いた時刻（monotonic）
 _LIVE_LOCK = threading.Lock()
+_LIVE_KLOCK = {}    # (版面, proc) → その書き込みの順番待ちの錠
+
+
+def _live_key_lock(key):
+    with _LIVE_LOCK:
+        return _LIVE_KLOCK.setdefault(key, threading.Lock())
 
 
 def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"):
@@ -2903,7 +2909,8 @@ def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"
     出刊后先列在版面底部的「整理待ち」里，要紧消息除外）；None = 删掉这一行（没有新记事，条消失）。
     board=None 且 state=None：删掉这个 proc 的全部行（每次收集开始时清空）。失败也不影响收集本身。
     無料枠（API の呼び出しを減らす）：①同じ内容は二度書かない（_LIVE_SENT）②fetch は LIVE_FETCH_SHOW_SEC 秒かかった版面だけ書く
-    ③書いていない行の DELETE は送らない（収集の最初に proc 全部を消してある）④小元素の段の書き換えは LIVE_EMBLEM_GAP_SEC 秒に 1 回。"""
+    ③書いていない行の DELETE は送らない（収集の最初に proc 全部を消してある）④小元素の段の書き換えは LIVE_EMBLEM_GAP_SEC 秒に 1 回。
+    同じ（版面, proc）の書き込みは 1 本ずつ（Timer の POST が出る前に DELETE が先に届いて行が残る、を防ぐ）。"""
     sig = (state, found, str(started), str(eta))
     key = (board, proc)
     if _LIVE_SENT.get(key) == sig:
@@ -2916,40 +2923,42 @@ def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"
         if tm:
             tm.cancel()
         if state == "fetch" and board:
-            tm = threading.Timer(LIVE_FETCH_SHOW_SEC, _live_write, (board, proc, state, found, started, eta, key))
+            tm = threading.Timer(LIVE_FETCH_SHOW_SEC, _live_write)
+            tm.args = (board, proc, state, found, started, eta, key, tm)
             tm.daemon = True
             _LIVE_TIMER[key] = tm
             tm.start()
             return
-        if state is None and board and not _LIVE_ROW.get(key):
-            return   # 書いていない行は消すものがない
     _live_write(board, proc, state, found, started, eta, key)
 
 
-def _live_write(board, proc, state, found, started, eta, key):
-    with _LIVE_LOCK:
-        if state == "fetch":
-            if _LIVE_TIMER.get(key) is None:   # もう済んだ（別の live_mark が Timer を外した）
+def _live_write(board, proc, state, found, started, eta, key, timer=None):
+    with _live_key_lock(key):   # 同じ版面の書き込みは順番に（Timer の POST の途中に来た DELETE は、その POST のあとに送る）
+        with _LIVE_LOCK:
+            if state == "fetch":
+                if _LIVE_TIMER.get(key) is not timer or timer is None:   # もう済んだ（別の live_mark が Timer を外した）
+                    return
+                _LIVE_TIMER.pop(key, None)
+            elif state is None and board and not _LIVE_ROW.get(key):
+                return   # 書いていない行は消すものがない
+            if state is None and not board:
+                for k in [k for k in _LIVE_ROW if k[1] == proc]:
+                    _LIVE_ROW.pop(k)
+            else:
+                _LIVE_ROW[key] = state is not None
+            _LIVE_LAST[key] = time.monotonic()
+        try:
+            if state is None:
+                q = f"proc=eq.{proc}" + (f"&board=eq.{urllib.parse.quote(board)}" if board else "")
+                supabase(f"live_status?{q}", method="DELETE")
                 return
-            _LIVE_TIMER.pop(key, None)
-        if state is None and not board:
-            for k in [k for k in _LIVE_ROW if k[1] == proc]:
-                _LIVE_ROW.pop(k)
-        else:
-            _LIVE_ROW[key] = state is not None
-        _LIVE_LAST[key] = time.monotonic()
-    try:
-        if state is None:
-            q = f"proc=eq.{proc}" + (f"&board=eq.{urllib.parse.quote(board)}" if board else "")
-            supabase(f"live_status?{q}", method="DELETE")
-            return
-        now = dt.datetime.now(dt.timezone.utc)
-        supabase("live_status?on_conflict=board,proc", {
-            "board": board, "proc": proc, "state": state, "found": found,
-            "started_at": (started or now).isoformat(), "eta_at": eta.isoformat() if eta else None,
-            "updated_at": now.isoformat()}, prefer="resolution=merge-duplicates,return=minimal", method="POST")
-    except Exception as err:  # noqa: BLE001  条只是给人看的，出错不能让收集停下
-        print(f"  （版面状态没写进数据库：{err}）", file=sys.stderr)
+            now = dt.datetime.now(dt.timezone.utc)
+            supabase("live_status?on_conflict=board,proc", {
+                "board": board, "proc": proc, "state": state, "found": found,
+                "started_at": (started or now).isoformat(), "eta_at": eta.isoformat() if eta else None,
+                "updated_at": now.isoformat()}, prefer="resolution=merge-duplicates,return=minimal", method="POST")
+        except Exception as err:  # noqa: BLE001  条只是给人看的，出错不能让收集停下
+            print(f"  （版面状态没写进数据库：{err}）", file=sys.stderr)
 
 
 def _ingest_one(item, raw, bconf, settings, facts, seen, now, compare, dry_run, late=False):
@@ -3584,6 +3593,26 @@ def unedited(only=None):
 PICK_DIR = pathlib.Path(os.environ.get("PICK_DIR", "/tmp/wishlist-pick"))
 
 
+_LIVE_EDIT_SENT = pathlib.Path("/tmp/wishlist-live-edit-sent.json")   # この回に live_report で送った（版面 → 状態・言葉）。同じなら送らない（無料枠）
+
+
+def _live_edit_report(board, state, note, eta_min):
+    """livestatus.report の前に、同じ回で同じ（状態・言葉）を送っていたら飛ばす（残り時間だけの違いでは rpc を重ねない）。"""
+    import livestatus
+    try:
+        sent = json.loads(_LIVE_EDIT_SENT.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        sent = {}
+    if sent.get(board) == [state, note]:
+        return
+    sent[board] = [state, note]
+    try:
+        _LIVE_EDIT_SENT.write_text(json.dumps(sent, ensure_ascii=False), encoding="utf-8")
+    except OSError:
+        pass
+    livestatus.report(board, "edit", state, note, eta_min)
+
+
 def live_edit():
     """AI 编辑开始编排时（EDITING.md 第 2 步）：今天还没编的版面，在网页上出「AI が編集しています · あと約 N 分」的条。
     预计时间 = 最近几回 AI 编辑的长度（state/log/edit.json 的 secs）。之后 pick-images・publish 会把条往下推进。"""
@@ -3593,8 +3622,9 @@ def live_edit():
     paths = sorted(INBOX_DIR.glob("????-??-??.json"))
     done = sorted(_edit_done_boards(paths[-1])) if paths else []   # 始める前に編集済みの版面（バッチの記録に数えない）
     LIVE_EDIT_FILE.write_text(json.dumps({"start": time.time(), "boards": boards, "est": est, "done": done}, ensure_ascii=False), encoding="utf-8")
+    _LIVE_EDIT_SENT.unlink(missing_ok=True)   # 新しい回：送った記録を空に
     for b in boards:
-        livestatus.report(b, "edit", "work", "AI が編集しています", est + LIVE_AFTER_MIN)
+        _live_edit_report(b, "work", "AI が編集しています", est + LIVE_AFTER_MIN)
     print(f"網页の帯：{len(boards)} 版面（予想 {est:.0f} 分）", file=sys.stderr)
 
 
@@ -3707,7 +3737,7 @@ def _live_edit_step(note, left_min=None, only=None):
         left_min = max(2, run["est"] - (time.time() - run["start"]) / 60) + LIVE_AFTER_MIN
     for b in run["boards"]:
         if only is None or b in only:
-            livestatus.report(b, "edit", "work" if left_min > LIVE_AFTER_MIN else "wait", note, left_min)
+            _live_edit_report(b, "work" if left_min > LIVE_AFTER_MIN else "wait", note, left_min)
     return run
 
 
