@@ -57,6 +57,13 @@ jobs:
             for i in 1 2 3; do git pull -q --rebase && git push && break; sleep $((i * 5)); done
           fi
           [ "$rc" -ne 1 ]
+      - name: 古い写しを最新 1 つだけ残して消す（run ごとに 200 MB 前後を保存するので、10 GB の枠を食い切って「Unable to reserve cache」になった。2026-11-04）
+        if: always() && steps.fill.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh cache list --key wl-photo-cache- --sort created_at --order desc --limit 100 --json id --jq '.[1:][].id' \
+            | while read -r id; do gh cache delete "$id" || true; done
       - uses: actions/cache/save@v4
         if: always() && steps.fill.outputs.changed == 'true'   # 変わらない回は保存しない（200 MB の写しで他の cache を押し出さない）
         with:
