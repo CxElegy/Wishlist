@@ -182,6 +182,47 @@ class PageSide(unittest.TestCase):
             digest.live_mark("E", "emblem:B", proc="emblem")   # 30 秒以内の段の書き換えは送らない
             self.assertEqual(len(calls), 3)
 
+    def test_live_write_budget_constants(self):
+        """無料枠の予算：戻されたら落ちる（live_log 8 秒・探し中 20 秒・小元素の段 30 秒）。"""
+        import livestatus
+        self.assertGreaterEqual(livestatus.Lines.FLUSH, 8)
+        self.assertGreaterEqual(digest.LIVE_FETCH_SHOW_SEC, 20)
+        self.assertGreaterEqual(digest.LIVE_EMBLEM_GAP_SEC, 30)
+        src = (pathlib.Path(__file__).resolve().parent.parent / "scripts" / "emblem_fill.py").read_text(encoding="utf-8")
+        self.assertIn("if not keyed:   # 鍵のある Actions は fill_one の _live", src)   # 鍵ありで rpc live_report を重ねない
+
+    def test_live_delete_waits_for_inflight_post(self):
+        """Timer の POST の途中で DELETE が来ても、POST のあとに送る（行が残らない）。"""
+        import threading
+        import time
+        order = []
+
+        def fake(path, data=None, prefer=None, method="GET"):
+            if method == "POST":
+                time.sleep(0.2)
+            order.append(method)
+        with mock.patch.object(digest, "supabase", fake), mock.patch.dict(digest._LIVE_SENT, clear=True), \
+                mock.patch.dict(digest._LIVE_ROW, clear=True), mock.patch.dict(digest._LIVE_TIMER, clear=True), \
+                mock.patch.dict(digest._LIVE_LAST, clear=True), mock.patch.object(digest, "LIVE_FETCH_SHOW_SEC", 0.05):
+            digest.live_mark("R", "fetch")
+            time.sleep(0.12)                    # Timer が発火して POST の最中
+            th = threading.Thread(target=digest.live_mark, args=("R", None))
+            th.start()
+            th.join(3)
+        self.assertEqual(order, ["POST", "DELETE"])
+
+    def test_live_edit_report_skips_same_state_and_note(self):
+        import tempfile
+        sent = []
+        import livestatus
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(digest, "_LIVE_EDIT_SENT", pathlib.Path(d) / "s.json"), \
+                mock.patch.object(livestatus, "report", lambda *a, **k: sent.append(a)):
+            digest._live_edit_report("B", "work", "x", 10)
+            digest._live_edit_report("B", "work", "x", 8)       # 残り時間だけの違い：送らない
+            digest._live_edit_report("B", "work", "y", 8)
+            digest._live_edit_report("B", "wait", "y", 3)
+        self.assertEqual(len(sent), 3)
+
     def test_busy_polls_slower_when_idle(self):
         self.assertIn("live.length?30000:120000", render.BUSY_JS)
 

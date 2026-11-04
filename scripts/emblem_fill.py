@@ -3099,6 +3099,9 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
     prog = load_progress(path)
     now = _now()
     prog.setdefault("started", now)
+    prev = prog.get("last_run") or {}
+    if keyed and prev.get("at") and not prev.get("end"):   # 前の回が終わらず落ちた：残った「小元素」の行を消す（書いていない行の DELETE は送らない変更で、収集のような先頭の全消しが無いため）
+        _live(None)
     prog["last_run"] = {"at": now, "minutes": minutes, "workers": workers, "done": []}
     items = load_items()
     sync_progress(prog, items)
