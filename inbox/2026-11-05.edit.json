@@ -1,20 +1,20 @@
 {
  "_covered": {
-  "漫威电影": 56,
-  "三星手机": 21,
-  "GTA 6": 36,
+  "漫威电影": 77,
+  "三星手机": 25,
+  "GTA 6": 49,
   "チェーンソーマン": 9,
-  "A2O LITE": 6,
-  "dota2": 5,
-  "周杰伦": 5,
+  "A2O LITE": 7,
+  "dota2": 7,
+  "周杰伦": 6,
   "あつ森": 4,
   "哈利波特剧集": 4,
   "猫用品": 4,
-  "The Mandalorian": 3,
+  "The Mandalorian": 5,
   "绝区零": 3,
   "ILLIT": 2,
   "日本顶级网球赛事": 2,
-  "MMORPG 新作": 1,
+  "MMORPG 新作": 2,
   "Vaundy": 3,
   "Astrae Oratio": 2,
   "滑雪": 1
@@ -53,7 +53,15 @@
     10,
     18,
     49,
-    50
+    50,
+    70,
+    57,
+    59,
+    63,
+    66,
+    67,
+    74,
+    73
    ]
   },
   {
@@ -67,7 +75,11 @@
     19,
     15,
     8,
-    52
+    52,
+    69,
+    71,
+    76,
+    77
    ]
   },
   {
@@ -136,6 +148,24 @@
     16,
     12
    ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Rumored to Launch Earlier, Here Are the Latest Leaked Specifications, Camera, and Pricing",
+   "highlight": "Launch Earlier",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22
+   ]
+  },
+  {
+   "headline": "갤럭시 S27 울트라, 크기는 S26과 거의 같은데 후면 카메라는 가로 바로 바뀐다",
+   "highlight": "가로 바",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    25
+   ]
   }
  ],
  "GTA 6": [
@@ -150,7 +180,10 @@
     9,
     10,
     33,
-    32
+    32,
+    40,
+    39,
+    43
    ],
    "event": {
     "date": "2026-11-10",
@@ -176,7 +209,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    46
    ]
   },
   {
@@ -186,7 +220,10 @@
    "weight": "normal",
    "refs": [
     23,
-    25
+    25,
+    37,
+    44,
+    48
    ]
   },
   {
@@ -293,6 +330,24 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "Yatoro Tops the Dota 2 Player Rankings",
+   "highlight": "Yatoro Tops",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "FISSURE CEO Admits It Still Owes CS2 and Dota 2 Prize Money, Eyes Q1 2027 for Next Big Payout",
+   "highlight": "Still Owes",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "周杰伦": [
@@ -312,6 +367,15 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "周杰伦演唱会3小时演出被指划水近2小时",
+   "highlight": "被指划水",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -388,7 +452,8 @@
    "blurb": "A roundup of what the art book The Art of Star Wars: The Mandalorian and Grogu reveals.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    5
    ],
    "image": "https://theholofiles.com/wp-content/uploads/2026/05/THND-FF-000470-3-scaled.jpg"
   },
@@ -446,6 +511,19 @@
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200"
+  },
+  {
+   "headline": "New Open-World MMORPG Officially Confirmed for November 16",
+   "highlight": "November 16",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-16",
+    "label": "発売日"
+   }
   }
  ],
  "Vaundy": [
