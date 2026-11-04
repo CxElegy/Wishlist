@@ -106,10 +106,67 @@ def _fulfill(route):
     return route.fulfill(status=200, body=GRAY, content_type="image/png")
 
 
+# --- ブラウザからの Supabase（rest・rpc・auth・functions）。2026-11-04 egress：読みは 10 分の写しから返す ---
+SB = re.compile(r"https://[^/]+\.supabase\.co/(?:rest/v1|auth/v1|functions/v1)/")
+# 読むだけの rpc（名前で決める。ここに無い rpc は書き込みかもしれないので必ず本番へ通す）
+READ_RPC = {"my_page", "my_page_path", "my_votes", "my_votes_own", "my_role", "my_boards", "live_boards", "live_log_since", "edit_control_get",
+            "get_sizes", "get_nav_schemes", "can_edit", "auth_enforced", "instant_enabled", "name_available", "list_item_requests", "get_photo_inbox",
+            "userfeed_users", "admin_votes", "admin_users", "admin_accounts", "admin_follow_rows", "admin_follow_detail", "admin_ui_langs",
+            "admin_account_langs", "admin_list_invites", "admin_board_edit_state"}
+SB_CACHE = Path(os.environ.get("WL_SB_BROWSER_CACHE") or Path.home() / ".cache" / "wl_sb_browser")
+
+
+def sb_mode():
+    """cache（既定）＝読みは写し／abort＝全部止める（Supabase が止まった時の見え方を見る・本番に 0 件）／live＝全部本番（直した直後の比べ用）"""
+    return os.environ.get("WL_SB_BROWSER", "cache")
+
+
+def cacheable(req):
+    if req.method in ("GET", "HEAD"):
+        return "/rest/v1/" in req.url
+    m = re.search(r"/rest/v1/rpc/([a-z_0-9]+)", req.url)
+    return bool(m and req.method == "POST" and m.group(1) in READ_RPC)
+
+
+def _sb_route(route):
+    import hashlib
+    import json
+    import time
+    sbread = __import__("sbread")
+    req, mode = route.request, sb_mode()
+    if mode == "abort":
+        sbread.browser_hit(req.url, "abort")
+        return route.abort()
+    if mode == "live" or not cacheable(req):
+        sbread.browser_hit(req.url)
+        return route.continue_()
+    h = req.headers
+    k = hashlib.sha256(f"{req.method}\n{req.url}\n{req.post_data}\n{sbread.ident(h.get('authorization') or h.get('apikey') or '-')}".encode()).hexdigest()[:40]
+    f = SB_CACHE / (k + ".json")
+    try:
+        if time.time() - f.stat().st_mtime < sbread.BR_TTL:
+            d = json.loads(f.read_text(encoding="utf-8"))
+            sbread.browser_hit(req.url, "cache")
+            return route.fulfill(status=d["s"], body=d["b"], headers=d["h"])
+    except (OSError, ValueError, KeyError):
+        pass
+    sbread.browser_hit(req.url)
+    r = route.fetch(timeout=30000)
+    body = r.body()
+    if r.ok:
+        keep = {a: b for a, b in r.headers.items() if a in ("content-type", "content-range")}
+        try:
+            SB_CACHE.mkdir(parents=True, exist_ok=True)
+            f.write_text(json.dumps({"s": r.status, "b": body.decode("utf-8"), "h": keep}), encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            pass
+    return route.fulfill(response=r, body=body)
+
+
 def guard(target):
-    """Page か BrowserContext に写真の配信止めを付ける"""
+    """Page か BrowserContext に写真の配信止めと Supabase の読みの写しを付ける（ux_check の最後に件数が出る）"""
     target.route(PATTERN, _fulfill)
-    target.on("request", lambda r: __import__("sbread").browser_hit(r.url))   # 点検 1 回のブラウザからの Supabase 要求を数える（ux_check の最後に出る）
+    target.route(SB, _sb_route)
     return target
 
 

@@ -356,3 +356,5 @@
 - 2026-11-04 f1f1：#879 合併。dispatch 1 回（run 128）は保存成功。#878 後の workflow_run の回 127 は掃除後も「token has no writable scopes」で保存拒否＝枠だけが根ではない。続き：workflow_run の回は入らなければ dispatch で起こし直す。直ったかは未確認（24 時間緑まで）。
 
 - 2026-11-04 f2：点検の道具の REST 読みを harness/sbread.py に一本化（10 分の写し・件数を最後に出す）。tests/test_sbread.py。次：ux_check 1 回の件数を本番で確認。
+
+- 2026-11-04 f2f2：egress 別の目の指摘。sbread 既定を 10 分の写しに逆転（ttl=0 は photo_cache_fill だけ）・ux_check の版面 config 丸ごと読みを 3 箱に絞る・ブラウザの Supabase 読み（GET＋READ_RPC）も写し（WL_SB_BROWSER=cache|abort|live）・件数の行は --part who でも出る（早い return で出ていなかった）・上限 REST_MAX 12。本番 test-a 1400 --fast 2 回目：python /rest/v1/ 0 件・ブラウザ→本番 23〜38 件（user_login 24 が大半）・写し 295・✗ 0。次：user_login の呼びを減らす・ux_all 全部の合計。

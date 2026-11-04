@@ -632,6 +632,7 @@ def rest_boards(tok=None, exact=False):
 
 HTML_MAX_MB = 2.8   # 2026-10-31：2.6→2.8（色の下絵 1170 枚×31B＝36KB が増えた。倍に戻る検出が目的）。2026-10-30：店長のページ 4.1MB→2.1MB。画像 1 枚ごとの onerror が戻ると倍になるので、ここを超えたら ✗
 IMG_MAX = 4500
+REST_MAX = 12   # 1 回の点検（写しが空の最初の回）で本番の /rest/v1/ へ出てよい数。2 回目以降は 0 に近い
 
 
 def html_weight_bad(html):
@@ -995,11 +996,11 @@ def check_admin_coverage(pw, base, width):
         bad.append(f"ライブラリの版面 {want} に対して管理ページ③の版面ごとの状態は {ls[0]}（行 {ls[1]}）")
     # 中身：各行の人数・小元素の枚数・状態の札が boards.config と一致（人数 0・失敗・まだ の版面も）
     s0 = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
-    brs = json.loads(sbread.get(s0["supabase_url"].rstrip("/") + "/rest/v1/boards?select=id,followers,config", s0["supabase_key"], ses["access_token"])[0])
+    brs = json.loads(sbread.get(s0["supabase_url"].rstrip("/") + "/rest/v1/boards?select=id,followers,config->emblem,config->emblem_state,config->theme", s0["supabase_key"], ses["access_token"])[0])
     cells = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#wl-libstate tr[data-id]')].map(r=>[r.dataset.id,[...r.cells].slice(1,4).map(c=>c.textContent).concat([...r.querySelectorAll('[data-k]')].map(c=>c.textContent))]))")
     lab = {"ok": "済", "running": "待ち", "failed": "失敗"}
     for b in brs:
-        c = b.get("config") or {}
+        c = b   # select で config の 3 つの箱だけ読む（版面の設定丸ごとは 1 回で数百 KB・2026-11-04 egress）
         n = len(c.get("emblem") or [])
         st = (c.get("emblem_state") or {}).get("state")
         w = lab.get(st, "—" if n else "まだ")
@@ -1405,6 +1406,17 @@ def runs_for(who, widths, fast=False):
     return runs
 
 
+def finish(fails, a):
+    """終わりの 1 行。本番の Supabase への要求の件数（python の /rest/v1/・ブラウザ）を必ず出す（--part who の早い終わりでも出す）。"""
+    print(sbread.line())
+    n = sbread.stats()
+    if not a.fresh and n["net"] > REST_MAX:   # 1 回の点検で本番の /rest/v1/ へ出る数の上限（写しが効かなくなったら ✗）
+        fails += 1
+        print(f"✗ 本番の /rest/v1/ への要求 {n['net']} 件が上限 {REST_MAX} を超えた（写し sbread.get の ttl を確かめる）")
+    print(f"点検：✗ {fails} 件")
+    return 1 if fails else 0
+
+
 def main(argv):
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="https://cxelegy.github.io/Wishlist/home/")
@@ -1416,10 +1428,14 @@ def main(argv):
     ap.add_argument("--part", default="all", choices=("all", "who", "global"),
                     help="分けて走らせる用：who＝人ごとの画面・札の境目だけ／global＝管理ページ・HTML・公開の漏れなど人に依らない点検だけ（harness/ux_all.py が使う）")
     ap.add_argument("--diff-admin", action="store_true", help="店長のページ（ログインなし）とお客さまのページを部品の有無で比べ、違いを 1 行ずつ出す（harness/diff_admin.py）")
+    ap.add_argument("--fresh", action="store_true", help="本番の読みを写しにせず毎回読む（直した直後の比べ用。egress を使う）")
     ap.add_argument("--journey", action="store_true", help="1 日通し（空のアカウントで押して通す）だけを走らせる")
     a = ap.parse_args(argv)
     if a.fast:
         a.emb = "off"
+    if a.fresh:
+        sbread.TTL = sbread.BR_TTL = 0
+        os.environ["WL_SB_BROWSER"] = "live"
     out = pathlib.Path(a.out)
     if a.diff_admin:
         import diff_admin
@@ -1465,8 +1481,7 @@ def main(argv):
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"{who} 札の境目 {'/'.join(map(str, DOCK_WIDTHS))}px（＋他のページ {len(DOCK_PAGES) if who == 'guest' else 1 if who == 'test-a' else 0} 枚 × {'/'.join(map(str, DOCK_PAGE_WIDTHS))}px）：" + ("、".join(bad) if bad else "幅ごとの札・「⋯」の開け閉め・しまう動きどおり"))
         if a.part == "who":
-            print(f"点検：✗ {fails} 件")
-            return 1 if fails else 0
+            return finish(fails, a)
         for w in a.widths.split(","):
             try:
                 bad = check_admin(pw, a.base, int(w), out)
@@ -1574,10 +1589,7 @@ def main(argv):
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"小元素の出方（遅い回線）{w}px：" + ("、".join(bad) if bad else "パッと出ない"))
-    print(f"点検：✗ {fails} 件")
-    print(sbread.line())
-    return 1 if fails else 0
-
+    return finish(fails, a)
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))
