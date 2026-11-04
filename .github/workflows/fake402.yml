@@ -58,3 +58,13 @@ jobs:
           WL_FAKE402: "1"
           WL_FAKE402_WORKERS: "4"
         run: python harness/fake402_check.py
+      # 毎日の定時が赤のときだけ Discord へ（必須チェックにしない代わり：main へ Actions が直接 push するため、2026-11-04 入口の決め）
+      - name: 定時が赤なら Discord に知らせる
+        if: failure() && github.event_name == 'schedule'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          [ -n "$DISCORD_WEBHOOK_URL" ] || exit 0
+          curl -sS -m 20 -H 'Content-Type: application/json' \
+            -d "{\"content\": \"⚠ 402 通し点検（毎日の定時）が赤です: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}" \
+            "$DISCORD_WEBHOOK_URL" || true
