@@ -324,7 +324,7 @@ PROCESSES = [
         "flow": [
             {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 40 分まで · 同時に 1 本 · 前の回に時間切れで残った版面・初めて取る版面（新関注項）を先に取る · 管理ページの小元素の格子（digest.emblem_detail）は失敗の待ちに時刻を出さず「材料待ち」と書く"},
             {"id": "c1s", "kind": "step", "lane": "actions", "title": "Supabase が 402 でも落とさない（sbstate）",
-             "text": "digest.supabase・user_pages・livestatus が 402（無料枠超過）を見たら、例外にせず None で飛ばし、同じ回では呼び直さない。ジョブは続き、収集・出刊・公開は止まらない。同期の印（state/db_news.json など）が進まないので、制限が外れた次の回がまとめて送り直す。状態は state/supabase_status.json（変わったときだけ書く）。ライブラリ系（library・library_design・library_emblem）は DB が読めないとき制限中なら緑で終える（sbstate.need_db）。見回りの読み取り（投票・小分類の分け方・篇幅・AI 編集の開関）は 1 つの処理の中で 60〜120 秒使い回す（sbstate.memo）＝API の回数を減らす"},
+             "text": "digest.supabase・user_pages・livestatus が 402（無料枠超過）を見たら、例外にせず None で飛ばし、同じ回では呼び直さない。ジョブは続き、収集・出刊・公開は止まらない。同期の印（state/db_news.json など）が進まないので、制限が外れた次の回がまとめて送り直す。状態は state/supabase_status.json（変わったときだけ書く＝入った・戻った瞬間だけ Discord に 1 通、DISCORD_WEBHOOK_URL のある回のみ）。ライブラリ系（library・library_design・library_emblem）は DB が読めないとき制限中なら緑で終える（sbstate.need_db）。見回りの読み取り（投票・小分類の分け方・篇幅・AI 編集の開関）は 1 つの処理の中で 60〜120 秒使い回す（sbstate.memo）＝API の回数を減らす"},
             {"id": "c1d", "kind": "decision", "lane": "actions", "title": "始めてから 18 分たっていない？", "text": "版面ごとに、取り始める前に見る（COLLECT_DEADLINE_MIN）· 始まった版面が 23 分たっても終わらなければ待たずに先へ（固まった版面も次の回へ。そのスレッドがあとで終わっても帯は立て直さない・情報員の様子は写しを読む）",
              "uses": ["deadline"], "yes": "↓ その版面を取る", "no": "その版面は始めない → 次の回に先に取る（ログ「時間切れで N 版面を次の回へ」）"},
             {"id": "c2", "kind": "fan", "lane": "ext", "title": "記事を集める", "x": "×6 関注項を同時に", "mode": "それぞれのサイトへ",
