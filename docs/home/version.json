@@ -1,14 +1,14 @@
 {
- "admin": "94fb128cf776",
- "admin-ai": "e0649e4d57b3",
+ "admin": "9990b65e500d",
+ "admin-ai": "e191e5b88839",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9dc35be8"
+   "42625b0b"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "cd01af11"
+   "5fa383b6"
   ]
  },
  "admin-boards": "bef9b91f6e11",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "3cf2c6f5c435",
+ "admin-emblem": "5b29cd2d1a26",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b2d3b836"
+   "06e07986"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "aacefc722651",
  "admin-members_marks": {},
- "admin-now": "d88be316627e",
+ "admin-now": "aba2ddd55228",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8c9f10d3"
+   "12406d06"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "03531f3a"
+   "ec17332d"
   ]
  },
- "admin-system": "121a01fb84c7",
+ "admin-system": "1719fd6e2ffb",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "6ac94d04"
+   "5cfcc69a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "6216960f"
+   "051ea6a8"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "3db0c8ec"
   ]
  },
- "index": "4e23f962a561",
+ "index": "6254914be30f",
  "index_marks": {
   "front": [
    "トップ",
-   "f6fd67ea"
+   "914154fa"
   ],
   "picks": [
    "気になるかも？",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "5a5cd7e2"
+   "7af4f911"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "e366771e"
+   "5fd556ab"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "9c44214a"
+   "efcbd103"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "d8951a4e"
+   "8405a72b"
   ],
   "w-f303ad09": [
    "绝区零",
    "5ed629af"
   ]
  },
- "updated": "11.05 03:57",
+ "updated": "11.05 04:01",
  "wishlist": "5c43e187dde3"
 }

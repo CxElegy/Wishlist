@@ -234,6 +234,12 @@
   "target": 720,
   "v": 3
  },
+ "https://9to5toys.com/wp-content/uploads/sites/5/2026/11/Belkin-Mandalorian-edition-metal-Magnetic-Power-Bank-6f4731.webp?resize=1200,628": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://9to5toys.com/wp-content/uploads/sites/5/2026/11/LEGO-Star-Wars-AT-RT-Attack-0e9739.webp?resize=1200,628": {
   "w": 1200,
   "h": 628,
@@ -415,6 +421,18 @@
   "w": 1280,
   "h": 670,
   "target": 720,
+  "v": 3
+ },
+ "https://assets.st-note.com/production/uploads/images/331430922/rectangle_large_type_2_dbe95185dae4f88d3e28a2cf8def1ce3.jpeg?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets.st-note.com/production/uploads/images/331736374/rectangle_large_type_2_ecb771953a1ddf4e66883a6f7619ead7.jpg?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 1280,
   "v": 3
  },
  "https://assets.st-note.com/production/uploads/images/332182864/rectangle_large_type_2_5f8fb70cfffdbba850e654643176d6e5.png?width=1200": {
@@ -1845,6 +1863,12 @@
   "w": 1200,
   "h": 900,
   "target": 720,
+  "v": 3
+ },
+ "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/198867.png?date=1587708186": {
@@ -3571,6 +3595,12 @@
   "target": 720,
   "v": 3
  },
+ "https://theholofiles.com/wp-content/uploads/2026/05/THND-FF-000470-3-scaled.jpg": {
+  "w": 2560,
+  "h": 1790,
+  "target": 1280,
+  "v": 3
+ },
  "https://themainstreetmouse.com/wp-content/uploads/2026/11/Disney-and-Starbucks-Mint-to-Be-holiday-tumblers-at-the-Disneyland-Resort.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3932,6 +3962,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934": {
+  "w": 544,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.533,
+  "local": "pics/42a887f18abcc580.webp",
+  "out": [
+   995,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.N0LnlEohsUZ4OQLawwh2GQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4072,12 +4115,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.cc7mByBjvhmn9xLzL0EcLA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
   "h": 281,
@@ -4168,12 +4205,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.lw-boqkB232vXdc5XRihLA&pid=News&w=1200": {
-  "w": 700,
-  "h": 470,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.m1s4FTAqSRNpAB8tWY7sCQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4200,6 +4231,13 @@
   "target": 1280,
   "v": 3,
   "blur": 0.397
+ },
+ "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.414
  },
  "https://www.bing.com/th?id=ONUT.sATBcmuNDOB5Bz9Z0O6Bgw&pid=News&w=1080": {
   "w": 700,
@@ -4270,12 +4308,6 @@
    640
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.zN6UAdHqWycg4_tAK8i46Q&pid=News&w=700": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.zV1ReHGr-FyrNcMW02R1aw&pid=News&w=700": {
   "w": 700,

@@ -9,7 +9,12 @@
   "周杰伦": 5,
   "あつ森": 4,
   "哈利波特剧集": 4,
-  "猫用品": 4
+  "猫用品": 4,
+  "The Mandalorian": 3,
+  "绝区零": 3,
+  "ILLIT": 2,
+  "日本顶级网球赛事": 2,
+  "MMORPG 新作": 1
  },
  "漫威电影": [
   {
@@ -222,7 +227,8 @@
    "weight": "lead",
    "refs": [
     5
-   ]
+   ],
+   "image": "https://static.gosugamers.net/13/c4/1c/22a362607bdb74810c45357060c481f34eefca3db57c4329bc29a94bf5.webp"
   },
   {
    "headline": "Zenith vs Cloud Dawning Live Score on 2026-11-04 of Dota 2 EPL World Series: Southeast Asia Season 19",
@@ -318,6 +324,73 @@
    "refs": [
     4
    ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Everything We Learned from ‘The Art of Star Wars: The Mandalorian and Grogu’",
+   "highlight": "Everything We Learned",
+   "blurb": "A roundup of what the art book The Art of Star Wars: The Mandalorian and Grogu reveals.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://theholofiles.com/wp-content/uploads/2026/05/THND-FF-000470-3-scaled.jpg"
+  },
+  {
+   "headline": "In the end, Grogu was just so cute: A belated review of 'The Mandalorian & Grogu'",
+   "highlight": "belated review",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "绝区零": [],
+ "ILLIT": [
+  {
+   "headline": "ILLIT shares behind-the-scenes footage of 'You’re Under Arrest' recording in Japan",
+   "highlight": "behind-the-scenes footage",
+   "blurb": "ILLIT shares behind-the-scenes footage of the recording of 'You’re Under Arrest' in Japan.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp"
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "Rybakina beats Putintseva at Toray Pan Pacific Open Tennis, secures Year-End No.1 spot",
+   "highlight": "Year-End No.1",
+   "blurb": "Elena Rybakina secures Year-End No.1 spot with a victory over Yulia Putintseva in the Toray Pan Pacific Open.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934"
+  },
+  {
+   "headline": "【テニス】東レPPO観戦記〜2回戦〜",
+   "highlight": "東レPPO観戦記",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "Cozy MMO Loftia opens three regions in Early Access",
+   "highlight": "three regions in Early Access",
+   "blurb": "Farming, floating islands and a little urban exploration await in Loftia's Early Access version.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200"
   }
  ]
 }
