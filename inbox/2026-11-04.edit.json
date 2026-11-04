@@ -62,7 +62,10 @@
     92,
     100,
     106,
-    109
+    109,
+    126,
+    115,
+    123
    ],
    "event": {
     "date": "2026-11-10",
@@ -76,7 +79,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    17
+    17,
+    119
    ]
   },
   {
@@ -87,7 +91,8 @@
    "refs": [
     18,
     8,
-    49
+    49,
+    120
    ]
   },
   {
@@ -114,7 +119,8 @@
    "weight": "normal",
    "refs": [
     12,
-    9
+    9,
+    124
    ]
   }
  ],
@@ -297,7 +303,17 @@
     36,
     37,
     42,
-    39
+    39,
+    48,
+    44,
+    50,
+    60,
+    62,
+    63,
+    56,
+    52,
+    53,
+    54
    ]
   },
   {
@@ -322,7 +338,10 @@
     18,
     20,
     30,
-    33
+    33,
+    47,
+    55,
+    57
    ]
   },
   {
@@ -354,7 +373,12 @@
     32,
     38,
     40,
-    41
+    41,
+    45,
+    46,
+    51,
+    58,
+    59
    ]
   },
   {
@@ -398,7 +422,9 @@
     23,
     25,
     26,
-    27
+    27,
+    29,
+    31
    ],
    "image": "http://tu.duoduocdn.com/uploads/day_261104/202611040024134632_thumb.jpg"
   },
@@ -434,26 +460,26 @@
   }
  ],
  "_covered": {
-  "GTA 6": 114,
-  "漫威电影": 72,
-  "三星手机": 43,
+  "GTA 6": 126,
+  "漫威电影": 80,
+  "三星手机": 63,
   "哈利波特剧集": 12,
-  "周杰伦": 28,
-  "dota2": 9,
+  "周杰伦": 31,
+  "dota2": 13,
   "星巴克马克杯": 6,
   "A2O LITE": 10,
   "猫用品": 6,
   "The Mandalorian": 5,
-  "ILLIT": 5,
-  "MMORPG 新作": 26,
+  "ILLIT": 10,
+  "MMORPG 新作": 32,
   "あつ森": 4,
-  "チェーンソーマン": 7,
+  "チェーンソーマン": 10,
   "Vaundy": 4,
-  "绝区零": 3,
+  "绝区零": 6,
   "Astrae Oratio": 1,
   "滑雪": 5,
   "日本顶级网球赛事": 4,
-  "BLEACH Mirrors High": 1,
+  "BLEACH Mirrors High": 5,
   "FROM": 1,
   "gelato pique": 7
  },
@@ -466,7 +492,8 @@
    "refs": [
     5,
     2,
-    3
+    3,
+    12
    ],
    "image": "https://games.gg/cdn-cgi/image/width=1200,height=675,fit=cover,format=auto/https://assets.games.gg/betboom_team_dota_2_roster_inactive_hero_ca2afb8c0c_389dafbd50.webp"
   },
@@ -485,7 +512,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    9
+    9,
+    13
    ]
   }
  ],
@@ -644,7 +672,8 @@
    "weight": "lead",
    "refs": [
     1
-   ]
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/4/0/e/2/40e2f70bbd3700dd0b35cd4fb1252459_1.jpg"
   },
   {
    "headline": "【YouTubeチャート】EBiDANが3週連続首位 ILLITが3位浮上",
@@ -681,6 +710,17 @@
    "refs": [
     5
    ]
+  },
+  {
+   "headline": "ILLITが「You’re Under Arrest」のレコーディング裏側を公開",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    9,
+    7
+   ]
   }
  ],
  "MMORPG 新作": [
@@ -696,7 +736,8 @@
     4,
     10,
     20,
-    21
+    21,
+    28
    ],
    "image": "https://www.bing.com/th?id=ONUT.AqFGAOPiUknUmy3Gx9ZeQw&pid=News&w=1200"
   },
@@ -729,7 +770,9 @@
    "refs": [
     15,
     16,
-    19
+    19,
+    27,
+    29
    ]
   },
   {
@@ -795,6 +838,15 @@
    "refs": [
     6
    ]
+  },
+  {
+   "headline": "극장판 체인소 맨: 레제편, CGV 특별관 재상영 시작…관람 가능 지점·특전 관심",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
   }
  ],
  "Vaundy": [
@@ -834,7 +886,8 @@
    "weight": "lead",
    "refs": [
     2
-   ]
+   ],
+   "image": "https://assets.st-note.com/img/1793364754-4OfgPJ5UydeEb6iM2QplrxK3.png?width=1200"
   },
   {
    "headline": "北海道に「コミLab.」初上陸！『原神』『ゼンレスゾーンゼロ』『崩壊：スターレイル』など、公式グッズ1,400種類以上を取り揃えた売場が未来屋書店旭川西店に誕生",
@@ -843,6 +896,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "【ゼンレスゾーンゼロ】Ver.3.3ガチャ優先度ランキング！フェニックスは引くべき？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -913,7 +975,19 @@
    "image": "https://www.bing.com/th?id=ONUT.m8kazEwLDrWIXrHAlYQCLw&pid=News&w=1200"
   }
  ],
- "BLEACH Mirrors High": [],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "「BLEACH Mirrors High」に「［三番隊隊長］市丸 ギン」が登場！",
+   "highlight": "市丸 ギン",
+   "blurb": "市丸ギンが参戦。必殺技とカードイラストが解禁され、記念バトルも開催。",
+   "weight": "lead",
+   "refs": [
+    4,
+    2
+   ],
+   "image": "https://cimg.kgl-systems.io/camion/files/dengeki/93039/a4efdd2f969559e8b1c92e99f32ded48e.jpg?x=1280"
+  }
+ ],
  "FROM": [
   {
    "headline": "From Season 3: Release window, cast, teaser, & more",

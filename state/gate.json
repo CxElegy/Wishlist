@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-04T10:17:43+00:00",
+ "checked": "2026-11-04T12:47:34+00:00",
  "fired": {
-  "at": "2026-11-04T10:18:02+00:00",
+  "at": "2026-11-04T12:47:34+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,43 +12,55 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-04T10:18:02+00:00",
+    "at": "2026-11-04T12:28:19+00:00",
     "attempts": 1,
     "day": "2026-11-04",
-    "prog": 366,
-    "resp": "cse_01W4x6f89WCZzo7yGk27Xr16",
-    "sig": "b2a8d9af5040"
+    "prog": 373,
+    "resp": "cse_01W4x6f9H2udGPpToE5XjHf1",
+    "sig": "6af5b0d539a9"
    },
    "items": [
     "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
+    "Vaundy",
     "dota2",
-    "gelato pique",
-    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
     "星巴克马克杯",
-    "滑雪"
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
-   "last_batch": "2026-11-04T08:32:10+00:00",
+   "last_batch": "2026-11-04T10:37:48+00:00",
    "last_error": {
     "at": "2026-11-04T04:26:16+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 366,
+   "prog": 373,
    "prog_day": "2026-11-04",
    "ripe": [
-    "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
     "dota2",
-    "gelato pique",
-    "あつ森",
-    "星巴克马克杯",
-    "滑雪"
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "漫威电影",
+    "绝区零"
    ],
-   "sig": "b2a8d9af5040",
+   "sig": "6af5b0d539a9",
    "token_cap": 1000000,
-   "tokens_today": 505506,
-   "why": "整理待ちの記事 7 件（7 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 559629,
+   "why": "整理待ちの記事 78 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
