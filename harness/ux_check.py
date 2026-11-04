@@ -755,9 +755,9 @@ def check_board_designs():
             tok = session(e + "@example.com")["access_token"] if e else key
         except urllib.error.HTTPError:
             continue
-        for b in json.loads(sbread.get(base + "/rest/v1/boards?select=id,name,config", key, tok)[0]):
+        for b in json.loads(sbread.get(base + "/rest/v1/boards?select=id,name,config->motif,config->theme", key, tok)[0]):
             seen[b["id"]] = b
-    miss = [b["id"] for b in seen.values() if not ((b.get("config") or {}).get("motif") and (b.get("config") or {}).get("theme"))]
+    miss = [b["id"] for b in seen.values() if not (b.get("motif") and b.get("theme"))]
     return ([f"デザイン（motif・theme）のないライブラリの版面 {len(miss)}/{len(seen)}：id " + "・".join(map(str, miss[:8]))] if miss else []), len(seen)
 
 

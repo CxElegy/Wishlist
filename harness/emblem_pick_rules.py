@@ -185,7 +185,7 @@ def audit_library():
     """ライブラリの版面（お客さまの版面）の小元素にも同じ規則を当てる → (行, 集計)。行＝(版面 id, 名前, 判定, 理由)。
     網につなぐ（公開の鍵で読める版面だけ。RLS で見えない版面は数えられない＝集計の boards に見えた数）。"""
     import urllib.request
-    boards = json.loads(sbread.get(LIB_URL, LIB_KEY, timeout=60)[0])
+    boards = json.loads(sbread.get(LIB_URL, LIB_KEY, ttl=600, timeout=60)[0])
     rows, bad = [], 0
     for b in boards:
         for e in (b.get("config") or {}).get("emblem") or []:

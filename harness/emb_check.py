@@ -505,7 +505,7 @@ def boards_rows():
         return _BOARDS[0]
     s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("settings") or {}
     key = os.environ.get("SUPABASE_SERVICE_KEY") or s["supabase_key"]
-    _BOARDS[:] = [json.loads(sbread.get(f"{s['supabase_url']}/rest/v1/boards?select=name,config&limit=1000", key, timeout=20)[0])]
+    _BOARDS[:] = [json.loads(sbread.get(f"{s['supabase_url']}/rest/v1/boards?select=name,config&limit=1000", key, ttl=600, timeout=20)[0])]
     _BOARDS_FULL[:] = [bool(os.environ.get("SUPABASE_SERVICE_KEY"))]
     return _BOARDS[0]
 
