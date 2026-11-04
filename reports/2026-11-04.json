@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "edit_sig": "81f85bbdd9e5",
+ "edit_sig": "9f46634327a9",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -107,29 +107,6 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 56,
-     "source": "MovieWeb",
-     "title": "After 87 Years, Marvel's First Superhero Officially Joins the MCU",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9HQ25uNUp1Um5UMzlqenNOWlBybmJKMUkxcEx3YmJvb1lsalNXbEdDUUpad3ZaQzNrZjgzTk5BNzl3RVFFN1ZiWkVaTm1QTHVCdXFndGRPRERoQQ?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 57,
-     "source": "TVLine",
-     "title": "Marvel's VisionQuest Episode 7 Features A Crucial Connection To Avengers: Infinity War",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZmJCUjZwV3ZXNEJOX3FuTWFXWC1POEdCT1dxSHhTMkdhVGlmdGU2NmxCc0F4aFlDMVlsVnFDRFF2cHdCUUtnQWV6eTdiN0I2Qnd0NUZyc1JReExmaVJIRXpydkdvRXhvaUQzQWpMaEVDOEw0N09ZWWYtSVRsbUdWcmg4TEw2ZUVJd241NlBaQndEUXUwMmd6enBoUFMzUFpHaVVDSTludzhTS2c?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 58,
-     "source": "Bam Smack Pow on MSN",
-     "title": "Marvel to replace iconic heroes after the Avengers movies, reports say",
-     "url": "https://www.msn.com/en-us/news/other/marvel-to-replace-iconic-heroes-after-the-avengers-movies-reports-say/ar-AA2gHFqC"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -266,29 +243,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 3,
-     "source": "https://mediadogs.jp/",
-     "title": "スターバックス福袋2027 本日10時より抽選受付開始予定。9500円の中身・日程・ゴールドマグ1000個の当選確率まで解説",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5rcDlpbmNOajhVdlJ6QWtNZnMybVkxdWVPSFBacHRrYUxaNHdKSXNnZ3BHU0t6LTZHVmQ0UENZNEloZmtLZXJQLW1ObnRaOEV6QjdyTmVER25BZndFenhYNENZRmRvX1E?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 4,
-     "source": "Yahoo Finance",
-     "title": "Walmart joins Starbucks in adding collectible holiday collection",
-     "url": "https://finance.yahoo.com/media-advertising/articles/walmart-takes-starbucks-collectible-merch-170300710.html"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 5,
-     "source": "紀伊民報AGARA",
-     "title": "【きょうから予約開始】スターバックスの福袋は限定ボトルやトート、ドリンクチケット7枚入りで9500円 店頭販売なし",
-     "url": "https://www.agara.co.jp/article/707745"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -298,6 +252,9 @@
      "highlight": "1,000個限定ゴールドのマグ",
      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800",
      "image_via": "AI 挑选",
+     "price": {
+      "now": "¥9,500"
+     },
      "url": "https://news.yahoo.co.jp/articles/d2ae505a4e7aa397af23edd16c1b05537d44b3a6",
      "weight": "lead"
     },
@@ -309,6 +266,16 @@
      "image": "https://themainstreetmouse.com/wp-content/uploads/2026/11/Disney-and-Starbucks-Mint-to-Be-holiday-tumblers-at-the-Disneyland-Resort.jpg",
      "image_via": "og:image",
      "url": "https://themainstreetmouse.com/2026/11/03/disney-starbucks-mint-to-be-holiday-collection/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "Walmart joins Starbucks in adding collectible holiday collection",
+     "highlight": "collectible holiday collection",
+     "image": "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg",
+     "image_via": "og:image",
+     "url": "https://finance.yahoo.com/media-advertising/articles/walmart-takes-starbucks-collectible-merch-170300710.html",
      "weight": "normal"
     }
    ],
@@ -802,8 +769,8 @@
      "date": "2026-11-03",
      "headline": "[S이슈] A2O LITE, 데뷔하자마자 인기돌풍의 이유는?",
      "highlight": "인기돌풍",
-     "image": "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200",
-     "image_via": "Bing 缩略图",
+     "image": "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg",
+     "image_via": "og:image",
      "url": "https://www.stardailynews.co.kr/news/articleView.html?idxno=601301",
      "weight": "normal"
     }
@@ -902,31 +869,44 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
-     "date": "2026-11-03",
-     "n": 2,
-     "source": "DMKsnowboard",
-     "title": "メルキュール裏磐梯リゾート＆スパ、深夜到着に対応した「半泊ステイプラン」を販売開始！ 朝食・温泉付きで翌朝からゲレンデへ",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1SSmtsT0VlXzlMcnVMWWFrZGFxQWh6WDN5Z3JwbVc2elB3eHpiNFNxdVVFQUF6bWtJdzl1UVJNR3Bha21LX0lOWldWMjdRTWVGUjZEaGt5N1h2OHZ0elNkSEdyOW5Lem9xaHIxbzBnYW55dk5V?oc=5"
-    },
-    {
+     "blurb": "アルペンスキー FIS ワールドカップ 2026/27、レヴィ（フィンランド）の男子スラローム。",
      "date": "2026-11-02",
-     "n": 3,
-     "source": "ABEMA",
-     "title": "レヴィ／フィンランド(11/15) 男子 スラローム【アルペンスキー FIS ワールドカップ 2026/27】",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9MbE9IWmczQTk2blVYTFhfdGtpS1Buc2g5UFRtcUhLQXBRdk40eWZvcjNMV0FEbzlzalhTdlYxZlZkMlB5Q3l3ek1WUW9Ib3pIejhzM2pZX2hXNFlVQTBybzl4MEl0M2JRNWFtc01jbFVxQQ?oc=5"
+     "event": {
+      "date": "2026-11-15",
+      "label": "試合",
+      "place": "レヴィ（フィンランド）"
+     },
+     "headline": "レヴィ／フィンランド(11/15) 男子 スラローム【アルペンスキー FIS ワールドカップ 2026/27】",
+     "highlight": "11/15",
+     "image": "https://image.p-c2-x.abema-tv.com/image/programs/js_113114-L/thumb001.png?height=720&quality=75&version=1793320844&width=1280",
+     "image_via": "AI 挑选",
+     "url": "https://abema.tv/live-event/86995211-95a1-40fb-98bf-e47836e1dd73",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-31",
-     "n": 4,
-     "source": "朝日新聞",
-     "title": "スキー場を残したい 町民有志が手弁当でロッジ改修 福島・南会津 [福島県]",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1uaXdCY2dBblJscVI1WUhLaE1TTnZfa1JZckp4UUFhZE1zc3hpNW91Z0hmZUp0eXNieEJxTTNPWldla1pyQ0RkaThzNFFfb2tINmVkbUZRYTY4U1RPYk9IbVl5YmxNSjg?oc=5"
+     "headline": "スキー場を残したい 町民有志が手弁当でロッジ改修 福島・南会津",
+     "highlight": "スキー場を残したい",
+     "image": "https://imgopt.asahi.com/ogp/AS20261031002306_comm.jpg",
+     "image_via": "og:image",
+     "url": "https://www.asahi.com/articles/ASVB025CLVB0UGTB001M.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "メルキュール裏磐梯リゾート＆スパ、深夜到着に対応した「半泊ステイプラン」を販売開始！ 朝食・温泉付きで翌朝からゲレンデへ",
+     "highlight": "半泊ステイプラン",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/ski-spa.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/mercure-urabandai-half-stay-plan-2026-27/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -991,29 +971,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-31",
-     "n": 2,
-     "source": "スポニチ Sponichi Annex",
-     "title": "＜東レ・パンパシフィック・オープン第5日＞ダブルス準々決勝で敗れた加藤未唯（撮影・小海途 良幹）",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNX2diTXM1bDVxUDQ0Qk5zeWRVVWNGRVF3WFNMRzVRenN4Z1ViTnZ1V2RVVklhNk9ucTBnRnBFbS1oaXNUeHJ2UE9yd3ducW1BN0xWclBCdVktQVpybjBZWFFkOUNDOVo2bUVvN3RHbkd6ZHBETTZFR2JHemFYYzl6YXFwamM4MHg2ZjFXVQ?oc=5"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 3,
-     "source": "スポーツナビ",
-     "title": "テニス - 東レ・パンパシフィック・オープン - ディアナ シナイジェル vs. ミア ポハンコバ- 試合速報",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9QTkFrckFpd19pLXZSNDhZcmhjM254MWtXQ0I5TGQ3dHVEelFMRHhneFBVTF8tc3ZCVFpSczdyNkdzaVh4R29EZEZwNDRzdzltdnhWMEdnMjRnQQ?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "WOWOW",
-     "title": "東レ パン パシフィック オープンテニス",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0zNXQ4TmgwRXpxZnZuUUtUZ01HRnZLWk5tRHNzVE42LVdsNnhYM204NHBiNmNSVzFHeEtuNXJVVnMzT0NwSm11M1RKdFlNcnhkdUZqdG92MA?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1067,7 +1024,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-11-03",

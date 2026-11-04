@@ -359,12 +359,12 @@
  ],
  "_covered": {
   "GTA 6": 89,
-  "漫威电影": 55,
+  "漫威电影": 58,
   "三星手机": 24,
   "哈利波特剧集": 11,
   "周杰伦": 16,
   "dota2": 6,
-  "星巴克马克杯": 2,
+  "星巴克马克杯": 5,
   "A2O LITE": 5,
   "猫用品": 3,
   "The Mandalorian": 4,
@@ -375,8 +375,8 @@
   "Vaundy": 1,
   "绝区零": 1,
   "Astrae Oratio": 1,
-  "滑雪": 1,
-  "日本顶级网球赛事": 1
+  "滑雪": 4,
+  "日本顶级网球赛事": 4
  },
  "dota2": [
   {
@@ -408,9 +408,14 @@
    "blurb": "スターバックス2027年福袋の中身。1,000個限定のゴールドのマグ＆ベアリスタに注目。",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    3,
+    5
    ],
-   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800"
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800",
+   "price": {
+    "now": "¥9,500"
+   }
   },
   {
    "headline": "Disney and Starbucks Are Mint to Be: See the New Holiday Tumblers, Mug and More",
@@ -419,6 +424,15 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "Walmart joins Starbucks in adding collectible holiday collection",
+   "highlight": "collectible holiday collection",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -613,7 +627,41 @@
    ]
   }
  ],
- "滑雪": [],
+ "滑雪": [
+  {
+   "headline": "レヴィ／フィンランド(11/15) 男子 スラローム【アルペンスキー FIS ワールドカップ 2026/27】",
+   "highlight": "11/15",
+   "blurb": "アルペンスキー FIS ワールドカップ 2026/27、レヴィ（フィンランド）の男子スラローム。",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2026-11-15",
+    "label": "試合",
+    "place": "レヴィ（フィンランド）"
+   },
+   "image": "https://image.p-c2-x.abema-tv.com/image/programs/js_113114-L/thumb001.png?height=720&quality=75&version=1793320844&width=1280"
+  },
+  {
+   "headline": "スキー場を残したい 町民有志が手弁当でロッジ改修 福島・南会津",
+   "highlight": "スキー場を残したい",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "メルキュール裏磐梯リゾート＆スパ、深夜到着に対応した「半泊ステイプラン」を販売開始！ 朝食・温泉付きで翌朝からゲレンデへ",
+   "highlight": "半泊ステイプラン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "日本顶级网球赛事": [
   {
    "headline": "シュナイダー＆エラーニ／パオリーニが今季初優勝 [東レPPO]",
@@ -622,7 +670,8 @@
    "weight": "lead",
    "refs": [
     1
-   ]
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.m8kazEwLDrWIXrHAlYQCLw&pid=News&w=1200"
   }
  ]
 }

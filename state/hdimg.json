@@ -742,6 +742,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg": {
+  "w": 1800,
+  "h": 1086,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.utaten.com/uploads/images/specialArticle/10324/3f786fa5a4cc1739c2291e08bfcf1e7e52140a71.jpeg?type=original?r=2026110310": {
   "w": 1200,
   "h": 630,
@@ -997,6 +1003,12 @@
   "w": 1376,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/ski-spa.jpg": {
+  "w": 1962,
+  "h": 1308,
+  "target": 1280,
   "v": 3
  },
  "https://dn.gov.ua/storage/app/sites/1/newsoda2026/iv-kvartal/3010/2026103001.jpg": {
@@ -1448,6 +1460,12 @@
    854
   ],
   "why": "看不清"
+ },
+ "https://image.p-c2-x.abema-tv.com/image/programs/js_113114-L/thumb001.png?height=720&quality=75&version=1793320844&width=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
  },
  "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=1800,fit=cover,q=high,sharpen=2/21/2026/10/2026102808095718866_1.jpg": {
   "w": 1200,
@@ -3183,6 +3201,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/49599/255/49599-255-219b496ab286fc7c50b671150bf6c71d-3900x2194.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2240,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/56498/354/56498-354-5fb6b62d9a4e4546bf8060a1ac4e3fd6-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1920,
   "h": 1080,
@@ -3911,6 +3935,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.bgr.com/img/gallery/this-rugged-samsung-phone-is-nearly-indestructible/l-intro-1792667748.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.billboard-japan.com/common/sys/img/news/00000166/166889/image.jpg": {
   "w": 999,
   "h": 999,
@@ -3979,19 +4009,6 @@
   "out": [
    1280,
    1079
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.Bh5cBboVM1-KwLLfRvlDpw&pid=News&w=780": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.587,
-  "local": "pics/d4e723aa55355881.webp",
-  "out": [
-   1280,
-   719
   ],
   "why": "看不清"
  },
@@ -4208,19 +4225,6 @@
   "out": [
    1280,
    852
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200": {
-  "w": 700,
-  "h": 422,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.467,
-  "local": "pics/13a66f0bb765ca3c.webp",
-  "out": [
-   1280,
-   772
   ],
   "why": "看不清"
  },
