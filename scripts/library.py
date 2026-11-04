@@ -217,6 +217,10 @@ def put_config(bid, add):
     cur = (digest.supabase(f"boards?id=eq.{bid}&select=config") or [{}])[0].get("config") or {}
     new = {**cur, **add}
     if not _same_cfg(new, cur):
+        # 何が変わって書いたかを鍵の名前だけ残す（数日に 1 回でも出所が分かる。値・版面の名前は出さない）
+        ks = sorted(k for k in new if new.get(k) != cur.get(k))
+        es = sorted(k for k in (new.get("emblem_state") or {}) if (new.get("emblem_state") or {}).get(k) != (cur.get("emblem_state") or {}).get(k)) if "emblem_state" in ks else []
+        print(f"boards PATCH 版面 {bid}：変わった鍵 {','.join(ks)}" + (f"（emblem_state: {','.join(es)}）" if es else ""))
         digest.supabase(f"boards?id=eq.{bid}", {"config": new}, method="PATCH")
     return new
 

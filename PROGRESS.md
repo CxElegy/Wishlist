@@ -348,3 +348,4 @@
 - 2026-11-04 f1f1：photo_store の user_pages()（pages/ を一覧して全ページを 3 時間ごとに取る）を外した。評価：日数での消去は止め上限超えだけ古い順。tests に「非公開の storage 道は書きだけ」「一覧を呼ばない」を足した。お客さまだけの写真は数えなくなる（原寸の落ち先で出る）。次：無料の出どころ（user_pages.py が使う URL を書く）の段。
 - 2026-11-04 plan2c 計画：BACKLOG に 4 段（置き場 208→258 MB の増え方・リポジトリ 185 MB と 1 日 226 commit・2 日目の「前回から新しい」・最初の画面の重さの予算）。測り：execute_sql 読むだけ（DB 47 MB 横ばい）。架構図：不用改（文書のみ）。次：各段を取る。
 - 2026-11-04 f1：お客さまだけの版面の写真を置き場へ（user_pages→pages/_fp/imgs.json 1 本→photo_store）。pages/ は読まない。tests 通る。次：合併後 photo_store.yml→photo_cache.yml→pages_served --who test-a を 1 回。
+- 2026-11-04 plan1d 計画：BACKLOG に 4 段（photo cache の保存失敗が 30 回中 6 回赤・boards PATCH の出所確定・点検道具の本番 REST 読み 0・定時の Supabase 呼び出し見積もり表）。boards の書き込み道は scripts を全読して put_config 以外に毎回変わる道は無し→put_config が変わった鍵名をログに出すようにした。架構図：不用改（診断ログ 1 行）。次：pages_served の確認（render→photo_cache→Pages の後）。
