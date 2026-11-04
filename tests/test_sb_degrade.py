@@ -167,6 +167,7 @@ class PageSide(unittest.TestCase):
     def test_user_pages_skip_unchanged(self):
         import user_pages
         sent = []
+        imgs = []
         fp = {}
 
         def fake(path, data=None, method="GET", ctype=""):
@@ -177,16 +178,24 @@ class PageSide(unittest.TestCase):
                 return ""
             if "userfeed_users" in path:
                 return [{"email": "a@example.com", "prefs": {}}]
+            if path.endswith("_fp/imgs.json"):
+                imgs.append(json.loads(data))
+                return ""
             if "/storage/" in path:
                 sent.append(path)
                 return ""
             return []
-        with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages, "build", lambda *a, **k: "<html>x</html>"), \
+        with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages, "build", lambda *a, **k: '<html><section><img src="https://ex.com/a.jpg" data-e="s"></section></html>'), \
                 mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), mock.patch.object(user_pages.render, "photo_opens", None, create=True):
             user_pages.main([])
             user_pages.main([])
             user_pages.main(["--force"])
         self.assertEqual(len(sent), 2)   # 1 回目と --force だけ
+        # お客さまだけの版面の写真の網址を、pages/ を読まずに置き場（photo_store）へ渡す 1 本（2026-11-04）
+        self.assertEqual(imgs[-1], ["https://ex.com/a.jpg"])
+        import photo_store
+        seen, want, _ = photo_store.scan(pathlib.Path(tempfile.mkdtemp()), urls=imgs[-1])
+        self.assertEqual(list(want.values()), ["https://ex.com/a.jpg"])
 
     def test_entrance_rebuilds_without_it(self):
         self.assertIn("render.SB_DEG_TAG in old", pathlib.Path(welcome.__file__).read_text(encoding="utf-8"))
@@ -420,8 +429,8 @@ class EveryCallGoesThroughSbstate(unittest.TestCase):
 
     def test_storage_object_urls_are_writes_only(self):
         """storage の非公開の道（/storage/v1/object/<箱>/…・list）を作る行は書き込みだけ。読みは storage_read（写し）か Pages から（2026-11-04：user_pages の全ページ読みが毎回 egress だった）。"""
-        ok = {"library_emblem.py": ['/storage/v1/object/{BUCKET}/{name}'], "photo_store.py": ['/storage/v1/object/{path}'],
-              "user_pages.py": ['/storage/v1/object/pages/_fp/all.json', '/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}']}
+        ok = {"library_emblem.py": ['/storage/v1/object/{BUCKET}/{name}'], "photo_store.py": ['/storage/v1/object/{path}', '/storage/v1/object/pages/_fp/imgs.json'],
+              "user_pages.py": ['/storage/v1/object/pages/_fp/all.json', '/storage/v1/object/pages/_fp/imgs.json', '/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}']}
         bad = []
         for sub in ("scripts", "harness"):
             for f in sorted((ROOT / sub).glob("*.py")):

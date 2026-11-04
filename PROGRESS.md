@@ -347,3 +347,4 @@
 - 2026-11-04 f1：Actions の Supabase 直書き 7 か所を sbstate.sb_open に（402 で呼び続けない）。名簿の外 0 を tests が数える。次：egress 24h 数え直し（11/4 01:30 UTC 以降）。
 - 2026-11-04 f1f1：photo_store の user_pages()（pages/ を一覧して全ページを 3 時間ごとに取る）を外した。評価：日数での消去は止め上限超えだけ古い順。tests に「非公開の storage 道は書きだけ」「一覧を呼ばない」を足した。お客さまだけの写真は数えなくなる（原寸の落ち先で出る）。次：無料の出どころ（user_pages.py が使う URL を書く）の段。
 - 2026-11-04 plan2c 計画：BACKLOG に 4 段（置き場 208→258 MB の増え方・リポジトリ 185 MB と 1 日 226 commit・2 日目の「前回から新しい」・最初の画面の重さの予算）。測り：execute_sql 読むだけ（DB 47 MB 横ばい）。架構図：不用改（文書のみ）。次：各段を取る。
+- 2026-11-04 f1：お客さまだけの版面の写真を置き場へ（user_pages→pages/_fp/imgs.json 1 本→photo_store）。pages/ は読まない。tests 通る。次：合併後 photo_store.yml→photo_cache.yml→pages_served --who test-a を 1 回。
