@@ -360,3 +360,4 @@
 - 2026-11-04 f2f2：egress 別の目の指摘。sbread 既定を 10 分の写しに逆転（ttl=0 は photo_cache_fill だけ）・ux_check の版面 config 丸ごと読みを 3 箱に絞る・ブラウザの Supabase 読み（GET＋READ_RPC）も写し（WL_SB_BROWSER=cache|abort|live）・件数の行は --part who でも出る（早い return で出ていなかった）・上限 REST_MAX 12。本番 test-a 1400 --fast 2 回目：python /rest/v1/ 0 件・ブラウザ→本番 23〜38 件（user_login 24 が大半）・写し 295・✗ 0。次：user_login の呼びを減らす・ux_all 全部の合計。
 
 - 2026-11-04 f3：402 の通し点検。harness/fake402_check.py が偽の 402 に Actions の入口 13 本を当て、入口ごとに docs/・state/ の縮みを数える。結果：全入口 終了 0・名簿外の縮み 0。tests/test_fake402.py。次：網が要る入口（digest.py 本体・emblem_fill）を偽 402 で通す。
+- 2026-11-04 f3f1：402 の通し点検の穴 3 つを塞いだ。①縮みを JSON のバイト数・要素数でも数える（photo_store.json は 1 行 389KB）②workflow の入口を全部数える点検（名簿に無い入口が赤）で入口 13→25 本、走らせない物は理由つきで NOT_COVERED ③402 を 1 回も受けない入口は赤（受けなくてよい 13 本は NO_HITS に理由）。結果：全入口 終了 0（notify-weekly は webhook 無しで 1＝RC_OK）・名簿外の縮み 0。見つけたこと：repair-images は網の無い所で reports/*.json を 1350 行縮める（402 と別の原因・BACKLOG）。次：repair-images の網なしの縮みの切り分け。

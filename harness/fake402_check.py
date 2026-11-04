@@ -2,7 +2,7 @@
 2026-11-04：11/5 以降は全部の回が 402 に当たる。sbstate の部品単体の試験（tests/test_sb_degrade.py）では、入口が
 402 のときに生成物を空・縮んだ形でコミットしないかは見えない。ここは作業ツリーの写しを作り、items.yaml の supabase_url を
 手元の偽サーバーに差して入口を 1 つずつ走らせ、入口ごとに git で「消えた行 − 足した行」を数える。
-本番には一切出ない（網は 127.0.0.1 だけ）。入れていない入口：網が要る収集・画像直し（digest.py 本体・repair-images・emblem_fill・library_emblem の本体）。
+本番には一切出ない（網は 127.0.0.1 だけ）。入口の名簿は workflow の入口を全部数える点検（tests/test_fake402.py）で覆う。
 使い方：python harness/fake402_check.py [--only 名前] [--keep]    # 縮み・失敗があれば終了コード 1
 """
 import argparse
@@ -16,6 +16,7 @@ import tempfile
 import threading
 import time
 
+REAL = "https://bzokpnbcjscbcehdxtjq.supabase.co"
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PY = sys.executable
 # (名前, 引数, 秒)  ※ workflow が走らせる順に近い
@@ -33,11 +34,59 @@ ENTRIES = [
     ("collect_watch", ["scripts/collect_watch.py"], 300),
     ("new-items", ["scripts/digest.py", "new-items"], 300),
     ("unedited", ["scripts/digest.py", "unedited"], 300),
+    ("library --refresh", ["scripts/library.py", "--refresh"], 300),
+    ("library --compare", ["scripts/library.py", "--compare"], 300),
+    ("library_emblem --minutes", ["scripts/library_emblem.py", "--minutes", "1"], 300),
+    ("take-items", ["scripts/digest.py", "take-items"], 300),
+    ("notify-changes", ["scripts/digest.py", "notify-changes"], 300),
+    ("notify-wishlist", ["scripts/digest.py", "notify-wishlist"], 300),
+    ("notify-new-items", ["scripts/digest.py", "notify-new-items"], 300),
+    ("notify-urgent", ["scripts/digest.py", "notify-urgent"], 300),
+    ("notify-weekly", ["scripts/digest.py", "notify-weekly"], 300),
+    ("clear-waits", ["scripts/livestatus.py", "clear-waits"], 300),
+    ("gate fire", ["scripts/gate.py", "fire"], 300),
+    ("emblem_fill", ["scripts/emblem_fill.py", "--background", "--minutes", "1"], 300),
 ]
+# 入口を走らせない物（理由つき）。workflow の入口の数え漏れ点検（tests）はここも名簿として見る。キー = 「スクリプト 最初の引数」
+NOT_COVERED = {
+    "scripts/check_arch.py": "CI の点検。Supabase に触らない",
+    "scripts/progress_notify.py pr": "Discord への通知だけ。Supabase に触らない",
+    "scripts/pull_rebase.py": "git の取り込みだけ。Supabase に触らない",
+    "harness/ask_remind.py": "Discord への通知だけ。Supabase に触らない",
+    "harness/pages_photos.py": "Pages の写真の写しを公開物に並べるだけ（git に入れない）。Supabase に触らない",
+    "harness/before_after.py": "Discord への Before/After だけ。Supabase に触らない",
+    "harness/d5_sample.py": "テストグラウンドの見本を作るだけ。Supabase に触らない",
+    "scripts/digest.py repair-images": "外の網（記事の画像・原文）に出るので偽サーバーだけに閉じられない。網の無い手元では reports/*.json を 1350 行縮めた（402 とは別の原因：網なし）＝別の段で切り分ける",
+    "scripts/digest.py": "収集の本体。外の網（各情報源）に出るので偽サーバーだけに閉じられず 600 秒でも終わらない。別の段で収集を止める口を足してから入れる",
+    "harness/photo_cache_fill.py": "走らせない（無料枠の決まり）。取り先は state/photo_store.json の base ＝本番の storage で、偽サーバーに差せない。走らせると本番の Supabase に出て、手元の写し（~/.cache/wl_photo_cache）も消す。取り先を差せる形にしてから入口に足す（別の段）",
+    "harness/pages_health.py": "Pages の健康を数える読み取り（boards を読むだけで docs/・state/ に書かない）。402 なら測れずで終わる。別の段で入口に足す",
+}
+# 402 を 1 回も受けなくてよい入口（Supabase に届かずに終わるのが正しい物）。ここに無いのに 0 回なら赤。
+NO_HITS = {
+    "library_watch": "Supabase を使わない（scripts/library_watch.py に sbread・sbstate・supabase が無い）。ローカルの写しを数えるだけ",
+    "collect_watch": "Supabase を使わない（scripts/collect_watch.py に sbread・sbstate・supabase が無い）",
+    "gate check": "ローカルの state/ から作り直す値だけ。Supabase を読む edit_mode は gate fire の側（そちらは 402 を 1 回受ける）",
+    "photo_store --kick": "ローカルで置いていない枚数を数え、あれば gh で photo_store.yml を起こすだけ（Supabase に触らない）",
+    "new-items": "ローカルの inbox/ を読むだけ",
+    "unedited": "ローカルの inbox/・edit.json を読むだけ",
+    "library --refresh": "Wikidata（外の網）とローカルの items.yaml だけ。boards への書き込みは library --push 側",
+    "library --compare": "ローカルの items.yaml を規則で比べて表示するだけ",
+    "notify-changes": "ローカルの reports/ を読んで Discord へ送るだけ（webhook が無ければ何もしない）",
+    "notify-wishlist": "ローカルの wishlist.yaml を読んで Discord へ送るだけ",
+    "notify-new-items": "ローカルの items.yaml を読んで Discord へ送るだけ",
+    "notify-urgent": "ローカルの inbox/ を読んで Discord へ送るだけ",
+    "notify-weekly": "ローカルの reports/ を読んで Discord へ送るだけ",
+}
+# 終了コードが 0 でなくてよい入口（理由つき）
+RC_OK = {
+    "notify-weekly": (1, "Discord の webhook が無いと 1 で終わる。workflow は if ...; then で受けて「周报发送失败」と出すだけ（402 とは無関係）"),
+}
 # 縮んでよい物（名簿）。理由つき。ここに無い物が縮んだら赤。
 ALLOW = {
     "state/gate.json": "ゲートは items.yaml の編集の状態から作り直す値（Supabase を読まない）。整理待ちが減れば縮む",
     "state/log/gate.json": "同上の履歴",
+    "state/emblem_progress.json": "last_run（最後の 1 回の記録）を上書きするだけ。進捗の本体は変わらない（done が空の回は記録が短い）",
+    "state/log/emblem.json": "同上の回の記録（最後の回が置き換わる）",
 }
 WATCH = ("docs/", "state/", "inbox/", "reports/", "items.yaml", "wishlist.yaml")
 
@@ -82,12 +131,48 @@ def prepare(dst, port):
     _git(dst, "commit", "-qm", "base")
 
 
+def _leaves(x):
+    if isinstance(x, dict):
+        return sum(_leaves(v) for v in x.values()) or 1
+    if isinstance(x, list):
+        return sum(_leaves(v) for v in x) or 1
+    return 1
+
+
+FAKE = [""]      # 偽サーバーの網址（run() が入れる）。JSON の中の base が偽の網址に変わるぶんは縮みに数えない
+
+
+def _json_shrink(d, f):
+    """JSON は行数では見えない（1 行に詰めた中身が空になっても 1 行消えて 1 行足すだけ）。
+    バイト数が減る、または要素（葉）の数が減ったら縮み。返すのは減ったバイト数（要素だけ減ったときは 1）。"""
+    import json
+    old = _git(d, "show", f"HEAD:{f}")
+    try:
+        new = (d / f).read_text(encoding="utf-8")
+    except OSError:
+        return len(old.encode()) or 1      # 消えた
+    new = new.replace(FAKE[0], REAL) if FAKE[0] else new
+    if new == old:
+        return 0
+    try:
+        lo, ln = _leaves(json.loads(old)), _leaves(json.loads(new))
+    except ValueError:
+        return 0
+    nb = len(old.encode()) - len(new.encode())
+    return max(nb, 1) if (nb > 0 or ln < lo) else 0
+
+
 def shrunk(d):
-    """{ファイル: 縮んだ行数}（消えた行 − 足した行 が正のもの）。消えたファイルは全行。"""
+    """{ファイル: 縮んだ量}。行ファイルは 消えた行 − 足した行 が正のもの、消えたファイルは全行。
+    .json はバイト数・要素数でも比べる（1 行 JSON の穴、2026-11-04）。"""
     out = {}
     for line in _git(d, "diff", "--numstat", "HEAD").splitlines():
         a, r, f = line.split("\t", 2)
-        if f.startswith(WATCH) and a.isdigit() and r.isdigit() and int(r) > int(a):
+        if f.startswith(WATCH) and f.endswith(".json") and a != "-":
+            n = _json_shrink(d, f)
+            if n:
+                out[f] = n
+        elif f.startswith(WATCH) and a.isdigit() and r.isdigit() and int(r) > int(a):
             out[f] = int(r) - int(a)
         elif f.startswith(WATCH) and a == "-":      # バイナリ：消えたかだけ
             if not (d / f).exists():
@@ -100,6 +185,7 @@ def run(only=None, keep=False):
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     d = pathlib.Path(tempfile.mkdtemp(prefix="fake402_"))
     prepare(d, srv.server_address[1])
+    FAKE[0] = f"http://127.0.0.1:{srv.server_address[1]}"
     env = {**os.environ, "SUPABASE_SERVICE_KEY": "fake", "HTTPS_PROXY": "", "https_proxy": "", "PYTHONIOENCODING": "utf-8"}
     for k in ("DISCORD_WEBHOOK_URL", "SBSTATE_PING"):
         env.pop(k, None)
@@ -115,8 +201,10 @@ def run(only=None, keep=False):
         s = shrunk(d)
         bad_files = {f: n for f, n in s.items() if f not in ALLOW}
         rows.append((name, rc, len(_H.hits) - h0, sum(s.values()), bad_files, int(time.time() - t0)))
-        if rc != 0:
+        if rc != RC_OK.get(name, (0,))[0]:
             bad.append(f"{name}：終了コード {rc}（402 で落ちてはいけない）")
+        if rc in (0, RC_OK.get(name, (0,))[0]) and len(_H.hits) - h0 == 0 and name not in NO_HITS:
+            bad.append(f"{name}：402 を 1 回も受けていない（Supabase に届く前に静かに終わった。縮み 0 の根拠にならない）")
         for f, n in bad_files.items():
             bad.append(f"{name}：{f} が {n} 行縮んだ（名簿に無い）")
         _git(d, "add", "-A")
@@ -124,7 +212,7 @@ def run(only=None, keep=False):
     srv.shutdown()
     if not keep:
         shutil.rmtree(d, ignore_errors=True)
-    print(f"{'入口':26}{'終了':>8}{'402を受けた':>12}{'縮んだ行(名簿内含む)':>20}{'秒':>6}")
+    print(f"{'入口':26}{'終了':>8}{'402を受けた':>12}{'縮んだ量(名簿内含む)':>20}{'秒':>6}")
     for name, rc, hits, n, bf, sec in rows:
         print(f"{name:26}{str(rc):>8}{hits:>12}{n:>20}{sec:>6}")
     for b in bad:
