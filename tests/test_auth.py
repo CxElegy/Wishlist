@@ -271,5 +271,16 @@ class PyWording(unittest.TestCase):
         self.assertIn(render.SETTINGS_JA["none_hint"], h)
 
 
+class LoginOncePerHour(unittest.TestCase):
+    def test_user_login_result_is_saved(self):
+        """user_login の返り値で me.v と chk を保存する（保存しないと同意済みの人も毎回呼ぶ・2026-11-04 egress）"""
+        js = inspect.getsource(render)
+        m = re.search(r"rpc\('user_login',\{p_name:me\.name\}\)\.then\(function\(r\)\{([^}]*)\}\)", js)
+        self.assertTrue(m, "start() の user_login が見つからない")
+        for need in ("me.chk=Date.now()", "me.v=r.agreed_version", "saveMe(me)"):
+            self.assertIn(need, m.group(1))
+        self.assertIn("(me.v||0)<TV||Date.now()-(me.chk||0)>3600000", js)
+
+
 if __name__ == "__main__":
     unittest.main()

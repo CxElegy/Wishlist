@@ -1185,6 +1185,26 @@ def check_fx_edge(pw, base, width):
     return [f"演出が画面の外へ切れる {len(bad)} 件（{'、'.join(bad[:4])}）"] if bad else []
 
 
+def check_login_once(pw, base):
+    """ログイン中の人が同じブラウザで 2 枚目を開いても user_login を呼ばない（1 時間に 1 回・2026-11-04 egress）。
+    1 枚目で me.v・chk が保存され、2 枚目は 0 件のはず。ux_check の他の点検は文脈が毎回新しく、この門を見られない。"""
+    b = launch(pw)
+    ctx = b.new_context(viewport={"width": 1400, "height": 900})
+    pg = ctx.new_page()
+    pg.set_default_timeout(45000)
+    calls = []
+    pg.on("request", lambda r: calls.append(r.url) if "/rpc/user_login" in r.url else None)
+    pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+    pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}", session(WHO["test-a"]))
+    pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+    pg.wait_for_timeout(WATCH_S * 1000)
+    calls.clear()
+    pg.goto(base + "settings.html", wait_until="domcontentloaded", timeout=60000)
+    pg.wait_for_timeout(WATCH_S * 1000)
+    b.close()
+    return [f"2 枚目で user_login を {len(calls)} 回呼んだ（0 のはず）"] if calls else []
+
+
 def check_emb_fade(pw, base, width):
     """小元素の「パッ」：画像を 1.5 秒遅らせ、出る前は透明で場所（高さ）が変わらず、届いたら不透明になるか。"""
     b = launch(pw)
@@ -1575,6 +1595,12 @@ def main(argv):
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"お客さまが管理ページを直に開く {w}px：" + ("、".join(bad[:4]) if bad else f"{'・'.join(CUSTOMER_PAGES)} × 7 枚：門が出る・全ユーザーの行 0・メニューに入口なし"))
+        try:
+            bad = check_login_once(pw, a.base)
+        except Exception as ex:  # noqa: BLE001
+            bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+        fails += bool(bad)
+        print(("✗ " if bad else "✓ ") + "ログイン中の 2 枚目：" + ("、".join(bad) if bad else "user_login 0 回（1 時間に 1 回）"))
         for w in ([] if a.fast else sorted({*a.widths.split(","), "520"}, key=int)):   # 演出のはみ出し（390・520・1400）
             try:
                 bad = check_fx_edge(pw, a.base, int(w))

@@ -24,6 +24,22 @@ import processes  # noqa: E402
 import render  # noqa: E402
 import sitedir  # noqa: E402
 import runlog  # noqa: E402
+import wikihttp  # noqa: E402
+
+
+def _no_net(url, *a, **k):
+    raise OSError("試験は本物の Wikimedia・Fandom を引かない（引いて CI が 23 分待って落ちた・2026-11-04）: " + str(url))
+
+
+_real_get = wikihttp.get
+
+
+def setUpModule():   # この file の間だけ（test_wikihttp は本物の get を試す）。試験が mock.patch で差し替えたものはその試験の間そちらが効く
+    wikihttp.get = _no_net
+
+
+def tearDownModule():
+    wikihttp.get = _real_get
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -2500,7 +2516,8 @@ class FindSources(unittest.TestCase):
             tmp = pathlib.Path(d)
             (tmp / "items.yaml").write_text('items:\n  - name: FROM\n    type: show\n    emblem_kind: character\n', encoding="utf-8")
             item = {"name": "FROM", "type": "show", "emblem_kind": "character", "emblem_people": True, "wikidata": "Q9", "emblem_who": ["B"]}
-            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef, "wd_cast", return_value=["A", "B", "C"]):
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef, "wd_cast", return_value=["A", "B", "C"]), \
+                 mock.patch.object(ef, "wd_enwiki", return_value=None):   # 本物の Wikidata を引かない（CI で 23 分待って落ちた・2026-11-04）
                 self.assertEqual(ef.roster(item, log=lambda *_: None), 3)
             got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
         self.assertEqual((got["emblem_pool"], got["emblem_who"]), (3, ["B", "A", "C"]))

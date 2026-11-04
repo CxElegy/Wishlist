@@ -5321,7 +5321,7 @@ AUTH_JS = r"""
   function start(){
     if(me&&me.admin){ me.admin=false; saveMe(me); }   // メールの確認を待っていた人（前の仕組み）
     // 規約に同意済みで 1 時間以内に確かめたなら呼ばない（ページを開くたびの user_login は Supabase の読み書きと egress を食う）
-    if(me&&me.name&&!me.admin&&((me.v||0)<TV||Date.now()-(me.chk||0)>3600000)) rpc('user_login',{p_name:me.name}).then(function(r){ me.chk=Date.now(); if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } else saveMe(me); })
+    if(me&&me.name&&!me.admin&&((me.v||0)<TV||Date.now()-(me.chk||0)>3600000)) rpc('user_login',{p_name:me.name}).then(function(r){ me.chk=Date.now(); me.v=r.agreed_version||0; saveMe(me); if(me.v<TV) askAgree(); })
       .catch(function(e){ if(/*data*/ /見つかりません|登録されていません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
     var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
     if(err){ toast(sayErr(err)); if(history.replaceState) history.replaceState(null,'',location.pathname); }
