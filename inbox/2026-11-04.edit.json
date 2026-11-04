@@ -439,14 +439,14 @@
   "三星手机": 43,
   "哈利波特剧集": 12,
   "周杰伦": 28,
-  "dota2": 8,
+  "dota2": 9,
   "星巴克马克杯": 5,
-  "A2O LITE": 9,
+  "A2O LITE": 10,
   "猫用品": 6,
   "The Mandalorian": 5,
-  "ILLIT": 4,
+  "ILLIT": 5,
   "MMORPG 新作": 26,
-  "あつ森": 3,
+  "あつ森": 4,
   "チェーンソーマン": 7,
   "Vaundy": 4,
   "绝区零": 3,
@@ -455,7 +455,7 @@
   "日本顶级网球赛事": 4,
   "BLEACH Mirrors High": 1,
   "FROM": 1,
-  "gelato pique": 6
+  "gelato pique": 7
  },
  "dota2": [
   {
@@ -477,6 +477,15 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "Meepo Bug Crashes Dota 2 Servers",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
    ]
   }
  ],
@@ -661,6 +670,15 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "아일릿, 일본에서 이 정도였나…'3억 회 돌파'에 공연까지 전석 매진",
+   "highlight": "3억 회 돌파",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -938,7 +956,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    7
    ]
   }
  ]
