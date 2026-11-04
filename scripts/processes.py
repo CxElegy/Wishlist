@@ -222,7 +222,7 @@ PROCESSES = [
     },
     {
         "id": "emblem-cron", "name": "小元素の自動補完", "en": "EMBLEM", "lane": "actions",
-        "schedule": "gate", "when": "ゲートが仕事ありのとき · 6 本並列 · 3 段 · AI なし",
+        "schedule": "gate", "when": "ゲートが仕事ありのとき · 6 本並列 · 3 段 · AI なし · Wikimedia 応答の cache は restore＋save＋lookup-only で、保存が拒まれたら警告（actions/cache@v4 は拒まれても緑。2026-11-04）",
         "trigger": "後台のゲート（毎時・収集のあと）が「足りない版面がある」と判断したとき。GitHub Actions で Python だけで動く",
         "summary": "目標に届いていない版面の小元素を、足りない順に 4 本並列で埋める。前は Claude が目で見ていた判断（別人・遠景・集合写真・"
                    "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。名簿の取り方（gather・gather_wide・gather_pages・gather_roles の全部）も公式サイトの立ち絵が先（入口は official_cands 1 つ）で、取れた人は Fandom に行かない（点検 E21 が実際の名簿で数える）。規則の前に Fandom から取った分は official_swap（掃除の鎖）が公式に取り直す（1 回 4 人・取れた人から・元より質が下がらないものだけ・固定と人物は対象外）。顔だけのアップの胸像への入れ替えも公式の立ち絵が先（入口は 3 つとも同じ official_for：取るときの fit_all・例外時の控え・後の入れ替え bust_replacement。点検 E19 が残りを数える）。胸像待ちは名簿の上位 12 人を毎回（1 回 8 人の巡回に入れない）、見込み「N 人・次の回 HH:MM・外すまであと約 N 回」（close_eta）を管理ページの小元素と emb_check に出す（official_images：site かアイコンの出どころの網域のトップ＋そこからリンクしたキャラクター一覧のページ〔official_pages・最大 3 枚〕にある char… のパスの絵。名前の長音の書き方の違いは official_key で同じ人：Tōshirō＝toushiro。顔の絵にカードの文字が入るサムネは使わず、透明な立ち絵を胸像に切る。Fandom 由来かは why だけでなく出どころの網域でも見る：fandom_sourced）・Fandom の場面画像は最後・質の下限つき（短い辺 256px 以上・元より悪くしない：bust 札）。公式サイトの候補は定時の自動で選んでよい取り方（AUTO_SOURCES）に入れ、Fandom より先に選ぶ（入っていなかったので毎回外れていた）。名簿を回す順（subjects）は、名簿の先頭 3 人で小元素がいない人と、公式サイトに立ち絵がある人（official_has）を毎回先頭に置き（最大 STEP の半分）、残りを 1 周する（回しの先頭から外れて Rukia・Kisuke が何周も取られなかった）。名前の綴りはヘボン式・訓令式・m/n の違いも同じ人（official_key）。点検 E21 は ✗：Fandom の絵のままの人と、名簿の上位で小元素がいないのに公式に立ち絵がある人。E27 は公式の HTML から人物の絵を読めない版面の数（情報）。お客さまの版面も同じ規則：library_emblem.official_swap_board が Fandom の絵を公式に取り直し（入口は店長と同じ emblem_fill.official_cut）、E21 は boards.config も数える（boards_fandom_over_official）。公式の一覧が名前のリンクだけのとき（Marvel /characters）は、その人のページを 1 つ開いて cut などの立ち絵を取る（official_person_images）。トップの HTML に人物の絵がない JS 描画の公式は、本物のブラウザの HTML に替える（_rendered_html・SCRAPLING_BROWSER=1・background.yml と library_emblem.yml で scrapling install）。アイコンの出どころが wiki・画像の置き場の網域（upload.wikimedia.org）なら公式サイトとして使わない（NOT_OFFICIAL_HOST）。",
@@ -505,7 +505,7 @@ PROCESSES = [
         ],
     },
     {
-        "id": "library", "name": "ライブラリへ写す", "en": "LIBRARY", "lane": "actions", "workflow": "library.yml", "when": "items.yaml が変わったとき（後台作業の bot の push では起きないので、items.yaml を変えた後台作業の回が起こす）· 1 時間ごと（毎時 41 分、お客さまの版面。抜けたら後台作業が起こす）· 週 1 回（月曜 12:41 JST、番号の引き直し）· 手でも",
+        "id": "library", "name": "ライブラリへ写す", "en": "LIBRARY", "lane": "actions", "workflow": "library.yml", "when": "Wikidata の結果の cache は restore＋save＋lookup-only で、保存が拒まれたら警告（2026-11-04）· items.yaml が変わったとき（後台作業の bot の push では起きないので、items.yaml を変えた後台作業の回が起こす）· 1 時間ごと（毎時 41 分、お客さまの版面。抜けたら後台作業が起こす）· 週 1 回（月曜 12:41 JST、番号の引き直し）· 手でも",
         "trigger": "main の items.yaml・scripts/library.py が変わったとき、1 時間ごと（毎時 41 分）、週 1 回の定時（月曜 3:41 UTC）、手で起こす、または定時が抜けて 80 分あいたら後台のゲートが users_only で起こす（library_watch）",
         "summary": "みんなの版面の置き場（ライブラリ：Supabase の boards・follows）へ、店長の版面を写す。記事集め・AI 編集・デザインを版面ごとに 1 回にし、店長もお客さまも同じ版面を受け取るための土台（2026-10-23）。。Supabase が 402（制限中）で読めないときは何も書かず緑で終える（sbstate.need_db）",
         "files": [".github/workflows/library.yml", "scripts/library.py", "db/library.sql"], "doc": "docs/rules/library.md", "uses": ["supabase"],
