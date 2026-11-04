@@ -82,7 +82,7 @@ class Lines:
     """管理ページ「ライブログ」に作業の 1 行 1 行を流す（Supabase の live_log 表、db/live_log.sql）。
     secret key のある GitHub Actions だけが書く（ないとき・テストでは何もしない）。行はためて FLUSH 秒ごとにまとめて送る
     （画面は 3 秒ごとに読む）。送れなくても本体の処理は止めない。"""
-    FLUSH = 1.5
+    FLUSH = 8   # 無料枠：1.5 秒ごとだった POST を 8 秒ごとに（画面は 3 秒ごとに読むので、遅れは 8 秒まで）
     KEEP_DAYS = 2
 
     def __init__(self, proc, send=None):

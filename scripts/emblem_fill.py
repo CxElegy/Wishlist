@@ -3073,6 +3073,7 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
         import livestatus
         lines = livestatus.Lines("emblem", send=None if path is None else False)
         lines.prune()
+    keyed = bool(os.environ.get("SUPABASE_SERVICE_KEY")) and path is None
     per_board = runlog.typical("emblem", "item_secs", 240, log_dir=runlog_dir) / 60   # 1 版面にかかる時間（最近の中央値）
     started = time.time()
     workers = max(1, int(workers or WORKERS))
@@ -3138,7 +3139,8 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                 log(f"[{n}] {str(m).strip()}" if workers > 1 else m)
                 lines.add(m, board=n)
             ilog(f"開始（いま {fresh_have(item)}）")
-            live(name, "emblem", "work", "小元素を集めています", per_board + 3)
+            if not keyed:   # 鍵のある Actions は fill_one の _live（live_status 直書き）が同じ行を書く。ここで rpc を重ねない（無料枠）
+                live(name, "emblem", "work", "小元素を集めています", per_board + 3)
             t_item, before = time.time(), fresh_have(item)
             item["_round"] = round_of(prog["items"].get(name) or {})
             item["_recount"] = (prog["items"].get(name) or {}).get("names_v") != NAMES_V   # 名簿の規則の版が上がった：名簿がそろっていても 1 回数え直す
@@ -3151,7 +3153,8 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                     record(prog, item, {"state": "running", "note": "時間切れで途中まで（次の回に続き）"}, _now())
                     runlog.add("emblem", f"{name}：時間切れで途中まで（次の回に続き）", "warn", log_dir=runlog_dir, item=name)
                     save_progress(prog, path)
-                live(name, "emblem", "clear")
+                if not keyed:
+                    live(name, "emblem", "clear")
                 return
             except Exception as e:   # 1 つの失敗で全体を止めない
                 ilog(f"[失敗] {e}")
@@ -3169,7 +3172,7 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
             # 小元素が増えた版面は、この回の終わり（push → 網页の生成）に反映される。増えなかった版面は帯を消す
             if fresh_have(fresh) != before:
                 live(name, "emblem", "wait", "小元素を追加 · 反映を待っています", max(1, (deadline - clock()) / 60) + 3)
-            else:
+            elif not keyed:   # 鍵ありは fill_one の finally の _live(None) がもう消してある
                 live(name, "emblem", "clear")
 
     threads = [threading.Thread(target=worker, name=f"emblem-{n}", daemon=True) for n in range(min(workers, max(1, len(queue))))]

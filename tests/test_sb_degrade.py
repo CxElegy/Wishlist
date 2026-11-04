@@ -159,7 +159,28 @@ class PageSide(unittest.TestCase):
             digest.live_mark("B", "fetch")
             digest.live_mark("B", "fetch")
             digest.live_mark("B", "found", found=2)
-        self.assertEqual(len(calls), 2)
+        self.assertEqual(len(calls), 1)   # fetch は 20 秒遅らせて書く（すぐ終わる版面は書かない）
+
+    def test_live_mark_skips_quick_fetch_and_unwritten_delete(self):
+        """無料枠：すぐ終わる版面は fetch も DELETE も送らない。長い版面は fetch を書き、小元素の段の名前は 30 秒に 1 回。"""
+        import time
+        calls = []
+        with mock.patch.object(digest, "supabase", lambda *a, **k: calls.append((a[0], k.get("method")))), \
+                mock.patch.dict(digest._LIVE_SENT, clear=True), mock.patch.dict(digest._LIVE_ROW, clear=True), \
+                mock.patch.dict(digest._LIVE_TIMER, clear=True), mock.patch.dict(digest._LIVE_LAST, clear=True), \
+                mock.patch.object(digest, "LIVE_FETCH_SHOW_SEC", 0.05):
+            digest.live_mark("Q", "fetch")
+            digest.live_mark("Q", None)          # すぐ終わった：Timer を外す・書いていない行は消さない
+            time.sleep(0.15)
+            self.assertEqual(calls, [])
+            digest.live_mark("L", "fetch")
+            time.sleep(0.15)                     # 長かった：fetch が書かれる
+            self.assertEqual(len(calls), 1)
+            digest.live_mark("L", None)          # 書いた行は消す
+            self.assertEqual(calls[-1][1], "DELETE")
+            digest.live_mark("E", "emblem:A", proc="emblem")
+            digest.live_mark("E", "emblem:B", proc="emblem")   # 30 秒以内の段の書き換えは送らない
+            self.assertEqual(len(calls), 3)
 
     def test_busy_polls_slower_when_idle(self):
         self.assertIn("live.length?30000:120000", render.BUSY_JS)

@@ -18,6 +18,7 @@
   - 收集（`digest.live_mark`，Actions 有 secret key 直接写）：开始抓「記事を探しています」→ **这个版面一抓完就**判断：没新记事删掉（条消失），有就「新着 N 件 · AI 整理待ち · 一覧まで約 N 分」（新记事 AI 编辑后才成报道）；按顺序去重后件数变了再改（`tests/test_live.py`）。
   - AI 编辑（Claude 定时任务，没有 secret key → `scripts/livestatus.py` 调 `live_report()`）：`EDITING.md` 第 2 步 `digest.py live-edit`「AI が編集しています」→ `pick-images`「配図を選んでいます」→ `publish`「反映を待っています」。
   - 小元素补全（`emblem_fill.background`，同上 `live_report()`）：处理中「小元素を集めています」→ 增加了的版面「反映を待っています」，没增加就删。
+  - 无料枠（2026-11-05）：「記事を探しています」は 20 秒以上かかった版面だけ書く・書いていない行の DELETE は送らない・小元素の段の名前は版面ごと 30 秒に 1 回・鍵のある Actions は小元素で `live_report` を重ねない・live_log は 8 秒ごとにまとめて送る。見え方は変えない。
   - `live_report()` 只收 proc = edit / emblem、版面名必须在 `sizes` 表里、文字 40 字・预计 90 分以内（不用密钥就能写，所以限得很窄；被滥用最多是假的条出 45 分钟）。
   - 「あと約 N 分」= 各仕组み最近 10 回实际用时的中位数（`runlog.typical`：收集 `secs`、AI 编辑 `secs`、小元素每个版面 `item_secs`），越跑越准。页面生成（代码变更）不出条。
   - 连接器注意：Supabase 连接器执行 `DELETE` / `DROP` 这类破坏性语句要用户确认，云端会话里没人点会超时 → 改表结构用不删东西的写法（`create or replace`、新函数名）。
