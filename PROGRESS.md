@@ -358,3 +358,5 @@
 - 2026-11-04 f2：点検の道具の REST 読みを harness/sbread.py に一本化（10 分の写し・件数を最後に出す）。tests/test_sbread.py。次：ux_check 1 回の件数を本番で確認。
 
 - 2026-11-04 f2f2：egress 別の目の指摘。sbread 既定を 10 分の写しに逆転（ttl=0 は photo_cache_fill だけ）・ux_check の版面 config 丸ごと読みを 3 箱に絞る・ブラウザの Supabase 読み（GET＋READ_RPC）も写し（WL_SB_BROWSER=cache|abort|live）・件数の行は --part who でも出る（早い return で出ていなかった）・上限 REST_MAX 12。本番 test-a 1400 --fast 2 回目：python /rest/v1/ 0 件・ブラウザ→本番 23〜38 件（user_login 24 が大半）・写し 295・✗ 0。次：user_login の呼びを減らす・ux_all 全部の合計。
+
+- 2026-11-04 f3：402 の通し点検。harness/fake402_check.py が偽の 402 に Actions の入口 13 本を当て、入口ごとに docs/・state/ の縮みを数える。結果：全入口 終了 0・名簿外の縮み 0。tests/test_fake402.py。次：網が要る入口（digest.py 本体・emblem_fill）を偽 402 で通す。
