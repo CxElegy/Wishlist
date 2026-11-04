@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "",
+ "edit_sig": "bf3543b6ad6d",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -40,143 +40,53 @@
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?4K_5qVU-H-Ah55_aIE8bv",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Preloads for GTA 6 begin on November 10 and need up to 212GB of console storage.",
      "date": "2026-11-04",
-     "n": 1,
-     "source": "Notebookcheck",
-     "title": "GTA 6 PS5 Pro enhancements confirmed",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNc2ExNWl2MzZhdkdpWk5mRUJTMHBQSGh5bjAzT3lWYm92SzBLMm85alJ3QnE2Wlk0Rmxfay1YaEtjM2hmdFNDV1dpM2t5MVlRNUFVZ2lpQURnbS1xbG9NdEU0Wkt0S256TWVLbjhEVEdGTm1aNEVzMXB0X2Zob29veGFJMEtiREgz?oc=5"
+     "event": {
+      "date": "2026-11-10",
+      "label": "プリロード開始"
+     },
+     "headline": "GTA 6 preloads start on 10th November, and will need up to 212GB on your console",
+     "highlight": "10th November",
+     "image": "https://www.thesixthaxis.com/wp-content/uploads/2026/06/GTA6-UltimateEdition-hero500-576x356.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.thesixthaxis.com/2026/11/04/gta-6-preloads-start-on-10th-november-and-will-need-up-to-212gb-on-your-console/",
+     "weight": "hero"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 2,
-     "source": "Latin Times",
-     "title": "GTA VI tops Japan's developer poll as the industry counts down to its November 19, 2026 launch",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNSm8ydGhudW5LeG9QQzNkWVdOMjB1YVVCQzkyZ21QalhwZV92aEY5RmFBbVBJYUhwS040SnR5bkxPVWZwRC02QlpCQkRsTkpVanFPdzgwd21hQTZRUHFXODU5eTgybTNrZXRnLUU3aGR6QnVOdjZoeU80NElkRnQzckRPWnNwaTFtN0NMb2dIYw?oc=5"
+     "headline": "GTA 6 PS5 Pro enhancements confirmed",
+     "highlight": "PS5 Pro enhancements",
+     "image": "https://areajugones.sport.es/wp-admin/admin-ajax.php?action=rank_math_overlay_thumb&id=834607&type=videojuegos&hash=327d1d284ff2a1170fe074f5adf184f2",
+     "image_via": "og:image",
+     "url": "https://areajugones.sport.es/videojuegos/playstation-francia-filtra-las-caracteristicas-de-gta-vi-en-ps5-pro-pero-todavia-podria-haber-una-gran-sorpresa/",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-04",
-     "n": 3,
-     "source": "Diario AS",
-     "title": "GTA 6 character breakdown: Who are Jason, Lucia, and the Vice City cast?",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNY2JPZVVMc1NpcjFBR3V2X1Z2Tm5DQ1lNUFppa2xHejd0SjhPVEs2Y1QyeDRaTFVXZENRTG1EdmpUX0h3THhDaU9tUUYwRkFHa1FOcGpHSWJBWTh2M1IxWGpiRE1jYkVONnpBV0xfYjNzR2xNV2hIcmF6NThyU2RLUXFHbkR0Y1QyMEpiVkxVNjNOT3lqUzBBZnNkbjhGeERUNkdCY0lYc2VvdGdCa003bUlXMGnSAcgBQVVfeXFMT1NqM09pU1VUYUVCQlVUU1YxcWN5dnI3cDZaOTlfenR4WGxJMkRfMnkwQUVXRUN4SjVPbEdmSjhwVDc1TTM0WkdZSEVHazAzZ2ZqRVZyR3lzS0pTYl93ZUJfbkxzVjRWUGFSZFF0NnNoWnlYR3A0ZXJiVmtwRTRwUENzdl9SRE12M2Z6RlhPRENiMWgwVTNDTTF6eDBWVGxUQVdVQmtQZHNvNEI5NlJKSlhUcWhpUjgxdTRab2hnbVdJTWhVR3J1OW8?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 4,
-     "source": "levelup.com",
-     "title": "Studio Behind 2026 Hit Takes Break for GTA VI: “Go Play GTAVI, We Need to Detox”",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOanRFcEd6cnVLWi1mTUpWZTByRzlqOGlKcU1CdVVYQjctcGRPa3dDQVFMMzI1M2Q5b2J4TUFFNE5wdFpuRjNOR2x4V0laSXpHLThJY1RQV2NyN0tvTkhyX284UVhHLXFYR085bUxCclMzczNNSUlNdnY1ZUNERXZHalBXZ1JqMldOaXBIVjYyd09ZR003dHBVRnc3Y3NSMG9IbnhXRUxhUGhpdGg4ZHc?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 5,
-     "source": "TheSixthAxis",
-     "title": "GTA 6 preloads start on 10th November, and will need up to 212GB on your console",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPQjR6Umd2LVo1ajk5TFB3RmwzOF9MQ2Jucng4Rl9CbXpkeXJjbmE5MXV2RHYyVklaNktQRnhPdEszTUN0aHZNQXE4QV9sQ2lLVVlOVGltX0JUaHZjdVhDUVFrQ2pLaE9naFRUZHhtQ0JPX3lGMk5CaTNpbm1oRjVSQUMtMGNMNFVsUmtWd2ZrbThIdV9tVzI0Sm5QTFg0ZUMyclYwc2tUdmlwaG8wQXBRSHQxa2o3Rndiczg3MQ?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 6,
-     "source": "HobbyConsolas on MSN",
-     "title": "Tras el lanzamiento de GTA 6, Rockstar puede tumbar tu vídeo en YouTube si destripa aspectos de la historia",
-     "url": "https://www.msn.com/es-es/noticias/otras/tras-el-lanzamiento-de-gta-6-rockstar-puede-tumbar-tu-v%C3%ADdeo-en-youtube-si-destripa-aspectos-de-la-historia/ar-AA2gL4KV"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 7,
-     "source": "Mercado Negro",
-     "title": "Xbox sorteará una Series X de más de 1,5 metros con forma de cocodrilo por GTA VI",
-     "url": "https://www.mercadonegro.pe/actualidad/lanzamientos/xbox-gta-6-gratis/"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 8,
-     "source": "LevelUp on MSN",
-     "title": "The Legend of Zelda: Ocarina of Time remake recibe calificaciones casi perfectas, pero ¿Grand Theft Auto VI le podrá quitar el GOTY de 2026?",
-     "url": "https://www.msn.com/es-mx/gaming/general/the-legend-of-zelda-ocarina-of-time-remake-recibe-calificaciones-casi-perfectas-pero-grand-theft-auto-vi-le-podr%C3%A1-quitar-el-goty-de-2026/ar-AA2gL636"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 9,
-     "source": "Metro Ecuador on MSN",
-     "title": "GTA VI: ¿Qué es la precarga digital que comienza el 10 de noviembre?",
-     "url": "https://www.msn.com/es-xl/noticias/otras/gta-vi-qu%C3%A9-es-la-precarga-digital-que-comienza-el-10-de-noviembre/ar-AA2gKms4"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 10,
-     "source": "Milenio on MSN",
-     "title": "GTA 6 anuncia fecha de descarga anticipada: ¿cuándo podrás instalarlo y cuánto espacio necesitas?",
-     "url": "https://www.msn.com/es-mx/noticias/otras/gta-6-anuncia-fecha-de-descarga-anticipada-cu%C3%A1ndo-podr%C3%A1s-instalarlo-y-cu%C3%A1nto-espacio-necesitas/ar-AA2gGEA7"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 11,
-     "source": "Areajugones",
-     "title": "PlayStation Francia filtra las características de GTA VI en PS5 Pro, pero todavía podría haber una gran sorpresa",
-     "url": "https://areajugones.sport.es/videojuegos/playstation-francia-filtra-las-caracteristicas-de-gta-vi-en-ps5-pro-pero-todavia-podria-haber-una-gran-sorpresa/"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 12,
-     "source": "Generacion Xbox",
-     "title": "GTA 6 tendrá un mapa físico de Leonida muy barato: así podrás conseguirlo e incluso obtenerlo gratis",
-     "url": "https://generacionxbox.com/gta-6-tendra-un-mapa-fisico-de-leonida-muy-barato-asi-podras-conseguirlo-e-incluso-obtenerlo-gratis/"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 13,
-     "source": "VidaExtra",
-     "title": "Ambiente de despedida en GTA 5: incluso los presentadores de las antiguas emisoras de radio dicen \"Adiós\" antes de que todos se lancen a GTA 6",
-     "url": "https://www.vidaextra.com/accion/ambiente-despedida-gta-5-incluso-presentadores-antiguas-emisoras-radio-dicen-adios-todos-se-lancen-a-gta-6"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-03",
-     "n": 14,
-     "source": "Generacion Xbox",
-     "title": "GTA 6 rompe todas las previsiones en reservas: ya supera los 750 millones de dólares antes de su lanzamiento",
-     "url": "https://generacionxbox.com/gta-6-rompe-todas-las-previsiones-en-reservas-ya-supera-los-750-millones-de-dolares-antes-de-su-lanzamiento/"
+     "headline": "GTA 6 rompe todas las previsiones en reservas: ya supera los 750 millones de dólares antes de su lanzamiento",
+     "highlight": "750 millones de dólares",
+     "image": "https://generacionxbox.com/wp-content/uploads/2026/04/gta-6-podria-tener-un-problema-inesperado-segun-el-actor-de-lester-1024x576.webp",
+     "image_via": "og:image",
+     "url": "https://generacionxbox.com/gta-6-rompe-todas-las-previsiones-en-reservas-ya-supera-los-750-millones-de-dolares-antes-de-su-lanzamiento/",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-03",
-     "n": 15,
-     "source": "IGN",
-     "title": "GTA 6 Install Size and Global Preload Times Confirmed - IGN Daily Fix",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQR0dTZzhHN1BSbnloQWdlajhkZXRsZkdxRHRCdmpzbWdQZUxZNTZHeExaYzBEdW56b0tNdFlnQTVqVWJ6ajFQVHFseDVubzFFUjc2b2ljalZhOFpWcVNqaG9sMU9OLWdDNHBtTGduY0JDZEUzM2JaTllXSWF0Yi14NDBzN3lhcVktWmg1X3hGczhBdlB2UzhXWlNn?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 16,
-     "source": "core.dpangzi",
-     "title": "终未等到《GTA 6》发售：25 岁重症游戏粉丝 Jerry 离世，社区玩家承诺用游戏 ID 纪念他",
-     "url": "https://core.dpangzi.com/article/read/6aeb1e8e961ebb45adea61ce.html"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 17,
-     "source": "Libertad Digital",
-     "title": "GTA 6: Cómo hacerse gratis con el mapa de Leónida y conseguir su versión física",
-     "url": "https://www.libertaddigital.com/ciencia-tecnologia/videojuegos/2026-11-04/gta-6-como-hacerse-gratis-con-el-mapa-de-leonida-y-conseguir-su-version-fisica-7486774/"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 18,
-     "source": "Diario de Ibiza",
-     "title": "Sin precedentes: GTA 6 ya ronda los 700 millones de euros antes de su estreno",
-     "url": "https://www.diariodeibiza.es/tecnologia/2026/11/04/precedentes-gta-6-ronda-700-136091201.html"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 19,
-     "source": "Excélsior",
-     "title": "Fallece Jerry Fort: el fan que soñaba con jugar GTA 6 murió antes del estreno",
-     "url": "https://www.excelsior.com.mx/tecnologia/fallece-jerry-fort-fan-que-sonaba-con-jugar-gta-6-murio-antes-estreno"
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "GTA 6 tendrá un mapa físico de Leonida muy barato: así podrás conseguirlo e incluso obtenerlo gratis",
+     "highlight": "mapa físico de Leonida",
+     "image": "https://generacionxbox.com/wp-content/uploads/2026/07/si-vas-a-comprar-gta-6-en-fisico-hay-una-diferencia-clave-entre-xbox-y-ps5-1024x577.png",
+     "image_via": "og:image",
+     "url": "https://generacionxbox.com/gta-6-tendra-un-mapa-fisico-de-leonida-muy-barato-asi-podras-conseguirlo-e-incluso-obtenerlo-gratis/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
    "theme": {
     "accent": "#FF5FA2",
@@ -220,290 +130,61 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Presales for Avengers: Doomsday have passed a major ticket milestone.",
      "date": "2026-11-04",
-     "n": 1,
-     "source": "KTLA",
-     "title": "WWE and Disney tag-team for two-day takeover for John Cena Classic and ‘Avengers: Doomsday’",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNRnk5eXJXVTZqOGtZLTlmX1FRQ25IT1dBZlZ2eGpOeVZOaGFxdkhUOE9sT0phVHZVandUV2JCTXpTcEhZY3pqdllVNVVSNHlxOG5mZFNyQTFPU3dCb01DRS1mMjY5c0V2UTFHbzZ6bVEzOE1hSmFDRFdOUzNhUE5yTmRuVnYyMHRhbTNidERZUW5fVGVNRjFPUTUzWEQzdzA0cFdwWGotVFc1QmJuNWNzMTZtdVhnWl9sa01ibNIBwgFBVV95cUxQSTFVdGNMOWN1YXZLRUIxS3QyaXN4UDNabUJZazhqckVhWmUwX3ZGdHZIdVhuTmVONjJNYV9JRFhpWXRieVR5al8yall3Qy1rSFFwcHhRUXFjSVJVTW1JNlFOQUtOT2F6RlBnbTJmbE5pZE5MczRvX2JYT2VKcG4wVHgtODFMOVVfdWJURmdsTl90VnBoZW5sdEQ2NVk2NTd0LW5UaTZSZERWOWZMWHRGQzZXRmFtWFpoZzNfd1ExY2hBQQ?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 2,
-     "source": "FlickDirect",
-     "title": "Channing Tatum as Gambit Joins Herbie for an Avengers Dunkin' Run",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQamtrQ0lob1cxQ3pjSmFHeURNVjNUSDAyZUZBWFk5bm5pWWxCN3RQOWZWZlI2X3d1UjVZOHRFUW9SSnNqdWJBNDd1S0dFQVJDd3VMWW9qU0JkLTJhcDRaYkNSRHZJN2RaVTU2RU1LZnA4dHZheEM1ekg0RXprZi1mUVpMNXRiS1lwMm5UbW1hTktjeTRIaDhQYzNHOVhIRXVIanZ2TEhyN01kX3IzdHl3SQ?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 3,
-     "source": "SYFY",
-     "title": "Doctor Strange Unlocked The Door To The MCU's Multiverse Saga Ten Years Ago",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNOXF4VHU4VktQaFFfX1VNU0hteW9GUnJiVGhGY0ExOXRFQXFfRXZyR3R5dHV3akRTMTJ4eUdGbnBVSWgwRUN2bThSY1MxMkpuaGtDeXVzUTBSVFhWU1U0X0hRX3hPZ2pBZmhQSWlOdWxwWEgtS0dRZGMyVTBPbF9fMlktOHJILWZENWVHOXVndzZzckVJZ0o5MnFFTEFXek9jWEFycW1xU3U?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 4,
+     "headline": "‘Avengers: Doomsday’ Presales Smash a Major Ticket Milestone",
+     "highlight": "Presales Smash",
+     "image": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
+     "image_via": "作品封面",
      "source": "IMDb",
-     "title": "KFC’s ‘Avengers: Doomsday’ Ad Quietly Teases the New Avengers Tower, a Fantastic Four Ship and a Sentinel",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1LQVFXSXJ4cXdZSUYycmJ4Rm52ZWlvclhGUWN1S3cxS3gxcDRFQ19mS001Y2ZfM1dKZVk5VDhZRFRNYlRaNndzTHNPSXY4TkFNWlhKd1FUQml2WXFmakVISS1sRTlVUEE?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.imdb.com&sz=128",
+     "url": "https://www.imdb.com/pt/news/ni66095093/?ref_=ttnw_art_perm",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 5,
-     "source": "LaughingPlace.com",
-     "title": "Dave & Buster's is Becoming \"Doom & Buster's\" for New Avengers Promotion",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZHdvS0xiZWM3REJxTWJON3dZRUM3TFBHamc3NGFHYTNfbmV1UjJmVU1TelhEUFBlaHJsWDhYdkhkdWhtYmlDQVA3bTFCSmRQeFlkWHVOZ2RzRmpsaTM4ZVdxcWZITm5nUndKbkpWNk50a0w5eWthN0V6Sm54LTFFeF9WeFQ3WUNWY3hBZlhWczI3YnlrVWtFYnZma3RlZw?oc=5"
+     "headline": "WWE and Disney tag-team for two-day takeover for John Cena Classic and ‘Avengers: Doomsday’",
+     "highlight": "two-day takeover",
+     "image": "https://cdn.ome.lt/kDm8ymHW3CqrptnIQ6Gne4xiVXw=/1200x630/smart/filters:format(webp)/extras/conteudos/Monarca_de_la_Lucha_en_Catedral_Esmeralda.png",
+     "image_via": "og:image（其它来源）",
+     "url": "https://ktla.com/entertainment/wwe-and-disney-tag-team-for-two-day-takeover-for-john-cena-classic-and-avengers-doomsday/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 6,
-     "source": "SlashFilm",
-     "title": "Jeremy Allen White As Wolverine? Marvel Reportedly Met Actor For X-Men Reboot",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQc1NiQzdocGZMVVA4RjFlSHphZnJKQ0kyVFNhNktNSlZPeVhMdlJsUHJsaDJYTENySlpiU2FrcGFueHhIRWlPUVlrbklpaW9OVWpuS2tCVjhOVFMwMVR1U1p0Z2JrRkF0cldKTlVDYkg4TDVEQk8ybzk3Z3pvMGZqeW5JaVY4TWN0WEJyMEk1cnJRc1NKaEE?oc=5"
+     "headline": "Channing Tatum as Gambit Joins Herbie for an Avengers Dunkin' Run",
+     "highlight": "Gambit",
+     "image": "https://images.flickdirect.com/cache/entertainment-news/q82-012000-channing-tatum-as-gambit-joins-herbie-for-an-avengers-dunkin-run_8864.jpg",
+     "image_via": "og:image",
+     "url": "https://flickdirect.com/news/8864/channing-tatum-as-gambit-joins-herbie-for-an-avengers-dunkin-run/article.ashx",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 7,
-     "source": "Bam Smack Pow",
-     "title": "Avengers: Secret Wars will reportedly feature a shocking MCU comeback",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5tN0JqZlh6OXRSNVJraVhiZk1lODFBVTV5cG9TY3poSTZfb18yanNYQVhWOGJkZE1fdE44VjdzS0hBaDRaZExnRTBwcFlKWjV3SVQyWUNQd1pta3YzQ2lMQjl1aFRqRGpTSTd5LU1JS08wcTRkZWlhVnpKbGdsdw?oc=5"
+     "headline": "Jeremy Allen White As Wolverine? Marvel Reportedly Met Actor For X-Men Reboot",
+     "highlight": "Wolverine",
+     "image": "https://www.slashfilm.com/img/gallery/jeremy-allen-white-as-wolverine-marvel-reportedly-met-actor-for-x-men-reboot/l-intro-1793811781.jpg",
+     "image_via": "og:image",
+     "url": "https://www.slashfilm.com/2306705/jeremy-allen-white-wolverine-marvel-x-men-reboot-meeting/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 8,
-     "source": "玩具人 TOY PEOPLE",
-     "title": "新任「金鋼狼」爆出人選，《大熊餐廳》男星可望接棒！會先亮相《復仇者 6》、再客串新版《X戰警》",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE0wZVhJbXVadDRRdWFfZHdqa3ZjQ2R1M0ZaMERrQkpxcXo2QXZtbE51cnI4UUs4RW9HU1c0LVRfbHVLVFhiUmU1MUJSM0Q?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 9,
-     "source": "IMDb",
-     "title": "Marvel Cinematic Universe, The Complete Timeline to Phase 1: ‘Iron Man,’ ‘Thor,’ ‘The Avengers’ & More",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5ybmpEZnotUFl6clNZTnoxVzB3NnlrWVNzNUd2QU1HM2MyNjl6R3NDYkJPSHdrSFM4SWpBRTA1aHBKcjZabEQyX1BRblphRGN4VEFVeml4Nzd1MnFweVJOWEpzeVFHQQ?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 10,
-     "source": "The Playlist",
-     "title": "Channing Tatum’s Gambit Featured In Dunkin’ Ad Promoting ‘Avengers: Doomsday’",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOWWswU19aVFJYaVFVV0FWNWQ5TGY5N3pLTzFtT0w2Q1V6SXdVaGY4TUcwaGQyWnFtVXZsZ2phY184UHRQOHBvdkpmSGROS2gwNE5qNGs0dmh1anFVbE1EY0FjdHFiWHJzVEpyTmRFc3ZpUVJnMldMZm8yUTM5VWFKcWZnX2d1aHB4YUtv?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 11,
-     "source": "ScreenCrush",
-     "title": "I Ate and Drank Everything on Dunkin’s ‘Avengers: Doomsday’ Menu",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE8wZHdacnlvYnF4NE9kWTZlNDJsYWljZEo0UVhhV3g3WDYtYUc0dWFaMjZuS1V0LWgyMWVHSWJ0di12WkkzMFpUcUE2U2dvUEl0ckdzeld4UHgxaTU1eXg4dWh3?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 12,
-     "source": "Yahoo",
-     "title": "Dave & Buster’s Unveils ‘Avengers: Doomsday’ Experience With Themed Games and Cocktails",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPY3dtdk5abEtsYXJaR1hHbFB4OHVVanJmc3JZMThPY1hSTXo2UFpFWGxWb25mb2VCV3RmVHJfRHRLMkZSaktieGZhMnFPZk40VzJUajJFd0FMQ0JXUVdyeWlKN0tPb0JkYWk5Q1pHQ0RTZmxYSDhMYlV5SURoUlZvTU1ybXZwMkJBMXpKemZzUXdCOFlSMzRid1QydWpkSmNEcVVYbjJJWQ?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 13,
-     "source": "IMDb",
-     "title": "‘Avengers: Doomsday’ Presales Smash a Major Ticket Milestone",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE41ejI0RTdiMVRJbXlRVGlYVFFOWmxLUlNKNF90ZzN3d20zUkRPQXJRbEw0T2tVdzFLblI3MXRkWnZvXzZidk00SC14WHRZZ0Vvc1M1OXV0SlZwRUZPMG9OMHo5c2plSmlTSWww?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 14,
-     "source": "The Direct",
-     "title": "Marvel Studios Is Reportedly Set To Begin A New Era Of Disney+ Series With MCU’s Zodiac",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNU0tUb2FkemR6MHk5M3BkY2xRanlHcGxhU0tnRVBUajRINDhHYy02LTh4eDVpYmlTaWh6ZGVKUkpRTkhDbjV3ekZQSmJGczBoRHdrUzFnd1FtNmZKY3VnWDlWR3FRdjFmZGR6ZHRScVg1VDQxd0wwNTBTN3R0bW56YQ?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 15,
-     "source": "ComicBookMovie.com",
-     "title": "UPDATE: Marvel Studios Is Eyeing This 5'7\" Two-Time Emmy Winner To Play The MCU's Wolverine In X-Men",
-     "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOVG5PNzQzd19wTjIxbFVrT0pjYUVkbklzaGU4WU1DZzVxd0pEd0EtYzlYRDZOSWVBQ283SDl1ZjdUazl2QjFidmRoWTVpWlU2SzdHUkluRkpoZHg2ZUlZNVZSWDRLaTJSSEZTQkVwUGo1dU1aRG1pTWsyVlFrSjZaOWEtVVJzQ2t1YVdtWFZIbzY2c3RjN0c2cGdXV1FvSWxRdGh0WjV0NWM2dzlkVU1DOVdqWVdTUk1raEdHTko5SXc3aDgtUzZ1TFFzVGRhWHM1QnZR?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 16,
-     "source": "Epicstream",
-     "title": "Where to Watch Every X-Men Movie Before the MCU Reboot",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1XdXBISnlENlJlaEhWYVNGSGY4UmlHbmlLSHd5UnlteFItS2M1WXJRMjJjeEZjWlFPeUV1UlVHb1l6S2J1Zlc4ZHdzNGFxTzZ0TmJMVnZxZVhaeTFNSTNudUhKMTJURDFEU0E?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 17,
-     "source": "Polygon.com",
-     "title": "New Avengers: Doomsday Promo Shows Off Unexpected Team-up",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE50ODB3aThCclRsMTVYR0lIS3BoM1VwZ2tWOFlkVktSdFBfSjdHNzBiTEcyaVNYdVFCSUdLNkZVMWt6WkRqT2ZxR2c2ajdvYjBGbW15SGljd0pWV3N0bkhDTXZSb2h1d3FQc2FXZ2R5ajhmOVBRa0JlNlpR?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 18,
-     "source": "ScreenRant",
-     "title": "New Avengers: Doomsday Video Confirms Major Channing Tatum Gambit Change",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9kc0hkaHM5Wnp3RDBTendmbUhBak5rMUtyaV9wMHJ3QTlnV2VSNGFRNy1uRmFFa3VhSjlCNFFyMFlhcWEyZzNVSmZkMW9rVUVSMEtHdS0tUGJVYjZEV0JvZFctS3ZmS3FyeHFzUXQteTBSS3llYjhuRVp3?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 19,
-     "source": "AOL.com",
-     "title": "Is Jeremy Allen White MCU’s Next Wolverine? Meeting for X-Men Reported",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1rcm5RcUZwTEt4MlFvMDVfVGo5UFZnaFZXLVR0a0E2bTRmYl95MF80TGFZSHItUlRqbFR1el9KTHhtSXlHcHlHeF9uYXZkRVlBUDRWN1hFYl8wb09GajhWVW15Q2NObzg5Ui1KWHpWUjNnaTdDc1hob1kwbw?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 20,
-     "source": "Parade Magazine",
-     "title": "KFC Unveils Limited-Edition 'Avengers: Doomsday' Menu, but There's Bad News for U.S. Fans",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNeDNFbC1TUmR5TzhZbnVqM1ZtWXlBdUF1a1BmazJicTl3MTlMVXAtTWRNX3J3aGk4R0FxYkJEMXZxbWdHVDFvMVU5MkxBN3Z0VGZjZnpkRzRKcjAxcjhYZElSdGIzMTRaUW91R0tSaG9UdnJVVEpkdWlUS1RoY0hzU01JenFhRjBSd2cyWkhoUHFheWlhZFNBOEpQS3RucUltbDRFN2xrQXJaNE0?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 21,
-     "source": "Okdiario on MSN",
-     "title": "Un fichaje de autor para Marvel: la actriz alemana que tendrá un papel clave en ‘Vengadores: Doomsday’",
-     "url": "https://www.msn.com/es-es/entretenimiento/cine/un-fichaje-de-autor-para-marvel-la-actriz-alemana-que-tendr%C3%A1-un-papel-clave-en-vengadores-doomsday/ar-AA2gLe2n"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 22,
-     "source": "omelete",
-     "title": "Avengers: Doomsday | WWE y Marvel anuncian una alianza inesperada: Te contamos los detalles",
-     "url": "https://www.omelete.com.mx/marvel/avengers-doomsday-wwe-y-marvel-anuncian-una-alianza-inesperada-te-contamos-los-detalles"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 23,
-     "source": "TV Azteca",
-     "title": "FILTRAN calendario de Disney 2027: fechas de estreno de Bluey la película, Avengers: Secret Wars y la película de Los Simpson 2",
-     "url": "https://www.tvazteca.com/azteca7/peliculas/disney-prepara-un-2027-grandes-regresos-seria-su-calendario-estrenos-filtrado/"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 24,
-     "source": "ComicBook.com",
-     "title": "4 Marvel Villains That Could Be the MCU Horror Movie Answer to Clayface",
-     "url": "https://comicbook.com/comics/list/4-marvel-villains-that-could-be-the-mcu-horror-movie-answer-to-clayface/"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 25,
-     "source": "Areajugones",
-     "title": "WWE anuncia un evento de 'Vengadores: Doomsday': fecha, hora y dónde ver 'Worlds Collide'",
-     "url": "https://areajugones.sport.es/cine/wwe-anuncia-un-evento-de-vengadores-doomsday-fecha-hora-y-donde-ver-worlds-collide/"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 26,
-     "source": "Crónica",
-     "title": "Calendario de Películas de Disney: ¿Qué proyectos llegarán en 2027 y 2028 para Marvel, Pixar y Star Wars?",
-     "url": "https://www.cronica.com.mx/escenario/2026/11/04/calendario-de-peliculas-de-disney-que-proyectos-llegaran-en-2027-y-2028-para-marvel-pixar-y-star-wars/"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 27,
-     "source": "MovieWeb",
-     "title": "Tom Holland's Spider-Man Swings Into Action With New Release Ahead of 'Avengers: Doomsday'",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9PNm1OQTZjUTVCYXozMjRvaFg2dkxNWS1kY2xhSTdEMUdpdUxMOTFSRlgwM29wR1R0bzFnbzQxa0ZGU0luaGhQb29peVg3ZFRMVjhJU0YyaXZ4UmdlN0cwbkw2RVFSY2djVnVHM3hlU2VIdW8?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 28,
-     "source": "Comic Basics",
-     "title": "‘Deadpool & Wolverine’ Joins the Ranks of the Top 10 Highest-Grossing MCU Films Ever",
-     "url": "https://www.comicbasics.com/deadpool-and-wolverine-joins-the-ranks-of-the-top-10-mcu-films/"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 29,
-     "source": "Mediotiempo on MSN",
-     "title": "¡Avengers llega a WWE y AAA! Anuncian Worlds Collide: Doomsday en Disney World",
-     "url": "https://www.msn.com/es-mx/entretenimiento/general/avengers-llega-a-wwe-y-aaa-anuncian-worlds-collide-doomsday-en-disney-world/ar-AA2gHbST"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 30,
-     "source": "IGN Southeast Asia",
-     "title": "KFC Reveals Official Avengers: Doomsday Menu 'Worthy' of Dr. Doom",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPWVdJSHFVVl9nNjRyWnlBd21CUEZBUExWUDYyVEJHTHB0dHllQWpxQlE1SGl0MW9BenRzeWp0cEtwYXZLRW1CY0N2QksxbHhNZ282Z18zYlFVeklRcXRMaDVYU1lnNmhmaUFMYXlGN0R2OHJ5Z3JHQjRsNXNrd3ByMC1mdlJSMzZpRmZCUk4xcFBDT0VJR0hmOVBJa3dMTUFELWI5bzd4XzVWRjBzWVoxb2ZIaVc?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 31,
-     "source": "RÉCORD",
-     "title": "¡WWE y Marvel se unen! Worlds Collide tendrá edición especial de Avengers: Doomsday en Disney World",
-     "url": "https://www.record.com.mx/historia/worlds-collide-edicion-especial-avengers-doomsday-disney-world-2026110316451781309"
-    },
-    {
-     "date": "2026-11-02",
-     "n": 32,
-     "source": "SuperHeroHype",
-     "title": "Ryan Reynolds Is Reportedly Reviving a Forgotten Marvel Team for the Big Screen",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPU2RqcHVLbTRNcHh0SnFfT2dsZ1hqeTN3M0ZBcjB6LS12bDk1NEIzS3NrZXktS1hCQ2lZc0hnVDB0R1hMQWdzMkw5VUpwOTFOa0pwczFuY0hjYk1hMmdvaVhISUlzbW12ZU1xZUdGVWppYjFnQ1I4dC1taGlBUFJ0RkJkWlRWU2dONHMwSGtjeURsZ1BzdmNJa2lR0gGfAUFVX3lxTE5id0lCRnNyQ1c5aUVaNENwQWRiSGNfMzZad3VVelBXX0E5eEczeXA3Vl9vZHN1bWt4VFQzNDhOXy1VUjdQUjhyT1B5cWZlalo2S25RaFVDWHd5RUl5UmVvT3hKbDJ6YmptaHJKSU04blhPOFBUNV9LY0NfYkt6dGk5NHNnWXFIYkk3bHp6Sk44RnVKQnNiYnlEUVZwdVBEQQ?oc=5"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 33,
-     "source": "Excélsior",
-     "title": "Pedro Pascal y Robert Downey Jr intercambian personajes de Avengers: Doomsday para Halloween",
-     "url": "https://www.excelsior.com.mx/espectaculos/pedro-pascal-y-robert-downey-jr-intercambian-personajes-avengers-doomsday-para-halloween"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 34,
-     "source": "Excélsior",
-     "title": "¿Vuelve la Bruja Escarlata? Nuevo póster de Avengers: Doomsday desata teorías",
-     "url": "https://www.excelsior.com.mx/espectaculos/vuelve-bruja-escarlata-nuevo-poster-avengers-doomsday-desata-teorias"
-    },
-    {
-     "date": "2026-10-31",
-     "n": 35,
-     "source": "Revista Merca2.0",
-     "title": "Burger King x Avengers Doomsday: Así será esta colaboración; ¿llegará a México?",
-     "url": "https://www.merca20.com/burger-king-x-avengers-doomsday-asi-sera-esta-colaboracion-llegara-a-mexico/"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 36,
-     "source": "Récord (México) on MSN",
-     "title": "¿Qué pasará con el Profesor X en \"Avengers: Doomsday\" tras muerte de Patrick Stewart?",
-     "url": "https://www.msn.com/es-us/noticias/otras/qu%C3%A9-pasar%C3%A1-con-el-profesor-x-en-avengers-doomsday-tras-muerte-de-patrick-stewart/ar-AA2gnJ1k"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 37,
-     "source": "Reporte Índigo",
-     "title": "Avengers: Doomsday revela nuevos pósteres individuales y pone a Doctor Doom en el centro de la amenaza",
-     "url": "https://www.reporteindigo.com/geek/noticia/avengers-doomsday-nuevos-posteres-doctor-doom-marvel-brujas-de-latveria-20261029-0010.html"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 38,
-     "source": "Televicentro",
-     "title": "Avengers: Doomsday y Secret Wars; la incógnita tras la muerte de Patrick Stewart",
-     "url": "https://www.televicentro.com/avengers-doomsday-y-secret-wars-la-incognita-tras-la-muerte-de-patrick-stewart-2026-10-29"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 39,
-     "source": "Milenio",
-     "title": "¿Cómo grabó Patrick Stewart 'Avengers: Doomsday' antes de morir? Esto sabemos sobre su estado de salud",
-     "url": "https://www.milenio.com/espectaculos/famosos/patrick-stewart-como-grabo-avengers-doomsday-antes-morir"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 40,
-     "source": "TV Azteca",
-     "title": "Patrick Stewart: ¿Avengers Doomsday fue su ÚLTIMO trabajo antes de morir? Esto se sabe",
-     "url": "https://www.tvazteca.com/azteca7/chismes-famosos/patrick-stewart-avengers-doomsday-sera-su-ultima-pelicula/"
+     "headline": "FILTRAN calendario de Disney 2027: fechas de estreno de Bluey la película, Avengers: Secret Wars y la película de Los Simpson 2",
+     "highlight": "FILTRAN calendario de Disney 2027",
+     "image": "https://tvazteca.brightspotcdn.com/dims4/default/e95a31a/2147483647/strip/true/crop/1920x1008+0+36/resize/1200x630!/quality/90/?url=https%3A%2F%2Ftv-azteca-production-tv-azteca.s3.us-west-2.amazonaws.com%2Fbrightspot%2F8b%2Fb8%2F8fa051b44ea6b39d74760acce760%2Ffiltran-calendario-de-disney-2027-fechas-de-estreno-de-bluey-la-pelicula-avengers-secret-wars-y-la-pelicula-de-los-simpson-2.png",
+     "image_via": "og:image",
+     "url": "https://www.tvazteca.com/azteca7/peliculas/disney-prepara-un-2027-grandes-regresos-seria-su-calendario-estrenos-filtrado/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",
@@ -684,157 +365,60 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Leaked European chipset info for the four Galaxy S27 models: the S27 Pro reportedly gets a step-down Snapdragon 8 Elite Gen 6 versus the Ultra.",
      "date": "2026-11-04",
-     "n": 1,
-     "source": "PhoneArena",
-     "title": "The 3 upgrades that'll make me excuse the Galaxy S27 Ultra's inexcusable design",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPNlAxSVREOHBwcGstMUpMS09Ubm9aNGJZbEwwUVYtdGVhN1gwdU9wb3Q3LWJjeTBZQ0JNdFFSTDdlcjFIeDZ3OW8xdkZyWllCV0d4ajBUakwtR0RCNXh1RVJNM3RhaDBYNWRvVlNMd3VTRVpWWlQxNExXR3NvNFNMU3JDa1RMcW1pbGlOY1Rfb2FmMnJzWW1FQ0FFeldjUUNteFU0VzhteEhIZ2Y0RnhxNmVFTFJQdG5fcFZtTXR3?oc=5"
+     "headline": "Galaxy S27 Chipsets: Samsung Using Exynos and Snapdragon",
+     "highlight": "Exynos and Snapdragon",
+     "image": "https://phandroid.com/wp-content/uploads/2026/09/Qualcomm-Snapdragon-8-Elite-Gen-6-5.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.droid-life.com/2026/11/04/galaxy-s27-chipsets-samsung-using-exynos-and-snapdragon/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 2,
-     "source": "Droid Life",
-     "title": "Galaxy S27 Chipsets: Samsung Using Exynos and Snapdragon",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOSUJ0ZTBwUlJVMG53VkQycW9ESVgtcXJOSDhpUTZubFdPa0ZrLXFIS19kY2VSYmxvbnJfYkJ6aXoxWXVEa1YtQUdmVkU2Nk1uaTAzZEUxVVdQSV83VV9UUjZ6a3FoOGVGd3U1OWRzaEt1QUdpeUZnWUdaZWhRbmFjT1ZsVTE0elI0alpRNk1WalBZb1o1LXNGVW13?oc=5"
+     "headline": "Samsung Galaxy S27 Ultra leak points to a major Privacy Display upgrade",
+     "highlight": "Privacy Display upgrade",
+     "image": "https://substackcdn.com/image/fetch/$s_!I_CZ!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd3449447-df28-405e-93fa-548372e830cb_1456x1092.webp",
+     "image_via": "og:image",
+     "url": "https://www.theshortcut.com/p/samsung-galaxy-s27-ultra-leak-points-to-a-major-privacy-display-upgrade",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 3,
-     "source": "The Shortcut | Matt Swider",
-     "title": "Samsung Galaxy S27 Ultra leak points to a major Privacy Display upgrade",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQamVpTFNuekVQWmtGTnM5V3d0bjhSdGJDYlZIc2IxRjhlcG1meW5ObUhIU2kxYnlqSTBQSWhSUVBrY09CM0RjZnNGczJzWkNXYzVvbjl0dkhBb0YyMjBTbWFvLXpzRXpkeEtmRzN1bjNUSExfLTBrTFJEX2JjaEtlUmNHTEt5ZVRBcUMyVzBUWVNPYXpNZ05UYmh4Xzd6cmthbk1z?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 4,
+     "headline": "Which Samsung Galaxy S27 models will support 60W charging?",
+     "highlight": "60W charging",
+     "image": null,
      "source": "SamMobile",
-     "title": "Which Samsung Galaxy S27 models will support 60W charging?",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQelR3V0NnVGlheDlzVkM0b2p1a2RKazR3dFRoNUtEWUZYX1NfVXdRZ1ZEYUlqWVVkTFJza0djT3pRN051NWlfSzNHQjFjOW1xNVV1WkdJT05WU2QwNDBlc0hCUUdNZDZMakE2VXFpTElDRXBuTF84OGJ5Ynk2bmtDZlJsYzRnQjZG?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.sammobile.com&sz=128",
+     "url": "https://www.sammobile.com/news/which-galaxy-s27-models-will-support-60w-charging/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 5,
-     "source": "La Razón on MSN",
-     "title": "El Samsung Galaxy S27 Pro podría quedarse sin el Snapdragon más potente, una característica que lo diferenciaría claramente del modelo Ultra",
-     "url": "https://www.msn.com/es-es/noticias/otras/el-samsung-galaxy-s27-pro-podr%C3%ADa-quedarse-sin-el-snapdragon-m%C3%A1s-potente-una-caracter%C3%ADstica-que-lo-diferenciar%C3%ADa-claramente-del-modelo-ultra/ar-AA2gKYHv"
+     "headline": "Se filtra una maqueta del Galaxy S27 Ultra que confirma cambio polémico de diseño",
+     "highlight": "maqueta del Galaxy S27 Ultra",
+     "image": "https://www.awin1.com/cshow.php?s=2755991&v=20982&q=399233&r=791259",
+     "image_via": "正文图",
+     "url": "https://www.noticias3d.com/noticia/101509/maqueta-galaxy-s27-ultra.html",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-04",
-     "n": 6,
-     "source": "Samsung Magazine",
-     "title": "어떤 모델 시리즈인가요? Galaxy S27 그는 어떤 칩을 받게 될까요? 그 칩은요? Galaxy S27 Pro 놀랐어요",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5LN2xSc01zZDJKS3JhMHdrSzdQMmhoRXNTMlc0Z1NINnRBWkV6YWJhdnBJVFpkQWZSTlNnNFJQeHkxQ0x1NWtWZXdWYXFOUHY1TXRpRG1zaEdONVdkWFBaSGttWmZzbzZkSmFFVw?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 7,
-     "source": "위키트리 on MSN",
-     "title": "갤럭시 S27 프로, 울트라보다 한 단계 낮은 스냅드래곤 8 엘리트 Gen 6 탑재 유출",
-     "url": "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9C-s27-%ED%94%84%EB%A1%9C-%EC%9A%B8%ED%8A%B8%EB%9D%BC%EB%B3%B4%EB%8B%A4-%ED%95%9C-%EB%8B%A8%EA%B3%84-%EB%82%AE%EC%9D%80-%EC%8A%A4%EB%83%85%EB%93%9C%EB%9E%98%EA%B3%A4-8-%EC%97%98%EB%A6%AC%ED%8A%B8-gen-6-%ED%83%91%EC%9E%AC-%EC%9C%A0%EC%B6%9C/ar-AA2gLiWt"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 8,
-     "source": "Phandroid",
-     "title": "Samsung Galaxy S27 Pro Leak Hints at a Slower Chip Than the Ultra",
-     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQUHBpQlIyN0NZdWhtZndhZ092TEhlYWRQN1E5SkVhVGtQNEZFdjVpMVhMMmRxaEh6bnllaEEwTGNkNlhYcS11ajltdXNLSUpaMWtwUHpKc3dGajBkcERtVGFqaUVCbHhvaEtReEhuQ2VrVW9jdUlhTks0ci1NYzJyUnNKSnRnZjBxY2ZJMENBVm1UemNqVEF6VkNWeEw3dkRo0gGmAUFVX3lxTFBnTkF2dkg0cW1meW9wcW51QS0xWTRRZHpHUTlNWnZycjFzVmU2blNMR2R1eFF3OHdIeFlsMmNSRlh5ME0zQVJkUkRLZm5FbEpYdmdHVktfcjV4Tm9GWlNUNFBPY0lYc1pMemd2X2tTUTBzYk5FU0tLaUwzaTdSbWtkYUdqcU1Ja1A3ZTY4MlNEV3pULVFabzYwRnVPOWNEOVktaFdqRlE?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 9,
-     "source": "smartGSM",
-     "title": "El Galaxy S27 Pro y el S27 Ultra llegarían con Privacy Display mejorado y con más brillo",
-     "url": "https://www.smart-gsm.com/blog/el-galaxy-s27-pro-y-el-s27-ultra-llegarian-con-privacy-display-mejorado-y-con-mas-brillo/"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 10,
-     "source": "Noticias3D",
-     "title": "Se filtra una maqueta del Galaxy S27 Ultra que confirma cambio polémico de diseño",
-     "url": "https://www.noticias3d.com/noticia/101509/maqueta-galaxy-s27-ultra.html"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 11,
-     "source": "GEEKNETIC",
-     "title": "Aparece una maqueta del Samsung Galaxy S27 Ultra confirmando un brutal rediseño de la isla de cámaras",
-     "url": "https://www.geeknetic.es/Noticia/40716/Aparece-una-maqueta-del-Samsung-Galaxy-S27-Ultra-confirmando-un-brutal-rediseno-de-la-isla-de-camaras.html"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 12,
-     "source": "Notebookcheck",
-     "title": "Samsung Galaxy S27 Ultra se enfrenta al Apple iPhone 18 Pro y al Google Pixel 11 Pro en una comparación fotográfica de maquetas",
-     "url": "https://www.notebookcheck.org/Samsung-Galaxy-S27-Ultra-se-enfrenta-al-Apple-iPhone-18-Pro-y-al-Google-Pixel-11-Pro-en-una-comparacion-fotografica-de-maquetas.1441402.0.html"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 13,
-     "source": "Debate",
-     "title": "Samsung prepara una mejor pantalla de privacidad para los Galaxy S27 Pro y Ultra: estos Galaxy tienen MSI",
-     "url": "https://www.debate.com.mx/tecnologia/samsung-prepara-una-mejor-pantalla-de-privacidad-para-los-galaxy-s27-pro-y-ultra-estos-galaxy-tienen-msi-20261103-0131.html"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 14,
-     "source": "Código Espagueti",
-     "title": "Filtración masiva: El Galaxy S27 Pro con pantalla antiespías, pero el modelo base se queda con casi nada",
-     "url": "https://codigoespagueti.com/noticias/tecnologia/samsung-galaxy-s27-pro-ultra-privacy-display-pantalla-antiespias-filtracion-2027/"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 15,
-     "source": "Todo Android on MSN",
-     "title": "Galaxy S27 Pro: privacidad de pantalla, cámaras y diseño más diferenciado",
-     "url": "https://www.msn.com/es-es/noticias/otras/galaxy-s27-pro-privacidad-de-pantalla-c%C3%A1maras-y-dise%C3%B1o-m%C3%A1s-diferenciado/ar-AA2gFDcz"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 16,
-     "source": "Samsung Magazine",
-     "title": "Modelo Galaxy S27 Ultra revela detalles inesperados. Desafortunadamente, todavía parece un hermano. iPhone 18 Pro",
-     "url": "https://samsungmagazine.eu/es/2026/11/03/dummy-galaxy-s27-ultra/"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 17,
-     "source": "La Verdad Noticias on MSN",
-     "title": "Samsung Galaxy S27: estos modelos tendrán Privacy Display más avanzado",
-     "url": "https://www.msn.com/es-mx/noticias/otras/samsung-galaxy-s27-estos-modelos-tendr%C3%A1n-privacy-display-m%C3%A1s-avanzado/ar-AA2gFOGE"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 18,
-     "source": "La Razón on MSN",
-     "title": "Los Samsung Galaxy S27 Pro y S27 Ultra estrenarán una versión mejorada del Privacy Display, pero los otros dos modelos se quedarán sin él",
-     "url": "https://www.msn.com/es-es/noticias/otras/los-samsung-galaxy-s27-pro-y-s27-ultra-estrenar%C3%A1n-una-versi%C3%B3n-mejorada-del-privacy-display-pero-los-otros-dos-modelos-se-quedar%C3%A1n-sin-%C3%A9l/ar-AA2gE9jG"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-02",
-     "n": 19,
-     "source": "fomoera.com",
-     "title": "El Galaxy S27 Pro y el Ultra tendrían una pantalla de privacidad mejorada",
-     "url": "https://fomoera.com/galaxy-s27-pro-ultra-pantalla-privacidad/"
-    },
-    {
-     "date": "2026-11-02",
-     "n": 20,
-     "source": "Samsung Magazine",
-     "title": "El nuevo informe confirma que Galaxy S27 Pro recibirá las noticias más importantes de Galaxy S26 Ultra",
-     "url": "https://samsungmagazine.eu/es/2026/11/02/galaxy-s27-pro-privacy-display/"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 21,
-     "source": "Revista Mercado",
-     "title": "Galaxy S27 Ultra frente al iPhone 18 Pro Max: batería, cámara y en qué saldría ganando cada uno",
-     "url": "https://revistamercado.do/technology/devices/galaxy-s27-ultra-frente-al-iphone-18-pro-max-bateria-camara-y-en-que-saldria-ganando-cada-uno/"
+     "headline": "El nuevo informe confirma que Galaxy S27 Pro recibirá las noticias más importantes de Galaxy S26 Ultra",
+     "highlight": "Galaxy S27 Pro",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png",
+     "image_via": "og:image",
+     "url": "https://samsungmagazine.eu/es/2026/11/02/galaxy-s27-pro-privacy-display/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",
@@ -857,61 +441,37 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 1,
-     "source": "玩具人 TOY PEOPLE",
-     "title": "MEGAHOUSE 茶友系列「劇場版鏈鋸人蕾潔篇BREAK TIME CAFÉ 」6位超人氣角色一口氣通通掛在杯子上！",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1vZEdDMkMyU0JjNGJkcjlQWGRaLTFQLVhQLWVpZzhLc3RHUVZxLU1tMzJpZWdGdnZtZ3FvT2JwZlpMR0xYUEpSaXNLbkg?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 2,
-     "source": "玩具人 TOY PEOPLE",
-     "title": "メガハウス「お茶友シリーズ 劇場版『チェンソーマン レゼ篇』 BREAK TIME CAFÉ」レゼやデンジ、マキマなど全6種が登場！",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBxWTlGMlo4U285R1AwbEtUMWtydVJLbnBRNEJ6N29aRTZ4M2pIUExtSHVjX3dYOHhNUjNyeWx4bXhJSXJNS3BMcVNKNjViVUND?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 3,
-     "source": "玩具人 TOY PEOPLE",
-     "title": "MegaHouse Ochatomo Series \"Chainsaw Man – The Movie: Reze Arc BREAK TIME CAFÉ\" Puts Six Fan-Favorite Characters on Your Cup",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5TUHhnQmg1cFB0VmZ0Q2g3aVQ1VnVxS1dJUGlleFU3dU1pUzhJLXQyQUdvZFh2d2dpTkFsT3RET0plS2UzWTkwQTJGalRrWnpw?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 4,
-     "source": "Vandal",
-     "title": "Fecha confirmada: el anime de 'Chainsaw Man' prepara su nuevo arco y un importante anuncio en 2026",
-     "url": "https://vandal.elespanol.com/random/fecha-confirmada-el-anime-de-chainsaw-man-prepara-su-nuevo-arco-y-/44746.html"
-    },
-    {
-     "date": "2026-11-02",
-     "n": 5,
-     "source": "note",
-     "title": "チェンソーマンが刺さる理由を9割の人は説明できない",
-     "url": "https://note.com/prime_flax1847/n/n58b1ef2fd449"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 7,
-     "source": "MiMorelia.com",
-     "title": "¿Y Morelia? Chainsaw Man: Arco de Reze vuelve a los cines, y con coleccionables",
-     "url": "https://mimorelia.com/lo-kawaii/y-morelia-chainsaw-man-arco-reze-vuelve-los-cines-y-coleccionables-n5596134"
-    }
-   ],
    "section": "影视",
    "stories": [
+    {
+     "blurb": "MAPPA prepara la temporada 2 del anime de 'Chainsaw Man' y confirma panel especial para la Jump Festa.",
+     "date": "2026-11-03",
+     "headline": "Fecha confirmada: el anime de 'Chainsaw Man' prepara su nuevo arco y un importante anuncio en 2026",
+     "highlight": "importante anuncio en 2026",
+     "image": "https://media.vandalsports.com/i/1200x675/11-2026/2026113104212_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://vandal.elespanol.com/random/fecha-confirmada-el-anime-de-chainsaw-man-prepara-su-nuevo-arco-y-/44746.html",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "メガハウス「お茶友シリーズ 劇場版『チェンソーマン レゼ篇』 BREAK TIME CAFÉ」レゼやデンジ、マキマなど全6種が登場！",
+     "highlight": "全6種が登場",
+     "image": "https://img.toy-people.com/member/179380690349_1200.png",
+     "image_via": "og:image",
+     "url": "https://www.toy-people.com/jp/?p=115987",
+     "weight": "normal"
+    },
     {
      "blurb": "",
      "date": "2026-11-01",
      "headline": "チェンソーマンのガチャガチャ最新一覧｜新作の発売日と設置場所まとめ",
-     "highlight": "",
+     "highlight": "新作の発売日",
      "image": "https://charagoo.jp/wp-content/uploads/2026/09/1000256802_1.jpg",
      "image_via": "og:image",
      "url": "https://charagoo.jp/chainsawman-capsuletoy/",
-     "weight": "hero"
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
@@ -1201,52 +761,39 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "K-POPに新しい流れが来ている。その中心にいるのが、元SMエンターテインメント総括プロデューサーのイ・スマンが手掛ける新グループ「A2O LITE」だ。",
      "date": "2026-11-04",
-     "n": 1,
-     "source": "머니투데이",
-     "title": "제이블랙, A2O LITE 시리·아이찡 실력에 감탄 \"딸 같은 존재\" - 머니투데이",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBwUW9tNERJYXVpanZmUDJHeXYzTThoeVhYUllBWnJNYUV2Y2IybVI5bmFzTHJoUG83ZXk1UXBSQ3FsUTRNVkY5cEJQNE9zOTlUY0hyb0Z6d0xWUFJLS2hUV3NlLWllMGhhZzZtUjJhSF9oMGPSAXhBVV95cUxObXNET2FPUm1Qb1pJb05HVnAyRkt3N2xqSXhqc3FnLS0tOVJ3M1A2VDdwREtZN0gxUDJoSEZHTG10cG9oUEx6Tzl5YWZMV0N1N0FVRWRQanVUbVZCNENGOU54dmlQNlVqSWxySS1VOUZENFlFcEpLSkI?oc=5"
+     "headline": "イ・スマンが仕掛ける新しいK-POP。「A2O LITE」に注目",
+     "highlight": "新しいK-POP",
+     "image": "https://assets.st-note.com/production/uploads/images/332182864/rectangle_large_type_2_5f8fb70cfffdbba850e654643176d6e5.png?width=1200",
+     "image_via": "AI 挑选",
+     "url": "https://note.com/keen_ruff7545/n/n74277f180fc3",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 2,
-     "source": "note",
-     "title": "イ・スマンが仕掛ける新しいK-POP。「A2O LITE」に注目",
-     "url": "https://note.com/keen_ruff7545/n/n74277f180fc3"
+     "headline": "제이블랙, A2O LITE 시리·아이찡 실력에 감탄 \"딸 같은 존재\"",
+     "highlight": "실력에 감탄",
+     "image": "https://thumb.mt.co.kr/cdn-cgi/image/f=avif/21/2026/11/2026110501472310081_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.mt.co.kr/entertainment/2026/11/05/2026110501472310081",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-02",
-     "n": 3,
-     "source": "妞新聞",
-     "title": "A2O LITE成員介紹｜9位成員本名、生日、國籍一次看！短髮VORA、忙內AIJING、混血OA全整理",
-     "url": "https://www.niusnews.com/=P2z675su4"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 4,
-     "source": "bilibili",
-     "title": "A2O LITE「NEON」 261101 etapa de La Tendencia Musical",
-     "url": "https://www.bilibili.com/es/video/BV1h6xW6WERW/"
-    },
-    {
-     "date": "2026-11-01",
-     "n": 5,
-     "source": "搜狐",
-     "title": "A2O LITE第七次夺冠！《音乐中心》精彩演出回顾",
-     "url": "https://www.sohu.com/a/1095636755_122507509"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 6,
-     "source": "bilibili",
-     "title": "【4K】¡Plano secuencia de la actuación colaborativa! A2O LITE & A2O SOUL Dance Break en un solo plano",
-     "url": "https://www.bilibili.com/es/video/BV1hPxq6xEKb/"
+     "headline": "A2O LITE成員介紹｜9位成員本名、生日、國籍一次看！短髮VORA、忙內AIJING、混血OA全整理",
+     "highlight": "9位成員",
+     "image": "https://imgs.niusnews.com/upload/posts/posts_image3_142368_1793610707.jpg",
+     "image_via": "og:image",
+     "url": "https://www.niusnews.com/=P2z675su4",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
@@ -1312,7 +859,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "last": {
     "date": "2026-11-04",

@@ -1043,6 +1043,26 @@
   "font": "serif",
   "split": false
  },
+ "hero|https://www.thesixthaxis.com/wp-content/uploads/2023/12/grand-theft-auto-vi-gta-6-hero500.jpg": {
+  "accent": "#A14C17",
+  "alt_accent": "#E06F29",
+  "alt_bg": "#371E1B",
+  "alt_fg": "#F2EEE6",
+  "bg": "#F3E8E7",
+  "fg": "#1A1C22",
+  "font": "serif",
+  "split": false
+ },
+ "hero|https://www.thesixthaxis.com/wp-content/uploads/2026/06/GTA6-UltimateEdition-hero500-576x356.jpg": {
+  "accent": "#CF9863",
+  "alt_accent": "#8C5B2C",
+  "alt_bg": "#F3EDE7",
+  "alt_fg": "#1A1C22",
+  "bg": "#251B13",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "あつ森|None": {
   "accent": "#E0703F",
   "alt_accent": "#B83A17",

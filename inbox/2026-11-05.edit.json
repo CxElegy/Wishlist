@@ -1,0 +1,240 @@
+{
+ "_covered": {
+  "漫威电影": 40,
+  "三星手机": 21,
+  "GTA 6": 19,
+  "チェーンソーマン": 7,
+  "A2O LITE": 6
+ },
+ "漫威电影": [
+  {
+   "headline": "‘Avengers: Doomsday’ Presales Smash a Major Ticket Milestone",
+   "highlight": "Presales Smash",
+   "blurb": "Presales for Avengers: Doomsday have passed a major ticket milestone.",
+   "weight": "lead",
+   "refs": [
+    13
+   ]
+  },
+  {
+   "headline": "WWE and Disney tag-team for two-day takeover for John Cena Classic and ‘Avengers: Doomsday’",
+   "highlight": "two-day takeover",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    22,
+    25,
+    29,
+    31
+   ]
+  },
+  {
+   "headline": "Channing Tatum as Gambit Joins Herbie for an Avengers Dunkin' Run",
+   "highlight": "Gambit",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    10,
+    18
+   ]
+  },
+  {
+   "headline": "Jeremy Allen White As Wolverine? Marvel Reportedly Met Actor For X-Men Reboot",
+   "highlight": "Wolverine",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    19,
+    15,
+    8
+   ]
+  },
+  {
+   "headline": "FILTRAN calendario de Disney 2027: fechas de estreno de Bluey la película, Avengers: Secret Wars y la película de Los Simpson 2",
+   "highlight": "FILTRAN calendario de Disney 2027",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23,
+    26
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Galaxy S27 Chipsets: Samsung Using Exynos and Snapdragon",
+   "highlight": "Exynos and Snapdragon",
+   "blurb": "Leaked European chipset info for the four Galaxy S27 models: the S27 Pro reportedly gets a step-down Snapdragon 8 Elite Gen 6 versus the Ultra.",
+   "weight": "lead",
+   "refs": [
+    2,
+    8,
+    7,
+    5,
+    6
+   ],
+   "image": "https://phandroid.com/wp-content/uploads/2026/09/Qualcomm-Snapdragon-8-Elite-Gen-6-5.jpg"
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra leak points to a major Privacy Display upgrade",
+   "highlight": "Privacy Display upgrade",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    9,
+    13,
+    15,
+    17,
+    18,
+    19,
+    14
+   ]
+  },
+  {
+   "headline": "Which Samsung Galaxy S27 models will support 60W charging?",
+   "highlight": "60W charging",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Se filtra una maqueta del Galaxy S27 Ultra que confirma cambio polémico de diseño",
+   "highlight": "maqueta del Galaxy S27 Ultra",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    11,
+    16,
+    1,
+    12
+   ]
+  },
+  {
+   "headline": "El nuevo informe confirma que Galaxy S27 Pro recibirá las noticias más importantes de Galaxy S26 Ultra",
+   "highlight": "Galaxy S27 Pro",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20
+   ]
+  }
+ ],
+ "GTA 6": [
+  {
+   "headline": "GTA 6 preloads start on 10th November, and will need up to 212GB on your console",
+   "highlight": "10th November",
+   "blurb": "Preloads for GTA 6 begin on November 10 and need up to 212GB of console storage.",
+   "weight": "hero",
+   "refs": [
+    5,
+    15,
+    9,
+    10
+   ],
+   "event": {
+    "date": "2026-11-10",
+    "label": "プリロード開始"
+   },
+   "image": "https://www.thesixthaxis.com/wp-content/uploads/2026/06/GTA6-UltimateEdition-hero500-576x356.jpg"
+  },
+  {
+   "headline": "GTA 6 PS5 Pro enhancements confirmed",
+   "highlight": "PS5 Pro enhancements",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    11
+   ]
+  },
+  {
+   "headline": "GTA 6 rompe todas las previsiones en reservas: ya supera los 750 millones de dólares antes de su lanzamiento",
+   "highlight": "750 millones de dólares",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    18
+   ]
+  },
+  {
+   "headline": "GTA 6 tendrá un mapa físico de Leonida muy barato: así podrás conseguirlo e incluso obtenerlo gratis",
+   "highlight": "mapa físico de Leonida",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12,
+    17
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Fecha confirmada: el anime de 'Chainsaw Man' prepara su nuevo arco y un importante anuncio en 2026",
+   "highlight": "importante anuncio en 2026",
+   "blurb": "MAPPA prepara la temporada 2 del anime de 'Chainsaw Man' y confirma panel especial para la Jump Festa.",
+   "weight": "lead",
+   "refs": [
+    4
+   ],
+   "image": "https://media.vandalsports.com/i/1200x675/11-2026/2026113104212_1.jpg"
+  },
+  {
+   "headline": "メガハウス「お茶友シリーズ 劇場版『チェンソーマン レゼ篇』 BREAK TIME CAFÉ」レゼやデンジ、マキマなど全6種が登場！",
+   "highlight": "全6種が登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    1,
+    3
+   ]
+  },
+  {
+   "headline": "チェンソーマンのガチャガチャ最新一覧｜新作の発売日と設置場所まとめ",
+   "highlight": "新作の発売日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "イ・スマンが仕掛ける新しいK-POP。「A2O LITE」に注目",
+   "highlight": "新しいK-POP",
+   "blurb": "K-POPに新しい流れが来ている。その中心にいるのが、元SMエンターテインメント総括プロデューサーのイ・スマンが手掛ける新グループ「A2O LITE」だ。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://assets.st-note.com/production/uploads/images/332182864/rectangle_large_type_2_5f8fb70cfffdbba850e654643176d6e5.png?width=1200"
+  },
+  {
+   "headline": "제이블랙, A2O LITE 시리·아이찡 실력에 감탄 \"딸 같은 존재\"",
+   "highlight": "실력에 감탄",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "A2O LITE成員介紹｜9位成員本名、生日、國籍一次看！短髮VORA、忙內AIJING、混血OA全整理",
+   "highlight": "9位成員",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ]
+}
