@@ -1,32 +1,32 @@
 {
- "admin": "27102e4d212b",
- "admin-ai": "d6060fc254b6",
+ "admin": "8ce7519bc60a",
+ "admin-ai": "1d9caa8e323b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "018bd853"
+   "c163037c"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ddd7f683"
   ]
  },
- "admin-boards": "aad5d7ef7998",
+ "admin-boards": "90f55ac895a8",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5c21aabf"
+   "352260f1"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "83dfd67c0cd8",
+ "admin-emblem": "35b5ab7ace7e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "750f47e7"
+   "e746de24"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "605bbbe53780",
+ "admin-now": "25f711ff8e32",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "165865a5"
+   "d364f673"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "524ef23f"
   ]
  },
- "admin-system": "d957db3508d6",
+ "admin-system": "5f0d543b5ee6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "89be2fa5"
+   "c98a9a1e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8199e0dc"
+   "727dd926"
   ]
  },
  "admin_marks": {},
- "heat": "5f53939efed7",
+ "heat": "d4c4bc6eaebd",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "64fcb550"
+   "21573688"
   ],
   "ranking": [
    "ランキング",
-   "5ea73fff"
+   "cc3d74e0"
   ]
  },
- "index": "fd46337d815f",
+ "index": "d20c8f1e29a0",
  "index_marks": {
   "front": [
    "トップ",
-   "c44f7e71"
+   "d971ec1b"
   ],
   "picks": [
    "気になるかも？",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "12a4fe9d"
+   "9c2bcea6"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -161,15 +161,15 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "a61d1d66"
+   "b9079d43"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "7e5dbe4c"
+   "663ae7d6"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "4d7c4563"
+   "6f19f4c8"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "288c0cb7"
+   "9f70c4dd"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "d8a34935"
+   "a05da949"
   ],
   "w-f303ad09": [
    "绝区零",
-   "f00e4634"
+   "c17c2462"
   ]
  },
- "updated": "11.04 21:37",
+ "updated": "11.04 21:47",
  "wishlist": "73cc532fca13"
 }
