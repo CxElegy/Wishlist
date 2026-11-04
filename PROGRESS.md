@@ -351,3 +351,4 @@
 - 2026-11-04 plan1d 計画：BACKLOG に 4 段（photo cache の保存失敗が 30 回中 6 回赤・boards PATCH の出所確定・点検道具の本番 REST 読み 0・定時の Supabase 呼び出し見積もり表）。boards の書き込み道は scripts を全読して put_config 以外に毎回変わる道は無し→put_config が変わった鍵名をログに出すようにした。架構図：不用改（診断ログ 1 行）。次：pages_served の確認（render→photo_cache→Pages の後）。
 - 2026-11-04 plan1d：#875 の確かめ。pages_served（test-a/b/c × 1 回）= Pages 100.0%・storage 0・/p/ 失敗 0（426 件）。次：PR #876 合併後に ux_check。
 - 2026-11-04 plan1d：#876 合併。ux_check --who guest は pages_served が分母 0 で ✗（点検の穴・BACKLOG に段）。他は ✓。
+- 2026-11-04 f1：photo cache の赤（30 回中 6 回）の根＝run ごとの 200 MB 保存で cache 枠が満杯。保存前に古い写しを最新 1 つだけ残して削除する 1 手を追加（tests 1 件・processes.py pg6）。確かめ：合併後の photo cache が緑か 24 時間見る。
