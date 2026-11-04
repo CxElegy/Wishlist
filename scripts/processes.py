@@ -269,7 +269,7 @@ PROCESSES = [
             {"id": "b8f", "kind": "table", "lane": "actions", "title": "失敗したら・待っていたら",
              "rows": [("失敗（3 段とも届かない）", "新しい記事・手がかり・規則の版（NAMES_V・BROKEN_V：emblem_fill.RULE_VERSION_NAMES の 1 か所に集め、材料の指紋に入る）が変わったらすぐ再挑戦（時間では待たない） · 管理ページに理由と助言 · 試した人に使える画像が 1 枚もなければ理由に「画像のない人 N」（名簿の残り全員を試して全員そうなら札にそう書き〔一部の人だけ試した回は exhausted にしない〕、候補が尽きた版面〔exhausted〕は次を 24 時間後にし、ux_check E10 は ✗ にせず「情報」に出す）"),
                       ("順番待ち", "毎時と収集のあとに 6 本並列で処理 · 40 分で終わらなければ続けてもう一度（3 回まで）"),
-                      ("いま処理中", "版面と段（① ② ③）を live_status に書く → 管理ページ「いま動いているもの」に 30 秒ごと")]},
+                      ("いま処理中", "版面と段（① ② ③）を live_status に書く（無料枠：探し中は 20 秒かかった版面だけ・書いていない行の DELETE は送らない）→ 管理ページ「いま動いているもの」に 30 秒ごと")]},
             {"id": "b8l", "kind": "step", "lane": "web", "title": "作業の 1 行 1 行をライブログへ",
              "text": "候補ごとに外した理由・段・結果を Supabase の live_log に（8 秒ごとにまとめて送る）→ 管理ページのライブログが 3 秒ごとに読む · 2 日より前の行は始めに消す · 「今すぐ再挑戦」から起きたときはそう書く",
              "uses": ["supabase"]},
@@ -324,7 +324,7 @@ PROCESSES = [
         "flow": [
             {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 40 分まで · 同時に 1 本 · 前の回に時間切れで残った版面・初めて取る版面（新関注項）を先に取る · 管理ページの小元素の格子（digest.emblem_detail）は失敗の待ちに時刻を出さず「材料待ち」と書く"},
             {"id": "c1s", "kind": "step", "lane": "actions", "title": "Supabase が 402 でも落とさない（sbstate）",
-             "text": "【2026-11-04】storage の中身を読む処理は sbstate.storage_read（写しだけ・無ければ NotCached・網に出ない）。digest.supabase・user_pages・livestatus・edit_control の読み書き・gate・写真の置き場（sbstate.sb_open）が 402（無料枠超過）を見たら、例外にせず None で飛ばし、同じ回では呼び直さない。ジョブは続き、収集・出刊・公開は止まらない。同期の印（state/db_news.json など）が進まないので、制限が外れた次の回がまとめて送り直す。状態は state/supabase_status.json（変わったときだけ書く＝入った・戻った瞬間だけ Discord に 1 通。送るのは state を commit する digest.yml だけ〔SBSTATE_PING〕、告げた状態は told に残す＝commit しない回は何度 402 を見ても送らない）。ライブラリ系（library・library_design・library_emblem）は DB が読めないとき制限中なら緑で終える（sbstate.need_db）。見回りの読み取り（投票・小分類の分け方・篇幅・AI 編集の開関）は 1 つの処理の中で 60〜120 秒使い回す（sbstate.memo）＝API の回数を減らす"},
+             "text": "【2026-11-05】版面の「更新中」の書き込みを減らす（digest.live_mark：探し中は 20 秒かかった版面だけ書き、書いていない行の DELETE は送らない）。【2026-11-04】storage の中身を読む処理は sbstate.storage_read（写しだけ・無ければ NotCached・網に出ない）。digest.supabase・user_pages・livestatus・edit_control の読み書き・gate・写真の置き場（sbstate.sb_open）が 402（無料枠超過）を見たら、例外にせず None で飛ばし、同じ回では呼び直さない。ジョブは続き、収集・出刊・公開は止まらない。同期の印（state/db_news.json など）が進まないので、制限が外れた次の回がまとめて送り直す。状態は state/supabase_status.json（変わったときだけ書く＝入った・戻った瞬間だけ Discord に 1 通。送るのは state を commit する digest.yml だけ〔SBSTATE_PING〕、告げた状態は told に残す＝commit しない回は何度 402 を見ても送らない）。ライブラリ系（library・library_design・library_emblem）は DB が読めないとき制限中なら緑で終える（sbstate.need_db）。見回りの読み取り（投票・小分類の分け方・篇幅・AI 編集の開関）は 1 つの処理の中で 60〜120 秒使い回す（sbstate.memo）＝API の回数を減らす"},
             {"id": "c1d", "kind": "decision", "lane": "actions", "title": "始めてから 18 分たっていない？", "text": "版面ごとに、取り始める前に見る（COLLECT_DEADLINE_MIN）· 始まった版面が 23 分たっても終わらなければ待たずに先へ（固まった版面も次の回へ。そのスレッドがあとで終わっても帯は立て直さない・情報員の様子は写しを読む）",
              "uses": ["deadline"], "yes": "↓ その版面を取る", "no": "その版面は始めない → 次の回に先に取る（ログ「時間切れで N 版面を次の回へ」）"},
             {"id": "c2", "kind": "fan", "lane": "ext", "title": "記事を集める", "x": "×6 関注項を同時に", "mode": "それぞれのサイトへ",
