@@ -144,19 +144,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/647c8fably1iiqjopis2gj20yo0lgn47.jpg": {
-  "w": 1248,
-  "h": 772,
-  "target": 720,
-  "v": 3,
-  "local": "pics/e2ad33e856d70de2.webp",
-  "out": [
-   1248,
-   772
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg": {
   "w": 1752,
   "h": 2830,
@@ -741,6 +728,12 @@
  "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg": {
   "w": 1800,
   "h": 1086,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -3281,12 +3274,6 @@
   "target": 720,
   "v": 3
  },
- "https://sm.ign.com/t/ign_ap/news/k/kfc-reveal/kfc-reveals-official-avengers-doomsday-menu-worthy-of-dr-doo_x948.1200.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://sm.ign.com/t/ign_in/preview/s/star-wars-/star-wars-see-an-exclusive-preview-of-the-art-of-the-mandalo_y367.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -3909,18 +3896,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.4Q07ZR-ng-SBggWJQcp3XA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.5oaUsc8jWhXD5lJeVoS0jA&pid=News&w=1000": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.AqFGAOPiUknUmy3Gx9ZeQw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4023,12 +3998,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.LUjsh80vZkcfkmsoPIlf1w&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934": {
   "w": 544,
   "h": 700,
@@ -4043,12 +4012,6 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.N0LnlEohsUZ4OQLawwh2GQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Nd044nfDUdY2nVSo8VWSSA&pid=News&w=912": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -4147,12 +4110,6 @@
  "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ZJg30TRg7eusCGuPTC2e-w&pid=News&w=1200": {
-  "w": 700,
-  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -4266,12 +4223,6 @@
   "v": 3,
   "blur": 0.337
  },
- "https://www.bing.com/th?id=ONUT.lhDaAM-spUDExJ0gdenICg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.lw-boqkB232vXdc5XRihLA&pid=News&w=1200": {
   "w": 700,
   "h": 470,
@@ -4297,6 +4248,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.myWmWHTcRSUhvwd97jtuVg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.pY__MqddmbzgsqrIlk7pqw&pid=News&w=640": {
   "w": 640,
@@ -4350,6 +4307,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.xXzROxZL90pCDGMyusmKNg&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ybfuzUti5i3iqvG7yuCIlg&pid=News&w=500": {
   "w": 500,
   "h": 281,
@@ -4377,6 +4340,12 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.zV1ReHGr-FyrNcMW02R1aw&pid=News&w=700": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ztF2bmMY4qny-41OSmiBhg&pid=News&w=700": {
   "w": 700,
   "h": 466,
   "target": 720,
@@ -4673,6 +4642,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Ultra-review-design-2.jpg": {
+  "w": 2560,
+  "h": 1441,
+  "target": 720,
+  "v": 3
+ },
  "https://www.sammyfans.com/wp-content/uploads/2026/10/samsung-galaxy-s26-ultra-sg26u-img-1000x600.jpg": {
   "w": 1000,
   "h": 600,
@@ -4712,6 +4687,12 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Avengers-Secret-Wars-X-Men-Rumor-Reveals-Some-Fan-Favorite-Characters-Surprise-Returns.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.talkesport.com/wp-content/uploads/fissure-playground-4-cs2-key-art.webp": {
+  "w": 1672,
+  "h": 941,
   "target": 720,
   "v": 3
  },
