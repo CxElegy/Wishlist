@@ -282,7 +282,7 @@ PROCESSES = [
         "schedule": sorted([(h, m) for h in range(24) for m in (17, 47)] + [(0, 7), (9, 7)]),   # 17 分 = Supabase pg_cron、47 分 = GitHub の定時（抜けることがあるので 2 つの時計）、0:07 / 9:07 UTC = AI 編集の回（9:00 / 18:00 を過ぎてから。0 分ちょうどは GitHub が混む）
         "when": "毎時 · 収集のあとすぐ · 残れば続けて（Supabase が 402 でも edit_control の読み取りは 60 秒使い回し・読めなければ run）",
         "trigger": "毎時 17 分（Supabase pg_cron）と 47 分（GitHub の定時）・日本時間 9:07 / 18:07（AI 編集の回）／ ニュース収集が終わるたび（新しい材料）／ 時間の予算を使い切って仕事が残っていれば続けてもう一度（3 回まで）／ 管理ページの「今すぐ実行」・失敗した版面の「今すぐ再挑戦」（失敗の待ち時間を飛ばす）",
-        "summary": "仕事があるか、AI が要るかをプログラムだけで決める。AI の要らない仕事（小元素）はその場で Python で済ませ、"
+        "summary": "Supabase への出口は sbstate.sb_open（402 で呼び続けない）。仕事があるか、AI が要るかをプログラムだけで決める。AI の要らない仕事（小元素）はその場で Python で済ませ、"
                    "AI が要る仕事（AI 編集・写真）は仕事があるときだけ Claude を起こす。Claude は起きるたびにトークンを使うので、空振りをなくす。"
                    "版面には AI が整理した記事しか載らないので、収集で整理待ちが増えたらすぐ AI 編集を起こす（リポジトリ変数 GATE_FIRE で開け閉め）。",
         "files": ["scripts/gate.py", "scripts/collect_watch.py", "scripts/library_watch.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "docs/rules/background.md", "uses": ["gate"],
@@ -324,7 +324,7 @@ PROCESSES = [
         "flow": [
             {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 40 分まで · 同時に 1 本 · 前の回に時間切れで残った版面・初めて取る版面（新関注項）を先に取る · 管理ページの小元素の格子（digest.emblem_detail）は失敗の待ちに時刻を出さず「材料待ち」と書く"},
             {"id": "c1s", "kind": "step", "lane": "actions", "title": "Supabase が 402 でも落とさない（sbstate）",
-             "text": "digest.supabase・user_pages・livestatus が 402（無料枠超過）を見たら、例外にせず None で飛ばし、同じ回では呼び直さない。ジョブは続き、収集・出刊・公開は止まらない。同期の印（state/db_news.json など）が進まないので、制限が外れた次の回がまとめて送り直す。状態は state/supabase_status.json（変わったときだけ書く＝入った・戻った瞬間だけ Discord に 1 通。送るのは state を commit する digest.yml だけ〔SBSTATE_PING〕、告げた状態は told に残す＝commit しない回は何度 402 を見ても送らない）。ライブラリ系（library・library_design・library_emblem）は DB が読めないとき制限中なら緑で終える（sbstate.need_db）。見回りの読み取り（投票・小分類の分け方・篇幅・AI 編集の開関）は 1 つの処理の中で 60〜120 秒使い回す（sbstate.memo）＝API の回数を減らす"},
+             "text": "digest.supabase・user_pages・livestatus・edit_control の読み書き・gate・写真の置き場（sbstate.sb_open）が 402（無料枠超過）を見たら、例外にせず None で飛ばし、同じ回では呼び直さない。ジョブは続き、収集・出刊・公開は止まらない。同期の印（state/db_news.json など）が進まないので、制限が外れた次の回がまとめて送り直す。状態は state/supabase_status.json（変わったときだけ書く＝入った・戻った瞬間だけ Discord に 1 通。送るのは state を commit する digest.yml だけ〔SBSTATE_PING〕、告げた状態は told に残す＝commit しない回は何度 402 を見ても送らない）。ライブラリ系（library・library_design・library_emblem）は DB が読めないとき制限中なら緑で終える（sbstate.need_db）。見回りの読み取り（投票・小分類の分け方・篇幅・AI 編集の開関）は 1 つの処理の中で 60〜120 秒使い回す（sbstate.memo）＝API の回数を減らす"},
             {"id": "c1d", "kind": "decision", "lane": "actions", "title": "始めてから 18 分たっていない？", "text": "版面ごとに、取り始める前に見る（COLLECT_DEADLINE_MIN）· 始まった版面が 23 分たっても終わらなければ待たずに先へ（固まった版面も次の回へ。そのスレッドがあとで終わっても帯は立て直さない・情報員の様子は写しを読む）",
              "uses": ["deadline"], "yes": "↓ その版面を取る", "no": "その版面は始めない → 次の回に先に取る（ログ「時間切れで N 版面を次の回へ」）"},
             {"id": "c2", "kind": "fan", "lane": "ext", "title": "記事を集める", "x": "×6 関注項を同時に", "mode": "それぞれのサイトへ",
@@ -540,7 +540,7 @@ PROCESSES = [
         "id": "libemblem", "name": "ライブラリの小元素", "en": "LIB EMBLEM", "lane": "actions", "workflow": "library_emblem.yml",
         "when": "15 分ごとの見回り（待ちがなければ数十秒で終わる）· 待ちが残って増えていれば自分で次の回を起こす（空になるまで・20 回まで）· 手で起こす",
         "trigger": "定時（11,26,41,56 * * * *：--check で待ちを見て、なければ重い道具を入れずに終わる）か workflow_dispatch（minutes、既定 30 分・chain）。終わりに待ちが残り、この回で 1 版面でも増えたなら gh workflow run で次の回（1 版面も増えなければ止める）",
-        "summary": "お客さまの版面（ライブラリの版面のうち店長の版面でないもの）にも、店長と同じ規則（emblem_fill.fill_one）で小元素を版面ごとに 1 回。胸像待ち（config.emblem_closeup）の版面は届かなかった・済みでも待たずに次の回も（店長の emblem_fill.due と同じ）。届かなかった版面も、名簿にまだ試していない人が STEP 人より多ければ 1 周するまで次の回も（emblem_state.rounds・library_emblem.passes_left）。胸像への入れ替え（stage_holds）も店長と同じ質の下限つき（元の画像を取って比べる）。画像は Supabase Storage の公開の箱、全員で同じものを共有。AI なし。切り抜きの検査は店長と同じ（公式の全身の絵は上の端を見ない・姿勢モデルのない Actions でも顔がなければ全身）。デザイン（library_design）も同じく、402 なら緑で終える・小元素は制限中は何もしない",
+        "summary": "Supabase への出口は sbstate.sb_open（402 で呼び続けない）。お客さまの版面（ライブラリの版面のうち店長の版面でないもの）にも、店長と同じ規則（emblem_fill.fill_one）で小元素を版面ごとに 1 回。胸像待ち（config.emblem_closeup）の版面は届かなかった・済みでも待たずに次の回も（店長の emblem_fill.due と同じ）。届かなかった版面も、名簿にまだ試していない人が STEP 人より多ければ 1 周するまで次の回も（emblem_state.rounds・library_emblem.passes_left）。胸像への入れ替え（stage_holds）も店長と同じ質の下限つき（元の画像を取って比べる）。画像は Supabase Storage の公開の箱、全員で同じものを共有。AI なし。切り抜きの検査は店長と同じ（公式の全身の絵は上の端を見ない・姿勢モデルのない Actions でも顔がなければ全身）。デザイン（library_design）も同じく、402 なら緑で終える・小元素は制限中は何もしない",
         "files": [".github/workflows/library_emblem.yml", "scripts/library_emblem.py", "scripts/library_design.py", "db/emblems.sql"], "doc": "docs/rules/emblem.md",
         "uses": ["supabase", "roster", "cutcheck", "bust", "facefit", "facerule"],
         "flow": [
@@ -569,7 +569,7 @@ PROCESSES = [
     {
         "id": "photostore", "name": "写真の一時保管", "en": "PHOTO STORE", "lane": "actions", "workflow": "photo_store.yml", "when": "3 時間ごと · 手で",
         "trigger": "定時（17 */3 * * *）・render.yml・digest.yml・background.yml が網页を発布したあと置いていない写真があるとき（photo_store.py --kick）か workflow_dispatch（minutes、既定 12 分・chain）。順番待ちが残り、この回で増えたなら gh workflow run で次の回（10 回まで）",
-        "summary": "記事の主写真をよその原寸へ直リンクせず、先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置く。網页（render._pic）は置いてあれば先に読み、原寸は落ち先に残す。溜めない：いまのページに載っているか最後に使ってから 14 日以内だけ、全体 300MB 超えは古い順に消す（箱の中だけ）。 配る先は旗 state/pages_photos.json（既定 off）：on のとき網址は Pages の /p/<指紋>-<幅>.webp〔pages.yml が写しから並べる。photo_store.stored・scan_text が両方の網址を読む〕。 お客さまの版面の小元素（emblems 箱）も同じ：photo_store.emblems_to_pages が /p/<名前> に書き換える。",
+        "summary": "Supabase への出口は sbstate.sb_open（402 で呼び続けない）。記事の主写真をよその原寸へ直リンクせず、先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置く。網页（render._pic）は置いてあれば先に読み、原寸は落ち先に残す。溜めない：いまのページに載っているか最後に使ってから 14 日以内だけ、全体 300MB 超えは古い順に消す（箱の中だけ）。 配る先は旗 state/pages_photos.json（既定 off）：on のとき網址は Pages の /p/<指紋>-<幅>.webp〔pages.yml が写しから並べる。photo_store.stored・scan_text が両方の網址を読む〕。 お客さまの版面の小元素（emblems 箱）も同じ：photo_store.emblems_to_pages が /p/<名前> に書き換える。",
         "files": [".github/workflows/photo_store.yml", "scripts/photo_store.py", "db/photos.sql"], "doc": "docs/rules/design.md",
         "uses": ["supabase"],
         "flow": [
@@ -655,7 +655,7 @@ PROCESSES = [
         "id": "login", "name": "ログインと権限", "en": "LOGIN", "lane": "web",
         "when": "ページを開いたとき · ログイン・ログアウトしたとき",
         "trigger": "どのページでも右上の「ログイン」（メールアドレスだけ）。開いたときに身份を確かめ、見るだけかどうかを決める",
-        "summary": "版面 0 個の人の「はじめに」も種類の主題を持つ（user_pages の motifs）。本人のページ・設定ページの小元素の網址は旗 on なら Pages の /p/ に書き換えて置く（ログイン中の Supabase storage 取得 0・2026-11-03）。访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもメールアドレスだけで始められ（重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。。休止中（402）の状態は sbstate.py が state/supabase_status.json に 1 つだけ書き、見回りの読み取りは sbstate.memo で使い回す",
+        "summary": "Supabase への出口は sbstate.sb_open（402 で呼び続けない）。版面 0 個の人の「はじめに」も種類の主題を持つ（user_pages の motifs）。本人のページ・設定ページの小元素の網址は旗 on なら Pages の /p/ に書き換えて置く（ログイン中の Supabase storage 取得 0・2026-11-03）。访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもメールアドレスだけで始められ（重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。。休止中（402）の状態は sbstate.py が state/supabase_status.json に 1 つだけ書き、見回りの読み取りは sbstate.memo で使い回す",
         "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK / SB_DEG_JS / _sb_line）", "scripts/sbstate.py", "scripts/welcome.py", "scripts/digest.py（supabase の 402）", "scripts/user_pages.py", "scripts/livestatus.py", "harness/sb_down_check.py", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql", "db/board_theme.sql"], "doc": "docs/rules/login.md",
         "flow": [
             {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
@@ -697,7 +697,7 @@ PROCESSES = [
         "id": "live", "name": "ページの自動更新", "en": "LIVE", "lane": "web",
         "when": "開いている間 · 1 分ごと",
         "trigger": "簡報・管理ページを開いているあいだ、1 分ごと（タブが裏にあるときも戻ったときにすぐ）",
-        "summary": "開いたままのページに、新しい記事や数字を自分で出す。裏である版面を作り直している間は、その版面だけ枠に「更新中」の帯と残り時間。放置したタブは見回りを減らす（触らない 10 分で 5 分おき・30 分で停止・触れば再開＝SB_DEG_JS の every）。",
+        "summary": "Supabase への出口は sbstate.sb_open（402 で呼び続けない）。開いたままのページに、新しい記事や数字を自分で出す。裏である版面を作り直している間は、その版面だけ枠に「更新中」の帯と残り時間。放置したタブは見回りを減らす（触らない 10 分で 5 分おき・30 分で停止・触れば再開＝SB_DEG_JS の every）。",
         "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / page_marks / busy_plan）", "scripts/digest.py（write_page / live_mark / live-edit）", "scripts/livestatus.py", "scripts/runlog.py（typical）", "db/live_status.sql", "docs/home/version.json"], "doc": "docs/rules/live.md",
         "flow": [
             {"id": "l1", "kind": "step", "lane": "actions", "title": "ページを作るたびに指紋を付ける",

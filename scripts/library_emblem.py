@@ -640,7 +640,7 @@ def _upload(base, key):
         req = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/{BUCKET}/{name}", data=data, method="POST",
                                      headers={"apikey": key, "Authorization": f"Bearer {key}", "Content-Type": "image/webp",
                                               "x-upsert": "true", "Cache-Control": "max-age=31536000"})
-        with urllib.request.urlopen(req, timeout=60) as r:
+        with sbstate.sb_open(req, 60) as r:
             r.read()
     return up
 

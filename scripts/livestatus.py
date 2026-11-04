@@ -41,10 +41,8 @@ def report(board, proc, state, note=None, eta_min=None):
     if sbstate.LIMITED:   # 402 を見たあとは呼び直さない
         return
     try:
-        urllib.request.urlopen(req, timeout=15).read()
+        sbstate.sb_open(req, 15).read()
     except Exception as err:  # noqa: BLE001
-        if getattr(err, "code", None) == 402:
-            sbstate.mark_limited("live_report")
         print(f"  （版面の状態を書けなかった：{board} {state}：{err}）", file=sys.stderr)
 
 
@@ -70,7 +68,7 @@ def clear_waits(before=None):
         h["Authorization"] = f"Bearer {key}"
     req = urllib.request.Request(f"{url}/rest/v1/live_status?{q}", headers=h, method="DELETE")
     try:
-        return len(json.loads(urllib.request.urlopen(req, timeout=15).read() or b"[]"))
+        return len(json.loads(sbstate.sb_open(req, 15).read() or b"[]"))
     except Exception as err:  # noqa: BLE001
         print(f"  （反映待ちを消せなかった：{err}）", file=sys.stderr)
         return None

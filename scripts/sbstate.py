@@ -143,6 +143,23 @@ def need_db(msg):
     raise SystemExit(msg)
 
 
+def sb_open(req, timeout=30):
+    """Supabase（rest・rpc・storage）へ出る urlopen の入口。402 は Limited にして状態へ書き、以後は網に出ない。
+    直に urlopen すると 402 を見落として呼び続ける（tests/test_sb_degrade の「直書きは名簿の外 0」が数える）。"""
+    import urllib.error
+    import urllib.request
+    where = req.full_url.split("?")[0].split("/v1/")[-1][:80]
+    if LIMITED:
+        raise Limited(where)
+    try:
+        return urllib.request.urlopen(req, timeout=timeout)
+    except urllib.error.HTTPError as err:
+        if err.code == 402:
+            mark_limited(where)
+            raise Limited(where) from None
+        raise
+
+
 def is_limit(err):
     """HTTPError / RuntimeError('HTTP 402：…') が 402 か。"""
     return getattr(err, "code", None) == 402 or str(err).startswith("HTTP 402")
