@@ -97,11 +97,12 @@ ALLOW = {
     "state/log/emblem.json": "同上の回の記録（最後の回が置き換わる）",
     "state/log/collect.json": "実行ログは件数の上限で古い順に落とす（回の記録が増えれば古い行が出ていく）",
     "state/recommend.json": "推薦は inbox の窓から毎回作り直す（候補が 1〜数件入れ替わる）。RATIO の割合を超えて縮めば赤",
+    "state/photo_store.json": "stat（bad など集計の数字）は毎回数え直すので桁が減ると数バイト縮む。台帳 p が縮めば RATIO（2 %）を超えて赤",
     "state/hdimg.json": "高画質化の記録は今の報告・推薦の窓にある画像だけ残す（窓から出たものが落ちる）",
     "state/img_retry.json": "画像の再試行の記録は期限が来たものを落とす",
 }
 # 名簿の中でも、元のバイト数のこの割合を超えて縮んだら赤（窓の入れ替わりは数 % で、空にされたら 100 %）
-RATIO = {"state/recommend.json": 0.2, "state/hdimg.json": 0.2, "state/img_retry.json": 0.3, "state/log/collect.json": 0.5}
+RATIO = {"state/photo_store.json": 0.02, "state/recommend.json": 0.2, "state/hdimg.json": 0.2, "state/img_retry.json": 0.3, "state/log/collect.json": 0.5}
 # 縮んでよいファイルの数の上限つきの名簿（前方一致）。
 ALLOW_COUNT = {"docs/home/pics/": (10, "hdimg が使わなくなった写しを消す（窓から出た分）。10 枚を超える消え方は赤")}
 WATCH = ("docs/", "state/", "inbox/", "reports/", "items.yaml", "wishlist.yaml")
