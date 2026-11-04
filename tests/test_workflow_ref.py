@@ -12,6 +12,7 @@ WF = pathlib.Path(__file__).resolve().parent.parent / ".github" / "workflows"
 # ref を足さない workflow（理由つき）
 EXEMPT = {
     "cleanup-branches.yml": "リモートの分支を消すだけ。checkout した中身は使わない",
+    "fake402.yml": "pull_request／定時で偽の 402 を当てて数えるだけ（push しない・contents: read）",
     "ci.yml": "pull_request で動く（PR の合併候補を試すので github.ref は PR の ref。main の先頭ではない）",
     "progress.yml": "pull_request / workflow_run で動き、ref を自分で選んでいる（merge_commit_sha など）",
     "ask_remind.yml": "ref: main を明示している",

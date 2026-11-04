@@ -1,0 +1,396 @@
+{
+ "_covered": {
+  "漫威电影": 40,
+  "三星手机": 21,
+  "GTA 6": 19,
+  "チェーンソーマン": 7,
+  "A2O LITE": 6,
+  "dota2": 5,
+  "周杰伦": 5,
+  "あつ森": 4,
+  "哈利波特剧集": 4,
+  "猫用品": 4,
+  "The Mandalorian": 3,
+  "绝区零": 3,
+  "ILLIT": 2,
+  "日本顶级网球赛事": 2,
+  "MMORPG 新作": 1
+ },
+ "漫威电影": [
+  {
+   "headline": "‘Avengers: Doomsday’ Presales Smash a Major Ticket Milestone",
+   "highlight": "Presales Smash",
+   "blurb": "Presales for Avengers: Doomsday have passed a major ticket milestone.",
+   "weight": "lead",
+   "refs": [
+    13
+   ]
+  },
+  {
+   "headline": "WWE and Disney tag-team for two-day takeover for John Cena Classic and ‘Avengers: Doomsday’",
+   "highlight": "two-day takeover",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    22,
+    25,
+    29,
+    31
+   ]
+  },
+  {
+   "headline": "Channing Tatum as Gambit Joins Herbie for an Avengers Dunkin' Run",
+   "highlight": "Gambit",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    10,
+    18
+   ]
+  },
+  {
+   "headline": "Jeremy Allen White As Wolverine? Marvel Reportedly Met Actor For X-Men Reboot",
+   "highlight": "Wolverine",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    19,
+    15,
+    8
+   ]
+  },
+  {
+   "headline": "KFC Reveals Official Avengers: Doomsday Menu 'Worthy' of Dr. Doom",
+   "highlight": "Official Avengers: Doomsday Menu",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    4,
+    20
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Galaxy S27 Chipsets: Samsung Using Exynos and Snapdragon",
+   "highlight": "Exynos and Snapdragon",
+   "blurb": "Leaked European chipset info for the four Galaxy S27 models: the S27 Pro reportedly gets a step-down Snapdragon 8 Elite Gen 6 versus the Ultra.",
+   "weight": "lead",
+   "refs": [
+    2,
+    8,
+    7,
+    5,
+    6
+   ],
+   "image": "https://phandroid.com/wp-content/uploads/2026/09/Qualcomm-Snapdragon-8-Elite-Gen-6-5.jpg"
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra leak points to a major Privacy Display upgrade",
+   "highlight": "Privacy Display upgrade",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    9,
+    13,
+    15,
+    17,
+    18,
+    19,
+    14
+   ]
+  },
+  {
+   "headline": "Which Samsung Galaxy S27 models will support 60W charging?",
+   "highlight": "60W charging",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "The 3 upgrades that'll make me excuse the Galaxy S27 Ultra's inexcusable design",
+   "highlight": "3 upgrades",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    10,
+    11,
+    16,
+    12
+   ]
+  }
+ ],
+ "GTA 6": [
+  {
+   "headline": "GTA 6 preloads start on 10th November, and will need up to 212GB on your console",
+   "highlight": "10th November",
+   "blurb": "Preloads for GTA 6 begin on November 10 and need up to 212GB of console storage.",
+   "weight": "hero",
+   "refs": [
+    5,
+    15,
+    9,
+    10
+   ],
+   "event": {
+    "date": "2026-11-10",
+    "label": "プリロード開始"
+   },
+   "image": "https://www.thesixthaxis.com/wp-content/uploads/2026/06/GTA6-UltimateEdition-hero500-576x356.jpg"
+  },
+  {
+   "headline": "GTA 6 PS5 Pro enhancements confirmed",
+   "highlight": "PS5 Pro enhancements",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    11
+   ]
+  },
+  {
+   "headline": "GTA VI tops Japan's developer poll as the industry counts down to its November 19, 2026 launch",
+   "highlight": "November 19, 2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "メガハウス「お茶友シリーズ 劇場版『チェンソーマン レゼ篇』 BREAK TIME CAFÉ」レゼやデンジ、マキマなど全6種が登場！",
+   "highlight": "全6種が登場",
+   "blurb": "MEGAHOUSE「お茶友シリーズ」から、レゼやデンジ、マキマなど全6種が登場。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1,
+    3
+   ],
+   "image": "https://img.toy-people.com/member/179380690349_1200.png"
+  },
+  {
+   "headline": "チェンソーマンのガチャガチャ最新一覧｜新作の発売日と設置場所まとめ",
+   "highlight": "新作の発売日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "イ・スマンが仕掛ける新しいK-POP。「A2O LITE」に注目",
+   "highlight": "新しいK-POP",
+   "blurb": "K-POPに新しい流れが来ている。その中心にいるのが、元SMエンターテインメント総括プロデューサーのイ・スマンが手掛ける新グループ「A2O LITE」だ。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://assets.st-note.com/production/uploads/images/332182864/rectangle_large_type_2_5f8fb70cfffdbba850e654643176d6e5.png?width=1200"
+  },
+  {
+   "headline": "제이블랙, A2O LITE 시리·아이찡 실력에 감탄 \"딸 같은 존재\"",
+   "highlight": "실력에 감탄",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "A2O LITE成員介紹｜9位成員本名、生日、國籍一次看！短髮VORA、忙內AIJING、混血OA全整理",
+   "highlight": "9位成員",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "S30 门票悬而未决，二级联赛S5 名单里藏着多少遗憾",
+   "highlight": "S30 门票悬而未决",
+   "blurb": "二级联赛S5名单公布，S30门票归属仍悬而未决。",
+   "weight": "lead",
+   "refs": [
+    5
+   ],
+   "image": "https://static.gosugamers.net/13/c4/1c/22a362607bdb74810c45357060c481f34eefca3db57c4329bc29a94bf5.webp"
+  },
+  {
+   "headline": "Zenith vs Cloud Dawning Live Score on 2026-11-04 of Dota 2 EPL World Series: Southeast Asia Season 19",
+   "highlight": "Zenith vs Cloud Dawning",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦新歌登顶2026 榜单，IG 看画感慨86 岁画家",
+   "highlight": "新歌登顶2026 榜单",
+   "blurb": "周杰伦新歌《那天下雨了》登顶2026榜单。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "周杰伦打网球大师赛球拍断线照夺亚军",
+   "highlight": "夺亚军",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "任天堂为庆祝40周年，在 Animal Crossing: New Horizons 中推出免费 Zelda 主题设计",
+   "highlight": "免费 Zelda 主题设计",
+   "blurb": "为庆祝《塞尔达传说》40周年，任天堂在《集合啦！动物森友会》中推出免费的 Zelda 主题设计。",
+   "weight": "lead",
+   "refs": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.VD1nTYo6O_Xi2iyp-s_k6A&pid=News&w=1200"
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter HBO series lands on OSN+ this December with surprises",
+   "highlight": "this December",
+   "blurb": "Harry Potter HBO series lands on OSN+ this December.",
+   "weight": "lead",
+   "refs": [
+    4
+   ],
+   "image": "https://www.absolutegeeks.com/wp-content/uploads/2026/11/images-2.jpeg"
+  },
+  {
+   "headline": "Harry Potter HBO TV Show Tie-In Event Draws Trans Rights Protest, Spokesperson Responds",
+   "highlight": "Trans Rights Protest",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Warwick Davis says first day on Harry Potter series was terrifying",
+   "highlight": "first day",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "猫の鼻水、「寒いから」で済ませないで！疑いたい5つの病気",
+   "highlight": "疑いたい5つの病気",
+   "blurb": "猫のくしゃみや鼻水、鼻づまりは、病気のサインであることも。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://img.benesse-cms.jp/pet-cat/item/image/normal/06d992e9-745f-48d9-b74a-2b1648300da5.jpg?w=698&h=483&resize_type=cover&resize_mode=force"
+  },
+  {
+   "headline": "SOU・SOU聯名47款貓咪周邊開賣！誠品限定花色曝光，三花貓透明傘、暹羅貓地墊超欠收",
+   "highlight": "47款貓咪周邊開賣",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Everything We Learned from ‘The Art of Star Wars: The Mandalorian and Grogu’",
+   "highlight": "Everything We Learned",
+   "blurb": "A roundup of what the art book The Art of Star Wars: The Mandalorian and Grogu reveals.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://theholofiles.com/wp-content/uploads/2026/05/THND-FF-000470-3-scaled.jpg"
+  },
+  {
+   "headline": "In the end, Grogu was just so cute: A belated review of 'The Mandalorian & Grogu'",
+   "highlight": "belated review",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "绝区零": [],
+ "ILLIT": [
+  {
+   "headline": "ILLIT shares behind-the-scenes footage of 'You’re Under Arrest' recording in Japan",
+   "highlight": "behind-the-scenes footage",
+   "blurb": "ILLIT shares behind-the-scenes footage of the recording of 'You’re Under Arrest' in Japan.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp"
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "Rybakina beats Putintseva at Toray Pan Pacific Open Tennis, secures Year-End No.1 spot",
+   "highlight": "Year-End No.1",
+   "blurb": "Elena Rybakina secures Year-End No.1 spot with a victory over Yulia Putintseva in the Toray Pan Pacific Open.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934"
+  },
+  {
+   "headline": "【テニス】東レPPO観戦記〜2回戦〜",
+   "highlight": "東レPPO観戦記",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "Cozy MMO Loftia opens three regions in Early Access",
+   "highlight": "three regions in Early Access",
+   "blurb": "Farming, floating islands and a little urban exploration await in Loftia's Early Access version.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200"
+  }
+ ]
+}

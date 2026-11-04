@@ -9,6 +9,7 @@ import argparse
 import http.server
 import os
 import pathlib
+import queue
 import shutil
 import subprocess
 import sys
@@ -64,6 +65,7 @@ NOT_COVERED = {
     "harness/before_after.py": "Discord への Before/After だけ。Supabase に触らない",
     "harness/d5_sample.py": "テストグラウンドの見本を作るだけ。Supabase に触らない",
     "harness/photo_cache_fill.py": "走らせない（無料枠の決まり）。取り先は state/photo_store.json の base ＝本番の storage で、偽サーバーに差せない。走らせると本番の Supabase に出て、手元の写し（~/.cache/wl_photo_cache）も消す。取り先を差せる形にしてから入口に足す（別の段）",
+    "harness/fake402_check.py": "この点検自身（fake402.yml が回す）",
     "harness/pages_health.py": "Pages の健康を数える読み取り（boards を読むだけで docs/・state/ に書かない）。402 なら測れずで終わる。別の段で入口に足す",
 }
 # 402 を 1 回も受けなくてよい入口（Supabase に届かずに終わるのが正しい物）。ここに無いのに 0 回なら赤。
@@ -95,24 +97,25 @@ ALLOW = {
     "state/log/emblem.json": "同上の回の記録（最後の回が置き換わる）",
     "state/log/collect.json": "実行ログは件数の上限で古い順に落とす（回の記録が増えれば古い行が出ていく）",
     "state/recommend.json": "推薦は inbox の窓から毎回作り直す（候補が 1〜数件入れ替わる）。RATIO の割合を超えて縮めば赤",
+    "state/photo_store.json": "stat（bad など集計の数字）は毎回数え直すので桁が減ると数バイト縮む。台帳 p が縮めば RATIO（2 %）を超えて赤",
     "state/hdimg.json": "高画質化の記録は今の報告・推薦の窓にある画像だけ残す（窓から出たものが落ちる）",
     "state/img_retry.json": "画像の再試行の記録は期限が来たものを落とす",
 }
 # 名簿の中でも、元のバイト数のこの割合を超えて縮んだら赤（窓の入れ替わりは数 % で、空にされたら 100 %）
-RATIO = {"state/recommend.json": 0.2, "state/hdimg.json": 0.2, "state/img_retry.json": 0.3, "state/log/collect.json": 0.5}
+RATIO = {"state/photo_store.json": 0.02, "state/recommend.json": 0.2, "state/hdimg.json": 0.2, "state/img_retry.json": 0.3, "state/log/collect.json": 0.5}
 # 縮んでよいファイルの数の上限つきの名簿（前方一致）。
 ALLOW_COUNT = {"docs/home/pics/": (10, "hdimg が使わなくなった写しを消す（窓から出た分）。10 枚を超える消え方は赤")}
 WATCH = ("docs/", "state/", "inbox/", "reports/", "items.yaml", "wishlist.yaml")
 
 
 class _H(http.server.BaseHTTPRequestHandler):
-    hits = []
+    hits = []      # 作業枠（worker）ごとに make_handler が自分の hits を持たせる
 
     def _r(self):
+        self.server.hits.append(f"{self.command} {self.path[:80]}")
         n = int(self.headers.get("Content-Length") or 0)
         if n:
             self.rfile.read(n)
-        _H.hits.append(f"{self.command} {self.path[:80]}")
         self.send_response(402)
         self.send_header("Content-Type", "application/json")
         self.end_headers()
@@ -153,10 +156,7 @@ def _leaves(x):
     return 1
 
 
-FAKE = [""]      # 偽サーバーの網址（run() が入れる）。JSON の中の base が偽の網址に変わるぶんは縮みに数えない
-
-
-def _json_shrink(d, f):
+def _json_shrink(d, f, fake=""):
     """JSON は行数では見えない（1 行に詰めた中身が空になっても 1 行消えて 1 行足すだけ）。
     バイト数が減る、または要素（葉）の数が減ったら縮み。返すのは減ったバイト数（要素だけ減ったときは 1）。"""
     import json
@@ -165,7 +165,7 @@ def _json_shrink(d, f):
         new = (d / f).read_text(encoding="utf-8")
     except OSError:
         return len(old.encode()) or 1      # 消えた
-    new = new.replace(FAKE[0], REAL) if FAKE[0] else new
+    new = new.replace(fake, REAL) if fake else new
     if new == old:
         return 0
     try:
@@ -176,14 +176,14 @@ def _json_shrink(d, f):
     return max(nb, 1) if (nb > 0 or ln < lo) else 0
 
 
-def shrunk(d):
+def shrunk(d, fake=""):
     """{ファイル: 縮んだ量}。行ファイルは 消えた行 − 足した行 が正のもの、消えたファイルは全行。
     .json はバイト数・要素数でも比べる（1 行 JSON の穴、2026-11-04）。"""
     out = {}
     for line in _git(d, "diff", "--numstat", "HEAD").splitlines():
         a, r, f = line.split("\t", 2)
         if f.startswith(WATCH) and f.endswith(".json") and a != "-":
-            n = _json_shrink(d, f)
+            n = _json_shrink(d, f, fake)
             if n:
                 out[f] = n
         elif f.startswith(WATCH) and a.isdigit() and r.isdigit() and int(r) > int(a):
@@ -194,29 +194,25 @@ def shrunk(d):
     return out
 
 
-def run(only=None, keep=False):
+def _worker(q, results, env, keep):
+    """作業枠 1 つ = 偽サーバー 1 つ + 作業ツリーの写し 1 つ。入口は枠の中では 1 本ずつ（差を入口だけの変化にするため）、枠どうしは並べて走らせる。"""
     srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), _H)
+    srv.hits = []
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     d = pathlib.Path(tempfile.mkdtemp(prefix="fake402_"))
+    fake = f"http://127.0.0.1:{srv.server_address[1]}"
     prepare(d, srv.server_address[1])
-    FAKE[0] = f"http://127.0.0.1:{srv.server_address[1]}"
-    # 外の網は「落ちている」状態にする：プロキシを閉じたポートに向ける（接続拒否＝網エラー）。この環境は直につなぐと遮断ページが 404/403 を返すので、
-    # 空にするだけでは「網エラー」ではなく「404 の判定」になってしまう。偽サーバー（127.0.0.1）だけは除外する
-    dead = "http://127.0.0.1:9"
-    env = {**os.environ, "SUPABASE_SERVICE_KEY": "fake", "PYTHONIOENCODING": "utf-8", "NO_PROXY": "127.0.0.1,localhost", "no_proxy": "127.0.0.1,localhost",
-           **{k: dead for k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY", "all_proxy")}}
-    for k in ("DISCORD_WEBHOOK_URL", "SBSTATE_PING"):
-        env.pop(k, None)
-    rows, bad = [], []
-    for name, args, sec in ENTRIES:
-        if only and name != only:
-            continue
-        h0, t0 = len(_H.hits), time.time()
+    while True:
+        try:
+            i, name, args, sec = q.get_nowait()
+        except queue.Empty:
+            break
+        h0, t0 = len(srv.hits), time.time()
         try:
             rc = subprocess.run([PY, *args], cwd=d, env={**env, **ENTRY_ENV.get(name, {})}, capture_output=True, text=True, timeout=sec).returncode
         except subprocess.TimeoutExpired:
             rc = "timeout"
-        s = shrunk(d)
+        s = shrunk(d, fake)
         bad_files = {f: n for f, n in s.items() if f not in ALLOW}
         for f, n in s.items():
             old = len(_git(d, "show", f"HEAD:{f}").encode())
@@ -227,18 +223,53 @@ def run(only=None, keep=False):
             if len(hit) <= mx:
                 for f in hit:
                     bad_files.pop(f)
-        rows.append((name, rc, len(_H.hits) - h0, sum(s.values()), bad_files, int(time.time() - t0)))
+        hits = len(srv.hits) - h0
+        bad = []
         if rc != RC_OK.get(name, (0,))[0]:
             bad.append(f"{name}：終了コード {rc}（402 で落ちてはいけない）")
-        if rc in (0, RC_OK.get(name, (0,))[0]) and len(_H.hits) - h0 == 0 and name not in NO_HITS:
+        if rc in (0, RC_OK.get(name, (0,))[0]) and hits == 0 and name not in NO_HITS:
             bad.append(f"{name}：402 を 1 回も受けていない（Supabase に届く前に静かに終わった。縮み 0 の根拠にならない）")
         for f, n in bad_files.items():
             bad.append(f"{name}：{f} が {n} 行縮んだ（名簿に無い）")
+        sec_used = int(time.time() - t0)
+        results[i] = ((name, rc, hits, sum(s.values()), bad_files, sec_used), bad)
+        print(f"  {name}: {sec_used}s", flush=True)
         _git(d, "add", "-A")
         _git(d, "commit", "-qm", name, "--allow-empty")   # 次の入口の差を、その入口だけの変化にする
     srv.shutdown()
     if not keep:
         shutil.rmtree(d, ignore_errors=True)
+
+
+def run(only=None, keep=False, workers=None):
+    """入口を並べて走らせる。枠の数は WL_FAKE402_WORKERS（既定 4）。網は使わない（外へはつながない）ので並べても入口どうしは邪魔しない。"""
+    # 外の網は「落ちている」状態にする：プロキシを閉じたポートに向ける（接続拒否＝網エラー）。この環境は直につなぐと遮断ページが 404/403 を返すので、
+    # 空にするだけでは「網エラー」ではなく「404 の判定」になってしまう。偽サーバー（127.0.0.1）だけは除外する
+    dead = "http://127.0.0.1:9"
+    env = {**os.environ, "SUPABASE_SERVICE_KEY": "fake", "PYTHONIOENCODING": "utf-8", "NO_PROXY": "127.0.0.1,localhost", "no_proxy": "127.0.0.1,localhost",
+           **{k: dead for k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY", "all_proxy")}}
+    for k in ("DISCORD_WEBHOOK_URL", "SBSTATE_PING"):
+        env.pop(k, None)
+    todo = [(i, n, a, s) for i, (n, a, s) in enumerate(ENTRIES) if not only or n == only]
+    q = queue.Queue()
+    # 長い入口（収集・描画）を先に配って、最後に長いのが残らないようにする
+    for e in sorted(todo, key=lambda e: -e[3]):
+        q.put(e)
+    n = max(1, min(workers or int(os.environ.get("WL_FAKE402_WORKERS", "4")), len(todo) or 1))
+    results = {}
+    ths = [threading.Thread(target=_worker, args=(q, results, env, keep)) for _ in range(n)]
+    for t in ths:
+        t.start()
+    for t in ths:
+        t.join()
+    rows, bad = [], []
+    for i, _, _, _ in todo:
+        if i not in results:
+            bad.append(f"{ENTRIES[i][0]}：走らなかった（作業枠が落ちた）")
+            continue
+        r, b = results[i]
+        rows.append(r)
+        bad += b
     print(f"{'入口':26}{'終了':>8}{'402を受けた':>12}{'縮んだ量(名簿内含む)':>20}{'秒':>6}")
     for name, rc, hits, n, bf, sec in rows:
         print(f"{name:26}{str(rc):>8}{hits:>12}{n:>20}{sec:>6}")
@@ -251,5 +282,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--only")
     ap.add_argument("--keep", action="store_true")
+    ap.add_argument("--workers", type=int)
     a = ap.parse_args()
-    sys.exit(1 if run(a.only, a.keep) else 0)
+    sys.exit(1 if run(a.only, a.keep, a.workers) else 0)
