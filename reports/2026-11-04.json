@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "edit_sig": "7ee831e715bb",
+ "edit_sig": "2bff121f01f5",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -255,22 +255,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 7,
-     "source": "上報Up Media",
-     "title": "星巴克「太妃核果拿鐵」在家隨時喝！雀巢限定贈耶誕節馬克杯、摺疊袋",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9RQnJVbzU0TF9iQ1Y2NXlvOFNmdDdoMllISVdDYmtOSHVpb2hzUFhxNDhVa1U5eHBGdS1JTVN0OWw1UmlKU1NRWFRocHdickE3djVrQnh0bGwxUjg?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 8,
-     "source": "Yahoo!ニュース",
-     "title": "【スタバ新作グッズ】ホリデーシーズングッズがかわいすぎる！ 全19種類を一挙公開♡",
-     "url": "https://news.yahoo.co.jp/articles/66b144391201e022e6b4aa4ecade72012dee6831"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -304,6 +288,26 @@
      "image": "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg",
      "image_via": "og:image",
      "url": "https://finance.yahoo.com/media-advertising/articles/walmart-takes-starbucks-collectible-merch-170300710.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "【スタバ新作グッズ】ホリデーシーズングッズがかわいすぎる！ 全19種類を一挙公開♡",
+     "highlight": "全19種類",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261104-00010003-cancam-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/66b144391201e022e6b4aa4ecade72012dee6831",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "星巴克「太妃核果拿鐵」在家隨時喝！雀巢限定贈耶誕節馬克杯、摺疊袋",
+     "highlight": "雀巢限定贈耶誕節馬克杯",
+     "image": "https://cdn.upmedia.mg/upfile/img/2026/1104/202611041228230482.webp",
+     "image_via": "og:image",
+     "url": "https://www.upmedia.mg/tw/lifestyle/food/273229",
      "weight": "normal"
     }
    ],
@@ -788,7 +792,7 @@
      "highlight": "浅唱《本草纲目》",
      "image": null,
      "source": "网易新闻客户端",
-     "source_icon": "https://static.ws.126.net/163/frontend/images/logo-netease-114.png",
+     "source_icon": "https://static.ws.126.net/163/frontend/images/logo-netease-144.png",
      "url": "https://c.m.163.com/news/v/VK9RVCCQQ.html",
      "weight": "normal"
     }
@@ -1160,8 +1164,8 @@
      "date": "2026-11-04",
      "headline": "아일릿 ‘체포하겠어’, 스포티파이 ‘톱 송 데뷔’ 글로벌 1위",
      "highlight": "글로벌 1위",
-     "image": "https://img.newspim.com/news/2026/11/04/261104105439682_w.jpg",
-     "image_via": "转载 www.newspim.com",
+     "image": "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261104101022046110d3244b4fed58141237106.jpg&nmt=30",
+     "image_via": "og:image",
      "url": "https://www.beyondpost.co.kr/view.php?ud=202611041009498173d3244b4fed_30",
      "weight": "normal"
     },
