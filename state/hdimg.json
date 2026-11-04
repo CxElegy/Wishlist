@@ -787,6 +787,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.topstarnews.net/news/photo/202611/16268563_2077899_614_crop.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.upmedia.mg/upfile/img/2026/1104/202611041228230482.webp": {
   "w": 1920,
   "h": 1279,
@@ -1188,12 +1194,6 @@
   "target": 720,
   "v": 3
  },
- "https://gameranx.com/wp-content/uploads/2026/08/GTA-6-Rockstar-Take-Two-9.jpg": {
-  "w": 2048,
-  "h": 1152,
-  "target": 720,
-  "v": 3
- },
  "https://games.gg/cdn-cgi/image/width=1200,height=675,fit=cover,format=auto/https://assets.games.gg/betboom_team_dota_2_roster_inactive_hero_ca2afb8c0c_389dafbd50.webp": {
   "w": 1200,
   "h": 675,
@@ -1405,12 +1405,6 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
-  "v": 3
- },
- "https://i01.ftnn.com.tw/a/26/307/26307091517658703d556b.png": {
-  "w": 660,
-  "h": 371,
-  "target": 720,
   "v": 3
  },
  "https://i1.ytimg.com/vi/pjnY80oiVT0/hqdefault.jpg": {
@@ -1708,6 +1702,12 @@
   ],
   "why": "看不清"
  },
+ "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_600,w_1086,h_610/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m6fgknrd6mjbchzet0.jpg": {
+  "w": 1440,
+  "h": 810,
+  "target": 1280,
+  "v": 3
+ },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_291,y_64,w_1932,h_1086/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m6ekgecrgnj4vwnmff.jpg": {
   "w": 1440,
   "h": 810,
@@ -1766,12 +1766,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gFTDS.img": {
   "w": 1672,
   "h": 941,
-  "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gG5lk.img": {
-  "w": 1456,
-  "h": 819,
   "target": 720,
   "v": 3
  },
@@ -2078,6 +2072,12 @@
   "w": 800,
   "h": 1199,
   "target": 1280,
+  "v": 3
+ },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/03/5628427_2.jpg": {
+  "w": 800,
+  "h": 1053,
+  "target": 720,
   "v": 3
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
@@ -3272,12 +3272,6 @@
   "target": 720,
   "v": 3
  },
- "https://photo.newsen.com/news_photo/2026/11/04/202611040945376310_51.jpg": {
-  "w": 650,
-  "h": 490,
-  "target": 720,
-  "v": 3
- },
  "https://pickcon.co.kr/site/data/img_dir/2026/10/26/2026102680187_0.jpg": {
   "w": 900,
   "h": 1262,
@@ -4065,6 +4059,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.absolutegeeks.com/wp-content/uploads/2026/11/images-2.jpeg": {
+  "w": 739,
+  "h": 415,
+  "target": 720,
+  "v": 3
+ },
  "https://www.androidauthority.com/wp-content/uploads/2026/05/Samsung-Galaxy-S26-Ultra-home-screen-black-cat-scaled.jpg": {
   "w": 2560,
   "h": 1440,
@@ -4177,15 +4177,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.6hNnPP4nDekF5jfvcYng9w&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.4Q07ZR-ng-SBggWJQcp3XA&pid=News&w=1200": {
   "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.7bomez5oSFzn4ouHqedwvA&pid=News&w=960": {
-  "w": 700,
-  "h": 466,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4228,6 +4222,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Duj3IwA6VUH9d7-r2vQeEw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -4237,6 +4237,12 @@
  "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
   "w": 700,
   "h": 508,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.IGMXPkqt6th3aXa9FKCnzg&pid=News&w=960": {
+  "w": 700,
+  "h": 408,
   "target": 720,
   "v": 3
  },
@@ -4288,12 +4294,6 @@
  "https://www.bing.com/th?id=ONUT.NUv3WeI88nrVJSQyVt4X_Q&pid=News&w=1200": {
   "w": 700,
   "h": 409,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Nd044nfDUdY2nVSo8VWSSA&pid=News&w=912": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4399,6 +4399,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.ZuMjDJWmJ-jDa0XVQ51nTQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 376,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Zxg8uAMC6RPaqiZ4lfllVQ&pid=News&w=1200": {
   "w": 700,
   "h": 426,
@@ -4411,12 +4417,6 @@
    779
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.aBIaUASFji8bSUZw5xhQkw&pid=News&w=1200": {
-  "w": 700,
-  "h": 394,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.b599IgmyuPGyJ7Vbvf8W-w&pid=News&w=1200": {
   "w": 700,
@@ -4434,6 +4434,12 @@
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
   "h": 281,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.d-1rRpvQeF-AKzawmgI0Vw&pid=News&w=1200": {
+  "w": 700,
+  "h": 409,
   "target": 720,
   "v": 3
  },
@@ -4514,6 +4520,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.337
+ },
+ "https://www.bing.com/th?id=ONUT.lw-boqkB232vXdc5XRihLA&pid=News&w=1200": {
+  "w": 700,
+  "h": 470,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.m1s4FTAqSRNpAB8tWY7sCQ&pid=News&w=1200": {
   "w": 700,
@@ -4614,9 +4626,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.zr2H6dYY_TXI6oh09SW9vg&pid=News&w=1080": {
+ "https://www.bing.com/th?id=ONUT.zN6UAdHqWycg4_tAK8i46Q&pid=News&w=700": {
   "w": 700,
-  "h": 393,
+  "h": 366,
   "target": 720,
   "v": 3
  },

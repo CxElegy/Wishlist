@@ -1,32 +1,32 @@
 {
- "admin": "bb5b353e9427",
- "admin-ai": "b67ca3b753e5",
+ "admin": "5e8d84e418df",
+ "admin-ai": "46a87bd511bb",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "89a2c224"
+   "d14a255b"
   ],
   "tokens": [
    "AI 編集のトークン",
    "65a8276c"
   ]
  },
- "admin-boards": "fb7bebe41421",
+ "admin-boards": "7c84e11926e0",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "64dd2810"
+   "af52b551"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "a621a33454ac",
+ "admin-emblem": "94c879d0e275",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "95922466"
+   "efb9a722"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "aacefc722651",
  "admin-members_marks": {},
- "admin-now": "7117aebee43e",
+ "admin-now": "d66f37743347",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2f2fbd60"
+   "33dbe1cb"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "751bd9f3"
+   "5b8d239e"
   ],
   "term-panel": [
    "ライブログ",
-   "ccab24d5"
+   "24161151"
   ]
  },
- "admin-system": "6b35e019661f",
+ "admin-system": "e42de7d814dd",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2a333f9d"
+   "889ee529"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "528040f9"
+   "e4bdc2dd"
   ]
  },
  "admin_marks": {},
- "heat": "364b94f65ded",
+ "heat": "245417cb51a0",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "1c3e6492"
+   "578af8d6"
   ],
   "ranking": [
    "ランキング",
-   "ce5facd7"
+   "f450ff65"
   ]
  },
- "index": "1b89bcd74799",
+ "index": "5b7b18c3ca09",
  "index_marks": {
   "front": [
    "トップ",
-   "5fe6b02a"
+   "2a45acef"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "b4ab8115"
+   "edc413be"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "f41110e9"
+   "1bf68dc3"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -196,6 +196,6 @@
    "6bcd4bfe"
   ]
  },
- "updated": "11.05 00:27",
+ "updated": "11.05 00:28",
  "wishlist": "5712af2f67cf"
 }
