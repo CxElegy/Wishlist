@@ -5,7 +5,7 @@
 
 ## いちばん先（目標：お客さまが登録して、自分の版面を毎日読める。HARNESS「目標から決める」）
 
-- [ ] photos の edge ログを 24 時間後に数え直す（plan2 2026-11-05）：query_logs で /storage/v1/object/public/photos/ の時間ごとの件数。#900 合併（21:30 UTC）の後は 21 時台以降 0 件。できた条件＝合併後 24h のうち photo_cache.yml の run の時間帯以外が 0。1 件でもあれば User-Agent と時刻で出どころの workflow を特定し nostorage の穴を塞ぐ。
+- [x] （2026-11-05 f1・数え直した：11/3 22Z〜11/4 20Z の photos 配信は 999 件＝全部 Python-urllib・参照元なし。3.12（Actions）787 件は全部 photo_cache.yml が走った時間帯（22・0〜6・8・9・11・12・15・16・18〜20 時）。3.13（手元の係）212 件は 9Z の 1 時間だけの一回きり・その後なし。ブラウザ（Chrome）経由 0 件＝点検・読者からの取りこぼしなし。次の見張りは 1 日 150 MB 超のときだけ）photos の edge ログを 24 時間後に数え直す（plan2 2026-11-05）：query_logs で /storage/v1/object/public/photos/ の時間ごとの件数。#900 合併（21:30 UTC）の後は 21 時台以降 0 件。できた条件＝合併後 24h のうち photo_cache.yml の run の時間帯以外が 0。1 件でもあれば User-Agent と時刻で出どころの workflow を特定し nostorage の穴を塞ぐ。
 - [ ] Supabase の期間リセット日と残りの枠を管理ページに出す（plan2）：cached egress の使用量は止めても減らない。リセット日（請求期間の始まり）を state に 1 行置き、管理ページの「無料枠」に残り日数を出す。できた条件＝管理ページ 1400/390 で見え、日付は店長が設定ページで書き換えられる（DB の形は変えない）。
 - [ ] 402 になった日の公開ページ通し点検を毎日の定時に（plan2）：fake402.yml の定時の結果を progress.yml が Discord に 1 行送る。できた条件＝赤の日に通知が出る。
 - [ ] E15 案 B：A2O LITE のメンバー写真だけ先に（plan2）：網のある環境で official_images が返す網址を 1 版面確かめてから site を足す。できた条件＝A2O LITE の主役が公式の写真になり ux_check E15 が 1 減る。
