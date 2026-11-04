@@ -817,6 +817,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=202611031247249730205868f676220867377_0.png&nmt=30": {
+  "w": 5953,
+  "h": 3969,
+  "target": 1280,
+  "v": 3
+ },
  "https://charagoo.jp/wp-content/uploads/2025/08/1000182846_1.jpg": {
   "w": 1200,
   "h": 1200,
@@ -1395,6 +1401,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i01.ftnn.com.tw/a/26/307/26307091517658703d556b.png": {
+  "w": 660,
+  "h": 371,
+  "target": 720,
+  "v": 3
+ },
  "https://i1.ytimg.com/vi/pjnY80oiVT0/hqdefault.jpg": {
   "w": 480,
   "h": 360,
@@ -1406,6 +1418,19 @@
   "h": 1080,
   "target": 1280,
   "v": 3
+ },
+ "https://i3.ytimg.com/vi/FVoyplaLTBc/hqdefault.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.525,
+  "local": "pics/ed2ae58cb59ba685.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
  },
  "https://igcazquhkwxtqsaqpznx.supabase.co/storage/v1/object/public/media/ig-articles/18025431548949698/0.jpg": {
   "w": 1080,
@@ -2037,22 +2062,10 @@
   "target": 1280,
   "v": 3
  },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/03/5628427_2.jpg": {
-  "w": 800,
-  "h": 1053,
-  "target": 720,
-  "v": 3
- },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
   "target": 720,
-  "v": 3
- },
- "https://img.newspim.com/news/2026/11/04/261104105439682_w.jpg": {
-  "w": 1200,
-  "h": 801,
-  "target": 1280,
   "v": 3
  },
  "https://img.opencritic.com/article/o/OEmGhyL1UTjNvzkx5fQjfzZKmGzaOEz8.jpg": {
@@ -3990,7 +4003,7 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793711119437_img_de5997df.jpeg": {
   "w": 1200,
   "h": 630,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793712043011_img_cd6fc2d9.jpeg": {
