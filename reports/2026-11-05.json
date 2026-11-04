@@ -1,29 +1,24 @@
 {
  "date": "2026-11-05",
- "edit_sig": "37ca6fbe7d01",
+ "edit_sig": "b8ca46a6acf8",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-10-30",
-     "n": 1,
-     "source": "게임플",
-     "title": "[인터뷰] 아스트라에 오라티오 \"매년 캐릭터 30여명 냅니다\"",
-     "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216826"
-    },
-    {
+     "blurb": "Developers say combat pace, AP and parrying are being tuned after the global CBT; next test and release dates remain unannounced.",
      "date": "2026-10-29",
-     "n": 2,
-     "source": "Inven Global",
-     "title": "Astrae Oratio Devs: \"We're Tuning Combat Pace, AP, and Parrying Based on CBT Feedback\"",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOWmNJUjY2c0RpTXlMV0dWajZvY2lndzVjQUhxUnVjWkJIeDZiNHpqOE5kWjJRZVc4WmN0dGprc1dmVnRDNHNGV0l0RURnWFN6WXdON1g2MFBRZm42SndFTGJoTE1qWlVnNFY1ZElYV0JmTDE3eXFldjd2cEUwOE5hdU9xLWV5bEJvVHd4MzVQZmtDLVVkYkt5LUpDa1ZQTkVzOEJmOWcwZUkzY0dRZHYyZGtpWUhNYW4yY3lTZzJoaEE?oc=5"
+     "headline": "Astrae Oratio Devs: \"We're Tuning Combat Pace, AP, and Parrying Based on CBT Feedback\"",
+     "highlight": "Tuning Combat Pace",
+     "image": "https://static.invenglobal.com/upload/thumb/2026/10/30/c/n1793322187996449.jpg",
+     "image_via": "og:image",
+     "url": "https://www.invenglobal.com/articles/27917/astrae-oratio-devs-were-tuning-combat-pace-ap-and-parrying-based-on-cbt-feedback",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -105,33 +100,6 @@
     "alt_fg": "#1E1033",
     "bg": "#1E1033",
     "fg": "#FFF1F6",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 1,
-     "source": "白馬八方尾根スキー場",
-     "title": "HAKUBA HAPPO-ONE SNOW RESORT | HAKUBAVALLEY",
-     "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE9yX0VLbWx5RVVGZW04WUtDRjd6S0ZtWEFlUXZsZkM5Q3hNcXJvdDZMUXdybUJDbkZzLU9DOWl1dmUwZw?oc=5"
-    }
-   ],
-   "section": "运动",
-   "stories": [],
-   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
-   "theme": {
-    "accent": "#D9412B",
-    "alt_accent": "#8EC5E8",
-    "alt_bg": "#14233A",
-    "alt_fg": "#F4F8FB",
-    "bg": "#F4F8FB",
-    "fg": "#14233A",
     "font": "sans",
     "split": true
    }
@@ -834,6 +802,31 @@
     "bg": "#F7F0E9",
     "fg": "#1E1A18",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-04",
+    "headline": "レヴィ／フィンランド(11/15) 男子 スラローム【アルペンスキー FIS ワールドカップ 2026/27】",
+    "url": "https://abema.tv/live-event/86995211-95a1-40fb-98bf-e47836e1dd73"
+   },
+   "name": "滑雪",
+   "quiet": true,
+   "section": "运动",
+   "status": "",
+   "stories": [],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
     "split": true
    }
   },

@@ -15,7 +15,9 @@
   "ILLIT": 2,
   "日本顶级网球赛事": 2,
   "MMORPG 新作": 1,
-  "Vaundy": 3
+  "Vaundy": 3,
+  "Astrae Oratio": 2,
+  "滑雪": 1
  },
  "漫威电影": [
   {
@@ -452,5 +454,18 @@
     3
    ]
   }
- ]
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "Astrae Oratio Devs: \"We're Tuning Combat Pace, AP, and Parrying Based on CBT Feedback\"",
+   "highlight": "Tuning Combat Pace",
+   "blurb": "Developers say combat pace, AP and parrying are being tuned after the global CBT; next test and release dates remain unannounced.",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ]
+  }
+ ],
+ "滑雪": []
 }

@@ -3326,8 +3326,9 @@
  "https://static.invenglobal.com/upload/thumb/2026/10/30/c/n1793322187996449.jpg": {
   "w": 800,
   "h": 457,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.347
  },
  "https://static.mercdn.net/item/detail/orig/photos/m75436159869_1.jpg?1779623865": {
   "w": 1080,

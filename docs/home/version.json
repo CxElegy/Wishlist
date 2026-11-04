@@ -1,14 +1,14 @@
 {
- "admin": "b385d52d0b2f",
- "admin-ai": "d19946caa9ee",
+ "admin": "6b7f7cdaad25",
+ "admin-ai": "dd70f4c8b977",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "58a04e06"
+   "167481a0"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e0b500cb"
+   "8da3bea9"
   ]
  },
  "admin-boards": "d235ea555762",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "c7feb2a0a276",
+ "admin-emblem": "f0bb315ed35b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "11ead28f"
+   "ceb33b64"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b5430cdb73be",
  "admin-members_marks": {},
- "admin-now": "2ba3998dd846",
+ "admin-now": "fc01f4cba2a5",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "01c6f8cf"
+   "e5932145"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "34d6dd7e"
+   "bdaf827b"
   ]
  },
- "admin-system": "9f59850215a0",
+ "admin-system": "0046df7349b9",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "335ac636"
+   "b12db890"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "438a2141"
+   "ce078c7f"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "447090b9"
   ]
  },
- "index": "57bc20620ba8",
+ "index": "913ac47d424a",
  "index_marks": {
   "front": [
    "トップ",
-   "7da614f7"
+   "ec7d7c31"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "895ff62e"
+   "a436f77f"
   ],
   "w-130724c0": [
    "猫用品",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "9d332772"
+   "5f88d0e3"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "1c15acc5"
+   "60d34efb"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "68c328ef"
+   "d260fce8"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "5ed629af"
   ]
  },
- "updated": "11.05 05:31",
+ "updated": "11.05 05:40",
  "wishlist": "09885a0145d0"
 }
