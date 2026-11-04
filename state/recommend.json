@@ -36,7 +36,6 @@
   "https://news.livedoor.com/topics/detail/32677643/": "https://image.news.livedoor.com/newsimage/stf/a/8/a84a9_1830_709a350d_14660206.jpg",
   "https://news.nicovideo.jp/watch/nw19928740?news_ref=search_search": "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832",
   "https://news.nicovideo.jp/watch/nw19929409": null,
-  "https://news.nicovideo.jp/watch/nw19954044?news_ref=watch_20_nw18992670": "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg",
   "https://news.pchome.com.tw/game/gamer/20261029/index-79324880882080203104.html": "https://news.pchome.com.tw/newsdata/game/gamer/20261029/79324880882080203104_original.jpg",
   "https://news.samsung.com/jp/galaxy-z-fold8-interview2610": "https://img.global.news.samsung.com/jp/wp-content/uploads/2026/10/%E7%A4%BE%E5%93%A1%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%93%E3%83%A5%E3%83%BC_PR_728x410.jpg",
   "https://news.yahoo.co.jp/articles/dfce98306251ac5efdcb1c37d0f2a488de1ad8b5": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00000020-isd-000-1-view.jpg?exp=10800",
@@ -45,6 +44,7 @@
   "https://paradepets.com/pet-news/black-cats-homemade-halloween-costume-masked-vigilante": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCRsS.img",
   "https://pokemongohub.net/post/ar/halloween-2026-ar-photography-showcase/": "https://pokemongohub.net/wp-content/uploads/2026/10/IMG_7061-Li-Ke-scaled.jpeg",
   "https://press-start.com.au/news/playstation/2026/11/04/grand-theft-auto-6-pre-loading-has-been-brought-forward-for-digital-copies/": "https://www.bing.com/th?id=ONUT.AA5Ou-KZT-zGADOxgZBahA&pid=News&w=1200",
+  "https://prtimes.jp/main/html/rd/p/000000255.000049599.html": "https://prcdn.freetls.fastly.net/release_image/49599/255/49599-255-219b496ab286fc7c50b671150bf6c71d-3900x2194.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://selectra.jp/telecom/mobile/galaxy-buy-cheap": "https://images.selectra.jp/articles/images/galaxy-buy-cheap.webp",
   "https://sounova.com/anime/kuromi-first-theatrical-movie-2027": "https://cdn.sounova.com/upload/VDnplFoqnmnxzxylWKNWq.webp",
   "https://sounova.com/game/silver-palace-global-launch-december-2026": "https://cdn.sounova.com/upload/XZB9zcSxrtYsJDQAP55HB.webp",
@@ -1601,21 +1601,6 @@
   },
   {
    "batch": 7,
-   "because": "滑雪",
-   "date": "2026-11-04",
-   "hits": [],
-   "image": "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg",
-   "kind": "board",
-   "score": 4,
-   "source": "ニコニコニュース",
-   "taste": [],
-   "title": "【群馬・ノルンスキー場】夏のゲレンデ活用で大盛況！「水遊び×恐竜」でフリーパス利用3,500回突破",
-   "url": "https://news.nicovideo.jp/watch/nw19954044?news_ref=watch_20_nw18992670",
-   "words": [],
-   "work": "滑雪"
-  },
-  {
-   "batch": 7,
    "because": "FROM",
    "date": "2026-11-02",
    "hits": [],
@@ -1656,6 +1641,21 @@
    "taste": [],
    "title": "日本スキー場開発[6040]：事業計画及び成長可能性に関する事項 2026年10月30日(適時開示) ：日経会社情報DIGITAL",
    "url": "https://www.nikkei.com/nkd/disclosure/tdnr/20261030560696/",
+   "words": [],
+   "work": "滑雪"
+  },
+  {
+   "batch": 7,
+   "because": "滑雪",
+   "date": "2026-10-29",
+   "hits": [],
+   "image": "https://prcdn.freetls.fastly.net/release_image/49599/255/49599-255-219b496ab286fc7c50b671150bf6c71d-3900x2194.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+   "kind": "board",
+   "score": 4,
+   "source": "PR TIMES",
+   "taste": [],
+   "title": "2026年秋冬の注目旅行先として トルコ・エルズィンジャンの知られざる自然とアウトドア体験を紹介 今シーズンのスキー場もオープン",
+   "url": "https://prtimes.jp/main/html/rd/p/000000255.000049599.html",
    "words": [],
    "work": "滑雪"
   },
@@ -2108,11 +2108,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2120,7 +2120,7 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
@@ -2128,7 +2128,7 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ]
  ]

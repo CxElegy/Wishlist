@@ -440,7 +440,7 @@
   "哈利波特剧集": 12,
   "周杰伦": 28,
   "dota2": 9,
-  "星巴克马克杯": 5,
+  "星巴克马克杯": 6,
   "A2O LITE": 10,
   "猫用品": 6,
   "The Mandalorian": 5,
@@ -451,7 +451,7 @@
   "Vaundy": 4,
   "绝区零": 3,
   "Astrae Oratio": 1,
-  "滑雪": 4,
+  "滑雪": 5,
   "日本顶级网球赛事": 4,
   "BLEACH Mirrors High": 1,
   "FROM": 1,
@@ -498,7 +498,8 @@
    "refs": [
     2,
     3,
-    5
+    5,
+    6
    ],
    "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800",
    "price": {
@@ -888,6 +889,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "【群馬・ノルンスキー場】夏のゲレンデ活用で大盛況！「水遊び×恐竜」でフリーパス利用3,500回突破",
+   "highlight": "3,500回突破",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],

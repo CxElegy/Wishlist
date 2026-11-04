@@ -760,6 +760,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg": {
+  "w": 1800,
+  "h": 1086,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.utaten.com/uploads/images/specialArticle/10324/3f786fa5a4cc1739c2291e08bfcf1e7e52140a71.jpeg?type=original?r=2026110310": {
   "w": 1200,
   "h": 630,
@@ -3316,6 +3322,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/49599/255/49599-255-219b496ab286fc7c50b671150bf6c71d-3900x2194.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2240,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/56498/354/56498-354-5fb6b62d9a4e4546bf8060a1ac4e3fd6-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1920,
   "h": 1080,
@@ -4367,12 +4379,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200": {
-  "w": 700,
-  "h": 422,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
   "h": 281,
@@ -4843,7 +4849,7 @@
  "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg": {
   "w": 1200,
   "h": 901,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6BensMarina.jpg": {

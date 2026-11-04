@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "edit_sig": "5523147b6c32",
+ "edit_sig": "e78a036d3660",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?bqVdDUNTL2GwsM_MMMW0M",
@@ -226,15 +226,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 6,
-     "source": "毎日キレイ",
-     "title": "スターバックス：2027年福袋の抽選受け付け開始 口が絞れるトートバッグ、限定ボトル、ドリンクチケットなどがセットに 1000個限定で特別仕様のゴールドマグも",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5NOXJsWDNaYXQtVFBSYnZrOTVDX0tweTFaT01tVXBpQ1E5MjdsSmNMTWM3aVNkTmRFc19OOTN5MUtONXF0NlR4clhKbFRzQVg3UDAwQmxBaTBLdXAyZjR4SFRpOGNyalRXMmp4cTFRMA?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -733,7 +724,7 @@
      "highlight": "浅唱《本草纲目》",
      "image": null,
      "source": "网易新闻客户端",
-     "source_icon": "https://static.ws.126.net/163/frontend/images/logo-netease-144.png",
+     "source_icon": "https://static.ws.126.net/163/frontend/images/logo-netease-114.png",
      "url": "https://c.m.163.com/news/v/VK9RVCCQQ.html",
      "weight": "normal"
     }
@@ -869,8 +860,8 @@
      "date": "2026-11-03",
      "headline": "[S이슈] A2O LITE, 데뷔하자마자 인기돌풍의 이유는?",
      "highlight": "인기돌풍",
-     "image": "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200",
-     "image_via": "Bing 缩略图",
+     "image": "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg",
+     "image_via": "og:image",
      "url": "https://www.stardailynews.co.kr/news/articleView.html?idxno=601301",
      "weight": "normal"
     },
@@ -979,15 +970,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 5,
-     "source": "ニコニコニュース",
-     "title": "【群馬・ノルンスキー場】夏のゲレンデ活用で大盛況！「水遊び×恐竜」でフリーパス利用3,500回突破",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE11S2VsTVRfZnJhLV9HTUdlTmNyUThjakJmX1NMZzFmU2tqc3VMdVhDOWpuNGVHQW9sdUo2LWNXRDVGMVNjdDZLSnUzbTlSdTNhZnBwSHFFZkxqSXVVbEk5bmJPUWprVEptVF83QTdleVV4cXlHS0s1SngzVQ?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1023,6 +1005,16 @@
      "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/ski-spa.jpg",
      "image_via": "og:image",
      "url": "https://dmksnowboard.com/mercure-urabandai-half-stay-plan-2026-27/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "【群馬・ノルンスキー場】夏のゲレンデ活用で大盛況！「水遊び×恐竜」でフリーパス利用3,500回突破",
+     "highlight": "3,500回突破",
+     "image": "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg",
+     "image_via": "转载 www.nishinippon.co.jp",
+     "url": "https://news.nicovideo.jp/watch/nw19954044?news_ref=watch_20_nw18992670",
      "weight": "normal"
     }
    ],
