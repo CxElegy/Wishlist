@@ -1,34 +1,7 @@
 {
  "date": "2026-11-04",
- "edit_sig": "9f46634327a9",
+ "edit_sig": "465f6195549a",
  "items": [
-  {
-   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
-   "facts": [],
-   "name": "BLEACH Mirrors High",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 1,
-     "source": "note",
-     "title": "I showed my game recordings to an AI and made a personal story notebook",
-     "url": "https://note.com/yonabe_kobo/n/n6c7936011bec?hl=en"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "死神 新作手游",
-   "theme": {
-    "accent": "#9A550E",
-    "alt_accent": "#EE9944",
-    "alt_bg": "#211A12",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7F0E9",
-    "fg": "#1E1A18",
-    "font": "serif",
-    "split": true
-   }
-  },
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?bqVdDUNTL2GwsM_MMMW0M",
    "facts": [],
@@ -295,15 +268,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 4,
-     "source": "ライブドアニュース",
-     "title": "愛猫からもらった「寄生虫」で、飼い主が腸の感染症に！ 最新の研究で危険性が判明",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5oWEVCMjhXaXZlcU5reS1HNERGcFZBYkw4TFhMV0RkS1V1a1FjM1pYVjBHcWVGQTh3MzFGX1YzV3pRb2QtbmhpTjQ1eFBNdUdyTHdFNmh0UTFCdFlUWGpR?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -334,6 +298,16 @@
      "image": "https://i.insider.com/6aea26f34b5ca383fe7cf285?width=1200&format=jpeg",
      "image_via": "og:image",
      "url": "https://www.businessinsider.com/guides/deals/cat-litter-deals-2026-11-3",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "愛猫からもらった「寄生虫」で、飼い主が腸の感染症に！ 最新の研究で危険性が判明",
+     "highlight": "危険性が判明",
+     "image": "https://image.news.livedoor.com/newsimage/stf/4/6/465bd_1847_ce4a9d1774e415dca60581965e972361.jpg",
+     "image_via": "og:image",
+     "url": "https://news.livedoor.com/article/detail/32725298/",
      "weight": "normal"
     }
    ],
@@ -497,15 +471,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 5,
-     "source": "The Main Street Mouse",
-     "title": "The Art of Star Wars: The Mandalorian and Grogu Is Out Now and Takes Fans Behind the Scenes",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPOHBjWjc4clBRNTBLY2c1UVdvZnlFSVFnLXFfS0U4QkIzRTNoNmRobTU0N3RXcHUwaS1LVV9FSU56QnQtczR3V1NZVW9DZVpEWTllNFBBTU9zNlRmY1h2OHZNdVVpRlZJMDVNb0lDOVMteElDeVJYc2pPcGV5aG9XOEFnWWZaUXR2dWNkUEZQbWVBc0Z3?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -520,6 +485,16 @@
      },
      "url": "https://9to5toys.com/2026/11/03/lego-star-wars-at-rt-attack/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "The Art of Star Wars: The Mandalorian and Grogu Is Out Now and Takes Fans Behind the Scenes",
+     "highlight": "Out Now",
+     "image": "https://themainstreetmouse.com/wp-content/uploads/2026/11/The-Art-of-Star-Wars-The-Mandalorian-and-Grogu-book-by-Phil-Szostak-from-Abrams.jpg",
+     "image_via": "og:image",
+     "url": "https://themainstreetmouse.com/2026/11/03/art-of-star-wars-the-mandalorian-and-grogu-book/",
+     "weight": "normal"
     }
    ],
    "subtitle": "ザ・マンダロリアン",
@@ -576,27 +551,8 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 2,
-     "source": "MEDIAMIXI",
-     "title": "【Spotify日本週間チャート】2021年リリースのVaundy「しわあわせ」が初の1位 / A2O LITEのデビュー曲「NEON」が2週目でTop10にランクイン〜集計期間：2026年10/23〜10/29 | コラム | IT×エンタメの最前線を届ける",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE53Smw5OHI1RkNkbEk0OGNES3pmRE10REF3RXRqaTExUmdlSWNsS0FCN2FMUV9lbU9MNjJUSWR2NWRBUUtjVVBSRVJ3?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-03",
-     "headline": "【オリコン】原因は自分にある。「ラブリーズン」2週連続1位 Vaundy「しわあわせ」最高2位、M!LK新曲初登場4位【ストリーミング上位動向】",
-     "highlight": "",
-     "image": "https://contents.oricon.co.jp/upimg/news/2491000/2490536/20261027_165033_p_o_98340929.jpg",
-     "image_via": "og:image",
-     "url": "https://www.oricon.co.jp/news/2490536/",
-     "weight": "hero"
-    },
     {
      "blurb": "Vaundy「しわあわせ」が配信開始から5年半を経て初のTOP5入り。",
      "date": "2026-11-03",
@@ -606,6 +562,26 @@
      "image_via": "og:image",
      "url": "https://www.saga-s.co.jp/articles/gallery/1809956?ph=1",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "【Spotify日本週間チャート】2021年リリースのVaundy「しわあわせ」が初の1位",
+     "highlight": "初の1位",
+     "image": "http://mediamixi.jp/app/uploads/2026/11/1103-01.jpg",
+     "image_via": "og:image",
+     "url": "https://mediamixi.jp/column/17873/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "【オリコン】原因は自分にある。「ラブリーズン」2週連続1位 Vaundy「しわあわせ」最高2位",
+     "highlight": "最高2位",
+     "image": "https://contents.oricon.co.jp/upimg/news/2491000/2490536/20261027_165033_p_o_98340929.jpg",
+     "image_via": "og:image",
+     "url": "https://www.oricon.co.jp/news/2490536/",
+     "weight": "normal"
     }
    ],
    "subtitle": "演唱会",
@@ -769,8 +745,8 @@
      "date": "2026-11-03",
      "headline": "[S이슈] A2O LITE, 데뷔하자마자 인기돌풍의 이유는?",
      "highlight": "인기돌풍",
-     "image": "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200",
+     "image_via": "Bing 缩略图",
      "url": "https://www.stardailynews.co.kr/news/articleView.html?idxno=601301",
      "weight": "normal"
     }
@@ -923,15 +899,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 3,
-     "source": "비욘드포스트",
-     "title": "[문화 이슈] 아일릿 ‘체포하겠어’, 스포티파이 ‘톱 송 데뷔’ 글로벌 1위",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFAtSkdIaGxPNUttSFRLZFhmd0lrUlJQcHIxenRJcHQwRkdLTGNqbDBWRm8yZkFZczd4T1ZVMDJ5NGtBRTFDMGNSU2ZYaXNJc0tOWjZJZ1RUZ0NGeXVYVFRmTVFlc0lfVFBoaVpsRGp6TmdoWUdfbzlaWFpaYTQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -952,6 +919,16 @@
      "image": "https://static.sanyonews.jp/image/article/size1/d/b/3/b/db3bbbdba3c8e92815679ecd49c5a40c_1.jpg",
      "image_via": "og:image",
      "url": "https://www.sanyonews.jp/article/2008306",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "아일릿 ‘체포하겠어’, 스포티파이 ‘톱 송 데뷔’ 글로벌 1위",
+     "highlight": "글로벌 1위",
+     "image": "https://img.newspim.com/news/2026/11/04/261104105439682_w.jpg",
+     "image_via": "转载 www.newspim.com",
+     "url": "https://www.beyondpost.co.kr/view.php?ud=202611041009498173d3244b4fed_30",
      "weight": "normal"
     }
    ],
@@ -1000,17 +977,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Season 3 release window, cast and teaser details.",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "Dexerto",
-     "title": "From Season 3: Release window, cast, teaser, & more",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPYU5kVEZObmdkd1hLVEMzVTNwSlN4dEQ4blUyT1k3MXFYNHJrQWVMdldwaUpIR2N3QUFTNG10Q2dzOXFKSE15RllIRnN2SlUwQmVZWEtpNHpNdWVBSGRtQzF1M3I3MmFFeXlNYWNhcGNOWmo3NjhtT0Nzcy1Zd00wM0pQT3p4YUdpdWVlYm1JcXk?oc=5"
+     "headline": "From Season 3: Release window, cast, teaser, & more",
+     "highlight": "Release window",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/03/07/from-season-3.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/tv-movies/from-season-3-release-date-trailer-cast-plot-2194323/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
@@ -1019,6 +998,31 @@
     "alt_fg": "#0F1512",
     "bg": "#0F1512",
     "fg": "#ECE7DC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
+   "facts": [],
+   "last": {
+    "date": "2026-11-03",
+    "headline": "BLEACH Mirrors High redeem codes and how to use them (October 2026)",
+    "url": "https://gamingonphone.com/guides/bleach-mirrors-high-redeem-codes-and-how-to-use-them/"
+   },
+   "name": "BLEACH Mirrors High",
+   "quiet": true,
+   "section": "游戏",
+   "status": "事前登录中 · 官方称 2026 年内上线，具体日期未定",
+   "stories": [],
+   "subtitle": "死神 新作手游",
+   "theme": {
+    "accent": "#9A550E",
+    "alt_accent": "#EE9944",
+    "alt_bg": "#211A12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F0E9",
+    "fg": "#1E1A18",
     "font": "serif",
     "split": true
    }

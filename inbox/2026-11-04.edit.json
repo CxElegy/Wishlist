@@ -366,17 +366,19 @@
   "dota2": 6,
   "星巴克马克杯": 5,
   "A2O LITE": 5,
-  "猫用品": 3,
-  "The Mandalorian": 4,
-  "ILLIT": 2,
+  "猫用品": 4,
+  "The Mandalorian": 5,
+  "ILLIT": 3,
   "MMORPG 新作": 9,
   "あつ森": 2,
   "チェーンソーマン": 5,
-  "Vaundy": 1,
+  "Vaundy": 3,
   "绝区零": 1,
   "Astrae Oratio": 1,
   "滑雪": 4,
-  "日本顶级网球赛事": 4
+  "日本顶级网球赛事": 4,
+  "BLEACH Mirrors High": 1,
+  "FROM": 1
  },
  "dota2": [
   {
@@ -493,6 +495,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "愛猫からもらった「寄生虫」で、飼い主が腸の感染症に！ 最新の研究で危険性が判明",
+   "highlight": "危険性が判明",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "The Mandalorian": [
@@ -507,6 +518,15 @@
    "price": {
     "now": "$36"
    }
+  },
+  {
+   "headline": "The Art of Star Wars: The Mandalorian and Grogu Is Out Now and Takes Fans Behind the Scenes",
+   "highlight": "Out Now",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "ILLIT": [
@@ -526,6 +546,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "아일릿 ‘체포하겠어’, 스포티파이 ‘톱 송 데뷔’ 글로벌 1위",
+   "highlight": "글로벌 1위",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
@@ -613,6 +642,24 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "【Spotify日本週間チャート】2021年リリースのVaundy「しわあわせ」が初の1位",
+   "highlight": "初の1位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "【オリコン】原因は自分にある。「ラブリーズン」2週連続1位 Vaundy「しわあわせ」最高2位",
+   "highlight": "最高2位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "绝区零": [],
@@ -672,6 +719,18 @@
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.m8kazEwLDrWIXrHAlYQCLw&pid=News&w=1200"
+  }
+ ],
+ "BLEACH Mirrors High": [],
+ "FROM": [
+  {
+   "headline": "From Season 3: Release window, cast, teaser, & more",
+   "highlight": "Release window",
+   "blurb": "Season 3 release window, cast and teaser details.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }
