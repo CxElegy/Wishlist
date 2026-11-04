@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "226b08a0dac3",
+ "edit_sig": "37ca6fbe7d01",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -573,31 +573,39 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "10月31日至11月1日連續兩天舉辦ASIA ARENA TOUR 2026 “HORO”，共吸引2.6萬名歌迷。",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "my-formosa",
-     "title": "Vaundy首攻台北小巨蛋 兩度衝下台互動嗨翻全場",
-     "url": "https://my-formosa.com.tw/DOC_230478.htm"
+     "headline": "Vaundy首攻台北小巨蛋 兩度衝下台互動嗨翻全場",
+     "highlight": "台北小巨蛋",
+     "image": "https://my-formosa.com.tw//News/upload/20261101000150g.jpg",
+     "image_via": "og:image",
+     "url": "https://my-formosa.com.tw/DOC_230478.htm",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 2,
-     "source": "Billboard",
-     "title": "M!LK Earns Second Japan Hot 100 No. 1 With ‘That’s! Chojo’ as Vaundy’s ‘Shiwaawase’ Reaches Top 3",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNb2ZnUVd0UmMxVlhCSFZPVHdQS2tBUXZ1dGtyS2xETjRyQU1jSzVBOVZjM2N1aVBLdVBxN09kTV9kLXJ3b2xhNWRBMFRqRlN5MDRYSHpsdjF0WTQ1dFo0Z1dWdWFwYWtDNWVacXhnUWNCWnJQMzNRX3YyVnp0QUlMLW9MeEcyUjhqbVRJaHVnVlVka180MnRpTEJVdmN3UFE5QjJRdU92UUg3bkE?oc=5"
+     "headline": "M!LK Earns Second Japan Hot 100 No. 1 With ‘That’s! Chojo’ as Vaundy’s ‘Shiwaawase’ Reaches Top 3",
+     "highlight": "Top 3",
+     "image": "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024",
+     "image_via": "og:image",
+     "url": "https://www.billboard.com/music/chart-beat/mlk-second-japan-hot-100-number-1-thats-chojo-vaundy-1236374100/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 3,
-     "source": "TBS NEWS DIG",
-     "title": "【Vaundy】“音楽をやる意味”は「悲しいことベースで生きる人の“リズム”を崩したい」アイデア具現化のプロセス「想像したものを実現」「身体を使って動くこと」の重要性を力説【日曜日の初耳学】 | MBSニュース | 関西の最新ニュースを分かりやすく。 (1ページ)",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBXQU1VaUZnMWZOc0JLMkVzYVZVYXVEVVlPQ2tHZjVaZnhJZkFfbGxxSUJ3eFY4T3VseVFHeGxpUllxalFuc05iNWVPa1ZMN2dXNG1QbTV0MzhHaERiX1plbkNETWs2RG8?oc=5"
+     "headline": "【Vaundy】“音楽をやる意味”は「悲しいことベースで生きる人の“リズム”を崩したい」",
+     "highlight": "音楽をやる意味",
+     "image": "https://newsdig.ismcdn.jp/mwimgs/5/b/1200w/img_5b27e269bf927978afa950a713f210362377754.jpg",
+     "image_via": "og:image",
+     "url": "https://newsdig.tbs.co.jp/articles/mbs/2359005?display=1",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",

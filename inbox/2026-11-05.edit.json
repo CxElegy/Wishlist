@@ -14,7 +14,8 @@
   "绝区零": 3,
   "ILLIT": 2,
   "日本顶级网球赛事": 2,
-  "MMORPG 新作": 1
+  "MMORPG 新作": 1,
+  "Vaundy": 3
  },
  "漫威电影": [
   {
@@ -421,6 +422,35 @@
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200"
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy首攻台北小巨蛋 兩度衝下台互動嗨翻全場",
+   "highlight": "台北小巨蛋",
+   "blurb": "10月31日至11月1日連續兩天舉辦ASIA ARENA TOUR 2026 “HORO”，共吸引2.6萬名歌迷。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "M!LK Earns Second Japan Hot 100 No. 1 With ‘That’s! Chojo’ as Vaundy’s ‘Shiwaawase’ Reaches Top 3",
+   "highlight": "Top 3",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "【Vaundy】“音楽をやる意味”は「悲しいことベースで生きる人の“リズム”を崩したい」",
+   "highlight": "音楽をやる意味",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ]
 }

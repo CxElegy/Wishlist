@@ -491,6 +491,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://bellawebsite.s3.ap-northeast-1.amazonaws.com/ogimage/7b3cb322-d644-11f1-a745-067e1fddedd8.webp": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://biz.chosun.com/resizer/v2/VEQEHTQKPFIUHCV27Z6TKRHCJQ.jpg?auth=555511c856fc73df5cea9de84cf146538b636aa4d16d22132390d7a860683067&width=1200&height=630&smart=true": {
   "w": 1200,
   "h": 630,
@@ -2281,6 +2287,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
+  "w": 840,
+  "h": 440,
+  "target": 1280,
+  "v": 3
+ },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
   "h": 878,
@@ -2970,6 +2982,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://pbs.twimg.com/media/HV7_9m7bYAArX_n?format=webp&name=large": {
+  "w": 1536,
+  "h": 2048,
+  "target": 720,
   "v": 3
  },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/31/35473282.jpg&M=1&s=Y&x=0&y=0&sw=1078&sh=719&exp=3600": {
@@ -3848,7 +3866,7 @@
  "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024": {
   "w": 1024,
   "h": 677,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.--mgxyoUCtdILyFPRlKNpw&pid=News&w=1200": {

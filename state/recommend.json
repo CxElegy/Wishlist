@@ -30,7 +30,6 @@
   "https://news.nicovideo.jp/watch/nw19928740?news_ref=search_search": "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832",
   "https://news.pchome.com.tw/game/gamer/20261029/index-79324880882080203104.html": "https://news.pchome.com.tw/newsdata/game/gamer/20261029/79324880882080203104_original.jpg",
   "https://news.samsung.com/jp/galaxy-z-fold8-interview2610": "https://img.global.news.samsung.com/jp/wp-content/uploads/2026/10/%E7%A4%BE%E5%93%A1%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%93%E3%83%A5%E3%83%BC_PR_728x410.jpg",
-  "https://newsdig.tbs.co.jp/articles/mbs/2359005?display=1": "https://newsdig.ismcdn.jp/mwimgs/5/b/1200w/img_5b27e269bf927978afa950a713f210362377754.jpg",
   "https://nijimen.kusuguru.co.jp/topics/648727": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/d8ea645fc0224f7dbd1a0936c547b68f.jpg",
   "https://nijimen.kusuguru.co.jp/topics/648904": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6f0ca7318ff34d75ac73b0594ed15987.jpg",
   "https://note.com/moofutoko/n/n70f46edd1254?hl=ko": "https://assets.st-note.com/production/uploads/images/331192082/rectangle_large_type_2_84e57a535a3d74978c2a58f5339023ea.png?fit=bounds&quality=85&width=1280",
@@ -42,6 +41,7 @@
   "https://sounova.com/game/silver-palace-global-launch-december-2026": "https://cdn.sounova.com/upload/XZB9zcSxrtYsJDQAP55HB.webp",
   "https://sports.khan.co.kr/en/article/202611042128007": "https://images.khan.co.kr/article/2026/11/04/news-p.v1.20261104.fd64c1ce9f074626bc608bd59dd564e1_P1.png",
   "https://t.co/6j0O3eUwDP": null,
+  "https://t.co/GsoWwYzbhi": "https://pbs.twimg.com/media/HV7_9m7bYAArX_n?format=webp&name=large",
   "https://t.co/J2phBwQa7c": null,
   "https://timeline.sohu.com/news/kvFdqulgRy": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/11/02/179358926125212344_664_2000.JPEG",
   "https://topics.smt.docomo.ne.jp/amp/article/asahi_region/nation/asahi_region-ASVB03R7YVB0TLTB00FM": "https://img.topics.smt.news.goo.ne.jp/picture/asahi_region/m_asahi_region-ASVB03R7YVB0TLTB00FM.jpg",
@@ -53,8 +53,8 @@
   "https://www.11alive.com/article/news/local/missing-in-georgia/police-searching-critical-missing-17-year-old-girl-mcdonough-georgia/85-87af9e97-88a1-4a03-a2b2-7212f2402db6": "https://www.bing.com/th?id=ONUT.us_Fi4qBm8n6q-wq33hLTg&pid=News&w=1200",
   "https://www.4gamers.com.tw/news/detail/83083/oshi-ni-amagami-animation": "https://img.4gamers.com.tw/news-image/cf9d9e77-b123-4c01-ab3b-5c7cb9f60cb2.jpg",
   "https://www.animatetimes.com/news/details.php?id=1791873025": "https://img2.animatetimes.com/2026/10/999b4f6c7f4e919fde8f1b2afcc11fb76acdd41d170320_50840305_e490802186570f9cea23f76723b2fec079ab5b64.jpg",
+  "https://www.bella.tw/articles/aigc/answer/vaundy-59392761": "https://bellawebsite.s3.ap-northeast-1.amazonaws.com/ogimage/7b3cb322-d644-11f1-a745-067e1fddedd8.webp",
   "https://www.bgr.com/2299534/improve-samsung-phone-display-simple-changes/": "https://www.bgr.com/img/gallery/improve-your-samsung-phones-display-with-these-simple-changes/l-intro-1793116280.jpg",
-  "https://www.billboard.com/music/chart-beat/mlk-second-japan-hot-100-number-1-thats-chojo-vaundy-1236374100/": "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024",
   "https://www.gamemeca.com/zh/view.php?gid=1782736": "https://cdn.gamemeca.com/gmdata/0001/782/736/gm360686_pk.webp",
   "https://www.gameple.co.kr/news/articleView.html?idxno=216826": "https://www.bing.com/th?id=ONUT.zV1ReHGr-FyrNcMW02R1aw&pid=News&w=700",
   "https://www.gamezebo.com/walkthroughs/bleach-mirrors-high-squad-choice/": "https://www.gamezebo.com/wp-content/uploads/2026/11/bleach-mirrors-high-squad-choice.jpg",
@@ -1312,6 +1312,39 @@
   },
   {
    "batch": 4,
+   "because": "Vaundy",
+   "date": "2026-10-31",
+   "hits": [
+    "万圣节"
+   ],
+   "image": "https://pbs.twimg.com/media/HV7_9m7bYAArX_n?format=webp&name=large",
+   "kind": "board",
+   "liked": "(付録) 猫好き狙い撃ち！ スタバのハロウィン新作『ブラックベリー ヨーグルト フラペチーノ』はチョコでできた「猫耳」付き / もちろん、めっちゃ美味しい",
+   "score": 8,
+   "source": "Howl.Link",
+   "taste": [
+    [
+     "ハロウィン",
+     3
+    ],
+    [
+     "万圣节",
+     3
+    ],
+    [
+     "作品:Vaundy",
+     1
+    ]
+   ],
+   "title": "しょうたり🧡🧡11/1 台北→11/8 バズリズム on X: \"ハロウィンカラー✨️✨️ かわゆ💛🎃💛 #Vaundy #Vaundy_HORO\"",
+   "url": "https://t.co/GsoWwYzbhi",
+   "words": [
+    "ハロウィン"
+   ],
+   "work": "Vaundy"
+  },
+  {
+   "batch": 4,
    "because": "Astrae Oratio",
    "date": "2026-10-30",
    "hits": [],
@@ -1374,7 +1407,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-11-04",
    "hits": [],
@@ -1479,7 +1512,7 @@
    "work": "哈利波特剧集"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "The Mandalorian",
    "date": "2026-11-03",
    "hits": [],
@@ -1584,48 +1617,6 @@
    "work": "dota2"
   },
   {
-   "batch": 6,
-   "because": "Vaundy",
-   "date": "2026-11-04",
-   "hits": [],
-   "image": "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024",
-   "kind": "board",
-   "liked": "Vaundy、「しわあわせ」が急上昇1位 2021年配信楽曲が映画主題歌起用で再生数増（CDJournal）",
-   "score": 5,
-   "source": "Billboard",
-   "taste": [
-    [
-     "作品:Vaundy",
-     1
-    ]
-   ],
-   "title": "M!LK Earns Second Japan Hot 100 No. 1 With ‘That’s! Chojo’ as Vaundy’s ‘Shiwaawase’ Reaches Top 3",
-   "url": "https://www.billboard.com/music/chart-beat/mlk-second-japan-hot-100-number-1-thats-chojo-vaundy-1236374100/",
-   "words": [],
-   "work": "Vaundy"
-  },
-  {
-   "batch": 7,
-   "because": "Vaundy",
-   "date": "2026-11-04",
-   "hits": [],
-   "image": "https://newsdig.ismcdn.jp/mwimgs/5/b/1200w/img_5b27e269bf927978afa950a713f210362377754.jpg",
-   "kind": "board",
-   "liked": "Vaundy、「しわあわせ」が急上昇1位 2021年配信楽曲が映画主題歌起用で再生数増（CDJournal）",
-   "score": 5,
-   "source": "TBS NEWS DIG",
-   "taste": [
-    [
-     "作品:Vaundy",
-     1
-    ]
-   ],
-   "title": "【Vaundy】“音楽をやる意味”は「悲しいことベースで生きる人の“リズム”を崩したい」アイデア具現化のプロセス「想像したものを実現」「身体を使って動くこと」の重要性を力説【日曜日の初耳学】 | MBSニュース | 関西の最新ニュースを分かりやすく。 (1ページ)",
-   "url": "https://newsdig.tbs.co.jp/articles/mbs/2359005?display=1",
-   "words": [],
-   "work": "Vaundy"
-  },
-  {
    "batch": 7,
    "because": "dota2",
    "date": "2026-11-04",
@@ -1645,6 +1636,27 @@
    "url": "https://www.sina.cn/news/detail/5361663826202214.html",
    "words": [],
    "work": "dota2"
+  },
+  {
+   "batch": 7,
+   "because": "Vaundy",
+   "date": "2026-11-01",
+   "hits": [],
+   "image": "https://bellawebsite.s3.ap-northeast-1.amazonaws.com/ogimage/7b3cb322-d644-11f1-a745-067e1fddedd8.webp",
+   "kind": "board",
+   "liked": "Vaundy、「しわあわせ」が急上昇1位 2021年配信楽曲が映画主題歌起用で再生数増（CDJournal）",
+   "score": 5,
+   "source": "Bella.tw儂儂",
+   "taste": [
+    [
+     "作品:Vaundy",
+     1
+    ]
+   ],
+   "title": "Vaundy 突襲 IG 直播，分享了哪些歌曲？",
+   "url": "https://www.bella.tw/articles/aigc/answer/vaundy-59392761",
+   "words": [],
+   "work": "Vaundy"
   },
   {
    "batch": 7,
@@ -2100,11 +2112,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ]
  ]
