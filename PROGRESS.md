@@ -373,3 +373,4 @@
 - 2026-11-04 f1hr83 本番 ux_check --who test-a --part who（1 回・約 10 分）：本番 /rest/v1/ への python の要求 0 件・ブラウザ→本番 75 件（user_login 35＝点検が毎回新しい文脈でログインするため。実利用の 2 枚目ではない）。「ログイン中の 2 枚目」は --part global の中で --part who では走らない＝別に check_login_once を本番で 1 回：user_login 0 回で合格。✗ 2 は先頭の写真が置き場に無い 35 件・E1/E2（既存の BACKLOG 項目）。次：photos を読む道の洗い出し（②）。
 - 2026-11-04 f2hr83 photos の読み道：nostorage を urllib だけでなく http.client・urllib3(requests)・curl_cffi の要求点に移し、import を辿る点検で網を使う 34 本を数える。PR #900。確かめ：全試験。次：24h 後 edge ログで取り込み以外 0。
 - 2026-11-04 plan1：boards PATCH が edge ログで 18 回×13 バッチ/日残っていた＝library.push_shop の上級 parent_id を毎回 PATCH。返りの parent_id と同じなら書かない。photos の edge ログ：#900 合併後の 21 時台は 0 件（24h 後に取り込み以外 0 を数え直す）。E15 案 B は網で確かめられず #901 のまま。
+- 2026-11-05 plan2：①は f1 で済み（user_login 0 回）。②photos の edge ログ：#900 合併後 21 時台以降 0 件（直前は 18〜20 時に 60〜86 件/時）。③は #902。④は網で確かめられず BACKLOG に先の 1 段。BACKLOG に 4 段足した。次：24h 後に photos 数え直し。
