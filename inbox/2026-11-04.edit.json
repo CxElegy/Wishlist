@@ -124,7 +124,8 @@
    "weight": "lead",
    "refs": [
     14,
-    42
+    42,
+    62
    ],
    "image": "https://cdn.abcotvs.com/dip/images/19681555_081426-cc-getty-d23-ent-showcase-doomsday-cast-img.jpg"
   },
@@ -193,7 +194,17 @@
     21,
     34,
     53,
-    52
+    52,
+    63
+   ]
+  },
+  {
+   "headline": "Marvel Reportedly Has a Frontrunner for Magneto in Its Upcoming X-Men Reboot",
+   "highlight": "Magneto",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    64
    ]
   }
  ],
@@ -396,7 +407,7 @@
  ],
  "_covered": {
   "GTA 6": 105,
-  "漫威电影": 58,
+  "漫威电影": 64,
   "三星手机": 31,
   "哈利波特剧集": 11,
   "周杰伦": 22,
