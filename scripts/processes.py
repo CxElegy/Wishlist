@@ -271,7 +271,7 @@ PROCESSES = [
                       ("順番待ち", "毎時と収集のあとに 6 本並列で処理 · 40 分で終わらなければ続けてもう一度（3 回まで）"),
                       ("いま処理中", "版面と段（① ② ③）を live_status に書く（無料枠：探し中は 20 秒かかった版面だけ・書いていない行の DELETE は送らない）→ 管理ページ「いま動いているもの」に 30 秒ごと")]},
             {"id": "b8l", "kind": "step", "lane": "web", "title": "作業の 1 行 1 行をライブログへ",
-             "text": "候補ごとに外した理由・段・結果を Supabase の live_log に（8 秒ごとにまとめて送る）→ 管理ページのライブログが 3 秒ごとに読む · 2 日より前の行は始めに消す · 「今すぐ再挑戦」から起きたときはそう書く",
+             "text": "前の回が終わらず落ちていたら、次の回の頭で小元素の帯の行（live_status の proc=emblem）を消す · 候補ごとに外した理由・段・結果を Supabase の live_log に（8 秒ごとにまとめて送る）→ 管理ページのライブログが 3 秒ごとに読む · 2 日より前の行は始めに消す · 「今すぐ再挑戦」から起きたときはそう書く",
              "uses": ["supabase"]},
             {"id": "b9", "kind": "store", "lane": "repo", "title": "items.yaml · docs/home/emblems · state/emblem_progress.json · state/log",
              "text": "変わったときだけコミット → ページ生成"},
@@ -324,7 +324,7 @@ PROCESSES = [
         "flow": [
             {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 40 分まで · 同時に 1 本 · 前の回に時間切れで残った版面・初めて取る版面（新関注項）を先に取る · 管理ページの小元素の格子（digest.emblem_detail）は失敗の待ちに時刻を出さず「材料待ち」と書く"},
             {"id": "c1s", "kind": "step", "lane": "actions", "title": "Supabase が 402 でも落とさない（sbstate）",
-             "text": "【2026-11-05】版面の「更新中」の書き込みを減らす（digest.live_mark：探し中は 20 秒かかった版面だけ書き、書いていない行の DELETE は送らない）。【2026-11-04】storage の中身を読む処理は sbstate.storage_read（写しだけ・無ければ NotCached・網に出ない）。digest.supabase・user_pages・livestatus・edit_control の読み書き・gate・写真の置き場（sbstate.sb_open）が 402（無料枠超過）を見たら、例外にせず None で飛ばし、同じ回では呼び直さない。ジョブは続き、収集・出刊・公開は止まらない。同期の印（state/db_news.json など）が進まないので、制限が外れた次の回がまとめて送り直す。状態は state/supabase_status.json（変わったときだけ書く＝入った・戻った瞬間だけ Discord に 1 通。送るのは state を commit する digest.yml だけ〔SBSTATE_PING〕、告げた状態は told に残す＝commit しない回は何度 402 を見ても送らない）。ライブラリ系（library・library_design・library_emblem）は DB が読めないとき制限中なら緑で終える（sbstate.need_db）。見回りの読み取り（投票・小分類の分け方・篇幅・AI 編集の開関）は 1 つの処理の中で 60〜120 秒使い回す（sbstate.memo）＝API の回数を減らす"},
+             "text": "【2026-11-05】同じ版面の live_status の書き込みは 1 本ずつ（Timer の POST の途中に DELETE が来ても POST のあと）。版面の「更新中」の書き込みを減らす（digest.live_mark：探し中は 20 秒かかった版面だけ書き、書いていない行の DELETE は送らない）。【2026-11-04】storage の中身を読む処理は sbstate.storage_read（写しだけ・無ければ NotCached・網に出ない）。digest.supabase・user_pages・livestatus・edit_control の読み書き・gate・写真の置き場（sbstate.sb_open）が 402（無料枠超過）を見たら、例外にせず None で飛ばし、同じ回では呼び直さない。ジョブは続き、収集・出刊・公開は止まらない。同期の印（state/db_news.json など）が進まないので、制限が外れた次の回がまとめて送り直す。状態は state/supabase_status.json（変わったときだけ書く＝入った・戻った瞬間だけ Discord に 1 通。送るのは state を commit する digest.yml だけ〔SBSTATE_PING〕、告げた状態は told に残す＝commit しない回は何度 402 を見ても送らない）。ライブラリ系（library・library_design・library_emblem）は DB が読めないとき制限中なら緑で終える（sbstate.need_db）。見回りの読み取り（投票・小分類の分け方・篇幅・AI 編集の開関）は 1 つの処理の中で 60〜120 秒使い回す（sbstate.memo）＝API の回数を減らす"},
             {"id": "c1d", "kind": "decision", "lane": "actions", "title": "始めてから 18 分たっていない？", "text": "版面ごとに、取り始める前に見る（COLLECT_DEADLINE_MIN）· 始まった版面が 23 分たっても終わらなければ待たずに先へ（固まった版面も次の回へ。そのスレッドがあとで終わっても帯は立て直さない・情報員の様子は写しを読む）",
              "uses": ["deadline"], "yes": "↓ その版面を取る", "no": "その版面は始めない → 次の回に先に取る（ログ「時間切れで N 版面を次の回へ」）"},
             {"id": "c2", "kind": "fan", "lane": "ext", "title": "記事を集める", "x": "×6 関注項を同時に", "mode": "それぞれのサイトへ",
@@ -410,7 +410,7 @@ PROCESSES = [
                    "版面に載るのは AI 編集が整理した記事だけ（それまでは「整理待ち」、要紧だけ先に載る）。",
         "files": ["EDITING.md", "scripts/digest.py", "scripts/lang.py", "TEMPLATES.md"], "doc": "EDITING.md", "uses": ["claude", "imgpick", "pending", "lang"],
         "flow": [
-            {"id": "e1", "kind": "step", "lane": "ai", "title": "最新の inbox を読む"},
+            {"id": "e1", "kind": "step", "lane": "ai", "title": "最新の inbox を読む", "text": "帯（live_report）は同じ回で同じ（状態・言葉）を二度送らない（digest._live_edit_report）"},
             {"id": "e2", "kind": "decision", "lane": "ai", "title": "今日の整理待ちがある？", "text": "_covered より後の記事・edit.json にない版面", "no": "何も変えずに終わり"},
             {"id": "e3", "kind": "step", "lane": "ai", "title": "版面の設計・小元素", "by": "ai", "text": "motif・theme・like_fx · 足りない小元素（「小元素の選定」）"},
             {"id": "e3q", "kind": "decision", "lane": "actions", "title": "次の版面は？ edit-next", "text": "管理ページの開関（edit_control）：一時停止 → 止める · 1 版面ずつで 1 つ済 → 止めて pause に · 設定ページで足して設計（motif・theme）がまだの関注項があれば DESIGN（設計が終わるまで記事の編集に進まない）· やり直しの版面が最初、あとは整理待ちの多い順に 1 版面（規則・トークン 0）",
