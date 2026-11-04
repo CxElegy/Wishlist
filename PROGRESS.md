@@ -363,3 +363,5 @@
 - 2026-11-04 f3f1：402 の通し点検の穴 3 つを塞いだ。①縮みを JSON のバイト数・要素数でも数える（photo_store.json は 1 行 389KB）②workflow の入口を全部数える点検（名簿に無い入口が赤）で入口 13→25 本、走らせない物は理由つきで NOT_COVERED ③402 を 1 回も受けない入口は赤（受けなくてよい 13 本は NO_HITS に理由）。結果：全入口 終了 0（notify-weekly は webhook 無しで 1＝RC_OK）・名簿外の縮み 0。見つけたこと：repair-images は網の無い所で reports/*.json を 1350 行縮める（402 と別の原因・BACKLOG）。次：repair-images の網なしの縮みの切り分け。
 
 - 2026-11-04 f3f2：402 の通しの最後の穴（収集の本体）。fake402_check に `digest all`・`digest ingest`・`repair-images` を足した（止める口 WL_COLLECT_LIMIT・WL_REPAIR_LIMIT、外の網は閉じたプロキシ）。見つけた本物の穴：repair-images が網エラーで報道の画像を外す（直す前 reports/ 4621 バイト縮み→直した後 0）。images.unusable で直した。本体は reports/inbox 縮み 0。次：photo_cache_fill・pages_health の入口、404 が多い回の門。
+
+- 2026-11-04 f4：ログイン中のページを開くたびの user_login（書き込みつき）を、同意済みなら 1 時間に 1 回までにした（render.py の me.chk）。連動の範囲：user_login の呼び口 2 つのうち開く時の 1 つ（ログイン直後は必ず呼ぶ）。点検：ux_check の「本番への要求 n 件」で user_login が 1 回目だけになること。次：本番で ux_check を 1 回測る。

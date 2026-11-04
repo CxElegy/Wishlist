@@ -663,7 +663,7 @@ PROCESSES = [
             {"id": "a1", "kind": "step", "lane": "web", "title": "右上の「はじめのページ」（入口 ../?stay、見るだけでもログイン中でもいつも見える）/「ログイン」",
              "text": "だれでもメールアドレス＋パスワード（2026-10-21：ユーザー名 → メールだけ → メール＋パスワード）。ログイン = signInWithPassword → user_login（規約の版）。新しく始める（入口）＝メールが未登録かを打つたびに確かめ（name_available）、パスワード 8 文字以上を 2 回、規約に同意 → user_signup（p_password つき）→ そのままログイン。このブラウザが覚える（ログアウトまで）。退会の機能はなし", "uses": ["maillink", "terms"]},
             {"id": "a1b", "kind": "decision", "lane": "web", "title": "同意した版 ＜ いまの版？",
-             "text": "開くたびに user_login で確かめる（TERMS_VERSION）",
+             "text": "規約の版（TERMS_VERSION）を user_login で確かめる（同意済みなら 1 時間に 1 回まで。2026-11-04 egress 対策）",
              "yes": "同意の画面（同意しないならログアウトして見るだけ）", "no": "そのまま"},
             {"id": "a2", "kind": "decision", "lane": "web", "title": "管理者のメール？",
              "text": "is_admin_email が invites 表（role=admin）を見る",
