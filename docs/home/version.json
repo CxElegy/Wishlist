@@ -1,6 +1,6 @@
 {
  "admin": "bb5b353e9427",
- "admin-ai": "2b2fa8b1feae",
+ "admin-ai": "b67ca3b753e5",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "6f8e2c72"
+   "65a8276c"
   ]
  },
  "admin-boards": "fb7bebe41421",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "de01f8354325",
+ "admin-emblem": "a621a33454ac",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e098ba2f"
+   "95922466"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "aacefc722651",
  "admin-members_marks": {},
- "admin-now": "ea51329fdc96",
+ "admin-now": "8378562bd38c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "e8250b68"
+   "ccab24d5"
   ]
  },
- "admin-system": "1b371c601609",
+ "admin-system": "3ec6369f332e",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a0acdbf3"
+   "0d27f808"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "ce5facd7"
   ]
  },
- "index": "057e5ce669c6",
+ "index": "509b0d3ddff1",
  "index_marks": {
   "front": [
    "トップ",
-   "945929e5"
+   "5fe6b02a"
   ],
   "picks": [
    "気になるかも？",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "9c2bcea6"
+   "12a4fe9d"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -161,11 +161,11 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "329f43eb"
+   "a61d1d66"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "663ae7d6"
+   "7e5dbe4c"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "6bcd4bfe"
   ]
  },
- "updated": "11.05 00:01",
+ "updated": "11.05 00:22",
  "wishlist": "5712af2f67cf"
 }
