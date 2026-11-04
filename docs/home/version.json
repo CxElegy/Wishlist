@@ -1,32 +1,32 @@
 {
- "admin": "11143c8e08a2",
- "admin-ai": "55a2957b0e51",
+ "admin": "e51a26a7736e",
+ "admin-ai": "ca605280561e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "af5fed6a"
+   "50a97112"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "1646b2d4"
+   "a5cc2bac"
   ]
  },
- "admin-boards": "9e79920a2ac1",
+ "admin-boards": "45d853ddee95",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "ba0207d2"
+   "33b163bf"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "69186953a365",
+ "admin-emblem": "6ce0b1a83486",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e0726d51"
+   "b473a5f7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e99885d19016",
  "admin-members_marks": {},
- "admin-now": "635c1b50bfe8",
+ "admin-now": "ba931162463c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "6253fbb1"
+   "8c70fbef"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "422bf51d"
+   "a9aa4a88"
   ]
  },
- "admin-system": "1373c36c4eee",
+ "admin-system": "365a8a90c23a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c4a79cb6"
+   "8060a447"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "907cc9c1"
+   "91bd3465"
   ]
  },
  "admin_marks": {},
- "heat": "c64d662ef01a",
+ "heat": "690cced5cced",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "b2f9c3ff"
+   "1c313ac5"
   ],
   "ranking": [
    "ランキング",
-   "6d3a0b8f"
+   "4f7d0b3e"
   ]
  },
- "index": "5ce6935f0274",
+ "index": "0b5c86a1c7fd",
  "index_marks": {
   "front": [
    "トップ",
-   "93e358ae"
+   "202f2648"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "a920ac2f"
+   "b6c6083e"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "aae6cb09"
+   "44ad3d52"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "352040e3"
+   "15c2c684"
   ],
   "w-b867582f": [
    "あつ森",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "35efb481"
+   "1bde391e"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "01f55a3b"
+   "43defd7e"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "0506324d"
+   "62402f12"
   ],
   "w-f303ad09": [
    "绝区零",
    "4028fc46"
   ]
  },
- "updated": "11.04 13:21",
+ "updated": "11.04 13:32",
  "wishlist": "37339ac813cd"
 }
