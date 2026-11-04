@@ -24,6 +24,22 @@ import processes  # noqa: E402
 import render  # noqa: E402
 import sitedir  # noqa: E402
 import runlog  # noqa: E402
+import wikihttp  # noqa: E402
+
+
+def _no_net(url, *a, **k):
+    raise OSError("試験は本物の Wikimedia・Fandom を引かない（引いて CI が 23 分待って落ちた・2026-11-04）: " + str(url))
+
+
+_real_get = wikihttp.get
+
+
+def setUpModule():   # この file の間だけ（test_wikihttp は本物の get を試す）。試験が mock.patch で差し替えたものはその試験の間そちらが効く
+    wikihttp.get = _no_net
+
+
+def tearDownModule():
+    wikihttp.get = _real_get
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
