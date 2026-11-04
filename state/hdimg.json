@@ -748,12 +748,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.stardailynews.co.kr/news/photo/202611/601301_601389_543.jpg": {
-  "w": 1800,
-  "h": 1086,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.utaten.com/uploads/images/specialArticle/10324/3f786fa5a4cc1739c2291e08bfcf1e7e52140a71.jpeg?type=original?r=2026110310": {
   "w": 1200,
   "h": 630,
@@ -1336,6 +1330,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://i01.ftnn.com.tw/a/26/307/26307091517658703d556b.png": {
+  "w": 660,
+  "h": 371,
+  "target": 720,
   "v": 3
  },
  "https://i1.ytimg.com/vi/49i2KUiKOlQ/hqdefault.jpg": {
@@ -1973,12 +1973,6 @@
   "w": 800,
   "h": 1199,
   "target": 1280,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/03/5628427_2.jpg": {
-  "w": 800,
-  "h": 1053,
-  "target": 720,
   "v": 3
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
@@ -4256,6 +4250,19 @@
   "out": [
    1280,
    852
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.ccIBb62eAQi5bMqUk9SzJA&pid=News&w=1200": {
+  "w": 700,
+  "h": 422,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.467,
+  "local": "pics/13a66f0bb765ca3c.webp",
+  "out": [
+   1280,
+   772
   ],
   "why": "看不清"
  },
