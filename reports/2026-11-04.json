@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "edit_sig": "11cc9a9705e1",
+ "edit_sig": "ad826db9e116",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?bqVdDUNTL2GwsM_MMMW0M",
@@ -154,15 +154,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 12,
-     "source": "Nacionale",
-     "title": "Is the HBO Harry Potter series coming in 2027? No, it starts on Christmas Day 2026",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPZ3ctZ2RDWmRyR3VNaUk1TmZrTEt6TktFOGFGQ3RPZ3FPSDNVbHlwUG5WX3hUTG5FdVk3STY4VTFaaXFFeTZXMFN1OXVxN05NY1ViTThrM3c5eE5kSXNtd0VrdWZZWWJ1VmZpOU1lNzZ2dnJtUTA3MjhkYkNLbWdPcldVYTd1bFRrdlg4Rm15RHlEODExZmhYZHNreWF5Sm56Q1N3Rmdoc0c4UQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -206,6 +197,16 @@
      "image": "https://static.standard.co.uk/2026/11/02/16/2268333737..?width=1200&auto=webp&quality=75",
      "image_via": "og:image",
      "url": "https://www.standard.co.uk/showbiz/harry-potter-oxford-street-christmas-protest-b1303284.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "Is the HBO Harry Potter series coming in 2027? No, it starts on Christmas Day 2026",
+     "highlight": "Christmas Day 2026",
+     "image": "https://media.nacionale.kabineti.net/uploads/desk_0ad7de5a47_6e74a25069.jpg",
+     "image_via": "og:image",
+     "url": "https://www.nacionale.com/en/articles/hbo-harry-potter-series-2027-or-christmas-2026-release-date-season-2",
      "weight": "normal"
     }
    ],
@@ -771,15 +772,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 3,
-     "source": "PR TIMES",
-     "title": "北海道に「コミLab.」初上陸！『原神』『ゼンレスゾーンゼロ』『崩壊：スターレイル』など、公式グッズ1,400種類以上を取り揃えた売場が未来屋書店旭川西店に誕生",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE42bThnSjNhaHBGb0ExVVFVWFZ1MXJEWjJyVTBGMkV3TzYwTjlfVzNaVUdHU2d3WkwwenFpT24wOE5iWnpiUURKb09UMXZZU2lfUmJ0Z3pWT0hPTzNlZXZ2TE9uZzFwVjVzSFE?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -791,6 +783,16 @@
      "image_via": "og:image",
      "url": "https://note.com/mockingbird3/n/n35fc6a77393d",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "北海道に「コミLab.」初上陸！『原神』『ゼンレスゾーンゼロ』『崩壊：スターレイル』など、公式グッズ1,400種類以上を取り揃えた売場が未来屋書店旭川西店に誕生",
+     "highlight": "北海道に「コミLab.」初上陸",
+     "image": "https://prcdn.freetls.fastly.net/release_image/152182/163/152182-163-6940f6d29db4c53d940bb6a03ba893ae-2304x1820.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000163.000152182.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",
