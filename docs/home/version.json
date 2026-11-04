@@ -1,32 +1,32 @@
 {
- "admin": "5e8d84e418df",
- "admin-ai": "46a87bd511bb",
+ "admin": "7f160c482b12",
+ "admin-ai": "39bc89ccb6e1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d14a255b"
+   "4a5fdf16"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "65a8276c"
+   "84cafa70"
   ]
  },
- "admin-boards": "7c84e11926e0",
+ "admin-boards": "1fa54a95ef55",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "af52b551"
+   "81b036c6"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "f538d77d02af",
+ "admin-emblem": "75c6b31827c6",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4dc74183"
+   "8e923744"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "aacefc722651",
  "admin-members_marks": {},
- "admin-now": "9b3a59cea918",
+ "admin-now": "ad22a350b827",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "33dbe1cb"
+   "d3b98bed"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b97b7ce0"
+   "b1be4b83"
   ]
  },
- "admin-system": "10638793b818",
+ "admin-system": "6a6f3138979f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c787567a"
+   "724864f6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "dac5625a"
+   "ffc6c1d0"
   ]
  },
  "admin_marks": {},
- "heat": "245417cb51a0",
+ "heat": "26e09be0808d",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "578af8d6"
+   "c1777b4f"
   ],
   "ranking": [
    "ランキング",
-   "f450ff65"
+   "32f341e1"
   ]
  },
- "index": "8ed42aa0abc5",
+ "index": "aa4fea27cb0a",
  "index_marks": {
   "front": [
    "トップ",
-   "2b10dddf"
+   "2996e238"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "edc413be"
+   "6eb9ebfa"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1bf68dc3"
+   "f41110e9"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -196,6 +196,6 @@
    "6bcd4bfe"
   ]
  },
- "updated": "11.05 00:36",
+ "updated": "11.05 00:42",
  "wishlist": "5712af2f67cf"
 }
