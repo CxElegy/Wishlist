@@ -350,3 +350,4 @@
 - 2026-11-04 f1：お客さまだけの版面の写真を置き場へ（user_pages→pages/_fp/imgs.json 1 本→photo_store）。pages/ は読まない。tests 通る。次：合併後 photo_store.yml→photo_cache.yml→pages_served --who test-a を 1 回。
 - 2026-11-04 plan1d 計画：BACKLOG に 4 段（photo cache の保存失敗が 30 回中 6 回赤・boards PATCH の出所確定・点検道具の本番 REST 読み 0・定時の Supabase 呼び出し見積もり表）。boards の書き込み道は scripts を全読して put_config 以外に毎回変わる道は無し→put_config が変わった鍵名をログに出すようにした。架構図：不用改（診断ログ 1 行）。次：pages_served の確認（render→photo_cache→Pages の後）。
 - 2026-11-04 plan1d：#875 の確かめ。pages_served（test-a/b/c × 1 回）= Pages 100.0%・storage 0・/p/ 失敗 0（426 件）。次：PR #876 合併後に ux_check。
+- 2026-11-04 plan1d：#876 合併。ux_check --who guest は pages_served が分母 0 で ✗（点検の穴・BACKLOG に段）。他は ✓。
