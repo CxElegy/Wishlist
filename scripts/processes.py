@@ -408,7 +408,7 @@ PROCESSES = [
         "schedule": [(0, 0), (9, 0)],   # 日本時間 9:00 / 18:00（ユーザーが決めた）。ゲート（gate.SLOTS）が整理待ちがあるときだけ起こす
         "when": "版面に整理待ちが溜まったら（収集のあと・後台作業）",
         "trigger": "版面ごとに整理待ちが 3 件以上・いちばん古いものが 2 時間・初めての版面になったら、収集のあと（digest.yml）と後台作業（毎時）のゲートが起こす（9:00・18:00 は待たない・1 日のトークン上限 100 万）（動かなければ 60 分あけて起こし直す）／ 管理ページの「今すぐ実行」「AI 編集をもう一度起こす」でいつでも ／ 新しい関注項が入ったとき（収集のあと、ゲート経由 GATE_NOW：1 日 2 回の定時だけ飛ばし、編集中〔60 分以内に起こし済み〕・停滞・一時停止・GATE_FIRE は守り、起こしたことを記録）",
-        "summary": "inbox の記事から重要なものを選び、同じ件を合わせて（言語違いは主言語の 1 本に）、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。"
+        "summary": "edit.json を報告が取り込んでいないときの出刊し直し（heal）は、前の報告で選び済みの絵と版面の cover を残す（2026-11-05）。inbox の記事から重要なものを選び、同じ件を合わせて（言語違いは主言語の 1 本に）、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。"
                    "版面に載るのは AI 編集が整理した記事だけ（それまでは「整理待ち」、要紧だけ先に載る）。",
         "files": ["EDITING.md", "scripts/digest.py", "scripts/lang.py", "TEMPLATES.md"], "doc": "EDITING.md", "uses": ["claude", "imgpick", "pending", "lang"],
         "flow": [
@@ -608,7 +608,7 @@ PROCESSES = [
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
             {"id": "p2b", "kind": "decision", "lane": "actions", "title": "報告が最新の edit.json を取り込んでいる？",
              "text": "reports の edit_sig（edit.json の SHA-1 先頭 12 桁）と比べる。収集が古い checkout で出刊している間に AI 編集が push した／競合で報告だけ相手側が残った場合は「いいえ」",
-             "no": "publish(heal) で出刊し直す（edit.json を取り込むだけ・おすすめや配図の再探しは飛ばす）"},
+             "no": "publish(heal) で出刊し直す（edit.json を取り込むだけ・おすすめや配図の再探しは飛ばす。前の報告で選び済みの絵〔同じ網址の image・image_via〕と版面の cover・theme は keep_from_report で残す＝作り直して作品封面に戻らない・2026-11-05）"},
             {"id": "p1emb", "kind": "step", "lane": "web", "title": "小元素は帯の上へ 15% はみ出して立体に（render.EMB_JS place・案 A）", "x": "店長・お客さま共通", "text": "帯の高さを測って --s（最大 1.15 倍）・--lift（足りない分は持ち上げる）を決め、絵の高さの 15% を帯の上の縁から外へ。下端は帯の線のまま・墨の硬い影 4px＋薄いぼかし。点検 emb_check E28（はみ出し ≥10%・線より下 14px まで・影あり）"},
             {"id": "p3", "kind": "step", "lane": "actions", "title": "話題度を計算", "uses": ["heat"]},
             {"id": "p4", "kind": "step", "lane": "actions", "title": "トップの配色", "uses": ["octree"]},
