@@ -171,18 +171,8 @@ jobs:
           git add docs
           git commit -q -m "后台作業 $(TZ=Asia/Tokyo date +'%F %H:%M')"
           git stash -q --include-untracked || true   # コミットしなかったゲートの記録（判断が同じ）は捨てる：pull --rebase の邪魔になる
-          for i in 1 2 3; do
-            if python scripts/pull_rebase.py; then
-              python scripts/digest.py render
-              git add docs
-              git diff --cached --quiet || git commit -q --amend --no-edit   # 上の「后台作業」の提交に畳む（別の提交を足さない＝main の提交が 1 回につき 1 つ）
-              git push && exit 0
-            else
-              git rebase --abort || true
-            fi
-            sleep $((i * 5))
-          done
-          exit 1
+          # 取り込んで作り直した docs は上の「后台作業」の提交に畳む（main の提交が 1 回につき 1 つ）
+          python scripts/push_main.py --regen "python scripts/digest.py render"
 
       # 収集の回で入った新しい記事の写真も、次の定時（3 時間ごと）まで原寸のまま届かないように：発布のあと置いていない写真があれば一時保管を起こす
       - name: 置いていない写真があれば一時保管を起こす

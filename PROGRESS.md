@@ -380,3 +380,5 @@
 - 2026-11-05 f1f1：E15 案 B 続き 2。#911 後も 0 枚の根は「公式が先」が character 限定（group 未対応）。group に拡張・試験 1 つ。次：合併後 background dispatch で YOUNG/HIMEKI と ux_check E15。
 - 2026-11-05 f1：E15 案 B 続き 4。公式の候補が strict の本人確認で毎回「別人」（A2O LITE 6 人・漫威电影 1 人）→ official_cands に trust_id（閾値そのまま）。PR #920。次：background dispatch で A2O LITE の枚数・FROM は公式に人ごとの絵なし。
 - 2026-11-05 f1 hr93：本 3 ①②③。#922 公開ログからお客さまの版面の名前・scrapling の網址を外す（合併後 library_emblem の log で名前 0・Fetched 0）。#923 古い db/*.sql 7 本に流し直し禁止・pw_setup 行を無効・3 関数の search_path 固定（本番適用・呼び出し確認済み）。ux_check --fast は時間切れ・✗ 6 は前からの写真の件。次：本 3 ④⑤⑥ か E15 案 B。
+- 2026-11-05 f1（本 4 第 1 段）：種族・敵の型・物を名簿から分類で外す（emblem.THING_CAT・NAMES_V 14）・E17 をお客さまの版面にも（boards_not_people）。実データ：お客さま 16＋店長 7 版面で外れるのはスプラ 3 の 12・ゼルダ Fairy・モンハン Wyverians のみ（Ganon・Frye・Big Man は残る）。次：名簿の数え直しの回の後で E17 お客さま 0・浦原＝夜一・ゼルダの名簿
+- 2026-11-05 f1：#920 合併→后台 dispatch で A2O LITE 2→4 枚（HIMEKI・AYUNE が公式に）。VORA・XILI・MERCI は切り抜きの検査で外れ＝次の段。ux_check --fast の ✗ は写真の一時保管（別の係）。

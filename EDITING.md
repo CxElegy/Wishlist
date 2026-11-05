@@ -67,9 +67,9 @@
    ```bash
    git add inbox reports state docs
    git commit -m "编排 YYYY-MM-DD：GTA 6"
-   git pull --rebase && git push origin main
+   python scripts/push_main.py --regen "python scripts/digest.py render"
    ```
-   推送被拒就再 `git pull --rebase` 一次后重推（`docs/` 冲突时以重新生成为准：`python scripts/digest.py render` 后再提交）。做了版面模版的，`git add` 再加上 `templates items.yaml`。
+   `push_main.py` 会取最新的 main、重新生成网页并合进这次的提交，被抢先时自动等一下再试（最多 6 次）。做了版面模版的，`git add` 再加上 `templates items.yaml`。
    **推送失败（403 等权限错误）就停下**，不要接着编下一个，把错误原文写出来。
    推完回到 `edit-next`。
    不要动 `scripts/`、工作流文件；`items.yaml` 只能改版面模版那一步说的 `motif`、`theme`、`notes`。

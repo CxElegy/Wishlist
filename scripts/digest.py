@@ -1647,20 +1647,39 @@ def take_item_requests():
         ITEMS_FILE.write_text(text if text.endswith("\n") else text + "\n", encoding="utf-8")
         _drop_emblem_files(dropped, items)
         log_emblem_rejects(dropped)
-    now = dt.datetime.now(dt.timezone.utc).isoformat()
-    try:
-        if done:
-            supabase(f"item_requests?id=in.({','.join(str(r['id']) for r in done)})",
-                     {"status": "done", "handled_at": now}, "return=minimal", method="PATCH")
-        for rid, why in skipped.items():
-            supabase(f"item_requests?id=eq.{rid}", {"status": "skipped", "handled_at": now, "note": why},
-                     "return=minimal", method="PATCH")
-    except Exception as err:  # 标不上的下次还会读到：新增的会因为名字已存在被跳过，修改的再改一次结果一样
-        print(f"  [关注项] 标记请求失败：{err}", file=sys.stderr)
+    marks = {"done": [r["id"] for r in done], "skipped": {str(k): v for k, v in skipped.items()}}
+    later = os.environ.get("WL_ITEM_MARKS")
+    if later:   # workflow：push が通ってから mark-items で done にする（先に done にして push に負けると設定の変更が黙って消えた。2026-11-05 全体点検）
+        old = json.loads(pathlib.Path(later).read_text(encoding="utf-8")) if pathlib.Path(later).exists() else {"done": [], "skipped": {}}
+        pathlib.Path(later).write_text(json.dumps({"done": old["done"] + marks["done"], "skipped": {**old["skipped"], **marks["skipped"]}}), encoding="utf-8")
+    else:
+        mark_item_requests(marks)
     for r in done:
         what = ("删除" if (r.get("config") or {}).get("_delete") is True else "小元素を操作" if any(k in (r.get("config") or {}) for k in EMBLEM_KEYS)
                 else "修改" if r.get("action") == "edit" else "加入")
         print(f"关注项：从设置页{what}「{r['name']}」", file=sys.stderr)
+
+
+def mark_item_requests(marks):
+    """設定ページの依頼に done / skipped を付ける（marks = {"done": [id], "skipped": {id: 理由}}）。"""
+    now = dt.datetime.now(dt.timezone.utc).isoformat()
+    try:
+        if marks["done"]:
+            supabase(f"item_requests?id=in.({','.join(str(i) for i in marks['done'])})",
+                     {"status": "done", "handled_at": now}, "return=minimal", method="PATCH")
+        for rid, why in marks["skipped"].items():
+            supabase(f"item_requests?id=eq.{rid}", {"status": "skipped", "handled_at": now, "note": why},
+                     "return=minimal", method="PATCH")
+    except Exception as err:  # 标不上的下次还会读到：新增的会因为名字已存在被跳过，修改的再改一次结果一样
+        print(f"  [关注项] 标记请求失败：{err}", file=sys.stderr)
+
+
+def mark_items_later():
+    """take-items が WL_ITEM_MARKS に残した印を、push が通ったあとで付ける。"""
+    p = pathlib.Path(os.environ.get("WL_ITEM_MARKS") or "")
+    if p.name and p.exists():
+        mark_item_requests(json.loads(p.read_text(encoding="utf-8")))
+        p.unlink()
 
 
 def sync_db():
@@ -4061,7 +4080,7 @@ def _log_edit_batch(latest, edit, n):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "edit-queue", "edit-next", "edit-brief", "hd-images", "prune-reddit", "retry-images"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "edit-queue", "edit-next", "edit-brief", "hd-images", "prune-reddit", "retry-images", "mark-items"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）；edit-brief 用：第几批")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -4140,6 +4159,8 @@ def main():
         export_photos()
     elif args.step == "take-items":
         take_item_requests()
+    elif args.step == "mark-items":
+        mark_items_later()
     else:
         take_item_requests()  # 设置页上新增的关注项先写进 items.yaml，这次就开始收集
         export_photos()  # 拍照加愿望：导出新照片给 Claude 定时任务处理

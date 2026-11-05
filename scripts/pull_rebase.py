@@ -11,7 +11,10 @@ import sys
 
 
 def git(*a, check=False):
-    return subprocess.run(["git", *a], capture_output=True, text=True, check=check)
+    try:   # 網が詰まっても回ごと止まらない（2026-11-05 全体点検：git に timeout が無かった）
+        return subprocess.run(["git", *a], capture_output=True, text=True, check=check, timeout=180)
+    except subprocess.TimeoutExpired:
+        return subprocess.CompletedProcess(a, 124, "", "timeout 180s")
 
 
 def deleted_conflicts():
@@ -38,7 +41,7 @@ def drop_lines(path, gone):
 
 
 def main():
-    r = git("pull", "--rebase", "-X", "theirs", "-q")
+    r = git("pull", "--rebase", "--autostash", "-X", "theirs", "-q", "origin", "main")   # まだコミットしていない変更があっても止まらない
     for _ in range(50):
         if r.returncode == 0:
             return 0
@@ -50,7 +53,7 @@ def main():
         n = drop_lines("items.yaml", ["emblems/" + g.split("/emblems/")[-1] for g in gone if "/emblems/" in g])
         git("add", "-A", "items.yaml")
         print(f"modify/delete を解いた：{len(gone)} 件・items.yaml の行 {n}", file=sys.stderr)
-        r = subprocess.run(["git", "-c", "core.editor=true", "rebase", "--continue"], capture_output=True, text=True)
+        r = git("-c", "core.editor=true", "rebase", "--continue")
     git("rebase", "--abort")
     print(r.stderr, file=sys.stderr)
     return 1

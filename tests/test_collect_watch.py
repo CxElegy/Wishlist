@@ -560,7 +560,7 @@ class Workflows(unittest.TestCase):
         self.assertNotIn("api.anthropic.com", step["run"])       # 直接起こさない（一時停止・記録を通す）
         self.assertNotIn("if", step)                              # 収集のたびに（溜まった版面があれば起こす）
         self.assertIn("export GATE_NOW=edit", step["run"])        # 新しい関注項は GATE_NOW
-        self.assertIn("git push", step["run"])                   # 起こした記録を push
+        self.assertIn("push_main.py", step["run"])                   # 起こした記録を push
         self.assertIn("すぐの頼みを残した", step["run"])          # 60 分以内で止められた頼み（now_pending）も push する
         self.assertIn("GATE_NOW_ITEMS", step["run"])
         for line in step["run"].splitlines():                    # ゲートが落ちても、データを push したあとの job を赤くしない

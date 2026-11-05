@@ -28,9 +28,9 @@
    ```bash
    git add wishlist.yaml docs inbox/photos
    git commit -m "照片加愿望：<名字>、<名字>"
-   git pull --rebase origin main && git push origin main
+   python scripts/push_main.py --regen "python scripts/digest.py render"
    ```
-   推送被拒就再 `git pull --rebase` 一次后重推。
+   `push_main.py` 被抢先时自动重新拉取再推（最多 6 次）。
 
 ## 不要做的事
 

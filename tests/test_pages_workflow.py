@@ -28,7 +28,7 @@ def docs_pushers():
     out = {}
     for f in WF.glob("*.yml"):
         t = f.read_text()
-        if f.name != "pages.yml" and "git push" in t and pushes_docs(t):
+        if f.name != "pages.yml" and ("git push" in t or "push_main.py" in t) and pushes_docs(t):
             out[re.search(r"^name: (.+)$", t, re.M).group(1).strip()] = f.name
     return out
 
