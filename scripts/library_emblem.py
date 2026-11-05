@@ -468,6 +468,13 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
                 imgs.add(x.get("image"))
                 out.append(x)
             add["emblem"] = out
+        # 外した画像（reject・別人の Commons の写真）は emblem に残さない。外して 0 枚でも空で書く（fill_one が空の emblem の行を消すので
+        # got に emblem がなく、前の config の 1 枚が残っていた：Ado の Alassane_Ouattara、2026-11-05）。固定（lock）は触らない
+        cur = add["emblem"] if "emblem" in add else cfg.get("emblem") or []
+        rej = set(add.get("emblem_reject") or cfg.get("emblem_reject") or [])
+        kept = [x for x in cur if x.get("lock") or not (x.get("source") in rej or emblem_fill.foreign_photo({**item, **got}, x))]
+        if len(kept) != len(cur):
+            add["emblem"] = kept
     cur_em = add["emblem"] if "emblem" in add else cfg.get("emblem")   # 顔の大きさ：新しいものも、前の回から続くもの（網址）も、店長と同じに測る
     if cur_em:
         measured, n = measure_faces(cur_em, fetch)
@@ -626,13 +633,22 @@ def due(boards, now):
             out.append((1.6, st.get("at", 0), b))
         elif emblem_fill.stale_narrow_rejects({"name": b.get("name"), "emblem_kind": "character", **cfg(b)}):   # 解けていない縮めた網址の札（E24）：済み・材料待ちでも 1 回回して fill_one の release_small_rejects に着く
             out.append((1.5, st.get("at", 0), b))
-        elif any(emblem_fill.foreign_photo({"name": b.get("name"), **cfg(b)}, x) for x in cfg(b).get("emblem") or []):
-            # 別人の Commons の写真が残る版面（Ado の Alassane Ouattara）：済みでも 1 回回して fill_one の drop_broken（drop_foreign_group）に着く。BROKEN_V は上げない
+        elif dropped_left(b):
+            # 別人の Commons の写真・reject に入った画像が残る版面（Ado の Alassane Ouattara・フリーレン・鬼滅）：済みでも 1 回回して fill_one の drop_broken（drop_foreign_group）に着く。BROKEN_V は上げない
             out.append((1.5, st.get("at", 0), b))
         elif not zero and int(st.get("bv") or 0) < emblem_fill.BROKEN_V:
             # 公開の箱の小元素を今の壊れ方の規則（頭が切れた・ぼやけた）でまだ見ていない版面は、届かなかった・済みでも待たずに 1 回（ポケモンが 24 時間待ち）
             out.append((1.5, st.get("at", 0), b))
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]
+
+
+def dropped_left(b):
+    """版面の emblem に、外したはずの画像（reject にある元の網址・別人の Commons の写真）が残る枚数。固定は数えない。fill_board が外す。"""
+    import emblem_fill
+    c = cfg(b)
+    rej = set(c.get("emblem_reject") or [])
+    return sum(1 for x in c.get("emblem") or [] if isinstance(x, dict) and not x.get("lock")
+               and (x.get("source") in rej or emblem_fill.foreign_photo({"name": b.get("name"), **c}, x)))
 
 
 def narrow_stale_count(boards):
