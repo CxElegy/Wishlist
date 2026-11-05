@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "7c88a78d33e9",
+ "edit_sig": "8865f79a5f04",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -243,15 +243,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 10,
-     "source": "Indy100",
-     "title": "What we know about Harry Potter HBO TV series as extended trailer drops",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5yam9wTFIwUmxMNnNOdUZyUkRLYUwwOHcwQWlCek1FUWR2MHlqZDBKRjNEQXdnQmY4Smt4d242TWtMeGVicFFmX1ExLVFobVhndHR1dGFyQlV6cWtWT2ozRzEwNENtcUtpUmhodnBlRDVad0RFd0g2bGFVeFU?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -975,31 +966,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "《绝区零》今日发布对 iPhone Duo 机型的适配说明，更新至 3.3.1 版本即可体验。",
      "date": "2026-11-05",
-     "n": 5,
-     "source": "DoNews",
-     "title": "《绝区零》正式适配iPhone Duo，更新至3.3.1版本即可体验",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5lalFBSnV5c09UdkR4b0JqejZuTmIyLVFNLXdpSU9KdG80b3JEU1htdHdUS2l6Y1UwWm5RTDltaXdneFhRTU8zaXN5d1k5aUswZFpjUmZxZVVvVUF0ckE?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 6,
-     "source": "IT之家 on MSN",
-     "title": "《绝区零》宣布适配 iPhone Duo：苹果执行董事长库克曾前往上海米哈游总部，“大伟哥”亲自接待",
-     "url": "https://www.msn.cn/zh-cn/%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%92%8C%E8%AE%BE%E5%A4%87/%E7%BB%9D%E5%8C%BA%E9%9B%B6-%E5%AE%A3%E5%B8%83%E9%80%82%E9%85%8D-iphone-duo-%E8%8B%B9%E6%9E%9C%E6%89%A7%E8%A1%8C%E8%91%A3%E4%BA%8B%E9%95%BF%E5%BA%93%E5%85%8B%E6%9B%BE%E5%89%8D%E5%BE%80%E4%B8%8A%E6%B5%B7%E7%B1%B3%E5%93%88%E6%B8%B8%E6%80%BB%E9%83%A8-%E5%A4%A7%E4%BC%9F%E5%93%A5-%E4%BA%B2%E8%87%AA%E6%8E%A5%E5%BE%85/ar-AA2gO8pg"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 7,
-     "source": "搜狐",
-     "title": "《绝区零》重磅适配iPhone Duo，库克亲临米哈游引发热议！",
-     "url": "https://www.sohu.com/a/1097671355_122004016"
+     "headline": "《绝区零》正式适配iPhone Duo，更新至3.3.1版本即可体验",
+     "highlight": "iPhone Duo",
+     "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2fS5Hb.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.donews.com/news/detail/8/6766502.html",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -1106,15 +1085,6 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 16,
-     "source": "CBC뉴스",
-     "title": "A2O LITE 'NEON' 인기가요 무대 화제…아이찡·시리 고난도 퍼포먼스에 시선 집중 [하반기 결선]",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE4yTmxfMXhoUHJ4UjBPN0RsRkY5MzFwU3BDXzVIRURReXZDMFhrWUM0WUdqSWFzYU5aOTVRUFRzeXlybzJuYU9fZjQxQm90WEpEVV8tdXJZb0NOUElJQU5qRWlQelZiMll4?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1162,8 +1132,8 @@
      "date": "2026-11-05",
      "headline": "A2O LITE, 아이돌차트 아차랭킹 1위…리센느·아일릿 제쳤다",
      "highlight": "",
-     "image": "https://cdn.slist.kr/news/thumbnail/202611/779129_1190477_3233_v150.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg",
+     "image_via": "正文图",
      "url": "https://www.slist.kr/news/articleView.html?idxno=779251",
      "weight": "normal"
     }

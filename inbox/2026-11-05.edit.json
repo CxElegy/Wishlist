@@ -4,14 +4,14 @@
   "三星手机": 58,
   "GTA 6": 105,
   "チェーンソーマン": 19,
-  "A2O LITE": 15,
+  "A2O LITE": 16,
   "dota2": 12,
   "周杰伦": 19,
   "あつ森": 6,
-  "哈利波特剧集": 9,
+  "哈利波特剧集": 10,
   "猫用品": 11,
   "The Mandalorian": 7,
-  "绝区零": 4,
+  "绝区零": 7,
   "ILLIT": 13,
   "日本顶级网球赛事": 2,
   "MMORPG 新作": 20,
@@ -428,7 +428,8 @@
    "refs": [
     10,
     8,
-    14
+    14,
+    16
    ]
   }
  ],
@@ -558,7 +559,8 @@
    "blurb": "Harry Potter HBO series lands on OSN+ this December.",
    "weight": "lead",
    "refs": [
-    4
+    4,
+    10
    ],
    "image": "https://www.absolutegeeks.com/wp-content/uploads/2026/11/images-2.jpeg"
   },
@@ -663,7 +665,20 @@
    ]
   }
  ],
- "绝区零": [],
+ "绝区零": [
+  {
+   "headline": "《绝区零》正式适配iPhone Duo，更新至3.3.1版本即可体验",
+   "highlight": "iPhone Duo",
+   "blurb": "《绝区零》今日发布对 iPhone Duo 机型的适配说明，更新至 3.3.1 版本即可体验。",
+   "weight": "lead",
+   "refs": [
+    5,
+    6,
+    7
+   ],
+   "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2fS5Hb.img"
+  }
+ ],
  "ILLIT": [
   {
    "headline": "ILLIT shares behind-the-scenes footage of 'You’re Under Arrest' recording in Japan",
