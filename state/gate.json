@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-05T20:17:34+00:00",
+ "checked": "2026-11-05T21:17:49+00:00",
  "fired": {
   "at": "2026-11-05T20:17:49+00:00",
   "results": {
@@ -19,30 +19,20 @@
     "resp": "cse_01W4x6f5UfnCxRmbnHbRcf1o",
     "sig": "58ed83ab98d1"
    },
-   "items": [
-    "A2O LITE",
-    "FROM",
-    "周杰伦",
-    "猫用品"
-   ],
-   "last_batch": "2026-11-05T19:01:51+00:00",
+   "items": [],
+   "last_batch": "2026-11-05T20:26:15+00:00",
    "last_error": {
-    "at": "2026-11-05T18:18:15+00:00",
+    "at": "2026-11-05T20:23:02+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 59,
+   "need": false,
+   "prog": 64,
    "prog_day": "2026-11-06",
-   "ripe": [
-    "A2O LITE",
-    "FROM",
-    "周杰伦",
-    "猫用品"
-   ],
-   "sig": "58ed83ab98d1",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 84869,
-   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 131893,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
