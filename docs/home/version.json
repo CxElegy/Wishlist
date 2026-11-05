@@ -1,32 +1,32 @@
 {
- "admin": "0d41a52e4b26",
- "admin-ai": "be2fb51ca440",
+ "admin": "2b66c93b82df",
+ "admin-ai": "e44797c9e48e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "854ee015"
+   "6c949649"
   ],
   "tokens": [
    "AI 編集のトークン",
    "199b8dd0"
   ]
  },
- "admin-boards": "888bf233dc70",
+ "admin-boards": "5905dde156ab",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "1fa4c221"
+   "f303139d"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "e3979d8be66f",
+ "admin-emblem": "3cfe3d489e79",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "faf59f02"
+   "7237eece"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,30 +43,30 @@
  },
  "admin-members": "385c6396a03f",
  "admin-members_marks": {},
- "admin-now": "1d88b0128a4e",
+ "admin-now": "19812913ca02",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "dae8c036"
+   "9d04606d"
   ],
   "queue": [
    "いまの状況",
-   "c7af517a"
+   "d9a87efd"
   ],
   "status": [
    "運行状況",
-   "f2efdf1b"
+   "c4110625"
   ],
   "term-panel": [
    "ライブログ",
-   "5ce38c6d"
+   "387ada91"
   ]
  },
- "admin-system": "7b1cd22a1e2e",
+ "admin-system": "f25472984a16",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f22bef40"
+   "4309e556"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9f8ccc8a"
+   "9a7b54db"
   ]
  },
  "admin_marks": {},
- "heat": "f8550f1c28a2",
+ "heat": "2567ef27e0a6",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "ce86e19a"
+   "8c85b1bd"
   ],
   "ranking": [
    "ランキング",
-   "e841abda"
+   "a51ef527"
   ]
  },
- "index": "556c8efcf386",
+ "index": "9f9e66911ce6",
  "index_marks": {
   "front": [
    "トップ",
-   "347eff7e"
+   "cfd30021"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "976226a0"
+   "af32b938"
   ],
   "w-130724c0": [
    "猫用品",
@@ -133,11 +133,11 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "f4b6fb5c"
+   "ea2391d8"
   ],
   "w-6676e624": [
    "三星手机",
-   "4902cf0c"
+   "73c4ed21"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "ed6ee65f"
+   "c5918694"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d5e6e2c7"
   ]
  },
- "updated": "11.05 15:32",
- "wishlist": "6589ed8d2880"
+ "updated": "11.05 15:46",
+ "wishlist": "09f037ac40bf"
 }
