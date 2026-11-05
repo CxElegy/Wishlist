@@ -1,32 +1,32 @@
 {
- "admin": "8adca6c445dc",
- "admin-ai": "3dc8aa9d12fd",
+ "admin": "f20616b38194",
+ "admin-ai": "ac80dca27318",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "fd7f29bf"
+   "34dc4bc3"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7ccb9de8"
+   "199b8dd0"
   ]
  },
- "admin-boards": "455c524b5000",
+ "admin-boards": "5afbe12d4051",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "802610a9"
+   "a05ea57a"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "e66044edeecc",
+ "admin-emblem": "4155dcc7b250",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "5a103669"
+   "23671e01"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,51 +34,51 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "e7ddb825"
+   "bd85affd"
   ],
   "emblems": [
    "小元素",
-   "3e9c8470"
+   "521cc1d9"
   ]
  },
  "admin-members": "385c6396a03f",
  "admin-members_marks": {},
- "admin-now": "89feb2ad796c",
+ "admin-now": "b71abeaa7145",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2f477c55"
+   "4099aea2"
   ],
   "queue": [
    "いまの状況",
-   "c51fa62f"
+   "ae57b2d9"
   ],
   "status": [
    "運行状況",
-   "ee3b69e7"
+   "026a3153"
   ],
   "term-panel": [
    "ライブログ",
-   "f5cdc6ae"
+   "3998d6fb"
   ]
  },
- "admin-system": "5cc054280b7c",
+ "admin-system": "bfea0e4a21eb",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cd22bf4e"
+   "0130102b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "f0618032"
+   "decd60ee"
   ],
   "res": [
    "リソース・並列と制限",
-   "13599160"
+   "4de20235"
   ]
  },
  "admin_marks": {},
- "heat": "f361f134d6ad",
+ "heat": "3dc4682b8609",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "76719fef"
+   "18036bd0"
   ],
   "ranking": [
    "ランキング",
-   "1935184a"
+   "4b895529"
   ]
  },
- "index": "49adaa71e505",
+ "index": "58a1f39c8135",
  "index_marks": {
   "front": [
    "トップ",
-   "21b8bb39"
+   "8b427773"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "20a1db46"
+   "e65318a7"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "d321ed20"
+   "58492008"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -169,11 +169,11 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "2012384b"
+   "5ef64390"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "f036d319"
+   "2e58855c"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "d5e6e2c7"
   ]
  },
- "updated": "11.05 14:45",
+ "updated": "11.05 15:07",
  "wishlist": "6589ed8d2880"
 }

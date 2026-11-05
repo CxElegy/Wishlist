@@ -233,6 +233,31 @@ def own_recommend(votes, items, issue, rows=None):
         return {"picks": [], "taste": []}
 
 
+def board_rows(follows, latest, rows):
+    """本人の版面の記事 {そろえた名前: {stories}}：ライブラリの board_stories（版面ごとに 1 回・全員が同じもの、library.md）が先。
+    stories（AI 編集のあと）があればそれ、なければ pending（規則で集めたまま）。board_stories にまだ無い版面だけ古い user_boards の行（rows）。
+    latest = {版面 id: board_stories のいちばん新しい日の行}。"""
+    out = dict(rows or {})
+    for f in follows or []:
+        b = f.get("boards") or {}
+        bs = latest.get(b.get("id")) or {}
+        st = bs.get("stories") or bs.get("pending")
+        if b.get("name") and st:
+            out[norm(b["name"])] = {"stories": st, "edited": bool(bs.get("stories"))}
+    return out
+
+
+def latest_stories(get):
+    """board_stories の各版面のいちばん新しい日の行。収集は毎日その日の行を書く（library.put_stories）ので直近 READ_DAYS 日だけ読む
+    （無料枠：14 日分を毎回読まない）。get = _supa と同じ形。"""
+    since = (dt.date.today() - dt.timedelta(days=READ_DAYS)).isoformat()
+    out = {}
+    for r in get(f"/rest/v1/board_stories?day=gte.{since}&select=board_id,day,stories,pending&order=day.desc") or []:
+        out.setdefault(r["board_id"], r)
+    return out
+
+
+READ_DAYS = 2
 IMGS_PATH = "/storage/v1/object/pages/_fp/imgs.json"   # 写真の網址の一覧（非公開の箱・アカウントは持たない）
 
 
@@ -350,6 +375,13 @@ def main(argv):
         return
     except Exception:  # noqa: BLE001  まだ無い・読めない → 全部置く
         fps = {}
+    try:
+        latest = latest_stories(_supa)
+    except sbstate.Limited:
+        return
+    except Exception as ex:  # noqa: BLE001  読めなければ前の user_boards だけで作る
+        print(f"::warning::board_stories が読めなかった（{type(ex).__name__}）")
+        latest = {}
     new_fps = dict(fps)
     pub = photo_store.published()   # Pages に載った写しの名前（外の小元素を /p/ に替えるのは載ったものだけ）
     imgs = {}   # 作ったページの原寸の写真の網址（置き場に未収のもの）。photo_store が読んでお客さまの写真も置き場に入れる
@@ -357,12 +389,12 @@ def main(argv):
         acct = account_of(u["email"])
         try:
             rows = _supa(f"/rest/v1/user_boards?account=eq.{acct}&select=item,sec,state,stories")
-            follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(name,config)&order=pos")
+            follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(id,name,config)&order=pos")
             chosen = {r["section"]: r["scheme"] for r in _supa(f"/rest/v1/nav_schemes?account=eq.{acct}&select=section,scheme") or []}
             pages = {}
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
-            html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline,
-                          themes, follows, chosen, pages, heat_in, votes, prev, pub)
+            html_ = build(u["email"], u.get("prefs") or {}, board_rows(follows, latest, {norm(r["item"]): r for r in rows or []}), shop_items, shop_issue,
+                          settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub)
             photo_store.scan_text([html_, *pages.values()], set(), imgs)
             for name, h in {"index.html": html_, **pages}.items():
                 fp = hashlib.sha1(h.encode("utf-8")).hexdigest()

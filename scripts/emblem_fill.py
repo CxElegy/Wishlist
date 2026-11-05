@@ -81,7 +81,7 @@ RULES = {
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
 PICK_PASSES = 3   # fill_one：1 つの段で、切り抜きの検査に外れた人の次の候補を取り直す回数（最初を含む）
-NAMES_V = 14   # 14：種族・敵の型・物のページ（分類 Species・Races・Items・Types of …・Cut characters：スプラ 3 の Inklings・Steel Eel・Maws、ゼルダの Fairy、あつ森の Xsq）を名簿から外す（emblem.THING_CAT）。 13：13：公式サイトの候補を自動で選ぶ取り方に入れた（AUTO_SOURCES）・回す順で欠けた主役と公式のある人を固定（BLEACH Rukia・Kisuke）。 12：フランチャイズ（subs.kind シリーズ）の名簿は中の作品（P179）の出演者を出た回数の順に（franchise_cast：漫威电影が Avengers: Doomsday 1 作の出演者 33 人で、Iron Man・Cap の主役が入らず 3 枚止まりだった）。 11：種族・役割・名無し（Wyverians・Hunter・Traveler・Manekin）を名簿から外す（emblem.NOT_CHAR）。 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
+NAMES_V = 15   # 15：お客さまの版面（library_emblem.board_item）も版が上がった回に _recount（14 はそろった名簿のスプラ 3 が数え直されず Inklings が残った）。 14：種族・敵の型・物のページ（分類 Species・Races・Items・Types of …・Cut characters：スプラ 3 の Inklings・Steel Eel・Maws、ゼルダの Fairy、あつ森の Xsq）を名簿から外す（emblem.THING_CAT）。 13：公式サイトの候補を自動で選ぶ取り方に入れた（AUTO_SOURCES）・回す順で欠けた主役と公式のある人を固定（BLEACH Rukia・Kisuke）。 12：フランチャイズ（subs.kind シリーズ）の名簿は中の作品（P179）の出演者を出た回数の順に（franchise_cast：漫威电影が Avengers: Doomsday 1 作の出演者 33 人で、Iron Man・Cap の主役が入らず 3 枚止まりだった）。 11：種族・役割・名無し（Wyverians・Hunter・Traveler・Manekin）を名簿から外す（emblem.NOT_CHAR）。 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -1854,6 +1854,9 @@ def commit(item, good, picks, replace=False, log=print):
             with WRITE_LOCK:
                 _set_field(name, "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
             log(f"  [外した] 切り抜きの検査で外れた {len(failed)} 枚を emblem_reject に（次は別の候補）")
+            off = [x for x in chosen if x["image"] in failed and "公式サイトの" in (x.get("why") or "")]
+            if off:   # 公式の候補が落ちた数と理由を版面ごとに出す（A2O LITE の VORA・XILI・MERCI が理由なしで消えていた。点検は emb_check E29）
+                log(f"  [公式で外れた] {name}：{len(off)} 枚（" + "・".join(f"{x['subject']}＝{emblem.CUT_FAIL.get(x['image'], '検査')}" for x in off) + "）")
     return merged
 
 
@@ -2727,12 +2730,20 @@ def stage_closeups(item, bad, log=print):
 OFFICIAL_PER_ROUND = 4   # 1 回の掃除で Fandom から公式に取り直す人数（rembg で切るので重い）
 
 
+def swap_source(item, x):
+    """公式の立ち絵に取り直す元の小元素か：character は Fandom 由来、group（メンバー）は公式サイト以外の全部（Commons・記事の写真：A2O LITE の RADA が Commons のまま）。"""
+    if item.get("emblem_kind") == "group":
+        return "公式サイトの" not in (x.get("why") or "")
+    return emblem.fandom_sourced(x)
+
+
 def fandom_rows(item):
-    """取り直しの対象 = 点検 E21 が数える人：character の版面で、出どころが Fandom・固定でなく、公式サイトに同じ人の立ち絵がある小元素。"""
-    if item.get("emblem_kind") != "character" or item.get("emblem_people"):
+    """取り直しの対象 = 点検 E21 が数える人：character・group の版面で、公式でない出どころ（swap_source）・固定でなく、公式サイトに同じ人の立ち絵がある小元素。"""
+    if item.get("emblem_kind") not in ("character", "group") or item.get("emblem_people"):
         return []
-    return [x for x in item.get("emblem") or [] if isinstance(x, dict) and emblem.fandom_sourced(x) and not x.get("lock")
-            and x.get("shape") == "cutout" and emblem.official_for(item, x)]
+    rej = set(item.get("emblem_reject") or [])   # 公式の絵が全部外した画像（切り抜きの検査で使えない）の人は対象外
+    return [x for x in item.get("emblem") or [] if isinstance(x, dict) and swap_source(item, x) and not x.get("lock")
+            and x.get("shape") == "cutout" and (o := emblem.official_for(item, x)) and not set(o) <= rej]
 
 
 def official_cut(item, x, skip, orig=None):
@@ -2751,7 +2762,7 @@ def official_swap(item, log=print):
         return 0
     name = item["name"]
     skip = {u for u in item.get("emblem_reject") or []} | {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
-    swapped = {}
+    swapped, failed = {}, []
     for x in rows[:OFFICIAL_PER_ROUND]:
         try:
             _check_time()
@@ -2770,16 +2781,23 @@ def official_swap(item, log=print):
             continue
         if got:
             swapped[x["subject"]] = got
+        else:
+            failed += [u for u in emblem.official_for(item, x) if u not in skip]
+    if failed:   # 公式の絵が切り抜きの検査で使えない（A2O LITE の RADA：右の端で体が切れている）：外した画像に書き、毎回取り直さない・E21 にも数えない（E30 が数える）
+        with WRITE_LOCK:
+            _set_field(name, "emblem_reject", json.dumps(list(dict.fromkeys(list(item.get("emblem_reject") or []) + failed)), ensure_ascii=False)
+                       + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+        log(f"  [公式で外れた] {name}：取り直しの公式の絵 {len(failed)} 枚が切り抜きの検査で使えない（外した画像に）")
     if not swapped:
         return 0
     rows_out = []
     for x in item.get("emblem") or []:
-        if isinstance(x, dict) and x.get("subject") in swapped and emblem.fandom_sourced(x):
+        if isinstance(x, dict) and x.get("subject") in swapped and swap_source(item, x):
             url, out, fs = swapped[x["subject"]]
             slug = emblem.slugify(name, x["subject"])
             emblem.save_cut(out, slug)
             y = {k: v for k, v in x.items() if k not in emblem.EMBLEM_MEASURED}
-            y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：Fandom から取り直し）")
+            y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：{'Fandom' if emblem.fandom_sourced(x) else '前の写真'}から取り直し）")
             if fs is not None:
                 y["fs"] = fs
             rows_out.append(y)
