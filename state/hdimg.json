@@ -423,12 +423,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets.st-note.com/production/uploads/images/331192082/rectangle_large_type_2_84e57a535a3d74978c2a58f5339023ea.png?fit=bounds&quality=85&width=1280": {
-  "w": 1280,
-  "h": 670,
-  "target": 720,
-  "v": 3
- },
  "https://assets.st-note.com/production/uploads/images/331430922/rectangle_large_type_2_dbe95185dae4f88d3e28a2cf8def1ce3.jpeg?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -726,18 +720,11 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.slist.kr/news/thumbnail/202611/779129_1190477_3233_v150.jpg": {
-  "w": 300,
-  "h": 200,
+ "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg": {
+  "w": 600,
+  "h": 370,
   "target": 720,
-  "v": 3,
-  "blur": 0.589,
-  "local": "pics/4e52e5a8a4d036b0.webp",
-  "out": [
-   720,
-   480
-  ],
-  "why": "看不清"
+  "v": 3
  },
  "https://cdn.sortiraparis.com/images/80/66131/1332847-world-of-warcraft-forever-date-de-sortie-et-nouveautes-du-mmorpg-de-blizzard.jpg": {
   "w": 1800,
@@ -1065,6 +1052,12 @@
  "https://en.shiftdelete.net/wp-content/uploads/2026/11/galaxy-s27-ultra-release-date-price-specs.webp": {
   "w": 1600,
   "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://files.value-press.com/czMjZXllY2F0Y2gjODY4NjcjODY4NjdfbHFBaU1LbVlsZi5qcGc.jpg": {
+  "w": 1200,
+  "h": 650,
   "target": 720,
   "v": 3
  },
@@ -1574,6 +1567,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://images.khan.co.kr/article/2026/11/05/news-p.v1.20261105.5c362c1065ba4ee993fc75e6bed2f3f3_P1.jpg": {
+  "w": 1086,
+  "h": 1448,
+  "target": 720,
   "v": 3
  },
  "https://images.moneycontrol.com/static-mcnews/2026/10/20261031131011_hp-new.jpg": {
@@ -3060,6 +3059,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://pbs.twimg.com/media/HWIPKNQbYAEe7ne?format=webp&name=large": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/31/35473282.jpg&M=1&s=Y&x=0&y=0&sw=1078&sh=719&exp=3600": {
   "w": 1078,
   "h": 719,
@@ -3174,6 +3179,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/18505/4587/18505-4587-bebfe856e674b513b3c8a75956b34dcb-1500x650.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1500,
+  "h": 650,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/18505/4588/18505-4588-6da0e3b8955146d5278f20bd62d31ceb-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1008,
   "h": 1260,
@@ -3216,12 +3227,6 @@
   "target": 720,
   "v": 3
  },
- "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
-  "w": 360,
-  "h": 616,
-  "target": 720,
-  "v": 3
- },
  "https://research.image.itmedia.co.jp/wp-content/uploads/2026/11/1793603711_ec60eab7bddbf45a46b1e3d98529e5c5.jpg": {
   "w": 1200,
   "h": 630,
@@ -3240,19 +3245,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.411
- },
- "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg": {
-  "w": 700,
-  "h": 467,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.503,
-  "local": "pics/29c16bedf42c1192.webp",
-  "out": [
-   1280,
-   854
-  ],
-  "why": "看不清"
  },
  "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg": {
   "w": 1200,
@@ -4049,17 +4041,24 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.EbRbcwgvvTzXm_FlFtxhMQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
   "w": 700,
   "h": 508,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.IJDVLGkHQDoTtip5uzDaOA&pid=News&w=700": {
+  "w": 700,
+  "h": 467,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.549,
+  "local": "pics/072d31d9259c9192.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
   "w": 700,
@@ -4236,12 +4235,6 @@
  "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ZJg30TRg7eusCGuPTC2e-w&pid=News&w=1200": {
-  "w": 700,
-  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -4700,12 +4693,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.indexbox.io/landing/img/blog/custom-report-v2/world-kw-cat-litter-mat-set-840-market-analysis-forecast-size-trends-and-insights-1793626891.webp": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://www.joblo.com/wp-content/uploads/2026/05/Stewie-and-Grogu.jpg": {
   "w": 1200,
   "h": 630,
@@ -4783,6 +4770,12 @@
  "https://www.rappler.com/tachyon/2026/09/alex-eala-us-open-august-2026.jpg": {
   "w": 1200,
   "h": 737,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Ultra-review-design-2.jpg": {
+  "w": 2560,
+  "h": 1441,
   "target": 720,
   "v": 3
  },
