@@ -4381,6 +4381,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.xXzROxZL90pCDGMyusmKNg&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ybfuzUti5i3iqvG7yuCIlg&pid=News&w=500": {
   "w": 500,
   "h": 281,
@@ -4733,19 +4739,6 @@
   "h": 800,
   "target": 1280,
   "v": 3
- },
- "https://www.superdope.games/wp-content/uploads/2026/06/image-348.png": {
-  "w": 650,
-  "h": 366,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.47,
-  "local": "pics/c35c5fa9e5faf61a.webp",
-  "out": [
-   1280,
-   721
-  ],
-  "why": "看不清"
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Anthony-Mackie-1.jpg?resize=1200,630": {
   "w": 1200,

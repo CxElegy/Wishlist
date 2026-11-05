@@ -1,10 +1,10 @@
 {
- "admin": "897e41f7591d",
- "admin-ai": "99de6c31356c",
+ "admin": "72a7c10d6d7d",
+ "admin-ai": "02d44b2e4fe2",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c79bcca8"
+   "fbfdd0b9"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "8256b35ce473",
+ "admin-emblem": "72ccaf051c4d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "cae557c4"
+   "570aef74"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b5430cdb73be",
  "admin-members_marks": {},
- "admin-now": "b825f0bbd389",
+ "admin-now": "2686428f3f10",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e62a5400"
+   "6b23bd15"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "b4f6f6fa"
   ]
  },
- "admin-system": "8a188a550d25",
+ "admin-system": "7618bc1e1a28",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d2a9832d"
+   "6a2a8fd5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d8629c5f"
+   "df3fa630"
   ]
  },
  "admin_marks": {},
- "heat": "1cf8db560954",
+ "heat": "19bf04e21e7a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "47da858d"
+   "6ce2aba2"
   ],
   "ranking": [
    "ランキング",
-   "89faeee2"
+   "3e2abe8d"
   ]
  },
- "index": "094195496b38",
+ "index": "f24c73abddad",
  "index_marks": {
   "front": [
    "トップ",
-   "6bb8773f"
+   "98205468"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "6418dab9"
+   "2d85d8e6"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "17f87029"
+   "61736a3a"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "5ed629af"
   ]
  },
- "updated": "11.05 10:37",
+ "updated": "11.05 10:45",
  "wishlist": "09885a0145d0"
 }

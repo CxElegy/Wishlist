@@ -18,7 +18,6 @@
   "https://disneyworldfan.jp/2026/10/wdw-christmas-merchandise-2026-photo-report/": "https://i0.wp.com/disneyworldfan.jp/wp-content/uploads/2026/10/wdw-holiday-2026-pastel-display.jpeg?fit=2048%2C1536&ssl=1",
   "https://dtimes.jp/post-1436151/": "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-6ea7a38cf1ae91bed263b5e5637d5a04-20261027-082d08.jpg",
   "https://finance.sina.com.cn/tech/digi/2026-11-01/doc-inixeyiu4147480.shtml?froms=ggmp": "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg",
-  "https://gank.fanpiece.com/gamenews/GTA-6%E5%85%A8%E6%96%B0-Focus-%E5%8A%9F%E8%83%BD%E6%9B%9D%E5%85%89-%E9%9D%88%E6%84%9F%E6%BA%90%E8%87%AA-%E8%8D%92%E9%87%8E%E5%A4%A7%E9%8F%A2%E5%AE%A22-%E9%B7%B9%E7%9C%BC-c1514408.html": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/10/gta-6-gameplay-screenshots-edge-magazine-november-2026-issue-5.jpg",
   "https://internetcom.jp/211270/samsung-galaxy-buds-on-japan": "https://image.internetcom.jp/upload/20261030/images/thumb_samsung_galaxy_buds_on.jpg",
   "https://kai-you.net/article/97042": "https://img.kai-you.net/storage/2026/11/44d15073-efd6-4811-b4ba-966e390d33ce/main/mappa_sponsored.webp",
   "https://m.sohu.com/a/1090265671_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
@@ -84,6 +83,7 @@
   "https://www.walkerplus.com/article/1026125/image10233236.html": "https://news.walkerplus.com/article/1026125/10233248_615.jpg",
   "https://www.walkerplus.com/article/211869/image1303161.html": "https://news.walkerplus.com/article/211869/1303155_615.jpg",
   "https://www.wowow.co.jp/detail/207610/012/01": null,
+  "https://www.yahoo.com/entertainment/movies/articles/microsoft-put-working-xbox-inside-194249434.html": "https://www.bing.com/th?id=ONUT.xXzROxZL90pCDGMyusmKNg&pid=News&w=700",
   "https://www.yahoo.com/entertainment/tv/articles/harry-potter-paapa-essiedu-brutally-004500908.html": "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960",
   "https://www.youtube.com/watch?v=pjnY80oiVT0": "https://i1.ytimg.com/vi/pjnY80oiVT0/hqdefault.jpg"
  },
@@ -933,27 +933,6 @@
   },
   {
    "batch": 1,
-   "because": "GTA 6",
-   "date": "2026-11-04",
-   "hits": [],
-   "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/10/gta-6-gameplay-screenshots-edge-magazine-november-2026-issue-5.jpg",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "GANK 電玩誌",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "GTA 6全新「Focus」功能曝光靈感源自《荒野大鏢客2》鷹眼| 遊戲情報站",
-   "url": "https://gank.fanpiece.com/gamenews/GTA-6%E5%85%A8%E6%96%B0-Focus-%E5%8A%9F%E8%83%BD%E6%9B%9D%E5%85%89-%E9%9D%88%E6%84%9F%E6%BA%90%E8%87%AA-%E8%8D%92%E9%87%8E%E5%A4%A7%E9%8F%A2%E5%AE%A22-%E9%B7%B9%E7%9C%BC-c1514408.html",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 1,
    "because": "三星手机",
    "date": "2026-11-04",
    "hits": [
@@ -1061,7 +1040,7 @@
    "work": "GTA 6"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "猫用品",
    "date": "2026-11-04",
    "hits": [
@@ -1088,6 +1067,27 @@
     "猫"
    ],
    "work": "猫用品"
+  },
+  {
+   "batch": 2,
+   "because": "GTA 6",
+   "date": "2026-11-04",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.xXzROxZL90pCDGMyusmKNg&pid=News&w=700",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "Yahoo",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "Microsoft Put a Working Xbox Inside a Five-Foot Alligator To Promote GTA VI",
+   "url": "https://www.yahoo.com/entertainment/movies/articles/microsoft-put-working-xbox-inside-194249434.html",
+   "words": [],
+   "work": "GTA 6"
   },
   {
    "batch": 2,
@@ -2005,11 +2005,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2021,11 +2021,11 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]
