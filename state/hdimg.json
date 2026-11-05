@@ -690,6 +690,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.nc.press/news/photo/202611/630275_868605_1146.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.newstoon.co.kr/news/photo/202610/81715_104460_512.jpg": {
   "w": 600,
   "h": 400,
@@ -720,12 +726,12 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.slist.kr/news/thumbnail/202611/779129_1190477_3233_v150.jpg": {
+ "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg": {
+  "w": 600,
+  "h": 370,
   "target": 1280,
   "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-05"
+  "blur": 0.388
  },
  "https://cdn.sortiraparis.com/images/80/66131/1332847-world-of-warcraft-forever-date-de-sortie-et-nouveautes-du-mmorpg-de-blizzard.jpg": {
   "w": 1800,
@@ -1065,7 +1071,7 @@
  "https://files.value-press.com/czMjZXllY2F0Y2gjODY4NjcjODY4NjdfbHFBaU1LbVlsZi5qcGc.jpg": {
   "w": 1200,
   "h": 650,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://foro3d.com/2026/octubre/imagenes/fundas-para-el-galaxy-s27-ultra-ya-a-la-venta-antes-del-anuncio-oficia.webp": {
@@ -1394,6 +1400,12 @@
  "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif": {
   "w": 594,
   "h": 1056,
+  "target": 1280,
+  "v": 3
+ },
+ "https://image.fnnews.com/resource/media/image/2026/11/05/202611050911240705_l.jpg": {
+  "w": 800,
+  "h": 1000,
   "target": 1280,
   "v": 3
  },
@@ -1739,12 +1751,6 @@
   ],
   "why": "看不清"
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gMmcA.img": {
-  "w": 1010,
-  "h": 674,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcDFq.img": {
   "w": 1423,
   "h": 800,
@@ -1977,12 +1983,6 @@
    1080
   ],
   "why": "看不清"
- },
- "https://img.kai-you.net/storage/2026/11/44d15073-efd6-4811-b4ba-966e390d33ce/main/mappa_sponsored.webp": {
-  "w": 1280,
-  "h": 842,
-  "target": 720,
-  "v": 3
  },
  "https://img.khan.co.kr/news/2026/10/29/news-p.v1.20261028.62e9dd8e67f8479fbfbefc3d4a51da99_P1.jpg": {
   "w": 1200,
@@ -3072,6 +3072,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://p2.bahamut.com.tw/B/2KU/80/55c8d1f0e991c47587e545283520zrg5.JPG": {
+  "w": 1280,
+  "h": 719,
+  "target": 720,
+  "v": 3
+ },
  "https://pbs.twimg.com/media/HWIPKNQbYAEe7ne?format=webp&name=large": {
   "w": 1920,
   "h": 1080,
@@ -3204,6 +3210,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/18505/4610/18505-4610-2d6f37e8ab6f2cde80030f4eb8791633-1200x800.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/193049/1/193049-1-e6fb1b52fe45aa411f3f0fb0a6f476d4-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1920,
   "h": 1080,
@@ -3262,15 +3274,8 @@
  "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg": {
   "w": 700,
   "h": 467,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.503,
-  "local": "pics/29c16bedf42c1192.webp",
-  "out": [
-   1280,
-   854
-  ],
-  "why": "看不清"
+  "target": 720,
+  "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg": {
   "w": 1200,
@@ -4092,12 +4097,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.JpbXXraAv5OhGdlMxzBTMQ&pid=News&w=900": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.KI8fsHi9gp5vLVhvIUhm6Q&pid=News&w=1024": {
   "w": 700,
   "h": 393,
@@ -4127,6 +4126,12 @@
  "https://www.bing.com/th?id=ONUT.L94JPV3Ohn3F3j-1OARAjw&pid=News&w=1200": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.MDpD849zYjmVjGzkNpJmbA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
   "target": 720,
   "v": 3
  },
@@ -4404,6 +4409,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.mFTqLAL_laAf1DRALLtOqw&pid=News&w=984": {
+  "w": 700,
+  "h": 512,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.myWmWHTcRSUhvwd97jtuVg&pid=News&w=1200": {
   "w": 700,
@@ -4716,6 +4727,12 @@
   "w": 1199,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.indexbox.io/landing/img/blog/custom-report-v2/world-kw-cat-litter-mat-set-840-market-analysis-forecast-size-trends-and-insights-1793626891.webp": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://www.joblo.com/wp-content/uploads/2026/05/Stewie-and-Grogu.jpg": {

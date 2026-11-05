@@ -41,6 +41,9 @@ class Kind(unittest.TestCase):
         self.assertEqual(it["emblem_who"], ["a"])                 # 前の回の手がかりは続ける
         self.assertNotIn("emblem_state", it)
         self.assertNotIn("match", it)
+        self.assertTrue(it["_recount"])                           # 名簿の規則の版（nv）がない＝前の版：そろっていても 1 回数え直す（店長と同じ）
+        b["config"]["emblem_state"]["nv"] = __import__("emblem_fill").NAMES_V
+        self.assertFalse(le.board_item(b, {"section": "运动", "subs": {}}, wd)["_recount"])
 
 
     def test_group_members_from_wikidata(self):

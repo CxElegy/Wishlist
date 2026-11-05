@@ -170,6 +170,8 @@ def board_item(board, follow, get=None):
                 keywords=cfg.get("keywords") or [board["name"]])
     item.setdefault("emblem_kind", kind_for(sec, (follow or {}).get("subs"), human))
     item["_round"] = rounds_of(cfg)   # 店長と同じ：名簿の残りを STEP 人ずつ順に 1 周する
+    import emblem_fill
+    item["_recount"] = (cfg.get("emblem_state") or {}).get("nv") != emblem_fill.NAMES_V   # 店長と同じ：名簿の規則の版が上がったら、名簿がそろっていても 1 回数え直す（NAMES_V 14 の種族・物がスプラ 3 の名簿に残った）
     if item["emblem_kind"] == "character":   # 名簿（roster）と Fandom の立ち絵の手がかり。前の回に書いたもの・店長の手書きが先
         if wd.get("anilist") and str(wd["anilist"]).isdigit():
             item.setdefault("anilist_id", int(wd["anilist"]))
