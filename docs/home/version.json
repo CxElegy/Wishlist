@@ -1,32 +1,32 @@
 {
- "admin": "c8b63ba241d1",
- "admin-ai": "cf4461b05f17",
+ "admin": "6013a69e981f",
+ "admin-ai": "f1445235c7c9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9d83ab7a"
+   "76128d68"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f501dee4"
+   "0f0bf32f"
   ]
  },
- "admin-boards": "0fbd008119c6",
+ "admin-boards": "ed644ea2c9c1",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "53ac9a2a"
+   "639a8365"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "14d2bbf70334",
+ "admin-emblem": "76f970bb6936",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "314636f2"
+   "0d5a9683"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,20 +34,20 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "4119fce8"
+   "81a899ec"
   ],
   "emblems": [
    "小元素",
-   "9d404a38"
+   "0724b962"
   ]
  },
  "admin-members": "b5430cdb73be",
  "admin-members_marks": {},
- "admin-now": "c1fd6fa54f22",
+ "admin-now": "d5cf3ffc2cbf",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "27e11416"
+   "3598928c"
   ],
   "queue": [
    "いまの状況",
@@ -59,26 +59,26 @@
   ],
   "term-panel": [
    "ライブログ",
-   "4f7cb4a4"
+   "f425a216"
   ]
  },
- "admin-system": "6bc3dd62b465",
+ "admin-system": "44a7fa79533d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3e6596df"
+   "d2f42dbe"
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "47b989a0"
+   "eb8222ff"
   ],
   "res": [
    "リソース・並列と制限",
-   "7970f2e8"
+   "0c8a0f4f"
   ]
  },
  "admin_marks": {},
- "heat": "7145e7ceff04",
+ "heat": "65be3a8b35fc",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "84982004"
+   "459e9917"
   ],
   "ranking": [
    "ランキング",
-   "ee7c096f"
+   "17612b2a"
   ]
  },
- "index": "afd5a59f0d1c",
+ "index": "0c99aa7cc5a7",
  "index_marks": {
   "front": [
    "トップ",
-   "628182be"
+   "147e48c1"
   ],
   "picks": [
    "気になるかも？",
@@ -105,11 +105,11 @@
   ],
   "w-0242c181": [
    "dota2",
-   "e173850a"
+   "6caf3f29"
   ],
   "w-130724c0": [
    "猫用品",
-   "78884a89"
+   "b42ca09a"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "803de1b6"
+   "8723d8a6"
   ],
   "w-b867582f": [
    "あつ森",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "99c29d6d"
+   "f6f998b7"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "503c962e"
+   "1ab76c17"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "5ed629af"
   ]
  },
- "updated": "11.05 11:19",
+ "updated": "11.05 11:42",
  "wishlist": "09885a0145d0"
 }
