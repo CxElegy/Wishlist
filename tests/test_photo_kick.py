@@ -8,7 +8,7 @@ WF = pathlib.Path(__file__).resolve().parent.parent / ".github" / "workflows"
 
 class PhotoKick(unittest.TestCase):
     def test_every_render_workflow_kicks_photo_store(self):
-        pub = [f for f in sorted(WF.glob("*.yml")) if "digest.py render" in f.read_text(encoding="utf-8") and "git push" in f.read_text(encoding="utf-8")]   # 発布する（push する）ものだけ。ci.yml は作れるか見るだけ
+        pub = [f for f in sorted(WF.glob("*.yml")) if "digest.py render" in f.read_text(encoding="utf-8") and "push_main.py" in f.read_text(encoding="utf-8")]   # 発布する（push する）ものだけ。ci.yml は作れるか見るだけ
         self.assertGreaterEqual(len(pub), 3)   # render・digest・background
         for f in pub:
             t = f.read_text(encoding="utf-8")

@@ -141,5 +141,5 @@ Wikipedia 连续 429 时那个主机休 5 分钟，不在一个关注项上耗�
    ```bash
    git add templates items.yaml docs
    git commit -m "版面模版：<关注项> → <id>"
-   git pull --rebase && git push origin main
+   python scripts/push_main.py --regen "python scripts/digest.py render"
    ```
