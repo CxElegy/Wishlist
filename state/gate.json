@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-05T12:16:34+00:00",
+ "changed": true,
+ "checked": "2026-11-05T12:32:50+00:00",
  "fired": {
-  "at": "2026-11-05T12:25:59+00:00",
+  "at": "2026-11-05T12:32:50+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,16 +12,28 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-05T11:30:39+00:00",
+    "at": "2026-11-05T12:32:50+00:00",
     "attempts": 1,
     "day": "2026-11-05",
-    "prog": 410,
-    "resp": "cse_01W4x6f7m5ZhtvU7YPyWEFpJ",
-    "sig": "2678d36817c8"
+    "prog": 416,
+    "resp": "cse_01W4x6f56aVphxEjT15rCLWK",
+    "sig": "e63de931b205"
    },
    "items": [
     "A2O LITE",
-    "哈利波特剧集"
+    "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "dota2",
+    "gelato pique",
+    "三星手机",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-05T11:38:56+00:00",
    "last_error": {
@@ -33,12 +45,18 @@
    "prog_day": "2026-11-05",
    "ripe": [
     "A2O LITE",
-    "哈利波特剧集"
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "三星手机",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "sig": "6bd8d9b173bb",
+   "sig": "e63de931b205",
    "token_cap": 1000000,
    "tokens_today": 700129,
-   "why": "整理待ちの記事 2 件（2 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 44 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -46,24 +64,24 @@
     "BLEACH Mirrors High",
     "チェーンソーマン",
     "dota2",
-    "哈利波特剧集"
+    "漫威电影",
+    "GTA 6",
+    "Astrae Oratio",
+    "绝区零"
    ],
    "need": true,
-   "sig": "dc5d2d844cf2",
+   "sig": "862c0479d56d",
    "waiting": [
     "A2O LITE",
-    "Astrae Oratio",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "あつ森",
     "ぐでたま",
     "周杰伦",
-    "漫威电影",
-    "绝区零"
+    "哈利波特剧集"
    ],
-   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 11 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
