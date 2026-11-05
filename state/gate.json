@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-05T09:27:34+00:00",
+ "checked": "2026-11-05T09:50:09+00:00",
  "fired": {
-  "at": "2026-11-05T09:27:34+00:00",
+  "at": "2026-11-05T09:50:09+00:00",
   "results": {
-   "edit": "Claude を起こした（2 回目：前は動かなかった）",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -46,6 +46,7 @@
    "ripe": [
     "Astrae Oratio",
     "GTA 6",
+    "MMORPG 新作",
     "dota2",
     "gelato pique",
     "チェーンソーマン",
@@ -54,7 +55,7 @@
     "漫威电影",
     "猫用品"
    ],
-   "sig": "23e5aa4534b5",
+   "sig": "1b70f798d186",
    "token_cap": 1000000,
    "tokens_today": 525985,
    "why": "整理待ちの記事 57 件（14 版面・AI 編集まで版面に載らない）"
@@ -63,25 +64,26 @@
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "チェーンソーマン"
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "FROM",
+    "GTA 6"
    ],
    "need": true,
-   "sig": "f34c0f7d308e",
+   "sig": "769203044573",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
-    "FROM",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
     "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 13 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
