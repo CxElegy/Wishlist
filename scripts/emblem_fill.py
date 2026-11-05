@@ -641,7 +641,7 @@ def official_cands(item, subj, cands, tried):
     for u in emblem.official_for(item, {"subject": subj})[:2]:
         tried["公式サイト"] = tried.get("公式サイト", 0) + 1
         cands.append({"subject": subj, "image": u, "page": emblem.official_site(item), "source": "公式サイト",
-                      "why": f"{subj}（公式サイトの立ち絵）", "license": ""})
+                      "why": f"{subj}（公式サイトの立ち絵）", "license": "", "trust_id": True})   # 公式サイトのパスにその人の名前＝本人（別人の判定は 1 枚だけだと必ず落とす：A2O LITE・漫威电影）
         n += 1
     return n
 
@@ -1740,7 +1740,7 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None, reject_
                 with _face_lock:
                     keep = {k for k, i in enumerate(test) if emblem.face_box(dl[i]["_img"].convert("RGB"))}
             for k, i in enumerate(test):
-                if k not in keep and i not in out and not (feats[k] is None and dl[i].get("trust_noface")):
+                if k not in keep and i not in out and not (feats[k] is None and dl[i].get("trust_noface")) and not (feats[k] is not None and dl[i].get("trust_id")):
                     drop("別人", dl[i])
                     out.add(i)
         dl = [c for i, c in enumerate(dl) if i not in out]
