@@ -240,6 +240,12 @@ class CloseupOfficial(unittest.TestCase):
         emblem._OFFICIAL_HTML.clear()
         emblem._OFFICIAL_INDEX.clear()
 
+    def test_a2o_lite_has_official_site(self):
+        import yaml
+        from emblem import ROOT, official_site
+        it = next(x for x in yaml.safe_load(open(ROOT / "items.yaml", encoding="utf-8"))["items"] if x["name"] == "A2O LITE")
+        self.assertEqual(official_site(it), "https://a2olite.world/")
+
     def test_official_site_ignores_wiki_icon_host(self):
         import emblem
         self.assertIsNone(emblem.official_site({"icon": {"source": "https://upload.wikimedia.org/a.jpg"}}))
