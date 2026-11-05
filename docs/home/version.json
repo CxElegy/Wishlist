@@ -1,6 +1,6 @@
 {
  "admin": "fe28f03155eb",
- "admin-ai": "0832ffddc853",
+ "admin-ai": "decb8104ee49",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7aae5280"
+   "7ccb9de8"
   ]
  },
  "admin-boards": "1a3a7f11305c",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "8a09080dbe9c",
+ "admin-emblem": "440016a5e23f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "88cc8cdb"
+   "5f92be0b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "b5430cdb73be",
  "admin-members_marks": {},
- "admin-now": "eaf75fa0b2bc",
+ "admin-now": "76c2a536bbbd",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -51,7 +51,7 @@
   ],
   "queue": [
    "いまの状況",
-   "ccee0529"
+   "d26d7fa1"
   ],
   "status": [
    "運行状況",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "9289f590"
+   "d0a77e75"
   ]
  },
- "admin-system": "72af260975a7",
+ "admin-system": "130848022247",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "bab18576"
+   "ba7da611"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "1935184a"
   ]
  },
- "index": "fb280cd86008",
+ "index": "f0a091997bba",
  "index_marks": {
   "front": [
    "トップ",
-   "dbad10cc"
+   "21b8bb39"
   ],
   "picks": [
    "気になるかも？",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "a432a839"
+   "647acd7e"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "c333f8fd"
+   "1ab76c17"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "5ed629af"
   ]
  },
- "updated": "11.05 12:52",
+ "updated": "11.05 13:26",
  "wishlist": "26507458a22d"
 }
