@@ -21,7 +21,7 @@
   E27 公式の人物の絵を読めない版面（情報）  公式サイトがあるキャラの版面で、HTML から人物の絵が 1 枚も見つからない（JS で描く公式など）数
   E19 公式があるのにアップのまま（情報：✗ にしない）  顔だけのアップ（fs > 0.5）が残る小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数を版面ごとに出す。公式が先の規則が gather・控え・入れ替えの全部の入口に効いているかの数え直し（0 に向かう）
   E20 胸像待ちが回っていない  state/emblem_closeup.json の待ちの人に「次に試す見込み」next がない・版面の見込み（emblem_closeup_eta.json）がない・毎回探す名簿の上位の next が 3 時間より古い（後台が回っていない）。close_plan の保存が全部の入口で効いているかの数え。お客さまの版面の分は boards.config.emblem_closeup（待ち）に emblem_closeup_next・_eta がないか・古いかを同じ式で数える（boards_closeup_bad）。入口が close_round を使うかは tests/test_emblem_fill.py も数える\n  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
-  E17 人でない名前   キャラの版面で、名簿（emblem_who）の先頭 10 人に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる
+  E17 人でない名前   キャラの版面で、名簿（emblem_who）の先頭 10 人に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる（店長の items.yaml とお客さまの boards.config の両方。種族・敵の型・物のページは分類で emblem.THING_CAT が名簿から外す）
   E16 顔だけのアップ  cutout（全身 body は除く）の顔の幅 > 画像の幅の CLOSE_W（45%）か、顔の下端から下が高さの SHOULDER_MIN（15%）未満（emblem_fill.closeup_of と同じしきい値。ここは YuNet で測れたものだけ：アニメ絵の検出は取るときの規則だけ）。小元素は胸像（BLEACH の黒崎一護）
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
   E14 顔の大きさ  同じ版面の人物（全身 body は除く）の「顔の高さ × 倍率」の最大 ÷ 最小 > 1.25（emblem_face.fit が全版面に効いていない。店長もお客さまの版面も）
@@ -248,6 +248,21 @@ def not_people(top=10):
         hit = [n for n in dict.fromkeys(names) if bad(n)]
         if hit:
             out[it["name"]] = hit
+    return out
+
+
+def boards_not_people(rows, top=10):
+    """E17 のお客さまの版面の分：boards の行 [{name, config}] のキャラの版面（config.emblem_fandom か emblem_category がある）で、not_people と同じ式 → {版面: [名前]}。
+    店長の items.yaml だけ数えていて、ライブラリの名簿に残る Wyverians・Inklings が見えなかった（2026-11-05）。"""
+    bad, out = not_char(), {}
+    for r in rows or []:
+        c = r.get("config") or {}
+        if not (c.get("emblem_fandom") or c.get("emblem_category")) or c.get("emblem_kind") not in (None, "character"):
+            continue
+        names = list((c.get("emblem_who") or [])[:top]) + [x.get("subject") for x in c.get("emblem") or [] if isinstance(x, dict)]
+        hit = [n for n in dict.fromkeys(names) if bad(n)]
+        if hit:
+            out[r.get("name")] = hit
     return out
 
 
@@ -727,6 +742,10 @@ def check(pg, who, width, out, full=False, guest=False):
             print(f"  情報 E20 数えられなかった：{e}")
     if guest:
         found["E17"] = [f"{k} {'・'.join(v)}" for k, v in not_people().items()]
+        try:
+            found["E17"] += [f"お客さま {k} {'・'.join(v)}" for k, v in boards_not_people(boards_rows()).items()]   # ライブラリの名簿も同じ式（店長とお客さま）
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E17 お客さまの版面を数えられなかった：{e}")
     if guest:
         found["E23"] = dropped_keys()
         try:
