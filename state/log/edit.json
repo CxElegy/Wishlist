@@ -2040,39 +2040,44 @@
 "tokens": 1236454
 },
 {
-"at": "2026-11-05T09:37:25+00:00",
-"text": "2026-11-05 第 1 バッチを出刊：dota2、gelato pique、チェーンソーマン、哈利波特剧集、漫威电影（5 版面・24 本・残り 4 版面） · token 新規入力 4.9万・キャッシュ読み 155.4万・出力 5,341",
+"at": "2026-11-05T09:39:14+00:00",
+"text": "2026-11-05 第 1 バッチを出刊：A2O LITE、BLEACH Mirrors High、FROM、GTA 6、The Mandalorian、Vaundy ほか 4（10 版面・22 本・残り 9 版面） · token 新規入力 4.1万・キャッシュ読み 59.2万・出力 1,960",
 "level": "ok",
 "res": {
 "cpu": 4,
-"load": 0.75,
+"load": 0.19,
 "mem_total": 16867418112,
-"mem_free": 15843667968,
-"disk_used": 10028376064,
-"disk_free": 31255158784,
+"mem_free": 15944908800,
+"disk_used": 10028625920,
+"disk_free": 31254908928,
 "disk_total": 41283534848,
-"peak": 501125120
+"peak": 853786624
 },
 "batch": 1,
 "boards": [
-"dota2",
-"gelato pique",
-"チェーンソーマン",
-"哈利波特剧集",
-"漫威电影"
+"A2O LITE",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"The Mandalorian",
+"Vaundy",
+"あつ森",
+"ぐでたま",
+"日本顶级网球赛事",
+"星巴克马克杯"
 ],
-"stories": 24,
-"left": 4,
+"stories": 22,
+"left": 9,
 "edited": 22,
-"run": 1793870954.6223545,
+"run": null,
 "tok": {
-"in": 48,
-"cw": 49054,
-"cr": 1554019,
-"out": 5341,
-"calls": 23,
+"in": 19,
+"cw": 40542,
+"cr": 592430,
+"out": 1960,
+"calls": 10,
 "model": "claude-sonnet-5-5"
 },
-"tokens": 1608462
+"tokens": 634951
 }
 ]

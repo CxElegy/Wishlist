@@ -749,9 +749,9 @@
   "target": 1280,
   "v": 3
  },
- "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261105130648011460d3244b4fed58141237106.jpg&nmt=30": {
-  "w": 1333,
-  "h": 2000,
+ "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=202611031247249730205868f676220867377_0.png&nmt=30": {
+  "w": 5953,
+  "h": 3969,
   "target": 720,
   "v": 3
  },
@@ -3240,12 +3240,6 @@
   "v": 3,
   "blur": 0.411
  },
- "https://s.eximg.jp/exnews/feed/Prtimes/fc/Prtimes_2026-11-02-16333-238/Prtimes_2026-11-02-16333-238_1.jpg": {
-  "w": 650,
-  "h": 488,
-  "target": 720,
-  "v": 3
- },
  "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg": {
   "w": 700,
   "h": 467,
@@ -3868,6 +3862,12 @@
   "w": 843,
   "h": 534,
   "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/05/1793866822555_img_658b1d55.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
@@ -4786,6 +4786,12 @@
  "https://www.rappler.com/tachyon/2026/09/alex-eala-us-open-august-2026.jpg": {
   "w": 1200,
   "h": 737,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.rbbtoday.com/imgs/ogp_f/1061618.jpg": {
+  "w": 600,
+  "h": 498,
   "target": 720,
   "v": 3
  },
