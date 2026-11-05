@@ -1,14 +1,14 @@
 {
- "admin": "94f8001197c8",
- "admin-ai": "370464d6c5cc",
+ "admin": "fa9a00b85800",
+ "admin-ai": "e9c72f1fbe36",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "92fed4c9"
+   "bb78891e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "523fc10f"
+   "99f3791d"
   ]
  },
  "admin-boards": "158a459eea89",
@@ -22,11 +22,11 @@
    "5bc8c40b"
   ]
  },
- "admin-emblem": "40fcd2af1331",
+ "admin-emblem": "13c26c90bd1e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "fa4a1b34"
+   "e4aaa0df"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "82e6184894c2",
  "admin-members_marks": {},
- "admin-now": "1fc1bb6cec60",
+ "admin-now": "5eabba47dbf9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "6a5661d5"
+   "e23ec9b4"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "ca366948"
+   "e5fe294d"
   ]
  },
- "admin-system": "590909c95cfe",
+ "admin-system": "1bc642ae759f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "03398ee8"
+   "17be2219"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d070ed4b"
+   "a93865d7"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "a07dbf49"
   ]
  },
- "index": "7b98229717cf",
+ "index": "46d1c0816290",
  "index_marks": {
   "front": [
    "トップ",
-   "0bd2de7b"
+   "8fd2cca7"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "e65318a7"
+   "6818ad7b"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "89ef6877"
+   "f1f08c41"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "447f7b51"
+   "c5918694"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d5e6e2c7"
   ]
  },
- "updated": "11.05 19:19",
+ "updated": "11.05 19:22",
  "wishlist": "a0d5d6f49d81"
 }

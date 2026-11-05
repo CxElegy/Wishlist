@@ -2024,45 +2024,48 @@
 "tokens": 2103575
 },
 {
-"at": "2026-11-05T10:19:46+00:00",
-"text": "2026-11-05 第 3 バッチを出刊：Astrae Oratio、dota2（2 版面・7 本・今日の整理待ちは全部終わり） · token 新規入力 6,647・キャッシュ読み 78.0万・出力 1,924",
+"at": "2026-11-05T10:20:44+00:00",
+"text": "2026-11-05 第 1 バッチを出刊：BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作、The Mandalorian、Vaundy ほか 8（14 版面・43 本・残り 2 版面） · token 新規入力 5.9万・キャッシュ読み 212.8万・出力 8,870",
 "level": "ok",
 "res": {
 "cpu": 4,
-"load": 0.54,
+"load": 0.47,
 "mem_total": 16867418112,
-"mem_free": 15897747456,
-"disk_used": 10077011968,
-"disk_free": 31206522880,
+"mem_free": 15881113600,
+"disk_used": 10073034752,
+"disk_free": 31210500096,
 "disk_total": 41283534848,
-"peak": 432087040
+"peak": 409767936
 },
-"batch": 3,
+"batch": 1,
 "boards": [
-"Astrae Oratio",
-"dota2"
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"MMORPG 新作",
+"The Mandalorian",
+"Vaundy",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"三星手机",
+"日本顶级网球赛事",
+"星巴克马克杯",
+"漫威电影",
+"猫用品"
 ],
-"stories": 7,
-"left": 0,
+"stories": 43,
+"left": 2,
 "edited": 22,
-"run": 1793870954.6223545,
+"run": null,
 "tok": {
-"in": 19,
-"cw": 6628,
-"cr": 779685,
-"out": 1924,
-"calls": 8,
+"in": 59,
+"cw": 58667,
+"cr": 2127859,
+"out": 8870,
+"calls": 30,
 "model": "claude-sonnet-5-5"
 },
-"tokens": 788256,
-"secs": 3032,
-"run_tok": {
-"in": 130,
-"cw": 72164,
-"cr": 4416086,
-"out": 11913,
-"calls": 56,
-"model": "claude-sonnet-5-5"
-}
+"tokens": 2195455
 }
 ]

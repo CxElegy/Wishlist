@@ -2052,6 +2052,19 @@
   "v": 3,
   "blur": 0.39
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/iza_nettrend/m_iza_nettrend-WQLYEJHNY5E4ZNNC4HHA2MZ4GM.jpg": {
+  "w": 640,
+  "h": 532,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.428,
+  "local": "pics/6ff6b84222526622.webp",
+  "out": [
+   1280,
+   1064
+  ],
+  "why": "看不清"
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161986.jpg": {
   "w": 640,
   "h": 480,
@@ -3262,12 +3275,6 @@
  "https://s.eximg.jp/exnews/feed/Prtimes/fc/Prtimes_2026-11-02-16333-238/Prtimes_2026-11-02-16333-238_1.jpg": {
   "w": 650,
   "h": 488,
-  "target": 720,
-  "v": 3
- },
- "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg": {
-  "w": 700,
-  "h": 467,
   "target": 720,
   "v": 3
  },
