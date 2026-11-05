@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-05T13:41:22+00:00",
+ "checked": "2026-11-05T14:21:41+00:00",
  "fired": {
-  "at": "2026-11-05T13:41:23+00:00",
+  "at": "2026-11-05T14:21:41+00:00",
   "results": {
    "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
@@ -43,14 +43,13 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High"
-   ],
-   "need": true,
-   "sig": "b6804aff6de5",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "BLEACH Mirrors High",
     "FROM",
     "GTA 6",
     "The Mandalorian",
@@ -64,7 +63,7 @@
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
