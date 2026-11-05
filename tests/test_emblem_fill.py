@@ -326,6 +326,17 @@ class Rules(unittest.TestCase):
             self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["A", "C"])
             self.assertEqual([x["subject"] for x in ef.broken_cuts({**item, "emblem_kind": "character"})], ["A"])   # 絵はぼやけを見ない
 
+    def test_groups_drop_species_and_things_by_category(self):
+        # 種族・敵の型・物のページは分類で名簿から外す（スプラ 3 の Inklings・Steel Eel、ゼルダの Fairy、あつ森の Xsq）。
+        # Enemies・Bosses・Weapons だけの名前のある人（Ganon・Frye・Big Man・Sheldon）は残す
+        cats = {"Inklings": ["Species", "Splatoon 3 Characters"], "Steel Eel": ["Bosses", "Types of Salmonids"], "Fairy": ["Items", "Races"],
+                "Xsq": ["Characters", "Cut characters"], "Zapfish": ["Splatoon Species"], "Ganon": ["Humanoid Enemies"], "Frye": ["Enemies"],
+                "Big Man": ["Bosses", "Splatoon 3 Characters"], "Sheldon": ["Weapons"], "Gutless Wonders": ["Music bands"], "Marie": ["Idols"]}
+        body = json.dumps({"query": {"pages": {str(i): {"title": k, "categories": [{"title": "Category:" + c} for c in v]} for i, (k, v) in enumerate(cats.items())}}})
+        with mock.patch.object(ef.emblem, "_get", return_value=body):
+            got = ef.emblem.groups("https://x.fandom.com/api.php", list(cats))
+        self.assertEqual(got, {"Inklings", "Steel Eel", "Fairy", "Xsq", "Zapfish", "Gutless Wonders"})
+
     def test_subjects_skip_not_character_already_in_who(self):
         # もうある名簿の Player・Parents（あつ森）も集めない：先頭の HEAD 人に入らない
         who = ["A", "B", "Player", "C", "Special character", "D", "Parents"] + [f"c{i}" for i in range(20)]
