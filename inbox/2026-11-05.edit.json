@@ -4,7 +4,7 @@
   "三星手机": 39,
   "GTA 6": 72,
   "チェーンソーマン": 17,
-  "A2O LITE": 12,
+  "A2O LITE": 15,
   "dota2": 7,
   "周杰伦": 14,
   "あつ森": 6,
@@ -14,7 +14,7 @@
   "绝区零": 3,
   "ILLIT": 9,
   "日本顶级网球赛事": 2,
-  "MMORPG 新作": 9,
+  "MMORPG 新作": 13,
   "Vaundy": 4,
   "Astrae Oratio": 2,
   "滑雪": 2,
@@ -345,7 +345,8 @@
    "blurb": "K-POPに新しい流れが来ている。その中心にいるのが、元SMエンターテインメント総括プロデューサーのイ・スマンが手掛ける新グループ「A2O LITE」だ。",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    13
    ],
    "image": "https://assets.st-note.com/production/uploads/images/332182864/rectangle_large_type_2_5f8fb70cfffdbba850e654643176d6e5.png?width=1200"
   },
@@ -384,7 +385,8 @@
    "weight": "normal",
    "refs": [
     10,
-    8
+    8,
+    14
    ]
   }
  ],
@@ -662,27 +664,15 @@
  ],
  "MMORPG 新作": [
   {
-   "headline": "Cozy MMO Loftia opens three regions in Early Access",
-   "highlight": "three regions in Early Access",
-   "blurb": "Farming, floating islands and a little urban exploration await in Loftia's Early Access version.",
+   "headline": "Qloud Games、ライフシムMMO『Loftia』の早期アクセス版をリリース",
+   "highlight": "早期アクセス版",
+   "blurb": "Steam Nextフェスで「最もプレイされたデモ」Top10入りしたライフシムMMOが早期アクセスを開始。",
    "weight": "lead",
    "refs": [
+    11,
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200"
-  },
-  {
-   "headline": "New Open-World MMORPG Officially Confirmed for November 16",
-   "highlight": "November 16",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2
-   ],
-   "event": {
-    "date": "2026-11-16",
-    "label": "発売日"
-   }
   },
   {
    "headline": "「ファイナルファンタジーXIV: 白銀のワンダラー」11月4日より予約受付開始",
@@ -697,6 +687,15 @@
     "date": "2027-02-23",
     "label": "発売日"
    }
+  },
+  {
+   "headline": "「World of Warcraft: Forever」が正式ローンチ。2004年のオリジナル版を再構築し，新種族や1000以上のクエストを追加",
+   "highlight": "正式ローンチ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
   }
  ],
  "Vaundy": [

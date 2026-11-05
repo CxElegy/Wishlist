@@ -17,27 +17,33 @@ sys.path.insert(0, str(ROOT / "scripts"))
 FILES = ["library_emblem.py", "library.py", "library_design.py", "user_pages.py", "userfeed.py"]
 SAY = {"print", "log", "_log", "warn"}
 WORDS = ("name", "who", "url", "link", "href", "title", "src", "query", "q")
-# 店長の版面だけを出す道具（手で回す・店長のデータは公開の Pages に出ている）
-ALLOW = {("library.py", "r['name']")}
+
+
+SAFE = {"len", "type", "sum", "bool", "int"}   # 数・種類だけになる包み
+# 店長の版面だけを出す道具／手で回す道具（workflow から呼ばない・公開のログに出ない）
+ALLOW = {("library.py", "r['name']"), ("library_design.py", 'b["name"]')}
 
 
 def leaks(fname):
+    """print(name)・"…" + url・f"{title}" のどれでも、言う関数の引数に名前・網址の値が入る所を数える。"""
     src = (ROOT / "scripts" / fname).read_text(encoding="utf-8")
     out = []
     for node in ast.walk(ast.parse(src)):
         if not (isinstance(node, ast.Call) and getattr(node.func, "id", getattr(node.func, "attr", "")) in SAY):
             continue
-        for sub in ast.walk(node):
-            if not isinstance(sub, ast.FormattedValue):
+        stack = list(node.args) + [k.value for k in node.keywords if k.arg not in ("file", "flush", "end", "sep")]
+        while stack:
+            n = stack.pop()
+            if isinstance(n, ast.Call) and getattr(n.func, "id", "") in SAFE or isinstance(n, ast.Attribute) and n.attr == "__name__":
                 continue
-            seg = ast.get_source_segment(src, sub.value) or ""
-            if (fname, seg) in ALLOW:
+            hit = (isinstance(n, ast.Name) and n.id in WORDS) or (isinstance(n, ast.Attribute) and n.attr in WORDS) or \
+                (isinstance(n, ast.Subscript) and isinstance(n.slice, ast.Constant) and n.slice.value in WORDS)
+            if hit:
+                seg = ast.get_source_segment(src, n) or ""
+                if (fname, seg) not in ALLOW:
+                    out.append(f"{fname}:{n.lineno} {seg}")
                 continue
-            names = {n.id for n in ast.walk(sub.value) if isinstance(n, ast.Name)}
-            names |= {n.attr for n in ast.walk(sub.value) if isinstance(n, ast.Attribute)}
-            names |= {n.value for n in ast.walk(sub.value) if isinstance(n, ast.Constant) and isinstance(n.value, str)}
-            if names & set(WORDS) and "__name__" not in seg:
-                out.append(f"{fname}:{sub.lineno} {seg}")
+            stack.extend(ast.iter_child_nodes(n))
     return out
 
 
@@ -53,8 +59,20 @@ class PublicLog(unittest.TestCase):
         p.write_text(src, encoding="utf-8")
         try:
             self.assertEqual(len(leaks(p.name)), 1)
+            p.write_text("def f(name, url):\n    print(name)\n    log('x ' + url)\n    print(len(name))\n", encoding="utf-8")
+            self.assertEqual(len(leaks(p.name)), 2)   # f-string でない書き方も拾う・len() は拾わない
         finally:
             p.unlink()
+
+    def test_user_pages_does_not_open_the_browser(self):
+        """本物のブラウザ（images._browser_html）は開いた網址を stderr（公開のログ）に書く。library_emblem.yml は
+        SCRAPLING_BROWSER=1 のまま user_pages を回すので、お客さまの記事の写真探しでは切れていること。"""
+        import user_pages
+        seen = []
+        with mock.patch.dict("os.environ", {"SCRAPLING_BROWSER": "1"}), \
+                mock.patch.object(user_pages.digest, "find_image", lambda *a, **k: seen.append(__import__("os").environ.get("SCRAPLING_BROWSER"))):
+            user_pages.find_images([{"headline": "h", "url": "https://example.com/a"}], 1e12)
+        self.assertEqual(seen, [None])
 
     def test_scrapling_does_not_log_urls(self):
         """scrapling の Fetcher は取った網址を INFO で出す（digest.yml の run の段に 19 行）。user_pages も通るので黙らせる。"""
