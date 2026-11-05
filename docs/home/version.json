@@ -43,7 +43,7 @@
  },
  "admin-members": "b5430cdb73be",
  "admin-members_marks": {},
- "admin-now": "b7507a1e4b22",
+ "admin-now": "49a5ce8a1d49",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -51,7 +51,7 @@
   ],
   "queue": [
    "いまの状況",
-   "86929176"
+   "964f8dff"
   ],
   "status": [
    "運行状況",
@@ -62,7 +62,7 @@
    "be0c31c5"
   ]
  },
- "admin-system": "e15d2fde8b1d",
+ "admin-system": "0a39f3261cb4",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2a7356c8"
+   "4e60176b"
   ]
  },
  "admin_marks": {},
@@ -196,6 +196,6 @@
    "5ed629af"
   ]
  },
- "updated": "11.05 08:59",
+ "updated": "11.05 09:28",
  "wishlist": "09885a0145d0"
 }
