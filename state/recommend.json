@@ -42,6 +42,7 @@
   "https://sounova.com/game/silver-palace-global-launch-december-2026": "https://cdn.sounova.com/upload/XZB9zcSxrtYsJDQAP55HB.webp",
   "https://t.co/HxbP6sUsNB": "https://pbs.twimg.com/media/HWIPKNQbYAEe7ne?format=webp&name=large",
   "https://t.co/J2phBwQa7c": null,
+  "https://tech.yahoo.com/gaming/articles/gta-6-lots-images-released-155532825.html": "https://www.bing.com/th?id=ONUT.kCkfEd6ssrj5hVq4AQZySA&pid=News&w=1200",
   "https://topics.smt.docomo.ne.jp/amp/article/asahi_region/nation/asahi_region-ASVB03R7YVB0TLTB00FM": "https://img.topics.smt.news.goo.ne.jp/picture/asahi_region/m_asahi_region-ASVB03R7YVB0TLTB00FM.jpg",
   "https://topics.smt.docomo.ne.jp/amp/article/fushinsha_joho/region/fushinsha_joho-1489482078579015805": "https://img.topics.smt.news.goo.ne.jp/region_tmb/16_9/262129.png?fushinsha_joho-1489482078579015805",
   "https://topics.smt.docomo.ne.jp/amp/article/fushinsha_joho/region/fushinsha_joho-1489484091463139582": "https://img.topics.smt.news.goo.ne.jp/region_tmb/16_9/262072.png?fushinsha_joho-1489484091463139582",
@@ -74,7 +75,6 @@
   "https://www.nc.press/news/articleView.html?idxno=630275": "https://cdn.nc.press/news/photo/202611/630275_868605_1146.jpg",
   "https://www.newsbreak.com/animal-of-things-308620312/4978668818050-rabbit-hunting-season-in-new-york-dates-limits-and-rules-for-cottontails-and-hare": "https://img.particlenews.com/img/id/2cj1zQ_1GdcY14P00",
   "https://www.nikkei.com/nkd/disclosure/tdnr/20261030560696/": "https://www.nikkei.com/nkd/disclosure/tdnr/20261030560696/thumbnail/?ttype=ogp",
-  "https://www.polygon.com/gta-6-launch-update-screenshots-rockstar-games-nov-5": "https://www.bing.com/th?id=ONUT.b_0HZNWCqlgpF3wqgvg0Ow&pid=News&w=1200",
   "https://www.sakhaparliament.ru/goods/fashion/g101036328": null,
   "https://www.sina.cn/news/detail/5356822332443719.html": "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg",
   "https://www.sina.cn/news/detail/5359474912273486.html": "https://k.sinaimg.cn/n/news/1_img/upload/d8010f78/213/w2048h1365/20261105/c3ba-6a57406836c125de5255b9ca310cd10b.jpg/w710h400z1l50t1q75b0c.jpg?by=comos",
@@ -1043,27 +1043,6 @@
    "because": "GTA 6",
    "date": "2026-11-05",
    "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.b_0HZNWCqlgpF3wqgvg0Ow&pid=News&w=1200",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "Polygon",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "GTA 6 drops 36 brand-new screenshots ahead of launch",
-   "url": "https://www.polygon.com/gta-6-launch-update-screenshots-rockstar-games-nov-5",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 2,
-   "because": "GTA 6",
-   "date": "2026-11-05",
-   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.YQUivScTNVK0W6qHs8XlnQ&pid=News&w=1200",
    "kind": "board",
    "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
@@ -1077,6 +1056,27 @@
    ],
    "title": "GTA 6 Looks Pretty Realistic, Until It Comes To Gym Etiquette",
    "url": "https://www.gamespot.com/articles/gta-6-looks-pretty-realistic-until-it-comes-to-gym-etiquette/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 2,
+   "because": "GTA 6",
+   "date": "2026-11-05",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.kCkfEd6ssrj5hVq4AQZySA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "YAHOO!",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "GTA 6: Lots Of New Images Have Been Released",
+   "url": "https://tech.yahoo.com/gaming/articles/gta-6-lots-images-released-155532825.html",
    "words": [],
    "work": "GTA 6"
   },
@@ -2147,11 +2147,11 @@
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ]
  ]

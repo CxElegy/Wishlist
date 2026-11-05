@@ -352,6 +352,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets-prd.ignimgs.com/2026/11/05/gta-6-kodak-black-1793895386725.jpg?width=1280&format=jpg&auto=webp&quality=80": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
+ },
  "https://assets.content.technologyadvice.com/Comparing_Smartphones_in_a_Modern_Store_17c6a030a3.webp": {
   "w": 1672,
   "h": 941,
@@ -361,6 +367,12 @@
  "https://assets.content.technologyadvice.com/Screenshot_2026_10_12_at_4_46_57_PM_4e1a5e9138.webp": {
   "w": 1788,
   "h": 1312,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets.games.gg/gta_6_e11even_miami_nine1nine_takeover_og_b67b8fa2b7_644e97a8b2.webp": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -2020,12 +2032,6 @@
   "target": 720,
   "v": 3
  },
- "https://insider-gaming.com/wp-content/uploads/2026/05/Jason_Duval_06-scaled.jpg": {
-  "w": 2560,
-  "h": 1440,
-  "target": 1280,
-  "v": 3
- },
  "https://journalarta.com/wp-content/uploads/2026/10/samsung-may-use-snapdragon-8-elite-gen-6-extreme-in-europe-f-source-ai-ja-discover-1536x864.jpg": {
   "w": 1536,
   "h": 864,
@@ -3334,6 +3340,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://tech-insider.org/wp-content/uploads/2026/11/gta-6-leak-ps-app-chat-ban-claim-15-days-out-reddit-post-2026-hi09-1-768x432.webp": {
+  "w": 768,
+  "h": 432,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
+ },
  "https://tennis.jp/wp-content/uploads/2026/10/10b512a4e6cd5d7d99e18382e53f532e-1024x683.jpg": {
   "w": 1024,
   "h": 683,
@@ -3888,8 +3901,15 @@
  "https://www.bing.com/th?id=ONUT.b_0HZNWCqlgpF3wqgvg0Ow&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.522,
+  "local": "pics/cec0dfd595b68995.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
@@ -3946,6 +3966,12 @@
   "h": 466,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.kCkfEd6ssrj5hVq4AQZySA&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
  },
  "https://www.bing.com/th?id=ONUT.kQ4dry7TSi0lf6kAkumLsQ&pid=News&w=1200": {
   "w": 700,
@@ -4317,6 +4343,12 @@
   "h": 1080,
   "target": 1280,
   "v": 3
+ },
+ "https://www.levelup.com/resizer/v2/FXXM3EWXNVAUBHS5FETNDEBHL4.jpg?auth=5d8f0891b79c44ba70f0570efc5253faa3cf3c9e84d881b49d0a119d0e7abee0&height=630&width=1200&quality=70&smart=true": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
  },
  "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {
   "w": 900,
