@@ -379,3 +379,4 @@
 - 2026-11-05 f1f1：E15 案 B 続き。a2olite.world を実際に読んだら SPA（絵は bundle 内）で official_images=[]。根は meta charset の「char」誤検知＋bundle 未読＋artwork 語なし。emblem.py の規則で直し（OFFICIAL_IMG・official_bundle_images）、試験 1 つ足し。YOUNG/HIMEKI/XILI の網址をローカルで確認。次：合併後 library_emblem を dispatch して E15。
 - 2026-11-05 f1f1：E15 案 B 続き 2。#911 後も 0 枚の根は「公式が先」が character 限定（group 未対応）。group に拡張・試験 1 つ。次：合併後 background dispatch で YOUNG/HIMEKI と ux_check E15。
 - 2026-11-05 f1：E15 案 B 続き 4。公式の候補が strict の本人確認で毎回「別人」（A2O LITE 6 人・漫威电影 1 人）→ official_cands に trust_id（閾値そのまま）。PR #920。次：background dispatch で A2O LITE の枚数・FROM は公式に人ごとの絵なし。
+- 2026-11-05 f1 hr93：本 3 ①②③。#922 公開ログからお客さまの版面の名前・scrapling の網址を外す（合併後 library_emblem の log で名前 0・Fetched 0）。#923 古い db/*.sql 7 本に流し直し禁止・pw_setup 行を無効・3 関数の search_path 固定（本番適用・呼び出し確認済み）。ux_check --fast は時間切れ・✗ 6 は前からの写真の件。次：本 3 ④⑤⑥ か E15 案 B。
