@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "33b603def6a4",
+ "edit_sig": "b71fd581b1be",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -374,46 +374,6 @@
    }
   },
   {
-   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
-   "facts": [
-    {
-     "changed": false,
-     "label": "播出状态",
-     "text": "[《チェンソーマン 刺客篇》](https://anilist.co/anime/204429) · 未开播 · 开播日期未定"
-    }
-   ],
-   "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 1,
-     "source": "クランクイン！",
-     "title": "劇場版 チェンソーマン レゼ篇の映画館（上映館）検索",
-     "url": "https://www.crank-in.net/theater/search/195318"
-    },
-    {
-     "date": "2026-11-02",
-     "n": 2,
-     "source": "アニメ！アニメ！",
-     "title": "アニメ「チェンソーマン」はどこで見れる？全話無料・見放題の動画配信サービス一覧",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9QSXlJVkd5djQteXo4UjR3NTNMZ1BxLVBKMndGaTJCN0l5a1ZSQ2ItaWhCSVlOTmhrNWZWS214ZVhnREJFT1VncWRNc0Q0ZzJTSkZ3bUJXTllpalVqMk9zSA?oc=5"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "チェンソーマン",
-   "theme": {
-    "accent": "#DD8355",
-    "alt_accent": "#AE5223",
-    "alt_bg": "#F7EDE9",
-    "alt_fg": "#1E1A18",
-    "bg": "#211712",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
@@ -672,6 +632,31 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://chainsawman.dog/assets/portal/og/ogp.jpg?251221",
+   "facts": [],
+   "last": {
+    "date": "2026-11-05",
+    "headline": "メガハウス「お茶友シリーズ 劇場版『チェンソーマン レゼ篇』 BREAK TIME CAFÉ」レゼやデンジ、マキマなど全6種が登場！",
+    "url": "https://www.toy-people.com/jp/?p=115987"
+   },
+   "name": "チェーンソーマン",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "チェンソーマン",
+   "theme": {
+    "accent": "#DD8355",
+    "alt_accent": "#AE5223",
+    "alt_bg": "#F7EDE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211712",
+    "fg": "#F4EEE4",
+    "font": "serif",
     "split": true
    }
   },
