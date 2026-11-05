@@ -3232,6 +3232,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/10/taylor-s-solo-projects-presentation-16_9-1.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/10/gta-6-gameplay-screenshots-edge-magazine-november-2026-issue-5.jpg": {
   "w": 2560,
   "h": 1440,
@@ -3630,6 +3636,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.476,
+  "local": "pics/a857254384d07d6e.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.AqFGAOPiUknUmy3Gx9ZeQw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3872,6 +3891,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.Z6fYkDyCxR--j5UquSblZg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Zxg8uAMC6RPaqiZ4lfllVQ&pid=News&w=1200": {
   "w": 700,
   "h": 426,
@@ -3958,12 +3983,6 @@
  "https://www.bing.com/th?id=ONUT.iOLgomJRjCnpWxI4P5DdVg&pid=News&w=1200": {
   "w": 700,
   "h": 367,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.kCP-vq5LVmGUkxXLZYrZFw&pid=News&w=700": {
-  "w": 700,
-  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -4230,6 +4249,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.easterneye.biz/media-library/toshiyuki-morikawa-will-voice-robert-downey-jr-s-doctor-doom.jpg?id=68604449&width=1200&height=600&coordinates=0%2C95%2C0%2C238": {
+  "w": 1200,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
  "https://www.enduins.com/wp-content/uploads/2026/10/unnamed-13.webp": {
   "w": 1920,
   "h": 1080,
@@ -4349,6 +4374,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-06"
+ },
+ "https://www.meatpoultry.com/ext/resources/2026/11/05/KFC-Doom-Meal.jpg?height=635&t=1793901282&width=1200": {
+  "w": 953,
+  "h": 635,
+  "target": 1280,
+  "v": 3
  },
  "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {
   "w": 900,

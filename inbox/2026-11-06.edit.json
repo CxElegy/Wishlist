@@ -71,6 +71,64 @@
   }
  ],
  "_covered": {
-  "GTA 6": 26
- }
+  "GTA 6": 26,
+  "漫威电影": 16
+ },
+ "漫威电影": [
+  {
+   "headline": "Avengers Doomsday: New synopsis reveals clues about 'future of the multiverse' for Marvel film",
+   "highlight": "future of the multiverse",
+   "blurb": "A new synopsis for Avengers: Doomsday, due in December 2026, hints at where the multiverse story is headed.",
+   "weight": "lead",
+   "refs": [
+    13,
+    11,
+    15
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700"
+  },
+  {
+   "headline": "‘Avengers: Doomsday’ Countdown Clock Changes Again, and Doctor Doom Now Looms Over Several Cities",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "No ‘Doom’ for you: KFC, Marvel partner on global Avengers: Doomsday campaign",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    8,
+    9
+   ],
+   "event": {
+    "date": "2026-11-09",
+    "label": "コラボ販売開始"
+   }
+  },
+  {
+   "headline": "'Avengers: Doomsday': Robert Downey Jr picks legendary Japanese voice actor for Doctor Doom",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
+  },
+  {
+   "headline": "Marvel's 'VisionQuest' Finally Pays Off a 15-Year-Old MCU Easter Egg",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    7
+   ]
+  }
+ ]
 }

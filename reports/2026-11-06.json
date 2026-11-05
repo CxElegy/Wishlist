@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "f9cfd2821aa3",
+ "edit_sig": "a610d2a540d7",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -132,122 +132,64 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "A new synopsis for Avengers: Doomsday, due in December 2026, hints at where the multiverse story is headed.",
      "date": "2026-11-05",
-     "n": 1,
-     "source": "Marvel.com",
-     "title": "Avengers #1 | Official Trailer | Marvel Comics | Trailers & Extras | Marvel",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQRTdlT0gxdDVBVDJucEVIdS1uOEZDQjZYZl8xN2NWd3N0WU00dWE5cURTbndZbU1pX3pjdFR3SXl1dnkwN2JVS1ptZGZhbkZYcjdWYXpndUFLVlhLX1RTYnFLNWtxWU9YZGhneU96UktCTVpGUldhWVg4MlA5Q1VDZWdmNTJ4YS1YSjNmRHpobTlUOWZv?oc=5"
+     "headline": "Avengers Doomsday: New synopsis reveals clues about 'future of the multiverse' for Marvel film",
+     "highlight": "future of the multiverse",
+     "image": "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-in/entertainment/movies/avengers-doomsday-new-synopsis-reveals-clues-about-future-of-the-multiverse-for-marvel-film/ar-AA2gQ5sh",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 2,
-     "source": "Comic Book Resources",
-     "title": "Jeremy Renner Trades Marvel for John Wick-Style Action in New Crime Thriller",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA1V0pSM0RNUEhvbzNKeG0xN0dVRXlEX283UzFtMm5xQkllamhxWUp1Z25sMjh1UkdtVE16eGlOeFhMandYYzVPcVIxVG56ZjlRVWZsZ0xySHpQLXZrdW1KeGdRYXJCcVI0TXVlcTB4c0toU2xxeVhxMFRfY2thYTA?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 3,
+     "headline": "‘Avengers: Doomsday’ Countdown Clock Changes Again, and Doctor Doom Now Looms Over Several Cities",
+     "highlight": "",
+     "image": null,
      "source": "IMDb",
-     "title": "‘Avengers: Doomsday’ Countdown Clock Changes Again, and Doctor Doom Now Looms Over Several Cities",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9PcVMyR1hxNURHeEpUMXlCWndYbTNkQ3VaS0pPUTZaN2VsZFNnWm1VRHhWSEV5djQ2VjhMSlRjNWpvd1ZQMUZvSy1NMlI0a25TZlVRTzIwanNzTkQ2SXJGWnZ1MXNYeUU?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.imdb.com&sz=128",
+     "url": "https://www.imdb.com/news/ni66097002/?ref_=nmnw_art_perm",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 4,
-     "source": "Collider",
-     "title": "Marvel's 'VisionQuest' Finally Pays Off a 15-Year-Old MCU Easter Egg",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOTjM4UnhCejh0TWdsZGtrWjNPTjJiakthY0J2ZmFqQ0hrS1pxaHlTNU9UdzdaQVB1Y3Vja0llSmVTaWpnZVp6aFQ2ZHo1WFJNRHl1dTRYVWlQeVhOazFaTU5teWlRalBxelUyLUNGZ3NndWlaUjFsY1FaUVRUc3V2TXRpZC1JTWJCWGc?oc=5"
+     "event": {
+      "date": "2026-11-09",
+      "label": "コラボ販売開始"
+     },
+     "headline": "No ‘Doom’ for you: KFC, Marvel partner on global Avengers: Doomsday campaign",
+     "highlight": "",
+     "image": "https://www.meatpoultry.com/ext/resources/2026/11/05/KFC-Doom-Meal.jpg?height=635&t=1793901282&width=1200",
+     "image_via": "og:image",
+     "url": "https://www.meatpoultry.com/articles/34284-no-doom-for-you-kfc-marvel-partner-on-global-avengers-doomsday-campaign",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 5,
-     "source": "Root-Nation.com",
-     "title": "Sony 漫威電影《金鋼狼》上映50天後的銷售揭曉",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOX1BWZFlSNG5YZFBYMXZFNlJrUldfLXJjLVhzOGxzZVk3czdIdlBBYWlQVUZ1TGdzNEJvbmpVdjJOTmVmbS1GQW5aYm1xMEZZNmFzN2w1Tmdua1RpUVpoT3VPNzFaTlFyU1lhbU5UMjlMc2xFQ2g0RnZvR2RSbjRsTzhOSDI0c1JjaXpmSTZJbE1hbG1KU1FCZm5BRGE?oc=5"
+     "headline": "'Avengers: Doomsday': Robert Downey Jr picks legendary Japanese voice actor for Doctor Doom",
+     "highlight": "",
+     "image": "https://www.easterneye.biz/media-library/toshiyuki-morikawa-will-voice-robert-downey-jr-s-doctor-doom.jpg?id=68604449&width=1200&height=600&coordinates=0%2C95%2C0%2C238",
+     "image_via": "og:image",
+     "url": "https://www.easterneye.biz/avengers-doomsday-robert-downey-jr-doctor-doom-japanese-voice/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 6,
-     "source": "LaughingPlace.com",
-     "title": "Disney Adventure World Reveals New Avengers: Doomsday Menu",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQUHlncVA2NzFGdDR0TGtFVlVhaF83d1B1OFE4cUVCRzhaLVlQTDBqRmdzcjNZUzU2V2x1X3llT1pCbTJ0dlhWWTUwOGhzVzJ0QWZiTGNuVzd1aG5sbEdEYUhKTURITUExM1NQenZCWWlzT21tTThKbkY2MHZRMkNOZ0ljMktlaWljT01JckhPNjRMTkE?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 7,
-     "source": "IGN Nordic",
-     "title": "VisionQuest Just Teased an Iconic Marvel Superhero Team",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQdjFJaFEzWUZxZlh1aE12VXNtejNWX2wzSC16NG5icGR6QzBhY01ETjhmcGxGY2E0LTFXZ0t6dDJzUDFaQ2ZfWGJhQ1pWN0J0eGlFWWV2ZkJvakNCUkthM2JsRTBTand1TzBRS2ZfeWZvT2t0aW1hLWhGRFMzVUt6b1BaZkJFQ1oxY3cteWgySTA1RUMzdURVLWdOSWFaeEU?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 8,
-     "source": "JUKSY 街星",
-     "title": "《復仇者聯盟：末日崛起》肯德基聯名8款餐點！100多國11/9起陸續開賣 中的YouTube影片",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1tOFkyOVJKczNjNkJSX2lqUkJ2VENodWtucFltVjRzQ3kzYUo3UXprZFJZazdmWVN2NFBwa3dHTEJHWWhTeDRMa1A2dXdPOTNxUE5tR09xZTdvWnRfWWR0Z3Ztb2w?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 9,
-     "source": "FanPiece",
-     "title": "《復仇者聯盟5：末日降臨》聯名宣傳出錯，「飛隼無畏雞翅」惹怒 MCU 粉絲",
-     "url": "https://news.google.com/rss/articles/CBMimwNBVV95cUxObnl2OExzZ3l6ZGY2RXBRcW5hRkdnYUdGcVh6aFc1SFlGRE5fY0VpTHZvZmM1WktMTkpoSWU0Qml5bHQyaTV0N2h2OTdMSzZSbU96ZWlfVUlyVDN5TDdqX2JxdHRMN0dqRS02ZVFSdVowS3o5U0tMNF8ydTVFVktFMzVzb3duN3ZOa1BLT1JESGU3OUFXaElqeTBYYlpRM2FIUnhfWklKTGNVR2ZGZG55OXUyaFR2amNhNW5TcmNPUC1sZmdSbVdETVhJNzdyZFZyWUstOUF6d0tTblV2SlVITUFGU2M4LUx2b0NSbFhEamNpdnlaV2NweFVhS2ZxQTRHWUxLNE5HM2MxT3RuQktyMWNSdm9xZG9BV1lTNkFnc1hUQlBITElKX2RfNnJrdmxJeXlwWnV6V2FyUnV2TF9PRUNOSW1VU3lGdE5weFZQSm1CeFk3NUpRTkJDMjFma1JySVNkSnpTaVlndFVNeFAxUkZFcmE5NDNqLXhjX29YWHhscWROclB5SGltZGllS3FYX21COGNhM3Nwa1E?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 10,
-     "source": "SuperHeroHype",
-     "title": "Spider-Man Rumor Teases Supernatural Twist to Next MCU Era & Gives Daredevil Fans Hope",
-     "url": "https://www.superherohype.com/movies/704372-marvel-rumor-spider-man-defenders-darker-mcu-future"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 11,
-     "source": "Yahoo",
-     "title": "Doctor Doom’s Witch Army Has a Terrifying Surprise in Avengers: Doomsday, Claims Insider",
-     "url": "https://www.yahoo.com/entertainment/movies/articles/doctor-doom-witch-army-terrifying-171511406.html"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 12,
-     "source": "EasternEye",
-     "title": "'Avengers: Doomsday': Robert Downey Jr picks legendary Japanese voice actor for Doctor Doom",
-     "url": "https://www.easterneye.biz/avengers-doomsday-robert-downey-jr-doctor-doom-japanese-voice/"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 13,
-     "source": "Times Now on MSN",
-     "title": "Avengers Doomsday: New synopsis reveals clues about 'future of the multiverse' for Marvel film",
-     "url": "https://www.msn.com/en-in/entertainment/movies/avengers-doomsday-new-synopsis-reveals-clues-about-future-of-the-multiverse-for-marvel-film/ar-AA2gQ5sh"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 14,
-     "source": "MEAT+POULTRY",
-     "title": "No ‘Doom’ for you: KFC, Marvel partner on global Avengers: Doomsday campaign",
-     "url": "https://www.meatpoultry.com/articles/34284-no-doom-for-you-kfc-marvel-partner-on-global-avengers-doomsday-campaign"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 15,
-     "source": "SuperHeroHype",
-     "title": "MCU’s Next Saga After Avengers: Secret Wars Won’t Just Be About X-Men, Insider Provides Details",
-     "url": "https://www.superherohype.com/movies/704306-marvel-next-mcu-era-mutant-saga-bigger-plans-insider-claims"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 16,
-     "source": "Tasting Table",
-     "title": "Review: Dunkin's Avengers Menu Includes 6 Super Drinks And 1 Villainously Bad Donut",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBDTXZOOXBtUmZpWG9WbE8wWDdUV3ZaQUpETWt5VXVtSUtjVDF6a2pBcGxqOTZzVmgxQk9zdDMyMk1OYlA4QzJMRndGejJoaDVDYkp6OURobTgwanJxZDhnYVdSX3g4WUEzYU5QMlUwM2YtZnM?oc=5"
+     "headline": "Marvel's 'VisionQuest' Finally Pays Off a 15-Year-Old MCU Easter Egg",
+     "highlight": "",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/10/taylor-s-solo-projects-presentation-16_9-1.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://collider.com/visionquest-episode-7-captain-america-easter-egg-human-torch/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",
