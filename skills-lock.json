@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "animation-performance": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "skillPath": "skills/animation-performance/SKILL.md",
+      "computedHash": "333f6a387124d0eda927614671f8be3a00d1ddeb9f43cf8b7fa7032630414311"
+    },
     "caveman": {
       "source": "juliusbrussee/caveman",
       "sourceType": "github",
@@ -19,6 +25,12 @@
       "skillPath": "skills/copywriting/SKILL.md",
       "computedHash": "b62e532dd34dc666288b241ea05e4e1f36f011d4f65d5d3129e85603064ac1c4"
     },
+    "core-web-vitals": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/core-web-vitals/SKILL.md",
+      "computedHash": "601b2cbb920fb0ea9814a3f11232d7883e1eb0923865218502ab1d73e9fc5172"
+    },
     "design-taste-frontend": {
       "source": "leonxlnx/taste-skill",
       "sourceType": "github",
@@ -36,6 +48,12 @@
       "sourceType": "github",
       "skillPath": "skills/find-skills/SKILL.md",
       "computedHash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396"
+    },
+    "fixing-motion-performance": {
+      "source": "ibelick/ui-skills",
+      "sourceType": "github",
+      "skillPath": "skills/fixing-motion-performance/SKILL.md",
+      "computedHash": "426dcf33f23419643f2aab71e2253e1a5b5684a808fabb8a4ad135e489ed7a0f"
     },
     "frontend-design": {
       "source": "anthropics/skills",
@@ -66,6 +84,18 @@
       "sourceType": "github",
       "skillPath": "skills/onboarding/SKILL.md",
       "computedHash": "5606ee5c3f1cde7478febf0c957bf414fb2aa919327b4906009d77ee060d1882"
+    },
+    "performance": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/performance/SKILL.md",
+      "computedHash": "ce9d36f139a1b2a6a8ac2cb222698963b8076d2dd8b41685e8e8ae589cdcf1e4"
+    },
+    "performance-optimization": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/performance-optimization/SKILL.md",
+      "computedHash": "276aec00aaabae98f4bd6d565745378b498e0d11688315f32179587746b93805"
     },
     "ponytail": {
       "source": "dietrichgebert/ponytail",
