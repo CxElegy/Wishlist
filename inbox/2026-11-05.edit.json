@@ -17,7 +17,7 @@
   "MMORPG 新作": 5,
   "Vaundy": 3,
   "Astrae Oratio": 2,
-  "滑雪": 1,
+  "滑雪": 2,
   "gelato pique": 3,
   "FROM": 2,
   "BLEACH Mirrors High": 1
@@ -656,7 +656,17 @@
    ]
   }
  ],
- "滑雪": [],
+ "滑雪": [
+  {
+   "headline": "Crystal Ski adds eight new resorts for the 2026/27 winter season",
+   "highlight": "eight new resorts",
+   "blurb": "Crystal Ski adds eight new resorts for the 2026/27 winter season.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "gelato pique": [
   {
    "headline": "あなたの推しはどの子？ 【ジェラート ピケ】『ピーナッツコラボ』が11/6発売。スヌーピーたちのルームウェア&雑貨、抱き枕が登場",

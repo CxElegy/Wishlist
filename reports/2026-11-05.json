@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "a473ab7a51c0",
+ "edit_sig": "91b3c3b940b7",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -117,17 +117,19 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "Crystal Ski adds eight new resorts for the 2026/27 winter season.",
      "date": "2026-11-02",
-     "n": 2,
-     "source": "TTG Media",
-     "title": "Crystal Ski adds eight new resorts for the 2026/27 winter season",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNaFRmQ3BTV0RvOU5yRHpRTnp2WGlrWE9mWUpLRGpfYk1OWTYxOUhQeVFLNW5uQ2tWVFltaDgzZE5yeWhFbFoySkFFSzd3ZWxsaU5yaFBmYU5sUmpFbGhNMlhMcUtGVVpfNDJITC10NXBaQUFSSFNyWkFnN29GYlB5RHV2OHNES252RFprMElTd2ttSi0xaFZVbElVZ1NuYTVMMTBZ?oc=5"
+     "headline": "Crystal Ski adds eight new resorts for the 2026/27 winter season",
+     "highlight": "eight new resorts",
+     "image": "https://www.ttgmedia.com/sites/default/files/2026-11/Le%20Grand%20Bornand%20France%20iStock-1412978248%20iStock%20Oliver%20de%20la%20Haye.jpg",
+     "image_via": "og:image",
+     "url": "https://www.ttgmedia.com/travel-industry-news/crystal-ski-adds-eight-new-resorts-202627-winter-season",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
