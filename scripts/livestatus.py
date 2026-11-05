@@ -29,11 +29,22 @@ def _db():
         return "", ""
 
 
+_REPORTED = {}   # (版面, proc) → 最後に送った (state, note)。同じなら送らない（残り時間だけの違いで rpc live_report を重ねない。無料枠）
+
+
 def report(board, proc, state, note=None, eta_min=None):
-    """state：work（作業中）/ wait（終わって反映待ち）/ clear（帯を消す。board="*" でその proc の全部）。"""
+    """state：work（作業中）/ wait（終わって反映待ち）/ clear（帯を消す。board="*" でその proc の全部）。
+    同じ（版面, proc, state, note）をこの実行の中で二度送らない。どの呼び出し元（AI 編集・小元素）も通る入口で止める。"""
     url, key = _db()
     if not (url and key):
         return
+    sig = (state, note)
+    if _REPORTED.get((board, proc)) == sig:
+        return
+    _REPORTED[(board, proc)] = sig
+    if board == "*":
+        for k in [k for k in _REPORTED if k[1] == proc and k[0] != "*"]:
+            _REPORTED.pop(k)
     body = {"p_account": sitedir.NAME, "p_board": board, "p_proc": proc, "p_state": state, "p_note": note,
             "p_eta_min": None if eta_min is None else max(1, round(eta_min))}
     req = urllib.request.Request(f"{url}/rest/v1/rpc/live_report", data=json.dumps(body, ensure_ascii=False).encode("utf-8"),

@@ -375,3 +375,4 @@
 - 2026-11-04 plan1：boards PATCH が edge ログで 18 回×13 バッチ/日残っていた＝library.push_shop の上級 parent_id を毎回 PATCH。返りの parent_id と同じなら書かない。photos の edge ログ：#900 合併後の 21 時台は 0 件（24h 後に取り込み以外 0 を数え直す）。E15 案 B は網で確かめられず #901 のまま。
 - 2026-11-05 plan2：①は f1 で済み（user_login 0 回）。②photos の edge ログ：#900 合併後 21 時台以降 0 件（直前は 18〜20 時に 60〜86 件/時）。③は #902。④は網で確かめられず BACKLOG に先の 1 段。BACKLOG に 4 段足した。次：24h 後に photos 数え直し。
 - 2026-11-05 plan2：計画。24h の API 呼び出しを UA で分けた（Actions 74%・点検 25%・人 0.5%）。BACKLOG に 5 段（内訳の毎日 1 行・点検の予算・工程またぎの読み・live_* の書き手・404.html）と E 表 1 行。次：依頼 ①boards PATCH から。
+- 2026-11-05 f1f2：live_* の書き手を数え直し（live_mark・report・Lines の 3 つ、gate は読むだけ）。report 自身が同一内容を送らない入口に・tests/test_live_writers.py（書き手の表＋回数）。合併前 24h＝status POST 681・DELETE 274・log 558・report 422。#908 合併後 24h の数え直しは 11/6 00:00 UTC 以降。次：数え直して 250/450/200 以下か。
