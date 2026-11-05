@@ -378,3 +378,4 @@
 - 2026-11-05 f1f2：live_* の書き手を数え直し（live_mark・report・Lines の 3 つ、gate は読むだけ）。report 自身が同一内容を送らない入口に・tests/test_live_writers.py（書き手の表＋回数）。合併前 24h＝status POST 681・DELETE 274・log 558・report 422。#908 合併後 24h の数え直しは 11/6 00:00 UTC 以降。次：数え直して 250/450/200 以下か。
 - 2026-11-05 f1f1：E15 案 B 続き。a2olite.world を実際に読んだら SPA（絵は bundle 内）で official_images=[]。根は meta charset の「char」誤検知＋bundle 未読＋artwork 語なし。emblem.py の規則で直し（OFFICIAL_IMG・official_bundle_images）、試験 1 つ足し。YOUNG/HIMEKI/XILI の網址をローカルで確認。次：合併後 library_emblem を dispatch して E15。
 - 2026-11-05 f1f1：E15 案 B 続き 2。#911 後も 0 枚の根は「公式が先」が character 限定（group 未対応）。group に拡張・試験 1 つ。次：合併後 background dispatch で YOUNG/HIMEKI と ux_check E15。
+- 2026-11-05 f1f1：#912 後 YOUNG に公式の立ち絵が入った（background run 41953974865）。HIMEKI 以降は VORA の Commons（Walter De Vora）が顔の基準で別人扱い。次：group の Commons 作品名つきの誤検知と基準の優先。
