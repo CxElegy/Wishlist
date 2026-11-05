@@ -1,3 +1,5 @@
+-- ⚠ 流し直し禁止（2026-11-05 全体点検 本 3）：ここの関数・grant は後のファイル（accounts.sql・auth_guard.sql）が上書きした古い形。
+--   全部を流し直すと門（can_edit・account の分け）が外れる。今の形は本番の DB（pg_get_functiondef で読む）。直すときは新しいファイルに足す。
 -- 网页「设置」页（docs/settings.html）用：在网页上改每个关注项的篇幅 S / M / L。
 -- 在 Supabase → SQL Editor 里整段粘贴、运行一次即可（需要先运行过 db/sizes.sql）。
 --

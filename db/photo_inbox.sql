@@ -1,3 +1,5 @@
+-- ⚠ 流し直し禁止（2026-11-05 全体点検 本 3）：ここの関数・grant は後のファイル（accounts.sql・auth_guard.sql）が上書きした古い形。
+--   全部を流し直すと門（can_edit・account の分け）が外れる。今の形は本番の DB（pg_get_functiondef で読む）。直すときは新しいファイルに足す。
 -- 愿望清单页「📷 拍照加愿望」的照片收件箱。在 Supabase → SQL Editor 里整段粘贴、运行一次即可。
 --
 -- 流程：网页上传（口令对了才收）→ GitHub Actions 每 2 小时导出到 inbox/photos/（state: new → exported）

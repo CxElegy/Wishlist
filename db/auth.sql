@@ -1,3 +1,5 @@
+-- ⚠ 流し直し禁止（2026-11-05 全体点検 本 3）：ここの関数・grant は後のファイル（auth_guard.sql・auth_enforce.sql・user_boards.sql ほか。下の pw_setup を true に戻す行は無効にしてある）が上書きした古い形。
+--   全部を流し直すと門（can_edit・account の分け）が外れる。今の形は本番の DB（pg_get_functiondef で読む）。直すときは新しいファイルに足す。
 -- 登录・身份（2026-10-20，第 1 步）
 -- 访客（没登录）= 只能看；一般用户 = 谁都能用邮箱登录（2026-10-21 定：不做邀请制，第 2 步起有自己的一套）；管理者 = 最多 5 个账号，能进管理页、管所有人。
 -- 只加不改：新表・新函数。现有的写函数要不要检查身份由 private.auth_flags 的 enforce 开关决定（切换到新网站时再打开，见 db/auth_enforce.sql）。
@@ -97,6 +99,8 @@ begin
     'message', '招待制です。管理者に招待を依頼してください。'));
 end;
 $$;
+-- search_path を固定（2026-11-05 本 3：本文の名前は全部 pg_catalog か schema つきで解決。動きは変えない）
+alter function public.hook_invite_only(jsonb) set search_path = public, pg_temp;
 grant usage on schema public to supabase_auth_admin;
 grant execute on function public.hook_invite_only(jsonb) to supabase_auth_admin;
 revoke execute on function public.hook_invite_only(jsonb) from authenticated, anon, public;
@@ -408,6 +412,8 @@ begin
   end if;
   return n;
 end $$;
+-- search_path を固定（2026-11-05 本 3：本文の名前は全部 pg_catalog か schema つきで解決。動きは変えない）
+alter function private.user_name_ok(text) set search_path = private, public, pg_temp;
 
 create or replace function public.user_login(p_name text)
 returns jsonb language plpgsql security definer set search_path = '' as $$
@@ -452,8 +458,9 @@ update public.app_users set name_key = 'c.elegy@outlook.com', name = 'c.elegy@ou
 
 -- ⑰ 店長はメール＋パスワード（2026-10-21，用户定的：毎回のメール確認はやめる・パスワードの再発行は要らない）。
 --    はじめの 1 回だけ網页で自分で決める（pw_setup が開いている間だけ、決めたら閉じる）。変えるのはログイン中のメニューから（auth.updateUser）。
-insert into private.auth_flags (key, on_) values ('pw_setup', true)
-on conflict (key) do update set on_ = true;
+-- 無効（2026-11-05 本 3）：流し直すと店長のパスワードを誰でも決め直せる窓が開く。本番は false（店長が決めた後に閉じた）。
+-- insert into private.auth_flags (key, on_) values ('pw_setup', true)
+-- on conflict (key) do update set on_ = true;
 
 create or replace function public.shop_pw_setup_open(p_email text)
 returns boolean language sql stable security definer set search_path = '' as $$
