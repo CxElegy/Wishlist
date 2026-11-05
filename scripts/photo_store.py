@@ -72,10 +72,35 @@ def pages_on():
 EMBLEM_URL = re.compile(r"https://[^/\"'\s]+\.supabase\.co/storage/v1/object/public/emblems/([0-9A-Za-z_.-]+\.webp)")
 
 
-def emblems_to_pages(html):
+# 外の小元素（boards.config の Commons の Special:FilePath・Twemoji）。よそへ直リンクすると止められる・429（ux_check E2）ので、
+# 写し（photo_cache_fill）→ Pages の /p/x<指紋>.<拡張子> に載せ、載ったものだけ替える（載る前は元の網址のまま＝表示を消さない）
+EXT_EMBLEM = re.compile(r"https://(?:commons\.wikimedia\.org/wiki/Special:FilePath/[^\"'\s<>&]+"
+                        r"|cdn\.jsdelivr\.net/gh/jdecked/twemoji@[0-9.]+/assets/svg/[0-9a-f-]+\.svg)")
+
+
+def ext_name(url):
+    """外の小元素の写しの名前。SVG のまま来るもの（Twemoji・幅指定のない Commons の .svg）だけ .svg、ほかは .png（img は中身で読むので種類は問わない）。"""
+    path = url.split("?")[0].lower()
+    return "x" + key(url) + (".svg" if path.endswith(".svg") and "width=" not in url else ".png")
+
+
+def published():
+    """Pages に載っている写しの名前（docs/p/manifest.json、Pages から 1 回読む。Supabase は読まない）。読めなければ空。"""
+    try:
+        with urllib.request.urlopen(PAGES_BASE + "/manifest.json", timeout=20) as r:
+            return set(json.loads(r.read()).get("names") or [])
+    except Exception:  # noqa: BLE001
+        return set()
+
+
+def emblems_to_pages(html, pub=None):
     """お客さまのページの小元素（ライブラリの boards.config.emblem の網址＝Supabase の emblems 箱）を Pages の /p/<名前> に書き換える。
-    旗 off ならそのまま。写しの対象は harness/photo_cache_fill（boards の config から同じ名前を数える）。2026-11-03：ログイン中の storage 取得 19 件の根。"""
-    return EMBLEM_URL.sub(lambda m: f"{PAGES_BASE}/{m.group(1)}", html) if pages_on() else html
+    外の小元素（EXT_EMBLEM）は pub（Pages に載った名前）にあるものだけ /p/ に。旗 off ならそのまま。
+    写しの対象は harness/photo_cache_fill（boards の config から同じ名前を数える）。2026-11-03：ログイン中の storage 取得 19 件の根。"""
+    if not pages_on():
+        return html
+    html = EMBLEM_URL.sub(lambda m: f"{PAGES_BASE}/{m.group(1)}", html)
+    return EXT_EMBLEM.sub(lambda m: f"{PAGES_BASE}/{ext_name(m.group(0))}" if ext_name(m.group(0)) in (pub or ()) else m.group(0), html)
 
 
 def public(base, k, w=800):

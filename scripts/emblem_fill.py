@@ -194,6 +194,29 @@ def group_foreign(item, src):
     return bool(f) and kind_of(item) == "group" and not same_name(f, item["name"])
 
 
+def _tokens(s):
+    return {w for w in re.split(r"[\W_]+", urllib.parse.unquote(str(s or "")).lower()) if w}
+
+
+def named(title, subj):
+    """Commons の検索で当たったファイル名に、その人の名前の語が全部あるか（順は問わない：Iguchi_Satoru＝Satoru Iguchi）。
+    名前がローマ字でない（大谷翔平）ときはファイル名で決められないので True。"""
+    s = str(subj or "").strip()
+    return not (s.isascii() and _tokens(s)) or _tokens(s) <= _tokens(title)
+
+
+def foreign_photo(item, x):
+    """別人・別物の Commons の写真。① グループのメンバー写真でファイル名にグループ名がない（group_foreign）
+    ② Commons の検索で取った写真（why が「（Commons の写真）」）で、ファイル名に本人の名前の語がない（2026-11-05 Ado → Alassane_Ouattara_-_2024.jpg：
+    コートジボワール大統領の愛称 ADO に検索が当たった）。固定した写真（lock）は触らない。"""
+    if not isinstance(x, dict) or x.get("lock"):
+        return False
+    if group_foreign(item, x.get("source")):
+        return True
+    f = commons_file_name(x.get("page") or "") or commons_file_name(x.get("source"))
+    return bool(f) and str(x.get("why") or "").endswith("（Commons の写真）") and not named(f.removeprefix("File:"), x.get("subject"))
+
+
 def same_name(page, name):
     """検索で当たった記事名が、その名前の記事か（記事名に名前が丸ごと入っている。「Aion 2」→「Aion 2」「Aion 2 (video game)」）。"""
     norm = lambda x: re.sub(r"[\W_]+", "", x.lower())
@@ -770,6 +793,7 @@ def gather(item, log=print, tried=None):
                 rows = commons_photos(f"{subj} {name}" if len(who) > 1 else subj, 8 if kind == "person" else 3)
                 if kind == "group":
                     rows = [r for r in rows if same_name(r["title"], name)]   # グループ名がファイル名にないものは同名の別物
+                rows = [r for r in rows if named(r["title"], subj)]   # 本人の名前の語がファイル名にないものは別人（Ado → Alassane Ouattara：foreign_photo）
                 add(subj, rows, "Wikimedia Commons", f"{subj}（Commons の写真）")
                 got += len(rows)
             except Exception as e:
@@ -3012,15 +3036,15 @@ def localize_remote(item, log=print):
 def drop_foreign_group(item, log=print):
     """グループの小元素のうち、Commons でファイル名にグループ名がないもの（同名の別物）を外し、元の網址を emblem_reject に。
     先頭（配色・顔の基準）が別物だと本物の公式写真が「別人」で外れる（A2O LITE：VORA が Walter De Vora）。固定した写真は触らない。→ 外した枚数。"""
-    bad = [x for x in item.get("emblem") or [] if isinstance(x, dict) and not x.get("lock") and group_foreign(item, x.get("source"))]
+    bad = [x for x in item.get("emblem") or [] if foreign_photo(item, x)]
     if not bad:
         return 0
     keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
-    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b["source"] for b in bad]))
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b["source"] for b in bad if b.get("source")]))
     with WRITE_LOCK:
         emblem.write_item(item["name"], keep, None)
         _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
-    log(f"  [外した] {item['name']}：グループ名のない Commons の写真 {len(bad)} 枚（{'、'.join(b.get('subject', '') for b in bad)}）")
+    log(f"  [外した] {item['name']}：グループ名・本人の名前のない Commons の写真 {len(bad)} 枚（{'、'.join(b.get('subject', '') for b in bad)}）")
     return len(bad)
 
 

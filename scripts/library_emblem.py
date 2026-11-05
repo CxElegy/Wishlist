@@ -621,6 +621,9 @@ def due(boards, now):
             out.append((1.6, st.get("at", 0), b))
         elif emblem_fill.stale_narrow_rejects({"name": b.get("name"), "emblem_kind": "character", **cfg(b)}):   # 解けていない縮めた網址の札（E24）：済み・材料待ちでも 1 回回して fill_one の release_small_rejects に着く
             out.append((1.5, st.get("at", 0), b))
+        elif any(emblem_fill.foreign_photo({"name": b.get("name"), **cfg(b)}, x) for x in cfg(b).get("emblem") or []):
+            # 別人の Commons の写真が残る版面（Ado の Alassane Ouattara）：済みでも 1 回回して fill_one の drop_broken（drop_foreign_group）に着く。BROKEN_V は上げない
+            out.append((1.5, st.get("at", 0), b))
         elif not zero and int(st.get("bv") or 0) < emblem_fill.BROKEN_V:
             # 公開の箱の小元素を今の壊れ方の規則（頭が切れた・ぼやけた）でまだ見ていない版面は、届かなかった・済みでも待たずに 1 回（ポケモンが 24 時間待ち）
             out.append((1.5, st.get("at", 0), b))
