@@ -908,7 +908,12 @@ def is_sliver(w, h):
 def save_cut(out, slug, min_side=BUST_MIN_SIDE):
     """切り抜きを docs/emblems/<slug>.webp に書く。切れ端（is_sliver）は書かずに外す（前の画像を上書きして壊さない）。
     min_side：取るときの下限。既定が BUST_MIN_SIDE＝どの入口も渡さなくても下限が掛かる（E18）。0 を渡してよいのは全身の body と、既にある画像の整え直し（repair_flat）だけ。満たさなければ書かず ValueError（別の候補へ）。"""
-    out.thumbnail((420, 520))
+    if min(out.size) >= min_side and min(out.size) * min(420 / out.width, 520 / out.height, 1) < min_side:
+        r = min_side / min(out.size)   # 横長の切り抜き（寝そべった公式の立ち絵：A2O LITE の VORA 956×527）は 420 幅に縮めると短い辺が下限を割る：短い辺を下限に合わせて縮める（元が足りているのに「小さすぎる」で外していた）
+        from PIL import Image
+        out = out.resize((max(1, round(out.width * r)), max(1, round(out.height * r))), Image.LANCZOS)
+    else:
+        out.thumbnail((420, 520))
     if is_sliver(*out.size):
         raise ValueError(f"切れ端（{out.size[0]}×{out.size[1]}）")
     if min(out.size) < min_side:
@@ -1243,6 +1248,7 @@ def official_images(site, words, limit=6):
 
 
 OFFICIAL_PERSON = re.compile(r'href=["\']([^"\'#?]*/(?:chara|characters?|members?|cast)/([^/"\'#?]+)/?)["\']', re.I)
+OTHER_VERSION = re.compile(r"^(?:\w*\d\w*|ultimate|earth|mc2|variant|classic|animated|android|alt|clone|zombie|lego)$", re.I)   # 人物のページ名の中の「別の版」の語
 PERSON_PREF = re.compile(r"(?<![a-z])(?:cut|body|stand|full|portrait|visual|chara)(?![a-z])", re.I)   # 語の切れ目で（standard の stand に当たらない）
 PERSON_SKIP = re.compile(r"card|logo|nav|poster|banner|thumb|icon|btn|sns|promo|module|-sp\b|_sp\b", re.I)
 
@@ -1254,15 +1260,29 @@ def official_person_images(site, ws, limit=3):
         return []
     need = min(2, len(ws))
     best = None
-    for html, base in official_pages(site):
-        for m in OFFICIAL_PERSON.finditer(html):
-            keys = {official_key(s) for s in re.split(r"[-_.\s]+", m.group(2)) if s}
-            hit = len(ws & keys)
-            if hit >= need and (best is None or (hit, -len(keys)) > best[0]):
-                best = ((hit, -len(keys)), urllib.parse.urljoin(base, m.group(1)))
-    if not best:
-        return []
-    u = best[1]
+    linked = False
+    for pages in (official_pages(site), None):
+        if pages is None:   # 人物のページへのリンクはあるのに、一覧に載るのは一部だけ（Marvel /characters は 48 人・Thor も Hulk もいない）：サイトの地図（sitemap）から探す
+            if best or not linked:
+                break
+            pages = official_sitemap(site)
+        for html, base in pages:
+            for m in OFFICIAL_PERSON.finditer(html):
+                linked = True
+                parts = [s for s in re.split(r"[-_.\s]+", m.group(2)) if s]
+                keys = {official_key(s) for s in parts}
+                hit = len(ws & keys)
+                if hit < need or any(OTHER_VERSION.search(s) for s in parts):   # 別の世界・別の版のページ（iron-man-ultimate・black-panther-earth-2992）は本人ではない
+                    continue
+                k = (hit, -len(keys))
+                u = urllib.parse.urljoin(base, m.group(1))
+                if best is None or k > best[0]:
+                    best = (k, {u})
+                elif k == best[0]:
+                    best[1].add(u)
+    if not best or len(best[1]) != 1:   # 同じだけ当たるページが 2 つ以上＝どの人か決まらない（Captain America：Steve Rogers・Sam Wilson…・Black Panther：T'Challa・Shuri…）。
+        return []                       # 公式の候補は本人確認を通さない（trust_id）ので、取り違えるより取らない
+    u = next(iter(best[1]))
     try:
         page = _OFFICIAL_HTML[u] if u in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(u, _get(u, 1_500_000).decode("utf-8", "replace"))
     except Exception:
@@ -1275,6 +1295,41 @@ def official_person_images(site, ws, limit=3):
         if i not in out:
             out.append(i)
     return out[:limit]
+
+
+_OFFICIAL_MAP = {}
+SITEMAP_MAX = 30   # 読む sitemap のファイルの数の上限（Marvel は 23 本・1 本 0.3MB・1 回の実行で 1 度だけ）
+
+
+def official_sitemap(site):
+    """公式サイトの地図（robots.txt の Sitemap、なければ /sitemap.xml。索引なら中の sitemap も最大 SITEMAP_MAX 本）にある人物のページ
+    （/characters/<名前> など OFFICIAL_PERSON の形）→ [(href の並び, 網址)]（official_person_images がそのまま読む形）。1 回の実行の間は読み直さない。"""
+    if site in _OFFICIAL_MAP:
+        return _OFFICIAL_MAP[site]
+    out, todo, seen = [], [], set()
+    try:
+        todo = re.findall(r"(?im)^sitemap:\s*(\S+)", _get(urllib.parse.urljoin(site, "/robots.txt"), 200_000).decode("utf-8", "replace"))
+    except Exception:
+        pass
+    todo = todo or [urllib.parse.urljoin(site, "/sitemap.xml")]
+    while todo and len(seen) < SITEMAP_MAX:
+        u = todo.pop(0)
+        if u in seen:
+            continue
+        seen.add(u)
+        try:
+            xml = _get(u, 5_000_000).decode("utf-8", "replace")
+        except Exception:
+            continue
+        locs = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", xml)
+        if "<sitemapindex" in xml:
+            todo += [x for x in locs if x not in seen]
+            continue
+        hrefs = "\n".join(f'href="{x}"' for x in locs if OFFICIAL_PERSON.search(f'href="{x}"'))
+        if hrefs:
+            out.append((hrefs, u))
+    _OFFICIAL_MAP[site] = out
+    return out
 
 
 def official_site(item):
@@ -1748,6 +1803,9 @@ def keep_framing(ems, old=(), drawn=False, item_framing=None):
     return keep
 
 
+CUT_FAIL = {}   # 元の網址 → 切り抜きの検査で外れた理由（1 回の実行の間）
+
+
 def cut_all(name, drawn, old=()):
     """items.yaml のその関注項の「カード」（badge）の小元素を全部切り抜きに替える（source に元の網址を残す）。"""
     import yaml
@@ -1791,6 +1849,7 @@ def cut_all(name, drawn, old=()):
                 print(f"  {x['subject']} → {x['image']}（同じページの別の画像）", file=sys.stderr)
             else:
                 x["_drop"] = True
+                CUT_FAIL[src] = str(e)   # commit が「公式の候補が切り抜きで落ちた」の理由を版面の要約に出す
                 print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
     ems = keep_framing([x for x in ems if not x.get("_drop")], old, drawn, item.get("emblem_framing"))
     lines = path.read_text(encoding="utf-8").split("\n")

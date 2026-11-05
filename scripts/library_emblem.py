@@ -343,7 +343,7 @@ def official_swap_board(item, emblems, fetch=None):
     入れ替えた絵は手元（sandbox の emblems/）に置く：あとの stash が公開の箱へ上げる。→ (新しい小元素, 入れ替えた人数)"""
     import emblem
     import emblem_fill
-    if item.get("emblem_kind") != "character" or item.get("emblem_people"):
+    if item.get("emblem_kind") not in ("character", "group") or item.get("emblem_people"):   # 対象は店長と同じ fandom_rows（group のメンバーも）
         return emblems, 0
     cur = {**item, "emblem": emblems}
     rows = emblem_fill.fandom_rows(cur)[:emblem_fill.OFFICIAL_PER_ROUND]
@@ -371,7 +371,7 @@ def official_swap_board(item, emblems, fetch=None):
             slug = emblem.slugify(item["name"], x["subject"]) + "-off"
             emblem.save_cut(cut, slug)
             y = {k: v for k, v in x.items() if k not in emblem.EMBLEM_MEASURED}
-            y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：Fandom から取り直し）")
+            y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：{'Fandom' if emblem.fandom_sourced(x) else '前の写真'}から取り直し）")
             if fs is not None:
                 y["fs"] = fs
             out.append(y)

@@ -1854,6 +1854,9 @@ def commit(item, good, picks, replace=False, log=print):
             with WRITE_LOCK:
                 _set_field(name, "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
             log(f"  [外した] 切り抜きの検査で外れた {len(failed)} 枚を emblem_reject に（次は別の候補）")
+            off = [x for x in chosen if x["image"] in failed and "公式サイトの" in (x.get("why") or "")]
+            if off:   # 公式の候補が落ちた数と理由を版面ごとに出す（A2O LITE の VORA・XILI・MERCI が理由なしで消えていた。点検は emb_check E29）
+                log(f"  [公式で外れた] {name}：{len(off)} 枚（" + "・".join(f"{x['subject']}＝{emblem.CUT_FAIL.get(x['image'], '検査')}" for x in off) + "）")
     return merged
 
 
@@ -2727,12 +2730,20 @@ def stage_closeups(item, bad, log=print):
 OFFICIAL_PER_ROUND = 4   # 1 回の掃除で Fandom から公式に取り直す人数（rembg で切るので重い）
 
 
+def swap_source(item, x):
+    """公式の立ち絵に取り直す元の小元素か：character は Fandom 由来、group（メンバー）は公式サイト以外の全部（Commons・記事の写真：A2O LITE の RADA が Commons のまま）。"""
+    if item.get("emblem_kind") == "group":
+        return "公式サイトの" not in (x.get("why") or "")
+    return emblem.fandom_sourced(x)
+
+
 def fandom_rows(item):
-    """取り直しの対象 = 点検 E21 が数える人：character の版面で、出どころが Fandom・固定でなく、公式サイトに同じ人の立ち絵がある小元素。"""
-    if item.get("emblem_kind") != "character" or item.get("emblem_people"):
+    """取り直しの対象 = 点検 E21 が数える人：character・group の版面で、公式でない出どころ（swap_source）・固定でなく、公式サイトに同じ人の立ち絵がある小元素。"""
+    if item.get("emblem_kind") not in ("character", "group") or item.get("emblem_people"):
         return []
-    return [x for x in item.get("emblem") or [] if isinstance(x, dict) and emblem.fandom_sourced(x) and not x.get("lock")
-            and x.get("shape") == "cutout" and emblem.official_for(item, x)]
+    rej = set(item.get("emblem_reject") or [])   # 公式の絵が全部外した画像（切り抜きの検査で使えない）の人は対象外
+    return [x for x in item.get("emblem") or [] if isinstance(x, dict) and swap_source(item, x) and not x.get("lock")
+            and x.get("shape") == "cutout" and (o := emblem.official_for(item, x)) and not set(o) <= rej]
 
 
 def official_cut(item, x, skip, orig=None):
@@ -2751,7 +2762,7 @@ def official_swap(item, log=print):
         return 0
     name = item["name"]
     skip = {u for u in item.get("emblem_reject") or []} | {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
-    swapped = {}
+    swapped, failed = {}, []
     for x in rows[:OFFICIAL_PER_ROUND]:
         try:
             _check_time()
@@ -2770,16 +2781,23 @@ def official_swap(item, log=print):
             continue
         if got:
             swapped[x["subject"]] = got
+        else:
+            failed += [u for u in emblem.official_for(item, x) if u not in skip]
+    if failed:   # 公式の絵が切り抜きの検査で使えない（A2O LITE の RADA：右の端で体が切れている）：外した画像に書き、毎回取り直さない・E21 にも数えない（E30 が数える）
+        with WRITE_LOCK:
+            _set_field(name, "emblem_reject", json.dumps(list(dict.fromkeys(list(item.get("emblem_reject") or []) + failed)), ensure_ascii=False)
+                       + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+        log(f"  [公式で外れた] {name}：取り直しの公式の絵 {len(failed)} 枚が切り抜きの検査で使えない（外した画像に）")
     if not swapped:
         return 0
     rows_out = []
     for x in item.get("emblem") or []:
-        if isinstance(x, dict) and x.get("subject") in swapped and emblem.fandom_sourced(x):
+        if isinstance(x, dict) and x.get("subject") in swapped and swap_source(item, x):
             url, out, fs = swapped[x["subject"]]
             slug = emblem.slugify(name, x["subject"])
             emblem.save_cut(out, slug)
             y = {k: v for k, v in x.items() if k not in emblem.EMBLEM_MEASURED}
-            y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：Fandom から取り直し）")
+            y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：{'Fandom' if emblem.fandom_sourced(x) else '前の写真'}から取り直し）")
             if fs is not None:
                 y["fs"] = fs
             rows_out.append(y)
