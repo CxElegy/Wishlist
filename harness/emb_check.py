@@ -395,13 +395,14 @@ def fandom_over_official(official=None, items=None):
         official = lambda it, s: emblem.official_for(it, {"subject": s})
     out = {}
     for it in items if items is not None else yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", []):
-        if it.get("emblem_kind") != "character" or it.get("emblem_people"):
+        if it.get("emblem_kind") not in ("character", "group") or it.get("emblem_people"):
             continue
-        bad = [x["subject"] for x in it.get("emblem") or [] if isinstance(x, dict) and emblem.fandom_sourced(x) and official(it, x["subject"])]
-        # 小元素がまだいない人（名簿の上位）にも公式の立ち絵がある：回しの順で後ろに回って何周も取られなかった（BLEACH Rukia・Kisuke）
         import emblem_fill
+        rej = set(it.get("emblem_reject") or [])   # 公式の絵が全部外した画像（切り抜きの検査で落ちた）の人は E30 が数える（ここで毎回 ✗ にしない）
+        bad = [x["subject"] for x in it.get("emblem") or [] if isinstance(x, dict) and emblem_fill.swap_source(it, x) and (o := official(it, x["subject"])) and not set(o) <= rej]
+        # 小元素がまだいない人（名簿の上位）にも公式の立ち絵がある：回しの順で後ろに回って何周も取られなかった（BLEACH Rukia・Kisuke）
         have = {_n for x in it.get("emblem") or [] if isinstance(x, dict) for _n in emblem_fill._who_of(x.get("subject"))}
-        bad += [f"{w}（いない）" for w in (it.get("emblem_who") or [])[:30] if not emblem.not_character(w) and not emblem_fill._who_of(w) & have and official(it, w)]
+        bad += [f"{w}（いない）" for w in (it.get("emblem_who") or [])[:30] if not emblem.not_character(w) and not emblem_fill._who_of(w) & have and (o := official(it, w)) and not set(o) <= rej]
         if bad:
             out[it["name"]] = bad
     return out
@@ -409,12 +410,31 @@ def fandom_over_official(official=None, items=None):
 
 def board_items(rows):
     """boards（ライブラリ）の行 [{name, config}] → items.yaml の項目と同じ形（site・emblem_kind・emblem・emblem_who）。お客さまの版面を店長と同じ点検で数える入口。"""
-    return [{"name": r.get("name"), **{k: (r.get("config") or {}).get(k) for k in ("site", "icon", "emblem_kind", "emblem", "emblem_who", "emblem_people")}} for r in rows]
+    return [{"name": r.get("name"), **{k: (r.get("config") or {}).get(k) for k in ("site", "icon", "emblem_kind", "emblem", "emblem_who", "emblem_people", "emblem_reject")}} for r in rows]
 
 
 def boards_fandom_over_official(rows, official=None):
     """E21 のお客さまの版面の分：boards の行で、Fandom の絵のまま／名簿の上位でいないのに公式サイトに立ち絵がある人 → {版面: [人]}（店長の fandom_over_official と同じ数え方）。"""
     return fandom_over_official(official=official, items=board_items(rows))
+
+
+def official_rejected(official=None, items=None):
+    """E30（✗）：名簿の先頭 3 人で小元素がいない人のうち、公式サイトの絵が外した画像（emblem_reject）に入ったままの人 → {版面: [人]}。
+    公式の候補は本人確認を通す（trust_id）のに、切り抜きの検査（横長の縮め方・枠で切れた）で落ちると理由も残らず消えていた（A2O LITE の VORA・XILI・MERCI）。
+    official(item, subject) → 網址のリスト（試験では差し替える）。店長の版面もお客さまの版面（board_items）も同じ数え方。"""
+    import emblem
+    import emblem_fill
+    if official is None:
+        official = lambda it, s: emblem.official_for(it, {"subject": s})
+    out = {}
+    for it in items if items is not None else yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", []):
+        if it.get("emblem_kind") not in ("character", "group") or not it.get("emblem_reject"):
+            continue
+        rej = set(it.get("emblem_reject") or [])
+        bad = [w for w in emblem_fill.head_missing(it) if rej & set(official(it, w) or [])]
+        if bad:
+            out[it["name"]] = bad
+    return out
 
 
 def official_blind(items=None):
@@ -783,6 +803,11 @@ def check(pg, who, width, out, full=False, guest=False):
         except Exception as e:  # noqa: BLE001
             print(f"  情報 E21 お客さまの版面を数えられなかった：{e}")
         try:
+            found["E30"] = [f"{k}：{'・'.join(v)}" for k, v in official_rejected().items()]
+            found["E30"] += [f"お客さまの版面 {k}：{'・'.join(v)}" for k, v in official_rejected(items=board_items(boards_rows())).items()]
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E30 数えられなかった：{e}")
+        try:
             blind = official_blind()
             if blind:
                 print(f"  情報 E27 公式サイトを読んでも人物の絵が 0 枚の版面（JS で描く・一覧が別の網址）{len(blind)}：" + "・".join(blind))
@@ -800,7 +825,7 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る", "E25": "待ちの理由に時間が出る", "E26": "実写の外した画像の札が古い版のまま", "E28": "小元素が帯の上へはみ出していない・本文に重なる・影がない"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E30": "先頭の人の公式の絵を外したまま", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る", "E25": "待ちの理由に時間が出る", "E26": "実写の外した画像の札が古い版のまま", "E28": "小元素が帯の上へはみ出していない・本文に重なる・影がない"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     if DRIFT:
         bad.append(f"E7 順番しだい 検出器のしきい値が標準でない回が {len(DRIFT)} 回（{DRIFT[0]}）：変えた所が戻していない（emblem_face._boxes と同じ型）")

@@ -312,8 +312,10 @@ class CloseupOfficial(unittest.TestCase):
         with mock.patch.object(ef.emblem, "official_for", return_value=["https://o/char/x/body.webp"]), mock.patch.object(ef.emblem, "official_site", return_value="https://o/"), \
                 mock.patch.object(ef.emblem, "find_bust", side_effect=fb), mock.patch.object(ef.emblem, "save_cut", side_effect=lambda im, slug: saved.setdefault("s", slug)), \
                 mock.patch.object(ef.emblem, "write_item", side_effect=lambda n, rows, r: saved.setdefault("rows", rows)), mock.patch.object(ef.emblem_face, "measure_item"), \
-                mock.patch.object(ef, "load_items", return_value=[item]), mock.patch.object(ef, "closeup_of", return_value=False), mock.patch.object(ef, "broken_image", return_value=False):
+                mock.patch.object(ef, "load_items", return_value=[item]), mock.patch.object(ef, "closeup_of", return_value=False), mock.patch.object(ef, "broken_image", return_value=False), \
+                mock.patch.object(ef, "_set_field", side_effect=lambda n, k, v: saved.setdefault(k, v)):
             self.assertEqual(ef.official_swap(item, log=lambda *a: None), 1)
+        self.assertIn("https://o/char/x/body.webp", saved["emblem_reject"])   # 取れなかった人（Rukia）の公式の絵は外した画像に（毎回取り直さない）
         rows = {x["subject"]: x for x in saved["rows"]}
         self.assertEqual(rows["Ichigo"]["source"], "https://o/char/ichigo/body.webp")
         self.assertNotIn("face", rows["Ichigo"])
@@ -334,6 +336,52 @@ class ReasonCounts(unittest.TestCase):
         self.assertEqual(r["E10"], {"別人": 5, "顔なし": 3, "何人も写る": 3, "出尽くし・重複": 4})
         self.assertEqual(r["E15"], {"別人": 2})
         self.assertEqual(r["別人の実写"], 5)
+
+
+class OfficialSourcesE15(unittest.TestCase):
+    """E15 案 B：公式の源（A2O LITE・漫威电影）が落ちる型を規則で数える。"""
+
+    def test_wide_cut_keeps_min_side(self):
+        """横長の切り抜き（956×527：寝そべった公式の立ち絵）を 420 幅に縮めて「小さすぎる」で外さない。元が足りなければ外す（下限はそのまま）。"""
+        import tempfile, pathlib
+        import emblem
+        from PIL import Image
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(emblem, "EMB_DIR", pathlib.Path(d)):
+            emblem.save_cut(Image.new("RGBA", (956, 527), (9, 9, 9, 255)), "w")
+            self.assertEqual(min(Image.open(pathlib.Path(d) / "w.webp").size), emblem.BUST_MIN_SIDE)
+            emblem.save_cut(Image.new("RGBA", (600, 900), (9, 9, 9, 255)), "t")
+            self.assertEqual(Image.open(pathlib.Path(d) / "t.webp").size, (347, 520))   # 縦長は今までどおり
+            with self.assertRaises(ValueError):
+                emblem.save_cut(Image.new("RGBA", (500, 200), (9, 9, 9, 255)), "s")
+
+    def test_person_page_unambiguous(self):
+        """一覧にいない人はサイトの地図から人物のページを探す。別の版（ultimate・earth-…）は除き、同じだけ当たるページが 2 つ以上なら取らない（本人確認を通さないので）。"""
+        import emblem
+        top = ('<a href="/characters/mister-fantastic">', "https://m.example/characters")
+        smap = ('href="https://m.example/characters/iron-man-ultimate"\nhref="https://m.example/characters/iron-man-tony-stark"\n'
+                'href="https://m.example/characters/captain-america-steve-rogers"\nhref="https://m.example/characters/captain-america-sam-wilson"', "s")
+        page = '<meta property="og:image" content="https://cdn.example/irm.webp">'
+        with mock.patch.object(emblem, "official_pages", return_value=[top]), mock.patch.object(emblem, "official_sitemap", return_value=[smap]), \
+                mock.patch.dict(emblem._OFFICIAL_HTML, {"https://m.example/characters/iron-man-tony-stark": page}):
+            self.assertEqual(emblem.official_person_images("https://m.example/", {"iron", "man"}), ["https://cdn.example/irm.webp"])
+            self.assertEqual(emblem.official_person_images("https://m.example/", {"captain", "america"}), [])
+
+    def test_group_swap_and_e30(self):
+        """group のメンバーの Commons の写真も公式の立ち絵に取り直す対象（RADA）。先頭の人の公式の絵が外した画像に残るのは E30、E21 の「いない」には数えない。"""
+        import emblem_fill as ef
+        it = {"name": "G", "emblem_kind": "group", "emblem_who": ["YOUNG", "VORA", "RADA", "XILI"],
+              "emblem_reject": ["https://o/lite-artwork-vora.webp", "https://o/lite-artwork-xili.webp"], "emblem": [
+                  {"subject": "YOUNG", "why": "YOUNG（公式サイトの立ち絵）", "shape": "cutout"},
+                  {"subject": "RADA", "why": "RADA（作品名つきの Commons）", "shape": "cutout"}]}
+        off = lambda i, s: [f"https://o/lite-artwork-{s.lower()}.webp"]
+        with mock.patch.object(ef.emblem, "official_for", side_effect=lambda i, x: off(i, x["subject"])):
+            self.assertEqual([x["subject"] for x in ef.fandom_rows(it)], ["RADA"])
+        self.assertEqual(emb_check.official_rejected(official=off, items=[it]), {"G": ["VORA"]})
+        self.assertEqual(emb_check.fandom_over_official(official=off, items=[it]), {"G": ["RADA"]})   # VORA・XILI は E30 側
+        it["emblem_reject"].append("https://o/lite-artwork-rada.webp")   # 取り直しの公式の絵も切り抜きで使えない：E21・取り直しの対象から外す
+        self.assertEqual(emb_check.fandom_over_official(official=off, items=[it]), {})
+        with mock.patch.object(ef.emblem, "official_for", side_effect=lambda i, x: off(i, x["subject"])):
+            self.assertEqual(ef.fandom_rows(it), [])
 
 
 if __name__ == "__main__":
