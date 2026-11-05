@@ -33,7 +33,11 @@
     9,
     13,
     16,
-    25
+    25,
+    33,
+    41,
+    36,
+    47
    ],
    "image": "https://www.bing.com/th?id=ONUT.b_0HZNWCqlgpF3wqgvg0Ow&pid=News&w=1200"
   },
@@ -71,8 +75,8 @@
   }
  ],
  "_covered": {
-  "GTA 6": 26,
-  "漫威电影": 16,
+  "GTA 6": 49,
+  "漫威电影": 28,
   "ILLIT": 4,
   "MMORPG 新作": 4,
   "三星手机": 3,
@@ -81,9 +85,9 @@
   "哈利波特剧集": 1,
   "滑雪": 1,
   "FROM": 2,
-  "猫用品": 1,
-  "周杰伦": 1,
-  "A2O LITE": 1
+  "猫用品": 4,
+  "周杰伦": 4,
+  "A2O LITE": 4
  },
  "漫威电影": [
   {
@@ -104,7 +108,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    21,
+    22
    ]
   },
   {
@@ -128,7 +134,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    12
+    12,
+    25
    ]
   },
   {
@@ -138,7 +145,8 @@
    "weight": "normal",
    "refs": [
     4,
-    7
+    7,
+    18
    ]
   }
  ],
@@ -288,8 +296,38 @@
     1
    ],
    "image": "https://news.walkerplus.com/article/137789/772116_615.jpg"
+  },
+  {
+   "headline": "Chewy's 'Frosty the Snowman' Cat Tree Lets Your Kitty Crawl Right Into His Smiling Face",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "周杰伦": [],
- "A2O LITE": []
+ "A2O LITE": [
+  {
+   "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
+   "highlight": "아차랭킹 1위",
+   "blurb": "A2O LITE가 아차랭킹 1위에 올라 리센느를 넘어섰다는 소식.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg"
+  },
+  {
+   "headline": "A2O LITE, 'NEON' 음악방송 8관왕에 전한 인사…\"감사합니다\"",
+   "highlight": "음악방송 8관왕",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    4
+   ]
+  }
+ ]
 }

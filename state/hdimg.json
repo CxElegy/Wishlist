@@ -455,12 +455,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets.techrepublic.com/uploads/2026/11/ipad-mini-oled-vs-galaxy-tab-s11-featured.jpg?f=jpeg": {
-  "w": 1600,
-  "h": 893,
-  "target": 1280,
-  "v": 3
- },
  "https://attach.setn.com/newsimages/2017/02/08/803356-PH.jpg": {
   "w": 650,
   "h": 366,
@@ -483,6 +477,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://bloximages.newyork1.vip.townnews.com/laloyolan.com/content/tncms/assets/v3/editorial/f/f2/ff2193f0-c64a-477e-8308-d12a4eb38451/6ae96045386c5.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://buzzap.net/images/2026/10/30/poco-f7-ultra/top.jpg": {
@@ -703,6 +703,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg": {
+  "w": 1200,
+  "h": 2132,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg": {
   "w": 1200,
   "h": 675,
@@ -841,12 +847,6 @@
   "w": 1200,
   "h": 1021,
   "target": 1280,
-  "v": 3
- },
- "https://collabo-cafe.com/wp-content/uploads/haikyu-fashion-paseos-roomwear-2026-eyecatch.jpg": {
-  "w": 1600,
-  "h": 908,
-  "target": 720,
   "v": 3
  },
  "https://collabo-cafe.com/wp-content/uploads/miffy-avail-1031-lineup.jpg": {
@@ -1048,6 +1048,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://foto.haberler.com/haber/2026/11/05/sivas-ta-is-yerinde-kedi-kumu-hirsizligi-guve-20398220_o.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 720,
   "v": 3
  },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/31070737/midnight-sons-1024x576.jpg": {
@@ -1280,6 +1286,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i0.wp.com/news.qoo-app.com/wp-content/uploads/2026/11/ogpcover.jpg": {
+  "w": 1116,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://i0.wp.com/uploads.saigacdn.com/2026/10/bleach-mh-00.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
@@ -1347,12 +1359,6 @@
    852
   ],
   "why": "看不清"
- },
- "https://image.newdaily.co.kr/site/data/img/2026/11/03/2026110300063_0.png": {
-  "w": 834,
-  "h": 716,
-  "target": 1280,
-  "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/1/7/17f3f_1815_517adb37_effde14d.jpg": {
   "w": 850,
@@ -1491,6 +1497,12 @@
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/1000012096.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://images.thedirect.com/media/article_full/doomclocks.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -1752,12 +1764,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.4gamers.com.tw/news-image/cf9d9e77-b123-4c01-ab3b-5c7cb9f60cb2.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://img.benesse-cms.jp/pet-cat/item/image/normal/06d992e9-745f-48d9-b74a-2b1648300da5.jpg?w=698&h=483&resize_type=cover&resize_mode=force": {
   "w": 698,
   "h": 483,
@@ -1788,6 +1794,19 @@
   "h": 900,
   "target": 720,
   "v": 3
+ },
+ "https://img.etnews.com/news/article/2026/11/02/news-p.v1.20261102.377b3b4aa88c4a5e8ad493fb0aa1fb50_P1.jpg": {
+  "w": 700,
+  "h": 467,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.458,
+  "local": "pics/a61d64b922727fa0.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
  },
  "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp": {
   "w": 1200,
@@ -1838,6 +1857,19 @@
   "h": 1199,
   "target": 1280,
   "v": 3
+ },
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "w": 640,
+  "h": 434,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.448,
+  "local": "pics/fb2c399e45ea329f.webp",
+  "out": [
+   1280,
+   868
+  ],
+  "why": "看不清"
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
@@ -2038,6 +2070,12 @@
   "target": 720,
   "v": 3
  },
+ "https://iphoneislam.com/wp-content/uploads/2026/11/s26-vs-iphone-18-pro-00.jpg": {
+  "w": 1448,
+  "h": 1086,
+  "target": 1280,
+  "v": 3
+ },
  "https://journalarta.com/wp-content/uploads/2026/10/samsung-may-use-snapdragon-8-elite-gen-6-extreme-in-europe-f-source-ai-ja-discover-1536x864.jpg": {
   "w": 1536,
   "h": 864,
@@ -2057,19 +2095,6 @@
   ],
   "why": "看不清"
  },
- "https://k.sinaimg.cn/n/news/1_img/upload/d8010f78/213/w2048h1365/20261105/c3ba-6a57406836c125de5255b9ca310cd10b.jpg/w710h400z1l50t1q75b0c.jpg?by=comos": {
-  "w": 710,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/d29057754e2db54e.webp",
-  "out": [
-   1280,
-   721
-  ],
-  "why": "看不清"
- },
  "https://kagit-media.atreez.cc/uploads/2026-10-30/i1d2joh29o153ez1gglsfaot.jpg": {
   "w": 1600,
   "h": 900,
@@ -2080,6 +2105,12 @@
   "w": 1200,
   "h": 800,
   "target": 720,
+  "v": 3
+ },
+ "https://limo.ismcdn.jp/mwimgs/f/9/1200w/img_f9fc3d848c723be08212ba0eb6301ed5130258.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
   "v": 3
  },
  "https://massivelyop.com/wp-content/uploads/2023/08/monsters-and-memories-spooky-scary-skeletons.jpg": {
@@ -2109,12 +2140,6 @@
  "https://media.image.infoseek.co.jp/isnews/photos/mynavi/mynavi_3241189_0-enlarge.jpg": {
   "w": 600,
   "h": 400,
-  "target": 720,
-  "v": 3
- },
- "https://media.image.infoseek.co.jp/isnews/photos/wowkorea/wowkorea_540202_0-enlarge.jpg": {
-  "w": 640,
-  "h": 352,
   "target": 720,
   "v": 3
  },
@@ -2697,6 +2722,12 @@
   "target": 720,
   "v": 3
  },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/d8ea645fc0224f7dbd1a0936c547b68f.jpg": {
+  "w": 1184,
+  "h": 666,
+  "target": 720,
+  "v": 3
+ },
  "https://nokiapoweruser.com/wp-content/uploads/2026/08/One-UI-9.5-Is-Real-Samsungs-Next-Gen-Software-Spotted-for-the-First-Time.jpg": {
   "w": 1376,
   "h": 768,
@@ -2744,6 +2775,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://p2.bahamut.com.tw/B/2KU/75/fe3c9b54769450d330a0ab9a8a210gb5.JPG": {
+  "w": 1279,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://p2.bahamut.com.tw/B/2KU/80/55c8d1f0e991c47587e545283520zrg5.JPG": {
@@ -2949,12 +2986,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/9b704a6721a926ecfadb7e50a90acc1bcf2e8bcabf81a2da9d29be12f2976348/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgamesradar_237%2F7e0586a6c5f54e543132772bf25594ba.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/9c1db0b2193c5a337e0daf05c5e78ced7e7032a80604692a1b2806bfb8334e03/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgadget_review_articles_822%2Fa427d5671b74c83dbfc8ef5e7c3ca37a.jpg": {
@@ -3443,6 +3474,12 @@
   "target": 720,
   "v": 3
  },
+ "https://times-abema.ismcdn.jp/mwimgs/2/9/1200w/img_29ed6bf6a46cabbb6b7d74c6d82596c1244940.jpg": {
+  "w": 1200,
+  "h": 1704,
+  "target": 720,
+  "v": 3
+ },
  "https://tjniigata.jp/assets/uploads/2026/10/458b656d0bcddf383b765c24dcc0ebf3-760x508.jpeg": {
   "w": 760,
   "h": 508,
@@ -3474,12 +3511,6 @@
   "target": 720,
   "v": 3
  },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/29/1793282040355_honor_magic_9_pro_max_design.jpeg": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/30/1793356261242_screenshot-2026-10-30-112555-1793334537356715650470-56-0-331-525-crop-17933350432051572197109.png": {
   "w": 1200,
   "h": 630,
@@ -3498,6 +3529,19 @@
   "target": 720,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793686934224_sieu-png.webp": {
+  "w": 800,
+  "h": 418,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.573,
+  "local": "pics/e6416733a190397b.webp",
+  "out": [
+   1280,
+   669
+  ],
+  "why": "看不清"
+ },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793711119437_img_de5997df.jpeg": {
   "w": 1200,
   "h": 630,
@@ -3507,12 +3551,6 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/03/1793712043011_img_cd6fc2d9.jpeg": {
   "w": 1200,
   "h": 630,
-  "target": 1280,
-  "v": 3
- },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/04/1793794102141_tivi-samusng-jpg.webp": {
-  "w": 843,
-  "h": 534,
   "target": 1280,
   "v": 3
  },
@@ -3941,6 +3979,12 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.YQUivScTNVK0W6qHs8XlnQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -4428,6 +4472,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.levelup.com/resizer/v2/FXXM3EWXNVAUBHS5FETNDEBHL4.jpg?auth=5d8f0891b79c44ba70f0570efc5253faa3cf3c9e84d881b49d0a119d0e7abee0&height=630&width=1200&quality=70&smart=true": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.meatpoultry.com/ext/resources/2026/11/05/KFC-Doom-Meal.jpg?height=635&t=1793901282&width=1200": {

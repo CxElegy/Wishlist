@@ -835,7 +835,8 @@
     },
     {
      "date": "2026-11-05T17:42:51+00:00",
-     "image": "",
+     "image": "https://images.thedirect.com/media/article_full/doomclocks.jpg",
+     "image_via": "og:image（其它来源）",
      "link": "https://www.imdb.com/news/ni66097002/?ref_=nmnw_art_perm",
      "n": 3,
      "seen": "2026-11-05T18:10:24+00:00",
@@ -1065,6 +1066,7 @@
     {
      "date": "2026-11-05T18:38:43+00:00",
      "image": "",
+     "link": "https://thedirect.com/article/marvel-studios-updates-avengers-doomsday-clock-months",
      "n": 22,
      "seen": "2026-11-05T21:23:51+00:00",
      "site": "https://thedirect.com",
@@ -1101,6 +1103,7 @@
     {
      "date": "2026-11-05T07:40:00+00:00",
      "image": "",
+     "link": "https://timesofindia.indiatimes.com/entertainment/english/hollywood/news/robert-downey-jr-personally-announces-the-japanese-cast-for-his-character-in-avengers-doomsday/articleshow/135564161.cms",
      "n": 25,
      "seen": "2026-11-05T21:23:51+00:00",
      "site": "https://timesofindia.indiatimes.com",
@@ -1332,7 +1335,9 @@
     },
     {
      "date": "2026-11-05T15:42:00+00:00",
-     "image": "",
+     "image": "https://s.yimg.com/lo/mysterio/api/74f35a083cff840f66783c92d955d53956a815f17f8fc1c338e7c6d11d969191/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fa11653e42e3e266fd5750215b71c84b8.jpg",
+     "image_via": "og:image",
+     "link": "https://www.yahoo.com/lifestyle/articles/chewys-frosty-snowman-cat-tree-154200328.html",
      "n": 3,
      "seen": "2026-11-05T21:23:53+00:00",
      "site": "https://www.yahoo.com",
@@ -2251,6 +2256,7 @@
     {
      "date": "2026-11-05T20:07:00+00:00",
      "image": "",
+     "link": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "n": 2,
      "seen": "2026-11-05T21:24:31+00:00",
      "site": "https://www.mydaily.co.kr",
@@ -2262,7 +2268,9 @@
     },
     {
      "date": "2026-11-02T14:21:06+00:00",
-     "image": "",
+     "image": "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg",
+     "image_via": "JSON-LD",
+     "link": "https://www.topstarnews.net/news/articleView.html?idxno=16266539",
      "n": 3,
      "seen": "2026-11-05T21:24:31+00:00",
      "site": "https://www.topstarnews.net",
@@ -2275,6 +2283,7 @@
     {
      "date": "2026-11-01T07:09:04+00:00",
      "image": "",
+     "link": "https://www.topstarnews.net/news/articleView.html?idxno=16265004",
      "n": 4,
      "seen": "2026-11-05T21:24:31+00:00",
      "site": "https://www.topstarnews.net",

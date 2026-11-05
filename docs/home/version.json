@@ -1,14 +1,14 @@
 {
- "admin": "494a1a95a053",
- "admin-ai": "2bac4988fb0b",
+ "admin": "de27c29ea7f9",
+ "admin-ai": "40afe241faad",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "02ace273"
+   "515a6442"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "9a63da3f"
+   "7774d199"
   ]
  },
  "admin-boards": "1d238f59f90b",
@@ -22,11 +22,11 @@
    "5bc8c40b"
   ]
  },
- "admin-emblem": "0c2ff56fe70f",
+ "admin-emblem": "6237a28bda21",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4fc5ffdd"
+   "839c6e3f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "82e6184894c2",
  "admin-members_marks": {},
- "admin-now": "53029d8d85bd",
+ "admin-now": "3a185736653f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "ecabfc2c"
+   "da553058"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "e992e57f"
+   "008f661d"
   ]
  },
- "admin-system": "840fa1065602",
+ "admin-system": "3dd08000f14f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "bfa40753"
+   "171f4dc9"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "09726592"
+   "b328d423"
   ]
  },
  "admin_marks": {},
- "heat": "5dfbb21c20e0",
+ "heat": "040afe2b6e2e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "012de685"
+   "d49e4b3c"
   ],
   "ranking": [
    "ランキング",
-   "f9c71412"
+   "05da22fa"
   ]
  },
- "index": "360344009f8d",
+ "index": "eecf4674d901",
  "index_marks": {
   "front": [
    "トップ",
-   "85595528"
+   "24e9ca01"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "441e8607"
+   "73659560"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "85214731"
+   "747abf45"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "1283c483"
+   "cccb4d25"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "4bfd1dfe"
+   "48e75ec5"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -196,6 +196,6 @@
    "9a07793c"
   ]
  },
- "updated": "11.06 06:32",
+ "updated": "11.06 06:39",
  "wishlist": "34e092991c77"
 }
