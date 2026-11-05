@@ -465,7 +465,7 @@ HEAD = 5   # 名簿の上から何人は毎回先に集める（主役が後回�
 
 def official_has(item, w):
     """公式サイトにその人の立ち絵があるか（名簿の取り方の先頭に置く人を決める）。"""
-    return bool(item.get("site") or item.get("icon")) and item.get("emblem_kind") == "character" and not item.get("emblem_people") and bool(emblem.official_for(item, {"subject": w}))
+    return bool(item.get("site") or item.get("icon")) and item.get("emblem_kind") in ("character", "group") and not item.get("emblem_people") and bool(emblem.official_for(item, {"subject": w}))
 
 
 def subjects(item, kind, hi):
@@ -705,7 +705,7 @@ def gather(item, log=print, tried=None):
     for subj in who:
         _check_time()
         got = 0
-        if kind == "character" and not item.get("emblem_people"):
+        if kind in ("character", "group") and not item.get("emblem_people"):   # グループ（A2O LITE のメンバー）も公式サイトの写真が先
             # 公式サイトの立ち絵が先（A17：公式が先、Fandom の場面画像は最後）。取れた人は Fandom に行かない
             got += official_cands(item, subj, cands, tried)
         if kind == "character" and api and not item.get("emblem_people") and not got:
@@ -1479,7 +1479,7 @@ def gather_wide(item, log=print, tried=None):
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
     for subj in who:
         _check_time()
-        if kind == "character" and not item.get("emblem_people"):
+        if kind in ("character", "group") and not item.get("emblem_people"):
             if official_cands(item, subj, cands, tried):   # 公式が先：取れた人は Fandom に行かない
                 continue
             if api:   # 絵のキャラ：Fandom のページ名の別の書き方（名だけ・(character) つき）
@@ -1539,7 +1539,7 @@ def gather_pages(item, log=print, tried=None):
             log(f"  [公式サイト] {e}")
     for subj in who:
         _check_time()
-        if kind == "character" and not item.get("emblem_people"):
+        if kind in ("character", "group") and not item.get("emblem_people"):
             official_cands(item, subj, cands, tried)   # 公式の立ち絵は og:image より先
         mine = [r for r in site_imgs if relevant(r["image"].rsplit("/", 1)[-1], subj)] if len(who) > 1 else site_imgs[:8]
         add(subj, mine, "公式サイト", f"{subj}（公式サイトの画像）")
@@ -1859,6 +1859,7 @@ def source_chain(item):
 PICK_ORDER = ["直接指定", "出演者の記事の役の写真", "作品の剧照", "役の記事", "作品の動画の場面", "作品の主な画像", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
 PICK_ORDER_BY_KIND = {
     "character": ["直接指定", "公式サイト"] + [s for s in PICK_ORDER if s not in ("直接指定", "公式サイト")],   # 公式の立ち絵が先
+    "group": ["直接指定", "公式サイト"] + [s for s in PICK_ORDER if s not in ("直接指定", "公式サイト")],   # グループのメンバーも公式の写真が先（A2O LITE）
     "brand": ["直接指定", "Wikidata", "公式サイト", "Wikimedia Commons", "Wikipedia", "Twemoji", WEB],
     "topic": ["直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],
 }

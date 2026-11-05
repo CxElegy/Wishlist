@@ -2456,6 +2456,18 @@ class FindSources(unittest.TestCase):
         good = [{"subject": "Rukia Kuchiki", "image": "https://x.example/Rukia.png", "source": "Fandom"}, {**cands[0], "shape": "cutout"}]
         self.assertEqual(ef.auto_pick(item, good, web=False, strict=True), [2])   # 公式が先・1 人 1 枚
 
+    def test_group_members_get_official_photos_first(self):
+        """グループ（kind=group）も公式サイトのメンバー写真が先（以前は character だけで、A2O LITE の YOUNG・HIMEKI は Wikipedia・Commons に行って
+        同名の別物〔Walter De Vora〕しか来なかった）。公式が取れた人は Wikipedia・Commons に行かない。"""
+        item = {"name": "G", "emblem_kind": "group", "site": "https://s.example/", "emblem_who": ["YOUNG"], "emblem": []}
+        url = "https://cdn.example/lite-artwork-young.webp"
+        with mock.patch.object(ef.emblem, "official_for", return_value=[url]), \
+                mock.patch.object(ef, "wikipedia_photos", side_effect=AssertionError("公式が取れたのに Wikipedia へ")), \
+                mock.patch.object(ef, "wiki_titles", return_value=None):
+            cands = ef.gather(item, log=lambda *a: None, tried={})
+            self.assertTrue(ef.official_has(item, "YOUNG"))
+        self.assertEqual([c["image"] for c in cands], [url])
+
     def test_official_key_spelling_variants(self):
         """ヘボン式と訓令式・m/n の違いも同じ人（綴り違いで公式を取り逃さない）。別の人は混ざらない。"""
         em = ef.emblem
