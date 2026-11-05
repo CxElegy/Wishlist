@@ -179,6 +179,21 @@ def relevant(title, subject):
     return any(re.sub(r"[\W_]+", "", x) in t for x in toks) if toks else True
 
 
+def commons_file_name(src):
+    """Commons の画像の網址 → ファイル名（thumb は最後から 2 つ目の区切り）。Commons でなければ ""。"""
+    if "wikimedia.org" not in str(src):
+        return ""
+    parts = str(src).split("?")[0].rstrip("/").split("/")
+    return urllib.parse.unquote(parts[-2] if "/thumb/" in str(src) and len(parts) > 1 else parts[-1])
+
+
+def group_foreign(item, src):
+    """グループ（kind=group）のメンバー写真が Commons で、ファイル名にグループ名がない＝同名の別物（A2O LITE の VORA →
+    Walter_De_Vora_-_FC_Wacker_Innsbruck.jpg）。メンバー名は普通の単語（YOUNG・VORA・OA）なので、名前だけの一致では別の人・村・選手が来る。"""
+    f = commons_file_name(src)
+    return bool(f) and kind_of(item) == "group" and not same_name(f, item["name"])
+
+
 def same_name(page, name):
     """検索で当たった記事名が、その名前の記事か（記事名に名前が丸ごと入っている。「Aion 2」→「Aion 2」「Aion 2 (video game)」）。"""
     norm = lambda x: re.sub(r"[\W_]+", "", x.lower())
@@ -753,6 +768,8 @@ def gather(item, log=print, tried=None):
             try:
                 # メンバー・出演者は名前だけだと普通の単語（YOUNG・VORA・OA）で村・滝・飛行機に当たるので、作品名をつける
                 rows = commons_photos(f"{subj} {name}" if len(who) > 1 else subj, 8 if kind == "person" else 3)
+                if kind == "group":
+                    rows = [r for r in rows if same_name(r["title"], name)]   # グループ名がファイル名にないものは同名の別物
                 add(subj, rows, "Wikimedia Commons", f"{subj}（Commons の写真）")
                 got += len(rows)
             except Exception as e:
@@ -1499,7 +1516,8 @@ def gather_wide(item, log=print, tried=None):
         except Exception as e:
             log(f"  [Wikipedia] {subj}：{e}")
         try:
-            add(subj, commons_photos(f"{subj} {name}", 12), "Wikimedia Commons", f"{subj}（作品名つきの Commons）")
+            add(subj, [r for r in commons_photos(f"{subj} {name}", 12) if kind != "group" or same_name(r["title"], name)],
+                "Wikimedia Commons", f"{subj}（作品名つきの Commons）")
         except Exception as e:
             log(f"  [Commons] {subj}：{e}")
         try:
@@ -2991,12 +3009,30 @@ def localize_remote(item, log=print):
     return n
 
 
+def drop_foreign_group(item, log=print):
+    """グループの小元素のうち、Commons でファイル名にグループ名がないもの（同名の別物）を外し、元の網址を emblem_reject に。
+    先頭（配色・顔の基準）が別物だと本物の公式写真が「別人」で外れる（A2O LITE：VORA が Walter De Vora）。固定した写真は触らない。→ 外した枚数。"""
+    bad = [x for x in item.get("emblem") or [] if isinstance(x, dict) and not x.get("lock") and group_foreign(item, x.get("source"))]
+    if not bad:
+        return 0
+    keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b["source"] for b in bad]))
+    with WRITE_LOCK:
+        emblem.write_item(item["name"], keep, None)
+        _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+    log(f"  [外した] {item['name']}：グループ名のない Commons の写真 {len(bad)} 枚（{'、'.join(b.get('subject', '') for b in bad)}）")
+    return len(bad)
+
+
 def drop_broken(item, log=print):
     """broken_cuts を外し、元の画像を emblem_reject に（次は同じ人の次の候補）。→ 外した枚数。直せる形の傷は先に repair_flat で直す。同じ画像（drop_same）も。"""
     if release_small_rejects(item, log):
         item = next((i for i in load_items() if i["name"] == item["name"]), item)
     repair_flat(item, log)
-    n = drop_same(item, log)
+    n = drop_foreign_group(item, log)
+    if n:
+        item = next((i for i in load_items() if i["name"] == item["name"]), item)
+    n += drop_same(item, log)
     if n:
         item = next((i for i in load_items() if i["name"] == item["name"]), item)
     with WRITE_LOCK:   # 顔の大きさを測る（新しい小元素・画像が替わったもの）：表示で顔をそろえる材料（emblem_face）。店長もお客さまの版面も同じ道
