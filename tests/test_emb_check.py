@@ -208,6 +208,23 @@ class CloseupOfficial(unittest.TestCase):
         self.assertEqual(out[1:], em[1:])
         self.assertEqual(emb_check.boards_fandom_over_official([{"name": "C", "config": {**item, "emblem": out}}], official=lambda it, s: ["u"]), {"C": ["Rukia", "Renji"]})
 
+    def test_official_person_from_sitemap_when_list_is_partial(self):
+        """一覧が先頭の一部だけの公式（Marvel /characters は 60 人）：一覧に居ない人は sitemap の人物ページから。別世界の同名より本編を先に。"""
+        import emblem
+        for c in (emblem._OFFICIAL_HTML, emblem._OFFICIAL_INDEX, emblem._OFFICIAL_SITEMAP):
+            c.clear()
+        base = "https://m.example"
+        sm = "".join(f"<loc>{base}/characters/{s}</loc>" for s in ("thor-ultimate", "thor-thor-odinson"))
+        pages = {base + "/": '<a href="/characters">c</a>', base + "/characters": '<a href="/characters/hulk">h</a>',
+                 base + "/sitemap.xml": f"<loc>{base}/sitemap-1.xml</loc><loc>{base}/sitemap-2.xml</loc>", base + "/sitemap-1.xml": "<loc>x</loc>",
+                 base + "/sitemap-2.xml": sm,
+                 base + "/characters/thor-thor-odinson": '<img src="/c/004tho_cut_dsk_01.webp">', base + "/characters/thor-ultimate": '<img src="/c/thorult.webp">'}
+        with mock.patch.object(emblem, "_get", side_effect=lambda u, n=0: pages[u].encode()):
+            out = emblem.official_images(base + "/", ["Thor"])
+        self.assertEqual(out[0], base + "/c/004tho_cut_dsk_01.webp")   # 本編が先
+        for c in (emblem._OFFICIAL_HTML, emblem._OFFICIAL_INDEX, emblem._OFFICIAL_SITEMAP):
+            c.clear()
+
     def test_official_person_page_one_level_deeper(self):
         """一覧が名前のリンクだけの公式（Marvel）：一覧からその人のページを開き、cut の絵を取る。1 語だけ当たる別人（spider-man）は取らない。"""
         import emblem
