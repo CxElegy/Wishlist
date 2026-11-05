@@ -1,32 +1,32 @@
 {
- "admin": "0109a6be69eb",
- "admin-ai": "c8194ff50a93",
+ "admin": "494a1a95a053",
+ "admin-ai": "2bac4988fb0b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "fdff6d4e"
+   "02ace273"
   ],
   "tokens": [
    "AI 編集のトークン",
    "9a63da3f"
   ]
  },
- "admin-boards": "cc49350b9276",
+ "admin-boards": "1d238f59f90b",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e69bffb2"
+   "4bfaa38f"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "e84adb980bd6",
+ "admin-emblem": "7adbce3cca26",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ff3f5136"
+   "90b55577"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "82e6184894c2",
  "admin-members_marks": {},
- "admin-now": "1a4f2977e82f",
+ "admin-now": "55e17adbae79",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2f2fbd60"
+   "ecabfc2c"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "3d38ea6c"
+   "0a69e489"
   ],
   "term-panel": [
    "ライブログ",
-   "f8a17766"
+   "21520e6d"
   ]
  },
- "admin-system": "c9db5dc8ccd5",
+ "admin-system": "2ec2da64c8c7",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2a333f9d"
+   "2ddc40a6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9be9ba8e"
+   "5cc6736a"
   ]
  },
  "admin_marks": {},
- "heat": "c3dfec137ce4",
+ "heat": "5dfbb21c20e0",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "2f17918b"
+   "012de685"
   ],
   "ranking": [
    "ランキング",
-   "a90eeae3"
+   "f9c71412"
   ]
  },
- "index": "8c1d1a320e05",
+ "index": "514238628cc0",
  "index_marks": {
   "front": [
    "トップ",
-   "1584fc32"
+   "bdd3d38e"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "747abf45"
+   "85214731"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "1f8f5048"
+   "27aafae0"
   ],
   "w-6676e624": [
    "三星手机",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "53072fc7"
+   "f92d7729"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "9a07793c"
   ]
  },
- "updated": "11.06 06:21",
+ "updated": "11.06 06:28",
  "wishlist": "34e092991c77"
 }
