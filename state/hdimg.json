@@ -690,6 +690,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.nc.press/news/photo/202611/630275_868605_1146.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.newstoon.co.kr/news/photo/202610/81715_104460_512.jpg": {
   "w": 600,
   "h": 400,
@@ -720,12 +726,12 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.slist.kr/news/thumbnail/202611/779129_1190477_3233_v150.jpg": {
+ "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg": {
+  "w": 600,
+  "h": 370,
   "target": 1280,
   "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-05"
+  "blur": 0.388
  },
  "https://cdn.sortiraparis.com/images/80/66131/1332847-world-of-warcraft-forever-date-de-sortie-et-nouveautes-du-mmorpg-de-blizzard.jpg": {
   "w": 1800,
@@ -3072,6 +3078,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://p2.bahamut.com.tw/B/2KU/80/55c8d1f0e991c47587e545283520zrg5.JPG": {
+  "w": 1280,
+  "h": 719,
+  "target": 720,
+  "v": 3
+ },
  "https://pbs.twimg.com/media/HWIPKNQbYAEe7ne?format=webp&name=large": {
   "w": 1920,
   "h": 1080,
@@ -3258,19 +3270,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.411
- },
- "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg": {
-  "w": 700,
-  "h": 467,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.503,
-  "local": "pics/29c16bedf42c1192.webp",
-  "out": [
-   1280,
-   854
-  ],
-  "why": "看不清"
  },
  "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg": {
   "w": 1200,
@@ -4079,6 +4078,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.IJDVLGkHQDoTtip5uzDaOA&pid=News&w=700": {
+  "w": 700,
+  "h": 467,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.549,
+  "local": "pics/072d31d9259c9192.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4091,12 +4103,6 @@
    669
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.JpbXXraAv5OhGdlMxzBTMQ&pid=News&w=900": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.KI8fsHi9gp5vLVhvIUhm6Q&pid=News&w=1024": {
   "w": 700,
@@ -4127,6 +4133,12 @@
  "https://www.bing.com/th?id=ONUT.L94JPV3Ohn3F3j-1OARAjw&pid=News&w=1200": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.MDpD849zYjmVjGzkNpJmbA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
   "target": 720,
   "v": 3
  },
@@ -4254,12 +4266,6 @@
  "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ZJg30TRg7eusCGuPTC2e-w&pid=News&w=1200": {
-  "w": 700,
-  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -4404,6 +4410,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.mFTqLAL_laAf1DRALLtOqw&pid=News&w=984": {
+  "w": 700,
+  "h": 512,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.myWmWHTcRSUhvwd97jtuVg&pid=News&w=1200": {
   "w": 700,
@@ -4795,6 +4807,12 @@
  "https://www.rappler.com/tachyon/2026/09/alex-eala-us-open-august-2026.jpg": {
   "w": 1200,
   "h": 737,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Ultra-review-design-2.jpg": {
+  "w": 2560,
+  "h": 1441,
   "target": 720,
   "v": 3
  },
