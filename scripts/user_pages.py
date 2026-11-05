@@ -237,7 +237,7 @@ IMGS_PATH = "/storage/v1/object/pages/_fp/imgs.json"   # 写真の網址の一�
 
 
 def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None, heat_in=None, votes=None,
-          shop_prev=()):
+          shop_prev=(), pub=None):
     """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）、chosen = 本人の nav_schemes {板块: id}。
     pages（dict）を渡すと、設定ページ（settings.html）もそこに入れる。"""
     items = user_items(own_picks(follows, (prefs or {}).get("picks"), (prefs or {}).get("sizes")), shop_items)
@@ -279,8 +279,8 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     # 本人のページの印（AUTH_JS が「自分のページの中」と分かるように。もう一度読み替えない）
     mark = f'<head><meta name="wl-own" content="{render.e(email)}">'
     if pages is not None:
-        pages["settings.html"] = photo_store.emblems_to_pages(settings_page(prefs, items, schemes, settings, updated).replace("<head>", mark, 1))
-    return photo_store.emblems_to_pages(html_.replace("<head>", mark, 1))
+        pages["settings.html"] = photo_store.emblems_to_pages(settings_page(prefs, items, schemes, settings, updated).replace("<head>", mark, 1), pub)
+    return photo_store.emblems_to_pages(html_.replace("<head>", mark, 1), pub)
 
 
 def _supa(path, data=None, method="GET", ctype="application/json"):
@@ -348,6 +348,7 @@ def main(argv):
     except Exception:  # noqa: BLE001  まだ無い・読めない → 全部置く
         fps = {}
     new_fps = dict(fps)
+    pub = photo_store.published()   # Pages に載った写しの名前（外の小元素を /p/ に替えるのは載ったものだけ）
     imgs = {}   # 作ったページの原寸の写真の網址（置き場に未収のもの）。photo_store が読んでお客さまの写真も置き場に入れる
     for u in users or []:
         acct = account_of(u["email"])
@@ -358,7 +359,7 @@ def main(argv):
             pages = {}
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
             html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline,
-                          themes, follows, chosen, pages, heat_in, votes, prev)
+                          themes, follows, chosen, pages, heat_in, votes, prev, pub)
             photo_store.scan_text([html_, *pages.values()], set(), imgs)
             for name, h in {"index.html": html_, **pages}.items():
                 fp = hashlib.sha1(h.encode("utf-8")).hexdigest()
