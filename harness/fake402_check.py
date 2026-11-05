@@ -68,6 +68,8 @@ NOT_COVERED = {
     "harness/d5_sample.py": "テストグラウンドの見本を作るだけ。Supabase に触らない",
     "harness/photo_cache_fill.py": "走らせない（無料枠の決まり）。取り先は state/photo_store.json の base ＝本番の storage で、偽サーバーに差せない。走らせると本番の Supabase に出て、手元の写し（~/.cache/wl_photo_cache）も消す。取り先を差せる形にしてから入口に足す（別の段）",
     "harness/fake402_check.py": "この点検自身（fake402.yml が回す）",
+    "harness/js_check.py docs/home": "CI の点検。生成した網页の埋め込み JS を node --check するだけ。Supabase に触らない",
+    "harness/page_errors.py home/index.html": "CI の点検。手元の http で 2 ページを開き例外を数えるだけ（網は 127.0.0.1 だけ・browser.launch で Supabase も止める）",
     "harness/pages_health.py": "Pages の健康を数える読み取り（boards を読むだけで docs/・state/ に書かない）。402 なら測れずで終わる。別の段で入口に足す",
 }
 # 402 を 1 回も受けなくてよい入口（Supabase に届かずに終わるのが正しい物）。ここに無いのに 0 回なら赤。
