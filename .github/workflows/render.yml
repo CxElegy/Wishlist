@@ -36,18 +36,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for i in 1 2 3; do
-            python scripts/digest.py render
-            python harness/d5_sample.py --if-stale || echo "d5 の写しの作り直しに失敗（網页の発布は続ける）"   # 試作ページの殻が古くならないように（失敗しても本番は止めない）
-            git add docs
-            git diff --cached --quiet && exit 0
-            git commit -q -m "重新生成网页"
-            git push && exit 0
-            # 期间别处也推送了：丢掉这次生成的，拉最新的再生成一次
-            git reset -q --hard HEAD~1 && git pull -q --rebase
-            sleep $((i * 5))
-          done
-          exit 1
+          python scripts/digest.py render
+          python harness/d5_sample.py --if-stale || echo "d5 の写しの作り直しに失敗（網页の発布は続ける）"   # 試作ページの殻が古くならないように（失敗しても本番は止めない）
+          git add docs
+          git diff --cached --quiet && exit 0
+          git commit -q -m "重新生成网页（render）"
+          # 期间别处也推送了：scripts/push_main.py が最新を取り込み、作り直して最後の提交に畳む（最大 6 回）
+          python scripts/push_main.py --regen "python scripts/digest.py render" --soft
 
       # 画面の部品（render.py）が変わったら、お客さまのページも同じ部品で作り直す（scripts/user_pages.py）。
       # 古い部品で作ったページが残ると、新しい店長のページと食い違う（2026-10-24：古い JS が開き直しをくり返した）
