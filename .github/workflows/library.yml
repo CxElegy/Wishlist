@@ -61,10 +61,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add items.yaml state/log/library.json
           git diff --cached --quiet || git commit -q -m "ライブラリ：Wikidata の引き直し $(TZ=Asia/Tokyo date +'%F %H:%M')"
-          for i in 1 2 3 4 5; do
-            git push -q && break
-            if git pull --rebase -q; then :; else git rebase --abort || true; sleep 5; fi
-          done
+          python scripts/push_main.py   # 通らなければ赤（前は 5 回負けても exit 0 で、引き直した番号が黙って消えた）
       - if: ${{ !inputs.compare }}
         run: python scripts/library.py --push
       - name: Wikidata の引いた結果（お客さまの分、倉庫に入れない）
@@ -83,10 +80,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -q -m "ライブラリ：お客さまの版面 $(TZ=Asia/Tokyo date +'%F %H:%M')"
-          for i in 1 2 3 4 5; do
-            git push -q && break
-            if git pull --rebase -q; then :; else git rebase --abort || true; sleep 5; fi
-          done
+          python scripts/push_main.py
       - uses: actions/cache/save@v4
         if: always() && !inputs.compare
         with:

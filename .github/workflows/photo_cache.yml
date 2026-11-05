@@ -54,7 +54,7 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add state/pages_size.json
             git commit -q -m "公開物の大きさを記録"
-            for i in 1 2 3; do git pull -q --rebase && git push && break; sleep $((i * 5)); done
+            python scripts/push_main.py --soft   # 前は rebase の途中で止まったまま exit 0
           fi
           [ "$rc" -ne 1 ]
       - name: 古い cache を各名前で最新 1 つだけ残して消す（run_id ごとに新しいキーで保存する形は 10 GB の枠を食い切り「Unable to reserve cache」になった。2026-11-04）。保存の有無に関わらず毎回。他の workflow の run_id キー（ask-state・wishlist-http・wd-facts）もここで一括（枠は共有）

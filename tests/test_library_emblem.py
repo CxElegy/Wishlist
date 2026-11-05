@@ -195,14 +195,14 @@ class Fill(unittest.TestCase):
             self.assertEqual([x["id"] for x in le.due([b], 10 ** 4)], want, rounds)
         self.assertEqual(le.rounds_of({"emblem_state": {**st, "rounds": 3, "nv": nv - 1}}), 0)   # 規則の版が変わったら 0 から
 
-    def test_due_waits_for_material_not_time(self):
-        """届かなかった版面は、何日たっても手がかり・規則の版が同じなら試さない（待ちが見回りで増えない）。変わったらすぐ。"""
+    def test_due_waits_for_material_or_a_day(self):
+        """届かなかった版面は、手がかり・規則の版が同じなら 1 日に 1 回だけ（見回りのたびには試さない）。変わったらすぐ。"""
         nv = emblem_fill.NAMES_V
         cfg0 = {"emblem_fandom": "jjk"}
         st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V, "m": le.material(cfg0)}
         b = {"id": 1, "config": {**cfg0, "emblem_state": st}}
-        for now in (10 ** 4, 10 ** 8):   # 3 時間後でも 3 年後でも
-            self.assertEqual(le.due([b], now), [])
+        self.assertEqual(le.due([b], le.RETRY_S - 1), [])   # 1 日たつまでは試さない
+        self.assertEqual([x["id"] for x in le.due([b], le.RETRY_S)], [1])   # 材料が同じでも日に 1 回（F10：お客さまの版面が 41 時間止まった）
         self.assertEqual([x["id"] for x in le.due([{"id": 1, "config": {**b["config"], "emblem_fandom": "other"}}], 10 ** 4)], [1])   # 手がかりが変わった
         with mock.patch.object(le, "RULES", le.RULES + 1):
             self.assertEqual([x["id"] for x in le.due([b], 10 ** 4)], [1])   # 規則の版が上がった

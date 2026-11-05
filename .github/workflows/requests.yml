@@ -22,6 +22,7 @@ jobs:
     timeout-minutes: 10
     env:
       WL_RENDER_SOFT: "1"   # 網页の生成に失敗しても、依頼の結果は push する（digest.write_page）
+      WL_ITEM_MARKS: /tmp/item_marks.json   # take-items は依頼の done を push のあと（mark-items）まで待つ
       SUPABASE_URL: https://bzokpnbcjscbcehdxtjq.supabase.co   # 和 items.yaml 的 supabase_url 一样（公开的）
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
       GH_TOKEN: ${{ github.token }}
@@ -65,18 +66,8 @@ jobs:
           python scripts/digest.py render
           git add items.yaml docs state
           git diff --cached --quiet || git commit -q -m "设置页的请求 $(TZ=Asia/Shanghai date +'%F %H:%M')"
-          for i in 1 2 3; do
-            if python scripts/pull_rebase.py; then
-              python scripts/digest.py render
-              git add docs
-              git diff --cached --quiet || git commit -q -m "重新生成网页"
-              git push && break
-            else
-              git rebase --abort || true
-            fi
-            [ "$i" = 3 ] && exit 1
-            sleep $((i * 5))
-          done
+          python scripts/push_main.py --regen "python scripts/digest.py render"   # 通らなければ赤で止まる（依頼は pending のまま）
+          python scripts/digest.py mark-items   # push が通ってから done（前は先に done にして、push に負けると設定の変更が黙って消えた）
           echo "NEW_ITEMS=$(python scripts/digest.py new-items)" >> "$GITHUB_ENV"
 
       - name: 置いていない写真があれば一時保管を起こす
