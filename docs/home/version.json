@@ -1,32 +1,32 @@
 {
- "admin": "d50d05f70da6",
- "admin-ai": "d600a03af31a",
+ "admin": "c8b63ba241d1",
+ "admin-ai": "cf4461b05f17",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5afc40c9"
+   "9d83ab7a"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7aca0495"
+   "f501dee4"
   ]
  },
- "admin-boards": "7e2e5aac9aa2",
+ "admin-boards": "0fbd008119c6",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "4de07e83"
+   "53ac9a2a"
   ],
   "votes": [
    "投票",
    "6574a13f"
   ]
  },
- "admin-emblem": "21e3fe44ca1f",
+ "admin-emblem": "14d2bbf70334",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4eb02bee"
+   "314636f2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b5430cdb73be",
  "admin-members_marks": {},
- "admin-now": "f27f8d118a39",
+ "admin-now": "c1fd6fa54f22",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "07720b4d"
+   "27e11416"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a0dc10de"
+   "4f7cb4a4"
   ]
  },
- "admin-system": "2dae50db1e04",
+ "admin-system": "6bc3dd62b465",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "10d6271a"
+   "3e6596df"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9f844974"
+   "7970f2e8"
   ]
  },
  "admin_marks": {},
- "heat": "19bf04e21e7a",
+ "heat": "7145e7ceff04",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "6ce2aba2"
+   "84982004"
   ],
   "ranking": [
    "ランキング",
-   "3e2abe8d"
+   "ee7c096f"
   ]
  },
- "index": "51aab4be909e",
+ "index": "afd5a59f0d1c",
  "index_marks": {
   "front": [
    "トップ",
-   "b985d883"
+   "628182be"
   ],
   "picks": [
    "気になるかも？",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "894881ea"
+   "99c29d6d"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "5ed629af"
   ]
  },
- "updated": "11.05 11:13",
+ "updated": "11.05 11:19",
  "wishlist": "09885a0145d0"
 }
