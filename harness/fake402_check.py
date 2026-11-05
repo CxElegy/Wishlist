@@ -130,7 +130,7 @@ class _H(http.server.BaseHTTPRequestHandler):
 
 
 def _git(d, *a):
-    return subprocess.run(["git", "-c", "user.email=a@b", "-c", "user.name=x", *a], cwd=d, capture_output=True, text=True).stdout
+    return subprocess.run(["git", "-c", "user.email=a@b", "-c", "user.name=x", *a], cwd=d, capture_output=True, text=True, errors="replace").stdout
 
 
 def prepare(dst, port):
@@ -219,9 +219,8 @@ def _worker(q, results, env, keep):
             rc = "timeout"
         s = shrunk(d, fake)
         bad_files = {f: n for f, n in s.items() if f not in ALLOW}
-        for f, n in s.items():
-            old = len(_git(d, "show", f"HEAD:{f}").encode())
-            if f in RATIO and n > old * RATIO[f]:
+        for f, n in s.items():   # 名簿の割合を見るのは RATIO のものだけ（写真などの binary を文字として読まない：repair-images が webp を消すと UnicodeDecodeError で作業枠が落ちた）
+            if f in RATIO and n > len(_git(d, "show", f"HEAD:{f}").encode()) * RATIO[f]:
                 bad_files[f] = n
         for pre, (mx, _) in ALLOW_COUNT.items():
             hit = [f for f in bad_files if f.startswith(pre)]
