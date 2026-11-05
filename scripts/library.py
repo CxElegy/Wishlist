@@ -225,6 +225,42 @@ def put_config(bid, add):
     return new
 
 
+def _board_of(follows):
+    """(account, そろえた名前) → 版面 id（follows の boards.name。user_pages.own_picks と同じ当て方）。"""
+    return {(f.get("account"), norm_name((f.get("boards") or {}).get("name"))): f.get("board_id") for f in follows or []}
+
+
+def board_pending(rows, follows):
+    """お客さまの記事集めの行（user_boards の形：account・item・state・stories）→ {版面 id: 記事}。
+    同じ版面を何人が追っていても記事は版面に 1 つ（library.md「版面ごとに 1 回、全員が同じもの」）：記事の多い行。"""
+    by, out = _board_of(follows), {}
+    for r in rows or []:
+        bid, st = by.get((r.get("account"), norm_name(r.get("item")))), r.get("stories") or []
+        if bid and r.get("state", "ok") == "ok" and len(st) > len(out.get(bid) or []):
+            out[bid] = st
+    return out
+
+
+def put_stories(db, rows, old, day, log=print):
+    """版面ごとの記事を board_stories（board_id, day）の pending（整理待ち＝規則で集めたまま）に書く（2026-11-05 機能 C・F9）。
+    rows = この回の全部の行（user_boards の形）、old = {(account, item): 前の行}。stories（AI 編集のあと）の列は送らない＝AI 編集の結果を消さない。
+    書くのは今日の行がまだ無い版面と、記事が前の行から変わった版面だけ（無料枠：同じ中身を書き直さない）。→ 書いた版面の数"""
+    import datetime as dt
+    follows = db("follows?select=account,board_id,boards(name)") or []
+    by, pend = _board_of(follows), board_pending(rows, follows)
+    if not pend:
+        return 0
+    changed = {by.get((r.get("account"), norm_name(r.get("item")))) for r in rows
+               if (r.get("stories") or []) != ((old.get((r.get("account"), r.get("item"))) or {}).get("stories") or [])}
+    today = {r.get("board_id") for r in db(f"board_stories?day=eq.{day}&select=board_id") or []}
+    stamp = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    put = [{"board_id": b, "day": day, "pending": st, "updated_at": stamp} for b, st in sorted(pend.items()) if b not in today or b in changed]
+    if put:
+        db("board_stories?on_conflict=board_id,day", put, "resolution=merge-duplicates,return=minimal")
+    log(f"ライブラリの版面の記事：{len(put)} 版面を書いた（全 {len(pend)} 版面）")   # 数だけ（版面の名前は公開のログに出さない）
+    return len(put)
+
+
 def push_shop(items):
     """店長の版面をライブラリへ（何度流しても同じ：key・(account, board_id) で上書き）。"""
     import digest
