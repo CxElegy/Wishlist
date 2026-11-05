@@ -54,6 +54,7 @@
   "https://www.animatetimes.com/news/details.php?id=1791873025": "https://img2.animatetimes.com/2026/10/999b4f6c7f4e919fde8f1b2afcc11fb76acdd41d170320_50840305_e490802186570f9cea23f76723b2fec079ab5b64.jpg",
   "https://www.bella.tw/articles/aigc/answer/vaundy-59392761": null,
   "https://www.bgr.com/2299534/improve-samsung-phone-display-simple-changes/": "https://www.bgr.com/img/gallery/improve-your-samsung-phones-display-with-these-simple-changes/l-intro-1793116280.jpg",
+  "https://www.billboard.com/music/chart-beat/mlk-second-japan-hot-100-number-1-thats-chojo-vaundy-1236374100/": "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024",
   "https://www.elitedaily.com/lifestyle/dunkin-avengers-doomsday-menu-review": "https://www.bing.com/th?id=ONUT.t2qwkEpP1SbUOrVUYM19wA&pid=News&w=1200",
   "https://www.gamemeca.com/zh/view.php?gid=1782736": "https://cdn.gamemeca.com/gmdata/0001/782/736/gm360686_pk.webp",
   "https://www.gameple.co.kr/news/articleView.html?idxno=216826": "https://www.bing.com/th?id=ONUT.zV1ReHGr-FyrNcMW02R1aw&pid=News&w=700",
@@ -1506,6 +1507,27 @@
   },
   {
    "batch": 6,
+   "because": "Vaundy",
+   "date": "2026-11-04",
+   "hits": [],
+   "image": "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024",
+   "kind": "board",
+   "liked": "Vaundy、「しわあわせ」が急上昇1位 2021年配信楽曲が映画主題歌起用で再生数増（CDJournal）",
+   "score": 5,
+   "source": "Billboard",
+   "taste": [
+    [
+     "作品:Vaundy",
+     1
+    ]
+   ],
+   "title": "M!LK Earns Second Japan Hot 100 No. 1 With ‘That’s! Chojo’ as Vaundy’s ‘Shiwaawase’ Reaches Top 3",
+   "url": "https://www.billboard.com/music/chart-beat/mlk-second-japan-hot-100-number-1-thats-chojo-vaundy-1236374100/",
+   "words": [],
+   "work": "Vaundy"
+  },
+  {
+   "batch": 6,
    "because": "dota2",
    "date": "2026-11-04",
    "hits": [],
@@ -1583,7 +1605,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "FROM",
    "date": "2026-11-02",
    "hits": [],
@@ -2017,15 +2039,15 @@
    8
   ],
   [
+   "作品:三星手机",
+   7
+  ],
+  [
    "三星 Galaxy",
    7
   ],
   [
    "galaxy",
-   7
-  ],
-  [
-   "作品:三星手机",
    7
   ]
  ]
