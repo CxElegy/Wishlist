@@ -1,12 +1,12 @@
 {
  "_covered": {
   "漫威电影": 104,
-  "三星手机": 39,
+  "三星手机": 42,
   "GTA 6": 72,
   "チェーンソーマン": 17,
   "A2O LITE": 15,
   "dota2": 7,
-  "周杰伦": 14,
+  "周杰伦": 17,
   "あつ森": 6,
   "哈利波特剧集": 7,
   "猫用品": 7,
@@ -20,7 +20,8 @@
   "滑雪": 2,
   "gelato pique": 5,
   "FROM": 2,
-  "BLEACH Mirrors High": 1
+  "BLEACH Mirrors High": 1,
+  "星巴克马克杯": 3
  },
  "漫威电影": [
   {
@@ -124,7 +125,8 @@
     5,
     6,
     28,
-    36
+    36,
+    41
    ],
    "image": "https://phandroid.com/wp-content/uploads/2026/09/Qualcomm-Snapdragon-8-Elite-Gen-6-5.jpg"
   },
@@ -155,11 +157,12 @@
    ]
   },
   {
-   "headline": "The 3 upgrades that'll make me excuse the Galaxy S27 Ultra's inexcusable design",
-   "highlight": "3 upgrades",
+   "headline": "Galaxy S27 Ultra：デザインが残念。サムスンは3つの主要な改良点が必要だ。",
+   "highlight": "3つの主要な改良点",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    40,
     1,
     10,
     11,
@@ -187,7 +190,8 @@
    "weight": "normal",
    "refs": [
     25,
-    29
+    29,
+    42
    ]
   },
   {
@@ -817,5 +821,26 @@
    ]
   }
  ],
- "BLEACH Mirrors High": []
+ "BLEACH Mirrors High": [],
+ "星巴克马克杯": [
+  {
+   "headline": "スターバックス福袋2027が抽選受付中! 今年の当たりはゴールデンマグ＆ベアリスタ",
+   "highlight": "抽選受付中",
+   "blurb": "福袋限定ステンレスボトルとランダムなグッズが入る毎年恒例の福袋。抽選受付が始まった。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gN9iR.img"
+  },
+  {
+   "headline": "鑲182水晶！星巴克最貴馬克杯一只2700元照樣秒殺",
+   "highlight": "2700元照樣秒殺",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ]
 }
