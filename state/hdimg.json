@@ -2318,13 +2318,6 @@
   "target": 1280,
   "v": 3
  },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/11/02/179358926125212344_664_2000.JPEG": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-05"
- },
  "https://newportal.portal.auone.jp/media/cp/202/スポーツ報知ロゴ.png": {
   "w": 1452,
   "h": 430,
@@ -3986,12 +3979,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.EbRbcwgvvTzXm_FlFtxhMQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
   "w": 700,
   "h": 508,
@@ -4016,6 +4003,12 @@
    669
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.JpbXXraAv5OhGdlMxzBTMQ&pid=News&w=900": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.KI8fsHi9gp5vLVhvIUhm6Q&pid=News&w=1024": {
   "w": 700,
@@ -4356,6 +4349,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.t2qwkEpP1SbUOrVUYM19wA&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.tHemALdoyTOtqbZSJtYFvA&pid=News&w=800": {
   "w": 700,
