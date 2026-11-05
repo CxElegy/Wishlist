@@ -1,10 +1,10 @@
 {
- "admin": "43bcfe21c1cc",
- "admin-ai": "0547b2d06944",
+ "admin": "5451cbfad05c",
+ "admin-ai": "e5ed9bb7a76c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "16469b2a"
+   "5ee0dba4"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "5bc8c40b"
   ]
  },
- "admin-emblem": "233c1273cdc5",
+ "admin-emblem": "78216a61c3e7",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "10b703cb"
+   "7a4dbeeb"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "82e6184894c2",
  "admin-members_marks": {},
- "admin-now": "e718c1d2c6f3",
+ "admin-now": "49b88ec127e0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "28a9b624"
+   "ba636bd8"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "42731e2f"
   ]
  },
- "admin-system": "123c5821d964",
+ "admin-system": "0188ab5034ca",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "5803ed6d"
+   "c98a9a1e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -78,7 +78,7 @@
   ]
  },
  "admin_marks": {},
- "heat": "79e683860c16",
+ "heat": "66897896464b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "3ee348c0"
+   "3be57300"
   ],
   "ranking": [
    "ランキング",
-   "5a69a1cd"
+   "37650af1"
   ]
  },
- "index": "360cc41ef4c9",
+ "index": "8d285c7bf18f",
  "index_marks": {
   "front": [
    "トップ",
-   "a3b46080"
+   "f5997f12"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "f06e7b08"
+   "7818198d"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "c62cc178"
+   "e091f407"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "be9a7bed"
+   "2a6c6e75"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "efe4e44c"
+   "447f7b51"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "ced15a65"
   ]
  },
- "updated": "11.06 00:38",
+ "updated": "11.06 00:51",
  "wishlist": "1b3f2ba1087e"
 }

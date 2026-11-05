@@ -1781,7 +1781,7 @@
   ],
   "why": "看不清"
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gNjfn.img": {
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gPpNJ.img": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3344,12 +3344,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/51a07788d03b3ea373a5fcad2382f6fa2c33ab81b646b83f802e80bc5bb546ee/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fparade_250%2F4b1eabd5d16a844a304d3b7e2aad93c0.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/876527c0122ebf5081552cda6551c04bb68b2866991d61061f6df6aa5e318a00/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgamespot_323%2Fa42bcb13f916e625ccffd69f27f53b9d.jpg": {
   "w": 1200,
   "h": 675,
@@ -3439,6 +3433,12 @@
  "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
   "w": 1344,
   "h": 768,
+  "target": 720,
+  "v": 3
+ },
+ "https://sm.ign.com/t/ign_ap/news/k/kfc-reveal/kfc-reveals-official-avengers-doomsday-menu-worthy-of-dr-doo_x948.1200.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -3670,6 +3670,12 @@
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/10/jason_and_lucia_beach_landscape.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/10/gta-6-gameplay-screenshots-edge-magazine-november-2026-issue-5.jpg": {
+  "w": 2560,
+  "h": 1440,
   "target": 720,
   "v": 3
  },
@@ -3938,6 +3944,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/05/1793866822555_img_658b1d55.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
   "w": 495,
   "h": 619,
@@ -4081,12 +4093,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.09j3Q7ZrTBKHInZp0WAnfg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.4J2nRakvD3RS1jr8Nsjp5A&pid=News&w=650": {
   "w": 650,
   "h": 341,
@@ -4106,12 +4112,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
- },
- "https://www.bing.com/th?id=ONUT.Ar67po89OhvnGvID8BSIRQ&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "target": 1280,
@@ -4404,6 +4404,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.gm6CM9ohSUuTryJcaE-Gkg&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200": {
   "w": 700,
@@ -4881,12 +4887,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Ultra-review-design-2.jpg": {
-  "w": 2560,
-  "h": 1441,
-  "target": 720,
-  "v": 3
- },
  "https://www.sammyfans.com/wp-content/uploads/2026/10/samsung-galaxy-s26-ultra-sg26u-img-1000x600.jpg": {
   "w": 1000,
   "h": 600,
@@ -4914,12 +4914,6 @@
  "https://www.sponichi.co.jp/sports/news/2026/11/02/jpeg/20261102s10028000053000p_view.webp": {
   "w": 1200,
   "h": 800,
-  "target": 1280,
-  "v": 3
- },
- "https://www.superdope.games/wp-content/uploads/2026/04/image-72.png": {
-  "w": 1600,
-  "h": 900,
   "target": 1280,
   "v": 3
  },

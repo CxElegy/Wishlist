@@ -1,17 +1,17 @@
 {
  "_covered": {
-  "漫威电影": 124,
-  "三星手机": 58,
-  "GTA 6": 105,
+  "漫威电影": 137,
+  "三星手机": 64,
+  "GTA 6": 118,
   "チェーンソーマン": 19,
   "A2O LITE": 16,
   "dota2": 13,
   "周杰伦": 19,
   "あつ森": 6,
   "哈利波特剧集": 10,
-  "猫用品": 11,
+  "猫用品": 12,
   "The Mandalorian": 7,
-  "绝区零": 7,
+  "绝区零": 11,
   "ILLIT": 13,
   "日本顶级网球赛事": 2,
   "MMORPG 新作": 20,
@@ -74,7 +74,8 @@
     91,
     95,
     96,
-    100
+    100,
+    136
    ]
   },
   {
@@ -97,7 +98,8 @@
     102,
     110,
     117,
-    123
+    123,
+    126
    ]
   },
   {
@@ -116,6 +118,24 @@
     107,
     113,
     124
+   ]
+  },
+  {
+   "headline": "Avengers: Secret Wars: Disney Sticks to Original Release Date",
+   "highlight": "Original Release Date",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    137
+   ]
+  },
+  {
+   "headline": "Sophia Di Martino Finally Confirms Lady Loki’s Fate in Avengers: Doomsday",
+   "highlight": "Lady Loki",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    134
    ]
   }
  ],
@@ -136,7 +156,9 @@
     41,
     43,
     48,
-    58
+    58,
+    64,
+    63
    ],
    "image": "https://phandroid.com/wp-content/uploads/2026/09/Qualcomm-Snapdragon-8-Elite-Gen-6-5.jpg"
   },
@@ -216,7 +238,9 @@
    "weight": "normal",
    "refs": [
     33,
-    32
+    32,
+    60,
+    61
    ]
   },
   {
@@ -227,7 +251,8 @@
    "refs": [
     52,
     51,
-    49
+    49,
+    62
    ]
   }
  ],
@@ -252,7 +277,8 @@
     62,
     66,
     74,
-    91
+    91,
+    114
    ],
    "event": {
     "date": "2026-11-10",
@@ -305,7 +331,9 @@
     86,
     88,
     98,
-    101
+    101,
+    110,
+    108
    ]
   },
   {
@@ -315,6 +343,33 @@
    "weight": "normal",
    "refs": [
     24
+   ]
+  },
+  {
+   "headline": "GTA 6 Boss Talks The Game's Budget And Calls Out A \"High-Profile\" Game For Releasing In A Rough State",
+   "highlight": "Budget",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    107
+   ]
+  },
+  {
+   "headline": "GTA VI Is Exactly One Month Away. The Final Trailer Looks Awesome",
+   "highlight": "One Month Away",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    111
+   ]
+  },
+  {
+   "headline": "Circoloco is Bringing Exclusive Music to GTA VI with Its Own Radio Station",
+   "highlight": "Radio Station",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    112
    ]
   }
  ],
@@ -677,11 +732,12 @@
  ],
  "绝区零": [
   {
-   "headline": "《绝区零》正式适配iPhone Duo，更新至3.3.1版本即可体验",
-   "highlight": "适配iPhone Duo",
-   "blurb": "《绝区零》宣布适配 iPhone Duo，更新到 3.3.1 版本即可体验。",
+   "headline": "『ゼンレスゾーンゼロ』がiPhone Duoに正式対応。発表会でも使われていたハイスピードアクションゲーム",
+   "highlight": "iPhone Duoに正式対応",
+   "blurb": "3.3.1へのアップデートでiPhone Duoに対応。App Storeで検索して利用できる。",
    "weight": "lead",
    "refs": [
+    11,
     5,
     6,
     7
