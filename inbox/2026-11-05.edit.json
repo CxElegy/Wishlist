@@ -8,7 +8,7 @@
   "dota2": 7,
   "周杰伦": 9,
   "あつ森": 4,
-  "哈利波特剧集": 4,
+  "哈利波特剧集": 7,
   "猫用品": 4,
   "The Mandalorian": 5,
   "绝区零": 3,
@@ -427,6 +427,20 @@
  ],
  "哈利波特剧集": [
   {
+   "headline": "ドラマ版ハリー・ポッターと賢者の石が12月25日からHuluで見放題配信",
+   "highlight": "12月25日からHuluで見放題配信",
+   "blurb": "ドラマ版『ハリー・ポッターと賢者の石』が12月25日からHuluで見放題配信される。",
+   "weight": "hero",
+   "refs": [
+    6
+   ],
+   "event": {
+    "date": "2026-12-25",
+    "label": "配信開始"
+   },
+   "image": "https://image.news.livedoor.com/newsimage/stf/b/4/b4d74_760_2489936_20261030_151303_size640wh_10534070.jpg"
+  },
+  {
    "headline": "Harry Potter HBO series lands on OSN+ this December with surprises",
    "highlight": "this December",
    "blurb": "Harry Potter HBO series lands on OSN+ this December.",
@@ -451,7 +465,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    7
+   ]
+  },
+  {
+   "headline": "Screen-Accurate Fantasy Collectibles: Noble Collection Unveils HBO Harry Potter Wands…",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],

@@ -751,6 +751,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.upmedia.mg/upfile/img/2026/1104/202611041228230482.webp": {
   "w": 1920,
   "h": 1279,
@@ -1470,6 +1476,13 @@
   "h": 675,
   "target": 720,
   "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/stf/b/4/b4d74_760_2489936_20261030_151303_size640wh_10534070.jpg": {
+  "w": 512,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.392
  },
  "https://image.news.livedoor.com/newsimage/stf/e/3/e3880_760_2488439_20261028_181544_size640wh_51793488.jpg": {
   "w": 640,

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "48e7dbe39566",
+ "edit_sig": "da670f84e51c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -258,31 +258,22 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 5,
-     "source": "Trend Hunter",
-     "title": "Screen-Accurate Fantasy Collectibles: Noble Collection Unveils HBO Harry Potter Wands…",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBfU2ZVM01nR2djWExVbU05YzY2MHpvMWpQMURsei1IS21Wbl94bUdGLTI1Q0lyMU9yZ1Z2RFpnWUxFdVc4TTJjSVpDdkZYNFp2Yldhd0dqSjc0cWdSTGhQSnFZblVzeWtXc3dDNWJaM1ZqUkYyUTJ4NlJ5QQ?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 6,
-     "source": "ライブドアニュース",
-     "title": "ドラマ版ハリー・ポッターと賢者の石が12月25日からHuluで見放題配信 (2026年10月30日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBRU29qS0QwZkloQk5hYzlUX215cW5EQURGbDJDRXR1SGtIaEtmeGctV1JITWRVRWFEbXpkRXRHc1dlUmtkRzFSSFVsR0ZwZGhINzRsaTVJVUFCM1Zuc1E?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 7,
-     "source": "The Mirror",
-     "title": "Warwick Davis reveals he was 'terrified' after joining Harry Potter TV series",
-     "url": "https://www.mirror.co.uk/tv/tv-news/warwick-davis-harry-potter-hbo-37844553"
-    }
-   ],
    "section": "影视",
    "stories": [
+    {
+     "blurb": "ドラマ版『ハリー・ポッターと賢者の石』が12月25日からHuluで見放題配信される。",
+     "date": "2026-10-30",
+     "event": {
+      "date": "2026-12-25",
+      "label": "配信開始"
+     },
+     "headline": "ドラマ版ハリー・ポッターと賢者の石が12月25日からHuluで見放題配信",
+     "highlight": "12月25日からHuluで見放題配信",
+     "image": "https://image.news.livedoor.com/newsimage/stf/b/4/b4d74_760_2489936_20261030_151303_size640wh_10534070.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.livedoor.com/topics/detail/32692817/",
+     "weight": "hero"
+    },
     {
      "blurb": "Harry Potter HBO series lands on OSN+ this December.",
      "date": "2026-11-04",
@@ -311,6 +302,16 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gLdCO.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/en-ca/entertainment/movies/warwick-davis-says-first-day-on-harry-potter-series-was-terrifying/ar-AA2gKC0L",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "Screen-Accurate Fantasy Collectibles: Noble Collection Unveils HBO Harry Potter Wands…",
+     "highlight": "",
+     "image": "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg",
+     "image_via": "og:image",
+     "url": "https://www.trendhunter.com/trends/screen-accurate-fantasy-collectibles",
      "weight": "normal"
     }
    ],
