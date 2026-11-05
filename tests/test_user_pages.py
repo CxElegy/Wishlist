@@ -200,9 +200,9 @@ class Layout(unittest.TestCase):
 
     def test_shell_and_sql(self):
         me = render.render_me()
-        self.assertIn("p=settings", me)
-        self.assertIn("'settings.html'", me)
-        self.assertIn("?p=settings", render.AUTH_JS)
+        self.assertIn("p=(settings|heat)", me)
+        self.assertIn("SUB+'.html'", me)
+        self.assertIn("'?p='+page", render.AUTH_JS)
         sql = (ROOT / "db" / "my_layout.sql").read_text(encoding="utf-8")
         for w in ("public.my_account()", "update public.follows", "insert into public.nav_schemes", "to authenticated"):
             self.assertIn(w, sql)
@@ -276,7 +276,15 @@ class Issue(unittest.TestCase):
         user_pages.build("c@example.com", {"picks": []}, {}, [], None, {}, 0, {}, [], {}, pages)
         self.assertIn('name="wl-own"', pages["settings.html"])
         self.assertIn(user_pages.ADD_URL, pages["settings.html"])
-        self.assertIn("if(page==='settings'&&!err&&tok){", render.AUTH_JS)
+        self.assertIn("if((page==='settings'||page==='heat')&&!err&&tok){", render.AUTH_JS)
+
+    def test_heat_page_own(self):
+        # F5（2026-11-05、L13）：話題度もお客さまの本人の分を店長と同じ render_heat で作る（行き止まりの札にしない）
+        pages = {}
+        heat_in = ([], [], {}, "2026-11-05")
+        user_pages.build("a@example.com", {"picks": [{"name": "広島旅行", "sec": "出行"}], "sizes": {}}, {}, [], None, {}, 0, {}, [], {}, pages, heat_in)
+        self.assertIn('name="wl-own"', pages["heat.html"])
+        self.assertIn("/^(index|settings|heat)$/", render.AUTH_JS)
 
 
 class Loader(unittest.TestCase):

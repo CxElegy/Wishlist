@@ -280,6 +280,9 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     mark = f'<head><meta name="wl-own" content="{render.e(email)}">'
     if pages is not None:
         pages["settings.html"] = photo_store.emblems_to_pages(settings_page(prefs, items, schemes, settings, updated).replace("<head>", mark, 1), pub)
+        if heat_in:   # 話題度のページも店長と同じ render_heat を本人の版面で（F5 2026-11-05、L13：「トップにまとまっています」の札で行き止まりにしない）
+            analysis = heat.analyze(items, heat_in[0], [issue] + heat_in[1], *heat_in[2:])
+            pages["heat.html"] = render.render_heat(analysis, render.collect(issues, order, digest.lang.order(settings)), updated).replace("<head>", mark, 1)
     return photo_store.emblems_to_pages(html_.replace("<head>", mark, 1), pub)
 
 
