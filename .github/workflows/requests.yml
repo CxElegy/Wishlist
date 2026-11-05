@@ -23,6 +23,7 @@ jobs:
     env:
       WL_RENDER_SOFT: "1"   # 網页の生成に失敗しても、依頼の結果は push する（digest.write_page）
       WL_ITEM_MARKS: /tmp/item_marks.json   # take-items は依頼の done を push のあと（mark-items）まで待つ
+      WL_ITEM_AGE: fresh   # 20 分以内の依頼だけ（それより前のものは収集の回が取る。同時に取って 2 重に足さない：digest.item_requests_query）
       SUPABASE_URL: https://bzokpnbcjscbcehdxtjq.supabase.co   # 和 items.yaml 的 supabase_url 一样（公开的）
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
       GH_TOKEN: ${{ github.token }}
@@ -33,7 +34,7 @@ jobs:
           if [ -z "$SUPABASE_SERVICE_KEY" ]; then echo "没设置 SUPABASE_SERVICE_KEY"; exit 0; fi
           hdr=(-H "apikey: $SUPABASE_SERVICE_KEY")
           case "$SUPABASE_SERVICE_KEY" in eyJ*) hdr+=(-H "Authorization: Bearer $SUPABASE_SERVICE_KEY");; esac
-          pending=$(curl -sf "${hdr[@]}" "$SUPABASE_URL/rest/v1/item_requests?status=eq.pending&select=id" | jq length || echo 0); pending=${pending:-0}
+          pending=$(curl -sf "${hdr[@]}" "$SUPABASE_URL/rest/v1/item_requests?status=eq.pending&created_at=gt.$(date -u -d '-20 min' +%FT%TZ)&select=id" | jq length || echo 0); pending=${pending:-0}
           # 篇幅：数据库里最后一次改的时间，晚于网页最后一次生成就要重新生成
           size_at=$(curl -sf "${hdr[@]}" "$SUPABASE_URL/rest/v1/sizes?select=updated_at&order=updated_at.desc&limit=1" | jq -r '.[0].updated_at // empty' || true)
           page_at=$(gh api "repos/$GITHUB_REPOSITORY/commits?path=docs/home/settings.html&per_page=1" --jq '.[0].commit.committer.date' || true)

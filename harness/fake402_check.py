@@ -174,9 +174,12 @@ def _json_shrink(d, f, fake=""):
     if new == old:
         return 0
     try:
-        lo, ln = _leaves(json.loads(old)), _leaves(json.loads(new))
+        jo, jn = json.loads(old), json.loads(new)
+        lo, ln = _leaves(jo), _leaves(jn)
     except ValueError:
         return 0
+    if f.startswith("reports/") and isinstance(jo, dict) and isinstance(jn, dict) and jo.get("edit_sig") != jn.get("edit_sig"):
+        return 0   # 報告が古い edit.json で出ていた（収集の回と AI 編集が重なった）：新しい編集で出し直した（digest.py の edit_sig の規則。402 とは無関係）
     nb = len(old.encode()) - len(new.encode())
     return max(nb, 1) if (nb > 0 or ln < lo) else 0
 
@@ -219,9 +222,8 @@ def _worker(q, results, env, keep):
             rc = "timeout"
         s = shrunk(d, fake)
         bad_files = {f: n for f, n in s.items() if f not in ALLOW}
-        for f, n in s.items():
-            old = len(_git(d, "show", f"HEAD:{f}").encode())
-            if f in RATIO and n > old * RATIO[f]:
+        for f, n in s.items():   # 名簿の割合を見るのは RATIO のものだけ（写真などの binary を文字として読まない：repair-images が webp を消すと UnicodeDecodeError で作業枠が落ちた）
+            if f in RATIO and n > len(_git(d, "show", f"HEAD:{f}").encode()) * RATIO[f]:
                 bad_files[f] = n
         for pre, (mx, _) in ALLOW_COUNT.items():
             hit = [f for f in bad_files if f.startswith(pre)]

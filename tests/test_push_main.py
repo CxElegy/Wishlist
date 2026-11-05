@@ -63,11 +63,37 @@ class PushMain(unittest.TestCase):
         self.assertEqual(sh(a, "git", "show", "origin/main:docs/i.html").strip(), "regen")
 
     def test_no_own_commit_does_not_rewrite_pushed(self):
-        a = clone(self.d, self.origin, "a")
+        a, b = clone(self.d, self.origin, "a"), clone(self.d, self.origin, "b")
+        Path(b, "y.txt").write_text("b")
+        sh(b, "git", "add", "-A")
+        sh(b, "git", "commit", "-qm", "other")
+        sh(b, "git", "push", "-q", "origin", "main")
         r = run(a, "--regen", "echo regen > docs/i.html")
         self.assertEqual(r.returncode, 0, r.stderr)
         log = sh(a, "git", "log", "--format=%s", "origin/main").split("\n")
-        self.assertEqual(log[1], "init")   # init は書き換えず、新しい提交を足す
+        self.assertEqual(log[1:3], ["other", "init"])   # push 済みの提交は書き換えず、新しい提交を足す
+
+    def test_no_race_no_regen(self):
+        a = clone(self.d, self.origin, "a")
+        Path(a, "x.txt").write_text("a")
+        sh(a, "git", "add", "-A")
+        sh(a, "git", "commit", "-qm", "data")
+        r = run(a, "--regen", "echo regen > docs/i.html")   # 先を越されていない：網页は呼ぶ前に作ったまま（2 度作らない）
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual(sh(a, "git", "show", "origin/main:docs/i.html").strip(), "0")
+        self.assertEqual(sh(a, "git", "log", "--format=%s", "origin/main").split("\n")[:2], ["data", "init"])
+
+    def test_dispatch_skips_when_render_busy(self):
+        import push_main
+        with mock.patch.dict(os.environ, {"GH_TOKEN": "x", "GITHUB_WORKFLOW_REF": "o/r/.github/workflows/render.yml@refs/heads/main"}), \
+                mock.patch.object(push_main.subprocess, "run") as run_:
+            push_main.dispatch_render()   # 自分が render：起こすと cancel-in-progress で自分を切る
+        run_.assert_not_called()
+        busy = subprocess.CompletedProcess([], 0, "1\n", "")
+        with mock.patch.dict(os.environ, {"GH_TOKEN": "x", "GITHUB_WORKFLOW_REF": "o/r/.github/workflows/digest.yml@refs/heads/main"}), \
+                mock.patch.object(push_main.subprocess, "run", return_value=busy) as run_:
+            push_main.dispatch_render()   # ほかの render が走っている：その回が取り込んで作り直す
+        self.assertEqual([c.args[0][:3] for c in run_.call_args_list], [["gh", "run", "list"]])
 
     def test_broken_items_yaml_not_pushed(self):
         a = clone(self.d, self.origin, "a")
@@ -124,6 +150,67 @@ class ItemMarksAfterPush(unittest.TestCase):
                 self.assertFalse(p.exists())
             self.assertTrue(any("id=in.(7)" in c[0] for c in calls))
             self.assertTrue(any("id=eq.8" in c[0] for c in calls))
+
+
+class ItemRequestsTwice(unittest.TestCase):
+    """同じ依頼を 2 度取っても 2 重に足さない・済んだものを見送りにしない（push は通ったが done を付け損ねた回の次）。"""
+
+    def take(self, rows, text):
+        import json
+        import digest
+        with tempfile.TemporaryDirectory() as d:
+            items, marks = Path(d, "items.yaml"), Path(d, "marks.json")
+            items.write_text(text, encoding="utf-8")
+            with mock.patch.dict(os.environ, {"WL_ITEM_MARKS": str(marks)}), \
+                    mock.patch.object(digest, "ITEMS_FILE", items), \
+                    mock.patch.object(digest, "load_config", side_effect=lambda: ({}, (__import__("yaml").safe_load(items.read_text(encoding="utf-8")) or {}).get("items") or [])), \
+                    mock.patch.object(digest, "supabase", return_value=rows), \
+                    mock.patch.object(digest, "log_emblem_rejects"), mock.patch.object(digest, "_drop_emblem_files"):
+                digest.take_item_requests()
+            return items.read_text(encoding="utf-8"), json.loads(marks.read_text(encoding="utf-8"))
+
+    def test_add_twice_is_done_once(self):
+        row = {"id": 5, "action": "add", "name": "猫用品", "config": {"type": "product"}}
+        text, m1 = self.take([row], "items:\n  - name: 别的\n    type: product\n")
+        self.assertEqual(m1["done"], [5])
+        again, m2 = self.take([row], text)   # 次の回が同じ依頼を取り直す
+        self.assertEqual(again, text)         # 2 重に足さない
+        self.assertEqual(m2, {"done": [5], "skipped": {}})   # 見送り（已经有了）にしない
+        names = [i["name"] for i in __import__("yaml").safe_load(again)["items"]]
+        self.assertEqual(names, ["别的", "猫用品"])
+
+    def test_add_same_name_by_hand_still_skipped(self):
+        row = {"id": 6, "action": "add", "name": "别的", "config": {"type": "product"}}
+        _, m = self.take([row], "items:\n  - name: 别的\n    type: product\n")
+        self.assertIn("6", m["skipped"])   # 手で書いた同じ名前は今までどおり見送り
+
+    def test_delete_missing_stays_skipped(self):
+        row = {"id": 7, "action": "edit", "name": "猫用品", "config": {"_delete": True}}
+        _, m = self.take([row], "items:\n  - name: 别的\n    type: product\n")
+        self.assertIn("没有", m["skipped"]["7"])   # 消した後に done を付け損ねたのか、初めから無いのか見分けられない：理由つきの見送り（tests/test_item_requests）
+
+    def test_age_split(self):
+        import digest
+        with mock.patch.dict(os.environ, {"WL_ITEM_AGE": "fresh"}):
+            self.assertIn("&created_at=gt.", digest.item_requests_query())
+        with mock.patch.dict(os.environ, {"WL_ITEM_AGE": "stale"}):
+            self.assertIn("&created_at=lt.", digest.item_requests_query())
+        self.assertGreater(digest.ITEM_STALE_MIN, digest.ITEM_FRESH_MIN + 10)   # requests の timeout 10 分より間を空ける
+        for wf, age in (("requests.yml", "fresh"), ("digest.yml", "stale")):
+            self.assertIn(f"WL_ITEM_AGE: {age}", (ROOT / ".github/workflows" / wf).read_text(encoding="utf-8"))
+
+    def test_mark_fail_is_red(self):
+        import json
+        import digest
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d, "marks.json")
+            p.write_text(json.dumps({"done": [7], "skipped": {}}))
+            with mock.patch.dict(os.environ, {"WL_ITEM_MARKS": str(p)}), \
+                    mock.patch.object(digest, "supabase", side_effect=OSError("down")) as sb, \
+                    mock.patch.object(digest.time, "sleep"):
+                with self.assertRaises(SystemExit):
+                    digest.mark_items_later()
+            self.assertEqual(sb.call_count, 3)
 
 
 if __name__ == "__main__":

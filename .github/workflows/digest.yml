@@ -46,6 +46,7 @@ jobs:
       IS_WEEKLY: ${{ github.event.schedule == '47 0 * * 1' || inputs.weekly == true }}
       WL_RENDER_SOFT: "1"   # 網页の生成に失敗しても、集めたデータは push する（digest.write_page）
       WL_ITEM_MARKS: /tmp/item_marks.json   # 設定ページの依頼の done は push のあと（mark-items）
+      WL_ITEM_AGE: stale   # 40 分より前の依頼だけ（新しい依頼は requests.yml。同じ依頼を同時に取って 2 重に足さない：digest.item_requests_query）
     steps:
       - name: 始めた時刻（お客さまの記事集めが job の timeout の前に終わるように、scripts/userfeed.py の JOB_T0）
         run: echo "JOB_T0=$(date +%s)" >> "$GITHUB_ENV"

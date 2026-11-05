@@ -7,8 +7,10 @@
 
 - 呼ぶ前に自分の分をコミットしておく。pull_rebase（-X theirs・modify/delete を解く・--autostash）→ push を最大 6 回、
   間は 2^i 秒＋揺らぎ（ほかの係と同じ間隔でぶつからない）。
-- --regen CMD：rebase のあと CMD（網页の再生成）を走らせ docs を最後のコミットに畳む（提交を増やさない）。
-  5・6 回目は再生成を飛ばしデータだけ push し、render.yml を起こして網页を作り直させる。
+- --regen CMD：rebase で origin/main から新しい提交が入ったときだけ CMD（網页の再生成）を走らせ docs を最後のコミットに畳む
+  （提交を増やさない）。何も入らなければ作り直さない（呼ぶ前に作った網页のまま。前は毎回 2 度作っていた）。
+  5・6 回目は再生成を飛ばしデータだけ push し、render.yml を起こして網页を作り直させる
+  （ほかの render が走っている・並んでいる、自分が render のときは起こさない：cancel-in-progress で走っている render を切らない）。
 - push の前に items.yaml が yaml として読めるか確かめる（壊れた items.yaml は全部の workflow を止める）。
 - 非 fast-forward（先を越された）以外の失敗（403 など）は待たずに失敗。
 - 失敗の終わり方：既定は exit 1（呼んだ回が赤になる）。--soft は ::warning:: を出して exit 0。
@@ -63,8 +65,20 @@ def regen(cmd):
     return True
 
 
+def render_busy():
+    """自分が render.yml か、ほかの render.yml の回が走っている・並んでいる（その回が最新を取り込んで作り直す）。"""
+    if "/render.yml@" in os.environ.get("GITHUB_WORKFLOW_REF", ""):
+        return True
+    try:
+        r = subprocess.run(["gh", "run", "list", "--workflow", "render.yml", "--limit", "5", "--json", "status",
+                            "-q", '[.[] | select(.status != "completed")] | length'], capture_output=True, text=True, timeout=60)
+        return r.returncode == 0 and r.stdout.strip() not in ("", "0")
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+
+
 def dispatch_render():
-    if not os.environ.get("GH_TOKEN"):
+    if not os.environ.get("GH_TOKEN") or render_busy():
         return
     try:
         subprocess.run(["gh", "workflow", "run", "render.yml", "--ref", "main"], timeout=60)
@@ -77,11 +91,13 @@ def push(regen_cmd=None, tries=6, sleep=time.sleep):
     for i in range(tries):
         if i:
             sleep(2 ** i + random.random())
+        base = git("merge-base", "HEAD", "origin/main").stdout.strip()
         if pull_rebase.main() != 0:
             print(f"{i + 1} 回目：rebase できなかった", file=sys.stderr)
             continue
+        moved = git("rev-parse", "origin/main").stdout.strip() != base   # 取り込みで新しい提交が入った
         late = i >= tries - 2   # 最後の 2 回は再生成しない（再生成の間に先を越され続けるのを断つ）
-        stale = bool(regen_cmd) and (late or not regen(regen_cmd))
+        stale = bool(regen_cmd) and moved and (late or not regen(regen_cmd))
         if not yaml_ok():
             return False
         r = git("push", "-q", "origin", "HEAD:main")
