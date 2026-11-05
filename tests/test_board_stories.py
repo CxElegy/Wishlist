@@ -64,7 +64,7 @@ class BoardStories(unittest.TestCase):
 
     def test_user_pages_reads_board_first(self):
         follows = [{"boards": {"id": 7, "name": "Astrae Oratio"}}, {"boards": {"id": 9, "name": "広島旅行"}}, {"boards": {"id": 11, "name": "X"}}]
-        latest = {7: {"stories": st(2), "pending": st(5)}, 9: {"stories": [], "pending": st(4)}}
+        latest = {7: {"stories": [{**s, "headline": s["title"]} for s in st(2)], "pending": st(5)}, 9: {"stories": [], "pending": st(4)}}
         rows = user_pages.board_rows(follows, latest, {"x": {"stories": st(1)}})
         self.assertEqual(len(rows["astraeoratio"]["stories"]), 2)   # AI 編集のあとが先
         self.assertTrue(rows["astraeoratio"]["edited"])

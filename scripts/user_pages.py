@@ -182,11 +182,15 @@ def user_issue(items, shop_issue, rows, deadline, themes):
             blocks.append({**sb, "stories": (sb.get("stories") or [])[:cap], "section": it.get("section") or sb.get("section")})
             continue
         row = rows.get(norm(it["name"])) or {}
-        st = [_story(r, "hero" if i == 0 else "normal") for i, r in enumerate((row.get("stories") or [])[:cap])]
+        if row.get("edited"):   # AI 編集の記事（library.edited_stories：見出し・重さ・要約は AI のまま）
+            st = [{k: v for k, v in s.items() if not k.startswith("_") and k != "refs"} for s in (row.get("stories") or [])[:cap]]
+        else:
+            st = [_story(r, "hero" if i == 0 else "normal") for i, r in enumerate((row.get("stories") or [])[:cap])]
         st = find_images(st, deadline)
         cover = next((s["image"] for s in st if s.get("image")), None)
         blocks.append({"name": it["name"], "section": it.get("section"), "subtitle": "", "stories": st, "facts": [],
-                       "pending": [], "cover": cover, "theme": theme.resolve(it, cover, themes),
+                       "pending": row.get("pending") or [], "cover": cover, "theme": theme.resolve(it, cover, themes),
+                       **({"edited": True} if row.get("edited") else {}),
                        **({} if st else {"quiet": True, "collecting": True,
                                          "status": render.SETTINGS_JA["collecting"]})})
     if not blocks:   # 版面が 0 個の人も同じ枠組み：静かな版面（主題・配色つき）で最初の 1 つを選ぶ道を出す（素の箱にしない）
@@ -244,9 +248,14 @@ def board_rows(follows, latest, rows):
     for f in follows or []:
         b = f.get("boards") or {}
         bs = latest.get(b.get("id")) or {}
-        st = bs.get("stories") or bs.get("pending")
-        if b.get("name") and st:
-            out[norm(b["name"])] = {"stories": st, "edited": bool(bs.get("stories"))}
+        ed = [s for s in bs.get("stories") or [] if s.get("headline")]   # 題のない行＝AI 編集が全部見送った印（_fp だけ）
+        if b.get("name") and (bs.get("stories") or bs.get("pending")):
+            if bs.get("stories"):   # AI 編集のあと：記事は AI の、使わなかった新着は店長と同じ「整理待ち」へ
+                used = {u for s in ed for u in s.get("refs") or [s.get("url")]}
+                out[norm(b["name"])] = {"stories": ed, "edited": True,
+                                        "pending": [p for p in bs.get("pending") or [] if p.get("url") not in used]}
+            else:
+                out[norm(b["name"])] = {"stories": bs["pending"], "edited": False}
     return out
 
 
@@ -256,7 +265,9 @@ def latest_stories(get):
     since = (dt.date.today() - dt.timedelta(days=READ_DAYS)).isoformat()
     out = {}
     for r in get(f"/rest/v1/board_stories?day=gte.{since}&select=board_id,day,stories,pending&order=day.desc") or []:
-        out.setdefault(r["board_id"], r)
+        cur = out.setdefault(r["board_id"], dict(r))
+        if not cur.get("stories") and r.get("stories"):   # 今日まだ編んでいない版面は、前の日の AI 編集の記事（持ち越し。library.edit_todo と同じ）
+            cur["stories"] = r["stories"]
     return out
 
 

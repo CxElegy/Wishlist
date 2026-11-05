@@ -31,7 +31,16 @@
      提交推送后再问一次。设计好之前不会给你 `NEXT`（2026-10-19：只写在说明里时被跳过了，现在由 `edit-next` 把关）。
    - 输出 `NEXT 版面名` → 编这个版面（下面 ①〜④），推送完再回来问一次。
    - 输出 `STOP …`（管理页按了「一時停止」，或「1 版面ずつ」已经编完一个）→ **立刻结束这次会话**，不要编下一个。
-   - 输出 `DONE` → 今天的整理待ち都编完了，结束。
+   - 输出 `NEXT lib:版面id 版面名`（店長的版面都编完以后才出，2026-11-05 机能 C）→ **ライブラリの版面（お客さま追的版面）**，同样的编排规则，但不用 inbox / pick-images / publish：
+     ```bash
+     python scripts/digest.py edit-brief --only lib:版面id      # 一行一条：编号 日期 出典｜标题｜摘要（全部是整理待ち）
+     # 按下面的「编排规则」写这一个版面的报道列表（不是 edit.json 的整个对象，只是 [ {headline, highlight, blurb, weight, refs}, … ]）到 /tmp/lib.json
+     python scripts/digest.py lib-publish --only lib:版面id --file /tmp/lib.json
+     ```
+     写进 Supabase 的 `board_stories.stories`（不用 git 提交），お客さまのページ下一次重新生成时就换成编好的报道，没用上的进「整理待ち」。
+     篇幅一律按 M（5 条以内，最多 8），不配图（用原文的图）。没有值得报的就写 `[]`（也要 lib-publish，免得下次又编同一批）。
+     一次会话最多 `library.LIB_EDIT_MAX` 个、编好的版面 12 小时内不再编（token 上限，`edit-next` 自己把关）。编完回到 `edit-next`。
+   - 输出 `DONE` → 今天的整理待ち都编完了（店長的版面和ライブラリの版面），结束。
    顺序：管理页点了「やり直す」的版面最先（已经编过也整版重编），然后整理待ち多的先。推完 1〜2 分钟网页上这个版面就换成整理好的报道，
    开着的页面会自己刷新、提示「更新しました：GTA 6 新着 3 件…」。每个版面用了多少 token 会自动记到管理页（出刊时 `usage.py` 读会话记录）。
    ① **用短一览读这个版面**（省 token：不要直接读 inbox 的 JSON，那里有很长的网址和摘要）：

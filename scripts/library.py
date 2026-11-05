@@ -261,6 +261,140 @@ def put_stories(db, rows, old, day, log=print):
     return len(put)
 
 
+LIB_EDIT_MAX = 8      # 1 回の AI 編集で編むライブラリの版面の上限（token の上限。店長の版面のあとに回る。1 版面 ≈ 12 行の一覧）
+LIB_EDIT_GAP_H = 12   # 編んだ版面は、記事が変わっても 12 時間は編み直さない（token の上限。新しい記事は「整理待ち」に並ぶ）
+LIB_STORIES = 8       # 1 版面に残す記事（L の 8 本。人ごとの篇幅は user_pages が切る）
+LIB_SUMMARY = 120     # 一覧の要約の字数（edit_brief と同じ）
+LIB_ROWS = pathlib.Path("/tmp/wishlist-lib-rows.json")   # board_stories の写し（同じ AI 編集の回の中で読み直さない。10 分）
+LIB_DONE = pathlib.Path("/tmp/wishlist-lib-done.json")   # この回に編んだ版面（LIB_EDIT_MAX を数える。3 時間で新しい回）
+
+
+def pending_fp(pending):
+    """整理待ちの指紋（記事の網址の集まり）。AI 編集の記事に _fp として残し、同じなら編み直さない・次の日に持ち越す。"""
+    import hashlib
+    return hashlib.sha1("\n".join(sorted(str(p.get("url") or "") for p in pending or [])).encode("utf-8")).hexdigest()[:12]
+
+
+def lib_rows(db, today, shop_names=(), days=2, fresh=False):
+    """board_stories の直近 days 日 → {版面 id: {"day", "name", "pending", "stories", "prev"（前の日の AI 編集の記事）}}。
+    店長の版面（shop_names）は店長の出刊が編む（digest.sync_board_stories）ので入れない。読むのは 10 分に 1 回（LIB_ROWS の写し）。"""
+    import datetime as dt
+    import time
+    try:
+        c = json.loads(LIB_ROWS.read_text(encoding="utf-8"))
+        if not fresh and time.time() - c["t"] < 600 and c.get("today") == today:
+            return {int(k): v for k, v in c["rows"].items()}
+    except (OSError, ValueError, KeyError):
+        pass
+    since = (dt.date.fromisoformat(today) - dt.timedelta(days=days)).isoformat()
+    shop = {norm_name(n) for n in shop_names}
+    out = {}
+    for r in db(f"board_stories?day=gte.{since}&select=board_id,day,stories,pending,boards(name)&order=day.desc") or []:
+        name = (r.get("boards") or {}).get("name") or ""
+        if norm_name(name) in shop:
+            continue
+        cur = out.setdefault(r["board_id"], {"day": r["day"], "name": name, "pending": r.get("pending") or [],
+                                             "stories": r.get("stories") or [], "prev": []})
+        if cur["day"] != r["day"] and not cur["prev"] and r.get("stories"):
+            cur["prev"] = r["stories"]
+    try:
+        LIB_ROWS.write_text(json.dumps({"t": time.time(), "today": today, "rows": out}, ensure_ascii=False), encoding="utf-8")
+    except OSError:
+        pass
+    return out
+
+
+def _done_ids():
+    import time
+    try:
+        d = json.loads(LIB_DONE.read_text(encoding="utf-8"))
+        return d["ids"] if time.time() - d["t"] < 3 * 3600 else []
+    except (OSError, ValueError, KeyError):
+        return []
+
+
+def edit_todo(db, today, shop_names=(), now=None):
+    """AI 編集がまだ編んでいないライブラリの版面（お客さまの版面）→ [(版面 id, 名前, 整理待ちの件数)]（整理待ちの多い順・規則・token 0）。
+    編み済み＝今日の行の記事の _fp が今の整理待ちの指紋と同じ、または LIB_EDIT_GAP_H 時間以内に編んだ。
+    前の日に編んだ版面で整理待ちが同じなら、記事を今日の行へ写す（持ち越し・AI なし）。この回で LIB_EDIT_MAX 版面編んだら []。"""
+    import datetime as dt
+    now = now or dt.datetime.now(dt.timezone.utc)
+    done = _done_ids()
+    if len(done) >= LIB_EDIT_MAX:
+        return []
+    rows = lib_rows(db, today, shop_names)
+    todo = []
+    for bid, r in rows.items():
+        if not r["pending"] or bid in done:
+            continue
+        fp = pending_fp(r["pending"])
+        recent = (now - dt.timedelta(hours=LIB_EDIT_GAP_H)).isoformat(timespec="seconds")
+        st = r["stories"] or []
+        if st and (st[0].get("_fp") == fp or str(st[0].get("_at") or "") > recent):
+            continue
+        prev = r["prev"] or []
+        if not st and prev and (prev[0].get("_fp") == fp or str(prev[0].get("_at") or "") > recent):   # 持ち越し：きのう編んだのと同じ整理待ち・編んで間もない
+            db(f"board_stories?board_id=eq.{bid}&day=eq.{r['day']}", {"stories": prev}, "return=minimal", method="PATCH")
+            r["stories"] = prev
+            continue
+        todo.append((bid, r["name"], len(r["pending"])))
+    return sorted(todo, key=lambda x: (-x[2], x[0]))
+
+
+def edit_brief(db, bid, today, shop_names=()):
+    """AI 編集に読ませるライブラリの版面の短い一覧（digest.edit_brief と同じ書き方：番号 日付 出典｜題｜要約）。"""
+    r = lib_rows(db, today, shop_names).get(int(bid))
+    if not r:
+        return ""
+    out = [f"## {r['name']}（ライブラリの版面 {bid}・{len(r['pending'])} 件。全部が整理待ち＝新しく編む）"]
+    for n, p in enumerate(r["pending"], 1):
+        summ = " ".join(str(p.get("summary") or "").split())[:LIB_SUMMARY]
+        out.append(f"{n} {str(p.get('date') or '')[:10]} {p.get('source') or ''}｜{p.get('title') or ''}" + (f"｜{summ}" if summ else ""))
+    return "\n".join(out)
+
+
+def edited_stories(pending, edit, fp, at):
+    """AI 編集の結果（EDITING.md の 1 版面分：[{headline, highlight, blurb, weight, refs, image?, event?}]）→ board_stories.stories の形。
+    refs は整理待ちの番号（1〜）。網址・出典・日付・写真は refs の 1 本目から。題が無ければ原題。highlight は題の中にあるときだけ。
+    1 本も無い（全部見送り）ときも _fp だけの 1 行を残す（同じ整理待ちを編み直さない。user_pages は題のない行を出さない）。"""
+    out = []
+    for s in edit or []:
+        if not isinstance(s, dict):
+            continue
+        refs = [pending[r - 1] for r in s.get("refs") or [] if isinstance(r, int) and 0 < r <= len(pending)]
+        if not refs or not str(refs[0].get("url") or "").startswith(("http://", "https://")):
+            continue
+        head = str(s.get("headline") or refs[0].get("title") or "").strip()
+        hl = str(s.get("highlight") or "")
+        img = s.get("image") if str(s.get("image") or "").startswith("https://") else refs[0].get("image")
+        out.append({"headline": head, "highlight": hl if hl and hl in head else "", "blurb": str(s.get("blurb") or ""),
+                    "weight": s.get("weight") if s.get("weight") in ("hero", "lead", "normal") else "normal",
+                    "url": refs[0]["url"], "source": refs[0].get("source") or "", "date": str(refs[0].get("date") or "")[:10],
+                    "image": img or None, "refs": [p.get("url") for p in refs],
+                    **({"event": s["event"]} if isinstance(s.get("event"), dict) else {}), "_fp": fp, "_at": at})
+        if len(out) >= LIB_STORIES:
+            break
+    return out or [{"_fp": fp, "_at": at}]
+
+
+def edit_publish(db, bid, edit, today, shop_names=(), log=print):
+    """AI 編集が編んだライブラリの版面を board_stories.stories に書く（pending はそのまま。user_pages が次の回に読む）。→ 書いた記事の数"""
+    import datetime as dt
+    import time
+    bid = int(bid)
+    r = lib_rows(db, today, shop_names, fresh=True).get(bid)
+    if not r:
+        raise SystemExit(f"ライブラリの版面 {bid} の board_stories がない")
+    at = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    st = edited_stories(r["pending"], edit, pending_fp(r["pending"]), at)
+    db(f"board_stories?board_id=eq.{bid}&day=eq.{r['day']}", {"stories": st, "updated_at": at}, "return=minimal", method="PATCH")
+    LIB_ROWS.unlink(missing_ok=True)
+    LIB_DONE.write_text(json.dumps({"t": time.time(), "ids": _done_ids() + [bid]}), encoding="utf-8")
+    n = sum(1 for s in st if s.get("headline"))
+    log(f"ライブラリの版面 {bid}：AI 編集の記事 {n} 本（整理待ち {len(r['pending'])} 件から）")
+    return n
+
+
 def push_shop(items):
     """店長の版面をライブラリへ（何度流しても同じ：key・(account, board_id) で上書き）。"""
     import digest

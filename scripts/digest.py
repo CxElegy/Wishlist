@@ -1686,7 +1686,57 @@ def sync_db():
     """收集到的消息、编排后的报道、价格 / 状态历史都写进数据库。连不上不影响出刊，下次再补。"""
     sync_news()
     sync_stories()
+    sync_board_stories()
     sync_prices()
+
+
+BOARD_STORIES_SYNC_FILE = ROOT / "state" / "db_board_stories.json"
+BOARD_PENDING_MAX = 20   # 店長の版面の整理待ちは 20 件まで写す（user_pages・管理ページは件数と頭だけ使う）
+
+
+def board_story_rows(issue, items):
+    """店長の最新の号 → {版面 key: {"stories", "pending"}}（ライブラリの board_stories の形。library.md「版面ごとに 1 回・全員が同じもの」）。"""
+    import library
+    keys = {i["name"]: library.board_key(i) for i in items}
+    out = {}
+    for b in (issue or {}).get("items", []):
+        if b.get("name") not in keys:
+            continue
+        st = [{k: s.get(k) for k in ("headline", "highlight", "blurb", "weight", "url", "source", "date", "image", "event") if s.get(k)}
+              for s in b.get("stories") or [] if isinstance(s, dict) and s.get("headline")]
+        pend = [{k: p.get(k) for k in ("title", "url", "source", "date") if p.get(k)} for p in (b.get("pending") or [])[:BOARD_PENDING_MAX]]
+        out[keys[b["name"]]] = {"stories": st, "pending": pend}
+    return out
+
+
+def sync_board_stories():
+    """店長の版面の記事（AI 編集のあと）もライブラリの board_stories に書く（お客さまの版面は library.edit_publish）。
+    号の日付の行を、中身が前に書いたものと変わった版面だけ（state/db_board_stories.json の指紋。無料枠）。"""
+    reports = sorted(REPORTS_DIR.glob("????-??-??.json"))
+    if not reports:
+        return
+    day = reports[-1].stem
+    rows = board_story_rows(load_json(reports[-1]), load_config()[1])
+    synced = load_json(BOARD_STORIES_SYNC_FILE) or {}
+    fps = synced.get("fps", {}) if synced.get("day") == day else {}
+    todo = {k: v for k, v in rows.items() if fps.get(k) != _file_digest(v)}
+    if not todo:
+        return
+    try:
+        got = supabase("boards?select=id,key")   # 64 行・id と key だけ
+        if got is None:
+            return   # 没配置数据库
+        ids = {r["key"]: r["id"] for r in got}
+        at = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+        put = [{"board_id": ids[k], "day": day, **v, "updated_at": at} for k, v in sorted(todo.items()) if k in ids]
+        if put:
+            supabase("board_stories?on_conflict=board_id,day", put, "resolution=merge-duplicates,return=minimal")
+    except Exception as err:
+        print(f"  [数据库] 店長の版面の記事（board_stories）が書けなかった、下次再试：{err}", file=sys.stderr)
+        return
+    save_json(BOARD_STORIES_SYNC_FILE, {"day": day, "fps": {**fps, **{k: _file_digest(v) for k, v in todo.items() if k in ids}}})
+    print(f"数据库：店長の版面の記事 {len(put)} 版面（board_stories {day}）", file=sys.stderr)
+
 
 
 def load_feedback():
@@ -3730,12 +3780,27 @@ def edit_next(ctl=None):
         return "DESIGN", f"{todo[0]}（未設定：{'・'.join(ja for k, ja in DESIGN_KEYS if not next(i for i in load_config()[1] if i['name'] == todo[0]).get(k))}）"
     q = edit_queue(ctl=ctl)
     if not q:
-        return "DONE", ""
+        lib = lib_edit_todo()   # 店長の版面が済んだら、ライブラリの版面（お客さまの版面）も同じ規則で 1 つずつ（library.md「版面ごとに 1 回」）
+        return ("NEXT", f"lib:{lib[0][0]} {lib[0][1]}") if lib else ("DONE", "")
     name = q[0][0][0]
     if run:
         run["current"] = name
         LIVE_EDIT_FILE.write_text(json.dumps(run, ensure_ascii=False), encoding="utf-8")
     return "NEXT", name
+
+
+def lib_edit_todo():
+    """ライブラリの版面のうち AI 編集を待つもの（library.edit_todo）。service key がない・読めないときは []（店長の編集は止めない）。"""
+    import library
+    try:
+        return library.edit_todo(supabase, _lib_today(), [i["name"] for i in load_config()[1]])
+    except Exception as err:  # noqa: BLE001
+        print(f"  （ライブラリの版面の整理待ちが読めない：{err}）", file=sys.stderr)
+        return []
+
+
+def _lib_today():
+    return dt.datetime.now(display_tz(load_config()[0])).date().isoformat()
 
 
 def _edit_done_boards(inbox_path):
@@ -4080,10 +4145,11 @@ def _log_edit_batch(latest, edit, n):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "edit-queue", "edit-next", "edit-brief", "hd-images", "prune-reddit", "retry-images", "mark-items"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "edit-queue", "edit-next", "edit-brief", "hd-images", "prune-reddit", "retry-images", "mark-items", "lib-publish"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）；edit-brief 用：第几批")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
+    parser.add_argument("--file", help="lib-publish 用：AI 編集が書いた 1 版面分の JSON（EDITING.md の形のリスト）")
     args = parser.parse_args()
     if args.dry_run:
         ingest(dry_run=True)
@@ -4118,8 +4184,17 @@ def main():
         sync_db()
     elif args.step == "live-edit":
         live_edit()
+    elif args.step == "edit-brief" and str(args.only or "").startswith("lib:"):
+        import library
+        print(library.edit_brief(supabase, args.only[4:].split()[0], _lib_today(), [i["name"] for i in load_config()[1]]))
     elif args.step == "edit-brief":
         print(edit_brief(batch=int(args.only) if args.only and args.only.isdigit() else None))
+    elif args.step == "lib-publish":
+        import library
+        if supabase("boards?select=id&limit=1") is None:
+            sys.exit("SUPABASE_SERVICE_KEY がないので書けません")
+        library.edit_publish(supabase, str(args.only or "").removeprefix("lib:").split()[0], load_json(pathlib.Path(args.file)),
+                             _lib_today(), [i["name"] for i in load_config()[1]])
     elif args.step == "edit-next":
         what, why = edit_next()
         print(f"{what} {why}".strip())
