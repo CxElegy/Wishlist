@@ -36,3 +36,8 @@ jobs:
           echo "skip した試験: $(grep -c ' skipped ' /tmp/unittest.log)"
       - name: 网页能生成
         run: python scripts/digest.py render && test -s docs/home/index.html
+      # 2026-11-05：#919 で render の JS の文法の誤りが本番の全ページの JS を約 15 分止めた。生成した全ページの埋め込み JS を確かめ、2 ページを開いて例外 0 を見る
+      - name: 网页的 JS（文法・开页面无例外）
+        run: |
+          python harness/js_check.py docs/home docs/index.html
+          python harness/page_errors.py home/index.html index.html

@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# push の前に、CI で落ちる多いもの（架构图の check_arch・変えた scripts の試験・生成した網页の JS 文法）を手元で拦める。
+# 2026-11-05：係の PR の CI の赤 7 本のうち 5 本が check_arch、#919 は JS の文法で本番の全ページの JS を約 15 分止めた。
+# 有効にする：git config core.hooksPath .githooks（worktree も同じ設定を使う）。急ぎで飛ばす：git push --no-verify（使ったら PR に書く）
+set -u
+cd "$(git rev-parse --show-toplevel)" || exit 0
+base=origin/main
+git fetch -q origin main 2>/dev/null || true
+fail=0
+
+echo "pre-push ① 架构图（check_arch）"
+if ! python3 scripts/check_arch.py "$base"; then
+  # 図を変えなくてよい PR は、PR 説明と同じ 1 行「架构图：不用改（理由）」を commit の文に書けば通す（手元からは PR 説明が見えないため）
+  if git log --format=%B "$base"..HEAD | grep -q "架构图：不用改"; then echo "（commit の文に「架构图：不用改」があるので通す。PR 説明にも同じ行を書く）"; else fail=1; fi
+fi
+
+changed=$(git diff --name-only "$base"...HEAD 2>/dev/null)
+
+tests=""
+for f in $(echo "$changed" | grep -E '^(scripts|harness)/[^/]+\.py$'); do
+  n=$(basename "$f" .py)
+  for t in tests/test_"$n".py tests/test_"$n"_*.py; do [ -f "$t" ] && tests="$tests $t"; done
+done
+for t in $(echo "$changed" | grep -E '^tests/test_[^/]+\.py$'); do [ -f "$t" ] && tests="$tests $t"; done
+if [ -n "$tests" ]; then
+  mods=$(echo $tests | tr ' ' '\n' | sort -u | sed 's#/#.#; s#\.py$##' | tr '\n' ' ')
+  echo "pre-push ② 変えた所の試験：$mods"
+  timeout 600 python3 -m unittest $mods 2>&1 | tail -n 5 || fail=1
+  [ "${PIPESTATUS[0]}" = 0 ] || fail=1
+fi
+
+if echo "$changed" | grep -qE '^(scripts/render\.py|scripts/welcome\.py|scripts/user_pages\.py)'; then
+  # 網页を作り直すと作業ツリーが汚れるので、作り直さずに render の JS の文字列だけを確かめる（生成後の全ページは CI が見る）
+  echo "pre-push ③ render の JS の文法（node --check）"
+  python3 harness/js_check.py --render || fail=1
+fi
+if echo "$changed" | grep -qE '^docs/.*\.html$'; then
+  echo "pre-push ③ 網页の JS の文法（node --check）"
+  python3 harness/js_check.py $(echo "$changed" | grep -E '^docs/.*\.html$') || fail=1
+fi
+
+if [ "$fail" != 0 ]; then
+  echo "✗ pre-push：上の赤を直してから push（急ぎは --no-verify、そのときは PR に理由を書く）"
+  exit 1
+fi
+echo "✓ pre-push 緑"
