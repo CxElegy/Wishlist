@@ -1138,8 +1138,9 @@ def file_base(url):
     return re.sub(r"^file:", "", seg.replace(" ", "_").lower())
 
 
-OFFICIAL_PATH = re.compile(r"char|member|cast|figure|visual|profile", re.I)
-OFFICIAL_SKIP = re.compile(r"thumb|icon|logo|-sp\b|_sp\b|/sp/|banner|btn|button|sns", re.I)
+OFFICIAL_PATH = re.compile(r"char|member|cast|figure|visual|profile|artwork", re.I)
+OFFICIAL_IMG = re.compile(r'(?:src|data-src|srcset)=["\'][^"\'\s]*(?:char|member|cast|figure|visual|profile|artwork)[^"\'\s]*\.(?:png|webp|jpe?g)', re.I)   # 画像の属性に人物の絵の語がある（charset に当たらない）
+OFFICIAL_SKIP = re.compile(r"thumb|avatar|icon|logo|-sp\b|_sp\b|/sp/|banner|btn|button|sns", re.I)
 
 
 _OFFICIAL_HTML = {}   # 公式サイトのトップ：名簿の人ごとに取り直さない（1 回の実行の間だけ）
@@ -1165,7 +1166,11 @@ def official_pages(site, extra=2):
         html = _OFFICIAL_HTML[site] if site in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(site, _get(site, 1_500_000).decode("utf-8", "replace"))
     except Exception:
         return out
-    if not OFFICIAL_PATH.search(html):   # JS で描く公式（Astrae Oratio）：本物のブラウザで開いた HTML に替える（SCRAPLING_BROWSER=1 のときだけ・1 回の実行で版面ごとに 1 度）
+    if not OFFICIAL_IMG.search(html):   # 画像の網址が JS の中にだけある公式（A2O LITE：lite-artwork-young.webp）：同じ網域の script を読んで src 形に直す
+        js = official_bundle_images(html, site)
+        if js:
+            html += js
+    if not OFFICIAL_IMG.search(html):   # JS で描く公式（Astrae Oratio）：本物のブラウザで開いた HTML に替える（SCRAPLING_BROWSER=1 のときだけ・1 回の実行で版面ごとに 1 度）
         html = _rendered_html(site) or html
     out.append((html, site))
     host = urllib.parse.urlparse(site).netloc
@@ -1180,6 +1185,21 @@ def official_pages(site, extra=2):
         except Exception:
             continue
     return out
+
+
+def official_bundle_images(html, site, limit=2):
+    """トップの HTML が空の殻（SPA）のとき、同じ網域の script（最大 limit 本・1.5MB まで）の中の絵の網址 → 「src="網址"」の並び（official_index がそのまま読める）。"""
+    out = []
+    for m in re.finditer(r'<script[^>]+src=["\']([^"\']+\.js)["\']', html, re.I):
+        if len(out) >= limit:
+            break
+        u = urllib.parse.urljoin(site, m.group(1))
+        try:
+            js = _OFFICIAL_HTML[u] if u in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(u, _get(u, 1_500_000).decode("utf-8", "replace"))
+        except Exception:
+            continue
+        out += [f'src="{x}"' for x in dict.fromkeys(re.findall(r'https?://[\w.\-]+/[\w./\-]+\.(?:png|webp|jpe?g)', js))]
+    return "\n".join(out)
 
 
 def _rendered_html(url):

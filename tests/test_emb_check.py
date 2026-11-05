@@ -240,6 +240,21 @@ class CloseupOfficial(unittest.TestCase):
         emblem._OFFICIAL_HTML.clear()
         emblem._OFFICIAL_INDEX.clear()
 
+    def test_official_spa_bundle_images(self):
+        """画像の網址が JS の中にだけある公式（A2O LITE：HTML は <meta charset> と空の root だけ）：同じ網域の script を読み、artwork の絵を人物の絵にする。
+        charset の「char」を人物の絵と取り違えない（取り違えるとブラウザの取り直しにも bundle にも行かず、何も取れなかった）。avatar は小さいので取らない。"""
+        import emblem
+        emblem._OFFICIAL_HTML.clear()
+        emblem._OFFICIAL_INDEX.clear()
+        top = '<meta charset="UTF-8"><script type="module" src="/assets/i.js"></script><div id="root"></div>'
+        js = 'a="https://cdn.example/lite-artwork-young.webp",b="https://cdn.example/lite-avatar-young.webp",c="https://cdn.example/lite-map-1.webp"'
+        pages = {"https://spa.example/": top, "https://spa.example/assets/i.js": js}
+        with mock.patch.object(emblem, "_get", side_effect=lambda u, n=0: pages[u].encode()):
+            self.assertEqual(emblem.official_images("https://spa.example/", ["YOUNG"]), ["https://cdn.example/lite-artwork-young.webp"])
+        self.assertFalse(emblem.OFFICIAL_IMG.search(top))
+        emblem._OFFICIAL_HTML.clear()
+        emblem._OFFICIAL_INDEX.clear()
+
     def test_a2o_lite_has_official_site(self):
         import yaml
         from emblem import ROOT, official_site
