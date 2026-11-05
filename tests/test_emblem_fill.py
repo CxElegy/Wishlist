@@ -2398,7 +2398,7 @@ class FindSources(unittest.TestCase):
             cands = ef.gather(item, log=lambda *a: None, tried=tried)
         self.assertEqual([c["image"] for c in cands if c["source"] == "公式サイト"], ["https://s.example/top/character/ichigo/body.webp"])
         self.assertEqual([c[0][1] for c in cut.call_args_list], ["Rukia Kuchiki"])   # Ichigo は Fandom に行かない
-        self.assertEqual(g.call_count, 1)
+        self.assertEqual([c[0][0] for c in g.call_args_list].count("https://s.example/"), 1)   # トップは 1 回（居ない人の sitemap は別の網址で 1 回だけ）
 
     def test_gather_wide_official_first(self):
         """名前を広げる（gather_wide）も公式が先：公式で取れた人は Fandom の別名を引かない。"""
