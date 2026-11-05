@@ -74,9 +74,9 @@
 <script>
 (function(){
   var C={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"};
-  var SET=/[?&]p=settings/.test(location.search), PG=SET?'settings.html':'index.html';   // どのページか（AUTH_JS の ownPage）
+  var SUB=(/[?&]p=(settings|heat)\b/.exec(location.search)||[])[1]||'', PG=SUB?SUB+'.html':'index.html';   // どのページか（AUTH_JS の ownPage）
   function back(q){try{var h=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});h.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(h));}catch(_){}
-    location.replace('./'+(SET?'settings.html':'')+(q||'')+location.hash);}
+    location.replace('./'+(SUB?PG:'')+(q||'')+location.hash);}
   // 上限 12 秒：つながらないまま「読み込み中」を出し続けない（F6 2026-11-05：10 回に 1 回 40 秒以上）→ 前の画面へ
   var done=0,T=setTimeout(function(){if(!done){done=1;back('?own=0');}},12000);
   var s=document.createElement('script');s.src=C.lib;s.onerror=function(){back('?own=0');};
@@ -100,7 +100,7 @@
         if(done)return;
         if(h.indexOf('name="wl-own"')<0){back('?own=0');return;}
         done=1;clearTimeout(T);document.open();document.write(h);document.close();
-        try{history.replaceState(null,'','./'+(SET?'settings.html':'')+location.hash);}catch(_){}
+        try{history.replaceState(null,'','./'+(SUB?PG:'')+location.hash);}catch(_){}
       });
     }).catch(function(){back('?own=0');});
   };
