@@ -264,11 +264,16 @@ LH_PAGES = 4    # 1 人の参照は 500 × 4 = 2000 まで数える（それよ�
 
 
 GROUP_CAT = re.compile(r"^Category:(?:\w+ )?(?:bands|groups|gangs|organi[sz]ations|factions|companies)$", re.I)
+# 種族・敵の型・物（Inklings・Zapfish〔Species〕、Steel Eel・Octotrooper〔Types of Salmonids／Octarian Troops〕、ゼルダの Fairy〔Items・Races〕、
+# あつ森の Xsq〔Cut characters＝出ていない〕）。名前の形（NOT_CHAR）では拾えないので分類で。Enemies・Bosses・Weapons は名前のある人
+# （ゼルダの Ganon・スプラ 3 の Frye・Mr. Grizz・Big Man・Sheldon）も入るので使わない
+THING_CAT = re.compile(r"^Category:(?:[\w.'’:-]+ ){0,3}(?:species|races|items|collectibles|objects|power sources|cut characters)$"
+                       r"|^Category:Types of ", re.I)
 
 
 def groups(api, titles):
-    """ページの分類が「集まり」だけの名前（Category:Music bands・Gangs・Organizations）→ 人ではないページの集合。
-    名前の形では分からない（Gutless Wonders）ので、そのページの分類で決める。「Gang members」のような人の分類は当たらない。"""
+    """ページの分類が「集まり」（Category:Music bands・Gangs・Organizations）か種族・敵の型・物（THING_CAT）の名前 → 人ではないページの集合。
+    名前の形では分からない（Gutless Wonders・Steel Eel）ので、そのページの分類で決める。「Gang members」のような人の分類は当たらない。"""
     out = set()
     for i in range(0, len(titles), 50):
         cont = {}
@@ -277,7 +282,7 @@ def groups(api, titles):
                                         "cllimit": "max", "format": "json", **cont})
             d = json.loads(_get(f"{api}?{q}", 2_000_000))
             for pg in (d.get("query") or {}).get("pages", {}).values():
-                if any(GROUP_CAT.search(c.get("title", "")) for c in pg.get("categories") or []):
+                if any(GROUP_CAT.search(c.get("title", "")) or THING_CAT.search(c.get("title", "")) for c in pg.get("categories") or []):
                     out.add(pg.get("title"))
             cont = d.get("continue") or {}
             if "clcontinue" not in cont:

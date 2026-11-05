@@ -99,6 +99,13 @@ class EmbCheck(unittest.TestCase):
         self.assertTrue(bad("Wyverians") and bad("Wonderland Manekin") and not bad("Soldier 11"))
         self.assertEqual(emb_check.not_people(), {})
 
+    def test_boards_not_people(self):
+        """E17 のお客さまの版面の分：キャラの版面の名簿の先頭・小元素の主題に人でない名前（ライブラリのモンハン Wyverians）。キャラでない版面は見ない。"""
+        rows = [{"name": "MH", "config": {"emblem_fandom": "monsterhunter", "emblem_who": ["Wyverians", "Hunter", "Poogie"], "emblem": [{"subject": "Poogie"}]}},
+                {"name": "OK", "config": {"emblem_category": "Characters", "emblem_who": ["Marie"], "emblem": [{"subject": "Inklings"}]}},
+                {"name": "物", "config": {"emblem_who": ["Hunter"]}}]
+        self.assertEqual(emb_check.boards_not_people(rows), {"MH": ["Wyverians", "Hunter"], "OK": ["Inklings"]})
+
 
 class CloseupWait(unittest.TestCase):
     def test_wait_bad_counts_missing_and_stale(self):
