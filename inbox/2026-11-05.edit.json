@@ -17,7 +17,8 @@
   "MMORPG 新作": 5,
   "Vaundy": 3,
   "Astrae Oratio": 2,
-  "滑雪": 1
+  "滑雪": 1,
+  "gelato pique": 3
  },
  "漫威电影": [
   {
@@ -609,5 +610,31 @@
    ]
   }
  ],
- "滑雪": []
+ "滑雪": [],
+ "gelato pique": [
+  {
+   "headline": "あなたの推しはどの子？ 【ジェラート ピケ】『ピーナッツコラボ』が11/6発売。スヌーピーたちのルームウェア&雑貨、抱き枕が登場",
+   "highlight": "11/6発売",
+   "blurb": "スヌーピーたちのルームウェア・雑貨・抱き枕が11/6に発売。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-06",
+    "label": "発売日"
+   },
+   "image": "https://p.potaufeu.asahi.com/abab-p/picture/31516454/9b14ed427526fb7aee3edd48a90a92fe.jpg"
+  },
+  {
+   "headline": "【ジェラートピケ】最大級のクリスマスマーケットが表参道で開催！限定カプセルトイも登場",
+   "highlight": "クリスマスマーケット",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    3
+   ]
+  }
+ ]
 }

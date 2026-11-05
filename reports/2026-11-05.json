@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "c6121a56eb88",
+ "edit_sig": "6a685a7ef19e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -541,33 +541,31 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 1,
-     "source": "LASISA",
-     "title": "【ジェラートピケ】最大級のクリスマスマーケットが表参道で開催！限定カプセルトイも登場「めちゃ可愛い～ッッ」SNS熱狂",
-     "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE0zU05hZjBQLVZtRF9mbzREa0JSVXJoYmE5MWxTeElVMTk3LVFTRDBwN1pjTHdyMFIzU2FsMlk2NnpSQmI1?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 3,
-     "source": "LASISA on MSN",
-     "title": "【ジェラピケ】「めちゃ可愛い～ッッ」ピケベアのめじるしや限定くじも！入場無料・最大級のクリスマスマーケットが開催！",
-     "url": "https://www.msn.com/ja-jp/news/other/%E3%82%B8%E3%82%A7%E3%83%A9%E3%83%94%E3%82%B1-%E3%82%81%E3%81%A1%E3%82%83%E5%8F%AF%E6%84%9B%E3%81%84-%E3%83%83%E3%83%83-%E3%83%94%E3%82%B1%E3%83%99%E3%82%A2%E3%81%AE%E3%82%81%E3%81%98%E3%82%8B%E3%81%97%E3%82%84%E9%99%90%E5%AE%9A%E3%81%8F%E3%81%98%E3%82%82-%E5%85%A5%E5%A0%B4%E7%84%A1%E6%96%99-%E6%9C%80%E5%A4%A7%E7%B4%9A%E3%81%AE%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%81%8C%E9%96%8B%E5%82%AC/ar-AA2gM2iG"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
+     "blurb": "スヌーピーたちのルームウェア・雑貨・抱き枕が11/6に発売。",
+     "date": "2026-11-04",
+     "event": {
+      "date": "2026-11-06",
+      "label": "発売日"
+     },
+     "headline": "あなたの推しはどの子？ 【ジェラート ピケ】『ピーナッツコラボ』が11/6発売。スヌーピーたちのルームウェア&雑貨、抱き枕が登場",
+     "highlight": "11/6発売",
+     "image": "https://p.potaufeu.asahi.com/abab-p/picture/31516454/9b14ed427526fb7aee3edd48a90a92fe.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.asahi.com/and/w/article/17016123",
+     "weight": "lead"
+    },
+    {
      "blurb": "",
      "date": "2026-11-04",
-     "headline": "あなたの推しはどの子？ 【ジェラート ピケ】『ピーナッツコラボ』が11/6発売。スヌーピーたちのルームウェア&雑貨、抱き枕が登場",
-     "highlight": "",
-     "image": "https://p.potaufeu.asahi.com/5d17-p/picture/31516425/7adb637da8646407daf53d675f58cf11.jpg",
+     "headline": "【ジェラートピケ】最大級のクリスマスマーケットが表参道で開催！限定カプセルトイも登場",
+     "highlight": "クリスマスマーケット",
+     "image": "https://lasisa.net/wp-content/uploads/2027/11/20261104_gelatopique_01.jpg",
      "image_via": "og:image",
-     "url": "https://www.asahi.com/and/w/article/17016123",
-     "weight": "hero"
+     "url": "https://lasisa.net/post/167813",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",

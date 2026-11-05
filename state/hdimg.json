@@ -2202,6 +2202,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://lasisa.net/wp-content/uploads/2027/11/20261104_gelatopique_01.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://massivelyop.com/wp-content/uploads/2023/08/monsters-and-memories-spooky-scary-skeletons.jpg": {
   "w": 880,
   "h": 290,
@@ -3009,11 +3015,12 @@
   "target": 1280,
   "v": 3
  },
- "https://p.potaufeu.asahi.com/5d17-p/picture/31516425/7adb637da8646407daf53d675f58cf11.jpg": {
-  "w": 1200,
-  "h": 800,
+ "https://p.potaufeu.asahi.com/abab-p/picture/31516454/9b14ed427526fb7aee3edd48a90a92fe.jpg": {
+  "w": 770,
+  "h": 513,
   "target": 1280,
-  "v": 3
+  "v": 3,
+  "blur": 0.301
  },
  "https://p.potaufeu.asahi.com/dcd1-p/picture/31517714/72243b8d2254b36daa8010677f8b393f.jpg": {
   "w": 1200,
