@@ -1,904 +1,922 @@
 {
- "_covered": {
-  "漫威电影": 115,
-  "三星手机": 54,
-  "GTA 6": 92,
-  "チェーンソーマン": 19,
-  "A2O LITE": 15,
-  "dota2": 12,
-  "周杰伦": 17,
-  "あつ森": 6,
-  "哈利波特剧集": 9,
-  "猫用品": 11,
-  "The Mandalorian": 7,
-  "绝区零": 3,
-  "ILLIT": 9,
-  "日本顶级网球赛事": 2,
-  "MMORPG 新作": 17,
-  "Vaundy": 4,
-  "Astrae Oratio": 3,
-  "滑雪": 2,
-  "gelato pique": 7,
-  "FROM": 2,
-  "BLEACH Mirrors High": 1,
-  "星巴克马克杯": 3
- },
- "漫威电影": [
-  {
-   "headline": "‘Avengers: Doomsday’ Presales Smash a Major Ticket Milestone",
-   "highlight": "Presales Smash",
-   "blurb": "Presales for Avengers: Doomsday have passed a major ticket milestone.",
-   "weight": "lead",
-   "refs": [
-    13
-   ]
+  "_covered": {
+    "漫威电影": 115,
+    "三星手机": 54,
+    "GTA 6": 92,
+    "チェーンソーマン": 19,
+    "A2O LITE": 15,
+    "dota2": 12,
+    "周杰伦": 19,
+    "あつ森": 6,
+    "哈利波特剧集": 9,
+    "猫用品": 11,
+    "The Mandalorian": 7,
+    "绝区零": 4,
+    "ILLIT": 10,
+    "日本顶级网球赛事": 2,
+    "MMORPG 新作": 17,
+    "Vaundy": 4,
+    "Astrae Oratio": 3,
+    "滑雪": 3,
+    "gelato pique": 8,
+    "FROM": 2,
+    "BLEACH Mirrors High": 1,
+    "星巴克马克杯": 3
   },
-  {
-   "headline": "WWE and Disney tag-team for two-day takeover for John Cena Classic and ‘Avengers: Doomsday’",
-   "highlight": "two-day takeover",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1,
-    22,
-    25,
-    29,
-    31
-   ]
-  },
-  {
-   "headline": "Channing Tatum as Gambit Joins Herbie for an Avengers Dunkin' Run",
-   "highlight": "Gambit",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    48,
-    2,
-    10,
-    18,
-    49,
-    50,
-    70,
-    57,
-    59,
-    63,
-    66,
-    67,
-    74,
-    73,
-    83,
-    84,
-    92,
-    85,
-    89,
-    91,
-    95,
-    96,
-    100
-   ]
-  },
-  {
-   "headline": "Jeremy Allen White As Wolverine? Marvel Reportedly Met Actor For X-Men Reboot",
-   "highlight": "Wolverine",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    43,
-    6,
-    19,
-    15,
-    8,
-    52,
-    69,
-    71,
-    76,
-    77,
-    81,
-    102,
-    110
-   ]
-  },
-  {
-   "headline": "KFC Reveals Official Avengers: Doomsday Menu 'Worthy' of Dr. Doom",
-   "highlight": "Official Avengers: Doomsday Menu",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    53,
-    46,
-    30,
-    4,
-    20,
-    90,
-    105,
-    107,
-    113
-   ]
-  }
- ],
- "三星手机": [
-  {
-   "headline": "Galaxy S27 Chipsets: Samsung Using Exynos and Snapdragon",
-   "highlight": "Exynos and Snapdragon",
-   "blurb": "Leaked European chipset info for the four Galaxy S27 models: the S27 Pro reportedly gets a step-down Snapdragon 8 Elite Gen 6 versus the Ultra.",
-   "weight": "lead",
-   "refs": [
-    2,
-    8,
-    7,
-    5,
-    6,
-    28,
-    36,
-    41,
-    43,
-    48
-   ],
-   "image": "https://phandroid.com/wp-content/uploads/2026/09/Qualcomm-Snapdragon-8-Elite-Gen-6-5.jpg"
-  },
-  {
-   "headline": "Samsung Galaxy S27 Ultra leak points to a major Privacy Display upgrade",
-   "highlight": "Privacy Display upgrade",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3,
-    9,
-    13,
-    15,
-    17,
-    18,
-    19,
-    14,
-    35,
-    53,
-    50
-   ]
-  },
-  {
-   "headline": "Which Samsung Galaxy S27 models will support 60W charging?",
-   "highlight": "60W charging",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4
-   ]
-  },
-  {
-   "headline": "Galaxy S27 Ultra：デザインが残念。サムスンは3つの主要な改良点が必要だ。",
-   "highlight": "3つの主要な改良点",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    40,
-    1,
-    10,
-    11,
-    16,
-    12,
-    27,
-    37,
-    38,
-    44,
-    46,
-    47
-   ]
-  },
-  {
-   "headline": "Samsung Galaxy S27 Rumored to Launch Earlier, Here Are the Latest Leaked Specifications, Camera, and Pricing",
-   "highlight": "Launch Earlier",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    22,
-    34
-   ]
-  },
-  {
-   "headline": "갤럭시 S27 울트라, 크기는 S26과 거의 같은데 후면 카메라는 가로 바로 바뀐다",
-   "highlight": "가로 바",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    25,
-    29,
-    42
-   ]
-  },
-  {
-   "headline": "Galaxy S27 Ultra、カメラモジュールを上部へ移動―Qi2磁石内蔵の道開けるか",
-   "highlight": "Qi2磁石内蔵",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    33,
-    32
-   ]
-  },
-  {
-   "headline": "갤럭시S27 프로, 울트라보다 AI 성능 낮나…최상위 스냅드래곤 칩 제외 전망",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    52,
-    51,
-    49
-   ]
-  }
- ],
- "GTA 6": [
-  {
-   "headline": "GTA 6 preloads start on 10th November, and will need up to 212GB on your console",
-   "highlight": "10th November",
-   "blurb": "Preloads for GTA 6 begin on November 10 and need up to 212GB of console storage.",
-   "weight": "hero",
-   "refs": [
-    5,
-    15,
-    9,
-    10,
-    33,
-    32,
-    40,
-    39,
-    43,
-    50,
-    52,
-    62,
-    66,
-    74,
-    91
-   ],
-   "event": {
-    "date": "2026-11-10",
-    "label": "プリロード開始"
-   },
-   "image": "https://www.thesixthaxis.com/wp-content/uploads/2026/06/GTA6-UltimateEdition-hero500-576x356.jpg"
-  },
-  {
-   "headline": "GTA 6 PS5 Pro enhancements confirmed",
-   "highlight": "PS5 Pro enhancements",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1,
-    11,
-    28,
-    29,
-    55,
-    82
-   ]
-  },
-  {
-   "headline": "GTA VI tops Japan's developer poll as the industry counts down to its November 19, 2026 launch",
-   "highlight": "November 19, 2026",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2,
-    46,
-    77
-   ]
-  },
-  {
-   "headline": "GTA 6 Sells Nearly 8 Million Copies Before It Even Launches, Report Says",
-   "highlight": "Nearly 8 Million Copies",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    23,
-    25,
-    37,
-    44,
-    48,
-    61,
-    65,
-    68,
-    79,
-    78,
-    85,
-    86,
-    88
-   ]
-  },
-  {
-   "headline": "GTA 6全新「Focus」功能曝光靈感源自《荒野大鏢客2》鷹眼",
-   "highlight": "Focus",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    24
-   ]
-  }
- ],
- "チェーンソーマン": [
-  {
-   "headline": "メガハウス「お茶友シリーズ 劇場版『チェンソーマン レゼ篇』 BREAK TIME CAFÉ」レゼやデンジ、マキマなど全6種が登場！",
-   "highlight": "全6種が登場",
-   "blurb": "MEGAHOUSE「お茶友シリーズ」から、レゼやデンジ、マキマなど全6種が登場。",
-   "weight": "lead",
-   "refs": [
-    2,
-    1,
-    3
-   ],
-   "image": "https://img.toy-people.com/member/179380690349_1200.png"
-  },
-  {
-   "headline": "チェンソーマンのガチャガチャ最新一覧｜新作の発売日と設置場所まとめ",
-   "highlight": "新作の発売日",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
-  },
-  {
-   "headline": "Marimo Craft to Exhibit at Animate Girls Festival 2026 in Ikebukuro on November 7 and 8",
-   "highlight": "November 7 and 8",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    8,
-    10
-   ],
-   "event": {
-    "date": "2026-11-07",
-    "label": "出展"
-   }
-  },
-  {
-   "headline": "TVアニメ「チェンソーマン」のアウトドアグッズが登場！AOZORAGEAR online SHOP、アニメイトにて販売",
-   "highlight": "アウトドアグッズが登場",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    9
-   ]
-  },
-  {
-   "headline": "쿠팡플레이, 크런치롤 애니 콘텐츠 확대… '체인소 맨'·'귀멸의 칼날' 합류",
-   "highlight": "크런치롤 패스",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    12,
-    15,
-    11,
-    13,
-    14,
-    16,
-    17,
-    18
-   ]
-  }
- ],
- "A2O LITE": [
-  {
-   "headline": "イ・スマンが仕掛ける新しいK-POP。「A2O LITE」に注目",
-   "highlight": "新しいK-POP",
-   "blurb": "K-POPに新しい流れが来ている。その中心にいるのが、元SMエンターテインメント総括プロデューサーのイ・スマンが手掛ける新グループ「A2O LITE」だ。",
-   "weight": "lead",
-   "refs": [
-    2,
-    13
-   ],
-   "image": "https://assets.st-note.com/production/uploads/images/332182864/rectangle_large_type_2_5f8fb70cfffdbba850e654643176d6e5.png?width=1200"
-  },
-  {
-   "headline": "제이블랙, A2O LITE 시리·아이찡 실력에 감탄 \"딸 같은 존재\"",
-   "highlight": "실력에 감탄",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1
-   ]
-  },
-  {
-   "headline": "A2O LITE成員介紹｜9位成員本名、生日、國籍一次看！短髮VORA、忙內AIJING、混血OA全整理",
-   "highlight": "9位成員",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3
-   ]
-  },
-  {
-   "headline": "“뉴진스 이후 걸그룹 정체성 위기”···NYT 평론가 “A2O LITE가 대안”",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    12,
-    11
-   ]
-  },
-  {
-   "headline": "A2O LITE, 아이돌차트 아차랭킹 1위…리센느·아일릿 제쳤다",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    10,
-    8,
-    14
-   ]
-  }
- ],
- "dota2": [
-  {
-   "headline": "S30 门票悬而未决，二级联赛S5 名单里藏着多少遗憾",
-   "highlight": "S30 门票悬而未决",
-   "blurb": "二级联赛S5名单公布，S30门票归属仍悬而未决。",
-   "weight": "lead",
-   "refs": [
-    5
-   ],
-   "image": "https://static.gosugamers.net/13/c4/1c/22a362607bdb74810c45357060c481f34eefca3db57c4329bc29a94bf5.webp"
-  },
-  {
-   "headline": "Zenith vs Cloud Dawning Live Score on 2026-11-04 of Dota 2 EPL World Series: Southeast Asia Season 19",
-   "highlight": "Zenith vs Cloud Dawning",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2
-   ]
-  },
-  {
-   "headline": "Yatoro Tops the Dota 2 Player Rankings",
-   "highlight": "Yatoro Tops",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
-  },
-  {
-   "headline": "FISSURE CEO Admits It Still Owes CS2 and Dota 2 Prize Money, Eyes Q1 2027 for Next Big Payout",
-   "highlight": "Still Owes",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    7,
-    10,
-    12
-   ]
-  },
-  {
-   "headline": "GamerLegion and Yellow Submarine battle for the final spot at Dota 2 EPL Masters III grand final",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    9
-   ]
-  },
-  {
-   "headline": "Valve has released a new patch for Dota 2 that fixes a critical bug",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    11
-   ]
-  }
- ],
- "周杰伦": [
-  {
-   "headline": "周杰伦新歌登顶2026 榜单，IG 看画感慨86 岁画家",
-   "highlight": "新歌登顶2026 榜单",
-   "blurb": "周杰伦新歌《那天下雨了》登顶2026榜单。",
-   "weight": "lead",
-   "refs": [
-    2
-   ]
-  },
-  {
-   "headline": "周杰伦打网球大师赛球拍断线照夺亚军",
-   "highlight": "夺亚军",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1,
-    7,
-    9
-   ]
-  },
-  {
-   "headline": "周杰伦演唱会3小时演出被指划水近2小时",
-   "highlight": "被指划水",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
-  }
- ],
- "あつ森": [
-  {
-   "headline": "任天堂为庆祝40周年，在 Animal Crossing: New Horizons 中推出免费 Zelda 主题设计",
-   "highlight": "免费 Zelda 主题设计",
-   "blurb": "为庆祝《塞尔达传说》40周年，任天堂在《集合啦！动物森友会》中推出免费的 Zelda 主题设计。",
-   "weight": "lead",
-   "refs": [
-    1,
-    2,
-    3,
-    4
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.VD1nTYo6O_Xi2iyp-s_k6A&pid=News&w=1200"
-  }
- ],
- "哈利波特剧集": [
-  {
-   "headline": "ドラマ版ハリー・ポッターと賢者の石が12月25日からHuluで見放題配信",
-   "highlight": "12月25日からHuluで見放題配信",
-   "blurb": "ドラマ版『ハリー・ポッターと賢者の石』が12月25日からHuluで見放題配信される。",
-   "weight": "hero",
-   "refs": [
-    6
-   ],
-   "event": {
-    "date": "2026-12-25",
-    "label": "配信開始"
-   },
-   "image": "https://image.news.livedoor.com/newsimage/stf/b/4/b4d74_760_2489936_20261030_151303_size640wh_10534070.jpg"
-  },
-  {
-   "headline": "Harry Potter HBO series lands on OSN+ this December with surprises",
-   "highlight": "this December",
-   "blurb": "Harry Potter HBO series lands on OSN+ this December.",
-   "weight": "lead",
-   "refs": [
-    4
-   ],
-   "image": "https://www.absolutegeeks.com/wp-content/uploads/2026/11/images-2.jpeg"
-  },
-  {
-   "headline": "Harry Potter HBO TV Show Tie-In Event Draws Trans Rights Protest, Spokesperson Responds",
-   "highlight": "Trans Rights Protest",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1
-   ]
-  },
-  {
-   "headline": "Warwick Davis says first day on Harry Potter series was terrifying",
-   "highlight": "first day",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2,
-    7
-   ]
-  },
-  {
-   "headline": "Screen-Accurate Fantasy Collectibles: Noble Collection Unveils HBO Harry Potter Wands…",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5
-   ]
-  }
- ],
- "猫用品": [
-  {
-   "headline": "猫の鼻水、「寒いから」で済ませないで！疑いたい5つの病気",
-   "highlight": "疑いたい5つの病気",
-   "blurb": "猫のくしゃみや鼻水、鼻づまりは、病気のサインであることも。",
-   "weight": "lead",
-   "refs": [
-    2
-   ],
-   "image": "https://img.benesse-cms.jp/pet-cat/item/image/normal/06d992e9-745f-48d9-b74a-2b1648300da5.jpg?w=698&h=483&resize_type=cover&resize_mode=force"
-  },
-  {
-   "headline": "SOU・SOU聯名47款貓咪周邊開賣！誠品限定花色曝光，三花貓透明傘、暹羅貓地墊超欠收",
-   "highlight": "47款貓咪周邊開賣",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4
-   ]
-  },
-  {
-   "headline": "フルーツタルトの具になって寝るだけでかわいい猫用クッションが新登場！",
-   "highlight": "猫用クッション",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5
-   ]
-  },
-  {
-   "headline": "カフェ・ベローチェ、2027年福袋はかわいい黒ねこグッズ入り 40周年記念として発売",
-   "highlight": "黒ねこグッズ入り",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    8,
-    9,
-    11
-   ]
-  },
-  {
-   "headline": "コッカ、2026年11月上旬発売予定の新作を含む「猫柄生地」8種類を紹介",
-   "highlight": "猫柄生地",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    7
-   ]
-  }
- ],
- "The Mandalorian": [
-  {
-   "headline": "Everything We Learned from ‘The Art of Star Wars: The Mandalorian and Grogu’",
-   "highlight": "Everything We Learned",
-   "blurb": "A roundup of what the art book The Art of Star Wars: The Mandalorian and Grogu reveals.",
-   "weight": "lead",
-   "refs": [
-    1,
-    5
-   ],
-   "image": "https://theholofiles.com/wp-content/uploads/2026/05/THND-FF-000470-3-scaled.jpg"
-  },
-  {
-   "headline": "In the end, Grogu was just so cute: A belated review of 'The Mandalorian & Grogu'",
-   "highlight": "belated review",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3
-   ]
-  }
- ],
- "绝区零": [],
- "ILLIT": [
-  {
-   "headline": "ILLIT shares behind-the-scenes footage of 'You’re Under Arrest' recording in Japan",
-   "highlight": "behind-the-scenes footage",
-   "blurb": "ILLIT shares behind-the-scenes footage of the recording of 'You’re Under Arrest' in Japan.",
-   "weight": "lead",
-   "refs": [
-    2
-   ],
-   "image": "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp"
-  },
-  {
-   "headline": "【ビルボード】Kis-My-Ft2『Kis SCENE』が総合アルバム首位 VOLTACTION／ILLITが初登場",
-   "highlight": "ILLITが初登場",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4,
-    9
-   ]
-  },
-  {
-   "headline": "[김도헌의 음감] '체포하겠어' 아일릿, 과몰입의 손익분기점",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6,
-    5
-   ]
-  },
-  {
-   "headline": "아일릿, ‘jellyous’ 뮤직비디오 팀 통산 3번째 1억 뷰 돌파",
-   "highlight": "1억 뷰 돌파",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    8
-   ]
-  }
- ],
- "日本顶级网球赛事": [
-  {
-   "headline": "Rybakina beats Putintseva at Toray Pan Pacific Open Tennis, secures Year-End No.1 spot",
-   "highlight": "Year-End No.1",
-   "blurb": "Elena Rybakina secures Year-End No.1 spot with a victory over Yulia Putintseva in the Toray Pan Pacific Open.",
-   "weight": "lead",
-   "refs": [
-    1
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934"
-  },
-  {
-   "headline": "【テニス】東レPPO観戦記〜2回戦〜",
-   "highlight": "東レPPO観戦記",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2
-   ]
-  }
- ],
- "MMORPG 新作": [
-  {
-   "headline": "Qloud Games、ライフシムMMO『Loftia』の早期アクセス版をリリース",
-   "highlight": "早期アクセス版",
-   "blurb": "Steam Nextフェスで「最もプレイされたデモ」Top10入りしたライフシムMMOが早期アクセスを開始。",
-   "weight": "lead",
-   "refs": [
-    11,
-    1,
-    15
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200"
-  },
-  {
-   "headline": "「ファイナルファンタジーXIV: 白銀のワンダラー」11月4日より予約受付開始",
-   "highlight": "予約受付開始",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4,
-    5
-   ],
-   "event": {
-    "date": "2027-02-23",
-    "label": "発売日"
-   }
-  },
-  {
-   "headline": "「World of Warcraft: Forever」が正式ローンチ。2004年のオリジナル版を再構築し，新種族や1000以上のクエストを追加",
-   "highlight": "正式ローンチ",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    10
-   ]
-  }
- ],
- "Vaundy": [
-  {
-   "headline": "Vaundy首攻台北小巨蛋 兩度衝下台互動嗨翻全場",
-   "highlight": "台北小巨蛋",
-   "blurb": "10月31日至11月1日連續兩天舉辦ASIA ARENA TOUR 2026 “HORO”，共吸引2.6萬名歌迷。",
-   "weight": "lead",
-   "refs": [
-    1
-   ]
-  },
-  {
-   "headline": "M!LK Earns Second Japan Hot 100 No. 1 With ‘That’s! Chojo’ as Vaundy’s ‘Shiwaawase’ Reaches Top 3",
-   "highlight": "Top 3",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4,
-    2
-   ]
-  },
-  {
-   "headline": "【Vaundy】“音楽をやる意味”は「悲しいことベースで生きる人の“リズム”を崩したい」",
-   "highlight": "音楽をやる意味",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3
-   ]
-  }
- ],
- "Astrae Oratio": [
-  {
-   "headline": "Astrae Oratio Devs: \"We're Tuning Combat Pace, AP, and Parrying Based on CBT Feedback\"",
-   "highlight": "Tuning Combat Pace",
-   "blurb": "Developers say combat pace, AP and parrying are being tuned after the global CBT; next test and release dates remain unannounced.",
-   "weight": "lead",
-   "refs": [
-    2,
-    1,
-    3
-   ],
-   "image": "https://static.invenglobal.com/upload/image/2026/10/30/r1793322194781761.jpeg"
-  }
- ],
- "滑雪": [
-  {
-   "headline": "Crystal Ski adds eight new resorts for the 2026/27 winter season",
-   "highlight": "eight new resorts",
-   "blurb": "Crystal Ski adds eight new resorts for the 2026/27 winter season.",
-   "weight": "lead",
-   "refs": [
-    2
-   ],
-   "image": "https://www.ttgmedia.com/sites/default/files/2026-11/Le%20Grand%20Bornand%20France%20iStock-1412978248%20iStock%20Oliver%20de%20la%20Haye.jpg"
-  }
- ],
- "gelato pique": [
-  {
-   "headline": "あなたの推しはどの子？ 【ジェラート ピケ】『ピーナッツコラボ』が11/6発売。スヌーピーたちのルームウェア&雑貨、抱き枕が登場",
-   "highlight": "11/6発売",
-   "blurb": "スヌーピーたちのルームウェア・雑貨・抱き枕が11/6に発売。",
-   "weight": "lead",
-   "refs": [
-    2
-   ],
-   "event": {
-    "date": "2026-11-06",
-    "label": "発売日"
-   },
-   "image": "https://p.potaufeu.asahi.com/abab-p/picture/31516454/9b14ed427526fb7aee3edd48a90a92fe.jpg"
-  },
-  {
-   "headline": "【ジェラートピケ】最大級のクリスマスマーケットが表参道で開催！限定カプセルトイも登場",
-   "highlight": "クリスマスマーケット",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1,
-    3
-   ]
-  },
-  {
-   "headline": "PEANUTS meets GELATO PIQUE CAFE スヌーピー＆仲間たちをインスパイアしたアニバーサリーメニュー8種",
-   "highlight": "アニバーサリーメニュー8種",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4,
-    6
-   ]
-  },
-  {
-   "headline": "MASH PARK PROJECT '26 大人気のgelato pique福袋に加え、DAIWAとのコラボアイテムも特別に発売",
-   "highlight": "gelato pique福袋",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5
-   ]
-  }
- ],
- "FROM": [
-  {
-   "headline": "This Cult Sci-Fi Horror Series With Stephen King Vibes Has Become A Major Netflix Hit",
-   "highlight": "Major Netflix Hit",
-   "blurb": "Previously lost between Epix and MGM+, From has become a hit on Netflix.",
-   "weight": "lead",
-   "refs": [
-    2
-   ],
-   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gLq97.img"
-  },
-  {
-   "headline": "From Season 2 Finale Recap & Ending Explained: What Happened To Tabitha",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1
-   ]
-  }
- ],
- "BLEACH Mirrors High": [],
- "星巴克马克杯": [
-  {
-   "headline": "スターバックス福袋2027が抽選受付中! 今年の当たりはゴールデンマグ＆ベアリスタ",
-   "highlight": "抽選受付中",
-   "blurb": "福袋限定ステンレスボトルとランダムなグッズが入る毎年恒例の福袋。抽選受付が始まった。",
-   "weight": "lead",
-   "refs": [
-    1
-   ],
-   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gN9iR.img"
-  },
-  {
-   "headline": "鑲182水晶！星巴克最貴馬克杯一只2700元照樣秒殺",
-   "highlight": "2700元照樣秒殺",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3
-   ]
-  }
- ]
+  "漫威电影": [
+    {
+      "headline": "‘Avengers: Doomsday’ Presales Smash a Major Ticket Milestone",
+      "highlight": "Presales Smash",
+      "blurb": "Presales for Avengers: Doomsday have passed a major ticket milestone.",
+      "weight": "lead",
+      "refs": [
+        13
+      ]
+    },
+    {
+      "headline": "WWE and Disney tag-team for two-day takeover for John Cena Classic and ‘Avengers: Doomsday’",
+      "highlight": "two-day takeover",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1,
+        22,
+        25,
+        29,
+        31
+      ]
+    },
+    {
+      "headline": "Channing Tatum as Gambit Joins Herbie for an Avengers Dunkin' Run",
+      "highlight": "Gambit",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        48,
+        2,
+        10,
+        18,
+        49,
+        50,
+        70,
+        57,
+        59,
+        63,
+        66,
+        67,
+        74,
+        73,
+        83,
+        84,
+        92,
+        85,
+        89,
+        91,
+        95,
+        96,
+        100
+      ]
+    },
+    {
+      "headline": "Jeremy Allen White As Wolverine? Marvel Reportedly Met Actor For X-Men Reboot",
+      "highlight": "Wolverine",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        43,
+        6,
+        19,
+        15,
+        8,
+        52,
+        69,
+        71,
+        76,
+        77,
+        81,
+        102,
+        110
+      ]
+    },
+    {
+      "headline": "KFC Reveals Official Avengers: Doomsday Menu 'Worthy' of Dr. Doom",
+      "highlight": "Official Avengers: Doomsday Menu",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        53,
+        46,
+        30,
+        4,
+        20,
+        90,
+        105,
+        107,
+        113
+      ]
+    }
+  ],
+  "三星手机": [
+    {
+      "headline": "Galaxy S27 Chipsets: Samsung Using Exynos and Snapdragon",
+      "highlight": "Exynos and Snapdragon",
+      "blurb": "Leaked European chipset info for the four Galaxy S27 models: the S27 Pro reportedly gets a step-down Snapdragon 8 Elite Gen 6 versus the Ultra.",
+      "weight": "lead",
+      "refs": [
+        2,
+        8,
+        7,
+        5,
+        6,
+        28,
+        36,
+        41,
+        43,
+        48
+      ],
+      "image": "https://phandroid.com/wp-content/uploads/2026/09/Qualcomm-Snapdragon-8-Elite-Gen-6-5.jpg"
+    },
+    {
+      "headline": "Samsung Galaxy S27 Ultra leak points to a major Privacy Display upgrade",
+      "highlight": "Privacy Display upgrade",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3,
+        9,
+        13,
+        15,
+        17,
+        18,
+        19,
+        14,
+        35,
+        53,
+        50
+      ]
+    },
+    {
+      "headline": "Which Samsung Galaxy S27 models will support 60W charging?",
+      "highlight": "60W charging",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4
+      ]
+    },
+    {
+      "headline": "Galaxy S27 Ultra：デザインが残念。サムスンは3つの主要な改良点が必要だ。",
+      "highlight": "3つの主要な改良点",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        40,
+        1,
+        10,
+        11,
+        16,
+        12,
+        27,
+        37,
+        38,
+        44,
+        46,
+        47
+      ]
+    },
+    {
+      "headline": "Samsung Galaxy S27 Rumored to Launch Earlier, Here Are the Latest Leaked Specifications, Camera, and Pricing",
+      "highlight": "Launch Earlier",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        22,
+        34
+      ]
+    },
+    {
+      "headline": "갤럭시 S27 울트라, 크기는 S26과 거의 같은데 후면 카메라는 가로 바로 바뀐다",
+      "highlight": "가로 바",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        25,
+        29,
+        42
+      ]
+    },
+    {
+      "headline": "Galaxy S27 Ultra、カメラモジュールを上部へ移動―Qi2磁石内蔵の道開けるか",
+      "highlight": "Qi2磁石内蔵",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        33,
+        32
+      ]
+    },
+    {
+      "headline": "갤럭시S27 프로, 울트라보다 AI 성능 낮나…최상위 스냅드래곤 칩 제외 전망",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        52,
+        51,
+        49
+      ]
+    }
+  ],
+  "GTA 6": [
+    {
+      "headline": "GTA 6 preloads start on 10th November, and will need up to 212GB on your console",
+      "highlight": "10th November",
+      "blurb": "Preloads for GTA 6 begin on November 10 and need up to 212GB of console storage.",
+      "weight": "hero",
+      "refs": [
+        5,
+        15,
+        9,
+        10,
+        33,
+        32,
+        40,
+        39,
+        43,
+        50,
+        52,
+        62,
+        66,
+        74,
+        91
+      ],
+      "event": {
+        "date": "2026-11-10",
+        "label": "プリロード開始"
+      },
+      "image": "https://www.thesixthaxis.com/wp-content/uploads/2026/06/GTA6-UltimateEdition-hero500-576x356.jpg"
+    },
+    {
+      "headline": "GTA 6 PS5 Pro enhancements confirmed",
+      "highlight": "PS5 Pro enhancements",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1,
+        11,
+        28,
+        29,
+        55,
+        82
+      ]
+    },
+    {
+      "headline": "GTA VI tops Japan's developer poll as the industry counts down to its November 19, 2026 launch",
+      "highlight": "November 19, 2026",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2,
+        46,
+        77
+      ]
+    },
+    {
+      "headline": "GTA 6 Sells Nearly 8 Million Copies Before It Even Launches, Report Says",
+      "highlight": "Nearly 8 Million Copies",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        23,
+        25,
+        37,
+        44,
+        48,
+        61,
+        65,
+        68,
+        79,
+        78,
+        85,
+        86,
+        88
+      ]
+    },
+    {
+      "headline": "GTA 6全新「Focus」功能曝光靈感源自《荒野大鏢客2》鷹眼",
+      "highlight": "Focus",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        24
+      ]
+    }
+  ],
+  "チェーンソーマン": [
+    {
+      "headline": "メガハウス「お茶友シリーズ 劇場版『チェンソーマン レゼ篇』 BREAK TIME CAFÉ」レゼやデンジ、マキマなど全6種が登場！",
+      "highlight": "全6種が登場",
+      "blurb": "MEGAHOUSE「お茶友シリーズ」から、レゼやデンジ、マキマなど全6種が登場。",
+      "weight": "lead",
+      "refs": [
+        2,
+        1,
+        3
+      ],
+      "image": "https://img.toy-people.com/member/179380690349_1200.png"
+    },
+    {
+      "headline": "チェンソーマンのガチャガチャ最新一覧｜新作の発売日と設置場所まとめ",
+      "highlight": "新作の発売日",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6
+      ]
+    },
+    {
+      "headline": "Marimo Craft to Exhibit at Animate Girls Festival 2026 in Ikebukuro on November 7 and 8",
+      "highlight": "November 7 and 8",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        8,
+        10
+      ],
+      "event": {
+        "date": "2026-11-07",
+        "label": "出展"
+      }
+    },
+    {
+      "headline": "TVアニメ「チェンソーマン」のアウトドアグッズが登場！AOZORAGEAR online SHOP、アニメイトにて販売",
+      "highlight": "アウトドアグッズが登場",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        9
+      ]
+    },
+    {
+      "headline": "쿠팡플레이, 크런치롤 애니 콘텐츠 확대… '체인소 맨'·'귀멸의 칼날' 합류",
+      "highlight": "크런치롤 패스",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        12,
+        15,
+        11,
+        13,
+        14,
+        16,
+        17,
+        18
+      ]
+    }
+  ],
+  "A2O LITE": [
+    {
+      "headline": "イ・スマンが仕掛ける新しいK-POP。「A2O LITE」に注目",
+      "highlight": "新しいK-POP",
+      "blurb": "K-POPに新しい流れが来ている。その中心にいるのが、元SMエンターテインメント総括プロデューサーのイ・スマンが手掛ける新グループ「A2O LITE」だ。",
+      "weight": "lead",
+      "refs": [
+        2,
+        13
+      ],
+      "image": "https://assets.st-note.com/production/uploads/images/332182864/rectangle_large_type_2_5f8fb70cfffdbba850e654643176d6e5.png?width=1200"
+    },
+    {
+      "headline": "제이블랙, A2O LITE 시리·아이찡 실력에 감탄 \"딸 같은 존재\"",
+      "highlight": "실력에 감탄",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1
+      ]
+    },
+    {
+      "headline": "A2O LITE成員介紹｜9位成員本名、生日、國籍一次看！短髮VORA、忙內AIJING、混血OA全整理",
+      "highlight": "9位成員",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3
+      ]
+    },
+    {
+      "headline": "“뉴진스 이후 걸그룹 정체성 위기”···NYT 평론가 “A2O LITE가 대안”",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        12,
+        11
+      ]
+    },
+    {
+      "headline": "A2O LITE, 아이돌차트 아차랭킹 1위…리센느·아일릿 제쳤다",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        10,
+        8,
+        14
+      ]
+    }
+  ],
+  "dota2": [
+    {
+      "headline": "S30 门票悬而未决，二级联赛S5 名单里藏着多少遗憾",
+      "highlight": "S30 门票悬而未决",
+      "blurb": "二级联赛S5名单公布，S30门票归属仍悬而未决。",
+      "weight": "lead",
+      "refs": [
+        5
+      ],
+      "image": "https://static.gosugamers.net/13/c4/1c/22a362607bdb74810c45357060c481f34eefca3db57c4329bc29a94bf5.webp"
+    },
+    {
+      "headline": "Zenith vs Cloud Dawning Live Score on 2026-11-04 of Dota 2 EPL World Series: Southeast Asia Season 19",
+      "highlight": "Zenith vs Cloud Dawning",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2
+      ]
+    },
+    {
+      "headline": "Yatoro Tops the Dota 2 Player Rankings",
+      "highlight": "Yatoro Tops",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6
+      ]
+    },
+    {
+      "headline": "FISSURE CEO Admits It Still Owes CS2 and Dota 2 Prize Money, Eyes Q1 2027 for Next Big Payout",
+      "highlight": "Still Owes",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        7,
+        10,
+        12
+      ]
+    },
+    {
+      "headline": "GamerLegion and Yellow Submarine battle for the final spot at Dota 2 EPL Masters III grand final",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        9
+      ]
+    },
+    {
+      "headline": "Valve has released a new patch for Dota 2 that fixes a critical bug",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        11
+      ]
+    }
+  ],
+  "周杰伦": [
+    {
+      "headline": "周杰伦新歌登顶2026 榜单，IG 看画感慨86 岁画家",
+      "highlight": "新歌登顶2026 榜单",
+      "blurb": "周杰伦新歌《那天下雨了》登顶2026榜单。",
+      "weight": "lead",
+      "refs": [
+        2
+      ]
+    },
+    {
+      "headline": "周杰伦打网球大师赛球拍断线照夺亚军",
+      "highlight": "夺亚军",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1,
+        7,
+        9
+      ]
+    },
+    {
+      "headline": "周杰伦演唱会3小时演出被指划水近2小时",
+      "highlight": "被指划水",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6
+      ]
+    }
+  ],
+  "あつ森": [
+    {
+      "headline": "任天堂为庆祝40周年，在 Animal Crossing: New Horizons 中推出免费 Zelda 主题设计",
+      "highlight": "免费 Zelda 主题设计",
+      "blurb": "为庆祝《塞尔达传说》40周年，任天堂在《集合啦！动物森友会》中推出免费的 Zelda 主题设计。",
+      "weight": "lead",
+      "refs": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "image": "https://www.bing.com/th?id=ONUT.VD1nTYo6O_Xi2iyp-s_k6A&pid=News&w=1200"
+    }
+  ],
+  "哈利波特剧集": [
+    {
+      "headline": "ドラマ版ハリー・ポッターと賢者の石が12月25日からHuluで見放題配信",
+      "highlight": "12月25日からHuluで見放題配信",
+      "blurb": "ドラマ版『ハリー・ポッターと賢者の石』が12月25日からHuluで見放題配信される。",
+      "weight": "hero",
+      "refs": [
+        6
+      ],
+      "event": {
+        "date": "2026-12-25",
+        "label": "配信開始"
+      },
+      "image": "https://image.news.livedoor.com/newsimage/stf/b/4/b4d74_760_2489936_20261030_151303_size640wh_10534070.jpg"
+    },
+    {
+      "headline": "Harry Potter HBO series lands on OSN+ this December with surprises",
+      "highlight": "this December",
+      "blurb": "Harry Potter HBO series lands on OSN+ this December.",
+      "weight": "lead",
+      "refs": [
+        4
+      ],
+      "image": "https://www.absolutegeeks.com/wp-content/uploads/2026/11/images-2.jpeg"
+    },
+    {
+      "headline": "Harry Potter HBO TV Show Tie-In Event Draws Trans Rights Protest, Spokesperson Responds",
+      "highlight": "Trans Rights Protest",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1
+      ]
+    },
+    {
+      "headline": "Warwick Davis says first day on Harry Potter series was terrifying",
+      "highlight": "first day",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2,
+        7
+      ]
+    },
+    {
+      "headline": "Screen-Accurate Fantasy Collectibles: Noble Collection Unveils HBO Harry Potter Wands…",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5
+      ]
+    }
+  ],
+  "猫用品": [
+    {
+      "headline": "猫の鼻水、「寒いから」で済ませないで！疑いたい5つの病気",
+      "highlight": "疑いたい5つの病気",
+      "blurb": "猫のくしゃみや鼻水、鼻づまりは、病気のサインであることも。",
+      "weight": "lead",
+      "refs": [
+        2
+      ],
+      "image": "https://img.benesse-cms.jp/pet-cat/item/image/normal/06d992e9-745f-48d9-b74a-2b1648300da5.jpg?w=698&h=483&resize_type=cover&resize_mode=force"
+    },
+    {
+      "headline": "SOU・SOU聯名47款貓咪周邊開賣！誠品限定花色曝光，三花貓透明傘、暹羅貓地墊超欠收",
+      "highlight": "47款貓咪周邊開賣",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4
+      ]
+    },
+    {
+      "headline": "フルーツタルトの具になって寝るだけでかわいい猫用クッションが新登場！",
+      "highlight": "猫用クッション",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5
+      ]
+    },
+    {
+      "headline": "カフェ・ベローチェ、2027年福袋はかわいい黒ねこグッズ入り 40周年記念として発売",
+      "highlight": "黒ねこグッズ入り",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        8,
+        9,
+        11
+      ]
+    },
+    {
+      "headline": "コッカ、2026年11月上旬発売予定の新作を含む「猫柄生地」8種類を紹介",
+      "highlight": "猫柄生地",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        7
+      ]
+    }
+  ],
+  "The Mandalorian": [
+    {
+      "headline": "Everything We Learned from ‘The Art of Star Wars: The Mandalorian and Grogu’",
+      "highlight": "Everything We Learned",
+      "blurb": "A roundup of what the art book The Art of Star Wars: The Mandalorian and Grogu reveals.",
+      "weight": "lead",
+      "refs": [
+        1,
+        5
+      ],
+      "image": "https://theholofiles.com/wp-content/uploads/2026/05/THND-FF-000470-3-scaled.jpg"
+    },
+    {
+      "headline": "In the end, Grogu was just so cute: A belated review of 'The Mandalorian & Grogu'",
+      "highlight": "belated review",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3
+      ]
+    }
+  ],
+  "绝区零": [],
+  "ILLIT": [
+    {
+      "headline": "ILLIT shares behind-the-scenes footage of 'You’re Under Arrest' recording in Japan",
+      "highlight": "behind-the-scenes footage",
+      "blurb": "ILLIT shares behind-the-scenes footage of the recording of 'You’re Under Arrest' in Japan.",
+      "weight": "lead",
+      "refs": [
+        2
+      ],
+      "image": "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp"
+    },
+    {
+      "headline": "【ビルボード】Kis-My-Ft2『Kis SCENE』が総合アルバム首位 VOLTACTION／ILLITが初登場",
+      "highlight": "ILLITが初登場",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4,
+        9
+      ]
+    },
+    {
+      "headline": "[김도헌의 음감] '체포하겠어' 아일릿, 과몰입의 손익분기점",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6,
+        5
+      ]
+    },
+    {
+      "headline": "아일릿, ‘jellyous’ 뮤직비디오 팀 통산 3번째 1억 뷰 돌파",
+      "highlight": "1억 뷰 돌파",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        8
+      ]
+    },
+    {
+      "headline": "아일릿, 일본 연말 가요제 출격",
+      "highlight": "일본 연말 가요제",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        10
+      ]
+    }
+  ],
+  "日本顶级网球赛事": [
+    {
+      "headline": "Rybakina beats Putintseva at Toray Pan Pacific Open Tennis, secures Year-End No.1 spot",
+      "highlight": "Year-End No.1",
+      "blurb": "Elena Rybakina secures Year-End No.1 spot with a victory over Yulia Putintseva in the Toray Pan Pacific Open.",
+      "weight": "lead",
+      "refs": [
+        1
+      ],
+      "image": "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934"
+    },
+    {
+      "headline": "【テニス】東レPPO観戦記〜2回戦〜",
+      "highlight": "東レPPO観戦記",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2
+      ]
+    }
+  ],
+  "MMORPG 新作": [
+    {
+      "headline": "Qloud Games、ライフシムMMO『Loftia』の早期アクセス版をリリース",
+      "highlight": "早期アクセス版",
+      "blurb": "Steam Nextフェスで「最もプレイされたデモ」Top10入りしたライフシムMMOが早期アクセスを開始。",
+      "weight": "lead",
+      "refs": [
+        11,
+        1,
+        15
+      ],
+      "image": "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200"
+    },
+    {
+      "headline": "「ファイナルファンタジーXIV: 白銀のワンダラー」11月4日より予約受付開始",
+      "highlight": "予約受付開始",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4,
+        5
+      ],
+      "event": {
+        "date": "2027-02-23",
+        "label": "発売日"
+      }
+    },
+    {
+      "headline": "「World of Warcraft: Forever」が正式ローンチ。2004年のオリジナル版を再構築し，新種族や1000以上のクエストを追加",
+      "highlight": "正式ローンチ",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        10
+      ]
+    }
+  ],
+  "Vaundy": [
+    {
+      "headline": "Vaundy首攻台北小巨蛋 兩度衝下台互動嗨翻全場",
+      "highlight": "台北小巨蛋",
+      "blurb": "10月31日至11月1日連續兩天舉辦ASIA ARENA TOUR 2026 “HORO”，共吸引2.6萬名歌迷。",
+      "weight": "lead",
+      "refs": [
+        1
+      ]
+    },
+    {
+      "headline": "M!LK Earns Second Japan Hot 100 No. 1 With ‘That’s! Chojo’ as Vaundy’s ‘Shiwaawase’ Reaches Top 3",
+      "highlight": "Top 3",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4,
+        2
+      ]
+    },
+    {
+      "headline": "【Vaundy】“音楽をやる意味”は「悲しいことベースで生きる人の“リズム”を崩したい」",
+      "highlight": "音楽をやる意味",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3
+      ]
+    }
+  ],
+  "Astrae Oratio": [
+    {
+      "headline": "Astrae Oratio Devs: \"We're Tuning Combat Pace, AP, and Parrying Based on CBT Feedback\"",
+      "highlight": "Tuning Combat Pace",
+      "blurb": "Developers say combat pace, AP and parrying are being tuned after the global CBT; next test and release dates remain unannounced.",
+      "weight": "lead",
+      "refs": [
+        2,
+        1,
+        3
+      ],
+      "image": "https://static.invenglobal.com/upload/image/2026/10/30/r1793322194781761.jpeg"
+    }
+  ],
+  "滑雪": [
+    {
+      "headline": "Crystal Ski adds eight new resorts for the 2026/27 winter season",
+      "highlight": "eight new resorts",
+      "blurb": "Crystal Ski adds eight new resorts for the 2026/27 winter season.",
+      "weight": "lead",
+      "refs": [
+        2
+      ],
+      "image": "https://www.ttgmedia.com/sites/default/files/2026-11/Le%20Grand%20Bornand%20France%20iStock-1412978248%20iStock%20Oliver%20de%20la%20Haye.jpg"
+    },
+    {
+      "headline": "Japan Ski Resorts 2026-27: Real Lift Ticket Costs",
+      "highlight": "Real Lift Ticket Costs",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3
+      ]
+    }
+  ],
+  "gelato pique": [
+    {
+      "headline": "あなたの推しはどの子？ 【ジェラート ピケ】『ピーナッツコラボ』が11/6発売。スヌーピーたちのルームウェア&雑貨、抱き枕が登場",
+      "highlight": "11/6発売",
+      "blurb": "スヌーピーたちのルームウェア・雑貨・抱き枕が11/6に発売。",
+      "weight": "lead",
+      "refs": [
+        2
+      ],
+      "event": {
+        "date": "2026-11-06",
+        "label": "発売日"
+      },
+      "image": "https://p.potaufeu.asahi.com/abab-p/picture/31516454/9b14ed427526fb7aee3edd48a90a92fe.jpg"
+    },
+    {
+      "headline": "【ジェラートピケ】最大級のクリスマスマーケットが表参道で開催！限定カプセルトイも登場",
+      "highlight": "クリスマスマーケット",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1,
+        3
+      ]
+    },
+    {
+      "headline": "PEANUTS meets GELATO PIQUE CAFE スヌーピー＆仲間たちをインスパイアしたアニバーサリーメニュー8種",
+      "highlight": "アニバーサリーメニュー8種",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4,
+        6
+      ]
+    },
+    {
+      "headline": "MASH PARK PROJECT '26 大人気のgelato pique福袋に加え、DAIWAとのコラボアイテムも特別に発売",
+      "highlight": "gelato pique福袋",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5
+      ]
+    }
+  ],
+  "FROM": [
+    {
+      "headline": "This Cult Sci-Fi Horror Series With Stephen King Vibes Has Become A Major Netflix Hit",
+      "highlight": "Major Netflix Hit",
+      "blurb": "Previously lost between Epix and MGM+, From has become a hit on Netflix.",
+      "weight": "lead",
+      "refs": [
+        2
+      ],
+      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gLq97.img"
+    },
+    {
+      "headline": "From Season 2 Finale Recap & Ending Explained: What Happened To Tabitha",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1
+      ]
+    }
+  ],
+  "BLEACH Mirrors High": [],
+  "星巴克马克杯": [
+    {
+      "headline": "スターバックス福袋2027が抽選受付中! 今年の当たりはゴールデンマグ＆ベアリスタ",
+      "highlight": "抽選受付中",
+      "blurb": "福袋限定ステンレスボトルとランダムなグッズが入る毎年恒例の福袋。抽選受付が始まった。",
+      "weight": "lead",
+      "refs": [
+        1
+      ],
+      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gN9iR.img"
+    },
+    {
+      "headline": "鑲182水晶！星巴克最貴馬克杯一只2700元照樣秒殺",
+      "highlight": "2700元照樣秒殺",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3
+      ]
+    }
+  ]
 }
