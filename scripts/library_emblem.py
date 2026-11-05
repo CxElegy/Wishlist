@@ -43,6 +43,7 @@ RULES = 8             # 取り方の規則の版。上げると、全部の版�
                       # 7：頭のてっぺんが上の端で切れた絵〔上 3px に 20%〕・小さい顔〔80px 未満〕・ぼやけた写真を使わない＝emblem.check_whole），
                       # 8：グループの版面は Wikidata のメンバーを emblem_who に〔#428。7 で届かなかった YOASOBI・Mrs. GREEN APPLE・BTS は 24 時間待たず作り直す〕
 REDO = ("emblem", "emblem_who", "emblem_pool", "emblem_category")   # 前の版の規則で作ったもの：版が上がったら捨てて規則から作り直す（emblem_reject・emblem_fandom は残す）
+RETRY_S = 24 * 3600   # 届かなかった版面は、材料が変わらなくてもこの間をあけて 1 回（2026-11-05 機能 C・F10：お客さまの版面は新しい材料が来ず 31/41 が 41 時間止まった）
 PER_BOARD_S = 300     # 1 版面の目安（これより残りが少なければ次を始めない）
 KEEP = ("name", "wikidata", "type", "keywords", "emblem_kind", "wiki")   # 毎回 規則と Wikidata から作るので config に書かない
 
@@ -613,6 +614,8 @@ def due(boards, now):
             out.append((1 if zero else 1.5, st.get("at", 0), b))
         elif st.get("state") != "ok" and (st.get("m") != material(cfg(b)) or passes_left(b) > 0):   # 届かなかった版面：手がかりが変わった・時間切れで指紋がない → 次の見回りですぐ（変わらなければ何時間でも試さない）
             out.append((1 if zero else 3, st.get("at", 0), b))
+        elif st.get("state") != "ok" and now - int(st.get("at") or 0) >= RETRY_S:   # 材料が同じでも日に 1 回（外の名簿・公式サイトは材料の指紋の外で増える）。一番後ろ
+            out.append((4, st.get("at", 0), b))
         elif st.get("nv") != names_v and (st.get("state") == "ok" or any(cfg(b).get(k) for k in NAMES_HINT)):
             # そろっていても、届かなかったキャラの版面も、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）
             # 届かなかった版面の数え直しは途中（running）より先（1.5）：途中の版面は 10 枚ずつで何十回も続き、後ろの 142・146 が 24 時間待たされていた
