@@ -17,6 +17,13 @@ class PhotoSide(unittest.TestCase):
         self.assertIn("side(pk, p, nat", js)   # 気になるかも
         self.assertIn("c.classList.add('sb')", js)
 
+    def test_phone_left_photo_cards_fill_height(self):
+        # 2026-11-06：スマホの左写真は幅 42%・高さはカードいっぱい（型ごとの規則）。1 列では side() で幅を直書きしない
+        src = (ROOT / "scripts" / "render.py").read_text(encoding="utf-8")
+        self.assertIn("grid-template-columns:42% minmax(0,1fr)", src)
+        self.assertIn("align-self:stretch;justify-self:stretch;width:auto!important;height:auto!important", src)
+        self.assertIn("innerWidth > 760 && !p.classList.contains('fill') && r < 0.75) side(sm", src)
+
     def test_unside_runs_before_measuring(self):
         js = render.FIT_JS
         self.assertLess(js.index("unside(pk || sm, p)"), js.index("p.closest('article.hero"))

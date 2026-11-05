@@ -661,6 +661,13 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
  .card.mini{grid-template-columns:110px minmax(0,1fr)}
  .mas{display:contents}.mas>.card.c4,.mas>.card.c6,.mas>.card.c3,.mas>.card.c8{grid-column:span 12;grid-row:auto!important}.mas>.side{display:contents}
  .calm{flex-wrap:wrap;gap:12px;padding:4px 14px 16px}.calm .pic{display:none}
+ /* 左写真・右字のカード（.wc・.wc.sb・.card.mini・.card.sb・.tape）：写真は幅 42%・高さはカードいっぱい（cover）、字は残りの列。写真の下に空きを残さない（2026-11-06）。
+    FIT_JS の side() は 1 列では呼ばない（細い写真も同じ 42% を切る）ので width/height の直書きは来ない */
+ .wc:not(.lead):not(.nophoto),.card.mini:not(.nophoto),.card.sb:not(.mini){grid-template-columns:42% minmax(0,1fr);column-gap:12px}
+ .wc:not(.lead):not(.nophoto)>.pic,.card.mini:not(.nophoto)>.pic,.card.sb:not(.mini)>.pic{align-self:stretch;justify-self:stretch;width:auto!important;height:auto!important;min-height:96px;aspect-ratio:auto!important}
+ .tape,.tape.sb{grid-template-columns:6px 42% minmax(0,1fr)}
+ .tape .pic,.tape.sb>.pic{align-self:stretch;width:auto!important;height:auto!important;min-height:78px;aspect-ratio:auto!important}
+ .wc:not(.lead)>.pic img:not(.bg):not(.ico),.card.mini>.pic img:not(.bg):not(.ico),.card.sb:not(.mini)>.pic img:not(.bg):not(.ico),.tape .pic img:not(.bg):not(.ico){object-fit:cover}
  .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
 }
 /* いちばん小さいスマホ（320px）：報頭が横にはみ出さないように詰める */
@@ -3333,7 +3340,7 @@ FIT_JS = """
     p.classList.toggle('fill', (r >= 0.75 && cropAt(img, r)) || Math.abs(Math.log(r)) < 0.08);
     if (r < 0.75) { img.style.objectPosition = ''; delete img.dataset.keep; }
     narrow(img, p, nat, r);
-    if (sm && !p.classList.contains('fill') && r < 0.75) side(sm, p, nat, p.clientHeight);   // 小さいカード：枠を写真の幅に絞り、見出しを横へ
+    if (sm && innerWidth > 760 && !p.classList.contains('fill') && r < 0.75) side(sm, p, nat, p.clientHeight);   // 小さいカード：枠を写真の幅に絞り、見出しを横へ
   };
   // 小さいカード・気になるかも：写真が枠より細いとき、ぼかしでも空白でも埋めず、枠を写真の幅に絞って字の列を横に置く（.sb）。
   // 字の列が 100px 未満になるほど狭いカードは枠を写真の比率に（点検 gap が数える）
