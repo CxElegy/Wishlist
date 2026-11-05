@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-05T01:41:03+00:00",
+ "checked": "2026-11-05T01:50:34+00:00",
  "fired": {
-  "at": "2026-11-05T01:41:03+00:00",
+  "at": "2026-11-05T01:50:51+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -38,18 +38,17 @@
     "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-11-05T01:18:48+00:00",
+   "last_batch": "2026-11-05T01:45:33+00:00",
    "last_error": {
     "at": "2026-11-04T04:26:16+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 228,
+   "prog": 238,
    "prog_day": "2026-11-05",
    "ripe": [
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "MMORPG 新作",
     "gelato pique",
     "あつ森",
@@ -60,10 +59,10 @@
     "滑雪",
     "猫用品"
    ],
-   "sig": "ec425474fb13",
+   "sig": "732c4371c0a6",
    "token_cap": 1000000,
-   "tokens_today": 328018,
-   "why": "整理待ちの記事 48 件（17 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 331209,
+   "why": "整理待ちの記事 38 件（17 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
