@@ -14,7 +14,7 @@
   "绝区零": 3,
   "ILLIT": 2,
   "日本顶级网球赛事": 2,
-  "MMORPG 新作": 2,
+  "MMORPG 新作": 5,
   "Vaundy": 3,
   "Astrae Oratio": 2,
   "滑雪": 1
@@ -550,6 +550,20 @@
    ],
    "event": {
     "date": "2026-11-16",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "「ファイナルファンタジーXIV: 白銀のワンダラー」11月4日より予約受付開始",
+   "highlight": "予約受付開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    5
+   ],
+   "event": {
+    "date": "2027-02-23",
     "label": "発売日"
    }
   }

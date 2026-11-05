@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "9a729b9767b8",
+ "edit_sig": "c6121a56eb88",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1013,29 +1013,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 3,
-     "source": "파이낸셜뉴스",
-     "title": "현대차證 \"카카오게임즈, 신작 MMORPG로 턴어라운드 기대감…목표가 1만5000원\"",
-     "url": "https://www.fnnews.com/news/202611050852150860"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 4,
-     "source": "GAME Watch",
-     "title": "「ファイナルファンタジーXIV: 白銀のワンダラー」11月4日より予約受付開始グッズ付きのコレクターズエディションなども展開",
-     "url": "https://game.watch.impress.co.jp/docs/news/2153775.html"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 5,
-     "source": "4Gamer.net",
-     "title": "「ファイナルファンタジーXIV ファンフェスティバル 2026 in 東京」DAY1のまとめレポートをお届け。快晴の幕張メッセに光の戦士が集まった",
-     "url": "https://www.4gamer.net/games/199/G019924/20261104059/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1060,6 +1037,20 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gpcjJ.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/en-au/news/other/new-open-world-mmorpg-officially-confirmed-for-november-16/ar-AA2goIVO",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "event": {
+      "date": "2027-02-23",
+      "label": "発売日"
+     },
+     "headline": "「ファイナルファンタジーXIV: 白銀のワンダラー」11月4日より予約受付開始",
+     "highlight": "予約受付開始",
+     "image": "https://game.watch.impress.co.jp/img/gmw/list/2153/775/002.jpg",
+     "image_via": "og:image",
+     "url": "https://game.watch.impress.co.jp/docs/news/2153775.html",
      "weight": "normal"
     }
    ],
