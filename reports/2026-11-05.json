@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "da670f84e51c",
+ "edit_sig": "d1dcb2623804",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1046,24 +1046,29 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-11-02",
-     "n": 1,
-     "source": "ScreenRant",
-     "title": "From Season 2 Finale Recap & Ending Explained: What Happened To Tabitha",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5UXzltQV93THpGNlVrUzR4R3EwUm15VE1kb1VlbFZzZG0xUDFRaWlNUFp0QU0yQy1pemhiTDZ1Y2JIY3JRMHhLTXNsU2FmUnZ6YzJ0TkhpY0ZrSzJVaDNDaDZSRkdpRnF3aTZLVktQT2ZVYjRnLTk0VzFmMA?oc=5"
+     "blurb": "Previously lost between Epix and MGM+, From has become a hit on Netflix.",
+     "date": "2026-11-04",
+     "headline": "This Cult Sci-Fi Horror Series With Stephen King Vibes Has Become A Major Netflix Hit",
+     "highlight": "Major Netflix Hit",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gLq97.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/news/other/this-cult-sci-fi-horror-series-with-stephen-king-vibes-has-become-a-major-netflix-hit/ar-AA2gLHKB",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-04",
-     "n": 2,
-     "source": "/Film on MSN",
-     "title": "This Cult Sci-Fi Horror Series With Stephen King Vibes Has Become A Major Netflix Hit",
-     "url": "https://www.msn.com/en-us/news/other/this-cult-sci-fi-horror-series-with-stephen-king-vibes-has-become-a-major-netflix-hit/ar-AA2gLHKB"
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "From Season 2 Finale Recap & Ending Explained: What Happened To Tabitha",
+     "highlight": "",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2023/06/from-season-2-episode-10-recap-ending-explained.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/from-season-2-episode-10-recap-ending-explained/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
