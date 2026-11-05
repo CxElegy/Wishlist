@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-05T14:21:41+00:00",
+ "checked": "2026-11-05T15:17:38+00:00",
  "fired": {
-  "at": "2026-11-05T14:21:41+00:00",
+  "at": "2026-11-05T15:17:52+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-05T12:33:45+00:00",
+    "at": "2026-11-05T15:17:52+00:00",
     "attempts": 1,
     "day": "2026-11-05",
-    "prog": 416,
-    "resp": "cse_01W4x6f9YdmS9BoetnYHkqRx",
-    "sig": "6bd8d9b173bb"
+    "prog": 453,
+    "resp": "cse_01W4x6f5TqBWFTc2c62Rx6QV",
+    "sig": "4a44a5d4d5bc"
    },
    "items": [
     "Astrae Oratio",
@@ -35,11 +35,18 @@
    "need": true,
    "prog": 453,
    "prog_day": "2026-11-05",
-   "ripe": [],
-   "sig": "42a27c392c62",
+   "ripe": [
+    "Astrae Oratio",
+    "dota2",
+    "gelato pique",
+    "星巴克马克杯",
+    "滑雪",
+    "猫用品"
+   ],
+   "sig": "4a44a5d4d5bc",
    "token_cap": 1000000,
    "tokens_today": 761629,
-   "why": "整理待ちの記事 7 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 7 件（6 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
