@@ -37,7 +37,7 @@
   "https://nz.news.yahoo.com/see-kylie-jenner-22-most-122000407.html": "https://s.yimg.com/lo/mysterio/api/3b927da5da86c520f2760c9b79e86c81c69980c9d75b186aca9f826e164145d4/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpeople_218%2F4352082a55b73379dd1e25c09081a19f.jpg",
   "https://paradepets.com/pet-news/black-cats-homemade-halloween-costume-masked-vigilante": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCRsS.img",
   "https://sounova.com/game/silver-palace-global-launch-december-2026": "https://cdn.sounova.com/upload/XZB9zcSxrtYsJDQAP55HB.webp",
-  "https://sports.khan.co.kr/en/article/202611051111007": "https://images.khan.co.kr/article/2026/11/05/news-p.v1.20261105.5c362c1065ba4ee993fc75e6bed2f3f3_P1.jpg",
+  "https://sports.khan.co.kr/article/202611051109003": "https://images.khan.co.kr/article/2026/11/05/news-p.v1.20261105.5c362c1065ba4ee993fc75e6bed2f3f3_P1.jpg",
   "https://t.co/6j0O3eUwDP": null,
   "https://t.co/HxbP6sUsNB": "https://pbs.twimg.com/media/HWIPKNQbYAEe7ne?format=webp&name=large",
   "https://t.co/J2phBwQa7c": null,
@@ -73,7 +73,7 @@
   "https://www.sina.cn/news/detail/5359474912273486.html": "https://k.sinaimg.cn/n/news/1_img/upload/d8010f78/213/w2048h1365/20261105/c3ba-6a57406836c125de5255b9ca310cd10b.jpg/w710h400z1l50t1q75b0c.jpg?by=comos",
   "https://www.sina.cn/news/detail/5361545670297206.html": "http://wx2.sinaimg.cn/middle/90b10eb9ly1iiq64fm5aaj20ts1jkqpq.jpg",
   "https://www.sina.cn/news/detail/5361663826202214.html": "http://wx3.sinaimg.cn/middle/647c8fably1iiqjopis2gj20yo0lgn47.jpg",
-  "https://www.slist.kr/news/articleView.html?idxno=779251": "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg",
+  "https://www.slist.kr/news/articleView.html?idxno=779129": "https://cdn.slist.kr/news/thumbnail/202611/779129_1190477_3233_v150.jpg",
   "https://www.sohu.com/a/1097192519_99967109": "https://www.bing.com/th?id=ONUT.JpbXXraAv5OhGdlMxzBTMQ&pid=News&w=900",
   "https://www.techrepublic.com/article/news-ipad-mini-oled-vs-galaxy-tab-s11/": "https://assets.techrepublic.com/uploads/2026/11/ipad-mini-oled-vs-galaxy-tab-s11-featured.jpg?f=jpeg",
   "https://www.tehrantimes.com/news/531702/Mokri-s-Black-Rabbit-White-Rabbit-wins-at-63rd-International": "https://media.tehrantimes.com/d/t/2026/11/01/4/6242024.jpg?ts=1793535295479",
@@ -1320,27 +1320,6 @@
    "because": "A2O LITE",
    "date": "2026-11-05",
    "hits": [],
-   "image": "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "싱글리스트",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "A2O LITE, 아이돌차트 아차랭킹 1위…리센느·아일릿 제쳤다",
-   "url": "https://www.slist.kr/news/articleView.html?idxno=779251",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 4,
-   "because": "A2O LITE",
-   "date": "2026-11-05",
-   "hits": [],
    "image": "https://images.khan.co.kr/article/2026/11/05/news-p.v1.20261105.5c362c1065ba4ee993fc75e6bed2f3f3_P1.jpg",
    "kind": "board",
    "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
@@ -1352,8 +1331,29 @@
      2
     ]
    ],
-   "title": "“An identity crisis for girl groups after NewJeans”···NYT critic “A2O LITE is the alternative”",
-   "url": "https://sports.khan.co.kr/en/article/202611051111007",
+   "title": "“뉴진스 이후 걸그룹 정체성 위기”···NYT 평론가 “A2O LITE가 대안”",
+   "url": "https://sports.khan.co.kr/article/202611051109003",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 4,
+   "because": "A2O LITE",
+   "date": "2026-11-04",
+   "hits": [],
+   "image": "https://cdn.slist.kr/news/thumbnail/202611/779129_1190477_3233_v150.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "싱글리스트",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "A2O·A2O LITE, 써클차트 3관왕…아이브 2관왕·라이즈 다운로드 1위",
+   "url": "https://www.slist.kr/news/articleView.html?idxno=779129",
    "words": [],
    "work": "A2O LITE"
   },
@@ -2005,11 +2005,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2017,15 +2017,15 @@
    8
   ],
   [
-   "作品:三星手机",
-   7
-  ],
-  [
    "三星 Galaxy",
    7
   ],
   [
    "galaxy",
+   7
+  ],
+  [
+   "作品:三星手机",
    7
   ]
  ]

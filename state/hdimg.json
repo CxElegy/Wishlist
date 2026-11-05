@@ -723,8 +723,22 @@
  "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg": {
   "w": 600,
   "h": 370,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.388
+ },
+ "https://cdn.slist.kr/news/thumbnail/202611/779129_1190477_3233_v150.jpg": {
+  "w": 300,
+  "h": 200,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "blur": 0.589,
+  "local": "pics/4e52e5a8a4d036b0.webp",
+  "out": [
+   720,
+   480
+  ],
+  "why": "看不清"
  },
  "https://cdn.sortiraparis.com/images/80/66131/1332847-world-of-warcraft-forever-date-de-sortie-et-nouveautes-du-mmorpg-de-blizzard.jpg": {
   "w": 1800,
@@ -996,6 +1010,12 @@
   "why": "看不清"
  },
  "https://dapsmagic.com/wp-content/uploads/2026/10/The-Mandalorian-Cookbook-1.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://dispatch.cdnser.be/cms-content/uploads/2026/11/05/56317c6e-b66f-4e74-9d22-e5a0d33570a1.jpeg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -1572,7 +1592,7 @@
  "https://images.khan.co.kr/article/2026/11/05/news-p.v1.20261105.5c362c1065ba4ee993fc75e6bed2f3f3_P1.jpg": {
   "w": 1086,
   "h": 1448,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://images.moneycontrol.com/static-mcnews/2026/10/20261031131011_hp-new.jpg": {
@@ -1919,6 +1939,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://img.biggo.com/utaCYG7voDsrdCU0pANPp7tK8OOj8ya4HtpxnvdCEeQ/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExL2ZmYTZlYjYwLTliYTktNDJhZi05YjQxLTQ2M2FmYzFmNGI4ZV8xNzkzODQzOTgzX2RlZmF1bHQuanBn.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://img.etimg.com/thumb/msid-135469326,width-1200,height-900,imgsize-1948950,overlay-economictimes/articleshow.jpg": {
@@ -3246,6 +3272,19 @@
   "v": 3,
   "blur": 0.411
  },
+ "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg": {
+  "w": 700,
+  "h": 467,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.503,
+  "local": "pics/29c16bedf42c1192.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
+ },
  "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg": {
   "w": 1200,
   "h": 674,
@@ -3951,6 +3990,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.billboard-japan.com/common/sys/img/news/00000167/167124/image.jpg": {
+  "w": 1000,
+  "h": 1000,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024": {
   "w": 1024,
   "h": 677,
@@ -4046,19 +4091,6 @@
   "h": 508,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.IJDVLGkHQDoTtip5uzDaOA&pid=News&w=700": {
-  "w": 700,
-  "h": 467,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.549,
-  "local": "pics/072d31d9259c9192.webp",
-  "out": [
-   1280,
-   854
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
   "w": 700,
@@ -4235,6 +4267,12 @@
  "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ZJg30TRg7eusCGuPTC2e-w&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -4770,12 +4808,6 @@
  "https://www.rappler.com/tachyon/2026/09/alex-eala-us-open-august-2026.jpg": {
   "w": 1200,
   "h": 737,
-  "target": 720,
-  "v": 3
- },
- "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Ultra-review-design-2.jpg": {
-  "w": 2560,
-  "h": 1441,
   "target": 720,
   "v": 3
  },

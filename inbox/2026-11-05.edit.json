@@ -1,10 +1,10 @@
 {
  "_covered": {
-  "漫威电影": 93,
-  "三星手机": 29,
-  "GTA 6": 59,
+  "漫威电影": 98,
+  "三星手机": 34,
+  "GTA 6": 64,
   "チェーンソーマン": 15,
-  "A2O LITE": 7,
+  "A2O LITE": 12,
   "dota2": 7,
   "周杰伦": 9,
   "あつ森": 5,
@@ -12,7 +12,7 @@
   "猫用品": 6,
   "The Mandalorian": 5,
   "绝区零": 3,
-  "ILLIT": 2,
+  "ILLIT": 6,
   "日本顶级网球赛事": 2,
   "MMORPG 新作": 5,
   "Vaundy": 3,
@@ -70,7 +70,9 @@
     92,
     85,
     89,
-    91
+    91,
+    95,
+    96
    ]
   },
   {
@@ -168,7 +170,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    22
+    22,
+    34
    ]
   },
   {
@@ -179,6 +182,16 @@
    "refs": [
     25,
     29
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra、カメラモジュールを上部へ移動―Qi2磁石内蔵の道開けるか",
+   "highlight": "Qi2磁石内蔵",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    33,
+    32
    ]
   }
  ],
@@ -199,7 +212,8 @@
     39,
     43,
     50,
-    52
+    52,
+    62
    ],
    "event": {
     "date": "2026-11-10",
@@ -240,7 +254,8 @@
     25,
     37,
     44,
-    48
+    48,
+    61
    ]
   },
   {
@@ -339,6 +354,26 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "“뉴진스 이후 걸그룹 정체성 위기”···NYT 평론가 “A2O LITE가 대안”",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12,
+    11
+   ]
+  },
+  {
+   "headline": "A2O LITE, 아이돌차트 아차랭킹 1위…리센느·아일릿 제쳤다",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    8
    ]
   }
  ],
@@ -553,6 +588,25 @@
     2
    ],
    "image": "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp"
+  },
+  {
+   "headline": "【ビルボード】Kis-My-Ft2『Kis SCENE』が総合アルバム首位 VOLTACTION／ILLITが初登場",
+   "highlight": "ILLITが初登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "[김도헌의 음감] '체포하겠어' 아일릿, 과몰입의 손익분기점",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    5
+   ]
   }
  ],
  "日本顶级网球赛事": [
