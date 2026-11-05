@@ -1701,6 +1701,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gMmcA.img": {
+  "w": 1010,
+  "h": 674,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcDFq.img": {
   "w": 1423,
   "h": 800,
@@ -3976,6 +3982,12 @@
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.EbRbcwgvvTzXm_FlFtxhMQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
