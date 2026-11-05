@@ -787,6 +787,12 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None, me
                     "checked_at": stamp, "updated_at": None})
     res["boards"], res["limit"], res["late"] = len(out) - len(limits) - len(blanks), len(limits), late_n
     res["bad"] = upsert(db, out, log) if out else 0
+    try:   # ライブラリの版面ごとにも（board_stories.pending。AI 編集と user_pages はここを読む。2026-11-05 機能 C）
+        import library
+        cur = {**old, **{(r["account"], r["item"]): r for r in out}}
+        library.put_stories(db, list(cur.values()), old, now.astimezone(digest.display_tz(settings)).date().isoformat(), log)
+    except DB_ERRORS as err:
+        log(f"  ライブラリの版面の記事が書けなかった（{_why(err)}）")
     if users_all and rows_all:   # 一部しか読めなかったときは消さない（読めなかった人の版面を消してしまう）
         for r in rows:   # 外したもの・店長の版面に入ったもの・退会した人の行は消す（本人の画面には出ない行）
             if r["item"] not in keep.get(r["account"], ()):

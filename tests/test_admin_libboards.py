@@ -24,12 +24,14 @@ class LibBoards(unittest.TestCase):
         self.assertNotIn("同じ編集で作る", s)
         self.assertNotIn("全アカウント分の合計です", s)
         self.assertIn("店長の inbox の分だけ", s)
-        self.assertIn("まだ編集されません", s)
+        self.assertIn("まだ AI 編集されません", s)
 
-    def test_screen_text_matches_edit_scope(self):   # 画面の文と実際の範囲：board_stories に書く処理が無い間は「お客さまの版面は編集されない」、BACKLOG の親の段は [x] にしない
+    def test_screen_text_matches_edit_scope(self):   # 画面の文と実際の範囲：お客さまの版面に AI 編集がかかるまでは「お客さまの版面は AI 編集されない」、BACKLOG の親の段は [x] にしない
         import re
         writers = [f.name for f in (ROOT / "scripts").glob("*.py") if f.name not in ("render.py", "processes.py", "library.py") and "board_stories" in f.read_text(encoding="utf-8")]
-        self.assertEqual(writers, [], "board_stories に書く処理ができたら、④の文と ADMIN_WHO_NO を直す")
+        if writers:   # 2026-11-05 機能 C：収集が board_stories の整理待ちに書くようになった。画面は「書く処理が無い」と言わない（AI 編集はまだなので「未対応」は残す）
+            self.assertNotIn("書く処理", render.ADMIN_WHO_NO["tokens"])
+            self.assertNotIn("書く処理がまだ無い", (ROOT / "scripts" / "render.py").read_text(encoding="utf-8"))
         self.assertIn("未対応", render.ADMIN_WHO_NO["tokens"])
         bl = (ROOT / "BACKLOG.md").read_text(encoding="utf-8")
         row = [l for l in bl.splitlines() if "管理ページ④：AI 編集のトークンを全アカウント合計に" in l]
