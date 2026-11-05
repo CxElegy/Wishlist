@@ -1,10 +1,10 @@
 {
- "admin": "54acdaa8dc9a",
- "admin-ai": "5ac2caf75548",
+ "admin": "9bbb763ec92e",
+ "admin-ai": "f80e7fbe17fc",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "23258c07"
+   "d7db5d26"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "6574a13f"
   ]
  },
- "admin-emblem": "a507c526c554",
+ "admin-emblem": "5f6b6b976831",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "00de6bbf"
+   "b84f8588"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b5430cdb73be",
  "admin-members_marks": {},
- "admin-now": "735bb267c6f5",
+ "admin-now": "1bc4ac910824",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b08e18a0"
+   "246d8258"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "8c352ee2"
   ]
  },
- "admin-system": "5e5ada77a212",
+ "admin-system": "3f2907204fab",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2c7e0146"
+   "a782cd99"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,11 +93,11 @@
    "3e2abe8d"
   ]
  },
- "index": "2b8a716a851b",
+ "index": "fc581d636c0f",
  "index_marks": {
   "front": [
    "トップ",
-   "c3a68dea"
+   "98205468"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "e173850a"
+   "6caf3f29"
   ],
   "w-130724c0": [
    "猫用品",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "17f87029"
+   "61736a3a"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "5ed629af"
   ]
  },
- "updated": "11.05 10:50",
+ "updated": "11.05 10:58",
  "wishlist": "09885a0145d0"
 }
