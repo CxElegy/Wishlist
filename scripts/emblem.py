@@ -1242,33 +1242,68 @@ PERSON_PREF = re.compile(r"(?<![a-z])(?:cut|body|stand|full|portrait|visual|char
 PERSON_SKIP = re.compile(r"card|logo|nav|poster|banner|thumb|icon|btn|sns|promo|module|-sp\b|_sp\b", re.I)
 
 
+SITEMAP_PERSON = re.compile(r"<loc>(https?://[^<]*/(?:characters?|members?|cast)/([^/<]+)/?)</loc>", re.I)
+SITEMAP_VARIANT = re.compile(r"earth|ultimate|age-of|house-of|2099|noir|zombie|-ii\b|-iii\b|\d", re.I)   # 別世界・別版の同名ページ（同じ点なら後回し）
+_OFFICIAL_SITEMAP = {}
+
+
+def official_sitemap_people(site, max_files=30):
+    """一覧のページに載るのが一部だけの公式（Marvel：/characters は先頭の 60 人、続きは JS）：sitemap.xml の人物ページ → [(slug, 網址)]。
+    人物のページが見つかったあとで、人物のない sitemap に来たら止める（Marvel は 23 枚中の 4 枚）。1 回の実行の間は取り直さない。"""
+    if site in _OFFICIAL_SITEMAP:
+        return _OFFICIAL_SITEMAP[site]
+    out, seen = [], False
+    try:
+        index = _get(urllib.parse.urljoin(site, "/sitemap.xml"), 500_000).decode("utf-8", "replace")
+        for u in re.findall(r"<loc>([^<]+)</loc>", index)[:max_files]:
+            if urllib.parse.urlparse(u).netloc != urllib.parse.urlparse(site).netloc:
+                continue
+            if not u.endswith(".xml"):
+                continue
+            found = [(m.group(2), m.group(1)) for m in SITEMAP_PERSON.finditer(_get(u, 8_000_000).decode("utf-8", "replace"))]
+            if found:
+                seen = True
+                out += found
+            elif seen:
+                break
+    except Exception:
+        pass
+    _OFFICIAL_SITEMAP[site] = out
+    return out
+
+
 def official_person_images(site, ws, limit=3):
     """一覧のページに載るのが名前とリンクだけの公式（Marvel：/characters は名前の一覧、絵は /characters/<名前> の中）：一覧からリンクした
-    その人のページを 1 枚だけ開き（名前の語が 2 つ以上、1 語だけの名前は 1 つ一致するページ。取り違えを避ける）、そのページの絵（og:image と、パスが立ち絵らしいもの）→ [網址]。"""
+    その人のページを開き（名前の語が 2 つ以上、1 語だけの名前は 1 つ一致するページ。取り違えを避ける）、そのページの絵（og:image と、パスが立ち絵らしいもの）→ [網址]。
+    一覧に居なければ sitemap の人物ページから（同じ点の別世界・別版は後回し・上位 2 ページまで。人違いは顔の照合が外す）。"""
     if not ws:
         return []
     need = min(2, len(ws))
-    best = None
+    cands = {}
     for html, base in official_pages(site):
         for m in OFFICIAL_PERSON.finditer(html):
             keys = {official_key(s) for s in re.split(r"[-_.\s]+", m.group(2)) if s}
             hit = len(ws & keys)
-            if hit >= need and (best is None or (hit, -len(keys)) > best[0]):
-                best = ((hit, -len(keys)), urllib.parse.urljoin(base, m.group(1)))
-    if not best:
-        return []
-    u = best[1]
-    try:
-        page = _OFFICIAL_HTML[u] if u in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(u, _get(u, 1_500_000).decode("utf-8", "replace"))
-    except Exception:
-        return []
-    og = re.findall(r'(?:property|name)=["\']og:image["\'][^>]*content=["\']([^"\']+)', page, re.I) + re.findall(r'content=["\']([^"\']+)["\'][^>]*(?:property|name)=["\']og:image', page, re.I)
-    imgs = [urllib.parse.urljoin(u, x.replace("&amp;", "&")) for x in re.findall(r'(?:src|data-src)=["\']([^"\'\s,]+\.(?:png|webp|jpe?g))', page, re.I)]
-    pref = [i for i in imgs if PERSON_PREF.search(urllib.parse.urlparse(i).path) and not PERSON_SKIP.search(urllib.parse.urlparse(i).path)]
+            if hit >= need:
+                cands.setdefault(urllib.parse.urljoin(base, m.group(1)), (hit, -len(keys)))
+    if not cands:   # 一覧に居ない：sitemap
+        for slug, u in official_sitemap_people(site):
+            keys = {official_key(s) for s in re.split(r"[-_.\s]+", slug) if s}
+            hit = len(ws & keys)
+            if hit >= need:
+                cands.setdefault(u, (hit, 0 if not SITEMAP_VARIANT.search(slug) else -1, -len(keys)))
     out = []
-    for i in pref + [urllib.parse.urljoin(u, x) for x in og]:
-        if i not in out:
-            out.append(i)
+    for u in sorted(cands, key=lambda x: cands[x], reverse=True)[:2]:
+        try:
+            page = _OFFICIAL_HTML[u] if u in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(u, _get(u, 1_500_000).decode("utf-8", "replace"))
+        except Exception:
+            continue
+        og = re.findall(r'(?:property|name)=["\']og:image["\'][^>]*content=["\']([^"\']+)', page, re.I) + re.findall(r'content=["\']([^"\']+)["\'][^>]*(?:property|name)=["\']og:image', page, re.I)
+        imgs = [urllib.parse.urljoin(u, x.replace("&amp;", "&")) for x in re.findall(r'(?:src|data-src)=["\']([^"\'\s,]+\.(?:png|webp|jpe?g))', page, re.I)]
+        pref = [i for i in imgs if PERSON_PREF.search(urllib.parse.urlparse(i).path) and not PERSON_SKIP.search(urllib.parse.urlparse(i).path)]
+        for i in pref + [urllib.parse.urljoin(u, x) for x in og]:
+            if i not in out:
+                out.append(i)
     return out[:limit]
 
 
