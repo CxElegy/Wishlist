@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "d1dcb2623804",
+ "edit_sig": "ee4ee0e14cae",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -369,22 +369,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 5,
-     "source": "ウォーカープラス",
-     "title": "フルーツタルトの具になって寝るだけでかわいい猫用クッションが新登場！",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1rSUl0MkVnNzFpeF9HeUlnRVNkbEpZQzRWbFduWkw4dm02UEZkb3dvV0ppcm0tdkFLWTg1a19MTnZCakhDVlVaQjRCb05YYXNPem96adIBWkFVX3lxTFBQczJ5aUZUUEUyaF9ySTRyVlJWV0xySUc3N2ZsWXJTdFFJU0VWX1NEdVlkYTNBcllWQkZuUFk5eWs1a2FCb3daM0d2UmdjazdLeGN5eFFibFB2UQ?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 6,
-     "source": "エキサイト",
-     "title": "猫が『鳴きながらウロウロ』する理由6つ 伝えたいことがあるの？注意すべきケースも解説",
-     "url": "https://www.excite.co.jp/news/article/nekochan_cat50226/"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -405,6 +389,26 @@
      "image": "https://imgs.niusnews.com/upload/posts/posts_image3_142437_1793790599.jpg",
      "image_via": "og:image",
      "url": "https://www.niusnews.com/=P2dz9zy61",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "フルーツタルトの具になって寝るだけでかわいい猫用クッションが新登場！",
+     "highlight": "猫用クッション",
+     "image": "https://news.walkerplus.com/article/130616/727260_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/130616/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-04",
+     "headline": "猫が『鳴きながらウロウロ』する理由6つ 伝えたいことがあるの？注意すべきケースも解説",
+     "highlight": "",
+     "image": "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.excite.co.jp/news/article/nekochan_cat50226/",
      "weight": "normal"
     }
    ],
