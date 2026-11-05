@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-05T15:17:38+00:00",
+ "checked": "2026-11-05T16:29:57+00:00",
  "fired": {
   "at": "2026-11-05T15:17:52+00:00",
   "results": {
@@ -19,34 +19,20 @@
     "resp": "cse_01W4x6f5TqBWFTc2c62Rx6QV",
     "sig": "4a44a5d4d5bc"
    },
-   "items": [
-    "Astrae Oratio",
-    "dota2",
-    "gelato pique",
-    "星巴克马克杯",
-    "滑雪",
-    "猫用品"
-   ],
-   "last_batch": "2026-11-05T12:53:31+00:00",
+   "items": [],
+   "last_batch": "2026-11-05T15:52:04+00:00",
    "last_error": {
-    "at": "2026-11-04T04:26:16+00:00",
+    "at": "2026-11-05T15:27:30+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 453,
-   "prog_day": "2026-11-05",
-   "ripe": [
-    "Astrae Oratio",
-    "dota2",
-    "gelato pique",
-    "星巴克马克杯",
-    "滑雪",
-    "猫用品"
-   ],
-   "sig": "4a44a5d4d5bc",
+   "need": false,
+   "prog": 0,
+   "prog_day": "2026-11-06",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 761629,
-   "why": "整理待ちの記事 7 件（6 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
