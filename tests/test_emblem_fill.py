@@ -2468,6 +2468,18 @@ class FindSources(unittest.TestCase):
             self.assertTrue(ef.official_has(item, "YOUNG"))
         self.assertEqual([c["image"] for c in cands], [url])
 
+    def test_group_foreign_commons_head(self):
+        """グループの Commons の写真はファイル名にグループ名が要る（VORA → Walter De Vora は別物）。items.yaml の全グループを数える。"""
+        item = {"name": "A2O LITE", "emblem_kind": "group"}
+        bad = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Walter_De_Vora_-_FC_Wacker_Innsbruck_(2).jpg/500px-x.jpg"
+        ok = "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/A2O_LITE_-_RADA_0898.jpg/500px-A2O_LITE_-_RADA_0898.jpg"
+        self.assertTrue(ef.group_foreign(item, bad))
+        self.assertFalse(ef.group_foreign(item, ok))
+        self.assertFalse(ef.group_foreign(item, "https://cdn.example/lite-artwork-young.webp"))
+        self.assertFalse(ef.group_foreign({"name": "X", "emblem_kind": "character"}, bad))
+        left = [i["name"] for i in ef.load_items() if any(isinstance(x, dict) and not x.get("lock") and ef.group_foreign(i, x.get("source")) for x in i.get("emblem") or [])]
+        self.assertEqual(left, [], "同名の別物が基準に残っているグループ")
+
     def test_official_key_spelling_variants(self):
         """ヘボン式と訓令式・m/n の違いも同じ人（綴り違いで公式を取り逃さない）。別の人は混ざらない。"""
         em = ef.emblem
