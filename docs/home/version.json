@@ -1,32 +1,32 @@
 {
- "admin": "de27c29ea7f9",
- "admin-ai": "e42e9a3f3a61",
+ "admin": "c7e471e6ce0b",
+ "admin-ai": "097f91fa19e3",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "303432af"
+   "6740b8ec"
   ],
   "tokens": [
    "AI 編集のトークン",
    "18bce37c"
   ]
  },
- "admin-boards": "186a431b435c",
+ "admin-boards": "6604237d8559",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "3c783f33"
+   "c81205ec"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "2573c74db41e",
+ "admin-emblem": "81370b2e951b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "8c88cfc4"
+   "4151f292"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "82e6184894c2",
  "admin-members_marks": {},
- "admin-now": "b23351a08d12",
+ "admin-now": "259d7f4303e8",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c1fb2d1b"
+   "4477e4dd"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "50c6c000"
+   "8cdaea26"
   ],
   "term-panel": [
    "ライブログ",
-   "8ea875ec"
+   "a47ca35b"
   ]
  },
- "admin-system": "9a78a44362a8",
+ "admin-system": "13c82ae0903a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ed03051c"
+   "2401ec23"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "eccc3591"
+   "39fef52c"
   ]
  },
  "admin_marks": {},
- "heat": "c85de6e42f95",
+ "heat": "79e683860c16",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "4293cd90"
+   "3ee348c0"
   ],
   "ranking": [
    "ランキング",
-   "cba4d51a"
+   "5a69a1cd"
   ]
  },
- "index": "f5763a0b7b26",
+ "index": "18732490e001",
  "index_marks": {
   "front": [
    "トップ",
-   "bb2f4fbc"
+   "a3b46080"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "7818198d"
+   "f06e7b08"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "e091f407"
+   "5451102b"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "5afc79a4"
+   "be9a7bed"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "c5918694"
+   "efe4e44c"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "ced15a65"
   ]
  },
- "updated": "11.06 00:22",
+ "updated": "11.06 00:29",
  "wishlist": "a0d5d6f49d81"
 }
