@@ -3872,6 +3872,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.46,
+  "local": "pics/4a01f1cc743f0782.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.W1G2VreXiwD9CotCTi8Wmg&pid=News&w=700": {
   "w": 700,
   "h": 366,

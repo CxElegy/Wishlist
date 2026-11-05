@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "21de5ae9879b",
+ "edit_sig": "dc9d00667c1a",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -84,38 +84,23 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "NEXON運営・グレイゲームズ開発の新作MMORPG。装備成長システム「オーバーギアード」や大規模協力戦を備える。",
      "date": "2026-11-05",
-     "n": 1,
-     "source": "디스이즈게임 on MSN",
-     "title": "내가 만든 장비로 강해지는 MMORPG ‘템빨: 오버기어드’",
-     "url": "https://www.msn.com/ko-kr/gaming/%EB%A1%A4%ED%94%8C%EB%A0%88%EC%9E%89/%EB%82%B4%EA%B0%80-%EB%A7%8C%EB%93%A0-%EC%9E%A5%EB%B9%84%EB%A1%9C-%EA%B0%95%ED%95%B4%EC%A7%80%EB%8A%94-mmorpg-%ED%85%9C%EB%B9%A8-%EC%98%A4%EB%B2%84%EA%B8%B0%EC%96%B4%EB%93%9C/ar-AA2gPLdy"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 2,
-     "source": "Dexerto",
-     "title": "25 best MMOs & MMORPGs in 2026",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE43YkJyREM4UUJNUGE1TGtIU2ttblJRbHh1LTB0UUhfcnhDUF9SSDNlUHBfc0wxemg3bjVzX24zSGFjMVBwVnRKR290d1BiWWpZWXF6ODhWNjNPeFZObEVHdkYtN2wyRTdiN0J2dWhSNGRRVWlPOGZuX3RzVQ?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 3,
-     "source": "테크M on MSN",
-     "title": "넥슨 '템빨' 11월 26일 정식 출시... 모두 함께 즐기는 MMORPG, 원작 매력에 충실",
-     "url": "https://www.msn.com/ko-kr/news/other/%EB%84%A5%EC%8A%A8-%ED%85%9C%EB%B9%A8-11%EC%9B%94-26%EC%9D%BC-%EC%A0%95%EC%8B%9D-%EC%B6%9C%EC%8B%9C-%EB%AA%A8%EB%91%90-%ED%95%A8%EA%BB%98-%EC%A6%90%EA%B8%B0%EB%8A%94-mmorpg-%EC%9B%90%EC%9E%91-%EB%A7%A4%EB%A0%A5%EC%97%90-%EC%B6%A9%EC%8B%A4/ar-AA2gOSya"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 4,
-     "source": "GameMeca",
-     "title": "NEXONの新作MMORPG『テムパル ～アイテムの力～ オーバーギアード』11月26日リリース",
-     "url": "https://www.gamemeca.com/ja/view.php?gid=1783052"
+     "event": {
+      "date": "2026-11-26",
+      "label": "発売日"
+     },
+     "headline": "NEXONの新作MMORPG『テムパル ～アイテムの力～ オーバーギアード』11月26日リリース",
+     "highlight": "11月26日リリース",
+     "image": "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700",
+     "image_via": "AI 挑选",
+     "url": "https://www.gamemeca.com/ja/view.php?gid=1783052",
+     "weight": "hero"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",

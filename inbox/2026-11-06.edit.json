@@ -73,7 +73,8 @@
  "_covered": {
   "GTA 6": 26,
   "漫威电影": 16,
-  "ILLIT": 4
+  "ILLIT": 4,
+  "MMORPG 新作": 4
  },
  "漫威电影": [
   {
@@ -160,6 +161,24 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "NEXONの新作MMORPG『テムパル ～アイテムの力～ オーバーギアード』11月26日リリース",
+   "highlight": "11月26日リリース",
+   "blurb": "NEXON運営・グレイゲームズ開発の新作MMORPG。装備成長システム「オーバーギアード」や大規模協力戦を備える。",
+   "weight": "hero",
+   "refs": [
+    4,
+    1,
+    3
+   ],
+   "event": {
+    "date": "2026-11-26",
+    "label": "発売日"
+   },
+   "image": "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700"
   }
  ]
 }
