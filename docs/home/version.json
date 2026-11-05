@@ -1,10 +1,10 @@
 {
- "admin": "b5707d580a17",
- "admin-ai": "cbc2ceabe6f0",
+ "admin": "94f8001197c8",
+ "admin-ai": "370464d6c5cc",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "bd80d7c9"
+   "92fed4c9"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "5bc8c40b"
   ]
  },
- "admin-emblem": "d78815c5bdb0",
+ "admin-emblem": "40fcd2af1331",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "05d40e2d"
+   "fa4a1b34"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "82e6184894c2",
  "admin-members_marks": {},
- "admin-now": "e99c19969af9",
+ "admin-now": "1fc1bb6cec60",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c42d86f3"
+   "6a5661d5"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "ca366948"
   ]
  },
- "admin-system": "e10edf7dcbe6",
+ "admin-system": "590909c95cfe",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f4d3ded9"
+   "03398ee8"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1ea539fe"
+   "d070ed4b"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "a07dbf49"
   ]
  },
- "index": "b0d8630719dc",
+ "index": "7b98229717cf",
  "index_marks": {
   "front": [
    "トップ",
-   "8fd2cca7"
+   "0bd2de7b"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "e28e181e"
+   "83d48d81"
   ],
   "w-130724c0": [
    "猫用品",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "a1fc3cca"
+   "58492008"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "f1f08c41"
+   "89ef6877"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "d739c876"
+   "b3df8e00"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "c5918694"
+   "447f7b51"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "d21114bf"
+   "a09dc6fc"
   ],
   "w-f303ad09": [
    "绝区零",
    "d5e6e2c7"
   ]
  },
- "updated": "11.05 19:08",
+ "updated": "11.05 19:19",
  "wishlist": "a0d5d6f49d81"
 }

@@ -59,7 +59,6 @@
   "https://www.bgr.com/2299534/improve-samsung-phone-display-simple-changes/": "https://www.bgr.com/img/gallery/improve-your-samsung-phones-display-with-these-simple-changes/l-intro-1793116280.jpg",
   "https://www.billboard.com/music/chart-beat/mlk-second-japan-hot-100-number-1-thats-chojo-vaundy-1236374100/": "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024",
   "https://www.binance.com/en/square/post/383999231349891": "https://www.bing.com/th?id=ONUT.kmyRK2XqbDABaHcLtgUdBw&pid=News&w=1080",
-  "https://www.binance.com/es/square/post/11-02-2026-polymarket-s-dota-2-game-2-winner-odds-for-potn9ki-rise-23-3-points-383999231349891": "https://www.bing.com/th?id=ONUT.kmyRK2XqbDABaHcLtgUdBw&pid=News&w=1080",
   "https://www.chiba-tv.com/plus/detail/2026112186394": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1489960052156450557/origin_1.jpg",
   "https://www.elitedaily.com/lifestyle/dunkin-avengers-doomsday-menu-review": "https://www.bing.com/th?id=ONUT.t2qwkEpP1SbUOrVUYM19wA&pid=News&w=1200",
   "https://www.gameple.co.kr/news/articleView.html?idxno=216826": "https://www.bing.com/th?id=ONUT.zV1ReHGr-FyrNcMW02R1aw&pid=News&w=700",
@@ -79,6 +78,7 @@
   "https://www.sakhaparliament.ru/goods/fashion/g101036328": null,
   "https://www.sina.cn/news/detail/5356822332443719.html": "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg",
   "https://www.sina.cn/news/detail/5359474912273486.html": "https://k.sinaimg.cn/n/news/1_img/upload/d8010f78/213/w2048h1365/20261105/c3ba-6a57406836c125de5255b9ca310cd10b.jpg/w710h400z1l50t1q75b0c.jpg?by=comos",
+  "https://www.sina.cn/news/detail/5361663826202214.html": "http://wx3.sinaimg.cn/middle/647c8fably1iiqjopis2gj20yo0lgn47.jpg",
   "https://www.sina.cn/news/detail/5361860312566212.html": "http://wx2.sinaimg.cn/middle/90b10eb9ly1iir69cew67j20u01hcx6p.jpg",
   "https://www.sohu.com/a/1097180768_120228492": "https://www.bing.com/th?id=ONUT.mFTqLAL_laAf1DRALLtOqw&pid=News&w=984",
   "https://www.techrepublic.com/article/news-ipad-mini-oled-vs-galaxy-tab-s11/": "https://assets.techrepublic.com/uploads/2026/11/ipad-mini-oled-vs-galaxy-tab-s11-featured.jpg?f=jpeg",
@@ -1207,7 +1207,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "绝区零",
    "date": "2026-11-04",
    "hits": [],
@@ -1574,21 +1574,21 @@
   {
    "batch": 6,
    "because": "dota2",
-   "date": "2026-11-02",
+   "date": "2026-11-04",
    "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.kmyRK2XqbDABaHcLtgUdBw&pid=News&w=1080",
+   "image": "http://wx3.sinaimg.cn/middle/647c8fably1iiqjopis2gj20yo0lgn47.jpg",
    "kind": "board",
    "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
    "score": 5,
-   "source": "Binance",
+   "source": "新浪网",
    "taste": [
     [
      "作品:dota2",
      1
     ]
    ],
-   "title": "Polymarket's Dota 2 Game 2 Winner Odds for potn9ki Rise 23.3 Points",
-   "url": "https://www.binance.com/en/square/post/383999231349891",
+   "title": "由于Loda的措辞导致我理解错误，经多方核实后更正之前发布的错误消息：EGM没有去世，只是去玩魔兽世界了。对于误传错误信息造成的影响道歉。[老师好]#DOTA2[超话]##DOTA2# ​​​​",
+   "url": "https://www.sina.cn/news/detail/5361663826202214.html",
    "words": [],
    "work": "dota2"
   },
@@ -1608,8 +1608,8 @@
      1
     ]
    ],
-   "title": "Las probabilidades de potn9ki de ganar el segundo juego de Dota 2 en Polymarket suben 23,3 puntos",
-   "url": "https://www.binance.com/es/square/post/11-02-2026-polymarket-s-dota-2-game-2-winner-odds-for-potn9ki-rise-23-3-points-383999231349891",
+   "title": "Polymarket's Dota 2 Game 2 Winner Odds for potn9ki Rise 23.3 Points",
+   "url": "https://www.binance.com/en/square/post/383999231349891",
    "words": [],
    "work": "dota2"
   },
@@ -2051,11 +2051,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2063,15 +2063,15 @@
    8
   ],
   [
-   "galaxy",
-   7
-  ],
-  [
-   "galaxy",
-   7
-  ],
-  [
    "三星 Galaxy",
+   7
+  ],
+  [
+   "作品:三星手机",
+   7
+  ],
+  [
+   "galaxy",
    7
   ]
  ]

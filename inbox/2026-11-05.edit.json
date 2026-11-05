@@ -2,10 +2,10 @@
  "_covered": {
   "漫威电影": 113,
   "三星手机": 53,
-  "GTA 6": 83,
+  "GTA 6": 92,
   "チェーンソーマン": 19,
   "A2O LITE": 15,
-  "dota2": 9,
+  "dota2": 12,
   "周杰伦": 17,
   "あつ森": 6,
   "哈利波特剧集": 9,
@@ -16,7 +16,7 @@
   "日本顶级网球赛事": 2,
   "MMORPG 新作": 17,
   "Vaundy": 4,
-  "Astrae Oratio": 2,
+  "Astrae Oratio": 3,
   "滑雪": 2,
   "gelato pique": 7,
   "FROM": 2,
@@ -247,7 +247,8 @@
     52,
     62,
     66,
-    74
+    74,
+    91
    ],
    "event": {
     "date": "2026-11-10",
@@ -295,7 +296,9 @@
     65,
     68,
     79,
-    78
+    78,
+    85,
+    86
    ]
   },
   {
@@ -457,7 +460,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    10,
+    12
    ]
   },
   {
@@ -467,6 +472,15 @@
    "weight": "normal",
    "refs": [
     9
+   ]
+  },
+  {
+   "headline": "Valve has released a new patch for Dota 2 that fixes a critical bug",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -777,8 +791,10 @@
    "weight": "lead",
    "refs": [
     2,
-    1
-   ]
+    1,
+    3
+   ],
+   "image": "https://static.invenglobal.com/upload/image/2026/10/30/r1793322194781761.jpeg"
   }
  ],
  "滑雪": [

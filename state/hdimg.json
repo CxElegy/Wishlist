@@ -73,12 +73,6 @@
   ],
   "why": "看不清"
  },
- "http://n.sinaimg.cn/sinakd20261105ac/533/w480h853/20261105/c65c-1c6939f5bd4d8f12473588a3ec6b3302.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 1280,
-  "v": 3
- },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -140,6 +134,19 @@
   "out": [
    1269,
    708
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/647c8fably1iiqjopis2gj20yo0lgn47.jpg": {
+  "w": 1248,
+  "h": 772,
+  "target": 720,
+  "v": 3,
+  "local": "pics/e2ad33e856d70de2.webp",
+  "out": [
+   1248,
+   772
   ],
   "why": "防盗链",
   "ref": true
@@ -688,18 +695,12 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.slist.kr/news/thumbnail/202611/779129_1190477_3233_v150.jpg": {
-  "w": 300,
-  "h": 200,
+ "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg": {
+  "w": 600,
+  "h": 370,
   "target": 1280,
   "v": 3,
-  "blur": 0.677,
-  "local": "pics/4e52e5a8a4d036b0.webp",
-  "out": [
-   900,
-   600
-  ],
-  "why": "看不清"
+  "blur": 0.388
  },
  "https://cdn.sortiraparis.com/images/80/66131/1332847-world-of-warcraft-forever-date-de-sortie-et-nouveautes-du-mmorpg-de-blizzard.jpg": {
   "w": 1800,
@@ -749,9 +750,9 @@
   "target": 1280,
   "v": 3
  },
- "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=202611031247249730205868f676220867377_0.png&nmt=30": {
-  "w": 5953,
-  "h": 3969,
+ "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261105130648011460d3244b4fed58141237106.jpg&nmt=30": {
+  "w": 1333,
+  "h": 2000,
   "target": 720,
   "v": 3
  },
@@ -1187,6 +1188,12 @@
   "v": 3
  },
  "https://hawk.live/storage/images/posts/ramzes666-reveals-will-continue-career-25330.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/valve-fixed-meepo-bug-25412.jpg": {
   "w": 1200,
   "h": 628,
   "target": 1280,
@@ -3252,6 +3259,12 @@
   "v": 3,
   "blur": 0.411
  },
+ "https://s.eximg.jp/exnews/feed/Prtimes/fc/Prtimes_2026-11-02-16333-238/Prtimes_2026-11-02-16333-238_1.jpg": {
+  "w": 650,
+  "h": 488,
+  "target": 720,
+  "v": 3
+ },
  "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg": {
   "w": 700,
   "h": 467,
@@ -3416,12 +3429,12 @@
   "target": 1280,
   "v": 3
  },
- "https://static.invenglobal.com/upload/thumb/2026/10/30/c/n1793322187996449.jpg": {
-  "w": 800,
-  "h": 457,
+ "https://static.invenglobal.com/upload/image/2026/10/30/r1793322194781761.jpeg": {
+  "w": 708,
+  "h": 497,
   "target": 1280,
   "v": 3,
-  "blur": 0.347
+  "blur": 0.378
  },
  "https://static.mercdn.net/item/detail/orig/photos/m75436159869_1.jpg?1779623865": {
   "w": 1080,
