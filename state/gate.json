@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-05T10:35:27+00:00",
+ "checked": "2026-11-05T11:30:39+00:00",
  "fired": {
-  "at": "2026-11-05T10:49:02+00:00",
+  "at": "2026-11-05T11:30:39+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-05T09:27:34+00:00",
-    "attempts": 2,
+    "at": "2026-11-05T11:30:39+00:00",
+    "attempts": 1,
     "day": "2026-11-05",
-    "prog": 347,
-    "resp": "cse_01W4x6f85nTEZkqwZqVi6UFy",
-    "sig": "23e5aa4534b5"
+    "prog": 410,
+    "resp": "cse_01W4x6f7m5ZhtvU7YPyWEFpJ",
+    "sig": "2678d36817c8"
    },
    "items": [
     "A2O LITE",
@@ -36,11 +36,17 @@
    "need": true,
    "prog": 410,
    "prog_day": "2026-11-05",
-   "ripe": [],
-   "sig": "fddda37390d1",
+   "ripe": [
+    "ILLIT",
+    "gelato pique",
+    "周杰伦",
+    "滑雪",
+    "绝区零"
+   ],
+   "sig": "2678d36817c8",
    "token_cap": 1000000,
    "tokens_today": 657295,
-   "why": "整理待ちの記事 8 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 8 件（7 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -49,14 +55,14 @@
     "チェーンソーマン",
     "dota2",
     "哈利波特剧集",
-    "漫威电影",
-    "FROM"
+    "漫威电影"
    ],
    "need": true,
-   "sig": "e11b0aad640b",
+   "sig": "9a98912fe894",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "FROM",
     "GTA 6",
     "The Mandalorian",
     "Vaundy",
@@ -65,7 +71,7 @@
     "周杰伦",
     "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 10 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
