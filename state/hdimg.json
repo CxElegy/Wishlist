@@ -144,6 +144,12 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/647c8fably1iiqjopis2gj20yo0lgn47.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-05"
+ },
  "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg": {
   "w": 1752,
   "h": 2830,
@@ -1020,10 +1026,10 @@
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/yukimaji.jpg": {
-  "w": 405,
-  "h": 526,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-05"
  },
  "https://dn.gov.ua/storage/app/sites/1/newsoda2026/iv-kvartal/3010/2026103001.jpg": {
   "w": 1820,
@@ -1200,10 +1206,10 @@
   "v": 3
  },
  "https://hawk.live/storage/images/posts/malr1ne-names-best-mid-laners-matchmaking-25264.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-05"
  },
  "https://hawk.live/storage/images/posts/meepo-bug-dota-25408.jpg": {
   "w": 1200,
@@ -1309,6 +1315,12 @@
    853
   ],
   "why": "看不清"
+ },
+ "https://hotelbank.jp/wp-content/uploads/eyecatch-191037-auto-1.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-05"
  },
  "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/FdDiCobugixEyhx.png": {
   "w": 1080,
@@ -4095,6 +4107,18 @@
   "v": 3,
   "blur": 0.413
  },
+ "https://www.bing.com/th?id=ONUT.Ar67po89OhvnGvID8BSIRQ&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-05"
+ },
  "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4111,12 +4135,6 @@
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.EqguNiju4lt1zB2e2fqdoQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -4753,6 +4771,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.happo-one.jp/wp2019/wp-content/uploads/2019/11/ogp-1024x929.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-05"
+ },
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/THND-FF-000193-H-2026.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
@@ -4826,6 +4850,12 @@
    1080
   ],
   "why": "看不清"
+ },
+ "https://www.nikkei.com/nkd/disclosure/tdnr/20261030560696/thumbnail/?ttype=ogp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-05"
  },
  "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg": {
   "w": 1200,

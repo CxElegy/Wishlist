@@ -5,7 +5,7 @@
   "GTA 6": 105,
   "チェーンソーマン": 19,
   "A2O LITE": 16,
-  "dota2": 12,
+  "dota2": 13,
   "周杰伦": 19,
   "あつ森": 6,
   "哈利波特剧集": 10,
@@ -16,12 +16,12 @@
   "日本顶级网球赛事": 2,
   "MMORPG 新作": 20,
   "Vaundy": 4,
-  "Astrae Oratio": 3,
-  "滑雪": 3,
-  "gelato pique": 8,
+  "Astrae Oratio": 4,
+  "滑雪": 5,
+  "gelato pique": 9,
   "FROM": 2,
   "BLEACH Mirrors High": 1,
-  "星巴克马克杯": 3
+  "星巴克马克杯": 4
  },
  "漫威电影": [
   {
@@ -491,6 +491,15 @@
    "refs": [
     11
    ]
+  },
+  {
+   "headline": "Malr1ne Identifies the Main Problem with Dota 2 Matchmaking",
+   "highlight": "Main Problem",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
+   ]
   }
  ],
  "周杰伦": [
@@ -862,6 +871,24 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "『雪マジ』2026年度スタート！全国130スキー場で19～22歳のリフト券が無料に。15周年調査で若年層の継続利用も明らかに",
+   "highlight": "19～22歳のリフト券が無料",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "春スキーの3月は2月からどこまで下がるか｜倶知安−54%・湯沢−24%・白馬−22%、野沢温泉は−3%",
+   "highlight": "倶知安−54%",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "gelato pique": [
@@ -886,7 +913,8 @@
    "weight": "normal",
    "refs": [
     1,
-    3
+    3,
+    9
    ]
   },
   {
@@ -949,6 +977,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "Starbucks snowglobe mug is here! See Starbucks 2026 holiday collection",
+   "highlight": "snowglobe mug",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]
