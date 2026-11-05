@@ -79,7 +79,11 @@
   "The Mandalorian": 2,
   "チェーンソーマン": 2,
   "哈利波特剧集": 1,
-  "滑雪": 1
+  "滑雪": 1,
+  "FROM": 2,
+  "猫用品": 1,
+  "周杰伦": 1,
+  "A2O LITE": 1
  },
  "漫威电影": [
   {
@@ -252,5 +256,40 @@
    ],
    "image": "https://www.snowmagazine.com/images/news/2026-2027/Oct%2026/introimages/Ski%20News%20.webp"
   }
- ]
+ ],
+ "FROM": [
+  {
+   "headline": "When Does ‘From’ Season 5 Come Out on Netflix and MGM+?",
+   "highlight": "Season 5",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://decider.com/wp-content/uploads/2026/06/From-s4.jpg?quality=75&strip=all&w=1200"
+  },
+  {
+   "headline": "'FROM' Series Is Currently Climbing Netflix's Global Top 10",
+   "highlight": "Global Top 10",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "ネコグッズ大放出！ネコ好きにはたまらない「ちよだ猫まつり」に行ってきた",
+   "highlight": "ちよだ猫まつり",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/137789/772116_615.jpg"
+  }
+ ],
+ "周杰伦": [],
+ "A2O LITE": []
 }
