@@ -10,6 +10,8 @@ import socketserver
 import sys
 import threading
 
+sys.path.insert(0, __import__("os").path.dirname(__file__))
+
 PAGES = ["home/index.html", "index.html"]
 
 
@@ -23,12 +25,13 @@ def serve(root):
 
 def main(argv):
     from playwright.sync_api import sync_playwright
+    import browser   # 写真の配信止めと Supabase の写し（test_browser_guard：直接 chromium.launch しない）
     pages = argv or PAGES
     srv = serve("docs")
     base = f"http://127.0.0.1:{srv.server_address[1]}/Wishlist/"
     errs = []
     with sync_playwright() as p:
-        b = p.chromium.launch()
+        b = browser.launch(p)
         for w in (1400, 390):
             ctx = b.new_context(viewport={"width": w, "height": 900})
             # 手元の http だけ通す。/Wishlist/ の頭は Pages の網址なので docs/ に読み替える
