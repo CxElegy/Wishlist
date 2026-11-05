@@ -77,7 +77,8 @@
   "MMORPG 新作": 4,
   "三星手机": 3,
   "The Mandalorian": 2,
-  "チェーンソーマン": 2
+  "チェーンソーマン": 2,
+  "哈利波特剧集": 1
  },
  "漫威电影": [
   {
@@ -226,5 +227,17 @@
    "image": "https://www.jedinews.com/wp-content/uploads/2026/11/maxresdefault-7.jpg"
   }
  ],
- "チェーンソーマン": []
+ "チェーンソーマン": [],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter TV Series on HBO: Release Date, Title, Trailer, and Everything Else to Know",
+   "highlight": "",
+   "blurb": "TV Guide's roundup of what is known so far about HBO's Harry Potter series: release date, title and trailer.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.tvguide.com/a/img/resize/5cf47bdc7299209785082eaa28a18154bd44c9c7/hub/2025/05/27/3c50dcfe-f99f-4e56-bca9-1d5b85b36cab/250527-harrypotterseries.png?auto=webp&quality=70&width=1096"
+  }
+ ]
 }

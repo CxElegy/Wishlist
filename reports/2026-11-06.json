@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "b71fd581b1be",
+ "edit_sig": "01ef0939646e",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -225,17 +225,19 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "TV Guide's roundup of what is known so far about HBO's Harry Potter series: release date, title and trailer.",
      "date": "2026-11-03",
-     "n": 1,
-     "source": "TVGuide.com",
-     "title": "Harry Potter TV Series on HBO: Release Date, Title, Trailer, and Everything Else to Know",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1PaWxJOTdzRGFaT0V1eXJRcmdHQ0szdlhCR1B6bmNiT2Fjcm0yQ0M1SnVmTHozUklETHNYdU1JY3RFRmpac1FPS1JaSm5sUFZTcWVSQXQzRGp0ZUMxc1dRdUVCVF83QS1EVjVPMA?oc=5"
+     "headline": "Harry Potter TV Series on HBO: Release Date, Title, Trailer, and Everything Else to Know",
+     "highlight": "",
+     "image": "https://www.tvguide.com/a/img/resize/5cf47bdc7299209785082eaa28a18154bd44c9c7/hub/2025/05/27/3c50dcfe-f99f-4e56-bca9-1d5b85b36cab/250527-harrypotterseries.png?auto=webp&quality=70&width=1096",
+     "image_via": "AI 挑选",
+     "url": "https://www.tvguide.com/news/harry-potter-tv-series-hbo-max/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
