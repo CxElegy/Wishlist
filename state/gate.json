@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-11-05T12:32:50+00:00",
+ "changed": false,
+ "checked": "2026-11-05T12:33:45+00:00",
  "fired": {
-  "at": "2026-11-05T12:32:50+00:00",
+  "at": "2026-11-05T12:33:45+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-05T12:32:50+00:00",
+    "at": "2026-11-05T12:33:45+00:00",
     "attempts": 1,
     "day": "2026-11-05",
     "prog": 416,
-    "resp": "cse_01W4x6f56aVphxEjT15rCLWK",
-    "sig": "e63de931b205"
+    "resp": "cse_01W4x6f9YdmS9BoetnYHkqRx",
+    "sig": "6bd8d9b173bb"
    },
    "items": [
     "A2O LITE",
@@ -62,26 +62,24 @@
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "dota2",
-    "漫威电影",
-    "GTA 6",
-    "Astrae Oratio",
-    "绝区零"
+    "チェーンソーマン"
    ],
    "need": true,
-   "sig": "862c0479d56d",
+   "sig": "f34c0f7d308e",
    "waiting": [
     "A2O LITE",
     "FROM",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
     "周杰伦",
-    "哈利波特剧集"
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 13 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
