@@ -22,11 +22,11 @@
    "5bc8c40b"
   ]
  },
- "admin-emblem": "9305164b44fe",
+ "admin-emblem": "cf026dc2b149",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c390af98"
+   "424641e0"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,24 +34,24 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "96165e6c"
+   "252d676a"
   ],
   "emblems": [
    "小元素",
-   "8e5db731"
+   "363be624"
   ]
  },
  "admin-members": "82e6184894c2",
  "admin-members_marks": {},
- "admin-now": "b03b50983a35",
+ "admin-now": "dd755cef865c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4446d91b"
+   "c5bb49bc"
   ],
   "queue": [
    "いまの状況",
-   "7ba67ee7"
+   "550cc477"
   ],
   "status": [
    "運行状況",
@@ -59,22 +59,22 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a8e2ff00"
+   "a250af27"
   ]
  },
- "admin-system": "d87ce7d4d659",
+ "admin-system": "dbbb471ecd31",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "64d389d9"
+   "52b36b4a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "decd60ee"
+   "ec7fce7d"
   ],
   "res": [
    "リソース・並列と制限",
-   "d4b58ee9"
+   "081a5494"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "33bb00e1"
   ]
  },
- "index": "8a7e234af4f3",
+ "index": "d4177bd09aaa",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "8b8cf7ac"
+   "080d6e7c"
   ],
   "w-130724c0": [
    "猫用品",
@@ -196,6 +196,6 @@
    "d5e6e2c7"
   ]
  },
- "updated": "11.05 18:29",
+ "updated": "11.05 18:34",
  "wishlist": "9241602f699c"
 }
