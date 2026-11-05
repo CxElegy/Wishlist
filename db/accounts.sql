@@ -1,3 +1,5 @@
+-- ⚠ 流し直し禁止（2026-11-05 全体点検 本 3）：ここの関数・grant は後のファイル（auth_guard.sql・live_status.sql・my_votes_own.sql ほか）が上書きした古い形。
+--   全部を流し直すと門（can_edit・account の分け）が外れる。今の形は本番の DB（pg_get_functiondef で読む）。直すときは新しいファイルに足す。
 -- アカウント（2026-10-19，用户定的）：test1 と test2 を「2 つのアカウント」として分ける。以後の一般ユーザーも同じ形で足す。
 -- 自分ごとのデータ（投票・篇幅・目次の分け方・依頼・写真・AI 編集の開關・更新中の帯・集めた記事）の表に account を持たせ、
 -- 網页は自分の account を渡す関数（p_account つき）だけを使う。前からある p_account なしの関数は test1 専用のまま残す
@@ -49,6 +51,8 @@ begin
   if coalesce(p, '') !~ '^[a-z0-9_-]{1,40}$' then raise exception 'account が不正'; end if;
   return p;
 end $$;
+-- search_path を固定（2026-11-05 本 3：本文の名前は全部 pg_catalog か schema つきで解決。動きは変えない）
+alter function private.acct(text) set search_path = private, public, pg_temp;
 
 -- 5. 網页が使う関数（p_account つき）
 create or replace function public.my_votes(p_account text)

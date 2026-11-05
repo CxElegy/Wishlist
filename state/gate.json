@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-05T03:35:34+00:00",
+ "checked": "2026-11-05T04:45:29+00:00",
  "fired": {
-  "at": "2026-11-05T03:35:34+00:00",
+  "at": "2026-11-05T04:45:29+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,66 +20,49 @@
     "sig": "b03b0ecb81ac"
    },
    "items": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
     "gelato pique",
     "あつ森",
     "チェーンソーマン",
-    "三星手机",
     "周杰伦",
-    "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-11-05T02:53:06+00:00",
+   "last_batch": "2026-11-05T03:53:05+00:00",
    "last_error": {
     "at": "2026-11-04T04:26:16+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 267,
+   "prog": 298,
    "prog_day": "2026-11-05",
-   "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "三星手机",
-    "漫威电影"
-   ],
-   "sig": "b03b0ecb81ac",
+   "ripe": [],
+   "sig": "e063d3ad1c2f",
    "token_cap": 1000000,
-   "tokens_today": 419237,
-   "why": "整理待ちの記事 38 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 472628,
+   "why": "整理待ちの記事 7 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
+   "items": [
     "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
+    "dota2",
     "哈利波特剧集",
     "漫威电影",
-    "绝区零"
+    "FROM",
+    "GTA 6",
+    "あつ森",
+    "A2O LITE",
+    "周杰伦",
+    "The Mandalorian",
+    "Astrae Oratio",
+    "绝区零",
+    "Vaundy",
+    "ぐでたま"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "need": true,
+   "sig": "761a63e92cad",
+   "waiting": [],
+   "why": "足りない 15 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
