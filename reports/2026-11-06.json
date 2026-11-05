@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "495123409858",
+ "edit_sig": "33b603def6a4",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -417,24 +417,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-11-04",
-     "n": 1,
-     "source": "eGamers.io",
-     "title": "Netflix’s Bass X Machina Blends The Mandalorian and Avatar Into a Bloody Sci-Fi Western",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPcXFKSGlRWWZCdlNHaFJYanRRV0FvbFloS1JobzRGY20zalFMemtmTFhkVVdsamZmSDN4SGdqa2tCcXpONDN4OWZXYmRyV0EyZnlMeXVzU2R6bkh3YWU1R0Z3dmtpOHNpZS1UdTRBSU1TemFGUUJ4NzNJckJiRW9wTlU1bVFNdVM3T3BYWVBiOUFTc2xpZzBMdDRianJlbjNfZ3puVWNrUkpSUQ?oc=5"
-    },
-    {
+     "blurb": "The Mandalorian and Grogu are ambushed by Moff Gideon in a LEGO Star Wars: The Mandalorian clip for kids.",
      "date": "2026-11-05",
-     "n": 2,
-     "source": "Jedi News",
-     "title": "The Mandalorian and Grogu Ambushed By Moff Gideon | LEGO Star Wars: The Mandalorian | Star Wars Kids",
-     "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQQnpLaGNCcTFMM0FIcGZvUVo2bUJrYl85S2JpM29KX2ZhVFZ2cWp6RWZWSGREMlotX0N6VF9sa2ZhemZzNExtT1Z5ZEJlWVV1WjBWOUZGRHR0b1FUMTMzYzJfN0VlQjcxb0xXSmN6VEhrcVJjMm5fd0FjQXZlZDVEZ2N0SUNnTmQtRUNrYjNEOVoyaHBZaU11UnhzU0tOMWVNT1h2SVNnUExTOGhFSDFIRUZfU21ZZzRyUW56M0pWQmIzT0g0YXdUTEthS3hEbExHcnhrZkVFa0JyODNl?oc=5"
+     "headline": "The Mandalorian and Grogu Ambushed By Moff Gideon | LEGO Star Wars: The Mandalorian | Star Wars Kids",
+     "highlight": "",
+     "image": "https://www.jedinews.com/wp-content/uploads/2026/11/maxresdefault-7.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.jedinews.com/film-music-tv/articles/the-mandalorian-and-grogu-ambushed-by-moff-gideon-lego-star-wars-the-mandalorian-star-wars-kids/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
