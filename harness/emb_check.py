@@ -21,7 +21,7 @@
   E27 公式の人物の絵を読めない版面（情報）  公式サイトがあるキャラの版面で、HTML から人物の絵が 1 枚も見つからない（JS で描く公式など）数
   E19 公式があるのにアップのまま（情報：✗ にしない）  顔だけのアップ（fs > 0.5）が残る小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数を版面ごとに出す。公式が先の規則が gather・控え・入れ替えの全部の入口に効いているかの数え直し（0 に向かう）
   E20 胸像待ちが回っていない  state/emblem_closeup.json の待ちの人に「次に試す見込み」next がない・版面の見込み（emblem_closeup_eta.json）がない・毎回探す名簿の上位の next が 3 時間より古い（後台が回っていない）。close_plan の保存が全部の入口で効いているかの数え。お客さまの版面の分は boards.config.emblem_closeup（待ち）に emblem_closeup_next・_eta がないか・古いかを同じ式で数える（boards_closeup_bad）。入口が close_round を使うかは tests/test_emblem_fill.py も数える\n  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
-  E17 人でない名前   キャラの版面で、名簿（emblem_who）の先頭 10 人に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる（店長の items.yaml とお客さまの boards.config の両方。種族・敵の型・物のページは分類で emblem.THING_CAT が名簿から外す）
+  E17 人でない名前   キャラの版面で、名簿（emblem_who）の全員（前は先頭 10 人だけで、あつ森の 19 位 Player・スプラ 3 の 13 位 Maws が数に入らなかった）に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる（店長の items.yaml とお客さまの boards.config の両方。種族・敵の型・物のページは分類で emblem.THING_CAT が名簿から外す）
   E16 顔だけのアップ  cutout（全身 body は除く）の顔の幅 > 画像の幅の CLOSE_W（45%）か、顔の下端から下が高さの SHOULDER_MIN（15%）未満（emblem_fill.closeup_of と同じしきい値。ここは YuNet で測れたものだけ：アニメ絵の検出は取るときの規則だけ）。小元素は胸像（BLEACH の黒崎一護）
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
   E14 顔の大きさ  同じ版面の人物（全身 body は除く）の「顔の高さ × 倍率」の最大 ÷ 最小 > 1.25（emblem_face.fit が全版面に効いていない。店長もお客さまの版面も）
@@ -238,8 +238,8 @@ def not_char():
     return lambda s: bool(rx.search(str(s or "")))
 
 
-def not_people(top=10):
-    """E17：名簿の先頭 top 人か今の小元素に、人でない名前がいる版面 → {版面: [名前]}。"""
+def not_people(top=None):
+    """E17：名簿（top＝None で全員）か今の小元素に、人でない名前がいる版面 → {版面: [名前]}。"""
     bad, out = not_char(), {}
     for it in yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", []):
         if it.get("emblem_kind") != "character":
@@ -251,7 +251,7 @@ def not_people(top=10):
     return out
 
 
-def boards_not_people(rows, top=10):
+def boards_not_people(rows, top=None):
     """E17 のお客さまの版面の分：boards の行 [{name, config}] のキャラの版面（config.emblem_fandom か emblem_category がある）で、not_people と同じ式 → {版面: [名前]}。
     店長の items.yaml だけ数えていて、ライブラリの名簿に残る Wyverians・Inklings が見えなかった（2026-11-05）。"""
     bad, out = not_char(), {}
@@ -263,6 +263,28 @@ def boards_not_people(rows, top=10):
         hit = [n for n in dict.fromkeys(names) if bad(n)]
         if hit:
             out[r.get("name")] = hit
+    return out
+
+
+def stale_rosters(rows):
+    """E17（情報）：名簿の規則の版（emblem_fill.NAMES_V）より古い版で数えた名簿のまま残るキャラの版面（店長 state/emblem_progress の names_v・お客さま boards.config.emblem_state.nv）→ [名前]。
+    版を上げても回っていない版面は、直した規則がまだ効いていない（2026-11-05：原神・スプラ 3 が nv 14 のまま Traveler・Inklings）。"""
+    import ast
+    src = (ROOT / "scripts" / "emblem_fill.py").read_text(encoding="utf-8")
+    nv = next(ast.literal_eval(n.value) for n in ast.parse(src).body if isinstance(n, ast.Assign) and getattr(n.targets[0], "id", "") == "NAMES_V")
+    out = []
+    try:
+        prog = json.loads((ROOT / "state" / "emblem_progress.json").read_text(encoding="utf-8")).get("items") or {}
+    except Exception:  # noqa: BLE001
+        prog = {}
+    for it in yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", []):
+        if it.get("emblem_kind") == "character" and it.get("emblem_who") and (prog.get(it["name"]) or {}).get("names_v") != nv:
+            out.append(it["name"])
+    for r in rows or []:
+        c = r.get("config") or {}
+        if (c.get("emblem_fandom") or c.get("emblem_category")) and c.get("emblem_kind") in (None, "character") and c.get("emblem_who") \
+                and (c.get("emblem_state") or {}).get("nv") != nv:
+            out.append(f"お客さま {r.get('name')}")
     return out
 
 
@@ -764,6 +786,9 @@ def check(pg, who, width, out, full=False, guest=False):
         found["E17"] = [f"{k} {'・'.join(v)}" for k, v in not_people().items()]
         try:
             found["E17"] += [f"お客さま {k} {'・'.join(v)}" for k, v in boards_not_people(boards_rows()).items()]   # ライブラリの名簿も同じ式（店長とお客さま）
+            n, full = boards_coverage()
+            old = stale_rosters(boards_rows())
+            print(f"  情報 E17 お客さまの版面 {n} 件を数えた（{'全部' if full else '公開の key で見える分だけ：残りは未測'}）・名簿の規則の版（NAMES_V）が古いキャラの版面 {len(old)} 件（次の見回りで数え直し）：{'・'.join(old)[:300]}")
         except Exception as e:  # noqa: BLE001
             print(f"  情報 E17 お客さまの版面を数えられなかった：{e}")
     if guest:

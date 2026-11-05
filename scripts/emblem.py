@@ -252,7 +252,7 @@ def bad_source(x):
 
 NOT_CHAR = re.compile(r"\bcharacters?\b|\blist\b|^(?:the )?(?:players?|parents?|protagonists?)$|^unnamed\b|\([^)]*(?:smash bros|\bvs\.)"
                       r"|^(?:the )?(?:travell?ers?|hunters?|wyverians?|inklings?|octolings?)$|^octolings? \(|\bmanekin\b|\bmannequins?\b"   # 種族（Wyverians・Inklings）・役割（Hunter・Traveler）・名無しの人形（Wonderland Manekin）
-                      r"|^(?:an? |the )?(?:old (?:man|woman)|merchant|fairy|villagers?)$", re.I)   # 名前のない役（ゼルダの Old Man・Merchant）
+                      r"|^(?:an? |the )?(?:merchant|fairy|villagers?)$|\bold (?:man|woman)$", re.I)   # 名前のない役（ゼルダの Old Man・Merchant。Old Man は前に役の語が付いても：Sword-Giving Old Man）
 
 
 def not_character(name):

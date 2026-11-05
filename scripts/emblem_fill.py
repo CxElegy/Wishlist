@@ -81,7 +81,7 @@ RULES = {
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
 PICK_PASSES = 3   # fill_one：1 つの段で、切り抜きの検査に外れた人の次の候補を取り直す回数（最初を含む）
-NAMES_V = 15   # 15：お客さまの版面（library_emblem.board_item）も版が上がった回に _recount（14 はそろった名簿のスプラ 3 が数え直されず Inklings が残った）。 14：種族・敵の型・物のページ（分類 Species・Races・Items・Types of …・Cut characters：スプラ 3 の Inklings・Steel Eel・Maws、ゼルダの Fairy、あつ森の Xsq）を名簿から外す（emblem.THING_CAT）。 13：公式サイトの候補を自動で選ぶ取り方に入れた（AUTO_SOURCES）・回す順で欠けた主役と公式のある人を固定（BLEACH Rukia・Kisuke）。 12：フランチャイズ（subs.kind シリーズ）の名簿は中の作品（P179）の出演者を出た回数の順に（franchise_cast：漫威电影が Avengers: Doomsday 1 作の出演者 33 人で、Iron Man・Cap の主役が入らず 3 枚止まりだった）。 11：種族・役割・名無し（Wyverians・Hunter・Traveler・Manekin）を名簿から外す（emblem.NOT_CHAR）。 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
+NAMES_V = 16   # 16：名簿の全員を人でない名前で見直す（emblem_fill.prune_roster：分類の空のあつ森の Player・Xsq、前からいたスプラ 3 の Maws・Steel Eel）・前に役の語が付いた Old Man（ゼルダの Sword-Giving Old Man）も NOT_CHAR。 15：15：お客さまの版面（library_emblem.board_item）も版が上がった回に _recount（14 はそろった名簿のスプラ 3 が数え直されず Inklings が残った）。 14：種族・敵の型・物のページ（分類 Species・Races・Items・Types of …・Cut characters：スプラ 3 の Inklings・Steel Eel・Maws、ゼルダの Fairy、あつ森の Xsq）を名簿から外す（emblem.THING_CAT）。 13：公式サイトの候補を自動で選ぶ取り方に入れた（AUTO_SOURCES）・回す順で欠けた主役と公式のある人を固定（BLEACH Rukia・Kisuke）。 12：フランチャイズ（subs.kind シリーズ）の名簿は中の作品（P179）の出演者を出た回数の順に（franchise_cast：漫威电影が Avengers: Doomsday 1 作の出演者 33 人で、Iron Man・Cap の主役が入らず 3 枚止まりだった）。 11：種族・役割・名無し（Wyverians・Hunter・Traveler・Manekin）を名簿から外す（emblem.NOT_CHAR）。 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -536,6 +536,29 @@ def subjects(item, kind, hi):
     if kind == "character" and item.get("anilist_id"):
         return anilist_names(item["anilist_id"], hi)
     return [item.get("emblem_subject") or item["name"]]
+
+
+def prune_roster(item, log=print):
+    """キャラの版面の今の名簿（emblem_who）から人でない名前を外す（取り方の手がかりがなくても毎回）：名前の形（emblem.NOT_CHAR）と、
+    名簿の規則の版が上がった回（_recount）は名簿の全員のページの分類（emblem.groups：種族・敵の型・物・Cut characters）。
+    roster は分類・AniList・出演者のある版面でしか回らず、分類が空のあつ森に Player・Parents・Xsq が残った（2026-11-05）。→ 外した人数。"""
+    who = list(item.get("emblem_who") or [])
+    if kind_of(item) != "character" or live_action(item) or not who:
+        return 0
+    keep = [w for w in who if not emblem.not_character(w)]
+    api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
+    if item.get("_recount") and api and keep:
+        try:
+            gone = emblem.groups(api, keep)
+            keep = [w for w in keep if w not in gone]
+        except Exception as e:
+            log(f"  [名簿] {item['name']}：分類を読めなかった {e}")
+    if keep == who:
+        return 0
+    with WRITE_LOCK:
+        _set_field(item["name"], "emblem_who", json.dumps(keep, ensure_ascii=False) + "   # 集める対象（メンバー・キャラ・出演者）")
+    log(f"  [名簿] {item['name']}：人でない名前 {len(who) - len(keep)} 人を外した（{'・'.join(w for w in who if w not in keep)[:200]}）")
+    return len(who) - len(keep)
 
 
 def roster(item, log=print):
@@ -2190,13 +2213,19 @@ def fill_one(item, log=print):
     取り方の段（STRATEGIES）を、目標に届くまで同じ回の中で順に上がる：① 標準 → ② 名前を広げる → ③ 公式・記事のページ。
     各段で 集める → 確かめる（check：顔なし・遠景・何人も・別人・同じ画像を理由つきで落とす）→ 選ぶ（auto_pick）→ 書いて切り抜く。
     → {state: ok / failed, note, tried, funnel, steps, material}。全部の段で届かなければ failed（材料が変わったらもう一度）。"""
-    found = False
+    found, extra = False, {k: v for k, v in item.items() if k.startswith("_")}   # _recount・_round は読み直しで落ちる（店長の items.yaml には書かない）
     try:   # 取り方に要るもの（作品の Fandom・キャラの分類）が書いていなければ先に探す
         if find_sources(item, log):
             found = True
             item = next(i for i in load_items() if i["name"] == item["name"])
     except Exception as e:
         log(f"  [取り方] {item['name']}：{e}")
+    try:
+        item = {**item, **extra}
+        if prune_roster(item, log):
+            item = {**next(i for i in load_items() if i["name"] == item["name"]), **extra}
+    except Exception as e:
+        log(f"  [名簿] {item['name']}：{e}")
     pooln = int(item.get("emblem_pool") or 0)
     if (item.get("emblem_category") or item.get("anilist_id") or live_action(item) and item.get("wikidata")) and (
             found or item.get("_recount") or not pooln or len(item.get("emblem_who") or []) < min(CEIL.get(kind_of(item), 0), pooln)):

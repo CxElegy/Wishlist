@@ -362,6 +362,25 @@ class Rules(unittest.TestCase):
         finally:
             shutil.rmtree(tmp)
 
+    def test_prune_roster_without_source(self):
+        """分類が空（あつ森）でも名簿の人でない名前（Player・Old Man の付いた役）を外す。版が上がった回は分類で物（Xsq の Cut characters）も。"""
+        import tempfile, shutil
+        from unittest import mock
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        try:
+            (tmp / "items.yaml").write_text(
+                'items:\n  - name: G\n    type: game\n    emblem_kind: character\n    emblem_category: ""\n    emblem_api: https://w/api.php\n'
+                '    emblem_who: ["A", "Player", "Sword-Giving Old Man", "Xsq", "B"]\n', encoding="utf-8")
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "groups", return_value={"Xsq"}) as g:
+                item = yaml.safe_load((tmp / "items.yaml").read_text())["items"][0]
+                self.assertEqual(ef.prune_roster(item, log=lambda *_: None), 2)
+                g.assert_not_called()   # 版が同じなら分類は読まない（毎回の通信を増やさない）
+                item = yaml.safe_load((tmp / "items.yaml").read_text())["items"][0]
+                self.assertEqual(ef.prune_roster({**item, "_recount": True}, log=lambda *_: None), 1)
+            self.assertEqual(yaml.safe_load((tmp / "items.yaml").read_text())["items"][0]["emblem_who"], ["A", "B"])
+        finally:
+            shutil.rmtree(tmp)
+
     def test_category_top_continues(self):
         """分類が 200 人を超えたら続き（cmcontinue）、参照が 500 を超えたら続き（lhcontinue）で数える。分類の説明の記事・下位のページは除く。"""
         import json as js
