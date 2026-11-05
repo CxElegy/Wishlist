@@ -244,6 +244,34 @@ class Rules(unittest.TestCase):
             got = ef.check(cands, log=lambda *_: None, need_face=True, strict=True)
         self.assertEqual([c["image"] for c in got], ["http://hptv"])
 
+    def test_official_cand_is_the_person(self):
+        """公式サイトの立ち絵（パスにその人の名前）は 1 枚だけでも「別人」で落とさない（A2O LITE HIMEKI…・漫威电影 Reed Richards が
+        strict の same_person で 1 枚＝本人と言えないと毎回外れていた）。顔の検査（遠景・顔なし）はそのまま。"""
+        from unittest import mock
+        from PIL import Image
+        img = Image.linear_gradient("L").convert("RGB")
+        item = {"name": "G", "site": "https://g.example/", "emblem_kind": "group"}
+        cands = []
+        with mock.patch.object(ef.emblem, "official_for", return_value=["http://lite-artwork-himeki.webp"]):
+            ef.official_cands(item, "HIMEKI", cands, {})
+        cands.append({"subject": "VORA", "image": "http://yt", "source": "YouTube"})
+        far = {"faces": 1, "ratio": 0.05, "second": 0}
+        cands.append({**cands[0], "subject": "XILI", "image": "http://far"})
+
+        def insp(data):
+            im = img.copy()
+            im.info["u"] = data
+            return "photo", None, im
+        info = lambda im: ("f", far if im.info["u"] == "http://far" else {"faces": 1, "ratio": 0.3, "second": 0})
+        with mock.patch.object(ef, "_get", side_effect=lambda u, *a: u), mock.patch.object(ef, "inspect", side_effect=insp), \
+                mock.patch.object(ef.face_id, "face_info", side_effect=info), \
+                mock.patch.object(ef.face_id, "same_person", return_value=set()), \
+                mock.patch.object(ef, "_hash", side_effect=lambda im: hash(im.info["u"])):
+            r = {}
+            got = ef.check(cands, log=lambda *_: None, need_face=True, strict=True, reasons=r)
+        self.assertEqual([c["image"] for c in got], ["http://lite-artwork-himeki.webp"])   # YouTube の 1 枚は今までどおり別人で落ちる
+        self.assertEqual(r, {"別人": 1, "遠景": 1})   # 公式でも遠景は落とす（閾値は変えない）
+
     def test_is_remake(self):
         # 原作が同じ別の映像作品がある剧だけ作り直し（哈利波特剧集）。FROM は前の映画がないので外さない
         from unittest import mock
