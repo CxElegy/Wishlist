@@ -189,6 +189,18 @@ def inspect(data):
     return shape, key_color(img_k), img
 
 
+def trim_margin(img, tol=12):
+    """四隅と同じ色（白地・透明）の余白を切った画像。中身が全体の 9 割以上なら元のまま。"""
+    from PIL import Image, ImageChops
+    rgba = img.convert("RGBA")
+    bg = Image.new("RGBA", rgba.size, rgba.getpixel((0, 0)))
+    diff = ImageChops.difference(rgba, bg).convert("L").point(lambda v: 255 if v > tol else 0)
+    bb = diff.getbbox()
+    if not bb or (bb[2] - bb[0]) * (bb[3] - bb[1]) >= 0.9 * rgba.width * rgba.height:
+        return img
+    return img.crop(bb)
+
+
 def key_color(img):
     """不透明な部分だけで量子化し、「面積 × 鮮やかさ²」がいちばん大きい色を代表色にする（灰色・白・黒・淡い背景色の面積だけで選ばない）。"""
     from PIL import Image

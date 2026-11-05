@@ -1703,6 +1703,8 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None, reject_
             if ImageStat.Stat(img.convert("L")).stddev[0] < BLANK_STD:   # 真っ白・真っ黒のほぼ一色の画像
                 drop("白紙", c)
                 continue
+            if c.get("trust_id"):   # 公式の立ち絵は広い白地の真ん中に人（Marvel 2000×792）：余白を切ってから顔を見る（顔が小さく「顔なし」で落ちていた：Human Torch）
+                img = emblem.trim_margin(img)
             dl.append({**c, "shape": shape, "_img": img})
         except Exception as e:
             drop("使えない", c, str(e)[:50])

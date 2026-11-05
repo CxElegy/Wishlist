@@ -366,6 +366,15 @@ class OfficialSourcesE15(unittest.TestCase):
             self.assertEqual(emblem.official_person_images("https://m.example/", {"iron", "man"}), ["https://cdn.example/irm.webp"])
             self.assertEqual(emblem.official_person_images("https://m.example/", {"captain", "america"}), [])
 
+    def test_trim_margin(self):
+        """公式の立ち絵の広い白地（2000×792 の真ん中に人）は余白を切ってから顔を見る。余白のない絵はそのまま。"""
+        import emblem
+        im = Image.new("RGB", (2000, 792), "white")
+        im.paste((200, 30, 30), (800, 20, 1100, 792))
+        self.assertEqual(emblem.trim_margin(im).size, (300, 772))
+        full = Image.new("RGB", (100, 100), (200, 30, 30))
+        self.assertIs(emblem.trim_margin(full), full)
+
     def test_group_swap_and_e30(self):
         """group のメンバーの Commons の写真も公式の立ち絵に取り直す対象（RADA）。先頭の人の公式の絵が外した画像に残るのは E30、E21 の「いない」には数えない。"""
         import emblem_fill as ef
