@@ -97,7 +97,19 @@ class EmbCheck(unittest.TestCase):
         for n in ("Wyverians", "Hunter", "Traveler", "Wonderland Manekin", "Inklings", "Old Man", "Soldier 11", "Pochita", "Makima"):
             self.assertEqual(bad(n), emblem.not_character(n), n)
         self.assertTrue(bad("Wyverians") and bad("Wonderland Manekin") and not bad("Soldier 11"))
-        self.assertEqual(emb_check.not_people(), {})
+        self.assertEqual(emb_check.not_people(), {})   # 名簿の全員（前は先頭 10 人だけ：あつ森 19 位の Player が見えなかった）
+        for n in ("Letter-Entrusting Old Man", "Sword-Giving Old Man", "Old Woman"):
+            self.assertTrue(bad(n) and emblem.not_character(n), n)
+        self.assertFalse(bad("Oldman Tom") or bad("Old Mana"))
+
+    def test_stale_rosters(self):
+        """E17（情報）：名簿の規則の版が今の NAMES_V でないキャラの版面（お客さま nv 14 の原神）。"""
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+        import emblem_fill
+        rows = [{"name": "原神", "config": {"emblem_fandom": "g", "emblem_who": ["Traveler"], "emblem_state": {"nv": 14}}},
+                {"name": "新", "config": {"emblem_fandom": "g", "emblem_who": ["A"], "emblem_state": {"nv": emblem_fill.NAMES_V}}}]
+        self.assertIn("お客さま 原神", emb_check.stale_rosters(rows))
+        self.assertNotIn("お客さま 新", emb_check.stale_rosters(rows))
 
     def test_boards_not_people(self):
         """E17 のお客さまの版面の分：キャラの版面の名簿の先頭・小元素の主題に人でない名前（ライブラリのモンハン Wyverians）。キャラでない版面は見ない。"""
@@ -105,6 +117,8 @@ class EmbCheck(unittest.TestCase):
                 {"name": "OK", "config": {"emblem_category": "Characters", "emblem_who": ["Marie"], "emblem": [{"subject": "Inklings"}]}},
                 {"name": "物", "config": {"emblem_who": ["Hunter"]}}]
         self.assertEqual(emb_check.boards_not_people(rows), {"MH": ["Wyverians", "Hunter"], "OK": ["Inklings"]})
+        deep = [{"name": "S", "config": {"emblem_category": "C", "emblem_who": [f"p{i}" for i in range(12)] + ["Octoling (Playable)"]}}]
+        self.assertEqual(emb_check.boards_not_people(deep), {"S": ["Octoling (Playable)"]})   # 13 位も数える
 
 
 class CloseupWait(unittest.TestCase):
