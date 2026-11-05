@@ -3364,6 +3364,29 @@ def stale_report():
     return None
 
 
+def keep_from_report(blocks, old):
+    """heal（edit.json を取り込み直すだけの出刊）で、前の報告で選び済みの絵を落とさない。
+    heal は配図の再探し（hd_images・retry_images）と AI の配図を飛ばすので、作り直すと「AI 挑选」の絵が作品封面に戻り、
+    版面の cover も消えていた（2026-11-05：402 通し点検で reports が 2 割縮んだ・本番の render でも同じ）。
+    同じ網址の記事は前の image・image_via を、cover が空になった版面は前の cover・theme を使う。"""
+    if not old:
+        return
+    olds = {s.get("url"): s for b in old.get("items", []) for s in b.get("stories", []) if s.get("image")}
+    oblk = {b.get("name"): b for b in old.get("items", [])}
+    for b in blocks:
+        for s in b.get("stories", []):
+            o = olds.get(s.get("url"))
+            if o:
+                s["image"] = o["image"]
+                if o.get("image_via"):
+                    s["image_via"] = o["image_via"]
+                else:
+                    s.pop("image_via", None)
+        ob = oblk.get(b.get("name"))
+        if ob and not b.get("cover") and ob.get("cover"):
+            b["cover"], b["theme"] = ob["cover"], ob.get("theme", b.get("theme"))
+
+
 def publish(inbox_path=None, heal=False):
     """heal=True：edit.json を取り込み直すだけの出刊（おすすめ・Reddit・配図の再探しは飛ばして速く）。"""
     settings, items = load_config()
@@ -3462,6 +3485,8 @@ def publish(inbox_path=None, heal=False):
         return
     existing = sorted(p.stem for p in REPORTS_DIR.glob("????-??-??.json"))
     no = existing.index(date) + 1 if date in existing else len(existing) + 1
+    if heal:
+        keep_from_report(blocks, load_json(REPORTS_DIR / f"{date}.json"))
     issue = {"no": no, "date": date, "edit_sig": edit_sig(inbox_path), "items": blocks}
     save_json(REPORTS_DIR / f"{date}.json", issue)
     if not heal:
