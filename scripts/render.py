@@ -1001,8 +1001,10 @@ def _tcard_(story, span, i, today, small=False, mini=False):
 # 每个作品一周内直接显示的消息最多占多高（像素，按桌面版 1200 宽的实际高度估算），按篇幅（数据库 sizes 表）：
 # L 是一屏（900 高的窗口减掉作品名横条和「更多消息」那一行），M 大约半屏，S 大约一行；表里没有的按 M。
 # 同时限条数：小卡片很矮，只按高度算的话没有头条的版面能塞进十几条
-SIZE_HEIGHT = {"S": 300, "M": 400, "L": 760}
-SIZE_COUNT = {"S": 3, "M": 4, "L": 10}
+# F3（2026-11-05）：前は S 300・M 400 で、頭条（260）＋普通 1 本（200）が入らず 16/23 版面が 1 本だけになった。
+# 本数は設定ページの言葉（S 3・M 5・L 8＝digest.SIZE_STORIES）が決まり。高さは「重大が重なったとき」だけ削る見張り
+SIZE_HEIGHT = {"S": 460, "M": 640, "L": 1100}
+SIZE_COUNT = {"S": 3, "M": 5, "L": 8}
 SIZE_SIDE = {"S": 0, "M": 0, "L": 3}  # 头条右边竖排几条普通消息；0 是头条单独一行（图在左、字在右，矮得多）
 
 
@@ -1085,14 +1087,12 @@ def _timeline(stories, today, budget=SIZE_HEIGHT["M"], limit=SIZE_COUNT["M"], si
 
     keep = stories
     if len(stories) > limit or _height(stories, side) > budget:
+        # 重要な順の先頭 k 本で、高さに収まるいちばん多い k（1 本ずつ足す形だと、普通 1 本の横長 200 が 2 本で 125 に縮むのを見落とす）
         by_rank = sorted(newest_first(stories), key=lambda x: RANK.get(x.get("weight"), 2))
-        keep = []
-        for x in by_rank:
-            if len(keep) >= limit:
+        for k in range(min(limit, len(by_rank)), 0, -1):
+            keep = newest_first(by_rank[:k])
+            if k == 1 or _height(keep, side) <= budget:
                 break
-            trial = newest_first(keep + [x])
-            if not keep or _height(trial, side) <= budget:
-                keep = trial
     kept = {id(x) for x in keep}
     rest = [x for x in stories if id(x) not in kept]
     return '<div class="grid">' + _render_rows(_layout(keep, side), today) + "</div>", rest
@@ -2279,6 +2279,21 @@ def render_settings(items, db, updated, schemes=(), own=None):
     row.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
     row.querySelectorAll(".pv").forEach(p => p.hidden = p.dataset.v !== v);
   }};
+  // お客さま本人の設定ページは作った時の値が焼いてあり、作り直し（数分）までは読み直すと前の値に戻って見えた（F4 2026-11-05）。
+  // 保存できた値を「前の値」と一緒にこの端末に 30 分だけ覚え、焼いた値がまだ前の値のままなら覚えた値を出す（読み出しの呼び出しは増やさない）
+  const MEMO = "wl-own-set", memo = (() => {{ try {{ return JSON.parse(localStorage.getItem(MEMO) || "{{}}"); }} catch (_) {{ return {{}}; }} }})();
+  const remember = (k, v, before) => {{ if (!CFG.own) return; memo[k] = [v, before, Date.now()]; try {{ localStorage.setItem(MEMO, JSON.stringify(memo)); }} catch (_) {{}} }};
+  if (CFG.own) {{
+    for (const [k, [v, before, at]] of Object.entries(memo)) {{
+      const [kind, name] = [k.slice(0, k.indexOf(":")), k.slice(k.indexOf(":") + 1)];
+      const row = kind === "size" ? [...document.querySelectorAll(".cfg .row")].find(r => r.dataset.item === name)
+                                  : [...document.querySelectorAll(".srow")].find(r => r.dataset.sec === name);
+      const baked = row?.querySelector('.seg button[aria-pressed="true"]')?.dataset.v;
+      if (row && baked === before && Date.now() - at < 1800000) {{ kind === "size" ? show(row, v) : pick(row, v); }}
+      else delete memo[k];
+    }}
+    try {{ localStorage.setItem(MEMO, JSON.stringify(memo)); }} catch (_) {{}}
+  }}
   document.querySelector(".schemes")?.addEventListener("click", async ev => {{
     const btn = ev.target.closest(".seg button");
     if (!btn || btn.getAttribute("aria-pressed") === "true") return;
@@ -2287,7 +2302,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
     pick(row, btn.dataset.v); btns.forEach(b => b.disabled = true); say(row, T.js_saving);
     try {{
       const r = await rpc("set_nav_scheme", {{p_section: row.dataset.sec, p_scheme: btn.dataset.v}});
-      if (r.ok) say(row, T.js_saved, "ok");
+      if (r.ok) {{ say(row, T.js_saved, "ok"); remember("sch:" + row.dataset.sec, btn.dataset.v, memo["sch:" + row.dataset.sec]?.[1] ?? before); }}
       else {{ if (before) pick(row, before); say(row, T.js_fail, "err"); }}
     }} catch (_) {{ if (before) pick(row, before); say(row, T.js_offline, "err"); }}
     btns.forEach(b => b.disabled = false);
@@ -2345,7 +2360,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
     show(row, btn.dataset.v); btns.forEach(b => b.disabled = true); say(row, T.js_saving);
     try {{
       const r = await rpc("set_size", CFG.own ? {{p_name: row.dataset.item, p_size: btn.dataset.v}} : {{p_item: row.dataset.item, p_size: btn.dataset.v, p_pass: ""}});
-      if (r.ok) say(row, T.js_saved, "ok");
+      if (r.ok) {{ say(row, T.js_saved, "ok"); remember("size:" + row.dataset.item, btn.dataset.v, memo["size:" + row.dataset.item]?.[1] ?? before); }}
       else {{ if (before) show(row, before); say(row, T.js_fail, "err"); }}
     }} catch (_) {{ if (before) show(row, before); say(row, T.js_offline, "err"); }}
     btns.forEach(b => b.disabled = false);
@@ -4272,13 +4287,14 @@ LIVE_JS = """
   // 開いた直後（15 秒以内・まだ入力していない）に、ブラウザの控え（GitHub Pages は 10 分残す）の古いページだと分かったら、
   // ?v=新しい指紋 で開き直して控えを飛ばす。着いたら ?v= は網址から消す。同じ v でまだ古い（配信の控え）ときは繰り返さない
   function cleanV(){try{var u=new URL(location.href);if(u.searchParams.has('v')){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash);}}catch(e){}}
-  function fresh(v){try{var u=new URL(location.href);if(u.searchParams.get('v')===v||Date.now()-LOADED>15000||busy())return false;
-    ss.set(KEY,{to:v,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});   // 開き直したあとも見ていた場所に戻し、増えた記事に印
+  // 1 つの版につき開き直しは 1 回だけ（F2 2026-11-05：?v= → ?wlv= で v が消え、また fresh、を 40 秒で 140 回くり返した）
+  function fresh(v){try{var u=new URL(location.href);if(u.searchParams.get('v')===v||v===ss.get(KEY+':skip')||v===ss.get(KEY+':tried')||Date.now()-LOADED>15000||busy())return false;
+    ss.set(KEY+':tried',v);ss.set(KEY,{to:v,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});   // 開き直したあとも見ていた場所に戻し、増えた記事に印
     u.searchParams.set('v',v);location.replace(u.toString());return true;}catch(e){return false;}}
   function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
       var v=j&&j[PAGE];if(!v||v===VER){cleanV();return;}
-      if(fresh(v))return;
       if(v===ss.get(KEY+':skip'))return;
+      if(fresh(v))return;
       if(pending!==v){pending=v;
         // version.json の <ページ>_marks と自分の data-h を見比べて、どの版面が変わったかを先に言う
         var mk=j[PAGE+'_marks']||{},mine=marks(),ch=[];Object.keys(mk).forEach(function(id){if(mine[id]&&mine[id]!==mk[id][1])ch.push([mk[id][0],'',id]);});
@@ -4628,7 +4644,7 @@ AUTH_JS = r"""
   try{ if(!OWN&&/^(index|wishlist|heat|settings)$/.test(page)&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない（本人のページはもう本人のものなので隠さない）
   var ROLE=__ROLE__, LOCK=__LOCK__[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
   // お客さまの画面の文字。言語は app_users.ui_lang〔今は ja だけ〕。直書きを足さずここへ（tests が数える）
-  var UI={ja:{sayMail:'確認のメールを送れませんでした（メール送信の設定待ち）',sayRate:'送りすぎです。少し待ってからもう一度',bindLogin9:'メールアドレスかパスワードが違います',collecting:'集めています',waitP:'足したものの記事が集まりしだい、ここに並びます。',rm:'外す',rmAria:' を外す',
+  var UI={ja:{sayMail:'確認のメールを送れませんでした（メール送信の設定待ち）',sayRate:'送りすぎです。少し待ってからもう一度',bindLogin9:'メールアドレスかパスワードが違います',collecting:'集めています',waitP:'足したものの記事が集まりしだい、ここに並びます。',rm:'外す',rmAria:' を外す',rmAsk:'「%s」を外しますか？\nページからこの版面がなくなります。',
     added:'足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。',
     pageOf:' さんのページ',loadFail:'読み込めませんでした。ページを開き直してください。',reLogin:'もう一度ログインしてください。',
     introB:'ここは、あなたが追いかけたいものの新しいニュースが毎日並ぶページです',
@@ -4803,9 +4819,11 @@ AUTH_JS = r"""
       rpc('user_agree',{p_name:me.name,p_version:TV}).then(function(){ me.v=TV; saveMe(me); d.remove(); toast(L.askAgree7); refresh(); })
         .catch(function(e){ toast(sayErr(e.message)); });};
   }
+  // ログアウト：この端末だけ（scope local。前は既定の global でほかの端末まで落とした）・本人の票の写しと本人の置き場の名前・設定の控えも消す（F7 2026-11-05）
   function logout(){
     saveMe(null);
-    (sb&&tok?sb.auth.signOut():Promise.resolve()).then(function(){location.reload();});
+    ['wishlist-votes-own','wl-own-path','wl-own-set'].forEach(function(k){try{localStorage.removeItem(k);}catch(_){}});
+    (sb&&tok?sb.auth.signOut({scope:'local'}):Promise.resolve()).then(function(){location.reload();},function(){location.reload();});
   }
   var locked=function(){return R.dataset.lock==='1';};
   document.addEventListener('click',function(ev){
@@ -4934,7 +4952,8 @@ AUTH_JS = r"""
   // （出さないと、足した直後の人に「まだ何も追いかけていません」の空の画面が見える。2026-10-27 の通し点検）
   function ownWait(picks){
     var old=document.querySelector('.wl-ownwait');if(old)old.remove();
-    var have=[].map.call(document.querySelectorAll('section.sec[data-k]'),function(s){return s.dataset.k;});
+    // このページにもうある版面：トップは section.sec[data-k]、設定ページは行 .row[data-item]（F4 2026-11-05：設定ページで全部を「集めています」と出していた）
+    var have=[].map.call(document.querySelectorAll('section.sec[data-k],.cfg .row[data-item]'),function(s){return s.dataset.k||s.dataset.item;});
     var wait=picks.filter(function(x){return !have.some(function(k){return shopHit(k,x.name);});});
     if(!wait.length)return;
     // 焼いた版は「何も追いかけていません」のまま。足した人に「最初の 1 つを選ぼう」「まだ何も…」と矛盾して見せず、外す道も出す（2026-10-27 の通し点検）
@@ -4951,7 +4970,7 @@ AUTH_JS = r"""
     var bar=document.createElement('div');bar.className='wl-mybar wl-ownwait';bar.setAttribute('role','status');
     bar.innerHTML='<b>'+L.collecting+'</b>'+wait.map(function(x){return '<span>'+esc(x.name)+' <button type="button" class="pnx" data-n="'+esc(x.name)+'" aria-label="'+esc(x.name)+L.rmAria+'">'+L.rm+'</button></span>';}).join('')+
       '<small class="ok">'+L.added+'</small>';
-    bar.querySelectorAll('.pnx').forEach(function(b){b.onclick=function(){b.disabled=true;
+    bar.querySelectorAll('.pnx').forEach(function(b){b.onclick=function(){if(!confirm(L.rmAsk.replace('%s',b.dataset.n)))return;b.disabled=true;
       var rest=picks.filter(function(x){return x.name!==b.dataset.n;});
       rpc('my_keywords_set',{p_picks:rest}).then(function(){if(rest.length&&rest.some(function(x){return !have.some(function(k){return shopHit(k,x.name);});}))ownWait(rest);else location.reload();},function(){b.disabled=false;});};});
     var m=document.querySelector('main.issues')||document.querySelector('.page')||document.body;m.insertBefore(bar,m.firstChild);
@@ -5327,6 +5346,7 @@ AUTH_JS = r"""
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
         }});
   }
+  var refT=0,refT0=0;
   function start(){
     if(me&&me.admin){ me.admin=false; saveMe(me); }   // メールの確認を待っていた人（前の仕組み）
     // 規約に同意済みで 1 時間以内に確かめたなら呼ばない（ページを開くたびの user_login は Supabase の読み書きと egress を食う）
@@ -5339,7 +5359,8 @@ AUTH_JS = r"""
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null; if(ev==='SIGNED_OUT')signedOut=true;
       window.WL_TOK=t; if(changed) document.dispatchEvent(new Event('wl-token'));   // ③エンブレムなど、別の部品が店長の令牌でライブラリを読むため
-      if(changed||ev==='INITIAL_SESSION') setTimeout(refresh,0);   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
+      // 同じ鍵で続けて来る知らせ（INITIAL_SESSION のあとの SIGNED_IN など）は 1 回にまとめる（F6 2026-11-05：1 文書で refresh が 2 回＝RPC 6 本）
+      if(changed||(ev==='INITIAL_SESSION'&&!refT0)){ refT0=1; clearTimeout(refT); refT=setTimeout(refresh,120); }   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
   }
@@ -5988,21 +6009,29 @@ def render_me():
   var SET=/[?&]p=settings/.test(location.search), PG=SET?'settings.html':'index.html';   // どのページか（AUTH_JS の ownPage）
   function back(q){{try{{var h=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){{return Date.now()-x<30000;}});h.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(h));}}catch(_){{}}
     location.replace('./'+(SET?'settings.html':'')+(q||'')+location.hash);}}
+  // 上限 12 秒：つながらないまま「読み込み中」を出し続けない（F6 2026-11-05：10 回に 1 回 40 秒以上）→ 前の画面へ
+  var done=0,T=setTimeout(function(){{if(!done){{done=1;back('?own=0');}}}},12000);
   var s=document.createElement('script');s.src=C.lib;s.onerror=function(){{back('?own=0');}};
   s.onload=function(){{
     var sb=window.supabase.createClient(C.url,C.key,{{auth:{{persistSession:true,storageKey:'wl-auth',detectSessionInUrl:false}}}});
     sb.auth.getSession().then(function(r){{
       var se=r&&r.data&&r.data.session;if(!se){{back('');return null;}}
-      return sb.rpc('my_page_path').then(function(p){{
+      // 置き場の名前は人ごとに決まっていて変わらない：同じ人なら前に聞いた名前を使い、my_page_path を毎回呼ばない（F6）
+      var uid=se.user&&se.user.id,kp='wl-own-path',kn=null;try{{kn=JSON.parse(localStorage.getItem(kp)||'null');}}catch(_){{}}
+      var path=kn&&kn.u===uid&&kn.p?Promise.resolve({{data:kn.p}}):sb.rpc('my_page_path');
+      return path.then(function(p){{
         if(p.error||!p.data){{back('?own=0');return null;}}
+        try{{localStorage.setItem(kp,JSON.stringify({{u:uid,p:p.data}}));}}catch(_){{}}
         return sb.storage.from('pages').download(p.data+'/'+PG);
       }});
     }}).then(function(d){{
       if(!d)return;
-      if(d.error||!d.data){{back('?own=0');return;}}
+      if(done)return;
+      if(d.error||!d.data){{try{{localStorage.removeItem('wl-own-path');}}catch(_){{}}back('?own=0');return;}}
       return d.data.text().then(function(h){{
+        if(done)return;
         if(h.indexOf('name="wl-own"')<0){{back('?own=0');return;}}
-        document.open();document.write(h);document.close();
+        done=1;clearTimeout(T);document.open();document.write(h);document.close();
         try{{history.replaceState(null,'','./'+(SET?'settings.html':'')+location.hash);}}catch(_){{}}
       }});
     }}).catch(function(){{back('?own=0');}});
