@@ -787,7 +787,7 @@ ICON_NEXT_JS = ("var l=(this.dataset.icons||'').split(' ').filter(Boolean);"
                 "else{p.classList.remove('icon');p.classList.add('none');this.remove()}}")
 # 2026-10-30：上の 3 つを 1 枚ごとの onerror/onload に書くと HTML の半分（4.1MB のうち 2.1MB）が同じ文字の繰り返しだった。
 # 画像には data-e（r=自分を外す・p=親の枠ごと外す・x=小元素を外して has-emb を戻す・s=主图を換える・i=来源图标）／data-l（i=読めたが小さい）の印だけ付け、処理は head の 1 か所が capture で受ける。
-IMG_FALLBACK_JS = ("(function(){var H={r:function(){this.remove()},p:function(){this.parentNode.remove()},x:function(){var s=this.closest('.sec'),m=this.closest('.emb');if(s)s.classList.remove('has-emb');if(m)m.remove()},s:function(){" + SWAP_JS + "},i:function(){" + ICON_NEXT_JS + "}};"
+IMG_FALLBACK_JS = ("(function(){var H={r:function(){this.remove()},p:function(){this.parentNode.remove()},x:function(){if(window.WLembNext&&window.WLembNext(this))return;var s=this.closest('.sec'),m=this.closest('.emb');if(s)s.classList.remove('has-emb');if(m){m.remove();var d=document.documentElement.dataset;d.embGone=(+d.embGone||0)+1}},s:function(){" + SWAP_JS + "},i:function(){" + ICON_NEXT_JS + "}};"
                    "document.addEventListener('error',function(v){var t=v.target;if(t&&t.tagName==='IMG'&&H[t.dataset.e])H[t.dataset.e].call(t)},true);"
                    "document.addEventListener('load',function(v){var t=v.target;if(t&&t.tagName==='IMG'&&t.dataset.l==='i'&&t.naturalWidth<32)H.i.call(t)},true)})();")
 
@@ -1883,13 +1883,10 @@ EMB_HEAD_JS = ("document.documentElement.classList.add('emb-fade');"
 EMB_JS = """
 (() => {
   const els = [...document.querySelectorAll('.emb')];
-  // 開くたびに候補から 1 枚をランダムに
-  els.forEach(el => {
-    let alts = []; try { alts = JSON.parse(el.dataset.alts || '[]'); } catch (_) {}
-    const inner = el.querySelector('.emb-in'), img = el.querySelector('img');
-    if (alts.length > 1 && inner && img) {
-      const a = alts[Math.floor(Math.random() * Math.min(alts.length, 3))];   // 最初に出る 1 枚は知られている順の 1〜3 位から
-      const n = img.cloneNode(); n.src = a.src;
+  // 1 枚の小元素を差し替える（開いたときのランダムと、読めなかったときの次の候補で同じ形）
+  const put = (el, img, a) => {
+      const inner = el.querySelector('.emb-in');
+      const n = img.cloneNode(); n.src = a.src; n.classList.remove('ld');
       const whole = a.shape === 'badge' && !a.crop && (a.plate || a.ar && (a.ar < 0.95 || a.ar > 1.6));   // render.CARD_AR：カードと比率が離れたら切らない
       n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : a.nb ? ' nb' : a.m >= 1 ? ' fz' : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
       n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.nb ? '--nh:' + a.nb[0] + ';--ng:' + a.nb[1] + ';--na:' + a.nb[2] : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';   // a.m = emblem_face.fit
@@ -1898,7 +1895,19 @@ EMB_JS = """
         c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1);
         c.appendChild(n); inner.replaceChildren(c);
       } else inner.replaceChildren(n);
-    }
+      return n;
+  };
+  const altsOf = el => { try { return JSON.parse(el.dataset.alts || '[]'); } catch (_) { return []; } };
+  // 読めなかった小元素（/p/ にまだ無い・外の網址が落ちた）は枠ごと消さず、同じ版面の次の候補へ（IMG_FALLBACK_JS の x が先に聞く）。候補が尽きたら消す
+  window.WLembNext = img => { const el = img.closest('.emb'); if (!el) return false;
+    const tried = (el.dataset.tried ? el.dataset.tried.split('\n') : []).concat(img.getAttribute('src') || '');
+    const a = altsOf(el).find(x => x && x.src && !tried.includes(x.src)); el.dataset.tried = tried.join('\n');
+    if (!a) return false;
+    const n = put(el, img, a); const show = () => n.classList.add('ld'); (n.decode ? n.decode() : Promise.reject()).then(show, show); return true; };
+  els.forEach(el => {
+    const alts = altsOf(el), img = el.querySelector('img');
+    if (alts.length > 1 && el.querySelector('.emb-in') && img)
+      put(el, img, alts[Math.floor(Math.random() * Math.min(alts.length, 3))]);   // 最初に出る 1 枚は知られている順の 1〜3 位から
   });
   // 3 秒の保険は、画面に入ってから数える（画面外の lazy の写真に先に .ld を付けると、近づいたとき transition なしで「パッ」と出る）
   const late = img => { const go = () => setTimeout(() => img.classList.add('ld'), 3000);

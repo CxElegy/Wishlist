@@ -106,7 +106,7 @@ class AuthTag(unittest.TestCase):
 
     def test_db_names_are_emails(self):
         s = (DB / "auth.sql").read_text(encoding="utf-8")
-        last = s.rsplit("function private.user_name_ok", 1)[1]
+        last = s.rsplit("create or replace function private.user_name_ok", 1)[1]
         self.assertIn("メールアドレスを入れてください", last)
 
 

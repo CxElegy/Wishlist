@@ -26,12 +26,13 @@ def classify(url):
     return "other"
 
 
-def verdict(count, bad):
-    """(ok, 一行)。count＝{'pages','storage'} の取得数、bad＝/p/ の失敗の一覧。"""
+def verdict(count, bad, gone=()):
+    """(ok, 一行)。count＝{'pages','storage'} の取得数、bad＝/p/ の失敗の一覧、gone＝小元素が全部読めず消えた版面 [(だれ, 数)]。"""
     n = count["pages"] + count["storage"]
     share = count["pages"] / n if n else 0
-    ok = n > 0 and share >= 0.99 and not count["storage"] and not bad
-    return ok, "写真・小元素 %d 件のうち Pages %.1f%%・Supabase storage %d 件・/p/ の失敗 %d 件" % (n, share * 100, count["storage"], len(bad))
+    lost = sum(g for _, g in gone)
+    ok = n > 0 and share >= 0.99 and not count["storage"] and not bad and not lost
+    return ok, "写真・小元素 %d 件のうち Pages %.1f%%・Supabase storage %d 件・/p/ の失敗 %d 件・小元素が消えた版面 %d" % (n, share * 100, count["storage"], len(bad), lost)
 
 
 def main():
@@ -41,7 +42,7 @@ def main():
     ap.add_argument("--timeout", type=int, default=120)
     a = ap.parse_args()
     from playwright.sync_api import sync_playwright
-    count, bad, seen, hosts, stor = Counter(), [], set(), Counter(), []
+    count, bad, seen, hosts, stor, gone = Counter(), [], set(), Counter(), [], []
     with sync_playwright() as pw:
         b = launch(pw)
         runs = [(p, None) for p in a.pages.split(",") if a.pages] + [("home/", w) for w in a.who.split(",") if w]
@@ -66,10 +67,13 @@ def main():
                 pg.evaluate("y=>scrollTo(0,y)", y)
                 pg.wait_for_timeout(120)
             pg.wait_for_timeout(2500)
-            print(who or path or "(入口)", dict(count))
+            g = pg.evaluate("+document.documentElement.dataset.embGone||0")   # 候補が尽きて小元素ごと消えた版面（render の IMG_FALLBACK_JS x が数える）
+            if g:
+                gone.append((who or path, g))
+            print(who or path or "(入口)", dict(count), "小元素が消えた版面", g)
             pg.close()
         b.close()
-    ok, line = verdict(count, bad)
+    ok, line = verdict(count, bad, gone)
     print("  Pages の外から出た画像（原寸の外部画像＝/p/ が無いときの落ち先）", sum(hosts.values()), "件・上位", hosts.most_common(4))
     for w, u in stor[:20]:   # どの写真が /p/ に無く Supabase に落ちたか（原因を数える元）
         print("  storage", w, u)
