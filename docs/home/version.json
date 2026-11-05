@@ -1,32 +1,32 @@
 {
- "admin": "1c40c5f5cd28",
- "admin-ai": "6e2a49be363e",
+ "admin": "2b66c93b82df",
+ "admin-ai": "e44797c9e48e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ed1119fa"
+   "6c949649"
   ],
   "tokens": [
    "AI 編集のトークン",
    "199b8dd0"
   ]
  },
- "admin-boards": "5afbe12d4051",
+ "admin-boards": "5905dde156ab",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "a05ea57a"
+   "f303139d"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "b0d6bc8d8334",
+ "admin-emblem": "3cfe3d489e79",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e8c1c0e4"
+   "7237eece"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,39 +34,39 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "bd85affd"
+   "96165e6c"
   ],
   "emblems": [
    "小元素",
-   "521cc1d9"
+   "b79cd9ed"
   ]
  },
  "admin-members": "385c6396a03f",
  "admin-members_marks": {},
- "admin-now": "dd79036be0b9",
+ "admin-now": "19812913ca02",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5ea92705"
+   "9d04606d"
   ],
   "queue": [
    "いまの状況",
-   "4529155c"
+   "d9a87efd"
   ],
   "status": [
    "運行状況",
-   "026a3153"
+   "c4110625"
   ],
   "term-panel": [
    "ライブログ",
-   "3998d6fb"
+   "387ada91"
   ]
  },
- "admin-system": "2dda46edbb6d",
+ "admin-system": "f25472984a16",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d48c988a"
+   "4309e556"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "15903da1"
+   "9a7b54db"
   ]
  },
  "admin_marks": {},
- "heat": "3dc4682b8609",
+ "heat": "2567ef27e0a6",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "18036bd0"
+   "8c85b1bd"
   ],
   "ranking": [
    "ランキング",
-   "4b895529"
+   "a51ef527"
   ]
  },
- "index": "22133e78f29c",
+ "index": "9f9e66911ce6",
  "index_marks": {
   "front": [
    "トップ",
-   "8b427773"
+   "cfd30021"
   ],
   "picks": [
    "気になるかも？",
@@ -133,11 +133,11 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "f4b6fb5c"
+   "ea2391d8"
   ],
   "w-6676e624": [
    "三星手机",
-   "4902cf0c"
+   "73c4ed21"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "041c76ed"
+   "c5918694"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "61045405"
+   "c57cfbfe"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "50c7e686"
+   "a09dc6fc"
   ],
   "w-f303ad09": [
    "绝区零",
    "d5e6e2c7"
   ]
  },
- "updated": "11.05 15:20",
- "wishlist": "6589ed8d2880"
+ "updated": "11.05 15:46",
+ "wishlist": "09f037ac40bf"
 }

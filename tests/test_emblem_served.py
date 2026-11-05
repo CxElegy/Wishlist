@@ -97,9 +97,37 @@ class ForeignPhoto(unittest.TestCase):
                                                                                    "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}}}
         self.assertEqual([x["name"] for x in library_emblem.due([b], 0)], ["Ado"])
 
+    def test_board_written_empty_when_only_one_dropped(self):
+        """版面の唯一の 1 枚が別人：外したあと空の emblem を config に書く（前は got に emblem がなく前の 1 枚が残った）。"""
+        cfg = {"emblem": [self.ADO], "emblem_reject": [self.ADO["source"]],
+               "emblem_state": {"state": "ok", "have": 1, "v": library_emblem.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}}
+
+        def fill(item, log=print):
+            emblem_fill.drop_foreign_group(next(i for i in emblem_fill.load_items() if i["name"] == item["name"]), log)
+            return {"state": "running"}
+        b = {"id": 152, "name": "Ado", "config": cfg}
+        add = library_emblem.fill_board(b, {"section": "music"}, None, "", fill=fill, get=lambda *a, **k: {})
+        self.assertEqual(add["emblem"], [])
+        self.assertEqual(add["emblem_state"]["have"], 0)
+        # reject に入った画像は fill が触らなくても emblem から外す
+        add = library_emblem.fill_board(b, {"section": "music"}, None, "", fill=lambda item, log=print: {"state": "ok"}, get=lambda *a, **k: {})
+        self.assertEqual(add["emblem"], [])
+        keep = {**self.ADO, "lock": True}
+        add = library_emblem.fill_board({**b, "config": {**cfg, "emblem": [keep]}}, {"section": "music"}, None, "",
+                                        fill=lambda item, log=print: {"state": "ok"}, get=lambda *a, **k: {})
+        self.assertNotEqual(add.get("emblem"), [])
+
     def test_shop_items_have_none(self):
         bad = [i["name"] for i in emblem_fill.load_items() for x in i.get("emblem") or [] if emblem_fill.foreign_photo(i, x)]
         self.assertEqual(bad, [])
+        left = [i["name"] for i in emblem_fill.load_items() for x in i.get("emblem") or []
+                if not x.get("lock") and x.get("source") in set(i.get("emblem_reject") or [])]
+        self.assertEqual(left, [])   # 店長の版面：reject に入った画像が emblem に残っていない
+
+    def test_dropped_left_counts(self):
+        b = {"name": "Ado", "config": {"emblem": [self.ADO, {"source": "s2", "subject": "x"}], "emblem_reject": ["s2"]}}
+        self.assertEqual(library_emblem.dropped_left(b), 2)
+        self.assertEqual(library_emblem.dropped_left({"name": "Ado", "config": {"emblem": [{**self.ADO, "lock": True}]}}), 0)
 
 
 if __name__ == "__main__":
