@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-05T09:50:09+00:00",
+ "checked": "2026-11-05T10:22:05+00:00",
  "fired": {
-  "at": "2026-11-05T09:50:09+00:00",
+  "at": "2026-11-05T10:22:05+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -20,6 +20,7 @@
     "sig": "23e5aa4534b5"
    },
    "items": [
+    "A2O LITE",
     "Astrae Oratio",
     "GTA 6",
     "ILLIT",
@@ -35,30 +36,28 @@
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-05T06:06:36+00:00",
+   "last_batch": "2026-11-05T09:39:14+00:00",
    "last_error": {
     "at": "2026-11-04T04:26:16+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 347,
+   "prog": 366,
    "prog_day": "2026-11-05",
    "ripe": [
     "Astrae Oratio",
     "GTA 6",
     "MMORPG 新作",
     "dota2",
-    "gelato pique",
     "チェーンソーマン",
     "三星手机",
-    "哈利波特剧集",
     "漫威电影",
     "猫用品"
    ],
-   "sig": "1b70f798d186",
+   "sig": "bcf1c33f5dac",
    "token_cap": 1000000,
-   "tokens_today": 525985,
-   "why": "整理待ちの記事 57 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 568506,
+   "why": "整理待ちの記事 52 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -68,14 +67,14 @@
     "dota2",
     "哈利波特剧集",
     "漫威电影",
-    "FROM",
-    "GTA 6"
+    "FROM"
    ],
    "need": true,
-   "sig": "769203044573",
+   "sig": "e11b0aad640b",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "あつ森",
@@ -83,7 +82,7 @@
     "周杰伦",
     "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
