@@ -1556,13 +1556,29 @@ def _drop_emblem_files(gone, items):
             (emblem.EMB_DIR / img.split("/", 1)[1]).unlink(missing_ok=True)
 
 
+ITEM_FRESH_MIN, ITEM_STALE_MIN = 20, 40   # requests.yml は 20 分以内の依頼、収集（digest.yml）は 40 分より前の依頼だけ取る
+
+
+def item_requests_query():
+    """待ちの依頼を読む網址。WL_ITEM_AGE=fresh（requests.yml）/ stale（digest.yml）で取る依頼を分ける：
+    done は push のあとなので、同じ依頼を 2 つの workflow が同時に取ると追加が 2 重になる。requests の回は
+    timeout 10 分なので、20 分以内に取った依頼は 40 分までに済む → 2 つの取る範囲は重ならない（2026-11-05 全体点検）。"""
+    q = "item_requests?status=eq.pending&select=id,action,name,config&order=id.asc"
+    age = os.environ.get("WL_ITEM_AGE")
+    if age in ("fresh", "stale"):
+        mins = ITEM_FRESH_MIN if age == "fresh" else ITEM_STALE_MIN
+        at = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(minutes=mins)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        q += f"&created_at={'gt' if age == 'fresh' else 'lt'}.{at}"
+    return q
+
+
 def take_item_requests():
     """设置页上「新增 / 修改关注项」提交的：从数据库 item_requests 表读出待处理的，写进 items.yaml，再标成 done。
     新增的追加到文件末尾，修改的只改提交了的字段（不动原来的内容和注释）。
     名字重复、找不到、内容不对的标成 skipped，原因写在 note 里（设置页上看得到）。
     新增的这一次运行就会收集新闻（往前补抓 first_lookback_days 天），照常发「新增关注项」通知。"""
     try:
-        rows = supabase("item_requests?status=eq.pending&select=id,action,name,config&order=id.asc")
+        rows = supabase(item_requests_query())
     except Exception as err:
         hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/item_requests.sql）" if "PGRST205" in str(err) else ""
         print(f"  [关注项] 读新增 / 修改请求失败{hint}：{err}", file=sys.stderr)
@@ -1597,6 +1613,9 @@ def take_item_requests():
                 done.append(r)
                 continue
             if r.get("action") == "edit" and (r.get("config") or {}).get("_delete") is True:   # 設定ページの「删」
+                if name not in names:   # もう無い：前の回が消して push したが done を付け損ねた（同じ依頼を 2 度取っても同じ結果）
+                    done.append(r)
+                    continue
                 new = delete_item(text, name)
                 got = (yaml.safe_load(new) or {}).get("items") or []
                 assert name not in {i.get("name") for i in got}, "没删掉"
@@ -1622,10 +1641,14 @@ def take_item_requests():
                     raise ValueError("没有要改的")
                 new = set_item_fields(text, name, fields)
             else:
-                if name in names:
-                    raise ValueError(f"关注清单里已经有「{name}」了")
                 fields["type"] = fields.get("type") or "product"
                 fields["keywords"] = fields.get("keywords") or [name]
+                if name in names:
+                    old = next(i for i in items if i["name"] == name)
+                    if WEB_ITEM_MARK in str(old.get("notes") or "") and all(old.get(k) == v for k, v in fields.items() if k != "notes" and v is not None):
+                        done.append(r)   # この依頼で足したもの：前の回が push したが done を付け損ねた（見送りにしない）
+                        continue
+                    raise ValueError(f"关注清单里已经有「{name}」了")
                 fields["notes"] = f"{today} {WEB_ITEM_MARK}。" + (fields.get("notes") or "")
                 new = text.rstrip("\n") + "\n\n" + item_entry_yaml(name, fields)
             got = (yaml.safe_load(new) or {}).get("items") or []
@@ -1660,25 +1683,33 @@ def take_item_requests():
         print(f"关注项：从设置页{what}「{r['name']}」", file=sys.stderr)
 
 
-def mark_item_requests(marks):
-    """設定ページの依頼に done / skipped を付ける（marks = {"done": [id], "skipped": {id: 理由}}）。"""
+def mark_item_requests(marks, tries=3, sleep=time.sleep):
+    """設定ページの依頼に done / skipped を付ける（marks = {"done": [id], "skipped": {id: 理由}}）。付けられたら True。
+    3 回まで。付けられなくても次の回が同じ依頼を取り直し、同じ結果（足した・消した・改めた）を done にする（take_item_requests）。"""
     now = dt.datetime.now(dt.timezone.utc).isoformat()
-    try:
-        if marks["done"]:
-            supabase(f"item_requests?id=in.({','.join(str(i) for i in marks['done'])})",
-                     {"status": "done", "handled_at": now}, "return=minimal", method="PATCH")
-        for rid, why in marks["skipped"].items():
-            supabase(f"item_requests?id=eq.{rid}", {"status": "skipped", "handled_at": now, "note": why},
-                     "return=minimal", method="PATCH")
-    except Exception as err:  # 标不上的下次还会读到：新增的会因为名字已存在被跳过，修改的再改一次结果一样
-        print(f"  [关注项] 标记请求失败：{err}", file=sys.stderr)
+    for n in range(tries):
+        try:
+            if marks["done"]:
+                supabase(f"item_requests?id=in.({','.join(str(i) for i in marks['done'])})",
+                         {"status": "done", "handled_at": now}, "return=minimal", method="PATCH")
+            for rid, why in marks["skipped"].items():
+                supabase(f"item_requests?id=eq.{rid}", {"status": "skipped", "handled_at": now, "note": why},
+                         "return=minimal", method="PATCH")
+            return True
+        except Exception as err:
+            print(f"  [关注项] 标记请求失败（{n + 1} 回目）：{err}", file=sys.stderr)
+            if n + 1 < tries:
+                sleep(5 * (n + 1))
+    return False
 
 
 def mark_items_later():
     """take-items が WL_ITEM_MARKS に残した印を、push が通ったあとで付ける。"""
     p = pathlib.Path(os.environ.get("WL_ITEM_MARKS") or "")
     if p.name and p.exists():
-        mark_item_requests(json.loads(p.read_text(encoding="utf-8")))
+        if not mark_item_requests(json.loads(p.read_text(encoding="utf-8"))):
+            print("::error::設定ページの依頼に done を付けられなかった（push は済み。次の回が取り直して done にする）")
+            sys.exit(1)
         p.unlink()
 
 
