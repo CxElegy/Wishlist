@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-11-05T11:50:27+00:00",
+ "changed": false,
+ "checked": "2026-11-05T12:09:55+00:00",
  "fired": {
-  "at": "2026-11-05T11:50:27+00:00",
+  "at": "2026-11-05T12:09:55+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -21,34 +21,24 @@
    },
    "items": [
     "A2O LITE",
-    "ILLIT",
-    "gelato pique",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "绝区零"
+    "哈利波特剧集"
    ],
-   "last_batch": "2026-11-05T10:20:44+00:00",
+   "last_batch": "2026-11-05T11:38:56+00:00",
    "last_error": {
     "at": "2026-11-04T04:26:16+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 410,
+   "prog": 416,
    "prog_day": "2026-11-05",
    "ripe": [
     "A2O LITE",
-    "ILLIT",
-    "gelato pique",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "绝区零"
+    "哈利波特剧集"
    ],
-   "sig": "1a6b93e1d28a",
+   "sig": "6bd8d9b173bb",
    "token_cap": 1000000,
-   "tokens_today": 657295,
-   "why": "整理待ちの記事 8 件（7 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 700129,
+   "why": "整理待ちの記事 2 件（2 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
