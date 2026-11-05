@@ -1,14 +1,14 @@
 {
  "_covered": {
-  "漫威电影": 104,
+  "漫威电影": 106,
   "三星手机": 42,
   "GTA 6": 72,
-  "チェーンソーマン": 17,
+  "チェーンソーマン": 19,
   "A2O LITE": 15,
-  "dota2": 7,
+  "dota2": 9,
   "周杰伦": 17,
   "あつ森": 6,
-  "哈利波特剧集": 7,
+  "哈利波特剧集": 9,
   "猫用品": 7,
   "The Mandalorian": 7,
   "绝区零": 3,
@@ -18,7 +18,7 @@
   "Vaundy": 4,
   "Astrae Oratio": 2,
   "滑雪": 2,
-  "gelato pique": 5,
+  "gelato pique": 7,
   "FROM": 2,
   "BLEACH Mirrors High": 1,
   "星巴克马克杯": 3
@@ -108,7 +108,8 @@
     30,
     4,
     20,
-    90
+    90,
+    105
    ]
   }
  ],
@@ -338,7 +339,8 @@
     13,
     14,
     16,
-    17
+    17,
+    18
    ]
   }
  ],
@@ -430,6 +432,15 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  },
+  {
+   "headline": "GamerLegion and Yellow Submarine battle for the final spot at Dota 2 EPL Masters III grand final",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
    ]
   }
  ],
@@ -787,7 +798,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    6
    ]
   },
   {

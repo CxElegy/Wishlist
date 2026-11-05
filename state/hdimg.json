@@ -440,18 +440,11 @@
   "target": 1280,
   "v": 3
  },
- "https://attach.setn.com/newsimages/2016/05/23/537350-PH.jpg": {
+ "https://attach.setn.com/newsimages/2017/02/08/803356-PH.jpg": {
   "w": 650,
   "h": 366,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.471,
-  "local": "pics/e6f510feb6fbfa7e.webp",
-  "out": [
-   1280,
-   721
-  ],
-  "why": "看不清"
+  "target": 720,
+  "v": 3
  },
  "https://attach.setn.com/newsimages/2017/02/08/803356-PH.jpg": {
   "w": 650,
@@ -569,12 +562,6 @@
   "v": 3
  },
  "https://cdn.gamemeca.com/gmdata/0001/782/670/gm355356_thumb___17_.webp": {
-  "w": 1200,
-  "h": 670,
-  "target": 1280,
-  "v": 3
- },
- "https://cdn.gamemeca.com/gmdata/0001/782/736/gm360686_pk.webp": {
   "w": 1200,
   "h": 670,
   "target": 1280,
@@ -1329,12 +1316,6 @@
   "target": 720,
   "v": 3
  },
- "https://i0.wp.com/disneyworldfan.jp/wp-content/uploads/2026/10/wdw-holiday-2026-pastel-display.jpeg?fit=2048%2C1536&ssl=1": {
-  "w": 2048,
-  "h": 1536,
-  "target": 1280,
-  "v": 3
- },
  "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2026/08/BLEACH-Mirrors-High-launch-cover.jpg": {
   "w": 1200,
   "h": 624,
@@ -1421,9 +1402,9 @@
   ],
   "why": "看不清"
  },
- "https://image.internetcom.jp/upload/20261030/images/thumb_samsung_galaxy_buds_on.jpg": {
-  "w": 1280,
-  "h": 672,
+ "https://image.newdaily.co.kr/site/data/img/2026/11/03/2026110300063_0.png": {
+  "w": 834,
+  "h": 716,
   "target": 1280,
   "v": 3
  },
@@ -1964,6 +1945,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/555406.png?date=1776075560": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1489552407197877875/origin_1.jpg": {
   "w": 360,
   "h": 360,
@@ -1971,6 +1958,19 @@
   "v": 3,
   "blur": 0.683,
   "local": "pics/a98334cfc34269d5.webp",
+  "out": [
+   1080,
+   1080
+  ],
+  "why": "看不清"
+ },
+ "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1489960052156450557/origin_1.jpg": {
+  "w": 360,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.637,
+  "local": "pics/3fc3d4983bd0a732.webp",
   "out": [
    1080,
    1080
@@ -2441,12 +2441,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://news.pchome.com.tw/newsdata/living/nownews/20261101/79350950286683207009_original.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
-  "v": 3
  },
  "https://news.videoland.com.tw/newsphoto/enews_20261113102_BB5495.webp": {
   "w": 2000,
@@ -2967,6 +2961,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://ni.yam.com/20261102/00448615.202610311048494165m-1202f640ebe25f15.webp": {
+  "w": 800,
+  "h": 600,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.359
+ },
  "https://ni.yam.com/20261103/jp-prt-27516-144-1-261102170146629-547e866ef3ccf8a6.webp": {
   "w": 957,
   "h": 1350,
@@ -3233,6 +3234,18 @@
   "v": 3,
   "blur": 0.411
  },
+ "https://s.eximg.jp/exnews/feed/Prtimes/fc/Prtimes_2026-11-02-16333-238/Prtimes_2026-11-02-16333-238_1.jpg": {
+  "w": 650,
+  "h": 488,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg": {
+  "w": 700,
+  "h": 467,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg": {
   "w": 1200,
   "h": 674,
@@ -3249,12 +3262,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/3b927da5da86c520f2760c9b79e86c81c69980c9d75b186aca9f826e164145d4/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpeople_218%2F4352082a55b73379dd1e25c09081a19f.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/4259e26fbf554c10714840081485bf314ae0d3c36d95d8eff0d01e96b60c8e90/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fb8404a94b12c684c14c3b7d050d31df3.jpg": {
@@ -3296,6 +3303,12 @@
  "https://s.yimg.com/lo/mysterio/api/f0ad7d42651cab0d9735499a50c58fddb47974f3984a93991f2ae0ac0ced48fd/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2F10-31-kklive-taiwan_3560.jpg": {
   "w": 1200,
   "h": 1563,
+  "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.jp/images/finance/common/image/ogp.png": {
+  "w": 1200,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -4052,12 +4065,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.IJDVLGkHQDoTtip5uzDaOA&pid=News&w=700": {
-  "w": 700,
-  "h": 467,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4252,6 +4259,12 @@
  "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ZJg30TRg7eusCGuPTC2e-w&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -4773,18 +4786,6 @@
  "https://www.rappler.com/tachyon/2026/09/alex-eala-us-open-august-2026.jpg": {
   "w": 1200,
   "h": 737,
-  "target": 720,
-  "v": 3
- },
- "https://www.rbbtoday.com/imgs/ogp_f/1061618.jpg": {
-  "w": 600,
-  "h": 498,
-  "target": 720,
-  "v": 3
- },
- "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Ultra-review-design-2.jpg": {
-  "w": 2560,
-  "h": 1441,
   "target": 720,
   "v": 3
  },
