@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "dc9d00667c1a",
+ "edit_sig": "495123409858",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -328,31 +328,39 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Leaks point to four Galaxy S27 models using three chipsets and a major redesign.",
      "date": "2026-11-05",
-     "n": 1,
-     "source": "BBN Times",
-     "title": "Galaxy S27 Leaks: Four New Models, Three Chipsets, and a Massive Redesign",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMmplYmdDRnBzVTJ0S0FUNkplSGRXTTByM0pnbmlrMXhoZjA4NzlTYXVzcm11ZnNDUHhNM3gxN2NQQjFZQVcxR2V0d1RlQ3pWSi1mQkhJN2dLcklHSHd2a1NjbjN4V2lfMmoxOXVwbGxXd3JoVi1GaDE4ekNqUFFrZk40VURXRVFGTTZqUHhIZkVNaDU5N2xXem5LQXgzZEhQNGIyeno5MDExUQ?oc=5"
+     "headline": "Galaxy S27 Leaks: Four New Models, Three Chipsets, and a Massive Redesign",
+     "highlight": "Four New Models",
+     "image": "https://www.bbntimes.com/images/Galaxy_S27_Leaks_Four_New_Models_Three_Chipsets_and_a_Massive_Redesign.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.bbntimes.com/technology/galaxy-s27-leaks-four-new-models-three-chipsets-and-a-massive-redesign",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 2,
-     "source": "PhoneArena",
-     "title": "Unpopular opinion: I kind of like the Galaxy S27 Ultra design language",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPTC1pcHFZcF94VHZxWTV6T2tJbmp5VW54N1g3cVZvWlVLOGxsV2FuSVZGOFgyX0pvaWZrcFFXcGlycHhKTkZXVXlZWmp0SThkN1lVeGM4MnNwUjFINUF6N3hIVV9PMmt4LUJlSGk3eFd0a3pWc1Vycm1ScVcwVFZzZHBRQ1ZMalpyTzZuVzZhb1dZcjdYRnJvSjV6VWNMTDliYjNId215RGdIOERxa0Nz?oc=5"
+     "headline": "Galaxy S27 Gets BIS Certification, but Don’t Expect It Anytime Soon",
+     "highlight": "",
+     "image": "https://sammyguru.com/wp-content/uploads/2026/04/Galaxy-S26-SammyGuru-1-1024x576.jpg",
+     "image_via": "og:image",
+     "url": "https://sammyguru.com/samsung-galaxy-s27-bis-certification-india/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 3,
-     "source": "SammyGuru",
-     "title": "Galaxy S27 Gets BIS Certification, but Don’t Expect It Anytime Soon",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5CYmp1LW9SSzN6eGkwQVhUS3o4eURzdDFYNl9YOTBBMG83clB0MlhnZXpNWGpNRmkycWoybnNTaWJVRlNpZlNEZzRxSE5xeHpRTXFjQ19jdFFXbk0tT29GdU1KbHhlU2J5UktCNWI1V3BfRVE?oc=5"
+     "headline": "Unpopular opinion: I kind of like the Galaxy S27 Ultra design language",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.c0HQo-utsC28dVIOOALYhg&pid=News&w=768",
+     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "url": "https://www.phonearena.com/news/unpopular-opinion-i-kind-of-like-the-galaxy-s27-ultra-design-language_id184382",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",

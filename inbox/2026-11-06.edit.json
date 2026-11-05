@@ -74,7 +74,8 @@
   "GTA 6": 26,
   "漫威电影": 16,
   "ILLIT": 4,
-  "MMORPG 新作": 4
+  "MMORPG 新作": 4,
+  "三星手机": 3
  },
  "漫威电影": [
   {
@@ -179,6 +180,36 @@
     "label": "発売日"
    },
    "image": "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700"
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Galaxy S27 Leaks: Four New Models, Three Chipsets, and a Massive Redesign",
+   "highlight": "Four New Models",
+   "blurb": "Leaks point to four Galaxy S27 models using three chipsets and a major redesign.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bbntimes.com/images/Galaxy_S27_Leaks_Four_New_Models_Three_Chipsets_and_a_Massive_Redesign.jpg"
+  },
+  {
+   "headline": "Galaxy S27 Gets BIS Certification, but Don’t Expect It Anytime Soon",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Unpopular opinion: I kind of like the Galaxy S27 Ultra design language",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }
