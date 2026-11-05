@@ -19,6 +19,7 @@ MSN 的公开文章接口、Reddit（官方 API 或公开 RSS）、YouTube oEmbe
 import html
 import io
 import json
+import logging
 import os
 import pathlib
 import re
@@ -177,6 +178,8 @@ def _scrape(url, limit, referer=None, page=False):
         from scrapling.fetchers import Fetcher
     except Exception:
         return None
+    # scrapling は取った網址を INFO で出す。Actions のログは公開で、お客さまのページ（user_pages）の記事も通るので出さない
+    logging.getLogger("scrapling").setLevel(logging.WARNING)
     try:
         r = Fetcher.get(url, impersonate="chrome", stealthy_headers=page, timeout=TIMEOUT, retries=1,
                         **({"headers": {"Referer": referer}} if referer else {}))

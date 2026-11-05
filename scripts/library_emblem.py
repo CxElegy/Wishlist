@@ -701,8 +701,8 @@ def main(argv):
     if "--check" in argv:   # 待ちはある？（library_emblem.yml の見回り：空なら重い道具を入れずに終える）
         _out(due="true" if todo else "false")
         print(f"ライブラリの小元素：待ち {len(todo)} 版面")
-        n, who = narrow_stale_count(boards)
-        print(f"E24 お客さま {n} 件（全 {len(boards)} 版面・service key）{'：' + '・'.join(map(str, who[:10])) if n else ''}")
+        n, _ = narrow_stale_count(boards)   # 名前はログに出さない
+        print(f"E24 お客さま {n} 件（全 {len(boards)} 版面・service key）")   # 名前は出さない（Actions のログは公開）
         return
     done = {"ok": 0, "running": 0, "failed": 0, "blocked": 0}
     tried = gained = 0
@@ -724,8 +724,8 @@ def main(argv):
         gained += int(add["emblem_state"].get("have") or 0) > int((cfg(b).get("emblem_state") or {}).get("have") or 0)
     # 空になるまで：時間切れで残った版面か途中（running）があり、この回で 1 版面でも増えたなら次の回をすぐ起こす（増えなければ止める）
     _out(worked="true" if tried else "false", more="true" if gained and (len(todo) > tried or done["running"]) else "false")
-    n, who = narrow_stale_count(boards)
-    print(f"E24 お客さま {n} 件（全 {len(boards)} 版面・service key）{'：' + '・'.join(map(str, who[:10])) if n else ''}")
+    n, _ = narrow_stale_count(boards)   # 名前はログに出さない
+    print(f"E24 お客さま {n} 件（全 {len(boards)} 版面・service key）")   # 名前は出さない（Actions のログは公開）
     print(f"ライブラリの小元素：対象 {len(todo)} 版面（店長の版面を除く {len(boards)}）・"
           f"そろった {done['ok']}・途中 {done['running']}・届かない {done['failed']}・Wikidata に断られて次へ {done['blocked']}")
 
