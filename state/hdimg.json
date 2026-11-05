@@ -446,12 +446,6 @@
   "target": 720,
   "v": 3
  },
- "https://attach.setn.com/newsimages/2017/02/08/803356-PH.jpg": {
-  "w": 650,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://auroradesio.it/wp-content/uploads/2026/10/treviglio-77-82-800x445.jpg": {
   "w": 800,
   "h": 445,
@@ -694,12 +688,18 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg": {
-  "w": 600,
-  "h": 370,
+ "https://cdn.slist.kr/news/thumbnail/202611/779129_1190477_3233_v150.jpg": {
+  "w": 300,
+  "h": 200,
   "target": 1280,
   "v": 3,
-  "blur": 0.388
+  "blur": 0.677,
+  "local": "pics/4e52e5a8a4d036b0.webp",
+  "out": [
+   900,
+   600
+  ],
+  "why": "看不清"
  },
  "https://cdn.sortiraparis.com/images/80/66131/1332847-world-of-warcraft-forever-date-de-sortie-et-nouveautes-du-mmorpg-de-blizzard.jpg": {
   "w": 1800,
@@ -1544,12 +1544,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.keizai.biz/nagasaki_keizai/photonews/1793774253_b.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
-  "v": 3
- },
  "https://images.khan.co.kr/article/2026/10/23/news-p.v1.20261023.0671972ae03442a7bf73b2f031c49090_P1.jpg": {
   "w": 1200,
   "h": 665,
@@ -1743,6 +1737,12 @@
    992
   ],
   "why": "看不清"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gNjfn.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcDFq.img": {
   "w": 1423,
@@ -3089,6 +3089,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/03/35482176.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=1050&exp=3600": {
+  "w": 1048,
+  "h": 698,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/34543beb66ead46f.webp",
+  "out": [
+   1048,
+   698
+  ],
+  "why": "期限付きの網址"
+ },
  "https://phandroid.com/wp-content/uploads/2026/09/Qualcomm-Snapdragon-8-Elite-Gen-6-5.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3692,7 +3704,7 @@
  "https://substackcdn.com/image/fetch/$s_!I_CZ!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd3449447-df28-405e-93fa-548372e830cb_1456x1092.webp": {
   "w": 1200,
   "h": 675,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-29-073255.jpg": {
@@ -4033,6 +4045,12 @@
   "v": 3,
   "blur": 0.413
  },
+ "https://www.bing.com/th?id=ONUT.Ar67po89OhvnGvID8BSIRQ&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
   "h": 590,
@@ -4268,12 +4286,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ZJg30TRg7eusCGuPTC2e-w&pid=News&w=1200": {
-  "w": 700,
-  "h": 394,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Zxg8uAMC6RPaqiZ4lfllVQ&pid=News&w=1200": {
   "w": 700,
   "h": 426,
@@ -4331,12 +4343,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.gm6CM9ohSUuTryJcaE-Gkg&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200": {
   "w": 700,
@@ -4465,6 +4471,19 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.us_Fi4qBm8n6q-wq33hLTg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.524,
+  "local": "pics/c7582f4953306afc.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.v6mxddWiXbpIQX6JZPzc6Q&pid=News&w=1200": {
   "w": 700,
@@ -4804,12 +4823,6 @@
  "https://www.sankei.com/resizer/v2/65EOE3WOE5ID5LTHGWNOHP3EKM.jpg?auth=f68ce2a975a4f94ed9b2100ebe18fe73b3574057ecfe11db389cef0f860abb75&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://www.siliconera.com/wp-content/uploads/2026/11/3.png": {
-  "w": 3840,
-  "h": 2160,
   "target": 720,
   "v": 3
  },
