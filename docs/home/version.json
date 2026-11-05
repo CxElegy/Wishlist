@@ -1,32 +1,32 @@
 {
- "admin": "8adca6c445dc",
- "admin-ai": "3dc8aa9d12fd",
+ "admin": "9cda26ff2efe",
+ "admin-ai": "371454833a9e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "fd7f29bf"
+   "5ec53a0a"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7ccb9de8"
+   "cd9ac68a"
   ]
  },
- "admin-boards": "455c524b5000",
+ "admin-boards": "5afbe12d4051",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "802610a9"
+   "a05ea57a"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "e66044edeecc",
+ "admin-emblem": "d1f0ed33e18e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "5a103669"
+   "daaf87d4"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,42 +43,42 @@
  },
  "admin-members": "385c6396a03f",
  "admin-members_marks": {},
- "admin-now": "89feb2ad796c",
+ "admin-now": "1665d1b2c72c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2f477c55"
+   "de571f53"
   ],
   "queue": [
    "いまの状況",
-   "c51fa62f"
+   "ed7a76fa"
   ],
   "status": [
    "運行状況",
-   "ee3b69e7"
+   "026a3153"
   ],
   "term-panel": [
    "ライブログ",
-   "f5cdc6ae"
+   "2347bb73"
   ]
  },
- "admin-system": "5cc054280b7c",
+ "admin-system": "bdf3d0de4f8e",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cd22bf4e"
+   "15569889"
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "f0618032"
+   "decd60ee"
   ],
   "res": [
    "リソース・並列と制限",
-   "13599160"
+   "e424d4e9"
   ]
  },
  "admin_marks": {},
- "heat": "f361f134d6ad",
+ "heat": "418d11d0c8bc",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "76719fef"
+   "0418de96"
   ],
   "ranking": [
    "ランキング",
-   "1935184a"
+   "5af0d90c"
   ]
  },
- "index": "49adaa71e505",
+ "index": "bcceafe30e87",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "20a1db46"
+   "ae1dc496"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "d321ed20"
+   "58492008"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "4e8489b3"
+   "4902cf0c"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -196,6 +196,6 @@
    "d5e6e2c7"
   ]
  },
- "updated": "11.05 14:45",
+ "updated": "11.05 14:58",
  "wishlist": "6589ed8d2880"
 }
