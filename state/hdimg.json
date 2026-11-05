@@ -1914,6 +1914,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162732.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/tvasahinews/m_tvasahinews-000544430.jpg": {
   "w": 640,
   "h": 360,
@@ -2791,6 +2797,12 @@
  "https://phandroid.com/wp-content/uploads/2026/09/Qualcomm-Snapdragon-8-Elite-Gen-6-5.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414": {
+  "w": 1414,
+  "h": 1207,
   "target": 1280,
   "v": 3
  },

@@ -72,7 +72,8 @@
  ],
  "_covered": {
   "GTA 6": 26,
-  "漫威电影": 16
+  "漫威电影": 16,
+  "ILLIT": 4
  },
  "漫威电影": [
   {
@@ -128,6 +129,36 @@
    "refs": [
     4,
     7
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "[NOTICE] 아일릿(ILLIT) 이로하 컨디션 및 공연 참여 관련 안내",
+   "highlight": "이로하 컨디션 및 공연 참여",
+   "blurb": "이로하의 컨디션과 공연 참여에 관한 공지가 Weverse에 올라왔습니다.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414"
+  },
+  {
+   "headline": "そんなことある？ILLIT・ミンジュ＆ユナ、撮影中に兵役中のSEVENTEEN・バーノンに遭遇",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "히히 하이브 1층 팝업에서 우리의 흔적을 찾아보세요 ~ 😝",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]
