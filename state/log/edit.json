@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-03T22:14:49+00:00",
-"text": "2026-11-04 第 1 バッチを出刊：dota2（1 版面・2 本・残り 11 版面） · token 新規入力 4.8万・キャッシュ読み 124.0万・出力 5,048",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.35,
-"mem_total": 16872804352,
-"mem_free": 15919390720,
-"disk_used": 10022318080,
-"disk_free": 31261216768,
-"disk_total": 41283534848,
-"peak": 351784960
-},
-"batch": 1,
-"boards": [
-"dota2"
-],
-"stories": 2,
-"left": 11,
-"edited": 10,
-"run": 1793743771.3678608,
-"tok": {
-"in": 38,
-"cw": 47736,
-"cr": 1239922,
-"out": 5048,
-"calls": 20,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1292744
-},
-{
 "at": "2026-11-03T22:23:49+00:00",
 "text": "2026-11-04 第 2 バッチを出刊：ILLIT、MMORPG 新作、あつ森、チェーンソーマン、哈利波特剧集（5 版面・10 本・残り 6 版面） · token 新規入力 4,612・キャッシュ読み 46.6万・出力 2,479",
 "level": "ok",
@@ -2065,5 +2033,46 @@
 "calls": 14,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-05T06:06:36+00:00",
+"text": "2026-11-05 第 1 バッチを出刊：BLEACH Mirrors High、FROM、The Mandalorian、Vaundy、あつ森、ぐでたま ほか 4（10 版面・16 本・残り 7 版面） · token 新規入力 4.8万・キャッシュ読み 118.3万・出力 5,571",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.13,
+"mem_total": 16867418112,
+"mem_free": 15924850688,
+"disk_used": 10086432768,
+"disk_free": 31197102080,
+"disk_total": 41283534848,
+"peak": 393945088
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High",
+"FROM",
+"The Mandalorian",
+"Vaundy",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"日本顶级网球赛事",
+"滑雪",
+"绝区零"
+],
+"stories": 16,
+"left": 7,
+"edited": 21,
+"run": null,
+"tok": {
+"in": 34,
+"cw": 47752,
+"cr": 1183097,
+"out": 5571,
+"calls": 18,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1236454
 }
 ]

@@ -3,13 +3,13 @@
   "漫威电影": 98,
   "三星手机": 34,
   "GTA 6": 64,
-  "チェーンソーマン": 15,
+  "チェーンソーマン": 17,
   "A2O LITE": 12,
   "dota2": 7,
-  "周杰伦": 9,
-  "あつ森": 5,
+  "周杰伦": 10,
+  "あつ森": 6,
   "哈利波特剧集": 7,
-  "猫用品": 6,
+  "猫用品": 7,
   "The Mandalorian": 7,
   "绝区零": 3,
   "ILLIT": 6,
@@ -18,7 +18,7 @@
   "Vaundy": 4,
   "Astrae Oratio": 2,
   "滑雪": 2,
-  "gelato pique": 3,
+  "gelato pique": 5,
   "FROM": 2,
   "BLEACH Mirrors High": 1
  },
@@ -323,7 +323,9 @@
     15,
     11,
     13,
-    14
+    14,
+    16,
+    17
    ]
   }
  ],
@@ -553,6 +555,15 @@
    "refs": [
     6
    ]
+  },
+  {
+   "headline": "コッカ、2026年11月上旬発売予定の新作を含む「猫柄生地」8種類を紹介",
+   "highlight": "猫柄生地",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "The Mandalorian": [
@@ -746,6 +757,24 @@
    "refs": [
     1,
     3
+   ]
+  },
+  {
+   "headline": "PEANUTS meets GELATO PIQUE CAFE スヌーピー＆仲間たちをインスパイアしたアニバーサリーメニュー8種",
+   "highlight": "アニバーサリーメニュー8種",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "MASH PARK PROJECT '26 大人気のgelato pique福袋に加え、DAIWAとのコラボアイテムも特別に発売",
+   "highlight": "gelato pique福袋",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],

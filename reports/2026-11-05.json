@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "edit_sig": "5f927f84c31f",
+ "edit_sig": "05799dda560d",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -510,13 +510,6 @@
    "pending": [
     {
      "date": "2026-11-05",
-     "n": 7,
-     "source": "valuepress",
-     "title": "コッカ、2026年11月上旬発売予定の新作を含む「猫柄生地」8種類を紹介！北欧風から和モダンまで、多彩なデザインを展開",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE94clJLZS1tTUtCazF2NFl0SGxBalFucWJHeUYtTDZ1UjNDY0tpN2F4bVJyclZTdjVKU2VpTm9jOE5KTjBGQVVtbGZiUnBfRFk4TDJNR0FsMWp3Q25IcUE?oc=5"
-    },
-    {
-     "date": "2026-11-05",
      "n": 8,
      "source": "ｄメニューニュース",
      "title": "カフェ・ベローチェ、2027年福袋はかわいい黒ねこグッズ入り 40周年記念として発売",
@@ -560,9 +553,19 @@
      "date": "2026-11-04",
      "headline": "猫が『鳴きながらウロウロ』する理由6つ 伝えたいことがあるの？注意すべきケースも解説",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.IJDVLGkHQDoTtip5uzDaOA&pid=News&w=700",
-     "image_via": "条目自带（Bing 缩略图）",
+     "image": "https://s.eximg.jp/exnews/feed/nekochan/f0/nekochan_cat50226/nekochan_cat50226_1.jpg",
+     "image_via": "og:image",
      "url": "https://www.excite.co.jp/news/article/nekochan_cat50226/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "コッカ、2026年11月上旬発売予定の新作を含む「猫柄生地」8種類を紹介",
+     "highlight": "猫柄生地",
+     "image": "https://files.value-press.com/czMjZXllY2F0Y2gjODY4NjcjODY4NjdfbHFBaU1LbVlsZi5qcGc.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://www.value-press.com/s/pressrelease/382921",
      "weight": "normal"
     }
    ],
@@ -685,8 +688,8 @@
      "date": "2026-11-04",
      "headline": "Which Samsung Galaxy S27 models will support 60W charging?",
      "highlight": "60W charging",
-     "image": "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Ultra-review-design-2.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.ZJg30TRg7eusCGuPTC2e-w&pid=News&w=1200",
+     "image_via": "Bing 缩略图",
      "url": "https://www.sammobile.com/news/which-galaxy-s27-models-will-support-60w-charging/",
      "weight": "normal"
     },
@@ -749,13 +752,6 @@
    "name": "gelato pique",
    "pending": [
     {
-     "date": "2026-11-05",
-     "n": 4,
-     "source": "PR TIMES",
-     "title": "【PEANUTS meets GELATO PIQUE CAFE】スヌーピー＆仲間たちをインスパイアしたアニバーサリーメニュー！カラフルなボーダーやケーキで彩るスイーツやドリンクなど8種のラインアップ",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBZYVZHVkhBczY1azZyNkhzTnlJX3dVREF3TGk4ZG1LVzhXbUpiNWo1b085eVRuNnVrYXVJLW1ueUNGZUt6MWNHbWFya0hLYkUwUVBqYW9jaFlOT1d5UFlSdVpTSXM1dmdmeXc?oc=5"
-    },
-    {
      "date": "2026-11-04",
      "n": 6,
      "source": "ファッションプレス",
@@ -772,16 +768,6 @@
    ],
    "section": "好物",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-05",
-     "headline": "【MASH PARK PROJECT '26】大人気のgelato pique福袋に加え、DAIWAとのコラボアイテムも特別に発売！",
-     "highlight": "",
-     "image": "https://prcdn.freetls.fastly.net/release_image/18505/4587/18505-4587-bebfe856e674b513b3c8a75956b34dcb-1500x650.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
-     "image_via": "og:image",
-     "url": "https://prtimes.jp/main/html/rd/p/000004587.000018505.html",
-     "weight": "hero"
-    },
     {
      "blurb": "スヌーピーたちのルームウェア・雑貨・抱き枕が11/6に発売。",
      "date": "2026-11-04",
@@ -804,6 +790,26 @@
      "image": "https://lasisa.net/wp-content/uploads/2027/11/20261104_gelatopique_01.jpg",
      "image_via": "og:image",
      "url": "https://lasisa.net/post/167813",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "PEANUTS meets GELATO PIQUE CAFE スヌーピー＆仲間たちをインスパイアしたアニバーサリーメニュー8種",
+     "highlight": "アニバーサリーメニュー8種",
+     "image": "https://prcdn.freetls.fastly.net/release_image/18505/4610/18505-4610-2d6f37e8ab6f2cde80030f4eb8791633-1200x800.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000004610.000018505.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "MASH PARK PROJECT '26 大人気のgelato pique福袋に加え、DAIWAとのコラボアイテムも特別に発売",
+     "highlight": "gelato pique福袋",
+     "image": "https://prcdn.freetls.fastly.net/release_image/18505/4587/18505-4587-bebfe856e674b513b3c8a75956b34dcb-1500x650.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000004587.000018505.html",
      "weight": "normal"
     }
    ],
@@ -829,22 +835,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 16,
-     "source": "파이낸셜뉴스",
-     "title": "Watch 'Chainsaw Man' and 'Demon Slayer' on Coupang Play in partnership with Crunchyroll",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1XY1FvZ0FIYUcxUXctQ3lNY0RRaTN5ZzdGTVUyUWdYajg3YTZjWmZZWGlFUlFXSC1lU0FOUWo4cThJbHhXTk9yWEYweks3dUo3OGVfM19TS0Y?oc=5"
-    },
-    {
-     "date": "2026-11-04",
-     "n": 17,
-     "source": "머니투데이 on MSN",
-     "title": "쿠팡플레이, 크런치롤과 손잡았다…'체인소맨'·'귀칼' 등 애니 강화",
-     "url": "https://www.msn.com/ko-kr/entertainment/%EC%9C%A0%EB%AA%85-%EC%9D%B8%EC%82%AC/%EC%BF%A0%ED%8C%A1%ED%94%8C%EB%A0%88%EC%9D%B4-%ED%81%AC%EB%9F%B0%EC%B9%98%EB%A1%A4%EA%B3%BC-%EC%86%90%EC%9E%A1%EC%95%98%EB%8B%A4-%EC%B2%B4%EC%9D%B8%EC%86%8C%EB%A7%A8-%EA%B7%80%EC%B9%BC-%EB%93%B1-%EC%95%A0%EB%8B%88-%EA%B0%95%ED%99%94/ar-AA2gMcha"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -893,12 +883,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-04",
-     "headline": "쿠팡플레이, 크런치롤 애니 콘텐츠 확대… '체인소 맨'·'귀멸의 칼날' 합류",
-     "highlight": "크런치롤 패스",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gMmcA.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/ko-kr/news/other/%EC%BF%A0%ED%8C%A1%ED%94%8C%EB%A0%88%EC%9D%B4-%ED%81%AC%EB%9F%B0%EC%B9%98%EB%A1%A4-%EC%95%A0%EB%8B%88-%EC%BD%98%ED%85%90%EC%B8%A0-%ED%99%95%EB%8C%80-%EC%B2%B4%EC%9D%B8%EC%86%8C-%EB%A7%A8-%EA%B7%80%EB%A9%B8%EC%9D%98-%EC%B9%BC%EB%82%A0-%ED%95%A9%EB%A5%98/ar-AA2gMoZr",
+     "date": "2026-11-05",
+     "headline": "Watch 'Chainsaw Man' and 'Demon Slayer' on Coupang Play in partnership with Crunchyroll",
+     "highlight": "",
+     "image": "https://image.fnnews.com/resource/media/image/2026/11/05/202611050911240705_l.jpg",
+     "image_via": "og:image",
+     "url": "https://en.fnnews.com/news/202611050910292728",
      "weight": "normal"
     }
    ],
@@ -957,15 +947,6 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 6,
-     "source": "Howl.Link",
-     "title": "Me🌸@あつ森 (@Me2588domori) on X",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBsYzhyNzV4bkl5QmVuZzE3NWhlVlFYUFJjWnhwWjhSekEwTWwwSjdJb2VpcnZwNTFoWmNZ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1045,13 +1026,6 @@
    "facts": [],
    "name": "周杰伦",
    "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 10,
-     "source": "手机新浪网",
-     "title": "周杰伦蔡依林能否上节目后会友期",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5abElvUHlQZjhRQzJFSVp5bnN3enA2dzROMWpveUl0YTlUc1Y2MWMtNzlDR0xYLXNpQ0pBUURfMElZZU51SnFvZURGZUhoWUJnV1NJUmZYeTRSOTc1SS16YU1SSmZlNmRyRlVCSTNUQk1VUQ?oc=5"
-    },
     {
      "date": "2026-11-05",
      "n": 11,
