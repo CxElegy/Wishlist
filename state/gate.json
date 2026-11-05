@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-05T06:25:27+00:00",
+ "checked": "2026-11-05T06:35:16+00:00",
  "fired": {
-  "at": "2026-11-05T06:25:28+00:00",
+  "at": "2026-11-05T06:50:24+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,26 +12,21 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-05T05:40:18+00:00",
+    "at": "2026-11-05T06:50:24+00:00",
     "attempts": 1,
     "day": "2026-11-05",
-    "prog": 298,
-    "resp": "cse_01W4x6f7FAEdKZEg9k6WHC8G",
-    "sig": "ef74993decf2"
+    "prog": 338,
+    "resp": "cse_01W4x6f7R43Y4tAgeYyEEhbx",
+    "sig": "79b3f2849d28"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "dota2",
     "gelato pique",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
-    "漫威电影",
     "猫用品"
    ],
    "last_batch": "2026-11-05T06:06:36+00:00",
@@ -40,21 +35,17 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 305,
+   "prog": 338,
    "prog_day": "2026-11-05",
    "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "三星手机",
     "周杰伦",
-    "漫威电影"
+    "星巴克马克杯"
    ],
-   "sig": "2e1a93e9f646",
+   "sig": "79b3f2849d28",
    "token_cap": 1000000,
    "tokens_today": 525985,
-   "why": "整理待ちの記事 42 件（13 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 17 件（8 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -65,10 +56,11 @@
     "哈利波特剧集",
     "漫威电影",
     "FROM",
-    "GTA 6"
+    "GTA 6",
+    "周杰伦"
    ],
    "need": true,
-   "sig": "769203044573",
+   "sig": "84d91b3a8719",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
@@ -76,10 +68,9 @@
     "Vaundy",
     "あつ森",
     "ぐでたま",
-    "周杰伦",
     "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
