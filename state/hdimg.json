@@ -4504,6 +4504,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.snowmagazine.com/images/news/2026-2027/Oct%2026/introimages/Ski%20News%20.webp": {
+  "w": 578,
+  "h": 364,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.427,
+  "local": "pics/d1a7d47077c86961.webp",
+  "out": [
+   1280,
+   806
+  ],
+  "why": "看不清"
+ },
  "https://www.sponichi.co.jp/sports/news/2026/11/02/jpeg/20261102s10028000053000p_view.webp": {
   "w": 1200,
   "h": 800,

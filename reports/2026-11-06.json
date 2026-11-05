@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "01ef0939646e",
+ "edit_sig": "6338432dc730",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -464,17 +464,19 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "Snow Magazine's round-up of the new 2026/27 season: a British ski racing first, early snowfalls and what's new this winter.",
      "date": "2026-11-05",
-     "n": 1,
-     "source": "Snow Magazine",
-     "title": "Ski News 2026/27: Freddy Carrick-Smith Makes British Ski Racing History, First Snowfalls and What's New This Winter",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE92TjA0ZnowQnpYN19BbEhTOHNUSWcyR2ZkZkxRZkVUdkJ6MkRvNlo1Y08xeUt0REVWTFlYWFVveTI3VHZReTQzcFBzdFEwQTl5OG1VOA?oc=5"
+     "headline": "Ski News 2026/27: Freddy Carrick-Smith Makes British Ski Racing History, First Snowfalls and What's New This Winter",
+     "highlight": "",
+     "image": "https://www.snowmagazine.com/images/news/2026-2027/Oct%2026/introimages/Ski%20News%20.webp",
+     "image_via": "AI 挑选",
+     "url": "https://www.snowmagazine.com/news/ski-news",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
