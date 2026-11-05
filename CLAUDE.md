@@ -29,6 +29,7 @@
 - 設計・実装の前に `find-skills`（`npx skills find …`）で合うスキルを探し、インストール数・出どころを確かめて入れる（`.claude/skills/`、出どころと指紋は `skills-lock.json`）。直す前に、スキルの考え方（他の人の framework・設計理念）に照らして直し方を決める。
 - トークンの節約（2026-10-24）：ponytail（コードは最小の完全な変更）・caveman（係どうしの報告を短く、ユーザーへの返事は普通の日本語）・caveman-compress（長いファイルを短く、使う前に確かめる）。HARNESS.md「トークンを節約する」。
 - デザイン（2026-10-24）：emil-design-eng・review-animations・improve-animations（Emil Kowalski）・impeccable・design-taste-frontend（Taste）。
+- 性能・スクロールの流畅性（2026-11-05，用户定的：「如何增加流畅性 引进一下网络的有名的 skill 来解决」）：core-web-vitals・performance（Addy Osmani／web-quality-skills）・performance-optimization（Addy Osmani／agent-skills：測る→直す→確かめる・試した記録）・animation-performance（Emil Kowalski）・fixing-motion-performance（ibelick／ui-skills）。表示の速さ・スクロールの引っかかりを直す段は、この 5 つ＋前からの web-perf・impeccable の optimize に照らして直し方を決め、前／後の数字を出す。
 - 入れてあるもの：find-skills・supabase・supabase-postgres-best-practices・web-design-guidelines・frontend-design・webapp-testing・web-perf・seo-audit・signup・onboarding・site-architecture・improve-codebase-architecture・python-testing-patterns（＋前からの impeccable・diagram・wishlist）。
 
 - 画面を作る・変える段は HARNESS.md「どこにでもある AI っぽさから抜け出す・自分で設計して確かめる」の順で（参考 → 作りの決まり（emil-design-eng・impeccable・review-animations）→ 考え（Taste）→ 設計（Figma MCP）→ 作る → 確かめる（Playwright MCP・inspect.mjs・impeccable detect）→ 見せる）。`.mcp.json` に Playwright MCP。

@@ -37,6 +37,7 @@
   "https://note.com/yonabe_kobo/n/n6c7936011bec?hl=en": "https://www.bing.com/th?id=ONUT.v6mxddWiXbpIQX6JZPzc6Q&pid=News&w=1200",
   "https://nz.news.yahoo.com/see-kylie-jenner-22-most-122000407.html": "https://s.yimg.com/lo/mysterio/api/3b927da5da86c520f2760c9b79e86c81c69980c9d75b186aca9f826e164145d4/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpeople_218%2F4352082a55b73379dd1e25c09081a19f.jpg",
   "https://paradepets.com/pet-news/black-cats-homemade-halloween-costume-masked-vigilante": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCRsS.img",
+  "https://report.iko-yo.net/articles/35422": "https://d28w2qw7dtr435.cloudfront.net/uploaded/cover_images/images/35594/large.jpg?1793858501",
   "https://sounova.com/game/silver-palace-global-launch-december-2026": "https://cdn.sounova.com/upload/XZB9zcSxrtYsJDQAP55HB.webp",
   "https://sports.khan.co.kr/article/202611051109003": "https://images.khan.co.kr/article/2026/11/05/news-p.v1.20261105.5c362c1065ba4ee993fc75e6bed2f3f3_P1.jpg",
   "https://t.co/6j0O3eUwDP": null,
@@ -63,7 +64,6 @@
   "https://www.giantfreakinrobot.com/ent/the-spirit-1987-nana-visitor-pilot.html": "https://www.giantfreakinrobot.com/wp-content/uploads/2024/02/The-Spirit-Nana-Visitor.jpg",
   "https://www.happo-one.jp/en/": "https://www.happo-one.jp/wp2019/wp-content/uploads/2019/11/ogp-1024x929.png",
   "https://www.hotspawn.com/dota2/guide/what-is-smurfing-in-dota-2": "https://www.hotspawn.com/wp-content/uploads/2026/09/What-Is-Dota-2-Smurfing.jpg",
-  "https://www.indexbox.io/blog/cat-litter-mat-set-market-forecast-to-2035-premiumization-and-pet-humanization-drive-growth/": "https://www.indexbox.io/landing/img/blog/custom-report-v2/world-kw-cat-litter-mat-set-840-market-analysis-forecast-size-trends-and-insights-1793626891.webp",
   "https://www.k-trendtimes.com/articles/261104-cb1n": "https://cdn.sanity.io/images/3pe6cvt2/production/f9b19639ad13782cad665f166bd8c7d4c1740bcb-1080x1350.png?rect=0,392,1080,567&w=1200&h=630&q=80&auto=format",
   "https://www.msn.com/en-us/news/other/4-reasons-the-harry-potter-tv-series-should-focus-more-on-character-building-than-the-movies-did/ar-AA2gAvLu": "https://www.bing.com/th?id=ONUT.Nd044nfDUdY2nVSo8VWSSA&pid=News&w=912",
   "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%AE%E3%83%80%E3%82%A4%E3%82%A8%E3%83%83%E3%83%88%E3%81%AF%E9%9B%A3%E3%81%97%E3%81%84-%E5%AE%89%E5%85%A8%E3%81%AB%E7%97%A9%E3%81%9B%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%A8%E6%88%90%E5%8A%9F%E3%81%AE%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88-%E7%8D%A3%E5%8C%BB%E5%B8%AB%E5%9F%B7%E7%AD%86/ar-AA2gIJOf": "https://www.bing.com/th?id=ONUT.gHkm7B6F_PGnHRf9x1RDqA&pid=News&w=400",
@@ -935,6 +935,35 @@
   },
   {
    "batch": 1,
+   "because": "猫用品",
+   "date": "2026-11-05",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://d28w2qw7dtr435.cloudfront.net/uploaded/cover_images/images/35594/large.jpg?1793858501",
+   "kind": "board",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "score": 8,
+   "source": "いこーよニュース",
+   "taste": [
+    [
+     "猫",
+     6
+    ],
+    [
+     "作品:猫用品",
+     5
+    ]
+   ],
+   "title": "カフェ・ベローチェ40周年ハッピーバッグ！フード引換券＆かわいい黒ねこグッズ満載",
+   "url": "https://report.iko-yo.net/articles/35422",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
+  },
+  {
+   "batch": 1,
    "because": "Astrae Oratio",
    "date": "2026-11-05",
    "hits": [],
@@ -1064,7 +1093,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "绝区零",
    "date": "2026-11-04",
    "hits": [],
@@ -1169,7 +1198,7 @@
    "work": "绝区零"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "gelato pique",
    "date": "2026-11-04",
    "hits": [],
@@ -1288,27 +1317,6 @@
    "url": "https://t.co/HxbP6sUsNB",
    "words": [],
    "work": "あつ森"
-  },
-  {
-   "batch": 3,
-   "because": "猫用品",
-   "date": "2026-11-02",
-   "hits": [],
-   "image": "https://www.indexbox.io/landing/img/blog/custom-report-v2/world-kw-cat-litter-mat-set-840-market-analysis-forecast-size-trends-and-insights-1793626891.webp",
-   "kind": "board",
-   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
-   "score": 8,
-   "source": "IndexBox",
-   "taste": [
-    [
-     "作品:猫用品",
-     5
-    ]
-   ],
-   "title": "Cat Litter Mat Set Market To 2035: Premiumization and PET Humanization Drive Growth - News and Statistics",
-   "url": "https://www.indexbox.io/blog/cat-litter-mat-set-market-forecast-to-2035-premiumization-and-pet-humanization-drive-growth/",
-   "words": [],
-   "work": "猫用品"
   },
   {
    "batch": 4,
@@ -2063,11 +2071,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [

@@ -132,7 +132,8 @@ class _H(http.server.BaseHTTPRequestHandler):
 
 
 def _git(d, *a):
-    return subprocess.run(["git", "-c", "user.email=a@b", "-c", "user.name=x", *a], cwd=d, capture_output=True, text=True).stdout
+    return subprocess.run(["git", "-c", "user.email=a@b", "-c", "user.name=x", *a], cwd=d, capture_output=True, text=True,
+                          errors="replace").stdout   # 画像など utf-8 でない中身で作業枠ごと落ちていた（2026-11-05 repair-images）
 
 
 def prepare(dst, port):

@@ -153,6 +153,9 @@ def _story(row, weight):
 
 def find_images(stories, deadline):
     """写真のない記事に、店長と同じ規則（images.pick）で写真を探す。時間の上限を超えたらやめる。"""
+    # 本物のブラウザ（images._browser_html）は開いた記事の網址を公開の Actions ログに書く。library_emblem.yml は小元素のために
+    # SCRAPLING_BROWSER=1 を立てたまま user_pages を回すので、お客さまの記事ではここで切る（userfeed と同じ）
+    os.environ.pop("SCRAPLING_BROWSER", None)
     used = set()
     for s in stories[:IMG_PER_BOARD]:
         if s.get("image") or time.time() > deadline:

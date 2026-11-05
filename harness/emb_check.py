@@ -12,7 +12,7 @@
                  上の 3px に絵が横幅の 20% 以上（頭のてっぺんが切れた：emblem.HEAD_EDGE）、
                  高さ 40px 未満の切れ端だけ（STRIP_MAX）
   E8 同じ画像    同じ版面に同じ src か、差分ハッシュの違い ≤ 4 ビット（emblem_fill.SAME_BITS）か、同じ動画（YouTube）の場面が 2 本以上
-  E9 中身        元の画像のファイル名が別の作品の絵（大乱闘のフィギュア・amiibo など、BAD_SOURCE）
+  E9 中身        元の画像のファイル名が別の作品の絵（大乱闘のフィギュア・amiibo など、BAD_SOURCE）。お客さまの版面に外したはずの画像（reject・別人の Commons の写真）が残る数も（library_emblem.dropped_left）
   E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く。残りの人が全員「画像のない人」＝候補が尽きた版面〔exhausted〕は ✗ にせず、下の「情報」に名前を出す）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
@@ -802,6 +802,11 @@ def check(pg, who, width, out, full=False, guest=False):
             found["E21"] += [f"お客さまの版面 {k}：{'・'.join(v[:6])}（{len(v)} 人）" for k, v in boards_fandom_over_official(boards_rows()).items()]
         except Exception as e:  # noqa: BLE001
             print(f"  情報 E21 お客さまの版面を数えられなかった：{e}")
+        try:   # 外したはずの画像（reject の元の網址・別人の Commons の写真）が残るお客さまの版面（Ado の Alassane_Ouattara）。0 であること
+            import library_emblem
+            found["E9"] += [f"お客さまの版面 {b.get('name')}：外した画像が残る {n} 枚" for b in boards_rows() if (n := library_emblem.dropped_left(b))]
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E9 お客さまの版面を数えられなかった：{e}")
         try:
             found["E30"] = [f"{k}：{'・'.join(v)}" for k, v in official_rejected().items()]
             found["E30"] += [f"お客さまの版面 {k}：{'・'.join(v)}" for k, v in official_rejected(items=board_items(boards_rows())).items()]
