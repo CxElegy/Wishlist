@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-05T19:17:43+00:00",
+ "checked": "2026-11-05T20:17:34+00:00",
  "fired": {
-  "at": "2026-11-05T19:18:00+00:00",
+  "at": "2026-11-05T20:17:49+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-05T18:14:06+00:00",
+    "at": "2026-11-05T20:17:49+00:00",
     "attempts": 1,
     "day": "2026-11-06",
-    "prog": 0,
-    "resp": "cse_01W4x6f5H7G4q7HSRYNYJdtk",
-    "sig": "713a1d7d0a7d"
+    "prog": 59,
+    "resp": "cse_01W4x6f5UfnCxRmbnHbRcf1o",
+    "sig": "58ed83ab98d1"
    },
    "items": [
     "A2O LITE",
@@ -33,11 +33,16 @@
    "need": true,
    "prog": 59,
    "prog_day": "2026-11-06",
-   "ripe": [],
-   "sig": "4704bf078818",
+   "ripe": [
+    "A2O LITE",
+    "FROM",
+    "周杰伦",
+    "猫用品"
+   ],
+   "sig": "58ed83ab98d1",
    "token_cap": 1000000,
    "tokens_today": 84869,
-   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
