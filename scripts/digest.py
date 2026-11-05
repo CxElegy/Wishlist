@@ -1613,9 +1613,6 @@ def take_item_requests():
                 done.append(r)
                 continue
             if r.get("action") == "edit" and (r.get("config") or {}).get("_delete") is True:   # 設定ページの「删」
-                if name not in names:   # もう無い：前の回が消して push したが done を付け損ねた（同じ依頼を 2 度取っても同じ結果）
-                    done.append(r)
-                    continue
                 new = delete_item(text, name)
                 got = (yaml.safe_load(new) or {}).get("items") or []
                 assert name not in {i.get("name") for i in got}, "没删掉"

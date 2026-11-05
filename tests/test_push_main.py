@@ -184,10 +184,10 @@ class ItemRequestsTwice(unittest.TestCase):
         _, m = self.take([row], "items:\n  - name: 别的\n    type: product\n")
         self.assertIn("6", m["skipped"])   # 手で書いた同じ名前は今までどおり見送り
 
-    def test_delete_twice_is_done(self):
+    def test_delete_missing_stays_skipped(self):
         row = {"id": 7, "action": "edit", "name": "猫用品", "config": {"_delete": True}}
         _, m = self.take([row], "items:\n  - name: 别的\n    type: product\n")
-        self.assertEqual(m, {"done": [7], "skipped": {}})
+        self.assertIn("没有", m["skipped"]["7"])   # 消した後に done を付け損ねたのか、初めから無いのか見分けられない：理由つきの見送り（tests/test_item_requests）
 
     def test_age_split(self):
         import digest
