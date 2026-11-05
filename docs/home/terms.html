@@ -1274,7 +1274,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   try{ if(!OWN&&/^(index|wishlist|heat|settings)$/.test(page)&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない（本人のページはもう本人のものなので隠さない）
   var ROLE={"admin": "店長", "user": "お客さま", "guest": "ゲスト"}, LOCK={"index": "[data-vote]", "heat": "[data-vote]", "wishlist": "[data-vote],#snap button,#snap input,#snap textarea", "settings": "button,input,select,textarea,[contenteditable]", "admin": "button,input,select,textarea"}[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
   // お客さまの画面の文字。言語は app_users.ui_lang〔今は ja だけ〕。直書きを足さずここへ（tests が数える）
-  var UI={ja:{sayMail:'確認のメールを送れませんでした（メール送信の設定待ち）',sayRate:'送りすぎです。少し待ってからもう一度',bindLogin9:'メールアドレスかパスワードが違います',collecting:'集めています',waitP:'足したものの記事が集まりしだい、ここに並びます。',rm:'外す',rmAria:' を外す',
+  var UI={ja:{sayMail:'確認のメールを送れませんでした（メール送信の設定待ち）',sayRate:'送りすぎです。少し待ってからもう一度',bindLogin9:'メールアドレスかパスワードが違います',collecting:'集めています',waitP:'足したものの記事が集まりしだい、ここに並びます。',rm:'外す',rmAria:' を外す',rmAsk:'「%s」を外しますか？\nページからこの版面がなくなります。',
     added:'足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。',
     pageOf:' さんのページ',loadFail:'読み込めませんでした。ページを開き直してください。',reLogin:'もう一度ログインしてください。',
     introB:'ここは、あなたが追いかけたいものの新しいニュースが毎日並ぶページです',
@@ -1449,9 +1449,11 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       rpc('user_agree',{p_name:me.name,p_version:TV}).then(function(){ me.v=TV; saveMe(me); d.remove(); toast(L.askAgree7); refresh(); })
         .catch(function(e){ toast(sayErr(e.message)); });};
   }
+  // ログアウト：この端末だけ（scope local。前は既定の global でほかの端末まで落とした）・本人の票の写しと本人の置き場の名前・設定の控えも消す（F7 2026-11-05）
   function logout(){
     saveMe(null);
-    (sb&&tok?sb.auth.signOut():Promise.resolve()).then(function(){location.reload();});
+    ['wishlist-votes-own','wl-own-path','wl-own-set'].forEach(function(k){try{localStorage.removeItem(k);}catch(_){}});
+    (sb&&tok?sb.auth.signOut({scope:'local'}):Promise.resolve()).then(function(){location.reload();},function(){location.reload();});
   }
   var locked=function(){return R.dataset.lock==='1';};
   document.addEventListener('click',function(ev){
@@ -1580,7 +1582,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   // （出さないと、足した直後の人に「まだ何も追いかけていません」の空の画面が見える。2026-10-27 の通し点検）
   function ownWait(picks){
     var old=document.querySelector('.wl-ownwait');if(old)old.remove();
-    var have=[].map.call(document.querySelectorAll('section.sec[data-k]'),function(s){return s.dataset.k;});
+    // このページにもうある版面：トップは section.sec[data-k]、設定ページは行 .row[data-item]（F4 2026-11-05：設定ページで全部を「集めています」と出していた）
+    var have=[].map.call(document.querySelectorAll('section.sec[data-k],.cfg .row[data-item]'),function(s){return s.dataset.k||s.dataset.item;});
     var wait=picks.filter(function(x){return !have.some(function(k){return shopHit(k,x.name);});});
     if(!wait.length)return;
     // 焼いた版は「何も追いかけていません」のまま。足した人に「最初の 1 つを選ぼう」「まだ何も…」と矛盾して見せず、外す道も出す（2026-10-27 の通し点検）
@@ -1597,7 +1600,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     var bar=document.createElement('div');bar.className='wl-mybar wl-ownwait';bar.setAttribute('role','status');
     bar.innerHTML='<b>'+L.collecting+'<\/b>'+wait.map(function(x){return '<span>'+esc(x.name)+' <button type="button" class="pnx" data-n="'+esc(x.name)+'" aria-label="'+esc(x.name)+L.rmAria+'">'+L.rm+'<\/button><\/span>';}).join('')+
       '<small class="ok">'+L.added+'<\/small>';
-    bar.querySelectorAll('.pnx').forEach(function(b){b.onclick=function(){b.disabled=true;
+    bar.querySelectorAll('.pnx').forEach(function(b){b.onclick=function(){if(!confirm(L.rmAsk.replace('%s',b.dataset.n)))return;b.disabled=true;
       var rest=picks.filter(function(x){return x.name!==b.dataset.n;});
       rpc('my_keywords_set',{p_picks:rest}).then(function(){if(rest.length&&rest.some(function(x){return !have.some(function(k){return shopHit(k,x.name);});}))ownWait(rest);else location.reload();},function(){b.disabled=false;});};});
     var m=document.querySelector('main.issues')||document.querySelector('.page')||document.body;m.insertBefore(bar,m.firstChild);
@@ -1973,6 +1976,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
         }});
   }
+  var refT=0,refT0=0;
   function start(){
     if(me&&me.admin){ me.admin=false; saveMe(me); }   // メールの確認を待っていた人（前の仕組み）
     // 規約に同意済みで 1 時間以内に確かめたなら呼ばない（ページを開くたびの user_login は Supabase の読み書きと egress を食う）
@@ -1985,7 +1989,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null; if(ev==='SIGNED_OUT')signedOut=true;
       window.WL_TOK=t; if(changed) document.dispatchEvent(new Event('wl-token'));   // ③エンブレムなど、別の部品が店長の令牌でライブラリを読むため
-      if(changed||ev==='INITIAL_SESSION') setTimeout(refresh,0);   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
+      // 同じ鍵で続けて来る知らせ（INITIAL_SESSION のあとの SIGNED_IN など）は 1 回にまとめる（F6 2026-11-05：1 文書で refresh が 2 回＝RPC 6 本）
+      if(changed||(ev==='INITIAL_SESSION'&&!refT0)){ refT0=1; clearTimeout(refT); refT=setTimeout(refresh,120); }   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
   }

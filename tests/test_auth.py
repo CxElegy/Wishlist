@@ -41,7 +41,7 @@ class AuthTag(unittest.TestCase):
         言葉は skill（clarify・distill・onboarding）に合わせる：内部の事情・店長のページへの切り替えは出さない、空の状態は次の一手、外したら元に戻す。"""
         render.AUTH_DB.update(url="https://x.supabase.co", key="sb_publishable_x")
         tag = render._auth_tag("index")
-        for s in ("rpc('my_page')", "my_keywords_set", "好きなジャンルは？", "data-gsec", "showMine", "wl-mybar", "../?add", "wl-wait", "気になるかも？", "setTimeout(refresh,0)", '<label for="'):
+        for s in ("rpc('my_page')", "my_keywords_set", "好きなジャンルは？", "data-gsec", "showMine", "wl-mybar", "../?add", "wl-wait", "気になるかも？", "refT=setTimeout(refresh,120)", '<label for="'):
             self.assertIn(s, tag)
         for s in ("ほかの人には見えません", "店長のページを見る", "自分のページに戻る", "wl-view-shop", "まだ集めていません", "ニュース集めは準備中", "欲しい物リストは準備中"):   # お客さまに要らない内部の事情は出さない
             self.assertNotIn(s, tag)

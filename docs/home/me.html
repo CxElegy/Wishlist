@@ -77,21 +77,29 @@
   var SET=/[?&]p=settings/.test(location.search), PG=SET?'settings.html':'index.html';   // どのページか（AUTH_JS の ownPage）
   function back(q){try{var h=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});h.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(h));}catch(_){}
     location.replace('./'+(SET?'settings.html':'')+(q||'')+location.hash);}
+  // 上限 12 秒：つながらないまま「読み込み中」を出し続けない（F6 2026-11-05：10 回に 1 回 40 秒以上）→ 前の画面へ
+  var done=0,T=setTimeout(function(){if(!done){done=1;back('?own=0');}},12000);
   var s=document.createElement('script');s.src=C.lib;s.onerror=function(){back('?own=0');};
   s.onload=function(){
     var sb=window.supabase.createClient(C.url,C.key,{auth:{persistSession:true,storageKey:'wl-auth',detectSessionInUrl:false}});
     sb.auth.getSession().then(function(r){
       var se=r&&r.data&&r.data.session;if(!se){back('');return null;}
-      return sb.rpc('my_page_path').then(function(p){
+      // 置き場の名前は人ごとに決まっていて変わらない：同じ人なら前に聞いた名前を使い、my_page_path を毎回呼ばない（F6）
+      var uid=se.user&&se.user.id,kp='wl-own-path',kn=null;try{kn=JSON.parse(localStorage.getItem(kp)||'null');}catch(_){}
+      var path=kn&&kn.u===uid&&kn.p?Promise.resolve({data:kn.p}):sb.rpc('my_page_path');
+      return path.then(function(p){
         if(p.error||!p.data){back('?own=0');return null;}
+        try{localStorage.setItem(kp,JSON.stringify({u:uid,p:p.data}));}catch(_){}
         return sb.storage.from('pages').download(p.data+'/'+PG);
       });
     }).then(function(d){
       if(!d)return;
-      if(d.error||!d.data){back('?own=0');return;}
+      if(done)return;
+      if(d.error||!d.data){try{localStorage.removeItem('wl-own-path');}catch(_){}back('?own=0');return;}
       return d.data.text().then(function(h){
+        if(done)return;
         if(h.indexOf('name="wl-own"')<0){back('?own=0');return;}
-        document.open();document.write(h);document.close();
+        done=1;clearTimeout(T);document.open();document.write(h);document.close();
         try{history.replaceState(null,'','./'+(SET?'settings.html':'')+location.hash);}catch(_){}
       });
     }).catch(function(){back('?own=0');});
