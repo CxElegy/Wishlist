@@ -37,7 +37,10 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: main
-          sparse-checkout: harness
+          # harness/browser.py が scripts/nostorage.py を読む（#900、2026-11-04）。harness だけだと ModuleNotFoundError で毎回赤だった
+          sparse-checkout: |
+            harness
+            scripts
       - uses: actions/cache/restore@v4
         with:
           path: .ask_state.json
