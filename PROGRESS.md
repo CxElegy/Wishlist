@@ -397,3 +397,4 @@
 - 本番の確かめ（09:35 UTC）：home・heat・settings・admin・入口が 200、5 ページの埋め込み JS の文法の壊れ 0、home を 1400/390 で開いて例外 0・版面 23・小元素 23。
 - 残り（明日）：①スクロールの係（#948 の測定と原因 8 つ・harness/scroll_measure.py・スキル 5 つ）を最初に ②機能 C④（#946、09:41 UTC 合併）の AI 編集の入口を本番で確かめる（管理ページ④が 0 でなくなるか・board_stories.stories） ③本 1 ②〜⑤・本 2・本 3 ④⑤・本 4 の残り（浦原＝夜一・BLEACH の枚数・E8）④機能 A の残り（Q… の小元素が /p/ に無いときの文字の札・「/p/ は manifest にある名前だけ」の点検）⑤機能 D（pg_cron から library_emblem・ask_remind を起こす）。
 - ユーザーが決めること：①`git config core.hooksPath .githooks`（係の push 前に pre-push を必ず回す）と見回りの予約（send_later）が自動の許可で止められた＝許可するか ②F12 の鍵（Reddit・TMDB を Actions の Secrets に入れるか）③F4 の残り 2 つ（render の起動をまとめる・画面の言語）④本物のお客さまを招く前の DB の窓口を絞る件（今はテストだけで保留）。
+- 2026-11-06 f1：スマホの左写真カード（.wc・.card.mini・.tape・.sb）を写真幅 42%・高さいっぱい（cover）に・PR #952・手元 390px で写真の下の空き 56→13〜17px・全試験 456 OK・CI 緑・次：render 反映後に本番の ux_check と scroll_measure の後の数字
