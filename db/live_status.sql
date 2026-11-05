@@ -1,3 +1,5 @@
+-- ⚠ 流し直し禁止（2026-11-05 全体点検 本 3）：ここの関数は後のファイル（accounts.sql）が上書きした古い形（account で絞らない）。
+--   流し直すと「更新中」の帯にほかの account の版面が出る。今の形は本番の DB（pg_get_functiondef で読む）。直すときは新しいファイルに足す。
 -- 版面の「更新中」の帯（render.BUSY_JS）が読む：いま裏でどの版面を作り直しているか。
 -- 書く人：収集（GitHub Actions・secret key で直接）／AI 編集・小元素の自動補完（Claude の定時タスク・live_report() 経由）。
 -- 網页は live_status() で読むだけ（publishable key）。表そのものは網页から読めない・書けない。

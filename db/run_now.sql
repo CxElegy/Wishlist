@@ -1,3 +1,5 @@
+-- ⚠ 流し直し禁止（2026-11-05 全体点検 本 3）：ここの関数は後のファイル（auth_guard.sql）が上書きした古い形（管理者の門 is_admin がない）。
+--   流し直すと「今すぐ実行」がだれでも押せる。今の形は本番の DB（pg_get_functiondef で読む）。直すときは新しいファイルに足す。
 -- 管理ページの「今すぐ実行」ボタン：定時を待たずに GitHub Actions のワークフローを起こす。
 -- 網页（管理ページ）は公開で口令なしなので、GitHub の令牌は網页に置かない。db/instant.sql と同じく
 -- Supabase Vault の github_dispatch_token を使い、データベースから GitHub に頼む（pg_net）。
