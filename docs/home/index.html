@@ -3262,10 +3262,8 @@ window.likeFx = (() => {
   const altsOf = el => { try { return JSON.parse(el.dataset.alts || '[]'); } catch (_) { return []; } };
   // 読めなかった小元素（/p/ にまだ無い・外の網址が落ちた）は枠ごと消さず、同じ版面の次の候補へ（IMG_FALLBACK_JS の x が先に聞く）。候補が尽きたら消す
   window.WLembNext = img => { const el = img.closest('.emb'); if (!el) return false;
-    const tried = (el.dataset.tried ? el.dataset.tried.split('
-') : []).concat(img.getAttribute('src') || '');
-    const a = altsOf(el).find(x => x && x.src && !tried.includes(x.src)); el.dataset.tried = tried.join('
-');
+    const tried = (el.dataset.tried ? el.dataset.tried.split('\n') : []).concat(img.getAttribute('src') || '');
+    const a = altsOf(el).find(x => x && x.src && !tried.includes(x.src)); el.dataset.tried = tried.join('\n');
     if (!a) return false;
     const n = put(el, img, a); const show = () => n.classList.add('ld'); (n.decode ? n.decode() : Promise.reject()).then(show, show); return true; };
   els.forEach(el => {

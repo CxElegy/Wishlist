@@ -108,6 +108,16 @@ class SizeOnPage(unittest.TestCase):
             self.assertLessEqual(render._height(kept, render.SIZE_SIDE[size]), budget, size)
             self.assertLessEqual(len(kept), render.SIZE_COUNT[size], size)
 
+    def test_count_matches_settings(self):
+        # F3：頭条 1 本＋普通の記事なら、設定ページの本数（S 3・M 5・L 8）まで出る
+        import digest
+        for n in (2, 3, 6, 12):
+            stories = [story(0, "lead")] + [story(i) for i in range(1, n)]
+            for size in "SML":
+                grid, rest = render._timeline(stories, "2026-10-12", render.SIZE_HEIGHT[size], render.SIZE_COUNT[size],
+                                              render.SIZE_SIDE[size])
+                self.assertEqual(n - len(rest), min(n, digest.SIZE_STORIES[size]), (n, size))
+
     def test_only_newest_lead_is_big(self):
         stories = [story(1, "lead"), story(2), story(3, "lead"), story(4)]
         kinds = [k for k, _ in render._layout(stories)]
