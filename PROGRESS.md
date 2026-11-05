@@ -382,3 +382,4 @@
 - 2026-11-05 f1 hr93：本 3 ①②③。#922 公開ログからお客さまの版面の名前・scrapling の網址を外す（合併後 library_emblem の log で名前 0・Fetched 0）。#923 古い db/*.sql 7 本に流し直し禁止・pw_setup 行を無効・3 関数の search_path 固定（本番適用・呼び出し確認済み）。ux_check --fast は時間切れ・✗ 6 は前からの写真の件。次：本 3 ④⑤⑥ か E15 案 B。
 - 2026-11-05 f1（本 4 第 1 段）：種族・敵の型・物を名簿から分類で外す（emblem.THING_CAT・NAMES_V 14）・E17 をお客さまの版面にも（boards_not_people）。実データ：お客さま 16＋店長 7 版面で外れるのはスプラ 3 の 12・ゼルダ Fairy・モンハン Wyverians のみ（Ganon・Frye・Big Man は残る）。次：名簿の数え直しの回の後で E17 お客さま 0・浦原＝夜一・ゼルダの名簿
 - 2026-11-05 f1：#920 合併→后台 dispatch で A2O LITE 2→4 枚（HIMEKI・AYUNE が公式に）。VORA・XILI・MERCI は切り抜きの検査で外れ＝次の段。ux_check --fast の ✗ は写真の一時保管（別の係）。
+- 2026-11-05 f1（本 4）：#924（THING_CAT・NAMES_V 14・E17 お客さま）合併 → ux_check --fast で全ページ「Invalid or unexpected token」＝#919 の EMB_JS の \n → #929 で直し、本番 home の JS を node で 0 件 ✗。library_emblem の回のあとも boards 148 の名簿に Inklings ＝お客さまの版面は NAMES_V で数え直していなかった → _recount・NAMES_V 15。次：library_emblem を起こし boards 145/146/148 の名簿を確かめる・浦原＝夜一
