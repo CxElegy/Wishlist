@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-04T19:02:05+00:00",
-"text": "2026-11-05 第 4 バッチを出刊：The Mandalorian（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 6,296・キャッシュ読み 43.7万・出力 2,560",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.38,
-"mem_total": 16872804352,
-"mem_free": 15818878976,
-"disk_used": 10204487680,
-"disk_free": 31079047168,
-"disk_total": 41283534848,
-"peak": 476508160
-},
-"batch": 4,
-"boards": [
-"The Mandalorian"
-],
-"stories": 2,
-"left": 0,
-"edited": 15,
-"run": 1793817465.0221574,
-"tok": {
-"in": 7,
-"cw": 6289,
-"cr": 437367,
-"out": 2560,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 446223,
-"secs": 1461,
-"run_tok": {
-"in": 45,
-"cw": 85363,
-"cr": 2043809,
-"out": 15816,
-"calls": 24,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-04T20:11:03+00:00",
 "text": "2026-11-05 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 2 版面） · token 新規入力 4.7万・キャッシュ読み 91.4万・出力 3,674",
 "level": "ok",
@@ -1980,5 +1939,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 85363
+},
+{
+"at": "2026-11-06T04:41:05+00:00",
+"text": "2026-11-06 第 12 バッチを出刊：The Mandalorian（1 版面・2 本・残り 3 版面） · token 新規入力 702・キャッシュ読み 8.5万・出力 547",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.37,
+"mem_total": 16867418112,
+"mem_free": 15945293824,
+"disk_used": 10070999040,
+"disk_free": 31212535808,
+"disk_total": 41283534848,
+"peak": 374190080
+},
+"batch": 12,
+"boards": [
+"The Mandalorian"
+],
+"stories": 2,
+"left": 3,
+"edited": 18,
+"run": 1793935785.630969,
+"tok": {
+"in": 2,
+"cw": 700,
+"cr": 84971,
+"out": 547,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 86220
 }
 ]

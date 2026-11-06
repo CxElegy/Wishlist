@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "6c949e2a7254",
+ "edit_sig": "74d9f0035ec1",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -544,15 +544,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 3,
-     "source": "IMDb",
-     "title": "‘The Mandalorian and Grogu’ VFX Veteran Hal Hickel on Rotta’s Redesign, Phil Tippett and Jon Favreau’s ‘Less James Bond, More Jackass’ Approach",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1FbjE5Sk1zcTZlX2ZBRDE0c2RUSzN0Nzg3N0ZyWVU3YkpNR0Y5ejhtRkdJdURITzh0X3VsVW91Q29WbXB3bzJ1QVZPY3pacXdSUnc?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -564,6 +555,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.jedinews.com/film-music-tv/articles/the-mandalorian-and-grogu-ambushed-by-moff-gideon-lego-star-wars-the-mandalorian-star-wars-kids/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "‘The Mandalorian and Grogu’ VFX Veteran Hal Hickel on Rotta’s Redesign, Phil Tippett and Jon Favreau’s ‘Less James Bond, More Jackass’ Approach",
+     "highlight": "",
+     "image": "https://variety.com/wp-content/uploads/2026/10/hickel_2.jpg?w=1000&h=563&crop=1",
+     "image_via": "转载 variety.com",
+     "url": "https://www.imdb.com/it/news/ni66065592/",
+     "weight": "normal"
     }
    ],
    "subtitle": "ザ・マンダロリアン",
@@ -733,8 +734,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "og:image",
+     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
+     "image_via": "AI 挑选",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
@@ -743,8 +744,8 @@
      "date": "2026-11-02",
      "headline": "A2O LITE, 'NEON' 음악방송 8관왕에 전한 인사…\"감사합니다\"",
      "highlight": "음악방송 8관왕",
-     "image": "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210_crop.png",
-     "image_via": "og:image",
+     "image": "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.topstarnews.net/news/articleView.html?idxno=16266539",
      "weight": "normal"
     },

@@ -716,9 +716,9 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210_crop.png": {
+ "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg": {
   "w": 1200,
-  "h": 675,
+  "h": 2132,
   "target": 720,
   "v": 3
  },
@@ -1931,6 +1931,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "w": 640,
+  "h": 434,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.448,
+  "local": "pics/fb2c399e45ea329f.webp",
+  "out": [
+   1280,
+   868
+  ],
+  "why": "看不清"
+ },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
@@ -2258,19 +2271,6 @@
   "h": 440,
   "target": 1280,
   "v": 3
- },
- "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "w": 640,
-  "h": 434,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.448,
-  "local": "pics/c8f922c921a79f0b.webp",
-  "out": [
-   1280,
-   868
-  ],
-  "why": "看不清"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -3575,6 +3575,12 @@
  "https://urepia.ismcdn.jp/mwimgs/1/1/-/img_112a1472dbe89d85e13b023c8e77891688904.jpg": {
   "w": 1280,
   "h": 853,
+  "target": 1280,
+  "v": 3
+ },
+ "https://variety.com/wp-content/uploads/2026/10/hickel_2.jpg?w=1000&h=563&crop=1": {
+  "w": 1000,
+  "h": 563,
   "target": 1280,
   "v": 3
  },
