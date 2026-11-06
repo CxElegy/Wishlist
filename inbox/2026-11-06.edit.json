@@ -86,7 +86,7 @@
   "GTA 6": 70,
   "漫威电影": 40,
   "ILLIT": 4,
-  "MMORPG 新作": 5,
+  "MMORPG 新作": 13,
   "三星手机": 7,
   "The Mandalorian": 2,
   "チェーンソーマン": 3,
@@ -203,13 +203,29 @@
    "refs": [
     4,
     1,
-    3
+    3,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
    ],
    "event": {
     "date": "2026-11-26",
     "label": "発売日"
    },
    "image": "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700"
+  },
+  {
+   "headline": "Outer Ring MMO Beta 0.1.2 is live: desert PvP lets players steal loot, plus new bosses and storage chests",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "三星手机": [

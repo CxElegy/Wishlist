@@ -1026,6 +1026,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://egamers.io/wp-content/uploads/2026/11/outer-ring-mmo-beta-0-1-2-is-live-desert-pvp-lets-players-steal-loot-plus-new-bosses-and-storage-chests.jpg": {
+  "w": 1672,
+  "h": 941,
+  "target": 1280,
+  "v": 3
+ },
  "https://en.shiftdelete.net/wp-content/uploads/2026/11/galaxy-s27-ultra-release-date-price-specs.webp": {
   "w": 1600,
   "h": 900,
@@ -1875,16 +1881,16 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_m.jpg": {
-  "w": 480,
-  "h": 326,
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "w": 640,
+  "h": 434,
   "target": 1280,
   "v": 3,
-  "blur": 0.554,
-  "local": "pics/34a9733d009eaf6c.webp",
+  "blur": 0.448,
+  "local": "pics/fb2c399e45ea329f.webp",
   "out": [
    1280,
-   869
+   868
   ],
   "why": "看不清"
  },
@@ -1917,19 +1923,6 @@
   "h": 576,
   "target": 720,
   "v": 3
- },
- "https://img.topics.smt.news.goo.ne.jp/picture/asahi_region/m_asahi_region-ASVB03R7YVB0TLTB00FM.jpg": {
-  "w": 300,
-  "h": 201,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.614,
-  "local": "pics/251d0c04ef4355d0.webp",
-  "out": [
-   900,
-   603
-  ],
-  "why": "看不清"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100433.jpg": {
   "w": 640,
@@ -4023,6 +4016,19 @@
   "out": [
    1280,
    779
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.a_HSCsVI458l5XN3ZSKeiQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 470,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.434,
+  "local": "pics/95758000b0a065e3.webp",
+  "out": [
+   1280,
+   859
   ],
   "why": "看不清"
  },
