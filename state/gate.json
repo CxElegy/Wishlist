@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-06T19:34:24+00:00",
+ "checked": "2026-11-06T20:33:14+00:00",
  "fired": {
-  "at": "2026-11-06T19:34:24+00:00",
+  "at": "2026-11-06T20:33:14+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,72 +20,50 @@
     "sig": "ec8c7b5e0e18"
    },
    "items": [
-    "A2O LITE",
-    "Astrae Oratio",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "Vaundy",
-    "dota2",
     "チェーンソーマン",
-    "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-06T13:55:46+00:00",
+   "last_batch": "2026-11-06T19:57:42+00:00",
    "last_error": {
     "at": "2026-11-06T07:05:41+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 0,
+   "prog": 89,
    "prog_day": "2026-11-07",
-   "ripe": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
-    "Vaundy",
-    "dota2",
-    "三星手机",
-    "滑雪",
-    "漫威电影",
-    "猫用品"
-   ],
-   "sig": "ec8c7b5e0e18",
+   "ripe": [],
+   "sig": "89fd97b41991",
    "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 98 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 67625,
+   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
     "FROM",
     "GTA 6",
-    "Astrae Oratio",
-    "A2O LITE",
-    "周杰伦",
-    "绝区零",
-    "Vaundy"
-   ],
-   "need": true,
-   "sig": "34aef7e49b54",
-   "waiting": [
-    "BLEACH Mirrors High",
     "The Mandalorian",
+    "Vaundy",
+    "dota2",
     "あつ森",
-    "ぐでたま"
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 4 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
