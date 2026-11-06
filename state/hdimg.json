@@ -1881,19 +1881,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "w": 640,
-  "h": 434,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.448,
-  "local": "pics/fb2c399e45ea329f.webp",
-  "out": [
-   1280,
-   868
-  ],
-  "why": "看不清"
- },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
@@ -1923,6 +1910,19 @@
   "h": 576,
   "target": 720,
   "v": 3
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/asahi_region/m_asahi_region-ASVB03R7YVB0TLTB00FM.jpg": {
+  "w": 300,
+  "h": 201,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.614,
+  "local": "pics/251d0c04ef4355d0.webp",
+  "out": [
+   900,
+   603
+  ],
+  "why": "看不清"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100433.jpg": {
   "w": 640,
@@ -2202,6 +2202,13 @@
   "h": 440,
   "target": 1280,
   "v": 3
+ },
+ "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-06"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -2919,12 +2926,6 @@
   "target": 1280,
   "v": 3
  },
- "https://q0.itc.cn/images01/20261105/8c1cf2c7c03949bd81e84f57fb230579.png": {
-  "w": 2048,
-  "h": 1152,
-  "target": 720,
-  "v": 3
- },
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
   "w": 760,
   "h": 1125,
@@ -3557,6 +3558,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-06"
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/06/1793927206163_galaxy-s27-pro-sap-ra-mat-co-duoc-trang-bi-chip-snapdragon-manh-nhat-2388.png": {
+  "w": 1600,
+  "h": 856,
+  "target": 1280,
+  "v": 3
+ },
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
   "w": 495,
   "h": 619,
@@ -3579,6 +3586,12 @@
  "https://www.010-sports.jp/wp-content/uploads/2026/10/be16aabc7504144f3c61cd6875d300ef.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.3elife.net/Uploads/Article/images/202611/04/1907367268462.jpg": {
+  "w": 600,
+  "h": 342,
   "target": 720,
   "v": 3
  },
@@ -3748,6 +3761,19 @@
   "out": [
    1280,
    719
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.655,
+  "local": "pics/3611f69f9bd01901.webp",
+  "out": [
+   1280,
+   1280
   ],
   "why": "看不清"
  },
@@ -4016,19 +4042,6 @@
   "out": [
    1280,
    779
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.a_HSCsVI458l5XN3ZSKeiQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 470,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.434,
-  "local": "pics/95758000b0a065e3.webp",
-  "out": [
-   1280,
-   859
   ],
   "why": "看不清"
  },

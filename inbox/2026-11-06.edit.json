@@ -87,7 +87,7 @@
   "漫威电影": 40,
   "ILLIT": 4,
   "MMORPG 新作": 13,
-  "三星手机": 7,
+  "三星手机": 15,
   "The Mandalorian": 2,
   "チェーンソーマン": 3,
   "哈利波特剧集": 1,
@@ -235,7 +235,8 @@
    "blurb": "Leaks point to four Galaxy S27 models using three chipsets and a major redesign.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    10
    ],
    "image": "https://www.bbntimes.com/images/Galaxy_S27_Leaks_Four_New_Models_Three_Chipsets_and_a_Massive_Redesign.jpg"
   },
@@ -258,20 +259,23 @@
    ]
   },
   {
-   "headline": "Qi2 wireless charging may be coming on Galaxy S27 Ultra without S Pen issues",
+   "headline": "リーク情報によると、Galaxy S27 UltraにはQi2対応のマグネットと5,700mAhのシリコンカーボンバッテリーが搭載される予定だという。",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    15,
     6
    ]
   },
   {
-   "headline": "iPhone 18 and Galaxy S27 both increase in price, leaving consumers disappointed?",
+   "headline": "iPhone 18とGalaxy S27はどちらも値上がりし、消費者は失望しているのか？",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    13,
+    12,
     5
    ]
   },
@@ -281,7 +285,27 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    14
+   ]
+  },
+  {
+   "headline": "次期Galaxy S27 Proには、最もパワフルなSnapdragonチップが搭載されるのだろうか？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    8
+   ]
+  },
+  {
+   "headline": "갤럭시S27 함께 나오나…삼성 '갤럭시 스튜디오' FCC 인증 통과",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
