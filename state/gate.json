@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-06T02:17:37+00:00",
+ "checked": "2026-11-06T03:28:40+00:00",
  "fired": {
-  "at": "2026-11-06T02:17:52+00:00",
+  "at": "2026-11-06T03:28:40+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "Claude を起こした（2 回目：前は動かなかった）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,21 +12,29 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-06T02:17:52+00:00",
-    "attempts": 1,
+    "at": "2026-11-06T03:28:40+00:00",
+    "attempts": 2,
     "day": "2026-11-06",
     "prog": 144,
-    "resp": "cse_01W4x6f8G6pmvf3VTkFVJRtS",
-    "sig": "3c5f3bfc58b5"
+    "resp": "cse_01W4x6f6g6A25rNUhLh3ZpMX",
+    "sig": "6178241b152a"
    },
    "items": [
     "A2O LITE",
     "Astrae Oratio",
+    "FROM",
+    "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
     "The Mandalorian",
+    "Vaundy",
     "dota2",
     "gelato pique",
-    "哈利波特剧集"
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
    "last_batch": "2026-11-06T01:45:09+00:00",
    "last_error": {
@@ -39,16 +47,20 @@
    "ripe": [
     "A2O LITE",
     "Astrae Oratio",
+    "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "gelato pique",
-    "哈利波特剧集"
+    "三星手机",
+    "哈利波特剧集",
+    "漫威电影"
    ],
-   "sig": "3c5f3bfc58b5",
+   "sig": "6178241b152a",
    "token_cap": 1000000,
    "tokens_today": 241545,
-   "why": "整理待ちの記事 8 件（7 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 56 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
