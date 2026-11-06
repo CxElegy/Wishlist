@@ -35,8 +35,6 @@
   "https://money.udn.com/money/story/122328/9855248?from=udnamp-referralnews_ch1001artbottom": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/03/35482176.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=1050&exp=3600",
   "https://my-best.com/5657": null,
   "https://n.yam.com/Article/20261102496060": "https://ni.yam.com/20261102/00448615.202610311048494165m-1202f640ebe25f15.webp",
-  "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0zNXQ4TmgwRXpxZnZuUUtUZ01HRnZLWk5tRHNzVE42LVdsNnhYM204NHBiNmNSVzFHeEtuNXJVVnMzT0NwSm11M1RKdFlNcnhkdUZqdG92MA?oc=5": "https://image.p-c2-x.abema-tv.com/image/series/wo_84857/thumb.png?height=720&quality=75&version=1793585715&width=1280",
-  "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOSHRtNUUxQlBvLVY3Y0lEWUV1WEJCWFlEd210cmRwSFUyRGJ3NHZiZmlmWS1KbzFGTWVEeFdoWE92ZE9uWXR4RUF4NXlzVEU2aFJsT2NPaHZTWVlRZi1va2xMQ0FNMzF5QzFpRGVlWm1xdUlLOHctUV9ueU15MkFISUdEcVc5bVJKQTdZ?oc=5": "https://www.bing.com/th?id=ONUT.Bh5cBboVM1-KwLLfRvlDpw&pid=News&w=780",
   "https://news.nicovideo.jp/watch/nw19928740?news_ref=search_search": "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832",
   "https://news.nicovideo.jp/watch/nw19947845": "https://s.eximg.jp/exnews/feed/Prtimes/fc/Prtimes_2026-11-02-16333-238/Prtimes_2026-11-02-16333-238_1.jpg",
   "https://news.qoo-app.com/post/448877/spirit-circle": "https://i0.wp.com/news.qoo-app.com/wp-content/uploads/2026/11/ogpcover.jpg",
@@ -59,6 +57,7 @@
   "https://www.animatetimes.com/news/details.php?id=1791873025": "https://img2.animatetimes.com/2026/10/999b4f6c7f4e919fde8f1b2afcc11fb76acdd41d170320_50840305_e490802186570f9cea23f76723b2fec079ab5b64.jpg",
   "https://www.aol.com/articles/batman-movie-now-releasing-later-163321000.html": "https://hermes.media.transform.aol.com/570e682530899462ace0f75fd1ed94372855ca79/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/04/bcbf1241-285c-35df-b5ef-89d0cfd376d3/a32b6aad-9167-48c7-993f-ab4097a2b07d.jpg",
   "https://www.bella.tw/articles/aigc/answer/vaundy-59392761": "https://bellawebsite.s3.ap-northeast-1.amazonaws.com/ogimage/7b3cb322-d644-11f1-a745-067e1fddedd8.webp",
+  "https://www.bgr.com/2293868/samsung-phone-nearly-indestructible-galaxy-xcover7-pro/": "https://www.bgr.com/img/gallery/this-rugged-samsung-phone-is-nearly-indestructible/l-intro-1792667748.jpg",
   "https://www.bgr.com/2299534/improve-samsung-phone-display-simple-changes/": "https://www.bgr.com/img/gallery/improve-your-samsung-phones-display-with-these-simple-changes/l-intro-1793116280.jpg",
   "https://www.billboard.com/music/chart-beat/mlk-second-japan-hot-100-number-1-thats-chojo-vaundy-1236374100/": "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024",
   "https://www.chiba-tv.com/plus/detail/2026112186394": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1489960052156450557/origin_1.jpg",
@@ -89,6 +88,7 @@
   "https://www.sina.cn/news/detail/5362225301687319.html": "http://wx1.sinaimg.cn/middle/008xZoiFly1iirevre1ihj310y1mck33.jpg",
   "https://www.tehrantimes.com/news/531702/Mokri-s-Black-Rabbit-White-Rabbit-wins-at-63rd-International": "https://media.tehrantimes.com/d/t/2026/11/01/4/6242024.jpg?ts=1793535295479",
   "https://www.walkerplus.com/article/1026125/image10233236.html": "https://news.walkerplus.com/article/1026125/10233248_615.jpg",
+  "https://www.wowow.co.jp/detail/207610/012/01": "https://image.p-c2-x.abema-tv.com/image/series/wo_84857/thumb.png?height=720&quality=75&version=1793585715&width=1280",
   "https://www.yahoo.com/entertainment/tv/articles/harry-potter-paapa-essiedu-brutally-004500908.html": "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960",
   "https://www.youtube.com/watch?v=pjnY80oiVT0": "https://i1.ytimg.com/vi/pjnY80oiVT0/hqdefault.jpg"
  },
@@ -732,7 +732,7 @@
    "hits": [
     "三星 Galaxy"
    ],
-   "image": "https://www.bing.com/th?id=ONUT.Bh5cBboVM1-KwLLfRvlDpw&pid=News&w=780",
+   "image": "https://www.bgr.com/img/gallery/this-rugged-samsung-phone-is-nearly-indestructible/l-intro-1792667748.jpg",
    "kind": "wish",
    "score": 6,
    "source": "BGR",
@@ -747,7 +747,7 @@
     ]
    ],
    "title": "This Rugged Samsung Phone Is Nearly Indestructible",
-   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOSHRtNUUxQlBvLVY3Y0lEWUV1WEJCWFlEd210cmRwSFUyRGJ3NHZiZmlmWS1KbzFGTWVEeFdoWE92ZE9uWXR4RUF4NXlzVEU2aFJsT2NPaHZTWVlRZi1va2xMQ0FNMzF5QzFpRGVlWm1xdUlLOHctUV9ueU15MkFISUdEcVc5bVJKQTdZ?oc=5",
+   "url": "https://www.bgr.com/2293868/samsung-phone-nearly-indestructible-galaxy-xcover7-pro/",
    "words": [
     "galaxy"
    ],
@@ -1711,7 +1711,7 @@
    "source": "WOWOW",
    "taste": [],
    "title": "東レ パン パシフィック オープンテニス",
-   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0zNXQ4TmgwRXpxZnZuUUtUZ01HRnZLWk5tRHNzVE42LVdsNnhYM204NHBiNmNSVzFHeEtuNXJVVnMzT0NwSm11M1RKdFlNcnhkdUZqdG92MA?oc=5",
+   "url": "https://www.wowow.co.jp/detail/207610/012/01",
    "words": [],
    "work": "日本顶级网球赛事"
   },
@@ -2088,11 +2088,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2104,11 +2104,11 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]
