@@ -1401,6 +1401,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261105_EN_Jay_FB.jpg": {
+  "w": 640,
+  "h": 335,
+  "target": 720,
+  "v": 3
+ },
  "https://image.fnnews.com/resource/media/image/2026/11/05/202611050911240705_l.jpg": {
   "w": 800,
   "h": 1000,
@@ -4293,12 +4299,6 @@
  "https://www.bing.com/th?id=ONUT.ulRynbhVURp1V9mCExDQhA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.xAro5CP5gCvYEj6ewuK9RQ&pid=News&w=800": {
-  "w": 700,
-  "h": 394,
   "target": 720,
   "v": 3
  },
