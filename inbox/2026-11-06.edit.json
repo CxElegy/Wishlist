@@ -103,7 +103,8 @@
   "dota2": 3,
   "gelato pique": 2,
   "Astrae Oratio": 1,
-  "Vaundy": 1
+  "Vaundy": 1,
+  "ぐでたま": 1
  },
  "漫威电影": [
   {
@@ -653,6 +654,17 @@
    "highlight": "「かげろう」決定",
    "blurb": "",
    "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "和歌山マリーナシティにぐでたま登場！「ぐでたま ぐでぐでツアー」開催中",
+   "highlight": "開催中",
+   "blurb": "",
+   "weight": "lead",
    "refs": [
     1
    ]

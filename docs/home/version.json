@@ -1,32 +1,32 @@
 {
- "admin": "04def44d9e0b",
- "admin-ai": "d3d32030c0c1",
+ "admin": "7de32982dc91",
+ "admin-ai": "d984a85e1d5e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "edec31c6"
+   "6f4cd014"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "2acd68d9"
+   "6c7da0c1"
   ]
  },
- "admin-boards": "4350f45cac8e",
+ "admin-boards": "5d1b9b5d63e6",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "c756dd92"
+   "cb4d2f5c"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "e79d8f91d3f5",
+ "admin-emblem": "daefc7628e91",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "24d92934"
+   "5d57316c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d49dbc2fdc0b",
  "admin-members_marks": {},
- "admin-now": "b653a90ca261",
+ "admin-now": "19ac354e77e0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e9dbd1cc"
+   "33f6b45c"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2a5c4bed"
+   "66da0d95"
   ]
  },
- "admin-system": "a0c13c8a89cb",
+ "admin-system": "b366fff031fa",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cd22bf4e"
+   "30edc2c5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f05075c7"
+   "5548e49e"
   ]
  },
  "admin_marks": {},
- "heat": "271a633e91c4",
+ "heat": "e8e7854c4d39",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "000188c1"
+   "1b0ec11e"
   ],
   "ranking": [
    "ランキング",
-   "0c586313"
+   "37514266"
   ]
  },
- "index": "81815cc36462",
+ "index": "8074a0918286",
  "index_marks": {
   "front": [
    "トップ",
-   "73b1b760"
+   "371e460b"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "ba880983"
+   "42cc31ad"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "ae26cb9a"
+   "12e6d4d9"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d757b1b2"
   ]
  },
- "updated": "11.06 14:41",
+ "updated": "11.06 14:46",
  "wishlist": "ee24446b49da"
 }
