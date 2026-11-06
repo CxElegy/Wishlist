@@ -199,7 +199,10 @@
   "滑雪": 1,
   "FROM": 2,
   "周杰伦": 2,
-  "绝区零": 2
+  "绝区零": 2,
+  "チェーンソーマン": 1,
+  "哈利波特剧集": 1,
+  "星巴克马克杯": 1
  },
  "dota2": [
   {
@@ -286,6 +289,29 @@
    "weight": "lead",
    "refs": [
     2,
+    1
+   ]
+  }
+ ],
+ "チェーンソーマン": [],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter Series' New Weasley Twins Casting Addressed By OG Actors Amid Spinoff's Season 3 Return",
+   "highlight": "",
+   "blurb": "The original Weasley twin actors addressed the new casting for the Harry Potter series.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "在家也能聞到耶誕香！雀巢攜手星巴克推出「太妃核果」家享節日限定系列",
+   "highlight": "滿額再贈典藏馬克杯",
+   "blurb": "雀巢攜手星巴克推出「太妃核果」家享節日限定系列，滿額再贈典藏馬克杯。",
+   "weight": "lead",
+   "refs": [
     1
    ]
   }

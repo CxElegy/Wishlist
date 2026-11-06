@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "205d3adfad23",
+ "edit_sig": "613382c0c2d3",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -178,17 +178,19 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "The original Weasley twin actors addressed the new casting for the Harry Potter series.",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "ScreenRant",
-     "title": "Harry Potter Series' New Weasley Twins Casting Addressed By OG Actors Amid Spinoff's Season 3 Return",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPbkpnTmRGNnEzUUprbDUzeGNYV2lnT2VVQjB1cUwtY29TTDlPUTFqY29LcjZ5WEk4OExDOHZPci1tYnpGaVJRWXdyVXBBbnhaQ1ZCbFphMHBfd01OLW80bjdORTUtS3Y1d2pJQkZPdlF3VFgxalJiSktXX05PemlmaEFwZ0dBWldtQXFrRzVKcnhxLWVsNXEwQW1JX0tTRDA?oc=5"
+     "headline": "Harry Potter Series' New Weasley Twins Casting Addressed By OG Actors Amid Spinoff's Season 3 Return",
+     "highlight": "",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/harry-potter-and-the-order-of-the-phoenix-james-oliver-phelps-fred-george-weasley.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/harry-potter-hbo-series-weasley-twins-casting-oliver-james-phelps-response/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -234,17 +236,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "雀巢攜手星巴克推出「太妃核果」家享節日限定系列，滿額再贈典藏馬克杯。",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "JazzNews",
-     "title": "在家也能聞到耶誕香！雀巢攜手星巴克推出「太妃核果」家享節日限定系列：隨手包、雙膠囊與手沖濾掛齊發，滿額再贈典藏馬克杯",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1zcDg2U24zN2NieVBhaVNWU2NFdjNjbXR6azVmZXIzejN4cVJmXzB2Xy02NzhHeFNLLUZ0UUYwcTRvTDdsVnhDVE5MMGp2XzA1d1lSMXZCSDdNSnNNU3FYeXg3aw?oc=5"
+     "headline": "在家也能聞到耶誕香！雀巢攜手星巴克推出「太妃核果」家享節日限定系列",
+     "highlight": "滿額再贈典藏馬克杯",
+     "image": "https://jazznews.com.tw/wp-content/uploads/2026/11/20261107002405_0_cabd9c.jpg?v=1793982245",
+     "image_via": "og:image",
+     "url": "https://jazznews.com.tw/nestle-starbucks-2026-winter/",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
@@ -365,39 +369,6 @@
     "alt_fg": "#3F4F4B",
     "bg": "#FFF6F3",
     "fg": "#5A4049",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
-   "facts": [
-    {
-     "changed": false,
-     "label": "播出状态",
-     "text": "[《チェンソーマン 刺客篇》](https://anilist.co/anime/204429) · 未开播 · 开播日期未定"
-    }
-   ],
-   "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 1,
-     "source": "note",
-     "title": "타자를 소유하지 않는 것. '체인소 맨' 레제 편에서 보는 '마음대로 되지 않는 타자'와의 만남",
-     "url": "https://note.com/kimonoclub/n/n66e9b0441307?hl=ko"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "チェンソーマン",
-   "theme": {
-    "accent": "#DD8355",
-    "alt_accent": "#AE5223",
-    "alt_bg": "#F7EDE9",
-    "alt_fg": "#1E1A18",
-    "bg": "#211712",
-    "fg": "#F4EEE4",
     "font": "serif",
     "split": true
    }
@@ -775,6 +746,31 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://chainsawman.dog/assets/portal/og/ogp.jpg?251221",
+   "facts": [],
+   "last": {
+    "date": "2026-11-06",
+    "headline": "チェンソーマン PLAZA レゼ篇 in 渋谷ロフト 11月13日より開催!",
+    "url": "https://collabo-cafe.com/events/collabo/chainsawman-plaza-reze-offshot-shibuya-loft-2026/"
+   },
+   "name": "チェーンソーマン",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "チェンソーマン",
+   "theme": {
+    "accent": "#DD8355",
+    "alt_accent": "#AE5223",
+    "alt_bg": "#F7EDE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211712",
+    "fg": "#F4EEE4",
+    "font": "serif",
     "split": true
    }
   },
