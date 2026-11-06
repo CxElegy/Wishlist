@@ -1875,16 +1875,16 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "w": 640,
-  "h": 434,
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_m.jpg": {
+  "w": 480,
+  "h": 326,
   "target": 1280,
   "v": 3,
-  "blur": 0.448,
-  "local": "pics/fb2c399e45ea329f.webp",
+  "blur": 0.554,
+  "local": "pics/34a9733d009eaf6c.webp",
   "out": [
    1280,
-   868
+   869
   ],
   "why": "看不清"
  },
