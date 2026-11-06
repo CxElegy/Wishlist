@@ -1888,13 +1888,13 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg": {
   "w": 640,
   "h": 434,
   "target": 1280,
   "v": 3,
   "blur": 0.448,
-  "local": "pics/fb2c399e45ea329f.webp",
+  "local": "pics/881a5c1b9c291643.webp",
   "out": [
    1280,
    868
@@ -2939,15 +2939,15 @@
   "target": 1280,
   "v": 3
  },
- "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
-  "w": 760,
-  "h": 1125,
+ "https://q0.itc.cn/images01/20261105/8c1cf2c7c03949bd81e84f57fb230579.png": {
+  "w": 2048,
+  "h": 1152,
   "target": 720,
   "v": 3
  },
- "https://q1.itc.cn/images01/20261105/1cd101c86d7c4fc59ebb61cc7a827f45.png": {
-  "w": 1372,
-  "h": 774,
+ "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
+  "w": 760,
+  "h": 1125,
   "target": 720,
   "v": 3
  },
@@ -4429,6 +4429,12 @@
   "w": 1024,
   "h": 929,
   "target": 720,
+  "v": 3
+ },
+ "https://www.hollywoodreporter.com/wp-content/uploads/2024/11/FROM_310_00296_R-H-2024.jpg?w=1296&h=730&crop=1": {
+  "w": 1296,
+  "h": 730,
+  "target": 1280,
   "v": 3
  },
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/THND-FF-000193-H-2026.jpg?w=1296&h=730&crop=1": {

@@ -83,17 +83,18 @@
   "GTA 6": 59,
   "漫威电影": 40,
   "ILLIT": 4,
-  "MMORPG 新作": 4,
+  "MMORPG 新作": 5,
   "三星手机": 7,
   "The Mandalorian": 2,
-  "チェーンソーマン": 2,
+  "チェーンソーマン": 3,
   "哈利波特剧集": 1,
-  "滑雪": 1,
-  "FROM": 2,
+  "滑雪": 2,
+  "FROM": 3,
   "猫用品": 4,
   "周杰伦": 7,
   "A2O LITE": 4,
-  "绝区零": 2
+  "绝区零": 2,
+  "あつ森": 1
  },
  "漫威电影": [
   {
@@ -321,6 +322,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "Streaming Ratings: ‘From’ Netflix Effects Its Way to Top of the Charts",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "猫用品": [
@@ -378,5 +388,6 @@
    ]
   }
  ],
- "绝区零": []
+ "绝区零": [],
+ "あつ森": []
 }

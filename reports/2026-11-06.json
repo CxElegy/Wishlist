@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "e628401c96f0",
+ "edit_sig": "aa62a4792256",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -84,15 +84,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 5,
-     "source": "지디넷코리아",
-     "title": "그라비티, 신작 MMORPG '라그나로크 온라인 PLUS+' 국내 테스트 종료",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9wN0o0cVBPcmJFaUliLWRCV1laZFduaHRGREY0R2RGelRnUGd3dFJwVFVrS1VkbXMwYUd4OG12WGc2RFBKWk5zejlfWC1Ta0JBekVxRGNB?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -199,15 +190,6 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 3,
-     "source": "The Hollywood Reporter",
-     "title": "Streaming Ratings: ‘From’ Netflix Effects Its Way to Top of the Charts",
-     "url": "https://www.hollywoodreporter.com/tv/tv-news/streaming-ratings-oct-19-25-2026-1236748742/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -229,6 +211,16 @@
      "source": "Men's Journal",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.mensjournal.com&sz=128",
      "url": "https://www.mensjournal.com/news/beloved-series-ranked-among-best-horror-shows-of-all-time-is-climbing-netflixs-global-top-10",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "Streaming Ratings: ‘From’ Netflix Effects Its Way to Top of the Charts",
+     "highlight": "",
+     "image": "https://www.hollywoodreporter.com/wp-content/uploads/2024/11/FROM_310_00296_R-H-2024.jpg?w=1296&h=730&crop=1",
+     "image_via": "og:image",
+     "url": "https://www.hollywoodreporter.com/tv/tv-news/streaming-ratings-oct-19-25-2026-1236748742/",
      "weight": "normal"
     }
    ],
@@ -440,7 +432,7 @@
      "date": "2026-11-05",
      "headline": "学习苹果？三星Galaxy S27系列曝光，横排影像模组设计",
      "highlight": "",
-     "image": "https://q1.itc.cn/images01/20261105/1cd101c86d7c4fc59ebb61cc7a827f45.png",
+     "image": "https://q0.itc.cn/images01/20261105/8c1cf2c7c03949bd81e84f57fb230579.png",
      "image_via": "JSON-LD",
      "url": "https://www.sohu.com/a/1097384417_120651198",
      "weight": "normal"
@@ -486,39 +478,6 @@
    }
   },
   {
-   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
-   "facts": [
-    {
-     "changed": false,
-     "label": "播出状态",
-     "text": "[《チェンソーマン 刺客篇》](https://anilist.co/anime/204429) · 未开播 · 开播日期未定"
-    }
-   ],
-   "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "J:magazine!",
-     "title": "（画像）内田真礼の天使のような衣装に戸谷菊之介と楠木ともりも絶賛！劇場版『チェンソーマン レゼ篇』公開日＆新規ビジュアル解禁",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9WdE1lMFlCVHhuQWkwNl9GT1dUN3p3UkFTT1RKb2NEUHlRNlJNM3hGdldOUWU5ZzM4aWFmUlFBdm4xTW5NSEhQOUphM0tBLUd3LUJ5LWlkaE1fWmdvV3dqTjlPQVR4b0dwSVZKYlBrYw?oc=5"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "チェンソーマン",
-   "theme": {
-    "accent": "#DD8355",
-    "alt_accent": "#AE5223",
-    "alt_bg": "#F7EDE9",
-    "alt_fg": "#1E1A18",
-    "bg": "#211712",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
@@ -553,33 +512,6 @@
     "bg": "#14161A",
     "fg": "#E8EAEC",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 1,
-     "source": "攻略大百科",
-     "title": "【あつ森】サンクスギビングデー(2026版)はいつ？｜隠し味の食材・報酬一覧【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5kZlU2ZnQ5VkxieGpaUGpKMWdwOEM5TDd3VnZtVFI3UUxjVXNGc2ZXMmcxMXBBdnVGSFNDa3dFSnFHNmw3RS1WTmVQVHJCQk1YVFA4WFJDNFg?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
     "split": true
    }
   },
@@ -666,8 +598,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "AI 挑选",
+     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
@@ -698,15 +630,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 2,
-     "source": "Switchback Travel",
-     "title": "The Best Ski Brands of 2026/27",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5iMHREVEdWcDBCbzJ4OU9lR2Y5d1lTQ2FFRDhKVGJHNXhGam5DM1RDZHVvdUppLXdzWnV5YWV2cHRVaGJZdFZHTElkSE1IYnRyNkpJaWpqLVpGMHduMDBuWg?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -854,6 +777,56 @@
     "alt_bg": "#211C12",
     "alt_fg": "#F4EEE4",
     "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://chainsawman.dog/assets/portal/og/ogp.jpg?251221",
+   "facts": [],
+   "last": {
+    "date": "2026-11-05",
+    "headline": "メガハウス「お茶友シリーズ 劇場版『チェンソーマン レゼ篇』 BREAK TIME CAFÉ」レゼやデンジ、マキマなど全6種が登場！",
+    "url": "https://www.toy-people.com/jp/?p=115987"
+   },
+   "name": "チェーンソーマン",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "チェンソーマン",
+   "theme": {
+    "accent": "#DD8355",
+    "alt_accent": "#AE5223",
+    "alt_bg": "#F7EDE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211712",
+    "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-05",
+    "headline": "Nintendo lanza diseños gratuitos de Zelda en Animal Crossing: New Horizons por su 40.º aniversario",
+    "url": "https://www.notebookcheck.org/Nintendo-lanza-disenos-gratuitos-de-Zelda-en-Animal-Crossing-New-Horizons-por-su-40-o-aniversario.1438705.0.html"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
     "split": true
