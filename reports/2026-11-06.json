@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "48ae8db5bc35",
+ "edit_sig": "de1e93af94fe",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -106,34 +106,8 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 19,
-     "source": "Enduins",
-     "title": "Nexon and GRAYGAMES Confirm Launch Date for Open-World MMORPG TEMPPAL: OVERGEARED",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQWnNZY3hwZEJ0OUxsVENTVDh2cEVqV29aY1dVSTlaaVpaN3dMV1BqcDVIVHVKVlNVMVFYa3lMUUZRQXdaOW9VYUlRR3hXQVpYYUwxdVo2S1cxV2p2cTY5ZFVqc3VUaTV0cXFxbUJaaEg0by1LU1dkWk5Xd3ZpZ3BpeDFTOW9ON0I5MHdldm1RT0R6NElnanUtVXFSX0NnRzdXVU5aTFh4T1doWW1sQXc?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 21,
-     "source": "와이드경제",
-     "title": "글로벌 흥행 IP '템빨'의 귀환…넥슨, MMORPG '템빨: 오버기어드' 26일 4개국 동시 출격",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5hMVZ4RGdOOUMzT1JJUmdVQVp3Z2w5Q3hiM3FUV29CbFVRWlRUakpDRzhaZ3JVcTloRTBNM0tBY0tPQVNkcHc3U0JsVXJyUnRjQWV1dTZtNlhVX0lNNlozVE9RQjRkVGdWUG1sYw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-06",
-     "headline": "《天翼之鍊》IP 新作 MMORPG《天翼之鍊 MOBILE》首度公開 釋出焦點團體測試招募影片",
-     "highlight": "",
-     "image": "https://p2.bahamut.com.tw/B/2KU/11/c2393e1d8016784c47017c4f5b210pn5.JPG",
-     "image_via": "og:image",
-     "url": "https://gnn.gamer.com.tw/detail.php?sn=314597",
-     "weight": "hero"
-    },
     {
      "blurb": "NEXON運営・グレイゲームズ開発の新作MMORPG。装備成長システム「オーバーギアード」や大規模協力戦を備える。",
      "date": "2026-11-05",
@@ -156,6 +130,17 @@
      "image": "https://egamers.io/wp-content/uploads/2026/11/outer-ring-mmo-beta-0-1-2-is-live-desert-pvp-lets-players-steal-loot-plus-new-bosses-and-storage-chests.jpg",
      "image_via": "og:image",
      "url": "https://egamers.io/outer-ring-mmo-beta-0-1-2-is-live-desert-pvp-lets-players-steal-loot-plus-new-bosses-and-storage-chests/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "다크 판타지 MMO '판타지포유', 사전 다운로드 9일 개시",
+     "highlight": "",
+     "image": null,
+     "source": "www.ipnn.co.kr",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.ipnn.co.kr&sz=128",
+     "url": "https://www.ipnn.co.kr/news/articleView.html?idxno=418181",
      "weight": "normal"
     }
    ],
@@ -994,8 +979,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "AI 挑选",
+     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
+     "image_via": "og:image",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },

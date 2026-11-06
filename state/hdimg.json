@@ -1984,13 +1984,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-06"
- },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
@@ -2286,6 +2279,13 @@
   "h": 440,
   "target": 1280,
   "v": 3
+ },
+ "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-06"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -2862,12 +2862,6 @@
  "https://p.potaufeu.asahi.com/dcd1-p/picture/31517714/72243b8d2254b36daa8010677f8b393f.jpg": {
   "w": 1200,
   "h": 800,
-  "target": 1280,
-  "v": 3
- },
- "https://p2.bahamut.com.tw/B/2KU/11/c2393e1d8016784c47017c4f5b210pn5.JPG": {
-  "w": 996,
-  "h": 560,
   "target": 1280,
   "v": 3
  },
