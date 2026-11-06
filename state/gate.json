@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-06T14:34:03+00:00",
+ "checked": "2026-11-06T16:18:28+00:00",
  "fired": {
   "at": "2026-11-06T14:34:03+00:00",
   "results": {
@@ -19,24 +19,20 @@
     "resp": "cse_01W4x6f5ma2D2KqFuyy9KW11",
     "sig": "7046078be7a3"
    },
-   "items": [
-    "Astrae Oratio",
-    "Vaundy",
-    "猫用品"
-   ],
+   "items": [],
    "last_batch": "2026-11-06T13:55:46+00:00",
    "last_error": {
     "at": "2026-11-06T07:05:41+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 360,
-   "prog_day": "2026-11-06",
+   "need": false,
+   "prog": 0,
+   "prog_day": "2026-11-07",
    "ripe": [],
-   "sig": "dae1e40ed01d",
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 649996,
-   "why": "整理待ちの記事 4 件（3 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
