@@ -98,7 +98,8 @@
   "A2O LITE": 8,
   "绝区零": 2,
   "あつ森": 1,
-  "dota2": 3
+  "dota2": 3,
+  "gelato pique": 2
  },
  "漫威电影": [
   {
@@ -507,6 +508,18 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
+    2
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "10色10キャラクターのボーダー柄ルームウェアで10周年！ジェラート ピケ「PEANUTS meets GELATO PIQUE」",
+   "highlight": "10周年",
+   "blurb": "ジェラート ピケとPEANUTSのコラボ10周年を記念した新作コレクション。スヌーピーたちがもこもこルームウェアを着用。",
+   "weight": "lead",
+   "refs": [
+    1,
     2
    ]
   }

@@ -716,9 +716,9 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg": {
+ "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210_crop.png": {
   "w": 1200,
-  "h": 2132,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -1030,6 +1030,12 @@
  "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-6ea7a38cf1ae91bed263b5e5637d5a04-20261027-082d08.jpg": {
   "w": 1600,
   "h": 680,
+  "target": 1280,
+  "v": 3
+ },
+ "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-4ef0c2fe9d94848d446023cf3bbeb6c1-20261101-87200d.jpg": {
+  "w": 1166,
+  "h": 1350,
   "target": 1280,
   "v": 3
  },
@@ -1912,6 +1918,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg": {
+  "w": 640,
+  "h": 434,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.448,
+  "local": "pics/881a5c1b9c291643.webp",
+  "out": [
+   1280,
+   868
+  ],
+  "why": "看不清"
+ },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
@@ -2239,13 +2258,6 @@
   "h": 440,
   "target": 1280,
   "v": 3
- },
- "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-06"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -3632,9 +3644,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.3elife.net/Uploads/Article/images/202611/04/1907367268462.jpg": {
+ "https://www.3elife.net/Uploads/Article/images/202611/04/1907416908023.jpg": {
   "w": 600,
-  "h": 342,
+  "h": 335,
   "target": 720,
   "v": 3
  },

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "9abd11c9da23",
+ "edit_sig": "6edb4fac9ec4",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -482,8 +482,8 @@
      "date": "2026-11-05",
      "headline": "学习苹果？三星Galaxy S27系列曝光，横排影像模组设计",
      "highlight": "",
-     "image": "https://www.3elife.net/Uploads/Article/images/202611/04/1907367268462.jpg",
-     "image_via": "正文图（4 枚から）",
+     "image": "https://www.3elife.net/Uploads/Article/images/202611/04/1907416908023.jpg",
+     "image_via": "正文图（3 枚から）",
      "url": "https://www.3elife.net/Art/mobile/202611/05/110661.html",
      "weight": "normal"
     },
@@ -524,24 +524,19 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "ジェラート ピケとPEANUTSのコラボ10周年を記念した新作コレクション。スヌーピーたちがもこもこルームウェアを着用。",
      "date": "2026-11-05",
-     "n": 1,
-     "source": "Dtimes",
-     "title": "10色10キャラクターのボーダー柄ルームウェアで10周年！ジェラート ピケ「PEANUTS meets GELATO PIQUE」",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBBbklmUUlNcXhidXlqVzNkU0dPTkZLUUNlbng4ZHIwUk5FR19BblBOZ3FCWkliVFZOakh5bVNzUmJMSkNuRkE?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 2,
-     "source": "Yahoo!ニュース",
-     "title": "ジェラート ピケとPEANUTSコラボ10周年を記念した新作コレクション！スヌーピーたちがもこもこルームウェアを着用したデザインがかわいすぎる（ウォーカープラス）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1JcEoybEpjWnl4NDhlU0ZQLXpZdC11eXR5TDF6VHdmRzJveS1VSXhrbURUczlfTXoyYVdsak1ibGItMTJXd1N4MlRVdVA4b3JZY2psUC1UaEpZUkRkXy1wWnVsanhBOFI5LVVZbzRENl9NYUpoYVNwbmVabHY2ZHM?oc=5"
+     "headline": "10色10キャラクターのボーダー柄ルームウェアで10周年！ジェラート ピケ「PEANUTS meets GELATO PIQUE」",
+     "highlight": "10周年",
+     "image": "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-4ef0c2fe9d94848d446023cf3bbeb6c1-20261101-87200d.jpg",
+     "image_via": "og:image",
+     "url": "https://dtimes.jp/post-1441908/",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",
@@ -753,8 +748,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "og:image",
+     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
@@ -763,8 +758,8 @@
      "date": "2026-11-02",
      "headline": "A2O LITE, 'NEON' 음악방송 8관왕에 전한 인사…\"감사합니다\"",
      "highlight": "음악방송 8관왕",
-     "image": "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210_crop.png",
+     "image_via": "og:image",
      "url": "https://www.topstarnews.net/news/articleView.html?idxno=16266539",
      "weight": "normal"
     },
