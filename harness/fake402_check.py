@@ -10,6 +10,7 @@ import http.server
 import os
 import pathlib
 import queue
+import re
 import shutil
 import subprocess
 import sys
@@ -145,7 +146,7 @@ def prepare(dst, port):
             shutil.copy2(s, dst / f)
     y = dst / "items.yaml"
     t = y.read_text(encoding="utf-8")
-    base = "https://bzokpnbcjscbcehdxtjq.supabase.co"
+    base = re.search(r'supabase_url:\s*"([^"]+)"', t).group(1)   # 接続先は items.yaml から（2026-11-07 自前版に替えた）
     assert t.count(base) == 1
     y.write_text(t.replace(base, f"http://127.0.0.1:{port}"), encoding="utf-8")
     _git(dst, "init", "-q")
