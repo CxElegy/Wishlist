@@ -400,3 +400,4 @@
 - 2026-11-06 f1：スマホの左写真カード（.wc・.card.mini・.tape・.sb）を写真幅 42%・高さいっぱい（cover）に・PR #952・手元 390px で写真の下の空き 56→13〜17px・全試験 456 OK・CI 緑・次：render 反映後に本番の ux_check と scroll_measure の後の数字
 - 2026-11-06 f1：スマホの左写真カードの点検を足した（ux_check HOLE_JS の sideGap：写真の底→カードの底が 24px 超なら ✗・日程/価格の行は除く）・手元 390px で #952 の前 92/99 枚 ✗（45〜76px）→後 0/99・PR 次：合併後に本番の ux_check と scroll_measure
 - 2026-11-06 f1：左写真カードの見直し（別の目の指摘）：対象 4 種を明記・.pk.sb は 390px で 0 枚のため規則の外と書いた・guest の scroll_measure 後を取った・test-a〜c は 402 で測れず・予定は _agenda が店長と共通・次：402 解除後に test-a〜c を測る
+- 2026-11-06 plan1：左写真カードは #952・#954・#955 で済み。お客さまの予定は店長と同じ関数・同じ条件（tests/test_diff_admin.py が数える）と確認。402 で test-a〜c は測れず。次の段を 3 つ BACKLOG に足した（402 解除日の再測定・scroll_measure の日次記録・PC の sideGap）
