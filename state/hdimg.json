@@ -1716,6 +1716,12 @@
   ],
   "why": "看不清"
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gQrhn.img": {
+  "w": 1296,
+  "h": 730,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gQrnu.img": {
   "target": 1280,
   "v": 3,
@@ -4337,12 +4343,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ORMS.f4c3d080ca8a4b12172007361a001731&pid=News&w=1200": {
-  "w": 700,
-  "h": 394,
-  "target": 720,
-  "v": 3
- },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/03/bnt202611030081.jpg": {
   "w": 2000,
   "h": 1501,
@@ -4563,6 +4563,12 @@
  "https://www.indexbox.io/landing/img/blog/custom-report-v2-localized/ja/automatic-cat-litter-market-forecast-to-2035-driven-by-pet-humanization-and-smart-home-integration-a488c84c23688392.webp": {
   "w": 1600,
   "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.indy100.com/media-library/image.jpg?id=60330234&width=1200&height=600&coordinates=0%2C100%2C0%2C100": {
+  "w": 1200,
+  "h": 600,
   "target": 720,
   "v": 3
  },

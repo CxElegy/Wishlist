@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "2f3170e3c832",
+ "edit_sig": "06f0d04c1d2c",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -250,15 +250,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 2,
-     "source": "The Hollywood Reporter on MSN",
-     "title": "Harry Potter TV Show Cast vs. Movies: Every HBO Character Compared",
-     "url": "https://www.msn.com/en-us/news/other/harry-potter-tv-show-cast-vs-movies-every-hbo-character-compared/ss-AA2gQri2"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -270,6 +261,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.tvguide.com/news/harry-potter-tv-series-hbo-max/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "Harry Potter TV Show Cast vs. Movies: Every HBO Character Compared",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gQrhn.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/harry-potter-tv-show-cast-vs-movies-every-hbo-character-compared/ss-AA2gQri2",
+     "weight": "normal"
     }
    ],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
