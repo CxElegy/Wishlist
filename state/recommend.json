@@ -46,13 +46,13 @@
   "https://nijimen.kusuguru.co.jp/topics/648727": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/d8ea645fc0224f7dbd1a0936c547b68f.jpg",
   "https://nijimen.kusuguru.co.jp/topics/648904": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6f0ca7318ff34d75ac73b0594ed15987.jpg",
   "https://note.com/bannnasokana_kt/n/n84fdf8d5f236?hl=en": "https://www.bing.com/th?id=ONUT.VJz7xyCP68U5oQw8463WhA&pid=News&w=1200",
+  "https://note.com/sakuraito101/n/n1476317bc911?hl=ko": "https://www.bing.com/th?id=ONUT.lw-boqkB232vXdc5XRihLA&pid=News&w=1200",
   "https://otonano-shumatsu.com/images/592300/4": "https://otonano-shumatsu.com/wp-content/uploads/2026/10/hiroshima_cat-cafe_7835b.jpg",
   "https://paradepets.com/pet-news/black-cats-homemade-halloween-costume-masked-vigilante": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCRsS.img",
   "https://screenrant.com/superhero-marvel-dc-movies-2010s-masterpieces/": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/06/logan_j6rhsk.jpg?w=1600&h=900&fit=crop",
   "https://sounova.com/game/silver-palace-global-launch-december-2026": "https://cdn.sounova.com/upload/XZB9zcSxrtYsJDQAP55HB.webp",
   "https://t.co/HxbP6sUsNB": "https://pbs.twimg.com/media/HWIPKNQbYAEe7ne?format=webp&name=large",
   "https://t.co/J2phBwQa7c": null,
-  "https://thedirect.com/article/the-mandalorian-pedro-pascal-star-wars-save": "https://images.thedirect.com/media/article_full/1000012211.jpg",
   "https://times.abema.tv/zt/articles/-/10286189": "https://times-abema.ismcdn.jp/mwimgs/2/9/1200w/img_29ed6bf6a46cabbb6b7d74c6d82596c1244940.jpg",
   "https://today.line.me/tw/v3/posts/list/article/peKZgDl": "https://today-obs.line-scdn.net/0hBc9YPs7MHUwEIAFvObBiGzx2ET03RgdFJhVUKXUpEHQuDF4TORROLyB3FmB5EF5PJBZQLHYlQnkrQ1sbOg/w1200",
   "https://universe.oneone.com.tw/posts/7264": "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg",
@@ -1423,27 +1423,6 @@
   },
   {
    "batch": 5,
-   "because": "The Mandalorian",
-   "date": "2026-11-06",
-   "hits": [],
-   "image": "https://images.thedirect.com/media/article_full/1000012211.jpg",
-   "kind": "board",
-   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
-   "score": 6,
-   "source": "The Direct",
-   "taste": [
-    [
-     "作品:The Mandalorian",
-     2
-    ]
-   ],
-   "title": "Here's How Star Wars Can Save Pedro Pascal's The Mandalorian After His $178 Million Box Office Bomb",
-   "url": "https://thedirect.com/article/the-mandalorian-pedro-pascal-star-wars-save",
-   "words": [],
-   "work": "The Mandalorian"
-  },
-  {
-   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-11-06",
    "hits": [],
@@ -1506,7 +1485,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "哈利波特剧集",
    "date": "2026-11-05",
    "hits": [],
@@ -1588,6 +1567,27 @@
    "url": "https://www.yahoo.com/entertainment/tv/articles/harry-potter-paapa-essiedu-brutally-004500908.html",
    "words": [],
    "work": "哈利波特剧集"
+  },
+  {
+   "batch": 6,
+   "because": "The Mandalorian",
+   "date": "2026-11-03",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.lw-boqkB232vXdc5XRihLA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
+   "score": 6,
+   "source": "note",
+   "taste": [
+    [
+     "作品:The Mandalorian",
+     2
+    ]
+   ],
+   "title": "만달로리안 & 그로구에 빠져 캘리포니아까지 급여행을 떠난 이야기 ① 첫째 날 편",
+   "url": "https://note.com/sakuraito101/n/n1476317bc911?hl=ko",
+   "words": [],
+   "work": "The Mandalorian"
   },
   {
    "batch": 6,
@@ -2097,11 +2097,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2109,15 +2109,15 @@
    8
   ],
   [
+   "作品:三星手机",
+   7
+  ],
+  [
    "galaxy",
    7
   ],
   [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "作品:三星手机",
    7
   ]
  ]

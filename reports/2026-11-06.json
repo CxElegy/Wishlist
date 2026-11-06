@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "eb4b76d921a9",
+ "edit_sig": "1c45551ebf9e",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -619,15 +619,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 4,
-     "source": "The Direct",
-     "title": "Here's How Star Wars Can Save Pedro Pascal's The Mandalorian After His $178 Million Box Office Bomb",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1od3ZnWlhXbHBmc2VSZVVOZGZ4VTBrWi1YdFRQUW5XVWlWWmNkOVJMLXN2Qlk4aHNIVGNDTWRkREw5WFVpME5Uek9mNzFPdm9HRFhEVXJ2NXhzMnpUUXhsREhHMHp1LUZ5WV9UcElzTkEzUnVfUFVGQ0c5ek9OQQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -648,6 +639,16 @@
      "image": "https://variety.com/wp-content/uploads/2026/10/hickel_2.jpg?w=1000&h=563&crop=1",
      "image_via": "转载 variety.com",
      "url": "https://www.imdb.com/it/news/ni66065592/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "Here's How Star Wars Can Save Pedro Pascal's The Mandalorian After His $178 Million Box Office Bomb",
+     "highlight": "",
+     "image": "https://images.thedirect.com/media/article_full/1000012211.jpg",
+     "image_via": "og:image",
+     "url": "https://thedirect.com/article/the-mandalorian-pedro-pascal-star-wars-save",
      "weight": "normal"
     }
    ],

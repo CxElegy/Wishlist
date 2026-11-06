@@ -1602,7 +1602,7 @@
  "https://images.thedirect.com/media/article_full/1000012211.jpg": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/doomclocks.jpg": {
@@ -4237,6 +4237,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.337
+ },
+ "https://www.bing.com/th?id=ONUT.lw-boqkB232vXdc5XRihLA&pid=News&w=1200": {
+  "w": 700,
+  "h": 470,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.m1s4FTAqSRNpAB8tWY7sCQ&pid=News&w=1200": {
   "w": 700,
