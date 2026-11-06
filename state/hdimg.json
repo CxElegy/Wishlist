@@ -440,6 +440,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.80.lv/api/upload/meta/50914/images/6aedba56d1922/contain_1200x630.jpg": {
+  "w": 1120,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.abcotvs.com/dip/images/19681555_081426-cc-getty-d23-ent-showcase-doomsday-cast-img.jpg": {
   "w": 1920,
   "h": 1080,
@@ -499,6 +505,19 @@
   "h": 542,
   "target": 1280,
   "v": 3
+ },
+ "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
+  "w": 600,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.475,
+  "local": "pics/ffd4ccaef88f5a5d.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://cdn.livedoor.jp/kstyle/ab5e045fe60d0218b0020ef9390be269_WI.jpg": {
   "w": 1024,
@@ -725,6 +744,12 @@
   "target": 720,
   "v": 3
  },
+ "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-promo-art-reveals-epic-mcu-team-ups-and-a-first-look-at-doctor-dooms-doom-guard-ab230842.jpg": {
+  "w": 1500,
+  "h": 844,
+  "target": 1280,
+  "v": 3
+ },
  "https://contents.oricon.co.jp/upimg/news/2491000/2490536/20261027_165033_p_o_98340929.jpg": {
   "w": 1200,
   "h": 800,
@@ -936,6 +961,12 @@
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/01071523/avengers-1024x576.webp": {
   "w": 1024,
   "h": 576,
+  "target": 1280,
+  "v": 3
+ },
+ "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/06133154/gta-6-pc-rip-offs.jpg": {
+  "w": 1600,
+  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -1379,6 +1410,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/doommovies.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://images.thedirect.com/media/article_full/namor_new_costume_doomsday.jpg": {
   "w": 1280,
   "h": 720,
@@ -1394,6 +1431,18 @@
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_291,y_64,w_1932,h_1086/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m6ekgecrgnj4vwnmff.jpg": {
   "w": 1440,
   "h": 810,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dqOGx.img": {
+  "w": 608,
+  "h": 342,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2eeDw2.img": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -2024,6 +2073,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.256
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26lP3i5zeFWhG4W7jQDDugTXJIf4Ag5DlMXcdYp1tXI_UyG0bnrZl2sco0-4t6vcd4K5xfuaVZxGcEHqZc3cDiSHtMb7cCXScCYalzsgRoiIV": {
+  "w": 640,
+  "h": 427,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.435,
+  "local": "pics/752e25bb6b679882.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
  },
  "https://news.dellows.jp/wp-content/uploads/2026/10/941580_2.jpg": {
   "w": 1024,
@@ -2667,6 +2729,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/86f547609d0882d35366ff4d493281cca2005fd442aa174848001b58acfe7db2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fsuperherohype_979%2F86918f271725f7f127ce17752dd265d0.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/9c1db0b2193c5a337e0daf05c5e78ced7e7032a80604692a1b2806bfb8334e03/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgadget_review_articles_822%2Fa427d5671b74c83dbfc8ef5e7c3ca37a.jpg": {
   "w": 1200,
   "h": 675,
@@ -2735,6 +2803,12 @@
   "target": 720,
   "v": 3
  },
+ "https://sammyguru.com/wp-content/uploads/2026/09/Galaxy-H1-Headphones.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-Unbox-8.jpg": {
   "w": 1900,
   "h": 1425,
@@ -2768,6 +2842,12 @@
  "https://snowbrains.com/wp-content/uploads/2026/11/forecast-23.png": {
   "w": 984,
   "h": 808,
+  "target": 720,
+  "v": 3
+ },
+ "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/8/11/samsungs-new-200mp-camera-sparks-galaxy-s27-ultra-speculation-98a1d797d1744d85b1e28258b356bf5d-538.png?width=0&s=YnOKsmBaWrFil0J3cKSeoQ": {
+  "w": 1920,
+  "h": 1028,
   "target": 720,
   "v": 3
  },
@@ -3404,6 +3484,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.CNtq5iFlDudwEaQWPrGMlA&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -3481,12 +3567,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.QGgNdtDx4mPdMWzD-KyXjw&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3512,12 +3592,6 @@
    984
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.TCE6hKd37sgbUTq0Rrvp5A&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.UXvOIpi2aXg2GpEl52Ekqg&pid=News&w=650": {
   "w": 650,
@@ -3595,6 +3669,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.c0HQo-utsC28dVIOOALYhg&pid=News&w=768": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
@@ -3870,7 +3950,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-1.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-ultra-camera-bump.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
@@ -4114,6 +4206,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.thenews.com.pk/assets/uploads/2026-11-06/1422757_115225_updates.jpg": {
+  "w": 1200,
+  "h": 686,
+  "target": 720,
+  "v": 3
+ },
  "https://www.thepinknews.com/wp-content/uploads/2026/11/hbo-harry-potter-child-stars-london-event-protest.jpg": {
   "w": 1996,
   "h": 1000,
@@ -4249,6 +4347,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.305
+ },
+ "https://x0.ifengimg.com/res/2026/76D35278B83011F6252549B5BCA32982538B40BE_size8_w640_h338.webp": {
+  "w": 640,
+  "h": 338,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.531,
+  "local": "pics/b7f983904e22b848.webp",
+  "out": [
+   1280,
+   676
+  ],
+  "why": "看不清"
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-8e21309f0ab9e8f398f424861f3ba0bb/images/cac613fb-5447-459e-8615-ff73ed06f6be.jpg": {
   "w": 1920,

@@ -1,14 +1,14 @@
 {
- "admin": "39edc9a19f65",
- "admin-ai": "af2fba494fdd",
+ "admin": "7df8a701afa4",
+ "admin-ai": "c5cdb8d17040",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c469d0b6"
+   "a874553f"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "92491ac3"
+   "754c023b"
   ]
  },
  "admin-boards": "b66bb3673a4c",
@@ -22,11 +22,11 @@
    "5bc8c40b"
   ]
  },
- "admin-emblem": "49ee1f7a3057",
+ "admin-emblem": "c334abfba694",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "db006ce3"
+   "4884e1c8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d49dbc2fdc0b",
  "admin-members_marks": {},
- "admin-now": "89f12001d4cb",
+ "admin-now": "9e60767b58e3",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b31c8be6"
+   "918f4956"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "3360a4cc"
+   "01f0fd78"
   ],
   "term-panel": [
    "ライブログ",
-   "ed3e22b6"
+   "543642d6"
   ]
  },
- "admin-system": "880aaa01a720",
+ "admin-system": "2ab8c23ea682",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cabc7004"
+   "cbdb8fad"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2e5f8549"
+   "9917aaf6"
   ]
  },
  "admin_marks": {},
- "heat": "2415af147d86",
+ "heat": "76915f2ffb54",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "8b58d78e"
+   "27523924"
   ],
   "ranking": [
    "ランキング",
-   "886df6bf"
+   "79196a78"
   ]
  },
- "index": "0dd2271e331f",
+ "index": "e76b29751d7c",
  "index_marks": {
   "front": [
    "トップ",
-   "5fe97124"
+   "5b22c486"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "822f84c6"
+   "e79e9efb"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "f8dba2d1"
+   "ce23e192"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "183e0cbd"
+   "1718e8fd"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "e953c774"
+   "f998b2da"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "13aa46ed"
+   "71d66e68"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "2c6c4cc8"
+   "eb712d50"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "ed5b31ae"
+   "f527307c"
   ],
   "w-f303ad09": [
    "绝区零",
    "dde6d0ee"
   ]
  },
- "updated": "11.07 04:31",
- "wishlist": "3d1548528b7f"
+ "updated": "11.07 04:49",
+ "wishlist": "994af7fc3827"
 }

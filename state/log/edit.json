@@ -1,82 +1,5 @@
 [
 {
-"at": "2026-11-05T09:56:42+00:00",
-"text": "2026-11-05 第 2 バッチを出刊：GTA 6（1 版面・5 本・残り 2 版面） · token 新規入力 1.7万・キャッシュ読み 208.2万・出力 4,648",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.25,
-"mem_total": 16867418112,
-"mem_free": 15873032192,
-"disk_used": 10051682304,
-"disk_free": 31231852544,
-"disk_total": 41283534848,
-"peak": 467181568
-},
-"batch": 2,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 2,
-"edited": 22,
-"run": 1793870954.6223545,
-"tok": {
-"in": 63,
-"cw": 16482,
-"cr": 2082382,
-"out": 4648,
-"calls": 25,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 2103575
-},
-{
-"at": "2026-11-05T10:20:44+00:00",
-"text": "2026-11-05 第 1 バッチを出刊：BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作、The Mandalorian、Vaundy ほか 8（14 版面・43 本・残り 2 版面） · token 新規入力 5.9万・キャッシュ読み 212.8万・出力 8,870",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.47,
-"mem_total": 16867418112,
-"mem_free": 15881113600,
-"disk_used": 10073034752,
-"disk_free": 31210500096,
-"disk_total": 41283534848,
-"peak": 409767936
-},
-"batch": 1,
-"boards": [
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"MMORPG 新作",
-"The Mandalorian",
-"Vaundy",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"三星手机",
-"日本顶级网球赛事",
-"星巴克马克杯",
-"漫威电影",
-"猫用品"
-],
-"stories": 43,
-"left": 2,
-"edited": 22,
-"run": null,
-"tok": {
-"in": 59,
-"cw": 58667,
-"cr": 2127859,
-"out": 8870,
-"calls": 30,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 2195455
-},
-{
 "at": "2026-11-05T11:38:56+00:00",
 "text": "2026-11-05 第 1 バッチを出刊：ILLIT、gelato pique、周杰伦、滑雪、绝区零（5 版面・14 本・今日の整理待ちは全部終わり） · token 新規入力 4.1万・キャッシュ読み 48.0万・出力 2,298",
 "level": "ok",
@@ -1957,5 +1880,67 @@
 "calls": 29,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-06T19:43:28+00:00",
+"text": "2026-11-07 第 1 バッチを出刊：GTA 6（1 版面・4 本・残り 5 版面） · token 新規入力 5.4万・キャッシュ読み 115.5万・出力 6,009",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.45,
+"mem_total": 16867418112,
+"mem_free": 15785869312,
+"disk_used": 10036359168,
+"disk_free": 31247175680,
+"disk_total": 41283534848,
+"peak": 473006080
+},
+"batch": 1,
+"boards": [
+"GTA 6"
+],
+"stories": 4,
+"left": 5,
+"edited": 5,
+"run": 1793993728.5956376,
+"tok": {
+"in": 33,
+"cw": 54013,
+"cr": 1154954,
+"out": 6009,
+"calls": 17,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1215009
+},
+{
+"at": "2026-11-06T19:49:55+00:00",
+"text": "2026-11-07 第 2 バッチを出刊：（新しく終わった版面なし）（0 版面・0 本・残り 5 版面） · token 新規入力 989・キャッシュ読み 8.3万・出力 333",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.15,
+"mem_total": 16867418112,
+"mem_free": 15941066752,
+"disk_used": 10036424704,
+"disk_free": 31247110144,
+"disk_total": 41283534848,
+"peak": 355303424
+},
+"batch": 2,
+"boards": [],
+"stories": 0,
+"left": 5,
+"edited": 5,
+"run": 1793993728.5956376,
+"tok": {
+"in": 2,
+"cw": 987,
+"cr": 82551,
+"out": 333,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 83873
 }
 ]
