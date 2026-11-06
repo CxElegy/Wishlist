@@ -42,23 +42,24 @@
     54,
     59,
     62,
-    67
+    67,
+    71,
+    73,
+    80
    ],
    "image": "https://www.bing.com/th?id=ONUT.b_0HZNWCqlgpF3wqgvg0Ow&pid=News&w=1200"
   },
   {
-   "headline": "GTA 6：E11EVEN Miami 將於 11 月 6 日啟動 NINE1NINE 接管活動",
-   "highlight": "11 月 6 日",
+   "headline": "Travis Scott Reveals Limited-Edition Nike Air Force 1 Low \"GTA 6\"",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
-   ],
-   "event": {
-    "date": "2026-11-06",
-    "label": "イベント",
-    "place": "E11EVEN Miami"
-   }
+    76,
+    75,
+    77,
+    79
+   ]
   },
   {
    "headline": "Kodak Black Will Appear as an NPC in GTA 6, Fueling Speculation Over Other Artists Appearing at In-Game Club",
@@ -78,23 +79,24 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    11
+    11,
+    83
    ]
   }
  ],
  "_covered": {
-  "GTA 6": 70,
+  "GTA 6": 84,
   "漫威电影": 47,
-  "ILLIT": 9,
-  "MMORPG 新作": 13,
-  "三星手机": 15,
+  "ILLIT": 12,
+  "MMORPG 新作": 17,
+  "三星手机": 19,
   "The Mandalorian": 3,
   "チェーンソーマン": 3,
   "哈利波特剧集": 2,
-  "滑雪": 2,
+  "滑雪": 6,
   "FROM": 4,
   "猫用品": 4,
-  "周杰伦": 9,
+  "周杰伦": 21,
   "A2O LITE": 8,
   "绝区零": 3,
   "あつ森": 1,
@@ -209,11 +211,13 @@
    ]
   },
   {
-   "headline": "How Did ILLIT’s “jellyous” Become a YouTube Hit With 100 Million Views?",
+   "headline": "ILLIT、3rd Mini Album収録曲「jellyous」のMVが1億回再生を突破！ グループ通算3作目の1億回再生MV",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    11,
+    12,
     6,
     7
    ]
@@ -235,6 +239,15 @@
    "refs": [
     9
    ]
+  },
+  {
+   "headline": "ILLIT、「逮捕しちゃうぞ」と叫んだ理由がアルバムストーリーに！新曲に込められた恋の“意外な展開”",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
   }
  ],
  "MMORPG 新作": [
@@ -253,7 +266,9 @@
     10,
     11,
     12,
-    13
+    13,
+    15,
+    17
    ],
    "event": {
     "date": "2026-11-26",
@@ -269,6 +284,15 @@
    "refs": [
     6
    ]
+  },
+  {
+   "headline": "다크 판타지 MMO '판타지포유', 사전 다운로드 9일 개시",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
+   ]
   }
  ],
  "三星手机": [
@@ -279,7 +303,8 @@
    "weight": "lead",
    "refs": [
     1,
-    10
+    10,
+    19
    ],
    "image": "https://www.bbntimes.com/images/Galaxy_S27_Leaks_Four_New_Models_Three_Chipsets_and_a_Massive_Redesign.jpg"
   },
@@ -289,7 +314,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    18
    ]
   },
   {
@@ -319,7 +345,9 @@
    "refs": [
     13,
     12,
-    5
+    5,
+    16,
+    17
    ]
   },
   {
@@ -405,6 +433,37 @@
     1
    ],
    "image": "https://www.snowmagazine.com/images/news/2026-2027/Oct%2026/introimages/Ski%20News%20.webp"
+  },
+  {
+   "headline": "【2026-2027】津南町のスキー場で津南ランタン＆花火打ち上げ 子供無料日も",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "2つの日本一を紅葉の絶景とともに楽しめる周遊ルート！苗場スキー場・かぐらスキー場 苗場ドラゴンドラ・田代ロープウェー",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "ホテルの旧チャペルをスキー・スノーボードレンタルショップへ再生！12月15日オープン",
+   "highlight": "12月15日オープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ],
+   "event": {
+    "date": "2026-12-15",
+    "label": "オープン"
+   }
   }
  ],
  "FROM": [
@@ -466,7 +525,8 @@
    "blurb": "Mandopop superstar Jay Chou is bringing his ‘Carnival II’ World Tour to Sydney after making history in Melbourne.",
    "weight": "lead",
    "refs": [
-    6
+    6,
+    20
    ],
    "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gQrnu.img"
   },
@@ -477,6 +537,18 @@
    "weight": "normal",
    "refs": [
     9
+   ]
+  },
+  {
+   "headline": "周杰倫參加網球賽出意外弄斷球拍無緣奪冠",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17,
+    18,
+    19,
+    15
    ]
   }
  ],

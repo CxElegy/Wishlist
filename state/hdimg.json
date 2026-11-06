@@ -363,12 +363,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.games.gg/gta_6_e11even_miami_nine1nine_takeover_og_b67b8fa2b7_644e97a8b2.webp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://assets.hldycdn.com/1fd58c0b-7575-4a90-9f8d-483ddad8da73.jpeg": {
   "w": 704,
   "h": 329,
@@ -597,6 +591,12 @@
   "w": 600,
   "h": 399,
   "target": 720,
+  "v": 3
+ },
+ "https://cdn.hk01.com/di/media/images/dw/20261106/1195338922918416384793084.jpeg/lVufQMBNyNknNJxjUQAv3nKhzS50hm7wqrdmsqq3ZrI": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.image.st-hatena.com/image/scale/34bc434840d3d1c882498735e0c17b56655ba5b3/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fr%2Frittor_snrec%2F20261028%2F20261028112645.png": {
@@ -937,9 +937,15 @@
  "https://d28w2qw7dtr435.cloudfront.net/uploaded/cover_images/images/35631/normal.jpg?1793931706": {
   "w": 400,
   "h": 267,
-  "target": 720,
+  "target": 1280,
   "v": 3,
-  "blur": 0.342
+  "blur": 0.472,
+  "local": "pics/949bb2ffff7a6646.webp",
+  "out": [
+   1200,
+   801
+  ],
+  "why": "看不清"
  },
  "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg": {
   "w": 1459,
@@ -994,6 +1000,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/nagano-ski-hotel.jpg": {
+  "w": 1962,
+  "h": 1224,
+  "target": 720,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/ski-spa.jpg": {
@@ -1446,6 +1458,12 @@
    855
   ],
   "why": "看不清"
+ },
+ "https://image.news.livedoor.com/newsimage/stf/a/3/a36dc_1604_88a23a30_4ddd025c.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
+  "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/b/4/b4d74_760_2489936_20261030_151303_size640wh_10534070.jpg": {
   "w": 512,
@@ -1944,19 +1962,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "w": 640,
-  "h": 434,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.448,
-  "local": "pics/fb2c399e45ea329f.webp",
-  "out": [
-   1280,
-   868
-  ],
-  "why": "看不清"
- },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
@@ -2035,8 +2040,15 @@
  "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162887.jpg": {
   "w": 640,
   "h": 480,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.476,
+  "local": "pics/db4ee922ded11836.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/tvasahinews/m_tvasahinews-000544430.jpg": {
   "w": 640,
@@ -2290,6 +2302,13 @@
   "h": 440,
   "target": 1280,
   "v": 3
+ },
+ "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-06"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -4122,6 +4141,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.X3uN6OcvEE7rceKMzxKK1Q&pid=News&w=800": {
+  "w": 700,
+  "h": 394,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.XkrqiVfjr4MT-5xFoRrspA&pid=News&w=960": {
   "w": 700,
   "h": 393,
@@ -4176,6 +4201,12 @@
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
   "h": 281,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.eeqycczhCjRPYkRpRnYNFA&pid=News&w=600": {
+  "w": 600,
+  "h": 400,
   "target": 720,
   "v": 3
  },
@@ -4311,12 +4342,6 @@
  "https://www.bing.com/th?id=ONUT.v6mxddWiXbpIQX6JZPzc6Q&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.xAro5CP5gCvYEj6ewuK9RQ&pid=News&w=800": {
-  "w": 700,
-  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -4524,6 +4549,12 @@
  "https://www.giantfreakinrobot.com/wp-content/uploads/2024/02/The-Spirit-Nana-Visitor.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.happo-one.jp/wp2019/wp-content/uploads/2019/11/ogp-1024x929.png": {
+  "w": 1024,
+  "h": 929,
   "target": 720,
   "v": 3
  },
