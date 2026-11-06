@@ -29,8 +29,8 @@
   "https://gamewith.jp/pokemon-champions/555406": "https://img.gamewith.jp/article/thumbnail/rectangle_l/555406.png?date=1776075560",
   "https://gnn.gamer.com.tw/detail.php?sn=314502": "https://p2.bahamut.com.tw/B/2KU/80/55c8d1f0e991c47587e545283520zrg5.JPG",
   "https://gnn.gamer.com.tw/detail.php?sn=314573": "https://p2.bahamut.com.tw/B/2KU/75/fe3c9b54769450d330a0ab9a8a210gb5.JPG",
-  "https://hawk.live/posts/gold-bug-found-dota-2s-oracle": "https://hawk.live/storage/images/posts/sikle-discussed-oracle-bug-25415.jpg",
-  "https://kagit.kr/ko/posts/a2o-lite-members-compared": "https://kagit-media.atreez.cc/uploads/2026-11-03/ljq7ctjeii5y3g618urvqfj4.jpg",
+  "https://hawk.live/posts/ns-assesses-skill-level-dota-2-matchmaking": "https://hawk.live/storage/images/posts/ns-radically-changing-roshan-and-tormentor-mechanics-in-dota-2-23501.jpg",
+  "https://industryjournal.co.kr/news/248063": "http://pimg3.daara.co.kr/kidd/photo/2026/11/06/1793946074_79.gif",
   "https://knightedgemedia.com/2026/11/dc-studios-begins-early-development-on-a-john-constantine-movie/": "https://i0.wp.com/knightedgemedia.com/wp-content/uploads/2026/11/dc-studios-john-constantine-movie-banner.jpg?fit=1920%2C820&ssl=1",
   "https://m.dnews.co.kr/m_home/view.jsp?idxno=202611021432344390204": null,
   "https://mezamashi.media/articles/-/368575": "https://mezamashi.ismcdn.jp/mwimgs/a/7/1200xm/img_a751d99a9da2327f93af5791b20ce6fc1582493.jpg",
@@ -81,6 +81,7 @@
   "https://www.nikkansports.com/m/baseball/mlb/news/202611010000916_m.html?mode=all": "https://www.nikkansports.com/baseball/mlb/news/img/202611010000916-w500_1.jpg",
   "https://www.nikkansports.com/m/baseball/mlb/news/202611010000971_m.html?mode=all": "https://www.nikkansports.com/baseball/mlb/news/img/202611010000971-w500_1.jpg",
   "https://www.nytimes.com/2026/11/06/movies/winter-movies-november-december-2026.html": "https://www.bing.com/th?id=ONUT.sLJLVx2md8K_ApKusrVewA&pid=News&w=1050",
+  "https://www.phonearena.com/news/unpopular-opinion-i-kind-of-like-the-galaxy-s27-ultra-design-language_id184382": "https://www.bing.com/th?id=ONUT.c0HQo-utsC28dVIOOALYhg&pid=News&w=768",
   "https://www.sakhaparliament.ru/goods/fashion/g101036328": null,
   "https://www.setn.com/news/1794058": "https://attach.setn.com/newsimages/2026/02/11/5451715-PH.jpg",
   "https://www.sina.cn/news/detail/5356822332443719.html": "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg",
@@ -1095,32 +1096,36 @@
   },
   {
    "batch": 2,
-   "because": "猫用品",
+   "because": "三星手机",
    "date": "2026-11-05",
    "hits": [
-    "猫"
+    "三星 Galaxy"
    ],
-   "image": "https://www.indexbox.io/landing/img/blog/custom-report-v2-localized/ja/automatic-cat-litter-market-forecast-to-2035-driven-by-pet-humanization-and-smart-home-integration-a488c84c23688392.webp",
+   "image": "https://www.bing.com/th?id=ONUT.c0HQo-utsC28dVIOOALYhg&pid=News&w=768",
    "kind": "board",
-   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
    "score": 8,
-   "source": "IndexBox",
+   "source": "PhoneArena",
    "taste": [
     [
-     "猫",
-     6
+     "galaxy",
+     7
     ],
     [
-     "作品:猫用品",
-     5
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
     ]
    ],
-   "title": "自動猫用トイレ市場2035年予測：ペットテックの普及とサブスクリプションが成長を牽引 - ニュースと統計",
-   "url": "https://www.indexbox.io/ja/blog/automatic-cat-litter-market-forecast-to-2035-driven-by-pet-humanization-and-smart-home-integration/",
+   "title": "Unpopular opinion: I kind of like the Galaxy S27 Ultra design language",
+   "url": "https://www.phonearena.com/news/unpopular-opinion-i-kind-of-like-the-galaxy-s27-ultra-design-language_id184382",
    "words": [
-    "猫"
+    "galaxy"
    ],
-   "work": "猫用品"
+   "work": "三星手机"
   },
   {
    "batch": 2,
@@ -1165,7 +1170,7 @@
    "work": "Astrae Oratio"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "チェーンソーマン",
    "date": "2026-11-05",
    "hits": [],
@@ -1270,7 +1275,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "あつ森",
    "date": "2026-11-02",
    "hits": [],
@@ -1355,6 +1360,27 @@
   },
   {
    "batch": 4,
+   "because": "A2O LITE",
+   "date": "2026-11-06",
+   "hits": [],
+   "image": "http://pimg3.daara.co.kr/kidd/photo/2026/11/06/1793946074_79.gif",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "산업종합저널",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "[움짤뉴스] 로봇, A2O LITE의 NEON 춤에 도전하다",
+   "url": "https://industryjournal.co.kr/news/248063",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-06",
    "hits": [],
@@ -1480,7 +1506,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "哈利波特剧集",
    "date": "2026-11-05",
    "hits": [],
@@ -1585,27 +1611,6 @@
    "work": "dota2"
   },
   {
-   "batch": 6,
-   "because": "dota2",
-   "date": "2026-11-06",
-   "hits": [],
-   "image": "https://hawk.live/storage/images/posts/sikle-discussed-oracle-bug-25415.jpg",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "Hawk Live",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "A Gold Bug Has Been Found in Dota 2's Oracle",
-   "url": "https://hawk.live/posts/gold-bug-found-dota-2s-oracle",
-   "words": [],
-   "work": "dota2"
-  },
-  {
    "batch": 7,
    "because": "Vaundy",
    "date": "2026-11-06",
@@ -1625,6 +1630,27 @@
    "url": "https://www.musicman.co.jp/chart/750577",
    "words": [],
    "work": "Vaundy"
+  },
+  {
+   "batch": 7,
+   "because": "dota2",
+   "date": "2026-11-06",
+   "hits": [],
+   "image": "https://hawk.live/storage/images/posts/ns-radically-changing-roshan-and-tormentor-mechanics-in-dota-2-23501.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "Hawk Live",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "NS Assesses the Skill Level in Dota 2 Matchmaking",
+   "url": "https://hawk.live/posts/ns-assesses-skill-level-dota-2-matchmaking",
+   "words": [],
+   "work": "dota2"
   },
   {
    "batch": 7,
@@ -1663,22 +1689,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 7,
-   "because": "滑雪",
-   "date": "2026-11-03",
-   "hits": [],
-   "image": "https://www.happo-one.jp/wp2019/wp-content/uploads/2019/11/ogp-1024x929.png",
-   "kind": "board",
-   "score": 4,
-   "source": "白馬八方尾根スキー場",
-   "taste": [],
-   "title": "HAKUBA HAPPO-ONE SNOW RESORT | HAKUBAVALLEY",
-   "url": "https://www.happo-one.jp/en/",
-   "words": [],
-   "work": "滑雪"
-  },
-  {
-   "batch": 7,
+   "batch": 8,
    "because": "日本顶级网球赛事",
    "date": "2026-11-01",
    "hits": [],
@@ -2071,11 +2082,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2083,15 +2094,15 @@
    8
   ],
   [
+   "作品:三星手机",
+   7
+  ],
+  [
    "三星 Galaxy",
    7
   ],
   [
    "galaxy",
-   7
-  ],
-  [
-   "作品:三星手机",
    7
   ]
  ]

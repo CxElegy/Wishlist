@@ -9,7 +9,8 @@
     10,
     1,
     53,
-    91
+    91,
+    106
    ],
    "event": {
     "date": "2026-11-10",
@@ -46,7 +47,10 @@
     67,
     71,
     73,
-    80
+    80,
+    107,
+    109,
+    103
    ],
    "image": "https://www.bing.com/th?id=ONUT.b_0HZNWCqlgpF3wqgvg0Ow&pid=News&w=1200"
   },
@@ -90,11 +94,11 @@
   }
  ],
  "_covered": {
-  "GTA 6": 102,
-  "漫威电影": 63,
-  "ILLIT": 15,
+  "GTA 6": 114,
+  "漫威电影": 70,
+  "ILLIT": 13,
   "MMORPG 新作": 21,
-  "三星手机": 28,
+  "三星手机": 36,
   "The Mandalorian": 4,
   "チェーンソーマン": 6,
   "哈利波特剧集": 4,
@@ -102,10 +106,10 @@
   "FROM": 5,
   "猫用品": 5,
   "周杰伦": 27,
-  "A2O LITE": 12,
+  "A2O LITE": 17,
   "绝区零": 4,
   "あつ森": 1,
-  "dota2": 4,
+  "dota2": 8,
   "gelato pique": 4,
   "Astrae Oratio": 1,
   "Vaundy": 3,
@@ -138,7 +142,8 @@
     3,
     21,
     22,
-    49
+    49,
+    69
    ]
   },
   {
@@ -155,7 +160,8 @@
     30,
     19,
     52,
-    59
+    59,
+    70
    ],
    "event": {
     "date": "2026-11-09",
@@ -169,7 +175,8 @@
    "weight": "normal",
    "refs": [
     12,
-    25
+    25,
+    64
    ]
   },
   {
@@ -182,6 +189,15 @@
     7,
     18,
     44
+   ]
+  },
+  {
+   "headline": "After rumors of a delay, Disney confirms Avengers: Secret Wars release date",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    66
    ]
   }
  ],
@@ -335,7 +351,8 @@
     3,
     18,
     26,
-    27
+    27,
+    35
    ]
   },
   {
@@ -346,7 +363,9 @@
    "refs": [
     2,
     20,
-    21
+    21,
+    33,
+    34
    ]
   },
   {
@@ -393,7 +412,11 @@
    "refs": [
     9,
     8,
-    28
+    28,
+    31,
+    32,
+    29,
+    30
    ]
   },
   {
@@ -685,12 +708,21 @@
    ]
   },
   {
-   "headline": "로봇, A2O LITE의 NEON 춤에 도전하다",
+   "headline": "平均年齢約15.1歳 韓国のガールズグループ・A2O LITEとは MVは3800万回再生を突破",
+   "highlight": "3800万回再生",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
+   ]
+  },
+  {
+   "headline": "【ミュージックバンク】A2O LITE、デビュー曲｢NEON｣初披露",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    12
+    14
    ]
   }
  ],
@@ -735,12 +767,21 @@
    ]
   },
   {
-   "headline": "NS Assesses the Skill Level in Dota 2 Matchmaking",
+   "headline": "Gaimin Gladiators tease possible comeback to Dota 2 for first time after scandalous TI14 withdrawal",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    8
+   ]
+  },
+  {
+   "headline": "A Gold Bug Has Been Found in Dota 2's Oracle",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
