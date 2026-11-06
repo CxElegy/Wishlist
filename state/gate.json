@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-06T13:17:46+00:00",
+ "checked": "2026-11-06T14:34:03+00:00",
  "fired": {
-  "at": "2026-11-06T13:28:59+00:00",
+  "at": "2026-11-06T14:34:03+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,42 +20,23 @@
     "sig": "7046078be7a3"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
-    "ILLIT",
     "Vaundy",
-    "dota2",
-    "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-11-06T12:03:03+00:00",
+   "last_batch": "2026-11-06T13:55:46+00:00",
    "last_error": {
     "at": "2026-11-06T07:05:41+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 310,
+   "prog": 360,
    "prog_day": "2026-11-06",
-   "ripe": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
-    "FROM",
-    "ILLIT",
-    "Vaundy",
-    "dota2",
-    "滑雪",
-    "猫用品"
-   ],
-   "sig": "7046078be7a3",
+   "ripe": [],
+   "sig": "dae1e40ed01d",
    "token_cap": 1000000,
-   "tokens_today": 585381,
-   "why": "整理待ちの記事 10 件（8 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 649996,
+   "why": "整理待ちの記事 4 件（3 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -64,47 +45,22 @@
    "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
     "GTA 6",
-    "ILLIT",
+    "The Mandalorian",
     "Vaundy",
     "dota2",
-    "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影",
-    "猫用品"
-   ],
-   "sig": "dff1617c369a",
-   "token_cap": 1000000,
-   "tokens_today": 585381,
-   "why": "整理待ちの記事 54 件（13 版面・AI 編集まで版面に載らない）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [
-    "dota2",
-    "漫威电影",
-    "GTA 6",
-    "Astrae Oratio",
-    "A2O LITE",
-    "周杰伦",
-    "Vaundy"
-   ],
-   "need": true,
-   "sig": "802d2a480635",
-   "waiting": [
-    "BLEACH Mirrors High",
-    "FROM",
-    "The Mandalorian",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
+    "周杰伦",
     "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
