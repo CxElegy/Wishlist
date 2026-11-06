@@ -156,19 +156,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/647c8fably1iiqjopis2gj20yo0lgn47.jpg": {
-  "w": 1248,
-  "h": 772,
-  "target": 720,
-  "v": 3,
-  "local": "pics/e2ad33e856d70de2.webp",
-  "out": [
-   1248,
-   772
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg": {
   "w": 1752,
   "h": 2830,
@@ -350,12 +337,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-06"
  },
- "https://assets-prd.ignimgs.com/2026/11/05/lucia-caminos-14-1793891731331.jpg?&format=jpg&auto=webp&quality=80": {
-  "w": 3840,
-  "h": 2160,
-  "target": 720,
-  "v": 3
- },
  "https://assets.content.technologyadvice.com/Comparing_Smartphones_in_a_Modern_Store_17c6a030a3.webp": {
   "w": 1672,
   "h": 941,
@@ -483,12 +464,6 @@
   "h": 485,
   "target": 1280,
   "v": 3
- },
- "https://bellawebsite.s3.ap-northeast-1.amazonaws.com/ogimage/7b3cb322-d644-11f1-a745-067e1fddedd8.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-06"
  },
  "https://biz.chosun.com/resizer/v2/VEQEHTQKPFIUHCV27Z6TKRHCJQ.jpg?auth=555511c856fc73df5cea9de84cf146538b636aa4d16d22132390d7a860683067&width=1200&height=630&smart=true": {
   "w": 1200,
@@ -1219,16 +1194,16 @@
   "target": 1280,
   "v": 3
  },
- "https://hawk.live/storage/images/posts/ns-radically-changing-roshan-and-tormentor-mechanics-in-dota-2-23501.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 720,
-  "v": 3
- },
  "https://hawk.live/storage/images/posts/ramzes666-reveals-will-continue-career-25330.jpg": {
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/sikle-discussed-oracle-bug-25415.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/valve-fixed-meepo-bug-25412.jpg": {
@@ -1782,6 +1757,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-06"
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gSipg.img": {
+  "w": 999,
+  "h": 999,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gSrLG.img": {
   "w": 1600,
   "h": 1000,
@@ -2009,6 +1990,12 @@
    868
   ],
   "why": "看不清"
+ },
+ "https://img.mydaily.co.kr/photos/2026/11/06/2026110613294831118_x.jpg": {
+  "w": 1125,
+  "h": 1163,
+  "target": 720,
+  "v": 3
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
@@ -2771,6 +2758,18 @@
   "out": [
    1280,
    900
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261106-90028935-nmit-000-1-thumb.jpg?exp=10800": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3,
+  "local": "pics/82abc8dd534737e7.webp",
+  "out": [
+   1280,
+   720
   ],
   "why": "期限付きの網址"
  },
@@ -3852,6 +3851,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.2uLAjivOCL72hYhu_ewtkQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.4J2nRakvD3RS1jr8Nsjp5A&pid=News&w=650": {
   "w": 650,
   "h": 341,
@@ -3865,12 +3870,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.5akFmzZ-iCE5D--zR_dLSQ&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3883,12 +3882,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.6udt4g0Hx9hOaxEDq6BbVg&pid=News&w=858": {
-  "w": 700,
-  "h": 368,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
@@ -3932,6 +3925,12 @@
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.F4LP4tYihHI0e9aJli79cQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -4135,15 +4134,15 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.WOzSVRsdnSfy06z7DT0h6Q&pid=News&w=1080": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Wgnw38sqkN-vD5tIA09_gQ&pid=News&w=650": {
   "w": 650,
   "h": 346,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.XRMAQou0-hKFzbKIbPwZQw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4303,15 +4302,21 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.sLJLVx2md8K_ApKusrVewA&pid=News&w=1050": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.tHemALdoyTOtqbZSJtYFvA&pid=News&w=800": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ulRynbhVURp1V9mCExDQhA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.uY8mlRmZ-bWkSg41p10Oaw&pid=News&w=1200": {
   "w": 700,
-  "h": 393,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -4534,6 +4539,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.hotspawn.com/wp-content/uploads/2026/11/How-to-Sell-Dota-2-Skins-For-Real-Money.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/all-blast-slam-winners.jpg": {
   "w": 1200,
   "h": 800,
@@ -4544,12 +4555,6 @@
   "w": 1199,
   "h": 800,
   "target": 1280,
-  "v": 3
- },
- "https://www.indexbox.io/landing/img/blog/custom-report-v2-localized/ja/automatic-cat-litter-market-forecast-to-2035-driven-by-pet-humanization-and-smart-home-integration-a488c84c23688392.webp": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
   "v": 3
  },
  "https://www.indy100.com/media-library/image.jpg?id=60330234&width=1200&height=600&coordinates=0%2C100%2C0%2C100": {

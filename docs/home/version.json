@@ -1,32 +1,32 @@
 {
- "admin": "e16c8bc0dd64",
- "admin-ai": "08586dfcb885",
+ "admin": "6befbeca8f27",
+ "admin-ai": "1f8e29f8db81",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1519bfd1"
+   "3dcc1c84"
   ],
   "tokens": [
    "AI 編集のトークン",
    "cdcdde17"
   ]
  },
- "admin-boards": "21b74e7b877e",
+ "admin-boards": "d75fd303e7c5",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "96c9fed3"
+   "c097c4d8"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "9c4f6026caf1",
+ "admin-emblem": "7eb00ee6584e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f128249c"
+   "f2fe7f9c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d49dbc2fdc0b",
  "admin-members_marks": {},
- "admin-now": "1fe00e01b701",
+ "admin-now": "7f07d780ec66",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "db61ed45"
+   "e023b4af"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "1d32d75b"
+   "bb8464e0"
   ],
   "term-panel": [
    "ライブログ",
-   "5c9c72cb"
+   "dd212a0f"
   ]
  },
- "admin-system": "7b976a6f4f07",
+ "admin-system": "fc7a83b742f2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "633cda5f"
+   "919fe88a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "cfbdd039"
+   "34680323"
   ]
  },
  "admin_marks": {},
- "heat": "cfc76d2ef27d",
+ "heat": "7b0c0d8aa9da",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "3892423e"
+   "0c944ec1"
   ],
   "ranking": [
    "ランキング",
-   "e31ceeb1"
+   "3ebd96c2"
   ]
  },
- "index": "619df7be4cf0",
+ "index": "4f9c04b6d96e",
  "index_marks": {
   "front": [
    "トップ",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "1c873ea3"
+   "12e6d4d9"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d757b1b2"
   ]
  },
- "updated": "11.06 21:18",
+ "updated": "11.06 22:30",
  "wishlist": "e826254df136"
 }
