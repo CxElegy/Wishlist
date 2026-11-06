@@ -157,19 +157,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/647c8fably1iiqjopis2gj20yo0lgn47.jpg": {
-  "w": 1248,
-  "h": 772,
-  "target": 720,
-  "v": 3,
-  "local": "pics/e2ad33e856d70de2.webp",
-  "out": [
-   1248,
-   772
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg": {
   "w": 1752,
   "h": 2830,
@@ -357,6 +344,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-06"
+ },
+ "https://assets-prd.ignimgs.com/2026/11/05/lucia-caminos-14-1793891731331.jpg?&format=jpg&auto=webp&quality=80": {
+  "w": 3840,
+  "h": 2160,
+  "target": 720,
+  "v": 3
  },
  "https://assets.content.technologyadvice.com/Comparing_Smartphones_in_a_Modern_Store_17c6a030a3.webp": {
   "w": 1672,
@@ -755,12 +748,6 @@
  "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261105130648011460d3244b4fed58141237106.jpg&nmt=30": {
   "w": 1333,
   "h": 2000,
-  "target": 720,
-  "v": 3
- },
- "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261106071016076750d3244b4fed58141237106.jpg&nmt=30": {
-  "w": 1080,
-  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -1888,13 +1875,13 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg": {
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
   "w": 640,
   "h": 434,
   "target": 1280,
   "v": 3,
   "blur": 0.448,
-  "local": "pics/881a5c1b9c291643.webp",
+  "local": "pics/fb2c399e45ea329f.webp",
   "out": [
    1280,
    868
@@ -3752,6 +3739,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.5akFmzZ-iCE5D--zR_dLSQ&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -4020,12 +4013,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.YQUivScTNVK0W6qHs8XlnQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Zxg8uAMC6RPaqiZ4lfllVQ&pid=News&w=1200": {
   "w": 700,
   "h": 426,
@@ -4074,6 +4061,12 @@
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
   "h": 281,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.eeqycczhCjRPYkRpRnYNFA&pid=News&w=600": {
+  "w": 600,
+  "h": 400,
   "target": 720,
   "v": 3
  },
@@ -4209,12 +4202,6 @@
  "https://www.bing.com/th?id=ONUT.v6mxddWiXbpIQX6JZPzc6Q&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.vcWmHVdseGubyC3Jn-M7uA&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
