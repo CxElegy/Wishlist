@@ -1,14 +1,14 @@
 {
- "admin": "3ccb5818207b",
- "admin-ai": "89da51a53a11",
+ "admin": "6cac1012ad82",
+ "admin-ai": "baa66e6f40c9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "70a89eb5"
+   "f91d7a2e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "d2e9de8c"
+   "cf414d64"
   ]
  },
  "admin-boards": "f64c87de0ca5",
@@ -22,11 +22,11 @@
    "5bc8c40b"
   ]
  },
- "admin-emblem": "5d4f371651de",
+ "admin-emblem": "836800ba0e3b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "52a0c3ce"
+   "4ebe907e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d49dbc2fdc0b",
  "admin-members_marks": {},
- "admin-now": "fe952986609f",
+ "admin-now": "ee3a0eb996dd",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5483e153"
+   "285ee561"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "14a9570a"
+   "2f7324d0"
   ]
  },
- "admin-system": "08b48cea3fdd",
+ "admin-system": "372aec6ac836",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "bbc48bec"
+   "03398ee8"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b88ac82b"
+   "9ae1e936"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "e2df2eef"
   ]
  },
- "index": "18c7f992fba7",
+ "index": "d3c7023eb263",
  "index_marks": {
   "front": [
    "トップ",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "ffa34075"
+   "317188df"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "12e6d4d9"
+   "ae26cb9a"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d757b1b2"
   ]
  },
- "updated": "11.06 15:57",
+ "updated": "11.06 16:13",
  "wishlist": "ee24446b49da"
 }
