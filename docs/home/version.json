@@ -1,10 +1,10 @@
 {
- "admin": "6befbeca8f27",
- "admin-ai": "1f8e29f8db81",
+ "admin": "6302c116aa80",
+ "admin-ai": "29247b101c5c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "3dcc1c84"
+   "536b525d"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "5bc8c40b"
   ]
  },
- "admin-emblem": "c928c1cad378",
+ "admin-emblem": "7d1d32ee24fb",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "35ddd34a"
+   "cb8eeee8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d49dbc2fdc0b",
  "admin-members_marks": {},
- "admin-now": "2c4e80269bb2",
+ "admin-now": "0ad3ed0ecd11",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e023b4af"
+   "078c4558"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "e0492f81"
   ]
  },
- "admin-system": "6662fe52e33f",
+ "admin-system": "605d8a92afa2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "764354c5"
+   "9d24d4aa"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "88b65717"
+   "71b14d71"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "3ebd96c2"
   ]
  },
- "index": "17b499389296",
+ "index": "db78e62a0910",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,11 +105,11 @@
   ],
   "w-0242c181": [
    "dota2",
-   "6c5dfcd2"
+   "cf61f525"
   ],
   "w-130724c0": [
    "猫用品",
-   "73659560"
+   "956f9ecf"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "ba880983"
+   "91592e6b"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "eedf619f"
+   "c6bc02f4"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "1c873ea3"
+   "12e6d4d9"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d757b1b2"
   ]
  },
- "updated": "11.06 22:31",
+ "updated": "11.06 22:40",
  "wishlist": "e826254df136"
 }

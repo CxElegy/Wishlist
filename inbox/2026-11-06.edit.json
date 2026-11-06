@@ -92,25 +92,25 @@
  "_covered": {
   "GTA 6": 102,
   "漫威电影": 63,
-  "ILLIT": 13,
+  "ILLIT": 15,
   "MMORPG 新作": 21,
   "三星手机": 28,
   "The Mandalorian": 4,
   "チェーンソーマン": 6,
   "哈利波特剧集": 4,
-  "滑雪": 6,
-  "FROM": 4,
-  "猫用品": 4,
+  "滑雪": 8,
+  "FROM": 5,
+  "猫用品": 5,
   "周杰伦": 27,
-  "A2O LITE": 11,
+  "A2O LITE": 12,
   "绝区零": 4,
   "あつ森": 1,
-  "dota2": 3,
+  "dota2": 4,
   "gelato pique": 4,
   "Astrae Oratio": 1,
-  "Vaundy": 2,
+  "Vaundy": 3,
   "ぐでたま": 1,
-  "BLEACH Mirrors High": 1
+  "BLEACH Mirrors High": 2
  },
  "漫威电影": [
   {
@@ -260,7 +260,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
+    10,
+    14
    ]
   }
  ],
@@ -533,6 +534,15 @@
     "date": "2026-12-15",
     "label": "オープン"
    }
+  },
+  {
+   "headline": "黒竜江省漠河市にある中国最北のスキー場が早くもオープン",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "FROM": [
@@ -562,7 +572,8 @@
    "weight": "normal",
    "refs": [
     3,
-    4
+    4,
+    5
    ]
   }
  ],
@@ -584,6 +595,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "稻殼也能變貓砂！義守大學生走進屏東新園 讓農業副產物有新用途",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -663,6 +683,15 @@
     9,
     10
    ]
+  },
+  {
+   "headline": "로봇, A2O LITE의 NEON 춤에 도전하다",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
   }
  ],
  "绝区零": [
@@ -703,6 +732,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "NS Assesses the Skill Level in Dota 2 Matchmaking",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -754,7 +792,8 @@
    "blurb": "Vaundy 與 Nulbarich 主唱 JQ 合作的新歌〈僕らの事にさせて〉上線，詞曲編曲由 Vaundy 一手包辦。",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    3
    ],
    "image": "https://imgs.niusnews.com/upload/posts/posts_image3_142488_1793936739.jpg"
   }

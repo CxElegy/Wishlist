@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-05T06:06:36+00:00",
-"text": "2026-11-05 第 1 バッチを出刊：BLEACH Mirrors High、FROM、The Mandalorian、Vaundy、あつ森、ぐでたま ほか 4（10 版面・16 本・残り 7 版面） · token 新規入力 4.8万・キャッシュ読み 118.3万・出力 5,571",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.13,
-"mem_total": 16867418112,
-"mem_free": 15924850688,
-"disk_used": 10086432768,
-"disk_free": 31197102080,
-"disk_total": 41283534848,
-"peak": 393945088
-},
-"batch": 1,
-"boards": [
-"BLEACH Mirrors High",
-"FROM",
-"The Mandalorian",
-"Vaundy",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"日本顶级网球赛事",
-"滑雪",
-"绝区零"
-],
-"stories": 16,
-"left": 7,
-"edited": 21,
-"run": null,
-"tok": {
-"in": 34,
-"cw": 47752,
-"cr": 1183097,
-"out": 5571,
-"calls": 18,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1236454
-},
-{
 "at": "2026-11-05T09:39:14+00:00",
 "text": "2026-11-05 第 1 バッチを出刊：A2O LITE、BLEACH Mirrors High、FROM、GTA 6、The Mandalorian、Vaundy ほか 4（10 版面・22 本・残り 9 版面） · token 新規入力 4.1万・キャッシュ読み 59.2万・出力 1,960",
 "level": "ok",
@@ -1962,5 +1921,35 @@
 "calls": 22,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-06T13:40:18+00:00",
+"text": "2026-11-06 第 2 バッチを出刊：（新しく終わった版面なし）（0 版面・0 本・残り 6 版面） · token 新規入力 4,020・キャッシュ読み 22.3万・出力 998",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.57,
+"mem_total": 16867418112,
+"mem_free": 15893651456,
+"disk_used": 10046136320,
+"disk_free": 31237398528,
+"disk_total": 41283534848,
+"peak": 404697088
+},
+"batch": 2,
+"boards": [],
+"stories": 0,
+"left": 6,
+"edited": 21,
+"run": 1793971814.744156,
+"tok": {
+"in": 5,
+"cw": 4015,
+"cr": 223023,
+"out": 998,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 228041
 }
 ]

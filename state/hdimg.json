@@ -82,8 +82,9 @@
  "http://pimg3.daara.co.kr/kidd/photo/2026/11/06/1793946074_79.gif": {
   "w": 690,
   "h": 460,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.339
  },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
   "w": 1920,
@@ -1189,6 +1190,12 @@
   "v": 3
  },
  "https://hawk.live/storage/images/posts/meepo-bug-dota-25408.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/ns-radically-changing-roshan-and-tormentor-mechanics-in-dota-2-23501.jpg": {
   "w": 1200,
   "h": 628,
   "target": 1280,
@@ -3124,6 +3131,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/e76b1c1b2ea4aa7d01bbae43414a5e4411c2606c96515153173732f643e5a617/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fnewstaiwandigi_com_938%2F42bac3735ec669ba9dbd2ad82d21c713.jpg": {
+  "w": 1200,
+  "h": 803,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.jp/images/finance/common/image/ogp.png": {
   "w": 1200,
   "h": 630,
@@ -4521,6 +4534,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.happo-one.jp/wp2019/wp-content/uploads/2019/11/ogp-1024x929.png": {
+  "w": 1024,
+  "h": 929,
+  "target": 720,
+  "v": 3
+ },
  "https://www.hollywoodreporter.com/wp-content/uploads/2024/11/FROM_310_00296_R-H-2024.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
@@ -4555,6 +4574,12 @@
   "w": 1199,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.indexbox.io/landing/img/blog/custom-report-v2-localized/ja/automatic-cat-litter-market-forecast-to-2035-driven-by-pet-humanization-and-smart-home-integration-a488c84c23688392.webp": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://www.indy100.com/media-library/image.jpg?id=60330234&width=1200&height=600&coordinates=0%2C100%2C0%2C100": {
