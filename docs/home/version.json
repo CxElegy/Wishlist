@@ -1,10 +1,10 @@
 {
- "admin": "cc453922eb95",
- "admin-ai": "7a208b9661ff",
+ "admin": "49da9dad641b",
+ "admin-ai": "eb6131f17bc8",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "962cbb20"
+   "d8c71a78"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "5bc8c40b"
   ]
  },
- "admin-emblem": "9c6923bd82b4",
+ "admin-emblem": "e9996c0b8bb9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e3145cbe"
+   "99cd9f10"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d49dbc2fdc0b",
  "admin-members_marks": {},
- "admin-now": "214ac5adc70b",
+ "admin-now": "3934b8bfe2f4",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8d90758b"
+   "3bdcfeed"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "16eabe5f"
   ]
  },
- "admin-system": "cf8ba4d163ac",
+ "admin-system": "440e1396a2bc",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f2abf253"
+   "4373d888"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "3c879b3b"
+   "17058414"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "8c64a61f"
   ]
  },
- "index": "c6fb3a5ffc58",
+ "index": "af2bd674d87e",
  "index_marks": {
   "front": [
    "トップ",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "9d668962"
+   "fb5c69ea"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "916ff542"
+   "fc1e3af7"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "9a07793c"
   ]
  },
- "updated": "11.06 13:25",
+ "updated": "11.06 13:33",
  "wishlist": "ee24446b49da"
 }
