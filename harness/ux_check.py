@@ -174,6 +174,17 @@ document.querySelectorAll('section.sec article.card,.wc').forEach(c=>{if(!vis(c)
  const r=c.getBoundingClientRect();let b=0;[...c.children].forEach(k=>{const s=getComputedStyle(k);if(s.position==='absolute'||!vis(k))return;b=Math.max(b,k.getBoundingClientRect().bottom)});
  const pb=parseFloat(getComputedStyle(c).paddingBottom)||0,blank=r.bottom-pb-b;
  if(blank>70&&blank>0.3*r.height){out.cards++;if(c.classList.contains('wc'))out.wc++;out.eg.length<3&&out.eg.push((c.dataset.k||c.className).slice(0,20)+' '+Math.round(blank)+'px')}});
+// 2026-11-06 スマホの左写真カード（.wc・.card.mini・.card.sb・.tape）：写真の下がカードの底まで届くか。写真の下にあるのが日程・価格・ギャラリーの行（.xevent・.xprice・.xgal）なら空白ではないので、その上までを測る。
+// 24px 超の空きが 1 枚でもあれば ✗（直す前は 46〜60px、直した後は 7〜15px）。左右に並んでいないカード（写真が上）は数えない
+out.sideN=0;out.sideGap=0;out.sideEg=[];
+if(innerWidth<=760)document.querySelectorAll('.wc,.card.mini,.card.sb,.tape').forEach(c=>{if(!vis(c)||c.classList.contains('nophoto')||c.classList.contains('lead'))return;
+ const p=c.querySelector(':scope>.pic');if(!p||!vis(p))return;const pr=p.getBoundingClientRect(),cr=c.getBoundingClientRect(),cs=getComputedStyle(c);
+ const kids=[...c.children].filter(k=>k!==p&&vis(k)&&getComputedStyle(k).position!=='absolute');
+ const ex=kids.filter(k=>k.matches('.xevent,.xprice,.xgal')),tx=kids.filter(k=>!ex.includes(k)&&k.getBoundingClientRect().width>8);
+ if(!tx.length||!tx.some(k=>k.getBoundingClientRect().left>=pr.right-2))return;   // 写真が字の左にない＝左写真の形ではない
+ out.sideN++;let bot=cr.bottom-(parseFloat(cs.paddingBottom)||0);ex.forEach(k=>{bot=Math.min(bot,k.getBoundingClientRect().top)});
+ const blank=bot-pr.bottom;   // 写真の底からカードの底まで（字が長くて枠が高くても、写真が届いていなければ空き）
+ if(blank>24){out.sideGap++;out.sideEg.length<3&&out.sideEg.push((c.dataset.k||c.className).slice(0,20)+' '+Math.round(blank)+'px')}});
 return out}"""
 
 
@@ -399,6 +410,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"積み上げ（mason）に入らない 4 枚以上の並び：{hole['noMasBig']}")
     if hole["gridHole"]:   # 2026-11-01 L2：版面の中の記事の並びで、記事の外の空きが 3% 超の版面
         bad.append(f"記事の並びに空きがある：{hole['gridHole']} 並び（測った並び 過去のニュース {hole['older']}・mason 外 {hole['noMas']}） " + "・".join(hole["gridEg"]))
+    if hole.get("sideGap"):   # 2026-11-06 スマホの左写真カード：写真の下（日程・価格の行を除く）が 24px 超空いている
+        bad.append(f"左写真のカードの写真の下が空いている：{hole['sideGap']} / {hole['sideN']} 枚 " + "・".join(hole["sideEg"]))
     if hole["wc"]:   # 同じく：ほかの注目ニュースの壁のカードは中身で高さが決まる（1 枚でも枠の 30% 超・70px 超が空いたら ✗）
         bad.append(f"壁のカードの下が空いている：{hole['wc']} 枚 " + "・".join(hole["eg"]))
     if hole["cards"] - hole["wc"] > 2:   # 版面の中のカード：同じく空き（枠の 30% 超・70px 超）が 3 枚以上

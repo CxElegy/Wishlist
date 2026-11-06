@@ -38,6 +38,12 @@ class PhotoSide(unittest.TestCase):
         for s in ("new ResizeObserver", "new MutationObserver", "p._ok = 1", "document.addEventListener('load'"):
             self.assertIn(s, js)
 
+    def test_ux_check_counts_side_photo_gap(self):
+        """2026-11-06：スマホの左写真カードは写真の底がカードの底に届く。HOLE_JS が .wc・.card.mini・.card.sb・.tape を数え（日程・価格の行は除く）、24px 超で ✗。"""
+        u = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
+        for s in ("out.sideGap", ".wc,.card.mini,.card.sb,.tape", ".xevent,.xprice,.xgal", "bot-pr.bottom", "左写真のカードの写真の下が空いている"):
+            self.assertIn(s, u)
+
     def test_wall_keeps_side_height(self):
         # 壁が足した高さは足す前（fit が決めた .sb の写真枠の高さ）に戻す。空にして fit の高さを消さない
         self.assertIn("p.dataset.add === '-' ? '' : p.dataset.add", render.FIT_JS)
