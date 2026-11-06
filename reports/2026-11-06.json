@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "6edb4fac9ec4",
+ "edit_sig": "f3e2cd92468a",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -482,8 +482,8 @@
      "date": "2026-11-05",
      "headline": "学习苹果？三星Galaxy S27系列曝光，横排影像模组设计",
      "highlight": "",
-     "image": "https://www.3elife.net/Uploads/Article/images/202611/04/1907416908023.jpg",
-     "image_via": "正文图（3 枚から）",
+     "image": "https://www.3elife.net/Uploads/Article/images/202611/04/1907367268462.jpg",
+     "image_via": "正文图（4 枚から）",
      "url": "https://www.3elife.net/Art/mobile/202611/05/110661.html",
      "weight": "normal"
     },
@@ -748,8 +748,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
+     "image_via": "AI 挑选",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
@@ -758,8 +758,8 @@
      "date": "2026-11-02",
      "headline": "A2O LITE, 'NEON' 음악방송 8관왕에 전한 인사…\"감사합니다\"",
      "highlight": "음악방송 8관왕",
-     "image": "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210_crop.png",
-     "image_via": "og:image",
+     "image": "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.topstarnews.net/news/articleView.html?idxno=16266539",
      "weight": "normal"
     },
@@ -819,17 +819,19 @@
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "4Gamer.net",
-     "title": "韓国のサブカルチャー総合展示会「アニメ×ゲームフェスティバル2026」（AGF 2026）にゲーム企業が集結。NCは最大規模の150ブースで「アストラエ・オラティオ」を出展，ネクソンは「ファレイドリア」の韓国初試遊を実施",
-     "url": "https://www.4gamer.net/games/975/G097529/20261105039/"
+     "headline": "韓国のサブカルチャー総合展示会「アニメ×ゲームフェスティバル2026」（AGF 2026）にゲーム企業が集結",
+     "highlight": "",
+     "image": "https://www.4gamer.net/games/975/G097529/20261105039/SS/004.jpg",
+     "image_via": "og:image",
+     "url": "https://www.4gamer.net/games/975/G097529/20261105039/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",

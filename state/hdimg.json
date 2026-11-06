@@ -716,9 +716,9 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210_crop.png": {
+ "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg": {
   "w": 1200,
-  "h": 675,
+  "h": 2132,
   "target": 720,
   "v": 3
  },
@@ -1918,18 +1918,12 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg": {
-  "w": 640,
-  "h": 434,
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
   "target": 1280,
   "v": 3,
-  "blur": 0.448,
-  "local": "pics/881a5c1b9c291643.webp",
-  "out": [
-   1280,
-   868
-  ],
-  "why": "看不清"
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-06"
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
@@ -3644,9 +3638,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.3elife.net/Uploads/Article/images/202611/04/1907416908023.jpg": {
+ "https://www.3elife.net/Uploads/Article/images/202611/04/1907367268462.jpg": {
   "w": 600,
-  "h": 335,
+  "h": 342,
   "target": 720,
   "v": 3
  },
@@ -3659,6 +3653,12 @@
  "https://www.4gamer.net/games/199/G019924/20261031010/SS/003.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.4gamer.net/games/975/G097529/20261105039/SS/004.jpg": {
+  "w": 1191,
+  "h": 1684,
   "target": 1280,
   "v": 3
  },
