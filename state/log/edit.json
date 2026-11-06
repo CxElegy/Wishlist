@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-04T12:47:58+00:00",
-"text": "2026-11-04 第 2 バッチを出刊：BLEACH Mirrors High（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 1.3万・キャッシュ読み 117.9万・出力 3,841",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.53,
-"mem_total": 16872804352,
-"mem_free": 15894896640,
-"disk_used": 10036596736,
-"disk_free": 31246938112,
-"disk_total": 41283534848,
-"peak": 375042048
-},
-"batch": 2,
-"boards": [
-"BLEACH Mirrors High"
-],
-"stories": 1,
-"left": 0,
-"edited": 22,
-"run": 1793795369.2468219,
-"tok": {
-"in": 33,
-"cw": 12676,
-"cr": 1179088,
-"out": 3841,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1195638,
-"secs": 1109,
-"run_tok": {
-"in": 71,
-"cw": 63716,
-"cr": 2491832,
-"out": 8727,
-"calls": 33,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-04T14:25:10+00:00",
 "text": "2026-11-04 第 1 バッチを出刊：Vaundy（1 版面・4 本・残り 5 版面） · token 新規入力 3.8万・キャッシュ読み 40.8万・出力 1,825",
 "level": "ok",
@@ -2015,5 +1974,10 @@
 "calls": 9,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-06T01:25:21+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]

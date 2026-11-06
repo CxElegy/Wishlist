@@ -352,6 +352,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets-prd.ignimgs.com/2026/11/05/dbarcade-1793914123047.jpg?width=1280&format=jpg&auto=webp&quality=80": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
+ },
  "https://assets-prd.ignimgs.com/2026/11/05/gta-6-kodak-black-1793895386725.jpg?width=1280&format=jpg&auto=webp&quality=80": {
   "target": 720,
   "v": 3,
@@ -485,6 +491,12 @@
   "h": 485,
   "target": 1280,
   "v": 3
+ },
+ "https://bellawebsite.s3.ap-northeast-1.amazonaws.com/ogimage/7b3cb322-d644-11f1-a745-067e1fddedd8.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
  },
  "https://biz.chosun.com/resizer/v2/VEQEHTQKPFIUHCV27Z6TKRHCJQ.jpg?auth=555511c856fc73df5cea9de84cf146538b636aa4d16d22132390d7a860683067&width=1200&height=630&smart=true": {
   "w": 1200,
@@ -938,12 +950,6 @@
  "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg": {
   "w": 1459,
   "h": 800,
-  "target": 720,
-  "v": 3
- },
- "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg": {
-  "w": 3775,
-  "h": 2123,
   "target": 720,
   "v": 3
  },
@@ -1436,6 +1442,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://image.p-c2-x.abema-tv.com/image/series/wo_84857/thumb.png?height=720&quality=75&version=1793585715&width=1280": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
+ },
  "https://image.zdnet.co.kr/2026/10/29/1b8e3f913d352ed15385ec42621f085e.jpg": {
   "w": 640,
   "h": 542,
@@ -1661,6 +1673,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gQrnu.img": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcS7d.img": {
   "w": 1300,
   "h": 731,
@@ -1869,19 +1887,6 @@
   "h": 1199,
   "target": 1280,
   "v": 3
- },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "w": 640,
-  "h": 434,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.448,
-  "local": "pics/fb2c399e45ea329f.webp",
-  "out": [
-   1280,
-   868
-  ],
-  "why": "看不清"
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
@@ -2204,6 +2209,12 @@
   "h": 440,
   "target": 1280,
   "v": 3
+ },
+ "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -2921,6 +2932,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://q0.itc.cn/images01/20261105/8c1cf2c7c03949bd81e84f57fb230579.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
+ },
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
   "w": 760,
   "h": 1125,
@@ -3547,6 +3564,12 @@
   "target": 720,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/06/1793919852486_iphone-18-va-galaxy-s27-cung-tang-gia-nguoi-dung-meo-mat-2375.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
+ },
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
   "w": 495,
   "h": 619,
@@ -3767,12 +3790,6 @@
    669
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.DtC1N7BPk16pUhBFbnF_9w&pid=News&w=914": {
-  "w": 700,
-  "h": 568,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
@@ -4065,6 +4082,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.gm6CM9ohSUuTryJcaE-Gkg&pid=News&w=800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-06"
  },
  "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200": {
   "w": 700,
@@ -4459,12 +4482,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://www.meatpoultry.com/ext/resources/2026/11/05/KFC-Doom-Meal.jpg?height=635&t=1793901282&width=1200": {
-  "w": 953,
-  "h": 635,
-  "target": 1280,
   "v": 3
  },
  "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {

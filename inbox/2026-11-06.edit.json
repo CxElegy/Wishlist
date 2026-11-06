@@ -7,7 +7,8 @@
    "weight": "hero",
    "refs": [
     10,
-    1
+    1,
+    53
    ],
    "event": {
     "date": "2026-11-10",
@@ -37,7 +38,9 @@
     33,
     41,
     36,
-    47
+    47,
+    54,
+    59
    ],
    "image": "https://www.bing.com/th?id=ONUT.b_0HZNWCqlgpF3wqgvg0Ow&pid=News&w=1200"
   },
@@ -61,7 +64,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    52,
+    58
    ]
   },
   {
@@ -75,19 +80,20 @@
   }
  ],
  "_covered": {
-  "GTA 6": 49,
-  "漫威电影": 28,
+  "GTA 6": 59,
+  "漫威电影": 40,
   "ILLIT": 4,
   "MMORPG 新作": 4,
-  "三星手机": 3,
+  "三星手机": 7,
   "The Mandalorian": 2,
   "チェーンソーマン": 2,
   "哈利波特剧集": 1,
   "滑雪": 1,
   "FROM": 2,
   "猫用品": 4,
-  "周杰伦": 4,
-  "A2O LITE": 4
+  "周杰伦": 7,
+  "A2O LITE": 4,
+  "绝区零": 2
  },
  "漫威电影": [
   {
@@ -98,7 +104,8 @@
    "refs": [
     13,
     11,
-    15
+    15,
+    33
    ],
    "image": "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700"
   },
@@ -121,7 +128,10 @@
    "refs": [
     14,
     8,
-    9
+    9,
+    34,
+    29,
+    30
    ],
    "event": {
     "date": "2026-11-09",
@@ -226,6 +236,33 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "Qi2 wireless charging may be coming on Galaxy S27 Ultra without S Pen issues",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "iPhone 18 and Galaxy S27 both increase in price, leaving consumers disappointed?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "学习苹果？三星Galaxy S27系列曝光，横排影像模组设计",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "The Mandalorian": [
@@ -307,7 +344,18 @@
    ]
   }
  ],
- "周杰伦": [],
+ "周杰伦": [
+  {
+   "headline": "Jay Chou announces Sydney stadium show following historic Melbourne performance",
+   "highlight": "Sydney stadium show",
+   "blurb": "Mandopop superstar Jay Chou is bringing his ‘Carnival II’ World Tour to Sydney after making history in Melbourne.",
+   "weight": "lead",
+   "refs": [
+    6
+   ],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gQrnu.img"
+  }
+ ],
  "A2O LITE": [
   {
    "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
@@ -329,5 +377,6 @@
     4
    ]
   }
- ]
+ ],
+ "绝区零": []
 }
