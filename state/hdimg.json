@@ -23,6 +23,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://j.people.com.cn/NMediaFile/2026/1106/FOREIGN1793954874382MGKOCA4UCX.png": {
+  "w": 730,
+  "h": 484,
+  "target": 720,
+  "v": 3
+ },
  "http://mediamixi.jp/app/uploads/2026/11/1103-01.jpg": {
   "w": 2184,
   "h": 1228,
@@ -67,15 +73,15 @@
   ],
   "why": "看不清"
  },
- "http://n.sinaimg.cn/sinakd20261104ac/201/w641h360/20261104/2c7e-9a3ba7967dc3bec27345ff1abaa122eb.jpg": {
-  "w": 641,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "http://n.sinaimg.cn/sinakd20261105ac/533/w480h853/20261105/c65c-1c6939f5bd4d8f12473588a3ec6b3302.jpg": {
   "w": 480,
   "h": 853,
+  "target": 720,
+  "v": 3
+ },
+ "http://pimg3.daara.co.kr/kidd/photo/2026/11/06/1793946074_79.gif": {
+  "w": 690,
+  "h": 460,
   "target": 720,
   "v": 3
  },
@@ -616,12 +622,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.ipnn.co.kr/news/photo/202611/418181_80146_252.jpg": {
-  "w": 960,
-  "h": 542,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg": {
   "w": 600,
   "h": 400,
@@ -1104,12 +1104,6 @@
   "target": 1280,
   "v": 3
  },
- "https://foto.haberler.com/haber/2026/11/05/sivas-ta-is-yerinde-kedi-kumu-hirsizligi-guve-20398220_o.jpg": {
-  "w": 640,
-  "h": 426,
-  "target": 720,
-  "v": 3
- },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/31070737/midnight-sons-1024x576.jpg": {
   "w": 1024,
   "h": 576,
@@ -1210,6 +1204,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/ns-radically-changing-roshan-and-tormentor-mechanics-in-dota-2-23501.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/ramzes666-reveals-will-continue-career-25330.jpg": {
@@ -1400,19 +1400,6 @@
   "h": 1056,
   "target": 1280,
   "v": 3
- },
- "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261105_EN_Jay_FB.jpg": {
-  "w": 640,
-  "h": 335,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.486,
-  "local": "pics/86cbdc9da8bf981c.webp",
-  "out": [
-   1280,
-   670
-  ],
-  "why": "看不清"
  },
  "https://image.fnnews.com/resource/media/image/2026/11/05/202611050911240705_l.jpg": {
   "w": 800,
@@ -1776,6 +1763,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-06"
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gSrLG.img": {
+  "w": 1600,
+  "h": 1000,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcS7d.img": {
   "w": 1300,
   "h": 731,
@@ -1984,6 +1977,19 @@
   "h": 1199,
   "target": 1280,
   "v": 3
+ },
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "w": 640,
+  "h": 434,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.448,
+  "local": "pics/fb2c399e45ea329f.webp",
+  "out": [
+   1280,
+   868
+  ],
+  "why": "看不清"
  },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
@@ -2280,19 +2286,6 @@
   "h": 440,
   "target": 1280,
   "v": 3
- },
- "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "w": 640,
-  "h": 434,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.448,
-  "local": "pics/c8f922c921a79f0b.webp",
-  "out": [
-   1280,
-   868
-  ],
-  "why": "看不清"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -2869,6 +2862,12 @@
  "https://p.potaufeu.asahi.com/dcd1-p/picture/31517714/72243b8d2254b36daa8010677f8b393f.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://p2.bahamut.com.tw/B/2KU/11/c2393e1d8016784c47017c4f5b210pn5.JPG": {
+  "w": 996,
+  "h": 560,
   "target": 1280,
   "v": 3
  },
@@ -3872,6 +3871,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.6udt4g0Hx9hOaxEDq6BbVg&pid=News&w=858": {
+  "w": 700,
+  "h": 368,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -3904,6 +3909,12 @@
    669
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.CNtq5iFlDudwEaQWPrGMlA&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
@@ -3996,12 +4007,6 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.N0LnlEohsUZ4OQLawwh2GQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Od4oIIwMIJsWjex2LNzjdg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -4117,6 +4122,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.WOzSVRsdnSfy06z7DT0h6Q&pid=News&w=1080": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Wgnw38sqkN-vD5tIA09_gQ&pid=News&w=650": {
   "w": 650,
   "h": 346,
@@ -4174,12 +4185,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.eeqycczhCjRPYkRpRnYNFA&pid=News&w=600": {
-  "w": 600,
-  "h": 400,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ghPPO0q95yYTjDKycYEn6g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4192,12 +4197,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.gm6CM9ohSUuTryJcaE-Gkg&pid=News&w=800": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-06"
  },
  "https://www.bing.com/th?id=ONUT.hqczGc2GayKPZIgrInkV0w&pid=News&w=1200": {
   "w": 700,
@@ -4297,15 +4296,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.tnHYdYrFG4rW_vAnpbJ7Uw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.ulRynbhVURp1V9mCExDQhA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ulRynbhVURp1V9mCExDQhA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.xAro5CP5gCvYEj6ewuK9RQ&pid=News&w=800": {
   "w": 700,
-  "h": 393,
+  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -4492,12 +4491,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.gamezebo.com/wp-content/uploads/2026/11/bleach-mirrors-high-squad-choice.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-1.jpg": {
   "w": 1280,
   "h": 720,
@@ -4516,12 +4509,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.happo-one.jp/wp2019/wp-content/uploads/2019/11/ogp-1024x929.png": {
-  "w": 1024,
-  "h": 929,
-  "target": 720,
-  "v": 3
- },
  "https://www.hollywoodreporter.com/wp-content/uploads/2024/11/FROM_310_00296_R-H-2024.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
@@ -4531,12 +4518,6 @@
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/THND-FF-000193-H-2026.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
-  "target": 720,
-  "v": 3
- },
- "https://www.hotspawn.com/wp-content/uploads/2026/09/What-Is-Dota-2-Smurfing.jpg": {
-  "w": 1200,
-  "h": 675,
   "target": 720,
   "v": 3
  },

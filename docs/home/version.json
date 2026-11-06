@@ -1,32 +1,32 @@
 {
- "admin": "1d744f5d8f1c",
- "admin-ai": "1a8aa785e84c",
+ "admin": "b69301da411a",
+ "admin-ai": "e04d6d8d1f0c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6fc7bab7"
+   "a24e5dab"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "542a632d"
+   "04b55ea9"
   ]
  },
- "admin-boards": "af00e0a493b2",
+ "admin-boards": "30ebb95d56c5",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "8f686c7a"
+   "641d2fb7"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "79a0b3a3aab8",
+ "admin-emblem": "50cde1ca977e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "bee5f08c"
+   "69ab788c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d49dbc2fdc0b",
  "admin-members_marks": {},
- "admin-now": "8e9e6fa8b0de",
+ "admin-now": "3eaac651a944",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2f2fbd60"
+   "3d784c22"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "2ad78a94"
+   "1d32d75b"
   ],
   "term-panel": [
    "ライブログ",
-   "072491d8"
+   "7ed0ff4b"
   ]
  },
- "admin-system": "74a8ea23a25b",
+ "admin-system": "70a448d59850",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2a333f9d"
+   "8fc9443a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "865e677d"
+   "a92e6a0f"
   ]
  },
  "admin_marks": {},
- "heat": "1dd7701d1d68",
+ "heat": "ea5d32c275ba",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "fbd45c50"
+   "dd42c7c7"
   ],
   "ranking": [
    "ランキング",
-   "1afd569f"
+   "d26d3878"
   ]
  },
- "index": "fa850da157c8",
+ "index": "ca00e328deb1",
  "index_marks": {
   "front": [
    "トップ",
-   "9d52c088"
+   "1fa8e1a9"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "c1b7fbe4"
+   "0121dbb9"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "f831192c"
+   "e0865600"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "12e6d4d9"
+   "fc1e3af7"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "53072fc7"
+   "f92d7729"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "d757b1b2"
   ]
  },
- "updated": "11.06 19:09",
+ "updated": "11.06 19:27",
  "wishlist": "e826254df136"
 }
