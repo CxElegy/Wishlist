@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-06T09:17:53+00:00",
+ "checked": "2026-11-06T10:17:47+00:00",
  "fired": {
   "at": "2026-11-06T09:28:59+00:00",
   "results": {
@@ -19,36 +19,20 @@
     "resp": "cse_01W4x6f57AUNpgQPAJeptipQ",
     "sig": "6554448bda48"
    },
-   "items": [
-    "BLEACH Mirrors High",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "周杰伦",
-    "哈利波特剧集"
-   ],
-   "last_batch": "2026-11-06T08:33:20+00:00",
+   "items": [],
+   "last_batch": "2026-11-06T10:10:02+00:00",
    "last_error": {
     "at": "2026-11-06T07:05:41+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 262,
+   "need": false,
+   "prog": 270,
    "prog_day": "2026-11-06",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "周杰伦",
-    "哈利波特剧集"
-   ],
-   "sig": "6554448bda48",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 471865,
-   "why": "整理待ちの記事 8 件（7 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 525965,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
