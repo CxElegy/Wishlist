@@ -946,6 +946,12 @@
   "target": 720,
   "v": 3
  },
+ "https://foto.haberler.com/haber/2026/11/05/sivas-ta-is-yerinde-kedi-kumu-hirsizligi-guve-20398220_o.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 720,
+  "v": 3
+ },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/31070737/midnight-sons-1024x576.jpg": {
   "w": 1024,
   "h": 576,
@@ -1590,7 +1596,7 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gSipg.img": {
   "w": 999,
   "h": 999,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gSrLG.img": {
@@ -2447,7 +2453,7 @@
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261106-90028935-nmit-000-1-thumb.jpg?exp=10800": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3,
   "local": "pics/82abc8dd534737e7.webp",
   "out": [
@@ -2842,7 +2848,7 @@
  "https://snowbrains.com/wp-content/uploads/2026/11/forecast-23.png": {
   "w": 984,
   "h": 808,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/8/11/samsungs-new-200mp-camera-sparks-galaxy-s27-ultra-speculation-98a1d797d1744d85b1e28258b356bf5d-538.png?width=0&s=YnOKsmBaWrFil0J3cKSeoQ": {
@@ -3382,12 +3388,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.bgr.com/img/gallery/this-rugged-samsung-phone-is-nearly-indestructible/l-intro-1792667748.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://www.billboard-japan.com/common/sys/img/news/00000167/167124/image.jpg": {
   "w": 1000,
   "h": 1000,
@@ -3470,6 +3470,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
+ },
+ "https://www.bing.com/th?id=ONUT.Bh5cBboVM1-KwLLfRvlDpw&pid=News&w=780": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.587,
+  "local": "pics/d4e723aa55355881.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200": {
   "w": 700,
@@ -3971,6 +3984,12 @@
  "https://www.giantfreakinrobot.com/wp-content/uploads/2024/02/The-Spirit-Nana-Visitor.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.happo-one.jp/wp2019/wp-content/uploads/2019/11/ogp-1024x929.png": {
+  "w": 1024,
+  "h": 929,
   "target": 720,
   "v": 3
  },

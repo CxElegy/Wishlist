@@ -1,34 +1,7 @@
 {
  "date": "2026-11-07",
- "edit_sig": "689d582ce18e",
+ "edit_sig": "960942bbc928",
  "items": [
-  {
-   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-   "facts": [],
-   "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 1,
-     "source": "r/Astrae_Oratio",
-     "title": "New Erin done! Time to think about my next Erin",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xn8m61/new_erin_done_time_to_think_about_my_next_erin/"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "アストラエ・オラティオ",
-   "theme": {
-    "accent": "#C27270",
-    "alt_accent": "#A14744",
-    "alt_bg": "#F6EAE9",
-    "alt_fg": "#1E1A18",
-    "bg": "#211212",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
    "facts": [],
@@ -385,17 +358,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "Vaundy「しわあわせ」がBillboard JAPANの先ヨミ・デジタルでストリーミング・ソング首位を継続。",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "音楽業界総合情報サイト",
-     "title": "Billboard JAPAN【先ヨミ・デジタル】、Vaundy「しわあわせ」引き続きストリーミング・ソング首位",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBwaUlqOG5IWU90SzhYRWVIX3h3bE5iYWtiMkpJcWJrZ3EyUk1uNUxNZW51VVA4V1QxRzZyNlNVckF4Nmc4YlVmRGxnQmdNeEZH?oc=5"
+     "headline": "Billboard JAPAN【先ヨミ・デジタル】、Vaundy「しわあわせ」引き続きストリーミング・ソング首位",
+     "highlight": "ストリーミング・ソング首位",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gSipg.img",
+     "image_via": "转载 www.msn.com",
+     "url": "https://www.musicman.co.jp/chart/750577",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
@@ -480,24 +455,21 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "FISSURE's CEO addresses the organizer's unpaid CS2 and Dota 2 prize money and its financial struggles.",
      "date": "2026-11-06",
-     "n": 1,
+     "headline": "FISSURE’s unpaid CS2, Dota 2 prize debt explained as CEO addresses financial struggles",
+     "highlight": "unpaid CS2, Dota 2 prize debt",
+     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+     "image_via": "作品封面",
      "source": "Esports.gg",
-     "title": "FISSURE’s unpaid CS2, Dota 2 prize debt explained as CEO addresses financial struggles",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPTVFveXNpT0NicHAyZTAwaHVuMTRpWjZXbzdkWDN0NV9YSDZDMHRQZHhhNkNHYkkwTTJmbzJ4WWtvbmlveEl4c19ZR3ZvcW9EeGdLY0pMZjdxdGZYZjJza2JpaV80aWRXT2ZYMjlyZ1p2QTNOOUxDdnZzeXh6XzJCbXlBcnRjUTRWV2FCNmt6TUI?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 2,
-     "source": "Bluesky",
-     "title": "Marci | Dota 2 #marci #dota #dota2 #feet",
-     "url": "https://bsky.app/profile/lyashuu.bsky.social/post/3mzmugifyvk22"
+     "source_icon": "https://www.google.com/s2/favicons?domain=esports.gg&sz=128",
+     "url": "https://esports.gg/news/counter-strike-2/fissure-prize-debts-ceo-statement-explanation/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -543,24 +515,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "岩手県盛岡市でネコグッズ販売「にゃんぶまつり」が始まり、収益は全額ネコの保護活動に充てられる。",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "ネコグッズ販売「にゃんぶまつり」始まる 収益全額をネコの保護活動へ 岩手県盛岡市（岩手めんこいテレビ）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE84QkVPZFVVVk5rZXRxRFNSNlc0MXB0VENkWThCQVlncEFvT2NoeUNmT0I4RXN1aXJCM2VySUNLV1Z3bDkwWG1fQXBxTjFPeEVZZWRRRV9oMWJVYnRVbThrNGdSNE1xVTJUOUUyYjlwdy1yTHZUVTMza1dxR3dlclU?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 2,
-     "source": "Appliv Games",
-     "title": "『WIND BREAKER 不良たちの英雄譚（ウィンヒロ）』1.5th Anniversary記念イベント「笑顔到来！ まこち町猫まつり！」開催！",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5oUnl0cW12NFdrSFVsQ0NyTFJYQ3JMZmp5WnE2Uk9XLWRIVF94akszRkRHWnUwajF4LWxoUk41N0MybHhDM0YzWXUwbnN0ajVxX1E?oc=5"
+     "headline": "ネコグッズ販売「にゃんぶまつり」始まる 収益全額をネコの保護活動へ 岩手県盛岡市",
+     "highlight": "収益全額をネコの保護活動へ",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261106-90028935-nmit-000-1-thumb.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/441e2468e1b639d05584056b8c89bc1e4fe2d8e5",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -577,17 +544,19 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "SnowBrains says Niseko leads Japan's snow forecast in a cold, windy spell.",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "SnowBrains",
-     "title": "Japan Snow Forecast: Niseko Leads a Cold, Windy Spell",
-     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNU21zLWJxTXhpNUlHTFU2MWdORVVXdGtyZzFFS1dKcUs4aE1iazV1VVRacWVabjhJUUJqZkl5a1hoS3c4ZjN2SDlleUgxSzVoRUt2czdwRzJiTUxOUWNhNG0wYm5fcUZKMFFVR1lnbUQwanZDVElTZmpxbW9uSjRtTWZyZnNxbmh1SkZUTDZXSUNRSFNCdVNKY3Zub1gzSkp6?oc=5"
+     "headline": "Japan Snow Forecast: Niseko Leads a Cold, Windy Spell",
+     "highlight": "Niseko Leads",
+     "image": "https://snowbrains.com/wp-content/uploads/2026/11/forecast-23.png",
+     "image_via": "og:image",
+     "url": "https://snowbrains.com/snowbrains-forecast-niseko-leads-japan-with-25-40-cm-as-cold-snow-continues/",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -597,6 +566,31 @@
     "bg": "#F4F8FB",
     "fg": "#14233A",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "last": {
+    "date": "2026-11-06",
+    "headline": "韓国のサブカルチャー総合展示会「アニメ×ゲームフェスティバル2026」（AGF 2026）にゲーム企業が集結",
+    "url": "https://www.4gamer.net/games/975/G097529/20261105039/"
+   },
+   "name": "Astrae Oratio",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#C27270",
+    "alt_accent": "#A14744",
+    "alt_bg": "#F6EAE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211212",
+    "fg": "#F4EEE4",
+    "font": "serif",
     "split": true
    }
   },

@@ -181,6 +181,56 @@
   "漫威电影": 33,
   "三星手机": 6,
   "ILLIT": 3,
-  "A2O LITE": 2
- }
+  "A2O LITE": 2,
+  "dota2": 2,
+  "猫用品": 2,
+  "Astrae Oratio": 1,
+  "Vaundy": 1,
+  "滑雪": 1
+ },
+ "dota2": [
+  {
+   "headline": "FISSURE’s unpaid CS2, Dota 2 prize debt explained as CEO addresses financial struggles",
+   "highlight": "unpaid CS2, Dota 2 prize debt",
+   "blurb": "FISSURE's CEO addresses the organizer's unpaid CS2 and Dota 2 prize money and its financial struggles.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "ネコグッズ販売「にゃんぶまつり」始まる 収益全額をネコの保護活動へ 岩手県盛岡市",
+   "highlight": "収益全額をネコの保護活動へ",
+   "blurb": "岩手県盛岡市でネコグッズ販売「にゃんぶまつり」が始まり、収益は全額ネコの保護活動に充てられる。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Astrae Oratio": [],
+ "Vaundy": [
+  {
+   "headline": "Billboard JAPAN【先ヨミ・デジタル】、Vaundy「しわあわせ」引き続きストリーミング・ソング首位",
+   "highlight": "ストリーミング・ソング首位",
+   "blurb": "Vaundy「しわあわせ」がBillboard JAPANの先ヨミ・デジタルでストリーミング・ソング首位を継続。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "Japan Snow Forecast: Niseko Leads a Cold, Windy Spell",
+   "highlight": "Niseko Leads",
+   "blurb": "SnowBrains says Niseko leads Japan's snow forecast in a cold, windy spell.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }
