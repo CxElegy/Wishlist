@@ -1096,6 +1096,35 @@
   },
   {
    "batch": 2,
+   "because": "猫用品",
+   "date": "2026-11-05",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://www.indexbox.io/landing/img/blog/custom-report-v2-localized/ja/automatic-cat-litter-market-forecast-to-2035-driven-by-pet-humanization-and-smart-home-integration-a488c84c23688392.webp",
+   "kind": "board",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "score": 8,
+   "source": "IndexBox",
+   "taste": [
+    [
+     "猫",
+     6
+    ],
+    [
+     "作品:猫用品",
+     5
+    ]
+   ],
+   "title": "自動猫用トイレ市場2035年予測：ペットテックの普及とサブスクリプションが成長を牽引 - ニュースと統計",
+   "url": "https://www.indexbox.io/ja/blog/automatic-cat-litter-market-forecast-to-2035-driven-by-pet-humanization-and-smart-home-integration/",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
+  },
+  {
+   "batch": 2,
    "because": "三星手机",
    "date": "2026-11-05",
    "hits": [
@@ -1401,7 +1430,7 @@
    "work": "BLEACH Mirrors High"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-06",
    "hits": [],
@@ -1462,27 +1491,6 @@
    "url": "https://www.nytimes.com/2026/11/06/movies/winter-movies-november-december-2026.html",
    "words": [],
    "work": "漫威电影"
-  },
-  {
-   "batch": 5,
-   "because": "A2O LITE",
-   "date": "2026-11-06",
-   "hits": [],
-   "image": "https://kagit-media.atreez.cc/uploads/2026-11-03/ljq7ctjeii5y3g618urvqfj4.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "Kagit",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "신인 걸그룹 A2O LITE, 한국인 멤버 외모·실력 논쟁…“외국인 멤버 들러리?”",
-   "url": "https://kagit.kr/ko/posts/a2o-lite-members-compared",
-   "words": [],
-   "work": "A2O LITE"
   },
   {
    "batch": 5,
@@ -1685,6 +1693,21 @@
    "taste": [],
    "title": "メンズスノーボードウェアのおすすめ人気ランキング【2026年11月】",
    "url": "https://my-best.com/5657",
+   "words": [],
+   "work": "滑雪"
+  },
+  {
+   "batch": 7,
+   "because": "滑雪",
+   "date": "2026-11-03",
+   "hits": [],
+   "image": "https://www.happo-one.jp/wp2019/wp-content/uploads/2019/11/ogp-1024x929.png",
+   "kind": "board",
+   "score": 4,
+   "source": "白馬八方尾根スキー場",
+   "taste": [],
+   "title": "HAKUBA HAPPO-ONE SNOW RESORT | HAKUBAVALLEY",
+   "url": "https://www.happo-one.jp/en/",
    "words": [],
    "work": "滑雪"
   },
@@ -2082,11 +2105,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2094,15 +2117,15 @@
    8
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
    "作品:三星手机",
    7
   ],
   [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "galaxy",
    7
   ]
  ]

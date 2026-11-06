@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "ce08aceb4daa",
+ "edit_sig": "dd141c5c783a",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -110,8 +110,9 @@
      "date": "2026-11-06",
      "headline": "다크 판타지 MMO '판타지포유', 사전 다운로드 9일 개시",
      "highlight": "",
-     "image": "https://cdn.ipnn.co.kr/news/photo/202611/418181_80146_252.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "www.ipnn.co.kr",
+     "source_icon": "https://cdn.ipnn.co.kr/favicon.ico",
      "url": "https://www.ipnn.co.kr/news/articleView.html?idxno=418181",
      "weight": "normal"
     }
@@ -314,15 +315,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 16,
-     "source": "Kagit",
-     "title": "ILLIT",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBlYld3c3hHSVQxdkdBUDFENVB0TDJSa2tVNGlfbVZ1RkFYRmpaQ1JsMUk4all1VS14V2NGemRPUU5TcUdkZUFRUXpn?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -791,29 +783,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 28,
-     "source": "手机新浪网",
-     "title": "马杨唱周杰伦的rap",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE40a0RLSGFXb3dtdFRndmZFUjlCcFZObWN1Y3ZDNVBDZ1h3bXhoMDV4RkdZN1h5NjBuLUJoQkFWWGtFTGJfQkM2VnhROXRiRllBd1BhNXA2R1N6dUw4YXE2Z1BvU3V4WFdqTWJvaGhfZ3g4eU0?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 29,
-     "source": "China Press",
-     "title": "周杰伦出道26年 昔日狂语重现",
-     "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNeTJ0X2k5ZE9qN1dBLUZhelI3MHB3ZUFLYXlKc2tnYWZKZVNNVDd5UllQOEE0M25PWEVmQmxQQnZHbGRBa3E2ZDJ5a0ctbHpFSXFGaUZhS3YwSG9QaldvTzE2TEhidGlMdmJQaS1qNldteEMwM0NFcDJ0endyVng5SGQ5c3dVYk9MbFo0S3F4WHNmUWh0cDgzOC1pZXdnRklNRjZSb0pMSXd0S0g1azZqSHJFUVFJYlVRMDRPRXBvaFl4T3hUclBsZFNDb21rT1RKZkRxMEMzN0t1LWJrVG5aeXNIQjc1QQ?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 30,
-     "source": "鏡週刊",
-     "title": "周杰倫結婚11年仍超寵妻！昆凌同框2國際巨星 他「1舉動」低調放閃",
-     "url": "https://www.mirrormedia.mg/external/mirrordaily_96257"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -971,8 +940,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "AI 挑选",
+     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
+     "image_via": "og:image",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
