@@ -662,6 +662,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
  .mas{display:contents}.mas>.card.c4,.mas>.card.c6,.mas>.card.c3,.mas>.card.c8{grid-column:span 12;grid-row:auto!important}.mas>.side{display:contents}
  .calm{flex-wrap:wrap;gap:12px;padding:4px 14px 16px}.calm .pic{display:none}
  /* 左写真・右字のカード（.wc・.wc.sb・.card.mini・.card.sb・.tape）：写真は幅 42%・高さはカードいっぱい（cover）、字は残りの列。写真の下に空きを残さない（2026-11-06）。
+    対象外：気になるかも（.pk.sb）＝スマホ 390px は写真が上・札が下の縦積み（本番ゲスト 9 枚中 .sb 0 枚・2026-11-06）。.sb が付くのは FIT_JS の pk 用 side() が細い写真を見たときだけで、写真の高さは JS が決める。
     FIT_JS の side() は 1 列では呼ばない（細い写真も同じ 42% を切る）ので width/height の直書きは来ない */
  .wc:not(.lead):not(.nophoto),.card.mini:not(.nophoto),.card.sb:not(.mini){grid-template-columns:42% minmax(0,1fr);column-gap:12px}
  .wc:not(.lead):not(.nophoto)>.pic,.card.mini:not(.nophoto)>.pic,.card.sb:not(.mini)>.pic{align-self:stretch;justify-self:stretch;width:auto!important;height:auto!important;min-height:96px;aspect-ratio:auto!important}
