@@ -1,34 +1,7 @@
 {
  "date": "2026-11-06",
- "edit_sig": "0e0b821d0ca3",
+ "edit_sig": "9f184662e3d5",
  "items": [
-  {
-   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
-   "facts": [],
-   "name": "BLEACH Mirrors High",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "BLEACH Mirrors High｜セルラン売上と評価、アプリ情報まとめ",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBBS2JVWUw0aHR3ZkR2b04zRmdNQ2VLR2ItcFVuekNPejZLekQybjhQQTZoY0VfTFVNNnhZV19RMFptbG1JRHNvWjN0dkgxVzVN?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "死神 新作手游",
-   "theme": {
-    "accent": "#9A550E",
-    "alt_accent": "#EE9944",
-    "alt_bg": "#211A12",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7F0E9",
-    "fg": "#1E1A18",
-    "font": "serif",
-    "split": true
-   }
-  },
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
    "facts": [],
@@ -896,8 +869,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "og:image",
+     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
@@ -1022,6 +995,31 @@
     "alt_fg": "#1E1A18",
     "bg": "#211212",
     "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
+   "facts": [],
+   "last": {
+    "date": "2026-11-04",
+    "headline": "「BLEACH Mirrors High」に「［三番隊隊長］市丸 ギン」が登場！",
+    "url": "https://dengekionline.com/article/202611/93039"
+   },
+   "name": "BLEACH Mirrors High",
+   "quiet": true,
+   "section": "游戏",
+   "status": "事前登录中 · 官方称 2026 年内上线，具体日期未定",
+   "stories": [],
+   "subtitle": "死神 新作手游",
+   "theme": {
+    "accent": "#9A550E",
+    "alt_accent": "#EE9944",
+    "alt_bg": "#211A12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F0E9",
+    "fg": "#1E1A18",
     "font": "serif",
     "split": true
    }

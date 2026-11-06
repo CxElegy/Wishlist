@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-05T02:04:10+00:00",
-"text": "2026-11-05 第 6 バッチを出刊：MMORPG 新作（1 版面・3 本・残り 8 版面） · token 新規入力 1,266・キャッシュ読み 18.2万・出力 687",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.37,
-"mem_total": 16867418112,
-"mem_free": 15993389056,
-"disk_used": 10081902592,
-"disk_free": 31201632256,
-"disk_total": 41283534848,
-"peak": 334782464
-},
-"batch": 6,
-"boards": [
-"MMORPG 新作"
-],
-"stories": 3,
-"left": 8,
-"edited": 18,
-"run": 1793841198.5532727,
-"tok": {
-"in": 4,
-"cw": 1262,
-"cr": 181563,
-"out": 687,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 183516
-},
-{
 "at": "2026-11-05T02:13:20+00:00",
 "text": "2026-11-05 第 7 バッチを出刊：gelato pique（1 版面・2 本・残り 7 版面） · token 新規入力 3,900・キャッシュ読み 55.8万・出力 1,580",
 "level": "ok",
@@ -1976,5 +1944,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 613473
+},
+{
+"at": "2026-11-06T09:46:38+00:00",
+"text": "2026-11-06 第 2 バッチを出刊：BLEACH Mirrors High（1 版面・0 本・残り 5 版面） · token 新規入力 1,811・キャッシュ読み 27.6万・出力 888",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.41,
+"mem_total": 16867418112,
+"mem_free": 15806042112,
+"disk_used": 10041729024,
+"disk_free": 31241805824,
+"disk_total": 41283534848,
+"peak": 457117696
+},
+"batch": 2,
+"boards": [
+"BLEACH Mirrors High"
+],
+"stories": 0,
+"left": 5,
+"edited": 21,
+"run": 1793957414.1606724,
+"tok": {
+"in": 8,
+"cw": 1803,
+"cr": 275832,
+"out": 888,
+"calls": 4,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 278531
 }
 ]

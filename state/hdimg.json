@@ -441,6 +441,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.techrepublic.com/uploads/2026/11/ipad-mini-oled-vs-galaxy-tab-s11-featured.jpg?f=jpeg": {
+  "w": 1600,
+  "h": 893,
+  "target": 1280,
+  "v": 3
+ },
  "https://attach.setn.com/newsimages/2017/02/08/803356-PH.jpg": {
   "w": 650,
   "h": 366,
@@ -482,12 +488,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://buzzap.net/images/2026/10/30/poco-f7-ultra/top.jpg": {
-  "w": 1200,
-  "h": 780,
-  "target": 1280,
   "v": 3
  },
  "https://cancam.jp/wp-content/uploads/2026/10/29/st.jpg": {
@@ -854,12 +854,6 @@
   "target": 1280,
   "v": 3
  },
- "https://collabo-cafe.com/wp-content/uploads/HVjcUQlagAAuPBR.jpg": {
-  "w": 1200,
-  "h": 1021,
-  "target": 1280,
-  "v": 3
- },
  "https://collabo-cafe.com/wp-content/uploads/miffy-avail-1031-lineup.jpg": {
   "w": 1165,
   "h": 929,
@@ -951,6 +945,12 @@
    801
   ],
   "why": "看不清"
+ },
+ "https://d34gglw95p9zsk.cloudfront.net/articles/images/000/048/116/large/3a8daff6-7b0a-429b-ad01-fede98bfbca9.jpg?1792911318": {
+  "w": 1280,
+  "h": 1280,
+  "target": 1280,
+  "v": 3
  },
  "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg": {
   "w": 1459,
@@ -1332,6 +1332,12 @@
   "w": 1125,
   "h": 750,
   "target": 1280,
+  "v": 3
+ },
+ "https://i0.wp.com/knightedgemedia.com/wp-content/uploads/2026/11/dc-studios-john-constantine-movie-banner.jpg?fit=1920%2C820&ssl=1": {
+  "w": 1920,
+  "h": 820,
+  "target": 720,
   "v": 3
  },
  "https://i0.wp.com/news.qoo-app.com/wp-content/uploads/2026/11/ogpcover.jpg": {
@@ -1979,6 +1985,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg": {
+  "w": 640,
+  "h": 434,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.448,
+  "local": "pics/881a5c1b9c291643.webp",
+  "out": [
+   1280,
+   868
+  ],
+  "why": "看不清"
+ },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
@@ -2008,19 +2027,6 @@
   "h": 576,
   "target": 720,
   "v": 3
- },
- "https://img.topics.smt.news.goo.ne.jp/picture/asahi_region/m_asahi_region-ASVB03R7YVB0TLTB00FM.jpg": {
-  "w": 300,
-  "h": 201,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.614,
-  "local": "pics/251d0c04ef4355d0.webp",
-  "out": [
-   900,
-   603
-  ],
-  "why": "看不清"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100433.jpg": {
   "w": 640,
@@ -2080,42 +2086,10 @@
   ],
   "why": "看不清"
  },
- "https://img.topics.smt.news.goo.ne.jp/region_tmb/16_9/262072.png?fushinsha_joho-1489484091463139582": {
-  "w": 576,
-  "h": 324,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.493,
-  "local": "pics/f3b8421906e3f5ec.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
- "https://img.topics.smt.news.goo.ne.jp/region_tmb/16_9/262129.png?fushinsha_joho-1489482078579015805": {
-  "w": 576,
-  "h": 324,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.509,
-  "local": "pics/54d7e66e056f4a76.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
  "https://img.toy-people.com/member/179380690349_1200.png": {
   "w": 1200,
   "h": 630,
   "target": 1280,
-  "v": 3
- },
- "https://img2.animatetimes.com/2026/10/999b4f6c7f4e919fde8f1b2afcc11fb76acdd41d170320_50840305_e490802186570f9cea23f76723b2fec079ab5b64.jpg": {
-  "w": 1280,
-  "h": 864,
-  "target": 720,
   "v": 3
  },
  "https://img6.donews.com/img/2026/11/05/img_pic_1793875977.jpg": {
@@ -2189,12 +2163,6 @@
   "w": 640,
   "h": 330,
   "target": 720,
-  "v": 3
- },
- "https://iphoneislam.com/wp-content/uploads/2026/11/s26-vs-iphone-18-pro-00.jpg": {
-  "w": 1448,
-  "h": 1086,
-  "target": 1280,
   "v": 3
  },
  "https://journalarta.com/wp-content/uploads/2026/10/samsung-may-use-snapdragon-8-elite-gen-6-extreme-in-europe-f-source-ai-ja-discover-1536x864.jpg": {
@@ -2326,19 +2294,6 @@
   "target": 1280,
   "v": 3
  },
- "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "w": 640,
-  "h": 434,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.448,
-  "local": "pics/c8f922c921a79f0b.webp",
-  "out": [
-   1280,
-   868
-  ],
-  "why": "看不清"
- },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
   "h": 878,
@@ -2449,13 +2404,6 @@
   "h": 346,
   "target": 720,
   "v": 3
- },
- "https://news.walkerplus.com/article/1026125/10233248_615.jpg": {
-  "w": 615,
-  "h": 265,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.376
  },
  "https://news.walkerplus.com/article/1133922/11697468_615.jpg": {
   "w": 615,
@@ -2905,6 +2853,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://otonano-shumatsu.com/wp-content/uploads/2026/10/hiroshima_cat-cafe_7835b.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://p.potaufeu.asahi.com/abab-p/picture/31516454/9b14ed427526fb7aee3edd48a90a92fe.jpg": {
   "w": 770,
   "h": 513,
@@ -2935,18 +2889,6 @@
   "h": 1080,
   "target": 720,
   "v": 3
- },
- "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/31/35473282.jpg&M=1&s=Y&x=0&y=0&sw=1078&sh=719&exp=3600": {
-  "w": 1078,
-  "h": 719,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/3fb41370bbff1d98.webp",
-  "out": [
-   1078,
-   719
-  ],
-  "why": "期限付きの網址"
  },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/01/35473388.jpg&M=1&s=Y&x=0&y=503&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
   "w": 799,
@@ -3072,6 +3014,12 @@
   "w": 897,
   "h": 1260,
   "target": 1280,
+  "v": 3
+ },
+ "https://prtimes.jp/img/84858/47/resize/d84858-47-a89ff883ef5ee322200f-0.jpg": {
+  "w": 650,
+  "h": 650,
+  "target": 720,
   "v": 3
  },
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
@@ -3653,6 +3601,12 @@
   ],
   "why": "看不清"
  },
+ "https://today-obs.line-scdn.net/0hBc9YPs7MHUwEIAFvObBiGzx2ET03RgdFJhVUKXUpEHQuDF4TORROLyB3FmB5EF5PJBZQLHYlQnkrQ1sbOg/w1200": {
+  "w": 820,
+  "h": 615,
+  "target": 1280,
+  "v": 3
+ },
  "https://travelbinger.com/cdn-cgi/image/width=1600,height=900,quality=80,format=auto,fit=cover/https://backend.travelbinger.com/wp-content/uploads/2026/11/38d0ffa1b7a661b12b2b2d6b66abf0cd.webp": {
   "w": 1600,
   "h": 900,
@@ -3730,19 +3684,6 @@
   "h": 619,
   "target": 720,
   "v": 3
- },
- "https://wimg.heraldcorp.com/news/cms/2026/11/02/news-p.v1.20261102.6fa92bde5b7b486e926cea906bec817d_P1.png": {
-  "w": 720,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.435,
-  "local": "pics/43ef1feeec90aa4f.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
  },
  "https://www.010-sports.jp/wp-content/uploads/2026/10/be16aabc7504144f3c61cd6875d300ef.jpg": {
   "w": 1200,
@@ -3951,19 +3892,6 @@
   "v": 3,
   "blur": 0.413
  },
- "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
-  "w": 700,
-  "h": 590,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.608,
-  "local": "pics/241dbd8a56fd4464.webp",
-  "out": [
-   1280,
-   1079
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4046,12 +3974,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.L94JPV3Ohn3F3j-1OARAjw&pid=News&w=1200": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,
@@ -4715,6 +4637,26 @@
   ],
   "why": "看不清"
  },
+ "https://www.nikkansports.com/baseball/mlb/news/img/202611010000916-w500_1.jpg": {
+  "w": 500,
+  "h": 756,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.357
+ },
+ "https://www.nikkansports.com/baseball/mlb/news/img/202611010000971-w500_1.jpg": {
+  "w": 500,
+  "h": 756,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.441,
+  "local": "pics/a08b2e98a059a980.webp",
+  "out": [
+   847,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://www.nikkansports.com/sports/news/img/202610290001904-w500_3.jpg": {
   "w": 500,
   "h": 422,
@@ -4782,6 +4724,12 @@
    806
   ],
   "why": "看不清"
+ },
+ "https://www.sponichi.co.jp/baseball/news/2026/11/02/jpeg/20261102s10001007109000p_view.webp": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
  },
  "https://www.sponichi.co.jp/sports/news/2026/11/02/jpeg/20261102s10028000053000p_view.webp": {
   "w": 1200,
