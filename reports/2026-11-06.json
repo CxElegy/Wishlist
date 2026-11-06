@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "aeaa7a63d918",
+ "edit_sig": "eb4b76d921a9",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -79,15 +79,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 18,
-     "source": "더게임스",
-     "title": "넥슨, 연말 MMOㆍ서브컬처 신작 공세",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1uSlI3bFBpc2JxZEEzR0YzUzV0bUphSEpoVUNHWFUxOTFWalVkQy05Mko3WUZRc2w3SGN6OHNKaDNhVFlneVhEUHM0QXRzVFFGUktmcEhLQ0VpenB5ZUVDV0xJQXAzYVNIckV3dg?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -119,9 +110,8 @@
      "date": "2026-11-06",
      "headline": "다크 판타지 MMO '판타지포유', 사전 다운로드 9일 개시",
      "highlight": "",
-     "image": null,
-     "source": "www.ipnn.co.kr",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.ipnn.co.kr&sz=128",
+     "image": "https://cdn.ipnn.co.kr/news/photo/202611/418181_80146_252.jpg",
+     "image_via": "og:image",
      "url": "https://www.ipnn.co.kr/news/articleView.html?idxno=418181",
      "weight": "normal"
     }
@@ -489,8 +479,8 @@
      "date": "2026-11-05",
      "headline": "Unpopular opinion: I kind of like the Galaxy S27 Ultra design language",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.c0HQo-utsC28dVIOOALYhg&pid=News&w=768",
-     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-Unbox-8.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.phonearena.com/news/unpopular-opinion-i-kind-of-like-the-galaxy-s27-ultra-design-language_id184382",
      "weight": "normal"
     },
@@ -861,8 +851,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "og:image",
+     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
+     "image_via": "AI 挑选",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
