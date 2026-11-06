@@ -94,7 +94,7 @@
   "漫威电影": 63,
   "ILLIT": 13,
   "MMORPG 新作": 18,
-  "三星手机": 23,
+  "三星手机": 28,
   "The Mandalorian": 4,
   "チェーンソーマン": 3,
   "哈利波特剧集": 4,
@@ -318,7 +318,8 @@
    "refs": [
     1,
     10,
-    19
+    19,
+    25
    ],
    "image": "https://www.bbntimes.com/images/Galaxy_S27_Leaks_Four_New_Models_Three_Chipsets_and_a_Massive_Redesign.jpg"
   },
@@ -329,7 +330,9 @@
    "weight": "normal",
    "refs": [
     3,
-    18
+    18,
+    26,
+    27
    ]
   },
   {
@@ -375,7 +378,8 @@
    "weight": "normal",
    "refs": [
     4,
-    14
+    14,
+    24
    ]
   },
   {
@@ -385,7 +389,8 @@
    "weight": "normal",
    "refs": [
     9,
-    8
+    8,
+    28
    ]
   },
   {
