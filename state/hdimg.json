@@ -703,9 +703,9 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg": {
+ "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210_crop.png": {
   "w": 1200,
-  "h": 2132,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -736,6 +736,12 @@
  "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-09-15/bd684897-4842-422e-9319-9faff2a5569f.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-11-06/dc4546ad-121a-47fa-911b-8a19daab33a4.jpg": {
+  "w": 1200,
+  "h": 1800,
   "target": 1280,
   "v": 3
  },
@@ -958,6 +964,12 @@
    600
   ],
   "why": "看不清"
+ },
+ "https://daebak.tokyo/wp-content/uploads/2026/11/506ko5e.webp": {
+  "w": 513,
+  "h": 496,
+  "target": 720,
+  "v": 3
  },
  "https://dapsmagic.com/wp-content/uploads/2026/10/The-Mandalorian-Cookbook-1.jpg": {
   "w": 1280,
@@ -1659,6 +1671,12 @@
    992
   ],
   "why": "看不清"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gPXdM.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gPpNJ.img": {
   "w": 1200,
@@ -2845,6 +2863,12 @@
  "https://phinf.wevpstatic.net/MjAyNjEwMjlfMjI5/MDAxNzkzMjg1NDExODQw.oVJRKHh23GSkawQwMiQTyTPyAkkFVU4DT3hvjlMwPS8g.CoQ_PypiDBmKFx9IxcD8ojzLvIO7RTrbNFzPzKrbsMgg.JPEG/image.jpg?type=w1414": {
   "w": 1414,
   "h": 1061,
+  "target": 720,
+  "v": 3
+ },
+ "https://photo.jtbc.co.kr/news/jam_photo/202610/30/ae43b5f8-081f-4cc3-abfc-b6cb63a0a35b.jpg": {
+  "w": 560,
+  "h": 373,
   "target": 720,
   "v": 3
  },
