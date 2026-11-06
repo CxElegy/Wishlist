@@ -157,6 +157,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/647c8fably1iiqjopis2gj20yo0lgn47.jpg": {
+  "w": 1248,
+  "h": 772,
+  "target": 720,
+  "v": 3,
+  "local": "pics/e2ad33e856d70de2.webp",
+  "out": [
+   1248,
+   772
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg": {
   "w": 1752,
   "h": 2830,
@@ -4170,12 +4183,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.kmyRK2XqbDABaHcLtgUdBw&pid=News&w=1080": {
-  "w": 700,
-  "h": 350,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.l6kuKQHh7tgR0uUB0f--7A&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4371,6 +4378,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/03/27/Dexerto-Header-2.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/22/4-121.jpg": {
   "w": 1920,
   "h": 1080,
@@ -4479,10 +4492,22 @@
   "target": 720,
   "v": 3
  },
+ "https://www.hotspawn.com/wp-content/uploads/2026/09/What-Is-Dota-2-Smurfing.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/All-Multi-Time-TI-Winners-in-Dota-2.jpg": {
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.hotspawn.com/wp-content/uploads/2026/11/all-blast-slam-winners.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/betboom-pauses-dota-2-roster.jpg": {

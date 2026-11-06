@@ -97,7 +97,8 @@
   "周杰伦": 7,
   "A2O LITE": 8,
   "绝区零": 2,
-  "あつ森": 1
+  "あつ森": 1,
+  "dota2": 3
  },
  "漫威电影": [
   {
@@ -480,5 +481,34 @@
   }
  ],
  "绝区零": [],
- "あつ森": []
+ "あつ森": [],
+ "dota2": [
+  {
+   "headline": "Natus Vincere emerge victorious over GamerLegion, wins Dota 2 EPL Masters III",
+   "highlight": "wins Dota 2 EPL Masters III",
+   "blurb": "Natus Vincere beat GamerLegion to take the Dota 2 EPL Masters III title.",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "All Dota 2 BLAST Slam Winners – Full List",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "The best Dota 2 launch options to optimize game performance",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ]
 }

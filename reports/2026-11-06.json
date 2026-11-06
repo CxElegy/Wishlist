@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "b35e6dbfb47f",
+ "edit_sig": "9abd11c9da23",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -695,31 +695,41 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-05",
-     "n": 1,
-     "source": "Hotspawn",
-     "title": "All Dota 2 BLAST Slam Winners – Full List",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOMU1xSl81VFVUdktwcUtTZDVpY0VfN3lPR0Z3b05MemxmUW5heFRrSEwtT2JWbVhrQjkzRW0tTlhuWmx1TEdTeENwRi1LNFp5Q1BDc2JrbzVoYXZ4U2xaRlNCbFFBVEZoSFFURFJoSndtVU5kdnJld0ZMUUdoNUFTNw?oc=5"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 2,
-     "source": "Dexerto",
-     "title": "The best Dota 2 launch options to optimize game performance",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPeC1zNTlack9LRzBCWFMxUXR1ZTNjQzNJNWFmb0RucmRoZWZZcy1WRVE3Z3F3WkhwbDA3RTg2RHh1bmlfbWZkc1VXaWJYTkhyUVlQeHNMV2t3RkNnUG5qQzY1ZGN2VEVVbmdPRENCR0IwdC1SLWhDeFVXb2lQNVc1QV9QNzJkdXVEYTBkRjNZUUV5X2xyWUE?oc=5"
-    },
-    {
+     "blurb": "Natus Vincere beat GamerLegion to take the Dota 2 EPL Masters III title.",
      "date": "2026-11-06",
-     "n": 3,
+     "headline": "Natus Vincere emerge victorious over GamerLegion, wins Dota 2 EPL Masters III",
+     "highlight": "wins Dota 2 EPL Masters III",
+     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+     "image_via": "作品封面",
      "source": "Esports.gg",
-     "title": "Natus Vincere emerge victorious over GamerLegion, wins Dota 2 EPL Masters III",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE92Nkh5Wm9yT0FnQ3dpRTRPaDI0eGV0aUFKdGdQYmVWUWZBWUtNZWc4YlMzRHM2SlVuSm9JVGYxM1B3Ym1ZbTk0V214R09KOGVTcTNZMnk4OGRpa1dVcXh4UEtqN1dpUGRrNzdNX2F2ZFA3YlByTkl1WlVKRnYyZw?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=esports.gg&sz=128",
+     "url": "https://esports.gg/news/dota-2/natus-vincere-wins-dota-2-epl-masters-iii/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "All Dota 2 BLAST Slam Winners – Full List",
+     "highlight": "",
+     "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/all-blast-slam-winners.jpg",
+     "image_via": "og:image",
+     "url": "https://www.hotspawn.com/dota2/news/all-dota-2-blast-slam-winners-full-list",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-03",
+     "headline": "The best Dota 2 launch options to optimize game performance",
+     "highlight": "",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/03/27/Dexerto-Header-2.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/dota2/best-dota-2-launch-options-optimize-game-performance-1792226/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
