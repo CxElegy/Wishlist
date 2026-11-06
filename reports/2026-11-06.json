@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "74d9f0035ec1",
+ "edit_sig": "2f3170e3c832",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -583,17 +583,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 1,
-     "source": "山陽新聞",
-     "title": "夏の高校野球、応援ソングにVaundyの書き下ろし「かげろう」決定 「ストレートに”熱”と”闘い”を込めた」【過去楽曲一覧あり】",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBGV0d4aUVCNVZLS3V3UEVQRWRYcnRFaldvQ0RzYWtLdXZMQzdsOUZlcWZEZXprWWF6a0g1aVZ2aU42aTlOVG1JUU55cEVZVVhXMDFvTXVGTlJ1Qjg?oc=5"
+     "headline": "夏の高校野球、応援ソングにVaundyの書き下ろし「かげろう」決定",
+     "highlight": "「かげろう」決定",
+     "image": "https://static.sanyonews.jp/image/article/size1/3/f/f/2/3ff24c261a165613c93a74b121b9b124_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1934068?kw=NIB",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
