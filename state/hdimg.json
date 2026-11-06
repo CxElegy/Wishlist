@@ -616,12 +616,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.ipnn.co.kr/news/photo/202611/418181_80146_252.jpg": {
-  "w": 960,
-  "h": 542,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg": {
   "w": 600,
   "h": 400,
@@ -1985,19 +1979,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_x.jpg": {
-  "w": 640,
-  "h": 434,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.448,
-  "local": "pics/881a5c1b9c291643.webp",
-  "out": [
-   1280,
-   868
-  ],
-  "why": "看不清"
- },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
@@ -2293,6 +2274,19 @@
   "h": 440,
   "target": 1280,
   "v": 3
+ },
+ "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "w": 640,
+  "h": 434,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.448,
+  "local": "pics/c8f922c921a79f0b.webp",
+  "out": [
+   1280,
+   868
+  ],
+  "why": "看不清"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -3150,12 +3144,6 @@
   "h": 576,
   "target": 720,
   "v": 3
- },
- "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-Unbox-8.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-06"
  },
  "https://samsungmagazine.eu/wp-content/uploads/2026/05/Galaxy-S26-110.jpg": {
   "w": 1900,
@@ -4167,6 +4155,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.c0HQo-utsC28dVIOOALYhg&pid=News&w=768": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
