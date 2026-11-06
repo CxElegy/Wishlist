@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-06T04:17:44+00:00",
+ "checked": "2026-11-06T05:17:48+00:00",
  "fired": {
   "at": "2026-11-06T04:18:02+00:00",
   "results": {
@@ -19,36 +19,20 @@
     "resp": "cse_01W4x6f6g6A25rNUhLh3ZpMX",
     "sig": "6178241b152a"
    },
-   "items": [
-    "Astrae Oratio",
-    "FROM",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "gelato pique",
-    "周杰伦",
-    "哈利波特剧集",
-    "绝区零"
-   ],
-   "last_batch": "2026-11-06T04:13:15+00:00",
+   "items": [],
+   "last_batch": "2026-11-06T04:50:56+00:00",
    "last_error": {
     "at": "2026-11-06T01:25:21+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 187,
+   "need": false,
+   "prog": 200,
    "prog_day": "2026-11-06",
-   "ripe": [
-    "Astrae Oratio",
-    "The Mandalorian",
-    "dota2",
-    "gelato pique",
-    "哈利波特剧集"
-   ],
-   "sig": "cc53ebb12782",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 300547,
-   "why": "整理待ちの記事 13 件（9 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 312025,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
