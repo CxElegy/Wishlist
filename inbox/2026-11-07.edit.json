@@ -49,6 +49,15 @@
     24,
     15
    ]
+  },
+  {
+   "headline": "Zelnick doesn't regret GTA 6's delay because shipping an unfinished game rarely ends well",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    44
+   ]
   }
  ],
  "漫威电影": [
@@ -101,7 +110,8 @@
     3,
     2,
     7,
-    19
+    19,
+    40
    ]
   }
  ],
@@ -177,8 +187,8 @@
   }
  ],
  "_covered": {
-  "GTA 6": 38,
-  "漫威电影": 33,
+  "GTA 6": 47,
+  "漫威电影": 41,
   "三星手机": 6,
   "ILLIT": 3,
   "A2O LITE": 2,
@@ -186,7 +196,10 @@
   "猫用品": 2,
   "Astrae Oratio": 1,
   "Vaundy": 1,
-  "滑雪": 1
+  "滑雪": 1,
+  "FROM": 2,
+  "周杰伦": 2,
+  "绝区零": 2
  },
  "dota2": [
   {
@@ -229,6 +242,50 @@
    "blurb": "SnowBrains says Niseko leads Japan's snow forecast in a cold, windy spell.",
    "weight": "lead",
    "refs": [
+    1
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "Nielsen: Netflix Ups Catalog Horror Series 'From' to No. 1 Across U.S. TV Households Through Oct. 25",
+   "highlight": "No. 1",
+   "blurb": "Netflix has moved the horror series 'From' to No. 1 in U.S. TV households per Nielsen; season 4 is already streaming.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦蔡依林金曲奖同台，四分钟多次求抱抱",
+   "highlight": "金曲奖同台",
+   "blurb": "周杰伦与蔡依林在金曲奖同台，四分钟内多次互动求抱抱。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "周杰伦出道26周年快乐",
+   "highlight": "26周年",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "セヴェリアン エキシビション「監察官はいかに鍛えられたか」",
+   "highlight": "",
+   "blurb": "ゼンレスゾーンゼロのセヴェリアン エキシビション「監察官はいかに鍛えられたか」が公開された。",
+   "weight": "lead",
+   "refs": [
+    2,
     1
    ]
   }

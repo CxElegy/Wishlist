@@ -73,6 +73,19 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261105ac/195/w635h360/20261105/2175-abc137c5712cdca4cfd88d3e0052ebd2.jpg": {
+  "w": 635,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.469,
+  "local": "pics/6a1c5357e9364e1f.webp",
+  "out": [
+   1280,
+   726
+  ],
+  "why": "看不清"
+ },
  "http://n.sinaimg.cn/sinakd20261105ac/533/w480h853/20261105/c65c-1c6939f5bd4d8f12473588a3ec6b3302.jpg": {
   "w": 480,
   "h": 853,
@@ -106,17 +119,11 @@
   "why": "看不清"
  },
  "http://wx1.sinaimg.cn/middle/006gNTEUly1iislj1b2htj37wg3c0u13.jpg": {
-  "w": 2000,
-  "h": 844,
-  "target": 720,
+  "target": 1280,
   "v": 3,
-  "local": "pics/7ae2be1a858b8236.webp",
-  "out": [
-   1280,
-   540
-  ],
-  "why": "防盗链",
-  "ref": true
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-07"
  },
  "http://wx1.sinaimg.cn/middle/008eZAxIly1iisu9r8a0fj30y10jwqab.jpg": {
   "w": 1225,
@@ -139,6 +146,19 @@
   "local": "pics/71065aa200867c3e.webp",
   "out": [
    811,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx2.sinaimg.cn/middle/001gSRX0ly1iis5h51wvnj60z01lmahy02.jpg": {
+  "w": 1260,
+  "h": 2074,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/65fa3ff8a54cba67.webp",
+  "out": [
+   778,
    1280
   ],
   "why": "防盗链",
@@ -3708,6 +3728,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.b_0HZNWCqlgpF3wqgvg0Ow&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4137,6 +4163,12 @@
   "w": 900,
   "h": 600,
   "target": 720,
+  "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 1280,
   "v": 3
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
