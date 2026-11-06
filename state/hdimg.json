@@ -1587,6 +1587,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/1000012122.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://images.thedirect.com/media/article_full/1000012211.jpg": {
   "w": 1280,
   "h": 720,
@@ -1973,19 +1979,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "w": 640,
-  "h": 434,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.448,
-  "local": "pics/fb2c399e45ea329f.webp",
-  "out": [
-   1280,
-   868
-  ],
-  "why": "看不清"
- },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
@@ -2332,6 +2325,19 @@
   "h": 440,
   "target": 1280,
   "v": 3
+ },
+ "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "w": 640,
+  "h": 434,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.448,
+  "local": "pics/c8f922c921a79f0b.webp",
+  "out": [
+   1280,
+   868
+  ],
+  "why": "看不清"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -4401,12 +4407,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.z2rH8ltMXmqwhXKcbx9R2A&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.zV1ReHGr-FyrNcMW02R1aw&pid=News&w=700": {
   "w": 700,
   "h": 466,
@@ -4636,9 +4636,21 @@
   "target": 720,
   "v": 3
  },
+ "https://www.indy100.com/media-library/image.jpg?id=60330234&width=1200&height=600&coordinates=0%2C100%2C0%2C100": {
+  "w": 1200,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
  "https://www.iza.ne.jp/resizer/v2/7XMPAQEKS5BR7EW5WGDZN5UWW4.jpg?auth=67084e060b57a2cc1343e7c7e2248594ee572ab482621ceed943def176606b73&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.jedinews.com/wp-content/uploads/2025/09/Warwick-Davis-Harry-Potter-Aug25.jpg": {
+  "w": 696,
+  "h": 467,
   "target": 720,
   "v": 3
  },

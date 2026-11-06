@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "dd4036dc2403",
+ "edit_sig": "0e0b821d0ca3",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -291,22 +291,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 3,
-     "source": "The Direct",
-     "title": "HBO's Harry Potter Reveals Its 11 Major Hogwarts Wizards & Witches — Including Dumbledore, Hagrid, and Madame Pomfrey",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNQUJMU25nTWMxUnRCWkt4RThiTHpGSktzTUZnb3dHcG1YUjZpWXpzbDRKSXk3a25jUERqR285eF9NY3JySzUyMklJNzJDTzVjdGVaU25jb0dPRHpJejl3SzktVEllZkhXaG9pV25iRUVMeG1LejVhQk15Sm9BMDI0T0dTVnpnc1pNN2hicGFzX0o5V2paWVp0LUlGQ25LckNudU9QVmFBdw?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 4,
-     "source": "Jedi News",
-     "title": "Warwick Davis on How Terrified He Was on Returning for Harry Potter TV Series",
-     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOSHRsUFA1NHNVWVpFc1hSejJNcVpHaVpDY1E4M2hsd2JfbnFhSW5pcWF6YUljcnl0WXdIbnN1UjBKOXVtNkxnTU1mVXpuamRQWnFGeHgxR05MenhoeXJtWUxfUzhscHZMeFBPRXpBUXFMeDBRYlUwc1MwdGZrblc0Njkwdnp5MU5YYmdzdHFCYWtqeHNGcnpPM2Z4RTdoS0g0c18zZXlCUE1lNVZEQl9CRzZ1a3FoaTJNU0Z1RVFncEw2NnJl?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -327,6 +311,26 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gQrhn.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/en-us/news/other/harry-potter-tv-show-cast-vs-movies-every-hbo-character-compared/ss-AA2gQri2",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "HBO's Harry Potter Reveals Its 11 Major Hogwarts Wizards & Witches — Including Dumbledore, Hagrid, and Madame Pomfrey",
+     "highlight": "",
+     "image": "https://images.thedirect.com/media/article_full/1000012122.jpg",
+     "image_via": "og:image",
+     "url": "https://thedirect.com/article/hbo-harry-potter-dumbledore-hagrid-madame-pomfrey-hogwarts-wizards-witches",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "Warwick Davis on How Terrified He Was on Returning for Harry Potter TV Series",
+     "highlight": "",
+     "image": "https://www.jedinews.com/wp-content/uploads/2025/09/Warwick-Davis-Harry-Potter-Aug25.jpg",
+     "image_via": "og:image",
+     "url": "https://www.jedinews.com/film-music-tv/articles/warwick-davis-on-how-terrified-he-was-on-returning-for-harry-potter-tv-series/",
      "weight": "normal"
     }
    ],
@@ -892,8 +896,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "AI 挑选",
+     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
+     "image_via": "og:image",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
