@@ -1,32 +1,32 @@
 {
- "admin": "6d13ddc94417",
- "admin-ai": "767e213d67f1",
+ "admin": "d12a526c7f01",
+ "admin-ai": "d96885d64b20",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "00cbb8c5"
+   "b8e4649a"
   ],
   "tokens": [
    "AI 編集のトークン",
    "7544aa37"
   ]
  },
- "admin-boards": "b66bb3673a4c",
+ "admin-boards": "b44046655605",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "3647490d"
+   "ea66da44"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "4bb42a750481",
+ "admin-emblem": "66db9773f797",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ee869f66"
+   "471ed15a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d49dbc2fdc0b",
  "admin-members_marks": {},
- "admin-now": "933b399cac2f",
+ "admin-now": "753cb19e3492",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "bd89fdb2"
+   "507a6703"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "01f0fd78"
+   "5afee02d"
   ],
   "term-panel": [
    "ライブログ",
-   "5d99577a"
+   "70660651"
   ]
  },
- "admin-system": "8d562c77fcb3",
+ "admin-system": "89b4c71e63b1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b4f80a48"
+   "e8e8637b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "64a2950b"
+   "61210712"
   ]
  },
  "admin_marks": {},
- "heat": "76915f2ffb54",
+ "heat": "843ca29061e9",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "27523924"
+   "c0492e95"
   ],
   "ranking": [
    "ランキング",
-   "79196a78"
+   "93028e19"
   ]
  },
- "index": "6049cc57fc1e",
+ "index": "c55b14d7b5e4",
  "index_marks": {
   "front": [
    "トップ",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "ce23e192"
+   "219fbc83"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "2c6c4cc8"
+   "eb712d50"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "dde6d0ee"
   ]
  },
- "updated": "11.07 05:33",
+ "updated": "11.07 06:50",
  "wishlist": "994af7fc3827"
 }

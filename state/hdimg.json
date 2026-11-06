@@ -209,6 +209,12 @@
   "why": "防盗链",
   "ref": true
  },
+ "https://3c.yipee.cc/wp-content/uploads/2026/11/Spirit-circle.jpg": {
+  "w": 1440,
+  "h": 881,
+  "target": 720,
+  "v": 3
+ },
  "https://9to5google.com/wp-content/uploads/sites/4/2026/02/galaxy-s26-ultra-privacy-display-17.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
   "h": 628,
@@ -385,12 +391,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets.techrepublic.com/uploads/2026/11/ipad-mini-oled-vs-galaxy-tab-s11-featured.jpg?f=jpeg": {
-  "w": 1600,
-  "h": 893,
-  "target": 1280,
-  "v": 3
- },
  "https://attach.setn.com/newsimages/2017/02/08/803356-PH.jpg": {
   "w": 650,
   "h": 366,
@@ -419,6 +419,12 @@
  "https://beforesandafters.com/wp-content/uploads/2026/11/Screenshot-2026-11-03-at-11.34.49-am.jpg": {
   "w": 1280,
   "h": 485,
+  "target": 1280,
+  "v": 3
+ },
+ "https://bloximages.newyork1.vip.townnews.com/laloyolan.com/content/tncms/assets/v3/editorial/f/f2/ff2193f0-c64a-477e-8308-d12a4eb38451/6ae96045386c5.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize": {
+  "w": 1200,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -892,12 +898,6 @@
   "target": 720,
   "v": 3
  },
- "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-6ea7a38cf1ae91bed263b5e5637d5a04-20261027-082d08.jpg": {
-  "w": 1600,
-  "h": 680,
-  "target": 1280,
-  "v": 3
- },
  "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-4ef0c2fe9d94848d446023cf3bbeb6c1-20261101-87200d.jpg": {
   "w": 1166,
   "h": 1350,
@@ -1102,10 +1102,16 @@
   "target": 1280,
   "v": 3
  },
- "https://hermes.media.transform.aol.com/570e682530899462ace0f75fd1ed94372855ca79/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/04/bcbf1241-285c-35df-b5ef-89d0cfd376d3/a32b6aad-9167-48c7-993f-ab4097a2b07d.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
+ "https://hermes.media.static.aol.com/media/2026/11/02/d62fe923-b60d-35bd-825f-6f8d3011d950/e90ae037-3503-466a-b1fd-c708ddb41280.jpg": {
+  "w": 3000,
+  "h": 977,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hermes.media.static.aol.com/media/2026/11/03/e19e646a-14e8-38eb-b616-66b6d4cfad30/153bbfd4-d87c-4ed5-b83c-8eb7421d6a02.jpg": {
+  "w": 3000,
+  "h": 2028,
+  "target": 1280,
   "v": 3
  },
  "https://hips.hearstapps.com/hmg-prod/images/e28aa674-2c9b-4131-a4d4-45d43af65363.png?crop=0.494xw:0.987xh;0,0.0130xh&resize=1200:*": {
@@ -1200,12 +1206,6 @@
   "target": 720,
   "v": 3
  },
- "https://i0.wp.com/news.qoo-app.com/wp-content/uploads/2026/11/ogpcover.jpg": {
-  "w": 1116,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://i0.wp.com/uploads.saigacdn.com/2026/10/bleach-mh-00.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
@@ -1267,12 +1267,6 @@
    852
   ],
   "why": "看不清"
- },
- "https://image.newdaily.co.kr/site/data/img/2026/11/03/2026110300063_0.png": {
-  "w": 834,
-  "h": 716,
-  "target": 1280,
-  "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/3/9/39a35_1847_06d0a347c0bc0e78ba3647993ecd3a77.jpg": {
   "w": 1000,
@@ -1455,12 +1449,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gBmSm.img": {
   "w": 1500,
   "h": 1000,
-  "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gCRsS.img": {
-  "w": 1200,
-  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -1721,6 +1709,19 @@
   "target": 720,
   "v": 3
  },
+ "https://img.etnews.com/news/article/2026/11/02/news-p.v1.20261102.377b3b4aa88c4a5e8ad493fb0aa1fb50_P1.jpg": {
+  "w": 700,
+  "h": 467,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.458,
+  "local": "pics/a61d64b922727fa0.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
+ },
  "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp": {
   "w": 1200,
   "h": 675,
@@ -1933,6 +1934,12 @@
   ],
   "why": "看不清"
  },
+ "https://iphoneislam.com/wp-content/uploads/2026/11/s26-vs-iphone-18-pro-00.jpg": {
+  "w": 1448,
+  "h": 1086,
+  "target": 1280,
+  "v": 3
+ },
  "https://journalarta.com/wp-content/uploads/2026/10/samsung-may-use-snapdragon-8-elite-gen-6-extreme-in-europe-f-source-ai-ja-discover-1536x864.jpg": {
   "w": 1536,
   "h": 864,
@@ -1970,6 +1977,12 @@
   "target": 720,
   "v": 3
  },
+ "https://limo.ismcdn.jp/mwimgs/f/9/1200w/img_f9fc3d848c723be08212ba0eb6301ed5130258.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://massivelyop.com/wp-content/uploads/2023/08/monsters-and-memories-spooky-scary-skeletons.jpg": {
   "w": 880,
   "h": 290,
@@ -1993,6 +2006,19 @@
   "h": 675,
   "target": 720,
   "v": 3
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4083048_0-enlarge.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/oricon/oricon_2490068_0-enlarge.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.391
  },
  "https://media.loom-app.com/loom/2026/10/30/72661fc5-833a-4f4e-a1a2-5f553cc4cd6d/original.jpg?w=1200&h=630": {
   "w": 1200,
@@ -2046,12 +2072,6 @@
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
   "w": 840,
   "h": 440,
-  "target": 1280,
-  "v": 3
- },
- "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
-  "w": 1396,
-  "h": 878,
   "target": 1280,
   "v": 3
  },
@@ -2165,6 +2185,19 @@
   "out": [
    1280,
    1024
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/118119/652262_615.jpg": {
+  "w": 615,
+  "h": 341,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.449,
+  "local": "pics/4a9347bc54adc20f.webp",
+  "out": [
+   1280,
+   710
   ],
   "why": "看不清"
  },
@@ -2413,6 +2446,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00000026-mnet-000-2-view.jpg?exp=10800": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/0a2247e7be787386.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00010000-mensnonno-000-1-view.jpg?pri=l&w=640&h=496&exp=10800": {
   "w": 640,
   "h": 497,
@@ -2532,12 +2577,6 @@
  "https://olimg.3dmgame.com/uploads/images/raiders/20240801/1722474179_466511.jpg": {
   "w": 1728,
   "h": 1080,
-  "target": 1280,
-  "v": 3
- },
- "https://otonano-shumatsu.com/wp-content/uploads/2026/10/hiroshima_cat-cafe_7835b.jpg": {
-  "w": 1200,
-  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -2827,6 +2866,12 @@
   "target": 720,
   "v": 3
  },
+ "https://savepointgaming.co/wp-content/uploads/2026/11/honkai-nexus-anima-spring-2027-save.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://scontent-ord5-2.xx.fbcdn.net/v/t39.99422-6/876484255_1157327520291324_5431409659308718322_n.png?stp=dst-jpg_tt6&cstp=mx966x544&ctp=s966x544&_nc_cat=107&ccb=1-7&_nc_sid=cae128&_nc_ohc=EENmlNSPC7kQ7kNvwGeBGdF&_nc_oc=AdpduWggoDoHM7uge8SrTz4ikJwcIGxdc-DSaELnpFqLbA_qFQcTeW4hzU-Onr_Y1uw&_nc_zt=14&_nc_ht=scontent-ord5-2.xx&_nc_gid=wuclD_ELfu_Bx0h_Tc_RFQ&_nc_ss=7b20f&oh=00_AQTnGrLFnqClMDWUswsxjdPrfA2ds4IPaWVYNLB4PigYHQ&oe=6AED61C8": {
   "w": 966,
   "h": 544,
@@ -3035,6 +3080,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/06/avengers-endgame-chris-evans.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/10/jason_and_lucia_beach_landscape.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3095,12 +3146,6 @@
   "target": 720,
   "v": 3
  },
- "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/06/logan_j6rhsk.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://staticg.sportskeeda.com/editor/2026/10/f97dc-17934430484356-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3134,6 +3179,12 @@
  "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-03-212043.jpg": {
   "w": 1410,
   "h": 912,
+  "target": 1280,
+  "v": 3
+ },
+ "https://supertaste-images.tvbs.com.tw/api/v1/images/01a19a02fe9b70f48ce4ccd195d0f203.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -3382,9 +3433,9 @@
   "target": 1280,
   "v": 3
  },
- "https://www.bgr.com/img/gallery/improve-your-samsung-phones-display-with-these-simple-changes/l-intro-1793116280.jpg": {
+ "https://www.bgr.com/img/gallery/this-rugged-samsung-phone-is-nearly-indestructible/l-intro-1792667748.jpg": {
   "w": 1600,
-  "h": 899,
+  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -3470,19 +3521,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
- },
- "https://www.bing.com/th?id=ONUT.Bh5cBboVM1-KwLLfRvlDpw&pid=News&w=780": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.587,
-  "local": "pics/d4e723aa55355881.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200": {
   "w": 700,
@@ -4114,26 +4152,6 @@
   ],
   "why": "看不清"
  },
- "https://www.nikkansports.com/baseball/mlb/news/img/202611010000916-w500_1.jpg": {
-  "w": 500,
-  "h": 756,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.357
- },
- "https://www.nikkansports.com/baseball/mlb/news/img/202611010000971-w500_1.jpg": {
-  "w": 500,
-  "h": 756,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.441,
-  "local": "pics/a08b2e98a059a980.webp",
-  "out": [
-   847,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg": {
   "w": 1200,
   "h": 901,
@@ -4189,12 +4207,6 @@
   ],
   "why": "看不清"
  },
- "https://www.sponichi.co.jp/baseball/news/2026/11/02/jpeg/20261102s10001007109000p_view.webp": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
-  "v": 3
- },
  "https://www.sponichi.co.jp/sports/news/2026/11/02/jpeg/20261102s10028000053000p_view.webp": {
   "w": 1200,
   "h": 800,
@@ -4202,6 +4214,12 @@
   "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Anthony-Mackie-1.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/batman.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
   "target": 720,
