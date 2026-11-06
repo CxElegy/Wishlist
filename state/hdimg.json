@@ -105,14 +105,14 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/8b511c18gy1iirppilrqvj20u0140nho.jpg": {
-  "w": 1080,
-  "h": 1440,
+ "http://wx1.sinaimg.cn/middle/008xZoiFly1iirevre1ihj310y1mck33.jpg": {
+  "w": 1330,
+  "h": 2100,
   "target": 720,
   "v": 3,
-  "local": "pics/2ade2214af0cb54d.webp",
+  "local": "pics/71065aa200867c3e.webp",
   "out": [
-   960,
+   811,
    1280
   ],
   "why": "防盗链",
@@ -230,19 +230,6 @@
   "local": "pics/006f16759f7934fa.webp",
   "out": [
    960,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx4.sinaimg.cn/middle/90b10eb9ly1iirn36byb1j21ww2s3x6q.jpg": {
-  "w": 2000,
-  "h": 2906,
-  "target": 720,
-  "v": 3,
-  "local": "pics/ce3a0b3c09fd1da0.webp",
-  "out": [
-   881,
    1280
   ],
   "why": "防盗链",
@@ -947,6 +934,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://d28w2qw7dtr435.cloudfront.net/uploaded/cover_images/images/35631/normal.jpg?1793931706": {
+  "w": 400,
+  "h": 267,
+  "target": 720,
+  "v": 3,
+  "blur": 0.342
+ },
  "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg": {
   "w": 1459,
   "h": 800,
@@ -1383,6 +1377,19 @@
   "h": 1056,
   "target": 1280,
   "v": 3
+ },
+ "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261105_EN_Jay_FB.jpg": {
+  "w": 640,
+  "h": 335,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.486,
+  "local": "pics/86cbdc9da8bf981c.webp",
+  "out": [
+   1280,
+   670
+  ],
+  "why": "看不清"
  },
  "https://image.fnnews.com/resource/media/image/2026/11/05/202611050911240705_l.jpg": {
   "w": 800,
@@ -2025,6 +2032,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162887.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/tvasahinews/m_tvasahinews-000544430.jpg": {
   "w": 640,
   "h": 360,
@@ -2497,6 +2510,13 @@
    847
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/186735/1115044_615.jpg": {
+  "w": 615,
+  "h": 454,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.405
  },
  "https://news.walkerplus.com/article/198076/1194751_615.jpg": {
   "w": 615,
@@ -3003,12 +3023,6 @@
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
   "w": 760,
   "h": 1125,
-  "target": 720,
-  "v": 3
- },
- "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
-  "w": 360,
-  "h": 616,
   "target": 720,
   "v": 3
  },
@@ -3921,12 +3935,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.GCg_czustuqXd3qO9NpGtQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3978,18 +3986,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.42
- },
- "https://www.bing.com/th?id=ONUT.M2cDwMfV3__Jbqctczbhlg&pid=News&w=800": {
-  "w": 700,
-  "h": 434,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.MDpD849zYjmVjGzkNpJmbA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934": {
   "w": 544,
@@ -4183,12 +4179,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.eeqycczhCjRPYkRpRnYNFA&pid=News&w=600": {
-  "w": 600,
-  "h": 400,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ghPPO0q95yYTjDKycYEn6g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4312,9 +4302,21 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.ulRynbhVURp1V9mCExDQhA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.v6mxddWiXbpIQX6JZPzc6Q&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.xAro5CP5gCvYEj6ewuK9RQ&pid=News&w=800": {
+  "w": 700,
+  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -4525,12 +4527,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.happo-one.jp/wp2019/wp-content/uploads/2019/11/ogp-1024x929.png": {
-  "w": 1024,
-  "h": 929,
-  "target": 720,
-  "v": 3
- },
  "https://www.hollywoodreporter.com/wp-content/uploads/2024/11/FROM_310_00296_R-H-2024.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
@@ -4576,6 +4572,12 @@
  "https://www.indy100.com/media-library/image.jpg?id=60330234&width=1200&height=600&coordinates=0%2C100%2C0%2C100": {
   "w": 1200,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.iza.ne.jp/resizer/v2/7XMPAQEKS5BR7EW5WGDZN5UWW4.jpg?auth=67084e060b57a2cc1343e7c7e2248594ee572ab482621ceed943def176606b73&quality=50&smart=true&width=1200&height=675": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -4717,12 +4719,6 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Anthony-Mackie-1.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://www.switchbacktravel.com/sites/default/files/images/articles/Ski%20Brands%20Main.jpeg": {
-  "w": 1200,
-  "h": 800,
   "target": 720,
   "v": 3
  },

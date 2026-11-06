@@ -1,32 +1,32 @@
 {
- "admin": "10e61ed13c1f",
- "admin-ai": "3e4a1738ab2d",
+ "admin": "7d5ee0218d7a",
+ "admin-ai": "d6783514d5e9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9bdbb86e"
+   "3d8c85a0"
   ],
   "tokens": [
    "AI 編集のトークン",
    "2acd68d9"
   ]
  },
- "admin-boards": "c157b54d875b",
+ "admin-boards": "031c2bb12093",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "c68e6894"
+   "a6835387"
   ],
   "votes": [
    "投票",
    "5bc8c40b"
   ]
  },
- "admin-emblem": "d47de0a05621",
+ "admin-emblem": "f5f0267d512b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4bc2b1b6"
+   "7f4d57eb"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "d49dbc2fdc0b",
  "admin-members_marks": {},
- "admin-now": "c925030df927",
+ "admin-now": "58e5ef26ad3c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2f2fbd60"
+   "b9530e42"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "0484a3a5"
+   "63c4bb75"
   ],
   "term-panel": [
    "ライブログ",
-   "15b9ff5a"
+   "df12f55c"
   ]
  },
- "admin-system": "ed2028b97d39",
+ "admin-system": "383ffb04a747",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2a333f9d"
+   "1aa98dc3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "3aa6d57f"
+   "c95453c0"
   ]
  },
  "admin_marks": {},
- "heat": "63452bc32bcd",
+ "heat": "db44e07682da",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "42847259"
+   "19c672d5"
   ],
   "ranking": [
    "ランキング",
-   "8c64a61f"
+   "f1610e7b"
   ]
  },
- "index": "cbefd6406b46",
+ "index": "d11538b9c37c",
  "index_marks": {
   "front": [
    "トップ",
-   "0ef02556"
+   "8aadfd23"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "59817f18"
+   "4ab637f4"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "fb5c69ea"
+   "e0865600"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -196,6 +196,6 @@
    "d757b1b2"
   ]
  },
- "updated": "11.06 14:18",
+ "updated": "11.06 14:29",
  "wishlist": "ee24446b49da"
 }
