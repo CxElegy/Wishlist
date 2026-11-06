@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "1c45551ebf9e",
+ "edit_sig": "3a0c40bdf2cf",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -672,16 +672,6 @@
    "stories": [
     {
      "blurb": "",
-     "date": "2026-11-06",
-     "headline": "Vaundy×Nulbarich主唱JQ新歌〈僕らの事にさせて〉上線！詞曲編曲全包，錄音時要他「想像自己變成超人」",
-     "highlight": "",
-     "image": "https://imgs.niusnews.com/upload/posts/posts_image3_142488_1793936739.jpg",
-     "image_via": "og:image",
-     "url": "https://www.niusnews.com/=P0f181gg0",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
      "date": "2026-11-05",
      "headline": "夏の高校野球、応援ソングにVaundyの書き下ろし「かげろう」決定",
      "highlight": "「かげろう」決定",
@@ -689,6 +679,16 @@
      "image_via": "og:image",
      "url": "https://www.sanyonews.jp/article/1934068?kw=NIB",
      "weight": "normal"
+    },
+    {
+     "blurb": "Vaundy 與 Nulbarich 主唱 JQ 合作的新歌〈僕らの事にさせて〉上線，詞曲編曲由 Vaundy 一手包辦。",
+     "date": "2026-11-06",
+     "headline": "Vaundy×Nulbarich主唱JQ新歌〈僕らの事にさせて〉上線！詞曲編曲全包",
+     "highlight": "〈僕らの事にさせて〉上線",
+     "image": "https://imgs.niusnews.com/upload/posts/posts_image3_142488_1793936739.jpg",
+     "image_via": "og:image",
+     "url": "https://www.niusnews.com/=P0f181gg0",
+     "weight": "lead"
     }
    ],
    "subtitle": "演唱会",
@@ -852,8 +852,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "AI 挑选",
+     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
+     "image_via": "og:image",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
