@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "de1e93af94fe",
+ "edit_sig": "bc2f7cef2d17",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -137,9 +137,8 @@
      "date": "2026-11-06",
      "headline": "다크 판타지 MMO '판타지포유', 사전 다운로드 9일 개시",
      "highlight": "",
-     "image": null,
-     "source": "www.ipnn.co.kr",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.ipnn.co.kr&sz=128",
+     "image": "https://cdn.ipnn.co.kr/news/photo/202611/418181_80146_252.jpg",
+     "image_via": "og:image",
      "url": "https://www.ipnn.co.kr/news/articleView.html?idxno=418181",
      "weight": "normal"
     }
@@ -687,31 +686,24 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "渋谷ロフトで「チェンソーマン PLAZA レゼ篇」が11月13日から開催。",
      "date": "2026-11-06",
-     "n": 4,
-     "source": "コラボカフェ",
-     "title": "《鏈鋸人 PLAZA 蕾澤篇》將於澀谷Loft自11月13日起舉辦!",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQRWh1TGFfR0lJdm1kSlJMOHV6TkM1UzhkelVMX1l6ek1DSTAtTFRpU2l6eGtyMkNsVVBIOEFsUFA3UENjMWpoZExHejNMbEhTYlQwMmtFSGoyQ1B0Nk45THdlUGJiTHFtNFlNUEdiUUM1V3BpbFRMYWV3SGp5NHYwUDJGR0ZRaGZkRVd2b016MXpYNVNqVkJ2SW90WnNkdw?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 5,
-     "source": "コラボカフェ",
-     "title": "\"Chainsaw Man PLAZA: Reze Arc\" Opens at Shibuya Loft on November 13!",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxONXdWUVB0ZHRuMW1ROFpkblVvXzZCMXRDdDBQQks5T0l3THBWUVMtM2ZaTlFqc2ZCdUIyOU4wZU5NV1VkTVpMTE50WGdkRldIVlNYRi0wRGRHeTFEWEN5amJkdFJ2eHFBVWYzYVlkam10bkt2cjJqXy1KbWFlXzlPSXdwZVM2eHBYc2pmNlU4dFl5TEFkLXQ0?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 6,
-     "source": "コラボカフェ",
-     "title": "チェンソーマン PLAZA レゼ篇 in 渋谷ロフト 11月13日より開催!",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQLV9IanRTbVZFM1NuUHNObVhGLWdRc0dfNmhqbDN3ZThRWkJseUVlOG1jbmZneFg0Nng0NVcyQVBKZ2xVOFJkUU9jY2stekZCbXhnZDVXOW1ydXlDUTdCUnBETWJNUXVtUDUxc0xJM2o4NTdvY1ViLWhNU1U3VkptSmpFOUhmWTFHdml4V2NWN09TMWs?oc=5"
+     "event": {
+      "date": "2026-11-13",
+      "label": "開催",
+      "place": "渋谷ロフト"
+     },
+     "headline": "チェンソーマン PLAZA レゼ篇 in 渋谷ロフト 11月13日より開催!",
+     "highlight": "11月13日より開催",
+     "image": "https://collabo-cafe.com/wp-content/uploads/chainsawman-plaza-reze-offshot-shibuya-loft-eyecatch.jpg",
+     "image_via": "og:image",
+     "url": "https://collabo-cafe.com/events/collabo/chainsawman-plaza-reze-offshot-shibuya-loft-2026/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -979,8 +971,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "og:image",
+     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
+     "image_via": "AI 挑选",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },

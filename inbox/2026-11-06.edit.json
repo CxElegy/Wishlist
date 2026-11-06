@@ -96,7 +96,7 @@
   "MMORPG 新作": 21,
   "三星手机": 28,
   "The Mandalorian": 4,
-  "チェーンソーマン": 3,
+  "チェーンソーマン": 6,
   "哈利波特剧集": 4,
   "滑雪": 6,
   "FROM": 4,
@@ -435,7 +435,24 @@
    ]
   }
  ],
- "チェーンソーマン": [],
+ "チェーンソーマン": [
+  {
+   "headline": "チェンソーマン PLAZA レゼ篇 in 渋谷ロフト 11月13日より開催!",
+   "highlight": "11月13日より開催",
+   "blurb": "渋谷ロフトで「チェンソーマン PLAZA レゼ篇」が11月13日から開催。",
+   "weight": "lead",
+   "refs": [
+    6,
+    4,
+    5
+   ],
+   "event": {
+    "date": "2026-11-13",
+    "label": "開催",
+    "place": "渋谷ロフト"
+   }
+  }
+ ],
  "哈利波特剧集": [
   {
    "headline": "Harry Potter TV Series on HBO: Release Date, Title, Trailer, and Everything Else to Know",
