@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "44507c93d763",
+ "edit_sig": "b35e6dbfb47f",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -736,36 +736,6 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 5,
-     "source": "搜狐网",
-     "title": "从初舞台到一位安可：A2O LITE的NEON冠军秀制服时刻",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNdmNpYnZBY3lHbUpUQjVMcHBEbmRGY0hKS29zNG9TdDhqZXJJd3ZMYkU5N1ctSV9pOXBVNExGaWtMdkdsVFhJdHJHdDhYUEpYNzB3VHR0b0diM2cwOGwwekVfOVNSN05hOHdybjdRQzI2eXE3VF9uSVAwWUFpbmFXVzFQTG11Ry11a0xjag?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 6,
-     "source": "Kagit",
-     "title": "A2O LITE韓国人メンバーが「引き立て役」？ 外見・実力で外国人メンバーに劣るとの指摘、ネットで賛否",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5icGF5bmdGOXRRNFpyRUo2dUpGREVET2VXT3hBSmVZNDRhaXJFN01VVnZZUDFIQmZhZWV1Z1RnSWpTSVV2M3RENUNPeDlZVFl3N2F0MW9NVXh5aFJjaDluZg?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 7,
-     "source": "新浪网",
-     "title": "A2O LITE 成员手写中文名及个人信息卡片|A2O LITE|山本姫绢|Rada|盛艾敬|梁淅沥|郑始英|李垠知|马西桐|沈我润|OA",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBUOUQyYUhObGpsWmtWbEFhaW5UYlFRUndEYlYxLUVIcEJrLWZfNUIzaktWMUZmT3RvLWJiRVJIcklLV0R6X0tnYjNfTExRWmNOMnBvN3BkTEFxdlZZZFdKNWRWRQ?oc=5"
-    },
-    {
-     "date": "2026-11-02",
-     "n": 8,
-     "source": "新浪网",
-     "title": "连路人爸妈都听过的歌，今年 KPOP 圈这几首太出圈了|A2O LITE|CORTIS|instiz|REDRED|NEON_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBQdW8tMmx6Z0h5UGZ5ZGRia0d1amtqUFI2bEdLV1ZfSVl2TnY4aEV3QV9PTnU4NzdEbkdpUVBmT1NTenNObkh2VU1MdG1GTlNieWlQQnZXZ3dlN2k4b1NxN3VUUQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -773,8 +743,8 @@
      "date": "2026-11-05",
      "headline": "리센느 넘어선 A2O LITE, 아차랭킹 1위…무서운 신인",
      "highlight": "아차랭킹 1위",
-     "image": "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
-     "image_via": "AI 挑选",
+     "image": "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg",
+     "image_via": "og:image",
      "url": "https://www.mydaily.co.kr/page/view/2026110511321647684",
      "weight": "lead"
     },
@@ -783,9 +753,19 @@
      "date": "2026-11-02",
      "headline": "A2O LITE, 'NEON' 음악방송 8관왕에 전한 인사…\"감사합니다\"",
      "highlight": "음악방송 8관왕",
-     "image": "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210_crop.png",
-     "image_via": "og:image",
+     "image": "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.topstarnews.net/news/articleView.html?idxno=16266539",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "A2O LITE韓国人メンバーが「引き立て役」？ 外見・実力で外国人メンバーに劣るとの指摘、ネットで賛否",
+     "highlight": "",
+     "image": "https://kagit-media.atreez.cc/uploads/2026-11-03/ljq7ctjeii5y3g618urvqfj4.jpg",
+     "image_via": "og:image",
+     "url": "https://kagit.kr/ja/posts/a2o-lite-members-compared",
      "weight": "normal"
     }
    ],
