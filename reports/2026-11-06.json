@@ -1,6 +1,6 @@
 {
  "date": "2026-11-06",
- "edit_sig": "06f0d04c1d2c",
+ "edit_sig": "33a8005ebef5",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -652,17 +652,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 3,
-     "source": "게임인",
-     "title": "젠레스 존 제로 3.3 티어표…피닉스·벨리나 T0, 조합과 뽑기 판단",
-     "url": "https://www.gameinn.co.kr/news/articleView.html?idxno=14620"
+     "headline": "젠레스 존 제로 3.3 티어표…피닉스·벨리나 T0, 조합과 뽑기 판단",
+     "highlight": "피닉스·벨리나 T0",
+     "image": "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://www.gameinn.co.kr/news/articleView.html?idxno=14620",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
