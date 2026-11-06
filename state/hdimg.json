@@ -352,12 +352,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets-prd.ignimgs.com/2026/11/05/dbarcade-1793914123047.jpg?width=1280&format=jpg&auto=webp&quality=80": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-06"
- },
  "https://assets-prd.ignimgs.com/2026/11/05/gta-6-kodak-black-1793895386725.jpg?width=1280&format=jpg&auto=webp&quality=80": {
   "target": 720,
   "v": 3,
@@ -950,6 +944,12 @@
  "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg": {
   "w": 1459,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg": {
+  "w": 3775,
+  "h": 2123,
   "target": 720,
   "v": 3
  },
@@ -1888,6 +1888,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
+  "w": 640,
+  "h": 434,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.448,
+  "local": "pics/fb2c399e45ea329f.webp",
+  "out": [
+   1280,
+   868
+  ],
+  "why": "看不清"
+ },
  "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
   "w": 1630,
   "h": 300,
@@ -2209,12 +2222,6 @@
   "h": 440,
   "target": 1280,
   "v": 3
- },
- "https://mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-06"
  },
  "https://n.sinaimg.cn/spider20261101/674/w1396h878/20261101/062c-beefa8a016716356ca7af9ae4005237a.jpg": {
   "w": 1396,
@@ -2932,15 +2939,15 @@
   "target": 1280,
   "v": 3
  },
- "https://q0.itc.cn/images01/20261105/8c1cf2c7c03949bd81e84f57fb230579.png": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-06"
- },
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
   "w": 760,
   "h": 1125,
+  "target": 720,
+  "v": 3
+ },
+ "https://q1.itc.cn/images01/20261105/1cd101c86d7c4fc59ebb61cc7a827f45.png": {
+  "w": 1372,
+  "h": 774,
   "target": 720,
   "v": 3
  },
@@ -4484,6 +4491,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.meatpoultry.com/ext/resources/2026/11/05/KFC-Doom-Meal.jpg?height=635&t=1793901282&width=1200": {
+  "w": 953,
+  "h": 635,
+  "target": 720,
+  "v": 3
+ },
  "https://www.mediaplaynews.com/wp-content/uploads/2025/05/Lucia_Caminos_01.jpg": {
   "w": 900,
   "h": 600,
@@ -4525,6 +4538,12 @@
  "https://www.rappler.com/tachyon/2026/09/alex-eala-us-open-august-2026.jpg": {
   "w": 1200,
   "h": 737,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sammyfans.com/wp-content/uploads/2025/07/galaxy-s25-ultra-qi2-ready-charging-img2-1000x576.jpg": {
+  "w": 1000,
+  "h": 576,
   "target": 720,
   "v": 3
  },
