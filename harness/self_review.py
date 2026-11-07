@@ -93,7 +93,7 @@ MEASURE_JS = r"""
   // 日付と 👍👎 の重なり
   document.querySelectorAll('.wc em, .when, .kick').forEach(m => {
     const v = m.querySelector(':scope > .vt'), n = [...m.childNodes].find(x => x.nodeType === 3 && x.textContent.trim());
-    if (!v || !n || !vis(m) || !vis(v)) return;
+    if (!v || !n || !vis(m) || !vis(v) || getComputedStyle(v).position !== 'absolute') return;   // 流れの中に置いた 👍 は重ならない
     const g = document.createRange(); g.selectNodeContents(n);
     const a = g.getBoundingClientRect(), b = v.getBoundingClientRect(), btn = v.querySelector('button') || v, c = btn.getBoundingClientRect();
     if (Math.min(a.right, c.right) - Math.max(a.left, c.left) > 1 && Math.min(a.bottom, c.bottom) - Math.max(a.top, c.top) > 1) tag(m.parentElement, 'over', '日付と 👍：' + n.textContent.trim());

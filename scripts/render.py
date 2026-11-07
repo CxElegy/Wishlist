@@ -516,12 +516,12 @@ button{font-family:inherit}
 /* PC の「似たジャンルの新着」は横長の小さいカード（写真を左、文字を右）：上の段と形を変え、1 段を低く */
 @media (min-width:761px){
  .pkgrid.row .pk>a{flex-direction:row;align-items:flex-start}
- .pkgrid.row .pk .pic{flex:none;width:120px!important;height:90px!important;aspect-ratio:auto!important;min-height:0!important;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+ .pkgrid.row .pk .pic{flex:none;width:100px!important;height:75px!important;aspect-ratio:auto!important;min-height:0!important;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
  .pkgrid.row .pk:nth-child(even) .pic{transform:rotate(2deg)}
  .pkgrid.row .pk .pkt{flex:1;margin:10px 0 0 -8px;padding:10px 12px 9px}
  .pkgrid.row .pk .tags,.pkgrid.row .pk .taste,.pkgrid.row .pk .why small{display:none}
  .pkgrid.row .pk .why{font-size:13px}.pkgrid.row .pk b{font-size:13px}
- .pkgrid.row .pk .vote{margin:4px 0 0 128px}
+ .pkgrid.row .pk .vote{margin:4px 0 0 108px}
  .pkgrid:not(.row) .pk:not(.big) .taste{display:none}  /* 「あなたの投票」は大きい 1 枚だけ */
 html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あなたの投票」と見せない（F8 2026-11-05） */
 }
@@ -3500,9 +3500,10 @@ FIT_JS = """
   const trimFit = (img, p, f) => {
     const nw = img.naturalWidth, nh = img.naturalHeight, cw = nw * (1 - f.l - f.r), ch = nh * (1 - f.t - f.b), W = p.clientWidth, H = p.clientHeight;
     if (!W || !H) return;
-    const s = Math.max(W / cw, H / ch), iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
+    const cover = Math.max(W / cw, H / ch), inner = Math.min(W / cw, H / ch), s = inner / cover >= 0.88 ? cover : inner, iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
     Object.assign(img.style, {width: iw / W * 100 + '%', height: ih / H * 100 + '%', left: ((W - cw * s) / 2 - nw * f.l * s) / W * 100 + '%', top: ((H - ch * s) / 2 - nh * f.t * s) / H * 100 + '%'});
     p.classList.remove('whole'); p.classList.add('trim');
+    if (s < cover && img._edge) p.style.background = img._edge;
   };
   const fit = img => {
     fit0(img);
@@ -3526,9 +3527,9 @@ FIT_JS = """
     if (pk) {   // 気になるかも？：写真は切らない（文字入りのバナーが多い）。下に重なる札の分（--pko）は写真の外
       const pko = parseFloat(getComputedStyle(p).getPropertyValue('--pko')) || 0;
       if (innerWidth > 760 && pk.closest('.pkgrid.row')) {   // 似たジャンルの新着：枠はどれも同じ大きさ（2026-11-07 店長「一个大一个小很奇怪」）。切れない絵は全体を見せて周りを絵の端の色に
-        const r0 = nat / (boxW(img, 120) / boxH(img, 90));
+        const r0 = nat / (boxW(img, 100) / boxH(img, 75));
         p.style.height = p.style.aspectRatio = p.style.minHeight = p.style.flex = '';
-        p.classList.toggle('fill', Math.abs(Math.log(r0)) < 0.08 || cropAt(img, r0) || (!img.dataset.m && Math.min(r0, 1 / r0) >= 0.7));
+        p.classList.toggle('fill', Math.abs(Math.log(r0)) < 0.08 || cropAt(img, r0) || (!img.dataset.m && Math.min(r0, 1 / r0) >= 0.85));
         return;
       }
       p.style.height = p.style.aspectRatio = p.style.minHeight = p.style.flex = ''; pk.classList.remove('shaped');
@@ -3542,7 +3543,7 @@ FIT_JS = """
       }
       const r = nat / (boxW(img, p.clientWidth) / Math.max(1, boxH(img, p.clientHeight - pko)));
       // 比率が違っても、顔・題字（data-m）が 6 割以上残る位置で切れるなら切る（案 2）。残らない絵は今までどおり全体を見せる
-      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.7));
+      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.85));
       // 切れない横長の絵：枠を絵の形にして、余りは手書きの札が受ける（帯も空きも出さない。2026-11-07）
       if (!p.classList.contains('fill') && r > 1 && !pk.matches('.big')) { Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', flex: 'none', height: (p.clientWidth / nat + pko) + 'px'}); p.classList.add('fill'); pk.classList.add('shaped'); return; }
       if (!p.classList.contains('fill') && r < 0.75) side(pk, p, nat, p.clientHeight);   // 写真が枠より細い：空いた横に札を置く
@@ -3550,13 +3551,13 @@ FIT_JS = """
     }
     // 枠の大きさは変えない（写真の壁は 16:10 のまま段の高さがそろう）。写真は切らない：ほぼ同じ比率（切れるのは 8% まで）のときだけ埋め、
     // そうでなければぼかしの上に全体を見せる。配図は文字・ロゴ入りのバナーが多く、端を切ると欠ける（2026-10-17 ユーザー指摘）
-    // 左写真のカード：枠は字の列の高さいっぱい。主役の位置 data-m があれば主役が残る位置で切る。ないときは 30% まで切って埋める。
+    // 左写真のカード：枠は字の列の高さいっぱい。主役の位置 data-m があれば主役が残る位置で切る。ないときは 15% まで切って埋める（文字を欠かさない）。
     // それ以上切れる絵（ロゴ・文字入りが多い）だけ全体を見せ、周りを絵の端の色で埋める（.whole：文字を欠かさず、白い帯にも見えない）
     const mini = p.closest('.card.mini:not(.nophoto)') || (innerWidth <= 760 && sm && !sm.classList.contains('nophoto') ? sm : null);
     if (mini) {
       p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar'); mini.style.gridTemplateColumns = '';
       const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
-      const ok = q >= 0.7 ? (cropAt(img, rr) || !img.dataset.m || q >= 0.88) : cropAt(img, rr);
+      const ok = cropAt(img, rr) || (!img.dataset.m && q >= 0.85) || q >= 0.92;
       p.classList.toggle('fill', ok); p.classList.toggle('whole', !ok);
       if (!ok) {
         img.style.objectPosition = ''; delete img.dataset.keep;
@@ -3571,7 +3572,7 @@ FIT_JS = """
     if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
     const r = nat / (boxW(img, p.clientWidth) / boxH(img, p.clientHeight));
     // 切る場所はどこも同じ規則：主役（顔・題字）が 6 割以上残る位置で切れるなら切る。0.75 より細い絵は、切らずに枠を絵の幅に絞る narrow・side が受ける
-    p.classList.toggle('fill', (r >= 0.75 && (cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.7))) || Math.abs(Math.log(r)) < 0.08);
+    p.classList.toggle('fill', (r >= 0.75 && (cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.85))) || Math.abs(Math.log(r)) < 0.08);
     // 切れない横長の絵：枠を絵の形に。余りはカードの紙が受ける（文字を欠かさない。2026-11-07 店長「这种剪切方式取消」）
     if (sm && innerWidth > 760 && r > 1 && !p.classList.contains('fill')) { p.style.aspectRatio = 'auto'; p.style.height = p.clientWidth / nat + 'px'; p.classList.add('fill'); }
     if (r < 0.75) { img.style.objectPosition = ''; delete img.dataset.keep; }
