@@ -3511,6 +3511,17 @@ FIT_JS = """
     if (!p) return;
     if (f) trimFit(img, p, f);
     else if (img._edge && !p.classList.contains('fill')) p.style.background = img._edge;   // 全体を見せる絵：周りを絵の端の色に（帯に見えない）
+    if (p.closest('.pk')) swapBig(p.closest('.pk').parentElement);
+  };
+  // 気になるかも：大きい枠に横長の絵が入って上下が余るとき、形の合う絵（縦横比 1.5 以下）と入れ替える（2026-11-07 店長「黑的留白也算留白」）
+  const swapBig = g => {
+    if (!g || innerWidth <= 760) return;
+    const big = g.querySelector(':scope > .pk.big'), bp = big && big.querySelector('.pic'), bi = bp && bp.querySelector('img:not(.bg):not(.ico)');
+    if (!bi || !bi.naturalWidth || bp.classList.contains('fill') || bi.naturalWidth / bi.naturalHeight <= 1.5) return;
+    const to = [...g.querySelectorAll(':scope > .pk:not(.big)')].find(k => { const i = k.querySelector('.pic img:not(.bg):not(.ico)'); return i && i.naturalWidth && i.naturalWidth / i.naturalHeight <= 1.5; });
+    if (!to) return;
+    big.classList.remove('big'); to.classList.add('big'); g.prepend(to);
+    setTimeout(() => dispatchEvent(new Event('resize')), 0);   // 両方の枠を測り直す
   };
   const fit0 = img => {
     const p = img.closest('.pic');
