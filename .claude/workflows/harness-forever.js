@@ -12,12 +12,11 @@ export const meta = {
 
 const MAX = (args && args.max) || 6
 const LANE = (args && args.lane) || ''   // 'request' = 依頼の係：【依頼】の段だけ（HARNESS.md「依頼の係」）
-const REPO = (args && args.repo) || 'D:/Claude/Wishlist'   // 店長の PC（2026-11-07 にクラウドから移した）
-const SP = (args && args.scratch) || 'D:/Claude/wl-scratch'
-const COMMON = `リポジトリ ${REPO}（CxElegy/Wishlist）。動く場所は店長の Windows PC（harness/HANDOFF.md）で、シェルは Bash（Git Bash）を使う。python3 は .venv の Python を指す。最初に HARNESS.md・BACKLOG.md・CLAUDE.md・WORKING.md を main の最新で読み（触る分野の docs/rules/*.md も。CLAUDE.md の索引の表）、その決まりで動く。
-作業は自分専用の worktree：\`git -C ${REPO} fetch -q origin main && git -C ${REPO} worktree add -f ${SP}/wt/{ID} -B harness/{ID} origin/main\`。メインの作業ツリーには書かない。一時ファイルは ${SP}/tmp/。
-GitHub は gh コマンド。DB は PC の自前版 Supabase（docs/rules/local-pc.md）で、読むときは docker exec supabase-db psql。足すだけは可、DROP・DELETE・表の形を変える文はしない。Supabase の連携ツールは旧プロジェクトにしかつながらないので使わない。
-PR は push → gh pr create（本文の最後に「🤖 Generated with [Claude Code](https://claude.com/claude-code)」）。CI は gh pr checks で見て、走っている間は手元のテストや画面の点検など別の作業をする（ただ待たない）。緑なら squash で合併、赤なら直して push。
+const SP = (args && args.scratch) || '/tmp/harness'
+const COMMON = `リポジトリ /home/user/Wishlist（CxElegy/Wishlist）。最初に HARNESS.md・BACKLOG.md・CLAUDE.md・WORKING.md を main の最新で読み（触る分野の docs/rules/*.md も。CLAUDE.md の索引の表）、その決まりで動く。
+作業は自分専用の worktree：\`git -C /home/user/Wishlist fetch -q origin main && git -C /home/user/Wishlist worktree add -f ${SP}/wt/{ID} -B harness/{ID} origin/main\`。メインの作業ツリーには書かない。一時ファイルは ${SP}/tmp/。
+GitHub は mcp__github__ のツール（ToolSearch で読み込む）、Supabase は mcp__Supabase__（プロジェクト bzokpnbcjscbcehdxtjq。読む・足すだけ。DROP・DELETE・表の形を変える文はしない）。
+PR は push → mcp__github__create_pull_request（本文の最後に「🤖 Generated with [Claude Code](https://claude.com/claude-code)」）。CI は get_check_runs で見て、走っている間は手元のテストや画面の点検など別の作業をする（ただ待たない）。緑なら squash で合併、赤なら直して push。
 scripts/*.py か workflow を変えたら scripts/processes.py も（check_arch）。\`python -m unittest discover -s tests\` を全部通す。コミットの最後に
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 合併したら必ず python harness/ux_check.py を走らせ（本番をログインなし・test-a・test-b・test-c × 1400/390 で自動点検）、✗ があれば次の段より先に直す。そのうえで本番で確かめ（Actions の結果・データベースの行・https://cxelegy.github.io/Wishlist/home/ を 1400/390px）、BACKLOG.md のその段を [x]（PR の網址・日付）にし、気づいた次の段を足して合併する（進み具合は progress.yml が Discord に送る）。
