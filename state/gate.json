@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-06T22:17:38+00:00",
+ "checked": "2026-11-07T00:11:30+00:00",
  "fired": {
-  "at": "2026-11-06T22:17:53+00:00",
+  "at": "2026-11-07T00:11:52+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-06T21:50:49+00:00",
+    "at": "2026-11-07T00:11:52+00:00",
     "attempts": 1,
     "day": "2026-11-07",
-    "prog": 89,
-    "resp": "cse_01W4x6f7ZS5WbaoqPyXPzKJE",
-    "sig": "cbe4d70f9491"
+    "prog": 115,
+    "resp": "cse_01W4x6f76fkjDwZbYNSiyr9U",
+    "sig": "eff585b88fd4"
    },
    "items": [
     "The Mandalorian",
@@ -33,11 +33,16 @@
    "need": true,
    "prog": 115,
    "prog_day": "2026-11-07",
-   "ripe": [],
-   "sig": "e96aa62caf75",
+   "ripe": [
+    "The Mandalorian",
+    "gelato pique",
+    "三星手机",
+    "猫用品"
+   ],
+   "sig": "eff585b88fd4",
    "token_cap": 1000000,
    "tokens_today": 124499,
-   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
