@@ -23,6 +23,7 @@
 | `docs/rules/login.md` | ログイン（全文）・お客さまの記事集め（`userfeed.py`） | ログイン・`AUTH_JS`・`db/auth*.sql`・`userfeed.py`・`user_boards` |
 | `docs/rules/lang.md` | 读者的语言：主言語・副言語 | `lang.py`・言語の去重 |
 | `docs/rules/free-tier.md` | 無料の枠で回し続ける（測った事実・点検は本番の写真を落とさない・配信の見張り・写真の置き場の案） | Supabase の Storage・点検（Playwright）・新しく配るものを足す |
+| `docs/rules/local-pc.md` | データベース（店長の PC の自前版 Supabase）・止まるとき・決まり・作業を PC に移す・クラウドの予約の写し | DB の接続先・SQL を流す・見張り・予約を作り直す・作業を PC に移す |
 
 ## スキル（2026-10-22，用户定的）
 
@@ -38,7 +39,7 @@
 
 - 连接器能更方便完成时（改数据库 = Supabase、看 PR = GitHub），**先告诉我有这个连接器**，不让我去 SQL Editor / 网页手动操作。
 - 已连上：说「可以用 XX 连接器帮你做」，然后去做。没连上：说哪个连接器、能帮什么，给 https://claude.ai/customize/connectors （连好后开新会话才加载）。
-- 已连上：Supabase（项目 `bzokpnbcjscbcehdxtjq`，表 `feedback` / `news` / `sizes` / `item_requests`；函数 `my_votes()` = 网页读回我的投票）、GitHub。
+- 已连上：GitHub。数据库（2026-11-07 起）＝**店長の PC の自前版 Supabase**（`https://elegy.tailc8cfff.ts.net`，表・函数同前：`feedback` / `news` / `sizes` / `item_requests`・`my_votes()` 等）。Supabase 连接器只连着旧项目 `bzokpnbcjscbcehdxtjq`（402 停用・只读备份），**改新库不能用连接器**：网页的读写走 `items.yaml` 的 `supabase_url`，SQL 由 PC 上的会话执行。详见 `docs/rules/local-pc.md`。
 
 ## 篇幅 S / M / L
 
