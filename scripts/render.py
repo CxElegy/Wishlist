@@ -423,6 +423,7 @@ button{font-family:inherit}
 .card.mini:not(.nophoto){row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.mini:not(.nophoto)>.pic{grid-column:1;grid-row:1/span 9}.card.mini:not(.nophoto)>*:not(.pic):not(.lk){grid-column:2}
 .pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
 .pk.shaped .pkt{flex:1 1 auto}
+.wc.sb .tg,.card.sb .tg{max-width:100%;white-space:normal}
 .stk.stk.stk.stk.stk{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
 .stk.stk.stk.stk.stk>*{grid-column:1!important}
 .stk.stk.stk.stk.stk>.pic{grid-row:auto!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:var(--ar)!important;margin-bottom:8px}
@@ -3545,7 +3546,7 @@ FIT_JS = """
     // それ以上切れる絵（ロゴ・文字入りが多い）だけ全体を見せ、周りを絵の端の色で埋める（.whole：文字を欠かさず、白い帯にも見えない）
     const mini = p.closest('.card.mini:not(.nophoto)') || (innerWidth <= 760 && sm && !sm.classList.contains('nophoto') ? sm : null);
     if (mini) {
-      p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar');
+      p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar'); mini.style.gridTemplateColumns = '';
       const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
       const ok = q >= 0.7 ? (cropAt(img, rr) || !img.dataset.m || q >= 0.88) : cropAt(img, rr);
       p.classList.toggle('fill', ok); p.classList.toggle('whole', !ok);
@@ -3553,6 +3554,7 @@ FIT_JS = """
         img.style.objectPosition = ''; delete img.dataset.keep;
         // 切れない横長の絵：写真を上・字を下に積む（切らず・帯なし・写真も大きい）。細い絵は全体を見せて周りを絵の端の色に
         if (nat > 1 && !mini.matches('.tape')) { p.style.setProperty('--ar', nat.toFixed(3)); mini.classList.add('stk'); p.classList.remove('whole'); p.classList.add('fill'); }
+        else if (nat <= 1 && !mini.matches('.tape')) { mini.style.gridTemplateColumns = Math.max(64, Math.round(h * nat)) + 'px minmax(0,1fr)'; p.classList.remove('whole'); p.classList.add('fill'); }   // 縦長：列の幅を絵の幅に（左右の帯なし・字の列が広がる）
         else if (img._edge) p.style.background = img._edge;
       }
       return;
