@@ -557,16 +557,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg": {
-  "w": 300,
-  "h": 200,
+ "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
+  "w": 600,
+  "h": 400,
   "target": 1280,
   "v": 3,
-  "blur": 0.653,
-  "local": "pics/1b57abae8ed7a45b.webp",
+  "blur": 0.475,
+  "local": "pics/ffd4ccaef88f5a5d.webp",
   "out": [
-   900,
-   600
+   1280,
+   853
   ],
   "why": "看不清"
  },
@@ -2820,12 +2820,6 @@
   "target": 720,
   "v": 3
  },
- "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
-  "w": 360,
-  "h": 616,
-  "target": 720,
-  "v": 3
- },
  "https://research.image.itmedia.co.jp/wp-content/uploads/2026/11/1793603711_ec60eab7bddbf45a46b1e3d98529e5c5.jpg": {
   "w": 1200,
   "h": 630,
@@ -2904,12 +2898,6 @@
   "h": 700,
   "target": 1280,
   "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/d5cf628c681d5f588dd3da15ad8fd7d25cb987d4309eb79da84bc01b2329eb1a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd6a4598914c362c3f0bfdc8a51ad28df.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-07"
  },
  "https://s.yimg.com/lo/mysterio/api/e3b438fc382eccbca29fe32ea232813ef117ddf19d7986321de545358681a847/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthe_enquirer_natl_articles_358%2Fcb842521f65d616d3b5e0d446c9d1277.jpg": {
   "w": 1200,
@@ -4282,6 +4270,12 @@
   "w": 900,
   "h": 600,
   "target": 720,
+  "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 1280,
   "v": 3
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {

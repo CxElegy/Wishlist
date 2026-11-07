@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "06ba0f6deed7",
+ "edit_sig": "5b12bba6f15b",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -205,8 +205,8 @@
      "date": "2026-11-06",
      "headline": "Nielsen: Netflix Ups Catalog Horror Series 'From' to No. 1 Across U.S. TV Households Through Oct. 25",
      "highlight": "No. 1",
-     "image": "https://s.yimg.com/lo/mysterio/api/d5cf628c681d5f588dd3da15ad8fd7d25cb987d4309eb79da84bc01b2329eb1a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd6a4598914c362c3f0bfdc8a51ad28df.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.mediaplaynews.com/nielsen-netflix-ups-catalog-horror-series-from-to-no-1-across-u-s-tv-households-through-oct-25/",
      "weight": "lead"
     }
@@ -616,8 +616,8 @@
      "date": "2026-11-04",
      "headline": "이수만이 다시 일냈다…신인 A2O LITE, 데뷔하자마자 ‘1위 행진’",
      "highlight": "1위 행진",
-     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
-     "image_via": "og:image",
+     "image": "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png",
+     "image_via": "JSON-LD",
      "url": "https://www.kpab.net/news/articleView.html?idxno=1865",
      "weight": "lead"
     },
@@ -626,8 +626,9 @@
      "date": "2026-11-06",
      "headline": "7天登顶The Show：A2O LITE的霓虹奇迹舞台",
      "highlight": "7天登顶The Show",
-     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "搜狐网",
+     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-114.png",
      "url": "https://m.sohu.com/a/1090755790_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     },
@@ -658,15 +659,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 4,
-     "source": "ｄメニューニュース",
-     "title": "愛猫が「空気を読んでいるな」と感じたことはある？ 体験談＆獣医師解説（ねこのきもち WEB MAGAZINE）",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPZ1FMQlE3OFltQjhPTE4zc1FEQjB3T3JvSGpKaVV6LThTdWE5YzJrWVBtUTZxblpqY2IteGhNdmwxUWlIS2RsNzROTjQ5aURwMW85RkFhUl8ybnUybHB0NzFHNjFMQllBSDRVSlJ4a1ltYkdxaGd3OV9aeldXWVlCOQ?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
