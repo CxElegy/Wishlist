@@ -1,683 +1,5 @@
 [
 {
-"at": "2026-11-06T05:46:46+00:00",
-"text": "2026-11-06 第 2 バッチを出刊：ぐでたま（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 2,770・キャッシュ読み 51.6万・出力 1,482",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.3,
-"mem_total": 16867418112,
-"mem_free": 16009367552,
-"disk_used": 10038415360,
-"disk_free": 31245119488,
-"disk_total": 41283534848,
-"peak": 321138688
-},
-"batch": 2,
-"boards": [
-"ぐでたま"
-],
-"stories": 1,
-"left": 0,
-"edited": 20,
-"run": 1793943331.5199387,
-"tok": {
-"in": 12,
-"cw": 2758,
-"cr": 516391,
-"out": 1482,
-"calls": 6,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 520643,
-"secs": 674,
-"run_tok": {
-"in": 33,
-"cw": 58950,
-"cr": 1227243,
-"out": 6576,
-"calls": 17,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-11-06T05:50:52+00:00",
-"text": "2026-11-06 第 3 バッチを出刊：（新しく終わった版面なし）（0 版面・0 本・今日の整理待ちは全部終わり） · token 新規入力 1,241・キャッシュ読み 17.6万・出力 675",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.27,
-"mem_total": 16867418112,
-"mem_free": 15948865536,
-"disk_used": 10041438208,
-"disk_free": 31242096640,
-"disk_total": 41283534848,
-"peak": 370933760
-},
-"batch": 3,
-"boards": [],
-"stories": 0,
-"left": 0,
-"edited": 20,
-"run": 1793943331.5199387,
-"tok": {
-"in": 3,
-"cw": 1238,
-"cr": 175727,
-"out": 675,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 177643,
-"secs": 921,
-"run_tok": {
-"in": 36,
-"cw": 60188,
-"cr": 1402970,
-"out": 7251,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-11-06T07:05:41+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
-"at": "2026-11-06T07:14:01+00:00",
-"text": "2026-11-06 第 1 バッチを出刊：GTA 6（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4.6万・キャッシュ読み 88.0万・出力 3,141",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.07,
-"mem_total": 16867418112,
-"mem_free": 15883677696,
-"disk_used": 10726842368,
-"disk_free": 30556692480,
-"disk_total": 41283534848,
-"peak": 425467904
-},
-"batch": 1,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 0,
-"edited": 20,
-"run": 1793948327.165265,
-"tok": {
-"in": 27,
-"cw": 45545,
-"cr": 880067,
-"out": 3141,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 928780,
-"secs": 915,
-"run_tok": {
-"in": 27,
-"cw": 45545,
-"cr": 880067,
-"out": 3141,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-11-06T08:33:20+00:00",
-"text": "2026-11-06 第 1 バッチを出刊：gelato pique（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 4.2万・キャッシュ読み 61.0万・出力 2,123",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.33,
-"mem_total": 16867418112,
-"mem_free": 15946391552,
-"disk_used": 10035179520,
-"disk_free": 31248355328,
-"disk_total": 41283534848,
-"peak": 389259264
-},
-"batch": 1,
-"boards": [
-"gelato pique"
-],
-"stories": 2,
-"left": 0,
-"edited": 20,
-"run": 1793953715.4428952,
-"tok": {
-"in": 19,
-"cw": 41510,
-"cr": 610168,
-"out": 2123,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 653820,
-"secs": 285,
-"run_tok": {
-"in": 19,
-"cw": 41510,
-"cr": 610168,
-"out": 2123,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-11-06T09:35:22+00:00",
-"text": "2026-11-06 第 1 バッチを出刊：哈利波特剧集（1 版面・4 本・残り 6 版面） · token 新規入力 3.9万・キャッシュ読み 57.2万・出力 2,210",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.48,
-"mem_total": 16867418112,
-"mem_free": 15922675712,
-"disk_used": 10035404800,
-"disk_free": 31248130048,
-"disk_total": 41283534848,
-"peak": 390610944
-},
-"batch": 1,
-"boards": [
-"哈利波特剧集"
-],
-"stories": 4,
-"left": 6,
-"edited": 20,
-"run": 1793957414.1606724,
-"tok": {
-"in": 19,
-"cw": 39435,
-"cr": 571809,
-"out": 2210,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 613473
-},
-{
-"at": "2026-11-06T09:46:38+00:00",
-"text": "2026-11-06 第 2 バッチを出刊：BLEACH Mirrors High（1 版面・0 本・残り 5 版面） · token 新規入力 1,811・キャッシュ読み 27.6万・出力 888",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.41,
-"mem_total": 16867418112,
-"mem_free": 15806042112,
-"disk_used": 10041729024,
-"disk_free": 31241805824,
-"disk_total": 41283534848,
-"peak": 457117696
-},
-"batch": 2,
-"boards": [
-"BLEACH Mirrors High"
-],
-"stories": 0,
-"left": 5,
-"edited": 21,
-"run": 1793957414.1606724,
-"tok": {
-"in": 8,
-"cw": 1803,
-"cr": 275832,
-"out": 888,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 278531
-},
-{
-"at": "2026-11-06T09:52:56+00:00",
-"text": "2026-11-06 第 3 バッチを出刊：ILLIT（1 版面・8 本・残り 4 版面） · token 新規入力 1,142・キャッシュ読み 7.0万・出力 565",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.24,
-"mem_total": 16867418112,
-"mem_free": 15967473664,
-"disk_used": 10044424192,
-"disk_free": 31239110656,
-"disk_total": 41283534848,
-"peak": 336642048
-},
-"batch": 3,
-"boards": [
-"ILLIT"
-],
-"stories": 8,
-"left": 4,
-"edited": 21,
-"run": 1793957414.1606724,
-"tok": {
-"in": 2,
-"cw": 1140,
-"cr": 69776,
-"out": 565,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 71483
-},
-{
-"at": "2026-11-06T09:56:58+00:00",
-"text": "2026-11-06 第 4 バッチを出刊：MMORPG 新作（1 版面・3 本・残り 3 版面） · token 新規入力 999・キャッシュ読み 7.1万・出力 421",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.44,
-"mem_total": 16867418112,
-"mem_free": 15922966528,
-"disk_used": 10046959616,
-"disk_free": 31236575232,
-"disk_total": 41283534848,
-"peak": 373428224
-},
-"batch": 4,
-"boards": [
-"MMORPG 新作"
-],
-"stories": 3,
-"left": 3,
-"edited": 21,
-"run": 1793957414.1606724,
-"tok": {
-"in": 2,
-"cw": 997,
-"cr": 70916,
-"out": 421,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 72336
-},
-{
-"at": "2026-11-06T10:01:04+00:00",
-"text": "2026-11-06 第 5 バッチを出刊：The Mandalorian（1 版面・3 本・残り 2 版面） · token 新規入力 820・キャッシュ読み 7.2万・出力 458",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.27,
-"mem_total": 16867418112,
-"mem_free": 15976046592,
-"disk_used": 10049466368,
-"disk_free": 31234068480,
-"disk_total": 41283534848,
-"peak": 328781824
-},
-"batch": 5,
-"boards": [
-"The Mandalorian"
-],
-"stories": 3,
-"left": 2,
-"edited": 21,
-"run": 1793957414.1606724,
-"tok": {
-"in": 2,
-"cw": 818,
-"cr": 71913,
-"out": 458,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 73191
-},
-{
-"at": "2026-11-06T10:05:44+00:00",
-"text": "2026-11-06 第 6 バッチを出刊：Vaundy（1 版面・2 本・残り 1 版面） · token 新規入力 2,708・キャッシュ読み 29.6万・出力 1,193",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.28,
-"mem_total": 16867418112,
-"mem_free": 15997370368,
-"disk_used": 10052259840,
-"disk_free": 31231275008,
-"disk_total": 41283534848,
-"peak": 324349952
-},
-"batch": 6,
-"boards": [
-"Vaundy"
-],
-"stories": 2,
-"left": 1,
-"edited": 21,
-"run": 1793957414.1606724,
-"tok": {
-"in": 7,
-"cw": 2701,
-"cr": 295684,
-"out": 1193,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 299585
-},
-{
-"at": "2026-11-06T10:10:02+00:00",
-"text": "2026-11-06 第 7 バッチを出刊：周杰伦（1 版面・4 本・今日の整理待ちは全部終わり） · token 新規入力 1,016・キャッシュ読み 7.5万・出力 415",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.26,
-"mem_total": 16867418112,
-"mem_free": 15993851904,
-"disk_used": 10054746112,
-"disk_free": 31228788736,
-"disk_total": 41283534848,
-"peak": 328097792
-},
-"batch": 7,
-"boards": [
-"周杰伦"
-],
-"stories": 4,
-"left": 0,
-"edited": 21,
-"run": 1793957414.1606724,
-"tok": {
-"in": 2,
-"cw": 1014,
-"cr": 75432,
-"out": 415,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 76863,
-"secs": 2388,
-"run_tok": {
-"in": 42,
-"cw": 47908,
-"cr": 1431362,
-"out": 6150,
-"calls": 22,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-11-06T11:34:11+00:00",
-"text": "2026-11-06 第 1 バッチを出刊：漫威电影（1 版面・5 本・残り 5 版面） · token 新規入力 4.5万・キャッシュ読み 78.9万・出力 2,726",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.44,
-"mem_total": 16867418112,
-"mem_free": 15958142976,
-"disk_used": 10035064832,
-"disk_free": 31248470016,
-"disk_total": 41283534848,
-"peak": 324845568
-},
-"batch": 1,
-"boards": [
-"漫威电影"
-],
-"stories": 5,
-"left": 5,
-"edited": 21,
-"run": 1793964551.4683645,
-"tok": {
-"in": 26,
-"cw": 44584,
-"cr": 789307,
-"out": 2726,
-"calls": 13,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 836643
-},
-{
-"at": "2026-11-06T11:44:03+00:00",
-"text": "2026-11-06 第 2 バッチを出刊：GTA 6（1 版面・5 本・残り 4 版面） · token 新規入力 2,516・キャッシュ読み 22.1万・出力 746",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.34,
-"mem_total": 16867418112,
-"mem_free": 15979450368,
-"disk_used": 10042667008,
-"disk_free": 31240867840,
-"disk_total": 41283534848,
-"peak": 329371648
-},
-"batch": 2,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 4,
-"edited": 21,
-"run": 1793964551.4683645,
-"tok": {
-"in": 6,
-"cw": 2510,
-"cr": 221336,
-"out": 746,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 224598
-},
-{
-"at": "2026-11-06T11:48:26+00:00",
-"text": "2026-11-06 第 3 バッチを出刊：三星手机（1 版面・8 本・残り 3 版面） · token 新規入力 1,959・キャッシュ読み 15.2万・出力 828",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.55,
-"mem_total": 16867418112,
-"mem_free": 16008880128,
-"disk_used": 10045022208,
-"disk_free": 31238512640,
-"disk_total": 41283534848,
-"peak": 314548224
-},
-"batch": 3,
-"boards": [
-"三星手机"
-],
-"stories": 8,
-"left": 3,
-"edited": 21,
-"run": 1793964551.4683645,
-"tok": {
-"in": 3,
-"cw": 1956,
-"cr": 151903,
-"out": 828,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 154690
-},
-{
-"at": "2026-11-06T11:52:54+00:00",
-"text": "2026-11-06 第 4 バッチを出刊：周杰伦（1 版面・4 本・残り 2 版面） · token 新規入力 1,328・キャッシュ読み 7.8万・出力 544",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.33,
-"mem_total": 16867418112,
-"mem_free": 15985618944,
-"disk_used": 10047553536,
-"disk_free": 31235981312,
-"disk_total": 41283534848,
-"peak": 321187840
-},
-"batch": 4,
-"boards": [
-"周杰伦"
-],
-"stories": 4,
-"left": 2,
-"edited": 21,
-"run": 1793964551.4683645,
-"tok": {
-"in": 2,
-"cw": 1326,
-"cr": 77588,
-"out": 544,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 79460
-},
-{
-"at": "2026-11-06T11:58:21+00:00",
-"text": "2026-11-06 第 5 バッチを出刊：MMORPG 新作（1 版面・3 本・残り 1 版面） · token 新規入力 1,155・キャッシュ読み 7.9万・出力 604",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.51,
-"mem_total": 16867418112,
-"mem_free": 15994974208,
-"disk_used": 10050056192,
-"disk_free": 31233478656,
-"disk_total": 41283534848,
-"peak": 315785216
-},
-"batch": 5,
-"boards": [
-"MMORPG 新作"
-],
-"stories": 3,
-"left": 1,
-"edited": 21,
-"run": 1793964551.4683645,
-"tok": {
-"in": 2,
-"cw": 1153,
-"cr": 78914,
-"out": 604,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 80673
-},
-{
-"at": "2026-11-06T12:03:03+00:00",
-"text": "2026-11-06 第 6 バッチを出刊：チェーンソーマン（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 1,568・キャッシュ読み 16.1万・出力 832",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.4,
-"mem_total": 16867418112,
-"mem_free": 15945080832,
-"disk_used": 10052812800,
-"disk_free": 31230722048,
-"disk_total": 41283534848,
-"peak": 380264448
-},
-"batch": 6,
-"boards": [
-"チェーンソーマン"
-],
-"stories": 1,
-"left": 0,
-"edited": 21,
-"run": 1793964551.4683645,
-"tok": {
-"in": 4,
-"cw": 1564,
-"cr": 161156,
-"out": 832,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 163556,
-"secs": 2032,
-"run_tok": {
-"in": 43,
-"cw": 53093,
-"cr": 1480204,
-"out": 6280,
-"calls": 22,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-11-06T13:38:20+00:00",
-"text": "2026-11-06 第 1 バッチを出刊：A2O LITE、GTA 6、dota2、三星手机、漫威电影（5 版面・29 本・残り 7 版面） · token 新規入力 5.0万・キャッシュ読み 83.9万・出力 3,744",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.25,
-"mem_total": 16867418112,
-"mem_free": 15921889280,
-"disk_used": 10035617792,
-"disk_free": 31247917056,
-"disk_total": 41283534848,
-"peak": 403173376
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"GTA 6",
-"dota2",
-"三星手机",
-"漫威电影"
-],
-"stories": 29,
-"left": 7,
-"edited": 21,
-"run": 1793971929.2800295,
-"tok": {
-"in": 25,
-"cw": 49500,
-"cr": 839276,
-"out": 3744,
-"calls": 13,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 892545
-},
-{
-"at": "2026-11-06T13:55:46+00:00",
-"text": "2026-11-06 第 2 バッチを出刊：ILLIT（1 版面・8 本・今日の整理待ちは全部終わり） · token 新規入力 8,616・キャッシュ読み 131.1万・出力 2,730",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.31,
-"mem_total": 16867418112,
-"mem_free": 16007741440,
-"disk_used": 10047684608,
-"disk_free": 31235850240,
-"disk_total": 41283534848,
-"peak": 311033856
-},
-"batch": 2,
-"boards": [
-"ILLIT"
-],
-"stories": 8,
-"left": 0,
-"edited": 21,
-"run": 1793971929.2800295,
-"tok": {
-"in": 34,
-"cw": 8582,
-"cr": 1311306,
-"out": 2730,
-"calls": 16,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1322652,
-"secs": 1417,
-"run_tok": {
-"in": 59,
-"cw": 58082,
-"cr": 2150582,
-"out": 6474,
-"calls": 29,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-06T19:43:28+00:00",
 "text": "2026-11-07 第 1 バッチを出刊：GTA 6（1 版面・4 本・残り 5 版面） · token 新規入力 5.4万・キャッシュ読み 115.5万・出力 6,009",
 "level": "ok",
@@ -1958,5 +1280,658 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 84305
+},
+{
+"at": "2026-11-07T13:33:06+00:00",
+"text": "2026-11-07 第 6 バッチを出刊：周杰伦（1 版面・6 本・残り 6 版面） · token 新規入力 1,386・キャッシュ読み 8.4万・出力 475",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.19,
+"mem_total": 16867737600,
+"mem_free": 15960895488,
+"disk_used": 10798854144,
+"disk_free": 30484680704,
+"disk_total": 41283534848,
+"peak": 321343488
+},
+"batch": 6,
+"boards": [
+"周杰伦"
+],
+"stories": 6,
+"left": 6,
+"edited": 20,
+"run": 1794055192.9507086,
+"tok": {
+"in": 2,
+"cw": 1384,
+"cr": 83693,
+"out": 475,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 85554
+},
+{
+"at": "2026-11-07T13:48:14+00:00",
+"text": "2026-11-07 第 7 バッチを出刊：MMORPG 新作（1 版面・4 本・残り 5 版面） · token 新規入力 4,915・キャッシュ読み 52.3万・出力 1,260",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.26,
+"mem_total": 16867737600,
+"mem_free": 15953125376,
+"disk_used": 10815324160,
+"disk_free": 30468210688,
+"disk_total": 41283534848,
+"peak": 362319872
+},
+"batch": 7,
+"boards": [
+"MMORPG 新作"
+],
+"stories": 4,
+"left": 5,
+"edited": 20,
+"run": 1794055192.9507086,
+"tok": {
+"in": 14,
+"cw": 4901,
+"cr": 523181,
+"out": 1260,
+"calls": 6,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 529356
+},
+{
+"at": "2026-11-07T13:54:43+00:00",
+"text": "2026-11-07 第 8 バッチを出刊：滑雪（1 版面・2 本・残り 4 版面） · token 新規入力 1,235・キャッシュ読み 9.0万・出力 681",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.27,
+"mem_total": 16867737600,
+"mem_free": 15952228352,
+"disk_used": 10817843200,
+"disk_free": 30465691648,
+"disk_total": 41283534848,
+"peak": 355540992
+},
+"batch": 8,
+"boards": [
+"滑雪"
+],
+"stories": 2,
+"left": 4,
+"edited": 20,
+"run": 1794055192.9507086,
+"tok": {
+"in": 2,
+"cw": 1233,
+"cr": 89978,
+"out": 681,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 91894
+},
+{
+"at": "2026-11-07T14:02:22+00:00",
+"text": "2026-11-07 第 9 バッチを出刊：ILLIT（1 版面・4 本・残り 3 版面） · token 新規入力 1,179・キャッシュ読み 9.1万・出力 434",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.28,
+"mem_total": 16867737600,
+"mem_free": 15965847552,
+"disk_used": 10820415488,
+"disk_free": 30463119360,
+"disk_total": 41283534848,
+"peak": 347811840
+},
+"batch": 9,
+"boards": [
+"ILLIT"
+],
+"stories": 4,
+"left": 3,
+"edited": 20,
+"run": 1794055192.9507086,
+"tok": {
+"in": 2,
+"cw": 1177,
+"cr": 91211,
+"out": 434,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 92824
+},
+{
+"at": "2026-11-07T14:07:56+00:00",
+"text": "2026-11-07 第 10 バッチを出刊：The Mandalorian（1 版面・1 本・残り 2 版面） · token 新規入力 808・キャッシュ読み 9.2万・出力 552",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.17,
+"mem_total": 16867737600,
+"mem_free": 15993573376,
+"disk_used": 10822905856,
+"disk_free": 30460628992,
+"disk_total": 41283534848,
+"peak": 311701504
+},
+"batch": 10,
+"boards": [
+"The Mandalorian"
+],
+"stories": 1,
+"left": 2,
+"edited": 20,
+"run": 1794055192.9507086,
+"tok": {
+"in": 1,
+"cw": 807,
+"cr": 92388,
+"out": 552,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 93748
+},
+{
+"at": "2026-11-07T14:12:56+00:00",
+"text": "2026-11-07 第 11 バッチを出刊：チェーンソーマン（1 版面・2 本・残り 1 版面） · token 新規入力 808・キャッシュ読み 9.3万・出力 532",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.23,
+"mem_total": 16867737600,
+"mem_free": 15992811520,
+"disk_used": 10825498624,
+"disk_free": 30458036224,
+"disk_total": 41283534848,
+"peak": 312864768
+},
+"batch": 11,
+"boards": [
+"チェーンソーマン"
+],
+"stories": 2,
+"left": 1,
+"edited": 20,
+"run": 1794055192.9507086,
+"tok": {
+"in": 2,
+"cw": 806,
+"cr": 93195,
+"out": 532,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 94535
+},
+{
+"at": "2026-11-07T14:21:14+00:00",
+"text": "2026-11-07 第 12 バッチを出刊：猫用品（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 953・キャッシュ読み 9.4万・出力 380",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.29,
+"mem_total": 16867737600,
+"mem_free": 15976013824,
+"disk_used": 10828046336,
+"disk_free": 30455488512,
+"disk_total": 41283534848,
+"peak": 314073088
+},
+"batch": 12,
+"boards": [
+"猫用品"
+],
+"stories": 3,
+"left": 0,
+"edited": 20,
+"run": 1794055192.9507086,
+"tok": {
+"in": 2,
+"cw": 951,
+"cr": 94001,
+"out": 380,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 95334,
+"secs": 6082,
+"run_tok": {
+"in": 83,
+"cw": 66414,
+"cr": 2971027,
+"out": 10951,
+"calls": 39,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-07T15:38:40+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-11-07T15:47:55+00:00",
+"text": "2026-11-07 第 1 バッチを出刊：漫威电影（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 5.2万・キャッシュ読み 103.2万・出力 4,030",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.27,
+"mem_total": 16867737600,
+"mem_free": 15944028160,
+"disk_used": 10725928960,
+"disk_free": 30557605888,
+"disk_total": 41283534848,
+"peak": 388960256
+},
+"batch": 1,
+"boards": [
+"漫威电影"
+],
+"stories": 5,
+"left": 0,
+"edited": 21,
+"run": 1794065177.2542028,
+"tok": {
+"in": 30,
+"cw": 51603,
+"cr": 1031878,
+"out": 4030,
+"calls": 15,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1087541,
+"secs": 1298,
+"run_tok": {
+"in": 30,
+"cw": 51603,
+"cr": 1031878,
+"out": 4030,
+"calls": 15,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-07T16:43:47+00:00",
+"text": "2026-11-08 第 1 バッチを出刊：GTA 6（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 4.2万・キャッシュ読み 48.4万・出力 2,601",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.31,
+"mem_total": 16867737600,
+"mem_free": 15883079680,
+"disk_used": 10030125056,
+"disk_free": 31253409792,
+"disk_total": 41283534848,
+"peak": 442814464
+},
+"batch": 1,
+"boards": [
+"GTA 6"
+],
+"stories": 3,
+"left": 0,
+"edited": 5,
+"run": 1794069590.2621472,
+"tok": {
+"in": 16,
+"cw": 42342,
+"cr": 484193,
+"out": 2601,
+"calls": 8,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 529152,
+"secs": 237,
+"run_tok": {
+"in": 16,
+"cw": 42342,
+"cr": 484193,
+"out": 2601,
+"calls": 8,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-07T19:25:03+00:00",
+"text": "2026-11-08 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作 ほか 10（16 版面・14 本・残り 1 版面） · token 新規入力 4.3万・キャッシュ読み 62.9万・出力 2,960",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.17,
+"mem_total": 16867737600,
+"mem_free": 15860768768,
+"disk_used": 10030473216,
+"disk_free": 31253061632,
+"disk_total": 41283534848,
+"peak": 433012736
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"MMORPG 新作",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"周杰伦",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"滑雪",
+"漫威电影"
+],
+"stories": 14,
+"left": 1,
+"edited": 10,
+"run": null,
+"tok": {
+"in": 20,
+"cw": 43231,
+"cr": 628775,
+"out": 2960,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 674986
+},
+{
+"at": "2026-11-07T19:30:34+00:00",
+"text": "2026-11-08 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作 ほか 11（17 版面・14 本・今日の整理待ちは全部終わり） · token 新規入力 4.4万・キャッシュ読み 84.5万・出力 3,555",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.44,
+"mem_total": 16867737600,
+"mem_free": 15997624320,
+"disk_used": 10038018048,
+"disk_free": 31245516800,
+"disk_total": 41283534848,
+"peak": 320225280
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"MMORPG 新作",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"周杰伦",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"滑雪",
+"漫威电影",
+"绝区零"
+],
+"stories": 14,
+"left": 0,
+"edited": 11,
+"run": null,
+"tok": {
+"in": 26,
+"cw": 44281,
+"cr": 845462,
+"out": 3555,
+"calls": 13,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 893324
+},
+{
+"at": "2026-11-07T21:22:05+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-11-07T21:26:49+00:00",
+"text": "2026-11-08 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 5 版面） · token 新規入力 5.4万・キャッシュ読み 174.0万・出力 4,825",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.71,
+"mem_total": 16867737600,
+"mem_free": 15933276160,
+"disk_used": 10725281792,
+"disk_free": 30558253056,
+"disk_total": 41283534848,
+"peak": 391348224
+},
+"batch": 1,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 5,
+"edited": 11,
+"run": 1794086351.187354,
+"tok": {
+"in": 54,
+"cw": 53923,
+"cr": 1739598,
+"out": 4825,
+"calls": 25,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1798400
+},
+{
+"at": "2026-11-07T21:40:45+00:00",
+"text": "2026-11-08 第 2 バッチを出刊：三星手机（1 版面・3 本・残り 4 版面） · token 新規入力 5,031・キャッシュ読み 93.2万・出力 2,002",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.34,
+"mem_total": 16867737600,
+"mem_free": 15921631232,
+"disk_used": 10739351552,
+"disk_free": 30544183296,
+"disk_total": 41283534848,
+"peak": 355311616
+},
+"batch": 2,
+"boards": [
+"三星手机"
+],
+"stories": 3,
+"left": 4,
+"edited": 12,
+"run": 1794086351.187354,
+"tok": {
+"in": 24,
+"cw": 5007,
+"cr": 931543,
+"out": 2002,
+"calls": 11,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 938576
+},
+{
+"at": "2026-11-07T21:43:21+00:00",
+"text": "2026-11-08 第 3 バッチを出刊：The Mandalorian（1 版面・1 本・残り 3 版面） · token 新規入力 2,432・キャッシュ読み 35.2万・出力 1,338",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.25,
+"mem_total": 16867737600,
+"mem_free": 15965491200,
+"disk_used": 10741964800,
+"disk_free": 30541570048,
+"disk_total": 41283534848,
+"peak": 319221760
+},
+"batch": 3,
+"boards": [
+"The Mandalorian"
+],
+"stories": 1,
+"left": 3,
+"edited": 13,
+"run": 1794086351.187354,
+"tok": {
+"in": 8,
+"cw": 2424,
+"cr": 351652,
+"out": 1338,
+"calls": 4,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 355422
+},
+{
+"at": "2026-11-07T21:46:05+00:00",
+"text": "2026-11-08 第 4 バッチを出刊：あつ森（1 版面・2 本・残り 2 版面） · token 新規入力 1,135・キャッシュ読み 18.0万・出力 681",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.53,
+"mem_total": 16867737600,
+"mem_free": 15949791232,
+"disk_used": 10744532992,
+"disk_free": 30539001856,
+"disk_total": 41283534848,
+"peak": 342556672
+},
+"batch": 4,
+"boards": [
+"あつ森"
+],
+"stories": 2,
+"left": 2,
+"edited": 14,
+"run": 1794086351.187354,
+"tok": {
+"in": 4,
+"cw": 1131,
+"cr": 180387,
+"out": 681,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 182203
+},
+{
+"at": "2026-11-07T21:48:53+00:00",
+"text": "2026-11-08 第 5 バッチを出刊：チェーンソーマン（1 版面・3 本・残り 1 版面） · token 新規入力 1,217・キャッシュ読み 18.3万・出力 637",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.28,
+"mem_total": 16867737600,
+"mem_free": 15916167168,
+"disk_used": 10747162624,
+"disk_free": 30536372224,
+"disk_total": 41283534848,
+"peak": 366256128
+},
+"batch": 5,
+"boards": [
+"チェーンソーマン"
+],
+"stories": 3,
+"left": 1,
+"edited": 14,
+"run": 1794086351.187354,
+"tok": {
+"in": 4,
+"cw": 1213,
+"cr": 182674,
+"out": 637,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 184528
+},
+{
+"at": "2026-11-07T21:52:58+00:00",
+"text": "2026-11-08 第 6 バッチを出刊：Vaundy（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 1,997・キャッシュ読み 37.2万・出力 862",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.38,
+"mem_total": 16867737600,
+"mem_free": 15953887232,
+"disk_used": 10750050304,
+"disk_free": 30533484544,
+"disk_total": 41283534848,
+"peak": 328458240
+},
+"batch": 6,
+"boards": [
+"Vaundy"
+],
+"stories": 1,
+"left": 0,
+"edited": 15,
+"run": 1794086351.187354,
+"tok": {
+"in": 7,
+"cw": 1990,
+"cr": 371907,
+"out": 862,
+"calls": 4,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 374766,
+"secs": 2027,
+"run_tok": {
+"in": 101,
+"cw": 65688,
+"cr": 3757761,
+"out": 10345,
+"calls": 48,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-07T22:26:52+00:00",
+"text": "2026-11-08 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 4 版面） · token 新規入力 4.2万・キャッシュ読み 71.1万・出力 2,599",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.32,
+"mem_total": 16867737600,
+"mem_free": 15991619584,
+"disk_used": 10030878720,
+"disk_free": 31252656128,
+"disk_total": 41283534848,
+"peak": 334503936
+},
+"batch": 1,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 4,
+"edited": 15,
+"run": 1794090167.2023056,
+"tok": {
+"in": 23,
+"cw": 42132,
+"cr": 711129,
+"out": 2599,
+"calls": 12,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 755883
 }
 ]

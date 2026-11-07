@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "fd93360bc389",
+ "edit_sig": "65efff1dbd7c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -106,22 +106,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 5,
-     "source": "Dexerto",
-     "title": "New World review – Amazon’s MMO lacks reasons to invest in its gorgeous world",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBDNEY1eU9ybVlmZzR0S0JRV21zR2NHZGsyREU4bjFRZmJmZC1NVmEzTkI3bXUxUmlsbmdSSGVhT3FaQnFaQkZldV9ObWQ5UFRXdFFPd194Y2tlVEVsZVNFWGU2WVhmamlm?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 6,
-     "source": "4Gamer.net",
-     "title": "週刊Steam広場 第178号：オープンワールド農業シム「Lightyear Frontier」や，アクションMMORPG「ArcheAge Chronicles」が発売に",
-     "url": "https://www.4gamer.net/games/038/G003821/20261107001/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -258,7 +242,9 @@
      "headline": "Nielsen: Netflix Ups Catalog Horror Series 'From' to No. 1 Across U.S. TV Households Through Oct. 25",
      "highlight": "No. 1",
      "image": "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg",
-     "image_via": "JSON-LD",
+     "image_via": "条目自带",
+     "source": "Media Play News",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.mediaplaynews.com&sz=128",
      "url": "https://www.mediaplaynews.com/nielsen-netflix-ups-catalog-horror-series-from-to-no-1-across-u-s-tv-households-through-oct-25/",
      "weight": "lead"
     }
@@ -308,15 +294,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 13,
-     "source": "KPOP monster",
-     "title": "ILLIT、新曲「You’re Under Arrest」で音楽番組初の1位！ 『ミュージックバンク』でIVEを抑えトロフィー獲得",
-     "url": "https://www.kpopmonster.jp/?p=178772"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -344,9 +321,8 @@
      "date": "2026-11-07",
      "headline": "ILLIT faces backlash over live vocals during ‘Music Bank’ no. 1 encore stage",
      "highlight": "",
-     "image": null,
-     "source": "allkpop",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.allkpop.com&sz=128",
+     "image": "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414",
+     "image_via": "同一件事的别家报道 weverse.io",
      "url": "https://www.allkpop.com/article/2026/11/illit-faces-backlash-over-live-vocals-during-music-bank-no-1-encore-stage",
      "weight": "normal"
     },
@@ -355,9 +331,20 @@
      "date": "2026-11-06",
      "headline": "[EVENT] 아일릿(ILLIT) ‘디즈니런 2026 인천’ 무대 참여 안내 (+당첨자 발표)",
      "highlight": "",
-     "image": "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414",
-     "image_via": "og:image",
+     "image": "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w670",
+     "image_via": "正文图",
      "url": "https://weverse.io/illit/notice/40308?hl=es",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "[NOTICE] ILLIT LIVE 'PRESS START♥︎' ENCORE in KOREA - 공식 상품 현장 판매 및 운영 안내",
+     "highlight": "",
+     "image": null,
+     "source": "Weverse",
+     "source_icon": "https://cdn-v2pstatic.weverse.io/wev_web_fe/assets/3_0_0/icons/logo192.png",
+     "url": "https://weverse.io/illit/notice/39943?hl=ko",
      "weight": "normal"
     }
    ],
@@ -416,15 +403,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 26,
-     "source": "Pkrevenue.com",
-     "title": "Samsung Galaxy S27 Pro, Ultra may use Snapdragon chips in South Korea",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNd1NXVkJXdzdna09GOTdUMVBQTkd5ZllUc1ZpUmxCTW5fNWlpWnRRM0wxYUk2aFNFTGN2U0JMOWFWXzhlaXRseC1PdHNlQUxOcWlrX2FBSjN2MlkzRXZCNE4tZ1daZXh1SE9nbU9FdFRyLS1PbDhfdEZoTDdzN1RjR0pXMXhFNVZCSzJZODJnZk5SaFlzR1E?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -576,10 +554,10 @@
    "pending": [
     {
      "date": "2026-11-05",
-     "n": 3,
-     "source": "キャラグー",
-     "title": "チェンソーマン パスケースの入荷日・価格｜プライズ",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBvVkNjYVZ4dExjVHFrR2VqTnczNjJRbTk2UHVDRnRkcXFuSmRZT3BkalJlOUFtVWEycWl6Y1pZczd0blNXRnM5WnZRRVptU05USTBCRS00SQ?oc=5"
+     "n": 4,
+     "source": "Dexerto",
+     "title": "Chainsaw Man Episode 5 review: Kooky characters and a promising plot",
+     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPN3hFWGNfaV9rZE5FRmw0amZjcF9NX3J0NEliVHZpZEZyeExjelFzWFFPX010UWo5c2pVNEgwamVqLWtFM0RTZWdibFAxNTlBZVkxTjdHbHBGV3Vva28ycEVHanpNSnBuYUsybjJKWEZHeUNWU2hQZThxU2pwcDRHRUFVbnRtZlNUN0MxTm1SUGliek85blBXaFVRXzY5MGNpbF9FV1lOOEdzZw?oc=5"
     }
    ],
    "section": "影视",
@@ -593,6 +571,16 @@
      "image_via": "og:image",
      "url": "https://www.hercampus.com/school/point-park/chainsaw-man-movie-gets-a-raving-review/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "チェンソーマン パスケースの入荷日・価格",
+     "highlight": "入荷日・価格",
+     "image": "https://charagoo.jp/wp-content/uploads/2025/08/D104748_01.jpg",
+     "image_via": "og:image",
+     "url": "https://charagoo.jp/prize/item/a8def65a59fa/",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
@@ -611,17 +599,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 2,
-     "source": "The Direct",
-     "title": "Report: Ahsoka Season 2 Is No Longer Expected To Release On Disney+ With Lucasfilm's Live-Action Star Wars TV Streaming Rollout Used For The Mandalorian & The Acolyte",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPMnRGSUNlRFlKZDAzT3pGSWhJSkhBbm1lQ0Vqbk5yNGJNanU0UE5SckpORG9jMjRZb2l5VjdaRHJDdnVKTkhWZTkxcUE3SGRLT21Kdy1IVjhIQ3kzbmE5cC1XU21pYTJSM2luckstbFBCMzY0TUxwUE5aYW43clczekJhZm4ycXlRalRBVHpYbFdMQXpUMHBrVVhaSnB1eDJEOVVNd1ZaYVk?oc=5"
+     "headline": "Report: Ahsoka Season 2 Is No Longer Expected To Release On Disney+ With Lucasfilm's Live-Action Star Wars TV Streaming Rollout Used For The Mandalorian & The Acolyte",
+     "highlight": "Ahsoka Season 2",
+     "image": "https://images.thedirect.com/media/article_full/1000012226.jpg",
+     "image_via": "og:image",
+     "url": "https://thedirect.com/article/ahsoka-season-2-the-mandalorian-the-acolyte-disney-plus-lucasfilm-star-wars",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -631,33 +621,6 @@
     "bg": "#14161A",
     "fg": "#E8EAEC",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 1,
-     "source": "Howl.Link",
-     "title": "【あつ森】新家具「時のオカリナ」をオノで攻撃しすぎると……まさかの仕掛けが！？「ゼルダの伝説」コラボ家具に隠れた細かすぎる小ネタ集！【あつまれ どうぶつの森】@レウンGameTV - YouTube",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBLUGJTUVQ4SDl2Y1FqenpjWi1WQ0hhTWtrZXNCY21GTlBwV0FfeVNwNHBCRzhvT0ZkVk5B?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
     "split": true
    }
   },
@@ -717,24 +680,10 @@
    "pending": [
     {
      "date": "2026-11-07",
-     "n": 12,
-     "source": "香港01",
-     "title": "周杰伦卖机械狗？巨星传奇联手宇树 售价¥4.3万全球限量2千台",
-     "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxQdUN3bk9Da3Atc25zTktDWFlxaHBjRXRjWDhUNVdvWVZqQ0h1M3RJQzd5ZUIyMkI0c2wtamhFWUVuaGdOdDZkN3p5X3AtTE54ZWgxbnJhUl84aHBOc0NsUV9QUlNlR0JkeW8zVnVJYTJkTXRSRUVheWhSaFJ6Q091Q21GWWlyd0lfeDJYZUtHMldBTGRaQ3ZXSUN1elJXcDRYbUJ2SUMyeVZ6Uk04Sl9KOFRKeWE5cm1PM2xXUUdaZk5LXzlQYldWQ2FVZzJCa0tONGhySlZOOFpsNDA3VndxUzJyMnBTOThQb1FkdE9EOGFlcWkxRk5VN1pZYS02VXppYUhPVFNNdWQzaUh5SDVocGIzRWREc0pCS2RkcTNJMktucHRGX2VqOGdhYm9VYlZ5QUw1NFUyTl96MkQtNDZHM0hEZ1pZWDlBaHRQUlE1ZVdQRy1JVjJiTzh2M3RCbXJzaWNXa09UcXpJMGo0anlRUVFkRkhDZTZyU3JZNXFjUnZldVVCX2NPYTdrQ01KQUlrWmpEUzlWbGVlZnJwN1JoOElwQQ?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 13,
-     "source": "证券之星",
-     "title": "周杰伦概念股进博会首秀，4.39万元的机器狗全球首发，巨星传奇赖国辉：让机器人有温度",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9kRFF3Z1BuMU5vbUlabnQ5YVltenNYcUdCeGU4dlJ1MmRDSjdHdWh3cS1kekJ4SklCTklQbjBtOVRhb1lMTmROcGJCbmhLT2pUVmloWEswSEU1bFRQb0VKcw?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 14,
-     "source": "香港01",
-     "title": "周杰倫賣機械狗？巨星傳奇聯手宇樹 售價¥4.3萬全球限量2千台",
-     "url": "https://www.hk01.com/%E5%A4%A7%E5%9C%8B%E5%B0%8F%E4%BA%8B/60408251/%E5%91%A8%E6%9D%B0%E5%80%AB%E8%B3%A3%E6%A9%9F%E6%A2%B0%E7%8B%97-%E5%B7%A8%E6%98%9F%E5%82%B3%E5%A5%87%E8%81%AF%E6%89%8B%E5%AE%87%E6%A8%B9-%E5%94%AE%E5%83%B9-4-3%E8%90%AC%E5%85%A8%E7%90%83%E9%99%90%E9%87%8F2%E5%8D%83%E5%8F%B0"
+     "n": 15,
+     "source": "新浪网",
+     "title": "26 年前的今天，周杰伦发行了个人首张专辑《Jay》 23 年前的今天，王菲发行了迄今为止最后一张个人专辑《将爱》 ​",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBjYTFpQ0Z4Zlo2UG9vWTFpek1td3pGVnRndUtEd0dRTkVCSkhJN012ZWpVdVZoRDZ5alJRMmdQX3ZfSnZCcDZhTkJ6OXotdWExaGxWc2NHY0RXTEE1LWQ5ekltaw?oc=5"
     }
    ],
    "section": "演出",
@@ -755,7 +704,9 @@
      "headline": "周杰伦出道26周年快乐",
      "highlight": "26周年",
      "image": "http://wx2.sinaimg.cn/middle/001gSRX0ly1iis5h51wvnj60z01lmahy02.jpg",
-     "image_via": "正文图（本站保存）",
+     "image_via": "条目自带（本站保存）",
+     "source": "新浪网",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
      "url": "https://www.sina.cn/news/detail/5362167121707464.html",
      "weight": "normal"
     },
@@ -786,6 +737,15 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
+   "pending": [
+    {
+     "date": "2026-11-07",
+     "n": 8,
+     "source": "Howl.Link",
+     "title": "133 レミヴェリじゃなくてフィオニーを接待してくれよ #激変ノード #式輿防衛戦 261030～： #ゼンゼロ #zzzero",
+     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFA5ZFM3U3dJbHB1b1oyMjJITWdQZHMwc05halVHU21QRm5VSzZKcHVDTDNRNlpGVlRpdFFZ?oc=5"
+    }
+   ],
    "section": "游戏",
    "stories": [
     {
@@ -845,6 +805,15 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
+   "pending": [
+    {
+     "date": "2026-11-07",
+     "n": 9,
+     "source": "Hawk Live",
+     "title": "A bug involving Techies and Largo has been discovered in Dota 2",
+     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE0tYlluMFJJSGVBU2hlYU1XMEh4MDBZRkhzMTZOcEd3c2gwbEhZazVEQTRYZUpVazZidGh0aTFkY3luQmh2ZHJVRkpiYXZ6WlpKbHhBUFV0SVhBM18yclNDU3Nkdm14dE01TnNlYjBVZ21mLVM2VE4tLQ?oc=5"
+    }
+   ],
    "section": "游戏",
    "stories": [
     {
@@ -906,6 +875,15 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
+   "pending": [
+    {
+     "date": "2026-11-07",
+     "n": 16,
+     "source": "아시아뉴스통신",
+     "title": "A2O LITE, '쇼! 음악중심'서 아이브·아일릿 꺾고 1위!",
+     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9peUN5UndPck10WklKeTRNMTA0TnNZdFlUUWNscTE5ZW9aWHJkcmY0a2VrSzFsMng3eDRKSC13VFBwOGNYN0lOZlE2WTRnMGtBT2RNUU9EZDhTbTFR?oc=5"
+    }
+   ],
    "section": "演出",
    "stories": [
     {
@@ -913,8 +891,8 @@
      "date": "2026-11-07",
      "headline": "NEON 重启 PAK 达成 99 次，TOP100 与 Bugs 重回第一|A2O LITE|iChart",
      "highlight": "",
-     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png",
+     "image_via": "JSON-LD",
      "url": "https://www.sina.cn/news/detail/5362634360358380.html",
      "weight": "lead"
     },
@@ -975,15 +953,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 7,
-     "source": "Dtimes",
-     "title": "アクリルスタンド全12種と限定とけねこ雑貨が登場！RPG「メメントモリ」新作グッズ / 4th Anniversary POP UP SHOP・アニメイトフェア Autumn 2026",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFAtZFpxbGFfbk5mZjFBblpCYkhsRnYyN3lSY21LdDluTllOQThFWDY2UjRaa2kxTVNaSHYwUVdYTTFqR0gteFE?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1035,18 +1004,11 @@
    "name": "滑雪",
    "pending": [
     {
-     "date": "2026-11-02",
-     "n": 2,
-     "source": "山と溪谷オンライン",
-     "title": "アークテリクスのバックカントリーアカデミーが日本初開催！ 2027年1月、白馬でプロから学ぶ雪山の技術と安全",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA4eFczY0RJTldmdkxTVFE1TWxva1N2SU5fVm5JNUVmRy1TQmlaOGxEeFB2VFl0Wk1zRFo1YnNHTE5BZVhXUzAzRjVMczB1QnlNY2hKQ3BhcXZJNFZpd3I5S1c1QVBqUE5E?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 3,
-     "source": "ｄメニューニュース",
-     "title": "湯の丸スキー場2026〜2027",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOcGpleGdGblZoOHM2LTJoRV9teWc3bzRaVUwyZU9LNVRUMjNXOERtY0tZNEpTXzdtRndmUlZKaVQwWTNvM1puQ2tfN3NEMHExZFRmckRpcy1GcDRXY2RtX214YmNyUGRfdlNIT2xGYlNjRGM3RWVhODBKcF9hUllKYtIBhgFBVV95cUxPc2ZYOXRZQnpJZDZNbjV6QnM5VVI5NnMxS2Z2bGdabGd1VFZlSHBSNl9XZ1hzbFNsSDlNanlNSzFYRE5jNkppSkpHYjI1OFZkWERqM0owZlozRnpuU055MkJGZG80T2R4TXpvY3Q5Y3Y3ZXdCZ1RKbFktMUlwWDFSeU1SR2R0QQ?oc=5"
+     "date": "2026-11-05",
+     "n": 4,
+     "source": "GQ Taiwan",
+     "title": "2026 日本白馬滑雪場旅行懶人包，交通、住宿、裝備、課程攻略一次盤點，新手也能立刻上手！",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1OTFEyemljVXNQOEE2X3VGY0pvSGJTUEh1a1hsd01LcjlzREN5b05UWEYyRVhaQ0NMU1FqdjRZV080RXVSWW1oTjRONWNIbkdRdkZpQ2hOV0M2UQ?oc=5"
     }
    ],
    "section": "运动",
@@ -1060,6 +1022,16 @@
      "image_via": "og:image",
      "url": "https://snowbrains.com/snowbrains-forecast-niseko-leads-japan-with-25-40-cm-as-cold-snow-continues/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "アークテリクスのバックカントリーアカデミーが日本初開催！ 2027年1月、白馬でプロから学ぶ雪山の技術と安全",
+     "highlight": "2027年1月、白馬",
+     "image": "https://www.yamakei-online.com/new_images/journal/column/8649_b.jpg",
+     "image_via": "og:image",
+     "url": "https://www.yamakei-online.com/journal/detail.php?id=8649",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
@@ -1159,6 +1131,31 @@
     "alt_bg": "#211C12",
     "alt_fg": "#F4EEE4",
     "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-05",
+    "headline": "Nintendo lanza diseños gratuitos de Zelda en Animal Crossing: New Horizons por su 40.º aniversario",
+    "url": "https://www.notebookcheck.org/Nintendo-lanza-disenos-gratuitos-de-Zelda-en-Animal-Crossing-New-Horizons-por-su-40-o-aniversario.1438705.0.html"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
     "split": true
