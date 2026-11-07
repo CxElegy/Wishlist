@@ -1,32 +1,32 @@
 {
- "admin": "b571a76be062",
- "admin-ai": "52501247f13a",
+ "admin": "2e08bffd7b49",
+ "admin-ai": "9bab458a23e0",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4c76aeca"
+   "d83b0f07"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e0169db4"
+   "db6632d6"
   ]
  },
- "admin-boards": "f63c8eeae903",
+ "admin-boards": "6de4b0320744",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5aecce81"
+   "6747fe38"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "02798d1ca4dd",
+ "admin-emblem": "0fa1a6a3c7bd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d5be4805"
+   "1dc6c5e0"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "83bc77bf32f2",
  "admin-members_marks": {},
- "admin-now": "34cbedaa13c3",
+ "admin-now": "a12c4e310515",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "446042d3"
+   "62352c45"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "c53aefae"
+   "7f0d6c40"
   ],
   "term-panel": [
    "ライブログ",
-   "3e598d21"
+   "925f7cdd"
   ]
  },
- "admin-system": "15198c23c880",
+ "admin-system": "16aa1647510d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "5accc0c3"
+   "569b4544"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "17930ab7"
+   "95fd93f6"
   ]
  },
  "admin_marks": {},
- "heat": "ff09d9469b3d",
+ "heat": "09b1273b340b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "5f56d45d"
+   "d9188b40"
   ],
   "ranking": [
    "ランキング",
-   "8d47c47f"
+   "57d687ff"
   ]
  },
- "index": "f9544ff8c719",
+ "index": "7fa558405ce8",
  "index_marks": {
   "front": [
    "トップ",
-   "a42deabc"
+   "610d2d58"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "ea4fdf9f"
+   "a444a88d"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "e6161758"
+   "c909c931"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "30bf0c6e"
+   "435bbfe3"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "332ad41c"
+   "28c5c8f8"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "25a6599f"
+   "b3dd44c5"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "40f5fa09"
+   "afb863f6"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "5f6b014b"
   ]
  },
- "updated": "11.08 04:30",
+ "updated": "11.08 04:32",
  "wishlist": "b2e601c654b5"
 }
