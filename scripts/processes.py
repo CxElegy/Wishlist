@@ -767,9 +767,9 @@ PROCESSES = [
         ],
     },
     {
-        "id": "photos", "name": "写真から愿望", "en": "PHOTOS", "lane": "ai", "schedule": [(1, 47), (5, 47), (9, 47), (13, 47)],   # 日本時間 10 / 14 / 18 / 22 時 47 分
-        "when": "1 日 4 回",
-        "trigger": "愿望清单ページで撮った写真が溜まったとき（Actions が 2 時間ごとに書き出し）",
+        "id": "photos", "name": "写真から愿望", "en": "PHOTOS", "lane": "ai", "schedule": "gate",   # 定時なし（2026-11-07）：写真があるときだけゲートが AI 編集の予約を起こす
+        "when": "写真があるとき（1 日 3 回まで）",
+        "trigger": "愿望清单ページで撮った写真が inbox/photos に書き出されたとき（ゲートが 1 時間ごとに見る）",
         "summary": "写真に写っているものを Claude が見て認識し、愿望清单に 1 件として整理する。",
         "files": ["PHOTOS.md", "wishlist.yaml"], "doc": "PHOTOS.md", "uses": ["claude", "crop", "supabase"],
         "flow": [

@@ -1571,6 +1571,44 @@ class Gate(unittest.TestCase):
         self.assertIn("GATE_FIRE で止めている", res["photos"])
         self.assertEqual(len(calls), 1)
 
+    def test_photos_use_edit_routine_without_second_run(self):
+        """写真は AI 編集の予約で起こす。両方に仕事があっても 1 本だけ起こす（2026-11-07）。"""
+        self._noon().start()
+        self.addCleanup(mock.patch.stopall)
+        self.assertEqual(self.gate.ROUTINES["photos"][:2], self.gate.ROUTINES["edit"][:2])
+        calls = []
+        post = lambda url, token: calls.append(url) or 200
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}, "photos": {"need": True, "sig": "p1"}}}, self.state)
+        res = self.gate.fire(self.state, post=post, env={"GATE_FIRE": "edit,photos", "ROUTINE_TOKEN_EDIT": "t"})
+        self.assertEqual(res["edit"], "Claude を起こした")
+        self.assertIn("2 本目を起こさない", res["photos"])
+        self.assertEqual(len(calls), 1)
+
+    def test_photos_alone_fire_then_stop_at_daily_cap(self):
+        self._noon().start()
+        self.addCleanup(mock.patch.stopall)
+        calls = []
+        post = lambda url, token: calls.append(url) or 200
+        env = {"GATE_FIRE": "edit,photos", "ROUTINE_TOKEN_EDIT": "t"}
+        day = self.gate.day_of(self.gate._now())
+        self.gate.save({"jobs": {"edit": {"need": False}, "photos": {"need": True, "sig": "p1"}}}, self.state)
+        self.assertEqual(self.gate.fire(self.state, post=post, env=env)["photos"], "Claude を起こした")
+        self.assertEqual(self.gate.load(self.state)["fires"][day]["photos"], 1)
+        self.gate.save({"jobs": {"edit": {"need": False}, "photos": {"need": True, "sig": "p2"}},
+                        "fires": {day: {"photos": self.gate.DAILY_FIRES["photos"]}}}, self.state)
+        self.assertIn("上限", self.gate.fire(self.state, post=post, env=env)["photos"])
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(self.gate.fire(self.state, post=post, env={**env, "GATE_FORCE": "photos"})["photos"], "Claude を起こした")
+
+    def test_ledger_keeps_days_when_log_rows_fall_off(self):
+        rows = [{"at": "2026-11-05T02:00:00+00:00", "run": 1, "tok": {"in": 1, "cw": 2, "cr": 3, "out": 4}},
+                {"at": "2026-11-05T03:00:00+00:00", "run": 1, "tok": {"in": 1, "cw": 2, "cr": 3, "out": 4}}]
+        with mock.patch.object(self.gate.runlog, "load", return_value=rows):
+            led = self.gate.update_ledger({})
+        self.assertEqual(led["2026-11-05"], {"in": 2, "cw": 4, "cr": 6, "out": 8, "batches": 2, "runs": 1})
+        with mock.patch.object(self.gate.runlog, "load", return_value=rows[1:]):
+            self.assertEqual(self.gate.update_ledger(led)["2026-11-05"]["batches"], 2)
+
     def test_unedited_inbox_means_edit_work(self):
         """版面には AI 編集済みの記事しか載らない：今日の inbox に未整理（_covered より後・edit.json にない版面）があれば AI 編集の仕事。"""
         (self.d / "2026-10-17.json").write_text(json.dumps({"items": [{"name": "新作", "entries": [{}] * 2},

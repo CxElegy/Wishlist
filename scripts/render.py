@@ -6924,6 +6924,21 @@ def _tk(n):
     return f"{n / 10000:.1f}万" if n >= 10000 else f"{n:,}"
 
 
+def _admin_token_days(d):
+    """1 日ごとの台帳（gate.update_ledger・直近 14 日）：回数・新規入力＋出力・キャッシュ読み・Claude を起こした回数。"""
+    led, fires = (d or {}).get("ledger") or {}, (d or {}).get("fires") or {}
+    days = sorted(set(led) | set(fires), reverse=True)[:14]
+    if not days:
+        return ""
+    rows = ""
+    for day in days:
+        u, f = led.get(day) or {}, fires.get(day) or {}
+        woke = "・".join(f"{e(n)} {c} 回" for n, c in (("AI 編集", f.get("edit")), ("写真", f.get("photos"))) if c) or "—"
+        rows += (f'<li><span class="tk-w">{e(day)}</span><span class="tk-b">{e(str(u.get("runs") or 0))} 回 · {e(str(u.get("batches") or 0))} バッチ<small>起こした：{woke}</small></span>'
+                 f'<span class="tk-n">入力＋出力 {_tk(int(u.get("in", 0)) + int(u.get("cw", 0)) + int(u.get("out", 0)))} · 読み {_tk(u.get("cr"))}</span></li>')
+    return f'<h3 class="h3">1 日ごとの台帳 <small>直近 14 日</small></h3><ol class="tks">{rows}</ol>'
+
+
 def _admin_edit_tokens(d):
     """「AI 編集のトークン」：AI 編集の回ごと・バッチ（5 版面ずつ編集 → 出刊 → push）ごとに使ったトークン（本物の数字、usage.py）。
     新規入力（キャッシュ書きを含む）・キャッシュ読み（安い）・出力。棒はその回でいちばん多いバッチを 100% に。"""
@@ -6938,6 +6953,7 @@ def _admin_edit_tokens(d):
     if d.get("cap"):   # gate.EDIT_DAILY_TOKENS：これを超えた日は、溜まった版面があっても起こさない（ボタンは別）
         out += (f'<p class="mt-x">1 日の上限：新規入力＋出力 {_tk(d["cap"])}（北京時間の 1 日）。超えたら、整理待ちが溜まっても次の日まで AI 編集を起こさない'
                 '（「AI 編集をもう一度起こす」は起こせる）。</p>')
+    out += _admin_token_days(d)
     for g in runs:
         peak = max([b["total"] for b in g["batches"]] + [1])
         rows = "".join(
