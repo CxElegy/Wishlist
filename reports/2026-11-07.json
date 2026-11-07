@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "edcdfb75c289",
+ "edit_sig": "2275a37914e6",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -190,8 +190,8 @@
      "date": "2026-11-06",
      "headline": "Nielsen: Netflix Ups Catalog Horror Series 'From' to No. 1 Across U.S. TV Households Through Oct. 25",
      "highlight": "No. 1",
-     "image": "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://s.yimg.com/lo/mysterio/api/d5cf628c681d5f588dd3da15ad8fd7d25cb987d4309eb79da84bc01b2329eb1a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd6a4598914c362c3f0bfdc8a51ad28df.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.mediaplaynews.com/nielsen-netflix-ups-catalog-horror-series-from-to-no-1-across-u-s-tv-households-through-oct-25/",
      "weight": "lead"
     }
@@ -420,33 +420,6 @@
     "alt_fg": "#1E1A18",
     "bg": "#211712",
     "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
-   "facts": [],
-   "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 1,
-     "source": "ScreenCrush",
-     "title": "The Rotta the Hutt Halloween Costume Was Just As Bad as the Character in ‘The Mandalorian and Grogu’",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBjS0czVEZQY01iUXRUVVZudy1ISWhhek53TTNDUno3Zzl0SjFjaXdNSEdIS29GcERONUtTSTlPejgwTTV1SUd1VFVGcndoTUlvM0Jrc01PY3ItZUxlWVhLa25MMG81MUJY?oc=5"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "ザ・マンダロリアン",
-   "theme": {
-    "accent": "#C9A66B",
-    "alt_accent": "#7A5A1F",
-    "alt_bg": "#ECEAE4",
-    "alt_fg": "#1B1D20",
-    "bg": "#14161A",
-    "fg": "#E8EAEC",
     "font": "serif",
     "split": true
    }
@@ -816,6 +789,31 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+   "facts": [],
+   "last": {
+    "date": "2026-11-06",
+    "headline": "The Mandalorian and Grogu Ambushed By Moff Gideon | LEGO Star Wars: The Mandalorian | Star Wars Kids",
+    "url": "https://www.jedinews.com/film-music-tv/articles/the-mandalorian-and-grogu-ambushed-by-moff-gideon-lego-star-wars-the-mandalorian-star-wars-kids/"
+   },
+   "name": "The Mandalorian",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "ザ・マンダロリアン",
+   "theme": {
+    "accent": "#C9A66B",
+    "alt_accent": "#7A5A1F",
+    "alt_bg": "#ECEAE4",
+    "alt_fg": "#1B1D20",
+    "bg": "#14161A",
+    "fg": "#E8EAEC",
+    "font": "serif",
     "split": true
    }
   },
