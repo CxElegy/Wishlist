@@ -1054,10 +1054,12 @@ class Resources(unittest.TestCase):
         x = resources.snapshot()
         self.assertGreaterEqual(x["cpu"], 1)
         self.assertEqual(x["disk_total"], x["disk_used"] + x["disk_free"])   # マシン全体ではなく、使える分
-        for k in ("mem_total", "mem_free", "disk_total", "disk_free", "peak"):
+        linux = sys.platform == "linux"   # メモリとピークは /proc と resource から（Windows にはない）
+        for k in ("disk_total", "disk_free") + (("mem_total", "mem_free", "peak") if linux else ()):
             self.assertIn(k, x)
             self.assertGreater(x[k], 0)
-        self.assertLessEqual(x["mem_free"], x["mem_total"])
+        if linux:
+            self.assertLessEqual(x["mem_free"], x["mem_total"])
 
     def test_sizes(self):
         import resources
@@ -1102,7 +1104,8 @@ class Resources(unittest.TestCase):
             subprocess.run([sys.executable, "-c", code, d], cwd=ROOT, check=True)
             row = runlog.load("emblem", pathlib.Path(d))[-1]
         self.assertEqual(row["tokens"], 1234)
-        self.assertIn("mem_total", row["res"])
+        if sys.platform == "linux":   # メモリは /proc/meminfo から（Windows にはない）
+            self.assertIn("mem_total", row["res"])
 
 
 if __name__ == "__main__":
@@ -1570,6 +1573,44 @@ class Gate(unittest.TestCase):
         self.assertEqual(res["edit"], "Claude を起こした")   # AI 編集だけ起こす
         self.assertIn("GATE_FIRE で止めている", res["photos"])
         self.assertEqual(len(calls), 1)
+
+    def test_photos_use_edit_routine_without_second_run(self):
+        """写真は AI 編集の予約で起こす。両方に仕事があっても 1 本だけ起こす（2026-11-07）。"""
+        self._noon().start()
+        self.addCleanup(mock.patch.stopall)
+        self.assertEqual(self.gate.ROUTINES["photos"][:2], self.gate.ROUTINES["edit"][:2])
+        calls = []
+        post = lambda url, token: calls.append(url) or 200
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}, "photos": {"need": True, "sig": "p1"}}}, self.state)
+        res = self.gate.fire(self.state, post=post, env={"GATE_FIRE": "edit,photos", "ROUTINE_TOKEN_EDIT": "t"})
+        self.assertEqual(res["edit"], "Claude を起こした")
+        self.assertIn("2 本目を起こさない", res["photos"])
+        self.assertEqual(len(calls), 1)
+
+    def test_photos_alone_fire_then_stop_at_daily_cap(self):
+        self._noon().start()
+        self.addCleanup(mock.patch.stopall)
+        calls = []
+        post = lambda url, token: calls.append(url) or 200
+        env = {"GATE_FIRE": "edit,photos", "ROUTINE_TOKEN_EDIT": "t"}
+        day = self.gate.day_of(self.gate._now())
+        self.gate.save({"jobs": {"edit": {"need": False}, "photos": {"need": True, "sig": "p1"}}}, self.state)
+        self.assertEqual(self.gate.fire(self.state, post=post, env=env)["photos"], "Claude を起こした")
+        self.assertEqual(self.gate.load(self.state)["fires"][day]["photos"], 1)
+        self.gate.save({"jobs": {"edit": {"need": False}, "photos": {"need": True, "sig": "p2"}},
+                        "fires": {day: {"photos": self.gate.DAILY_FIRES["photos"]}}}, self.state)
+        self.assertIn("上限", self.gate.fire(self.state, post=post, env=env)["photos"])
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(self.gate.fire(self.state, post=post, env={**env, "GATE_FORCE": "photos"})["photos"], "Claude を起こした")
+
+    def test_ledger_keeps_days_when_log_rows_fall_off(self):
+        rows = [{"at": "2026-11-05T02:00:00+00:00", "run": 1, "tok": {"in": 1, "cw": 2, "cr": 3, "out": 4}},
+                {"at": "2026-11-05T03:00:00+00:00", "run": 1, "tok": {"in": 1, "cw": 2, "cr": 3, "out": 4}}]
+        with mock.patch.object(self.gate.runlog, "load", return_value=rows):
+            led = self.gate.update_ledger({})
+        self.assertEqual(led["2026-11-05"], {"in": 2, "cw": 4, "cr": 6, "out": 8, "batches": 2, "runs": 1})
+        with mock.patch.object(self.gate.runlog, "load", return_value=rows[1:]):
+            self.assertEqual(self.gate.update_ledger(led)["2026-11-05"]["batches"], 2)
 
     def test_unedited_inbox_means_edit_work(self):
         """版面には AI 編集済みの記事しか載らない：今日の inbox に未整理（_covered より後・edit.json にない版面）があれば AI 編集の仕事。"""
@@ -2268,7 +2309,7 @@ class FindSources(unittest.TestCase):
         """顔だけのアップは外して元の画像を emblem_reject・人を emblem_redo に。顔が測れないものは残す。固定は替えない。半分以上が当たる前からの版面は外さず報告だけ（取るときは無条件）。"""
         from PIL import Image
         def run(flags, only=None):
-            with tempfile.TemporaryDirectory() as d:
+            with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as d:   # Windows は開いたままの画像を消せない
                 tmp = pathlib.Path(d)
                 (tmp / "emblems").mkdir()
                 lines = ["items:", "  - name: b", "    emblem_kind: character", "    emblem:"]

@@ -2521,7 +2521,9 @@ def edit_tokens(tz, days=7):
                 today[k] = today.get(k, 0) + int(tok.get(k) or 0)
     out = sorted(runs.values(), key=lambda g: g["at"], reverse=True)[:10]
     import gate
-    return {"runs": out, "today": today, "week": week, "cap": gate.EDIT_DAILY_TOKENS}
+    st = gate.load()
+    return {"runs": out, "today": today, "week": week, "cap": gate.EDIT_DAILY_TOKENS,
+            "ledger": st.get("ledger") or {}, "fires": st.get("fires") or {}}
 
 
 def backend_log(tz, n=40):

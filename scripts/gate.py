@@ -10,7 +10,7 @@ Claude の定時タスクは、仕事がなくても起きるたびにトーク�
 
 Claude を起こすには、定時タスクごとの API トークンが要る（claude.ai/code/routines → タスク → 編集 → API の触发器 → 令牌）：
   AI 編集     ROUTINE_TOKEN_EDIT（既存の Secret ROUTINE_FIRE_TOKEN をそのまま渡す）
-  写真から愿望 ROUTINE_TOKEN_PHOTOS（Secret ROUTINE_FIRE_TOKEN_PHOTOS）
+  写真から愿望も同じ予約・同じ鍵で起こす（2026-11-07：写真用の鍵がなく、毎日の定時が写真なしでも約 $1.7 かかっていた。EDITING.md が写真を先に処理する）
 本当に起こすかは GATE_FIRE で決める（background.yml がリポジトリ変数 vars.GATE_FIRE を渡す。
 GitHub → Settings → Secrets and variables → Actions → Variables）：
   0           起こさない（判断と記録だけ）
@@ -56,6 +56,10 @@ RIPE_HOURS = 2
 # AI 編集の 1 日（北京時間）の上限：新規入力（キャッシュ書きを含む）＋出力。キャッシュ読みは安いので数えない（管理ページの「今日」と同じ数）。
 # 2026-10-22〜24 は 1 日 13〜31 万。ボタン（GATE_FORCE）は上限でも起こす
 EDIT_DAILY_TOKENS = 1_000_000
+# 写真はトークンの記録がないので、1 日に起こす回数で上限を決める（2026-11-07 トークンエコノミー：仕事ごとの 1 日の上限）。ボタン（GATE_FORCE）は上限でも起こす
+DAILY_FIRES = {"photos": 3}
+SHARED_ROUTINE = {"edit": "photos", "photos": "edit"}   # 同じ予約の仕事：片方が動き始めて MIN_GAP_MIN 分は、もう片方で 2 本目を起こさない
+LEDGER_DAYS = 60   # 使ったトークンの台帳（state/gate.json の ledger・fires）を残す日数
 ACTIVE_MIN = 30   # 最後の AI 編集のバッチ（state/log/edit.json の出刊の行）からこの分数以内だけ「動いている」と出す
 
 
@@ -84,7 +88,7 @@ MAX_ATTEMPTS = 3   # 停滞のとき、仕事が減らないまま起こし直�
 # AI が要る仕事 → (定時タスクの id, トークンの環境変数, 名前)
 ROUTINES = {
     "edit": ("trig_01Ly92RcW35cBwZ9amWZr11j", "ROUTINE_TOKEN_EDIT", "AI 編集"),
-    "photos": ("trig_015cccBEWhcv2bB47qVg7xx5", "ROUTINE_TOKEN_PHOTOS", "写真から愿望"),
+    "photos": ("trig_01Ly92RcW35cBwZ9amWZr11j", "ROUTINE_TOKEN_EDIT", "写真から愿望"),   # AI 編集と同じ予約
 }
 
 
@@ -167,6 +171,27 @@ def edit_tokens_today(log_dir=None, tz=DAY_TZ, now=None):
         if isinstance(tok, dict) and r.get("at") and day_of(r["at"], tz) == today:
             n += sum(int(tok.get(k) or 0) for k in ("in", "cw", "out"))
     return n
+
+
+def update_ledger(ledger, log_dir=None, tz=DAY_TZ, keep=LEDGER_DAYS):
+    """AI 編集の 1 日ごとのトークンの台帳。state/log/edit.json は数日で古い行が落ちるので、ここに残す。
+    行が落ちて少なく数え直した日は上書きしない（バッチ数が前より少なければ前のまま）。→ {日付: {in, cw, cr, out, batches, runs}}"""
+    new, runs = {}, {}
+    for r in runlog.load("edit", log_dir):
+        tok = r.get("tok")
+        day = day_of(r.get("at") or "", tz)
+        if not isinstance(tok, dict) or not day:
+            continue
+        d = new.setdefault(day, {"in": 0, "cw": 0, "cr": 0, "out": 0, "batches": 0})
+        for k in ("in", "cw", "cr", "out"):
+            d[k] += int(tok.get(k) or 0)
+        d["batches"] += 1
+        runs.setdefault(day, set()).add(str(r.get("run") or r["at"]))
+    out = dict(ledger or {})
+    for day, d in new.items():
+        if d["batches"] >= int((out.get(day) or {}).get("batches") or 0):
+            out[day] = {**d, "runs": len(runs[day])}
+    return {k: out[k] for k in sorted(out)[-keep:]}
 
 
 def edit_work(inbox=INBOX, tz=DAY_TZ, today=None):
@@ -266,6 +291,7 @@ def check(tz=DAY_TZ, path=None):
     prev = data.get("jobs") or {}
     changed = any((prev.get(k) or {}).get("sig") != j["sig"] or (prev.get(k) or {}).get("need") != j["need"] for k, j in jobs.items())
     data["checked"] = _now().isoformat(timespec="seconds")
+    data["ledger"] = update_ledger(data.get("ledger"), tz=tz)
     data["jobs"] = {k: {**prev.get(k, {}), **v} for k, v in jobs.items()}
     data["changed"] = changed   # 判断が前と同じなら、ワークフローはゲートの記録だけのコミットをしない
     save(data, path)
@@ -513,6 +539,19 @@ def fire(path=None, post=_post, env=None):
                 nxt = next_slot(job, now).astimezone(zoneinfo.ZoneInfo(SLOT_TZ)).strftime("%H:%M")
                 results[job] = f"1 日 2 回（{' と '.join(f'{h}:{m:02d}' for h, m in SLOTS[job])}）。次は {nxt}"
                 continue
+        if job not in force and job in SHARED_ROUTINE:
+            other = ((data.get("jobs") or {}).get(SHARED_ROUTINE[job]) or {}).get("fired") or {}
+            try:
+                busy = bool(other.get("at")) and now - dt.datetime.fromisoformat(other["at"]) < dt.timedelta(minutes=MIN_GAP_MIN)
+            except (ValueError, TypeError):
+                busy = False
+            if busy:
+                results[job] = f"同じ予約が {MIN_GAP_MIN} 分以内に動き始めた（2 本目を起こさない）"
+                continue
+        today_fires = ((data.get("fires") or {}).get(day_of(now)) or {}).get(job, 0)
+        if job not in force and job in DAILY_FIRES and today_fires >= DAILY_FIRES[job]:
+            results[job] = f"今日は上限の {DAILY_FIRES[job]} 回まで起こした（明日まで待つ・ボタンは起こせる）"
+            continue
         # progress（60 分たって、進んだがまだ残りがある）→ 新しい状況として attempts=1 で起こす
         token = env.get(var)
         if not token:
@@ -524,6 +563,9 @@ def fire(path=None, post=_post, env=None):
                           "attempts": attempts, "resp": _resp(out), **({"forced": True} if job in force else {}),
                           **({"now": True} if job_now else {})}
             j.pop("now_pending", None)
+            fires = data.setdefault("fires", {})
+            fires.setdefault(day_of(now), {})[job] = today_fires + 1
+            data["fires"] = {k: fires[k] for k in sorted(fires)[-LEDGER_DAYS:]}
             results[job] = "Claude を起こした" + (f"（{attempts} 回目：前は動かなかった）" if attempts > 1 else "")
         except Exception as e:   # 起こせなくても、定時のほうで拾われる
             results[job] = f"起こせなかった：{str(e)[:80]}"

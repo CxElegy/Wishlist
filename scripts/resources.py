@@ -37,7 +37,7 @@ def snapshot(path=None):
     snap = {"cpu": os.cpu_count() or 0}
     try:
         snap["load"] = round(os.getloadavg()[0], 2)
-    except OSError:
+    except (OSError, AttributeError):   # Windows には getloadavg がない
         pass
     m = _meminfo()
     if m.get("MemTotal"):
