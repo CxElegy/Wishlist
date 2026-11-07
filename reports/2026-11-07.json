@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "6b95997c5386",
+ "edit_sig": "8c0aa2ec0611",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -548,15 +548,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 3,
-     "source": "キャラグー",
-     "title": "チェンソーマン パスケースの入荷日・価格｜プライズ",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBvVkNjYVZ4dExjVHFrR2VqTnczNjJRbTk2UHVDRnRkcXFuSmRZT3BkalJlOUFtVWEycWl6Y1pZczd0blNXRnM5WnZRRVptU05USTBCRS00SQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -568,6 +559,16 @@
      "image_via": "og:image",
      "url": "https://www.hercampus.com/school/point-park/chainsaw-man-movie-gets-a-raving-review/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "チェンソーマン パスケースの入荷日・価格",
+     "highlight": "入荷日・価格",
+     "image": "https://charagoo.jp/wp-content/uploads/2025/08/D104748_01.jpg",
+     "image_via": "og:image",
+     "url": "https://charagoo.jp/prize/item/a8def65a59fa/",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
