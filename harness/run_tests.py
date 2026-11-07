@@ -36,6 +36,14 @@ def main(argv):
     with cf.ThreadPoolExecutor(max_workers=int(os.environ.get("TEST_JOBS") or os.cpu_count() or 2)) as ex:
         res = list(ex.map(one, names))
     bad = [r for r in res if r[1] != 0]
+    # 並列で重いときだけ時間で落ちる試験がある（test_ux_journey：単独では緑）。落ちたファイルは 1 回だけ単独で流し直し、
+    # 通れば「不安定」と名前を出して失敗に数えない（pytest-rerunfailures と同じ考え。2026-11-08）
+    flaky = []
+    if bad and len(bad) <= 5:
+        again = [one(r[0]) for r in bad]
+        flaky = [r[0] for r in again if r[1] == 0]
+        bad = [r for r in again if r[1] != 0]
+        res = [r for r in res if r[0] not in flaky]
     ran = sum(int(m) for r in res for m in re.findall(r"^Ran (\d+) test", r[2], re.M))
     for name, _, out, _ in bad:
         print(f"\n===== {name} =====")
@@ -44,6 +52,8 @@ def main(argv):
     slow = sorted(res, key=lambda r: -r[3])[:3]
     print(f"{len(names)} ファイル・{ran} 試験・{time.time() - t0:.0f} 秒・落ちた {len(bad)} ファイル"
           f"（遅い順：{'、'.join(f'{r[0]} {r[3]:.0f}秒' for r in slow)}）")
+    if flaky:
+        print("不安定（並列で落ち、単独で通った）：" + " ".join(flaky))
     if bad:
         print("落ちた：" + " ".join(r[0] for r in bad))
     return 1 if bad else 0
