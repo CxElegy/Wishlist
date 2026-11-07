@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "f286acc079ca",
+ "edit_sig": "358c0092ae8b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -106,22 +106,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-04",
-     "n": 5,
-     "source": "Dexerto",
-     "title": "New World review – Amazon’s MMO lacks reasons to invest in its gorgeous world",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBDNEY1eU9ybVlmZzR0S0JRV21zR2NHZGsyREU4bjFRZmJmZC1NVmEzTkI3bXUxUmlsbmdSSGVhT3FaQnFaQkZldV9ObWQ5UFRXdFFPd194Y2tlVEVsZVNFWGU2WVhmamlm?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 6,
-     "source": "4Gamer.net",
-     "title": "週刊Steam広場 第178号：オープンワールド農業シム「Lightyear Frontier」や，アクションMMORPG「ArcheAge Chronicles」が発売に",
-     "url": "https://www.4gamer.net/games/038/G003821/20261107001/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -257,9 +241,8 @@
      "date": "2026-11-06",
      "headline": "Nielsen: Netflix Ups Catalog Horror Series 'From' to No. 1 Across U.S. TV Households Through Oct. 25",
      "highlight": "No. 1",
-     "image": null,
-     "source": "Media Play News",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.mediaplaynews.com&sz=128",
+     "image": "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.mediaplaynews.com/nielsen-netflix-ups-catalog-horror-series-from-to-no-1-across-u-s-tv-households-through-oct-25/",
      "weight": "lead"
     }
@@ -891,8 +874,8 @@
      "date": "2026-11-07",
      "headline": "NEON 重启 PAK 达成 99 次，TOP100 与 Bugs 重回第一|A2O LITE|iChart",
      "highlight": "",
-     "image": "http://wx2.sinaimg.cn/middle/008eZAxIly1iito27tfecj30yp18yn23.jpg",
-     "image_via": "正文图（本站保存）",
+     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.sina.cn/news/detail/5362634360358380.html",
      "weight": "lead"
     },
