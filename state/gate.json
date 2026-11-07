@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-07T05:17:47+00:00",
+ "checked": "2026-11-07T05:32:28+00:00",
  "fired": {
-  "at": "2026-11-07T04:18:07+00:00",
+  "at": "2026-11-07T05:32:28+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,51 +12,71 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-07T04:18:07+00:00",
+    "at": "2026-11-07T05:32:28+00:00",
     "attempts": 1,
     "day": "2026-11-07",
-    "prog": 178,
-    "resp": "cse_01W4x6f5hGKM8xzuQTr2vtqi",
-    "sig": "5efc4ac2a800"
+    "prog": 181,
+    "resp": "cse_01W4x6f985uCQ9LAo6DdPS9b",
+    "sig": "d872cd2a5abc"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "dota2",
+    "gelato pique",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
+   ],
    "last_batch": "2026-11-07T04:44:23+00:00",
    "last_error": {
     "at": "2026-11-07T04:28:08+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 181,
    "prog_day": "2026-11-07",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "GTA 6",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
+   ],
+   "sig": "d872cd2a5abc",
    "token_cap": 1000000,
    "tokens_today": 298834,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 37 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
+    "dota2",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦",
     "A2O LITE",
+    "绝区零"
+   ],
+   "need": true,
+   "sig": "bffd12de3a2e",
+   "waiting": [
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "哈利波特剧集"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
