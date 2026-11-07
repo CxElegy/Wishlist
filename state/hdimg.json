@@ -35,6 +35,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd/sni/400/w1080h1720/20261107/c821-9ec944bfb0b7f330821dc35a869b52d8.jpg": {
+  "w": 1080,
+  "h": 1720,
+  "target": 1280,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261102ac/533/w480h853/20261102/7780-0a6003cb13ffbcc36930581088077907.jpg": {
   "w": 480,
   "h": 853,
@@ -439,16 +445,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
-  "w": 300,
-  "h": 225,
+ "https://cdn.gamey.kr/news/photo/202609/3018752_170370_5622.jpg": {
+  "w": 600,
+  "h": 450,
   "target": 1280,
   "v": 3,
-  "blur": 0.606,
-  "local": "pics/1f4c2211c5986133.webp",
+  "blur": 0.447,
+  "local": "pics/ad97cd7134cf3368.webp",
   "out": [
-   900,
-   675
+   1280,
+   960
   ],
   "why": "看不清"
  },
