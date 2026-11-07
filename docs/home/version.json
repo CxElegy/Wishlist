@@ -1,6 +1,6 @@
 {
  "admin": "e190e700f58b",
- "admin-ai": "f1fd0c83df61",
+ "admin-ai": "dea9ff8a5230",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "9ba0375c"
+   "e1ce18c3"
   ]
  },
  "admin-boards": "81f026d5516d",
@@ -22,11 +22,11 @@
    "73f5150b"
   ]
  },
- "admin-emblem": "562daea1f91d",
+ "admin-emblem": "93da969fbe91",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c59b6b55"
+   "4760cf1e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "ee5225d27288",
  "admin-members_marks": {},
- "admin-now": "ca38164ea4b0",
+ "admin-now": "6a77856ea488",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2ac9bba6"
+   "b2c18b5b"
   ]
  },
- "admin-system": "cd44649df9f0",
+ "admin-system": "cc9da2ae4f85",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1550bfaa"
+   "1828086f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a703be4f"
+   "6107dd78"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "686cafb7"
   ]
  },
- "index": "a59d4c0dac81",
+ "index": "f08f0fb28855",
  "index_marks": {
   "front": [
    "トップ",
-   "196460a7"
+   "9a8e18f2"
   ],
   "picks": [
    "気になるかも？",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "d408ff4c"
+   "38a42a54"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "40b24a5b"
   ]
  },
- "updated": "11.07 21:36",
+ "updated": "11.07 21:39",
  "wishlist": "de38ae8eb191"
 }
