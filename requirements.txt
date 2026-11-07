@@ -8,3 +8,4 @@ requests-cache>=1.2,<2     # その応答のディスクキャッシュ（~/.cac
 scrapling[fetchers]>=0.5,<0.6   # 拒まれた記事の頁・画像の取り直し（scripts/images.py の _scrape・_browser_html、scrapling 公式スキル）
 beautifulsoup4>=4.12,<5   # 並べ方の見本（scripts/layout_sample.py）
 lxml>=5,<7
+tzdata; sys_platform == "win32"   # 店長の PC（Windows）には時刻帯のデータが無い（zoneinfo が Asia/Tokyo を引けない）

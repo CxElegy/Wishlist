@@ -15,6 +15,8 @@ import time
 import urllib.error
 import urllib.request
 
+import nostorage  # noqa: F401  網を使う道具の決まり（tests/test_browser_guard）
+
 UP_CODES = {200, 401}
 TRIES = 3
 RETRY_S = 60

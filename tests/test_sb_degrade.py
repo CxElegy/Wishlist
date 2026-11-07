@@ -467,6 +467,7 @@ class EveryCallGoesThroughSbstate(unittest.TestCase):
         "photo_cache_fill.py": {"/rest/v1/": "1 日 1 回・1 GET・失敗は空で続ける（photo_cache.yml）"},
         "emb_check.py": {"/rest/v1/": "係の手元の点検（Actions でない）・読むだけ 1 回"},
         "ux_check.py": {"/": "係の手元の点検（Actions でない）・本番を読むだけ・各段 1 回"},
+        "pc_watch.py": {"/auth/v1/health": "PC のサーバーの死活を外から見るだけ（鍵なし・1 回に最大 3 GET）。402 も「届かない」と数えて知らせる側なので、制限の印を付けない"},
     }
 
     def scan(self, files=None):
