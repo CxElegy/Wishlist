@@ -62,7 +62,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for p in wl-photo-cache- ask-state- wishlist-http- wd-facts-; do
+          for p in wl-photo-cache- ask-state- wishlist-http- wd-facts- pc-watch-; do
             if ! ids=$(gh cache list --key "$p" --sort created_at --order desc --limit 100 --json id --jq '.[1:][].id'); then
               echo "::warning::gh cache list が失敗（$p。権限 actions: write が要る）。古い cache が消えず枠が埋まるかもしれない"
               continue

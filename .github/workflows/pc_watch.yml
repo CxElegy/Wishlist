@@ -36,6 +36,17 @@ jobs:
           restore-keys: pc-watch-
       - run: python scripts/pc_watch.py .pc_watch_state.json
       - uses: actions/cache/save@v4
+        if: always()
         with:
           path: .pc_watch_state.json
           key: pc-watch-${{ github.run_id }}
+      - id: chk
+        if: always()
+        uses: actions/cache/restore@v4
+        with:
+          path: .pc_watch_state.json
+          key: pc-watch-${{ github.run_id }}
+          lookup-only: true
+      - name: 状態の保存が拒まれたら警告（save は拒まれても緑のまま）
+        if: always() && steps.chk.outputs.cache-hit != 'true'
+        run: echo "::warning::見張りの状態の cache が保存できなかった。次の回は初回の扱いになり、止まり続けていれば「止まった」をもう一度知らせる"
