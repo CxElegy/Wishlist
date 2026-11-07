@@ -23,12 +23,16 @@ COMMON = """
 .pkgrid.row>.pk:last-child:nth-child(odd){grid-column:1/-1}
 """
 # 横に並べる案：2 つの箱の高さを揃える。長いほうの下の項目を隠す（「全部見る」から見られる）。3 件は残す
-EVEN_JS = """<script>(()=>{const go=()=>{const s=document.querySelector('.mgrid>.fside');if(!s)return;
-s.querySelectorAll('li[data-even]').forEach(l=>{l.hidden=false;l.removeAttribute('data-even');});
-const bx=[...s.children].filter(b=>b.offsetHeight);if(bx.length!==2||Math.abs(bx[0].offsetTop-bx[1].offsetTop)>4)return;
+EVEN_JS = """<script>(()=>{const s=()=>document.querySelector('.mgrid>.fside');
+const go=reset=>{const f=s();if(!f)return;const bx=[...f.children].filter(b=>b.offsetHeight);
+if(reset)f.querySelectorAll('li[data-even]').forEach(l=>{l.hidden=false;l.removeAttribute('data-even');});
+if(bx.length!==2||Math.abs(bx[0].offsetTop-bx[1].offsetTop)>4)return;
 for(let n=0;n<40;n++){const[a,b]=bx.map(x=>x.offsetHeight);if(Math.abs(a-b)<=18)break;const tall=a>b?bx[0]:bx[1];
 const li=[...tall.querySelectorAll('ol>li:not([hidden])')];if(li.length<=3)break;const l=li[li.length-1];l.hidden=true;l.setAttribute('data-even','1');}};
-addEventListener('load',()=>setTimeout(go,300));let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(go,200);});})();</script>"""
+/* 壁の並べ直し（FIT_JS の wall）が行を表示に戻すので、箱の高さが変わるたびに揃え直す（揃っていれば何もしない） */
+let q;const soon=r=>{clearTimeout(q);q=setTimeout(()=>go(r),120);};
+addEventListener('load',()=>{soon(true);if(window.ResizeObserver){const f=s();if(f){const ro=new ResizeObserver(()=>soon(false));[...f.children].forEach(b=>ro.observe(b));}}});
+addEventListener('resize',()=>setTimeout(()=>soon(true),400));})();</script>"""
 
 PLANS = {
     "1": ("1：縦に積む（中身を段に）", COMMON + """
