@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "7715fc15fd8d",
+ "edit_sig": "2325ed75530e",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -256,29 +256,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 10,
-     "source": "YouTube · ILLIT",
-     "title": "*everyone hold their breath* #체포하겠어 #You_re_Under_Arrest #ILLIT #아일릿",
-     "url": "https://www.youtube.com/watch?v=bGaWDtL3GTs"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 11,
-     "source": "YouTube · ILLIT",
-     "title": "#체포하겠어 🚨 with @TUIDE_official #SEAH #YIHANI#You_re_Under_Arrest #ILLIT #아일릿",
-     "url": "https://www.youtube.com/watch?v=dQ0CFW8iVz8"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 12,
-     "source": "Weverse",
-     "title": "[EVENT] 아일릿(ILLIT) ‘디즈니런 2026 인천’ 무대 참여 안내 (+당첨자 발표)",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFB2cEF1U0dYSEp3Y2h0M0ZTVDlDQWdwYXNFWDVEVWlYSnJFQ1ZGSG9wZnNMR2lEd2tTODhYWGl1c2thMUlRemFOaXIzaG9YQktNa2VvRDJ3?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -310,6 +287,16 @@
      "source": "allkpop",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.allkpop.com&sz=128",
      "url": "https://www.allkpop.com/article/2026/11/illit-faces-backlash-over-live-vocals-during-music-bank-no-1-encore-stage",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "[EVENT] 아일릿(ILLIT) ‘디즈니런 2026 인천’ 무대 참여 안내 (+당첨자 발표)",
+     "highlight": "",
+     "image": "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414",
+     "image_via": "og:image",
+     "url": "https://weverse.io/illit/notice/40308?hl=es",
      "weight": "normal"
     }
    ],
@@ -805,8 +792,8 @@
      "date": "2026-11-04",
      "headline": "이수만이 다시 일냈다…신인 A2O LITE, 데뷔하자마자 ‘1위 행진’",
      "highlight": "1위 행진",
-     "image": "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png",
-     "image_via": "JSON-LD",
+     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
+     "image_via": "og:image",
      "url": "https://www.kpab.net/news/articleView.html?idxno=1865",
      "weight": "lead"
     },

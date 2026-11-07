@@ -524,16 +524,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
-  "w": 600,
-  "h": 400,
+ "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg": {
+  "w": 300,
+  "h": 200,
   "target": 1280,
   "v": 3,
-  "blur": 0.475,
-  "local": "pics/ffd4ccaef88f5a5d.webp",
+  "blur": 0.653,
+  "local": "pics/1b57abae8ed7a45b.webp",
   "out": [
-   1280,
-   853
+   900,
+   600
   ],
   "why": "看不清"
  },
