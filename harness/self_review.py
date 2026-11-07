@@ -33,7 +33,7 @@ MEASURE_JS = r"""
   const out = [], tag = (el, kind, note) => { const i = out.length; el.setAttribute('data-sr', i); out.push({i, kind, note, sel: '[data-sr="' + i + '"]'}); };
   const vis = e => { if (!e.checkVisibility || !e.checkVisibility({checkOpacity: true, checkVisibilityCSS: true})) return false; const r = e.getBoundingClientRect(); return r.width > 2 && r.height > 2; };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(i => {
-    if (!i.naturalWidth || i.naturalWidth < 32 || !vis(i)) return;
+    if (!i.naturalWidth || i.naturalWidth < 32 || !vis(i) || i.closest('.pic.trim')) return;   // .trim：焼き込みの帯だけ外した絵
     const b = i.getBoundingClientRect(), r = i.naturalWidth / i.naturalHeight / (b.width / b.height), q = Math.min(r, 1 / r), loss = Math.round((1 - q) * 100), fit = getComputedStyle(i).objectFit, label = (i.closest('article,.pk,.wc,a') || i).innerText || '';
     const name = label.trim().split('\n').pop().slice(0, 24);
     if (fit === 'cover' && loss > (i.dataset.m ? 55 : 30)) tag(i.closest('.pic'), 'crop', loss + '% 切れ（' + name + '）');

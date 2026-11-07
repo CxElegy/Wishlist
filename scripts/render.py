@@ -423,6 +423,9 @@ button{font-family:inherit}
 .card.mini:not(.nophoto){row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.mini:not(.nophoto)>.pic{grid-column:1;grid-row:1/span 9}.card.mini:not(.nophoto)>*:not(.pic):not(.lk){grid-column:2}
 .pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
 .pk.shaped .pkt{flex:1 1 auto}
+.stk.stk.stk.stk.stk{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+.stk.stk.stk.stk.stk>*{grid-column:1!important}
+.stk.stk.stk.stk.stk>.pic{grid-row:auto!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:var(--ar)!important;margin-bottom:8px}
 .pic.trim img:not(.bg):not(.ico){inset:auto;max-width:none;object-fit:fill!important}
 .brief{padding:12px 26px 18px;border-top:1px solid var(--line)}
 .brief h4{margin:0 0 8px;font:900 13px var(--font-sans);letter-spacing:.12em;opacity:.8}
@@ -3532,7 +3535,7 @@ FIT_JS = """
       // 比率が違っても、顔・題字（data-m）が 6 割以上残る位置で切れるなら切る（案 2）。残らない絵は今までどおり全体を見せる
       p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.7));
       // 切れない横長の絵：枠を絵の形にして、余りは手書きの札が受ける（帯も空きも出さない。2026-11-07）
-      if (!p.classList.contains('fill') && r > 1) { Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', flex: 'none', height: (p.clientWidth / nat + pko) + 'px'}); p.classList.add('fill'); pk.classList.add('shaped'); return; }
+      if (!p.classList.contains('fill') && r > 1 && !pk.matches('.big')) { Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', flex: 'none', height: (p.clientWidth / nat + pko) + 'px'}); p.classList.add('fill'); pk.classList.add('shaped'); return; }
       if (!p.classList.contains('fill') && r < 0.75) side(pk, p, nat, p.clientHeight);   // 写真が枠より細い：空いた横に札を置く
       return;
     }
@@ -3542,11 +3545,16 @@ FIT_JS = """
     // それ以上切れる絵（ロゴ・文字入りが多い）だけ全体を見せ、周りを絵の端の色で埋める（.whole：文字を欠かさず、白い帯にも見えない）
     const mini = p.closest('.card.mini:not(.nophoto)') || (innerWidth <= 760 && sm && !sm.classList.contains('nophoto') ? sm : null);
     if (mini) {
-      p.classList.remove('whole');
+      p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar');
       const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
       const ok = q >= 0.7 ? (cropAt(img, rr) || !img.dataset.m || q >= 0.88) : cropAt(img, rr);
       p.classList.toggle('fill', ok); p.classList.toggle('whole', !ok);
-      if (!ok) { img.style.objectPosition = ''; delete img.dataset.keep; if (img._edge) p.style.background = img._edge; }
+      if (!ok) {
+        img.style.objectPosition = ''; delete img.dataset.keep;
+        // 切れない横長の絵：写真を上・字を下に積む（切らず・帯なし・写真も大きい）。細い絵は全体を見せて周りを絵の端の色に
+        if (nat > 1 && !mini.matches('.tape')) { p.style.setProperty('--ar', nat.toFixed(3)); mini.classList.add('stk'); p.classList.remove('whole'); p.classList.add('fill'); }
+        else if (img._edge) p.style.background = img._edge;
+      }
       return;
     }
     const big = p.closest('article.hero, article.lead, article.wide');
