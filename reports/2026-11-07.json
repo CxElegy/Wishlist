@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "b381a3bf8167",
+ "edit_sig": "9662cfd644f9",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -374,57 +374,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 16,
-     "source": "Vietnam.vn",
-     "title": "Galaxy S27 UltraはiPhoneのようなデザインを採用しているが、これはサムスンにとって正しい方向への一歩と言えるのだろうか？",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOUlZHdU1Cajdfa0ozRjRWSGZ4aVh4Zzk1NVRqcEFad1VLdjVTWUZZaEc3VWR0emdsd3pUR181dl9YVXBqVkZ6NHZCMU1ZbDdhOUtWb2NNM3RvQUlBN1dyMm9GMDRYdHQ0dkw2dWJIMVFiWGZNQUpGb2I5SWFacWJhZ0RLWkw5c1A5dTIzNlZVdWp5RUdXeHpRM0FaU1JQS2c?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 17,
-     "source": "Vietnam.vn",
-     "title": "갤럭시 S27 울트라는 아이폰과 유사한 디자인을 가지고 있는데, 이는 삼성에게 올바른 방향으로 나아가는 발걸음일까요?",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOay1sN2ZkeGsxYVM0OTZWeTRVeWFrSzFpTGFZdmJudjluMVVHcVhtSE5RNmU4azVETVBkbmMyNUxsbVIyZzU4MTZjWFhxaFNPbk0wdFdtdU9yQXpsRDQyWFNaZkd0c2ZaeWdrckZyYzFLenREVDIzcndZRzA2QXlFTFowczNpLTVsNkwxMGl4bzJoZk5UNHp5SUZhTDhBOEk?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 18,
-     "source": "Vietnam.vn",
-     "title": "The Galaxy S27 Ultra has an iPhone-like design; is this a step in the right direction for Samsung?",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxONmtTcnhMcUYyTnJsWVBWTUt3b3l1QkVQLXlWbVFOd3dQclFTTVMyTDV6YWpNQ0JtRWk3S19UdFBoMGcwTDdiTHlKN0xEV1V1SFcwdzFzMEVrVW9VZldKYkZMX0lOVVFveWxkNmRUaFdiZENSZlFoUWpjS3dQRHFoM1hnWl9fdUxwNDhMOVJJV2p6Y21ZNjJpYzJscjJTMzg?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 19,
-     "source": "베타뉴스",
-     "title": "갤럭시S27부터 AI 안경까지... 앞으로 출시될 삼성 신제품 총정리",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1nZlFGRUVONUdsYnJCUGJ2Tkg2V1RHTkVKbW1XLU9UTVZ3VDF1d3E1OXNjSFE5VDNCbUJuSVh4RzBvVzBqMXVhUDM1enNyZF9sV2UwN2hpNnZ3RjZ2SDN2MG1QU0Y?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 20,
-     "source": "베타뉴스",
-     "title": "엑시노스 싫어하는 사람들이 S27 프로와 울트라를 좋아하는 이유",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9VSU9UWTZGallBRTh2czZfcnhBbUJDc1haMXFkODE2bWF4ZncyQXl5RmxTVFVGWDlQUXZpdlJkeUExZFdMTzI1a2p3SVgzbk56bFlwTnd3UzhJYl9idEpnTXo5bVk?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 21,
-     "source": "Android Police",
-     "title": "Samsung Galaxy S27 Ultra tipped to use Snapdragon processor despite overheating concerns",
-     "url": "https://www.androidpolice.com/samsung-galaxy-s27-ultra-tipped-use-snapdragon-processor-despite-overheating-concerns/"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 22,
-     "source": "파이낸셜뉴스",
-     "title": "'갤S27 4형제' 두뇌는 세 갈래?…엑시노스·스냅드래곤 배치 달라지나",
-     "url": "https://www.fnnews.com/news/202611071101011080"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -475,6 +424,16 @@
      "image": "https://sammyguru.com/wp-content/uploads/2026/09/Galaxy-H1-Headphones.png",
      "image_via": "og:image",
      "url": "https://sammyguru.com/samsung-galaxy-studio-headphones-launch-galaxy-s27/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "Galaxy S27 UltraはiPhoneのようなデザインを採用しているが、これはサムスンにとって正しい方向への一歩と言えるのだろうか？",
+     "highlight": "",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/07/1794023686416_galaxy-s27-ultra-co-thiet-ke-giong-iphone-buoc-di-dung-huong-cua-samsung-2855.png",
+     "image_via": "og:image",
+     "url": "https://www.vietnam.vn/ja/galaxy-s27-ultra-co-thiet-ke-giong-iphone-buoc-di-dung-huong-cua-samsung",
      "weight": "normal"
     }
    ],
@@ -790,8 +749,8 @@
      "date": "2026-11-04",
      "headline": "이수만이 다시 일냈다…신인 A2O LITE, 데뷔하자마자 ‘1위 행진’",
      "highlight": "1위 행진",
-     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
-     "image_via": "og:image",
+     "image": "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png",
+     "image_via": "JSON-LD",
      "url": "https://www.kpab.net/news/articleView.html?idxno=1865",
      "weight": "lead"
     },

@@ -531,16 +531,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg": {
-  "w": 300,
-  "h": 200,
+ "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
+  "w": 600,
+  "h": 400,
   "target": 1280,
   "v": 3,
-  "blur": 0.653,
-  "local": "pics/1b57abae8ed7a45b.webp",
+  "blur": 0.475,
+  "local": "pics/ffd4ccaef88f5a5d.webp",
   "out": [
-   900,
-   600
+   1280,
+   853
   ],
   "why": "看不清"
  },
@@ -3424,6 +3424,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/06/1793927206163_galaxy-s27-pro-sap-ra-mat-co-duoc-trang-bi-chip-snapdragon-manh-nhat-2388.png": {
   "w": 1600,
   "h": 856,
+  "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/07/1794023686416_galaxy-s27-ultra-co-thiet-ke-giong-iphone-buoc-di-dung-huong-cua-samsung-2855.png": {
+  "w": 1743,
+  "h": 933,
   "target": 1280,
   "v": 3
  },
