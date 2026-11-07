@@ -462,7 +462,7 @@ class Sql(unittest.TestCase):
         self.assertIn("document.addEventListener('wl-nav'", render.NAV_JS)   # 目次は足した駅を数え直す
         for w in ("いま集めに行っています", "1〜2 時間", "👍👎 を押すと"):   # できないことを約束しない
             self.assertNotIn(w, render.AUTH_JS)
-        self.assertIn('html[data-mine="2"] .mastwish', render.AUTH_CSS)   # 店長の欲しい物の件数・話題度・👍👎 はお客さまのページに出さない
+        self.assertNotIn('html[data-mine="2"] .mastwish', render.AUTH_CSS)   # 2026-11-07：欲しい物は本人の分を出す（店長の中身はお客さまのページに混ざらない：user_pages が本人の行で作る）
         import welcome
         self.assertIn("q.get('pick')", welcome.render_js() if hasattr(welcome, "render_js") else (ROOT / "scripts" / "welcome.py").read_text(encoding="utf-8"))
 

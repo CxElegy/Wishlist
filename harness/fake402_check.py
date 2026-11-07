@@ -58,8 +58,8 @@ ENTRY_ENV = {"digest all": {"WL_COLLECT_LIMIT": "3"}, "digest ingest": {"WL_COLL
              "repair-images": {"WL_REPAIR_LIMIT": "40"}}
 # 入口を走らせない物（理由つき）。workflow の入口の数え漏れ点検（tests）はここも名簿として見る。キー = 「スクリプト 最初の引数」
 NOT_COVERED = {
+    "harness/run_tests.py": "CI の試験を流すだけ。本物の Supabase に触らない",
     "scripts/check_arch.py": "CI の点検。Supabase に触らない",
-    "scripts/progress_notify.py pr": "Discord への通知だけ。Supabase に触らない",
     "scripts/pc_watch.py": "PC のサーバーの死活を見て Discord へ知らせるだけ（鍵なし・docs/・state/ に書かない）。402 も「届かない」と数えて緑で終わる",
     "scripts/pull_rebase.py": "git の取り込みだけ。Supabase に触らない",
     "scripts/push_main.py": "git の取り込みと push だけ（pull_rebase と同じ）。Supabase に触らない",

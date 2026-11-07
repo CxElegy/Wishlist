@@ -489,17 +489,15 @@ def main(argv):
         if not images:
             line = no_change(missing, where)
     head = f"#{num} {title}"
-    if pages or docs:
-        names = "・".join(pages + [u.replace(LIVE, "") for u in docs])
-        text = (f"🟢 公開を確かめました（合併から約 {mins} 分）：{head}\n新しくなったページ：{names}\n"
-                f"開き直すだけで見えます（開いたままのページも自分で新しくなります）。{BASE}\n{url}")
-    elif waiting:
-        text = f"⚠ まだ本番が新しくなっていません（{mins} 分待った）：{head}\nまだ：{'・'.join(waiting)} · render.yml：{res or '回なし'}\n{url}"
+    # 店長の決まり（2026-11-07）：知らせは「絵＋どこを直したか」だけ。絵のない合併は送らない。問題のときだけ文で送る
+    if waiting:
+        send(head, url, [], f"⚠ 本番がまだ新しくなっていません：{title}\n{url}")
+    elif images:
+        send(head, url, images, f"✅ {line}\n{BASE}")
+    elif line.startswith("⚠"):
+        send(head, url, [], f"{line}：{title}")
     else:
-        text = f"ℹ 公開しました・見た目の変わるページはありません（裏の仕組みだけ）：{head}\n{url}"
-    if line:
-        text = f"🖼 {line}\n" + text
-    send(head, url, images, text)
+        print(f"絵なし：送らない（{line or '画面の変化なし'}）・公開 {pages + docs}・{mins} 分")
     return 0
 
 

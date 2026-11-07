@@ -39,6 +39,12 @@ if echo "$changed" | grep -qE '^docs/.*\.html$'; then
   python3 harness/js_check.py $(echo "$changed" | grep -E '^docs/.*\.html$') || fail=1
 fi
 
+# ④ CI と同じ検査（Linux のコンテナ・全部の試験）。赤い CI を店長に見せない（2026-11-07）。コンテナが動く PC だけ
+if [ "$fail" = 0 ] && docker info >/dev/null 2>&1; then
+  echo "pre-push ④ CI と同じ検査（harness/ci_local.sh）"
+  bash harness/ci_local.sh || fail=1
+fi
+
 if [ "$fail" != 0 ]; then
   echo "✗ pre-push：上の赤を直してから push（急ぎは --no-verify、そのときは PR に理由を書く）"
   exit 1
