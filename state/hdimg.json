@@ -118,6 +118,19 @@
   "dead": true,
   "day": "2026-11-07"
  },
+ "http://wx1.sinaimg.cn/middle/008eZAxIly1iisu9r8a0fj30y10jwqab.jpg": {
+  "w": 1225,
+  "h": 716,
+  "target": 720,
+  "v": 3,
+  "local": "pics/c833a7eb4de07773.webp",
+  "out": [
+   1225,
+   716
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/001gSRX0ly1iis5h51wvnj60z01lmahy02.jpg": {
   "w": 1260,
   "h": 2074,
@@ -1920,8 +1933,9 @@
  "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261107wow018.jpg": {
   "w": 640,
   "h": 416,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.414
  },
  "https://img.toy-people.com/member/179380690349_1200.png": {
   "w": 1200,

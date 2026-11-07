@@ -53,7 +53,6 @@
   "https://tech.yahoo.com/phones/articles/android-circuit-galaxy-s27-pro-215043586.html": "https://www.bing.com/th?id=ONUT.BLRUqdyhpsnoPCxLnKzxEQ&pid=News&w=1200",
   "https://times.abema.tv/zt/articles/-/10286189": "https://times-abema.ismcdn.jp/mwimgs/2/9/1200w/img_29ed6bf6a46cabbb6b7d74c6d82596c1244940.jpg",
   "https://today.line.me/tw/v3/posts/list/article/peKZgDl": "https://today-obs.line-scdn.net/0hBc9YPs7MHUwEIAFvObBiGzx2ET03RgdFJhVUKXUpEHQuDF4TORROLyB3FmB5EF5PJBZQLHYlQnkrQ1sbOg/w1200",
-  "https://topics.smt.docomo.ne.jp/amp/article/wowkorea/entertainment/wowkorea-20261107wow018": "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261107wow018.jpg",
   "https://universe.oneone.com.tw/posts/7264": "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg",
   "https://www.aol.co.uk/articles/cat-named-gatsby-vitiligo-makes-120000000.html": "https://hermes.media.static.aol.com/media/2026/11/03/e19e646a-14e8-38eb-b616-66b6d4cfad30/153bbfd4-d87c-4ed5-b83c-8eb7421d6a02.jpg",
   "https://www.aol.com/articles/tiny-phoenix-maine-coon-kitten-010000000.html": "https://hermes.media.static.aol.com/media/2026/11/02/d62fe923-b60d-35bd-825f-6f8d3011d950/e90ae037-3503-466a-b1fd-c708ddb41280.jpg",
@@ -84,6 +83,7 @@
   "https://www.setn.com/news/1794058": "https://attach.setn.com/newsimages/2026/02/11/5451715-PH.jpg",
   "https://www.sina.cn/news/detail/5356822332443719.html": "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg",
   "https://www.sina.cn/news/detail/5362306944336820.html": "http://wx1.sinaimg.cn/middle/006gNTEUly1iislj1b2htj37wg3c0u13.jpg",
+  "https://www.sina.cn/news/detail/5362382832668982.html": "http://wx1.sinaimg.cn/middle/008eZAxIly1iisu9r8a0fj30y10jwqab.jpg",
   "https://www.superherohype.com/movies/703969-batman-new-movie-releasing-later-this-year-release-date-set": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/batman.jpg?resize=1200,630",
   "https://www.tehrantimes.com/news/531702/Mokri-s-Black-Rabbit-White-Rabbit-wins-at-63rd-International": "https://media.tehrantimes.com/d/t/2026/11/01/4/6242024.jpg?ts=1793535295479",
   "https://www.tenasia.co.kr/article/2026110720554": "https://img.tenasia.co.kr/photo/202611/BF.46341530.1.jpg",
@@ -1343,27 +1343,6 @@
   },
   {
    "batch": 4,
-   "because": "A2O LITE",
-   "date": "2026-11-07",
-   "hits": [],
-   "image": "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261107wow018.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "ｄメニューニュース",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "【注目アイテム】“リトルBoA”こと「A2O LITE」アイチン、チェック柄ファッションが話題…上下で約53万円の高級コーデも",
-   "url": "https://topics.smt.docomo.ne.jp/amp/article/wowkorea/entertainment/wowkorea-20261107wow018",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-07",
    "hits": [],
@@ -1384,7 +1363,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "A2O LITE",
    "date": "2026-11-07",
    "hits": [],
@@ -1424,6 +1403,27 @@
    "url": "https://www.ign.com/articles/avengers-doomsday-car-commercial-features-new-look-at-nightcrawler-sparks-theories-about-unannounced-heroes",
    "words": [],
    "work": "漫威电影"
+  },
+  {
+   "batch": 5,
+   "because": "A2O LITE",
+   "date": "2026-11-06",
+   "hits": [],
+   "image": "http://wx1.sinaimg.cn/middle/008eZAxIly1iisu9r8a0fj30y10jwqab.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "新浪网",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "Dracula 大涨17 名，NEON 韩区日冠×23|A2O LITE|Spotify",
+   "url": "https://www.sina.cn/news/detail/5362382832668982.html",
+   "words": [],
+   "work": "A2O LITE"
   },
   {
    "batch": 5,
@@ -2018,11 +2018,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2030,11 +2030,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
