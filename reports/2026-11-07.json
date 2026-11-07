@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "358c0092ae8b",
+ "edit_sig": "17240c40800b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -874,8 +874,8 @@
      "date": "2026-11-07",
      "headline": "NEON 重启 PAK 达成 99 次，TOP100 与 Bugs 重回第一|A2O LITE|iChart",
      "highlight": "",
-     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png",
+     "image_via": "JSON-LD",
      "url": "https://www.sina.cn/news/detail/5362634360358380.html",
      "weight": "lead"
     },
@@ -884,8 +884,9 @@
      "date": "2026-11-06",
      "headline": "7天登顶The Show：A2O LITE的霓虹奇迹舞台",
      "highlight": "7天登顶The Show",
-     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "搜狐网",
+     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
      "url": "https://m.sohu.com/a/1090755790_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     },
@@ -994,22 +995,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 2,
-     "source": "山と溪谷オンライン",
-     "title": "アークテリクスのバックカントリーアカデミーが日本初開催！ 2027年1月、白馬でプロから学ぶ雪山の技術と安全",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA4eFczY0RJTldmdkxTVFE1TWxva1N2SU5fVm5JNUVmRy1TQmlaOGxEeFB2VFl0Wk1zRFo1YnNHTE5BZVhXUzAzRjVMczB1QnlNY2hKQ3BhcXZJNFZpd3I5S1c1QVBqUE5E?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 3,
-     "source": "ｄメニューニュース",
-     "title": "湯の丸スキー場2026〜2027",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOcGpleGdGblZoOHM2LTJoRV9teWc3bzRaVUwyZU9LNVRUMjNXOERtY0tZNEpTXzdtRndmUlZKaVQwWTNvM1puQ2tfN3NEMHExZFRmckRpcy1GcDRXY2RtX214YmNyUGRfdlNIT2xGYlNjRGM3RWVhODBKcF9hUllKYtIBhgFBVV95cUxPc2ZYOXRZQnpJZDZNbjV6QnM5VVI5NnMxS2Z2bGdabGd1VFZlSHBSNl9XZ1hzbFNsSDlNanlNSzFYRE5jNkppSkpHYjI1OFZkWERqM0owZlozRnpuU055MkJGZG80T2R4TXpvY3Q5Y3Y3ZXdCZ1RKbFktMUlwWDFSeU1SR2R0QQ?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1021,6 +1006,16 @@
      "image_via": "og:image",
      "url": "https://snowbrains.com/snowbrains-forecast-niseko-leads-japan-with-25-40-cm-as-cold-snow-continues/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "アークテリクスのバックカントリーアカデミーが日本初開催！ 2027年1月、白馬でプロから学ぶ雪山の技術と安全",
+     "highlight": "2027年1月、白馬",
+     "image": "https://www.yamakei-online.com/new_images/journal/column/8649_b.jpg",
+     "image_via": "og:image",
+     "url": "https://www.yamakei-online.com/journal/detail.php?id=8649",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
