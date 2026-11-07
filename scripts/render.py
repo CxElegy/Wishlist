@@ -424,6 +424,8 @@ button{font-family:inherit}
 .pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
 .pk.shaped .pkt{flex:1 1 auto}
 .wc.sb .tg,.card.sb .tg{max-width:100%;white-space:normal}
+/* 細いカードの字の列は狭い：👍👎 を日付に重ねず、入らなければ次の行へ（2026-11-07 店長） */
+.wc.sb em.wc-x,.wc.sb em:has(.vt){padding-right:0!important;min-height:0;align-items:center;gap:2px 6px}.wc.sb em .vt{position:static;margin:0 0 0 -4px;padding:0;order:2}.wc.sb em .from{order:3;flex-basis:100%}.wc.sb em.two::before{display:none}
 .stk.stk.stk.stk.stk{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
 .stk.stk.stk.stk.stk>*{grid-column:1!important}
 .stk.stk.stk.stk.stk>.pic{grid-row:auto!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:var(--ar)!important;margin-bottom:8px}

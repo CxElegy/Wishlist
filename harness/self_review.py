@@ -90,6 +90,14 @@ MEASURE_JS = r"""
       if (w > 4 && h > 4) { tag(c, 'over', (a.innerText || '').trim().slice(0, 18)); return; }
     }
   });
+  // 日付と 👍👎 の重なり
+  document.querySelectorAll('.wc em, .when, .kick').forEach(m => {
+    const v = m.querySelector(':scope > .vt'), n = [...m.childNodes].find(x => x.nodeType === 3 && x.textContent.trim());
+    if (!v || !n || !vis(m) || !vis(v)) return;
+    const g = document.createRange(); g.selectNodeContents(n);
+    const a = g.getBoundingClientRect(), b = v.getBoundingClientRect(), btn = v.querySelector('button') || v, c = btn.getBoundingClientRect();
+    if (Math.min(a.right, c.right) - Math.max(a.left, c.left) > 1 && Math.min(a.bottom, c.bottom) - Math.max(a.top, c.top) > 1) tag(m.parentElement, 'over', '日付と 👍：' + n.textContent.trim());
+  });
   if (document.documentElement.scrollWidth > innerWidth + 1) tag(document.body, 'wide', document.documentElement.scrollWidth + 'px > ' + innerWidth + 'px');
   return {items: out, clamped, photos: document.querySelectorAll('.pic img:not(.bg):not(.ico)').length};
 }
