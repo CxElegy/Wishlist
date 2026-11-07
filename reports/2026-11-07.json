@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "e87fa7a8eb76",
+ "edit_sig": "4e0e4bc36b57",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -432,22 +432,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 2,
-     "source": "Yahoo!ニュース",
-     "title": "「ジェラート ピケ」が最大級のホリデーポップアップを開催 限定くじや“ピケベア”メリーゴーランドも（WWDJAPAN.com）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5ZNldxZkZTTS1yRkQ3N3ZxN0d1a0g4QlB0aFBZa1pPbjJBaUdELUFmS1M0eFV1UTlld2kzeFJnY2ZZUXV0cUlia1M0aDN3N2ROQlQwcHdaRU9ZMlVDNDU1eE5Xd0FjMHNEdDQ1ZHBSUXNRLTR3LU9MTUItZ05zU28?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 3,
-     "source": "Dtimes",
-     "title": "10種のアートモナカをトッピングできる！gelato pique cafe「PEANUTS meets GELATO PIQUE CAFE」－10 COLORS & 10 SMILES－",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5xR0h0V1lsc200RW5UT0hyWmNLcWMyTXVpbkQ1d3h3ekRmdUpQSEhXVm9TdFo5TWVuRzVnRGk0dzRxenFuekE?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -463,6 +447,26 @@
      "image_via": "og:image",
      "url": "https://373news.com/lifestyle/info/pr_times/detail/000004453.000018505.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "「ジェラート ピケ」が最大級のホリデーポップアップを開催 限定くじや“ピケベア”メリーゴーランドも",
+     "highlight": "最大級のホリデーポップアップ",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-02544747-wwdjapan-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/87392a8ce5ece47229ee063981833ba543701619",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "10種のアートモナカをトッピングできる！gelato pique cafe「PEANUTS meets GELATO PIQUE CAFE」－10 COLORS & 10 SMILES－",
+     "highlight": "",
+     "image": "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-1231f98a766d464118ce5dc1b9c7f6e5-20261107-78b9f9.jpg",
+     "image_via": "og:image",
+     "url": "https://dtimes.jp/post-1457331/",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",

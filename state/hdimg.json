@@ -917,6 +917,12 @@
   "target": 720,
   "v": 3
  },
+ "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-1231f98a766d464118ce5dc1b9c7f6e5-20261107-78b9f9.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-4ef0c2fe9d94848d446023cf3bbeb6c1-20261101-87200d.jpg": {
   "w": 1166,
   "h": 1350,
@@ -2575,6 +2581,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-02544747-wwdjapan-000-1-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 1200,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/6cba21d892dedd24.webp",
+  "out": [
+   1200,
+   1200
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsdig.ismcdn.jp/mwimgs/5/b/1200w/img_5b27e269bf927978afa950a713f210362377754.jpg": {
   "w": 1200,
   "h": 674,
@@ -3710,12 +3728,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.MDpD849zYjmVjGzkNpJmbA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934": {
   "w": 544,

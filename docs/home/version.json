@@ -1,10 +1,10 @@
 {
- "admin": "6daa7329baf1",
- "admin-ai": "44f534c05e0a",
+ "admin": "e6c36d6196f0",
+ "admin-ai": "4d7665029fd4",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "47cf95ab"
+   "1ab73d01"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "73f5150b"
   ]
  },
- "admin-emblem": "0ddb8c3ee0fa",
+ "admin-emblem": "68dc285b2b65",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "493155a8"
+   "273334ef"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "ee5225d27288",
  "admin-members_marks": {},
- "admin-now": "91ef92e54bca",
+ "admin-now": "c4d59c12e12a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7292bb24"
+   "aeb3a93c"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "8c9c69c3"
   ]
  },
- "admin-system": "e4e32976571a",
+ "admin-system": "1686e0d03bb0",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d2f42dbe"
+   "f3bc9607"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "59812b02"
+   "44740d60"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "5fa80d71"
   ]
  },
- "index": "d6050c1b7548",
+ "index": "3c93e9cba273",
  "index_marks": {
   "front": [
    "トップ",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "e22e2a90"
+   "d8d3a5dd"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "e69268bb"
+   "f0f83a71"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "b9be3247"
   ]
  },
- "updated": "11.07 17:01",
+ "updated": "11.07 17:08",
  "wishlist": "bc1f136fe764"
 }
