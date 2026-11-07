@@ -134,7 +134,7 @@ def review(url, width, pw_browser, shot=None):
     load_all(pg)
     res = pg.evaluate(MEASURE_JS)
     if shot:   # 自分の目で見る用：ページの上の方
-        pg.screenshot(path=str(shot), clip={"x": 0, "y": 0, "width": width, "height": min(3000, pg.evaluate("document.documentElement.scrollHeight"))}, full_page=True)
+        pg.screenshot(path=str(shot), clip={"x": 0, "y": 0, "width": width, "height": min(3000, pg.evaluate("document.documentElement.scrollHeight"))}, full_page=True, timeout=120000)
     seen, shots = {}, []
     for it in res["items"]:
         n = seen.get(it["kind"], 0)
