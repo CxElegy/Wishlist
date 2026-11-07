@@ -2398,7 +2398,7 @@ def _total(wishes, status):
     return " + ".join(f"{c} {v:,.0f}" for c, v in totals.items()) or "—"
 
 
-def render_wishlist(wishes, works, updated, finds=(), db=None):
+def render_wishlist(wishes, works, updated, finds=(), db=None, own=False):
     """愿望清单子页面（docs/wishlist.html）：收藏柜式大图网格，可按状态筛选，顶部是件数和想要的总价。
     「纠结」的东西单独排一栏「纠结名单」，卡片上列出帮你查的同类好产品（alternatives）和每天搜到的新发现（finds）。
     db（Supabase 的 url、公开 key）配好时，顶部有「📷 拍照加愿望」：上传照片进收件箱，Claude 定时任务认出物品加进清单。"""
@@ -2410,15 +2410,15 @@ def render_wishlist(wishes, works, updated, finds=(), db=None):
     live = [x for x in wishes if x.get("status") not in ("已过期", "纠结")]
     torn = [x for x in wishes if x.get("status") == "纠结"]
     gone = [x for x in wishes if x.get("status") == "已过期"]
-    section = _wish_section(live, works)
+    section = _wish_section(live, works, own=own)
     if torn:
         section += (f'<div class="gonehead torn"><h2>纠结名单</h2><span>还在犹豫买不买 · {len(torn)} 件 · 合计 {e(_total(wishes, "纠结"))}'
                     f' · 下面列出类似的好产品，每天也会帮你搜新的</span></div>'
-                    + _wish_section(torn, works, finds).replace('class="sec wish"', 'class="sec wish torn"').replace('id="wishlist" ', ''))
+                    + _wish_section(torn, works, finds, own=own).replace('class="sec wish"', 'class="sec wish torn"').replace('id="wishlist" ', ''))
     if gone:
         section += (f'<div class="gonehead"><h2>过期的愿望</h2><span>去不了、买不到了，但还想要 · {len(gone)} 件</span></div>'
-                    + _wish_section(gone, works).replace('class="sec wish"', 'class="sec wish expired"').replace('id="wishlist" ', ''))
-    return f"""<!doctype html>
+                    + _wish_section(gone, works, own=own).replace('class="sec wish"', 'class="sec wish expired"').replace('id="wishlist" ', ''))
+    page = f"""<!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
@@ -2475,7 +2475,7 @@ def render_wishlist(wishes, works, updated, finds=(), db=None):
 <div class="stat"><span>想要的合计</span><b>{e(total)}</b></div>
 <div class="chips" role="group" aria-label="按状态筛选">{chips}</div>
 </div>
-{_snap_panel(db)}
+{_own_wish_panel(db) if own else _snap_panel(db)}
 {section}
 </div>
 <script>
@@ -2494,6 +2494,7 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
 </body>
 </html>
 """
+    return _wish_page_ja(page) if own else page
 
 
 SNAP_CSS = """
@@ -2599,6 +2600,157 @@ SNAP_JS = """
 """
 
 
+WISH_JA = {"想要": "欲しい", "纠结": "迷い中", "已入手": "入手済み", "没买到": "買えなかった", "已过期": "終わった"}
+_WISH_PAGE_JA = (('<html lang="zh-CN">', '<html lang="ja">'), ("<title>愿望清单</title>", "<title>欲しい物リスト</title>"), ("<h1>愿望清单</h1>", "<h1>欲しい物リスト</h1>"),
+                 ("<small>更新于</small>", "<small>更新</small>"), ("← 回到关注清单通信", "← トップに戻る"), ("<span>共</span>", "<span>全部</span>"),
+                 ("<span>想要的合计</span>", "<span>欲しいものの合計</span>"), ('aria-label="按状态筛选"', 'aria-label="状態で絞り込む"'),
+                 ('<span class="title">愿望清单</span>', '<span class="title">欲しい物リスト</span>'), (" · 想要 ", " · 欲しい "), ("去看看 ↗", "見に行く ↗"), ("加入于 ", "追加 "),
+                 ("<h2>纠结名单</h2>", "<h2>迷っているもの</h2>"), ("还在犹豫买不买 · ", ""), (" · 合计 ", " · 合計 "), (" · 下面列出类似的好产品，每天也会帮你搜新的", ""),
+                 ("<h2>过期的愿望</h2>", "<h2>終わったもの</h2>"), ("去不了、买不到了，但还想要 · ", ""))
+
+
+def _wish_page_ja(page):
+    """本人の欲しい物のページの文字（お客さまの画面は日本語、render_settings の own と同じ）。data-status・data-f の値は DB と同じままにして、見える字だけ替える。"""
+    for a, b in _WISH_PAGE_JA:
+        page = page.replace(a, b)
+    for k, v in WISH_JA.items():
+        page = page.replace(f'">{k}<small>', f'">{v}<small>').replace(f"♥ {k}<", f"♥ {v}<")
+    return page
+
+
+def _own_wish_controls(status):
+    """本人のカードの操作：状態を変える・消す（OWN_WISH_JS）。"""
+    opts = "".join(f'<option value="{k}"{" selected" if k == status else ""}>{v}</option>' for k, v in WISH_JA.items())
+    return f'<div class="wctl"><select aria-label="状態を変える">{opts}</select><button type="button" class="wdel">消す</button></div>'
+
+
+OWN_WISH_CSS = """
+.snap .byname{display:grid;grid-template-columns:minmax(0,2fr) 96px 72px minmax(0,2fr) auto;gap:8px;align-items:center;padding-top:14px;border-top:1px dashed #1A1C22}
+.snap .byname h3{grid-column:1/-1;margin:0;font:900 15px 'Noto Sans SC',sans-serif}
+.snap .byname input,.snap .byname select{width:100%;box-sizing:border-box;padding:8px 10px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:500 14px 'Noto Sans SC',sans-serif}
+.snapq .wdel,.wctl .wdel{padding:5px 12px;border:2px solid #B8336A;background:transparent;color:#B8336A;font:900 13px 'Noto Sans SC',sans-serif;cursor:pointer}
+.wctl{display:flex;gap:8px;align-items:center;margin-top:8px}
+.wctl select{padding:5px 8px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:700 13px 'Noto Sans SC',sans-serif}
+@media (max-width:640px){.snap .byname{grid-template-columns:minmax(0,1fr) 72px}.snap .byname input[data-f=name],.snap .byname input[data-f=url],.snap .byname .add{grid-column:1/-1}}
+"""
+# 本人の欲しい物：写真で足す（my_photo_add）・名前で足す（my_wish_add）・状態を変える・消す。ページは定期的に作り直すので、まだカードになっていない分は下の一覧に出す
+OWN_WISH_JS = """
+(() => {
+  const CFG = %s, box = document.getElementById('snap'), JA = %s;
+  const $ = s => box.querySelector(s);
+  const tok = () => { try { return JSON.parse(localStorage.getItem('wl-auth') || '{}').access_token || ''; } catch (_) { return ''; } };
+  const rpc = async (fn, body) => {
+    const r = await fetch(CFG.url.replace(/\\/$/, '') + '/rest/v1/rpc/' + fn, { method: 'POST',
+      headers: { apikey: CFG.key, Authorization: 'Bearer ' + tok(), 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+    if (r.status === 401) throw new Error('ログインが切れました。開き直してください');
+    if (!r.ok) { const err = await r.json().catch(() => ({})); throw new Error(err.message || String(r.status)); }
+    return r.status === 204 ? null : r.json();
+  };
+  const say = (el, t, cls) => { el.textContent = t; el.className = 'st ' + (cls || ''); };
+  const file = $('#snap-file'), drop = $('.drop'), note = $('#snap-note'), send = $('form .send'), st = $('form .st');
+  let status = '想要', img = null;
+  box.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    status = b.dataset.v;
+    box.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  }));
+  const shrink = (im, side, q) => {
+    const k = Math.min(1, side / Math.max(im.naturalWidth, im.naturalHeight));
+    const c = document.createElement('canvas'); c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k);
+    const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height);
+    return c.toDataURL('image/jpeg', q);
+  };
+  file.addEventListener('change', () => {
+    const f = file.files[0]; if (!f) return;
+    const url = URL.createObjectURL(f), im = new Image();
+    im.onload = () => { img = im; let p = drop.querySelector('img'); if (!p) { p = document.createElement('img'); drop.appendChild(p); } p.src = url; drop.querySelector('span').hidden = true; say(st, ''); };
+    im.onerror = () => say(st, 'この写真は開けません。別の写真にしてください', 'err');
+    im.src = url;
+  });
+  const row = (thumb, title, state, id) => {
+    const li = document.createElement('li');
+    const t = document.createElement('img'); if (thumb) t.src = thumb; t.alt = '';
+    const d = document.createElement('div'), b = document.createElement('b'), s = document.createElement('span');
+    b.textContent = title; s.className = 'state'; s.textContent = state; d.append(b, s); li.append(t, d);
+    if (id) {
+      const x = document.createElement('button'); x.type = 'button'; x.className = 'wdel'; x.textContent = '消す';
+      x.addEventListener('click', async () => { try { await rpc('my_wish_del', { p_id: id }); li.remove(); } catch (e) { say(st, e.message, 'err'); } });
+      li.appendChild(x);
+    }
+    return li;
+  };
+  const STATE = { new: '順番待ち', exported: 'Claude が処理中', done: '追加しました' };
+  const refresh = async () => {
+    const ul = $('.snapq'); if (!ul) return;
+    if (document.readyState === 'loading') await new Promise(r => document.addEventListener('DOMContentLoaded', r, { once: true }));   // カードが揃ってから「まだカードでない分」を数える
+    try {
+      const [ph, ws] = await Promise.all([rpc('my_photo_inbox'), rpc('my_wishes')]);
+      const shown = new Set([...document.querySelectorAll('.wcard[data-id]')].map(c => c.dataset.id));
+      ul.innerHTML = '';
+      ws.filter(w => !shown.has(String(w.id))).forEach(w => ul.appendChild(row(w.image, w.name, (JA[w.status] || w.status) + ' · 次のページ更新で並びます', w.id)));
+      ph.filter(x => x.state !== 'done').forEach(x => ul.appendChild(row(x.thumb, x.note || '写真 #' + x.id, (STATE[x.state] || x.state) + ' · ' + (JA[x.status] || x.status))));
+    } catch (_) {}
+  };
+  send.addEventListener('click', async ev => {
+    ev.preventDefault();
+    if (!img) { say(st, '先に写真を選んでください', 'err'); return; }
+    let big = shrink(img, 1600, .85); if (big.length > 2900000) big = shrink(img, 1200, .75);
+    send.disabled = true; say(st, '送っています…');
+    try {
+      await rpc('my_photo_add', { p_image: big, p_thumb: shrink(img, 240, .7), p_status: status, p_note: note.value.trim() });
+      say(st, '受け取りました。Claude が商品を確かめて、ここに足します', 'ok');
+      img = null; file.value = ''; note.value = ''; drop.querySelector('img')?.remove(); drop.querySelector('span').hidden = false; refresh();
+    } catch (e) { say(st, '送れませんでした：' + e.message, 'err'); }
+    send.disabled = false;
+  });
+  const by = box.querySelector('.byname'), val = k => by.querySelector('[data-f=' + k + ']');
+  by.querySelector('.add').addEventListener('click', async () => {
+    const name = val('name').value.trim(), url = val('url').value.trim(), s2 = by.querySelector('.st');
+    if (!name) { say(s2, '名前を入れてください', 'err'); return; }
+    if (url && !/^https?:[/][/]/.test(url)) { say(s2, '網址は http で始まるものにしてください', 'err'); return; }
+    const pr = val('price').value.trim();
+    try {
+      await rpc('my_wish_add', { p_name: name, p_status: status, p_price: pr === '' ? null : Number(pr), p_currency: pr === '' ? null : val('currency').value, p_url: url || null, p_note: null });
+      val('name').value = val('url').value = val('price').value = ''; say(s2, '足しました', 'ok'); refresh();
+    } catch (e) { say(s2, '足せませんでした：' + e.message, 'err'); }
+  });
+  // カードはこの欄より下にあって、この時点ではまだ読み込まれていない：document で受ける
+  document.addEventListener('change', async ev => {
+    const sel = ev.target.closest && ev.target.closest('.wctl select'); if (!sel) return;
+    const c = sel.closest('.wcard[data-id]');
+    try { await rpc('my_wish_status', { p_id: Number(c.dataset.id), p_status: sel.value }); c.dataset.status = sel.value; const h = c.querySelector('.heart'); if (h) h.textContent = '♥ ' + (JA[sel.value] || sel.value); }
+    catch (e) { say(st, e.message, 'err'); }
+  });
+  document.addEventListener('click', async ev => {
+    const del = ev.target.closest && ev.target.closest('.wctl .wdel'); if (!del) return;
+    const c = del.closest('.wcard[data-id]');
+    if (!confirm('「' + c.dataset.key + '」を消しますか？')) return;
+    try { await rpc('my_wish_del', { p_id: Number(c.dataset.id) }); c.remove(); } catch (e) { say(st, e.message, 'err'); }
+  });
+  refresh();
+})();
+"""
+
+
+def _own_wish_panel(db):
+    """本人の欲しい物のページの上の欄。写真で足す（店長の「📷 拍照加愿望」と同じ形）＋名前で足す。"""
+    if not (db and db.get("url") and db.get("key")):
+        return ""
+    cur = "".join(f"<option>{c}</option>" for c in ("JPY", "USD", "EUR", "CNY", "KRW"))
+    return (f'<style>{SNAP_CSS}{OWN_WISH_CSS}</style><section class="snap" id="snap"><h2>📷 写真で足す'
+            f'<small>写真を送ると、Claude が商品を確かめて足します（順番に処理します）</small></h2>'
+            f'<form><label class="drop"><span>写真を選ぶ<br>または撮る</span><input type="file" id="snap-file" accept="image/*"></label>'
+            f'<div class="seg" role="group" aria-label="どちらに足すか"><button type="button" data-v="想要" aria-pressed="true">欲しい</button>'
+            f'<button type="button" data-v="纠结" aria-pressed="false">迷い中</button></div>'
+            f'<input type="text" id="snap-note" maxlength="500" placeholder="メモ（なくても大丈夫）：どこで見たか、欲しい色など">'
+            f'<div class="row"><button type="button" class="send">送る</button><span class="st" role="status"></span></div></form>'
+            f'<div class="byname"><h3>名前で足す</h3><input data-f="name" type="text" maxlength="200" placeholder="名前" aria-label="名前">'
+            f'<input data-f="price" type="number" min="0" step="any" placeholder="価格" aria-label="価格"><select data-f="currency" aria-label="通貨">{cur}</select>'
+            f'<input data-f="url" type="url" maxlength="2000" placeholder="商品の網址（なくても大丈夫）" aria-label="商品の網址"><button type="button" class="send add">足す</button>'
+            f'<span class="st" role="status" style="grid-column:1/-1"></span></div>'
+            f'<ul class="snapq"></ul></section>'
+            f'<script>{OWN_WISH_JS % (json.dumps({"url": db["url"], "key": db["key"]}), json.dumps(WISH_JA, ensure_ascii=False))}</script>')
+
+
 def _snap_panel(db):
     """愿望清单页顶部的「📷 拍照加愿望」。没配数据库时不显示。"""
     if not (db and db.get("url") and db.get("key")):
@@ -2635,7 +2787,7 @@ def _alts(x, finds):
     return f'<div class="alts"><span>类似的好产品</span><ul>{"".join(rows)}</ul></div>'
 
 
-def _wish_section(wishes, works, finds=()):
+def _wish_section(wishes, works, finds=(), own=False):
     """愿望清单版面。只有一件时做成横向大卡，多件时自动排成网格。"""
     if not wishes:
         return ""
@@ -2643,7 +2795,7 @@ def _wish_section(wishes, works, finds=()):
     cards = []
     for x in wishes:
         img = x.get("image") or ""
-        if img and not img.startswith("http"):
+        if img and not img.startswith(("http", "data:image/")):
             img = "wishlist/" + img
         status = x.get("status") or "想要"
         cls = {"已入手": "got", "没买到": "miss", "已过期": "miss", "纠结": "torn"}.get(status, "")
@@ -2663,7 +2815,7 @@ def _wish_section(wishes, works, finds=()):
                          f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}{_from(st)}</span>{e(st["headline"])}</a>')
         added = f'<span class="added">加入于 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
         cards.append(
-            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}" data-key="{e(x["name"])}">'
+            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}" data-key="{e(x["name"])}"{f' data-id="{e(str(x["id"]))}"' if own and x.get("id") else ""}>'
             f'<div class="wimg">{f"""<img src="{e(img)}" alt="{e(x["name"])}" loading="lazy" referrerpolicy="no-referrer">""" if img else ""}'
             f'<span class="heart {cls}">♥ {e(status)}</span></div>'
             f'<div class="wtxt">' + (f'<span class="shop">{e(x["shop"])}</span>' if x.get("shop") else "")
@@ -2671,7 +2823,7 @@ def _wish_section(wishes, works, finds=()):
             + (f"<dl>{specs}</dl>" if specs else "")
             + (f'<p class="note">{e(x["note"])}</p>' if x.get("note") else "")
             + watch + (_alts(x, finds) if status == "纠结" else "")
-            + f'<div class="links">{"".join(links)}{added}</div></div></article>')
+            + f'<div class="links">{"".join(links)}{added}</div>' + (_own_wish_controls(status) if own else "") + '</div></article>')
     want = sum(1 for x in wishes if (x.get("status") or "想要") == "想要")
     return (f'<section id="wishlist" data-k="wishlist" class="sec wish"><div class="band split">'
             f'<span class="title">愿望清单</span><span class="sub">WISHLIST · {len(wishes)} 件 · 想要 {want}</span></div>'
@@ -2799,13 +2951,14 @@ def _side(works, today, wishes=(), taste=()):
         rows = []
         for x in want[:7]:  # 入りきらない分は WALL_JS が下から隠す
             img = x.get("image") or ""
-            if img and not img.startswith("http"):
+            if img and not img.startswith(("http", "data:image/")):
                 img = "wishlist/" + img
             price = (f'{e(str(x.get("currency", "")))} {x["price"]:,.0f}' if isinstance(x.get("price"), (int, float))
                      else e(str(x.get("price") or "")))
             torn = (x.get("status") == "纠结")
-            pic = (f'<img src="{e(photo_store.stored(img, 400) or img)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
-                   if _safe_url(img) or img.startswith("wishlist/") else "")
+            shown = img if img.startswith("data:image/") else (photo_store.stored(img, 400) or img)
+            pic = (f'<img src="{e(shown)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
+                   if _safe_url(img) or img.startswith(("wishlist/", "data:image/")) else "")
             rows.append(f'<li><span class="wthumb">{pic}</span>'
                         f'<span class="wt"><b>{e(x["name"])}</b><em>{price}</em></span>'
                         f'<i class="tg" style="--sc:{"#985315" if torn else "var(--rose)"}"><span>{"迷い中" if torn else "欲しい"}</span></i></li>')
@@ -4560,9 +4713,6 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-mine="2"] .wl-off{display:none!important}
-html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .swish{display:none!important}
-html[data-mine="2"] .fside:not(:has(.agenda)){display:none!important}
-html[data-mine="2"] .mgrid:not(:has(.agenda)){grid-template-columns:minmax(0,1fr)}
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}
 @media (max-width:560px){html[data-mine="2"] body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.wl-cards>a.np{display:flex}}
@@ -4957,7 +5107,7 @@ AUTH_JS = r"""
   // 止めるのは「跳ね返された」回数（me.html の back が sessionStorage の wl-own-at に書く）が 30 秒に 3 回のとき。入った回数ではない
   // （足す → 設定 → 戻る と速く動く人・通しの点検は 30 秒に 3 回入る。入った回数で止めると 3 回目に殻でない画面になり、素の箱が 2 個出た。2026-10-27）
   function ownPage(){
-    if(!tok||!/^(index|settings|heat)$/.test(page)||/[?&]own=0/.test(location.search)) return Promise.resolve(false);   // 話題度も本人の分（F5 2026-11-05、L13）
+    if(!tok||!/^(index|settings|heat|wishlist)$/.test(page)||/[?&]own=0/.test(location.search)) return Promise.resolve(false);   // 話題度も本人の分（F5 2026-11-05、L13）
     var hist=[];try{hist=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});}catch(_){}
     if(hist.length>=3) return Promise.resolve(false);
     location.replace('me.html'+(page==='index'?'':'?p='+page)+location.hash);   // 設定も本人の分（同じ部品の render_settings）
@@ -6021,7 +6171,7 @@ def render_me():
 <script>
 (function(){{
   var C={cfg};
-  var SUB=(/[?&]p=(settings|heat)\\b/.exec(location.search)||[])[1]||'', PG=SUB?SUB+'.html':'index.html';   // どのページか（AUTH_JS の ownPage）
+  var SUB=(/[?&]p=(settings|heat|wishlist)\\b/.exec(location.search)||[])[1]||'', PG=SUB?SUB+'.html':'index.html';   // どのページか（AUTH_JS の ownPage）
   function back(q){{try{{var h=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){{return Date.now()-x<30000;}});h.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(h));}}catch(_){{}}
     location.replace('./'+(SUB?PG:'')+(q||'')+location.hash);}}
   // 上限 12 秒：つながらないまま「読み込み中」を出し続けない（F6 2026-11-05：10 回に 1 回 40 秒以上）→ 前の画面へ

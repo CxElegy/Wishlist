@@ -276,7 +276,7 @@ IMGS_PATH = "/storage/v1/object/pages/_fp/imgs.json"   # 写真の網址の一�
 
 
 def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None, heat_in=None, votes=None,
-          shop_prev=(), pub=None):
+          shop_prev=(), pub=None, wishes=()):
     """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）、chosen = 本人の nav_schemes {板块: id}。
     pages（dict）を渡すと、設定ページ（settings.html）もそこに入れる。"""
     items = user_items(own_picks(follows, (prefs or {}).get("picks"), (prefs or {}).get("sizes")), shop_items)
@@ -305,7 +305,8 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     motifs = {i["name"]: render.template_for(i) for i in items}
     if not items:   # 版面 0 個の「はじめに」も種類（category）から主題を持つ：お客さまも店長と同じ P5 の枠組み（素の版面にしない）
         motifs[FIRST_BOARD] = render.template_for({"type": "category", "notes": render.WEB_ITEM_MARK})
-    html_ = render.render(issues, settings.get("nav_style", "line"), order, updated, [], digest.pack_batches(rec["picks"]),
+    wishes = [dict(w, added=str(w.get("added") or "")) for w in wishes or ()]   # 本人の欲しい物（db/wishes.sql）。トップの箱・目次の数・欲しい物のページが同じ行を読む
+    html_ = render.render(issues, settings.get("nav_style", "line"), order, updated, wishes, digest.pack_batches(rec["picks"]),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")},
                           {i["name"]: i["size"] for i in items if i.get("size")},
                           motifs, themes, rec["taste"], heat_scores,
@@ -318,6 +319,7 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     # 本人のページの印（AUTH_JS が「自分のページの中」と分かるように。もう一度読み替えない）
     mark = f'<head><meta name="wl-own" content="{render.e(email)}">'
     if pages is not None:
+        pages["wishlist.html"] = render.render_wishlist(wishes, [], updated, (), {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, own=True).replace("<head>", mark, 1)
         pages["settings.html"] = photo_store.emblems_to_pages(settings_page(prefs, items, schemes, settings, updated).replace("<head>", mark, 1), pub)
         if heat_in:   # 話題度のページも店長と同じ render_heat を本人の版面で（F5 2026-11-05、L13：「トップにまとまっています」の札で行き止まりにしない）
             analysis = heat.analyze(items, heat_in[0], [issue] + heat_in[1], *heat_in[2:])
@@ -406,9 +408,10 @@ def main(argv):
             follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(id,name,config)&order=pos")
             chosen = {r["section"]: r["scheme"] for r in _supa(f"/rest/v1/nav_schemes?account=eq.{acct}&select=section,scheme") or []}
             pages = {}
+            wishes = _supa(f"/rest/v1/wishes?account=eq.{acct}&select=id,name,status,price,currency,url,shop,note,specs,image,photo,added&order=id.desc") or []
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
             html_ = build(u["email"], u.get("prefs") or {}, board_rows(follows, latest, {norm(r["item"]): r for r in rows or []}), shop_items, shop_issue,
-                          settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub)
+                          settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
             photo_store.scan_text([html_, *pages.values()], set(), imgs)
             for name, h in {"index.html": html_, **pages}.items():
                 fp = hashlib.sha1(h.encode("utf-8")).hexdigest()
