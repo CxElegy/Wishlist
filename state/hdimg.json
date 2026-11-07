@@ -2758,6 +2758,13 @@
   ],
   "why": "看不清"
  },
+ "https://static.sanyonews.jp/image/article/size1/1/0/1/6/10163e8bc4b56c33bcc85493c8e2556d_1.jpg": {
+  "w": 640,
+  "h": 431,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.397
+ },
  "https://static.sanyonews.jp/image/article/size1/2/f/a/d/2fad61127a6842248d305ff76caa749d_1.jpg": {
   "w": 427,
   "h": 640,
@@ -2828,6 +2835,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://static.sanyonews.jp/image/article/size1/c/4/5/6/c456bc17ca81222fdf8c9f45b8aa9c0c_1.jpg": {
+  "w": 402,
+  "h": 640,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/d/b/3/b/db3bbbdba3c8e92815679ecd49c5a40c_1.jpg": {
   "w": 640,
@@ -3940,6 +3953,12 @@
   "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2025/07/galaxy-s25-ultra-qi2-ready-charging-img2-1000x576.jpg": {
+  "w": 1000,
+  "h": 576,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sammyfans.com/wp-content/uploads/2025/09/s25-fe-tab-s11-buds-3-fe-img-1000x576.jpg": {
   "w": 1000,
   "h": 576,
   "target": 720,

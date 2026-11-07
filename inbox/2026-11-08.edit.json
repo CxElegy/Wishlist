@@ -145,10 +145,11 @@
   "周杰伦": 1,
   "滑雪": 1,
   "绝区零": 1,
-  "三星手机": 4,
+  "三星手机": 8,
   "The Mandalorian": 3,
   "あつ森": 3,
-  "Vaundy": 1
+  "Vaundy": 1,
+  "ILLIT": 3
  },
  "A2O LITE": [
   {
@@ -232,7 +233,8 @@
    "blurb": "Leaks about the Galaxy S27 Ultra point to Samsung's next big move for its flagship line.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    8
    ],
    "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-ultra-design-1.jpg"
   },
@@ -252,6 +254,15 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "Galaxy Studio headphones could join Samsung’s Galaxy S27 launch",
+   "highlight": "Galaxy Studio",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -297,6 +308,26 @@
     1
    ],
    "image": "https://v3-statics.mirrormedia.mg/images/0ed104aa-f976-4e35-91eb-d4f8580f85bf-w1600.jpg"
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT、HANA・JISOO＆MOMOKAとコラボ タイトル曲に参加",
+   "highlight": "HANA・JISOO＆MOMOKAとコラボ",
+   "blurb": "ILLITがHANA・JISOO＆MOMOKAとコラボ。タイトル曲に参加し、「大切な人に届けたい素直な気持ちを込めた楽曲」とコメント。",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ILLIT・YUNAH、橋本環奈にラブコール「デートしたい」 日本ドラマイベントにサプライズ登場",
+   "highlight": "橋本環奈にラブコール",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }
