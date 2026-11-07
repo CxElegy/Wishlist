@@ -290,7 +290,7 @@
   "星巴克马克杯": 1,
   "The Mandalorian": 1,
   "gelato pique": 3,
-  "MMORPG 新作": 3,
+  "MMORPG 新作": 4,
   "日本顶级网球赛事": 2
  },
  "dota2": [
@@ -530,6 +530,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "넥슨, 11월 26일 신작 MMORPG '템빨: 오버기어드' 출시",
+   "highlight": "11월 26일",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
