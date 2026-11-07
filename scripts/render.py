@@ -516,12 +516,12 @@ button{font-family:inherit}
 /* PC の「似たジャンルの新着」は横長の小さいカード（写真を左、文字を右）：上の段と形を変え、1 段を低く */
 @media (min-width:761px){
  .pkgrid.row .pk>a{flex-direction:row;align-items:flex-start}
- .pkgrid.row .pk .pic{flex:none;width:88px;aspect-ratio:1;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+ .pkgrid.row .pk .pic{flex:none;width:120px!important;height:90px!important;aspect-ratio:auto!important;min-height:0!important;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
  .pkgrid.row .pk:nth-child(even) .pic{transform:rotate(2deg)}
  .pkgrid.row .pk .pkt{flex:1;margin:10px 0 0 -8px;padding:10px 12px 9px}
  .pkgrid.row .pk .tags,.pkgrid.row .pk .taste,.pkgrid.row .pk .why small{display:none}
  .pkgrid.row .pk .why{font-size:13px}.pkgrid.row .pk b{font-size:13px}
- .pkgrid.row .pk .vote{margin:4px 0 0 96px}
+ .pkgrid.row .pk .vote{margin:4px 0 0 128px}
  .pkgrid:not(.row) .pk:not(.big) .taste{display:none}  /* 「あなたの投票」は大きい 1 枚だけ */
 html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あなたの投票」と見せない（F8 2026-11-05） */
 }
@@ -3525,6 +3525,12 @@ FIT_JS = """
     if (pk || sm) unside(pk || sm, p);
     if (pk) {   // 気になるかも？：写真は切らない（文字入りのバナーが多い）。下に重なる札の分（--pko）は写真の外
       const pko = parseFloat(getComputedStyle(p).getPropertyValue('--pko')) || 0;
+      if (innerWidth > 760 && pk.closest('.pkgrid.row')) {   // 似たジャンルの新着：枠はどれも同じ大きさ（2026-11-07 店長「一个大一个小很奇怪」）。切れない絵は全体を見せて周りを絵の端の色に
+        const r0 = nat / (boxW(img, 120) / boxH(img, 90));
+        p.style.height = p.style.aspectRatio = p.style.minHeight = p.style.flex = '';
+        p.classList.toggle('fill', Math.abs(Math.log(r0)) < 0.08 || cropAt(img, r0) || (!img.dataset.m && Math.min(r0, 1 / r0) >= 0.7));
+        return;
+      }
       p.style.height = p.style.aspectRatio = p.style.minHeight = p.style.flex = ''; pk.classList.remove('shaped');
       if (innerWidth <= 760) {   // 1 列：枠を写真の比率にする（縦長は 1.5 倍まで・横長は 1.5:1 まで）。それでも細い写真は枠を絞って字を横に（.sb）
         const w = p.clientWidth, h = Math.min(Math.max(w / nat, w / 1.5), w * 1.5);
