@@ -3570,7 +3570,7 @@ FIT_JS = """
   };
   // 小さいカード・気になるかも：写真が枠より細いとき、ぼかしでも空白でも埋めず、枠を写真の幅に絞って字の列を横に置く（.sb）。
   // 字の列が 100px 未満になるほど狭いカードは枠を写真の比率に（点検 gap が数える）
-  const unside = (c, p) => { c.classList.remove('sb'); p.style.width = p.style.height = p.style.aspectRatio = ''; };
+  const unside = (c, p) => { c.classList.remove('sb'); p.style.width = p.style.height = p.style.aspectRatio = ''; p.querySelectorAll('img').forEach(i => { i.style.transform = i.style.transformOrigin = ''; }); };
   const side = (c, p, nat, h) => {
     const cw = (c.querySelector(':scope > a:not(.lk)') || c).clientWidth || c.clientWidth;
     const w = Math.min(Math.round(h * nat), Math.round(cw * 0.5));
@@ -3578,7 +3578,18 @@ FIT_JS = """
       const pw = p.clientWidth; p.style.aspectRatio = 'auto'; p.style.height = Math.min(pw / nat, pw * 1.1) + 'px'; return;
     }
     p.style.height = h + 'px'; p.style.width = w + 'px'; c.classList.add('sb');
-    if (!c.matches('.pk')) { const hh = p.getBoundingClientRect().height; if (hh > h + 4) p.style.width = Math.min(Math.round(hh * nat), Math.round(cw * 0.5)) + 'px'; }   // 枠はカードの高さまで伸びる：幅も写真の形に合わせ直す
+    if (!c.matches('.pk')) {   // 枠はカードの高さまで伸びる：幅を写真の形に合わせ直し（55% まで）、まだ上下が余るなら主役が残る範囲で 1.25 倍まで拡大する（端の色の帯も余白。2026-11-07 店長）
+      const hh = p.getBoundingClientRect().height;
+      if (hh > h + 4) {
+        const w2 = Math.min(Math.round(hh * nat), Math.round(cw * 0.55)), img = p.querySelector('img:not(.bg):not(.ico)'), want = Math.min(1.25, hh / (w2 / nat));
+        p.style.width = w2 + 'px';
+        if (img && want > 1.02) {
+          const ok = cropAt(img, want), o = ok ? img.style.objectPosition.split(' ')[0] : '50%';
+          img.style.objectPosition = ''; delete img.dataset.keep;
+          img.style.transformOrigin = o + ' 50%'; img.style.transform = 'scale(' + (ok ? want : Math.min(want, 1.1)).toFixed(3) + ')';
+        }
+      }
+    }
   };
   // 大きいカード（.hero・.lead・.wide）で写真が枠より細いとき：ぼかしで埋めず、枠を写真の幅に絞り、空いた横に同じ版面の次の記事を置く。
   // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.6 倍まで）
