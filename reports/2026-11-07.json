@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "83c25210f141",
+ "edit_sig": "7358b3c6e22e",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -137,34 +137,8 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 60,
-     "source": "蕃新聞",
-     "title": "1G雙向光纖前半年半價每月600元 四大串流大滿貫、抽《復仇者聯盟》電影票再賺3900元mo幣",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1RSDljdGR5aG11YlJlN0JrMHdmTV80bU1sS2NoQlhfWTRJRFFSRmFMUkZmcnpqeklUREZXaFJrcVpHV1U5SzR3QkZaVHpsdXVOQXc?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 61,
-     "source": "AOL.com",
-     "title": "Marvel’s New X-Men Cast Photo Has Fans Pointing Out One Odd Detail: “Full Boycott”",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9WTkh1Zk8xbmRubkZxMFBMZzdab3JxVWx1OThJOVpDNTBsYnlYb0phSDFuSDNxclNhbmVfV2JtNm1CRzUzeEd3YjNMUEIwbmt2MFBQNDFyZE5Ec0RlRzROS29ybW5DLTh0cDVEbm55S0pMZFF4NkE?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-07",
-     "headline": "New Avengers: Doomsday teaser may have spoiled a big MCU return",
-     "highlight": "",
-     "image": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_124,w_1086,h_610/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m6st36v4wm5wq673db.jpg",
-     "image_via": "og:image",
-     "url": "https://bamsmackpow.com/new-avengers-doomsday-ad-teaser-trailer-spoiled-marvel-return",
-     "weight": "hero"
-    },
     {
      "blurb": "Disney walked advertisers through Marvel's post-Doomsday lineup; the specific release dates were not given.",
      "date": "2026-11-06",
@@ -204,6 +178,16 @@
      "image": "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-promo-art-reveals-epic-mcu-team-ups-and-a-first-look-at-doctor-dooms-doom-guard-ab230842.jpg",
      "image_via": "转载 comicbookmovie.com",
      "url": "https://www.imdb.com/news/ni66098583/?ref_=nmnw_art_perm",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "Adam Driver Reveals What Finally Got Him to Join the MCU After Years of Turning Marvel Down",
+     "highlight": "",
+     "image": "https://www.thenews.com.pk/assets/uploads/2026-11-06/1422757_115225_updates.jpg",
+     "image_via": "og:image（其它来源）",
+     "url": "https://people.com/adam-driver-explains-why-he-joined-the-mcu-after-years-of-turning-marvel-down-12240337",
      "weight": "normal"
     }
    ],

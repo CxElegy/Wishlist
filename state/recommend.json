@@ -13,6 +13,7 @@
   "https://article.auone.jp/fb958b8c-b16d-4d90-b3ba-a160b9eb565c": "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912",
   "https://ascii.jp/elem/000/004/447/4447809/": "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122",
   "https://automaton-media.com/en/news/open-world-anime-style-detective-arpg-silver-palace-gets-december-14-global-release-date/": "https://automaton-media.com/en/wp-content/uploads/2026/10/20261030-74586-001.jpg",
+  "https://bamsmackpow.com/new-avengers-doomsday-ad-teaser-trailer-spoiled-marvel-return": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_124,w_1086,h_610/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m6st36v4wm5wq673db.jpg",
   "https://bbs.hupu.com/643547242.html": "https://i10.hoopchina.com.cn/b26a858e2841e0ed740608191c56d229_w_1179_h_1971_.jpg?x-oss-process=image/resize,w_800/format,webp",
   "https://cava.tw/lifestyle/travel-food/267913": "https://img.cava.tw/cava2022/news/2026/10/31/1793475579_55692.jpg",
   "https://cocreco.kodansha.co.jp/anehime/news/anehime_character_festival/kaeruandkuma/40sDF": "https://d34gglw95p9zsk.cloudfront.net/articles/images/000/048/116/large/3a8daff6-7b0a-429b-ad01-fede98bfbca9.jpg?1792911318",
@@ -87,8 +88,7 @@
   "https://www.superherohype.com/movies/703969-batman-new-movie-releasing-later-this-year-release-date-set": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/batman.jpg?resize=1200,630",
   "https://www.tehrantimes.com/news/531702/Mokri-s-Black-Rabbit-White-Rabbit-wins-at-63rd-International": "https://media.tehrantimes.com/d/t/2026/11/01/4/6242024.jpg?ts=1793535295479",
   "https://www.tenasia.co.kr/article/2026110720554": "https://img.tenasia.co.kr/photo/202611/BF.46341530.1.jpg",
-  "https://www.walkerplus.com/article/118119/image652264.html": "https://news.walkerplus.com/article/118119/652262_615.jpg",
-  "https://www.yahoo.com/entertainment/movies/articles/mcu-wolverine-ditch-love-triangle-192301562.html": "https://www.bing.com/th?id=ONUT.tVwCB3XpIqHbaouRnGWS1Q&pid=News&w=1200"
+  "https://www.walkerplus.com/article/118119/image652264.html": "https://news.walkerplus.com/article/118119/652262_615.jpg"
  },
  "picks": [
   {
@@ -1387,6 +1387,27 @@
   },
   {
    "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-07",
+   "hits": [],
+   "image": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_124,w_1086,h_610/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m6st36v4wm5wq673db.jpg",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "Bam Smack Pow",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "New Avengers: Doomsday teaser may have spoiled a big MCU return",
+   "url": "https://bamsmackpow.com/new-avengers-doomsday-ad-teaser-trailer-spoiled-marvel-return",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-11-07",
    "hits": [],
@@ -1424,27 +1445,6 @@
    ],
    "title": "Avengers: Doomsday Car Commercial Features New Look at Nightcrawler, Sparks Theories About Unannounced Heroes",
    "url": "https://www.ign.com/articles/avengers-doomsday-car-commercial-features-new-look-at-nightcrawler-sparks-theories-about-unannounced-heroes",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 5,
-   "because": "漫威电影",
-   "date": "2026-11-06",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.tVwCB3XpIqHbaouRnGWS1Q&pid=News&w=1200",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "Yahoo",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "MCU’s Wolverine Should Ditch the Love Triangle and Be a Mentor",
-   "url": "https://www.yahoo.com/entertainment/movies/articles/mcu-wolverine-ditch-love-triangle-192301562.html",
    "words": [],
    "work": "漫威电影"
   },
@@ -2056,11 +2056,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2072,11 +2072,11 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ]
  ]

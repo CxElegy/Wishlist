@@ -3942,12 +3942,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.tVwCB3XpIqHbaouRnGWS1Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 350,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.uY8mlRmZ-bWkSg41p10Oaw&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -4395,6 +4389,12 @@
  "https://www.teepr.com/wp-content/uploads/2026/11/1952868-photo1.jpg": {
   "w": 1200,
   "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.thenews.com.pk/assets/uploads/2026-11-06/1422757_115225_updates.jpg": {
+  "w": 1200,
+  "h": 686,
   "target": 720,
   "v": 3
  },
