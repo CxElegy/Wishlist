@@ -416,6 +416,10 @@ button{font-family:inherit}
 .mini h3{align-self:start;font-size:15px;font-weight:700;line-height:1.5}
 .card.mini>:is(.xprice,.xevent,.xgal){grid-column:2}.card.mini>:is(.xprice,.xevent){justify-self:start}.xevent span{white-space:nowrap}  /* 日程・価格は字の下に（写真の下の空きに落とさない） */
 .side .card.mini{grid-template-columns:110px minmax(0,1fr)}
+/* 小さいカードの写真は幅 40%・高さは字の列いっぱい（2026-11-07 ユーザー「图有点小了」：120×90 の下に空きが残っていた。スマホの 42% と同じ考え） */
+.card.mini:not(.nophoto){grid-template-columns:minmax(110px,40%) minmax(0,1fr)}
+.card.mini:not(.nophoto)>.pic{align-self:stretch;justify-self:stretch;width:auto!important;height:auto!important;min-height:96px;aspect-ratio:auto!important}
+.card.mini>.pic img:not(.bg):not(.ico){object-fit:cover}
 .brief{padding:12px 26px 18px;border-top:1px solid var(--line)}
 .brief h4{margin:0 0 8px;font:900 13px var(--font-sans);letter-spacing:.12em;opacity:.8}
 .brief ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -4557,6 +4561,8 @@ html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidd
 html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-mine="2"] .wl-off{display:none!important}
 html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .swish{display:none!important}
+html[data-mine="2"] .fside:not(:has(.agenda)){display:none!important}
+html[data-mine="2"] .mgrid:not(:has(.agenda)){grid-template-columns:minmax(0,1fr)}
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}
 @media (max-width:560px){html[data-mine="2"] body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.wl-cards>a.np{display:flex}}
