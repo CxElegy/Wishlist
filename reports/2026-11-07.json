@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "572b8b677ebe",
+ "edit_sig": "1e24307fb054",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -190,8 +190,8 @@
      "date": "2026-11-06",
      "headline": "Nielsen: Netflix Ups Catalog Horror Series 'From' to No. 1 Across U.S. TV Households Through Oct. 25",
      "highlight": "No. 1",
-     "image": "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://s.yimg.com/lo/mysterio/api/d5cf628c681d5f588dd3da15ad8fd7d25cb987d4309eb79da84bc01b2329eb1a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd6a4598914c362c3f0bfdc8a51ad28df.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.mediaplaynews.com/nielsen-netflix-ups-catalog-horror-series-from-to-no-1-across-u-s-tv-households-through-oct-25/",
      "weight": "lead"
     }
@@ -479,8 +479,9 @@
      "date": "2026-11-05",
      "headline": "周杰伦二开没想到能抢到，代拍费没多收，2 张票600 块|周杰伦|猫眼|演唱会_新浪新闻",
      "highlight": "",
-     "image": "http://wx4.sinaimg.cn/middle/693810ffgy1iir60k9ekoj20wi1yc0yl.jpg",
-     "image_via": "正文图（本站保存）",
+     "image": null,
+     "source": "新浪网",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
      "url": "https://www.sina.cn/news/detail/5361858577174801.html",
      "weight": "hero"
     },
@@ -613,8 +614,8 @@
      "date": "2026-11-04",
      "headline": "이수만이 다시 일냈다…신인 A2O LITE, 데뷔하자마자 ‘1위 행진’",
      "highlight": "1위 행진",
-     "image": "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png",
-     "image_via": "JSON-LD",
+     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
+     "image_via": "og:image",
      "url": "https://www.kpab.net/news/articleView.html?idxno=1865",
      "weight": "lead"
     }
@@ -635,15 +636,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 3,
-     "source": "ウォーカープラス",
-     "title": "＜画像7 / 16＞本能くすぐりまくり!?米国老舗の“猫グッズ”が日本上陸",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1SVFlPZE9mQ0otMDRLTVlOS19DMU1HVkJCeWtRUHRrT0xwV3puZ3JuVU42NG5wUVE2NnRXMUtYcUxvdFlkbGZ1dVRRU0J6Vm5Eam93dDVpdFpNMjdxTVRJTExGOUFxdw?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -655,6 +647,16 @@
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/441e2468e1b639d05584056b8c89bc1e4fe2d8e5",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "本能くすぐりまくり!?米国老舗の“猫グッズ”が日本上陸",
+     "highlight": "日本上陸",
+     "image": "https://news.walkerplus.com/article/8540/22863_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/8540/image22869.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",

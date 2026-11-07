@@ -202,7 +202,7 @@
   "ILLIT": 3,
   "A2O LITE": 2,
   "dota2": 2,
-  "猫用品": 2,
+  "猫用品": 3,
   "Astrae Oratio": 1,
   "Vaundy": 1,
   "滑雪": 1,
@@ -234,6 +234,15 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "本能くすぐりまくり!?米国老舗の“猫グッズ”が日本上陸",
+   "highlight": "日本上陸",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
