@@ -21,7 +21,9 @@ TIMEOUT = 900
 def one(name):
     t = time.time()
     try:
-        p = subprocess.run([sys.executable, "-m", "unittest", f"tests.{name}"], cwd=ROOT, capture_output=True,
+        # 試験の頭で sys.path を足し忘れても、前の試験が足した分に頼らないよう、最初から通しておく
+        env = {**os.environ, "PYTHONPATH": os.pathsep.join(str(ROOT / d) for d in ("", "scripts", "harness"))}
+        p = subprocess.run([sys.executable, "-m", "unittest", f"tests.{name}"], cwd=ROOT, env=env, capture_output=True,
                            text=True, encoding="utf-8", errors="replace", timeout=TIMEOUT)
         return name, p.returncode, p.stdout + p.stderr, time.time() - t
     except subprocess.TimeoutExpired:
