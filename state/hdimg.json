@@ -1465,7 +1465,7 @@
  "https://images.thedirect.com/media/article_full/1000012226.jpg": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/doomclocks.jpg": {
@@ -4377,6 +4377,13 @@
   "h": 600,
   "target": 720,
   "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-07"
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
   "w": 410,

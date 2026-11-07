@@ -56,7 +56,6 @@
   "https://t.co/0ccKFTVoVQ": null,
   "https://t.co/HxbP6sUsNB": "https://pbs.twimg.com/media/HWIPKNQbYAEe7ne?format=webp&name=large",
   "https://tech.yahoo.com/phones/articles/android-circuit-galaxy-s27-pro-215043586.html": "https://www.bing.com/th?id=ONUT.BLRUqdyhpsnoPCxLnKzxEQ&pid=News&w=1200",
-  "https://thedirect.com/article/ahsoka-season-2-the-mandalorian-the-acolyte-disney-plus-lucasfilm-star-wars": "https://images.thedirect.com/media/article_full/1000012226.jpg",
   "https://times.abema.tv/zt/articles/-/10286189": "https://times-abema.ismcdn.jp/mwimgs/2/9/1200w/img_29ed6bf6a46cabbb6b7d74c6d82596c1244940.jpg",
   "https://today.line.me/tw/v3/posts/list/article/peKZgDl": "https://today-obs.line-scdn.net/0hBc9YPs7MHUwEIAFvObBiGzx2ET03RgdFJhVUKXUpEHQuDF4TORROLyB3FmB5EF5PJBZQLHYlQnkrQ1sbOg/w1200",
   "https://topics.smt.docomo.ne.jp/article/eventbank/region/eventbank-10653641": "https://img.topics.smt.news.goo.ne.jp/picture/eventbank/m_eventbank-10653641.jpg",
@@ -1372,27 +1371,6 @@
   },
   {
    "batch": 4,
-   "because": "The Mandalorian",
-   "date": "2026-11-07",
-   "hits": [],
-   "image": "https://images.thedirect.com/media/article_full/1000012226.jpg",
-   "kind": "board",
-   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
-   "score": 6,
-   "source": "The Direct",
-   "taste": [
-    [
-     "作品:The Mandalorian",
-     2
-    ]
-   ],
-   "title": "Report: Ahsoka Season 2 Is No Longer Expected To Release On Disney+ With Lucasfilm's Live-Action Star Wars TV Streaming Rollout Used For The Mandalorian & The Acolyte",
-   "url": "https://thedirect.com/article/ahsoka-season-2-the-mandalorian-the-acolyte-disney-plus-lucasfilm-star-wars",
-   "words": [],
-   "work": "The Mandalorian"
-  },
-  {
-   "batch": 5,
    "because": "漫威电影",
    "date": "2026-11-07",
    "hits": [],
@@ -1497,7 +1475,7 @@
    "work": "BLEACH Mirrors High"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "哈利波特剧集",
    "date": "2026-11-05",
    "hits": [],
@@ -1602,7 +1580,7 @@
    "work": "dota2"
   },
   {
-   "batch": 7,
+   "batch": 6,
    "because": "dota2",
    "date": "2026-11-06",
    "hits": [],
@@ -2043,11 +2021,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2059,11 +2037,11 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]
