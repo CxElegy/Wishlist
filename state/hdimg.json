@@ -2979,12 +2979,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/d5cf628c681d5f588dd3da15ad8fd7d25cb987d4309eb79da84bc01b2329eb1a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd6a4598914c362c3f0bfdc8a51ad28df.jpg": {
-  "w": 1200,
-  "h": 801,
-  "target": 1280,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/e3b438fc382eccbca29fe32ea232813ef117ddf19d7986321de545358681a847/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthe_enquirer_natl_articles_358%2Fcb842521f65d616d3b5e0d446c9d1277.jpg": {
   "w": 1200,
   "h": 800,
@@ -4370,6 +4364,12 @@
   "w": 900,
   "h": 600,
   "target": 720,
+  "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 1280,
   "v": 3
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
