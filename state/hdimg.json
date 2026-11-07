@@ -739,12 +739,6 @@
   "target": 720,
   "v": 3
  },
- "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg": {
-  "w": 3775,
-  "h": 2123,
-  "target": 720,
-  "v": 3
- },
  "https://d89889xojlqhy.cloudfront.net/upload/featured/878a2e413e4afc0aad075f02f55f1e48.jpg": {
   "w": 4200,
   "h": 2100,
@@ -1485,6 +1479,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gXWZR.img": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gv1JW.img": {
   "w": 1456,
   "h": 819,
@@ -1646,6 +1646,12 @@
   "h": 801,
   "target": 1280,
   "v": 3
+ },
+ "https://img.theweek.in/content/dam/week/en/wire-updates/pti-preview-theweek.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100433.jpg": {
   "w": 640,
