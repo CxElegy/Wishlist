@@ -139,7 +139,7 @@
   "日本顶级网球赛事": 1,
   "A2O LITE": 2,
   "dota2": 2,
-  "チェーンソーマン": 1,
+  "チェーンソーマン": 4,
   "周杰伦": 1,
   "滑雪": 1,
   "绝区零": 1,
@@ -187,6 +187,25 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "「チェンソーマン喫茶」東京・大阪・愛知で、レゼ着想の紫プリン＆“夜のプール”パフェ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "I went to the MAPPA exhibition, the animation studio that produces Chainsaw Man and Attack on Titan",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3
    ]
   }
  ],

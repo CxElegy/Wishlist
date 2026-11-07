@@ -111,6 +111,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/001gSRX0ly1iis5h51wvnj60z01lmahy02.jpg": {
+  "w": 1260,
+  "h": 2074,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/65fa3ff8a54cba67.webp",
+  "out": [
+   778,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/006gNTEUly1iitiistinvj399c5x14r4.jpg": {
   "w": 2000,
   "h": 1278,
@@ -343,6 +356,12 @@
   "v": 3
  },
  "https://assets.st-note.com/production/uploads/images/333315069/rectangle_large_type_2_ca6572321f554b1ad067c31bea7eeffb.jpeg?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 1280,
+  "v": 3
+ },
+ "https://assets.st-note.com/production/uploads/images/333437731/rectangle_large_type_2_fd72de6e00cbf2dbc1edc82ae65fc978.jpeg?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
   "target": 1280,
@@ -3591,6 +3610,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.vOH5IaFeQaOAxsVsW0ix_A&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.zMsnk3V15TWhqbVGB1iJaQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3737,6 +3762,13 @@
   "h": 1360,
   "target": 1280,
   "v": 3
+ },
+ "https://www.fashion-press.net/img/news/150832/RAM.jpg?1788842767": {
+  "w": 800,
+  "h": 600,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.292
  },
  "https://www.gamespot.com/wp-content/uploads/2026/10/Jason_and_Lucia_01.jpg": {
   "w": 3840,

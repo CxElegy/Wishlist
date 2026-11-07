@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "2274f3f9b9f1",
+ "edit_sig": "b1836e9e7b46",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -255,29 +255,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 2,
-     "source": "note",
-     "title": "I went to the MAPPA exhibition, the animation studio that produces Chainsaw Man and Attack on Titan",
-     "url": "https://note.com/mute_phlox837/n/n87122a0ecf02?hl=en"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 3,
-     "source": "note",
-     "title": "체인소 맨, 진격의 거인을 제작하는 애니메이션 제작사 MAPPA 전시회에 다녀왔습니다",
-     "url": "https://note.com/mute_phlox837/n/n87122a0ecf02?hl=ko"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 4,
-     "source": "ファッションプレス",
-     "title": "写真10/28｜「チェンソーマン喫茶」東京・大阪・愛知で、レゼ着想の紫プリン＆“夜のプール”パフェ",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE4td3ZTVkk3Q1NoSk8wNzFSbnZJblIyelhVZXNKTlJjUi00dUM2MnNYV0dNMXRabl9MSGQxSGdnX3NnYlIwbFRxT2dtY3ZnUHdWR0RreXFsNUhuT1laVDRTYUx5ejVwSmtE?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -289,6 +266,26 @@
      "image_via": "og:image",
      "url": "https://www.dexerto.com/anime/chainsaw-man-episode-5-review-kooky-characters-and-a-promising-plot-1985444/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "「チェンソーマン喫茶」東京・大阪・愛知で、レゼ着想の紫プリン＆“夜のプール”パフェ",
+     "highlight": "",
+     "image": "https://www.fashion-press.net/img/news/150832/RAM.jpg?1788842767",
+     "image_via": "og:image",
+     "url": "https://www.fashion-press.net/news/gallery/150832/2542771",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "I went to the MAPPA exhibition, the animation studio that produces Chainsaw Man and Attack on Titan",
+     "highlight": "",
+     "image": "https://assets.st-note.com/production/uploads/images/333437731/rectangle_large_type_2_fd72de6e00cbf2dbc1edc82ae65fc978.jpeg?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/mute_phlox837/n/n87122a0ecf02?hl=en",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
