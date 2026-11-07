@@ -44,6 +44,9 @@ MEASURE_JS = r"""
     const s = getComputedStyle(e);
     if (s.webkitLineClamp !== 'none' && e.scrollHeight > e.clientHeight + 1) { clamped++; return; }
     if (s.textOverflow === 'ellipsis' && e.scrollWidth > e.clientWidth + 1) { clamped++; return; }
+    if (e.closest('details:not([open])')) return;
+    let inClamp = false; for (let a = e.parentElement, d = 0; a && d < 4; a = a.parentElement, d++) if (getComputedStyle(a).webkitLineClamp !== 'none') inClamp = true;
+    if (inClamp) return;   // 見出しの「…」の中の飾り：字が欠けているのではない
     const r = e.getBoundingClientRect();
     for (let a = e, depth = 0; a && a !== document.body && depth < 6; a = a.parentElement, depth++) {
       const o = getComputedStyle(a);
@@ -59,7 +62,7 @@ MEASURE_JS = r"""
   document.querySelectorAll('svg, img.ico, .ico, button img, a > img, .nav img').forEach(e => {
     if (e.closest('.pic:not(.icon)') || !vis(e)) return;
     const r = e.getBoundingClientRect(); if (r.width > 96 || r.height > 96) return;
-    const k = e.tagName + '|' + (e.getAttribute('class') || '') + '|' + (e.parentElement.getAttribute('class') || e.parentElement.tagName);
+    const k = e.tagName + '|' + (e.parentElement.getAttribute('class') || e.parentElement.tagName) + '|' + (e.parentElement.parentElement.getAttribute('class') || '');
     (groups[k] = groups[k] || []).push({e, w: r.width, h: r.height});
   });
   Object.entries(groups).forEach(([k, g]) => {
@@ -84,8 +87,10 @@ MEASURE_JS = r"""
 
 
 def serve(root):
-    h = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(root))
-    h.log_message = lambda *a, **k: None
+    class Quiet(http.server.SimpleHTTPRequestHandler):
+        def log_message(self, *a):
+            pass
+    h = functools.partial(Quiet, directory=str(root))
     srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), h)
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     return srv.server_address[1]
@@ -104,12 +109,14 @@ def load_all(pg):
     }""")
 
 
-def review(url, width, pw_browser):
+def review(url, width, pw_browser, shot=None):
     ctx = pw_browser.new_context(viewport={"width": width, "height": 900}, locale="ja-JP")
     pg = ctx.new_page()
     pg.goto(url, wait_until="load", timeout=60000)
     load_all(pg)
     res = pg.evaluate(MEASURE_JS)
+    if shot:   # 自分の目で見る用：ページの上の方
+        pg.screenshot(path=str(shot), clip={"x": 0, "y": 0, "width": width, "height": min(3000, pg.evaluate("document.documentElement.scrollHeight"))}, full_page=True)
     seen, shots = {}, []
     for it in res["items"]:
         n = seen.get(it["kind"], 0)
@@ -120,7 +127,9 @@ def review(url, width, pw_browser):
             png = pg.locator(it["sel"]).first.screenshot(timeout=5000)
             shots.append({**it, "width": width, "png": base64.b64encode(png).decode()})
         except Exception:   # 隠れて撮れない所は数にだけ入れる
-            shots.append({**it, "width": width, "png": ""})
+            seen[it["kind"]] -= 1   # 隠れている所は数えない
+            if not seen[it["kind"]]:
+                del seen[it["kind"]]
     ctx.close()
     return {"width": width, "counts": seen, "clamped": res["clamped"], "photos": res["photos"], "shots": shots}
 
@@ -161,7 +170,7 @@ def main(argv=None):
         urls += [f"http://127.0.0.1:{port}/{p}" for p in args.page or ["home/index.html"]]
     with sync_playwright() as p:
         b = browser.launch(p)
-        results = [review(u, w, b) for u in urls for w in WIDTHS]
+        results = [review(u, w, b, out / f"page-{n}-{w}.png") for n, u in enumerate(urls) for w in WIDTHS]
         (out / "review.json").write_text(json.dumps([{k: ([{x: s[x] for x in s if x != "png"} for s in v] if k == "shots" else v) for k, v in r.items()} for r in results], ensure_ascii=False, indent=1), encoding="utf-8")
         ctx = b.new_context(viewport={"width": 1140, "height": 800})
         pg = ctx.new_page()
