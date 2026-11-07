@@ -1874,99 +1874,50 @@
 "tokens": 403564
 },
 {
-"at": "2026-11-07T09:05:12+00:00",
-"text": "2026-11-07 第 11 バッチを出刊：绝区零（1 版面・3 本・残り 2 版面） · token 新規入力 2,199・キャッシュ読み 51.1万・出力 807",
+"at": "2026-11-07T09:14:12+00:00",
+"text": "2026-11-07 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、Vaundy ほか 10（16 版面・43 本・残り 1 版面） · token 新規入力 6.3万・キャッシュ読み 161.8万・出力 5,340",
 "level": "ok",
 "res": {
 "cpu": 4,
-"load": 0.25,
+"load": 0.36,
 "mem_total": 16867737600,
-"mem_free": 15929331712,
-"disk_used": 10769747968,
-"disk_free": 30513786880,
+"mem_free": 15837057024,
+"disk_used": 10029690880,
+"disk_free": 31253843968,
 "disk_total": 41283534848,
-"peak": 381452288
+"peak": 475996160
 },
-"batch": 11,
+"batch": 1,
 "boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"三星手机",
+"周杰伦",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"漫威电影",
 "绝区零"
 ],
-"stories": 3,
-"left": 2,
+"stories": 43,
+"left": 1,
 "edited": 20,
-"run": 1794037733.6287405,
+"run": null,
 "tok": {
-"in": 13,
-"cw": 2186,
-"cr": 511100,
-"out": 807,
-"calls": 5,
+"in": 46,
+"cw": 63226,
+"cr": 1617953,
+"out": 5340,
+"calls": 22,
 "model": "claude-sonnet-5-5"
 },
-"tokens": 514106
-},
-{
-"at": "2026-11-07T09:15:21+00:00",
-"text": "2026-11-07 第 12 バッチを出刊：A2O LITE（1 版面・5 本・残り 4 版面） · token 新規入力 2,019・キャッシュ読み 52.2万・出力 1,099",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.25,
-"mem_total": 16867737600,
-"mem_free": 15940100096,
-"disk_used": 10780753920,
-"disk_free": 30502780928,
-"disk_total": 41283534848,
-"peak": 355794944
-},
-"batch": 12,
-"boards": [
-"A2O LITE"
-],
-"stories": 5,
-"left": 4,
-"edited": 20,
-"run": 1794037733.6287405,
-"tok": {
-"in": 12,
-"cw": 2007,
-"cr": 521708,
-"out": 1099,
-"calls": 5,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 524826
-},
-{
-"at": "2026-11-07T09:20:08+00:00",
-"text": "2026-11-07 第 13 バッチを出刊：Vaundy（1 版面・3 本・残り 3 版面） · token 新規入力 1,269・キャッシュ読み 21.1万・出力 709",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.28,
-"mem_total": 16867737600,
-"mem_free": 15962759168,
-"disk_used": 10783449088,
-"disk_free": 30500085760,
-"disk_total": 41283534848,
-"peak": 328396800
-},
-"batch": 13,
-"boards": [
-"Vaundy"
-],
-"stories": 3,
-"left": 3,
-"edited": 20,
-"run": 1794037733.6287405,
-"tok": {
-"in": 3,
-"cw": 1266,
-"cr": 211454,
-"out": 709,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 213432
+"tokens": 1686565
 }
 ]

@@ -531,11 +531,17 @@
   "v": 3
  },
  "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
+  "w": 600,
+  "h": 400,
   "target": 1280,
   "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-07"
+  "blur": 0.475,
+  "local": "pics/ffd4ccaef88f5a5d.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://cdn.livedoor.jp/kstyle/ab5e045fe60d0218b0020ef9390be269_WI.jpg": {
   "w": 1024,
@@ -1074,6 +1080,12 @@
   "target": 720,
   "v": 3
  },
+ "https://hawk.live/storage/images/posts/collapse-assessed-team-spirits-form-after-replacement-of-larl-23707.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
  "https://hawk.live/storage/images/posts/kiyotaka-compete-dota-2-tournament-25193.jpg": {
   "w": 1200,
   "h": 628,
@@ -1223,6 +1235,12 @@
  "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2026/08/BLEACH-Mirrors-High-launch-cover.jpg": {
   "w": 1200,
   "h": 624,
+  "target": 1280,
+  "v": 3
+ },
+ "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-Ultra-AH-2.png?fit=1920%2C1080&ssl=1": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -1852,9 +1870,9 @@
   "target": 720,
   "v": 3
  },
- "https://img.tenasia.co.kr/photo/202611/BF.46341530.1.jpg": {
-  "w": 1200,
-  "h": 1622,
+ "https://img.tenasia.co.kr/photo/202611/BF.46341531.1.jpg": {
+  "w": 534,
+  "h": 722,
   "target": 720,
   "v": 3
  },
