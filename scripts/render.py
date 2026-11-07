@@ -118,7 +118,7 @@ button{font-family:inherit}
 .nx>i{grid-column:1/-1;font:700 11px var(--font-mono);letter-spacing:.12em;font-style:normal;opacity:.7}
 /* 小さいカード・気になるかも（F-16 続き）：縦長・正方形の写真は枠を写真の幅に絞り（.sb）、空いた横に見出しなど字の列を置く。幅・高さは FIT_JS が決める */
 .sb>.pic{aspect-ratio:auto;justify-self:start;align-self:start}
-.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.sb:not(.mini)>.pic,.wc.sb>.pic{align-self:stretch;height:auto!important}.card.sb:not(.mini)>.pic img:not(.bg):not(.ico),.wc.sb>.pic img:not(.bg):not(.ico){object-fit:cover}  /* 写真の枠は 9 行にまたがり、字の入らない行にも行の隙間（8px）が 7 つ付いて、カードが字より 73〜86px 高くなっていた（2026-11-02）：隙間は字の部品の下の余白で付ける */
+.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.sb:not(.mini)>.pic,.wc.sb>.pic{align-self:stretch;height:auto!important}  /* 写真の枠は 9 行にまたがり、字の入らない行にも行の隙間（8px）が 7 つ付いて、カードが字より 73〜86px 高くなっていた（2026-11-02）：隙間は字の部品の下の余白で付ける */
 .card.sb:not(.mini)>.pic,.wc.sb>.pic{grid-column:1;grid-row:1/span 9}
 .card.sb:not(.mini)>*:not(.pic):not(.lk),.wc.sb>*:not(.pic):not(.lk){grid-column:2}
 .card.sb:not(.mini){grid-template-rows:repeat(8,auto) minmax(0,1fr)}  /* 写真の枠が字より高いとき、余りを字の入らない行に分けず 3 行目が受ける（390px で 27px 余計に高くなっていた） */
@@ -3481,10 +3481,6 @@ FIT_JS = """
       while (l < W / 2 && flat(H, k => px(l, k))) l++;
       while (r < W / 2 && flat(H, k => px(W - 1 - r, k))) r++;
       const e0 = px(0, 0); img._edge = 'rgb(' + e0.join(',') + ')';
-      let same = 0, all = 0; const near = v => Math.abs(v[0] - e0[0]) + Math.abs(v[1] - e0[1]) + Math.abs(v[2] - e0[2]) <= 24;
-      for (let k = 0; k < W; k++) { all += 2; if (near(px(k, 0))) same++; if (near(px(k, H - 1))) same++; }
-      for (let k = 0; k < H; k++) { all += 2; if (near(px(0, k))) same++; if (near(px(W - 1, k))) same++; }
-      img._flat = same / all >= 0.7;   // 四辺の 7 割が同じ色：無地の背景のロゴ・文字バナー
       const f = {t: t / H, b: b / H, l: l / W, r: r / W};
       if (Math.max(f.t, f.b, f.l, f.r) >= 0.04 && f.t + f.b < 0.7 && f.l + f.r < 0.7) img._bands = f;
     };
@@ -3534,8 +3530,8 @@ FIT_JS = """
       }
       const r = nat / (boxW(img, p.clientWidth) / Math.max(1, boxH(img, p.clientHeight - pko)));
       // 比率が違っても、顔・題字（data-m）が 6 割以上残る位置で切れるなら切る（案 2）。残らない絵は今までどおり全体を見せる
-      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.7) || (!img.dataset.m && !img._flat));
-      // 切れない横長の絵（文字バナー）：枠を絵の形にして、余りは手書きの札が受ける（帯も空きも出さない。2026-11-07）
+      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.7));
+      // 切れない横長の絵：枠を絵の形にして、余りは手書きの札が受ける（帯も空きも出さない。2026-11-07）
       if (!p.classList.contains('fill') && r > 1) { Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', flex: 'none', height: (p.clientWidth / nat + pko) + 'px'}); p.classList.add('fill'); pk.classList.add('shaped'); return; }
       if (!p.classList.contains('fill') && r < 0.75) side(pk, p, nat, p.clientHeight);   // 写真が枠より細い：空いた横に札を置く
       return;
@@ -3544,12 +3540,11 @@ FIT_JS = """
     // そうでなければぼかしの上に全体を見せる。配図は文字・ロゴ入りのバナーが多く、端を切ると欠ける（2026-10-17 ユーザー指摘）
     // 左写真のカード：枠は字の列の高さいっぱい。主役の位置 data-m があれば主役が残る位置で切る。ないときは 30% まで切って埋める。
     // それ以上切れる絵（ロゴ・文字入りが多い）だけ全体を見せ、周りを絵の端の色で埋める（.whole：文字を欠かさず、白い帯にも見えない）
-    const photo = !img.dataset.m && !img._flat;   // 無地の背景でなく主役の位置もわからない絵＝普通の写真：切って埋める（店長の印：主役が残れば切れても○、帯は✕）
     const mini = p.closest('.card.mini:not(.nophoto)') || (innerWidth <= 760 && sm && !sm.classList.contains('nophoto') ? sm : null);
     if (mini) {
       p.classList.remove('whole');
       const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
-      const ok = q >= 0.7 ? (cropAt(img, rr) || !img.dataset.m || q >= 0.88) : (cropAt(img, rr) || photo);
+      const ok = q >= 0.7 ? (cropAt(img, rr) || !img.dataset.m || q >= 0.88) : cropAt(img, rr);
       p.classList.toggle('fill', ok); p.classList.toggle('whole', !ok);
       if (!ok) { img.style.objectPosition = ''; delete img.dataset.keep; if (img._edge) p.style.background = img._edge; }
       return;
@@ -3558,8 +3553,8 @@ FIT_JS = """
     if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
     const r = nat / (boxW(img, p.clientWidth) / boxH(img, p.clientHeight));
     // 切る場所はどこも同じ規則：主役（顔・題字）が 6 割以上残る位置で切れるなら切る。0.75 より細い絵は、切らずに枠を絵の幅に絞る narrow・side が受ける
-    p.classList.toggle('fill', (r >= 0.75 && (cropAt(img, r) || photo)) || Math.abs(Math.log(r)) < 0.08);
-    // 切れない横長の絵（ロゴ・文字バナー）：枠を絵の形に。余りはカードの紙が受ける
+    p.classList.toggle('fill', (r >= 0.75 && (cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.7))) || Math.abs(Math.log(r)) < 0.08);
+    // 切れない横長の絵：枠を絵の形に。余りはカードの紙が受ける（文字を欠かさない。2026-11-07 店長「这种剪切方式取消」）
     if (sm && innerWidth > 760 && r > 1 && !p.classList.contains('fill')) { p.style.aspectRatio = 'auto'; p.style.height = p.clientWidth / nat + 'px'; p.classList.add('fill'); }
     if (r < 0.75) { img.style.objectPosition = ''; delete img.dataset.keep; }
     narrow(img, p, nat, r);
