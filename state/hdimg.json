@@ -525,16 +525,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
-  "w": 600,
-  "h": 400,
+ "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg": {
+  "w": 300,
+  "h": 200,
   "target": 1280,
   "v": 3,
-  "blur": 0.475,
-  "local": "pics/ffd4ccaef88f5a5d.webp",
+  "blur": 0.653,
+  "local": "pics/1b57abae8ed7a45b.webp",
   "out": [
-   1280,
-   853
+   900,
+   600
   ],
   "why": "看不清"
  },
@@ -1082,6 +1082,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hawk.live/storage/images/posts/gaimin-gladiators-may-return-dota-2-25417.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
  "https://hawk.live/storage/images/posts/kiyotaka-compete-dota-2-tournament-25193.jpg": {
   "w": 1200,
   "h": 628,
@@ -1370,12 +1376,6 @@
    852
   ],
   "why": "看不清"
- },
- "https://image.news.livedoor.com/newsimage/stf/e/9/e9a37_69_bc18c0be3d09c1d1d330920a9f291b63.jpg": {
-  "w": 1199,
-  "h": 799,
-  "target": 1280,
-  "v": 3
  },
  "https://image.p-c2-x.abema-tv.com/image/programs/js_113114-L/thumb001.png?height=720&quality=75&version=1793320844&width=1280": {
   "w": 1280,
@@ -1860,6 +1860,12 @@
    868
   ],
   "why": "看不清"
+ },
+ "https://img.navi.gg/publications/2026/11/publications-12175/thumbnail/65591/Site_1738x800-EPLchampions.png": {
+  "w": 1738,
+  "h": 800,
+  "target": 720,
+  "v": 3
  },
  "https://img.newspim.com/news/2026/11/04/261104105439682_w.jpg": {
   "w": 1200,
@@ -3346,6 +3352,12 @@
   "target": 720,
   "v": 3
  },
+ "https://statics-prod.mirrordaily.news/images/5ed68c06-6b4e-4661-929c-2d247adbd52e.jpg": {
+  "w": 1984,
+  "h": 1323,
+  "target": 1280,
+  "v": 3
+ },
  "https://storage.ctinews.com/compression/files/default/cut-1793538777-XNKpkSx.jpg": {
   "w": 1547,
   "h": 2319,
@@ -4365,6 +4377,13 @@
   "h": 600,
   "target": 720,
   "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-07"
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
   "w": 410,

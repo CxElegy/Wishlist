@@ -325,10 +325,10 @@
   "三星手机": 25,
   "ILLIT": 12,
   "A2O LITE": 15,
-  "dota2": 4,
+  "dota2": 8,
   "猫用品": 6,
   "Astrae Oratio": 1,
-  "Vaundy": 5,
+  "Vaundy": 10,
   "滑雪": 1,
   "FROM": 2,
   "周杰伦": 11,
@@ -357,7 +357,26 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    7
+   ]
+  },
+  {
+   "headline": "NAVI Dota 2 — EPL Masters III Champions!",
+   "highlight": "EPL Masters III Champions",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "Gaimin Gladiators Hints at a Return to Professional Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -417,7 +436,20 @@
    "weight": "normal",
    "refs": [
     3,
-    4
+    4,
+    6,
+    10
+   ]
+  },
+  {
+   "headline": "Vaundy、27-28年に開催する全国13か所30公演のアリーナツアー完売で千葉・LaLa arena TOKYO-BAY2Days公演追加発表",
+   "highlight": "千葉・LaLa arena TOKYO-BAY2Days公演追加",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    9,
+    8
    ]
   }
  ],

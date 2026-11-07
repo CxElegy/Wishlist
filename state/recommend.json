@@ -84,12 +84,12 @@
   "https://www.osen.co.kr/article/G1112906056": "https://file.osen.co.kr/article/2026/11/07/202611071704775542_6aeedd58a8301.jpg",
   "https://www.primetimer.com/features/from-season-4-episode-5-release-date-and-time-where-to-watch-and-more": null,
   "https://www.sakhaparliament.ru/goods/fashion/g101036328": null,
-  "https://www.sanyonews.jp/article/1939627?kw=2024": "https://static.sanyonews.jp/image/article/size1/9/0/f/2/90f2fac13399752a17edd8c356ff1d3e_1.jpg",
   "https://www.sina.cn/news/detail/5356822332443719.html": "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg",
   "https://www.sina.cn/news/detail/5362594062008618.html": "http://wx2.sinaimg.cn/middle/006gNTEUly1iitiistinvj399c5x14r4.jpg",
   "https://www.sponichi.co.jp/baseball/news/2026/11/02/kiji/20261102s00001007091000c.html": "https://www.sponichi.co.jp/baseball/news/2026/11/02/jpeg/20261102s10001007109000p_view.webp",
   "https://www.superherohype.com/movies/703969-batman-new-movie-releasing-later-this-year-release-date-set": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/batman.jpg?resize=1200,630",
   "https://www.tehrantimes.com/news/531702/Mokri-s-Black-Rabbit-White-Rabbit-wins-at-63rd-International": "https://media.tehrantimes.com/d/t/2026/11/01/4/6242024.jpg?ts=1793535295479",
+  "https://www.thefirsttimes.jp/news/0000914589/": "https://www.thefirsttimes.jp/admin/wp-content/uploads/5026/11/20261107-ufo-191101-1200x630.jpeg",
   "https://www.walkerplus.com/article/49891/": "https://news.walkerplus.com/article/49891/268901_615.jpg",
   "https://www.yahoo.com/entertainment/movies/articles/worst-superhero-movie-according-christopher-154500962.html": "https://s.yimg.com/lo/mysterio/api/8b210a09a4221adf39347f8ba4dfd14cff953de6a611bafca813352280e6e540/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flooper_828%2F5a5996ea1e1b86554f32b504a0bd89ca.jpg"
  },
@@ -1561,6 +1561,27 @@
   },
   {
    "batch": 6,
+   "because": "Vaundy",
+   "date": "2026-11-07",
+   "hits": [],
+   "image": "https://www.thefirsttimes.jp/admin/wp-content/uploads/5026/11/20261107-ufo-191101-1200x630.jpeg",
+   "kind": "board",
+   "liked": "Vaundy、「しわあわせ」が急上昇1位 2021年配信楽曲が映画主題歌起用で再生数増（CDJournal）",
+   "score": 5,
+   "source": "THE FIRST TIMES",
+   "taste": [
+    [
+     "作品:Vaundy",
+     1
+    ]
+   ],
+   "title": "Vaundy、27-28年に開催する全国13か所30公演のアリーナツアー完売で千葉・LaLa arena TOKYO-BAY2Days公演追加発表",
+   "url": "https://www.thefirsttimes.jp/news/0000914589/",
+   "words": [],
+   "work": "Vaundy"
+  },
+  {
+   "batch": 6,
    "because": "dota2",
    "date": "2026-11-07",
    "hits": [],
@@ -1579,27 +1600,6 @@
    "url": "https://hawk.live/posts/korb3n-explains-1wins-dota-2-roster-issues-will-solve",
    "words": [],
    "work": "dota2"
-  },
-  {
-   "batch": 6,
-   "because": "Vaundy",
-   "date": "2026-11-07",
-   "hits": [],
-   "image": "https://static.sanyonews.jp/image/article/size1/9/0/f/2/90f2fac13399752a17edd8c356ff1d3e_1.jpg",
-   "kind": "board",
-   "liked": "Vaundy、「しわあわせ」が急上昇1位 2021年配信楽曲が映画主題歌起用で再生数増（CDJournal）",
-   "score": 5,
-   "source": "山陽新聞",
-   "taste": [
-    [
-     "作品:Vaundy",
-     1
-    ]
-   ],
-   "title": "『ROCK IN JAPAN FESTIVAL 2026』タイムテーブル発表 Vaundy、BUMP OF CHICKEN、Adoらがメインステージのトリに",
-   "url": "https://www.sanyonews.jp/article/1939627?kw=2024",
-   "words": [],
-   "work": "Vaundy"
   },
   {
    "batch": 7,
@@ -2055,7 +2055,7 @@
    8
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
@@ -2063,7 +2063,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]
