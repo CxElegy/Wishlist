@@ -66,7 +66,7 @@ grant execute on function public.my_wish_del(bigint) to authenticated;
 revoke all on public.wishes from anon, authenticated;
 
 -- 写真から足す：受付は店長と同じ photo_inbox。account は鍵から決まる（p_account を渡さない）。
--- お客さまの写真は公開のリポジトリに書き出さない：digest.export_photos は店長の行だけ（scope_account）、お客さまの行は PC の scripts/pc_ai.py が処理する
+-- お客さまの写真は公開のリポジトリに書き出さない：digest.export_photos は店長の行だけ（scope_account）、お客さまの行はクラウドの AI 編集が短い合言葉で受け取る
 create or replace function public.my_photo_add(p_image text, p_thumb text, p_status text, p_note text)
 returns bigint language plpgsql security definer set search_path = '' as $$
 declare a text := public.my_account(); new_id bigint;
