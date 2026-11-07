@@ -44,8 +44,9 @@
      python scripts/digest.py edit-brief --only lib:版面id      # 一行一条：编号 日期 出典｜标题｜摘要（全部是整理待ち）
      # 按下面的「编排规则」写这一个版面的报道列表（不是 edit.json 的整个对象，只是 [ {headline, highlight, blurb, weight, refs}, … ]）到 /tmp/lib.json
      python scripts/digest.py lib-publish --only lib:版面id --file /tmp/lib.json
+     git add inbox/lib && git commit -m "ライブラリの版面を編集" && python scripts/push_main.py
      ```
-     写进 Supabase 的 `board_stories.stories`（不用 git 提交），お客さまのページ下一次重新生成时就换成编好的报道，没用上的进「整理待ち」。
+     云端没有数据库的钥匙：结果写进 `inbox/lib/edits/`，推送后下一次后台作业（`lib_queue.py sync`）写进 `board_stories.stories`，お客さまのページ再下一次重新生成时就换成编好的报道，没用上的进「整理待ち」。
      篇幅一律按 M（5 条以内，最多 8），不配图（用原文的图）。没有值得报的就写 `[]`（也要 lib-publish，免得下次又编同一批）。
      一次会话最多 `library.LIB_EDIT_MAX` 个、编好的版面 12 小时内不再编（token 上限，`edit-next` 自己把关）。编完回到 `edit-next`。
    - 输出 `DONE` → 今天的整理待ち都编完了（店長的版面和ライブラリの版面），结束。

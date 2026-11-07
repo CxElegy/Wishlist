@@ -83,6 +83,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/library_watch.py
 
+      # お客さまの版面の AI 編集の受け渡し：AI の結果を DB へ → 次に編む版面を inbox/lib/queue.json へ（クラウドに DB の鍵を置かない。2026-11-07）
+      - name: お客さまの版面の受け渡し
+        continue-on-error: true
+        run: python scripts/lib_queue.py sync
+
       - name: 判断（有没有活、要不要 AI）
         id: gate
         run: python scripts/gate.py check
@@ -165,6 +170,7 @@ jobs:
           if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "${{ steps.more.outputs.changed }}" = "true" ] || [ "${{ steps.fire.outputs.fired }}" = "true" ] || [ "${{ steps.kick.outputs.tried }}" = "true" ] || [ "${{ steps.libkick.outputs.tried }}" = "true" ]; then
             git add state/gate.json state/log/gate.json 2>/dev/null || true
           fi
+          git add -A inbox/lib 2>/dev/null || true
           git diff --cached --quiet && { echo "変化なし：コミットしない"; exit 0; }
           git diff --cached --quiet -- items.yaml || echo "items=true" >> "$GITHUB_OUTPUT"   # 店長の版面が変わった：下でライブラリへ写す
           python scripts/digest.py render

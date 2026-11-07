@@ -3847,6 +3847,9 @@ def edit_next(ctl=None):
 def lib_edit_todo():
     """ライブラリの版面のうち AI 編集を待つもの（library.edit_todo）。service key がない・読めないときは []（店長の編集は止めない）。"""
     import library
+    if not os.environ.get("SUPABASE_SERVICE_KEY"):   # クラウドの AI 編集は鍵を持たない：Actions が置いた一覧を読む（lib_queue.py）
+        import lib_queue
+        return lib_queue.todo()
     try:
         return library.edit_todo(supabase, _lib_today(), [i["name"] for i in load_config()[1]])
     except Exception as err:  # noqa: BLE001
@@ -4241,11 +4244,19 @@ def main():
         live_edit()
     elif args.step == "edit-brief" and str(args.only or "").startswith("lib:"):
         import library
-        print(library.edit_brief(supabase, args.only[4:].split()[0], _lib_today(), [i["name"] for i in load_config()[1]]))
+        if os.environ.get("SUPABASE_SERVICE_KEY"):
+            print(library.edit_brief(supabase, args.only[4:].split()[0], _lib_today(), [i["name"] for i in load_config()[1]]))
+        else:
+            import lib_queue
+            print(lib_queue.brief(args.only[4:].split()[0]))
     elif args.step == "edit-brief":
         print(edit_brief(batch=int(args.only) if args.only and args.only.isdigit() else None))
     elif args.step == "lib-publish":
         import library
+        if not os.environ.get("SUPABASE_SERVICE_KEY"):   # クラウド：結果をリポジトリに置く。次の後台作業が DB に書く
+            import lib_queue
+            print(lib_queue.save_edit(str(args.only or "").removeprefix("lib:").split()[0], load_json(pathlib.Path(args.file))))
+            return
         if supabase("boards?select=id&limit=1") is None:
             sys.exit("SUPABASE_SERVICE_KEY がないので書けません")
         library.edit_publish(supabase, str(args.only or "").removeprefix("lib:").split()[0], load_json(pathlib.Path(args.file)),

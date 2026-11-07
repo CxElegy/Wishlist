@@ -29,6 +29,7 @@ ENTRIES = [
     ("library --users", ["scripts/library.py", "--users"], 300),
     ("library_emblem --check", ["scripts/library_emblem.py", "--check"], 300),
     ("library_watch", ["scripts/library_watch.py"], 300),
+    ("lib_queue sync", ["scripts/lib_queue.py", "sync"], 300),
     ("gate check", ["scripts/gate.py", "check"], 300),
     ("photo_store", ["scripts/photo_store.py", "--minutes", "1"], 300),
     ("photo_store --kick", ["scripts/photo_store.py", "--kick"], 300),
