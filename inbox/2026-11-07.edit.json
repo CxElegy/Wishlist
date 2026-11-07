@@ -212,7 +212,8 @@
   "チェーンソーマン": 1,
   "哈利波特剧集": 1,
   "星巴克马克杯": 1,
-  "The Mandalorian": 1
+  "The Mandalorian": 1,
+  "gelato pique": 1
  },
  "dota2": [
   {
@@ -326,5 +327,20 @@
    ]
   }
  ],
- "The Mandalorian": []
+ "The Mandalorian": [],
+ "gelato pique": [
+  {
+   "headline": "ASAHIYAMA ZOO GELATO PIQUE が登場",
+   "highlight": "ASAHIYAMA ZOO GELATO PIQUE",
+   "blurb": "旭山動物園とのコラボ。動物になりきれるKIDS & BABYシリーズが10月23日(金)発売。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-10-23",
+    "label": "発売日"
+   }
+  }
+ ]
 }
