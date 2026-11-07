@@ -20,7 +20,7 @@ OUT = ROOT / "docs/testground"
 PLANS = {
     "a": ("A：Every Layout ＋ Intrinsic", """
 /* 右の列（予定・欲しい物）：Switcher。幅が 640px あれば全部横に並び、残りを分け合う。足りなければ全部縦に積む（席を余らせない） */
-@media (max-width:1100px){
+@media (max-width:1200px){
  .mgrid .fside{display:flex!important;flex-wrap:wrap;gap:20px}
  .mgrid .fside>*{flex-grow:1;flex-basis:calc((640px - 100%) * 999);min-width:0}
 }
