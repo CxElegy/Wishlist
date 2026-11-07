@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "d20328ae4622",
+ "edit_sig": "c68b7c57c437",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -173,38 +173,39 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Leaks about the Galaxy S27 Ultra point to Samsung's next big move for its flagship line.",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "Geeky Gadgets",
-     "title": "Surprising Galaxy S27 Ultra Leaks Reveal Samsung’s Next Big Move",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5HTFE2SGFhVU5tR2RBaDJHQU5CU2x3SDlwQUR5TkNveVJqbkdUaUdkNFZ5Qy13MWZvcGZXZk9Za1poUnVwWnQ5MTJIVXRraW5SRTI4cHdORldJRmticU55cDg0azVIeEU0MWM3ajZPeTc?oc=5"
+     "headline": "Surprising Galaxy S27 Ultra Leaks Reveal Samsung’s Next Big Move",
+     "highlight": "Galaxy S27 Ultra",
+     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-ultra-design-1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-specs-7/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 2,
-     "source": "CNMO",
-     "title": "三星S27 Pro与S27 Ultra五大差异曝光 长焦镜头较弱",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFAybnctQWNDYW1fMFhweXdvcG9QQUJ4QWo2eURZNTEtVmJaLWRUWnVRR2JCWGlITmRkZGRLQnN2MkpUdjhEUWVSWWpDTQ?oc=5"
+     "headline": "三星S27 Pro与S27 Ultra五大差异曝光 长焦镜头较弱",
+     "highlight": "五大差异",
+     "image": "https://img.cnmo.com/2407/2406803.jpg",
+     "image_via": "og:image（本站保存）",
+     "url": "https://m.cnmo.com/news/822010.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 3,
-     "source": "RS Web Solutions",
-     "title": "Galaxy S27 Ultra Adopts iPhone Design - Positive Shift for Samsung",
-     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxORjJ0c2ZISXNiZTI4a216WVZIcWltcXU4TDlacWJQMG9aT3FfZllkcV9FV1VtRS0xNWdiOS1HTXR2TldVTk1PYncwdzByTXV2bkNQOE5xeGF0cUFPZDhsR081N1F2VjdoZ0RjeV9LV0hiMkRjWUNHSHpNYl9lYXpsb2dqeU1fd2dmN2RXYnhsNUNGeXIyeUpndjFDOUJsSVozT3FVaW5IdDl6OXZpVzBFVkQ5RFBXMkFRaEU2bFh2aG9Cdw?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 4,
-     "source": "VOI.ID",
-     "title": "Samsung Galaxy S27 Pro and Ultra to Feature 16 MP Front Camera",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9PbUROaGM0M2Vab1VaQ0E5dGVMUGNXVUpJUFpPOC1wY3g5aXNaTGZyUFNSaXdCU05YaV9mNHV6LWZrUUxFa3l5dVlKb9IBQkFVX3lxTE5zY3VpWjdoNzRTNXdsMFJ3UThwT05XZW92UFB3Ymk1YWk5Uzc2OTdFeWtGVm5MakFPeGQwdXE5Y0hsQQ?oc=5"
+     "headline": "Samsung Galaxy S27 Pro and Ultra to Feature 16 MP Front Camera",
+     "highlight": "16 MP",
+     "image": "https://imgsrv2.voi.id/yoBz1AR2XENY6n3R5azSaD7ZGxmFjsx5fYdJi-wphOU/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTg0NjcvMjAyNjEwMTQyMTM3LW1haW4uanBn.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://voi.id/en/technology/598467",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",

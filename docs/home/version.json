@@ -1,10 +1,10 @@
 {
- "admin": "0d12016b8e4c",
- "admin-ai": "5801a7635f57",
+ "admin": "3fea870ba79f",
+ "admin-ai": "6edc58e89871",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6855e857"
+   "d2bb90a8"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "0cd70f3e4ae1",
+ "admin-emblem": "b423d7eb74b9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "9fd3c1c3"
+   "ce75c271"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "83bc77bf32f2",
  "admin-members_marks": {},
- "admin-now": "c43e4fe7b15a",
+ "admin-now": "9b9a12a25d4f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d29c0b2c"
+   "da2d52ca"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "eb74b64d"
   ]
  },
- "admin-system": "04ee199a02e4",
+ "admin-system": "de3318208c40",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e9dd4275"
+   "f5bd006f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,11 +93,11 @@
    "57d687ff"
   ]
  },
- "index": "857822bf4bc8",
+ "index": "63fe28fcf950",
  "index_marks": {
   "front": [
    "トップ",
-   "a42deabc"
+   "d7967657"
   ],
   "picks": [
    "気になるかも？",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "df78a410"
+   "f459df78"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "28c5c8f8"
+   "332ad41c"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "b3dd44c5"
+   "25a6599f"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "5f6b014b"
   ]
  },
- "updated": "11.08 06:33",
- "wishlist": "b2e601c654b5"
+ "updated": "11.08 06:40",
+ "wishlist": "7d314f9afc15"
 }

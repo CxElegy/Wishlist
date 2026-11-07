@@ -1559,6 +1559,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.cnmo.com/2407/2406803.jpg": {
+  "w": 1600,
+  "h": 1000,
+  "target": 720,
+  "v": 3,
+  "local": "pics/04ec6d846c049cdb.webp",
+  "out": [
+   1280,
+   800
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "https://img.etimg.com/thumb/msid-135469326,width-1200,height-900,imgsize-1948950,overlay-economictimes/articleshow.jpg": {
   "w": 1200,
   "h": 900,
@@ -1791,6 +1804,12 @@
   "v": 3
  },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://imgsrv2.voi.id/yoBz1AR2XENY6n3R5azSaD7ZGxmFjsx5fYdJi-wphOU/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTg0NjcvMjAyNjEwMTQyMTM3LW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3711,6 +3730,12 @@
   "w": 1280,
   "h": 720,
   "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-ultra-design-1.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27.jpg": {

@@ -142,7 +142,8 @@
   "チェーンソーマン": 1,
   "周杰伦": 1,
   "滑雪": 1,
-  "绝区零": 1
+  "绝区零": 1,
+  "三星手机": 4
  },
  "A2O LITE": [
   {
@@ -199,5 +200,35 @@
    ]
   }
  ],
- "绝区零": []
+ "绝区零": [],
+ "三星手机": [
+  {
+   "headline": "Surprising Galaxy S27 Ultra Leaks Reveal Samsung’s Next Big Move",
+   "highlight": "Galaxy S27 Ultra",
+   "blurb": "Leaks about the Galaxy S27 Ultra point to Samsung's next big move for its flagship line.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-ultra-design-1.jpg"
+  },
+  {
+   "headline": "三星S27 Pro与S27 Ultra五大差异曝光 长焦镜头较弱",
+   "highlight": "五大差异",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Pro and Ultra to Feature 16 MP Front Camera",
+   "highlight": "16 MP",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ]
 }
