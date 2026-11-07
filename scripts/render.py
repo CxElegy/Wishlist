@@ -420,6 +420,7 @@ button{font-family:inherit}
    写真は字の列の高さいっぱい。主役の位置がわからず大きく切れる絵（ロゴ・文字入り）だけ全体を見せ、周りは絵の端の色で埋める .whole（2026-11-07 店長の印） */
 .card.mini:not(.nophoto){grid-template-columns:minmax(110px,40%) minmax(0,1fr)}
 .card.mini:not(.nophoto)>.pic{align-self:stretch;justify-self:stretch;width:auto!important;height:auto!important;min-height:96px;aspect-ratio:auto!important}
+.card.mini:not(.nophoto){row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.mini:not(.nophoto)>.pic{grid-column:1;grid-row:1/span 9}.card.mini:not(.nophoto)>*:not(.pic):not(.lk){grid-column:2}
 .pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
 .pic.trim img:not(.bg):not(.ico){inset:auto;max-width:none;object-fit:fill!important}
 .brief{padding:12px 26px 18px;border-top:1px solid var(--line)}
@@ -3455,7 +3456,7 @@ FIT_JS = """
     let best = -1, at = 0;
     for (let k = 0; k <= 24; k++) { const o = (1 - q) * k / 24, v = C(o + q) - C(o); if (v > best) { best = v; at = o; } }
     const keep = best / tot;
-    if (keep < 0.6) return false;
+    if (keep < 0.7) return false;   // 2026-11-07：6 割では文字入りのバナーの端が欠けた（INDEXBOX）
     const pos = (1 - q) > 0.001 ? at / (1 - q) * 100 : 50;
     img.style.objectPosition = horiz ? pos + '% 50%' : '50% ' + pos + '%';
     img.dataset.keep = Math.round(keep * 100);
@@ -3467,10 +3468,10 @@ FIT_JS = """
   const bands = img => {
     if (img._bands !== undefined) return img._bands;
     img._bands = null;
-    try {
+    const read = src => {
       const W = 64, H = Math.max(8, Math.round(64 * img.naturalHeight / img.naturalWidth)), c = document.createElement('canvas');
       c.width = W; c.height = H;
-      const x = c.getContext('2d', {willReadFrequently: true}); x.drawImage(img, 0, 0, W, H);
+      const x = c.getContext('2d', {willReadFrequently: true}); x.drawImage(src, 0, 0, W, H);
       const d = x.getImageData(0, 0, W, H).data, px = (a, b) => { const i = (b * W + a) * 4; return [d[i], d[i + 1], d[i + 2]]; };
       const flat = (n, at) => { const s = at(0); for (let k = 1; k < n; k++) { const v = at(k); if (Math.abs(v[0] - s[0]) + Math.abs(v[1] - s[1]) + Math.abs(v[2] - s[2]) > 24) return false; } return true; };
       let t = 0, b = 0, l = 0, r = 0;
@@ -3481,7 +3482,11 @@ FIT_JS = """
       const e0 = px(0, 0); img._edge = 'rgb(' + e0.join(',') + ')';
       const f = {t: t / H, b: b / H, l: l / W, r: r / W};
       if (Math.max(f.t, f.b, f.l, f.r) >= 0.04 && f.t + f.b < 0.7 && f.l + f.r < 0.7) img._bands = f;
-    } catch (e) {}
+    };
+    try { read(img); }
+    catch (e) {   // 別のサーバーの写真：許可があれば取り直して読む。なければ何もしない
+      if (window.createImageBitmap) fetch(img.currentSrc || img.src, {mode: 'cors'}).then(r => r.ok ? r.blob() : Promise.reject()).then(createImageBitmap).then(b => { read(b); b.close(); fit(img); }).catch(() => {});
+    }
     return img._bands;
   };
   // 帯の外の絵が枠をちょうど覆うよう、写真を枠の割合で置く（ブラウザによらず動き、幅が変わっても崩れない）
@@ -3492,7 +3497,13 @@ FIT_JS = """
     Object.assign(img.style, {width: iw / W * 100 + '%', height: ih / H * 100 + '%', left: ((W - cw * s) / 2 - nw * f.l * s) / W * 100 + '%', top: ((H - ch * s) / 2 - nh * f.t * s) / H * 100 + '%'});
     p.classList.remove('whole'); p.classList.add('trim');
   };
-  const fit = img => { fit0(img); const p = img.closest('.pic'), f = img.naturalWidth && img._bands; if (p && f && !p.closest('.pk')) trimFit(img, p, f); };
+  const fit = img => {
+    fit0(img);
+    const p = img.closest('.pic'), f = img.naturalWidth && img._bands;
+    if (!p) return;
+    if (f) trimFit(img, p, f);
+    else if (img._edge && !p.classList.contains('fill')) p.style.background = img._edge;   // 全体を見せる絵：周りを絵の端の色に（帯に見えない）
+  };
   const fit0 = img => {
     const p = img.closest('.pic');
     if (img.naturalWidth) bands(img);
@@ -3518,7 +3529,7 @@ FIT_JS = """
       }
       const r = nat / (boxW(img, p.clientWidth) / Math.max(1, boxH(img, p.clientHeight - pko)));
       // 比率が違っても、顔・題字（data-m）が 6 割以上残る位置で切れるなら切る（案 2）。残らない絵は今までどおり全体を見せる
-      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r));
+      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.7));
       if (!p.classList.contains('fill') && r < 0.75) side(pk, p, nat, p.clientHeight);   // 写真が枠より細い：空いた横に札を置く
       return;
     }
@@ -3554,6 +3565,7 @@ FIT_JS = """
       const pw = p.clientWidth; p.style.aspectRatio = 'auto'; p.style.height = Math.min(pw / nat, pw * 1.1) + 'px'; return;
     }
     p.style.height = h + 'px'; p.style.width = w + 'px'; c.classList.add('sb');
+    if (!c.matches('.pk')) { const hh = p.getBoundingClientRect().height; if (hh > h + 4) p.style.width = Math.min(Math.round(hh * nat), Math.round(cw * 0.5)) + 'px'; }   // 枠はカードの高さまで伸びる：幅も写真の形に合わせ直す
   };
   // 大きいカード（.hero・.lead・.wide）で写真が枠より細いとき：ぼかしで埋めず、枠を写真の幅に絞り、空いた横に同じ版面の次の記事を置く。
   // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.6 倍まで）
