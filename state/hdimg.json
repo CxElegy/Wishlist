@@ -117,19 +117,6 @@
   ],
   "why": "看不清"
  },
- "http://wx2.sinaimg.cn/middle/001gSRX0ly1iis5h51wvnj60z01lmahy02.jpg": {
-  "w": 1260,
-  "h": 2074,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/65fa3ff8a54cba67.webp",
-  "out": [
-   778,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/006gNTEUly1iitiistinvj399c5x14r4.jpg": {
   "w": 2000,
   "h": 1278,
@@ -525,16 +512,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg": {
-  "w": 300,
-  "h": 200,
+ "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
+  "w": 600,
+  "h": 400,
   "target": 1280,
   "v": 3,
-  "blur": 0.653,
-  "local": "pics/1b57abae8ed7a45b.webp",
+  "blur": 0.475,
+  "local": "pics/ffd4ccaef88f5a5d.webp",
   "out": [
-   900,
-   600
+   1280,
+   853
   ],
   "why": "看不清"
  },
@@ -847,6 +834,12 @@
  "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg": {
   "w": 1459,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg": {
+  "w": 3775,
+  "h": 2123,
   "target": 720,
   "v": 3
  },
@@ -3881,12 +3874,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.TCE6hKd37sgbUTq0Rrvp5A&pid=News&w=700": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-07"
- },
  "https://www.bing.com/th?id=ONUT.UXvOIpi2aXg2GpEl52Ekqg&pid=News&w=650": {
   "w": 650,
   "h": 488,
@@ -4270,7 +4257,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-1.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-ultra-camera-bump.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
@@ -4281,12 +4280,6 @@
   "h": 720,
   "target": 720,
   "v": 3
- },
- "https://www.gsmdome.com/wp-content/uploads/2026/11/samsung-galaxy-s27-ultra-samsung-galaxy-s27-ultra-design-cover-a98042-001.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-07"
  },
  "https://www.hollywoodreporter.com/wp-content/uploads/2024/11/FROM_310_00296_R-H-2024.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
