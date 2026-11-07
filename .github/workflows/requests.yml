@@ -24,7 +24,7 @@ jobs:
       WL_RENDER_SOFT: "1"   # 網页の生成に失敗しても、依頼の結果は push する（digest.write_page）
       WL_ITEM_MARKS: /tmp/item_marks.json   # take-items は依頼の done を push のあと（mark-items）まで待つ
       WL_ITEM_AGE: fresh   # 20 分以内の依頼だけ（それより前のものは収集の回が取る。同時に取って 2 重に足さない：digest.item_requests_query）
-      SUPABASE_URL: https://bzokpnbcjscbcehdxtjq.supabase.co   # 和 items.yaml 的 supabase_url 一样（公开的）
+      SUPABASE_URL: https://elegy.tailc8cfff.ts.net   # 和 items.yaml 的 supabase_url 一样（公开的）
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
       GH_TOKEN: ${{ github.token }}
     steps:
