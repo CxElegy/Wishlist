@@ -516,7 +516,7 @@ button{font-family:inherit}
 /* PC の「似たジャンルの新着」は横長の小さいカード（写真を左、文字を右）：上の段と形を変え、1 段を低く */
 @media (min-width:761px){
  .pkgrid.row .pk>a{flex-direction:row;align-items:flex-start}
- .pkgrid.row .pk .pic{flex:none;width:100px!important;height:75px!important;aspect-ratio:auto!important;min-height:0!important;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+ .pkgrid.row .pk .pic{flex:none!important;width:100px!important;height:75px!important;aspect-ratio:auto!important;min-height:0!important;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
  .pkgrid.row .pk:nth-child(even) .pic{transform:rotate(2deg)}
  .pkgrid.row .pk .pkt{flex:1;margin:10px 0 0 -8px;padding:10px 12px 9px}
  .pkgrid.row .pk .tags,.pkgrid.row .pk .taste,.pkgrid.row .pk .why small{display:none}
@@ -3511,6 +3511,17 @@ FIT_JS = """
     if (!p) return;
     if (f) trimFit(img, p, f);
     else if (img._edge && !p.classList.contains('fill')) p.style.background = img._edge;   // 全体を見せる絵：周りを絵の端の色に（帯に見えない）
+    if (p.closest('.pk')) swapBig(p.closest('.pk').parentElement);
+  };
+  // 気になるかも：大きい枠に横長の絵が入って上下が余るとき、形の合う絵（縦横比 1.1 以下。枠はほぼ正方形）と入れ替える（2026-11-07 店長「黑的留白也算留白」）
+  const swapBig = g => {
+    if (!g || innerWidth <= 760) return;
+    const big = g.querySelector(':scope > .pk.big'), bp = big && big.querySelector('.pic'), bi = bp && bp.querySelector('img:not(.bg):not(.ico)');
+    if (!bi || !bi.naturalWidth || bp.classList.contains('fill') || bi.naturalWidth / bi.naturalHeight <= 1.2) return;
+    const to = [...g.querySelectorAll(':scope > .pk:not(.big)')].find(k => { const i = k.querySelector('.pic img:not(.bg):not(.ico)'); return i && i.naturalWidth && i.naturalWidth / i.naturalHeight <= 1.1; });
+    if (!to) return;
+    big.classList.remove('big'); to.classList.add('big'); g.prepend(to);
+    setTimeout(() => dispatchEvent(new Event('resize')), 0);   // 両方の枠を測り直す
   };
   const fit0 = img => {
     const p = img.closest('.pic');
