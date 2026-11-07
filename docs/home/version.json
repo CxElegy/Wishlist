@@ -1,14 +1,14 @@
 {
- "admin": "2e08bffd7b49",
- "admin-ai": "7379aa043093",
+ "admin": "a434d64a47f2",
+ "admin-ai": "807c48b55e9f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d83b0f07"
+   "53440622"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c938733e"
+   "3bf37c62"
   ]
  },
  "admin-boards": "6de4b0320744",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "ad6fb0c7d4e8",
+ "admin-emblem": "de7704d1e930",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "25af320c"
+   "f12bd0b8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "83bc77bf32f2",
  "admin-members_marks": {},
- "admin-now": "bef68ccd65d3",
+ "admin-now": "97db396f5e7d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "6d8f113f"
+   "0c992558"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "d274c690"
+   "b06133f5"
   ]
  },
- "admin-system": "1c8ebeb4713a",
+ "admin-system": "cb65f9a3aae6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "569b4544"
+   "aba619bc"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ef79f347"
+   "f3574184"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "57d687ff"
   ]
  },
- "index": "76c3fe93a6bf",
+ "index": "984925626e94",
  "index_marks": {
   "front": [
    "トップ",
-   "610d2d58"
+   "a42deabc"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "b44b5361"
+   "e30d828c"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "c909c931"
+   "e6161758"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "435bbfe3"
+   "30bf0c6e"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "afb863f6"
+   "40f5fa09"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "5f6b014b"
   ]
  },
- "updated": "11.08 06:18",
+ "updated": "11.08 06:22",
  "wishlist": "b2e601c654b5"
 }
