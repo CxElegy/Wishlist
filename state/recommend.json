@@ -25,7 +25,6 @@
   "https://eyeonsunvalley.com/Mobile/Mobile_Story_Reader/14462/Halloween-Hoopla-Trick-or-Treaters-Dodge-the-Raindrops/": "https://eyeonsunvalley.com/StoryPhotos/14462.jpg",
   "https://finance.yahoo.co.jp/news/detail/82ebd1f76c3dabae7efaa68a534d6399b4822bd4": "https://s.yimg.jp/images/finance/common/image/ogp.png",
   "https://finance.yahoo.com/markets/stocks/articles/two-expects-20-growth-gta-145111715.html": "https://www.bing.com/th?id=ONUT.tHbO75x-CEreKjEyIer23Q&pid=News&w=1200",
-  "https://gamerant.com/gta-6-download-fast-internet-upgrade/": "https://www.bing.com/th?id=ONUT.KSrnB_C9V1MwRJpKiLKVNg&pid=News&w=1200",
   "https://gamewith.jp/pokemon-champions/555406": "https://img.gamewith.jp/article/thumbnail/rectangle_l/555406.png?date=1776075560",
   "https://gnn.gamer.com.tw/detail.php?sn=314573": "https://p2.bahamut.com.tw/B/2KU/75/fe3c9b54769450d330a0ab9a8a210gb5.JPG",
   "https://hawk.live/posts/korb3n-explains-1wins-dota-2-roster-issues-will-solve": "https://hawk.live/storage/images/posts/korb3n-harshly-criticized-auroras-new-roster-24133.jpg",
@@ -59,6 +58,8 @@
   "https://times.abema.tv/zt/articles/-/10286189": "https://times-abema.ismcdn.jp/mwimgs/2/9/1200w/img_29ed6bf6a46cabbb6b7d74c6d82596c1244940.jpg",
   "https://today.line.me/tw/v3/posts/list/article/peKZgDl": "https://today-obs.line-scdn.net/0hBc9YPs7MHUwEIAFvObBiGzx2ET03RgdFJhVUKXUpEHQuDF4TORROLyB3FmB5EF5PJBZQLHYlQnkrQ1sbOg/w1200",
   "https://topics.smt.docomo.ne.jp/article/eventbank/region/eventbank-10653641": "https://img.topics.smt.news.goo.ne.jp/picture/eventbank/m_eventbank-10653641.jpg",
+  "https://tw.stock.yahoo.com/news/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8Bvi-ps5-pro-%E5%8D%87%E7%B4%9A%E8%B3%87%E8%A8%8A%E5%A4%96%E6%B4%A9%E5%BC%95%E7%96%91%E6%85%AE-%E8%A7%92%E8%89%B2%E6%8F%8F%E8%BF%B0%E9%8C%AF%E6%A4%8D%E6%88%90%E6%BC%8F%E6%B4%9E-121553244.html": "https://www.bing.com/th?id=ONUT.1Ch0ZQsKkSTA81fAHpwi6g&pid=News&w=960",
+  "https://universe.oneone.com.tw/posts/7264": "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg",
   "https://www.bgr.com/2293868/samsung-phone-nearly-indestructible-galaxy-xcover7-pro/": "https://www.bgr.com/img/gallery/this-rugged-samsung-phone-is-nearly-indestructible/l-intro-1792667748.jpg",
   "https://www.chiba-tv.com/plus/detail/2026112186394": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1489960052156450557/origin_1.jpg",
   "https://www.dealmoon.ca/product/lego-lucky-cat-building-kit-280-pieces-ages-9/3932502": null,
@@ -956,27 +957,6 @@
   },
   {
    "batch": 1,
-   "because": "GTA 6",
-   "date": "2026-11-07",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.KSrnB_C9V1MwRJpKiLKVNg&pid=News&w=1200",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "Game Rant",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "Internet Provider Is Giving GTA 6 Fans Faster Downloads for Free",
-   "url": "https://gamerant.com/gta-6-download-fast-internet-upgrade/",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-11-07",
    "hits": [],
@@ -1039,7 +1019,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "绝区零",
    "date": "2026-11-07",
    "hits": [],
@@ -1058,6 +1038,27 @@
    "url": "https://www.sina.cn/news/detail/5362594062008618.html",
    "words": [],
    "work": "绝区零"
+  },
+  {
+   "batch": 2,
+   "because": "GTA 6",
+   "date": "2026-11-07",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.1Ch0ZQsKkSTA81fAHpwi6g&pid=News&w=960",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "tw.stock",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "《俠盜獵車手VI》PS5 Pro 升級資訊外洩引疑慮 角色描述錯植成漏洞",
+   "url": "https://tw.stock.yahoo.com/news/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8Bvi-ps5-pro-%E5%8D%87%E7%B4%9A%E8%B3%87%E8%A8%8A%E5%A4%96%E6%B4%A9%E5%BC%95%E7%96%91%E6%85%AE-%E8%A7%92%E8%89%B2%E6%8F%8F%E8%BF%B0%E9%8C%AF%E6%A4%8D%E6%88%90%E6%BC%8F%E6%B4%9E-121553244.html",
+   "words": [],
+   "work": "GTA 6"
   },
   {
    "batch": 2,
@@ -1605,6 +1606,31 @@
   },
   {
    "batch": 0,
+   "because": "猫用品",
+   "date": "2026-11-03",
+   "hits": [
+    "猫咪新奇用品"
+   ],
+   "image": "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg",
+   "kind": "follow",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "source": "oneone宇宙",
+   "taste": [
+    [
+     "猫咪新奇用品",
+     1
+    ]
+   ],
+   "title": "日本爆紅角色《Whippi & Wrappi》是誰？藍色貓咪、紫色毛球魔物「吃吃的愛」太荒謬！東京車站快閃店、聯名周邊、首款一番賞一次看",
+   "url": "https://universe.oneone.com.tw/posts/7264",
+   "words": [
+    "スチーマー",
+    "猫"
+   ],
+   "work": "猫用品"
+  },
+  {
+   "batch": 1,
    "because": "Panasonic 毛玉クリーナー NI-LC300-A（毛球修剪器）",
    "date": "2026-11-07",
    "hits": [
@@ -1675,7 +1701,7 @@
    "work": "SALONIA 无线直发夹（コードレス ストレートアイロン）"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "漫威电影",
    "date": "2026-11-04",
    "hits": [
@@ -1754,7 +1780,7 @@
    "work": "チェーンソーマン"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "SALONIA 无线直发夹（コードレス ストレートアイロン）",
    "date": "2026-11-02",
    "hits": [
@@ -1836,7 +1862,7 @@
    "work": "gelato pique"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-02",
    "hits": [
@@ -1883,11 +1909,11 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ]
  ]

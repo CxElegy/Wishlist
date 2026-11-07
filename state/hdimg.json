@@ -739,6 +739,12 @@
   "target": 720,
   "v": 3
  },
+ "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg": {
+  "w": 3775,
+  "h": 2123,
+  "target": 720,
+  "v": 3
+ },
  "https://d89889xojlqhy.cloudfront.net/upload/featured/878a2e413e4afc0aad075f02f55f1e48.jpg": {
   "w": 4200,
   "h": 2100,
@@ -1484,6 +1490,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-08"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gXXbm.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gv1JW.img": {
   "w": 1456,
@@ -2849,6 +2861,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/11/gta-6-jason-and-lucia-in-coupe-cabrio-purple-color-palette-grand-theft-auto-vi-screenshot-edit.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2026/11/chainsaw-man-reze-arc-inspires-stylish-new-apparel-collection-gamerant-feature.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3229,6 +3247,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.1Ch0ZQsKkSTA81fAHpwi6g&pid=News&w=960": {
+  "w": 700,
+  "h": 399,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3318,12 +3342,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.KSrnB_C9V1MwRJpKiLKVNg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,
