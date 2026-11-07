@@ -23,6 +23,8 @@ PLANS = {
 @media (max-width:1200px){
  .mgrid .fside{display:flex!important;flex-wrap:wrap;gap:20px}
  .mgrid .fside>*{flex-grow:1;flex-basis:calc((640px - 100%) * 999);min-width:0}
+ /* 箱が広いときは中身も段に並べる（Every Layout の Grid）：品名と札の間に空きを作らない */
+ .mgrid .fside .swish ol,.mgrid .fside .agenda ol{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))!important;column-gap:28px}
 }
 /* カードの一覧：auto-fit（空いた席を作らず、ある分で幅を分け合う） */
 .pkgrid.row{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))!important}
