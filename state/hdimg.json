@@ -405,13 +405,13 @@
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
-  "target": 720,
+  "target": 1280,
   "v": 3,
-  "blur": 0.473,
+  "blur": 0.606,
   "local": "pics/1f4c2211c5986133.webp",
   "out": [
-   720,
-   540
+   900,
+   675
   ],
   "why": "看不清"
  },
@@ -699,6 +699,12 @@
  "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/03014721/pet-prt-42258-683-1-261102174718333.jpeg": {
   "w": 1500,
   "h": 1329,
+  "target": 1280,
+  "v": 3
+ },
+ "https://d1rldr9jdodfaa.cloudfront.net/images/01KRB6E1GSSMXAAYC3T718DNRJ/bef4f6ff-2b27-4a8e-8315-766539e96d30_1778492311.webp": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -1001,6 +1007,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hermes.media.static.aol.com/media/2026/11/07/7b4ef813-c408-30d0-a0fa-b0f4a51d2e5b/454d9de9-5699-4cd1-bdea-645ef4519750.png": {
+  "w": 1600,
+  "h": 1200,
+  "target": 720,
+  "v": 3
+ },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261105/photo/bkn-20261105000104965-1105_00862_001_02b.jpg?20261104222519": {
   "w": 780,
   "h": 799,
@@ -1219,6 +1231,12 @@
   "v": 3
  },
  "https://images.moneycontrol.com/static-mcnews/2026/10/20261031131011_hp-new.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://images.pushsquare.com/22fef94b93cd7/1280x720.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -2451,6 +2469,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltcd74acc1d0a99f3a/bltbe8ad15baa5d28bb/6aef4521f2b47c1f44c4de71/image_-_2026-11-07T153213.837.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://rinewstoday.com/wp-content/uploads/2026/11/qtq80-w9db4Q.jpeg": {
   "w": 1254,
   "h": 836,
@@ -2590,6 +2614,12 @@
   "w": 1344,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://shattered.io/wp-content/uploads/2026/11/gta-6-physical-copy-leak-230-gb-claim-vs-212-gb-preload-2026-gen.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 1280,
   "v": 3
  },
  "https://sm.ign.com/t/ign_ap/news/k/kfc-reveal/kfc-reveals-official-avengers-doomsday-menu-worthy-of-dr-doo_x948.1200.jpg": {
@@ -3186,6 +3216,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.1Ch0ZQsKkSTA81fAHpwi6g&pid=News&w=960": {
+  "w": 700,
+  "h": 399,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3562,6 +3598,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.comicbasics.com/wp-content/uploads/2026/10/avengers-doomsday5.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Robert-Downey-Pedro-Pascal.webp": {
   "w": 1200,
   "h": 675,
@@ -3785,6 +3827,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.slashfilm.com/img/gallery/marvels-2027-release-schedule-all-8-movies-and-tv-shows-explained/l-intro-1793897625.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.slashfilm.com/img/gallery/marvels-x-men-movie-casts-the-long-walk-and-hunger-games-actor-as-iceman/l-intro-1793652691.jpg": {
   "w": 1600,
   "h": 897,
@@ -3813,6 +3861,12 @@
  "https://www.sponichi.co.jp/sports/news/2026/11/02/jpeg/20261102s10028000053000p_view.webp": {
   "w": 1200,
   "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.sportzorg24.tv/wp-content/uploads/2026/10/tennis-tokyo-20261024-r4bd0d6-header-1024x576.jpg": {
+  "w": 1024,
+  "h": 576,
   "target": 1280,
   "v": 3
  },

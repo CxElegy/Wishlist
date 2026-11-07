@@ -1,22 +1,24 @@
 {
  "date": "2026-11-08",
- "edit_sig": "",
+ "edit_sig": "ab3ed1103a70",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "게임와이",
-     "title": "[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBtWEgzWDB0RnZmQV9FSVk3bGVlUGczNzdfcHp4aEtCUF9GQWVobDhIaHlHSE01QU9VRldGUlZvRTVSbUxpWnNWSE85SlRyYVV2WEF4aURZMTJhNnc0ZHFLbnF5a1F0UdIBakFVX3lxTE80eG5waTdXQ0pqX3VNc1BoQ21jdmtGdFZLblN1LTJqdnYxb19KWHZScFVSZ1NpNFlhQS1YUVJVYjRCY05mWnh1V05ObWZnNFVDTlg2UzF5bmRlM0FoNG1CbVpwRVp0YlZtb2c?oc=5"
+     "headline": "[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄",
+     "highlight": "TGS 2026",
+     "image": "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg",
+     "image_via": "og:image",
+     "url": "http://www.gamey.kr/news/articleView.html?idxno=3018752",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -33,38 +35,39 @@
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "An image of GTA 6's physical edition has emerged on Reddit, ahead of its release later in the month.",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "shattered.io",
-     "title": "GTA 6 Leak: 230 GB Claim vs 212 GB Preload [2026]",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOdTYxb0ZnZ2VsR1FfMzR1N0FSZHNZeTFsdkZFV0Q4T3lZN2FmaEZYRHQ4SzRkOWtWLW9xbk5aZjVWanFfRjAxclVYQVE3dTBlMGMzcGQyZ0xBWUZiMWJZN0JmZlA3d2hVSjhwbEl0UUVOWTFqOThsVkpNZnVDcjZaOXpSUURtZTZQUGc?oc=5"
+     "headline": "GTA 6's PS5 Physical Edition Revealed in First Photo",
+     "highlight": "PS5 Physical Edition",
+     "image": "https://images.pushsquare.com/22fef94b93cd7/1280x720.jpg",
+     "image_via": "og:image",
+     "url": "https://www.pushsquare.com/news/2026/11/gta-6s-ps5-physical-edition-revealed-in-first-photo",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 2,
-     "source": "LADbible",
-     "title": "GTA 6 censorship rumours debunked for version of game that will allow you to play earlier than the rest of the world",
-     "url": "https://www.ladbible.com/entertainment/gaming/gta-6-censorship-rumours-debunked-new-zealand-early-access-hack-394334-20261107"
+     "headline": "GTA 6 Leak: 230 GB Claim vs 212 GB Preload",
+     "highlight": "230 GB",
+     "image": "https://shattered.io/wp-content/uploads/2026/11/gta-6-physical-copy-leak-230-gb-claim-vs-212-gb-preload-2026-gen.webp",
+     "image_via": "og:image",
+     "url": "https://shattered.io/gta-6-physical-copy-leak-230-gb-claim-vs-212-gb-preload-2026/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 3,
-     "source": "Push Square",
-     "title": "GTA 6's PS5 Physical Edition Revealed in First Photo",
-     "url": "https://www.pushsquare.com/news/2026/11/gta-6s-ps5-physical-edition-revealed-in-first-photo"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 4,
-     "source": "ComicBook.com",
-     "title": "GTA 6 Physical Copies Leak Reveals Collector’s Map",
-     "url": "https://comicbook.com/gaming/news/gta-6-grand-theft-auto-vi-rockstar-games-physical-copies-map-leak/"
+     "headline": "GTA 6 censorship rumours debunked for version of game that will allow you to play earlier than the rest of the world",
+     "highlight": "",
+     "image": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltcd74acc1d0a99f3a/bltbe8ad15baa5d28bb/6aef4521f2b47c1f44c4de71/image_-_2026-11-07T153213.837.png",
+     "image_via": "og:image",
+     "url": "https://www.ladbible.com/entertainment/gaming/gta-6-censorship-rumours-debunked-new-zealand-early-access-hack-394334-20261107",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
    "theme": {
     "accent": "#FF5FA2",
@@ -81,38 +84,39 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "SlashFilm",
-     "title": "Marvel's 2027 Release Schedule: All 8 Movies And TV Shows Explained",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQWkI1cEtNZHhnUTdpWlF5VWFKbTZJUTg1SXlSQlhEQWZSZmpEUnB2LU5nbUhUaExqcVFMOWNQWUxONHo4bVp1c0hQMTQ4bHRHYzI2ZnM2Q0V3N1pRTzJoSHhzeUkxLUxxdGp2Q2Z2bkxQdjZBQ0JrWURHREllU1pzSWtLWV9zSERkZWxyMjZQQkM3Y3M?oc=5"
+     "headline": "Marvel's 2027 Release Schedule: All 8 Movies And TV Shows Explained",
+     "highlight": "2027 Release Schedule",
+     "image": "https://www.slashfilm.com/img/gallery/marvels-2027-release-schedule-all-8-movies-and-tv-shows-explained/l-intro-1793897625.jpg",
+     "image_via": "og:image",
+     "url": "https://www.slashfilm.com/2308020/marvel-movies-tv-shows-2027-release-schedule-explained/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 2,
-     "source": "IMDb",
-     "title": "‘Avengers: Doomsday’ Doctor Doom Popcorn Bucket Gets a Closer Look, and Doom Is Ready to Rule the Concession Stand",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9jSmMwTmh3dXJtYUVXWHdoSTlObzMtYzAtMHpPNUdxLVAwMkptSG9rYmtlSEVLWkE3NmxDM3VEbGphcEo3Tk1nRV9pUmtyb0RNLUVGMEI2dUJfckI2ZUV4YXJaQjc3ems?oc=5"
+     "headline": "‘Avengers: Doomsday’ Doctor Doom Popcorn Bucket Gets a Closer Look, and Doom Is Ready to Rule the Concession Stand",
+     "highlight": "",
+     "image": "https://www.comicbasics.com/wp-content/uploads/2026/10/avengers-doomsday5.webp",
+     "image_via": "转载 www.comicbasics.com",
+     "url": "https://www.imdb.com/news/ni66099985/?ref_=ttnw_art_perm",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 3,
-     "source": "ScreenRant",
-     "title": "5 MCU Superheroes Spider-Man Could Fight In Brand New Day's Sequel",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNdkR2NUh1d2lIVmlPREkzV2NoOHdaeUluVlVld2g4UXhrdF92aUdUTnlsSnhNX3dQRmJLbUJSSkxVMVAxdkZwd2VHak1nSGVMQnpQdVUzQUNTdjl4b25fbC1BZm1paHhWTlo2YWQ0Ul8zb3dfdmNiaTNIUGJjdko0eWFEdw?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 4,
-     "source": "AOL.com",
-     "title": "Jeep Sends The Thing Off-Road in a Wrangler for Avengers: Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFA0d0xUcld5bUF3U3lLSXZXQm94N2hWc3A3LWFsYVBpWUM0MWpYd0UybWlGZHNJekVYeENobzhZMVd5NjZjcV8yczZNS2hrZjIycGNNWFE4d0NmY29xMWdUMzloeXZia0gzd3pBY25BTmYxaVJLcG40dA?oc=5"
+     "headline": "Jeep Sends The Thing Off-Road in a Wrangler for Avengers: Doomsday",
+     "highlight": "",
+     "image": "https://hermes.media.static.aol.com/media/2026/11/07/7b4ef813-c408-30d0-a0fa-b0f4a51d2e5b/454d9de9-5699-4cd1-bdea-645ef4519750.png",
+     "image_via": "og:image",
+     "url": "https://www.aol.com/articles/jeep-sends-thing-off-road-121500000.html",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",
@@ -379,17 +383,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 1,
-     "source": "primetimer.com",
-     "title": "FROM Season 4 Episode 5: Release date and time, where to watch, and more",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNRDhhM3U0Y21XX3BiZE01LWNHSHJKODYxaG1yT0JnRGxwREpMQ2dqeWU5cTJlOWlqZmZSb1ZwUUUtVDAtY1Q1bHZwMmg0dTRWMFIxeGd3SURQQXlfOXllM3pmUllCZmRBczVtQlVVRGdJMDkzb3lvLUtzQlVpWFZIZEJyTFFvcVY3VHRXd013MzlEV3B1RTJkVGoyWWZveDl6WmNfMlUyNVI?oc=5"
+     "headline": "FROM Season 4 Episode 5: Release date and time, where to watch, and more",
+     "highlight": "Season 4 Episode 5",
+     "image": "https://d1rldr9jdodfaa.cloudfront.net/images/01KRB6E1GSSMXAAYC3T718DNRJ/bef4f6ff-2b27-4a8e-8315-766539e96d30_1778492311.webp",
+     "image_via": "og:image",
+     "url": "https://www.primetimer.com/features/from-season-4-episode-5-release-date-and-time-where-to-watch-and-more",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
@@ -433,17 +439,19 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 1,
-     "source": "ぐぐスポ！",
-     "title": "【東京都】東レ パン パシフィック オープンテニス 2026(東京・WTA500) 結果速報・トーナメント表(ドロー)・日程・放送予定（配信）｜スポーツニッポン新聞社",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBUQmVlVHpqaU5UNVF1a1hYdV85bUJvdkJRNjVyX2JwQ2o1NG8wc3lGeGtEX044bnd2d1VocFdrLWxSR0Q5R2lvZ19qZnBhY0luZTJ3ejVabXo?oc=5"
+     "headline": "【東京都】東レ パン パシフィック オープンテニス 2026(東京・WTA500) 結果速報・トーナメント表(ドロー)・日程・放送予定",
+     "highlight": "結果速報",
+     "image": "https://www.sportzorg24.tv/wp-content/uploads/2026/10/tennis-tokyo-20261024-r4bd0d6-header-1024x576.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sportzorg24.tv/tennis-tokyo-2026/",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
