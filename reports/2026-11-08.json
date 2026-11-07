@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "b1836e9e7b46",
+ "edit_sig": "dd878979fee6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -372,17 +372,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "鏡週刊Mirror Media",
-     "title": "Vaundy化身魔鬼教練逼出JQ新面貌 錄音室裡他只顧喊「好帥」",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE05WkpWaWd3LXZaNXZmOTJnVGZrR0pReEpHWVYxemRsMjV1c2xvUElYWWdkV0ViTURyN2w4NGQ4Qy1YSmNsMzdPRG9EUUFjaFFRNmhweHZjUzlHS1dWemMtcVE5MHVBd9IBakFVX3lxTFB1ZlNFcTZOQ1FkRmdFbDdtQWZRV1ZoaktiWmhnSk03VWlqR1VfLXpjYzJKUHJvZ1lpWV9YZ2JkNzJNTU53N3cwWnJBSnNDNGVuc0g5ZXZ6ZFpNU2NHbl9aMWF0UGEwem42elE?oc=5"
+     "headline": "Vaundy化身魔鬼教練逼出JQ新面貌 錄音室裡他只顧喊「好帥」",
+     "highlight": "",
+     "image": "https://v3-statics.mirrormedia.mg/images/0ed104aa-f976-4e35-91eb-d4f8580f85bf-w1600.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.mirrormedia.mg/story/20261107-90ent-001813/",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
