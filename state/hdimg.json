@@ -118,19 +118,6 @@
   "dead": true,
   "day": "2026-11-07"
  },
- "http://wx1.sinaimg.cn/middle/008eZAxIly1iisu9r8a0fj30y10jwqab.jpg": {
-  "w": 1225,
-  "h": 716,
-  "target": 720,
-  "v": 3,
-  "local": "pics/c833a7eb4de07773.webp",
-  "out": [
-   1225,
-   716
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/001gSRX0ly1iis5h51wvnj60z01lmahy02.jpg": {
   "w": 1260,
   "h": 2074,
@@ -1859,6 +1846,13 @@
   "target": 720,
   "v": 3
  },
+ "https://img.tenasia.co.kr/photo/202611/BF.46341530.1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-07"
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100433.jpg": {
   "w": 640,
   "h": 633,
@@ -2038,6 +2032,12 @@
   "w": 1200,
   "h": 800,
   "target": 720,
+  "v": 3
+ },
+ "https://lp.p.pia.jp/shared/materials/56193ef9-0fac-4034-bf94-6de73ff55fc2/origin.jpg": {
+  "w": 1200,
+  "h": 1200,
+  "target": 1280,
   "v": 3
  },
  "https://massivelyop.com/wp-content/uploads/2023/08/monsters-and-memories-spooky-scary-skeletons.jpg": {
