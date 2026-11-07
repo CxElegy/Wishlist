@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "b44a7bc136a5",
+ "edit_sig": "a77ed858d153",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -744,22 +744,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 5,
-     "source": "ぴあエンタメ情報",
-     "title": "『ふしぎの国のアリス』チェシャ猫グッズが可愛すぎる～！ 遊び心あふれるグッズが豊富に登場",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5yQUJSVmJkcTdHaGxjRVNmbXNjaEEyaklDMkl4RDBURWhGaktrZXJuX0RBV0xMREdQNXJBcWlseGdYdWNoYklTRlRybmlxQTctRkhzdkNRS014ZHNid3Zv?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 6,
-     "source": "マイナビニュース",
-     "title": "元気な猫にも健康診断は必要？ 獣医師に聞く、受診の目安と通院の準備",
-     "url": "https://news.mynavi.jp/article/20261107-5273683/"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -780,6 +764,16 @@
      "image": "https://news.walkerplus.com/article/8540/22863_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/8540/image22869.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "『ふしぎの国のアリス』チェシャ猫グッズが可愛すぎる～！ 遊び心あふれるグッズが豊富に登場",
+     "highlight": "",
+     "image": "https://lp.p.pia.jp/shared/materials/56193ef9-0fac-4034-bf94-6de73ff55fc2/origin.jpg",
+     "image_via": "og:image",
+     "url": "https://lp.p.pia.jp/article/news/516421/index.html",
      "weight": "normal"
     }
    ],
