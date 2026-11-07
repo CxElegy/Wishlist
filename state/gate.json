@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-07T04:17:45+00:00",
+ "checked": "2026-11-07T05:17:47+00:00",
  "fired": {
   "at": "2026-11-07T04:18:07+00:00",
   "results": {
@@ -19,26 +19,20 @@
     "resp": "cse_01W4x6f5hGKM8xzuQTr2vtqi",
     "sig": "5efc4ac2a800"
    },
-   "items": [
-    "三星手机",
-    "猫用品"
-   ],
-   "last_batch": "2026-11-07T02:47:18+00:00",
+   "items": [],
+   "last_batch": "2026-11-07T04:44:23+00:00",
    "last_error": {
-    "at": "2026-11-06T07:05:41+00:00",
+    "at": "2026-11-07T04:28:08+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 178,
+   "need": false,
+   "prog": 181,
    "prog_day": "2026-11-07",
-   "ripe": [
-    "三星手机",
-    "猫用品"
-   ],
-   "sig": "5efc4ac2a800",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 253286,
-   "why": "整理待ちの記事 3 件（2 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 298834,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
