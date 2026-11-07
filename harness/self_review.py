@@ -151,6 +151,8 @@ def main(argv=None):
     a.add_argument("--title", default="自己点検")
     args = a.parse_args(argv)
     from playwright.sync_api import sync_playwright
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    import browser
     out = pathlib.Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     urls = list(args.url)
@@ -158,7 +160,7 @@ def main(argv=None):
         port = serve(args.dir)
         urls += [f"http://127.0.0.1:{port}/{p}" for p in args.page or ["home/index.html"]]
     with sync_playwright() as p:
-        b = p.chromium.launch()
+        b = browser.launch(p)
         results = [review(u, w, b) for u in urls for w in WIDTHS]
         (out / "review.json").write_text(json.dumps([{k: ([{x: s[x] for x in s if x != "png"} for s in v] if k == "shots" else v) for k, v in r.items()} for r in results], ensure_ascii=False, indent=1), encoding="utf-8")
         ctx = b.new_context(viewport={"width": 1140, "height": 800})
