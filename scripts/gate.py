@@ -32,6 +32,7 @@ import urllib.request
 import zoneinfo
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import lib_queue
 import runlog  # noqa: E402
 import sitedir  # noqa: E402
 
@@ -59,6 +60,7 @@ EDIT_DAILY_TOKENS = 1_000_000
 # 写真はトークンの記録がないので、1 日に起こす回数で上限を決める（2026-11-07 トークンエコノミー：仕事ごとの 1 日の上限）。ボタン（GATE_FORCE）は上限でも起こす
 DAILY_FIRES = {"photos": 3}
 SHARED_ROUTINE = {"edit": "photos", "photos": "edit"}   # 同じ予約の仕事：片方が動き始めて MIN_GAP_MIN 分は、もう片方で 2 本目を起こさない
+LIB_WAKE_HOURS = 4   # お客さまの版面だけが待っているとき、AI 編集を起こす間隔（店長の版面で起きた回があれば、その回が一緒に編む）
 LEDGER_DAYS = 60   # 使ったトークンの台帳（state/gate.json の ledger・fires）を残す日数
 ACTIVE_MIN = 30   # 最後の AI 編集のバッチ（state/log/edit.json の出刊の行）からこの分数以内だけ「動いている」と出す
 
@@ -259,10 +261,23 @@ def _emblem_why(todo, wait, tz="Asia/Tokyo"):
     return "・".join(parts) or "全部そろっている"
 
 
+def lib_due(data):
+    """お客さまの版面だけのために起こしてよいか：前に AI 編集を起こしてから LIB_WAKE_HOURS 時間たった。"""
+    at = (((data.get("jobs") or {}).get("edit") or {}).get("fired") or {}).get("at")
+    try:
+        return not at or _now() - dt.datetime.fromisoformat(at) >= dt.timedelta(hours=LIB_WAKE_HOURS)
+    except (ValueError, TypeError):
+        return True
+
+
 def check(tz=DAY_TZ, path=None):
     """→ {job: {need, claude, why, items, sig}}。state/gate.json に書く。"""
     edit = edit_work(tz=tz)
     ripe = edit_ripe(tz=tz)
+    lib = {f"lib:{n}": c for _, n, c in lib_queue.todo()}   # お客さまの版面（lib_queue.py が置いた一覧）。店長の版面と同じ AI 編集の回で編む
+    edit = {**edit, **lib}
+    if lib and lib_due(load(path)):
+        ripe = {**ripe, **lib}
     photos = photo_work()
     emblem, emblem_wait = emblem_work()
     jobs = {
@@ -282,7 +297,7 @@ def check(tz=DAY_TZ, path=None):
     jobs["edit"]["token_cap"] = EDIT_DAILY_TOKENS
     if edit and not ripe:
         jobs["edit"]["why"] += f"・まだ溜まっていない（{RIPE_COUNT} 件か {RIPE_HOURS} 時間で編集）"
-    jobs["edit"]["prog"] = edit_done(tz=tz)
+    jobs["edit"]["prog"] = edit_done(tz=tz) + lib_queue.done_today(day_of(_now(), tz))
     jobs["edit"]["prog_day"] = day_of(_now(), tz)   # prog はこの日の数（日付が変わると 0 から）。fired.day と違う日なら比べない（work_state）
     jobs["edit"]["last_batch"] = last_batch()
     jobs["edit"]["last_error"] = last_error()
