@@ -118,6 +118,19 @@
   "dead": true,
   "day": "2026-11-07"
  },
+ "http://wx1.sinaimg.cn/middle/008eZAxIly1iisu9r8a0fj30y10jwqab.jpg": {
+  "w": 1225,
+  "h": 716,
+  "target": 720,
+  "v": 3,
+  "local": "pics/c833a7eb4de07773.webp",
+  "out": [
+   1225,
+   716
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx1.sinaimg.cn/middle/008xZoiFly1iirevre1ihj310y1mck33.jpg": {
   "w": 1330,
   "h": 2100,
@@ -1472,12 +1485,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2eeDw2.img": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gBmSm.img": {
   "w": 1500,
   "h": 1000,
@@ -1625,6 +1632,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gVpM0.img": {
+  "w": 1200,
+  "h": 636,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gkADM.img": {
   "w": 1920,
   "h": 1080,
@@ -1758,6 +1771,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://img.gamewith.jp/article/thumbnail/gamearticle/19062/rectangle/65455.jpg?t=1794014759": {
+  "w": 600,
+  "h": 315,
+  "target": 720,
   "v": 3
  },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/198867.png?date=1587708186": {
@@ -2782,12 +2801,6 @@
   "target": 720,
   "v": 3
  },
- "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
-  "w": 360,
-  "h": 616,
-  "target": 720,
-  "v": 3
- },
  "https://research.image.itmedia.co.jp/wp-content/uploads/2026/11/1793603711_ec60eab7bddbf45a46b1e3d98529e5c5.jpg": {
   "w": 1200,
   "h": 630,
@@ -2864,12 +2877,6 @@
  "https://s.yimg.com/lo/mysterio/api/d5b2963e91fc2d316d9d6f6e53f254393b82519145a3e0ecae21293adae93f07/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fqsr_204%2F5a88e020c3906552adea83c635e69778.jpg": {
   "w": 1200,
   "h": 700,
-  "target": 1280,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/d5cf628c681d5f588dd3da15ad8fd7d25cb987d4309eb79da84bc01b2329eb1a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd6a4598914c362c3f0bfdc8a51ad28df.jpg": {
-  "w": 1200,
-  "h": 801,
   "target": 1280,
   "v": 3
  },
@@ -3318,6 +3325,12 @@
   "target": 720,
   "v": 3
  },
+ "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=788,fit=cover,bg=white,f=auto,quality=high,sharpen=2,g=face/21/2026/11/2026110708007233571_1.jpg": {
+  "w": 1200,
+  "h": 788,
+  "target": 720,
+  "v": 3
+ },
  "https://times-abema.ismcdn.jp/mwimgs/2/9/1200w/img_29ed6bf6a46cabbb6b7d74c6d82596c1244940.jpg": {
   "w": 1200,
   "h": 1704,
@@ -3428,6 +3441,12 @@
   "v": 3
  },
  "https://www.4gamer.net/games/199/G019924/20261031010/SS/003.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.4gamer.net/games/199/G019924/20261106033/SS/001.jpg": {
   "w": 1200,
   "h": 800,
   "target": 1280,
@@ -3655,6 +3674,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.42
+ },
+ "https://www.bing.com/th?id=ONUT.M25dCGlBzk91oFEOr2i5eA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.484,
+  "local": "pics/4a537473c30cb007.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934": {
   "w": 544,
@@ -3954,6 +3986,19 @@
   "h": 341,
   "target": 720,
   "v": 3
+ },
+ "https://www.chosun.com/resizer/v2/GBTDOMRVMQYTSZJZGEZTENLBGQ.jpg?auth=1fbd0879fc25771d382fc58e1a59ae2b208add3465466b18c1996a7b5d7e8ded&width=650&height=341&smart=true": {
+  "w": 650,
+  "h": 341,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.454,
+  "local": "pics/7df7027c4ad3b8ba.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清"
  },
  "https://www.chosun.com/resizer/v2/GRRGEZLFMNRDKMJRHFTDQOLFGQ.jpg?auth=17b2e81095ed2008e940901c41615dd4ee9b25ccba9b7c7613555cf1c8f39a2b&width=650&height=341&smart=true": {
   "w": 650,

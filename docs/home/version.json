@@ -1,14 +1,14 @@
 {
- "admin": "bfd20ad120e8",
- "admin-ai": "40cdfc2e879b",
+ "admin": "7683ff9865c3",
+ "admin-ai": "d4975d5d032a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "b2e02ef0"
+   "942916cf"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "46c91d8f"
+   "f2911777"
   ]
  },
  "admin-boards": "9523ff671dbb",
@@ -22,11 +22,11 @@
    "73f5150b"
   ]
  },
- "admin-emblem": "fb22b4416aa9",
+ "admin-emblem": "1cfd80ec46cf",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "6fc8aa6a"
+   "3297ff4f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "ee5225d27288",
  "admin-members_marks": {},
- "admin-now": "bcd9cde7c8e0",
+ "admin-now": "53b7749d0fe6",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c2b6376a"
+   "625bec44"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "7409f473"
+   "8194bad6"
   ]
  },
- "admin-system": "92393e2a0495",
+ "admin-system": "e56b0443bd35",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3052e59b"
+   "ed03051c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "bd26ce15"
+   "e5294564"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "d4671448"
   ]
  },
- "index": "8dd682eab640",
+ "index": "affefe43a489",
  "index_marks": {
   "front": [
    "トップ",
-   "c3d0c9e1"
+   "b2250b12"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "ff671a41"
+   "f253b435"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "be0df0a9"
+   "ed5b15ad"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "3ba5beeb"
+   "2fd57223"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "62d8eb8f"
+   "8fa6a018"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "4e40b6de"
+   "bc086013"
   ],
   "w-f303ad09": [
    "绝区零",
    "df4b9177"
   ]
  },
- "updated": "11.07 11:23",
+ "updated": "11.07 11:34",
  "wishlist": "1e9a3576f5cb"
 }

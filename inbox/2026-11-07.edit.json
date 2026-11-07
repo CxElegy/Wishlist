@@ -11,7 +11,8 @@
    "event": {
     "date": "2026-11-10",
     "label": "プリロード開始"
-   }
+   },
+   "image": "https://www.bing.com/th?id=ONUT.M25dCGlBzk91oFEOr2i5eA&pid=News&w=1200"
   },
   {
    "headline": "GTA 6 PC Port Could Officially Arrive Sooner Than Expected to Dodge AI Rip-Offs",
@@ -23,7 +24,9 @@
     27,
     25,
     13,
-    10
+    10,
+    68,
+    62
    ],
    "image": "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/06133154/gta-6-pc-rip-offs.jpg"
   },
@@ -49,7 +52,10 @@
     6,
     24,
     15,
-    49
+    49,
+    63,
+    67,
+    61
    ]
   },
   {
@@ -101,7 +107,8 @@
    "refs": [
     11,
     27,
-    50
+    50,
+    55
    ]
   },
   {
@@ -181,6 +188,19 @@
    "weight": "lead",
    "refs": [
     3
+   ],
+   "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26lP3i5zeFWhG4W7jQDDugTXJIf4Ag5DlMXcdYp1tXI_UyG0bnrZl2sco0-4t6vcd4K5xfuaVZxGcEHqZc3cDiSHtMb7cCXScCYalzsgRoiIV"
+  },
+  {
+   "headline": "ILLIT、『逮捕しちゃうぞ』で復帰後初の音楽番組1位…「モカにも感謝」",
+   "highlight": "音楽番組1位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    4,
+    5,
+    6
    ]
   }
  ],
@@ -193,14 +213,32 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "7天登顶The Show：A2O LITE的霓虹奇迹舞台",
+   "highlight": "7天登顶The Show",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "'미혼앤비혼'으로 난리 난 A2O LITE, 웃고 넘기기엔 'NEON'이 강하다",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "_covered": {
-  "GTA 6": 57,
-  "漫威电影": 52,
+  "GTA 6": 69,
+  "漫威电影": 58,
   "三星手机": 13,
-  "ILLIT": 3,
-  "A2O LITE": 2,
+  "ILLIT": 7,
+  "A2O LITE": 5,
   "dota2": 2,
   "猫用品": 3,
   "Astrae Oratio": 1,
@@ -213,7 +251,8 @@
   "哈利波特剧集": 1,
   "星巴克马克杯": 1,
   "The Mandalorian": 1,
-  "gelato pique": 1
+  "gelato pique": 1,
+  "MMORPG 新作": 3
  },
  "dota2": [
   {
@@ -350,6 +389,36 @@
     "date": "2026-10-23",
     "label": "発売日"
    }
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "吉田氏とのバトル（？）に注目のLIVE Q＆Aから，THE PRIMALSのライブまで，熱い展開が目白押しの「FFXIV ファンフェスティバル 2026 in 東京」DAY2のレポート",
+   "highlight": "FFXIV ファンフェスティバル 2026 in 東京",
+   "blurb": "スクウェア・エニックスが10月31日と11月1日に開催したFFXIVのリアルイベント。LIVE Q＆Aや「直樹の部屋」、THE PRIMALSのライブをレポート。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.4gamer.net/games/199/G019924/20261106033/SS/001.jpg"
+  },
+  {
+   "headline": "『TALESWEAVER MOBILE』のゲーム概要や公式発表の情報まとめ！名作『テイルズウィーバー』の世界観を受け継ぐ新作MMORPG",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "출시 한 달 '도깨비의세계' 순항…카카오게임즈 진짜 시험대는 '오딘Q'",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }
