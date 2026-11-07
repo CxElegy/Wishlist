@@ -26,16 +26,19 @@ DB とログインは店長の PC に引っ越した。作業（会話・係・�
 
 1. DB を変える SQL は PC の会話で行う（Supabase の連携ツールは旧プロジェクトにしかつながらない）。`db/*.sql` に書いてから流す。
 2. 毎日のバックアップ（`pg_dump` を PC の別フォルダに 7 日分）。お客さまのデータが入るので GitHub・クラウドに上げない。
-3. 見張り：旧 Supabase の `query_logs` は使えない。新しいサーバーは「`/auth/v1/health` が 200 か」を 1 日数回見る形にする（BACKLOG）。
+   - 道具：`D:\Claude\SupabaseLocal\backup.ps1`（置き場 `backups\`）・`restore-test.ps1`（使い捨てのコンテナに戻して本番と行数を比べる。2026-11-07 に合格）・`register-tasks.ps1`（Windows のタスクに登録）。
+   - vault の `github_dispatch_token` は、別の DB に戻すと復号の鍵が変わることがある。読めなければ `set-github-token.ps1` で入れ直す。
+3. 見張り：旧 Supabase の `query_logs` は使えない。PC が止まると PC では知らせられないので、外側の `pc_watch.yml` が毎時 `/auth/v1/health` を見て（200・401 は届いている）、変わったときだけ Discord へ知らせる。
 4. 旧 Supabase の住所が残っている所（見本を作る scripts の `SUPA`、harness・hermes の例）は `items.yaml` から読む形に直す（BACKLOG）。
 
 ## PC とクラウドの AI 編集のつなぎ方（2026-11-07，用户定的）
 
-AI 編集だけクラウドに残し、ほかは PC へ移す。AI 編集は Actions のゲートが今までどおり起こす（`GATE_FIRE` も予約も変えない）。
+店長の PC の会話が主セッションで、店長はそこから命令を出す。ハーネスのループは続けない（2026-11-07，用户定的）。AI 編集だけクラウドで続ける。PC が持つのは DB・バックアップ・見張り。`harness-forever.js`・`.mcp.json` はクラウド用のままで、PC で回すなら直す。AI 編集は Actions のゲートが今までどおり起こす（`GATE_FIRE` も予約も変えない）。
 
 - 頼む・受け取る：`harness/session-link.md`（連絡帳）。AI 編集は毎回 `EDITING.md` の決まりで読む。PC の会話は仕事の始めに `git pull` して読む。
 - 今どの回か：`state/gate.json` の `jobs.edit.fired.resp` が最後の回。`cse_` を `session_` に替えた ID を `get_session`・`list_events` で読める（起こさないのでトークンを使わない）。
-- 使えないこと：別セッションからのメッセージは届くが、指示としては扱われない（2026-11-07 に実物で確かめた。止まっている回を起こすだけで約 $0.03 かかる）。AI 編集から PC へ返す道具もない。だから `send_message` で仕事を頼まない。
+- メッセージで仕事は頼まない：別セッションからの文は届いても指示として扱われない（2026-11-07 に AI 編集の回・ループのセッションの両方で断られた）。クラウド側に返信の道具もない。
+- 費用：送ると相手が起き、文脈の分だけかかる（AI 編集の回で約 $0.03、文脈が約 75 万トークンのループのセッションは 1 通で約 $3.16）。
 - PC が止まっていても AI 編集は動く。止まるのは DB を使う所だけ（お客さまの版面を書き込む段など）。
 
 ## 作業を PC に移す（途中）
