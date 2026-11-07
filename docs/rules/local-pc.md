@@ -29,6 +29,15 @@ DB とログインは店長の PC に引っ越した。作業（会話・係・�
 3. 見張り：旧 Supabase の `query_logs` は使えない。新しいサーバーは「`/auth/v1/health` が 200 か」を 1 日数回見る形にする（BACKLOG）。
 4. 旧 Supabase の住所が残っている所（見本を作る scripts の `SUPA`、harness・hermes の例）は `items.yaml` から読む形に直す（BACKLOG）。
 
+## PC とクラウドの AI 編集のつなぎ方（2026-11-07，用户定的）
+
+AI 編集だけクラウドに残し、ほかは PC へ移す。AI 編集は Actions のゲートが今までどおり起こす（`GATE_FIRE` も予約も変えない）。
+
+- 頼む・受け取る：`harness/session-link.md`（連絡帳）。AI 編集は毎回 `EDITING.md` の決まりで読む。PC の会話は仕事の始めに `git pull` して読む。
+- 今どの回か：`state/gate.json` の `jobs.edit.fired.resp` が最後の回。`cse_` を `session_` に替えた ID を `get_session`・`list_events` で読める（起こさないのでトークンを使わない）。
+- 使えないこと：別セッションからのメッセージは届くが、指示としては扱われない（2026-11-07 に実物で確かめた。止まっている回を起こすだけで約 $0.03 かかる）。AI 編集から PC へ返す道具もない。だから `send_message` で仕事を頼まない。
+- PC が止まっていても AI 編集は動く。止まるのは DB を使う所だけ（お客さまの版面を書き込む段など）。
+
 ## 作業を PC に移す（途中）
 
 GitHub に入っていて、PC の会話が読めば続けられるもの：BACKLOG.md・PROGRESS.md・DESIGN_PRINCIPLES.md・HARNESS.md・docs/rules/・`.claude/`（スキル・ワークフロー）。
