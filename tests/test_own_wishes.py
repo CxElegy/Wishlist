@@ -1,5 +1,6 @@
 """お客さま本人の欲しい物（2026-11-07）：本人のページだけに操作が出て、店長のページは変わらない。"""
 import pathlib
+import re
 import sys
 import unittest
 
@@ -19,7 +20,7 @@ class OwnWishes(unittest.TestCase):
         self.assertEqual(h.count('class="wctl"'), 2)
         self.assertIn('lang="ja"', h)
         self.assertIn("&lt;b&gt;ペン", h)
-        body = h.split("</style>")[-1]
+        body = re.sub(r"<script.*?</script>|<style.*?</style>", "", h, flags=re.S)
         for zh in ("愿望清单", "想要的合计", "去看看", "纠结名单"):
             self.assertNotIn(zh, body)
 

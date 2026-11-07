@@ -200,7 +200,7 @@ class Layout(unittest.TestCase):
 
     def test_shell_and_sql(self):
         me = render.render_me()
-        self.assertIn("p=(settings|heat)", me)
+        self.assertIn("p=(settings|heat|wishlist)", me)
         self.assertIn("SUB+'.html'", me)
         self.assertIn("'?p='+page", render.AUTH_JS)
         sql = (ROOT / "db" / "my_layout.sql").read_text(encoding="utf-8")
@@ -284,7 +284,7 @@ class Issue(unittest.TestCase):
         heat_in = ([], [], {}, "2026-11-05")
         user_pages.build("a@example.com", {"picks": [{"name": "広島旅行", "sec": "出行"}], "sizes": {}}, {}, [], None, {}, 0, {}, [], {}, pages, heat_in)
         self.assertIn('name="wl-own"', pages["heat.html"])
-        self.assertIn("/^(index|settings|heat)$/", render.AUTH_JS)
+        self.assertIn("/^(index|settings|heat|wishlist)$/", render.AUTH_JS)
 
 
 class Loader(unittest.TestCase):
