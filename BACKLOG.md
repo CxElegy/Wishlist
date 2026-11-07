@@ -12,7 +12,7 @@
   - [ ] 入口（/）にも、押す前から「いまログインは休止中」と分かる 1 行（render が state/supabase_status.json を読んで焼く・limited でなければ出さない）。押すまで分からないのは小さな穴。
   - [ ] 休止の間のログイン中の点検は意味がない（ux_check のログインの段が 402 で全部落ちる）。休止の間は『休止の札が出る・pageerror 0・Actions が緑』だけを見る形に切り替える（harness/ux_check.py に state/supabase_status.json が limited なら飛ばす段）。
   - [?] **復帰の見込み日（請求期間のリセット日）**：Supabase MCP の get_organization は plan=free（tier_free）しか返さず、請求期間の日付は取れない。ダッシュボードの Organization → Billing → Usage の「Billing period」で見られる。（プロジェクト作成は 10/12 なので、毎月 12 日前後が区切りの可能性があるが推測。確かめてから書く。）復帰したら state/supabase_status.json が自動で ok に戻るかを見る。
-- [ ] 【計画 2026-11-07】**写真の配信の毎日の見張りを新サーバー用に替える**：Supabase MCP の query_logs は旧プロジェクトのログなので新サーバーには使えない。新サーバーは「PC が止まっていないか＝/auth/v1/health が 200（鍵なしなら 401）で応えるか」を 1 日数回見る形にする（応えなければ入口へ知らせる）。写真は Pages から配る決まりなので、写真の配信の回数は Pages 側の記録（pages_served）で見る。
+- [x] （2026-11-07 PC の会話：pc_watch.yml・scripts/pc_watch.py。止まった・戻ったときだけ Discord）【計画 2026-11-07】**写真の配信の毎日の見張りを新サーバー用に替える**：Supabase MCP の query_logs は旧プロジェクトのログなので新サーバーには使えない。新サーバーは「PC が止まっていないか＝/auth/v1/health が 200（鍵なしなら 401）で応えるか」を 1 日数回見る形にする（応えなければ入口へ知らせる）。写真は Pages から配る決まりなので、写真の配信の回数は Pages 側の記録（pages_served）で見る。
 - [ ] 【計画 2026-11-07】**旧 Supabase（bzokpnbcjscbcehdxtjq）を指すものを items.yaml の接続先から読む形に直す**：scripts/choice_sample.py・face_sample.py・layout_ba.py の SUPA、harness/emblem_pick_rules.py、harness/fake402_check.py、.github/workflows/requests.yml、hermes/config.example.yaml、.claude/workflows/harness-forever.js、CLAUDE.md・LOGIN.md・PENDING.md の記載。直書きを 1 か所（settings の supabase_url）に集め、試験で『旧プロジェクトの ref が残っていない』を数える。
 - [ ] 【計画 2026-11-07】**休止の札（SB_DEG_JS）を新サーバーの停止にも効かせる**：今は *.supabase.co だけを見ている。新サーバー（*.ts.net）が止まったとき（PC 停止＝5xx・接続失敗）にも札が出るよう、見る網址を接続先の設定から決める。402 の判定は残す（旧の仕組みが戻るとき用）。点検：fake402_check の偽サーバーで 5xx・接続失敗のときに札が出て、復帰したら消える。
 

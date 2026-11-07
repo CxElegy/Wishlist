@@ -1,0 +1,41 @@
+name: PC のサーバーの見張り
+
+# 店長の PC の自前版 Supabase が外から届くかを見る（docs/rules/local-pc.md）。
+# PC が止まると PC では知らせられないので外側から見る。止まった・戻った・止まり続けている（6 時間ごと）ときだけ Discord へ。
+# 止まっていてもこの回は緑のまま（失敗メールを増やさない）。
+
+on:
+  schedule:
+    - cron: "9 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pc-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          sparse-checkout: |
+            scripts
+            items.yaml
+      - uses: actions/cache/restore@v4
+        with:
+          path: .pc_watch_state.json
+          key: pc-watch-${{ github.run_id }}
+          restore-keys: pc-watch-
+      - run: python scripts/pc_watch.py .pc_watch_state.json
+      - uses: actions/cache/save@v4
+        with:
+          path: .pc_watch_state.json
+          key: pc-watch-${{ github.run_id }}
