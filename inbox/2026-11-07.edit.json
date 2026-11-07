@@ -325,7 +325,7 @@
   "三星手机": 25,
   "ILLIT": 12,
   "A2O LITE": 15,
-  "dota2": 4,
+  "dota2": 8,
   "猫用品": 6,
   "Astrae Oratio": 1,
   "Vaundy": 10,
@@ -357,7 +357,26 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    7
+   ]
+  },
+  {
+   "headline": "NAVI Dota 2 — EPL Masters III Champions!",
+   "highlight": "EPL Masters III Champions",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "Gaimin Gladiators Hints at a Return to Professional Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],

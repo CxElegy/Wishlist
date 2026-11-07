@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "fd305b884eba",
+ "edit_sig": "fd93360bc389",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -845,36 +845,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 5,
-     "source": "Hawk Live",
-     "title": "Gaimin Gladiators Hints at a Return to Professional Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE83NFJIeURuaVZVQVBFT3JKSTZGMVRYUldIYXE3U1dRSU5mcUhVZmRXT0J0cnJiZDlOenctRUh4NlNvTXBpQjU4d3QwZXNXV1ItS2xva3pWMVQtYVplbzR5YmNncEk5S2hTaXhFMXc0TF9nMHBpdlQ2dGI0dXRaLUk?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 6,
-     "source": "Hawk Live",
-     "title": "Korb3n Explains How 1win’s Dota 2 Roster Issues Will Solve",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQYkI3dl9UeFh0c1ZYZ3ZtQWM2ck1QSlNqckZNN2NwOXhadUlRQ0xDbUxMUndTcktYTUR4SzVHN1R1LXBFMVoySHZ6V3dmSmplR2lYSzNTWnJISzhYdEZtdm5tTFpvU21kYUdMU3JNdVJFdXRpNlhEQkF2WGpYRkpsUl9Lbw?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 7,
-     "source": "escorenews.com",
-     "title": "Collapse reveals when he plans to come back to Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxON2FNbVE4bm44QU0xSm1lRkFLc3czN2JRRGJ3ZGloRzZ6Z2p6U2hEbXNzd3BSR2xBcm0yLTBxYjdibF9zSElReWdlUkRaQnF6NUZKVDdfNjRuY2xPVjJpMnYwQXhIMlpQcmxBWWVjelh2b1JIeDZ3dHpmb005Q1RkeHZSZ3FTRGR4TmQyaENfelRiT2VkLURsbmVoZ3Z6dw?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 8,
-     "source": "Natus Vincere",
-     "title": "NAVI Dota 2 — EPL Masters III Champions!",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1VLTZ4ZXE2LVMtZlJucjdSQUdGU2VpMk9BM2lUUEliM3VKR0FRbTlKaDFSbjZUek9UMHl2NkQ1MGp4TjRMS19ldGlObEh0UlN2emRVVWVaLXMwWWo4YktOalV5Y3RQVmZfU0hhUmhHd2dRRW8?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -897,6 +867,26 @@
      "image": "https://hawk.live/storage/images/posts/collapse-assessed-team-spirits-form-after-replacement-of-larl-23707.jpg",
      "image_via": "og:image",
      "url": "https://hawk.live/posts/collapse-reveals-will-resume-career-dota-2-pro-scene",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "NAVI Dota 2 — EPL Masters III Champions!",
+     "highlight": "EPL Masters III Champions",
+     "image": "https://img.navi.gg/publications/2026/11/publications-12175/thumbnail/65591/Site_1738x800-EPLchampions.png",
+     "image_via": "og:image",
+     "url": "https://navi.gg/en/publications/d2-navi-epl-masters-iii-champions",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "Gaimin Gladiators Hints at a Return to Professional Dota 2",
+     "highlight": "",
+     "image": "https://hawk.live/storage/images/posts/gaimin-gladiators-may-return-dota-2-25417.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/gaimin-gladiators-hints-return-professional-dota-2",
      "weight": "normal"
     }
    ],
