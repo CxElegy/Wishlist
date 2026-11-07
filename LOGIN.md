@@ -23,7 +23,7 @@ Google ログインは保留（Google の「公開」にホームページとプ
 
 ## 運営者がやること（1 回だけ・約 1 分）
 
-1. **戻り先を許可**：https://supabase.com/dashboard/project/bzokpnbcjscbcehdxtjq/auth/url-configuration
+1. **戻り先を許可**（2026-11-07 から DB は店長の PC の自前版 Supabase。設定は PC の Auth の SITE_URL・追加の戻り先で行う＝`docs/rules/local-pc.md`。下は旧 Supabase のときの手順）：https://supabase.com/dashboard/project/bzokpnbcjscbcehdxtjq/auth/url-configuration
    - Site URL に `https://cxelegy.github.io/Wishlist/home/` → 「Save」
    - Redirect URLs の「Add URL」に `https://cxelegy.github.io/Wishlist/**` → 「Save」
    （これがないとメールのリンクが localhost に飛ぶ）
