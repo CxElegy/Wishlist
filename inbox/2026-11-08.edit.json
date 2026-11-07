@@ -144,7 +144,8 @@
   "滑雪": 1,
   "绝区零": 1,
   "三星手机": 4,
-  "The Mandalorian": 3
+  "The Mandalorian": 3,
+  "あつ森": 3
  },
  "A2O LITE": [
   {
@@ -240,6 +241,27 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "How do 'Animal Crossing' and 'Story of Seasons' differ? Decoding the structure of 'slow life' games",
+   "highlight": "",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ]
+  },
+  {
+   "headline": "【あつ森】サンクスギビングデーに参加できなかった場合",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ]
