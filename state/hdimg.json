@@ -131,6 +131,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/006gNTEUly1iitiistinvj399c5x14r4.jpg": {
+  "w": 2000,
+  "h": 1278,
+  "target": 720,
+  "v": 3,
+  "local": "pics/ca3377beeb247028.webp",
+  "out": [
+   1280,
+   818
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg": {
   "w": 1269,
   "h": 708,
@@ -1846,13 +1859,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.tenasia.co.kr/photo/202611/BF.46341530.1.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-07"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100433.jpg": {
   "w": 640,
   "h": 633,
@@ -2154,12 +2160,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://news-images.tvbs.com.tw/api/v1/image/01a1b509-71b1-727a-896c-bff1e63fe055.jpg?t=16x9&c=0,152,1984,1268&w=1200&h=675": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26hDqX7YN3T-8sSQMP263OksHDBSL10NdP2CYNgCRQLE1Klc0W0MLJabxSct6s7yj1isryUApIKuQwcmo4nG1-bctEtMXxKNwO0Kwv5oA9RqKPzAzF-deb7U3r9IQA0CrTQ==": {
@@ -3111,6 +3111,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/9/0/f/2/90f2fac13399752a17edd8c356ff1d3e_1.jpg": {
+  "w": 640,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/d/b/3/b/db3bbbdba3c8e92815679ecd49c5a40c_1.jpg": {
   "w": 640,
   "h": 468,
@@ -3269,6 +3275,12 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
+  "v": 3
+ },
+ "https://statics-prod.mirrordaily.news/images/5ed68c06-6b4e-4661-929c-2d247adbd52e.jpg": {
+  "w": 1984,
+  "h": 1323,
+  "target": 1280,
   "v": 3
  },
  "https://storage.ctinews.com/compression/files/default/cut-1793538777-XNKpkSx.jpg": {
@@ -3941,12 +3953,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.not-mk0vN2qSq4qjO1m5Aw&pid=News&w=960": {
-  "w": 700,
-  "h": 370,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.pY__MqddmbzgsqrIlk7pqw&pid=News&w=640": {
   "w": 640,
   "h": 360,
@@ -4079,6 +4085,12 @@
    672
   ],
   "why": "看不清"
+ },
+ "https://www.chosun.com/resizer/v2/MJTDAMBYGVQTSYZXMI2DMNZTGU.jpg?auth=aa1aa6de777965ae420f8cf1f0f595db1659ed2488e0dc629563957c499781c2&width=650&height=341&smart=true": {
+  "w": 650,
+  "h": 341,
+  "target": 720,
+  "v": 3
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/06/blade.webp": {
   "w": 1200,

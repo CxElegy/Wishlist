@@ -1,32 +1,32 @@
 {
- "admin": "1950c7ca2491",
- "admin-ai": "9f07adb8be2d",
+ "admin": "b029bc4de106",
+ "admin-ai": "5890d2fbac5b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c247d2ee"
+   "a6f0edc4"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "65ef34ad"
+   "e4bbcebf"
   ]
  },
- "admin-boards": "1047c7ef9d32",
+ "admin-boards": "eadfd7168b2a",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "a987ba1f"
+   "3a26bbc0"
   ],
   "votes": [
    "投票",
    "73f5150b"
   ]
  },
- "admin-emblem": "79179951399a",
+ "admin-emblem": "26d08c1fa0c5",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e0f05bf4"
+   "58f7fc24"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "ee5225d27288",
  "admin-members_marks": {},
- "admin-now": "0cd8d9a94d9a",
+ "admin-now": "7cd5f547d55e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "1cc734b1"
+   "cf592b17"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "433410b2"
+   "e60066d7"
   ],
   "term-panel": [
    "ライブログ",
-   "5cd3bc56"
+   "e5c49f02"
   ]
  },
- "admin-system": "3a9693e56dae",
+ "admin-system": "eaa4f534b0e0",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d4ce95a9"
+   "47dd40c2"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "76b3dae4"
+   "67104199"
   ]
  },
  "admin_marks": {},
- "heat": "cd1dde63b52e",
+ "heat": "d26abc762940",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "abd71011"
+   "f8923329"
   ],
   "ranking": [
    "ランキング",
-   "d7084bac"
+   "8312a363"
   ]
  },
- "index": "e9cc7cb23dd1",
+ "index": "c8d336e1ec50",
  "index_marks": {
   "front": [
    "トップ",
-   "02a10e37"
+   "d95a2c6a"
   ],
   "picks": [
    "気になるかも？",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "d8d3a5dd"
+   "e22e2a90"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "fbb4591c"
+   "e2e124da"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "b9be3247"
   ]
  },
- "updated": "11.07 17:59",
+ "updated": "11.07 18:01",
  "wishlist": "bc1f136fe764"
 }
