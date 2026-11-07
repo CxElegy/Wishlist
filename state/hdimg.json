@@ -92,13 +92,6 @@
   "target": 720,
   "v": 3
  },
- "http://pimg3.daara.co.kr/kidd/photo/2026/11/06/1793946074_79.gif": {
-  "w": 690,
-  "h": 460,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.339
- },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -124,19 +117,6 @@
   "fail": "下载失败或不是图片",
   "dead": true,
   "day": "2026-11-07"
- },
- "http://wx1.sinaimg.cn/middle/008eZAxIly1iisu9r8a0fj30y10jwqab.jpg": {
-  "w": 1225,
-  "h": 716,
-  "target": 720,
-  "v": 3,
-  "local": "pics/c833a7eb4de07773.webp",
-  "out": [
-   1225,
-   716
-  ],
-  "why": "防盗链",
-  "ref": true
  },
  "http://wx1.sinaimg.cn/middle/008xZoiFly1iirevre1ihj310y1mck33.jpg": {
   "w": 1330,
@@ -211,6 +191,19 @@
   "local": "pics/349ce49c119b95aa.webp",
   "out": [
    589,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx4.sinaimg.cn/middle/693810ffgy1iir60k9ekoj20wi1yc0yl.jpg": {
+  "w": 1170,
+  "h": 2532,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/a9282b2a731da14b.webp",
+  "out": [
+   591,
    1280
   ],
   "why": "防盗链",
@@ -1268,6 +1261,19 @@
   "h": 1350,
   "target": 720,
   "v": 3
+ },
+ "https://image.dnews.co.kr/photo/photo/2026/11/02/202611021432344390204-2-702151.jpg": {
+  "w": 700,
+  "h": 444,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.456,
+  "local": "pics/f39471419b9f9fc1.webp",
+  "out": [
+   1280,
+   812
+  ],
+  "why": "看不清"
  },
  "https://image.fnnews.com/resource/media/image/2026/11/05/202611050911240705_l.jpg": {
   "w": 800,
@@ -2751,6 +2757,12 @@
   "target": 720,
   "v": 3
  },
+ "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
+  "w": 360,
+  "h": 616,
+  "target": 720,
+  "v": 3
+ },
  "https://research.image.itmedia.co.jp/wp-content/uploads/2026/11/1793603711_ec60eab7bddbf45a46b1e3d98529e5c5.jpg": {
   "w": 1200,
   "h": 630,
@@ -2827,6 +2839,12 @@
  "https://s.yimg.com/lo/mysterio/api/d5b2963e91fc2d316d9d6f6e53f254393b82519145a3e0ecae21293adae93f07/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fqsr_204%2F5a88e020c3906552adea83c635e69778.jpg": {
   "w": 1200,
   "h": 700,
+  "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/d5cf628c681d5f588dd3da15ad8fd7d25cb987d4309eb79da84bc01b2329eb1a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd6a4598914c362c3f0bfdc8a51ad28df.jpg": {
+  "w": 1200,
+  "h": 801,
   "target": 1280,
   "v": 3
  },
@@ -3275,6 +3293,12 @@
   "target": 720,
   "v": 3
  },
+ "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=788,fit=cover,bg=white,f=auto,quality=high,sharpen=2,g=face/21/2026/11/2026110708007233571_1.jpg": {
+  "w": 1200,
+  "h": 788,
+  "target": 720,
+  "v": 3
+ },
  "https://times-abema.ismcdn.jp/mwimgs/2/9/1200w/img_29ed6bf6a46cabbb6b7d74c6d82596c1244940.jpg": {
   "w": 1200,
   "h": 1704,
@@ -3509,12 +3533,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.2uLAjivOCL72hYhu_ewtkQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.47twOMMz5ps8cKgyoS71Kw&pid=News&w=768": {
   "w": 700,
   "h": 393,
@@ -3554,6 +3572,12 @@
   "v": 3,
   "blur": 0.413
  },
+ "https://www.bing.com/th?id=ONUT.BLRUqdyhpsnoPCxLnKzxEQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.CJcTcDLmOmZDW-a4XLGilA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3566,12 +3590,6 @@
    669
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.CNtq5iFlDudwEaQWPrGMlA&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.EVDcrbO-YnrMnbA6LxJOcQ&pid=News&w=1200": {
   "w": 700,
@@ -3624,6 +3642,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.L9J4T499Kv59auJOim0pnA&pid=News&w=1200": {
+  "w": 700,
+  "h": 385,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,
   "h": 338,
@@ -3645,6 +3669,12 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.N0LnlEohsUZ4OQLawwh2GQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.P_mf-B8pJIRGsFwdQdMJDQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3759,21 +3789,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.c0HQo-utsC28dVIOOALYhg&pid=News&w=768": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.clLMFViOMIyhTP0ydodWlg&pid=News&w=500": {
   "w": 500,
   "h": 281,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.d_pa2NRns7yVZ3KUvIA9sA&pid=News&w=550": {
-  "w": 550,
-  "h": 305,
   "target": 720,
   "v": 3
  },
@@ -3835,6 +3853,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.397
+ },
+ "https://www.bing.com/th?id=ONUT.pqx8RuXHPCUcVi5Y8WkA-g&pid=News&w=1200": {
+  "w": 700,
+  "h": 399,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200": {
   "w": 700,
@@ -4175,12 +4199,6 @@
   "w": 900,
   "h": 600,
   "target": 720,
-  "v": 3
- },
- "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg": {
-  "w": 900,
-  "h": 600,
-  "target": 1280,
   "v": 3
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
