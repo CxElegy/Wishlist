@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "f4a1f6933872",
+ "edit_sig": "d5e696337349",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -255,33 +255,6 @@
     "alt_fg": "#1C1826",
     "bg": "#15131C",
     "fg": "#EEEAF4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-   "facts": [],
-   "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 1,
-     "source": "Howl.Link",
-     "title": "133 レミヴェリじゃなくてフィオニーを接待してくれよ #激変ノード #式輿防衛戦 261030～： #ゼンゼロ #zzzero",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFA5ZFM3U3dJbHB1b1oyMjJITWdQZHMwc05halVHU21QRm5VSzZKcHVDTDNRNlpGVlRpdFFZ?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "ゼンレスゾーンゼロ",
-   "theme": {
-    "accent": "#A9898A",
-    "alt_accent": "#856062",
-    "alt_bg": "#F2EDEE",
-    "alt_fg": "#1E1A18",
-    "bg": "#1E1516",
-    "fg": "#F4EEE4",
     "font": "serif",
     "split": true
    }
@@ -689,6 +662,31 @@
     "bg": "#F6F2EA",
     "fg": "#1D2430",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
+   "facts": [],
+   "last": {
+    "date": "2026-11-07",
+    "headline": "セヴェリアン エキシビション「監察官はいかに鍛えられたか」",
+    "url": "https://t.co/BSJ2ikezoh"
+   },
+   "name": "绝区零",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#A9898A",
+    "alt_accent": "#856062",
+    "alt_bg": "#F2EDEE",
+    "alt_fg": "#1E1A18",
+    "bg": "#1E1516",
+    "fg": "#F4EEE4",
+    "font": "serif",
     "split": true
    }
   }
