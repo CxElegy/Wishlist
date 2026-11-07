@@ -850,12 +850,6 @@
   "target": 720,
   "v": 3
  },
- "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg": {
-  "w": 3775,
-  "h": 2123,
-  "target": 720,
-  "v": 3
- },
  "https://d89889xojlqhy.cloudfront.net/upload/featured/878a2e413e4afc0aad075f02f55f1e48.jpg": {
   "w": 4200,
   "h": 2100,
@@ -2991,12 +2985,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/d5cf628c681d5f588dd3da15ad8fd7d25cb987d4309eb79da84bc01b2329eb1a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd6a4598914c362c3f0bfdc8a51ad28df.jpg": {
-  "w": 1200,
-  "h": 801,
-  "target": 1280,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/e3b438fc382eccbca29fe32ea232813ef117ddf19d7986321de545358681a847/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthe_enquirer_natl_articles_358%2Fcb842521f65d616d3b5e0d446c9d1277.jpg": {
   "w": 1200,
   "h": 800,
@@ -3893,6 +3881,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.TCE6hKd37sgbUTq0Rrvp5A&pid=News&w=700": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-07"
+ },
  "https://www.bing.com/th?id=ONUT.UXvOIpi2aXg2GpEl52Ekqg&pid=News&w=650": {
   "w": 650,
   "h": 488,
@@ -4276,19 +4270,7 @@
   "target": 1280,
   "v": 3
  },
- "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-1.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
- "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-ultra-camera-bump.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
@@ -4299,6 +4281,12 @@
   "h": 720,
   "target": 720,
   "v": 3
+ },
+ "https://www.gsmdome.com/wp-content/uploads/2026/11/samsung-galaxy-s27-ultra-samsung-galaxy-s27-ultra-design-cover-a98042-001.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-07"
  },
  "https://www.hollywoodreporter.com/wp-content/uploads/2024/11/FROM_310_00296_R-H-2024.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
