@@ -1,8 +1,9 @@
 """作ったものを自分の目で調べる（2026-11-07，店長「问题が出てから直すな。Playwright で自分で探せ。文字の欠け・アイコンの大きさ」）。
 
 Playwright でページを開いて、人が見て気になる所を数えて、問題の所を切り抜いた 1 枚の絵にする。
-  crop   写真が切れすぎ（主役の位置なし 12% 超・あり 25% 超）
-  band   写真の上下左右の帯（10% 超）
+  crop   写真が切れすぎ（主役の位置なし 30% 超・あり 55% 超。店長の印：主役が残れば切れても○）
+  band   写真の上下左右の帯（店長の印：帯は✕。12% 超）
+  gap    写真の下の空き・札と 👍 の間の空き（店長の印：✕）
   clip   文字が枠で切れている（「…」なしで隠れる。枠の箱と字の箱を比べる）
   clamp  見出しの「…」（数だけ）
   icon   同じ種類のアイコンの大きさがそろっていない（1.15 倍超）
@@ -24,8 +25,8 @@ import threading
 
 WIDTHS = (1400, 390)
 MAX_SHOTS = 4   # 種類ごとに絵にする数
-KIND = {"crop": "写真が切れすぎ", "band": "写真に帯", "clip": "文字が欠けている", "icon": "アイコンの大きさが不揃い", "over": "文字が重なっている", "wide": "横にはみ出す"}
-FIX = {"crop": "切らずに枠を写真の形にする", "band": "枠を写真の形にする", "clip": "枠を広げる・行を増やす", "icon": "同じ種類は同じ大きさに", "over": "間隔を取る", "wide": "はみ出す要素を縮める"}
+KIND = {"gap": "写真の下に空き", "crop": "写真が切れすぎ", "band": "写真に帯", "clip": "文字が欠けている", "icon": "アイコンの大きさが不揃い", "over": "文字が重なっている", "wide": "横にはみ出す"}
+FIX = {"gap": "写真を字の高さまで伸ばす", "crop": "切らずに枠を写真の形にする", "band": "枠を写真の形にする", "clip": "枠を広げる・行を増やす", "icon": "同じ種類は同じ大きさに", "over": "間隔を取る", "wide": "はみ出す要素を縮める"}
 
 MEASURE_JS = r"""
 () => {
@@ -35,8 +36,17 @@ MEASURE_JS = r"""
     if (!i.naturalWidth || i.naturalWidth < 32 || !vis(i)) return;
     const b = i.getBoundingClientRect(), r = i.naturalWidth / i.naturalHeight / (b.width / b.height), q = Math.min(r, 1 / r), loss = Math.round((1 - q) * 100), fit = getComputedStyle(i).objectFit, label = (i.closest('article,.pk,.wc,a') || i).innerText || '';
     const name = label.trim().split('\n').pop().slice(0, 24);
-    if (fit === 'cover' && loss > (i.dataset.m ? 25 : 12)) tag(i.closest('.pic'), 'crop', loss + '% 切れ（' + name + '）');
-    if (fit === 'contain' && loss > 10) tag(i.closest('.pic'), 'band', loss + '% 帯（' + name + '）');
+    if (fit === 'cover' && loss > (i.dataset.m ? 55 : 30)) tag(i.closest('.pic'), 'crop', loss + '% 切れ（' + name + '）');
+    if (fit === 'contain' && loss > 12) tag(i.closest('.pic'), 'band', loss + '% 帯（' + name + '）');
+  });
+  document.querySelectorAll('.wc,.card').forEach(c => {
+    const p = c.querySelector(':scope>.pic'); if (!p || !vis(c) || !vis(p) || c.matches('.hero,.lead,.wide')) return;
+    const a = c.getBoundingClientRect(), b = p.getBoundingClientRect(), right = b.right < a.left + a.width * 0.7, pb = parseFloat(getComputedStyle(c).paddingBottom) || 0;
+    if (right && a.bottom - pb - b.bottom > 16) tag(c, 'gap', Math.round(a.bottom - pb - b.bottom) + 'px（' + (c.innerText || '').trim().split('\n').pop().slice(0, 20) + '）');
+  });
+  document.querySelectorAll('.pk.big').forEach(c => {
+    const t = c.querySelector('.pkt'), n = t && t.parentElement.nextElementSibling; if (!t || !n || !vis(c)) return;
+    const g = n.getBoundingClientRect().top - t.getBoundingClientRect().bottom; if (g > 24) tag(c, 'gap', '札の下 ' + Math.round(g) + 'px');
   });
   let clamped = 0;
   document.querySelectorAll('h1,h2,h3,h4,p,a,span,li,button,small,b,strong,td,th,div').forEach(e => {
