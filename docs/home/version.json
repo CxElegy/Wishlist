@@ -1,32 +1,32 @@
 {
- "admin": "59973493b9c1",
- "admin-ai": "cd9e85a5d699",
+ "admin": "2678041a75a7",
+ "admin-ai": "6bc30b34b5cc",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8f285077"
+   "d14a651a"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "8a3a4e7a"
+   "5b640f67"
   ]
  },
- "admin-boards": "7612f8ba89f8",
+ "admin-boards": "81f026d5516d",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "6b3f8e5d"
+   "ef733706"
   ],
   "votes": [
    "投票",
    "73f5150b"
   ]
  },
- "admin-emblem": "01dab24c462b",
+ "admin-emblem": "8f19626c07f3",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "023ed2c4"
+   "0e91a1ad"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,42 +43,42 @@
  },
  "admin-members": "ee5225d27288",
  "admin-members_marks": {},
- "admin-now": "0df280482903",
+ "admin-now": "26c38e01bc0b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "88ab1012"
+   "2361a49e"
   ],
   "queue": [
    "いまの状況",
-   "dcb94c97"
+   "ce176205"
   ],
   "status": [
    "運行状況",
-   "e60066d7"
+   "29f62276"
   ],
   "term-panel": [
    "ライブログ",
-   "5f69b2ce"
+   "25cf0de9"
   ]
  },
- "admin-system": "38c8ece76dfb",
+ "admin-system": "b519380c71fb",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9711bae7"
+   "233d6e3a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "78a09815"
+   "86ff3611"
   ],
   "res": [
    "リソース・並列と制限",
-   "0d75de07"
+   "b786e4dc"
   ]
  },
  "admin_marks": {},
- "heat": "d2e341acecfa",
+ "heat": "a84342e4c14a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "0f1b29e5"
+   "edbea5b5"
   ],
   "ranking": [
    "ランキング",
-   "4284a15c"
+   "686cafb7"
   ]
  },
- "index": "64ccfd403a54",
+ "index": "65ae4b13477d",
  "index_marks": {
   "front": [
    "トップ",
-   "3774f0b1"
+   "f0dd94da"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "dbe18c69"
+   "56f05bcb"
   ],
   "w-130724c0": [
    "猫用品",
@@ -129,11 +129,11 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "be7c8344"
+   "8c134e7c"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "ca56458e"
+   "2c126b1c"
   ],
   "w-6676e624": [
    "三星手机",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "3ba5beeb"
+   "2fd57223"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "e22e2a90"
+   "d8d3a5dd"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "181104d5"
+   "38a42a54"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "40b24a5b"
   ]
  },
- "updated": "11.07 18:31",
- "wishlist": "bc1f136fe764"
+ "updated": "11.07 22:12",
+ "wishlist": "de38ae8eb191"
 }

@@ -17,26 +17,7 @@ permissions:
   actions: write   # Before / After：その合併の render.yml が終わったかを見る・後で撮る Before を artifact に置いて、送ったら消す
 
 jobs:
-  notify:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    env:
-      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          ref: ${{ github.event.pull_request.merge_commit_sha || github.sha }}
-          fetch-depth: 2
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-          cache: pip
-      - run: pip install -r requirements.txt
-      - name: PR を出した・合併した（画面の更新あり／なしつき）
-        if: github.event_name == 'pull_request'
-        run: python scripts/progress_notify.py pr "$(git diff --name-only HEAD~1 HEAD | tr '\n' ' ')" < "$GITHUB_EVENT_PATH"
-      # あなた待ち（[?]）の知らせは ask_remind.yml（@ 付き・返事がなければ繰り返す）に移した
+  # 合併の文だけの知らせはやめた（2026-11-07，店長：絵と、どこを直したかだけ。下の before_after が送る）
 
   # 合併したら：網页に効く PR は本番で新しくなったのを確かめて「🟢 公開を確かめました」を Discord へ。画面に関わる PR は Before / After の写真も（harness/before_after.py）
   before_after:

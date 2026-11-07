@@ -1,7 +1,34 @@
 {
  "date": "2026-11-07",
- "edit_sig": "52cd245533d3",
+ "edit_sig": "6ddc38d0e93f",
  "items": [
+  {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "name": "Astrae Oratio",
+   "pending": [
+    {
+     "date": "2026-11-07",
+     "n": 2,
+     "source": "게임와이",
+     "title": "[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBtWEgzWDB0RnZmQV9FSVk3bGVlUGczNzdfcHp4aEtCUF9GQWVobDhIaHlHSE01QU9VRldGUlZvRTVSbUxpWnNWSE85SlRyYVV2WEF4aURZMTJhNnc0ZHFLbnF5a1F0UdIBakFVX3lxTE80eG5waTdXQ0pqX3VNc1BoQ21jdmtGdFZLblN1LTJqdnYxb19KWHZScFVSZ1NpNFlhQS1YUVJVYjRCY05mWnh1V05ObWZnNFVDTlg2UzF5bmRlM0FoNG1CbVpwRVp0YlZtb2c?oc=5"
+    }
+   ],
+   "section": "游戏",
+   "stories": [],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#C27270",
+    "alt_accent": "#A14744",
+    "alt_bg": "#F6EAE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211212",
+    "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
    "facts": [],
@@ -86,6 +113,13 @@
      "source": "Dexerto",
      "title": "New World review – Amazon’s MMO lacks reasons to invest in its gorgeous world",
      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBDNEY1eU9ybVlmZzR0S0JRV21zR2NHZGsyREU4bjFRZmJmZC1NVmEzTkI3bXUxUmlsbmdSSGVhT3FaQnFaQkZldV9ObWQ5UFRXdFFPd194Y2tlVEVsZVNFWGU2WVhmamlm?oc=5"
+    },
+    {
+     "date": "2026-11-07",
+     "n": 6,
+     "source": "4Gamer.net",
+     "title": "週刊Steam広場 第178号：オープンワールド農業シム「Lightyear Frontier」や，アクションMMORPG「ArcheAge Chronicles」が発売に",
+     "url": "https://www.4gamer.net/games/038/G003821/20261107001/"
     }
    ],
    "section": "游戏",
@@ -207,6 +241,15 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
+   "pending": [
+    {
+     "date": "2026-11-05",
+     "n": 3,
+     "source": "primetimer.com",
+     "title": "FROM Season 4 Episode 5: Release date and time, where to watch, and more",
+     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNRDhhM3U0Y21XX3BiZE01LWNHSHJKODYxaG1yT0JnRGxwREpMQ2dqeWU5cTJlOWlqZmZSb1ZwUUUtVDAtY1Q1bHZwMmg0dTRWMFIxeGd3SURQQXlfOXllM3pmUllCZmRBczVtQlVVRGdJMDkzb3lvLUtzQlVpWFZIZEJyTFFvcVY3VHRXd013MzlEV3B1RTJkVGoyWWZveDl6WmNfMlUyNVI?oc=5"
+    }
+   ],
    "section": "影视",
    "stories": [
     {
@@ -214,8 +257,9 @@
      "date": "2026-11-06",
      "headline": "Nielsen: Netflix Ups Catalog Horror Series 'From' to No. 1 Across U.S. TV Households Through Oct. 25",
      "highlight": "No. 1",
-     "image": "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg",
-     "image_via": "JSON-LD",
+     "image": null,
+     "source": "Media Play News",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.mediaplaynews.com&sz=128",
      "url": "https://www.mediaplaynews.com/nielsen-netflix-ups-catalog-horror-series-from-to-no-1-across-u-s-tv-households-through-oct-25/",
      "weight": "lead"
     }
@@ -334,15 +378,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 2,
-     "source": "Infoseekニュース",
-     "title": "「一目惚れしました」 スタバの“マグカップ”が大好評！ 「少し厚みがあるので冷めにくくて良い」「毎朝愛用しています」の声",
-     "url": "https://news.infoseek.co.jp/article/itmedia_nlab_4088774/"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -354,6 +389,16 @@
      "image_via": "og:image",
      "url": "https://jazznews.com.tw/nestle-starbucks-2026-winter/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "「一目惚れしました」 スタバの“マグカップ”が大好評！ 「少し厚みがあるので冷めにくくて良い」「毎朝愛用しています」の声",
+     "highlight": "スタバの“マグカップ”が大好評",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4088774_0-enlarge.jpg",
+     "image_via": "og:image",
+     "url": "https://news.infoseek.co.jp/article/itmedia_nlab_4088774/",
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
@@ -372,6 +417,15 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
+   "pending": [
+    {
+     "date": "2026-11-06",
+     "n": 26,
+     "source": "Pkrevenue.com",
+     "title": "Samsung Galaxy S27 Pro, Ultra may use Snapdragon chips in South Korea",
+     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNd1NXVkJXdzdna09GOTdUMVBQTkd5ZllUc1ZpUmxCTW5fNWlpWnRRM0wxYUk2aFNFTGN2U0JMOWFWXzhlaXRseC1PdHNlQUxOcWlrX2FBSjN2MlkzRXZCNE4tZ1daZXh1SE9nbU9FdFRyLS1PbDhfdEZoTDdzN1RjR0pXMXhFNVZCSzJZODJnZk5SaFlzR1E?oc=5"
+    }
+   ],
    "section": "好物",
    "stories": [
     {
@@ -582,11 +636,81 @@
    }
   },
   {
+   "cover": null,
+   "facts": [],
+   "name": "あつ森",
+   "pending": [
+    {
+     "date": "2026-11-07",
+     "n": 1,
+     "source": "Howl.Link",
+     "title": "【あつ森】新家具「時のオカリナ」をオノで攻撃しすぎると……まさかの仕掛けが！？「ゼルダの伝説」コラボ家具に隠れた細かすぎる小ネタ集！【あつまれ どうぶつの森】@レウンGameTV - YouTube",
+     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBLUGJTUVQ4SDl2Y1FqenpjWi1WQ0hhTWtrZXNCY21GTlBwV0FfeVNwNHBCRzhvT0ZkVk5B?oc=5"
+    }
+   ],
+   "section": "游戏",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
+   "pending": [
+    {
+     "date": "2026-11-07",
+     "n": 6,
+     "source": "Play Music 音樂網",
+     "title": "Vaundy才剛唱完台北小巨蛋又有驚喜！親自操刀Nulbarich主唱JQ新歌",
+     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB2OVpWQmh0RFY2TkF6dVBqZlhWNURIWnFHaWpIQVNMNnp5TE01RGZnZXpSX1pyQ0t6Q3phQWZiT0tWck5SQjFxU0N0eUpEenhWYWRWcm0teWJPdzVBdGdCbzFicmdFemlZdjRv?oc=5"
+    },
+    {
+     "date": "2026-11-07",
+     "n": 9,
+     "source": "Skream!",
+     "title": "Vaundy、全国13ヶ所30公演のアリーナ・ツアー\"Vaundy JAPAN ARENA TOUR 2027-2028\"完売で千葉LaLa arena TOKYO-BAYでの2デイズ公演追加発表",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1SOWRzcjJoUlQ3RDYwX25YQTg2eDFjWDFyN0c2VkxiX2RXeVd3Y0FtNG0xZUdGb1hPOFo3TGZEWWxVV1c4dVk4cGlCQVdPeEpOcENIYU5VREVjdFRLM3JXQnJicGlFS1haZXllY3MtbWt1ZlVabHk4?oc=5"
+    },
+    {
+     "date": "2026-11-02",
+     "n": 10,
+     "source": "日本娛樂觀星台",
+     "title": "Vaundy 連2日攻小巨蛋 驚喜下台與粉絲互動",
+     "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxObDB3azRjb1NHMUdxS3ZyWjdPX2NEV1JtcVozVHd5dWJyWWRvU0kzWTA0ZHZ0WnRoQWVxUlUtTjAycG1Tem43Y0ZiU1N5bW5zd3dlTkFpTEU0WlBVc0t0U29YZHBaeThLbEpPNTBsWjRmQ0c2ckh0QUJrMS0zSjlhWFNza1puLWZKU05nbDcwd251RWdtSkRtUE1SMzU3ejlEVjc1WXl3dWNCRE5fdWpvV1ZDcTk2bHMybk13VGVNcXlIMXRrTDBpekxXa3VzUnhhaE1PVWJoM284UlNXNGVrTjZTeWQ5TWZMVE5TMVgtcmNIeWhUTzB5NC1Ra3MtNWUzWEV3Q3JJQXBkQldH0gGSAkFVX3lxTE1HdUdnblk1ZVJZM3dqTGhDLU04OGFBelZlOXg0dzNsRVRlZFlRaUExeVpTc2NnWkdWdFF3MzROQno0RExNd1hjWVBpQVA4Z2cwSkNuS3kyTkoyS0VFY3E5WlJsV18wbHRDZXJsLWFucHBzV1B1Z1o5TFZsUUV0dl9jejkzQm0xUGdLZmdzT3Z5aHNERV9VU0Z2bWhOSlhvWk43R3NCaW1oYmpGV1NoMk5ibTIxbURnMVlGNVR6RTJhdTdMVm1VNXBTX2MwVXNnMVNYVkpsNzhObGFOSGRoSmNPM1B2VnR4cHJMRm4zYXplbm9JRklRbFdTNUh4TVM5V1A4Q0E0LU5nMl9TdF93MENFdmc?oc=5"
+    }
+   ],
    "section": "演出",
    "stories": [
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "Vaundy、27-28年に開催する全国13か所30公演のアリーナツアー完売で千葉・LaLa arena TOKYO-BAY2Days公演追加発表",
+     "highlight": "",
+     "image": "https://www.thefirsttimes.jp/admin/wp-content/uploads/5026/11/20261107-ufo-191101-1200x630.jpeg",
+     "image_via": "og:image",
+     "url": "https://www.thefirsttimes.jp/news/0000914589/",
+     "weight": "hero"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "Vaundy、2027年開催のアリーナツアー追加公演決定。千葉・LaLa arenaにて2デイズ開催へ (2026年11月7日掲載)",
+     "highlight": "",
+     "image": "https://image.news.livedoor.com/newsimage/stf/e/9/e9a37_69_bc18c0be3d09c1d1d330920a9f291b63.jpg",
+     "image_via": "og:image",
+     "url": "https://news.livedoor.com/topics/detail/32758162/",
+     "weight": "hero"
+    },
     {
      "blurb": "Vaundy「しわあわせ」がBillboard JAPANの先ヨミ・デジタルでストリーミング・ソング首位を継続。",
      "date": "2026-11-06",
@@ -596,26 +720,6 @@
      "image_via": "转载 www.msn.com",
      "url": "https://www.musicman.co.jp/chart/750577",
      "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-07",
-     "headline": "『ROCK IN JAPAN FESTIVAL 2026』タイムテーブル発表 Vaundy、BUMP OF CHICKEN、Adoらがメインステージのトリに",
-     "highlight": "メインステージのトリ",
-     "image": "https://static.sanyonews.jp/image/article/size1/9/0/f/2/90f2fac13399752a17edd8c356ff1d3e_1.jpg",
-     "image_via": "og:image",
-     "url": "https://www.sanyonews.jp/article/1939627?kw=2024",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-07",
-     "headline": "Vaundy剛唱完小巨蛋又有驚喜！錄音室化身魔鬼教練 逼他放聲吶喊",
-     "highlight": "",
-     "image": "https://statics-prod.mirrordaily.news/images/5ed68c06-6b4e-4661-929c-2d247adbd52e.jpg",
-     "image_via": "og:image",
-     "url": "https://news.tvbs.com.tw/entertainment/jk-pop/4047225",
-     "weight": "normal"
     }
    ],
    "subtitle": "演唱会",
@@ -634,6 +738,29 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
+   "pending": [
+    {
+     "date": "2026-11-07",
+     "n": 12,
+     "source": "香港01",
+     "title": "周杰伦卖机械狗？巨星传奇联手宇树 售价¥4.3万全球限量2千台",
+     "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxQdUN3bk9Da3Atc25zTktDWFlxaHBjRXRjWDhUNVdvWVZqQ0h1M3RJQzd5ZUIyMkI0c2wtamhFWUVuaGdOdDZkN3p5X3AtTE54ZWgxbnJhUl84aHBOc0NsUV9QUlNlR0JkeW8zVnVJYTJkTXRSRUVheWhSaFJ6Q091Q21GWWlyd0lfeDJYZUtHMldBTGRaQ3ZXSUN1elJXcDRYbUJ2SUMyeVZ6Uk04Sl9KOFRKeWE5cm1PM2xXUUdaZk5LXzlQYldWQ2FVZzJCa0tONGhySlZOOFpsNDA3VndxUzJyMnBTOThQb1FkdE9EOGFlcWkxRk5VN1pZYS02VXppYUhPVFNNdWQzaUh5SDVocGIzRWREc0pCS2RkcTNJMktucHRGX2VqOGdhYm9VYlZ5QUw1NFUyTl96MkQtNDZHM0hEZ1pZWDlBaHRQUlE1ZVdQRy1JVjJiTzh2M3RCbXJzaWNXa09UcXpJMGo0anlRUVFkRkhDZTZyU3JZNXFjUnZldVVCX2NPYTdrQ01KQUlrWmpEUzlWbGVlZnJwN1JoOElwQQ?oc=5"
+    },
+    {
+     "date": "2026-11-07",
+     "n": 13,
+     "source": "证券之星",
+     "title": "周杰伦概念股进博会首秀，4.39万元的机器狗全球首发，巨星传奇赖国辉：让机器人有温度",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9kRFF3Z1BuMU5vbUlabnQ5YVltenNYcUdCeGU4dlJ1MmRDSjdHdWh3cS1kekJ4SklCTklQbjBtOVRhb1lMTmROcGJCbmhLT2pUVmloWEswSEU1bFRQb0VKcw?oc=5"
+    },
+    {
+     "date": "2026-11-06",
+     "n": 14,
+     "source": "香港01",
+     "title": "周杰倫賣機械狗？巨星傳奇聯手宇樹 售價¥4.3萬全球限量2千台",
+     "url": "https://www.hk01.com/%E5%A4%A7%E5%9C%8B%E5%B0%8F%E4%BA%8B/60408251/%E5%91%A8%E6%9D%B0%E5%80%AB%E8%B3%A3%E6%A9%9F%E6%A2%B0%E7%8B%97-%E5%B7%A8%E6%98%9F%E5%82%B3%E5%A5%87%E8%81%AF%E6%89%8B%E5%AE%87%E6%A8%B9-%E5%94%AE%E5%83%B9-4-3%E8%90%AC%E5%85%A8%E7%90%83%E9%99%90%E9%87%8F2%E5%8D%83%E5%8F%B0"
+    }
+   ],
    "section": "演出",
    "stories": [
     {
@@ -683,15 +810,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 7,
-     "source": "新浪网",
-     "title": "绝区零外服贺图：赛维里安女仆装造型分享|giri_az|赛维里安|绝区零",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1xeFBMdTlGdkFJcE9FZVFmRHgxWG84bUNPdkJEV2tTZkI5MWhZYW9ZQ2piWlNMdlZqajM3RVVHZVNkdklMS2JUbkhNZTUtLTdON1lKQWpDajhBWDVQdXpFT0pzZw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -729,8 +847,8 @@
      "date": "2026-11-07",
      "headline": "カフカの「ボンッ」も再現！『ゼンゼロ』×『崩壊：スターレイル』コラボキャラの戦闘PV公開",
      "highlight": "戦闘PV公開",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000027-isd-000-1-view.jpg?exp=10800",
-     "image_via": "og:image",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000027-isd-000-1-view.jpg?pri=l&w=640&h=359&exp=10800",
+     "image_via": "正文图",
      "url": "https://news.yahoo.co.jp/articles/f79dd98c6050b03a30c8abce8b8578f5afb22034",
      "weight": "normal"
     }
@@ -751,6 +869,36 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
+   "pending": [
+    {
+     "date": "2026-11-07",
+     "n": 5,
+     "source": "Hawk Live",
+     "title": "Gaimin Gladiators Hints at a Return to Professional Dota 2",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE83NFJIeURuaVZVQVBFT3JKSTZGMVRYUldIYXE3U1dRSU5mcUhVZmRXT0J0cnJiZDlOenctRUh4NlNvTXBpQjU4d3QwZXNXV1ItS2xva3pWMVQtYVplbzR5YmNncEk5S2hTaXhFMXc0TF9nMHBpdlQ2dGI0dXRaLUk?oc=5"
+    },
+    {
+     "date": "2026-11-07",
+     "n": 6,
+     "source": "Hawk Live",
+     "title": "Korb3n Explains How 1win’s Dota 2 Roster Issues Will Solve",
+     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQYkI3dl9UeFh0c1ZYZ3ZtQWM2ck1QSlNqckZNN2NwOXhadUlRQ0xDbUxMUndTcktYTUR4SzVHN1R1LXBFMVoySHZ6V3dmSmplR2lYSzNTWnJISzhYdEZtdm5tTFpvU21kYUdMU3JNdVJFdXRpNlhEQkF2WGpYRkpsUl9Lbw?oc=5"
+    },
+    {
+     "date": "2026-11-07",
+     "n": 7,
+     "source": "escorenews.com",
+     "title": "Collapse reveals when he plans to come back to Dota 2",
+     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxON2FNbVE4bm44QU0xSm1lRkFLc3czN2JRRGJ3ZGloRzZ6Z2p6U2hEbXNzd3BSR2xBcm0yLTBxYjdibF9zSElReWdlUkRaQnF6NUZKVDdfNjRuY2xPVjJpMnYwQXhIMlpQcmxBWWVjelh2b1JIeDZ3dHpmb005Q1RkeHZSZ3FTRGR4TmQyaENfelRiT2VkLURsbmVoZ3Z6dw?oc=5"
+    },
+    {
+     "date": "2026-11-05",
+     "n": 8,
+     "source": "Natus Vincere",
+     "title": "NAVI Dota 2 — EPL Masters III Champions!",
+     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1VLTZ4ZXE2LVMtZlJucjdSQUdGU2VpMk9BM2lUUEliM3VKR0FRbTlKaDFSbjZUek9UMHl2NkQ1MGp4TjRMS19ldGlObEh0UlN2emRVVWVaLXMwWWo4YktOalV5Y3RQVmZfU0hhUmhHd2dRRW8?oc=5"
+    }
+   ],
    "section": "游戏",
    "stories": [
     {
@@ -795,13 +943,13 @@
    "section": "演出",
    "stories": [
     {
-     "blurb": "신인 A2O LITE가 데뷔하자마자 차트 1위 행진을 이어가고 있다는 소식.",
-     "date": "2026-11-04",
-     "headline": "이수만이 다시 일냈다…신인 A2O LITE, 데뷔하자마자 ‘1위 행진’",
-     "highlight": "1위 행진",
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "NEON 重启 PAK 达成 99 次，TOP100 与 Bugs 重回第一|A2O LITE|iChart",
+     "highlight": "",
      "image": "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png",
      "image_via": "JSON-LD",
-     "url": "https://www.kpab.net/news/articleView.html?idxno=1865",
+     "url": "https://www.sina.cn/news/detail/5362634360358380.html",
      "weight": "lead"
     },
     {
@@ -926,6 +1074,13 @@
      "source": "山と溪谷オンライン",
      "title": "アークテリクスのバックカントリーアカデミーが日本初開催！ 2027年1月、白馬でプロから学ぶ雪山の技術と安全",
      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA4eFczY0RJTldmdkxTVFE1TWxva1N2SU5fVm5JNUVmRy1TQmlaOGxEeFB2VFl0Wk1zRFo1YnNHTE5BZVhXUzAzRjVMczB1QnlNY2hKQ3BhcXZJNFZpd3I5S1c1QVBqUE5E?oc=5"
+    },
+    {
+     "date": "2026-11-07",
+     "n": 3,
+     "source": "ｄメニューニュース",
+     "title": "湯の丸スキー場2026〜2027",
+     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOcGpleGdGblZoOHM2LTJoRV9teWc3bzRaVUwyZU9LNVRUMjNXOERtY0tZNEpTXzdtRndmUlZKaVQwWTNvM1puQ2tfN3NEMHExZFRmckRpcy1GcDRXY2RtX214YmNyUGRfdlNIT2xGYlNjRGM3RWVhODBKcF9hUllKYtIBhgFBVV95cUxPc2ZYOXRZQnpJZDZNbjV6QnM5VVI5NnMxS2Z2bGdabGd1VFZlSHBSNl9XZ1hzbFNsSDlNanlNSzFYRE5jNkppSkpHYjI1OFZkWERqM0owZlozRnpuU055MkJGZG80T2R4TXpvY3Q5Y3Y3ZXdCZ1RKbFktMUlwWDFSeU1SR2R0QQ?oc=5"
     }
    ],
    "section": "运动",
@@ -957,6 +1112,15 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
+   "pending": [
+    {
+     "date": "2026-11-01",
+     "n": 3,
+     "source": "ぐぐスポ！",
+     "title": "【東京都】東レ パン パシフィック オープンテニス 2026(東京・WTA500) 結果速報・トーナメント表(ドロー)・日程・放送予定（配信）｜スポーツニッポン新聞社",
+     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBUQmVlVHpqaU5UNVF1a1hYdV85bUJvdkJRNjVyX2JwQ2o1NG8wc3lGeGtEX044bnd2d1VocFdrLWxSR0Q5R2lvZ19qZnBhY0luZTJ3ejVabXo?oc=5"
+    }
+   ],
    "section": "运动",
    "stories": [
     {
@@ -982,31 +1146,6 @@
     "fg": "#F5F7F2",
     "font": "sans",
     "split": false
-   }
-  },
-  {
-   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-   "facts": [],
-   "last": {
-    "date": "2026-11-06",
-    "headline": "韓国のサブカルチャー総合展示会「アニメ×ゲームフェスティバル2026」（AGF 2026）にゲーム企業が集結",
-    "url": "https://www.4gamer.net/games/975/G097529/20261105039/"
-   },
-   "name": "Astrae Oratio",
-   "quiet": true,
-   "section": "游戏",
-   "status": "",
-   "stories": [],
-   "subtitle": "アストラエ・オラティオ",
-   "theme": {
-    "accent": "#C27270",
-    "alt_accent": "#A14744",
-    "alt_bg": "#F6EAE9",
-    "alt_fg": "#1E1A18",
-    "bg": "#211212",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
    }
   },
   {
@@ -1054,31 +1193,6 @@
     "alt_bg": "#211C12",
     "alt_fg": "#F4EEE4",
     "bg": "#F7F2E9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "last": {
-    "date": "2026-11-05",
-    "headline": "Nintendo lanza diseños gratuitos de Zelda en Animal Crossing: New Horizons por su 40.º aniversario",
-    "url": "https://www.notebookcheck.org/Nintendo-lanza-disenos-gratuitos-de-Zelda-en-Animal-Crossing-New-Horizons-por-su-40-o-aniversario.1438705.0.html"
-   },
-   "name": "あつ森",
-   "quiet": true,
-   "section": "游戏",
-   "status": "",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
     "split": true

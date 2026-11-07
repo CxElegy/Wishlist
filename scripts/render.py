@@ -118,10 +118,10 @@ button{font-family:inherit}
 .nx>i{grid-column:1/-1;font:700 11px var(--font-mono);letter-spacing:.12em;font-style:normal;opacity:.7}
 /* 小さいカード・気になるかも（F-16 続き）：縦長・正方形の写真は枠を写真の幅に絞り（.sb）、空いた横に見出しなど字の列を置く。幅・高さは FIT_JS が決める */
 .sb>.pic{aspect-ratio:auto;justify-self:start;align-self:start}
-.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:0;align-content:start}  /* 写真の枠は 9 行にまたがり、字の入らない行にも行の隙間（8px）が 7 つ付いて、カードが字より 73〜86px 高くなっていた（2026-11-02）：隙間は字の部品の下の余白で付ける */
+.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.sb:not(.mini)>.pic,.wc.sb>.pic{align-self:stretch;height:auto!important}  /* 写真の枠は 9 行にまたがり、字の入らない行にも行の隙間（8px）が 7 つ付いて、カードが字より 73〜86px 高くなっていた（2026-11-02）：隙間は字の部品の下の余白で付ける */
 .card.sb:not(.mini)>.pic,.wc.sb>.pic{grid-column:1;grid-row:1/span 9}
 .card.sb:not(.mini)>*:not(.pic):not(.lk),.wc.sb>*:not(.pic):not(.lk){grid-column:2}
-.card.sb:not(.mini){grid-template-rows:auto auto minmax(0,1fr)}  /* 写真の枠が字より高いとき、余りを字の入らない行に分けず 3 行目が受ける（390px で 27px 余計に高くなっていた） */
+.card.sb:not(.mini){grid-template-rows:repeat(8,auto) minmax(0,1fr)}  /* 写真の枠が字より高いとき、余りを字の入らない行に分けず 3 行目が受ける（390px で 27px 余計に高くなっていた） */
 .card.sb:not(.mini)>*:not(.pic):not(.lk):not(:last-child),.wc.sb>*:not(.pic):not(.lk):not(:last-child){margin-bottom:8px}
 .card.mini.sb{grid-template-columns:auto minmax(0,1fr)}
 .tape.sb{grid-template-columns:6px auto minmax(0,1fr)}.tape.sb>.pic{grid-column:2;grid-row:1/3;margin-bottom:6px}.tape.sb>.lbl{grid-column:3;grid-row:1/3}
@@ -416,6 +416,20 @@ button{font-family:inherit}
 .mini h3{align-self:start;font-size:15px;font-weight:700;line-height:1.5}
 .card.mini>:is(.xprice,.xevent,.xgal){grid-column:2}.card.mini>:is(.xprice,.xevent){justify-self:start}.xevent span{white-space:nowrap}  /* 日程・価格は字の下に（写真の下の空きに落とさない） */
 .side .card.mini{grid-template-columns:110px minmax(0,1fr)}
+/* 小さいカードの写真は幅 40%・高さは字の列いっぱい（2026-11-07 ユーザー「图有点小了」：120×90 の下に空きが残っていた。スマホの 42% と同じ考え）。
+   写真は字の列の高さいっぱい。主役の位置がわからず大きく切れる絵（ロゴ・文字入り）だけ全体を見せ、周りは絵の端の色で埋める .whole（2026-11-07 店長の印） */
+.card.mini:not(.nophoto){grid-template-columns:minmax(110px,40%) minmax(0,1fr)}
+.card.mini:not(.nophoto)>.pic{align-self:stretch;justify-self:stretch;width:auto!important;height:auto!important;min-height:96px;aspect-ratio:auto!important}
+.card.mini:not(.nophoto){row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.mini:not(.nophoto)>.pic{grid-column:1;grid-row:1/span 9}.card.mini:not(.nophoto)>*:not(.pic):not(.lk){grid-column:2}
+.pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
+.pk.shaped .pkt{flex:1 1 auto}
+.wc.sb .tg,.card.sb .tg{max-width:100%;white-space:normal}
+/* 細いカードの字の列は狭い：👍👎 を日付に重ねず、入らなければ次の行へ（2026-11-07 店長） */
+.wc.sb em.wc-x,.wc.sb em:has(.vt){padding-right:0!important;min-height:0;align-items:center;gap:2px 6px}.wc.sb em .vt{position:static;margin:0 0 0 -4px;padding:0;order:2}.wc.sb em .from{order:3;flex-basis:100%}.wc.sb em.two::before{display:none}
+.stk.stk.stk.stk.stk{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+.stk.stk.stk.stk.stk>*{grid-column:1!important}
+.stk.stk.stk.stk.stk>.pic{grid-row:auto!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:var(--ar)!important;margin-bottom:8px}
+.pic.trim img:not(.bg):not(.ico){inset:auto;max-width:none;object-fit:fill!important}
 .brief{padding:12px 26px 18px;border-top:1px solid var(--line)}
 .brief h4{margin:0 0 8px;font:900 13px var(--font-sans);letter-spacing:.12em;opacity:.8}
 .brief ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -502,12 +516,12 @@ button{font-family:inherit}
 /* PC の「似たジャンルの新着」は横長の小さいカード（写真を左、文字を右）：上の段と形を変え、1 段を低く */
 @media (min-width:761px){
  .pkgrid.row .pk>a{flex-direction:row;align-items:flex-start}
- .pkgrid.row .pk .pic{flex:none;width:88px;aspect-ratio:1;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+ .pkgrid.row .pk .pic{flex:none;width:100px!important;height:75px!important;aspect-ratio:auto!important;min-height:0!important;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
  .pkgrid.row .pk:nth-child(even) .pic{transform:rotate(2deg)}
  .pkgrid.row .pk .pkt{flex:1;margin:10px 0 0 -8px;padding:10px 12px 9px}
  .pkgrid.row .pk .tags,.pkgrid.row .pk .taste,.pkgrid.row .pk .why small{display:none}
  .pkgrid.row .pk .why{font-size:13px}.pkgrid.row .pk b{font-size:13px}
- .pkgrid.row .pk .vote{margin:4px 0 0 96px}
+ .pkgrid.row .pk .vote{margin:4px 0 0 108px}
  .pkgrid:not(.row) .pk:not(.big) .taste{display:none}  /* 「あなたの投票」は大きい 1 枚だけ */
 html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あなたの投票」と見せない（F8 2026-11-05） */
 }
@@ -2394,7 +2408,7 @@ def _total(wishes, status):
     return " + ".join(f"{c} {v:,.0f}" for c, v in totals.items()) or "—"
 
 
-def render_wishlist(wishes, works, updated, finds=(), db=None):
+def render_wishlist(wishes, works, updated, finds=(), db=None, own=False):
     """愿望清单子页面（docs/wishlist.html）：收藏柜式大图网格，可按状态筛选，顶部是件数和想要的总价。
     「纠结」的东西单独排一栏「纠结名单」，卡片上列出帮你查的同类好产品（alternatives）和每天搜到的新发现（finds）。
     db（Supabase 的 url、公开 key）配好时，顶部有「📷 拍照加愿望」：上传照片进收件箱，Claude 定时任务认出物品加进清单。"""
@@ -2406,15 +2420,15 @@ def render_wishlist(wishes, works, updated, finds=(), db=None):
     live = [x for x in wishes if x.get("status") not in ("已过期", "纠结")]
     torn = [x for x in wishes if x.get("status") == "纠结"]
     gone = [x for x in wishes if x.get("status") == "已过期"]
-    section = _wish_section(live, works)
+    section = _wish_section(live, works, own=own)
     if torn:
         section += (f'<div class="gonehead torn"><h2>纠结名单</h2><span>还在犹豫买不买 · {len(torn)} 件 · 合计 {e(_total(wishes, "纠结"))}'
                     f' · 下面列出类似的好产品，每天也会帮你搜新的</span></div>'
-                    + _wish_section(torn, works, finds).replace('class="sec wish"', 'class="sec wish torn"').replace('id="wishlist" ', ''))
+                    + _wish_section(torn, works, finds, own=own).replace('class="sec wish"', 'class="sec wish torn"').replace('id="wishlist" ', ''))
     if gone:
         section += (f'<div class="gonehead"><h2>过期的愿望</h2><span>去不了、买不到了，但还想要 · {len(gone)} 件</span></div>'
-                    + _wish_section(gone, works).replace('class="sec wish"', 'class="sec wish expired"').replace('id="wishlist" ', ''))
-    return f"""<!doctype html>
+                    + _wish_section(gone, works, own=own).replace('class="sec wish"', 'class="sec wish expired"').replace('id="wishlist" ', ''))
+    page = f"""<!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
@@ -2471,7 +2485,7 @@ def render_wishlist(wishes, works, updated, finds=(), db=None):
 <div class="stat"><span>想要的合计</span><b>{e(total)}</b></div>
 <div class="chips" role="group" aria-label="按状态筛选">{chips}</div>
 </div>
-{_snap_panel(db)}
+{_own_wish_panel(db) if own else _snap_panel(db)}
 {section}
 </div>
 <script>
@@ -2490,6 +2504,7 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
 </body>
 </html>
 """
+    return _wish_page_ja(page) if own else page
 
 
 SNAP_CSS = """
@@ -2595,6 +2610,157 @@ SNAP_JS = """
 """
 
 
+WISH_JA = {"想要": "欲しい", "纠结": "迷い中", "已入手": "入手済み", "没买到": "買えなかった", "已过期": "終わった"}
+_WISH_PAGE_JA = (('<html lang="zh-CN">', '<html lang="ja">'), ("<title>愿望清单</title>", "<title>欲しい物リスト</title>"), ("<h1>愿望清单</h1>", "<h1>欲しい物リスト</h1>"),
+                 ("<small>更新于</small>", "<small>更新</small>"), ("← 回到关注清单通信", "← トップに戻る"), ("<span>共</span>", "<span>全部</span>"),
+                 ("<span>想要的合计</span>", "<span>欲しいものの合計</span>"), ('aria-label="按状态筛选"', 'aria-label="状態で絞り込む"'),
+                 ('<span class="title">愿望清单</span>', '<span class="title">欲しい物リスト</span>'), (" · 想要 ", " · 欲しい "), ("去看看 ↗", "見に行く ↗"), ("加入于 ", "追加 "),
+                 ("<h2>纠结名单</h2>", "<h2>迷っているもの</h2>"), ("还在犹豫买不买 · ", ""), (" · 合计 ", " · 合計 "), (" · 下面列出类似的好产品，每天也会帮你搜新的", ""),
+                 ("<h2>过期的愿望</h2>", "<h2>終わったもの</h2>"), ("去不了、买不到了，但还想要 · ", ""))
+
+
+def _wish_page_ja(page):
+    """本人の欲しい物のページの文字（お客さまの画面は日本語、render_settings の own と同じ）。data-status・data-f の値は DB と同じままにして、見える字だけ替える。"""
+    for a, b in _WISH_PAGE_JA:
+        page = page.replace(a, b)
+    for k, v in WISH_JA.items():
+        page = page.replace(f'">{k}<small>', f'">{v}<small>').replace(f"♥ {k}<", f"♥ {v}<")
+    return page
+
+
+def _own_wish_controls(status):
+    """本人のカードの操作：状態を変える・消す（OWN_WISH_JS）。"""
+    opts = "".join(f'<option value="{k}"{" selected" if k == status else ""}>{v}</option>' for k, v in WISH_JA.items())
+    return f'<div class="wctl"><select aria-label="状態を変える">{opts}</select><button type="button" class="wdel">消す</button></div>'
+
+
+OWN_WISH_CSS = """
+.snap .byname{display:grid;grid-template-columns:minmax(0,2fr) 96px 72px minmax(0,2fr) auto;gap:8px;align-items:center;padding-top:14px;border-top:1px dashed #1A1C22}
+.snap .byname h3{grid-column:1/-1;margin:0;font:900 15px 'Noto Sans SC',sans-serif}
+.snap .byname input,.snap .byname select{width:100%;box-sizing:border-box;padding:8px 10px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:500 14px 'Noto Sans SC',sans-serif}
+.snapq .wdel,.wctl .wdel{padding:5px 12px;border:2px solid #B8336A;background:transparent;color:#B8336A;font:900 13px 'Noto Sans SC',sans-serif;cursor:pointer}
+.wctl{display:flex;gap:8px;align-items:center;margin-top:8px}
+.wctl select{padding:5px 8px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:700 13px 'Noto Sans SC',sans-serif}
+@media (max-width:640px){.snap .byname{grid-template-columns:minmax(0,1fr) 72px}.snap .byname input[data-f=name],.snap .byname input[data-f=url],.snap .byname .add{grid-column:1/-1}}
+"""
+# 本人の欲しい物：写真で足す（my_photo_add）・名前で足す（my_wish_add）・状態を変える・消す。ページは定期的に作り直すので、まだカードになっていない分は下の一覧に出す
+OWN_WISH_JS = """
+(() => {
+  const CFG = %s, box = document.getElementById('snap'), JA = %s;
+  const $ = s => box.querySelector(s);
+  const tok = () => { try { return JSON.parse(localStorage.getItem('wl-auth') || '{}').access_token || ''; } catch (_) { return ''; } };
+  const rpc = async (fn, body) => {
+    const r = await fetch(CFG.url.replace(/\\/$/, '') + '/rest/v1/rpc/' + fn, { method: 'POST',
+      headers: { apikey: CFG.key, Authorization: 'Bearer ' + tok(), 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+    if (r.status === 401) throw new Error('ログインが切れました。開き直してください');
+    if (!r.ok) { const err = await r.json().catch(() => ({})); throw new Error(err.message || String(r.status)); }
+    return r.status === 204 ? null : r.json();
+  };
+  const say = (el, t, cls) => { el.textContent = t; el.className = 'st ' + (cls || ''); };
+  const file = $('#snap-file'), drop = $('.drop'), note = $('#snap-note'), send = $('form .send'), st = $('form .st');
+  let status = '想要', img = null;
+  box.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    status = b.dataset.v;
+    box.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  }));
+  const shrink = (im, side, q) => {
+    const k = Math.min(1, side / Math.max(im.naturalWidth, im.naturalHeight));
+    const c = document.createElement('canvas'); c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k);
+    const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height);
+    return c.toDataURL('image/jpeg', q);
+  };
+  file.addEventListener('change', () => {
+    const f = file.files[0]; if (!f) return;
+    const url = URL.createObjectURL(f), im = new Image();
+    im.onload = () => { img = im; let p = drop.querySelector('img'); if (!p) { p = document.createElement('img'); drop.appendChild(p); } p.src = url; drop.querySelector('span').hidden = true; say(st, ''); };
+    im.onerror = () => say(st, 'この写真は開けません。別の写真にしてください', 'err');
+    im.src = url;
+  });
+  const row = (thumb, title, state, id) => {
+    const li = document.createElement('li');
+    const t = document.createElement('img'); if (thumb) t.src = thumb; t.alt = '';
+    const d = document.createElement('div'), b = document.createElement('b'), s = document.createElement('span');
+    b.textContent = title; s.className = 'state'; s.textContent = state; d.append(b, s); li.append(t, d);
+    if (id) {
+      const x = document.createElement('button'); x.type = 'button'; x.className = 'wdel'; x.textContent = '消す';
+      x.addEventListener('click', async () => { try { await rpc('my_wish_del', { p_id: id }); li.remove(); } catch (e) { say(st, e.message, 'err'); } });
+      li.appendChild(x);
+    }
+    return li;
+  };
+  const STATE = { new: '順番待ち', exported: 'Claude が処理中', done: '追加しました' };
+  const refresh = async () => {
+    const ul = $('.snapq'); if (!ul) return;
+    if (document.readyState === 'loading') await new Promise(r => document.addEventListener('DOMContentLoaded', r, { once: true }));   // カードが揃ってから「まだカードでない分」を数える
+    try {
+      const [ph, ws] = await Promise.all([rpc('my_photo_inbox'), rpc('my_wishes')]);
+      const shown = new Set([...document.querySelectorAll('.wcard[data-id]')].map(c => c.dataset.id));
+      ul.innerHTML = '';
+      ws.filter(w => !shown.has(String(w.id))).forEach(w => ul.appendChild(row(w.image, w.name, (JA[w.status] || w.status) + ' · 次のページ更新で並びます', w.id)));
+      ph.filter(x => x.state !== 'done').forEach(x => ul.appendChild(row(x.thumb, x.note || '写真 #' + x.id, (STATE[x.state] || x.state) + ' · ' + (JA[x.status] || x.status))));
+    } catch (_) {}
+  };
+  send.addEventListener('click', async ev => {
+    ev.preventDefault();
+    if (!img) { say(st, '先に写真を選んでください', 'err'); return; }
+    let big = shrink(img, 1600, .85); if (big.length > 2900000) big = shrink(img, 1200, .75);
+    send.disabled = true; say(st, '送っています…');
+    try {
+      await rpc('my_photo_add', { p_image: big, p_thumb: shrink(img, 240, .7), p_status: status, p_note: note.value.trim() });
+      say(st, '受け取りました。Claude が商品を確かめて、ここに足します', 'ok');
+      img = null; file.value = ''; note.value = ''; drop.querySelector('img')?.remove(); drop.querySelector('span').hidden = false; refresh();
+    } catch (e) { say(st, '送れませんでした：' + e.message, 'err'); }
+    send.disabled = false;
+  });
+  const by = box.querySelector('.byname'), val = k => by.querySelector('[data-f=' + k + ']');
+  by.querySelector('.add').addEventListener('click', async () => {
+    const name = val('name').value.trim(), url = val('url').value.trim(), s2 = by.querySelector('.st');
+    if (!name) { say(s2, '名前を入れてください', 'err'); return; }
+    if (url && !/^https?:[/][/]/.test(url)) { say(s2, '網址は http で始まるものにしてください', 'err'); return; }
+    const pr = val('price').value.trim();
+    try {
+      await rpc('my_wish_add', { p_name: name, p_status: status, p_price: pr === '' ? null : Number(pr), p_currency: pr === '' ? null : val('currency').value, p_url: url || null, p_note: null });
+      val('name').value = val('url').value = val('price').value = ''; say(s2, '足しました', 'ok'); refresh();
+    } catch (e) { say(s2, '足せませんでした：' + e.message, 'err'); }
+  });
+  // カードはこの欄より下にあって、この時点ではまだ読み込まれていない：document で受ける
+  document.addEventListener('change', async ev => {
+    const sel = ev.target.closest && ev.target.closest('.wctl select'); if (!sel) return;
+    const c = sel.closest('.wcard[data-id]');
+    try { await rpc('my_wish_status', { p_id: Number(c.dataset.id), p_status: sel.value }); c.dataset.status = sel.value; const h = c.querySelector('.heart'); if (h) h.textContent = '♥ ' + (JA[sel.value] || sel.value); }
+    catch (e) { say(st, e.message, 'err'); }
+  });
+  document.addEventListener('click', async ev => {
+    const del = ev.target.closest && ev.target.closest('.wctl .wdel'); if (!del) return;
+    const c = del.closest('.wcard[data-id]');
+    if (!confirm('「' + c.dataset.key + '」を消しますか？')) return;
+    try { await rpc('my_wish_del', { p_id: Number(c.dataset.id) }); c.remove(); } catch (e) { say(st, e.message, 'err'); }
+  });
+  refresh();
+})();
+"""
+
+
+def _own_wish_panel(db):
+    """本人の欲しい物のページの上の欄。写真で足す（店長の「📷 拍照加愿望」と同じ形）＋名前で足す。"""
+    if not (db and db.get("url") and db.get("key")):
+        return ""
+    cur = "".join(f"<option>{c}</option>" for c in ("JPY", "USD", "EUR", "CNY", "KRW"))
+    return (f'<style>{SNAP_CSS}{OWN_WISH_CSS}</style><section class="snap" id="snap"><h2>📷 写真で足す'
+            f'<small>写真を送ると、Claude が商品を確かめて足します（順番に処理します）</small></h2>'
+            f'<form><label class="drop"><span>写真を選ぶ<br>または撮る</span><input type="file" id="snap-file" accept="image/*"></label>'
+            f'<div class="seg" role="group" aria-label="どちらに足すか"><button type="button" data-v="想要" aria-pressed="true">欲しい</button>'
+            f'<button type="button" data-v="纠结" aria-pressed="false">迷い中</button></div>'
+            f'<input type="text" id="snap-note" maxlength="500" placeholder="メモ（なくても大丈夫）：どこで見たか、欲しい色など">'
+            f'<div class="row"><button type="button" class="send">送る</button><span class="st" role="status"></span></div></form>'
+            f'<div class="byname"><h3>名前で足す</h3><input data-f="name" type="text" maxlength="200" placeholder="名前" aria-label="名前">'
+            f'<input data-f="price" type="number" min="0" step="any" placeholder="価格" aria-label="価格"><select data-f="currency" aria-label="通貨">{cur}</select>'
+            f'<input data-f="url" type="url" maxlength="2000" placeholder="商品の網址（なくても大丈夫）" aria-label="商品の網址"><button type="button" class="send add">足す</button>'
+            f'<span class="st" role="status" style="grid-column:1/-1"></span></div>'
+            f'<ul class="snapq"></ul></section>'
+            f'<script>{OWN_WISH_JS % (json.dumps({"url": db["url"], "key": db["key"]}), json.dumps(WISH_JA, ensure_ascii=False))}</script>')
+
+
 def _snap_panel(db):
     """愿望清单页顶部的「📷 拍照加愿望」。没配数据库时不显示。"""
     if not (db and db.get("url") and db.get("key")):
@@ -2631,7 +2797,7 @@ def _alts(x, finds):
     return f'<div class="alts"><span>类似的好产品</span><ul>{"".join(rows)}</ul></div>'
 
 
-def _wish_section(wishes, works, finds=()):
+def _wish_section(wishes, works, finds=(), own=False):
     """愿望清单版面。只有一件时做成横向大卡，多件时自动排成网格。"""
     if not wishes:
         return ""
@@ -2639,7 +2805,7 @@ def _wish_section(wishes, works, finds=()):
     cards = []
     for x in wishes:
         img = x.get("image") or ""
-        if img and not img.startswith("http"):
+        if img and not img.startswith(("http", "data:image/")):
             img = "wishlist/" + img
         status = x.get("status") or "想要"
         cls = {"已入手": "got", "没买到": "miss", "已过期": "miss", "纠结": "torn"}.get(status, "")
@@ -2659,7 +2825,7 @@ def _wish_section(wishes, works, finds=()):
                          f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}{_from(st)}</span>{e(st["headline"])}</a>')
         added = f'<span class="added">加入于 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
         cards.append(
-            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}" data-key="{e(x["name"])}">'
+            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}" data-key="{e(x["name"])}"{f' data-id="{e(str(x["id"]))}"' if own and x.get("id") else ""}>'
             f'<div class="wimg">{f"""<img src="{e(img)}" alt="{e(x["name"])}" loading="lazy" referrerpolicy="no-referrer">""" if img else ""}'
             f'<span class="heart {cls}">♥ {e(status)}</span></div>'
             f'<div class="wtxt">' + (f'<span class="shop">{e(x["shop"])}</span>' if x.get("shop") else "")
@@ -2667,7 +2833,7 @@ def _wish_section(wishes, works, finds=()):
             + (f"<dl>{specs}</dl>" if specs else "")
             + (f'<p class="note">{e(x["note"])}</p>' if x.get("note") else "")
             + watch + (_alts(x, finds) if status == "纠结" else "")
-            + f'<div class="links">{"".join(links)}{added}</div></div></article>')
+            + f'<div class="links">{"".join(links)}{added}</div>' + (_own_wish_controls(status) if own else "") + '</div></article>')
     want = sum(1 for x in wishes if (x.get("status") or "想要") == "想要")
     return (f'<section id="wishlist" data-k="wishlist" class="sec wish"><div class="band split">'
             f'<span class="title">愿望清单</span><span class="sub">WISHLIST · {len(wishes)} 件 · 想要 {want}</span></div>'
@@ -2795,13 +2961,14 @@ def _side(works, today, wishes=(), taste=()):
         rows = []
         for x in want[:7]:  # 入りきらない分は WALL_JS が下から隠す
             img = x.get("image") or ""
-            if img and not img.startswith("http"):
+            if img and not img.startswith(("http", "data:image/")):
                 img = "wishlist/" + img
             price = (f'{e(str(x.get("currency", "")))} {x["price"]:,.0f}' if isinstance(x.get("price"), (int, float))
                      else e(str(x.get("price") or "")))
             torn = (x.get("status") == "纠结")
-            pic = (f'<img src="{e(photo_store.stored(img, 400) or img)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
-                   if _safe_url(img) or img.startswith("wishlist/") else "")
+            shown = img if img.startswith("data:image/") else (photo_store.stored(img, 400) or img)
+            pic = (f'<img src="{e(shown)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
+                   if _safe_url(img) or img.startswith(("wishlist/", "data:image/")) else "")
             rows.append(f'<li><span class="wthumb">{pic}</span>'
                         f'<span class="wt"><b>{e(x["name"])}</b><em>{price}</em></span>'
                         f'<i class="tg" style="--sc:{"#985315" if torn else "var(--rose)"}"><span>{"迷い中" if torn else "欲しい"}</span></i></li>')
@@ -3285,7 +3452,7 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
 FIT_JS = """
 (() => {
   // 写真を枠に合わせて切るとき（小さいカード・気になるかも・主写真・c3・mini・wc・tape すべて）、主役（顔・題字）の分布 data-m「横;縦」が最も残る位置を探す。残る割合を data-keep（%）に残す（点検が数える）。
-  // 切れる長さが枠の 45% を切る細長い絵・6 割残らない絵は false（全体表示）
+  // 切れる長さが枠の 45% を切る細長い絵・6 割残らない絵は false（全体表示）。2026-11-07 店長の印：主役が残れば 50% 近く切れても○、帯・空きは✕
   const cropAt = (img, r) => {
     img.style.objectPosition = ''; delete img.dataset.keep;
     const m = (img.dataset.m || '').split(';').map(s => s.split(',').map(Number));
@@ -3296,7 +3463,7 @@ FIT_JS = """
     let best = -1, at = 0;
     for (let k = 0; k <= 24; k++) { const o = (1 - q) * k / 24, v = C(o + q) - C(o); if (v > best) { best = v; at = o; } }
     const keep = best / tot;
-    if (keep < 0.6) return false;
+    if (keep < 0.7) return false;   // 2026-11-07：6 割では文字入りのバナーの端が欠けた（INDEXBOX）
     const pos = (1 - q) > 0.001 ? at / (1 - q) * 100 : 50;
     img.style.objectPosition = horiz ? pos + '% 50%' : '50% ' + pos + '%';
     img.dataset.keep = Math.round(keep * 100);
@@ -3304,20 +3471,68 @@ FIT_JS = """
   };
   // 枠の比率は写真自身の箱の小数の大きさで測る（clientWidth/Height は整数に丸まり、328×183.6 が 328×184 になって 8% の境目で fill が誤って付いた。点検〔pkcut〕も同じ箱を測る）
   const boxW = (img, d) => img.getBoundingClientRect().width || d, boxH = (img, d) => img.getBoundingClientRect().height || d;
+  // 写真そのものに焼き込まれた無地の帯（2026-11-07 店長の ✕）：縮小して上下左右の無地の行・列を数える。別のサイトの絵は読めないので何もしない
+  const bands = img => {
+    if (img._bands !== undefined) return img._bands;
+    img._bands = null;
+    const read = src => {
+      const W = 64, H = Math.max(8, Math.round(64 * img.naturalHeight / img.naturalWidth)), c = document.createElement('canvas');
+      c.width = W; c.height = H;
+      const x = c.getContext('2d', {willReadFrequently: true}); x.drawImage(src, 0, 0, W, H);
+      const d = x.getImageData(0, 0, W, H).data, px = (a, b) => { const i = (b * W + a) * 4; return [d[i], d[i + 1], d[i + 2]]; };
+      const flat = (n, at) => { const s = at(0); for (let k = 1; k < n; k++) { const v = at(k); if (Math.abs(v[0] - s[0]) + Math.abs(v[1] - s[1]) + Math.abs(v[2] - s[2]) > 24) return false; } return true; };
+      let t = 0, b = 0, l = 0, r = 0;
+      while (t < H / 2 && flat(W, k => px(k, t))) t++;
+      while (b < H / 2 && flat(W, k => px(k, H - 1 - b))) b++;
+      while (l < W / 2 && flat(H, k => px(l, k))) l++;
+      while (r < W / 2 && flat(H, k => px(W - 1 - r, k))) r++;
+      const e0 = px(0, 0); img._edge = 'rgb(' + e0.join(',') + ')';
+      const f = {t: t / H, b: b / H, l: l / W, r: r / W};
+      if (Math.max(f.t, f.b, f.l, f.r) >= 0.04 && f.t + f.b < 0.7 && f.l + f.r < 0.7) img._bands = f;
+    };
+    try { read(img); }
+    catch (e) {   // 別のサーバーの写真：許可があれば取り直して読む。なければ何もしない
+      if (window.createImageBitmap) fetch(img.currentSrc || img.src, {mode: 'cors'}).then(r => r.ok ? r.blob() : Promise.reject()).then(createImageBitmap).then(b => { read(b); b.close(); fit(img); }).catch(() => {});
+    }
+    return img._bands;
+  };
+  // 帯の外の絵が枠をちょうど覆うよう、写真を枠の割合で置く（ブラウザによらず動き、幅が変わっても崩れない）
+  const trimFit = (img, p, f) => {
+    const nw = img.naturalWidth, nh = img.naturalHeight, cw = nw * (1 - f.l - f.r), ch = nh * (1 - f.t - f.b), W = p.clientWidth, H = p.clientHeight;
+    if (!W || !H) return;
+    const cover = Math.max(W / cw, H / ch), inner = Math.min(W / cw, H / ch), s = inner / cover >= 0.88 ? cover : inner, iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
+    Object.assign(img.style, {width: iw / W * 100 + '%', height: ih / H * 100 + '%', left: ((W - cw * s) / 2 - nw * f.l * s) / W * 100 + '%', top: ((H - ch * s) / 2 - nh * f.t * s) / H * 100 + '%'});
+    p.classList.remove('whole'); p.classList.add('trim');
+    if (s < cover && img._edge) p.style.background = img._edge;
+  };
   const fit = img => {
+    fit0(img);
+    const p = img.closest('.pic'), f = img.naturalWidth && img._bands;
+    if (!p) return;
+    if (f) trimFit(img, p, f);
+    else if (img._edge && !p.classList.contains('fill')) p.style.background = img._edge;   // 全体を見せる絵：周りを絵の端の色に（帯に見えない）
+  };
+  const fit0 = img => {
     const p = img.closest('.pic');
+    if (img.naturalWidth) bands(img);
     // 期限切れ・削除された図の代わりに返ってくる 1×1 の空白・防盗链の小さい代用画像（17173 の 989 バイト）は「開けない」と同じ扱い：次の候補へ。
     // 2026-11-01：以前は onerror 属性の関数を呼んでいたが、10-30 から onerror 属性が無く（data-e＋document の捕捉）一度も動いていなかった。error を投げて同じ処理に渡す
     if (img.dataset.e && img.naturalWidth && img.naturalWidth < 32 && img.naturalHeight < 32) { img.dispatchEvent(new Event('error')); return; }
     if (!p || !img.naturalWidth || !p.clientHeight) return;
     p._ok = 1;   // 一度は測れた（隠れた版面の写真は、見えるようになったとき下の ResizeObserver が測る）
-    const nat = img.naturalWidth / img.naturalHeight;
+    const bd = img._bands, nat = bd ? img.naturalWidth * (1 - bd.l - bd.r) / (img.naturalHeight * (1 - bd.t - bd.b)) : img.naturalWidth / img.naturalHeight;
     const pk = p.closest('.pk');
     const sm = p.closest('article.card:not(.hero):not(.lead):not(.wide), .wc:not(.lead), a.tape');
     if (pk || sm) unside(pk || sm, p);
     if (pk) {   // 気になるかも？：写真は切らない（文字入りのバナーが多い）。下に重なる札の分（--pko）は写真の外
       const pko = parseFloat(getComputedStyle(p).getPropertyValue('--pko')) || 0;
-      p.style.height = p.style.aspectRatio = p.style.minHeight = '';
+      if (innerWidth > 760 && pk.closest('.pkgrid.row')) {   // 似たジャンルの新着：枠はどれも同じ大きさ（2026-11-07 店長「一个大一个小很奇怪」）。切れない絵は全体を見せて周りを絵の端の色に
+        const r0 = nat / (boxW(img, 100) / boxH(img, 75));
+        p.style.height = p.style.aspectRatio = p.style.minHeight = p.style.flex = '';
+        p.classList.toggle('fill', Math.abs(Math.log(r0)) < 0.08 || cropAt(img, r0) || (!img.dataset.m && Math.min(r0, 1 / r0) >= 0.85));
+        return;
+      }
+      p.style.height = p.style.aspectRatio = p.style.minHeight = p.style.flex = ''; pk.classList.remove('shaped');
       if (innerWidth <= 760) {   // 1 列：枠を写真の比率にする（縦長は 1.5 倍まで・横長は 1.5:1 まで）。それでも細い写真は枠を絞って字を横に（.sb）
         const w = p.clientWidth, h = Math.min(Math.max(w / nat, w / 1.5), w * 1.5);
         Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', height: (h + pko) + 'px'});
@@ -3328,24 +3543,45 @@ FIT_JS = """
       }
       const r = nat / (boxW(img, p.clientWidth) / Math.max(1, boxH(img, p.clientHeight - pko)));
       // 比率が違っても、顔・題字（data-m）が 6 割以上残る位置で切れるなら切る（案 2）。残らない絵は今までどおり全体を見せる
-      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r));
+      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.85));
+      // 切れない横長の絵：枠を絵の形にして、余りは手書きの札が受ける（帯も空きも出さない。2026-11-07）
+      if (!p.classList.contains('fill') && r > 1 && !pk.matches('.big')) { Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', flex: 'none', height: (p.clientWidth / nat + pko) + 'px'}); p.classList.add('fill'); pk.classList.add('shaped'); return; }
       if (!p.classList.contains('fill') && r < 0.75) side(pk, p, nat, p.clientHeight);   // 写真が枠より細い：空いた横に札を置く
       return;
     }
     // 枠の大きさは変えない（写真の壁は 16:10 のまま段の高さがそろう）。写真は切らない：ほぼ同じ比率（切れるのは 8% まで）のときだけ埋め、
     // そうでなければぼかしの上に全体を見せる。配図は文字・ロゴ入りのバナーが多く、端を切ると欠ける（2026-10-17 ユーザー指摘）
+    // 左写真のカード：枠は字の列の高さいっぱい。主役の位置 data-m があれば主役が残る位置で切る。ないときは 15% まで切って埋める（文字を欠かさない）。
+    // それ以上切れる絵（ロゴ・文字入りが多い）だけ全体を見せ、周りを絵の端の色で埋める（.whole：文字を欠かさず、白い帯にも見えない）
+    const mini = p.closest('.card.mini:not(.nophoto)') || (innerWidth <= 760 && sm && !sm.classList.contains('nophoto') ? sm : null);
+    if (mini) {
+      p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar'); mini.style.gridTemplateColumns = '';
+      const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
+      const ok = cropAt(img, rr) || (!img.dataset.m && q >= 0.85) || q >= 0.92;
+      p.classList.toggle('fill', ok); p.classList.toggle('whole', !ok);
+      if (!ok) {
+        img.style.objectPosition = ''; delete img.dataset.keep;
+        // 切れない横長の絵：写真を上・字を下に積む（切らず・帯なし・写真も大きい）。細い絵は全体を見せて周りを絵の端の色に
+        if (nat > 1 && !mini.matches('.tape')) { p.style.setProperty('--ar', nat.toFixed(3)); mini.classList.add('stk'); p.classList.remove('whole'); p.classList.add('fill'); }
+        else if (nat <= 1 && !mini.matches('.tape')) { mini.style.gridTemplateColumns = Math.max(64, Math.round(h * nat)) + 'px minmax(0,1fr)'; p.classList.remove('whole'); p.classList.add('fill'); }   // 縦長：列の幅を絵の幅に（左右の帯なし・字の列が広がる）
+        else if (img._edge) p.style.background = img._edge;
+      }
+      return;
+    }
     const big = p.closest('article.hero, article.lead, article.wide');
     if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
     const r = nat / (boxW(img, p.clientWidth) / boxH(img, p.clientHeight));
     // 切る場所はどこも同じ規則：主役（顔・題字）が 6 割以上残る位置で切れるなら切る。0.75 より細い絵は、切らずに枠を絵の幅に絞る narrow・side が受ける
-    p.classList.toggle('fill', (r >= 0.75 && cropAt(img, r)) || Math.abs(Math.log(r)) < 0.08);
+    p.classList.toggle('fill', (r >= 0.75 && (cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.85))) || Math.abs(Math.log(r)) < 0.08);
+    // 切れない横長の絵：枠を絵の形に。余りはカードの紙が受ける（文字を欠かさない。2026-11-07 店長「这种剪切方式取消」）
+    if (sm && innerWidth > 760 && r > 1 && !p.classList.contains('fill')) { p.style.aspectRatio = 'auto'; p.style.height = p.clientWidth / nat + 'px'; p.classList.add('fill'); }
     if (r < 0.75) { img.style.objectPosition = ''; delete img.dataset.keep; }
     narrow(img, p, nat, r);
     if (sm && innerWidth > 760 && !p.classList.contains('fill') && r < 0.75) side(sm, p, nat, p.clientHeight);   // 小さいカード：枠を写真の幅に絞り、見出しを横へ
   };
   // 小さいカード・気になるかも：写真が枠より細いとき、ぼかしでも空白でも埋めず、枠を写真の幅に絞って字の列を横に置く（.sb）。
   // 字の列が 100px 未満になるほど狭いカードは枠を写真の比率に（点検 gap が数える）
-  const unside = (c, p) => { c.classList.remove('sb'); p.style.width = p.style.height = p.style.aspectRatio = ''; };
+  const unside = (c, p) => { c.classList.remove('sb'); p.style.width = p.style.height = p.style.aspectRatio = ''; p.querySelectorAll('img').forEach(i => { i.style.transform = i.style.transformOrigin = ''; }); };
   const side = (c, p, nat, h) => {
     const cw = (c.querySelector(':scope > a:not(.lk)') || c).clientWidth || c.clientWidth;
     const w = Math.min(Math.round(h * nat), Math.round(cw * 0.5));
@@ -3353,6 +3589,18 @@ FIT_JS = """
       const pw = p.clientWidth; p.style.aspectRatio = 'auto'; p.style.height = Math.min(pw / nat, pw * 1.1) + 'px'; return;
     }
     p.style.height = h + 'px'; p.style.width = w + 'px'; c.classList.add('sb');
+    if (!c.matches('.pk')) {   // 枠はカードの高さまで伸びる：幅を写真の形に合わせ直し（55% まで）、まだ上下が余るなら主役が残る範囲で 1.25 倍まで拡大する（端の色の帯も余白。2026-11-07 店長）
+      const hh = p.getBoundingClientRect().height;
+      if (hh > h + 4) {
+        const w2 = Math.min(Math.round(hh * nat), Math.round(cw * 0.55)), img = p.querySelector('img:not(.bg):not(.ico)'), want = Math.min(1.25, hh / (w2 / nat));
+        p.style.width = w2 + 'px';
+        if (img && want > 1.02) {
+          const ok = cropAt(img, want), o = ok ? img.style.objectPosition.split(' ')[0] : '50%';
+          img.style.objectPosition = ''; delete img.dataset.keep;
+          img.style.transformOrigin = o + ' 50%'; img.style.transform = 'scale(' + (ok ? want : Math.min(want, 1.1)).toFixed(3) + ')';
+        }
+      }
+    }
   };
   // 大きいカード（.hero・.lead・.wide）で写真が枠より細いとき：ぼかしで埋めず、枠を写真の幅に絞り、空いた横に同じ版面の次の記事を置く。
   // 1 列（760px 以下）は枠を写真の比率にする（縦に伸ばしすぎない：幅の 1.6 倍まで）
@@ -3483,7 +3731,7 @@ FIT_JS = """
       // 各列の最後の小さいカードは、底の差だけ写真の枠を伸ばす（顔・題字が 6 割以上残る位置で切れるときだけ。主役の位置が無い絵は切れるのが 12% 以内の所まで）。伸ばせない絵は空けたまま（ux_check の gridHole が数える）
       const cols = {}; cs.forEach(c => { if (old || c.matches('.mini')) { const x = Math.round(c.offsetLeft / 20); if (!cols[x] || bot(c) > bot(cols[x])) cols[x] = c; } });
       Object.values(cols).forEach(c => {
-        const p = c.querySelector(':scope > .pic'), s = Math.floor(T - bot(c)); if (!p || s < 12 || c.matches('.sb')) return;
+        const p = c.querySelector(':scope > .pic'), s = Math.floor(T - bot(c)); if (!p || s < 12 || c.matches('.sb') || p.classList.contains('whole')) return;
         const w = p.clientWidth, img = p.querySelector('img:not(.bg):not(.ico)'), h = p.clientHeight;
         let to = Math.min(Math.round(c.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(c).paddingBottom) || 0) - p.getBoundingClientRect().top) + s, Math.round(w * 1.5));
         if (img && img.naturalWidth && !img.dataset.m) to = Math.min(to, Math.floor(Math.exp(0.12) * w * img.naturalHeight / img.naturalWidth));
@@ -4556,7 +4804,6 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-mine="2"] .wl-off{display:none!important}
-html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .swish{display:none!important}
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}
 @media (max-width:560px){html[data-mine="2"] body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.wl-cards>a.np{display:flex}}
@@ -4951,7 +5198,7 @@ AUTH_JS = r"""
   // 止めるのは「跳ね返された」回数（me.html の back が sessionStorage の wl-own-at に書く）が 30 秒に 3 回のとき。入った回数ではない
   // （足す → 設定 → 戻る と速く動く人・通しの点検は 30 秒に 3 回入る。入った回数で止めると 3 回目に殻でない画面になり、素の箱が 2 個出た。2026-10-27）
   function ownPage(){
-    if(!tok||!/^(index|settings|heat)$/.test(page)||/[?&]own=0/.test(location.search)) return Promise.resolve(false);   // 話題度も本人の分（F5 2026-11-05、L13）
+    if(!tok||!/^(index|settings|heat|wishlist)$/.test(page)||/[?&]own=0/.test(location.search)) return Promise.resolve(false);   // 話題度も本人の分（F5 2026-11-05、L13）
     var hist=[];try{hist=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});}catch(_){}
     if(hist.length>=3) return Promise.resolve(false);
     location.replace('me.html'+(page==='index'?'':'?p='+page)+location.hash);   // 設定も本人の分（同じ部品の render_settings）
@@ -6015,7 +6262,7 @@ def render_me():
 <script>
 (function(){{
   var C={cfg};
-  var SUB=(/[?&]p=(settings|heat)\\b/.exec(location.search)||[])[1]||'', PG=SUB?SUB+'.html':'index.html';   // どのページか（AUTH_JS の ownPage）
+  var SUB=(/[?&]p=(settings|heat|wishlist)\\b/.exec(location.search)||[])[1]||'', PG=SUB?SUB+'.html':'index.html';   // どのページか（AUTH_JS の ownPage）
   function back(q){{try{{var h=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){{return Date.now()-x<30000;}});h.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(h));}}catch(_){{}}
     location.replace('./'+(SUB?PG:'')+(q||'')+location.hash);}}
   // 上限 12 秒：つながらないまま「読み込み中」を出し続けない（F6 2026-11-05：10 回に 1 回 40 秒以上）→ 前の画面へ

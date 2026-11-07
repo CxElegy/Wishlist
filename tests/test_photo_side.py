@@ -72,7 +72,7 @@ class CropEverywhere(unittest.TestCase):
     def test_every_cut_place_uses_cropat(self):
         js = render.FIT_JS
         self.assertGreaterEqual(js.count("cropAt(img,"), 3)   # PC の気になるかも・スマホの気になるかも・主写真と小さいカード
-        self.assertIn("(r >= 0.75 && cropAt(img, r))", js)     # c3・mini・wc・tape・主写真
+        self.assertIn("(r >= 0.75 && (cropAt(img, r) ||", js)     # c3・mini・wc・tape・主写真
         self.assertIn("cropAt(img, nat / (w / h))", js)        # スマホ幅の気になるかも
 
     def test_mass_is_given_to_every_card_photo(self):
