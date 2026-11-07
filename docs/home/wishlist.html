@@ -68,10 +68,10 @@ button{font-family:inherit}
 .nx>i{grid-column:1/-1;font:700 11px var(--font-mono);letter-spacing:.12em;font-style:normal;opacity:.7}
 /* 小さいカード・気になるかも（F-16 続き）：縦長・正方形の写真は枠を写真の幅に絞り（.sb）、空いた横に見出しなど字の列を置く。幅・高さは FIT_JS が決める */
 .sb>.pic{aspect-ratio:auto;justify-self:start;align-self:start}
-.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:0;align-content:start}  /* 写真の枠は 9 行にまたがり、字の入らない行にも行の隙間（8px）が 7 つ付いて、カードが字より 73〜86px 高くなっていた（2026-11-02）：隙間は字の部品の下の余白で付ける */
+.card.sb:not(.mini),.wc.sb{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.sb:not(.mini)>.pic,.wc.sb>.pic{align-self:stretch;height:auto!important}  /* 写真の枠は 9 行にまたがり、字の入らない行にも行の隙間（8px）が 7 つ付いて、カードが字より 73〜86px 高くなっていた（2026-11-02）：隙間は字の部品の下の余白で付ける */
 .card.sb:not(.mini)>.pic,.wc.sb>.pic{grid-column:1;grid-row:1/span 9}
 .card.sb:not(.mini)>*:not(.pic):not(.lk),.wc.sb>*:not(.pic):not(.lk){grid-column:2}
-.card.sb:not(.mini){grid-template-rows:auto auto minmax(0,1fr)}  /* 写真の枠が字より高いとき、余りを字の入らない行に分けず 3 行目が受ける（390px で 27px 余計に高くなっていた） */
+.card.sb:not(.mini){grid-template-rows:repeat(8,auto) minmax(0,1fr)}  /* 写真の枠が字より高いとき、余りを字の入らない行に分けず 3 行目が受ける（390px で 27px 余計に高くなっていた） */
 .card.sb:not(.mini)>*:not(.pic):not(.lk):not(:last-child),.wc.sb>*:not(.pic):not(.lk):not(:last-child){margin-bottom:8px}
 .card.mini.sb{grid-template-columns:auto minmax(0,1fr)}
 .tape.sb{grid-template-columns:6px auto minmax(0,1fr)}.tape.sb>.pic{grid-column:2;grid-row:1/3;margin-bottom:6px}.tape.sb>.lbl{grid-column:3;grid-row:1/3}
@@ -366,6 +366,20 @@ button{font-family:inherit}
 .mini h3{align-self:start;font-size:15px;font-weight:700;line-height:1.5}
 .card.mini>:is(.xprice,.xevent,.xgal){grid-column:2}.card.mini>:is(.xprice,.xevent){justify-self:start}.xevent span{white-space:nowrap}  /* 日程・価格は字の下に（写真の下の空きに落とさない） */
 .side .card.mini{grid-template-columns:110px minmax(0,1fr)}
+/* 小さいカードの写真は幅 40%・高さは字の列いっぱい（2026-11-07 ユーザー「图有点小了」：120×90 の下に空きが残っていた。スマホの 42% と同じ考え）。
+   写真は字の列の高さいっぱい。主役の位置がわからず大きく切れる絵（ロゴ・文字入り）だけ全体を見せ、周りは絵の端の色で埋める .whole（2026-11-07 店長の印） */
+.card.mini:not(.nophoto){grid-template-columns:minmax(110px,40%) minmax(0,1fr)}
+.card.mini:not(.nophoto)>.pic{align-self:stretch;justify-self:stretch;width:auto!important;height:auto!important;min-height:96px;aspect-ratio:auto!important}
+.card.mini:not(.nophoto){row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.mini:not(.nophoto)>.pic{grid-column:1;grid-row:1/span 9}.card.mini:not(.nophoto)>*:not(.pic):not(.lk){grid-column:2}
+.pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
+.pk.shaped .pkt{flex:1 1 auto}
+.wc.sb .tg,.card.sb .tg{max-width:100%;white-space:normal}
+/* 細いカードの字の列は狭い：👍👎 を日付に重ねず、入らなければ次の行へ（2026-11-07 店長） */
+.wc.sb em.wc-x,.wc.sb em:has(.vt){padding-right:0!important;min-height:0;align-items:center;gap:2px 6px}.wc.sb em .vt{position:static;margin:0 0 0 -4px;padding:0;order:2}.wc.sb em .from{order:3;flex-basis:100%}.wc.sb em.two::before{display:none}
+.stk.stk.stk.stk.stk{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+.stk.stk.stk.stk.stk>*{grid-column:1!important}
+.stk.stk.stk.stk.stk>.pic{grid-row:auto!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:var(--ar)!important;margin-bottom:8px}
+.pic.trim img:not(.bg):not(.ico){inset:auto;max-width:none;object-fit:fill!important}
 .brief{padding:12px 26px 18px;border-top:1px solid var(--line)}
 .brief h4{margin:0 0 8px;font:900 13px var(--font-sans);letter-spacing:.12em;opacity:.8}
 .brief ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -617,12 +631,12 @@ button{font-family:inherit}
 /* PC の「似たジャンルの新着」は横長の小さいカード（写真を左、文字を右）：上の段と形を変え、1 段を低く */
 @media (min-width:761px){
  .pkgrid.row .pk>a{flex-direction:row;align-items:flex-start}
- .pkgrid.row .pk .pic{flex:none;width:88px;aspect-ratio:1;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+ .pkgrid.row .pk .pic{flex:none;width:100px!important;height:75px!important;aspect-ratio:auto!important;min-height:0!important;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
  .pkgrid.row .pk:nth-child(even) .pic{transform:rotate(2deg)}
  .pkgrid.row .pk .pkt{flex:1;margin:10px 0 0 -8px;padding:10px 12px 9px}
  .pkgrid.row .pk .tags,.pkgrid.row .pk .taste,.pkgrid.row .pk .why small{display:none}
  .pkgrid.row .pk .why{font-size:13px}.pkgrid.row .pk b{font-size:13px}
- .pkgrid.row .pk .vote{margin:4px 0 0 96px}
+ .pkgrid.row .pk .vote{margin:4px 0 0 108px}
  .pkgrid:not(.row) .pk:not(.big) .taste{display:none}  /* 「あなたの投票」は大きい 1 枚だけ */
 html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あなたの投票」と見せない（F8 2026-11-05） */
 }
@@ -939,7 +953,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="de38ae8eb191"><style>
+<meta name="wl-ver" data-page="wishlist" content="b2e601c654b5"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1078,7 +1092,6 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-mine="2"] .wl-off{display:none!important}
-html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .swish{display:none!important}
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}
 @media (max-width:560px){html[data-mine="2"] body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.wl-cards>a.np{display:flex}}
@@ -1471,7 +1484,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   // 止めるのは「跳ね返された」回数（me.html の back が sessionStorage の wl-own-at に書く）が 30 秒に 3 回のとき。入った回数ではない
   // （足す → 設定 → 戻る と速く動く人・通しの点検は 30 秒に 3 回入る。入った回数で止めると 3 回目に殻でない画面になり、素の箱が 2 個出た。2026-10-27）
   function ownPage(){
-    if(!tok||!/^(index|settings|heat)$/.test(page)||/[?&]own=0/.test(location.search)) return Promise.resolve(false);   // 話題度も本人の分（F5 2026-11-05、L13）
+    if(!tok||!/^(index|settings|heat|wishlist)$/.test(page)||/[?&]own=0/.test(location.search)) return Promise.resolve(false);   // 話題度も本人の分（F5 2026-11-05、L13）
     var hist=[];try{hist=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});}catch(_){}
     if(hist.length>=3) return Promise.resolve(false);
     location.replace('me.html'+(page==='index'?'':'?p='+page)+location.hash);   // 設定も本人の分（同じ部品の render_settings）
@@ -1905,7 +1918,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>11.07 22:12</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>11.07 22:14</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
