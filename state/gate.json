@@ -1,68 +1,60 @@
 {
  "changed": true,
- "checked": "2026-11-07T13:28:37+00:00",
+ "checked": "2026-11-07T14:17:54+00:00",
  "fired": {
-  "at": "2026-11-07T13:28:37+00:00",
+  "at": "2026-11-07T14:18:18+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
  "fires": {
   "2026-11-07": {
-   "edit": 3
+   "edit": 4
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-07T12:38:39+00:00",
+    "at": "2026-11-07T14:18:18+00:00",
     "attempts": 1,
     "day": "2026-11-07",
-    "prog": 260,
-    "resp": "cse_01W4x6f92Q5mLm9kEt78ETW2",
-    "sig": "84b795f8ea55"
+    "prog": 298,
+    "resp": "cse_01W4x6f5M7s3bUgj1fTEL83r",
+    "sig": "e86024c468b6"
    },
    "items": [
     "Astrae Oratio",
     "FROM",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
+    "lib:SPY×FAMILY",
+    "lib:【推しの子】",
+    "lib:ゼルダの伝説",
+    "lib:ポケットモンスター",
+    "lib:モンスターハンターワイルズ",
+    "lib:呪術廻戦",
+    "lib:葬送のフリーレン",
+    "lib:鬼滅の刃",
     "あつ森",
-    "チェーンソーマン",
     "三星手机",
-    "周杰伦",
     "日本顶级网球赛事",
-    "滑雪",
     "猫用品"
    ],
-   "last_batch": "2026-11-07T13:12:40+00:00",
+   "last_batch": "2026-11-07T14:12:56+00:00",
    "last_error": {
     "at": "2026-11-07T12:51:22+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 279,
+   "prog": 298,
    "prog_day": "2026-11-07",
    "ripe": [
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "チェーンソーマン",
-    "周杰伦",
-    "滑雪",
     "猫用品"
    ],
-   "sig": "451c255371c3",
+   "sig": "e86024c468b6",
    "token_cap": 1000000,
-   "tokens_today": 634479,
-   "why": "整理待ちの記事 25 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 652215,
+   "why": "整理待ちの記事 102 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -107,11 +99,11 @@
    "runs": 8
   },
   "2026-11-07": {
-   "batches": 35,
-   "cr": 18830874,
-   "cw": 570492,
-   "in": 531,
-   "out": 63456,
+   "batches": 43,
+   "cr": 19968626,
+   "cw": 583041,
+   "in": 558,
+   "out": 68616,
    "runs": 10
   }
  }
