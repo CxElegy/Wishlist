@@ -4,7 +4,7 @@
 
 どれも今のページ docs/home/index.html の写しに、上書きの CSS を足しただけ（本番の render.py は変えない）。
   A Every Layout（Heydon Pickering・Andy Bell）の Switcher と Grid ＋ Intrinsic Web Design（Jen Simmons）の fr
-    右の列の箱は「全部横に並ぶか、全部縦に積むか」の二択（Switcher）。並ぶときは残りの幅を分け合う。カードの一覧は auto-fit で空いた席を作らない
+    右の列の箱は横いっぱいで縦に積み、中身を段に並べる（Grid）。箱は中身の高さだけ。カードの一覧は auto-fit で空いた席を作らない
   B Masonry（David DeSandro・Pinterest 型）＋ CSS 段組みの高さ揃え（column-fill: balance）
     右の列の箱も記事のカードも 1 つの流れに入れ、列の高さを揃えて詰める。右下・下の空きが出ない
   C 新聞の組版（段で組む）＋ grid-auto-flow: dense（CSS-Tricks）＋ Intrinsic Web Design
@@ -21,8 +21,8 @@ PLANS = {
     "a": ("A：Every Layout ＋ Intrinsic", """
 /* 右の列（予定・欲しい物）：Switcher。幅が 640px あれば全部横に並び、残りを分け合う。足りなければ全部縦に積む（席を余らせない） */
 @media (max-width:1200px){
- .mgrid .fside{display:flex!important;flex-wrap:wrap;gap:20px}
- .mgrid .fside>*{flex-grow:1;flex-basis:calc((640px - 100%) * 999);min-width:0}
+ .mgrid .fside{display:flex!important;flex-direction:column;gap:20px}
+ .mgrid .fside>*{flex:none!important;min-width:0}   /* 箱は縦に積み、中身の高さだけ（引き伸ばさない） */
  /* 箱が広いときは中身も段に並べる（Every Layout の Grid）：品名と札の間に空きを作らない */
  .mgrid .fside .swish ol,.mgrid .fside .agenda ol{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))!important;column-gap:28px}
 }
@@ -75,7 +75,7 @@ iframe{border:0;display:block}
 <p class="note" id="desc"></p>
 <div class="frame"><div class="box" id="box"><iframe id="f" title="見本"></iframe></div></div>
 <script>
-const D={now:'今の本番の写し（比べる元）',a:'A：Every Layout（Heydon Pickering・Andy Bell）の Switcher と Grid ＋ Intrinsic Web Design（Jen Simmons）。右の箱は全部横に並ぶか全部縦に積むかの二択で、席を余らせない。',
+const D={now:'今の本番の写し（比べる元）',a:'A：Every Layout（Heydon Pickering・Andy Bell）の Grid ＋ Intrinsic Web Design（Jen Simmons）。予定と欲しい物は横いっぱいの箱にして、中身を 2〜3 列に並べる。',
 b:'B：Masonry（David DeSandro・Pinterest 型）＋ 段組みの高さ揃え。記事も右の箱も 1 つの流れに入れて、列の高さを揃えて詰める。',
 c:'C：新聞の段組み ＋ dense（CSS-Tricks）＋ Intrinsic Web Design。全部を同じ網に置き、空いた席を後ろの小さいカードで埋める。'};
 let p='a',w=900;const f=document.getElementById('f'),box=document.getElementById('box');
