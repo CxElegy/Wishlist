@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "bbb92a0b2960",
+ "edit_sig": "787c121f25f1",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -205,9 +205,8 @@
      "date": "2026-11-06",
      "headline": "Nielsen: Netflix Ups Catalog Horror Series 'From' to No. 1 Across U.S. TV Households Through Oct. 25",
      "highlight": "No. 1",
-     "image": null,
-     "source": "Media Play News",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.mediaplaynews.com&sz=128",
+     "image": "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.mediaplaynews.com/nielsen-netflix-ups-catalog-horror-series-from-to-no-1-across-u-s-tv-households-through-oct-25/",
      "weight": "lead"
     }
@@ -449,17 +448,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Her Campus raves about Chainsaw Man: The Movie – Reze Arc, now in release.",
      "date": "2026-11-06",
-     "n": 2,
-     "source": "Her Campus",
-     "title": "Chainsaw Man Movie Gets a Raving Review",
-     "url": "https://www.hercampus.com/school/point-park/chainsaw-man-movie-gets-a-raving-review/"
+     "headline": "Chainsaw Man Movie Gets a Raving Review",
+     "highlight": "Raving Review",
+     "image": "https://cdn.hercampus.com/SH6M70M3/as/q71u8m-ey82kw-f6qawo/chainjpg_by_httpsunsplashcomjosenothose?width=1200&height=630&fit=crop&",
+     "image_via": "og:image",
+     "url": "https://www.hercampus.com/school/point-park/chainsaw-man-movie-gets-a-raving-review/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -476,15 +477,6 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 2,
-     "source": "note",
-     "title": "JQ's new song 'Bokura no Koto ni Sasete' and its music video are both cool",
-     "url": "https://note.com/miyako14/n/n6deb0c8068aa?hl=en"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -517,16 +509,6 @@
    "section": "演出",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-05",
-     "headline": "周杰伦二开没想到能抢到，代拍费没多收，2 张票600 块|周杰伦|猫眼|演唱会_新浪新闻",
-     "highlight": "",
-     "image": "http://wx4.sinaimg.cn/middle/693810ffgy1iir60k9ekoj20wi1yc0yl.jpg",
-     "image_via": "正文图（本站保存）",
-     "url": "https://www.sina.cn/news/detail/5361858577174801.html",
-     "weight": "hero"
-    },
-    {
      "blurb": "周杰伦与蔡依林在金曲奖同台，四分钟内多次互动求抱抱。",
      "date": "2026-11-06",
      "headline": "周杰伦蔡依林金曲奖同台，四分钟多次求抱抱",
@@ -544,6 +526,16 @@
      "image": "http://wx2.sinaimg.cn/middle/001gSRX0ly1iis5h51wvnj60z01lmahy02.jpg",
      "image_via": "正文图（本站保存）",
      "url": "https://www.sina.cn/news/detail/5362167121707464.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "周杰伦二开没想到能抢到，代拍费没多收，2 张票600 块",
+     "highlight": "",
+     "image": "http://wx4.sinaimg.cn/middle/693810ffgy1iir60k9ekoj20wi1yc0yl.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5361858577174801.html",
      "weight": "normal"
     }
    ],
@@ -563,15 +555,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 3,
-     "source": "新浪网",
-     "title": "“我会成为最后的屏障”，赛维里安的风刃斩击已就位|赛维里安|绝区零|菲欧妮|维琳娜|3.3 版本_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1TdnNwLWxBRl9HTnUzMC1kUVJ2cEFNRUVZYUt4VENwbFZoQVpUaDViOFA2WUkyakFjNGdWdGZ2MDRyQ3VHXzFKWVFRb0RUQi1GX1dPTUFnQlZzVFRfdm5KdzAzMA?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -583,6 +566,16 @@
      "image_via": "正文图（其它来源）（本站保存）",
      "url": "https://t.co/BSJ2ikezoh",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "“我会成为最后的屏障”，赛维里安的风刃斩击已就位",
+     "highlight": "",
+     "image": "http://wx3.sinaimg.cn/middle/008kvqgEgy1iir5xk8577j30u01o04qp.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5361862913819868.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",
@@ -639,8 +632,8 @@
      "date": "2026-11-04",
      "headline": "이수만이 다시 일냈다…신인 A2O LITE, 데뷔하자마자 ‘1위 행진’",
      "highlight": "1위 행진",
-     "image": "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png",
-     "image_via": "JSON-LD",
+     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
+     "image_via": "og:image",
      "url": "https://www.kpab.net/news/articleView.html?idxno=1865",
      "weight": "lead"
     },
@@ -649,9 +642,8 @@
      "date": "2026-11-06",
      "headline": "7天登顶The Show：A2O LITE的霓虹奇迹舞台",
      "highlight": "7天登顶The Show",
-     "image": null,
-     "source": "搜狐网",
-     "source_icon": "https://www.google.com/s2/favicons?domain=m.sohu.com&sz=128",
+     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1090755790_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     },

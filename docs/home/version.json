@@ -1,32 +1,32 @@
 {
- "admin": "7683ff9865c3",
- "admin-ai": "d4975d5d032a",
+ "admin": "dac0b71842fc",
+ "admin-ai": "efd2fce01daa",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "942916cf"
+   "9172c042"
   ],
   "tokens": [
    "AI 編集のトークン",
    "f2911777"
   ]
  },
- "admin-boards": "9523ff671dbb",
+ "admin-boards": "e7f10db17b2a",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5a5e024b"
+   "6a7c0be4"
   ],
   "votes": [
    "投票",
    "73f5150b"
   ]
  },
- "admin-emblem": "1cfd80ec46cf",
+ "admin-emblem": "bc6470c5e895",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3297ff4f"
+   "102d3815"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "ee5225d27288",
  "admin-members_marks": {},
- "admin-now": "53b7749d0fe6",
+ "admin-now": "0f89988ea6cf",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "625bec44"
+   "98f9ecc6"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "8194bad6"
   ]
  },
- "admin-system": "e56b0443bd35",
+ "admin-system": "06068d6611d3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ed03051c"
+   "44f88dc2"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e5294564"
+   "6916f046"
   ]
  },
  "admin_marks": {},
- "heat": "78bdc60a8ae5",
+ "heat": "f650d294e1df",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "10be7221"
+   "7e8562c1"
   ],
   "ranking": [
    "ランキング",
-   "d4671448"
+   "f2cf07fe"
   ]
  },
- "index": "affefe43a489",
+ "index": "6f0cadfc3f01",
  "index_marks": {
   "front": [
    "トップ",
-   "b2250b12"
+   "cce15fad"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "ed5b15ad"
+   "b5d0ca7e"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,11 +145,11 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "a475d7dd"
+   "3fe88f1b"
   ],
   "w-9cb26dba": [
    "FROM",
-   "2fd57223"
+   "3ba5beeb"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "8fa6a018"
+   "0d8eb9fa"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "3f3bfdb2"
+   "c4e83ad5"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "df4b9177"
+   "b9be3247"
   ]
  },
- "updated": "11.07 11:34",
+ "updated": "11.07 11:47",
  "wishlist": "1e9a3576f5cb"
 }

@@ -242,12 +242,12 @@
   "dota2": 2,
   "猫用品": 3,
   "Astrae Oratio": 1,
-  "Vaundy": 1,
+  "Vaundy": 2,
   "滑雪": 1,
   "FROM": 2,
-  "周杰伦": 2,
-  "绝区零": 2,
-  "チェーンソーマン": 1,
+  "周杰伦": 3,
+  "绝区零": 3,
+  "チェーンソーマン": 2,
   "哈利波特剧集": 1,
   "星巴克马克杯": 1,
   "The Mandalorian": 1,
@@ -338,6 +338,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "周杰伦二开没想到能抢到，代拍费没多收，2 张票600 块",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "绝区零": [
@@ -350,9 +359,28 @@
     2,
     1
    ]
+  },
+  {
+   "headline": "“我会成为最后的屏障”，赛维里安的风刃斩击已就位",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
- "チェーンソーマン": [],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man Movie Gets a Raving Review",
+   "highlight": "Raving Review",
+   "blurb": "Her Campus raves about Chainsaw Man: The Movie – Reze Arc, now in release.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "哈利波特剧集": [
   {
    "headline": "Harry Potter Series' New Weasley Twins Casting Addressed By OG Actors Amid Spinoff's Season 3 Return",
