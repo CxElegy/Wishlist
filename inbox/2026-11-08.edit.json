@@ -1,22 +1,161 @@
 {
-"GTA 6":[
-{"headline":"GTA 6's PS5 Physical Edition Revealed in First Photo","highlight":"PS5 Physical Edition","blurb":"An image of GTA 6's physical edition has emerged on Reddit, ahead of its release later in the month.","weight":"lead","refs":[3,4]},
-{"headline":"GTA 6 Leak: 230 GB Claim vs 212 GB Preload","highlight":"230 GB","blurb":"","weight":"normal","refs":[1]},
-{"headline":"GTA 6 censorship rumours debunked for version of game that will allow you to play earlier than the rest of the world","highlight":"","blurb":"","weight":"normal","refs":[2]}
-],
-"漫威电影":[
-{"headline":"Marvel's 2027 Release Schedule: All 8 Movies And TV Shows Explained","highlight":"2027 Release Schedule","blurb":"","weight":"lead","refs":[1]},
-{"headline":"‘Avengers: Doomsday’ Doctor Doom Popcorn Bucket Gets a Closer Look, and Doom Is Ready to Rule the Concession Stand","highlight":"","blurb":"","weight":"normal","refs":[2]},
-{"headline":"Jeep Sends The Thing Off-Road in a Wrangler for Avengers: Doomsday","highlight":"","blurb":"","weight":"normal","refs":[4]}
-],
-"Astrae Oratio":[
-{"headline":"[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄","highlight":"TGS 2026","blurb":"","weight":"lead","refs":[1]}
-],
-"FROM":[
-{"headline":"FROM Season 4 Episode 5: Release date and time, where to watch, and more","highlight":"Season 4 Episode 5","blurb":"","weight":"lead","refs":[1]}
-],
-"日本顶级网球赛事":[
-{"headline":"【東京都】東レ パン パシフィック オープンテニス 2026(東京・WTA500) 結果速報・トーナメント表(ドロー)・日程・放送予定","highlight":"結果速報","blurb":"","weight":"lead","refs":[1]}
-],
-"_covered":{"GTA 6":4,"漫威电影":4,"Astrae Oratio":1,"FROM":1,"日本顶级网球赛事":1}
+ "GTA 6": [
+  {
+   "headline": "GTA 6's PS5 Physical Edition Revealed in First Photo",
+   "highlight": "PS5 Physical Edition",
+   "blurb": "An image of GTA 6's physical edition has emerged on Reddit, ahead of its release later in the month.",
+   "weight": "lead",
+   "refs": [
+    3,
+    4
+   ]
+  },
+  {
+   "headline": "GTA 6 Leak: 230 GB Claim vs 212 GB Preload",
+   "highlight": "230 GB",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "GTA 6 censorship rumours debunked for version of game that will allow you to play earlier than the rest of the world",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "漫威电影": [
+  {
+   "headline": "Marvel's 2027 Release Schedule: All 8 Movies And TV Shows Explained",
+   "highlight": "2027 Release Schedule",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "‘Avengers: Doomsday’ Doctor Doom Popcorn Bucket Gets a Closer Look, and Doom Is Ready to Rule the Concession Stand",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Jeep Sends The Thing Off-Road in a Wrangler for Avengers: Doomsday",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄",
+   "highlight": "TGS 2026",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "FROM Season 4 Episode 5: Release date and time, where to watch, and more",
+   "highlight": "Season 4 Episode 5",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "【東京都】東レ パン パシフィック オープンテニス 2026(東京・WTA500) 結果速報・トーナメント表(ドロー)・日程・放送予定",
+   "highlight": "結果速報",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "_covered": {
+  "GTA 6": 4,
+  "漫威电影": 4,
+  "Astrae Oratio": 1,
+  "FROM": 1,
+  "日本顶级网球赛事": 1,
+  "A2O LITE": 2,
+  "dota2": 2,
+  "チェーンソーマン": 1,
+  "周杰伦": 1,
+  "滑雪": 1
+ },
+ "A2O LITE": [
+  {
+   "headline": "A2O LITE, '쇼! 음악중심'서 아이브·아일릿 꺾고 1위!",
+   "highlight": "1위",
+   "blurb": "A2O LITE가 '쇼! 음악중심'에서 아이브·아일릿을 꺾고 1위를 차지했다. 생방송 투표 점수를 둘러싼 논란도 화제.",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "The UESF Ukrainian Championship 2026 Stage 5 in Dota 2 Kicks Off Today: LAN Final in Lviv Ahead",
+   "highlight": "LAN Final in Lviv",
+   "blurb": "The UESF Ukrainian Championship 2026 Stage 5 starts today, with the LAN final in Lviv ahead.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "A bug involving Techies and Largo has been discovered in Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man Episode 5 review: Kooky characters and a promising plot",
+   "highlight": "Episode 5",
+   "blurb": "Dexerto's review of Chainsaw Man Episode 5: kooky characters and a promising plot.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "周杰伦": [],
+ "滑雪": [
+  {
+   "headline": "2026 日本白馬滑雪場旅行懶人包，交通、住宿、裝備、課程攻略一次盤點，新手也能立刻上手！",
+   "highlight": "2026 日本白馬滑雪場旅行懶人包",
+   "blurb": "GQ Taiwan 整理白馬滑雪場的交通、住宿、裝備與課程攻略，新手也能立刻上手。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }

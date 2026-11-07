@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "ab3ed1103a70",
+ "edit_sig": "f4a1f6933872",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -173,17 +173,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Dexerto's review of Chainsaw Man Episode 5: kooky characters and a promising plot.",
      "date": "2026-11-05",
-     "n": 1,
-     "source": "Dexerto",
-     "title": "Chainsaw Man Episode 5 review: Kooky characters and a promising plot",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPN3hFWGNfaV9rZE5FRmw0amZjcF9NX3J0NEliVHZpZEZyeExjelFzWFFPX010UWo5c2pVNEgwamVqLWtFM0RTZWdibFAxNTlBZVkxTjdHbHBGV3Vva28ycEVHanpNSnBuYUsybjJKWEZHeUNWU2hQZThxU2pwcDRHRUFVbnRtZlNUN0MxTm1SUGliek85blBXaFVRXzY5MGNpbF9FV1lOOEdzZw?oc=5"
+     "headline": "Chainsaw Man Episode 5 review: Kooky characters and a promising plot",
+     "highlight": "Episode 5",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/anime/chainsaw-man-episode-5-review-kooky-characters-and-a-promising-plot-1985444/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -258,33 +260,6 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 1,
-     "source": "新浪网",
-     "title": "26 年前的今天，周杰伦发行了个人首张专辑《Jay》 23 年前的今天，王菲发行了迄今为止最后一张个人专辑《将爱》 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBjYTFpQ0Z4Zlo2UG9vWTFpek1td3pGVnRndUtEd0dRTkVCSkhJN012ZWpVdVZoRDZ5alJRMmdQX3ZfSnZCcDZhTkJ6OXotdWExaGxWc2NHY0RXTEE1LWQ5ekltaw?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "周杰倫",
-   "theme": {
-    "accent": "#2F5F8F",
-    "alt_accent": "#8DB6DE",
-    "alt_bg": "#14202E",
-    "alt_fg": "#EEF1F4",
-    "bg": "#F6F2EA",
-    "fg": "#1D2430",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
@@ -315,24 +290,29 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "The UESF Ukrainian Championship 2026 Stage 5 starts today, with the LAN final in Lviv ahead.",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "Players",
-     "title": "The UESF Ukrainian Championship 2026 Stage 5 in Dota 2 Kicks Off Today: LAN Final in Lviv Ahead",
-     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOLU5XUzRaRGNZbG8xUU9xeHFuaG1ydXVjVWFlYTV1UEJpNDY3ak5fRTVicWRLdlZ6ejJtbS1oMlZBM1NSTXp3V01wSF8wNDdvYWY1Slo1RkNrUDZYVDN0VG50bDdrcHo2NEtJX2EtZW9xc1FNVmoyWFkwTjdZeTNIMFdQLWJnQS1OZ0ZkWUxDU2ZoSGlNUW9MdVp5N0ZmdC00RWU1dVVHSktoZ3Q5THo1MXdMSFdqR0taNFgtcEZURXhkaVRJ0gHMAUFVX3lxTE9TZEhFSDVyRTlDdnkxdUswQXRFUzA5M0psMFRWZS1tbTVIdFFrZWZrSnFiV1BBc1l3NzVKczk1YXVVZGIxVEUzVUZDZDdLdmY2UkZyQV9hSGk4eUNMU3NtdDl5RnpnZEV3ZkZsZzdCQXNPa3plSFVLUGt3R0Q2OEVSemZZOFlKZkZlZGEtdXBEdGtsb1lfSHFWaXM4WFFYUjNoR1A1WFN0XzRhNjBFMnhTY0Nncm0zMGRzVWQteTQ1X0VUOFZLbFdYdEIwRQ?oc=5"
+     "headline": "The UESF Ukrainian Championship 2026 Stage 5 in Dota 2 Kicks Off Today: LAN Final in Lviv Ahead",
+     "highlight": "LAN Final in Lviv",
+     "image": "https://players.com.ua/wp-content/uploads/2026/11/d2-711-mr.jpg",
+     "image_via": "og:image",
+     "url": "https://players.com.ua/en/news/the-uesf-ukrainian-championship-2026-stage-5-in-dota-2-kicks-off-today-lan-final-in-lviv-ahead/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 2,
-     "source": "Hawk Live",
-     "title": "A bug involving Techies and Largo has been discovered in Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE0tYlluMFJJSGVBU2hlYU1XMEh4MDBZRkhzMTZOcEd3c2gwbEhZazVEQTRYZUpVazZidGh0aTFkY3luQmh2ZHJVRkpiYXZ6WlpKbHhBUFV0SVhBM18yclNDU3Nkdm14dE01TnNlYjBVZ21mLVM2VE4tLQ?oc=5"
+     "headline": "A bug involving Techies and Largo has been discovered in Dota 2",
+     "highlight": "",
+     "image": "https://hawk.live/storage/images/posts/techies-largo-bug-25419.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/bug-involving-techies-largo-discovered-dota-2",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -349,24 +329,19 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "A2O LITE가 '쇼! 음악중심'에서 아이브·아일릿을 꺾고 1위를 차지했다. 생방송 투표 점수를 둘러싼 논란도 화제.",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "Naver Blog",
-     "title": "“생방송 투표 159점인데 우승?”…음악중심 A2O LITE 10관왕, 5000점이 뒤집은 결과 : 네이버 블로그",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPVDlxdENOZmU2N2tsSXhEV0hPQW52VXpTd293UnRxYTg2UDRSWGRLbm84UVRYQ1JGQXBXX2lIRUtrM3hFMDRReFZXMFBudGozVldVOWlZb3I3d0E0YnkwcWlUdXd6RTFhRXhHYm9kUTdYWGVPRGpCb2x6ZE1xUkZyZEtqdGRWSzlFb0txUER0Q1I?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 2,
-     "source": "아시아뉴스통신",
-     "title": "A2O LITE, '쇼! 음악중심'서 아이브·아일릿 꺾고 1위!",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9peUN5UndPck10WklKeTRNMTA0TnNZdFlUUWNscTE5ZW9aWHJkcmY0a2VrSzFsMng3eDRKSC13VFBwOGNYN0lOZlE2WTRnMGtBT2RNUU9EZDhTbTFR?oc=5"
+     "headline": "A2O LITE, '쇼! 음악중심'서 아이브·아일릿 꺾고 1위!",
+     "highlight": "1위",
+     "image": "https://www.anewsa.com/news_images/2026/11/01/mark/20261101211331.jpg",
+     "image_via": "og:image",
+     "url": "https://www.anewsa.com/detail.php?number=3215523",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
@@ -412,17 +387,20 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "GQ Taiwan 整理白馬滑雪場的交通、住宿、裝備與課程攻略，新手也能立刻上手。",
      "date": "2026-11-05",
-     "n": 1,
+     "headline": "2026 日本白馬滑雪場旅行懶人包，交通、住宿、裝備、課程攻略一次盤點，新手也能立刻上手！",
+     "highlight": "2026 日本白馬滑雪場旅行懶人包",
+     "image": null,
      "source": "GQ Taiwan",
-     "title": "2026 日本白馬滑雪場旅行懶人包，交通、住宿、裝備、課程攻略一次盤點，新手也能立刻上手！",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1OTFEyemljVXNQOEE2X3VGY0pvSGJTUEh1a1hsd01LcjlzREN5b05UWEYyRVhaQ0NMU1FqdjRZV080RXVSWW1oTjRONWNIbkdRdkZpQ2hOV0M2UQ?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.gq.com.tw&sz=128",
+     "url": "https://www.gq.com.tw/article/japan-hakuba-ski",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -685,6 +663,31 @@
     "alt_fg": "#F4EEE4",
     "bg": "#F7EFE9",
     "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-07",
+    "headline": "周杰伦蔡依林金曲奖同台，四分钟多次求抱抱",
+    "url": "https://k.sina.com.cn/article_6579479305_m1882ae30903301b2q4.html"
+   },
+   "name": "周杰伦",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "周杰倫",
+   "theme": {
+    "accent": "#2F5F8F",
+    "alt_accent": "#8DB6DE",
+    "alt_bg": "#14202E",
+    "alt_fg": "#EEF1F4",
+    "bg": "#F6F2EA",
+    "fg": "#1D2430",
     "font": "sans",
     "split": true
    }

@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-06T10:05:44+00:00",
-"text": "2026-11-06 第 6 バッチを出刊：Vaundy（1 版面・2 本・残り 1 版面） · token 新規入力 2,708・キャッシュ読み 29.6万・出力 1,193",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.28,
-"mem_total": 16867418112,
-"mem_free": 15997370368,
-"disk_used": 10052259840,
-"disk_free": 31231275008,
-"disk_total": 41283534848,
-"peak": 324349952
-},
-"batch": 6,
-"boards": [
-"Vaundy"
-],
-"stories": 2,
-"left": 1,
-"edited": 21,
-"run": 1793957414.1606724,
-"tok": {
-"in": 7,
-"cw": 2701,
-"cr": 295684,
-"out": 1193,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 299585
-},
-{
 "at": "2026-11-06T10:10:02+00:00",
 "text": "2026-11-06 第 7 バッチを出刊：周杰伦（1 版面・4 本・今日の整理待ちは全部終わり） · token 新規入力 1,016・キャッシュ読み 7.5万・出力 415",
 "level": "ok",
@@ -1951,5 +1919,52 @@
 "calls": 8,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-07T19:25:03+00:00",
+"text": "2026-11-08 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作 ほか 10（16 版面・14 本・残り 1 版面） · token 新規入力 4.3万・キャッシュ読み 62.9万・出力 2,960",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.17,
+"mem_total": 16867737600,
+"mem_free": 15860768768,
+"disk_used": 10030473216,
+"disk_free": 31253061632,
+"disk_total": 41283534848,
+"peak": 433012736
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"MMORPG 新作",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"周杰伦",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"滑雪",
+"漫威电影"
+],
+"stories": 14,
+"left": 1,
+"edited": 10,
+"run": null,
+"tok": {
+"in": 20,
+"cw": 43231,
+"cr": 628775,
+"out": 2960,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 674986
 }
 ]

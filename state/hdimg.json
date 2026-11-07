@@ -73,6 +73,12 @@
   "target": 720,
   "v": 3
  },
+ "http://pimg3.daara.co.kr/kidd/photo/2026/11/06/1793946074_79.gif": {
+  "w": 690,
+  "h": 460,
+  "target": 720,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -983,6 +989,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hawk.live/storage/images/posts/techies-largo-bug-25419.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://hawk.live/storage/images/posts/valve-fixed-meepo-bug-25412.jpg": {
   "w": 1200,
   "h": 628,
@@ -1833,12 +1845,6 @@
   "target": 1280,
   "v": 3
  },
- "https://media.gq.com.tw/photos/6784cd6d8fd83e26220028ae/16:9/w_1280,c_limit/japan-hakuba-ski.png": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4087765_0-enlarge.jpg": {
   "w": 2000,
   "h": 1333,
@@ -2393,7 +2399,7 @@
  "https://players.com.ua/wp-content/uploads/2026/11/d2-711-mr.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://portal.auone.jp/media/thumbnails/2026/11/06/https___news_jp_i_1491426010218987568_w1280.webp": {
@@ -3131,8 +3137,15 @@
  "https://www.anewsa.com/news_images/2026/11/01/mark/20261101211331.jpg": {
   "w": 580,
   "h": 387,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.533,
+  "local": "pics/52ff25bdbc1dfd6f.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
  },
  "https://www.asahicom.jp/imgopt/img/0512f9fa68/hw640/AS20261031002946.jpg": {
   "w": 640,
@@ -3628,6 +3641,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg": {
   "w": 1600,
   "h": 900,
@@ -3710,6 +3729,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.hotspawn.com/wp-content/uploads/2026/11/How-to-Sell-Dota-2-Skins-For-Real-Money.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/all-blast-slam-winners.jpg": {

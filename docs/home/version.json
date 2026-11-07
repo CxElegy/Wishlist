@@ -1,14 +1,14 @@
 {
- "admin": "68d4314ac499",
- "admin-ai": "ae18d983a443",
+ "admin": "d74c7bbd17f6",
+ "admin-ai": "91b02df58157",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f33af196"
+   "5dd00913"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "d9872bff"
+   "e0169db4"
   ]
  },
  "admin-boards": "f63c8eeae903",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "d50ad544dd13",
+ "admin-emblem": "00f16df3a9ee",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "73d2d786"
+   "cb247c68"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "83bc77bf32f2",
  "admin-members_marks": {},
- "admin-now": "ecc774b240ea",
+ "admin-now": "7c79663d7ae5",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "19a97485"
+   "58b75cb1"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "af838fb7"
+   "3e598d21"
   ]
  },
- "admin-system": "b172981c6884",
+ "admin-system": "52ee275cf3fe",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "0fa1b208"
+   "30edc2c5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f4335f9a"
+   "17930ab7"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "8d47c47f"
   ]
  },
- "index": "d9c7d6422572",
+ "index": "c083d0416370",
  "index_marks": {
   "front": [
    "トップ",
-   "e88ee52f"
+   "0101a582"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "152fb681"
+   "0b37c2fa"
   ],
   "w-130724c0": [
    "猫用品",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "c909c931"
+   "e6161758"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "435bbfe3"
+   "30bf0c6e"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "afb863f6"
+   "40f5fa09"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "5f6b014b"
   ]
  },
- "updated": "11.08 04:18",
+ "updated": "11.08 04:25",
  "wishlist": "b2e601c654b5"
 }
