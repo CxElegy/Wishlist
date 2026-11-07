@@ -1,32 +1,32 @@
 {
- "admin": "0c80c24b8a19",
- "admin-ai": "4fbe4220e53e",
+ "admin": "e190e700f58b",
+ "admin-ai": "f1fd0c83df61",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "efcefb1f"
+   "c8aebdd3"
   ],
   "tokens": [
    "AI 編集のトークン",
    "9ba0375c"
   ]
  },
- "admin-boards": "7612f8ba89f8",
+ "admin-boards": "81f026d5516d",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "6b3f8e5d"
+   "ef733706"
   ],
   "votes": [
    "投票",
    "73f5150b"
   ]
  },
- "admin-emblem": "0f1b931f594b",
+ "admin-emblem": "562daea1f91d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "eb4257cb"
+   "c59b6b55"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "ee5225d27288",
  "admin-members_marks": {},
- "admin-now": "078ab5141554",
+ "admin-now": "ca38164ea4b0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9f4c52a2"
+   "fe2c0dd8"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "e60066d7"
+   "29f62276"
   ],
   "term-panel": [
    "ライブログ",
-   "73580be9"
+   "2ac9bba6"
   ]
  },
- "admin-system": "e5446ad50269",
+ "admin-system": "cd44649df9f0",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "56dd49ef"
+   "1550bfaa"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f9811b08"
+   "a703be4f"
   ]
  },
  "admin_marks": {},
- "heat": "d2e341acecfa",
+ "heat": "a84342e4c14a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "0f1b29e5"
+   "edbea5b5"
   ],
   "ranking": [
    "ランキング",
-   "4284a15c"
+   "686cafb7"
   ]
  },
- "index": "17a8f8587cec",
+ "index": "a59d4c0dac81",
  "index_marks": {
   "front": [
    "トップ",
-   "3774f0b1"
+   "196460a7"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "2eda0f57"
+   "2fbd315e"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "181104d5"
+   "d408ff4c"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "ea990f94"
+   "40b24a5b"
   ]
  },
- "updated": "11.07 21:17",
- "wishlist": "bc1f136fe764"
+ "updated": "11.07 21:36",
+ "wishlist": "de38ae8eb191"
 }
