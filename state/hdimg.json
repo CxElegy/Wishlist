@@ -196,6 +196,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/693810ffgy1iir60k9ekoj20wi1yc0yl.jpg": {
+  "w": 1170,
+  "h": 2532,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/a9282b2a731da14b.webp",
+  "out": [
+   591,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/7d297217gy1iip1fj6973j20yi1a0wvz.jpg": {
   "w": 1242,
   "h": 1656,
@@ -512,16 +525,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg": {
-  "w": 300,
-  "h": 200,
+ "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
+  "w": 600,
+  "h": 400,
   "target": 1280,
   "v": 3,
-  "blur": 0.653,
-  "local": "pics/1b57abae8ed7a45b.webp",
+  "blur": 0.475,
+  "local": "pics/ffd4ccaef88f5a5d.webp",
   "out": [
-   900,
-   600
+   1280,
+   853
   ],
   "why": "看不清"
  },
@@ -926,6 +939,12 @@
   "w": 1672,
   "h": 941,
   "target": 1280,
+  "v": 3
+ },
+ "https://en.koreadaily.com/wp-content/uploads/2026/11/202611070904773968_6aee6c691cac9.jpeg": {
+  "w": 650,
+  "h": 487,
+  "target": 720,
   "v": 3
  },
  "https://en.shiftdelete.net/wp-content/uploads/2026/11/galaxy-s27-ultra-release-date-price-specs.webp": {
@@ -1822,6 +1841,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.tenasia.co.kr/photo/202611/BF.46341530.1.jpg": {
+  "w": 1200,
+  "h": 1622,
+  "target": 720,
+  "v": 3
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100433.jpg": {
   "w": 640,
   "h": 633,
@@ -2672,12 +2697,6 @@
   "target": 1280,
   "v": 3
  },
- "https://phinf.wevpstatic.net/MjAyNjEwMTZfMjYw/MDAxNzkyMDc2ODcwODk0.r5qE4SAeKcvogcNIf1oItDPbZx0RrZ6fEqkrt6gjNssg._tUeMM7Btly55I-8OUy2SZPvCpeQqGwsojbzH-1EuFQg.JPEG/image.jpg?type=w1414": {
-  "w": 1414,
-  "h": 1885,
-  "target": 720,
-  "v": 3
- },
  "https://phinf.wevpstatic.net/MjAyNjEwMjlfMjI5/MDAxNzkzMjg1NDExODQw.oVJRKHh23GSkawQwMiQTyTPyAkkFVU4DT3hvjlMwPS8g.CoQ_PypiDBmKFx9IxcD8ojzLvIO7RTrbNFzPzKrbsMgg.JPEG/image.jpg?type=w1414": {
   "w": 1414,
   "h": 1061,
@@ -3299,12 +3318,6 @@
   "target": 720,
   "v": 3
  },
- "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=788,fit=cover,bg=white,f=auto,quality=high,sharpen=2,g=face/21/2026/11/2026110708007233571_1.jpg": {
-  "w": 1200,
-  "h": 788,
-  "target": 720,
-  "v": 3
- },
  "https://times-abema.ismcdn.jp/mwimgs/2/9/1200w/img_29ed6bf6a46cabbb6b7d74c6d82596c1244940.jpg": {
   "w": 1200,
   "h": 1704,
@@ -3539,12 +3552,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.47twOMMz5ps8cKgyoS71Kw&pid=News&w=768": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3603,12 +3610,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.F4LP4tYihHI0e9aJli79cQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3648,12 +3649,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.L9J4T499Kv59auJOim0pnA&pid=News&w=1200": {
-  "w": 700,
-  "h": 385,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,
   "h": 338,
@@ -3675,12 +3670,6 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.N0LnlEohsUZ4OQLawwh2GQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.P_mf-B8pJIRGsFwdQdMJDQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3807,6 +3796,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.euQTMQeJqiRibX-st8T3WA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ghPPO0q95yYTjDKycYEn6g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3885,6 +3880,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.tVwCB3XpIqHbaouRnGWS1Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 350,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.uY8mlRmZ-bWkSg41p10Oaw&pid=News&w=1200": {
   "w": 700,

@@ -1,32 +1,32 @@
 {
- "admin": "e987e48e6a03",
- "admin-ai": "d811ca78c0f5",
+ "admin": "bfd20ad120e8",
+ "admin-ai": "40cdfc2e879b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d284095d"
+   "b2e02ef0"
   ],
   "tokens": [
    "AI 編集のトークン",
    "46c91d8f"
   ]
  },
- "admin-boards": "d6aa124a4612",
+ "admin-boards": "9523ff671dbb",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "155223da"
+   "5a5e024b"
   ],
   "votes": [
    "投票",
    "73f5150b"
   ]
  },
- "admin-emblem": "e246f515de92",
+ "admin-emblem": "83e96d514c92",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3fd9ac42"
+   "f37f8339"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "ee5225d27288",
  "admin-members_marks": {},
- "admin-now": "874f9ff4e5fb",
+ "admin-now": "80456a2e5443",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0b69d616"
+   "73ded55d"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "26eb41d6"
+   "7687c468"
   ],
   "term-panel": [
    "ライブログ",
-   "48128f69"
+   "61c036e9"
   ]
  },
- "admin-system": "95deaba54024",
+ "admin-system": "a28bf9f25494",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "24288c43"
+   "b6a581fa"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "405bc727"
+   "85542012"
   ]
  },
  "admin_marks": {},
- "heat": "f2d799f07f88",
+ "heat": "78bdc60a8ae5",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "c7432d30"
+   "10be7221"
   ],
   "ranking": [
    "ランキング",
-   "b037ff53"
+   "d4671448"
   ]
  },
- "index": "edb7accb8327",
+ "index": "6aa9a7fb5826",
  "index_marks": {
   "front": [
    "トップ",
-   "66d892e9"
+   "c3d0c9e1"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "af775056"
+   "be0df0a9"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "2eabb79c"
+   "a475d7dd"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "62d8eb8f"
+   "ce04a32b"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "df4b9177"
   ]
  },
- "updated": "11.07 10:24",
+ "updated": "11.07 11:07",
  "wishlist": "1e9a3576f5cb"
 }
