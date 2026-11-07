@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-07T21:17:47+00:00",
+ "checked": "2026-11-07T22:21:38+00:00",
  "fired": {
-  "at": "2026-11-07T21:18:02+00:00",
+  "at": "2026-11-07T22:21:38+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -13,63 +13,60 @@
    "edit": 5
   },
   "2026-11-08": {
-   "edit": 3
+   "edit": 4
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-07T21:18:02+00:00",
+    "at": "2026-11-07T22:21:38+00:00",
     "attempts": 1,
     "day": "2026-11-08",
-    "prog": 36,
-    "resp": "cse_01W4x6f93GvLEr5v8PTCfoaw",
-    "sig": "3577027593e1"
+    "prog": 81,
+    "resp": "cse_01W4x6f6B7sj8CBB6RQy3Pkk",
+    "sig": "64cf9db513e7"
    },
    "items": [
     "A2O LITE",
+    "FROM",
     "GTA 6",
     "ILLIT",
-    "The Mandalorian",
     "Vaundy",
     "gelato pique",
-    "lib:F1",
-    "lib:NBA",
-    "lib:Nintendo Switch 2",
-    "lib:iPhone",
-    "lib:ガンプラ",
-    "lib:ユニクロ",
-    "lib:大相撲",
-    "lib:無印良品",
-    "あつ森",
-    "チェーンソーマン",
+    "lib:キャンプ",
+    "lib:コーヒー",
+    "lib:ユニバーサル・スタジオ・ジャパン",
+    "lib:ラーメン",
+    "lib:京都",
+    "lib:東京ディズニーリゾート",
+    "lib:筋トレ",
+    "lib:観葉植物",
     "三星手机",
     "周杰伦",
     "滑雪",
-    "漫威电影"
+    "漫威电影",
+    "猫用品"
    ],
-   "last_batch": "2026-11-07T19:30:34+00:00",
+   "last_batch": "2026-11-07T21:52:58+00:00",
    "last_error": {
-    "at": "2026-11-07T15:38:40+00:00",
+    "at": "2026-11-07T21:22:05+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 36,
+   "prog": 81,
    "prog_day": "2026-11-08",
    "ripe": [
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "あつ森",
-    "チェーンソーマン",
+    "ILLIT",
     "三星手机",
+    "周杰伦",
     "漫威电影"
    ],
-   "sig": "3577027593e1",
+   "sig": "64cf9db513e7",
    "token_cap": 1000000,
-   "tokens_today": 139032,
-   "why": "整理待ちの記事 140 件（20 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 215166,
+   "why": "整理待ちの記事 123 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -122,12 +119,12 @@
    "runs": 11
   },
   "2026-11-08": {
-   "batches": 3,
-   "cr": 1958430,
-   "cw": 129854,
-   "in": 62,
-   "out": 9116,
-   "runs": 3
+   "batches": 9,
+   "cr": 5716191,
+   "cw": 195542,
+   "in": 163,
+   "out": 19461,
+   "runs": 4
   }
  }
 }
