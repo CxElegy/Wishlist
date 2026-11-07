@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "05204a443c1e",
+ "edit_sig": "8ddfdb52ecb4",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -598,34 +598,8 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 3,
-     "source": "TVBS新聞網",
-     "title": "Vaundy剛唱完小巨蛋又有驚喜！錄音室化身魔鬼教練 逼他放聲吶喊",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5ORS0wREpqNEZlLWRfbG5pemtPWlZ6eWlQeDdHTl9xeFZTeENqanY3ajNya2tLVW5JLXVzN0lQMktHa2w4cGxkRXRjOE5BZm5rRVg4NXVsNW8tdGt4TlppdTU3TQ?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 5,
-     "source": "山陽新聞",
-     "title": "『ROCK IN JAPAN FESTIVAL 2026』タイムテーブル発表 Vaundy、BUMP OF CHICKEN、Adoらがメインステージのトリに",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5BMmg3Y25DUXRRZ1hYemFYWURoc2txSm1ZM2Nlc3pkTlVBVi1rd1pUWl9WZkk5Z2JsOTEzZ1hCQXJqZ2FuZ1AwclNkcmJoNGE1Y2FBc0FjM3JNemVI?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-07",
-     "headline": "才在台北小巨蛋秒殺2場！Vaundy替JQ包辦新歌 錄音室化身「魔鬼教練」喊：變成超人！",
-     "highlight": "",
-     "image": "https://statics-prod.mirrordaily.news/images/5ed68c06-6b4e-4661-929c-2d247adbd52e.jpg",
-     "image_via": "og:image",
-     "url": "https://www.mirrordaily.news/story/96381",
-     "weight": "hero"
-    },
     {
      "blurb": "Vaundy「しわあわせ」がBillboard JAPANの先ヨミ・デジタルでストリーミング・ソング首位を継続。",
      "date": "2026-11-06",
@@ -635,6 +609,26 @@
      "image_via": "转载 www.msn.com",
      "url": "https://www.musicman.co.jp/chart/750577",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "『ROCK IN JAPAN FESTIVAL 2026』タイムテーブル発表 Vaundy、BUMP OF CHICKEN、Adoらがメインステージのトリに",
+     "highlight": "タイムテーブル発表",
+     "image": "https://static.sanyonews.jp/image/article/size1/9/0/f/2/90f2fac13399752a17edd8c356ff1d3e_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1939627?kw=2024",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "才在台北小巨蛋秒殺2場！Vaundy替JQ包辦新歌 錄音室化身「魔鬼教練」喊：變成超人！",
+     "highlight": "",
+     "image": "https://statics-prod.mirrordaily.news/images/5ed68c06-6b4e-4661-929c-2d247adbd52e.jpg",
+     "image_via": "og:image",
+     "url": "https://www.mirrordaily.news/story/96381",
+     "weight": "normal"
     }
    ],
    "subtitle": "演唱会",
