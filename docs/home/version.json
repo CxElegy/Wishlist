@@ -1,10 +1,10 @@
 {
- "admin": "0e2f9800359a",
- "admin-ai": "02e904400cd6",
+ "admin": "a39daf2da639",
+ "admin-ai": "89b84b07e697",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "35e05532"
+   "51184d6b"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "73f5150b"
   ]
  },
- "admin-emblem": "17f64c695df0",
+ "admin-emblem": "4f11bf7322dc",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3a0c1f30"
+   "a5668362"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "ee5225d27288",
  "admin-members_marks": {},
- "admin-now": "c5f2fc6d8f59",
+ "admin-now": "8b49169a1a1f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "916c7ffc"
+   "61013d23"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "6cee5a88"
   ]
  },
- "admin-system": "abe1aa523206",
+ "admin-system": "d02d0276a181",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1783aa2d"
+   "cbdb8fad"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "8312a363"
   ]
  },
- "index": "fc2fc08bac0d",
+ "index": "510ce4584cc4",
  "index_marks": {
   "front": [
    "トップ",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "182a4ee0"
+   "8c910362"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "e22e2a90"
+   "d8d3a5dd"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "40b24a5b"
   ]
  },
- "updated": "11.07 18:05",
+ "updated": "11.07 18:15",
  "wishlist": "bc1f136fe764"
 }

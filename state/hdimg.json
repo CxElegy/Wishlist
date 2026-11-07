@@ -111,13 +111,6 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/006gNTEUly1iislj1b2htj37wg3c0u13.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-07"
- },
  "http://wx2.sinaimg.cn/middle/001gSRX0ly1iis5h51wvnj60z01lmahy02.jpg": {
   "w": 1260,
   "h": 2074,
@@ -537,18 +530,12 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg": {
-  "w": 300,
-  "h": 200,
+ "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
   "target": 1280,
   "v": 3,
-  "blur": 0.653,
-  "local": "pics/1b57abae8ed7a45b.webp",
-  "out": [
-   900,
-   600
-  ],
-  "why": "看不清"
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-07"
  },
  "https://cdn.livedoor.jp/kstyle/ab5e045fe60d0218b0020ef9390be269_WI.jpg": {
   "w": 1024,
@@ -1862,6 +1849,12 @@
  "https://img.sportsbull.jp/raw/t2m8VMS5AgyOd1ngRNI4M1BYyyaofcW7fQOmvQWf.jpg": {
   "w": 1024,
   "h": 576,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.tenasia.co.kr/photo/202611/BF.46341530.1.jpg": {
+  "w": 1200,
+  "h": 1622,
   "target": 720,
   "v": 3
  },
@@ -4108,8 +4101,15 @@
  "https://www.chosun.com/resizer/v2/MJTDAMBYGVQTSYZXMI2DMNZTGU.jpg?auth=aa1aa6de777965ae420f8cf1f0f595db1659ed2488e0dc629563957c499781c2&width=650&height=341&smart=true": {
   "w": 650,
   "h": 341,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.468,
+  "local": "pics/7412ba97b9e86e78.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清"
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/06/blade.webp": {
   "w": 1200,
