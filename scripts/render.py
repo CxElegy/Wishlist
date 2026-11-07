@@ -416,10 +416,12 @@ button{font-family:inherit}
 .mini h3{align-self:start;font-size:15px;font-weight:700;line-height:1.5}
 .card.mini>:is(.xprice,.xevent,.xgal){grid-column:2}.card.mini>:is(.xprice,.xevent){justify-self:start}.xevent span{white-space:nowrap}  /* 日程・価格は字の下に（写真の下の空きに落とさない） */
 .side .card.mini{grid-template-columns:110px minmax(0,1fr)}
-/* 小さいカードの写真は幅 40%・高さは字の列いっぱい（2026-11-07 ユーザー「图有点小了」：120×90 の下に空きが残っていた。スマホの 42% と同じ考え） */
+/* 小さいカードの写真は幅 40%・高さは字の列いっぱい（2026-11-07 ユーザー「图有点小了」：120×90 の下に空きが残っていた。スマホの 42% と同じ考え）。
+   切るのは少しだけ（FIT_JS の mini）。文字やロゴが欠ける比率の絵は枠を絵の形にする .fr（2026-11-07 ユーザー「图片文字的裁剪的缺失…太多了也不好」） */
 .card.mini:not(.nophoto){grid-template-columns:minmax(110px,40%) minmax(0,1fr)}
 .card.mini:not(.nophoto)>.pic{align-self:stretch;justify-self:stretch;width:auto!important;height:auto!important;min-height:96px;aspect-ratio:auto!important}
-.card.mini>.pic img:not(.bg):not(.ico){object-fit:cover}
+.card.mini:not(.nophoto)>.pic.fr{align-self:center!important;justify-self:center!important;width:var(--fw,100%)!important;height:var(--fh)!important;min-height:0!important}
+.card.mini>.pic.fr img:not(.bg):not(.ico){object-fit:contain!important}
 .brief{padding:12px 26px 18px;border-top:1px solid var(--line)}
 .brief h4{margin:0 0 8px;font:900 13px var(--font-sans);letter-spacing:.12em;opacity:.8}
 .brief ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -3491,6 +3493,21 @@ FIT_JS = """
     }
     // 枠の大きさは変えない（写真の壁は 16:10 のまま段の高さがそろう）。写真は切らない：ほぼ同じ比率（切れるのは 8% まで）のときだけ埋め、
     // そうでなければぼかしの上に全体を見せる。配図は文字・ロゴ入りのバナーが多く、端を切ると欠ける（2026-10-17 ユーザー指摘）
+    // 小さいカード：枠は字の列の高さ。切れるのが 12% まで（主役の位置 data-m があり 6 割以上残るなら 25% まで）なら切って埋める。
+    // それ以上は切らず、枠を絵の形にする（.fr：帯も欠けも出さない。縦長は幅の 1.3 倍の高さまでで幅を絞る）
+    const mini = p.closest('.card.mini:not(.nophoto)');
+    if (mini) {
+      p.classList.remove('fr');
+      const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
+      const ok = q >= 0.88 ? (cropAt(img, rr) || true) : (q >= 0.75 && cropAt(img, rr));
+      p.classList.toggle('fill', ok);
+      if (ok) return;
+      img.style.objectPosition = ''; delete img.dataset.keep;
+      const fh = Math.min(w / nat, w * 1.3);
+      p.style.setProperty('--fh', fh + 'px'); p.style.setProperty('--fw', Math.min(w, fh * nat) + 'px');
+      p.classList.add('fr');
+      return;
+    }
     const big = p.closest('article.hero, article.lead, article.wide');
     if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
     const r = nat / (boxW(img, p.clientWidth) / boxH(img, p.clientHeight));
@@ -3640,7 +3657,7 @@ FIT_JS = """
       // 各列の最後の小さいカードは、底の差だけ写真の枠を伸ばす（顔・題字が 6 割以上残る位置で切れるときだけ。主役の位置が無い絵は切れるのが 12% 以内の所まで）。伸ばせない絵は空けたまま（ux_check の gridHole が数える）
       const cols = {}; cs.forEach(c => { if (old || c.matches('.mini')) { const x = Math.round(c.offsetLeft / 20); if (!cols[x] || bot(c) > bot(cols[x])) cols[x] = c; } });
       Object.values(cols).forEach(c => {
-        const p = c.querySelector(':scope > .pic'), s = Math.floor(T - bot(c)); if (!p || s < 12 || c.matches('.sb')) return;
+        const p = c.querySelector(':scope > .pic'), s = Math.floor(T - bot(c)); if (!p || s < 12 || c.matches('.sb') || p.classList.contains('fr')) return;
         const w = p.clientWidth, img = p.querySelector('img:not(.bg):not(.ico)'), h = p.clientHeight;
         let to = Math.min(Math.round(c.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(c).paddingBottom) || 0) - p.getBoundingClientRect().top) + s, Math.round(w * 1.5));
         if (img && img.naturalWidth && !img.dataset.m) to = Math.min(to, Math.floor(Math.exp(0.12) * w * img.naturalHeight / img.naturalWidth));

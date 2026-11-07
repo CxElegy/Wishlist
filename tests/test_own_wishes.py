@@ -16,7 +16,7 @@ ROWS = [{"id": 3, "name": "<b>ペン", "status": "纠结", "price": 1200, "curre
 class OwnWishes(unittest.TestCase):
     def test_own_page_has_controls_and_japanese(self):
         h = render.render_wishlist(ROWS, [], "11.07", (), DB, own=True)
-        self.assertEqual(h.count("data-id="), 2)
+        self.assertEqual(len(re.findall(r'<article class="wcard[^>]* data-id="', h)), 2)   # AUTH_JS の中の文字列は数えない（他の試験が AUTH_DB を置くと入る）
         self.assertEqual(h.count('class="wctl"'), 2)
         self.assertIn('lang="ja"', h)
         self.assertIn("&lt;b&gt;ペン", h)
@@ -27,7 +27,7 @@ class OwnWishes(unittest.TestCase):
     def test_owner_page_unchanged(self):
         h = render.render_wishlist(ROWS, [], "11.07", (), DB)
         self.assertNotIn('class="wctl"', h)
-        self.assertNotIn("data-id=", h)
+        self.assertNotRegex(h, r'<article class="wcard[^>]* data-id="')
         self.assertNotIn("my_wish_add", h)
         self.assertIn("add_photo", h)
 

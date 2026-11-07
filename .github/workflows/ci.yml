@@ -31,10 +31,8 @@ jobs:
         run: pip install playwright && playwright install --with-deps chromium
       - name: 测试
         run: |
-          python -m unittest discover -s tests -v 2>&1 | tee /tmp/unittest.log | tail -n 40
-          # 赤のとき、どの試験が落ちたかをログに出す（tail は試験の print に押されて失敗の行が見えない。2026-11-07）
-          test ${PIPESTATUS[0]} -eq 0 || { grep -E -A14 '^(FAIL|ERROR): ' /tmp/unittest.log | cut -c1-300 | head -150; exit 1; }
-          echo "skip した試験: $(grep -c ' skipped ' /tmp/unittest.log)"
+          # ファイルごとに別のプロセスで並列（前の試験が残した設定で結果が変わらない・速い。2026-11-07）。落ちた試験の名前はこれが出す
+          python harness/run_tests.py
       - name: 网页能生成
         run: python scripts/digest.py render && test -s docs/home/index.html
       # 2026-11-05：#919 で render の JS の文法の誤りが本番の全ページの JS を約 15 分止めた。生成した全ページの埋め込み JS を確かめ、2 ページを開いて例外 0 を見る
