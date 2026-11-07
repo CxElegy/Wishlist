@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "c68b7c57c437",
+ "edit_sig": "fab97759e728",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -307,31 +307,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "Bespin Bulletin",
-     "title": "The Mandalorian And Grogu Adelphi Ranger Comes To Star Wars Galaxy of Heroes",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPdVdWek5NeEJPamo0UEEzVnNlRUxIY0M5Y3NfcW1MQU5JcmxiUTBZNXpaLURTc0loNjRqSXZ0bFE1aFVMWk1VNDY5Rk1QbXh4NDFqbVlIUmY0YzdmTzBhWktMZU1BYzZBWU9tdk5FcnhyVGFvcjdtdlhadmlUVm5QRmdmMlY2WDdlbXE1VnBmZ2lCSXdhX1FKYTBiSUdxYXMxcUhTaTJvRQ?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 2,
-     "source": "Red Five on MSN",
-     "title": "The Mandalorian and Groru Movie Hits Theaters May 22",
-     "url": "https://www.msn.com/en-us/news/other/the-mandalorian-and-groru-movie-hits-theaters-may-22/vi-AA2gXBRW"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 3,
-     "source": "Bluesky",
-     "title": "The Mandalorian and Grogu (2026): The U-wing is an essential part of the New Republic, art by Anton Grandert",
-     "url": "https://bsky.app/profile/thespaceshipper.com/post/3mzqiv23zkv2s"
+     "headline": "The Mandalorian And Grogu Adelphi Ranger Comes To Star Wars Galaxy of Heroes",
+     "highlight": "Star Wars Galaxy of Heroes",
+     "image": "https://bespinbulletin.com/wp-content/uploads/2026/10/ranger-swgoh.webp",
+     "image_via": "og:image",
+     "url": "https://bespinbulletin.com/the-mandalorian-and-grogu-adelphi-ranger-comes-to-star-wars-galaxy-of-heroes/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",

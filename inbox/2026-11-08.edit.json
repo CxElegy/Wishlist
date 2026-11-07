@@ -143,7 +143,8 @@
   "周杰伦": 1,
   "滑雪": 1,
   "绝区零": 1,
-  "三星手机": 4
+  "三星手机": 4,
+  "The Mandalorian": 3
  },
  "A2O LITE": [
   {
@@ -228,6 +229,17 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "The Mandalorian And Grogu Adelphi Ranger Comes To Star Wars Galaxy of Heroes",
+   "highlight": "Star Wars Galaxy of Heroes",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]
