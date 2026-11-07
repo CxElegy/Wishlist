@@ -1,5 +1,5 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex"><title>空きを残さない版型 3 案</title><style>
+<meta name="robots" content="noindex"><title>予定と欲しい物の並べ方 3 案</title><style>
 :root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--rose:#B8336A}
 body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 system-ui,"Noto Sans JP",sans-serif}
 header{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:2px solid var(--ink);padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
@@ -10,17 +10,17 @@ h1{font-size:17px;margin:0}
 .frame{padding:0 16px 24px}.box{border:2px solid var(--ink);background:#fff;overflow:hidden;transform-origin:0 0}
 iframe{border:0;display:block}
 </style></head><body>
-<header><h1>空きを残さない版型 3 案</h1>
-<div class="seg" id="plan"><button data-p="now" aria-pressed="false">今</button><button data-p="a" aria-pressed="true">A</button><button data-p="b" aria-pressed="false">B</button><button data-p="c" aria-pressed="false">C</button></div>
+<header><h1>予定と欲しい物の並べ方 3 案</h1>
+<div class="seg" id="plan"><button data-p="now" aria-pressed="false">今</button><button data-p="1" aria-pressed="true">1</button><button data-p="2" aria-pressed="false">2</button><button data-p="3" aria-pressed="false">3</button></div>
 <div class="seg" id="w"><button data-w="390">390</button><button data-w="600">600</button><button data-w="900" aria-pressed="true">900</button><button data-w="1200">1200</button><button data-w="1400">1400</button></div>
 </header>
 <p class="note" id="desc"></p>
 <div class="frame"><div class="box" id="box"><iframe id="f" title="見本"></iframe></div></div>
 <script>
-const D={now:'今の本番の写し（比べる元）',a:'A：Every Layout（Heydon Pickering・Andy Bell）の Switcher と Grid ＋ Intrinsic Web Design（Jen Simmons）。右の箱は全部横に並ぶか全部縦に積むかの二択で、席を余らせない。',
-b:'B：Masonry（David DeSandro・Pinterest 型）＋ 段組みの高さ揃え。記事も右の箱も 1 つの流れに入れて、列の高さを揃えて詰める。',
-c:'C：新聞の段組み ＋ dense（CSS-Tricks）＋ Intrinsic Web Design。全部を同じ網に置き、空いた席を後ろの小さいカードで埋める。'};
-let p='a',w=900;const f=document.getElementById('f'),box=document.getElementById('box');
+const D={now:'今の本番の写し（比べる元）',1:'1：予定と欲しい物を横いっぱいの箱で縦に積み、中身を 2〜3 列に並べる（Every Layout の Grid）。',
+2:'2：予定と欲しい物を半分ずつ横に並べ、高さを揃える（長いほうの残りは「全部見る」）。狭い幅では縦に積む（Every Layout の Switcher）。',
+3:'3：字の多い予定を広く（3）、欲しい物を狭く（2）並べ、高さを揃える（Intrinsic Web Design の fr）。'};
+let p='1',w=900;const f=document.getElementById('f'),box=document.getElementById('box');
 function draw(){f.src='fill-'+p+'.html';document.getElementById('desc').textContent=D[p]+'（幅 '+w+'px で表示）';
  const avail=box.parentElement.clientWidth-32,k=Math.min(1,avail/w);f.style.width=w+'px';f.style.height=Math.round((innerHeight-140)/k)+'px';
  f.style.transform='scale('+k+')';f.style.transformOrigin='0 0';box.style.width=Math.round(w*k)+'px';box.style.height=Math.round((innerHeight-140))+'px';}
