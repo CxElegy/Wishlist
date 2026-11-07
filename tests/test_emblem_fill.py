@@ -1054,10 +1054,12 @@ class Resources(unittest.TestCase):
         x = resources.snapshot()
         self.assertGreaterEqual(x["cpu"], 1)
         self.assertEqual(x["disk_total"], x["disk_used"] + x["disk_free"])   # マシン全体ではなく、使える分
-        for k in ("mem_total", "mem_free", "disk_total", "disk_free", "peak"):
+        linux = sys.platform == "linux"   # メモリとピークは /proc と resource から（Windows にはない）
+        for k in ("disk_total", "disk_free") + (("mem_total", "mem_free", "peak") if linux else ()):
             self.assertIn(k, x)
             self.assertGreater(x[k], 0)
-        self.assertLessEqual(x["mem_free"], x["mem_total"])
+        if linux:
+            self.assertLessEqual(x["mem_free"], x["mem_total"])
 
     def test_sizes(self):
         import resources
@@ -1102,7 +1104,8 @@ class Resources(unittest.TestCase):
             subprocess.run([sys.executable, "-c", code, d], cwd=ROOT, check=True)
             row = runlog.load("emblem", pathlib.Path(d))[-1]
         self.assertEqual(row["tokens"], 1234)
-        self.assertIn("mem_total", row["res"])
+        if sys.platform == "linux":   # メモリは /proc/meminfo から（Windows にはない）
+            self.assertIn("mem_total", row["res"])
 
 
 if __name__ == "__main__":
@@ -2306,7 +2309,7 @@ class FindSources(unittest.TestCase):
         """顔だけのアップは外して元の画像を emblem_reject・人を emblem_redo に。顔が測れないものは残す。固定は替えない。半分以上が当たる前からの版面は外さず報告だけ（取るときは無条件）。"""
         from PIL import Image
         def run(flags, only=None):
-            with tempfile.TemporaryDirectory() as d:
+            with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as d:   # Windows は開いたままの画像を消せない
                 tmp = pathlib.Path(d)
                 (tmp / "emblems").mkdir()
                 lines = ["items:", "  - name: b", "    emblem_kind: character", "    emblem:"]
