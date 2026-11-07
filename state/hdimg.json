@@ -143,6 +143,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/008eZAxIly1iito27tfecj30yp18yn23.jpg": {
+  "w": 1249,
+  "h": 1618,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/702465a3b73ccea5.webp",
+  "out": [
+   988,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg": {
   "w": 1269,
   "h": 708,
@@ -524,19 +537,6 @@
   "h": 542,
   "target": 1280,
   "v": 3
- },
- "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg": {
-  "w": 300,
-  "h": 200,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.653,
-  "local": "pics/1b57abae8ed7a45b.webp",
-  "out": [
-   900,
-   600
-  ],
-  "why": "看不清"
  },
  "https://cdn.livedoor.jp/kstyle/ab5e045fe60d0218b0020ef9390be269_WI.jpg": {
   "w": 1024,
@@ -4377,13 +4377,6 @@
   "h": 600,
   "target": 720,
   "v": 3
- },
- "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-07"
  },
  "https://www.niikei.jp/wp-content/uploads/2026/11/image-1-e1793604405588.png": {
   "w": 410,

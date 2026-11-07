@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "fd93360bc389",
+ "edit_sig": "f286acc079ca",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -257,8 +257,9 @@
      "date": "2026-11-06",
      "headline": "Nielsen: Netflix Ups Catalog Horror Series 'From' to No. 1 Across U.S. TV Households Through Oct. 25",
      "highlight": "No. 1",
-     "image": "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg",
-     "image_via": "JSON-LD",
+     "image": null,
+     "source": "Media Play News",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.mediaplaynews.com&sz=128",
      "url": "https://www.mediaplaynews.com/nielsen-netflix-ups-catalog-horror-series-from-to-no-1-across-u-s-tv-households-through-oct-25/",
      "weight": "lead"
     }
@@ -714,29 +715,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 12,
-     "source": "香港01",
-     "title": "周杰伦卖机械狗？巨星传奇联手宇树 售价¥4.3万全球限量2千台",
-     "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxQdUN3bk9Da3Atc25zTktDWFlxaHBjRXRjWDhUNVdvWVZqQ0h1M3RJQzd5ZUIyMkI0c2wtamhFWUVuaGdOdDZkN3p5X3AtTE54ZWgxbnJhUl84aHBOc0NsUV9QUlNlR0JkeW8zVnVJYTJkTXRSRUVheWhSaFJ6Q091Q21GWWlyd0lfeDJYZUtHMldBTGRaQ3ZXSUN1elJXcDRYbUJ2SUMyeVZ6Uk04Sl9KOFRKeWE5cm1PM2xXUUdaZk5LXzlQYldWQ2FVZzJCa0tONGhySlZOOFpsNDA3VndxUzJyMnBTOThQb1FkdE9EOGFlcWkxRk5VN1pZYS02VXppYUhPVFNNdWQzaUh5SDVocGIzRWREc0pCS2RkcTNJMktucHRGX2VqOGdhYm9VYlZ5QUw1NFUyTl96MkQtNDZHM0hEZ1pZWDlBaHRQUlE1ZVdQRy1JVjJiTzh2M3RCbXJzaWNXa09UcXpJMGo0anlRUVFkRkhDZTZyU3JZNXFjUnZldVVCX2NPYTdrQ01KQUlrWmpEUzlWbGVlZnJwN1JoOElwQQ?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 13,
-     "source": "证券之星",
-     "title": "周杰伦概念股进博会首秀，4.39万元的机器狗全球首发，巨星传奇赖国辉：让机器人有温度",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9kRFF3Z1BuMU5vbUlabnQ5YVltenNYcUdCeGU4dlJ1MmRDSjdHdWh3cS1kekJ4SklCTklQbjBtOVRhb1lMTmROcGJCbmhLT2pUVmloWEswSEU1bFRQb0VKcw?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 14,
-     "source": "香港01",
-     "title": "周杰倫賣機械狗？巨星傳奇聯手宇樹 售價¥4.3萬全球限量2千台",
-     "url": "https://www.hk01.com/%E5%A4%A7%E5%9C%8B%E5%B0%8F%E4%BA%8B/60408251/%E5%91%A8%E6%9D%B0%E5%80%AB%E8%B3%A3%E6%A9%9F%E6%A2%B0%E7%8B%97-%E5%B7%A8%E6%98%9F%E5%82%B3%E5%A5%87%E8%81%AF%E6%89%8B%E5%AE%87%E6%A8%B9-%E5%94%AE%E5%83%B9-4-3%E8%90%AC%E5%85%A8%E7%90%83%E9%99%90%E9%87%8F2%E5%8D%83%E5%8F%B0"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -913,8 +891,8 @@
      "date": "2026-11-07",
      "headline": "NEON 重启 PAK 达成 99 次，TOP100 与 Bugs 重回第一|A2O LITE|iChart",
      "highlight": "",
-     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "http://wx2.sinaimg.cn/middle/008eZAxIly1iito27tfecj30yp18yn23.jpg",
+     "image_via": "正文图（本站保存）",
      "url": "https://www.sina.cn/news/detail/5362634360358380.html",
      "weight": "lead"
     },
