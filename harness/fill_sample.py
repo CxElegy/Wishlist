@@ -47,6 +47,10 @@ PLANS = {
  .mgrid .fside{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))!important;gap:20px;align-items:start}
  .mgrid .fside>*{flex:none!important;min-width:0;height:auto!important}
  .mgrid .fside .agenda ol{grid-template-columns:minmax(0,1fr)!important}
+ /* 揃えたあとの端数（1 行未満）は、短いほうの箱の行の間に均等に分ける（箱の下に空きを残さない） */
+ .mgrid .fside{align-items:stretch!important}
+ .mgrid .fside>*{display:flex!important;flex-direction:column}
+ .mgrid .fside>* ol{flex:1 1 auto;display:flex!important;flex-direction:column;justify-content:space-between}
 }
 """, EVEN_JS),
     "3": ("3：横に 3 対 2（予定を広く・高さを揃える）", COMMON + """
@@ -54,6 +58,10 @@ PLANS = {
  .mgrid .fside{display:grid!important;grid-template-columns:minmax(0,3fr) minmax(0,2fr)!important;gap:20px;align-items:start}
  .mgrid .fside>*{flex:none!important;min-width:0;height:auto!important}
  .mgrid .fside .agenda ol{grid-template-columns:minmax(0,1fr)!important}
+ /* 揃えたあとの端数（1 行未満）は、短いほうの箱の行の間に均等に分ける（箱の下に空きを残さない） */
+ .mgrid .fside{align-items:stretch!important}
+ .mgrid .fside>*{display:flex!important;flex-direction:column}
+ .mgrid .fside>* ol{flex:1 1 auto;display:flex!important;flex-direction:column;justify-content:space-between}
 }
 @media (max-width:900px){.mgrid .fside{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}}
 """, EVEN_JS),
