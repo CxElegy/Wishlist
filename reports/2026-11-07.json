@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "2325ed75530e",
+ "edit_sig": "6ef0393b9d25",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -723,36 +723,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 4,
-     "source": "IGN on MSN",
-     "title": "Zenless Zone Zero - Official Severian character demo trailer",
-     "url": "https://www.msn.com/en-us/news/other/zenless-zone-zero-official-severian-character-demo-trailer/vi-AA2gVGzF"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 5,
-     "source": "Yahoo!ニュース",
-     "title": "カフカの「ボンッ」も再現！『ゼンゼロ』×『崩壊：スターレイル』コラボキャラの戦闘PV公開―ロビンたちがオリジナルの動きそのままに本格アクション（インサイド）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1RcERBa2dfT1o0d2NJS0o0MFpJbldsVUFBWmthMDlOeXZtMkZ3VjdJZ2ZlRzBJVWRnZ01GUWRSeWtvNTZ2S3pMQ1VFSUQ5SmlRME55Qng5RWtnSmlhUl9xanpwVHE1dVJwekJaWF9BN2JyaWZ4WlJySkR4bTBvLWM?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 6,
-     "source": "Howl.Link",
-     "title": "ロビン＆カフカ「未知なる通信」｜ゼンレスゾーンゼロ",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE5DZzlCZTd5Yl9TSGVSSU0xWDVFbDhJdzVSUnhhOTVRQjhEbjVWdTJDbjVrQTJsOFpPX0Zz?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 7,
-     "source": "新浪网",
-     "title": "绝区零外服贺图：赛维里安女仆装造型分享|giri_az|赛维里安|绝区零",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1xeFBMdTlGdkFJcE9FZVFmRHgxWG84bUNPdkJEV2tTZkI5MWhZYW9ZQ2piWlNMdlZqajM3RVVHZVNkdklMS2JUbkhNZTUtLTdON1lKQWpDajhBWDVQdXpFT0pzZw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -760,8 +730,8 @@
      "date": "2026-11-06",
      "headline": "セヴェリアン エキシビション「監察官はいかに鍛えられたか」",
      "highlight": "",
-     "image": "http://wx1.sinaimg.cn/middle/006gNTEUly1iislj1b2htj37wg3c0u13.jpg",
-     "image_via": "正文图（其它来源）（本站保存）",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gVoyo.img",
+     "image_via": "MSN 接口（其它来源）",
      "url": "https://t.co/BSJ2ikezoh",
      "weight": "lead"
     },
@@ -773,6 +743,16 @@
      "image": "http://wx3.sinaimg.cn/middle/008kvqgEgy1iir5xk8577j30u01o04qp.jpg",
      "image_via": "正文图（本站保存）",
      "url": "https://www.sina.cn/news/detail/5361862913819868.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "カフカの「ボンッ」も再現！『ゼンゼロ』×『崩壊：スターレイル』コラボキャラの戦闘PV公開",
+     "highlight": "戦闘PV公開",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000027-isd-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/f79dd98c6050b03a30c8abce8b8578f5afb22034",
      "weight": "normal"
     }
    ],

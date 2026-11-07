@@ -1650,6 +1650,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gVoyo.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gVpM0.img": {
   "w": 1200,
   "h": 636,
@@ -2592,6 +2598,19 @@
   "out": [
    1280,
    720
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000027-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 449,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.39,
+  "local": "pics/2241418e7b039fea.webp",
+  "out": [
+   800,
+   449
   ],
   "why": "期限付きの網址"
  },
