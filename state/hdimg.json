@@ -530,18 +530,12 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
-  "w": 600,
-  "h": 400,
+ "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg": {
   "target": 1280,
   "v": 3,
-  "blur": 0.475,
-  "local": "pics/ffd4ccaef88f5a5d.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-07"
  },
  "https://cdn.livedoor.jp/kstyle/ab5e045fe60d0218b0020ef9390be269_WI.jpg": {
   "w": 1024,
@@ -2622,6 +2616,19 @@
   "out": [
    800,
    449
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000027-isd-000-1-view.jpg?pri=l&w=640&h=359&exp=10800": {
+  "w": 640,
+  "h": 359,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.437,
+  "local": "pics/ec49e11204bdf1f9.webp",
+  "out": [
+   1280,
+   718
   ],
   "why": "期限付きの網址"
  },

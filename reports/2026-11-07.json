@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "52cd245533d3",
+ "edit_sig": "0a984374c921",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -334,15 +334,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 2,
-     "source": "Infoseekニュース",
-     "title": "「一目惚れしました」 スタバの“マグカップ”が大好評！ 「少し厚みがあるので冷めにくくて良い」「毎朝愛用しています」の声",
-     "url": "https://news.infoseek.co.jp/article/itmedia_nlab_4088774/"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -354,6 +345,16 @@
      "image_via": "og:image",
      "url": "https://jazznews.com.tw/nestle-starbucks-2026-winter/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "「一目惚れしました」 スタバの“マグカップ”が大好評！ 「少し厚みがあるので冷めにくくて良い」「毎朝愛用しています」の声",
+     "highlight": "",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4088774_0-enlarge.jpg",
+     "image_via": "og:image",
+     "url": "https://news.infoseek.co.jp/article/itmedia_nlab_4088774/",
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
@@ -683,15 +684,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 7,
-     "source": "新浪网",
-     "title": "绝区零外服贺图：赛维里安女仆装造型分享|giri_az|赛维里安|绝区零",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1xeFBMdTlGdkFJcE9FZVFmRHgxWG84bUNPdkJEV2tTZkI5MWhZYW9ZQ2piWlNMdlZqajM3RVVHZVNkdklMS2JUbkhNZTUtLTdON1lKQWpDajhBWDVQdXpFT0pzZw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -729,8 +721,8 @@
      "date": "2026-11-07",
      "headline": "カフカの「ボンッ」も再現！『ゼンゼロ』×『崩壊：スターレイル』コラボキャラの戦闘PV公開",
      "highlight": "戦闘PV公開",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000027-isd-000-1-view.jpg?exp=10800",
-     "image_via": "og:image",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000027-isd-000-1-view.jpg?pri=l&w=640&h=359&exp=10800",
+     "image_via": "正文图",
      "url": "https://news.yahoo.co.jp/articles/f79dd98c6050b03a30c8abce8b8578f5afb22034",
      "weight": "normal"
     }
@@ -799,8 +791,8 @@
      "date": "2026-11-04",
      "headline": "이수만이 다시 일냈다…신인 A2O LITE, 데뷔하자마자 ‘1위 행진’",
      "highlight": "1위 행진",
-     "image": "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png",
-     "image_via": "JSON-LD",
+     "image": "https://cdn.kpab.net/news/thumbnail/202611/1865_1898_3119_v150.jpg",
+     "image_via": "og:image",
      "url": "https://www.kpab.net/news/articleView.html?idxno=1865",
      "weight": "lead"
     },
