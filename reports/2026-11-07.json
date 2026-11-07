@@ -1,6 +1,6 @@
 {
  "date": "2026-11-07",
- "edit_sig": "4e0e4bc36b57",
+ "edit_sig": "b44a7bc136a5",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -828,24 +828,21 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
-     "date": "2026-11-07",
-     "n": 1,
-     "source": "WEBザテレビジョン",
-     "title": "錦織圭、感動をありがとう！ テニス名勝負戦「ジャパンオープンテニス2013 1回戦 錦織圭vsJ.メルツァー」",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBCVXdFSEp1UFJJV0xRby14VjVGdFFHZzhpUVhoUTVJRjlsQThEZWYzZjFFQmVjNnRXWWxwSVFRS29qVGhBXzBWOUVkS1Mta0Jp?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-01",
-     "n": 2,
+     "headline": "女子テニス・東レ パン パシフィック オープンテニス2026｜結果速報・日本人選手・成績一覧",
+     "highlight": "",
+     "image": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
+     "image_via": "作品封面",
      "source": "Olympics",
-     "title": "女子テニス・東レ パン パシフィック オープンテニス2026｜結果速報・日本人選手・成績一覧",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPbHdQRHZoMml5OHB4NUN6QkVGaE5TZ2QxaTVnTVAzeGotS013TWJpd0pRZC1kUFJXWkpORmI4NmdwWkFVWkJzMEN1TVNKRVk4MWJjUjY2MXRNTVFWSG5MQ3JxOTNSejBJOE4zc1huckg3VHpWRDlRRXhDWG5DQnpFNU01bC1UUQ?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.olympics.com&sz=128",
+     "url": "https://www.olympics.com/ja/news/tennis-wta-toray-pan-pacific-open-2026-results",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
