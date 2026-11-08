@@ -426,6 +426,16 @@ button{font-family:inherit}
 .wc.lead.half{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:16px}
 .wc.lead.half>.pic{flex:0 0 var(--hw)!important;width:var(--hw)!important;max-width:var(--hw)!important;height:auto!important}
 .wc.lead.half>.htx{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:6px}
+.wc.lead.half>.htx>b{-webkit-line-clamp:unset;display:block;min-height:0;font-size:clamp(17px,1.6vw,22px);line-height:1.45}
+/* 予定と欲しい物（右の列が下に回る幅）：横いっぱいの箱を縦に積み、中身を段に並べる（テストグラウンド案 1。Every Layout の Grid）。中身が 0 件の箱は 1 行の帯 */
+@media (min-width:761px) and (max-width:1200px){
+ .mgrid .fside{display:flex!important;flex-direction:column;gap:20px}
+ .mgrid .fside>*{flex:none!important;min-width:0}
+ .mgrid .fside .swish ol,.mgrid .fside .agenda ol{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));column-gap:28px}
+ .mgrid .fside .swish:has(.sempty){display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+ .mgrid .fside .swish:has(.sempty)>h4{flex:1 1 100%}
+ .mgrid .fside .swish:has(.sempty) .sempty{margin:0;flex:1 1 260px}
+}
 .wc.sb .tg,.card.sb .tg{max-width:100%;white-space:normal}
 /* 細いカードの字の列は狭い：👍👎 を日付に重ねず、入らなければ次の行へ（2026-11-07 店長） */
 .wc.sb em.wc-x,.wc.sb em:has(.vt){padding-right:0!important;min-height:0;align-items:center;gap:2px 6px}.wc.sb em .vt{position:static;margin:0 0 0 -4px;padding:0;order:2}.wc.sb em .from{order:3;flex-basis:100%}.wc.sb em.two::before{display:none}
@@ -3525,6 +3535,9 @@ FIT_JS = """
     c.style.setProperty('--hw', w + 'px'); c.classList.add('half');
     p.style.aspectRatio = nat.toFixed(3); p.style.height = ''; p.style.width = '';
     p.classList.add('fill'); img.style.objectPosition = '';
+    // 写真が字より高いと右下が空く：写真の高さを字の高さに合わせる（幅は 6 割まで縮める。2026-11-08 店長「这种也算留白」）
+    const th = bx.getBoundingClientRect().height, ph = w / nat;
+    if (ph > th + 12) c.style.setProperty('--hw', Math.round(Math.max(w * 0.6, th * nat)) + 'px');
   };
   const fit = img => {
     fit0(img);
