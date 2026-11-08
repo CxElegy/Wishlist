@@ -1,32 +1,32 @@
 {
- "admin": "a2f46e5b46d1",
- "admin-ai": "f2a93d128250",
+ "admin": "ea6cc474c878",
+ "admin-ai": "cb9d46571bdf",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "edf70b46"
+   "4fcc5dd4"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "04cede7e"
+   "3de85dbb"
   ]
  },
- "admin-boards": "337ee919d54f",
+ "admin-boards": "8fff54836750",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "b8732f03"
+   "eae6beff"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "9f72b3f89a34",
+ "admin-emblem": "68e53525aa1c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "387678d8"
+   "854abb50"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5f3468671304",
  "admin-members_marks": {},
- "admin-now": "76c408f80bae",
+ "admin-now": "796f279559dc",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f214694a"
+   "4754c174"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "3abec1d7"
+   "f87cd3c3"
   ],
   "term-panel": [
    "ライブログ",
-   "62678cb6"
+   "242b02cc"
   ]
  },
- "admin-system": "db20b4b94169",
+ "admin-system": "7667d7d1d4d9",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ed03051c"
+   "797bfcb3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "5b043867"
+   "de451b56"
   ]
  },
  "admin_marks": {},
- "heat": "58fb8308842e",
+ "heat": "82a11713545b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "afd7570f"
+   "9a28390f"
   ],
   "ranking": [
    "ランキング",
-   "f1ed83b6"
+   "a9595474"
   ]
  },
- "index": "7088befc904d",
+ "index": "90252dca89cc",
  "index_marks": {
   "front": [
    "トップ",
-   "65e6c32a"
+   "c072bba5"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "aca8c7b6"
+   "8bc74882"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "ea054663"
+   "3e81bae1"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "92fb340f"
+   "e1bfa34b"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "ae11fc5e"
   ]
  },
- "updated": "11.08 21:31",
+ "updated": "11.08 21:32",
  "wishlist": "b9a57a1cc720"
 }
