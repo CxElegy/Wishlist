@@ -1,32 +1,32 @@
 {
- "admin": "e85fba14139b",
- "admin-ai": "d948a73d25b1",
+ "admin": "1c2921d0531b",
+ "admin-ai": "3999aedd4bde",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "66ba2367"
+   "77a1480e"
   ],
   "tokens": [
    "AI 編集のトークン",
    "f693d7cb"
   ]
  },
- "admin-boards": "c2c499062ffa",
+ "admin-boards": "d8e02235351f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "38afca65"
+   "1b94221b"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "2d2d896223b4",
+ "admin-emblem": "1c47ce37212c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "169bcc31"
+   "033c8354"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5f3468671304",
  "admin-members_marks": {},
- "admin-now": "a607cbbafaf6",
+ "admin-now": "5d9eefe41c38",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "08683c26"
+   "4ea5e270"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "f715ea7b"
+   "7164ad7c"
   ],
   "term-panel": [
    "ライブログ",
-   "8f611103"
+   "49686f1e"
   ]
  },
- "admin-system": "a45aec45fabc",
+ "admin-system": "17fbd4ff6f72",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "676fd717"
+   "e5a58b32"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b815272c"
+   "4af3409d"
   ]
  },
  "admin_marks": {},
- "heat": "37d802904462",
+ "heat": "415d582779af",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "bc56b4eb"
+   "5e281416"
   ],
   "ranking": [
    "ランキング",
-   "eaa7858c"
+   "ca3e3348"
   ]
  },
- "index": "13134e4ea8b5",
+ "index": "a40d0e755347",
  "index_marks": {
   "front": [
    "トップ",
-   "effe4ada"
+   "7ad5291f"
   ],
   "picks": [
    "気になるかも？",
@@ -105,83 +105,83 @@
   ],
   "w-0242c181": [
    "dota2",
-   "c7405f78"
+   "94d85664"
   ],
   "w-130724c0": [
    "猫用品",
-   "8bc74882"
+   "6c06ecde"
   ],
   "w-2309d720": [
    "ぐでたま",
-   "8a5cb087"
+   "ab3d7653"
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "fce1c54c"
+   "12c80266"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "938be3a9"
+   "e74c4daf"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "1a2fca0b"
+   "bd7ca025"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "c9190464"
+   "a235efab"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "1601a52a"
+   "3fbe3cff"
   ],
   "w-6676e624": [
    "三星手机",
-   "70456b4c"
+   "08a8c96e"
   ],
   "w-79b3c280": [
    "滑雪",
-   "793ee1d6"
+   "32f04423"
   ],
   "w-7a894105": [
    "周杰伦",
-   "9f37aed4"
+   "70c9ca98"
   ],
   "w-9cb26dba": [
    "FROM",
-   "9d085b19"
+   "ea350524"
   ],
   "w-b867582f": [
    "あつ森",
-   "77f5aef4"
+   "4978ce30"
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "e4d43cc0"
+   "fe6b8f9c"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "bc1d5d35"
+   "abc26cb1"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "3e81bae1"
+   "e9dd0e61"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "e1bfa34b"
+   "83fdc543"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "e0983854"
+   "83b73a77"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "a70a94bc"
+   "8828ea66"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "43e2b1a5"
+   "2db29f7b"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "31278039"
+   "071f2b31"
   ],
   "w-f303ad09": [
    "绝区零",
-   "ae11fc5e"
+   "935fc03d"
   ]
  },
- "updated": "11.09 01:09",
+ "updated": "11.09 01:49",
  "wishlist": "b9a57a1cc720"
 }
