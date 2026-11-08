@@ -79,6 +79,12 @@
   "target": 720,
   "v": 3
  },
+ "http://pimg3.daara.co.kr/kidd/photo/2026/11/06/1793946074_79.gif": {
+  "w": 690,
+  "h": 460,
+  "target": 720,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -358,6 +364,12 @@
  "https://assets.st-note.com/production/uploads/images/332182864/rectangle_large_type_2_5f8fb70cfffdbba850e654643176d6e5.png?width=1200": {
   "w": 1200,
   "h": 628,
+  "target": 1280,
+  "v": 3
+ },
+ "https://assets.st-note.com/production/uploads/images/332763394/rectangle_large_type_2_adada4d1f6d681faf0a8b1ceb82bc915.jpeg?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
   "target": 1280,
   "v": 3
  },
@@ -902,12 +914,6 @@
  "https://e.usen.com/image/f7d313a7ab7da655c9c64d8a3dfab359ae5c9d78.jpg": {
   "w": 850,
   "h": 481,
-  "target": 720,
-  "v": 3
- },
- "https://egamers.io/wp-content/uploads/2024/12/Play-Collaborates-with-Telefonica-to-Launch-PLAY-GamePass-NFTs-280x210.jpg": {
-  "w": 1920,
-  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -2433,6 +2439,12 @@
   "target": 720,
   "v": 3
  },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/e086dee46e9f4a8787d85c4824f876e3.png": {
+  "w": 896,
+  "h": 504,
+  "target": 720,
+  "v": 3
+ },
  "https://nokiapoweruser.com/wp-content/uploads/2026/08/One-UI-9.5-Is-Real-Samsungs-Next-Gen-Software-Spotted-for-the-First-Time.jpg": {
   "w": 1376,
   "h": 768,
@@ -2842,6 +2854,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.397
+ },
+ "https://static.sanyonews.jp/image/article/size1/2/4/a/b/24ab41366173fb50931b74229277a922_1.jpg": {
+  "w": 631,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.422,
+  "local": "pics/8b13836660f31a25.webp",
+  "out": [
+   1262,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://static.sanyonews.jp/image/article/size1/2/f/a/d/2fad61127a6842248d305ff76caa749d_1.jpg": {
   "w": 427,
