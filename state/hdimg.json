@@ -104,19 +104,6 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/005KUU1vgy1iiv080trybj30xc0p00we.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 720,
-  "v": 3,
-  "local": "pics/c9f4f6102da87173.webp",
-  "out": [
-   1200,
-   900
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx1.sinaimg.cn/middle/006gNTEUly1iislj1b2htj37wg3c0u13.jpg": {
   "w": 2000,
   "h": 844,
@@ -801,6 +788,12 @@
   "target": 720,
   "v": 3
  },
+ "https://culturecues.co.uk/wp-content/uploads/2026/05/ba3f6110-49da-11f1-ac78-2112837ce2aa.jpg.webp": {
+  "w": 976,
+  "h": 549,
+  "target": 720,
+  "v": 3
+ },
  "https://d.ibtimes.co.uk/en/full/1817694/gta-6.png?w=736&f=50aadc0d8c247bb5fb98a13a7e098e74": {
   "w": 736,
   "h": 490,
@@ -947,12 +940,6 @@
  "https://e.usen.com/image/f7d313a7ab7da655c9c64d8a3dfab359ae5c9d78.jpg": {
   "w": 850,
   "h": 481,
-  "target": 720,
-  "v": 3
- },
- "https://egamers.io/wp-content/uploads/2024/12/Play-Collaborates-with-Telefonica-to-Launch-PLAY-GamePass-NFTs-280x210.jpg": {
-  "w": 1920,
-  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -1104,6 +1091,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/ns-radically-changing-roshan-and-tormentor-mechanics-in-dota-2-23501.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/sikle-discussed-oracle-bug-25415.jpg": {
@@ -3207,6 +3200,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/the-mandalorian_qnug7h.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://staticg.sportskeeda.com/editor/2026/10/f97dc-17934430484356-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3648,11 +3647,11 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.KSrnB_C9V1MwRJpKiLKVNg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.KfjYEQewHisUbifMHHdpyA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-08"
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,
@@ -3783,7 +3782,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.ZbmE_HeAt_wCvX7HL8qOfQ&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.XfZiWageP0oD7RJ4cItMhQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3879,6 +3878,12 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.zMsnk3V15TWhqbVGB1iJaQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.zjf1Va9j5FJKjHiAl-cnXw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -4084,12 +4089,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://www.hotspawn.com/wp-content/uploads/2026/11/How-to-Sell-Dota-2-Skins-For-Real-Money.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/all-blast-slam-winners.jpg": {
