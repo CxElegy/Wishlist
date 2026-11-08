@@ -3479,6 +3479,13 @@ FIT_JS = """
     for (let k = 0; k <= 24; k++) { const o = (1 - q) * k / 24, v = C(o + q) - C(o); if (v > best) { best = v; at = o; } }
     const keep = best / tot;
     if (keep < 0.85) return false;   // 2026-11-07：6 割では文字入りのバナーの端が欠けた（INDEXBOX）。2026-11-08：7 割でも台風の地図の文字が欠けた → 85%
+    // 写真の中の文字のかたまり（data-k，photo_bands.text_box）は全部残す：入らない切り方はしない。入るなら文字が全部入る位置へずらす（2026-11-08）
+    const kb = (img.dataset.k || '').split(',').map(Number);
+    if (kb.length === 4 && kb.every(v => !isNaN(v))) {
+      const lo = horiz ? kb[0] : kb[1], hi = horiz ? kb[2] : kb[3];
+      if (hi - lo > q) return false;
+      at = Math.min(Math.max(at, hi - q), lo);
+    }
     const pos = (1 - q) > 0.001 ? at / (1 - q) * 100 : 50;
     img.style.objectPosition = horiz ? pos + '% 50%' : '50% ' + pos + '%';
     img.dataset.keep = Math.round(keep * 100);
@@ -3614,7 +3621,7 @@ FIT_JS = """
     if (mini) {
       p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar'); mini.style.gridTemplateColumns = '';
       const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
-      const ok = cropAt(img, rr) || q >= 0.95;   // 主役の位置がわからない絵は 5% まで（文字を欠かさない。2026-11-08）
+      const ok = cropAt(img, rr) || (q >= 0.95 && !img.dataset.k);   // 主役の位置がわからない絵は 5% まで。文字のある絵は cropAt だけ（2026-11-08）
       p.classList.toggle('fill', ok); p.classList.toggle('whole', !ok);
       if (!ok) {
         img.style.objectPosition = ''; delete img.dataset.keep;
@@ -3798,6 +3805,7 @@ FIT_JS = """
         const w = p.clientWidth, img = p.querySelector('img:not(.bg):not(.ico)'), h = p.clientHeight;
         let to = Math.min(Math.round(c.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(c).paddingBottom) || 0) - p.getBoundingClientRect().top) + s, Math.round(w * 1.5));
         if (img && img.naturalWidth && !img.dataset.m) to = Math.min(to, Math.floor(Math.exp(0.12) * w * img.naturalHeight / img.naturalWidth));
+        if (img && img.dataset.k) return;   // 文字のある写真の枠は伸ばさない
         if (!w || to < h + 6) return;
         if (img && !(img.naturalWidth && (img.dataset.m ? cropAt(img, img.naturalWidth / img.naturalHeight / (w / to)) : true))) { cropAt(img, 1); return; }
         p._sl = {h: p.style.height, a: p.style.aspectRatio, f: p.classList.contains('fill')};
@@ -3893,7 +3901,7 @@ FIT_JS = """
         if (n < Math.min(3, cards.length)) return;
         // 足す量（その列の写真枠に対する割合の最大）と、右の列との高さの差
         let rel = 0;
-        for (let a = 0; a < cols; a++) { const d = W - (bot[a] - GAP), pics = col[a].filter(k => span[k] === 1 || !cards[k].classList.contains('lead')).reduce((s, k) => s + (cards[k].querySelector('.pic')?.offsetHeight || 80), 0);
+        for (let a = 0; a < cols; a++) { const d = W - (bot[a] - GAP), pics = col[a].filter(k => (span[k] === 1 || !cards[k].classList.contains('lead')) && !cards[k].querySelector('.pic img[data-k]')).reduce((s, k) => s + (cards[k].querySelector('.pic')?.offsetHeight || 0), 0);   // 文字のある写真は伸ばせない（2026-11-08）
           if (d > 0) rel = Math.max(rel, d / Math.max(1, pics)); }
         const cost = rel + Math.abs(W - S) / S;
         if (!best || cost < best.cost - 1e-6) best = {n, cost, W, bot: bot.slice(), pos: put.slice(), col: col.map(c => c.slice())};
@@ -3927,8 +3935,9 @@ FIT_JS = """
     const Wt = (beside && S2 > best.W && S2 - best.W <= .6 * best.W) ? S2 : best.W;
     for (let a = 0; a < cols; a++) {
       const d = Wt - (best.bot[a] - GAP);
-      let ks = best.col[a].filter(k => !(span[k] === 2));
-      if (!ks.length) ks = best.col[a];   // 列に大きい 1 枚（2 列）しかないときは、その 1 枚が伸びる（隣が 3 枚以上で高いとき、その下が空かない）
+      // 文字のある写真（data-k）の枠は伸ばさない（伸ばすと切れて文字が欠ける。2026-11-08 台風の地図・dmenu）。伸ばせる写真がなければ穴のまま（文字の欠けより小さい減点）
+      let ks = best.col[a].filter(k => !(span[k] === 2) && !cards[k].querySelector('.pic img[data-k]'));
+      if (!ks.length) ks = best.col[a].filter(k => !cards[k].querySelector('.pic img[data-k]'));   // 列に大きい 1 枚（2 列）しかないときは、その 1 枚が伸びる（隣が 3 枚以上で高いとき、その下が空かない）
       if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], d / ks.length); });
     }
     // 2 列にまたがる大きい 1 枚の下で、2 つの列が別々に伸びると上の位置がずれるので、列ごとに下から積み直す
