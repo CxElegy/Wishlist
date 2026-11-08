@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-07T01:05:54+00:00",
-"text": "2026-11-07 第 6 バッチを出刊：gelato pique（1 版面・1 本・残り 1 版面） · token 新規入力 1,451・キャッシュ読み 15.9万・出力 647",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.34,
-"mem_total": 16867737600,
-"mem_free": 15992070144,
-"disk_used": 10065403904,
-"disk_free": 31218130944,
-"disk_total": 41283534848,
-"peak": 331325440
-},
-"batch": 6,
-"boards": [
-"gelato pique"
-],
-"stories": 1,
-"left": 1,
-"edited": 18,
-"run": 1794010447.3486016,
-"tok": {
-"in": 4,
-"cw": 1447,
-"cr": 158813,
-"out": 647,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 160911
-},
-{
 "at": "2026-11-07T01:15:19+00:00",
 "text": "2026-11-07 第 7 バッチを出刊：猫用品（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 2,746・キャッシュ読み 32.8万・出力 896",
 "level": "ok",
@@ -1919,5 +1887,54 @@
 "calls": 16,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-08T06:05:09+00:00",
+"text": "2026-11-08 第 1 バッチを出刊：A2O LITE、Astrae Oratio、FROM、ILLIT、The Mandalorian、Vaundy ほか 12（18 版面・37 本・今日の整理待ちは全部終わり） · token 新規入力 4.4万・キャッシュ読み 80.6万・出力 3,151",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.19,
+"mem_total": 16867737600,
+"mem_free": 16009871360,
+"disk_used": 10043719680,
+"disk_free": 31239815168,
+"disk_total": 41283534848,
+"peak": 329277440
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"FROM",
+"ILLIT",
+"The Mandalorian",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"三星手机",
+"周杰伦",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"滑雪",
+"漫威电影",
+"猫用品",
+"绝区零"
+],
+"stories": 37,
+"left": 0,
+"edited": 19,
+"run": null,
+"tok": {
+"in": 25,
+"cw": 43685,
+"cr": 806062,
+"out": 3151,
+"calls": 13,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 852923
 }
 ]

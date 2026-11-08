@@ -159,11 +159,11 @@
   "滑雪": 2,
   "绝区零": 1,
   "三星手机": 11,
-  "The Mandalorian": 3,
-  "あつ森": 3,
+  "The Mandalorian": 4,
+  "あつ森": 4,
   "Vaundy": 2,
   "ILLIT": 9,
-  "gelato pique": 1,
+  "gelato pique": 2,
   "MMORPG 新作": 3,
   "猫用品": 2
  },
@@ -352,15 +352,25 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "Box Office Update: The Mandalorian and Grogu hits $100 million for the 4-day holiday",
+   "highlight": "$100 million",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "あつ森": [
   {
-   "headline": "How do 'Animal Crossing' and 'Story of Seasons' differ? Decoding the structure of 'slow life' games",
-   "highlight": "",
-   "blurb": "",
+   "headline": "「あつ森」と「牧場物語」はどう違う？「スローライフ」の構造",
+   "highlight": "どう違う",
+   "blurb": "『ぽこ あ ポケモン』まで含め、まったり遊べる2大タイトルの違いを読み解く。",
    "weight": "lead",
    "refs": [
+    4,
     2,
     1
    ]
@@ -448,7 +458,17 @@
    ]
   }
  ],
- "gelato pique": [],
+ "gelato pique": [
+  {
+   "headline": "スヌーピー×ジェラピケの新作コレクションを一挙紹介",
+   "highlight": "新作コレクション",
+   "blurb": "大人気だった17年AWコラボがアップデートして登場。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "MMORPG 新作": [
   {
    "headline": "야심작 ‘아키에이지 크로니클’…출시 초반 평가 엇갈려",

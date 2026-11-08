@@ -569,9 +569,9 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229.jpg": {
-  "w": 1600,
-  "h": 893,
+ "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229_crop.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -4004,6 +4004,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.joblo.com/wp-content/uploads/2026/04/mandalorian-and-grogu-cinemacon.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.joblo.com/wp-content/uploads/2026/05/Stewie-and-Grogu.jpg": {
