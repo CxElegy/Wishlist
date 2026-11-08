@@ -79,12 +79,6 @@
   "target": 720,
   "v": 3
  },
- "http://pimg3.daara.co.kr/kidd/photo/2026/11/06/1793946074_79.gif": {
-  "w": 690,
-  "h": 460,
-  "target": 720,
-  "v": 3
- },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -575,11 +569,11 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229_crop.jpg": {
-  "w": 1200,
-  "h": 675,
+ "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229.jpg": {
   "target": 1280,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg": {
   "w": 1200,
@@ -1428,6 +1422,12 @@
   "h": 810,
   "target": 1280,
   "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1TIlCI.img": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dqOGx.img": {
   "w": 608,
@@ -3757,11 +3757,11 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.npfhGrzlqxUKkvFFZXqMmA&pid=News&w=900": {
-  "w": 315,
-  "h": 700,
-  "target": 720,
-  "v": 3
+ "https://www.bing.com/th?id=ONUT.o8UnF04Cw8sWVwpNxcHJ5g&pid=News&w=360": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200": {
   "w": 700,

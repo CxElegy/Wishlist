@@ -13,7 +13,8 @@
     11,
     15,
     17
-   ]
+   ],
+   "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/06/ultimate_edition_electric_fang_02.jpg?w=1600&h=900&fit=crop"
   },
   {
    "headline": "GTA 6 Leak: 230 GB Claim vs 212 GB Preload",
@@ -62,7 +63,8 @@
    "weight": "lead",
    "refs": [
     1
-   ]
+   ],
+   "image": "https://www.slashfilm.com/img/gallery/marvels-2027-release-schedule-all-8-movies-and-tv-shows-explained/l-intro-1793897625.jpg"
   },
   {
    "headline": "‘Avengers: Doomsday’ Doctor Doom Popcorn Bucket Gets a Closer Look, and Doom Is Ready to Rule the Concession Stand",
@@ -91,7 +93,8 @@
    "weight": "normal",
    "refs": [
     15,
-    20
+    20,
+    34
    ]
   },
   {
@@ -148,8 +151,8 @@
   }
  ],
  "_covered": {
-  "GTA 6": 31,
-  "漫威电影": 32,
+  "GTA 6": 35,
+  "漫威电影": 37,
   "Astrae Oratio": 1,
   "FROM": 2,
   "日本顶级网球赛事": 1,
@@ -163,10 +166,11 @@
   "The Mandalorian": 4,
   "あつ森": 4,
   "Vaundy": 2,
-  "ILLIT": 9,
+  "ILLIT": 12,
   "gelato pique": 2,
-  "MMORPG 新作": 3,
-  "猫用品": 2
+  "MMORPG 新作": 5,
+  "猫用品": 2,
+  "BLEACH Mirrors High": 2
  },
  "A2O LITE": [
   {
@@ -456,12 +460,14 @@
    ]
   },
   {
-   "headline": "Watch: LE SSERAFIM, ILLIT, And KATSEYE's \"ICONIC BY MISTAKE\" MV Surpasses 200 Million Views",
-   "highlight": "200 Million Views",
+   "headline": "LE SSERAFIM、ILLIT、KATSEYEがコラボMVで2億回再生を達成",
+   "highlight": "2億回再生",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    12,
+    5,
+    11
    ]
   },
   {
@@ -471,6 +477,15 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "見ない人も、一度きりの人もいないILLIT",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -504,6 +519,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "출시 1주년 앞둔 아이온2…국내외 흥행 성과는?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "猫用品": [
@@ -529,6 +553,17 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "「千年血戦篇」のその後を描く「BLEACH Mirrors High」をスタート",
+   "highlight": "「BLEACH Mirrors High」をスタート",
+   "blurb": "Gamer編集部が遊んだゲームとして、「千年血戦篇」のその後を描く「BLEACH Mirrors High」を紹介。",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]
