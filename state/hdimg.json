@@ -495,18 +495,12 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
-  "w": 300,
-  "h": 225,
+ "https://cdn.gamey.kr/news/photo/202609/3018752_170370_5622.jpg": {
   "target": 1280,
   "v": 3,
-  "blur": 0.606,
-  "local": "pics/1f4c2211c5986133.webp",
-  "out": [
-   900,
-   675
-  ],
-  "why": "看不清"
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-08"
  },
  "https://cdn.hercampus.com/SH6M70M3/as/q71u8m-ey82kw-f6qawo/chainjpg_by_httpsunsplashcomjosenothose?width=1200&height=630&fit=crop&": {
   "w": 1200,
@@ -607,9 +601,9 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229_crop.jpg": {
-  "w": 1200,
-  "h": 675,
+ "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229.jpg": {
+  "w": 1600,
+  "h": 893,
   "target": 1280,
   "v": 3
  },
@@ -1637,12 +1631,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-08"
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gXXbm.img": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gv1JW.img": {
   "w": 1456,
@@ -4162,6 +4150,12 @@
  "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg": {
   "w": 1200,
   "h": 901,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6TrophiesAchievements.jpg": {
+  "w": 2000,
+  "h": 1500,
   "target": 1280,
   "v": 3
  },
