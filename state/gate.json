@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-08T16:50:38+00:00",
+ "checked": "2026-11-08T17:08:47+00:00",
  "fired": {
-  "at": "2026-11-08T16:50:38+00:00",
+  "at": "2026-11-08T17:08:47+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -37,6 +37,7 @@
     "The Mandalorian",
     "dota2",
     "gelato pique",
+    "lib:iPhone",
     "lib:モンスターハンターワイルズ",
     "lib:台風・天気",
     "lib:宇宙・ロケット",
@@ -44,7 +45,6 @@
     "lib:恐竜",
     "lib:温泉",
     "lib:生成AI",
-    "lib:美術館の企画展",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
@@ -68,35 +68,34 @@
     "星巴克马克杯",
     "漫威电影"
    ],
-   "sig": "29d9a09fec8c",
+   "sig": "f752f2f2e03e",
    "token_cap": 1000000,
    "tokens_today": 0,
-   "why": "整理待ちの記事 109 件（20 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 120 件（20 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "周杰伦",
-    "A2O LITE",
-    "The Mandalorian"
-   ],
-   "need": true,
-   "sig": "7b4cd3f62869",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
