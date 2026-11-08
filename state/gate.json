@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-08T09:26:48+00:00",
+ "checked": "2026-11-08T09:31:51+00:00",
  "fired": {
-  "at": "2026-11-08T09:26:48+00:00",
+  "at": "2026-11-08T09:32:11+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -29,10 +29,6 @@
    },
    "items": [
     "A2O LITE",
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "dota2",
@@ -47,30 +43,24 @@
     "周杰伦",
     "星巴克马克杯",
     "滑雪",
-    "漫威电影",
     "绝区零"
    ],
    "last_batch": "2026-11-08T07:54:54+00:00",
    "last_error": {
-    "at": "2026-11-08T02:54:29+00:00",
+    "at": "2026-11-08T09:24:00+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 184,
+   "prog": 200,
    "prog_day": "2026-11-08",
    "ripe": [
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "チェーンソーマン",
-    "星巴克马克杯",
-    "漫威电影"
+    "星巴克马克杯"
    ],
-   "sig": "ea60520de313",
+   "sig": "ea1f81ce5fa2",
    "token_cap": 1000000,
    "tokens_today": 596429,
-   "why": "整理待ちの記事 101 件（21 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 85 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
