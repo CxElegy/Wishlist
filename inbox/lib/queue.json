@@ -1,550 +1,526 @@
 {
 "done": {
 "day": "2026-11-08",
-"n": 35
+"n": 41
 },
 "boards": [
 {
-"id": 175,
-"name": "生成AI",
+"id": 139,
+"name": "葬送のフリーレン",
 "day": "2026-11-08",
-"fp": "5f2cab43e180",
+"fp": "8c0e2ed536f2",
 "rows": [
 {
-"title": "自律して動き、仕事を進める「AIエージェント」とは？従来の生成AIとの決定的な違い",
-"date": "2026-11-07T22:42:32+00:00",
-"source": "ｄメニューニュース",
+"title": "『葬送のフリーレン』フリーレン＆ヒンメルのイラストと英訳台詞をあしらった雲形ガラスフロート温度計がAMNIBUSで受注中",
+"date": "2026-11-07T14:54:12+00:00",
+"source": "ニコニコニュース",
 "summary": "",
-"url": "https://topics.smt.docomo.ne.jp/article/tbs_bb/business/tbs_bb-3060041",
-"image": "https://img.topics.smt.news.goo.ne.jp/picture/tbs_bb/m_tbs_bb-3060041.jpg"
-},
-{
-"title": "【人工知能学会前会長・栗原聡インタビュー #2】AI時代の教育術｜生成AIで子どもの思考力が低下する？ AI教育に要注意の年代とは",
-"date": "2026-11-07T20:02:48+00:00",
-"source": "新潮QUE",
-"summary": "",
-"url": "https://que.dailyshincho.jp/node/21459/",
-"image": "https://que.dailyshincho.jp/sites/default/files/styles/og_letterbox_191_1/public/2026-10/AI%E3%83%A9%E3%83%9B%E3%82%99%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.jpg?itok=mgb_RITy"
-},
-{
-"title": "日東工業、設備図面から分電盤見積情報を抽出する生成AIアプリを開発 日本IBMが支援",
-"date": "2026-11-07T11:30:00+00:00",
-"source": "オートメーション新聞WEB",
-"summary": "",
-"url": "https://www.automation-news.jp/2026/11/110257/",
-"image": "https://www.automation-news.jp/wp-content/uploads/2026/11/09bb5355fca65f1a0a31a3c971a0ba52.png"
-},
-{
-"title": "桜井政博氏、生成AIへの考えかたを示す。「いまのところは使っていない」し、「どこかへの搾取になってはいけない」。一方で現在の“大変すぎるゲーム開発”への懸念も【ファミ通40周年フェス】",
-"date": "2026-11-07T07:42:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/fa3a9591e035fc1a2884772a3e874d9130baba28",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00093352-famitsu-000-5-view.jpg?exp=10800"
-},
-{
-"title": "生成AIの不自然な画像をリアルに再現 ドラマ『ヴィジョンクエスト』メイキング映像公開",
-"date": "2026-11-07T07:34:00+00:00",
-"source": "KAI-YOU",
-"summary": "",
-"url": "https://kai-you.net/article/97090",
-"image": "https://img.kai-you.net/storage/2026/11/ac5b0fcb-c30b-4970-9e3f-7378373c46ed/jpg/visionquest_main.jpg"
-},
-{
-"title": "LINEヤフーコミュニケーションズ、生成AI前提の運営モデルへ転換・社員のキャリアにも変化。年36万時間相当の業務拡大に対応",
-"date": "2026-11-07T05:00:00+00:00",
-"source": "Manegy[マネジー]",
-"summary": "",
-"url": "https://www.manegy.com/news/detail/17798/",
-"image": "https://www.manegy.com/upload/img/news/news_thumbimage/1793936159/1200x0/17798.jpg"
-},
-{
-"title": "企業の業務改善に役立てて 「生成AI」など最新IT技術に触れるイベント【岡山】（RSK山陽放送）",
-"date": "2026-11-07T04:00:34+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/a4eb47b289f8700f931a372df64705c8f857eeee",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-23069272-rsk-000-3-view.jpg?exp=10800"
-},
-{
-"title": "生成AI広告「ネガティブな印象」5割超 故人や実在人物の生成に抵抗感",
-"date": "2026-11-07T03:33:31+00:00",
-"source": "日本経済新聞",
-"summary": "",
-"url": "https://www.nikkei.com/article/DGXZQOUC0569T0V01C26A1000000/",
-"image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3833091005112026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&h=630&w=1200&s=af07c21235d438d3be1a1b5a62076796"
-},
-{
-"title": "フジテレビ、実写ドラマに生成AIを活用する「AI Sandbox」を設置 『救命病棟２４時』の事故現場を架空の空撮映像で描く",
-"date": "2026-11-07T03:04:11+00:00",
-"source": "Ledge.ai",
-"summary": "",
-"url": "https://ledge.ai/articles/fuji_tv_ai_sandbox_drama",
-"image": "https://storage.googleapis.com/ledge-ai-prd-public-bucket/media/ai_sandbox_90152189db/ai_sandbox_90152189db.jpg"
-},
-{
-"title": "「ヴィジョンクエスト」リアルだけど不自然！生成AIの世界を再現した“マインドスペース”の裏側が明らかに",
-"date": "2026-11-07T03:00:00+00:00",
-"source": "映画.com",
-"summary": "",
-"url": "https://eiga.com/news/20261107/5/",
-"image": "https://media.eiga.com/images/buzz/130409/076977cbab87a539.jpg"
-},
-{
-"title": "生成AI利用率9割の三井不、estieとの協業でAI実装とDX人材育成へ：不動産テック",
-"date": "2026-11-07T03:00:00+00:00",
-"source": "ITmedia",
-"summary": "",
-"url": "https://built.itmedia.co.jp/bt/articles/2611/07/news015.html",
-"image": "https://image.itmedia.co.jp/bt/articles/2611/07/is20261105mituihu01.jpg"
-},
-{
-"title": "【実録】「儲け話は絶対にない」騙された人の叫び 生成AIで進化する特殊詐欺のリアル…巧妙に仕組まれた手口 拡大する特殊詐欺から身を守るために",
-"date": "2026-11-07T03:00:00+00:00",
-"source": "TBS NEWS DIG",
-"summary": "",
-"url": "https://newsdig.tbs.co.jp/articles/tuy/3062134",
-"image": "https://newsdig.ismcdn.jp/mwimgs/a/7/1200w/img_a746b4ee7f4189a4e0ed0e94bce0b3b6109001.jpg"
-}
-]
-},
-{
-"id": 176,
-"name": "将棋",
-"day": "2026-11-08",
-"fp": "17c7c8542d06",
-"rows": [
-{
-"title": "将棋奨励会・盛岡の冨坂碧海さん、三段リーグ1期目勝ち越し 健闘にも「実力不足感じた」",
-"date": "2026-11-08T01:00:00+00:00",
-"source": "岩手日報",
-"summary": "",
-"url": "https://www.iwate-np.co.jp/article/2026/11/8/197776",
-"image": "https://cdn.iwate-np.co.jp/media-static/article/197776/thumbnail/sw4b0-tm6aeec1d4_0f1d1ec90.jpg"
-},
-{
-"title": "4部門39人が熱戦 白河で「県アマ将棋」火ぶた:地域ニュース",
-"date": "2026-11-08T00:00:00+00:00",
-"source": "福島民友新聞社",
-"summary": "",
-"url": "https://www.minyu-net.com/news/detail/2026110808592856988",
-"image": "https://www.minyu-net.com/common/news/2026110808592856988_0.jpg"
-},
-{
-"title": "将棋・佐賀名人戦 古賀・永世名人、最年少の挑戦阻む | 行政・社会 | 佐賀県のニュース",
-"date": "2026-11-07T23:20:00+00:00",
-"source": "佐賀新聞",
-"summary": "",
-"url": "https://www.saga-s.co.jp/articles/-/1825675",
-"image": "https://saga.ismcdn.jp/mwimgs/8/9/1200m/img_8972ba8f37e95972d08de64ea61ca5f7785671.jpg"
-},
-{
-"title": "リーグ中盤の勝負どころ 第８５期将棋名人戦Ａ級順位戦４回戦 第２１局第１譜",
-"date": "2026-11-07T20:00:00+00:00",
-"source": "朝日新聞",
-"summary": "",
-"url": "https://www.asahi.com/articles/DA3S16583761.html",
-"image": "https://imgopt.asahi.com/ogp/AS20261108000132_comm.jpg"
-},
-{
-"title": "かつて藤井六冠も優勝…プロ棋士目指す小4が“将棋日本シリーズ”のこども大会に 去年の低学年の部に続き優勝なるか",
-"date": "2026-11-07T17:04:20+00:00",
-"source": "FNNプライムオンライン on MSN",
-"summary": "愛知県瀬戸市の藤井聡太六冠など、数々のプロ棋士を輩出している小学生の将棋大会が10月31日に開かれました。プロ棋士を目指し、戦いに挑む小学生に密着しました。 【動画で見る】かつて藤井六冠も優勝…プロ棋士目指す小4が“将棋日本シリーズ”のこども大会に 去年の低学年の部に続き優勝なるか ■平日4時間、休日は10時間超…将棋",
-"url": "https://www.msn.com/ja-jp/news/other/%E3%81%8B%E3%81%A4%E3%81%A6%E8%97%A4%E4%BA%95%E5%85%AD%E5%86%A0%E3%82%82%E5%84%AA%E5%8B%9D-%E3%83%97%E3%83%AD%E6%A3%8B%E5%A3%AB%E7%9B%AE%E6%8C%87%E3%81%99%E5%B0%8F4%E3%81%8C-%E5%B0%86%E6%A3%8B%E6%97%A5%E6%9C%AC%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-%E3%81%AE%E3%81%93%E3%81%A9%E3%82%82%E5%A4%A7%E4%BC%9A%E3%81%AB-%E5%8E%BB%E5%B9%B4%E3%81%AE%E4%BD%8E%E5%AD%A6%E5%B9%B4%E3%81%AE%E9%83%A8%E3%81%AB%E7%B6%9A%E3%81%8D%E5%84%AA%E5%8B%9D%E3%81%AA%E3%82%8B%E3%81%8B/ar-AA2gYv0H",
-"image": "https://www.bing.com/th?id=ONUT.u9y_4DJWxOsdhZl1eJuTNQ&pid=News&w=1200"
-},
-{
-"title": "囲碁・将棋スペシャル：将棋 国井新四段自戦記 プロ入りで気合120％ 兄弟子に苦杯 眠れず",
-"date": "2026-11-07T17:01:20+00:00",
-"source": "毎日新聞",
-"summary": "",
-"url": "https://mainichi.jp/articles/20261108/ddm/013/200/001000c",
-"image": "https://cdn.mainichi.jp/vol1/2026/11/08/20261108ddm013200155000p/0c10.jpg?2"
-},
-{
-"title": "女性初の将棋棋士になる西山朋佳さん 「豪腕」、万全に整えて",
-"date": "2026-11-07T17:00:00+00:00",
-"source": "日本経済新聞",
-"summary": "",
-"url": "https://www.nikkei.com/article/DGXZQOUD305FL0Q6A031C2000000/",
-"image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3825299004112026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.51&fp-y=0.37&h=630&w=1200&s=0ca13fc7e26984ab3143baf844f659dc"
-},
-{
-"title": "将棋の女性初プロ棋士・西山朋佳女流四冠 権利行使発表後初公式戦の不戦敗を謝罪「誠に申し訳ございません」 ネット上では誹謗中傷多発（デイリースポーツ）",
-"date": "2026-11-07T08:37:30+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/6bda080b6977dae04f6b5b1bd6c3ff0a546d3077",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000087-dal-000-3-view.jpg?exp=10800"
-},
-{
-"title": "深浦九段、佐々木七段と指そう！ 来月２０日、長崎で将棋団体戦",
-"date": "2026-11-07T03:19:00+00:00",
-"source": "長崎新聞ホームページ",
-"summary": "",
-"url": "https://www.nagasaki-np.co.jp/kijis/?kijiid=fa1c412bd1ea41d891253a823cbe0c6c",
-"image": "https://wcdb.nagasaki-np.co.jp/public/images/fa1c412bd1ea41d891253a823cbe0c6c/kd-nagasaki-20261107122310-c4f7bdc3c95f75f49322365a799264f5180842f601f997bbafbd62373aab7d6a_large.jpg"
-},
-{
-"title": "「現代の名工」に碁将棋盤製造工の長谷川光義さん「日本刀で刻む技」（朝日新聞）",
-"date": "2026-11-07T02:15:01+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/14e79f5608a08d033cede7146010454df73e2738",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000066-asahi-000-1-view.jpg?exp=10800"
-},
-{
-"title": "「第52回将棋の日in所沢」を開催します",
-"date": "2026-11-06T23:25:55+00:00",
-"source": "所沢市",
-"summary": "",
-"url": "https://www.city.tokorozawa.saitama.jp/iitokoro/enjoy/bunkakyoyo/bunkageijutu/shoginohi/kaisai.html",
-"image": "https://www.city.tokorozawa.saitama.jp/iitokoro/enjoy/bunkakyoyo/bunkageijutu/shoginohi/kaisai.images/omote.png"
-},
-{
-"title": "碁将棋盤職人・長谷川さん（行田） 「太刀盛り」の技評価 現代の名工、新たに4人",
-"date": "2026-11-06T22:51:54+00:00",
-"source": "東京新聞",
-"summary": "",
-"url": "https://www.tokyo-np.co.jp/article/526640",
-"image": "https://static.tokyo-np.co.jp/image/article/size1/7/e/1/6/7e163a16de04ebef0b7a9165c530f63b_1.jpg"
-}
-]
-},
-{
-"id": 177,
-"name": "恐竜",
-"day": "2026-11-08",
-"fp": "5c81a0e63ec6",
-"rows": [
-{
-"title": "🦖恐竜・小林快次先生出演の NHK AM「関西ラジオワイド」配信中❣ - 子ども科学電話相談",
-"date": "2026-11-08T00:37:27+00:00",
-"source": "NHK",
-"summary": "",
-"url": "https://www.nhk.jp/p/kodomoq/rs/P3X5LNZ17X/blog/bl/pGrQvaN7dV/bp/pn5NQdY1RK/",
-"image": "https://img.nhk.jp/static/assets/images/blog/rs/P3X5LNZ17X/P3X5LNZ17X-eyecatch_cab9019b38d1dfd827ff8f37e284bf14.jpg"
-},
-{
-"title": "初恐竜祭 先駆者魂を披露 勝山 県立大学部で学園祭 １期生有志主催 ラボ見学、体験授業人気",
-"date": "2026-11-07T20:00:00+00:00",
-"source": "福井新聞社",
-"summary": "",
-"url": "https://www.fukuishimbun.co.jp/articles/-/2741749",
-"image": "https://fki.ismcdn.jp/mwimgs/0/2/-/img_021f4b1b6232d36f1db2682d621dbcfe106317.jpg"
-},
-{
-"title": "池澤春菜のフェーズチェンジ 鳥は“恐竜”から進化した (1)羽毛恐竜「シノサウロプテリクス」発見がフェーズを変えた",
-"date": "2026-11-07T19:17:01+00:00",
-"source": "NHK",
-"summary": "",
-"url": "https://www.nhk.jp/p/rs/88K7K16R6Z/episode/re/1T38ALRY6Z/",
-"image": "https://img.nhk.jp/static/assets/images/radioepisode/re/1T38ALRY6Z/1T38ALRY6Z-eyecatch_94d40065c70fcaa9d64e6b0c11a3429a.jpg"
-},
-{
-"title": "恐竜レースに沸く 宮古の海族まつり盛況",
-"date": "2026-11-07T18:57:00+00:00",
-"source": "沖縄タイムス社",
-"summary": "",
-"url": "https://www.okinawatimes.co.jp/articles/-/1961556",
-"image": "https://oki.ismcdn.jp/mwimgs/1/b/1200wm/img_1bb8c6070e23eca60440c8b0bb44b8012440723.jpg"
-},
-{
-"title": "恐竜学部ならではの見学や体験、初めての学園祭にぎわう クイズやグッズ販売も 福井県立大勝山キャンパス",
-"date": "2026-11-07T15:59:00+00:00",
-"source": "47NEWS",
-"summary": "福井県 立大恐竜学部で初めてとなる学園祭「恐竜祭」が１１月７日、 勝山市 の同大勝山キャンパスで開かれた。大きな化石の内部を観察できる機器を備えたＣＴ解析ラボの見学、教員による体験授業、同キャンパスを拠点 ...",
-"url": "https://www.47news.jp/15199453.html",
-"image": "https://www.bing.com/th?id=ONUT.6-yUa1ieFKkm9SO31b22aw&pid=News&w=300"
-},
-{
-"title": "恐竜づくし 地域住民と交流、初の学部祭 県立大勝山キャンパス",
-"date": "2026-11-07T15:59:00+00:00",
-"source": "47NEWS",
-"summary": "昨年創設した県立大恐竜学部の初の学園祭「恐竜祭」が７日、 勝山市 の勝山キャンパスで開かれた。「パイオニア（先駆者）」をテーマに、聴講体験や恐竜グッズの販売など世界唯一の学部らしい企画を用意。多くの地域 ...",
-"url": "https://www.47news.jp/15199120.html",
-"image": "https://www.bing.com/th?id=ONUT.6-yUa1ieFKkm9SO31b22aw&pid=News&w=300"
-},
-{
-"title": "ドラゴンボール：エンディングの恐竜に乗る孫悟空とブルマを立体化 カラーリングとディテールを徹底再現",
-"date": "2026-11-07T09:31:00+00:00",
-"source": "Mantan Web",
-"summary": "",
-"url": "https://mantan-web.jp/article/20261105dog00m200007000a.html",
+"url": "https://news.nicovideo.jp/watch/nw19968015?news_ref=watch_70_nw19780868",
 "image": ""
 },
 {
-"title": "福井県立大・恐竜学部で初の大学祭 大勢の恐竜ファンと学生が交流 クイズや伝統体験コーナー｜ニュース",
-"date": "2026-11-07T09:25:24+00:00",
-"source": "福井テレビ",
+"title": "「葬送のフリーレン」“勇者ヒンメルなら買ったってことだよ―”フリーレンやヒンメルたちと一緒にクリパ☆ 缶バッジ付きケーキが登場",
+"date": "2026-11-07T03:15:03+00:00",
+"source": "アニメ！アニメ！",
 "summary": "",
-"url": "https://www.fukui-tv.co.jp/?post_type=fukui_news&p=203461",
-"image": "https://www.fukui-tv.co.jp/common/fins_img/20261107-00000005-ftb-2-00-thumb.jpg"
+"url": "https://animeanime.jp/article/2026/11/07/104563.html",
+"image": "https://animeanime.jp/imgs/ogp_f/951703.jpg"
 },
 {
-"title": "むかわ・恐竜博物館、来館者10万人達成 記念セレモニー",
-"date": "2026-11-07T08:27:38+00:00",
-"source": "北海道新聞デジタル",
+"title": "対戦型麻雀ゲーム『雀魂-じゃんたま-』TVアニメ『葬送のフリーレン』とのコラボが決定！",
+"date": "2026-11-07T00:34:28+00:00",
+"source": "秋葉原ＰＬＵＳ",
 "summary": "",
-"url": "https://www.hokkaido-np.co.jp/article/1404372/",
-"image": "https://static.hokkaido-np.co.jp/image/article/size1/f/4/0/d/f40de14ebbcb842ac3194d1a744c963e_1.webp?20261108002305"
+"url": "http://www.akiba-plus.com/?p=158686",
+"image": "http://www.akiba-plus.com/wp-content/uploads/2026/11/11e62f35a3371a03b31e1dd79be3a438.png"
 },
 {
-"title": "恐竜学部初の学園祭にぎわう 県立大勝山キャンパス ラボ見学や体験授業、物販 | 学校・教育,催し・文化 | 福井のニュース",
-"date": "2026-11-07T07:00:00+00:00",
-"source": "福井新聞社",
-"summary": "",
-"url": "https://www.fukuishimbun.co.jp/articles/-/2741489",
-"image": "https://fki.ismcdn.jp/mwimgs/9/d/-/img_9d6bff1ccfe092f77ec81899ffcaa13b468491.jpg"
-},
-{
-"title": "1億年前の恐竜化石から赤血球の痕跡を発見 国際チーム「歴史的な大偉業」",
-"date": "2026-11-07T05:11:44+00:00",
-"source": "Infoseek",
-"summary": "",
-"url": "https://news.infoseek.co.jp/article/independent_1490408191923192794/",
-"image": "https://media.image.infoseek.co.jp/isnews/photos/independent/independent_1490408191923192794_0-enlarge.jpg"
-},
-{
-"title": "恐竜の化石から赤血球の痕跡か、過去最も有力な証拠を発見 研究チーム（CNN.co.jp）",
-"date": "2026-11-07T04:26:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/a683ccf6df23c7cd7103f7841dd32f2b32158753?page=3",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-35254539-cnn-000-2-view.jpg?exp=10800"
-}
-]
-},
-{
-"id": 178,
-"name": "台風・天気",
-"day": "2026-11-08",
-"fp": "cd03b7296803",
-"rows": [
-{
-"title": "【台風情報】台風32号 \"強い勢力\"で小笠原諸島へ接近する予想進路 気象庁8日（日）午前6時45分発表最新 全国の週間天気予報（RKK熊本放送）",
-"date": "2026-11-07T23:54:16+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/4c3adf88a726f836b63f0ed05dc4d9d9d89bb5dc",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-23069923-rkkv-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【台風32号と次の渦?】32号は「強い」勢力で小笠原近海へ 10日は最大瞬間風速55メートル予想 さらに「次の渦」も【雨・風シミュレーション18日（水）まで/全国の週間天気予報】気象庁 台風情報（MBC南日本放送）",
-"date": "2026-11-07T14:57:16+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/6b94fc4314ee153399be493f8dedeb7649c24b58",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-23069797-mbcnewsv-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【台風32号と次の渦？】32号は「強い」勢力で小笠原近海へ 10日は最大瞬間風速55メートル予想 さらに「次の渦」も【雨・風シミュレーション18日（水）まで／全国の週間天気予報】気象庁 台風情報",
-"date": "2026-11-07T14:22:00+00:00",
-"source": "Infoseek",
-"summary": "",
-"url": "https://news.infoseek.co.jp/article/mbc_3069797/",
-"image": "https://media.image.infoseek.co.jp/isnews/photos/mbc/mbc_3069797_0-enlarge.jpg"
-},
-{
-"title": "【台風情報】最大瞬間風速55m/s・中心気圧970hPaまで発達予想.「台風32号（チャンパカ）」発生..今後の進路は？雨と風のシミュレーション【気象庁7日15時45分発表】 | 岡山・香川のニュース | 天気 | RSK山陽放送 (1ページ)",
-"date": "2026-11-07T08:42:00+00:00",
-"source": "TBS NEWS DIG",
-"summary": "",
-"url": "https://newsdig.tbs.co.jp/articles/rsk/3069645?display=1",
-"image": "https://newsdig.ismcdn.jp/mwimgs/0/5/1200w/img_050ab05a08e564ad44f01a9221ab8e40217585.jpg"
-},
-{
-"title": "【台風情報】32年ぶり「台風32号」（チャンパカ）発生...最大瞬間風速50m/s・中心気圧975hPa予想...今後の進路は？雨と風のシミュレーション【気象庁7日13時15分発表】 | 岡山・香川のニュース | 天気 | RSK山陽放送 (1ページ)",
-"date": "2026-11-07T04:46:00+00:00",
-"source": "TBS NEWS DIG",
-"summary": "",
-"url": "https://newsdig.tbs.co.jp/articles/rsk/3069365?display=1",
-"image": "https://newsdig.ismcdn.jp/mwimgs/e/8/1200w/img_e8f962e8c9b6799fa9021704b91e1e1a224182.jpg"
-},
-{
-"title": "今季一番の冷え込み！寒気の峠こえるも、もう天気下り坂!?／台風32号の進路も：気象予報士解説（植松愛実） - エキスパート",
-"date": "2026-11-06T23:30:46+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/expert/articles/580274e9fc0bfe6819b6b071fc6e0c767389a25f",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/creators/uematsumegumi/02761154/title-1794066229541.jpeg?exp=10800"
-},
-{
-"title": "【6日の天気】関東では夏日続出…北日本は夜から雪に 台風32号発生へ（2026年11月5日掲載）",
-"date": "2026-11-06T06:36:00+00:00",
-"source": "日テレNEWS NNN",
-"summary": "",
-"url": "https://news.ntv.co.jp/category/weather/1a7e69c1375e420e963aa109a2d593c7",
-"image": "https://news.ntv.co.jp/gimage/n24/articles/acfea12f0d334012b3e84ce9d4239cee/435514ac-3d00-466e-a3b2-d8bedda98b7d.jpeg?w=1200"
-},
-{
-"title": "【台風情報】32年ぶり「台風32号」発生へ 24時間以内に「台風のたまご」熱帯低気圧が台風へ発達の見込み 今後の予想進路・日本各地の天気予報は? 気象庁11月6日午前10時半発表最新（RKK熊本放送）",
-"date": "2026-11-06T03:15:33+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/868cb1840c654405fac677abaa0bead058ac6cec",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261106-23066235-rkkv-000-3-view.jpg?exp=10800"
-},
-{
-"title": "【台風のたまご】新たな「熱帯低気圧」発生…発達すれば32年ぶり「台風32号」に 今後の動きは?予想天気図・11月16日にかけての降水シミュレーション【気象庁6日発表】今後の台風情報に注意（BSS山陰放送）",
-"date": "2026-11-05T23:58:14+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/86685ea47354e177fcb338466bdd7d4f70c8fd26",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261106-23065838-bss-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【警報級大雪のおそれ】気象庁の週間天気予報（11月6日〜12日） 北日本で8日にかけて大しけ・大荒れ 台風31号の動きはどうなる? 進路予想・今後の雨風シミュレーションも（BSS山陰放送）",
-"date": "2026-11-05T05:44:13+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/01f10eaaf8ed223e96be4ccab9b34f83ab0494c6",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261105-23063922-bss-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【台風のたまご】新たな「熱帯低気圧」発生へ…発達すれば32年ぶり「台風32号」に 今後の動きは? 予想天気図・11月15日にかけての降水シミュレーション【気象庁5日発表】今後の台風情報に注意（BSS山陰放送）",
-"date": "2026-11-05T04:33:15+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/fb0fd5762f22aae4c7ff55c572ae5ef0609e3796",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261105-23063541-bss-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【気象情報】台風のたまご＝熱帯低気圧（TD）が予想天気図に 台風に発達すれば1994年以来の年間32個目 【天気図・雨と風のシミュレーション】",
-"date": "2026-11-05T03:07:00+00:00",
-"source": "UQライフ",
-"summary": "",
-"url": "https://portal.uqmobile.jp/detail/1/2/5/10472_5_r_20261105_1793848222356468",
-"image": "https://www.uqwimax.jp/common2/images/ogp.png"
-}
-]
-},
-{
-"id": 179,
-"name": "広島旅行",
-"day": "2026-11-08",
-"fp": "4c5231aeec2e",
-"rows": [
-{
-"title": "【広島県尾道市観光】「未来心の丘」と「瀬戸田サンセットビーチ」が感動的すぎた..【しなまみ海道/尾道生口島】",
-"date": "2026-11-04T08:39:11+00:00",
-"source": "ライブドアニュース",
-"summary": "",
-"url": "https://news.livedoor.com/topics/detail/32731123/?_clicked=echoes_list",
-"image": "https://image.news.livedoor.com/newsimage/stf/1/0/10b42_1845_bfc8d162_b0b701f5.jpg"
-},
-{
-"title": "広島旅行中、スーパーで偶然見つけたシールに釘付け！県外在住の投稿者さんが「最高」と感じたワケ（LIMO）",
-"date": "2026-11-03T08:05:52+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/36fe45b4f958b40c5499517aa8f0b9925cc9ccc5",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00144262-toushin-000-1-view.jpg?exp=10800"
-},
-{
-"title": "広島旅行中に見つけたシールに思わず購入を決意 地元民からも「半分も初見」の声",
-"date": "2026-11-03T08:04:00+00:00",
-"source": "LIMO | くらしとお金の経済メディア",
-"summary": "",
-"url": "https://limo.media/articles/-/144262",
-"image": "https://limo.ismcdn.jp/mwimgs/7/4/1200w/img_74c43f4db2759eac9251bdb48dbbf658118428.jpg"
-},
-{
-"title": "水盤の上のカラフルなキューブ…実はこれ、美術館の展示室！「世界で最も美しい美術館」に選ばれた下瀬美術館は広島観光するならマストで訪れたい新名所",
-"date": "2026-11-03T08:00:00+00:00",
+"title": "「葬送のフリーレン」より新アイテムが続々！千年以上生きるフリーレンも大満足の半永久的に使えるカレンダーも",
+"date": "2026-11-06T12:05:58+00:00",
 "source": "ウォーカープラス",
 "summary": "",
-"url": "https://www.walkerplus.com/article/1335064/",
-"image": "https://news.walkerplus.com/article/1335064/16451981_615.jpg"
+"url": "https://www.walkerplus.com/article/1177387/",
+"image": "https://news.walkerplus.com/article/1177387/12584109_615.jpg"
 },
 {
-"title": "【クインテッサホテル広島銀山町】1階レストランが一新！お仕事や観光の合間に憩う「バルラウンジ」が誕生。11月3日（火）",
-"date": "2026-11-02T14:51:26+00:00",
-"source": "ニコニコニュース",
-"summary": "",
-"url": "https://news.nicovideo.jp/watch/nw19949573",
-"image": "https://prcdn.freetls.fastly.net/release_image/34663/245/34663-245-5553331e0e3247d82faa891066648e7c-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
-},
-{
-"title": "【広島呉市観光】大和ミュージアムと潜水隊基地、絶品呉グルメを紹介！【広島呉グルメ】",
-"date": "2026-11-02T10:30:00+00:00",
-"source": "ライブドアニュース",
-"summary": "",
-"url": "https://news.livedoor.com/topics/detail/32715715/?_clicked=echoes_list",
-"image": "https://image.news.livedoor.com/newsimage/stf/7/9/79194_1845_83b56c20_d1ca7798.jpg"
-},
-{
-"title": "原爆被害、子どもに寄り添い紹介 広島の原爆資料館 展示3スペースを2028年4月開設",
-"date": "2026-11-02T06:01:00+00:00",
-"source": "47NEWS",
-"summary": "",
-"url": "https://www.47news.jp/15173514.html",
-"image": "https://img.cf.47news.jp/public/photo/c7c27c47a31bc6115ced672177049be4/photo.jpg"
-},
-{
-"title": "【広島観光おすすめグルメ】ピースウイング周辺の焼肉屋と原爆ドーム近くのお好み焼き屋を紹介！",
-"date": "2026-11-02T04:07:09+00:00",
-"source": "ライブドアニュース",
-"summary": "",
-"url": "https://news.livedoor.com/article/detail/32712444/",
-"image": "https://image.news.livedoor.com/newsimage/stf/0/a/0acfa_1845_dc4086ac_b98bf415.jpg"
-},
-{
-"title": "大韓航空就航前に韓国旅行会社トップ招き視察ツアー 広島",
-"date": "2026-11-02T01:58:57+00:00",
-"source": "NHKニュース",
-"summary": "",
-"url": "https://news.web.nhk/newsweb/na/nd-20261102de69376",
-"image": "https://imgu.web.nhk/common/news/eyecatch/nhk-one-news_eyecatch-1280x720.png"
-},
-{
-"title": "【神戸・広島旅行記①】星街すいせいのライブを観に神戸へ！",
-"date": "2026-11-01T13:10:00+00:00",
-"source": "note",
-"summary": "2026年10月21日から23日まで、親友と神戸・広島へ旅行してきました。 全3回に分けて、その旅行の記録を綴っていこうと思います。 今回はその初日、 星街すいせいアリーナツアー神戸公演編。 10月21日 神戸へ。そして、星街すいせいのライブへ！ 今回の旅行は羽田空港からスタート。 13時頃のフライトで神戸へ向かい、1",
-"url": "https://note.com/nagomi1105/n/n6d20f2995489",
-"image": "https://www.bing.com/th?id=ONUT.d0RLBAMvHMXCwkz8Gx7o2w&pid=News&w=1200"
-},
-{
-"title": "「平和教育ってこれでいいの？」８月６日に生まれ、広島で育って感じた疑問 「戦争はダメだね」だけで終わらせたくない。新しい修学旅行に挑戦する高校も",
-"date": "2026-11-01T07:00:00+00:00",
+"title": "『葬送のフリーレン』裏側？大反響のフェルメールの名作風イラストに新バージョン「神イラスト」「フェルン？」",
+"date": "2026-11-05T22:27:18+00:00",
 "source": "山陽新聞",
 "summary": "",
-"url": "https://www.sanyonews.jp/article/1971022",
-"image": "https://static.sanyonews.jp/image/article/size1/a/a/8/0/aa8057fdf6b56a604365ee04736efa4f_1.jpg"
+"url": "https://www.sanyonews.jp/article/1953918?kw=%E6%9C%AB%E9%95%B7",
+"image": "https://static.sanyonews.jp/image/article/size1/7/8/3/4/7834d93f47272dbf683ffd34b1db2547_1.jpg"
 },
 {
-"title": "【神戸・広島旅行記③】10年越しの夢、念願の呉。そして旅の終わり",
-"date": "2026-11-01T04:13:00+00:00",
+"title": "芸能人に大人気のロケ弁を！？『葬送のフリーレン』公式Xのぬいぐるみ「弁当のフリーレン」投稿が話題に（ABEMA TIMES）",
+"date": "2026-11-05T11:48:15+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/d9756ca328d2a327ffd54238b8c74485e87d8613",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261105-10286657-abemad-000-1-view.jpg?exp=10800"
+},
+{
+"title": "「葬送のフリーレン」公式、赤ドレス姿のイラスト公開に反響 「洋装のフリーレン」「フィギュア化希望」（WEBザテレビジョン）",
+"date": "2026-11-05T10:42:52+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/a294d121da187874ef2e74435a9c6e88ea0e6c63",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261105-01454491-the_tv-000-1-view.jpg?exp=10800"
+},
+{
+"title": "『葬送のフリーレン』作者、秋アニメのイラスト描きネットざわつく「絵を通じて伝わる温かさ」",
+"date": "2026-11-05T02:40:56+00:00",
+"source": "福井新聞社",
+"summary": "",
+"url": "https://www.fukuishimbun.co.jp/articles/gallery/2719343?ph=1",
+"image": "https://fki.ismcdn.jp/mwimgs/9/b/-/img_9bde9aff49a3d81d77471c70a7be9a6e91126.jpg"
+},
+{
+"title": "「葬送のフリーレン」フリーレン、フェルン、シュタルクの農家姿がキュート 「THE FARM」コラボグッズの事後通販がスタート",
+"date": "2026-11-04T19:06:45+00:00",
+"source": "アニメ！アニメ！ on MSN",
+"summary": "TVアニメ『葬送のフリーレン』と「農園リゾート THE FARM」のコラボ企画『思い出を紡ぐ、星と焚き火の旅路』で展開されたグッズのオンライン販売がスタート。「THE FARM」オンラインショップにて販売中だ。 『葬送のフリーレン』は小学館「週刊少年サンデー」で連載中の、山田鐘人（原作）・アベツカサ（作画）によるマンガ",
+"url": "https://www.msn.com/ja-jp/news/other/%E8%91%AC%E9%80%81%E3%81%AE%E3%83%95%E3%83%AA%E3%83%BC%E3%83%AC%E3%83%B3-%E3%83%95%E3%83%AA%E3%83%BC%E3%83%AC%E3%83%B3-%E3%83%95%E3%82%A7%E3%83%AB%E3%83%B3-%E3%82%B7%E3%83%A5%E3%82%BF%E3%83%AB%E3%82%AF%E3%81%AE%E8%BE%B2%E5%AE%B6%E5%A7%BF%E3%81%8C%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%88-the-farm-%E3%82%B3%E3%83%A9%E3%83%9C%E3%82%B0%E3%83%83%E3%82%BA%E3%81%AE%E4%BA%8B%E5%BE%8C%E9%80%9A%E8%B2%A9%E3%81%8C%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88/ar-AA2gMWzw",
+"image": "https://www.bing.com/th?id=ONUT.jyRM8SbWrxUMC791fGnLTA&pid=News&w=640"
+},
+{
+"title": "現地に行けなかったファンも購入可能に！TVアニメ「葬送のフリーレン」×THE FARMのコラボグッズ、オンラインで販売開始",
+"date": "2026-11-04T15:59:00+00:00",
+"source": "PR TIMES",
+"summary": "株式会社ザファーム（本社：千葉県香取市、代表取締役：武田泰明）が運営する「農園リゾート THE FARM」では、TVアニメ「葬送のフリーレン」とのコラボレーション企画『思い出を紡ぐ、星と焚き火の旅路』で展開しているコラボグッズのオンライン販売を開始いたしました。 本コラボレーションは、2026年7月17日（金）から10",
+"url": "https://prtimes.jp/main/html/rd/p/000000303.000020935.html",
+"image": "https://www.bing.com/th?id=ONUT.3OBIqK6dZkff3ixO5BK2lA&pid=News&w=1050"
+},
+{
+"title": "葬送のフリーレンについて語ってみたい夜",
+"date": "2026-11-04T15:35:00+00:00",
 "source": "note",
-"summary": "2026年10月21日から23日まで、親友と神戸・広島へ旅行してきました。全3回に分けて、その旅行の記録を綴っていこうと思います。 今回はその3日目最終日です！ 10月23日 旅の最終日。念願の呉へ！ いよいよ旅行も最終日。 この日も比較的早起きして、目的地である呉へ向かいます。 実は私、13年前から『艦隊これくしょん",
-"url": "https://note.com/nagomi1105/n/ncf5630ea96bb",
-"image": "https://www.bing.com/th?id=ONUT.iE2XUzM0H-v-6vIoFeTP6Q&pid=News&w=1200"
+"summary": "以下のリンクは、わたしが大好きなヨムモン氏のコラム。「葬送のフリーレン」ってどんなアニメ？という方はこちらを読めば、その魅力を理解してAmazon primeのサブスク登録してしまうことでしょう。 さて、わたしのほうはそんな正統派じゃないです。 「追体験、つまり味わい直すこと」 『葬送のフリーレン』の主人公フリーレンは",
+"url": "https://note.com/human_kalmia6755/n/n4809d4d5218a",
+"image": "https://www.bing.com/th?id=ONUT.GSjuaHO37k9voc5m7JsdLw&pid=News&w=1200"
+},
+{
+"title": "「路銀大丈夫か？」「また、毎日おやつ抜きになってしまいます」『葬送のフリーレン』公式X、豪遊するスシーレン投稿で心配の声続々",
+"date": "2026-11-04T12:38:24+00:00",
+"source": "千葉テレビ放送",
+"summary": "",
+"url": "https://www.chiba-tv.com/plus/detail/2026112192390",
+"image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1490692141096436767/origin_1.jpg"
 }
 ]
 },
 {
-"id": 171,
-"name": "美術館の企画展",
+"id": 140,
+"name": "呪術廻戦",
 "day": "2026-11-08",
-"fp": "eed9baf3c0d6",
+"fp": "515a42db483a",
 "rows": [
 {
-"title": "【浜松市美術館の企画展「みほとけのキセキⅢ 三・遠・駿 神仏オールスター☆」】「推し」の仏像に会いに行く",
-"date": "2026-10-26T08:00:00+00:00",
-"source": "ｄメニューニュース",
+"title": "『呪術廻戦』おせち2027登場 死滅回游の世界観を詰めた三段重 (2026年11月7日掲載)",
+"date": "2026-11-07T07:28:35+00:00",
+"source": "ライブドアニュース",
 "summary": "",
-"url": "https://topics.smt.docomo.ne.jp/article/ats_sbs/region/ats_sbs-2084764",
-"image": "https://img.topics.smt.news.goo.ne.jp/-/20261026140623/img/region_x2.png"
+"url": "https://news.livedoor.com/topics/detail/32757321/",
+"image": "https://image.news.livedoor.com/newsimage/stf/9/b/9bd00_760_2491422_20261107_161020_size640wh_12055764.jpg"
 },
 {
-"title": "178 収蔵企画展 吉澤コレクションの鳥 「美術館でバードウォッチング！」/ 「おめでたい鳥たち」 佐野市立吉澤記念美術館",
-"date": "2026-10-25T01:48:00+00:00",
-"source": "note",
-"summary": "美術館でバードウォッチング！？佐野市立吉澤記念美術館で楽しむ「鳥」が主役のユニークな展覧会 突然ですが、「バードウォッチング」と聞くと、双眼鏡を片手に森や川へ出かける姿を思い浮かべませんか？ 実は、そんな野鳥観察を「美術館の室内」で楽しんでしまおうという、とってもユニークでワクワクする展覧会が開催されます！ 今回ご紹介",
-"url": "https://note.com/unique_racoon150/n/n4c51fb79d85f",
-"image": "https://www.bing.com/th?id=ONUT.1t7zSjUd16ALvs67x21ybw&pid=News&w=1200"
+"title": "アニメ『呪術廻戦』のおせちが登場 「死滅回游」の世界観が詰まった全36品の三段重詰め合わせ オリジナル重箱、風呂敷などの特典も",
+"date": "2026-11-07T07:28:00+00:00",
+"source": "ｄメニューニュース",
+"summary": "",
+"url": "https://topics.smt.docomo.ne.jp/article/oricon/entertainment/oricon-2491422",
+"image": "https://img.topics.smt.news.goo.ne.jp/picture/oricon/m_oricon-2491422.jpg"
+},
+{
+"title": "呪術廻戦 証明写真風アクリルキーホルダーの設置場所・発売日・ラインナップ｜ガチャガチャ",
+"date": "2026-11-07T00:24:03+00:00",
+"source": "キャラグー",
+"summary": "",
+"url": "https://charagoo.jp/gacha/item/d77fdecbfa0b/",
+"image": "https://charagoo.jp/wp-content/uploads/2026/11/fb6bb33194913d1a180df0a53969de48.jpg"
+},
+{
+"title": "画像1 / 4＞呪術廻戦より“もちっとキャラ”がかわいいアイテムが登場！パスケースやレザーのバッジなどがラインナップ",
+"date": "2026-11-06T14:15:48+00:00",
+"source": "ウォーカープラス",
+"summary": "",
+"url": "https://www.walkerplus.com/article/1156927/image12174697.html",
+"image": "https://news.walkerplus.com/article/1156927/12174697_615.jpg"
+},
+{
+"title": "TV アニメ『呪術廻戦』おせち2027 が予約受付開始！！",
+"date": "2026-11-06T10:00:00+00:00",
+"source": "MANTANWEB（まんたんウェブ）",
+"summary": "TVアニメ『呪術廻戦』第3 期「死滅回游」の世界観と魅力がたっぷり詰まった、特製おせちセットが初登場！ 食品の企画・販売を手掛ける株式会社コラント(本社：岐⾩県⽻島市、代表：堀 雅利)は、TV アニメ『呪術廻戦』おせち2027 の予約受付を、コラントオンラインショップにて開始します。 TV アニメ『呪術廻戦』おせち20",
+"url": "https://mantan-web.jp/prtimes/article/20261106prt00m200001250a.html",
+"image": "https://www.bing.com/th?id=ONUT.EPV-D9kur2f37sPhwIb-FQ&pid=News&w=650"
+},
+{
+"title": "ケーキスタンドに座った姿がグッズに！まるくじ TVアニメ『呪術廻戦』「死滅回游」【すたんどるちぇ】",
+"date": "2026-11-05T15:39:54+00:00",
+"source": "Dtimes",
+"summary": "",
+"url": "https://dtimes.jp/post-1452494/",
+"image": "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-a0313e35c9833666d2db2aa2bd47fcea-20261105-ec9483.jpg"
+},
+{
+"title": "「憂太のビジュレベチでは？」「高羽のうしろ姿かっこよw」「石流がこの並びに」『呪術廻戦』ファンパレ、死滅回游キービジュアルが解禁（ABEMA TIMES）",
+"date": "2026-11-05T10:30:36+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/83f88d81f9578d90acafda4688350ad6adcba0a6",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261105-10286349-abemad-000-1-view.jpg?exp=10800"
+},
+{
+"title": "『呪術廻戦』「死滅回游」の9人がケーキスタンドに座る「すたんどるちぇ」まるくじが販売中！アクスタ・アクキー・缶バッジが1個880円",
+"date": "2026-11-05T10:26:00+00:00",
+"source": "にじめん",
+"summary": "",
+"url": "https://nijimen.kusuguru.co.jp/topics/649566",
+"image": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/d8e4cf974262494a9d1b2bdc9c00c012.jpg"
+},
+{
+"title": "「憂太のビジュレベチでは?」「高羽のうしろ姿かっこよw」「石流がこの並びに」『呪術廻戦』ファンパレ、死滅回游キー ...",
+"date": "2026-11-05T02:30:00+00:00",
+"source": "ABEMA TIMES on MSN",
+"summary": "スマートフォンゲーム『呪術廻戦 ファントムパレード』公式Xにて、11月中旬よりゲーム内に順次追加予定のメインストーリー追体験「死滅回游 前編」のキービジュアルが解禁となった。期待感が膨らむビジュアルに、ファンから興奮と絶賛の声が多く寄せられている。 『呪術廻戦 ...",
+"url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E6%86%82%E5%A4%AA%E3%81%AE%E3%83%93%E3%82%B8%E3%83%A5%E3%83%AC%E3%83%99%E3%83%81%E3%81%A7%E3%81%AF-%E9%AB%98%E7%BE%BD%E3%81%AE%E3%81%86%E3%81%97%E3%82%8D%E5%A7%BF%E3%81%8B%E3%81%A3%E3%81%93%E3%82%88w-%E7%9F%B3%E6%B5%81%E3%81%8C%E3%81%93%E3%81%AE%E4%B8%A6%E3%81%B3%E3%81%AB-%E5%91%AA%E8%A1%93%E5%BB%BB%E6%88%A6-%E3%83%95%E3%82%A1%E3%83%B3%E3%83%91%E3%83%AC-%E6%AD%BB%E6%BB%85%E5%9B%9E%E6%B8%B8%E3%82%AD%E3%83%BC%E3%83%93%E3%82%B8%E3%83%A5%E3%82%A2%E3%83%AB%E3%81%8C%E8%A7%A3%E7%A6%81/ar-AA2gNQjM",
+"image": "https://www.bing.com/th?id=ONUT.hm6LPWcJRvNf01stUd3yEQ&pid=News&w=724"
+},
+{
+"title": "か、かわいい…♪「呪術廻戦」虎杖や伏黒、直哉、日車がクレープの妖精に!? デフォルメイラストグッズが「まるくじ」に登場",
+"date": "2026-11-04T21:00:00+00:00",
+"source": "アニメ！アニメ！",
+"summary": "今回のまるくじTVアニメ『呪術廻戦』「死滅回游」【すたんどるちぇ】では、ケーキスタンドに座った姿がテーマの新規描き起こしイラストを使用したオリジナルグッズをラインナップ。虎杖悠仁、伏黒恵、乙骨憂太、禪院真希、脹相、日車寛見、禪院直哉、羂索、宿儺の可愛らしいデフォルメイラストがポイントだ。",
+"url": "https://animeanime.jp/article/2026/11/05/104507.html",
+"image": "https://www.bing.com/th?id=ONUT.sieTERQMtuusTpIzbuLFlQ&pid=News&w=600"
+},
+{
+"title": "画像1 / 6＞「呪術廻戦」初の家庭用アクションゲームが登場！呪術師や呪霊たちの「呪術」を使ってバトル",
+"date": "2026-11-04T19:56:45+00:00",
+"source": "ウォーカープラス",
+"summary": "",
+"url": "https://www.walkerplus.com/article/1146310/image11953432.html",
+"image": "https://news.walkerplus.com/article/1146310/11953432_615.jpg"
+},
+{
+"title": "『まるくじ』にて、TVアニメ『呪術廻戦』のキャラグッズが当たるくじが販売開始！",
+"date": "2026-11-04T15:59:00+00:00",
+"source": "時事ドットコム",
+"summary": "［株式会社エディア］株式会社エディア（本社:東京都千代田区、代表取締役社長:賀島 義成）の子会社、株式会社ティームエンタテインメント（本社:東京都千代田区、代表取締役社長:賀島 義成 以下:ティームエンタテインメント）は、2026年11月2日(月) 12:00よりTVアニメ『呪術廻戦』の新規オリジナルグッズを、インター",
+"url": "https://www.jiji.com/jc/article?k=000001220.000021592&g=prt",
+"image": "https://www.bing.com/th?id=ONUT.G3K0SCL-FaaAPAv4S65Hng&pid=News&w=180"
+}
+]
+},
+{
+"id": 143,
+"name": "鬼滅の刃",
+"day": "2026-11-08",
+"fp": "ee8e25eda5ed",
+"rows": [
+{
+"title": "鬼滅の刃 無限列車編＞第5話「前へ！」 無限列車と融合した魘夢 触手が乗客に迫る 命を懸けた総力戦！ (MANTANWEB)",
+"date": "2026-11-07T01:13:00+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/2a36b46e5ba88c9d8ed07c8f705ce9d0b4c76039/images/000",
+"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26sS9gK-3cPbWBudn3tTBYD2xHD-4vbya7eM44kvMWCXZr--oQ-yneu3XK7pHZXYos82xva9RCx8FvhoM-gJIzOt8KrPvMe7FdMQhCAovC8qyn5VhPiVVFwggbwUedwbJuQ=="
+},
+{
+"title": "『鬼滅の刃』炭治郎の強さは血筋か継承か？ 先祖に着目した一読者の見方に、伝えた側の力や家系そのものを評価する声が集まる",
+"date": "2026-11-06T23:26:00+00:00",
+"source": "にじめん",
+"summary": "",
+"url": "https://nijimen.kusuguru.co.jp/topics/650621",
+"image": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/c96da4568e344a49b236fb22ffcdf02f.jpg"
+},
+{
+"title": "鬼滅の刃 無限列車編：第5話「前へ!」 無限列車と融合した魘夢 触手が乗客に迫る 命を懸けた総力戦!",
+"date": "2026-11-06T17:03:00+00:00",
+"source": "MANTANWEB（まんたんウェブ） on MSN",
+"summary": "吾峠呼世晴（ごとうげ・こよはる）さんの人気マンガが原作のテレビアニメ「鬼滅の刃」の「無限列車編」の第5話「前へ！」が、11月8日午前9時半からフジテレビほかで放送される。同作は、2020年10月に公開され、国内歴代興行収入1位となる約407億円を記録した「劇場版『鬼滅の刃』無限列車編」のテレビアニメ版。 無限列車と融合",
+"url": "https://www.msn.com/ja-jp/news/other/%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83-%E7%84%A1%E9%99%90%E5%88%97%E8%BB%8A%E7%B7%A8-%E7%AC%AC5%E8%A9%B1-%E5%89%8D%E3%81%B8-%E7%84%A1%E9%99%90%E5%88%97%E8%BB%8A%E3%81%A8%E8%9E%8D%E5%90%88%E3%81%97%E3%81%9F%E9%AD%98%E5%A4%A2-%E8%A7%A6%E6%89%8B%E3%81%8C%E4%B9%97%E5%AE%A2%E3%81%AB%E8%BF%AB%E3%82%8B-%E5%91%BD%E3%82%92%E6%87%B8%E3%81%91%E3%81%9F%E7%B7%8F%E5%8A%9B%E6%88%A6/ar-AA2gVNjb",
+"image": "https://www.bing.com/th?id=ONUT.AD5njtNpy9OOk8uCUNs3hA&pid=News&w=1200"
+},
+{
+"title": "シール付きウエハース「にふぉるめーしょん」の『鬼滅の刃』第16弾が登場! 全種スーパーレア以上で構成された超豪華弾!",
+"date": "2026-11-06T16:00:00+00:00",
+"source": "電撃ホビーウェブ on MSN",
+"summary": "バンダイより、食玩「にふぉるめーしょん 鬼滅の刃ディフォルメシールウエハース 其ノ十六」が登場！ 2026年11月9日より発売予定です。",
+"url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E3%82%B7%E3%83%BC%E3%83%AB%E4%BB%98%E3%81%8D%E3%82%A6%E3%82%A8%E3%83%8F%E3%83%BC%E3%82%B9-%E3%81%AB%E3%81%B5%E3%81%89%E3%82%8B%E3%82%81%E3%83%BC%E3%81%97%E3%82%87%E3%82%93-%E3%81%AE-%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83-%E7%AC%AC16%E5%BC%BE%E3%81%8C%E7%99%BB%E5%A0%B4-%E5%85%A8%E7%A8%AE%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%AC%E3%82%A2%E4%BB%A5%E4%B8%8A%E3%81%A7%E6%A7%8B%E6%88%90%E3%81%95%E3%82%8C%E3%81%9F%E8%B6%85%E8%B1%AA%E8%8F%AF%E5%BC%BE/ar-AA2gVvm0",
+"image": "https://www.bing.com/th?id=ONUT.LQ4jgJQmWMYrMWtBECWvDw&pid=News&w=1200"
+},
+{
+"title": "難読キャラクター名クイズ 第3回 難読アニメキャラクイズ 「栗花落カナヲ」何と読む? 『鬼滅の刃』より",
+"date": "2026-11-06T13:15:37+00:00",
+"source": "マイナビニュース on MSN",
+"summary": "● アニメや漫画に登場するキャラクターの中には、独特な読み方や普段目にしない漢字が登場することもしばしば。でもそれがまたカッコいいんですよねぇ…! このクイズでは、さまざまな作品から難読キャラクター名の読み方について出題します。 このキャラクター名、何と読む? 『鬼滅の刃』より 正解は次のページで… ⇒✅1問目からまと",
+"url": "https://www.msn.com/ja-jp/entertainment/anime/%E9%9B%A3%E8%AA%AD%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E5%90%8D%E3%82%AF%E3%82%A4%E3%82%BA-%E7%AC%AC3%E5%9B%9E-%E9%9B%A3%E8%AA%AD%E3%82%A2%E3%83%8B%E3%83%A1%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%A4%E3%82%BA-%E6%A0%97%E8%8A%B1%E8%90%BD%E3%82%AB%E3%83%8A%E3%83%B2-%E4%BD%95%E3%81%A8%E8%AA%AD%E3%82%80-%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83-%E3%82%88%E3%82%8A/ar-AA2gUgYr",
+"image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gUYbe.img"
+},
+{
+"title": "『鬼滅の刃』を『ホタルの嫁入り』作者が描いたら…「美しすぎ」「かっっっこいい」と絶賛の声",
+"date": "2026-11-06T05:00:00+00:00",
+"source": "Yahoo!ニュース",
+"summary": "描かれているのは、鬼殺隊の柱・胡蝶しのぶの姉である胡蝶カナエです。 カナエは刀を手にしており、長い髪や羽織が風になびいているように華やかに広がっている様子が繊細に表現されています。",
+"url": "https://news.yahoo.co.jp/articles/a6364a9b74d22bc94be9862f384f2bac9b5a32d8",
+"image": "https://www.bing.com/th?id=ONUT.29oTaKAQXfgjMt1XTJP-5A&pid=News&w=451"
+},
+{
+"title": "二次元を巻き込むな？「鬼滅の刃」のコスプレ撮影をした女性に批判の声―中国",
+"date": "2026-11-05T14:00:02+00:00",
+"source": "Record China",
+"summary": "",
+"url": "https://www.recordchina.co.jp/b997218-s25-c30-d0201.html",
+"image": "https://assets.recordchina.co.jp/newRc/m1200/20261105/c70843b0e757a3b4767fc5e3281a65f2.jpg"
+},
+{
+"title": "鬼滅の刃 にふぉるめーしょんウエハース 第16弾 11月9日発売!",
+"date": "2026-11-05T09:18:20+00:00",
+"source": "コラボカフェ",
+"summary": "",
+"url": "https://collabo-cafe.com/events/collabo/kimetsu-niformation-seal-wafer-vol16-2026/",
+"image": "https://collabo-cafe.com/wp-content/uploads/kimetsu-niformation-vol16-2026-main.jpg"
+},
+{
+"title": "GARRACKから、「金沢箔」を使用したメイドインジャパンの機械式時計シリーズに、新たにアニメ「鬼滅の刃」の4モデルが登場。",
+"date": "2026-11-05T06:46:00+00:00",
+"source": "ORICON NEWS",
+"summary": "株式会社ウエニ貿易（本社：東京都台東区、代表取締役社長 宮上光喜）のキャラクターコラボレーション専門ブランド『GARRACK（ギャラック）』は、日本の伝統工芸「金沢箔」を文字盤に使用し、職人が1点1点手作りで仕上げた、メイドインジャパンの自動巻腕時計シリーズより、アニメ「鬼滅の刃」新4モデルを11月下旬に発売します。 ",
+"url": "https://www.oricon.co.jp/pressrelease/3072067/",
+"image": "https://www.bing.com/th?id=ONUT.GxjBmFyGBNYsZQu8IMb8tA&pid=News&w=400"
+},
+{
+"title": "「鬼滅の刃」×GARRACK、金沢箔を文字盤に使った自動巻腕時計の新4モデルが2026年11月下旬に発売予定",
+"date": "2026-11-05T06:40:00+00:00",
+"source": "にじめん",
+"summary": "",
+"url": "https://nijimen.kusuguru.co.jp/topics/649479",
+"image": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/86a7ef59a28d427e85cabdb3247b9bb1.png"
+},
+{
+"title": "烈士公園で「鬼滅の刃」のコスプレが騒動に、和服は着ていいものなのか？―中国メディア",
+"date": "2026-11-05T06:00:01+00:00",
+"source": "Record China",
+"summary": "",
+"url": "https://www.recordchina.co.jp/b997208-s25-c30-d0193.html",
+"image": "https://assets.recordchina.co.jp/newRc/m1200/20261105/418eb8c930cef931b681931585ff07db.jpg"
+},
+{
+"title": "『鬼滅の刃』『進撃の巨人』『名探偵コナン』の名シーンとともに倉木麻衣らが圧巻のパフォーマンス！『TOKYO ANIME NEXT』メインイベントで新アワードの名称も発表（SPICE）",
+"date": "2026-11-05T03:00:00+00:00",
+"source": "ｄメニューニュース",
+"summary": "",
+"url": "https://topics.smt.docomo.ne.jp/article/spice/entertainment/spice-350123",
+"image": "https://img.topics.smt.news.goo.ne.jp/picture/spice/m_spice-350123.jpg"
+}
+]
+},
+{
+"id": 144,
+"name": "ポケットモンスター",
+"day": "2026-11-08",
+"fp": "7111d32345fe",
+"rows": [
+{
+"title": "ポケットモンスターXY #93〜98【無料ビデオ1週間】",
+"date": "2026-11-07T10:51:59+00:00",
+"source": "ABEMA",
+"summary": "",
+"url": "https://abema.tv/channels/pokemon-2/slots/8tqzksJb8CYyrX",
+"image": ""
+},
+{
+"title": "やり込んだ「ポケモンシリーズ」のソフトランキング！ 2位『ポケットモンスター 金・銀』を抑えた1位は？【2026年調査】",
+"date": "2026-11-07T06:40:00+00:00",
+"source": "ｄメニューニュース",
+"summary": "",
+"url": "https://topics.smt.docomo.ne.jp/article/allaboutnews/entertainment/allaboutnews-166487",
+"image": "https://img.topics.smt.news.goo.ne.jp/picture/allaboutnews/m_allaboutnews-166487.jpg"
+},
+{
+"title": "ポケットモンスターXY #81〜92【無料ビデオ1週間】",
+"date": "2026-11-07T05:04:57+00:00",
+"source": "ABEMA",
+"summary": "",
+"url": "https://abema.tv/channels/pokemon-2/slots/AQzUVvxyb2TyFM",
+"image": "https://image.p-c2-x.abema-tv.com/image/programs/2-26_s1_p81/thumb001.png?height=720&quality=75&version=1740999756&width=1280"
+},
+{
+"title": "ポケットモンスター いろんなおかおぬいぐるみ～ニャース・ヌメラ～の入荷日・価格｜プライズ",
+"date": "2026-11-07T00:27:23+00:00",
+"source": "キャラグー",
+"summary": "",
+"url": "https://charagoo.jp/prize/item/3b9f70aca4ba/",
+"image": "https://charagoo.jp/wp-content/uploads/2026/11/668w_668h-10.jpg"
+},
+{
+"title": "ポケットモンスター ほっこりいやされ顔型クッション～カビゴン～の入荷日・価格｜プライズ",
+"date": "2026-11-07T00:27:23+00:00",
+"source": "キャラグー",
+"summary": "",
+"url": "https://charagoo.jp/prize/item/5d7a5c2dd103/",
+"image": "https://charagoo.jp/wp-content/uploads/2026/11/668w_668h-8.jpg"
+},
+{
+"title": "ポケットモンスタープラチナムザッカクリア窓付ショルダーバッグの入荷日・価格｜プライズ",
+"date": "2026-11-07T00:27:23+00:00",
+"source": "キャラグー",
+"summary": "",
+"url": "https://charagoo.jp/prize/item/8896d69a553b/",
+"image": "https://charagoo.jp/wp-content/uploads/2026/11/D123446_01.webp"
+},
+{
+"title": "ポケットモンスター ダイヤモンド・パール #45〜56【無料ビデオ1週間】",
+"date": "2026-11-06T22:57:36+00:00",
+"source": "ABEMA",
+"summary": "",
+"url": "https://abema.tv/channels/pokemon-1/slots/As4SWPto2QvvdD",
+"image": ""
+},
+{
+"title": "『ポケットモンスター』シリーズの歴代マップや、各地方の「どうろ」と名所を題材にしたグッズが発表",
+"date": "2026-11-06T15:33:00+00:00",
+"source": "電ファミニコゲーマー",
+"summary": "",
+"url": "https://news.denfaminicogamer.jp/news/2611062q",
+"image": "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/f4745d6d9ec5d4bfb1bd2bf39ec093feb90c230c-1.jpg"
+},
+{
+"title": "ポケットモンスター【シャリタツ、いっちょうあがり！】(テレ東、2026/11/6 18:55 OA)の番組情報ページ",
+"date": "2026-11-06T14:01:09+00:00",
+"source": "www.tv-tokyo.co.jp",
+"summary": "",
+"url": "https://www.tv-tokyo.co.jp/broad_tvtokyo/program/detail/202611/27491_202611061855.html",
+"image": "https://www.tv-tokyo.co.jp/txcms/media/pg/L/97/24/27bab0b9775fa98e20120fee6998.jpg"
+},
+{
+"title": "NEW ERA ×『ポケットモンスター』30周年記念コレクション登場！ ピカチュウ＆初代御三家を刺繍したキャップなど全25アイテム",
+"date": "2026-11-06T13:35:38+00:00",
+"source": "玩具人 TOY PEOPLE",
+"summary": "",
+"url": "https://www.toy-people.com/jp/?p=116232",
+"image": "https://img.toy-people.com/member/17939720306_1200.png"
+},
+{
+"title": "「ポケモンボドゲくらぶキャラバン with フレンダ」がイオンモールで開催！",
+"date": "2026-11-06T11:34:40+00:00",
+"source": "ポケットモンスターオフィシャルサイト",
+"summary": "",
+"url": "https://www.pokemon.co.jp/info/2026/10/261030_e01.html",
+"image": "https://www.pokemon.co.jp/PostImages/39ec3fe48deb7b7600c9569f02c2916ccc95106d.jpg"
+},
+{
+"title": "シャリタツ達との別れ 新アニポケ 第156話 感想 「シャリタツ、いっちょうあがり！」【アニメ ポケットモンスター ワンダーボヤージュ編】",
+"date": "2026-11-06T10:53:01+00:00",
+"source": "人鳥日記",
+"summary": "",
+"url": "https://skypenguin.net/2026/11/06/post-175191/",
+"image": "https://skypenguin.net/wp/wp-content/uploads/2026/11/ポケットモンスター156話シャリタツ、いっちょうあがり！感想.png"
+}
+]
+},
+{
+"id": 145,
+"name": "ゼルダの伝説",
+"day": "2026-11-08",
+"fp": "1408a997a83b",
+"rows": [
+{
+"title": "『ゼルダの伝説 時のオカリナ』を外出先で！ Switch 2をドック不要で出力できる14型モバイルディスプレーが30％オフ",
+"date": "2026-11-07T10:30:00+00:00",
+"source": "ASCII.jp",
+"summary": "",
+"url": "https://ascii.jp/elem/000/004/449/4449456/",
+"image": "https://ascii.jp/img/2026/11/06/4548954/xl/80130b916efe0f6e.jpg?20200122"
+},
+{
+"title": "『ゼルダの伝説 時のオカリナ』リメイク版発売後、今週末パリでプレイできる場所は？",
+"date": "2026-11-07T09:35:54+00:00",
+"source": "Sortir à Paris",
+"summary": "",
+"url": "https://www.sortiraparis.com/ja/pari-de-nani-o-suru-ka/gemu/articles/357709-zerudano-yun-shuo-shinookarina-rimeiku-ban-fa-mai-hou-jin-zhou-moparidepureidekiru-chang-suoha",
+"image": "https://cdn.sortiraparis.com/images/80/88384/1308800-the-legend-of-zelda-ocarina-of-time-la-date-de-sortie-sur-nintendo-switch-2.jpg"
+},
+{
+"title": "『ゼルダの伝説 時のオカリナ』リメイクのオカリナ音声入力、「もはやなんでもあり」の無法演奏会に。オタマトーン、空きビン、“謎のおじいちゃん”までオカリナと化す",
+"date": "2026-11-07T05:03:34+00:00",
+"source": "AUTOMATON",
+"summary": "『ゼルダの伝説 時のオカリナ』リメイク版ではオカリナを音声入力で演奏できる。鼻歌どころではないあらゆる音声入力チャレンジがおこなわれている。",
+"url": "https://automaton-media.com/articles/newsjp/20261106-477933/",
+"image": "https://automaton-media.com/wp-content/uploads/2026/11/20261106-477933-heade2.jpg"
+},
+{
+"title": "リメイク版『ゼルダの伝説 時のオカリナ』だけじゃない！ スイッチ2なら“20本超え”のシリーズ作をプレイ可能─「ゼル伝」の海に溺れよう",
+"date": "2026-11-07T02:00:03+00:00",
+"source": "インサイド",
+"summary": "",
+"url": "https://www.inside-games.jp/article/2026/11/07/190503.html",
+"image": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1803502.png"
+},
+{
+"title": "スイッチ2版『ゼルダの伝説 時のオカリナ』耳を澄ますとコントローラーから“オカリナの音”が？HD振動2で演奏を再現",
+"date": "2026-11-06T23:16:42+00:00",
+"source": "Game*Spark on MSN",
+"summary": "11月5日に発売されたスイッチ2版『ゼルダの伝説 時のオカリナ』で、ボタン操作でオカリナを演奏すると、コントローラーの振動からも音が聞こえるとするXの投稿が話題になっています。 振動を“スピーカー”代わりに、任天堂作品でたびたび見られる遊び心 本作ではボタン操作でオカリナを吹いた際、Joy-Con 2やスイッチ2 ..",
+"url": "https://www.msn.com/ja-jp/news/other/%E3%82%B9%E3%82%A4%E3%83%83%E3%83%812%E7%89%88-%E3%82%BC%E3%83%AB%E3%83%80%E3%81%AE%E4%BC%9D%E8%AA%AC-%E6%99%82%E3%81%AE%E3%82%AA%E3%82%AB%E3%83%AA%E3%83%8A-%E8%80%B3%E3%82%92%E6%BE%84%E3%81%BE%E3%81%99%E3%81%A8%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%8B%E3%82%89-%E3%82%AA%E3%82%AB%E3%83%AA%E3%83%8A%E3%81%AE%E9%9F%B3-%E3%81%8C-hd%E6%8C%AF%E5%8B%952%E3%81%A7%E6%BC%94%E5%A5%8F%E3%82%92%E5%86%8D%E7%8F%BE/ar-AA2gWt1c",
+"image": "https://www.bing.com/th?id=ONUT.vu1rK7Cj150l1yuMjEDwwg&pid=News&w=640"
+},
+{
+"title": "任天堂、実写映画『ゼルダの伝説』の後も「新しい映像を継続して届ける」方針。NINTENDO 64の4つのコントローラー端子を例に、誰かと一緒に遊ぶことの価値も語る",
+"date": "2026-11-06T14:02:59+00:00",
+"source": "電ファミニコゲーマー",
+"summary": "映画制作で蓄積したデジタルアセットは、将来にわたって活用できる資産に。観客を楽しませる映像づくりは、開発者が新たな力を伸ばす機会にも",
+"url": "https://news.denfaminicogamer.jp/news/2611062p",
+"image": "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/HRsytRBbkAAi1O-.jpeg"
+},
+{
+"title": "スイッチ2版『ゼルダの伝説 時のオカリナ』ハイラル城からマリオやヨッシーの絵が消えた…その理由を青沼英二氏が海外メディア ...",
+"date": "2026-11-06T13:15:00+00:00",
+"source": "ORICON NEWS",
+"summary": "山田涼介も“LEO”で参戦。TCGは好きなタレントで選べばいい トレーディングカードゲーム『Xross Stars』。未経験や初心者でも大丈夫？選び方から遊び方まで、プロデューサーが語る“ゼロからの始め方” 今田美桜＆チ・チャンウク『メリーベリーラブ』徹底解説 『メリーベリーラブ』がディズニープラスで配信中。ビジュ良す",
+"url": "https://www.oricon.co.jp/article/3430100/",
+"image": "https://www.bing.com/th?id=ONUT.AJM-NLX88voIidvesN1BXA&pid=News&w=660"
+},
+{
+"title": "【Amazon予約数ランキング】Switch2リメイク版『ゼルダの伝説 時のオカリナ』が首位フィニッシュ。『タイトーマイルストーン5』が初登場4位【10/25～10/31】",
+"date": "2026-11-06T11:04:00+00:00",
+"source": "ファミ通",
+"summary": "",
+"url": "https://www.famitsu.com/article/202611/93315",
+"image": "https://cimg.kgl-systems.io/camion/files/93315/thumbnail_Igmf.jpg?x=1280"
+},
+{
+"title": "『ゼルダの伝説 時のオカリナ』製品版3機種のグラフィック比較動画公開。「見た目は変わっても、体験は変えない」というコンセプトが伝わる",
+"date": "2026-11-06T10:45:05+00:00",
+"source": "Game*Spark",
+"summary": "",
+"url": "https://www.gamespark.jp/article/2026/11/06/174586.html",
+"image": "https://www.gamespark.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1216408.png"
+},
+{
+"title": "『ゼルダの伝説 時のオカリナ』リメイク版にて「へっぽこ落下選手権」盛り上がる。動きはベテラン、ジャンプは忘れる",
+"date": "2026-11-06T08:52:00+00:00",
+"source": "AUTOMATON",
+"summary": "任天堂は11月5日、『ゼルダの伝説 時のオカリナ』リメイク版を発売した。対応プラットフォームはNintendo Switch 2。さっそく多くのプレイヤーが楽しんでいる様子がSNSなどでうかがえる。そんな中、原作を愛するベテランほど、追加されたジャンプ操作に苦戦し、情けなく落下する様子がXなどで披露されている。",
+"url": "https://automaton-media.com/articles/newsjp/20261106-477905/",
+"image": "https://www.bing.com/th?id=ONUT.oRiv7p3MAFGZ8elBqh-5jw&pid=News&w=1200"
+},
+{
+"title": "リメイクは技術を次世代に受け継ぐ仕組みか 『ゼルダの伝説 時のオカリナ』に見る任天堂の人材育成",
+"date": "2026-11-06T02:34:55+00:00",
+"source": "MEDIAMIXI",
+"summary": "",
+"url": "https://mediamixi.jp/news/18108/",
+"image": "https://mediamixi.jp/app/uploads/2026/11/1106_002.jpg"
+},
+{
+"title": "『時オカ』パロで『トランプの伝説 メイク・アメリカ・グレート・アゲイン』！？ホワイトハウス、『ゼルダの伝説 時のオカリナ』に便乗した映像ポスト。なんと言われても懲りない",
+"date": "2026-11-06T02:30:02+00:00",
+"source": "Game*Spark",
+"summary": "",
+"url": "https://www.gamespark.jp/article/2026/11/06/174556.html",
+"image": "https://www.gamespark.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1216180.jpg"
 }
 ]
 }
