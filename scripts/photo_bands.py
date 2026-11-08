@@ -170,19 +170,25 @@ def text_box(data):
 
 def measure(urls, cache, fetch, log=print):
     """まだ測っていない網址を測って cache に入れる（MAX_NEW まで）。→ 新しく測った数"""
-    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == 6)][:MAX_NEW]   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
+    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == 6 and not cache[u].get("dead"))][:MAX_NEW]   # 開けなかった写真は毎回試し直す   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
 
     def one(u):
         try:
             data = fetch(u)
             return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "s": segments(data), "v": 6} if data else {"t": [], "m": "", "k": None, "v": 6})
-        except Exception:  # noqa: BLE001  開けない写真は「測れない」として次から取りに行かない
-            return u, {"t": [], "m": "", "k": None, "v": 6}
-    with cf.ThreadPoolExecutor(max_workers=16) as ex:
-        for u, v in ex.map(one, todo):
+        except Exception as ex:  # noqa: BLE001  「無い」（404・410）と答えた写真だけ印（ページでは最初から代わりの写真か、カードを出さない）。
+            # つながらない・時間切れは一時的なものとして記録しない（次の回にまた試す。PC の DNS が落ちて 39 枚に印が付き、壁が空になった）
+            return u, ({"t": [], "m": "", "k": None, "v": 6, "dead": 1} if getattr(ex, "code", None) in (404, 410) else None)
+    with cf.ThreadPoolExecutor(max_workers=16) as pool:
+        got = list(pool.map(one, todo))
+    if todo and sum(1 for _, v in got if v is None or v.get("dead")) > 0.2 * len(todo):   # 2 割以上開けない：通信の問題。印は付けない
+        got = [(u, None if v and v.get("dead") else v) for u, v in got]
+    for u, v in got:
+        if v is not None:
             cache[u] = v
     if todo:
-        log(f"写真の余白と主役：{len(todo)} 枚を測った（余白あり {sum(1 for u in todo if cache[u]['t'])}・主役の位置 {sum(1 for u in todo if cache[u]['m'])}）")
+        ok = [u for u in todo if u in cache]
+        log(f"写真の余白と主役：{len(todo)} 枚を測った（余白あり {sum(1 for u in ok if cache[u]['t'])}・主役の位置 {sum(1 for u in ok if cache[u]['m'])}・無い {sum(1 for u in ok if cache[u].get('dead'))}・つながらず {len(todo) - len(ok)}）")
     return len(todo)
 
 
@@ -199,6 +205,8 @@ def inject(text, cache):
         if not isinstance(v, dict):
             return m.group(0)
         out = m.group(0)
+        if v.get("dead"):
+            return out + ' data-dead="1"'
         if v.get("t"):
             out += f' data-t="{",".join(map(str, v["t"]))}"'
         if v.get("m"):

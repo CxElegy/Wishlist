@@ -3550,6 +3550,8 @@ FIT_JS = """
     const th = bx.getBoundingClientRect().height, ph = w / nat;
     if (ph > th + 12) c.style.setProperty('--hw', Math.round(Math.max(w * 0.4, th * nat)) + 'px');
   };
+  // ページを作るときに開けなかった写真（data-dead，photo_bands）は、最初から代わりの写真へ（無ければカードを出さない。2026-11-08 コーヒーの灰色の枠）
+  document.querySelectorAll('.pic img[data-dead]').forEach(i => { i.removeAttribute('data-dead'); i.dispatchEvent(new Event('error')); });
   // 読み込みが終わらない写真（相手が返事をしない）は、画面に入ってから 8 秒で「開けない」とみなし、代わりの写真か、カードを出さない形へ（2026-11-08：灰色の空の枠）
   if (window.IntersectionObserver) {
     const late = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; late.unobserve(e.target); const i = e.target;

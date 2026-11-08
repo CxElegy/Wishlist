@@ -47,13 +47,28 @@ class Bands(unittest.TestCase):
         self.assertIn('<img src="https://a.example/p.jpg" data-t="', out)
         self.assertNotIn('old.jpg" data-t', out)
 
-    def test_broken_photo_is_remembered_as_none(self):
+    def test_network_error_is_not_recorded_but_404_is(self):
+        import urllib.error
         cache = {}
 
         def boom(u):
+            if "gone" in u:
+                raise urllib.error.HTTPError(u, 404, "nf", {}, None)
             raise OSError("down")
         photo_bands.measure(["https://a.example/x.jpg"], cache, boom, log=lambda _m: None)
-        self.assertEqual(cache, {"https://a.example/x.jpg": {"t": [], "m": "", "k": None, "v": 6}})
+        self.assertEqual(cache, {})   # つながらない：記録しない（次にまた試す）
+        urls = [f"https://a.example/ok{i}.jpg" for i in range(9)] + ["https://a.example/gone.jpg"]
+        photo_bands.measure(urls, cache, lambda u: boom(u) if "gone" in u else png(400, 300, (0, 0, 400, 300)), log=lambda _m: None)
+        self.assertEqual(cache["https://a.example/gone.jpg"].get("dead"), 1)
+
+    def test_many_failures_mark_nothing(self):
+        import urllib.error
+
+        def gone(u):
+            raise urllib.error.HTTPError(u, 404, "nf", {}, None)
+        cache = {}
+        photo_bands.measure([f"https://a.example/{i}.jpg" for i in range(5)], cache, gone, log=lambda _m: None)
+        self.assertEqual(cache, {})   # 2 割以上「無い」：通信の問題とみなして印を付けない
 
     def test_fit_js_reads_data_t(self):
         self.assertIn("img.dataset.t", render.FIT_JS)
