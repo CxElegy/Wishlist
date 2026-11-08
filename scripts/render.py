@@ -3868,6 +3868,8 @@ FIT_JS = """
     const okPic = c => !c.classList.contains('nophoto') && c.querySelector('.pic img:not(.bg):not(.ico)');
     const leadCands = cards.slice(0, 3).filter(okPic).map(c => cards.indexOf(c));
     const colCands = [cols0 - 1, cols0, cols0 + 1].filter(n => n >= 2 && w.clientWidth / n >= 200 && w.clientWidth / n <= 440);
+    const few = cards.length < 5;   // カードが少ない壁は、列を変えると埋めきれず穴が開く（1400px・正方形 3 枚で 18%）：列も大きい 1 枚も今のまま
+    if (few) { colCands.length = 0; leadCands.length = 0; const l0 = cards.findIndex(c => c.classList.contains('lead')); leadCands.push(l0); }
     const areaOf = c => { const p = c.querySelector('.pic'); if (!p || c.classList.contains('nophoto') || c.hidden) return 0; const r = p.getBoundingClientRect(); return r.width * r.height; };
     const setup = (n, li) => {
       w.style.gridTemplateColumns = 'repeat(' + n + ',minmax(0,1fr))';
