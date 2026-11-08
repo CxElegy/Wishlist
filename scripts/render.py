@@ -261,7 +261,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
 .wall{align-items:stretch}  /* JS なしの形：同じ段は同じ高さ。JS があれば中身の高さで詰めて並べる（2026-11-01 L1・L2：升目で背をそろえて下を空けない） */
 .wc.lead .pic{aspect-ratio:16/10}
-.wc:not(.sb) .pic{flex:1 0 auto}  /* 列の底をそろえるとき余りは写真の枠が受ける */
+.wc:not(.sb) .pic{flex:1 0 auto}.wc.boxgrow .pic{flex:none}  /* 写真を伸ばせないカード（boxgrow）は箱だけ伸びる */  /* 列の底をそろえるとき余りは写真の枠が受ける */
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
 .wc.nophoto{justify-content:flex-start;padding:16px 12px 12px;border-left:5px solid var(--sc)}.wc.nophoto b{-webkit-line-clamp:6;min-height:0}.wc.lead.nophoto b{font-size:24px;-webkit-line-clamp:7}  /* 写真が開けないトップのカード（SWAP_JS）：字だけの形 */
 .wc .tg{position:relative;align-self:flex-start;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの中の流れの先頭に（L8：上に浮かせて隣のカードの字に重ねない） */
@@ -4133,12 +4133,13 @@ FIT_JS = """
     const {best, H, span} = chosen;
     cards.forEach((c, i) => { c.hidden = !best.ord.includes(i); });
     // 置く：列ごとの底の差を、その列の（大きい 1 枚でない・文字のない）カードの写真枠に等分して足す
-    const ext = Array(cards.length).fill(0), Wt = best.W;
+    const ext = Array(cards.length).fill(0), box = Array(cards.length).fill(false), Wt = best.W;
     for (let a = 0; a < cols; a++) {
       const d = Wt - (best.bot[a] - GAP);
       let ks = best.col[a].filter(k => span[k] === 1 && d > 0 && canGrow(k, d / Math.max(1, best.col[a].length)));
       if (!ks.length) ks = best.col[a].filter(k => d > 0 && canGrow(k, d));
       if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], d / ks.length); });
+      else if (d > 0.5 && best.col[a].length) { const k = best.col[a][best.col[a].length - 1]; ext[k] = Math.max(ext[k], d); box[k] = true; }   // 写真を伸ばせない列：写真は切らずに、最後のカードの箱だけ伸ばす（底をそろえる。見出しの行数でカードの高さがばらつく）
     }
     const y0 = Array(cols).fill(0), place = [];
     if (side) y0[cols - 1] = sH + GAP;
@@ -4147,7 +4148,8 @@ FIT_JS = """
       place.push([i, j, k, y, h]); for (let a = j; a < j + k; a++) y0[a] = y + h + GAP;
     }
     w.style.gridAutoRows = '1px'; w.style.rowGap = '0';
-    place.forEach(([i, j, k, y, h]) => { const c = cards[i]; c.style.gridColumn = (j + 1) + ' / span ' + k; c.style.gridRow = (y + 1) + ' / span ' + (h + GAP);
+    cards.forEach(c => c.classList.remove('boxgrow'));
+    place.forEach(([i, j, k, y, h]) => { const c = cards[i]; c.style.gridColumn = (j + 1) + ' / span ' + k; c.style.gridRow = (y + 1) + ' / span ' + (h + GAP); c.classList.toggle('boxgrow', box[i]);
       if (ext[i] > 0.5) { c.style.minHeight = h + 'px'; const p = c.querySelector('.pic'); if (p && c.classList.contains('sb')) { p.dataset.add = p.style.height || '-'; p.style.height = Math.round(p.offsetHeight + ext[i]) + 'px'; } } });
     if (side) {
       // 右の列の下にカードが入らなかったときは、右の列を壁の底まで伸ばし、隠した行を入るだけ戻す（下を空けない）
