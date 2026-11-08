@@ -61,6 +61,18 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261107ac/718/w480h1038/20261107/3612-9ef59fd3cefb172f039a75652129e35e.jpg": {
+  "w": 480,
+  "h": 1038,
+  "target": 720,
+  "v": 3
+ },
+ "http://n.sinaimg.cn/sinakd20261107ac/718/w480h1038/20261107/cd9a-eb91469a49a3a7e0bb5af4dcdf7fb0eb.jpg": {
+  "w": 480,
+  "h": 1038,
+  "target": 720,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261108ac/718/w480h1038/20261108/f106-556c91c00f756e60d7c12d158f6f09e7.jpg": {
   "w": 480,
   "h": 1038,
@@ -1876,6 +1888,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://more-news.tw/more-news-media/2026/11/JQ-x-Vaundy.jpg": {
+  "w": 1984,
+  "h": 1323,
+  "target": 720,
+  "v": 3
+ },
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
   "w": 840,
   "h": 440,
@@ -1995,6 +2013,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.339
+ },
+ "https://news.walkerplus.com/article/1304828/15600677_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/130616/727260_615.jpg": {
   "w": 615,
@@ -2315,6 +2339,19 @@
   "out": [
    1080,
    599
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/09/35498289.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&exp=3600&nt=1&w=800": {
+  "w": 800,
+  "h": 533,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.386,
+  "local": "pics/753bbe383026f75c.webp",
+  "out": [
+   800,
+   533
   ],
   "why": "期限付きの網址"
  },
@@ -2688,8 +2725,9 @@
  "https://static.sanyonews.jp/image/article/size1/1/c/f/f/1cff585270967d145880a68d6ba03397_1.jpg": {
   "w": 640,
   "h": 362,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.417
  },
  "https://static.sanyonews.jp/image/article/size1/2/4/a/b/24ab41366173fb50931b74229277a922_1.jpg": {
   "w": 631,
@@ -3218,6 +3256,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.0jSvDj9_OKXahGrGv8hnxA&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.506,
+  "local": "pics/88a00c7ed1554655.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3287,12 +3338,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.379
- },
- "https://www.bing.com/th?id=ONUT.Jbb8RhWIXvwO-LhCN8YA7Q&pid=News&w=799": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.JpCGa5gTOp-LoOapCFVdCg&pid=News&w=700": {
   "w": 560,
