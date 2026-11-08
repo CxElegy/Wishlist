@@ -3524,7 +3524,7 @@ FIT_JS = """
   // 超えるときは写真を左に小さく置き、字を右に並べる（.half）
   const headArea = () => { const h = document.querySelector('#front .top .pic'); const r = h && h.getBoundingClientRect(); return r && r.width ? r.width * r.height : 0; };
   const capLead = (img, p) => {
-    const c = p.closest('.wc.lead'); if (!c || innerWidth <= 760) return;
+    const c = p.closest('.wc.lead'); if (!c || innerWidth <= 760 || innerWidth > 1200) return;   // 1400px 以上は壁の並べ直しとかみ合わず穴が開いた（test_wall_shapes）。広い幅は新しい組み方で直す
     c.classList.remove('half'); c.style.removeProperty('--hw');
     const hx = c.querySelector(':scope > .htx'); if (hx) { while (hx.firstChild) c.insertBefore(hx.firstChild, hx); hx.remove(); }
     const A = headArea(), r = p.getBoundingClientRect(); if (!A || r.width * r.height <= A * 0.8) return;

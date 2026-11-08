@@ -9,6 +9,8 @@ import re
 import urllib.parse
 import urllib.request
 
+import nostorage  # noqa: F401  公開の箱を落とさない止め（全部の網の道）
+
 MAX_NEW = 150
 MAX_BYTES = 400_000
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
