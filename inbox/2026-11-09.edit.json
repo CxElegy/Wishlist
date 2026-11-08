@@ -6,7 +6,14 @@
    "blurb": "Rockstar says boxed copies of GTA 6 contain no disc, only a code for a 212 GB download.",
    "weight": "lead",
    "refs": [
-    3
+    3,
+    11,
+    13,
+    17,
+    18,
+    19,
+    20,
+    14
    ],
    "image": "https://img.etimg.com/thumb/msid-135658667,width-1200,height-900,imgsize-1144081,overlay-economictimes/articleshow.jpg"
   },
@@ -84,6 +91,15 @@
    "refs": [
     5
    ]
+  },
+  {
+   "headline": "Avengers: Doomsday's Second Trailer Has Marvel Fans Wondering The Same Thing",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "The Mandalorian": [
@@ -105,6 +121,24 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "The Mandalorian Finally Confirms Return In The Book of Boba Fett, But With A Twist",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "The Mandalorian: New trailer reported at CCXP, March 1 Disney+ premiere",
+   "highlight": "March 1",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "ILLIT": [
@@ -125,6 +159,24 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "ILLIT、日本の伝説雑誌『FRUiTS』とコラボ 日本ストリートカルチャーで“ILLITコア”表現",
+   "highlight": "『FRUiTS』とコラボ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "ILLIT、MVで“ブラックエージェント”に ソン・ガンがキーパーソンとしてサプライズ登場",
+   "highlight": "ソン・ガン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "gelato pique": [
@@ -137,6 +189,25 @@
     1
    ],
    "image": "https://news.walkerplus.com/article/1296185/15377950_615.jpg"
+  },
+  {
+   "headline": "【福袋2027】毎年人気「gelato pique」の福袋が今年も登場 11・2正午から抽選販売の受付開始",
+   "highlight": "福袋",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    4
+   ]
+  },
+  {
+   "headline": "ジェラート ピケ カフェに「スヌーピー」のクレープが登場！ジェラピケのルームウェア着た限定アート雑貨も",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "星巴克马克杯": [
@@ -152,16 +223,19 @@
   }
  ],
  "_covered": {
-  "GTA 6": 6,
-  "漫威电影": 5,
-  "The Mandalorian": 2,
-  "ILLIT": 2,
-  "gelato pique": 1,
+  "GTA 6": 23,
+  "漫威电影": 9,
+  "The Mandalorian": 5,
+  "ILLIT": 7,
+  "gelato pique": 4,
   "星巴克马克杯": 1,
   "dota2": 1,
-  "三星手机": 1,
+  "三星手机": 7,
   "哈利波特剧集": 1,
-  "滑雪": 1
+  "滑雪": 1,
+  "Vaundy": 3,
+  "周杰伦": 3,
+  "A2O LITE": 2
  },
  "dota2": [
   {
@@ -182,6 +256,18 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27、インドでBISの承認を取得",
+   "highlight": "BISの承認",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    3,
+    4,
+    7
    ]
   }
  ],
@@ -205,6 +291,79 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "『熱闘甲子園』の音楽イベント『熱闘JAM 2026』追加アーティスト発表 Vaundy、スキマスイッチ",
+   "highlight": "追加アーティスト発表",
+   "blurb": "『熱闘JAM 2026』の追加出演者としてVaundyとスキマスイッチが発表された。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/1/c/f/f/1cff585270967d145880a68d6ba03397_1.jpg"
+  },
+  {
+   "headline": "しわあわせ / Vaundy ： MUSIC VIDEO",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Vaundyセトリ2026｜HORO台北公演・日替わり曲・過去ライブ",
+   "highlight": "HORO台北公演",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "聽亡父的話！林逸欣沒失約 合體小鐘「成為周杰倫」",
+   "highlight": "合體小鐘",
+   "blurb": "林逸欣今年遭逢父喪，一度動念停辦生日音樂會，最後仍決定與小鐘合體演出。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/09/35498289.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&exp=3600&nt=1&w=800"
+  },
+  {
+   "headline": "周杰伦稻香为汶川地震写就，治愈神作重拾勇气",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "26年前的今天，属于周杰伦的时代正式开启",
+   "highlight": "26年前",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "A2O LITE Takes 11th Win And Triple Crown For \"NEON\" On \"Inkigayo\"",
+   "highlight": "11th Win",
+   "blurb": "A2O LITE snagged an 11th music show trophy for \"NEON\" on Inkigayo, a triple crown.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.0jSvDj9_OKXahGrGv8hnxA&pid=News&w=1200"
   }
  ]
 }

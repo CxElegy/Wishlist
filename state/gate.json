@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-08T20:59:54+00:00",
+ "checked": "2026-11-08T22:26:49+00:00",
  "fired": {
-  "at": "2026-11-08T20:59:54+00:00",
+  "at": "2026-11-08T22:27:06+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -16,40 +16,44 @@
    "edit": 14
   },
   "2026-11-09": {
-   "edit": 3
+   "edit": 4
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-08T20:17:51+00:00",
+    "at": "2026-11-08T22:15:39+00:00",
     "attempts": 1,
     "day": "2026-11-09",
-    "prog": 33,
-    "resp": "cse_01W4x6f6PiQRK534E31vufXg",
-    "sig": "dfe6fc398c92"
+    "prog": 39,
+    "resp": "cse_01W4x6f5oTt9iK1cJ9NmxL1Y",
+    "sig": "92bf0374cb58"
    },
    "items": [
     "A2O LITE",
     "BLEACH Mirrors High",
     "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "gelato pique",
-    "lib:台風・天気",
+    "lib:Ado",
+    "lib:King Gnu",
+    "lib:Mrs. GREEN APPLE",
+    "lib:YOASOBI",
+    "lib:大谷翔平",
     "lib:宇宙・ロケット",
     "lib:将棋",
-    "lib:恐竜",
     "lib:生成AI",
-    "lib:美術館の企画展",
     "あつ森",
     "三星手机",
     "周杰伦",
     "滑雪",
-    "漫威电影"
+    "漫威电影",
+    "绝区零"
    ],
    "last_batch": "2026-11-08T20:23:35+00:00",
    "last_error": {
@@ -70,10 +74,10 @@
     "周杰伦",
     "漫威电影"
    ],
-   "sig": "67ea099fa59d",
+   "sig": "5d8116c22e34",
    "token_cap": 1000000,
    "tokens_today": 114249,
-   "why": "整理待ちの記事 102 件（19 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 149 件（23 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
