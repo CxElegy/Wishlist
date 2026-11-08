@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-08T05:25:13+00:00",
+ "checked": "2026-11-08T05:54:09+00:00",
  "fired": {
-  "at": "2026-11-08T05:25:13+00:00",
+  "at": "2026-11-08T05:54:25+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -13,19 +13,19 @@
    "edit": 5
   },
   "2026-11-08": {
-   "edit": 8
+   "edit": 9
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-08T04:32:21+00:00",
+    "at": "2026-11-08T05:54:25+00:00",
     "attempts": 1,
     "day": "2026-11-08",
-    "prog": 144,
-    "resp": "cse_01W4x6f9LpreiBBw2YT6wGrC",
-    "sig": "52fbef2e5fc4"
+    "prog": 164,
+    "resp": "cse_01W4x6f9Dx7S2GwzbxSHTxGu",
+    "sig": "aeef5a673368"
    },
    "items": [
     "BLEACH Mirrors High",
@@ -47,11 +47,15 @@
    "need": true,
    "prog": 164,
    "prog_day": "2026-11-08",
-   "ripe": [],
-   "sig": "bdad3c4baf82",
+   "ripe": [
+    "The Mandalorian",
+    "gelato pique",
+    "あつ森"
+   ],
+   "sig": "aeef5a673368",
    "token_cap": 1000000,
    "tokens_today": 497397,
-   "why": "整理待ちの記事 33 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 33 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
