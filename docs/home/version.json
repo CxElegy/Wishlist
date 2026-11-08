@@ -1,32 +1,32 @@
 {
- "admin": "7bda22b1bb78",
- "admin-ai": "05d306e3f47a",
+ "admin": "9f9881b9c248",
+ "admin-ai": "86ce39f88980",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "2a24e09d"
+   "27e70f8f"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "bdfc39fc"
+   "249f25fa"
   ]
  },
- "admin-boards": "218661c7ad56",
+ "admin-boards": "f06eb420236d",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "987ee6d1"
+   "f494d6c6"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "9452ff8f2b5e",
+ "admin-emblem": "b93d66557733",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "23c3964d"
+   "e7e989dc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "16db863a542c",
  "admin-members_marks": {},
- "admin-now": "47701878b624",
+ "admin-now": "3ba7731f73df",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4f3bac32"
+   "4f1a69bc"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "69fc21b9"
+   "75f8fb4d"
   ],
   "term-panel": [
    "ライブログ",
-   "b6684f4e"
+   "66ca3ba0"
   ]
  },
- "admin-system": "74fbea7b0268",
+ "admin-system": "a36c1ee048b9",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "8709c94a"
+   "019a4f54"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "cacb20f2"
+   "24725b15"
   ]
  },
  "admin_marks": {},
- "heat": "f3c1834d4bca",
+ "heat": "b40dbac66b9e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "72c5cf16"
+   "cefb03cc"
   ],
   "ranking": [
    "ランキング",
-   "63b928d4"
+   "9f3291c0"
   ]
  },
- "index": "68104f5b3b24",
+ "index": "970612f3fb2e",
  "index_marks": {
   "front": [
    "トップ",
-   "ae359fa9"
+   "d79c48af"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "5971a495"
+   "c66f75bb"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "b1e86646"
+   "2019b0d7"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "cdc672f9"
+   "3fed9f0b"
   ],
   "w-f303ad09": [
    "绝区零",
    "5f6b014b"
   ]
  },
- "updated": "11.08 10:18",
+ "updated": "11.08 10:50",
  "wishlist": "fcd9a85bda06"
 }
