@@ -594,9 +594,9 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229.jpg": {
-  "w": 1600,
-  "h": 893,
+ "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229_crop.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -1874,8 +1874,15 @@
  "https://img2.sbs.co.kr/ops_clip_img/2026/11/01/83b1480d-bf44-43cf-826e-0b0e50cba714005w640.jpg": {
   "w": 640,
   "h": 360,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.481,
+  "local": "pics/bc6f81c7783238f9.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "https://img6.donews.com/img/2026/11/05/img_pic_1793875977.jpg": {
   "w": 900,
