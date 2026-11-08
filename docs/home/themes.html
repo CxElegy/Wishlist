@@ -156,7 +156,7 @@ button{font-family:inherit}
 /* 左の壁と右の列の下端をそろえる：短いほうが伸びる（壁は各段が均等に伸び、右の列は最後の箱が伸びる） */
 .mgrid>.wall{align-content:start}
 .mgrid .wc{justify-content:flex-start}
-.fside>:last-child{flex:1}
+.fside>:last-child{flex:1;display:flex;flex-direction:column}.fside>:last-child>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}  /* 右の列が壁の高さまで伸びた分は、箱の下にまとめず行の間に分ける（2026-11-08 店長：欲しい物の下の空白） */
 .fside{display:flex;flex-direction:column;gap:20px;min-width:0}
 .sbox{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:12px 14px 12px}
 .sbox h4,.fside .agenda h4{margin:0 0 6px;display:flex;align-items:baseline;gap:10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
@@ -376,6 +376,16 @@ button{font-family:inherit}
 .wc.lead.half{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:16px}
 .wc.lead.half>.pic{flex:0 0 var(--hw)!important;width:var(--hw)!important;max-width:var(--hw)!important;height:auto!important}
 .wc.lead.half>.htx{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:6px}
+.wc.lead.half>.htx>b{-webkit-line-clamp:unset;display:block;min-height:0;font-size:14px;font-weight:700}   /* 字の大きさはほかのカードと同じ（2026-11-08 店長：字の大きさがそろわないのは減点） */
+/* 予定と欲しい物（右の列が下に回る幅）：横いっぱいの箱を縦に積み、中身を段に並べる（テストグラウンド案 1。Every Layout の Grid）。中身が 0 件の箱は 1 行の帯 */
+@media (min-width:761px) and (max-width:1200px){
+ .mgrid .fside{display:flex!important;flex-direction:column;gap:20px}
+ .mgrid .fside>*{flex:none!important;min-width:0}
+ .mgrid .fside .swish ol,.mgrid .fside .agenda ol{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));column-gap:28px}
+ .mgrid .fside .swish:has(.sempty){display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+ .mgrid .fside .swish:has(.sempty)>h4{flex:1 1 100%}
+ .mgrid .fside .swish:has(.sempty) .sempty{margin:0;flex:1 1 260px}
+}
 .wc.sb .tg,.card.sb .tg{max-width:100%;white-space:normal}
 /* 細いカードの字の列は狭い：👍👎 を日付に重ねず、入らなければ次の行へ（2026-11-07 店長） */
 .wc.sb em.wc-x,.wc.sb em:has(.vt){padding-right:0!important;min-height:0;align-items:center;gap:2px 6px}.wc.sb em .vt{position:static;margin:0 0 0 -4px;padding:0;order:2}.wc.sb em .from{order:3;flex-basis:100%}.wc.sb em.two::before{display:none}
@@ -787,7 +797,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
  .mgrid{grid-template-columns:minmax(0,1fr)}.mgrid>.wall{align-content:start}.fside>:last-child{flex:none}.fside{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
- .wall{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .wall{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}   /* 2026-11-08：2 列に固定すると普通のカードの写真が頭条と同じ大きさになった（大きさの順：頭条 → 大きい 1 枚 → ほか） */
  .pkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pk.big{grid-column:1/-1;grid-row:auto}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/9}
  .pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* ---------- スマホ ---------- */
@@ -2035,7 +2045,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>11.08 11:03</b></div></div></header>
+<div class="meta"><small>更新</small><b>11.08 11:22</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
