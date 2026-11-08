@@ -322,6 +322,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .rs1{grid-row:span 1}.rs2{grid-row:span 2}.rs3{grid-row:span 3}.rs4{grid-row:span 4}
 /* 小さいカードの段（JS の mason が .mas に包む）：決まった升目で同じ段の背をそろえず、1px の行に 1 枚ずつ一番低い列へ積む。中身の高さで詰まり、段の途中に空きが出ない（2026-11-02 L1・L2） */
 .mas{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:22px;grid-auto-rows:1px;align-items:start;margin-bottom:-28px}
+.mas.fb>.card h3{display:block;-webkit-line-clamp:unset;overflow:visible}  /* 版面の組み方（fitBoard）が高さを決める版面は、見出しを欠かさない（2026-11-08 店長） */
 .mas.mas2{grid-template-columns:repeat(2,minmax(0,1fr))}.mas>.card.c6{grid-column:auto;align-self:start}  /* c6 の小さいカード 4 枚以上は 2 列 */
 .older .mas{grid-template-columns:repeat(4,minmax(0,1fr))}  /* 過去のニュース（c3）も同じ積み方で 4 列 */
 .mas>.card.c4,.mas>.card.c3,.mas>.side{grid-column:auto;align-self:start}.mas>.card.c8{grid-column:span 2;align-self:start}
@@ -2048,7 +2049,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>11.08 19:21</b></div></div></header>
+<div class="meta"><small>更新</small><b>11.08 20:12</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
