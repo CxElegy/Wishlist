@@ -46,10 +46,76 @@ def bands(data):
     while r < W // 2 and flat([px[W - 1 - r, y] for y in range(H)]):
         r += 1
     f = [t / H, r / W, b / H, l / W]
-    if max(f) < MIN_BAND or f[0] + f[2] >= 0.7 or f[1] + f[3] >= 0.7:
+    bl = blur_bands(im)   # ぼかした余白（無地でなく、細かい模様がほとんど無い縁。2026-11-08 NBA の写真）
+    if bl:
+        f = [max(x, y) for x, y in zip(f, bl)]
+    if max(f) < MIN_BAND or f[0] + f[2] >= 0.7 or f[1] + f[3] >= 0.85:   # 横は 85% まで（中の空きで 2 つの物の片方だけ残すとき）
         return []
     e = px[0, 0]
     return [round(v, 3) for v in f] + ["#%02x%02x%02x" % e]
+
+
+SEG = []   # 直前の blur_bands が見つけた「空きを挟んだ 2 つの物」の横の範囲（bands が読んで返す）
+
+
+def segments(data):
+    """空きを挟んだ 2 つ以上の大事な物の横の範囲 [[左, 右], ...]（無ければ []）。"""
+    from PIL import Image
+    SEG[:] = []
+    blur_bands(Image.open(io.BytesIO(data)).convert("RGB"))
+    return [list(s) for s in SEG]
+
+
+def blur_bands(im):
+    """縁の列・行のうち、輪郭の濃さが写真の濃い所（上位 1 割）の 12% 未満が続く幅 → [上, 右, 下, 左] の割合。測れなければ None。"""
+    try:
+        import numpy as np
+    except Exception:  # noqa: BLE001
+        return None
+    w, h = im.size
+    W, H = 160, max(16, round(160 * h / w))
+    g = np.asarray(im.convert("L").resize((W, H)), dtype=np.float32)
+    gx, gy = np.abs(np.diff(g, axis=1)), np.abs(np.diff(g, axis=0))
+    col, row = gx.mean(axis=0), gy.mean(axis=1)
+    # 1〜2 列だけの細い線（2 枚の写真のつなぎ目など）は空きを切らない：幅 5 の中央値でならす
+    col = np.array([np.median(col[max(0, i - 2):i + 3]) for i in range(len(col))])
+    row = np.array([np.median(row[max(0, i - 2):i + 3]) for i in range(len(row))])
+    thr_c, thr_r = 0.12 * np.percentile(col, 90), 0.12 * np.percentile(row, 90)
+
+    def run(a, thr):
+        n = 0
+        while n < len(a) // 2 and a[n] < thr:
+            n += 1
+        return n
+    l, r = run(col, thr_c), run(col[::-1], thr_c)
+    t, b = run(row, thr_r), run(row[::-1], thr_r)
+    # 中の空き（2 つの物の間の白など。2026-11-08 ユニクロ：人と服の間）：縁でない所に 8% 以上の空きの列があれば、
+    # 輪郭の 6 割以上を持つ側だけを残す（空きを挟んだ小さいほうは外す）
+    seg, i, n = [], l, len(col) - r
+    while i < n:
+        j = i
+        while j < n and (col[j] >= thr_c) == (col[i] >= thr_c):
+            j += 1
+        seg.append((i, j, col[i] >= thr_c))
+        i = j
+    gaps = [(a, z) for a, z, on in seg if not on and a > l and z < n and z - a >= 0.08 * W]
+    if gaps:
+        parts, a0 = [], l
+        for a, z in gaps:
+            parts.append((a0, a))
+            a0 = z
+        parts.append((a0, n))
+        tot = col[l:n].sum() or 1.0
+        share = [col[p[0]:p[1]].sum() / tot for p in parts]
+        big = [p for p, s in zip(parts, share) if s >= 0.25]
+        if len(big) >= 2:   # 2 つとも大事な物：空きだけ詰めて並べる（店長 2026-11-08「这样裁一下」）。左右の端は外側の物の端まで
+            SEG[:] = [[round(p[0] / W, 3), round(p[1] / W, 3)] for p in big]
+            l, r = big[0][0], len(col) - big[-1][1]
+        else:
+            best = max(parts, key=lambda p: col[p[0]:p[1]].sum())
+            if col[best[0]:best[1]].sum() / tot >= 0.6:
+                l, r = best[0], len(col) - best[1]
+    return [t / H, r / W, b / H, l / W]
 
 
 def mass_css(data):
@@ -102,14 +168,14 @@ def text_box(data):
 
 def measure(urls, cache, fetch, log=print):
     """まだ測っていない網址を測って cache に入れる（MAX_NEW まで）。→ 新しく測った数"""
-    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and "k" in cache[u])][:MAX_NEW]   # 前の形は測り直す
+    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == 4)][:MAX_NEW]   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
 
     def one(u):
         try:
             data = fetch(u)
-            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data)} if data else {"t": [], "m": "", "k": None})
+            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "s": segments(data), "v": 4} if data else {"t": [], "m": "", "k": None, "v": 4})
         except Exception:  # noqa: BLE001  開けない写真は「測れない」として次から取りに行かない
-            return u, {"t": [], "m": "", "k": None}
+            return u, {"t": [], "m": "", "k": None, "v": 4}
     with cf.ThreadPoolExecutor(max_workers=16) as ex:
         for u, v in ex.map(one, todo):
             cache[u] = v
@@ -135,6 +201,8 @@ def inject(text, cache):
             out += f' data-t="{",".join(map(str, v["t"]))}"'
         if v.get("m"):
             out += f' data-mx="{v["m"]}"'
+        if v.get("s"):
+            out += f' data-s="{";".join(",".join(map(str, s)) for s in v["s"])}"'
         if v.get("k"):
             out += f' data-k="{",".join(map(str, v["k"]))}"'
         return out
