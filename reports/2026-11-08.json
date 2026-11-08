@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "ca03af899973",
+ "edit_sig": "a4ae163baf7c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -832,36 +832,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 3,
-     "source": "Dellows News",
-     "title": "八千穂高原スキー場が2026-27シーズンの早割チケットを10月1日より販売開始",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1DbHlsbXJVeVFzd0o4RGtlSkpNbU9XS2R6YVNoNHZCT010Z3RZVEtNSS1WOUV1TDR1b3ladm9GcmtMQmZ6dXptdTBtOXpnNVRkUkNIMXFlLXhZeGlRSWc?oc=5"
-    },
-    {
-     "date": "2026-11-08",
-     "n": 4,
-     "source": "HotelBank",
-     "title": "スキー場が近いと口コミで評判の宿30選｜1位は苗場プリンスホテル382件、北海道13軒・倶知安の1月は6.2万円",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNWlNOaGc3WHZaUWtFeGFDcGFqc3ZRT3VSYjRQRHdmVDJiaVpRREs2eDZ0d3Y3YTRteEVQU25MNUpvcG5ueHhNdXJfbzJWd21wYnozUkJQNnFVNUhTcWRucTBjNThjcFZta3RQWi1uMmlBRWhKSnppTHpHQzZOdW1xQ2didWw4TFp4RW5kS25RRFZFNHNTbDJzbg?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 5,
-     "source": "Yahoo!ファイナンス",
-     "title": "日本スキー場開発(株)【6040】：株価・株式情報（夜間PTS含む）",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9XQkFCT3AwSmhzbHV4ajFMY3dzeW8xSi1zYU9qNHZ2OGdPdzRnUmQzMFNpdWJZV0NJbmhCaTZwOXg2RVVFWFhYMENwMWVkZjBEckE?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 6,
-     "source": "Yahoo!ファイナンス",
-     "title": "日本スキー場開発(株)【6040】：掲示板",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9ha0pSd2JUdzFMdXhsQmpGUWVTeGk3WTY1TVZjVm12U29NZ3V1ZlFiS0pDSW5pNFJIdWhNaDE3OXJnNnF5bGtucXhnaTIxaEhZbk1tYmpIRzR5Zw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -887,6 +857,16 @@
      "image": "https://media.image.infoseek.co.jp/isnews/photos/tokaitv/tokaitv_49184_0-enlarge.jpg",
      "image_via": "og:image",
      "url": "https://news.infoseek.co.jp/article/tokaitv_49184/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "八千穂高原スキー場が2026-27シーズンの早割チケットを10月1日より販売開始",
+     "highlight": "早割チケット",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/609169_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/609169/?from=related_list",
      "weight": "normal"
     }
    ],
