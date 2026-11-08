@@ -3517,7 +3517,7 @@ FIT_JS = """
   const trimFit = (img, p, f) => {
     const nw = img.naturalWidth, nh = img.naturalHeight, cw = nw * (1 - f.l - f.r), ch = nh * (1 - f.t - f.b), W = p.clientWidth, H = p.clientHeight;
     if (!W || !H) return;
-    const cover = Math.max(W / cw, H / ch), inner = Math.min(W / cw, H / ch), s = inner / cover >= 0.9 ? cover : inner,   /* 帯を外した中身は 10% までしか切らない（35% では文字バナーの電話番号が切れた。2026-11-08） */ iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
+    const cover = Math.max(W / cw, H / ch), inner = Math.min(W / cw, H / ch), s = inner / cover >= 0.97 ? cover : inner,   /* 帯を外した中身はほぼ切らない（35%・10% でも文字バナーの電話番号が切れた。2026-11-08） */ iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
     Object.assign(img.style, {width: iw / W * 100 + '%', height: ih / H * 100 + '%', left: ((W - cw * s) / 2 - nw * f.l * s) / W * 100 + '%', top: ((H - ch * s) / 2 - nh * f.t * s) / H * 100 + '%'});
     p.classList.remove('whole'); p.classList.add('trim');
     if (s < cover && img._edge) p.style.background = img._edge;
