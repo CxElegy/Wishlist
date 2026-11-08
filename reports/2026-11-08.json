@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "37e256b135af",
+ "edit_sig": "5a2ecfb523e6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -554,22 +554,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-08",
-     "n": 5,
-     "source": "にじめん",
-     "title": "ハートの中にグローグー♪『STAR WARS: THE MANDALORIAN』収納ボックスがしまむらパークで11月9日15時から受注生産販売！税込1,089円・2柄",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5NaDhHcUFoajVjZHBwd004Rmo1cGx4bERlVWctVlpvdkxkQlEyYTk0MVZ6NGd6WVI1Vk9QSmRoLWRLVkxVTDhHcWQ1WEZHVGV4WlBBeHF3Zw?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 6,
-     "source": "ComicBook.com",
-     "title": "The Mandalorian and Grogu Director Reveals the George Lucas Secret Behind Star Wars’ Most Believable Worlds",
-     "url": "https://comicbook.com/movies/feature/the-mandalorian-and-grogu-director-reveals-the-george-lucas-secret-behind-star-wars-most-believable-worlds/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -590,6 +574,24 @@
      "image": "https://www.joblo.com/wp-content/uploads/2026/04/mandalorian-and-grogu-cinemacon.jpg",
      "image_via": "og:image",
      "url": "https://www.joblo.com/the-mandalorian-and-grogu-to-fall-short/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-08",
+     "event": {
+      "date": "2026-11-09",
+      "label": "受注開始",
+      "time": "15:00"
+     },
+     "headline": "ハートの中にグローグー♪『STAR WARS: THE MANDALORIAN』収納ボックスがしまむらパークで11月9日15時から受注生産販売！",
+     "highlight": "11月9日15時から",
+     "image": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/e086dee46e9f4a8787d85c4824f876e3.png",
+     "image_via": "og:image",
+     "price": {
+      "now": "¥1,089"
+     },
+     "url": "https://nijimen.kusuguru.co.jp/topics/651331",
      "weight": "normal"
     }
    ],
