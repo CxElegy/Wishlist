@@ -130,7 +130,9 @@ class Components(unittest.TestCase):
         self.assertNotIn("old", out)                           # past dates are not shown
         self.assertLess(out.index(">a<"), out.index(">b<"))    # date order
         self.assertEqual(out.count(">a<"), 1)                  # same day and same headline only once
-        self.assertEqual(render._agenda([{"name": "A", "stories": []}], "2026-10-15"), "")
+        empty = render._agenda([{"name": "A", "stories": []}], "2026-10-15")   # 2026-11-09 店長：予定が無くても箱は出す
+        self.assertIn("これからの予定", empty)
+        self.assertIn("sempty", empty)
 
 
 class Redesign(unittest.TestCase):
@@ -169,11 +171,11 @@ class FrontSide(unittest.TestCase):
         self.assertNotIn("済み", out)                       # 入手済みは出さない
         self.assertNotIn("話題度ランキング", out)           # 2026-10-18：右の列は予定と欲しい物だけ
         self.assertNotIn("あなたの好み", out)
-        self.assertNotIn("これからの予定", out)             # 日付のある記事がなければ出さない
+        self.assertIn("これからの予定", out)                # 2026-11-09 店長：予定と欲しい物は必ず出す（日付のある記事がなくても箱）
         empty = render._side([], "2026-10-16")              # 欲しい物が 0 件でも入口の箱は出す（新しいアカウント）
         self.assertIn("まだありません", empty)
         self.assertIn('href="wishlist.html#snap"', empty)
-        self.assertNotIn("これからの予定", empty)
+        self.assertIn("これからの予定", empty)
         self.assertIn("まだ 0 件", render._wish_link([], "mastwish"))
 
 
