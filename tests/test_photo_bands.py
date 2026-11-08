@@ -35,7 +35,7 @@ class Bands(unittest.TestCase):
 
     def test_measure_uses_cache_and_inject_adds_attr(self):
         calls = []
-        cache = {"https://a.example/old.jpg": {"t": [], "m": ""}}
+        cache = {"https://a.example/old.jpg": {"t": [], "m": "", "k": None}}
         page = '<img src="https://a.example/p.jpg" alt=""><img src="https://a.example/old.jpg">'
 
         def fetch(u):
@@ -53,7 +53,7 @@ class Bands(unittest.TestCase):
         def boom(u):
             raise OSError("down")
         photo_bands.measure(["https://a.example/x.jpg"], cache, boom, log=lambda _m: None)
-        self.assertEqual(cache, {"https://a.example/x.jpg": {"t": [], "m": ""}})
+        self.assertEqual(cache, {"https://a.example/x.jpg": {"t": [], "m": "", "k": None}})
 
     def test_fit_js_reads_data_t(self):
         self.assertIn("img.dataset.t", render.FIT_JS)

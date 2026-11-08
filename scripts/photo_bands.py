@@ -62,16 +62,54 @@ def mass_css(data):
     return ";".join(",".join(map(str, a)) for a in v) if v else ""
 
 
+def text_box(data):
+    """写真の中の文字のかたまりの範囲（OpenCV の MSER で、同じ高さで横に 4 個以上並ぶ字を探す）→ (左, 上, 右, 下) の割合。
+    無い・写真全体（観客や葉を字と取り違えた）なら None。render の cropAt はこの範囲が全部入る切り方しか許さない（2026-11-08 店長：文字を欠かさない）。"""
+    try:
+        import cv2
+        import numpy as np
+        from PIL import Image
+        im = Image.open(io.BytesIO(data)).convert("L")
+        w0, h0 = im.size
+        W = 480
+        H = max(16, round(W * h0 / w0))
+        g = np.asarray(im.resize((W, H)), dtype=np.uint8)
+        mser = cv2.MSER_create()
+        mser.setMinArea(12)
+        mser.setMaxArea(int(W * H * 0.03))
+        regions, _ = mser.detectRegions(g)
+    except Exception:  # noqa: BLE001
+        return None
+    bx = []
+    for r in regions:
+        x, y, w, h = cv2.boundingRect(r)
+        if 0.03 * H <= h <= 0.3 * H and 0.08 <= w / h <= 2.5:
+            bx.append((x, y, w, h))
+    rows = []
+    for b in bx:
+        cy = b[1] + b[3] / 2
+        same = [c for c in bx if abs((c[1] + c[3] / 2) - cy) < 0.5 * b[3] and 0.6 < c[3] / b[3] < 1.6]
+        if len({c[0] for c in same}) >= 4:
+            rows.extend(same)
+    if not rows:
+        return None
+    x0, y0 = min(c[0] for c in rows) / W, min(c[1] for c in rows) / H
+    x1, y1 = max(c[0] + c[2] for c in rows) / W, max(c[1] + c[3] for c in rows) / H
+    if (x1 - x0) * (y1 - y0) >= 0.97:
+        return None
+    return [round(x0, 3), round(y0, 3), round(x1, 3), round(y1, 3)]
+
+
 def measure(urls, cache, fetch, log=print):
     """まだ測っていない網址を測って cache に入れる（MAX_NEW まで）。→ 新しく測った数"""
-    todo = [u for u in dict.fromkeys(urls) if not isinstance(cache.get(u), dict)][:MAX_NEW]   # 前の形（余白だけのリスト）は測り直す
+    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and "k" in cache[u])][:MAX_NEW]   # 前の形は測り直す
 
     def one(u):
         try:
             data = fetch(u)
-            return u, ({"t": bands(data), "m": mass_css(data)} if data else {"t": [], "m": ""})
+            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data)} if data else {"t": [], "m": "", "k": None})
         except Exception:  # noqa: BLE001  開けない写真は「測れない」として次から取りに行かない
-            return u, {"t": [], "m": ""}
+            return u, {"t": [], "m": "", "k": None}
     with cf.ThreadPoolExecutor(max_workers=16) as ex:
         for u, v in ex.map(one, todo):
             cache[u] = v
@@ -97,6 +135,8 @@ def inject(text, cache):
             out += f' data-t="{",".join(map(str, v["t"]))}"'
         if v.get("m"):
             out += f' data-mx="{v["m"]}"'
+        if v.get("k"):
+            out += f' data-k="{",".join(map(str, v["k"]))}"'
         return out
     text = IMG_RE.sub(rep, text)
     # data-mx は、同じ img にまだ data-m が無いときだけ data-m にする（店長のページの写真は render が付けた data-m を使う）
