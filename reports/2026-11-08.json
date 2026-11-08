@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "781420952f27",
+ "edit_sig": "8529a68dd857",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,8 +13,8 @@
      "date": "2026-11-07",
      "headline": "[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄",
      "highlight": "TGS 2026",
-     "image": "https://cdn.gamey.kr/news/photo/202609/3018752_170370_5622.jpg",
-     "image_via": "正文图（4 枚から）",
+     "image": "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg",
+     "image_via": "og:image",
      "url": "http://www.gamey.kr/news/articleView.html?idxno=3018752",
      "weight": "lead"
     }
@@ -538,15 +538,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 2,
-     "source": "Infoseekニュース",
-     "title": "12/19オープン目指す…標高1300m超の乗鞍高原飛騨高山スキー場 ペアリフトの座席取り付け作業進む",
-     "url": "https://news.infoseek.co.jp/article/tokaitv_49184/"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -559,6 +550,20 @@
      "source_icon": "https://www.google.com/s2/favicons?domain=www.gq.com.tw&sz=128",
      "url": "https://www.gq.com.tw/article/japan-hakuba-ski",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "event": {
+      "date": "2026-12-19",
+      "label": "オープン"
+     },
+     "headline": "12/19オープン目指す…標高1300m超の乗鞍高原飛騨高山スキー場 ペアリフトの座席取り付け作業進む",
+     "highlight": "12/19オープン",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/tokaitv/tokaitv_49184_0-enlarge.jpg",
+     "image_via": "og:image",
+     "url": "https://news.infoseek.co.jp/article/tokaitv_49184/",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
