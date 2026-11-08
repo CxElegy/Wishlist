@@ -157,6 +157,54 @@
   "The Mandalorian": 2,
   "ILLIT": 2,
   "gelato pique": 1,
-  "星巴克马克杯": 1
- }
+  "星巴克马克杯": 1,
+  "dota2": 1,
+  "三星手机": 1,
+  "哈利波特剧集": 1,
+  "滑雪": 1
+ },
+ "dota2": [
+  {
+   "headline": "TORONTOTOKYO Reflected on the Future of His Career in the Dota 2 Pro Scene",
+   "highlight": "Future of His Career",
+   "blurb": "TORONTOTOKYO reflected on the future of his career in the Dota 2 pro scene.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "The Galaxy S27 series will come with three different processors.",
+   "highlight": "three different processors",
+   "blurb": "The Galaxy S27 series will come with three different processors.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter HBO Series Episode Release Schedule: When Are All Eight Episodes Out?",
+   "highlight": "Episode Release Schedule",
+   "blurb": "Harry Potter HBO Series Episode Release Schedule: When Are All Eight Episodes Out?",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "Utah's Fastest Growing Ski Resort Hits 4,500 Skiable Acres, Reveals New 26/27 Trail Map",
+   "highlight": "4,500 Skiable Acres",
+   "blurb": "Utah's fastest growing ski resort hits 4,500 skiable acres and reveals its new 26/27 trail map.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }

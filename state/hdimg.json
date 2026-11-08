@@ -713,7 +713,7 @@
  "https://culturecues.co.uk/wp-content/uploads/2026/05/ba3f6110-49da-11f1-ac78-2112837ce2aa.jpg.webp": {
   "w": 976,
   "h": 549,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://d.ibtimes.co.uk/en/full/1817694/gta-6.png?w=736&f=50aadc0d8c247bb5fb98a13a7e098e74": {
@@ -913,6 +913,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/8/1794134326995.webp#joomlaImage://local-images/1_2026/NEWS/Q4/nov/8/1794134326995.webp?width=2752&height=1536": {
+  "w": 2752,
+  "h": 1536,
+  "target": 1280,
+  "v": 3
+ },
  "https://games.gg/cdn-cgi/image/width=1200,height=675,fit=cover,format=auto/https://assets.games.gg/betboom_team_dota_2_roster_inactive_hero_ca2afb8c0c_389dafbd50.webp": {
   "w": 1200,
   "h": 675,
@@ -983,6 +989,12 @@
   "w": 1200,
   "h": 628,
   "target": 720,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/torontotokyo-admitted-he-actually-didnt-leave-aurora-24248.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/valve-fixed-meepo-bug-25412.jpg": {
@@ -2510,6 +2522,12 @@
  "https://s.yimg.com/lo/mysterio/api/a1aa3c08f2f7c5c7d6d1680bd734ae04d2e4b73f9606048d47d1d9d195bd1f49/lightyear_networkapi/resizefill_w976%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
   "w": 976,
   "h": 549,
+  "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/b8e2e7ab668789926c3877f16e7527471330889c85d6fb69beb6a47911f9d661/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpowder_magazine_405%2F7db9c708294742ed6293856c0fbced01.png": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },

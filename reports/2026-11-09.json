@@ -1,6 +1,6 @@
 {
  "date": "2026-11-09",
- "edit_sig": "fd5b0807be87",
+ "edit_sig": "3777c94e36e5",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?chy1UYn-EncQQwpG7SQkV",
@@ -134,17 +134,19 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Harry Potter HBO Series Episode Release Schedule: When Are All Eight Episodes Out?",
      "date": "2026-11-08",
-     "n": 1,
-     "source": "CultureCues",
-     "title": "Harry Potter HBO Series Episode Release Schedule: When Are All Eight Episodes Out?",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVVVlYTAyZUV6VU5CVll5cWNLTWd4N3FQOVRuMGJhTmxKQzBQY3FTZ1IyY2RGcnI5dU04TFFWUURVQ19meWRoOGUzNUlGY05uQWV5bjhBbE5laFgyTlVqNXZIa1YyLUhWc3ZSQThuQW5KMjIyTW90TlRuWWRjbmx0aw?oc=5"
+     "headline": "Harry Potter HBO Series Episode Release Schedule: When Are All Eight Episodes Out?",
+     "highlight": "Episode Release Schedule",
+     "image": "https://culturecues.co.uk/wp-content/uploads/2026/05/ba3f6110-49da-11f1-ac78-2112837ce2aa.jpg.webp",
+     "image_via": "og:image",
+     "url": "https://culturecues.co.uk/harry-potter-hbo-series-episode-release-schedule/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -161,17 +163,19 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "The Galaxy S27 series will come with three different processors.",
      "date": "2026-11-08",
-     "n": 1,
-     "source": "GameGPU",
-     "title": "The Galaxy S27 series will come with three different processors.",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPMmtVNFE3QWhQVUoxTlg2RFh6TU5DcUtwSTRteGg2RGk2Y0RrVHVDRlhLdG1CU283b2dsMFIxcE1WdEx1NkEydHdScFpHcFdfWlIwMVJLMXVIZzR0dEstaURlTkszcUtldmotZlFSdzBaelQyRVNUeUp0UDE0N2Z4MkxwQmYxTVJtOS1iaU5icUQtZUI4VzRv?oc=5"
+     "headline": "The Galaxy S27 series will come with three different processors.",
+     "highlight": "three different processors",
+     "image": "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/8/1794134326995.webp#joomlaImage://local-images/1_2026/NEWS/Q4/nov/8/1794134326995.webp?width=2752&height=1536",
+     "image_via": "og:image",
+     "url": "https://en.gamegpu.com/news/zhelezo/linejka-galaxy-s27-vyjdet-s-tremya-raznymi-protsessorami",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",
@@ -290,17 +294,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "TORONTOTOKYO reflected on the future of his career in the Dota 2 pro scene.",
      "date": "2026-11-08",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "TORONTOTOKYO Reflected on the Future of His Career in the Dota 2 Pro Scene",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNemZiMmYxNzJraFdvV284bUpjQ2QzTlRmZmhTVDhkMFBFMXV4Z2FzVWRmWkd4Uzh3VGxBdzNmbkY1aFFXSnV0NlRZN3hFRnEwaVpVbTlhUVpzSlJGeWNPa1puMmEzN2MtRVNhSnM1bEdBZGhGc2dYSHp4UUdZc3M1Q1RxYw?oc=5"
+     "headline": "TORONTOTOKYO Reflected on the Future of His Career in the Dota 2 Pro Scene",
+     "highlight": "Future of His Career",
+     "image": "https://hawk.live/storage/images/posts/torontotokyo-admitted-he-actually-didnt-leave-aurora-24248.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/torontotokyo-reflected-future-career-dota-2-pro-scene",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -344,17 +350,19 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "Utah's fastest growing ski resort hits 4,500 skiable acres and reveals its new 26/27 trail map.",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "Yahoo",
-     "title": "Utah's Fastest Growing Ski Resort Hits 4,500 Skiable Acres, Reveals New 26/27 Trail Map",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPMGNSaV9WWmJuWTYwT2tyZVY2TzNtX1BtSWdIWGZ0SGMxcmhsTHBEei1QYWZKRUx2R2tIWHhkYmptWFNMckQtVzJOeUdvNUhqdFlHcDUxNmFLNFo4M3VKOFNENVEwa2QyN0k4eVRCRFlYNkhWZ0hzWkEwRjhwaU5jQzlMZkJaUHN5OXRVbGszVTRDNTBiZF9PRjFyTmU0UTgxQ2V4RjFHcW9fa0E?oc=5"
+     "headline": "Utah's Fastest Growing Ski Resort Hits 4,500 Skiable Acres, Reveals New 26/27 Trail Map",
+     "highlight": "4,500 Skiable Acres",
+     "image": "https://s.yimg.com/lo/mysterio/api/b8e2e7ab668789926c3877f16e7527471330889c85d6fb69beb6a47911f9d661/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpowder_magazine_405%2F7db9c708294742ed6293856c0fbced01.png",
+     "image_via": "og:image",
+     "url": "https://travel.yahoo.com/guides/united-states/utah/articles/utahs-fastest-growing-ski-resort-191940728.html",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
