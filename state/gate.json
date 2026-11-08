@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-08T07:32:02+00:00",
+ "checked": "2026-11-08T08:28:46+00:00",
  "fired": {
-  "at": "2026-11-08T07:32:02+00:00",
+  "at": "2026-11-08T08:28:46+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -30,61 +30,64 @@
    "items": [
     "A2O LITE",
     "BLEACH Mirrors High",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "gelato pique",
+    "lib:Ado",
+    "lib:BTS",
+    "lib:King Gnu",
+    "lib:Mrs. GREEN APPLE",
+    "lib:YOASOBI",
+    "lib:大谷翔平",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
     "星巴克马克杯",
     "滑雪",
     "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-08T06:05:09+00:00",
+   "last_batch": "2026-11-08T07:54:54+00:00",
    "last_error": {
     "at": "2026-11-08T02:54:29+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 169,
+   "prog": 184,
    "prog_day": "2026-11-08",
    "ripe": [
-    "GTA 6",
-    "三星手机",
-    "周杰伦"
+    "BLEACH Mirrors High",
+    "MMORPG 新作",
+    "チェーンソーマン",
+    "星巴克马克杯"
    ],
-   "sig": "585e763e1fa7",
+   "sig": "2589acf3bc43",
    "token_cap": 1000000,
-   "tokens_today": 544258,
-   "why": "整理待ちの記事 29 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 596429,
+   "why": "整理待ちの記事 86 件（17 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "漫威电影",
-    "GTA 6",
-    "周杰伦",
-    "A2O LITE",
-    "绝区零",
-    "The Mandalorian"
-   ],
-   "need": true,
-   "sig": "e9af52cb1ffa",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "哈利波特剧集"
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -113,12 +116,12 @@
    "runs": 11
   },
   "2026-11-08": {
-   "batches": 19,
-   "cr": 12375694,
-   "cw": 498563,
-   "in": 361,
-   "out": 45334,
-   "runs": 10
+   "batches": 22,
+   "cr": 13238451,
+   "cw": 547539,
+   "in": 386,
+   "out": 48504,
+   "runs": 11
   }
  }
 }
