@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-07T08:45:42+00:00",
-"text": "2026-11-07 第 7 バッチを出刊：GTA 6（1 版面・5 本・残り 6 版面） · token 新規入力 4,789・キャッシュ読み 82.1万・出力 1,263",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.32,
-"mem_total": 16867737600,
-"mem_free": 15996792832,
-"disk_used": 10759585792,
-"disk_free": 30523949056,
-"disk_total": 41283534848,
-"peak": 322461696
-},
-"batch": 7,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 6,
-"edited": 20,
-"run": 1794037733.6287405,
-"tok": {
-"in": 23,
-"cw": 4766,
-"cr": 820769,
-"out": 1263,
-"calls": 9,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 826821
-},
-{
 "at": "2026-11-07T08:50:49+00:00",
 "text": "2026-11-07 第 8 バッチを出刊：漫威电影（1 版面・5 本・残り 5 版面） · token 新規入力 2,672・キャッシュ読み 47.6万・出力 698",
 "level": "ok",
@@ -1967,5 +1935,47 @@
 "calls": 50,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-08T15:40:45+00:00",
+"text": "2026-11-08 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作、Vaundy ほか 5（11 版面・21 本・残り 3 版面） · token 新規入力 4.3万・キャッシュ読み 74.8万・出力 2,495",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.25,
+"mem_total": 16867737600,
+"mem_free": 15998906368,
+"disk_used": 10045374464,
+"disk_free": 31238160384,
+"disk_total": 41283534848,
+"peak": 329904128
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"MMORPG 新作",
+"Vaundy",
+"あつ森",
+"ぐでたま",
+"日本顶级网球赛事",
+"猫用品",
+"绝区零"
+],
+"stories": 21,
+"left": 3,
+"edited": 21,
+"run": null,
+"tok": {
+"in": 23,
+"cw": 43211,
+"cr": 748056,
+"out": 2495,
+"calls": 12,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 793785
 }
 ]
