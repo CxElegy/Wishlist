@@ -3476,7 +3476,7 @@ FIT_JS = """
     let best = -1, at = 0;
     for (let k = 0; k <= 24; k++) { const o = (1 - q) * k / 24, v = C(o + q) - C(o); if (v > best) { best = v; at = o; } }
     const keep = best / tot;
-    if (keep < 0.7) return false;   // 2026-11-07：6 割では文字入りのバナーの端が欠けた（INDEXBOX）
+    if (keep < 0.85) return false;   // 2026-11-07：6 割では文字入りのバナーの端が欠けた（INDEXBOX）。2026-11-08：7 割でも台風の地図の文字が欠けた → 85%
     const pos = (1 - q) > 0.001 ? at / (1 - q) * 100 : 50;
     img.style.objectPosition = horiz ? pos + '% 50%' : '50% ' + pos + '%';
     img.dataset.keep = Math.round(keep * 100);
@@ -3515,7 +3515,7 @@ FIT_JS = """
   const trimFit = (img, p, f) => {
     const nw = img.naturalWidth, nh = img.naturalHeight, cw = nw * (1 - f.l - f.r), ch = nh * (1 - f.t - f.b), W = p.clientWidth, H = p.clientHeight;
     if (!W || !H) return;
-    const cover = Math.max(W / cw, H / ch), inner = Math.min(W / cw, H / ch), s = inner / cover >= 0.65 ? cover : inner,   /* 帯を外した中身は 35% まで切って埋める（2026-11-08 店長：余白は 25% まで） */ iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
+    const cover = Math.max(W / cw, H / ch), inner = Math.min(W / cw, H / ch), s = inner / cover >= 0.9 ? cover : inner,   /* 帯を外した中身は 10% までしか切らない（35% では文字バナーの電話番号が切れた。2026-11-08） */ iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
     Object.assign(img.style, {width: iw / W * 100 + '%', height: ih / H * 100 + '%', left: ((W - cw * s) / 2 - nw * f.l * s) / W * 100 + '%', top: ((H - ch * s) / 2 - nh * f.t * s) / H * 100 + '%'});
     p.classList.remove('whole'); p.classList.add('trim');
     if (s < cover && img._edge) p.style.background = img._edge;
@@ -3524,9 +3524,10 @@ FIT_JS = """
   // 超えるときは写真を左に小さく置き、字を右に並べる（.half）
   const headArea = () => { const h = document.querySelector('#front .top .pic'); const r = h && h.getBoundingClientRect(); return r && r.width ? r.width * r.height : 0; };
   const capLead = (img, p) => {
-    const c = p.closest('.wc.lead'); if (!c || innerWidth <= 760 || innerWidth > 1200) return;   // 1400px 以上は壁の並べ直しとかみ合わず穴が開いた（test_wall_shapes）。広い幅は新しい組み方で直す
+    const c = p.closest('.wc.lead'); if (!c || !c.classList.contains('half')) return;   // 2026-11-08：大きさの順は壁の採点（Duplo 型）で決める。前に付けた .half だけ外す   // 1400px 以上は壁の並べ直しとかみ合わず穴が開いた（test_wall_shapes）。広い幅は新しい組み方で直す
     c.classList.remove('half'); c.style.removeProperty('--hw');
     const hx = c.querySelector(':scope > .htx'); if (hx) { while (hx.firstChild) c.insertBefore(hx.firstChild, hx); hx.remove(); }
+    return;
     const A = headArea(), r = p.getBoundingClientRect(); if (!A || r.width * r.height <= A * 0.8) return;
     const bx = document.createElement('div'); bx.className = 'htx';   // 字をひとまとめにして写真の右へ
     [...c.children].filter(k => k !== p && !k.matches('.lk')).forEach(k => bx.append(k)); c.append(bx);
@@ -3539,6 +3540,12 @@ FIT_JS = """
     const th = bx.getBoundingClientRect().height, ph = w / nat;
     if (ph > th + 12) c.style.setProperty('--hw', Math.round(Math.max(w * 0.4, th * nat)) + 'px');
   };
+  // 読み込みが終わらない写真（相手が返事をしない）は、画面に入ってから 8 秒で「開けない」とみなし、代わりの写真か、カードを出さない形へ（2026-11-08：灰色の空の枠）
+  if (window.IntersectionObserver) {
+    const late = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; late.unobserve(e.target); const i = e.target;
+      setTimeout(() => { if (i.isConnected && !(i.complete && i.naturalWidth) && i.dataset.e) i.dispatchEvent(new Event('error')); }, 8000); }), {rootMargin: '200px'});
+    document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(i => late.observe(i));
+  }
   const fit = img => {
     fit0(img);
     const p = img.closest('.pic'), f = img.naturalWidth && img._bands;
@@ -3577,7 +3584,7 @@ FIT_JS = """
       if (innerWidth > 760 && pk.closest('.pkgrid.row')) {   // 似たジャンルの新着：枠はどれも同じ大きさ（2026-11-07 店長「一个大一个小很奇怪」）。切れない絵は全体を見せて周りを絵の端の色に
         const r0 = nat / (boxW(img, 100) / boxH(img, 75));
         p.style.height = p.style.aspectRatio = p.style.minHeight = p.style.flex = '';
-        p.classList.toggle('fill', Math.abs(Math.log(r0)) < 0.08 || cropAt(img, r0) || (!img.dataset.m && Math.min(r0, 1 / r0) >= 0.85));
+        p.classList.toggle('fill', Math.abs(Math.log(r0)) < 0.08 || cropAt(img, r0) || Math.min(r0, 1 / r0) >= 0.95);
         return;
       }
       p.style.height = p.style.aspectRatio = p.style.minHeight = p.style.flex = ''; pk.classList.remove('shaped');
@@ -3591,7 +3598,7 @@ FIT_JS = """
       }
       const r = nat / (boxW(img, p.clientWidth) / Math.max(1, boxH(img, p.clientHeight - pko)));
       // 比率が違っても、顔・題字（data-m）が 6 割以上残る位置で切れるなら切る（案 2）。残らない絵は今までどおり全体を見せる
-      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.85));
+      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08 || cropAt(img, r) || Math.min(r, 1 / r) >= 0.95);
       // 切れない横長の絵：枠を絵の形にして、余りは手書きの札が受ける（帯も空きも出さない。2026-11-07）
       if (!p.classList.contains('fill') && r > 1 && !pk.matches('.big')) { Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', flex: 'none', height: (p.clientWidth / nat + pko) + 'px'}); p.classList.add('fill'); pk.classList.add('shaped'); return; }
       if (!p.classList.contains('fill') && r < 0.75) side(pk, p, nat, p.clientHeight);   // 写真が枠より細い：空いた横に札を置く
@@ -3605,7 +3612,7 @@ FIT_JS = """
     if (mini) {
       p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar'); mini.style.gridTemplateColumns = '';
       const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
-      const ok = cropAt(img, rr) || (!img.dataset.m && q >= 0.85) || q >= 0.92;
+      const ok = cropAt(img, rr) || q >= 0.95;   // 主役の位置がわからない絵は 5% まで（文字を欠かさない。2026-11-08）
       p.classList.toggle('fill', ok); p.classList.toggle('whole', !ok);
       if (!ok) {
         img.style.objectPosition = ''; delete img.dataset.keep;
@@ -3620,7 +3627,7 @@ FIT_JS = """
     if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
     const r = nat / (boxW(img, p.clientWidth) / boxH(img, p.clientHeight));
     // 切る場所はどこも同じ規則：主役（顔・題字）が 6 割以上残る位置で切れるなら切る。0.75 より細い絵は、切らずに枠を絵の幅に絞る narrow・side が受ける
-    p.classList.toggle('fill', (r >= 0.75 && (cropAt(img, r) || (!img.dataset.m && Math.min(r, 1 / r) >= 0.85))) || Math.abs(Math.log(r)) < 0.08);
+    p.classList.toggle('fill', (r >= 0.75 && (cropAt(img, r) || Math.min(r, 1 / r) >= 0.95)) || Math.abs(Math.log(r)) < 0.08);
     // 切れない横長の絵：枠を絵の形に。余りはカードの紙が受ける（文字を欠かさない。2026-11-07 店長「这种剪切方式取消」）
     if (sm && innerWidth > 760 && r > 1 && !p.classList.contains('fill')) { p.style.aspectRatio = 'auto'; p.style.height = p.clientWidth / nat + 'px'; p.classList.add('fill'); }
     if (r < 0.75) { img.style.objectPosition = ''; delete img.dataset.keep; }
@@ -3841,7 +3848,8 @@ FIT_JS = """
     if (innerWidth <= 760) return;
     const hh = sel => document.querySelector(sel)?.getBoundingClientRect().height || 0;
     const target = Math.max(520, innerHeight - (hh('.spot > .sh') || 56) - (hh('.spot > .shelfbox > summary') || 44) - 22 * 2 - 24);
-    const cols = getComputedStyle(w).gridTemplateColumns.split(' ').length;
+    w.style.gridTemplateColumns = '';
+    const cols0 = getComputedStyle(w).gridTemplateColumns.split(' ').length;
     const beside = side && side.offsetLeft > w.offsetLeft + w.offsetWidth / 2;   // 右の列が壁の横にある（2 列しか入らない幅では下に回る）
     let ag = [], wi = [], order = [];
     if (side) {
@@ -3852,26 +3860,59 @@ FIT_JS = """
       if (beside) for (const l of order) { if (side.getBoundingClientRect().height <= target) break; l.hidden = true; }
     }
     const S = beside ? side.getBoundingClientRect().height : target;
-    // 自然な高さ（中身だけ）を測る。.tall の大きい 1 枚は 1 列、そうでない大きい 1 枚は 2 列
+    // Duplo 型（Flipboard の組版）：「列の数 × どの記事を大きくするか」の候補を実際に組んで店長の基準で採点し、いちばん良い型を選ぶ（2026-11-08）。
+    // 点数 = 穴と右の列との差（前からの cost）＋ 大きさの順（頭条 > 大きい 1 枚 > ほか）・小さすぎ・大事な記事を下げた分
     w.style.alignItems = 'start';
-    const H = cards.map(c => c.offsetHeight), span = cards.map(c => (c.classList.contains('lead') && !c.classList.contains('tall') && cols >= 2) ? 2 : 1);
-    const bot = Array(cols).fill(0), col = Array(cols).fill(0).map(() => []), put = [];
-    let best = null;
-    cards.forEach((c, i) => {
-      let j = 0, y = Infinity;
-      for (let a = 0; a + span[i] <= cols; a++) { const v = Math.max(...bot.slice(a, a + span[i])); if (v < y) { y = v; j = a; } }
-      for (let a = j; a < j + span[i]; a++) { bot[a] = y + H[i] + GAP; col[a].push(i); }
-      put.push({j, y});
-      const n = i + 1, W = Math.max(...bot) - GAP;
-      if (n < Math.min(3, cards.length)) return;
-      // 足す量（その列の写真枠に対する割合の最大）と、右の列との高さの差
-      let rel = 0;
-      for (let a = 0; a < cols; a++) { const d = W - (bot[a] - GAP), pics = col[a].filter(k => span[k] === 1 || !cards[k].classList.contains('lead')).reduce((s, k) => s + (cards[k].querySelector('.pic')?.offsetHeight || 80), 0);
-        if (d > 0) rel = Math.max(rel, d / Math.max(1, pics)); }
-      const cost = rel + Math.abs(W - S) / S;
-      if (!best || cost < best.cost - 1e-6) best = {n, cost, W, bot: bot.slice(), pos: put.slice(), col: col.map(c => c.slice())};
-    });
-    if (!best) return;
+    const okPic = c => !c.classList.contains('nophoto') && c.querySelector('.pic img:not(.bg):not(.ico)');
+    const leadCands = cards.slice(0, 3).filter(okPic).map(c => cards.indexOf(c));
+    const colCands = [cols0 - 1, cols0, cols0 + 1].filter(n => n >= 2 && w.clientWidth / n >= 200 && w.clientWidth / n <= 440);
+    const areaOf = c => { const p = c.querySelector('.pic'); if (!p || c.classList.contains('nophoto') || c.hidden) return 0; const r = p.getBoundingClientRect(); return r.width * r.height; };
+    const setup = (n, li) => {
+      w.style.gridTemplateColumns = 'repeat(' + n + ',minmax(0,1fr))';
+      cards.forEach((c, i) => {
+        const was = c.classList.contains('lead'), now = i === li; if (was === now) return;
+        const p = c.querySelector('.pic'); c.classList.toggle('lead', now); c.classList.remove('tall', 'nw', 'ls', 'half');
+        if (p) { p.style.aspectRatio = p.style.width = p.style.height = ''; const im = p.querySelector('img:not(.bg):not(.ico)'); if (im && im.naturalWidth) fit(im); }
+      });
+    };
+    const plan = cols => {
+      // 自然な高さ（中身だけ）を測る。.tall の大きい 1 枚は 1 列、そうでない大きい 1 枚は 2 列
+      const H = cards.map(c => c.offsetHeight), span = cards.map(c => (c.classList.contains('lead') && !c.classList.contains('tall') && cols >= 2) ? 2 : 1);
+      const bot = Array(cols).fill(0), col = Array(cols).fill(0).map(() => []), put = [];
+      let best = null;
+      cards.forEach((c, i) => {
+        let j = 0, y = Infinity;
+        for (let a = 0; a + span[i] <= cols; a++) { const v = Math.max(...bot.slice(a, a + span[i])); if (v < y) { y = v; j = a; } }
+        for (let a = j; a < j + span[i]; a++) { bot[a] = y + H[i] + GAP; col[a].push(i); }
+        put.push({j, y});
+        const n = i + 1, W = Math.max(...bot) - GAP;
+        if (n < Math.min(3, cards.length)) return;
+        // 足す量（その列の写真枠に対する割合の最大）と、右の列との高さの差
+        let rel = 0;
+        for (let a = 0; a < cols; a++) { const d = W - (bot[a] - GAP), pics = col[a].filter(k => span[k] === 1 || !cards[k].classList.contains('lead')).reduce((s, k) => s + (cards[k].querySelector('.pic')?.offsetHeight || 80), 0);
+          if (d > 0) rel = Math.max(rel, d / Math.max(1, pics)); }
+        const cost = rel + Math.abs(W - S) / S;
+        if (!best || cost < best.cost - 1e-6) best = {n, cost, W, bot: bot.slice(), pos: put.slice(), col: col.map(c => c.slice())};
+      });
+      return best && {best, H, span};
+    };
+    const headA = headArea();
+    let pick = null;
+    for (const n of colCands.length ? colCands : [cols0]) for (const li of leadCands.length ? leadCands : [-1]) {
+      setup(n, li); const r = plan(n); if (!r) continue;
+      cards.forEach((c, i) => { c.hidden = i >= r.best.n; });
+      const L = li >= 0 ? areaOf(cards[li]) : 0, O = Math.max(0, ...cards.filter((c, i) => i !== li).map(areaOf));
+      let pen = li > 0 ? 0.08 * li : 0;
+      if (headA) pen += Math.max(0, L / headA - 0.85) * 4 + Math.max(0, O / headA - 0.65) * 2;
+      if (L) pen += Math.max(0, O / L - 0.85) * 2;
+      if (O && O < 12000) pen += 0.5;
+      cards.forEach(c => { c.hidden = false; });
+      const cost = r.best.cost + pen; if (!pick || cost < pick.cost) pick = {cost, n, li};
+    }
+    if (!pick) return;
+    setup(pick.n, pick.li);
+    const cols = pick.n, chosen = plan(cols); if (!chosen) return;
+    const {best, H, span} = chosen;
     // 置く：選んだ枚数だけ出し、列ごとの底の差をその列の（大きい 1 枚でない）カードの写真枠に等分して足す
     cards.forEach((c, i) => { c.hidden = i >= best.n; });
     const ext = Array(cards.length).fill(0);

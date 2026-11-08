@@ -1,9 +1,8 @@
-"""写真に焼き込まれた無地の余白（上下左右）を、ページを作るときに測ってページに書く（2026-11-08，店長：余白は枠の 4 分の 1 まで）。
+"""別のサイトの写真を、ページを作るときに 1 回だけ取って測り、img に書く（2026-11-08，店長：余白は枠の 4 分の 1 まで・文字を欠かさない）。
 
-ブラウザは別のサイトの写真の中身を読めない（CORS）。お客さまのページの写真の多くは元のサイトから直接読むので、
-FIT_JS の bands() が余白を外せなかった。Actions が写真を一度取り、余白の割合を img の data-t に書く。
-    data-t="上,右,下,左,#端の色"（割合は 0〜1）。余白がない・測れない写真には付けない。
-
+ブラウザは別のサイトの写真の中身を読めない（CORS）。お客さまのページの写真の多くは元のサイトから直接読むので、Actions が測る。
+    data-t="上,右,下,左,#端の色"   写真に焼き込まれた無地の余白の割合（余白がなければ付けない）
+    data-m="横の分布;縦の分布"      顔・題字の分布（photo_store.mass と同じ。店長のページの写真と同じ物差しで切る位置を選ぶ）
 測った結果は網址ごとに残し（cache）、同じ写真は二度取りに行かない。
 """
 import concurrent.futures as cf
@@ -53,21 +52,31 @@ def bands(data):
     return [round(v, 3) for v in f] + ["#%02x%02x%02x" % e]
 
 
+def mass_css(data):
+    """顔・題字の分布（photo_store.mass）を data-m の文字列に。測れなければ ""。"""
+    try:
+        import photo_store
+        v = photo_store.mass(data)
+    except Exception:  # noqa: BLE001  cv2 が無い・壊れた画像 → 位置なし（切らない）
+        return ""
+    return ";".join(",".join(map(str, a)) for a in v) if v else ""
+
+
 def measure(urls, cache, fetch, log=print):
     """まだ測っていない網址を測って cache に入れる（MAX_NEW まで）。→ 新しく測った数"""
-    todo = [u for u in dict.fromkeys(urls) if u not in cache][:MAX_NEW]
+    todo = [u for u in dict.fromkeys(urls) if not isinstance(cache.get(u), dict)][:MAX_NEW]   # 前の形（余白だけのリスト）は測り直す
 
     def one(u):
         try:
             data = fetch(u)
-            return u, bands(data) if data else []
-        except Exception:  # noqa: BLE001  開けない写真は「余白なし」として次から取りに行かない
-            return u, []
+            return u, ({"t": bands(data), "m": mass_css(data)} if data else {"t": [], "m": ""})
+        except Exception:  # noqa: BLE001  開けない写真は「測れない」として次から取りに行かない
+            return u, {"t": [], "m": ""}
     with cf.ThreadPoolExecutor(max_workers=16) as ex:
         for u, v in ex.map(one, todo):
             cache[u] = v
     if todo:
-        log(f"写真の余白：{len(todo)} 枚を測った（余白あり {sum(1 for u in todo if cache[u])}）")
+        log(f"写真の余白と主役：{len(todo)} 枚を測った（余白あり {sum(1 for u in todo if cache[u]['t'])}・主役の位置 {sum(1 for u in todo if cache[u]['m'])}）")
     return len(todo)
 
 
@@ -76,8 +85,19 @@ def urls_in(text):
 
 
 def inject(text, cache):
-    """<img src="網址" に data-t を足す（測って余白のあった写真だけ）。"""
+    """<img src="網址" に data-t（余白）と data-m（主役の位置。まだ無いときだけ）を足す。"""
     def rep(m):
         v = cache.get(htmllib.unescape(m.group(1)))
-        return f'{m.group(0)} data-t="{",".join(map(str, v))}"' if v else m.group(0)
-    return IMG_RE.sub(rep, text)
+        if isinstance(v, list):
+            v = {"t": v, "m": ""}
+        if not isinstance(v, dict):
+            return m.group(0)
+        out = m.group(0)
+        if v.get("t"):
+            out += f' data-t="{",".join(map(str, v["t"]))}"'
+        if v.get("m"):
+            out += f' data-mx="{v["m"]}"'
+        return out
+    text = IMG_RE.sub(rep, text)
+    # data-mx は、同じ img にまだ data-m が無いときだけ data-m にする（店長のページの写真は render が付けた data-m を使う）
+    return re.sub(r'<img ([^>]*?)data-mx="([^"]*)"([^>]*)>', lambda m: m.group(0).replace(f'data-mx="{m.group(2)}"', "" if "data-m=" in m.group(0) else f'data-m="{m.group(2)}"'), text)
