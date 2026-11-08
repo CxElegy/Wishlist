@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-08T11:17:53+00:00",
+ "checked": "2026-11-08T12:18:10+00:00",
  "fired": {
-  "at": "2026-11-08T11:18:09+00:00",
+  "at": "2026-11-08T12:18:34+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -13,19 +13,19 @@
    "edit": 5
   },
   "2026-11-08": {
-   "edit": 11
+   "edit": 12
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-08T09:11:31+00:00",
+    "at": "2026-11-08T12:18:34+00:00",
     "attempts": 1,
     "day": "2026-11-08",
-    "prog": 184,
-    "resp": "cse_01W4x6f7G7HUWp2786GoP9jd",
-    "sig": "ea60520de313"
+    "prog": 209,
+    "resp": "cse_01W4x6f55q6UP4MV7HLHaCuX",
+    "sig": "598f5e2b5409"
    },
    "items": [
     "A2O LITE",
@@ -53,11 +53,17 @@
    "need": true,
    "prog": 209,
    "prog_day": "2026-11-08",
-   "ripe": [],
-   "sig": "cf9c4ed5a3b0",
+   "ripe": [
+    "A2O LITE",
+    "The Mandalorian",
+    "gelato pique",
+    "滑雪",
+    "绝区零"
+   ],
+   "sig": "598f5e2b5409",
    "token_cap": 1000000,
    "tokens_today": 660293,
-   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
