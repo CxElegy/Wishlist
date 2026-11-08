@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "273f7abedaf4",
+ "edit_sig": "0ae2439d50c3",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -104,31 +104,29 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "엑스엘게임즈의 신작 MMORPG ‘아키에이지 크로니클’이 지난 4일 얼리 액세스를 시작했고, 출시 초반 엇갈린 반응을 받고 있다.",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "디지털타임스",
-     "title": "야심작 ‘아키에이지 크로니클’…출시 초반 평가 엇갈려",
-     "url": "https://www.dt.co.kr/article/12093680"
+     "headline": "야심작 ‘아키에이지 크로니클’…출시 초반 평가 엇갈려",
+     "highlight": "출시 초반 평가 엇갈려",
+     "image": "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.dt.co.kr/article/12093680",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-06",
-     "n": 2,
-     "source": "GamesRadar+",
-     "title": "The 10 best MMORPGs and MMOs to play in 2026",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9TbGpEeGZGeldrVFVUbkYzQmRJdVlFdG9McjJKaklLRXdpMUJEdUJuSnFjZnFxaTNCRFotekh2Vl83T2FhV01wTzRUSEZ2NGk1?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-08",
-     "n": 3,
-     "source": "Polygon.com",
-     "title": "Amazon Games Officially Gives Up on Two MMOs",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9ydGVVS3dfQVpScHNvYXQ5Z3ZYMGR4TU1YdTRoRENfUDduNENVblV5NURrbnpSYkVzcHcxQ25odjRLLS13X2hHN2Z4ZHY0dl9RMHc4LV8yS29sZWJiUG1jRXpDRFdaOVg4NEZENzJ4S2IwWFE?oc=5"
+     "headline": "Amazon Games Officially Gives Up on Two MMOs",
+     "highlight": "",
+     "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/11/bercant-cinematic_1920x1080.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://www.polygon.com/amazon-games-throne-and-liberty-lost-ark/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -146,41 +144,6 @@
    "facts": [],
    "name": "漫威电影",
    "pending": [
-    {
-     "date": "2026-11-08",
-     "n": 22,
-     "source": "Comic Book Resources",
-     "title": "10 Marvel Characters Whose Comic Identity Changed After Their MCU Debut",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPdmR2bkw5a0hpN3IzN2lKcEpmNkFLRTR6WXBlOHlhZWFSWDVIdWNFcnU1MG5rbTlmUGxTdHg1SzZsZEJTSjRETktWMERnamtvbnpEU2tucURCVmtHVGlGU1phMXRRVjE2UTlJWnlMU2xrTXdKa2lWd2NRLUJRbldjVDhvTkZ2bmFZMDZ4dnNCWU5xREU?oc=5"
-    },
-    {
-     "date": "2026-11-08",
-     "n": 23,
-     "source": "Collider",
-     "title": "Marvel’s $1.1B Superhero Sensation Officially Surges on Apple TV Ahead of ‘Avengers: Doomsday’",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPdGpsX2tBdkZzYzZlenYzaEVmN3AzTk9SV3Jwem5aX1N5dlRyLTQwcHpHQVh4ZmhiOC1WejlUUzkzU3BPSFpNYUFSdkpYWk9MTTh4UzZYS2hkT2Frak81Yld5ZER3OGI4OTIwVEFjWi1zZ3JBM2lVZUtUbDhYb3lCMG5kWTVXbzl5WENz?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 24,
-     "source": "The Direct",
-     "title": "The MCU Just Changed In a Way Millions of Marvel Fans Can't Ignore",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB4NTdQVTd2LWRLUnFaWmZRekNZMDVrYUphQWdjNk5LY2ZGSEk2WXRTXzh3Mm5teEhXM0VuOXZtZXVVVzRsTW9pa0VLMDk3VFNRdzhodlF4ZHRtX0E?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 25,
-     "source": "Cinemablend",
-     "title": "A 'New' Blade Isn't Happening, But I Have An Idea To Get The Character Into The MCU",
-     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQeXFIeGNqdm5ETXBxdVdhcjF0c2MwdmZNcEtla3FxVG1GOTBHTTZkRFhSME9RWVhRcklLSDE2bE15bEc2eUNoeUsxUXBCNUI5YU5Rd2RtdDl1QUltdGtPal9rMGptbU9kWFAwOHpFNmM2c19Oc0tSaHNNSEp1M1R0cFFJTmVkd2xmRGtRQ3ZPYnVGcVZKZ2l3cl84WGo2MEZJWTZpbGdjZTR6WkozVk1sa2gzYUNJT0d0UjAwRG9oVlhyY21vdURmUEUtYWpHWWJ3NWc?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 26,
-     "source": "Collider",
-     "title": "8 Upcoming Superhero Movies, Ranked by Hype",
-     "url": "https://collider.com/upcoming-superhero-movies-ranked-hype/"
-    },
     {
      "date": "2026-11-06",
      "n": 27,
@@ -503,15 +466,6 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 2,
-     "source": "墨新聞-MORE News",
-     "title": "創作鬼才 Vaundy 與單飛後的 Nulbarich 主唱 JQ 聯手全新單曲",
-     "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTFAzTEN5OVdEWFZDdDY2aXlkMEF4U2FJUC16clNySWZHZHN0RktRaGl0ZTVIcERPNHAzZUdOVE9qdGVRdw?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -657,15 +611,6 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 2,
-     "source": "AOL",
-     "title": "'From': Nova Scotia-filmed show is skyrocketing to success on Netflix in the U.S.",
-     "url": "https://www.aol.com/articles/nova-scotia-filmed-show-skyrocketing-195851000.html"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -677,6 +622,16 @@
      "image_via": "og:image",
      "url": "https://www.primetimer.com/features/from-season-4-episode-5-release-date-and-time-where-to-watch-and-more",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "'From': Nova Scotia-filmed show is skyrocketing to success on Netflix in the U.S.",
+     "highlight": "",
+     "image": "https://hermes.media.static.aol.com/media/2026/11/07/9eb53b15-8014-3e41-a34f-387e8d3dee47/11250694-13c4-4138-b1f1-54cb3a2cd4aa.jpg",
+     "image_via": "og:image",
+     "url": "https://www.aol.com/articles/nova-scotia-filmed-show-skyrocketing-195851000.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
@@ -771,27 +726,6 @@
    "pending": [
     {
      "date": "2026-11-08",
-     "n": 4,
-     "source": "톱스타뉴스",
-     "title": "아일릿, '체포하겠어' 6가지 리믹스 공개…동요부터 EDM까지 음악적 변신",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5VV0VKMTNMREU3cWtuckZsbTIyRmFXOXdNQ001V2RaNkpvRFl1azc3SlRkUXotWUtaMFRZWVpUV2R6QnUyaldNa1dkbnJ5aUs2ek1uSGxwbVFVSG44U3M2d0RhbFltSHgzRXBuNlB6ZVNCUQ?oc=5"
-    },
-    {
-     "date": "2026-11-08",
-     "n": 5,
-     "source": "Soompi",
-     "title": "Watch: LE SSERAFIM, ILLIT, And KATSEYE's \"ICONIC BY MISTAKE\" MV Surpasses 200 Million Views",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQd1hqbVB1WEU5cExSOV8xbTItaTZLTVNWTlAyaDE1cm1hVm9fVFNrWGVYSndTNjkteUF2VEN1SWpOS2hLM1JnVzVlN3RsQVg3RVdiM2QyblFsR1puZ09MaTNNeG91ZEtxSXVWYXRUOW5GUUowVllGUWFGMDBEa2trbUQ0OFZERXhndTdZdXVpclhocGlKcmRvZTdaTWVuVHd5UjZkejZCUkVCbUZfVnVHMWEyUFprRTE1UVpsazlhRGtRaGphMVE?oc=5"
-    },
-    {
-     "date": "2026-11-07",
-     "n": 6,
-     "source": "Sports Chosun",
-     "title": "ILLIT Now ‘Arrests’ Music Shows Too... ‘I’ll Arrest You’ Continues Its Unstoppable Rise",
-     "url": "https://www.sportschosun.com/en/k-pop/2026-11-08/202611080100053130005249"
-    },
-    {
-     "date": "2026-11-08",
      "n": 7,
      "source": "텐아시아",
      "title": "\"호루라기 소리 시끄러워\" 혹평 딛고…아일릿, 음방 1위까지 '체포'",
@@ -857,24 +791,34 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "猫用品や雑貨を販売するマルシェが津山で13日に開かれる。",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "山陽新聞",
-     "title": "猫用品や雑貨販売 津山で１３日マルシェ",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBzSGxHMkVkcWVjQ2x1X0pVYUw1ZXJEdDhDZmp4NFlaUUUxTUF6QzZVVHVGYzM4WXk4a1B2S05wcjl1VXJpUTVRajk1eE02bEFxZFE?oc=5"
+     "event": {
+      "date": "2026-11-13",
+      "label": "マルシェ",
+      "place": "津山"
+     },
+     "headline": "猫用品や雑貨販売 津山で１３日マルシェ",
+     "highlight": "１３日マルシェ",
+     "image": "https://static.sanyonews.jp/image/article/size1/4/0/9/7/4097c362f104b02fedfba25d41e912a0_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/1987180",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-07",
-     "n": 2,
-     "source": "WIRED",
-     "title": "Treat Yourself (and Your Cat) With the Best Automatic Litter Boxes",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFB3U3ViakpNMFNQeFY5S2Zkclo2bU9DOTNKV2JxREFuM3NYSDhLVXNmV3NtRm9pTEtyeE5mdDBJalNEbGxMbVdpYTVxSjYycmIxWlVJMjY4OF81T0YwVWx2aGpHLTB4VG9SQVZRZzZwWQ?oc=5"
+     "headline": "Treat Yourself (and Your Cat) With the Best Automatic Litter Boxes",
+     "highlight": "",
+     "image": "https://media.wired.com/photos/69d4403d94490f13c636bd21/191:100/w_1280,c_limit/The-Best-Automatic-Litter-Boxes-Tested-by-Our-Spoiled-Cats.jpg",
+     "image_via": "og:image",
+     "url": "https://www.wired.com/gallery/best-automatic-cat-litter-boxes/",
+     "weight": "normal"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",

@@ -1075,10 +1075,10 @@
   "v": 3
  },
  "https://hermes.media.static.aol.com/media/2026/11/07/9eb53b15-8014-3e41-a34f-387e8d3dee47/11250694-13c4-4138-b1f1-54cb3a2cd4aa.jpg": {
-  "w": 3000,
-  "h": 2000,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://hermes.media.static.aol.com/media/2026/11/07/ddf522af-b364-38de-a078-ce08a3d25c26/5bf79d43-a750-418b-bc18-45934d57b198.jpg": {
   "target": 720,
@@ -1733,6 +1733,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.tenasia.co.kr/photo/202611/BF.46349533.1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
+ },
  "https://img.theweek.in/content/dam/week/en/wire-updates/pti-preview-theweek.jpg": {
   "target": 720,
   "v": 3,
@@ -1966,6 +1972,12 @@
   "h": 607,
   "target": 720,
   "v": 3
+ },
+ "https://media.wired.com/photos/69d4403d94490f13c636bd21/191:100/w_1280,c_limit/The-Best-Automatic-Litter-Boxes-Tested-by-Our-Spoiled-Cats.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://memeon.sgp1.digitaloceanspaces.com/wp-content/uploads/2026/11/Vaundy-1.jpg": {
   "w": 800,
@@ -2803,10 +2815,10 @@
   "blur": 0.405
  },
  "https://static.sanyonews.jp/image/article/size1/4/0/9/7/4097c362f104b02fedfba25d41e912a0_1.jpg": {
-  "w": 855,
-  "h": 1220,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://static.sanyonews.jp/image/article/size1/4/0/e/2/40e2f70bbd3700dd0b35cd4fb1252459_1.jpg": {
   "w": 640,
@@ -2995,6 +3007,12 @@
   "h": 900,
   "target": 720,
   "v": 3
+ },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/11/bercant-cinematic_1920x1080.jpg?w=1600&h=900&fit=crop": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2023/06/from-season-2-episode-10-recap-ending-explained.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
@@ -3421,6 +3439,12 @@
   "h": 525,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://www.bing.com/th?id=ONUT.JaKXRXA9yi6YQOPf4XEekQ&pid=News&w=1200": {
   "w": 700,
@@ -3915,6 +3939,12 @@
   "h": 800,
   "target": 1280,
   "v": 3
+ },
+ "https://www.indexbox.io/landing/img/blog/custom-report-v2-localized/ja/automatic-cat-litter-market-forecast-to-2035-driven-by-pet-humanization-and-smart-home-integration-a488c84c23688392.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://www.iza.ne.jp/resizer/v2/7XMPAQEKS5BR7EW5WGDZN5UWW4.jpg?auth=67084e060b57a2cc1343e7c7e2248594ee572ab482621ceed943def176606b73&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,

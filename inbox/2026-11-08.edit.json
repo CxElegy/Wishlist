@@ -121,6 +121,16 @@
    "weight": "lead",
    "refs": [
     1
+   ],
+   "image": "https://d1rldr9jdodfaa.cloudfront.net/images/01KRB6E1GSSMXAAYC3T718DNRJ/bef4f6ff-2b27-4a8e-8315-766539e96d30_1778492311.webp"
+  },
+  {
+   "headline": "'From': Nova Scotia-filmed show is skyrocketing to success on Netflix in the U.S.",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ],
@@ -139,7 +149,7 @@
   "GTA 6": 26,
   "漫威电影": 26,
   "Astrae Oratio": 1,
-  "FROM": 1,
+  "FROM": 2,
   "日本顶级网球赛事": 1,
   "A2O LITE": 6,
   "dota2": 2,
@@ -150,9 +160,11 @@
   "三星手机": 8,
   "The Mandalorian": 3,
   "あつ森": 3,
-  "Vaundy": 1,
+  "Vaundy": 2,
   "ILLIT": 6,
-  "gelato pique": 1
+  "gelato pique": 1,
+  "MMORPG 新作": 3,
+  "猫用品": 2
  },
  "A2O LITE": [
   {
@@ -341,7 +353,8 @@
    "blurb": "",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    2
    ],
    "image": "https://v3-statics.mirrormedia.mg/images/0ed104aa-f976-4e35-91eb-d4f8580f85bf-w1600.jpg"
   }
@@ -384,5 +397,52 @@
    ]
   }
  ],
- "gelato pique": []
+ "gelato pique": [],
+ "MMORPG 新作": [
+  {
+   "headline": "야심작 ‘아키에이지 크로니클’…출시 초반 평가 엇갈려",
+   "highlight": "출시 초반 평가 엇갈려",
+   "blurb": "엑스엘게임즈의 신작 MMORPG ‘아키에이지 크로니클’이 지난 4일 얼리 액세스를 시작했고, 출시 초반 엇갈린 반응을 받고 있다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200"
+  },
+  {
+   "headline": "Amazon Games Officially Gives Up on Two MMOs",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "猫用品や雑貨販売 津山で１３日マルシェ",
+   "highlight": "１３日マルシェ",
+   "blurb": "猫用品や雑貨を販売するマルシェが津山で13日に開かれる。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-11-13",
+    "label": "マルシェ",
+    "place": "津山"
+   },
+   "image": "https://static.sanyonews.jp/image/article/size1/4/0/9/7/4097c362f104b02fedfba25d41e912a0_1.jpg"
+  },
+  {
+   "headline": "Treat Yourself (and Your Cat) With the Best Automatic Litter Boxes",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ]
 }
