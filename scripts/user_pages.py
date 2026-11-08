@@ -392,13 +392,7 @@ def main(argv):
         return
     except Exception:  # noqa: BLE001  まだ無い・読めない → 全部置く
         fps = {}
-    bands_path = "/storage/v1/object/pages/_fp/bands.json"   # 写真に焼き込まれた余白の割合（網址ごと。photo_bands.py）
-    try:
-        bands = _supa(bands_path)
-        bands = bands if isinstance(bands, dict) else {}
-    except Exception:  # noqa: BLE001  まだ無い → 測り直すだけ
-        bands = {}
-    bands_n = len(bands)
+    bands = dict(fps.get("_bands") or {})   # 写真に焼き込まれた余白の割合（網址ごと。photo_bands.py）。指紋と同じ 1 本に入れる（storage の読みを増やさない）
     try:
         latest = latest_stories(_supa)
     except sbstate.Limited:
@@ -439,15 +433,11 @@ def main(argv):
         except Exception as ex:  # noqa: BLE001  1 人の失敗でほかの人を止めない。ログは数と種類だけ（名前・メールは出さない：Actions のログは公開）
             failed += 1
             print(f"::warning::1 人分のページを作れなかった（{type(ex).__name__}）")
+    new_fps["_bands"] = bands
     if new_fps != fps:
         try:
             _supa(fp_path, json.dumps(new_fps, sort_keys=True).encode(), "POST", "application/json")
         except Exception:  # noqa: BLE001  指紋が書けなくても次の回が全部置き直すだけ
-            pass
-    if len(bands) != bands_n:
-        try:
-            _supa(bands_path, json.dumps(bands, sort_keys=True).encode(), "POST", "application/json")
-        except Exception:  # noqa: BLE001  書けなくても次の回が測り直すだけ
             pass
     if made and not failed:   # 全員作れた回だけ（一部の失敗で前の網址を消さない）。pages/ は読まず、この 1 本だけを photo_store が読む
         try:
