@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-08T15:17:52+00:00",
+ "changed": true,
+ "checked": "2026-11-08T15:33:07+00:00",
  "fired": {
-  "at": "2026-11-08T15:18:08+00:00",
+  "at": "2026-11-08T15:33:07+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした（2 回目：前は動かなかった）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -13,24 +13,26 @@
    "edit": 5
   },
   "2026-11-08": {
-   "edit": 13
+   "edit": 14
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-08T13:26:41+00:00",
-    "attempts": 1,
+    "at": "2026-11-08T15:33:07+00:00",
+    "attempts": 2,
     "day": "2026-11-08",
-    "prog": 243,
-    "resp": "cse_01W4x6f9UXxJJtDAHicDjVhu",
-    "sig": "1c43777ef104"
+    "prog": 188,
+    "resp": "cse_01W4x6f7X3iVRcnHEWPN3y9J",
+    "sig": "e7db7b509047"
    },
    "items": [
     "A2O LITE",
+    "GTA 6",
     "ILLIT",
     "The Mandalorian",
+    "dota2",
     "gelato pique",
     "lib:コーヒー",
     "lib:サッカー日本代表",
@@ -41,7 +43,12 @@
     "lib:筋トレ",
     "lib:観葉植物",
     "チェーンソーマン",
-    "星巴克马克杯"
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影"
    ],
    "last_batch": "2026-11-08T13:17:24+00:00",
    "last_error": {
@@ -51,35 +58,41 @@
    "need": true,
    "prog": 188,
    "prog_day": "2026-11-08",
-   "ripe": [],
-   "sig": "20f843d3aad7",
+   "ripe": [
+    "A2O LITE",
+    "GTA 6",
+    "周杰伦",
+    "漫威电影"
+   ],
+   "sig": "e7db7b509047",
    "token_cap": 1000000,
    "tokens_today": 742556,
-   "why": "整理待ちの記事 102 件（14 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 128 件（21 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦",
     "A2O LITE",
+    "The Mandalorian"
+   ],
+   "need": true,
+   "sig": "7b4cd3f62869",
+   "waiting": [
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
