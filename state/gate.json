@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-08T12:18:10+00:00",
+ "checked": "2026-11-08T13:26:41+00:00",
  "fired": {
-  "at": "2026-11-08T12:18:34+00:00",
+  "at": "2026-11-08T13:26:41+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -13,57 +13,51 @@
    "edit": 5
   },
   "2026-11-08": {
-   "edit": 12
+   "edit": 13
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-08T12:18:34+00:00",
+    "at": "2026-11-08T13:26:41+00:00",
     "attempts": 1,
     "day": "2026-11-08",
-    "prog": 209,
-    "resp": "cse_01W4x6f55q6UP4MV7HLHaCuX",
-    "sig": "598f5e2b5409"
+    "prog": 243,
+    "resp": "cse_01W4x6f9UXxJJtDAHicDjVhu",
+    "sig": "1c43777ef104"
    },
    "items": [
     "A2O LITE",
+    "ILLIT",
     "The Mandalorian",
-    "Vaundy",
     "dota2",
     "gelato pique",
-    "lib:F1",
     "lib:NBA",
     "lib:Nintendo Switch 2",
     "lib:ガンプラ",
     "lib:キャンプ",
+    "lib:サッカー日本代表",
     "lib:ユニクロ",
-    "lib:大相撲",
     "lib:無印良品",
-    "周杰伦",
-    "滑雪",
-    "绝区零"
+    "チェーンソーマン",
+    "星巴克马克杯"
    ],
-   "last_batch": "2026-11-08T09:47:46+00:00",
+   "last_batch": "2026-11-08T13:13:26+00:00",
    "last_error": {
     "at": "2026-11-08T09:24:00+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 209,
+   "prog": 243,
    "prog_day": "2026-11-08",
    "ripe": [
-    "A2O LITE",
-    "The Mandalorian",
-    "gelato pique",
-    "滑雪",
-    "绝区零"
+    "dota2"
    ],
-   "sig": "598f5e2b5409",
+   "sig": "1c43777ef104",
    "token_cap": 1000000,
-   "tokens_today": 660293,
-   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 740833,
+   "why": "整理待ちの記事 91 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -116,12 +110,12 @@
    "runs": 11
   },
   "2026-11-08": {
-   "batches": 24,
-   "cr": 14694514,
-   "cw": 604316,
-   "in": 424,
-   "out": 55553,
-   "runs": 12
+   "batches": 34,
+   "cr": 18453690,
+   "cw": 671535,
+   "in": 520,
+   "out": 68778,
+   "runs": 13
   }
  }
 }
