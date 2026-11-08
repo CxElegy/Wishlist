@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-08T04:32:21+00:00",
+ "checked": "2026-11-08T05:25:13+00:00",
  "fired": {
-  "at": "2026-11-08T04:32:21+00:00",
+  "at": "2026-11-08T05:25:13+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -30,65 +30,52 @@
    "items": [
     "BLEACH Mirrors High",
     "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "gelato pique",
-    "lib:ゼルダの伝説",
-    "lib:ポケットモンスター",
-    "lib:呪術廻戦",
-    "lib:葬送のフリーレン",
-    "lib:鬼滅の刃",
+    "lib:SPY×FAMILY",
+    "lib:原神",
     "あつ森",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "星巴克马克杯",
-    "漫威电影"
+    "星巴克马克杯"
    ],
-   "last_batch": "2026-11-08T02:58:25+00:00",
+   "last_batch": "2026-11-08T04:42:43+00:00",
    "last_error": {
     "at": "2026-11-08T02:54:29+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 144,
+   "prog": 164,
    "prog_day": "2026-11-08",
-   "ripe": [
-    "ILLIT",
-    "三星手机",
-    "周杰伦",
-    "漫威电影"
-   ],
-   "sig": "52fbef2e5fc4",
+   "ripe": [],
+   "sig": "bdad3c4baf82",
    "token_cap": 1000000,
-   "tokens_today": 429977,
-   "why": "整理待ちの記事 84 件（17 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 497397,
+   "why": "整理待ちの記事 33 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "漫威电影",
-    "GTA 6",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "305ab845e834",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
     "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 10 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -117,12 +104,12 @@
    "runs": 11
   },
   "2026-11-08": {
-   "batches": 17,
-   "cr": 10456938,
-   "cw": 392217,
-   "in": 305,
-   "out": 37455,
-   "runs": 8
+   "batches": 18,
+   "cr": 11569632,
+   "cw": 454878,
+   "in": 336,
+   "out": 42183,
+   "runs": 9
   }
  }
 }
