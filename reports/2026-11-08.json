@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "95725b0bf9bb",
+ "edit_sig": "b7401ca03267",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -320,27 +320,8 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-08",
-     "n": 3,
-     "source": "Yahoo!ニュース",
-     "title": "「ジェラート ピケ カフェ」が「ピーナッツ」とコラボ スヌーピーや仲間たちをイメージしたメニュー（WWDJAPAN.com）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9tTXhfMERxV2NuUWc0SGJIQjltOGhxRHk5SXZiTGdPMlJLYksxWllScUV0TzlGM3l1Q2Q2cnFDWks5WklJbzhCUENJZEhvd3Z4UUIwMzNrTnBLSEdMX1I3QmZfX3VUbWtmQjRFVzZnTkZhcXRfeUtpU2ZUQ0FubWs?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-05",
-     "headline": "【11月6日発売】スヌーピー×ジェラート ピケの10周年コラボが登場！楽天ファッションで気軽に購入",
-     "highlight": "",
-     "image": "https://assets.st-note.com/production/uploads/images/332763394/rectangle_large_type_2_adada4d1f6d681faf0a8b1ceb82bc915.jpeg?fit=bounds&quality=85&width=1280",
-     "image_via": "og:image",
-     "url": "https://note.com/konpeito_candy/n/n6e114248c4d3",
-     "weight": "hero"
-    },
     {
      "blurb": "大人気だった17年AWコラボがアップデートして登場。",
      "date": "2026-11-07",
@@ -350,6 +331,16 @@
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1149488/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-08",
+     "headline": "「ジェラート ピケ カフェ」が「ピーナッツ」とコラボ スヌーピーや仲間たちをイメージしたメニュー",
+     "highlight": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-02546176-wwdjapan-000-3-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/9c4da1f1d574684952189abb45246544f700fa8b",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",

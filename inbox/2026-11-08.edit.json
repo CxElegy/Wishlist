@@ -167,7 +167,7 @@
   "あつ森": 4,
   "Vaundy": 2,
   "ILLIT": 12,
-  "gelato pique": 2,
+  "gelato pique": 4,
   "MMORPG 新作": 5,
   "猫用品": 2,
   "BLEACH Mirrors High": 2,
@@ -516,7 +516,17 @@
    "blurb": "大人気だった17年AWコラボがアップデートして登場。",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    4
+   ]
+  },
+  {
+   "headline": "「ジェラート ピケ カフェ」が「ピーナッツ」とコラボ スヌーピーや仲間たちをイメージしたメニュー",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
