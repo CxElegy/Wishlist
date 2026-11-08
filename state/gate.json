@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-07T23:02:27+00:00",
+ "checked": "2026-11-08T00:17:48+00:00",
  "fired": {
-  "at": "2026-11-07T23:02:49+00:00",
+  "at": "2026-11-08T00:18:09+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -13,19 +13,19 @@
    "edit": 5
   },
   "2026-11-08": {
-   "edit": 4
+   "edit": 5
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-07T22:21:38+00:00",
+    "at": "2026-11-08T00:18:09+00:00",
     "attempts": 1,
     "day": "2026-11-08",
-    "prog": 81,
-    "resp": "cse_01W4x6f6B7sj8CBB6RQy3Pkk",
-    "sig": "64cf9db513e7"
+    "prog": 103,
+    "resp": "cse_01W4x6f5uewdEG8cKLzzk8N7",
+    "sig": "7e170c6eca40"
    },
    "items": [
     "A2O LITE",
@@ -51,11 +51,15 @@
    "need": true,
    "prog": 103,
    "prog_day": "2026-11-08",
-   "ripe": [],
-   "sig": "7f6d0d4d7085",
+   "ripe": [
+    "A2O LITE",
+    "gelato pique",
+    "滑雪"
+   ],
+   "sig": "7e170c6eca40",
    "token_cap": 1000000,
    "tokens_today": 267565,
-   "why": "整理待ちの記事 102 件（14 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 102 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
