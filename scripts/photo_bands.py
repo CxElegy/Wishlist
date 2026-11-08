@@ -14,6 +14,7 @@ MAX_NEW = 400          # 1 回で新しく測る数の上限（Actions の時間
 IMG_RE = re.compile(r'<img src="(https?://[^"]+)"')
 FLAT = 24              # 同じ色とみなす差（RGB の差の合計）
 MIN_BAND = 0.04        # これより細い余白は外さない
+BREATH = 0.03          # 余白を外しても残す幅（物の周りの息をする余白）
 
 
 def bands(data):
@@ -51,6 +52,7 @@ def bands(data):
         f = [max(x, y) for x, y in zip(f, bl)]
     if max(f) < MIN_BAND or f[0] + f[2] >= 0.7 or f[1] + f[3] >= 0.85:   # 横は 85% まで（中の空きで 2 つの物の片方だけ残すとき）
         return []
+    f = [max(0.0, v - BREATH) if v > 0 else 0.0 for v in f]   # 物の周りに少し余白を残す（ぎりぎりで切らない。2026-11-08 店長「裁的太多了」）
     e = px[0, 0]
     return [round(v, 3) for v in f] + ["#%02x%02x%02x" % e]
 
@@ -98,7 +100,7 @@ def blur_bands(im):
             j += 1
         seg.append((i, j, col[i] >= thr_c))
         i = j
-    gaps = [(a, z) for a, z, on in seg if not on and a > l and z < n and z - a >= 0.08 * W]
+    gaps = [(a, z) for a, z, on in seg if not on and a > l and z < n and z - a >= 0.08 * W and float(g[:, a:z].std()) < 8]   # 間は無地の背景だけ（人物の中の模様の少ない所を空きと取り違えない。NBA・筋トレ）
     if gaps:
         parts, a0 = [], l
         for a, z in gaps:
@@ -109,7 +111,7 @@ def blur_bands(im):
         share = [col[p[0]:p[1]].sum() / tot for p in parts]
         big = [p for p, s in zip(parts, share) if s >= 0.25]
         if len(big) >= 2:   # 2 つとも大事な物：空きだけ詰めて並べる（店長 2026-11-08「这样裁一下」）。左右の端は外側の物の端まで
-            SEG[:] = [[round(p[0] / W, 3), round(p[1] / W, 3)] for p in big]
+            SEG[:] = [[round(max(0.0, p[0] / W - BREATH), 3), round(min(1.0, p[1] / W + BREATH), 3)] for p in big]   # 物ごとに少し余白を残す
             l, r = big[0][0], len(col) - big[-1][1]
         else:
             best = max(parts, key=lambda p: col[p[0]:p[1]].sum())
@@ -168,14 +170,14 @@ def text_box(data):
 
 def measure(urls, cache, fetch, log=print):
     """まだ測っていない網址を測って cache に入れる（MAX_NEW まで）。→ 新しく測った数"""
-    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == 4)][:MAX_NEW]   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
+    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == 6)][:MAX_NEW]   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
 
     def one(u):
         try:
             data = fetch(u)
-            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "s": segments(data), "v": 4} if data else {"t": [], "m": "", "k": None, "v": 4})
+            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "s": segments(data), "v": 6} if data else {"t": [], "m": "", "k": None, "v": 6})
         except Exception:  # noqa: BLE001  開けない写真は「測れない」として次から取りに行かない
-            return u, {"t": [], "m": "", "k": None, "v": 4}
+            return u, {"t": [], "m": "", "k": None, "v": 6}
     with cf.ThreadPoolExecutor(max_workers=16) as ex:
         for u, v in ex.map(one, todo):
             cache[u] = v

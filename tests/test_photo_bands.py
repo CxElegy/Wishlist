@@ -26,8 +26,8 @@ class Bands(unittest.TestCase):
     def test_white_margin_is_measured(self):
         v = photo_bands.bands(png(400, 400, (100, 60, 300, 340)))
         self.assertEqual(len(v), 5)
-        self.assertAlmostEqual(v[0], 0.15, delta=0.03)   # 上
-        self.assertAlmostEqual(v[3], 0.25, delta=0.03)   # 左
+        self.assertAlmostEqual(v[0], 0.12, delta=0.03)   # 上（余白 3% を残す）
+        self.assertAlmostEqual(v[3], 0.22, delta=0.03)   # 左（余白 3% を残す）
         self.assertEqual(v[4], "#ffffff")
 
     def test_no_margin_gives_nothing(self):
@@ -35,7 +35,7 @@ class Bands(unittest.TestCase):
 
     def test_measure_uses_cache_and_inject_adds_attr(self):
         calls = []
-        cache = {"https://a.example/old.jpg": {"t": [], "m": "", "k": None, "v": 4}}
+        cache = {"https://a.example/old.jpg": {"t": [], "m": "", "k": None, "v": 6}}
         page = '<img src="https://a.example/p.jpg" alt=""><img src="https://a.example/old.jpg">'
 
         def fetch(u):
@@ -53,7 +53,7 @@ class Bands(unittest.TestCase):
         def boom(u):
             raise OSError("down")
         photo_bands.measure(["https://a.example/x.jpg"], cache, boom, log=lambda _m: None)
-        self.assertEqual(cache, {"https://a.example/x.jpg": {"t": [], "m": "", "k": None, "v": 4}})
+        self.assertEqual(cache, {"https://a.example/x.jpg": {"t": [], "m": "", "k": None, "v": 6}})
 
     def test_fit_js_reads_data_t(self):
         self.assertIn("img.dataset.t", render.FIT_JS)
