@@ -61,12 +61,6 @@
   "target": 720,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261107ac/200/w640h360/20261107/acdc-ca4ed5ad831204dc4c6a0cf2ac972889.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
- },
  "http://n.sinaimg.cn/sinakd20261108ac/718/w480h1038/20261108/f106-556c91c00f756e60d7c12d158f6f09e7.jpg": {
   "w": 480,
   "h": 1038,
@@ -1486,6 +1480,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h0T8z.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h0yus.img": {
   "target": 1280,
   "v": 3,
@@ -1883,12 +1883,6 @@
   "target": 1280,
   "v": 3
  },
- "https://more-news.tw/more-news-media/2026/11/JQ-x-Vaundy.jpg": {
-  "w": 1984,
-  "h": 1323,
-  "target": 720,
-  "v": 3
- },
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
   "w": 840,
   "h": 440,
@@ -1942,6 +1936,12 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/609169_1.jpg": {
   "w": 1024,
   "h": 632,
+  "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/931298_1.jpg": {
+  "w": 1023,
+  "h": 1024,
   "target": 1280,
   "v": 3
  },
@@ -2483,6 +2483,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/06271fb120c17a195373e8638da869ed98f56cafdda52a7bcfef1e931b344d33/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flooper_vertical_video_161%2Fcefa1bdd4f18b4283e7192738bd531d1.jpg": {
+  "w": 1200,
+  "h": 2133,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg": {
   "w": 1200,
   "h": 674,
@@ -2680,6 +2686,12 @@
   "v": 3,
   "blur": 0.397
  },
+ "https://static.sanyonews.jp/image/article/size1/1/c/f/f/1cff585270967d145880a68d6ba03397_1.jpg": {
+  "w": 640,
+  "h": 362,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/2/4/a/b/24ab41366173fb50931b74229277a922_1.jpg": {
   "w": 631,
   "h": 640,
@@ -2734,6 +2746,19 @@
   "local": "pics/7e8f1f08c791d915.webp",
   "out": [
    812,
+   1280
+  ],
+  "why": "看不清"
+ },
+ "https://static.sanyonews.jp/image/article/size1/6/1/6/8/616808d3f5599c56ed25f11113ea1818_1.jpg": {
+  "w": 640,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.464,
+  "local": "pics/afca50659cb510a3.webp",
+  "out": [
+   1280,
    1280
   ],
   "why": "看不清"
@@ -3214,12 +3239,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.ALZNWvppgzAO32RmHQ4ZjA&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
- },
  "https://www.bing.com/th?id=ONUT.AqFGAOPiUknUmy3Gx9ZeQw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3239,12 +3258,24 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.FQMMOhAn4OrSqV1KueIOIA&pid=News&w=600": {
+  "w": 600,
+  "h": 338,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 1280,
   "v": 3,
   "blur": 0.379
+ },
+ "https://www.bing.com/th?id=ONUT.Jbb8RhWIXvwO-LhCN8YA7Q&pid=News&w=799": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.JpCGa5gTOp-LoOapCFVdCg&pid=News&w=700": {
   "w": 560,
@@ -3258,12 +3289,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.KfjYEQewHisUbifMHHdpyA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,
@@ -3299,6 +3324,12 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.N0LnlEohsUZ4OQLawwh2GQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.NBr4dX6joNXeMb6uMaRJtg&pid=News&w=800": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3425,6 +3456,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.414
+ },
+ "https://www.bing.com/th?id=ONUT.s_c3Xwa6hQLfit1xEUY7vQ&pid=News&w=780": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.uvQNvoSO5vnghkkWIN2mGg&pid=News&w=750": {
   "w": 700,
