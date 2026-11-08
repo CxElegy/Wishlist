@@ -3970,10 +3970,7 @@ FIT_JS = """
       // 文字のある写真（data-k）の枠は伸ばさない（伸ばすと切れて文字が欠ける。2026-11-08 台風の地図・dmenu）。伸ばせる写真がなければ穴のまま（文字の欠けより小さい減点）
       let ks = best.col[a].filter(k => !(span[k] === 2) && !cards[k].querySelector('.pic img[data-k]'));
       if (!ks.length) ks = best.col[a].filter(k => !cards[k].querySelector('.pic img[data-k]'));   // 列に大きい 1 枚（2 列）しかないときは、その 1 枚が伸びる（隣が 3 枚以上で高いとき、その下が空かない）
-      // 伸ばすのは写真が 3 割以上切れない所まで（F1 が半分切れた。2026-11-08）
-      const cap = k => { const p = cards[k].querySelector('.pic'), im = p && p.querySelector('img:not(.bg):not(.ico)'); if (!p || !im || !im.naturalWidth) return 0;
-        const w = p.clientWidth, h = p.clientHeight, natH = w * im.naturalHeight / im.naturalWidth; return Math.max(0, Math.min(natH / 0.7, w * 1.5) - h); };
-      if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], Math.min(d / ks.length, cap(k))); });
+      if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], d / ks.length); });
     }
     // 2 列にまたがる大きい 1 枚の下で、2 つの列が別々に伸びると上の位置がずれるので、列ごとに下から積み直す
     const y0 = Array(cols).fill(0), place = [];
