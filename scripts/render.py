@@ -423,6 +423,9 @@ button{font-family:inherit}
 .card.mini:not(.nophoto){row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.mini:not(.nophoto)>.pic{grid-column:1;grid-row:1/span 9}.card.mini:not(.nophoto)>*:not(.pic):not(.lk){grid-column:2}
 .pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
 .pk.shaped .pkt{flex:1 1 auto}
+.wc.lead.half{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:16px}
+.wc.lead.half>.pic{flex:0 0 var(--hw)!important;width:var(--hw)!important;max-width:var(--hw)!important;height:auto!important}
+.wc.lead.half>.htx{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:6px}
 .wc.sb .tg,.card.sb .tg{max-width:100%;white-space:normal}
 /* 細いカードの字の列は狭い：👍👎 を日付に重ねず、入らなければ次の行へ（2026-11-07 店長） */
 .wc.sb em.wc-x,.wc.sb em:has(.vt){padding-right:0!important;min-height:0;align-items:center;gap:2px 6px}.wc.sb em .vt{position:static;margin:0 0 0 -4px;padding:0;order:2}.wc.sb em .from{order:3;flex-basis:100%}.wc.sb em.two::before{display:none}
@@ -798,7 +801,7 @@ def _headline(story):
 SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest('section'),"
            "f=(me.dataset.fb||'').split(' ').filter(function(u){return u&&!(s&&[].some.call("
            "s.querySelectorAll('.pic img:not(.bg)'),function(i){return i!==me&&i.src===u}))});"
-           "if(f.length){me.removeAttribute('srcset');me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
+           "if(f.length){me.removeAttribute('srcset');me.removeAttribute('data-t');me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
            "else{var a=p.closest('article.card,article.wc,.pk');if(a){p.remove();a.classList.add('nophoto')}else{"
            "var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
            "if(ic){p.classList.add('icon');var l=ic.dataset.icons.split(' ');ic.src=l.shift();ic.dataset.icons=l.join(' ')}"
@@ -3475,6 +3478,8 @@ FIT_JS = """
   const bands = img => {
     if (img._bands !== undefined) return img._bands;
     img._bands = null;
+    const dt = img.dataset.t ? img.dataset.t.split(',') : null;   // ページを作るときに測った余白（photo_bands.py：別のサイトの写真）。代わりの写真に替えるとき SWAP_JS が消す
+    if (dt && dt.length === 5) { img._bands = {t: +dt[0], r: +dt[1], b: +dt[2], l: +dt[3]}; img._edge = dt[4]; return img._bands; }
     const read = src => {
       const W = 64, H = Math.max(8, Math.round(64 * img.naturalHeight / img.naturalWidth)), c = document.createElement('canvas');
       c.width = W; c.height = H;
@@ -3500,15 +3505,33 @@ FIT_JS = """
   const trimFit = (img, p, f) => {
     const nw = img.naturalWidth, nh = img.naturalHeight, cw = nw * (1 - f.l - f.r), ch = nh * (1 - f.t - f.b), W = p.clientWidth, H = p.clientHeight;
     if (!W || !H) return;
-    const cover = Math.max(W / cw, H / ch), inner = Math.min(W / cw, H / ch), s = inner / cover >= 0.88 ? cover : inner, iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
+    const cover = Math.max(W / cw, H / ch), inner = Math.min(W / cw, H / ch), s = inner / cover >= 0.65 ? cover : inner,   /* 帯を外した中身は 35% まで切って埋める（2026-11-08 店長：余白は 25% まで） */ iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
     Object.assign(img.style, {width: iw / W * 100 + '%', height: ih / H * 100 + '%', left: ((W - cw * s) / 2 - nw * f.l * s) / W * 100 + '%', top: ((H - ch * s) / 2 - nh * f.t * s) / H * 100 + '%'});
     p.classList.remove('whole'); p.classList.add('trim');
     if (s < cover && img._edge) p.style.background = img._edge;
+  };
+  // 「ほかの注目ニュース」の大きい 1 枚（.wc.lead）は頭条（#front .top）の写真より目立たせない：写真の面積は頭条の 8 割まで（2026-11-08 店長）。
+  // 超えるときは写真を左に小さく置き、字を右に並べる（.half）
+  const headArea = () => { const h = document.querySelector('#front .top .pic'); const r = h && h.getBoundingClientRect(); return r && r.width ? r.width * r.height : 0; };
+  const capLead = (img, p) => {
+    const c = p.closest('.wc.lead'); if (!c || innerWidth <= 760) return;
+    c.classList.remove('half'); c.style.removeProperty('--hw');
+    const hx = c.querySelector(':scope > .htx'); if (hx) { while (hx.firstChild) c.insertBefore(hx.firstChild, hx); hx.remove(); }
+    const A = headArea(), r = p.getBoundingClientRect(); if (!A || r.width * r.height <= A * 0.8) return;
+    const bx = document.createElement('div'); bx.className = 'htx';   // 字をひとまとめにして写真の右へ
+    [...c.children].filter(k => k !== p && !k.matches('.lk')).forEach(k => bx.append(k)); c.append(bx);
+    const bd = img._bands, nat = bd ? img.naturalWidth * (1 - bd.l - bd.r) / (img.naturalHeight * (1 - bd.t - bd.b)) : img.naturalWidth / img.naturalHeight;
+    const w = Math.round(Math.min(Math.sqrt(A * 0.8 * nat), c.clientWidth * 0.6));
+    c.style.setProperty('--hw', w + 'px'); c.classList.add('half');
+    p.style.aspectRatio = nat.toFixed(3); p.style.height = ''; p.style.width = '';
+    p.classList.add('fill'); img.style.objectPosition = '';
   };
   const fit = img => {
     fit0(img);
     const p = img.closest('.pic'), f = img.naturalWidth && img._bands;
     if (!p) return;
+    if (img.naturalWidth) capLead(img, p);
+    if (p.closest('#front .top')) { const li = document.querySelector('.wc.lead .pic img:not(.bg):not(.ico)'); if (li && li.naturalWidth) capLead(li, li.closest('.pic')); }   // 頭条の写真があとから届いたときも比べ直す
     if (f) trimFit(img, p, f);
     else if (img._edge && !p.classList.contains('fill')) p.style.background = img._edge;   // 全体を見せる絵：周りを絵の端の色に（帯に見えない）
     if (p.closest('.pk')) swapBig(p.closest('.pk').parentElement);
@@ -3517,7 +3540,8 @@ FIT_JS = """
   const swapBig = g => {
     if (!g || innerWidth <= 760) return;
     const big = g.querySelector(':scope > .pk.big'), bp = big && big.querySelector('.pic'), bi = bp && bp.querySelector('img:not(.bg):not(.ico)');
-    if (!bi || !bi.naturalWidth || bp.classList.contains('fill') || bi.naturalWidth / bi.naturalHeight <= 1.2) return;
+    const bb = bi && bi._bands, bn = bi && bi.naturalWidth ? bi.naturalWidth * (bb ? 1 - bb.l - bb.r : 1) / (bi.naturalHeight * (bb ? 1 - bb.t - bb.b : 1)) : 0;
+    if (!bn || (bp.classList.contains('fill') && !bp.classList.contains('trim')) || bn <= 1.2) return;
     const to = [...g.querySelectorAll(':scope > .pk:not(.big)')].find(k => { const i = k.querySelector('.pic img:not(.bg):not(.ico)'); return i && i.naturalWidth && i.naturalWidth / i.naturalHeight <= 1.1; });
     if (!to) return;
     big.classList.remove('big'); to.classList.add('big'); g.prepend(to);
@@ -3650,7 +3674,13 @@ FIT_JS = """
     if (c.classList.contains('lead') && !c.querySelector(':scope > .ltx')) {   // 字の列を 1 つの箱に（写真の枠が何段にまたがるかを決めない）
       const bx = document.createElement('div'); bx.className = 'ltx';
       [...c.children].filter(k => k !== p && !k.matches('.lk, .xplay, .nx')).forEach(k => bx.append(k)); c.insertBefore(bx, c.querySelector(':scope > .nx')); }
-    const sz = ls ? place : h => { p.style.height = h + 'px'; p.style.width = Math.min(Math.round(h * nat), c.clientWidth * 0.42) + 'px'; };
+    const sz = ls ? place : h => {
+      const w = Math.min(Math.round(h * nat), Math.round(c.clientWidth * 0.42)), whole = w / nat;
+      p.style.width = w + 'px';
+      if (h <= whole * 1.02) { p.style.height = h + 'px'; return; }
+      const ok = cropAt(img, nat / (w / h));   // 2026-11-08：幅が 42% で止まると枠が絵より縦に長くなり、上下に帯（57%）が出た
+      p.style.height = (ok ? h : Math.round(whole)) + 'px'; if (ok) p.classList.add('fill');
+    };
     sz(p.clientHeight);
     c.classList.add('nw'); if (ls) c.classList.add('ls');
     // 版面の升目（.grid）：右の記事が段をまたぐ高さ（S）と大きい記事の高さをそろえる（どちらが低くても下に空きが残る：L2，ILLIT 型・滑雪型とも）。

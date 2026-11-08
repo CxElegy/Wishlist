@@ -28,6 +28,7 @@ import zoneinfo
 
 import digest
 import heat
+import photo_bands
 import photo_store
 import render
 import sbstate
@@ -391,6 +392,7 @@ def main(argv):
         return
     except Exception:  # noqa: BLE001  まだ無い・読めない → 全部置く
         fps = {}
+    bands = dict(fps.get("_bands") or {})   # 写真に焼き込まれた余白の割合（網址ごと。photo_bands.py）。指紋と同じ 1 本に入れる（storage の読みを増やさない）
     try:
         latest = latest_stories(_supa)
     except sbstate.Limited:
@@ -412,6 +414,10 @@ def main(argv):
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
             html_ = build(u["email"], u.get("prefs") or {}, board_rows(follows, latest, {norm(r["item"]): r for r in rows or []}), shop_items, shop_issue,
                           settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
+            # 写真に焼き込まれた余白を測って data-t に書く（ブラウザは別のサイトの写真を読めないので、ここで測る。2026-11-08）
+            photo_bands.measure([u for t in [html_, *pages.values()] for u in photo_bands.urls_in(t)], bands, photo_store.fetch)
+            html_ = photo_bands.inject(html_, bands)
+            pages.update({k: photo_bands.inject(v, bands) for k, v in pages.items()})
             photo_store.scan_text([html_, *pages.values()], set(), imgs)
             for name, h in {"index.html": html_, **pages}.items():
                 fp = hashlib.sha1(h.encode("utf-8")).hexdigest()
@@ -427,6 +433,7 @@ def main(argv):
         except Exception as ex:  # noqa: BLE001  1 人の失敗でほかの人を止めない。ログは数と種類だけ（名前・メールは出さない：Actions のログは公開）
             failed += 1
             print(f"::warning::1 人分のページを作れなかった（{type(ex).__name__}）")
+    new_fps["_bands"] = bands
     if new_fps != fps:
         try:
             _supa(fp_path, json.dumps(new_fps, sort_keys=True).encode(), "POST", "application/json")
