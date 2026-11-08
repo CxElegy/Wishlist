@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-08T22:26:49+00:00",
+ "checked": "2026-11-08T23:17:57+00:00",
  "fired": {
-  "at": "2026-11-08T22:27:06+00:00",
+  "at": "2026-11-08T23:18:15+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -31,53 +31,29 @@
     "sig": "92bf0374cb58"
    },
    "items": [
-    "A2O LITE",
     "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
     "dota2",
-    "gelato pique",
-    "lib:Ado",
-    "lib:King Gnu",
-    "lib:Mrs. GREEN APPLE",
-    "lib:YOASOBI",
-    "lib:大谷翔平",
-    "lib:宇宙・ロケット",
-    "lib:将棋",
-    "lib:生成AI",
+    "lib:台風・天気",
+    "lib:恐竜",
+    "lib:美術館の企画展",
     "あつ森",
-    "三星手机",
-    "周杰伦",
     "滑雪",
-    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-08T20:23:35+00:00",
+   "last_batch": "2026-11-08T22:33:57+00:00",
    "last_error": {
     "at": "2026-11-08T18:29:08+00:00",
     "text": "出刊に失敗：No module named 'cv2'"
    },
    "need": true,
-   "prog": 39,
+   "prog": 93,
    "prog_day": "2026-11-09",
-   "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
-    "三星手机",
-    "周杰伦",
-    "漫威电影"
-   ],
-   "sig": "5d8116c22e34",
+   "ripe": [],
+   "sig": "c34adcda3001",
    "token_cap": 1000000,
-   "tokens_today": 114249,
-   "why": "整理待ちの記事 149 件（23 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 182532,
+   "why": "整理待ちの記事 32 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -138,12 +114,12 @@
    "runs": 15
   },
   "2026-11-09": {
-   "batches": 2,
-   "cr": 2295940,
-   "cw": 104610,
-   "in": 63,
-   "out": 9576,
-   "runs": 2
+   "batches": 4,
+   "cr": 3728392,
+   "cw": 165937,
+   "in": 101,
+   "out": 16494,
+   "runs": 3
   }
  }
 }
