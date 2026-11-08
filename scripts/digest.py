@@ -1132,7 +1132,10 @@ def story_rows(path):
     for item in data.get("items", []):
         for pos, st in enumerate(item.get("stories") or []):
             day = st.get("date") or ""
-            rows.append({"issue_date": date, "item": item["name"], "pos": pos, "headline": st["headline"],
+            head = st.get("headline") or st.get("title")   # 2026-11-09：見出しが title の欄で入った記事で止まった（書き方の違いを受ける）
+            if not head:
+                continue
+            rows.append({"issue_date": date, "item": item["name"], "pos": pos, "headline": head,
                          "highlight": st.get("highlight") or None, "blurb": st.get("blurb") or None,
                          "weight": st.get("weight"), "url": st.get("url"), "image": st.get("image") or None,
                          "story_date": day[:10] if re.fullmatch(r"\d{4}-\d{2}-\d{2}.*", day) else None})

@@ -10,7 +10,14 @@ if ! docker image inspect "$image:$stamp" >/dev/null 2>&1; then
   echo "検査の環境を作る（初回だけ数分）"
   docker build -q -t "$image:$stamp" -f harness/ci.Dockerfile . >/dev/null || { echo "✗ 検査の環境を作れない"; exit 1; }
 fi
-git archive HEAD | docker run --rm -i -e TEST_JOBS="${TEST_JOBS:-8}" "$image:$stamp" bash -c '
+# CI は PR を「main と合併した形」で試す。手元も同じ形で試す（2026-11-09：枝が古い main のままで手元は緑、CI だけ test_wall_shapes が赤になった）
+git fetch -q origin main 2>/dev/null
+tree=HEAD
+if git rev-parse -q --verify origin/main >/dev/null && ! git merge-base --is-ancestor origin/main HEAD; then
+  if m=$(git merge-tree --write-tree origin/main HEAD 2>/dev/null | head -1) && [ -n "$m" ]; then tree=$m; echo "main と合併した形で試す"
+  else echo "✗ main と競合する：先に main を取り込む"; exit 1; fi
+fi
+git archive "$tree" | docker run --rm -i -e TEST_JOBS="${TEST_JOBS:-8}" "$image:$stamp" bash -c '
   mkdir /w && cd /w && tar x
   git init -q && git add -A >/dev/null && git -c user.name=ci -c user.email=ci@example.com commit -qm ci
   python -c "import sys; sys.path.insert(0, \"scripts\"); import digest; digest.load_config(); digest.load_wishlist()" || exit 1
