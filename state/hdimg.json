@@ -79,12 +79,6 @@
   "target": 720,
   "v": 3
  },
- "http://pimg3.daara.co.kr/kidd/photo/2026/11/06/1793946074_79.gif": {
-  "w": 690,
-  "h": 460,
-  "target": 720,
-  "v": 3
- },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad762ce6b6c9779475c23de/1793554734900/James+Spader+Says+Marvel+Fans+Keep+Asking+Him+if+Ultron+Will+Return+in+AVENGERS-+DOOMSDAY.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -414,12 +408,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://blogthumb.pstatic.net/MjAyNjExMDhfMTMw/MDAxNzk0MDY4MzE2MDEw.aTSciYZqoz0j7eKM2N0b5F5X9HYOj8qrn8IAQtZVtzYg.Y_XS1WcPU0to6j81AyJHTT-kJV83PnY6KdLMkKnJ2Rkg.PNG/image.png?type=w2": {
-  "w": 743,
-  "h": 502,
-  "target": 720,
   "v": 3
  },
  "https://cdn-origin.cool-style.com.tw/cool/2026/11/collag521e.jpg": {
@@ -2077,6 +2065,13 @@
   "h": 346,
   "target": 720,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/1149488/12021924_615.jpg": {
+  "w": 615,
+  "h": 287,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.386
  },
  "https://news.walkerplus.com/article/1167698/12406746_615.jpg": {
   "w": 615,
