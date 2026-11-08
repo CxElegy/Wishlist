@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "84dd2712803f",
+ "edit_sig": "7a21626dd6fe",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -675,15 +675,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 3,
-     "source": "搜狐",
-     "title": "【一竞 技】DOTA2：BLAST Slam S9赛事看点前瞻 顶尖豪强云集开启新一轮格局对决！",
-     "url": "https://www.sohu.com/a/1098768377_123043182"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -704,6 +695,20 @@
      "image": "https://hawk.live/storage/images/posts/techies-largo-bug-25419.jpg",
      "image_via": "og:image",
      "url": "https://hawk.live/posts/bug-involving-techies-largo-discovered-dota-2",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-07",
+     "event": {
+      "date": "2026-11-20",
+      "label": "BLAST Slam S9 開幕"
+     },
+     "headline": "【一竞技】DOTA2：BLAST Slam S9赛事看点前瞻 顶尖豪强云集开启新一轮格局对决！",
+     "highlight": "11月20日",
+     "image": "https://q6.itc.cn/images01/20261108/3f7543d7176f4b9f8045718ab6942f18.jpeg",
+     "image_via": "og:image",
+     "url": "https://www.sohu.com/a/1098768377_123043182",
      "weight": "normal"
     }
    ],
