@@ -445,16 +445,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.gamey.kr/news/photo/202609/3018752_170370_5622.jpg": {
-  "w": 600,
-  "h": 450,
+ "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
+  "w": 300,
+  "h": 225,
   "target": 1280,
   "v": 3,
-  "blur": 0.447,
-  "local": "pics/ad97cd7134cf3368.webp",
+  "blur": 0.606,
+  "local": "pics/1f4c2211c5986133.webp",
   "out": [
-   1280,
-   960
+   900,
+   675
   ],
   "why": "看不清"
  },
@@ -875,6 +875,12 @@
   "target": 720,
   "v": 3
  },
+ "https://egamers.io/wp-content/uploads/2024/12/Play-Collaborates-with-Telefonica-to-Launch-PLAY-GamePass-NFTs-280x210.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://egamers.io/wp-content/uploads/2026/10/outer-ring-mmos-next-update-brings-desert-pvp-loot-stealing-and-new-bosses.jpg": {
   "w": 1200,
   "h": 676,
@@ -1157,6 +1163,12 @@
  "https://i0.wp.com/knightedgemedia.com/wp-content/uploads/2026/11/dc-studios-john-constantine-movie-banner.jpg?fit=1920%2C820&ssl=1": {
   "w": 1920,
   "h": 820,
+  "target": 720,
+  "v": 3
+ },
+ "https://i0.wp.com/news.qoo-app.com/wp-content/uploads/2026/11/ogpcover.jpg": {
+  "w": 1116,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -1796,6 +1808,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://img2.sbs.co.kr/ops_clip_img/2026/11/01/83b1480d-bf44-43cf-826e-0b0e50cba714005w640.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
   "v": 3
  },
  "https://img6.donews.com/img/2026/11/05/img_pic_1793875977.jpg": {

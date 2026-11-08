@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "ab04301e35a8",
+ "edit_sig": "f0b8d7892877",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,8 +13,8 @@
      "date": "2026-11-07",
      "headline": "[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄",
      "highlight": "TGS 2026",
-     "image": "https://cdn.gamey.kr/news/photo/202609/3018752_170370_5622.jpg",
-     "image_via": "正文图（4 枚から）",
+     "image": "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg",
+     "image_via": "og:image",
      "url": "http://www.gamey.kr/news/articleView.html?idxno=3018752",
      "weight": "lead"
     }
@@ -488,15 +488,6 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-01",
-     "n": 3,
-     "source": "programs.sbs.co.kr",
-     "title": "SBS 인기가요 : NEON - A2O LITE | SBS 261101 방송",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1yZzBEY3pjNTlSbFhVcTJOVzdkQW80bkgwSjhBVnFCc3hVSElGOFhRMDRyY1dqN1E4aXVIOXIzajBIemJESzlLX3FYU1NVaHZMeHRzZU41dTBtbHhHVnFoVVVxVGZEaTFuRFR5RQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -508,6 +499,16 @@
      "image_via": "og:image",
      "url": "https://www.anewsa.com/detail.php?number=3215523",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-01",
+     "headline": "SBS 인기가요 : NEON - A2O LITE | SBS 261101 방송",
+     "highlight": "",
+     "image": "https://img2.sbs.co.kr/ops_clip_img/2026/11/01/83b1480d-bf44-43cf-826e-0b0e50cba714005w640.jpg",
+     "image_via": "og:image",
+     "url": "https://programs.sbs.co.kr/enter/gayo/clip/54768/OC482705026",
+     "weight": "normal"
     }
    ],
    "subtitle": "",
