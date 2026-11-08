@@ -426,7 +426,7 @@ button{font-family:inherit}
 .wc.lead.half{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:16px}
 .wc.lead.half>.pic{flex:0 0 var(--hw)!important;width:var(--hw)!important;max-width:var(--hw)!important;height:auto!important}
 .wc.lead.half>.htx{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:6px}
-.wc.lead.half>.htx>b{-webkit-line-clamp:unset;display:block;min-height:0}   /* 字の大きさはほかのカードと同じ（2026-11-08 店長：字の大きさがそろわないのは減点） */
+.wc.lead.half>.htx>b{-webkit-line-clamp:unset;display:block;min-height:0;font-size:14px;font-weight:700}   /* 字の大きさはほかのカードと同じ（2026-11-08 店長：字の大きさがそろわないのは減点） */
 /* 予定と欲しい物（右の列が下に回る幅）：横いっぱいの箱を縦に積み、中身を段に並べる（テストグラウンド案 1。Every Layout の Grid）。中身が 0 件の箱は 1 行の帯 */
 @media (min-width:761px) and (max-width:1200px){
  .mgrid .fside{display:flex!important;flex-direction:column;gap:20px}
@@ -648,7 +648,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
  .mgrid{grid-template-columns:minmax(0,1fr)}.mgrid>.wall{align-content:start}.fside>:last-child{flex:none}.fside{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
- .wall{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .wall{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}   /* 2026-11-08：2 列に固定すると普通のカードの写真が頭条と同じ大きさになった（大きさの順：頭条 → 大きい 1 枚 → ほか） */
  .pkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pk.big{grid-column:1/-1;grid-row:auto}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/9}
  .pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* ---------- スマホ ---------- */
