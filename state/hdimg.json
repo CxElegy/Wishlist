@@ -215,6 +215,12 @@
   "why": "防盗链",
   "ref": true
  },
+ "https://0.soompi.io/wp-content/uploads/2026/11/08093529/LE-SSERAFIM-ILLIT-KATSEYE.jpeg": {
+  "w": 3441,
+  "h": 2294,
+  "target": 1280,
+  "v": 3
+ },
  "https://9to5google.com/wp-content/uploads/sites/4/2026/02/galaxy-s26-ultra-privacy-display-17.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
   "h": 628,
@@ -376,6 +382,12 @@
  "https://attach.setn.com/newsimages/2017/02/08/803356-PH.jpg": {
   "w": 650,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://attach.setn.com/newsimages/2019/11/09/2233175-PH.jpg": {
+  "w": 800,
+  "h": 450,
   "target": 720,
   "v": 3
  },
@@ -557,11 +569,11 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229_crop.jpg": {
+ "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229.jpg": {
+  "w": 1600,
+  "h": 893,
   "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-08"
+  "v": 3
  },
  "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg": {
   "w": 1200,
@@ -608,6 +620,12 @@
  "https://cdn2.ettoday.net/images/8999/e8999793.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn2.ettoday.net/images/9006/e9006168.jpg": {
+  "w": 1000,
+  "h": 750,
   "target": 1280,
   "v": 3
  },
@@ -930,6 +948,12 @@
   "target": 720,
   "v": 3
  },
+ "https://fpimgs.s3.ap-southeast-1.amazonaws.com/uul/2026/11/08/6aef58edf165b0.95265054.jpg": {
+  "w": 752,
+  "h": 752,
+  "target": 720,
+  "v": 3
+ },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/31070737/midnight-sons-1024x576.jpg": {
   "w": 1024,
   "h": 576,
@@ -976,6 +1000,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://gazlog.jp/wp-content/uploads/2026/11/image-50.png": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://gazlog.jp/wp-content/uploads/2026/11/image.png": {

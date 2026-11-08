@@ -79,7 +79,8 @@
    "weight": "normal",
    "refs": [
     4,
-    10
+    10,
+    29
    ]
   },
   {
@@ -147,21 +148,21 @@
  ],
  "_covered": {
   "GTA 6": 26,
-  "漫威电影": 26,
+  "漫威电影": 32,
   "Astrae Oratio": 1,
   "FROM": 2,
   "日本顶级网球赛事": 1,
   "A2O LITE": 6,
   "dota2": 2,
   "チェーンソーマン": 4,
-  "周杰伦": 4,
+  "周杰伦": 7,
   "滑雪": 2,
   "绝区零": 1,
-  "三星手机": 8,
+  "三星手机": 11,
   "The Mandalorian": 3,
   "あつ森": 3,
   "Vaundy": 2,
-  "ILLIT": 6,
+  "ILLIT": 9,
   "gelato pique": 1,
   "MMORPG 新作": 3,
   "猫用品": 2
@@ -247,6 +248,24 @@
     4,
     3
    ]
+  },
+  {
+   "headline": "周杰倫曬晚餐驚見4瓶頂級紅酒！總價近200萬 其中一瓶是世界酒王",
+   "highlight": "總價近200萬",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "阿信曝光私下聊天記錄！周杰倫「溫馨提醒」笑翻全網",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "滑雪": [
@@ -312,6 +331,16 @@
    "refs": [
     5
    ]
+  },
+  {
+   "headline": "Galaxy S27 ProはSnapdragon 8 Elite Gen 6の標準版を搭載へ。差はGPUや動画撮影性能",
+   "highlight": "標準版を搭載",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    11
+   ]
   }
  ],
  "The Mandalorian": [
@@ -367,7 +396,8 @@
    "weight": "lead",
    "refs": [
     3
-   ]
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/1/0/1/6/10163e8bc4b56c33bcc85493c8e2556d_1.jpg"
   },
   {
    "headline": "ILLIT・YUNAH、橋本環奈にラブコール「デートしたい」 日本ドラマイベントにサプライズ登場",
@@ -384,7 +414,10 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    7,
+    8,
+    9
    ]
   },
   {
@@ -394,6 +427,24 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "Watch: LE SSERAFIM, ILLIT, And KATSEYE's \"ICONIC BY MISTAKE\" MV Surpasses 200 Million Views",
+   "highlight": "200 Million Views",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "ILLIT《Music Bank》奪冠安可舞台惹議，網民質疑現場唱功不穩",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ],
