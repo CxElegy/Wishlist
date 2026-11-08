@@ -206,7 +206,7 @@ button{font-family:inherit}
 /* 左の壁と右の列の下端をそろえる：短いほうが伸びる（壁は各段が均等に伸び、右の列は最後の箱が伸びる） */
 .mgrid>.wall{align-content:start}
 .mgrid .wc{justify-content:flex-start}
-.fside>:last-child{flex:1}
+.fside>:last-child{flex:1;display:flex;flex-direction:column}.fside>:last-child>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}  /* 右の列が壁の高さまで伸びた分は、箱の下にまとめず行の間に分ける（2026-11-08 店長：欲しい物の下の空白） */
 .fside{display:flex;flex-direction:column;gap:20px;min-width:0}
 .sbox{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:12px 14px 12px}
 .sbox h4,.fside .agenda h4{margin:0 0 6px;display:flex;align-items:baseline;gap:10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
@@ -426,7 +426,7 @@ button{font-family:inherit}
 .wc.lead.half{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:16px}
 .wc.lead.half>.pic{flex:0 0 var(--hw)!important;width:var(--hw)!important;max-width:var(--hw)!important;height:auto!important}
 .wc.lead.half>.htx{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:6px}
-.wc.lead.half>.htx>b{-webkit-line-clamp:unset;display:block;min-height:0;font-size:clamp(17px,1.6vw,22px);line-height:1.45}
+.wc.lead.half>.htx>b{-webkit-line-clamp:unset;display:block;min-height:0}   /* 字の大きさはほかのカードと同じ（2026-11-08 店長：字の大きさがそろわないのは減点） */
 /* 予定と欲しい物（右の列が下に回る幅）：横いっぱいの箱を縦に積み、中身を段に並べる（テストグラウンド案 1。Every Layout の Grid）。中身が 0 件の箱は 1 行の帯 */
 @media (min-width:761px) and (max-width:1200px){
  .mgrid .fside{display:flex!important;flex-direction:column;gap:20px}
@@ -3537,7 +3537,7 @@ FIT_JS = """
     p.classList.add('fill'); img.style.objectPosition = '';
     // 写真が字より高いと右下が空く：写真の高さを字の高さに合わせる（幅は 6 割まで縮める。2026-11-08 店長「这种也算留白」）
     const th = bx.getBoundingClientRect().height, ph = w / nat;
-    if (ph > th + 12) c.style.setProperty('--hw', Math.round(Math.max(w * 0.6, th * nat)) + 'px');
+    if (ph > th + 12) c.style.setProperty('--hw', Math.round(Math.max(w * 0.4, th * nat)) + 'px');
   };
   const fit = img => {
     fit0(img);
@@ -3643,9 +3643,9 @@ FIT_JS = """
         const w2 = Math.min(Math.round(hh * nat), Math.round(cw * 0.55)), img = p.querySelector('img:not(.bg):not(.ico)'), want = Math.min(1.25, hh / (w2 / nat));
         p.style.width = w2 + 'px';
         if (img && want > 1.02) {
-          const ok = cropAt(img, want), o = ok ? img.style.objectPosition.split(' ')[0] : '50%';
+          const ok = cropAt(img, want) && +img.dataset.keep >= 85, o = ok ? img.style.objectPosition.split(' ')[0] : '50%';   // 主役がほぼ全部（85%）残るときだけ拡大（2026-11-08 店長：人物が切れた）
           img.style.objectPosition = ''; delete img.dataset.keep;
-          img.style.transformOrigin = o + ' 50%'; img.style.transform = 'scale(' + (ok ? want : Math.min(want, 1.1)).toFixed(3) + ')';
+          img.style.transformOrigin = o + ' 50%'; img.style.transform = 'scale(' + (ok ? want : Math.min(want, 1.08)).toFixed(3) + ')';
         }
       }
     }

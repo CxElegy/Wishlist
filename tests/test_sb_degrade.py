@@ -248,7 +248,7 @@ class PageSide(unittest.TestCase):
                 return ""
             return []
         with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages, "build", lambda *a, **k: '<html><section><img src="https://ex.com/a.jpg" data-e="s"></section></html>'), \
-                mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0), mock.patch.object(user_pages.render, "photo_opens", None, create=True):
+                mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0), mock.patch.object(user_pages.og_image, "fill", lambda *a, **k: 0), mock.patch.object(user_pages.render, "photo_opens", None, create=True):
             user_pages.main([])
             user_pages.main([])
             user_pages.main(["--force"])
