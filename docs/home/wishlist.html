@@ -375,6 +375,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .card.mini:not(.nophoto){row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.mini:not(.nophoto)>.pic{grid-column:1;grid-row:1/span 9}.card.mini:not(.nophoto)>*:not(.pic):not(.lk){grid-column:2}
 .pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
 .pk.shaped .pkt{flex:1 1 auto}
+.pic.hasduo>img:not(.bg):not(.ico){visibility:hidden}.pic>.duo{position:absolute;inset:0;display:flex;gap:3px;background:var(--card)}.pic>.duo>span{display:block;height:100%;background-repeat:no-repeat}
 .wc.lead.half{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:16px}
 .wc.lead.half>.pic{flex:0 0 var(--hw)!important;width:var(--hw)!important;max-width:var(--hw)!important;height:auto!important}
 .wc.lead.half>.htx{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:6px}
@@ -968,7 +969,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="7fcb0cb5e036"><style>
+<meta name="wl-ver" data-page="wishlist" content="fece1e75d00c"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1933,7 +1934,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>11.08 12:30</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>11.08 13:14</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">

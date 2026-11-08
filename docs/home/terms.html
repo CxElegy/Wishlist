@@ -375,6 +375,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .card.mini:not(.nophoto){row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.mini:not(.nophoto)>.pic{grid-column:1;grid-row:1/span 9}.card.mini:not(.nophoto)>*:not(.pic):not(.lk){grid-column:2}
 .pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
 .pk.shaped .pkt{flex:1 1 auto}
+.pic.hasduo>img:not(.bg):not(.ico){visibility:hidden}.pic>.duo{position:absolute;inset:0;display:flex;gap:3px;background:var(--card)}.pic>.duo>span{display:block;height:100%;background-repeat:no-repeat}
 .wc.lead.half{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:16px}
 .wc.lead.half>.pic{flex:0 0 var(--hw)!important;width:var(--hw)!important;max-width:var(--hw)!important;height:auto!important}
 .wc.lead.half>.htx{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:6px}
