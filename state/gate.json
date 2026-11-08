@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-08T20:17:37+00:00",
+ "checked": "2026-11-08T20:59:54+00:00",
  "fired": {
-  "at": "2026-11-08T20:17:51+00:00",
+  "at": "2026-11-08T20:59:54+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -32,38 +32,48 @@
    },
    "items": [
     "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "The Mandalorian",
+    "Vaundy",
     "dota2",
-    "lib:iPhone",
+    "gelato pique",
     "lib:台風・天気",
     "lib:宇宙・ロケット",
     "lib:将棋",
     "lib:恐竜",
-    "lib:温泉",
     "lib:生成AI",
     "lib:美術館の企画展",
+    "あつ森",
     "三星手机",
     "周杰伦",
-    "哈利波特剧集",
-    "滑雪"
+    "滑雪",
+    "漫威电影"
    ],
-   "last_batch": "2026-11-08T18:36:53+00:00",
+   "last_batch": "2026-11-08T20:23:35+00:00",
    "last_error": {
     "at": "2026-11-08T18:29:08+00:00",
     "text": "出刊に失敗：No module named 'cv2'"
    },
    "need": true,
-   "prog": 33,
+   "prog": 39,
    "prog_day": "2026-11-09",
    "ripe": [
-    "dota2",
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "The Mandalorian",
+    "Vaundy",
+    "gelato pique",
     "三星手机",
-    "哈利波特剧集",
-    "滑雪"
+    "周杰伦",
+    "漫威电影"
    ],
-   "sig": "dfe6fc398c92",
+   "sig": "67ea099fa59d",
    "token_cap": 1000000,
-   "tokens_today": 70540,
-   "why": "整理待ちの記事 92 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 114249,
+   "why": "整理待ちの記事 102 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -124,12 +134,12 @@
    "runs": 15
   },
   "2026-11-09": {
-   "batches": 1,
-   "cr": 1804190,
-   "cw": 63119,
-   "in": 47,
-   "out": 7374,
-   "runs": 1
+   "batches": 2,
+   "cr": 2295940,
+   "cw": 104610,
+   "in": 63,
+   "out": 9576,
+   "runs": 2
   }
  }
 }

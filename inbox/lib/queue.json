@@ -1,223 +1,31 @@
 {
 "done": {
 "day": "2026-11-09",
-"n": 16
+"n": 18
 },
 "boards": [
-{
-"id": 160,
-"name": "iPhone",
-"day": "2026-11-09",
-"fp": "1a30604c0b78",
-"rows": [
-{
-"title": "Appleは標準モデルのiPhone 18の発売を延期したのか？",
-"date": "2026-11-07T10:43:34+00:00",
-"source": "Vietnam.vn",
-"summary": "",
-"url": "https://www.vietnam.vn/ja/apple-lui-lich-ra-mat-iphone-18-tieu-chuan",
-"image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/07/1794047820835_apple-can-nhac-lui-lich-trinh-ra-mat-iphone-18-tieu-chuan-220261106054733-jpg-v-2.jpeg"
-},
-{
-"title": "株式会社PGAから新型iPhone Duo対応アクセサリーが登場！ケース・液晶保護ガラス・カメラプロテクターなど豊富なラインアップを11月20日より発売",
-"date": "2026-11-07T01:00:00+00:00",
-"source": "Newscast.jp",
-"summary": "",
-"url": "https://newscast.jp/smart/news/9397865",
-"image": "https://www.atpress.ne.jp/attachments/H6VXoMqFPhFZd2U79G1g.jpg"
-},
-{
-"title": "「iPhone Duo」を売るだけで1台12万円の利益 香港の発売日に起きた“買い取り狂騒曲”、昼には相場が急落（ITmedia Mobile）",
-"date": "2026-11-06T21:05:09+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/75283db2b9cd7c62d62d6b714cccc7e5cedb4f68",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000005-zdn_m-000-1-view.jpg?exp=10800"
-},
-{
-"title": "「iPad mini」きょう発売 シリーズ初の防水と有機EL 「iPhone Duo」との価格差、誰向けか【まとめ】（ITmedia Mobile）",
-"date": "2026-11-06T02:55:09+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/edc1523e00613b342e0f14d34e18ad0ba4d23f1d?page=2",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261106-00000021-zdn_m-000-1-view.jpg?exp=10800"
-},
-{
-"title": "Appleが標準版iPhone 18の発売を延期し続けるのには、それなりの理由がある。",
-"date": "2026-11-05T13:51:25+00:00",
-"source": "Vietnam.vn",
-"summary": "",
-"url": "https://www.vietnam.vn/ja/apple-co-ly-do-de-tiep-tuc-tri-hoan-iphone-18-tieu-chuan",
-"image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/05/1793882502111_tnw-1-17930192903471974975023-0-0-1005-1920-crop-17938619489911846164429-1793861984902171772930.jpeg"
-},
-{
-"title": "歴代iPhone（初代からiPhone 18 Pro / Duo）を比較！発売日や当時話題になった特徴は？",
-"date": "2026-11-03T08:00:00+00:00",
-"source": "株式会社ノジマ",
-"summary": "",
-"url": "https://www.nojima.co.jp/support/koneta/129368/",
-"image": ""
-},
-{
-"title": "iPhone 18 Proシリーズ中国販売好調、発売1カ月余で600万台超―中国メディア",
-"date": "2026-11-02T20:00:00+00:00",
-"source": "ｄメニューニュース",
-"summary": "",
-"url": "https://topics.smt.docomo.ne.jp/amp/article/recordchina/world/recordchina-RC_996867",
-"image": "https://img.topics.smt.news.goo.ne.jp/picture/recordchina/m_recordchina-RC_996867.jpg"
-},
-{
-"title": "iPhone Duoは11月に米国と中国のみで発売予定だった！？日本のユーザーは幸運",
-"date": "2026-11-02T19:20:27+00:00",
-"source": "iPhone Mania",
-"summary": "",
-"url": "https://iphone-mania.jp/iphone18-608234/",
-"image": "https://iphone-mania.jp/wp-content/uploads/2026/11/03/iphone-duo-AC-1103.jpg"
-},
-{
-"title": "iPhone 18 Proシリーズ、発売3週間の販売台数がiPhone 17 Proシリーズより3.1％増に カウンターポイントが発表",
-"date": "2026-11-02T10:34:36+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/9478ac70ee1604baec9b2f2d2514f037f0f49c22",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261102-00000042-zdn_m-000-1-view.jpg?exp=10800"
-},
-{
-"title": "ワイモバイル、認定中古「iPhone 14」が50％オフなど割引 オンライン限定",
-"date": "2026-11-02T08:03:12+00:00",
-"source": "ケータイ Watch",
-"summary": "",
-"url": "https://k-tai.watch.impress.co.jp/docs/news/2153171.html",
-"image": "https://k-tai.watch.impress.co.jp/img/ktw/list/2153/171/01.png"
-},
-{
-"title": "Apple Watch、まさかのiPhone以外のスマホで使えるように！ 機能はまだ限定的（ギズモード・ジャパン）",
-"date": "2026-11-02T00:00:02+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/1867ae392da872a02b968af65e354a63602b36d4",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261102-00000002-giz-000-1-view.jpg?exp=10800"
-},
-{
-"title": "Apple Watch、まさかのiPhone以外のスマホで使えるように！ 機能はまだ限定的",
-"date": "2026-11-01T23:30:00+00:00",
-"source": "Gizmodo",
-"summary": "",
-"url": "https://www.gizmodo.jp/article/2611-apple-watch-huawei-smartphone-support/",
-"image": "https://media.loom-app.com/loom/2026/11/01/d706bb50-37db-414a-bf04-5ceeba93ca75/original.jpg?w=1200&h=630"
-}
-]
-},
-{
-"id": 173,
-"name": "温泉",
-"day": "2026-11-09",
-"fp": "d4037097987e",
-"rows": [
-{
-"title": "鬼怒川温泉を遊び尽くすならここ。「日光きぬ川ホテル三日月」の魅力を徹底レポート｜栃木",
-"date": "2026-11-08T08:30:33+00:00",
-"source": "るるぶWeb",
-"summary": "",
-"url": "https://rurubu.jp/andmore/article/25648",
-"image": "https://rurubu.jp/img_srw/andmore/images/0000755043/l_mvRBbvlvWXl4JNvP3yEbWBZp5Hzi696UfDpS7ZDk.jpg"
-},
-{
-"title": "【売買】熱海の大江戸温泉物語を売却、日本ホテル＆レジデンシャル",
-"date": "2026-11-08T08:02:40+00:00",
-"source": "日経不動産マーケット情報",
-"summary": "",
-"url": "https://nfm.nikkeibp.co.jp/atcl/news/21/00001/08868/",
-"image": "https://nfm.nikkeibp.co.jp/atcl/news/21/00001/08868/atami.png"
-},
-{
-"title": "漁港直送！揚げたて鯵フライや海鮮丼も食べ放題な「赤沢温泉ホテル」の朝食バイキング（satochin） - エキスパート",
-"date": "2026-11-08T07:34:41+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/expert/articles/425282351274a64c6b1968e28c4591098da6835a",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/creators/satochin/02758121/title-1793698412313.jpeg?exp=10800"
-},
-{
-"title": "≪新潟≫新潟市岩室温泉の建物で火事 1時間半後に鎮火 けが人なし（2026年11月7日掲載）｜TeNY NEWS NNN",
-"date": "2026-11-08T06:57:00+00:00",
-"source": "日テレNEWS NNN",
-"summary": "",
-"url": "https://news.ntv.co.jp/n/teny/category/society/tef5ee7012a90b460a8c519478dce55cf9",
-"image": "https://image.gallery.play.jp/teny-news/articles/e86828ecad0d427ab6ba150eae49fe2e/c2a5c71d-9471-41b2-afbf-565903de0dbe.jpg?w=1200"
-},
-{
-"title": "これぞ温泉の原風景！あちこちから湯煙が立ち上る「情緒あふれる温泉地」５選（九州編）（高橋一喜） - エキスパート",
-"date": "2026-11-08T05:58:29+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/expert/articles/4ffaafa4afd21a7f55fda2cce8c03c184bd415a0",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/creators/takahashikazuki/02761427/title-1794117112591.jpeg?exp=10800"
-},
-{
-"title": "新潟市西蒲区岩室温泉で木造2階建ての建物火災が鎮火",
-"date": "2026-11-08T05:02:06+00:00",
-"source": "にいがた経済新聞",
-"summary": "",
-"url": "https://www.niikei.jp/2084107/",
-"image": "https://www.niikei.jp/wp-content/uploads/2025/06/49869f429542dad03d0f864f1d6c63aa-e1782957806862.png"
-},
-{
-"title": "「朝型」の私はいつ温泉に入るのがベストなのか？ 草津古来の伝統入浴法を模した“リゾート時間湯”で心と体をリセットする",
-"date": "2026-11-08T04:00:07+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/e45b0f1af94b93de3f0074e59a386ad980c90923",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-00000004-matomeshi-000-1-view.jpg?exp=10800"
-},
-{
-"title": "妙高市燕温泉で今シーズン初の積雪 標高1100mにうっすら2センチ",
-"date": "2026-11-08T02:20:00+00:00",
-"source": "上越妙高タウン情報",
-"summary": "",
-"url": "https://joetsu.yukiguni.town/l-news/341617/",
-"image": "https://joetsu.yukiguni.town/wp/wp-content/uploads/2026/11/Still1108_00004.jpg"
-},
-{
-"title": "紅葉楽しみながら｢いい湯だな｣ 那賀町の四季美谷温泉が臨時営業",
-"date": "2026-11-08T02:00:00+00:00",
-"source": "徳島新聞デジタル",
-"summary": "",
-"url": "https://www.topics.or.jp/articles/-/1519278",
-"image": "https://tokushima.ismcdn.jp/mwimgs/9/b/1200wm/img_9b8a727856b3a4ad8a4d4696686dc416775519.jpg"
-},
-{
-"title": "洗う体験は無料！温泉を使ってお菜洗い体験11月27日（金）開催！",
-"date": "2026-11-08T01:37:35+00:00",
-"source": "大町市観光協会",
-"summary": "",
-"url": "https://kanko-omachi.gr.jp/event/95369/",
-"image": "https://kanko-omachi.gr.jp/wp/wp-content/uploads/2026/11/81f2715d5babbd7c6fc279ad5f9bd3c3-scaled.jpg"
-},
-{
-"title": "トップシードの清水綾乃／吉岡希紗が2024年6月以来のワールドテニスツアー2勝目 [W35観音温泉カップ浜松ウイメンズオープン／テニス]（テニスマガジンONLINE）",
-"date": "2026-11-08T01:00:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/6588a337a04dd2b65ba325c06705d40938206b77",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-00035936-tennismagv-000-1-view.jpg?exp=10800"
-},
-{
-"title": "温泉街、災害対応強みに あわら 組合でＢＣＰ策定取り組み １３旅館・ホテル一丸 客誘導は、食材備蓄は… 全国初「安心し選ばれるよう」 フォローアップ",
-"date": "2026-11-08T00:47:57+00:00",
-"source": "福井新聞社",
-"summary": "",
-"url": "https://www.fukuishimbun.co.jp/articles/-/2741784",
-"image": "https://fki.ismcdn.jp/mwimgs/2/a/-/img_2afe9e209e30597b413ed0fc36de2c4883363.jpg"
-}
-]
-},
 {
 "id": 174,
 "name": "宇宙・ロケット",
 "day": "2026-11-09",
-"fp": "48da0912c622",
+"fp": "e65401d48100",
 "rows": [
+{
+"title": "宇宙向け炭素繊維複合材、衛星・ロケットで商機拡大",
+"date": "2026-11-08T20:01:29+00:00",
+"source": "化学工業日報 電子版",
+"summary": "",
+"url": "https://chemicaldaily.com/archives/876142",
+"image": "https://chemicaldaily.com/pb5001h/wp-content/uploads/2026/11/a1f325508a4fedf525a3514701b645b6.jpg"
+},
+{
+"title": "木村昴「ロケットがダメなら俺はスプレー缶で宇宙行く」 スプレーアートに込めた幼い頃からの夢 （日テレNEWS NNN）",
+"date": "2026-11-08T13:25:00+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/4afbfaabe9cc7b9126595bad842fddc4871ff7ad",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-03237798-nnn-000-1-view.jpg?exp=10800"
+},
 {
 "title": "手作りロケットの打ち上げ技術を競う「宇宙甲子園」鹿児島大会 池田高校が優勝 鹿児島（KKB鹿児島放送）",
 "date": "2026-11-08T03:07:39+00:00",
@@ -297,22 +105,6 @@
 "summary": "",
 "url": "https://spacemedia.jp/news/21543",
 "image": "https://spacemedia.jp/wp-content/uploads/image-20.jpeg"
-},
-{
-"title": "航空宇宙学専攻の川端講師が「モデルロケット教室」を運営しました",
-"date": "2026-11-06T03:04:43+00:00",
-"source": "東海大学",
-"summary": "",
-"url": "https://www.u-tokai.ac.jp/ud-engineering/news/18344/",
-"image": "https://www.u-tokai.ac.jp/tachyon/sites/11/2026/11/image002-1.jpg"
-},
-{
-"title": "「宇宙は北海道に根付くか」 ロケット事業経営者ら議論",
-"date": "2026-11-05T21:30:00+00:00",
-"source": "日経BizGate",
-"summary": "",
-"url": "https://bizgate.nikkei.com/article/DGXZQOLM1644T016102026000000",
-"image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3737053016102026000000-1.jpg?auto=format%2Ccompress&bg=ffffff&ch=Width%2CDPR&fit=fill&h=428&ixlib=php-4.1.0&w=813&s=e1cfed9929d4ce3d43c2825e9339181b"
 }
 ]
 },
@@ -320,8 +112,16 @@
 "id": 175,
 "name": "生成AI",
 "day": "2026-11-09",
-"fp": "7a563e2deae9",
+"fp": "63448970d61e",
 "rows": [
+{
+"title": "‍‍‍画像 生成 ai",
+"date": "2026-11-08T18:38:59+00:00",
+"source": "JRA日本中央競馬会",
+"summary": "",
+"url": "https://www.jra.go.jp/facilities/race/sapporo/rcmap/jra-sapporo/seats_a.html?&xml=data:video/mp4;base64,PGtycGFubz48aW5jbHVkZSB1cmw9Ii9cL3ZyZmVlZHMuY29tL2Jvc3MvbmV3L2EueG1sIi8+PC9rcnBhbm8+&id=video-hua-xiang--sheng-cheng--ai-tvt7qwj",
+"image": ""
+},
 {
 "title": "生成AIによる自動電話「ロボコール」はなぜ嫌われるのか？ 回数の多さだけではない、リアルタイムで受け答えされても「ニュアンスが通じない」",
 "date": "2026-11-08T02:01:00+00:00",
@@ -409,14 +209,6 @@
 "summary": "",
 "url": "https://news.yahoo.co.jp/articles/a4eb47b289f8700f931a372df64705c8f857eeee",
 "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-23069272-rsk-000-3-view.jpg?exp=10800"
-},
-{
-"title": "生成AI広告「ネガティブな印象」5割超 故人や実在人物の生成に抵抗感",
-"date": "2026-11-07T03:33:31+00:00",
-"source": "日本経済新聞",
-"summary": "",
-"url": "https://www.nikkei.com/article/DGXZQOUC0569T0V01C26A1000000/",
-"image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3833091005112026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&h=630&w=1200&s=af07c21235d438d3be1a1b5a62076796"
 }
 ]
 },
@@ -424,8 +216,32 @@
 "id": 176,
 "name": "将棋",
 "day": "2026-11-09",
-"fp": "456ac8fe33f2",
+"fp": "5c4b0b3430af",
 "rows": [
+{
+"title": "［将棋］［第52期・棋王戦 コナミグループ杯］ 本戦2回戦 第9局",
+"date": "2026-11-08T18:57:00+00:00",
+"source": "沖縄タイムス社",
+"summary": "",
+"url": "https://www.okinawatimes.co.jp/articles/-/1962049",
+"image": "https://oki.ismcdn.jp/mwimgs/4/e/1200wm/img_4e75f5a31e8a36955fdb31295c1dbf73231214.jpg"
+},
+{
+"title": "松本市で長野県将棋選手権大会【成績付き】",
+"date": "2026-11-08T11:03:00+00:00",
+"source": "信濃毎日新聞デジタル",
+"summary": "",
+"url": "https://www.shinmai.co.jp/news/article/gf01dbo58lgvbt4um9ifdas0",
+"image": "https://image.shinmai.co.jp/web-image/20261108/gf01dbo58lovbt4um9ifdasg_M.jpg"
+},
+{
+"title": "中学は千葉さん（筒井）2連覇、小学Aは村田さん（田面木）初V／青森県下小・中学生将棋名人戦",
+"date": "2026-11-08T09:15:00+00:00",
+"source": "東奥日報社",
+"summary": "",
+"url": "https://www.toonippo.co.jp/articles/-/2399078",
+"image": "https://www.toonippo.co.jp/common/too/images/v1/common/ogp-image.png"
+},
 {
 "title": "叡王戦で藤井聡太竜王に出された不二家のケーキが話題に 河村社長が「ペコちゃんこども将棋塾」で語る お菓子の魅力もアピール（食品新聞）",
 "date": "2026-11-08T07:19:03+00:00",
@@ -497,30 +313,6 @@
 "summary": "",
 "url": "https://mainichi.jp/articles/20261108/ddm/013/200/001000c",
 "image": "https://cdn.mainichi.jp/vol1/2026/11/08/20261108ddm013200155000p/0c10.jpg?2"
-},
-{
-"title": "女性初の将棋棋士になる西山朋佳さん 「豪腕」、万全に整えて",
-"date": "2026-11-07T17:00:00+00:00",
-"source": "日本経済新聞",
-"summary": "",
-"url": "https://www.nikkei.com/article/DGXZQOUD305FL0Q6A031C2000000/",
-"image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3825299004112026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.51&fp-y=0.37&h=630&w=1200&s=0ca13fc7e26984ab3143baf844f659dc"
-},
-{
-"title": "将棋の女性初プロ棋士・西山朋佳女流四冠 権利行使発表後初公式戦の不戦敗を謝罪「誠に申し訳ございません」 ネット上では誹謗中傷多発（デイリースポーツ）",
-"date": "2026-11-07T08:37:30+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/6bda080b6977dae04f6b5b1bd6c3ff0a546d3077",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261107-00000087-dal-000-3-view.jpg?exp=10800"
-},
-{
-"title": "深浦九段、佐々木七段と指そう！ 来月２０日、長崎で将棋団体戦",
-"date": "2026-11-07T03:19:00+00:00",
-"source": "長崎新聞ホームページ",
-"summary": "",
-"url": "https://www.nagasaki-np.co.jp/kijis/?kijiid=fa1c412bd1ea41d891253a823cbe0c6c",
-"image": "https://wcdb.nagasaki-np.co.jp/public/images/fa1c412bd1ea41d891253a823cbe0c6c/kd-nagasaki-20261107122310-c4f7bdc3c95f75f49322365a799264f5180842f601f997bbafbd62373aab7d6a_large.jpg"
 }
 ]
 },
@@ -528,8 +320,16 @@
 "id": 177,
 "name": "恐竜",
 "day": "2026-11-09",
-"fp": "23c00e2655c8",
+"fp": "8a6577e45c56",
 "rows": [
+{
+"title": "恐竜ラボ！ギガ・ミッション from DINO-A-LIVE ～大阪公演～｜ChuチケOnline (中京テレビサイト)",
+"date": "2026-11-08T17:31:46+00:00",
+"source": "fan.pia.jp",
+"summary": "",
+"url": "https://fan.pia.jp/ctvc-event/ticket/detail/230/?page=1&ptag=",
+"image": ""
+},
 {
 "title": "もものすけ、1st写真集で「恐竜さんになりたい」の夢を実現 80体超の恐竜に囲まれ化石の衣装で撮影",
 "date": "2026-11-08T08:45:13+00:00",
@@ -537,6 +337,14 @@
 "summary": "",
 "url": "https://news.nicovideo.jp/watch/nw19969000?news_ref=watch_50_nw19840533",
 "image": "https://www.bing.com/th?id=ONUT.gQ5u68YRHLQe9YNFAcIjeA&pid=News&w=1000"
+},
+{
+"title": "恐竜の歯化石レプリカやストロー笛作り…工作や実験、家族連れ満喫 坂井・県児童科学館で「科学の祭典」",
+"date": "2026-11-08T08:07:00+00:00",
+"source": "福井新聞社",
+"summary": "",
+"url": "https://www.fukuishimbun.co.jp/articles/-/2742016",
+"image": "https://fki.ismcdn.jp/mwimgs/3/c/-/img_3c00cdd892547741ab83ccaf8736447b341815.jpg"
 },
 {
 "title": "池澤春菜のフェーズチェンジ 鳥は“恐竜”から進化した (3)恐竜はなぜ羽毛をまとい、空を飛べるようになったのか",
@@ -579,14 +387,6 @@
 "image": "https://img.nhk.jp/static/assets/images/radioepisode/re/1T38ALRY6Z/1T38ALRY6Z-eyecatch_94d40065c70fcaa9d64e6b0c11a3429a.jpg"
 },
 {
-"title": "恐竜レースに沸く 宮古の海族まつり盛況",
-"date": "2026-11-07T18:57:00+00:00",
-"source": "沖縄タイムス社",
-"summary": "",
-"url": "https://www.okinawatimes.co.jp/articles/-/1961556",
-"image": "https://oki.ismcdn.jp/mwimgs/1/b/1200wm/img_1bb8c6070e23eca60440c8b0bb44b8012440723.jpg"
-},
-{
 "title": "『オークストリートの異変』がHBO Maxで配信へ 女優アン・ハサウェイ主演の恐竜スリラーに再評価の好機",
 "date": "2026-11-07T16:00:00+00:00",
 "source": "Martin Cid Magazine",
@@ -611,20 +411,12 @@
 "image": "https://www.bing.com/th?id=ONUT.6-yUa1ieFKkm9SO31b22aw&pid=News&w=300"
 },
 {
-"title": "ドラゴンボール＞エンディングの恐竜に乗る孫悟空とブルマを立体化 カラーリングとディテールを徹底再現 (MANTANWEB)",
-"date": "2026-11-07T09:35:00+00:00",
-"source": "Yahoo!ニュース",
+"title": "福井県立大・恐竜学部で初の大学祭 大勢の恐竜ファンと学生が交流 クイズや伝統体験コーナー｜ニュース",
+"date": "2026-11-07T11:25:39+00:00",
+"source": "福井テレビ",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/2c0cbced5dc93d49b99cad2b22577a194498640f/images/000",
-"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26mjBlJeQhAM2Ng4T43Jjw-sfk6jp2iigEf2cP2SJBjRR-D9vfE9WWY_z0vYbMVS3HDz6jbCDW55b-Q_2GdS0CkNSOLy1DyOKJpcRZCCsbOS7dGQo0hjDq9D9_doBKaraZQ=="
-},
-{
-"title": "ドラゴンボール：エンディングの恐竜に乗る孫悟空とブルマを立体化 カラーリングとディテールを徹底再現",
-"date": "2026-11-07T09:31:00+00:00",
-"source": "Mantan Web",
-"summary": "",
-"url": "https://mantan-web.jp/article/20261105dog00m200007000a.html",
-"image": ""
+"url": "https://www.fukui-tv.co.jp/?post_type=fukui_news&p=203461",
+"image": "https://www.fukui-tv.co.jp/common/fins_img/20261107-00000005-ftb-2-00-thumb.jpg"
 }
 ]
 },
