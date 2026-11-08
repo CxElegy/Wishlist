@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "b0560c634ede",
+ "edit_sig": "95725b0bf9bb",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,8 +13,8 @@
      "date": "2026-11-07",
      "headline": "[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄",
      "highlight": "TGS 2026",
-     "image": "https://cdn.gamey.kr/news/photo/202609/3018752_170370_5622.jpg",
-     "image_via": "正文图（4 枚から）",
+     "image": "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg",
+     "image_via": "og:image",
      "url": "http://www.gamey.kr/news/articleView.html?idxno=3018752",
      "weight": "lead"
     }
@@ -374,22 +374,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-08",
-     "n": 5,
-     "source": "Yahoo!ニュース",
-     "title": "“ギザ歯”キャラといえば？3位「チェンソーマン」デンジ、2位「Free!」松岡凛、1位は笑顔が特徴的な…「炎炎ノ消防隊」森羅日下部 ＜26年版＞（アニメ！アニメ！）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1BRHdiU0E1R0JoSWZ3aXg1Yk5CdjNCR3Jjckd5d1dkZlRXSnp4czEzQ0FzWExOWXExRWN5czJSMmFmejh1WDdGYWRKYWlHUHhiOXlRdkQ1bGt3X1NXUkRKd0dnTkJacTlNVmR5a1lJTkwxSjZuek55a042VnBkQVk?oc=5"
-    },
-    {
-     "date": "2026-11-08",
-     "n": 6,
-     "source": "Yahoo!ニュース",
-     "title": "韓国クーパンプレイ、「クランチロール・パス」開始…「鬼滅の刃」「チェンソーマン」も（KOREA WAVE）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE00Ujc1ZDlJZVJ4WDBVYVZzZHdwYVE1VFBwSXpJQk94QmJTLUk2ZFh6VlprclAzOXBybmlrc2VJbU5od29fc2JXYUhQOTVJV0xCdUNZNDNBRTNkSHVSSzRudmJaQjJ1THFRREJQemltT3VCaWE4NTctckxCUU45dHc?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -420,6 +404,26 @@
      "image": "https://assets.st-note.com/production/uploads/images/333437731/rectangle_large_type_2_fd72de6e00cbf2dbc1edc82ae65fc978.jpeg?fit=bounds&quality=85&width=1280",
      "image_via": "og:image",
      "url": "https://note.com/mute_phlox837/n/n87122a0ecf02?hl=en",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-08",
+     "headline": "“ギザ歯”キャラといえば？3位「チェンソーマン」デンジ、2位「Free!」松岡凛、1位は…＜26年版＞",
+     "highlight": "3位「チェンソーマン」デンジ",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-00000007-anmanmv-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/1a3bffc0c4ab21495d515584ba636b79cca0ac0a",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-08",
+     "headline": "韓国クーパンプレイ、「クランチロール・パス」開始…「鬼滅の刃」「チェンソーマン」も",
+     "highlight": "「クランチロール・パス」開始",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-03661396-clc_korea-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/5d4988881a90eac0d84a8c50902bc374c32fdbcc",
      "weight": "normal"
     }
    ],
@@ -1009,17 +1013,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "スターバックスの新作は毎年人気の桜グッズ。桜の繊細な印象と上品なきらめきを持つタンブラーやマグが勢揃い。",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "山陽新聞",
-     "title": "【スタバ新作グッズ】毎年大人気の桜グッズ、桜の繊細な印象と上品なきらめきがたまらないタンブラーやマグが勢揃い",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE14TTBfWWVHMlZ2ZUFIbTJWVHQ1QjNwTDdFcWVCYU9CaVdxYnJQaHkxcVliSVctUzRmWlNpRDlONDczd2x0X0tuazZtYXVNMk5LSWc?oc=5"
+     "headline": "【スタバ新作グッズ】毎年大人気の桜グッズ、桜の繊細な印象と上品なきらめきがたまらないタンブラーやマグが勢揃い",
+     "highlight": "桜グッズ",
+     "image": "https://static.sanyonews.jp/image/article/size1/8/0/a/f/80af267980bc2524aa32c1d3b178e988_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/1874351",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",

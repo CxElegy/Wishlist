@@ -158,7 +158,7 @@
   "日本顶级网球赛事": 1,
   "A2O LITE": 6,
   "dota2": 2,
-  "チェーンソーマン": 4,
+  "チェーンソーマン": 6,
   "周杰伦": 14,
   "滑雪": 2,
   "绝区零": 1,
@@ -170,7 +170,8 @@
   "gelato pique": 2,
   "MMORPG 新作": 5,
   "猫用品": 2,
-  "BLEACH Mirrors High": 2
+  "BLEACH Mirrors High": 2,
+  "星巴克马克杯": 1
  },
  "A2O LITE": [
   {
@@ -221,7 +222,8 @@
    "weight": "lead",
    "refs": [
     1
-   ]
+   ],
+   "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg"
   },
   {
    "headline": "「チェンソーマン喫茶」東京・大阪・愛知で、レゼ着想の紫プリン＆“夜のプール”パフェ",
@@ -240,6 +242,24 @@
    "refs": [
     2,
     3
+   ]
+  },
+  {
+   "headline": "“ギザ歯”キャラといえば？3位「チェンソーマン」デンジ、2位「Free!」松岡凛、1位は…＜26年版＞",
+   "highlight": "3位「チェンソーマン」デンジ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "韓国クーパンプレイ、「クランチロール・パス」開始…「鬼滅の刃」「チェンソーマン」も",
+   "highlight": "「クランチロール・パス」開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -565,6 +585,18 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "【スタバ新作グッズ】毎年大人気の桜グッズ、桜の繊細な印象と上品なきらめきがたまらないタンブラーやマグが勢揃い",
+   "highlight": "桜グッズ",
+   "blurb": "スターバックスの新作は毎年人気の桜グッズ。桜の繊細な印象と上品なきらめきを持つタンブラーやマグが勢揃い。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/8/0/a/f/80af267980bc2524aa32c1d3b178e988_1.jpg"
   }
  ]
 }
