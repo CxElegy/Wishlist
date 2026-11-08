@@ -1,32 +1,32 @@
 {
- "admin": "aae89d3bb623",
- "admin-ai": "b383661009c7",
+ "admin": "acedafc38a3e",
+ "admin-ai": "977568e35798",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "7276ca1d"
+   "0e31960b"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "591d5add"
+   "2d4177a8"
   ]
  },
- "admin-boards": "8eb1a0bf4ae4",
+ "admin-boards": "f764e47872d2",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "08962af4"
+   "3ce20456"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "0f7ec40f72ad",
+ "admin-emblem": "119ddff74044",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1684b7f3"
+   "a3ec8cdd"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5f3468671304",
  "admin-members_marks": {},
- "admin-now": "862eedf38d34",
+ "admin-now": "a1356e9084c7",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3f159fd6"
+   "4630f269"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "fdebc6ff"
+   "0fe3f760"
   ]
  },
- "admin-system": "085f662d18cc",
+ "admin-system": "7cb92edce019",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2401ec23"
+   "2ed9b18c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "647adc0a"
+   "92e66de5"
   ]
  },
  "admin_marks": {},
- "heat": "9d25c8ccb897",
+ "heat": "8569739e0590",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "8958b8ff"
+   "5d707b91"
   ],
   "ranking": [
    "ランキング",
-   "557ded61"
+   "a06ad8fd"
   ]
  },
- "index": "8885a797ab16",
+ "index": "9c993e2335ef",
  "index_marks": {
   "front": [
    "トップ",
-   "8e105c63"
+   "1c155f85"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "87197795"
+   "ef786ff4"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "6167842c"
+   "78994d0a"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "ea350524"
+   "9405d3f7"
   ],
   "w-b867582f": [
    "あつ森",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "c5ebaf17"
+   "4ff70239"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "a5bec022"
+   "babd6004"
   ],
   "w-f303ad09": [
    "绝区零",
    "935fc03d"
   ]
  },
- "updated": "11.09 07:24",
+ "updated": "11.09 07:26",
  "wishlist": "f2862467b66a"
 }

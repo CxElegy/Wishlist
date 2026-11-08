@@ -6,7 +6,14 @@
    "blurb": "Rockstar says boxed copies of GTA 6 contain no disc, only a code for a 212 GB download.",
    "weight": "lead",
    "refs": [
-    3
+    3,
+    11,
+    13,
+    17,
+    18,
+    19,
+    20,
+    14
    ],
    "image": "https://img.etimg.com/thumb/msid-135658667,width-1200,height-900,imgsize-1144081,overlay-economictimes/articleshow.jpg"
   },
@@ -84,6 +91,15 @@
    "refs": [
     5
    ]
+  },
+  {
+   "headline": "Avengers: Doomsday's Second Trailer Has Marvel Fans Wondering The Same Thing",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "The Mandalorian": [
@@ -105,6 +121,24 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "The Mandalorian Finally Confirms Return In The Book of Boba Fett, But With A Twist",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "The Mandalorian: New trailer reported at CCXP, March 1 Disney+ premiere",
+   "highlight": "March 1",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "ILLIT": [
@@ -124,6 +158,24 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "ILLIT、日本の伝説雑誌『FRUiTS』とコラボ 日本ストリートカルチャーで“ILLITコア”表現",
+   "highlight": "『FRUiTS』とコラボ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "ILLIT、MVで“ブラックエージェント”に ソン・ガンがキーパーソンとしてサプライズ登場",
+   "highlight": "ソン・ガン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
@@ -152,14 +204,14 @@
   }
  ],
  "_covered": {
-  "GTA 6": 6,
-  "漫威电影": 5,
-  "The Mandalorian": 2,
-  "ILLIT": 2,
+  "GTA 6": 23,
+  "漫威电影": 9,
+  "The Mandalorian": 5,
+  "ILLIT": 7,
   "gelato pique": 1,
   "星巴克马克杯": 1,
   "dota2": 1,
-  "三星手机": 1,
+  "三星手机": 7,
   "哈利波特剧集": 1,
   "滑雪": 1
  },
@@ -182,6 +234,18 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27、インドでBISの承認を取得",
+   "highlight": "BISの承認",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    3,
+    4,
+    7
    ]
   }
  ],

@@ -69,7 +69,6 @@
   "https://www.msn.com/en-in/news/other/ramayana-and-avengers-doomsday-raise-a-pertinent-question-why-films-are-becoming-increasingly-dependent-on-franchise/ar-AA2h1kq7": "https://www.bing.com/th?id=ONUT.FQMMOhAn4OrSqV1KueIOIA&pid=News&w=600",
   "https://www.msn.com/en-us/gaming/gaming-platforms/5-things-you-need-to-do-before-you-install-grand-theft-auto-6/ar-AA2h0wxA": "https://www.bing.com/th?id=ONUT.s_c3Xwa6hQLfit1xEUY7vQ&pid=News&w=780",
   "https://www.msn.com/en-us/news/other/the-mandalorian-and-groru-movie-hits-theaters-may-22/vi-AA2gXBRW": "https://www.bing.com/th?id=ONUT.zMsnk3V15TWhqbVGB1iJaQ&pid=News&w=1200",
-  "https://www.msn.com/en-us/news/other/the-mandalorian-new-trailer-reported-at-ccxp-march-1-disney-premiere/vi-AA2h0z6j": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h0T8z.img",
   "https://www.msn.com/en-us/news/other/zenless-zone-zero-official-severian-character-demo-trailer/vi-AA2gVGzF": "https://www.bing.com/th?id=ONUT.AqBSCOBDEVluve5eNkhIsQ&pid=News&w=1200",
   "https://www.sanyonews.jp/article/1919621?kw=2024%3Cbr%20/%3E": "https://static.sanyonews.jp/image/article/size1/1/c/f/f/1cff585270967d145880a68d6ba03397_1.jpg",
   "https://www.setn.com/news/1794058": "https://attach.setn.com/newsimages/2026/02/11/5451715-PH.jpg",
@@ -1252,27 +1251,6 @@
   },
   {
    "batch": 3,
-   "because": "The Mandalorian",
-   "date": "2026-11-08",
-   "hits": [],
-   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h0T8z.img",
-   "kind": "board",
-   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
-   "score": 6,
-   "source": "Red Five on MSN",
-   "taste": [
-    [
-     "作品:The Mandalorian",
-     2
-    ]
-   ],
-   "title": "The Mandalorian: New trailer reported at CCXP, March 1 Disney+ premiere",
-   "url": "https://www.msn.com/en-us/news/other/the-mandalorian-new-trailer-reported-at-ccxp-march-1-disney-premiere/vi-AA2h0z6j",
-   "words": [],
-   "work": "The Mandalorian"
-  },
-  {
-   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-08",
    "hits": [],
@@ -1377,7 +1355,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "Vaundy",
    "date": "2026-11-08",
    "hits": [],
@@ -1476,7 +1454,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "滑雪",
    "date": "2026-11-07",
    "hits": [],
@@ -1860,11 +1838,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1872,15 +1850,15 @@
    8
   ],
   [
-   "作品:三星手机",
-   7
-  ],
-  [
    "galaxy",
    7
   ],
   [
    "三星 Galaxy",
+   7
+  ],
+  [
+   "作品:三星手机",
    7
   ]
  ]
