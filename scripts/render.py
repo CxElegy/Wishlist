@@ -3685,8 +3685,8 @@ FIT_JS = """
     const cw = (c.querySelector(':scope > a:not(.lk)') || c).clientWidth || c.clientWidth;
     const w = Math.min(Math.round(h * nat), Math.round(cw * 0.5));
     if (cw - w < 150 || h < 40) {   // 字の列が 150px 取れないカード：写真を上・字を下に。枠は写真の比率（縦は幅の 1.35 倍まで、超える分は主役・文字が残るときだけ切る）（2026-11-08：80px の字の列で 1〜3 字ずつ折り返した）
-      const pw = p.clientWidth, ph = Math.min(pw / nat, pw * 1.35); p.style.aspectRatio = 'auto'; p.style.height = ph + 'px';
-      p.classList.toggle('fill', pw / nat <= ph * 1.02 || cropAt(img0(p), nat / (pw / ph))); return;
+      const ar = Math.max(nat, 1 / 1.35); p.style.height = 'auto'; p.style.aspectRatio = ar.toFixed(4);   // 枠は比率で（px で決めると、幅が変わったあと 22px の帯になった。2026-11-09）
+      p.classList.toggle('fill', ar <= nat * 1.02 || cropAt(img0(p), nat / ar)); return;
     }
     p.style.height = h + 'px'; p.style.width = w + 'px'; c.classList.add('sb');
     if (!c.matches('.pk')) {   // 枠はカードの高さまで伸びる：幅を写真の形に合わせ直し（55% まで）、まだ上下が余るなら主役が残る範囲で 1.25 倍まで拡大する（端の色の帯も余白。2026-11-07 店長）
@@ -3714,7 +3714,7 @@ FIT_JS = """
     const c = p.closest('article.hero, article.lead, article.wide');
     if (!c) return;
     if (p.classList.contains('fill') || r > 1) return;
-    if (innerWidth <= 760) { p.style.aspectRatio = 'auto'; p.style.height = Math.min(p.clientWidth / nat, p.clientWidth * 1.6) + 'px'; return; }
+    if (innerWidth <= 760) { p.style.height = 'auto'; p.style.aspectRatio = Math.max(nat, 1 / 1.6).toFixed(4); return; }   // 枠は比率で（幅が変わっても崩れない）
     // 壁の大きい 1 枚（.wc.lead）：写真の形で枠を決める（L1）。縦長（0.9 未満）は 2 列に広げず 1 列の縦長カード、正方形に近い写真は 2 列のまま正方形まで。次の記事は足さない（壁の中の別の版面の記事は「同じ版面」ではない）
     if (c.classList.contains('wc')) {
       c.classList.toggle('tall', nat < 0.9);
@@ -3878,7 +3878,7 @@ FIT_JS = """
       // S（1 列）と W（頭の記事だけ、2 列分）：写真を上・字を下。枠の高さは切らない形の 0.45〜1.6 倍（幅の 1.35 倍まで）
       for (const s of i === 0 && k >= 2 ? [1, 2] : [1]) {
         boardForm(c, {k: s > 1 ? 'W' : 'S', s, w: 100, ph: 100}); const w = p.getBoundingClientRect().width; if (!w) continue;
-        const h0 = w / nat, r = phRange(img, w, h0 * 0.45, Math.min(h0 * 1.6, w * 1.35));
+        const h0 = w / nat, r = phRange(img, w, h0 * 0.45, Math.min(h0 * 2.0, w * 1.35));   // 伸ばす上限は主役・文字の判定（cropAt）に任せる（1.6 倍では鬼滅の刃の真ん中が 130px 足りなかった）
         if (!r && h0 > w * 1.35) continue;
         const lo = r ? r[0] : h0, hi = r ? r[1] : h0;
         boardForm(c, {k: s > 1 ? 'W' : 'S', s, w, ph: lo}); const t = H(c) - p.getBoundingClientRect().height; if (clamped(c)) continue;
@@ -4063,14 +4063,14 @@ FIT_JS = """
     const few = cards.length < 3 || !wallReady;   // 写真が届ききるまでは今の形のまま（届いてから選ぶ：毎回同じ結果にする）
     const areaOf = c => { const p = c.querySelector('.pic'); if (!p || c.classList.contains('nophoto') || c.hidden) return 0; const r = p.getBoundingClientRect(); return r.width * r.height; };
     const setup = (n, li, all) => {
-      const nw = 'repeat(' + n + ',minmax(0,1fr))', moved = all || w.style.gridTemplateColumns !== nw;   // all：選んだ形で全部置き直す（候補を試した時の枠の高さを残さない。2026-11-09 枠が 32px の帯になった）
+      const nw = 'repeat(' + n + ',minmax(0,1fr))', moved = true;   // 候補ごとに全部置き直してから測る（置き直さない枠の高さで採点し、最後に置き直すと画面からはみ出した。2026-11-09）   // all：選んだ形で全部置き直す（候補を試した時の枠の高さを残さない。2026-11-09 枠が 32px の帯になった）
       w.style.gridTemplateColumns = nw;
+      if (side) { side.style.gridColumn = String(n); side.style.gridRow = ''; }   // 右の列の位置を先に直す（前の候補の 4 列目に残ると、置き直すカードが細く測られ、採点と違う形になった）
       cards.forEach((c, i) => {
-        const was = c.classList.contains('lead'), now = i === li; if (was === now && !moved) return;   // 列の数が変わればカードの幅が変わる：全部置き直す
+        const was = c.classList.contains('lead'), now = i === li;
         const p = c.querySelector('.pic'); c.classList.toggle('lead', now); if (was !== now) c.classList.remove('tall', 'nw', 'ls', 'half');
-        if (p) { if (was !== now || moved) p.style.aspectRatio = p.style.width = p.style.height = ''; const im = p.querySelector('img:not(.bg):not(.ico)'); if (im && im.naturalWidth) fit(im); }
+        if (p) { if (was && !now) unnarrow(c, p); unside(c, p); c.classList.remove('boxgrow'); p.style.aspectRatio = p.style.width = p.style.height = ''; const im = p.querySelector('img:not(.bg):not(.ico)'); if (im && im.naturalWidth) fit(im); }   // 前の候補の形（.sb・枠の比率・大きい 1 枚のときに足した字の箱と次のニュース）を残さない：同じ候補なら試す順によらず同じ高さ
       });
-      if (side) side.style.gridColumn = String(n);
     };
     // 右の列の高さ：画面の高さの 7 割まで（入らなければ欲しい物 3 件目以降 → 予定 4 件目以降 → … の順に下から隠す）
     const sideFit = () => {
@@ -4126,16 +4126,24 @@ FIT_JS = """
       if (O && O < 12000) pen += 0.5;
       cards.forEach(c => { c.hidden = false; });
       const cost = r.best.cost + pen; if (!pick || cost < pick.cost) pick = {cost, n, li, ord};
+      if (window.WL_FB_DEBUG) (window.WL_WALLC = window.WL_WALLC || []).push([n, li, lf, r.best.n, Math.round(r.best.W), +r.best.cost.toFixed(2), +pen.toFixed(2), sH, r.H.join(','), cards.map(c => c.className.replace('wc','').trim()).join('|')]);
     }
     if (!pick) return;
     setup(pick.n, pick.li, true);
     const cols = pick.n, sH = Math.round(sideFit()), chosen = plan(cols, pick.ord, sH); if (!chosen) return;
     const {best, H, span} = chosen;
     cards.forEach((c, i) => { c.hidden = !best.ord.includes(i); });
+    if (window.WL_FB_DEBUG) window.WL_WALL = {T, cols, sH, W: best.W, cost: pick.cost, li: pick.li, ord: best.ord, H: best.ord.map(i => H[i]), bot: best.bot};
     // 置く：列ごとの底の差を、その列の（大きい 1 枚でない・文字のない）カードの写真枠に等分して足す
-    const ext = Array(cards.length).fill(0), box = Array(cards.length).fill(false), Wt = best.W;
+    // 高い列は、写真の枠を主役・文字が欠けない範囲で縮めて低い列へ寄せる（伸ばすだけだと、伸ばせない写真のカードの字の下が空いた。2026-11-09）
+    const shr = Array(cards.length).fill(0), colTop = a => best.bot[a] - GAP;
+    const maxShrink = k => { const p = cards[k].querySelector('.pic'); if (!p) return 0; let s = 0; for (let d = 8; d <= p.clientHeight * 0.5; d += 8) { if (canGrow(k, -d)) s = d; else break; } return s; };
+    const ms = best.col.map(l => l.filter(k => span[k] === 1).map(k => [k, maxShrink(k)]).sort((x, y) => y[1] - x[1])[0] || [-1, 0]);
+    const Wt = Math.max(...Array.from({length: cols}, (_, a) => colTop(a) - ms[a][1]));
+    for (let a = 0; a < cols; a++) { const over = colTop(a) - Wt; if (over > 0.5 && ms[a][0] >= 0) shr[ms[a][0]] = Math.min(over, ms[a][1]); }
+    const ext = Array(cards.length).fill(0), box = Array(cards.length).fill(false);
     for (let a = 0; a < cols; a++) {
-      const d = Wt - (best.bot[a] - GAP);
+      const d = Wt - (colTop(a) - best.col[a].reduce((s, k) => s + shr[k], 0));
       let ks = best.col[a].filter(k => span[k] === 1 && d > 0 && canGrow(k, d / Math.max(1, best.col[a].length)));
       if (!ks.length) ks = best.col[a].filter(k => d > 0 && canGrow(k, d));
       if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], d / ks.length); });
@@ -4144,11 +4152,13 @@ FIT_JS = """
     const y0 = Array(cols).fill(0), place = [];
     if (side) y0[cols - 1] = sH + GAP;
     for (const i of best.ord) {
-      const j = best.pos[i].j, k = span[i], y = Math.max(...y0.slice(j, j + k)), h = Math.round(H[i] + ext[i]);
+      const j = best.pos[i].j, k = span[i], y = Math.max(...y0.slice(j, j + k)), h = Math.round(H[i] + ext[i] - shr[i]);
       place.push([i, j, k, y, h]); for (let a = j; a < j + k; a++) y0[a] = y + h + GAP;
     }
     w.style.gridAutoRows = '1px'; w.style.rowGap = '0';
     cards.forEach(c => c.classList.remove('boxgrow'));
+    shr.forEach((d, k) => { if (d < 0.5) return; const p = cards[k].querySelector('.pic'), im = p && p.querySelector('img:not(.bg):not(.ico)'); if (!p || !im) return;
+      const ph = p.clientHeight - d, pw = p.clientWidth; p.style.height = 'auto'; p.style.aspectRatio = (pw / ph).toFixed(4); cropAt(im, im.naturalWidth / im.naturalHeight / (pw / ph)); });
     place.forEach(([i, j, k, y, h]) => { const c = cards[i]; c.style.gridColumn = (j + 1) + ' / span ' + k; c.style.gridRow = (y + 1) + ' / span ' + (h + GAP); c.classList.toggle('boxgrow', box[i]);
       if (ext[i] > 0.5) { c.style.minHeight = h + 'px'; const p = c.querySelector('.pic'); if (p && c.classList.contains('sb')) { p.dataset.add = p.style.height || '-'; p.style.height = Math.round(p.offsetHeight + ext[i]) + 'px'; } } });
     if (side) {
