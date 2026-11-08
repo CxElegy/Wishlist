@@ -545,6 +545,12 @@
   "v": 3,
   "blur": 0.388
  },
+ "https://cdn.specialtimes.co.kr/news/photo/202611/483034_471022_1143.jpg": {
+  "w": 600,
+  "h": 450,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg": {
   "w": 1200,
   "h": 2132,
@@ -1733,12 +1739,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.tenasia.co.kr/photo/202611/BF.46349533.1.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-08"
- },
  "https://img.theweek.in/content/dam/week/en/wire-updates/pti-preview-theweek.jpg": {
   "target": 720,
   "v": 3,
@@ -2370,6 +2370,18 @@
   "out": [
    1200,
    1200
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-00000007-anmanmv-000-1-view.jpg?exp=10800": {
+  "w": 562,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/24f84bdd26fbaece.webp",
+  "out": [
+   562,
+   800
   ],
   "why": "期限付きの網址"
  },
@@ -3677,6 +3689,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.npfhGrzlqxUKkvFFZXqMmA&pid=News&w=900": {
+  "w": 315,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -3699,12 +3717,6 @@
  "https://www.bing.com/th?id=ONUT.uvQNvoSO5vnghkkWIN2mGg&pid=News&w=750": {
   "w": 700,
   "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.vOH5IaFeQaOAxsVsW0ix_A&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
   "target": 720,
   "v": 3
  },
