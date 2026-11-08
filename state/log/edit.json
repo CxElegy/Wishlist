@@ -1,69 +1,5 @@
 [
 {
-"at": "2026-11-07T08:55:21+00:00",
-"text": "2026-11-07 第 9 バッチを出刊：周杰伦（1 版面・6 本・残り 4 版面） · token 新規入力 2,489・キャッシュ読み 48.9万・出力 917",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.28,
-"mem_total": 16867737600,
-"mem_free": 15980728320,
-"disk_used": 10764644352,
-"disk_free": 30518890496,
-"disk_total": 41283534848,
-"peak": 309309440
-},
-"batch": 9,
-"boards": [
-"周杰伦"
-],
-"stories": 6,
-"left": 4,
-"edited": 20,
-"run": 1794037733.6287405,
-"tok": {
-"in": 13,
-"cw": 2476,
-"cr": 489352,
-"out": 917,
-"calls": 5,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 492758
-},
-{
-"at": "2026-11-07T09:00:00+00:00",
-"text": "2026-11-07 第 10 バッチを出刊：ILLIT（1 版面・4 本・残り 3 版面） · token 新規入力 2,035・キャッシュ読み 40.1万・出力 634",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.3,
-"mem_total": 16867737600,
-"mem_free": 15969492992,
-"disk_used": 10767085568,
-"disk_free": 30516449280,
-"disk_total": 41283534848,
-"peak": 335093760
-},
-"batch": 10,
-"boards": [
-"ILLIT"
-],
-"stories": 4,
-"left": 3,
-"edited": 20,
-"run": 1794037733.6287405,
-"tok": {
-"in": 12,
-"cw": 2023,
-"cr": 400895,
-"out": 634,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 403564
-},
-{
 "at": "2026-11-07T09:14:12+00:00",
 "text": "2026-11-07 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、Vaundy ほか 10（16 版面・43 本・残り 1 版面） · token 新規入力 6.3万・キャッシュ読み 161.8万・出力 5,340",
 "level": "ok",
@@ -1990,5 +1926,51 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1164960
+},
+{
+"at": "2026-11-08T18:29:08+00:00",
+"text": "出刊に失敗：No module named 'cv2'",
+"level": "error"
+},
+{
+"at": "2026-11-08T18:36:53+00:00",
+"text": "2026-11-09 第 1 バッチを出刊：GTA 6（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 6.3万・キャッシュ読み 180.4万・出力 7,374",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.17,
+"mem_total": 16867737600,
+"mem_free": 15870140416,
+"disk_used": 9811582976,
+"disk_free": 31471951872,
+"disk_total": 41283534848,
+"peak": 285446144
+},
+"batch": 1,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 0,
+"edited": 6,
+"run": 1794162295.4180753,
+"tok": {
+"in": 47,
+"cw": 63119,
+"cr": 1804190,
+"out": 7374,
+"calls": 25,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1874730,
+"secs": 718,
+"run_tok": {
+"in": 47,
+"cw": 63119,
+"cr": 1804190,
+"out": 7374,
+"calls": 25,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

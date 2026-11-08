@@ -61,6 +61,12 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261107ac/200/w640h360/20261107/acdc-ca4ed5ad831204dc4c6a0cf2ac972889.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "http://n.sinaimg.cn/sinakd20261108ac/718/w480h1038/20261108/f106-556c91c00f756e60d7c12d158f6f09e7.jpg": {
   "w": 480,
   "h": 1038,
@@ -335,6 +341,12 @@
   "h": 450,
   "target": 720,
   "v": 3
+ },
+ "https://attach.setn.com/newsimages/2022/01/20/3498831-PH.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://attach.setn.com/newsimages/2026/02/11/5451715-PH.jpg": {
   "w": 800,
@@ -673,6 +685,12 @@
   "h": 1125,
   "target": 720,
   "v": 3
+ },
+ "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-doomstadt-description-revealed-statue-offers-detailed-new-look-at-doctor-doom-ab230867.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-promo-art-reveals-epic-mcu-team-ups-and-a-first-look-at-doctor-dooms-doom-guard-ab230842.jpg": {
   "w": 1500,
@@ -1076,6 +1094,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i1.ytimg.com/vi/xENOnsvbPhY/hqdefault.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://i2.hoopchina.com.cn/bbs-editor-web/17929066518581.jpg": {
   "w": 1920,
   "h": 1080,
@@ -1450,6 +1474,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h0yus.img": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gjyCu.img": {
   "w": 800,
   "h": 450,
@@ -1469,6 +1499,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.35
+ },
+ "https://img.asmedia.epimg.net/resizer/v2/4FKE2E4RF5FYBHL3TLHWOMFUZU.jpg?auth=394805490b0f442a81c67bc22ee2ba088c4206754c09acc0fe9f46a4c19a2713&width=1472&height=828&smart=true": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://img.benesse-cms.jp/pet-cat/item/image/normal/06d992e9-745f-48d9-b74a-2b1648300da5.jpg?w=698&h=483&resize_type=cover&resize_mode=force": {
   "w": 698,
@@ -1507,6 +1543,18 @@
   "h": 900,
   "target": 720,
   "v": 3
+ },
+ "https://img.etimg.com/thumb/msid-135658667,width-1200,height-900,imgsize-1144081,overlay-economictimes/articleshow.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
+ "https://img.etimg.com/thumb/msid-135659369,width-1200,height-900,imgsize-62246,overlay-economictimes/articleshow.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp": {
   "w": 1200,
@@ -1633,6 +1681,12 @@
   "h": 630,
   "target": 1280,
   "v": 3
+ },
+ "https://img.youtube.com/vi/MNpI_7lzz_o/hqdefault.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://img2.sbs.co.kr/ops_clip_img/2026/11/01/83b1480d-bf44-43cf-826e-0b0e50cba714005w640.jpg": {
   "w": 640,
@@ -1924,11 +1978,11 @@
   ],
   "why": "看不清"
  },
- "https://news.walkerplus.com/article/1296185/15377947_615.jpg": {
-  "w": 615,
-  "h": 420,
-  "target": 720,
-  "v": 3
+ "https://news.walkerplus.com/article/1296185/15377950_615.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://news.walkerplus.com/article/1304639/15595279_615.jpg": {
   "w": 615,
@@ -2277,6 +2331,12 @@
   "target": 720,
   "v": 3
  },
+ "https://phinf.wevpstatic.net/MjAyNjEwMTlfMTA1/MDAxNzkyNDAzNTIwNjg3.TPqKBh9lZxpL4iBwlxPxfGnYO0gRmYHMUuSnM89YLaUg.MOURt5XovA-MgCy3ajd1ElLt6gyUHJ-fShswaszV9zUg.JPEG/image.jpg?type=w1414": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://phinf.wevpstatic.net/MjAyNjEwMjlfMjI5/MDAxNzkzMjg1NDExODQw.oVJRKHh23GSkawQwMiQTyTPyAkkFVU4DT3hvjlMwPS8g.CoQ_PypiDBmKFx9IxcD8ojzLvIO7RTrbNFzPzKrbsMgg.JPEG/image.jpg?type=w1414": {
   "w": 1414,
   "h": 1061,
@@ -2557,6 +2617,18 @@
   "target": 720,
   "v": 3
  },
+ "https://static.arynews.tv/zip-archives/wp-content/uploads/2026/08/ARY-1200-x-675-px-2026-08-29T231912.026.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
+ "https://static.arynews.tv/zip-archives/wp-content/uploads/2026/10/GTA-6-map.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://static.gosugamers.net/13/c4/1c/22a362607bdb74810c45357060c481f34eefca3db57c4329bc29a94bf5.webp": {
   "w": 1200,
   "h": 675,
@@ -2673,6 +2745,12 @@
   "h": 640,
   "target": 720,
   "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/d/7/3/c/d73c345c83abc11ab0b62538379a29ee_1.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://static.sanyonews.jp/image/article/size1/d/b/3/b/db3bbbdba3c8e92815679ecd49c5a40c_1.jpg": {
   "w": 640,
@@ -2817,10 +2895,10 @@
   "v": 3
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/the-mandalorian_qnug7h.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://statics-prod.mirrordaily.news/images/5ed68c06-6b4e-4661-929c-2d247adbd52e.jpg": {
   "w": 1984,
@@ -3086,12 +3164,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.3FXWO8QnRyX8pm2esPfHIQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 350,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3124,6 +3196,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.ALZNWvppgzAO32RmHQ4ZjA&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://www.bing.com/th?id=ONUT.AqFGAOPiUknUmy3Gx9ZeQw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3149,12 +3227,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.379
- },
- "https://www.bing.com/th?id=ONUT.Jbb8RhWIXvwO-LhCN8YA7Q&pid=News&w=799": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.JpCGa5gTOp-LoOapCFVdCg&pid=News&w=700": {
   "w": 560,
@@ -3258,6 +3330,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.WcrBanb0IH27pRNviFSNIg&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://www.bing.com/th?id=ONUT.XfZiWageP0oD7RJ4cItMhQ&pid=News&w=1200": {
   "w": 700,
