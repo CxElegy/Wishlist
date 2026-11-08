@@ -1,6 +1,6 @@
 {
  "admin": "1c2921d0531b",
- "admin-ai": "3999aedd4bde",
+ "admin-ai": "acdbc6564aa7",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f693d7cb"
+   "5eba9cb3"
   ]
  },
  "admin-boards": "d8e02235351f",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "1c47ce37212c",
+ "admin-emblem": "8ad9c196196a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "033c8354"
+   "0723a7d6"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5f3468671304",
  "admin-members_marks": {},
- "admin-now": "5d9eefe41c38",
+ "admin-now": "9288cce14795",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "49686f1e"
+   "9baee892"
   ]
  },
- "admin-system": "17fbd4ff6f72",
+ "admin-system": "39ab2779b3bc",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e5a58b32"
+   "f4d3ded9"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "4af3409d"
+   "1f33d744"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "ca3e3348"
   ]
  },
- "index": "a40d0e755347",
+ "index": "304e1e8f0a04",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "6c06ecde"
+   "074f67ef"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -121,15 +121,15 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "e74c4daf"
+   "c699abec"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "bd7ca025"
+   "719b99a0"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "a235efab"
+   "4c4b3753"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,15 +137,15 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "08a8c96e"
+   "00248015"
   ],
   "w-79b3c280": [
    "滑雪",
-   "32f04423"
+   "839d84fd"
   ],
   "w-7a894105": [
    "周杰伦",
-   "70c9ca98"
+   "bf94a032"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "4978ce30"
+   "9b3aa94a"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "8828ea66"
+   "43a8a289"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "935fc03d"
   ]
  },
- "updated": "11.09 01:49",
+ "updated": "11.09 01:51",
  "wishlist": "b9a57a1cc720"
 }
