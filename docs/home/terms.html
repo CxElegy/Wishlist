@@ -156,7 +156,9 @@ button{font-family:inherit}
 /* 左の壁と右の列の下端をそろえる：短いほうが伸びる（壁は各段が均等に伸び、右の列は最後の箱が伸びる） */
 .mgrid>.wall{align-content:start}
 .mgrid .wc{justify-content:flex-start}
-.fside>:last-child{flex:1;display:flex;flex-direction:column}.fside>:last-child>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}  /* 右の列が壁の高さまで伸びた分は、箱の下にまとめず行の間に分ける（2026-11-08 店長：欲しい物の下の空白） */
+.fside>:last-child{flex:1;display:flex;flex-direction:column}.fside>.swish:has(.sempty){flex:none}.fside:has(.sempty)>.agenda{flex:1 1 auto;display:flex;flex-direction:column}.fside:has(.sempty)>.agenda>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}
+/* 写真が開けず字だけになったカードは、同じ所に写真のあるカードがあれば出さない（2026-11-08 店長「我一定要图」） */
+section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(.lead),.mgrid .wall:has(>.wc:not(.nophoto)) > .wc.nophoto{display:none!important}.fside>:last-child>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}  /* 右の列が壁の高さまで伸びた分は、箱の下にまとめず行の間に分ける（2026-11-08 店長：欲しい物の下の空白） */
 .fside{display:flex;flex-direction:column;gap:20px;min-width:0}
 .sbox{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:12px 14px 12px}
 .sbox h4,.fside .agenda h4{margin:0 0 6px;display:flex;align-items:baseline;gap:10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
@@ -382,7 +384,7 @@ button{font-family:inherit}
  .mgrid .fside{display:flex!important;flex-direction:column;gap:20px}
  .mgrid .fside>*{flex:none!important;min-width:0}
  .mgrid .fside .swish ol,.mgrid .fside .agenda ol{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));column-gap:28px}
- .mgrid .fside .swish:has(.sempty){display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+ .mgrid .fside .swish:has(.sempty){display:flex;flex-direction:row!important;flex-wrap:wrap;align-items:center;gap:6px 18px}
  .mgrid .fside .swish:has(.sempty)>h4{flex:1 1 100%}
  .mgrid .fside .swish:has(.sempty) .sempty{margin:0;flex:1 1 260px}
 }
