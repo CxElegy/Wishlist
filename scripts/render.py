@@ -205,6 +205,8 @@ button{font-family:inherit}
 .mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:22px;align-items:start}
 /* 左の壁と右の列の下端をそろえる：短いほうが伸びる（壁は各段が均等に伸び、右の列は最後の箱が伸びる） */
 .mgrid>.wall{align-content:start}
+.mgrid.one .wall>.wc b{-webkit-line-clamp:unset;display:block;overflow:visible}  /* 壁の組み方が高さを決めるので、見出しは「…」で切らない（2026-11-09） */
+.mgrid.one{grid-template-columns:minmax(0,1fr)}.wall>.fside{align-self:start;min-width:0}  /* PC：右の列は壁の升目の右上（FIT_JS の wall()）。下にもカードが入る（2026-11-09） */
 .mgrid .wc{justify-content:flex-start}
 .fside>:last-child{flex:1;display:flex;flex-direction:column}.fside>.swish:has(.sempty){flex:none}.fside:has(.sempty)>.agenda{flex:1 1 auto;display:flex;flex-direction:column}.fside:has(.sempty)>.agenda>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}
 /* 写真が開けず字だけになったカードは、同じ所に写真のあるカードがあれば出さない（2026-11-08 店長「我一定要图」） */
@@ -3109,8 +3111,9 @@ def _agenda(works, today, limit=None):
                 continue
             seen.update({(d[:10], x["headline"]), same})
             rows.append((d[:10], w, x, ev))
-    if not rows:
-        return ""
+    if not rows:   # 予定が無くても箱は出す（2026-11-09 店長：予定と欲しい物は必ず出す）
+        return ('<div class="agenda"><h4>これからの予定<small>UPCOMING</small></h4>'
+                '<p class="sempty">発売日・試合・配信など、日付のある記事が入るとここに並びます。</p></div>')
     rows.sort(key=lambda r: r[0])
     items = "".join(
         f'<li style="--sc:{_sec_color(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
@@ -3669,7 +3672,7 @@ FIT_JS = """
     // 切る場所はどこも同じ規則：主役（顔・題字）が 6 割以上残る位置で切れるなら切る。0.75 より細い絵は、切らずに枠を絵の幅に絞る narrow・side が受ける
     p.classList.toggle('fill', (r >= 0.75 && (cropAt(img, r) || Math.min(r, 1 / r) >= 0.95)) || Math.abs(Math.log(r)) < 0.08);
     // 切れない横長の絵：枠を絵の形に。余りはカードの紙が受ける（文字を欠かさない。2026-11-07 店長「这种剪切方式取消」）
-    if (sm && innerWidth > 760 && r > 1 && !p.classList.contains('fill')) { p.style.aspectRatio = 'auto'; p.style.height = p.clientWidth / nat + 'px'; p.classList.add('fill'); }
+    if (sm && innerWidth > 760 && r > 1 && !p.classList.contains('fill')) { p.style.height = 'auto'; p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); }   // 枠は写真の比率で（px で決めると、幅が変わったあと 32px の帯になった。2026-11-09）
     if (r < 0.75) { img.style.objectPosition = ''; delete img.dataset.keep; }
     narrow(img, p, nat, r);
     if (sm && innerWidth > 760 && !p.classList.contains('fill') && r < 0.75) side(sm, p, nat, p.clientHeight);   // 小さいカード：枠を写真の幅に絞り、見出しを横へ
@@ -3836,6 +3839,7 @@ FIT_JS = """
   };
   const fitBoard = (m, gap) => {
     const cs = [...m.children];
+    cs.forEach(c => { if (c.dataset.fbh) { c.style.display = ''; delete c.dataset.fbh; } });   // 前の組で出さなかった記事を戻してから組む
     if (innerWidth <= 760 || cs.some(c => !c.matches('article.card.mini') || c.matches('.tape'))) return false;
     const vis = cs.filter(c => getComputedStyle(c).display !== 'none' && !c.hidden);
     if (vis.length < 2) return false;
@@ -3889,7 +3893,8 @@ FIT_JS = """
       const opts = vis.map((c, i) => measure(c, i, k));
       if (window.WL_FB_DEBUG) (window.WL_FB_LOG = window.WL_FB_LOG || []).push(['opts', m.closest('section') && m.closest('section').dataset.k, k, opts.map(o => o.map(f => f.k + '[' + Math.round(f.lo) + '-' + Math.round(f.hi) + ']').join('|'))]);
       vis.forEach(boardBase);
-      const n = vis.length, pick = Array(n).fill(0), N8 = Math.min(n, 8);
+      for (let n = vis.length; n >= Math.max(2, vis.length - 3); n--) {   // 入りきらなければ後ろの記事を出さない（2026-11-09 店長：数は少なくてよい・1 画面で見終わる）
+      const pick = Array(n).fill(0), N8 = Math.min(n, 8);
       const score = () => {
         const bot = Array(k).fill(0), at = [];
         for (let i = 0; i < n; i++) { const f = opts[i][pick[i]];
@@ -3904,25 +3909,28 @@ FIT_JS = """
         const T = room >= need ? Math.max(need, Math.min(room, budget)) : need;
         const U = Array(n).fill(0);
         used.forEach(j => { let a = 0, b = 1; if (colH(j, 1) <= T) a = 1; else for (let q = 0; q < 30; q++) { const mid = (a + b) / 2; if (colH(j, mid) < T) a = mid; else b = mid; } ix[j].forEach(i => { U[i] = a; }); });
-        const ph = opts.map((o, i) => { const f = o[pick[i]]; return f.lo + (f.hi - f.lo) * U[i]; });
+        const ph = opts.slice(0, n).map((o, i) => { const f = o[pick[i]]; return f.lo + (f.hi - f.lo) * U[i]; });
         const cH = Array.from({length: k}, (_, j) => colH(j, ix[j].length ? U[ix[j][0]] : 0));
-        const Hb = Math.max(...cH), colW = m.clientWidth / k, holes = cH.reduce((s, v) => s + Hb - v, 0) + opts.reduce((s, o, i) => s + (o[pick[i]].b ? o[pick[i]].b(ph[i]) : 0), 0) / colW;
-        const A = opts.map((o, i) => o[pick[i]].a(ph[i])), A0 = A[0], AO = Math.max(0, ...A.slice(1));
+        const Hb = Math.max(...cH), colW = m.clientWidth / k, holes = cH.reduce((s, v) => s + Hb - v, 0) + opts.slice(0, n).reduce((s, o, i) => s + (o[pick[i]].b ? o[pick[i]].b(ph[i]) : 0), 0) / colW;
+        const A = opts.slice(0, n).map((o, i) => o[pick[i]].a(ph[i])), A0 = A[0], AO = Math.max(0, ...A.slice(1));
         let cost = 20 * holes / (Hb * k) - 1.0 * A.reduce((s, v) => s + v, 0) / (Hb * m.clientWidth);
         if (A0 > 0) cost += 1.5 * Math.min(1, Math.max(0, AO / A0 - 1)) + 1.5 * Math.max(0, 0.22 - A0 / (Hb * m.clientWidth)) / 0.22;   // 優先は 画面に収まる（50）> 空きなし（20）> 頭が大きい   // 頭の記事の写真は版面の 2 割以上（2026-11-08 店長：頭がいちばん大きい）
         cost += 0.15 * A.filter(v => v > 0 && v < 14000).length;   // 小さすぎる写真（店長「图有点小了」）
-        cands.push({over: Math.max(0, Hb - budget), cost, k, f: opts.map((o, i) => ({...o[pick[i]], ph: ph[i]})), at: at.slice()});
+        cost += 0.4 * (vis.length - n);   // 出さない記事 1 本ごと
+        cands.push({over: Math.max(0, Hb - budget), cost, k, n, f: opts.slice(0, n).map((o, i) => ({...o[pick[i]], ph: ph[i]})), at: at.slice()});
       };
       const walk = i => { if (i >= N8) return score(); for (let q = 0; q < opts[i].length; q++) { pick[i] = q; walk(i + 1); } };
       walk(0);
+      }
     }
     // 画面の高さに収まる組があればその中から、なければ一番はみ出しの少ない組（＋20px まで）の中から、空き・大きさの点で選ぶ
     if (cands.length) { const minOver = Math.min(...cands.map(x => x.over)); cands.forEach(x => { const c2 = x.cost + 50 * Math.max(0, x.over - minOver - (minOver ? 20 : 0)) / budget; if (!best || c2 < best.c2 - 1e-9) best = {...x, c2}; }); }
     if (!best) { m.style.gridTemplateColumns = ''; return false; }
     m.style.gridTemplateColumns = 'repeat(' + best.k + ',minmax(0,1fr))';
-    vis.forEach((c, i) => boardForm(c, best.f[i]));
+    vis.slice(best.n).forEach(c => { boardBase(c); c.style.display = 'none'; c.dataset.fbh = '1'; });   // hidden 属性はカードの display:grid に負けて見えたままだった   // 入りきらない記事は出さない（幅・高さが変われば次の組み直しで戻る）
+    vis.slice(0, best.n).forEach((c, i) => boardForm(c, best.f[i]));
     const y = Array(best.k).fill(0);
-    vis.forEach((c, i) => {
+    vis.slice(0, best.n).forEach((c, i) => {
       const f = best.f[i], h = Math.ceil(H(c));
       if (f.s > 1) { const y0 = Math.max(...y.slice(0, f.s)); c.style.gridColumn = '1 / span ' + f.s; c.style.gridRow = (y0 + 1) + ' / span ' + (h + gap); for (let a = 0; a < f.s; a++) y[a] = y0 + h + gap; return; }
       const j = best.at[i]; c.style.gridColumn = String(j + 1); c.style.gridRow = (y[j] + 1) + ' / span ' + (h + gap); y[j] += h + gap;
@@ -4026,87 +4034,93 @@ FIT_JS = """
   document.addEventListener('load', e => { const i = e.target; if (i.tagName === 'IMG' && i.matches('.pic img:not(.bg):not(.ico)')) { fit(i); spans(); } }, true);
   let t;
   addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { once(); document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit); wall(); spans(); }, 200); });
-  // 写真の壁（2026-11-01 並べ方の考え L1・L2）：カードの高さは中身で決まる。決まった升目に入れて背をそろえ、下を空けない。
-  // 1px の行に 1 枚ずつ置き（上から一番低い列へ・大きい 1 枚は隣り合う 2 列の低いほうへ）、右の列の高さに合う枚数を選ぶ。
-  // 列ごとの底の差は、その列のカードの写真枠に等分して足す（足す量が少ない枚数を選ぶ）。右の列は壁の高さまで欲しい物・予定の行を出す
+  // 写真の壁（ほかの注目ニュース）の組み方（2026-11-09 店長：PC ではこの区切りを画面 1 枚で見終わる・右の列の下も空けない・予定と欲しい物は必ず出す）。
+  // 右の列（予定・欲しい物）は壁の升目の右上に置く 1 枚として扱い、その下にもニュースのカードが入る（右の列だけ下が空く根を、別の箱にしない形で直す）。
+  // 先行例：Flipboard の Duplo・新聞の自動組版（候補を組んで採点して選ぶ）。候補 = 列の数 × 大きくする記事 × 並べる順 × 出す枚数。
+  // 点数 = 画面の高さを超えた分（いちばん重い）＋ 列の底の差（写真の枠を伸ばして埋めきれない分）＋ 大きい 1 枚の下の空き ＋ 画面の高さの使い残し ＋ 大きさの順（頭条 > 大きい 1 枚 > ほか）
   const wall = () => {
-    const w = document.querySelector('.mgrid > .wall'), side = document.querySelector('.mgrid > .fside');
+    const G = document.querySelector('.mgrid'), w = G && G.querySelector(':scope > .wall');
     if (!w) return;
+    const side = G.querySelector(':scope > .fside') || w.querySelector(':scope > .fside');
     const GAP = 18, cards = [...w.querySelectorAll(':scope > .wc')];
     cards.forEach(c => { c.hidden = false; c.style.gridColumn = c.style.gridRow = c.style.minHeight = '';
       const p = c.querySelector('.pic'); if (p && p.dataset.add) { p.style.height = p.dataset.add === '-' ? '' : p.dataset.add; delete p.dataset.add; } });   // 足す前の高さに戻す（.sb の写真枠は fit が決めた高さを持つ）
     w.style.gridAutoRows = w.style.rowGap = w.style.alignItems = '';
-    if (side) side.style.minHeight = '';
-    if (innerWidth <= 760) return;
-    const hh = sel => document.querySelector(sel)?.getBoundingClientRect().height || 0;
-    const target = Math.max(520, innerHeight - (hh('.spot > .sh') || 56) - (hh('.spot > .shelfbox > summary') || 44) - 22 * 2 - 24);
+    let ag = [], wi = [];
+    if (side) { side.style.minHeight = side.style.gridColumn = side.style.gridRow = ''; ag = [...side.querySelectorAll('.agenda li')]; wi = [...side.querySelectorAll('.swish li')]; [...ag, ...wi].forEach(l => l.hidden = false); }
+    if (innerWidth <= 760) { if (side && side.parentElement === w) G.append(side); G.classList.remove('one'); w.style.gridTemplateColumns = ''; return; }   // スマホ：右の列は壁の下（今までどおり）
+    if (side && side.parentElement !== w) w.append(side);
+    G.classList.add('one');   // 壁が横いっぱい（右の列は壁の中）
+    // 画面 1 枚に入る高さ：壁の上端（見出しの下）から、画面の下端までの間から、たたんだ棚の札の分を引く
+    const spot = G.closest('.spot'), sh = spot && spot.querySelector(':scope > .shelfbox > summary');
+    const T = Math.max(300, innerHeight - (w.getBoundingClientRect().top - (spot || w).getBoundingClientRect().top) - (sh ? sh.getBoundingClientRect().height + 18 : 0) - 24);
     w.style.gridTemplateColumns = '';
-    const cols0 = getComputedStyle(w).gridTemplateColumns.split(' ').length;
-    const beside = side && side.offsetLeft > w.offsetLeft + w.offsetWidth / 2;   // 右の列が壁の横にある（2 列しか入らない幅では下に回る）
-    let ag = [], wi = [], order = [];
-    if (side) {
-      // 入りきらないときは欲しい物（3 件目以降）→ 予定（4 件目以降）→ 欲しい物（2 件目）→ 予定（2・3 件目）の順に下から隠す
-      ag = [...side.querySelectorAll('.agenda li')]; wi = [...side.querySelectorAll('.swish li')];
-      order = [...wi.slice(2).reverse(), ...ag.slice(3).reverse(), ...wi.slice(1, 2), ...ag.slice(1, 3).reverse()];
-      [...ag, ...wi].forEach(l => l.hidden = false);
-      if (beside) for (const l of order) { if (side.getBoundingClientRect().height <= target) break; l.hidden = true; }
-    }
-    const S = beside ? side.getBoundingClientRect().height : target;
-    // Duplo 型（Flipboard の組版）：「列の数 × どの記事を大きくするか」の候補を実際に組んで店長の基準で採点し、いちばん良い型を選ぶ（2026-11-08）。
-    // 点数 = 穴と右の列との差（前からの cost）＋ 大きさの順（頭条 > 大きい 1 枚 > ほか）・小さすぎ・大事な記事を下げた分
-    w.style.alignItems = 'start';
+    const W0 = w.clientWidth;
     const okPic = c => !c.classList.contains('nophoto') && c.querySelector('.pic img:not(.bg):not(.ico)');
-    const leadCands = cards.slice(0, 3).filter(okPic).map(c => cards.indexOf(c));
-    const colCands = [cols0 - 1, cols0, cols0 + 1].filter(n => n >= 2 && w.clientWidth / n >= 200 && w.clientWidth / n <= 440);
-    const few = cards.length < 5 || !wallReady;   // 写真が届ききるまでは今の形のまま（届いてから 1 回だけ選ぶ：毎回同じ結果にする）   // カードが少ない壁は、列を変えると埋めきれず穴が開く（1400px・正方形 3 枚で 18%）：列も大きい 1 枚も今のまま
-    if (few) { colCands.length = 0; leadCands.length = 0; const l0 = cards.findIndex(c => c.classList.contains('lead')); leadCands.push(l0); }
+    const leadCands0 = [-1, ...cards.slice(0, 3).filter(okPic).map(c => cards.indexOf(c))];
+    const colW = n => (W0 - GAP * (n - 1)) / n;
+    const colCands0 = [2, 3, 4, 5, 6].filter(n => colW(n) >= (side ? 230 : 200) && colW(n) <= 420);
+    const few = cards.length < 3 || !wallReady;   // 写真が届ききるまでは今の形のまま（届いてから選ぶ：毎回同じ結果にする）
     const areaOf = c => { const p = c.querySelector('.pic'); if (!p || c.classList.contains('nophoto') || c.hidden) return 0; const r = p.getBoundingClientRect(); return r.width * r.height; };
-    const setup = (n, li) => {
-      const nw = 'repeat(' + n + ',minmax(0,1fr))', moved = w.style.gridTemplateColumns !== nw;
+    const setup = (n, li, all) => {
+      const nw = 'repeat(' + n + ',minmax(0,1fr))', moved = all || w.style.gridTemplateColumns !== nw;   // all：選んだ形で全部置き直す（候補を試した時の枠の高さを残さない。2026-11-09 枠が 32px の帯になった）
       w.style.gridTemplateColumns = nw;
       cards.forEach((c, i) => {
-        const was = c.classList.contains('lead'), now = i === li; if (was === now && !moved) return;   // 列の数が変わればカードの幅が変わる：全部置き直す（前の候補の形を持ち越さない。2026-11-08）
+        const was = c.classList.contains('lead'), now = i === li; if (was === now && !moved) return;   // 列の数が変わればカードの幅が変わる：全部置き直す
         const p = c.querySelector('.pic'); c.classList.toggle('lead', now); if (was !== now) c.classList.remove('tall', 'nw', 'ls', 'half');
-        if (p) { if (was !== now) p.style.aspectRatio = p.style.width = p.style.height = ''; const im = p.querySelector('img:not(.bg):not(.ico)'); if (im && im.naturalWidth) fit(im); }
+        if (p) { if (was !== now || moved) p.style.aspectRatio = p.style.width = p.style.height = ''; const im = p.querySelector('img:not(.bg):not(.ico)'); if (im && im.naturalWidth) fit(im); }
       });
+      if (side) side.style.gridColumn = String(n);
     };
-    const plan = (cols, ord) => {
-      // 自然な高さ（中身だけ）を測る。.tall の大きい 1 枚は 1 列、そうでない大きい 1 枚は 2 列
-      ord = ord || cards.map((c, i) => i);
-      const H = cards.map(c => c.offsetHeight), span = cards.map(c => (c.classList.contains('lead') && !c.classList.contains('tall') && cols >= 2) ? 2 : 1);
+    // 右の列の高さ：画面の高さの 7 割まで（入らなければ欲しい物 3 件目以降 → 予定 4 件目以降 → … の順に下から隠す）
+    const sideFit = () => {
+      if (!side) return 0;
+      [...ag, ...wi].forEach(l => l.hidden = false);
+      const order = [...wi.slice(2).reverse(), ...ag.slice(3).reverse(), ...wi.slice(1, 2), ...ag.slice(1, 3).reverse()];
+      for (const l of order) { if (side.getBoundingClientRect().height <= T * 0.7) break; l.hidden = true; }
+      return side.getBoundingClientRect().height;
+    };
+    // 写真の枠を d だけ伸ばせるか：主役と文字（data-k）が欠けない切り方があるときだけ（cropAt）。比率がほぼ同じなら切らずに伸ばせる
+    const canGrow = (k, d) => { const p = cards[k].querySelector('.pic'), im = p && p.querySelector('img:not(.bg):not(.ico)'); if (!p || !im || !im.naturalWidth) return false;
+      const r = im.naturalWidth / im.naturalHeight / (p.clientWidth / (p.clientHeight + d)), ok = Math.abs(Math.log(r)) < 0.08 || cropAt(im, r);
+      if (im.dataset.m || im.dataset.k) cropAt(im, im.naturalWidth / im.naturalHeight / (p.clientWidth / p.clientHeight)); return ok; };
+    const plan = (cols, ord, sH) => {
+      const H = cards.map(c => c.offsetHeight), span = cards.map(c => (c.classList.contains('lead') && !c.classList.contains('tall') && cols >= 3) ? 2 : 1);
       const bot = Array(cols).fill(0), col = Array(cols).fill(0).map(() => []), put = [];
+      if (side) bot[cols - 1] = sH + GAP;
       let best = null, under = 0;
       ord.forEach((i, q) => {
-        const c = cards[i];
-        // 2 列にまたがる大きい 1 枚は、下にできる空き（またがる列の底の差）が一番小さい所へ。同じなら高さの低い所（2026-11-08：右上が空いた）
+        // 2 列にまたがる大きい 1 枚は、下にできる空き（またがる列の底の差）が一番小さい所へ。同じなら低い所
         let j = 0, y = Infinity, wst = Infinity;
         for (let a = 0; a + span[i] <= cols; a++) { const v = Math.max(...bot.slice(a, a + span[i])), ws = bot.slice(a, a + span[i]).reduce((s, b) => s + v - b, 0);
           if (ws < wst - 0.5 || (Math.abs(ws - wst) <= 0.5 && v < y)) { y = v; j = a; wst = ws; } }
         under += wst;
         for (let a = j; a < j + span[i]; a++) { bot[a] = y + H[i] + GAP; col[a].push(i); }
         put[i] = {j, y};
-        const n = q + 1, W = Math.max(...bot) - GAP;
-        if (n < Math.min(3, cards.length)) return;
-        // 足す量（その列の写真枠に対する割合の最大）と、右の列との高さの差
+        const n = q + 1; if (n < Math.min(side ? 2 : 3, cards.length)) return;   // 右の列があれば 2 枚の組も（右の列と高さがそろう）
+        const Wb = Math.max(...bot) - GAP;
+        // 列の底の差を、その列の（文字のない・1 列の）写真の枠を伸ばして埋める：枠に対する割合
         let rel = 0;
-        for (let a = 0; a < cols; a++) { const d = W - (bot[a] - GAP), pics = col[a].filter(k => (span[k] === 1 || !cards[k].classList.contains('lead')) && !cards[k].querySelector('.pic img[data-k]')).reduce((s, k) => s + (cards[k].querySelector('.pic')?.offsetHeight || 0), 0);   // 文字のある写真は伸ばせない（2026-11-08）
-          if (d > 0) rel = Math.max(rel, d / Math.max(1, pics)); }
-        const cost = rel + Math.abs(W - S) / S + 6 * under / (W * cols);   // 大きい 1 枚の下の空きは伸ばして埋められない：穴として数える
-        if (!best || cost < best.cost - 1e-6) best = {n, cost, W, bot: bot.slice(), pos: put.slice(), col: col.map(c => c.slice()), ord: ord.slice(0, n)};
+        for (let a = 0; a < cols; a++) { const d = Wb - (bot[a] - GAP), pics = col[a].filter(k => span[k] === 1 && (d < 2 || canGrow(k, d))).reduce((s, k) => s + (cards[k].querySelector('.pic')?.offsetHeight || 0), 0);
+          if (d > 1) rel = Math.max(rel, pics ? d / pics : d / 40); }
+        const cost = 50 * Math.max(0, Wb - T) / T + rel + 3 * Math.max(0, rel - 0.35) + 6 * under / (Wb * cols) + 0.6 * Math.max(0, T - Wb) / T;
+        if (!best || cost < best.cost - 1e-6) best = {n, cost, W: Wb, bot: bot.slice(), pos: put.slice(), col: col.map(c => c.slice()), ord: ord.slice(0, n)};
       });
       return best && {best, H, span};
     };
     const headA = headArea();
     let pick = null;
-    for (const n of colCands.length ? colCands : [cols0]) for (const li of leadCands.length ? leadCands : [-1]) for (const lf of li > 0 ? [false, true] : [false]) {
-      // 並べる順：記事の順のまま／大きい 1 枚を先頭に（下に空きを作らずに上に置ける。2026-11-08 店長：ある幅で右上が空いた）
+    const colCands = few ? [Math.max(2, getComputedStyle(w).gridTemplateColumns.split(' ').length)] : (colCands0.length ? colCands0 : [2]);
+    const leadCands = few ? [cards.findIndex(c => c.classList.contains('lead'))] : leadCands0;
+    w.style.alignItems = 'start';
+    for (const n of colCands) for (const li of leadCands) for (const lf of li > 0 ? [false, true] : [false]) {
       const ord = cards.map((c, i) => i); if (lf) { ord.splice(ord.indexOf(li), 1); ord.unshift(li); }
-      setup(n, li); const r = plan(n, ord); if (!r) continue;
+      setup(n, li); const sH = Math.round(sideFit()); const r = plan(n, ord, sH); if (!r) continue;
       cards.forEach((c, i) => { c.hidden = !r.best.ord.includes(i); });
       const L = li >= 0 ? areaOf(cards[li]) : 0, O = Math.max(0, ...cards.filter((c, i) => i !== li).map(areaOf));
-      let pen = li > 0 ? 0.08 * li : 0;
+      let pen = li > 0 ? 0.08 * li : li < 0 ? 0.25 : 0;   // 大きい 1 枚が無い形は少しだけ減点（強弱が無い）
       if (li >= 0) { const im = cards[li].querySelector('.pic img:not(.bg):not(.ico)'), bb = im && im._bands, cn = im && im.naturalWidth ? im.naturalWidth * (bb ? 1 - bb.l - bb.r : 1) / (im.naturalHeight * (bb ? 1 - bb.t - bb.b : 1)) : 1.5;
-        if (cn < 1) pen += 1; }   // 縦長の写真は横長の大きい枠に入らない（左右が空く。King Gnu）
+        if (cn < 1) pen += 1; }   // 縦長の写真は横長の大きい枠に入らない（左右が空く）
       if (headA) pen += Math.max(0, L / headA - 0.85) * 4 + Math.max(0, O / headA - 0.65) * 2;
       if (L) pen += Math.max(0, O / L - 0.85) * 2;
       if (O && O < 12000) pen += 0.5;
@@ -4114,26 +4128,20 @@ FIT_JS = """
       const cost = r.best.cost + pen; if (!pick || cost < pick.cost) pick = {cost, n, li, ord};
     }
     if (!pick) return;
-    setup(pick.n, pick.li);
-    const cols = pick.n, chosen = plan(cols, pick.ord); if (!chosen) return;
+    setup(pick.n, pick.li, true);
+    const cols = pick.n, sH = Math.round(sideFit()), chosen = plan(cols, pick.ord, sH); if (!chosen) return;
     const {best, H, span} = chosen;
-    // 置く：選んだ枚数だけ出し、列ごとの底の差をその列の（大きい 1 枚でない）カードの写真枠に等分して足す
     cards.forEach((c, i) => { c.hidden = !best.ord.includes(i); });
-    const ext = Array(cards.length).fill(0);
-    // 右の列より壁が低いとき（カードが少ない版面）は、右の列の高さまで写真枠を伸ばす（壁の下が空かない）。差が壁の 6 割までのとき
-    // その前に、壁の 1.6 倍より右の列が高ければ、右の列の欲しい物・予定の行を下から隠して差を縮める（写真枠を伸ばしすぎない）
-    let S2 = S;
-    if (beside && S > best.W * 1.6) { for (const l of order) { if (l.hidden) continue; if (side.getBoundingClientRect().height <= best.W * 1.6) break; l.hidden = true; } S2 = side.getBoundingClientRect().height; }
-    const Wt = (beside && S2 > best.W && S2 - best.W <= .6 * best.W) ? S2 : best.W;
+    // 置く：列ごとの底の差を、その列の（大きい 1 枚でない・文字のない）カードの写真枠に等分して足す
+    const ext = Array(cards.length).fill(0), Wt = best.W;
     for (let a = 0; a < cols; a++) {
       const d = Wt - (best.bot[a] - GAP);
-      // 文字のある写真（data-k）の枠は伸ばさない（伸ばすと切れて文字が欠ける。2026-11-08 台風の地図・dmenu）。伸ばせる写真がなければ穴のまま（文字の欠けより小さい減点）
-      let ks = best.col[a].filter(k => !(span[k] === 2) && !cards[k].querySelector('.pic img[data-k]'));
-      if (!ks.length) ks = best.col[a].filter(k => !cards[k].querySelector('.pic img[data-k]'));   // 列に大きい 1 枚（2 列）しかないときは、その 1 枚が伸びる（隣が 3 枚以上で高いとき、その下が空かない）
+      let ks = best.col[a].filter(k => span[k] === 1 && d > 0 && canGrow(k, d / Math.max(1, best.col[a].length)));
+      if (!ks.length) ks = best.col[a].filter(k => d > 0 && canGrow(k, d));
       if (d > 0 && ks.length) ks.forEach(k => { ext[k] = Math.max(ext[k], d / ks.length); });
     }
-    // 2 列にまたがる大きい 1 枚の下で、2 つの列が別々に伸びると上の位置がずれるので、列ごとに下から積み直す
     const y0 = Array(cols).fill(0), place = [];
+    if (side) y0[cols - 1] = sH + GAP;
     for (const i of best.ord) {
       const j = best.pos[i].j, k = span[i], y = Math.max(...y0.slice(j, j + k)), h = Math.round(H[i] + ext[i]);
       place.push([i, j, k, y, h]); for (let a = j; a < j + k; a++) y0[a] = y + h + GAP;
@@ -4141,11 +4149,15 @@ FIT_JS = """
     w.style.gridAutoRows = '1px'; w.style.rowGap = '0';
     place.forEach(([i, j, k, y, h]) => { const c = cards[i]; c.style.gridColumn = (j + 1) + ' / span ' + k; c.style.gridRow = (y + 1) + ' / span ' + (h + GAP);
       if (ext[i] > 0.5) { c.style.minHeight = h + 'px'; const p = c.querySelector('.pic'); if (p && c.classList.contains('sb')) { p.dataset.add = p.style.height || '-'; p.style.height = Math.round(p.offsetHeight + ext[i]) + 'px'; } } });
-    // 右の列：壁の高さまで、隠した欲しい物・予定の行を戻す（戻して壁を超えたらまた隠す）。余りは最後の箱が受ける
-    const Wf = Math.max(...y0) - GAP;
-    if (side && beside) {
-      for (const l of order.slice().reverse()) { if (!l.hidden) continue; l.hidden = false; if (side.getBoundingClientRect().height > Wf) l.hidden = true; }
-      side.style.minHeight = Wf + 'px';
+    if (side) {
+      // 右の列の下にカードが入らなかったときは、右の列を壁の底まで伸ばし、隠した行を入るだけ戻す（下を空けない）
+      const below = place.some(([i, j, k]) => j + k - 1 === cols - 1), Wf = Math.max(...y0) - GAP;
+      let hS = sH;
+      if (!below && Wf > sH) {
+        for (const l of [...wi.slice(2).reverse(), ...ag.slice(3).reverse(), ...wi.slice(1, 2), ...ag.slice(1, 3).reverse()].reverse()) { if (!l.hidden) continue; l.hidden = false; if (side.getBoundingClientRect().height > Wf) l.hidden = true; }
+        hS = Wf; side.style.minHeight = Wf + 'px';
+      }
+      side.style.gridColumn = String(cols); side.style.gridRow = '1 / span ' + Math.ceil(hS + (below ? GAP : 0));
     }
   };
   // 写真・字体が届いて高さが変わったら詰め直す（1 フレームにまとめる）。足した分で自分の大きさが変わっても、同じ結果になるので繰り返さない
