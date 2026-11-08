@@ -103,6 +103,8 @@ addEventListener('resize',draw);draw();
 def base(html, title):
     html = re.sub(r'<meta name="wl-ver"[^>]*>', "", html)            # 見本は自動更新しない
     html = html.replace("<head>", '<head><base href="../home/"><meta name="robots" content="noindex">', 1)
+    # ログイン中でも本人のページ（me.html）へ送らない（2026-11-08：店長は test-a でログインしたまま見るので、見本が全部いまの本番に見えていた）
+    html = html.replace('"page": "index"', '"page": "sample"', 1)
     return re.sub(r"<title>.*?</title>", f"<title>{title}</title>", html, count=1, flags=re.S)
 
 

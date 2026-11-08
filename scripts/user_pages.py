@@ -28,6 +28,7 @@ import zoneinfo
 
 import digest
 import heat
+import og_image
 import photo_bands
 import photo_store
 import render
@@ -392,6 +393,7 @@ def main(argv):
         return
     except Exception:  # noqa: BLE001  まだ無い・読めない → 全部置く
         fps = {}
+    og = dict(fps.get("_og") or {})   # 写真のない記事の代表の写真（og:image。og_image.py）。指紋と同じ 1 本に入れる
     bands = dict(fps.get("_bands") or {})   # 写真に焼き込まれた余白の割合（網址ごと。photo_bands.py）。指紋と同じ 1 本に入れる（storage の読みを増やさない）
     try:
         latest = latest_stories(_supa)
@@ -412,7 +414,10 @@ def main(argv):
             pages = {}
             wishes = _supa(f"/rest/v1/wishes?account=eq.{acct}&select=id,name,status,price,currency,url,shop,note,specs,image,photo,added&order=id.desc") or []
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
-            html_ = build(u["email"], u.get("prefs") or {}, board_rows(follows, latest, {norm(r["item"]): r for r in rows or []}), shop_items, shop_issue,
+            brows = board_rows(follows, latest, {norm(r["item"]): r for r in rows or []})
+            og_image.fill(brows, og)   # 写真のない記事に記事のページの代表の写真を付ける（2026-11-08 店長「我一定要图」）
+            og_image.demote(brows)   # それでも写真の無い記事はカードにせず「整理待ち」へ（カードには必ず写真）
+            html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
                           settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
             # 写真に焼き込まれた余白を測って data-t に書く（ブラウザは別のサイトの写真を読めないので、ここで測る。2026-11-08）
             photo_bands.measure([u for t in [html_, *pages.values()] for u in photo_bands.urls_in(t)], bands, photo_store.fetch)
@@ -434,6 +439,7 @@ def main(argv):
             failed += 1
             print(f"::warning::1 人分のページを作れなかった（{type(ex).__name__}）")
     new_fps["_bands"] = bands
+    new_fps["_og"] = og
     if new_fps != fps:
         try:
             _supa(fp_path, json.dumps(new_fps, sort_keys=True).encode(), "POST", "application/json")
