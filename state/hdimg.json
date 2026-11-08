@@ -482,16 +482,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.gamey.kr/news/photo/202609/3018752_170370_5622.jpg": {
-  "w": 600,
-  "h": 450,
+ "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
+  "w": 300,
+  "h": 225,
   "target": 1280,
   "v": 3,
-  "blur": 0.447,
-  "local": "pics/ad97cd7134cf3368.webp",
+  "blur": 0.606,
+  "local": "pics/1f4c2211c5986133.webp",
   "out": [
-   1280,
-   960
+   900,
+   675
   ],
   "why": "看不清"
  },
@@ -569,21 +569,15 @@
   "v": 3,
   "blur": 0.388
  },
- "https://cdn.specialtimes.co.kr/news/photo/202611/483034_471022_1143.jpg": {
-  "w": 600,
-  "h": 450,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg": {
   "w": 1200,
   "h": 2132,
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229.jpg": {
-  "w": 1600,
-  "h": 893,
+ "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229_crop.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -1072,6 +1066,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/ns-radically-changing-roshan-and-tormentor-mechanics-in-dota-2-23501.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/sikle-discussed-oracle-bug-25415.jpg": {
@@ -1649,6 +1649,13 @@
   "target": 720,
   "v": 3
  },
+ "https://img.36krcdn.com/hsossms/20261104/v2_851566546f8140b6b7de48fc4c1ed671@000000@ai_oswg1050775oswg2048oswg2048_img_000~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.35
+ },
  "https://img.benesse-cms.jp/pet-cat/item/image/normal/06d992e9-745f-48d9-b74a-2b1648300da5.jpg?w=698&h=483&resize_type=cover&resize_mode=force": {
   "w": 698,
   "h": 483,
@@ -2025,6 +2032,12 @@
   "w": 1200,
   "h": 701,
   "target": 1280,
+  "v": 3
+ },
+ "https://more-news.tw/more-news-media/2026/11/JQ-x-Vaundy.jpg": {
+  "w": 1984,
+  "h": 1323,
+  "target": 720,
   "v": 3
  },
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
@@ -2405,6 +2418,18 @@
   "out": [
    562,
    800
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-03661396-clc_korea-000-1-view.jpg?exp=10800": {
+  "w": 819,
+  "h": 1024,
+  "target": 720,
+  "v": 3,
+  "local": "pics/5a175174b182d90b.webp",
+  "out": [
+   819,
+   1024
   ],
   "why": "期限付きの網址"
  },
@@ -3398,6 +3423,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.billboard-japan.com/common/sys/img/news/00000167/167251/image.jpg": {
+  "w": 800,
+  "h": 533,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.347
+ },
  "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024": {
   "w": 1024,
   "h": 677,
@@ -3673,12 +3705,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.b2dkL4JFHSnPjfnSLuJkfw&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.b_0HZNWCqlgpF3wqgvg0Ow&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3743,12 +3769,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.414
- },
- "https://www.bing.com/th?id=ONUT.tHbO75x-CEreKjEyIer23Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.uY8mlRmZ-bWkSg41p10Oaw&pid=News&w=1200": {
   "w": 700,
@@ -3974,12 +3994,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://www.hotspawn.com/wp-content/uploads/2026/11/How-to-Sell-Dota-2-Skins-For-Real-Money.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/all-blast-slam-winners.jpg": {
