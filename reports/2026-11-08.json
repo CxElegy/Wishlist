@@ -1,6 +1,6 @@
 {
  "date": "2026-11-08",
- "edit_sig": "f0b8d7892877",
+ "edit_sig": "781420952f27",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,8 +13,8 @@
      "date": "2026-11-07",
      "headline": "[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄",
      "highlight": "TGS 2026",
-     "image": "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg",
-     "image_via": "og:image",
+     "image": "https://cdn.gamey.kr/news/photo/202609/3018752_170370_5622.jpg",
+     "image_via": "正文图（4 枚から）",
      "url": "http://www.gamey.kr/news/articleView.html?idxno=3018752",
      "weight": "lead"
     }
@@ -225,33 +225,6 @@
     "bg": "#0E1016",
     "fg": "#EEF1F6",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
-   "facts": [],
-   "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 1,
-     "source": "sakhaparliament.ru",
-     "title": "特別デザインジェラートピケ 猫さんと春のお花柄 とっても可愛らしい大型ポーチ ブルーホワイトバッグ",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYemg1MFE5aTR6YUtwQk4tM0wtNjhRakc3WTdpT3owWVBlUVpPLTlBM2czZnRKUnhZTVhFWG1OVGRVS0llUG40c2t3WENObFF2SEladUllSGJOeWsxVEUxc18tU1NvUQ?oc=5"
-    }
-   ],
-   "section": "好物",
-   "stories": [],
-   "subtitle": "ジェラート ピケ · ルームウェア",
-   "theme": {
-    "accent": "#EE8FA7",
-    "alt_accent": "#F4B6C6",
-    "alt_bg": "#BFE3DA",
-    "alt_fg": "#3F4F4B",
-    "bg": "#FFF6F3",
-    "fg": "#5A4049",
-    "font": "serif",
     "split": true
    }
   },
@@ -791,6 +764,31 @@
     "alt_fg": "#F6F1E7",
     "bg": "#F6F1E7",
     "fg": "#1E3932",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "last": {
+    "date": "2026-11-07",
+    "headline": "【GELATO PIQUE KIDS & BABY】旭山動物園とのコラボレーション！動物になりきれる「ASAHIYAMA ZOO GELATO PIQUE」が登場＜10月23日(金)発売＞",
+    "url": "https://373news.com/lifestyle/info/pr_times/detail/000004453.000018505.html"
+   },
+   "name": "gelato pique",
+   "quiet": true,
+   "section": "好物",
+   "status": "10/20 Mrs. GREEN APPLE 联名发售 · 10/21 三丽鸥联名第 2 弾 · 福袋 2027 待公布（往年 10 月底抽选）",
+   "stories": [],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
     "font": "serif",
     "split": true
    }

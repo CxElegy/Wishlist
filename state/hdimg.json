@@ -373,10 +373,35 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.techrepublic.com/uploads/2026/11/ipad-mini-oled-vs-galaxy-tab-s11-featured.jpg?f=jpeg": {
+  "w": 1600,
+  "h": 893,
+  "target": 1280,
+  "v": 3
+ },
  "https://attach.setn.com/newsimages/2017/02/08/803356-PH.jpg": {
   "w": 650,
   "h": 366,
   "target": 720,
+  "v": 3
+ },
+ "https://attach.setn.com/newsimages/2026/02/11/5451715-PH.jpg": {
+  "w": 800,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.464,
+  "local": "pics/c8f35dc3c4c7585a.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
+ "https://basketballking.jp/wp-content/uploads/2026/11/Wembanyama-1.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://beforesandafters.com/wp-content/uploads/2026/11/Screenshot-2026-11-03-at-11.34.49-am.jpg": {
@@ -445,16 +470,16 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
-  "w": 300,
-  "h": 225,
+ "https://cdn.gamey.kr/news/photo/202609/3018752_170370_5622.jpg": {
+  "w": 600,
+  "h": 450,
   "target": 1280,
   "v": 3,
-  "blur": 0.606,
-  "local": "pics/1f4c2211c5986133.webp",
+  "blur": 0.447,
+  "local": "pics/ad97cd7134cf3368.webp",
   "out": [
-   900,
-   675
+   1280,
+   960
   ],
   "why": "看不清"
  },
@@ -512,19 +537,6 @@
   "h": 800,
   "target": 1280,
   "v": 3
- },
- "https://cdn.news.ifm.kr/news/thumbnail/202611/483675_157958_530_v150.jpg": {
-  "w": 300,
-  "h": 200,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.641,
-  "local": "pics/075ac6eb52065161.webp",
-  "out": [
-   900,
-   600
-  ],
-  "why": "看不清"
  },
  "https://cdn.ome.lt/kDm8ymHW3CqrptnIQ6Gne4xiVXw=/1200x630/smart/filters:format(webp)/extras/conteudos/Monarca_de_la_Lucha_en_Catedral_Esmeralda.png": {
   "w": 1200,
@@ -596,6 +608,12 @@
  "https://cdn2.ettoday.net/images/8999/e8999793.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdnweb01.wikitree.co.kr/webdata/editor/202611/06/img_20261106230819_6ad4e2e0.jpeg": {
+  "w": 1200,
+  "h": 676,
   "target": 1280,
   "v": 3
  },
@@ -773,12 +791,6 @@
  "https://d3h3k01ny8mjr.cloudfront.net/tv-report/2026/11/01175935/CP-2022-0227-40813683-thumb.jpg": {
   "w": 1459,
   "h": 800,
-  "target": 720,
-  "v": 3
- },
- "https://d89889xojlqhy.cloudfront.net/upload/featured/2d50ea94dd655dd4b7d4ed342d9ff7c1.jpg": {
-  "w": 3775,
-  "h": 2123,
   "target": 720,
   "v": 3
  },
@@ -1178,12 +1190,6 @@
   "target": 720,
   "v": 3
  },
- "https://i10.hoopchina.com.cn/b26a858e2841e0ed740608191c56d229_w_1179_h_1971_.jpg?x-oss-process=image/resize,w_800/format,webp": {
-  "w": 800,
-  "h": 1337,
-  "target": 1280,
-  "v": 3
- },
  "https://i2.hoopchina.com.cn/bbs-editor-web/17929066518581.jpg": {
   "w": 1920,
   "h": 1080,
@@ -1283,6 +1289,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://images.entertainment.ie/storage/images_content/rectangle/620x372/869135-bmsb.jpg?w=1280&h=768&q=high": {
+  "w": 1280,
+  "h": 768,
+  "target": 720,
   "v": 3
  },
  "https://images.flickdirect.com/cache/entertainment-news/q82-012000-channing-tatum-as-gambit-joins-herbie-for-an-avengers-dunkin-run_8864.jpg": {
@@ -1447,6 +1459,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gKeR9.img": {
+  "w": 2560,
+  "h": 1707,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gLAcP.img": {
   "w": 1200,
   "h": 624,
@@ -1595,6 +1613,13 @@
   "target": 720,
   "v": 3
  },
+ "https://img.36krcdn.com/hsossms/20261104/v2_851566546f8140b6b7de48fc4c1ed671@000000@ai_oswg1050775oswg2048oswg2048_img_000~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.35
+ },
  "https://img.benesse-cms.jp/pet-cat/item/image/normal/06d992e9-745f-48d9-b74a-2b1648300da5.jpg?w=698&h=483&resize_type=cover&resize_mode=force": {
   "w": 698,
   "h": 483,
@@ -1632,19 +1657,6 @@
   "h": 900,
   "target": 720,
   "v": 3
- },
- "https://img.etnews.com/news/article/2026/11/02/news-p.v1.20261102.377b3b4aa88c4a5e8ad493fb0aa1fb50_P1.jpg": {
-  "w": 700,
-  "h": 467,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.458,
-  "local": "pics/a61d64b922727fa0.webp",
-  "out": [
-   1280,
-   854
-  ],
-  "why": "看不清"
  },
  "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp": {
   "w": 1200,
@@ -1822,12 +1834,6 @@
   "target": 1280,
   "v": 3
  },
- "https://imgnn.seoul.co.kr/img/upload/2026/11/03/SSC_20261103163005.jpg.webp": {
-  "w": 1200,
-  "h": 962,
-  "target": 1280,
-  "v": 3
- },
  "https://imgopt.asahi.com/ogp/AS20261031002306_comm.jpg": {
   "w": 640,
   "h": 335,
@@ -1919,12 +1925,6 @@
   "target": 720,
   "v": 3
  },
- "https://limo.ismcdn.jp/mwimgs/f/9/1200w/img_f9fc3d848c723be08212ba0eb6301ed5130258.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
-  "v": 3
- },
  "https://lp.p.pia.jp/shared/materials/56193ef9-0fac-4034-bf94-6de73ff55fc2/origin.jpg": {
   "w": 1200,
   "h": 1200,
@@ -1971,12 +1971,6 @@
   "w": 1214,
   "h": 607,
   "target": 720,
-  "v": 3
- },
- "https://media.tehrantimes.com/d/t/2026/11/01/4/6242024.jpg?ts=1793535295479": {
-  "w": 1280,
-  "h": 530,
-  "target": 1280,
   "v": 3
  },
  "https://memeon.sgp1.digitaloceanspaces.com/wp-content/uploads/2026/11/Vaundy-1.jpg": {
@@ -2372,13 +2366,6 @@
   "target": 720,
   "v": 3
  },
- "https://ni.yam.com/20261102/00448615.202610311048494165m-1202f640ebe25f15.webp": {
-  "w": 800,
-  "h": 600,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.359
- },
  "https://ni.yam.com/20261103/jp-prt-27516-144-1-261102170146629-547e866ef3ccf8a6.webp": {
   "w": 957,
   "h": 1350,
@@ -2461,6 +2448,18 @@
   "out": [
    1048,
    698
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/04/35484120.jpg&M=1&s=Y&x=0&y=0&sw=1080&sh=599&exp=3600": {
+  "w": 1080,
+  "h": 599,
+  "target": 720,
+  "v": 3,
+  "local": "pics/639481622c7aecaa.webp",
+  "out": [
+   1080,
+   599
   ],
   "why": "期限付きの網址"
  },
@@ -3142,12 +3141,6 @@
   ],
   "why": "看不清"
  },
- "https://today-obs.line-scdn.net/0hBc9YPs7MHUwEIAFvObBiGzx2ET03RgdFJhVUKXUpEHQuDF4TORROLyB3FmB5EF5PJBZQLHYlQnkrQ1sbOg/w1200": {
-  "w": 820,
-  "h": 615,
-  "target": 1280,
-  "v": 3
- },
  "https://travelbinger.com/cdn-cgi/image/width=1600,height=900,quality=80,format=auto,fit=cover/https://backend.travelbinger.com/wp-content/uploads/2026/11/38d0ffa1b7a661b12b2b2d6b66abf0cd.webp": {
   "w": 1600,
   "h": 900,
@@ -3211,6 +3204,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/07/1794023686416_galaxy-s27-ultra-co-thiet-ke-giong-iphone-buoc-di-dung-huong-cua-samsung-2855.png": {
   "w": 1743,
   "h": 933,
+  "target": 1280,
+  "v": 3
+ },
+ "https://wimg.sedaily.com/news/cms/2026/11/03/news-p.v1.20261101.3b51c99612cc407c8cf3b4f4c07bee80_R.jpg": {
+  "w": 820,
+  "h": 1313,
   "target": 1280,
   "v": 3
  },
@@ -3317,12 +3316,6 @@
  "https://www.bbntimes.com/images/Galaxy_S27_Leaks_Four_New_Models_Three_Chipsets_and_a_Massive_Redesign.jpg": {
   "w": 1200,
   "h": 540,
-  "target": 1280,
-  "v": 3
- },
- "https://www.bgr.com/img/gallery/this-rugged-samsung-phone-is-nearly-indestructible/l-intro-1792667748.jpg": {
-  "w": 1600,
-  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -3528,6 +3521,19 @@
   "out": [
    1280,
    984
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.V0iGDubhciuFWu80K3PmrQ&pid=News&w=720": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.48,
+  "local": "pics/2c9cc768b3b54e67.webp",
+  "out": [
+   1280,
+   852
   ],
   "why": "看不清"
  },
@@ -3825,6 +3831,12 @@
   "v": 3,
   "blur": 0.292
  },
+ "https://www.gamereactor.eu/wp-content/uploads/sites/3/2026/11/maxresdefault-2.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.gamespot.com/wp-content/uploads/2026/10/Jason_and_Lucia_01.jpg": {
   "w": 3840,
   "h": 2160,
@@ -3855,10 +3867,10 @@
   "target": 720,
   "v": 3
  },
- "https://www.giantfreakinrobot.com/wp-content/uploads/2024/02/The-Spirit-Nana-Visitor.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
+ "https://www.highpoint.edu/media/home/2026/11/HPU1-Teddy-Bears.jpg": {
+  "w": 1200,
+  "h": 798,
+  "target": 1280,
   "v": 3
  },
  "https://www.hollywoodreporter.com/wp-content/uploads/2024/11/FROM_310_00296_R-H-2024.jpg?w=1296&h=730&crop=1": {
@@ -4030,12 +4042,6 @@
    806
   ],
   "why": "看不清"
- },
- "https://www.sponichi.co.jp/baseball/news/2026/11/02/jpeg/20261102s10001007109000p_view.webp": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
-  "v": 3
  },
  "https://www.sponichi.co.jp/sports/news/2026/11/02/jpeg/20261102s10028000053000p_view.webp": {
   "w": 1200,
