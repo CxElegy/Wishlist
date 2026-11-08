@@ -25,6 +25,7 @@
   "https://eyeonsunvalley.com/Mobile/Mobile_Story_Reader/14462/Halloween-Hoopla-Trick-or-Treaters-Dodge-the-Raindrops/": "https://eyeonsunvalley.com/StoryPhotos/14462.jpg",
   "https://finance.yahoo.co.jp/news/detail/82ebd1f76c3dabae7efaa68a534d6399b4822bd4": "https://s.yimg.jp/images/finance/common/image/ogp.png",
   "https://finance.yahoo.com/markets/stocks/articles/two-expects-20-growth-gta-145111715.html": "https://www.bing.com/th?id=ONUT.tHbO75x-CEreKjEyIer23Q&pid=News&w=1200",
+  "https://gamerant.com/gta-6-download-fast-internet-upgrade/": "https://www.bing.com/th?id=ONUT.KSrnB_C9V1MwRJpKiLKVNg&pid=News&w=1200",
   "https://gamewith.jp/pokemon-champions/555406": "https://img.gamewith.jp/article/thumbnail/rectangle_l/555406.png?date=1776075560",
   "https://gnn.gamer.com.tw/detail.php?sn=314573": "https://p2.bahamut.com.tw/B/2KU/75/fe3c9b54769450d330a0ab9a8a210gb5.JPG",
   "https://hawk.live/posts/korb3n-explains-1wins-dota-2-roster-issues-will-solve": "https://hawk.live/storage/images/posts/korb3n-harshly-criticized-auroras-new-roster-24133.jpg",
@@ -943,6 +944,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-07",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.KSrnB_C9V1MwRJpKiLKVNg&pid=News&w=1200",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "Game Rant",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "Internet Provider Is Giving GTA 6 Fans Faster Downloads for Free",
+   "url": "https://gamerant.com/gta-6-download-fast-internet-upgrade/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-11-07",
    "hits": [],
@@ -1026,7 +1048,7 @@
    "work": "绝区零"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "あつ森",
    "date": "2026-11-07",
    "hits": [],
@@ -1151,7 +1173,7 @@
    "work": "绝区零"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "猫用品",
    "date": "2026-11-06",
    "hits": [
@@ -1264,7 +1286,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "A2O LITE",
    "date": "2026-11-07",
    "hits": [],
@@ -1369,7 +1391,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-06",
    "hits": [],
@@ -1474,7 +1496,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "dota2",
    "date": "2026-11-07",
    "hits": [],
@@ -1930,11 +1952,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1946,11 +1968,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ]
  ]

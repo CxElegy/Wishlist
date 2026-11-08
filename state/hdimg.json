@@ -551,6 +551,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.topstarnews.net/news/photo/202611/16271055_2081143_5229_crop.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
+ },
  "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg": {
   "w": 1200,
   "h": 675,
@@ -1074,6 +1080,12 @@
   "target": 720,
   "v": 3
  },
+ "https://hermes.media.static.aol.com/media/2026/11/07/ddf522af-b364-38de-a078-ce08a3d25c26/5bf79d43-a750-418b-bc18-45934d57b198.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
+ },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261105/photo/bkn-20261105000104965-1105_00862_001_02b.jpg?20261104222519": {
   "w": 780,
   "h": 799,
@@ -1298,12 +1310,6 @@
   "v": 3
  },
  "https://images.moneycontrol.com/static-mcnews/2026/10/20261031131011_hp-new.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://images.pushsquare.com/22fef94b93cd7/1280x720.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -2960,12 +2966,6 @@
   "target": 720,
   "v": 3
  },
- "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/11/gta-6-jason-and-lucia-in-coupe-cabrio-purple-color-palette-grand-theft-auto-vi-screenshot-edit.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2026/11/chainsaw-man-reze-arc-inspires-stylish-new-apparel-collection-gamerant-feature.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -2983,6 +2983,12 @@
   "h": 900,
   "target": 1280,
   "v": 3
+ },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/06/ultimate_edition_electric_fang_02.jpg?w=1600&h=900&fit=crop": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/10/gta6-3.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
@@ -3441,6 +3447,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.KSrnB_C9V1MwRJpKiLKVNg&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,
@@ -4043,6 +4055,12 @@
   "h": 800,
   "target": 1280,
   "v": 3
+ },
+ "https://www.sportschosun.com/article/html/2026/11/08/2026110801000531300052491_w.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-08"
  },
  "https://www.sportzorg24.tv/wp-content/uploads/2026/10/tennis-tokyo-20261024-r4bd0d6-header-1024x576.jpg": {
   "w": 1024,
