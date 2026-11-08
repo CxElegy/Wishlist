@@ -425,6 +425,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .card.mini:not(.nophoto){row-gap:0;grid-template-rows:repeat(8,auto) minmax(0,1fr)}.card.mini:not(.nophoto)>.pic{grid-column:1;grid-row:1/span 9}.card.mini:not(.nophoto)>*:not(.pic):not(.lk){grid-column:2}
 .pic.whole img:not(.bg):not(.ico){object-fit:contain!important}
 .pk.shaped .pkt{flex:1 1 auto}
+.pic.hasduo>img:not(.bg):not(.ico){visibility:hidden}.pic>.duo{position:absolute;inset:0;display:flex;gap:3px;background:var(--card)}.pic>.duo>span{display:block;height:100%;background-repeat:no-repeat}
 .wc.lead.half{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:16px}
 .wc.lead.half>.pic{flex:0 0 var(--hw)!important;width:var(--hw)!important;max-width:var(--hw)!important;height:auto!important}
 .wc.lead.half>.htx{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:6px}
@@ -3555,12 +3556,28 @@ FIT_JS = """
       setTimeout(() => { if (i.isConnected && !(i.complete && i.naturalWidth) && i.dataset.e) i.dispatchEvent(new Event('error')); }, 8000); }), {rootMargin: '200px'});
     document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(i => late.observe(i));
   }
+  // 空きを挟んだ 2 つの物（data-s，photo_bands.segments）：空きだけ詰めて並べる。物ごとに枠の中で cover（2026-11-08 店長：ユニクロの人と服）
+  const duo = (img, p) => {
+    const s = (img.dataset.s || '').split(';').map(x => x.split(',').map(Number)).filter(a => a.length === 2 && a.every(v => !isNaN(v)));
+    let d = p.querySelector(':scope > .duo');
+    if (s.length < 2 || !img.naturalWidth) { if (d) d.remove(); p.classList.remove('hasduo'); return; }
+    const bd = img._bands || {t: 0, b: 0}, nw = img.naturalWidth, nh = img.naturalHeight, tot = s.reduce((a, [x0, x1]) => a + x1 - x0, 0);
+    if (!d) { d = document.createElement('div'); d.className = 'duo'; s.forEach(() => d.append(document.createElement('span'))); p.append(d); }
+    p.classList.add('hasduo');
+    [...d.children].forEach((c, i) => {
+      const [x0, x1] = s[i]; c.style.flex = ((x1 - x0) / tot).toFixed(3) + ' 1 0';
+      const r = c.getBoundingClientRect(), sw = (x1 - x0) * nw, sh = (1 - bd.t - bd.b) * nh, k = Math.max(r.width / sw, r.height / sh);
+      Object.assign(c.style, {backgroundImage: 'url("' + (img.currentSrc || img.src) + '")', backgroundSize: (nw * k) + 'px ' + (nh * k) + 'px',
+        backgroundPosition: (-(x0 * nw * k) + (r.width - sw * k) / 2) + 'px ' + (-(bd.t * nh * k) + (r.height - sh * k) / 2) + 'px'});
+    });
+  };
   const fit = img => {
     fit0(img);
     const p = img.closest('.pic'), f = img.naturalWidth && img._bands;
     if (!p) return;
     if (img.naturalWidth) capLead(img, p);
     if (p.closest('#front .top')) { const li = document.querySelector('.wc.lead .pic img:not(.bg):not(.ico)'); if (li && li.naturalWidth) capLead(li, li.closest('.pic')); }   // 頭条の写真があとから届いたときも比べ直す
+    if (img.dataset.s) { duo(img, p); if (p.classList.contains('hasduo')) return; }
     if (f) trimFit(img, p, f);
     else if (img._edge && !p.classList.contains('fill')) p.style.background = img._edge;   // 全体を見せる絵：周りを絵の端の色に（帯に見えない）
     if (p.closest('.pk')) swapBig(p.closest('.pk').parentElement);
@@ -3584,7 +3601,8 @@ FIT_JS = """
     if (img.dataset.e && img.naturalWidth && img.naturalWidth < 32 && img.naturalHeight < 32) { img.dispatchEvent(new Event('error')); return; }
     if (!p || !img.naturalWidth || !p.clientHeight) return;
     p._ok = 1;   // 一度は測れた（隠れた版面の写真は、見えるようになったとき下の ResizeObserver が測る）
-    const bd = img._bands, nat = bd ? img.naturalWidth * (1 - bd.l - bd.r) / (img.naturalHeight * (1 - bd.t - bd.b)) : img.naturalWidth / img.naturalHeight;
+    const bd = img._bands, segs = (img.dataset.s || '').split(';').map(x => x.split(',').map(Number)).filter(a => a.length === 2), segw = segs.length >= 2 ? segs.reduce((a, [x0, x1]) => a + x1 - x0, 0) : 0;
+    const nat = segw ? img.naturalWidth * segw / (img.naturalHeight * (1 - (bd ? bd.t + bd.b : 0))) : bd ? img.naturalWidth * (1 - bd.l - bd.r) / (img.naturalHeight * (1 - bd.t - bd.b)) : img.naturalWidth / img.naturalHeight;
     const pk = p.closest('.pk');
     const sm = p.closest('article.card:not(.hero):not(.lead):not(.wide), .wc:not(.lead), a.tape');
     if (pk || sm) unside(pk || sm, p);
@@ -3646,11 +3664,13 @@ FIT_JS = """
   // 小さいカード・気になるかも：写真が枠より細いとき、ぼかしでも空白でも埋めず、枠を写真の幅に絞って字の列を横に置く（.sb）。
   // 字の列が 100px 未満になるほど狭いカードは枠を写真の比率に（点検 gap が数える）
   const unside = (c, p) => { c.classList.remove('sb'); p.style.width = p.style.height = p.style.aspectRatio = ''; p.querySelectorAll('img').forEach(i => { i.style.transform = i.style.transformOrigin = ''; }); };
+  const img0 = p => p.querySelector('img:not(.bg):not(.ico)');
   const side = (c, p, nat, h) => {
     const cw = (c.querySelector(':scope > a:not(.lk)') || c).clientWidth || c.clientWidth;
     const w = Math.min(Math.round(h * nat), Math.round(cw * 0.5));
-    if (cw - w < 100 || h < 40) {   // 字の列が取れないほど狭いカード：枠を写真の比率にする（縦は幅の 1.1 倍まで）
-      const pw = p.clientWidth; p.style.aspectRatio = 'auto'; p.style.height = Math.min(pw / nat, pw * 1.1) + 'px'; return;
+    if (cw - w < 150 || h < 40) {   // 字の列が 150px 取れないカード：写真を上・字を下に。枠は写真の比率（縦は幅の 1.35 倍まで、超える分は主役・文字が残るときだけ切る）（2026-11-08：80px の字の列で 1〜3 字ずつ折り返した）
+      const pw = p.clientWidth, ph = Math.min(pw / nat, pw * 1.35); p.style.aspectRatio = 'auto'; p.style.height = ph + 'px';
+      p.classList.toggle('fill', pw / nat <= ph * 1.02 || cropAt(img0(p), nat / (pw / ph))); return;
     }
     p.style.height = h + 'px'; p.style.width = w + 'px'; c.classList.add('sb');
     if (!c.matches('.pk')) {   // 枠はカードの高さまで伸びる：幅を写真の形に合わせ直し（55% まで）、まだ上下が余るなら主役が残る範囲で 1.25 倍まで拡大する（端の色の帯も余白。2026-11-07 店長）
