@@ -2072,6 +2072,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://more-news.tw/more-news-media/2026/11/JQ-x-Vaundy.jpg": {
+  "w": 1984,
+  "h": 1323,
+  "target": 720,
+  "v": 3
+ },
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
   "w": 840,
   "h": 440,
@@ -2476,6 +2482,18 @@
   "out": [
    562,
    800
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-01455297-the_tv-000-1-view.jpg?exp=10800": {
+  "w": 1300,
+  "h": 731,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/421417172684524a.webp",
+  "out": [
+   1280,
+   720
   ],
   "why": "期限付きの網址"
  },

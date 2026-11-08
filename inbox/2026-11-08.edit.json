@@ -166,7 +166,7 @@
   "三星手机": 19,
   "The Mandalorian": 5,
   "あつ森": 4,
-  "Vaundy": 2,
+  "Vaundy": 4,
   "ILLIT": 12,
   "gelato pique": 4,
   "MMORPG 新作": 5,
@@ -481,15 +481,34 @@
  ],
  "Vaundy": [
   {
+   "headline": "Vaundy、2027-2028アリーナツアー追加公演を発表",
+   "highlight": "追加公演",
+   "blurb": "Vaundyが2027-2028アリーナツアーの追加公演を発表。",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://www.billboard-japan.com/common/sys/img/news/00000167/167251/image.jpg"
+  },
+  {
    "headline": "Vaundy化身魔鬼教練逼出JQ新面貌 錄音室裡他只顧喊「好帥」",
    "highlight": "",
    "blurb": "",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     1,
     2
    ],
    "image": "https://v3-statics.mirrormedia.mg/images/0ed104aa-f976-4e35-91eb-d4f8580f85bf-w1600.jpg"
+  },
+  {
+   "headline": "Vaundy、超特急、NEXZら出演 「バズリズム LIVE 2026【配信版】」全3公演の独占疑似ライブ配信決定",
+   "highlight": "独占疑似ライブ配信",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "ILLIT": [
