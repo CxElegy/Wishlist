@@ -3526,7 +3526,7 @@ FIT_JS = """
     const nw = img.naturalWidth, nh = img.naturalHeight, cw = nw * (1 - f.l - f.r), ch = nh * (1 - f.t - f.b), W = p.clientWidth, H = p.clientHeight;
     if (!W || !H) return;
     const cover = Math.max(W / cw, H / ch), inner = Math.min(W / cw, H / ch), s = inner / cover >= 0.97 ? cover : inner,   /* 帯を外した中身はほぼ切らない（35%・10% でも文字バナーの電話番号が切れた。2026-11-08） */ iw = nw * s, ih = nh * s, a = img.dataset.m ? img.style.objectPosition : '';
-    Object.assign(img.style, {width: iw / W * 100 + '%', height: ih / H * 100 + '%', left: ((W - cw * s) / 2 - nw * f.l * s) / W * 100 + '%', top: ((H - ch * s) / 2 - nh * f.t * s) / H * 100 + '%'});
+    Object.assign(img.style, {width: iw / W * 100 + '%', height: 'auto', aspectRatio: nw + ' / ' + nh, left: ((W - cw * s) / 2 - nw * f.l * s) / W * 100 + '%', top: ((H - ch * s) / 2 - nh * f.t * s) / H * 100 + '%'});
     p.classList.remove('whole'); p.classList.add('trim');
     if (s < cover && img._edge) p.style.background = img._edge;
   };
@@ -3550,6 +3550,8 @@ FIT_JS = """
     const th = bx.getBoundingClientRect().height, ph = w / nat;
     if (ph > th + 12) c.style.setProperty('--hw', Math.round(Math.max(w * 0.4, th * nat)) + 'px');
   };
+  // ページを作るときに開けなかった写真（data-dead，photo_bands）は、最初から代わりの写真へ（無ければカードを出さない。2026-11-08 コーヒーの灰色の枠）
+  document.querySelectorAll('.pic img[data-dead]').forEach(i => { i.removeAttribute('data-dead'); i.dispatchEvent(new Event('error')); });
   // 読み込みが終わらない写真（相手が返事をしない）は、画面に入ってから 8 秒で「開けない」とみなし、代わりの写真か、カードを出さない形へ（2026-11-08：灰色の空の枠）
   if (window.IntersectionObserver) {
     const late = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; late.unobserve(e.target); const i = e.target;
@@ -3571,6 +3573,13 @@ FIT_JS = """
         backgroundPosition: (-(x0 * nw * k) + (r.width - sw * k) / 2) + 'px ' + (-(bd.t * nh * k) + (r.height - sh * k) / 2) + 'px'});
     });
   };
+  // 枠の大きさが変わったら（壁の高さ揃えなど）、帯を外した写真・並べた 2 つの物を置き直す（引き伸ばさない）
+  if (window.ResizeObserver) {
+    const rf = new ResizeObserver(es => es.forEach(({target: p}) => { const i = p.querySelector('img:not(.bg):not(.ico)'); if (!i || !i.naturalWidth) return;
+      if (p.classList.contains('trim') && i._bands) trimFit(i, p, i._bands); if (p.classList.contains('hasduo')) duo(i, p); }));
+    const watch = r => r.querySelectorAll && r.querySelectorAll('.pic').forEach(p => rf.observe(p));
+    watch(document); new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => n.nodeType === 1 && watch(n)))).observe(document.documentElement, {childList: true, subtree: true});
+  }
   const fit = img => {
     fit0(img);
     const p = img.closest('.pic'), f = img.naturalWidth && img._bands;
@@ -3896,15 +3905,16 @@ FIT_JS = """
     const okPic = c => !c.classList.contains('nophoto') && c.querySelector('.pic img:not(.bg):not(.ico)');
     const leadCands = cards.slice(0, 3).filter(okPic).map(c => cards.indexOf(c));
     const colCands = [cols0 - 1, cols0, cols0 + 1].filter(n => n >= 2 && w.clientWidth / n >= 200 && w.clientWidth / n <= 440);
-    const few = cards.length < 5;   // カードが少ない壁は、列を変えると埋めきれず穴が開く（1400px・正方形 3 枚で 18%）：列も大きい 1 枚も今のまま
+    const few = cards.length < 5 || !wallReady;   // 写真が届ききるまでは今の形のまま（届いてから 1 回だけ選ぶ：毎回同じ結果にする）   // カードが少ない壁は、列を変えると埋めきれず穴が開く（1400px・正方形 3 枚で 18%）：列も大きい 1 枚も今のまま
     if (few) { colCands.length = 0; leadCands.length = 0; const l0 = cards.findIndex(c => c.classList.contains('lead')); leadCands.push(l0); }
     const areaOf = c => { const p = c.querySelector('.pic'); if (!p || c.classList.contains('nophoto') || c.hidden) return 0; const r = p.getBoundingClientRect(); return r.width * r.height; };
     const setup = (n, li) => {
-      w.style.gridTemplateColumns = 'repeat(' + n + ',minmax(0,1fr))';
+      const nw = 'repeat(' + n + ',minmax(0,1fr))', moved = w.style.gridTemplateColumns !== nw;
+      w.style.gridTemplateColumns = nw;
       cards.forEach((c, i) => {
-        const was = c.classList.contains('lead'), now = i === li; if (was === now) return;
-        const p = c.querySelector('.pic'); c.classList.toggle('lead', now); c.classList.remove('tall', 'nw', 'ls', 'half');
-        if (p) { p.style.aspectRatio = p.style.width = p.style.height = ''; const im = p.querySelector('img:not(.bg):not(.ico)'); if (im && im.naturalWidth) fit(im); }
+        const was = c.classList.contains('lead'), now = i === li; if (was === now && !moved) return;   // 列の数が変わればカードの幅が変わる：全部置き直す（前の候補の形を持ち越さない。2026-11-08）
+        const p = c.querySelector('.pic'); c.classList.toggle('lead', now); if (was !== now) c.classList.remove('tall', 'nw', 'ls', 'half');
+        if (p) { if (was !== now) p.style.aspectRatio = p.style.width = p.style.height = ''; const im = p.querySelector('img:not(.bg):not(.ico)'); if (im && im.naturalWidth) fit(im); }
       });
     };
     const plan = cols => {
@@ -3935,6 +3945,8 @@ FIT_JS = """
       cards.forEach((c, i) => { c.hidden = i >= r.best.n; });
       const L = li >= 0 ? areaOf(cards[li]) : 0, O = Math.max(0, ...cards.filter((c, i) => i !== li).map(areaOf));
       let pen = li > 0 ? 0.08 * li : 0;
+      if (li >= 0) { const im = cards[li].querySelector('.pic img:not(.bg):not(.ico)'), bb = im && im._bands, cn = im && im.naturalWidth ? im.naturalWidth * (bb ? 1 - bb.l - bb.r : 1) / (im.naturalHeight * (bb ? 1 - bb.t - bb.b : 1)) : 1.5;
+        if (cn < 1) pen += 1; }   // 縦長の写真は横長の大きい枠に入らない（左右が空く。King Gnu）
       if (headA) pen += Math.max(0, L / headA - 0.85) * 4 + Math.max(0, O / headA - 0.65) * 2;
       if (L) pen += Math.max(0, O / L - 0.85) * 2;
       if (O && O < 12000) pen += 0.5;
@@ -3977,6 +3989,7 @@ FIT_JS = """
     }
   };
   // 写真・字体が届いて高さが変わったら詰め直す（1 フレームにまとめる）。足した分で自分の大きさが変わっても、同じ結果になるので繰り返さない
+  let wallReady = document.readyState === 'complete'; addEventListener('load', () => { wallReady = true; });
   let wq = 0; const wallSoon = () => { if (!wq) wq = requestAnimationFrame(() => { wq = 0; wall(); }); };
   if (window.ResizeObserver) { const ro = new ResizeObserver(wallSoon); document.querySelectorAll('.mgrid > .wall > .wc').forEach(c => ro.observe(c)); }
   wall();

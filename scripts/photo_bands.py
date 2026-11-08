@@ -14,6 +14,7 @@ MAX_NEW = 400          # 1 回で新しく測る数の上限（Actions の時間
 IMG_RE = re.compile(r'<img src="(https?://[^"]+)"')
 FLAT = 24              # 同じ色とみなす差（RGB の差の合計）
 MIN_BAND = 0.04        # これより細い余白は外さない
+BREATH = 0.03          # 余白を外しても残す幅（物の周りの息をする余白）
 
 
 def bands(data):
@@ -51,6 +52,7 @@ def bands(data):
         f = [max(x, y) for x, y in zip(f, bl)]
     if max(f) < MIN_BAND or f[0] + f[2] >= 0.7 or f[1] + f[3] >= 0.85:   # 横は 85% まで（中の空きで 2 つの物の片方だけ残すとき）
         return []
+    f = [max(0.0, v - BREATH) if v > 0 else 0.0 for v in f]   # 物の周りに少し余白を残す（ぎりぎりで切らない。2026-11-08 店長「裁的太多了」）
     e = px[0, 0]
     return [round(v, 3) for v in f] + ["#%02x%02x%02x" % e]
 
@@ -98,7 +100,7 @@ def blur_bands(im):
             j += 1
         seg.append((i, j, col[i] >= thr_c))
         i = j
-    gaps = [(a, z) for a, z, on in seg if not on and a > l and z < n and z - a >= 0.08 * W]
+    gaps = [(a, z) for a, z, on in seg if not on and a > l and z < n and z - a >= 0.08 * W and float(g[:, a:z].std()) < 8]   # 間は無地の背景だけ（人物の中の模様の少ない所を空きと取り違えない。NBA・筋トレ）
     if gaps:
         parts, a0 = [], l
         for a, z in gaps:
@@ -109,7 +111,7 @@ def blur_bands(im):
         share = [col[p[0]:p[1]].sum() / tot for p in parts]
         big = [p for p, s in zip(parts, share) if s >= 0.25]
         if len(big) >= 2:   # 2 つとも大事な物：空きだけ詰めて並べる（店長 2026-11-08「这样裁一下」）。左右の端は外側の物の端まで
-            SEG[:] = [[round(p[0] / W, 3), round(p[1] / W, 3)] for p in big]
+            SEG[:] = [[round(max(0.0, p[0] / W - BREATH), 3), round(min(1.0, p[1] / W + BREATH), 3)] for p in big]   # 物ごとに少し余白を残す
             l, r = big[0][0], len(col) - big[-1][1]
         else:
             best = max(parts, key=lambda p: col[p[0]:p[1]].sum())
@@ -168,19 +170,25 @@ def text_box(data):
 
 def measure(urls, cache, fetch, log=print):
     """まだ測っていない網址を測って cache に入れる（MAX_NEW まで）。→ 新しく測った数"""
-    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == 4)][:MAX_NEW]   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
+    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == 6 and not cache[u].get("dead"))][:MAX_NEW]   # 開けなかった写真は毎回試し直す   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
 
     def one(u):
         try:
             data = fetch(u)
-            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "s": segments(data), "v": 4} if data else {"t": [], "m": "", "k": None, "v": 4})
-        except Exception:  # noqa: BLE001  開けない写真は「測れない」として次から取りに行かない
-            return u, {"t": [], "m": "", "k": None, "v": 4}
-    with cf.ThreadPoolExecutor(max_workers=16) as ex:
-        for u, v in ex.map(one, todo):
+            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "s": segments(data), "v": 6} if data else {"t": [], "m": "", "k": None, "v": 6})
+        except Exception as ex:  # noqa: BLE001  「無い」（404・410）と答えた写真だけ印（ページでは最初から代わりの写真か、カードを出さない）。
+            # つながらない・時間切れは一時的なものとして記録しない（次の回にまた試す。PC の DNS が落ちて 39 枚に印が付き、壁が空になった）
+            return u, ({"t": [], "m": "", "k": None, "v": 6, "dead": 1} if getattr(ex, "code", None) in (404, 410) else None)
+    with cf.ThreadPoolExecutor(max_workers=16) as pool:
+        got = list(pool.map(one, todo))
+    if todo and sum(1 for _, v in got if v is None or v.get("dead")) > 0.2 * len(todo):   # 2 割以上開けない：通信の問題。印は付けない
+        got = [(u, None if v and v.get("dead") else v) for u, v in got]
+    for u, v in got:
+        if v is not None:
             cache[u] = v
     if todo:
-        log(f"写真の余白と主役：{len(todo)} 枚を測った（余白あり {sum(1 for u in todo if cache[u]['t'])}・主役の位置 {sum(1 for u in todo if cache[u]['m'])}）")
+        ok = [u for u in todo if u in cache]
+        log(f"写真の余白と主役：{len(todo)} 枚を測った（余白あり {sum(1 for u in ok if cache[u]['t'])}・主役の位置 {sum(1 for u in ok if cache[u]['m'])}・無い {sum(1 for u in ok if cache[u].get('dead'))}・つながらず {len(todo) - len(ok)}）")
     return len(todo)
 
 
@@ -197,6 +205,8 @@ def inject(text, cache):
         if not isinstance(v, dict):
             return m.group(0)
         out = m.group(0)
+        if v.get("dead"):
+            return out + ' data-dead="1"'
         if v.get("t"):
             out += f' data-t="{",".join(map(str, v["t"]))}"'
         if v.get("m"):
