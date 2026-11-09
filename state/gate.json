@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-09T13:17:45+00:00",
+ "changed": true,
+ "checked": "2026-11-09T13:35:59+00:00",
  "fired": {
-  "at": "2026-11-09T13:17:59+00:00",
+  "at": "2026-11-09T13:35:59+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -16,24 +16,28 @@
    "edit": 14
   },
   "2026-11-09": {
-   "edit": 10
+   "edit": 11
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-09T10:01:35+00:00",
+    "at": "2026-11-09T13:35:59+00:00",
     "attempts": 1,
     "day": "2026-11-09",
-    "prog": 226,
-    "resp": "cse_01W4x6f57DwFLDABXFq1oZYb",
-    "sig": "321221f2854c"
+    "prog": 271,
+    "resp": "cse_01W4x6f6BTDD8o16KaKquyRL",
+    "sig": "28a10d8febe6"
    },
    "items": [
+    "A2O LITE",
     "Astrae Oratio",
+    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy",
     "lib:Ado",
     "lib:BTS",
     "lib:King Gnu",
@@ -42,9 +46,12 @@
     "lib:iPhone",
     "lib:大谷翔平",
     "lib:無印良品",
+    "チェーンソーマン",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "滑雪",
+    "漫威电影",
     "绝区零"
    ],
    "last_batch": "2026-11-09T10:55:06+00:00",
@@ -55,35 +62,42 @@
    "need": true,
    "prog": 271,
    "prog_day": "2026-11-09",
-   "ripe": [],
-   "sig": "57a8d0f2c079",
+   "ripe": [
+    "GTA 6",
+    "MMORPG 新作",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
+   ],
+   "sig": "28a10d8febe6",
    "token_cap": 1000000,
    "tokens_today": 471886,
-   "why": "整理待ちの記事 106 件（15 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 158 件（22 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦",
     "A2O LITE",
+    "The Mandalorian",
+    "绝区零",
+    "Vaundy"
+   ],
+   "need": true,
+   "sig": "a61a590e93be",
+   "waiting": [
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
     "dota2",
     "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "ぐでたま"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 9 版面（Actions で Python が埋める）・失敗 6 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
