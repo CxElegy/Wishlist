@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-09T10:27:44+00:00",
+ "checked": "2026-11-09T11:18:03+00:00",
  "fired": {
-  "at": "2026-11-09T10:28:05+00:00",
+  "at": "2026-11-09T11:18:27+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -34,43 +34,32 @@
     "Astrae Oratio",
     "ILLIT",
     "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "gelato pique",
+    "lib:Ado",
     "lib:BTS",
+    "lib:King Gnu",
+    "lib:Mrs. GREEN APPLE",
+    "lib:YOASOBI",
     "lib:iPhone",
-    "lib:ガンプラ",
-    "lib:キャンプ",
-    "lib:コーヒー",
-    "lib:モンスターハンターワイルズ",
-    "lib:ラーメン",
+    "lib:大谷翔平",
     "lib:無印良品",
-    "チェーンソーマン",
-    "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "滑雪",
     "绝区零"
    ],
-   "last_batch": "2026-11-09T10:23:19+00:00",
+   "last_batch": "2026-11-09T10:55:06+00:00",
    "last_error": {
     "at": "2026-11-09T10:07:17+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 255,
+   "prog": 271,
    "prog_day": "2026-11-09",
-   "ripe": [
-    "The Mandalorian",
-    "dota2",
-    "gelato pique",
-    "チェーンソーマン",
-    "三星手机"
-   ],
-   "sig": "db9b68d411e7",
+   "ripe": [],
+   "sig": "57a8d0f2c079",
    "token_cap": 1000000,
-   "tokens_today": 458445,
-   "why": "整理待ちの記事 121 件（20 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 471886,
+   "why": "整理待ちの記事 106 件（15 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -131,11 +120,11 @@
    "runs": 15
   },
   "2026-11-09": {
-   "batches": 12,
-   "cr": 8511024,
-   "cw": 417615,
-   "in": 238,
-   "out": 40592,
+   "batches": 17,
+   "cr": 9396208,
+   "cw": 427095,
+   "in": 258,
+   "out": 44533,
    "runs": 8
   }
  }
