@@ -125,8 +125,8 @@ class Components(unittest.TestCase):
     def test_heights_are_screen_ratios(self):
         """2026-11-09 店長：高さは px でなく画面の割合。ほかの注目ニュース・気になるかもは L＝画面 100%、版面は篇幅 L 100%・M 70%・S 50%。ジャンル別の棚はなし。"""
         js = render.FIT_JS
-        self.assertIn("const SZ = {L: 1, M: 0.7, S: 0.5};", js)
-        self.assertIn("innerHeight * (SZ[sec && sec.dataset.sz] || SZ.M)", js)
+        self.assertEqual(render.SIZE_VH, {"S": 50, "M": 70, "L": 100})
+        self.assertIn("innerHeight * ((sec && +sec.dataset.vh) || 70) / 100", js)
         self.assertNotIn("shelfbox", js)
         self.assertIn("c._hc", js)   # 入りきらない記事は小さい形（.wc.cmp）で列の下を埋める
         self.assertIn(".mgrid .wall>.wc.cmp{", render.CSS)

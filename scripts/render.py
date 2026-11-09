@@ -1049,6 +1049,7 @@ def _tcard_(story, span, i, today, small=False, mini=False):
 # 本数は設定ページの言葉（S 3・M 5・L 8＝digest.SIZE_STORIES）が決まり。高さは「重大が重なったとき」だけ削る見張り
 SIZE_HEIGHT = {"S": 460, "M": 640, "L": 1100}
 SIZE_COUNT = {"S": 3, "M": 5, "L": 8}
+SIZE_VH = {"S": 50, "M": 70, "L": 100}  # 版面の高さは画面の高さの何 %まで（2026-11-09 店長：px で決めない。L は画面 1 枚・M 7 割・S 5 割。FIT_JS fitBoard が data-vh を読む）
 SIZE_SIDE = {"S": 0, "M": 0, "L": 3}  # 头条右边竖排几条普通消息；0 是头条单独一行（图在左、字在右，矮得多）
 
 
@@ -1546,7 +1547,7 @@ def _section(block, anchor=""):
     cnt = f'<span class="cnt"><b>{len(recent)}</b>今週</span>' if recent else ""
     cnt = _heat_badge(block) + cnt
     emb_html = _emblem(block.get("_emblems") or [], block.get("_ring") or "accent")
-    return (f'<section id="{anchor}" data-k="{e(block["name"])}"{_fx(block["name"])} class="sec{" m-" + motif if motif else ""}{" has-emb" if emb_html else ""}{quiet}" data-sz="{block.get("_size") if block.get("_size") in SIZE_HEIGHT else "M"}" style="{style}">'
+    return (f'<section id="{anchor}" data-k="{e(block["name"])}"{_fx(block["name"])} class="sec{" m-" + motif if motif else ""}{" has-emb" if emb_html else ""}{quiet}" data-vh="{SIZE_VH.get(block.get("_size"), SIZE_VH["M"])}" style="{style}">'
             f'<div class="band">{emb_html}{MOTIFS.get(motif, "")}<span class="title">{e(block["name"])}</span>{sub}{cnt}</div>'
             f"{facts}{grid}</section>")
 
@@ -3847,7 +3848,6 @@ FIT_JS = """
     img.style.objectPosition = ''; delete img.dataset.keep;
     return run;
   };
-  const SZ = {L: 1, M: 0.7, S: 0.5};   // 版面の篇幅 → 画面の高さの割合（その版面が画面のどこまでを使うか）
   const fitBoard = (m, gap) => {
     m.querySelectorAll(':scope > .pfill').forEach(x => x.remove());   // 前の組で空きに並べた整理待ちを外してから組む
     { const pd = m.closest('section') && m.closest('section').querySelector('details.pend'); if (pd) pd.style.display = ''; }
@@ -3866,7 +3866,7 @@ FIT_JS = """
     const cols0 = getComputedStyle(m).gridTemplateColumns.split(' ').length, sec = m.closest('section');
     vis.forEach(boardBase);
     const over = sec ? sec.getBoundingClientRect().height - m.getBoundingClientRect().height : 120;
-    const budget = Math.max(160, innerHeight * (SZ[sec && sec.dataset.sz] || SZ.M) - over - 16), H = c => c.getBoundingClientRect().height;   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
+    const budget = Math.max(160, innerHeight * ((sec && +sec.dataset.vh) || 70) / 100 - over - 16), H = c => c.getBoundingClientRect().height;   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
     const fixed = c => { boardBase(c); const h = H(c); return {k: 'N', s: 1, lo: 0, hi: 0, h: () => h, a: () => 0}; };
     const measure = (c, i, k) => {
       const o = [], p = c.querySelector(':scope > .pic'), img = p && img0(p);
