@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "a1690a3efcf0",
+ "edit_sig": "b2f147b3e3fa",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?BVmo0vcwM-1IY4ios_zoS",
@@ -75,24 +75,29 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Nexon's new 3D MMORPG Temppal: Overgeared could soon come West.",
      "date": "2026-11-09",
-     "n": 1,
-     "source": "Pocket Gamer",
-     "title": "Temppal: Overgeared is the new 3D MMORPG from Nexon that could soon come West",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOaUFLaHItU3ZyNVNxMW1KODVlakM1SDhPelVkeG1icFB4bmFhVVpuQko3Z19zeEg4UG5UbUk5ci1XaFNGcDRZMnRqU19oVkc0cGJoUTZycG5lamNZRi0zQnJaX3VXc1o2UlJqY1U0TVBVU1B0YlB0cF9NY1JIMWQ5NFd1eFA?oc=5"
+     "headline": "Temppal: Overgeared is the new 3D MMORPG from Nexon that could soon come West",
+     "highlight": "Temppal: Overgeared",
+     "image": "https://media.pocketgamer.com/artwork/na-38892-1794226977/temppal-overgeared-keyscreen.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.pocketgamer.com/temppal-overgeared/coming-soon-to-certain-regions/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 2,
-     "source": "Dexerto",
-     "title": "Everything we know about Riot’s new League of Legends MMO: Raids & more",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNR2ViVHdqS3VuRFpRY1NtWGtScW5xSkw5MHZkQWxmcWN5N0E2SnZsRWY0NXNsT3B6a0hldWx5MXFCTGc0Wk5ucG9GV0t3QmhEOUlWVG8yc1VIUGVwa0hIeUN5ckU1MEU3N0g3b0VuSHhxUk8tV2tCTUt2dnRJcUNnTDhyZG1BVE0zXzhScGtVaFpReWk2VWJxdg?oc=5"
+     "headline": "Everything we know about Riot’s new League of Legends MMO: Raids & more",
+     "highlight": "League of Legends MMO",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2021/01/everything-we-know-about-league-of-legends-mmo-rpg-riot-games-release-date-regions-more.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/league-of-legends/league-of-legends-riot-mmo-regions-classes-1488806/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",

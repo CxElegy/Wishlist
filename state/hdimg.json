@@ -1154,12 +1154,6 @@
   "target": 720,
   "v": 3
  },
- "https://image.news.livedoor.com/newsimage/stf/6/5/65928_230_cdddcd905f5b94659e71c17996060889.jpg": {
-  "w": 615,
-  "h": 410,
-  "target": 720,
-  "v": 3
- },
  "https://image.news.livedoor.com/newsimage/stf/a/3/a36dc_1604_88a23a30_4ddd025c.jpg": {
   "w": 1200,
   "h": 900,
@@ -1852,6 +1846,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.pocketgamer.com/artwork/na-38892-1794226977/temppal-overgeared-keyscreen.jpg": {
+  "w": 1010,
+  "h": 505,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.wired.com/photos/69d4403d94490f13c636bd21/191:100/w_1280,c_limit/The-Best-Automatic-Litter-Boxes-Tested-by-Our-Spoiled-Cats.jpg": {
   "w": 1200,
   "h": 628,
@@ -2007,6 +2007,12 @@
    966
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/1301059/15509021_615.jpg": {
+  "w": 615,
+  "h": 412,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/1301078/15509573_615.jpg": {
   "w": 615,
@@ -2293,6 +2299,12 @@
   "w": 957,
   "h": 1350,
   "target": 1280,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6f0ca7318ff34d75ac73b0594ed15987.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/e086dee46e9f4a8787d85c4824f876e3.png": {
@@ -3455,12 +3467,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.NUv3WeI88nrVJSQyVt4X_Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 409,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3711,6 +3717,12 @@
  "https://www.concept-phones.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Ultra-dummy-1.jpg": {
   "w": 1400,
   "h": 801,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2021/01/everything-we-know-about-league-of-legends-mmo-rpg-riot-games-release-date-regions-more.jpg": {
+  "w": 1600,
+  "h": 900,
   "target": 720,
   "v": 3
  },

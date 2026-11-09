@@ -237,7 +237,8 @@
   "dota2": 7,
   "ILLIT": 5,
   "gelato pique": 4,
-  "星巴克马克杯": 3
+  "星巴克马克杯": 3,
+  "MMORPG 新作": 2
  },
  "哈利波特剧集": [
   {
@@ -439,6 +440,27 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "Temppal: Overgeared is the new 3D MMORPG from Nexon that could soon come West",
+   "highlight": "Temppal: Overgeared",
+   "blurb": "Nexon's new 3D MMORPG Temppal: Overgeared could soon come West.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://media.pocketgamer.com/artwork/na-38892-1794226977/temppal-overgeared-keyscreen.jpg"
+  },
+  {
+   "headline": "Everything we know about Riot’s new League of Legends MMO: Raids & more",
+   "highlight": "League of Legends MMO",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]
