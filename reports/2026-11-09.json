@@ -1,41 +1,7 @@
 {
  "date": "2026-11-09",
- "edit_sig": "a3d2300f05f1",
+ "edit_sig": "ed237de7d8c3",
  "items": [
-  {
-   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-   "facts": [],
-   "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 1,
-     "source": "r/Astrae_Oratio",
-     "title": "I'm grateful to the dev. They do care about us weebs",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xoh3ke/im_grateful_to_the_dev_they_do_care_about_us_weebs/"
-    },
-    {
-     "date": "2026-11-03",
-     "n": 2,
-     "source": "r/Astrae_Oratio",
-     "title": "Shunin Cat has no rights (feat. Erin, Riria, Anna) (orange_sister_)",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xn1ren/shunin_cat_has_no_rights_feat_erin_riria_anna/"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "アストラエ・オラティオ",
-   "theme": {
-    "accent": "#C27270",
-    "alt_accent": "#A14744",
-    "alt_bg": "#F6EAE9",
-    "alt_fg": "#1E1A18",
-    "bg": "#211212",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
@@ -954,6 +920,31 @@
     "alt_fg": "#F6F1E7",
     "bg": "#F6F1E7",
     "fg": "#1E3932",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "last": {
+    "date": "2026-11-08",
+    "headline": "[TGS 2026] 대전격투의 긴장감을 턴제로... '아스트라에 오라티오'가 그리는 1989년 도쿄",
+    "url": "http://www.gamey.kr/news/articleView.html?idxno=3018752"
+   },
+   "name": "Astrae Oratio",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#C27270",
+    "alt_accent": "#A14744",
+    "alt_bg": "#F6EAE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211212",
+    "fg": "#F4EEE4",
     "font": "serif",
     "split": true
    }
