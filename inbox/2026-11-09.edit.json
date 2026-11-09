@@ -13,7 +13,10 @@
     18,
     19,
     20,
-    14
+    14,
+    37,
+    31,
+    34
    ],
    "image": "https://img.etimg.com/thumb/msid-135658667,width-1200,height-900,imgsize-1144081,overlay-economictimes/articleshow.jpg"
   },
@@ -43,7 +46,9 @@
    "weight": "normal",
    "refs": [
     4,
-    29
+    29,
+    38,
+    39
    ]
   },
   {
@@ -101,7 +106,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    17
    ]
   }
  ],
@@ -180,6 +186,25 @@
    "refs": [
     7
    ]
+  },
+  {
+   "headline": "아일릿 미니 5집, 美 ‘빌보드 200’ 6위 진입…톱 티어 반열 올라",
+   "highlight": "빌보드 200’ 6위",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    10
+   ]
+  },
+  {
+   "headline": "金智媛台灣見面會換上制服變身「校花」！ 兩次挑戰ILLIT〈You’re Under Arrest〉逮捕舞萌翻全場",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
   }
  ],
  "gelato pique": [
@@ -226,21 +251,21 @@
   }
  ],
  "_covered": {
-  "GTA 6": 30,
-  "漫威电影": 15,
+  "GTA 6": 39,
+  "漫威电影": 21,
   "The Mandalorian": 5,
-  "ILLIT": 7,
+  "ILLIT": 11,
   "gelato pique": 4,
   "星巴克马克杯": 1,
   "dota2": 3,
-  "三星手机": 13,
+  "三星手机": 17,
   "哈利波特剧集": 1,
-  "滑雪": 3,
+  "滑雪": 6,
   "Vaundy": 3,
-  "周杰伦": 3,
+  "周杰伦": 9,
   "A2O LITE": 16,
   "MMORPG 新作": 3,
-  "绝区零": 2,
+  "绝区零": 5,
   "BLEACH Mirrors High": 1,
   "あつ森": 1
  },
@@ -272,7 +297,8 @@
    "weight": "lead",
    "refs": [
     1,
-    13
+    13,
+    17
    ],
    "image": "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/8/1794134326995.webp"
   },
@@ -287,7 +313,8 @@
     4,
     7,
     9,
-    8
+    8,
+    16
    ]
   },
   {
@@ -297,6 +324,16 @@
    "weight": "normal",
    "refs": [
     10
+   ]
+  },
+  {
+   "headline": "갤럭시 스튜디오: 삼성의 첫 프리미엄 오버이어 헤드폰 출시일이 갤럭시 S27과 함께 유출되었습니다.",
+   "highlight": "갤럭시 S27과 함께",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    15
    ]
   }
  ],
@@ -337,6 +374,33 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "【スノボ】村瀬心椛「最高な21歳をありがとう」誕生日に１年を総括「女優さんみたい」の声も",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "19～22歳のリフト券が無料になる「雪マジ」、利用をきっかけにスキー・スノボを体験した人の約8割が30代でも継続",
+   "highlight": "約8割が30代でも継続",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "【2026-27】今年のスノーボードウェアの流行りは？最新ウェア＆ギアをファッションショー形式で紹介！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -397,6 +461,25 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "周杰倫晚餐「喝掉一輛車」！4瓶紅酒要200萬 這瓶還是世界酒王",
+   "highlight": "4瓶紅酒要200萬",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6
+   ]
+  },
+  {
+   "headline": "周董虧「沒人按讚我幫按」遭林書豪嘴爛「沒讀大學看不懂」！網笑翻",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
@@ -474,6 +557,29 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "プレスリリース：11月10日発売のアニメディア12月号、表紙は『ゼンレスゾーンゼロ』、Wカバーは映画「BanG Dream! Ave Mujica prima aurora」！",
+   "highlight": "11月10日発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2026-11-10",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "4년 만에 지스타 가는 호요버스…“이용자 피드백 듣겠다”",
+   "highlight": "4년 만에 지스타",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    5
    ]
   }
  ],

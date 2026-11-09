@@ -99,6 +99,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/006gNTEUly1iitiistinvj399c5x14r4.jpg": {
+  "w": 2000,
+  "h": 1278,
+  "target": 720,
+  "v": 3,
+  "local": "pics/ca3377beeb247028.webp",
+  "out": [
+   1280,
+   818
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg": {
   "w": 1269,
   "h": 708,
@@ -304,6 +317,12 @@
   "target": 720,
   "v": 3
  },
+ "https://attach.setn.com/newsimages/2022/01/20/3498831-PH.jpg": {
+  "w": 800,
+  "h": 450,
+  "target": 720,
+  "v": 3
+ },
  "https://beforesandafters.com/wp-content/uploads/2026/11/Screenshot-2026-11-03-at-11.34.49-am.jpg": {
   "w": 1280,
   "h": 485,
@@ -439,6 +458,12 @@
   ],
   "why": "看不清"
  },
+ "https://cdn.mainichi.jp/vol1/2026/11/09/20261109pr100m020079000p/0c10.jpg?2": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.ome.lt/kDm8ymHW3CqrptnIQ6Gne4xiVXw=/1200x630/smart/filters:format(webp)/extras/conteudos/Monarca_de_la_Lucha_en_Catedral_Esmeralda.png": {
   "w": 1200,
   "h": 630,
@@ -529,6 +554,12 @@
   "w": 1333,
   "h": 2000,
   "target": 720,
+  "v": 3
+ },
+ "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261109100056098580d3244b4fed58141237106.jpg&nmt=30": {
+  "w": 1400,
+  "h": 1075,
+  "target": 1280,
   "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2025/08/1000182846_1.jpg": {
@@ -744,6 +775,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/asukadayo-snowboarder.jpg": {
+  "w": 1271,
+  "h": 716,
+  "target": 720,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/nagano-ski-hotel.jpg": {
@@ -1005,6 +1042,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://hotelbank.jp/wp-content/uploads/eyecatch-192494-auto.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://i.insider.com/6aea26f34b5ca383fe7cf285?width=1200&format=jpeg": {
@@ -1467,6 +1510,12 @@
   "v": 3,
   "blur": 0.329
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h2ca1.img": {
+  "w": 1420,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img": {
   "w": 504,
   "h": 339,
@@ -1604,6 +1653,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.39
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/eventbank/m_eventbank-10653641.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/iza_nettrend/m_iza_nettrend-WQLYEJHNY5E4ZNNC4HHA2MZ4GM.jpg": {
   "w": 640,
@@ -2360,12 +2415,6 @@
   "target": 1280,
   "v": 3
  },
- "https://pimg.mk.co.kr/news/cms/202611/09/news-p.v1.20261109.aaf1f0c66e854c93b8c45784d4977cde_R.jpg": {
-  "w": 1600,
-  "h": 653,
-  "target": 1280,
-  "v": 3
- },
  "https://players.com.ua/wp-content/uploads/2026/11/d2-711-mr.jpg": {
   "w": 1200,
   "h": 675,
@@ -2479,6 +2528,12 @@
  "https://s.eximg.jp/exnews/feed/Prtimes/fc/Prtimes_2026-11-02-16333-238/Prtimes_2026-11-02-16333-238_1.jpg": {
   "w": 650,
   "h": 488,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/06271fb120c17a195373e8638da869ed98f56cafdda52a7bcfef1e931b344d33/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flooper_vertical_video_161%2Fcefa1bdd4f18b4283e7192738bd531d1.jpg": {
+  "w": 1200,
+  "h": 2133,
   "target": 720,
   "v": 3
  },
@@ -3119,6 +3174,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/09/1794189346617_img_b3dd5145.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://wassets.insta360.com/store/c1d5e5a174d5499d9f8f04aa618052a2/x6.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.3elife.net/Uploads/Article/images/202611/04/1907367268462.jpg": {
   "w": 600,
   "h": 342,
@@ -3289,12 +3356,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.AqBSCOBDEVluve5eNkhIsQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.AqFGAOPiUknUmy3Gx9ZeQw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3311,12 +3372,6 @@
  "https://www.bing.com/th?id=ONUT.Ery2xESzPYlta2q38WHyHA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.FQMMOhAn4OrSqV1KueIOIA&pid=News&w=600": {
-  "w": 600,
-  "h": 338,
   "target": 720,
   "v": 3
  },
@@ -3847,8 +3902,15 @@
  "https://www.nikkansports.com/sports/news/img/202611090000498-w500_1.jpg": {
   "w": 500,
   "h": 664,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.46,
+  "local": "pics/a407b9d79c8b4398.webp",
+  "out": [
+   964,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg": {
   "w": 1200,
@@ -3999,7 +4061,7 @@
  "https://www.travelvoice.jp/wp-content/uploads/2026/11/b4404aea-b576-4e13-81e3-c168a824c564.jpg": {
   "w": 3392,
   "h": 1726,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.ttgmedia.com/sites/default/files/2026-11/Le%20Grand%20Bornand%20France%20iStock-1412978248%20iStock%20Oliver%20de%20la%20Haye.jpg": {
