@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-09T16:31:54+00:00",
+ "checked": "2026-11-09T17:33:20+00:00",
  "fired": {
-  "at": "2026-11-09T16:31:54+00:00",
+  "at": "2026-11-09T17:33:20+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -19,88 +19,78 @@
    "edit": 11
   },
   "2026-11-10": {
-   "edit": 1
+   "edit": 2
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-09T16:31:54+00:00",
+    "at": "2026-11-09T17:33:20+00:00",
     "attempts": 1,
     "day": "2026-11-10",
-    "prog": 0,
-    "resp": "cse_01W4x6f5jEsu4jahUiAJV8aW",
-    "sig": "8177c75cfee7"
+    "prog": 58,
+    "resp": "cse_01W4x6f5uABxgaBurpwAA7s6",
+    "sig": "163ec22e4b55"
    },
    "items": [
     "A2O LITE",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "dota2",
-    "lib:F1",
-    "lib:Nintendo Switch 2",
-    "lib:ガンプラ",
-    "lib:キャンプ",
-    "lib:コーヒー",
-    "lib:ラーメン",
-    "lib:大相撲",
-    "lib:観葉植物",
-    "あつ森",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影"
+    "lib:ユニバーサル・スタジオ・ジャパン",
+    "lib:京都",
+    "lib:宇宙・ロケット",
+    "lib:将棋",
+    "lib:東京ディズニーリゾート",
+    "lib:温泉",
+    "lib:生成AI",
+    "lib:筋トレ",
+    "あつ森"
    ],
-   "last_batch": "2026-11-09T14:03:19+00:00",
+   "last_batch": "2026-11-09T16:52:44+00:00",
    "last_error": {
     "at": "2026-11-09T13:48:02+00:00",
     "text": "出刊に失敗：No module named 'cv2'"
    },
    "need": true,
-   "prog": 0,
+   "prog": 58,
    "prog_day": "2026-11-10",
    "ripe": [
-    "GTA 6",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影"
-   ],
-   "sig": "8177c75cfee7",
-   "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 157 件（21 版面・AI 編集まで版面に載らない）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "あつ森",
-    "周杰伦",
     "A2O LITE",
     "The Mandalorian",
     "Vaundy"
    ],
-   "need": true,
-   "sig": "81819c2a16ae",
+   "sig": "163ec22e4b55",
+   "token_cap": 1000000,
+   "tokens_today": 61422,
+   "why": "整理待ちの記事 107 件（15 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "あつ森",
     "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 5 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -143,6 +133,14 @@
    "in": 317,
    "out": 53390,
    "runs": 9
+  },
+  "2026-11-10": {
+   "batches": 2,
+   "cr": 1282718,
+   "cw": 52914,
+   "in": 36,
+   "out": 8472,
+   "runs": 1
   }
  }
 }
