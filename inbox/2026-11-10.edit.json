@@ -234,7 +234,8 @@
   "A2O LITE": 2,
   "The Mandalorian": 1,
   "Vaundy": 1,
-  "dota2": 7
+  "dota2": 7,
+  "ILLIT": 5
  },
  "哈利波特剧集": [
   {
@@ -325,6 +326,37 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT、米Billboard 200で自己最高６位！ K-POPガールグループ史上７組目の快挙",
+   "highlight": "Billboard 200で自己最高６位",
+   "blurb": "新アルバム『BREAK EVEN』が米Billboard 200で初登場6位。「Tick-Tack」MVも1億再生を突破。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ],
+   "image": "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/11/6919f6efb1a7d44ef98ba36287b4d01a.webp?fit=1200%2C921&ssl=1"
+  },
+  {
+   "headline": "【紅白2026当落予想：K-POP編】ILLIT・&TEAM先行、aespa・IVEを当選圏と読む",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "BIGBANG、ENHYPEN、ILLITらが出演！「2026 MAMA AWARDS」がU-NEXTにて日本独占生配信！",
+   "highlight": "日本独占生配信",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ]

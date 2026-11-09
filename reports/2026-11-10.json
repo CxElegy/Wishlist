@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "d54d2028889b",
+ "edit_sig": "c0adc81afc79",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?BVmo0vcwM-1IY4ios_zoS",
@@ -250,45 +250,39 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "新アルバム『BREAK EVEN』が米Billboard 200で初登場6位。「Tick-Tack」MVも1億再生を突破。",
      "date": "2026-11-09",
-     "n": 1,
-     "source": "韓スタ！",
-     "title": "｢R U Next?｣発・日本人MOKAとIROHA所属 K-POP人気ガールグループ ILLIT (アイリット)、新アルバム『BREAK EVEN』が米｢ビルボード200｣で初登場6位―K-POPガールグループ史上7組目のトップ10入り",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBtS1NnSTdwblVqaWE0MTIzMTQ3UmxhMkVoUHN4enpFZUExV2cxdnYtcWtyd3pkM0FKUVE5alY0QjZJQnpuN05HVUJR?oc=5"
+     "headline": "ILLIT、米Billboard 200で自己最高６位！ K-POPガールグループ史上７組目の快挙",
+     "highlight": "Billboard 200で自己最高６位",
+     "image": "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/11/6919f6efb1a7d44ef98ba36287b4d01a.webp?fit=1200%2C921&ssl=1",
+     "image_via": "AI 挑选",
+     "url": "https://www.kpopmonster.jp/?p=178814",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-09",
-     "n": 2,
-     "source": "KPOP monster",
-     "title": "ILLIT、米Billboard 200で自己最高６位！ K-POPガールグループ史上７組目の快挙、「Tick-Tack」MVも１億再生突破",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBLSmljb3dXRnZjQW0ydjNXMkxKNDdpcm1TZ3h2TmxweTA4dHV1YlpzR1NJMHVmV0htVEdLTmNIOFNDOFRWYVVYS0tkNmM?oc=5"
+     "headline": "【紅白2026当落予想：K-POP編】ILLIT・&TEAM先行、aespa・IVEを当選圏と読む",
+     "highlight": "",
+     "image": "https://assets.st-note.com/production/uploads/images/334159776/rectangle_large_type_2_ea2d8126a01c8f0ca52696209d806b37.jpg?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/suzukikenjiro/n/necb9d11cc47d",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-09",
-     "n": 3,
-     "source": "デバク",
-     "title": "TUIDE、「A2O LITE」意識?「衣装」に似ているとの声...「エトゥラだと思った」「NewJeans x ILLIT思い出す」 [KGMA]",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBRZ3dYbWxJbUprZnE2TGNCV3FZOXlSbHhHVG1SS2c2Z0d0TS04cFVPY1VTSTdYbnNTWWZVek54MTRhX1ZhZnJLbFI3WEc0VmhzNmZPS3MxeThidw?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 4,
-     "source": "note",
-     "title": "【紅白2026当落予想：K-POP編】ILLIT・&TEAM先行、aespa・IVEを当選圏と読む",
-     "url": "https://note.com/suzukikenjiro/n/necb9d11cc47d"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-04",
-     "n": 5,
-     "source": "海外ドラマNAVI",
-     "title": "BIGBANG、ENHYPEN、ILLITらが出演！「2026 MAMA AWARDS」がU-NEXTにて日本独占生配信！",
-     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFB3Q1k2WGxUaDFhNTEtalk4OUx5UjI4RkpSSjYzUGtfemc4MWtZM1phQWs2T3ZOSVJzMWIyT1VXUjAybjBPV25RSw?oc=5"
+     "headline": "BIGBANG、ENHYPEN、ILLITらが出演！「2026 MAMA AWARDS」がU-NEXTにて日本独占生配信！",
+     "highlight": "日本独占生配信",
+     "image": "https://dramanavi.net/asia/wp-content/uploads/2026/10/2026-MAMA-AWARDS.jpg",
+     "image_via": "og:image",
+     "url": "https://dramanavi.net/asia/318940",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",

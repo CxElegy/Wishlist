@@ -319,6 +319,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/334159776/rectangle_large_type_2_ea2d8126a01c8f0ca52696209d806b37.jpg?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.techrepublic.com/uploads/2026/11/ipad-mini-oled-vs-galaxy-tab-s11-featured.jpg?f=jpeg": {
   "w": 1600,
   "h": 893,
@@ -772,6 +778,12 @@
   ],
   "why": "看不清"
  },
+ "https://dramanavi.net/asia/wp-content/uploads/2026/10/2026-MAMA-AWARDS.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-e8bc6d3adeeff932b7cfb9e1cb8f469e-20261026-7f6852.jpg": {
   "w": 1215,
   "h": 810,
@@ -1046,6 +1058,12 @@
  "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-Ultra-AH-2.png?fit=1920%2C1080&ssl=1": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/11/6919f6efb1a7d44ef98ba36287b4d01a.webp?fit=1200%2C921&ssl=1": {
+  "w": 1200,
+  "h": 921,
   "target": 1280,
   "v": 3
  },
@@ -2325,6 +2343,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/04/35484120.jpg&M=1&s=Y&x=0&y=0&sw=1080&sh=599&exp=3600": {
+  "w": 1080,
+  "h": 599,
+  "target": 720,
+  "v": 3,
+  "local": "pics/639481622c7aecaa.webp",
+  "out": [
+   1080,
+   599
+  ],
+  "why": "期限付きの網址"
+ },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/09/35498289.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&exp=3600&nt=1&w=800": {
   "w": 800,
   "h": 533,
@@ -3409,12 +3439,6 @@
  "https://www.bing.com/th?id=ONUT.N0LnlEohsUZ4OQLawwh2GQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.OmXphs4RnGAYAZz1FFhckQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
   "target": 720,
   "v": 3
  },
