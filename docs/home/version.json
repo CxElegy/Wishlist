@@ -1,10 +1,10 @@
 {
- "admin": "4cfe0cb74ff0",
- "admin-ai": "323e9c5afd5f",
+ "admin": "c0df4bab4cc6",
+ "admin-ai": "fd0f941c28d9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "df590389"
+   "a38a442b"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "c95aa80212be",
+ "admin-emblem": "67f403bd5e59",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "643d3385"
+   "38f40d0c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "3a4c0129b047",
+ "admin-now": "2bbd62919c4a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "1fe59fcc"
+   "38e9a1b0"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "d4b7ab0c"
   ]
  },
- "admin-system": "f5e8352bc1fe",
+ "admin-system": "93c2b6a32b3b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2672b5d1"
+   "c87f4d9a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,11 +93,11 @@
    "e4538dad"
   ]
  },
- "index": "e7f720de025a",
+ "index": "553fb32784c7",
  "index_marks": {
   "front": [
    "トップ",
-   "e2dd1949"
+   "a6ea3fca"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "074f67ef"
+   "9347714d"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "1fa7a85a"
+   "8236d469"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "fe6b8f9c"
+   "cf72e7a3"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "34215110"
+   "fb8765d2"
   ],
   "w-f303ad09": [
    "绝区零",
-   "d4adb0bb"
+   "0647be75"
   ]
  },
- "updated": "11.09 22:54",
+ "updated": "11.09 23:03",
  "wishlist": "f6e7e52a05b7"
 }

@@ -394,6 +394,13 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/216924_250536_2851.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-09"
+ },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
@@ -923,6 +930,12 @@
  "https://gazlog.jp/wp-content/uploads/2026/11/image-50.png": {
   "w": 1920,
   "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://happygamer.com/wp-content/uploads/2026/11/zenless-zone-zero-3-3-phase-ii-banners-run-nov-11-to-dec-1.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -1661,6 +1674,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.39
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/eventbank/m_eventbank-10653641.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/iza_nettrend/m_iza_nettrend-WQLYEJHNY5E4ZNNC4HHA2MZ4GM.jpg": {
   "w": 640,
@@ -2858,6 +2877,12 @@
   ],
   "why": "看不清"
  },
+ "https://static.sanyonews.jp/image/article/size1/a/d/a/d/adadf5719e09d5f1edb695115c6e2419_1.jpg": {
+  "w": 640,
+  "h": 427,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/c/4/5/6/c456bc17ca81222fdf8c9f45b8aa9c0c_1.jpg": {
   "w": 402,
   "h": 640,
@@ -3337,12 +3362,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.2p2hKTYfiifHx4K1JdJ7Ng&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3355,6 +3374,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.6GeaSh256dvaR-rLRZKfRA&pid=News&w=700": {
+  "w": 700,
+  "h": 383,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,

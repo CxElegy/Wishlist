@@ -1,22 +1,24 @@
 {
  "date": "2026-11-09",
- "edit_sig": "b9e6f430ea09",
+ "edit_sig": "3da39101345e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "게임플이 AGF에서 공개된 '아스오라' 시연과 TGS 시연의 차이를 다뤘다.",
      "date": "2026-11-09",
-     "n": 3,
-     "source": "게임플",
-     "title": "'아스오라' AGF 시연, TGS와 어떻게 다를까",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBlYUdLNTQ5dldMSkdNTndvRlRuNm55cGo3NThHOW14MjdSU0xIeGlqY3psNExRQm5SWm9feUZGTEdlaC1ucndYcXJrTHNHd2FXaTViYnJyenRxbkZNeWxLWXNMUWRmMGdZaHJGSQ?oc=5"
+     "headline": "'아스오라' AGF 시연, TGS와 어떻게 다를까",
+     "highlight": "AGF 시연",
+     "image": "https://cdn.gameple.co.kr/news/photo/202611/216924_250536_2851.jpg",
+     "image_via": "og:image",
+     "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216924",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -253,22 +255,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-07",
-     "n": 2,
-     "source": "JoBlo",
-     "title": "Harry Potter TV series teaser trailer welcomes fans back to Hogwarts",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5mZ0JHT0dYMmpWNEl6WDRnTmczM0xsS1R0UUl4Qk5rRnVzQ09hWkdadzU1Vzg1eVhWTXVja2ZqQkxCMDF4VUtINUtJeEluWGxFTjVuVEhFYTPSAV5BVV95cUxOMHQxWkZjeWJLLWI0R3IwSG9VLW1zV3lZNUdfV3BNN1A2eExUbVpkLVdQRlphaTgxeS13cVFXN09pWnNYZDljbWtPRk14UXVBUmR6cVVNclFkN1QyVHVB?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 3,
-     "source": "Unboxholics",
-     "title": "The full episode schedule for the Harry Potter series has been revealed!",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPMWJVYmxBeURJLXNVVnczd21wemhpbHE2NHNHd1U4elFDaFNyTnBybUtrcFU1UjUzOW9VWkE4TC1VS3U0T1kxbmdLSF84MndrU0xHbjFDeFRaVkp2ZFYyVmpvOGVsXzRZd3FvcHF5eVVGZkNMOU1xeTljM0xIZEpWNnRZZVVWVXhIdHVZNEhRU0NVV3F5ZmdDMnNobDBLUHB4a1E?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -717,22 +703,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 6,
-     "source": "18183游戏网",
-     "title": "《绝区零》3.3版本塞维里安卡池11月11日开启，各服时间公布",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1fNThGMGl0cGU5WDVjRnctSzl6dHNPUmFUZEhjWVc5b2c5emZvUTV1eE5YVHFhRUlSWlplWnJ0MHJySjdFRS1TQW02azZWU3dma3ZLazJFTjJYM0E?oc=5"
-    },
-    {
-     "date": "2026-11-08",
-     "n": 7,
-     "source": "HappyGamer",
-     "title": "Zenless Zone Zero 3.3 Phase II Banners Run Nov 11 to Dec 1",
-     "url": "https://happygamer.com/zenless-zone-zero-3-3-phase-2-banners-172178/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -777,6 +747,16 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h2ca1.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/ko-kr/news/other/4%EB%85%84-%EB%A7%8C%EC%97%90-%EC%A7%80%EC%8A%A4%ED%83%80-%EA%B0%80%EB%8A%94-%ED%98%B8%EC%9A%94%EB%B2%84%EC%8A%A4-%EC%9D%B4%EC%9A%A9%EC%9E%90-%ED%94%BC%EB%93%9C%EB%B0%B1-%EB%93%A3%EA%B2%A0%EB%8B%A4/ar-AA2h2vdM",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-08",
+     "headline": "Zenless Zone Zero 3.3 Phase II Banners Run Nov 11 to Dec 1",
+     "highlight": "",
+     "image": "https://happygamer.com/wp-content/uploads/2026/11/zenless-zone-zero-3-3-phase-ii-banners-run-nov-11-to-dec-1.jpg",
+     "image_via": "og:image",
+     "url": "https://happygamer.com/zenless-zone-zero-3-3-phase-2-banners-172178/",
      "weight": "normal"
     }
    ],
@@ -915,15 +895,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 7,
-     "source": "明石じゃーなる",
-     "title": "ハチ高原スキー場で明石市内在住の小学生と保護者を対象にした「おやこスキー教室」が2026年1月・2月に開催！【11月26日〆切】",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE50cXoyeWRxQ2VRSUhMTWhoWGRrSWpVY0FkdVN0cU55eEJwY3RjRkZRaEdwTGprN05QZU5uUkd3d19LRkpiY0RTZDlxVWNQejlQYjRBYmhuYTRVTUpRZkduRg?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -985,6 +956,16 @@
      "image_via": "og:image",
      "url": "https://dmksnowboard.com/snowboard-wear-trend-2026-27/",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "ハチ高原スキー場で明石市内在住の小学生と保護者を対象にした「おやこスキー教室」が2026年1月・2月に開催！【11月26日〆切】",
+     "highlight": "11月26日〆切",
+     "image": "https://akashi-journal.com/wordpress/wp-content/uploads/2022/11/2-12.jpg",
+     "image_via": "og:image",
+     "url": "https://akashi-journal.com/event/hachi-skiing-2027/",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
@@ -1003,22 +984,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 12,
-     "source": "YouTube · ILLIT",
-     "title": "[𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭] 눈이 안 떠지는 당신을 위해 아침잠 체포해드려요 ⏰💤 | 체포하겠어 (Remix) | ILLIT (아일릿) [PLAY-IT]",
-     "url": "https://www.youtube.com/watch?v=8qTwtkwcoV8"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 13,
-     "source": "山陽新聞",
-     "title": "ILLIT「Magnetic」、Spotify累計9億回再生突破 K-POPグループのデビュー曲として最速記録",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNSXpvbmphNVhYWHBlZzZLM19UeFNfLXk0MzJIWkVXYzZ4VGZXdnl5RUVJYUVEX0xXNlNSOXdQb09vOWdnUWxMeXlFRk1KYi1ydWV2LUFCZVphZWZ1ZF9Iam1wOGFDWEpvM2FySDZNQzZtU2tDdTQycnpjN3VzeGYycEVnZTl3QQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1079,6 +1044,16 @@
      "image": "https://wassets.insta360.com/store/c1d5e5a174d5499d9f8f04aa618052a2/x6.jpg",
      "image_via": "视频封面",
      "url": "https://news.vocofm.com/%E5%A8%9B%E6%A8%82%E6%96%B0%E8%81%9E/208722/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "ILLIT「Magnetic」、Spotify累計9億回再生突破 K-POPグループのデビュー曲として最速記録",
+     "highlight": "Spotify累計9億回再生突破",
+     "image": "https://static.sanyonews.jp/image/article/size1/a/d/a/d/adadf5719e09d5f1edb695115c6e2419_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/2007671?rct=oricon_music&kw=%E7%A6%8F%E7%A5%88",
      "weight": "normal"
     }
    ],
