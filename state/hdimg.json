@@ -3521,12 +3521,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.WcrBanb0IH27pRNviFSNIg&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
- },
  "https://www.bing.com/th?id=ONUT.X05TOwE27NAt93YxMEkyUA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3748,6 +3742,12 @@
   "v": 3
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Robert-Downey-Pedro-Pascal.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.comicbasics.com/wp-content/uploads/2026/11/Sentinel-marvel-comics-Thor.webp": {
   "w": 1200,
   "h": 675,
   "target": 1280,
