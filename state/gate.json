@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-09T08:35:15+00:00",
+ "checked": "2026-11-09T09:28:07+00:00",
  "fired": {
-  "at": "2026-11-09T08:35:15+00:00",
+  "at": "2026-11-09T09:28:07+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -31,68 +31,60 @@
     "sig": "e726847650f1"
    },
    "items": [
-    "A2O LITE",
-    "GTA 6",
-    "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "gelato pique",
+    "lib:BTS",
+    "lib:iPhone",
     "lib:ガンプラ",
     "lib:キャンプ",
     "lib:コーヒー",
-    "lib:ユニクロ",
     "lib:ラーメン",
     "lib:無印良品",
-    "lib:筋トレ",
     "lib:観葉植物",
-    "チェーンソーマン",
-    "三星手机",
-    "漫威电影"
+    "チェーンソーマン"
    ],
-   "last_batch": "2026-11-09T07:26:19+00:00",
+   "last_batch": "2026-11-09T08:43:25+00:00",
    "last_error": {
     "at": "2026-11-08T18:29:08+00:00",
     "text": "出刊に失敗：No module named 'cv2'"
    },
    "need": true,
-   "prog": 187,
+   "prog": 226,
    "prog_day": "2026-11-09",
    "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "MMORPG 新作",
-    "三星手机",
-    "漫威电影"
+    "The Mandalorian",
+    "dota2",
+    "gelato pique"
    ],
-   "sig": "e726847650f1",
+   "sig": "b28487aef8a1",
    "token_cap": 1000000,
-   "tokens_today": 350376,
-   "why": "整理待ちの記事 140 件（17 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 407131,
+   "why": "整理待ちの記事 102 件（12 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE"
-   ],
-   "need": true,
-   "sig": "ceed024f14a6",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
+    "チェーンソーマン",
     "周杰伦",
     "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 10 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -129,12 +121,12 @@
    "runs": 15
   },
   "2026-11-09": {
-   "batches": 8,
-   "cr": 7028963,
-   "cw": 318848,
-   "in": 194,
-   "out": 31334,
-   "runs": 6
+   "batches": 9,
+   "cr": 7665533,
+   "cw": 370492,
+   "in": 213,
+   "out": 36426,
+   "runs": 7
   }
  }
 }
