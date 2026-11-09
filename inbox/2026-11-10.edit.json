@@ -12,7 +12,8 @@
     19,
     18,
     27
-   ]
+   ],
+   "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/10/vice_city_09-1.jpg?q=49&fit=contain&w=750&h=422&dpr=2"
   },
   {
    "headline": "Rockstar announces Grand Theft Auto 6: The Festival, a live event featuring music from GTA 6",
@@ -136,7 +137,8 @@
     6,
     3,
     2
-   ]
+   ],
+   "image": "https://static.digit.in/Galaxy-S26.png"
   },
   {
    "headline": "Galaxy S27 Pro and S27 Ultra could make up over 70% of all Galaxy S27 sales",
@@ -144,7 +146,11 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    7,
+    8,
+    9,
+    10
    ]
   },
   {
@@ -163,6 +169,26 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra Leak Reveals Pixel-Style Camera Bar & Huge Battery",
+   "highlight": "Pixel-Style Camera Bar",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12,
+    14,
+    13
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Series Leak Reveals New Pro Model, Camera Design And More",
+   "highlight": "New Pro Model",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -201,7 +227,7 @@
  "_covered": {
   "GTA 6": 45,
   "漫威电影": 45,
-  "三星手机": 6,
+  "三星手机": 14,
   "チェーンソーマン": 3,
   "周杰伦": 3,
   "哈利波特剧集": 3,
