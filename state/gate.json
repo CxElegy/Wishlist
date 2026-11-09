@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-09T07:13:01+00:00",
+ "changed": true,
+ "checked": "2026-11-09T07:18:43+00:00",
  "fired": {
-  "at": "2026-11-09T07:13:18+00:00",
+  "at": "2026-11-09T07:19:01+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -37,14 +37,14 @@
     "The Mandalorian",
     "dota2",
     "gelato pique",
-    "lib:ガンプラ",
-    "lib:キャンプ",
-    "lib:コーヒー",
+    "lib:SPY×FAMILY",
     "lib:サッカー日本代表",
-    "lib:ユニクロ",
-    "lib:ラーメン",
-    "lib:無印良品",
-    "lib:観葉植物"
+    "lib:ゼルダの伝説",
+    "lib:ポケットモンスター",
+    "lib:原神",
+    "lib:呪術廻戦",
+    "lib:葬送のフリーレン",
+    "lib:鬼滅の刃"
    ],
    "last_batch": "2026-11-09T05:46:09+00:00",
    "last_error": {
@@ -57,7 +57,7 @@
    "ripe": [
     "Astrae Oratio"
    ],
-   "sig": "edc380ab714e",
+   "sig": "078c66e2db42",
    "token_cap": 1000000,
    "tokens_today": 306106,
    "why": "整理待ちの記事 105 件（14 版面・AI 編集まで版面に載らない）"
