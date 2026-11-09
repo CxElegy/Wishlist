@@ -3493,6 +3493,8 @@ FIT_JS = """
       if (hi - lo > q) return false;
       at = Math.min(Math.max(at, hi - q), lo);
     }
+    // 切り落とす両端に人や物がほとんど無いときだけ切る：端それぞれ 5% まで（2026-11-09 店長：何人も並ぶ写真で端の人が切れた。85% 残っても、落とす 15% が 1 人分だった）
+    if (C(at) / tot > 0.05 || (tot - C(at + q)) / tot > 0.05) return false;
     const pos = (1 - q) > 0.001 ? at / (1 - q) * 100 : 50;
     img.style.objectPosition = horiz ? pos + '% 50%' : '50% ' + pos + '%';
     img.dataset.keep = Math.round(keep * 100);
