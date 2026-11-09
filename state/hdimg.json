@@ -99,19 +99,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/006gNTEUly1iitiistinvj399c5x14r4.jpg": {
-  "w": 2000,
-  "h": 1278,
-  "target": 720,
-  "v": 3,
-  "local": "pics/ca3377beeb247028.webp",
-  "out": [
-   1280,
-   818
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg": {
   "w": 1269,
   "h": 708,
@@ -206,6 +193,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://akashi-journal.com/wordpress/wp-content/uploads/2022/11/2-12.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://aktualita.co/storage/previews/aktualita-v1/25/258dbaa961972cf6c8f547407b9a50e44b91de86b230a4eed6b94a22ba0d7cf6.jpg": {
@@ -947,12 +940,6 @@
   "target": 1280,
   "v": 3
  },
- "https://hawk.live/storage/images/posts/korb3n-harshly-criticized-auroras-new-roster-24133.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 720,
-  "v": 3
- },
  "https://hawk.live/storage/images/posts/malr1ne-names-best-mid-laners-matchmaking-25264.jpg": {
   "w": 1200,
   "h": 628,
@@ -1547,6 +1534,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.18183.com/image/2026/11/09/588d4743a2c28046b8735c0267a5704c.jpg@q_80": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://img.36krcdn.com/hsossms/20261104/v2_851566546f8140b6b7de48fc4c1ed671@000000@ai_oswg1050775oswg2048oswg2048_img_000~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg": {
   "w": 600,
   "h": 400,
@@ -1610,9 +1603,9 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-09"
  },
- "https://img.etnews.com/news/article/2026/07/07/news-p.v1.20260707.2de53ea2474d4b0682c259b29a2c33e7_P1.png": {
-  "w": 700,
-  "h": 460,
+ "https://img.etnews.com/news/article/2026/11/09/news-g.v1.20261109.931406f859934f4290dbe5498aeb8ab5_P1.jpg": {
+  "w": 418,
+  "h": 700,
   "target": 720,
   "v": 3
  },
@@ -1683,12 +1676,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.39
- },
- "https://img.topics.smt.news.goo.ne.jp/picture/eventbank/m_eventbank-10653641.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/iza_nettrend/m_iza_nettrend-WQLYEJHNY5E4ZNNC4HHA2MZ4GM.jpg": {
   "w": 640,
@@ -3360,6 +3347,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.05CBl3tHCL7p7kFIuKmPTQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.0jSvDj9_OKXahGrGv8hnxA&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3373,9 +3366,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.57O1PmCcROSTz7iZgnGh1Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
+ "https://www.bing.com/th?id=ONUT.0zUdpUeQbVhnIMY4BwlimQ&pid=News&w=500": {
+  "w": 388,
+  "h": 700,
   "target": 720,
   "v": 3
  },
@@ -3423,18 +3416,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
- },
- "https://www.bing.com/th?id=ONUT.ECca1qp02z8H9gJoGspmDw&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Ery2xESzPYlta2q38WHyHA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
@@ -3584,7 +3565,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.gWvFOeCS854EX-_RoxQAMA&pid=News&w=1080": {
+ "https://www.bing.com/th?id=ONUT.cUWuWvwJfIx_b7dRZltNqw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3673,12 +3654,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.wY5wTIdq3_G-hoKiZclsfA&pid=News&w=1200": {
-  "w": 700,
-  "h": 537,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.zMsnk3V15TWhqbVGB1iJaQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3694,6 +3669,12 @@
  "https://www.boardoftheworld.com/wp-content/uploads/2025/12/Ride-Moderator-Review-Header.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.cbci.co.kr/news/thumbnail/202611/624894_429548_1312_v150.jpg": {
+  "w": 300,
+  "h": 469,
   "target": 720,
   "v": 3
  },

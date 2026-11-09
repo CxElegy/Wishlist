@@ -1,32 +1,32 @@
 {
- "admin": "60f8d013d4a3",
- "admin-ai": "40e0460f5a3c",
+ "admin": "d625a0880e4c",
+ "admin-ai": "756feeeaf9e7",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "71bb3e82"
+   "ceab3c89"
   ],
   "tokens": [
    "AI 編集のトークン",
    "8d5e3eb3"
   ]
  },
- "admin-boards": "ecf3daf79066",
+ "admin-boards": "72e909786113",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "9524900a"
+   "79868352"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "30e70c07f3fe",
+ "admin-emblem": "7f983477b533",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "aaa596b6"
+   "429395b1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "9d9075a33207",
  "admin-members_marks": {},
- "admin-now": "9cb2be89c482",
+ "admin-now": "1abd3cc1dcb5",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4ab3fc3e"
+   "8c1e01eb"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "a2501ae7"
+   "7ebfae3e"
   ],
   "term-panel": [
    "ライブログ",
-   "6a092d5e"
+   "dcbb53c2"
   ]
  },
- "admin-system": "328004f94d3f",
+ "admin-system": "6c0ef0017701",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "7e435d75"
+   "a073d97c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "59069d9a"
+   "0787e340"
   ]
  },
  "admin_marks": {},
- "heat": "b77e9a3c6a37",
+ "heat": "8a29613c4a0c",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "0f785516"
+   "f75b2908"
   ],
   "ranking": [
    "ランキング",
-   "f7b4e2c2"
+   "4fdbacf6"
   ]
  },
- "index": "275f198e7887",
+ "index": "e06039088edb",
  "index_marks": {
   "front": [
    "トップ",
-   "4493e521"
+   "10d3bb2c"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "074f67ef"
+   "9347714d"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "9559df60"
+   "66f019eb"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "9405d3f7"
+   "ea350524"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "0d5028fa"
+   "917da921"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d4adb0bb"
   ]
  },
- "updated": "11.09 18:32",
+ "updated": "11.09 19:00",
  "wishlist": "95f61ae2a8c7"
 }
