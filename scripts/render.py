@@ -3044,7 +3044,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=(), used=None):
     poster = f'<div class="poster"{style}><div class="marks" aria-hidden="true"></div>{head}{top_html}{foot}</div>'
 
     wall = "".join(
-        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}"{_fx(w["name"])} style="--sc:{_sec_color(w.get("section"))}">{_lk(x)}'
+        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}" data-w="{e(x.get("weight") or "normal")}"{_fx(w["name"])} style="--sc:{_sec_color(w.get("section"))}">{_lk(x)}'
         f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}{_from(x)}</em><b>{_headline(x)}</b></article>'
         for i, (w, x) in enumerate(more))
     shown = {id(top)} | {id(x) for _, x in more}
@@ -4059,7 +4059,8 @@ FIT_JS = """
     w.style.gridTemplateColumns = '';
     const W0 = w.clientWidth;
     const okPic = c => !c.classList.contains('nophoto') && c.querySelector('.pic img:not(.bg):not(.ico)');
-    const leadCands0 = [-1, ...cards.slice(0, 3).filter(okPic).map(c => cards.indexOf(c))];
+    // 大きい 1 枚は、重大な記事（AI 編集の weight が hero）だけ（2026-11-09 店長：1 枚だけ大きいのは空間の無駄。本当に重要なときだけ。lead は記事の 3 分の 1 に付くので使わない）
+    const leadCands0 = [-1, ...cards.slice(0, 3).filter(c => okPic(c) && c.dataset.w === 'hero').map(c => cards.indexOf(c))];
     const colW = n => (W0 - GAP * (n - 1)) / n;
     const colCands0 = [2, 3, 4, 5, 6].filter(n => colW(n) >= (side ? 230 : 200) && colW(n) <= 420);
     const few = cards.length < 3 || !wallReady;   // 写真が届ききるまでは今の形のまま（届いてから選ぶ：毎回同じ結果にする）
@@ -4120,7 +4121,7 @@ FIT_JS = """
       setup(n, li); const sH = Math.round(sideFit()); const r = plan(n, ord, sH); if (!r) continue;
       cards.forEach((c, i) => { c.hidden = !r.best.ord.includes(i); });
       const L = li >= 0 ? areaOf(cards[li]) : 0, O = Math.max(0, ...cards.filter((c, i) => i !== li).map(areaOf));
-      let pen = li > 0 ? 0.08 * li : li < 0 ? 0.25 : 0;   // 大きい 1 枚が無い形は少しだけ減点（強弱が無い）
+      let pen = li > 0 ? 0.08 * li : 0;
       if (li >= 0) { const im = cards[li].querySelector('.pic img:not(.bg):not(.ico)'), bb = im && im._bands, cn = im && im.naturalWidth ? im.naturalWidth * (bb ? 1 - bb.l - bb.r : 1) / (im.naturalHeight * (bb ? 1 - bb.t - bb.b : 1)) : 1.5;
         if (cn < 1) pen += 1; }   // 縦長の写真は横長の大きい枠に入らない（左右が空く）
       if (headA) pen += Math.max(0, L / headA - 0.85) * 4 + Math.max(0, O / headA - 0.65) * 2;
