@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-09T05:34:29+00:00",
+ "checked": "2026-11-09T06:24:14+00:00",
  "fired": {
-  "at": "2026-11-09T05:34:29+00:00",
+  "at": "2026-11-09T06:24:14+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -33,8 +33,6 @@
    "items": [
     "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
@@ -46,59 +44,47 @@
     "lib:ユニクロ",
     "lib:ラーメン",
     "lib:無印良品",
-    "lib:観葉植物",
-    "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
+    "lib:観葉植物"
    ],
-   "last_batch": "2026-11-09T02:40:21+00:00",
+   "last_batch": "2026-11-09T05:46:09+00:00",
    "last_error": {
     "at": "2026-11-08T18:29:08+00:00",
     "text": "出刊に失敗：No module named 'cv2'"
    },
    "need": true,
-   "prog": 142,
+   "prog": 177,
    "prog_day": "2026-11-09",
    "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
+    "Astrae Oratio"
    ],
-   "sig": "9a154b852a0e",
+   "sig": "edc380ab714e",
    "token_cap": 1000000,
-   "tokens_today": 248048,
-   "why": "整理待ちの記事 140 件（21 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 306106,
+   "why": "整理待ちの記事 105 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "dota2",
-    "漫威电影",
-    "GTA 6",
-    "周杰伦",
-    "A2O LITE",
-    "The Mandalorian",
-    "绝区零"
-   ],
-   "need": true,
-   "sig": "7f71f8eca96f",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "哈利波特剧集"
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -135,12 +121,12 @@
    "runs": 15
   },
   "2026-11-09": {
-   "batches": 6,
-   "cr": 5245562,
-   "cw": 223441,
-   "in": 143,
-   "out": 24464,
-   "runs": 4
+   "batches": 7,
+   "cr": 6485939,
+   "cw": 276418,
+   "in": 177,
+   "out": 29511,
+   "runs": 5
   }
  }
 }
