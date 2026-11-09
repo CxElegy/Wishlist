@@ -8,13 +8,16 @@
 import concurrent.futures as cf
 import html as htmllib
 import io
+import pathlib
 import re
+import threading
 
 MAX_NEW = 400          # 1 回で新しく測る数の上限（Actions の時間を守る）
 IMG_RE = re.compile(r'<img src="(https?://[^"]+)"')
 FLAT = 24              # 同じ色とみなす差（RGB の差の合計）
 MIN_BAND = 0.04        # これより細い余白は外さない
 BREATH = 0.03          # 余白を外しても残す幅（物の周りの息をする余白）
+VERSION = 7            # 測り方の版。変えたら前の測りは全部測り直す（7：字の範囲を PaddleOCR の文字検出に替えた 2026-11-09）
 
 
 def bands(data):
@@ -130,9 +133,63 @@ def mass_css(data):
     return ";".join(",".join(map(str, a)) for a in v) if v else ""
 
 
+MODEL = pathlib.Path(__file__).resolve().parent / "models" / "ppocr_det_v3.onnx"   # PaddleOCR PP-OCRv3 の文字検出（DBNet・Apache-2.0）。日本語・中国語の字の行を拾う
+_DET = {}
+_DET_LOCK = threading.Lock()
+
+
+def _det():
+    if "s" not in _DET:
+        import onnxruntime as ort
+        so = ort.SessionOptions()
+        so.intra_op_num_threads = 2
+        so.log_severity_level = 3
+        _DET["s"] = ort.InferenceSession(str(MODEL), so, providers=["CPUExecutionProvider"])
+    return _DET["s"]
+
+
 def text_box(data):
-    """写真の中の文字のかたまりの範囲（OpenCV の MSER で、同じ高さで横に 4 個以上並ぶ字を探す）→ (左, 上, 右, 下) の割合。
-    無い・写真全体（観客や葉を字と取り違えた）なら None。render の cropAt はこの範囲が全部入る切り方しか許さない（2026-11-08 店長：文字を欠かさない）。"""
+    """写真の中の見出しくらいの大きさの字の範囲 → (左, 上, 右, 下) の割合。無ければ None。render の cropAt はこの範囲が全部入る切り方しか許さない（2026-11-08 店長：文字を欠かさない）。
+    2026-11-09：MSER（形の塊）は日本語の字が部首ごとにばらけ、髪の毛・衣装の模様も字と取り違えて写真のほぼ全体を「字」にした（イノスケ・イヤリング）→ 伸ばせず版面に空きが残った。
+    PaddleOCR の文字検出（PP-OCRv3 det を onnxruntime で）に替えた。著作権表示のような小さい字（行の太さが短い辺の 5% 未満）は数えない。動かない環境では前の MSER。"""
+    try:
+        import cv2
+        import numpy as np
+        from PIL import Image
+        sess = _det()
+        im = Image.open(io.BytesIO(data)).convert("RGB")
+        w0, h0 = im.size
+        s = 960 / max(w0, h0)
+        W, H = max(32, round(w0 * s / 32) * 32), max(32, round(h0 * s / 32) * 32)
+        a = np.asarray(im.resize((W, H)), dtype=np.float32) / 255.0   # RGB のまま（BGR に替えると字でない所を拾った。2026-11-09 に 9 枚で比べた）
+        a = (a - np.array([0.485, 0.456, 0.406], dtype=np.float32)) / np.array([0.229, 0.224, 0.225], dtype=np.float32)
+        with _DET_LOCK:
+            prob = sess.run(None, {sess.get_inputs()[0].name: a.transpose(2, 0, 1)[None].astype(np.float32)})[0][0, 0]
+    except Exception:  # noqa: BLE001
+        return _text_box_mser(data)
+    mask = (prob > 0.3).astype("uint8")
+    cs = cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)[0]
+    boxes = []
+    for c in cs:
+        x, y, w, h = cv2.boundingRect(c)
+        if w < 3 or h < 3 or float(prob[y:y + h, x:x + w][mask[y:y + h, x:x + w] > 0].mean()) < 0.6:
+            continue
+        d = w * h * 1.5 / (2 * (w + h))   # DBNet の縮めた枠を広げ直す（unclip 1.5 相当）
+        x0, y0, x1, y1 = max(0, x - d), max(0, y - d), min(W, x + w + d), min(H, y + h + d)
+        if min(x1 - x0, y1 - y0) < 0.05 * min(W, H):   # 小さい字（著作権表示・ゼッケン・服の模様）は切っても欠けにならない
+            continue
+        boxes.append((x0 / W, y0 / H, x1 / W, y1 / H))
+    if not boxes:
+        return None
+    x0, y0 = min(b[0] for b in boxes), min(b[1] for b in boxes)
+    x1, y1 = max(b[2] for b in boxes), max(b[3] for b in boxes)
+    if (x1 - x0) * (y1 - y0) >= 0.97:
+        return None
+    return [round(x0, 3), round(y0, 3), round(x1, 3), round(y1, 3)]
+
+
+def _text_box_mser(data):
+    """前の文字の範囲（OpenCV の MSER で、同じ高さで横に 4 個以上並ぶ字を探す）。文字検出が動かない環境のときだけ使う。"""
     try:
         import cv2
         import numpy as np
@@ -170,15 +227,15 @@ def text_box(data):
 
 def measure(urls, cache, fetch, log=print):
     """まだ測っていない網址を測って cache に入れる（MAX_NEW まで）。→ 新しく測った数"""
-    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == 6 and not cache[u].get("dead"))][:MAX_NEW]   # 開けなかった写真は毎回試し直す   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
+    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == VERSION and not cache[u].get("dead"))][:MAX_NEW]   # 開けなかった写真は毎回試し直す   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
 
     def one(u):
         try:
             data = fetch(u)
-            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "s": segments(data), "v": 6} if data else {"t": [], "m": "", "k": None, "v": 6})
+            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "s": segments(data), "v": VERSION} if data else {"t": [], "m": "", "k": None, "v": VERSION})
         except Exception as ex:  # noqa: BLE001  「無い」（404・410）と答えた写真だけ印（ページでは最初から代わりの写真か、カードを出さない）。
             # つながらない・時間切れは一時的なものとして記録しない（次の回にまた試す。PC の DNS が落ちて 39 枚に印が付き、壁が空になった）
-            return u, ({"t": [], "m": "", "k": None, "v": 6, "dead": 1} if getattr(ex, "code", None) in (404, 410) else None)
+            return u, ({"t": [], "m": "", "k": None, "v": VERSION, "dead": 1} if getattr(ex, "code", None) in (404, 410) else None)
     with cf.ThreadPoolExecutor(max_workers=16) as pool:
         got = list(pool.map(one, todo))
     if todo and sum(1 for _, v in got if v is None or v.get("dead")) > 0.2 * len(todo):   # 2 割以上開けない：通信の問題。印は付けない

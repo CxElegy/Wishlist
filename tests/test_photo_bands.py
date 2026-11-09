@@ -35,7 +35,7 @@ class Bands(unittest.TestCase):
 
     def test_measure_uses_cache_and_inject_adds_attr(self):
         calls = []
-        cache = {"https://a.example/old.jpg": {"t": [], "m": "", "k": None, "v": 6}}
+        cache = {"https://a.example/old.jpg": {"t": [], "m": "", "k": None, "v": photo_bands.VERSION}}
         page = '<img src="https://a.example/p.jpg" alt=""><img src="https://a.example/old.jpg">'
 
         def fetch(u):

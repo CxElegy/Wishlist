@@ -2,6 +2,7 @@ anthropic>=1.13,<2
 pyyaml>=6,<7
 pillow>=10,<13
 opencc-python-reimplemented>=0.1.7,<0.2
+onnxruntime>=1.17,<2   # 写真の中の字の範囲（photo_bands.text_box：PaddleOCR PP-OCRv3 の文字検出 scripts/models/ppocr_det_v3.onnx）
 opencv-python-headless>=4.8,<5   # 小元素（scripts/emblem.py）の顔検出・切り抜き検査。5 以降は顔検出が別パッケージ
 requests>=2.31,<3          # Wikimedia（scripts/wikihttp.py）
 requests-cache>=1.2,<2     # その応答のディスクキャッシュ（~/.cache/wishlist-http）
