@@ -236,7 +236,8 @@
   "Vaundy": 1,
   "dota2": 7,
   "ILLIT": 5,
-  "gelato pique": 4
+  "gelato pique": 4,
+  "星巴克马克杯": 3
  },
  "哈利波特剧集": [
   {
@@ -408,6 +409,36 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "40cm10kg！スタバ“どでか”マグカップが登場",
+   "highlight": "40cm10kg",
+   "blurb": "スターバックスの“どでか”マグカップが登場。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/68792/385524_615.jpg"
+  },
+  {
+   "headline": "出雲大社店限定！スタバがオシャレなご当地マグカップを発売",
+   "highlight": "出雲大社店限定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "熊本のスターバックス発、パートナーの声を形にした限定マグカップを体験してきた",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ]

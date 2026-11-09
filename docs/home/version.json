@@ -1,32 +1,32 @@
 {
- "admin": "b5e7d487dea9",
- "admin-ai": "e4c19df049f3",
+ "admin": "1b1bbdd641bc",
+ "admin-ai": "ae3d51120fce",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d851a812"
+   "65d8be01"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "5dbc3f0b"
+   "70720ff9"
   ]
  },
- "admin-boards": "17b4e3a5480e",
+ "admin-boards": "90971bb5ef5c",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "02a4c5d0"
+   "ad5c2778"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "493d81bc9031",
+ "admin-emblem": "984cd723a25c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "25069019"
+   "dc6adac4"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "e87b2457b66a",
+ "admin-now": "830efb1348a6",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "aac0290c"
+   "6b6bf2b6"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "1ed88d60"
+   "8bc50d28"
   ]
  },
- "admin-system": "83f8ba55463b",
+ "admin-system": "c8762656eac5",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "428f178c"
+   "c171b633"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e2ee80ff"
+   "94aa29d1"
   ]
  },
  "admin_marks": {},
- "heat": "7f4cad0e4a8a",
+ "heat": "3e97e1251642",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e3bfe670"
+   "d04f35fb"
   ],
   "ranking": [
    "ランキング",
-   "c6292dd1"
+   "fe52fe3a"
   ]
  },
- "index": "9a4158ad95fc",
+ "index": "d40800c021c6",
  "index_marks": {
   "front": [
    "トップ",
-   "264c4864"
+   "3ad1b227"
   ],
   "picks": [
    "気になるかも？",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "d445fc67"
+   "a67b83ac"
   ],
   "w-6676e624": [
    "三星手机",
@@ -196,6 +196,6 @@
    "727faffb"
   ]
  },
- "updated": "11.10 05:21",
- "wishlist": "e7daedb040f4"
+ "updated": "11.10 05:24",
+ "wishlist": "3ac5d74e531f"
 }

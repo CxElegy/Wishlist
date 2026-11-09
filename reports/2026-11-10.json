@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "92baf278416b",
+ "edit_sig": "a1690a3efcf0",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?BVmo0vcwM-1IY4ios_zoS",
@@ -736,36 +736,37 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 3,
-     "source": "ウォーカープラス",
-     "title": "＜画像1 / 32＞熊本のスターバックス発、パートナーの声を形にした限定マグカップを体験してきた",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE81UGxEX3B5V0drUjZYMlp3ekdEQjZWRUNFMXMyeU9HMERSS3pyanI4OVlpN29fajljamZwSDlOWW9DX0dWbi1FTmdDb1ZfdVY3UEFOSzFzNVB2aTZic0JsU1VpeWRpTWRVWl9v?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "スターバックスの“どでか”マグカップが登場。",
      "date": "2026-11-07",
-     "headline": "＜画像4 / 5＞出雲大社店限定！スタバがオシャレなご当地マグカップを発売",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/49841/268597_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/49841/image268600.html",
-     "weight": "hero"
+     "headline": "40cm10kg！スタバ“どでか”マグカップが登場",
+     "highlight": "40cm10kg",
+     "image": "https://news.walkerplus.com/article/68792/385524_615.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.walkerplus.com/article/68792/image385522.html",
+     "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-11-07",
-     "headline": "＜画像2 / 4＞40cm10kg！スタバ“どでか”マグカップが登場",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/68792/385520_615.jpg",
+     "headline": "出雲大社店限定！スタバがオシャレなご当地マグカップを発売",
+     "highlight": "出雲大社店限定",
+     "image": "https://news.walkerplus.com/article/49841/268597_615.jpg",
      "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/68792/image385522.html",
-     "weight": "hero"
+     "url": "https://www.walkerplus.com/article/49841/image268600.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "熊本のスターバックス発、パートナーの声を形にした限定マグカップを体験してきた",
+     "highlight": "",
+     "image": "https://news.walkerplus.com/article/198145/1195520_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/198145/image1195520.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",

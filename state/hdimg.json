@@ -1154,6 +1154,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/6/5/65928_230_cdddcd905f5b94659e71c17996060889.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
+ },
  "https://image.news.livedoor.com/newsimage/stf/a/3/a36dc_1604_88a23a30_4ddd025c.jpg": {
   "w": 1200,
   "h": 900,
@@ -2002,12 +2008,6 @@
   ],
   "why": "看不清"
  },
- "https://news.walkerplus.com/article/1301059/15509021_615.jpg": {
-  "w": 615,
-  "h": 412,
-  "target": 720,
-  "v": 3
- },
  "https://news.walkerplus.com/article/1301078/15509573_615.jpg": {
   "w": 615,
   "h": 526,
@@ -2054,6 +2054,12 @@
   ],
   "why": "看不清"
  },
+ "https://news.walkerplus.com/article/198145/1195520_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/49841/268597_615.jpg": {
   "w": 615,
   "h": 409,
@@ -2073,16 +2079,16 @@
   "target": 720,
   "v": 3
  },
- "https://news.walkerplus.com/article/68792/385520_615.jpg": {
+ "https://news.walkerplus.com/article/68792/385524_615.jpg": {
   "w": 615,
-  "h": 428,
+  "h": 456,
   "target": 1280,
   "v": 3,
-  "blur": 0.428,
-  "local": "pics/f548d1b1bb628b79.webp",
+  "blur": 0.539,
+  "local": "pics/0dfd49ee39ea4eb7.webp",
   "out": [
    1280,
-   891
+   949
   ],
   "why": "看不清"
  },
@@ -2287,12 +2293,6 @@
   "w": 957,
   "h": 1350,
   "target": 1280,
-  "v": 3
- },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6f0ca7318ff34d75ac73b0594ed15987.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/e086dee46e9f4a8787d85c4824f876e3.png": {
@@ -3452,6 +3452,12 @@
  "https://www.bing.com/th?id=ONUT.N0LnlEohsUZ4OQLawwh2GQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.NUv3WeI88nrVJSQyVt4X_Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 409,
   "target": 720,
   "v": 3
  },
