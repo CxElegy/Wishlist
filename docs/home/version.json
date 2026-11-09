@@ -1,10 +1,10 @@
 {
- "admin": "9af98877f401",
- "admin-ai": "2be49961fb20",
+ "admin": "b5e7d487dea9",
+ "admin-ai": "bd1ee3c9ce07",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "864678ea"
+   "d851a812"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "5af757b1dd62",
+ "admin-emblem": "8f91d607d77f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c3597685"
+   "ca936daa"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "68f58341189c",
+ "admin-now": "371dff3a500d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f69460ea"
+   "aac0290c"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "138faaa1"
   ]
  },
- "admin-system": "6e87306a4f3f",
+ "admin-system": "27608cbf4d50",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a2f8eaa6"
+   "1a5568e2"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "c6292dd1"
   ]
  },
- "index": "b76f39e45c7b",
+ "index": "f88a7e338841",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "fe782f51"
+   "9e98d727"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "1e5975ca"
+   "b1669aaf"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "727faffb"
   ]
  },
- "updated": "11.10 05:08",
+ "updated": "11.10 05:15",
  "wishlist": "e7daedb040f4"
 }
