@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "bcc88a8630f7",
+ "edit_sig": "d6c9218d3308",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?BVmo0vcwM-1IY4ios_zoS",
@@ -117,10 +117,8 @@
      "date": "2026-11-09",
      "headline": "New 'Avengers: Doomsday' trailer tipped to 'break the internet' as Marvel releases FAQ to bring you up to speed",
      "highlight": "New 'Avengers: Doomsday' trailer",
-     "image": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
-     "image_via": "作品封面",
-     "source": "Tom's Guide",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.tomsguide.com&sz=128",
+     "image": "https://www.bing.com/th?id=ONUT.MIQIipWGBDZDm_lYRuf-7A&pid=News&w=960",
+     "image_via": "转载 www.yahoo.com（Bing 缩略图）",
      "url": "https://www.tomsguide.com/entertainment/movies/new-avengers-doomsday-trailer-tipped-to-break-the-internet-as-marvel-releases-faq-to-bring-you-up-to-speed",
      "weight": "lead"
     },
@@ -360,17 +358,21 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-09",
-     "n": 1,
+     "headline": "The Mandalorian and Grogu. And Rotta. And Babu Frik.",
+     "highlight": "",
+     "image": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+     "image_via": "作品封面",
      "source": "Bluesky",
-     "title": "The Mandalorian and Grogu. And Rotta. And Babu Frik.",
-     "url": "https://bsky.app/profile/mluckas.bsky.social/post/3mzuaqwxmjk2d"
+     "source_icon": "https://web-cdn.bsky.app/static/apple-touch-icon.png",
+     "url": "https://bsky.app/profile/mluckas.bsky.social/post/3mzuaqwxmjk2d",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -414,17 +416,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-09",
-     "n": 1,
-     "source": "Skream!",
-     "title": "\"ROCK IN JAPAN FESTIVAL 2026\"ライヴ映像を\"ROCK IN JAPAN特番\"としてYouTubeで配信。配信アーティストにVaundy、バンプ、ずとまよ、あいみょん等決定",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1BV1paNmRqV0plejRPQkhyYTNkNzQ4ZmE5RlZNenF4YnRCNzE0TmluMWRvdkVXUS1FWDRrOUNpQ0RZVEhQLXRqRzloWUUtbXZ2WjBWdVdGSWpnZWZ2bFN6SlI4THc2RTlrRnhuMmtZX0N0MjFqTEVpbV9n?oc=5"
+     "headline": "\"ROCK IN JAPAN FESTIVAL 2026\"ライヴ映像をYouTubeで配信、配信アーティストにVaundy、バンプ、ずとまよ、あいみょん等決定",
+     "highlight": "配信アーティストにVaundy",
+     "image": "https://skream.jp/news/2026/11/09/images/RIJF2026.png",
+     "image_via": "og:image",
+     "url": "https://skream.jp/news/2026/11/rock_in_japan_festival_2026_youtube.php",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
@@ -515,24 +519,29 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
-     "date": "2026-11-07",
-     "n": 1,
-     "source": "Kagit",
-     "title": "A2O LITEのAIJING、写真撮影中にメンバーを押しのけ「センターを奪った」と物議…「自己中心的すぎる」と批判の声",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9BcVVENUxLQUZZU0I2cXp2dG9LWGVBQnFPTmthaXhWRFVvVURvR1UzbVFHam51ajhuaFJaaWtZSXJtTTV2d3RqWTZrUzRYNG5NLUREUWtCdkZ3dlp4?oc=5"
+     "blurb": "韩国 Apple Music 日榜，A2O LITE 的《NEON》累计第 21 次登顶。",
+     "date": "2026-11-09",
+     "headline": "【韩区🇰🇷日榜】2026.11.8 Apple Music日榜 A2O LITE-NEON日冠×21",
+     "highlight": "日冠×21",
+     "image": "http://wx1.sinaimg.cn/middle/006dNg2Pgy1iiw0880yj3j30ta1ef794.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5363375095681462.html",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-09",
-     "n": 2,
-     "source": "新浪网",
-     "title": "【韩区🇰🇷日榜】2026.11.8 #AppleMusic#日榜 [期待]A2O LITE-NEON日冠×21👑 [太开心]BESTie-恋爱的条件进前五",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5KaVhCTlJ0MF9QcnU1a0ZCR1BoaU5RZDRJSzhMQVJVUXVEd0FNbHNrX25ZSHd4amw5eE9kQ1VwaEpTOG1rTFQxUGZRRkxVb1VqT0kwcXhSZExwcklIOFhzclNobw?oc=5"
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "A2O LITEのAIJING、写真撮影中にメンバーを押しのけ「センターを奪った」と物議",
+     "highlight": "",
+     "image": "https://kagit-media.atreez.cc/uploads/2026-10-22/zrdkuvxctzo8hdvcl57qng4l.jpg",
+     "image_via": "og:image",
+     "url": "https://kagit.kr/ja/posts/a2o-aijing-controversy",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",

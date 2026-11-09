@@ -188,7 +188,10 @@
   "三星手机": 6,
   "チェーンソーマン": 3,
   "周杰伦": 3,
-  "哈利波特剧集": 3
+  "哈利波特剧集": 3,
+  "A2O LITE": 2,
+  "The Mandalorian": 1,
+  "Vaundy": 1
  },
  "哈利波特剧集": [
   {
@@ -216,6 +219,48 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "【韩区🇰🇷日榜】2026.11.8 Apple Music日榜 A2O LITE-NEON日冠×21",
+   "highlight": "日冠×21",
+   "blurb": "韩国 Apple Music 日榜，A2O LITE 的《NEON》累计第 21 次登顶。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "A2O LITEのAIJING、写真撮影中にメンバーを押しのけ「センターを奪った」と物議",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "The Mandalorian and Grogu. And Rotta. And Babu Frik.",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "\"ROCK IN JAPAN FESTIVAL 2026\"ライヴ映像をYouTubeで配信、配信アーティストにVaundy、バンプ、ずとまよ、あいみょん等決定",
+   "highlight": "配信アーティストにVaundy",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]

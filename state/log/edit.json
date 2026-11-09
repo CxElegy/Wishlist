@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-07T21:40:45+00:00",
-"text": "2026-11-08 第 2 バッチを出刊：三星手机（1 版面・3 本・残り 4 版面） · token 新規入力 5,031・キャッシュ読み 93.2万・出力 2,002",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.34,
-"mem_total": 16867737600,
-"mem_free": 15921631232,
-"disk_used": 10739351552,
-"disk_free": 30544183296,
-"disk_total": 41283534848,
-"peak": 355311616
-},
-"batch": 2,
-"boards": [
-"三星手机"
-],
-"stories": 3,
-"left": 4,
-"edited": 12,
-"run": 1794086351.187354,
-"tok": {
-"in": 24,
-"cw": 5007,
-"cr": 931543,
-"out": 2002,
-"calls": 11,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 938576
-},
-{
 "at": "2026-11-07T21:43:21+00:00",
 "text": "2026-11-08 第 3 バッチを出刊：The Mandalorian（1 版面・1 本・残り 3 版面） · token 新規入力 2,432・キャッシュ読み 35.2万・出力 1,338",
 "level": "ok",
@@ -2022,5 +1990,50 @@
 "calls": 19,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-09T17:44:11+00:00",
+"text": "2026-11-10 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、The Mandalorian、Vaundy ほか 8（14 版面・24 本・今日の整理待ちは全部終わり） · token 新規入力 4.4万・キャッシュ読み 123.0万・出力 3,630",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.27,
+"mem_total": 16867737600,
+"mem_free": 15778398208,
+"disk_used": 10087813120,
+"disk_free": 31195721728,
+"disk_total": 41283534848,
+"peak": 441470976
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"GTA 6",
+"The Mandalorian",
+"Vaundy",
+"gelato pique",
+"ぐでたま",
+"チェーンソーマン",
+"三星手机",
+"周杰伦",
+"哈利波特剧集",
+"漫威电影",
+"绝区零"
+],
+"stories": 24,
+"left": 0,
+"edited": 9,
+"run": null,
+"tok": {
+"in": 38,
+"cw": 44036,
+"cr": 1229812,
+"out": 3630,
+"calls": 19,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1277516
 }
 ]

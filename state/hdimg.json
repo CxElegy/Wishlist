@@ -80,6 +80,19 @@
   ],
   "why": "看不清"
  },
+ "http://wx1.sinaimg.cn/middle/006dNg2Pgy1iiw0880yj3j30ta1ef794.jpg": {
+  "w": 1054,
+  "h": 1815,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/23a09d60b940bfe5.webp",
+  "out": [
+   743,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/001gSRX0ly1iis5h51wvnj60z01lmahy02.jpg": {
   "w": 1260,
   "h": 2074,
@@ -319,12 +332,6 @@
  "https://bespinbulletin.com/wp-content/uploads/2026/10/ranger-swgoh.webp": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://bloximages.newyork1.vip.townnews.com/laloyolan.com/content/tncms/assets/v3/editorial/f/f2/ff2193f0-c64a-477e-8308-d12a4eb38451/6ae96045386c5.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -763,6 +770,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://eyeonsunvalley.com/StoryPhotos/14462.jpg": {
+  "w": 800,
+  "h": 500,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.298
+ },
  "https://files.value-press.com/czMjZXllY2F0Y2gjODY4NjcjODY4NjdfbHFBaU1LbVlsZi5qcGc.jpg": {
   "w": 1200,
   "h": 650,
@@ -953,12 +967,6 @@
   "w": 3840,
   "h": 2160,
   "target": 720,
-  "v": 3
- },
- "https://hips.hearstapps.com/hmg-prod/images/e68b5f15-cb38-4c12-bedb-c5c86e7596d6.png?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
-  "w": 1200,
-  "h": 600,
-  "target": 1280,
   "v": 3
  },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261105/photo/bkn-20261105000104965-1105_00862_001_02b.jpg?20261104222519": {
@@ -1213,16 +1221,16 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bsNCV.img": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cCV3B.img": {
   "w": 638,
   "h": 424,
   "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cVHRl.img": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dqOGx.img": {
@@ -1617,6 +1625,12 @@
   ],
   "why": "看不清"
  },
+ "https://img1.kakaku.k-img.com/images/maga/22546/thumbnail_ogp.jpg?v=20240724": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://img2.sbs.co.kr/ops_clip_img/2026/11/01/83b1480d-bf44-43cf-826e-0b0e50cba714005w640.jpg": {
   "w": 640,
   "h": 360,
@@ -1633,12 +1647,6 @@
  "https://img6.donews.com/img/2026/11/05/img_pic_1793875977.jpg": {
   "w": 900,
   "h": 400,
-  "target": 1280,
-  "v": 3
- },
- "https://imgnn.seoul.co.kr/img/upload/2026/11/03/SSC_20261103163005.jpg.webp": {
-  "w": 1200,
-  "h": 962,
   "target": 1280,
   "v": 3
  },
@@ -1722,6 +1730,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://kagit-media.atreez.cc/uploads/2026-10-22/zrdkuvxctzo8hdvcl57qng4l.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://kagit-media.atreez.cc/uploads/2026-11-03/ljq7ctjeii5y3g618urvqfj4.jpg": {
   "w": 1600,
   "h": 900,
@@ -1801,12 +1815,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.387
- },
- "https://mezamashi.ismcdn.jp/mwimgs/a/7/1200xm/img_a751d99a9da2327f93af5791b20ce6fc1582493.jpg": {
-  "w": 1200,
-  "h": 849,
-  "target": 1280,
-  "v": 3
  },
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2614188-9a5bf05ab73c.jpg": {
   "w": 1200,
@@ -2290,6 +2298,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://pimg.mk.co.kr/news/cms/202611/05/news-p.v1.20261105.e8e58d24f7db4c75ad9644cd1cb679a9_R.png": {
+  "w": 1069,
+  "h": 651,
+  "target": 1280,
+  "v": 3
+ },
  "https://players.com.ua/wp-content/uploads/2026/11/d2-711-mr.jpg": {
   "w": 1200,
   "h": 675,
@@ -2527,6 +2541,19 @@
   "h": 768,
   "target": 1280,
   "v": 3
+ },
+ "https://skream.jp/news/2026/11/09/images/RIJF2026.png": {
+  "w": 800,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.501,
+  "local": "pics/378942373824028c.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://sm.ign.com/t/ign_ap/news/k/kfc-reveal/kfc-reveals-official-avengers-doomsday-menu-worthy-of-dr-doo_x948.1200.jpg": {
   "w": 1200,
@@ -3253,6 +3280,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.MIQIipWGBDZDm_lYRuf-7A&pid=News&w=960": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.522,
+  "local": "pics/fde824f2383e7f3c.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934": {
   "w": 544,
   "h": 700,
@@ -3316,6 +3356,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.X05TOwE27NAt93YxMEkyUA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,
@@ -3621,6 +3667,19 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://www.inside-games.jp/imgs/ogp_f/1802024.jpg": {
+  "w": 600,
+  "h": 399,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.496,
+  "local": "pics/95f5c2e7b367011e.webp",
+  "out": [
+   1280,
+   851
+  ],
+  "why": "看不清"
  },
  "https://www.jedinews.com/wp-content/uploads/2025/09/Warwick-Davis-Harry-Potter-Aug25.jpg": {
   "w": 696,

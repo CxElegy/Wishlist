@@ -1,14 +1,14 @@
 {
- "admin": "fd9328dac017",
- "admin-ai": "7f2579f6cbb2",
+ "admin": "35cda6f295c3",
+ "admin-ai": "ff08a70850d3",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "b0d0b9d7"
+   "13c82a7d"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "78ceee63"
+   "ba4b5c11"
   ]
  },
  "admin-boards": "5ec354733b53",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "d1ff75555df0",
+ "admin-emblem": "2170a7b64e22",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "9ed9e968"
+   "54616e10"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "2c3052bd2d5b",
+ "admin-now": "8e844c2bdaac",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5a5ade1d"
+   "6ed7040e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a370c47e"
+   "5b9cc91a"
   ]
  },
- "admin-system": "53c6fd14ca90",
+ "admin-system": "0d91ee36673d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a0b02c05"
+   "9b64ed80"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c24532cc"
+   "fa0b7ca2"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "7fc098a9"
   ]
  },
- "index": "ee6fca332bbe",
+ "index": "7a1c23e8b8ae",
  "index_marks": {
   "front": [
    "トップ",
-   "09f2e630"
+   "7b28f01a"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "cf082e5b"
+   "d7a47eb8"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "efe58e8d"
+   "85f039cd"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "d290cc31"
+   "a88bfc74"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "6a749b32"
+   "d7ea76b6"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "727faffb"
   ]
  },
- "updated": "11.10 02:36",
+ "updated": "11.10 02:44",
  "wishlist": "9792193decae"
 }
