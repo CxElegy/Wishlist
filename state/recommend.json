@@ -10,12 +10,12 @@
   "https://cocreco.kodansha.co.jp/anehime/news/anehime_character_festival/kaeruandkuma/40sDF": "https://d34gglw95p9zsk.cloudfront.net/articles/images/000/048/116/large/3a8daff6-7b0a-429b-ad01-fede98bfbca9.jpg?1792911318",
   "https://collabo-cafe.com/events/collabo/haikyu-fashion-paseos-roomwear-2026/": "https://collabo-cafe.com/wp-content/uploads/haikyu-fashion-paseos-roomwear-2026-eyecatch.jpg",
   "https://collabo-cafe.com/events/collabo/pocket-monster-fashion-shimamura-2026/": "https://collabo-cafe.com/wp-content/uploads/pocket-monster-fashion-shimamura-2026-eyecatch.jpg",
+  "https://dangerousminds.net/weird-news/83000-days-booked-off-work-around-release-grand-theft-auto-vi/": "https://cdn1.dangerousminds.net/uploads/7/2026/11/Grand-Theft-Auto-VI-Rockstar-Games-2026-Dangerous-Minds.jpg",
   "https://entertainment.ie/movies/movie-news/michael-bay-is-reportedly-being-lined-up-to-direct-a-superhero-movie-for-dc-227844/": "https://images.entertainment.ie/storage/images_content/rectangle/620x372/869135-bmsb.jpg?w=1280&h=768&q=high",
   "https://eu.36kr.com/en/p/4055350158398339": "https://img.36krcdn.com/hsossms/20261104/v2_851566546f8140b6b7de48fc4c1ed671@000000@ai_oswg1050775oswg2048oswg2048_img_000~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg",
   "https://finance.yahoo.co.jp/news/detail/82ebd1f76c3dabae7efaa68a534d6399b4822bd4": "https://s.yimg.jp/images/finance/common/image/ogp.png",
   "https://finance.yahoo.co.jp/quote/6040.T": "https://s.yimg.jp/images/finance/common/image/ogp.png",
   "https://gameluster.com/honkai-nexus-anima-final-closed-beta-spring-2027/": "https://gameluster.com/wp-content/uploads/2026/11/maxresdefault.jpg",
-  "https://gameranx.com/updates/id/564504/article/rumor-gta-6-pre-load-data-suggests-ps5-pro-has-additional-ray-tracing/": "https://www.bing.com/th?id=ONUT.vI1AEGOcLPEY_IfxozqRwg&pid=News&w=1200",
   "https://global.hk01.com/%E7%A4%BE%E4%BC%9A%E6%96%B0%E9%97%BB/60407664/merry-balloon%E5%A4%A7%E5%9E%8B%E6%B0%94%E7%90%83%E5%B7%A1%E6%B8%B812-18%E5%90%AF%E5%BE%B7%E4%BD%93%E8%82%B2%E5%9B%AD%E4%B8%BE%E8%A1%8C-snoopy%E7%AD%89ip%E7%99%BB%E5%9C%BA": "https://cdn.hk01.com/di/media/images/dw/20261105/1195096137200046080940317.jpeg/hL0qZSXtJRAsxoUVOKNLkjpqYUSGG2OQEv2GhTf9hoU?v=w1280r16_9",
   "https://gnn.gamer.com.tw/detail.php?sn=314433": "https://p2.bahamut.com.tw/B/2KU/36/017586374f9cc5261351eceead20z6s5.JPG",
   "https://gnn.gamer.com.tw/detail.php?sn=314573": "https://p2.bahamut.com.tw/B/2KU/75/fe3c9b54769450d330a0ab9a8a210gb5.JPG",
@@ -931,6 +931,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-09",
+   "hits": [],
+   "image": "https://cdn1.dangerousminds.net/uploads/7/2026/11/Grand-Theft-Auto-VI-Rockstar-Games-2026-Dangerous-Minds.jpg",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "Dangerous Minds",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "83,000 days have been booked off work in the UK coinciding for ‘Grand Theft Auto VI’ release",
+   "url": "https://dangerousminds.net/weird-news/83000-days-booked-off-work-around-release-grand-theft-auto-vi/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "あつ森",
    "date": "2026-11-09",
    "hits": [],
@@ -1038,7 +1059,7 @@
    "work": "チェーンソーマン"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "绝区零",
    "date": "2026-11-09",
    "hits": [],
@@ -1057,27 +1078,6 @@
    "url": "https://news.18183.com/yxxw/202611/9084521.html",
    "words": [],
    "work": "绝区零"
-  },
-  {
-   "batch": 2,
-   "because": "GTA 6",
-   "date": "2026-11-09",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.vI1AEGOcLPEY_IfxozqRwg&pid=News&w=1200",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "Gameranx",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "Rumor: GTA 6 Pre-Load Data Suggests PS5 Pro Has Additional Ray-Tracing",
-   "url": "https://gameranx.com/updates/id/564504/article/rumor-gta-6-pre-load-data-suggests-ps5-pro-has-additional-ray-tracing/",
-   "words": [],
-   "work": "GTA 6"
   },
   {
    "batch": 2,
