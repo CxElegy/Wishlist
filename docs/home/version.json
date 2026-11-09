@@ -1,32 +1,32 @@
 {
- "admin": "2f938e093d99",
- "admin-ai": "8361907d77c6",
+ "admin": "9030cfaa1415",
+ "admin-ai": "f2cafeda42fb",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "410c8e8d"
+   "ee1bb7bf"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "83afb2e4"
+   "f0192f2b"
   ]
  },
- "admin-boards": "919b1ef664b9",
+ "admin-boards": "b5f2a6f8cb1c",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "aff72c6b"
+   "3a839330"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "b865e52101f4",
+ "admin-emblem": "c06a6161081e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "7ed901de"
+   "479fcce3"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "9d9075a33207",
  "admin-members_marks": {},
- "admin-now": "8c23b920c21f",
+ "admin-now": "0948987aff6a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "ade0afe2"
+   "cc7a589d"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "1aa7b801"
+   "01df4a12"
   ]
  },
- "admin-system": "b663afe54501",
+ "admin-system": "0a01974c4d7c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "27c4a56b"
+   "5bd315d3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e35af210"
+   "24d6a46b"
   ]
  },
  "admin_marks": {},
- "heat": "2b3f807a0cc7",
+ "heat": "c3e555ac569e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "0252f794"
+   "f7f77298"
   ],
   "ranking": [
    "ランキング",
-   "69cad818"
+   "67ea6949"
   ]
  },
- "index": "4ce7db363aff",
+ "index": "c532745f9aea",
  "index_marks": {
   "front": [
    "トップ",
-   "7a403414"
+   "755fc07f"
   ],
   "picks": [
    "気になるかも？",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "42492afd"
+   "c4006f37"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "d4adb0bb"
   ]
  },
- "updated": "11.09 19:51",
+ "updated": "11.09 19:54",
  "wishlist": "95f61ae2a8c7"
 }
