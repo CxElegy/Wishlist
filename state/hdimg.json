@@ -823,10 +823,16 @@
   "target": 720,
   "v": 3
  },
- "https://gdm-universal-media.b-cdn.net/epicstream/e8a4cfc4-hbo-harry-potter2.webp?width=1600&height=840": {
+ "https://gdm-universal-media.b-cdn.net/epicstream/815077eb-jk-rowling-and-harry-potter.webp?width=1600&height=840": {
   "w": 1493,
   "h": 840,
   "target": 720,
+  "v": 3
+ },
+ "https://gdm-universal-media.b-cdn.net/epicstream/e8a4cfc4-hbo-harry-potter2.webp?width=1600&height=840": {
+  "w": 1493,
+  "h": 840,
+  "target": 1280,
   "v": 3
  },
  "https://happygamer.com/wp-content/uploads/2026/11/zenless-zone-zero-3-3-phase-ii-banners-run-nov-11-to-dec-1.jpg": {
@@ -1817,7 +1823,7 @@
  "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png": {
   "w": 1280,
   "h": 672,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
@@ -2776,6 +2782,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.anpoimages.com/wordpress/wp-content/uploads/2026/08/samsung-galaxy-z-fold-8-and-google-pixel-10-pro-standing-side-by-side.png?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/01/bobamando-1200x600.jpg?w=1200&h=675&fit=crop": {
   "w": 1200,
   "h": 600,
@@ -3187,19 +3199,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
- },
- "https://www.bing.com/th?id=ONUT.EeNxbWe3OrtZRPFeeThe2w&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.491,
-  "local": "pics/e0f45b14a8983115.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,

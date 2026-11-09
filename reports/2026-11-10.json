@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "f673029f3035",
+ "edit_sig": "bcc88a8630f7",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?BVmo0vcwM-1IY4ios_zoS",
@@ -182,31 +182,39 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-09",
-     "n": 1,
-     "source": "Epicstream",
-     "title": "How Many Episodes Will Harry Potter TV Series Season 1 Have?",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPbk1HUWR1VDhreDhwQjcyVXNaMC1BX1pVWksyOVNXVnU4NXpnSzdxeWxRWTh5MENpbzZheldCTmhLaDhZMGZYUjRfOV9SdEM1Rk1tdWVfck01ZVZFTVZlVDJsaTVaeXNXUlNVa1FNZ0c1bnU5eUtGelNuQzNUR09RUmhVWVlQa0E?oc=5"
+     "headline": "How Many Episodes Will Harry Potter TV Series Season 1 Have?",
+     "highlight": "How Many Episodes",
+     "image": "https://gdm-universal-media.b-cdn.net/epicstream/e8a4cfc4-hbo-harry-potter2.webp?width=1600&height=840",
+     "image_via": "og:image",
+     "url": "https://epicstream.com/article/how-many-episodes-in-harry-potter-series-season-1",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-09",
-     "n": 2,
-     "source": "MuggleNet",
-     "title": "New HBO Harry Potter Wands Now Available",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1yb051M1p0WVhCcXJlNVJRWDQwRVpnSEloNUp5LXFEMkFrQVZJdlc5YkZLRkNKOTlnNjFYVENVb3d4aHIxejE4RzA5bGdiM19hdnNNc1c5NVRoRVdyUFhMREVnbFlpbndXdk5WbWFZSjFNNGt4ZjI4YnFOU0VLZDQ?oc=5"
+     "headline": "New HBO Harry Potter Wands Now Available",
+     "highlight": "",
+     "image": "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png",
+     "image_via": "og:image（本站保存）",
+     "url": "https://mugglenet.com/2026/11/hbo-harry-potter-series-wands-now-available/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-09",
-     "n": 3,
-     "source": "Epicstream",
-     "title": "Is J.K. Rowling Involved in the New Harry Potter Series?",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQQmFiYl82Z1dwazZDOEFlT1RyVGIzemUzNWdWSEgwUzVrYU1ZbTh1VDFkT2tMd2twb0FRcU9TTEdfa3BfcEtYaUdsMk9kNEVuY0NTZ3JWTnVmZExWVEVfQUZ0MGcyRGxqblVHWl9pMFJhYktGQkFIWDBKRXNxYnNmcFh3VFZrYWxjLUxkcA?oc=5"
+     "headline": "Is J.K. Rowling Involved in the New Harry Potter Series?",
+     "highlight": "",
+     "image": "https://gdm-universal-media.b-cdn.net/epicstream/815077eb-jk-rowling-and-harry-potter.webp?width=1600&height=840",
+     "image_via": "og:image",
+     "url": "https://epicstream.com/article/is-jk-rowling-involved-in-the-new-harry-potter-series",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
