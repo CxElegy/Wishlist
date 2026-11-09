@@ -235,7 +235,8 @@
   "The Mandalorian": 1,
   "Vaundy": 1,
   "dota2": 7,
-  "ILLIT": 5
+  "ILLIT": 5,
+  "gelato pique": 4
  },
  "哈利波特剧集": [
   {
@@ -357,6 +358,45 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "Mrs. GREEN APPLE×ジェラート ピケ初コラボ！オリジナルキャラクター“グリベア”をデザインしたルームウェア＆雑貨が登場",
+   "highlight": "Mrs. GREEN APPLE×ジェラート ピケ初コラボ",
+   "blurb": "オリジナルキャラクター“グリベア”をデザインしたルームウェア＆雑貨が登場。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/1445517/18700632_615.jpg"
+  },
+  {
+   "headline": "ジェラピケ×ドラゴンクエストで癒しレベルMAX【ジェラート ピケ】のふわもこルームウェア",
+   "highlight": "ドラゴンクエスト",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "ジェラートピケと旭山動物園のスペシャルコラボが実現！動物モチーフの親子向けアイテムが登場",
+   "highlight": "旭山動物園",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ジェラピケ×セサミストリートのコラボアイテムが発売！",
+   "highlight": "セサミストリート",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]

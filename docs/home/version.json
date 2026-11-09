@@ -1,32 +1,32 @@
 {
- "admin": "d7b6ee68c220",
- "admin-ai": "eea1fcaf0bb5",
+ "admin": "9af98877f401",
+ "admin-ai": "2be49961fb20",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "dcbd3bfc"
+   "864678ea"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "19a40db9"
+   "b30b181f"
   ]
  },
- "admin-boards": "ee278dcdc19b",
+ "admin-boards": "17b4e3a5480e",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5a0e7b5d"
+   "02a4c5d0"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "5a36df476cfd",
+ "admin-emblem": "5af757b1dd62",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "7173fd2c"
+   "c3597685"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "edff24866184",
+ "admin-now": "68f58341189c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "87d9a9cf"
+   "f69460ea"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "102abcf0"
+   "138faaa1"
   ]
  },
- "admin-system": "87fcfdb75684",
+ "admin-system": "6e87306a4f3f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "75b67df0"
+   "a2f8eaa6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "62e109b6"
+   "5052c1c5"
   ]
  },
  "admin_marks": {},
- "heat": "b42c41fe2b2c",
+ "heat": "7f4cad0e4a8a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "ea8e6aa5"
+   "e3bfe670"
   ],
   "ranking": [
    "ランキング",
-   "4187a082"
+   "c6292dd1"
   ]
  },
- "index": "99588dab2d89",
+ "index": "b76f39e45c7b",
  "index_marks": {
   "front": [
    "トップ",
-   "bf5db710"
+   "dc86329a"
   ],
   "picks": [
    "気になるかも？",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "beeddb88"
+   "51c4d44b"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "727faffb"
   ]
  },
- "updated": "11.10 05:04",
+ "updated": "11.10 05:08",
  "wishlist": "e7daedb040f4"
 }

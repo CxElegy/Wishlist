@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "c0adc81afc79",
+ "edit_sig": "6ff40f3fba22",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?BVmo0vcwM-1IY4ios_zoS",
@@ -378,43 +378,47 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "画像2 / 19＞Mrs. GREEN APPLE×ジェラート ピケ初コラボ！オリジナルキャラクター“グリベア”をデザインしたルームウェア＆雑貨が登場",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5EcnZldjlVUlZNZm5ZcVlqb3FuUnRBVk1vMVZRVFJ6LVJET251OUVvazNOeTRJcDhObXVWc1BSOVBSZ1RybFVBWXhiUThaMGFjbXpHcGZJVWE2UTZUcDFSLXZsbjhIWjJLSHhCRExR?oc=5"
-    },
-    {
-     "date": "2026-11-08",
-     "n": 2,
-     "source": "ウォーカープラス",
-     "title": "画像1 / 4＞ジェラピケ×ドラゴンクエストで癒しレベルMAX【ジェラート ピケ】のふわもこルームウェアを今すぐAmazonでチェック！",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9Lb0R6UWhpT2hSU2lQNGhPVlpXQ1EwX2xoTWUtVy1za2FUczByN1pZYVUtV28yTmhmOTl6MEpJeEh3cjAzSDg3TldHU1RpQUVoRnlLZ01MaXRtSklwSEROSW9QN3FhZW5SOEI5TEhR?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
+     "blurb": "オリジナルキャラクター“グリベア”をデザインしたルームウェア＆雑貨が登場。",
+     "date": "2026-11-09",
+     "headline": "Mrs. GREEN APPLE×ジェラート ピケ初コラボ！オリジナルキャラクター“グリベア”をデザインしたルームウェア＆雑貨が登場",
+     "highlight": "Mrs. GREEN APPLE×ジェラート ピケ初コラボ",
+     "image": "https://news.walkerplus.com/article/1445517/18700632_615.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.walkerplus.com/article/1445517/image18700631.html",
+     "weight": "lead"
+    },
+    {
      "blurb": "",
-     "date": "2026-11-05",
-     "headline": "画像48 / 51＞ジェラピケ×セサミストリートのコラボアイテムが発売！渡辺直美も「かわいい」と大絶賛",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/1168007/12392132_615.jpg",
+     "date": "2026-11-08",
+     "headline": "ジェラピケ×ドラゴンクエストで癒しレベルMAX【ジェラート ピケ】のふわもこルームウェア",
+     "highlight": "ドラゴンクエスト",
+     "image": "https://news.walkerplus.com/article/1301078/15509573_615.jpg",
      "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/1168007/image12392178.html",
-     "weight": "hero"
+     "url": "https://www.walkerplus.com/article/1301078/image15509573.html",
+     "weight": "normal"
     },
     {
      "blurb": "",
      "date": "2026-11-07",
-     "headline": "画像15 / 17＞ジェラートピケと旭山動物園のスペシャルコラボが実現！動物モチーフの親子向けアイテムが登場",
-     "highlight": "",
+     "headline": "ジェラートピケと旭山動物園のスペシャルコラボが実現！動物モチーフの親子向けアイテムが登場",
+     "highlight": "旭山動物園",
      "image": "https://news.walkerplus.com/article/1003055/10019309_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1003055/image10019323.html",
-     "weight": "hero"
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-05",
+     "headline": "ジェラピケ×セサミストリートのコラボアイテムが発売！",
+     "highlight": "セサミストリート",
+     "image": "https://news.walkerplus.com/article/1168007/12392132_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1168007/image12392178.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",
