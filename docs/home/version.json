@@ -1,6 +1,6 @@
 {
  "admin": "d625a0880e4c",
- "admin-ai": "756feeeaf9e7",
+ "admin-ai": "84f7594924f8",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "8d5e3eb3"
+   "23b57b95"
   ]
  },
  "admin-boards": "72e909786113",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "7f983477b533",
+ "admin-emblem": "258e5a987bd3",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "429395b1"
+   "268d3165"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "9d9075a33207",
  "admin-members_marks": {},
- "admin-now": "1abd3cc1dcb5",
+ "admin-now": "a492f4fb7afa",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "dcbb53c2"
+   "2966118a"
   ]
  },
- "admin-system": "6c0ef0017701",
+ "admin-system": "9425399d0e1c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a073d97c"
+   "e13a9c02"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0787e340"
+   "11bc52e5"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "4fdbacf6"
   ]
  },
- "index": "e06039088edb",
+ "index": "6a8baf2dfead",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "9347714d"
+   "074f67ef"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "66f019eb"
+   "74372c03"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "917da921"
+   "0d5028fa"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d4adb0bb"
   ]
  },
- "updated": "11.09 19:00",
+ "updated": "11.09 19:02",
  "wishlist": "95f61ae2a8c7"
 }
