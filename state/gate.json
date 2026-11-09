@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-09T15:18:05+00:00",
+ "checked": "2026-11-09T16:17:51+00:00",
  "fired": {
-  "at": "2026-11-09T15:18:34+00:00",
+  "at": "2026-11-09T16:18:08+00:00",
   "results": {
    "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
@@ -31,9 +31,6 @@
     "sig": "28a10d8febe6"
    },
    "items": [
-    "A2O LITE",
-    "The Mandalorian",
-    "Vaundy",
     "lib:F1",
     "lib:Nintendo Switch 2",
     "lib:ガンプラ",
@@ -41,8 +38,7 @@
     "lib:コーヒー",
     "lib:ラーメン",
     "lib:大相撲",
-    "lib:観葉植物",
-    "チェーンソーマン"
+    "lib:観葉植物"
    ],
    "last_batch": "2026-11-09T14:03:19+00:00",
    "last_error": {
@@ -50,13 +46,13 @@
     "text": "出刊に失敗：No module named 'cv2'"
    },
    "need": true,
-   "prog": 288,
-   "prog_day": "2026-11-09",
+   "prog": 0,
+   "prog_day": "2026-11-10",
    "ripe": [],
-   "sig": "061c82caf5f2",
+   "sig": "138167d66eaa",
    "token_cap": 1000000,
-   "tokens_today": 543415,
-   "why": "整理待ちの記事 100 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
