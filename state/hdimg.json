@@ -1259,12 +1259,6 @@
   "target": 1280,
   "v": 3
  },
- "https://images.thedirect.com/media/article_full/evans_ik0X2yH.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://images.thedirect.com/media/article_full/namor_new_costume_doomsday.jpg": {
   "w": 1280,
   "h": 720,
@@ -1528,6 +1522,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h2s8z.img": {
+  "w": 600,
+  "h": 338,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img": {
   "w": 504,
   "h": 339,
@@ -1610,6 +1610,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-09"
  },
+ "https://img.etnews.com/news/article/2026/07/07/news-p.v1.20260707.2de53ea2474d4b0682c259b29a2c33e7_P1.png": {
+  "w": 700,
+  "h": 460,
+  "target": 720,
+  "v": 3
+ },
  "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp": {
   "w": 1200,
   "h": 675,
@@ -1656,7 +1662,7 @@
  "https://img.sbsnews.co.kr/newimg/news/20261109/202239307_1280.jpg": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://img.seoul.co.kr//img/n24/seoul_share.png": {
@@ -2574,6 +2580,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/06271fb120c17a195373e8638da869ed98f56cafdda52a7bcfef1e931b344d33/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flooper_vertical_video_161%2Fcefa1bdd4f18b4283e7192738bd531d1.jpg": {
+  "w": 1200,
+  "h": 2133,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg": {
   "w": 1200,
   "h": 674,
@@ -3361,6 +3373,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.57O1PmCcROSTz7iZgnGh1Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3405,6 +3423,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
+ },
+ "https://www.bing.com/th?id=ONUT.ECca1qp02z8H9gJoGspmDw&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Ery2xESzPYlta2q38WHyHA&pid=News&w=1200": {
   "w": 700,
@@ -3598,12 +3622,6 @@
    609
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.p6T3EcnHyBrc-t59xIJ4dA&pid=News&w=700": {
-  "w": 700,
-  "h": 460,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.qor2GMnGhXY3knIWgLdOXA&pid=News&w=700": {
   "w": 700,

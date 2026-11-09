@@ -16,7 +16,8 @@
     14,
     37,
     31,
-    34
+    34,
+    47
    ],
    "image": "https://img.etimg.com/thumb/msid-135658667,width-1200,height-900,imgsize-1144081,overlay-economictimes/articleshow.jpg"
   },
@@ -36,7 +37,8 @@
    "weight": "normal",
    "refs": [
     5,
-    28
+    28,
+    40
    ]
   },
   {
@@ -48,7 +50,8 @@
     4,
     29,
     38,
-    39
+    39,
+    50
    ]
   },
   {
@@ -88,7 +91,10 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    23,
+    24,
+    28
    ]
   },
   {
@@ -107,7 +113,8 @@
    "weight": "normal",
    "refs": [
     8,
-    17
+    17,
+    25
    ]
   }
  ],
@@ -251,20 +258,20 @@
   }
  ],
  "_covered": {
-  "GTA 6": 39,
-  "漫威电影": 21,
+  "GTA 6": 51,
+  "漫威电影": 28,
   "The Mandalorian": 5,
   "ILLIT": 11,
   "gelato pique": 4,
   "星巴克马克杯": 1,
   "dota2": 3,
-  "三星手机": 17,
+  "三星手机": 25,
   "哈利波特剧集": 1,
   "滑雪": 6,
   "Vaundy": 3,
   "周杰伦": 9,
-  "A2O LITE": 16,
-  "MMORPG 新作": 3,
+  "A2O LITE": 20,
+  "MMORPG 新作": 10,
   "绝区零": 5,
   "BLEACH Mirrors High": 1,
   "あつ森": 1,
@@ -299,7 +306,8 @@
    "refs": [
     1,
     13,
-    17
+    17,
+    23
    ],
    "image": "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/8/1794134326995.webp"
   },
@@ -335,6 +343,37 @@
    "refs": [
     14,
     15
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra：サムスンは2027年のフラッグシップモデルに大きな変更を加えるのだろうか？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18,
+    19,
+    21
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 launch tipped for early 2027: 4 models, new Pro variant and expected specs",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22,
+    20,
+    24
+   ]
+  },
+  {
+   "headline": "삼성전자, S27 프로·울트라 비중 70%…프리미엄 라인업 강화로 수익성 ↑",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    25
    ]
   }
  ],
@@ -486,11 +525,14 @@
  ],
  "A2O LITE": [
   {
-   "headline": "A2O LITE Takes 11th Win And Triple Crown For \"NEON\" On \"Inkigayo\"",
-   "highlight": "11th Win",
-   "blurb": "A2O LITE snagged an 11th music show trophy for \"NEON\" on Inkigayo, a triple crown.",
+   "headline": "“トリプルクラウン達成”A2O LITE「人気歌謡」で1位を獲得！",
+   "highlight": "トリプルクラウン達成",
+   "blurb": "A2O LITE がデビュー曲「NEON」で「人気歌謡」1位となりトリプルクラウンを達成、音楽番組11冠に。",
    "weight": "lead",
    "refs": [
+    20,
+    17,
+    18,
     1,
     2,
     7,
@@ -509,34 +551,47 @@
     9
    ],
    "image": "https://www.bing.com/th?id=ONUT.0jSvDj9_OKXahGrGv8hnxA&pid=News&w=1200"
+  },
+  {
+   "headline": "보아부터 A2O LITE까지…30주년 'SBS 가요대전', 양일간 44팀 출격",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
+   ]
   }
  ],
  "MMORPG 新作": [
   {
-   "headline": "블리자드 '와우: 포에버', 출시 사흘 만에 최고 레벨 이용자 탄생",
-   "highlight": "사흘 만에 최고 레벨",
-   "blurb": "블리자드 엔터테인먼트의 MMORPG '월드 오브 워크래프트: 포에버'에서 출시 사흘 만에 최고 레벨 이용자가 탄생했다.",
+   "headline": "Playworks、新作MMORPG「Dark Eden R」事前登録を開始",
+   "highlight": "事前登録を開始",
+   "blurb": "新作MMORPG「Dark Eden R」の事前登録が9日に始まった。登録すると変身・ペット召喚券を100枚ずつ受け取れる。",
    "weight": "lead",
    "refs": [
+    8,
+    4,
+    5,
+    9
+   ]
+  },
+  {
+   "headline": "모바일 MMORPG ‘더 가디언즈’ 글로벌 사전예약 시작",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    7
+   ]
+  },
+  {
+   "headline": "블리자드 '와우: 포에버', 출시 사흘 만에 최고 레벨 이용자 탄생",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
     3
-   ]
-  },
-  {
-   "headline": "[대한민국 게임대상] 글로벌 도전이냐, MMORPG 저력이냐…'붉은사막'·'아이온2' 2파전 주목",
-   "highlight": "'붉은사막'·'아이온2' 2파전",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2
-   ]
-  },
-  {
-   "headline": "Indie MMO Spotlight: Wild Terra 2 Gets A New Game Mode",
-   "highlight": "Wild Terra 2",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1
    ]
   }
  ],
