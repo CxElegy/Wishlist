@@ -122,6 +122,17 @@ class Components(unittest.TestCase):
         for kw in ({"mini": True}, {}, {"small": True}):
             self.assertIn('class="xplay"', render._tcard(story, 4, 0, "2026-10-15", **kw), kw)
 
+    def test_heights_are_screen_ratios(self):
+        """2026-11-09 店長：高さは px でなく画面の割合。ほかの注目ニュース・気になるかもは L＝画面 100%、版面は篇幅 L 100%・M 70%・S 50%。ジャンル別の棚はなし。"""
+        js = render.FIT_JS
+        self.assertIn("const SZ = {L: 1, M: 0.7, S: 0.5};", js)
+        self.assertIn("innerHeight * (SZ[sec && sec.dataset.sz] || SZ.M)", js)
+        self.assertNotIn("shelfbox", js)
+        self.assertIn("c._hc", js)   # 入りきらない記事は小さい形（.wc.cmp）で列の下を埋める
+        self.assertIn(".mgrid .wall>.wc.cmp{", render.CSS)
+        self.assertIn("showFlat(true)", render.SHUFFLE_JS)
+        self.assertIn("const T = innerHeight - 16", render.SHUFFLE_JS)
+
     def test_agenda_future_sorted_and_deduped(self):
         mk = lambda d, h: {"url": f"https://e.com/{h}", "headline": h, "_issue": "2026-10-10", "event": {"date": d, "label": "発売"}}
         works = [{"name": "A", "section": "游戏", "stories": [mk("2026-11-01", "b"), mk("2026-10-01", "old"), mk("2026-10-20", "a")]},
