@@ -3675,6 +3675,26 @@ FIT_JS = """
       }
       return;
     }
+    // 頭条のポスター：写真が枠の形に合わず切れないときは、枠を写真の形にする（高さはそのまま・幅を写真に合わせて絞り、空いた幅は字の列へ）。
+    // 左右に帯を出さない（2026-11-09 審美基準 A1・A3・B6：頭条の縦長の写真の左右が黄色い帯になった）
+    const top = p.closest('#front .top');
+    if (top) {
+      const fr = p.closest('.frame'); p.style.aspectRatio = p.style.width = p.style.height = ''; top.style.gridTemplateColumns = ''; if (fr) fr.style.justifySelf = '';
+      const w0 = p.clientWidth, h0 = p.clientHeight, r0 = nat / (w0 / Math.max(1, h0));
+      const ok = Math.abs(Math.log(r0)) < 0.08 || cropAt(img, r0);
+      p.classList.toggle('fill', ok);
+      if (!ok && img._bands) trimFit(img, p, img._bands);
+      if (!ok && r0 < 1 && innerWidth > 760) {
+        const ph = Math.min(w0 / nat, Math.max(h0, innerHeight * 0.6)), w = Math.round(ph * nat); p.style.width = w + 'px'; p.style.height = Math.round(ph) + 'px';   // 頭条はいちばん大きく（C1）：高さは画面の 6 割まで伸ばしてよい p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); img.style.objectPosition = '';
+        if (fr) { fr.style.justifySelf = 'end'; const fw = fr.getBoundingClientRect().width; top.style.gridTemplateColumns = 'minmax(0,1fr) ' + Math.ceil(fw + 16) + 'px'; }
+        if (img._bands) trimFit(img, p, img._bands);
+      } else if (!ok && (r0 > 1 || innerWidth <= 760)) {   // 横長の絵・スマホの縦長の絵：枠を写真の形に（縦は幅の 1.3 倍まで、超える分は主役が残るときだけ切る）
+        const ar = Math.max(nat, 1 / 1.3); p.style.height = 'auto'; p.style.aspectRatio = ar.toFixed(4); p.classList.add('fill');
+        if (ar > nat * 1.02) cropAt(img, nat / ar); else img.style.objectPosition = '';
+        if (img._bands) trimFit(img, p, img._bands);
+      }
+      return;
+    }
     const big = p.closest('article.hero, article.lead, article.wide');
     if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
     const r = nat / (boxW(img, p.clientWidth) / boxH(img, p.clientHeight));
