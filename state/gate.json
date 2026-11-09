@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-08T23:17:57+00:00",
+ "checked": "2026-11-09T01:17:52+00:00",
  "fired": {
-  "at": "2026-11-08T23:18:15+00:00",
+  "at": "2026-11-09T01:18:12+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -16,25 +16,27 @@
    "edit": 14
   },
   "2026-11-09": {
-   "edit": 4
+   "edit": 5
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-08T22:15:39+00:00",
+    "at": "2026-11-09T01:18:12+00:00",
     "attempts": 1,
     "day": "2026-11-09",
-    "prog": 39,
-    "resp": "cse_01W4x6f5oTt9iK1cJ9NmxL1Y",
-    "sig": "92bf0374cb58"
+    "prog": 93,
+    "resp": "cse_01W4x6f8SGzWNaRg6BactAQt",
+    "sig": "11d2c1a02a00"
    },
    "items": [
     "BLEACH Mirrors High",
     "MMORPG 新作",
     "dota2",
+    "lib:F1",
     "lib:台風・天気",
+    "lib:大相撲",
     "lib:恐竜",
     "lib:美術館の企画展",
     "あつ森",
@@ -49,11 +51,16 @@
    "need": true,
    "prog": 93,
    "prog_day": "2026-11-09",
-   "ripe": [],
-   "sig": "c34adcda3001",
+   "ripe": [
+    "BLEACH Mirrors High",
+    "dota2",
+    "あつ森",
+    "滑雪"
+   ],
+   "sig": "11d2c1a02a00",
    "token_cap": 1000000,
    "tokens_today": 182532,
-   "why": "整理待ちの記事 32 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 56 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
