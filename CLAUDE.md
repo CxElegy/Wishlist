@@ -18,6 +18,7 @@
 | `docs/rules/sections.md` | 小分类（subs）必填・板块一览・シリーズ・上级系列・面・判断上下级（parent） | 関注項を足す・板块 / 小分類 / 面 / parent・`sections.yaml`・`taxonomy.py` |
 | `docs/rules/match.md` | 匹配词（match）的写法・垃圾站・exclude_hosts・情報源・地域ごとの情報員・audit-match | `match` / `exclude`・収集・`sources.py`・`intel/`・`drop_reason` |
 | `docs/rules/wizard.md` | 完善关注项・向导的小规则 | 「完善关注项」・`docs/home/additem.js`・设置页の依頼 |
+| `docs/rules/aesthetic.md` | 店長の審美基準（余白・写真・大きさの順・字・重なり・画面 1 枚・P5・合格の見本） | **画面を作る・直すとき必ず。出す前にこの表で採点** |
 | `docs/rules/design.md` | 网页设计（设计框架・视觉・配图・hdimg・scrapling・motif・話題度）・目次のロゴと炎・目次のアイコン・テストグラウンド（各ページ・新闻语言・目次 v6） | 画面・CSS・`render.py`・画像・テーマ・`heat.py`・目次・入口 `welcome.py` |
 | `docs/rules/live.md` | 页面自动更新・「更新中」条 | `LIVE_JS` / `BUSY_JS`・`version.json`・`live_status` |
 | `docs/rules/admin.md` | 管理ページ・バックグラウンド表・ライブログ・しくみの全体図・今すぐ実行・リソース・時刻・AI/ルールの札・架构图・流程图的规矩・全体の構成 | 管理ページ・`processes.py`・`overview.py`・`run_now` |
