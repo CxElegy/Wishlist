@@ -419,6 +419,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.ilovepcbang.com/news/photo/202611/203202_305348_498.jpg": {
+  "w": 570,
+  "h": 322,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.552,
+  "local": "pics/ab2b378c618ae6d0.webp",
+  "out": [
+   1280,
+   723
+  ],
+  "why": "看不清"
+ },
  "https://cdn.ipnn.co.kr/news/photo/202611/418181_80146_252.jpg": {
   "w": 960,
   "h": 542,
@@ -481,12 +494,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.tgdaily.co.kr/news/photo/202611/407885_211976_5210.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
- },
  "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg": {
   "w": 1200,
   "h": 2132,
@@ -515,6 +522,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://cdn.videocardz.com/1/2026/11/GTA6-5.jpg": {
+  "w": 3840,
+  "h": 2160,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.wccftech.com/wp-content/uploads/2026/11/PlayStation-5-Firmware-War-GTA-6-Requirement-1920x1080.jpg": {
@@ -1911,6 +1924,12 @@
   "v": 3,
   "blur": 0.387
  },
+ "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2614188-9a5bf05ab73c.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://more-news.tw/more-news-media/2026/11/JQ-x-Vaundy.jpg": {
   "w": 1984,
   "h": 1323,
@@ -2676,12 +2695,6 @@
   "target": 720,
   "v": 3
  },
- "https://shattered.io/wp-content/uploads/2026/11/gta-6-build-leak-three-online-strings-multiplayer-nov-19-2026-gen.webp": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
- },
  "https://shattered.io/wp-content/uploads/2026/11/gta-6-physical-copy-leak-230-gb-claim-vs-212-gb-preload-2026-gen.webp": {
   "w": 1344,
   "h": 768,
@@ -3202,12 +3215,6 @@
   "h": 933,
   "target": 1280,
   "v": 3
- },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/09/1794183856948_img_3ad032dc.jpeg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/09/1794189346617_img_b3dd5145.jpeg": {
   "w": 1200,

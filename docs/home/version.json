@@ -1,14 +1,14 @@
 {
- "admin": "d625a0880e4c",
- "admin-ai": "84f7594924f8",
+ "admin": "322ef7eb2929",
+ "admin-ai": "7c0636f4c831",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ceab3c89"
+   "0be473e8"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "23b57b95"
+   "7847df54"
   ]
  },
  "admin-boards": "72e909786113",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "258e5a987bd3",
+ "admin-emblem": "1dbff54e5a0e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "268d3165"
+   "e90bbc57"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "9d9075a33207",
  "admin-members_marks": {},
- "admin-now": "a492f4fb7afa",
+ "admin-now": "c519e3b09de4",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8c1e01eb"
+   "1d3f1cf5"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2966118a"
+   "5bf06ec1"
   ]
  },
- "admin-system": "9425399d0e1c",
+ "admin-system": "b0115c4a0d10",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e13a9c02"
+   "cbf3a1e8"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "11bc52e5"
+   "1d81e0bc"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "4fdbacf6"
   ]
  },
- "index": "6a8baf2dfead",
+ "index": "3dd1a140c0e5",
  "index_marks": {
   "front": [
    "トップ",
-   "10d3bb2c"
+   "4493e521"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "074f67ef"
+   "9347714d"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "e9a80a62"
+   "0ec87c78"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "ea350524"
+   "9405d3f7"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "0d5028fa"
+   "917da921"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d4adb0bb"
   ]
  },
- "updated": "11.09 19:02",
+ "updated": "11.09 19:15",
  "wishlist": "95f61ae2a8c7"
 }
