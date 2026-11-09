@@ -279,7 +279,8 @@
   "绝区零": 5,
   "BLEACH Mirrors High": 1,
   "あつ森": 1,
-  "Astrae Oratio": 2
+  "Astrae Oratio": 2,
+  "チェーンソーマン": 3
  },
  "dota2": [
   {
@@ -712,5 +713,34 @@
    "image": "https://static.sanyonews.jp/image/article/size1/8/c/3/c/8c3c2428153280702f3ae70ceafe06bb_1.jpg"
   }
  ],
- "Astrae Oratio": []
+ "Astrae Oratio": [],
+ "チェーンソーマン": [
+  {
+   "headline": "中国は「ONE PIECE」、台湾は「チェンソーマン」 浮かび上がる日本アニメの“推し勢力図” 「独身の日」の売れ筋分析",
+   "highlight": "台湾は「チェンソーマン」",
+   "blurb": "日本のアニメやゲームの人気が海外でも広がる中、「独身の日」の売れ筋から見える各地域の“推し”をまとめた分析記事。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Is Norman Reedus teasing a live-action adaptation of the Chainsaw Man anime?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "BANPRESTO《鏈鋸人》劇場版《鏈鋸人蕾潔篇》GLITTER&GLAMOURS－蕾潔－夜晚學校Ver.",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }

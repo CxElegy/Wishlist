@@ -1,6 +1,6 @@
 {
  "date": "2026-11-09",
- "edit_sig": "e046059ed647",
+ "edit_sig": "c6b8769f1a39",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -467,33 +467,37 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-08",
-     "n": 2,
-     "source": "AdverTimes.（アドタイ）",
-     "title": "中国は「ONE PIECE」、台湾は「チェンソーマン」 浮かび上がる日本アニメの“推し勢力図” 「独身の日」の売れ筋分析",
-     "url": "https://www.advertimes.com/20261109/article563437/"
-    },
-    {
-     "date": "2026-11-08",
-     "n": 3,
-     "source": "JoBlo",
-     "title": "Is Norman Reedus teasing a live-action adaptation of the Chainsaw Man anime?",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9sU2dXeGg4M1pxeGN1elRTWlhwSV9QZjhXaWJpdEp4N2lvQTZlbll1dml5LU9kajA5WGZvMWo0WXNmYS1mMkpBeDlESXY4N3otaThOV1hSV0pqN196SmfSAWNBVV95cUxQRHp5YUNmaWhXVjZ4MEo3V21kRVQwMXQwVmx0dnRRdjFKcC1ITDgwVGNqTUNHZnA0OG5aa1BITGIwTmlSdEtqYUFwU0R2aDBnblB2U2pVN1RTTlpVTWFUV0RTbGM?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
+     "blurb": "日本のアニメやゲームの人気が海外でも広がる中、「独身の日」の売れ筋から見える各地域の“推し”をまとめた分析記事。",
+     "date": "2026-11-08",
+     "headline": "中国は「ONE PIECE」、台湾は「チェンソーマン」 浮かび上がる日本アニメの“推し勢力図” 「独身の日」の売れ筋分析",
+     "highlight": "台湾は「チェンソーマン」",
+     "image": "https://cdn.advertimes.com/wp-content/uploads/2026/11/singles-day03.jpg",
+     "image_via": "og:image",
+     "url": "https://www.advertimes.com/20261109/article563437/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-08",
+     "headline": "Is Norman Reedus teasing a live-action adaptation of the Chainsaw Man anime?",
+     "highlight": "",
+     "image": "https://www.joblo.com/wp-content/uploads/2025/10/chainsaw_man_review_joblo_2.jpg",
+     "image_via": "og:image",
+     "url": "https://www.joblo.com/chainsaw-man-norman-reedus/",
+     "weight": "normal"
+    },
+    {
      "blurb": "",
      "date": "2026-11-09",
-     "headline": "BANPRESTO《鏈鋸人》劇場版《鏈鋸人蕾潔篇》GLITTER&GLAMOURS－蕾潔－夜晚學校Ver.蕾潔約會名場面神還原！神秘微笑讓粉絲徹底淪陷！",
+     "headline": "BANPRESTO《鏈鋸人》劇場版《鏈鋸人蕾潔篇》GLITTER&GLAMOURS－蕾潔－夜晚學校Ver.",
      "highlight": "",
      "image": "https://d89889xojlqhy.cloudfront.net/upload/featured/aae9d42d8c056621ccd8213c1c17c6ce.jpg",
      "image_via": "og:image",
      "url": "https://universe.oneone.com.tw/posts/7292",
-     "weight": "hero"
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
@@ -705,7 +709,7 @@
      "highlight": "26年前",
      "image": null,
      "source": "搜狐",
-     "source_icon": "https://statics.itc.cn/web/static/images/pic/sohu-logo/logo-114.png",
+     "source_icon": "https://statics.itc.cn/web/static/images/pic/sohu-logo/logo-144.png",
      "url": "https://www.sohu.com/a/1097922481_386152",
      "weight": "normal"
     }
