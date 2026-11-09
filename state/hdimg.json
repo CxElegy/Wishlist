@@ -145,6 +145,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/006ZneWLly1iiw92uoc0pj325f0w0kjl.jpg": {
+  "w": 2000,
+  "h": 827,
+  "target": 720,
+  "v": 3,
+  "local": "pics/fd369da3f3d6c9cf.webp",
+  "out": [
+   1280,
+   529
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/006dNg2Ply1iiq3m17ab4j31co26mwnw.jpg": {
   "w": 1752,
   "h": 2830,
@@ -870,7 +883,7 @@
  "https://hawk.live/storage/images/posts/arteezy-said-his-mmr-was-stolen-in-dota-2-24547.jpg": {
   "w": 1200,
   "h": 628,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/collapse-assessed-team-spirits-form-after-replacement-of-larl-23707.jpg": {
@@ -907,6 +920,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/nix-spoke-about-the-main-mistake-of-dendi-on-the-dota-2-pro-scene-24091.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/sikle-discussed-oracle-bug-25415.jpg": {
@@ -2303,18 +2322,6 @@
   "out": [
    1048,
    698
-  ],
-  "why": "期限付きの網址"
- },
- "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/04/35484120.jpg&M=1&s=Y&x=0&y=0&sw=1080&sh=599&exp=3600": {
-  "w": 1080,
-  "h": 599,
-  "target": 720,
-  "v": 3,
-  "local": "pics/639481622c7aecaa.webp",
-  "out": [
-   1080,
-   599
   ],
   "why": "期限付きの網址"
  },
