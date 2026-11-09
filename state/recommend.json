@@ -48,6 +48,7 @@
   "https://t.co/0ccKFTVoVQ": null,
   "https://travel.udn.com/travel/story/7934/9856463": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/04/35484120.jpg&M=1&s=Y&x=0&y=0&sw=1080&sh=599&exp=3600",
   "https://tw.stock.yahoo.com/news/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8Bvi-%E6%88%90%E5%B0%B1%E6%95%B8%E9%87%8F%E6%9B%9D%E5%85%89-%E7%8E%A9%E5%AE%B6%E5%B0%87%E8%BF%8E-55-%E9%A0%85%E6%8C%91%E6%88%B0-001016837.html": "https://www.bing.com/th?id=ONUT.cOo0ROysnOMgZkPvqYQQig&pid=News&w=960",
+  "https://www.anewsa.com/detail.php?number=3215523": "https://www.anewsa.com/news_images/2026/11/01/mark/20261101211331.jpg",
   "https://www.cleveland.com/shopping/2026/11/target-warns-limited-edition-teddy-bear-owala-water-bottle-stock-is-running-low.html": null,
   "https://www.dexerto.com/pokemon/every-galar-pokemon-in-pokemon-go-2878451/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/08/27/Every-Dynamax-and-Gigantamax-Pokemon-in-Pokemon-Go-so-far.jpg",
   "https://www.dexerto.com/pokemon/pokemon-highest-grossing-media-franchise-of-all-time-959505/": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/Pokemon-Franchise-Biggest.jpg",
@@ -59,7 +60,6 @@
   "https://www.highpoint.edu/blog/2026/11/hpu-president-nido-qubein-encourages-gratitude-by-giving-teddy-bears-to-freshmen/": "https://www.highpoint.edu/media/home/2026/11/HPU1-Teddy-Bears.jpg",
   "https://www.hk01.com/%E5%A4%A7%E5%9C%8B%E5%B0%8F%E4%BA%8B/60408251/%E5%91%A8%E6%9D%B0%E5%80%AB%E8%B3%A3%E6%A9%9F%E6%A2%B0%E7%8B%97-%E5%B7%A8%E6%98%9F%E5%82%B3%E5%A5%87%E8%81%AF%E6%89%8B%E5%AE%87%E6%A8%B9-%E5%94%AE%E5%83%B9-4-3%E8%90%AC%E5%85%A8%E7%90%83%E9%99%90%E9%87%8F2%E5%8D%83%E5%8F%B0": "https://www.bing.com/th?id=ONUT.QF_M6otyzCEXRXHJDC1AWA&pid=News&w=700",
   "https://www.instyle.com/katy-perry-daughter-daisy-6-hello-kitty-halloween-costumes-12213858": "https://www.bing.com/th?id=ONUT.XAF-9uigKomzQ2zGbzLeeA&pid=News&w=271",
-  "https://www.joynews24.com/view/2023895": "https://image.inews24.com/v1/0f630f83b7aba5.jpg",
   "https://www.koreajoongangdaily.com/business/samsung-holds-pole-position-in-smartphone-sales-in-q3-as-global-market-contracts/12950265": "https://image.koreajoongangdaily.com/12888171.jpg?imageId=12888171&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
   "https://www.ludens.com.tw/cartoon-crime-steam-full-release/": null,
   "https://www.m-i.kr/news/articleView.html?idxno=2014411": "https://cdn.m-i.kr/news/photo/202611/2014411_2014814_1415.jpg",
@@ -1251,27 +1251,6 @@
   },
   {
    "batch": 3,
-   "because": "A2O LITE",
-   "date": "2026-11-09",
-   "hits": [],
-   "image": "https://image.inews24.com/v1/0f630f83b7aba5.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "조이뉴스24",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "'이수만 걸그룹' A2O LITE, 데뷔 26일만 음악방송 11관왕",
-   "url": "https://www.joynews24.com/view/2023895",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-08",
    "hits": [],
@@ -1311,6 +1290,27 @@
    "url": "https://collider.com/mcu-best-quote-captain-america-first-avenger-chris-evans/",
    "words": [],
    "work": "漫威电影"
+  },
+  {
+   "batch": 4,
+   "because": "A2O LITE",
+   "date": "2026-11-07",
+   "hits": [],
+   "image": "https://www.anewsa.com/news_images/2026/11/01/mark/20261101211331.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "아시아뉴스통신",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "A2O LITE, '쇼! 음악중심'서 아이브·아일릿 꺾고 1위!",
+   "url": "https://www.anewsa.com/detail.php?number=3215523",
+   "words": [],
+   "work": "A2O LITE"
   },
   {
    "batch": 4,
@@ -1806,11 +1806,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1818,7 +1818,7 @@
    8
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
@@ -1826,7 +1826,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]

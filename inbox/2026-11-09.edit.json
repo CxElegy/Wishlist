@@ -32,7 +32,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    28
    ]
   },
   {
@@ -41,7 +42,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    29
    ]
   },
   {
@@ -62,7 +64,8 @@
    "weight": "lead",
    "refs": [
     2
-   ]
+   ],
+   "image": "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-doomstadt-description-revealed-statue-offers-detailed-new-look-at-doctor-doom-ab230867.jpg"
   },
   {
    "headline": "Marvel Officially Revives Female Apache Ghost Rider",
@@ -223,19 +226,20 @@
   }
  ],
  "_covered": {
-  "GTA 6": 23,
-  "漫威电影": 9,
+  "GTA 6": 30,
+  "漫威电影": 15,
   "The Mandalorian": 5,
   "ILLIT": 7,
   "gelato pique": 4,
   "星巴克马克杯": 1,
   "dota2": 1,
-  "三星手机": 7,
+  "三星手机": 13,
   "哈利波特剧集": 1,
   "滑雪": 1,
   "Vaundy": 3,
   "周杰伦": 3,
-  "A2O LITE": 2
+  "A2O LITE": 16,
+  "MMORPG 新作": 3
  },
  "dota2": [
   {
@@ -255,8 +259,10 @@
    "blurb": "The Galaxy S27 series will come with three different processors.",
    "weight": "lead",
    "refs": [
-    1
-   ]
+    1,
+    13
+   ],
+   "image": "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/8/1794134326995.webp"
   },
   {
    "headline": "Samsung Galaxy S27、インドでBISの承認を取得",
@@ -267,7 +273,18 @@
     5,
     3,
     4,
-    7
+    7,
+    9,
+    8
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra's iPhone-like design: A smart move for Samsung?",
+   "highlight": "iPhone-like design",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -361,9 +378,52 @@
    "weight": "lead",
    "refs": [
     1,
-    2
+    2,
+    7,
+    11,
+    3,
+    4,
+    6,
+    15,
+    5,
+    8,
+    10,
+    12,
+    13,
+    14,
+    16,
+    9
    ],
    "image": "https://www.bing.com/th?id=ONUT.0jSvDj9_OKXahGrGv8hnxA&pid=News&w=1200"
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "블리자드 '와우: 포에버', 출시 사흘 만에 최고 레벨 이용자 탄생",
+   "highlight": "사흘 만에 최고 레벨",
+   "blurb": "블리자드 엔터테인먼트의 MMORPG '월드 오브 워크래프트: 포에버'에서 출시 사흘 만에 최고 레벨 이용자가 탄생했다.",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "[대한민국 게임대상] 글로벌 도전이냐, MMORPG 저력이냐…'붉은사막'·'아이온2' 2파전 주목",
+   "highlight": "'붉은사막'·'아이온2' 2파전",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Indie MMO Spotlight: Wild Terra 2 Gets A New Game Mode",
+   "highlight": "Wild Terra 2",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
   }
  ]
 }
