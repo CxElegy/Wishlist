@@ -324,7 +324,8 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .rs1{grid-row:span 1}.rs2{grid-row:span 2}.rs3{grid-row:span 3}.rs4{grid-row:span 4}
 /* 小さいカードの段（JS の mason が .mas に包む）：決まった升目で同じ段の背をそろえず、1px の行に 1 枚ずつ一番低い列へ積む。中身の高さで詰まり、段の途中に空きが出ない（2026-11-02 L1・L2） */
 .mas{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:22px;grid-auto-rows:1px;align-items:start;margin-bottom:-28px}
-.mas.fb>.card h3{display:block;-webkit-line-clamp:unset;overflow:visible}  /* 版面の組み方（fitBoard）が高さを決める版面は、見出しを欠かさない（2026-11-08 店長） */
+.mas.fb>.card h3{display:block;-webkit-line-clamp:unset;overflow:visible}
+.pfill{align-self:start;overflow:hidden;border-top:2px solid var(--acc,currentColor);padding-top:8px;font-size:13px;line-height:1.5}.pfill h5{margin:0 0 6px;font:900 12px var(--font-sans);letter-spacing:.1em;opacity:.75}.pfill ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.pfill a{color:inherit;font-weight:700}.pfill a:hover{text-decoration:underline}  /* 版面の列の下の空きに並べる整理待ちの見出し（fitBoard） */  /* 版面の組み方（fitBoard）が高さを決める版面は、見出しを欠かさない（2026-11-08 店長） */
 .mas.mas2{grid-template-columns:repeat(2,minmax(0,1fr))}.mas>.card.c6{grid-column:auto;align-self:start}  /* c6 の小さいカード 4 枚以上は 2 列 */
 .older .mas{grid-template-columns:repeat(4,minmax(0,1fr))}  /* 過去のニュース（c3）も同じ積み方で 4 列 */
 .mas>.card.c4,.mas>.card.c3,.mas>.side{grid-column:auto;align-self:start}.mas>.card.c8{grid-column:span 2;align-self:start}
@@ -1088,7 +1089,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 </style>
-<meta name="wl-ver" data-page="heat" content="4286d0a6cfe4"><style>
+<meta name="wl-ver" data-page="heat" content="6b3f2aaab331"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2054,7 +2055,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.11.09</b></div>
-<div class="meta"><small>更新</small><b>11.09 16:24</b></div></div>
+<div class="meta"><small>更新</small><b>11.09 16:29</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
