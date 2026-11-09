@@ -17,7 +17,8 @@
     37,
     31,
     34,
-    47
+    47,
+    56
    ],
    "image": "https://img.etimg.com/thumb/msid-135658667,width-1200,height-900,imgsize-1144081,overlay-economictimes/articleshow.jpg"
   },
@@ -55,12 +56,14 @@
    ]
   },
   {
-   "headline": "Sony offers PS5 owners a trade-in deal before GTA 6 launch",
-   "highlight": "trade-in deal",
+   "headline": "GTA 6 launch build references multiplayer features, but Rockstar has yet to announce GTA Online",
+   "highlight": "multiplayer features",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    61,
+    52,
+    54
    ]
   }
  ],
@@ -258,7 +261,7 @@
   }
  ],
  "_covered": {
-  "GTA 6": 51,
+  "GTA 6": 65,
   "漫威电影": 28,
   "The Mandalorian": 5,
   "ILLIT": 11,

@@ -419,19 +419,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.ilovepcbang.com/news/photo/202611/203202_305348_498.jpg": {
-  "w": 570,
-  "h": 322,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.552,
-  "local": "pics/ab2b378c618ae6d0.webp",
-  "out": [
-   1280,
-   723
-  ],
-  "why": "看不清"
- },
  "https://cdn.ipnn.co.kr/news/photo/202611/418181_80146_252.jpg": {
   "w": 960,
   "h": 542,
@@ -493,6 +480,12 @@
   "h": 1200,
   "target": 1280,
   "v": 3
+ },
+ "https://cdn.tgdaily.co.kr/news/photo/202611/407885_211976_5210.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://cdn.topstarnews.net/news/photo/202611/16266539_2075448_210.jpg": {
   "w": 1200,
@@ -1597,12 +1590,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-09"
  },
- "https://img.etimg.com/thumb/msid-135659369,width-1200,height-900,imgsize-62246,overlay-economictimes/articleshow.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
- },
  "https://img.etnews.com/news/article/2026/11/09/news-g.v1.20261109.931406f859934f4290dbe5498aeb8ab5_P1.jpg": {
   "w": 418,
   "h": 700,
@@ -1923,12 +1910,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.387
- },
- "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2614188-9a5bf05ab73c.jpg": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
  },
  "https://more-news.tw/more-news-media/2026/11/JQ-x-Vaundy.jpg": {
   "w": 1984,
@@ -2695,6 +2676,12 @@
   "target": 720,
   "v": 3
  },
+ "https://shattered.io/wp-content/uploads/2026/11/gta-6-build-leak-three-online-strings-multiplayer-nov-19-2026-gen.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://shattered.io/wp-content/uploads/2026/11/gta-6-physical-copy-leak-230-gb-claim-vs-212-gb-preload-2026-gen.webp": {
   "w": 1344,
   "h": 768,
@@ -3216,6 +3203,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/09/1794183856948_img_3ad032dc.jpeg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/09/1794189346617_img_b3dd5145.jpeg": {
   "w": 1200,
   "h": 630,
@@ -3570,6 +3563,12 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.gWvFOeCS854EX-_RoxQAMA&pid=News&w=1080": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://www.bing.com/th?id=ONUT.l6kuKQHh7tgR0uUB0f--7A&pid=News&w=1200": {
   "w": 700,
