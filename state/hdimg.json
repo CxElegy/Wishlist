@@ -1603,12 +1603,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-09"
  },
- "https://img.etnews.com/news/article/2026/11/09/news-g.v1.20261109.931406f859934f4290dbe5498aeb8ab5_P1.jpg": {
-  "w": 418,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
  "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp": {
   "w": 1200,
   "h": 675,
@@ -3168,6 +3162,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/11/1791684263958_galaxy-s27-pro-lo-dien-voi-cu-soc-camera-69.png": {
+  "w": 968,
+  "h": 518,
+  "target": 720,
+  "v": 3
+ },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/02/1793627802067_img_2abc25fc.jpeg": {
   "w": 1200,
   "h": 630,
@@ -3975,6 +3975,12 @@
  "https://www.sammyfans.com/wp-content/uploads/2025/09/s25-fe-tab-s11-buds-3-fe-img-1000x576.jpg": {
   "w": 1000,
   "h": 576,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sammyfans.com/wp-content/uploads/2026/10/galaxy-s27-series-img.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
