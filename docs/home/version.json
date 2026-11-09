@@ -1,10 +1,10 @@
 {
- "admin": "a72589ef36c0",
- "admin-ai": "5437043ab19c",
+ "admin": "1edb7d8c1cb7",
+ "admin-ai": "fd1597f91a53",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "0d3be8e9"
+   "7e65f449"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "f3e1de3807b0",
+ "admin-emblem": "2b09e5ea17d1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "43f9ca51"
+   "fad1122f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "6456d7b059c4",
+ "admin-now": "969ddea61d14",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7df3a786"
+   "3a1c3e40"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "791b3d7c"
   ]
  },
- "admin-system": "33aa9a8837ee",
+ "admin-system": "06c317144be8",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "315ae146"
+   "cbf3a1e8"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "4187a082"
   ]
  },
- "index": "01d25e1c5334",
+ "index": "96528f1507a9",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "fe782f51"
+   "9e98d727"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "517b0efc"
+   "5a3d6547"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -196,6 +196,6 @@
    "727faffb"
   ]
  },
- "updated": "11.10 04:39",
+ "updated": "11.10 04:46",
  "wishlist": "659a10063603"
 }
