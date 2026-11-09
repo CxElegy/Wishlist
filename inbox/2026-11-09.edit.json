@@ -232,14 +232,17 @@
   "ILLIT": 7,
   "gelato pique": 4,
   "星巴克马克杯": 1,
-  "dota2": 1,
+  "dota2": 3,
   "三星手机": 13,
   "哈利波特剧集": 1,
-  "滑雪": 1,
+  "滑雪": 3,
   "Vaundy": 3,
   "周杰伦": 3,
   "A2O LITE": 16,
-  "MMORPG 新作": 3
+  "MMORPG 新作": 3,
+  "绝区零": 2,
+  "BLEACH Mirrors High": 1,
+  "あつ森": 1
  },
  "dota2": [
   {
@@ -249,6 +252,15 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "Esports World Cup 2026 - EWC Dota 2 - Schedule and Results",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
@@ -307,6 +319,24 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "屋外スキー場として28年連続で日本一早い開幕！スノーパーク イエティ 2026-2027シーズン",
+   "highlight": "28年連続で日本一早い開幕",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "全国主要スキー場、2027年シーズンの営業開始予定まとめ。今冬はいつオープン?",
+   "highlight": "営業開始予定まとめ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
@@ -424,6 +454,51 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "ガチで「ロビン」は最高だ【崩壊スターレイル×ゼンゼロ】",
+   "highlight": "「ロビン」は最高",
+   "blurb": "ゼンレスゾーンゼロ プレイヤー目線で、崩壊スターレイルのキャラ「ロビン」の魅力を語る note。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.v8bfO7hLnAVNL1miyL-CSw&pid=News&w=1200"
+  },
+  {
+   "headline": "《绝区零》简杜玩法攻略 物理强击主C上手与配装推荐",
+   "highlight": "简杜玩法攻略",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "BLEACH Mirrors High配信開始 藍染惣右介の限定ガシャや特典配布も",
+   "highlight": "配信開始",
+   "blurb": "BLEACH Mirrors Highの配信が開始。藍染惣右介の限定ガシャや特典配布も実施。",
+   "weight": "hero",
+   "refs": [
+    1
+   ],
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/10/931298_1.jpg"
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "「白い恋人」×『あつまれ どうぶつの森』初コラボ缶登場 ジュンをデザインした限定商品を札幌で販売",
+   "highlight": "初コラボ缶",
+   "blurb": "「白い恋人」と『あつまれ どうぶつの森』の初コラボ缶が登場。ジュンをデザインした限定商品を札幌で販売。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/8/c/3/c/8c3c2428153280702f3ae70ceafe06bb_1.jpg"
   }
  ]
 }

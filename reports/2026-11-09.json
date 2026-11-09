@@ -1,6 +1,6 @@
 {
  "date": "2026-11-09",
- "edit_sig": "f65d1c7d452f",
+ "edit_sig": "93daf6eb3f67",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -43,10 +43,10 @@
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "BLEACH Mirrors Highの配信が開始。藍染惣右介の限定ガシャや特典配布も実施。",
      "date": "2026-11-01",
      "headline": "BLEACH Mirrors High配信開始 藍染惣右介の限定ガシャや特典配布も",
-     "highlight": "",
+     "highlight": "配信開始",
      "image": "https://news.dellows.jp/wp-content/uploads/2026/10/931298_1.jpg",
      "image_via": "og:image",
      "url": "https://news.dellows.jp/931298/",
@@ -443,17 +443,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "「白い恋人」と『あつまれ どうぶつの森』の初コラボ缶が登場。ジュンをデザインした限定商品を札幌で販売。",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "山陽新聞",
-     "title": "「白い恋人」×『あつまれ どうぶつの森』初コラボ缶登場 ジュンをデザインした限定商品を札幌で販売",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1TQTdxT3BnSUZmb3lKcHlkZUJoYS01dWZhSk42U29XRWtPWVpkSDN4cy02Nnl0NzdIUEI2dXBZVzEzSzh0Tmx3eE0yZDBaVUtCN0E?oc=5"
+     "headline": "「白い恋人」×『あつまれ どうぶつの森』初コラボ缶登場 ジュンをデザインした限定商品を札幌で販売",
+     "highlight": "初コラボ缶",
+     "image": "https://static.sanyonews.jp/image/article/size1/8/c/3/c/8c3c2428153280702f3ae70ceafe06bb_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/1958247",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -566,7 +568,7 @@
      "highlight": "26年前",
      "image": null,
      "source": "搜狐",
-     "source_icon": "https://statics.itc.cn/web/static/images/pic/sohu-logo/logo-144.png",
+     "source_icon": "https://statics.itc.cn/web/static/images/pic/sohu-logo/logo-114.png",
      "url": "https://www.sohu.com/a/1097922481_386152",
      "weight": "normal"
     }
@@ -587,24 +589,29 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "ゼンレスゾーンゼロ プレイヤー目線で、崩壊スターレイルのキャラ「ロビン」の魅力を語る note。",
      "date": "2026-11-06",
-     "n": 1,
-     "source": "note",
-     "title": "ガチで「ロビン」は最高だ【崩壊スターレイル×ゼンゼロ】",
-     "url": "https://note.com/otonegi/n/ne653b824fae7"
+     "headline": "ガチで「ロビン」は最高だ【崩壊スターレイル×ゼンゼロ】",
+     "highlight": "「ロビン」は最高",
+     "image": "https://www.bing.com/th?id=ONUT.v8bfO7hLnAVNL1miyL-CSw&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://note.com/otonegi/n/ne653b824fae7",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 2,
-     "source": "18183游戏网 on MSN",
-     "title": "《绝区零》简杜玩法攻略 物理强击主C上手与配装推荐",
-     "url": "https://www.msn.com/zh-cn/gaming/%E9%80%9A%E7%94%A8/%E7%BB%9D%E5%8C%BA%E9%9B%B6-%E7%AE%80%E6%9D%9C%E7%8E%A9%E6%B3%95%E6%94%BB%E7%95%A5-%E7%89%A9%E7%90%86%E5%BC%BA%E5%87%BB%E4%B8%BBc%E4%B8%8A%E6%89%8B%E4%B8%8E%E9%85%8D%E8%A3%85%E6%8E%A8%E8%8D%90/ar-AA2gRO3w"
+     "headline": "《绝区零》简杜玩法攻略 物理强击主C上手与配装推荐",
+     "highlight": "简杜玩法攻略",
+     "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/zh-cn/gaming/%E9%80%9A%E7%94%A8/%E7%BB%9D%E5%8C%BA%E9%9B%B6-%E7%AE%80%E6%9D%9C%E7%8E%A9%E6%B3%95%E6%94%BB%E7%95%A5-%E7%89%A9%E7%90%86%E5%BC%BA%E5%87%BB%E4%B8%BBc%E4%B8%8A%E6%89%8B%E4%B8%8E%E9%85%8D%E8%A3%85%E6%8E%A8%E8%8D%90/ar-AA2gRO3w",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -621,22 +628,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 2,
-     "source": "Esports Charts",
-     "title": "FinFun Dota Cup - Dota 2 - Viewership, Overview, Prize Pool",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5kd18zZDVVZVdJWHVMLW1ybGdESUxPb3AzNVZkYzJmSXBsSlZfZGNnd0IzQmJjblBEdDdiU3FSNW1aNmp6bU5zcl9pS29PWXAxOVdpLWwzeXY0eElpYjJIdzdwOHA?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 3,
-     "source": "Esports Charts",
-     "title": "Esports World Cup 2026 - EWC Dota 2 - Schedule and Results",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQTnJGOGlOWGJFUVJtZWF3VWFDYWdhZTVacmw3QTBMa3BoZnVBWEJEclVvbFVqdlpqeUxMb19oZHBnTkRKRnZiaHVxN0xUeDhPTEU4dFFDVmZScHNGREFDNExFd1c1LVQ3THVZaDY4cFJJT3F5dnN5cmNFem9hMUtwMi13?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -648,6 +639,17 @@
      "image_via": "og:image",
      "url": "https://hawk.live/posts/torontotokyo-reflected-future-career-dota-2-pro-scene",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "Esports World Cup 2026 - EWC Dota 2 - Schedule and Results",
+     "highlight": "",
+     "image": null,
+     "source": "Esports Charts",
+     "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
+     "url": "https://escharts.com/tournaments/dota2/esports-world-cup-2026-dota2/schedule",
+     "weight": "normal"
     }
    ],
    "subtitle": "Dota 2",
@@ -695,22 +697,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-02",
-     "n": 2,
-     "source": "Dtimes",
-     "title": "屋外スキー場として28年連続で日本一早い開幕！スノーパーク イエティ 2026-2027シーズン",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE84ck5NaVRYbWlDVHNaOXh6SFVvbU5paHd0TG8weGJ4Zlk3RUhEWXVoam5TeWxDMWVxMXZFQkt3TzNoMmdiOWc?oc=5"
-    },
-    {
-     "date": "2026-11-08",
-     "n": 3,
-     "source": "タビリス on MSN",
-     "title": "全国主要スキー場、2027年シーズンの営業開始予定まとめ。今冬はいつオープン?",
-     "url": "https://www.msn.com/ja-jp/sports/%E5%85%A8%E8%88%AC/%E5%85%A8%E5%9B%BD%E4%B8%BB%E8%A6%81%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4-2027%E5%B9%B4%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%E3%81%AE%E5%96%B6%E6%A5%AD%E9%96%8B%E5%A7%8B%E4%BA%88%E5%AE%9A%E3%81%BE%E3%81%A8%E3%82%81-%E4%BB%8A%E5%86%AC%E3%81%AF%E3%81%84%E3%81%A4%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3/ar-AA2h1FLW"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -722,6 +708,26 @@
      "image_via": "og:image",
      "url": "https://travel.yahoo.com/guides/united-states/utah/articles/utahs-fastest-growing-ski-resort-191940728.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-02",
+     "headline": "屋外スキー場として28年連続で日本一早い開幕！スノーパーク イエティ 2026-2027シーズン",
+     "highlight": "28年連続で日本一早い開幕",
+     "image": "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-e8bc6d3adeeff932b7cfb9e1cb8f469e-20261026-7f6852.jpg",
+     "image_via": "og:image",
+     "url": "https://dtimes.jp/post-1432387/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-08",
+     "headline": "全国主要スキー場、2027年シーズンの営業開始予定まとめ。今冬はいつオープン?",
+     "highlight": "営業開始予定まとめ",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h1SGW.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/sports/%E5%85%A8%E8%88%AC/%E5%85%A8%E5%9B%BD%E4%B8%BB%E8%A6%81%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4-2027%E5%B9%B4%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%E3%81%AE%E5%96%B6%E6%A5%AD%E9%96%8B%E5%A7%8B%E4%BA%88%E5%AE%9A%E3%81%BE%E3%81%A8%E3%82%81-%E4%BB%8A%E5%86%AC%E3%81%AF%E3%81%84%E3%81%A4%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3/ar-AA2h1FLW",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",

@@ -1472,6 +1472,7 @@
     {
      "date": "2026-11-06T08:00:00+00:00",
      "image": "",
+     "link": "https://www.sanyonews.jp/article/1958247",
      "n": 1,
      "seen": "2026-11-08T20:26:10+00:00",
      "site": "https://www.sanyonews.jp",
@@ -2015,6 +2016,7 @@
     {
      "date": "2026-11-06T03:33:43+00:00",
      "image": "",
+     "link": "https://escharts.com/tournaments/dota2/esports-world-cup-2026-dota2/schedule",
      "n": 3,
      "seen": "2026-11-08T20:26:18+00:00",
      "site": "https://escharts.com",
@@ -2443,7 +2445,9 @@
     },
     {
      "date": "2026-11-02T09:18:29+00:00",
-     "image": "",
+     "image": "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-e8bc6d3adeeff932b7cfb9e1cb8f469e-20261026-7f6852.jpg",
+     "image_via": "og:image",
+     "link": "https://dtimes.jp/post-1432387/",
      "n": 2,
      "seen": "2026-11-08T20:25:29+00:00",
      "site": "https://dtimes.jp",
