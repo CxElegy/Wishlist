@@ -1,6 +1,6 @@
 {
  "date": "2026-11-09",
- "edit_sig": "dd9b8d2610c4",
+ "edit_sig": "e046059ed647",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -705,7 +705,7 @@
      "highlight": "26年前",
      "image": null,
      "source": "搜狐",
-     "source_icon": "https://statics.itc.cn/web/static/images/pic/sohu-logo/logo-144.png",
+     "source_icon": "https://statics.itc.cn/web/static/images/pic/sohu-logo/logo-114.png",
      "url": "https://www.sohu.com/a/1097922481_386152",
      "weight": "normal"
     }
@@ -798,29 +798,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 4,
-     "source": "Hotspawn",
-     "title": "Gaimin Gladiators Hint At Return To Dota 2: Who Could They Potentially Sign?",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQQkdraVpqZVNnLTkxdENlWjJHeHZJdXdOSlNNY3pBdXhwaW02N09pc1hoQlBERFdxSGs2U0VsUmVGU29hdmg4dWZkUDlaS1V0VGdIb2g0QllLbGp5QWRkNmhsNFd0TWduNVBzYkV6NkJXWDd6dFhOYnpwSXJ3SFI1OTN2WTFaWFEyQVUyZXdtcjBlRVVwOExGUzIzYmt0YmNZanYzZ1NWTkl1dTBNVzdz?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 5,
-     "source": "Hawk Live",
-     "title": "Nix Noted a Strange Aspect of BETBOOM TEAM’s Departure from the Dota 2 Pro Scene",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPeTVRUk5PZ1R6Smgtc1VWS1c2d1IwLUpMb3NIb0ZrcUtacFpmS1BHaGRiZXhLODdPd19zbEoyWk5rdndNYzVHdEVRZGI3bktHdGczNkNodVhYektiemxlc21qc0dNSzIyTFYzYVdURzVwdGZQOE1jVjJzRkp0aUxlaTNFazR2UE5GWTd5enctNFl2SWc?oc=5"
-    },
-    {
-     "date": "2026-11-08",
-     "n": 6,
-     "source": "网易新闻客户端",
-     "title": "Dota2是5V5的组队游戏，来用实力证明自己吧",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9PRFYwcUFkTHk1WEZDb0hMZmVjdnBlLWM0T2xxV2NMWWpkS2xXdF9kMUZDTWtfVDI2TG9Hc005T1ZRLUVNcFNFSnloakhfS2dnb0hxU3g3ZDFFQ2xQa0FFbGVUMA?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -842,6 +819,26 @@
      "source": "Esports Charts",
      "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
      "url": "https://escharts.com/tournaments/dota2/esports-world-cup-2026-dota2/schedule",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "Gaimin Gladiators Hint At Return To Dota 2: Who Could They Potentially Sign?",
+     "highlight": "",
+     "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/gaimin-gladiators-return-to-dota-2.jpg",
+     "image_via": "og:image",
+     "url": "https://www.hotspawn.com/dota2/news/gaimin-gladiators-hint-at-return-to-dota-2-who-could-they-potentially-sign",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "Nix Noted a Strange Aspect of BETBOOM TEAM’s Departure from the Dota 2 Pro Scene",
+     "highlight": "",
+     "image": "https://hawk.live/storage/images/posts/nix-commented-team-spirit-defeat-23831.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/nix-noted-strange-aspect-betboom-teams-departure-dota-2-pro-scene",
      "weight": "normal"
     }
    ],

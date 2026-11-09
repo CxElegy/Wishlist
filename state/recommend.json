@@ -24,7 +24,7 @@
   "https://games.app-liv.jp/archives/590378": null,
   "https://global.hk01.com/%E7%A4%BE%E4%BC%9A%E6%96%B0%E9%97%BB/60407664/merry-balloon%E5%A4%A7%E5%9E%8B%E6%B0%94%E7%90%83%E5%B7%A1%E6%B8%B812-18%E5%90%AF%E5%BE%B7%E4%BD%93%E8%82%B2%E5%9B%AD%E4%B8%BE%E8%A1%8C-snoopy%E7%AD%89ip%E7%99%BB%E5%9C%BA": "https://cdn.hk01.com/di/media/images/dw/20261105/1195096137200046080940317.jpeg/hL0qZSXtJRAsxoUVOKNLkjpqYUSGG2OQEv2GhTf9hoU?v=w1280r16_9",
   "https://gnn.gamer.com.tw/detail.php?sn=314573": "https://p2.bahamut.com.tw/B/2KU/75/fe3c9b54769450d330a0ab9a8a210gb5.JPG",
-  "https://hawk.live/posts/nix-noted-strange-aspect-betboom-teams-departure-dota-2-pro-scene": "https://hawk.live/storage/images/posts/nix-commented-team-spirit-defeat-23831.jpg",
+  "https://hawk.live/posts/korb3n-explains-1wins-dota-2-roster-issues-will-solve": "https://hawk.live/storage/images/posts/korb3n-harshly-criticized-auroras-new-roster-24133.jpg",
   "https://hotelbank.jp/investigation/ski-slope-access-review-ranking-30-hotels-winter-adr-2026/": "https://hotelbank.jp/wp-content/uploads/eyecatch-192494-auto.png",
   "https://iphoneislam.com/ja/language/en/2026/08/has-samsung-become-a-copy-of-apple-2/170752": "https://iphoneislam.com/wp-content/uploads/2026/08/samsung-vs-apple.jpg",
   "https://iphoneislam.com/ko/2026/11/iphone-18-pro-max-demolishes-galaxy-s26-ultra-battery-test/173566": "https://iphoneislam.com/wp-content/uploads/2026/11/s26-vs-iphone-18-pro-00.jpg",
@@ -1438,27 +1438,6 @@
   {
    "batch": 5,
    "because": "dota2",
-   "date": "2026-11-09",
-   "hits": [],
-   "image": "https://hawk.live/storage/images/posts/nix-commented-team-spirit-defeat-23831.jpg",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "Hawk Live",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "Nix Noted a Strange Aspect of BETBOOM TEAM’s Departure from the Dota 2 Pro Scene",
-   "url": "https://hawk.live/posts/nix-noted-strange-aspect-betboom-teams-departure-dota-2-pro-scene",
-   "words": [],
-   "work": "dota2"
-  },
-  {
-   "batch": 5,
-   "because": "dota2",
    "date": "2026-11-08",
    "hits": [],
    "image": null,
@@ -1518,6 +1497,27 @@
    "url": "https://www.thefirsttimes.jp/news/0000914589/",
    "words": [],
    "work": "Vaundy"
+  },
+  {
+   "batch": 5,
+   "because": "dota2",
+   "date": "2026-11-07",
+   "hits": [],
+   "image": "https://hawk.live/storage/images/posts/korb3n-harshly-criticized-auroras-new-roster-24133.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "Hawk Live",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "Korb3n Explains How 1win’s Dota 2 Roster Issues Will Solve",
+   "url": "https://hawk.live/posts/korb3n-explains-1wins-dota-2-roster-issues-will-solve",
+   "words": [],
+   "work": "dota2"
   },
   {
    "batch": 6,
@@ -1887,11 +1887,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1899,15 +1899,15 @@
    8
   ],
   [
+   "作品:三星手机",
+   7
+  ],
+  [
    "三星 Galaxy",
    7
   ],
   [
    "galaxy",
-   7
-  ],
-  [
-   "作品:三星手机",
    7
   ]
  ]
