@@ -374,7 +374,8 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .rs1{grid-row:span 1}.rs2{grid-row:span 2}.rs3{grid-row:span 3}.rs4{grid-row:span 4}
 /* 小さいカードの段（JS の mason が .mas に包む）：決まった升目で同じ段の背をそろえず、1px の行に 1 枚ずつ一番低い列へ積む。中身の高さで詰まり、段の途中に空きが出ない（2026-11-02 L1・L2） */
 .mas{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:22px;grid-auto-rows:1px;align-items:start;margin-bottom:-28px}
-.mas.fb>.card h3{display:block;-webkit-line-clamp:unset;overflow:visible}  /* 版面の組み方（fitBoard）が高さを決める版面は、見出しを欠かさない（2026-11-08 店長） */
+.mas.fb>.card h3{display:block;-webkit-line-clamp:unset;overflow:visible}
+.pfill{align-self:start;overflow:hidden;border-top:2px solid var(--acc,currentColor);padding-top:8px;font-size:13px;line-height:1.5}.pfill h5{margin:0 0 6px;font:900 12px var(--font-sans);letter-spacing:.1em;opacity:.75}.pfill ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.pfill a{color:inherit;font-weight:700}.pfill a:hover{text-decoration:underline}  /* 版面の列の下の空きに並べる整理待ちの見出し（fitBoard） */  /* 版面の組み方（fitBoard）が高さを決める版面は、見出しを欠かさない（2026-11-08 店長） */
 .mas.mas2{grid-template-columns:repeat(2,minmax(0,1fr))}.mas>.card.c6{grid-column:auto;align-self:start}  /* c6 の小さいカード 4 枚以上は 2 列 */
 .older .mas{grid-template-columns:repeat(4,minmax(0,1fr))}  /* 過去のニュース（c3）も同じ積み方で 4 列 */
 .mas>.card.c4,.mas>.card.c3,.mas>.side{grid-column:auto;align-self:start}.mas>.card.c8{grid-column:span 2;align-self:start}
@@ -3481,20 +3482,26 @@ FIT_JS = """
     if (m.length !== 2 || m[0].length < 2 || m[1].length < 2 || Math.abs(Math.log(r)) < 0.08) return false;
     const horiz = r > 1, a = m[horiz ? 0 : 1], q = horiz ? 1 / r : r, n = a.length, tot = a.reduce((s, v) => s + v, 0) || 1;
     if (q < 0.45) return false;
+    if (!img.dataset.p && !img.dataset.k && q < 0.75) return false;   // 人も字も写っていない写真（風景・場所）は 25% までしか切らない：空と景色がそろって意味になる（2026-11-09 店長：キャンプ場の写真は全体を見せる）
     const C = t => { const x = Math.min(Math.max(t, 0), 1) * n, i = Math.min(Math.floor(x), n - 1); let s = 0; for (let j = 0; j < i; j++) s += a[j]; return s + a[i] * (x - i); };
     let best = -1, at = 0;
     for (let k = 0; k <= 24; k++) { const o = (1 - q) * k / 24, v = C(o + q) - C(o); if (v > best) { best = v; at = o; } }
     const keep = best / tot;
     if (keep < 0.85) return false;   // 2026-11-07：6 割では文字入りのバナーの端が欠けた（INDEXBOX）。2026-11-08：7 割でも台風の地図の文字が欠けた → 85%
-    // 写真の中の文字のかたまり（data-k，photo_bands.text_box）は全部残す：入らない切り方はしない。入るなら文字が全部入る位置へずらす（2026-11-08）
-    const kb = (img.dataset.k || '').split(',').map(Number);
-    if (kb.length === 4 && kb.every(v => !isNaN(v))) {
+    // 写真の中の文字のかたまり（data-k，photo_bands.text_box）と人（data-p，顔を肩まで広げた範囲，photo_bands.people_box）は全部残す：
+    // 入らない切り方はしない。入るなら全部入る位置へずらす（2026-11-08 文字、2026-11-09 人：何人も並ぶ写真で端の人が切れた）
+    for (const box of [img.dataset.k, img.dataset.p]) {
+      const kb = (box || '').split(',').map(Number);
+      if (kb.length !== 4 || !kb.every(v => !isNaN(v))) continue;
       const lo = horiz ? kb[0] : kb[1], hi = horiz ? kb[2] : kb[3];
       if (hi - lo > q) return false;
       at = Math.min(Math.max(at, hi - q), lo);
     }
-    // 切り落とす両端に人や物がほとんど無いときだけ切る：端それぞれ 5% まで（2026-11-09 店長：何人も並ぶ写真で端の人が切れた。85% 残っても、落とす 15% が 1 人分だった）
-    if (C(at) / tot > 0.05 || (tot - C(at + q)) / tot > 0.05) return false;
+    // 文字と人の両方を入れるためにずらした結果、どちらかが外れたら切らない
+    for (const box of [img.dataset.k, img.dataset.p]) {
+      const kb = (box || '').split(',').map(Number);
+      if (kb.length === 4 && kb.every(v => !isNaN(v)) && ((horiz ? kb[0] : kb[1]) < at - 1e-6 || (horiz ? kb[2] : kb[3]) > at + q + 1e-6)) return false;
+    }
     const pos = (1 - q) > 0.001 ? at / (1 - q) * 100 : 50;
     img.style.objectPosition = horiz ? pos + '% 50%' : '50% ' + pos + '%';
     img.dataset.keep = Math.round(keep * 100);
@@ -3674,7 +3681,7 @@ FIT_JS = """
     // 切る場所はどこも同じ規則：主役（顔・題字）が 6 割以上残る位置で切れるなら切る。0.75 より細い絵は、切らずに枠を絵の幅に絞る narrow・side が受ける
     p.classList.toggle('fill', (r >= 0.75 && (cropAt(img, r) || Math.min(r, 1 / r) >= 0.95)) || Math.abs(Math.log(r)) < 0.08);
     // 切れない横長の絵：枠を絵の形に。余りはカードの紙が受ける（文字を欠かさない。2026-11-07 店長「这种剪切方式取消」）
-    if (sm && innerWidth > 760 && r > 1 && !p.classList.contains('fill')) { p.style.height = 'auto'; p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); }   // 枠は写真の比率で（px で決めると、幅が変わったあと 32px の帯になった。2026-11-09）
+    if (sm && innerWidth > 760 && r >= 0.75 && !p.classList.contains('fill')) { p.style.height = 'auto'; p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); }   // 切れない絵は枠を絵の形に（少し縦長の絵も：人を切れない寄せ集めの写真で左右に白い余白が出た。2026-11-09）   // 枠は写真の比率で（px で決めると、幅が変わったあと 32px の帯になった。2026-11-09）
     if (r < 0.75) { img.style.objectPosition = ''; delete img.dataset.keep; }
     narrow(img, p, nat, r);
     if (sm && innerWidth > 760 && !p.classList.contains('fill') && r < 0.75) side(sm, p, nat, p.clientHeight);   // 小さいカード：枠を写真の幅に絞り、見出しを横へ
@@ -3840,6 +3847,8 @@ FIT_JS = """
     return run;
   };
   const fitBoard = (m, gap) => {
+    m.querySelectorAll(':scope > .pfill').forEach(x => x.remove());   // 前の組で空きに並べた整理待ちを外してから組む
+    { const pd = m.closest('section') && m.closest('section').querySelector('details.pend'); if (pd) pd.style.display = ''; }
     const cs = [...m.children];
     cs.forEach(c => { if (c.dataset.fbh) { c.style.display = ''; delete c.dataset.fbh; } });   // 前の組で出さなかった記事を戻してから組む
     if (innerWidth <= 760 || cs.some(c => !c.matches('article.card.mini') || c.matches('.tape'))) return false;
@@ -3937,6 +3946,17 @@ FIT_JS = """
       if (f.s > 1) { const y0 = Math.max(...y.slice(0, f.s)); c.style.gridColumn = '1 / span ' + f.s; c.style.gridRow = (y0 + 1) + ' / span ' + (h + gap); for (let a = 0; a < f.s; a++) y[a] = y0 + h + gap; return; }
       const j = best.at[i]; c.style.gridColumn = String(j + 1); c.style.gridRow = (y[j] + 1) + ' / span ' + (h + gap); y[j] += h + gap;
     });
+    // 列の下の空き（80px 以上）は、整理待ちの見出しを並べて埋める（2026-11-09 店長 案 A「很完美」）。入る分だけ。全部並べたら下の「整理待ち」はたたむ
+    const pend = sec && sec.querySelector('details.pend'), items = pend ? [...pend.querySelectorAll('li')] : [];
+    const Hmax = Math.max(...y) - gap; let used = 0;
+    for (let j = 0; j < best.k && used < items.length; j++) {
+      const d = Math.round(Hmax - (y[j] - gap)); if (d < 80) continue;
+      const box = document.createElement('div'); box.className = 'pfill'; box.style.gridColumn = String(j + 1); box.style.gridRow = (y[j] + 1) + ' / span ' + d; box.style.height = d + 'px';
+      box.innerHTML = '<h5>ほかの記事（整理待ち）</h5><ul></ul>'; const ul = box.querySelector('ul'); m.append(box);
+      while (used < items.length) { const li = items[used].cloneNode(true); li.querySelectorAll('small').forEach(x => x.remove()); ul.append(li); if (box.scrollHeight > box.clientHeight + 1) { li.remove(); break; } used++; }
+      if (!ul.children.length) box.remove();
+    }
+    if (pend && items.length && used >= items.length) pend.style.display = 'none';
     m.dataset.fit = best.k + ':' + best.f.map(f => f.k).join(',');
     if (window.WL_FB_DEBUG) (window.WL_FB_LOG = window.WL_FB_LOG || []).push([m.closest('section') && m.closest('section').dataset.k, best.k, best.c2, best.f.map(f => f.k + ':' + Math.round(f.ph || 0))]);
     return true;
@@ -4085,7 +4105,7 @@ FIT_JS = """
     };
     // 写真の枠を d だけ伸ばせるか：主役と文字（data-k）が欠けない切り方があるときだけ（cropAt）。比率がほぼ同じなら切らずに伸ばせる
     const canGrow = (k, d) => { const p = cards[k].querySelector('.pic'), im = p && p.querySelector('img:not(.bg):not(.ico)'); if (!p || !im || !im.naturalWidth) return false;
-      const r = im.naturalWidth / im.naturalHeight / (p.clientWidth / (p.clientHeight + d)), ok = Math.abs(Math.log(r)) < 0.08 || cropAt(im, r);
+      const r = im.naturalWidth / im.naturalHeight / (p.clientWidth / (p.clientHeight + d)), ok = Math.abs(Math.log(r)) < 0.08 || (!im._bands && cropAt(im, r));   // 帯を外す写真（trimFit）は真ん中で合わせるので、切る位置を選べない：比率がほぼ同じときだけ（2026-11-09 キャンプの写真が空だけになった）
       if (im.dataset.m || im.dataset.k) cropAt(im, im.naturalWidth / im.naturalHeight / (p.clientWidth / p.clientHeight)); return ok; };
     const plan = (cols, ord, sH) => {
       const H = cards.map(c => c.offsetHeight), span = cards.map(c => (c.classList.contains('lead') && !c.classList.contains('tall') && cols >= 3) ? 2 : 1);
@@ -4175,6 +4195,17 @@ FIT_JS = """
       side.style.gridColumn = String(cols); side.style.gridRow = '1 / span ' + Math.ceil(hS + (below ? GAP : 0));
     }
   };
+  // 小元素（版面の右上のキャラ）の実際の幅だけ、見出しの帯の右を空ける（決め打ちの 260px では、横に広いポーズのキャラが「今週」の数に重なった。2026-11-09）
+  const embPad = () => document.querySelectorAll('section.sec.has-emb').forEach(s => {
+    const b = s.querySelector('.band'), em = s.querySelector('.emb'); if (!b || !em) return;
+    const ims = [...em.querySelectorAll('img')].filter(i => i.offsetWidth); if (!ims.length) return;
+    b.style.paddingRight = '';
+    const left = Math.min(...ims.map(i => i.getBoundingClientRect().left)), need = Math.round(b.getBoundingClientRect().right - left + 12), cur = parseFloat(getComputedStyle(b).paddingRight) || 0;
+    if (need > cur) b.style.paddingRight = need + 'px';
+  });
+  addEventListener('load', embPad);
+  addEventListener('resize', () => setTimeout(embPad, 250));
+  document.addEventListener('load', e => { if (e.target.closest && e.target.closest('.emb')) embPad(); }, true);   // 写真の load は document の capture で聞く（window には上がらない）
   // 写真・字体が届いて高さが変わったら詰め直す（1 フレームにまとめる）。足した分で自分の大きさが変わっても、同じ結果になるので繰り返さない
   let wallReady = document.readyState === 'complete'; addEventListener('load', () => { wallReady = true; });
   let wq = 0; const wallSoon = () => { if (!wq) wq = requestAnimationFrame(() => { wq = 0; wall(); }); };

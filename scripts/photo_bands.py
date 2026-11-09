@@ -17,7 +17,7 @@ IMG_RE = re.compile(r'<img src="(https?://[^"]+)"')
 FLAT = 24              # 同じ色とみなす差（RGB の差の合計）
 MIN_BAND = 0.04        # これより細い余白は外さない
 BREATH = 0.03          # 余白を外しても残す幅（物の周りの息をする余白）
-VERSION = 7            # 測り方の版。変えたら前の測りは全部測り直す（7：字の範囲を PaddleOCR の文字検出に替えた 2026-11-09）
+VERSION = 8            # 測り方の版。変えたら前の測りは全部測り直す（7：字の範囲を PaddleOCR の文字検出に替えた・8：人の範囲 data-p を足した 2026-11-09）
 
 
 def bands(data):
@@ -188,6 +188,42 @@ def text_box(data):
     return [round(x0, 3), round(y0, 3), round(x1, 3), round(y1, 3)]
 
 
+FACE_MODEL = pathlib.Path(__file__).resolve().parent / "models" / "face_yunet_2023mar.onnx"   # OpenCV の顔検出 YuNet（MIT）。face_id.py が使うのと同じもの
+_FACE = {}
+
+
+def people_box(data):
+    """写真の中の人（顔を肩まで広げた範囲）を全部まとめた範囲 → (左, 上, 右, 下) の割合。いなければ None。
+    render の cropAt は字の範囲（data-k）と同じく、この範囲が全部入る切り方しか許さない（2026-11-09 店長：何人も並ぶ写真で端の人が切れた。
+    主役の分布〔data-m〕だけでは、端に落とすのが人か観客席かを区別できなかった）。顔は小さすぎるもの（短い辺の 4% 未満＝遠くの観客）は数えない。"""
+    try:
+        import cv2
+        import numpy as np
+        from PIL import Image
+        key = threading.get_ident()
+        if key not in _FACE:
+            _FACE[key] = cv2.FaceDetectorYN.create(str(FACE_MODEL), "", (320, 320), 0.8, 0.3, 5000)
+        det = _FACE[key]
+        rgb = np.asarray(Image.open(io.BytesIO(data)).convert("RGB"))
+        h, w = rgb.shape[:2]
+        s = min(1.0, 960 / max(h, w))
+        bgr = cv2.cvtColor(cv2.resize(rgb, (max(1, int(w * s)), max(1, int(h * s)))) if s < 1 else rgb, cv2.COLOR_RGB2BGR)
+        H, W = bgr.shape[:2]
+        det.setInputSize((W, H))
+        _, faces = det.detect(bgr)
+    except Exception:  # noqa: BLE001
+        return None
+    boxes = []
+    for f in (faces if faces is not None else []):
+        x, y, fw, fh = (float(v) for v in f[:4])
+        if min(fw, fh) < 0.04 * min(W, H):
+            continue
+        boxes.append((max(0.0, x - 0.6 * fw) / W, max(0.0, y - 0.3 * fh) / H, min(W, x + 1.6 * fw) / W, min(H, y + 2.0 * fh) / H))   # 顔 → 頭と肩
+    if not boxes:
+        return None
+    return [round(min(b[0] for b in boxes), 3), round(min(b[1] for b in boxes), 3), round(max(b[2] for b in boxes), 3), round(max(b[3] for b in boxes), 3)]
+
+
 def _text_box_mser(data):
     """前の文字の範囲（OpenCV の MSER で、同じ高さで横に 4 個以上並ぶ字を探す）。文字検出が動かない環境のときだけ使う。"""
     try:
@@ -232,7 +268,7 @@ def measure(urls, cache, fetch, log=print):
     def one(u):
         try:
             data = fetch(u)
-            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "s": segments(data), "v": VERSION} if data else {"t": [], "m": "", "k": None, "v": VERSION})
+            return u, ({"t": bands(data), "m": mass_css(data), "k": text_box(data), "p": people_box(data), "s": segments(data), "v": VERSION} if data else {"t": [], "m": "", "k": None, "v": VERSION})
         except Exception as ex:  # noqa: BLE001  「無い」（404・410）と答えた写真だけ印（ページでは最初から代わりの写真か、カードを出さない）。
             # つながらない・時間切れは一時的なものとして記録しない（次の回にまた試す。PC の DNS が落ちて 39 枚に印が付き、壁が空になった）
             return u, ({"t": [], "m": "", "k": None, "v": VERSION, "dead": 1} if getattr(ex, "code", None) in (404, 410) else None)
@@ -272,6 +308,8 @@ def inject(text, cache):
             out += f' data-s="{";".join(",".join(map(str, s)) for s in v["s"])}"'
         if v.get("k"):
             out += f' data-k="{",".join(map(str, v["k"]))}"'
+        if v.get("p"):
+            out += f' data-p="{",".join(map(str, v["p"]))}"'
         return out
     text = IMG_RE.sub(rep, text)
     # data-mx は、同じ img にまだ data-m が無いときだけ data-m にする（店長のページの写真は render が付けた data-m を使う）
