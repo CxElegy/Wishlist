@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-09T20:17:51+00:00",
+ "checked": "2026-11-09T20:56:56+00:00",
  "fired": {
-  "at": "2026-11-09T20:18:15+00:00",
+  "at": "2026-11-09T20:56:56+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -19,76 +19,78 @@
    "edit": 11
   },
   "2026-11-10": {
-   "edit": 3
+   "edit": 4
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-09T19:32:28+00:00",
+    "at": "2026-11-09T20:56:56+00:00",
     "attempts": 1,
     "day": "2026-11-10",
-    "prog": 70,
-    "resp": "cse_01W4x6f6RyLvNzT3pBrvzvjZ",
-    "sig": "183ef3d1ce58"
+    "prog": 164,
+    "resp": "cse_01W4x6f687YbR3nQVZgMdW6b",
+    "sig": "1201d5f45362"
    },
    "items": [
-    "MMORPG 新作",
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
     "The Mandalorian",
-    "lib:NBA",
-    "lib:台風・天気",
-    "lib:広島旅行",
-    "lib:恐竜",
-    "lib:美術館の企画展",
+    "dota2",
     "あつ森",
-    "ぐでたま",
+    "チェーンソーマン",
+    "三星手机",
     "周杰伦",
+    "哈利波特剧集",
     "日本顶级网球赛事",
-    "星巴克马克杯",
+    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-09T20:15:47+00:00",
+   "last_batch": "2026-11-09T20:41:09+00:00",
    "last_error": {
     "at": "2026-11-09T13:48:02+00:00",
     "text": "出刊に失敗：No module named 'cv2'"
    },
    "need": true,
-   "prog": 152,
+   "prog": 164,
    "prog_day": "2026-11-10",
    "ripe": [
-    "ぐでたま",
-    "星巴克马克杯"
+    "GTA 6",
+    "三星手机",
+    "漫威电影"
    ],
-   "sig": "aeeccee6f42a",
+   "sig": "1201d5f45362",
    "token_cap": 1000000,
-   "tokens_today": 184407,
-   "why": "整理待ちの記事 62 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 203713,
+   "why": "整理待ちの記事 42 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "あつ森",
+    "A2O LITE"
+   ],
+   "need": true,
+   "sig": "6130abd7dc48",
    "waiting": [
-    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
-    "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
     "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -133,11 +135,11 @@
    "runs": 9
   },
   "2026-11-10": {
-   "batches": 10,
-   "cr": 5254317,
-   "cw": 162250,
-   "in": 141,
-   "out": 22016,
+   "batches": 14,
+   "cr": 7971099,
+   "cw": 175789,
+   "in": 194,
+   "out": 27730,
    "runs": 3
   }
  }
