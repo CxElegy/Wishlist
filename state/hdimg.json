@@ -3405,8 +3405,15 @@
  "https://www.bing.com/th?id=ONUT.K-ueSVO5E4V6l8_eMP41Bw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.552,
+  "local": "pics/a47af033cbc91a94.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,

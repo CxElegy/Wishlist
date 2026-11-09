@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "b2f147b3e3fa",
+ "edit_sig": "052b2e311907",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?BVmo0vcwM-1IY4ios_zoS",
@@ -531,17 +531,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "MatPat examines Zipper T. Bunny's dialogue and game clues to propose who might be inside the costume.",
      "date": "2026-11-09",
-     "n": 1,
-     "source": "The Game Theorists on MSN",
-     "title": "Zipper T Bunny costume theory in Animal Crossing: New Horizons",
-     "url": "https://www.msn.com/en-us/lifestyle/other/zipper-t-bunny-costume-theory-in-animal-crossing-new-horizons/vi-AA2h45Ln"
+     "headline": "Zipper T Bunny costume theory in Animal Crossing: New Horizons",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.K-ueSVO5E4V6l8_eMP41Bw&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/lifestyle/other/zipper-t-bunny-costume-theory-in-animal-crossing-new-horizons/vi-AA2h45Ln",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
