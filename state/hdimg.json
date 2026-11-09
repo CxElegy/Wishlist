@@ -61,18 +61,6 @@
   "target": 720,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261107ac/718/w480h1038/20261107/3612-9ef59fd3cefb172f039a75652129e35e.jpg": {
-  "w": 480,
-  "h": 1038,
-  "target": 720,
-  "v": 3
- },
- "http://n.sinaimg.cn/sinakd20261107ac/718/w480h1038/20261107/cd9a-eb91469a49a3a7e0bb5af4dcdf7fb0eb.jpg": {
-  "w": 480,
-  "h": 1038,
-  "target": 720,
-  "v": 3
- },
  "http://n.sinaimg.cn/sinakd20261108ac/718/w480h1038/20261108/f106-556c91c00f756e60d7c12d158f6f09e7.jpg": {
   "w": 480,
   "h": 1038,
@@ -208,12 +196,6 @@
   "target": 1280,
   "v": 3
  },
- "https://3c.yipee.cc/wp-content/uploads/2026/11/Spirit-circle.jpg": {
-  "w": 1440,
-  "h": 881,
-  "target": 720,
-  "v": 3
- },
  "https://9to5google.com/wp-content/uploads/sites/4/2026/02/galaxy-s26-ultra-privacy-display-17.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
   "h": 628,
@@ -341,19 +323,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-09"
  },
- "https://attach.setn.com/newsimages/2026/02/11/5451715-PH.jpg": {
-  "w": 800,
-  "h": 450,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.464,
-  "local": "pics/c8f35dc3c4c7585a.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
  "https://beforesandafters.com/wp-content/uploads/2026/11/Screenshot-2026-11-03-at-11.34.49-am.jpg": {
   "w": 1280,
   "h": 485,
@@ -363,12 +332,6 @@
  "https://bespinbulletin.com/wp-content/uploads/2026/10/ranger-swgoh.webp": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://bloximages.newyork1.vip.townnews.com/laloyolan.com/content/tncms/assets/v3/editorial/f/f2/ff2193f0-c64a-477e-8308-d12a4eb38451/6ae96045386c5.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -1130,10 +1093,22 @@
   "target": 720,
   "v": 3
  },
+ "https://image.edaily.co.kr/images/Photo/files/NP/S/2026/11/PS26110400395.jpg": {
+  "w": 1080,
+  "h": 1271,
+  "target": 1280,
+  "v": 3
+ },
  "https://image.fnnews.com/resource/media/image/2026/11/05/202611050911240705_l.jpg": {
   "w": 800,
   "h": 1000,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.inews24.com/v1/0f630f83b7aba5.jpg": {
+  "w": 580,
+  "h": 448,
+  "target": 720,
   "v": 3
  },
  "https://image.inews24.com/v1/cfffa618f78d76.jpg": {
@@ -1579,19 +1554,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1489960052156450557/origin_1.jpg": {
-  "w": 360,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.637,
-  "local": "pics/3fc3d4983bd0a732.webp",
-  "out": [
-   1080,
-   1080
-  ],
-  "why": "看不清"
- },
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/01/phpu8QrkM.jpg": {
   "w": 800,
   "h": 1199,
@@ -1623,6 +1585,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.newspim.com/news/2026/11/09/261109094522470_w.jpg": {
+  "w": 1200,
+  "h": 724,
+  "target": 720,
+  "v": 3
+ },
  "https://img.theweek.in/content/dam/week/en/wire-updates/pti-preview-theweek.jpg": {
   "w": 760,
   "h": 429,
@@ -1635,12 +1603,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.39
- },
- "https://img.topics.smt.news.goo.ne.jp/picture/eventbank/m_eventbank-10653641.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/iza_nettrend/m_iza_nettrend-WQLYEJHNY5E4ZNNC4HHA2MZ4GM.jpg": {
   "w": 640,
@@ -1715,12 +1677,6 @@
  "https://img6.donews.com/img/2026/11/05/img_pic_1793875977.jpg": {
   "w": 900,
   "h": 400,
-  "target": 1280,
-  "v": 3
- },
- "https://imgnn.seoul.co.kr/img/upload/2026/11/03/SSC_20261103163005.jpg.webp": {
-  "w": 1200,
-  "h": 962,
   "target": 1280,
   "v": 3
  },
@@ -1875,12 +1831,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.387
- },
- "https://mezamashi.ismcdn.jp/mwimgs/a/7/1200xm/img_a751d99a9da2327f93af5791b20ce6fc1582493.jpg": {
-  "w": 1200,
-  "h": 849,
-  "target": 1280,
-  "v": 3
  },
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2614188-9a5bf05ab73c.jpg": {
   "w": 1200,
@@ -3077,12 +3027,6 @@
   "target": 720,
   "v": 3
  },
- "https://times-abema.ismcdn.jp/mwimgs/2/9/1200w/img_29ed6bf6a46cabbb6b7d74c6d82596c1244940.jpg": {
-  "w": 1200,
-  "h": 1704,
-  "target": 720,
-  "v": 3
- },
  "https://travelbinger.com/cdn-cgi/image/width=1600,height=900,quality=80,format=auto,fit=cover/https://backend.travelbinger.com/wp-content/uploads/2026/11/38d0ffa1b7a661b12b2b2d6b66abf0cd.webp": {
   "w": 1600,
   "h": 900,
@@ -3269,6 +3213,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.57O1PmCcROSTz7iZgnGh1Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3282,9 +3232,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.7GoX2qKrHpBAcHmrtaKNoA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.88sOtfAZHwRmoI7ljpIXtA&pid=News&w=1170": {
   "w": 700,
-  "h": 525,
+  "h": 467,
   "target": 720,
   "v": 3
  },
@@ -3313,18 +3263,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
- },
- "https://www.bing.com/th?id=ONUT.BLRUqdyhpsnoPCxLnKzxEQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ECca1qp02z8H9gJoGspmDw&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.FQMMOhAn4OrSqV1KueIOIA&pid=News&w=600": {
   "w": 600,
@@ -3397,6 +3335,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.QF_M6otyzCEXRXHJDC1AWA&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3413,6 +3357,12 @@
  "https://www.bing.com/th?id=ONUT.SCMZR5kYw8zw1fnL0We-sQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.UFhRn8cd1yIq-sTwAs2u3g&pid=News&w=640": {
+  "w": 640,
+  "h": 427,
   "target": 720,
   "v": 3
  },
@@ -3448,6 +3398,25 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-09"
  },
+ "https://www.bing.com/th?id=ONUT.X05TOwE27NAt93YxMEkyUA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.XAF-9uigKomzQ2zGbzLeeA&pid=News&w=271": {
+  "w": 466,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.442,
+  "local": "pics/32aca6cbfbe264bb.webp",
+  "out": [
+   852,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.XfZiWageP0oD7RJ4cItMhQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3478,6 +3447,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.cOo0ROysnOMgZkPvqYQQig&pid=News&w=960": {
+  "w": 700,
+  "h": 399,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.l6kuKQHh7tgR0uUB0f--7A&pid=News&w=1200": {
   "w": 700,
@@ -3518,12 +3493,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.414
- },
- "https://www.bing.com/th?id=ONUT.s_c3Xwa6hQLfit1xEUY7vQ&pid=News&w=780": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.uvQNvoSO5vnghkkWIN2mGg&pid=News&w=750": {
   "w": 700,
@@ -3636,6 +3605,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/08/Pokemon-Scarlet-Violet-Pokemon-Home-compatibility.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3643,6 +3618,18 @@
   "v": 3
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/03/07/from-season-3.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/08/27/Every-Dynamax-and-Gigantamax-Pokemon-in-Pokemon-Go-so-far.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/Pokemon-Franchise-Biggest.jpg": {
   "w": 1600,
   "h": 900,
   "target": 1280,
