@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "052b2e311907",
+ "edit_sig": "a6a4a44b2b94",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?BVmo0vcwM-1IY4ios_zoS",
@@ -429,17 +429,19 @@
    "cover": null,
    "facts": [],
    "name": "ぐでたま",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-08",
-     "n": 1,
-     "source": "三立新聞網SETN.com",
-     "title": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升♥",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE14RWlHbFMza2trY3FLeXcxNGJfVjhYNDBQdTM1aG9vS1J1VEZXV3hXbUx4d3dJR0JzNXo5UFdKS3RnUEtxbUE?oc=5"
+     "headline": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升♥",
+     "highlight": "",
+     "image": "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.setn.com/news/22762",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Gudetama",
    "theme": {
     "accent": "#885D0C",
