@@ -3675,6 +3675,26 @@ FIT_JS = """
       }
       return;
     }
+    // 頭条のポスター：写真が枠の形に合わず切れないときは、枠を写真の形にする（高さはそのまま・幅を写真に合わせて絞り、空いた幅は字の列へ）。
+    // 左右に帯を出さない（2026-11-09 審美基準 A1・A3・B6：頭条の縦長の写真の左右が黄色い帯になった）
+    const top = p.closest('#front .top');
+    if (top) {
+      const fr = p.closest('.frame'); p.style.aspectRatio = p.style.width = p.style.height = ''; top.style.gridTemplateColumns = ''; if (fr) fr.style.justifySelf = '';
+      const w0 = p.clientWidth, h0 = p.clientHeight, r0 = nat / (w0 / Math.max(1, h0));
+      const ok = Math.abs(Math.log(r0)) < 0.08 || cropAt(img, r0);
+      p.classList.toggle('fill', ok);
+      if (!ok && img._bands) trimFit(img, p, img._bands);
+      if (!ok && r0 < 1 && innerWidth > 760) {
+        const ph = Math.min(w0 / nat, Math.max(h0, innerHeight * 0.6)), w = Math.round(ph * nat); p.style.width = w + 'px'; p.style.height = Math.round(ph) + 'px';   // 頭条はいちばん大きく（C1）：高さは画面の 6 割まで伸ばしてよい p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); img.style.objectPosition = '';
+        if (fr) { fr.style.justifySelf = 'end'; const fw = fr.getBoundingClientRect().width; top.style.gridTemplateColumns = 'minmax(0,1fr) ' + Math.ceil(fw + 16) + 'px'; }
+        if (img._bands) trimFit(img, p, img._bands);
+      } else if (!ok && (r0 > 1 || innerWidth <= 760)) {   // 横長の絵・スマホの縦長の絵：枠を写真の形に（縦は幅の 1.3 倍まで、超える分は主役が残るときだけ切る）
+        const ar = Math.max(nat, 1 / 1.3); p.style.height = 'auto'; p.style.aspectRatio = ar.toFixed(4); p.classList.add('fill');
+        if (ar > nat * 1.02) cropAt(img, nat / ar); else img.style.objectPosition = '';
+        if (img._bands) trimFit(img, p, img._bands);
+      }
+      return;
+    }
     const big = p.closest('article.hero, article.lead, article.wide');
     if (big) unnarrow(big, p);   // 前に絞った枠のまま測ると比率が 1 に近づいて絞りが外れる（2 回目の load・resize）：元の枠に戻してから測る
     const r = nat / (boxW(img, p.clientWidth) / boxH(img, p.clientHeight));
@@ -3852,7 +3872,13 @@ FIT_JS = """
     const cs = [...m.children];
     cs.forEach(c => { if (c.dataset.fbh) { c.style.display = ''; delete c.dataset.fbh; } });   // 前の組で出さなかった記事を戻してから組む
     if (innerWidth <= 760 || cs.some(c => !c.matches('article.card.mini') || c.matches('.tape'))) return false;
-    const vis = cs.filter(c => getComputedStyle(c).display !== 'none' && !c.hidden);
+    let vis = cs.filter(c => getComputedStyle(c).display !== 'none' && !c.hidden);
+    // 同じ写真の記事は 2 回出さない（F4：ILLIT の版面で同じ写真が 2 枚並んだ）。出すのは 6 本まで（F1：画面 1 枚。残りは整理待ちの見出しの所へ）
+    { const seen = new Set(), drop = [];
+      vis.forEach(c => { const im = c.querySelector('.pic img:not(.bg):not(.ico)'), u = im && (im.currentSrc || im.src); if (u && seen.has(u)) drop.push(c); else if (u) seen.add(u); });
+      vis.filter(c => !drop.includes(c)).slice(6).forEach(c => drop.push(c));
+      drop.forEach(c => { boardBase(c); c.style.display = 'none'; c.dataset.fbh = '1'; });
+      vis = vis.filter(c => !drop.includes(c)); }
     if (vis.length < 2) return false;
     m.style.gridTemplateColumns = ''; m.classList.add('fb');   // 見出しは最後まで出す（3 行で「…」に切らない。CSS .mas.fb）
     const cols0 = getComputedStyle(m).gridTemplateColumns.split(' ').length, sec = m.closest('section');
@@ -3971,6 +3997,22 @@ FIT_JS = """
         const ks = [...g.children].filter(k => k.matches('article.card'));
         if (ks.length < 2) return;
         m = document.createElement('div'); m.className = 'mas'; g.insertBefore(m, ks[0]); ks.forEach(c => { m.append(c); mro && mro.observe(c); });
+      }
+      // 大きい記事（lead・c8）＋右の束（.side）＋小さいカードの版面も、PC では全部を小さいカードにして fitBoard に組ませる（頭の記事は先頭へ。fitBoard が一番大きくする）。
+      // 2026-11-09 審美基準 F1・A2：店長のページの版面が画面 2 枚分の高さ・右下が大きく空いていた。重大（hero）の版面は今のまま
+      if (!m && innerWidth > 760 && !g.dataset.flat && !g.querySelector(':scope > article.hero') && g.querySelector(':scope > article.card.lead, :scope > .side')) {
+        g.dataset.flat = '1';
+        g.querySelectorAll(':scope > .side').forEach(s => { while (s.firstChild) g.insertBefore(s.firstChild, s); s.remove(); });
+        const ld = g.querySelector(':scope > article.card.lead');
+        if (ld) { const p0 = ld.querySelector(':scope > .pic'); if (p0) unnarrow(ld, p0); g.prepend(ld); }
+        const sp = 'c6';
+        g.querySelectorAll(':scope > article.card:not(.mini)').forEach(k => {
+          const tx = k.querySelector(':scope > .txt, :scope > .ltx'); if (tx) { while (tx.firstChild) k.insertBefore(tx.firstChild, tx); tx.remove(); }
+          k.classList.remove('lead', 'wide', 'c12', 'c8', 'rs1', 'rs2', 'rs3', 'rs4', 'nw', 'tall', 'ls'); k.classList.add('mini', sp);
+          const h2 = k.querySelector(':scope > h2'); if (h2) { const h3 = document.createElement('h3'); h3.innerHTML = h2.innerHTML; h2.replaceWith(h3); }
+          const b = k.querySelector(':scope > .blurb'); if (b) b.hidden = true;
+        });
+        g.querySelectorAll(':scope > article.card.mini').forEach(k => { k.classList.remove('nxd'); const im = k.querySelector('.pic img:not(.bg):not(.ico)'); if (im && im.complete && im.naturalWidth) fit(im); });
       }
       if (!m && innerWidth > 760) {   // 横長のカード（wide c12）と小さいカードだけの版面：横長も小さいカードにして、形は版面の組み方（fitBoard）に選ばせる（横長のまま置くと版面が画面より高くなった。2026-11-08）
         const ks0 = [...g.children].filter(k => k.matches('article.card'));
