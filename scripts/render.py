@@ -4203,7 +4203,9 @@ FIT_JS = """
     const left = Math.min(...ims.map(i => i.getBoundingClientRect().left)), need = Math.round(b.getBoundingClientRect().right - left + 12), cur = parseFloat(getComputedStyle(b).paddingRight) || 0;
     if (need > cur) b.style.paddingRight = need + 'px';
   });
-  addEventListener('load', embPad); addEventListener('resize', () => setTimeout(embPad, 250)); document.addEventListener('load', e => { if (e.target.closest && e.target.closest('.emb')) embPad(); }, true);
+  addEventListener('load', embPad);
+  addEventListener('resize', () => setTimeout(embPad, 250));
+  document.addEventListener('load', e => { if (e.target.closest && e.target.closest('.emb')) embPad(); }, true);   // 写真の load は document の capture で聞く（window には上がらない）
   // 写真・字体が届いて高さが変わったら詰め直す（1 フレームにまとめる）。足した分で自分の大きさが変わっても、同じ結果になるので繰り返さない
   let wallReady = document.readyState === 'complete'; addEventListener('load', () => { wallReady = true; });
   let wq = 0; const wallSoon = () => { if (!wq) wq = requestAnimationFrame(() => { wq = 0; wall(); }); };
