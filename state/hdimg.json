@@ -316,6 +316,12 @@
   "target": 720,
   "v": 3
  },
+ "https://automaton-media.com/wp-content/uploads/2026/11/20261109-478278-header.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://basketballking.jp/wp-content/uploads/2026/11/Wembanyama-1.jpg": {
   "w": 1200,
   "h": 900,
@@ -331,12 +337,6 @@
  "https://bespinbulletin.com/wp-content/uploads/2026/10/ranger-swgoh.webp": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://bloximages.newyork1.vip.townnews.com/laloyolan.com/content/tncms/assets/v3/editorial/f/f2/ff2193f0-c64a-477e-8308-d12a4eb38451/6ae96045386c5.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -370,12 +370,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.gamemeca.com/data_center/347/093/20261109123605.webp": {
-  "w": 1200,
-  "h": 628,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.gamemeca.com/gmdata/0001/782/802/gm478912_thumb_M2_.webp": {
   "w": 1200,
   "h": 670,
@@ -398,12 +392,6 @@
   "w": 1200,
   "h": 670,
   "target": 720,
-  "v": 3
- },
- "https://cdn.gamemeca.com/gmdata/0001/783/186/gm511972_thumb__R_.webp": {
-  "w": 1200,
-  "h": 670,
-  "target": 1280,
   "v": 3
  },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
@@ -436,19 +424,6 @@
   "h": 720,
   "target": 1280,
   "v": 3
- },
- "https://cdn.ilovepcbang.com/news/photo/202611/203202_305348_498.jpg": {
-  "w": 570,
-  "h": 322,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.552,
-  "local": "pics/ab2b378c618ae6d0.webp",
-  "out": [
-   1280,
-   723
-  ],
-  "why": "看不清"
  },
  "https://cdn.ipnn.co.kr/news/photo/202611/418181_80146_252.jpg": {
   "w": 960,
@@ -546,12 +521,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://cdn.videocardz.com/1/2026/11/GTA6-5.jpg": {
-  "w": 3840,
-  "h": 2160,
-  "target": 1280,
   "v": 3
  },
  "https://cdn.wccftech.com/wp-content/uploads/2026/11/PlayStation-5-Firmware-War-GTA-6-Requirement-1920x1080.jpg": {
@@ -879,6 +848,12 @@
   "target": 720,
   "v": 3
  },
+ "https://eyeonsunvalley.com/StoryPhotos/14462.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://files.value-press.com/czMjZXllY2F0Y2gjODY4NjcjODY4NjdfbHFBaU1LbVlsZi5qcGc.jpg": {
   "w": 1200,
   "h": 650,
@@ -1057,12 +1032,6 @@
   "w": 3840,
   "h": 2160,
   "target": 720,
-  "v": 3
- },
- "https://hips.hearstapps.com/hmg-prod/images/e68b5f15-cb38-4c12-bedb-c5c86e7596d6.png?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
-  "w": 1200,
-  "h": 600,
-  "target": 1280,
   "v": 3
  },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261105/photo/bkn-20261105000104965-1105_00862_001_02b.jpg?20261104222519": {
@@ -1317,11 +1286,17 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cVHRl.img": {
-  "w": 1200,
-  "h": 675,
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bsNCV.img": {
   "target": 1280,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cCV3B.img": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dqOGx.img": {
   "w": 608,
@@ -1524,12 +1499,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h0yus.img": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h1SGW.img": {
   "w": 640,
   "h": 427,
@@ -1580,12 +1549,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.35
- },
- "https://img.asmedia.epimg.net/resizer/v2/4FKE2E4RF5FYBHL3TLHWOMFUZU.jpg?auth=394805490b0f442a81c67bc22ee2ba088c4206754c09acc0fe9f46a4c19a2713&width=1472&height=828&smart=true": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
  },
  "https://img.benesse-cms.jp/pet-cat/item/image/normal/06d992e9-745f-48d9-b74a-2b1648300da5.jpg?w=698&h=483&resize_type=cover&resize_mode=force": {
   "w": 698,
@@ -1756,6 +1719,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-09"
  },
+ "https://img1.kakaku.k-img.com/images/maga/22546/thumbnail_ogp.jpg?v=20240724": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://img2.sbs.co.kr/ops_clip_img/2026/11/01/83b1480d-bf44-43cf-826e-0b0e50cba714005w640.jpg": {
   "w": 640,
   "h": 360,
@@ -1772,12 +1741,6 @@
  "https://img6.donews.com/img/2026/11/05/img_pic_1793875977.jpg": {
   "w": 900,
   "h": 400,
-  "target": 1280,
-  "v": 3
- },
- "https://imgnn.seoul.co.kr/img/upload/2026/11/03/SSC_20261103163005.jpg.webp": {
-  "w": 1200,
-  "h": 962,
   "target": 1280,
   "v": 3
  },
@@ -1945,12 +1908,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.387
- },
- "https://mezamashi.ismcdn.jp/mwimgs/a/7/1200xm/img_a751d99a9da2327f93af5791b20ce6fc1582493.jpg": {
-  "w": 1200,
-  "h": 849,
-  "target": 1280,
-  "v": 3
  },
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2614188-9a5bf05ab73c.jpg": {
   "w": 1200,
@@ -2459,6 +2416,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://pimg.mk.co.kr/news/cms/202611/05/news-p.v1.20261105.e8e58d24f7db4c75ad9644cd1cb679a9_R.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://players.com.ua/wp-content/uploads/2026/11/d2-711-mr.jpg": {
   "w": 1200,
   "h": 675,
@@ -2544,6 +2507,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt0c32cf4cba5df376/6af1931e90b593e6e7563eba/gta6online2027.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltcd74acc1d0a99f3a/bltbe8ad15baa5d28bb/6aef4521f2b47c1f44c4de71/image_-_2026-11-07T153213.837.png": {
   "w": 1200,
   "h": 675,
@@ -2568,6 +2537,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.411
+ },
+ "https://s.yimg.com/lo/mysterio/api/06271fb120c17a195373e8638da869ed98f56cafdda52a7bcfef1e931b344d33/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flooper_vertical_video_161%2Fcefa1bdd4f18b4283e7192738bd531d1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://s.yimg.com/lo/mysterio/api/1015e850188d8b40777c7464f84fbdf48055ff9b308e906d6f00ea7ad93df763/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthestreet_881%2Fa5074f65c2ba238e7c70328072bd70da.jpg": {
   "w": 1200,
@@ -2715,23 +2690,11 @@
   "target": 1280,
   "v": 3
  },
- "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/11/8/galaxy-1110.png?width=0&s=II_tsjgaLp7pgGSTfEEqDg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/8/11/samsungs-new-200mp-camera-sparks-galaxy-s27-ultra-speculation-98a1d797d1744d85b1e28258b356bf5d-538.png?width=0&s=YnOKsmBaWrFil0J3cKSeoQ": {
   "w": 1920,
   "h": 1028,
   "target": 720,
   "v": 3
- },
- "https://static.arynews.tv/zip-archives/wp-content/uploads/2026/08/ARY-1200-x-675-px-2026-08-29T231912.026.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-09"
  },
  "https://static.arynews.tv/zip-archives/wp-content/uploads/2026/10/GTA-6-map.jpg": {
   "target": 720,
@@ -3413,12 +3376,6 @@
   "v": 3,
   "blur": 0.413
  },
- "https://www.bing.com/th?id=ONUT.ENNH70nEZMt8CCiyJq2J2Q&pid=News&w=1023": {
-  "w": 700,
-  "h": 394,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3445,6 +3402,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.42
+ },
+ "https://www.bing.com/th?id=ONUT.Lt1OUxkMqFidKtwEbLUKoA&pid=News&w=1200": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://www.bing.com/th?id=ONUT.M25dCGlBzk91oFEOr2i5eA&pid=News&w=1200": {
   "w": 700,
@@ -3523,6 +3486,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.X05TOwE27NAt93YxMEkyUA&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3581,12 +3550,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.q8DxvKZJDdUPTSKc-AOxmA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.qor2GMnGhXY3knIWgLdOXA&pid=News&w=700": {
   "w": 700,
   "h": 366,
@@ -3605,6 +3568,12 @@
   "h": 466,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.uxjb8qApA4NKkBUHrsJ8Sg&pid=News&w=360": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://www.bing.com/th?id=ONUT.v8bfO7hLnAVNL1miyL-CSw&pid=News&w=1200": {
   "w": 700,
@@ -3851,6 +3820,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.inside-games.jp/imgs/ogp_f/1802024.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
+ },
  "https://www.jedinews.com/wp-content/uploads/2025/09/Warwick-Davis-Harry-Potter-Aug25.jpg": {
   "w": 696,
   "h": 467,
@@ -3948,6 +3923,12 @@
   "h": 1500,
   "target": 1280,
   "v": 3
+ },
+ "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Galaxy-S27-und-Co-Samsung-Premium-Galaxy-AI-Features-bald-nicht-mehr-gratis.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://www.sammyfans.com/wp-content/uploads/2025/07/galaxy-s25-ultra-qi2-ready-charging-img2-1000x576.jpg": {
   "w": 1000,
@@ -4131,6 +4112,12 @@
   "h": 1125,
   "target": 1280,
   "v": 3
+ },
+ "https://www.videogameschronicle.com/files/2026/11/social-basic.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-09"
  },
  "https://www.voiceoverherald.com/wp-content/uploads/2026/11/hero-16.jpg": {
   "w": 1600,

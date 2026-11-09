@@ -1,10 +1,28 @@
 {
  "GTA 6": [
   {
+   "headline": "It's getting closer. GTA 6 to start preloading onto consoles Tuesday",
+   "highlight": "preloading onto consoles Tuesday",
+   "blurb": "Customers who have preordered Grand Theft Auto VI can start preloading the game onto consoles on Tuesday, November 10.",
+   "weight": "hero",
+   "refs": [
+    82,
+    73,
+    87,
+    70,
+    67
+   ],
+   "event": {
+    "date": "2026-11-19",
+    "label": "発売日"
+   },
+   "image": "https://www.bing.com/th?id=ONUT.uxjb8qApA4NKkBUHrsJ8Sg&pid=News&w=360"
+  },
+  {
    "headline": "GTA 6 download code: Buying GTA 6 in a box? Rockstar says no disc inside, just a code for a 212 GB download",
    "highlight": "no disc inside",
-   "blurb": "Rockstar says boxed copies of GTA 6 contain no disc, only a code for a 212 GB download.",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     3,
     11,
@@ -18,28 +36,21 @@
     31,
     34,
     47,
-    56
+    56,
+    68
    ],
    "image": "https://img.etimg.com/thumb/msid-135658667,width-1200,height-900,imgsize-1144081,overlay-economictimes/articleshow.jpg"
   },
   {
-   "headline": "Rockstar Games builds six real drivable GTA 6 cars for Miami promotion",
-   "highlight": "six real drivable GTA 6 cars",
+   "headline": "Selfridges London has launched a huge Grand Theft Auto 6 store with 60+ items for sale",
+   "highlight": "60+ items",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
-   ]
-  },
-  {
-   "headline": "GTA 6 on PS5, PS5 Pro, and Xbox Series X|S: confirmed technical differences and best platform",
-   "highlight": "confirmed technical differences",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5,
-    28,
-    40
+    86,
+    84,
+    72,
+    80
    ]
   },
   {
@@ -52,7 +63,8 @@
     29,
     38,
     39,
-    50
+    50,
+    79
    ]
   },
   {
@@ -61,6 +73,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
+    78,
+    89,
     61,
     52,
     54
@@ -90,15 +104,13 @@
    ]
   },
   {
-   "headline": "All the ‘Avengers: Doomsday’ food collabs you can get your hands on right now",
-   "highlight": "food collabs",
+   "headline": "The MCU’s New X-Men Unlikely To “Assemble” Anytime Soon, as Marvel Could Delay Team-Up Movie",
+   "highlight": "Could Delay Team-Up Movie",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3,
-    23,
-    24,
-    28
+    39,
+    38
    ]
   },
   {
@@ -263,20 +275,20 @@
   }
  ],
  "_covered": {
-  "GTA 6": 65,
-  "漫威电影": 36,
+  "GTA 6": 89,
+  "漫威电影": 41,
   "The Mandalorian": 6,
   "ILLIT": 11,
   "gelato pique": 5,
   "星巴克马克杯": 1,
   "dota2": 6,
-  "三星手机": 32,
+  "三星手机": 44,
   "哈利波特剧集": 1,
   "滑雪": 6,
   "Vaundy": 3,
-  "周杰伦": 9,
+  "周杰伦": 15,
   "A2O LITE": 27,
-  "MMORPG 新作": 10,
+  "MMORPG 新作": 13,
   "绝区零": 5,
   "BLEACH Mirrors High": 1,
   "あつ森": 1,
@@ -352,12 +364,13 @@
    ]
   },
   {
-   "headline": "Galaxy S27 Ultra's iPhone-like design: A smart move for Samsung?",
-   "highlight": "iPhone-like design",
+   "headline": "Samsung Galaxy S27: Some Galaxy AI features will no longer be free",
+   "highlight": "no longer be free",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
+    40,
+    34
    ]
   },
   {
@@ -378,7 +391,12 @@
    "refs": [
     18,
     19,
-    21
+    21,
+    39,
+    41,
+    42,
+    43,
+    10
    ]
   },
   {
@@ -391,7 +409,11 @@
     20,
     24,
     30,
-    31
+    31,
+    33,
+    35,
+    38,
+    44
    ]
   },
   {
@@ -402,7 +424,9 @@
    "refs": [
     25,
     26,
-    32
+    32,
+    36,
+    37
    ]
   },
   {
@@ -548,7 +572,8 @@
    "weight": "normal",
    "refs": [
     5,
-    6
+    6,
+    13
    ]
   },
   {
@@ -615,25 +640,27 @@
  ],
  "MMORPG 新作": [
   {
-   "headline": "Playworks、新作MMORPG「Dark Eden R」事前登録を開始",
+   "headline": "Playworks、新作MMORPG「ダークエデンR」事前登録を開始",
    "highlight": "事前登録を開始",
    "blurb": "新作MMORPG「Dark Eden R」の事前登録が9日に始まった。登録すると変身・ペット召喚券を100枚ずつ受け取れる。",
    "weight": "lead",
    "refs": [
+    13,
     8,
     4,
     5,
     9
-   ]
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.Lt1OUxkMqFidKtwEbLUKoA&pid=News&w=1200"
   },
   {
-   "headline": "모바일 MMORPG ‘더 가디언즈’ 글로벌 사전예약 시작",
-   "highlight": "",
+   "headline": "『スカイリム』を「まるごとMMORPG化」する野心的Modが出現。冒険して、組織を作って働いて、住めるスカイリム",
+   "highlight": "まるごとMMORPG化",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6,
-    7
+    12,
+    11
    ]
   },
   {

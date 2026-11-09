@@ -1,93 +1,5 @@
 [
 {
-"at": "2026-11-07T16:43:47+00:00",
-"text": "2026-11-08 第 1 バッチを出刊：GTA 6（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 4.2万・キャッシュ読み 48.4万・出力 2,601",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.31,
-"mem_total": 16867737600,
-"mem_free": 15883079680,
-"disk_used": 10030125056,
-"disk_free": 31253409792,
-"disk_total": 41283534848,
-"peak": 442814464
-},
-"batch": 1,
-"boards": [
-"GTA 6"
-],
-"stories": 3,
-"left": 0,
-"edited": 5,
-"run": 1794069590.2621472,
-"tok": {
-"in": 16,
-"cw": 42342,
-"cr": 484193,
-"out": 2601,
-"calls": 8,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 529152,
-"secs": 237,
-"run_tok": {
-"in": 16,
-"cw": 42342,
-"cr": 484193,
-"out": 2601,
-"calls": 8,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-11-07T19:25:03+00:00",
-"text": "2026-11-08 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作 ほか 10（16 版面・14 本・残り 1 版面） · token 新規入力 4.3万・キャッシュ読み 62.9万・出力 2,960",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.17,
-"mem_total": 16867737600,
-"mem_free": 15860768768,
-"disk_used": 10030473216,
-"disk_free": 31253061632,
-"disk_total": 41283534848,
-"peak": 433012736
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"MMORPG 新作",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"周杰伦",
-"哈利波特剧集",
-"日本顶级网球赛事",
-"滑雪",
-"漫威电影"
-],
-"stories": 14,
-"left": 1,
-"edited": 10,
-"run": null,
-"tok": {
-"in": 20,
-"cw": 43231,
-"cr": 628775,
-"out": 2960,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 674986
-},
-{
 "at": "2026-11-07T19:30:34+00:00",
 "text": "2026-11-08 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作 ほか 11（17 版面・14 本・今日の整理待ちは全部終わり） · token 新規入力 4.4万・キャッシュ読み 84.5万・出力 3,555",
 "level": "ok",
@@ -2029,6 +1941,56 @@
 "cr": 1730675,
 "out": 8107,
 "calls": 24,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-09T13:48:02+00:00",
+"text": "出刊に失敗：No module named 'cv2'",
+"level": "error"
+},
+{
+"at": "2026-11-09T13:54:12+00:00",
+"text": "2026-11-09 第 1 バッチを出刊：GTA 6、MMORPG 新作、三星手机、周杰伦、漫威电影（5 版面・26 本・今日の整理待ちは全部終わり） · token 新規入力 5.8万・キャッシュ読み 182.4万・出力 6,925",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.31,
+"mem_total": 16867737600,
+"mem_free": 15982112768,
+"disk_used": 9647788032,
+"disk_free": 31635746816,
+"disk_total": 41283534848,
+"peak": 287965184
+},
+"batch": 1,
+"boards": [
+"GTA 6",
+"MMORPG 新作",
+"三星手机",
+"周杰伦",
+"漫威电影"
+],
+"stories": 26,
+"left": 0,
+"edited": 19,
+"run": 1794231632.5369031,
+"tok": {
+"in": 49,
+"cw": 58057,
+"cr": 1823519,
+"out": 6925,
+"calls": 26,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1888550,
+"secs": 820,
+"run_tok": {
+"in": 49,
+"cw": 58057,
+"cr": 1823519,
+"out": 6925,
+"calls": 26,
 "model": "claude-sonnet-5-5"
 }
 }
