@@ -1,14 +1,14 @@
 {
- "admin": "23b2747bace6",
- "admin-ai": "0ad947c22657",
+ "admin": "e38444496901",
+ "admin-ai": "eb0453f4833f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "95074301"
+   "10ee88b4"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "23f38813"
+   "c5a538f4"
   ]
  },
  "admin-boards": "83193a768627",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "036e0692473f",
+ "admin-emblem": "fc411f3db169",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "02932e7a"
+   "6cfda725"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "302f56eaf9b9",
+ "admin-now": "5e100cbbee58",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b302902c"
+   "69696bfa"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "02bedf06"
+   "5fd69146"
   ]
  },
- "admin-system": "0e4e0e7d1893",
+ "admin-system": "8a19674b7078",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a3d434d8"
+   "b5448a51"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b1a552e5"
+   "0b3cd798"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "245a8020"
   ]
  },
- "index": "9f3bfce460f0",
+ "index": "e632fe6645a6",
  "index_marks": {
   "front": [
    "トップ",
-   "507b6d4f"
+   "e7445f38"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "fe782f51"
+   "c828b826"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "5d2fa8fa"
+   "bc675409"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "727faffb"
+   "ea35b5e4"
   ]
  },
- "updated": "11.10 09:28",
+ "updated": "11.10 09:41",
  "wishlist": "3ac5d74e531f"
 }

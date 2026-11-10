@@ -247,10 +247,10 @@
   "漫威电影": 51,
   "三星手机": 18,
   "チェーンソーマン": 3,
-  "周杰伦": 3,
+  "周杰伦": 4,
   "哈利波特剧集": 6,
   "A2O LITE": 2,
-  "The Mandalorian": 1,
+  "The Mandalorian": 2,
   "Vaundy": 1,
   "dota2": 7,
   "ILLIT": 5,
@@ -258,7 +258,10 @@
   "星巴克马克杯": 3,
   "MMORPG 新作": 2,
   "あつ森": 1,
-  "ぐでたま": 1
+  "ぐでたま": 1,
+  "日本顶级网球赛事": 2,
+  "猫用品": 1,
+  "绝区零": 1
  },
  "哈利波特剧集": [
   {
@@ -506,6 +509,51 @@
     1
    ],
    "image": "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg"
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "東レ パン パシフィック オープンテニストーナメント 2026が有明で開催中",
+   "highlight": "有明で開催中",
+   "blurb": "東レ パン パシフィック オープンが有明で開催中。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/10/894547_3.jpg"
+  },
+  {
+   "headline": "テニスウェア姿の限定ペコちゃん缶も！40回大会を迎えた「東レPPOテニス2025」は記念グッズやフード、体験型コンテンツもめじろ押し",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "大人気イベント「ねこ休み展」多摩に初上陸！スター猫写真＆癒やしの猫グッズが大集合",
+   "highlight": "多摩に初上陸",
+   "blurb": "人気イベント「ねこ休み展」が多摩に初上陸。猫写真と猫グッズが集まる。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/1140018/11816984_615.jpg"
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "Severian Release Date & Time For All Servers In Zenless Zone Zero",
+   "highlight": "Severian",
+   "blurb": "Severian Lowell is the second banner in Zenless Zone Zero 3.3, right after Phoenix's debut banner.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.176DxYc3hT_0ivqS9dWeSQ&pid=News&w=1200"
   }
  ]
 }

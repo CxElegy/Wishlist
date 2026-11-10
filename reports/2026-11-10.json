@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "4898f64607d6",
+ "edit_sig": "f9dd2e356118",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -980,15 +980,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-03",
-     "n": 2,
-     "source": "Bluesky",
-     "title": "It was in The Mandalorian & Grogu",
-     "url": "https://bsky.app/profile/antlervel.vet/post/3mzeyyv5cxc2i"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -1087,15 +1078,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 4,
-     "source": "手机新浪网",
-     "title": "周杰伦的成功必然是比别人付出了更多的努力 #微博视频号续航计划##周杰伦被小孩认成赵一鸣# ​",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBsSzJnelgtTHBNc1NMRzRVTml2QmxCaTltSjBlMUxiLXlKSnQ5TGVXOUFzLXEzNF9nbU44NjNZS09BSDlDWDRSOVYyMWV3QWhtNFRhRk01UFBfYTh4bVMyVFNnS01DanB6b0lOYnhNU25QSkU?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1136,17 +1118,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Severian Lowell is the second banner in Zenless Zone Zero 3.3, right after Phoenix's debut banner.",
      "date": "2026-11-08",
-     "n": 1,
-     "source": "Game Rant on MSN",
-     "title": "Severian Release Date & Time For All Servers In Zenless Zone Zero",
-     "url": "https://www.msn.com/en-us/gaming/upcoming-game-releases/severian-release-date-time-for-all-servers-in-zenless-zone-zero/ar-AA2h52te"
+     "headline": "Severian Release Date & Time For All Servers In Zenless Zone Zero",
+     "highlight": "Severian",
+     "image": "https://www.bing.com/th?id=ONUT.176DxYc3hT_0ivqS9dWeSQ&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/gaming/upcoming-game-releases/severian-release-date-time-for-all-servers-in-zenless-zone-zero/ar-AA2h52te",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -1350,17 +1334,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "人気イベント「ねこ休み展」が多摩に初上陸。猫写真と猫グッズが集まる。",
      "date": "2026-11-07",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "大人気イベント「ねこ休み展」多摩に初上陸！スター猫写真＆癒やしの猫グッズが大集合",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1LNmxvc0tCV2RJQnVXRm9uT2dZTmxBSVlaMTN4eFNXYkZibjB6aDdPdEVYOWJJbkU5dVl1TjJ3b3daUnRtQXQ1X3F2alRNRlltQURSdFZB0gFbQVVfeXFMTks0U0p1WUZUTmhJRVBldHMta2F2Zm5jYm5SNXBwdThKc0pUbkdSUUlvendsN1JZVk5hcGR3VFp6TUhLMGZxWVhuYkJJSE4xejJ1b09XRkxId1Zrcw?oc=5"
+     "headline": "大人気イベント「ねこ休み展」多摩に初上陸！スター猫写真＆癒やしの猫グッズが大集合",
+     "highlight": "多摩に初上陸",
+     "image": "https://news.walkerplus.com/article/1140018/11816984_615.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.walkerplus.com/article/1140018/",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -1377,24 +1363,29 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
-     "date": "2026-11-07",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "画像9 / 29＞テニスウェア姿の限定ペコちゃん缶も！40回大会を迎えた「東レPPOテニス2025」は記念グッズやフード、体験型コンテンツもめじろ押し",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1CcGlQaGlaTzRMcUNZZVpldXRoTm0wNzA1ODVhRHRFM3hld3BYQmtaVmlwSVVmSll2em13dVhfc3NacVVuVFMwQ01HODJTZ0JYczJGSFdVYTUtdEFEY29UaUVZMFBneXJYaDBHbXZR?oc=5"
+     "blurb": "東レ パン パシフィック オープンが有明で開催中。",
+     "date": "2026-11-06",
+     "headline": "東レ パン パシフィック オープンテニストーナメント 2026が有明で開催中",
+     "highlight": "有明で開催中",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/894547_3.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.dellows.jp/894547/",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-06",
-     "n": 2,
-     "source": "Dellows News",
-     "title": "東レ パン パシフィック オープンテニストーナメント 2026が有明で開催中",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5LQmJMbWRCdUtsQkZUZzZNTVpCek9GRWpoLWpfbTNkZklwSjlFMkZWTGRkQTFETF83R2djR2loNWtDVGpsYVE?oc=5"
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "テニスウェア姿の限定ペコちゃん缶も！40回大会を迎えた「東レPPOテニス2025」は記念グッズやフード、体験型コンテンツもめじろ押し",
+     "highlight": "",
+     "image": "https://news.walkerplus.com/article/1301059/15509021_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1301059/image15509028.html",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
