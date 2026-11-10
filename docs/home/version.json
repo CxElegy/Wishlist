@@ -1,14 +1,14 @@
 {
- "admin": "6bc2c38f8fd2",
- "admin-ai": "35a8c9fdf4bd",
+ "admin": "b3f34050cc4c",
+ "admin-ai": "b3642c21e64c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "03e34b0b"
+   "cfa3dd19"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "16c61254"
+   "33785f14"
   ]
  },
  "admin-boards": "9a9068c3ae00",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "7a19838177de",
+ "admin-emblem": "676c0327369c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3bb26c89"
+   "c152d337"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "3f64e0265a00",
+ "admin-now": "e62aab9c0f8b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8b8c4697"
+   "2596a38f"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "79f2f3df"
+   "b23426d8"
   ],
   "term-panel": [
    "ライブログ",
-   "8a63dba2"
+   "b98d56fe"
   ]
  },
- "admin-system": "ab501958f46f",
+ "admin-system": "1de9a5525d99",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "831440ea"
+   "c269168d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "dc0cb219"
+   "36ac47d8"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "18d584c0"
   ]
  },
- "index": "b720c57deb69",
+ "index": "362dc0d3b55c",
  "index_marks": {
   "front": [
    "トップ",
-   "423e736b"
+   "1564561f"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "9cbdc32e"
+   "e5862a79"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "ea350524"
+   "9405d3f7"
   ],
   "w-b867582f": [
    "あつ森",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "ded50bb1"
+   "7db9cfd9"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "13a6635b"
   ]
  },
- "updated": "11.11 01:28",
+ "updated": "11.11 01:52",
  "wishlist": "295f18b20d3a"
 }

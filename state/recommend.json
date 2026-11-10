@@ -61,7 +61,6 @@
   "https://www.dexerto.com/pokemon/how-to-get-all-starter-in-pokemon-scarlet-violet-quaxly-fuecoco-sprigatito-1984179/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/14/Pokemon-Scarlet-violet-Sprigatito-Fuecoco-Quaxly.jpg",
   "https://www.dexerto.com/pokemon/pokemon-highest-grossing-media-franchise-of-all-time-959505/": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/Pokemon-Franchise-Biggest.jpg",
   "https://www.elle.com/tw/life/hot-news/g74339684/owala-xmas-starbucks/": "https://hips.hearstapps.com/hmg-prod/images/e68b5f15-cb38-4c12-bedb-c5c86e7596d6.png?crop=1.00xw:1.00xh;0,0&resize=1200:*",
-  "https://www.engadget.com/2311841/gta-6-now-available-for-preload/": "https://www.engadget.com/img/gallery/gta-6-is-now-available-for-preload-if-you-have-a-spare-212gb/l-intro-1794304763.jpg",
   "https://www.ettoday.net/news/20261105/3266660.htm": "https://cdn2.ettoday.net/images/8651/e8651657.jpg",
   "https://www.famitsu.com/article/202611/93631": "https://cimg.kgl-systems.io/camion/files/93631/thumbnail_eCqL.jpg?x=1280",
   "https://www.gamemeca.com/ja/view.php?gid=1783080": "https://cdn.gamemeca.com/gmdata/0001/783/080/gm792648_thumb_____.webp",
@@ -1042,27 +1041,6 @@
   },
   {
    "batch": 2,
-   "because": "GTA 6",
-   "date": "2026-11-10",
-   "hits": [],
-   "image": "https://www.engadget.com/img/gallery/gta-6-is-now-available-for-preload-if-you-have-a-spare-212gb/l-intro-1794304763.jpg",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "Engadget",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "GTA 6 is now available for preload if you have a spare 212GB",
-   "url": "https://www.engadget.com/2311841/gta-6-now-available-for-preload/",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 2,
    "because": "gelato pique",
    "date": "2026-11-09",
    "hits": [],
@@ -1146,7 +1124,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "周杰伦",
    "date": "2026-11-09",
    "hits": [],
@@ -1251,7 +1229,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "漫威电影",
    "date": "2026-11-10",
    "hits": [],
@@ -1356,7 +1334,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "dota2",
    "date": "2026-11-10",
    "hits": [],
@@ -1449,7 +1427,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "FROM",
    "date": "2026-11-09",
    "hits": [],
@@ -1895,15 +1873,15 @@
    8
   ],
   [
+   "三星 Galaxy",
+   7
+  ],
+  [
    "作品:三星手机",
    7
   ],
   [
    "galaxy",
-   7
-  ],
-  [
-   "三星 Galaxy",
    7
   ]
  ]

@@ -342,6 +342,12 @@
   "target": 720,
   "v": 3
  },
+ "https://blog.playstation.com/tachyon/2048/11/f1fb77ba440f1402ae155dc56989230e7a24c2f8-scaled.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-11"
+ },
  "https://bloximages.newyork1.vip.townnews.com/newsminer.com/content/tncms/assets/v3/editorial/d/23/d23ae209-448d-4015-a740-21bf869a6e23/6af211105521e.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize": {
   "w": 1200,
   "h": 630,
@@ -671,6 +677,12 @@
   "h": 2160,
   "target": 720,
   "v": 3
+ },
+ "https://d1lss44hh2trtw.cloudfront.net/assets/articles/2026/11/10/gta-6-gator_feature.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-11"
  },
  "https://d1rldr9jdodfaa.cloudfront.net/images/01KRB6E1GSSMXAAYC3T718DNRJ/bef4f6ff-2b27-4a8e-8315-766539e96d30_1778492311.webp": {
   "w": 1920,
@@ -1846,6 +1858,12 @@
   "target": 720,
   "v": 3
  },
+ "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png": {
+  "w": 1280,
+  "h": 672,
+  "target": 1280,
+  "v": 3
+ },
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
   "w": 840,
   "h": 440,
@@ -2443,12 +2461,6 @@
   "target": 720,
   "v": 3
  },
- "https://rockstarintel.com/wp-content/uploads/2026/10/Grand-Theft-Auto-VI-Launch-Trailer-00-01-03-copy.webp": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://roscoenews.com/content/images/2026/11/IMG_20261031_184054745-2.jpg": {
   "w": 2000,
   "h": 1506,
@@ -2468,6 +2480,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/03330e02ed1984edf129c5ec01090e54703a276039708acbdc94656982bd3a77/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fusa_today_news_641%2Fbf42c97b201dda9be8614f013e866d91.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/06271fb120c17a195373e8638da869ed98f56cafdda52a7bcfef1e931b344d33/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flooper_vertical_video_161%2Fcefa1bdd4f18b4283e7192738bd531d1.jpg": {
   "w": 1200,
   "h": 2133,
@@ -2479,6 +2497,12 @@
   "h": 674,
   "target": 720,
   "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/13b6c73119d42cbcfddbe1a99a563489dfa2695c1fa6841efa3796208ad2f4e6/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2F24_7_wall_st__718%2F730bbb8925983cb1ebed843c9de474ac.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-11"
  },
  "https://s.yimg.com/lo/mysterio/api/74f35a083cff840f66783c92d955d53956a815f17f8fc1c338e7c6d11d969191/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fa11653e42e3e266fd5750215b71c84b8.jpg": {
   "w": 1200,
@@ -3635,12 +3659,6 @@
   "w": 1200,
   "h": 600,
   "target": 720,
-  "v": 3
- },
- "https://www.engadget.com/img/gallery/gta-6-is-now-available-for-preload-if-you-have-a-spare-212gb/l-intro-1794304763.jpg": {
-  "w": 1600,
-  "h": 899,
-  "target": 1280,
   "v": 3
  },
  "https://www.fashion-press.net/img/news/150832/RAM.jpg?1788842767": {
