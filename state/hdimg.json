@@ -234,10 +234,10 @@
   "v": 3
  },
  "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
-  "w": 506,
-  "h": 253,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
  },
  "https://areajugones.sport.es/wp-admin/admin-ajax.php?action=rank_math_overlay_thumb&id=834607&type=videojuegos&hash=327d1d284ff2a1170fe074f5adf184f2": {
   "w": 1220,
@@ -564,7 +564,7 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426_crop.jpg": {
+ "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426.jpg": {
   "target": 720,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
@@ -928,6 +928,12 @@
   "h": 2160,
   "target": 1280,
   "v": 3
+ },
+ "https://game.watch.impress.co.jp/img/gmw/list/2155/209/zzz01.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
  },
  "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/8/1794134326995.webp": {
   "w": 2752,
@@ -2031,12 +2037,6 @@
   "target": 720,
   "v": 3
  },
- "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png": {
-  "w": 1280,
-  "h": 672,
-  "target": 1280,
-  "v": 3
- },
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
   "w": 840,
   "h": 440,
@@ -2458,10 +2458,10 @@
   "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg": {
-  "w": 736,
-  "h": 414,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6f0ca7318ff34d75ac73b0594ed15987.jpg": {
   "w": 1280,

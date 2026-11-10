@@ -541,7 +541,7 @@
   "三星手机": 84,
   "チェーンソーマン": 12,
   "周杰伦": 15,
-  "哈利波特剧集": 15,
+  "哈利波特剧集": 17,
   "A2O LITE": 15,
   "The Mandalorian": 6,
   "Vaundy": 1,
@@ -551,12 +551,13 @@
   "星巴克马克杯": 4,
   "MMORPG 新作": 18,
   "あつ森": 2,
-  "ぐでたま": 1,
+  "ぐでたま": 3,
   "日本顶级网球赛事": 2,
   "猫用品": 2,
-  "绝区零": 2,
+  "绝区零": 4,
   "滑雪": 7,
-  "BLEACH Mirrors High": 1
+  "BLEACH Mirrors High": 3,
+  "FROM": 1
  },
  "哈利波特剧集": [
   {
@@ -611,7 +612,17 @@
     9,
     13,
     14,
-    15
+    15,
+    16
+   ]
+  },
+  {
+   "headline": "HBO's Harry Potter and the Philosopher's Stone series gets release date; know when you can stream it",
+   "highlight": "release date",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
    ]
   }
  ],
@@ -1002,6 +1013,21 @@
     1
    ],
    "image": "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg"
+  },
+  {
+   "headline": "ぐでたまが魔法少女や幼稚園児に！むにゅぐるみパティオ「えぶりでぃぐでたま2」11月12日より店頭販売開始",
+   "highlight": "11月12日より店頭販売開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3
+   ],
+   "event": {
+    "date": "2026-11-12",
+    "label": "発売日",
+    "place": "むにゅぐるみパティオ店頭"
+   }
   }
  ],
  "日本顶级网球赛事": [
@@ -1070,6 +1096,15 @@
     "label": "コラボ展",
     "place": "Yamaha E-Ride Base（横浜）"
    }
+  },
+  {
+   "headline": "「ゼンゼロ」がYamaha E-Ride Baseのリニューアルオープンを飾る。スターライト・ビリー仕様のXSR900 GPが展示！",
+   "highlight": "XSR900 GP",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "滑雪": [
@@ -1129,6 +1164,17 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "「BLEACH Mirrors High」に「［五番隊隊長］平子 真子」が登場！",
+   "highlight": "平子 真子",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    2
+   ]
   }
- ]
+ ],
+ "FROM": []
 }

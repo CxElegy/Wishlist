@@ -37,7 +37,6 @@
   "https://news.yahoo.co.jp/articles/f55217655a48f37ae3c2888b5ec8864cef54ca8c": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261109-00096815-vballk-000-1-view.jpg?exp=10800",
   "https://nijimen.kusuguru.co.jp/topics/648727": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/d8ea645fc0224f7dbd1a0936c547b68f.jpg",
   "https://nijimen.kusuguru.co.jp/topics/648904": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6f0ca7318ff34d75ac73b0594ed15987.jpg",
-  "https://nijimen.kusuguru.co.jp/topics/653128": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg",
   "https://note.com/chaba_nosuke/n/nf2b4c8fc1be5?hl=en": "https://www.bing.com/th?id=ONUT.SCMZR5kYw8zw1fnL0We-sQ&pid=News&w=1200",
   "https://note.com/haru_483/n/n2922550f01b7": "https://assets.st-note.com/production/uploads/images/322005895/rectangle_large_type_2_c2fadc46aaccbfcbef163f97e126a410.png?fit=bounds&quality=85&width=1280",
   "https://note.com/milkypopeye/n/nba559b1e354b?hl=en": "https://www.bing.com/th?id=ONUT.Z8qznNUuoyyH_qoTlJyMrQ&pid=News&w=1200",
@@ -951,39 +950,6 @@
   },
   {
    "batch": 1,
-   "because": "ぐでたま",
-   "date": "2026-11-10",
-   "hits": [
-    "まじかるちいかわ"
-   ],
-   "image": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg",
-   "kind": "board",
-   "liked": "平成ノスタルジー全開の魔法少女ゲーム『アストラエ・オラティオ』が懐かしすぎて、大人げなくはしゃいでしまう。噛むほどに『涼宮ハルヒの憂鬱』や『らき☆すた』時代のアニメの味がする",
-   "score": 8,
-   "source": "にじめん",
-   "taste": [
-    [
-     "まじかる",
-     2
-    ],
-    [
-     "まじかるちいかわ",
-     2
-    ],
-    [
-     "作品:ぐでたま",
-     2
-    ]
-   ],
-   "title": "ぐでたまが魔法少女や幼稚園児に！むにゅぐるみパティオ「えぶりでぃぐでたま2」11月12日より店頭販売開始、EC販売は13日11時から",
-   "url": "https://nijimen.kusuguru.co.jp/topics/653128",
-   "words": [
-    "まじかる"
-   ],
-   "work": "ぐでたま"
-  },
-  {
-   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-11-10",
    "hits": [],
@@ -1046,7 +1012,7 @@
    "work": "GTA 6"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "GTA 6",
    "date": "2026-11-10",
    "hits": [],
@@ -1163,7 +1129,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "gelato pique",
    "date": "2026-11-06",
    "hits": [],
@@ -1268,7 +1234,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "漫威电影",
    "date": "2026-11-10",
    "hits": [],
@@ -1373,7 +1339,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "The Mandalorian",
    "date": "2026-11-08",
    "hits": [],
@@ -1478,7 +1444,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "滑雪",
    "date": "2026-11-10",
    "hits": [],
@@ -1871,11 +1837,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1887,11 +1853,11 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]
