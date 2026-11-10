@@ -1,32 +1,32 @@
 {
- "admin": "6cb05cc4d547",
- "admin-ai": "beab59ca3fb0",
+ "admin": "31920c141a7c",
+ "admin-ai": "a203e1b91ff8",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c788555f"
+   "377eef5f"
   ],
   "tokens": [
    "AI 編集のトークン",
    "70a46003"
   ]
  },
- "admin-boards": "f7e3b1c40460",
+ "admin-boards": "23b96f296509",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "a1e3902e"
+   "9d3e42ce"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "b4c9d3c577fb",
+ "admin-emblem": "58dd0149e04b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a12241df"
+   "cb1f7c7a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "76702076c9e3",
+ "admin-now": "e64ce01dd2e4",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "be955464"
+   "5f15929f"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "2e01c7bc"
+   "e508456b"
   ],
   "term-panel": [
    "ライブログ",
-   "19d50c25"
+   "d31be12d"
   ]
  },
- "admin-system": "45fd76cb2c10",
+ "admin-system": "fde470e17cfe",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b2b4a848"
+   "67318664"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "82bb4418"
+   "c0743a15"
   ]
  },
  "admin_marks": {},
- "heat": "f4734c1574a7",
+ "heat": "8518bef40fc3",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "5bb40540"
+   "983cd53e"
   ],
   "ranking": [
    "ランキング",
-   "3476b6a6"
+   "afb08b3c"
   ]
  },
- "index": "6762ffa0ff7a",
+ "index": "737ad1e78d89",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,11 +105,11 @@
   ],
   "w-0242c181": [
    "dota2",
-   "c8e80fb1"
+   "49ce7bff"
   ],
   "w-130724c0": [
    "猫用品",
-   "bb66287c"
+   "271e64b0"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "34758f40"
+   "abce286f"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "477efeb3"
+   "eca19776"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "9547340e"
   ]
  },
- "updated": "11.10 21:20",
+ "updated": "11.10 21:54",
  "wishlist": "9d592ae985a2"
 }
