@@ -534,6 +534,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426_crop.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg": {
   "w": 1200,
   "h": 675,
@@ -1524,6 +1530,12 @@
   ],
   "why": "看不清"
  },
+ "https://img.biggo.com/B7PUWUIr5Vw8l_EVhVz-9VlhitEyWuS0O9Fu0ROKcMY/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExLzE1ODdiYjQ4LTIxNWMtNDE2NC04NzBmLTFlNDZhYWVlMTAwOV8xNzk0MjYwMzM1X2RlZmF1bHQuanBn.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.biggo.com/utaCYG7voDsrdCU0pANPp7tK8OOj8ya4HtpxnvdCEeQ/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExL2ZmYTZlYjYwLTliYTktNDJhZi05YjQxLTQ2M2FmYzFmNGI4ZV8xNzkzODQzOTgzX2RlZmF1bHQuanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -1767,6 +1779,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.415
+ },
+ "https://insider-gaming.com/wp-content/uploads/2026/09/Jason_and_Lucia_09-scaled.jpg": {
+  "w": 2560,
+  "h": 1440,
+  "target": 1280,
+  "v": 3
  },
  "https://insidethemagic.net/wp-content/uploads/2026/11/6.jpg": {
   "w": 1200,
@@ -2624,12 +2642,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/e5e99a1788b14d479c8fa6c984fe3cc42670696dc5b19a57b4cc77f10b1679de/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmoney_ca_594%2F167321a3e8b469a3cfa0a76a6719f83d.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/e76b1c1b2ea4aa7d01bbae43414a5e4411c2606c96515153173732f643e5a617/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fnewstaiwandigi_com_938%2F42bac3735ec669ba9dbd2ad82d21c713.jpg": {
   "w": 1200,
   "h": 803,
@@ -3350,12 +3362,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.2yWsdOcMnho7-d66r83oQA&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3368,12 +3374,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.8gnscEAyJD4vTywkqDt3ag&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
@@ -3394,12 +3394,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
- },
- "https://www.bing.com/th?id=ONUT.DdO5dFow0nj83ezC9O_UqA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
@@ -3505,6 +3499,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.Q40cd_uXrzMIPS91AzvmRw&pid=News&w=1200": {
+  "w": 700,
+  "h": 385,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3517,6 +3517,12 @@
    671
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.Rs_SbW9qnCUy0juYYyfrKQ&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.SCMZR5kYw8zw1fnL0We-sQ&pid=News&w=1200": {
   "w": 700,
@@ -3550,6 +3556,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.XNjMz40N2o_gwmOPL1Zuvg&pid=News&w=1200": {
+  "w": 700,
+  "h": 595,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3568,6 +3580,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.i6tm1vCTTA6ZsG1iKZlUuA&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.l6kuKQHh7tgR0uUB0f--7A&pid=News&w=1200": {
   "w": 700,
@@ -3653,15 +3671,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ORMS.3230a45ce7ea685c4dc99ab57911fb12&pid=News&w=1200": {
-  "w": 549,
-  "h": 309,
-  "target": 720,
-  "v": 3
- },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/03/bnt202611030081.jpg": {
   "w": 2000,
   "h": 1501,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.chicagotribune.com/wp-content/uploads/2026/11/Grand_Theft_Auto_639_8-1.jpg": {
+  "w": 5670,
+  "h": 3890,
   "target": 720,
   "v": 3
  },
@@ -4092,12 +4110,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.vice.com/wp-content/uploads/sites/2/2026/11/Could-GTA-6-Run-at-40-FPS-on-PS5-Pro-What-New-Datamine-Found.jpg?w=1280": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
  },
  "https://www.vice.com/wp-content/uploads/sites/2/2026/11/GTA-6-Physical-Release-Date-Explained-Why-Some-Orders-Arrive-Early.png?w=1280": {
   "w": 1280,
