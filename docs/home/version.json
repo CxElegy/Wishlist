@@ -1,14 +1,14 @@
 {
- "admin": "445c1655789e",
- "admin-ai": "1efff8ea9d96",
+ "admin": "f960d74d516f",
+ "admin-ai": "71bb970f2c59",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f98d0c0e"
+   "6346788d"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e889b0e9"
+   "c1bcdf15"
   ]
  },
  "admin-boards": "30d05eefc0c8",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "2e183aa6c3ec",
+ "admin-emblem": "6ac155b09e85",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b9d871e0"
+   "5193a3b3"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "2db87467c546",
+ "admin-now": "a01266b3ac3c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f9410a5d"
+   "27b33f73"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "7aee08ea"
+   "ffd9c0a0"
   ]
  },
- "admin-system": "7b7b5b896623",
+ "admin-system": "a98c5ad018f3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "bf5e9a74"
+   "c4b1b910"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2c3b4c65"
+   "6bfb76d1"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "ec28a708"
   ]
  },
- "index": "c360478e46d2",
+ "index": "89b8897fc26b",
  "index_marks": {
   "front": [
    "トップ",
-   "4025c285"
+   "c97bd134"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "c828b826"
+   "a78f432a"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "68f249d7"
+   "96674e30"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "df60084f"
+   "3bf14dea"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "c29fcbf2"
+   "efe2c952"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "8ce85d2e"
+   "ab57dfcf"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "ac9e860c"
+   "7cdddd4d"
   ],
   "w-f303ad09": [
    "绝区零",
    "ea35b5e4"
   ]
  },
- "updated": "11.10 12:30",
- "wishlist": "3ac5d74e531f"
+ "updated": "11.10 12:44",
+ "wishlist": "2809c5ec26bc"
 }
