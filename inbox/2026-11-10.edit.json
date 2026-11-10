@@ -364,7 +364,10 @@
    "refs": [
     1,
     6,
-    7
+    7,
+    10,
+    11,
+    12
    ]
   }
  ],
@@ -373,21 +376,21 @@
   "漫威电影": 86,
   "三星手机": 53,
   "チェーンソーマン": 5,
-  "周杰伦": 8,
-  "哈利波特剧集": 13,
+  "周杰伦": 12,
+  "哈利波特剧集": 15,
   "A2O LITE": 9,
   "The Mandalorian": 2,
   "Vaundy": 1,
   "dota2": 11,
   "ILLIT": 20,
   "gelato pique": 4,
-  "星巴克马克杯": 3,
+  "星巴克马克杯": 4,
   "MMORPG 新作": 15,
   "あつ森": 2,
   "ぐでたま": 1,
   "日本顶级网球赛事": 2,
-  "猫用品": 1,
-  "绝区零": 1,
+  "猫用品": 2,
+  "绝区零": 2,
   "滑雪": 4,
   "BLEACH Mirrors High": 1
  },
@@ -442,7 +445,9 @@
     7,
     8,
     9,
-    13
+    13,
+    14,
+    15
    ]
   }
  ],
@@ -697,6 +702,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "Starbucks Singapore’s Christmas 2026 Merchandise: Bearista Ornament, Festive Mugs and More",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "MMORPG 新作": [
@@ -798,6 +812,15 @@
     1
    ],
    "image": "https://news.walkerplus.com/article/1140018/11816984_615.jpg"
+  },
+  {
+   "headline": "【獣医師発ねこヘルスケアブランド uniam】11月10日は「いいトイレの日」。うんちから探る、ねこの健康長寿。「ねこ研究員」を募集。",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "绝区零": [
@@ -810,6 +833,20 @@
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.176DxYc3hT_0ivqS9dWeSQ&pid=News&w=1200"
+  },
+  {
+   "headline": "横浜のブランド発信拠点「Yamaha E-Ride Base」で「ゼンレスゾーンゼロ×ヤマハ発動機スペシャルコラボ展」を11月11日から開催",
+   "highlight": "11月11日から開催",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-11",
+    "label": "コラボ展",
+    "place": "Yamaha E-Ride Base（横浜）"
+   }
   }
  ],
  "滑雪": [

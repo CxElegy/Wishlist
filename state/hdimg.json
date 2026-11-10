@@ -558,9 +558,9 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426_crop.jpg": {
-  "w": 1200,
-  "h": 675,
+ "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426.jpg": {
+  "w": 1280,
+  "h": 830,
   "target": 720,
   "v": 3
  },
@@ -787,7 +787,7 @@
  "https://digitalpr.jp/simg/1620/147935/715_400_202611091552456af16dbd5fe8d.png": {
   "w": 965,
   "h": 540,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://dimg.donga.com/wps/SPORTS/IMAGE/2026/11/10/134999926.1.jpg": {
@@ -2600,7 +2600,7 @@
  "https://prcdn.freetls.fastly.net/release_image/112568/36/112568-36-b3127b153967cec052843648096d0276-830x436.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 830,
   "h": 436,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/152182/163/152182-163-6940f6d29db4c53d940bb6a03ba893ae-2304x1820.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3554,6 +3554,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.6GeaSh256dvaR-rLRZKfRA&pid=News&w=700": {
+  "w": 700,
+  "h": 383,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
