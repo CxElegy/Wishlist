@@ -63,7 +63,8 @@
   "漫威电影": 16,
   "哈利波特剧集": 7,
   "ILLIT": 4,
-  "周杰伦": 4
+  "周杰伦": 4,
+  "dota2": 3
  },
  "三星手机": [
   {
@@ -249,6 +250,36 @@
    "weight": "normal",
    "refs": [
     3,
+    1
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "TI15 Power Rankings [Best Dota 2 Teams Ranked]",
+   "highlight": "TI15",
+   "blurb": "WIN.GG's power rankings of the best Dota 2 teams ahead of TI15.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://win.gg/wp-content/uploads/2026/08/ti15-power-ranking.jpg.webp"
+  },
+  {
+   "headline": "All Organizations That Left Dota 2 In 2026",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "樊振东跨界宣传DOTA2科普电竞运动",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
     1
    ]
   }

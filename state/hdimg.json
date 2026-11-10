@@ -106,6 +106,32 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/006ZneWLly1iiwaviy2i4j327c0w9kjl.jpg": {
+  "w": 2000,
+  "h": 813,
+  "target": 720,
+  "v": 3,
+  "local": "pics/2ac41dfafb185baf.webp",
+  "out": [
+   1280,
+   520
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/006ZneWLly1iiwcku2k3zj31hi0lxnng.jpg": {
+  "w": 1926,
+  "h": 789,
+  "target": 720,
+  "v": 3,
+  "local": "pics/c8dc8833e704b64b.webp",
+  "out": [
+   1280,
+   524
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/008kvqgEgy1iir5xk8577j30u01o04qp.jpg": {
   "w": 1080,
   "h": 2160,
@@ -3195,6 +3221,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://win.gg/wp-content/uploads/2026/08/ti15-power-ranking.jpg.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.3elife.net/Uploads/Article/images/202611/04/1907367268462.jpg": {
   "w": 600,
   "h": 342,
@@ -3812,7 +3844,7 @@
  "https://www.hotspawn.com/wp-content/uploads/2026/11/all-orgs-that-left-dota-2.jpg": {
   "w": 1199,
   "h": 800,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/gaimin-gladiators-return-to-dota-2.jpg": {

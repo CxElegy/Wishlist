@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "eb203182af67",
+ "edit_sig": "ae69b17c002c",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?0o4xM8kDYYM3NFKzWF5OT",
@@ -532,31 +532,39 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-10",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "樊振东跨界宣传DOTA2科普电竞运动",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBXb3hBUk5iSnYwdUx6X3owSk1CZGEteVplZG1hMDZQRGpBZjBBQUV4ZWRuUktCdUdhUWE2VW1ndXRmNHFFclhENlNNemxIZW5BY1hfOTBSeU9QOUhMZzE4X2lFNktTMnJ3MTJGTk9xUjZCUGc?oc=5"
-    },
-    {
+     "blurb": "WIN.GG's power rankings of the best Dota 2 teams ahead of TI15.",
      "date": "2026-11-08",
-     "n": 2,
-     "source": "WIN.GG",
-     "title": "TI15 Power Rankings [Best Dota 2 Teams Ranked]",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB0UThiZnJPREwxSC1FU1VlX0VCZjM5RTB2SHg2SFF3aE5qYkxDOE1YYnBVZzJweVlqaHd5M0tYRFdfYnR3UXR6X1VUVXlJa2pyVWZ1Mw?oc=5"
+     "headline": "TI15 Power Rankings [Best Dota 2 Teams Ranked]",
+     "highlight": "TI15",
+     "image": "https://win.gg/wp-content/uploads/2026/08/ti15-power-ranking.jpg.webp",
+     "image_via": "AI 挑选",
+     "url": "https://win.gg/ti15-dota-2-power-rankings/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 3,
-     "source": "Hotspawn",
-     "title": "All Organizations That Left Dota 2 In 2026",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNU0stUnp5aGoxMVpjS0dnRjJsa09oU2pJTG5ZS3BvLWFWTURNcE00Nzc3RllEVmxTWWt1OEZnQXI1Skc2R0oxQmNuemZGRFg2SUJxWkNBX0Fvc2laTk9GaEF2aTNMU0RmSDY0cVdfY2ZuelNCaVlBeHhLcFNyOGdYVmI3SUQ?oc=5"
+     "headline": "All Organizations That Left Dota 2 In 2026",
+     "highlight": "",
+     "image": "https://www.hotspawn.com/wp-content/uploads/2026/11/all-orgs-that-left-dota-2.jpg",
+     "image_via": "og:image",
+     "url": "https://www.hotspawn.com/dota2/news/all-organizations-that-left-dota-2-in-2026",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "樊振东跨界宣传DOTA2科普电竞运动",
+     "highlight": "",
+     "image": "http://n.sinaimg.cn/sinakd20261109ac/533/w480h853/20261109/440b-04a80a8a155b76351a83ae1d435d6b33.jpg",
+     "image_via": "og:image",
+     "url": "https://k.sina.com.cn/article_6220413991_m172c3fc2703302d230.html",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
