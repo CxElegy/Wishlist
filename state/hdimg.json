@@ -61,6 +61,12 @@
   "target": 720,
   "v": 3
  },
+ "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af215da17ba9b74caa095be/1794322722682/Deadpool+Reportedly+Has+a+Much+Bigger+Role+in+AVENGERS-+SECRET+WARS+Than+DOOMSDAY.jpg?format=1500w": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "http://tu.duoduocdn.com/uploads/day_261104/202611040024134632_thumb.jpg": {
   "w": 300,
   "h": 200,
@@ -1070,6 +1076,12 @@
  "https://hermes.media.static.aol.com/media/2026/11/07/ddf522af-b364-38de-a078-ce08a3d25c26/5bf79d43-a750-418b-bc18-45934d57b198.jpg": {
   "w": 3840,
   "h": 2160,
+  "target": 720,
+  "v": 3
+ },
+ "https://hermes.media.transform.aol.com/62fa18b32fe254eaffb352010e198602e18cce4a/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/10/46938e58-91dc-3b4f-9323-63ffa6369bf2/ae5ebd96-dd3f-4c81-9f9a-912693cd1e88.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -3384,6 +3396,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.8xciGiAADGDU8S6cDUsaMg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -3565,19 +3583,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ZuMjDJWmJ-jDa0XVQ51nTQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 376,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.511,
-  "local": "pics/94259a1918c5cc3a.webp",
-  "out": [
-   1280,
-   688
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3598,12 +3603,6 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.cNxo0NslN--daEmcUjFkUA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.fLXBzMLGHAaTVJ4TcK9bug&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,

@@ -89,7 +89,7 @@
  "_covered": {
   "GTA 6": 52,
   "三星手机": 16,
-  "漫威电影": 16,
+  "漫威电影": 29,
   "哈利波特剧集": 7,
   "ILLIT": 4,
   "周杰伦": 4,
@@ -146,7 +146,8 @@
    "weight": "lead",
    "refs": [
     1,
-    9
+    9,
+    20
    ],
    "image": "https://images.thedirect.com/media/article_full/doomleader.jpg"
   },
@@ -180,6 +181,19 @@
     14,
     11,
     15
+   ]
+  },
+  {
+   "headline": "Doctor Doom & F4’s Sue Storm Lead Exciting New Marvel Trailer Ahead of Avengers: Doomsday",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    24,
+    23,
+    25,
+    22,
+    17
    ]
   }
  ],
