@@ -559,9 +559,9 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426.jpg": {
-  "w": 1280,
-  "h": 830,
+ "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426_crop.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -1082,6 +1082,19 @@
   ],
   "why": "看不清"
  },
+ "https://hk.on.cc/hk/bkn/cnt/entertainment/20261110/photo/bkn-20261110090140433-1110_00862_001_02b.jpg?20261109221441": {
+  "w": 780,
+  "h": 789,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.712,
+  "local": "pics/ea152dc5bdf880a6.webp",
+  "out": [
+   1265,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://hobby.dengeki.com/ss/hobby/2026/11/card3_FmusjesKofmvSBqSbbHH5uJl04E6Nqo6_nnkxuZU5zH3we3fm_rwfAjNWbGgMltqM.jpg": {
   "w": 1200,
   "h": 630,
@@ -1095,6 +1108,18 @@
   "v": 3
  },
  "https://hotelbank.jp/wp-content/uploads/eyecatch-191037-auto-1.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hotelbank.jp/wp-content/uploads/eyecatch-192494-auto.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://hotelbank.jp/wp-content/uploads/eyecatch-193461-auto.png": {
   "w": 1200,
   "h": 630,
   "target": 1280,
@@ -1787,6 +1812,12 @@
   "target": 720,
   "v": 3
  },
+ "https://inews.gtimg.com/om_bt/OAfxMyK9k9Ay4Jz45p_yZ5zTCbdKGZK-RBEHC17pB0Kq4AA/1000": {
+  "w": 1000,
+  "h": 750,
+  "target": 1280,
+  "v": 3
+ },
  "https://inews.gtimg.com/om_ls/O1tRAT5vAX10x5ZlXu_AeR_-_ePGRSPnvE__Q2_nyiwvIAA_640330/0": {
   "w": 640,
   "h": 330,
@@ -1799,13 +1830,6 @@
    660
   ],
   "why": "看不清"
- },
- "https://inews.gtimg.com/om_ls/Ojo1vcbQfZA6ldRttp2JTmVQcUdaqYTzEUbmE_quqi638AA_640330/0": {
-  "w": 640,
-  "h": 330,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.415
  },
  "https://insidethemagic.net/wp-content/uploads/2026/11/6.jpg": {
   "w": 1200,
@@ -1852,8 +1876,15 @@
  "https://m.media-amazon.com/images/I/31efUBZa2wL._SL500_.jpg": {
   "w": 500,
   "h": 500,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.579,
+  "local": "pics/fd51b759e88e91f1.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://m.media-amazon.com/images/M/MV5BMzRiY2E4ZDgtMzRkYi00MDliLTgxY2YtNzQ4OWY0Y2I1MTFlXkEyXkFqcGc@._V1_QL75_UX500_CR0,0,500,281_.jpg": {
   "w": 500,
@@ -2394,7 +2425,7 @@
  "https://ni.yam.com/20261110/jp-prt-85653-838-1-261110025630647-3bb0d786b74afbc6.webp": {
   "w": 1920,
   "h": 1280,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6f0ca7318ff34d75ac73b0594ed15987.jpg": {
@@ -2735,6 +2766,12 @@
   "w": 1200,
   "h": 803,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.jp/images/finance/common/image/ogp.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://saga.ismcdn.jp/mwimgs/1/0/1200m/img_10aac7ffa9445b5c6654ce01bd27821f89845.jpg": {

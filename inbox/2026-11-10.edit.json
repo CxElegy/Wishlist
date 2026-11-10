@@ -313,8 +313,10 @@
    "blurb": "第九届进博会已近尾声，周杰伦IP机器狗等展品带火情绪消费。",
    "weight": "lead",
    "refs": [
-    3
-   ]
+    3,
+    5
+   ],
+   "image": "https://inews.gtimg.com/om_bt/OAfxMyK9k9Ay4Jz45p_yZ5zTCbdKGZK-RBEHC17pB0Kq4AA/1000"
   },
   {
    "headline": "【周杰倫｜Romanée-Conti】晚餐曬4瓶頂級紅酒 「世界酒王」羅曼尼康帝一瓶值22萬港元",
@@ -322,7 +324,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    6,
+    7
    ]
   }
  ],
@@ -331,7 +335,7 @@
   "漫威电影": 78,
   "三星手机": 29,
   "チェーンソーマン": 5,
-  "周杰伦": 4,
+  "周杰伦": 8,
   "哈利波特剧集": 13,
   "A2O LITE": 6,
   "The Mandalorian": 2,
@@ -345,7 +349,8 @@
   "ぐでたま": 1,
   "日本顶级网球赛事": 2,
   "猫用品": 1,
-  "绝区零": 1
+  "绝区零": 1,
+  "滑雪": 4
  },
  "哈利波特剧集": [
   {
@@ -751,6 +756,36 @@
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.176DxYc3hT_0ivqS9dWeSQ&pid=News&w=1200"
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "軽井沢プリンスホテルスキー場は10月31日オープン｜リフト券8,000円から",
+   "highlight": "10月31日オープン",
+   "blurb": "リフト券は8,000円から。隣接ホテルは平日2.9万円、土曜は2倍以上（2026-27シーズン）。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "「白馬滑雪、住安曇野」 休暇村安曇野推冬季套裝 含接駁車與白馬5座雪場纜車1日券",
+   "highlight": "白馬5座雪場纜車1日券",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Best Step-In & Quick-Entry Snowboard Bindings of 2026: 10 Tested on Glacier Snow",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    4
+   ]
   }
  ]
 }
