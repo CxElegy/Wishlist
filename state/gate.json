@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-10T15:17:52+00:00",
+ "checked": "2026-11-10T16:17:56+00:00",
  "fired": {
   "at": "2026-11-10T15:18:13+00:00",
   "results": {
@@ -33,38 +33,20 @@
     "resp": "cse_01W4x6f5QXF7AUWA5HFkEos3",
     "sig": "2d1c6ef6df96"
    },
-   "items": [
-    "BLEACH Mirrors High",
-    "FROM",
-    "ILLIT",
-    "dota2",
-    "gelato pique",
-    "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "绝区零"
-   ],
+   "items": [],
    "last_batch": "2026-11-10T13:28:58+00:00",
    "last_error": {
-    "at": "2026-11-10T11:43:24+00:00",
-    "text": "出刊に失敗：No module named 'requests'"
+    "at": "2026-11-10T15:26:49+00:00",
+    "text": "出刊に失敗：[Errno 32] Broken pipe"
    },
-   "need": true,
-   "prog": 546,
-   "prog_day": "2026-11-10",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "FROM",
-    "ぐでたま",
-    "哈利波特剧集",
-    "绝区零"
-   ],
-   "sig": "2d1c6ef6df96",
+   "need": false,
+   "prog": 5,
+   "prog_day": "2026-11-11",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 738295,
-   "why": "整理待ちの記事 16 件（11 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
