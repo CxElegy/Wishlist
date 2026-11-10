@@ -30,7 +30,10 @@
     143,
     144,
     146,
-    137
+    137,
+    171,
+    172,
+    166
    ],
    "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/10/vice_city_09-1.jpg?q=49&fit=contain&w=750&h=422&dpr=2"
   },
@@ -73,7 +76,9 @@
     130,
     148,
     138,
-    136
+    136,
+    152,
+    170
    ]
   },
   {
@@ -126,7 +131,10 @@
     132,
     133,
     140,
-    141
+    141,
+    154,
+    155,
+    160
    ]
   },
   {
@@ -145,6 +153,16 @@
     139,
     145,
     147
+   ]
+  },
+  {
+   "headline": "Selfridges Drops 50-Plus ‘GTA VI’ Exclusives Inside a Pink Vice City Pop-Up",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    158,
+    157
    ]
   }
  ],
@@ -204,6 +222,43 @@
     3,
     84
    ]
+  },
+  {
+   "headline": "Marvel Studios Secretly Removed Chris Evans From An Avengers: Doomsday Trailer Scene",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    92
+   ]
+  },
+  {
+   "headline": "KFC's Doctor Doom menu reaches 100 countries",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    94,
+    93
+   ]
+  },
+  {
+   "headline": "‘Avengers: Doomsday’ Theater Merch Revealed, and Doom Takes Center Stage",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    89
+   ]
+  },
+  {
+   "headline": "Avengers: Doomsday Director Defends Controversial Steve Rogers Retcon",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    90
+   ]
   }
  ],
  "三星手机": [
@@ -217,16 +272,18 @@
     3,
     2,
     33,
-    51
+    51,
+    56
    ],
    "image": "https://static.digit.in/Galaxy-S26.png"
   },
   {
-   "headline": "Galaxy S27 Pro and S27 Ultra could make up over 70% of all Galaxy S27 sales",
-   "highlight": "over 70%",
+   "headline": "サムスン「Galaxy S27」は上位モデルに生産の約7割を集中か。新たに「Pro」追加との報道",
+   "highlight": "約7割",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    61,
     1,
     7,
     8,
@@ -241,7 +298,10 @@
     30,
     46,
     36,
-    48
+    48,
+    62,
+    59,
+    60
    ]
   },
   {
@@ -301,7 +361,18 @@
     34,
     35,
     37,
-    49
+    49,
+    54,
+    55,
+    58,
+    57,
+    70,
+    63,
+    64,
+    66,
+    67,
+    68,
+    69
    ]
   },
   {
@@ -311,6 +382,15 @@
    "weight": "normal",
    "refs": [
     26
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultraは、搭載チップに関して大きなサプライズをもたらす可能性がある。",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    65
    ]
   }
  ],
@@ -342,6 +422,39 @@
    "refs": [
     5
    ]
+  },
+  {
+   "headline": "チェンソーマン レゼ篇 レゼ/ボムの新作フィギュア 28年5月発売!",
+   "highlight": "28年5月発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    9,
+    8
+   ],
+   "event": {
+    "date": "2028-05-01",
+    "label": "発売"
+   }
+  },
+  {
+   "headline": "楽しそうに待つ「レゼ」が可愛い！「チェンソーマン レゼ篇」まちぼうけガシャポンフィギュアに、気だるげなデンジなど全5種",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
+  },
+  {
+   "headline": "Chainsaw Man Box Set Drops to Lowest Price of the Year, Collects All 97 Chapters of Public Safety Arc",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
   }
  ],
  "周杰伦": [
@@ -372,17 +485,17 @@
   }
  ],
  "_covered": {
-  "GTA 6": 151,
-  "漫威电影": 86,
-  "三星手机": 53,
-  "チェーンソーマン": 6,
+  "GTA 6": 172,
+  "漫威电影": 94,
+  "三星手机": 70,
+  "チェーンソーマン": 12,
   "周杰伦": 12,
   "哈利波特剧集": 15,
-  "A2O LITE": 9,
+  "A2O LITE": 12,
   "The Mandalorian": 3,
   "Vaundy": 1,
   "dota2": 11,
-  "ILLIT": 20,
+  "ILLIT": 24,
   "gelato pique": 4,
   "星巴克马克杯": 4,
   "MMORPG 新作": 15,
@@ -490,6 +603,24 @@
     6,
     5
    ]
+  },
+  {
+   "headline": "26년의 시차, 하나의 설계자…보아와 A2O LITE의 필연적 교차",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  },
+  {
+   "headline": "A2O LITE 팬 에티켓 관련 안내 (261110 ver.)",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
   }
  ],
  "The Mandalorian": [
@@ -574,7 +705,8 @@
     7,
     8,
     20,
-    17
+    17,
+    22
    ],
    "image": "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/11/6919f6efb1a7d44ef98ba36287b4d01a.webp?fit=1200%2C921&ssl=1"
   },
@@ -641,6 +773,15 @@
    "weight": "normal",
    "refs": [
     18
+   ]
+  },
+  {
+   "headline": "ILLIT、『Billyeoon Goyangi（Do the Dance）』がSpotifyで2億回再生突破！グループ通算6曲目",
+   "highlight": "2億回再生突破",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23
    ]
   }
  ],

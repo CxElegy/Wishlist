@@ -270,6 +270,12 @@
   "v": 3,
   "blur": 0.329
  },
+ "https://assets.murphysmultiverse.com/uploads/2026/11/2287656144-1024x683.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
+ },
  "https://assets.st-note.com/img/1793364754-4OfgPJ5UydeEb6iM2QplrxK3.png?width=1200": {
   "w": 1200,
   "h": 553,
@@ -808,12 +814,6 @@
   "target": 1280,
   "v": 3
  },
- "https://dimg.donga.com/wps/SPORTS/IMAGE/2026/11/10/134999926.1.jpg": {
-  "w": 1280,
-  "h": 1300,
-  "target": 720,
-  "v": 3
- },
  "https://dispatch.cdnser.be/cms-content/uploads/2026/11/05/56317c6e-b66f-4e74-9d22-e5a0d33570a1.jpeg": {
   "w": 1280,
   "h": 720,
@@ -917,6 +917,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://gadget.phileweb.com/wp-content/uploads/2026/11/edfc486bdd77e9c980f0e503470d921c.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
+ },
  "https://game.watch.impress.co.jp/img/gmw/list/2153/775/002.jpg": {
   "w": 2160,
   "h": 2160,
@@ -954,10 +960,10 @@
   "v": 3
  },
  "https://gdm-universal-media.b-cdn.net/epicstream/815077eb-jk-rowling-and-harry-potter.webp?width=1600&height=840": {
-  "w": 1493,
-  "h": 840,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
  },
  "https://gdm-universal-media.b-cdn.net/epicstream/e8a4cfc4-hbo-harry-potter2.webp?width=1600&height=840": {
   "w": 1493,
@@ -1995,12 +2001,6 @@
   "v": 3,
   "blur": 0.387
  },
- "https://mezha.net/eng/wp-content/mezha-og-r205/kd_image_generate/eng/3741837-9dcc6abbf01c.jpg": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2614188-9a5bf05ab73c.jpg": {
   "w": 1200,
   "h": 630,
@@ -2023,12 +2023,6 @@
   "w": 1984,
   "h": 1323,
   "target": 720,
-  "v": 3
- },
- "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png": {
-  "w": 1280,
-  "h": 672,
-  "target": 1280,
   "v": 3
  },
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
@@ -2426,6 +2420,12 @@
    1280
   ],
   "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-00000039-isd-000-1-view.jpg?exp=10800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
  },
  "https://newsdig.ismcdn.jp/mwimgs/5/b/1200w/img_5b27e269bf927978afa950a713f210362377754.jpg": {
   "w": 1200,
@@ -3600,6 +3600,12 @@
   "v": 3,
   "blur": 0.379
  },
+ "https://www.bing.com/th?id=ONUT.IX9N9Sni6cyu_LoH3DlpfQ&pid=News&w=1200": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
+ },
  "https://www.bing.com/th?id=ONUT.JpCGa5gTOp-LoOapCFVdCg&pid=News&w=700": {
   "w": 560,
   "h": 700,
@@ -3625,12 +3631,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.LWSKS8ZA6YppPmi6dj1Wqw&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,
@@ -3677,19 +3677,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.QhrE3_tU_Hw-v1141WFwRA&pid=News&w=780": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.537,
-  "local": "pics/8fd6db930aee249f.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200": {
   "w": 700,
@@ -3866,12 +3853,6 @@
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/03/bnt202611030081.jpg": {
   "w": 2000,
   "h": 1501,
-  "target": 720,
-  "v": 3
- },
- "https://www.chicagotribune.com/wp-content/uploads/2026/11/Grand_Theft_Auto_639_8-1.jpg": {
-  "w": 5670,
-  "h": 3890,
   "target": 720,
   "v": 3
  },
@@ -4338,6 +4319,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.vice.com/wp-content/uploads/sites/2/2026/11/Could-GTA-6-Run-at-40-FPS-on-PS5-Pro-What-New-Datamine-Found.jpg?w=1280": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
  },
  "https://www.vice.com/wp-content/uploads/sites/2/2026/11/GTA-6-Physical-Release-Date-Explained-Why-Some-Orders-Arrive-Early.png?w=1280": {
   "w": 1280,
