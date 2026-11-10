@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "2a9aa839326f",
+ "edit_sig": "eb203182af67",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?0o4xM8kDYYM3NFKzWF5OT",
@@ -456,31 +456,18 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 1,
-     "source": "www.mrjjxw.com",
-     "title": "进博会专访丨周杰伦IP加持，这款机器狗售价4.39万元，明星IP价值如何持续放大？巨星传奇CFO赖国辉：IP的下一站是AI",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5KSGJ5S2FCQUxQTVE3Q0FDU3hIM0FFY3pCMUNBV2tGSTZDZUF0NUxPYVloZU9Kb3h4cDktbEl2aklMMHBRQzdXMU5NYVNQMnBiRTFEZEx0MUZybUZJaTh3MTdDZk1lZw?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 3,
-     "source": "新浪财经",
-     "title": "“周同学”带“狗”来进博会了！",
-     "url": "https://finance.sina.com.cn/wm/2026-11-10/doc-iniyhmwt2475997.shtml"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "巴士的報",
-     "title": "周杰倫一餐日本料理有幾豪？四瓶紅酒總值48萬",
-     "url": "https://news.google.com/rss/articles/CBMi2AJBVV95cUxQNGMwZ3VLR0d0M0psVXBKTHVBNkoySm0yc3o4bzRPZVZXdjdBc3poa1VPQ05saF9faGNYNXZVeXdERzIxclVWVHlrSTZhMm1jSmpEZmptbzd1TVVRWUJaYkNURDRPdExCODJlaG1rc3VkMjM0VVJ2dG1QcXJaTllpaVYySVcxRWxhU2o2OTNqV2g2UllWMjg2elpTMFpITXh3TWF6OW5XcVZOcVJGdkdTN0YzVEVzTk1sTlUzeU1LeEN0ZGtzbWlVNzIxeHI1NTdEZjV1d2NhWEtrX0J4WHVlcWNMM0h5emJWaGdud1hMcWNEc1U0bDNxRXVzTGtaZE56MmlvVjhXWGtKbzd5WFkzcWpCX2t0YkY4djh6WHlHdnMwTktIX1lnaUlseWRrX0tQTkJEenhZZUt0TTd2MWVwZGRKY0lUaU82TXFmZ0tiamY1Rll0QUFXYg?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
+    {
+     "blurb": "周杰倫一餐日本料理喝了四瓶紅酒，總值48萬。",
+     "date": "2026-11-10",
+     "headline": "周杰倫一餐日本料理有幾豪？四瓶紅酒總值48萬",
+     "highlight": "48萬",
+     "image": "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261011_EN_source-web_Jay-Chou-1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.bastillepost.com/hongkong/article/17154481-%E5%91%A8%E6%9D%B0%E5%80%AB%E4%B8%80%E9%A4%90%E6%97%A5%E6%9C%AC%E6%96%99%E7%90%86%E6%9C%89%E5%B9%BE%E8%B1%AA%EF%BC%9F%E5%9B%9B%E7%93%B6%E7%B4%85%E9%85%92%E7%B8%BD%E5%80%BC48%E8%90%AC",
+     "weight": "lead"
+    },
     {
      "blurb": "",
      "date": "2026-11-10",
@@ -489,7 +476,17 @@
      "image": "http://n.sinaimg.cn/sinakd20261109ac/40/w480h360/20261109/1777-867f147d78dceb2e18d1cc5f9eff00a3.jpg",
      "image_via": "og:image",
      "url": "https://k.sina.com.cn/article_7879923704_m1d5ae17f8033021h46.html",
-     "weight": "hero"
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "“周同学”带“狗”来进博会了！",
+     "highlight": "",
+     "image": "https://image.mrjjxw.com/uploads/articles/thumbnails/1933052/open-uri20261110-38-hna14v.x_large.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://www.mrjjxw.com/articles/2026-11-10/4644226.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "周杰倫",
