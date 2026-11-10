@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "22d653e1b3b2",
+ "edit_sig": "aee51c34501f",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -280,8 +280,9 @@
      "date": "2026-11-09",
      "headline": "New HBO Harry Potter Wands Now Available",
      "highlight": "",
-     "image": "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png",
-     "image_via": "og:image（本站保存）",
+     "image": null,
+     "source": "MuggleNet",
+     "source_icon": "https://www.google.com/s2/favicons?domain=mugglenet.com&sz=128",
      "url": "https://mugglenet.com/2026/11/hbo-harry-potter-series-wands-now-available/",
      "weight": "normal"
     },
@@ -530,15 +531,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 5,
-     "source": "note",
-     "title": "「出産したらジェラピケを着る」はずだった",
-     "url": "https://note.com/haru_483/n/n2922550f01b7"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -944,15 +936,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 12,
-     "source": "TalkEsport",
-     "title": "Seven Dota 2 Teams Gone in Six Months: Why Organisations Are Walking Away From the Scene",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPdVhNOTg5VXV6VXBab2d6X2tIUC1NT1c4aXd6RzJsZE9FS1IxQUVnTWlpX2RDZEFFTHZicmZERDhMYndWeU5XSTlTMmYxWWIxLTZaN2paVGI2NlpQQ1pPTHVndXhsSzFxY3RGSTJkeWhnVnVRaHhheGR6LWNmY0NQV1U1UjdZVVN2MzduenFMNA?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -993,6 +976,17 @@
      "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/dota-2-players-copping-massive-20-years-bans-following-update.jpg",
      "image_via": "og:image",
      "url": "https://www.dexerto.com/dota2/dota-2-players-receiving-absurdly-long-bans-latest-ranked-update-1037298/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "Seven Dota 2 Teams Gone in Six Months: Why Organisations Are Walking Away From the Scene",
+     "highlight": "",
+     "image": null,
+     "source": "TalkEsport",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.talkesport.com&sz=128",
+     "url": "https://www.talkesport.com/editorials/why-dota-2-organisations-leaving-2026-editorial/",
      "weight": "normal"
     }
    ],
@@ -1039,8 +1033,8 @@
      "date": "2026-11-09",
      "headline": "A2O SOUL·A2O LITE, 유픽 ‘11월 이달의 픽’ 루키 부문 톱10 안착",
      "highlight": "",
-     "image": "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426_crop.jpg",
+     "image_via": "og:image",
      "url": "https://www.topstarnews.net/news/articleView.html?idxno=16272608",
      "weight": "normal"
     },

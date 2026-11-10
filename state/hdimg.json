@@ -119,6 +119,12 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/006ZneWLly1iiwaviy2i4j327c0w9kjl.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
+ },
  "http://wx3.sinaimg.cn/middle/006ZneWLly1iiwcku2k3zj31hi0lxnng.jpg": {
   "w": 1926,
   "h": 789,
@@ -564,11 +570,11 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426.jpg": {
-  "w": 1280,
-  "h": 830,
+ "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426_crop.jpg": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-10"
  },
  "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg": {
   "w": 1200,
@@ -2041,12 +2047,6 @@
   "w": 1984,
   "h": 1323,
   "target": 720,
-  "v": 3
- },
- "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png": {
-  "w": 1280,
-  "h": 672,
-  "target": 1280,
   "v": 3
  },
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
@@ -4267,12 +4267,6 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/batman.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://www.talkesport.com/wp-content/uploads/dota-2-organisations-leaving-2026-scaled.webp": {
-  "w": 1920,
-  "h": 1080,
   "target": 720,
   "v": 3
  },
