@@ -1,32 +1,32 @@
 {
- "admin": "c0df4bab4cc6",
- "admin-ai": "5c8edcf4493b",
+ "admin": "c73e781aa4dc",
+ "admin-ai": "12e79dd260b3",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "da54c146"
+   "df9a150f"
   ],
   "tokens": [
    "AI 編集のトークン",
    "634e9c02"
   ]
  },
- "admin-boards": "c5aa7ba6c06f",
+ "admin-boards": "6314a4ab9a6a",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "457b42e7"
+   "4b3dffb7"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "539821d561c2",
+ "admin-emblem": "2071ef2f382b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "39cae8bc"
+   "b87084ff"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "0c49489582e9",
+ "admin-now": "d413ce7e5308",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "78e6fdc8"
+   "f9e75084"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "fea5fb59"
+   "2e01c7bc"
   ],
   "term-panel": [
    "ライブログ",
-   "78551e12"
+   "c9af1795"
   ]
  },
- "admin-system": "caa6772d3ac7",
+ "admin-system": "310d33de1ac2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b7227548"
+   "bd304666"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "bd1743f0"
+   "33ece6b8"
   ]
  },
  "admin_marks": {},
- "heat": "1465d06b92b2",
+ "heat": "8511e8bfba80",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "44bff7d6"
+   "15060dbe"
   ],
   "ranking": [
    "ランキング",
-   "71f399f8"
+   "771467f1"
   ]
  },
- "index": "5da428a4688f",
+ "index": "99e83dd88f33",
  "index_marks": {
   "front": [
    "トップ",
-   "6821d9c2"
+   "89fd9139"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "6122bf29"
+   "36d2caa1"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "3c5556a1"
+   "d5b40a21"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "efe2c952"
+   "c29fcbf2"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "b62f3d6d"
+   "3029e8d6"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "4da3366d"
+   "04965357"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "9547340e"
   ]
  },
- "updated": "11.10 19:18",
+ "updated": "11.10 19:30",
  "wishlist": "ee815c810876"
 }

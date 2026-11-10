@@ -233,6 +233,12 @@
   "target": 720,
   "v": 3
  },
+ "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
+  "w": 506,
+  "h": 253,
+  "target": 720,
+  "v": 3
+ },
  "https://areajugones.sport.es/wp-admin/admin-ajax.php?action=rank_math_overlay_thumb&id=834607&type=videojuegos&hash=327d1d284ff2a1170fe074f5adf184f2": {
   "w": 1220,
   "h": 686,
@@ -263,12 +269,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.329
- },
- "https://assets.murphysmultiverse.com/uploads/2026/11/2287656144-1024x683.jpg": {
-  "w": 1024,
-  "h": 683,
-  "target": 720,
-  "v": 3
  },
  "https://assets.st-note.com/img/1793364754-4OfgPJ5UydeEb6iM2QplrxK3.png?width=1200": {
   "w": 1200,
@@ -655,9 +655,27 @@
   ],
   "why": "看不清"
  },
+ "https://cimg.kgl-systems.io/camion/files/93631/thumbnail_eCqL.jpg?x=1280": {
+  "w": 1000,
+  "h": 500,
+  "target": 720,
+  "v": 3
+ },
  "https://cimg.kgl-systems.io/camion/files/dengeki/93039/a4efdd2f969559e8b1c92e99f32ded48e.jpg?x=1280": {
   "w": 1280,
   "h": 1709,
+  "target": 1280,
+  "v": 3
+ },
+ "https://collabo-cafe.com/wp-content/uploads/4dffd6776e8c42f7d550beaccde1b678-1427.jpg": {
+  "w": 1400,
+  "h": 741,
+  "target": 1280,
+  "v": 3
+ },
+ "https://collabo-cafe.com/wp-content/uploads/7c9e8a3a299ba6bb332313dcb291be63.jpg": {
+  "w": 1400,
+  "h": 989,
   "target": 1280,
   "v": 3
  },
@@ -884,6 +902,12 @@
  "https://fpimgs.s3.ap-southeast-1.amazonaws.com/uul/2026/11/08/6aef58edf165b0.95265054.jpg": {
   "w": 752,
   "h": 752,
+  "target": 720,
+  "v": 3
+ },
+ "https://freeyorkk.b-cdn.net/wp-content/uploads/2026/11/star-wars-generative-ai-freeyork-1.jpg": {
+  "w": 990,
+  "h": 1238,
   "target": 720,
   "v": 3
  },
@@ -1116,12 +1140,6 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
-  "v": 3
- },
- "https://hotelbank.jp/wp-content/uploads/eyecatch-192494-auto.png": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://hotelbank.jp/wp-content/uploads/eyecatch-193461-auto.png": {
@@ -2385,18 +2403,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261108-03661396-clc_korea-000-1-view.jpg?exp=10800": {
-  "w": 819,
-  "h": 1024,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/5a175174b182d90b.webp",
-  "out": [
-   819,
-   1024
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261109-00096815-vballk-000-1-view.jpg?exp=10800": {
   "w": 1007,
   "h": 565,
@@ -2437,6 +2443,12 @@
   "w": 1920,
   "h": 1280,
   "target": 1280,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg": {
+  "w": 736,
+  "h": 414,
+  "target": 720,
   "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6f0ca7318ff34d75ac73b0594ed15987.jpg": {
@@ -2639,6 +2651,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/92870/25/92870-25-3d38046a18fc8370504ef0777ad0c5f4-1200x800.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://prtimes.jp/img/18505/4453/resize/d18505-4453-163dc066e379cec6cd4f-0.jpg": {
   "w": 650,
   "h": 416,
@@ -2777,12 +2795,6 @@
   "w": 1200,
   "h": 803,
   "target": 1280,
-  "v": 3
- },
- "https://s.yimg.jp/images/finance/common/image/ogp.png": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://saga.ismcdn.jp/mwimgs/1/0/1200m/img_10aac7ffa9445b5c6654ce01bd27821f89845.jpg": {
@@ -2940,12 +2952,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.417
- },
- "https://static.sanyonews.jp/image/article/size1/2/2/9/0/22902e4f34b44e2c44d9f269166203df_1.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/2/4/a/b/24ab41366173fb50931b74229277a922_1.jpg": {
   "w": 631,
@@ -3581,6 +3587,12 @@
   "v": 3,
   "blur": 0.413
  },
+ "https://www.bing.com/th?id=ONUT.Ennz4NzU-OFd8Ie1pbar2g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3613,6 +3625,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.LWSKS8ZA6YppPmi6dj1Wqw&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Lk44PzHjjEGLaRmFlWXAHg&pid=News&w=600": {
   "w": 600,
@@ -3660,6 +3678,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.QhrE3_tU_Hw-v1141WFwRA&pid=News&w=780": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.537,
+  "local": "pics/8fd6db930aee249f.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3672,12 +3703,6 @@
    671
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.Rs_SbW9qnCUy0juYYyfrKQ&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.SCMZR5kYw8zw1fnL0We-sQ&pid=News&w=1200": {
   "w": 700,
@@ -3723,6 +3748,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.Z8qznNUuoyyH_qoTlJyMrQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3741,6 +3772,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.cNxo0NslN--daEmcUjFkUA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.i6tm1vCTTA6ZsG1iKZlUuA&pid=News&w=1200": {
   "w": 700,
@@ -3814,9 +3851,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.zMsnk3V15TWhqbVGB1iJaQ&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.vkCsSHxDSx3satf4hVWi2g&pid=News&w=1200": {
   "w": 700,
-  "h": 393,
+  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -3961,6 +3998,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.engadget.com/img/gallery/gta-6-is-now-available-for-preload-if-you-have-a-spare-212gb/l-intro-1794304763.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.fashion-press.net/img/news/150832/RAM.jpg?1788842767": {
   "w": 800,
   "h": 600,
@@ -4100,6 +4143,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.nikkei.com/nkd/disclosure/tdnr/20261008548007/thumbnail/?ttype=ogp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
  },
  "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg": {
   "w": 1200,
@@ -4289,12 +4338,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.vice.com/wp-content/uploads/sites/2/2026/11/Could-GTA-6-Run-at-40-FPS-on-PS5-Pro-What-New-Datamine-Found.jpg?w=1280": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-10"
  },
  "https://www.vice.com/wp-content/uploads/sites/2/2026/11/GTA-6-Physical-Release-Date-Explained-Why-Some-Orders-Arrive-Early.png?w=1280": {
   "w": 1280,
