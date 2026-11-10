@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-10T03:17:54+00:00",
+ "changed": true,
+ "checked": "2026-11-10T03:33:06+00:00",
  "fired": {
-  "at": "2026-11-10T03:19:15+00:00",
+  "at": "2026-11-10T03:33:06+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -19,23 +19,34 @@
    "edit": 11
   },
   "2026-11-10": {
-   "edit": 6
+   "edit": 7
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-10T00:18:16+00:00",
+    "at": "2026-11-10T03:33:06+00:00",
     "attempts": 1,
     "day": "2026-11-10",
-    "prog": 193,
-    "resp": "cse_01W4x6f68tg5mW7B5pn3axVf",
-    "sig": "f0d1f338d8ab"
+    "prog": 274,
+    "resp": "cse_01W4x6f5o6ZEeeT2fm75Kx9a",
+    "sig": "c592478c1ecf"
    },
    "items": [
+    "A2O LITE",
     "BLEACH Mirrors High",
-    "滑雪"
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-10T00:58:05+00:00",
    "last_error": {
@@ -45,35 +56,44 @@
    "need": true,
    "prog": 274,
    "prog_day": "2026-11-10",
-   "ripe": [],
-   "sig": "cfc42e6f35f2",
+   "ripe": [
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "三星手机",
+    "周杰伦",
+    "滑雪",
+    "漫威电影"
+   ],
+   "sig": "c592478c1ecf",
    "token_cap": 1000000,
    "tokens_today": 333223,
-   "why": "整理待ちの記事 2 件（2 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 64 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦",
     "A2O LITE",
+    "绝区零"
+   ],
+   "need": true,
+   "sig": "1408e5928be2",
+   "waiting": [
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "チェーンソーマン"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
