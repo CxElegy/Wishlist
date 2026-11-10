@@ -32,7 +32,6 @@
   "https://news.infoseek.co.jp/article/itmedia_nlab_4087765/": "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4087765_0-enlarge.jpg",
   "https://news.infoseek.co.jp/article/oricon_2491644/": "https://media.image.infoseek.co.jp/isnews/photos/oricon/oricon_2491644_0-enlarge.jpg",
   "https://news.infoseek.co.jp/article/prtimes_000000047_000084858/": "https://prtimes.jp/img/84858/47/resize/d84858-47-a89ff883ef5ee322200f-0.jpg",
-  "https://news.jkn.co.kr/post/1084402": "https://images.jkn.co.kr/data/images/full/111/03/1110391.png?v=1794310048&width=1200&height=630",
   "https://news.sbs.co.kr/amp/news.amp?news_id=N1008837439": "https://img.sbsnews.co.kr/newimg/news/20261109/202239307_1280.jpg",
   "https://news.yahoo.co.jp/articles/3adf414861c67bce075014132a7b1fdffabaa8eb": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261103-00000026-mnet-000-2-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/f55217655a48f37ae3c2888b5ec8864cef54ca8c": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261109-00096815-vballk-000-1-view.jpg?exp=10800",
@@ -49,6 +48,7 @@
   "https://shikiho.toyokeizai.net/news/0/964306": "https://www.nikkei.com/nkd/disclosure/tdnr/20261008548007/thumbnail/?ttype=ogp",
   "https://sounova.com/anime/chiikawa-bakery-christmas-2026": "https://cdn.sounova.com/upload/kSQRgBYVmQ7D-0hN5Oa-K.webp",
   "https://sporked.com/article/silly-rabbit-this-new-trix-cereal-is-for-proteinmaxxing/": "https://sporked.com/wp-content/uploads/2026/11/trix-cereal.jpg",
+  "https://sports.khan.co.kr/en/article/202611100719007": "https://images.khan.co.kr/article/2026/11/10/news-p.v1.20261110.3eb1441616cc4d2486b968acb06ad2e9_P1.jpg",
   "https://travel.udn.com/travel/story/7934/9856463": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/04/35484120.jpg&M=1&s=Y&x=0&y=0&sw=1080&sh=599&exp=3600",
   "https://www.androidpolice.com/best-t-mobile-deals-of-the-month/": "https://static0.anpoimages.com/wordpress/wp-content/uploads/2026/08/samsung-galaxy-z-fold-8-and-google-pixel-10-pro-standing-side-by-side.png?w=1600&h=900&fit=crop",
   "https://www.auroradesio.it/top/218998832/": "https://auroradesio.it/wp-content/uploads/2026/10/treviglio-77-82-800x445.jpg",
@@ -1227,27 +1227,6 @@
   },
   {
    "batch": 3,
-   "because": "A2O LITE",
-   "date": "2026-11-10",
-   "hits": [],
-   "image": "https://images.jkn.co.kr/data/images/full/111/03/1110391.png?v=1794310048&width=1200&height=630",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "재경일보",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "A2O LITE 음방 10관왕 달성…차트 정상 탈환 : 연예",
-   "url": "https://news.jkn.co.kr/post/1084402",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 3,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-10",
    "hits": [],
@@ -1268,7 +1247,7 @@
    "work": "BLEACH Mirrors High"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "漫威电影",
    "date": "2026-11-10",
    "hits": [],
@@ -1350,6 +1329,27 @@
    "url": "https://www.indiatvnews.com/entertainment/ott/hbo-harry-potter-and-the-philosopher-stone-series-gets-release-date-know-when-you-can-stream-it-2026-11-10-1059088",
    "words": [],
    "work": "哈利波特剧集"
+  },
+  {
+   "batch": 4,
+   "because": "A2O LITE",
+   "date": "2026-11-09",
+   "hits": [],
+   "image": "https://images.khan.co.kr/article/2026/11/10/news-p.v1.20261110.3eb1441616cc4d2486b968acb06ad2e9_P1.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "스포츠경향",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "ILLIT topples 11-time winner A2O LITE···halts bid for three straight wins",
+   "url": "https://sports.khan.co.kr/en/article/202611100719007",
+   "words": [],
+   "work": "A2O LITE"
   },
   {
    "batch": 4,
@@ -1871,11 +1871,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1887,11 +1887,11 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]
