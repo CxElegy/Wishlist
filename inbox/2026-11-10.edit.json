@@ -18,7 +18,9 @@
     64,
     58,
     62,
-    57
+    57,
+    72,
+    82
    ],
    "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/10/vice_city_09-1.jpg?q=49&fit=contain&w=750&h=422&dpr=2"
   },
@@ -53,7 +55,10 @@
     48,
     50,
     53,
-    63
+    63,
+    66,
+    70,
+    67
    ]
   },
   {
@@ -74,7 +79,25 @@
     9,
     22,
     39,
-    44
+    44,
+    68,
+    90,
+    91,
+    69,
+    73,
+    75,
+    89,
+    74,
+    76,
+    78,
+    79,
+    81,
+    84,
+    85,
+    86,
+    87,
+    88,
+    65
    ]
   },
   {
@@ -87,7 +110,8 @@
     60,
     59,
     54,
-    56
+    56,
+    80
    ]
   }
  ],
@@ -117,7 +141,11 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    61,
+    66,
+    65,
+    68
    ]
   },
   {
@@ -167,7 +195,9 @@
     9,
     10,
     15,
-    17
+    17,
+    19,
+    22
    ]
   },
   {
@@ -186,7 +216,8 @@
    "weight": "normal",
    "refs": [
     5,
-    16
+    16,
+    24
    ]
   },
   {
@@ -197,7 +228,8 @@
    "refs": [
     12,
     14,
-    13
+    13,
+    21
    ]
   },
   {
@@ -207,6 +239,16 @@
    "weight": "normal",
    "refs": [
     11
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 series camera specs leak, and they’re disappointing",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20,
+    23
    ]
   }
  ],
@@ -243,17 +285,17 @@
   }
  ],
  "_covered": {
-  "GTA 6": 64,
-  "漫威电影": 51,
-  "三星手机": 18,
+  "GTA 6": 91,
+  "漫威电影": 68,
+  "三星手机": 24,
   "チェーンソーマン": 3,
   "周杰伦": 4,
-  "哈利波特剧集": 6,
+  "哈利波特剧集": 13,
   "A2O LITE": 2,
   "The Mandalorian": 2,
   "Vaundy": 1,
   "dota2": 7,
-  "ILLIT": 5,
+  "ILLIT": 12,
   "gelato pique": 4,
   "星巴克马克杯": 3,
   "MMORPG 新作": 2,
@@ -299,7 +341,22 @@
    "refs": [
     4,
     5,
-    6
+    6,
+    11,
+    12
+   ]
+  },
+  {
+   "headline": "Daniel Radcliffe politely noncommittal about watching Harry Potter series",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    7,
+    8,
+    9,
+    13
    ]
   }
  ],
@@ -374,7 +431,9 @@
    "weight": "lead",
    "refs": [
     2,
-    1
+    1,
+    7,
+    8
    ],
    "image": "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/11/6919f6efb1a7d44ef98ba36287b4d01a.webp?fit=1200%2C921&ssl=1"
   },
@@ -394,6 +453,42 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "ILLIT・MOKA、活動再開を発表「アーティスト本人の強い意向」 4月に体調不良で休養【報告全文】",
+   "highlight": "活動再開",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
+  },
+  {
+   "headline": "ILLIT・ウォンヒ、初の単独冠バラエティーABEMA配信決定 イ・ウンジと“人生初のお酒”",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "ILLIT、Japan 2nd Single「I Got Your Back」発売記念イベント 制服姿で登場",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "ILLIT、「It's Me」が自身3作目の累積再生数1億回突破【オリコンランキング】",
+   "highlight": "1億回突破",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],

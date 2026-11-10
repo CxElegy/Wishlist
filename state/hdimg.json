@@ -216,6 +216,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://9to5google.com/wp-content/uploads/sites/4/2026/02/Galaxy-S26-camera-1.jpg?quality=82&strip=all&resize=1200,628": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://9to5google.com/wp-content/uploads/sites/4/2026/02/galaxy-s26-ultra-privacy-display-17.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
   "h": 628,
@@ -568,12 +574,6 @@
   "w": 1200,
   "h": 1800,
   "target": 1280,
-  "v": 3
- },
- "https://cdn1.dangerousminds.net/uploads/7/2026/11/Grand-Theft-Auto-VI-Rockstar-Games-2026-Dangerous-Minds.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 720,
   "v": 3
  },
  "https://cdn2.ettoday.net/images/9006/e9006168.jpg": {
@@ -1780,12 +1780,6 @@
   "v": 3,
   "blur": 0.415
  },
- "https://insider-gaming.com/wp-content/uploads/2026/09/Jason_and_Lucia_09-scaled.jpg": {
-  "w": 2560,
-  "h": 1440,
-  "target": 1280,
-  "v": 3
- },
  "https://insidethemagic.net/wp-content/uploads/2026/11/6.jpg": {
   "w": 1200,
   "h": 600,
@@ -2656,6 +2650,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/e5e99a1788b14d479c8fa6c984fe3cc42670696dc5b19a57b4cc77f10b1679de/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmoney_ca_594%2F167321a3e8b469a3cfa0a76a6719f83d.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/e76b1c1b2ea4aa7d01bbae43414a5e4411c2606c96515153173732f643e5a617/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fnewstaiwandigi_com_938%2F42bac3735ec669ba9dbd2ad82d21c713.jpg": {
   "w": 1200,
   "h": 803,
@@ -2876,12 +2876,24 @@
   ],
   "why": "看不清"
  },
+ "https://static.sanyonews.jp/image/article/size1/6/b/d/5/6bd5ae98a8676317af2175d8ef86b187_1.jpg": {
+  "w": 450,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/8/0/a/f/80af267980bc2524aa32c1d3b178e988_1.jpg": {
   "w": 640,
   "h": 640,
   "target": 1280,
   "v": 3,
   "blur": 0.411
+ },
+ "https://static.sanyonews.jp/image/article/size1/8/5/c/c/85cc0b9e2b66935e4bed18f5df7f574b_1.jpg": {
+  "w": 640,
+  "h": 640,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/8/c/3/c/8c3c2428153280702f3ae70ceafe06bb_1.jpg": {
   "w": 640,
@@ -2908,6 +2920,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://static.sanyonews.jp/image/article/size1/9/1/7/9/9179248e10de5d450d706548e5be2a76_1.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/a/d/a/d/adadf5719e09d5f1edb695115c6e2419_1.jpg": {
   "w": 640,
@@ -2946,6 +2964,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.301
+ },
+ "https://static.sanyonews.jp/image/article/size1/e/9/1/c/e91cfc669da43d9b6481596167e4e53a_1.jpg": {
+  "w": 427,
+  "h": 640,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/e/c/a/0/eca06632b083f3de1ab03c597fe95639_1.jpg": {
   "w": 640,
@@ -3294,6 +3318,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.avclub.com/wp-content/uploads/2026/11/09/daniel-radcliffe-steps-premiere-featured.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://www.awin1.com/cshow.php?s=2755991&v=20982&q=399233&r=791259": {
   "w": 300,
   "h": 250,
@@ -3371,12 +3401,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.2DkyqYToi-LjgXl1olg7AA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3393,12 +3417,6 @@
  "https://www.bing.com/th?id=ONUT.6GeaSh256dvaR-rLRZKfRA&pid=News&w=700": {
   "w": 700,
   "h": 383,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.8gnscEAyJD4vTywkqDt3ag&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4064,6 +4082,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Avengers-Doomsdays-New-Release-Suggests-Thor-Is-Getting-a-Huge-Costume-Change-View-Photo.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/batman.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
@@ -4137,6 +4161,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.vice.com/wp-content/uploads/sites/2/2026/11/Could-GTA-6-Run-at-40-FPS-on-PS5-Pro-What-New-Datamine-Found.jpg?w=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
  },
  "https://www.vice.com/wp-content/uploads/sites/2/2026/11/GTA-6-Physical-Release-Date-Explained-Why-Some-Orders-Arrive-Early.png?w=1280": {
   "w": 1280,

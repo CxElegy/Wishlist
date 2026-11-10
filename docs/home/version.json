@@ -1,10 +1,10 @@
 {
- "admin": "e38444496901",
- "admin-ai": "eb0453f4833f",
+ "admin": "b5e7d487dea9",
+ "admin-ai": "431b2a82f628",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "10ee88b4"
+   "9194c110"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "fc411f3db169",
+ "admin-emblem": "6ef742d12367",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "6cfda725"
+   "22f6e1a1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "5e100cbbee58",
+ "admin-now": "85b23dfceb57",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "69696bfa"
+   "e4baf309"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "5fd69146"
   ]
  },
- "admin-system": "8a19674b7078",
+ "admin-system": "076c7d94fbc2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b5448a51"
+   "f4f41e34"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0b3cd798"
+   "1125af95"
   ]
  },
  "admin_marks": {},
- "heat": "b14acaa87d5f",
+ "heat": "d33b47072d6f",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "98cca4df"
+   "0894a416"
   ],
   "ranking": [
    "ランキング",
-   "245a8020"
+   "6464434c"
   ]
  },
- "index": "e632fe6645a6",
+ "index": "1d74166d502c",
  "index_marks": {
   "front": [
    "トップ",
-   "e7445f38"
+   "c97bd134"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "c828b826"
+   "a78f432a"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "ff7763b4"
+   "6122bf29"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "9e7226f6"
+   "3c5556a1"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "3ef9ba92"
+   "df60084f"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "c29fcbf2"
+   "efe2c952"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "9feeee9b"
+   "8ce85d2e"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "9902841d"
+   "eca19776"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "6a5d7107"
+   "ac9e860c"
   ],
   "w-f303ad09": [
    "绝区零",
    "ea35b5e4"
   ]
  },
- "updated": "11.10 09:41",
+ "updated": "11.10 09:52",
  "wishlist": "3ac5d74e531f"
 }
