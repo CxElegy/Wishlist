@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-10T14:17:51+00:00",
+ "checked": "2026-11-10T15:17:52+00:00",
  "fired": {
-  "at": "2026-11-10T14:19:34+00:00",
+  "at": "2026-11-10T15:18:13+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -19,19 +19,19 @@
    "edit": 11
   },
   "2026-11-10": {
-   "edit": 13
+   "edit": 14
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-10T12:55:47+00:00",
+    "at": "2026-11-10T15:18:13+00:00",
     "attempts": 1,
     "day": "2026-11-10",
-    "prog": 495,
-    "resp": "cse_01W4x6f7hbijFDsjUxwsrA8q",
-    "sig": "a88a9bd4ce24"
+    "prog": 546,
+    "resp": "cse_01W4x6f5QXF7AUWA5HFkEos3",
+    "sig": "2d1c6ef6df96"
    },
    "items": [
     "BLEACH Mirrors High",
@@ -54,11 +54,17 @@
    "need": true,
    "prog": 546,
    "prog_day": "2026-11-10",
-   "ripe": [],
-   "sig": "6f6b2aa9e455",
+   "ripe": [
+    "BLEACH Mirrors High",
+    "FROM",
+    "ぐでたま",
+    "哈利波特剧集",
+    "绝区零"
+   ],
+   "sig": "2d1c6ef6df96",
    "token_cap": 1000000,
    "tokens_today": 738295,
-   "why": "整理待ちの記事 16 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 16 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
