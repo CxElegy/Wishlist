@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-10T11:37:24+00:00",
+ "checked": "2026-11-10T12:17:54+00:00",
  "fired": {
-  "at": "2026-11-10T11:37:24+00:00",
+  "at": "2026-11-10T12:20:03+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -37,28 +37,23 @@
     "BLEACH Mirrors High",
     "FROM",
     "MMORPG 新作",
-    "dota2",
-    "gelato pique",
     "ぐでたま",
     "哈利波特剧集",
     "绝区零"
    ],
    "last_batch": "2026-11-10T10:48:38+00:00",
    "last_error": {
-    "at": "2026-11-10T10:39:29+00:00",
+    "at": "2026-11-10T11:43:24+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 493,
+   "prog": 495,
    "prog_day": "2026-11-10",
-   "ripe": [
-    "dota2",
-    "gelato pique"
-   ],
-   "sig": "471ff22e8f6a",
+   "ripe": [],
+   "sig": "1d45ee876942",
    "token_cap": 1000000,
    "tokens_today": 681123,
-   "why": "整理待ちの記事 11 件（8 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
