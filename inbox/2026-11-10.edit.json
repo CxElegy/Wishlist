@@ -196,7 +196,8 @@
    "refs": [
     6,
     3,
-    2
+    2,
+    33
    ],
    "image": "https://static.digit.in/Galaxy-S26.png"
   },
@@ -216,7 +217,8 @@
     19,
     22,
     28,
-    29
+    29,
+    30
    ]
   },
   {
@@ -338,11 +340,11 @@
  "_covered": {
   "GTA 6": 131,
   "漫威电影": 78,
-  "三星手机": 29,
+  "三星手机": 33,
   "チェーンソーマン": 5,
   "周杰伦": 8,
   "哈利波特剧集": 13,
-  "A2O LITE": 6,
+  "A2O LITE": 9,
   "The Mandalorian": 2,
   "Vaundy": 1,
   "dota2": 11,
@@ -355,7 +357,8 @@
   "日本顶级网球赛事": 2,
   "猫用品": 1,
   "绝区零": 1,
-  "滑雪": 4
+  "滑雪": 4,
+  "BLEACH Mirrors High": 1
  },
  "哈利波特剧集": [
   {
@@ -438,7 +441,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    7
    ]
   },
   {
@@ -790,6 +794,17 @@
    "refs": [
     3,
     4
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "BLEACH Mirrors High: Complete Avatar & Zanpakutō Customization Guide",
+   "highlight": "Customization Guide",
+   "blurb": "BLEACH Mirrors High launched on mobile on October 27; The Outerhaven looks at avatar and zanpakutō customization.",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

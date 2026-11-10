@@ -1,22 +1,24 @@
 {
  "date": "2026-11-10",
- "edit_sig": "66f8ca15015f",
+ "edit_sig": "d4a878515de4",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "BLEACH Mirrors High launched on mobile on October 27; The Outerhaven looks at avatar and zanpakutō customization.",
      "date": "2026-11-09",
-     "n": 1,
-     "source": "The Outerhaven",
-     "title": "BLEACH Mirrors High: Complete Avatar & Zanpakutō Customization Guide",
-     "url": "https://www.theouterhaven.net/bleach-mirrors-high-complete-avatar-zanpakuto-customization-guide/"
+     "headline": "BLEACH Mirrors High: Complete Avatar & Zanpakutō Customization Guide",
+     "highlight": "Customization Guide",
+     "image": "https://cdn.theouterhaven.net/wp-content/uploads/2026/11/Character_Customization-01.jpg",
+     "image_via": "正文图（5 枚から）",
+     "url": "https://www.theouterhaven.net/bleach-mirrors-high-complete-avatar-zanpakuto-customization-guide/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -435,36 +437,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 30,
-     "source": "yeeyi",
-     "title": "消息称Pro和Ultra版占据三星Galaxy S27系列智能手机七成规划出货量-yeeyi",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPdzI0WTRLbHEwM3BqaUt1eHBCazU0NFoxaEdqTjU4bUZGRnZXZUkyMnZYWm1KWEUtWWs1RmJSajVVaXNOWVdBeHoyakMwaHZUX0NfX0l1dExkNkN6Q3pqcTZ0bjRKWGJiQ3J5RWJzaWx3SGtnc0RUS1NEbjB1NzBHQkdn?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 31,
-     "source": "Times Bull",
-     "title": "Upcoming Samsung Phones in India : Galaxy S27, S26 FE & More!",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPbkhaam9ZZ01RTURBUHU3TUdlbGtzT184SGFhLTlGMF9ad3g5SmRUdmNDM2hhQWJyMEplRjU3VWdWVGNGOW9OczFTbU9Pdlp0d1VuYjNobjU1V1lHY01vUzNtYnlaVkVqV0I0QlZ4dGZOQ3NISDIwNmRXTDI3ZWtUZUJqcVRpQkE1RFE?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 32,
-     "source": "Vietnam.vn",
-     "title": "The Galaxy S27 Ultra could offer a big surprise in terms of its chip.",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE0zcFJGdWJxbnh2NWN1Z3FVQkR4cTAza3pqTTk0ZzN6blJOZVl1TDNSRjJZN1J1NmVqd1ZWODlBX0VnWE1tSjVtdlJNTDRCZ0xEOTZEV2xvdWNLbHpac01Va2MwYWVNRXY3d1lZTkl2alB1b1dlbG9XeUN2QXhuUQ?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 33,
-     "source": "Sammy Fans",
-     "title": "India clears Samsung’s flagship Galaxy S27 for launch",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNUzdYNmowaVF6TTc2eEZ3bGVsSjI5OThLSW9WTlI2ZFJJQkVsUVBPaEp6a1hheGpMZWhoRFJqV3FWUEpsTzJvSXJ5UnBQU2dJM0hfNkFPMVNEaUxJRlJ0VHBjYWJ6ZjhXbnVwb1BSd1lUXzJUMTNUQjlQa2ZZa3lleU9hOWlwT2NBMDkybWRfczB4NkhB0gGaAUFVX3lxTE51eGtZYjRPdnBURDN4RF9KeXVER1NTVUF4eGxydHFBdmxOZVF0QmFhTkxNbE5ZaW5fSFpuSmNLSTYyOEFUVlpCQ08tcGdCcDN2aDVvRmQwOVo3UDNKMU9ENG5YMWtpS1Jta19wZ2JlNlFvNFlnN0NUTFY0WFpxVnBfTUhZSVFka2dZTDYwd1F4YURoVEVPSDRVZmc?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -969,29 +941,6 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 7,
-     "source": "아시아뉴스통신",
-     "title": "A2O SOUL·A2O LITE, '11월 이달의 픽' 투표 TOP10 진입 두각",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE13RUEzZkx4ZnNpTVRyTThhMXN0ZVd0RFFyZTZ3eEhOeTBLdURaREhKMzVfeVR1SlVNUDlSUlRRRHBjOU5jTmNKMWZWQlJCYVlhdmxfUk0yS3hQUmlp?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 8,
-     "source": "Vietnam.vn",
-     "title": "A2O LITEの「爆発の時代」",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0wWG9OZGVxQmlTenRTNU9KbnMwS25jRFhYTldSYk5KTGdWYTA5M2VQYmVBQTlZSkNWWlVCTk5tT09MS1QwUi1NMHRnaHF2ejY0SS1Uc0p4dkJOZkdTTjU0TDJGMS1PSEE?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 9,
-     "source": "新浪网",
-     "title": "从巴黎到年末舞台，A2O LITE 的 2027 年行程有点满|MKMA 颁奖典礼",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBzbW1QdXROOTNIZnA5Ymwwb21WZVltdnZzUkNwOEFGWXViTlpTNFgzdDhNekN6bXdadkhHUlNVQ0w5OEdtR2ZqOU0xYUZkU29yUkxvX295VlBlcTlEbkxKVUVkZw?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
