@@ -17,6 +17,7 @@
   "https://collabo-cafe.com/events/collabo/haikyu-fashion-paseos-roomwear-2026/": "https://collabo-cafe.com/wp-content/uploads/haikyu-fashion-paseos-roomwear-2026-eyecatch.jpg",
   "https://collabo-cafe.com/events/collabo/pocket-monster-fashion-shimamura-2026/": "https://collabo-cafe.com/wp-content/uploads/pocket-monster-fashion-shimamura-2026-eyecatch.jpg",
   "https://collabo-cafe.com/zh-hant/events/collabo/chainsawman-reze-prime1studio-anime-store-goods2026/": "https://collabo-cafe.com/wp-content/uploads/4dffd6776e8c42f7d550beaccde1b678-1427.jpg",
+  "https://en.gamegpu.com/news/igry/grand-theft-auto-vi-za-usd100-dostupna-igrokam-besplatno-blagodarya-bonusnoj-programme-microsoft": "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/10/p1va1sp1va1sp1v_gpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/nov/10/p1va1sp1va1sp1v_gpu.webp?width=1920&height=1080",
   "https://entertainment.ie/movies/movie-news/apparently-the-spice-girls-reunion-is-for-an-animated-superhero-movie-227375/": "https://images.entertainment.ie/storage/images_content/rectangle/620x372/TOTP-NINETIES.jpg?w=1280&h=768&q=high",
   "https://entertainment.ie/movies/movie-news/michael-bay-is-reportedly-being-lined-up-to-direct-a-superhero-movie-for-dc-227844/": "https://images.entertainment.ie/storage/images_content/rectangle/620x372/869135-bmsb.jpg?w=1280&h=768&q=high",
   "https://enuchi.jp/14622/recolte-kedamatori-202611": "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg",
@@ -920,6 +921,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-10",
+   "hits": [],
+   "image": "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/10/p1va1sp1va1sp1v_gpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/nov/10/p1va1sp1va1sp1v_gpu.webp?width=1920&height=1080",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "GameGPU",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "Grand Theft Auto VI is now available for free thanks to Microsoft's $100 rewards program.",
+   "url": "https://en.gamegpu.com/news/igry/grand-theft-auto-vi-za-usd100-dostupna-igrokam-besplatno-blagodarya-bonusnoj-programme-microsoft",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-11-10",
    "hits": [],
@@ -1003,7 +1025,7 @@
    "work": "gelato pique"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "绝区零",
    "date": "2026-11-09",
    "hits": [],
@@ -1108,7 +1130,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-10",
    "hits": [],
@@ -1213,7 +1235,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "哈利波特剧集",
    "date": "2026-11-10",
    "hits": [],
@@ -1318,7 +1340,7 @@
    "work": "dota2"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "滑雪",
    "date": "2026-11-10",
    "hits": [],

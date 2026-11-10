@@ -917,6 +917,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://gagadget.com/media/cache/64/f4/64f443032bd3e39839afb531cf5b78f8.webp": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://game.watch.impress.co.jp/img/gmw/list/2153/775/002.jpg": {
   "w": 2160,
   "h": 2160,
@@ -1421,12 +1427,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cCV3B.img": {
   "w": 638,
   "h": 424,
-  "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dBBlh.img": {
-  "w": 1600,
-  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -4202,6 +4202,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.vgchartz.com/articles_media/images/playstation-cancels-fairgame-haven-to-become-support-studio-247297_featured.jpg": {
+  "w": 600,
+  "h": 250,
+  "target": 720,
+  "v": 3
  },
  "https://www.vice.com/wp-content/uploads/sites/2/2026/11/Could-GTA-6-Run-at-40-FPS-on-PS5-Pro-What-New-Datamine-Found.jpg?w=1280": {
   "w": 1280,
