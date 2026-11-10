@@ -478,6 +478,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.iwate-np.co.jp/media-static/article/198453/thumbnail/sw4b0-tm6af2f0c3_862574b10.jpg": {
+  "w": 1200,
+  "h": 802,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
   "w": 600,
   "h": 400,
@@ -2553,6 +2559,19 @@
   "out": [
    1280,
    819
+  ],
+  "why": "看不清"
+ },
+ "https://prtimes.jp/img/86964/322/resize/d86964-322-920ce4fb1c6d125252e4-0.jpg": {
+  "w": 650,
+  "h": 325,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.421,
+  "local": "pics/97201c398f002cbe.webp",
+  "out": [
+   1280,
+   640
   ],
   "why": "看不清"
  },

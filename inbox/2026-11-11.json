@@ -532,7 +532,9 @@
    "entries": [
     {
      "date": "2026-11-10T07:23:00+00:00",
-     "image": "",
+     "image": "https://tokyo-sports.ismcdn.jp/mwimgs/0/e/1200w/img_0e3d0d8e725f2845b1b4e6a5df245394100507.jpg",
+     "image_via": "og:image",
+     "link": "https://www.tokyo-sports.co.jp/articles/-/409448",
      "n": 1,
      "seen": "2026-11-10T16:24:30+00:00",
      "site": "https://www.tokyo-sports.co.jp",
@@ -546,6 +548,7 @@
      "carried": "2026-11-10",
      "date": "2026-11-10T10:00:00+00:00",
      "image": "",
+     "link": "https://www.iwate-np.co.jp/article/2026/11/10/198453",
      "n": 2,
      "seen": "2026-11-10T12:50:13+00:00",
      "site": "https://www.iwate-np.co.jp",
@@ -1298,6 +1301,7 @@
      "carried": "2026-11-10",
      "date": "2026-11-08T08:00:00+00:00",
      "image": "",
+     "link": "https://www.agara.co.jp/article/683414",
      "n": 1,
      "seen": "2026-11-10T12:50:36+00:00",
      "site": "https://www.agara.co.jp",
