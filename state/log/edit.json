@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-09T10:55:06+00:00",
-"text": "2026-11-09 第 8 バッチを出刊：gelato pique（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 1,005・キャッシュ読み 8.4万・出力 451",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.42,
-"mem_total": 16867737600,
-"mem_free": 16028278784,
-"disk_used": 10879803392,
-"disk_free": 30403731456,
-"disk_total": 41283534848,
-"peak": 313008128
-},
-"batch": 8,
-"boards": [
-"gelato pique"
-],
-"stories": 3,
-"left": 0,
-"edited": 19,
-"run": 1794218561.403737,
-"tok": {
-"in": 1,
-"cw": 1004,
-"cr": 84137,
-"out": 451,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 85593,
-"secs": 3145,
-"run_tok": {
-"in": 45,
-"cw": 56603,
-"cr": 1730675,
-"out": 8107,
-"calls": 24,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-09T13:48:02+00:00",
 "text": "出刊に失敗：No module named 'cv2'",
 "level": "error"
@@ -1940,5 +1899,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 223477
+},
+{
+"at": "2026-11-10T22:34:25+00:00",
+"text": "2026-11-11 第 3 バッチを出刊：哈利波特剧集（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 1,370・キャッシュ読み 15.1万・出力 538",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.5,
+"mem_total": 16867737600,
+"mem_free": 16026058752,
+"disk_used": 10094997504,
+"disk_free": 31188537344,
+"disk_total": 41283534848,
+"peak": 323555328
+},
+"batch": 3,
+"boards": [
+"哈利波特剧集"
+],
+"stories": 5,
+"left": 0,
+"edited": 16,
+"run": 1794349181.079869,
+"tok": {
+"in": 4,
+"cw": 1366,
+"cr": 151399,
+"out": 538,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 153307,
+"secs": 884,
+"run_tok": {
+"in": 33,
+"cw": 48278,
+"cr": 1098763,
+"out": 3982,
+"calls": 17,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
