@@ -1,6 +1,6 @@
 {
  "admin": "e6d261dc5619",
- "admin-ai": "51a817db7fb6",
+ "admin-ai": "1f175288c029",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "59b92390"
+   "7fac9c5e"
   ]
  },
  "admin-boards": "23b96f296509",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "9502428d59ab",
+ "admin-emblem": "800c03a27730",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ea08bd37"
+   "9b72f629"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "a0da67643048",
+ "admin-now": "dd6951feff65",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "1ac4accb"
+   "a3fee9a5"
   ]
  },
- "admin-system": "184b6fdce011",
+ "admin-system": "20c5f871d266",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ced30ffc"
+   "f0f3a9a6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "51ce082c"
+   "0ea734fb"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "afb08b3c"
   ]
  },
- "index": "836d1f3d557e",
+ "index": "afac83cd1d76",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "271e64b0"
+   "bb66287c"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -196,6 +196,6 @@
    "9547340e"
   ]
  },
- "updated": "11.10 22:28",
+ "updated": "11.10 23:19",
  "wishlist": "9d592ae985a2"
 }
