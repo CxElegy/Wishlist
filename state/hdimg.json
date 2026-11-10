@@ -1216,19 +1216,6 @@
   "target": 720,
   "v": 3
  },
- "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261011_EN_source-web_Jay-Chou-1.jpg": {
-  "w": 640,
-  "h": 335,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.498,
-  "local": "pics/a124e947437670cd.webp",
-  "out": [
-   1280,
-   670
-  ],
-  "why": "看不清"
- },
  "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg": {
   "w": 1280,
   "h": 672,
@@ -1915,6 +1902,13 @@
   "h": 675,
   "target": 720,
   "v": 3
+ },
+ "https://media.bastillepost.com/wp-content/uploads/hongkong/static/20230718-default-feature-704x369.jpg": {
+  "w": 704,
+  "h": 369,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.387
  },
  "https://media.image.infoseek.co.jp/isnews/photos/animeanime/animeanime_104589_0-enlarge.jpg": {
   "w": 512,
@@ -3236,6 +3230,12 @@
   "w": 1370,
   "h": 734,
   "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/10/1794321268538_s27-1794293076053899500845-61-0-396-640-crop-17942931440771079798738.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://wassets.insta360.com/store/c1d5e5a174d5499d9f8f04aa618052a2/x6.jpg": {
