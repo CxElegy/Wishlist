@@ -58,6 +58,47 @@
   }
  ],
  "_covered": {
-  "GTA 6": 27
- }
+  "GTA 6": 27,
+  "三星手机": 16
+ },
+ "三星手机": [
+  {
+   "headline": "Galaxy S27 ProとUltraの実機大のモックアップが流出、新カメラデザインが明らかに",
+   "highlight": "新カメラデザイン",
+   "blurb": "Galaxy S27 ProとUltraの実機大モックアップが流出し、新しいカメラの配置が明らかになった。",
+   "weight": "lead",
+   "refs": [
+    4,
+    1,
+    2,
+    3,
+    11,
+    9
+   ],
+   "image": "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-10-081808.jpg"
+  },
+  {
+   "headline": "Samsung Galaxy S27 series: Good camera news for Pro and Ultra, bad news for S27 and S27+",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    16,
+    5,
+    8,
+    14
+   ]
+  },
+  {
+   "headline": "Galaxy S27: Samsung reportedly bets 70% of output on Pro and Ultra",
+   "highlight": "70%",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    13
+   ]
+  }
+ ]
 }

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "9c9dcc8b01ce",
+ "edit_sig": "4830110443af",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?0o4xM8kDYYM3NFKzWF5OT",
@@ -375,122 +375,39 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Galaxy S27 ProとUltraの実機大モックアップが流出し、新しいカメラの配置が明らかになった。",
      "date": "2026-11-10",
-     "n": 1,
-     "source": "tbreak.com",
-     "title": "Galaxy S27 camera leak details Pro and Ultra sensors",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBJWDBZdXJhYUlZVUJVVGxuSzd3VXJDTjdFRm04Umc2V1FYdDBaempXLW1xN2Z6Tmt5S0ZYT2RTQ0pzWGFrRmF0ZnZ0dGVLcTZ4RUNNNjdCUUp0OUxnanc?oc=5"
+     "headline": "Galaxy S27 ProとUltraの実機大のモックアップが流出、新カメラデザインが明らかに",
+     "highlight": "新カメラデザイン",
+     "image": "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-10-081808.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://sumahodigest.com/?p=76124",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 2,
-     "source": "Nokiamob",
-     "title": "Galaxy S27 Dummy Leak Reveals Designs, but Cameras Might be A Concern",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPTVBQdmZ2OXZCSzJjWFJ5MW5PY0VKcHBNbkxMTVd2N3QweGJvMHBncjE0LUticW5hNzV4NXNTWjU1OWZXRmlwQTVjdGUwdUctR2FvbVVmODB5UGtvd1UwWThWM0hRdl94emUzcmdLMGI0NDdnTDBVaE41ZWNZVUdZbWoxMmdUN09IMEo2LUhvVTZPaS1DSnhmRXUtdVBvREhxeUxn?oc=5"
+     "headline": "Samsung Galaxy S27 series: Good camera news for Pro and Ultra, bad news for S27 and S27+",
+     "highlight": "",
+     "image": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Samsung-Galaxy-S27-Serie-Gute-Kamera-News-fuer-Pro-und-Ultra-lausige-fuer-Galaxy-S27-und-Galaxy-S27-Plus.jpg",
+     "image_via": "og:image",
+     "url": "https://www.notebookcheck.net/Samsung-Galaxy-S27-series-Good-camera-news-for-Pro-and-Ultra-bad-news-for-S27-and-S27.1447045.0.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 3,
-     "source": "GSMArena.com",
-     "title": "Samsung Galaxy S27 Ultra pictures, official photos",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBWU1I1NW5YSGI5M3lCWF9pRDdvUGp6SG9XOXJuVUI5OE9rSlo4TnBQRlpnS2ZTdDNCck5Ndk5nQWRzdXd5eWw2NGJ5TzhLRDBVOUw4MW9JbW4zVkY1UVo1T0ZDTnd0Y3N0MWZRN0kydUF6ZERQbF83Vw?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "スマホダイジェスト",
-     "title": "Galaxy S27 ProとUltraの実機大のモックアップが流出、新カメラデザインが明らかに",
-     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBZUkRpTDdZT0xDZUNrNnA2UjUxcm93ZWItWXJqaGFMMDVoeXdtRGdSRF92N1ctTHhSdzlIa1pBOG9FSFNIODJIcg?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 5,
-     "source": "Mezha.net",
-     "title": "Leaked specs point to camera upgrades for Galaxy S27 Pro and Ultra, not base models",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNOHBIcGVDWnAwdmZYY0wxR0lkVkR5b25GSVBIbkJMODFpNUl1cFN3TWk5TUd3bkpLcjR2d0FGZnFHd3AyYzJlelVTUzVUaXc4MzRFcEZILVNjc2swSlNhOEF2YVcxQlIzZlEyN3pKNXhWM29BSGItcklEMWE2NFc0UmluWQ?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 6,
-     "source": "Notebookcheck",
-     "title": "Samsung Galaxy S27 series: Good camera news for Pro and Ultra, bad news for S27 and S27+",
-     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNam5fZG9SWEw2cW16NVdCSlNlLVB1c2tEM2VQNkJTSHdFblp5TVZBQ01EaVgweFdkU1ZRZGZSS0tTUGFmalhtcVc0VklJVG1zNU12TVNvT0hIM3NoZkViMktuOW5XSHlQMDYzWHhkWUplUDkwSGN3Q2NxcWptYk1SWDV0R0NoUlBMemdHbExmMVJJejJmX1VaRW1xYWJ0cVlMUTVUODBtNVBQODhkSmdPalZwVWxwcVhVX24xdXo2MHljWDY1UmFSbVVB?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 7,
-     "source": "Gagadget.com",
-     "title": "Galaxy S27: Samsung reportedly bets 70% of output on Pro and Ultra",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQcGxtTzJZOG5DMF8wR0h6X1U4NWxwVTlybnVQbkNhNWcwYjVMMFNlZ1p3VkQ3anFVak5GWmY1LWF5N0pYOU9BYUlJcjNBWGdqcHlOZ1JXNm1wazJ3RXlBSnVHcnNxa1VVZVJldFRJSGhLSVdDeW01dXQtVVd6WTlvUXlEVV9mRUtUMlVoQmY5WS1Cc2RhOVp1QWJYQnnSAaIBQVVfeXFMTUFvV25yQ0FwNWFQeUFFNDB6MlVJLVdBcnZVU29TSDh3UHAybk9KVWlYZDFiSFgxZWRkMlV1OVE1cjItVTVSMjFYeHlTcXY4eTh2dk1OTUNoSENnWUs1dFdIYXJCREp1eF95bi1ieEh3UkF6QksteVFBUTdmWkdTWnQ2VXh4M2VJYmR6Sl9zSjhuS2JlRFBTTm85bWlPSVpUam5B?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 8,
-     "source": "搜狐网",
-     "title": "三星Galaxy S27系列影像配置全曝光，2亿主摄加持！",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQbWJxZVZkZk9WZTNnNzVOVHhJLTFIODI3bWNPUTk3cWRhRW1QYmlIOEZJc3BDd3c0QmRuVC1rWjFxbW43YmdEOXVzNkx2MnhZaVZFa1lBUXpoMnhlVlVIWGUzRkY4N3NmbENXVFN2SUVzLUQ3NmtTUmdqZ1NDd2ZkSWY3TEJsOG1M?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 9,
-     "source": "9to5Google",
-     "title": "Galaxy S27 redesign leak shows off Pro vs Ultra size difference, with just a bit of controversy",
-     "url": "https://9to5google.com/2026/11/10/samsung-galaxy-s27-redesign-leak-size/"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 10,
-     "source": "Geeky Gadgets",
-     "title": "The Reality Behind the Galaxy S27 Ultra Design Leaks",
-     "url": "https://www.geeky-gadgets.com/galaxy-s27-14/"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 11,
-     "source": "Android Authority",
-     "title": "Galaxy S27 Ultra, Pro, and Plus dummy units leak, but the camera layout is raising red flags",
-     "url": "https://www.androidauthority.com/samsung-galaxy-s27-pro-ultra-plus-dummy-units-leak-3733332/"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 12,
-     "source": "PhoneArena on MSN",
-     "title": "Galaxy S27 Ultra battery life: the upgrade I want more than faster charging",
-     "url": "https://www.msn.com/en-us/news/other/galaxy-s27-ultra-battery-life-the-upgrade-i-want-more-than-faster-charging/ar-AA2h98UK"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 13,
-     "source": "Android Headlines on MSN",
-     "title": "Samsung is betting big on the Galaxy S27 Pro, and it could steal sales from the base model",
-     "url": "https://www.msn.com/en-us/technology/tech-companies/samsung-is-betting-big-on-the-galaxy-s27-pro-and-it-could-steal-sales-from-the-base-model/ar-AA2h98xv"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 14,
-     "source": "Tom's Guide on MSN",
-     "title": "Samsung Galaxy S27 cameras tipped to be almost identical to the Galaxy S26",
-     "url": "https://www.msn.com/en-us/news/other/samsung-galaxy-s27-cameras-tipped-to-be-almost-identical-to-the-galaxy-s26/ar-AA2h91Ce"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 15,
-     "source": "PhoneArena",
-     "title": "The seven upgrades I want to see in the Galaxy S27 Ultra",
-     "url": "https://www.phonearena.com/news/seven-upgrades-i-want-to-see-in-galaxy-s27-ultra_id184701"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 16,
-     "source": "Digital Trends",
-     "title": "Samsung Galaxy S27 series camera leak brings bad news for anyone hoping for major upgrades",
-     "url": "https://www.digitaltrends.com/phones/samsung-galaxy-s27-series-camera-leak-brings-bad-news-for-anyone-hoping-for-major-upgrades/"
+     "headline": "Galaxy S27: Samsung reportedly bets 70% of output on Pro and Ultra",
+     "highlight": "70%",
+     "image": "https://gagadget.com/media/cache/64/f4/64f443032bd3e39839afb531cf5b78f8.webp",
+     "image_via": "og:image",
+     "url": "https://gagadget.com/en/733614-galaxy-s27-samsung-reportedly-bets-70-of-output-on-pro-and-ultra/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",
