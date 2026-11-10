@@ -814,12 +814,6 @@
   "target": 1280,
   "v": 3
  },
- "https://dimg.donga.com/wps/SPORTS/IMAGE/2026/11/10/134999926.1.jpg": {
-  "w": 1280,
-  "h": 1300,
-  "target": 1280,
-  "v": 3
- },
  "https://dispatch.cdnser.be/cms-content/uploads/2026/11/05/56317c6e-b66f-4e74-9d22-e5a0d33570a1.jpeg": {
   "w": 1280,
   "h": 720,
@@ -3629,6 +3623,19 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.IX9N9Sni6cyu_LoH3DlpfQ&pid=News&w=1200": {
+  "w": 689,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.486,
+  "local": "pics/dd1473e90773f463.webp",
+  "out": [
+   1260,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.JpCGa5gTOp-LoOapCFVdCg&pid=News&w=700": {
   "w": 560,

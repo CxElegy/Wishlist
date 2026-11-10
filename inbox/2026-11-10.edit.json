@@ -33,7 +33,8 @@
     137,
     171,
     172,
-    166
+    166,
+    184
    ],
    "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/10/vice_city_09-1.jpg?q=49&fit=contain&w=750&h=422&dpr=2"
   },
@@ -134,7 +135,13 @@
     141,
     154,
     155,
-    160
+    160,
+    182,
+    183,
+    188,
+    175,
+    179,
+    174
    ]
   },
   {
@@ -162,7 +169,18 @@
    "weight": "normal",
    "refs": [
     158,
-    157
+    157,
+    189
+   ]
+  },
+  {
+   "headline": "A Real Life GTA 6 Car Is Being Sold for $1.3 Million",
+   "highlight": "$1.3 Million",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    190,
+    178
    ]
   }
  ],
@@ -503,7 +521,7 @@
   }
  ],
  "_covered": {
-  "GTA 6": 172,
+  "GTA 6": 191,
   "漫威电影": 94,
   "三星手机": 70,
   "チェーンソーマン": 12,
