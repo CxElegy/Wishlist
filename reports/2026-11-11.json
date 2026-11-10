@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "440442baa132",
+ "edit_sig": "f99e47a40563",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -124,24 +124,29 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-09",
-     "n": 1,
-     "source": "Invision Game Community",
-     "title": "AION 2 Review – A Beautiful MMO With a Price Problem",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSkRWTFMzUzcwZ2ZzRzN2ZzZ2eWFpcEtUZVJMaUloSlJYRFdvQXc0dklpc2Q3Wk1XMHFjODJJUi1ab1FlaHRnMXMwRllKcHY4REN3dktfbHRwYnl6M2JmZ2ZkcEVXNWNBUXZ4b2VjRU1KS0R3cTc5RkNpQTNQLUxQVzUwd0N0LXdIVjdF?oc=5"
+     "blurb": "Looking for a cozy MMO like Palia? Our Loftia Early Access preview explores its beautiful solarpunk world and house building.",
+     "date": "2026-11-10",
+     "headline": "Loftia Preview – A cozy solarpunk MMO built for you",
+     "highlight": "cozy solarpunk MMO",
+     "image": "https://noisypixel.net/wp-content/uploads/2026/11/Loftia-Preview.jpg",
+     "image_via": "og:image",
+     "url": "https://noisypixel.net/loftia-early-access-preview/",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-10",
-     "n": 2,
-     "source": "Noisy Pixel",
-     "title": "Loftia Preview – A cozy solarpunk MMO built for you",
-     "url": "https://noisypixel.net/loftia-early-access-preview/"
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "AION 2 Review – A Beautiful MMO With a Price Problem",
+     "highlight": "Price Problem",
+     "image": "https://i0.wp.com/invisioncommunity.co.uk/wp-content/uploads/2026/04/AION-2.webp",
+     "image_via": "og:image",
+     "url": "https://invisioncommunity.co.uk/aion-2-review-a-beautiful-mmo-with-a-price-problem/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -509,24 +514,29 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "The 584-piece display model of Din Djarin's helmet is back in stock at its lowest price, but it might sell out again before Black Friday.",
      "date": "2026-11-10",
-     "n": 1,
-     "source": "Fairbanks Daily News-Miner",
-     "title": "This is the way: Mandalorian takes top prize at Pop-Con Cosplay",
-     "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNS0lGLUc3ODYwTndFMDhhaU8zcWpVWXlLXzFEeUI2NVhXTVc1N2lNa3VEZkJUUHJCVlM4Wi1nRkNSSmI5eF9KRnJpSkZScnBOQ0pudnpPYmZPaDhqVXNlbUpMamNrenpHc2g2dWNleVN1UE1lZVMtVHNuUEh3em9GczNhWl9jcUljQnpUUmRfczhidDdXNDBlQUxGQTNZWGNaYzVINy00YXZiYWduSjFvZmNqWUFWVGx3Rm9aTGJHWEFIcU1pcm9RWi1obENhd09HQmRqNTROMTNncW9oVE1JMk1BSUpZNVRiMFFxbg?oc=5"
+     "headline": "LEGO Star Wars The Mandalorian Helmet Is Back in Stock at an All-Time Low on Amazon",
+     "highlight": "All-Time Low",
+     "image": "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://gizmodo.com/lego-star-wars-the-mandalorian-helmet-is-back-in-stock-at-an-all-time-low-on-amazon-but-it-might-sell-out-again-before-black-friday-2000820679",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 2,
-     "source": "Gizmodo",
-     "title": "LEGO Star Wars The Mandalorian Helmet Is Back in Stock at an All-Time Low on Amazon, but It Might Sell Out Again Before Black Friday",
-     "url": "https://gizmodo.com/lego-star-wars-the-mandalorian-helmet-is-back-in-stock-at-an-all-time-low-on-amazon-but-it-might-sell-out-again-before-black-friday-2000820679"
+     "headline": "This is the way: Mandalorian takes top prize at Pop-Con Cosplay",
+     "highlight": "",
+     "image": "https://bloximages.newyork1.vip.townnews.com/newsminer.com/content/tncms/assets/v3/editorial/d/23/d23ae209-448d-4015-a740-21bf869a6e23/6af211105521e.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize",
+     "image_via": "og:image",
+     "url": "https://www.newsminer.com/features/our_town/this-is-the-way-mandalorian-takes-top-prize-at-pop-con-cosplay/article_7849de7e-a4b7-4942-a161-9734c66df0f1.html",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -543,24 +553,29 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
-     "date": "2026-11-07",
-     "n": 1,
-     "source": "ナタリー",
-     "title": "Vaundy「しわあわせ」配信ジャケット",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE96cGZuUXIzMktKOUFwanlheGVxZ0ZFMlQ0SDY5QXpJbDhUUk9BTGEyRU1LLUJwbnBWUVY5U2twaEZqbnhxd2dZdGQ4ZGRXTXdKQzd5SzRtem93NUFTSjBLZXp3?oc=5"
+     "blurb": "Vaundy書き下ろしの「かげろう」とABC高校野球のコラボレーションPVが完成した。",
+     "date": "2026-11-09",
+     "headline": "Vaundy書き下ろし「かげろう」×ABC高校野球 コラボレーションPV完成",
+     "highlight": "コラボレーションPV完成",
+     "image": "https://static.sanyonews.jp/image/article/size1/f/a/5/3/fa53d6bb2a79d4838238076752cf8fcd_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1948780?rct=oricon_music&kw=2024",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-09",
-     "n": 2,
-     "source": "山陽新聞",
-     "title": "Vaundy書き下ろし「かげろう」×ABC高校野球 コラボレーションPV完成",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1KVG9Xa2p4aDVIR29LOWlCR3FoZ2Y4ZUl2elp4d3o3ckRJRkVFbFdUTG13UUFmeGdXUVJOX2xnOVFZQkZIQm5td055RkRJOWRNaVNaRkVoUDBGREc0NmNpT1BxWVJ5OUJHREhhaXZkNzg4Ums?oc=5"
+     "blurb": "",
+     "date": "2026-11-07",
+     "headline": "Vaundy「しわあわせ」配信ジャケット",
+     "highlight": "",
+     "image": "https://ogre.natalie.mu/media/news/music/2026/1107/Vaundy_jkt.jpg?impolicy=ogp_face_crop",
+     "image_via": "og:image",
+     "url": "https://natalie.mu/music/gallery/news/697069/3011486",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
@@ -626,17 +641,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "这款绝区零联名手柄的评测：可无线连接 PC、Xbox 和 Android 设备。",
      "date": "2026-11-10",
-     "n": 1,
-     "source": "Maison et Domotique",
-     "title": "GameSir G7 Pro Zenless Zone Zero 评测：终于有一款无线手柄能同时连接我的PC、Xbox 和 Android 设备了！",
-     "url": "https://news.google.com/rss/articles/CBMi3wJBVV95cUxNakl0SFd1dmxrLUFCMnZ5MTFNOGNLZXEteks5WmFacWloNVhxdDZQMFZXY2FxN05rWjJ4N2l1eU0waldieWZCX0poQnFsTl9ucFVhT0hKbmdjV0hDbHVkdE9WZW5sckZqTzFfSHE3SEs0Wmp4eGlZY1VWcmhKQTFEVWpWUUxyREpJN2NLUktTOUE0eVZwY0I1MXQ1TDE3bXktOFplMlBkb1gwdjdERmx0RURBa0ZJeVdYa1prYkVOclVraHR0Z2NPM1NqYUFZZ3FfenBOalNIdUVfdlRCSXI4NEJ3TUY0WEQ1aWRXc25rcFZxZzUtazJSTEczS2NyQWZKMHYwZTROaEhtMVhMejN0S0FiVnVaYXMxWW9pcTJaeWRtTEtGLVJaTHYxaGVtQlJkaUMzZEZ1NEpiS3ZHVkttblltMk43SVdjdHREeHg4akhMcnhZRWVuXzl0V2xSdTA?oc=5"
+     "headline": "GameSir G7 Pro Zenless Zone Zero 评测：终于有一款无线手柄能同时连接我的PC、Xbox 和 Android 设备了！",
+     "highlight": "",
+     "image": "https://www.maison-et-domotique.com/wp-content/uploads/2026/11/test-gamesir-g77-pro-zzz-1006.jpg",
+     "image_via": "og:image",
+     "url": "https://www.maison-et-domotique.com/zh/174485-gamesir-g7-pro-zenless-zone-zero-%E8%AF%84%E6%B5%8B%EF%BC%9A%E7%BB%88%E4%BA%8E%E6%9C%89%E4%B8%80%E6%AC%BE%E6%97%A0%E7%BA%BF%E6%89%8B%E6%9F%84%E8%83%BD%E5%90%8C%E6%97%B6%E8%BF%9E%E6%8E%A5%E6%88%91/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",

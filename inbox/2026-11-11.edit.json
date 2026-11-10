@@ -98,7 +98,11 @@
   "gelato pique": 1,
   "チェーンソーマン": 1,
   "BLEACH Mirrors High": 10,
-  "A2O LITE": 3
+  "A2O LITE": 3,
+  "MMORPG 新作": 2,
+  "The Mandalorian": 2,
+  "Vaundy": 2,
+  "绝区零": 1
  },
  "三星手机": [
   {
@@ -436,6 +440,77 @@
    "refs": [
     1,
     2
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "Loftia Preview – A cozy solarpunk MMO built for you",
+   "highlight": "cozy solarpunk MMO",
+   "blurb": "Looking for a cozy MMO like Palia? Our Loftia Early Access preview explores its beautiful solarpunk world and house building.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "AION 2 Review – A Beautiful MMO With a Price Problem",
+   "highlight": "Price Problem",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "LEGO Star Wars The Mandalorian Helmet Is Back in Stock at an All-Time Low on Amazon",
+   "highlight": "All-Time Low",
+   "blurb": "The 584-piece display model of Din Djarin's helmet is back in stock at its lowest price, but it might sell out again before Black Friday.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "This is the way: Mandalorian takes top prize at Pop-Con Cosplay",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy書き下ろし「かげろう」×ABC高校野球 コラボレーションPV完成",
+   "highlight": "コラボレーションPV完成",
+   "blurb": "Vaundy書き下ろしの「かげろう」とABC高校野球のコラボレーションPVが完成した。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Vaundy「しわあわせ」配信ジャケット",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "GameSir G7 Pro Zenless Zone Zero 评测：终于有一款无线手柄能同时连接我的PC、Xbox 和 Android 设备了！",
+   "highlight": "",
+   "blurb": "这款绝区零联名手柄的评测：可无线连接 PC、Xbox 和 Android 设备。",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

@@ -851,12 +851,6 @@
   "target": 720,
   "v": 3
  },
- "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-6ea7a38cf1ae91bed263b5e5637d5a04-20261027-082d08.jpg": {
-  "w": 1600,
-  "h": 680,
-  "target": 1280,
-  "v": 3
- },
  "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-e8bc6d3adeeff932b7cfb9e1cb8f469e-20261026-7f6852.jpg": {
   "w": 1215,
   "h": 810,
@@ -1116,6 +1110,12 @@
   "target": 720,
   "v": 3
  },
+ "https://hips.hearstapps.com/hmg-prod/images/e68b5f15-cb38-4c12-bedb-c5c86e7596d6.png?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
+  "w": 1200,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261105/photo/bkn-20261105000104965-1105_00862_001_02b.jpg?20261104222519": {
   "w": 780,
   "h": 799,
@@ -1176,6 +1176,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://i0.wp.com/invisioncommunity.co.uk/wp-content/uploads/2026/04/AION-2.webp": {
+  "w": 943,
+  "h": 531,
+  "target": 720,
   "v": 3
  },
  "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/11/6919f6efb1a7d44ef98ba36287b4d01a.webp?fit=1200%2C921&ssl=1": {
@@ -1873,6 +1879,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://iphoneislam.com/wp-content/uploads/2026/11/s26-vs-iphone-18-pro-00.jpg": {
+  "w": 1448,
+  "h": 1086,
+  "target": 1280,
+  "v": 3
+ },
  "https://jazznews.com.tw/wp-content/uploads/2026/11/20261107002405_0_cabd9c.jpg?v=1793982245": {
   "w": 1000,
   "h": 563,
@@ -2013,12 +2025,6 @@
   "target": 720,
   "v": 3
  },
- "https://mmx.prnewswire.com/media/MS2026682/tarte-x-roller-rabbit.jpg?id=OA3056287&p=facebook": {
-  "w": 2000,
-  "h": 1047,
-  "target": 1280,
-  "v": 3
- },
  "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png": {
   "w": 1280,
   "h": 672,
@@ -2118,6 +2124,19 @@
   "h": 820,
   "target": 1280,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/118119/652262_615.jpg": {
+  "w": 615,
+  "h": 341,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.449,
+  "local": "pics/4a9347bc54adc20f.webp",
+  "out": [
+   1280,
+   710
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/1296185/15377950_615.jpg": {
   "w": 615,
@@ -2399,6 +2418,12 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/e086dee46e9f4a8787d85c4824f876e3.png": {
   "w": 896,
   "h": 504,
+  "target": 1280,
+  "v": 3
+ },
+ "https://noisypixel.net/wp-content/uploads/2026/11/Loftia-Preview.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -3041,6 +3066,13 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/f/a/5/3/fa53d6bb2a79d4838238076752cf8fcd_1.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.291
+ },
  "https://static.standard.co.uk/2026/11/02/16/2268333737..?width=1200&auto=webp&quality=75": {
   "w": 1200,
   "h": 800,
@@ -3171,12 +3203,6 @@
  "https://theholofiles.com/wp-content/uploads/2026/05/THND-FF-000470-3-scaled.jpg": {
   "w": 2560,
   "h": 1790,
-  "target": 1280,
-  "v": 3
- },
- "https://theinventory.com/cdn-cgi/image/width=1200,quality=85,format=auto/https://assets.theinventory.com/media/samsung-32-in-h5000-hd-hdr-led-tv-un32h5000ffxza-27-month-axiom-care-e6ee8a4e-1793743330421-1200x630.png": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -3446,6 +3472,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.6GeaSh256dvaR-rLRZKfRA&pid=News&w=700": {
+  "w": 700,
+  "h": 383,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.8xciGiAADGDU8S6cDUsaMg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3633,6 +3665,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.Z8qznNUuoyyH_qoTlJyMrQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3684,12 +3722,38 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.433,
+  "local": "pics/a3a6ddefd6ecf27c.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.rRZQG7uV31mJ304GeGVRsQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
   "target": 1280,
   "v": 3,
   "blur": 0.414
+ },
+ "https://www.bing.com/th?id=ONUT.tOcGfn-wfGPRSyRN6q5YRQ&pid=News&w=1024": {
+  "w": 700,
+  "h": 350,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.561,
+  "local": "pics/523d10ef046efcce.webp",
+  "out": [
+   1280,
+   640
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.uxjb8qApA4NKkBUHrsJ8Sg&pid=News&w=360": {
   "w": 360,
@@ -3828,12 +3892,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/08/27/Every-Dynamax-and-Gigantamax-Pokemon-in-Pokemon-Go-so-far.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/Pokemon-Franchise-Biggest.jpg": {
   "w": 1600,
   "h": 900,
@@ -3952,7 +4010,7 @@
  "https://www.maison-et-domotique.com/wp-content/uploads/2026/11/test-gamesir-g77-pro-zzz-1006.jpg": {
   "w": 1440,
   "h": 1080,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.meatpoultry.com/ext/resources/2026/11/05/KFC-Doom-Meal.jpg?height=635&t=1793901282&width=1200": {
