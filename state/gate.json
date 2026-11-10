@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-09T23:17:41+00:00",
+ "checked": "2026-11-10T00:17:58+00:00",
  "fired": {
-  "at": "2026-11-09T23:17:56+00:00",
+  "at": "2026-11-10T00:18:16+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -19,19 +19,19 @@
    "edit": 11
   },
   "2026-11-10": {
-   "edit": 5
+   "edit": 6
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-09T22:18:18+00:00",
-    "attempts": 2,
+    "at": "2026-11-10T00:18:16+00:00",
+    "attempts": 1,
     "day": "2026-11-10",
-    "prog": 164,
-    "resp": "cse_01W4x6f4xBUofHWRD7RiKwre",
-    "sig": "1201d5f45362"
+    "prog": 193,
+    "resp": "cse_01W4x6f68tg5mW7B5pn3axVf",
+    "sig": "f0d1f338d8ab"
    },
    "items": [
     "A2O LITE",
@@ -54,11 +54,17 @@
    "need": true,
    "prog": 193,
    "prog_day": "2026-11-10",
-   "ripe": [],
-   "sig": "18effbcf5100",
+   "ripe": [
+    "The Mandalorian",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "猫用品",
+    "绝区零"
+   ],
+   "sig": "f0d1f338d8ab",
    "token_cap": 1000000,
    "tokens_today": 258888,
-   "why": "整理待ちの記事 13 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 13 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
