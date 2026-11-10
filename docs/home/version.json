@@ -1,6 +1,6 @@
 {
  "admin": "43a5faa8b733",
- "admin-ai": "d1e55cb07bcf",
+ "admin-ai": "1c158cb2727d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "9362944f"
+   "8f0d3e25"
   ]
  },
  "admin-boards": "86c996d65fac",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "3ccfc0d24d47",
+ "admin-emblem": "8a3a53497e7c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4d16e84f"
+   "fec1db79"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,20 +34,20 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "60087bca"
+   "e6c343e6"
   ],
   "emblems": [
    "小元素",
-   "167f0cf7"
+   "8c67acae"
   ]
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "2b9dcb46d9bf",
+ "admin-now": "dfebc9afee2f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e602ccd2"
+   "a7e49099"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "1f9190d8"
+   "3aed34dc"
   ]
  },
- "admin-system": "719ba116f43d",
+ "admin-system": "3e3172455917",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "52e2cb0e"
+   "4ebb1174"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "743dbddf"
+   "c4317622"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "b374a472"
   ]
  },
- "index": "7c7129904cc9",
+ "index": "c0d2c89161ac",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "a78f432a"
+   "c828b826"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -196,6 +196,6 @@
    "ea35b5e4"
   ]
  },
- "updated": "11.10 13:22",
+ "updated": "11.10 13:32",
  "wishlist": "2809c5ec26bc"
 }

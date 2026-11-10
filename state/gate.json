@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-10T03:33:06+00:00",
+ "checked": "2026-11-10T04:30:24+00:00",
  "fired": {
-  "at": "2026-11-10T03:33:06+00:00",
+  "at": "2026-11-10T04:30:24+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -36,64 +36,50 @@
    "items": [
     "A2O LITE",
     "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "三星手机",
-    "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-10T00:58:05+00:00",
+   "last_batch": "2026-11-10T03:49:27+00:00",
    "last_error": {
     "at": "2026-11-09T13:48:02+00:00",
     "text": "出刊に失敗：No module named 'cv2'"
    },
    "need": true,
-   "prog": 274,
+   "prog": 330,
    "prog_day": "2026-11-10",
    "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影"
+    "BLEACH Mirrors High"
    ],
-   "sig": "c592478c1ecf",
+   "sig": "d59409f6fb85",
    "token_cap": 1000000,
-   "tokens_today": 333223,
-   "why": "整理待ちの記事 64 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 396622,
+   "why": "整理待ちの記事 8 件（6 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "周杰伦",
-    "A2O LITE",
-    "绝区零"
-   ],
-   "need": true,
-   "sig": "1408e5928be2",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン"
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -138,12 +124,12 @@
    "runs": 9
   },
   "2026-11-10": {
-   "batches": 20,
-   "cr": 11639690,
-   "cw": 290602,
-   "in": 294,
-   "out": 42327,
-   "runs": 5
+   "batches": 22,
+   "cr": 12751137,
+   "cw": 347722,
+   "in": 324,
+   "out": 48576,
+   "runs": 6
   }
  }
 }
