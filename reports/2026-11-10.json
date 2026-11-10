@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "53301768df15",
+ "edit_sig": "363cfea990b8",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -551,22 +551,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 4,
-     "source": "山陽新聞",
-     "title": "『チェンソーマン レゼ篇』ワールドプレミア開催決定！声優登壇 映画誌のW表紙公開",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8zeUtZcloxLVNtM1JPeGpwSzRZQnM0STVQNnltWTVjTDN5LXdpSGxTaDdmTWxuR2RQY2lBQm9IYXFXMW9NVjF2czZGNHNyQ1VmR2ZvSG9yMFB0aG5JeHYwV2JDQTJoVFU?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 5,
-     "source": "House of Heat°",
-     "title": "Chainsaw Man x Crocs Pack Brings Denji, Power and Pochita to the Classic Clog",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5FWXF4eXE2UV9ETlRRamhiQ05XM2JkS1A0V3UxR1NyVUlfV2IwZG1OTE14M01ROHlRZFBkZ3prdFhYeWVTdjVuYlJsNWY0UC1PZ3RtaEdoUUxhTmN4VG55Mnc4d3ktTFdMX21QQ3FXX0hnZlJ0cGVvaHV1YnM?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -578,6 +562,26 @@
      "image_via": "og:image",
      "url": "https://hobby.watch.impress.co.jp/docs/news/2152818.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "『チェンソーマン レゼ篇』ワールドプレミア開催決定！声優登壇 映画誌のW表紙公開",
+     "highlight": "ワールドプレミア開催決定",
+     "image": "https://static.sanyonews.jp/image/article/size1/2/b/e/4/2be4ef3a313751ec70dad2ccbec1313d_1.jpg",
+     "image_via": "正文图（6 枚から）",
+     "url": "https://www.sanyonews.jp/photo/detail?article_id=1784578",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "Chainsaw Man x Crocs Pack Brings Denji, Power and Pochita to the Classic Clog",
+     "highlight": "",
+     "image": "https://cdn.sanity.io/images/pu5wtzfc/production/69eb8f1d911f34c3e2c4e143012cb0495abff595-2000x1250.png?rect=0,100,2000,1050&w=1200&h=630",
+     "image_via": "og:image",
+     "url": "https://houseofheat.co/crocs/chainsaw-man-crocs-collection-november-2026",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
@@ -627,15 +631,6 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 2,
-     "source": "GoNintendo",
-     "title": "Play Nintendo shares Animal Crossing: New Horizons video feature (UPDATE)",
-     "url": "https://gonintendo.com/contents/63627-play-nintendo-shares-animal-crossing-new-horizons-video-feature-update"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -647,6 +642,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.msn.com/en-us/lifestyle/other/zipper-t-bunny-costume-theory-in-animal-crossing-new-horizons/vi-AA2h45Ln",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "Play Nintendo shares Animal Crossing: New Horizons video feature (UPDATE)",
+     "highlight": "",
+     "image": "https://gonintendo.com/attachments/image/88856/file/medium-0d951c4558c74d8a62690b066a64bde9.jpg",
+     "image_via": "og:image",
+     "url": "https://gonintendo.com/contents/63627-play-nintendo-shares-animal-crossing-new-horizons-video-feature-update",
+     "weight": "normal"
     }
    ],
    "subtitle": "あつまれ どうぶつの森",
@@ -763,36 +768,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 8,
-     "source": "Players",
-     "title": "Gaimin Gladiators Hint at Dota 2 Return: Controversial Past and Potential Rosters",
-     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQb1hSUy1FTW9oYlY0bkRGSzJvbkFNUkZ1eDIydGxpdExjY0xIRmhhN29FaVB4NUFiWGg3Z25JSVMzRXVxaWxIb0ZLWkFYSnY0Sk54cDBXclFiQ0wxdzhDSFk1NW94SE5Rb0dHT0hBT2RIS0FuX1NpVlRCbEJJamo4QUpaMjk5bmNmMEd5X3RjT0JLNlNldXRRbVV0QkZrZ3FyS1RYaGZtQUotM2tKa0J5NWN6anB5c1lxVEHSAboBQVVfeXFMUG9YUlMtRU1vaGJWNG5ERksyb25BTVJGdXgyMnRsaXRMY2NMSEZoYTdvRWlQeDVBYlhoN2duSUlTM0V1cWlsSG9GS1pBWEp2NEpOeHAwV3JRYkNMMXc4Q0hZNTVveEhOUW9HR09IQU9kSEtBbl9TaVZUQmxCSWpqOEFKWjI5OW5jZjBHeV90Y09CSzZTZXV0UW1VdEJGa2dxcktUWGhmbUFKLTNrSmtCeTVjempweXNZcVRB?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 9,
-     "source": "新浪网",
-     "title": "翻车啦！鲷哥队1-0菜哥队！ #dota2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9IQWkyYUtoWFNJSHllNVM2UFVmejJrelhvaVEwTDh3dUgzWjZZMFBDNUc3VUc2VDh4bmxnTjJ2bV9mUGxjZUVFWGRGdFJnSVkzLWpsLTFoX1QwbDdFbHNfMUprNA?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 10,
-     "source": "Dexerto",
-     "title": "Dota 2 TI champions: All The International winners in history",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNUGtYNHJZWGQxRDFfcGtoTUEwTGpYYWdacnRheC1iXzVnTTBCYmlVd1FFajl1VEJfRjYzMlBRYnNEOFZZWXdBTlRCMmRVRlBfV1BqSHlqVDdaYlllU2U1N09SdHJTQzVNcnY1eDJNdDdNUVVxOEk2cDZFcll1WnJIMnRB?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 11,
-     "source": "Dexerto",
-     "title": "Dota 2 players receiving absurdly long bans after latest ranked update",
-     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQbnhFMS1GWjJwNjJqajdPZmIySkxvTnZfWENmaVpBeXFZQVhxazc4am0xSUlDSjNHYkhhQ1dKMi1zdEM0QkM1UUtiRTNxY0ZWNmpROWhSZ1dUaHo3aWFrOUhTY1pwb091WGZHSm1jMW9OTFU5U0V2SEpUX1Vta2J3dm1ZVGhlTzZnNGV4WlZ2V0NDeXdxMzNkdHdvdUh0WVYtTENwVW9B?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -814,6 +789,26 @@
      "image_via": "og:image",
      "url": "https://hawk.live/posts/dendi-speaks-serious-problem-professional-dota-2",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "Gaimin Gladiators Hint at Dota 2 Return: Controversial Past and Potential Rosters",
+     "highlight": "",
+     "image": "https://players.com.ua/wp-content/uploads/2026/11/gg-m-r.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://players.com.ua/en/news/gaimin-gladiators-hint-at-dota-2-return-controversial-past-and-potential-rosters/?amp=1",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "Dota 2 players receiving absurdly long bans after latest ranked update",
+     "highlight": "",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/dota-2-players-copping-massive-20-years-bans-following-update.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/dota2/dota-2-players-receiving-absurdly-long-bans-latest-ranked-update-1037298/",
+     "weight": "normal"
     }
    ],
    "subtitle": "Dota 2",
@@ -832,36 +827,6 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 3,
-     "source": "新浪网",
-     "title": "【韩区🇰🇷】2026.11.8 Spotify日榜 #SpotifyChart# [来抱抱]A2O LITE-NEON日冠×26👑 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBRSXkwX3A1Q19YSnc1MzhjeHVpcWpVUFFTTmE4WkJyeldvT2x0aVQ0SnRhSHVBR1BHd1ptVGdkUkRPU0dER0VxRkVaNTVaRlpQRFc2MFFBNUl0SWJRcW13R1NoVQ?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 4,
-     "source": "톱스타뉴스",
-     "title": "A2O SOUL·A2O LITE, 유픽 ‘11월 이달의 픽’ 루키 부문 톱10 안착",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1fRTRyaHpldk9ocmZHTDBpTXlBSXZvQXZiQkZTdW1QdmdVVkhXWldId0g1VVRQeFMwX0ZpOUtucm45cG0tbkk0Tk4zdGZyeGJBQkhHZjBQVGlNZWh6c21PQ25KSTBOaU55aWtFcXg3cm1CZw?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 5,
-     "source": "스포츠경향",
-     "title": "ILLIT topples 11-time winner A2O LITE···halts bid for three straight wins",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBRbGtDZkdjX1VCLXVVeG1DbDN4ZUNGN1lJOGRTSmNvQVk1QWlabHlELUw0TnJfSlNOdEFWNjFlU1VhOG5YRzczS2dRTERJeVZzZVBYNjFDazVXZUVhNjZHem5R?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 6,
-     "source": "스포츠경향",
-     "title": "아일릿, 11관왕 A2O LITE 꺾었다···3연속 우승 저지",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBYWmlTeEdBLXBMd3F0dW9IVkdUeU5aUVpiRGlRSmhBQ1dfaUVXdGZ1LWNuLXBlM25PS253UmJoU2NGNWR0Sm9KbUdVZlFBY3FsMkpxVkpWSDRpUDBYVXfSAWNBVV95cUxPMzhCSzRKb3FSOVN6UV9GZk5wQlR4SWpVbDE0cVFRVlFveWZMREtQTzQ4RW9xb3h3RXpzSWZjNjQ3dUVobHBoT0JyejFjdFU1b29fcGJ1Z0E0TnZ5TjBCVXIyeTg?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -882,6 +847,26 @@
      "image": "https://kagit-media.atreez.cc/uploads/2026-10-22/zrdkuvxctzo8hdvcl57qng4l.jpg",
      "image_via": "og:image",
      "url": "https://kagit.kr/ja/posts/a2o-aijing-controversy",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "A2O SOUL·A2O LITE, 유픽 ‘11월 이달의 픽’ 루키 부문 톱10 안착",
+     "highlight": "",
+     "image": "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426_crop.jpg",
+     "image_via": "og:image",
+     "url": "https://www.topstarnews.net/news/articleView.html?idxno=16272608",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "ILLIT topples 11-time winner A2O LITE···halts bid for three straight wins",
+     "highlight": "",
+     "image": "https://images.khan.co.kr/article/2026/11/10/news-p.v1.20261110.3eb1441616cc4d2486b968acb06ad2e9_P1.jpg",
+     "image_via": "og:image",
+     "url": "https://sports.khan.co.kr/en/article/202611100719007",
      "weight": "normal"
     }
    ],

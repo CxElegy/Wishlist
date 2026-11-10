@@ -509,6 +509,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.sanity.io/images/pu5wtzfc/production/69eb8f1d911f34c3e2c4e143012cb0495abff595-2000x1250.png?rect=0,100,2000,1050&w=1200&h=630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.slist.kr/news/photo/202611/779251_1190624_2543.jpg": {
   "w": 600,
   "h": 370,
@@ -905,6 +911,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://gonintendo.com/attachments/image/88856/file/medium-0d951c4558c74d8a62690b066a64bde9.jpg": {
+  "w": 780,
+  "h": 439,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.465,
+  "local": "pics/3369c99b729326e1.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://happygamer.com/wp-content/uploads/2026/11/zenless-zone-zero-3-3-phase-ii-banners-run-nov-11-to-dec-1.jpg": {
   "w": 1200,
   "h": 675,
@@ -1221,6 +1240,12 @@
   "w": 1086,
   "h": 1448,
   "target": 1280,
+  "v": 3
+ },
+ "https://images.khan.co.kr/article/2026/11/10/news-p.v1.20261110.3eb1441616cc4d2486b968acb06ad2e9_P1.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/1000012122.jpg": {
@@ -2480,6 +2505,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://players.com.ua/wp-content/uploads/2026/11/gg-m-r.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://portal.auone.jp/media/thumbnails/2026/11/06/https___news_jp_i_1491426010218987568_w1280.webp": {
   "w": 1280,
   "h": 1280,
@@ -2830,6 +2861,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://static.sanyonews.jp/image/article/size1/2/b/e/4/2be4ef3a313751ec70dad2ccbec1313d_1.jpg": {
+  "w": 488,
+  "h": 640,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/2/f/a/d/2fad61127a6842248d305ff76caa749d_1.jpg": {
   "w": 427,
@@ -3538,12 +3575,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.PpmWaN-LW3YZh283kg1zcw&pid=News&w=780": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Q40cd_uXrzMIPS91AzvmRw&pid=News&w=1200": {
   "w": 700,
   "h": 385,
@@ -3843,6 +3874,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/dota-2-players-copping-massive-20-years-bans-following-update.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://www.easterneye.biz/media-library/toshiyuki-morikawa-will-voice-robert-downey-jr-s-doctor-doom.jpg?id=68604449&width=1200&height=600&coordinates=0%2C95%2C0%2C238": {
