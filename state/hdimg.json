@@ -917,12 +917,6 @@
   "target": 1280,
   "v": 3
  },
- "https://gagadget.com/media/cache/64/f4/64f443032bd3e39839afb531cf5b78f8.webp": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://game.watch.impress.co.jp/img/gmw/list/2153/775/002.jpg": {
   "w": 2160,
   "h": 2160,
@@ -931,6 +925,12 @@
  },
  "https://game.watch.impress.co.jp/img/gmw/list/2155/209/zzz01.jpg": {
   "w": 1440,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/10/p1va1sp1va1sp1v_gpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/nov/10/p1va1sp1va1sp1v_gpu.webp?width=1920&height=1080": {
+  "w": 1920,
   "h": 1080,
   "target": 1280,
   "v": 3
@@ -1421,6 +1421,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cCV3B.img": {
   "w": 638,
   "h": 424,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dBBlh.img": {
+  "w": 1600,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -2666,12 +2672,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/03330e02ed1984edf129c5ec01090e54703a276039708acbdc94656982bd3a77/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fusa_today_news_641%2Fbf42c97b201dda9be8614f013e866d91.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/06271fb120c17a195373e8638da869ed98f56cafdda52a7bcfef1e931b344d33/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flooper_vertical_video_161%2Fcefa1bdd4f18b4283e7192738bd531d1.jpg": {
   "w": 1200,
   "h": 2133,
@@ -3478,12 +3478,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.8xciGiAADGDU8S6cDUsaMg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -3526,12 +3520,6 @@
  "https://www.bing.com/th?id=ONUT.GaoGL2fTfOOpUB5JQdABLA&pid=News&w=1200": {
   "w": 546,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.HC-MkuM_HDQSS6YUObyOOA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3693,6 +3681,12 @@
  "https://www.bing.com/th?id=ONUT.cNxo0NslN--daEmcUjFkUA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.cXffdlpCnDisgmslv1helQ&pid=News&w=600": {
+  "w": 600,
+  "h": 315,
   "target": 720,
   "v": 3
  },

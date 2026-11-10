@@ -1,32 +1,32 @@
 {
- "admin": "ea67954b8c84",
- "admin-ai": "70a00eac82d3",
+ "admin": "6751f183b164",
+ "admin-ai": "dcc46889ceac",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6b456dfa"
+   "05c559ca"
   ],
   "tokens": [
    "AI 編集のトークン",
    "3591fb24"
   ]
  },
- "admin-boards": "667302b7d8cd",
+ "admin-boards": "c9da6800db13",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "a8e6a912"
+   "855d0cfe"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "85f6ec8f8cb6",
+ "admin-emblem": "72ab1c0982e0",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "8d7bc949"
+   "e69652a9"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "700a482091e4",
+ "admin-now": "240278700e0a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d448c758"
+   "1ee0bbc0"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "29fe31d0"
+   "6b345e33"
   ],
   "term-panel": [
    "ライブログ",
-   "cbae9245"
+   "71f753e3"
   ]
  },
- "admin-system": "b4f04482e80c",
+ "admin-system": "1106ab961316",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cd22bf4e"
+   "da900bb9"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2765f25b"
+   "7a5a744e"
   ]
  },
  "admin_marks": {},
- "heat": "8a86baa77316",
+ "heat": "70ad8789d269",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "35b9e252"
+   "7c8790c4"
   ],
   "ranking": [
    "ランキング",
-   "2328d180"
+   "4aaf906b"
   ]
  },
- "index": "28cac8d49fbb",
+ "index": "d4ea08ac3d55",
  "index_marks": {
   "front": [
    "トップ",
-   "4196baf3"
+   "5a5022e4"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "e04dbbe7"
+   "cd67f3a5"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "4159c85a"
+   "2908dc91"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "9405d3f7"
+   "ea350524"
   ],
   "w-b867582f": [
    "あつ森",
@@ -196,6 +196,6 @@
    "7e8a6314"
   ]
  },
- "updated": "11.11 05:39",
+ "updated": "11.11 05:59",
  "wishlist": "47b52c172d87"
 }
