@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-08T13:17:24+00:00",
-"text": "2026-11-08 第 11 バッチを出刊：dota2（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 1,040・キャッシュ読み 19.2万・出力 683",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.38,
-"mem_total": 16867737600,
-"mem_free": 15975329792,
-"disk_used": 10083516416,
-"disk_free": 31200018432,
-"disk_total": 41283534848,
-"peak": 328699904
-},
-"batch": 11,
-"boards": [
-"dota2"
-],
-"stories": 3,
-"left": 0,
-"edited": 21,
-"run": 1794140394.9753218,
-"tok": {
-"in": 4,
-"cw": 1036,
-"cr": 191981,
-"out": 683,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 193704,
-"secs": 3449,
-"run_tok": {
-"in": 100,
-"cw": 68255,
-"cr": 3951157,
-"out": 13908,
-"calls": 50,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-08T15:40:45+00:00",
 "text": "2026-11-08 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作、Vaundy ほか 5（11 版面・21 本・残り 3 版面） · token 新規入力 4.3万・キャッシュ読み 74.8万・出力 2,495",
 "level": "ok",
@@ -2040,5 +1999,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 79664
+},
+{
+"at": "2026-11-10T13:28:58+00:00",
+"text": "2026-11-10 第 5 バッチを出刊：MMORPG 新作（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 1,056・キャッシュ読み 7.9万・出力 427",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.56,
+"mem_total": 16867737600,
+"mem_free": 16014946304,
+"disk_used": 10102165504,
+"disk_free": 31181369344,
+"disk_total": 41283534848,
+"peak": 319639552
+},
+"batch": 5,
+"boards": [
+"MMORPG 新作"
+],
+"stories": 3,
+"left": 0,
+"edited": 21,
+"run": 1794315459.0067124,
+"tok": {
+"in": 2,
+"cw": 1054,
+"cr": 79255,
+"out": 427,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 80738,
+"secs": 1880,
+"run_tok": {
+"in": 35,
+"cw": 51771,
+"cr": 1172203,
+"out": 5366,
+"calls": 18,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
