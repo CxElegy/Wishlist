@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "5d2664af2f90",
+ "edit_sig": "440442baa132",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -711,31 +711,29 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
-     "date": "2026-11-10",
-     "n": 1,
-     "source": "新浪网",
-     "title": "【韩区🇰🇷日榜】2026.11.9 #AppleMusic#日榜 [期待]A2O LITE-NEON日冠×22👑 [太开心]RESCENE-With摘得日亚",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5aSVVQMFJDbWV6T1l6YWR4YlhpY19MaDhMSTFBbHl3TlNCS1RPU0hxVXJ6SDFzdTl4ak0xNEhXWWxHWFV0ekVZMC1Sb2ZNN1J2eHhCdlk1UWhaY096Z0pPUy1NOA?oc=5"
-    },
-    {
-     "date": "2026-11-05",
-     "n": 2,
-     "source": "新浪网",
-     "title": "A2O LITE 成员中文名及档案公开|QQ 音乐",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE14dHprdEJwQXZFOFpFX0p4LUJrektDV1l1M2FvOU9ERDZrOWxYTEF0TldXOWRMVl9GbVhkS215ajJ1QzVGaDM1enhsa2NyZHlfcmJxY21VQWtTR0MyX2h6aGgxTQ?oc=5"
-    },
-    {
+     "blurb": "A2O LITEのデビュー曲がストリーミング週間1000万回超えで初TOP5入りした。",
      "date": "2026-11-09",
-     "n": 3,
-     "source": "山陽新聞",
-     "title": "【オリコン】原因は自分にある。週間1000万回超えで初1位 A2O LITEデビュー曲で初TOP5、めいちゃん初登場6位【ストリーミング上位動向】",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ESVVxMnB1M0N1aDBTSV9YRkI3azMwSEVmRVFZbHpxTW1uWlgtUVZGVUFnM1o3MFNfSHBhNDhUcXhmT2NYQ3R1cUN5dFdsS2ZqdnFyeEFGUGY5SWs2NHRfanRfdDRfUTBR?oc=5"
+     "headline": "【オリコン】原因は自分にある。週間1000万回超えで初1位 A2O LITEデビュー曲で初TOP5、めいちゃん初登場6位【ストリーミング上位動向】",
+     "highlight": "週間1000万回超えで初1位",
+     "image": "https://static.sanyonews.jp/image/article/size1/d/9/3/c/d93cdf4dde66aecf9e0941b3407b3476_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/2011743?rct=oricon_music",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "【韩区🇰🇷日榜】2026.11.9 #AppleMusic#日榜 A2O LITE-NEON日冠",
+     "highlight": "",
+     "image": "http://wx1.sinaimg.cn/middle/006dNg2Pgy1iix6q22elej30xi1esdl7.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5363745057409944.html",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",

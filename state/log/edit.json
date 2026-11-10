@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-09T10:26:55+00:00",
-"text": "2026-11-09 第 4 バッチを出刊：三星手机（1 版面・8 本・残り 4 版面） · token 新規入力 1,838・キャッシュ読み 7.6万・出力 742",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.19,
-"mem_total": 16867737600,
-"mem_free": 15995514880,
-"disk_used": 10852614144,
-"disk_free": 30430920704,
-"disk_total": 41283534848,
-"peak": 344301568
-},
-"batch": 4,
-"boards": [
-"三星手机"
-],
-"stories": 8,
-"left": 4,
-"edited": 18,
-"run": 1794218561.403737,
-"tok": {
-"in": 2,
-"cw": 1836,
-"cr": 75661,
-"out": 742,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 78241
-},
-{
 "at": "2026-11-09T10:43:54+00:00",
 "text": "2026-11-09 第 5 バッチを出刊：dota2（1 版面・4 本・残り 3 版面） · token 新規入力 4,158・キャッシュ読み 39.5万・出力 1,166",
 "level": "ok",
@@ -1921,5 +1889,47 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1640394
+},
+{
+"at": "2026-11-10T19:58:37+00:00",
+"text": "2026-11-11 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、gelato pique、あつ森 ほか 5（11 版面・24 本・今日の整理待ちは全部終わり） · token 新規入力 5.9万・キャッシュ読み 192.0万・出力 7,412",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.2,
+"mem_total": 16867737600,
+"mem_free": 15985545216,
+"disk_used": 9739309056,
+"disk_free": 31544225792,
+"disk_total": 41283534848,
+"peak": 351567872
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"GTA 6",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"三星手机",
+"周杰伦",
+"滑雪",
+"漫威电影"
+],
+"stories": 24,
+"left": 0,
+"edited": 12,
+"run": null,
+"tok": {
+"in": 49,
+"cw": 58614,
+"cr": 1920356,
+"out": 7412,
+"calls": 26,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1986431
 }
 ]
