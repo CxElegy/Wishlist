@@ -16,6 +16,7 @@
   "https://collabo-cafe.com/events/collabo/haikyu-fashion-paseos-roomwear-2026/": "https://collabo-cafe.com/wp-content/uploads/haikyu-fashion-paseos-roomwear-2026-eyecatch.jpg",
   "https://collabo-cafe.com/events/collabo/pocket-monster-fashion-shimamura-2026/": "https://collabo-cafe.com/wp-content/uploads/pocket-monster-fashion-shimamura-2026-eyecatch.jpg",
   "https://collabo-cafe.com/zh-hant/events/collabo/chainsawman-reze-prime1studio-anime-store-goods2026/": "https://collabo-cafe.com/wp-content/uploads/4dffd6776e8c42f7d550beaccde1b678-1427.jpg",
+  "https://dpiff.in/news/dominic-mclaughlin-harry-potter-hbo-series/": "https://dpiff.in/wp-content/uploads/2026/11/902586042_18484335304191145_5744686448514805000_n-819x1024.jpg",
   "https://entertainment.ie/movies/movie-news/apparently-the-spice-girls-reunion-is-for-an-animated-superhero-movie-227375/": "https://images.entertainment.ie/storage/images_content/rectangle/620x372/TOTP-NINETIES.jpg?w=1280&h=768&q=high",
   "https://entertainment.ie/movies/movie-news/michael-bay-is-reportedly-being-lined-up-to-direct-a-superhero-movie-for-dc-227844/": "https://images.entertainment.ie/storage/images_content/rectangle/620x372/869135-bmsb.jpg?w=1280&h=768&q=high",
   "https://enuchi.jp/14622/recolte-kedamatori-202611": "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg",
@@ -75,7 +76,6 @@
   "https://www.newsminer.com/features/our_town/this-is-the-way-mandalorian-takes-top-prize-at-pop-con-cosplay/article_7849de7e-a4b7-4942-a161-9734c66df0f1.html": "https://bloximages.newyork1.vip.townnews.com/newsminer.com/content/tncms/assets/v3/editorial/d/23/d23ae209-448d-4015-a740-21bf869a6e23/6af211105521e.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize",
   "https://www.phonearena.com/news/seven-upgrades-i-want-to-see-in-galaxy-s27-ultra_id184701": "https://www.bing.com/th?id=ONUT.1lGQeGfUY3vKydQYkdDLuw&pid=News&w=1200",
   "https://www.sakhaparliament.ru/goods/fashion/z103019154": null,
-  "https://www.superherohype.com/news/705184-harry-potter-rupert-grint-wish-for-new-ron-weasley": "https://www.bing.com/th?id=ONUT.P_K_JYMBlG9OcWSMvMAitg&pid=News&w=700",
   "https://www.techrepublic.com/article/news-ipad-mini-oled-vs-galaxy-tab-s11/": "https://assets.techrepublic.com/uploads/2026/11/ipad-mini-oled-vs-galaxy-tab-s11-featured.jpg?f=jpeg",
   "https://www.tokyo-sports.co.jp/articles/-/409448": "https://tokyo-sports.ismcdn.jp/mwimgs/0/e/1200w/img_0e3d0d8e725f2845b1b4e6a5df245394100507.jpg",
   "https://www.tradingview.com/news/tradingview:9314a801afcf3:0-tower-resources-ltd-twr-reports-high-grade-gold-intercepts-at-rabbit-north/": "https://s.tradingview.com/static/images/illustrations/news-story.jpg",
@@ -1167,6 +1167,27 @@
   },
   {
    "batch": 3,
+   "because": "哈利波特剧集",
+   "date": "2026-11-10",
+   "hits": [],
+   "image": "https://dpiff.in/wp-content/uploads/2026/11/902586042_18484335304191145_5744686448514805000_n-819x1024.jpg",
+   "kind": "board",
+   "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
+   "score": 6,
+   "source": "Dadasaheb Phalke International Film Festival | DPIFF",
+   "taste": [
+    [
+     "作品:哈利波特剧集",
+     2
+    ]
+   ],
+   "title": "Dominic McLaughlin to Play Harry Potter in New HBO Series",
+   "url": "https://dpiff.in/news/dominic-mclaughlin-harry-potter-hbo-series/",
+   "words": [],
+   "work": "哈利波特剧集"
+  },
+  {
+   "batch": 3,
    "because": "A2O LITE",
    "date": "2026-11-10",
    "hits": [],
@@ -1227,27 +1248,6 @@
    "url": "https://maxblizz.com/avengers-doomsday-doctor-doom-concept-art-billboards/",
    "words": [],
    "work": "漫威电影"
-  },
-  {
-   "batch": 3,
-   "because": "哈利波特剧集",
-   "date": "2026-11-10",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.P_K_JYMBlG9OcWSMvMAitg&pid=News&w=700",
-   "kind": "board",
-   "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
-   "score": 6,
-   "source": "SuperHeroHype",
-   "taste": [
-    [
-     "作品:哈利波特剧集",
-     2
-    ]
-   ],
-   "title": "Harry Potter: Rupert Grint Has One Wish for HBO’s New Ron Weasley",
-   "url": "https://www.superherohype.com/news/705184-harry-potter-rupert-grint-wish-for-new-ron-weasley",
-   "words": [],
-   "work": "哈利波特剧集"
   },
   {
    "batch": 4,
@@ -1873,15 +1873,15 @@
    8
   ],
   [
+   "三星 Galaxy",
+   7
+  ],
+  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
-   7
-  ],
-  [
-   "三星 Galaxy",
    7
   ]
  ]

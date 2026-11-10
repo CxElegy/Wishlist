@@ -556,6 +556,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn3.wionews.com/prod/wion/images/2026/20261110/image-1794315924585.png?rect=(0,0,1280,720)&imwidth=896&imheight=504&format=webp&quality=medium": {
+  "w": 896,
+  "h": 504,
+  "target": 1280,
+  "v": 3
+ },
  "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261105130648011460d3244b4fed58141237106.jpg&nmt=30": {
   "w": 1333,
   "h": 2000,
@@ -776,6 +782,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://dpiff.in/wp-content/uploads/2026/11/902586042_18484335304191145_5744686448514805000_n-819x1024.jpg": {
+  "w": 819,
+  "h": 1024,
+  "target": 720,
+  "v": 3
  },
  "https://dramanavi.net/asia/wp-content/uploads/2026/10/2026-MAMA-AWARDS.jpg": {
   "w": 1200,
@@ -1822,6 +1834,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.assettype.com/outlooktraveller/2026-11-10/vx9d1246/findingharryhoka16x9.avif?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://media.image.infoseek.co.jp/isnews/photos/animeanime/animeanime_104589_0-enlarge.jpg": {
   "w": 512,
   "h": 640,
@@ -1861,6 +1879,12 @@
  "https://media.pocketgamer.com/artwork/na-38892-1794226977/temppal-overgeared-keyscreen.jpg": {
   "w": 1010,
   "h": 505,
+  "target": 1280,
+  "v": 3
+ },
+ "https://media.vanityfair.com/photos/6af20a08c16158eab34f472e/16:9/w_1280,c_limit/01.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -3426,12 +3450,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.P_K_JYMBlG9OcWSMvMAitg&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.R9F5DQCy_jgwTjRJzUMg3Q&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3861,6 +3879,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.realitytea.com/wp-content/uploads/sites/6/2026/11/Evolve-Images-4-5.png?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://www.sammyfans.com/wp-content/uploads/2025/07/galaxy-s25-ultra-qi2-ready-charging-img2-1000x576.jpg": {
   "w": 1000,
   "h": 576,
@@ -3917,6 +3941,12 @@
   "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Avengers-Doomsdays-New-Release-Suggests-Thor-Is-Getting-a-Huge-Costume-Change-View-Photo.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Untitled-design-16.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
   "target": 720,

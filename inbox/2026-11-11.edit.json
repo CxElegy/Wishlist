@@ -60,7 +60,8 @@
  "_covered": {
   "GTA 6": 27,
   "三星手机": 16,
-  "漫威电影": 16
+  "漫威电影": 16,
+  "哈利波特剧集": 7
  },
  "三星手机": [
   {
@@ -144,6 +145,56 @@
     14,
     11,
     15
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "When will Harry Potter series release in India? All about HBO's new adaptation",
+   "highlight": "release in India",
+   "blurb": "A guide to when HBO's new Harry Potter adaptation reaches India.",
+   "weight": "lead",
+   "refs": [
+    5
+   ],
+   "image": "https://cdn3.wionews.com/prod/wion/images/2026/20261110/image-1794315924585.png?rect=(0,0,1280,720)&imwidth=896&imheight=504&format=webp&quality=medium"
+  },
+  {
+   "headline": "Paapa Essiedu, Harry Potter’s New Snape, Is Ready for Questions",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Daniel Radcliffe Might Not Watch HBO’s New Harry Potter Series After All",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    4
+   ]
+  },
+  {
+   "headline": "Harry Potter: Rupert Grint Has One Wish for HBO’s New Ron Weasley",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    3
+   ]
+  },
+  {
+   "headline": "HBO’s New Harry Potter Series Filming Locations: Places Across Britain Where The Magic Comes Alive",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ]
