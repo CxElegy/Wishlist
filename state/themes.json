@@ -79,6 +79,16 @@
   "font": "serif",
   "split": false
  },
+ "GTA 6|https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?0o4xM8kDYYM3NFKzWF5OT": {
+  "accent": "#CF636F",
+  "alt_accent": "#BB3A48",
+  "alt_bg": "#F0E7F3",
+  "alt_fg": "#1A1C22",
+  "bg": "#201226",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "GTA 6|https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?4K_5qVU-H-Ah55_aIE8bv": {
   "accent": "#CF636F",
   "alt_accent": "#BB3A48",
@@ -1029,6 +1039,16 @@
   "alt_bg": "#EFEDEC",
   "alt_fg": "#1A1C22",
   "bg": "#1E1C1A",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
+ "hero|https://rockstarintel.com/wp-content/uploads/2026/10/Grand-Theft-Auto-VI-Launch-Trailer-00-01-03-copy.webp": {
+  "accent": "#E4814E",
+  "alt_accent": "#A04718",
+  "alt_bg": "#F2E8E9",
+  "alt_fg": "#1A1C22",
+  "bg": "#241416",
   "fg": "#F2EEE6",
   "font": "serif",
   "split": false
