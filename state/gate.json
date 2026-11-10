@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-10T07:09:51+00:00",
+ "changed": true,
+ "checked": "2026-11-10T07:25:27+00:00",
  "fired": {
-  "at": "2026-11-10T07:10:08+00:00",
+  "at": "2026-11-10T07:25:27+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -19,25 +19,30 @@
    "edit": 11
   },
   "2026-11-10": {
-   "edit": 8
+   "edit": 9
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-10T04:42:24+00:00",
+    "at": "2026-11-10T07:25:27+00:00",
     "attempts": 1,
     "day": "2026-11-10",
-    "prog": 330,
-    "resp": "cse_01W4x6f84Ci4iTda49WRpEHB",
-    "sig": "23975e2f3949"
+    "prog": 355,
+    "resp": "cse_01W4x6f9ZLSSFQhiwXJvxQNa",
+    "sig": "8acbde6867fa"
    },
    "items": [
+    "A2O LITE",
+    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
+    "dota2",
+    "gelato pique",
     "チェーンソーマン",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
@@ -53,35 +58,43 @@
    "need": true,
    "prog": 355,
    "prog_day": "2026-11-10",
-   "ripe": [],
-   "sig": "00d7448b5b8b",
+   "ripe": [
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
+   ],
+   "sig": "8acbde6867fa",
    "token_cap": 1000000,
    "tokens_today": 453462,
-   "why": "整理待ちの記事 13 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 74 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "dota2",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦",
+    "A2O LITE"
+   ],
+   "need": true,
+   "sig": "661df955fa9d",
    "waiting": [
-    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
     "哈利波特剧集",
-    "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 10 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
