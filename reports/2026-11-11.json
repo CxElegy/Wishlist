@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "b9115f8ddfae",
+ "edit_sig": "2a9aa839326f",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?0o4xM8kDYYM3NFKzWF5OT",
@@ -254,38 +254,29 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "カムバックアルバム「BREAK EVEN」が米ビルボード200で6位にランクインした。",
      "date": "2026-11-10",
-     "n": 1,
-     "source": "Eagle News",
-     "title": "EP Review: ILLIT, ‘BREAK EVEN’",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5fNFlyQ2pkOGMzZ2M0cnkxUVpQV2l3N3c5Njd6LTYtNjRjVXZScjBZTjV4cHJ3UUlYY3paRzladGRmZ29Samo3dm9UQnRuME1ZcklPN1UtR2JrWWFpTkRkbG9JV3lWZWkyQnpSWjBzbWhxamhr?oc=5"
+     "headline": "「ILLIT」、カムバックアルバム「BREAK EVEN」が米ビルボード200で6位にランクイン",
+     "highlight": "ビルボード200で6位",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261110wow056.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://topics.smt.docomo.ne.jp/amp/article/wowkorea/entertainment/wowkorea-20261110wow056",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 2,
-     "source": "Weverse",
-     "title": "ILLIT Community Post - 가로롱 - IROHA",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE40RGswN1RPOEQzbk5aUXdHY0pteGdVM19YZFVCd0xfdzVkUU5Ick9SQ0c3VEh4clZ4UTMxN1M1SHYyN0ZMM1ZYd0FqN1prTnMzWVViYWlR?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 3,
-     "source": "YouTube · ILLIT",
-     "title": "호루래기 응원법 쉽구먼~ l '체포하겠어 (You’re Under Arrest)' 음악 방송 1주 차 비하인드",
-     "url": "https://www.youtube.com/watch?v=idkvx_w1UMU"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "ｄメニューニュース",
-     "title": "「ILLIT」、カムバックアルバム「BREAK EVEN」が米ビルボード200で6位にランクイン",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPWEFLNDR3aUpnWG1lNFhVY19yVTVpdHNWQWVER1duUW5zUUl1TFRnWl9SOFFScU0xNVY3cjRCU1oxVk13VVVMUTFFbHdubWhuWGdGQU11eE5hUzBVN1dBQ21GZlhqaExnN0ZUbEgxT2dnd3FLUENweVNJd24wNTFtOGQzUGFfSmI3ZnZaamxVb2VtUFZZ0gGUAUFVX3lxTE9YQUs0NHdpSmdYbWU0WFVjX3JVNWl0c1ZBZURHV25RbnNRSXVMVGdaX1I4UVJxTTE1VjdyNEJTWjFWTXdVVUxRMUVsd25taG5YZ0ZBTXV4TmFTMFU3V0FDbUZmWGpoTGc3RlRsSDFPZ2d3cUtQQ3B5U0l3bjA1MW04ZDNQYV9KYjdmdlpqbFVvZW1QVlk?oc=5"
+     "headline": "호루래기 응원법 쉽구먼~ l '체포하겠어 (You’re Under Arrest)' 음악 방송 1주 차 비하인드",
+     "highlight": "",
+     "image": "https://i2.ytimg.com/vi/idkvx_w1UMU/hqdefault.jpg",
+     "image_via": "条目自带",
+     "url": "https://www.youtube.com/watch?v=idkvx_w1UMU",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",

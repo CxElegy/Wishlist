@@ -1147,6 +1147,19 @@
   ],
   "why": "看不清"
  },
+ "https://i2.ytimg.com/vi/idkvx_w1UMU/hqdefault.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.511,
+  "local": "pics/08e6ce89d6b5d044.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
+ },
  "https://i3.ytimg.com/vi/FVoyplaLTBc/hqdefault.jpg": {
   "w": 480,
   "h": 360,
@@ -1654,6 +1667,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.414
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261110wow056.jpg": {
+  "w": 640,
+  "h": 491,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.456,
+  "local": "pics/226dce3cc6e59980.webp",
+  "out": [
+   1280,
+   982
+  ],
+  "why": "看不清"
  },
  "https://img.toy-people.com/member/179380690349_1200.png": {
   "w": 1200,

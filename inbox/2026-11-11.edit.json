@@ -61,7 +61,8 @@
   "GTA 6": 27,
   "三星手机": 16,
   "漫威电影": 16,
-  "哈利波特剧集": 7
+  "哈利波特剧集": 7,
+  "ILLIT": 4
  },
  "三星手机": [
   {
@@ -195,6 +196,28 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "「ILLIT」、カムバックアルバム「BREAK EVEN」が米ビルボード200で6位にランクイン",
+   "highlight": "ビルボード200で6位",
+   "blurb": "カムバックアルバム「BREAK EVEN」が米ビルボード200で6位にランクインした。",
+   "weight": "lead",
+   "refs": [
+    4,
+    1
+   ],
+   "image": "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261110wow056.jpg"
+  },
+  {
+   "headline": "호루래기 응원법 쉽구먼~ l '체포하겠어 (You’re Under Arrest)' 음악 방송 1주 차 비하인드",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ]
