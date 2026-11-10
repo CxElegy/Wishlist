@@ -24,7 +24,13 @@
     99,
     106,
     104,
-    129
+    129,
+    134,
+    151,
+    143,
+    144,
+    146,
+    137
    ],
    "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/10/vice_city_09-1.jpg?q=49&fit=contain&w=750&h=422&dpr=2"
   },
@@ -64,7 +70,10 @@
     70,
     67,
     103,
-    130
+    130,
+    148,
+    138,
+    136
    ]
   },
   {
@@ -113,7 +122,11 @@
     94,
     115,
     131,
-    124
+    124,
+    132,
+    133,
+    140,
+    141
    ]
   },
   {
@@ -128,7 +141,10 @@
     54,
     56,
     80,
-    98
+    98,
+    139,
+    145,
+    147
    ]
   }
  ],
@@ -140,7 +156,8 @@
    "weight": "lead",
    "refs": [
     4,
-    5
+    5,
+    86
    ]
   },
   {
@@ -162,7 +179,8 @@
     61,
     66,
     65,
-    68
+    68,
+    81
    ]
   },
   {
@@ -183,7 +201,8 @@
    "weight": "normal",
    "refs": [
     29,
-    3
+    3,
+    84
    ]
   }
  ],
@@ -197,7 +216,8 @@
     6,
     3,
     2,
-    33
+    33,
+    51
    ],
    "image": "https://static.digit.in/Galaxy-S26.png"
   },
@@ -218,7 +238,10 @@
     22,
     28,
     29,
-    30
+    30,
+    46,
+    36,
+    48
    ]
   },
   {
@@ -238,7 +261,8 @@
    "refs": [
     5,
     16,
-    24
+    24,
+    52
    ]
   },
   {
@@ -250,7 +274,9 @@
     12,
     14,
     13,
-    21
+    21,
+    42,
+    53
    ]
   },
   {
@@ -270,7 +296,12 @@
    "refs": [
     20,
     23,
-    27
+    27,
+    50,
+    34,
+    35,
+    37,
+    49
    ]
   },
   {
@@ -338,9 +369,9 @@
   }
  ],
  "_covered": {
-  "GTA 6": 131,
-  "漫威电影": 78,
-  "三星手机": 33,
+  "GTA 6": 151,
+  "漫威电影": 86,
+  "三星手机": 53,
   "チェーンソーマン": 5,
   "周杰伦": 8,
   "哈利波特剧集": 13,
@@ -348,10 +379,10 @@
   "The Mandalorian": 2,
   "Vaundy": 1,
   "dota2": 11,
-  "ILLIT": 16,
+  "ILLIT": 20,
   "gelato pique": 4,
   "星巴克马克杯": 3,
-  "MMORPG 新作": 8,
+  "MMORPG 新作": 15,
   "あつ森": 2,
   "ぐでたま": 1,
   "日本顶级网球赛事": 2,
@@ -527,7 +558,9 @@
     2,
     1,
     7,
-    8
+    8,
+    20,
+    17
    ],
    "image": "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/11/6919f6efb1a7d44ef98ba36287b4d01a.webp?fit=1200%2C921&ssl=1"
   },
@@ -585,6 +618,15 @@
    "refs": [
     10,
     16
+   ]
+  },
+  {
+   "headline": "ILLIT、『突破ファイル』に初登場 IROHA「幼い頃からすごく大好きな番組」",
+   "highlight": "『突破ファイル』に初登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
    ]
   }
  ],
@@ -669,23 +711,26 @@
    "image": "https://media.pocketgamer.com/artwork/na-38892-1794226977/temppal-overgeared-keyscreen.jpg"
   },
   {
-   "headline": "Everything we know about Riot’s new League of Legends MMO: Raids & more",
-   "highlight": "League of Legends MMO",
+   "headline": "「World of Warcraft: Forever」，シリーズ22年の歴史で最大のローンチを記録",
+   "highlight": "シリーズ22年の歴史で最大のローンチ",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    11
    ]
   },
   {
-   "headline": "랜덤 스킬도 반영, MMORPG 신작 판타지포유 출시",
-   "highlight": "판타지포유 출시",
+   "headline": "ランダムスキルも反映、MMORPG新作『ファンタジーフォーユー』リリース",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    13,
     3,
     4,
-    8
+    8,
+    9,
+    14
    ]
   }
  ],

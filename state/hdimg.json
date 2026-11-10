@@ -206,7 +206,7 @@
  "https://9to5google.com/wp-content/uploads/sites/4/2026/02/Galaxy-S26-camera-1.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
   "h": 628,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://9to5google.com/wp-content/uploads/sites/4/2026/02/galaxy-s26-ultra-privacy-display-17.jpg?quality=82&strip=all&resize=1200,628": {
@@ -263,6 +263,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.329
+ },
+ "https://assets.murphysmultiverse.com/uploads/2026/11/2287656144-1024x683.jpg": {
+  "w": 1024,
+  "h": 683,
+  "target": 720,
+  "v": 3
  },
  "https://assets.st-note.com/img/1793364754-4OfgPJ5UydeEb6iM2QplrxK3.png?width=1200": {
   "w": 1200,
@@ -2909,6 +2915,12 @@
   "v": 3,
   "blur": 0.378
  },
+ "https://static.sanyonews.jp/image/article/size1/0/4/7/8/047891ef5abc2da9f3a2359a4c8aa816_1.jpg": {
+  "w": 640,
+  "h": 427,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/1/0/1/6/10163e8bc4b56c33bcc85493c8e2556d_1.jpg": {
   "w": 640,
   "h": 431,
@@ -3391,6 +3403,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.4gamer.net/games/042/G104263/20261110017/SS/002.jpg": {
+  "w": 1680,
+  "h": 945,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.4gamer.net/games/199/G019924/20261106033/SS/001.jpg": {
   "w": 1200,
   "h": 800,
@@ -3617,19 +3635,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.MIQIipWGBDZDm_lYRuf-7A&pid=News&w=960": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.522,
-  "local": "pics/fde824f2383e7f3c.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.MXPLeA6RYLrGPLbiqPC69A&pid=News&w=934": {
   "w": 544,
   "h": 700,
@@ -3644,12 +3649,6 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.N0LnlEohsUZ4OQLawwh2GQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.OzGcjsdxiRhkYUCDX0DZ2A&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3911,12 +3910,6 @@
  "https://www.concept-phones.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Ultra-dummy-1.jpg": {
   "w": 1400,
   "h": 801,
-  "target": 720,
-  "v": 3
- },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2021/01/everything-we-know-about-league-of-legends-mmo-rpg-riot-games-release-date-regions-more.jpg": {
-  "w": 1600,
-  "h": 900,
   "target": 720,
   "v": 3
  },

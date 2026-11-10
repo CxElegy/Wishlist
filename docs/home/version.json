@@ -1,32 +1,32 @@
 {
- "admin": "e143f673e900",
- "admin-ai": "7da5464ea8ce",
+ "admin": "fd40eea9451c",
+ "admin-ai": "f711fb6b1495",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "22724469"
+   "228f297a"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "71b250df"
+   "e3bd9b09"
   ]
  },
- "admin-boards": "2b014f4dc083",
+ "admin-boards": "c5aa7ba6c06f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "d6f397a5"
+   "457b42e7"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "df694cf6ce07",
+ "admin-emblem": "742ca55c9b5d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b3622d1a"
+   "430538f2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "2cfd732e2bb8",
+ "admin-now": "95ec32366368",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "89ea0502"
+   "ab52788f"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c6680bb3"
+   "f5fffabc"
   ]
  },
- "admin-system": "4c8bf08cde78",
+ "admin-system": "ad0d60657a00",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "af5e9420"
+   "eb289ef3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "4206f498"
+   "cd966bb6"
   ]
  },
  "admin_marks": {},
- "heat": "97c750791a3f",
+ "heat": "1465d06b92b2",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "094cab13"
+   "44bff7d6"
   ],
   "ranking": [
    "ランキング",
-   "bee28a9e"
+   "71f399f8"
   ]
  },
- "index": "d9e6afe3b625",
+ "index": "b8c7e1ffbea9",
  "index_marks": {
   "front": [
    "トップ",
-   "41351d1b"
+   "6821d9c2"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "c828b826"
+   "a78f432a"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "91476c10"
+   "3c5556a1"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "3bf14dea"
+   "dc1d80b5"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "c29fcbf2"
+   "efe2c952"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "ab57dfcf"
+   "b62f3d6d"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "7cdddd4d"
+   "ce5e69d7"
   ],
   "w-f303ad09": [
    "绝区零",
    "ea35b5e4"
   ]
  },
- "updated": "11.10 16:22",
- "wishlist": "2809c5ec26bc"
+ "updated": "11.10 16:34",
+ "wishlist": "596984feb7cc"
 }
