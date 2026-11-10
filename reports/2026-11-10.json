@@ -1,6 +1,6 @@
 {
  "date": "2026-11-10",
- "edit_sig": "5b44c7f28d77",
+ "edit_sig": "7a6f34367eb7",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -592,15 +592,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 6,
-     "source": "映画.com",
-     "title": "「多分私はターゲット層ではないので・・・」チェンソーマン レゼ篇 lockheartさんの映画レビュー（感想・評価）",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBoaURmTUNwRjZGNWVUUWxqTVVIQmtjVFhTek1uc1hYdWwzWkVPZUtqenpjME1xQVNGUS1EU2Jla3ZsSDVmd1VMX2ltc3ZyWmNBbDhZdG9SeTNzZw?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -650,15 +641,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 3,
-     "source": "IMDb",
-     "title": "Hal Hickel on ‘The Mandalorian and Grogu’ VFX: Embracing Phil Tippett’s Legacy and Favreau’s Vision",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE91N0IwMjY4U3NabkdzTDBiLVUxNDRTZnQ3eWhjVlF1MHpFU1czamo1b3dPZTdXOHVpQnhFcWNyVHhNaFV5UW9LbkIzckU0REZkNUE?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -671,6 +653,17 @@
      "source": "Bluesky",
      "source_icon": "https://web-cdn.bsky.app/static/apple-touch-icon.png",
      "url": "https://bsky.app/profile/mluckas.bsky.social/post/3mzuaqwxmjk2d",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "Hal Hickel on ‘The Mandalorian and Grogu’ VFX: Embracing Phil Tippett’s Legacy and Favreau’s Vision",
+     "highlight": "",
+     "image": null,
+     "source": "IMDb",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.imdb.com&sz=128",
+     "url": "https://www.imdb.com/fr/news/ni66065563/",
      "weight": "normal"
     }
    ],
@@ -952,8 +945,8 @@
      "date": "2026-11-09",
      "headline": "A2O SOUL·A2O LITE, 유픽 ‘11월 이달의 픽’ 루키 부문 톱10 안착",
      "highlight": "",
-     "image": "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426_crop.jpg",
+     "image_via": "og:image",
      "url": "https://www.topstarnews.net/news/articleView.html?idxno=16272608",
      "weight": "normal"
     },
