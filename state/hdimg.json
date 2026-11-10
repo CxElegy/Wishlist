@@ -564,9 +564,9 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426_crop.jpg": {
-  "w": 1200,
-  "h": 675,
+ "https://cdn.topstarnews.net/news/photo/202611/16272608_2083451_5426.jpg": {
+  "w": 1280,
+  "h": 830,
   "target": 720,
   "v": 3
  },
@@ -609,6 +609,12 @@
  "https://cdn2.ettoday.net/images/9006/e9006168.jpg": {
   "w": 1000,
   "h": 750,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn2.ettoday.net/images/9009/e9009075.jpg": {
+  "w": 1065,
+  "h": 799,
   "target": 1280,
   "v": 3
  },
@@ -1148,6 +1154,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hotelbank.jp/wp-content/uploads/eyecatch-192494-auto.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://hotelbank.jp/wp-content/uploads/eyecatch-193461-auto.png": {
   "w": 1200,
   "h": 630,
@@ -1368,6 +1380,12 @@
   "w": 1280,
   "h": 720,
   "target": 720,
+  "v": 3
+ },
+ "https://images.thedirect.com/media/article_full/mandalorian-star-wars-filoni.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/namor_new_costume_doomsday.jpg": {
@@ -3605,6 +3623,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.379
+ },
+ "https://www.bing.com/th?id=ONUT.GaoGL2fTfOOpUB5JQdABLA&pid=News&w=1200": {
+  "w": 546,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.IX9N9Sni6cyu_LoH3DlpfQ&pid=News&w=1200": {
   "target": 1280,
