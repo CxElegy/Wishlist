@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "4830110443af",
+ "edit_sig": "6b6629b533ff",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?0o4xM8kDYYM3NFKzWF5OT",
@@ -126,122 +126,49 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "New character descriptions for Avengers: Doomsday reveal who leads each of the five hero teams.",
      "date": "2026-11-10",
-     "n": 1,
-     "source": "The Direct",
-     "title": "New Avengers: Doomsday Character Description Reveals Who Will Lead All 5 Hero Teams",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPYmJpeExuR3NxbjZBQlBKSnVINXdzcDh4blhmM3NabTg1cFhvZXNYT2lEbm5PQVVoTzA2a1ZYRWhjR2VPWG12VzNyTFBfOTM3UERxTTNmQ2tJYmpiQ2NvNW9GSktidHBWYjljSnlTSDB5cXhQVFdQNUJtejlPU0t0NWF6aE5MOWdnbzZUV1dDUi1mNlZKYXc?oc=5"
+     "headline": "New Avengers: Doomsday Character Description Reveals Who Will Lead All 5 Hero Teams",
+     "highlight": "Lead All 5 Hero Teams",
+     "image": "https://images.thedirect.com/media/article_full/doomleader.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://thedirect.com/article/avengers-doomsday-character-descriptions-lead-five-hero-teams",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 2,
-     "source": "Cinemablend",
-     "title": "Simu Liu’s Out Here Working Out Shirtless For Marvel (And Trolling SNL’s Shane Gillis In The Process)",
-     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPb2ZqR1RYVGpqejBUOHlQcjEzdFkyNGV0YkVCLUp1d0ZsMGV1VkI3WGtYUnBEc3hWR3V1d3JnQ0o3UVV1SzNMdmZQTlk5MEhmVzVsTmxOaGxDOXByQmROOGF2d2w1Tm9YY2NCbjJKbmdiSS1LZ3E1VlBWSjl1SHhoTnRUQldJV1R4emhYWWZMSEV4YTNBSkZaSnpVTG1zWGxqYTF4b2FlelVDR0RfcUp5dEw0SllKMHQxWHhEdjA5V0VISWVMS2lhcTdCWG0?oc=5"
+     "headline": "Deadpool Reportedly Has a Much Bigger Role in AVENGERS: SECRET WARS Than DOOMSDAY",
+     "highlight": "",
+     "image": "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af215da17ba9b74caa095be/1794322722682/Deadpool+Reportedly+Has+a+Much+Bigger+Role+in+AVENGERS-+SECRET+WARS+Than+DOOMSDAY.jpg?format=1500w",
+     "image_via": "og:image",
+     "url": "https://geektyrant.com/news/deadpool-reportedly-has-a-much-bigger-role-in-avengers-secret-wars-than-doomsday",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 3,
-     "source": "Tom's Guide",
-     "title": "Who's going to die in 'Avengers: Doomsday'? Here are the latest odds on Polymarket (and which Marvel heroes I think won't make it)",
-     "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxNQXA2cmdjRXRDakV4cy1lWGhWbXFaR2xOWUd4aDN2R3d5dmlZWUxmQmNVWkU2ZDhFbWhfcHl5RUdRYXVwdVY5ODNSTVE5Xy02UjVmcHZmSFVURmNVYnlwazFqWHVrM0FVWlZ3UW03NmVsaXQ0aG9BM0twWjQyVkR5QVRSRGtUcUtxZXRMSWtoRzdyQ1ZCNl9DZmQ5dzZJTlZkZ3Q0VElELVRaX3hMeTRYNG5tcHZhZXZXRVdRdmFtbXlYdjdFYkx2SUVmY0hxLXRUU0xzb0ZUWE12QjlPNEN2OWcwMk8tb3lzSzdZSHlsSXp5QkF3Mm85MTJQa2NOUQ?oc=5"
+     "headline": "‘Avengers: Doomsday’ Figure Set Brings Heroes From Across the Multiverse Together",
+     "highlight": "",
+     "image": "https://fictionhorizon.com/wp-content/uploads/2026/11/Doomsday.webp",
+     "image_via": "og:image",
+     "url": "https://fictionhorizon.com/avengers-doomsday-figure-set-brings-heroes-from-across-the-multiverse-together/",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "Yahoo新聞",
-     "title": "黃仁勳捲偷吃醜聞！漫威華裔男星發瘋笑嘲：我終於可以模仿了",
-     "url": "https://news.google.com/rss/articles/CBMijgNBVV95cUxNdDc0bEJrY0NRXzQ5YlY3WHA5N05XbXNHVVNOaXk5d3hKZ2tRTHcwemRKalRsbk0zakljWmVfYVVHeWVkVVprVVQzMVJoZEkxT0pyUXAxbGF2N1hnVU1hQkFqVE93S2E5cVZfMjE0VlJjRUlJYXZYN1RmYVEwYnZHT1FRemh0ZlhsbHc2NkYwUFc1ci1OQ1hPYmxJblZ2OU1wOTNmNWJOT3VfeFFQQTdLTC1xaFktQjltcVoxUTRSTTYxcURRT1BlYkdXQl9oT3UzLWhqb3hUYjZvanZFYVJsYmxHdUQ5dlJlLTg5czNYOHpDZmFRR0Y2WWlvQmYzNTZPcUxxM0JVcnJUUERiZmY4aXZXbWJZTXJSM3FlYzkzQjhZMFg3TVdONVZyeEpZbmV2Q1ZtYjJ1by1jcnZ3UkZGRm5nQ3k2T1E1dFItX1Nid2tVbUt4MWtBX0Y0OEZxdS05cEk0MUlGN251czNuY1BCXzVOcVRfZXhuc0RuRzhCRG9nODd1NnR4TFRyczBtQQ?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 5,
-     "source": "www.5news.com.hk",
-     "title": "新加坡KFC推出《復仇者聯盟：末日》主題餐單，驚喜推出Doctor Doom漢堡及限量收藏公仔",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE85R3YyNks3Z1F2V2JGYzMxX0RESmFOS2gwcS1VQllLNjRYcDNmVlRjcWhNS1BRM3pjWW9YbEtKSUVkWHdSR1FxRWgxUkdldUIwMFozaDNUWHpmSlVub3UtX3NERklJeEFXQ1ZvbUpiY0JLRW5KU0tiSg?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 6,
-     "source": "Entertainment Focus",
-     "title": "Win Marvel Studios' 'The Avengers Assembled: Complete 4-Movie Collection' on 4K Ultra HD",
-     "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPQ2dFeDRSSTQyLXRldWV2cW85VHNxbFdtVHg3a2tuc19wVmdOdUl6VUk5Wm45bVJFZUNaOF9POFQwTlN2NnhYRFJPbFY2MEQwSksydmdCZ3p0cEtYRjhDWGN6MzZEMTZsd2FlV0pndzZFS1JQbV9ZN09xdC04V09kVURTRzNHQnZLN0owZVRlMm0tdUl0TVFIWWJXdTdab1Z5SHFVNEEwZk1qbmNyTWNhWjZaQjRDUFdGX1ltNS1fWGM3ZVd1MnM0?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 7,
-     "source": "Fiction Horizon",
-     "title": "‘Avengers: Doomsday’ Figure Set Brings Heroes From Across the Multiverse Together",
-     "url": "https://fictionhorizon.com/avengers-doomsday-figure-set-brings-heroes-from-across-the-multiverse-together/"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 8,
-     "source": "GeekTyrant",
-     "title": "Deadpool Reportedly Has a Much Bigger Role in AVENGERS: SECRET WARS Than DOOMSDAY",
-     "url": "https://geektyrant.com/news/deadpool-reportedly-has-a-much-bigger-role-in-avengers-secret-wars-than-doomsday"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 9,
-     "source": "Maxblizz",
-     "title": "New Doctor Doom Artwork, Promotional Billboards, and Synopsis Revealed for Avengers: Doomsday",
-     "url": "https://maxblizz.com/avengers-doomsday-doctor-doom-concept-art-billboards/"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 10,
-     "source": "CINEMABLEND on MSN",
-     "title": "I’ve missed Nebula and the Guardians, but Karen Gillan is giving me MCU hope",
-     "url": "https://www.msn.com/en-us/entertainment/movies/i-ve-missed-nebula-and-the-guardians-but-karen-gillan-is-giving-me-mcu-hope/ar-AA2h9u6j"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 11,
-     "source": "Newsweek on MSN",
-     "title": "Who is Jeremy Latcham? Christian Marvel veteran takes over DC Studios",
-     "url": "https://www.msn.com/en-us/entertainment/movies/who-is-jeremy-latcham-christian-marvel-veteran-takes-over-dc-studios/ar-AA2h8Z0A"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 12,
-     "source": "Fiction Horizon",
-     "title": "Kellogg’s ‘Avengers: Doomsday’ Cereal Boxes Pair Up Heroes From Across the Multiverse",
-     "url": "https://fictionhorizon.com/kelloggs-avengers-doomsday-cereal-boxes-pair-up-heroes-from-across-the-multiverse/"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-09",
-     "n": 13,
-     "source": "Laughing Place",
-     "title": "Toys, Apparel, and Collectibles Assemble at Disney Store for \"Avengers: Doomsday\" Collection",
-     "url": "https://www.laughingplace.com/disney-merchandise/avengers-doomsday-collection-disney-store/"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 14,
-     "source": "Yahoo",
-     "title": "DC Comics movies may undergo yet another reset with James Gunn and Peter Safran replaced by former MCU producer",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNZFd3SVFwVmRFN29ROEJPUDYxWGZpM2J2VnpQMmlWZ1d3eU4tT2JnUEJOM2I0bFdHdF9fRVhvMVRKT0pDd0I0NDg0SmhmTVJRSDBHZnhBQlZBWkdncFNoMWZ0YWZxVWhpV2dXeW82V01meW9BR2kxUXV0OS05V1NmTkRYanZmTS04YlpQaU9tSVA5V0Nadi1FbGx3VQ?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 15,
-     "source": "玩具人 TOY PEOPLE",
-     "title": "DCU突傳重大人事震盪！詹姆斯岡恩、彼得薩弗蘭雙雙卸任 前漫威高層將全面接掌DC宇宙未來",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBQWW10dm5FVDdXaWlrVmJJdXJKcFAydTZEZnNNeE5OcnFFREVFOWE4Um12ZVZoeDAzT3lrSnNnMVdtLTRJZXNDVzlfQ2U?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 16,
-     "source": "BuzzFeed",
-     "title": "Plan Your Dream Wedding And I'll Tell You Which \"Doomsday\" Character You're Most Like",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNNnF1UlZwRUtrNTY2aWhSWGhacDBndGdjSjFkeTliTjh2QUJGNXlYbVRNcldzNmI0eFkwX21XdWt4UjBscE5jOWNyYjZTR1Z2VFZPV0o4by1Vb05rZmRJNUZMOGZKSlVITmdPQkZwaFNVRVZ6b1BwcWJoXzYtVzM2V2RvYnlSRF9XcVRmNjIxTUstTWZnTkc0blJMVFM1eFE2TVE?oc=5"
+     "headline": "DC Comics movies may undergo yet another reset with James Gunn and Peter Safran replaced by former MCU producer",
+     "highlight": "",
+     "image": "https://s.yimg.com/lo/mysterio/api/b2469cc9fe39bf64b22545174e8ca217a20d6423b63fd4c7c795ba41dea67d7c/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fdestructoid_573%2F37b190aecc0ddbeadc7942f7d61749b0.jpg",
+     "image_via": "og:image",
+     "url": "https://www.yahoo.com/entertainment/movies/articles/dc-comics-movies-may-undergo-205830339.html",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",

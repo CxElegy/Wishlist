@@ -1,14 +1,14 @@
 {
- "admin": "6a9b1ac14956",
- "admin-ai": "a1cb89ff11bf",
+ "admin": "1e279f6b8683",
+ "admin-ai": "a6c10ac0841c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "100315a5"
+   "598ded69"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "86df4760"
+   "1564ca50"
   ]
  },
  "admin-boards": "9a9068c3ae00",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "f1c4813eb14b",
+ "admin-emblem": "d47d609a6492",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ddf39077"
+   "9562a5c4"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "55a85f6b2f84",
  "admin-members_marks": {},
- "admin-now": "d5d7faaff673",
+ "admin-now": "4565be28c0e9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "474e0761"
+   "359c825c"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "f649c587"
+   "550ac862"
   ]
  },
- "admin-system": "c9082c569a6c",
+ "admin-system": "988e5b25771d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2af680b7"
+   "58262a07"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c89e6186"
+   "88726e58"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "18d584c0"
   ]
  },
- "index": "02c2bb6efeb6",
+ "index": "01b8799e1d34",
  "index_marks": {
   "front": [
    "トップ",
-   "8d70e323"
+   "32219e4b"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "5a09a004"
+   "9128a734"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -196,6 +196,6 @@
    "13a6635b"
   ]
  },
- "updated": "11.11 01:55",
+ "updated": "11.11 01:58",
  "wishlist": "47b52c172d87"
 }

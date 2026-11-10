@@ -59,7 +59,8 @@
  ],
  "_covered": {
   "GTA 6": 27,
-  "三星手机": 16
+  "三星手机": 16,
+  "漫威电影": 16
  },
  "三星手机": [
   {
@@ -98,6 +99,51 @@
    "refs": [
     7,
     13
+   ]
+  }
+ ],
+ "漫威电影": [
+  {
+   "headline": "New Avengers: Doomsday Character Description Reveals Who Will Lead All 5 Hero Teams",
+   "highlight": "Lead All 5 Hero Teams",
+   "blurb": "New character descriptions for Avengers: Doomsday reveal who leads each of the five hero teams.",
+   "weight": "lead",
+   "refs": [
+    1,
+    9
+   ],
+   "image": "https://images.thedirect.com/media/article_full/doomleader.jpg"
+  },
+  {
+   "headline": "Deadpool Reportedly Has a Much Bigger Role in AVENGERS: SECRET WARS Than DOOMSDAY",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "‘Avengers: Doomsday’ Figure Set Brings Heroes From Across the Multiverse Together",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    12,
+    13,
+    5
+   ]
+  },
+  {
+   "headline": "DC Comics movies may undergo yet another reset with James Gunn and Peter Safran replaced by former MCU producer",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    11,
+    15
    ]
   }
  ]
