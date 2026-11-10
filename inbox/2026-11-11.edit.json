@@ -96,7 +96,8 @@
   "dota2": 3,
   "滑雪": 2,
   "gelato pique": 1,
-  "チェーンソーマン": 1
+  "チェーンソーマン": 1,
+  "BLEACH Mirrors High": 10
  },
  "三星手机": [
   {
@@ -379,6 +380,40 @@
     1
    ],
    "image": "https://prtimes.jp/img/86964/322/resize/d86964-322-920ce4fb1c6d125252e4-0.jpg"
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "【BLEACHミラハイ】平子真子が新登場！ 五番隊隊長姿のカードや必殺技が解禁",
+   "highlight": "平子真子が新登場",
+   "blurb": "五番隊隊長姿の平子真子のカードと必殺技が解禁された。",
+   "weight": "lead",
+   "refs": [
+    7
+   ],
+   "image": "https://cimg.kgl-systems.io/camion/files/dengeki/93627/af99687dd719c4e8bc6a39e946c3d9ef7.jpg?x=1280"
+  },
+  {
+   "headline": "【ミラハイ】ガチャのおすすめとスケジュール｜どれを引くべき？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    8
+   ]
+  },
+  {
+   "headline": "【ミラハイ】最強キャラランキング｜最新Tier表",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    3,
+    9,
+    10
+   ]
   }
  ]
 }

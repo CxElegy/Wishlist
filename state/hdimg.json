@@ -226,6 +226,18 @@
   "target": 720,
   "v": 3
  },
+ "https://appmedia.jp/wp-content/uploads/2026/10/192831_upygs.webp": {
+  "w": 740,
+  "h": 389,
+  "target": 720,
+  "v": 3
+ },
+ "https://appmedia.jp/wp-content/uploads/2026/10/201853_imk7r.webp": {
+  "w": 740,
+  "h": 389,
+  "target": 720,
+  "v": 3
+ },
  "https://areajugones.sport.es/wp-admin/admin-ajax.php?action=rank_math_overlay_thumb&id=834607&type=videojuegos&hash=327d1d284ff2a1170fe074f5adf184f2": {
   "w": 1220,
   "h": 686,
@@ -649,6 +661,12 @@
   "v": 3
  },
  "https://cimg.kgl-systems.io/camion/files/dengeki/93039/a4efdd2f969559e8b1c92e99f32ded48e.jpg?x=1280": {
+  "w": 1280,
+  "h": 1709,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cimg.kgl-systems.io/camion/files/dengeki/93627/af99687dd719c4e8bc6a39e946c3d9ef7.jpg?x=1280": {
   "w": 1280,
   "h": 1709,
   "target": 1280,
@@ -1215,6 +1233,19 @@
   "h": 1350,
   "target": 720,
   "v": 3
+ },
+ "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261011_EN_source-web_Jay-Chou-1.jpg": {
+  "w": 640,
+  "h": 335,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.498,
+  "local": "pics/a124e947437670cd.webp",
+  "out": [
+   1280,
+   670
+  ],
+  "why": "看不清"
  },
  "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg": {
   "w": 1280,
@@ -1902,13 +1933,6 @@
   "h": 675,
   "target": 720,
   "v": 3
- },
- "https://media.bastillepost.com/wp-content/uploads/hongkong/static/20230718-default-feature-704x369.jpg": {
-  "w": 704,
-  "h": 369,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.387
  },
  "https://media.image.infoseek.co.jp/isnews/photos/animeanime/animeanime_104589_0-enlarge.jpg": {
   "w": 512,
