@@ -106,19 +106,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/006ZneWLly1iiwaviy2i4j327c0w9kjl.jpg": {
-  "w": 2000,
-  "h": 813,
-  "target": 720,
-  "v": 3,
-  "local": "pics/2ac41dfafb185baf.webp",
-  "out": [
-   1280,
-   520
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/006ZneWLly1iiwcku2k3zj31hi0lxnng.jpg": {
   "w": 1926,
   "h": 789,
@@ -226,6 +213,18 @@
    640
   ],
   "why": "看不清"
+ },
+ "https://appmedia.jp/wp-content/uploads/2026/10/163124_347an.webp": {
+  "w": 740,
+  "h": 389,
+  "target": 720,
+  "v": 3
+ },
+ "https://appmedia.jp/wp-content/uploads/2026/10/165140_sixb1.webp": {
+  "w": 740,
+  "h": 389,
+  "target": 720,
+  "v": 3
  },
  "https://areajugones.sport.es/wp-admin/admin-ajax.php?action=rank_math_overlay_thumb&id=834607&type=videojuegos&hash=327d1d284ff2a1170fe074f5adf184f2": {
   "w": 1220,
@@ -815,12 +814,6 @@
   ],
   "why": "看不清"
  },
- "https://dpiff.in/wp-content/uploads/2026/11/902586042_18484335304191145_5744686448514805000_n-819x1024.jpg": {
-  "w": 819,
-  "h": 1024,
-  "target": 720,
-  "v": 3
- },
  "https://dramanavi.net/asia/wp-content/uploads/2026/10/2026-MAMA-AWARDS.jpg": {
   "w": 1200,
   "h": 675,
@@ -891,12 +884,6 @@
   "w": 1000,
   "h": 666,
   "target": 1280,
-  "v": 3
- },
- "https://gagadget.com/media/cache/64/f4/64f443032bd3e39839afb531cf5b78f8.webp": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
   "v": 3
  },
  "https://game.watch.impress.co.jp/img/gmw/list/2153/775/002.jpg": {
@@ -1021,6 +1008,12 @@
   "v": 3
  },
  "https://hawk.live/storage/images/posts/nix-spoke-about-the-main-mistake-of-dendi-on-the-dota-2-pro-scene-24091.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/noticed-commented-patch-741e-25215.jpg": {
   "w": 1200,
   "h": 628,
   "target": 720,
@@ -1379,6 +1372,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cCV3B.img": {
   "w": 638,
   "h": 424,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dBBlh.img": {
+  "w": 1600,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -3379,12 +3378,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.1lGQeGfUY3vKydQYkdDLuw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3397,12 +3390,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.8xciGiAADGDU8S6cDUsaMg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
@@ -3605,6 +3592,12 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.cNxo0NslN--daEmcUjFkUA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.fLXBzMLGHAaTVJ4TcK9bug&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
