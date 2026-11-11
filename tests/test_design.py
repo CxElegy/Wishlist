@@ -122,6 +122,15 @@ class Components(unittest.TestCase):
         for kw in ({"mini": True}, {}, {"small": True}):
             self.assertIn('class="xplay"', render._tcard(story, 4, 0, "2026-10-15", **kw), kw)
 
+    def test_hero_board_fits_screen_ratio(self):
+        """2026-11-11 F1：重大（整行の大きい 1 枚）のある版面も画面の割合（data-vh）に収める。入らなければ重大のあとの記事を外し（もっと見るに残る）、
+        重大を詰める（要約を外す → 写真と字を小さく → 写真の高さを字の高さに）。字は切らない。"""
+        js, css = render.FIT_JS, render.CSS
+        for s in ("const fitHeroes = () =>", "unHero();", "mason(); fitHeroes();", "['tight', 'tighter', 'tightest']", "h.classList.add('capped')"):
+            self.assertIn(s, js)
+        for s in (".hero.tight .blurb,.hero.tight .nx{display:none}", ".grid>.hero.tight .pic img:not(.bg):not(.ico){position:static!important", ".hero.capped,.hero.capped.nw{grid-template-columns:auto minmax(0,1fr)}"):
+            self.assertIn(s, css)
+
     def test_aesthetic_audit_2026_11_11(self):
         """2026-11-11 審美基準で全体を点検して直した規則：見出しは「…」で切らない（D3）・字体は令牌だけ（D2。中国語のページは端末の中国語フォント 1 種類）・
         読む字は 11px 以上（D4）・版面の整行の重大は 1 つだけ（C2・F1）・気になるかもは段の見出しを外して詰められる（F1）。"""
