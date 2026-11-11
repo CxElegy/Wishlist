@@ -43,6 +43,11 @@ def todo(queue=None, edits=None):
     return [(b["id"], b["name"], len(b.get("rows") or [])) for b in load_queue(queue).get("boards") or [] if str(b["id"]) not in done]
 
 
+def fresh_ids(queue=None):
+    """queue.json の版面のうち、一度も AI 編集していないもの（export が fresh を付けた）の id。"""
+    return {str(b["id"]) for b in load_queue(queue).get("boards") or [] if b.get("fresh")}
+
+
 def done_today(today, queue=None, edits=None):
     """今日 AI が編んだ版面の数（gate の「本当に進んだか」の目印）。"""
     d = load_queue(queue).get("done") or {}
@@ -109,6 +114,7 @@ def export(db, today, shop_names, applied=0, queue=None, log=print):
         r = rows.get(int(row[0]))
         if r and r.get("pending"):
             boards.append({"id": int(row[0]), "name": r["name"], "day": r["day"], "fp": library.pending_fp(r["pending"]),
+                           "fresh": not (r.get("stories") or r.get("prev")),   # 直近の日に一度も AI 編集していない新しい版面（gate が 4 時間待たずに起こす）
                            "rows": [{k: p.get(k) for k in ROW_KEYS} for p in r["pending"]]})
     new = {"done": done, "boards": boards}
     if new != data:

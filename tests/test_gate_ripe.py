@@ -108,5 +108,22 @@ class FireRipe(unittest.TestCase):
         self.assertEqual(gate.due_slot({**self.job, "ripe": []}, NOW), "")
 
 
+class LibFreshRipe(unittest.TestCase):
+    """お客さまの版面：一度も編集していないものは LIB_WAKE_HOURS（4 時間）を待たずに溜まった扱い。"""
+
+    def check(self, fresh):
+        with tempfile.TemporaryDirectory() as d:
+            state = pathlib.Path(d) / "gate.json"
+            gate.save({"jobs": {"edit": {"fired": {"at": (NOW - dt.timedelta(hours=1)).isoformat()}}}}, state)   # 1 時間前に起こした
+            with mock.patch.object(gate, "_now", lambda: NOW),                     mock.patch.object(gate, "edit_work", lambda tz=None: {}), mock.patch.object(gate, "edit_ripe", lambda tz=None: {}),                     mock.patch.object(gate, "photo_work", lambda: []), mock.patch.object(gate, "emblem_work", lambda: ([], [])),                     mock.patch.object(gate.lib_queue, "todo", lambda: [(7, "新版面", 3)]),                     mock.patch.object(gate.lib_queue, "fresh_ids", lambda: {"7"} if fresh else set()),                     mock.patch.object(gate.lib_queue, "done_today", lambda day: 0):
+                return gate.check(path=state)["jobs"]["edit"]["ripe"]
+
+    def test_never_edited_wakes_without_waiting(self):
+        self.assertEqual(self.check(True), ["lib:新版面"])
+
+    def test_edited_before_still_waits(self):
+        self.assertEqual(self.check(False), [])
+
+
 if __name__ == "__main__":
     unittest.main()

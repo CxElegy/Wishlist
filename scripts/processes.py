@@ -310,7 +310,7 @@ PROCESSES = [
              "uses": ["gate"], "yes": "動いている → 残りがあれば新しい状況として起こす", "no": "停滞：3 回まで起こし直す・そのあと 6 時間待つ（管理ページに「起こしても動かない」）"},
             {"id": "g5c", "kind": "decision", "lane": "actions", "title": "GATE_FIRE で開けている？", "text": "リポジトリ変数 · 未設定 = edit,photos（既定・2026-11-07）· edit = AI 編集だけ · 0 = 閉 · 1 = 全部 · 管理ページの「AI 編集をもう一度起こす」は変数・間隔・停滞の判断を飛ばす",
              "no": "起こさない（記録だけ・定時を待つ）"},
-            {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "Secret ROUTINE_FIRE_TOKEN が要る · 写真も AI 編集の予約で起こす（60 分以内に 2 本目は起こさない・写真は 1 日 3 回まで）· 1 日ごとのトークンと起こした回数を state/gate.json に残す · AI 編集は溜まった版面だけ編集する（edit-queue = edit_ripe ＋ やり直し）",
+            {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "Secret ROUTINE_FIRE_TOKEN が要る · 写真も AI 編集の予約で起こす（60 分以内に 2 本目は起こさない・写真は 1 日 3 回まで）· 1 日ごとのトークンと起こした回数を state/gate.json に残す · AI 編集は溜まった版面だけ編集する（edit-queue = edit_ripe ＋ やり直し）· 一度も編集していない新しいライブラリの版面は LIB_WAKE_HOURS を待たず溜まった扱いにする（queue.json の fresh）",
              "uses": ["claude"]},
             {"id": "g7", "kind": "store", "lane": "repo", "title": "state/gate.json · state/log/gate.json", "text": "判断が変わったとき（最初の判断・小元素のあとの判断）・Claude を本当に起こしたとき・収集を起こそうとしたとき（起こせなかったときも）だけコミット（GATE_FIRE が開いているだけでは足さない）"},
             {"id": "g8", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "後台作業が網页を発布したあと。新しい記事の写真が次の定時（3 時間ごと）まで原寸のまま届かないように。取れなかった分は 1 日あけるので回り続けない。"},
