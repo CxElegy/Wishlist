@@ -1,32 +1,32 @@
 {
- "admin": "3745cbe1bf4b",
- "admin-ai": "140a2689c82c",
+ "admin": "df1327d4c615",
+ "admin-ai": "6976701fe06e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "b0fdaa8d"
+   "df2d9618"
   ],
   "tokens": [
    "AI 編集のトークン",
    "f92f8c02"
   ]
  },
- "admin-boards": "54becfa35d20",
+ "admin-boards": "d20ca8bcc2fc",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "48a34b86"
+   "30332453"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "1e54125cba76",
+ "admin-emblem": "3f21557bbab0",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a39a95ab"
+   "5cad3fe3"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "596890c30db2",
  "admin-members_marks": {},
- "admin-now": "cc5c84cf0bd4",
+ "admin-now": "9d8a2ced84f2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0192e1fc"
+   "feb4eba1"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "1c1a783a"
+   "525d7874"
   ],
   "term-panel": [
    "ライブログ",
-   "30a1f84e"
+   "e2d316a0"
   ]
  },
- "admin-system": "e08fa95bf713",
+ "admin-system": "7f0c2e808dc6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2a333f9d"
+   "11a84d8f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "23c669bb"
+   "e1497267"
   ]
  },
  "admin_marks": {},
- "heat": "fc447f5405ae",
+ "heat": "dd60d8f9d573",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "74081a21"
+   "b5b8da82"
   ],
   "ranking": [
    "ランキング",
-   "5c1a278c"
+   "268f8672"
   ]
  },
- "index": "ff994e1ccc05",
+ "index": "645534ce43db",
  "index_marks": {
   "front": [
    "トップ",
-   "57ac1cf8"
+   "4a2cd5ba"
   ],
   "picks": [
    "気になるかも？",
@@ -113,15 +113,15 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "3931f6d1"
+   "9ba0014e"
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "a3d24052"
+   "6eb4c443"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "8fd0de2e"
+   "f5383213"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "4aba5e13"
+   "dd10722b"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "49e7d60d"
+   "d1bfee08"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "3ded76c4"
+   "f858a65b"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "f53a804f"
   ]
  },
- "updated": "11.12 06:22",
+ "updated": "11.12 06:28",
  "wishlist": "b26013eda81c"
 }
