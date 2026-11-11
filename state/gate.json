@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-11T09:32:08+00:00",
+ "checked": "2026-11-11T09:52:53+00:00",
  "fired": {
-  "at": "2026-11-11T09:32:08+00:00",
+  "at": "2026-11-11T09:52:53+00:00",
   "results": {
    "edit": "今日のトークンが上限（1,000,000）に達した（明日まで待つ・ボタンは起こせる）",
    "photos": "仕事なし（起こさない）"
@@ -39,6 +39,7 @@
    "items": [
     "A2O LITE",
     "Astrae Oratio",
+    "BLEACH Mirrors High",
     "GTA 6",
     "ILLIT",
     "MMORPG 新作",
@@ -71,9 +72,11 @@
    "prog": 346,
    "prog_day": "2026-11-11",
    "ripe": [
+    "Astrae Oratio",
     "GTA 6",
     "ILLIT",
     "MMORPG 新作",
+    "The Mandalorian",
     "gelato pique",
     "lib:SPY×FAMILY",
     "lib:【推しの子】",
@@ -83,17 +86,19 @@
     "lib:呪術廻戦",
     "lib:葬送のフリーレン",
     "lib:鬼滅の刃",
+    "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
+    "滑雪",
     "漫威电影",
     "绝区零"
    ],
-   "sig": "9c728956fe53",
+   "sig": "3f5c09b692ab",
    "token_cap": 1000000,
    "tokens_today": 1269710,
-   "why": "整理待ちの記事 155 件（24 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 194 件（25 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
