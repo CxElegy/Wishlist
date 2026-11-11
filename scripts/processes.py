@@ -540,6 +540,20 @@ PROCESSES = [
         ],
     },
     {
+        "id": "boardadded", "name": "版面が足されたとき", "en": "BOARD ADDED", "lane": "actions", "workflow": "board_added.yml",
+        "when": "お客さまが版面を足した直後（1 人 1 時間 6 回・全体 30 秒に 1 回まで）",
+        "trigger": "DB の my_keywords_set が新しい名前を受け取ったとき private.kick_board_added が workflow_dispatch（db/board_added.sql）。起こせなくても足すことは失敗しない（cron が拾う）",
+        "summary": "【2026-11-11 店長：新規ユーザーの KPI と改善】前は版面を足しても何も起きず、follows・記事集め・本人のページ・小元素は全部 cron 待ちだった（library 毎時・digest 2 時間・library_emblem 実測 4〜6 時間）。足した名前に added_at を残し（KPI）、その場でライブラリ → 記事集め → 本人のページ → 小元素を回す。時間は harness/board_kpi.py が測る（足す → picks・follows・boards・記事・ライブラリの記事・小元素・AI 編集・本人のページ。経路 A 店長と同じ名前・B ライブラリにある・C 新しい名前、目標の分と比べる）",
+        "files": [".github/workflows/board_added.yml", "db/board_added.sql", "harness/board_kpi.py"], "doc": "docs/rules/library.md", "uses": ["supabase", "pushmain"],
+        "flow": [
+            {"id": "ba1", "kind": "step", "lane": "web", "title": "足した名前に added_at（my_keywords_set）", "uses": ["supabase"], "text": "前からある名前は前の時刻のまま。新しい名前があれば kick_board_added"},
+            {"id": "ba2", "kind": "step", "lane": "actions", "title": "ライブラリの follows・boards（library.py --users）", "uses": ["supabase"], "text": "library.yml と同じ concurrency（library）"},
+            {"id": "ba3", "kind": "step", "lane": "actions", "title": "記事集め（userfeed.py）→ 本人のページ（user_pages.py）", "uses": ["supabase"], "text": "新しい名前はまだ集めていないので待ちの先頭"},
+            {"id": "ba4", "kind": "step", "lane": "actions", "title": "小元素を起こす（library_emblem.yml）", "text": "新しい版面は due の先頭（一度も試していない）。終われば本人のページを作り直す"},
+            {"id": "ba5", "kind": "step", "lane": "actions", "title": "時間を測る（harness/board_kpi.py）", "text": "ハーネスのループが test-c・test-d で足して測り、目標を越えた段を直す"},
+        ],
+    },
+    {
         "id": "libemblem", "name": "ライブラリの小元素", "en": "LIB EMBLEM", "lane": "actions", "workflow": "library_emblem.yml",
         "when": "15 分ごとの見回り（待ちがなければ数十秒で終わる）· 待ちが残って増えていれば自分で次の回を起こす（空になるまで・20 回まで）· 手で起こす",
         "trigger": "定時（11,26,41,56 * * * *：--check で待ちを見て、なければ重い道具を入れずに終わる）か workflow_dispatch（minutes、既定 30 分・chain）。終わりに待ちが残り、この回で 1 版面でも増えたなら gh workflow run で次の回（1 版面も増えなければ止める）",
@@ -802,6 +816,7 @@ ARCH = [
         {"id": "p-gate", "proc": "gate", "subs": ["emblem-cron"]},
         {"id": "p-requests", "proc": "requests"},
         {"id": "p-library", "proc": "library"},
+        {"id": "p-boardadded", "proc": "boardadded"},
         {"id": "p-libemblem", "proc": "libemblem"},
         {"id": "p-photostore", "proc": "photostore"},
         {"id": "p-progress", "proc": "progress"},

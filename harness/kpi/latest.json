@@ -1,0 +1,214 @@
+{
+ "at": "2026-11-11T13:18:08+00:00",
+ "boards": {
+  "A": {
+   "board": {
+    "n": 1,
+    "p50": 0.0,
+    "max": 0.0,
+    "target": 60,
+    "ok": true
+   },
+   "edited": {
+    "n": 1,
+    "p50": 0.2,
+    "max": 0.2,
+    "target": 480,
+    "ok": true
+   },
+   "emblem": {
+    "n": 1,
+    "p50": 0.0,
+    "max": 0.0,
+    "target": 120,
+    "ok": true
+   },
+   "follow": {
+    "n": 1,
+    "p50": 11.1,
+    "max": 11.1,
+    "target": 60,
+    "ok": true
+   },
+   "pending": {
+    "n": 1,
+    "p50": 0.2,
+    "max": 0.2,
+    "target": 180,
+    "ok": true
+   },
+   "picked": {
+    "n": 1,
+    "p50": 0.0,
+    "max": 0.0,
+    "target": 1,
+    "ok": true
+   }
+  },
+  "B": {
+   "board": {
+    "n": 2,
+    "p50": 0.0,
+    "max": 0.0,
+    "target": 60,
+    "ok": true
+   },
+   "edited": {
+    "n": 2,
+    "p50": 0.2,
+    "max": 0.2,
+    "target": 480,
+    "ok": true
+   },
+   "emblem": {
+    "n": 2,
+    "p50": 0.0,
+    "max": 0.0,
+    "target": 120,
+    "ok": true
+   },
+   "follow": {
+    "n": 2,
+    "p50": 11.1,
+    "max": 11.1,
+    "target": 60,
+    "ok": true
+   },
+   "pending": {
+    "n": 2,
+    "p50": 0.2,
+    "max": 0.2,
+    "target": 180,
+    "ok": true
+   },
+   "picked": {
+    "n": 2,
+    "p50": 0.0,
+    "max": 0.0,
+    "target": 1,
+    "ok": true
+   }
+  },
+  "C": {
+   "board": {
+    "n": 3,
+    "p50": 11.0,
+    "max": 11.0,
+    "target": 60,
+    "ok": true
+   },
+   "follow": {
+    "n": 3,
+    "p50": 11.1,
+    "max": 11.1,
+    "target": 60,
+    "ok": true
+   },
+   "picked": {
+    "n": 3,
+    "p50": 0.0,
+    "max": 0.0,
+    "target": 1,
+    "ok": true
+   }
+  }
+ },
+ "runs": 1,
+ "pages": {
+  "test-a": {
+   "picks": 40,
+   "page": true,
+   "missing": 0,
+   "1333": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 40,
+    "errors": []
+   },
+   "390": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 40,
+    "errors": []
+   }
+  },
+  "test-b": {
+   "picks": 1,
+   "page": true,
+   "missing": 0,
+   "1333": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 1,
+    "errors": []
+   },
+   "390": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 1,
+    "errors": []
+   }
+  },
+  "test-c": {
+   "picks": 6,
+   "page": true,
+   "missing": 6,
+   "1333": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 1,
+    "errors": []
+   },
+   "390": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 1,
+    "errors": []
+   }
+  },
+  "test-d": {
+   "picks": 0,
+   "page": true,
+   "missing": 0,
+   "1333": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 1,
+    "errors": []
+   },
+   "390": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 1,
+    "errors": []
+   }
+  },
+  "test-e": {
+   "picks": 0,
+   "page": true,
+   "missing": 0,
+   "1333": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 1,
+    "errors": []
+   },
+   "390": {
+    "broken": 0,
+    "words": 0,
+    "overflow": 0,
+    "boards": 1,
+    "errors": []
+   }
+  }
+ }
+}

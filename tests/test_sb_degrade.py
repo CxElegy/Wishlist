@@ -467,6 +467,7 @@ class EveryCallGoesThroughSbstate(unittest.TestCase):
         "photo_cache_fill.py": {"/rest/v1/": "1 日 1 回・1 GET・失敗は空で続ける（photo_cache.yml）"},
         "emb_check.py": {"/rest/v1/": "係の手元の点検（Actions でない）・読むだけ 1 回"},
         "ux_check.py": {"/": "係の手元の点検（Actions でない）・本番を読むだけ・各段 1 回"},
+        "board_kpi.py": {"LOCAL + ": "店長の PC の自前版 Supabase（localhost）だけ。テスト用アカウントの計測（402 も egress も無い）", "{LOCAL}/": "同じ：本人のページを localhost から読む（テスト用アカウントだけ）", "urlopen(req, timeout": "上の localhost の要求だけ"},
         "pc_watch.py": {"/auth/v1/health": "PC のサーバーの死活を外から見るだけ（鍵なし・1 回に最大 3 GET）。402 も「届かない」と数えて知らせる側なので、制限の印を付けない"},
     }
 
@@ -493,7 +494,7 @@ class EveryCallGoesThroughSbstate(unittest.TestCase):
     def test_storage_object_urls_are_writes_only(self):
         """storage の非公開の道（/storage/v1/object/<箱>/…・list）を作る行は書き込みだけ。読みは storage_read（写し）か Pages から（2026-11-04：user_pages の全ページ読みが毎回 egress だった）。"""
         ok = {"library_emblem.py": ['/storage/v1/object/{BUCKET}/{name}'], "photo_store.py": ['/storage/v1/object/{path}', '/storage/v1/object/pages/_fp/imgs.json'],
-              "user_pages.py": ['/storage/v1/object/pages/_fp/all.json', '/storage/v1/object/pages/_fp/imgs.json', '/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}']}
+              "user_pages.py": ['/storage/v1/object/pages/_fp/all.json', '/storage/v1/object/pages/_fp/imgs.json', '/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}'], "board_kpi.py": ['{LOCAL}/storage/v1/object/pages/{account}/index.html']}
         bad = []
         for sub in ("scripts", "harness"):
             for f in sorted((ROOT / sub).glob("*.py")):

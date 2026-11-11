@@ -5,6 +5,13 @@
 
 ## いちばん先（目標：お客さまが登録して、自分の版面を毎日読める。HARNESS「目標から決める」）
 
+- [ ] 【依頼・新規ユーザー 2026-11-11・最優先】**新規ユーザーの通し点検を毎回（harness/board_kpi.py・ループの newuser の係）** — 店長：新規アカウントを作った人・版面を足した人に、サイトの機能とデザインが届くかを点検 → 改善のループで。できたと言える条件：経路 C（新しい名前）で「足す → 本人のページに載る」150 分以内・小元素 120 分以内・AI 編集の見出し 480 分以内、test-c・test-d・test-e の本人のページで JS の例外 0・壊れた写真 0・載っていない版面 0（足してから 150 分すぎ）・審美基準の ✗ 0。基準の回：D:/Claude/kpi/runs/20261111-130429-test-c.json（今の仕組み・cron 待ち）。
+- [ ] 【依頼・新規ユーザー 2026-11-11】**AI 編集：一度も編集していない新しい lib 版面は 4 時間待たずに起こす（gate.py の lib_due・LIB_WAKE_HOURS）** — 経路 C の edited を 480 分以内に。店長の AI 編集の回（slot）と重ならない・1 日の回数の上限は今のまま。
+- [ ] 【依頼・新規ユーザー 2026-11-11】**library_emblem.yml の 15 分の定時が実測 4〜6 時間に 1 回（harness/audits/2026-11-05-system.md F11）** — GitHub の cron の抜けなら pg_cron の tick（run_now）から起こす。経路 C の小元素 120 分以内。
+- [ ] 【依頼・新規ユーザー 2026-11-11】**library_design（版面の主題・配色）を回す担い手がない** — クラウドの AI 編集は service key を持たない（lib_queue.py）。お客さまだけの新しい版面は仮の主題（template_for・写真の色）のまま。board_added か background の回で、規則で決められる分を当てる。
+- [ ] 【依頼・新規ユーザー 2026-11-11】**gate.py fire が push より前に走る**（background.yml：fire が :154、commit/push が :158-181）— AI 編集が古い inbox/lib/queue.json を読むことがないか確かめ、push のあとに fire する。
+
+
 - [x] 【休止中 2026-11-06 ハーネスの係・2026-11-07 解消】**Supabase の公開 API が 402（exceed_cached_egress_quota）**：state/supabase_status.json が 11/5 23:40 UTC（JST 11/6 08:40）から limited。publishable key で sizes・nav_schemes・item_requests が 402（鍵なしは 401）。管理 API 経由の SQL・get_project（ACTIVE_HEALTHY）は通る＝止まっているのは公開 API の窓口だけ。Pro にしない決定のまま休止で運用。Actions は main の直近 20 本すべて success（落ちていない）。
   - **2026-11-07 解消**：DB を店長の PC の自前版 Supabase（https://elegy.tailc8cfff.ts.net）に引っ越した。#959（接続先の切り替え）合併・Secrets の SUPABASE_SERVICE_KEY も新しい値・本番 home を 1400/390 で開いて pageerror 0・RPC は全部新サーバーで 200・休止の札なし・background の書き込みが通り state/supabase_status.json は ok（入口の確かめ）。私の環境からも /auth/v1/health が鍵なしで 401（旧と同じ応答＝届いている）。旧プロジェクト（bzokpnbcjscbcehdxtjq）の 402 は旧側の話になった。下は 11/6 時点の記録（休止の間に確かめたこと）として残す。
   - 休止の間に止まるもの：ログイン・👍👎・設定の保存・お客さまのページ（my_page）・管理ページの DB 読み・審査の保存（review_save）・ライブラリの書き込み。動くもの：ゲストの閲覧（Pages の静的）・写真と小元素（Pages の /p/）・Actions の収集（state/ の最後の写しから）。

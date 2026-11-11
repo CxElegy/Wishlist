@@ -1,0 +1,76 @@
+name: 版面が足されたとき
+
+# お客さまが版面を足したら、その場で後ろの仕組みを回す（2026-11-11 店長：新規ユーザーが盤面を追加したときの KPI と改善）。
+# 起こすのは DB の my_keywords_set（db/board_added.sql の private.kick_board_added。1 人 1 時間 6 回・全体 30 秒に 1 回）。
+# 前は全部 cron 待ちで、足してから本人のページに載るまで最大 2 時間、小元素は実測 4〜6 時間かかっていた（harness/board_kpi.py で測る）。
+# 順番：ライブラリの follows・boards（library.py --users）→ その人の記事集め（userfeed.py）→ 本人のページ（user_pages.py）→ 小元素（library_emblem.yml を起こす。終われば本人のページを作り直す）。
+# AI 編集は今までどおり gate.py（lib の版面）が起こす。
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write   # 小元素の workflow を起こす
+
+concurrency:
+  group: library   # library.yml と同じ：follows を 2 か所から同時に書かない
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Wikidata の引いた結果（お客さまの分、倉庫に入れない）
+        uses: actions/cache/restore@v4
+        with:
+          path: state/wd_facts.json
+          key: wd-facts-${{ github.run_id }}
+          restore-keys: wd-facts-
+      - name: お客さまの選んだものを版面にする
+        run: |
+          python scripts/library.py --users
+          git add state/log/library.json
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "ライブラリ：お客さまの版面（足されたとき） $(TZ=Asia/Tokyo date +'%F %H:%M')"
+          python scripts/push_main.py
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: state/wd_facts.json
+          key: wd-facts-${{ github.run_id }}
+      - id: wdchk
+        if: always()
+        uses: actions/cache/restore@v4
+        with:
+          path: state/wd_facts.json
+          key: wd-facts-${{ github.run_id }}
+          lookup-only: true
+      - name: Wikidata の結果の保存が拒まれたら警告（save は拒まれても緑のまま）
+        if: always() && steps.wdchk.outputs.cache-hit != 'true'
+        run: echo "::warning::Wikidata の cache が保存できなかった（書き込みが拒まれた？）。次の回は空から始まる"
+      - name: 足された版面の記事集め
+        continue-on-error: true
+        timeout-minutes: 10
+        run: python scripts/userfeed.py
+      - name: お客さまのページを作って置く
+        continue-on-error: true
+        timeout-minutes: 10
+        run: python scripts/user_pages.py
+      - name: 小元素を起こす（新しい版面は待ちの先頭。終われば本人のページを作り直す）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run library_emblem.yml -f minutes=20
