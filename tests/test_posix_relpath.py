@@ -1,4 +1,4 @@
-"""path の区切りが OS で変わる壊れ方の点検：.relative_to(...) は .as_posix() を付けて / 区切りにする（Windows では \ になり、比較や表示がずれる）。"""
+"""path の区切りが OS で変わる壊れ方の点検：.relative_to(...) は .as_posix() を付けて / 区切りにする（Windows では バックスラッシュ になり、比較や表示がずれる）。"""
 import pathlib
 import re
 import subprocess
