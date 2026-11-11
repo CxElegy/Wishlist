@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "c7a701a6ba1a",
+ "edit_sig": "d1370d65b3e0",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -179,15 +179,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-08",
-     "n": 3,
-     "source": "SnowBrains",
-     "title": "Fall in Love with Niseko, Japan: Trailer for “I Love Niseko” by Uchi Global Launches",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOaDlHcGRfUzdYa3czdTZ5QkU5bEZ2MjlYRDA0X1lZNE1iTFlZeGtobHlWX3BrMVZMVFRiVUdvODRvaVVlZ0o0SU5BOWFqTDRsM2kteUU0dVgyaEltM2Z2Qy1JZTlockRzdmJQcjFTUHg0OGo5ZnFDU0FLVE9xUzlLX3NVSUNxM3RiRDIxR2JvN21HVFlUM3JmWUozZEo?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -208,6 +199,17 @@
      "image": "https://tokyo-sports.ismcdn.jp/mwimgs/0/e/1200w/img_0e3d0d8e725f2845b1b4e6a5df245394100507.jpg",
      "image_via": "og:image",
      "url": "https://www.tokyo-sports.co.jp/articles/-/409448",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-08",
+     "headline": "Fall in Love with Niseko, Japan: Trailer for “I Love Niseko” by Uchi Global Launches",
+     "highlight": "",
+     "image": null,
+     "source": "SnowBrains",
+     "source_icon": "https://i0.wp.com/snowbrains.com/wp-content/uploads/2024/06/brains_v3.png?fit=192%2C192&ssl=1",
+     "url": "https://snowbrains.com/watch-the-endearing-trailer-for-he-new-8-part-video-series-i-love-niseko/",
      "weight": "normal"
     }
    ],
