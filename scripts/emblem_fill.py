@@ -3154,6 +3154,10 @@ def record(prog, item, result, now):
         e["exhausted"] = True
     else:
         e.pop("exhausted", None)
+    if result["state"] == "failed" and "tried" in result and passes_left(item, e) <= 0:   # 名簿の残りを STEP 人ずつ 1 周しても 0 枚＝due() が止める版面（材料が変わるまで待つ）。E10 は ✗ にしない（BLEACH 42/200 が毎日 ✗ だった）
+        e["passed"] = True
+    else:
+        e.pop("passed", None)
     if "tried" in result and st["kind"] == "character":
         e["names_v"] = NAMES_V
     if result.get("sheet"):

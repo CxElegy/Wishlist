@@ -409,3 +409,11 @@ class OfficialSourcesE15(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class StuckPassed(unittest.TestCase):
+    def test_passed_board_is_not_counted_as_e10(self):
+        """名簿を 1 周して 0 枚の版面（passed）は E10 ✗ にも理由の数にも入れない。旗のない失敗は入れる。"""
+        items = {"a": {"state": "failed", "have": 4, "target": 50, "passed": True, "funnel": {"rejected": {"別人": 5}}},
+                 "b": {"state": "failed", "have": 4, "target": 50, "funnel": {"rejected": {"別人": 2}}}}
+        self.assertEqual(emb_check.reason_counts(items)["E10"], {"別人": 2})
