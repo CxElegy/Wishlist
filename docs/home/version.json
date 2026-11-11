@@ -1,14 +1,14 @@
 {
- "admin": "c7256eba186d",
- "admin-ai": "f264bf4e414c",
+ "admin": "603cd45df058",
+ "admin-ai": "3f4823c298d6",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1baf97bc"
+   "70455e56"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "292f2367"
+   "0228fff2"
   ]
  },
  "admin-boards": "475ab2b9b9a9",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "8071a1168650",
+ "admin-emblem": "962e348fe468",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "de63b78e"
+   "b317d5a7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "521369f980a9",
  "admin-members_marks": {},
- "admin-now": "c07996e22e79",
+ "admin-now": "4f8d90def1af",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "181b9ada"
+   "57f6f13c"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "80dfbcc2"
+   "1c1a783a"
   ],
   "term-panel": [
    "ライブログ",
-   "d35eed87"
+   "c222d25f"
   ]
  },
- "admin-system": "75888e908a7e",
+ "admin-system": "45771b49dcab",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "edb96a05"
+   "2015183c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "cead589a"
+   "29ad8f73"
   ]
  },
  "admin_marks": {},
- "heat": "333d39072020",
+ "heat": "138f90cc61a5",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "d00db845"
+   "bc273e8f"
   ],
   "ranking": [
    "ランキング",
-   "ee6a5936"
+   "e1362788"
   ]
  },
- "index": "8d61df1d2c47",
+ "index": "815afa50065b",
  "index_marks": {
   "front": [
    "トップ",
-   "553b2ab7"
+   "c81ab50a"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "0de582ca"
+   "dc5232cc"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -196,6 +196,6 @@
    "4abaf7c1"
   ]
  },
- "updated": "11.12 03:05",
+ "updated": "11.12 03:09",
  "wishlist": "1359ae8dc6ab"
 }
