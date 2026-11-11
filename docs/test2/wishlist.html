@@ -952,7 +952,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 @media (max-width:560px){.wl-auth{top:auto;bottom:12px;right:12px}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}}
 </style><script>
 (function(){
-  var A={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js", "page": "wishlist", "terms": 1, "termsUrl": "terms.html", "start": "../#name"}, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
+  var A={"url": "https://elegy.tailc8cfff.ts.net", "key": "sb_publishable_GMIrDWafyZ2-NKp_YVOd9Z_SijEusJ4", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js", "page": "wishlist", "terms": 1, "termsUrl": "terms.html", "start": "../#name"}, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
   if(!base||!A.key||!window.fetch) return;
   var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
   R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
@@ -1201,7 +1201,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 @media (max-width:640px){.snap form{grid-template-columns:1fr}.snap .drop{grid-row:auto;aspect-ratio:4/3}}
 </style><section class="snap" id="snap"><h2>📷 拍照加愿望<small>上传一张照片，Claude 会认出是什么、整理好加进清单（定时处理，一般几个小时内）</small></h2><form><label class="drop"><span>点这里选照片<br>或拍一张</span><input type="file" id="snap-file" accept="image/*"></label><div class="seg" role="group" aria-label="加到哪一栏"><button type="button" data-v="想要" aria-pressed="true">想要</button><button type="button" data-v="纠结" aria-pressed="false">纠结</button></div><input type="text" id="snap-note" maxlength="500" placeholder="备注（可不填）：在哪看到的、想要哪个颜色、大概多少钱…"><div class="row"><button type="button" class="send">提交</button><span class="st" role="status"></span></div></form><ul class="snapq" aria-label="最近上传的照片"></ul></section><script>
 (() => {
-  const CFG = {"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC"}, box = document.getElementById('snap');
+  const CFG = {"url": "https://elegy.tailc8cfff.ts.net", "key": "sb_publishable_GMIrDWafyZ2-NKp_YVOd9Z_SijEusJ4"}, box = document.getElementById('snap');
   const $ = s => box.querySelector(s);
   const file = $('#snap-file'), drop = $('.drop'), note = $('#snap-note'), send = $('.send'), st = $('.st');
   let status = '想要', img = null;

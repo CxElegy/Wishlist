@@ -9,6 +9,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import sbconf  # noqa: E402
 
+OLD_KEY = "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC"   # 旧プロジェクトの publishable key
 CODE = (".py", ".js", ".yml", ".yaml", ".sh")
 
 
@@ -29,10 +30,20 @@ class SbConf(unittest.TestCase):
                 bad.append(f)
         self.assertEqual(bad, [], "旧 Supabase の ref を直書き。scripts/sbconf.py から読む: " + ", ".join(bad))
 
-    def test_old_ref_in_testground_only_when_generated(self):
-        """見本ページ（docs/testground/*.html）は生成物。作り直せば新しい接続先になる（旧 ref が残る = 作り直し忘れ）。"""
-        bad = [p.name for p in (ROOT / "docs/testground").glob("*.html") if sbconf.OLD_REF in p.read_text(encoding="utf-8", errors="ignore")]
-        self.assertEqual(bad, [], "見本ページを作り直す: " + ", ".join(bad))
+    def test_no_old_ref_in_published_or_archive(self):
+        """公開物（docs/ の html・js・json）と控え（archive/ の yaml）にも旧 ref・旧 publishable key を残さない（2026-11-11：docs/test2 の古い写し 7 枚と archive/test2 が残っていた）。
+        見本ページ・凍結ページは生成物か写し：作り直す／新しい接続先に直す。"""
+        files = subprocess.run(["git", "ls-files", "docs", "archive"], cwd=ROOT, capture_output=True, text=True, encoding="utf-8").stdout.splitlines()
+        bad, n = [], 0
+        for f in files:
+            if not f.endswith((".html", ".js", ".json", ".yaml", ".yml", ".css")):
+                continue
+            n += 1
+            s = (ROOT / f).read_text(encoding="utf-8", errors="ignore")
+            if sbconf.OLD_REF in s or OLD_KEY in s:
+                bad.append(f)
+        self.assertGreater(n, 50, "点検の対象が空")
+        self.assertEqual(bad, [], "旧 Supabase の ref／鍵が残る。新しい接続先（sbconf）に直す: " + ", ".join(bad))
 
 
 if __name__ == "__main__":
