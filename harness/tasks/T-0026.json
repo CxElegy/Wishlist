@@ -4,6 +4,7 @@
  "why": "お客さまのページの「先頭の写真が置き場に無い」（#919 合併後の ux_check --fast：test-a 1400 33 版面・390 34、test-b front 1） — 記事の写真（emblem ではない）。user_pages の imgs.json → photo_store の回で置けているか、egress の制限（storage を読まない）で置けていないかを数で分ける",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 26,
  "scope": [],
  "done_when": [

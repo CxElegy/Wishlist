@@ -4,6 +4,7 @@
  "why": "エンブレムの取り方の穴を規則で塞ぐ（EMBLEM_PLAYBOOK の型 2） — fandom の slug にハイフンを残す（Astrae Oratio）、Actions から 403 が続くホストは控えの wiki へ（あつ森の Nookipedia）、名簿の人でない項目（Player・Parents）を除く〔2026-10-25 emblem.not_character で名簿から外した：ポケモン（144）の Player・Pokémon Trainer (Super Smash Bros.)、モンハン（146）の MHD: FV: Felyne List・Monster Hunter (Marvel vs. Capcom: Infinite)。名前で拾えないもの＝ゼルダ（145）の Cadence〔コラボ作品のキャラ〕・Battle-Tested Guardian〔敵〕・Sooga・Octavo は残る：Fandom の記事の分類（Crossover・Enemies）で外す規則が要る〕、実写の役の写真は作品名・出演者名のあるものを先に（哈利波特剧集）。4 版面が目標に届く",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 186,
  "scope": [],
  "done_when": [

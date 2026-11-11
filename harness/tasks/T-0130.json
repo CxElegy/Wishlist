@@ -4,6 +4,7 @@
  "why": "欲しい物ページ（wishlist.html）を test-c〔0 個の人〕が開くと「版面 3・記事 14」の店長向けの中身になる（f2f1 2026-10-27：#530 の点検で気づいた。本人の殻 .wl-mine .empty は出ているが、ページの下に店長の欲しい物が見えていないか、お客さまの画面で確かめて、見えるなら規則で隠す）",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 130,
  "scope": [
   "docs/wishlist.html"

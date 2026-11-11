@@ -4,6 +4,7 @@
  "why": "test-a の「先頭の写真が置き場に無い版面 10 件」（YOASOBI・Mrs. GREEN APPLE・King Gnu・大谷翔平ほか）：2026-11-02 #742 のあとの本番 ux_check で ✗。photo_store の置く順／取りこぼしの規則を見る〔この段の変更とは別の根〕。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 96,
  "scope": [],
  "done_when": [],

@@ -4,6 +4,7 @@
  "why": "E15 をお客さまの版面でも点検に（#526 の続き：emb_check E15・E17 は店長の items.yaml だけ。ライブラリの boards〔店長ログインの RPC〕の emblem_who 先頭 3 人・10 人も同じ式で数え、ux_check に出す。できた条件：お客さまの版面の E15・E17 の数が点検に出る）",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 143,
  "scope": [],
  "done_when": [],

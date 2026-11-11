@@ -4,6 +4,7 @@
  "why": "空の最初の画面（0 個）の焼いた版そのものから、空の「はじめに」版面・「その他」の駅を外す（f1 2026-10-27：#554 は足した直後を画面の JS で隠した。0 個のまま開く人にも同じ黒い箱が出る＝上の段。焼く側 user_pages の blocks から FIRST_BOARD を外し、ポスターの .top.start だけを主役に）",
  "quote": "",
  "kind": "visual",
+ "complexity": "normal",
  "priority": 123,
  "scope": [],
  "done_when": [],

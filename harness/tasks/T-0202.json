@@ -4,6 +4,7 @@
  "why": "動きを減らす設定とスマホのホバーの抜けを埋める（Emil、見た目は変わらない） — 目次の `cutin` を scale(.86) から 160ms・ease-out にし reduced-motion で止める。ホバーの浮き（`.wc` `.tape` `.top .frame` `.wcard`）を `(hover:hover) and (pointer:fine)` の中へ。👍 の `btn.animate` は reduce のとき色だけ。Playwright で reducedMotion を付けて transform の動きが残らない",
  "quote": "",
  "kind": "visual",
+ "complexity": "normal",
  "priority": 202,
  "scope": [],
  "done_when": [

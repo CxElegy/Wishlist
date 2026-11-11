@@ -4,6 +4,7 @@
  "why": "点検 pkcut〔写真を主役を測らずに切っている〕が回ごとに別の人で ✗：guest 1400 で 6 枚・test-b 1 枚・test-a 1400 で 6 枚〔mini c6 の mas2 の写真、data-m はあるが data-keep なし〕。再現が安定しない〔読み込みの時刻しだい〕。mason の最後のカードの伸ばし〔exp(0.12)＝12% まで切る〕が点検の 8% と食い違うのが疑い。伸ばす上限を 8% 未満にするか、点検を同じ数に。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 94,
  "scope": [],
  "done_when": [],

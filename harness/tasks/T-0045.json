@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-04 plan2】CI の skip を 0 に保つ門 — 上の CI 変更で skip 数が出るようになった。`ブラウザなし`・`playwright がない` の skip が CI で 1 件でも出たら赤にする（tests に「CI=true なら browser 系の skipTest を失敗にする」1 か所の関数を足し、各試験はそれを呼ぶ）。顔のモデル・node が無い skip は別に数えて理由を 1 行出す。できた条件：CI の出力に「skip n（ブラウザ 0）」が出て、わざと playwright を外した PR で赤になる。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 45,
  "scope": [],
  "done_when": [

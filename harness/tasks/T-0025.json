@@ -4,6 +4,7 @@
  "why": "お客さまの版面の外の小元素の残り（#919 のあと pages_served：Pages の外から出た画像のうち commons.wikimedia.org 18 件・thumb.wikimedia.org 9 件） — Special:FilePath の x… が manifest に無い分（Commons の 429・落とせない）か、boards.config の source 側の thumb 網址かを数え、写しに入れる。test-a で外の小元素 0",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 25,
  "scope": [],
  "done_when": [

@@ -4,6 +4,7 @@
  "why": "題材の版面に記号でなく代表の画像（将棋・サッカー日本代表・宇宙・台風・美術館・広島旅行は Twemoji だけ） — 将棋の Wikidata P18（Shogi.jpg）が「使えない」で落ちた理由を調べる・代表チームはロゴが非自由なので代表選手（Wikidata の P54 の逆引き）・旅行は場所の P18（広島市）・宇宙は代表のロケット。店長の emblem_examples と同じ考えを規則で。記号の版面が写真・ロゴつきに（ux_check E9・目で）",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 178,
  "scope": [],
  "done_when": [

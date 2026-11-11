@@ -4,6 +4,7 @@
  "why": "他のページに「お客さまの版面も同じ編集で作る」型の言い切りが残っていないか scripts/render.py・docs を全文検索して数える（r3f1）。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 113,
  "scope": [
   "scripts/render.py"

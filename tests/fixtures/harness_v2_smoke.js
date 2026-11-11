@@ -16,11 +16,12 @@ const built = id => ({ status: 'built', branch: `harness/smoke-${id}`, worktree:
   choice_url: 'https://example.invalid/testground/choice-t-0003.html', question: 'どの案にしますか' })
 const TASKS = {
   happy: [
-    { id: 'T-0001', title: '見た目の段', kind: 'visual', scope: ['docs/home/style.css'], done_when: ['A1 の空き 0'] },
-    { id: 'T-0002', title: '重なる段', kind: 'fix', scope: ['./Docs/home/style.css', 'scripts/x.py'], done_when: ['試験が通る'] },
-    { id: 'T-0003', title: '案の段', kind: 'options', scope: ['docs/testground/choice-t-0003.html'], done_when: ['案が 3 つ'] },
+    { id: 'T-0001', title: '見た目の段', kind: 'visual', complexity: 'hard', scope: ['docs/home/style.css'], done_when: ['A1 の空き 0'] },
+    { id: 'T-0002', title: '重なる段', kind: 'fix', complexity: 'normal', scope: ['./Docs/home/style.css', 'scripts/x.py'], done_when: ['試験が通る'] },
+    { id: 'T-0003', title: '案の段', kind: 'options', complexity: 'normal', scope: ['docs/testground/choice-t-0003.html'], done_when: ['案が 3 つ'] },
+    { id: 'T-0004', title: '毎回の点検', kind: 'kpi', complexity: 'light', scope: ['harness/board_kpi.py'], done_when: ['数字が出る'] },
   ],
-  stuck: [{ id: 'T-0009', title: '直らない段', kind: 'fix', scope: ['scripts/y.py'], done_when: ['試験が通る'] }],
+  stuck: [{ id: 'T-0009', title: '直らない段', kind: 'fix', complexity: 'light', scope: ['scripts/y.py'], done_when: ['試験が通る'] }],
 }
 async function agent(prompt, opts) {
   const label = opts.label, [role, id, n] = label.split(':')

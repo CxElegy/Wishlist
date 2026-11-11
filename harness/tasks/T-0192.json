@@ -4,6 +4,7 @@
  "why": "溜まったら編集が本番で回っているか（#310 のあと半日） — state/log/edit.json のバッチの時刻が 9:00/18:00 以外にも出ている・整理待ちが 2 時間＋編集 1 回分（約 3 時間）を超えて残る版面が 0・1 日のトークンが上限 100 万の内。起こし過ぎ（停滞の起こし直しが続く）なら RIPE_COUNT・RIPE_HOURS を見直す",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 192,
  "scope": [
   "state/log/edit.json"

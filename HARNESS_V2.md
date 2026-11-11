@@ -18,18 +18,21 @@
 
 | 役 | 既定のモデル | すること | しないこと |
 |---|---|---|---|
-| 主の会話（brain） | Fable | 台本を起こす・`summary.json` と `alerts.jsonl` を読む・店長と話す・止まった段を決める | サイトのコードを直す |
-| 受付 intake | fable | 店長の言葉（AgentBoard の書き込み・`D:/Claude/hf/inbox/`）→ 審美基準の差分＋段＋返事 | 作る |
-| 計画 plan | fable | 範囲のファイルが重ならない段を選び、約束（範囲・できたと言える条件）を凍らせる | 作る |
+| 主の会話（brain） | — | 台本を起こす・`summary.json` と `alerts.jsonl` を読む・店長と話す・止まった段を決める | サイトのコードを直す |
+| 受付 intake | sonnet | 店長の言葉（AgentBoard の書き込み・`D:/Claude/hf/inbox/`）→ 審美基準の差分＋段＋返事 | 作る |
+| 計画 plan | **fable**（Fable を使うのはここだけ） | 範囲のファイルが重ならない段を選び、約束（範囲・できたと言える条件・重さ complexity）を凍らせる | 作る |
 | 下調べ scout | haiku（`search`） | 触る所の地図（パス:行） | 書く |
-| 作る build／直す fix／KPI | sonnet | 段ごとの作業ツリーで手元のコミットまで | push・合併 |
+| 作る build／直す fix | 段の重さで：light＝haiku・normal＝sonnet・hard＝opus | 段ごとの作業ツリーで手元のコミットまで | push・合併 |
+| 新規ユーザーの点検 kpi | haiku | 測る（board_kpi.py）・目標を越えた所を段にする | 直す |
 | 機能の審査 evalF | sonnet | 条件を 1 つずつ自分で流して確かめる・的を絞った試験 | 直す |
-| 見た目の審査 evalV | fable | 絵を撮って審美基準の番号で採点（kind=visual・options だけ） | 直す |
-| 見立て diag | fable | 直らない理由と次の手順 | コードを書く |
+| 見た目の審査 evalV | opus | 絵を撮って審美基準の番号で採点（kind=visual・options だけ） | 直す |
+| 見立て diag | opus | 直らない理由と次の手順 | コードを書く |
 | 合併 ship | sonnet | rebase → `ci_local.sh`（鍵）→ push → PR → **全部の検査が通ってから** squash 合併 | コードを直す・検査待ちのまま合併 |
 | 確かめ verify／知らせ／記録 learn | haiku | 本番に出たか・Discord・列と要約の更新 | 直す |
 
-`args.models = {build: 'fable', …}` で役ごとに、`args.model = 'fable'` で全部を 1 つのモデルにできる。
+モデルの決まり（2026-11-12 店長：トークンの節約）：**Fable は計画だけ**。ほかは仕事の重さで決める — Haiku＝探す・数える・記録を読む・決まった手順／Sonnet＝ふつうの作る・直す・試験・案のページ・受付・合併／Opus＝難しい所だけ（見立て・見た目の最後の審査・重さが hard の段）。
+段の重さ（`complexity`：light｜normal｜hard）は段のファイルの約束の 1 つで、計画の係が `q.py contract --complexity` で付ける（迷ったら軽い方・hard は 1 周に 1 つまで）。
+`args.models = {hard: 'sonnet', evalV: 'sonnet', …}` で役ごと・重さごとに変えられる。`args.model` は「全部の役を 1 つに」する試し用で、**fable を入れても使われない**（台本が断って既定のモデルで回す）。
 
 ## 1 周の流れ（`harness-v2.js`）
 
@@ -52,7 +55,7 @@ Learn    q.py done／park・結果 1 行・INDEX・summary.json・合併した�
 
 | どこ | 何 |
 |---|---|
-| `harness/tasks/T-NNNN.json` | 段（約束：title・why・quote・kind・scope・done_when。凍ったら変えない）。`INDEX.md` は `q.py index` が作る |
+| `harness/tasks/T-NNNN.json` | 段（約束：title・why・quote・kind・complexity・scope・done_when。凍ったら変えない）。`INDEX.md` は `q.py index` が作る |
 | `harness/q.py` | 列：`next`・`claim`・`release`・`contract`・`done`・`park`・`reopen`・`add`・`index`・`show`（push しない） |
 | `harness/hb.py` | 心拍 `beat`／`end`・`stale --minutes N`・`summary`・`result`・`choice`・`inbox`／`reply`（AgentBoard） |
 | `harness/lock.py` | 鍵（`ci`・`browser`）：空くまで待って命令を流す |
@@ -68,14 +71,14 @@ Workflow ツールで：
 
 ```
 scriptPath: D:/Claude/Wishlist/.claude/workflows/harness-v2.js
-args: { "run": "1112a", "model": "fable", "max": 4, "cycles": 1 }
+args: { "run": "1112a", "max": 4, "cycles": 1 }
 ```
 
 | args | 既定 | 意味 |
 |---|---|---|
 | `run` | `v2` | 起動ごとの名前（枝・作業ツリーの名前に入る）。**毎回変える**（日付＋a,b,c…） |
-| `model` | なし | 全部の役をこのモデルに（今週は `fable`） |
-| `models` | 上の表 | 役ごと：`scout build evalF evalV plan intake diag ship verify learn` |
+| `models` | 上の表 | 役ごと：`plan scout verify learn kpi intake evalF ship evalV diag`、重さごと：`light normal hard`（`build` を言えば重さに関係なくそれ） |
+| `model` | なし | 試し用：全部の役をこのモデルに。`fable` は受け付けない（ふだんは使わない） |
 | `max` / `width` / `cycles` | 4 / 2 / 1 | 1 周の段の数・同時に作る数（2 まで）・何周するか |
 | `intake` `scout` `kpi`（`newuser`） `options` `ship` | 全部 true | false で止める。`ship: false` は合併しない試運転（枝は手元に残り、段は止めた扱い） |
 | `repo` `scratch` `state` `board` `inbox` `python` `site` | PC の決まった場所 | 変えるのは試験のときだけ |

@@ -4,6 +4,7 @@
  "why": "【同じ考え】本番の画面の点検が「描いたあとの DOM」で落ち先に替わった写真を数えるので、データではなく表示の根の ✗ は、起こした根（落ち先の網址・外部画像の網址）を ✗ の文に添える（lead_outside の出力に src と data-fb の先頭を足す）。",
  "quote": "",
  "kind": "visual",
+ "complexity": "normal",
  "priority": 161,
  "scope": [],
  "done_when": [],

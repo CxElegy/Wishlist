@@ -4,6 +4,7 @@
  "why": "管理ページから他人の設定を直す（親：全ユーザー管理。今は読むだけ）：篇幅・分け方（nav_scheme）・並び（pos）・画面の言語を、店長が account を選んで直す is_admin の RPC。消す操作は聞く。点検：直したあとに本人の画面の値が変わる。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 115,
  "scope": [],
  "done_when": [],

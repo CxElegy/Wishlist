@@ -4,6 +4,7 @@
  "why": "【点検】ライブラリ全版面（見えない版面を含む 64 版面・774 枚）の × を数える：SUPABASE_SERVICE_KEY を持つ Actions の 1 手として `emblem_pick_rules.py --library`（鍵があれば全版面を読む）を足し、数だけをログに出す（版面の名前は出さない）。いまは版面 147・148 など 約 100 枚が未計測（r1f2 2026-10-31）",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 147,
  "scope": [
   "harness/emblem_pick_rules.py"

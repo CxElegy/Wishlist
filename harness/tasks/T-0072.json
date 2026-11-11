@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-04 plan1】休止モードの「入れ終わった」証拠を 1 つの場所に — 休止の部品は PR が #796〜#855 に分かれ、方針・点検・架構図が散っている。docs/rules/free-tier.md に「いま出来ていること表」（入る側 abort／402・出る側 recover・放置タブ・outbox 400 行・Pages 写真）を 1 枚、各行に点検の名前（harness/…・tests/…）を書き、tests が表の点検名のファイルが実在することを数える。11/5 の本番 402 を見た人が 1 枚で「何が想定どおりか」を言えるようにする。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 72,
  "scope": [
   "docs/rules/free-tier.md"

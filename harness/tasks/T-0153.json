@@ -4,6 +4,7 @@
  "why": "ux_check に写真のぼやけ（E13：E12 は形の傷）— emb_check で cutout の写真（出どころが剧照・動画の場面・Commons の写真）だけ emblem.face_sharp と同じ式で鋭さ < 1.0 を ✗（今は取るときと drop_broken だけ）",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 153,
  "scope": [],
  "done_when": [],

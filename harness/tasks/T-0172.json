@@ -4,6 +4,7 @@
  "why": "店長の版面の同じ画像（#352 のあとの ux_check、ログインなし 1400/390 の E8）：Vaundy が vaundy-vaundy.webp を 2 回・vaundy-vaundy-2.webp＝vaundy-vaundy-1.webp — 本人の版面で同じ写真が別の名前で入る。emblem_fill の重複の規則（画素の指紋）を本人（person）の版面の書き込みにも。ログインなしの E8 0",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 172,
  "scope": [],
  "done_when": [

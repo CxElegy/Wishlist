@@ -4,6 +4,7 @@
  "why": "公開の場所にお客さまの中身を出さない点検（E「本人と店長だけが見る」） — Actions のログ・コミット文・公開の HTML（docs/）・Discord の文に、ライブラリの版面の名前（店長と同じ名前を除く）・お客さまの番号が出ていないかを CI と ux_check で見る。できた条件：わざと 1 つ混ぜたテストで ✗ になる",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 170,
  "scope": [],
  "done_when": [

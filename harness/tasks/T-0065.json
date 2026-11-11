@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-03 plan1b】作業用 worktree の自動掃除 harness/wt_gc.py — いま git worktree が 160 個（前の係はディスク満杯で止まった）。未コミット無し・push 済み（origin に同じ提交がある）・自分の係でないものだけ強制なしで消す。既定は一覧だけ、--apply で消す。HARNESS.md の係の起動手順に「df -h / が 3GB を切ったら wt_gc.py --apply」を 1 行。できた条件：tests（一時リポジトリで未コミット有りは消えない・push 済みだけ消える）と、本番の手元で 160→30 個以下・空きが増えたことを PROGRESS に 1 行。pkill は使わない。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 65,
  "scope": [],
  "done_when": [

@@ -4,6 +4,7 @@
  "why": "BTS・iPhone のエンブレムが 0 枚（#332 の作り直しのあと、test-a E1 2） — iPhone は #334 の P18 が 24 時間後の回（2026-10-25 20:00 UTC より後）で入るか。BTS は「顔なし 7・別人 7・何人も 6」で全部落ちる：グループの版面でグループの写真（何人も写っている）を落とす規則が強すぎる → group はグループ全員の写真を 1 枚認める・メンバーの名前（Wikidata P527）を emblem_who に規則で（店長の A2O LITE と同じ）。test-a の E1 0",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 175,
  "scope": [],
  "done_when": [

@@ -29,10 +29,15 @@ const WIDTH = Math.max(1, Math.min(2, A.width || 2))     // 同時に作る段�
 const CYCLES = A.cycles || 1
 const MAX_FIX = 2
 const MAX_DIAG = 1
-// 役ごとのモデル。args.model を言えば全部その 1 つ（2026-11-12 店長：今週は Fable を使う → args.model: 'fable'）
-const M = Object.assign({ scout: 'haiku', build: 'sonnet', evalF: 'sonnet', evalV: 'fable', plan: 'fable', intake: 'fable', diag: 'fable',
-  ship: 'sonnet', verify: 'haiku', learn: 'haiku' }, A.models || {})
-if (A.model) for (const k of Object.keys(M)) M[k] = A.model
+// 役ごとのモデル（2026-11-12 店長：トークンの節約）。Fable は計画（plan）だけ。ほかは仕事の重さで：
+//   Haiku＝探す・数える・記録を読む・決まった手順（scout・verify・learn・kpi）／Sonnet＝ふつうの作る・直す・試験・案のページ・受付・合併／
+//   Opus＝難しい所だけ（見立て diag・見た目の最後の審査 evalV・complexity が hard の段を作る／直す）
+// 作る・直す係は段の complexity（light｜normal｜hard。計画の係が付ける）で haiku｜sonnet｜opus。args.models で役ごと・重さごとに変えられる。
+const M = Object.assign({ plan: 'fable', scout: 'haiku', verify: 'haiku', learn: 'haiku', kpi: 'haiku', intake: 'sonnet', evalF: 'sonnet', ship: 'sonnet',
+  evalV: 'opus', diag: 'opus', light: 'haiku', normal: 'sonnet', hard: 'opus' }, A.models || {})
+// args.model＝全部の役を 1 つに（試すときだけ）。fable は受け付けない：「Fable は計画だけ」を 1 つの引数で破らせない
+if (A.model && A.model !== 'fable') for (const k of Object.keys(M)) M[k] = A.model
+const buildModel = t => M.build || M[t.complexity] || M.normal   // args.models.build を言えば重さに関係なくそれ
 const ON = { intake: A.intake !== false, scout: A.scout !== false, kpi: A.kpi !== false && A.newuser !== false, options: A.options !== false, ship: A.ship !== false }
 const BUDGET = { intake: 20, plan: 15, scout: 5, build: 45, kpi: 45, evalF: 30, evalV: 20, fix: 30, diag: 15, ship: 40, verify: 12, learn: 8, announce: 5 }
 
@@ -59,7 +64,7 @@ const head = (role, id, minutes) => `リポジトリ ${REPO}（CxElegy/Wishlist�
 ${RULES}`
 const baseWt = `見るだけの作業ツリー（main の最新）：\`git -C ${REPO} fetch -q origin main; [ -d ${SP}/wt/base ] && git -C ${SP}/wt/base checkout -q --detach origin/main || git -C ${REPO} worktree add -f --detach ${SP}/wt/base origin/main\`。命令は毎回 \`cd ${SP}/wt/base && …\` で。ここには書かない。`
 const ownWt = id => `自分の作業ツリー：\`git -C ${REPO} fetch -q origin main && git -C ${REPO} worktree add -f ${wtOf(id)} -B ${branchOf(id)} origin/main\`（もうあればそのまま使う）。命令は毎回 \`cd ${wtOf(id)} && …\` で。`
-const contract = t => `段 ${t.id}［${t.kind}］${t.title}
+const contract = t => `段 ${t.id}［${t.kind}・${t.complexity || 'normal'}］${t.title}
 範囲のファイル：${(t.scope || []).join(', ') || '（未定）'}
 できたと言える条件：
 ${(t.done_when || []).map((d, i) => `  ${i + 1}. ${d}`).join('\n') || '  （未定）'}
@@ -69,7 +74,7 @@ ${(t.done_when || []).map((d, i) => `  ${i + 1}. ${d}`).join('\n') || '  （未�
 const S = (properties, required) => ({ type: 'object', properties, required })
 const str = { type: 'string' }, strs = { type: 'array', items: { type: 'string' } }
 const INTAKE = S({ status: { type: 'string', enum: ['none', 'done', 'failed'] }, branch: str, worktree: str, tasks: strs, replies: { type: 'integer' }, for_brain: strs, summary: str }, ['status', 'summary'])
-const PLAN = S({ tasks: { type: 'array', items: S({ id: str, title: str, kind: { type: 'string', enum: ['fix', 'visual', 'options', 'kpi'] }, scope: strs, done_when: strs }, ['id', 'title', 'kind', 'scope', 'done_when']) }, note: str }, ['tasks'])
+const PLAN = S({ tasks: { type: 'array', items: S({ id: str, title: str, kind: { type: 'string', enum: ['fix', 'visual', 'options', 'kpi'] }, complexity: { type: 'string', enum: ['light', 'normal', 'hard'] }, scope: strs, done_when: strs }, ['id', 'title', 'kind', 'complexity', 'scope', 'done_when']) }, note: str }, ['tasks'])
 const SCOUT = S({ map: str }, ['map'])
 const BUILT = S({ status: { type: 'string', enum: ['built', 'asked', 'failed', 'none'] }, branch: str, worktree: str, commit: str, summary: str, question: str,
   screens: { type: 'array', items: S({ page: str, sel: str }, ['page']) }, prod_check: S({ url: str, contains: str }, ['url', 'contains']), choice_url: str }, ['status', 'summary'])
@@ -132,9 +137,9 @@ ${baseWt}
 計画の係（作らない）。次に進める段を選び、約束を決めて凍らせる。
 1. \`${run} harness/q.py next --n ${n + 2} --json\`（優先の順・範囲のファイルが重ならないもの・ほかの係が取っていないもの）。0 個なら tasks=[] で返す。${skip.length ? `この回でもう扱った段は選ばない：${skip.join(', ')}。` : ''}
 2. 1 つずつ段のファイルを読み（\`q.py show <id>\`）、もう済んでいないかをコード・git log で 5 分以内に確かめる（「無い」と決めつける前に探す）。済んでいれば \`${run} harness/q.py done <id> --pr "もう入っている：<コミット>"\` して次の段へ。
-3. frozen=false の段は約束を決める：kind（fix＝機能・点検／visual＝画面が変わる／options＝店長に案を選んでもらう／kpi はそのまま）・範囲（触るファイル。実在するパスで 1〜8 個）・できたと言える条件（数えられる確かめ方を 1〜5 個。画面の段は「どのページのどのセレクタを 1333×677・390×844 で見て、審美基準のどの番号を満たす」まで）。\`${run} harness/q.py contract <id> --kind … --scope a,b --done-when "…" --done-when "…"\`。DB の変更・新しい設計の決めごとが先に要る段は \`${run} harness/q.py park <id> --waiting --why "[?] …"\`。
+3. frozen=false の段は約束を決める：kind（fix＝機能・点検／visual＝画面が変わる／options＝店長に案を選んでもらう／kpi はそのまま）・範囲（触るファイル。実在するパスで 1〜8 個）・できたと言える条件（数えられる確かめ方を 1〜5 個。画面の段は「どのページのどのセレクタを 1333×677・390×844 で見て、審美基準のどの番号を満たす」まで）。\`${run} harness/q.py contract <id> --kind … --complexity light|normal|hard --scope a,b --done-when "…" --done-when "…"\`。complexity は作る係のモデルを決める（節約のため、迷ったら軽い方）：light＝決まった手順・1 ファイルの小さい直し・文や数字の書き換え（Haiku）／normal＝ふつうの機能・試験・画面の直し・案のページ（Sonnet）／hard＝規則そのものの作り直し・何度も直らなかった所・3 ファイル以上にまたがる設計（Opus。1 周に 1 つまで）。DB の変更・新しい設計の決めごとが先に要る段は \`${run} harness/q.py park <id> --waiting --why "[?] …"\`。
 4. 範囲のファイルが互いに重ならない段を ${n} 個まで選び、\`${run} harness/q.py claim <id> --owner v2:${RUN}\`（取れなかった段は外す）。
-返す：tasks＝選んだ段ごとに id・title・kind・scope・done_when（q.py の出力のまま）。note に外した理由を 1〜2 行。`
+返す：tasks＝選んだ段ごとに id・title・kind・complexity・scope・done_when（q.py の出力のまま）。note に外した理由を 1〜2 行。`
 
 const scoutPrompt = t => `ハーネス v2 の下調べ（読むだけ・5 分・道具 25 回まで）。リポジトリは ${REPO}（origin/main を見る。書かない）。
 ${contract(t)}
@@ -267,8 +272,8 @@ async function work(t) {
     scout = s && s.map
   }
   let r = t.kind === 'kpi'
-    ? await agent(kpiPrompt(t), { label: `kpi:${t.id}`, phase: 'Build', model: M.build, schema: BUILT })
-    : await agent(buildPrompt(t, scout), { label: `build:${t.id}`, phase: 'Build', model: M.build, schema: BUILT })
+    ? await agent(kpiPrompt(t), { label: `kpi:${t.id}`, phase: 'Build', model: M.kpi, schema: BUILT })
+    : await agent(buildPrompt(t, scout), { label: `build:${t.id}`, phase: 'Build', model: buildModel(t), schema: BUILT })
   let fixes = 0, diags = 0, last = null, k = 0
   for (;;) {
     if (!r) return { t, state: 'parked', why: '係から返事がない（止まった・飛ばされた）' }
@@ -289,7 +294,7 @@ async function work(t) {
       plan = d.plan
     } else fixes++
     const prev = r
-    r = await agent(fixPrompt(t, prev, v, plan, fixes + diags), { label: `fix:${t.id}:${fixes + diags}`, phase: 'Fix', model: M.build, schema: BUILT })
+    r = await agent(fixPrompt(t, prev, v, plan, fixes + diags), { label: `fix:${t.id}:${fixes + diags}`, phase: 'Fix', model: buildModel(t), schema: BUILT })
     if (r && r.status === 'built') r = Object.assign({}, prev, r)   // 枝・作業ツリー・見る所は前の係のものを引き継ぐ
   }
 }
@@ -297,6 +302,7 @@ async function work(t) {
 // ---------- 回す ----------
 const report = []
 const handled = []
+if (A.model === 'fable') log('args.model=fable は使わない（Fable は計画だけ）：既定のモデルで回す')
 for (let c = 1; c <= CYCLES; c++) {
   if (typeof budget !== 'undefined' && budget && budget.total && budget.remaining() < 200000) { log('トークンの目安の残りが少ない：ここで終わる'); break }
   const cyc = { cycle: c, tasks: [] }

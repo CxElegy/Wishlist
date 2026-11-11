@@ -4,6 +4,7 @@
  "why": "1 日通しを progress の回に 1 日 1 回つなぐ（--journey、✗ があれば Discord へ） — できたと言える条件：progress.yml から --journey が走り、結果の 1 行が通知に出る",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 222,
  "scope": [
   ".github/workflows/progress.yml"

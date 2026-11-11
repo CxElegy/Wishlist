@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-04 plan1d】定時の workflow が Supabase を呼ぶ回数の 1 日の見積もり表 — 今は呼び出し元を 1 つずつ減らしているが、全体が何回／日かの表が無い（BACKLOG の数字は query_logs が使えるたびに人が測った点）。.github/workflows の cron（毎時 41・毎時 17・15 分おきなど）× scripts の supabase 呼び出し（digest.supabase・userfeed.db・sbstate.sb_open）を静的に数える harness/sb_budget.py を作り、workflow ごとの「1 回あたり×回数／日」を docs/rules/free-tier.md に表で貼る。tests は表より増えたら赤（意図した増加は表を直す）。できた条件：表の合計が出て、上位 3 つの workflow の名前と回数が PROGRESS にあり、わざと 1 呼び出しを足した PR が赤になる。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 41,
  "scope": [
   "docs/rules/free-tier.md"

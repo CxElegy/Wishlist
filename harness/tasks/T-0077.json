@@ -4,6 +4,7 @@
  "why": "（次）guest の heat.html「札が字に重なる 33 個（390 は 62）」：写しが空でも出る＝写真と無関係の実害の疑い。原因を規則の言葉で切り分ける（話題度の札 .burst／.tg の置き場）。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 77,
  "scope": [
   "docs/heat.html"

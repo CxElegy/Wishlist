@@ -4,6 +4,7 @@
  "why": "2 つ目の仕組みを外す — userfeed.py・user_boards の読み書き・JS で描いた版面・左右カード",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 217,
  "scope": [
   "scripts/userfeed.py"

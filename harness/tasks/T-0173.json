@@ -4,6 +4,7 @@
  "why": "種族・物の名前を名簿から外す（スプラ 3 148：Inklings〔複数形の種族〕・Zapfish・Little Buddy、あつ森：Somebody・Xsq） — 名前の形（NOT_CHAR）では拾えない → Wiki のページの分類（prop=categories）で「Species・Items・Objects・Enemies」などに入るページ、ページの冒頭（infobox が Species/Item）で外す規則。店長とライブラリの両方。スプラ 3・あつ森の名簿に 0",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 173,
  "scope": [],
  "done_when": [

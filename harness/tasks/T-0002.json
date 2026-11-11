@@ -4,6 +4,7 @@
  "why": "【依頼・新規ユーザー 2026-11-11】**AI 編集：一度も編集していない新しい lib 版面は 4 時間待たずに起こす（gate.py の lib_due・LIB_WAKE_HOURS）** — 経路 C の edited を 480 分以内に。店長の AI 編集の回（slot）と重ならない・1 日の回数の上限は今のまま。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 2,
  "scope": [
   "scripts/gate.py"

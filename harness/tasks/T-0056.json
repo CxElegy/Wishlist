@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-04 plan1】操作のしやすさの点検（キーボード・コントラスト・動きを減らす設定）— a11y・コントラストの語が BACKLOG に 0 件。home・settings・入口で ①Tab だけで 👍👎・目次・ログインに届く ②札・小さい字の文字色と背景のコントラストが 4.5:1 未満の数 ③prefers-reduced-motion で動きが止まる、を 1 回の点検（本番 1 回・timeout 付き、または手元の描画）で数える。できた条件：3 つの数が PROGRESS に出て、多いものの規則（トークンの色・フォーカス輪）を直した PR がある。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 56,
  "scope": [],
  "done_when": [],

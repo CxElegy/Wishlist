@@ -4,6 +4,7 @@
  "why": "402 通し点検の render が main でも赤（2026-11-05 15:5x JST f1f1 が origin/main で `fake402_check.py --only render` を回して確かめた：reports/2026-11-05.json が 5852 縮む。#939・#940・#941・#942 で同じ赤） — 縮んだ中身は「整理待ち」（pending）：A2O LITE 3→0・GTA 6 8→0・漫威电影 6→0・三星手机 8→3 など。402 のときに整理待ちの元（edit.json の _covered か inbox の数）が変わる道を探し、402 でも同じ pending を出す。できた条件：main で fake402 の render の縮み 0。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 23,
  "scope": [
   "harness/fake402_check.py",

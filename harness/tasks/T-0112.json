@@ -4,6 +4,7 @@
  "why": "【依頼】（注記済・お客さま専用の編集待ち：https://github.com/CxElegy/Wishlist/pull/634 ・訂正 2026-10-31 r3f1：実行ログの tokens は店長の inbox の分だけで、お客さまの版面はまだ編集されない〔board_stories に書く所がない〕。画面に「店長の分だけ・全アカウント合計は未対応」と明記。残り：「ライブラリの版面ごとに記事を集める」「AI 編集の結果を版面ごとにライブラリへ書く」〔296・297〕ができたら版面ごとに token を残して足す。editdiff・欲しい物と写真・篇幅・言語も同じ未対応））管理ページ④：AI 編集のトークンを全アカウント合計に（親：同上。今は店長の inbox だけ・ADMIN_WHO_NO の tokens）：版面ごとの編集は全員共通なので、ライブラリ側の記録（board の edit_state）に token を残してから合計。点検：ux_check に合計 ≥ 店長の分。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 112,
  "scope": [],
  "done_when": [],

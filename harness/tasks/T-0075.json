@@ -4,6 +4,7 @@
  "why": "（次）係の手元の写しを埋める：photo_cache.yml の cache を係の環境が読める形にする（今は actions/cache と係の ~/.cache が別で、係の ux_check は常に「測れず」＝写真の形の点検が回らない）。写しが有る回で ✗ が出ないか本番で確かめる。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 75,
  "scope": [
   ".github/workflows/photo_cache.yml"

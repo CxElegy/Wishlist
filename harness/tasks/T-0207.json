@@ -4,6 +4,7 @@
  "why": "押した感触を全部のボタンにそろえる（Emil、押したときだけ変わる・見本を先に） — 硬い影のボタン全部に P5 の沈み（translate(2px,2px)＋影 1px、120ms。今は `.shuffle` と `.mastwish` だけ）。👍 の演出は 2 回目以降だけ 400ms 以下の短い版。testground に見本 → ユーザーに見せる",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 207,
  "scope": [],
  "done_when": [

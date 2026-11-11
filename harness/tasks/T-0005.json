@@ -4,6 +4,7 @@
  "why": "【依頼・新規ユーザー 2026-11-11】**gate.py fire が push より前に走る**（background.yml：fire が :154、commit/push が :158-181）— AI 編集が古い inbox/lib/queue.json を読むことがないか確かめ、push のあとに fire する。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 5,
  "scope": [
   "scripts/gate.py",

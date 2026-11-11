@@ -4,6 +4,7 @@
  "why": "D2 見出し 16 字と★印（D2） — 棚・目次の見出しは 16 字まで（AI 編集の規則・EDITING.md）。AI が書き直した見出しに小さな★、押すと元の題",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 210,
  "scope": [],
  "done_when": [

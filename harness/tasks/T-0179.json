@@ -4,6 +4,7 @@
  "why": "お客さまの版面の Commons の網址をそのまま出さない（ux_check E2：F1 のロゴが Special:FilePath で HTTP 429）〔2026-10-25 #350 のあとの ux_check：test-a 1400 で 大相撲 も E2「画像の要素が消えた」。同じ原因か確かめる〕 — stash は emblems/*.webp だけ上げ、Commons のロゴ（Special:FilePath?width=500）は網址のまま → 見る人が多いと Wikimedia が 429 で断る。ロゴも公開の箱へ上げる（店長は docs/emblems に置いている）。test-a の E2 0。**店長のページでも起きる**（2026-10-25 の ux_check、ログインなし 1400 で E1：日本顶级网球赛事の Special:FilePath の画像〔Ariake tennis…〕がランダムに選ばれて出ない）→ 店長の版面の Special:FilePath も docs/emblems に置く規則に（#336 のあとの ux_check では滑雪 Skier-carving-a-turn.jpg?width=500 が E2 429）。ログインなしの E1・E2 0",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 179,
  "scope": [],
  "done_when": [

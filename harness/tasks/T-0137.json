@@ -4,6 +4,7 @@
  "why": "顔の測り方の数を 1 つの数字にそろえる（報告 364・BACKLOG 389・実測：店長 items.yaml 387 枚中 body 110・切り抜き 258〔face 255・顔なし 3 = MMORPG 新作〕）：管理ページの小元素の欄に「測れた・顔なし・全身（別の物差し）・未測定」の 4 つの数を版面ごとに出し、報告はその数から（emblem_face.audit に body の数を足す）",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 137,
  "scope": [],
  "done_when": [],

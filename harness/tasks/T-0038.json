@@ -4,6 +4,7 @@
  "why": "docs/home/index.html の大きさに上限を付ける（plan1 2026-11-05）：測った事実＝2,783,230 バイト（gzip 517,299）・img 3,370・script 172 KB・style 124 KB。2026-10-30 は 1.9 MB（gzip 362 KB）だったので 6 日で約 4 割増え、スマホ（390）の最初の画面が重くなる向き。規則＝版面の数や記事の数に比例して HTML が伸びない上限を render に置く（画面外の記事は遅読み・件数の上限）。できた条件＝tests に「index.html は 3 MB 未満・gzip 600 KB 未満・img 4,000 未満」の assert・超えたら何が伸びたか内訳（img・script・style）が出る。plan2c のバイト予算（受け取る合計）の入口の側。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 38,
  "scope": [
   "docs/home/index.html",

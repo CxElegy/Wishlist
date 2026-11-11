@@ -4,6 +4,7 @@
  "why": "記事と AI 編集の結果を版面ごとにライブラリへ書く — board_stories。店長のページはそこから作っても今と同じ",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 214,
  "scope": [],
  "done_when": [

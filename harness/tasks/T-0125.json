@@ -4,6 +4,7 @@
  "why": "足した直後に本人のページをすぐ焼き直す（f1 2026-10-27：#551 は「集めています」の知らせだけ。my_keywords_set のあと user_pages を 1 人分だけ起こせば、記事の集まりを待つ以外の遅れが消える。Actions を起こす道〔workflow_dispatch の入力で account〕が要る：聞く前に設計書の library.md を見る）",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 125,
  "scope": [],
  "done_when": [],

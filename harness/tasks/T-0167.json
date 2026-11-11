@@ -4,6 +4,7 @@
  "why": "店長が任意のお客さまのページを「その人の目で」見る（E「店長は全部を見渡す」） — 管理ページのお客さまの一覧（名前・メールは出さず番号と版面数）から、そのお客さまのページを見るだけで開く（Storage の pages/<account> は is_admin で読める）。戻るボタンで管理ページへ。できた条件：店長で test-a・test-b のページを開いて戻れる",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 167,
  "scope": [],
  "done_when": [

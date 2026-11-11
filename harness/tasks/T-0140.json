@@ -4,6 +4,7 @@
  "why": "顔が測れなかった小元素（BLEACH の仮面・怪物・後ろ向き 15 枚など）を管理ページの一覧で「顔なし」と数え、顔のある別の写真に替える候補にする",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 140,
  "scope": [],
  "done_when": [],

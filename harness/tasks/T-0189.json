@@ -4,6 +4,7 @@
  "why": "スマホでエンブレムがはみ出さない（390px で 5 枚、绝区零・dota2） — CSS の幅の上限だけで（武器の幅で 1〜11px はみ出す）",
  "quote": "",
  "kind": "visual",
+ "complexity": "normal",
  "priority": 189,
  "scope": [],
  "done_when": [

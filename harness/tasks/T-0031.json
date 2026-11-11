@@ -4,6 +4,7 @@
  "why": "Actions の Supabase 読みを「工程をまたいで」減らす（plan2 2026-11-05）：測った事実＝Python-urllib の nav_schemes GET 578・boards GET 678／24h（毎時 12〜59 件で 1 日中ほぼ途切れない）。sbstate.memo は同じ process の中だけなので、workflow ごと・スクリプトごとに読み直している。f2f2 の「sbread の 10 分の写し」が本番に入った後の 24h で数え直し、残るなら nav_schemes・sizes・edit_control_get は state/ の写し（時刻つき）を 10 分以内なら先に使う。できた条件＝24h の nav_schemes GET が 100 未満・boards GET が 200 未満（query_logs で数える）。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 31,
  "scope": [],
  "done_when": [],

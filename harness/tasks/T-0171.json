@@ -4,6 +4,7 @@
  "why": "小元素の健康を毎日ひとめで（E「エンブレムはサイトの売り」） — 管理ページに全版面（店長＋ライブラリ、店長のログインで）× E1〜E11 の表を悪い順に。ux_check の結果（emb_check）を state に残して読む。できた条件：管理ページで悪い版面が上に並び、押すと小元素の欄へ",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 171,
  "scope": [],
  "done_when": [

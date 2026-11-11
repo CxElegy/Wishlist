@@ -4,6 +4,7 @@
  "why": "お客さまごとの上限・AI のモデルを管理ページで変える（E、library.md「店長の管理」） — app_users.board_limit・model を店長だけが書く RPC と、管理ページの一覧の欄。できた条件：test-b の上限を変えると、お客さまの設定ページの「あと N 個」が変わる",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 168,
  "scope": [],
  "done_when": [

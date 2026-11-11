@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-06 plan1】402 が外れた日の「再測定 1 本」— 左写真カードの残り（上の【続き】①④と .pk.sb）・ux_check の test-a/b/c × 1400/390・scroll_measure の本番の数字・予定の出方を、外れた最初の日に 1 回でまとめて測る（Supabase の枠が戻ったら負荷を足す測り方を先に決める：ログイン 1 回ずつ・timeout 付き・各 1 回）。できた条件：test-a〜c の sideGap 0（出たら sideGap に .pk.sb を足す）・scroll_measure の前後表が harness/audits に 1 枚・日付のある記事がある版面で .agenda が出ている画面の確認・PROGRESS に 1 行。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 11,
  "scope": [],
  "done_when": [],

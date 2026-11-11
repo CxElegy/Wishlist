@@ -4,6 +4,7 @@
  "why": "写真の枠の「空いた所」を壁・版面のほかの画像の場所にも数える（r1f1 hr35 続き）：gap は section.sec の card・wc・tape・pk だけ。欲しい物（wishlist.html）・似たジャンル・ギャラリー・お客さまのライブラリの版面の写真枠にも同じ数え方を足す。",
  "quote": "",
  "kind": "visual",
+ "complexity": "normal",
  "priority": 109,
  "scope": [
   "docs/wishlist.html"

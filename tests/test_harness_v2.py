@@ -113,9 +113,13 @@ class Queue(Base):
         a = self.add("A", done_when=[])
         with self.assertRaises(ValueError):
             q.set_contract(a, root=self.root, state=self.state)                  # 確かめ方の無い約束は凍らせない
-        q.set_contract(a, "visual", ["docs/home/style.css"], ["A1 の空き 0"], self.root, self.state)
+        self.assertEqual(self.load()[a]["complexity"], "normal")
+        with self.assertRaises(ValueError):
+            q.set_contract(a, "visual", ["x.css"], ["条件"], self.root, self.state, complexity="huge")
+        q.set_contract(a, "visual", ["docs/home/style.css"], ["A1 の空き 0"], self.root, self.state, complexity="hard")
         t = self.load()[a]
         self.assertEqual((t["kind"], t["scope"], t["done_when"], t["frozen"]), ("visual", ["docs/home/style.css"], ["A1 の空き 0"], True))
+        self.assertEqual((t["complexity"], q.brief(t)["complexity"]), ("hard", "hard"))   # 作る係のモデルを決める重さも約束の一部
         with self.assertRaises(ValueError):
             q.set_contract(a, "fix", ["x.py"], ["別の条件"], self.root, self.state)   # 凍ったあとは変えない
         q.done(a, "PR", file=True, root=self.root, state=self.state)             # 合併する枝には凍った約束ごと入る
@@ -174,6 +178,7 @@ class Backlog(unittest.TestCase):
             self.assertEqual(t["id"], f.stem)
             self.assertTrue(t["title"] and t["why"])
             self.assertIn(t["kind"], q.KINDS)
+            self.assertIn(t["complexity"], q.COMPLEXITY)
             self.assertIn(t["status"], q.STATUSES)
             self.assertIsInstance(t["scope"], list)
             self.assertIsInstance(t["done_when"], list)
@@ -287,11 +292,13 @@ class Script(unittest.TestCase):
         self.assertFalse([x for x in labels if "T-0002" in x])              # T-0001 と同じファイルを触る段は、この回では進めない
         self.assertTrue(any("T-0002" in m for m in d["logs"]))
         ships = [x for x in labels if x.startswith("ship:")]
-        self.assertEqual(ships, ["ship:intake1", "ship:T-0001", "ship:T-0003"])   # 合併は 1 つずつ・受付の枝が先
+        self.assertEqual(ships, ["ship:intake1", "ship:T-0001", "ship:T-0003", "ship:T-0004"])   # 合併は 1 つずつ・受付の枝が先
         self.assertLess(labels.index("ship:T-0003"), labels.index("verify:1:b"))
         self.assertLess(labels.index("verify:1:b"), labels.index("announce:T-0003"))   # 案のページは本番に出てから知らせる
         self.assertEqual(labels[-1], "learn:1")
-        self.assertEqual([(t["id"], t["state"], t["live"]) for t in d["result"][0]["tasks"]], [("T-0001", "merged", True), ("T-0003", "merged", True)])
+        self.assertEqual([(t["id"], t["state"], t["live"]) for t in d["result"][0]["tasks"]], [("T-0001", "merged", True), ("T-0003", "merged", True), ("T-0004", "merged", True)])
+        self.assertIn("kpi:T-0004", labels)                                   # 新規ユーザーの点検は kpi の段として同じ道を通る
+        self.assertNotIn("scout:T-0004", labels)
         learn = d["prompts"]["learn:1"]
         self.assertIn("harness/q.py done T-0001 --pr", learn)
         self.assertIn("harness/q.py park T-0003 --waiting", learn)          # 案の段は店長が選ぶまで済みにしない
@@ -300,12 +307,27 @@ class Script(unittest.TestCase):
         self.assertIn("cmd=say", d["prompts"]["announce:T-0003"])
         self.assertIn("pending_choices.json", d["prompts"]["announce:T-0003"])
 
-    def test_default_models_and_force_one_model(self):
-        m = {c["label"].split(":")[0]: c["model"] for c in self.smoke("happy")["calls"]}
-        self.assertEqual((m["scout"], m["build"], m["fix"], m["plan"], m["intake"], m["evalV"]), ("haiku", "sonnet", "sonnet", "fable", "fable", "fable"))
-        self.assertEqual({c["model"] for c in self.smoke("happy", {"model": "fable"})["calls"]}, {"fable"})
-        m = {c["label"].split(":")[0]: c["model"] for c in self.smoke("stuck", {"models": {"build": "opus"}})["calls"]}
-        self.assertEqual((m["build"], m["diag"]), ("opus", "fable"))
+    def test_models_by_role_and_complexity(self):
+        """2026-11-12 店長（トークンの節約）：Fable は計画だけ。ほかは仕事の重さで Haiku／Sonnet／Opus。"""
+        calls = self.smoke("happy")["calls"]
+        role = {c["label"].split(":")[0]: c["model"] for c in calls}
+        self.assertEqual({k: role[k] for k in ("plan", "scout", "verify", "learn", "kpi", "announce", "intake", "evalF", "ship", "evalV")},
+                         {"plan": "fable", "scout": "haiku", "verify": "haiku", "learn": "haiku", "kpi": "haiku", "announce": "haiku",
+                          "intake": "sonnet", "evalF": "sonnet", "ship": "sonnet", "evalV": "opus"})
+        self.assertEqual([c["label"] for c in calls if c["model"] == "fable"], ["plan:1"])   # Fable を使うのは計画の 1 回だけ
+        by = {c["label"]: c["model"] for c in calls}
+        self.assertEqual((by["build:T-0001"], by["fix:T-0001:1"]), ("opus", "opus"))         # complexity=hard の段は作る・直すとも Opus
+        self.assertEqual(by["build:T-0003"], "sonnet")                                       # normal
+        stuck = {c["label"]: c["model"] for c in self.smoke("stuck")["calls"]}
+        self.assertEqual((stuck["build:T-0009"], stuck["fix:T-0009:1"], stuck["diag:T-0009"]), ("haiku", "haiku", "opus"))   # light は Haiku・見立ては Opus
+
+    def test_model_overrides(self):
+        d = self.smoke("stuck", {"model": "fable"})                                          # 全部 Fable は受け付けない
+        self.assertEqual([c["label"] for c in d["calls"] if c["model"] == "fable"], ["plan:1"])
+        self.assertTrue(any("args.model=fable" in m for m in d["logs"]))
+        self.assertEqual({c["model"] for c in self.smoke("stuck", {"model": "sonnet"})["calls"]}, {"sonnet"})   # 試すときの「全部 1 つ」は fable 以外で
+        m = {c["label"]: c["model"] for c in self.smoke("stuck", {"models": {"light": "sonnet", "diag": "sonnet"}})["calls"]}
+        self.assertEqual((m["build:T-0009"], m["diag:T-0009"], m["plan:1"]), ("sonnet", "sonnet", "fable"))
 
     def test_no_progress_goes_to_diagnose_then_parks(self):
         d = self.smoke("stuck")

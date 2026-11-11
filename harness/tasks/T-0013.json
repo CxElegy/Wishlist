@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-06 plan1】PC 1400 の「写真の横の字」カード（.nx・.pk・.card.mini）にも sideGap と同じ点検 — スマホの左写真カードは「写真の底→カードの底が 24px 超」を数えて 92→0 にした。同じ形が PC にもあるので、HOLE_JS の sideGap を viewport 非依存にして 1400 でも数え、出たものは規則（写真の高さ・字の量・次のニュースで埋める）で直す。【決定】縦長の写真・記事の重さで組む の段と同じ根なら、そちらに合流。できた条件：1400/390 の guest・test-a の両方で sideGap 0。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 13,
  "scope": [],
  "done_when": [

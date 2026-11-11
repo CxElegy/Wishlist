@@ -4,6 +4,7 @@
  "why": "【free-tier 点検】`.github/workflows/` と `scripts/` に `SUPABASE_ACCESS＿TOKEN`・`sbp_` が出たら落ちる 1 assert の unittest を足す（個人アクセストークンはアカウント全体を触れる鍵。docs/rules/free-tier.md 決まり 2。2026-11-02 レビュー指摘）。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 74,
  "scope": [
   "docs/rules/free-tier.md"

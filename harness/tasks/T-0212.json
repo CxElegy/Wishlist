@@ -4,6 +4,7 @@
  "why": "D3 話題度ページを「読む記事」に（D3） — heat.html をスクロールで週の動きが 1 つずつ出る形に（数字は今のまま）。見本を先に見せる",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 212,
  "scope": [
   "docs/heat.html"

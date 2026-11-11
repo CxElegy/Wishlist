@@ -4,6 +4,7 @@
  "why": "顔の物差しがない画像の種類を数える（2026-10-27 r1f2：shape の書き込み側が「名前が logo」を見ていなかったのと同じ形）：items.yaml・boards の全小元素を shape × 出どころ（emblems/ か網址）× 名前で数え、cutout なのに人物でないもの〔logo・icon・ポスター〕の残りを emblem_fill 側でも書くときに直す（is_logo に画像の名前を足す）",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 139,
  "scope": [],
  "done_when": [],

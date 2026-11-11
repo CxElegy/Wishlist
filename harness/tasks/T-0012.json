@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-06 plan1】scroll_measure の数字を日に 1 回 Pages（Supabase は route.abort）で記録して退行を数える — 今は PR ごとに手で測り、前の数字が無いまま後だけ出る（左写真カードの回）。daily で fps・p95・CLS・50ms 超の frame を state/ か harness/audits の 1 行に足し、前日より悪い（fps -20%・CLS +0.02）ときは管理ページに赤の 1 行。できた条件：1 週間分の履歴が貯まり、わざと重くした PR で赤が出る試験。無料枠：Pages だけを開く 1 回・timeout 付き。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 12,
  "scope": [],
  "done_when": [

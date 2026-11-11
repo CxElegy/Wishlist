@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-03 plan1】Actions が読む Supabase の応答バイトを数えて管理ページに出す — いま egress は query_logs を手で数えないと分からない。sbstate の呼び出し口で応答の Content-Length を state/sb_bytes.json に日ごとに足し（Actions の分だけ。訪問者の分は含まないと画面に書く）、管理ページに「今日 N MB／月の目安 5.5 GB の x%」。確かめ：24 時間後の query_logs の Actions 分と ±20% で合う。DB の形は変えない。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 69,
  "scope": [],
  "done_when": [

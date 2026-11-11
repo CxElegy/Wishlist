@@ -4,6 +4,7 @@
  "why": "店長ログイン後の画面の点検：店長のパスワードを使わない決めなので、test-a の画面で mason・過去のニュースが同じに積まれるかを数える〔--who admin は飛ばす〕。",
  "quote": "",
  "kind": "visual",
+ "complexity": "normal",
  "priority": 97,
  "scope": [],
  "done_when": [],

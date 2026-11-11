@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-04 f3f1】photo_cache_fill を偽 402 で通せる形にする — 今は取り先が state/photo_store.json の base（本番の storage）で偽サーバーに差せず、走らせると本番に出る・手元の写しを消すので NOT_COVERED。base を環境変数で差せる形にして ENTRIES に入れる。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 42,
  "scope": [
   "state/photo_store.json"

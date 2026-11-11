@@ -4,6 +4,7 @@
  "why": "ux_check 全体を速くする：guest 1 人で約 7 分。--who を並列に走らせる run_all（4 人を同時・合計の ✗ を 1 本に）と、ツール側の時間切れで途切れないよう background 実行を HARNESS.md に書く（2026-10-31 r2f2）",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 102,
  "scope": [],
  "done_when": [],

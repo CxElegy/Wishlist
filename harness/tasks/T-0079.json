@@ -4,6 +4,7 @@
  "why": "【依頼】**写真の置き場を GitHub Pages に移す（案A、2026-11-02 ユーザー「案Aで」）** — 詳しくは docs/rules/free-tier.md「決定」。前提：ユーザーが Pages の Source を「GitHub Actions」に切り替える（待ち）。切り替わったら：pages.yml が docs/＋写真（actions/cache、14 日・300 MB・指紋の名前）を 1 つの公開物に／render の写真の網址を Pages の `/p/` に（Supabase の網址は予備）／小元素も同じ／公開 1 回にまとめる／確かめ：本番の写真の 99% が cxelegy.github.io から、Supabase の写真の配信が 1 日 20 MB 以下（ログ）、0.5 秒の表示（写真の一時保管のときと同じ測り方）を落とさない。架構図：processes.py の写真の一時保管・Pages の札を直す。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 79,
  "scope": [
   "docs/rules/free-tier.md",

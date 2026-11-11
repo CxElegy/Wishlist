@@ -4,6 +4,7 @@
  "why": "前からのエンブレムを今の規則でかけ直す（--recheck） — 外れたものは理由つきで emblem_reject へ。管理ページ「小元素の判断の例」に前後 1 組",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 188,
  "scope": [],
  "done_when": [

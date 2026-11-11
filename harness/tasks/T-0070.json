@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-04 plan1】訪問 1 回あたりの Pages の転送量と「1 日に何人まで」— 写真を Pages から配る形になり、制限は Supabase でなく Pages の月 100 GB に移った（free-tier.md に目安はあるが 1 人あたりが無い）。harness/browser.py で入口・店長のページ・test-a の版面を 1400/390 の初回と 2 回目（キャッシュあり）で 1 回ずつ読み、転送バイトを数え、100 GB/月 ÷ (1 回の平均 × 日の訪問) を free-tier.md に 1 行。実測が 1 回 5 MB を超えるなら重さの予算（フォント・写真の大きさ）を規則で縛る段を足す。本番に負荷を足さないよう各 1 回。DB の形は変えない。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 70,
  "scope": [
   "harness/browser.py"

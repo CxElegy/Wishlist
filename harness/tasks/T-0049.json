@@ -4,6 +4,7 @@
  "why": "【計画 2026-11-04 plan2b】ログイン中の訪問 1 回が Supabase から受け取るバイトと回数 — plan1 の「Pages の転送量」は Pages 側だけで、お客さまを増やしたときに効くのは Supabase 側（無料枠の cached egress 5.5 GB／月）。harness/browser.py で test-a を 1400 で 1 回開き（確かめは 1 回・timeout 付き）、*.supabase.co への応答の本数とバイトを呼び出し（rpc 名）ごとに数え、5.5 GB ÷ 1 回 = 「お客さま何人が毎日 1 回読めるか」を free-tier.md に 1 行。1 回 100 KB を超える呼び出しがあれば、上位 3 つを Pages の JSON か ETag 付きにする段を足す（DB の形は変えない）。できた条件：呼び出し名ごとの本数・バイトの表と人数の数字が PROGRESS にあり、人数が 50 人を下回るなら対策の段が BACKLOG にある。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 49,
  "scope": [
   "harness/browser.py"

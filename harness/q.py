@@ -7,7 +7,7 @@ push はしない：取った印（claim）・途中の状態（attempts・parke
   python harness/q.py next [--n 3] [--kind fix] [--json]      次に進められる段（範囲のファイルが重ならないものだけ）
   python harness/q.py claim T-0003 --owner build:T-0003        取る（同じ持ち主がもう一度呼べば時刻を更新。60 分動きがなければ取り直せる）
   python harness/q.py release T-0003
-  python harness/q.py contract T-0003 --kind visual --scope a.py,b.css --done-when "…" [--done-when "…"]   計画の係が約束を決めて凍らせる
+  python harness/q.py contract T-0003 --kind visual --complexity normal --scope a.py,b.css --done-when "…" [--done-when "…"]   計画の係が約束を決めて凍らせる
   python harness/q.py done T-0003 [--pr URL] [--file]          済み（--file：リポジトリのファイルも status=done にする。合併する枝の中で）
   python harness/q.py park T-0003 --why "…" [--waiting]        止める（--waiting：店長の答え待ち）
   python harness/q.py reopen T-0003
@@ -16,8 +16,8 @@ push はしない：取った印（claim）・途中の状態（attempts・parke
   python harness/q.py show T-0003
   python harness/q.py import-backlog BACKLOG.md [--limit N]    「## いちばん先」の開いている段を写す（1 回だけ）
 
-段のファイルの形（約束＝title・why・quote・kind・scope・done_when は frozen のあと変えない。変わるのは status・attempts・notes だけ）：
-  {"id","title","why","quote","kind":"fix|visual|options|kpi|verify","priority","scope":[ファイル],"done_when":[確かめ方],
+段のファイルの形（約束＝title・why・quote・kind・complexity・scope・done_when は frozen のあと変えない。変わるのは status・attempts・notes だけ）：
+  {"id","title","why","quote","kind":"fix|visual|options|kpi|verify","complexity":"light|normal|hard","priority","scope":[ファイル],"done_when":[確かめ方],
    "status":"open|done|parked|waiting","attempts":0,"notes":[],"frozen":false,"source","created"}
 """
 import argparse
@@ -33,9 +33,10 @@ import time
 
 KINDS = ("fix", "visual", "options", "kpi", "verify")   # verify はループが自分で足す「本番でまだ確かめていない」段
 STATUSES = ("open", "done", "parked", "waiting")
+COMPLEXITY = ("light", "normal", "hard")   # 作る・直す係のモデルを決める：light=Haiku・normal=Sonnet・hard=Opus（計画の係が付ける）
 CLAIM_STALE_MIN = 60
 JST = dt.timezone(dt.timedelta(hours=9))
-CONTRACT = ("title", "why", "quote", "kind", "scope", "done_when")
+CONTRACT = ("title", "why", "quote", "kind", "complexity", "scope", "done_when")
 
 
 def state_dir():
@@ -109,6 +110,7 @@ def load(root=None, state=None):
         t.setdefault("status", "open")
         t.setdefault("scope", [])
         t.setdefault("done_when", [])
+        t.setdefault("complexity", "normal")
     return out
 
 
@@ -209,7 +211,7 @@ def ready(tasks, state=None, now=None, kind=None, owner=None):
 
 
 def brief(t, why=500):
-    return {"id": t["id"], "title": t["title"], "kind": t.get("kind", "fix"), "priority": t.get("priority", 999),
+    return {"id": t["id"], "title": t["title"], "kind": t.get("kind", "fix"), "complexity": t.get("complexity", "normal"), "priority": t.get("priority", 999),
             "scope": t.get("scope", []), "done_when": t.get("done_when", []), "frozen": bool(t.get("frozen")),
             "attempts": t.get("attempts", 0), "why": (t.get("why") or "")[:why], "quote": t.get("quote", "")}
 
@@ -225,10 +227,12 @@ def next_id(tasks):
 
 
 def add(title, why="", quote="", kind="fix", scope=(), done_when=(), priority=50, source="", root=None, state=None,
-        local=False, created=None, extra=None):
+        local=False, created=None, extra=None, complexity="normal"):
     """新しい段。同じ題（記号・空白を除いて同じ）がもう開いていれば足さず、その id を返す（(id, False)）。"""
     if kind not in KINDS:
         raise ValueError(f"kind は {KINDS} のどれか")
+    if complexity not in COMPLEXITY:
+        raise ValueError(f"complexity は {COMPLEXITY} のどれか")
     state = state or state_dir()
     tasks = load(root, state)
     key = title_key(title)
@@ -236,7 +240,7 @@ def add(title, why="", quote="", kind="fix", scope=(), done_when=(), priority=50
         if title_key(t["title"]) == key and t["status"] != "done":
             return t["id"], False
     t = {"id": next_id(tasks), "title": title.strip(), "why": why.strip(), "quote": quote.strip(), "kind": kind,
-         "priority": int(priority), "scope": [s for s in scope if s], "done_when": [d for d in done_when if d],
+         "complexity": complexity, "priority": int(priority), "scope": [s for s in scope if s], "done_when": [d for d in done_when if d],
          "status": "open", "attempts": 0, "notes": [], "frozen": False, "source": source,
          "created": created or now_iso()[:10]}
     t.update(extra or {})
@@ -246,7 +250,7 @@ def add(title, why="", quote="", kind="fix", scope=(), done_when=(), priority=50
     return t["id"], True
 
 
-def set_contract(tid, kind=None, scope=None, done_when=None, root=None, state=None):
+def set_contract(tid, kind=None, scope=None, done_when=None, root=None, state=None, complexity=None):
     """計画の係が約束を決めて凍らせる（手元の写しに書く。リポジトリには done --file のときに入る）。凍ったあとは変えられない。"""
     state = state or state_dir()
     t = load(root, state).get(tid)
@@ -258,6 +262,10 @@ def set_contract(tid, kind=None, scope=None, done_when=None, root=None, state=No
         if kind not in KINDS:
             raise ValueError(f"kind は {KINDS} のどれか")
         t["kind"] = kind
+    if complexity:
+        if complexity not in COMPLEXITY:
+            raise ValueError(f"complexity は {COMPLEXITY} のどれか")
+        t["complexity"] = complexity
     if scope is not None:
         t["scope"] = [s for s in scope if s]
     if done_when:
@@ -379,7 +387,7 @@ def from_backlog(text, root, created, limit=None):
         q = QUOTE_RE.search(body)
         d = re.search(r"20\d\d-\d\d-\d\d", first)
         kind = "kpi" if "board_kpi.py" in first and "newuser" in first else "visual" if VISUAL_RE.search(title) else "fix"
-        t = {"id": f"T-{i:04d}", "title": title, "why": body, "quote": q.group(1) if q else "", "kind": kind, "priority": i,
+        t = {"id": f"T-{i:04d}", "title": title, "why": body, "quote": q.group(1) if q else "", "kind": kind, "complexity": "normal", "priority": i,
              "scope": guess_scope(body, root), "done_when": [dw] if dw else [], "status": "open", "attempts": 0, "notes": [],
              "frozen": False, "source": f"BACKLOG.md:{line}", "created": d.group(0) if d else created}
         if kind == "kpi":
@@ -395,13 +403,13 @@ def main(argv=None):
     s = sub.add_parser("next"); s.add_argument("--n", type=int, default=3); s.add_argument("--kind"); s.add_argument("--json", action="store_true"); s.add_argument("--owner")
     s = sub.add_parser("claim"); s.add_argument("id"); s.add_argument("--owner", required=True)
     s = sub.add_parser("release"); s.add_argument("id")
-    s = sub.add_parser("contract"); s.add_argument("id"); s.add_argument("--kind"); s.add_argument("--scope"); s.add_argument("--done-when", action="append", default=[])
+    s = sub.add_parser("contract"); s.add_argument("id"); s.add_argument("--kind"); s.add_argument("--complexity", choices=COMPLEXITY); s.add_argument("--scope"); s.add_argument("--done-when", action="append", default=[])
     s = sub.add_parser("done"); s.add_argument("id"); s.add_argument("--pr", default=""); s.add_argument("--file", action="store_true")
     s = sub.add_parser("park"); s.add_argument("id"); s.add_argument("--why", required=True); s.add_argument("--waiting", action="store_true")
     s = sub.add_parser("reopen"); s.add_argument("id")
     s = sub.add_parser("add"); s.add_argument("--title", required=True); s.add_argument("--why", default=""); s.add_argument("--quote", default="")
     s.add_argument("--kind", default="fix"); s.add_argument("--scope", default=""); s.add_argument("--done-when", action="append", default=[])
-    s.add_argument("--priority", type=int, default=50); s.add_argument("--source", default=""); s.add_argument("--local", action="store_true")
+    s.add_argument("--priority", type=int, default=50); s.add_argument("--source", default=""); s.add_argument("--local", action="store_true"); s.add_argument("--complexity", choices=COMPLEXITY, default="normal")
     s = sub.add_parser("index"); s.add_argument("--out")
     s = sub.add_parser("show"); s.add_argument("id")
     s = sub.add_parser("import-backlog"); s.add_argument("file"); s.add_argument("--limit", type=int)
@@ -420,7 +428,7 @@ def run(a):
             print(json.dumps(got, ensure_ascii=False))
         else:
             for t in got:
-                print(f"{t['id']} [{t['kind']}] {t['title']}\n   範囲：{', '.join(t['scope']) or '（未定）'}\n   確かめ：{' / '.join(t['done_when']) or '（未定）'}")
+                print(f"{t['id']} [{t['kind']}・{t['complexity']}] {t['title']}\n   範囲：{', '.join(t['scope']) or '（未定）'}\n   確かめ：{' / '.join(t['done_when']) or '（未定）'}")
             if not got:
                 print("進められる段がない")
         return 0
@@ -433,7 +441,7 @@ def run(a):
     if a.cmd == "release":
         release(a.id)
     elif a.cmd == "contract":
-        t = set_contract(a.id, a.kind, a.scope.split(",") if a.scope is not None else None, a.done_when)
+        t = set_contract(a.id, a.kind, a.scope.split(",") if a.scope is not None else None, a.done_when, complexity=a.complexity)
         print(json.dumps(brief(t), ensure_ascii=False))
     elif a.cmd == "done":
         done(a.id, a.pr, a.file)
@@ -446,7 +454,7 @@ def run(a):
             raise KeyError(a.id)
         overlay(a.id, status="open", note="開け直した")
     elif a.cmd == "add":
-        tid, new = add(a.title, a.why, a.quote, a.kind, a.scope.split(","), a.done_when, a.priority, a.source, local=a.local)
+        tid, new = add(a.title, a.why, a.quote, a.kind, a.scope.split(","), a.done_when, a.priority, a.source, local=a.local, complexity=a.complexity)
         print(json.dumps({"id": tid, "new": new}, ensure_ascii=False))
     elif a.cmd == "index":
         out = pathlib.Path(a.out) if a.out else tasks_dir() / "INDEX.md"

@@ -4,6 +4,7 @@
  "why": "【依頼・新規ユーザー 2026-11-11】**library_emblem.yml の 15 分の定時が実測 4〜6 時間に 1 回（harness/audits/2026-11-05-system.md F11）** — GitHub の cron の抜けなら pg_cron の tick（run_now）から起こす。経路 C の小元素 120 分以内。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 3,
  "scope": [
   ".github/workflows/library_emblem.yml",

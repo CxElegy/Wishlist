@@ -4,6 +4,7 @@
  "why": "小元素の別人（BLEACH Mirrors High の Kisuke Urahara の小元素が夜一〔Yoruichi〕＋左に切れた人：2026-10-25 #392 の点検で見つけた） — 絵のキャラも名前とファイル名・ページの一致を確かめる規則（型 A）。ux_check に「同じ版面で 2 人の小元素が同じ人の顔」（face_id の類似度）を足す",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 152,
  "scope": [],
  "done_when": [

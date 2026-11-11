@@ -4,6 +4,7 @@
  "why": "（次）test-a・test-b の settings.html「素の箱 1 件」の切り分け：写しが空でない環境で再現するか見て、再現するなら規則（AUTH_JS の本人の設定ページ）を直す。",
  "quote": "",
  "kind": "fix",
+ "complexity": "normal",
  "priority": 76,
  "scope": [
   "docs/settings.html"
