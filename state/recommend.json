@@ -42,8 +42,8 @@
   "https://note.com/row_row_rho/n/nc2969bb495b6?hl=en": "https://www.bing.com/th?id=ONUT.A4oKhTmCQyDL-V9gHR12Ew&pid=News&w=1200",
   "https://oracle.newpaltz.edu/suny-new-paltzs-halloween-costume-predictions-come-to-life/": "https://oracle.newpaltz.edu/wp-content/uploads/2026/11/IMG_7236-4-scaled.jpg",
   "https://prtimes.jp/main/html/rd/p/000000211.000089283.html": "https://prcdn.freetls.fastly.net/release_image/89283/211/89283-211-c068685fd931de2cbd9384a8fb99a9d1-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
-  "https://prtimes.jp/main/html/rd/p/000001080.000055787.html": "https://prcdn.freetls.fastly.net/release_image/55787/1080/55787-1080-355f0e8982c8566a433b1b72105f2285-874x583.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://roscoenews.com/going-all-out-for-halloween-the-petsches-in-south-beloit/": "https://roscoenews.com/content/images/2026/11/IMG_20261031_184054745-2.jpg",
+  "https://shikiho.toyokeizai.net/news/0/964306": "https://www.nikkei.com/nkd/disclosure/tdnr/20261008548007/thumbnail/?ttype=ogp",
   "https://sporked.com/article/silly-rabbit-this-new-trix-cereal-is-for-proteinmaxxing/": "https://sporked.com/wp-content/uploads/2026/11/trix-cereal.jpg",
   "https://sports.khan.co.kr/en/article/202611100719007": "https://images.khan.co.kr/article/2026/11/10/news-p.v1.20261110.3eb1441616cc4d2486b968acb06ad2e9_P1.jpg",
   "https://travel.udn.com/travel/story/7934/9856463": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/04/35484120.jpg&M=1&s=Y&x=0&y=0&sw=1080&sh=599&exp=3600",
@@ -1465,15 +1465,15 @@
   {
    "batch": 6,
    "because": "滑雪",
-   "date": "2026-11-11",
+   "date": "2026-11-10",
    "hits": [],
-   "image": "https://prcdn.freetls.fastly.net/release_image/55787/1080/55787-1080-355f0e8982c8566a433b1b72105f2285-874x583.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+   "image": "https://www.nikkei.com/nkd/disclosure/tdnr/20261008548007/thumbnail/?ttype=ogp",
    "kind": "board",
    "score": 4,
-   "source": "PR TIMES",
+   "source": "四季報オンライン",
    "taste": [],
-   "title": "ニセコ東急 グラン・ヒラフ「2026-2027ウィンターシーズン」 11 月 28 日（土）に開幕",
-   "url": "https://prtimes.jp/main/html/rd/p/000001080.000055787.html",
+   "title": "日本スキー場開発（6040）2027年7月期日本スキー場開発(株)月次速報開示",
+   "url": "https://shikiho.toyokeizai.net/news/0/964306",
    "words": [],
    "work": "滑雪"
   },
@@ -1836,11 +1836,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1848,7 +1848,7 @@
    8
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
@@ -1856,7 +1856,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ]
  ]

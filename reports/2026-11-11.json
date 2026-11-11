@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "fda3bcc5b7ec",
+ "edit_sig": "bdcde283ae26",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -177,29 +177,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-11",
-     "n": 4,
-     "source": "PR TIMES",
-     "title": "【西日本最速】１１月１３日〜４月１１日のスキー場オープン！人工降雪機を「１０基」追加して合計５５基へ！「１日525トンの人工造雪」で「秋から春」まで滑れる「関西最大級のスキー場」グランスノー奥伊吹！",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE91NmI1YnRLenlZQkk4VDVGWWpwX2ZKZ2FpblRTLWFsc2hIVEhqOWtnemVzeE1JVWdTVFUxVEM5Rjk4eGMxU2sybTR4aVB2OUtlR2cwbUY1aktFX1I0dDRLR3dQNThrTDJOdkE?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 5,
-     "source": "HotelBank",
-     "title": "モクシー・ニセコビレッジ310室が9月開業｜ニセコ町ADR1月4.23万円・9月1.38万円、冬偏重の村で通年を回す試算",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMFNQUXZ2QU9ucU85eW1LdlJ3VTRpYlplQ09FQmJJeG8yczc3cmt5S2VjSXVmcWtTTElFRDdoNmRrekZjWnl6NGVMWXJCSzRzSTJqS3o0LU1GWHk2ekVMSDdBYnFpVkRpSlFhNHZxWFFOcHZTUHFVX1ZCczNUc3dXc09GbXlDVkprcDFpOTZ1MXZUZXlBSkZ6NXVERWZFZmlLTWNvNUZDN0tPc0RZWVE1d3paOU43YzBIWTJwRA?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 6,
-     "source": "PR TIMES",
-     "title": "ニセコ東急 グラン・ヒラフ「2026-2027ウィンターシーズン」 11 月 28 日（土）に開幕",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9IV3oyc3JpWGc3RzVZd2JKd1BZaXdsMWgwT3VpWDdUUVJSNUpGTWd5dVdFWmQyZ1QwMjNBVW5aQlJYQ0doYVFOeTB1M2REOWlyTzJIb2NEY1RySnNmb2J5bjhMc1lYYmRWdmc?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -231,6 +208,34 @@
      "source": "SnowBrains",
      "source_icon": "https://i0.wp.com/snowbrains.com/wp-content/uploads/2024/06/brains_v3.png?fit=192%2C192&ssl=1",
      "url": "https://snowbrains.com/watch-the-endearing-trailer-for-he-new-8-part-video-series-i-love-niseko/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "event": {
+      "date": "2026-11-13",
+      "label": "オープン"
+     },
+     "headline": "【西日本最速】１１月１３日〜４月１１日のスキー場オープン！人工降雪機を「１０基」追加して合計５５基へ",
+     "highlight": "１１月１３日",
+     "image": "https://prcdn.freetls.fastly.net/release_image/25847/266/25847-266-53413d9ebc7d639256ecebe9932b19f6-1200x800.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000266.000025847.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "event": {
+      "date": "2026-11-28",
+      "label": "開幕"
+     },
+     "headline": "ニセコ東急 グラン・ヒラフ「2026-2027ウィンターシーズン」 11 月 28 日（土）に開幕",
+     "highlight": "11 月 28 日（土）",
+     "image": "https://prcdn.freetls.fastly.net/release_image/55787/1080/55787-1080-355f0e8982c8566a433b1b72105f2285-874x583.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000001080.000055787.html",
      "weight": "normal"
     }
    ],
