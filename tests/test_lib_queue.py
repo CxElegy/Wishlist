@@ -99,6 +99,22 @@ class GateWake(Base):
         self.assertFalse(gate.lib_due({"jobs": {"edit": {"fired": {"at": new}}}}))
         self.assertTrue(gate.lib_due({}))
 
+    def test_first_board_does_not_wait_the_gap(self):
+        """足したばかりの版面（まだ 1 本も編んでいない）は 4 時間を待たない（新規ユーザーの KPI：AI 編集の見出しまで 480 分）。"""
+        recent = {"jobs": {"edit": {"fired": {"at": (gate._now() - gate.dt.timedelta(minutes=5)).isoformat()}}}}
+        self.assertFalse(lib_queue.first())
+        self.fill()   # 今日にも前の日にも AI 編集の記事が無い版面
+        self.assertTrue(lib_queue.first())
+        self.assertTrue(gate.lib_due(recent, lib_queue.first()))
+        lib_queue.save_edit(7, [{"headline": "h", "refs": [1]}])
+        self.assertFalse(lib_queue.first())   # 編んだら印は消える
+        self.assertFalse(gate.lib_due(recent, lib_queue.first()))
+
+    def test_board_with_yesterdays_edit_is_not_first(self):
+        with mock.patch.object(library, "lib_rows", return_value={7: {"name": "版面七", "day": "2026-11-07", "pending": PENDING, "stories": [], "prev": [{"headline": "h"}]}}),                 mock.patch.object(library, "edit_todo", return_value=[(7, "版面七", 2)]):
+            lib_queue.export(lambda *a, **k: None, "2026-11-07", [], log=lambda _m: None)
+        self.assertFalse(lib_queue.first())
+
 
 if __name__ == "__main__":
     unittest.main()

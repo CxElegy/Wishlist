@@ -53,6 +53,22 @@ class LibEdit(unittest.TestCase):
         todo = library.edit_todo(db, TODAY, ["GTA 6"], now=NOW)
         self.assertEqual([t[0] for t in todo], [2, 1])   # 店長の版面（3）・同じ整理待ちを編んだ版面（4）は入らない・多い順
 
+    def test_never_edited_board_goes_first_newest_first(self):
+        """足したばかりの版面（今日にも前の日にも AI 編集の記事が無い）は、整理待ちの多い古い版面より先（2026-11-11 の計測：50 版面中 34〜37 番目で 8 時間届かず）。"""
+        old = library.edited_stories(pend(2), [{"refs": [1]}], "other", "2026-11-04T00:00:00+00:00")
+        db = DB([self.row(3, "古い", pend(20)), self.row(3, "古い", pend(20), old, day="2026-11-04"),
+                 self.row(11795, "新しい A", pend(12)), self.row(11797, "新しい B", pend(10))])
+        self.assertEqual([t[0] for t in library.edit_todo(db, TODAY, now=NOW)], [11797, 11795, 3])
+
+    def test_pending_date_with_time_shows_the_day_only(self):
+        """ライブラリの版面の整理待ちは日付が時刻つき（2026-11-11T09:15:32+00:00）。そのまま出さない（2026-11-12：test-a 339 行・test-b 11・test-c 15）。"""
+        import render
+        self.assertEqual(render._md("2026-11-11T09:15:32+00:00"), "11.11")
+        self.assertEqual(render._md("2026-11-19"), "11.19")
+        html = render._pending([{"title": "t", "url": "https://x.example/1", "source": "S", "date": "2026-11-11T09:15:32+00:00"}])
+        self.assertIn("<small>11.11 · S</small>", html)
+        self.assertNotIn("T09", html)
+
     def test_recent_edit_not_redone_old_edit_redone(self):
         old = library.edited_stories(pend(2), [{"refs": [1]}], "other", "2026-11-04T00:00:00+00:00")
         new = library.edited_stories(pend(2), [{"refs": [1]}], "other", "2026-11-05T08:00:00+00:00")

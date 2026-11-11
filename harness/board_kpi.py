@@ -197,9 +197,11 @@ def observe(run):
     return run
 
 
+NEED = {"A": ["picked", "page"], "B": ["picked", "follow", "raw", "page"], "C": [k for k, _, _ in STAGES]}   # 経路ごとに走る段
+
+
 def done(run):
-    need = {"A": ["picked", "page"], "B": ["picked", "follow", "raw", "page"], "C": [k for k, _, _ in STAGES]}
-    return all(all(k in b["seen"] for k in need[b["path"]]) for b in run["boards"])
+    return all(all(k in b["seen"] for k in NEED[b["path"]]) for b in run["boards"])
 
 
 def cmd_watch(a):
@@ -227,7 +229,8 @@ def cmd_tick(a):
 
 def cmd_pages(a):
     """テスト用アカウントの本人のページ（storage の pages/<u_…>/index.html）を落として開き、壊れていないかを数える。
-    数えるもの：JS の例外・読めない写真・picks にあるのにページに無い版面・「undefined」「null」「NaN」の字・横のはみ出し（1333×677・390×844）。"""
+    数えるもの：JS の例外・読めない写真・picks にあるのにページに無い版面・「undefined」「null」「NaN」の字・横のはみ出し（1333×677・390×844）・
+    swallowed＝トップに記事を全部取られて空になった版面（目次は「今週 N 件」なのに版面は静か）・rawdate＝時刻つきの日付がそのまま出ている所。"""
     from playwright.sync_api import sync_playwright
     out, dirp = {}, RUNS.parent / "pages"
     dirp.mkdir(parents=True, exist_ok=True)
@@ -252,7 +255,9 @@ def cmd_pages(a):
                     m = pg.evaluate("""()=>({broken:[...document.images].filter(i=>i.complete&&!i.naturalWidth&&i.offsetWidth>40).length,
                       words:(document.body.innerText.match(/(undefined|NaN)|null/g)||[]).length,
                       overflow:Math.max(0,document.documentElement.scrollWidth-innerWidth),
-                      boards:document.querySelectorAll('section.sec[data-k]').length})""")
+                      boards:document.querySelectorAll('section.sec[data-k]').length,
+                      swallowed:[...document.querySelectorAll('section.sec.quiet[data-k]')].filter(s=>[...document.querySelectorAll('.front [data-k]')].some(a=>a.dataset.k===s.dataset.k)).length,
+                      rawdate:[...document.querySelectorAll('small,em,time,.d,.mono')].filter(n=>/[0-9]T[0-9][0-9]:[0-9][0-9]/.test(n.textContent)).length})""")
                     r[f"{W}"] = {**m, "errors": errs[:5]}
                     pg.close()
             out[email.split("@")[0]] = r
@@ -271,25 +276,32 @@ def minutes(run, b, k):
 
 def cmd_report(a):
     files = [pathlib.Path(x) for x in a.runs] or sorted(RUNS.glob("*.json"))
-    rows, agg = [], {}
+    rows, agg, late = [], {}, {}
     for f in files:
         run = json.loads(f.read_text(encoding="utf-8"))
+        age = (parse(run.get("checked") or run["t0"]) - parse(run["t0"])).total_seconds() / 60
         for b in run["boards"]:
             r = {"run": f.stem, "name": b["name"], "path": b["path"], **{k: minutes(run, b, k) for k, _, _ in STAGES}}
             rows.append(r)
             for k, _, _ in STAGES:
                 if r[k] is not None:
                     agg.setdefault((b["path"], k), []).append(r[k])
+                elif k in NEED[b["path"]] and age > TARGET[k]:   # まだ見えていないのに目標を過ぎた（見えた分だけ数えると「遅い」が消える）
+                    late[(b["path"], k)] = late.get((b["path"], k), 0) + 1
+                    r[k] = -age
     print("経路 | 版面 | " + " | ".join(n for _, n, _ in STAGES))
     for r in rows:
-        print(f"{r['path']} | {r['name']} | " + " | ".join("—" if r[k] is None else f"{r[k]:.0f}分" for k, _, _ in STAGES))
+        print(f"{r['path']} | {r['name']} | " + " | ".join("—" if r[k] is None else f"まだ（{-r[k]:.0f}分）" if r[k] < 0 else f"{r[k]:.0f}分" for k, _, _ in STAGES))
     summ = {}
     for (p, k), v in sorted(agg.items()):
         v = sorted(v)
         summ.setdefault(p, {})[k] = {"n": len(v), "p50": v[len(v) // 2], "max": v[-1], "target": TARGET[k], "ok": v[-1] <= TARGET[k]}
+    for (p, k), n in sorted(late.items()):
+        summ.setdefault(p, {}).setdefault(k, {"n": 0, "target": TARGET[k]}).update(late=n, ok=False)
     print(json.dumps(summ, ensure_ascii=False, indent=1))
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"at": iso(now()), "boards": summ, "runs": len(files)}, ensure_ascii=False, indent=1), encoding="utf-8")
+    cur = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}   # pages・shop の数字は残す
+    OUT.write_text(json.dumps({**cur, "at": iso(now()), "boards": summ, "runs": len(files)}, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def git_time(path):
@@ -308,9 +320,8 @@ def cmd_shop(a):
     prog = ROOT / "state" / "emblem_progress.json"
     if prog.exists():
         pj = json.loads(prog.read_text(encoding="utf-8"))
-        boards = pj.get("boards") or pj
-        if isinstance(boards, dict):
-            out["emblem"] = {"boards": len(boards), "ok": sum(1 for v in boards.values() if isinstance(v, dict) and (v.get("have") or v.get("ok")))}
+        boards = pj.get("items") or {}   # {版面: {have, target, state…}}
+        out["emblem"] = {"boards": len(boards), "ok": sum(1 for v in boards.values() if isinstance(v, dict) and (v.get("have") or 0) >= (v.get("target") or 1))}   # そろった＝目標の枚数
     lib = q("select count(*), count(*) filter (where config ? 'emblem' and jsonb_array_length(coalesce(config->'emblem','[]'))>0) from public.boards")
     out["library_emblem"] = {"boards": int(lib[0][0]), "with_emblem": int(lib[0][1])}
     print(json.dumps(out, ensure_ascii=False, indent=1))

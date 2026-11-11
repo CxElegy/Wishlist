@@ -1,5 +1,5 @@
 {
- "at": "2026-11-11T13:18:08+00:00",
+ "at": "2026-11-11T21:02:04+00:00",
  "boards": {
   "A": {
    "board": {
@@ -28,6 +28,13 @@
     "p50": 11.1,
     "max": 11.1,
     "target": 60,
+    "ok": true
+   },
+   "page": {
+    "n": 1,
+    "p50": 19.0,
+    "max": 19.0,
+    "target": 150,
     "ok": true
    },
    "pending": {
@@ -74,6 +81,13 @@
     "target": 60,
     "ok": true
    },
+   "page": {
+    "n": 2,
+    "p50": 19.0,
+    "max": 19.0,
+    "target": 150,
+    "ok": true
+   },
    "pending": {
     "n": 2,
     "p50": 0.2,
@@ -87,6 +101,13 @@
     "max": 0.0,
     "target": 1,
     "ok": true
+   },
+   "raw": {
+    "n": 2,
+    "p50": 158.8,
+    "max": 158.8,
+    "target": 120,
+    "ok": false
    }
   },
   "C": {
@@ -97,11 +118,33 @@
     "target": 60,
     "ok": true
    },
+   "emblem": {
+    "n": 1,
+    "p50": 314.8,
+    "max": 314.8,
+    "target": 120,
+    "ok": false,
+    "late": 2
+   },
    "follow": {
     "n": 3,
     "p50": 11.1,
     "max": 11.1,
     "target": 60,
+    "ok": true
+   },
+   "page": {
+    "n": 3,
+    "p50": 19.0,
+    "max": 19.0,
+    "target": 150,
+    "ok": true
+   },
+   "pending": {
+    "n": 3,
+    "p50": 169.5,
+    "max": 169.5,
+    "target": 180,
     "ok": true
    },
    "picked": {
@@ -110,6 +153,13 @@
     "max": 0.0,
     "target": 1,
     "ok": true
+   },
+   "raw": {
+    "n": 3,
+    "p50": 158.8,
+    "max": 158.8,
+    "target": 120,
+    "ok": false
    }
   }
  },
@@ -124,6 +174,8 @@
     "words": 0,
     "overflow": 0,
     "boards": 40,
+    "swallowed": 0,
+    "rawdate": 339,
     "errors": []
    },
    "390": {
@@ -131,6 +183,8 @@
     "words": 0,
     "overflow": 0,
     "boards": 40,
+    "swallowed": 0,
+    "rawdate": 339,
     "errors": []
    }
   },
@@ -143,6 +197,8 @@
     "words": 0,
     "overflow": 0,
     "boards": 1,
+    "swallowed": 1,
+    "rawdate": 11,
     "errors": []
    },
    "390": {
@@ -150,25 +206,31 @@
     "words": 0,
     "overflow": 0,
     "boards": 1,
+    "swallowed": 1,
+    "rawdate": 11,
     "errors": []
    }
   },
   "test-c": {
    "picks": 6,
    "page": true,
-   "missing": 6,
+   "missing": 0,
    "1333": {
     "broken": 0,
     "words": 0,
     "overflow": 0,
-    "boards": 1,
+    "boards": 6,
+    "swallowed": 2,
+    "rawdate": 15,
     "errors": []
    },
    "390": {
     "broken": 0,
     "words": 0,
     "overflow": 0,
-    "boards": 1,
+    "boards": 6,
+    "swallowed": 2,
+    "rawdate": 15,
     "errors": []
    }
   },
@@ -181,6 +243,8 @@
     "words": 0,
     "overflow": 0,
     "boards": 1,
+    "swallowed": 0,
+    "rawdate": 0,
     "errors": []
    },
    "390": {
@@ -188,6 +252,8 @@
     "words": 0,
     "overflow": 0,
     "boards": 1,
+    "swallowed": 0,
+    "rawdate": 0,
     "errors": []
    }
   },
@@ -200,6 +266,8 @@
     "words": 0,
     "overflow": 0,
     "boards": 1,
+    "swallowed": 0,
+    "rawdate": 0,
     "errors": []
    },
    "390": {
@@ -207,8 +275,64 @@
     "words": 0,
     "overflow": 0,
     "boards": 1,
+    "swallowed": 0,
+    "rawdate": 0,
     "errors": []
    }
+  }
+ },
+ "shop": {
+  "days": [
+   {
+    "day": "2026-11-12",
+    "collect": "2026-11-11T18:04:07+00:00",
+    "edit": "2026-11-11T18:12:08+00:00",
+    "lag_min": 8
+   },
+   {
+    "day": "2026-11-11",
+    "collect": "2026-11-10T16:30:29+00:00",
+    "edit": "2026-11-10T16:53:22+00:00",
+    "lag_min": 23
+   },
+   {
+    "day": "2026-11-10",
+    "collect": "2026-11-09T16:31:41+00:00",
+    "edit": "2026-11-09T16:47:42+00:00",
+    "lag_min": 16
+   },
+   {
+    "day": "2026-11-09",
+    "collect": "2026-11-08T16:50:27+00:00",
+    "edit": "2026-11-08T18:40:20+00:00",
+    "lag_min": 110
+   },
+   {
+    "day": "2026-11-08",
+    "collect": "2026-11-07T16:38:09+00:00",
+    "edit": "2026-11-07T16:46:32+00:00",
+    "lag_min": 8
+   },
+   {
+    "day": "2026-11-07",
+    "collect": "2026-11-06T19:34:11+00:00",
+    "edit": "2026-11-06T19:50:00+00:00",
+    "lag_min": 16
+   },
+   {
+    "day": "2026-11-06",
+    "collect": "2026-11-05T18:13:49+00:00",
+    "edit": "2026-11-05T18:25:48+00:00",
+    "lag_min": 12
+   }
+  ],
+  "emblem": {
+   "boards": 23,
+   "ok": 23
+  },
+  "library_emblem": {
+   "boards": 67,
+   "with_emblem": 64
   }
  }
 }
