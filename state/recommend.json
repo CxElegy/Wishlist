@@ -7,6 +7,7 @@
   "https://www.sakhaparliament.ru/goods/fashion/z103019154": "2026-11-11"
  },
  "images": {
+  "http://k.sina.com.cn/article_6579089221_m18824ef4503301tq9k.html": "http://n.sinaimg.cn/sinakd20261109ac/321/w480h641/20261109/05d2-5ebb0f3c8b2a59c0754cd0fdbcc07ea6.jpg",
   "https://alphavilleearredores.com.br/artigo/category/eventos/?YH=5077051": null,
   "https://appmedia.jp/bleach-mh/80520532": "https://appmedia.jp/wp-content/uploads/2026/10/163124_347an.webp",
   "https://appmedia.jp/bleach-mh/80524210": "https://appmedia.jp/wp-content/uploads/2026/10/192831_upygs.webp",
@@ -23,7 +24,6 @@
   "https://enuchi.jp/14622/recolte-kedamatori-202611": "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg",
   "https://eu.36kr.com/en/p/4055350158398339": "https://img.36krcdn.com/hsossms/20261104/v2_851566546f8140b6b7de48fc4c1ed671@000000@ai_oswg1050775oswg2048oswg2048_img_000~tplv-1marlgjv7f-ai-v3:600:400:600:400:q70.jpg",
   "https://fandomwire.com/best-nightmarish-horror-series-better-than-from-ranked/": "https://www.bing.com/th?id=ONUT.cNxo0NslN--daEmcUjFkUA&pid=News&w=1200",
-  "https://finance.sina.com.cn/wm/2026-11-10/doc-iniyhmwt2475997.shtml": "https://www.bing.com/th?id=ONUT.Ft4i4SxYkxu_nFkHFyjbnQ&pid=News&w=556",
   "https://finance.yahoo.com/markets/stocks/articles/two-shares-rise-over-3-113921042.html": "https://www.bing.com/th?id=ONUT.Yz6zvS-UB2W8_BlY0dEDyA&pid=News&w=700",
   "https://freeyork.org/digital-art/star-wars-generative-ai/": "https://freeyorkk.b-cdn.net/wp-content/uploads/2026/11/star-wars-generative-ai-freeyork-1.jpg",
   "https://gameluster.com/honkai-nexus-anima-final-closed-beta-spring-2027/": "https://gameluster.com/wp-content/uploads/2026/11/maxresdefault.jpg",
@@ -1148,27 +1148,6 @@
   {
    "batch": 3,
    "because": "周杰伦",
-   "date": "2026-11-10",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.Ft4i4SxYkxu_nFkHFyjbnQ&pid=News&w=556",
-   "kind": "board",
-   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
-   "score": 7,
-   "source": "新浪财经",
-   "taste": [
-    [
-     "作品:周杰伦",
-     3
-    ]
-   ],
-   "title": "“周同学”带“狗”来进博会了！",
-   "url": "https://finance.sina.com.cn/wm/2026-11-10/doc-iniyhmwt2475997.shtml",
-   "words": [],
-   "work": "周杰伦"
-  },
-  {
-   "batch": 3,
-   "because": "周杰伦",
    "date": "2026-11-09",
    "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.EAVIPSzGkwSGF90Bz8ENPw&pid=News&w=1200",
@@ -1184,6 +1163,27 @@
    ],
    "title": "周杰倫歎日料開近50萬天價紅酒 網民驚呼：一餐飯飲咗部名車！",
    "url": "https://www.hk01.com/%E5%8D%B3%E6%99%82%E5%A8%9B%E6%A8%82/60408972/%E5%91%A8%E6%9D%B0%E5%80%AB%E6%AD%8E%E6%97%A5%E6%96%99%E9%96%8B%E8%BF%9150%E8%90%AC%E5%A4%A9%E5%83%B9%E7%B4%85%E9%85%92-%E7%B6%B2%E6%B0%91%E9%A9%9A%E5%91%BC-%E4%B8%80%E9%A4%90%E9%A3%AF%E9%A3%B2%E5%92%97%E9%83%A8%E5%90%8D%E8%BB%8A",
+   "words": [],
+   "work": "周杰伦"
+  },
+  {
+   "batch": 3,
+   "because": "周杰伦",
+   "date": "2026-11-08",
+   "hits": [],
+   "image": "http://n.sinaimg.cn/sinakd20261109ac/321/w480h641/20261109/05d2-5ebb0f3c8b2a59c0754cd0fdbcc07ea6.jpg",
+   "kind": "board",
+   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
+   "score": 7,
+   "source": "手机新浪网",
+   "taste": [
+    [
+     "作品:周杰伦",
+     3
+    ]
+   ],
+   "title": "黄渤调侃大嗓儿就像去看周杰伦演唱会，帮周杰伦唱了一段",
+   "url": "http://k.sina.com.cn/article_6579089221_m18824ef4503301tq9k.html",
    "words": [],
    "work": "周杰伦"
   },
@@ -1889,11 +1889,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1901,11 +1901,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
