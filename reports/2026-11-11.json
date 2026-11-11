@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "5ff19043d4b7",
+ "edit_sig": "b79e180d533a",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -1099,53 +1099,31 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-11",
-     "n": 3,
-     "source": "Infoseek",
-     "title": "ヤマハ発動機、みなとみらいの「Yamaha E-Ride Base」をリニューアルオープン - 第1弾イベントとして『ゼンゼロ』とコラボも",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5sWGJTQy1ka1ZjTnJ4a29wOXNFdlgyb3lGdXhTYVZjOG5LcGNpYjJYWHdPSGxFNTZVRUUzaFg4V2M3VkZfVTlYOE1DclFHeXhQZ09VcWYybnhXOC1UWXU4cw?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 4,
-     "source": "IGN Japan",
-     "title": "『崩壊：スターレイル』開発者インタビュー！アッハをプレイアブル化した理由から「ゼンゼロ」コラボの人選まで",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9yaURJZHQ5SWl3T3dXTlh3X25XeVp2Z0RtRVpwVUZQUXBoVzcwdUhoMlBDVXh4ZEgza1dtUlFrNHBodHpESi1CMjQwM1c4UXJVRFFrTw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "Yamaha E-Ride Base（横浜）で11月11日から2027年3月18日まで開催。XSR900 GPの特別仕様車を展示し、限定グッズも用意。",
      "date": "2026-11-10",
+     "event": {
+      "date": "2027-03-18",
+      "label": "コラボ展終了"
+     },
      "headline": "ヤマハ×「ゼンレスゾーンゼロ」コラボ展が横浜で11月11日開幕！「XSR900 GP」の特別仕様車を展示、限定グッズも",
-     "highlight": "",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-000-1-view.jpg?exp=10800",
-     "image_via": "og:image",
+     "highlight": "11月11日開幕",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-001-1-view.jpg?pri=l&w=640&h=357&exp=10800",
+     "image_via": "AI 挑选",
      "url": "https://news.yahoo.co.jp/articles/22cd3181cc0168608d0e6e41666de0eee05401e5",
      "weight": "hero"
     },
     {
      "blurb": "",
-     "date": "2026-11-11",
-     "headline": "ヤマハ発動機×ゼンレスゾーンゼロ、コラボ展を横浜で開催！ 車両展示、限定グッズ配布も（レスポンス） | 自動車情報・ニュース",
-     "highlight": "",
-     "image": "https://autos-pctr.c.yimg.jp/dzF9o7ZTfctyx6yoKaI790Nk5GmrQv6w1hGpCL3eqdbqGRvfUjqNwIE9e2rOMJPmGGxfBo106_F8jajvdjF9N47DdQzUjTkQR_lify-ZJfvbGiHxvNv2btavJghI-LhQniXrzKIKfOqjV-R-CS2j3HLOf0Z7qswfOi9_bXDwKYs=",
-     "image_via": "og:image",
-     "url": "https://carview.yahoo.co.jp/news/detail/a4eac3de3c0aff0b11fbd288746a2a6a382d64f7/?mode=top",
-     "weight": "hero"
-    },
-    {
-     "blurb": "这款绝区零联名手柄的评测：可无线连接 PC、Xbox 和 Android 设备。",
      "date": "2026-11-10",
      "headline": "GameSir G7 Pro Zenless Zone Zero 评测：终于有一款无线手柄能同时连接我的PC、Xbox 和 Android 设备了！",
      "highlight": "",
      "image": "https://www.maison-et-domotique.com/wp-content/uploads/2026/11/test-gamesir-g77-pro-zzz-1006.jpg",
      "image_via": "og:image",
      "url": "https://www.maison-et-domotique.com/zh/174485-gamesir-g7-pro-zenless-zone-zero-%E8%AF%84%E6%B5%8B%EF%BC%9A%E7%BB%88%E4%BA%8E%E6%9C%89%E4%B8%80%E6%AC%BE%E6%97%A0%E7%BA%BF%E6%89%8B%E6%9F%84%E8%83%BD%E5%90%8C%E6%97%B6%E8%BF%9E%E6%8E%A5%E6%88%91/",
-     "weight": "lead"
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",
@@ -1240,9 +1218,8 @@
      "date": "2026-11-10",
      "headline": "A2O LITE《NEON》打歌舞台藏惊喜，OA被粉丝挖出“隐藏主唱”实力",
      "highlight": "",
-     "image": null,
-     "source": "Sohu",
-     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
+     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1092539868_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }

@@ -148,7 +148,7 @@
   "MMORPG 新作": 2,
   "The Mandalorian": 3,
   "Vaundy": 2,
-  "绝区零": 1,
+  "绝区零": 3,
   "日本顶级网球赛事": 1
  },
  "三星手机": [
@@ -691,10 +691,25 @@
  ],
  "绝区零": [
   {
+   "headline": "ヤマハ×「ゼンレスゾーンゼロ」コラボ展が横浜で11月11日開幕！「XSR900 GP」の特別仕様車を展示、限定グッズも",
+   "highlight": "11月11日開幕",
+   "blurb": "Yamaha E-Ride Base（横浜）で11月11日から2027年3月18日まで開催。XSR900 GPの特別仕様車を展示し、限定グッズも用意。",
+   "weight": "hero",
+   "refs": [
+    2,
+    3
+   ],
+   "event": {
+    "date": "2027-03-18",
+    "label": "コラボ展終了"
+   },
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-001-1-view.jpg?pri=l&w=640&h=357&exp=10800"
+  },
+  {
    "headline": "GameSir G7 Pro Zenless Zone Zero 评测：终于有一款无线手柄能同时连接我的PC、Xbox 和 Android 设备了！",
    "highlight": "",
-   "blurb": "这款绝区零联名手柄的评测：可无线连接 PC、Xbox 和 Android 设备。",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1
    ]

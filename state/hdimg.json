@@ -2426,15 +2426,16 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-000-1-view.jpg?exp=10800": {
-  "w": 1024,
-  "h": 682,
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-001-1-view.jpg?pri=l&w=640&h=357&exp=10800": {
+  "w": 640,
+  "h": 358,
   "target": 1280,
   "v": 3,
-  "local": "pics/a883ebf10fe69e4f.webp",
+  "blur": 0.457,
+  "local": "pics/a26e46355365cf83.webp",
   "out": [
-   1024,
-   682
+   1280,
+   716
   ],
   "why": "期限付きの網址"
  },
