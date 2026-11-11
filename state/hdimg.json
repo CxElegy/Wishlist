@@ -301,6 +301,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.newsweek.com/wp-content/uploads/2026/11/Copy-of-3-2-image-71.png?w=1200&crop=1": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.st-note.com/img/1793364754-4OfgPJ5UydeEb6iM2QplrxK3.png?width=1200": {
   "w": 1200,
   "h": 553,
@@ -396,6 +402,12 @@
  "https://automaton-media.com/wp-content/uploads/2026/11/20261109-478278-header.jpg": {
   "w": 1600,
   "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://autos-pctr.c.yimg.jp/dzF9o7ZTfctyx6yoKaI790Nk5GmrQv6w1hGpCL3eqdbqGRvfUjqNwIE9e2rOMJPmGGxfBo106_F8jajvdjF9N47DdQzUjTkQR_lify-ZJfvbGiHxvNv2btavJghI-LhQniXrzKIKfOqjV-R-CS2j3HLOf0Z7qswfOi9_bXDwKYs=": {
+  "w": 968,
+  "h": 633,
   "target": 1280,
   "v": 3
  },
@@ -924,12 +936,6 @@
   "target": 1280,
   "v": 3
  },
- "https://gagadget.com/media/cache/64/f4/64f443032bd3e39839afb531cf5b78f8.webp": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://game.watch.impress.co.jp/img/gmw/list/2153/775/002.jpg": {
   "w": 2160,
   "h": 2160,
@@ -1129,12 +1135,6 @@
   "target": 720,
   "v": 3
  },
- "https://hips.hearstapps.com/hmg-prod/images/e68b5f15-cb38-4c12-bedb-c5c86e7596d6.png?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
-  "w": 1200,
-  "h": 600,
-  "target": 1280,
-  "v": 3
- },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261105/photo/bkn-20261105000104965-1105_00862_001_02b.jpg?20261104222519": {
   "w": 780,
   "h": 799,
@@ -1171,6 +1171,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://hotelbank.jp/wp-content/uploads/eyecatch-192592-auto.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://hotelbank.jp/wp-content/uploads/eyecatch-193461-auto.png": {
@@ -1359,6 +1365,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.pushsquare.com/76e10b1c421ef/1280x720.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://images.thedirect.com/media/article_full/1000012122.jpg": {
   "w": 1280,
   "h": 720,
@@ -1422,6 +1434,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cCV3B.img": {
   "w": 638,
   "h": 424,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dBBlh.img": {
+  "w": 1600,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -1953,6 +1971,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4083048_0-enlarge.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4087765_0-enlarge.jpg": {
   "w": 2000,
   "h": 1333,
@@ -2040,12 +2064,6 @@
  "https://my-formosa.com.tw//News/upload/20261101000150g.jpg": {
   "w": 840,
   "h": 440,
-  "target": 1280,
-  "v": 3
- },
- "https://mymodernmet.com/wp/wp-content/uploads/2026/11/studio-ghibli-donguri-humidifiers-fb.png": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -2201,6 +2219,19 @@
   "h": 410,
   "target": 720,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/32990/156121_615.jpg": {
+  "w": 615,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.458,
+  "local": "pics/e49e774028d8a7e4.webp",
+  "out": [
+   1280,
+   833
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/49841/268597_615.jpg": {
   "w": 615,
@@ -2407,6 +2438,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1755,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/6ef642ce10a66476.webp",
+  "out": [
+   1280,
+   1021
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsdig.ismcdn.jp/mwimgs/5/b/1200w/img_5b27e269bf927978afa950a713f210362377754.jpg": {
   "w": 1200,
   "h": 674,
@@ -2601,6 +2644,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/55787/1080/55787-1080-355f0e8982c8566a433b1b72105f2285-874x583.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 874,
+  "h": 583,
+  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/56498/354/56498-354-5fb6b62d9a4e4546bf8060a1ac4e3fd6-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -2833,6 +2882,12 @@
   "why": "看不清"
  },
  "https://sm.ign.com/t/ign_ap/news/k/kfc-reveal/kfc-reveals-official-avengers-doomsday-menu-worthy-of-dr-doo_x948.1200.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://sm.ign.com/t/ign_jp/screenshot/default/sub4_qu2t.1200.png": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3516,12 +3571,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.6GeaSh256dvaR-rLRZKfRA&pid=News&w=700": {
-  "w": 700,
-  "h": 383,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -3703,12 +3752,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.Yz6zvS-UB2W8_BlY0dEDyA&pid=News&w=700": {
-  "w": 700,
-  "h": 384,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Z8qznNUuoyyH_qoTlJyMrQ&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3734,9 +3777,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.cXffdlpCnDisgmslv1helQ&pid=News&w=600": {
-  "w": 600,
-  "h": 315,
+ "https://www.bing.com/th?id=ONUT.cNxo0NslN--daEmcUjFkUA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3788,6 +3831,19 @@
   "out": [
    1280,
    719
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.qm0dLRfzCB8chFSYEn2smQ&pid=News&w=400": {
+  "w": 400,
+  "h": 400,
+  "target": 720,
+  "v": 3,
+  "blur": 0.532,
+  "local": "pics/77da8d7b35f131b9.webp",
+  "out": [
+   720,
+   720
   ],
   "why": "看不清"
  },
@@ -3905,6 +3961,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.dailysunny.com/wp-content/uploads/2026/10/20251101-Pumpkin-Smash-6-e1791895860938.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/03/27/Dexerto-Header-2.jpg": {
   "w": 1600,
   "h": 900,
@@ -4020,12 +4082,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.irishexaminer.com/cms_media/module_img/10568/5284152_1_org_164f810a-4262-4cdc-adab-a69f4f531822.jpg.jpg": {
-  "w": 2000,
-  "h": 1333,
-  "target": 1280,
-  "v": 3
- },
  "https://www.jedinews.com/wp-content/uploads/2025/09/Warwick-Davis-Harry-Potter-Aug25.jpg": {
   "w": 696,
   "h": 467,
@@ -4098,12 +4154,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.nikkei.com/nkd/disclosure/tdnr/20261008548007/thumbnail/?ttype=ogp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
  },
  "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg": {
   "w": 1200,
