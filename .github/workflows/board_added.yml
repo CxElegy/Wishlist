@@ -52,6 +52,16 @@ jobs:
         with:
           path: state/wd_facts.json
           key: wd-facts-${{ github.run_id }}
+      - id: wdchk
+        if: always()
+        uses: actions/cache/restore@v4
+        with:
+          path: state/wd_facts.json
+          key: wd-facts-${{ github.run_id }}
+          lookup-only: true
+      - name: Wikidata の結果の保存が拒まれたら警告（save は拒まれても緑のまま）
+        if: always() && steps.wdchk.outputs.cache-hit != 'true'
+        run: echo "::warning::Wikidata の cache が保存できなかった（書き込みが拒まれた？）。次の回は空から始まる"
       - name: 足された版面の記事集め
         continue-on-error: true
         timeout-minutes: 10

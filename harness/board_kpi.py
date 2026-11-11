@@ -31,6 +31,9 @@ import urllib.request
 
 import yaml
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import browser  # noqa: E402,F401  urlopen の止め（test_browser_guard）。ここが読むのは localhost の自前版 Supabase だけ
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 RUNS = pathlib.Path("D:/Claude/kpi/runs")   # 本人のデータが入るのでリポジトリの外（公開しない）
 OUT = ROOT / "harness" / "kpi" / "latest.json"
@@ -230,7 +233,7 @@ def cmd_pages(a):
     dirp.mkdir(parents=True, exist_ok=True)
     accts = q("select email, coalesce(prefs->'picks','[]'::jsonb) from public.app_users where email like 'test-%@example.com' and left_at is null order by 1")
     with sync_playwright() as pw:
-        br = pw.chromium.launch()
+        br = browser.launch(pw)
         for email, picks in accts:
             names = [x.get("name") for x in json.loads(picks)]
             ac = acct(email)
