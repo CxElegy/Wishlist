@@ -1,4 +1,4 @@
-"""公開 pages.yml：古い公開を止めて最新だけ出す・docs/ を push する回が終わったら公開する（2026-11-01）。"""
+"""公開 pages.yml：走っている公開は終わらせ待ちは最新だけ・docs/ を push する回が終わったら公開する（2026-11-01）。"""
 import datetime as dt
 import importlib.util
 import re
@@ -34,9 +34,9 @@ def docs_pushers():
 
 
 class PagesWorkflow(unittest.TestCase):
-    def test_concurrency_cancels_old(self):
+    def test_concurrency_finishes_running_keeps_newest_pending(self):
         t = (WF / "pages.yml").read_text()
-        self.assertRegex(t, r"group: pages\s+cancel-in-progress: true")
+        self.assertRegex(t, r"group: pages\s+cancel-in-progress: false")
         self.assertIn("actions/deploy-pages", t)
 
     def test_docs_pushers_are_listed(self):
