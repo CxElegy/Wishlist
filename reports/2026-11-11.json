@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "cd78a3776bfe",
+ "edit_sig": "e193b0f09e54",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -473,24 +473,33 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "ジェラート ピケの「ギフトマーケット」が11/14から開催。くじ・カプセルトイ・ノベルティ・無料ラッピングなど会場限定コンテンツが並ぶ。",
      "date": "2026-11-10",
-     "n": 2,
-     "source": "FASHIONSNAP",
-     "title": "マッシュHD、26年8月期は売上収益1500億円突破 ジェラピケは400億円目前",
-     "url": "https://www.fashionsnap.com/article/2026-11-11/mash-hd-business-2026/"
+     "event": {
+      "date": "2026-11-14",
+      "label": "開催開始"
+     },
+     "headline": "ジェラート ピケ「ギフトマーケット」くじ＆カプセルトイ、ノベルティ、無料ラッピングなど会場限定コンテンツが満載！【11/14～】",
+     "highlight": "11/14～",
+     "image": "https://oggi.jp/wp-content/uploads/2026/11/261104gptop1.jpg",
+     "image_via": "og:image",
+     "url": "https://oggi.jp/7974980",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 3,
-     "source": "Oggi.jp",
-     "title": "ジェラート ピケ「ギフトマーケット」くじ＆カプセルトイ、ノベルティ、無料ラッピングなど会場限定コンテンツが満載！【11/14～】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE1DSTBiMy1VZTQ0dmplX1dsLXFVOTc4d1JIaXVUX3NTanJwT01wdHhLUEJQN3dvQ1RjZ2tn?oc=5"
+     "headline": "マッシュHD、26年8月期は売上収益1500億円突破 ジェラピケは400億円目前",
+     "highlight": "1500億円突破",
+     "image": "https://fashionsnap-assets.com/asset/format=auto,width=1280,height=670,gravity=auto,fit=pad/article/images/2026/11/75969f7f-c62a-4e57-a727-ee633bd11568.jpg",
+     "image_via": "og:image",
+     "url": "https://www.fashionsnap.com/article/2026-11-11/mash-hd-business-2026/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",
