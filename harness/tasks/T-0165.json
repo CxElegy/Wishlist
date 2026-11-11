@@ -1,0 +1,19 @@
+{
+ "id": "T-0165",
+ "title": "版面を足したら最初の記事集め・小元素・主題を数分で（DESIGN_PRINCIPLES E「待たせない」）",
+ "why": "版面を足したら最初の記事集め・小元素・主題を数分で（DESIGN_PRINCIPLES E「待たせない」） — お客さまが版面を足した（follows・user_signup・my_keywords_set）・店長が items.yaml に足した、のその場で、その版面だけの収集（userfeed／digest の 1 版面）・library_emblem・主題を workflow_dispatch。次の定時を待たない。できた条件：test-b で 1 つ足してから 10 分以内に記事・小元素・配色が出る（本番で測る）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 165,
+ "scope": [],
+ "done_when": [
+  "お客さまが版面を足した（follows・user_signup・my_keywords_set）・店長が items.yaml に足した、のその場で、その版面だけの収集（userfeed／digest の 1 版面）・library_emblem・主題を workflow_dispatch。次の定時を待たない。できた条件：test-b で 1 つ足してから 10 分以内に記事・小元素・配色が出る（本番で測る）"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:600",
+ "created": "2026-11-12"
+}

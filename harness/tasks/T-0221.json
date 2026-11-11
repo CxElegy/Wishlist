@@ -1,0 +1,19 @@
+{
+ "id": "T-0221",
+ "title": "画面の文字を言語ごとの表に",
+ "why": "画面の文字を言語ごとの表に — まず日本語の表、英語は表を足すだけで出る作り",
+ "quote": "",
+ "kind": "visual",
+ "complexity": "normal",
+ "priority": 221,
+ "scope": [],
+ "done_when": [
+  "まず日本語の表、英語は表を足すだけで出る作り"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:676",
+ "created": "2026-11-12"
+}

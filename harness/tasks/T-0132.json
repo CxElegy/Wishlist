@@ -1,0 +1,20 @@
+{
+ "id": "T-0132",
+ "title": "データの JSON・YAML に衝突の印（<<<<<<<）が入ったら CI で止める（f2f2 2026-10-27：e3b67953 が reports/2026-10-27.json・state/recommend.json に衝突の印",
+ "why": "データの JSON・YAML に衝突の印（<<<<<<<）が入ったら CI で止める（f2f2 2026-10-27：e3b67953 が reports/2026-10-27.json・state/recommend.json に衝突の印を commit し、tests の notify が全 PR で赤になった。のちの 编排 の commit で直った）— tests に reports・state・items.yaml・docs の json/html を数え「行頭 <<<<<<< ・>>>>>>>」0 件、を足す",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 132,
+ "scope": [
+  "reports/2026-10-27.json",
+  "state/recommend.json"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:448",
+ "created": "2026-10-27"
+}

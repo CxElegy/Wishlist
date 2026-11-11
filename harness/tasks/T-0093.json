@@ -1,0 +1,19 @@
+{
+ "id": "T-0093",
+ "title": "同じ考えでほかに直せる所（r1f1）：失敗メールの出どころを全部数える（24h の赤い回を workflow ごとに数えて、pages 以外で多いものを 1 つずつ根から直す",
+ "why": "同じ考えでほかに直せる所（r1f1）：失敗メールの出どころを全部数える（24h の赤い回を workflow ごとに数えて、pages 以外で多いものを 1 つずつ根から直す。harness/pages_health.py の数え方を workflow 名の引数に広げる）。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 93,
+ "scope": [
+  "harness/pages_health.py"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:273",
+ "created": "2026-11-12"
+}

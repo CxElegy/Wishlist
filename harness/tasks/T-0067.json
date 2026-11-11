@@ -1,0 +1,19 @@
+{
+ "id": "T-0067",
+ "title": "【計画 2026-11-03 plan1】egress の 24 時間通し数え（11/4 01:30 UTC 以降・本番に負荷を足さない）— Supabase の query_logs（api）で storage（写真）0・nav_schemes／edit_control_get／",
+ "why": "【計画 2026-11-03 plan1】egress の 24 時間通し数え（11/4 01:30 UTC 以降・本番に負荷を足さない）— Supabase の query_logs（api）で storage（写真）0・nav_schemes／edit_control_get／feedback／sizes／boards PATCH を前の基準（542／307／274／141／396）と並べ、結果と「まだ多い呼び出し元」を PROGRESS と docs/rules/free-tier.md に 1 行ずつ書く。基準を割った呼び出し元がなければ [x]、残りがあればその出どころを規則で止める段を足す。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 67,
+ "scope": [
+  "docs/rules/free-tier.md"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:162",
+ "created": "2026-11-03"
+}

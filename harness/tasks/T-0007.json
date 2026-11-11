@@ -1,0 +1,17 @@
+{
+ "id": "T-0007",
+ "title": "【計画 2026-11-11 f1】PENDING.md の Google OAuth の「Authorized domains」の記述が旧 `bzokpnbcjscbcehdxtjq.supabase.co` のまま：自前版（*.ts.net）は top private d",
+ "why": "【計画 2026-11-11 f1】PENDING.md の Google OAuth の「Authorized domains」の記述が旧 `bzokpnbcjscbcehdxtjq.supabase.co` のまま：自前版（*.ts.net）は top private domain ではなく同じ詰まり方をするか確かめ、再開手順を新サーバー前提に書き直す（コードは触らない・文書の段）。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 7,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:28",
+ "created": "2026-11-11"
+}

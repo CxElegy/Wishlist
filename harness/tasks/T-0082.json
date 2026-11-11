@@ -1,0 +1,17 @@
+{
+ "id": "T-0082",
+ "title": "【同じ考え】お客さまの版面の AI 編集（日程 event・要約・重大の札を付ける）— これからの予定・重大の札・頭条の評価が店長と同じに出る条件（r1f1 2026-11-02：--diff-admin の「データ待ち」の根",
+ "why": "【同じ考え】お客さまの版面の AI 編集（日程 event・要約・重大の札を付ける）— これからの予定・重大の札・頭条の評価が店長と同じに出る条件（r1f1 2026-11-02：--diff-admin の「データ待ち」の根。日程は AI 編集で付くが、お客さまの版面〔user_boards〕はまだ編集されない。BACKLOG「お客さま専用の編集待ち」の続き）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 82,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:216",
+ "created": "2026-11-02"
+}

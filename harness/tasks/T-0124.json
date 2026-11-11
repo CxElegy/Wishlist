@@ -1,0 +1,17 @@
+{
+ "id": "T-0124",
+ "title": "ux_check の普段の回に「足したが焼いていない」状態を作る（f1 2026-10-27：矛盾の点検 pending_contradiction は通しにしかない",
+ "why": "ux_check の普段の回に「足したが焼いていない」状態を作る（f1 2026-10-27：矛盾の点検 pending_contradiction は通しにしかない。test-b に 1 つ足して外す一周を --journey-read に混ぜ、店長のページ /home/ 側の殻でも同じ矛盾を数える）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 124,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:434",
+ "created": "2026-10-27"
+}

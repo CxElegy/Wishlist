@@ -1,0 +1,22 @@
+{
+ "id": "T-0054",
+ "title": "【計画 2026-11-04 plan2c】スマホ（390）で最初の画面が出るまでに受け取る合計バイトを予算にする",
+ "why": "【計画 2026-11-04 plan2c】スマホ（390）で最初の画面が出るまでに受け取る合計バイトを予算にする — Supabase が止まった間もページは静的に出る作りにしたが、その静的なページ自体の重さ（home/index.html 2.6 MB・フォント）は予算が無い。「重さの予算」の段（E 表 2026-10-26）の本番化が未確認。できたと言える条件：①本番（写しから、timeout 付き 1 回）で home・入口・me.html の転送バイトを 390px・3G 相当で測り PROGRESS に②HTML 3 MB・最初の画面の画像 600 KB など上限を決め、超えたら ux_check が ✗③上限を超える最大の部品（index.html の中身の内訳）を 1 つ規則で縮める。",
+ "quote": "",
+ "kind": "visual",
+ "complexity": "normal",
+ "priority": 54,
+ "scope": [
+  "docs/home/index.html",
+  "docs/index.html"
+ ],
+ "done_when": [
+  "①本番（写しから、timeout 付き 1 回）で home・入口・me.html の転送バイトを 390px・3G 相当で測り PROGRESS に②HTML 3 MB・最初の画面の画像 600 KB など上限を決め、超えたら ux_check が ✗③上限を超える最大の部品（index.html の中身の内訳）を 1 つ規則で縮める。"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:128",
+ "created": "2026-11-04"
+}

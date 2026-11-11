@@ -1,0 +1,17 @@
+{
+ "id": "T-0008",
+ "title": "【計画 2026-11-07】休止の札（SB_DEG_JS）を新サーバーの停止にも効かせる",
+ "why": "【計画 2026-11-07】**休止の札（SB_DEG_JS）を新サーバーの停止にも効かせる**：今は *.supabase.co だけを見ている。新サーバー（*.ts.net）が止まったとき（PC 停止＝5xx・接続失敗）にも札が出るよう、見る網址を接続先の設定から決める。402 の判定は残す（旧の仕組みが戻るとき用）。点検：fake402_check の偽サーバーで 5xx・接続失敗のときに札が出て、復帰したら消える。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 8,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:29",
+ "created": "2026-11-07"
+}

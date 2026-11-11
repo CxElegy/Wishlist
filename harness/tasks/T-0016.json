@@ -1,0 +1,21 @@
+{
+ "id": "T-0016",
+ "title": "【計画 2026-11-06 plan2】制限中（402）の札に「戻る目安」を出す",
+ "why": "【計画 2026-11-06 plan2】制限中（402）の札に「戻る目安」を出す — いまの SB_DEG_JS の文は『休止しています』だけで、いつ戻るかが無い（お客さまは待てばよいのか諦めるのか分からない）。『Supabase の期間リセット日』の段（上の plan2）で state に置く日付を読み、札と登録の画面に『◯月◯日ごろ戻ります』を出す。日付が無いときは今の文のまま。DB の形は変えない。できた条件：harness/sb_down_check.py（route.abort）で 1400/390 の札に日付が出る・日付なしでは出ない試験・JS の文法点検 OK。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 16,
+ "scope": [
+  "harness/sb_down_check.py"
+ ],
+ "done_when": [
+  "いまの SB_DEG_JS の文は『休止しています』だけで、いつ戻るかが無い（お客さまは待てばよいのか諦めるのか分からない）。『Supabase の期間リセット日』の段（上の plan2）で state に置く日付を読み、札と登録の画面に『◯月◯日ごろ戻ります』を出す。日付が無いときは今の文のまま。DB の形は変えない。できた条件：harness/sb_down_check.py（route.abort）で 1400/390 の札に日付が出る・日付なしでは出ない試験・JS の文法点検 OK。"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:39",
+ "created": "2026-11-06"
+}

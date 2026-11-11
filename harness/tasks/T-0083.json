@@ -1,0 +1,17 @@
+{
+ "id": "T-0083",
+ "title": "【同じ考え】点検の「データ待ち」を 0 にする別の見方：お客さまの版面の記事に過去の号〔もっと見る〕を持たせる（r1f1 2026-11-02：test-b の「もっと見る」が空",
+ "why": "【同じ考え】点検の「データ待ち」を 0 にする別の見方：お客さまの版面の記事に過去の号〔もっと見る〕を持たせる（r1f1 2026-11-02：test-b の「もっと見る」が空。user_boards は最新の記事だけで、過去の記事の積み方が店長と違う）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 83,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:217",
+ "created": "2026-11-02"
+}

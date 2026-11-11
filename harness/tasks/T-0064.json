@@ -1,0 +1,17 @@
+{
+ "id": "T-0064",
+ "title": "（f3 2026-11-05 07:00 JST 調べ：E15 案 B の公式の源は、この環境の網では確かめられず作らなかった",
+ "why": "（f3 2026-11-05 07:00 JST 調べ：E15 案 B の公式の源は、この環境の網では確かめられず作らなかった。a2olite.com 403・marvel.com/characters 403・mgmplus.com/series/from は 200 だが静的 HTML に cast/character のリンクが 0＝JS 描画で official_person_images が拾えない。site を items.yaml に足す前に、網のある環境で 1 版面ずつ official_images が返す網址を確かめる。FROM・漫威电影は emblem_people（出演者）で公式の立ち絵は役者でなく役の絵なので、先に A2O LITE のメンバー写真だけ。①〜②の photos 洗い出しは #900・user_login は #899 で済み）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 64,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:143",
+ "created": "2026-11-05"
+}

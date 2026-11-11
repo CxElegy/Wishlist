@@ -1,0 +1,17 @@
+{
+ "id": "T-0084",
+ "title": "【同じ考え】👍👎 の localStorage キー・いま押した状態を、店長とお客さまを同じ端末で切り替えても混ざらないか ux_check の通しで確かめる（r1f1 2026-11-02：お客さまは wishlist-votes-own、店長は w",
+ "why": "【同じ考え】👍👎 の localStorage キー・いま押した状態を、店長とお客さまを同じ端末で切り替えても混ざらないか ux_check の通しで確かめる（r1f1 2026-11-02：お客さまは wishlist-votes-own、店長は wishlist-votes）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 84,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:218",
+ "created": "2026-11-02"
+}

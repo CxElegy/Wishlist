@@ -1,0 +1,17 @@
+{
+ "id": "T-0120",
+ "title": "管理ページ・通しの決まった待ち（check_admin 3 秒・check_admin_pages 1.5 秒・journey 3 秒）も同じ「出るまで待つ」に（f4 2026-10-27：settle と同じ型",
+ "why": "管理ページ・通しの決まった待ち（check_admin 3 秒・check_admin_pages 1.5 秒・journey 3 秒）も同じ「出るまで待つ」に（f4 2026-10-27：settle と同じ型。残りの wait_for_timeout 14 か所を数え、測る前のものだけ条件待ちへ）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 120,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:430",
+ "created": "2026-10-27"
+}

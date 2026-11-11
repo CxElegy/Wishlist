@@ -1,0 +1,17 @@
+{
+ "id": "T-0103",
+ "title": "試験が「作り直される生データ」を直接読んでいないかを数える点検：tests/ が docs/home/ の画像・items.yaml の測り値を読む所を grep し、固定の fixtures に替えるか live と明記（test_emb",
+ "why": "試験が「作り直される生データ」を直接読んでいないかを数える点検：tests/ が docs/home/ の画像・items.yaml の測り値を読む所を grep し、固定の fixtures に替えるか live と明記（test_emblem_face で 1 件直した、ほかを数える）（2026-10-31 r2f2）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 103,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:331",
+ "created": "2026-10-31"
+}

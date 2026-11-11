@@ -1,0 +1,17 @@
+{
+ "id": "T-0034",
+ "title": "Supabase の期間リセット日と残りの枠を管理ページに出す（plan2）：cached egress の使用量は止めても減らない",
+ "why": "Supabase の期間リセット日と残りの枠を管理ページに出す（plan2）：cached egress の使用量は止めても減らない。リセット日（請求期間の始まり）を state に 1 行置き、管理ページの「無料枠」に残り日数を出す。できた条件＝管理ページ 1400/390 で見え、日付は店長が設定ページで書き換えられる（DB の形は変えない）。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 34,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:83",
+ "created": "2026-11-12"
+}

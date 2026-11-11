@@ -1,0 +1,17 @@
+{
+ "id": "T-0032",
+ "title": "docs/404.html を作り、打ち間違い・古い網址の人を入口へ戻す（plan2 2026-11-05）：測った事実＝docs/ 直下に 404.html が無く（ls docs）、/test1/ や /shop/ など昔の網址・打ち間",
+ "why": "docs/404.html を作り、打ち間違い・古い網址の人を入口へ戻す（plan2 2026-11-05）：測った事実＝docs/ 直下に 404.html が無く（ls docs）、/test1/ や /shop/ など昔の網址・打ち間違いは GitHub の素の 404 ページで行き止まりになる（WORKING §3「網址を打たせない」の逆）。できた条件＝docs/404.html（render か welcome が生成・店長のページと同じ P5 の枠組み・日本語／中国語／英語は端末の言語・「入口へ」「店長のページへ」の 2 ボタン）。存在しない網址（例 /Wishlist/home/nothing）を 1400／390 で見て素の 404 でないこと、tests に「404.html があり入口へのリンクを含む」を足す。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 32,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:81",
+ "created": "2026-11-05"
+}

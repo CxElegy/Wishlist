@@ -1,0 +1,19 @@
+{
+ "id": "T-0136",
+ "title": "入口の見本の写真が 6 日前のまま（2026-10-26 本番：入口 https://cxelegy.github.io/Wishlist/ の店長のページの画像は 10.20 〔今日は 10.26〕",
+ "why": "入口の見本の写真が 6 日前のまま（2026-10-26 本番：入口 https://cxelegy.github.io/Wishlist/ の店長のページの画像は 10.20 〔今日は 10.26〕。testground/welcome/shop-pc.webp・shop-sp.webp を手で撮ったまま） — render の後の回（週 1）に Playwright で店長のページを 1400/390 で撮って webp を作り直し、ログインしていない画面だけを写す（お客さまの中身は写らない）。できたと言える条件：入口の画像の日付が 3 日以内であることを ux_check の点検（入口の見本が古い）に足して ✓、撮り直した画像で文字が潰れていない",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 136,
+ "scope": [],
+ "done_when": [
+  "入口の画像の日付が 3 日以内であることを ux_check の点検（入口の見本が古い）に足して ✓、撮り直した画像で文字が潰れていない"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:456",
+ "created": "2026-10-26"
+}

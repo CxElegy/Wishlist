@@ -1,0 +1,19 @@
+{
+ "id": "T-0196",
+ "title": "C2 朝刊・夕刊（DESIGN_PRINCIPLES C2）",
+ "why": "C2 朝刊・夕刊（DESIGN_PRINCIPLES C2） — 9:00 / 18:00 の AI 編集をそれぞれ「号」として見せる（号数・号ごとの頭条・前の号へ）。店長もお客さまも同じ部品。ux_check ✗0",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 196,
+ "scope": [],
+ "done_when": [
+  "9:00 / 18:00 の AI 編集をそれぞれ「号」として見せる（号数・号ごとの頭条・前の号へ）。店長もお客さまも同じ部品。ux_check ✗0"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:649",
+ "created": "2026-11-12"
+}

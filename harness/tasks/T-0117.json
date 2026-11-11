@@ -1,0 +1,17 @@
+{
+ "id": "T-0117",
+ "title": "ux_check の管理者の回（UX_ADMIN_*）を毎日の Actions で必ず走らせ、未確認（None）を ✓ にしない：管理ページの値照合（②投票・全アカウント表・置き方）が今は店長の合言葉がある回だけ",
+ "why": "ux_check の管理者の回（UX_ADMIN_*）を毎日の Actions で必ず走らせ、未確認（None）を ✓ にしない：管理ページの値照合（②投票・全アカウント表・置き方）が今は店長の合言葉がある回だけ。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 117,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:383",
+ "created": "2026-11-12"
+}

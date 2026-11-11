@@ -1,0 +1,19 @@
+{
+ "id": "T-0182",
+ "title": "板ごとでないロゴ・記号の大きさも測る（E4 は人物だけ）",
+ "why": "板ごとでないロゴ・記号の大きさも測る（E4 は人物だけ） — 今の E4 は cutout・badge だけ。logo・icon・板ごとのロゴにも別の物差し（1400：60〜230px 幅など）を決めて ux_check に。あわせて E9 の「何かわからない」（漫威 Black Panther の黒い帯・テニスの空撮）を画素の規則で（暗い面積・主役なし）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 182,
+ "scope": [],
+ "done_when": [
+  "今の E4 は cutout・badge だけ。logo・icon・板ごとのロゴにも別の物差し（1400：60〜230px 幅など）を決めて ux_check に。あわせて E9 の「何かわからない」（漫威 Black Panther の黒い帯・テニスの空撮）を画素の規則で（暗い面積・主役なし）"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:623",
+ "created": "2026-11-12"
+}

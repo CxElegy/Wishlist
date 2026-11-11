@@ -1,0 +1,19 @@
+{
+ "id": "T-0213",
+ "title": "ライブラリの版面ごとに記事を集める",
+ "why": "ライブラリの版面ごとに記事を集める — だれかが追いかけている版面は店長のものでなくても集め、AI 編集（9:00・18:00）も版面ごとに 1 回。board_stories に書く",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 213,
+ "scope": [],
+ "done_when": [
+  "だれかが追いかけている版面は店長のものでなくても集め、AI 編集（9:00・18:00）も版面ごとに 1 回。board_stories に書く"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:667",
+ "created": "2026-11-12"
+}

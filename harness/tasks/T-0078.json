@@ -1,0 +1,17 @@
+{
+ "id": "T-0078",
+ "title": "（次）ux_check の ✗ 文に「測れず」の件数を数字で出す（今は 1 行の注意のみ",
+ "why": "（次）ux_check の ✗ 文に「測れず」の件数を数字で出す（今は 1 行の注意のみ。何の点検が飛んだかを PROGRESS に残せるように）。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 78,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:186",
+ "created": "2026-11-12"
+}

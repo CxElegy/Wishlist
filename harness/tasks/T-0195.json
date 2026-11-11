@@ -1,0 +1,19 @@
+{
+ "id": "T-0195",
+ "title": "設定ページ（店長・お客さま）を P5 の枠組みに",
+ "why": "設定ページ（店長・お客さま）を P5 の枠組みに — 今は線の行だけの素の画面（題字の黄色の帯・硬い影・傾けた見出しなし）。店長のトップと同じ部品で、見本を testground に先に",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 195,
+ "scope": [],
+ "done_when": [
+  "今は線の行だけの素の画面（題字の黄色の帯・硬い影・傾けた見出しなし）。店長のトップと同じ部品で、見本を testground に先に"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:647",
+ "created": "2026-11-12"
+}
