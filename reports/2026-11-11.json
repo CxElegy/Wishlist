@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "e9bb1b809dc8",
+ "edit_sig": "f08bef9c2853",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -124,50 +124,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-11",
-     "n": 3,
-     "source": "https://gamelife.tw/",
-     "title": "戰爭 MMO《王國 W：血盟之誓》11/17 正式公測",
-     "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxQUEQ4SGgtZGRvUXU5S294Z09NWmJkbGRlUVA1X296YW5oeHNVZ0JiTlRaQlhSVktpTS1OWjBUMUhuR21fUW5VdGNXZWo5TUZzQ0h5NzNqWGc5UWkzN1V6bi1ia0FCdGhZUjBMSnRhOWMtZk04RXM2Sk1WXzQwNDMtV19QQXJHYXkyQ2sxWHMtTTdCTmFDbkk0WlN3UjVXemtlVl9vdDlfN2ppQ2NJblBvRDF3Y0RQX3Y4My02SVpnYXRQNlRESlZLWlNmOXJUSHhVSnNlVmNEQlpMbDV3R1diZVNKSkFtVHZtWkZvWWlrUXdhUjhjb2kxYXR3OVFTdDlQNjJKRmdpYW0?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 4,
-     "source": "Massively Overpowered",
-     "title": "A new mod turns Skyrim into a multiplayer MMO experience",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQMWpxWW1nTE5VeVVSS2dwMlZCeG9uNXZPNkhGamlWbjdyZ3VONTlsTnd6ZklFeUo1OFVVQnNFUWZhZkk2UnNiNDY3VkJ1THlzUHhvSzBfYWpHMEp0SXlsVkVwQkxxdHRLN1VLbW5xTEFfcGhxNTVqSi00Y2syMGlHOHlqeVV6VXRJaWJKNzNwR2VCempxNFhj?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 5,
-     "source": "4Gamer.net",
-     "title": "「リネージュ クラシック」の事前ダウンロードが本日スタート。事前キャラ作成は11月13日より受付，当時の設定を踏襲した利用料金も明らかに",
-     "url": "https://www.4gamer.net/games/579/G057943/20261105063/"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 6,
-     "source": "주간한국",
-     "title": "컴투스, '제우스: 오만의 신' 출시 100일 전야제",
-     "url": "https://weekly.hankooki.com/news/articleView.html?idxno=7193298"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 7,
-     "source": "게임동아",
-     "title": "스마일게이트 ‘이클립스’, 출시 후 첫 서버 이전 진행",
-     "url": "https://game.donga.com/125059/"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 8,
-     "source": "PNN",
-     "title": "99년 원작 계승, 다크 판타지 MMO '판타지포유' 정식 출시",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBrVW9nWE81QS1QQUZ4S2M5cGlBZDBXakg0aGRBcURxWHk5UmJJdkd1MF9GODZuandjcHJyTkNlaFBUVUZqUlMtQUN2UVlMb3FJWV9adVJsaEFNd05lTXVrLUluSm1QRjQ2?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -188,6 +144,20 @@
      "image": "https://i0.wp.com/invisioncommunity.co.uk/wp-content/uploads/2026/04/AION-2.webp",
      "image_via": "og:image",
      "url": "https://invisioncommunity.co.uk/aion-2-review-a-beautiful-mmo-with-a-price-problem/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "event": {
+      "date": "2026-11-13",
+      "label": "事前キャラ作成"
+     },
+     "headline": "「リネージュ クラシック」の事前ダウンロードが本日スタート。事前キャラ作成は11月13日より受付",
+     "highlight": "事前キャラ作成は11月13日",
+     "image": "https://www.4gamer.net/games/579/G057943/20261105063/SS/002.jpg",
+     "image_via": "og:image",
+     "url": "https://www.4gamer.net/games/579/G057943/20261105063/",
      "weight": "normal"
     }
    ],
