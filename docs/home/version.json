@@ -1,5 +1,5 @@
 {
- "admin": "c684927a7c50",
+ "admin": "518269e6eeb7",
  "admin-ai": "7147fc842e56",
  "admin-ai_marks": {
   "editdiff": [
@@ -43,15 +43,15 @@
  },
  "admin-members": "521369f980a9",
  "admin-members_marks": {},
- "admin-now": "5672d7891bd1",
+ "admin-now": "171ac716e4b0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9e43aca8"
+   "df066ee8"
   ],
   "queue": [
    "いまの状況",
-   "dd960e28"
+   "e1cb5b2c"
   ],
   "status": [
    "運行状況",
@@ -62,7 +62,7 @@
    "9e69ea63"
   ]
  },
- "admin-system": "84bcb5702784",
+ "admin-system": "b625edab2e3e",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -70,11 +70,11 @@
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "e32b0c27"
+   "0b418772"
   ],
   "res": [
    "リソース・並列と制限",
-   "3e7a6985"
+   "23ac0326"
   ]
  },
  "admin_marks": {},
@@ -196,6 +196,6 @@
    "23e9ddb0"
   ]
  },
- "updated": "11.11 22:37",
+ "updated": "11.11 22:53",
  "wishlist": "17fa0082bdd2"
 }
