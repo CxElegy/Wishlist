@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Anton&family=Yusei+Magic&family=JetBrains+Mono:wght@500;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Anton&family=Yusei+Magic&family=JetBrains+Mono:wght@500;700&display=swap"></noscript>
 <style>
-:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;--good:#1F7A55;--discord:#5865F2;
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--ink0:#1A1C22;--paper0:#EDEBE6;--card0:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;--good:#1F7A55;--discord:#5865F2;
  --by-ai:#6B3FC4;--by-rule:#1F7A55;   /* 流れの図：AI（Claude）が判断する手順 / 規則（プログラム）で決まる手順 */
  --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
  --font-mono:'JetBrains Mono','Noto Sans JP',monospace;--font-num:'Anton',Impact,'Noto Sans JP',sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
@@ -946,6 +946,27 @@ section.sec.has-emb{scroll-margin-top:max(24px,calc(var(--embov,0px) + 6px))}  /
 @media (max-width:760px){.wcard.solo{grid-template-columns:1fr}.wcard.solo .wimg{min-height:0;aspect-ratio:1/1}
  .wcard.solo .wtxt{border-left:0;padding:22px}.wcard.solo h3{font-size:28px}.wish .band .title{font-size:30px}}
 
+html[data-theme="night"]{--ink:#F2EDE6;--paper:#0B0B0E;--sheet:#15151B;--card:#1C1C24;--rose:#E3001B;--gold:#FFD23F;--alert:#E3001B;--shadow:4px 4px 0 #E3001B;--shadow-l:8px 8px 0 #E3001B;--hair:rgba(242,237,230,.18);--g0:#E3001B;--g1:#C4001A;--g2:#A80018;--g3:#8E0016;--g4:#B23A2E;--g5:#9A4A3E;--g6:#7A2E2A;--g7:#5A5A66}
+html[data-theme="night"] body{background:#0B0B0E repeating-linear-gradient(-28deg,transparent 0 46px,rgba(227,0,27,.06) 46px 52px)}
+html[data-theme="night"] .wc,html[data-theme="night"] .sbox,html[data-theme="night"] .agenda,html[data-theme="night"] .pk,html[data-theme="night"] .mast h1,html[data-theme="night"] .nav .pill,html[data-theme="night"] .older summary{color:var(--ink)}
+html[data-theme="night"] .poster,html[data-theme="night"] .nav .pill.on,html[data-theme="night"] .nav .mtabs a.on,html[data-theme="night"] .nav .logo,html[data-theme="night"] .pkhead .flag{--ink:var(--ink0);--card:var(--card0);--paper:var(--paper0);--hair:color-mix(in srgb,var(--ink0) 16%,transparent)}
+html[data-theme="night"] .nav .hm .hl,html[data-theme="night"] .nav .wm small{color:var(--ink);opacity:.7}
+html[data-theme="paper"]{--ink:#111111;--paper:#F7F5F0;--sheet:#FFFFFF;--card:#FFFFFF;--rose:#D23A1E;--gold:#F2D34A;--alert:#D23A1E;--shadow:3px 3px 0 #111;--shadow-l:5px 5px 0 #111;--g0:#111111;--g1:#2B2B2B;--g2:#444444;--g3:#5A5A5A;--g4:#6A6A6A;--g5:#D23A1E;--g6:#707070;--g7:#747474}
+html[data-theme="paper"] body{background:#F7F5F0 radial-gradient(rgba(0,0,0,.06) 1px,transparent 1.2px) 0 0/6px 6px}
+html[data-theme="pastel"]{--ink:#2A2440;--paper:#F4F0FF;--sheet:#FFFFFF;--card:#FFFFFF;--rose:#E0508C;--gold:#7BF1C8;--alert:#E0506C;--shadow:5px 5px 0 #B9A7FF;--shadow-l:9px 9px 0 #B9A7FF;--g0:#7A58E0;--g1:#8E57D8;--g2:#A14CC0;--g3:#B84AA1;--g4:#C04C75;--g5:#357C70;--g6:#3779A1;--g7:#6C6888}
+html[data-theme="pastel"] body{background:linear-gradient(160deg,#F4F0FF,#EAFBF5)}
+html[data-theme="neon"]{--ink:#EAF6FF;--paper:#0A0F2C;--sheet:#11183F;--card:#141C4A;--rose:#FF2E88;--gold:#22E3FF;--alert:#FF2E88;--shadow:4px 4px 0 #FF2E88;--shadow-l:8px 8px 0 #22E3FF;--hair:rgba(234,246,255,.18);--g0:#D81B74;--g1:#B82A9A;--g2:#9038C0;--g3:#6A48D8;--g4:#4658DC;--g5:#2A70D0;--g6:#177CA8;--g7:#4A547A}
+html[data-theme="neon"] body{background:#0A0F2C linear-gradient(rgba(34,227,255,.07) 1px,transparent 1px) 0 0/100% 32px}
+html[data-theme="neon"] .wc,html[data-theme="neon"] .sbox,html[data-theme="neon"] .agenda,html[data-theme="neon"] .pk,html[data-theme="neon"] .mast h1,html[data-theme="neon"] .nav .pill,html[data-theme="neon"] .older summary{color:var(--ink)}
+html[data-theme="neon"] .poster,html[data-theme="neon"] .nav .pill.on,html[data-theme="neon"] .nav .mtabs a.on,html[data-theme="neon"] .nav .logo,html[data-theme="neon"] .pkhead .flag{--ink:var(--ink0);--card:var(--card0);--paper:var(--paper0);--hair:color-mix(in srgb,var(--ink0) 16%,transparent)}
+html[data-theme="neon"] .nav .hm .hl,html[data-theme="neon"] .nav .wm small{color:var(--ink);opacity:.7}
+html[data-theme="indigo"]{--ink:#1C2A44;--paper:#EFE7D6;--sheet:#F6F0E2;--card:#FBF7EE;--rose:#24407A;--gold:#C8A24A;--alert:#B23A2E;--shadow:4px 4px 0 #1C2A44;--shadow-l:8px 8px 0 #24407A;--g0:#1C2A44;--g1:#24407A;--g2:#2E5A8C;--g3:#3A6690;--g4:#4E6450;--g5:#7A5E34;--g6:#8E4A2A;--g7:#625E56}
+html[data-theme="indigo"] body{background:#EFE7D6}
+.thpick .throw{display:flex;flex-wrap:wrap;gap:10px}
+.thpick button{display:flex;align-items:center;gap:8px;min-height:40px;padding:6px 12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:700 13px var(--font-sans);cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.thpick button[aria-pressed=true]{background:var(--ink);color:var(--card)}
+.thpick .sw{display:inline-flex;border:1px solid var(--ink)}.thpick .sw i{width:14px;height:18px}
+
 .page{display:flex;flex-direction:column;align-items:stretch;max-width:1240px}
 .back{display:inline-flex;align-items:center;gap:8px;font:700 12px var(--font-mono);letter-spacing:.12em}.back:hover{color:var(--rose)}
 .lede{margin:0;max-width:760px;font-size:15px;line-height:1.8}
@@ -1109,7 +1130,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 .fxlist small{font-size:11px;line-height:1.4;opacity:.75}
 @media (max-width:600px){.tuse{padding:0 14px 16px}}
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap&amp;text=%E3%83%89%E3%83%B3%EF%BC%81%E3%82%A4%E3%82%A4%E3%83%8D%E3%83%8A%E3%82%B9%2B%31%E3%81%84%E3%81%AD" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap&amp;text=%E3%83%89%E3%83%B3%EF%BC%81%E3%82%A4%E3%82%A4%E3%83%8D%E3%83%8A%E3%82%B9%2B%31%E3%81%84%E3%81%AD"></noscript><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer crossorigin="anonymous"></script><script>window.WL_ACCOUNT="test1";</script><script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap&amp;text=%E3%83%89%E3%83%B3%EF%BC%81%E3%82%A4%E3%82%A4%E3%83%8D%E3%83%8A%E3%82%B9%2B%31%E3%81%84%E3%81%AD" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap&amp;text=%E3%83%89%E3%83%B3%EF%BC%81%E3%82%A4%E3%82%A4%E3%83%8D%E3%83%8A%E3%82%B9%2B%31%E3%81%84%E3%81%AD"></noscript><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer crossorigin="anonymous"></script><script>try{var t=localStorage.getItem('wl-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script><script>window.WL_ACCOUNT="test1";</script><script>
 (function(){
   if(!window.fetch||window.WL_SB) return;
   var of=window.fetch.bind(window), R=document.documentElement, K='wl-sb-down', down=false, paused=false, downAt=0, lastGet=null, probing=false, RETRY=600000, READ=/\/rpc\/(get_[a-z_]+|my_votes|my_votes_own|live_boards|my_role|my_page|my_boards|can_edit|is_admin|auth_enforced|admin_(accounts|account_langs|board_edit_state|follow_detail|follow_rows|list_invites|ui_langs|users|votes))(\?|$)/;
@@ -2059,7 +2080,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>11.12 06:18</b></div></div></header>
+<div class="meta"><small>更新</small><b>11.12 06:22</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
