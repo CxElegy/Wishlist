@@ -1858,7 +1858,7 @@ CSS += chr(10) + _theme_css() + """
 .thpick .sw{display:inline-flex;border:1px solid var(--ink)}.thpick .sw i{width:14px;height:18px}
 """
 THEME_HEAD = "<script>try{var t=localStorage.getItem('wl-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"   # 描く前に付ける（色がちらつかない）
-THEME_PICK_JS = """<script>(function(){var b=document.querySelectorAll('.thpick button');function on(){var c=document.documentElement.dataset.theme||'';b.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.t===c?'true':'false')})}
+THEME_PICK_TAG = """<script>(function(){var b=document.querySelectorAll('.thpick button');function on(){var c=document.documentElement.dataset.theme||'';b.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.t===c?'true':'false')})}
 b.forEach(function(x){x.addEventListener('click',function(){var t=x.dataset.t;try{t?localStorage.setItem('wl-theme',t):localStorage.removeItem('wl-theme')}catch(e){}
 if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme;on()})});on()})();</script>"""
 
@@ -1870,7 +1870,7 @@ def _theme_pick(T):
                                + "".join(f'<i style="background:{c}"></i>' for c in sw) + f'</span>{e(name)}</button>')
     return (f'<section class="schemes thpick"><h2>{T["theme_h"]}</h2><p class="intro">{T["theme_intro"]}</p><div class="throw">'
             + btn("", T["theme_default"], ("var(--paper0)", "#B8336A", "var(--ink0)"))
-            + "".join(btn(k, th[lang], th["sw"]) for k, th in SITE_THEMES.items()) + f"</div></section>{THEME_PICK_JS}")
+            + "".join(btn(k, th[lang], th["sw"]) for k, th in SITE_THEMES.items()) + f"</div></section>{THEME_PICK_TAG}")
 
 
 # 投票：直接写进 Supabase 的 feedback 表（只能新增，见 db/feedback.sql）。
