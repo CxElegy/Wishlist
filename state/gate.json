@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-11T18:30:08+00:00",
+ "checked": "2026-11-11T19:18:01+00:00",
  "fired": {
-  "at": "2026-11-11T18:30:33+00:00",
+  "at": "2026-11-11T19:18:21+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -40,48 +40,29 @@
     "sig": "46ea9a92e120"
    },
    "items": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
     "FROM",
-    "The Mandalorian",
-    "dota2",
-    "gelato pique",
-    "lib:SPY×FAMILY",
-    "lib:【推しの子】",
-    "lib:ゼルダの伝説",
-    "lib:ポケットモンスター",
-    "lib:モンスターハンターワイルズ",
-    "lib:呪術廻戦",
-    "lib:葬送のフリーレン",
-    "lib:鬼滅の刃",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "绝区零"
+    "lib:Ado",
+    "lib:BTS",
+    "lib:King Gnu",
+    "lib:Mrs. GREEN APPLE",
+    "lib:YOASOBI",
+    "lib:スプラトゥーン3",
+    "lib:原神",
+    "lib:大谷翔平"
    ],
-   "last_batch": "2026-11-11T18:22:42+00:00",
+   "last_batch": "2026-11-11T18:44:22+00:00",
    "last_error": {
     "at": "2026-11-11T01:36:00+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 145,
+   "prog": 177,
    "prog_day": "2026-11-12",
-   "ripe": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
-    "The Mandalorian",
-    "dota2",
-    "gelato pique",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "绝区零"
-   ],
-   "sig": "21c8bc632b98",
+   "ripe": [],
+   "sig": "96ad83bf9950",
    "token_cap": 1000000,
-   "tokens_today": 81414,
-   "why": "整理待ちの記事 121 件（18 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 100353,
+   "why": "整理待ちの記事 97 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -166,11 +147,11 @@
    "runs": 21
   },
   "2026-11-12": {
-   "batches": 3,
-   "cr": 2208641,
-   "cw": 70183,
-   "in": 54,
-   "out": 11177,
+   "batches": 5,
+   "cr": 3781192,
+   "cw": 83657,
+   "in": 82,
+   "out": 16614,
    "runs": 1
   }
  }
