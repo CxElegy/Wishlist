@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-11T01:29:08+00:00",
+ "checked": "2026-11-11T02:23:10+00:00",
  "fired": {
-  "at": "2026-11-11T01:29:08+00:00",
+  "at": "2026-11-11T02:23:11+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -40,6 +40,7 @@
     "A2O LITE",
     "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "gelato pique",
@@ -51,28 +52,25 @@
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-11T00:27:05+00:00",
+   "last_batch": "2026-11-11T02:09:01+00:00",
    "last_error": {
-    "at": "2026-11-10T16:38:11+00:00",
-    "text": "出刊に失敗：No module named 'cv2'"
+    "at": "2026-11-11T01:36:00+00:00",
+    "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 202,
+   "prog": 258,
    "prog_day": "2026-11-11",
    "ripe": [
     "GTA 6",
+    "ILLIT",
     "The Mandalorian",
-    "gelato pique",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
     "滑雪",
     "漫威电影"
    ],
-   "sig": "54578e3705aa",
+   "sig": "dd8d3f04ea09",
    "token_cap": 1000000,
-   "tokens_today": 535678,
-   "why": "整理待ちの記事 65 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 595985,
+   "why": "整理待ちの記事 43 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -149,12 +147,12 @@
    "runs": 12
   },
   "2026-11-11": {
-   "batches": 18,
-   "cr": 14574342,
-   "cw": 482654,
-   "in": 387,
-   "out": 52637,
-   "runs": 9
+   "batches": 24,
+   "cr": 16183799,
+   "cw": 536341,
+   "in": 432,
+   "out": 59212,
+   "runs": 10
   }
  }
 }
