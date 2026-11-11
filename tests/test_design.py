@@ -134,6 +134,20 @@ class Components(unittest.TestCase):
         grid, rest = render._timeline([st(0, "hero")] + [st(i) for i in range(1, 6)], "2026-11-10", budget=render.SIZE_HEIGHT["S"], limit=render.SIZE_COUNT["S"], side=render.SIZE_SIDE["S"])
         self.assertGreaterEqual(grid.count("<article"), 3)
 
+    def test_site_themes(self):
+        """2026-11-12 店長：形はそのまま色だけで雰囲気を変えるテーマ。ジャンルの色もテーマのグラデーション（--g0〜--g7）。既定は今までの色。
+        ジャンルの色は白い字が載る：どのテーマも白と 4.5:1 以上。"""
+        self.assertEqual(render._sec_var("游戏"), f"var(--g1,{render._sec_color('游戏')})")
+        self.assertEqual(render._sec_var("旅行"), render._sec_color("旅行"))   # 決まった 7 つ以外は今の色
+        self.assertGreaterEqual(len(render.SITE_THEMES), 5)
+        for k, th in render.SITE_THEMES.items():
+            self.assertIn(f'html[data-theme="{k}"]', render.CSS)
+            self.assertEqual(len(th["g"]), 8, k)
+            for c in th["g"]:
+                self.assertGreaterEqual(theme.contrast(theme._rgb(c), WHITE), 4.5, f"{k} {c}")
+        self.assertIn("localStorage.getItem('wl-theme')", render._account_tag("x"))
+        self.assertIn('class="schemes thpick"', render._theme_pick(render.SETTINGS_JA))
+
     def test_aesthetic_audit_2026_11_11(self):
         """2026-11-11 審美基準で全体を点検して直した規則：見出しは「…」で切らない（D3）・字体は令牌だけ（D2。中国語のページは端末の中国語フォント 1 種類）・
         読む字は 11px 以上（D4）・版面の整行の重大は 1 つだけ（C2・F1）・気になるかもは段の見出しを外して詰められる（F1）。"""

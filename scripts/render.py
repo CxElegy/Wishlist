@@ -58,7 +58,7 @@ def blocking_font_links(html):
 
 
 CSS = """
-:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;--good:#1F7A55;--discord:#5865F2;
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--ink0:#1A1C22;--paper0:#EDEBE6;--card0:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;--good:#1F7A55;--discord:#5865F2;
  --by-ai:#6B3FC4;--by-rule:#1F7A55;   /* 流れの図：AI（Claude）が判断する手順 / 規則（プログラム）で決まる手順 */
  --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
  --font-mono:'JetBrains Mono','Noto Sans JP',monospace;--font-num:'Anton',Impact,'Noto Sans JP',sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
@@ -1811,6 +1811,68 @@ SHUFFLE_JS = """
 """
 
 
+# サイトのテーマ（2026-11-12 店長：形はそのまま・色だけで雰囲気を変える配色を何パターンか。ジャンルの色も虹色でなくテーマのグラデーションに）。
+# 本人の端末が覚える（localStorage wl-theme）。既定（何も選ばない）は今までの色。版面の中の色（作品の代表色）は変えない。
+# g = ジャンルの色 8 つ（SECTIONS の順＋その他）。白い字が載るので暗め〜中くらいの色。
+SITE_THEMES = {
+    "night": {"ja": "怪盗の夜", "zh": "怪盗之夜", "sw": ("#0B0B0E", "#E3001B", "#F2EDE6"),
+              "tok": "--ink:#F2EDE6;--paper:#0B0B0E;--sheet:#15151B;--card:#1C1C24;--rose:#E3001B;--gold:#FFD23F;--alert:#E3001B;--shadow:4px 4px 0 #E3001B;--shadow-l:8px 8px 0 #E3001B;--hair:rgba(242,237,230,.18)",
+              "bg": "#0B0B0E repeating-linear-gradient(-28deg,transparent 0 46px,rgba(227,0,27,.06) 46px 52px)", "dark": True,
+              "g": ("#E3001B", "#C4001A", "#A80018", "#8E0016", "#B23A2E", "#9A4A3E", "#7A2E2A", "#5A5A66")},
+    "paper": {"ja": "新聞", "zh": "报纸", "sw": ("#F7F5F0", "#111111", "#D23A1E"),
+              "tok": "--ink:#111111;--paper:#F7F5F0;--sheet:#FFFFFF;--card:#FFFFFF;--rose:#D23A1E;--gold:#F2D34A;--alert:#D23A1E;--shadow:3px 3px 0 #111;--shadow-l:5px 5px 0 #111",
+              "bg": "#F7F5F0 radial-gradient(rgba(0,0,0,.06) 1px,transparent 1.2px) 0 0/6px 6px",
+              "g": ("#111111", "#2B2B2B", "#444444", "#5A5A5A", "#6A6A6A", "#D23A1E", "#707070", "#747474")},
+    "pastel": {"ja": "パステル・ポップ", "zh": "粉彩", "sw": ("#F4F0FF", "#FF6FA8", "#7BF1C8"),
+               "tok": "--ink:#2A2440;--paper:#F4F0FF;--sheet:#FFFFFF;--card:#FFFFFF;--rose:#E0508C;--gold:#7BF1C8;--alert:#E0506C;--shadow:5px 5px 0 #B9A7FF;--shadow-l:9px 9px 0 #B9A7FF",
+               "bg": "linear-gradient(160deg,#F4F0FF,#EAFBF5)",
+               "g": ("#7A58E0", "#8E57D8", "#A14CC0", "#B84AA1", "#C04C75", "#357C70", "#3779A1", "#6C6888")},
+    "neon": {"ja": "ネオン夜", "zh": "霓虹夜", "sw": ("#0A0F2C", "#FF2E88", "#22E3FF"),
+             "tok": "--ink:#EAF6FF;--paper:#0A0F2C;--sheet:#11183F;--card:#141C4A;--rose:#FF2E88;--gold:#22E3FF;--alert:#FF2E88;--shadow:4px 4px 0 #FF2E88;--shadow-l:8px 8px 0 #22E3FF;--hair:rgba(234,246,255,.18)",
+             "bg": "#0A0F2C linear-gradient(rgba(34,227,255,.07) 1px,transparent 1px) 0 0/100% 32px", "dark": True,
+             "g": ("#D81B74", "#B82A9A", "#9038C0", "#6A48D8", "#4658DC", "#2A70D0", "#177CA8", "#4A547A")},
+    "indigo": {"ja": "和紙と藍", "zh": "和纸与靛蓝", "sw": ("#EFE7D6", "#24407A", "#C8A24A"),
+               "tok": "--ink:#1C2A44;--paper:#EFE7D6;--sheet:#F6F0E2;--card:#FBF7EE;--rose:#24407A;--gold:#C8A24A;--alert:#B23A2E;--shadow:4px 4px 0 #1C2A44;--shadow-l:8px 8px 0 #24407A",
+               "bg": "#EFE7D6",
+               "g": ("#1C2A44", "#24407A", "#2E5A8C", "#3A6690", "#4E6450", "#7A5E34", "#8E4A2A", "#625E56")},
+}
+
+
+def _theme_css():
+    out = []
+    for k, th in SITE_THEMES.items():
+        s = f'html[data-theme="{k}"]'
+        out.append(f'{s}{{{th["tok"]};' + ";".join(f"--g{i}:{c}" for i, c in enumerate(th["g"])) + "}")
+        out.append(f'{s} body{{background:{th["bg"]}}}')
+        if th.get("dark"):   # 暗い地：紙の色の箱の中の字を明るく（--ink が字と線の両方に使われている）
+            out.append(f'{s} .wc,{s} .sbox,{s} .agenda,{s} .pk,{s} .mast h1,{s} .nav .pill,{s} .older summary{{color:var(--ink)}}')
+            out.append(f'{s} .poster,{s} .nav .pill.on,{s} .nav .mtabs a.on,{s} .nav .logo,{s} .pkhead .flag{{--ink:var(--ink0);--card:var(--card0);--paper:var(--paper0);--hair:color-mix(in srgb,var(--ink0) 16%,transparent)}}')   # 明るい紙の部品（ポスター・選んだ札）の中は元の濃い字
+            out.append(f'{s} .nav .hm .hl,{s} .nav .wm small{{color:var(--ink);opacity:.7}}')
+    return chr(10).join(out)
+
+
+CSS += chr(10) + _theme_css() + """
+.thpick .throw{display:flex;flex-wrap:wrap;gap:10px}
+.thpick button{display:flex;align-items:center;gap:8px;min-height:40px;padding:6px 12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:700 13px var(--font-sans);cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.thpick button[aria-pressed=true]{background:var(--ink);color:var(--card)}
+.thpick .sw{display:inline-flex;border:1px solid var(--ink)}.thpick .sw i{width:14px;height:18px}
+"""
+THEME_HEAD = "<script>try{var t=localStorage.getItem('wl-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"   # 描く前に付ける（色がちらつかない）
+THEME_PICK_TAG = """<script>(function(){var b=document.querySelectorAll('.thpick button');function on(){var c=document.documentElement.dataset.theme||'';b.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.t===c?'true':'false')})}
+b.forEach(function(x){x.addEventListener('click',function(){var t=x.dataset.t;try{t?localStorage.setItem('wl-theme',t):localStorage.removeItem('wl-theme')}catch(e){}
+if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme;on()})});on()})();</script>"""
+
+
+def _theme_pick(T):
+    """設定ページの「サイトの配色」：色見本の札を押すとその場で変わり、この端末が覚える。"""
+    lang = "zh" if T["lang"].startswith("zh") else "ja"
+    btn = lambda k, name, sw: (f'<button type="button" data-t="{k}" aria-pressed="false"><span class="sw">'
+                               + "".join(f'<i style="background:{c}"></i>' for c in sw) + f'</span>{e(name)}</button>')
+    return (f'<section class="schemes thpick"><h2>{T["theme_h"]}</h2><p class="intro">{T["theme_intro"]}</p><div class="throw">'
+            + btn("", T["theme_default"], ("var(--paper0)", "#B8336A", "var(--ink0)"))
+            + "".join(btn(k, th[lang], th["sw"]) for k, th in SITE_THEMES.items()) + f"</div></section>{THEME_PICK_TAG}")
+
+
 # 投票：直接写进 Supabase 的 feedback 表（只能新增，见 db/feedback.sql）。
 # 每次点击新增一行，同一条消息以最后一票为准；再点一次已选中的按钮 = 撤销（写一行 vote 0）。
 # 「我会喜欢？」的卡片下面有带文字的按钮（数据在 data-v 里）；其余所有消息卡片由脚本在右上角加上小按钮，
@@ -2065,6 +2127,7 @@ SETTINGS_ZH = {
     "links": '<p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a>　<a href="admin.html">管理页（运行状况・投票・各关注项的记事数）→</a></p>',
     "intro": '点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，<span id="wl-eta">下次更新时（最多 2 小时）网页按新的设置更新</span>。',
     "legend": "<dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd>",
+    "theme_h": "网站配色", "theme_intro": "形状不变，只换颜色。点一下马上换，这台设备会记住（板块里作品自己的颜色不变）。", "theme_default": "默认",
     "sch_h": "目录的小分类分法", "sch_intro": "每个板块选一种分法：左边目录的小分类札、板块里版面的排序都按它来。选了网页大约 1 分钟后更新。",
     "sch_aria": "的小分类分法", "size_aria": "的篇幅",
     "js_nodb": "未连数据库", "js_saving": "保存中…", "js_saved": "已保存 ✓", "js_fail": "没存上", "js_offline": "连不上"}
@@ -2078,6 +2141,7 @@ SETTINGS_JA = {
     "none_status": "まだ何も追いかけていません。選ぶボタンは上のポスターにあります。", "out": "外す", "collecting": "記事を集めています。集まりしだい、ここに並びます", "out_aria": " を外す", "other": "その他",
     "intro": "S / M / L で版面の大きさを、ジャンルごとに目次の分け方を選べます。選ぶとすぐ保存され、数分でページに反映されます。",
     "legend": "<dt>S</dt><dd>小：1 回に 3 本まで、だいたい 1 行</dd><dt>M</dt><dd>中：1 回に 5 本まで</dd><dt>L</dt><dd>大：1 回に 8 本まで、画面いっぱい</dd>",
+    "theme_h": "サイトの配色", "theme_intro": "形はそのまま、色だけ変わります。押すとすぐ変わり、この端末が覚えます（版面の中の作品の色は変わりません）。", "theme_default": "標準",
     "sch_h": "目次の小分類の分け方", "sch_intro": "ジャンルごとに 1 つ選ぶと、左の目次の札とジャンルの中の版面の並びがその分け方になります。",
     "sch_aria": "の小分類の分け方", "size_aria": "の大きさ",
     "js_nodb": "つながっていません", "js_saving": "保存しています…", "js_saved": "保存しました ✓", "js_fail": "保存できませんでした", "js_offline": "つながりません"}
@@ -2110,7 +2174,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
                        for o in r["options"])
         prev = "".join(f'<p class="pv" data-v="{e(o["id"])}"{"" if o["id"] == r["chosen"] else " hidden"}>'
                        + " · ".join(f"{e(g)} <b>{n}</b>" for g, n in o["groups"]) + "</p>" for o in r["options"])
-        sch.append(f'<div class="srow" data-sec="{e(r["section"])}" style="--sc:{_sec_color(r["section"])}">'
+        sch.append(f'<div class="srow" data-sec="{e(r["section"])}" style="--sc:{_sec_var(r["section"])}">'
                    f'<div class="nm"><b>{e(_sec_name(r["section"]))}</b>{prev}</div>'
                    f'<div class="seg wide" role="group" aria-label="{e(_sec_name(r["section"]))} {T["sch_aria"]}">{btns}</div>'
                    f'<span class="st" aria-live="polite"></span></div>')
@@ -2124,7 +2188,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
     for name in order:
         secdel = "" if own else (f'<button type="button" class="secdel" aria-label="删除板块 {e(_sec_name(name))} 里的全部关注项">'
                                  '删除这个板块</button>')
-        rows.append(f'<h2 style="--sc:{_sec_color(name)}" data-sec="{e(name)}">{e(_sec_name(name))}<small>{_sec_en(name)}</small>'
+        rows.append(f'<h2 style="--sc:{_sec_var(name)}" data-sec="{e(name)}">{e(_sec_name(name))}<small>{_sec_en(name)}</small>'
                     f'{secdel}<span class="st" aria-live="polite"></span></h2>')
         for it in groups[name]:
             sub = f'<small>{e(it["subtitle"])}</small>' if it.get("subtitle") else ""
@@ -2316,6 +2380,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
 <p class="intro">{T["intro"]}</p>
 <dl class="legend">{T["legend"]}</dl>
 {sch_html}
+{_theme_pick(T)}
 <div class="cfg">{''.join(rows)}</div>
 {"" if own else '<section class="wiz" id="wiz" aria-live="polite"><h2>＋ 新增关注项</h2><p class="hint">正在加载…</p></section>'}
 <p class="intro" style="font-size:12px">{T["updated"]} {e(updated)}</p>
@@ -2919,6 +2984,13 @@ def _sec_color(name):
     return GENRE_EXTRA[int(hashlib.md5(name.encode("utf-8")).hexdigest(), 16) % len(GENRE_EXTRA)]
 
 
+def _sec_var(name):
+    """ジャンルの色を CSS に書くとき：テーマ（html[data-theme]）が --g0〜--g7 で差し替えられる形（無ければ今の色）。SITE_THEMES"""
+    keys = list(SECTIONS)
+    i = keys.index(name) if name in keys else (len(keys) if not name or name == "其他" else None)
+    return _sec_color(name) if i is None else f"var(--g{i},{_sec_color(name)})"
+
+
 def _recent(w, today):
     cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
     return [x for x in w["stories"] if x["_issue"] >= cutoff]
@@ -3052,7 +3124,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=(), used=None):
     date_html = (f'<div class="pdate"><b>{d.month:02d}.{d.day:02d}</b>'
                  f'<span>{WEEKDAY_EN[d.weekday()]}<small>{WEEKDAY[d.weekday()]}曜日</small></span></div>')
     if top:
-        sc = _sec_color(top_w.get("section"))
+        sc = _sec_var(top_w.get("section"))
         badge = "重大" if top.get("weight") == "hero" else "注目"
         top_html = (f'<article class="top" data-k="{e(top_w["name"])}"{_fx(top_w["name"])}>{_lk(top)}'
                     f'{date_html}<div class="frame"><span class="burst">{badge}</span>{_pic(top)}{_play(top)}</div>'
@@ -3072,7 +3144,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=(), used=None):
     poster = f'<div class="poster"{style}><div class="marks" aria-hidden="true"></div>{head}{top_html}{foot}</div>'
 
     wall = "".join(
-        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}" data-w="{e(x.get("weight") or "normal")}"{_fx(w["name"])} style="--sc:{_sec_color(w.get("section"))}">{_lk(x)}'
+        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}" data-w="{e(x.get("weight") or "normal")}"{_fx(w["name"])} style="--sc:{_sec_var(w.get("section"))}">{_lk(x)}'
         f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}{_from(x)}</em><b>{_headline(x)}</b></article>'
         for i, (w, x) in enumerate(more))
     side = _side(works, today, wishes, taste)
@@ -3113,7 +3185,7 @@ def _agenda(works, today, limit=None):
                 '<p class="sempty">発売日・試合・配信など、日付のある記事が入るとここに並びます。</p></div>')
     rows.sort(key=lambda r: r[0])
     items = "".join(
-        f'<li style="--sc:{_sec_color(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
+        f'<li style="--sc:{_sec_var(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
         f'<span class="nm">{e(w["name"])}{" · " + e(ev["label"]) if ev.get("label") else ""}{_from(x)}</span>'
         f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a></li>'
         for d, w, x, ev in rows[:limit or AGENDA_MAX])
@@ -3391,7 +3463,7 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
                     f'data-sub="{e(sub)}" href="#{_wid(w["name"])}" title="版面は「{e(_sec_name(home))}」にあります">'
                     f'<i class="no">{page_no[w["name"]]:02d}</i>{ic}'
                     f'<span class="nm">{e(w["name"])}{cnt}</span>'
-                    f'<span class="xref" style="--sc:{_sec_color(home)}">⇄ {e(_sec_name(home))}</span></a>')
+                    f'<span class="xref" style="--sc:{_sec_var(home)}">⇄ {e(_sec_name(home))}</span></a>')
         return (f'<a class="pill{" kid" if kid else ""}" style="--sc:{sc}" data-for="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" data-heat="{int((w.get("_heat") or {}).get("score") or 0)}" '
                 f'data-sub="{e(sub)}" href="#{_wid(w["name"])}"><i class="no">{page_no[w["name"]]:02d}</i>{ic}'
                 + ('<span class="br"></span>' if kid else "")
@@ -3406,7 +3478,7 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
     tabs = ['<a class="tg on" style="--sc:var(--ink)" data-sec="" href="#front"><span>トップ</span></a>']
     slots = []
     for name in order:
-        sc, ws = _sec_color(name), groups[name]
+        sc, ws = _sec_var(name), groups[name]
         icon = (f'<img class="si" src="{TWEMOJI.format(SECTION_ICON[name])}" alt="" loading="lazy">' if name in SECTION_ICON else "")
         # 上下級：上級が同じ板块にいる下級は、上級のすぐ下に並べる（小分類も上級に従う）
         names = {w["name"] for w in ws}
@@ -4845,7 +4917,7 @@ def _sub_heads(works, subs, parents):
         if key != prev and any(k[1] for k in keys if k[0] == key[0]):
             sec, sb = key
             tag = (f'<span class="tg"><span>{e(_sec_name(sec))}</span></span>' if sec != prev[0] else "")
-            out.append(f'<div class="subhead" style="--sc:{_sec_color(sec)}">{tag}'
+            out.append(f'<div class="subhead" style="--sc:{_sec_var(sec)}">{tag}'
                        f'<b>{e(sb or "その他")}</b><small>{keys.count(key)} 件</small></div>')
         prev = key
         out.append(_section(w, _wid(w["name"])))
@@ -5199,7 +5271,7 @@ def with_sb_deg(page):
 def _account_tag(page=""):
     """網页が Supabase に渡すアカウント（db/accounts.sql の p_account）。ページごとの JS は window.WL_ACCOUNT を読む。
     ログイン（AUTH_JS）も一緒に入れる：どのページにも右上のログインボタンが出る。"""
-    return f'<script>window.WL_ACCOUNT={json.dumps(sitedir.NAME)};</script>{SB_DEG_TAG}{_auth_tag(page)}'
+    return f'{THEME_HEAD}<script>window.WL_ACCOUNT={json.dumps(sitedir.NAME)};</script>{SB_DEG_TAG}{_auth_tag(page)}'
 
 
 # ---- ログイン（2026-10-20，用户定的）-------------------------------------------------------------
@@ -6398,7 +6470,7 @@ def _heat_table(rows):
             f'<tr data-score="{h["score"]}" data-delta="{h["delta"] if h.get("delta") is not None else -999}" data-rank="{i}">'
             f'<td class="rk">{i}</td>'
             f'<th scope="row" class="nm"><a href="#h-{_wid(w["name"])}">{e(w["name"])}</a>'
-            f'<small><i style="background:{_sec_color(w.get("section"))}"></i>{e(_sec_name(w.get("section")))}</small>{rise}</th>'
+            f'<small><i style="background:{_sec_var(w.get("section"))}"></i>{e(_sec_name(w.get("section")))}</small>{rise}</th>'
             f'<td class="sc"><b>{h["score"]}</b><span class="mt" style="--v:{h["score"] / 100:.2f}" aria-hidden="true"></span>'
             f'<small>{e(h["label"] or "—")}</small></td>'
             f'<td class="dl {cls}" title="{e(why)}">{_delta_text(h.get("delta"))}</td>'
@@ -6443,7 +6515,7 @@ def _heat_card(w, h):
             by_day.setdefault(d, ["—", "—", "—"])[col] = _compact(v)
     table = "".join(f"<tr><th scope=\"row\">{_md_day(d)}</th><td>{a}</td><td>{b}</td><td>{c}</td></tr>"
                     for d, (a, b, c) in sorted(by_day.items(), reverse=True))
-    return (f'<article class="hcard" id="h-{_wid(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">'
+    return (f'<article class="hcard" id="h-{_wid(w["name"])}" style="--sc:{_sec_var(w.get("section"))}">'
             f'<header><div class="ht"><span class="hsec"><i></i>{e(_sec_name(w.get("section")))}</span>'
             f'<h3>{e(w["name"])}</h3>' + (f'<span class="hsub">{e(w["subtitle"])}</span>' if w.get("subtitle") else "") + '</div>'
             f'<div class="hs"><b>{h["score"]}</b><span><em>{e(h["label"] or "—")}</em><small class="{cls}">{e(why)}</small>{rise}</span></div>'
@@ -6996,7 +7068,7 @@ def _admin_items(rows):
         return '<p class="empty">ウォッチ項目がありません。</p>'
     out = []
     for r in rows:
-        sc = _sec_color(r.get("section") or "其他")
+        sc = _sec_var(r.get("section") or "其他")
         heat_ = r.get("heat")
         heat_txt = (f'<b>{heat_["score"]}</b><small>{_delta_text(heat_["delta"])}</small>' if heat_ and heat_.get("delta") is not None
                     else f'<b>{heat_["score"]}</b>' if heat_ else '<span class="na">—</span>')
@@ -7139,7 +7211,7 @@ def _admin_backend(rows, todo=None, log=None, res=None):
     for r in rows:
         if r.get("section") != sec:
             sec = r.get("section")
-            body.append(f'<tr class="bgs"><th colspan="{len(BG_COLS) + 1}"><i style="background:{_sec_color(sec or "其他")}"></i>'
+            body.append(f'<tr class="bgs"><th colspan="{len(BG_COLS) + 1}"><i style="background:{_sec_var(sec or "其他")}"></i>'
                         f'{e(_sec_name(sec or "其他"))}</th></tr>')
         cells = "".join(f'<td class="bgc s-{r["bg"][k]["state"]}" data-label="{e(t)}"><b>{BG_STATES[r["bg"][k]["state"]]}</b>'
                         f'<small>{e(r["bg"][k]["text"])}</small>{_bg_retry(k, r)}</td>' for k, t, _ in BG_COLS)
