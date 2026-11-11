@@ -43,6 +43,15 @@ class Flow(Base):
         self.assertEqual(lib_queue.todo(), [(7, "版面七", 2)])
         self.assertIn("1 2026-11-07 S｜新作の発売日｜12 月 1 日に発売", lib_queue.brief(7))
 
+    def test_fresh_marks_never_edited(self):
+        self.fill()
+        self.assertIs(json.loads(lib_queue.QUEUE.read_text(encoding="utf-8"))["boards"][0]["fresh"], True)
+        self.assertEqual(lib_queue.fresh_ids(), {"7"})
+        with mock.patch.object(library, "lib_rows", return_value={7: {"name": "版面七", "day": "2026-11-07", "pending": PENDING, "stories": [{"headline": "x"}]}}),                 mock.patch.object(library, "edit_todo", return_value=[(7, "版面七", 2)]):
+            lib_queue.export(lambda *a, **k: None, "2026-11-07", [], log=lambda _m: None)
+        self.assertIs(json.loads(lib_queue.QUEUE.read_text(encoding="utf-8"))["boards"][0]["fresh"], False)
+        self.assertEqual(lib_queue.fresh_ids(), set())
+
     def test_edit_then_apply_writes_stories_with_event(self):
         self.fill()
         lib_queue.save_edit(7, [{"headline": "新作は 12 月 1 日", "weight": "lead", "refs": [1], "event": {"date": "2026-12-01", "label": "発売日"}}])

@@ -19,7 +19,7 @@ class BrowserGuard(unittest.TestCase):
                 continue
             for n, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
                 if RAW.search(line):
-                    bad.append(f"{f.relative_to(ROOT)}:{n}")
+                    bad.append(f"{f.relative_to(ROOT).as_posix()}:{n}")
         self.assertEqual(bad, [], "ブラウザは harness/browser.py の launch(pw) で開く")
 
     def test_no_direct_launch_js(self):
@@ -31,7 +31,7 @@ class BrowserGuard(unittest.TestCase):
                 if "node_modules" in f.parts:
                     continue
                 s = f.read_text(encoding="utf-8")
-                rel = str(f.relative_to(ROOT))
+                rel = f.relative_to(ROOT).as_posix()
                 if re.search(r"\b(chromium|firefox|webkit)\.(launch|connect)|puppeteer", s) and rel not in LOCAL_ONLY \
                         and "setBlockedURLs" not in s and "supabase.co/storage" not in s and "supabase\\.co" not in s:
                     bad.append(rel)

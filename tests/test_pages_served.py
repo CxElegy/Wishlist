@@ -24,7 +24,7 @@ class NoStorageInDocs(unittest.TestCase):
             t = FB.sub("", f.read_text(encoding="utf-8", errors="ignore"))
             n = len(STORAGE.findall(t))
             if n:
-                bad.append((str(f.relative_to(ROOT)), n))
+                bad.append((f.relative_to(ROOT).as_posix(), n))
         self.assertEqual(bad, [], "storage の網址が残っている（Pages の /p/ にする）")
 
     def test_fallback_only_for_unstored_media(self):
