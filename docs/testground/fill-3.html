@@ -1154,6 +1154,7 @@ html{scroll-behavior:smooth}
 })();
 </script><style>
 .wl-auth{position:fixed;top:10px;right:12px;z-index:90;display:flex;align-items:center;gap:8px;font:700 13px/1.4 var(--font-sans)}
+@media (min-width:761px){.wl-auth{position:absolute}}  /* PC はページの上にだけ置き、スクロールで流れる（版面を画面の上にそろえた時、右上の小元素・題に重ならない。審美基準 E4・2026-11-11 店長「エンブレムが見きれない」） */
 .wl-auth .shop{padding:2px 9px;background:var(--ink);color:var(--card);font:500 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.06em;transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--rose)}
 .wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
  background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
