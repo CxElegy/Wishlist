@@ -60,7 +60,7 @@ EDIT_DAILY_TOKENS = 1_000_000
 # 写真はトークンの記録がないので、1 日に起こす回数で上限を決める（2026-11-07 トークンエコノミー：仕事ごとの 1 日の上限）。ボタン（GATE_FORCE）は上限でも起こす
 DAILY_FIRES = {"photos": 3}
 SHARED_ROUTINE = {"edit": "photos", "photos": "edit"}   # 同じ予約の仕事：片方が動き始めて MIN_GAP_MIN 分は、もう片方で 2 本目を起こさない
-LIB_WAKE_HOURS = 4   # お客さまの版面だけが待っているとき、AI 編集を起こす間隔（店長の版面で起きた回があれば、その回が一緒に編む）
+LIB_WAKE_HOURS = 4   # お客さまの版面だけが待っているとき、AI 編集を起こす間隔（店長の版面で起きた回があれば、その回が一緒に編む）。足したばかりの版面（lib_queue.first）は待たない
 LEDGER_DAYS = 60   # 使ったトークンの台帳（state/gate.json の ledger・fires）を残す日数
 ACTIVE_MIN = 30   # 最後の AI 編集のバッチ（state/log/edit.json の出刊の行）からこの分数以内だけ「動いている」と出す
 
@@ -261,8 +261,11 @@ def _emblem_why(todo, wait, tz="Asia/Tokyo"):
     return "・".join(parts) or "全部そろっている"
 
 
-def lib_due(data):
-    """お客さまの版面だけのために起こしてよいか：前に AI 編集を起こしてから LIB_WAKE_HOURS 時間たった。"""
+def lib_due(data, first=False):
+    """お客さまの版面だけのために起こしてよいか：前に AI 編集を起こしてから LIB_WAKE_HOURS 時間たった。
+    first＝まだ AI 編集の記事が 1 本も届いていない版面（足したばかり）が待っている → 待たない（店長の版面の「初めての版面」と同じ）。"""
+    if first:
+        return True
     at = (((data.get("jobs") or {}).get("edit") or {}).get("fired") or {}).get("at")
     try:
         return not at or _now() - dt.datetime.fromisoformat(at) >= dt.timedelta(hours=LIB_WAKE_HOURS)
@@ -276,7 +279,7 @@ def check(tz=DAY_TZ, path=None):
     ripe = edit_ripe(tz=tz)
     lib = {f"lib:{n}": c for _, n, c in lib_queue.todo()}   # お客さまの版面（lib_queue.py が置いた一覧）。店長の版面と同じ AI 編集の回で編む
     edit = {**edit, **lib}
-    if lib and lib_due(load(path)):
+    if lib and lib_due(load(path), lib_queue.first()):
         ripe = {**ripe, **lib}
     photos = photo_work()
     emblem, emblem_wait = emblem_work()

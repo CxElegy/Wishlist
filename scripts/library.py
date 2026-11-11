@@ -304,6 +304,11 @@ def lib_rows(db, today, shop_names=(), days=2, fresh=False):
     return out
 
 
+def lib_blank(r):
+    """読む人にまだ AI 編集の記事が 1 本も届いていない版面（今日の行にも前の日の行にも無い＝足したばかり）。店長の版面の「初めての版面」と同じ扱い。"""
+    return not r.get("stories") and not r.get("prev")
+
+
 def _done_ids():
     import time
     try:
@@ -314,7 +319,7 @@ def _done_ids():
 
 
 def edit_todo(db, today, shop_names=(), now=None):
-    """AI 編集がまだ編んでいないライブラリの版面（お客さまの版面）→ [(版面 id, 名前, 整理待ちの件数)]（整理待ちの多い順・規則・token 0）。
+    """AI 編集がまだ編んでいないライブラリの版面（お客さまの版面）→ [(版面 id, 名前, 整理待ちの件数)]（まだ 1 本も届いていない版面が先・あとは整理待ちの多い順・規則・token 0）。
     編み済み＝今日の行の記事の _fp が今の整理待ちの指紋と同じ、または LIB_EDIT_GAP_H 時間以内に編んだ。
     前の日に編んだ版面で整理待ちが同じなら、記事を今日の行へ写す（持ち越し・AI なし）。この回で LIB_EDIT_MAX 版面編んだら []。"""
     import datetime as dt
@@ -337,8 +342,9 @@ def edit_todo(db, today, shop_names=(), now=None):
             db(f"board_stories?board_id=eq.{bid}&day=eq.{r['day']}", {"stories": prev}, "return=minimal", method="PATCH")
             r["stories"] = prev
             continue
-        todo.append((bid, r["name"], len(r["pending"])))
-    return sorted(todo, key=lambda x: (-x[2], x[0]))
+        todo.append((bid, r["name"], len(r["pending"]), lib_blank(r)))
+    # まだ 1 本も届いていない版面（足したばかり）を先に・新しい順。あとは整理待ちの多い順
+    return [t[:3] for t in sorted(todo, key=lambda x: (0, -x[0], 0) if x[3] else (1, -x[2], x[0]))]
 
 
 def edit_brief(db, bid, today, shop_names=()):
