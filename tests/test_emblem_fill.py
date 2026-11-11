@@ -647,6 +647,28 @@ class Background(unittest.TestCase):
         ef.record(prog, it, {"state": "ok", "tried": {}, "note": "x"}, "t")
         self.assertNotIn("passed", prog["items"]["big"])
 
+    def test_sync_backfills_passed_for_frozen_failed_boards(self):
+        """due() が飛ばす凍った失敗（材料同じ・passes_left <= 0）は record() が走らないので、sync_progress が passed を付ける。材料が変われば外す。"""
+        it = {"name": "big", "emblem_kind": "character", "emblem_pool": 5, "emblem_who": [f"p{i}" for i in range(5)], "emblem": []}
+        prog = {"items": {"big": {"state": "failed", "material": ef.material(it)}}}
+        ef.sync_progress(prog, [it])
+        self.assertTrue(prog["items"]["big"]["passed"])
+        prog["items"]["big"]["material"] = "changed"
+        ef.sync_progress(prog, [it])
+        self.assertNotIn("passed", prog["items"]["big"])
+
+    def test_real_frozen_boards_are_passed_after_sync(self):
+        """点検（本番の items.yaml・進捗）：sync_progress のあと、due() が飛ばす失敗の版面は全部 passed か exhausted（E10 ✗ に残らない）。"""
+        import copy, json
+        items = ef.load_items()
+        prog = json.loads((ef.ROOT / "state" / "emblem_progress.json").read_text(encoding="utf-8"))
+        prog = ef.sync_progress(copy.deepcopy(prog), items)
+        names = {i["name"] for i in ef.due(prog, items, "2026-10-31T00:00:00+00:00")}
+        for i in items:
+            e = prog["items"].get(i["name"]) or {}
+            if e.get("state") == "failed" and i["name"] not in names:
+                self.assertTrue(e.get("passed") or e.get("exhausted"), f"{i['name']} は凍っているのに passed がない")
+
     def test_real_failed_boards_with_untried_names_are_due(self):
         """点検（本番の items.yaml・進捗）：失敗で、名簿にまだ試していない人が多い版面は due() に入る（凍っていない）。"""
         import json

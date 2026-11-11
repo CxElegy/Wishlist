@@ -2113,11 +2113,22 @@ def sync_progress(prog, items):
             e.pop("sheet", None)
         elif e.get("state") in (None, "ok"):
             e["state"], e["note"] = "running", "順番待ち"
+        if e.get("state") == "failed" and st["state"] != "ok":   # 凍った失敗（due() が飛ばす）には passed を付ける。record() は due() に入った版面でしか走らず、凍った版面は付けられなかった（E10 ✗ が 10 枚残った）
+            if frozen(item, e):
+                e["passed"] = True
+            else:
+                e.pop("passed", None)
     for n in list(prog["items"]):
         if n not in names:
             del prog["items"][n]
     prog["summary"] = {"ok": sum(1 for n in names if prog["items"][n]["state"] == "ok"), "total": len(names)}
     return prog
+
+
+def frozen(item, e, unbreak_due=False):
+    """失敗して材料も変わらず、名簿も 1 周した（または候補が尽きた）＝ due() が飛ばす版面。due() と sync_progress の旗付けが同じ式を使う。"""
+    return (e.get("state") == "failed" and e.get("material") == material(item) and not broken_cuts(item) and not unbreak_due
+            and bool(e.get("exhausted") or passes_left(item, e) <= 0))
 
 
 def due(prog, items, now):
@@ -2137,9 +2148,7 @@ def due(prog, items, now):
         unbreak_due = unbreak_due or bool(stale_narrow_rejects(item, broken.get(item["name"])))
         if st["state"] == "ok" and not broken_cuts(item) and not unbreak_due and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
-        if (e.get("state") == "failed" and not os.environ.get("EMBLEM_RETRY_NOW")
-                and e.get("material") == material(item) and not broken_cuts(item) and not unbreak_due
-                and (e.get("exhausted") or passes_left(item, e) <= 0)):   # 名簿にまだ試していない人がいる失敗は、1 周するまで止めない（先頭の 10 人だけで凍っていた：漫威电影 3/81）   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
+        if (not os.environ.get("EMBLEM_RETRY_NOW") and frozen(item, e, unbreak_due)):   # 名簿にまだ試していない人がいる失敗は、1 周するまで止めない（先頭の 10 人だけで凍っていた：漫威电影 3/81）   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
             continue                                                            # 壊れた小元素（頭が切れた・ぼやけた）が出ている版面も待たずに外して取り直す
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
     return [r[3] for r in sorted(rows, key=lambda r: r[:3])]
