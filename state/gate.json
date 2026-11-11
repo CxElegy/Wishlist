@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-11T18:25:17+00:00",
+ "checked": "2026-11-11T18:30:08+00:00",
  "fired": {
-  "at": "2026-11-11T18:25:17+00:00",
+  "at": "2026-11-11T18:30:33+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -41,12 +41,8 @@
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "gelato pique",
@@ -58,48 +54,34 @@
     "lib:呪術廻戦",
     "lib:葬送のフリーレン",
     "lib:鬼滅の刃",
-    "チェーンソーマン",
-    "三星手机",
     "周杰伦",
-    "哈利波特剧集",
     "日本顶级网球赛事",
     "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-11T06:18:49+00:00",
+   "last_batch": "2026-11-11T18:22:42+00:00",
    "last_error": {
     "at": "2026-11-11T01:36:00+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 0,
+   "prog": 145,
    "prog_day": "2026-11-12",
    "ripe": [
     "A2O LITE",
-    "Astrae Oratio",
     "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "gelato pique",
-    "チェーンソーマン",
-    "三星手机",
     "周杰伦",
-    "哈利波特剧集",
     "日本顶级网球赛事",
     "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
     "绝区零"
    ],
-   "sig": "46ea9a92e120",
+   "sig": "21c8bc632b98",
    "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 266 件（27 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 81414,
+   "why": "整理待ちの記事 121 件（18 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -182,6 +164,14 @@
    "in": 889,
    "out": 139493,
    "runs": 21
+  },
+  "2026-11-12": {
+   "batches": 3,
+   "cr": 2208641,
+   "cw": 70183,
+   "in": 54,
+   "out": 11177,
+   "runs": 1
   }
  }
 }
