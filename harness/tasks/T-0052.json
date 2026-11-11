@@ -1,0 +1,22 @@
+{
+ "id": "T-0052",
+ "title": "【計画 2026-11-04 plan2c】リポジトリ自体の大きさと増え方を数える",
+ "why": "【計画 2026-11-04 plan2c】リポジトリ自体の大きさと増え方を数える — 測った事実：GitHub API の size＝189,864 KB（約 185 MB）、直近 24 時間の main への commit は 226 件（bot 119・店長 58・係 49）、docs/home/index.html は 1 枚 2.6 MB で出刊のたびに書き換わる。free-tier.md は Supabase と Pages しか数えておらず、リポジトリ本体（GitHub の目安は 1 GB 未満・5 GB で警告）は点検が無い。できたと言える条件：①毎日の `gh api repos/CxElegy/Wishlist --jq .size` を state/repo_size.json に 1 日 1 行（photo_cache.yml の毎日の回に相乗り、新しい定時は足さない）②free_tier_gate に 600 MB 超で ✗③1 日あたりの増分と、増やしている上位 3 つのファイル（git の差分の大きさ）を PROGRESS に書き、「main への push を減らす」の段にひも付ける。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 52,
+ "scope": [
+  "docs/home/index.html",
+  ".github/workflows/photo_cache.yml"
+ ],
+ "done_when": [
+  "①毎日の `gh api repos/CxElegy/Wishlist --jq .size` を state/repo_size.json に 1 日 1 行（photo_cache.yml の毎日の回に相乗り、新しい定時は足さない）②free_tier_gate に 600 MB 超で ✗③1 日あたりの増分と、増やしている上位 3 つのファイル（git の差分の大きさ）を PROGRESS に書き、「main への push を減らす」の段にひも付ける。"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:126",
+ "created": "2026-11-04"
+}

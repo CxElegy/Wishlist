@@ -1,0 +1,19 @@
+{
+ "id": "T-0146",
+ "title": "【規則】小元素の × の棚（harness/labels/emblem_x_queue.json、店長の本番は今 36 枚・棚 44",
+ "why": "【規則】小元素の × の棚（harness/labels/emblem_x_queue.json、店長の本番は今 36 枚・棚 44。名前の一覧は本番の入れ替えでずれるのでやめた）を規則で直す：審査待ち③の答え〔顔なし ○5 枚の扱い A/B・Ikkaku 型〕をもらったら、emblem_fill の選ぶ段に emblem_pick_rules の original_verdict を入れ、× の絵は別の候補に替える。直した枚数だけ棚を下げる。審査の前に本番の見た目を変えない決まり〔2026-10-26 ユーザー「確認してから一度全部やり直して」〕のため、まだ当てていない（r1f2 2026-10-31）",
+ "quote": "確認してから一度全部やり直して",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 146,
+ "scope": [
+  "harness/labels/emblem_x_queue.json"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:530",
+ "created": "2026-10-26"
+}

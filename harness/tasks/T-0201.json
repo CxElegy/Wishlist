@@ -1,0 +1,19 @@
+{
+ "id": "T-0201",
+ "title": "動きの令牌と GPU に優しい形（Emil、見た目は変わらない）",
+ "why": "動きの令牌と GPU に優しい形（Emil、見た目は変わらない） — `:root` に `--ease-out` `--ease-in-out` `--ease-pop` `--dur-press` `--dur-ui` `--dur-pop`、手書きの曲線 10 種を置き換え。`.busy .br`・`.bf`・管理ページ `.pbar` の `left`・`width` のアニメを `transform` に。1400/390 の写真で帯の見た目が同じ",
+ "quote": "",
+ "kind": "visual",
+ "complexity": "normal",
+ "priority": 201,
+ "scope": [],
+ "done_when": [
+  "`:root` に `--ease-out` `--ease-in-out` `--ease-pop` `--dur-press` `--dur-ui` `--dur-pop`、手書きの曲線 10 種を置き換え。`.busy .br`・`.bf`・管理ページ `.pbar` の `left`・`width` のアニメを `transform` に。1400/390 の写真で帯の見た目が同じ"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:654",
+ "created": "2026-11-12"
+}

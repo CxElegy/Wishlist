@@ -1,0 +1,20 @@
+{
+ "id": "T-0091",
+ "title": "切り替え後の確かめと後始末（r1f1 2026-11-01）：①`python harness/pages_health.py` が ✓（標準の回 0・pages.yml の失敗 0）になるまで見る ②✓ になったら pages.yml の",
+ "why": "切り替え後の確かめと後始末（r1f1 2026-11-01）：①`python harness/pages_health.py` が ✓（標準の回 0・pages.yml の失敗 0）になるまで見る ②✓ になったら pages.yml の deploy の `continue-on-error: true` を外す（外さないと本当の失敗が赤にならず隠れる）③切り替えの 24 時間後に pages_health の失敗 0 とユーザーへの失敗メールなしを確かめて上の段の物差しを閉じる。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 91,
+ "scope": [
+  "harness/pages_health.py",
+  ".github/workflows/pages.yml"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:271",
+ "created": "2026-11-01"
+}

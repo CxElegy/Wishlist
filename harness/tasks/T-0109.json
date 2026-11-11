@@ -1,0 +1,19 @@
+{
+ "id": "T-0109",
+ "title": "写真の枠の「空いた所」を壁・版面のほかの画像の場所にも数える（r1f1 hr35 続き）：gap は section.sec の card・wc・tape・pk だけ",
+ "why": "写真の枠の「空いた所」を壁・版面のほかの画像の場所にも数える（r1f1 hr35 続き）：gap は section.sec の card・wc・tape・pk だけ。欲しい物（wishlist.html）・似たジャンル・ギャラリー・お客さまのライブラリの版面の写真枠にも同じ数え方を足す。",
+ "quote": "",
+ "kind": "visual",
+ "complexity": "normal",
+ "priority": 109,
+ "scope": [
+  "docs/wishlist.html"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:373",
+ "created": "2026-11-12"
+}

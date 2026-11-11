@@ -1,0 +1,19 @@
+{
+ "id": "T-0187",
+ "title": "別の作品の絵・重複を入れない（型 1）",
+ "why": "別の作品の絵・重複を入れない（型 1） — cutout_on_page で Trophy・SSBB・amiibo などのファイル名を除き作品の略号付きを先に（お客さまの版面の例：ポケモンの Pokémon Trainer (Super Smash Bros.)・モンハンの Monster Hunter (Marvel vs. Capcom: Infinite)＝名前の括弧に別の作品。名簿からは外した〔RULES 6〕、ファイル名の側はまだ）、同じ画像は 1 本（Vaundy の 3 本）、2 人写り・遠景・頭切れの規則を締める。14 枚の崩れが 0（ux_check で確かめられるのは E7 切れ・E8 重複・E9 別の作品・E11 2 人写りの 10 枚。別人（Vaundy -6）・遠景（周杰伦 2 枚）・何かわからない（テニスの空撮）は --emb full の写真の一覧を目で）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 187,
+ "scope": [],
+ "done_when": [
+  "cutout_on_page で Trophy・SSBB・amiibo などのファイル名を除き作品の略号付きを先に（お客さまの版面の例：ポケモンの Pokémon Trainer (Super Smash Bros.)・モンハンの Monster Hunter (Marvel vs. Capcom: Infinite)＝名前の括弧に別の作品。名簿からは外した〔RULES 6〕、ファイル名の側はまだ）、同じ画像は 1 本（Vaundy の 3 本）、2 人写り・遠景・頭切れの規則を締める。14 枚の崩れが 0（ux_check で確かめられるのは E7 切れ・E8 重複・E9 別の作品・E11 "
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:628",
+ "created": "2026-11-12"
+}

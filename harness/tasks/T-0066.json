@@ -1,0 +1,19 @@
+{
+ "id": "T-0066",
+ "title": "【計画 2026-11-03 plan1b】BACKLOG.md を読める大きさに戻す（いま 438 KB＝毎回の係が読む費用が大きい）— [x] の 144 段を BACKLOG_DONE.md に移し（各行の 1 行目＋PR の網址だけ残し、長い進みは移す側に全文）、BACKLO",
+ "why": "【計画 2026-11-03 plan1b】BACKLOG.md を読める大きさに戻す（いま 438 KB＝毎回の係が読む費用が大きい）— [x] の 144 段を BACKLOG_DONE.md に移し（各行の 1 行目＋PR の網址だけ残し、長い進みは移す側に全文）、BACKLOG.md は未完了と [?] だけにする。claims.py・check 系が BACKLOG.md を読む所（grep で数える）は両方を読めるか、未完了だけで動くことを確かめる。できた条件：BACKLOG.md ≤ 150 KB、harness/claims.py と tests が通る、HARNESS.md に「済みは BACKLOG_DONE.md」を 1 行。段の内容は消さない。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 66,
+ "scope": [
+  "harness/claims.py"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:157",
+ "created": "2026-11-03"
+}

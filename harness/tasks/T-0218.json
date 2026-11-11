@@ -1,0 +1,19 @@
+{
+ "id": "T-0218",
+ "title": "入口：画面の言語・最初の版面",
+ "why": "入口：画面の言語・最初の版面 — 左右カードなし、推薦は世の中の話題（AniList・Steam・Wikipedia）＋自由に入力（「これはどれ？」で Wikidata に。2026-10-24 決定）、ライブラリの中身は見せない",
+ "quote": "",
+ "kind": "visual",
+ "complexity": "normal",
+ "priority": 218,
+ "scope": [],
+ "done_when": [
+  "左右カードなし、推薦は世の中の話題（AniList・Steam・Wikipedia）＋自由に入力（「これはどれ？」で Wikidata に。2026-10-24 決定）、ライブラリの中身は見せない"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:673",
+ "created": "2026-10-24"
+}

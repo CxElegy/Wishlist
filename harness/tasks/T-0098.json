@@ -1,0 +1,17 @@
+{
+ "id": "T-0098",
+ "title": "gridHole の列の底 160px の緩め：120〜159px の空きが通る",
+ "why": "gridHole の列の底 160px の緩め：120〜159px の空きが通る。最後の列の底を 80px 未満にする（順替えの候補を増やす）か、列の底の段差を数えて出す。",
+ "quote": "",
+ "kind": "visual",
+ "complexity": "normal",
+ "priority": 98,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:299",
+ "created": "2026-11-12"
+}

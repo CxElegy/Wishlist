@@ -1,0 +1,21 @@
+{
+ "id": "T-0183",
+ "title": "お客さまの版面にも主題・配色（2026-10-24 ユーザー指摘：広島旅行が素の箱）",
+ "why": "お客さまの版面にも主題・配色（2026-10-24 ユーザー指摘：広島旅行が素の箱） — user_pages の版面に店長と同じ設計の規則を：種類と板块から主題（motif、templates/index.yaml の defaults を広げる）、配色は版面の記事の写真から theme.resolve（写真がなければ板块の色から規則で）。test-b の広島旅行・test-a の店長にない版面が、店長の版面と同じように模様・色つきで出る（1400/390 の写真で確かめ、Before/After）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 183,
+ "scope": [
+  "templates/index.yaml"
+ ],
+ "done_when": [
+  "user_pages の版面に店長と同じ設計の規則を：種類と板块から主題（motif、templates/index.yaml の defaults を広げる）、配色は版面の記事の写真から theme.resolve（写真がなければ板块の色から規則で）。test-b の広島旅行・test-a の店長にない版面が、店長の版面と同じように模様・色つきで出る（1400/390 の写真で確かめ、Before/After）"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:624",
+ "created": "2026-10-24"
+}

@@ -1,0 +1,20 @@
+{
+ "id": "T-0014",
+ "title": "【続き・2026-11-06 f1】スマホの左写真カードの残り：①本番で test-a・test-b・test-c の 390px を測る（いま Supabase 402 でログインできず、sideGap の数字は guest だけ：99 枚 92→0",
+ "why": "【続き・2026-11-06 f1】スマホの左写真カードの残り：①本番で test-a・test-b・test-c の 390px を測る（いま Supabase 402 でログインできず、sideGap の数字は guest だけ：99 枚 92→0。お客さまと店長は同じ DOM・同じ規則だが測ってはいない）②scroll_measure の本番の前の数字は無い（後 mobile/stepped：fps 25.5・p95 83ms・CLS 0.051・guest・Supabase abort）③対象は 4 種（.wc・.card.mini・.card.sb・.tape）。気になるかも（.pk.sb）は規則の外：390px の guest では 9 枚とも縦積みで .sb 0 枚。.sb が付く細い写真のとき左右の空きが出ないか、402 が解けたら test-a で数え、出るなら sideGap に .pk.sb（写真は :scope>a>.pic）を足す ④（済 2026-11-06 plan1：お客さまの記事も AI 編集の結果は event を持ち〔user_pages.py の edited 行は _ 始まりと refs 以外を全部残す〕、tests/test_diff_admin.py が本人のページでも .agenda が出ると数える。.swish だけ隠す。402 解除後に画面で 1 回確かめる）お客さまの「これからの予定」：render の _agenda は店長と同じ関数・同じ条件（日付のある記事があるときだけ）で、お客さまは .swish だけ隠す（.agenda は隠さない）。402 が解けたら日付のある記事のある test-a で出ているか画面で確かめる。",
+ "quote": "",
+ "kind": "visual",
+ "complexity": "normal",
+ "priority": 14,
+ "scope": [
+  "scripts/user_pages.py",
+  "tests/test_diff_admin.py"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:37",
+ "created": "2026-11-06"
+}

@@ -1,0 +1,19 @@
+{
+ "id": "T-0214",
+ "title": "記事と AI 編集の結果を版面ごとにライブラリへ書く",
+ "why": "記事と AI 編集の結果を版面ごとにライブラリへ書く — board_stories。店長のページはそこから作っても今と同じ",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 214,
+ "scope": [],
+ "done_when": [
+  "board_stories。店長のページはそこから作っても今と同じ"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:668",
+ "created": "2026-11-12"
+}

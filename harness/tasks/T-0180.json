@@ -1,0 +1,19 @@
+{
+ "id": "T-0180",
+ "title": "キャラの版面の同じ画像（2026-10-25 #359 のあと：test-a 390 で【推しの子】Q97310775 も 1 組）（ux_check E8：ポケモン 3 組・ゼルダ 1 組、#327 の名簿のあと）",
+ "why": "キャラの版面の同じ画像（2026-10-25 #359 のあと：test-a 390 で【推しの子】Q97310775 も 1 組）（ux_check E8：ポケモン 3 組・ゼルダ 1 組、#327 の名簿のあと） — 同じ絵が別の名前で入る（Fandom の転送先・同じ立ち絵）。スプラ 3（148）の Agent 8 が 2 回（同じファイル Q105552720-f5465d68bc.webp）は同じ網址なので library_emblem で 1 本にした（RULES 6）。残りは別の網址で同じ絵のもの。emblem_fill の重複の規則（画素の指紋）をライブラリの版面にも。test-a の E8 0",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 180,
+ "scope": [],
+ "done_when": [
+  "同じ絵が別の名前で入る（Fandom の転送先・同じ立ち絵）。スプラ 3（148）の Agent 8 が 2 回（同じファイル Q105552720-f5465d68bc.webp）は同じ網址なので library_emblem で 1 本にした（RULES 6）。残りは別の網址で同じ絵のもの。emblem_fill の重複の規則（画素の指紋）をライブラリの版面にも。test-a の E8 0"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:617",
+ "created": "2026-10-25"
+}

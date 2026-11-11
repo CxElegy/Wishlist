@@ -1,0 +1,19 @@
+{
+ "id": "T-0200",
+ "title": "対比と細い線の直し（DESIGN_AUDIT.md、ほぼ変わらない）",
+ "why": "対比と細い線の直し（DESIGN_AUDIT.md、ほぼ変わらない） — 灰色の字の不透明度を .72 以上（今 4.48:1 が 39 か所）、`.pic .ph` の字色を板块色から規則で白か墨に、「FRONT PAGE」を箱の中へ（今 1.2:1）、`--font-serif` を OS の明朝から（Noto Serif JP は読み込んでいない）、`.pfoot` を 2px にし点線をやめる、テーマの帯の字の対比をテストで検査。inspect の contrast・hairline・font-fallback が 0",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 200,
+ "scope": [],
+ "done_when": [
+  "灰色の字の不透明度を .72 以上（今 4.48:1 が 39 か所）、`.pic .ph` の字色を板块色から規則で白か墨に、「FRONT PAGE」を箱の中へ（今 1.2:1）、`--font-serif` を OS の明朝から（Noto Serif JP は読み込んでいない）、`.pfoot` を 2px にし点線をやめる、テーマの帯の字の対比をテストで検査。inspect の contrast・hairline・font-fallback が 0"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:653",
+ "created": "2026-11-12"
+}

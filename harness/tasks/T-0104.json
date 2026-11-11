@@ -1,0 +1,17 @@
+{
+ "id": "T-0104",
+ "title": "写真: photo_store の状態が出たのにお客さまのページが古いまま残る（render が次の push で cancel され、お客さまのページが置く前の状態で作られる）：photo_store の回の最後でお客さまのページの作り直",
+ "why": "写真: photo_store の状態が出たのにお客さまのページが古いまま残る（render が次の push で cancel され、お客さまのページが置く前の状態で作られる）：photo_store の回の最後でお客さまのページの作り直しまで済ませるか、ux_check の先頭の点検を「状態にあるのに DOM が原寸」＝本当の取りこぼしだけに絞る（r2f2 2026-10-31：test-a で 6 件、render を手で起こすと 0）。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 104,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:343",
+ "created": "2026-10-31"
+}

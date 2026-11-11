@@ -1,0 +1,19 @@
+{
+ "id": "T-0194",
+ "title": "版面 0 個の人の設定ページに「何を足せるか」",
+ "why": "版面 0 個の人の設定ページに「何を足せるか」 — 今は説明と「＋ 追いかけるものを足す」だけで下が空。店長の版面の名前を札で数個（押すと ../?add&pick=X）。P5 の段と一緒に見本で",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 194,
+ "scope": [],
+ "done_when": [
+  "今は説明と「＋ 追いかけるものを足す」だけで下が空。店長の版面の名前を札で数個（押すと ../?add&pick=X）。P5 の段と一緒に見本で"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:646",
+ "created": "2026-11-12"
+}

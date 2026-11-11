@@ -1,0 +1,19 @@
+{
+ "id": "T-0205",
+ "title": "見出しの長さで字の段を選ぶ（見た目が変わる・見本を先に、D2 と一緒に）",
+ "why": "見出しの長さで字の段を選ぶ（見た目が変わる・見本を先に、D2 と一緒に） — 文字数で 30 / 26 / 21px の 3 段、`line-clamp:3`（今 1440 で 5 行）。ポスターは「見出しを写真の下まで広げる」案と「段だけ落とす」案を testground に → ユーザーに見せる。inspect で 3 行を超える見出しが 0",
+ "quote": "",
+ "kind": "visual",
+ "complexity": "normal",
+ "priority": 205,
+ "scope": [],
+ "done_when": [
+  "文字数で 30 / 26 / 21px の 3 段、`line-clamp:3`（今 1440 で 5 行）。ポスターは「見出しを写真の下まで広げる」案と「段だけ落とす」案を testground に → ユーザーに見せる。inspect で 3 行を超える見出しが 0"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:658",
+ "created": "2026-11-12"
+}

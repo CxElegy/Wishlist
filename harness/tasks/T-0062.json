@@ -1,0 +1,22 @@
+{
+ "id": "T-0062",
+ "title": "【計画 2026-11-04 plan1c】11/5 以降の復旧を一度も止めずに通す手順書と練習",
+ "why": "【計画 2026-11-04 plan1c】11/5 以降の復旧を一度も止めずに通す手順書と練習 — 休止モードの出る側（SB_DEG_JS・sbstate.mark_limited）は作ったが、402 が解けた朝に「mark_ok で戻る→止めた Actions を全部再開→溜まった版面を AI 編集が順に片付ける→縮んだ画面が元に戻る」までを 1 本の手順にした文書が BACKLOG・docs/rules/free-tier.md のどちらにもない。free-tier.md に「戻る順番」の節（誰が何を見て、どの旗を戻すか。DB の形・鍵は触らない）を足し、sbstate を偽の 200／402 に差し替えた試験で、402→200 の切り替えの後に ①旗が戻る ②Discord が戻りの 1 通だけ ③次の回の収集が全版面を同時に起こさず gate の上限で順に動く、を数える。できた条件：戻る順番の試験が 3 つ緑、free-tier.md に節、processes.py の休止の流れに「戻る」の 1 歩。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 62,
+ "scope": [
+  "docs/rules/free-tier.md",
+  "scripts/processes.py"
+ ],
+ "done_when": [
+  "休止モードの出る側（SB_DEG_JS・sbstate.mark_limited）は作ったが、402 が解けた朝に「mark_ok で戻る→止めた Actions を全部再開→溜まった版面を AI 編集が順に片付ける→縮んだ画面が元に戻る」までを 1 本の手順にした文書が BACKLOG・docs/rules/free-tier.md のどちらにもない。free-tier.md に「戻る順番」の節（誰が何を見て、どの旗を戻すか。DB の形・鍵は触らない）を足し、sbstate を偽の 200／402 に差し替えた試験で、402→200 の切り替えの後に ①旗が戻る ②Discord が戻りの "
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:138",
+ "created": "2026-11-04"
+}

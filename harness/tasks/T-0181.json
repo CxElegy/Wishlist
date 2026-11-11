@@ -1,0 +1,19 @@
+{
+ "id": "T-0181",
+ "title": "お客さまの版面の E7（額で切れた・上の端）：Mrs. GREEN APPLE・King Gnu・BTS・スプラ 3 の Li'l Judd（Q105552720-58c49795df、上の端 86%）（合併後の ux_check、test",
+ "why": "お客さまの版面の E7（額で切れた・上の端）：Mrs. GREEN APPLE・King Gnu・BTS・スプラ 3 の Li'l Judd（Q105552720-58c49795df、上の端 86%）（合併後の ux_check、test-a 1400/390） — 店長の E7（哈利波特・Black Panther・A2O LITE）と同じ型。グループの写真の取り方の規則（emblem_rules・emblem.check_whole）を締め、全部の版面で作り直し（library_emblem は config.emblem_state を消さずに次の回で取り直せるように）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 181,
+ "scope": [],
+ "done_when": [
+  "店長の E7（哈利波特・Black Panther・A2O LITE）と同じ型。グループの写真の取り方の規則（emblem_rules・emblem.check_whole）を締め、全部の版面で作り直し（library_emblem は config.emblem_state を消さずに次の回で取り直せるように）"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:621",
+ "created": "2026-11-12"
+}

@@ -1,0 +1,17 @@
+{
+ "id": "T-0142",
+ "title": "版の足し忘れを emblem_face.NONE_V・library_emblem.RULES も同じ 1 か所の点検に（r3 2026-10-27：*_V が 3 モジュールに散っている",
+ "why": "版の足し忘れを emblem_face.NONE_V・library_emblem.RULES も同じ 1 か所の点検に（r3 2026-10-27：*_V が 3 モジュールに散っている。測り方の版 NONE_V は測り直しの印、RULES はお客さま側の作り直しの版。どれが失敗の待ちを解くべきかを表にして tests で数える）",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 142,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:511",
+ "created": "2026-10-27"
+}

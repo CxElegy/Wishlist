@@ -1,0 +1,17 @@
+{
+ "id": "T-0037",
+ "title": "Actions の cache 枠の残りを毎日 1 行にする（plan1 2026-11-05）：`gh api repos/CxElegy/Wishlist/actions/cache/usage` の active_caches_siz",
+ "why": "Actions の cache 枠の残りを毎日 1 行にする（plan1 2026-11-05）：`gh api repos/CxElegy/Wishlist/actions/cache/usage` の active_caches_size_in_bytes を state に 1 行置き、8 割（8 GB）で管理ページと Discord に出す。できた条件＝管理ページ「無料枠」に枠と残りが出る・上の門の前に枠が尽きる日を数字で言える。",
+ "quote": "",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 37,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:99",
+ "created": "2026-11-05"
+}
