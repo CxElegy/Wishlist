@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>予定と欲しい物の箱の地色 5 案</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Anton&family=Yusei+Magic&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 「ほかの注目ニュース」の右の列（これからの予定・欲しい物リスト）の地色と効果 5 案。見本だけ（本番は変わらない）。
+   トークンは scripts/render.py の :root と同じ。箱の色は案ごとの変数（--bg --fg --acc --sub --line --btn --btnfg --sh）で決める */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--good:#1F7A55;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono','Noto Sans JP',monospace;--font-num:'Anton',Impact,'Noto Sans JP',sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
+ --shadow:4px 4px 0 var(--ink);--skew:-8deg;--hair:color-mix(in srgb,var(--ink) 16%,transparent)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.7 var(--font-sans);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+header{background:var(--ink);color:var(--card);padding:22px 24px 20px}
+header small{display:block;font:700 12px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+header h1{margin:2px 0 6px;font:900 24px/1.35 var(--font-sans)}
+header p{margin:0;font-size:15px}
+header p b{background:var(--gold);color:var(--ink);padding:1px 8px}
+header a{color:var(--gold);font-size:13px;text-decoration:underline}
+main{max-width:1240px;margin:0 auto;padding:30px 20px 72px;display:flex;flex-direction:column;gap:46px}
+.plan>h2{margin:0 0 16px;display:flex;align-items:center;gap:14px;font:700 16px/1.5 var(--font-sans)}
+.plan>h2 b{flex:none;display:grid;place-items:center;width:46px;height:46px;background:var(--ink);color:var(--gold);font:30px/1 var(--font-num);transform:rotate(-3deg);box-shadow:3px 3px 0 var(--alert)}
+.plan>h2 span{min-width:0}
+.plan>h2 em{font-style:normal;font-weight:900;font-size:18px;margin-right:8px}
+
+/* ---------- 見本の 1 段：記事カード 2 枚＋右の列 ---------- */
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 320px;gap:20px;align-items:stretch}
+.wc{display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:8px 10px 11px;transform:rotate(var(--r,0deg))}
+.wc:nth-child(1){--r:-.6deg}.wc:nth-child(2){--r:.8deg}
+.ph{position:relative;flex:1 1 auto;min-height:170px;border:2px solid var(--ink);overflow:hidden;background:var(--g)}
+.ph::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 38%,color-mix(in srgb,var(--card) 55%,transparent) 0 13%,transparent 14%),linear-gradient(160deg,transparent 58%,color-mix(in srgb,var(--ink) 38%,transparent) 58.2%)}
+.p1{--g:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--alert) 70%,var(--gold)))}
+.p2{--g:linear-gradient(135deg,color-mix(in srgb,var(--good) 70%,var(--card)),color-mix(in srgb,var(--ink) 70%,var(--good)))}
+.wc .mt{display:flex;align-items:center;gap:8px;font:700 12px var(--font-sans)}
+.tg{display:inline-block;background:var(--sc,var(--alert));color:#FFF;padding:0 9px;transform:skewX(var(--skew));font:900 12px/1.7 var(--font-sans);font-style:normal;white-space:nowrap}
+.tg>span{display:inline-block;transform:skewX(8deg)}
+.wc h3{margin:0;font:900 17px/1.45 var(--font-sans)}
+.wc time{font:500 12px var(--font-mono);opacity:.7}
+
+.fside{display:flex;flex-direction:column;gap:20px;min-width:0}
+.box{position:relative;isolation:isolate;background:var(--bg);color:var(--fg);border:2px solid var(--ink);box-shadow:var(--sh,var(--shadow));padding:12px 14px 12px}
+.agenda{transform:rotate(.7deg)}
+.swish{transform:rotate(-.9deg);flex:1;display:flex;flex-direction:column}
+.box h4{margin:0 0 6px;display:flex;align-items:center;gap:10px;min-height:32px;padding-bottom:7px;border-bottom:2px solid var(--rule,var(--fg));font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
+.box h4 small{font:700 12px var(--font-mono);letter-spacing:.12em;color:var(--sub)}
+.box ol{list-style:none;margin:0;padding:0}
+.agenda li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.agenda li:last-child{border-bottom:0;padding-bottom:2px}
+.agenda li>b{grid-row:span 2;font:22px/1.15 var(--font-num);font-weight:400;color:var(--acc);text-align:center}
+.agenda li>b small{display:block;margin-top:3px;font:700 12px/1.3 var(--font-sans);color:var(--fg)}
+.agenda .nm{font:700 12px/1.5 var(--font-sans);color:var(--sub)}
+.agenda li>a{font-weight:700;font-size:14px;line-height:1.45}
+.swish ol{flex:1;display:flex;flex-direction:column;justify-content:space-around}
+.swish li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--line)}
+.wthumb{width:48px;height:48px;background:#FFF;border:1.5px solid var(--ink);display:grid;place-items:center}
+.wthumb i{width:74%;height:74%;border-radius:var(--rd,50%);background:var(--g)}
+.t1{--g:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--gold) 60%,var(--alert)))}
+.t2{--g:linear-gradient(135deg,color-mix(in srgb,var(--rose) 45%,#FFF),var(--rose));--rd:6px}
+.wt{display:flex;flex-direction:column;min-width:0}
+.wt b{font:700 13px/1.4 var(--font-sans)}
+.wt em{font:15px/1.3 var(--font-num);font-style:normal;color:var(--acc)}
+.swish .tg{--sc:var(--chip,var(--rose));color:var(--chipfg,#FFF)}
+.stot{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:8px 0 8px;font:700 12px var(--font-sans)}
+.stot b{font:20px var(--font-num);font-weight:400}
+.smore{display:block;text-align:center;padding:6px;background:var(--btn,var(--rose));color:var(--btnfg,#FFF);font:900 13px var(--font-sans);letter-spacing:.06em;box-shadow:3px 3px 0 var(--btnsh,var(--ink))}
+
+/* ---------- A 墨の地＋金の札＋右上の網点 ---------- */
+.vA .box{--bg:var(--ink);--fg:var(--card);--acc:var(--gold);--sub:var(--gold);--line:color-mix(in srgb,var(--card) 30%,transparent);--rule:color-mix(in srgb,var(--card) 55%,transparent);
+ --sh:4px 4px 0 var(--rose);--btn:var(--gold);--btnfg:var(--ink);--btnsh:var(--rose)}
+.vA .box h4>:first-child{background:var(--gold);color:var(--ink);padding:1px 12px;transform:skewX(var(--skew))}
+.vA .box::after{content:"";position:absolute;z-index:-1;top:0;right:0;width:96px;height:52px;pointer-events:none;
+ background:radial-gradient(circle,color-mix(in srgb,var(--card) 62%,transparent) 1.5px,transparent 1.8px) 0 0/8px 8px;
+ -webkit-mask-image:linear-gradient(to bottom left,#000 8%,transparent 62%);mask-image:linear-gradient(to bottom left,#000 8%,transparent 62%)}
+.vA .box h4 small{display:none}   /* 網点の角には字を置かない */
+
+/* ---------- B 淡い黄＋カレンダーの日付札＋墨の天の帯 ---------- */
+.vB .box{--bg:color-mix(in srgb,var(--gold) 30%,var(--card));--fg:var(--ink);--acc:var(--rose);--sub:color-mix(in srgb,var(--ink) 78%,transparent);--line:color-mix(in srgb,var(--ink) 30%,transparent);padding-top:0}
+.vB .box h4{margin:0 -14px 4px;padding:7px 14px;background:var(--ink);color:var(--card);border-bottom:0;justify-content:space-between}
+.vB .box h4 small{font:15px var(--font-num);font-weight:400;letter-spacing:.1em;color:var(--gold)}
+.vB .agenda li{gap:2px 12px;align-items:start}
+.vB .agenda li>b{align-self:center;min-width:58px;background:var(--card);color:var(--ink);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);padding:3px 6px 0;transform:rotate(-2deg)}
+.vB .agenda li>b small{margin:3px -6px 0;padding:1px 0;background:var(--ink);color:var(--card)}
+.vB .agenda li:first-child>b small{background:var(--alert);color:#FFF}
+
+/* ---------- C 白い地＋斜めに切った黒い見出し＋ずらした細い枠 ---------- */
+.vC .box{--bg:#FFF;--fg:var(--ink);--acc:var(--rose);--sub:var(--rose);--line:color-mix(in srgb,var(--ink) 22%,transparent);padding-top:0;
+ --sh:7px 7px 0 -2px var(--paper),7px 7px 0 0 var(--rose)}
+.vC .box h4{margin:0 -14px 2px;padding:9px 14px 17px;min-height:0;background:var(--ink);color:var(--card);border-bottom:0;
+ clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),0 100%)}
+.vC .box h4>:first-child{display:inline-block;transform:rotate(-2deg);font-size:17px}
+.vC .box h4 small{margin-left:auto;margin-bottom:8px;color:var(--gold)}
+
+/* ---------- D くぼんだ灰＋切り角＋判子 ---------- */
+.vD .box{--bg:color-mix(in srgb,var(--ink) 15%,var(--paper));--fg:var(--ink);--acc:var(--ink);--sub:var(--stamp);--line:color-mix(in srgb,var(--ink) 34%,transparent);
+ --stamp:color-mix(in srgb,var(--rose) 72%,var(--ink));--sh:none;border:0;padding:14px 16px 14px;background:var(--ink);
+ clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%)}
+.vD .box::before{content:"";position:absolute;z-index:-1;inset:2px;background:var(--bg);
+ clip-path:polygon(0 0,calc(100% - 20.8px) 0,100% 20.8px,100% 100%,0 100%)}
+.vD .box h4{padding-right:14px}
+.vD .box h4 small{margin-left:auto;padding:1px 8px;border:2px solid var(--stamp);border-radius:4px;color:var(--stamp);font:900 12px/1.5 var(--font-sans);letter-spacing:.08em;transform:rotate(-7deg)}
+.vD .swish .tg{--chip:var(--stamp)}
+
+/* ---------- E 深い紅＋金の細い内枠＋金の札 ---------- */
+.vE .box{--bg:color-mix(in srgb,var(--rose) 58%,var(--ink));--fg:var(--card);--acc:var(--gold);--sub:var(--gold);--line:color-mix(in srgb,var(--card) 34%,transparent);--rule:var(--gold);
+ --btn:var(--card);--btnfg:var(--ink);--chip:var(--gold);--chipfg:var(--ink);padding:16px 18px 16px;outline:1px solid var(--gold);outline-offset:-7px}
+.vE .box h4>:first-child{background:var(--gold);color:var(--ink);padding:1px 12px;transform:skewX(var(--skew))}
+
+@media(max-width:820px){
+ main{padding:22px 14px 72px;gap:38px}
+ header{padding:18px 16px}header h1{font-size:20px}
+ .plan>h2{align-items:flex-start}
+ .row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 12px}
+ .fside{grid-column:1/-1;gap:18px}
+ .ph{min-height:0;aspect-ratio:4/3;flex:none}
+ .wc h3{font-size:14px}
+ .agenda,.swish{transform:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <small>TESTGROUND · SIDE BOX</small>
+  <h1>予定と欲しい物の箱：地色と効果 5 案</h1>
+  <p><b>番号（A〜E）で選んでください</b>　主役は左の記事カード、右の 2 つの箱は脇役のまま色を変えます。見本なので本番は変わりません。</p>
+  <a href="index.html">← テストグラウンドの入口</a>
+</header>
+<main>
+<section class="plan vA" id="A">
+  <h2><b>A</b><span><em>墨の地</em>黒い地に金の斜めの札。右上の角だけ網点が薄く消える</span></h2>
+  <div class="row">
+    <article class="wc"><div class="ph p1"></div><div class="mt"><i class="tg"><span>発売</span></i><span>ぐでたま</span></div><h3>ぐでたまの冬の新作ぬいぐるみ、きょうから全国で発売</h3><time>11.12</time></article>
+    <article class="wc"><div class="ph p2"></div><div class="mt"><i class="tg" style="--sc:var(--good)"><span>新情報</span></i><span>ゼルダの伝説</span></div><h3>新作の映像が公開、発売日は 11 月 21 日に決定</h3><time>11.11</time></article>
+    <aside class="fside">
+      <div class="box agenda"><h4><span>これからの予定</span><small>UPCOMING</small></h4><ol>
+        <li><b>11.12<small>今日</small></b><span class="nm">ぐでたま · 発売日</span><a>冬の新作ぬいぐるみが全国で発売</a></li>
+        <li><b>11.15<small>あと 3 日</small></b><span class="nm">チェーンソーマン · 配信日</span><a>劇場版の配信がはじまる</a></li>
+        <li><b>11.21<small>あと 9 日</small></b><span class="nm">ゼルダの伝説 · 発売日</span><a>新作が Switch 2 で発売</a></li>
+      </ol></div>
+      <div class="box swish"><h4><span>欲しい物リスト</span><small>2 件</small></h4><ol>
+        <li><span class="wthumb"><i class="t1"></i></span><span class="wt"><b>ぐでたま ぬいぐるみ M</b><em>JPY 3,300</em></span><i class="tg"><span>欲しい</span></i></li>
+        <li><span class="wthumb"><i class="t2"></i></span><span class="wt"><b>gelato pique パーカー</b><em>JPY 7,480</em></span><i class="tg"><span>欲しい</span></i></li>
+      </ol><p class="stot"><span>欲しいものの合計</span><b>JPY 10,780</b></p><a class="smore">♥ 全部見る</a></div>
+    </aside>
+  </div>
+</section>
+<section class="plan vB" id="B">
+  <h2><b>B</b><span><em>カレンダー</em>淡い黄の地。日付を P5 の暦のような札にして、見出しは墨の帯</span></h2>
+  <div class="row">
+    <article class="wc"><div class="ph p1"></div><div class="mt"><i class="tg"><span>発売</span></i><span>ぐでたま</span></div><h3>ぐでたまの冬の新作ぬいぐるみ、きょうから全国で発売</h3><time>11.12</time></article>
+    <article class="wc"><div class="ph p2"></div><div class="mt"><i class="tg" style="--sc:var(--good)"><span>新情報</span></i><span>ゼルダの伝説</span></div><h3>新作の映像が公開、発売日は 11 月 21 日に決定</h3><time>11.11</time></article>
+    <aside class="fside">
+      <div class="box agenda"><h4><span>これからの予定</span><small>NOV</small></h4><ol>
+        <li><b>11.12<small>今日</small></b><span class="nm">ぐでたま · 発売日</span><a>冬の新作ぬいぐるみが全国で発売</a></li>
+        <li><b>11.15<small>あと 3 日</small></b><span class="nm">チェーンソーマン · 配信日</span><a>劇場版の配信がはじまる</a></li>
+        <li><b>11.21<small>あと 9 日</small></b><span class="nm">ゼルダの伝説 · 発売日</span><a>新作が Switch 2 で発売</a></li>
+      </ol></div>
+      <div class="box swish"><h4><span>欲しい物リスト</span><small>2 件</small></h4><ol>
+        <li><span class="wthumb"><i class="t1"></i></span><span class="wt"><b>ぐでたま ぬいぐるみ M</b><em>JPY 3,300</em></span><i class="tg"><span>欲しい</span></i></li>
+        <li><span class="wthumb"><i class="t2"></i></span><span class="wt"><b>gelato pique パーカー</b><em>JPY 7,480</em></span><i class="tg"><span>欲しい</span></i></li>
+      </ol><p class="stot"><span>欲しいものの合計</span><b>JPY 10,780</b></p><a class="smore">♥ 全部見る</a></div>
+    </aside>
+  </div>
+</section>
+<section class="plan vC" id="C">
+  <h2><b>C</b><span><em>白と斜めの黒帯</em>白い地。見出しを斜めに切った黒い帯にして、影のかわりに細い枠をずらす</span></h2>
+  <div class="row">
+    <article class="wc"><div class="ph p1"></div><div class="mt"><i class="tg"><span>発売</span></i><span>ぐでたま</span></div><h3>ぐでたまの冬の新作ぬいぐるみ、きょうから全国で発売</h3><time>11.12</time></article>
+    <article class="wc"><div class="ph p2"></div><div class="mt"><i class="tg" style="--sc:var(--good)"><span>新情報</span></i><span>ゼルダの伝説</span></div><h3>新作の映像が公開、発売日は 11 月 21 日に決定</h3><time>11.11</time></article>
+    <aside class="fside">
+      <div class="box agenda"><h4><span>これからの予定</span><small>UPCOMING</small></h4><ol>
+        <li><b>11.12<small>今日</small></b><span class="nm">ぐでたま · 発売日</span><a>冬の新作ぬいぐるみが全国で発売</a></li>
+        <li><b>11.15<small>あと 3 日</small></b><span class="nm">チェーンソーマン · 配信日</span><a>劇場版の配信がはじまる</a></li>
+        <li><b>11.21<small>あと 9 日</small></b><span class="nm">ゼルダの伝説 · 発売日</span><a>新作が Switch 2 で発売</a></li>
+      </ol></div>
+      <div class="box swish"><h4><span>欲しい物リスト</span><small>2 件</small></h4><ol>
+        <li><span class="wthumb"><i class="t1"></i></span><span class="wt"><b>ぐでたま ぬいぐるみ M</b><em>JPY 3,300</em></span><i class="tg"><span>欲しい</span></i></li>
+        <li><span class="wthumb"><i class="t2"></i></span><span class="wt"><b>gelato pique パーカー</b><em>JPY 7,480</em></span><i class="tg"><span>欲しい</span></i></li>
+      </ol><p class="stot"><span>欲しいものの合計</span><b>JPY 10,780</b></p><a class="smore">♥ 全部見る</a></div>
+    </aside>
+  </div>
+</section>
+<section class="plan vD" id="D">
+  <h2><b>D</b><span><em>くぼんだ灰</em>影をなくした灰色の地。右上を切り落とし、件数は判子で押す</span></h2>
+  <div class="row">
+    <article class="wc"><div class="ph p1"></div><div class="mt"><i class="tg"><span>発売</span></i><span>ぐでたま</span></div><h3>ぐでたまの冬の新作ぬいぐるみ、きょうから全国で発売</h3><time>11.12</time></article>
+    <article class="wc"><div class="ph p2"></div><div class="mt"><i class="tg" style="--sc:var(--good)"><span>新情報</span></i><span>ゼルダの伝説</span></div><h3>新作の映像が公開、発売日は 11 月 21 日に決定</h3><time>11.11</time></article>
+    <aside class="fside">
+      <div class="box agenda"><h4><span>これからの予定</span><small>3 件</small></h4><ol>
+        <li><b>11.12<small>今日</small></b><span class="nm">ぐでたま · 発売日</span><a>冬の新作ぬいぐるみが全国で発売</a></li>
+        <li><b>11.15<small>あと 3 日</small></b><span class="nm">チェーンソーマン · 配信日</span><a>劇場版の配信がはじまる</a></li>
+        <li><b>11.21<small>あと 9 日</small></b><span class="nm">ゼルダの伝説 · 発売日</span><a>新作が Switch 2 で発売</a></li>
+      </ol></div>
+      <div class="box swish"><h4><span>欲しい物リスト</span><small>2 件</small></h4><ol>
+        <li><span class="wthumb"><i class="t1"></i></span><span class="wt"><b>ぐでたま ぬいぐるみ M</b><em>JPY 3,300</em></span><i class="tg"><span>欲しい</span></i></li>
+        <li><span class="wthumb"><i class="t2"></i></span><span class="wt"><b>gelato pique パーカー</b><em>JPY 7,480</em></span><i class="tg"><span>欲しい</span></i></li>
+      </ol><p class="stot"><span>欲しいものの合計</span><b>JPY 10,780</b></p><a class="smore">♥ 全部見る</a></div>
+    </aside>
+  </div>
+</section>
+<section class="plan vE" id="E">
+  <h2><b>E</b><span><em>深い紅</em>深い紅の地に金の細い内枠と金の札。字は生成り</span></h2>
+  <div class="row">
+    <article class="wc"><div class="ph p1"></div><div class="mt"><i class="tg"><span>発売</span></i><span>ぐでたま</span></div><h3>ぐでたまの冬の新作ぬいぐるみ、きょうから全国で発売</h3><time>11.12</time></article>
+    <article class="wc"><div class="ph p2"></div><div class="mt"><i class="tg" style="--sc:var(--good)"><span>新情報</span></i><span>ゼルダの伝説</span></div><h3>新作の映像が公開、発売日は 11 月 21 日に決定</h3><time>11.11</time></article>
+    <aside class="fside">
+      <div class="box agenda"><h4><span>これからの予定</span><small>UPCOMING</small></h4><ol>
+        <li><b>11.12<small>今日</small></b><span class="nm">ぐでたま · 発売日</span><a>冬の新作ぬいぐるみが全国で発売</a></li>
+        <li><b>11.15<small>あと 3 日</small></b><span class="nm">チェーンソーマン · 配信日</span><a>劇場版の配信がはじまる</a></li>
+        <li><b>11.21<small>あと 9 日</small></b><span class="nm">ゼルダの伝説 · 発売日</span><a>新作が Switch 2 で発売</a></li>
+      </ol></div>
+      <div class="box swish"><h4><span>欲しい物リスト</span><small>2 件</small></h4><ol>
+        <li><span class="wthumb"><i class="t1"></i></span><span class="wt"><b>ぐでたま ぬいぐるみ M</b><em>JPY 3,300</em></span><i class="tg"><span>欲しい</span></i></li>
+        <li><span class="wthumb"><i class="t2"></i></span><span class="wt"><b>gelato pique パーカー</b><em>JPY 7,480</em></span><i class="tg"><span>欲しい</span></i></li>
+      </ol><p class="stot"><span>欲しいものの合計</span><b>JPY 10,780</b></p><a class="smore">♥ 全部見る</a></div>
+    </aside>
+  </div>
+</section>
+</main>
+</body>
+</html>
