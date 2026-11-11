@@ -319,7 +319,7 @@ def reason_counts(items, live=()):
     out = {"E10": {}, "E15": {}, "別人の実写": 0}
     for k, v in items.items():
         f = v.get("funnel") or {}
-        if v.get("state") == "failed" and not v.get("exhausted") and (v.get("target") or 0) - (v.get("have") or 0) > 1:
+        if v.get("state") == "failed" and not v.get("exhausted") and not v.get("passed") and (v.get("target") or 0) - (v.get("have") or 0) > 1:
             for r, n in (f.get("rejected") or {}).items():
                 b = REASON_BUCKET.get(r, "出尽くし・重複")
                 out["E10"][b] = out["E10"].get(b, 0) + n
@@ -486,7 +486,7 @@ def stuck():
         d = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
     d = d.get("items", {})
     # 残り 1 枚だけ届かない（Astrae Oratio 29/30・绝区零 60/61）は名簿の最後の 1 人に使える画像がないだけなので ✗ にしない
-    return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and not v.get("exhausted") and (v.get("target") or 0) - (v.get("have") or 0) > 1}
+    return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and not v.get("exhausted") and not v.get("passed") and (v.get("target") or 0) - (v.get("have") or 0) > 1}
 
 
 CLOSE_STATE = "https://raw.githubusercontent.com/CxElegy/Wishlist/main/state/emblem_closeup.json"
@@ -597,7 +597,7 @@ def exhausted():
         d = json.loads(urllib.request.urlopen(PROGRESS, timeout=20).read()).get("items", {})
     except Exception:  # noqa: BLE001
         return {}
-    return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and v.get("exhausted")}
+    return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and (v.get("exhausted") or v.get("passed"))}
 
 
 TIME_WAIT = re.compile(r"\d+ 時間後|\d+:\d+ から|\d+:\d+ に再挑戦")

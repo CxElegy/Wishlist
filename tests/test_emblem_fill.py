@@ -635,6 +635,18 @@ class Background(unittest.TestCase):
         ef.record(prog, it, {"state": "ok", "tried": {}, "note": "x"}, "t")
         self.assertNotIn("rounds", prog["items"]["big"])
 
+    def test_record_marks_passed_after_one_full_pass(self):
+        """名簿の残りを STEP 人ずつ 1 周して 0 枚（passes_left <= 0）なら passed。途中は付けない（E10 は passed を ✗ にしない）。"""
+        it = {"name": "big", "emblem_kind": "character", "emblem_pool": 35, "emblem_who": [f"p{i}" for i in range(35)], "emblem": []}
+        prog = {"items": {}}
+        for n in range(1, 4):
+            ef.record(prog, it, {"state": "failed", "tried": {}, "note": "x"}, "t")
+            self.assertNotIn("passed", prog["items"]["big"], f"{n} 回目はまだ 1 周していない")
+        ef.record(prog, it, {"state": "failed", "tried": {}, "note": "x"}, "t")
+        self.assertTrue(prog["items"]["big"]["passed"])
+        ef.record(prog, it, {"state": "ok", "tried": {}, "note": "x"}, "t")
+        self.assertNotIn("passed", prog["items"]["big"])
+
     def test_real_failed_boards_with_untried_names_are_due(self):
         """点検（本番の items.yaml・進捗）：失敗で、名簿にまだ試していない人が多い版面は due() に入る（凍っていない）。"""
         import json
