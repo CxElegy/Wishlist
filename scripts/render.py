@@ -218,6 +218,12 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .sbox h4,.fside .agenda h4{margin:0 0 6px;display:flex;align-items:baseline;gap:10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
 .sbox h4 small{margin-left:auto;font:500 11px var(--font-sans)}
 .sbox h4 a:hover{color:var(--rose)}
+/* 右の列（予定・欲しい物リスト）は黒地に赤の斜めの縞（P5 の予告状）：ほかの白いカードと違う底色と特效（2026-11-11 店長「把右边这两个底色换一下，让它做一个不同的特效」）。令牌を箱の中だけ入れ替えるのでテーマにも付いてくる */
+.fside>.agenda,.fside>.sbox{--card:var(--ink0);--ink:var(--card0);--hair:color-mix(in srgb,var(--card0) 22%,transparent);color:var(--card0);border-color:var(--ink0);box-shadow:6px 6px 0 var(--alert);
+ background:var(--ink0) repeating-linear-gradient(-45deg,color-mix(in srgb,var(--alert) 20%,transparent) 0 10px,transparent 10px 22px)}
+.fside>.agenda h4,.fside>.sbox h4{color:var(--gold);border-bottom-color:var(--gold)}.fside>.agenda h4 small{color:var(--card0);opacity:.8}
+.fside .agenda li b,.fside .sbox .wt em,.fside .sbox .wsum b,.fside .sbox b.sum{color:var(--gold)}
+.fside .agenda li a,.fside .agenda li i{color:inherit}
 .swish ol,.shot ol{list-style:none;margin:0;padding:0}
 .swish .sempty{margin:6px 0 10px;font-size:13px;line-height:1.6;color:color-mix(in srgb,var(--ink) 72%,transparent)}
 .swish li[hidden],.agenda li[hidden]{display:none}

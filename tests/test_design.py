@@ -147,6 +147,7 @@ class Components(unittest.TestCase):
                 self.assertGreaterEqual(theme.contrast(theme._rgb(c), WHITE), 4.5, f"{k} {c}")
         self.assertIn("localStorage.getItem('wl-theme')", render._account_tag("x"))
         self.assertIn('class="schemes thpick"', render._theme_pick(render.SETTINGS_JA))
+        self.assertIn(".fside>.agenda,.fside>.sbox{--card:var(--ink0);--ink:var(--card0)", render.CSS)   # 右の列は黒地に赤の縞（2026-11-11 店長）
 
     def test_aesthetic_audit_2026_11_11(self):
         """2026-11-11 審美基準で全体を点検して直した規則：見出しは「…」で切らない（D3）・字体は令牌だけ（D2。中国語のページは端末の中国語フォント 1 種類）・
