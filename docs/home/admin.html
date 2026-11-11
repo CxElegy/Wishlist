@@ -18,6 +18,7 @@
  /* 話題度の分析ページのグラフ（dataviz の検証済みパレット）：指標 6 色・点数の濃淡 5 段・前週比の上下 */
  --viz-1:#2a78d6;--viz-2:#eb6834;--viz-3:#1baf7a;--viz-4:#eda100;--viz-5:#e87ba4;--viz-6:#008300;
  --seq-0:#cde2fb;--seq-1:#9ec5f4;--seq-2:#5598e7;--seq-3:#256abf;--seq-4:#104281;--up:#e34948;--down:#2a78d6}
+html:lang(zh){--font-sans:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;--font-mono:'JetBrains Mono','Noto Sans SC','Microsoft YaHei',monospace}  /* 中国語のページは字を端末の中国語フォントで 1 種類に（H6：中国語の Web フォントは読まない。日本語の字体が先だと簡体字だけ別の字体に混ざる。D2） */
 /* デザインの骨格（PRODUCT.md）：文字箱の後ろに硬い影、見出しと枠だけ少し傾ける（-1〜-2.5°）、ラベルは平行四辺形。
    本文・リスト・作品の版面は傾けない。配色はトークンと版面の色だけ */
 *{box-sizing:border-box}
@@ -86,7 +87,7 @@ button{font-family:inherit}
 .mast .stamp{padding-bottom:6px;font:700 11px/1.4 var(--font-sans);letter-spacing:.08em;opacity:.65}
 .mast .tools{display:flex;align-items:stretch;gap:10px}
 .mast .meta{display:flex;flex-direction:column;justify-content:center;padding:4px 14px;border:2px solid var(--ink);background:var(--card)}
-.mast .meta small{font:700 10px/1.3 var(--font-sans);letter-spacing:.2em;opacity:.7}
+.mast .meta small{font:700 11px/1.3 var(--font-sans);letter-spacing:.2em;opacity:.7}
 .mast .meta b{font:26px/1 var(--font-num);letter-spacing:.02em;white-space:nowrap}
 .mastwish{display:flex;align-items:center;gap:8px;padding:8px 14px;border:2px solid var(--rose);background:var(--rose);color:#FFF;
  box-shadow:var(--shadow);font:900 14px/1.3 var(--font-sans);white-space:nowrap;transition:transform .1s,box-shadow .1s}
@@ -643,6 +644,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .pk .src{font:500 12px/1.4 var(--font-sans);opacity:.7}
 .pk b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .pk.big b{font-size:19px;font-weight:900;line-height:1.4;-webkit-line-clamp:3}
+.nx b,.wt b,.wc b,.wc.nophoto b,.pk b,.pk.big b,.hero h2,.grid>.lead h2,.mas>.lead h2,.card.wide h3,.mini h3,.tape .lbl b{display:block;-webkit-line-clamp:unset;overflow:visible}  /* 見出しは「…」で切らない（審美基準 D3・2026-11-08 店長「这里文字会缺一段」）。高さは組み方（fitBoard・壁・fitPk）が実際の高さで測る */
 .pk .tags{display:flex;flex-wrap:wrap;gap:5px}
 .pk .tags:empty{display:none}
 .pk .tags i{font-style:normal;padding:2px 8px;border:1.5px solid var(--ink);background:#FFF;font:700 11px/1.3 var(--font-sans)}
@@ -746,7 +748,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
  transform:translate(18px,70px) rotate(-18deg) scale(.55)}  /* 上へ戻ったとき：影が縮んで、下へ沈みながら消える */
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
 .emb:has(img.badge){--z:.82;transform:rotate(5deg)}  /* 写真の小元素は人の絵の 0.82 倍で +5° 傾けて角を外へ（ロゴ・記号は元から小さいので倍率なし） */
-@keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 18px);rotate:-3deg}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
+@keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 6px);rotate:-3deg}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
 @media (max-width:600px){.emb{height:100px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
@@ -862,6 +864,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 /* ---------- 左侧目录（v6：testground/compare.html で決めた形。宽屏的样子见 NAV_STYLES，窄屏是顶部两排横条） ---------- */
 html{scroll-behavior:smooth}
 [data-k]{scroll-margin-top:24px}
+section.sec.has-emb{scroll-margin-top:max(24px,calc(var(--embov,0px) + 6px))}  /* 小元素の上の端で吸着する（E4）。上の版面との間はあけない：吸着した時に上の版面の縁が見え、小元素がその上に立つ（2026-11-11 店長「上一个板块的边缘也显示出来会更有立体感」） */
 .spot,.front .poster{scroll-margin-top:16px}
 .page{max-width:1480px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px 32px;align-items:start}
 .mast{grid-column:1/-1}
@@ -903,7 +906,7 @@ html{scroll-behavior:smooth}
  .nav .pill.media,.nav .nsum{display:none!important}   /* スマホの横帯にはシリーズの中身・作品名の行を出さない */
  .nav .pill.on{background:var(--card);color:var(--ink);border-color:var(--card)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,var(--alert));width:calc(var(--prog,0) * 100%)}
- [data-k]{scroll-margin-top:104px}
+ [data-k]{scroll-margin-top:104px}section.sec.has-emb{scroll-margin-top:calc(104px + var(--embov,0px))}
 }
 @media (max-width:600px){.nav{margin:0 -16px}}
 /* ---------- 愿望清单 ---------- */
@@ -937,7 +940,7 @@ html{scroll-behavior:smooth}
 .wcard .links a{border-bottom:2px solid var(--acc);padding-bottom:1px}
 .wcard .links a:hover{color:var(--acc)}
 .wcard .watch{display:flex;flex-direction:column;gap:4px;padding:12px 14px;background:color-mix(in srgb,var(--acc) 8%,transparent);border-left:3px solid var(--acc);font-size:14px;line-height:1.55}
-.wcard .watch span{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--acc)}
+.wcard .watch span{font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--acc)}
 .wcard .added{font:700 11px var(--font-mono);opacity:.5;letter-spacing:.1em}
 @media (max-width:760px){.wcard.solo{grid-template-columns:1fr}.wcard.solo .wimg{min-height:0;aspect-ratio:1/1}
  .wcard.solo .wtxt{border-left:0;padding:22px}.wcard.solo h3{font-size:28px}.wish .band .title{font-size:30px}}
@@ -1632,7 +1635,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin" content="984cf29f7697"><style>
+<meta name="wl-ver" data-page="admin" content="76be16e42a98"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1710,6 +1713,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 })();
 </script><style>
 .wl-auth{position:fixed;top:10px;right:12px;z-index:90;display:flex;align-items:center;gap:8px;font:700 13px/1.4 var(--font-sans)}
+@media (min-width:761px){.wl-auth{position:absolute}}  /* PC はページの上にだけ置き、スクロールで流れる（版面を画面の上にそろえた時、右上の小元素・題に重ならない。審美基準 E4・2026-11-11 店長「エンブレムが見きれない」） */
 .wl-auth .shop{padding:2px 9px;background:var(--ink);color:var(--card);font:500 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.06em;transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--rose)}
 .wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
  background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
@@ -2597,7 +2601,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.11 15:29</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.11 16:07</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html" aria-current="page"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>

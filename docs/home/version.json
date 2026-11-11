@@ -1,6 +1,6 @@
 {
- "admin": "984cf29f7697",
- "admin-ai": "a21ee63aa1b0",
+ "admin": "76be16e42a98",
+ "admin-ai": "1e1ba7728fa1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -11,7 +11,7 @@
    "52744b0e"
   ]
  },
- "admin-boards": "dd55151e3d97",
+ "admin-boards": "a6e179b6247f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "71965bc74c32",
+ "admin-emblem": "cf528e3ee8ab",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "eb0de306"
+   "42da7c9e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -41,9 +41,9 @@
    "9831adc4"
   ]
  },
- "admin-members": "55a85f6b2f84",
+ "admin-members": "aeddd62fcf1f",
  "admin-members_marks": {},
- "admin-now": "34b6a024a215",
+ "admin-now": "24750616f033",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -51,7 +51,7 @@
   ],
   "queue": [
    "いまの状況",
-   "ed3d8326"
+   "3df5d5c3"
   ],
   "status": [
    "運行状況",
@@ -62,11 +62,11 @@
    "49e21871"
   ]
  },
- "admin-system": "1ad15256d022",
+ "admin-system": "5fe1c7ac332a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "aa9a7f33"
+   "a8720eff"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "eb6f7f8f"
+   "1271b4a6"
   ]
  },
  "admin_marks": {},
- "heat": "b58b82c95cef",
+ "heat": "2bbdc94c2979",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -93,7 +93,7 @@
    "83688cc2"
   ]
  },
- "index": "a93298d92415",
+ "index": "c23a4d0074ba",
  "index_marks": {
   "front": [
    "トップ",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "101ef962"
+   "c52bd735"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "f87a68ef"
+   "23e9ddb0"
   ]
  },
- "updated": "11.11 15:29",
- "wishlist": "c82b5a7168cc"
+ "updated": "11.11 16:07",
+ "wishlist": "29ecb482667d"
 }
