@@ -17,6 +17,7 @@
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
   E21 公式があるのに使っていない（✗）  名簿の人で、画像の出どころが Fandom なのに公式サイトに同じ人の立ち絵がある、または名簿の上位 30 人で小元素がいないのに公式に立ち絵がある（「いない」）数。gather 系の全入口と名簿を回す順（subjects）で公式が先かを実際の名簿で数える
+  E31 顔が下限より小さい（✗）  人物（cutout）の表示した顔の高さ（顔の割合 × 絵の高さ〔枠の幅 ÷ 縦横比〕× 帯に合わせた拡大）が、規則どおりの大きさ（emblem_face.shown：下限 PC 44px・スマホ 32px、全身で届かなければ上半身に切る）の 0.95 倍未満。審美基準 I1c（2026-11-12 店長「这还是有点小 看不清人脸」：スマホの全身の顔が 6〜10px だった）。規則どおりでも下限に届かない数（頭の大きいキャラを全身のまま・横に広いポーズの幅の上限）は情報の行に
   E28 はみ出し・立体（✗）  小元素の上の縁が帯の上の縁より絵の高さの 5% 以上外にある（POP_MIN）・帯の線より下を切っている（clip-path：下のニュースの字・👍 に重ならない）・影（drop-shadow）がある（2026-10-31 案 A）
   E27 公式の人物の絵を読めない版面（情報）  公式サイトがあるキャラの版面で、HTML から人物の絵が 1 枚も見つからない（JS で描く公式など）数
   E19 公式があるのにアップのまま（情報：✗ にしない）  顔だけのアップ（fs > 0.5）が残る小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数を版面ごとに出す。公式が先の規則が gather・控え・入れ替えの全部の入口に効いているかの数え直し（0 に向かう）
@@ -83,7 +84,7 @@ SWAP = r"""async ([i, j]) => { const s = document.querySelectorAll('section.sec'
   const n = img.cloneNode(); n.removeAttribute('loading'); n.src = a.src;
   const whole = a.shape === 'badge' && !a.crop && (a.plate || a.ar && (a.ar < 0.95 || a.ar > 1.6));
   n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : a.m >= 1 ? ' fz' : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');
-  n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
+  n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] + ';--be:' + a.body[0] + (a.bf ? ';--fh:' + a.bf + (a.bt ? ';--ft:' + a.bt : '') : '') : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) + (a.m >= 1 && a.fs ? ';--fs:' + a.fs + (a.fa ? ';--fa:' + a.fa : '') : '') : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
   if (a.shape === 'badge' && a.crop) { const c = document.createElement('span'); c.className = 'crop';
     c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1); c.appendChild(n); inner.replaceChildren(c); }
   else inner.replaceChildren(n);
@@ -103,7 +104,8 @@ MEAS = r"""async (i) => { const q = () => { const s = document.querySelectorAll(
   if (t) { const rg = document.createRange(); rg.selectNodeContents(t);
     for (const tr of rg.getClientRects()) ov += Math.max(0, Math.min(tr.right, r.right) - Math.max(tr.left, r.left)) * Math.max(0, Math.min(tr.bottom, r.bottom) - Math.max(tr.top, r.top)); }
   const bd = s.querySelector('.band'), bb = bd && bd.getBoundingClientRect(), ein = s.querySelector('.emb-in');   // E28：帯の上の縁から外へ出た割合・帯の線より下へ出た量・影
-  return {src: img.getAttribute('src'), ok: img.naturalWidth > 1, h: Math.round(r.height), off: Math.round(r.right - innerWidth), ov: Math.round(ov),
+  const sc = parseFloat(getComputedStyle(s.querySelector('.emb')).scale) || 1;   // E31：顔の px の材料（傾きを入れない枠の幅・高さ × 帯に合わせた拡大）。上半身に切った絵（I1c）は枠が見える高さなので、絵の高さは幅 ÷ 縦横比で出す
+  return {src: img.getAttribute('src'), ok: img.naturalWidth > 1, h: Math.round(r.height), ow: img.offsetWidth * sc, oh: img.offsetHeight * sc, off: Math.round(r.right - innerWidth), ov: Math.round(ov),
     pop: bb ? +((bb.top - r.top) / r.height).toFixed(2) : null, clip: getComputedStyle(s.querySelector('.emb')).clipPath !== 'none', sh: !!ein && /drop-shadow/.test(getComputedStyle(ein).filter)}; }"""
 
 _files, _why = {}, {}   # 開けなかった理由（E2 の行に出す）
@@ -653,10 +655,12 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 21)} | {"E22": [], "E23": [], "E24": [], "E28": []}
+    found = {f"E{n}": [] for n in range(1, 21)} | {"E22": [], "E23": [], "E24": [], "E28": [], "E31": []}
     nomodel = False
     nf_why = {}   # E17：顔が測れない理由の札 → [版面 名前]
     px_by = {}    # E29：型 → [表示した顔の px]
+    short = []    # E31（情報）：規則どおりでも顔が下限に届かない
+    size = "phone" if width <= 600 else "pc"
     nf_kind = {}  # E17：顔なしの 3 分け（nk：keep ①・symbol ②・replace ③・? = まだ測り直していない）→ [版面 名前]
     src_of = sources()
     shots, embdir = [], out / "emb"
@@ -716,7 +720,7 @@ def check(pg, who, width, out, full=False, guest=False):
         for a in s["alts"]:   # E29：型ごとに、表示した顔の px
             if a["shape"] == "cutout":
                 fs_, bd = a.get("bf") or a.get("fs"), a.get("body")
-                if (px := emblem_face.shown_face_px(fs_, bd, a.get("m"))):
+                if (px := emblem_face.shown_face_px(fs_, bd, a.get("m"), size, a.get("fa"), a.get("bt") or 0)):
                     px_by.setdefault(emblem_face.face_class(bd, fs_), []).append(px)
         shares = [a["fs"] * a["m"] for a in s["alts"] if a.get("m") and a.get("fs") and a["shape"] == "cutout" and not a.get("body")]   # 顔の高さ ÷ 枠の高さ（版面の中の全候補）
         shares = [v for v in shares if abs(v - FACE_TARGET) <= FACE_TARGET * FACE_TOL]   # そろえきれず札のついたもの（big/small）は別の段（BACKLOG：別の写真に替える）
@@ -738,7 +742,16 @@ def check(pg, who, width, out, full=False, guest=False):
             fs = a.get("fs") or 0
             mm = a.get("m") if not a.get("body") else None   # 顔をそろえる倍率（emblem_face.fit）：表示の高さを倍率で割って、そろえる前の大きさ（枠の高さ）に戻して測る
             # 顔のアップは網页が顔の大きさをそろえて縮める（--k = 0.32/fs）ので、顔がそろう大きさに戻して測る
-            hs.append((m["h"] / mm if mm else m["h"] * fs / 0.32 if fs > 0.32 and not a.get("body") else m["h"], name, "" if a.get("plate") else a.get("shape", "")))   # 板ごとのタイトルロゴは人物の物差しで測らない
+            fs_, bd = a.get("bf") or a.get("fs"), a.get("body")   # E31：顔の高さ（顔の割合 × 絵の高さ）を、規則どおりの大きさと比べる
+            want = emblem_face.shown(fs_, bd, a.get("m"), size, a.get("fa"), a.get("bt") or 0) if a.get("shape") == "cutout" and fs_ else None
+            if want:
+                fa = bd[3] if bd else a.get("fa") if mm and mm >= 1 else None   # 絵の高さ：全身・.fz は枠の幅 ÷（幅 ÷ 高さ）、縮めた胸像（--k）は枠の高さ
+                got, floor = fs_ * (m["ow"] / fa if fa else m["oh"]), emblem_face.SIZES[size]["fmin"]
+                if got < min(want[0], floor) * 0.95:
+                    found["E31"].append(f"{s['k']} {name} 顔 {got:.0f}px（規則 {want[0]:.0f}px）")
+                elif want[0] < floor * 0.95:
+                    short.append(f"{s['k']} {name} {got:.0f}px")
+            hs.append((m["h"] if mm and mm >= 1 else m["h"] / mm if mm else m["h"] * fs / 0.32 if fs > 0.32 and not a.get("body") else m["h"], name, "" if a.get("plate") else a.get("shape", "")))   # 板ごとのタイトルロゴは人物の物差しで測らない
             if m["off"] > 0:
                 found["E5"].append(f"{s['k']} {name} +{m['off']}px")
             if m["ov"] > 0:
@@ -845,6 +858,8 @@ def check(pg, who, width, out, full=False, guest=False):
             print(f"  情報 E27 数えられなかった：{e}")
     if guest and (ex := exhausted()):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
+    if short:
+        print(f"  情報 E31 規則どおりでも顔が下限 {emblem_face.SIZES[size]['fmin']}px に届かない {len(short)} 枚（頭の大きいキャラは全身のまま・横に広いポーズは幅の上限。選び方で替える対象）：" + "・".join(short[:6]))
     if px_by:
         print("  情報 E29 表示した顔の高さ px（最大÷最小。基準待ち・✗ にしない）：" + "・".join(
             f"{emblem_face.CLASSES[k]} {len(v)} 枚 {min(v):.0f}〜{max(v):.0f}px（{max(v) / min(v):.2f} 倍）" for k, v in sorted(px_by.items())))
@@ -855,7 +870,7 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E30": "先頭の人の公式の絵を外したまま", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る", "E25": "待ちの理由に時間が出る", "E26": "実写の外した画像の札が古い版のまま", "E28": "小元素が帯の上へはみ出していない・本文に重なる・影がない"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E30": "先頭の人の公式の絵を外したまま", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る", "E25": "待ちの理由に時間が出る", "E26": "実写の外した画像の札が古い版のまま", "E28": "小元素が帯の上へはみ出していない・本文に重なる・影がない", "E31": "顔が下限より小さい"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     if DRIFT:
         bad.append(f"E7 順番しだい 検出器のしきい値が標準でない回が {len(DRIFT)} 回（{DRIFT[0]}）：変えた所が戻していない（emblem_face._boxes と同じ型）")

@@ -378,6 +378,13 @@ def audit(items):
 
 # ---- 表示した顔の px（2026-11-02 ユーザー：人物は顔の大きさをそろえる。全身と胸像で基準を分ける）----
 EMB_H, LEG, LEGC, BMAX = 156, 116, 290, 200   # render.CSS の .emb 高さ・--leg・--legc・--bmax（1400px 幅）
+# 顔の高さの下限（審美基準 I1c・2026-11-12 店長「这还是有点小 看不清人脸」）。render.CSS の --eh・--leg・--legc・--bmax・--fmin・--vmax・--bw と同じ数（tests/test_design が比べる）。
+# fmin：スマホ 32px = 合格している胸像の顔（枠 100px × 0.32）と同じ大きさ。帯に合わせた拡大（スマホはほぼ 1.15 倍）で画面では 36.8px。PC 44px = 胸像（156 × 0.32 = 50px）より少し小さい（全身は小さめ・胸像は大きめ：2026-11-02）
+SIZES = {"pc": {"eh": 156, "leg": 116, "legc": 290, "bmax": 200, "fmin": 44, "vmax": 156, "bw": 230},
+         "phone": {"eh": 100, "leg": 74, "legc": 186, "bmax": 130, "fmin": 32, "vmax": 100, "bw": 140}}
+FZ_MAX = 3.4     # 拡大が足りない胸像（.fz）を顔の下限まで大きくするときの上限（枠の高さの倍率）
+CUT_BELOW = 0.16   # 表示で上半身に切るのは、顔が絵の高さのこれ未満の体つきだけ。これ以上は頭の大きいキャラ・マスコット（全身のまま。emblem.md「全身还是半身」）。店長の版面の全身：等身の顔は 14% まで・頭の大きいキャラは 19% から
+CUT_AT = 0.4     # 表示で上半身に切る線：目から「目〜足の裏」の 40%（emblem.bust_from_body と同じ。腰のあたり）
 CLASSES = {"bust": "胸像（顔が枠の 32%）", "cut": "上半身に切った立ち絵", "full": "全身（等身）", "big": "全身（頭の大きいキャラ）"}
 BIG_HEAD = 0.2   # 全身で 顔の高さ ÷ 絵の高さ がこれ以上 = 頭の大きいキャラ（マスコット・デフォルメ）
 
@@ -389,11 +396,36 @@ def face_class(body, fs):
     return "cut" if body[1] > 1 else ("big" if fs >= BIG_HEAD else "full")
 
 
-def shown_face_px(fs, body=None, m=None):
-    """今の CSS で、1400px 幅に表示される顔の高さ（px）。body = [目, 足, …, 目から足の長さ(6 番目があれば)]、m = 胸像の倍率(fit)。"""
+def shown(fs, body=None, m=None, size="pc", fa=None, ft=0):
+    """今の CSS（render.CSS の .emb img.body・.fz）と同じ式で、表示される (顔の高さ px, 絵の高さ px, 見せる高さ px, 切るか)。帯に合わせた拡大（--s 1〜1.15）の前。
+    body = [目, 足, 重心, 幅÷高さ, …, 目から足の長さ(6 番目があれば)]、m = 胸像の倍率(fit)。測れなければ None。
+    全身：顔が下限 fmin に届く大きさまで大きくし、全身のまま vmax に入れば全身、入らなければ腰の線（CUT_AT）か vmax で上半身に切る。
+    頭の大きいキャラ（fs ≥ CUT_BELOW）は切らず vmax まで。顔が絵の下のほうにある絵（頭の上に武器・帽子：ft = 顔の上の端 ÷ 絵の高さ）は、顔とその下の半分が枠に入る大きさまで。幅は bw まで（横に広いポーズは下限に届かないことがある）。"""
+    z = SIZES[size]
     if not fs:
         return None
     if body:
+        cut0 = body[1] > 1   # 取るときに上半身に切ってある
         bl = body[5] if len(body) > 5 else body[1] - body[0]
-        return round(fs * min((LEGC if body[1] > 1 else LEG) / bl, BMAX), 1)
-    return round(EMB_H * fs * m, 1) if m else None
+        b0 = min((z["legc"] if cut0 else z["leg"]) / bl, z["bmax"])
+        hf = z["fmin"] / fs
+        c = 1.0 if cut0 else body[0] + CUT_AT * (body[1] - body[0])
+        cc = max(c, ft + 2 * fs)   # 見せる所：腰の線まで・顔の下に顔 1 つ分は必ず
+        hc = min(max(hf, z["eh"] / cc), z["vmax"] / (ft + 1.5 * fs))
+        hw = max(b0, min(hf, z["vmax"]))
+        cut = (cut0 or fs < CUT_BELOW) and hf > z["vmax"] and hc > hw
+        h = hc if cut else hw
+        h = max(b0, min(h, z["bw"] / body[3])) if len(body) > 3 and body[3] else h
+        vis = min(cc * h, z["vmax"]) if cut else h
+        return round(fs * h, 1), round(h, 1), round(vis, 1), cut and vis < h
+    if not m:
+        return None
+    fa = fa or 0.6   # 幅 ÷ 高さ：顔のために大きくしても幅 bw まで・前からの大きさ（枠 × m）は幅 230px まで
+    h = min(max(z["eh"] * m, min(z["fmin"] / fs, z["eh"] * FZ_MAX, z["bw"] / fa)), 230 / fa) if m >= 1 else z["eh"] * m
+    return round(fs * h, 1), round(h, 1), round(min(h, z["eh"]) if m >= 1 else h, 1), False
+
+
+def shown_face_px(fs, body=None, m=None, size="pc", fa=None, ft=0):
+    """今の CSS で表示される顔の高さ（px）。size = "pc"（601px 以上）か "phone"。"""
+    r = shown(fs, body, m, size, fa, ft)
+    return r[0] if r else None
