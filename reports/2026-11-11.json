@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "e193b0f09e54",
+ "edit_sig": "7f0ae6a85d5c",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -828,22 +828,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 3,
-     "source": "IMDb",
-     "title": "‘God of War’s’ Bruno Velazquez, ‘Mandalorian & Grogu’s’ Hal Hickel Detail Cinema-Gaming Crossover at View Conference",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE0tekpkVzNWTWRScGcxbU5EaDVoMk93M2h0R1YzeVNLMklVZS02QVJSZjRpT21TMEZWRkU4U0VsdHgzMDFVblJkbVpyTi0yTVY4MGc?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "Comic Watch",
-     "title": "The Interlude Featuring The Mandalorian And The Dark Saber Unfolds in Star Wars: The Book Of Boba Fett #5",
-     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNTmo3a2VUaHJaOXB1M1V0RnpaRExGVDlZZTV6WWVfUTZyNWxzdlZaNGZDRzVCYVh1MHlmbDE4azREOFRPNkpyc3lDaVNVa1NJMlg4TTY1clFSZFdRQmUxUDZaZURySkFDS3ZIdzJLUTNha3FIZUxXR2RLUWJEeVdZR0xlM2tkTXB3dkI2ZklvclJ6elA2a1FRY1FYMU9BOG81b0NfWXM0cmNJXzd6SVVSZ0pScTBCWUZ5akwyLWJaOEVEb3dQV3kycFJmY0psd2NVMEZZM1JnXzY4ZFpjZEp2YjNB?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -864,6 +848,16 @@
      "image": "https://bloximages.newyork1.vip.townnews.com/newsminer.com/content/tncms/assets/v3/editorial/d/23/d23ae209-448d-4015-a740-21bf869a6e23/6af211105521e.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize",
      "image_via": "og:image",
      "url": "https://www.newsminer.com/features/our_town/this-is-the-way-mandalorian-takes-top-prize-at-pop-con-cosplay/article_7849de7e-a4b7-4942-a161-9734c66df0f1.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "‘God of War’s’ Bruno Velazquez, ‘Mandalorian & Grogu’s’ Hal Hickel Detail Cinema-Gaming Crossover at View Conference",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.KkdkWY33I2sB7CHn2yWe_A&pid=News&w=1000",
+     "image_via": "转载 variety.com（Bing 缩略图）",
+     "url": "https://www.imdb.com/it/news/ni66060073/",
      "weight": "normal"
     }
    ],
