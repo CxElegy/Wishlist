@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-11T05:17:57+00:00",
+ "checked": "2026-11-11T06:11:44+00:00",
  "fired": {
-  "at": "2026-11-11T05:18:15+00:00",
+  "at": "2026-11-11T06:11:44+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -37,35 +37,45 @@
     "sig": "998f417eb1ae"
    },
    "items": [
-    "A2O LITE",
-    "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "gelato pique",
-    "三星手机",
+    "lib:SPY×FAMILY",
+    "lib:YOASOBI",
+    "lib:ゼルダの伝説",
+    "lib:ポケットモンスター",
+    "lib:原神",
+    "lib:呪術廻戦",
+    "lib:葬送のフリーレン",
+    "lib:鬼滅の刃",
     "周杰伦",
     "哈利波特剧集",
+    "星巴克马克杯",
+    "滑雪",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-11T02:44:42+00:00",
+   "last_batch": "2026-11-11T05:58:33+00:00",
    "last_error": {
     "at": "2026-11-11T01:36:00+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 286,
+   "prog": 334,
    "prog_day": "2026-11-11",
    "ripe": [
-    "A2O LITE",
+    "The Mandalorian",
     "Vaundy",
-    "猫用品",
-    "绝区零"
+    "gelato pique",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "猫用品"
    ],
-   "sig": "998f417eb1ae",
+   "sig": "1b05296c7036",
    "token_cap": 1000000,
-   "tokens_today": 610351,
-   "why": "整理待ちの記事 15 件（10 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 935534,
+   "why": "整理待ちの記事 113 件（17 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -142,12 +152,12 @@
    "runs": 12
   },
   "2026-11-11": {
-   "batches": 29,
-   "cr": 17139646,
-   "cw": 546793,
-   "in": 453,
-   "out": 63105,
-   "runs": 10
+   "batches": 35,
+   "cr": 23992800,
+   "cw": 840973,
+   "in": 648,
+   "out": 93913,
+   "runs": 16
   }
  }
 }
