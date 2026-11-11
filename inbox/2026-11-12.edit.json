@@ -1,10 +1,286 @@
 {
  "GTA 6": [
-  {"headline":"What to know about Grand Theft Auto VI ahead of its Nov. 19 launch","highlight":"Nov. 19 launch","blurb":"Grand Theft Auto VI is set to launch Nov. 19, with preloading already open on consoles.","weight":"hero","refs":[6,16]},
-  {"headline":"GTA 6 Demand Is 'Extraordinary,' but Take-Two CEO Isn't Ready to Declare Victory","highlight":"","blurb":"","weight":"normal","refs":[7,32,10]},
-  {"headline":"GTA 6 Preloading Is Causing Major Download Traffic Spikes in Europe","highlight":"","blurb":"","weight":"normal","refs":[20,11]},
-  {"headline":"GTA 6 First Review Scores Appear To Have Surfaced","highlight":"","blurb":"","weight":"normal","refs":[14]},
-  {"headline":"GTA VI festival tickets go on sale today, celebrate in Miami starting at $214","highlight":"","blurb":"","weight":"normal","refs":[15,9]}
+  {
+   "headline": "What to know about Grand Theft Auto VI ahead of its Nov. 19 launch",
+   "highlight": "Nov. 19 launch",
+   "blurb": "Grand Theft Auto VI is set to launch Nov. 19, with preloading already open on consoles.",
+   "weight": "hero",
+   "refs": [
+    6,
+    16
+   ]
+  },
+  {
+   "headline": "GTA 6 Demand Is 'Extraordinary,' but Take-Two CEO Isn't Ready to Declare Victory",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    32,
+    10
+   ]
+  },
+  {
+   "headline": "GTA 6 Preloading Is Causing Major Download Traffic Spikes in Europe",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20,
+    11
+   ]
+  },
+  {
+   "headline": "GTA 6 First Review Scores Appear To Have Surfaced",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
+   ]
+  },
+  {
+   "headline": "GTA VI festival tickets go on sale today, celebrate in Miami starting at $214",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15,
+    9
+   ]
+  }
  ],
- "_covered": {"GTA 6": 33}
+ "_covered": {
+  "GTA 6": 33,
+  "漫威电影": 29,
+  "三星手机": 21,
+  "Astrae Oratio": 12,
+  "哈利波特剧集": 12
+ },
+ "漫威电影": [
+  {
+   "headline": "Wanda’s Alive: ‘VisionQuest’ Post-Credits Scene Riles Up Fans With Answer to One of MCU’s Biggest Questions",
+   "highlight": "Wanda’s Alive",
+   "blurb": "The VisionQuest finale’s post-credits scene brings Wanda back alongside Doctor Doom, fueling talk of her role in Avengers: Doomsday.",
+   "weight": "lead",
+   "refs": [
+    22,
+    24,
+    25,
+    6,
+    12,
+    20,
+    23,
+    18
+   ],
+   "image": "https://www.thewrap.com/wp-content/uploads/2022/06/Elizabeth-Olsen-Wanda.jpg"
+  },
+  {
+   "headline": "Marvel Officially Releases New Avengers Movie on Disney+ in 48 Hours",
+   "highlight": "Disney+",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    4,
+    8,
+    11,
+    21,
+    28
+   ]
+  },
+  {
+   "headline": "Vision’s Return In Avengers: Doomsday Seemingly Confirmed",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17,
+    7,
+    2,
+    3,
+    16
+   ]
+  },
+  {
+   "headline": "How to get Ready for Marvel’s ‘Avengers: Doomsday’",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    13,
+    5
+   ]
+  },
+  {
+   "headline": "Avengers: Secret Wars Rumored To Feature [Spoiler]'s Return For One Final Send-Off",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Galaxy S27 camera leak: the Pro gets a 200MP camera and the Ultra loses its 3x zoom",
+   "highlight": "Ultra loses its 3x zoom",
+   "blurb": "Leaked camera sensors suggest the Pro gets a 200MP camera while the Ultra drops its 3x telephoto.",
+   "weight": "lead",
+   "refs": [
+    3,
+    16,
+    17,
+    19,
+    6,
+    11,
+    4
+   ],
+   "image": "https://tech-ish.com/wp-content/uploads/2026/08/techish-galaxy-s27-cad-thumbnail-1920x1080-1-1280x720.png"
+  },
+  {
+   "headline": "Galaxy S27+が、モデル番号SM-S956B/DSとしてインドのBISデータベースに登場",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    9,
+    20
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27: From price to release date, all the rumours to know",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    13
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra and Pro dummy phones show off what's coming next",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    12,
+    10,
+    21
+   ]
+  },
+  {
+   "headline": "Samsung Reportedly Plans Over 70% of Galaxy S27 Production for Pro, Ultra in 2027 Amid Rising Memory Costs",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    18
+   ]
+  },
+  {
+   "headline": "삼성, 신형 '갤럭시 S27' AI기능 유료화⋯가격 인상에 구독료까지 책정",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "『アスオラ』や『シンダーシティ』を含め、NCが来年上半期に新作4種をリリース",
+   "highlight": "来年上半期",
+   "blurb": "NCが決算説明会で、『アストラエ・オラティオ』を含む新作4種を来年上半期に順次リリースし、本作は第1四半期の見通しと明かした。",
+   "weight": "hero",
+   "refs": [
+    11,
+    3,
+    4,
+    5,
+    1,
+    12
+   ],
+   "image": "https://img1.newsis.com/2026/09/17/NISI20260917_0002242122_web.jpg"
+  },
+  {
+   "headline": "'아스오라' 마법사 9인 9색, AGF 출연 클랜 미리보기",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "[기자의 눈] AI 캐릭터 챗 쏟아지는데…서브컬처 유행 좇는 게임사가 알아야 할 것",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO’s Harry Potter posters draw mixed reactions over editing and Harry’s blue eyes",
+   "highlight": "posters",
+   "blurb": "HBO has released new character posters for its upcoming Harry Potter series, drawing mixed reactions from fans.",
+   "weight": "lead",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Harry Potter TV series release date out: Premieres this Christmas",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "网传HBO哈利波特剧集配乐片段曝光 汉斯季默创作",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "HBO Max’s Harry Potter: Paapa Essiedu says his Snape won’t imitate Alan Rickman",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    11,
+    2,
+    7,
+    8,
+    10
+   ]
+  },
+  {
+   "headline": "Daniel Radcliffe Has Revealed Why He Probably Won’t Watch HBO’s Controversial Harry Potter Show",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6,
+    12
+   ]
+  }
+ ]
 }

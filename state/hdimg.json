@@ -55,6 +55,12 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261110ac/533/w480h853/20261110/51f7-34724c1bf30406f5de1698c11119c7a5.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261110ac/533/w480h853/20261110/decd-e621dd51c22d8892ecd98dde1852addc.jpg": {
   "w": 480,
   "h": 853,
@@ -394,6 +400,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.autodaily.co.kr/news/photo/202611/601977_203885_5646.png": {
+  "w": 852,
+  "h": 692,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:knsszrujdducsne2yxvzqhph/bafkreicczdpct6piix74afri5nro77n4kfxkapjxsb2ygs5jsxsmcptouy": {
   "w": 1536,
   "h": 1920,
@@ -423,12 +435,6 @@
   "w": 1200,
   "h": 670,
   "target": 1280,
-  "v": 3
- },
- "https://cdn.gamemeca.com/gmdata/0001/783/344/gm771818_261111-risell-tt10.webp": {
-  "w": 1200,
-  "h": 670,
-  "target": 720,
   "v": 3
  },
  "https://cdn.gameple.co.kr/news/photo/202611/216924_250536_2851.jpg": {
@@ -657,6 +663,12 @@
   "w": 1500,
   "h": 844,
   "target": 1280,
+  "v": 3
+ },
+ "https://comicbookmovie.com/images/articles/banners/avengers-secret-wars-rumored-to-feature-spoilers-return-for-one-final-send-off-ab230669.jpg": {
+  "w": 1500,
+  "h": 844,
+  "target": 720,
   "v": 3
  },
  "https://culturecues.co.uk/wp-content/uploads/2026/05/ba3f6110-49da-11f1-ac78-2112837ce2aa.jpg.webp": {
@@ -1136,6 +1148,12 @@
   "v": 3,
   "blur": 0.392
  },
+ "https://images-r2.thebrag.com/pedestrian/uploads/2026/11/daniel-radcliffe-harry-potter-reboot.jpg?v=1794356337052": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://images.chinatimes.com/newsphoto/2026-11-10/1024/20261110001857.jpg": {
   "w": 1024,
   "h": 573,
@@ -1392,6 +1410,25 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hcPKO.img": {
+  "w": 870,
+  "h": 580,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hdbbR.img": {
+  "w": 640,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.614,
+  "local": "pics/89d670150b2f189b.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img": {
   "w": 504,
   "h": 339,
@@ -1550,6 +1587,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.trendforce.com/blog/wp-content/uploads/2026/02/26155341/Samsung-Galaxy-S26-v5.jpg": {
+  "w": 4000,
+  "h": 3000,
+  "target": 720,
+  "v": 3
+ },
  "https://img.youtube.com/vi/MNpI_7lzz_o/hqdefault.jpg": {
   "w": 480,
   "h": 360,
@@ -1562,6 +1605,13 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://img1.newsis.com/2026/09/17/NISI20260917_0002242122_web.jpg": {
+  "w": 720,
+  "h": 505,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.384
  },
  "https://img2.sbs.co.kr/ops_clip_img/2026/11/01/83b1480d-bf44-43cf-826e-0b0e50cba714005w640.jpg": {
   "w": 640,
@@ -2436,6 +2486,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/23d28f55bf106cc1a2255a89e8081f0a3fc7d2a0f9a47f986aaa40f20f252c55/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2F03d1b48c4241bc56b05f1525a54221a0.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/74f35a083cff840f66783c92d955d53956a815f17f8fc1c338e7c6d11d969191/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fa11653e42e3e266fd5750215b71c84b8.jpg": {
   "w": 1200,
   "h": 1819,
@@ -2446,6 +2502,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/a8f533b2d6760d82d8c1f34989a47b069e3e0464486da7bae027c95200d878d5/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbounding_into_comics_671%2F357112de5efe9bec75c7136198fe68a8.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/b2469cc9fe39bf64b22545174e8ca217a20d6423b63fd4c7c795ba41dea67d7c/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fdestructoid_573%2F37b190aecc0ddbeadc7942f7d61749b0.jpg": {
@@ -2573,6 +2635,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://static.independent.co.uk/2026/03/02/13/50/Samsung-Galaxy-S26.png?trim=0,0,0,0&width=1200&height=800&crop=1200:800": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://static.invenglobal.com/upload/image/2026/10/30/r1793322194781761.jpeg": {
@@ -2798,6 +2866,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/09/avengers-doomsday-thor.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/10/taylor-s-solo-projects-presentation-16_9-1.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -2858,6 +2932,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/vision-glowing-as-he-had-the-source-code-in-his-head-in-visionquest.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://statics-prod.mirrordaily.news/images/5ed68c06-6b4e-4661-929c-2d247adbd52e.jpg": {
   "w": 1984,
   "h": 1323,
@@ -2883,6 +2963,12 @@
   "v": 3,
   "blur": 0.402
  },
+ "https://tech-ish.com/wp-content/uploads/2026/08/techish-galaxy-s27-cad-thumbnail-1920x1080-1-1280x720.png": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2020/11/27144954/EnzsotEVcAALgh5.jpg": {
   "w": 1200,
   "h": 630,
@@ -2893,6 +2979,12 @@
   "w": 2560,
   "h": 1790,
   "target": 1280,
+  "v": 3
+ },
+ "https://thewpwire.org/wp-content/uploads/2026/11/croppedmarveljump-e1794419376945.jpeg": {
+  "w": 1880,
+  "h": 1426,
+  "target": 720,
   "v": 3
  },
  "https://thumb.mt.co.kr/cdn-cgi/image/f=avif/21/2026/11/2026110501472310081_1.jpg": {
@@ -2977,6 +3069,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/11/1794401555537_img_0a2d4268.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://wassets.insta360.com/store/c1d5e5a174d5499d9f8f04aa618052a2/x6.jpg": {
@@ -3300,12 +3398,6 @@
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.azghccJTTX-8awx8L7Z01w&pid=News&w=1000": {
-  "w": 700,
-  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -3778,6 +3870,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.thewrap.com/wp-content/uploads/2022/06/Elizabeth-Olsen-Wanda.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.travelvoice.jp/wp-content/uploads/2026/11/b4404aea-b576-4e13-81e3-c168a824c564.jpg": {
   "w": 3392,
   "h": 1726,
@@ -3794,6 +3892,12 @@
   "w": 1096,
   "h": 616,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.tvline.com/img/gallery/harry-potters-snape-actor-paapa-essiedu-has-a-message-for-the-franchises-hardcore-fans/l-intro-1794406011.jpg": {
+  "w": 1600,
+  "h": 898,
+  "target": 720,
   "v": 3
  },
  "https://www.vgchartz.com/articles_media/images/playstation-cancels-fairgame-haven-to-become-support-studio-247297_featured.jpg": {
