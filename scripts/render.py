@@ -218,12 +218,25 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .sbox h4,.fside .agenda h4{margin:0 0 6px;display:flex;align-items:baseline;gap:10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
 .sbox h4 small{margin-left:auto;font:500 11px var(--font-sans)}
 .sbox h4 a:hover{color:var(--rose)}
-/* 右の列（予定・欲しい物リスト）は黒地に赤の斜めの縞（P5 の予告状）：ほかの白いカードと違う底色と特效（2026-11-11 店長「把右边这两个底色换一下，让它做一个不同的特效」）。令牌を箱の中だけ入れ替えるのでテーマにも付いてくる */
-.fside>.agenda,.fside>.sbox{--card:var(--ink0);--ink:var(--card0);--hair:color-mix(in srgb,var(--card0) 22%,transparent);color:var(--card0);border-color:var(--ink0);box-shadow:6px 6px 0 var(--alert);
- background:var(--ink0) repeating-linear-gradient(-45deg,color-mix(in srgb,var(--alert) 20%,transparent) 0 10px,transparent 10px 22px)}
-.fside>.agenda h4,.fside>.sbox h4{color:var(--gold);border-bottom-color:var(--gold)}.fside>.agenda h4 small{color:var(--card0);opacity:.8}
-.fside .agenda li b,.fside .sbox .wt em,.fside .sbox .wsum b,.fside .sbox b.sum{color:var(--gold)}
-.fside .agenda li a,.fside .agenda li i{color:inherit}
+/* 右の列（予定・欲しい物リスト）は P5 の画面の作り：赤い地・黒い鋭い破片・網点・白い星、見出しは黒い斜めの札に白抜き（2026-11-12 店長「背景太丑了…参考一下 P5 的背景」。前の黒地に赤い縞はやめた）。
+   箱の中だけ令牌を入れ替えるのでテーマにも付いてくる */
+.fside>.agenda,.fside>.sbox{--card:var(--alert);--ink:#FFF;--hair:rgba(255,255,255,.35);position:relative;overflow:hidden;color:#FFF;border:3px solid var(--ink0);box-shadow:7px 7px 0 var(--ink0);
+ background:
+  linear-gradient(118deg,var(--ink0) 0 13%,transparent 13.2%),
+  linear-gradient(-62deg,transparent 0 80%,var(--ink0) 80.2% 88%,transparent 88.2%),
+  linear-gradient(-62deg,transparent 0 91%,var(--card0) 91.2% 93%,transparent 93.2%),
+  radial-gradient(circle at 100% 0,transparent 0 46%,rgba(0,0,0,.28) 46.5% 47.5%,transparent 48%),
+  radial-gradient(rgba(0,0,0,.26) 1.5px,transparent 1.8px) 0 0/8px 8px,
+  var(--alert)}
+.fside>.agenda::after,.fside>.sbox::after{content:"★";position:absolute;right:8px;bottom:-14px;font:900 64px/1 var(--font-sans);color:var(--card0);opacity:.9;transform:rotate(-14deg);pointer-events:none;text-shadow:3px 3px 0 var(--ink0)}
+.fside>.agenda>*,.fside>.sbox>*{position:relative;z-index:1}
+.fside>.agenda h4,.fside>.sbox h4{align-self:flex-start;display:inline-flex;margin:0 0 10px -6px;padding:4px 14px;background:var(--ink0);color:#FFF;border:0;transform:skewX(-10deg) rotate(-2deg);box-shadow:3px 3px 0 var(--card0);white-space:nowrap;font-size:15px;letter-spacing:.02em;gap:8px;max-width:calc(100% + 6px)}
+.fside>.agenda h4 small,.fside>.sbox h4 small{color:var(--gold);opacity:1}
+.fside .agenda li b,.fside .sbox .wt em{color:#FFF;text-shadow:2px 2px 0 var(--ink0)}
+.fside .agenda li b small{color:#FFF;opacity:.9;text-shadow:none}
+.fside .agenda li a,.fside .agenda li .nm,.fside .agenda li i,.fside .sbox a,.fside .sbox b{color:#FFF}
+.fside .agenda li a{font-weight:900}
+.fside .sbox .smore{background:var(--ink0);color:#FFF;box-shadow:3px 3px 0 var(--card0)}.fside .sbox .smore:hover{background:var(--card0);color:var(--ink0)}.fside .sbox li .tg{--sc:var(--ink0)!important}.fside .sbox .stot,.fside .sbox .stot b{color:#FFF}
 .swish ol,.shot ol{list-style:none;margin:0;padding:0}
 .swish .sempty{margin:6px 0 10px;font-size:13px;line-height:1.6;color:color-mix(in srgb,var(--ink) 72%,transparent)}
 .swish li[hidden],.agenda li[hidden]{display:none}
