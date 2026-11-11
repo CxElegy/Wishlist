@@ -18,8 +18,10 @@ import tempfile
 import threading
 import time
 
-REAL = "https://bzokpnbcjscbcehdxtjq.supabase.co"
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+import sbconf  # noqa: E402
+REAL = sbconf.url()   # 接続先は items.yaml から（偽サーバーに差し替える前の値）
 PY = sys.executable
 # (名前, 引数, 秒)  ※ workflow が走らせる順に近い
 ENTRIES = [

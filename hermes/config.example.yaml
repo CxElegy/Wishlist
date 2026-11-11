@@ -11,6 +11,6 @@ mcp_servers:
     headers:
       Authorization: "Bearer ${env:GITHUB_TOKEN}"
   supabase:
-    url: "https://mcp.supabase.com/mcp?project_ref=bzokpnbcjscbcehdxtjq&read_only=true"   # 読むだけ
+    url: "https://mcp.supabase.com/mcp?project_ref=<旧プロジェクトの ref・docs/rules/local-pc.md>&read_only=true"   # 読むだけ
     headers:
       Authorization: "Bearer ${env:SUPABASE_ACCESS_TOKEN}"

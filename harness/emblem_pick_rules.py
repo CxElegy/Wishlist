@@ -14,6 +14,7 @@ from PIL import Image
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "harness"))
+import sbconf  # noqa: E402
 import sbread  # noqa: E402
 from browser import PATTERN, storage_bytes  # noqa: E402  Supabase の写真は写しから（free-tier.md）
 import emblem  # noqa: E402
@@ -177,8 +178,8 @@ def audit_production():
             why[key] = why.get(key, 0) + 1
     return rows, dict(n=len(rows), missing=missing, **cnt, x_by_reason=why)
 
-LIB_URL = "https://bzokpnbcjscbcehdxtjq.supabase.co/rest/v1/boards?select=id,config&limit=500"
-LIB_KEY = "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC"   # 公開の鍵（網頁にも入っている）。見えるのは公開の版面だけ
+LIB_URL = sbconf.url() + "/rest/v1/boards?select=id,config&limit=500"   # 接続先は items.yaml から
+LIB_KEY = sbconf.key()   # 公開の鍵（網頁にも入っている）。見えるのは公開の版面だけ
 
 
 def audit_library():

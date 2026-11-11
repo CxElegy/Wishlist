@@ -6,11 +6,12 @@ import json
 import yaml
 from pathlib import Path
 import emblem_face as ef
+import sbconf
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs/testground/face-size.html"
 CLS = [("bust", "胸像"), ("full", "全身"), ("logo", "ロゴ"), ("thing", "物・生き物")]
-SUPA = ("https://bzokpnbcjscbcehdxtjq.supabase.co", "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC")
+SUPA = sbconf.pair()   # 接続先は items.yaml から（scripts/sbconf.py）
 
 
 def auto_class(e):
