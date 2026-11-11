@@ -64,6 +64,12 @@
  "http://n.sinaimg.cn/sinakd20261110ac/533/w480h853/20261110/decd-e621dd51c22d8892ecd98dde1852addc.jpg": {
   "w": 480,
   "h": 853,
+  "target": 1280,
+  "v": 3
+ },
+ "http://n.sinaimg.cn/sinakd20261111ac/533/w480h853/20261111/f9fe-f19a2faba0e6ec781f3ce74ff03f010b.jpg": {
+  "w": 480,
+  "h": 853,
   "target": 720,
   "v": 3
  },
@@ -114,6 +120,19 @@
   "out": [
    778,
    1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/006ZneWLly1iiwcku2k3zj31hi0lxnng.jpg": {
+  "w": 1926,
+  "h": 789,
+  "target": 720,
+  "v": 3,
+  "local": "pics/c8dc8833e704b64b.webp",
+  "out": [
+   1280,
+   524
   ],
   "why": "防盗链",
   "ref": true
@@ -296,12 +315,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.st-note.com/production/uploads/images/334326647/rectangle_large_type_2_fd4efc14427479e68c40c25785e8488b.jpg?fit=bounds&quality=85&width=1280": {
-  "w": 1280,
-  "h": 670,
-  "target": 720,
-  "v": 3
- },
  "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg": {
   "w": 510,
   "h": 340,
@@ -472,6 +485,12 @@
  "https://cdn.hk01.com/di/media/images/dw/20261106/1195338922918416384793084.jpeg/lVufQMBNyNknNJxjUQAv3nKhzS50hm7wqrdmsqq3ZrI": {
   "w": 1280,
   "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn.hk01.com/di/media/images/dw/20261111/1197247192331456512892673.jpeg/ODE6xwazLwoUSoZaBPa-Y-nLxQtIBVTsAbgygwG4MoM?v=w1280r16_9": {
+  "w": 1080,
+  "h": 608,
   "target": 1280,
   "v": 3
  },
@@ -726,6 +745,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://d3h9qea4qy4169.cloudfront.net/16x9_7_b17f7953c2.png": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://d89889xojlqhy.cloudfront.net/upload/featured/aae9d42d8c056621ccd8213c1c17c6ce.jpg": {
   "w": 668,
   "h": 668,
@@ -854,6 +879,12 @@
   "target": 720,
   "v": 3
  },
+ "https://freeyorkk.b-cdn.net/wp-content/uploads/2026/11/star-wars-generative-ai-freeyork-1.jpg": {
+  "w": 990,
+  "h": 1238,
+  "target": 720,
+  "v": 3
+ },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/06133154/gta-6-pc-rip-offs.jpg": {
   "w": 1600,
   "h": 900,
@@ -948,7 +979,7 @@
  "https://hawk.live/storage/images/posts/dyrachyo-weighs-prospect-team-spirit-disbanding-25072.jpg": {
   "w": 1200,
   "h": 628,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/gaimin-gladiators-may-return-dota-2-25417.jpg": {
@@ -970,6 +1001,12 @@
   "v": 3
  },
  "https://hawk.live/storage/images/posts/nix-spoke-about-the-main-mistake-of-dendi-on-the-dota-2-pro-scene-24091.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/noticed-commented-patch-741e-25215.jpg": {
   "w": 1200,
   "h": 628,
   "target": 720,
@@ -1431,6 +1468,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hcPKO.img": {
   "w": 870,
   "h": 580,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hdUIx.img": {
+  "w": 1280,
+  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -2253,6 +2296,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-00010004-tennisnet-000-1-view.jpg?exp=10800": {
+  "w": 2000,
+  "h": 1500,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/7dd378ed626700c3.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-00121891-president-000-1-view.jpg?exp=10800": {
   "w": 1340,
   "h": 825,
@@ -2505,6 +2560,12 @@
   ],
   "why": "看不清"
  },
+ "https://q1.itc.cn/q_70/images03/20261111/e6206cc802254c8eac76477efb46308b.jpeg": {
+  "w": 4892,
+  "h": 2937,
+  "target": 720,
+  "v": 3
+ },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -2678,6 +2739,12 @@
   "w": 1920,
   "h": 1028,
   "target": 720,
+  "v": 3
+ },
+ "https://static.animecorner.me/2026/11/1794404613-93fa87da46649b89fd6e77a02df06a21.png": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
   "v": 3
  },
  "https://static.arynews.tv/zip-archives/wp-content/uploads/2026/10/GTA-6-map.jpg": {
@@ -3363,12 +3430,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.IgrYbZyxdjzHcdxebXzeyA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.JpCGa5gTOp-LoOapCFVdCg&pid=News&w=700": {
   "w": 560,

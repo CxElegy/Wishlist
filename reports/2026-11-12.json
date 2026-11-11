@@ -1,6 +1,6 @@
 {
  "date": "2026-11-12",
- "edit_sig": "bf11c0930c5c",
+ "edit_sig": "73c9d3e30482",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -25,7 +25,7 @@
      "highlight": "",
      "image": null,
      "source": "게임플",
-     "source_icon": "https://www.google.com/s2/favicons?domain=gameple.co.kr&sz=128",
+     "source_icon": "https://cdn.gameple.co.kr/image/logo/favicon.png",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216947",
      "weight": "normal"
     },
@@ -56,24 +56,29 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-08",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】星2茶渡泰虎の評価と性能【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9DWWtOTU9BUEdCeGdLdzhwWHpIOW9RV0N3Z2M3WkstQ0x4VlQ3cEp6VmU0TEtlcjFOdFpwSmR1azZ0bkdRS0F6bWNiZ1VxcWs?oc=5"
+     "blurb": "Producers discuss the original story, Tite Kubo's involvement, customization and future updates.",
+     "date": "2026-11-11",
+     "headline": "Interview: BLEACH Mirrors High Producers Talk Original Story, Tite Kubo's Involvement, Customization, and Future Updates",
+     "highlight": "",
+     "image": "https://static.animecorner.me/2026/11/1794404613-93fa87da46649b89fd6e77a02df06a21.png",
+     "image_via": "AI 挑选",
+     "url": "https://animecorner.me/interview-bleach-mirrors-high-producers-talk-original-story-tite-kubos-involvement-customization-and-future-updates/",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-11",
-     "n": 2,
-     "source": "Anime Corner",
-     "title": "Interview: BLEACH Mirrors High Producers Talk Original Story, Tite Kubo's Involvement, Customization, and Future Updates",
-     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPZ3ZnR2owQUhfTklFTmo2X1pzakZ5TzBZVk4wZ2N2Y2puYzdOU3I1Rm9OVEpzSmdKY2hTekMxS21JdVhFQ1JtUDlkTVRpTFZvT1F0ekV6WjZpVU1DTWlSYjc3dW5JSl82SUxLdjVlc0U5TVFLRlBMR2NiOXVrOFJSRTBMRkhOdU1hY3dGeE9GOFJmN0VMY1IwM1dXdXJsT0RUbFRJN0VXSGhDaFBXUENOQjYtNHVKU3FpaFB2ZUpWdGNaRENQVk1uWThET3BpVXVJZEF6UVhR?oc=5"
+     "blurb": "",
+     "date": "2026-11-08",
+     "headline": "【ミラハイ】星2茶渡泰虎の評価と性能【BLEACHミラーズハイ】",
+     "highlight": "",
+     "image": "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png",
+     "image_via": "og:image",
+     "url": "https://appmedia.jp/bleach-mh/80523316",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -410,31 +415,30 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
-     "date": "2026-11-09",
-     "n": 1,
-     "source": "note",
-     "title": "This year's Toray PPO was the best because I got to see Mr. Kunieda & Oda, got Naomi Osaka's autograph, and listened to the chat between Nara & Doi",
-     "url": "https://note.com/fuuko2022/n/nd6cee42702d0?hl=en"
-    },
-    {
+     "blurb": "ズべレフとアルカラスが来年のレーバー杯への出場を決めた。大会はジャパンOPの前週に開催される。",
      "date": "2026-11-11",
-     "n": 2,
-     "source": "Yahoo!ニュース",
-     "title": "ズべレフ･アルカラス 来年のレーバー杯出場決定、ジャパンOP前週に開催＜男子テニス＞（tennis365.net）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE83RXd4d0RzOURrNzFIaFRfRzQ4V1hpQkRBTDdsRXZxT28tS09SRzJiZkJiUnZvZ1pJUEpfS3pMbV84YkswTzFJX1lvT0kzVG1lWFFkZWlOb09NRVBtZ3l5N1l1bVFiUTlwLUNZcUJKcmo2cHlibWM3b05QM2VET1E?oc=5"
+     "headline": "ズべレフ･アルカラス 来年のレーバー杯出場決定、ジャパンOP前週に開催＜男子テニス＞",
+     "highlight": "来年のレーバー杯出場決定",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-00010004-tennisnet-000-1-view.jpg?exp=10800",
+     "image_via": "AI 挑选",
+     "url": "https://news.yahoo.co.jp/articles/0444f72fce7c03108443c349123206a5cafab781",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-09",
-     "n": 3,
+     "headline": "今年の東レPPOは国枝さん&小田選手が見れて大坂選手のサインがもらえて奈良さん&土居さんのお喋りが聴けて最高だったよ",
+     "highlight": "",
+     "image": null,
      "source": "note",
-     "title": "今年の東レPPOは国枝さん&小田選手が見れて大坂選手のサインがもらえて奈良さん&土居さんのお喋りが聴けて最高だったよ",
-     "url": "https://note.com/fuuko2022/n/nd6cee42702d0"
+     "source_icon": "https://www.google.com/s2/favicons?domain=note.com&sz=128",
+     "url": "https://note.com/fuuko2022/n/nd6cee42702d0",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
@@ -623,45 +627,30 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Composer Ludwig Goranson will not score upcoming episodes of The Mandalorian; his themes, including the opening, will stay.",
      "date": "2026-11-11",
-     "n": 1,
-     "source": "Red Five on MSN",
-     "title": "Ludwig Goranson exits The Mandalorian; Joseph Shirley steps in",
-     "url": "https://www.msn.com/en-us/entertainment/music/ludwig-goranson-exits-the-mandalorian-joseph-shirley-steps-in/vi-AA2he9Oj"
+     "headline": "Ludwig Goranson exits The Mandalorian; Joseph Shirley steps in",
+     "highlight": "Ludwig Goranson exits",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hdUIx.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/entertainment/music/ludwig-goranson-exits-the-mandalorian-joseph-shirley-steps-in/vi-AA2he9Oj",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-06",
-     "n": 2,
-     "source": "Disney Plus",
-     "title": "The Mandalorian and Grogu movies and shows",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOeE1BVGVQNjFzTERrLUtfTng0cDZjWWExa3B1MlhHUHZtMVFGbGcxM1BJZ09udVljN3J6YkdHV0NOTThrNkNqVHU2OGducDRTRUxrbW5meFd2ZURsVGFoTlk4Rk1hQl8xcVdTcmJGODNrSGFlbEtKTVlmQmpGUXVjTmRkOWtyWlBW?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 3,
-     "source": "ReligionForBreakfast on MSN",
-     "title": "How the Mandalorian reflects strict religious communities",
-     "url": "https://www.msn.com/en-us/entertainment/general/how-the-mandalorian-reflects-strict-religious-communities/vi-AA2hbWbO"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 4,
+     "headline": "The force of my excitement for The Mandalorian & Grogu is strong – here’s my (bounty) list of what I need from the feature film",
+     "highlight": "",
+     "image": null,
      "source": "Cineworld",
-     "title": "The force of my excitement for The Mandalorian & Grogu is strong – here’s my (bounty) list of what I need from the feature film",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNNGxoQWpyOG92YzR0Z25PWTR3X1V5NUhlMUt1NTBmNXVYRjF4MjdaaEZXaFJ5TE8wX0d2MDdsTHl4OXMzNkRNS3JlMEhTenVBbEtYanRobzFmTW4xWUVvUlZWSFpDa21XU3Q0bHhjNXdRdVNBcS1pd3ZoNGo5eXJrb2pMZDJ6RVBvTlNLSFQ0bG5CVjA?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 5,
-     "source": "www.jezebel.com",
-     "title": "Great Performances: Amy Sedaris in The Mandalorian",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNalhhcWU5WGZ6VkRLUloxZHVQSmplRUVKbENOTDR4SHI1Ty04dk1DLWphZUpVcDNHZVNkbUZsOUtqVDRhQjJWQmdkdXBZNnJMNUQ2Z0xIVXVwV3RjSUR2YWVBSWtxQzRhTEJZNGNYTE5GbUdvbmZMdXZCUVNUc0w0b0Uyck1DZ2ZUdDBEdA?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.cineworld.co.uk&sz=128",
+     "url": "https://www.cineworld.co.uk/blog/mandalorian-grogu-expectations-star-wars-luke-skywalker/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -678,59 +667,39 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "周杰倫旗下的全球首間科技Cafe開幕，咖啡師竟然不是人。",
      "date": "2026-11-11",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "周杰伦以父之名片头用安魂弥撒原声，演唱者仅周杰伦",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1BTEZPU2REeW9QOVVIdXc1bmlIeVhkSV96RkdjWmNHNlUxQnZJcnpreGVqaTVndDFvbHA0c2tObkdmMFQxQ3FJYzE0SnJibnNPVzFZcTNYVEFVNUhtNF9oR2Y3VW5yZmpHUGxMdjNrVDQ?oc=5"
+     "headline": "周杰倫巨星傳奇｜旗下全球首間科技Cafe直擊 咖啡師竟唔係人？",
+     "highlight": "全球首間科技Cafe",
+     "image": "https://cdn.hk01.com/di/media/images/dw/20261111/1197247192331456512892673.jpeg/ODE6xwazLwoUSoZaBPa-Y-nLxQtIBVTsAbgygwG4MoM?v=w1280r16_9",
+     "image_via": "AI 挑选",
+     "url": "https://www.hk01.com/%E8%B2%A1%E7%B6%93%E5%BF%AB%E8%A8%8A/60409716/%E5%91%A8%E6%9D%B0%E5%80%AB%E5%B7%A8%E6%98%9F%E5%82%B3%E5%A5%87-%E6%97%97%E4%B8%8B%E5%85%A8%E7%90%83%E9%A6%96%E9%96%93%E7%A7%91%E6%8A%80cafe%E7%9B%B4%E6%93%8A-%E5%92%96%E5%95%A1%E5%B8%AB%E7%AB%9F%E5%94%94%E4%BF%82%E4%BA%BA",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-11",
-     "n": 2,
-     "source": "手机新浪网",
-     "title": "周杰伦昆凌刘畊宏吴尊组局玩游戏，最后赢家没想到",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1qMi1OSTRrN0ZoVGM3dHc3LUY4d2dkTmFmcXk1ZEF1bDBqR2JDWHduSE4yWE5QaVNKcjBxeXZwUHdXMnJENXE0RnBXdWNxTkMwVklnRW8ydm5uWjg1OWZPbEsxa1YwVFFzVjlOTFo1OHR4UQ?oc=5"
+     "headline": "周杰伦以父之名片头用安魂弥撒原声，演唱者仅周杰伦",
+     "highlight": "",
+     "image": "http://n.sinaimg.cn/sinakd20261111ac/533/w480h853/20261111/f9fe-f19a2faba0e6ec781f3ce74ff03f010b.jpg",
+     "image_via": "og:image",
+     "url": "http://k.sina.com.cn/article_2789324301_ma641b60d03301qrdu.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-11",
-     "n": 3,
-     "source": "香港01",
-     "title": "周杰倫巨星傳奇｜旗下全球首間科技Cafe直擊 咖啡師竟唔係人？",
-     "url": "https://news.google.com/rss/articles/CBMingNBVV95cUxQbVJRVVR5WlF2WklkT2hEb3Vzd2p3RDlfZ1pHVTNHVk1GVXk3UFFYWGJJX3o1c0lDQklScVMxbWpNTWxVM0ZYM2tZbnNkZVpkVWVqY2J3MlY0aU96akxsRU9oajN2VzRTSzlKRmNfWTctb0ZpQ2dGLVZySUJiYVQtWHVIc2RqR2JSbU9fdUREOHdDUjNDeTlTaFdrZjBNclA4b1hPQXJoRGZQc3lBc1BWZEpETHhjaF9YR2RKNzBfSDMtN0dUMHl2V1JZalVnYmlYb2Q1Y0h3MlNLaVhnOTlDNHI3czJIRWloR3VzUkdydTJxU2g1WkhSVWx4VkhCVHktZ084MlpLZm92WDItQk1QcEQwUmJLcnBkZGJBNVVLRVVBcFREallPVEJMeVRJX2JFYThsdG0wZ3JxOE5LMXlRcjBuWkU2RUVtNXpfSVJ4YUFrVGxTWGhJOHRfNjh0UDhPSjRfeGpCYmQxZ3dRdUxselpRWVhOeWltR0xscVhEQTVHRWZVR3FSanlMTkdtd3hwaFBrRTkweEVYdGduWGc?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 4,
-     "source": "香港01",
-     "title": "周杰伦巨星传奇｜旗下全球首间科技Cafe直击 咖啡师竟唔系人？",
-     "url": "https://news.google.com/rss/articles/CBMiogNBVV95cUxOVlFkU3h1VjAzOXRNMXVES2todGdDVUxMR0RLYV9FdlA0TUZYMzlCbGhvT2x5ajVUamZqLXJrMElzTVhrUnVMRWo4azFSNlJ6aU02NlVaZlBXdXpCNlBSM2t2bGNOU3hYajVwaWZFdVBTTi13QXdEWV9MSHN0NjAyV0FMOXE4cWJiMzVBZTRtZ0NVMkdpNEhpNnJlc2V4UndDQUlwdVRSOEhlazYxWGVmdnNIcEtJcXJNeDRjNEZVbWRVcnMycnFtMGRPWGJJM3dJZnFSVTJYbnhBTFdtM0JEVTRnVnNWYUhsaWUzRHdyUHlLRTdhZE5zWTl4QTdzNnJzZEhaRmowdVdHbzUza0ZGek13V19hUVZ5cnB0ZTlwLUJHU0hRZTRocVVzVTU4YWZzOFc2Qm9mY2k3bUE3Y1oxWGVyd21xS1B1UEczcVVYZ28zeWI5VnQzTTNmM0tBNUFIUjJSRlFhdWRGaGZwbFFrM1R5SEVIWUhudjlkOVVhRURnM3cxV2xuSmZwZnVJazN3MkswaG8yVnF6dDBaYjlVM0Zn?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 5,
-     "source": "Sohu",
-     "title": "太治愈了！江门把周杰伦的《稻香》搬进现实",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOTWVaX1laWmloZWxxbEFWVGJPLU8ySERCQUMzb1F0MWxoSElyUUlpVFNCQmp1UHNIbFZ3bkZqcmpkdHItaDdCd2pKZmZlUEdpcWRIN2lIamZnakpHMGUwMnpfbDBCVWhuZ2JfQ18tVkxqdXBCUWNac0xCWUhmWHBlMFNsVWhJUlpFSWRvMQ?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 6,
-     "source": "手机新浪网",
-     "title": "周杰伦自弹自唱《自我催眠》，当年杰伦写给小猪的歌，这个味道太独特了！ ​",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5GZVVNTWNETDYxZ1JQYXZpRzgycUhKcWw5WllCLVNXLWF6ZjlmTDNLZWNrdEl5VFFXQkRKRFFEY2lHR2ptYnpBeThONXI2UUl6bjJrdjRMR1lXU0ZzWm56M2VEZF9OOTB2RTFfOWtsbW5EZw?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 7,
-     "source": "手机新浪网",
-     "title": "周杰伦目睹郑钦文出局，陈冠希与王欣瑜热聊",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE15aDRBQkhoN0xfcEhDRzlaanlLVjNsT1dZZlFQTHNzNFVhanBkLXVpTXppZlUzLUtKRzBfbU5SSDQ5cEhwb2dYY3kyamRmTlFZSFd2Ul9FYzNldndOSzN1OVFBVXQ3Nmw2dE1sSmV0SzRiZw?oc=5"
+     "headline": "太治愈了！江门把周杰伦的《稻香》搬进现实",
+     "highlight": "",
+     "image": "https://q1.itc.cn/q_70/images03/20261111/e6206cc802254c8eac76477efb46308b.jpeg",
+     "image_via": "JSON-LD",
+     "url": "https://m.sohu.com/a/1100244880_100116740?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",
@@ -774,31 +743,39 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-11",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "竞技体育的一张名片，樊振东与TI15、Dota2跨界联动，相关画面引发关注",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5MYlpGMXkwcmstN3poQlNYVnJGMXQzaGNkTVZkek5kalNmX2E2WUwxUkU2blRuSzhOaElGOVVKWnZONjVhQnVIX25zZ3ZPM3ZFZ01ZSk0zWnBmN2ZKOEZ5S3FFaEZvUmJnUy1ZcnhoVDEzbUE?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 2,
-     "source": "Hawk Live",
-     "title": "Malr1ne Reflected on Dyrachyo’s Current Skill Level in Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQSktfQWEtVTJoZWVhczdIN2JZN3RkZ0FtOFZXMFRiejV0Rk01VkJfbHd5b2c5YmtZWVRTZUJGLXN4ZTZ1U2JsSjN0YjJiT1ZtUG1pRjNuWFM5R3ZWZmxYRmpjOEJZQ2xVUkRDU2ZoVEh1LTI2Um1vd0lMQTdacWpXMDdkcTA?oc=5"
-    },
-    {
+     "blurb": "Dota 2 is returning to the Esports World Cup in 2027.",
      "date": "2026-11-10",
-     "n": 3,
-     "source": "Esports World Cup",
-     "title": "Dota 2 Returns to Esports World Cup 2027",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBSNFlmRlB5RHdVMngxM3p6d05XQlFYaVFZc3pKVmR5SmtlbE14RU9laS1saUFqVXpuUGp3N1lrNGt0NlRfYWIyb1BtdTJodjNqVzM2LUFwbEp1VFBWUVlEcV9kOTF6M3RkLUNZ?oc=5"
+     "headline": "Dota 2 Returns to Esports World Cup 2027",
+     "highlight": "Esports World Cup 2027",
+     "image": "https://d3h9qea4qy4169.cloudfront.net/16x9_7_b17f7953c2.png",
+     "image_via": "AI 挑选",
+     "url": "https://esportsworldcup.com/en/news/dota-2-returns-to-ewc27",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "headline": "竞技体育的一张名片，樊振东与TI15、Dota2跨界联动，相关画面引发关注",
+     "highlight": "",
+     "image": "http://n.sinaimg.cn/sinakd20261110ac/533/w480h853/20261110/decd-e621dd51c22d8892ecd98dde1852addc.jpg",
+     "image_via": "og:image",
+     "url": "https://k.sina.com.cn/article_7879923907_m1d5ae18c303301o3x0.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "headline": "Malr1ne Reflected on Dyrachyo’s Current Skill Level in Dota 2",
+     "highlight": "",
+     "image": "https://hawk.live/storage/images/posts/dyrachyo-weighs-prospect-team-spirit-disbanding-25072.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/malr1ne-reflected-dyrachyos-current-skill-level-dota-2",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",

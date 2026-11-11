@@ -60,7 +60,12 @@
   "滑雪": 12,
   "チェーンソーマン": 11,
   "ILLIT": 8,
-  "MMORPG 新作": 7
+  "MMORPG 新作": 7,
+  "周杰伦": 7,
+  "The Mandalorian": 5,
+  "dota2": 3,
+  "日本顶级网球赛事": 3,
+  "BLEACH Mirrors High": 2
  },
  "漫威电影": [
   {
@@ -438,6 +443,130 @@
    "refs": [
     5,
     4
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰倫巨星傳奇｜旗下全球首間科技Cafe直擊 咖啡師竟唔係人？",
+   "highlight": "全球首間科技Cafe",
+   "blurb": "周杰倫旗下的全球首間科技Cafe開幕，咖啡師竟然不是人。",
+   "weight": "lead",
+   "refs": [
+    3,
+    4
+   ],
+   "image": "https://cdn.hk01.com/di/media/images/dw/20261111/1197247192331456512892673.jpeg/ODE6xwazLwoUSoZaBPa-Y-nLxQtIBVTsAbgygwG4MoM?v=w1280r16_9"
+  },
+  {
+   "headline": "周杰伦以父之名片头用安魂弥撒原声，演唱者仅周杰伦",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "太治愈了！江门把周杰伦的《稻香》搬进现实",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Ludwig Goranson exits The Mandalorian; Joseph Shirley steps in",
+   "highlight": "Ludwig Goranson exits",
+   "blurb": "Composer Ludwig Goranson will not score upcoming episodes of The Mandalorian; his themes, including the opening, will stay.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "The force of my excitement for The Mandalorian & Grogu is strong – here’s my (bounty) list of what I need from the feature film",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "Dota 2 Returns to Esports World Cup 2027",
+   "highlight": "Esports World Cup 2027",
+   "blurb": "Dota 2 is returning to the Esports World Cup in 2027.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://d3h9qea4qy4169.cloudfront.net/16x9_7_b17f7953c2.png"
+  },
+  {
+   "headline": "竞技体育的一张名片，樊振东与TI15、Dota2跨界联动，相关画面引发关注",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Malr1ne Reflected on Dyrachyo’s Current Skill Level in Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "ズべレフ･アルカラス 来年のレーバー杯出場決定、ジャパンOP前週に開催＜男子テニス＞",
+   "highlight": "来年のレーバー杯出場決定",
+   "blurb": "ズべレフとアルカラスが来年のレーバー杯への出場を決めた。大会はジャパンOPの前週に開催される。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-00010004-tennisnet-000-1-view.jpg?exp=10800"
+  },
+  {
+   "headline": "今年の東レPPOは国枝さん&小田選手が見れて大坂選手のサインがもらえて奈良さん&土居さんのお喋りが聴けて最高だったよ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    1
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "Interview: BLEACH Mirrors High Producers Talk Original Story, Tite Kubo's Involvement, Customization, and Future Updates",
+   "highlight": "",
+   "blurb": "Producers discuss the original story, Tite Kubo's involvement, customization and future updates.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://static.animecorner.me/2026/11/1794404613-93fa87da46649b89fd6e77a02df06a21.png"
+  },
+  {
+   "headline": "【ミラハイ】星2茶渡泰虎の評価と性能【BLEACHミラーズハイ】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]
