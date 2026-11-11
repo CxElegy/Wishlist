@@ -122,6 +122,28 @@ class Components(unittest.TestCase):
         for kw in ({"mini": True}, {}, {"small": True}):
             self.assertIn('class="xplay"', render._tcard(story, 4, 0, "2026-10-15", **kw), kw)
 
+    def test_aesthetic_audit_2026_11_11(self):
+        """2026-11-11 審美基準で全体を点検して直した規則：見出しは「…」で切らない（D3）・字体は令牌だけ（D2。中国語のページは端末の中国語フォント 1 種類）・
+        読む字は 11px 以上（D4）・版面の整行の重大は 1 つだけ（C2・F1）・気になるかもは段の見出しを外して詰められる（F1）。"""
+        css = render.CSS
+        self.assertIn(".nx b,.wt b,.wc b,.wc.nophoto b,.pk b,.pk.big b,.hero h2", css)
+        self.assertIn("html:lang(zh){--font-sans:", css)
+        src = (_pl.Path(render.__file__)).read_text(encoding="utf-8")
+        for ok in (".wsum .stat span{{font:700 11px", ".wcard .watch span{font:700 11px", ".nav .wm small{margin-top:5px;font:800 11px"):   # 飾りの英字（WORKS）は 10px のまま
+            self.assertIn(ok, src)
+        for bad in ("'Noto Sans SC',sans-serif", "'Noto Serif SC',serif}"):
+            self.assertNotIn(bad, src)
+        hero = lambda i: {"headline": f"h{i}", "weight": "hero", "url": f"https://e.com/{i}"}
+        kinds = [k for k, _ in render._layout([hero(1), hero(2), {"headline": "n", "url": "https://e.com/n"}])]
+        self.assertEqual(kinds.count("hero"), 1)
+        self.assertIn("showRow(true, false)", render.SHUFFLE_JS)
+        # E4：版面を画面の上にそろえた時に小元素が全部見える（2026-11-11 店長「scroll 对齐的时候也要小图标全部显示出来」）
+        self.assertIn("section.sec.has-emb{scroll-margin-top:max(24px,calc(var(--embov,0px) + 6px))", css + render.CSS)
+        self.assertIn("sec.style.setProperty('--embov'", render.EMB_JS)
+        self.assertIn("d >= -Math.max(SNAP, m)", render.FIT_JS)
+        self.assertIn("@media (min-width:761px){.wl-auth{position:absolute}}", src)
+        self.assertNotIn("calc(var(--lift,0px) - 18px)", src)
+
     def test_heights_are_screen_ratios(self):
         """2026-11-09 店長：高さは px でなく画面の割合。ほかの注目ニュース・気になるかもは L＝画面 100%、版面は篇幅 L 100%・M 70%・S 50%。ジャンル別の棚はなし。"""
         js = render.FIT_JS

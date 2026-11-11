@@ -67,6 +67,7 @@ CSS = """
  /* 話題度の分析ページのグラフ（dataviz の検証済みパレット）：指標 6 色・点数の濃淡 5 段・前週比の上下 */
  --viz-1:#2a78d6;--viz-2:#eb6834;--viz-3:#1baf7a;--viz-4:#eda100;--viz-5:#e87ba4;--viz-6:#008300;
  --seq-0:#cde2fb;--seq-1:#9ec5f4;--seq-2:#5598e7;--seq-3:#256abf;--seq-4:#104281;--up:#e34948;--down:#2a78d6}
+html:lang(zh){--font-sans:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;--font-mono:'JetBrains Mono','Noto Sans SC','Microsoft YaHei',monospace}  /* 中国語のページは字を端末の中国語フォントで 1 種類に（H6：中国語の Web フォントは読まない。日本語の字体が先だと簡体字だけ別の字体に混ざる。D2） */
 /* デザインの骨格（PRODUCT.md）：文字箱の後ろに硬い影、見出しと枠だけ少し傾ける（-1〜-2.5°）、ラベルは平行四辺形。
    本文・リスト・作品の版面は傾けない。配色はトークンと版面の色だけ */
 *{box-sizing:border-box}
@@ -135,7 +136,7 @@ button{font-family:inherit}
 .mast .stamp{padding-bottom:6px;font:700 11px/1.4 var(--font-sans);letter-spacing:.08em;opacity:.65}
 .mast .tools{display:flex;align-items:stretch;gap:10px}
 .mast .meta{display:flex;flex-direction:column;justify-content:center;padding:4px 14px;border:2px solid var(--ink);background:var(--card)}
-.mast .meta small{font:700 10px/1.3 var(--font-sans);letter-spacing:.2em;opacity:.7}
+.mast .meta small{font:700 11px/1.3 var(--font-sans);letter-spacing:.2em;opacity:.7}
 .mast .meta b{font:26px/1 var(--font-num);letter-spacing:.02em;white-space:nowrap}
 .mastwish{display:flex;align-items:center;gap:8px;padding:8px 14px;border:2px solid var(--rose);background:var(--rose);color:#FFF;
  box-shadow:var(--shadow);font:900 14px/1.3 var(--font-sans);white-space:nowrap;transition:transform .1s,box-shadow .1s}
@@ -527,6 +528,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .pk .src{font:500 12px/1.4 var(--font-sans);opacity:.7}
 .pk b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .pk.big b{font-size:19px;font-weight:900;line-height:1.4;-webkit-line-clamp:3}
+.nx b,.wt b,.wc b,.wc.nophoto b,.pk b,.pk.big b,.hero h2,.grid>.lead h2,.mas>.lead h2,.card.wide h3,.mini h3,.tape .lbl b{display:block;-webkit-line-clamp:unset;overflow:visible}  /* 見出しは「…」で切らない（審美基準 D3・2026-11-08 店長「这里文字会缺一段」）。高さは組み方（fitBoard・壁・fitPk）が実際の高さで測る */
 .pk .tags{display:flex;flex-wrap:wrap;gap:5px}
 .pk .tags:empty{display:none}
 .pk .tags i{font-style:normal;padding:2px 8px;border:1.5px solid var(--ink);background:#FFF;font:700 11px/1.3 var(--font-sans)}
@@ -630,7 +632,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
  transform:translate(18px,70px) rotate(-18deg) scale(.55)}  /* 上へ戻ったとき：影が縮んで、下へ沈みながら消える */
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
 .emb:has(img.badge){--z:.82;transform:rotate(5deg)}  /* 写真の小元素は人の絵の 0.82 倍で +5° 傾けて角を外へ（ロゴ・記号は元から小さいので倍率なし） */
-@keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 18px);rotate:-3deg}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
+@keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 6px);rotate:-3deg}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
 @media (max-width:600px){.emb{height:100px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
@@ -712,6 +714,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 /* ---------- 左侧目录（v6：testground/compare.html で決めた形。宽屏的样子见 NAV_STYLES，窄屏是顶部两排横条） ---------- */
 html{scroll-behavior:smooth}
 [data-k]{scroll-margin-top:24px}
+section.sec.has-emb{scroll-margin-top:max(24px,calc(var(--embov,0px) + 6px))}  /* 小元素の上の端で吸着する（E4）。上の版面との間はあけない：吸着した時に上の版面の縁が見え、小元素がその上に立つ（2026-11-11 店長「上一个板块的边缘也显示出来会更有立体感」） */
 .spot,.front .poster{scroll-margin-top:16px}
 .page{max-width:1480px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px 32px;align-items:start}
 .mast{grid-column:1/-1}
@@ -753,7 +756,7 @@ html{scroll-behavior:smooth}
  .nav .pill.media,.nav .nsum{display:none!important}   /* スマホの横帯にはシリーズの中身・作品名の行を出さない */
  .nav .pill.on{background:var(--card);color:var(--ink);border-color:var(--card)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,var(--alert));width:calc(var(--prog,0) * 100%)}
- [data-k]{scroll-margin-top:104px}
+ [data-k]{scroll-margin-top:104px}section.sec.has-emb{scroll-margin-top:calc(104px + var(--embov,0px))}
 }
 @media (max-width:600px){.nav{margin:0 -16px}}
 /* ---------- 愿望清单 ---------- */
@@ -787,7 +790,7 @@ html{scroll-behavior:smooth}
 .wcard .links a{border-bottom:2px solid var(--acc);padding-bottom:1px}
 .wcard .links a:hover{color:var(--acc)}
 .wcard .watch{display:flex;flex-direction:column;gap:4px;padding:12px 14px;background:color-mix(in srgb,var(--acc) 8%,transparent);border-left:3px solid var(--acc);font-size:14px;line-height:1.55}
-.wcard .watch span{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--acc)}
+.wcard .watch span{font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--acc)}
 .wcard .added{font:700 11px var(--font-mono);opacity:.5;letter-spacing:.1em}
 @media (max-width:760px){.wcard.solo{grid-template-columns:1fr}.wcard.solo .wimg{min-height:0;aspect-ratio:1/1}
  .wcard.solo .wtxt{border-left:0;padding:22px}.wcard.solo h3{font-size:28px}.wish .band .title{font-size:30px}}
@@ -1055,10 +1058,10 @@ SIZE_SIDE = {"S": 0, "M": 0, "L": 3}  # 头条右边竖排几条普通消息；0
 
 def _layout(stories, side=SIZE_SIDE["L"]):
     """一周内消息的版式（保持时间顺序）：
-    重大 → 整行大图；头条 → 左 8 栏，右边竖排接下来的最多 side 条普通消息（没有就一张占整行）；
+    重大 → 整行大图（一个版面只有最新的一条；有重大时不再放大头条，之后的重大・头条都当普通排）；头条 → 左 8 栏，右边竖排接下来的最多 side 条普通消息（没有就一张占整行）；
     一周里每期都有头条，只有最新的那条做大图，更早的头条当普通消息排；
     普通消息做成左图右字的小卡片，一排最多三张，连着的几张平均分行（4 张 = 2+2）；只有一张时做成横长的大卡片。返回 [(行类型, 卡片列表)]。"""
-    rows, normals, led = [], [], False
+    rows, normals, led, big = [], [], False, False
 
     def flush():
         # 连着的普通消息平均分行（一行最多 3 张）：4 张是 2+2、5 张是 3+2，不留下孤零零的一张占整行
@@ -1074,10 +1077,11 @@ def _layout(stories, side=SIZE_SIDE["L"]):
 
     for x in stories:
         w = x.get("weight", "normal")
-        if w == "hero":
-            flush()
+        if w == "hero" and not big:   # 整行の大きい 1 枚は版面に 1 つだけ（いちばん新しい重大）。2 つ目からの重大は头条・普通と同じ扱い
+            flush()                     # （2026-11-11 審美基準 C2・F1：GTA 6 の版面が同じ話題の重大 2 枚で画面より高くなった）
             rows.append(("hero", [x]))
-        elif w == "lead" and not led:
+            big = True
+        elif w in ("hero", "lead") and not led and not big:   # 大きいカードは版面に 1 枚（重大があれば头条も普通の大きさ）
             flush()
             rows.append(("lead", [x]))
             led = True
@@ -1735,7 +1739,7 @@ SHUFFLE_JS = """
     if (!wishGrid) return;
     wishGrid.style.removeProperty('--pkh'); wishGrid.style.removeProperty('--pkbig');
     const sub = followGrid && followGrid.previousElementSibling && followGrid.previousElementSibling.classList.contains('pksub') ? followGrid.previousElementSibling : null;
-    const showRow = on => [followGrid, sub].forEach(x => { if (x) x.style.display = on ? '' : 'none'; });
+    const showRow = (on, label = on) => { if (followGrid) followGrid.style.display = on ? '' : 'none'; if (sub) sub.style.display = label ? '' : 'none'; };   // label：段の見出し（各カードに「〜をフォローしているから」があるので、詰めるときは外せる）
     showRow(true);
     const q = sel => [...wishGrid.querySelectorAll(sel)], first = wishGrid.querySelector('.pk');
     q('.pk').forEach(k => { k.style.display = ''; if (k.dataset.flat) { delete k.dataset.flat; if (k === first) k.classList.add('big'); } });   // 前に横 1 列にした分を戻す
@@ -1757,8 +1761,8 @@ SHUFFLE_JS = """
     const lo = Math.max(72, w0 * 0.55), hi = w0 * 1.1;
     const search = () => { let a = lo, b = hi; if (apply(lo) > T) return false; if (apply(hi) <= T) return true;
       for (let i = 0; i < 14; i++) { const m = (a + b) / 2; if (apply(m) <= T) a = m; else b = m; } apply(a); return true; };
-    if (search()) return; showRow(false); if (search()) return;
-    if (big && sm.length >= 3) { showFlat(true); showRow(true); if (search()) return; showRow(false); if (search()) return; }
+    if (search()) return; showRow(true, false); if (search()) return; showRow(false); if (search()) return;
+    if (big && sm.length >= 3) { showFlat(true); showRow(true); if (search()) return; showRow(true, false); if (search()) return; showRow(false); if (search()) return; }
     apply(lo);
   };
   let rt;
@@ -1780,8 +1784,10 @@ SHUFFLE_JS = """
   const fresh = () => {
     const prev = new Set(pos >= 0 ? history[pos].flat() : []);
     const keys = new Set();
-    const w = draw(cards.filter(el => kind.get(el) === 'w'), 5, keys, prev);
-    const f = draw(cards.filter(el => kind.get(el) === 'f'), 4, keys, prev);
+    const pic = el => !el.classList.contains('nophoto');   // 写真のない推薦は出さない（審美基準 B7：字だけのニュースは不可。2026-11-11）。足りないときだけ使う
+    const pool = k => { const a = cards.filter(el => kind.get(el) === k); return a.filter(pic).length >= (k === 'w' ? 5 : 4) ? a.filter(pic) : a; };
+    const w = draw(pool('w'), 5, keys, prev);
+    const f = draw(pool('f'), 4, keys, prev);
     const now = Date.now();
     [...w, ...f].forEach((el, i) => { seen[el.dataset.u] = { ...(seen[el.dataset.u] || {}), t: now + i }; });
     save();
@@ -2010,8 +2016,14 @@ EMB_JS = """
   const place = el => { const band = el.parentElement, c = el.querySelector('.emb-in > *'); if (!band || !c) return;
     const r = parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0, z = parseFloat(getComputedStyle(el).getPropertyValue('--z')) || 1, h = el.offsetHeight - c.offsetTop;   // 帯の線より上に見える高さ（足の下の余りは clip-path で切れる）
     if (!h || !r) return;
-    const avail = band.offsetHeight - 8, s = Math.min(Math.max(avail / ((1 - r) * h), z), z * 1.15);
-    el.style.setProperty('--s', s.toFixed(3)); el.style.setProperty('--lift', (-Math.max(0, avail - s * h * (1 - r))).toFixed(1) + 'px'); };
+    const avail = band.offsetHeight - 8, s = Math.min(Math.max(avail / ((1 - r) * h), z), z * 1.15), lift = -Math.max(0, avail - s * h * (1 - r));
+    el.style.setProperty('--s', s.toFixed(3)); el.style.setProperty('--lift', lift.toFixed(1) + 'px');
+    // 帯の上にはみ出す高さ（＋浮く 6px・傾きで上がる角 12px）を版面に持たせる：吸着の位置（scroll-margin-top）と版面の間を、その分だけ上へ。
+    // 版面を画面の上にそろえた時も小元素が全部見え、上の版面にも重ならない（審美基準 E4・I1b。2026-11-11 店長「scroll 对齐的时候也要小图标全部显示出来」）
+    const sec = band.closest('section'); if (!sec) return;
+    const ov = Math.ceil(Math.max(0, s * h - avail - lift + 6 + 12)), was = +sec.dataset.embov || 0;
+    sec.style.setProperty('--embov', ov + 'px'); sec.dataset.embov = ov;
+    if (ov !== was) { clearTimeout(place.t); place.t = setTimeout(() => dispatchEvent(new Event('resize')), 60); } };   // 画面 1 枚に入れる高さが変わった：版面の組み直しをもう一度
   els.forEach(el => { const img = el.querySelector('img'); if (img && !img.complete) img.addEventListener('load', () => place(el), { once: true }); place(el); });
   els.forEach(room);
   addEventListener('resize', () => els.forEach(el => { place(el); room(el); }));
@@ -2149,11 +2161,11 @@ def render_settings(items, db, updated, schemes=(), own=None):
 .intro{{font-size:14px;line-height:1.7;opacity:.8;margin:0}}
 .cfg{{align-self:stretch;width:100%;display:block}}
 .cfg h2{{display:flex;align-items:baseline;gap:10px;margin:22px 0 4px;padding-bottom:6px;border-bottom:3px solid var(--sc);
- font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em;color:var(--sc)}}
+ font:900 20px/1 var(--font-sans);letter-spacing:.08em;color:var(--sc)}}
 .cfg h2 small{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.7}}
 .row{{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,#1A1C22 15%,transparent)}}
 .nm{{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}}
-.nm b{{font:900 16px 'Noto Sans SC',sans-serif}}
+.nm b{{font:900 16px var(--font-sans)}}
 .nm small{{font-size:12px;opacity:.6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 .seg{{display:flex;border:2px solid #1A1C22}}
 .seg button{{width:44px;height:36px;border:0;border-left:2px solid #1A1C22;background:transparent;color:#1A1C22;
@@ -2161,11 +2173,11 @@ def render_settings(items, db, updated, schemes=(), own=None):
 .seg button:first-child{{border-left:0}}
 .seg button[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
 .row .edit{{height:36px;padding:0 12px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;
- font:900 14px 'Noto Sans SC',sans-serif;cursor:pointer}}
+ font:900 14px var(--font-sans);cursor:pointer}}
 .row .edit:hover{{background:#1A1C22;color:#F4EDE4}}
-.row .del{{height:36px;padding:0 10px;border:2px solid #B8336A;background:transparent;color:#B8336A;font:900 14px 'Noto Sans SC',sans-serif;cursor:pointer}}
+.row .del{{height:36px;padding:0 10px;border:2px solid #B8336A;background:transparent;color:#B8336A;font:900 14px var(--font-sans);cursor:pointer}}
 .row .del:hover,.secdel:hover{{background:#B8336A;color:#FBF8F1}}
-.secdel{{margin-left:auto;height:28px;padding:0 10px;border:1.5px solid #B8336A;background:transparent;color:#B8336A;font:700 12px 'Noto Sans SC',sans-serif;cursor:pointer}}
+.secdel{{margin-left:auto;height:28px;padding:0 10px;border:1.5px solid #B8336A;background:transparent;color:#B8336A;font:700 12px var(--font-sans);cursor:pointer}}
 .row.gone .nm{{text-decoration:line-through;opacity:.5}}
 .row .del:focus-visible,.secdel:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
 .seg button:focus-visible,.row .edit:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
@@ -2173,17 +2185,17 @@ def render_settings(items, db, updated, schemes=(), own=None):
 .st{{width:64px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.05em;text-align:right}}
 .st.ok{{color:#1F9D6B}}.st.err{{color:#C0392B}}
 .schemes{{align-self:stretch;display:flex;flex-direction:column}}
-.schemes h2{{margin:8px 0 4px;font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em}}
+.schemes h2{{margin:8px 0 4px;font:900 20px/1 var(--font-sans);letter-spacing:.08em}}
 .srow{{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 15%,transparent)}}
 .srow .nm b{{color:var(--sc)}}
 .srow .pv{{margin:0;font-size:12px;opacity:.7}}
 .srow .pv b{{font:700 12px var(--font-mono)}}
-.seg.wide button{{width:auto;min-width:56px;padding:0 10px;font:900 13px 'Noto Sans SC',sans-serif}}
+.seg.wide button{{width:auto;min-width:56px;padding:0 10px;font:900 13px var(--font-sans)}}
 @media (max-width:600px){{.srow{{flex-wrap:wrap}}.srow .nm{{flex-basis:100%}}}}
 .legend{{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin:0}}
 .legend dt{{font:900 13px 'JetBrains Mono',monospace}}.legend dd{{margin:0;opacity:.75}}
 .wiz{{display:flex;flex-direction:column;gap:14px;margin-top:18px;padding:18px 18px 20px;border:2px solid #1A1C22;background:#F7F5F0;scroll-margin-top:16px}}
-.wiz>h2{{margin:0;font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em}}
+.wiz>h2{{margin:0;font:900 20px/1 var(--font-sans);letter-spacing:.08em}}
 .wiz .hint{{margin:0;font-size:13px;line-height:1.7;opacity:.75}}
 .trail{{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:stretch;gap:8px}}
 .trail:empty{{display:none}}
@@ -2194,101 +2206,101 @@ def render_settings(items, db, updated, schemes=(), own=None):
 .trail button.auto{{border-style:dashed}}
 .trail button:hover{{background:#1A1C22;color:#F4EDE4}}
 .trail button:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
-.trail span{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.08em;opacity:.6}}
-.trail b{{font:900 14px/1.4 'Noto Sans SC',sans-serif}}
+.trail span{{font:700 11px var(--font-mono);letter-spacing:.08em;opacity:.6}}
+.trail b{{font:900 14px/1.4 var(--font-sans)}}
 .opt.auto{{border-style:dashed}}
 .q{{display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid #1A1C22;background:#FFF}}
 .q .no{{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.6}}
-.q h3{{margin:0;font:900 19px/1.4 'Noto Sans SC',sans-serif}}
+.q h3{{margin:0;font:900 19px/1.4 var(--font-sans)}}
 .q p{{margin:0;font-size:13px;line-height:1.7;opacity:.75}}
-.subrow{{display:flex;flex-direction:column;gap:6px}}.subrow h4{{margin:0;font:700 13px 'Noto Sans SC',sans-serif}}
+.subrow{{display:flex;flex-direction:column;gap:6px}}.subrow h4{{margin:0;font:700 13px var(--font-sans)}}
 .subrow .opts{{flex-direction:row;flex-wrap:wrap}}.subrow .opt{{padding:6px 10px;font-size:14px}}
 .facets .fh{{display:flex;flex-wrap:wrap;align-items:center;gap:8px}}.facets .fh i{{font:700 11px 'JetBrains Mono',monospace;font-style:normal;letter-spacing:.06em;padding:1px 6px;border:1px solid currentColor}}
 .facets .fh .frec{{background:#FFD23F;color:#1A1C22;border-color:#FFD23F}}.simnote{{padding:8px 10px;border-left:3px solid #B8336A;background:#FFF}}
 .kids{{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border:1px dashed #1A1C22}}.kids>span{{font-weight:700;font-size:13px}}
 .kids .kid{{display:grid;grid-template-columns:auto 1fr;gap:4px 8px;align-items:center}}.kids .kid small{{grid-column:2;opacity:.7;font-size:12px;line-height:1.5}}
 .opts.secgrid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}}.opts.secgrid .opt{{padding:8px 10px}}
-.alsoh{{margin:6px 0 0;font:900 14px 'Noto Sans SC',sans-serif}}.alsobox{{display:flex;flex-direction:column;gap:8px}}.alsobox>span{{font-weight:700;font-size:13px}}
+.alsoh{{margin:6px 0 0;font:900 14px var(--font-sans)}}.alsobox{{display:flex;flex-direction:column;gap:8px}}.alsobox>span{{font-weight:700;font-size:13px}}
 /* 第 3 问「版面里收哪些新闻」（test2）：上＝加进去以后的样子（1 个版面＋枝），下＝按层一行一个面（勾选框・札・找到的东西） */
 .facets2{{display:flex;flex-direction:column;gap:14px}}
 .fprev{{display:grid;gap:6px;padding:12px 14px;border:2px solid #1A1C22;background:#FBF8F1;box-shadow:4px 4px 0 #1A1C22}}
 .fprev .fp-h{{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.16em;opacity:.6}}
-.fprev .fp-path{{display:flex;align-items:center;gap:8px;font:700 13px 'Noto Sans SC',sans-serif}}
-.fprev .t-tag{{display:inline-block;padding:1px 10px;background:var(--sc);color:#FFF;font:900 13px 'Noto Sans SC',sans-serif;transform:skewX(-8deg)}}
+.fprev .fp-path{{display:flex;align-items:center;gap:8px;font:700 13px var(--font-sans)}}
+.fprev .t-tag{{display:inline-block;padding:1px 10px;background:var(--sc);color:#FFF;font:900 13px var(--font-sans);transform:skewX(-8deg)}}
 .fprev .fp-st{{display:flex;align-items:baseline;gap:10px;margin-left:9px;padding-left:14px;border-left:3px solid var(--sc)}}
-.fprev .fp-st b{{font:900 18px 'Noto Sans SC',sans-serif}}.fprev .fp-st small{{font-size:12px;opacity:.65}}
+.fprev .fp-st b{{font:900 18px var(--font-sans)}}.fprev .fp-st small{{font-size:12px;opacity:.65}}
 .fprev .fp-br{{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0 0 0 9px;padding:0 0 0 14px;list-style:none;border-left:3px solid var(--sc)}}
-.fprev .fp-br li{{position:relative;padding-left:14px;font:700 13px 'Noto Sans SC',sans-serif;color:#3A3D46}}
+.fprev .fp-br li{{position:relative;padding-left:14px;font:700 13px var(--font-sans);color:#3A3D46}}
 .fprev .fp-br li::before{{content:"";position:absolute;left:0;top:.65em;width:9px;border-top:2px solid var(--sc)}}
 .fprev .fp-note{{font-size:12px;opacity:.65}}
-.fgrp h4{{display:flex;align-items:baseline;gap:8px;margin:0 0 6px;font:900 14px 'Noto Sans SC',sans-serif}}
-.fgrp h4 small{{font:500 12px 'Noto Sans SC',sans-serif;opacity:.6}}
+.fgrp h4{{display:flex;align-items:baseline;gap:8px;margin:0 0 6px;font:900 14px var(--font-sans)}}
+.fgrp h4 small{{font:500 12px var(--font-sans);opacity:.6}}
 .fgrp ul{{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}}
 .fr{{display:grid;grid-template-columns:20px 1fr;gap:2px 10px;align-items:center;padding:9px 12px;border:1px solid #C9C6BE;background:#FFF;cursor:pointer}}
 .fr:hover{{border-color:#1A1C22}}.fr.on{{border-color:#1A1C22;box-shadow:inset 4px 0 0 #1A1C22}}
 .fr input{{width:18px;height:18px;margin:0;accent-color:#1A1C22}}
-.fr .fn{{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font:900 15px 'Noto Sans SC',sans-serif}}
-.fr .fn i{{font:700 11px 'Noto Sans SC',sans-serif;font-style:normal;padding:0 6px;border:1px solid #1A1C22}}
+.fr .fn{{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font:900 15px var(--font-sans)}}
+.fr .fn i{{font:700 11px var(--font-sans);font-style:normal;padding:0 6px;border:1px solid #1A1C22}}
 .fr .fn .fmain{{background:#FFD23F;border-color:#FFD23F}}
 .fr small{{grid-column:2;font-size:12px;line-height:1.5;color:#5A5D66;overflow-wrap:anywhere}}
 .fr.thin:not(.on) .fn{{color:#5A5D66}}
 .fmiss{{font-size:12px!important}}
 .fgrid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}}
 .fchips{{display:flex!important;flex-direction:row!important;flex-wrap:wrap;gap:6px!important}}
-.fc{{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid #C9C6BE;background:#FFF;font:700 13px 'Noto Sans SC',sans-serif;cursor:pointer}}
+.fc{{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid #C9C6BE;background:#FFF;font:700 13px var(--font-sans);cursor:pointer}}
 .fc:hover,.fc.on{{border-color:#1A1C22}}.fc.on{{box-shadow:inset 0 -3px 0 #1A1C22}}.fc input{{width:15px;height:15px;margin:0;accent-color:#1A1C22}}
 .fkw summary{{cursor:pointer;font-size:12px;font-weight:700}}.fkw ul{{margin:6px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#5A5D66}}
 /* 加进去以后的目录（树状图预览）：板块的色签 → 小分类 → 关注项，枝用细线 */
 .tree{{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border:2px dashed #1A1C22;background:#FBF8F1}}
-.tree .t-h{{font:900 14px 'Noto Sans SC',sans-serif}}
+.tree .t-h{{font:900 14px var(--font-sans)}}
 .tree ul{{list-style:none;margin:0;padding:0}}
-.tree .t-sec{{margin-top:6px}}.tree .t-tag{{display:inline-block;padding:1px 10px;background:var(--sc);color:#FFF;font:900 13px 'Noto Sans SC',sans-serif;transform:skewX(-8deg)}}
+.tree .t-sec{{margin-top:6px}}.tree .t-tag{{display:inline-block;padding:1px 10px;background:var(--sc);color:#FFF;font:900 13px var(--font-sans);transform:skewX(-8deg)}}
 .tree .t-sec>ul,.tree .t-sub>ul,.tree .t-it>ul{{margin-left:9px;padding-left:14px;border-left:2px solid color-mix(in srgb,var(--sc) 55%,transparent)}}
 .tree .t-sub,.tree .t-it{{position:relative;padding-top:4px}}
 .tree .t-sub::before,.tree .t-it::before{{content:"";position:absolute;left:-14px;top:15px;width:10px;border-top:2px solid color-mix(in srgb,var(--sc) 55%,transparent)}}
-.tree .t-sn{{font:700 13px 'Noto Sans SC',sans-serif;color:#1A1C22}}
-.tree .t-nm{{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;font:900 14px 'Noto Sans SC',sans-serif}}
-.tree .t-nm i{{font:700 11px 'Noto Sans SC',sans-serif;font-style:normal;padding:0 6px;background:#FFD23F;color:#1A1C22}}
+.tree .t-sn{{font:700 13px var(--font-sans);color:#1A1C22}}
+.tree .t-nm{{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;font:900 14px var(--font-sans)}}
+.tree .t-nm i{{font:700 11px var(--font-sans);font-style:normal;padding:0 6px;background:#FFD23F;color:#1A1C22}}
 .tree .t-it.xfer .t-nm i{{background:#FFF;border:1px solid #1A1C22}}
 .tree .t-it>small{{display:block;font-size:12px;color:#5A5D66}}
 .tree .t-it.old>.t-nm{{font-weight:500;color:#5A5D66}}.tree .t-it.more>.t-nm{{font-size:12px}}
-.tree .t-root{{display:block;font:500 12px/1.5 'Noto Sans SC',sans-serif;color:#5A5D66}}
+.tree .t-root{{display:block;font:500 12px/1.5 var(--font-sans);color:#5A5D66}}
 .tree .t-it>.opt{{margin:4px 0;width:100%}}
-.tree .t-md{{font:500 13px 'Noto Sans SC',sans-serif;color:#3A3D46}}
-.selall{{align-self:flex-start;padding:6px 14px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:900 14px 'Noto Sans SC',sans-serif;cursor:pointer}}
+.tree .t-md{{font:500 13px var(--font-sans);color:#3A3D46}}
+.selall{{align-self:flex-start;padding:6px 14px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:900 14px var(--font-sans);cursor:pointer}}
 .selall[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
 .opts{{display:flex;flex-direction:column;gap:8px}}
 .opt{{display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;
- font:900 15px 'Noto Sans SC',sans-serif;cursor:pointer}}
-.opt small{{font:500 12px/1.5 'Noto Serif SC',serif;opacity:.65}}
+ font:900 15px var(--font-sans);cursor:pointer}}
+.opt small{{font:500 12px/1.5 var(--font-sans);opacity:.65}}
 .opt[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
 .opt:focus-visible,.wiz button:focus-visible,.wiz input:focus-visible,.wiz select:focus-visible,.wiz textarea:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
 .wiz input[type=text],.wiz select,.wiz textarea{{width:100%;padding:8px 10px;border:1px solid #1A1C22;background:#FFF;
- font:500 15px 'Noto Serif SC',serif;color:#1A1C22}}
+ font:500 15px var(--font-sans);color:#1A1C22}}
 .wiz textarea{{min-height:70px;resize:vertical;font-size:14px}}
 .wiz textarea.code{{font:500 12px/1.6 'JetBrains Mono',monospace}}
 .wnav{{display:flex;flex-wrap:wrap;align-items:center;gap:10px}}
 .wnav button{{flex-shrink:0;white-space:nowrap;padding:9px 18px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;
- font:900 14px 'Noto Sans SC',sans-serif;letter-spacing:.08em;cursor:pointer}}
+ font:900 14px var(--font-sans);letter-spacing:.08em;cursor:pointer}}
 .wnav button.main{{background:#1A1C22;color:#F4EDE4}}
 .wnav button:disabled{{cursor:not-allowed;opacity:.45}}
-.msg{{font:700 13px/1.6 'Noto Sans SC',sans-serif}}.msg.ok{{color:#1F9D6B}}.msg.err{{color:#C0392B}}
+.msg{{font:700 13px/1.6 var(--font-sans)}}.msg.ok{{color:#1F9D6B}}.msg.err{{color:#C0392B}}
 .rv{{display:flex;flex-direction:column;gap:12px}}
-.rv label,.rv .f{{display:flex;flex-direction:column;gap:5px;font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.04em}}
-.rv label small,.rv .f small{{font:500 12px/1.5 'Noto Serif SC',serif;letter-spacing:0;opacity:.6}}
+.rv label,.rv .f{{display:flex;flex-direction:column;gap:5px;font:900 13px var(--font-sans);letter-spacing:.04em}}
+.rv label small,.rv .f small{{font:500 12px/1.5 var(--font-sans);letter-spacing:0;opacity:.6}}
 .rv .two{{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
 .rv .checks{{display:flex;flex-wrap:wrap;gap:6px 14px}}
-.rv .checks label{{flex-direction:row;align-items:center;gap:5px;font:500 14px 'Noto Serif SC',serif}}
+.rv .checks label{{flex-direction:row;align-items:center;gap:5px;font:500 14px var(--font-sans)}}
 .rv details{{border-top:1px dashed color-mix(in srgb,#1A1C22 40%,transparent);padding-top:10px}}
-.rv summary{{cursor:pointer;font:900 13px 'Noto Sans SC',sans-serif}}
+.rv summary{{cursor:pointer;font:900 13px var(--font-sans)}}
 .rv details[open]>summary{{margin-bottom:10px}}
 .rv details .rv{{gap:12px}}
 .queue{{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:13px}}
 .queue:empty{{display:none}}
 .queue li{{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px;padding:8px 0;border-top:1px solid color-mix(in srgb,#1A1C22 15%,transparent)}}
-.queue li.qh{{border-top:0;padding:0;font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.05em}}
-.queue li b{{font-family:'Noto Sans SC',sans-serif}}.queue li span{{opacity:.65}}
-.queue li strong{{flex-basis:100%;font:700 13px/1.6 'Noto Sans SC',sans-serif}}
+.queue li.qh{{border-top:0;padding:0;font:900 13px var(--font-sans);letter-spacing:.05em}}
+.queue li b{{font-family:var(--font-sans)}}.queue li span{{opacity:.65}}
+.queue li strong{{flex-basis:100%;font:700 13px/1.6 var(--font-sans)}}
 .queue .st-ok{{color:#1F9D6B}}.queue .st-err{{color:#C0392B}}.queue .st-wait{{color:#B8336A}}
 @media (max-width:520px){{.st{{display:none}}.seg button{{width:40px}}.rv .two{{grid-template-columns:1fr}}.row{{gap:8px}}
  .trail{{gap:6px}}.trail li:not(:last-child)::after{{display:none}}.trail button{{min-width:0;max-width:100%;padding:6px 9px}}.trail b{{font-size:13px}}}}
@@ -2477,30 +2489,30 @@ def render_wishlist(wishes, works, updated, finds=(), db=None, own=False):
 .back:hover{{color:#B8336A}}
 .wsum{{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}}
 .wsum .stat{{display:flex;flex-direction:column;gap:2px}}
-.wsum .stat span{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.6}}
-.wsum .stat b{{font:900 26px/1 'Noto Sans SC',sans-serif;font-variant-numeric:tabular-nums}}
+.wsum .stat span{{font:700 11px var(--font-mono);letter-spacing:.2em;opacity:.6}}
+.wsum .stat b{{font:900 26px/1 var(--font-sans);font-variant-numeric:tabular-nums}}
 .chips{{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px}}
 .chip{{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;
- font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.15em;cursor:pointer}}
+ font:900 13px var(--font-sans);letter-spacing:.15em;cursor:pointer}}
 .chip small{{font:700 11px 'JetBrains Mono',monospace;opacity:.6}}
 .chip[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
 .chip:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
 .wish .band{{display:none}}
 .gonehead{{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding-top:12px;border-top:3px double #1A1C22}}
-.gonehead h2{{margin:0;font:900 26px/1 'Noto Sans SC',sans-serif;letter-spacing:.06em;color:#6B6457}}
+.gonehead h2{{margin:0;font:900 26px/1 var(--font-sans);letter-spacing:.06em;color:#6B6457}}
 .gonehead span{{font-size:13px;opacity:.7}}
 .wish.expired{{--bg:#E9E5DE;--acc:#6B6457}}
 .gonehead.torn h2{{color:#B5650D}}
 .wish.torn{{--bg:#F6EEDC;--acc:#B5650D}}
 .wcard .alts{{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border:1px dashed color-mix(in srgb,var(--acc) 55%,transparent)}}
-.wcard .alts>span{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc)}}
+.wcard .alts>span{{font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--acc)}}
 .wcard .alts ul{{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}}
 .wcard .alts li{{font-size:14px;line-height:1.55}}
 .wcard .alts li b{{font-weight:900}}
 .wcard .alts li em{{font-style:normal;font:700 12px 'JetBrains Mono',monospace;margin-left:6px;color:var(--acc)}}
 .wcard .alts li p{{margin:2px 0 0;font-size:13px;opacity:.8}}
 .wcard .alts li a:hover b{{color:var(--acc)}}
-.wcard .alts li small{{font:700 10px 'JetBrains Mono',monospace;opacity:.6;letter-spacing:.08em}}
+.wcard .alts li small{{font:700 11px var(--font-mono);opacity:.6;letter-spacing:.08em}}
 .wish.expired .wimg img{{filter:grayscale(.65) contrast(.95);opacity:.85}}
 .wish.expired .wcard:hover .wimg img{{filter:none;opacity:1}}
 </style>
@@ -2542,20 +2554,20 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
 
 SNAP_CSS = """
 .snap{background:#FBF8F1;border:3px solid #1A1C22;box-shadow:6px 6px 0 #B8336A;padding:18px 22px;display:flex;flex-direction:column;gap:14px}
-.snap h2{margin:0;font:900 22px/1.2 'Noto Sans SC',sans-serif;letter-spacing:.04em}
-.snap h2 small{font:500 13px 'Noto Serif SC',serif;letter-spacing:0;opacity:.7;margin-left:10px}
+.snap h2{margin:0;font:900 22px/1.2 var(--font-sans);letter-spacing:.04em}
+.snap h2 small{font:500 13px var(--font-sans);letter-spacing:0;opacity:.7;margin-left:10px}
 .snap form{display:grid;grid-template-columns:160px minmax(0,1fr);gap:14px 18px;align-items:start}
 .snap .drop{grid-row:span 4;aspect-ratio:1;border:2px dashed #1A1C22;display:grid;place-items:center;text-align:center;cursor:pointer;
- font:700 13px 'Noto Sans SC',sans-serif;background:#FFF;overflow:hidden;position:relative}
+ font:700 13px var(--font-sans);background:#FFF;overflow:hidden;position:relative}
 .snap .drop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#FFF}
 .snap .drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .snap .seg{display:flex;gap:8px}
-.snap .seg button,.snap .send{padding:7px 16px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;font:900 13px 'Noto Sans SC',sans-serif;
+.snap .seg button,.snap .send{padding:7px 16px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;font:900 13px var(--font-sans);
  letter-spacing:.12em;cursor:pointer;border-radius:0}
 .snap .seg button[aria-pressed=true]{background:#1A1C22;color:#F4EDE4}
 .snap .seg button[data-v="纠结"][aria-pressed=true]{background:#B5650D;border-color:#B5650D}
 .snap input[type=text],.snap input[type=password]{width:100%;box-sizing:border-box;padding:8px 10px;border:2px solid #1A1C22;
- font:500 14px 'Noto Sans SC',sans-serif;background:#FFF;border-radius:0}
+ font:500 14px var(--font-sans);background:#FFF;border-radius:0}
 .snap .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
 .snap .send{background:#B8336A;border-color:#B8336A;color:#FFF}
 .snap .send:disabled{opacity:.5;cursor:wait}
@@ -2565,7 +2577,7 @@ SNAP_CSS = """
  font-size:12px;background:#FFF;max-width:100%}
 .snapq img{width:44px;height:44px;object-fit:cover;flex:none}
 .snapq b{display:block;font-size:12px}
-.snapq .state{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.1em;opacity:.7}
+.snapq .state{font:700 11px var(--font-mono);letter-spacing:.1em;opacity:.7}
 @media (max-width:640px){.snap form{grid-template-columns:1fr}.snap .drop{grid-row:auto;aspect-ratio:4/3}}
 """
 
@@ -2669,11 +2681,11 @@ def _own_wish_controls(status):
 
 OWN_WISH_CSS = """
 .snap .byname{display:grid;grid-template-columns:minmax(0,2fr) 96px 72px minmax(0,2fr) auto;gap:8px;align-items:center;padding-top:14px;border-top:1px dashed #1A1C22}
-.snap .byname h3{grid-column:1/-1;margin:0;font:900 15px 'Noto Sans SC',sans-serif}
-.snap .byname input,.snap .byname select{width:100%;box-sizing:border-box;padding:8px 10px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:500 14px 'Noto Sans SC',sans-serif}
-.snapq .wdel,.wctl .wdel{padding:5px 12px;border:2px solid #B8336A;background:transparent;color:#B8336A;font:900 13px 'Noto Sans SC',sans-serif;cursor:pointer}
+.snap .byname h3{grid-column:1/-1;margin:0;font:900 15px var(--font-sans)}
+.snap .byname input,.snap .byname select{width:100%;box-sizing:border-box;padding:8px 10px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:500 14px var(--font-sans)}
+.snapq .wdel,.wctl .wdel{padding:5px 12px;border:2px solid #B8336A;background:transparent;color:#B8336A;font:900 13px var(--font-sans);cursor:pointer}
 .wctl{display:flex;gap:8px;align-items:center;margin-top:8px}
-.wctl select{padding:5px 8px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:700 13px 'Noto Sans SC',sans-serif}
+.wctl select{padding:5px 8px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:700 13px var(--font-sans)}
 @media (max-width:640px){.snap .byname{grid-template-columns:minmax(0,1fr) 72px}.snap .byname input[data-f=name],.snap .byname input[data-f=url],.snap .byname .add{grid-column:1/-1}}
 """
 # 本人の欲しい物：写真で足す（my_photo_add）・名前で足す（my_wish_add）・状態を変える・消す。ページは定期的に作り直すので、まだカードになっていない分は下の一覧に出す
@@ -3146,10 +3158,10 @@ NAV_STYLES = {
 .nav .wm{display:flex;flex-direction:column;line-height:1;transform:rotate(-3deg)}
 .nav .wm b{font:30px/.95 var(--font-num);letter-spacing:.04em;font-style:italic;background:var(--ink);color:var(--card);padding:2px 10px 1px 8px;
  transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--cur,var(--alert))}
-.nav .wm small{margin-top:5px;font:800 10px var(--font-sans);letter-spacing:.18em;color:rgba(26,28,34,.7)}
+.nav .wm small{margin-top:5px;font:800 11px var(--font-sans);letter-spacing:.18em;color:rgba(26,28,34,.7)}
 .nav .hm{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;line-height:1}
 .nav .hm .hv{font:26px/1 var(--font-num);color:var(--cur,var(--alert))}
-.nav .hm .hl{margin-top:3px;font:900 10px var(--font-sans);letter-spacing:.1em;color:rgba(26,28,34,.7)}
+.nav .hm .hl{margin-top:3px;font:900 11px var(--font-sans);letter-spacing:.1em;color:rgba(26,28,34,.7)}
 @media (prefers-reduced-motion:reduce){.nav .flame *{animation:none!important}}
 .nav .nhead{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 12px;margin:0 8px 6px 0;padding-bottom:4px;border-bottom:2px solid var(--ink)}
 .nav .nhead .pill{flex:none;height:30px;padding-left:4px;font-size:13px}
@@ -3695,7 +3707,7 @@ FIT_JS = """
   const side = (c, p, nat, h) => {
     const cw = (c.querySelector(':scope > a:not(.lk)') || c).clientWidth || c.clientWidth;
     const w = Math.min(Math.round(h * nat), Math.round(cw * 0.5));
-    if (cw - w < 150 || h < 40) {   // 字の列が 150px 取れないカード：写真を上・字を下に。枠は写真の比率（縦は幅の 1.35 倍まで、超える分は主役・文字が残るときだけ切る）（2026-11-08：80px の字の列で 1〜3 字ずつ折り返した）
+    if (cw - w < 150 || h < 40 || w < 90) {   // 写真が 90px より細くなるときも同じ（2026-11-11 審美基準 B9：60×116 の細い写真が並んだ）。字の列が 150px 取れないカード：写真を上・字を下に。枠は写真の比率（縦は幅の 1.35 倍まで、超える分は主役・文字が残るときだけ切る）（2026-11-08：80px の字の列で 1〜3 字ずつ折り返した）
       const ar = Math.max(nat, 1 / 1.35); p.style.height = 'auto'; p.style.aspectRatio = ar.toFixed(4);   // 枠は比率で（px で決めると、幅が変わったあと 22px の帯になった。2026-11-09）
       p.classList.toggle('fill', ar <= nat * 1.02 || cropAt(img0(p), nat / ar)); return;
     }
@@ -3849,7 +3861,7 @@ FIT_JS = """
     return run;
   };
   const fitBoard = (m, gap) => {
-    m.querySelectorAll(':scope > .pfill').forEach(x => x.remove());   // 前の組で空きに並べた整理待ちを外してから組む
+    m.querySelectorAll(':scope > .pfill').forEach(x => x.remove()); { const s0 = m.closest('section'); if (s0) s0.querySelectorAll('[data-pfo]').forEach(c => { c.style.display = ''; delete c.dataset.pfo; }); }   // 前の組で埋め草に回した「もっと見る」の記事を戻す   // 前の組で空きに並べた整理待ちを外してから組む
     { const pd = m.closest('section') && m.closest('section').querySelector('details.pend'); if (pd) pd.style.display = ''; }
     const cs = [...m.children];
     cs.forEach(c => { if (c.dataset.fbh) { c.style.display = ''; delete c.dataset.fbh; } });   // 前の組で出さなかった記事を戻してから組む
@@ -3866,7 +3878,7 @@ FIT_JS = """
     const cols0 = getComputedStyle(m).gridTemplateColumns.split(' ').length, sec = m.closest('section');
     vis.forEach(boardBase);
     const over = sec ? sec.getBoundingClientRect().height - m.getBoundingClientRect().height : 120;
-    const budget = Math.max(160, innerHeight * ((sec && +sec.dataset.vh) || 70) / 100 - over - 16), H = c => c.getBoundingClientRect().height;   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
+    const budget = Math.max(160, innerHeight * ((sec && +sec.dataset.vh) || 70) / 100 - over - 16 - Math.max(0, ((sec && +sec.dataset.embov) || 0) - 18)), H = c => c.getBoundingClientRect().height;   // 小元素の分だけ下がって吸着する（E4）   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
     const fixed = c => { boardBase(c); const h = H(c); return {k: 'N', s: 1, lo: 0, hi: 0, h: () => h, a: () => 0}; };
     const measure = (c, i, k) => {
       const o = [], p = c.querySelector(':scope > .pic'), img = p && img0(p);
@@ -3955,16 +3967,28 @@ FIT_JS = """
       const j = best.at[i]; c.style.gridColumn = String(j + 1); c.style.gridRow = (y[j] + 1) + ' / span ' + (h + gap); y[j] += h + gap;
     });
     // 列の下の空き（80px 以上）は、整理待ちの見出しを並べて埋める（2026-11-09 店長 案 A「很完美」）。入る分だけ。全部並べたら下の「整理待ち」はたたむ
-    const pend = sec && sec.querySelector('details.pend'), items = pend ? [...pend.querySelectorAll('li')] : [];
+    // 整理待ちが尽きたら「もっと見る」の記事の見出しで埋め（使った記事は「もっと見る」から外す：同じ記事は 1 回、F4）。48px から（見出しの行は 80px 以上のときだけ。2026-11-11 審美基準 A2・A6）
+    const pend = sec && sec.querySelector('details.pend'), pl = pend ? [...pend.querySelectorAll('li:not(.more)')] : [];
+    const olds = sec ? [...sec.querySelectorAll('details.older article.card')].filter(c => getComputedStyle(c).display !== 'none' && c.querySelector('a.lk[href]') && c.querySelector('h3,h2')) : [];
+    const items = [...pl.map(li => ({li})), ...olds.map(c => ({c}))];
     const Hmax = Math.max(...y) - gap; let used = 0;
-    for (let j = 0; j < best.k && used < items.length; j++) {
-      const d = Math.round(Hmax - (y[j] - gap)); if (d < 80) continue;
+    const order = Array.from({length: best.k}, (_, j) => j).sort((a, b) => y[a] - y[b]);   // いちばん空いた列から
+    for (const j of order) {
+      if (used >= items.length) break;
+      const d = Math.round(Hmax - (y[j] - gap)); if (d < 48) continue;
       const box = document.createElement('div'); box.className = 'pfill'; box.style.gridColumn = String(j + 1); box.style.gridRow = (y[j] + 1) + ' / span ' + d; box.style.height = d + 'px';
-      box.innerHTML = '<h5>ほかの記事（整理待ち）</h5><ul></ul>'; const ul = box.querySelector('ul'); m.append(box);
-      while (used < items.length) { const li = items[used].cloneNode(true); li.querySelectorAll('small').forEach(x => x.remove()); ul.append(li); if (box.scrollHeight > box.clientHeight + 1) { li.remove(); break; } used++; }
+      box.innerHTML = (d >= 80 ? '<h5>ほかの記事</h5>' : '') + '<ul></ul>'; const ul = box.querySelector('ul'); m.append(box);
+      while (used < items.length) {
+        const it = items[used]; let li;
+        if (it.li) { li = it.li.cloneNode(true); li.querySelectorAll('small').forEach(x => x.remove()); }
+        else { const a = it.c.querySelector('a.lk[href]'); li = document.createElement('li'); const b = document.createElement('a'); b.href = a.href; b.target = '_blank'; b.rel = 'noopener'; b.textContent = it.c.querySelector('h3,h2').textContent.trim(); li.append(b); }
+        ul.append(li); if (box.scrollHeight > box.clientHeight + 1) { li.remove(); break; }
+        if (it.c) { it.c.style.display = 'none'; it.c.dataset.pfo = '1'; }
+        used++;
+      }
       if (!ul.children.length) box.remove();
     }
-    if (pend && items.length && used >= items.length) pend.style.display = 'none';
+    if (pend && pl.length && used >= pl.length) pend.style.display = 'none';
     m.dataset.fit = best.k + ':' + best.f.map(f => f.k).join(',');
     if (window.WL_FB_DEBUG) (window.WL_FB_LOG = window.WL_FB_LOG || []).push([m.closest('section') && m.closest('section').dataset.k, best.k, best.c2, best.f.map(f => f.k + ':' + Math.round(f.ph || 0))]);
     return true;
@@ -4256,8 +4280,9 @@ FIT_JS = """
     if (innerWidth <= 760 || document.querySelector('dialog[open]') || document.activeElement?.matches('input, textarea, select')) return;
     let best = null;
     for (const el of snapAt()) {
-      const d = el.getBoundingClientRect().top - (parseFloat(getComputedStyle(el).scrollMarginTop) || 16);
-      if (Math.abs(d) <= SNAP && (best === null || Math.abs(d) < Math.abs(best))) best = d;
+      const m = parseFloat(getComputedStyle(el).scrollMarginTop) || 16, d = el.getBoundingClientRect().top - m;
+      // 上の端が画面の上（0）から吸着の位置（m）の間で止まったら、m まで戻す：小元素が帯の上にはみ出す版面は m が大きく、0 付近で止めると小元素が切れる（E4・2026-11-11 店長）
+      if (d >= -Math.max(SNAP, m) && d <= SNAP && (best === null || Math.abs(d) < Math.abs(best))) best = d;
     }
     if (best !== null && Math.abs(best) >= 2) {
       snapping = true;
@@ -5146,6 +5171,7 @@ ROLE_JA = {"admin": "店長", "user": "お客さま", "guest": "ゲスト"}   # 
 
 AUTH_CSS = """
 .wl-auth{position:fixed;top:10px;right:12px;z-index:90;display:flex;align-items:center;gap:8px;font:700 13px/1.4 var(--font-sans)}
+@media (min-width:761px){.wl-auth{position:absolute}}  /* PC はページの上にだけ置き、スクロールで流れる（版面を画面の上にそろえた時、右上の小元素・題に重ならない。審美基準 E4・2026-11-11 店長「エンブレムが見きれない」） */
 .wl-auth .shop{padding:2px 9px;background:var(--ink);color:var(--card);font:500 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.06em;transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--rose)}
 .wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
  background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
