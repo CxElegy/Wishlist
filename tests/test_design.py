@@ -148,6 +148,13 @@ class Components(unittest.TestCase):
         self.assertIn("localStorage.getItem('wl-theme')", render._account_tag("x"))
         self.assertIn('class="schemes thpick"', render._theme_pick(render.SETTINGS_JA))
 
+    def test_gap_emblem(self):
+        """2026-11-12 店長：空きに個性化の要素（その版面の小元素）。壁の小さい形のカードの写真の下・予定の日付の下。"""
+        self.assertIn("const gapEmb = () =>", render.FIT_JS)
+        self.assertIn("setTimeout(gapEmb, 0)", render.FIT_JS)
+        self.assertIn(".wc>.wemb{position:absolute", render.CSS)
+        self.assertIn('<li data-k="', (_pl.Path(render.__file__)).read_text(encoding="utf-8"))
+
     def test_aesthetic_audit_2026_11_11(self):
         """2026-11-11 審美基準で全体を点検して直した規則：見出しは「…」で切らない（D3）・字体は令牌だけ（D2。中国語のページは端末の中国語フォント 1 種類）・
         読む字は 11px 以上（D4）・版面の整行の重大は 1 つだけ（C2・F1）・気になるかもは段の見出しを外して詰められる（F1）。"""

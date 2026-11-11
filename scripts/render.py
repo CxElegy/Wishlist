@@ -313,6 +313,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .agenda ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:0 32px}
 .agenda li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;padding:8px 0;border-bottom:1px dashed var(--hair)}
 .agenda li b{grid-row:span 2;font:22px var(--font-num);color:var(--sc)}
+.wemb{display:block;object-fit:contain;object-position:50% 100%;pointer-events:none;filter:drop-shadow(2px 2px 0 color-mix(in srgb,var(--ink) 55%,transparent))}.wc>.wemb{position:absolute;transform:rotate(-4deg)}.agenda li b .wemb{margin:6px auto 0;max-width:56px}  /* 小さい写真の下・日付の下の空きに、その版面の小元素（看板の姿）を置く（2026-11-12 店長：空きに個性化の要素を） */
 .agenda .nm{font:700 var(--fs-label) var(--font-sans);color:var(--sc)}
 .agenda a{color:var(--ink);font-weight:700;line-height:1.4}.agenda a:hover{text-decoration:underline}
 /* ---------- 作品の版面：作品の色（封面から取色）＋ 作品ごとの装飾（.m-○○、items.yaml の motif） ---------- */
@@ -3185,7 +3186,7 @@ def _agenda(works, today, limit=None):
                 '<p class="sempty">発売日・試合・配信など、日付のある記事が入るとここに並びます。</p></div>')
     rows.sort(key=lambda r: r[0])
     items = "".join(
-        f'<li style="--sc:{_sec_var(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
+        f'<li data-k="{e(w["name"])}" style="--sc:{_sec_var(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
         f'<span class="nm">{e(w["name"])}{" · " + e(ev["label"]) if ev.get("label") else ""}{_from(x)}</span>'
         f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a></li>'
         for d, w, x, ev in rows[:limit or AGENDA_MAX])
@@ -4371,6 +4372,24 @@ FIT_JS = """
       }
       side.style.gridColumn = String(cols); side.style.gridRow = '1 / span ' + Math.ceil(hS + (below ? GAP : 0));
     }
+    setTimeout(gapEmb, 0);
+  };
+  // 空きに、その版面の小元素を置く（壁の小さい形のカードの写真の下・予定の日付の下。2026-11-12 店長「这么大的空档…可以加点个性化的要素」審美基準 A6）
+  const embOf = k => { const s = [...document.querySelectorAll('section.sec.has-emb')].find(x => x.dataset.k === k), i = s && s.querySelector('.emb img'); return i && (i.currentSrc || i.src) || ''; };
+  const gapEmb = () => {
+    document.querySelectorAll('.wemb').forEach(x => x.remove());
+    if (innerWidth <= 760) return;
+    document.querySelectorAll('.mgrid .wall > .wc.cmp').forEach(c => {
+      if (c.hidden) return; const p = c.querySelector(':scope > .pic'), src = embOf(c.dataset.k); if (!p || !src) return;
+      const cr = c.getBoundingClientRect(), pr = p.getBoundingClientRect(), gap = cr.bottom - pr.bottom - 14; if (gap < 44) return;
+      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = src;
+      Object.assign(img.style, {gridColumn: 'auto', gridRow: 'auto', left: p.offsetLeft + 'px', top: (p.offsetTop + p.offsetHeight + 6) + 'px', width: p.offsetWidth + 'px', height: Math.min(gap, 120) + 'px'}); c.append(img);   // 絶対配置の子は升目の指定があるとその升が基準になる：auto にしてカード全体を基準に
+    });
+    document.querySelectorAll('.fside .agenda li[data-k]').forEach(li => {
+      if (li.hidden) return; const b = li.querySelector(':scope > b'), src = embOf(li.dataset.k); if (!b || !src) return;
+      const sm = b.querySelector('small'), gap = li.getBoundingClientRect().bottom - (sm || b).getBoundingClientRect().bottom - 14; if (gap < 36) return;
+      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = src; img.style.height = Math.min(gap, 64) + 'px'; b.append(img);
+    });
   };
   // 小元素（版面の右上のキャラ）の実際の幅だけ、見出しの帯の右を空ける（決め打ちの 260px では、横に広いポーズのキャラが「今週」の数に重なった。2026-11-09）
   const embPad = () => document.querySelectorAll('section.sec.has-emb').forEach(s => {
