@@ -4382,13 +4382,13 @@ FIT_JS = """
     document.querySelectorAll('.mgrid .wall > .wc.cmp').forEach(c => {
       if (c.hidden) return; const p = c.querySelector(':scope > .pic'), src = embOf(c.dataset.k); if (!p || !src) return;
       const cr = c.getBoundingClientRect(), pr = p.getBoundingClientRect(), gap = cr.bottom - pr.bottom - 14; if (gap < 44) return;
-      const im = new Image(); im.className = 'wemb'; im.alt = ''; im.src = src;
-      Object.assign(im.style, {gridColumn: 'auto', gridRow: 'auto', left: p.offsetLeft + 'px', top: (p.offsetTop + p.offsetHeight + 6) + 'px', width: p.offsetWidth + 'px', height: Math.min(gap, 120) + 'px'}); c.append(im);   // 絶対配置の子は升目の指定があるとその升が基準になる：auto にしてカード全体を基準に
+      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = src;
+      Object.assign(img.style, {gridColumn: 'auto', gridRow: 'auto', left: p.offsetLeft + 'px', top: (p.offsetTop + p.offsetHeight + 6) + 'px', width: p.offsetWidth + 'px', height: Math.min(gap, 120) + 'px'}); c.append(img);   // 絶対配置の子は升目の指定があるとその升が基準になる：auto にしてカード全体を基準に
     });
     document.querySelectorAll('.fside .agenda li[data-k]').forEach(li => {
       if (li.hidden) return; const b = li.querySelector(':scope > b'), src = embOf(li.dataset.k); if (!b || !src) return;
       const sm = b.querySelector('small'), gap = li.getBoundingClientRect().bottom - (sm || b).getBoundingClientRect().bottom - 14; if (gap < 36) return;
-      const im = new Image(); im.className = 'wemb'; im.alt = ''; im.src = src; im.style.height = Math.min(gap, 64) + 'px'; b.append(im);
+      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = src; img.style.height = Math.min(gap, 64) + 'px'; b.append(img);
     });
   };
   // 小元素（版面の右上のキャラ）の実際の幅だけ、見出しの帯の右を空ける（決め打ちの 260px では、横に広いポーズのキャラが「今週」の数に重なった。2026-11-09）
