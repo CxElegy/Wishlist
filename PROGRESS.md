@@ -405,3 +405,4 @@
 - 2026-11-11 f1：旧 Supabase の ref の直書きを除いた（scripts/sbconf.py が items.yaml から読む・12 件）・PR #988・CI 緑（10 分）・点検 tests/test_sbconf.py・次：docs/test2 の古い写しと PENDING の OAuth 文書（BACKLOG に足した）
 
 - 2026-11-11 f1：guest ux_check の E10 ✗ を規則から（止める門 passes_left と E10 の物差しを揃え、1 周して 0 枚は passed で情報へ）・PR #994・CI 緑・点検 test_record_marks_passed_after_one_full_pass・StuckPassed・次：E15/E16 の「別人」の規則
+- 2026-11-11 f1f1：#994 の続き。凍った失敗に passed が付かず E10 ✗ 10 枚が残っていた→sync_progress が frozen() で旗を付ける・点検 test_real_frozen_boards_are_passed_after_sync・次：合併後に background.yml を dispatch して ux_check で E10 0 を確かめる
