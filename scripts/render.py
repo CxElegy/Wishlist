@@ -4229,7 +4229,7 @@ FIT_JS = """
         for (let a = 0; a < cols; a++) { const d = Wb - (bot[a] - GAP), pics = col[a].filter(k => span[k] === 1 && !cmp[k] && (d < 2 || canGrow(k, d))).reduce((s, k) => s + (cards[k].querySelector('.pic')?.offsetHeight || 0), 0);
           if (d > 1) rel = Math.max(rel, pics ? d / pics : d / 40); }
         const We = Math.max(...bot.map((b, a) => b - GAP - Math.max(0, ...col[a].map(k => cmp[k] ? 0 : msk[k]))));   // 縮めたあとの高さ
-        const cost = 50 * Math.max(0, We - T) / T + rel + 3 * Math.max(0, rel - 0.35) + 6 * under / (Wb * cols) + 4 * Math.max(0, T - Wb) / T;   // 画面の下まで埋める（2026-11-09 店長：ほかの注目ニュースの高さは画面 1 枚の下まで。足りないと強く減点）
+        const cost = 50 * Math.max(0, We - T) / T + rel + 3 * Math.max(0, rel - 0.35) + 6 * under / (Wb * cols) + 4 * Math.max(0, T - Wb) / T + 40 * Math.max(0, T - Wb - 32) / T;   // 画面の下に 32px 以上届かない組は、ほかの減点より重く（2026-11-12：1333 幅で 2 枚だけ・下が 190px 空いた組が選ばれた）   // 画面の下まで埋める（2026-11-09 店長：ほかの注目ニュースの高さは画面 1 枚の下まで。足りないと強く減点）
         if (!best || cost < best.cost - 1e-6) best = {n, cost, W: Wb, bot: bot.slice(), pos: put.slice(), col: col.map(c => c.slice()), ord: placed.slice(), cmp: cmp.slice()};
       });
       return best && {best, H, span};
