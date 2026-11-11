@@ -1,6 +1,6 @@
 {
  "date": "2026-11-12",
- "edit_sig": "2ea097ced905",
+ "edit_sig": "23879a2bab26",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,8 +23,9 @@
      "date": "2026-11-11",
      "headline": "'아스오라' 마법사 9인 9색, AGF 출연 클랜 미리보기",
      "highlight": "",
-     "image": "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "게임플",
+     "source_icon": "https://www.google.com/s2/favicons?domain=gameple.co.kr&sz=128",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216947",
      "weight": "normal"
     },
@@ -431,9 +432,8 @@
      "date": "2026-11-09",
      "headline": "今年の東レPPOは国枝さん&小田選手が見れて大坂選手のサインがもらえて奈良さん&土居さんのお喋りが聴けて最高だったよ",
      "highlight": "",
-     "image": null,
-     "source": "note",
-     "source_icon": "https://www.google.com/s2/favicons?domain=note.com&sz=128",
+     "image": "https://assets.st-note.com/production/uploads/images/334326647/rectangle_large_type_2_fd4efc14427479e68c40c25785e8488b.jpg?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
      "url": "https://note.com/fuuko2022/n/nd6cee42702d0",
      "weight": "normal"
     }
@@ -898,19 +898,17 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
+   "last": {
+    "date": "2026-11-08",
+    "headline": "FROM Season 4 Episode 5: Release date and time, where to watch, and more",
+    "url": "https://www.primetimer.com/features/from-season-4-episode-5-release-date-and-time-where-to-watch-and-more"
+   },
    "name": "FROM",
-   "pending": [
-    {
-     "date": "2026-11-11",
-     "n": 1,
-     "source": "Geektown",
-     "title": "Julianna Margulies To Star In ‘The American Heiress’ As MGM+ Greenlights Victorian Romantic Comedy From ‘Victoria’ Creator",
-     "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQLUFqWFhkSDd1VFJyX0FwNVZBTDBRQ2I1dkJLSUp2dzdBaE9NRmdXMk53TWFqRXRCOWE0b1JQVXlhVDJGZmxIQnNRSGtITVljZ2E2OUZYazhtc0Y0N0lUUDNNTTRJZXJEM1lrSVM2UmdkQWVKc190TURKZF81S1haZmotY3RTclNSYXM5cDdtMVRTbVF6OHZtQVBDSjNLaXNFM1RJbDFVdkFRQ1BZWUx5Vzc0ZWNVdVZqb2p0OEt1OVp2WU94NWhNbGE5VmdlTXYxbnlGLXhsV2tUSHpSU0p3RHNHVWJGd19jVDdnNQ?oc=5"
-    }
-   ],
+   "quiet": true,
    "section": "影视",
+   "status": "第 4 季已于 2026 年 6 月播完 · 第 5 季（最终季）已续订，预计 2027 年，日期未定",
    "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {

@@ -322,6 +322,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/334326647/rectangle_large_type_2_fd4efc14427479e68c40c25785e8488b.jpg?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 1280,
+  "v": 3
+ },
  "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg": {
   "w": 510,
   "h": 340,
@@ -469,19 +475,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.345
- },
- "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg": {
-  "w": 800,
-  "h": 369,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.422,
-  "local": "pics/c7bbe061933e796f.webp",
-  "out": [
-   1280,
-   590
-  ],
-  "why": "看不清"
  },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,

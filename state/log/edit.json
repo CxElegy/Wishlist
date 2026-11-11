@@ -1,47 +1,5 @@
 [
 {
-"at": "2026-11-10T08:33:33+00:00",
-"text": "2026-11-10 第 1 バッチを出刊：The Mandalorian、チェーンソーマン（2 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4.1万・キャッシュ読み 35.7万・出力 1,599",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.36,
-"mem_total": 16867737600,
-"mem_free": 15955292160,
-"disk_used": 10949033984,
-"disk_free": 30334500864,
-"disk_total": 41283534848,
-"peak": 331665408
-},
-"batch": 1,
-"boards": [
-"The Mandalorian",
-"チェーンソーマン"
-],
-"stories": 5,
-"left": 0,
-"edited": 21,
-"run": 1794299346.1714275,
-"tok": {
-"in": 12,
-"cw": 41206,
-"cr": 357313,
-"out": 1599,
-"calls": 6,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 400130,
-"secs": 268,
-"run_tok": {
-"in": 12,
-"cw": 41206,
-"cr": 357313,
-"out": 1599,
-"calls": 6,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-10T10:39:29+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2008,6 +1966,47 @@
 "cr": 3781192,
 "out": 16614,
 "calls": 44,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-11T20:25:03+00:00",
+"text": "2026-11-12 第 1 バッチを出刊：FROM（1 版面・0 本・今日の整理待ちは全部終わり） · token 新規入力 4.3万・キャッシュ読み 99.0万・出力 3,220",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.37,
+"mem_total": 16867414016,
+"mem_free": 15986548736,
+"disk_used": 10088087552,
+"disk_free": 31195447296,
+"disk_total": 41283534848,
+"peak": 339791872
+},
+"batch": 1,
+"boards": [
+"FROM"
+],
+"stories": 0,
+"left": 0,
+"edited": 19,
+"run": 1794428475.137881,
+"tok": {
+"in": 31,
+"cw": 42997,
+"cr": 990235,
+"out": 3220,
+"calls": 16,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1036483,
+"secs": 228,
+"run_tok": {
+"in": 31,
+"cw": 42997,
+"cr": 990235,
+"out": 3220,
+"calls": 16,
 "model": "claude-sonnet-5-5"
 }
 }
