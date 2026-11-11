@@ -74,6 +74,17 @@ class Tokens(unittest.TestCase):
         for hex_ in ("#1A1C22", "#EDEBE6", "#B8336A", "#F4EDE4", "#FBF8F1"):
             self.assertNotIn(hex_.lower(), css.lower(), f"{hex_} should be written as a var() token")
 
+    def test_side_boxes_ink_ground(self):
+        """2026-11-12 店長が選択ページで A を選択：ほかの注目ニュースの右の列（予定・欲しい物）は墨の地。
+        箱の中だけ --ink/--card を入れ替え、地は固定の --ink0（テーマが変わっても明るい字が読める）。欲しい物のページの .sbox は変えない。"""
+        m = re.search(r"\.fside>\.agenda,\.fside>\.sbox\{([^}]*)\}", render.CSS)
+        self.assertTrue(m, "scoped rule .fside>.agenda,.fside>.sbox is missing")
+        for part in ("--ink:var(--card0)", "--card:var(--ink0)", "--hair:", "background:var(--ink0)", "color:var(--card0)", "var(--rose)"):
+            self.assertIn(part, m.group(1), part)
+        self.assertIn(".fside>.agenda h4>:first-child,.fside>.sbox h4>:first-child{background:var(--gold);color:var(--ink0)", render.CSS)
+        self.assertRegex(render.CSS, r"(?m)^\.sbox\{background:var\(--card\)")   # 元の箱（ほかのページ）はそのまま
+        self.assertIn("<h4><span>これからの予定</span>", render._agenda([{"name": "A", "stories": []}], "2026-11-12"))
+
 
 class Genres(unittest.TestCase):
     def assert_aa(self, color, what):
