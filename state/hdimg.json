@@ -203,6 +203,13 @@
  "https://appmedia.jp/wp-content/uploads/2025/06/191728_mp1i0.webp": {
   "w": 740,
   "h": 389,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.3
+ },
+ "https://appmedia.jp/wp-content/uploads/2026/10/154528_akvy1.webp": {
+  "w": 740,
+  "h": 389,
   "target": 720,
   "v": 3
  },
@@ -469,19 +476,6 @@
   "v": 3,
   "blur": 0.345
  },
- "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg": {
-  "w": 800,
-  "h": 369,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.422,
-  "local": "pics/c7bbe061933e796f.webp",
-  "out": [
-   1280,
-   590
-  ],
-  "why": "看不清"
- },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
@@ -721,6 +715,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://comicbookmovie.com/images/articles/banners/avengers-secret-wars-rumored-to-feature-spoilers-return-for-one-final-send-off-ab230669.jpg": {
+  "w": 1500,
+  "h": 844,
+  "target": 720,
+  "v": 3
+ },
  "https://culturecues.co.uk/wp-content/uploads/2026/05/ba3f6110-49da-11f1-ac78-2112837ce2aa.jpg.webp": {
   "w": 976,
   "h": 549,
@@ -911,12 +911,6 @@
   "v": 3
  },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/06133154/gta-6-pc-rip-offs.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
- "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/11072741/endgame-encore-sets-its-disney-release-date-ahead-of-doomsday.jpg": {
   "w": 1600,
   "h": 900,
   "target": 1280,
@@ -1301,12 +1295,6 @@
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/doomclocks.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://images.thedirect.com/media/article_full/doomevery.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -2209,41 +2197,22 @@
   ],
   "why": "看不清"
  },
- "https://news.walkerplus.com/article/50773/274537_615.jpg": {
+ "https://news.walkerplus.com/article/55811/307229_615.jpg": {
   "w": 615,
-  "h": 410,
+  "h": 516,
   "target": 1280,
   "v": 3,
-  "blur": 0.438,
-  "local": "pics/eed49deb722fe7c9.webp",
+  "blur": 0.561,
+  "local": "pics/8a3bba7d7866f81b.webp",
   "out": [
    1280,
-   853
-  ],
-  "why": "看不清"
- },
- "https://news.walkerplus.com/article/55811/307224_615.jpg": {
-  "w": 615,
-  "h": 547,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.502,
-  "local": "pics/1a8a67ba21c091dc.webp",
-  "out": [
-   1280,
-   1138
+   1074
   ],
   "why": "看不清"
  },
  "https://news.walkerplus.com/article/56484/311454_615.jpg": {
   "w": 615,
   "h": 403,
-  "target": 720,
-  "v": 3
- },
- "https://news.walkerplus.com/article/56657/312478_615.jpg": {
-  "w": 615,
-  "h": 608,
   "target": 720,
   "v": 3
  },
@@ -2265,6 +2234,18 @@
    949
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/70253/393787_615.jpg": {
+  "w": 615,
+  "h": 409,
+  "target": 720,
+  "v": 3
+ },
+ "https://news.walkerplus.com/article/75130/431003_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/8540/22863_615.jpg": {
   "w": 615,
@@ -3659,6 +3640,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.WpotO6JzA7un9x-DZAYdzQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ZuMjDJWmJ-jDa0XVQ51nTQ&pid=News&w=1200": {
   "w": 700,
