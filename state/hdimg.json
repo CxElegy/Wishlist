@@ -61,6 +61,12 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261110ac/533/w480h853/20261110/decd-e621dd51c22d8892ecd98dde1852addc.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "http://tu.duoduocdn.com/uploads/day_261104/202611040024134632_thumb.jpg": {
   "w": 300,
   "h": 200,
@@ -109,19 +115,6 @@
   "out": [
    778,
    1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx3.sinaimg.cn/middle/006ZneWLly1iiwcku2k3zj31hi0lxnng.jpg": {
-  "w": 1926,
-  "h": 789,
-  "target": 720,
-  "v": 3,
-  "local": "pics/c8dc8833e704b64b.webp",
-  "out": [
-   1280,
-   524
   ],
   "why": "防盗链",
   "ref": true
@@ -476,18 +469,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.gamemeca.com/gmdata/0001/783/344/gm771818_261111-risell-tt10.webp": {
+  "w": 1200,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gameple.co.kr/news/photo/202611/216924_250536_2851.jpg": {
   "w": 800,
   "h": 562,
   "target": 1280,
   "v": 3,
   "blur": 0.345
- },
- "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg": {
-  "w": 800,
-  "h": 369,
-  "target": 720,
-  "v": 3
  },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
@@ -691,12 +684,6 @@
   ],
   "why": "看不清"
  },
- "https://cimg.kgl-systems.io/camion/files/93631/thumbnail_eCqL.jpg?x=1280": {
-  "w": 1000,
-  "h": 500,
-  "target": 720,
-  "v": 3
- },
  "https://cimg.kgl-systems.io/camion/files/dengeki/93039/a4efdd2f969559e8b1c92e99f32ded48e.jpg?x=1280": {
   "w": 1280,
   "h": 1709,
@@ -707,6 +694,12 @@
   "w": 1280,
   "h": 1709,
   "target": 1280,
+  "v": 3
+ },
+ "https://collabo-cafe.com/wp-content/uploads/4dffd6776e8c42f7d550beaccde1b678-1427.jpg": {
+  "w": 1400,
+  "h": 741,
+  "target": 720,
   "v": 3
  },
  "https://collabo-cafe.com/wp-content/uploads/7c9e8a3a299ba6bb332313dcb291be63.jpg": {
@@ -1607,12 +1600,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hcPKO.img": {
-  "w": 870,
-  "h": 580,
-  "target": 720,
-  "v": 3
- },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img": {
   "w": 504,
   "h": 339,
@@ -2447,18 +2434,6 @@
   "out": [
    1280,
    716
-  ],
-  "why": "期限付きの網址"
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-00121891-president-000-1-view.jpg?exp=10800": {
-  "w": 1340,
-  "h": 825,
-  "target": 720,
-  "v": 3,
-  "local": "pics/2fb91e512367fba3.webp",
-  "out": [
-   1280,
-   788
   ],
   "why": "期限付きの網址"
  },
