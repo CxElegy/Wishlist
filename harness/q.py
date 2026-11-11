@@ -12,6 +12,9 @@ push はしない：取った印（claim）・途中の状態（attempts・parke
   python harness/q.py park T-0003 --why "…" [--waiting]        止める（--waiting：店長の答え待ち）
   python harness/q.py reopen T-0003
   python harness/q.py add --title … --why … [--quote …] [--kind fix] [--scope a,b] [--done-when …] [--priority 5] [--local]
+  python harness/q.py contract T-0003 --from-json F.json      （おすすめ）UTF-8 の JSON ファイルから読む。シェルの path 変換を受けない
+  python harness/q.py add --from-json F.json [--local]         同上（title・why・quote・kind・complexity・priority・scope・done_when・source）
+  python harness/q.py repair T-0003 --from-json F.json --reason "…"   凍った約束を 1 段だけ書き直す（主の会話だけが使う。notes に repaired_at と理由）
   python harness/q.py index [--out PATH]                       人が読む一覧（既定 harness/tasks/INDEX.md）
   python harness/q.py show T-0003
   python harness/q.py import-backlog BACKLOG.md [--limit N]    「## いちばん先」の開いている段を写す（1 回だけ）
@@ -37,6 +40,35 @@ COMPLEXITY = ("light", "normal", "hard")   # 作る・直す係のモデルを�
 CLAIM_STALE_MIN = 60
 JST = dt.timezone(dt.timedelta(hours=9))
 CONTRACT = ("title", "why", "quote", "kind", "complexity", "scope", "done_when")
+
+
+# Git Bash（MSYS）が引数の「/ で始まる・D:/ に見える」文字を勝手に書き換えた跡。凍る約束にこれが入ると直せないので、書く前に断る。
+MANGLED_RE = re.compile(r"C:\\Program Files\\Git\\|[A-Za-z]?;[A-Za-z]:\\|(?<![\w:\.])(?:harness|scripts|docs|tests|db|\.github)\\\w")
+MANGLED_HINT = ("Git Bash の path 変換で文字が書き換わっている（C:\\Program Files\\Git\\… ・ ;C:\\ ・ harness\\x.py など）。"
+                "命令の前に MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*' を付けるか、--from-json <UTF-8 の JSON ファイル> で渡すこと")
+
+
+def check_mangled(**fields):
+    """文字（または文字の列）の中に MSYS の書き換え跡があれば ValueError。"""
+    for k, v in fields.items():
+        for x in ([v] if isinstance(v, str) else v or []):
+            if isinstance(x, str) and MANGLED_RE.search(x):
+                raise ValueError(f"{k} が壊れている：{x[:80]!r} … {MANGLED_HINT}")
+
+
+def read_json_arg(path):
+    """--from-json：UTF-8（BOM 付きも可）の JSON の辞書。scope・done_when は文字でも列でも可。"""
+    try:
+        d = json.loads(pathlib.Path(path).read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError) as e:
+        raise ValueError(f"--from-json {path} を読めない：{e}")
+    if not isinstance(d, dict):
+        raise ValueError("--from-json は {…} の形")
+    if isinstance(d.get("scope"), str):
+        d["scope"] = [x for x in d["scope"].split(",") if x.strip()]
+    if isinstance(d.get("done_when"), str):
+        d["done_when"] = [d["done_when"]]
+    return d
 
 
 def state_dir():
@@ -106,7 +138,7 @@ def load(root=None, state=None):
         # リポジトリで済みになった段は、手元の古い状態で開け直さない
         if t.get("status") == "done" and not t.get("recurring"):
             ov.pop("status", None)
-        t.update({k: v for k, v in ov.items() if k in ("status", "attempts", "notes", "pr", "last_done")})
+        t.update({k: v for k, v in ov.items() if k in ("status", "attempts", "notes", "pr", "last_done", "repaired_at")})
         t.setdefault("status", "open")
         t.setdefault("scope", [])
         t.setdefault("done_when", [])
@@ -233,6 +265,7 @@ def add(title, why="", quote="", kind="fix", scope=(), done_when=(), priority=50
         raise ValueError(f"kind は {KINDS} のどれか")
     if complexity not in COMPLEXITY:
         raise ValueError(f"complexity は {COMPLEXITY} のどれか")
+    check_mangled(title=title, why=why, quote=quote, scope=list(scope), done_when=list(done_when))
     state = state or state_dir()
     tasks = load(root, state)
     key = title_key(title)
@@ -258,6 +291,7 @@ def set_contract(tid, kind=None, scope=None, done_when=None, root=None, state=No
         raise KeyError(tid)
     if t.get("frozen"):
         raise ValueError(f"{tid} の約束はもう凍っている（変えない）")
+    check_mangled(scope=scope, done_when=done_when)
     if kind:
         if kind not in KINDS:
             raise ValueError(f"kind は {KINDS} のどれか")
@@ -276,6 +310,38 @@ def set_contract(tid, kind=None, scope=None, done_when=None, root=None, state=No
     keep = {k: v for k, v in t.items() if k not in ("status", "attempts", "notes", "pr", "last_done")}
     _write(state / "tasks_local" / f"{tid}.json", {**keep, "status": "open", "attempts": 0, "notes": []})
     return t
+
+
+def repair(tid, fields, reason, root=None, state=None, now=None):
+    """凍った約束を 1 段だけ書き直す（文字化け・path 変換の事故の直し）。主の会話だけが使う。notes に repaired_at と理由。
+    約束の置き場に直す：手元の写し（tasks_local）、リポジトリのファイルがもう凍っていればそれも。"""
+    state = state or state_dir()
+    if not (reason or "").strip():
+        raise ValueError("--reason（なぜ直すか）が要る")
+    t = load(root, state).get(tid)
+    if not t:
+        raise KeyError(tid)
+    new = {k: fields[k] for k in CONTRACT if k in fields}
+    if not new:
+        raise ValueError(f"JSON に直す欄が無い（{', '.join(CONTRACT)} のどれか）")
+    check_mangled(**{k: v for k, v in new.items() if k in ("title", "why", "quote", "scope", "done_when")})
+    if "kind" in new and new["kind"] not in KINDS:
+        raise ValueError(f"kind は {KINDS} のどれか")
+    if "complexity" in new and new["complexity"] not in COMPLEXITY:
+        raise ValueError(f"complexity は {COMPLEXITY} のどれか")
+    if "done_when" in new and not new["done_when"]:
+        raise ValueError("done_when（確かめ方）が空の約束にはしない")
+    t.update(new)
+    t["frozen"] = True
+    keep = {k: v for k, v in t.items() if k not in ("status", "attempts", "notes", "pr", "last_done", "repaired_at")}
+    local = state / "tasks_local" / f"{tid}.json"
+    _write(local, {**(_read(local) or {"status": "open", "attempts": 0, "notes": []}), **keep})
+    rf = _read(tasks_dir(root) / f"{tid}.json")
+    if rf and rf.get("frozen"):   # 合併した凍った約束は、リポジトリのファイルのほうが勝つので、そちらも直す（PR に入れる）
+        _write(tasks_dir(root) / f"{tid}.json", {**rf, **new})
+    stamp = now_iso(now)
+    overlay(tid, state, repaired_at=stamp, note=f"約束を直した（repaired_at {stamp}）：{reason.strip()}（直した欄：{', '.join(new)}）")
+    return load(root, state)[tid]
 
 
 def done(tid, pr="", file=False, root=None, state=None, now=None):
@@ -403,13 +469,14 @@ def main(argv=None):
     s = sub.add_parser("next"); s.add_argument("--n", type=int, default=3); s.add_argument("--kind"); s.add_argument("--json", action="store_true"); s.add_argument("--owner")
     s = sub.add_parser("claim"); s.add_argument("id"); s.add_argument("--owner", required=True)
     s = sub.add_parser("release"); s.add_argument("id")
-    s = sub.add_parser("contract"); s.add_argument("id"); s.add_argument("--kind"); s.add_argument("--complexity", choices=COMPLEXITY); s.add_argument("--scope"); s.add_argument("--done-when", action="append", default=[])
+    s = sub.add_parser("contract"); s.add_argument("id"); s.add_argument("--kind"); s.add_argument("--complexity", choices=COMPLEXITY); s.add_argument("--scope"); s.add_argument("--done-when", action="append", default=[]); s.add_argument("--from-json")
+    s = sub.add_parser("repair"); s.add_argument("id"); s.add_argument("--from-json", required=True); s.add_argument("--reason", required=True)
     s = sub.add_parser("done"); s.add_argument("id"); s.add_argument("--pr", default=""); s.add_argument("--file", action="store_true")
     s = sub.add_parser("park"); s.add_argument("id"); s.add_argument("--why", required=True); s.add_argument("--waiting", action="store_true")
     s = sub.add_parser("reopen"); s.add_argument("id")
-    s = sub.add_parser("add"); s.add_argument("--title", required=True); s.add_argument("--why", default=""); s.add_argument("--quote", default="")
+    s = sub.add_parser("add"); s.add_argument("--title", default=""); s.add_argument("--why", default=""); s.add_argument("--quote", default="")
     s.add_argument("--kind", default="fix"); s.add_argument("--scope", default=""); s.add_argument("--done-when", action="append", default=[])
-    s.add_argument("--priority", type=int, default=50); s.add_argument("--source", default=""); s.add_argument("--local", action="store_true"); s.add_argument("--complexity", choices=COMPLEXITY, default="normal")
+    s.add_argument("--priority", type=int, default=50); s.add_argument("--source", default=""); s.add_argument("--local", action="store_true"); s.add_argument("--complexity", choices=COMPLEXITY, default="normal"); s.add_argument("--from-json")
     s = sub.add_parser("index"); s.add_argument("--out")
     s = sub.add_parser("show"); s.add_argument("id")
     s = sub.add_parser("import-backlog"); s.add_argument("file"); s.add_argument("--limit", type=int)
@@ -441,7 +508,12 @@ def run(a):
     if a.cmd == "release":
         release(a.id)
     elif a.cmd == "contract":
-        t = set_contract(a.id, a.kind, a.scope.split(",") if a.scope is not None else None, a.done_when, complexity=a.complexity)
+        j = read_json_arg(a.from_json) if a.from_json else {}
+        scope = j["scope"] if "scope" in j else a.scope.split(",") if a.scope is not None else None
+        t = set_contract(a.id, j.get("kind") or a.kind, scope, j.get("done_when") or a.done_when, complexity=j.get("complexity") or a.complexity)
+        print(json.dumps(brief(t), ensure_ascii=False))
+    elif a.cmd == "repair":
+        t = repair(a.id, read_json_arg(a.from_json), a.reason)
         print(json.dumps(brief(t), ensure_ascii=False))
     elif a.cmd == "done":
         done(a.id, a.pr, a.file)
@@ -454,7 +526,13 @@ def run(a):
             raise KeyError(a.id)
         overlay(a.id, status="open", note="開け直した")
     elif a.cmd == "add":
-        tid, new = add(a.title, a.why, a.quote, a.kind, a.scope.split(","), a.done_when, a.priority, a.source, local=a.local, complexity=a.complexity)
+        j = read_json_arg(a.from_json) if a.from_json else {}
+        g = lambda k, d: j.get(k, d)
+        title = g("title", a.title)
+        if not title:
+            raise ValueError("title が要る（--title か --from-json）")
+        tid, new = add(title, g("why", a.why), g("quote", a.quote), g("kind", a.kind), g("scope", a.scope.split(",")), g("done_when", a.done_when),
+                       g("priority", a.priority), g("source", a.source), local=a.local or bool(j.get("local")), complexity=g("complexity", a.complexity))
         print(json.dumps({"id": tid, "new": new}, ensure_ascii=False))
     elif a.cmd == "index":
         out = pathlib.Path(a.out) if a.out else tasks_dir() / "INDEX.md"

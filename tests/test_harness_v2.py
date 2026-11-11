@@ -142,6 +142,85 @@ class Queue(Base):
         self.assertEqual(r.returncode, 2)
 
 
+BS = chr(92)
+MANGLED = ["harness" + BS + "board_kpi.py", "D;C:" + BS + "Program Files" + BS + "Git" + BS + "Claude" + BS + "kpi" + BS + "x.json", "C:" + BS + "Program Files" + BS + "Git" + BS + "tmp"]
+
+
+class PathConv(Base):
+    """Git Bash（MSYS）の path 変換で凍る約束が壊れた事故（2026-11-12 T-0001）：--from-json・壊れた文字の拒否・repair。"""
+
+    def cli(self, *args):
+        env = {**os.environ, "HF_STATE": str(self.state), "HF_ROOT": str(self.root), "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
+        return subprocess.run([sys.executable, str(ROOT / "harness" / "q.py"), *args], env=env, capture_output=True, text=True, encoding="utf-8")
+
+    def js(self, name, obj):
+        f = pathlib.Path(self.tmp.name) / name
+        f.write_text(json.dumps(obj, ensure_ascii=False), encoding="utf-8")
+        return str(f)
+
+    def test_mangled_text_is_detected_but_normal_paths_are_not(self):
+        for x in MANGLED:
+            self.assertTrue(q.MANGLED_RE.search(x), x)
+        for x in ("harness/board_kpi.py と D:/Claude/kpi/runs/a.json", "C:" + BS + "Users" + BS + "x", "docs/rules/aesthetic.md", "経路 C（新しい名前）"):
+            self.assertFalse(q.MANGLED_RE.search(x), x)
+
+    def test_add_and_contract_refuse_mangled_text(self):
+        for bad in MANGLED:
+            with self.assertRaises(ValueError):
+                q.add("題", done_when=[bad], root=self.root, state=self.state)
+            r = self.cli("add", "--title", "別の題", "--done-when", bad)
+            self.assertEqual(r.returncode, 2, r.stdout)
+            self.assertIn("MSYS_NO_PATHCONV=1", r.stdout)
+            self.assertIn("--from-json", r.stdout)
+        a = self.add("A", ["a.py"])
+        r = self.cli("contract", a, "--scope", "harness" + BS + "x.py", "--done-when", "ok")
+        self.assertEqual(r.returncode, 2)
+        self.assertFalse(self.load()[a]["frozen"])           # 断ったので凍っていない
+        self.assertEqual(len(list((self.root / "harness" / "tasks").glob("*.json"))), 1)   # 壊れた段は書かれていない
+
+    def test_add_and_contract_from_json(self):
+        text = "harness/board_kpi.py の回を測る（基準：D:/Claude/kpi/runs/a.json と 並べる）"
+        r = self.cli("add", "--from-json", self.js("add.json", {"title": "JSON から", "why": "理由", "kind": "kpi", "scope": ["harness/board_kpi.py"], "done_when": [text], "priority": 3}))
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        tid = json.loads(r.stdout)["id"]
+        t = self.load()[tid]
+        self.assertEqual((t["title"], t["kind"], t["priority"], t["scope"], t["done_when"]), ("JSON から", "kpi", 3, ["harness/board_kpi.py"], [text]))
+        r = self.cli("contract", tid, "--from-json", self.js("c.json", {"kind": "kpi", "complexity": "light", "scope": "a.py,b.py", "done_when": [text, "二つ目"]}))
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        t = self.load()[tid]
+        self.assertEqual((t["frozen"], t["complexity"], t["scope"], t["done_when"]), (True, "light", ["a.py", "b.py"], [text, "二つ目"]))
+        self.assertEqual(self.cli("contract", tid, "--from-json", str(pathlib.Path(self.tmp.name) / "nothing.json")).returncode, 2)
+
+    def test_repair_rewrites_a_frozen_contract_and_records_why(self):
+        a = self.add("A", ["a.py"], done_when=["壊れた"])
+        q.set_contract(a, "kpi", ["a.py"], ["壊れた"], self.root, self.state)
+        with self.assertRaises(ValueError):
+            q.set_contract(a, "fix", ["b.py"], ["別"], self.root, self.state)    # contract では直せない
+        good = "harness/board_kpi.py の回を測る（D:/Claude/kpi/runs/x.json）"
+        r = self.cli("repair", a, "--from-json", self.js("r.json", {"scope": ["harness/board_kpi.py"], "done_when": [good]}), "--reason", "MSYS が path を書き換えた")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        t = self.load()[a]
+        self.assertEqual((t["frozen"], t["done_when"], t["scope"], t["kind"]), (True, [good], ["harness/board_kpi.py"], "kpi"))
+        self.assertTrue(t["repaired_at"])
+        self.assertIn("MSYS が path を書き換えた", t["notes"][-1])
+        self.assertIn("repaired_at", t["notes"][-1])
+        self.assertEqual(t["title"], "A")                                         # JSON に無い欄は触らない
+        # 壊れた文字・理由なし・欄なしは断る
+        bad = self.js("b.json", {"done_when": [MANGLED[0]]})
+        self.assertEqual(self.cli("repair", a, "--from-json", bad, "--reason", "x").returncode, 2)
+        self.assertEqual(self.cli("repair", a, "--from-json", self.js("e.json", {"foo": 1}), "--reason", "x").returncode, 2)
+        self.assertEqual(self.cli("repair", a, "--from-json", self.js("r.json", {"scope": ["z.py"]}), "--reason", " ").returncode, 2)
+        self.assertEqual(self.cli("repair", "T-9999", "--from-json", self.js("r.json", {"scope": ["z.py"]}), "--reason", "x").returncode, 2)
+
+    def test_repair_also_fixes_a_frozen_repo_file(self):
+        a = self.add("A", ["a.py"], done_when=["壊れた"])
+        q.set_contract(a, "fix", ["a.py"], ["壊れた"], self.root, self.state)
+        q.done(a, "PR", file=True, root=self.root, state=self.state)   # 凍った約束がリポジトリのファイルに入った
+        q.repair(a, {"done_when": ["直った"]}, "理由", self.root, self.state, T0)
+        self.assertEqual(json.loads((self.root / "harness" / "tasks" / f"{a}.json").read_text(encoding="utf-8"))["done_when"], ["直った"])
+        self.assertEqual(self.load()[a]["done_when"], ["直った"])
+
+
 class Backlog(unittest.TestCase):
     TEXT = """# 一覧
 
@@ -351,6 +430,17 @@ class Script(unittest.TestCase):
             self.assertIn(must, ship, must)
         self.assertIn("1333×677", d["prompts"]["evalV:T-0001:0"])
         self.assertIn("390×844", d["prompts"]["evalV:T-0001:0"])
+        # path 変換の事故（2026-11-12）：q.py／hb.py を呼ぶ文は全部、先頭が env MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*' で、長い文は --from-json で渡すと書いてある
+        import re
+        pre = "MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*'"
+        for label, p in d["prompts"].items():
+            self.assertIn(pre, p, label)
+            for m in re.finditer(r"harness/(?:q|hb)\.py [a-z][a-z-]* ", p):
+                self.assertTrue(p[:m.start()].rstrip().endswith(".exe") or p[:m.start()].rstrip().endswith("python"), f"{label}: {p[max(0, m.start() - 160):m.start() + 20]}")
+            if not label.startswith("scout:"):   # 下調べは読むだけで共通の決まりを持たない
+                self.assertIn("--from-json", p, label)
+        self.assertIn("contract <id> --from-json", d["prompts"]["plan:1"])
+        self.assertIn("harness/q.py add --from-json", d["prompts"]["intake:1"])
         self.assertIn("harness/q.py add", d["prompts"]["intake:1"])
         self.assertIn("docs/rules/aesthetic.md", d["prompts"]["intake:1"])
 

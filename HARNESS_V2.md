@@ -56,7 +56,7 @@ Learn    q.py done／park・結果 1 行・INDEX・summary.json・合併した�
 | どこ | 何 |
 |---|---|
 | `harness/tasks/T-NNNN.json` | 段（約束：title・why・quote・kind・complexity・scope・done_when。凍ったら変えない）。`INDEX.md` は `q.py index` が作る |
-| `harness/q.py` | 列：`next`・`claim`・`release`・`contract`・`done`・`park`・`reopen`・`add`・`index`・`show`（push しない） |
+| `harness/q.py` | 列：`next`・`claim`・`release`・`contract`・`done`・`park`・`reopen`・`add`・`repair`・`index`・`show`（push しない）。`contract`／`add` は `--from-json <UTF-8 の JSON>` が勧め。Git Bash の path 変換で壊れた文字（`C:`+バックスラッシュ+`Program Files`+バックスラッシュ+`Git` や `;C:` など）は書く前に断る。係の命令は全部 `env MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*' …` で呼ぶ。凍った約束の書き直しは主の会話だけが `repair <id> --from-json F --reason …` |
 | `harness/hb.py` | 心拍 `beat`／`end`・`stale --minutes N`・`summary`・`result`・`choice`・`inbox`／`reply`（AgentBoard） |
 | `harness/lock.py` | 鍵（`ci`・`browser`）：空くまで待って命令を流す |
 | `harness/net.sh` | 網の命令のやり直し（5 回・間をあける） |
