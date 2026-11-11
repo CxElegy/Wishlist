@@ -13,6 +13,16 @@ export const meta = {
 const MAX = (args && args.max) || 6
 const LANE = (args && args.lane) || ''   // 'request' = 依頼の係：【依頼】の段だけ（HARNESS.md「依頼の係」）
 const SP = (args && args.scratch) || '/tmp/harness'
+const PC = !!(args && args.pc)   // 店長の PC（Windows・D:/Claude/Wishlist）で回す（2026-11-11 店長「启动之前的harness loop」）。クラウドの道具・旧 Supabase の代わりに gh・.venv・自前の DB
+const PC_SWAP = [
+  ['/home/user/Wishlist', 'D:/Claude/Wishlist'],
+  ['GitHub は mcp__github__ のツール（ToolSearch で読み込む）、Supabase は mcp__Supabase__（プロジェクト bzokpnbcjscbcehdxtjq。読む・足すだけ。DROP・DELETE・表の形を変える文はしない）。',
+   'ここは店長の PC（Windows・Git Bash）。GitHub は gh コマンド（gh pr create・gh pr checks・gh pr merge --squash）。python は D:/Claude/Wishlist/.venv/Scripts/python.exe。データベースは店長の PC の自前版 Supabase（docs/rules/local-pc.md）：係は読むだけ、DB を変える SQL は書かずに BACKLOG を [?] にして主の会話に任せる。旧 Supabase（bzokpnbcjscbcehdxtjq）は使わない。画面を作る・直すときは docs/rules/aesthetic.md（店長の審美基準）で採点してから出す。'],
+  ['PR は push → mcp__github__create_pull_request（本文の最後に「🤖 Generated with [Claude Code](https://claude.com/claude-code)」）。CI は get_check_runs で見て',
+   'push の前に bash harness/ci_local.sh（CI と同じ検査）を通す。PR は push → gh pr create（本文の最後に「🤖 Generated with [Claude Code](https://claude.com/claude-code)」）。CI は gh pr checks で見て'],
+  ['`python -m unittest discover -s tests` を全部通す。', '`D:/Claude/Wishlist/.venv/Scripts/python.exe -m unittest discover -s tests` を全部通す（Windows だけで落ちるネットワークの試験は ci_local.sh の結果で判断）。'],
+  ['合併したら必ず python harness/ux_check.py', '合併したら必ず D:/Claude/Wishlist/.venv/Scripts/python.exe harness/ux_check.py'],
+]
 const COMMON = `リポジトリ /home/user/Wishlist（CxElegy/Wishlist）。最初に HARNESS.md・BACKLOG.md・CLAUDE.md・WORKING.md を main の最新で読み（触る分野の docs/rules/*.md も。CLAUDE.md の索引の表）、その決まりで動く。
 作業は自分専用の worktree：\`git -C /home/user/Wishlist fetch -q origin main && git -C /home/user/Wishlist worktree add -f ${SP}/wt/{ID} -B harness/{ID} origin/main\`。メインの作業ツリーには書かない。一時ファイルは ${SP}/tmp/。
 GitHub は mcp__github__ のツール（ToolSearch で読み込む）、Supabase は mcp__Supabase__（プロジェクト bzokpnbcjscbcehdxtjq。読む・足すだけ。DROP・DELETE・表の形を変える文はしない）。
@@ -28,6 +38,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 段を取る印：BACKLOG の \`[~] … （開始 日付 時:分 JST・持ち主 {ID}）\` の形で書く（持ち主 = この係の名前。書き込みのたびに「最終 日付 時:分 JST」を足す）。\`python harness/claims.py BACKLOG.md --live <今動いている係の名前,…>\` で持ち主のいない [~]（持ち主が動いていない・書き込みから 60 分・書き方が古い）を出し、それは取り直してよい。動いている持ち主の新しい [~] は飛ばす。「取った」と知らせるのは、その段の最初のコミットが main か PR に出てから（BACKLOG の印だけで言わない）。
 全体に効かせる（HARNESS.md「その箇所だけ直さない」、ユーザー 2026-10-26）：指摘された 1 か所・1 枚・1 版面だけを直さない。①なぜそこが壊れたかを規則の言葉で書く ②同じ規則で壊れている所を全部数える（連動の範囲の 5 つ：同じ種類の版面・店長とお客さま・同じ部品の画面・同じ数字の場所・前に作ったもの）③規則を直して全部に当てる ④ux_check か tests に、同じ壊れ方を数える点検を足す。PR の本文に「連動の範囲：…（n 件）」と「点検：…」を書く。⑤そのうえで「同じ考えでほかに直せる所」を 1〜3 個探し、BACKLOG.md に段として足す（返す spread・similar に書く）。
 設計書にない新しい決めごと・本番のデータベースの形を変える／消すことが要るときは、作らずに BACKLOG.md を [?]（聞きたいことを木の形で、案ごとに良い点・困る点とおすすめ）にして status=asked で返す。答えが設計書から決まることは聞かない。`
+const COMMON_ = PC ? PC_SWAP.reduce((s, [x, y]) => s.split(x).join(y), COMMON) : COMMON
 const RESULT = { type: 'object', properties: {
   status: { type: 'string', enum: ['done', 'asked', 'failed', 'none'] }, step: { type: 'string' }, pr: { type: 'string' }, summary: { type: 'string' },
   spread: { type: 'string' }, similar: { type: 'array', items: { type: 'string' } } },
@@ -39,14 +50,14 @@ const done = []
 let planned = 0
 for (let i = 1; i <= MAX; i++) {
   const id = `${LANE === 'request' ? 'r' : 'f'}${i}`
-  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ ${LANE === 'request' ? 'BACKLOG.md の【依頼】の付いた [ ] の上から、ユーザーの答え待ち（本文に [?] の答えが先に要ると明記）や持ち主のいる [~] で進められない段は飛ばして、進められる最初の 1 つだけを進める（依頼の係。先頭が答え待ちなだけで status=none にしない）。取ったらまず main の BACKLOG.md でその段を [~] …（開始 日付 時:分 JST・持ち主 ${id}・依頼の係）にして push し、ふだんのループと重ならないようにする' : 'BACKLOG.md の「いちばん先」の上から最初の [ ]（持ち主のいない [~] も：claims.py で出る）を 1 つだけ進める'}。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
+  let r = await agent(COMMON_.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ ${LANE === 'request' ? 'BACKLOG.md の【依頼】の付いた [ ] の上から、ユーザーの答え待ち（本文に [?] の答えが先に要ると明記）や持ち主のいる [~] で進められない段は飛ばして、進められる最初の 1 つだけを進める（依頼の係。先頭が答え待ちなだけで status=none にしない）。取ったらまず main の BACKLOG.md でその段を [~] …（開始 日付 時:分 JST・持ち主 ${id}・依頼の係）にして push し、ふだんのループと重ならないようにする' : 'BACKLOG.md の「いちばん先」の上から最初の [ ]（持ち主のいない [~] も：claims.py で出る）を 1 つだけ進める'}。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
     { label: `step:${id}`, phase: 'Step', model: 'sonnet', schema: RESULT })
   if (!r) { log(`${id}: 返事なし`); break }
   if (r.status === 'none') {
     if (LANE === 'request') { log('依頼の係：【依頼】の段がもうない'); break }
     if (planned >= 2) { log('計画を 2 回しても段がない：この回は終わる'); break }
     planned++
-    const p = await agent(COMMON.replace(/\{ID\}/g, `plan${planned}`) + `\n\n計画の係。HARNESS.md「設計者として導く」と DESIGN_PRINCIPLES.md の E（考えから反推した次の一手）のやり方で、A の考えから「まだ足りないもの」を反推して段を足す（E の表にも 1 行足す）。HARNESS.md「目標から決める」で、お客さま（test-a・test-b・test-c）が 1 日使ったつもりで通し（登録 → 足す → 読む → 👍👎 → 欲しい物）、いちばん困る所から段にする。店長（test1）のページの同じ機能の作りを見て、同じ部品で直す段にする。進める段が一覧にない。HARNESS.md の目標（小さな Wikipedia・1 つの仕組み・ライブラリ・人ごとのページ・言語・入口・管理）と、本番の画面（店長・test-a・test-b・ログインなし、1400/390px）・設計書との食い違い・壊れた画像・遅いページ・テストの穴を点検し、次にやる段を 3〜6 個、BACKLOG.md に「- [ ] 段の名前 — できたと言える条件」で足して合併する（答えが要るものは [?] で）。`,
+    const p = await agent(COMMON_.replace(/\{ID\}/g, `plan${planned}`) + `\n\n計画の係。HARNESS.md「設計者として導く」と DESIGN_PRINCIPLES.md の E（考えから反推した次の一手）のやり方で、A の考えから「まだ足りないもの」を反推して段を足す（E の表にも 1 行足す）。HARNESS.md「目標から決める」で、お客さま（test-a・test-b・test-c）が 1 日使ったつもりで通し（登録 → 足す → 読む → 👍👎 → 欲しい物）、いちばん困る所から段にする。店長（test1）のページの同じ機能の作りを見て、同じ部品で直す段にする。進める段が一覧にない。HARNESS.md の目標（小さな Wikipedia・1 つの仕組み・ライブラリ・人ごとのページ・言語・入口・管理）と、本番の画面（店長・test-a・test-b・ログインなし、1400/390px）・設計書との食い違い・壊れた画像・遅いページ・テストの穴を点検し、次にやる段を 3〜6 個、BACKLOG.md に「- [ ] 段の名前 — できたと言える条件」で足して合併する（答えが要るものは [?] で）。`,
       { label: `plan:${planned}`, phase: 'Plan', model: 'sonnet', schema: PLAN })
     log(`計画：${(p && p.added || []).join(' / ')}`)
     if (!p || !(p.added || []).length) break
@@ -54,10 +65,10 @@ for (let i = 1; i <= MAX; i++) {
     continue
   }
   for (let round = 1; r.status === 'done' && round <= 2; round++) {
-    const v = await agent(`${COMMON.replace(/\{ID\}/g, id + 'v' + round)}\n\n別の目として確かめるだけ（直さない）。段「${r.step}」が終わったと言っている：${r.summary}（${r.pr || ''}）。本番と HARNESS.md に照らして本当にできているか、店長のページが壊れていないか。指摘の 1 か所だけでなく、同じ規則で壊れていた所が全部直ったか（連動の範囲を自分で数え直す。1 つでも残っていれば ok=false）、同じ壊れ方の点検が足されたか。`,
+    const v = await agent(`${COMMON_.replace(/\{ID\}/g, id + 'v' + round)}\n\n別の目として確かめるだけ（直さない）。段「${r.step}」が終わったと言っている：${r.summary}（${r.pr || ''}）。本番と HARNESS.md に照らして本当にできているか、店長のページが壊れていないか。指摘の 1 か所だけでなく、同じ規則で壊れていた所が全部直ったか（連動の範囲を自分で数え直す。1 つでも残っていれば ok=false）、同じ壊れ方の点検が足されたか。`,
       { label: `check:${id}:${round}`, phase: 'Check', model: 'sonnet', schema: VERDICT })
     if (!v || v.ok) break
-    r = await agent(COMMON.replace(/\{ID\}/g, id + 'f' + round) + `\n\n段「${r.step}」の続き。別の目の指摘を直して PR・合併・本番で確かめる：\n${v.problems.join('\n')}\n最後に同じ形で返す。`,
+    r = await agent(COMMON_.replace(/\{ID\}/g, id + 'f' + round) + `\n\n段「${r.step}」の続き。別の目の指摘を直して PR・合併・本番で確かめる：\n${v.problems.join('\n')}\n最後に同じ形で返す。`,
       { label: `fix:${id}:${round}`, phase: 'Fix', model: 'sonnet', schema: RESULT }) || r
   }
   log(`${r.step || id}: ${r.status} ${r.pr || ''}`)
