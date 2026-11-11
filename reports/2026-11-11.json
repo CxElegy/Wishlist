@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "bdcde283ae26",
+ "edit_sig": "9a1aa4dbbb39",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -617,22 +617,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "Comic Watch",
-     "title": "The Interlude Featuring The Mandalorian And The Dark Saber Unfolds in Star Wars: The Book Of Boba Fett #5",
-     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNTmo3a2VUaHJaOXB1M1V0RnpaRExGVDlZZTV6WWVfUTZyNWxzdlZaNGZDRzVCYVh1MHlmbDE4azREOFRPNkpyc3lDaVNVa1NJMlg4TTY1clFSZFdRQmUxUDZaZURySkFDS3ZIdzJLUTNha3FIZUxXR2RLUWJEeVdZR0xlM2tkTXB3dkI2ZklvclJ6elA2a1FRY1FYMU9BOG81b0NfWXM0cmNJXzd6SVVSZ0pScTBCWUZ5akwyLWJaOEVEb3dQV3kycFJmY0psd2NVMEZZM1JnXzY4ZFpjZEp2YjNB?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 5,
-     "source": "ABC7 Los Angeles",
-     "title": "'The Mandalorian and Grogu' director Jon Favreau says film honors 'Star Wars' world George Lucas created",
-     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPODhNQVpzMWpvRTZJMWdJalV5MHJySThleVMxbjFubnNSdFdtV2lDSVk0OThvbFNld0RMVnF1M3lleHNnVHp0QUE3YklKVy1MZ3lGNVprblZyTkFXYS05el9aZWhEOE5tQnZnZjBVdU1mZHljb2ZuY0lHWXpaM2hjdWtnZ2ZfRExaRlB3ZW1zbXBfdkstTjVRX2VPWGdTWGRFb0c1S0pEeURibmxydDBNUzRFbnpfb3NHNGN2TlBuVVdrZ9IBxwFBVV95cUxPanhvaWtnc1Q2M2RLYUdtTTI3TkN1NXpFNWd4ejRhVmtHX3JFeXp0WGlhS3N0R1N3ZTZEcFZBbnNPaE52eXhiSmxyYjN5SEVMUjBFWktXYUR3YWlDYVlzcExKakQ5WEttWTZCU1JHczIwSHZ3b1J4QVluaHdwY0phYjFVUnFwTHMxUGVmUTlEbEI3Umt3TTNBUU52NFp1ZkxzRS1oZkdCd0VKUVNQbWFjc0NJdnpnYWZSTUI5RjRzcFVUTVJ6UW5V?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -663,6 +647,16 @@
      "image": "https://www.bing.com/th?id=ONUT.KkdkWY33I2sB7CHn2yWe_A&pid=News&w=1000",
      "image_via": "转载 variety.com（Bing 缩略图）",
      "url": "https://www.imdb.com/it/news/ni66060073/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "headline": "'The Mandalorian and Grogu' director Jon Favreau says film honors 'Star Wars' world George Lucas created",
+     "highlight": "",
+     "image": "https://cdn.abcotvs.com/dip/images/19146943_052126-cc-otrc-mandalorian-jon-favreau-intv-img.jpg?w=1600",
+     "image_via": "og:image",
+     "url": "https://abc7.com/post/mandalorian-grogu-director-jon-favreau-says-film-honors-star-wars-world-george-lucas-created/19146330/",
      "weight": "normal"
     }
    ],

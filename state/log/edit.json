@@ -1,38 +1,5 @@
 [
 {
-"at": "2026-11-10T00:52:22+00:00",
-"text": "2026-11-10 第 2 バッチを出刊：ILLIT、哈利波特剧集（2 版面・12 本・残り 4 版面） · token 新規入力 1.1万・キャッシュ読み 49.6万・出力 2,953",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.15,
-"mem_total": 16867737600,
-"mem_free": 15909216256,
-"disk_used": 10909200384,
-"disk_free": 30374334464,
-"disk_total": 41283534848,
-"peak": 412114944
-},
-"batch": 2,
-"boards": [
-"ILLIT",
-"哈利波特剧集"
-],
-"stories": 12,
-"left": 4,
-"edited": 19,
-"run": 1794269982.177874,
-"tok": {
-"in": 12,
-"cw": 11249,
-"cr": 495850,
-"out": 2953,
-"calls": 6,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 510064
-},
-{
 "at": "2026-11-10T00:58:05+00:00",
 "text": "2026-11-10 第 3 バッチを出刊：A2O LITE、dota2、あつ森、チェーンソーマン（4 版面・13 本・今日の整理待ちは全部終わり） · token 新規入力 2,648・キャッシュ読み 27.2万・出力 1,547",
 "level": "ok",
@@ -1978,5 +1945,52 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1746717
+},
+{
+"at": "2026-11-11T06:10:17+00:00",
+"text": "2026-11-11 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作 ほか 10（16 版面・47 本・残り 4 版面） · token 新規入力 5.7万・キャッシュ読み 176.7万・出力 8,995",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.36,
+"mem_total": 16867414016,
+"mem_free": 16005849088,
+"disk_used": 10121633792,
+"disk_free": 31161901056,
+"disk_total": 41283534848,
+"peak": 335183872
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"GTA 6",
+"ILLIT",
+"MMORPG 新作",
+"The Mandalorian",
+"dota2",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"三星手机",
+"周杰伦",
+"日本顶级网球赛事",
+"滑雪",
+"漫威电影"
+],
+"stories": 47,
+"left": 4,
+"edited": 17,
+"run": null,
+"tok": {
+"in": 47,
+"cw": 57368,
+"cr": 1766766,
+"out": 8995,
+"calls": 25,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1833176
 }
 ]
