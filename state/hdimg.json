@@ -255,6 +255,13 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.mmoexp.com/images/202611/75b0f137b41da19f785e2b21d24b20e8edee0087.jpg": {
+  "w": 800,
+  "h": 216,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.329
+ },
  "https://assets.murphysmultiverse.com/uploads/2026/08/VisionQuest_TF_1-1.jpg": {
   "w": 3840,
   "h": 1604,
@@ -419,6 +426,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.autodaily.co.kr/news/photo/202611/601977_203885_5646.png": {
+  "w": 852,
+  "h": 692,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:knsszrujdducsne2yxvzqhph/bafkreicczdpct6piix74afri5nro77n4kfxkapjxsb2ygs5jsxsmcptouy": {
   "w": 1536,
   "h": 1920,
@@ -456,6 +469,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.345
+ },
+ "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg": {
+  "w": 800,
+  "h": 369,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.422,
+  "local": "pics/c7bbe061933e796f.webp",
+  "out": [
+   1280,
+   590
+  ],
+  "why": "看不清"
  },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
@@ -572,6 +598,12 @@
   "w": 1600,
   "h": 1138,
   "target": 720,
+  "v": 3
+ },
+ "https://cdn.topstarnews.net/news/photo/202611/16273912_2085144_5931_crop.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.trendhunterstatic.com/phpthumbnails/650/650635/650635_1_1200.jpeg": {
@@ -1465,6 +1497,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbjPx.img": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hcPKO.img": {
   "w": 870,
   "h": 580,
@@ -1852,12 +1890,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://media.assettype.com/gulfnews%2F2026-11-05%2F9r0m63lj%2FSamsung-Galaxy-S25-Ultra-Unboxing-1.png?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
-  "v": 3
  },
  "https://media.assettype.com/outlooktraveller/2026-11-10/vx9d1246/findingharryhoka16x9.avif?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
   "w": 1200,
@@ -2994,12 +3026,6 @@
   "target": 720,
   "v": 3
  },
- "https://static0.anpoimages.com/wordpress/wp-content/uploads/2026/08/samsung-galaxy-z-fold-8-and-google-pixel-10-pro-standing-side-by-side.png?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/01/bobamando-1200x600.jpg?w=1200&h=675&fit=crop": {
   "w": 1200,
   "h": 600,
@@ -3705,12 +3731,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/14/Pokemon-Scarlet-violet-Sprigatito-Fuecoco-Quaxly.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3854,12 +3874,6 @@
  "https://www.mediaplaynews.com/wp-content/uploads/2026/11/From.jpg": {
   "w": 900,
   "h": 600,
-  "target": 1280,
-  "v": 3
- },
- "https://www.newsandstar.co.uk/resources/images/21378190/": {
-  "w": 1600,
-  "h": 1600,
   "target": 1280,
   "v": 3
  },
