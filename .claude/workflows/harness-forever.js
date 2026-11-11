@@ -13,6 +13,7 @@ export const meta = {
 const MAX = (args && args.max) || 6
 const LANE = (args && args.lane) || ''   // 'request' = 依頼の係：【依頼】の段だけ（HARNESS.md「依頼の係」）
 const SP = (args && args.scratch) || '/tmp/harness'
+const MODEL = (args && args.model) || 'sonnet'   // 係のモデル（2026-11-12 店長：今週はトークンが余るので Fable で回す → args.model: 'fable'）
 const PC = !!(args && args.pc)   // 店長の PC（Windows・D:/Claude/Wishlist）で回す（2026-11-11 店長「启动之前的harness loop」）。クラウドの道具・旧 Supabase の代わりに gh・.venv・自前の DB
 const PC_SWAP = [
   ['/home/user/Wishlist', 'D:/Claude/Wishlist'],
@@ -56,7 +57,7 @@ if (NEWUSER) {
 3. 直す段にする：report の目標（STAGES の分）を越えた段、pages の ✗（errors・broken・words・overflow・足してから 150 分すぎても missing）を、BACKLOG.md のいちばん先に【依頼・新規ユーザー】の段として足す（同じ段があれば足さず、その段に数字を書き足す）。
 4. 見る：D:/Claude/kpi/pages/<u_…>.html を 1333×677・390×844 で撮り、docs/rules/aesthetic.md（店長の審美基準・店長の指摘の型）で採点し、✗ を同じく段にする。
 最後に status=done・step="新規ユーザーの点検"・summary（日本語 3 行：KPI の数字・✗ の数・足した段）を返す。`,
-    {label: 'newuser', phase: 'Plan', model: 'sonnet', schema: RESULT})
+    {label: 'newuser', phase: 'Plan', model: MODEL, schema: RESULT})
   log(`新規ユーザー：${nu && nu.summary || '返事なし'}`)
 }
 const done = []
@@ -64,14 +65,14 @@ let planned = 0
 for (let i = 1; i <= MAX; i++) {
   const id = `${LANE === 'request' ? 'r' : 'f'}${i}`
   let r = await agent(COMMON_.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ ${LANE === 'request' ? 'BACKLOG.md の【依頼】の付いた [ ] の上から、ユーザーの答え待ち（本文に [?] の答えが先に要ると明記）や持ち主のいる [~] で進められない段は飛ばして、進められる最初の 1 つだけを進める（依頼の係。先頭が答え待ちなだけで status=none にしない）。取ったらまず main の BACKLOG.md でその段を [~] …（開始 日付 時:分 JST・持ち主 ${id}・依頼の係）にして push し、ふだんのループと重ならないようにする' : 'BACKLOG.md の「いちばん先」の上から最初の [ ]（持ち主のいない [~] も：claims.py で出る）を 1 つだけ進める'}。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
-    { label: `step:${id}`, phase: 'Step', model: 'sonnet', schema: RESULT })
+    { label: `step:${id}`, phase: 'Step', model: MODEL, schema: RESULT })
   if (!r) { log(`${id}: 返事なし`); break }
   if (r.status === 'none') {
     if (LANE === 'request') { log('依頼の係：【依頼】の段がもうない'); break }
     if (planned >= 2) { log('計画を 2 回しても段がない：この回は終わる'); break }
     planned++
     const p = await agent(COMMON_.replace(/\{ID\}/g, `plan${planned}`) + `\n\n計画の係。HARNESS.md「設計者として導く」と DESIGN_PRINCIPLES.md の E（考えから反推した次の一手）のやり方で、A の考えから「まだ足りないもの」を反推して段を足す（E の表にも 1 行足す）。HARNESS.md「目標から決める」で、お客さま（test-a・test-b・test-c）が 1 日使ったつもりで通し（登録 → 足す → 読む → 👍👎 → 欲しい物）、いちばん困る所から段にする。店長（test1）のページの同じ機能の作りを見て、同じ部品で直す段にする。進める段が一覧にない。HARNESS.md の目標（小さな Wikipedia・1 つの仕組み・ライブラリ・人ごとのページ・言語・入口・管理）と、本番の画面（店長・test-a・test-b・ログインなし、1400/390px）・設計書との食い違い・壊れた画像・遅いページ・テストの穴を点検し、次にやる段を 3〜6 個、BACKLOG.md に「- [ ] 段の名前 — できたと言える条件」で足して合併する（答えが要るものは [?] で）。`,
-      { label: `plan:${planned}`, phase: 'Plan', model: 'sonnet', schema: PLAN })
+      { label: `plan:${planned}`, phase: 'Plan', model: MODEL, schema: PLAN })
     log(`計画：${(p && p.added || []).join(' / ')}`)
     if (!p || !(p.added || []).length) break
     i--
@@ -79,10 +80,10 @@ for (let i = 1; i <= MAX; i++) {
   }
   for (let round = 1; r.status === 'done' && round <= 2; round++) {
     const v = await agent(`${COMMON_.replace(/\{ID\}/g, id + 'v' + round)}\n\n別の目として確かめるだけ（直さない）。段「${r.step}」が終わったと言っている：${r.summary}（${r.pr || ''}）。本番と HARNESS.md に照らして本当にできているか、店長のページが壊れていないか。指摘の 1 か所だけでなく、同じ規則で壊れていた所が全部直ったか（連動の範囲を自分で数え直す。1 つでも残っていれば ok=false）、同じ壊れ方の点検が足されたか。`,
-      { label: `check:${id}:${round}`, phase: 'Check', model: 'sonnet', schema: VERDICT })
+      { label: `check:${id}:${round}`, phase: 'Check', model: MODEL, schema: VERDICT })
     if (!v || v.ok) break
     r = await agent(COMMON_.replace(/\{ID\}/g, id + 'f' + round) + `\n\n段「${r.step}」の続き。別の目の指摘を直して PR・合併・本番で確かめる：\n${v.problems.join('\n')}\n最後に同じ形で返す。`,
-      { label: `fix:${id}:${round}`, phase: 'Fix', model: 'sonnet', schema: RESULT }) || r
+      { label: `fix:${id}:${round}`, phase: 'Fix', model: MODEL, schema: RESULT }) || r
   }
   log(`${r.step || id}: ${r.status} ${r.pr || ''}`)
   done.push(r)
