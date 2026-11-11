@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "d1370d65b3e0",
+ "edit_sig": "5ff19043d4b7",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -875,22 +875,6 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "Sohu",
-     "title": "A2O LITE《NEON》打歌舞台藏惊喜，OA被粉丝挖出“隐藏主唱”实力",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPUFluNTZRQmJHdkVTbVdhZFJUQ2d4ZnZsX2JCX1Azd3k2ZDZua0lvdFdrT0tzRU14SzNWRXY0c3l1TUNBV1QzeDdvSnRvNTBJd25GdkVPSUZTN2daXzdkNjFHU1RfZ2JHamZMMnJVQk9TWkFkajg4NXJYbWYzQk9hTFltZXlFZ0cxV0RTTQ?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 5,
-     "source": "Vietnam.vn",
-     "title": "A2O LITE의 '폭발의 시대'",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5FdldTZ3NlNk50UnhKUzhkM2xwdkJua1VQeU93VHhfbnFyZVdHeUVZOVUyRWVSakxta3dNYkZ1MDZSRThIUEQ4OEJCRHhHZnVGSVNDVnZMbWljdDNaQi02OVlrQkJOYmc?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -911,6 +895,17 @@
      "image": "http://wx1.sinaimg.cn/middle/006dNg2Pgy1iix6q22elej30xi1esdl7.jpg",
      "image_via": "正文图（本站保存）",
      "url": "https://www.sina.cn/news/detail/5363745057409944.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "A2O LITE《NEON》打歌舞台藏惊喜，OA被粉丝挖出“隐藏主唱”实力",
+     "highlight": "",
+     "image": null,
+     "source": "Sohu",
+     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
+     "url": "https://m.sohu.com/a/1092539868_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }
    ],

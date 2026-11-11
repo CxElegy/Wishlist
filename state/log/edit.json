@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-09T20:21:51+00:00",
-"text": "2026-11-10 第 8 バッチを出刊：星巴克马克杯（1 版面・3 本・残り 1 版面） · token 新規入力 2,097・キャッシュ読み 37.9万・出力 1,126",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.21,
-"mem_total": 16867737600,
-"mem_free": 15956754432,
-"disk_used": 10082787328,
-"disk_free": 31200747520,
-"disk_total": 41283534848,
-"peak": 385499136
-},
-"batch": 8,
-"boards": [
-"星巴克马克杯"
-],
-"stories": 3,
-"left": 1,
-"edited": 13,
-"run": 1794252828.5773687,
-"tok": {
-"in": 8,
-"cw": 2089,
-"cr": 378879,
-"out": 1126,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 382102
-},
-{
 "at": "2026-11-09T20:33:00+00:00",
 "text": "2026-11-10 第 9 バッチを出刊：MMORPG 新作（1 版面・2 本・残り 2 版面） · token 新規入力 8,190・キャッシュ読み 149.5万・出力 2,801",
 "level": "ok",
@@ -1917,5 +1885,48 @@
 "calls": 34,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-11T05:25:14+00:00",
+"text": "2026-11-11 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、dota2 ほか 6（12 版面・29 本・残り 3 版面） · token 新規入力 4.2万・キャッシュ読み 53.8万・出力 2,114",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.27,
+"mem_total": 16867414016,
+"mem_free": 15853182976,
+"disk_used": 10085031936,
+"disk_free": 31198502912,
+"disk_total": 41283534848,
+"peak": 486375424
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"GTA 6",
+"ILLIT",
+"dota2",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"日本顶级网球赛事",
+"滑雪",
+"漫威电影"
+],
+"stories": 29,
+"left": 3,
+"edited": 17,
+"run": null,
+"tok": {
+"in": 17,
+"cw": 42033,
+"cr": 538036,
+"out": 2114,
+"calls": 9,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 582200
 }
 ]
