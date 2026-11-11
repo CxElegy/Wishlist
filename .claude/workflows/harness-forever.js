@@ -46,6 +46,19 @@ const RESULT = { type: 'object', properties: {
 const PLAN = { type: 'object', properties: { added: { type: 'array', items: { type: 'string' } }, pr: { type: 'string' } }, required: ['added'] }
 const VERDICT = { type: 'object', properties: { ok: { type: 'boolean' }, problems: { type: 'array', items: { type: 'string' } } }, required: ['ok', 'problems'] }
 
+const NEWUSER = !!(args && args.newuser)   // 新規ユーザーの点検を毎回（2026-11-11 店長）
+if (NEWUSER) {
+  const nu = await agent(COMMON_.replace(/\{ID\}/g, 'nu') + `
+
+新規ユーザーの点検の係（2026-11-11 店長：新規アカウントを作った人・版面を足した人に、サイトの機能とデザインがちゃんと届くかを、点検 → 改善のループで続ける。店長〔test1〕と test-a のページはほぼ大丈夫と確認済み）。
+1. 測る：D:/Claude/Wishlist/.venv/Scripts/python.exe harness/board_kpi.py tick → report → pages → shop（PYTHONIOENCODING=utf-8）。計測の回は D:/Claude/kpi/runs（リポジトリの外。中身をコミットしない）。数字だけの harness/kpi/latest.json はコミットしてよい。
+2. 次の回：前の回が全部そろったか 24 時間たったら、test-d と test-e を交互に使って新しい回を作る：board_kpi.py add --reset --email test-d@example.com --pick "名前:板块" …（経路 A＝items.yaml の店長の版面 1 つ・B＝ライブラリにある版面 1 つ・C＝まだどこにも無い実在の作品・人・物 2〜3 つ。板块は sections.yaml のキー）。ログインは localhost の自前版 Supabase だけ（本番の画面でテスト用の鍵を入れない）。
+3. 直す段にする：report の目標（STAGES の分）を越えた段、pages の ✗（errors・broken・words・overflow・足してから 150 分すぎても missing）を、BACKLOG.md のいちばん先に【依頼・新規ユーザー】の段として足す（同じ段があれば足さず、その段に数字を書き足す）。
+4. 見る：D:/Claude/kpi/pages/<u_…>.html を 1333×677・390×844 で撮り、docs/rules/aesthetic.md（店長の審美基準・店長の指摘の型）で採点し、✗ を同じく段にする。
+最後に status=done・step="新規ユーザーの点検"・summary（日本語 3 行：KPI の数字・✗ の数・足した段）を返す。`,
+    {label: 'newuser', phase: 'Plan', model: 'sonnet', schema: RESULT})
+  log(`新規ユーザー：${nu && nu.summary || '返事なし'}`)
+}
 const done = []
 let planned = 0
 for (let i = 1; i <= MAX; i++) {

@@ -10,3 +10,11 @@
 - **店長の管理**：お客さまごとの AI のモデル（`app_users.model`、最初は sonnet）・追いかけられる数（`board_limit`、100）・お客さまのページを見る（見るだけ）・版面ごとの小元素。Discord は店長だけ。
 - **版面の言語**：版面の名前など画面の文字は見る人の画面の言語、記事は元の言語のまま、どの言語の記事を集めるかは版面ごと（向導の一問）。
 - テスト用：test-a = 版面が多い人（店長の版面を写して始め、あとは自分のもの）、test-b = ほぼ空（広島旅行 1 つ）。
+
+## 版面を足したとき（2026-11-11，用户定的：新規ユーザーの KPI と改善）
+
+- お客さまが版面を足す（my_keywords_set）と、新しい名前に `added_at` を付けて残し、その場で `board_added.yml` を起こす（db/board_added.sql。1 人 1 時間 6 回・全体 30 秒に 1 回）。順番：library.py --users → userfeed.py → user_pages.py → library_emblem.yml。前は全部 cron 待ちだった。
+- かかった時間は `harness/board_kpi.py` で測る（足す → picks・follows・boards・記事・ライブラリの記事・小元素・AI 編集・本人のページ）。経路 A＝店長と同じ名前（店長の号を写す）・B＝ライブラリにある版面・C＝新しい名前。目標は経路 C で本人のページ 150 分・小元素 120 分・AI 編集 480 分。
+- 計測の回は D:/Claude/kpi/runs（本人のデータが入るのでリポジトリの外）。数字だけを harness/kpi/latest.json に。ハーネスのループ（args.newuser）が毎回 tick・report・pages を回し、test-d・test-e で新しい回を作り、目標を越えた段を BACKLOG の【依頼・新規ユーザー】にする。
+- テスト用アカウントのログインは localhost の自前版 Supabase だけ（本番の画面でテスト用の鍵を入れない）。
+
