@@ -3,7 +3,9 @@ name: Pages 公開
 # 公開（docs/）を Actions で行う（2026-11-01 ユーザー「老是ci fail」）。
 # 前は GitHub 標準の「pages build and deployment」が main の push のたびに走り、24 時間に 312 コミットで
 # 「in progress deployment, cancel <前の commit> first」と 8/30 回ぶつかって失敗メールが来た。
-# ここは concurrency で古い公開を取り消して最新だけを出す（ぶつからない）。
+# ここは concurrency で重ならないようにする。cancel-in-progress は false：走っている公開は最後まで終わらせ、
+# 待ちは最新の 1 件だけ残る（GitHub は同じ group の待ちを 1 件に畳む）。
+# （2026-11-12：true だと、runner が遅い日に数分おきの push が走行中の公開を毎回取り消し、何時間も公開が出なかった）
 # 使う前に 1 回：Settings → Pages → Build and deployment → Source を「GitHub Actions」に切り替える。
 # 戻すとき：Source を「Deploy from a branch（main / docs）」に戻し、このファイルを消す。
 
@@ -23,7 +25,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true   # 公開が重なったら古いほうを止めて最新だけ出す
+  cancel-in-progress: false   # 走っている公開は終わらせる・待ちは最新の 1 件だけ（取り消すと公開が飢える）
 
 jobs:
   build:
