@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "ebc3273253e6",
+ "edit_sig": "6438109435cd",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -628,36 +628,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 5,
-     "source": "Weverse",
-     "title": "ILLIT 커뮤니티 포스트 - 가로롱 - 이로하",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE82QWhBMWdtUlREcElGU3VkZ042ZkZVWnhFUzBnd3FOYzEwdjlaS0czNVN6ekRzdmxsb1FzOVppZWgtcUtCclJocDhhSG5ub2txUnlvdWMxT3dSdVB3MVE?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 6,
-     "source": "MEDIAMIXI",
-     "title": "【Spotify日本週間チャート】HANA「Slidin」が33位に初登場 / ILLIT「You're Under Arrest」が112位から12位へ100ランク上昇〜集計期間：2026年10/30〜11/5 | コラム | IT×エンタメの最前線を届ける",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5CTUh1aF9vVzNqRDVZQWRzSkF4c0ZCZE5PTGtkWDlHV080SDM0ZUJ2d1Mzem9LQ3EzZC1GNjZiMzJIQ0Q3eVhJZV9n?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 7,
-     "source": "비욘드포스트",
-     "title": "[문화 이슈] 아일릿 ‘체포하겠어’, 美 빌보드 ‘버블링 언더 핫 100’ 진입",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5WNjBBWkpMNFprZk0wUGRtTHE0SUxpLWVHbVBRb2kwMVRVUkRJdi1MR20wRjdBcm1WUUxFTkJOb1FRb3VZR2toMVgweWt4UTNmOVM5SlZvcUdiM2JNVVZiLTlIcWJhUlZENWVHNUxuSzJ6S2dIVU1uVnYzYw?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 8,
-     "source": "Weverse",
-     "title": "ILLITコミュニティの投稿 - 글릿! 프레스 스타트 앙코르 콘서트가 끝났",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1XZ0tyUy01bHhOdk9YM0YyVWNCQ0hRQ3pXODVOTXlKSkp0c2dibmJsRDlXekZ1WVdNdnlFbTVIUzRfbFIyMTJ4TlU2bDlYMFNQbWNwMTBBclJnbHdKQmc?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -678,6 +648,16 @@
      "image": "https://i2.ytimg.com/vi/idkvx_w1UMU/hqdefault.jpg",
      "image_via": "条目自带",
      "url": "https://www.youtube.com/watch?v=idkvx_w1UMU",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "【Spotify日本週間チャート】ILLIT「You're Under Arrest」が112位から12位へ100ランク上昇",
+     "highlight": "112位から12位へ",
+     "image": "https://mediamixi.jp/app/uploads/2026/11/1110-01.jpg",
+     "image_via": "og:image",
+     "url": "https://mediamixi.jp/column/18381/",
      "weight": "normal"
     }
    ],
@@ -875,15 +855,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-08",
-     "n": 2,
-     "source": "Essential Japan",
-     "title": "Chainsaw Man’s First-Ever Crocs Collection Officially Launches in the US",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQQ1dBTkRJZ2hLR2ZoLWoxRDFVNXZ4anpNX2lPRDJ6SXFKa3diRGZ1a1lVQ1I1UVZKQzlCYzBTRE5HYnhKNFVkcF9aQ1gydHZhWVU3M3NIMFhFbUttV2t0c3djem50ME1JNjJpTm5yU014cnZLeDBIUWFWWExQb0h3T25tbVdzVlUtdFpsSVVYSW82SFI0Z19xNDN4WlI0NTJYbU9QZ0xsY1M?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -895,6 +866,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.agara.co.jp/article/683414",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-08",
+     "headline": "Chainsaw Man’s First-Ever Crocs Collection Officially Launches in the US",
+     "highlight": "First-Ever Crocs Collection",
+     "image": "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp",
+     "image_via": "og:image",
+     "url": "https://essential-japan.com/news/chainsaw-mans-first-ever-crocs-collection-officially-launches-in-the-us/",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
@@ -1120,15 +1101,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "Hawk Live",
-     "title": "Noticed Names the Best Heroes for Farming MMR as an Offlaner in Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPbWdnc3F3VWxOM0Z5cVZZUTI5bUlmbHc2ZThFVXdiMkhQZFMycl9xUU1Gcm5oVXpqUEtSTGVYWHh6Y1dUVTA1Mk92TzEwdkpndTUwQVNVQ3pNWUVmWXdVWVdVdFNrTmd3Z0NDYXFZQkZZMFJDVVR1UGRiOWl0dE94aGR4Yw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1233,17 +1205,19 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "東レPPO初戦を突破した大坂なおみが、娘・シャイちゃんの存在や有明への思いを語った。",
      "date": "2026-11-08",
-     "n": 1,
-     "source": "山陽新聞",
-     "title": "【独占インタビュー】大坂なおみ、東レPPO初戦突破で「目標は優勝」「できない理由はない」 娘・シャイちゃんの存在、母としての幸せと有明への格別な思い",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5aNUFYdkw3SmxmdTFob09kVnQ1ZWpmbkpaYXl4Rzg2R2V5NDRTeng0cWx2bEh1VWc5U1BpZkV1UDRiVEprbG1UTVVZQ1hpekZsbWc?oc=5"
+     "headline": "【独占インタビュー】大坂なおみ、東レPPO初戦突破で「目標は優勝」「できない理由はない」",
+     "highlight": "目標は優勝",
+     "image": "https://static.sanyonews.jp/image/article/size1/3/7/5/0/37501ba56a6c4ed315b10a3d6a20f267_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/2012212",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",

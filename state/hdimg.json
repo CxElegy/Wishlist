@@ -453,6 +453,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
+  "w": 1950,
+  "h": 1097,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/gmdata/0001/782/912/gm617101_261104-risell-tt4.webp": {
   "w": 1200,
   "h": 670,
@@ -2032,6 +2038,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://mediamixi.jp/app/uploads/2026/11/1110-01.jpg": {
+  "w": 2184,
+  "h": 1228,
+  "target": 720,
+  "v": 3
+ },
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2614188-9a5bf05ab73c.jpg": {
   "w": 1200,
   "h": 630,
@@ -2937,6 +2949,19 @@
   "h": 640,
   "target": 720,
   "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/3/7/5/0/37501ba56a6c4ed315b10a3d6a20f267_1.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.54,
+  "local": "pics/0f18d2a2b5ef4a7a.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
  },
  "https://static.sanyonews.jp/image/article/size1/3/f/f/2/3ff24c261a165613c93a74b121b9b124_1.jpg": {
   "w": 640,

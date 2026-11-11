@@ -109,18 +109,19 @@
   "三星手机": 28,
   "漫威电影": 41,
   "哈利波特剧集": 10,
-  "ILLIT": 4,
+  "ILLIT": 6,
   "周杰伦": 4,
-  "dota2": 3,
+  "dota2": 4,
   "滑雪": 2,
   "gelato pique": 1,
-  "チェーンソーマン": 1,
+  "チェーンソーマン": 2,
   "BLEACH Mirrors High": 10,
   "A2O LITE": 3,
   "MMORPG 新作": 2,
   "The Mandalorian": 2,
   "Vaundy": 2,
-  "绝区零": 1
+  "绝区零": 1,
+  "日本顶级网球赛事": 1
  },
  "三星手机": [
   {
@@ -318,6 +319,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "【Spotify日本週間チャート】ILLIT「You're Under Arrest」が112位から12位へ100ランク上昇",
+   "highlight": "112位から12位へ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "周杰伦": [
@@ -413,6 +423,15 @@
     1
    ],
    "image": "https://prtimes.jp/img/86964/322/resize/d86964-322-920ce4fb1c6d125252e4-0.jpg"
+  },
+  {
+   "headline": "Chainsaw Man’s First-Ever Crocs Collection Officially Launches in the US",
+   "highlight": "First-Ever Crocs Collection",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "BLEACH Mirrors High": [
@@ -540,6 +559,18 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "【独占インタビュー】大坂なおみ、東レPPO初戦突破で「目標は優勝」「できない理由はない」",
+   "highlight": "目標は優勝",
+   "blurb": "東レPPO初戦を突破した大坂なおみが、娘・シャイちゃんの存在や有明への思いを語った。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/3/7/5/0/37501ba56a6c4ed315b10a3d6a20f267_1.jpg"
   }
  ]
 }
