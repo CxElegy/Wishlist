@@ -1,10 +1,10 @@
 {
- "admin": "033f4c542c82",
- "admin-ai": "02ebad9a0a08",
+ "admin": "fbf2d49bc91a",
+ "admin-ai": "468ebfee6925",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "77fa3b0b"
+   "bf3149ed"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "d8fde656e8e7",
+ "admin-emblem": "8e24cd8ea655",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ca55b0f7"
+   "d7784407"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "596890c30db2",
  "admin-members_marks": {},
- "admin-now": "9335bed29f69",
+ "admin-now": "02657b738806",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "29b0f219"
+   "e041e049"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "35b1d9d6"
   ]
  },
- "admin-system": "77f9e65e0adf",
+ "admin-system": "468880c97b45",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2ed9b18c"
+   "d2f42dbe"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a082d47f"
+   "97f84799"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "d5f39e70"
   ]
  },
- "index": "5f1c712ee8dd",
+ "index": "2804fac127e1",
  "index_marks": {
   "front": [
    "トップ",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "49e7d60d"
+   "d1bfee08"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "9b72e93c"
+   "a402403f"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "f53a804f"
   ]
  },
- "updated": "11.12 06:39",
+ "updated": "11.12 06:47",
  "wishlist": "b26013eda81c"
 }
