@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-11T18:04:21+00:00",
+ "checked": "2026-11-11T18:25:17+00:00",
  "fired": {
-  "at": "2026-11-11T18:04:22+00:00",
+  "at": "2026-11-11T18:25:17+00:00",
   "results": {
-   "edit": "Claude を起こした（2 回目：前は動かなかった）",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -103,28 +103,27 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
     "FROM",
     "GTA 6",
-    "A2O LITE",
-    "周杰伦",
-    "绝区零",
-    "Astrae Oratio",
-    "The Mandalorian"
-   ],
-   "need": true,
-   "sig": "835eb8783c98",
-   "waiting": [
+    "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
-    "ぐでたま"
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 12 版面（Actions で Python が埋める）・失敗 3 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
