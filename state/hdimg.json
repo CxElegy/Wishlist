@@ -270,6 +270,12 @@
   "v": 3,
   "blur": 0.329
  },
+ "https://assets.murphysmultiverse.com/uploads/2026/08/VisionQuest_TF_1-1.jpg": {
+  "w": 3840,
+  "h": 1604,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.murphysmultiverse.com/uploads/2026/11/2287656144-1024x683.jpg": {
   "w": 1024,
   "h": 683,
@@ -700,12 +706,6 @@
  "https://cimg.kgl-systems.io/camion/files/dengeki/93627/af99687dd719c4e8bc6a39e946c3d9ef7.jpg?x=1280": {
   "w": 1280,
   "h": 1709,
-  "target": 1280,
-  "v": 3
- },
- "https://collabo-cafe.com/wp-content/uploads/4dffd6776e8c42f7d550beaccde1b678-1427.jpg": {
-  "w": 1400,
-  "h": 741,
   "target": 1280,
   "v": 3
  },
@@ -1166,12 +1166,6 @@
   "target": 1280,
   "v": 3
  },
- "https://hotelbank.jp/wp-content/uploads/eyecatch-192592-auto.png": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://hotelbank.jp/wp-content/uploads/eyecatch-193461-auto.png": {
   "w": 1200,
   "h": 630,
@@ -1264,19 +1258,6 @@
   "h": 1350,
   "target": 720,
   "v": 3
- },
- "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261011_EN_source-web_Jay-Chou-1.jpg": {
-  "w": 640,
-  "h": 335,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.498,
-  "local": "pics/a124e947437670cd.webp",
-  "out": [
-   1280,
-   670
-  ],
-  "why": "看不清"
  },
  "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg": {
   "w": 1280,
@@ -1614,10 +1595,22 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbA45.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
   "w": 1000,
   "h": 666,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hcPKO.img": {
+  "w": 870,
+  "h": 580,
+  "target": 720,
   "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img": {
@@ -1951,6 +1944,18 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://m.media-amazon.com/images/I/41Uqbu21-xL._SL500_.jpg": {
+  "w": 500,
+  "h": 500,
+  "target": 720,
+  "v": 3
+ },
+ "https://m.media-amazon.com/images/I/41ecjYLAadL._SL500_.jpg": {
+  "w": 500,
+  "h": 500,
+  "target": 720,
+  "v": 3
  },
  "https://m.media-amazon.com/images/M/MV5BMzRiY2E4ZDgtMzRkYi00MDliLTgxY2YtNzQ4OWY0Y2I1MTFlXkEyXkFqcGc@._V1_QL75_UX500_CR0,0,500,281_.jpg": {
   "w": 500,
@@ -2445,6 +2450,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-00121891-president-000-1-view.jpg?exp=10800": {
+  "w": 1340,
+  "h": 825,
+  "target": 720,
+  "v": 3,
+  "local": "pics/2fb91e512367fba3.webp",
+  "out": [
+   1280,
+   788
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2871,6 +2888,12 @@
  "https://shattered.io/wp-content/uploads/2026/11/gta-6-physical-copy-leak-230-gb-claim-vs-212-gb-preload-2026-gen.webp": {
   "w": 1344,
   "h": 768,
+  "target": 1280,
+  "v": 3
+ },
+ "https://singtaousa2025.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/11/11003304/WhatsApp_Image_2021-09-05_at_12_38_33-1.jpeg": {
+  "w": 1024,
+  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -3615,12 +3638,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.EyomwJdWYWeo9u0fkui1Hw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3631,6 +3648,12 @@
  "https://www.bing.com/th?id=ONUT.GaoGL2fTfOOpUB5JQdABLA&pid=News&w=1200": {
   "w": 546,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.HemtJzaVL1zj2EDdbPBDqQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3763,12 +3786,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.Z8qznNUuoyyH_qoTlJyMrQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,
@@ -4160,12 +4177,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.nikkei.com/nkd/disclosure/tdnr/20261008548007/thumbnail/?ttype=ogp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
  },
  "https://www.nishinippon.co.jp/uploads/image/1956168/sns_393201d508_org.jpg": {
   "w": 1200,
