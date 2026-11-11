@@ -402,3 +402,4 @@
 - 2026-11-06 f1：左写真カードの見直し（別の目の指摘）：対象 4 種を明記・.pk.sb は 390px で 0 枚のため規則の外と書いた・guest の scroll_measure 後を取った・test-a〜c は 402 で測れず・予定は _agenda が店長と共通・次：402 解除後に test-a〜c を測る
 - 2026-11-06 plan1：左写真カードは #952・#954・#955 で済み。お客さまの予定は店長と同じ関数・同じ条件（tests/test_diff_admin.py が数える）と確認。402 で test-a〜c は測れず。次の段を 3 つ BACKLOG に足した（402 解除日の再測定・scroll_measure の日次記録・PC の sideGap）
 - 2026-11-06 plan2：左写真カードは #952・#954・#955 で済み（再作業なし）・お客さまの予定は店長と同じ関数と確認済み。計画：BACKLOG が 538 KB（3 日で +100 KB）・制限中の札に戻る目安が無い・登録を押した画面を未確認・日次の記録が別々・同じ部品の他画面を未点検＝5 段を足した。402 継続（state/supabase_status.json: limited）で本番は測らず。次：BACKLOG の整理を最優先
+- 2026-11-11 f1：旧 Supabase の ref の直書きを除いた（scripts/sbconf.py が items.yaml から読む・12 件）・PR #988・CI 緑（10 分）・点検 tests/test_sbconf.py・次：docs/test2 の古い写しと PENDING の OAuth 文書（BACKLOG に足した）
