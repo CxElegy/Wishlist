@@ -4,7 +4,6 @@
   "https://www.sakhaparliament.ru/goods/fashion/z103019154": "2026-11-11"
  },
  "images": {
-  "http://k.sina.com.cn/article_6579089221_m18824ef4503301tq9k.html": "http://n.sinaimg.cn/sinakd20261109ac/321/w480h641/20261109/05d2-5ebb0f3c8b2a59c0754cd0fdbcc07ea6.jpg",
   "https://appmedia.jp/bleach-mh/80520532": "https://appmedia.jp/wp-content/uploads/2026/10/163124_347an.webp",
   "https://appmedia.jp/bleach-mh/80524210": "https://appmedia.jp/wp-content/uploads/2026/10/192831_upygs.webp",
   "https://article.auone.jp/88a96b1c-fd30-4b72-8a19-42bb6ae6cf97": "https://portal.auone.jp/media/thumbnails/2026/11/05/https___newsdig_tbs_co_jp_articles_-_3065223_w1200.webp",
@@ -50,6 +49,7 @@
   "https://travel.udn.com/travel/story/7934/9856463": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/04/35484120.jpg&M=1&s=Y&x=0&y=0&sw=1080&sh=599&exp=3600",
   "https://www.androidpolice.com/best-t-mobile-deals-of-the-month/": "https://static0.anpoimages.com/wordpress/wp-content/uploads/2026/08/samsung-galaxy-z-fold-8-and-google-pixel-10-pro-standing-side-by-side.png?w=1600&h=900&fit=crop",
   "https://www.auroradesio.it/top/218998832/": "https://auroradesio.it/wp-content/uploads/2026/10/treviglio-77-82-800x445.jpg",
+  "https://www.bastillepost.com/hongkong/article/17154481-%E5%91%A8%E6%9D%B0%E5%80%AB%E4%B8%80%E9%A4%90%E6%97%A5%E6%9C%AC%E6%96%99%E7%90%86%E6%9C%89%E5%B9%BE%E8%B1%AA%EF%BC%9F%E5%9B%9B%E7%93%B6%E7%B4%85%E9%85%92%E7%B8%BD%E5%80%BC48%E8%90%AC": "https://media.bastillepost.com/wp-content/uploads/hongkong/static/20230718-default-feature-704x369.jpg",
   "https://www.businesswire.com/news/home/20261103833963/en/Immunocan-Achieves-Megabase-Scale-Human-Immunoglobulin-Gene-Replacement-in-Rabbits-Creating-a-Cross-Species-Data-Engine-for-AI-Driven-Antibody-Discovery": "https://www.bing.com/th?id=ONUT.tOcGfn-wfGPRSyRN6q5YRQ&pid=News&w=1024",
   "https://www.cool-style.com.tw/wd2/archives/1361827-%E3%80%8Aspyxfamily-%E9%96%93%E8%AB%9C%E5%AE%B6%E5%AE%B6%E9%85%92%E3%80%8B%E7%AC%AC%E5%9B%9B%E5%AD%A3%E3%80%81%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%8A%87%E5%A0%B4%E7%89%88%E8%A3%BD%E4%BD%9C%E7%A2%BA/amp": "https://cdn-origin.cool-style.com.tw/cool/2026/11/spy.jpg",
   "https://www.dailysunny.com/2026/11/05/nynews261105/": "https://www.dailysunny.com/wp-content/uploads/2026/10/20251101-Pumpkin-Smash-6-e1791895860938.jpg",
@@ -1177,6 +1177,27 @@
   {
    "batch": 3,
    "because": "周杰伦",
+   "date": "2026-11-10",
+   "hits": [],
+   "image": "https://media.bastillepost.com/wp-content/uploads/hongkong/static/20230718-default-feature-704x369.jpg",
+   "kind": "board",
+   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
+   "score": 7,
+   "source": "巴士的報",
+   "taste": [
+    [
+     "作品:周杰伦",
+     3
+    ]
+   ],
+   "title": "周杰倫一餐日本料理有幾豪？四瓶紅酒總值48萬",
+   "url": "https://www.bastillepost.com/hongkong/article/17154481-%E5%91%A8%E6%9D%B0%E5%80%AB%E4%B8%80%E9%A4%90%E6%97%A5%E6%9C%AC%E6%96%99%E7%90%86%E6%9C%89%E5%B9%BE%E8%B1%AA%EF%BC%9F%E5%9B%9B%E7%93%B6%E7%B4%85%E9%85%92%E7%B8%BD%E5%80%BC48%E8%90%AC",
+   "words": [],
+   "work": "周杰伦"
+  },
+  {
+   "batch": 3,
+   "because": "周杰伦",
    "date": "2026-11-09",
    "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.EAVIPSzGkwSGF90Bz8ENPw&pid=News&w=1200",
@@ -1192,27 +1213,6 @@
    ],
    "title": "周杰倫歎日料開近50萬天價紅酒 網民驚呼：一餐飯飲咗部名車！",
    "url": "https://www.hk01.com/%E5%8D%B3%E6%99%82%E5%A8%9B%E6%A8%82/60408972/%E5%91%A8%E6%9D%B0%E5%80%AB%E6%AD%8E%E6%97%A5%E6%96%99%E9%96%8B%E8%BF%9150%E8%90%AC%E5%A4%A9%E5%83%B9%E7%B4%85%E9%85%92-%E7%B6%B2%E6%B0%91%E9%A9%9A%E5%91%BC-%E4%B8%80%E9%A4%90%E9%A3%AF%E9%A3%B2%E5%92%97%E9%83%A8%E5%90%8D%E8%BB%8A",
-   "words": [],
-   "work": "周杰伦"
-  },
-  {
-   "batch": 3,
-   "because": "周杰伦",
-   "date": "2026-11-08",
-   "hits": [],
-   "image": "http://n.sinaimg.cn/sinakd20261109ac/321/w480h641/20261109/05d2-5ebb0f3c8b2a59c0754cd0fdbcc07ea6.jpg",
-   "kind": "board",
-   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
-   "score": 7,
-   "source": "手机新浪网",
-   "taste": [
-    [
-     "作品:周杰伦",
-     3
-    ]
-   ],
-   "title": "黄渤调侃大嗓儿就像去看周杰伦演唱会，帮周杰伦唱了一段",
-   "url": "http://k.sina.com.cn/article_6579089221_m18824ef4503301tq9k.html",
    "words": [],
    "work": "周杰伦"
   },

@@ -146,7 +146,7 @@
   "漫威电影": 76,
   "哈利波特剧集": 17,
   "ILLIT": 9,
-  "周杰伦": 8,
+  "周杰伦": 12,
   "dota2": 4,
   "滑雪": 3,
   "gelato pique": 3,
@@ -440,7 +440,9 @@
    "blurb": "周杰倫一餐日本料理喝了四瓶紅酒，總值48萬。",
    "weight": "lead",
    "refs": [
-    4
+    4,
+    9,
+    12
    ],
    "image": "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261011_EN_source-web_Jay-Chou-1.jpg"
   },
@@ -469,7 +471,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    10
    ]
   },
   {
