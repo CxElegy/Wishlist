@@ -1,0 +1,18 @@
+{
+ "id": "T-0203",
+ "title": "小元素は 1 版面 1 回だけ飛び出す・影を伸ばさない（Emil、ほぼ変わらない）",
+ "why": "小元素は 1 版面 1 回だけ飛び出す・影を伸ばさない（Emil、ほぼ変わらない） — `.in` のあと `unobserve`、影は最初から 8px（9 枚重ねの drop-shadow を毎コマ描き直さない）、弾み 0.42s `--ease-pop`",
+ "quote": "",
+ "kind": "fix",
+ "priority": 203,
+ "scope": [],
+ "done_when": [
+  "`.in` のあと `unobserve`、影は最初から 8px（9 枚重ねの drop-shadow を毎コマ描き直さない）、弾み 0.42s `--ease-pop`"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:656",
+ "created": "2026-11-12"
+}

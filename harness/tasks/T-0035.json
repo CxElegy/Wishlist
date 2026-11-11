@@ -1,0 +1,19 @@
+{
+ "id": "T-0035",
+ "title": "402 になった日の公開ページ通し点検を毎日の定時に（plan2）：fake402.yml の定時の結果を progress.yml が Discord に 1 行送る",
+ "why": "402 になった日の公開ページ通し点検を毎日の定時に（plan2）：fake402.yml の定時の結果を progress.yml が Discord に 1 行送る。できた条件＝赤の日に通知が出る。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 35,
+ "scope": [
+  ".github/workflows/fake402.yml",
+  ".github/workflows/progress.yml"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:84",
+ "created": "2026-11-12"
+}

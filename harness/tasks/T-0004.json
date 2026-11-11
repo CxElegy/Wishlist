@@ -1,0 +1,20 @@
+{
+ "id": "T-0004",
+ "title": "【依頼・新規ユーザー 2026-11-11】library_design（版面の主題・配色）を回す担い手がない",
+ "why": "【依頼・新規ユーザー 2026-11-11】**library_design（版面の主題・配色）を回す担い手がない** — クラウドの AI 編集は service key を持たない（lib_queue.py）。お客さまだけの新しい版面は仮の主題（template_for・写真の色）のまま。board_added か background の回で、規則で決められる分を当てる。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 4,
+ "scope": [
+  "scripts/lib_queue.py"
+ ],
+ "done_when": [
+  "クラウドの AI 編集は service key を持たない（lib_queue.py）。お客さまだけの新しい版面は仮の主題（template_for・写真の色）のまま。board_added か background の回で、規則で決められる分を当てる。"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:12",
+ "created": "2026-11-11"
+}

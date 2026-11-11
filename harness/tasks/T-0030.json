@@ -1,0 +1,18 @@
+{
+ "id": "T-0030",
+ "title": "ux_check（点検）が本番へ出す Supabase 呼び出しに予算を付ける（plan2 2026-11-05）：測った事実＝点検由来の 24h は auth_enforced 397・can_edit 393・user_login 約 ",
+ "why": "ux_check（点検）が本番へ出す Supabase 呼び出しに予算を付ける（plan2 2026-11-05）：測った事実＝点検由来の 24h は auth_enforced 397・can_edit 393・user_login 約 354（ほぼ全部 HeadlessChrome）。ログイン 1 回ごとに 3 本が走る作りで、点検が毎回本番に同じ 3 本を足している。できた条件＝ux_check の最後に「本番 Supabase への呼び出し N 件（上位 5 パス）」を出し（browser.py の request を数える・負荷は足さない）、--fast 1 回の上限を決めて tests が超過で赤にする。auth_enforced／can_edit は同じ点検の中で 1 回に（ページごとに呼び直していないか）。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 30,
+ "scope": [
+  "harness/browser.py"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:78",
+ "created": "2026-11-05"
+}

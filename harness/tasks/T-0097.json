@@ -1,0 +1,16 @@
+{
+ "id": "T-0097",
+ "title": "店長ログイン後の画面の点検：店長のパスワードを使わない決めなので、test-a の画面で mason・過去のニュースが同じに積まれるかを数える〔--who admin は飛ばす〕",
+ "why": "店長ログイン後の画面の点検：店長のパスワードを使わない決めなので、test-a の画面で mason・過去のニュースが同じに積まれるかを数える〔--who admin は飛ばす〕。",
+ "quote": "",
+ "kind": "visual",
+ "priority": 97,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:298",
+ "created": "2026-11-12"
+}

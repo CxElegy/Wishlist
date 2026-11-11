@@ -1,0 +1,20 @@
+{
+ "id": "T-0015",
+ "title": "【計画 2026-11-06 plan2】BACKLOG.md を読める大きさに戻す（最優先の運用）",
+ "why": "【計画 2026-11-06 plan2】**BACKLOG.md を読める大きさに戻す（最優先の運用）** — 11/3 は 438 KB、いま 538 KB（3 日で +100 KB）。係は毎回これを読むので、読む費用が日々増えている（下の plan1b の同名の段は未着手のまま）。[x] の段を BACKLOG_DONE.md へ（各行は頭の 1 文＋PR の網址だけ残す）、持ち主のいない [~] 28 本（`claims.py --live` が出す）は [ ] に戻すか閉じる。他の係の書き込みと衝突しないよう、1 本の PR で一度にやる。できた条件：BACKLOG.md 150 KB 以下・[ ] と [?] の数が前後で同じ（数えて PR に書く）・tests（BACKLOG を読む試験）と claims.py が通る・HARNESS.md の読む手順に BACKLOG_DONE.md は『探すときだけ』と書く。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 15,
+ "scope": [
+  "harness/claims.py"
+ ],
+ "done_when": [
+  "11/3 は 438 KB、いま 538 KB（3 日で +100 KB）。係は毎回これを読むので、読む費用が日々増えている（下の plan1b の同名の段は未着手のまま）。[x] の段を BACKLOG_DONE.md へ（各行は頭の 1 文＋PR の網址だけ残す）、持ち主のいない [~] 28 本（`claims.py --live` が出す）は [ ] に戻すか閉じる。他の係の書き込みと衝突しないよう、1 本の PR で一度にやる。できた条件：BACKLOG.md 150 KB 以下・[ ] と [?] の数が前後で同じ（数えて PR に書く）・tests（BACKLOG を読む試験）と"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:38",
+ "created": "2026-11-06"
+}

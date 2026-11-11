@@ -1,0 +1,20 @@
+{
+ "id": "T-0206",
+ "title": "字の大きさを 9 段の令牌に・読む字 13px（impeccable、見た目が変わる・見本を先に）",
+ "why": "字の大きさを 9 段の令牌に・読む字 13px（impeccable、見た目が変わる・見本を先に） — 今 20 段・13px 未満 211 か所 → 11/13/15か16/17/21/26/30/40/display、出典などの読む字 13px、等幅の数字は tabular-nums にして JetBrains Mono を外す。testground に本文 15 と 16 の 2 案 → ユーザーに見せる。test_design.py に「読む字 ≥13px」",
+ "quote": "",
+ "kind": "visual",
+ "priority": 206,
+ "scope": [
+  "tests/test_design.py"
+ ],
+ "done_when": [
+  "今 20 段・13px 未満 211 か所 → 11/13/15か16/17/21/26/30/40/display、出典などの読む字 13px、等幅の数字は tabular-nums にして JetBrains Mono を外す。testground に本文 15 と 16 の 2 案 → ユーザーに見せる。test_design.py に「読む字 ≥13px」"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:659",
+ "created": "2026-11-12"
+}

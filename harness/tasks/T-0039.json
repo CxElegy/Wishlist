@@ -1,0 +1,20 @@
+{
+ "id": "T-0039",
+ "title": "【計画 2026-11-04 plan1d】ux_check --who guest だけの回が pages_served で ✗ になる",
+ "why": "【計画 2026-11-04 plan1d】ux_check --who guest だけの回が pages_served で ✗ になる — 測った事実：`ux_check.py --fast --who guest --widths 1400 --emb off` の最後が「✗ ログイン中の写真の配り先：写真・小元素 0 件のうち Pages 0.0%」で点検 ✗ 1 件。ログイン中の人を 1 人も回さない回は測るものが無いので「測れず（–）」にし、✗ にしない（0 件を ✗ にすると、本物の ✗ が埋もれる）。同じ見方：分母 0 の割合を ✗ にしている点検が他に無いかを harness/ で数え、tests に分母 0 → – の 1 件。できた条件：guest だけの回が ✗ 0・test-a/b/c の回で写真が 0 件なら今まで通り ✗。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 39,
+ "scope": [
+  "harness/ux_check.py"
+ ],
+ "done_when": [
+  "測った事実：`ux_check.py --fast --who guest --widths 1400 --emb off` の最後が「✗ ログイン中の写真の配り先：写真・小元素 0 件のうち Pages 0.0%」で点検 ✗ 1 件。ログイン中の人を 1 人も回さない回は測るものが無いので「測れず（–）」にし、✗ にしない（0 件を ✗ にすると、本物の ✗ が埋もれる）。同じ見方：分母 0 の割合を ✗ にしている点検が他に無いかを harness/ で数え、tests に分母 0 → – の 1 件。できた条件：guest だけの回が ✗ 0・test-a/b/c の回で写真が 0 件な"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:110",
+ "created": "2026-11-04"
+}

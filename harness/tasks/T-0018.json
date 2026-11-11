@@ -1,0 +1,20 @@
+{
+ "id": "T-0018",
+ "title": "【計画 2026-11-06 plan2】毎日の記録を 1 本にまとめる",
+ "why": "【計画 2026-11-06 plan2】毎日の記録を 1 本にまとめる — 日次で足す予定の記録が別々（scroll_measure・API の内訳・pages_size・無料枠の gate）。別々の workflow だと commit が日に何本も増え（リポジトリは 1 日 226 commit の数え済み）、push の競合の元にもなる。1 本の daily_metrics（Pages だけを開く・Supabase は route.abort・各 1 回 timeout 付き）が state/daily_metrics.jsonl に 1 日 1 行を足し、悪化を管理ページの赤い 1 行にする。できた条件：1 日の commit が 1 つ・既存の 4 つの記録が同じ行に入る・わざと悪くした値で赤が出る試験・processes.py の流れが 1 本。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 18,
+ "scope": [
+  "scripts/processes.py"
+ ],
+ "done_when": [
+  "日次で足す予定の記録が別々（scroll_measure・API の内訳・pages_size・無料枠の gate）。別々の workflow だと commit が日に何本も増え（リポジトリは 1 日 226 commit の数え済み）、push の競合の元にもなる。1 本の daily_metrics（Pages だけを開く・Supabase は route.abort・各 1 回 timeout 付き）が state/daily_metrics.jsonl に 1 日 1 行を足し、悪化を管理ページの赤い 1 行にする。できた条件：1 日の commit が 1 つ・既存の 4 つの記録"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:41",
+ "created": "2026-11-06"
+}

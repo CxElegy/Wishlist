@@ -1,0 +1,20 @@
+{
+ "id": "T-0212",
+ "title": "D3 話題度ページを「読む記事」に（D3）",
+ "why": "D3 話題度ページを「読む記事」に（D3） — heat.html をスクロールで週の動きが 1 つずつ出る形に（数字は今のまま）。見本を先に見せる",
+ "quote": "",
+ "kind": "fix",
+ "priority": 212,
+ "scope": [
+  "docs/heat.html"
+ ],
+ "done_when": [
+  "heat.html をスクロールで週の動きが 1 つずつ出る形に（数字は今のまま）。見本を先に見せる"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:666",
+ "created": "2026-11-12"
+}

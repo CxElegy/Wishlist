@@ -1,0 +1,18 @@
+{
+ "id": "T-0074",
+ "title": "【free-tier 点検】`.github/workflows/` と `scripts/` に `SUPABASE_ACCESS_TOKEN`・`sbp_` が出たら落ちる 1 assert の unittest を足す（個人アクセストークンはアカウント全体を触れ",
+ "why": "【free-tier 点検】`.github/workflows/` と `scripts/` に `SUPABASE_ACCESS_TOKEN`・`sbp_` が出たら落ちる 1 assert の unittest を足す（個人アクセストークンはアカウント全体を触れる鍵。docs/rules/free-tier.md 決まり 2。2026-11-02 レビュー指摘）。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 74,
+ "scope": [
+  "docs/rules/free-tier.md"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:180",
+ "created": "2026-11-02"
+}

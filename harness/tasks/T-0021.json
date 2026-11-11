@@ -1,0 +1,20 @@
+{
+ "id": "T-0021",
+ "title": "【依頼】スクロールの流畅性（一卡一卡）を直す",
+ "why": "【依頼】**スクロールの流畅性（一卡一卡）を直す**（2026-11-05 ユーザー「スクロールするときの流畅性の問題も解決して」「现在还有点一卡一卡的」「引进网络的有名的 skill 来解决」）。機能 B（render.py）が終わったら 1 本の係で（08:30 UTC になっても B が終わらなければ B を区切って先に）。**使うスキル**（.claude/skills に入れた）：fixing-motion-performance で render.py の CSS/JS を規則ごとに監査（scroll イベントで動かさない・読みと書きを同じ frame で混ぜない・blur/filter・will-change）→ animation-performance の手順（何が動く→診断→報告）→ core-web-vitals の INP・LCP → performance の予算 → performance-optimization の「測る→直す→確かめる（戻した試みも記録）→退行を防ぐ」。中身：①本 2 の①（もっと見るの中身を開いたときに読む・要素 21,900→約 3,700）②画面外の版面に `content-visibility:auto; contain-intrinsic-size` ③scroll/resize の手作業をやめ IntersectionObserver・rAF でまとめる・passive ④画像に decoding=async・小さい枠は 400w ⑤画面外で回るアニメーションを止める。入口の会話がスクロールの測定（CPU 4 倍遅く・長いタスク・描画の内訳）を回しているので、その結果を台本に入れる。確かめ：同じ測り方で前／後（50ms 超の frame の数・p95・長いタスクの合計）を 1400/390 で出し、半分以下。\n  - **測った（2026-11-05 入口）**：`harness/audits/2026-11-05-scroll.md`（原因 8 つを重さの順に・前の数字・後の目安）と測る道具 `harness/scroll_measure.py`（前／後を同じ道具で）。いちばん効く順：①grid 単位の content-visibility（section 全体はダメ＝はみ出す小元素が切れる）②画像ごとの IntersectionObserver 3,400 個を共有の 1 個に ③NAV_JS の scroll で毎 frame 書くのをやめる（IO で今の版面・transform で進み棒）④FIT_JS の load ごとの全 grid の masonry をその grid だけに ⑤ResizeObserver 1,777 個 ⑥AUTH_JS のスマホの scroll ⑦小元素の drop-shadow 10 連。目標：390 のタッチで 50ms 超の frame を 1,284→100 未満、1400 で 25fps 以上、CLS 0.01 未満。",
+ "quote": "スクロールするときの流畅性の問題も解決して",
+ "kind": "fix",
+ "priority": 21,
+ "scope": [
+  "scripts/render.py",
+  "harness/audits/2026-11-05-scroll.md",
+  "harness/scroll_measure.py"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:45",
+ "created": "2026-11-05"
+}

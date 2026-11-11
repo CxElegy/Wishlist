@@ -1,0 +1,18 @@
+{
+ "id": "T-0174",
+ "title": "ゼルダの名簿の分類が別の作品の戦う人（145）：find_sources が CHAR_CATEGORIES の「Playable Characters」を選ぶが、Zelda Wiki のこの分類は Hyrule Warriors・スマブラ",
+ "why": "ゼルダの名簿の分類が別の作品の戦う人（145）：find_sources が CHAR_CATEGORIES の「Playable Characters」を選ぶが、Zelda Wiki のこの分類は Hyrule Warriors・スマブラの参戦者（Bayonetta・Charizard・Captain Falcon・Cadence・Battle-Tested Guardian…109 人）で、名簿も作れなかった（RULES 6 の回で emblem_who null・0 枚） — 分類を選ぶとき、作品の主役（Wikidata の P674 登場人物・Link）が入っている分類だけ使う規則。ゼルダが Link・Zelda・Ganondorf…の名簿から集め直す",
+ "quote": "",
+ "kind": "fix",
+ "priority": 174,
+ "scope": [],
+ "done_when": [
+  "分類を選ぶとき、作品の主役（Wikidata の P674 登場人物・Link）が入っている分類だけ使う規則。ゼルダが Link・Zelda・Ganondorf…の名簿から集め直す"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:611",
+ "created": "2026-11-12"
+}

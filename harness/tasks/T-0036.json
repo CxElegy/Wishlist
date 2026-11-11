@@ -1,0 +1,20 @@
+{
+ "id": "T-0036",
+ "title": "写しが空・欠けた回は Pages を出さない門（plan1 2026-11-05）：測った事実＝pages.yml は actions/cache の restore が外れても通り、harness/pages_photos.py に件数の",
+ "why": "写しが空・欠けた回は Pages を出さない門（plan1 2026-11-05）：測った事実＝pages.yml は actions/cache の restore が外れても通り、harness/pages_photos.py に件数の下限が無い（exit・raise・下限が 0 件）。cache は 7 日使われないと、または 10 GB 枠で消える（11/4 に「Unable to reserve cache」の前例）。消えた回に deploy すると docs/p/ が空のまま本番に出て、全版面の写真が切れる。規則＝写しを読んで公開する道（pages.yml・library_emblem.yml）は、前回の公開件数の 9 割未満なら失敗にして前の版を残す。できた条件＝空の .photo_cache で pages_photos.py が非 0 で終わる unittest・pages.yml の deploy が build に needs で止まる・同じ読み方をする workflow を数えて PR に「連動の範囲：n 件」。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 36,
+ "scope": [
+  ".github/workflows/pages.yml",
+  "harness/pages_photos.py",
+  ".github/workflows/library_emblem.yml"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:98",
+ "created": "2026-11-05"
+}

@@ -1,0 +1,19 @@
+{
+ "id": "T-0019",
+ "title": "【計画 2026-11-06 plan2】『写真の横の字』の点検を、同じ部品を使う全部の画面に（連動の範囲：同じ部品の画面）— 左写真カードの sideGap は店長・お客さまのトップだけで数える",
+ "why": "【計画 2026-11-06 plan2】『写真の横の字』の点検を、同じ部品を使う全部の画面に（連動の範囲：同じ部品の画面）— 左写真カードの sideGap は店長・お客さまのトップだけで数える。同じ形の部品は heat.html・wishlist.html・テーマ見本・お客さまの話題度にもある。HOLE_JS の対象ページを増やし、出たものは部品の規則で直す（ページごとの手直しにしない）。できた条件：ux_check の対象ページすべてで sideGap 0（1400/390・guest）・対象ページの一覧が点検の中に 1 か所で定義されている。",
+ "quote": "",
+ "kind": "visual",
+ "priority": 19,
+ "scope": [
+  "docs/heat.html",
+  "docs/wishlist.html"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:42",
+ "created": "2026-11-06"
+}

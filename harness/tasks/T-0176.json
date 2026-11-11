@@ -1,0 +1,18 @@
+{
+ "id": "T-0176",
+ "title": "キャラの版面で名簿の順位の上から集める（原神：HEAD 5 人のあとは時刻でずらすので 22 位の Zhongli が 6 位の Xingqiu より先）",
+ "why": "キャラの版面で名簿の順位の上から集める（原神：HEAD 5 人のあとは時刻でずらすので 22 位の Zhongli が 6 位の Xingqiu より先） — emblem_fill.subjects のずらしを、取れなかった人だけ後ろへ回す形に（emblem_reject・試した記録）。店長の版面にも同じ規則。原神・ポケモンの小元素が名簿の上から並ぶ",
+ "quote": "",
+ "kind": "fix",
+ "priority": 176,
+ "scope": [],
+ "done_when": [
+  "emblem_fill.subjects のずらしを、取れなかった人だけ後ろへ回す形に（emblem_reject・試した記録）。店長の版面にも同じ規則。原神・ポケモンの小元素が名簿の上から並ぶ"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:613",
+ "created": "2026-11-12"
+}

@@ -1,0 +1,16 @@
+{
+ "id": "T-0105",
+ "title": "写真: 置く順の規則を先頭の次の写真・ギャラリー・欲しい物にも同じく（scan_text の lead/rest を 3 段に：先頭→2 枚目→残り）",
+ "why": "写真: 置く順の規則を先頭の次の写真・ギャラリー・欲しい物にも同じく（scan_text の lead/rest を 3 段に：先頭→2 枚目→残り）。SVG・GIF の先頭は縮めずそのまま出す規則が本当に軽いか Fast 3G で測る（r2f1 2026-10-31）。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 105,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:344",
+ "created": "2026-10-31"
+}

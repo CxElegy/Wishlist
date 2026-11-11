@@ -1,0 +1,18 @@
+{
+ "id": "T-0191",
+ "title": "ログイン直後に店長のページが 15 秒見える（me.html への切り替えが遅い）",
+ "why": "ログイン直後に店長のページが 15 秒見える（me.html への切り替えが遅い） — 店長のページの頭の最初の行で、覚えているお客さまは描く前に me.html へ。test-a で店長の版面が 1 度も見えない",
+ "quote": "",
+ "kind": "fix",
+ "priority": 191,
+ "scope": [],
+ "done_when": [
+  "店長のページの頭の最初の行で、覚えているお客さまは描く前に me.html へ。test-a で店長の版面が 1 度も見えない"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:632",
+ "created": "2026-11-12"
+}

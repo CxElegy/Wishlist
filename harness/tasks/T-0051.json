@@ -1,0 +1,20 @@
+{
+ "id": "T-0051",
+ "title": "【計画 2026-11-04 plan2c】Supabase のファイル置き場の増え方を毎日 1 行にして、1 GB に届く日を数字にする",
+ "why": "【計画 2026-11-04 plan2c】Supabase のファイル置き場の増え方を毎日 1 行にして、1 GB に届く日を数字にする — 測った事実：置き場は 2026-11-02 に 208 MB、2026-11-04 に 258.5 MB（9248 個、execute_sql で storage.objects の size 合計）＝2 日で +50 MB（約 25 MB/日、このままだと約 30 日で無料の 1 GB）。DB は 48→47 MB で横ばい（news 13・live_log 3 MB が大半）。egress ばかり見て、置き場の容量は 11/2 の 1 回きり。できたと言える条件：①`harness/free_tier_gate.py` に置き場の合計と前回比を足し、70% 超で ✗（読むだけの SQL、DB の形は変えない）②増えている中身（photos／emblems／pages のどれが何 MB/日）を PROGRESS に 1 行③上限超えの古い順の消去（photo_store）が本当に効いているか、増えが止まる値を実測で書く。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 51,
+ "scope": [
+  "harness/free_tier_gate.py"
+ ],
+ "done_when": [
+  "①`harness/free_tier_gate.py` に置き場の合計と前回比を足し、70% 超で ✗（読むだけの SQL、DB の形は変えない）②増えている中身（photos／emblems／pages のどれが何 MB/日）を PROGRESS に 1 行③上限超えの古い順の消去（photo_store）が本当に効いているか、増えが止まる値を実測で書く。"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:125",
+ "created": "2026-11-04"
+}

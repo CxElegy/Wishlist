@@ -1,0 +1,19 @@
+{
+ "id": "T-0092",
+ "title": "main への push を減らす・第 2 部（r1f1 2026-11-01：HARNESS の 1 文だけで終わっていた",
+ "why": "main への push を減らす・第 2 部（r1f1 2026-11-01：HARNESS の 1 文だけで終わっていた。24h で main の提交 319＝生成物 196〔重新生成 118・后台作業 49・写真 13〕・人と係 123）：済＝background.yml の 2 つ目の提交を amend で畳んだ〔提交の数だけ減る。push の数は同じ〕。残り＝①render（网页立即更新・digest・requests・background の「重新生成」）を「前の生成から 10 分たっていなければ次の回に回す」にする〔間引くと新しい記事の表示が最大 10 分遅れる＝聞く。木：10 分／30 分／しない〕②BACKLOG・PROGRESS の更新を段の終わりに 1 回へ〔係の手順の変更＝claims.py に 1 日の書き込み数を数える点検を足す〕。物差し＝pages_health の「main への提交」が 24h で半分以下。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 92,
+ "scope": [
+  ".github/workflows/background.yml",
+  "harness/claims.py"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:272",
+ "created": "2026-11-01"
+}

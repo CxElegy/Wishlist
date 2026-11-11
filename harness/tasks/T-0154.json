@@ -1,0 +1,16 @@
+{
+ "id": "T-0154",
+ "title": "【依頼・r4f2 が足した】anon が実行できる security definer 関数の総点検：本番に 41 本〔add_photo・edit_control_set・run_now・set_size・shop_set_password・submit_item・u",
+ "why": "【依頼・r4f2 が足した】anon が実行できる security definer 関数の総点検：本番に 41 本〔add_photo・edit_control_set・run_now・set_size・shop_set_password・submit_item・user_* など〕。「訪問者に要る公開」か「中の門番だけに頼っている」かを 1 本ずつ分け、要らないものは revoke from anon、要るものは許可の一覧（ux_check の ANON_OK_FN 相当）に理由つきで置く。admin_・board_ 以外にも同じ規則を広げる（db の形は変えない・revoke だけ）",
+ "quote": "",
+ "kind": "fix",
+ "priority": 154,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:585",
+ "created": "2026-11-12"
+}

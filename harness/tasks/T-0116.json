@@ -1,0 +1,16 @@
+{
+ "id": "T-0116",
+ "title": "管理ページ②の値照合の残り（r2f2 2026-10-31 別の目の指摘後）：ux_check のマスは data-k で読む形に直した〔列の位置に頼らない〕",
+ "why": "管理ページ②の値照合の残り（r2f2 2026-10-31 別の目の指摘後）：ux_check のマスは data-k で読む形に直した〔列の位置に頼らない〕。同じ考えで、ほかの管理ページの表（③版面ごとの状態 cells.slice(1,4)・①）も data-k に。admin_email_for は authenticated からも revoke〔本番適用〕。残り未達：tokens・editdiff・収集/設計の状態・他人の設定の書き換え。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 116,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:382",
+ "created": "2026-10-31"
+}

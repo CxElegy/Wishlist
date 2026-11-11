@@ -1,0 +1,16 @@
+{
+ "id": "T-0029",
+ "title": "本番の API 呼び出しの内訳（Actions／点検／本物の人）を毎日 1 行にする（plan2 2026-11-05）：測った事実（query_logs の edge_logs を User-Agent で分けた直近 24h・計 9,53",
+ "why": "本番の API 呼び出しの内訳（Actions／点検／本物の人）を毎日 1 行にする（plan2 2026-11-05）：測った事実（query_logs の edge_logs を User-Agent で分けた直近 24h・計 9,530 件）＝Python-urllib（Actions）7,093＝74%・HeadlessChrome（係の点検）2,390＝25%・本物のブラウザ（人）47＝0.5%。egress の約 99.5% は自分たちが出していて、お客さまを増やしても今は誤差。この割合が見えないまま 1 つずつ減らしている。できた条件＝毎日の定時で state に日別 1 行（actions／check／human の件数と上位 3 パス）を残し、管理ページ「無料枠」に出す（DB の形は変えない・query_logs は 1 日 1 回だけ）。人が増えた日に human の割合が上がることを見られる。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 29,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:77",
+ "created": "2026-11-05"
+}

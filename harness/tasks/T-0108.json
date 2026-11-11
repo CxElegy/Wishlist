@@ -1,0 +1,16 @@
+{
+ "id": "T-0108",
+ "title": "【同じ考えで】ux_check の点検を「候補の数と測れた数」で締める（2026-11-01 r1f1）：①写真の余白以外の数え（nohead・heads・hero・tint・ph など）も、候補の総数と測れた数を出して割合を下回れば ✗ にする ②ログ",
+ "why": "【同じ考えで】ux_check の点検を「候補の数と測れた数」で締める（2026-11-01 r1f1）：①写真の余白以外の数え（nohead・heads・hero・tint・ph など）も、候補の総数と測れた数を出して割合を下回れば ✗ にする ②ログイン中（test-a/b/c）の P5 版面で GAP_JS・LOADALL_JS が動く本番確認 ③--fast が 480 秒で打ち切られる件（朝の順番②）は、LOADALL_JS の読み込みを 1 回にまとめて秒数を測る。",
+ "quote": "",
+ "kind": "visual",
+ "priority": 108,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:356",
+ "created": "2026-11-01"
+}

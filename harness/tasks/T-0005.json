@@ -1,0 +1,20 @@
+{
+ "id": "T-0005",
+ "title": "【依頼・新規ユーザー 2026-11-11】gate.py fire が push より前に走る",
+ "why": "【依頼・新規ユーザー 2026-11-11】**gate.py fire が push より前に走る**（background.yml：fire が :154、commit/push が :158-181）— AI 編集が古い inbox/lib/queue.json を読むことがないか確かめ、push のあとに fire する。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 5,
+ "scope": [
+  "scripts/gate.py",
+  ".github/workflows/background.yml",
+  "inbox/lib/queue.json"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:13",
+ "created": "2026-11-11"
+}

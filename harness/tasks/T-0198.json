@@ -1,0 +1,18 @@
+{
+ "id": "T-0198",
+ "title": "C1 版面を「作品の部屋」に（C1）",
+ "why": "C1 版面を「作品の部屋」に（C1） — 記事に加えて基本情報（年表・次の予定・話題度の推移・関連作品）を版面に常設（Wikidata・話題度・event から、AI なし）。空のときは出さない（A7）",
+ "quote": "",
+ "kind": "fix",
+ "priority": 198,
+ "scope": [],
+ "done_when": [
+  "記事に加えて基本情報（年表・次の予定・話題度の推移・関連作品）を版面に常設（Wikidata・話題度・event から、AI なし）。空のときは出さない（A7）"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:651",
+ "created": "2026-11-12"
+}

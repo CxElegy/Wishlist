@@ -1,0 +1,16 @@
+{
+ "id": "T-0138",
+ "title": "顔の大きさが ±11% に収まらない・目の線が合わない（札 big / small / short）小元素を選び方の規則で同じ人の別の写真に替える（2026-10-27 r1f2 が数えた：店長の顔あり 141 枚のうち big/small",
+ "why": "顔の大きさが ±11% に収まらない・目の線が合わない（札 big / small / short）小元素を選び方の規則で同じ人の別の写真に替える（2026-10-27 r1f2 が数えた：店長の顔あり 141 枚のうち big/small 58・short 78〔emblem_face.audit〕。選ぶ側の規則＝候補の顔を emblem_face.measure で測り、view の札のない写真を先に選ぶ。顔の高さ 20〜45% で肩から下がある胸像。落とすだけにすると枚数が減って E10 が出るので、同じ人の札のない候補が見つかったときだけ替える）",
+ "quote": "",
+ "kind": "fix",
+ "priority": 138,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:502",
+ "created": "2026-10-27"
+}

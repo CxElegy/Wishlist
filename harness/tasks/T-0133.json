@@ -1,0 +1,16 @@
+{
+ "id": "T-0133",
+ "title": "ux_check の通し実行を 15 分に収める（f2f2 2026-10-27：guest だけで 15 分かかり、全員の通しは上限を超える",
+ "why": "ux_check の通し実行を 15 分に収める（f2f2 2026-10-27：guest だけで 15 分かかり、全員の通しは上限を超える。ページごとの待ち 40 秒が効いている）— 版面のない殻ページ（heat・terms・themes・wishlist）は待ちを 12 秒に、人ごとに並べて走らせる",
+ "quote": "",
+ "kind": "fix",
+ "priority": 133,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:449",
+ "created": "2026-10-27"
+}

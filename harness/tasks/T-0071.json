@@ -1,0 +1,20 @@
+{
+ "id": "T-0071",
+ "title": "【計画 2026-11-04 plan1】BACKLOG の持ち主のいない [~] 15 行を整理する",
+ "why": "【計画 2026-11-04 plan1】BACKLOG の持ち主のいない [~] 15 行を整理する — `python harness/claims.py BACKLOG.md --live plan1` が 15 行を出す（10・14・34・47・60・86・199・203・215・248・260・369・370・378・422）。行ごとに「済み（[x] に）／まだ要る（[ ] に戻す）／答え待ち（[?]）」を本番で確かめて決め、段の内容は消さない。BACKLOG の縮小（plan1b の段）と同じ PR にしない（順に：整理→縮小）。できた条件：claims.py の出力が 0 行。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 71,
+ "scope": [
+  "harness/claims.py"
+ ],
+ "done_when": [
+  "`python harness/claims.py BACKLOG.md --live plan1` が 15 行を出す（10・14・34・47・60・86・199・203・215・248・260・369・370・378・422）。行ごとに「済み（[x] に）／まだ要る（[ ] に戻す）／答え待ち（[?]）」を本番で確かめて決め、段の内容は消さない。BACKLOG の縮小（plan1b の段）と同じ PR にしない（順に：整理→縮小）。できた条件：claims.py の出力が 0 行。"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:169",
+ "created": "2026-11-04"
+}

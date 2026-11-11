@@ -1,0 +1,21 @@
+{
+ "id": "T-0058",
+ "title": "【計画 2026-11-04 plan1c】公開の場所に「お客さまのメール・名前」が 0 かを毎日数える",
+ "why": "【計画 2026-11-04 plan1c】公開の場所に「お客さまのメール・名前」が 0 かを毎日数える — login.md の「本人と店長だけが見る」は決まりだけで、数える点検が BACKLOG にない。リポジトリは公開（git 管理 1,706 ファイル）。いま docs/・state/・archive/・inbox/ を見ると店長以外のメールは例の example.com だけで、店長の c.elegy@outlook.com が docs/test2/admin.html・docs/home/admin-now.html・admin-system.html・inbox/ 3 日分に出ている（この 5 か所は店長が公開してよいか [?] で聞く）。tests に「git 管理のファイルから、app_users／invites／auth.users に載るお客さまのメール・名前の文字が 0」を数える試験を足し（鍵は読まず、公開のファイル側の正規表現と Actions のログに出した語の一覧だけ）、Discord の通知文・コミット文にも同じ点検をかける。できた条件：0 件を CI が毎回数え、見つかったら赤。店長のメールの扱いは [?] で木の形。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 58,
+ "scope": [
+  "docs/test2/admin.html",
+  "docs/home/admin-now.html"
+ ],
+ "done_when": [
+  "login.md の「本人と店長だけが見る」は決まりだけで、数える点検が BACKLOG にない。リポジトリは公開（git 管理 1,706 ファイル）。いま docs/・state/・archive/・inbox/ を見ると店長以外のメールは例の example.com だけで、店長の c.elegy@outlook.com が docs/test2/admin.html・docs/home/admin-now.html・admin-system.html・inbox/ 3 日分に出ている（この 5 か所は店長が公開してよいか [?] で聞く）。tests に「git 管理のファイルから、a"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:134",
+ "created": "2026-11-04"
+}

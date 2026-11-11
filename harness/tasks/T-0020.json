@@ -1,0 +1,18 @@
+{
+ "id": "T-0020",
+ "title": "【依頼】最優先・今すぐ：係の PR が CI で赤になるのを止める（失敗メール）",
+ "why": "【依頼】**最優先・今すぐ：係の PR が CI で赤になるのを止める（失敗メール）**（2026-11-05 ユーザー「还是不停有 ci fail 啊」）。事実（05:19〜06:14 UTC の 100 run）：赤は 7 本、全部「CI 检查」の PR。main の仕組みの赤は 0。中身：①5 本は **check_arch**（scripts/*.py を触ったのに、その PROCESSES の流れを直していない）＝係が push 前に手元で `python scripts/check_arch.py origin/main` を回していない ②2 本はほかの試験。さらに **#919 が本番の全ページの JS を止め、#929（14:32 JST）まで約 15 分壊れていた**＝CI に JS の文法の確かめが無い。直し（規則で）：①リポジトリに `.githooks/pre-push`（check_arch・変えた scripts の試験・生成した docs/home/*.html の埋め込み JS を `node --check`）を置き、ハーネスが `git config core.hooksPath .githooks` を本体に 1 回（worktree も同じ設定を使う）。赤なら push しない ②CI の「网页能生成」の後に、生成した全ページの埋め込み JS を node --check、さらに本番と同じ 1 ページを Playwright で開いて pageerror 0（ブラウザは CI に入っている）③HARNESS に「PR を出す前に pre-push が緑」を 1 行（係の台本にも）④PR の本文の「架构图：不用改」は簡体字で。確かめ：入れた後の 3 時間で、PR の赤のうち check_arch と JS 文法が 0。",
+ "quote": "还是不停有 ci fail 啊",
+ "kind": "fix",
+ "priority": 20,
+ "scope": [
+  "scripts/check_arch.py"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:44",
+ "created": "2026-11-05"
+}

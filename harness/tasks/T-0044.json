@@ -1,0 +1,18 @@
+{
+ "id": "T-0044",
+ "title": "【計画 2026-11-04 f3f2】`digest all` の他の外の網の道（heat.fetch_signals・discover・hd_images）が網なしで state/ を空にしないかの数え直し",
+ "why": "【計画 2026-11-04 f3f2】`digest all` の他の外の網の道（heat.fetch_signals・discover・hd_images）が網なしで state/ を空にしないかの数え直し — 今回は窓の入れ替わりのみ（recommend 87→86 件・hdimg 712→709）。取り先を 404 を返す偽の網に差した回も通す。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 44,
+ "scope": [],
+ "done_when": [
+  "今回は窓の入れ替わりのみ（recommend 87→86 件・hdimg 712→709）。取り先を 404 を返す偽の網に差した回も通す。"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:117",
+ "created": "2026-11-04"
+}

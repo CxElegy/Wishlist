@@ -1,0 +1,18 @@
+{
+ "id": "T-0060",
+ "title": "【計画 2026-11-04 plan1c】scripts/ の全部に「少なくとも 1 本の試験が触れる」を門にする",
+ "why": "【計画 2026-11-04 plan1c】scripts/ の全部に「少なくとも 1 本の試験が触れる」を門にする — tests から名前で触れられていない scripts は cutshape・face_sample・freeze_test1 の 3 本（49 本中）。新しい scripts/*.py が試験の参照 0 のまま入らないよう、tests に「scripts/*.py の名前が tests/ のどれかに出る」を数える試験を足し、3 本は import だけの煙試験かこの門の許可リスト（理由つき）に入れる。できた条件：参照 0 の scripts が 0（許可リスト以外）、増えたら CI が赤。あわせて check_arch に「許可リストは増やすとき PR に理由」の 1 行。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 60,
+ "scope": [],
+ "done_when": [
+  "tests から名前で触れられていない scripts は cutshape・face_sample・freeze_test1 の 3 本（49 本中）。新しい scripts/*.py が試験の参照 0 のまま入らないよう、tests に「scripts/*.py の名前が tests/ のどれかに出る」を数える試験を足し、3 本は import だけの煙試験かこの門の許可リスト（理由つき）に入れる。できた条件：参照 0 の scripts が 0（許可リスト以外）、増えたら CI が赤。あわせて check_arch に「許可リストは増やすとき PR に理由」の 1 行。"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:136",
+ "created": "2026-11-04"
+}

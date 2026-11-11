@@ -1,0 +1,16 @@
+{
+ "id": "T-0126",
+ "title": "押せない所を全部数える点検（f1 2026-10-27：#545 と同じ「見えるのに押せない」の網羅",
+ "why": "押せない所を全部数える点検（f1 2026-10-27：#545 と同じ「見えるのに押せない」の網羅。ux_check の普段の回で .top/.card/.wc/.poster の中の a・button の真ん中を elementFromPoint で見て本人でなければ ✗、店長のページも含む。pointer-events の継承が原因の入口を数え漏らさない）",
+ "quote": "",
+ "kind": "fix",
+ "priority": 126,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:436",
+ "created": "2026-10-27"
+}

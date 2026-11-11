@@ -1,0 +1,16 @@
+{
+ "id": "T-0111",
+ "title": "（2026-10-31 r3f2 #637 後の --fast：✗ 1 件 test-b settings 390 素の箱 1 個）ux_check ✗ 2 件（#624 合併後 2026-10-30 r1f1 の --fast：guest",
+ "why": "（2026-10-31 r3f2 #637 後の --fast：✗ 1 件 test-b settings 390 素の箱 1 個）ux_check ✗ 2 件（#624 合併後 2026-10-30 r1f1 の --fast：guest 390 の記事どうしの隙間〔dota2 中 24px／間 24px〕、test-c settings 1400 の白い画面・素の箱・ボタンが押せない）。規則で直す。同じ考えで：settings の「素の箱」点検を test-a/b でも数える。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 111,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:375",
+ "created": "2026-10-31"
+}

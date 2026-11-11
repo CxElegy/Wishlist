@@ -1,0 +1,18 @@
+{
+ "id": "T-0033",
+ "title": "photos の edge ログを 24 時間後に数え直す（plan2 2026-11-05）：query_logs で /storage/v1/object/public/photos/ の時間ごとの件数",
+ "why": "photos の edge ログを 24 時間後に数え直す（plan2 2026-11-05）：query_logs で /storage/v1/object/public/photos/ の時間ごとの件数。#900 合併（21:30 UTC）の後は 21 時台以降 0 件。できた条件＝合併後 24h のうち photo_cache.yml の run の時間帯以外が 0。1 件でもあれば User-Agent と時刻で出どころの workflow を特定し nostorage の穴を塞ぐ。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 33,
+ "scope": [
+  ".github/workflows/photo_cache.yml"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:82",
+ "created": "2026-11-05"
+}

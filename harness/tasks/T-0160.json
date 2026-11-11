@@ -1,0 +1,16 @@
+{
+ "id": "T-0160",
+ "title": "ux_check ✗（2026-11-01 r3f2 #705 の後・guest 1400/390）：E2 読めない 10〔FROM・MMORPG 新作 500px-*.jpg が HTTP 403 Forbidden〕・390 だけ E1",
+ "why": "ux_check ✗（2026-11-01 r3f2 #705 の後・guest 1400/390）：E2 読めない 10〔FROM・MMORPG 新作 500px-*.jpg が HTTP 403 Forbidden〕・390 だけ E1 エンブレムなし 1〔三星手机〕。先頭の写真の ✗ は 0。E2 の 403 は点検側の取り方〔UA なしの urllib〕か本当に読めないのかを分けてから、規則で直す。できた条件：guest の E1・E2 が 0。",
+ "quote": "",
+ "kind": "visual",
+ "priority": 160,
+ "scope": [],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:592",
+ "created": "2026-11-01"
+}

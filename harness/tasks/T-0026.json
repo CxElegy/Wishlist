@@ -1,0 +1,18 @@
+{
+ "id": "T-0026",
+ "title": "お客さまのページの「先頭の写真が置き場に無い」（#919 合併後の ux_check --fast：test-a 1400 33 版面・390 34、test-b front 1）",
+ "why": "お客さまのページの「先頭の写真が置き場に無い」（#919 合併後の ux_check --fast：test-a 1400 33 版面・390 34、test-b front 1） — 記事の写真（emblem ではない）。user_pages の imgs.json → photo_store の回で置けているか、egress の制限（storage を読まない）で置けていないかを数で分ける",
+ "quote": "",
+ "kind": "fix",
+ "priority": 26,
+ "scope": [],
+ "done_when": [
+  "記事の写真（emblem ではない）。user_pages の imgs.json → photo_store の回で置けているか、egress の制限（storage を読まない）で置けていないかを数で分ける"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:54",
+ "created": "2026-11-12"
+}

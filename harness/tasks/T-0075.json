@@ -1,0 +1,18 @@
+{
+ "id": "T-0075",
+ "title": "（次）係の手元の写しを埋める：photo_cache.yml の cache を係の環境が読める形にする（今は actions/cache と係の ~/.cache が別で、係の ux_check は常に「測れず」＝写真の形の点検が回らない",
+ "why": "（次）係の手元の写しを埋める：photo_cache.yml の cache を係の環境が読める形にする（今は actions/cache と係の ~/.cache が別で、係の ux_check は常に「測れず」＝写真の形の点検が回らない）。写しが有る回で ✗ が出ないか本番で確かめる。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 75,
+ "scope": [
+  ".github/workflows/photo_cache.yml"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:183",
+ "created": "2026-11-12"
+}

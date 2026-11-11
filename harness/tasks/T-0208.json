@@ -1,0 +1,18 @@
+{
+ "id": "T-0208",
+ "title": "見回りの間隔を版面ごとに・変わっていない RSS は取らない（BENCHMARKS 4-3、速さ）",
+ "why": "見回りの間隔を版面ごとに・変わっていない RSS は取らない（BENCHMARKS 4-3、速さ） — 新着の多い版面は 2 時間、静かな版面は 6〜12 時間（新しい関注項は最優先のまま）。情報員・公式 RSS は ETag / Last-Modified を覚えて 304 なら取らない。収集の時間と「次の回へ」の数を前後で比べる",
+ "quote": "",
+ "kind": "fix",
+ "priority": 208,
+ "scope": [],
+ "done_when": [
+  "新着の多い版面は 2 時間、静かな版面は 6〜12 時間（新しい関注項は最優先のまま）。情報員・公式 RSS は ETag / Last-Modified を覚えて 304 なら取らない。収集の時間と「次の回へ」の数を前後で比べる"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:661",
+ "created": "2026-11-12"
+}

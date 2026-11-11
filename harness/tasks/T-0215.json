@@ -1,0 +1,18 @@
+{
+ "id": "T-0215",
+ "title": "空のアカウントの始め方",
+ "why": "空のアカウントの始め方 — test-c・test-d：最初の 1 つを選ぶ画面（向導と同じ規則、世の中の話題から推薦）→ 選んだらすぐ記事と気になるかも？",
+ "quote": "",
+ "kind": "fix",
+ "priority": 215,
+ "scope": [],
+ "done_when": [
+  "test-c・test-d：最初の 1 つを選ぶ画面（向導と同じ規則、世の中の話題から推薦）→ 選んだらすぐ記事と気になるかも？"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:669",
+ "created": "2026-11-12"
+}

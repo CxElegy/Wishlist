@@ -1,0 +1,20 @@
+{
+ "id": "T-0222",
+ "title": "1 日通しを progress の回に 1 日 1 回つなぐ（--journey、✗ があれば Discord へ）",
+ "why": "1 日通しを progress の回に 1 日 1 回つなぐ（--journey、✗ があれば Discord へ） — できたと言える条件：progress.yml から --journey が走り、結果の 1 行が通知に出る",
+ "quote": "",
+ "kind": "fix",
+ "priority": 222,
+ "scope": [
+  ".github/workflows/progress.yml"
+ ],
+ "done_when": [
+  "progress.yml から --journey が走り、結果の 1 行が通知に出る"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:678",
+ "created": "2026-11-12"
+}

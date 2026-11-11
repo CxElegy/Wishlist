@@ -1,0 +1,18 @@
+{
+ "id": "T-0040",
+ "title": "【計画 2026-11-04 plan1d】boards の PATCH の出所を 24 時間後に確定する",
+ "why": "【計画 2026-11-04 plan1d】boards の PATCH の出所を 24 時間後に確定する — scripts を全部読んだ結果、boards を書く道は library.put_config（at 以外が同じなら書かない）と push_shop の upsert（items.yaml が変わった時と月曜だけ）と key／parent_id の付け替え（変わった時だけ）で、毎回変わる値を書く道は見つからなかった。この環境の query_logs は edge_logs が無く数えられないので、put_config が書いた時に「変わった鍵の名前」を Actions のログに 1 行出すようにした（本件の PR）。できた条件：24 時間後に library_emblem・library_design の run ログの「boards PATCH 版面 … 変わった鍵 …」を数えて PROGRESS に書き、1 日 36 回以下なら [x]。多い鍵があればその鍵だけを指紋の対象から外す／まとめる段を足す。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 40,
+ "scope": [],
+ "done_when": [
+  "scripts を全部読んだ結果、boards を書く道は library.put_config（at 以外が同じなら書かない）と push_shop の upsert（items.yaml が変わった時と月曜だけ）と key／parent_id の付け替え（変わった時だけ）で、毎回変わる値を書く道は見つからなかった。この環境の query_logs は edge_logs が無く数えられないので、put_config が書いた時に「変わった鍵の名前」を Actions のログに 1 行出すようにした（本件の PR）。できた条件：24 時間後に library_emblem・library_d"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:111",
+ "created": "2026-11-04"
+}

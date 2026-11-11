@@ -1,0 +1,24 @@
+{
+ "id": "T-0156",
+ "title": "【依頼】（r1 2026-11-01 済：E1・E2〔Wikimedia への直リンクの 403・10 件〕は規則 localize_remote で消えた https://github.com/CxElegy/Wishlist/pull/713 ",
+ "why": "【依頼】（r1 2026-11-01 済：E1・E2〔Wikimedia への直リンクの 403・10 件〕は規則 localize_remote で消えた https://github.com/CxElegy/Wishlist/pull/713 ・本番 guest ux_check で E1・E2 なし。残り：E4 Pochita 85px〔全身の絵 body の大きさの下限・100px 未満〕；r2 2026-11-01 E4 の根＝_body_len のしゃがみ見積もりが体の大きいマスコットを 1.8 倍に〔Pochita〕→ 1.4 倍までに。本番 ux_check で E4=0 を確かめた）r3 2026-11-01：guest ux_check の残り＝先頭の写真が置き場に無い（picks の buzzap：新しい記事の写真が次の定時の一時保管まで原寸のまま）。根は render のあと一時保管を起こさないこと→render.yml に `photo_store.py --todo` で起こす段を足した。r3f1 2026-11-01：別の目の指摘＝収集の回〔digest.yml・background.yml〕の発布にも同じ段が要る→`photo_store.py --kick` に共通化して render・digest・background・requests の 4 つに足し〔テストで requests.yml の漏れも見つかった〕、tests/test_photo_kick.py が「digest.py render を呼ぶ workflow は全部持つ」を数える。dota2 の頭〔17173 の写真は一時保管でも取れず x〕は残り（sandbox の網では測れない）；guest の ux_check ✗（2026-10-29 r4 本番）：E1 三星手机 エンブレムなし・E4 チェーンソーマン pochita.webp 74px（中央値 74）・E2 三星手机 Samsung wordmark.svg が 403（読めない）。個別に直さず規則で（EMBLEM_PLAYBOOK の型：403 のロゴは取り方・小さい切り抜きは min_side）。E10 は上の [?] の答え待ち",
+ "quote": "",
+ "kind": "fix",
+ "priority": 156,
+ "scope": [
+  ".github/workflows/render.yml",
+  "scripts/photo_store.py",
+  ".github/workflows/digest.yml",
+  ".github/workflows/background.yml",
+  ".github/workflows/requests.yml",
+  "tests/test_photo_kick.py",
+  "scripts/digest.py"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:588",
+ "created": "2026-11-01"
+}

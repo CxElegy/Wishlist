@@ -1,0 +1,20 @@
+{
+ "id": "T-0217",
+ "title": "2 つ目の仕組みを外す",
+ "why": "2 つ目の仕組みを外す — userfeed.py・user_boards の読み書き・JS で描いた版面・左右カード",
+ "quote": "",
+ "kind": "fix",
+ "priority": 217,
+ "scope": [
+  "scripts/userfeed.py"
+ ],
+ "done_when": [
+  "userfeed.py・user_boards の読み書き・JS で描いた版面・左右カード"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:672",
+ "created": "2026-11-12"
+}

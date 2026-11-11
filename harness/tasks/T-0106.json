@@ -1,0 +1,18 @@
+{
+ "id": "T-0106",
+ "title": "版面の先頭の写真以外（「もっと見る」の記事・「気になるかも」の写真）の読み込み順：目次から飛んだ先で 2 枚目以降もぼかしのままにならないか photo_time.py を版面ごとに回して測る（写真 0.5 秒の続き）",
+ "why": "版面の先頭の写真以外（「もっと見る」の記事・「気になるかも」の写真）の読み込み順：目次から飛んだ先で 2 枚目以降もぼかしのままにならないか photo_time.py を版面ごとに回して測る（写真 0.5 秒の続き）。",
+ "quote": "",
+ "kind": "fix",
+ "priority": 106,
+ "scope": [
+  "harness/photo_time.py"
+ ],
+ "done_when": [],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:345",
+ "created": "2026-11-12"
+}

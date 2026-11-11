@@ -1,0 +1,18 @@
+{
+ "id": "T-0202",
+ "title": "動きを減らす設定とスマホのホバーの抜けを埋める（Emil、見た目は変わらない）",
+ "why": "動きを減らす設定とスマホのホバーの抜けを埋める（Emil、見た目は変わらない） — 目次の `cutin` を scale(.86) から 160ms・ease-out にし reduced-motion で止める。ホバーの浮き（`.wc` `.tape` `.top .frame` `.wcard`）を `(hover:hover) and (pointer:fine)` の中へ。👍 の `btn.animate` は reduce のとき色だけ。Playwright で reducedMotion を付けて transform の動きが残らない",
+ "quote": "",
+ "kind": "visual",
+ "priority": 202,
+ "scope": [],
+ "done_when": [
+  "目次の `cutin` を scale(.86) から 160ms・ease-out にし reduced-motion で止める。ホバーの浮き（`.wc` `.tape` `.top .frame` `.wcard`）を `(hover:hover) and (pointer:fine)` の中へ。👍 の `btn.animate` は reduce のとき色だけ。Playwright で reducedMotion を付けて transform の動きが残らない"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:655",
+ "created": "2026-11-12"
+}

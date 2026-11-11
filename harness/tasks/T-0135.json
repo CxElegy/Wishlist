@@ -1,0 +1,18 @@
+{
+ "id": "T-0135",
+ "title": "ページの重さの予算：フォントが 326 本・11MB（2026-10-26 本番計測：空の test-c でも 390px で fonts.gstatic.com 326 本・10.9MB、画像・HTML は 1MB 程度",
+ "why": "ページの重さの予算：フォントが 326 本・11MB（2026-10-26 本番計測：空の test-c でも 390px で fonts.gstatic.com 326 本・10.9MB、画像・HTML は 1MB 程度。HARNESS が 2026-10-22 に直した「フォント 239 本 8.8MB」より増えた〔Noto Sans JP 500/700/900 の 3 太さ × 日本語の細切れ〕。ログイン直後に店長のページの本文を読み込んでから描き替える〔下の「ログイン直後に店長のページが 15 秒見える」〕せいで、見えない字の分も読む） — 見た目を変えずに規則で：使う字だけの 2 太さ以下の woff2 を作り（render の後に pyftsubset、docs/ に置く）、<link> の Google Fonts をやめる。できたと言える条件：本番 test-c・guest・test-a の 390px で最初の 20 秒の転送が 3MB 以下・フォント 20 本以下を ux_check の点検（W：転送量・本数）に足して ✓、見た目の前後 1 枚ずつ（1400/390）で字の形が同じ",
+ "quote": "",
+ "kind": "visual",
+ "priority": 135,
+ "scope": [],
+ "done_when": [
+  "本番 test-c・guest・test-a の 390px で最初の 20 秒の転送が 3MB 以下・フォント 20 本以下を ux_check の点検（W：転送量・本数）に足して ✓、見た目の前後 1 枚ずつ（1400/390）で字の形が同じ"
+ ],
+ "status": "open",
+ "attempts": 0,
+ "notes": [],
+ "frozen": false,
+ "source": "BACKLOG.md:454",
+ "created": "2026-10-26"
+}
