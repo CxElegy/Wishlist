@@ -15,10 +15,10 @@ PR の前に `python scripts/check_arch.py origin/main`・変えた scripts の�
 
 **この回の仕事（順に・最大 max 段・ユーザー『スクロールするときの流畅性の問題も解決して』『现在还有点一卡一卡的』『引进网络的有名的 skill 来解决』）：BACKLOG.md の『スクロールの流畅性』の依頼と、全体点検の本 2 の①（もっと見るの中身 1.96MB を開いたときに読む＝要素 21,900→約 3,700）だけ。★作る前に Skill ツールで core-web-vitals・performance・performance-optimization・animation-performance・fixing-motion-performance を読み込み、その考えに照らして直し方を決める（PR に、どのスキルのどの決まりで直したかを書く）。★入口の測定（PR #948 合併後）：harness/audits/2026-11-05-scroll.md（原因 8 つ・前の数字・後の目安）を先に読み、測るのは harness/scroll_measure.py（前／後を同じ道具で）。今の本番は 1400 で 10.9fps・390 タッチで 50ms 超の frame 1,284。効く順に：①.sec>.grid と .picks>.pkbatch に content-visibility（section 全体は小元素が切れるのでダメ）②EMB_JS late() の画像ごとの IntersectionObserver 3,400→共有 1 個 ③NAV_JS の scroll で毎 frame 書く→IO＋transform ④FIT_JS の load ごとの全 grid の masonry→その grid だけ・読みを先に ⑤ResizeObserver 1,777 ⑥AUTH_JS のスマホ scroll ⑦drop-shadow 10 連。目標：①②③⑥で 1400 26fps・390 タッチ 50ms 超 78。★前／後の数字を必ず出す：本番 1400/390・CPU 4 倍遅く・スクロール中の長いタスクの数と合計・描画（paint/layout）の時間・要素数・最初の HTML の大きさ（harness/browser.py の launch・storage 止め・timeout 付き・各 1 回）。触るファイル：scripts/render.py・docs/home の新しい assets・tests の該当。★機能 B の係も render.py を触ったので、始める前と PR の前に main を取り込む。表示が変わる所（もっと見るを開くと 1 秒以内に中身）を壊さない。DB の形は変えない・消さない。段ごとに PR→CI 緑（测试・402 通し点検の両方を check_runs で）→合併→本番で数字。終わったら worktree を消す。**
 
-## 3. 引っ越しの後片付け（BACKLOG の 3 つ。1 つずつ PR）
+## 3. 引っ越しの後片付け（済：1・2 番目は #960 付近と #988・#990。残りは BACKLOG の「休止の札」の段だけ）
 
-- 写真の配信の毎日の見張りを新サーバーの死活（`/auth/v1/health` が 200／鍵なしなら 401）に替える。応えなければ入口へ知らせる。写真の配信の回数は Pages 側の記録（`pages_served`）で見る。
-- 旧 Supabase（`bzokpnbcjscbcehdxtjq`）を指す残りを `items.yaml` の接続先（`supabase_url`）から読む形に直す。直書きを 1 か所に集め、「旧プロジェクトの ref が残っていない」を数える試験を足す。対象：`scripts/choice_sample.py`・`face_sample.py`・`layout_ba.py`、`harness/emblem_pick_rules.py`・`fake402_check.py`、`.github/workflows/requests.yml`、`hermes/config.example.yaml`、`CLAUDE.md`・`LOGIN.md`・`PENDING.md`。
+- （済 2026-11-07 pc_watch.yml）写真の配信の毎日の見張りを新サーバーの死活（`/auth/v1/health` が 200／鍵なしなら 401）に替える。応えなければ入口へ知らせる。写真の配信の回数は Pages 側の記録（`pages_served`）で見る。
+- （済 2026-11-11 #988・docs/test2 と archive は本 PR）旧 Supabase（`bzokpnbcjscbcehdxtjq`）を指す残りを `items.yaml` の接続先（`supabase_url`）から読む形に直す。直書きを 1 か所に集め、「旧プロジェクトの ref が残っていない」を数える試験を足す。対象：`scripts/choice_sample.py`・`face_sample.py`・`layout_ba.py`、`harness/emblem_pick_rules.py`・`fake402_check.py`、`.github/workflows/requests.yml`、`hermes/config.example.yaml`、`CLAUDE.md`・`LOGIN.md`・`PENDING.md`。
 - 休止の札（`SB_DEG_JS`）を新サーバーの停止（5xx・接続失敗）にも効かせる。見る網址を接続先の設定から決め、402 の判定は残す。`fake402_check` の偽サーバーで 5xx・接続失敗のとき札が出て、復帰したら消えることを試験にする。
 
 ## 参考：スマホの左写真カードの回の文（済み・#952〜#955）
