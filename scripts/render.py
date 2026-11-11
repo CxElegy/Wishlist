@@ -409,6 +409,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .card.c8 h3{font-size:24px;line-height:1.4}.card.c6 h3{font-size:21px;line-height:1.4}
 .card.c4 h3,.card.c3 h3{font-size:17px;line-height:1.45}
 .grid>.hero .pic{aspect-ratio:auto;height:280px}
+.hero.tight{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}.hero.tight h2{font-size:23px}.hero.tight .blurb,.hero.tight .nx{display:none}.grid>.hero.tight .pic{height:auto!important;width:auto!important;aspect-ratio:auto!important;justify-self:stretch!important;align-self:start!important;background:none!important}.grid>.hero.tight .pic img:not(.bg):not(.ico){position:static!important;display:block;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;transform:none!important;inset:auto!important}  /* 枠は写真そのものの形（列の幅いっぱい・高さは写真の比率） */.hero.tight.nw{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.hero.tighter.nw{grid-template-columns:minmax(0,2fr) minmax(0,3fr)}.hero.tighter{grid-template-columns:minmax(0,2fr) minmax(0,3fr)}.hero.tighter h2{font-size:19px}.hero.tightest{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}.hero.tightest h2{font-size:17px}.hero.tightest.nw{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}.hero.capped,.hero.capped.nw{grid-template-columns:auto minmax(0,1fr)}.grid>.hero.capped .pic{justify-self:start!important}.grid>.hero.capped .pic img:not(.bg):not(.ico){width:auto!important;max-width:100%!important;max-height:var(--hmax)!important}  /* 写真の高さを字の高さに（A5）。字の列が残りの幅 */  /* 重大のある版面が画面の割合に入らないとき：重大を詰める（審美基準 F1・C1。字は切らず、要約を外し、写真と字を小さく） */
 .grid>.lead .pic,.mas>.lead .pic{aspect-ratio:auto;height:260px}
 .grid>.lead h2,.mas>.lead h2,.card.wide h3,.mini h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .grid>.lead .blurb,.mas>.lead .blurb,.card.wide .blurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -3599,6 +3600,7 @@ FIT_JS = """
     if (f) trimFit(img, p, f);
     else if (img._edge && !p.classList.contains('fill')) p.style.background = img._edge;   // 全体を見せる絵：周りを絵の端の色に（帯に見えない）
     if (p.closest('.pk')) swapBig(p.closest('.pk').parentElement);
+    if (img.naturalWidth && img._hsp !== img.currentSrc && img.closest('article.hero')) { img._hsp = img.currentSrc; try { spans(); } catch (e) {} }   // 写真ごとに 1 回（fitHeroes の中の fit からは繰り返さない）   // 重大の写真が届いた：版面を画面の割合に収め直す（fitHeroes が写真の形を使う）
   };
   // 気になるかも：大きい枠に横長の絵が入って上下が余るとき、形の合う絵（縦横比 1.1 以下。枠はほぼ正方形）と入れ替える（2026-11-07 店長「黑的留白也算留白」）
   const swapBig = g => {
@@ -4088,7 +4090,25 @@ FIT_JS = """
   once();
   mason();
   document.addEventListener('toggle', e => e.target.matches && e.target.matches('details.older[open]') && setTimeout(mason, 0), true);   // toggle は泡立たない：document で捕まえる（お客さまの版面は JS で描き直されるので、描いた後の details にも効く）
-  const spans = () => { clearTimeout(spt); spt = setTimeout(() => { document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(); }, 150); };
+  // 重大（整行の大きい 1 枚）のある版面も画面の割合（data-vh）に収める：入らなければ、重大のあとの記事を外し（「もっと見る」に残る）、
+  // それでも入らなければ重大を詰める（要約を外す → 写真と字を小さく）。重大は最後まで残す（2026-11-11 審美基準 F1：重大 1 枚で約 450px、M の版面に入らなかった）
+  const unHero = () => document.querySelectorAll('section.sec article.hero').forEach(h => { const was = h.matches('.tight'); h.classList.remove('tight', 'tighter', 'tightest', 'capped'); h.style.removeProperty('--hmax'); const p = h.querySelector('.pic'), im = p && p.querySelector('img:not(.bg):not(.ico)'); if (was && p && im && im.naturalWidth) fit(im); const sec = h.closest('section'); sec.querySelectorAll('[data-hfh]').forEach(c => { c.style.display = ''; delete c.dataset.hfh; }); });
+  const fitHeroes = () => {
+    if (innerWidth <= 760) return;
+    document.querySelectorAll('section.sec').forEach(sec => {
+      const g = sec.querySelector(':scope > .grid'), h = g && g.querySelector(':scope > article.hero'); if (!h || !sec.offsetParent) return;
+      const B = innerHeight * ((+sec.dataset.vh || 70) / 100) - 16 - Math.max(0, (+sec.dataset.embov || 0) - 18), over = () => sec.getBoundingClientRect().height - B;
+      if (over() <= 0) return;
+      [...g.children].filter(c => c !== h && !c.matches('details') && getComputedStyle(c).display !== 'none').forEach(c => { c.style.display = 'none'; c.dataset.hfh = '1'; });   // 途中まで外すと列に穴が開くので、重大のあとはまとめて外す
+      const im = h.querySelector('.pic img:not(.bg):not(.ico)');
+      const p = h.querySelector('.pic');
+      for (const k of ['tight', 'tighter', 'tightest']) { if (over() <= 0) break; h.classList.add(k); }   // 枠は CSS（.hero.tight）で写真そのものの形に
+      // まだ入らない・写真が字より高い（正方形・縦長の写真）：写真の高さを字の高さ（120px 以上）まで下げ、字の列を広げる（A5・F1）
+      const tx = h.querySelector('.txt'), ph = p ? p.getBoundingClientRect().height : 0, th = tx ? tx.getBoundingClientRect().height : 0;
+      if (h.classList.contains('tight') && ph) { const cap = Math.max(120, Math.min(ph - Math.max(0, over()), Math.max(th, 120))); if (cap < ph - 4) { h.classList.add('capped'); h.style.setProperty('--hmax', Math.round(cap) + 'px'); } }   // 枠は写真の形で列の幅いっぱい（絞りと「次のニュース」を出さない：写真の下が空いた）
+    });
+  };
+  const spans = () => { clearTimeout(spt); spt = setTimeout(() => { unHero(); document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(); fitHeroes(); }, 150); };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     if (img.complete) fit(img);
   });
