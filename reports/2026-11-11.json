@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "edit_sig": "7f94ac21d1bd",
+ "edit_sig": "c7a701a6ba1a",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -374,29 +374,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 7,
-     "source": "비욘드포스트",
-     "title": "[문화 이슈] 아일릿 ‘체포하겠어’, 美 빌보드 ‘버블링 언더 핫 100’ 진입",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5WNjBBWkpMNFprZk0wUGRtTHE0SUxpLWVHbVBRb2kwMVRVUkRJdi1MR20wRjdBcm1WUUxFTkJOb1FRb3VZR2toMVgweWt4UTNmOVM5SlZvcUdiM2JNVVZiLTlIcWJhUlZENWVHNUxuSzJ6S2dIVU1uVnYzYw?oc=5"
-    },
-    {
-     "date": "2026-11-06",
-     "n": 8,
-     "source": "Weverse",
-     "title": "ILLITコミュニティの投稿 - 글릿! 프레스 스타트 앙코르 콘서트가 끝났",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1XZ0tyUy01bHhOdk9YM0YyVWNCQ0hRQ3pXODVOTXlKSkp0c2dibmJsRDlXekZ1WVdNdnlFbTVIUzRfbFIyMTJ4TlU2bDlYMFNQbWNwMTBBclJnbHdKQmc?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 9,
-     "source": "ｄメニューニュース",
-     "title": "「ILLIT」の「Do the Dance」、Spotifyで2億ストリーミングを突破…グループ通算6曲目",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNZVJpdUYwWW5zVnJqRVYzR2cwLTdEd1JPaFVFR19XakxyRUxaVFZMWEpjSURqT05ZMmpwVVNnTEFzRkFKRzFBRnJEMk4ySDk3VFVCSzRTVU5WbEw2NmxOeVROOENEM3REU3R4R1hHbzlrVEg2aC1ESmJSMk1Fcjl2Rmw1QzB2UndCNXBweTMwMndyX3V60gGUAUFVX3lxTE1lUml1RjBZbnNWcmpFVjNHZzAtN0R3Uk9oVUVHX1dqTHJFTFpUVkxYSmNJRGpPTlkyanBVU2dMQXNGQUpHMUFGckQyTjJIOTdUVUJLNFNVTlZsTDY2bE55VE44Q0QzdERTdHhHWEdvOWtUSDZoLURKYlIyTUVyOXZGbDVDMHZSd0I1cHB5MzAyd3JfdXo?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -427,6 +404,16 @@
      "image": "https://mediamixi.jp/app/uploads/2026/11/1110-01.jpg",
      "image_via": "og:image",
      "url": "https://mediamixi.jp/column/18381/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "「ILLIT」の「Do the Dance」、Spotifyで2億ストリーミングを突破…グループ通算6曲目",
+     "highlight": "2億ストリーミング",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261111wow003.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/amp/article/wowkorea/entertainment/wowkorea-20261111wow003",
      "weight": "normal"
     }
    ],

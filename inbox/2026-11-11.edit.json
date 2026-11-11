@@ -137,7 +137,7 @@
   "三星手机": 39,
   "漫威电影": 58,
   "哈利波特剧集": 17,
-  "ILLIT": 6,
+  "ILLIT": 9,
   "周杰伦": 8,
   "dota2": 4,
   "滑雪": 2,
@@ -368,7 +368,8 @@
    "weight": "lead",
    "refs": [
     4,
-    1
+    1,
+    7
    ],
    "image": "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261110wow056.jpg"
   },
@@ -388,6 +389,15 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "「ILLIT」の「Do the Dance」、Spotifyで2億ストリーミングを突破…グループ通算6曲目",
+   "highlight": "2億ストリーミング",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
    ]
   }
  ],
