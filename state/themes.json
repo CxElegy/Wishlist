@@ -623,6 +623,16 @@
   "font": "serif",
   "split": false
  },
+ "hero|https://images.pushsquare.com/76e10b1c421ef/1280x720.jpg": {
+  "accent": "#E6B24C",
+  "alt_accent": "#8F6614",
+  "alt_bg": "#F3EFE7",
+  "alt_fg": "#1A1C22",
+  "bg": "#261F12",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "hero|https://images.thedirect.com/media/article_full/1000012072.jpg": {
   "accent": "#D97D59",
   "alt_accent": "#A64A26",

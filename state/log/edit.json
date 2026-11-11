@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-09T20:37:42+00:00",
-"text": "2026-11-10 第 10 バッチを出刊：あつ森（1 版面・1 本・残り 1 版面） · token 新規入力 1,552・キャッシュ読み 41.9万・出力 963",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.5,
-"mem_total": 16867737600,
-"mem_free": 15976894464,
-"disk_used": 10097397760,
-"disk_free": 31186137088,
-"disk_total": 41283534848,
-"peak": 356188160
-},
-"batch": 10,
-"boards": [
-"あつ森"
-],
-"stories": 1,
-"left": 1,
-"edited": 15,
-"run": 1794252828.5773687,
-"tok": {
-"in": 8,
-"cw": 1544,
-"cr": 418649,
-"out": 963,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 421164
-},
-{
 "at": "2026-11-09T20:41:09+00:00",
 "text": "2026-11-10 第 11 バッチを出刊：ぐでたま（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 1,753・キャッシュ読み 42.5万・出力 824",
 "level": "ok",
@@ -1940,5 +1908,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1019971
+},
+{
+"at": "2026-11-11T05:42:35+00:00",
+"text": "2026-11-11 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、ILLIT、dota2、あつ森 ほか 4（10 版面・21 本・残り 7 版面） · token 新規入力 4.9万・キャッシュ読み 112.0万・出力 5,164",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.52,
+"mem_total": 16867414016,
+"mem_free": 15868203008,
+"disk_used": 10103025664,
+"disk_free": 31180509184,
+"disk_total": 41283534848,
+"peak": 461463552
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"ILLIT",
+"dota2",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"日本顶级网球赛事",
+"漫威电影"
+],
+"stories": 21,
+"left": 7,
+"edited": 17,
+"run": null,
+"tok": {
+"in": 32,
+"cw": 48626,
+"cr": 1119601,
+"out": 5164,
+"calls": 17,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1173423
 }
 ]
