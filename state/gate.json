@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-11T04:17:45+00:00",
+ "changed": true,
+ "checked": "2026-11-11T05:17:57+00:00",
  "fired": {
-  "at": "2026-11-11T04:18:01+00:00",
+  "at": "2026-11-11T05:18:15+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -22,19 +22,19 @@
    "edit": 14
   },
   "2026-11-11": {
-   "edit": 6
+   "edit": 7
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-11T01:29:08+00:00",
+    "at": "2026-11-11T05:18:15+00:00",
     "attempts": 1,
     "day": "2026-11-11",
-    "prog": 202,
-    "resp": "cse_01W4x6f5vfiaifp3rzN88BPe",
-    "sig": "54578e3705aa"
+    "prog": 286,
+    "resp": "cse_01W4x6f9DJvhVgJbAbPPn4Wq",
+    "sig": "998f417eb1ae"
    },
    "items": [
     "A2O LITE",
@@ -56,11 +56,16 @@
    "need": true,
    "prog": 286,
    "prog_day": "2026-11-11",
-   "ripe": [],
-   "sig": "830b334bb260",
+   "ripe": [
+    "A2O LITE",
+    "Vaundy",
+    "猫用品",
+    "绝区零"
+   ],
+   "sig": "998f417eb1ae",
    "token_cap": 1000000,
    "tokens_today": 610351,
-   "why": "整理待ちの記事 15 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 15 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
