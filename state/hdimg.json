@@ -73,6 +73,12 @@
   "target": 720,
   "v": 3
  },
+ "http://www.mountainwatch.com/wp-content/uploads/2026/11/Screenshot-2026-11-09-at-2.07.42-PM.png": {
+  "w": 1408,
+  "h": 786,
+  "target": 720,
+  "v": 3
+ },
  "http://wx1.sinaimg.cn/middle/006dNg2Pgy1iiw0880yj3j30ta1ef794.jpg": {
   "w": 1054,
   "h": 1815,
@@ -400,12 +406,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.autodaily.co.kr/news/photo/202611/601977_203885_5646.png": {
-  "w": 852,
-  "h": 692,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:knsszrujdducsne2yxvzqhph/bafkreicczdpct6piix74afri5nro77n4kfxkapjxsb2ygs5jsxsmcptouy": {
   "w": 1536,
   "h": 1920,
@@ -549,9 +549,9 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.topstarnews.net/news/photo/202611/16273912_2085144_5931_crop.jpg": {
-  "w": 1200,
-  "h": 675,
+ "https://cdn.topstarnews.net/news/photo/202611/16273906_2085141_5412.jpg": {
+  "w": 1600,
+  "h": 1138,
   "target": 720,
   "v": 3
  },
@@ -627,6 +627,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://cimg.kgl-systems.io/camion/files/93725/thumbnail_YJih.jpg?x=1280": {
+  "w": 1280,
+  "h": 721,
+  "target": 1280,
+  "v": 3
  },
  "https://cimg.kgl-systems.io/camion/files/dengeki/93627/af99687dd719c4e8bc6a39e946c3d9ef7.jpg?x=1280": {
   "w": 1280,
@@ -803,6 +809,12 @@
  "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-4ef0c2fe9d94848d446023cf3bbeb6c1-20261101-87200d.jpg": {
   "w": 1166,
   "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
+ "https://e.usen.com/image/c3ef5c988985d1f8a4fca0aed25b72c9bdc59a30.jpg": {
+  "w": 850,
+  "h": 481,
   "target": 1280,
   "v": 3
  },
@@ -1133,6 +1145,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.newdaily.co.kr/site/data/img/2026/11/11/2026111100337_0.jpg?u=20261111174521": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
   "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/a/3/a36dc_1604_88a23a30_4ddd025c.jpg": {
@@ -1486,6 +1504,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.gamewith.jp/article/thumbnail/gamearticle/18874/rectangle/65621.jpg?t=1794376432": {
+  "w": 600,
+  "h": 315,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.584,
+  "local": "pics/d6f50dc23c7d1089.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清"
+ },
  "https://img.gamewith.jp/article/thumbnail/gamearticle/19062/rectangle/65455.jpg?t=1794014759": {
   "w": 600,
   "h": 315,
@@ -1585,6 +1616,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://img.toy-people.com/member/179440828215_1200.jpg": {
+  "w": 1200,
+  "h": 798,
+  "target": 720,
   "v": 3
  },
  "https://img.trendforce.com/blog/wp-content/uploads/2026/02/26155341/Samsung-Galaxy-S26-v5.jpg": {
@@ -1749,6 +1786,12 @@
   "why": "看不清"
  },
  "https://m.media-amazon.com/images/I/419UKeIQVTL._SL500_.jpg": {
+  "w": 500,
+  "h": 500,
+  "target": 720,
+  "v": 3
+ },
+ "https://m.media-amazon.com/images/I/41Y4BusObzL._SL500_.jpg": {
   "w": 500,
   "h": 500,
   "target": 720,
@@ -2210,6 +2253,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-00121891-president-000-1-view.jpg?exp=10800": {
+  "w": 1340,
+  "h": 825,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/2fb91e512367fba3.webp",
+  "out": [
+   1280,
+   788
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2382,6 +2437,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/173853/6/173853-6-ed0ba1e5aa452926d73a9c5389a82d41-1280x853.jpg": {
+  "w": 1280,
+  "h": 853,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/18505/4587/18505-4587-bebfe856e674b513b3c8a75956b34dcb-1500x650.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1500,
   "h": 650,
@@ -2398,6 +2459,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/30133/919/30133-919-6583ad30b5ec0b185d812c6c0513ad74-1200x630.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/55787/1080/55787-1080-355f0e8982c8566a433b1b72105f2285-874x583.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -2649,6 +2716,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.378
+ },
+ "https://static.sanyonews.jp/image/article/size1/0/4/2/a/042a1b12585c38456947632a8f942cc5_1.jpg": {
+  "w": 640,
+  "h": 267,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/0/4/7/8/047891ef5abc2da9f3a2359a4c8aa816_1.jpg": {
   "w": 640,
@@ -3189,6 +3262,12 @@
   "v": 3,
   "blur": 0.347
  },
+ "https://www.billboard-japan.com/common/sys/img/news/00000167/167355/image.jpg": {
+  "w": 999,
+  "h": 999,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.billboard.com/wp-content/uploads/2026/11/MLK.jpg?w=1024": {
   "w": 1024,
   "h": 677,
@@ -3388,12 +3467,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.ZY9UPIJyu9WlL8F-OY3dIQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,

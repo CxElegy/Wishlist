@@ -56,7 +56,11 @@
   "漫威电影": 29,
   "三星手机": 21,
   "Astrae Oratio": 12,
-  "哈利波特剧集": 12
+  "哈利波特剧集": 12,
+  "滑雪": 12,
+  "チェーンソーマン": 11,
+  "ILLIT": 8,
+  "MMORPG 新作": 7
  },
  "漫威电影": [
   {
@@ -280,6 +284,160 @@
     5,
     6,
     12
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "アジア初の会員制スノーリゾート「THE CLUB TOGARI」長野発のアーティスト、スノーギア・ウェアブランドが集結！",
+   "highlight": "THE CLUB TOGARI",
+   "blurb": "長野発のアーティストやスノーギア・ウェアブランドが集まる、アジア初の会員制スノーリゾートのイベント。",
+   "weight": "lead",
+   "refs": [
+    12
+   ]
+  },
+  {
+   "headline": "Dear Niseko. Video",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Union Force Classic Snowboard Binding Review (2026)",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "headline": "人気スキーリゾートの”ゲレンデガール“を選出するオーディションイベント第3弾！「ゲレンデガール2027〜黒伏高原スノーパーク公認PRモデルになろう〜」を開催",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "サイバーエージェント、『呪術廻戦』『チェンソーマン』制作のMAPPAと業務提携。親会社MHDへの出資も発表",
+   "highlight": "MAPPAと業務提携",
+   "blurb": "サイバーエージェントがMAPPAと業務提携し、親会社MHDへの出資も発表した。",
+   "weight": "lead",
+   "refs": [
+    2,
+    5,
+    6,
+    7,
+    9
+   ],
+   "image": "https://cimg.kgl-systems.io/camion/files/93725/thumbnail_YJih.jpg?x=1280"
+  },
+  {
+   "headline": "｢チェンソーマン｣作者が嫉妬した…公開から1カ月半過ぎても口コミと上映館が増え続ける\"奇跡の長編アニメ\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "T-ARTS「劇場版『チェンソーマン レゼ篇』 ポチタいっぱいコレクション～Dancing Edition～」がカプセルトイに登場！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    1
+   ]
+  },
+  {
+   "headline": "『チェンソーマン』マキマ大人気！ 人気漫画家のファンアートに注目",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "【ビルボード】Vaundy「しわあわせ」ストリーミング・ソング3連覇 ILLIT「You're Under Arrest」トップ10入り＆Kvi Babaが急浮上",
+   "highlight": "トップ10入り",
+   "blurb": "Billboard JAPANのストリーミング・ソング集計で、ILLIT「You're Under Arrest」がトップ10入りした。",
+   "weight": "lead",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "ILLIT、最新アルバムが米「ビルボード200」で初登場6位 K-POPガールグループ史上7組目のトップ10入り",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "아일릿, 일본 오리콘 11위·12위 나란히…‘체포하겠어’ 8계단 상승·재생 108만회 증가",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    1
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "PC向けMMORPG『リネージュ クラシック』事前ダウンロードが開始！11月13日(金)に事前キャラクター作成が可能に！",
+   "highlight": "11月13日(金)",
+   "blurb": "『リネージュ クラシック』のPC版で事前ダウンロードが始まり、11月13日に事前キャラクター作成が可能になる。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-13",
+    "label": "事前キャラ作成"
+   }
+  },
+  {
+   "headline": "World of Warcraft: Forever review: \"A love letter to the MMORPG I fell for over 20 years ago, with familiar charm enhanced by smart additions\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "[컨콜] 엔씨 \"AI로 대체 어려운 'MMO 게임' 경쟁력 강화 … 내년 신작 10종 출시\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    4
    ]
   }
  ]

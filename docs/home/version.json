@@ -1,14 +1,14 @@
 {
- "admin": "a98fa6e0bad3",
- "admin-ai": "16b482037b10",
+ "admin": "73845c95acc4",
+ "admin-ai": "c0377f4e7285",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c91c282b"
+   "fd47aac5"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0228fff2"
+   "973c4ed2"
   ]
  },
  "admin-boards": "2fd9e555dd3c",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "2b84eaf9478f",
+ "admin-emblem": "824d543ab695",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "dcbf4a26"
+   "600caacd"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "521369f980a9",
  "admin-members_marks": {},
- "admin-now": "285c79e10a9f",
+ "admin-now": "e96bdc44573b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2d332d45"
+   "b492d05e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c222d25f"
+   "78c6bf76"
   ]
  },
- "admin-system": "13bdd40cf0d6",
+ "admin-system": "ab9f4bf342c3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b1ec7ee9"
+   "a596661d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "29ad8f73"
+   "b00a7cd9"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "8847befb"
   ]
  },
- "index": "100cffe82783",
+ "index": "a44b064261fd",
  "index_marks": {
   "front": [
    "トップ",
-   "5702d6b5"
+   "e0ebf0cc"
   ],
   "picks": [
    "気になるかも？",
@@ -137,11 +137,11 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "b949c3c3"
+   "d256e03d"
   ],
   "w-79b3c280": [
    "滑雪",
-   "3b6ed21a"
+   "27bdec8f"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "44cd3228"
+   "3489dc9c"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "86c9ed01"
+   "59fa5d8c"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "87ee473e"
+   "f11ee3e5"
   ],
   "w-f303ad09": [
    "绝区零",
    "4abaf7c1"
   ]
  },
- "updated": "11.12 03:17",
+ "updated": "11.12 03:22",
  "wishlist": "0030e99a3588"
 }
