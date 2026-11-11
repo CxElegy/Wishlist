@@ -73,6 +73,7 @@
   "https://www.ludens.com.tw/cartoon-crime-steam-full-release/": null,
   "https://www.mirror.co.uk/lifestyle/cats-sleep-ball-vet-explains-37861967": "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700",
   "https://www.newsandstar.co.uk/news/26706566.benjamin-bunny-beatrix-potter-50p-coin-listed-ebay-35k/": "https://www.newsandstar.co.uk/resources/images/21378190/",
+  "https://www.notebookcheck.net/Samsung-Galaxy-S27-series-Good-camera-news-for-Pro-and-Ultra-bad-news-for-S27-and-S27.1447045.0.html": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Samsung-Galaxy-S27-Serie-Gute-Kamera-News-fuer-Pro-und-Ultra-lausige-fuer-Galaxy-S27-und-Galaxy-S27-Plus.jpg",
   "https://www.sakhaparliament.ru/goods/fashion/z103019154": null,
   "https://www.sina.cn/news/detail/5363482586520099.html": "http://wx3.sinaimg.cn/middle/006ZneWLly1iiwcku2k3zj31hi0lxnng.jpg",
   "https://www.sisajournal-e.com/news/articleView.html?idxno=424841": "https://www.bing.com/th?id=ONUT.6GeaSh256dvaR-rLRZKfRA&pid=News&w=700",
@@ -945,6 +946,39 @@
   },
   {
    "batch": 1,
+   "because": "三星手机",
+   "date": "2026-11-10",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Samsung-Galaxy-S27-Serie-Gute-Kamera-News-fuer-Pro-und-Ultra-lausige-fuer-Galaxy-S27-und-Galaxy-S27-Plus.jpg",
+   "kind": "board",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "score": 8,
+   "source": "Notebookcheck",
+   "taste": [
+    [
+     "galaxy",
+     7
+    ],
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
+    ]
+   ],
+   "title": "Samsung Galaxy S27 series: Good camera news for Pro and Ultra, bad news for S27 and S27+",
+   "url": "https://www.notebookcheck.net/Samsung-Galaxy-S27-series-Good-camera-news-for-Pro-and-Ultra-bad-news-for-S27-and-S27.1447045.0.html",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-11-10",
    "hits": [],
@@ -1007,7 +1041,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "GTA 6",
    "date": "2026-11-10",
    "hits": [],
@@ -1112,7 +1146,7 @@
    "work": "gelato pique"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "周杰伦",
    "date": "2026-11-10",
    "hits": [],
@@ -1217,7 +1251,7 @@
    "work": "BLEACH Mirrors High"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-10",
    "hits": [],
@@ -1322,7 +1356,7 @@
    "work": "哈利波特剧集"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "The Mandalorian",
    "date": "2026-11-08",
    "hits": [],
@@ -1421,7 +1455,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "FROM",
    "date": "2026-11-09",
    "hits": [],
@@ -1855,11 +1889,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1871,11 +1905,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ]
  ]
