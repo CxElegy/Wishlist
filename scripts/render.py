@@ -391,6 +391,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .calm .pic{flex:0 0 120px;height:62px;aspect-ratio:auto;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
 .calm .txt{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
 .calm .tag{background:var(--acc);color:var(--bg);letter-spacing:.12em}
+.card.mini>.tag{justify-self:start;width:max-content}  /* 重大の札は字の幅だけ（小さいカードの格子で横いっぱいの赤い帯になった） */
 .calm .status{font-size:15px;line-height:1.6}
 .calm .last{flex:0 1 40%;display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:1.5;border-left:1px solid color-mix(in srgb,currentColor 25%,transparent);padding-left:20px}
 .calm .last .mono{font:13px var(--font-num);letter-spacing:.06em;opacity:.75}
@@ -1141,7 +1142,7 @@ def _timeline(stories, today, budget=SIZE_HEIGHT["M"], limit=SIZE_COUNT["M"], si
         by_rank = sorted(newest_first(stories), key=lambda x: RANK.get(x.get("weight"), 2))
         for k in range(min(limit, len(by_rank)), 0, -1):
             keep = newest_first(by_rank[:k])
-            if k == 1 or _height(keep, side) <= budget:
+            if k <= min(3, limit) or _height(keep, side) <= budget:   # 3 本までは高さによらず残す（版面に 1 本だけは ✗。画面に収めるのは網页の fitBoard。2026-11-11 店長「整个板块只有一个新闻」）
                 break
     kept = {id(x) for x in keep}
     rest = [x for x in stories if id(x) not in kept]
@@ -3863,7 +3864,7 @@ FIT_JS = """
     return run;
   };
   const fitBoard = (m, gap) => {
-    m.querySelectorAll(':scope > .pfill').forEach(x => x.remove()); { const s0 = m.closest('section'); if (s0) s0.querySelectorAll('[data-pfo]').forEach(c => { c.style.display = ''; delete c.dataset.pfo; }); }   // 前の組で埋め草に回した「もっと見る」の記事を戻す   // 前の組で空きに並べた整理待ちを外してから組む
+    m.querySelectorAll(':scope > .pfill, :scope > article > .pfill').forEach(x => x.remove()); { const s0 = m.closest('section'); if (s0) s0.querySelectorAll('[data-pfo]').forEach(c => { c.style.display = ''; delete c.dataset.pfo; }); }   // 前の組で埋め草に回した「もっと見る」の記事を戻す   // 前の組で空きに並べた整理待ちを外してから組む
     { const pd = m.closest('section') && m.closest('section').querySelector('details.pend'); if (pd) pd.style.display = ''; }
     const cs = [...m.children];
     cs.forEach(c => { if (c.dataset.fbh) { c.style.display = ''; delete c.dataset.fbh; } });   // 前の組で出さなかった記事を戻してから組む
@@ -3918,6 +3919,13 @@ FIT_JS = """
         if (s > 1) [0, 0.25, 0.5, 0.75, 1].forEach(q => { const ph = lo + (hi - lo) * q; o.push({k: 'W', s, w, lo: ph, hi: ph, h: () => t + ph, a: () => w * ph}); });   // 2 列分は高さを決め打ち（列ごとの伸び縮みと混ぜない）
         else o.push({k: 'S', s, w, lo, hi, h: x => t + x, a: x => w * x});
       }
+      // 重大：2 列分で写真を左・字を右（R2）も。大きいが高くならない（W だと写真だけで 400px になり画面に入らなかった）。写真は切らず、枠は写真の形
+      if (i === 0 && c.dataset.hero && k >= 2) {
+        boardForm(c, {k: 'R2', s: 2, pw: 100, ph: 20}); const W2 = c.getBoundingClientRect().width;
+        boardForm(c, {k: 'R2', s: 2, pw: Math.round(W2 * 0.5), ph: 20}); const th = H(c);   // 字の列の高さ（写真をごく低くしたとき）
+        if (W2) for (const pw0 of [W2 * 0.3, W2 * 0.36, W2 * 0.42, W2 * 0.5, W2 * 0.58, Math.min(W2 * 0.6, Math.max(W2 * 0.25, th * nat))]) { const pw = Math.round(pw0), ph = pw / nat; boardForm(c, {k: 'R2', s: 2, pw, ph}); const hh = H(c); if (!clamped(c)) o.push({k: 'R2', s: 2, pw, lo: ph, hi: ph, h: () => hh, a: () => pw * ph, b: () => Math.max(0, ph - th) * (W2 - pw)}); }   // b：写真が字より高いとき字の下に空く広さ（A5）
+      }
+      if (i === 0 && c.dataset.hero && k >= 2 && o.some(x => x.s > 1)) return o.filter(x => x.s > 1);   // 重大は 2 列分の形だけ（審美基準 C1：重大がいちばん大きい）
       return o.length ? o : [fixed(c)];
     };
     let best = null; const cands = [];
@@ -3990,6 +3998,25 @@ FIT_JS = """
       }
       if (!ul.children.length) box.remove();
     }
+    // 重大（R2：写真左・字右）の字の下が写真より短く空くときも、同じ見出しで埋める（A5・A6。正方形の写真の重大で字の下が 60px 空いた。2026-11-11）
+    { const c0 = vis[0], f0 = best.f[0];
+      if (c0 && c0.dataset.hero && f0 && f0.k === 'R2' && used < items.length) {
+        const kids = [...c0.children].filter(x => !x.matches('.pic, .lk, .pfill') && x.offsetHeight), bot = kids.length ? Math.max(...kids.map(x => x.getBoundingClientRect().bottom)) : 0;
+        const d = Math.round(c0.querySelector(':scope > .pic').getBoundingClientRect().bottom - bot - 8);
+        if (d >= 48) {
+          const box = document.createElement('div'); box.className = 'pfill'; box.style.height = d + 'px'; box.style.gridColumn = '2';
+          box.innerHTML = (d >= 80 ? '<h5>ほかの記事</h5>' : '') + '<ul></ul>'; const ul = box.querySelector('ul'); c0.append(box);
+          while (used < items.length) {
+            const it = items[used]; let li;
+            if (it.li) { li = it.li.cloneNode(true); li.querySelectorAll('small').forEach(x => x.remove()); }
+            else { const a = it.c.querySelector('a.lk[href]'); li = document.createElement('li'); const b = document.createElement('a'); b.href = a.href; b.target = '_blank'; b.rel = 'noopener'; b.textContent = it.c.querySelector('h3,h2').textContent.trim(); li.append(b); }
+            ul.append(li); if (box.scrollHeight > box.clientHeight + 1) { li.remove(); break; }
+            if (it.c) { it.c.style.display = 'none'; it.c.dataset.pfo = '1'; }
+            used++;
+          }
+          if (!ul.children.length) box.remove();
+        }
+      } }
     if (pend && pl.length && used >= pl.length) pend.style.display = 'none';
     m.dataset.fit = best.k + ':' + best.f.map(f => f.k).join(',');
     if (window.WL_FB_DEBUG) (window.WL_FB_LOG = window.WL_FB_LOG || []).push([m.closest('section') && m.closest('section').dataset.k, best.k, best.c2, best.f.map(f => f.k + ':' + Math.round(f.ph || 0))]);
@@ -4007,16 +4034,17 @@ FIT_JS = """
         m = document.createElement('div'); m.className = 'mas'; g.insertBefore(m, ks[0]); ks.forEach(c => { m.append(c); mro && mro.observe(c); });
       }
       // 大きい記事（lead・c8）＋右の束（.side）＋小さいカードの版面も、PC では全部を小さいカードにして fitBoard に組ませる（頭の記事は先頭へ。fitBoard が一番大きくする）。
-      // 2026-11-09 審美基準 F1・A2：店長のページの版面が画面 2 枚分の高さ・右下が大きく空いていた。重大（hero）の版面は今のまま
-      if (!m && innerWidth > 760 && !g.dataset.flat && !g.querySelector(':scope > article.hero') && g.querySelector(':scope > article.card.lead, :scope > .side')) {
+      // 2026-11-09 審美基準 F1・A2：店長のページの版面が画面 2 枚分の高さ・右下が大きく空いていた。
+      // 2026-11-11：重大（hero）の版面も同じ（重大を先頭に・fitBoard が一番大きくする）。重大だけ残してほかを隠す・重大の横を空けるのは ✗（店長「整个板块只有一个新闻」「这么大空当」）
+      if (!m && innerWidth > 760 && !g.dataset.flat && g.querySelector(':scope > article.card.lead, :scope > .side, :scope > article.card.hero') && g.querySelectorAll(':scope > article.card, :scope > .side > article.card').length >= 2) {
         g.dataset.flat = '1';
         g.querySelectorAll(':scope > .side').forEach(s => { while (s.firstChild) g.insertBefore(s.firstChild, s); s.remove(); });
-        const ld = g.querySelector(':scope > article.card.lead');
+        const ld = g.querySelector(':scope > article.card.hero') || g.querySelector(':scope > article.card.lead');
         if (ld) { const p0 = ld.querySelector(':scope > .pic'); if (p0) unnarrow(ld, p0); g.prepend(ld); }
         const sp = 'c6';
         g.querySelectorAll(':scope > article.card:not(.mini)').forEach(k => {
           const tx = k.querySelector(':scope > .txt, :scope > .ltx'); if (tx) { while (tx.firstChild) k.insertBefore(tx.firstChild, tx); tx.remove(); }
-          k.classList.remove('lead', 'wide', 'c12', 'c8', 'rs1', 'rs2', 'rs3', 'rs4', 'nw', 'tall', 'ls'); k.classList.add('mini', sp);
+          if (k.matches('.hero')) k.dataset.hero = '1'; k.classList.remove('hero', 'tight', 'tighter', 'tightest', 'capped', 'lead', 'wide', 'c12', 'c8', 'rs1', 'rs2', 'rs3', 'rs4', 'nw', 'tall', 'ls'); k.classList.add('mini', sp);
           const h2 = k.querySelector(':scope > h2'); if (h2) { const h3 = document.createElement('h3'); h3.innerHTML = h2.innerHTML; h2.replaceWith(h3); }
           const b = k.querySelector(':scope > .blurb'); if (b) b.hidden = true;
         });
@@ -4099,7 +4127,6 @@ FIT_JS = """
       const g = sec.querySelector(':scope > .grid'), h = g && g.querySelector(':scope > article.hero'); if (!h || !sec.offsetParent) return;
       const B = innerHeight * ((+sec.dataset.vh || 70) / 100) - 16 - Math.max(0, (+sec.dataset.embov || 0) - 18), over = () => sec.getBoundingClientRect().height - B;
       if (over() <= 0) return;
-      [...g.children].filter(c => c !== h && !c.matches('details') && getComputedStyle(c).display !== 'none').forEach(c => { c.style.display = 'none'; c.dataset.hfh = '1'; });   // 途中まで外すと列に穴が開くので、重大のあとはまとめて外す
       const im = h.querySelector('.pic img:not(.bg):not(.ico)');
       const p = h.querySelector('.pic');
       for (const k of ['tight', 'tighter', 'tightest']) { if (over() <= 0) break; h.classList.add(k); }   // 枠は CSS（.hero.tight）で写真そのものの形に

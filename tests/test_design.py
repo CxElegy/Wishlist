@@ -123,13 +123,16 @@ class Components(unittest.TestCase):
             self.assertIn('class="xplay"', render._tcard(story, 4, 0, "2026-10-15", **kw), kw)
 
     def test_hero_board_fits_screen_ratio(self):
-        """2026-11-11 F1：重大（整行の大きい 1 枚）のある版面も画面の割合（data-vh）に収める。入らなければ重大のあとの記事を外し（もっと見るに残る）、
-        重大を詰める（要約を外す → 写真と字を小さく → 写真の高さを字の高さに）。字は切らない。"""
+        """2026-11-11 F1・C1：重大（hero）の版面も fitBoard で組む（重大を先頭・2 列分の形だけ：写真を上〔W〕か写真を左・字を右〔R2〕）。
+        版面に 1 本だけ・重大の横の大きな空きは ✗（店長「整个板块只有一个新闻」「这么大空当」）：3 本までは高さによらず残し、字の下の空きは見出しで埋める。"""
         js, css = render.FIT_JS, render.CSS
-        for s in ("const fitHeroes = () =>", "unHero();", "mason(); fitHeroes();", "['tight', 'tighter', 'tightest']", "h.classList.add('capped')"):
+        for s in (":scope > article.card.hero') || g.querySelector(':scope > article.card.lead')", "k.dataset.hero = '1'", "k: 'R2', s: 2", "c0.dataset.hero && f0 && f0.k === 'R2'"):
             self.assertIn(s, js)
-        for s in (".hero.tight .blurb,.hero.tight .nx{display:none}", ".grid>.hero.tight .pic img:not(.bg):not(.ico){position:static!important", ".hero.capped,.hero.capped.nw{grid-template-columns:auto minmax(0,1fr)}"):
-            self.assertIn(s, css)
+        self.assertNotIn("c.dataset.hfh = '1'", js)   # 重大以外の記事を隠さない
+        self.assertIn(".card.mini>.tag{justify-self:start", css)
+        st = lambda i, w="normal": {"headline": f"h{i}", "weight": w, "url": f"https://e.com/{i}", "_issue": "2026-11-10", "date": "2026-11-10", "image": f"https://e.com/{i}.jpg"}
+        grid, rest = render._timeline([st(0, "hero")] + [st(i) for i in range(1, 6)], "2026-11-10", budget=render.SIZE_HEIGHT["S"], limit=render.SIZE_COUNT["S"], side=render.SIZE_SIDE["S"])
+        self.assertGreaterEqual(grid.count("<article"), 3)
 
     def test_aesthetic_audit_2026_11_11(self):
         """2026-11-11 審美基準で全体を点検して直した規則：見出しは「…」で切らない（D3）・字体は令牌だけ（D2。中国語のページは端末の中国語フォント 1 種類）・
