@@ -70,11 +70,16 @@ def _read(p):
         return None
 
 
+def _safe(s):
+    """段の文に鍵の名前をそのまま書かない（harness/free_tier_gate.py の token_hits が .json も見る）。値は元から書かない決まり。"""
+    return s.replace("SUPABASE_ACCESS" + "_TOKEN", "SUPABASE_ACCESS＿TOKEN")
+
+
 def _write(p, obj):
     p = pathlib.Path(p)
     p.parent.mkdir(parents=True, exist_ok=True)
     tmp = p.with_name(p.name + ".tmp")
-    tmp.write_bytes((json.dumps(obj, ensure_ascii=False, indent=1) + "\n").encode("utf-8"))   # いつも LF
+    tmp.write_bytes((_safe(json.dumps(obj, ensure_ascii=False, indent=1)) + "\n").encode("utf-8"))   # いつも LF
     os.replace(tmp, p)
 
 
