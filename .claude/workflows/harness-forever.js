@@ -17,7 +17,7 @@ const PC = !!(args && args.pc)   // 店長の PC（Windows・D:/Claude/Wishlist�
 const PC_SWAP = [
   ['/home/user/Wishlist', 'D:/Claude/Wishlist'],
   ['GitHub は mcp__github__ のツール（ToolSearch で読み込む）、Supabase は mcp__Supabase__（旧プロジェクトにつながる。いまの DB の接続先は items.yaml の supabase_url＝docs/rules/local-pc.md。読む・足すだけ。DROP・DELETE・表の形を変える文はしない）。',
-   'ここは店長の PC（Windows・Git Bash）。GitHub は gh コマンド（gh pr create・gh pr checks・gh pr merge --squash）。python は D:/Claude/Wishlist/.venv/Scripts/python.exe。データベースは店長の PC の自前版 Supabase（docs/rules/local-pc.md）：係は読むだけ、DB を変える SQL は書かずに BACKLOG を [?] にして主の会話に任せる。旧 Supabase（bzokpnbcjscbcehdxtjq）は使わない。画面を作る・直すときは docs/rules/aesthetic.md（店長の審美基準）で採点してから出す。'],
+   'ここは店長の PC（Windows・Git Bash）。GitHub は gh コマンド（gh pr create・gh pr checks・gh pr merge --squash）。python は D:/Claude/Wishlist/.venv/Scripts/python.exe。データベースは店長の PC の自前版 Supabase（docs/rules/local-pc.md）：係は読むだけ、DB を変える SQL は書かずに BACKLOG を [?] にして主の会話に任せる。旧 Supabase（クラウド側・docs/rules/local-pc.md）は使わない。画面を作る・直すときは docs/rules/aesthetic.md（店長の審美基準）で採点してから出す。'],
   ['PR は push → mcp__github__create_pull_request（本文の最後に「🤖 Generated with [Claude Code](https://claude.com/claude-code)」）。CI は get_check_runs で見て',
    'push の前に bash harness/ci_local.sh（CI と同じ検査）を通す。PR は push → gh pr create（本文の最後に「🤖 Generated with [Claude Code](https://claude.com/claude-code)」）。CI は gh pr checks で見て'],
   ['`python -m unittest discover -s tests` を全部通す。', '`D:/Claude/Wishlist/.venv/Scripts/python.exe -m unittest discover -s tests` を全部通す（Windows だけで落ちるネットワークの試験は ci_local.sh の結果で判断）。'],
