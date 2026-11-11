@@ -20,7 +20,10 @@
     80,
     111,
     101,
-    112
+    112,
+    126,
+    119,
+    118
    ],
    "image": "https://blog.playstation.com/tachyon/2048/11/f1fb77ba440f1402ae155dc56989230e7a24c2f8-scaled.jpg"
   },
@@ -65,7 +68,8 @@
     102,
     103,
     105,
-    109
+    109,
+    123
    ],
    "image": "https://d1lss44hh2trtw.cloudfront.net/assets/articles/2026/11/10/gta-6-gator_feature.jpg"
   },
@@ -90,7 +94,10 @@
     99,
     107,
     110,
-    116
+    116,
+    117,
+    121,
+    129
    ]
   },
   {
@@ -128,12 +135,13 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    65
+    65,
+    127
    ]
   }
  ],
  "_covered": {
-  "GTA 6": 116,
+  "GTA 6": 129,
   "三星手机": 39,
   "漫威电影": 76,
   "哈利波特剧集": 17,

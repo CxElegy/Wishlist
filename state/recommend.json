@@ -59,6 +59,7 @@
   "https://www.famitsu.com/article/202611/93631": "https://cimg.kgl-systems.io/camion/files/93631/thumbnail_eCqL.jpg?x=1280",
   "https://www.highpoint.edu/blog/2026/11/hpu-president-nido-qubein-encourages-gratitude-by-giving-teddy-bears-to-freshmen/": "https://www.highpoint.edu/media/home/2026/11/HPU1-Teddy-Bears.jpg",
   "https://www.hk01.com/%E5%8D%B3%E6%99%82%E5%A8%9B%E6%A8%82/60408972/%E5%91%A8%E6%9D%B0%E5%80%AB%E6%AD%8E%E6%97%A5%E6%96%99%E9%96%8B%E8%BF%9150%E8%90%AC%E5%A4%A9%E5%83%B9%E7%B4%85%E9%85%92-%E7%B6%B2%E6%B0%91%E9%A9%9A%E5%91%BC-%E4%B8%80%E9%A4%90%E9%A3%AF%E9%A3%B2%E5%92%97%E9%83%A8%E5%90%8D%E8%BB%8A": "https://www.bing.com/th?id=ONUT.EAVIPSzGkwSGF90Bz8ENPw&pid=News&w=1200",
+  "https://www.inc.com/michael-tasner/grand-theft-auto-6-release-marketing-strategy/91432100": "https://www.bing.com/th?id=ONUT.EyomwJdWYWeo9u0fkui1Hw&pid=News&w=1200",
   "https://www.indiatvnews.com/entertainment/ott/hbo-harry-potter-and-the-philosopher-stone-series-gets-release-date-know-when-you-can-stream-it-2026-11-10-1059088": "https://www.bing.com/th?id=ONUT.Ennz4NzU-OFd8Ie1pbar2g&pid=News&w=1200",
   "https://www.inside-games.jp/article/2026/11/09/190576.html": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1804705.jpg",
   "https://www.ludens.com.tw/aveltuner-open-world-magic-game/": null,
@@ -74,7 +75,6 @@
   "https://www.techrepublic.com/article/news-ipad-mini-oled-vs-galaxy-tab-s11/": "https://assets.techrepublic.com/uploads/2026/11/ipad-mini-oled-vs-galaxy-tab-s11-featured.jpg?f=jpeg",
   "https://www.tradingview.com/news/tradingview:9314a801afcf3:0-tower-resources-ltd-twr-reports-high-grade-gold-intercepts-at-rabbit-north/": "https://s.tradingview.com/static/images/illustrations/news-story.jpg",
   "https://www.usatoday.com/story/money/food/2026/11/04/starbucks-2026-winter-holiday-cup-designs/92587403007/": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gKeR9.img",
-  "https://www.vgchartz.com/article/469616/grand-theft-auto-vi-goes-gold/": "https://www.vgchartz.com/articles_media/images/playstation-cancels-fairgame-haven-to-become-support-studio-247297_featured.jpg",
   "https://www.walkerland.com.tw/subject/view/425592": "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/11/1794076799818-f99995fec3984437b513196269c50607-850x446.webp",
   "https://www.walkerplus.com/article/32990/image156127.html": "https://news.walkerplus.com/article/32990/156121_615.jpg",
   "https://www.webook.com.tw/acg-news/2026-11-10-webook-news-11/": "https://www.webook.com.tw/wp-content/uploads/2026/11/71247-691-9e7389461016464bbb2e25c974770f9e-1269x713-1.webp"
@@ -999,19 +999,19 @@
    "because": "GTA 6",
    "date": "2026-11-10",
    "hits": [],
-   "image": "https://www.vgchartz.com/articles_media/images/playstation-cancels-fairgame-haven-to-become-support-studio-247297_featured.jpg",
+   "image": "https://www.bing.com/th?id=ONUT.EyomwJdWYWeo9u0fkui1Hw&pid=News&w=1200",
    "kind": "board",
    "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
    "score": 8,
-   "source": "VGChartz",
+   "source": "Inc.com",
    "taste": [
     [
      "作品:GTA 6",
      6
     ]
    ],
-   "title": "Grand Theft Auto VI Goes Gold",
-   "url": "https://www.vgchartz.com/article/469616/grand-theft-auto-vi-goes-gold/",
+   "title": "GTA 6 Is About to Break Every Record. Millions of Fans Did Its Marketing for Free In the Process",
+   "url": "https://www.inc.com/michael-tasner/grand-theft-auto-6-release-marketing-strategy/91432100",
    "words": [],
    "work": "GTA 6"
   },
@@ -1836,11 +1836,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1848,15 +1848,15 @@
    8
   ],
   [
-   "三星 Galaxy",
-   7
-  ],
-  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
+   7
+  ],
+  [
+   "三星 Galaxy",
    7
   ]
  ]
