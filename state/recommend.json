@@ -64,7 +64,6 @@
   "https://www.inside-games.jp/article/2026/11/09/190576.html": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1804705.jpg",
   "https://www.ludens.com.tw/aveltuner-open-world-magic-game/": null,
   "https://www.mirror.co.uk/lifestyle/cats-sleep-ball-vet-explains-37861967": "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700",
-  "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%A8%E3%81%AE-%E3%82%AD%E3%82%B9-%E3%81%8C%E5%8E%9F%E5%9B%A0%E3%81%A7%E8%B5%B7%E3%81%93%E3%82%8A%E3%81%86%E3%82%8B%E7%97%85%E6%B0%973%E9%81%B8-%E9%81%BF%E3%81%91%E3%82%8B%E3%81%B9%E3%81%8D%E7%90%86%E7%94%B1%E3%82%84%E7%9F%A5%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%8D%E3%81%9F%E3%81%84%E4%BA%88%E9%98%B2%E7%AD%96/ar-AA2haGge": "https://www.bing.com/th?id=ONUT.qm0dLRfzCB8chFSYEn2smQ&pid=News&w=400",
   "https://www.newsandstar.co.uk/news/26706566.benjamin-bunny-beatrix-potter-50p-coin-listed-ebay-35k/": "https://www.newsandstar.co.uk/resources/images/21378190/",
   "https://www.newsweek.com/starbucks-cups-resold-for-hundreds-of-dollars-now-theyre-available-again-12670183": "https://assets.newsweek.com/wp-content/uploads/2026/11/Copy-of-3-2-image-71.png?w=1200&crop=1",
   "https://www.notebookcheck.net/Samsung-Galaxy-S27-series-Good-camera-news-for-Pro-and-Ultra-bad-news-for-S27-and-S27.1447045.0.html": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Samsung-Galaxy-S27-Serie-Gute-Kamera-News-fuer-Pro-und-Ultra-lausige-fuer-Galaxy-S27-und-Galaxy-S27-Plus.jpg",
@@ -967,35 +966,6 @@
   },
   {
    "batch": 1,
-   "because": "猫用品",
-   "date": "2026-11-10",
-   "hits": [
-    "猫"
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.qm0dLRfzCB8chFSYEn2smQ&pid=News&w=400",
-   "kind": "board",
-   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
-   "score": 8,
-   "source": "ねこちゃんホンポ on MSN",
-   "taste": [
-    [
-     "猫",
-     6
-    ],
-    [
-     "作品:猫用品",
-     5
-    ]
-   ],
-   "title": "猫との『キス』が原因で起こりうる病気3選 避けるべき理由や知っておきたい予防策",
-   "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%A8%E3%81%AE-%E3%82%AD%E3%82%B9-%E3%81%8C%E5%8E%9F%E5%9B%A0%E3%81%A7%E8%B5%B7%E3%81%93%E3%82%8A%E3%81%86%E3%82%8B%E7%97%85%E6%B0%973%E9%81%B8-%E9%81%BF%E3%81%91%E3%82%8B%E3%81%B9%E3%81%8D%E7%90%86%E7%94%B1%E3%82%84%E7%9F%A5%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%8D%E3%81%9F%E3%81%84%E4%BA%88%E9%98%B2%E7%AD%96/ar-AA2haGge",
-   "words": [
-    "猫"
-   ],
-   "work": "猫用品"
-  },
-  {
-   "batch": 1,
    "because": "GTA 6",
    "date": "2026-11-10",
    "hits": [],
@@ -1049,7 +1019,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-11-10",
    "hits": [],
@@ -1154,7 +1124,7 @@
    "work": "绝区零"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "gelato pique",
    "date": "2026-11-06",
    "hits": [],
@@ -1259,7 +1229,7 @@
    "work": "BLEACH Mirrors High"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "漫威电影",
    "date": "2026-11-10",
    "hits": [],
@@ -1364,7 +1334,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "The Mandalorian",
    "date": "2026-11-08",
    "hits": [],
@@ -1463,7 +1433,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "滑雪",
    "date": "2026-11-10",
    "hits": [],
@@ -1852,11 +1822,11 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ]
  ]

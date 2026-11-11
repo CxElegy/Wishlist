@@ -1596,6 +1596,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbwEr.img": {
+  "w": 1000,
+  "h": 558,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img": {
   "w": 504,
   "h": 339,
@@ -3831,19 +3837,6 @@
   "out": [
    1280,
    719
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.qm0dLRfzCB8chFSYEn2smQ&pid=News&w=400": {
-  "w": 400,
-  "h": 400,
-  "target": 720,
-  "v": 3,
-  "blur": 0.532,
-  "local": "pics/77da8d7b35f131b9.webp",
-  "out": [
-   720,
-   720
   ],
   "why": "看不清"
  },
