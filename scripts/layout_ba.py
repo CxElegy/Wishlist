@@ -10,6 +10,8 @@ import json
 import sys
 from pathlib import Path
 
+import sbconf
+
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "harness"))
@@ -18,7 +20,7 @@ import layout_sample as ls  # noqa: E402
 
 OUT = ROOT / "docs/testground/layout-v2.html"
 IMG = ROOT / "docs/testground/layout-v2"
-SUPA = ("https://bzokpnbcjscbcehdxtjq.supabase.co", "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC")
+SUPA = sbconf.pair()   # 接続先は items.yaml から（scripts/sbconf.py）
 WIDTHS = (1400, 390)
 # 場所ごとの「指摘された困りごと」（ユーザーの言葉・測った事実）。数字の文は place_html が測った値から作る（場所ごとに違う）。
 WHY = {

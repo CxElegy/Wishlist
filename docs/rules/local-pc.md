@@ -29,7 +29,7 @@ DB とログインは店長の PC に引っ越した。作業（会話・係・�
    - 道具：`D:\Claude\SupabaseLocal\backup.ps1`（置き場 `backups\`）・`restore-test.ps1`（使い捨てのコンテナに戻して本番と行数を比べる。2026-11-07 に合格）・`register-tasks.ps1`（Windows のタスクに登録）。
    - vault の `github_dispatch_token` は、別の DB に戻すと復号の鍵が変わることがある。読めなければ `set-github-token.ps1` で入れ直す。
 3. 見張り：旧 Supabase の `query_logs` は使えない。PC が止まると PC では知らせられないので、外側の `pc_watch.yml` が毎時 `/auth/v1/health` を見て（200・401 は届いている）、変わったときだけ Discord へ知らせる。
-4. 旧 Supabase の住所が残っている所（見本を作る scripts の `SUPA`、harness・hermes の例）は `items.yaml` から読む形に直す（BACKLOG）。
+4. 接続先は `scripts/sbconf.py` が `items.yaml` から読む（見本を作る scripts の `SUPA`・harness）。旧 Supabase の ref はコードに直書きしない（`tests/test_sbconf.py` が数える・2026-11-11 済み）。
 
 ## PC とクラウドの AI 編集のつなぎ方（2026-11-07，用户定的）
 

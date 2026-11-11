@@ -6,9 +6,11 @@ import html
 import re
 from pathlib import Path
 
+import sbconf
+
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs/testground"
-SUPA = ("https://bzokpnbcjscbcehdxtjq.supabase.co", "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC")
+SUPA = sbconf.pair()   # 接続先は items.yaml から（scripts/sbconf.py）
 # 版面 -> (作っている会社の言い方, 先頭 8 本 [(題, 出典, 写真)])。順番は本番の board の並びのまま。
 SNAP = {
     "iPhone": (["Apple", "アップル"], [

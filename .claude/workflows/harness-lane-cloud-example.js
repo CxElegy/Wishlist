@@ -19,7 +19,7 @@ const COMMON = `【緊急・最優先（2026-11-02 21:30 UTC、入口の会話�
 【無料枠の決まり（2026-11-02・最優先）：本番の写真は写し（~/.cache/wl_photo_cache、埋めるのは photo_cache.yml だけ）から読み、本番の Supabase の *.supabase.co/storage/ から落とさない（FILL_MAX は 0 のまま）。ブラウザは harness/browser.py の launch だけ。本番に向けた点検（ux_check など）は、この段の確かめの 1 回だけ・timeout 付き。見本ページ（docs/testground/）は写真を GitHub Pages か手元の写しで出し、storage の網址を直書きしない。写しが空なら「測れず」。】
 リポジトリ /home/user/Wishlist（CxElegy/Wishlist）。最初に HARNESS.md・BACKLOG.md・CLAUDE.md・WORKING.md を main の最新で読み（触る分野の docs/rules/*.md も。CLAUDE.md の索引の表）、その決まりで動く。
 作業は自分専用の worktree：\`git -C /home/user/Wishlist fetch -q origin main && git -C /home/user/Wishlist worktree add -f ${SP}/wt/{ID} -B harness/{ID} origin/main\`。メインの作業ツリーには書かない。一時ファイルは ${SP}/tmp/。
-GitHub は mcp__github__ のツール（ToolSearch で読み込む）、Supabase は mcp__Supabase__（プロジェクト bzokpnbcjscbcehdxtjq。読む・足すだけ。DROP・DELETE・表の形を変える文はしない）。
+GitHub は mcp__github__ のツール（ToolSearch で読み込む）、Supabase は mcp__Supabase__（旧プロジェクトにつながる。いまの DB の接続先は items.yaml の supabase_url＝docs/rules/local-pc.md。読む・足すだけ。DROP・DELETE・表の形を変える文はしない）。
 PR は push → mcp__github__create_pull_request（本文の最後に「🤖 Generated with [Claude Code](https://claude.com/claude-code)」）。CI は get_check_runs で見て、走っている間は手元のテストや画面の点検など別の作業をする（ただ待たない）。緑なら squash で合併、赤なら直して push。
 scripts/*.py か workflow を変えたら scripts/processes.py も（check_arch）。\`python -m unittest discover -s tests\` を全部通す。コミットの最後に
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
