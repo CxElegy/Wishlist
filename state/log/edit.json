@@ -1,45 +1,5 @@
 [
 {
-"at": "2026-11-10T19:52:07+00:00",
-"text": "2026-11-11 第 1 バッチを出刊：Astrae Oratio、GTA 6、gelato pique、あつ森、ぐでたま、三星手机 ほか 3（9 版面・19 本・残り 2 版面） · token 新規入力 5.2万・キャッシュ読み 124.9万・出力 4,715",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.28,
-"mem_total": 16867737600,
-"mem_free": 16028000256,
-"disk_used": 9733279744,
-"disk_free": 31550255104,
-"disk_total": 41283534848,
-"peak": 329945088
-},
-"batch": 1,
-"boards": [
-"Astrae Oratio",
-"GTA 6",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"三星手机",
-"周杰伦",
-"滑雪",
-"漫威电影"
-],
-"stories": 19,
-"left": 2,
-"edited": 10,
-"run": null,
-"tok": {
-"in": 34,
-"cw": 52286,
-"cr": 1249476,
-"out": 4715,
-"calls": 18,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1306511
-},
-{
 "at": "2026-11-10T19:55:07+00:00",
 "text": "2026-11-11 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、GTA 6、gelato pique、あつ森、ぐでたま ほか 4（10 版面・22 本・残り 1 版面） · token 新規入力 5.6万・キャッシュ読み 157.8万・出力 6,205",
 "level": "ok",
@@ -2191,5 +2151,37 @@
 "calls": 10,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-12T21:43:30+00:00",
+"text": "2026-11-13 第 3 バッチを出刊：漫威电影（1 版面・5 本・残り 2 版面） · token 新規入力 9,318・キャッシュ読み 94.7万・出力 2,448",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.59,
+"mem_total": 16867414016,
+"mem_free": 15868375040,
+"disk_used": 10110156800,
+"disk_free": 31173378048,
+"disk_total": 41283534848,
+"peak": 410165248
+},
+"batch": 3,
+"boards": [
+"漫威电影"
+],
+"stories": 5,
+"left": 2,
+"edited": 23,
+"run": 1794518542.014707,
+"tok": {
+"in": 25,
+"cw": 9293,
+"cr": 947124,
+"out": 2448,
+"calls": 13,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 958890
 }
 ]

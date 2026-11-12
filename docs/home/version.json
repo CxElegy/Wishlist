@@ -1,10 +1,10 @@
 {
- "admin": "0e726565ea45",
- "admin-ai": "1706ab5cd793",
+ "admin": "f4f520464524",
+ "admin-ai": "a41da5be4010",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9c53b813"
+   "51527f04"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "7b8973c0604b",
+ "admin-emblem": "aa5f9ce679ee",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d2b310a0"
+   "998b6482"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "1110265f918d",
  "admin-members_marks": {},
- "admin-now": "aecd1f99328b",
+ "admin-now": "fa57fd7b5825",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5d391319"
+   "1e748958"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "be49a2f2"
   ]
  },
- "admin-system": "988c56b5973a",
+ "admin-system": "d7808fca5cd6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4d0ddc25"
+   "6dcbcdbc"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "7877ece1"
+   "59c3f896"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "fc515d31"
   ]
  },
- "index": "1464bcbf37a1",
+ "index": "d599792be792",
  "index_marks": {
   "front": [
    "トップ",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "c7e428cf"
+   "fdcd4198"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "dba384da"
+   "c835af89"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "d1d41aab"
+   "359f4ca4"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "6f4b7b0b"
+   "550a3464"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "38552a70"
   ]
  },
- "updated": "11.13 06:35",
+ "updated": "11.13 06:43",
  "wishlist": "f114aadba795"
 }
