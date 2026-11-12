@@ -231,7 +231,12 @@
   "滑雪": 6,
   "哈利波特剧集": 5,
   "ILLIT": 4,
-  "MMORPG 新作": 4
+  "MMORPG 新作": 4,
+  "The Mandalorian": 4,
+  "チェーンソーマン": 4,
+  "A2O LITE": 3,
+  "gelato pique": 3,
+  "日本顶级网球赛事": 3
  },
  "dota2": [
   {
@@ -369,6 +374,144 @@
    "event": {
     "date": "2026-12-01",
     "label": "アップデート"
+   }
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "The Mandalorian’s New Release Returns To An Abandoned George Lucas Star Wars TV Show",
+   "highlight": "",
+   "blurb": "The Mandalorian’s new release returns to an abandoned George Lucas Star Wars TV show.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/the-mandalorian-with-grogu-on-his-shoulder-and-sparks-behind-them-in-the-mandalorian-and-grogu.jpg?w=1600&h=900&fit=crop"
+  },
+  {
+   "headline": "The Mandalorian and Grogu art book takes fans on a journey behind the film’s biggest moments",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "The Mandalorian 7th Anniversary: Fans on X Celebrate Din-Grogu’s Journey With Nostalgic Clips",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    4
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man The Movie: Reze Arc (IMAX 2D) box office collection live",
+   "highlight": "",
+   "blurb": "レゼ篇の劇場版（IMAX 2D）の興行収入が速報されている。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://cdn.sacnilk.com/image/news/1000023554.jpg"
+  },
+  {
+   "headline": "Chainsaw Man Episode 3 review: Some predictable but fun action",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Dungeon Crawler Carl, Chainsaw Man top October's graphic novel charts",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "[ET포토] A2O LITE 아윤, '밝고 맑은 미소'",
+   "highlight": "",
+   "blurb": "A2O LITE 아윤의 포토.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925610301426948504.jpg"
+  },
+  {
+   "headline": "2026 年 11 月 11 日榜：RESCENE 与 A2O LITE 的强势表现",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラート ピケ×サンリオ第2弾、キティやクロミなど5キャラクターが登場",
+   "highlight": "サンリオ第2弾",
+   "blurb": "ジェラート ピケ×サンリオ第2弾に、ハローキティやクロミなど5キャラクターが登場。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.diarypoint.com/media/96d11654-c1c5-467d-bbaf-b17f08b48ea4.jpg"
+  },
+  {
+   "headline": "スヌーピー×ジェラピケがコラボ！おうち時間にぴったりの大人かわいいアイテム",
+   "highlight": "スヌーピー×ジェラピケ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "【豪華付録】GELATO PIQUE 「さわって楽しい！ しかけつきベビー用布絵本」が1冊に1つついてくる『ひよこクラブ』冬号が発売中！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "アルカラス選手がジャパンオープンテニス2026で優勝、大会連覇",
+   "highlight": "大会連覇",
+   "blurb": "アルカラス選手がジャパンオープンテニス2026で優勝し、大会連覇を果たした。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/10/636470_1.jpg"
+  },
+  {
+   "headline": "11/14（土）放送・配信「錦織圭 ラストロード～最後のグランドスラムからジャパンオープンまでの軌跡～」",
+   "highlight": "11/14（土）",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3
+   ],
+   "event": {
+    "date": "2026-11-14",
+    "label": "放送"
    }
   }
  ]
