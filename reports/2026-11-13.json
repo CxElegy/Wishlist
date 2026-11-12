@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "edit_sig": "8c341fb1b3d4",
+ "edit_sig": "46c9aa26ed1f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -531,17 +531,19 @@
    "cover": null,
    "facts": [],
    "name": "ぐでたま",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-11",
-     "n": 1,
-     "source": "Walker Plus",
-     "title": "＜画像1 / 9＞不二家洋菓子店でイースター仕様のぐでたまスイーツ販売｜ウォーカープラス",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9kYUE5aW5zZVpnM0R1eEhyVXdZYXE5TmpUdEltRWJpbHVnUEJoVlJqNDdWelNFTVdEWVNFMmRXQ2dqWS1IYWI1N1FNaEpvUG9NRUxjMGpzUXBlN0dlSjFOeFhaaWZBQnk4?oc=5"
+     "headline": "不二家洋菓子店でイースター仕様のぐでたまスイーツ販売",
+     "highlight": "",
+     "image": "https://news.walkerplus.com/article/73055/410281_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/73055/image410281.html",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Gudetama",
    "theme": {
     "accent": "#885D0C",
