@@ -23,10 +23,15 @@ import pathlib
 import sys
 import threading
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import aesthetic_count  # noqa: E402
+
 WIDTHS = (1400, 390)
 MAX_SHOTS = 4   # 種類ごとに絵にする数
 KIND = {"gap": "写真の下に空き", "crop": "写真が切れすぎ", "band": "写真に帯", "clip": "文字が欠けている", "icon": "アイコンの大きさが不揃い", "over": "文字が重なっている", "wide": "横にはみ出す", "face": "小元素の顔が小さい"}
+KIND.update(aesthetic_count.KIND)
 FIX = {"gap": "写真を字の高さまで伸ばす", "crop": "切らずに枠を写真の形にする", "band": "枠を写真の形にする", "clip": "枠を広げる・行を増やす", "icon": "同じ種類は同じ大きさに", "over": "間隔を取る", "wide": "はみ出す要素を縮める", "face": "顔が下限に届く大きさにして上半身に切る（render.CSS .emb img.body・審美基準 I1c）"}
+FIX.update(aesthetic_count.FIX)
 
 MEASURE_JS = r"""
 () => {
@@ -143,6 +148,8 @@ def review(url, width, pw_browser, shot=None):
     pg.goto(url, wait_until="load", timeout=60000)
     load_all(pg)
     res = pg.evaluate(MEASURE_JS)
+    extra = aesthetic_count.measure(pg, len(res["items"]))   # 審美基準を数える項目（吸着で切れ・1 本の版面・重大の横・空きの小元素・カードの空き・見出しの「…」・脇役の強い要素）
+    res["items"] += extra["items"]
     if shot:   # 自分の目で見る用：ページの上の方
         pg.screenshot(path=str(shot), clip={"x": 0, "y": 0, "width": width, "height": min(3000, pg.evaluate("document.documentElement.scrollHeight"))}, full_page=True, timeout=120000)
     seen, shots = {}, []
@@ -159,7 +166,7 @@ def review(url, width, pw_browser, shot=None):
             if not seen[it["kind"]]:
                 del seen[it["kind"]]
     ctx.close()
-    return {"width": width, "counts": seen, "clamped": res["clamped"], "photos": res["photos"], "shots": shots}
+    return {"width": width, "counts": seen, "clamped": res["clamped"], "photos": res["photos"], "stats": extra["stats"], "shots": shots}
 
 
 def sheet(results, title):
@@ -207,7 +214,7 @@ def main(argv=None):
         b.close()
     bad = sum(sum(r["counts"].values()) for r in results)
     for r in results:
-        print(f"{r['width']}px：写真 {r['photos']} 枚・問題 {r['counts'] or 'なし'}・「…」{r['clamped']} 件")
+        print(f"{r['width']}px：写真 {r['photos']} 枚・問題 {r['counts'] or 'なし'}・「…」{r['clamped']} 件・測定 {r['stats']}")
     return 1 if bad else 0
 
 

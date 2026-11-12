@@ -101,7 +101,7 @@ class AestheticCount(unittest.TestCase):
         return page(s)
 
     def test_gap_emblem_relation(self):
-        ok = self.run_page(self.wemb_page("Makimaが新しい映像に登場"))
+        ok = self.run_page(self.wemb_page("Makima は新しい映像に登場"))
         self.assertEqual((ok["stats"]["wemb"], self.n(ok, "emrel")), (1, 0))
         bad = self.run_page(self.wemb_page("全く別の人のニュース"))
         self.assertEqual(self.n(bad, "emrel"), 1)
@@ -111,7 +111,7 @@ class AestheticCount(unittest.TestCase):
 
     def test_card_inner_gap(self):
         card = lambda h: (f'<article class="card" style="display:flex;width:400px;height:{h}px;padding:0"><div class="pic" style="width:100px;height:100px;background:#abc"></div>'
-                          f'<div class="txt" style="flex:1"><h3>見出し</h3></div></article>')
+                          f'<div class="txt" style="flex:1"><h3 style="margin:0;height:100px">見出し</h3></div></article>')
         wrap = lambda h: page(f'<section class="sec"><div class="band"></div><div class="grid">{card(h)}</div></section>')
         self.assertEqual(self.n(self.run_page(wrap(110)), "cgap"), 0)
         r = self.run_page(wrap(300))   # 写真の下 200px・字の下も大きく空く
