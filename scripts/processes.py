@@ -287,7 +287,7 @@ PROCESSES = [
         "summary": "Supabase への出口は sbstate.sb_open（402 で呼び続けない）。仕事があるか、AI が要るかをプログラムだけで決める。AI の要らない仕事（小元素）はその場で Python で済ませ、"
                    "AI が要る仕事（AI 編集・写真）は仕事があるときだけ Claude を起こす。Claude は起きるたびにトークンを使うので、空振りをなくす。"
                    "版面には AI が整理した記事しか載らないので、収集で整理待ちが増えたらすぐ AI 編集を起こす（リポジトリ変数 GATE_FIRE で開け閉め）。",
-        "files": ["scripts/gate.py", "scripts/collect_watch.py", "scripts/library_watch.py", "scripts/library_design.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "docs/rules/background.md", "uses": ["pushmain", "gate"],
+        "files": ["scripts/gate.py", "scripts/gate_fire.py", "scripts/collect_watch.py", "scripts/library_watch.py", "scripts/library_design.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "docs/rules/background.md", "uses": ["pushmain", "gate"],
         "flow": [
             {"id": "g1", "kind": "fan", "lane": "actions", "title": "仕事を調べる", "mode": "全部を毎回",
              "items": [("1", "小元素", "目標未満の版面（失敗して材料が同じものは時間がたっても除く：時間では待たない）"), ("2", "AI 編集", "今日の inbox の整理待ち（_covered より後・edit.json にない版面）"),
@@ -311,7 +311,7 @@ PROCESSES = [
              "uses": ["gate"], "yes": "動いている → 残りがあれば新しい状況として起こす", "no": "停滞：3 回まで起こし直す・そのあと 6 時間待つ（管理ページに「起こしても動かない」）"},
             {"id": "g5c", "kind": "decision", "lane": "actions", "title": "GATE_FIRE で開けている？", "text": "リポジトリ変数 · 未設定 = edit,photos（既定・2026-11-07）· edit = AI 編集だけ · 0 = 閉 · 1 = 全部 · 管理ページの「AI 編集をもう一度起こす」は変数・間隔・停滞の判断を飛ばす",
              "no": "起こさない（記録だけ・定時を待つ）"},
-            {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "Secret ROUTINE_FIRE_TOKEN が要る · 写真も AI 編集の予約で起こす（60 分以内に 2 本目は起こさない・写真は 1 日 3 回まで）· 1 日ごとのトークンと起こした回数を state/gate.json に残す · AI 編集は溜まった版面だけ編集する（edit-queue = edit_ripe ＋ やり直し）· 直近 2 日に AI 編集の記事がない（lib_rows の stories・prev が空）新しいライブラリの版面は LIB_WAKE_HOURS を待たず溜まった扱いにする（queue.json の fresh）",
+            {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "【2026-11-12】順番は「最新の main に合わせる → 判断をやり直す → 起こした記録だけ書いて push → push が通ってから API で起こす」（scripts/gate_fire.py。後台作業は 40 分の補完のあとなので、その間に収集が起こした記録を知らず 2 本目を起こしていた。先を越されて push に負けたら最新の記録で判断し直し〔60 分以内に起こし済み〕、起こさない。API が失敗したら記録を取り消す。提交の push のあとに起こすので、AI は main にある inbox/lib/queue.json を読む＝T-0005）。収集（digest.yml）の「溜まった版面 → 立刻 AI 編集」も同じ道 · Secret ROUTINE_FIRE_TOKEN が要る · 写真も AI 編集の予約で起こす（60 分以内に 2 本目は起こさない・写真は 1 日 3 回まで）· 1 日ごとのトークンと起こした回数を state/gate.json に残す · AI 編集は溜まった版面だけ編集する（edit-queue = edit_ripe ＋ やり直し）· 直近 2 日に AI 編集の記事がない（lib_rows の stories・prev が空）新しいライブラリの版面は LIB_WAKE_HOURS を待たず溜まった扱いにする（queue.json の fresh）",
              "uses": ["claude"]},
             {"id": "g7", "kind": "store", "lane": "repo", "title": "state/gate.json · state/log/gate.json", "text": "判断が変わったとき（最初の判断・小元素のあとの判断）・Claude を本当に起こしたとき・収集を起こそうとしたとき（起こせなかったときも）だけコミット（GATE_FIRE が開いているだけでは足さない）"},
             {"id": "g8", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "後台作業が網页を発布したあと。新しい記事の写真が次の定時（3 時間ごと）まで原寸のまま届かないように。取れなかった分は 1 日あけるので回り続けない。"},
@@ -356,7 +356,7 @@ PROCESSES = [
              "yes": "版面に載せる", "no": "↓ 要紧か見る"},
             {"id": "c9b", "kind": "decision", "lane": "actions", "title": "要紧の記事？", "text": "urgent_patterns に当たる",
              "uses": ["urgent", "fallback"], "yes": "すぐ「重大」で載せる＋Discord", "no": "版面の下の「整理待ち N 件」（折りたたみ・原題だけ）"},
-            {"id": "c9", "kind": "step", "lane": "actions", "title": "出刊 → 通知 → push", "text": "push に失敗したら 3 回まで取り直す · 網页の生成に失敗してもデータは push（WL_RENDER_SOFT、次の生成で作り直す）· このあとゲートが AI 編集を起こす",
+            {"id": "c9", "kind": "step", "lane": "actions", "title": "出刊 → 通知 → push", "text": "push に失敗したら 3 回まで取り直す · 網页の生成に失敗してもデータは push（WL_RENDER_SOFT、次の生成で作り直す）· このあとゲートが AI 編集を起こす（digest.yml の最後の段は scripts/gate_fire.py：最新の main に合わせ → 判断し直し → 記録を push → 通ってから起こす。後台作業と同時に 2 本起こさない）",
              "uses": ["pending", "discord"]},
             {"id": "c9p", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "push のあと。収集の回で入った新しい記事の写真が次の定時（3 時間ごと）まで原寸の外部画像のまま届くのを防ぐ（ux_check「先頭の写真が置き場に無い」の根）。render.yml・後台作業も同じ段を持つ。"},
             {"id": "c10", "kind": "step", "lane": "actions", "title": "お客さまの版面を集める", "x": "×4 · 8 分まで",

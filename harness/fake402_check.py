@@ -65,6 +65,7 @@ NOT_COVERED = {
     "harness/run_tests.py": "CI の試験を流すだけ。本物の Supabase に触らない",
     "scripts/check_arch.py": "CI の点検。Supabase に触らない",
     "scripts/pc_watch.py": "PC のサーバーの死活を見て Discord へ知らせるだけ（鍵なし・docs/・state/ に書かない）。402 も「届かない」と数えて緑で終わる",
+    "scripts/gate_fire.py": "git の fetch・reset・push と AI 編集の予約を起こす POST だけ（判断は gate.py check / fire の入口〔上の gate check・gate fire〕と同じ道で、Supabase は edit_control の読み取りのみ・sbstate で 402 を数える）。作業ツリーを origin/main に合わせ直すので、試走の写しの中では走らせない。tests/test_gate_fire.py が本物の git と偽の POST で通す",
     "scripts/pull_rebase.py": "git の取り込みだけ。Supabase に触らない",
     "scripts/push_main.py": "git の取り込みと push だけ（pull_rebase と同じ）。Supabase に触らない",
     "scripts/digest.py mark-items": "push のあと WL_ITEM_MARKS の印で item_requests に done を付けるだけ（docs/・state/ に書かない）。402 なら警告して終わり、依頼は pending のまま次の回が拾う",

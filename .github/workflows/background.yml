@@ -152,14 +152,6 @@ jobs:
           python scripts/gate.py check > /tmp/gate2.txt; cat /tmp/gate2.txt
           if grep -q "^emblem  仕事あり" /tmp/gate2.txt; then echo "again=true" >> "$GITHUB_OUTPUT"; fi
 
-      - name: 有需要 AI 的活 → 叫 Claude（仓库变量 GATE_FIRE 打开时）
-        id: fire
-        if: ((env.GATE_FIRE != '0' && env.GATE_FIRE != '') || env.GATE_FORCE != '') && (steps.gate.outputs.edit == 'true' || steps.gate.outputs.photos == 'true')
-        run: |
-          python scripts/gate.py fire > /tmp/fire.txt
-          cat /tmp/fire.txt
-          if grep -q "^[a-z]* *Claude を起こした" /tmp/fire.txt; then echo "fired=true" >> "$GITHUB_OUTPUT"; fi
-
       - name: 提交
         id: commit
         run: |
@@ -169,10 +161,10 @@ jobs:
           python -c "import yaml; yaml.safe_load(open('items.yaml', encoding='utf-8'))" || { echo "::warning::items.yaml が読めない：小元素の書き込みを戻す"; git checkout -- items.yaml; }
           # まだないファイル（新しいアカウントを空から始めた直後の emblem_progress.json など）は飛ばす：1 つでもないと git add 全体が失敗する
           for f in items.yaml docs/home/emblems state/emblem_progress.json state/emblem_broken.json state/emblem_closeup.json state/emblem_closeup_eta.json state/emblem_cands.json state/log/emblem.json; do if [ -e "$f" ]; then git add "$f"; fi; done
-          # ゲートの記録は、判断が前と変わったとき（最初の check・小元素のあとの check）・Claude を本当に起こしたとき・
+          # ゲートの記録は、判断が前と変わったとき（最初の check・小元素のあとの check）・
           # 収集を起こそうとしたとき（起こせなかった・回の様子が読めなかったときも：管理ページ・ライブログに出す）だけ
           # （GATE_FIRE が開いているだけでは足さない：前は毎時「后台作業」のコミットが増えていた）
-          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "${{ steps.more.outputs.changed }}" = "true" ] || [ "${{ steps.fire.outputs.fired }}" = "true" ] || [ "${{ steps.kick.outputs.tried }}" = "true" ] || [ "${{ steps.libkick.outputs.tried }}" = "true" ]; then
+          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "${{ steps.more.outputs.changed }}" = "true" ] || [ "${{ steps.kick.outputs.tried }}" = "true" ] || [ "${{ steps.libkick.outputs.tried }}" = "true" ]; then
             git add state/gate.json state/log/gate.json 2>/dev/null || true
           fi
           git add -A inbox/lib 2>/dev/null || true
@@ -184,6 +176,13 @@ jobs:
           git stash -q --include-untracked || true   # コミットしなかったゲートの記録（判断が同じ）は捨てる：pull --rebase の邪魔になる
           # 取り込んで作り直した docs は上の「后台作業」の提交に畳む（main の提交が 1 回につき 1 つ）
           python scripts/push_main.py --regen "python scripts/digest.py render"
+
+      # AI 編集を起こす：必ず「提交」（push）のあと。記録を先に main へ置き（先を越されたら最新の記録で判断し直す＝2 本目は起こさない）、
+      # push が通ってから API で起こす（scripts/gate_fire.py。前は 40 分の補完のあと、push より前に起こして 2 本重なり、AI は main にない queue.json を読んだ）
+      - name: 有需要 AI 的活 → 叫 Claude（仓库变量 GATE_FIRE 打开时・push のあと）
+        id: fire
+        if: ${{ !cancelled() && ((env.GATE_FIRE != '0' && env.GATE_FIRE != '') || env.GATE_FORCE != '') && (steps.gate.outputs.edit == 'true' || steps.gate.outputs.photos == 'true') && steps.commit.outcome == 'success' }}
+        run: python scripts/gate_fire.py
 
       # 収集の回で入った新しい記事の写真も、次の定時（3 時間ごと）まで原寸のまま届かないように：発布のあと置いていない写真があれば一時保管を起こす
       - name: 置いていない写真があれば一時保管を起こす
