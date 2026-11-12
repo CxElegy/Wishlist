@@ -264,7 +264,8 @@
   "BLEACH Mirrors High": 5,
   "あつ森": 1,
   "ぐでたま": 1,
-  "星巴克马克杯": 1
+  "星巴克马克杯": 1,
+  "Vaundy": 2
  },
  "dota2": [
   {
@@ -672,6 +673,18 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "『ROCK IN JAPAN FESTIVAL 2026』ライブ映像の配信タイムテーブル公開",
+   "highlight": "配信タイムテーブル公開",
+   "blurb": "XG、Vaundy、バンプ、超特急、M!LK、ずとまよ、HANAら4日間のステージをYouTubeで配信。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "『ROCK IN JAPAN FESTIVAL 2026』ライブ映像の配信タイムテーブル公開"
   }
  ]
 }

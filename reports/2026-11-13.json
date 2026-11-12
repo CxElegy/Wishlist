@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "edit_sig": "5be4e4e9fc7f",
+ "edit_sig": "d3ce1ef0c15b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -793,24 +793,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "XG、Vaundy、バンプ、超特急、M!LK、ずとまよ、HANAら4日間のステージをYouTubeで配信。",
      "date": "2026-11-12",
-     "n": 1,
-     "source": "オリコンニュース",
-     "title": "『ROCK IN JAPAN FESTIVAL 2026』ライブ映像の配信タイムテーブル公開 XG、Vaundy、バンプ、超特急、M!LK、ずとまよ、HANAら4日間のステージをYouTubeで配信",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5VNUp5cm9pcWFWTnMzVVhJamN6TmRjenBiQ3NjR2VfTDJfTEJiLXUweXJrSHFTSnMtc01jSkFYU0FVR3R4N1piazhyS3BlWGNFWDlLWlRR?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 2,
-     "source": "note",
-     "title": "vol.8 The Pinnacle of Manga Love, Spun by 61 Quotes",
-     "url": "https://note.com/enjoymoremusic/n/n1acdaaa2f0e5?hl=en"
+     "headline": "『ROCK IN JAPAN FESTIVAL 2026』ライブ映像の配信タイムテーブル公開",
+     "highlight": "配信タイムテーブル公開",
+     "image": "https://contents.oricon.co.jp/upimg/news/2493000/2492552/20261112_223054_p_o_40402843.jpg",
+     "image_via": "og:image",
+     "url": "https://www.oricon.co.jp/news/2492552/full/",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
