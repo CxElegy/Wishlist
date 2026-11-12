@@ -1,32 +1,32 @@
 {
- "admin": "1b52d6b4251f",
- "admin-ai": "d1d309647818",
+ "admin": "0e726565ea45",
+ "admin-ai": "a3cc59382fa6",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5e04c72c"
+   "9c53b813"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "4d58e2b8"
+   "5b7fa893"
   ]
  },
- "admin-boards": "3defde1fe54a",
+ "admin-boards": "ecffbda65b58",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "0196c43a"
+   "73479543"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "fdadcff77ae0",
+ "admin-emblem": "dd0e90f49377",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d65b68ae"
+   "fa5e0e69"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "1110265f918d",
  "admin-members_marks": {},
- "admin-now": "ab0c1183f069",
+ "admin-now": "d1ae28a179e8",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e7354d46"
+   "5d391319"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "4618fbc1"
+   "14286d84"
   ],
   "term-panel": [
    "ライブログ",
-   "73f7b342"
+   "fb477414"
   ]
  },
- "admin-system": "c090a249f52e",
+ "admin-system": "c61ef1ac4699",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c3afff8b"
+   "4d0ddc25"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8cd26e3a"
+   "cf8463b6"
   ]
  },
  "admin_marks": {},
- "heat": "714367973f9f",
+ "heat": "282b27b0738c",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "618e3e41"
+   "fb3d612c"
   ],
   "ranking": [
    "ランキング",
-   "ff78905b"
+   "fc515d31"
   ]
  },
- "index": "5f41572314e9",
+ "index": "0bae216c108d",
  "index_marks": {
   "front": [
    "トップ",
-   "4ebc116f"
+   "3d3a51d1"
   ],
   "picks": [
    "気になるかも？",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "359f4ca4"
+   "d1d41aab"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "6f4b7b0b"
+   "550a3464"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "eb6ccf8d"
+   "b8799848"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "38552a70"
   ]
  },
- "updated": "11.13 06:27",
+ "updated": "11.13 06:28",
  "wishlist": "f114aadba795"
 }
