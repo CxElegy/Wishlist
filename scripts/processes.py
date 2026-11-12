@@ -414,7 +414,7 @@ PROCESSES = [
         "flow": [
             {"id": "e1", "kind": "step", "lane": "ai", "title": "最新の inbox を読む", "text": "写真があれば先に PHOTOS.md で処理する（2026-11-07）· 帯（live_report）は同じ回で同じ（状態・言葉）を二度送らない（digest._live_edit_report）"},
             {"id": "e2", "kind": "decision", "lane": "ai", "title": "今日の整理待ちがある？", "text": "_covered より後の記事・edit.json にない版面", "no": "何も変えずに終わり"},
-            {"id": "e3", "kind": "step", "lane": "ai", "title": "版面の設計・小元素", "by": "ai", "text": "motif・theme・like_fx · 足りない小元素（「小元素の選定」）"},
+            {"id": "e3", "kind": "step", "lane": "ai", "title": "版面の設計・小元素", "by": "ai", "text": "motif・theme・like_fx · 足りない小元素（「小元素の選定」）· 出刊のとき render へ小元素を渡すとき、主題が版面の名前・keywords と同じものに _own の印を付ける（digest.write_page → render.mark_own_emblems。空きの小元素が「関係あるか」を見る材料）"},
             {"id": "e3q", "kind": "decision", "lane": "actions", "title": "次の版面は？ edit-next", "text": "お客さまの版面はクラウドに鍵を置かず lib_queue.py で受け渡す（2026-11-07：Actions が記事を inbox/lib/queue.json へ・AI の結果を DB へ。名前と公開のニュースだけで account は書かない）· 店長の版面が済んだらライブラリの版面（お客さまの版面）を NEXT lib:id で（1 回 8 版面・編んで 12 時間は編み直さない・edit-brief --only lib:id → lib-publish で board_stories.stories へ、git なし）· 管理ページの開関（edit_control）：一時停止 → 止める · 1 版面ずつで 1 つ済 → 止めて pause に · 設定ページで足して設計（motif・theme）がまだの関注項があれば DESIGN（設計が終わるまで記事の編集に進まない）· やり直しの版面が最初、あとは整理待ちの多い順に 1 版面（規則・トークン 0）",
              "uses": ["batch"], "no": "止める（一時停止・1 版面ずつ・全部済）"},
             {"id": "e4", "kind": "step", "lane": "ai", "title": "編集して edit.json（この版面だけ・短い一覧 edit-brief を読む）", "text": "一覧は規則で出来事ごとに束ねてある · 前回のあとは増えた束だけ（今の記事は残して refs に足す）· 同じ件を合わせる（言語違いも 1 本・主言語の原題）· 見出しは原文 · S 3 / M 5 / L 8 件",
