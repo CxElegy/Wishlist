@@ -127,20 +127,11 @@ jobs:
           GATE_FIRE: ${{ vars.GATE_FIRE || 'edit' }}
         run: |
           if [ -z "$ROUTINE_TOKEN_EDIT" ]; then echo "没设置 ROUTINE_FIRE_TOKEN，等后台作業"; exit 0; fi
-          python scripts/push_main.py --soft   # 最新の main を取り込む（取り込めないときは警告して古い main で続ける）
           names=""
           if [ -n "$NEW_ITEMS" ]; then names=$(python scripts/digest.py unedited --only "$NEW_ITEMS"); fi
           if [ -n "$names" ]; then echo "新关注项：$names"; export GATE_NOW=edit; fi
-          python scripts/gate.py check > /dev/null || { echo "::warning::ゲートの判断に失敗、後台作業を待つ"; exit 0; }
-          GATE_NOW_ITEMS="$names" python scripts/gate.py fire > /tmp/fire.txt || { echo "::warning::叫 AI 编辑失败，等后台作業"; exit 0; }
-          cat /tmp/fire.txt
-          # 起こした・または「60 分以内に起こし済み」で止められて頼みを残した（jobs.edit.now_pending：後台作業が 60 分後に起こす）ときだけ push
-          grep -qE "^edit *(Claude を起こした|.*すぐの頼みを残した)" /tmp/fire.txt || exit 0
-          # 叫起的记录（下次ゲート判断「編集中」「停滞」用）也 push 上去
-          git add state/gate.json state/log/gate.json
-          git diff --cached --quiet || git commit -q -m "ゲート：溜まった版面で AI 編集を起こした（または頼みを残した）"
-          git stash -q --include-untracked || true   # ほかに変わったもの（判断だけの記録）は捨てる：pull --rebase の邪魔になる
-          python scripts/push_main.py --soft
+          # 最新の main に合わせ → 判断し直し → 記録を push → 通ってから起こす（scripts/gate_fire.py。後台作業と同時に 2 本起こさない）
+          GATE_NOW_ITEMS="$names" python scripts/gate_fire.py || echo "::warning::叫 AI 编辑失败，等后台作業"
 
       # お客さまが選んだもののうち店長の関注項にないもの（例：広島旅行）を、本人のために集める（scripts/userfeed.py、AI なし）。
       # 書くのは Supabase の user_boards だけ（本人が my_boards() で読む・リポジトリには入れない）。店長の収集・出刊・push のあとなので、失敗しても止めない。

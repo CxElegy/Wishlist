@@ -486,11 +486,20 @@ def _now_pending(j, now):
     return pend
 
 
-def fire(path=None, post=_post, env=None):
+def send(job, post=_post, env=None):
+    """job の予約を API で起こす（POST だけ。記録はしない）。→ post の返り値"""
+    env = os.environ if env is None else env
+    rid, var, _ = ROUTINES[job]
+    return post(f"https://api.anthropic.com/v1/claude_code/routines/{rid}/fire", env.get(var))
+
+
+def fire(path=None, post=_post, env=None, claim=False):
     """AI が要る仕事があるとき、Claude の定時タスクを起こす。起こしたあとに仕事が減ったかを次の回で見て（work_state）、
     減っていなければ「停滞」として MIN_GAP_MIN 分あけて起こし直す（最大 MAX_ATTEMPTS 回。そのあとは REFIRE_HOURS 待つ）。
     → {job: 結果の文}。GATE_FIRE で許されていない仕事は起こさない（GATE_FORCE に名前があれば別：管理ページの「もう一度起こす」で、
-    間隔・停滞の判断を飛ばして今すぐ起こす）。トークンがなければ起こさず「トークン未設定」と残す（定時のほうで拾われる）。"""
+    間隔・停滞の判断を飛ばして今すぐ起こす）。トークンがなければ起こさず「トークン未設定」と残す（定時のほうで拾われる）。
+    claim=True：起こす「記録」だけ書いて POST はしない（結果は同じ「Claude を起こした」）。scripts/gate_fire.py が、記録を main へ push して
+    先を越されなかったことを確かめてから send で起こす（2 本の後台作業・収集が同時に同じ仕事を起こさないため）。"""
     env = os.environ if env is None else env
     force = {x.strip() for x in str(env.get("GATE_FORCE", "")).split(",") if x.strip() in ROUTINES}
     # GATE_NOW：新しい関注項の「すぐ AI 編集」（digest.yml）。1 日 2 回の定時（SLOTS）だけ飛ばす。仕事があること・一時停止・GATE_FIRE・
@@ -576,7 +585,7 @@ def fire(path=None, post=_post, env=None):
             results[job] = "トークン未設定（定時を待つ）"
             continue
         try:
-            out = post(f"https://api.anthropic.com/v1/claude_code/routines/{rid}/fire", token)
+            out = None if claim else post(f"https://api.anthropic.com/v1/claude_code/routines/{rid}/fire", token)
             j["fired"] = {"at": now.isoformat(timespec="seconds"), "day": j.get("prog_day") or day_of(now), "sig": j.get("sig"), "prog": j.get("prog"),
                           "attempts": attempts, "resp": _resp(out), **({"forced": True} if job in force else {}),
                           **({"now": True} if job_now else {})}
