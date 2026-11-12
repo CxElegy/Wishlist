@@ -1,32 +1,32 @@
 {
- "admin": "3bf9291f39b7",
- "admin-ai": "2bb169e69e59",
+ "admin": "ddbf4b4ea584",
+ "admin-ai": "5bf155576b49",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4cb84ff2"
+   "4c590a4d"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "3e38e9f4"
+   "653a0d39"
   ]
  },
- "admin-boards": "d8071553cca4",
+ "admin-boards": "f09ae76257e2",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e2de7a78"
+   "7be2e724"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "0ccf01b89b4b",
+ "admin-emblem": "c02049297e9b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "86642096"
+   "c3743dbf"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "2b7f3db535fc",
+ "admin-now": "2b37829eda73",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7264332d"
+   "66e7b32c"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "c611b4ed"
+   "57ebfe93"
   ],
   "term-panel": [
    "ライブログ",
-   "8025cf37"
+   "37d58685"
   ]
  },
- "admin-system": "d4ef445269bc",
+ "admin-system": "a804c7db1868",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "7869b837"
+   "e6ced2b5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "6ecaf921"
+   "ecf00b68"
   ]
  },
  "admin_marks": {},
- "heat": "d6c72e8457fa",
+ "heat": "7ec996c620cf",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "98c21435"
+   "3075cc38"
   ],
   "ranking": [
    "ランキング",
-   "2259dc9e"
+   "06b8b484"
   ]
  },
- "index": "dc4d082f5d2f",
+ "index": "0eba0c081053",
  "index_marks": {
   "front": [
    "トップ",
-   "2fe30b2a"
+   "984aefc1"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "a3d24052"
+   "13f04cff"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "0907310d"
+   "75c9178d"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "f53a804f"
   ]
  },
- "updated": "11.12 09:54",
+ "updated": "11.12 09:57",
  "wishlist": "29083940f78b"
 }
