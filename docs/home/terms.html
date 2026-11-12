@@ -733,6 +733,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .vt button{min-height:var(--vth,28px)}  /* 按钮的高度 = 日期行的高度：按钮区不会伸到标题上 */
 /* 出典が日付の横に入らないとき（JS が .two を付ける）：出典だけ次の行に全幅で。1 行目の右はボタンの分だけ空ける */
 .when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
+/* 日付の行に「札・日付」と 👍/👎 が横に並ばないほど細い列（写真を左に大きく取ったカードなど。2026-11-13 店長のスマホで 👍 が日付に重なり 👎 が切れた）：JS が .vdown を付け、👍/👎 を次の行の右端に下ろす（右端は 1 行のときと同じ位置）。出典はその下に全幅で。何 px で切り替えるかは決めず、字の幅と列の幅を測って決める */
+.vdown{padding-right:0!important;row-gap:4px!important}.vdown>.vt{position:static;order:1;flex:0 0 calc(100% + 6px);margin-right:-6px;justify-content:flex-end}.vdown>.from{order:2;flex-basis:100%}
 .vote button{opacity:.75}
 .brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
 /* 作品の小元素：右上で枠からはみ出すステッカー。白いフチ → 版面の強調色のフチ（emblem_ring）→ 墨の硬い影。
