@@ -1,10 +1,10 @@
 {
- "admin": "7b2529f03348",
- "admin-ai": "200ecd003dd0",
+ "admin": "f75f68869dcc",
+ "admin-ai": "2612dafa1511",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c1224009"
+   "8be095df"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "d1775744fd01",
+ "admin-emblem": "dbe55b9a85cd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4bfc9b02"
+   "604c79ae"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "1110265f918d",
  "admin-members_marks": {},
- "admin-now": "c658da8b2e98",
+ "admin-now": "ab8172780c46",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "318a3d7b"
+   "a51131cf"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "f1dd0f9c"
   ]
  },
- "admin-system": "eb51110d61e7",
+ "admin-system": "b31973b53ae8",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f7c8d34b"
+   "c87f4d9a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "41513319"
+   "9479470d"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "7e5581b4"
   ]
  },
- "index": "24dfbe3657d2",
+ "index": "0e317df6b246",
  "index_marks": {
   "front": [
    "トップ",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "6f14f4a4"
+   "21783641"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "6f4b7b0b"
+   "550a3464"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "fb024290"
+   "288736b1"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "38552a70"
   ]
  },
- "updated": "11.13 07:40",
+ "updated": "11.13 07:47",
  "wishlist": "ac5cdecd3eaf"
 }
