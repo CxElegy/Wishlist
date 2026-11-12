@@ -7,15 +7,22 @@
  "complexity": "normal",
  "priority": 2,
  "scope": [
-  "scripts/gate.py"
+  "scripts/gate.py",
+  "scripts/lib_queue.py",
+  "scripts/processes.py",
+  "tests/test_gate_ripe.py"
  ],
  "done_when": [
-  "経路 C の edited を 480 分以内に。店長の AI 編集の回（slot）と重ならない・1 日の回数の上限は今のまま。"
+  "tests/test_gate_ripe.py に足す試験：一度も編集していない lib 版面が待つとき、前に起こしてから LIB_WAKE_HOURS（4 時間）たっていなくても gate.check の jobs.edit.ripe にその lib:名前 が入る／編集したことのある lib 版面だけなら今までどおり 4 時間待つ（2 件とも通る）",
+  "1 日のトークン上限（EDIT_DAILY_TOKENS）・SLOTS（9:00／18:00）・停滞の数え方の試験は変えずに通る：timeout 900 python -m pytest tests/test_gate_ripe.py tests/test_lib_edit.py tests/test_free_tier_gate.py が失敗 0",
+  "scripts/processes.py の gate の spec に新しい規則を 1 文で書き、python scripts/check_arch.py origin/main が通る",
+  "DB は変えない（読むだけ）。改行は元のまま（file で確かめる）"
  ],
- "status": "open",
+ "status": "done",
  "attempts": 0,
  "notes": [],
- "frozen": false,
+ "frozen": true,
  "source": "BACKLOG.md:10",
- "created": "2026-11-11"
+ "created": "2026-11-11",
+ "pr": ""
 }
