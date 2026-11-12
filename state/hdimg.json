@@ -917,16 +917,16 @@
   "target": 720,
   "v": 3
  },
- "https://freeyorkk.b-cdn.net/wp-content/uploads/2026/11/star-wars-generative-ai-freeyork-1.jpg": {
-  "w": 990,
-  "h": 1238,
-  "target": 720,
-  "v": 3
- },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/06133154/gta-6-pc-rip-offs.jpg": {
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://g.foolcdn.com/image/?url=https%3A%2F%2Fcdn.content.foolcdn.com%2Fimages%2F1umn9qeh%2Fproduction%2F08ed5a15579888212b9a6b5e50f383cfef12d6f7-1290x860.jpg&w=1200&op=resize": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://gadget.phileweb.com/wp-content/uploads/2026/11/edfc486bdd77e9c980f0e503470d921c.jpg": {
@@ -1152,12 +1152,6 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
-  "v": 3
- },
- "https://i.pcmag.com/imagery/articles/04jmqeKIbZo4G3ofPRTf80J-1.fit_lim.size_1200x630.v1794425988.jpg": {
-  "w": 1120,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-Ultra-AH-2.png?fit=1920%2C1080&ssl=1": {
@@ -1500,6 +1494,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h59od.img": {
   "w": 3840,
   "h": 2160,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2har4k.img": {
+  "w": 1280,
+  "h": 1071,
   "target": 720,
   "v": 3
  },
@@ -2055,6 +2055,12 @@
   "v": 3,
   "blur": 0.404
  },
+ "https://news.walkerplus.com/article/1018080/10157455_615.jpg": {
+  "w": 615,
+  "h": 435,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/1133922/11697468_615.jpg": {
   "w": 615,
   "h": 346,
@@ -2234,12 +2240,6 @@
    1074
   ],
   "why": "看不清"
- },
- "https://news.walkerplus.com/article/56484/311454_615.jpg": {
-  "w": 615,
-  "h": 403,
-  "target": 720,
-  "v": 3
  },
  "https://news.walkerplus.com/article/63163/351953_615.jpg": {
   "w": 615,
@@ -3492,7 +3492,7 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.4yQKDO-AqgLIa4FMs1D3Jg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.1e_Rs7O4H8XlGrXgDbIxFw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3669,6 +3669,12 @@
  "https://www.bing.com/th?id=ONUT.WpotO6JzA7un9x-DZAYdzQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Z8qznNUuoyyH_qoTlJyMrQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
   "target": 720,
   "v": 3
  },
