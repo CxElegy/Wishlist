@@ -747,14 +747,23 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
   drop-shadow(var(--sx) var(--sy) 0 var(--ink)) drop-shadow(0 10px 12px rgba(0,0,0,.22))}  /* 案 A（2026-10-31 ユーザー）：墨の硬い影 4px＋薄いぼかし。フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
 .emb-in{display:flex;align-items:flex-end}
 .emb{clip-path:inset(-100vh -100vw -14px -100vw)}  /* 帯の線より下は見せない（飛び出す動きの途中）：下のニュースの字・ボタンに重ねない。絵そのものは線より上に置くので切れない。-14px はフチ（5.5px）と影（8px）の分 */
-.emb img.fz{align-self:flex-start;height:calc(100% * var(--m));max-width:230px;object-position:top;clip-path:inset(0 0 calc(100% * (var(--m) - 1) / var(--m)) 0)}  /* 顔が小さい絵は拡大して、頭の位置はそのまま・下を切る（emblem_face.fit：顔の高さを枠の 32% に、1.6 倍まで） */
+.emb{--eh:156px;--fmin:44px;--vmax:156px;--bw:230px}  /* 審美基準 I1c（2026-11-12 店長「这还是有点小 看不清人脸」）：人物の顔の高さの下限 --fmin（PC 44px・スマホ 32px＝胸像の顔と同じ。帯に合わせた拡大 1.15 倍で 36.8px）。--eh = 小元素の枠の高さ（.emb の height と同じ）、--vmax = 顔のために大きくするときの見せる高さの上限（胸像の枠の高さ：切った全身は胸像と同じ枠に入る）。幅の上限は --bw（PC 230px・スマホ 140px：題字・話題度・「今週」の場所を取らない。横に広い絵は下限に届かないことがある） */
+.emb img.fz{align-self:flex-start;--fzh:min(max(calc(var(--eh) * var(--m)),min(calc(var(--fmin) / var(--fs,1)),calc(var(--eh) * 3.4),calc(var(--bw) / var(--fa,.6)))),calc(230px / var(--fa,.6)));height:min(var(--eh),var(--fzh));width:calc(var(--fzh) * var(--fa,.6));max-width:230px;object-fit:cover;object-position:top}  /* 顔が小さい絵は拡大して、頭の位置はそのまま・下を切る（emblem_face.fit：顔の高さを枠の 32% に、1.6 倍まで） */
 .emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:190px;object-fit:contain;object-position:bottom}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
 .emb{--leg:116px;--legc:290px;--anc:62px;--bmax:200px}  /* 全身の立ち絵の「目から足の裏まで」の長さ（emblem.body_marks）。どのキャラも同じ背の高さに見える */
-.emb img.body{--bh:calc(var(--leg) / var(--bl));--bz:min(var(--bh), var(--bmax));height:var(--bz);width:calc(var(--bz) * var(--ba));max-width:none;
+.emb img.body{--bh:calc(var(--leg) / var(--bl));--b0:min(var(--bh), var(--bmax));--bigh:.16;
+ --hf:calc(var(--fmin) / var(--fh,9));--c:calc(var(--be,0) + .4 * (var(--bf) - var(--be,0)));--q:clamp(0,calc((var(--bigh) - var(--fh,9)) * 1000),1);
+ --cc:max(var(--c),calc(var(--ft,0) + 2 * var(--fh,9)));--hw:max(var(--b0),min(var(--hf),var(--vmax)));--hc:min(max(var(--hf),calc(var(--eh) / var(--cc))),calc(var(--vmax) / (var(--ft,0) + 1.5 * var(--fh,9))));
+ --sw:max(0px,min(var(--hc),calc((var(--hf) - var(--vmax)) * 1000 * var(--q)),calc((var(--hc) - var(--hw)) * 1000)));
+ --bz:max(var(--b0),min(max(var(--hw),var(--sw)),calc(var(--bw) / var(--ba))));--vis:min(var(--bz),max(min(calc(var(--cc) * var(--bz)),var(--vmax)),calc(var(--bz) - var(--sw) * 1000)));
+ height:var(--vis);width:calc(var(--bz) * var(--ba));max-width:none;object-fit:cover;object-position:top;
+ /* I1c：顔（--fh = 顔の高さ ÷ 絵の高さ）が --fmin に届く大きさ --hf まで大きくする。全身のまま高さ --vmax に入れば全身（--hw）。入らなければ（--sw > 0）上半身に切る：
+    顔が --fmin（切った所までが枠の高さ --eh 以上）になる大きさ --hc にして、腰（目から「目〜足の裏」の 40%＝--c、emblem.bust_from_body と同じ線。顔の下に顔 1 つ分は見せる＝--cc）か --vmax の近いほうから下を切る。顔が絵の下のほうにある絵（頭の上に武器・帽子・上げた腕：--ft = 顔の上の端）は、顔とその下の半分が枠に入る大きさまで（--vis = 見せる高さ。枠を --vis の高さにして object-fit:cover で上から見せる：切った所が帯の線。隠れた下半分を置かないので、傾きで画面の右へはみ出さない）。
+    頭の大きいキャラ・マスコット（顔が絵の 16% 以上＝emblem_face.CUT_BELOW、--q = 0）は切らず、全身のまま --vmax まで。全身のままのほうが大きく見せられる絵も切らない。顔を測っていない絵（--fh なし）は前のまま。幅は --bw まで */
  margin-bottom:0;  /* 絵の下端を帯の線に（足より下の尻尾・武器・裾があれば、その分だけ足が少し上がる）。帯の線より下へは出さない：下のニュースの字に重ねず、切れもしない。高さは --bmax まで */
- margin-right:calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
+ margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),min(0px,calc(-999px + (var(--bz) - var(--b0)) * 1000)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置。顔のために大きくした絵（--bz > --b0）は右へ出さない（I1c：大きい絵が画面の右へはみ出す・E5） */
 .emb{--nbt:156px;--nw:190px}.emb img.nb{--nz:min(calc(var(--nbt) / var(--nh)),calc(var(--nw) / var(--na)),calc(var(--nbt) * 1.6));height:var(--nz);width:auto;max-width:none;object-fit:fill;margin-bottom:calc(var(--nz) * var(--ng) * -1)}  /* 顔のない絵（怪物・覆面・物）：顔でなく体の枠（不透明な所の外接枠 x.bb）でそろえる。高さ = --nbt ÷ 枠の高さの割合（幅は --nw まで、1.6 倍まで）、下の端を帯の線に。emblem_face.none_kind の ①② */
-.emb img.body.cut{--bh:calc(var(--legc) / var(--bl));margin-bottom:0}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
+.emb img.body.cut{--bh:calc(var(--legc) / var(--bl));--c:1;--bigh:9}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
 .emb img.logo{height:62%;max-width:150px}.emb img.logo.wide{height:auto;width:220px;max-width:220px;margin-bottom:12%}  /* 横長の文字のロゴは幅で大きく */
 .emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
@@ -771,8 +780,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 @keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 6px);rotate:-3deg}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
- .emb img.body{margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),-22px)}}  /* 横に長い立ち絵（武器・尻尾）が画面の右へ 1〜11px はみ出す（ux_check E5：绝区零・Astrae Oratio）：右へ出す分を 22px までに */
+@media (max-width:600px){.emb{height:100px;--eh:100px;--fmin:32px;--vmax:100px;--bw:140px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
+ .emb img.body{margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),min(0px,calc(-22px + (var(--bz) - var(--b0)) * 1000)))}}  /* 横に長い立ち絵（武器・尻尾）が画面の右へ 1〜11px はみ出す（ux_check E5：绝区零・Astrae Oratio）：右へ出す分を 22px までに */
 .emb img{transition:opacity .25s ease-out,transform .25s ease-out}
 .emb-fade .emb img:not(.ld){opacity:0;transform:translateY(8px)}  /* 読み込みが終わる（decode）まで見せず、終わったら下から少し上がって現れる：空 → いきなり絵、の「パッ」をなくす */
 .pic img{transition:opacity .3s ease-out}
@@ -2099,7 +2108,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>11.12 08:30</b></div></div></header>
+<div class="meta"><small>更新</small><b>11.12 09:08</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
