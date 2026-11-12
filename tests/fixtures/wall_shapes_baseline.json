@@ -1,5 +1,5 @@
 {
- "key": "af4283b7871262d3",
+ "key": "83a179f171e6c95b",
  "platform": "linux",
  "runs": {
   "1100px SSS": {
@@ -14,17 +14,17 @@
   },
   "1100px TVWS": {
    "ok": true,
-   "wallPct": 1,
+   "wallPct": 0,
    "sidePct": 0
   },
   "1100px TW": {
    "ok": true,
-   "wallPct": 0,
+   "wallPct": 1,
    "sidePct": 0
   },
   "1100px TWW": {
    "ok": true,
-   "wallPct": 1,
+   "wallPct": 0,
    "sidePct": 0
   },
   "1100px TW・右の列 +14 行": {
@@ -39,12 +39,12 @@
   },
   "1100px VWT": {
    "ok": true,
-   "wallPct": 1,
+   "wallPct": 0,
    "sidePct": 0
   },
   "1100px WW": {
    "ok": true,
-   "wallPct": 0,
+   "wallPct": 1,
    "sidePct": 0
   },
   "1100px WWW": {
@@ -54,17 +54,17 @@
   },
   "1100px WWWW": {
    "ok": true,
-   "wallPct": 1,
+   "wallPct": 0,
    "sidePct": 0
   },
   "1100px WWW・右の列 +14 行": {
    "ok": true,
-   "wallPct": 1,
+   "wallPct": 0,
    "sidePct": 0
   },
   "1100px WW・右の列 +14 行": {
    "ok": true,
-   "wallPct": 0,
+   "wallPct": 1,
    "sidePct": 0
   },
   "1400px SSS": {
@@ -89,16 +89,15 @@
   },
   "1400px TWW": {
    "ok": true,
-   "wallPct": 1,
+   "wallPct": 0,
    "sidePct": 0
   },
   "1400px TW・右の列 +14 行": {
    "ok": true,
-   "wallPct": 0,
+   "wallPct": 3,
    "sidePct": 0,
    "seen_wallPct": [
     3,
-    0,
     0,
     3
    ]
@@ -111,13 +110,7 @@
   "1400px VWT": {
    "ok": true,
    "wallPct": 0,
-   "sidePct": 0,
-   "seen_wallPct": [
-    2,
-    0,
-    0,
-    2
-   ]
+   "sidePct": 0
   },
   "1400px WTT・先頭は 2 列の 1 枚": {
    "ok": true,
@@ -211,7 +204,7 @@
   },
   "768px VWT": {
    "ok": true,
-   "wallPct": 2,
+   "wallPct": 0,
    "sidePct": 0
   },
   "768px WW": {
@@ -231,5 +224,5 @@
   }
  },
  "made": "直す前の作り（大きい docs/home・写真ごとに PIL・1.2 秒待ち）で測った値。tests/test_wall_shapes.py --baseline",
- "note": "直す前の作りは 1.2 秒の固定待ちなので、負荷で写真の並びが落ち着く前に測ることがある。1400px VWT と 1400px TW・右の列 +14 行は 1.2 秒待ちで 4 回測って 2 回が 2・3、2 回が 0。同じ作りで待ちを 4 秒にすると 3 回とも 0（今の作りも 3 回とも 0）。だから値は 0（seen_wallPct＝1.2 秒待ちで測った値）"
+ "note": "直す前の作り（大きいページ・写真ごとの PIL・1.2 秒待ち）でも、1400px TW・右の列 +14 行は壁の中が 3 にも 0 にもなる（取り直しで 3、測り直しで 1.2 秒待ち 3・0、4 秒待ち 3。今の作りは毎回 0）。seen_wallPct＝取り直し以外に測った値。比べるのは測った値の幅 ±1"
 }
