@@ -484,12 +484,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
-  "w": 800,
-  "h": 369,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
@@ -1559,12 +1553,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.pastemagazine.com/wp-content/juploads/2024/01/zhajw7zlpk7n5z9dzeti.jpg": {
-  "w": 645,
-  "h": 363,
-  "target": 720,
-  "v": 3
- },
  "https://img.sbsnews.co.kr/newimg/news/20261109/202239307_1280.jpg": {
   "w": 1280,
   "h": 720,
@@ -2018,6 +2006,19 @@
   "h": 820,
   "target": 1280,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/1216984/13511513_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.475,
+  "local": "pics/2d9624df49b67f6d.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/1296185/15377950_615.jpg": {
   "w": 615,
@@ -3291,12 +3292,6 @@
   "target": 1280,
   "v": 3
  },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/09/1794217643055_a20lite-jpg.webp": {
-  "w": 1000,
-  "h": 625,
-  "target": 720,
-  "v": 3
- },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/10/1794321268538_s27-1794293076053899500845-61-0-396-640-crop-17942931440771079798738.jpeg": {
   "w": 1200,
   "h": 630,
@@ -3556,6 +3551,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
+  "w": 700,
+  "h": 322,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3729,12 +3730,6 @@
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Sentinel-marvel-comics-Thor.webp": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://www.dailysunny.com/wp-content/uploads/2026/10/20251101-Pumpkin-Smash-6-e1791895860938.jpg": {
-  "w": 900,
-  "h": 600,
   "target": 1280,
   "v": 3
  },

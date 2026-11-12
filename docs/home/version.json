@@ -1,10 +1,10 @@
 {
- "admin": "aac51688ad16",
- "admin-ai": "5b8b5b0d7fb1",
+ "admin": "32e04b251f5b",
+ "admin-ai": "8683a88a41c9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c6194c8d"
+   "9800b58e"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "630d5abc068d",
+ "admin-emblem": "db9e9f9466fd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f03efb37"
+   "48e36ada"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "a7b84b71f3d2",
+ "admin-now": "8950b30c8367",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f646ff27"
+   "00a0df29"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "7901c1e8"
   ]
  },
- "admin-system": "91b97a12376a",
+ "admin-system": "e961e098d903",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c1281b45"
+   "46713c26"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ef5f2833"
+   "c5d79edc"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "eb8cfe8b"
   ]
  },
- "index": "25f4c0295491",
+ "index": "851fe241c1aa",
  "index_marks": {
   "front": [
    "トップ",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "3b135602"
+   "2a8ab9ad"
   ],
   "w-6676e624": [
    "三星手机",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "cec122ba"
+   "6f4b7b0b"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "3dd2c092"
   ]
  },
- "updated": "11.13 03:02",
- "wishlist": "ae6c9ab27ddb"
+ "updated": "11.13 03:14",
+ "wishlist": "046c5472ed54"
 }

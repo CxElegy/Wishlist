@@ -242,7 +242,8 @@
   "绝区零": 2,
   "BLEACH Mirrors High": 1,
   "あつ森": 1,
-  "ぐでたま": 1
+  "ぐでたま": 1,
+  "星巴克马克杯": 1
  },
  "dota2": [
   {
@@ -574,6 +575,17 @@
   {
    "headline": "不二家洋菓子店でイースター仕様のぐでたまスイーツ販売",
    "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "スターバックスのJIMOTO Madeに、1000年の伝統を伝える備前焼のマグが誕生",
+   "highlight": "備前焼のマグ",
    "blurb": "",
    "weight": "normal",
    "refs": [

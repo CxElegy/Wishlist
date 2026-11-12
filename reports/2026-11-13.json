@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "edit_sig": "46c9aa26ed1f",
+ "edit_sig": "13f105463e06",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,8 +23,8 @@
      "date": "2026-11-12",
      "headline": "'아스트라에 오라티오' 성우진 총정리, 익숙한 목소리는 누구?",
      "highlight": "",
-     "image": "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800",
+     "image_via": "Bing 缩略图",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216958",
      "weight": "normal"
     }
@@ -898,17 +898,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-12",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "スターバックスのJIMOTO Madeに、1000年の伝統を伝える備前焼のマグが誕生(1/2)",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBxZTVPTzF5VWtIRHJEdWxMVnNEV3RkRHJuYVZyUEZselFKbE1qd2hyWHNmczJtYTR6Yy1ZRndTOVhKMkh4c3VGbV9Ib1Ftck52N3VmX29R0gFbQVVfeXFMUERGVnZFX2NZWW9mZEE0cl9ZWEpDRnVocWwtalprUmpHaHZoZlF4UzZnQTA4ODJIQ3Fqdnl1a2ZRNjNXT1RGcktPQ0JHUW5MbFVLa01BU1R1WjBaYw?oc=5"
+     "headline": "スターバックスのJIMOTO Madeに、1000年の伝統を伝える備前焼のマグが誕生",
+     "highlight": "備前焼のマグ",
+     "image": "https://news.walkerplus.com/article/1216984/13511513_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1216984/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
