@@ -746,9 +746,11 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 @media (prefers-reduced-motion:reduce){.wc,.tape,.frame,.vote button,.vt button,.mastwish{transition:none}}
 /* ---------- 左侧目录（v6：testground/compare.html で決めた形。宽屏的样子见 NAV_STYLES，窄屏是顶部两排横条） ---------- */
 html{scroll-behavior:smooth}
-[data-k]{scroll-margin-top:24px}
-section.sec.has-emb{scroll-margin-top:max(24px,calc(var(--embov,0px) + 6px))}  /* 小元素の上の端で吸着する（E4）。上の版面との間はあけない：吸着した時に上の版面の縁が見え、小元素がその上に立つ（2026-11-11 店長「上一个板块的边缘也显示出来会更有立体感」） */
-.spot,.front .poster{scroll-margin-top:16px}
+:root{--bar-tabs:0px;--bar-full:0px}   /* 上の固定の帯（≤1000 の横帯）の高さ：tabs＝板块の段だけ・full＝作品の段まで。NAV_JS が実測して入れる。吸着の余白（scroll-margin-top）と版面の高さの予算（FIT_JS・SHUFFLE_JS の --snapbar）はどちらもここから決める（2026-11-12：1000 幅で題が帯に隠れ・版面が画面に入らなかった） */
+[data-k]{--snapbar:var(--bar-full);scroll-margin-top:calc(var(--snapbar) + var(--snapgap,24px))}
+section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24px),calc(var(--embov,0px) + 6px)))}  /* 小元素の上の端で吸着する（E4）。上の版面との間はあけない：吸着した時に上の版面の縁が見え、小元素がその上に立つ（2026-11-11 店長「上一个板块的边缘也显示出来会更有立体感」） */
+.spot,.front .poster,#picks{--snapbar:var(--bar-tabs)}   /* 版面の外（トップ・気になるかも？）では帯は板块の段だけ */
+.spot,.front .poster{scroll-margin-top:calc(var(--snapbar) + 16px)}
 .page{max-width:1480px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px 32px;align-items:start}
 .mast{grid-column:1/-1}
 .issues{display:flex;flex-direction:column;gap:28px;min-width:0}
@@ -789,9 +791,11 @@ section.sec.has-emb{scroll-margin-top:max(24px,calc(var(--embov,0px) + 6px))}  /
  .nav .pill.media,.nav .nsum{display:none!important}   /* スマホの横帯にはシリーズの中身・作品名の行を出さない */
  .nav .pill.on{background:var(--card);color:var(--ink);border-color:var(--card)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,var(--alert));width:calc(var(--prog,0) * 100%)}
- [data-k]{scroll-margin-top:104px}section.sec.has-emb{scroll-margin-top:calc(104px + var(--embov,0px))}
+ :root{--bar-tabs:46px;--bar-full:94px}   /* NAV_JS が実測するまでの仮の値 */
+ [data-k]{--snapgap:10px}   /* 帯の下の余白（スマホは今までの 104px と同じ位置） */
 }
 @media (max-width:600px){.nav{margin:0 -16px}}
+@media (min-width:761px) and (max-width:1000px){.pk .why small{white-space:normal}}   /* 1000 幅前後：理由の行を「…」で切らない（D3）。高さは fitPk が測る */
 /* ---------- 愿望清单 ---------- */
 .wish{--bg:var(--sheet);--fg:var(--ink);--acc:var(--rose);--abg:var(--ink);--afg:var(--sheet);--aacc:#F2A7C3;--ac:var(--rose);
  --line:color-mix(in srgb,var(--ink) 18%,var(--sheet));background:var(--bg);color:var(--fg);border:1px solid var(--line)}
@@ -1809,7 +1813,7 @@ SHUFFLE_JS = """
     showFlat(false);
     if (innerWidth <= 760) return;
     if (sm.length < 2) return;
-    const T = innerHeight - 16, w0 = sm[0].querySelector('.pic')?.getBoundingClientRect().width || 200;
+    const T = innerHeight - (parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0) - 16, w0 = sm[0].querySelector('.pic')?.getBoundingClientRect().width || 200;
     const hk = k => k ? k.getBoundingClientRect().height : 0;
     const apply = h => {
       wishGrid.style.setProperty('--pkh', Math.round(h) + 'px'); wishGrid.style.removeProperty('--pkbig');
@@ -1828,6 +1832,7 @@ SHUFFLE_JS = """
   };
   let rt;
   addEventListener('resize', ev => { if (ev.isTrusted) { clearTimeout(rt); rt = setTimeout(fitPk, 200); } });
+  addEventListener('wl-bar', () => { clearTimeout(rt); rt = setTimeout(fitPk, 60); });   // 上の帯の高さが実測で変わった（NAV_JS）
   if (document.fonts) document.fonts.ready.then(fitPk);
   addEventListener('load', fitPk);
   const history = [];
@@ -4154,7 +4159,8 @@ FIT_JS = """
     const cols0 = getComputedStyle(m).gridTemplateColumns.split(' ').length, sec = m.closest('section');
     vis.forEach(boardBase);
     const over = sec ? sec.getBoundingClientRect().height - m.getBoundingClientRect().height : 120;
-    const budget = Math.max(160, innerHeight * ((sec && +sec.dataset.vh) || 70) / 100 - over - 16 - Math.max(0, ((sec && +sec.dataset.embov) || 0) - 18)), H = c => c.getBoundingClientRect().height;   // 小元素の分だけ下がって吸着する（E4）   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
+    const bar = sec ? parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0 : 0;   // 上の固定の帯（≤1000）：画面は帯の下だけ・吸着もその下
+    const budget = Math.max(160, (innerHeight - bar) * ((sec && +sec.dataset.vh) || 70) / 100 - bar - over - 16 - Math.max(0, ((sec && +sec.dataset.embov) || 0) - 18)), H = c => c.getBoundingClientRect().height;   // 小元素の分だけ下がって吸着する（E4）   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
     const fixed = c => { boardBase(c); const h = H(c); return {k: 'N', s: 1, lo: 0, hi: 0, h: () => h, a: () => 0}; };
     const measure = (c, i, k) => {
       const o = [], p = c.querySelector(':scope > .pic'), img = p && img0(p);
@@ -4398,7 +4404,7 @@ FIT_JS = """
     if (innerWidth <= 760) return;
     document.querySelectorAll('section.sec').forEach(sec => {
       const g = sec.querySelector(':scope > .grid'), h = g && g.querySelector(':scope > article.hero'); if (!h || !sec.offsetParent) return;
-      const B = innerHeight * ((+sec.dataset.vh || 70) / 100) - 16 - Math.max(0, (+sec.dataset.embov || 0) - 18), over = () => sec.getBoundingClientRect().height - B;
+      const bar = parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0, B = (innerHeight - bar) * ((+sec.dataset.vh || 70) / 100) - bar - 16 - Math.max(0, (+sec.dataset.embov || 0) - 18), over = () => sec.getBoundingClientRect().height - B;
       if (over() <= 0) return;
       const im = h.querySelector('.pic img:not(.bg):not(.ico)');
       const p = h.querySelector('.pic');
@@ -4443,7 +4449,7 @@ FIT_JS = """
     G.classList.add('one');   // 壁が横いっぱい（右の列は壁の中）
     // 画面 1 枚の高さ：壁の上端（見出しの下）から画面の下端まで
     const spot = G.closest('.spot');
-    const T = Math.max(300, innerHeight - (w.getBoundingClientRect().top - (spot || w).getBoundingClientRect().top) - 24);   // 見出しの下から画面の下まで（2026-11-09 店長：ジャンル別の棚はなし・ほかの注目ニュースは画面 1 枚の高さいっぱい）
+    const T = Math.max(300, innerHeight - (parseFloat(getComputedStyle(spot || w).getPropertyValue('--snapbar')) || 0) - (w.getBoundingClientRect().top - (spot || w).getBoundingClientRect().top) - 24);   // 上の固定の帯（≤1000）の分も引く   // 見出しの下から画面の下まで（2026-11-09 店長：ジャンル別の棚はなし・ほかの注目ニュースは画面 1 枚の高さいっぱい）
     w.style.gridTemplateColumns = '';
     const W0 = w.clientWidth;
     const okPic = c => !c.classList.contains('nophoto') && c.querySelector('.pic img:not(.bg):not(.ico)');
@@ -5106,6 +5112,24 @@ NAV_JS = """
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => update()); } }, {passive: true});
   addEventListener('resize', () => update(true));
+  // 上の固定の帯の高さ（≤1000）を測って :root の --bar-tabs・--bar-full に（吸着の余白と版面の高さの予算の元）。作品の段は .insec の時だけ出るので、一瞬付けて測る（描かれない）。
+  // スクロールでは測らない（帯の段は CSS の固定の大きさ）。変わったら版面を組み直す
+  const barH = () => {
+    const R = document.documentElement.style, was = [R.getPropertyValue('--bar-tabs'), R.getPropertyValue('--bar-full')];
+    let tb = 0, fl = 0;
+    if (!wide.matches && getComputedStyle(nav).position === 'sticky') {
+      const had = nav.classList.contains('insec'), top = parseFloat(getComputedStyle(nav).top) || 0, rs = [...rail.querySelectorAll('.nslot')], cur = rs.find(s => s.classList.contains('cur'));
+      nav.classList.remove('insec'); tb = top + nav.getBoundingClientRect().height;
+      nav.classList.add('insec'); if (!cur && rs[0]) rs[0].classList.add('cur'); fl = top + nav.getBoundingClientRect().height;   // 作品の段が空でも 1 つ入れて測る
+      if (!cur && rs[0]) rs[0].classList.remove('cur'); nav.classList.toggle('insec', had);
+    }
+    const now = [Math.ceil(tb) + 'px', Math.ceil(fl) + 'px'];
+    if (now[0] === was[0] && now[1] === was[1]) return;
+    R.setProperty('--bar-tabs', now[0]); R.setProperty('--bar-full', now[1]);
+    if (was[0] || was[1]) dispatchEvent(new Event('resize'));
+    dispatchEvent(new Event('wl-bar'));
+  };
+  barH(); addEventListener('resize', barH); if (document.fonts) document.fonts.ready.then(barH);
   document.addEventListener('wl-nav', () => { scan(); curIdx = -2; lk = null; update(true); });
   // 字体の読み込みなどで目次の高さが変わったら置き直す
   if (window.ResizeObserver) new ResizeObserver(() => { if (wide.matches) layout(true); }).observe(rail);

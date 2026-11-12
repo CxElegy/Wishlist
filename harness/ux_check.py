@@ -1185,6 +1185,35 @@ for(const name of window.likeFx.names){const booms=[];
 return [...new Set(out)];}"""
 
 
+SNAP_JS = r"""async()=>{const out=[],nav=document.querySelector('.nav'),sleep=t=>new Promise(r=>setTimeout(r,t));
+document.documentElement.style.scrollBehavior='auto';
+for(const el of [...document.querySelectorAll('.front .poster,.spot,#picks,section.sec[data-k]')].filter(e=>e.offsetParent)){
+ el.scrollIntoView({block:'start',behavior:'instant'});await sleep(350);el.scrollIntoView({block:'start',behavior:'instant'});await sleep(250);
+ const ns=nav?getComputedStyle(nav):null,nr=nav?nav.getBoundingClientRect():null;
+ const bar=ns&&(ns.position==='sticky'||ns.position==='fixed')&&nr.top<=1&&nr.width>innerWidth*0.6?Math.max(0,nr.bottom):0;
+ const r=el.getBoundingClientRect(),h=el.querySelector('h2,.band .title'),name=(el.dataset.k||el.className.split(' ')[0])+(h?' '+h.innerText.replace(/\s+/g,' ').slice(0,14):'');
+ const hid=[...el.querySelectorAll('h2,.band .title,.date,time,.emb')].filter(x=>x.offsetParent&&x.getBoundingClientRect().height>0&&x.getBoundingClientRect().top<r.top+260&&x.getBoundingClientRect().top<bar-0.5).length;
+ const over=Math.round(r.bottom-innerHeight),bottom=innerHeight+scrollY>=document.documentElement.scrollHeight-2;
+ if(hid)out.push(name+'：題・日付・小元素が帯に隠れる '+hid);if(over>0&&!bottom)out.push(name+'：画面から '+over+'px はみ出す');}
+return out;}"""
+
+
+def check_snap(pw, base, width, height):
+    """吸着の位置（区切りを画面の上にそろえた所）で、題・日付・小元素が上の固定の帯（≤1000 の横帯）に隠れる数と、区切りが画面からはみ出す px（審美基準 E4・F1）。
+    ページの底で吸着まで上がらない区切りは除く。2026-11-12：1000 幅で「ほかの注目ニュース」の題とポスターの日付が帯の下に隠れ、版面が +51〜107px 入らなかった。"""
+    b = launch(pw)
+    pg = b.new_page(viewport={"width": width, "height": height})
+    pg.goto(base, wait_until="load", timeout=90000)
+    pg.wait_for_timeout(6000)
+    for y in range(0, 40000, 1200):
+        pg.evaluate(f"scrollTo(0,{y})")
+        pg.wait_for_timeout(40)
+    pg.wait_for_timeout(2500)
+    bad = pg.evaluate(SNAP_JS)
+    b.close()
+    return bad
+
+
 def check_fx_edge(pw, base, width):
     """👍 の演出（likefx 20 種）の札・字・👍 本体が、端の 👍（左上・右上・左下）を押しても画面の外へ切れないか。
     テーマ見本ページで likeFx を直接押し、0.15〜0.85 秒の間に見える部品の矩形を測る（粒・光・輪は除く）。2026-10-29 ユーザー指摘「イイネ！が左へ切れる」。"""
@@ -1614,6 +1643,13 @@ def main(argv):
             bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
         fails += bool(bad)
         print(("✗ " if bad else "✓ ") + "ログイン中の 2 枚目：" + ("、".join(bad) if bad else "user_login 0 回（1 時間に 1 回）"))
+        for w, h in ([] if a.fast else [(1000, 800), (1024, 768)]):   # 吸着の位置で帯に隠れる・画面からはみ出す（上の帯のある幅の境目。--widths によらず）
+            try:
+                bad = check_snap(pw, a.base, w, h)
+            except Exception as ex:  # noqa: BLE001
+                bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + f"吸着の位置 {w}×{h}：" + ("、".join(bad[:6]) + (f" ほか {len(bad) - 6}" if len(bad) > 6 else "") if bad else "題・日付が帯に隠れる 0・はみ出し 0px"))
         for w in ([] if a.fast else sorted({*a.widths.split(","), "520"}, key=int)):   # 演出のはみ出し（390・520・1400）
             try:
                 bad = check_fx_edge(pw, a.base, int(w))
