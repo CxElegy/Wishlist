@@ -510,12 +510,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
-  "w": 800,
-  "h": 369,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
@@ -553,12 +547,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png": {
-  "w": 1280,
-  "h": 1323,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.iwate-np.co.jp/media-static/article/198453/thumbnail/sw4b0-tm6af2f0c3_862574b10.jpg": {
   "w": 1200,
   "h": 802,
@@ -590,18 +578,11 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.news-report.co.kr/news/thumbnail/202611/4474_6856_614_v150.jpg": {
-  "w": 300,
-  "h": 302,
+ "https://cdn.news-report.co.kr/news/photo/202611/4474_6856_614.png": {
+  "w": 600,
+  "h": 604,
   "target": 720,
-  "v": 3,
-  "blur": 0.644,
-  "local": "pics/fdbf8a14a030b4dd.webp",
-  "out": [
-   715,
-   720
-  ],
-  "why": "看不清"
+  "v": 3
  },
  "https://cdn.sacnilk.com/image/news/1000023554.jpg": {
   "w": 720,
@@ -3684,6 +3665,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
+  "w": 700,
+  "h": 322,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3731,6 +3718,12 @@
  "https://www.bing.com/th?id=ONUT.dmDVd6FuKl6McU40vrzJDg&pid=News&w=1200": {
   "w": 700,
   "h": 462,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.eqtTE4TLmWqEmaIkY47Y6g&pid=News&w=773": {
+  "w": 676,
+  "h": 700,
   "target": 720,
   "v": 3
  },
