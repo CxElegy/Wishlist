@@ -7,6 +7,7 @@ import pathlib
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 from unittest import mock
 
@@ -81,6 +82,7 @@ class Fire(unittest.TestCase):
         def digest_wins():
             digest_wins.done = True
             self.run_in("digest", lambda u, t: posts.append("digest") or 200)
+            time.sleep(1.1)   # 同じ秒・同じ中身・同じ親だと commit が同じ sha になり、push が「済み」で通ってしまう（速い Linux の入れ物）
         digest_wins.done = False
         res = self.run_in("bg", lambda u, t: posts.append("bg") or 200, before_push=lambda: None if digest_wins.done else digest_wins())
         self.assertEqual(posts, ["digest"])
