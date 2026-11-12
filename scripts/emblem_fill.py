@@ -1876,7 +1876,8 @@ def commit(item, good, picks, replace=False, log=print):
         # 切り抜きの検査で外れた画像は emblem_reject に書く（次は同じ人の次の候補を選ぶ。同じ画像で何度も失敗しない）
         now = next((i for i in load_items() if i["name"] == name), {})
         kept = {u for x in now.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source"))}
-        failed = [x["image"] for x in chosen if x["image"] not in kept and x.get("source", x["image"]) not in kept]
+        failed = [x["image"] for x in chosen if x["image"] not in kept and x.get("source", x["image"]) not in kept
+                  and x["image"] not in emblem.CUT_ENV]   # 網・rembg の一時の失敗で切れなかった候補は外さない（次の回にまた選べる）
         if failed:
             rej = list(dict.fromkeys(list(now.get("emblem_reject") or []) + failed))
             with WRITE_LOCK:
@@ -2259,7 +2260,7 @@ def fill_one(item, log=print):
     have0 = {n for x in item.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
     queued = len([w for w in item.get("emblem_who") or [] if w not in have0])   # まだいない人の数。STEP を超えれば今回は一部だけ
     if needs_face(item) and face_id.engine() is None:
-        return {"state": "failed", "note": "顔のモデルが使えず本人確認ができないので、自動では選ばなかった", "tried": {}}
+        return {"state": "failed", "note": "顔のモデルが使えず本人確認ができないので、自動では選ばなかった", "material": None, "env": True}   # 環境の失敗：回（rounds）も材料の指紋も残さない＝次の回にやり直す
     tried, reasons, steps, by_who = {}, {}, [], {}
     funnel = {"found": 0, "usable": 0, "auto": 0}
     fresh = item
@@ -2669,10 +2670,14 @@ def bust_fields(item, x, url, slug, fs):
 def bust_replacement(item, x, skip, log=print, orig=None):
     """顔だけのアップ x の代わりの胸像を、同じ Fandom のページの別の画像（公式イラスト・ギャラリーのアニメの立ち絵）から探す。
     外した画像・今ある画像（skip）は探さない。顔だけのアップ・壊れた切り抜きはまた外す。
-    質の下限：短い辺 emblem.BUST_MIN_SIDE 未満・ぼやけたもの・元（orig：PIL）より質が上がらないものは取らない（emblem.better_cut）。→ (網址, 切り抜き画像, fs) か None。"""
+    質の下限：短い辺 emblem.BUST_MIN_SIDE 未満・ぼやけたもの・元（orig：PIL）より質が上がらないものは取らない（emblem.better_cut）。→ (網址, 切り抜き画像, fs) か None（見たが無かった）。
+    網・429・rembg の一時の失敗で見られなかったときは emblem.EnvFail を出す：呼ぶ側（stage_closeups・stage_holds・reach_swap）は回数に数えず次の回に。"""
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
     official = emblem.official_for(item, x)
+    down = not official and emblem.official_down(item)   # 公式サイトに届かず公式の絵が 0 枚：「公式に無い」ではない
     if not api and not official:
+        if down:
+            raise emblem.EnvFail("公式サイトに届かない")
         return None
     m = re.match(r"^https://[^/]+/wiki/(.+)$", str(x.get("page") or ""))
     title = urllib.parse.unquote(m.group(1)).replace("_", " ") if m and not m.group(1).lower().startswith("file:") else _base_subject(x["subject"])
@@ -2680,10 +2685,14 @@ def bust_replacement(item, x, skip, log=print, orig=None):
     for _ in range(3):
         try:
             got = emblem.find_bust(api, title, word=re.split(r"[\s(]", _base_subject(x["subject"]))[0], limit=6, skip=skip, orig=orig, official=official)
-        except Exception as e:
-            log(f"  [胸像] {x['subject']}：{e}")
-            return None
+        except Exception as e:   # 候補ごとの「合わない」は find_bust の中で済む。外へ出るのは網・Fandom の API・rembg の失敗（EnvFail）か思わぬ失敗：どちらも「無かった」と数えない
+            log(f"  [胸像・次の回] {x['subject']}：{type(e).__name__}: {e}")
+            if isinstance(e, emblem.EnvFail):
+                raise
+            raise emblem.EnvFail(f"{type(e).__name__}: {e}") from e
         if not got or (got[2] is None and got[0] not in official):   # fs なしは公式の立ち絵（顔が測れないアニメ絵を上半身に切った）だけ
+            if down:
+                raise emblem.EnvFail("公式サイトに届かず、Fandom にも合うものが無い（公式を見られていない）")
             return None
         if closeup_of(got[1]) is not True and not broken_image(got[1], False):
             return got
@@ -2718,7 +2727,10 @@ def stage_closeups(item, bad, log=print):
             orig.load()
         except Exception:
             orig = None
-        got = bust_replacement(item, x, skip, log, orig=orig)
+        try:
+            got = bust_replacement(item, x, skip, log, orig=orig)
+        except emblem.EnvFail:   # 網・rembg の一時の失敗：回数に数えない・外さない（次の回にやり直す）
+            continue
         if got:
             swapped[s] = got
             mine.pop(s, None)
@@ -2830,17 +2842,14 @@ def reach_swap_run(item, log=print):
             orig.load()
         except Exception:
             orig = None
-        env_err = []   # 環境の失敗（rembg が無い・網が落ちた）は「胸像が無かった」ではない：回数に数えない（数えると rembg の無い PC の試走で全員が REACH_TRIES に届き、探すのをやめてしまう）
-
-        def log2(m, *a, **k):
-            if str(m).lstrip().startswith("[胸像]"):   # bust_replacement が find_bust の例外を出すときの印
-                env_err.append(m)
-            log(m, *a, **k)
-        got = bust_replacement(item, x, skip, log2, orig=orig)
+        try:
+            got = bust_replacement(item, x, skip, log, orig=orig)
+        except emblem.EnvFail:   # 環境の失敗（rembg が無い・網が落ちた・429）は「胸像が無かった」ではない：回数に数えない（数えると rembg の無い PC の試走で全員が REACH_TRIES に届き、探すのをやめてしまう）
+            continue
         if got:
             swapped[x["image"]] = got
             skip.add(got[0])
-        elif not env_err:
+        else:
             tried[x["image"]] = int(tried.get(x["image"]) or 0) + 1
     if tried != (item.get("emblem_reach_tried") or {}):
         with WRITE_LOCK:
@@ -2904,8 +2913,8 @@ def official_swap(item, log=print):
             orig = None
         try:
             got = official_cut(item, x, skip, orig)
-        except Exception as e:
-            log(f"  [公式へ] {x['subject']}：{e}")
+        except Exception as e:   # emblem.EnvFail（網・429・rembg）も思わぬ失敗も：外した画像に書かない（次の回にやり直す）
+            log(f"  [公式へ・次の回] {x['subject']}：{type(e).__name__}: {e}")
             continue
         if got:
             swapped[x["subject"]] = got
@@ -3372,7 +3381,7 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                 return
             except Exception as e:   # 1 つの失敗で全体を止めない
                 ilog(f"[失敗] {e}")
-                result = {"state": "failed", "note": f"エラー：{str(e)[:80]}", "material": material(item)}
+                result = {"state": "failed", "note": f"エラー：{str(e)[:80]}", "material": None, "env": True}   # 例外は指紋を残さない（前の回の指紋も消す：record は来た鍵だけ書くので None で上書き）→ frozen() にならず次の due に入る
             with WRITE_LOCK:
                 fresh = next((i for i in load_items() if i["name"] == name), item)
             with lock:

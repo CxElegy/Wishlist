@@ -511,12 +511,12 @@ class ReachSwap(unittest.TestCase):
         self.assertIn('"emblems/a-gone.webp": 1', saved["emblem_reach_tried"])
 
     def test_env_errors_are_not_counted_and_never_raise(self):
-        """rembg が無い・網が落ちた（bust_replacement が「[胸像]」と記録して None）は回数に数えない。思わぬ例外も外へ出さず 0。"""
+        """rembg が無い・網が落ちた（bust_replacement が emblem.EnvFail を出す）は回数に数えない。思わぬ例外も外へ出さず 0。"""
         item = self.item()
         saved = {}
 
         def broken_env(it, x, skip, log=print, **kw):
-            log(f"  [胸像] {x['subject']}：No module named 'rembg'")
+            raise emblem.EnvFail("No module named 'rembg'")
         with mock.patch.object(emblem_fill, "bust_replacement", side_effect=broken_env), mock.patch.object(emblem_fill, "_set_field", side_effect=lambda n, k, v: saved.setdefault(k, v)):
             self.assertEqual(emblem_fill.reach_swap(item, log=lambda *a: None), 0)
         self.assertNotIn("emblem_reach_tried", saved)

@@ -84,6 +84,34 @@ def _host_lock(host):
         return _host_locks.setdefault(host, threading.Lock())
 
 
+class EnvFail(Exception):
+    """一時の失敗（網が落ちた・時間切れ・HTTP 429 / 5xx・rembg やモデルが読めない）で、絵を見られなかった。
+    「見たが合わなかった」（顔が無い・別人・形が合わない・404）とは別：呼ぶ側は回数に数えず・emblem_reject に入れず、次の回にやり直す。"""
+
+
+def env_error(e):
+    """例外 e は環境の一時の失敗か（EnvFail と同じ扱い）。404・403・画像でない中身（UnidentifiedImageError）・検査の ValueError は「合わない」。
+    PIL.UnidentifiedImageError も requests の失敗も OSError の子なので、OSError ではまとめない。"""
+    import http.client
+    import socket
+    import ssl
+    if isinstance(e, EnvFail):
+        return True
+    if isinstance(e, urllib.error.HTTPError):
+        return e.code == 429 or e.code >= 500
+    if isinstance(e, (urllib.error.URLError, TimeoutError, socket.timeout, ConnectionError, http.client.HTTPException,
+                      ssl.SSLError, ImportError, MemoryError)):
+        return True
+    try:
+        import requests
+    except ImportError:
+        return False
+    if isinstance(e, requests.exceptions.RequestException):
+        r = getattr(e, "response", None)
+        return r is None or r.status_code == 429 or r.status_code >= 500
+    return False
+
+
 def _get(url, limit=MAX_BYTES):
     if wikihttp.is_wikimedia(url) or wikihttp.is_fandom(url):   # Wikimedia・Fandom の API は決まりどおりの UA・1 本ずつ・Retry-After・キャッシュ
         return wikihttp.get(url, limit)
@@ -590,12 +618,19 @@ def cut_out(url, slug, drawn=True):
     rembg の birefnet-general-lite（絵も写真も）。輪郭の外側の余白は切り詰める。中身（人物）は変えない。
     暗い背景に暗い人物・網点の漫画コマなど、輪郭がにじむものは切り抜いた結果を目で見て、だめなら外す。"""
     from PIL import Image
-    from rembg import new_session, remove
+    try:
+        from rembg import remove
+        sess = _session("birefnet-general-lite")
+    except Exception as e:
+        raise EnvFail(f"rembg が読めない：{e}") from e
 
     img = Image.open(io.BytesIO(get_full(url))).convert("RGB")
     if "i.ytimg.com/" in url:
         img = video_frame(img)
-    out = remove(img, session=_session("birefnet-general-lite"))   # 絵も写真もいちばん輪郭がきれいだった（isnet-anime・u2net と比べた）
+    try:   # birefnet-general-lite：絵も写真もいちばん輪郭がきれいだった（isnet-anime・u2net と比べた）
+        out = remove(img, session=sess)
+    except Exception as e:   # 読めた絵で rembg が落ちる＝onnx・メモリ（絵のせいではない）
+        raise EnvFail(f"rembg が動かない：{e}") from e
     out = check_whole(out, photo=not drawn)
     if not drawn and lost_face(img, out):
         raise ValueError("顔が切り抜きに残っていない（別のもの：手・物・背景を切り抜いた）")
@@ -1177,6 +1212,17 @@ def official_key(w):
     return re.sub(r"sh|ch|ts|j|fu", lambda m: {"sh": "s", "ch": "t", "ts": "t", "j": "z", "fu": "hu"}[m.group(0)], s)   # ヘボン式 = 訓令式（Hitsugaya/Hitugaya・Jin/Zin）
 
 
+OFFICIAL_DOWN = set()   # この実行でトップに届かなかった公式サイト（環境の失敗）。official_index は空のまま 1 回の実行の間持つので、ここで見分ける
+
+
+def official_down(item):
+    """その関注項の公式サイトに、この実行で届かなかったか（届かず絵が 0 枚＝「公式に無い」と数えない）。"""
+    try:
+        return official_site(item) in OFFICIAL_DOWN
+    except Exception:
+        return False
+
+
 OFFICIAL_LIST = re.compile(r'href=["\']([^"\'#?]*(?:/chara|/character|/member|/cast)[^"\'#?]*?/?)["\']', re.I)
 
 
@@ -1186,8 +1232,11 @@ def official_pages(site, extra=2):
     out = []
     try:
         html = _OFFICIAL_HTML[site] if site in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(site, _get(site, 1_500_000).decode("utf-8", "replace"))
-    except Exception:
+    except Exception as e:
+        if env_error(e):   # 公式サイトに届かなかった（429・網）：「公式に絵が無い」ではない。呼ぶ側（bust_replacement）が回数に数えない
+            OFFICIAL_DOWN.add(site)
         return out
+    OFFICIAL_DOWN.discard(site)
     if not OFFICIAL_IMG.search(html):   # 画像の網址が JS の中にだけある公式（A2O LITE：lite-artwork-young.webp）：同じ網域の script を読んで src 形に直す
         js = official_bundle_images(html, site)
         if js:
@@ -1379,13 +1428,23 @@ SCENE_FILE = re.compile(r"^File:Ep\d+(?!.*profile)", re.I)   # アニメの場�
 
 def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, photo=False, skip=(), orig=None, official=()):
     """顔のアップ（顔が高さの 5 割を超える）しかないとき：同じページに載っている画像から、切り抜いて胸像になるもの
-    （顔がはっきり見えて、顔の割合 fs が lo〜hi）を探す。名前に人物名を含む画像を先に、大きい順。→ (網址, 切り抜き画像, fs) か None"""
+    （顔がはっきり見えて、顔の割合 fs が lo〜hi）を探す。名前に人物名を含む画像を先に、大きい順。→ (網址, 切り抜き画像, fs) か None（候補を全部見て合わなかった）。
+    環境の失敗（網・時間切れ・429/5xx・rembg が読めない）で見られなかった候補があり、ほかに合うものも無ければ EnvFail を出す
+    （呼ぶ側は「合わなかった」と数えない・reject に入れない・次の回にやり直す）。"""
     from PIL import Image
-    from rembg import remove
+    try:
+        from rembg import remove
+    except Exception as e:
+        raise EnvFail(f"rembg が読めない：{e}") from e
     pg = {}
     if api:
         q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "images", "imlimit": 300, "format": "json", "redirects": 1})
-        pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
+        try:
+            pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
+        except Exception as e:
+            if env_error(e):
+                raise EnvFail(f"Fandom のページ一覧に届かない：{e}") from e
+            raise
     # 名前のどれか（姓でも名でも：「Yasutora Sado」の公式イラストは BBSSado.png）がファイル名に入っているもの
     words = [w.lower() for w in ([word] if word else []) + re.split(r"[\s(),]+", title) if len(w) >= 3]
     files = [x["title"] for x in pg.get("images", []) if re.search(r"\.(png|jpe?g|webp)$", x["title"], re.I)
@@ -1397,7 +1456,13 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
     for i in range(0, len(files), 40):
         q = urllib.parse.urlencode({"action": "query", "titles": "|".join(files[i:i + 40]), "prop": "imageinfo",
                                     "iiprop": "url|size", "iiurlwidth": 600, "format": "json"})
-        for p in json.loads(_get(f"{api}?{q}", 4_000_000))["query"]["pages"].values():
+        try:
+            pages = json.loads(_get(f"{api}?{q}", 4_000_000))["query"]["pages"].values()
+        except Exception as e:
+            if env_error(e):
+                raise EnvFail(f"Fandom の画像の情報に届かない：{e}") from e
+            raise
+        for p in pages:
             info = (p.get("imageinfo") or [{}])[0]
             if info.get("width", 0) >= 300 and info.get("height", 0) >= 300:
                 infos.append((info["width"] * info["height"], info.get("thumburl") or info["url"], p["title"]))
@@ -1405,12 +1470,22 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
     # 公式サイトの絵が先（A17：公式 → Fandom の立ち絵 → 場面画像は最後）
     order = [(u, "公式 " + u.rsplit("/", 2)[-2]) for u in official if u not in set(skip)] \
         + [(u, t) for _, u, t in sorted(infos, key=lambda i: (bool(SCENE_FILE.search(i[2])), -i[0]))[:limit]]
+    env = []   # 環境の失敗で見られなかった候補（合うものが無いまま終われば EnvFail）
+    if order:
+        try:   # rembg のモデル（初回は取りに行く）：読めなければどの候補も見られない
+            sess = _session("birefnet-general-lite")
+        except Exception as e:
+            raise EnvFail(f"rembg のモデルが読めない：{e}") from e
     for url, t in order:
         try:
             raw = Image.open(io.BytesIO(_get(url)))
             clear_bg = raw.mode in ("RGBA", "LA", "P") and raw.convert("RGBA").getchannel("A").getextrema()[0] < 16   # もとから透明な背景（公式の立ち絵）
             img = raw.convert("RGB")
-            out = check_whole(remove(img, session=_session("birefnet-general-lite")), photo=photo)
+            try:
+                cut = remove(img, session=sess)
+            except Exception as e:   # 正しく読めた絵で rembg が落ちる＝onnx・メモリの失敗（絵のせいではない）
+                raise EnvFail(f"rembg が動かない：{e}") from e
+            out = check_whole(cut, photo=photo)
             if photo and lost_face(img, out):   # 写真：手・物・暗い背景を切り抜いたもの
                 raise ValueError("顔が切り抜きに残っていない")
             fitted, fs = face_fit(out)
@@ -1433,10 +1508,17 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
                     backup = (url, ub, None)
             print(f"  [合わない] {t}：顔 {fs}", file=sys.stderr)
         except Exception as e:
-            print(f"  [合わない] {t}：{e}", file=sys.stderr)
+            if env_error(e):
+                env.append(e)
+                print(f"  [取れない・次の回] {t}：{type(e).__name__}: {e}", file=sys.stderr)
+            else:
+                print(f"  [合わない] {t}：{e}", file=sys.stderr)
     if backup:
         print(f"  [胸像・顔なし] {backup[0][:80]}（目で確認）", file=sys.stderr)
-    return backup
+        return backup
+    if env:
+        raise EnvFail(f"{len(env)} 枚を見られなかった（{type(env[0]).__name__}: {env[0]}）")
+    return None
 
 
 def fit_all(name, drawn=False):
@@ -1507,8 +1589,12 @@ def fit_all(name, drawn=False):
                     print(f"  {x['subject']}：目 {mk[0]} · 足の裏 {mk[1]} · 重心 {mk[2]} · 大きさ {mk[4]}（{mk[5]}）· {why} → {'上半身' if real else '全身'}", file=sys.stderr)
             if fs and fs > CLOSEUP and x.get("page"):   # 顔だけのアップは浮くので、同じキャラのページから胸像を探す
                 m = re.match(r"^(https://[^/]+)/wiki/(.+)$", x["page"])
-                found = m and find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "),
-                                        word=re.split(r"[\s(]", x["subject"])[0], official=official_for(item, x))
+                try:
+                    found = m and find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "),
+                                            word=re.split(r"[\s(]", x["subject"])[0], official=official_for(item, x))
+                except EnvFail as e:   # 網・rembg の一時の失敗：今の切り抜きのまま（上半身の控え）。次の測り直しで探し直す
+                    print(f"  [胸像探し・次の回] {x['subject']}：{e}", file=sys.stderr)
+                    found = None
                 if found:
                     x["image"], out, fs = found[0], found[1], found[2]
                     x.pop("source", None)
@@ -1816,6 +1902,7 @@ def keep_framing(ems, old=(), drawn=False, item_framing=None):
 
 
 CUT_FAIL = {}   # 元の網址 → 切り抜きの検査で外れた理由（1 回の実行の間）
+CUT_ENV = set()   # 元の網址のうち、網・rembg の一時の失敗で切れなかったもの（commit が emblem_reject に入れない）
 
 
 def cut_all(name, drawn, old=()):
@@ -1861,6 +1948,8 @@ def cut_all(name, drawn, old=()):
                 print(f"  {x['subject']} → {x['image']}（同じページの別の画像）", file=sys.stderr)
             else:
                 x["_drop"] = True
+                if env_error(e):   # 網・rembg の一時の失敗：「切り抜きの検査で外れた」ではない → commit は emblem_reject に入れない（次の回にまた選べる）
+                    CUT_ENV.add(src)
                 CUT_FAIL[src] = str(e)   # commit が「公式の候補が切り抜きで落ちた」の理由を版面の要約に出す
                 print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
     ems = keep_framing([x for x in ems if not x.get("_drop")], old, drawn, item.get("emblem_framing"))
