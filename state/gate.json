@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-12T22:33:06+00:00",
+ "changed": true,
+ "checked": "2026-11-12T22:53:11+00:00",
  "fired": {
   "at": "2026-11-12T22:33:06+00:00",
   "results": {
@@ -43,11 +43,6 @@
     "sig": "6d1db1ee0b1b"
    },
    "items": [
-    "A2O LITE",
-    "FROM",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
     "gelato pique",
     "lib:SPY×FAMILY",
     "lib:ゼルダの伝説",
@@ -57,40 +52,22 @@
     "lib:葬送のフリーレン",
     "lib:観葉植物",
     "lib:鬼滅の刃",
-    "あつ森",
-    "ぐでたま",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
     "滑雪",
     "绝区零"
    ],
-   "last_batch": "2026-11-12T21:51:48+00:00",
+   "last_batch": "2026-11-12T22:51:58+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 291,
+   "prog": 307,
    "prog_day": "2026-11-13",
-   "ripe": [
-    "A2O LITE",
-    "FROM",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "星巴克马克杯"
-   ],
-   "sig": "6d1db1ee0b1b",
+   "ripe": [],
+   "sig": "a50206da005a",
    "token_cap": 1000000,
-   "tokens_today": 294631,
-   "why": "整理待ちの記事 115 件（22 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 355945,
+   "why": "整理待ちの記事 99 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -183,12 +160,12 @@
    "runs": 10
   },
   "2026-11-13": {
-   "batches": 11,
-   "cr": 10164441,
-   "cw": 258696,
-   "in": 255,
-   "out": 35680,
-   "runs": 4
+   "batches": 14,
+   "cr": 11129470,
+   "cw": 314919,
+   "in": 284,
+   "out": 40742,
+   "runs": 5
   }
  }
 }
