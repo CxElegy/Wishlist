@@ -1,6 +1,6 @@
 {
  "admin": "4c64c7cd61c4",
- "admin-ai": "1119ec3f310b",
+ "admin-ai": "a6c5f2dd6c47",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "41e60757"
+   "80fdd39c"
   ]
  },
  "admin-boards": "3f7b5cb3a106",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "b79f1cb8bc0e",
+ "admin-emblem": "6a25e5850422",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "83809245"
+   "c7b15bf1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "b51680485e70",
+ "admin-now": "3a482d037000",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "f544c16f"
+   "a2f7c6a1"
   ]
  },
- "admin-system": "56ae4e0b5a24",
+ "admin-system": "88d3a57922b9",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "bdaec9d7"
+   "9ea3dbe1"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "aeb72123"
   ]
  },
- "index": "2398e6b87a30",
+ "index": "5e062e68ea26",
  "index_marks": {
   "front": [
    "トップ",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "6f85b723"
+   "fa259881"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "b2d741d7"
+   "b7af02e5"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "f53a804f"
   ]
  },
- "updated": "11.12 17:47",
+ "updated": "11.12 17:53",
  "wishlist": "da334b994fab"
 }

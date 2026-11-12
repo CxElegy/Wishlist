@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-11-10T16:38:11+00:00",
-"text": "出刊に失敗：No module named 'cv2'",
-"level": "error"
-},
-{
 "at": "2026-11-10T16:53:13+00:00",
 "text": "2026-11-11 第 1 バッチを出刊：GTA 6（1 版面・4 本・残り 9 版面） · token 新規入力 5.1万・キャッシュ読み 131.8万・出力 4,529",
 "level": "ok",
@@ -2111,5 +2106,46 @@
 "at": "2026-11-12T08:46:26+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
+},
+{
+"at": "2026-11-12T08:53:28+00:00",
+"text": "2026-11-12 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、GTA 6、The Mandalorian、Vaundy、ぐでたま ほか 4（10 版面・44 本・残り 9 版面） · token 新規入力 5.0万・キャッシュ読み 85.7万・出力 4,954",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.61,
+"mem_total": 16867414016,
+"mem_free": 15905292288,
+"disk_used": 10961088512,
+"disk_free": 30322446336,
+"disk_total": 41283534848,
+"peak": 372629504
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"GTA 6",
+"The Mandalorian",
+"Vaundy",
+"ぐでたま",
+"三星手机",
+"周杰伦",
+"星巴克马克杯",
+"漫威电影"
+],
+"stories": 44,
+"left": 9,
+"edited": 22,
+"run": null,
+"tok": {
+"in": 27,
+"cw": 50137,
+"cr": 856897,
+"out": 4954,
+"calls": 14,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 912015
 }
 ]

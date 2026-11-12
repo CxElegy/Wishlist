@@ -286,6 +286,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.hldycdn.com/70c46b9e-351c-4136-9513-f0aacbdfee08.jpeg": {
+  "w": 1950,
+  "h": 1283,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.mmoexp.com/images/202611/75b0f137b41da19f785e2b21d24b20e8edee0087.jpg": {
   "w": 800,
   "h": 216,
@@ -463,6 +469,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.autodaily.co.kr/news/photo/202611/601977_203885_5646.png": {
+  "w": 852,
+  "h": 692,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:knsszrujdducsne2yxvzqhph/bafkreicczdpct6piix74afri5nro77n4kfxkapjxsb2ygs5jsxsmcptouy": {
   "w": 1536,
   "h": 1920,
@@ -500,6 +512,13 @@
   "target": 1280,
   "v": 3,
   "blur": 0.345
+ },
+ "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-12"
  },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
@@ -1115,6 +1134,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://hips.hearstapps.com/hmg-prod/images/e68b5f15-cb38-4c12-bedb-c5c86e7596d6.png?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
+  "w": 1200,
+  "h": 600,
+  "target": 1280,
   "v": 3
  },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261105/photo/bkn-20261105000104965-1105_00862_001_02b.jpg?20261104222519": {
@@ -2588,12 +2613,6 @@
   "target": 720,
   "v": 3
  },
- "https://pimg.mk.co.kr/news/cms/202611/06/20261106_01160116000002_L00.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-12"
- },
  "https://players.com.ua/wp-content/uploads/2026/11/d2-711-mr.jpg": {
   "w": 1200,
   "h": 675,
@@ -3326,12 +3345,6 @@
   "h": 788,
   "target": 720,
   "v": 3
- },
- "https://times-abema.ismcdn.jp/mwimgs/4/3/1200w/img_4351a3246dbd7f0b3abf2cf0f9a1966d3338550.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-12"
  },
  "https://tokyo-sports.ismcdn.jp/mwimgs/0/e/1200w/img_0e3d0d8e725f2845b1b4e6a5df245394100507.jpg": {
   "w": 1200,
