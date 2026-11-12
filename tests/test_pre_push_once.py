@@ -59,10 +59,12 @@ class PrePushOnce(unittest.TestCase):
         sh(["git", "commit", "-qam", "change"], self.repo)
         # 偽の python3（いま動いている python）。偽の docker は make_docker で
         (self.bin / "python3").write_text(f'#!/usr/bin/env bash\nexec "{pathlib.Path(sys.executable).as_posix()}" "$@"\n')
+        (self.bin / "python3").chmod(0o755)
         self.make_docker(True)
 
     def make_docker(self, ok):
         (self.bin / "docker").write_text(f"#!/usr/bin/env bash\nexit {0 if ok else 1}\n")
+        (self.bin / "docker").chmod(0o755)   # Linux では実行の許可が要る
 
     def mark(self, name):
         p = self.marks / name
