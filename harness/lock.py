@@ -59,27 +59,90 @@ def resolve(cmd, windows=None, git_root=None):
     return list(cmd)
 
 
-def acquire(name, wait=1200, stale=1800, state=None, sleep=time.sleep, clock=time.time, poll=5, who=""):
+def _alive(pid):
+    """その pid の処理が生きているか（Windows では os.kill(pid, 0) が処理を終わらせるので使わない）"""
+    try:
+        pid = int(pid)
+    except (TypeError, ValueError):
+        return False
+    if pid <= 0:
+        return False
+    if os.name == "nt":
+        import ctypes
+        k = ctypes.windll.kernel32
+        h = k.OpenProcess(0x1000, False, pid)   # PROCESS_QUERY_LIMITED_INFORMATION
+        if not h:
+            return False
+        try:
+            code = ctypes.c_ulong()
+            return bool(k.GetExitCodeProcess(h, ctypes.byref(code))) and code.value == 259   # STILL_ACTIVE
+        finally:
+            k.CloseHandle(h)
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
+
+
+def _queue(name, state=None):
+    """待つ人の列（先着順）。locks/ の外（lockq/<名前>/）に置く：status が鍵と取り違えない"""
+    return (state or q.state_dir()) / "lockq" / name
+
+
+def waiting(name, state=None, alive=_alive):
+    """列の中の生きている待ち人（先頭が次に取る人）。死んだ待ち人の整理券はここで捨てる"""
+    qd = _queue(name, state)
+    out = []
+    for f in sorted(qd.glob("*.json")) if qd.is_dir() else []:
+        o = q._read(f) or {}
+        if not alive(o.get("pid")):
+            try:
+                f.unlink()
+            except OSError:
+                pass
+            continue
+        out.append({**o, "ticket": f.name})
+    return out
+
+
+def acquire(name, wait=1200, stale=1800, state=None, sleep=time.sleep, clock=time.time, poll=5, who="", alive=_alive):
+    """先着順（整理券）：待つ人は lockq/<名前>/ に名前と時刻で並び、先頭の人だけが取れる。死んだ待ち人は pid で列から外す。
+    （2026-11-13：先着順でない取り合いで、40 分待っても取れない係が出た）"""
     d = (state or q.state_dir()) / "locks" / name
     d.parent.mkdir(parents=True, exist_ok=True)
+    qd = _queue(name, state)
+    qd.mkdir(parents=True, exist_ok=True)
+    ticket = qd / f"{time.time_ns():020d}-{os.getpid()}-{id(d) % 100000}.json"
+    ticket.write_text(json.dumps({"pid": os.getpid(), "since": clock(), "who": who, "cwd": os.getcwd().replace("\\", "/")}), encoding="utf-8")
     end = clock() + wait
-    while True:
+    try:
+        while True:
+            line = waiting(name, state, alive)
+            if line and line[0]["ticket"] == ticket.name:   # 先頭だけが取れる
+                try:
+                    d.mkdir()
+                    (d / "owner.json").write_text(json.dumps({"pid": os.getpid(), "since": clock(), "who": who, "cwd": os.getcwd().replace("\\", "/")}), encoding="utf-8")
+                    return d
+                except FileExistsError:
+                    o = q._read(d / "owner.json") or {}
+                    try:
+                        since = o.get("since") or d.stat().st_mtime
+                    except OSError:
+                        continue   # ちょうど返された
+                    if clock() - since > stale or (o.get("pid") and not alive(o["pid"])):   # 古い鍵・持ち主が死んだ鍵は取り直す
+                        shutil.rmtree(d, ignore_errors=True)
+                        continue
+            if clock() >= end:
+                return None
+            sleep(poll)
+    finally:
         try:
-            d.mkdir()
-            (d / "owner.json").write_text(json.dumps({"pid": os.getpid(), "since": clock(), "who": who, "cwd": os.getcwd().replace("\\", "/")}), encoding="utf-8")
-            return d
-        except FileExistsError:
-            o = q._read(d / "owner.json") or {}
-            try:
-                since = o.get("since") or d.stat().st_mtime
-            except OSError:
-                continue   # ちょうど返された
-            if clock() - since > stale:
-                shutil.rmtree(d, ignore_errors=True)
-                continue
-        if clock() >= end:
-            return None
-        sleep(poll)
+            ticket.unlink()
+        except OSError:
+            pass
 
 
 def release(d):

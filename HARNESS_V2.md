@@ -88,6 +88,7 @@ T-0002 が 11 係・85 万（55%。審査 3 回＋直し 3 回＋見立て＋合
 - `ci_local.sh` が引数なしで全部緑なら、`HEAD^{tree}` の指紋で緑の印を残す（`HF_CI_GREEN_DIR`、既定 `D:/Claude/hf/state/ci_green/`、無ければ印なし）。pre-push の ④ は同じ指紋の印が 2 時間以内（`HF_CI_GREEN_TTL`）なら流さない。赤・終了コード 3・一部の試験だけの流しは印を残さない。
 - ④ が終了コード 3（負荷の時間切れ）なら pre-push も 3 で返す（本物の赤は 1）。試験は `tests/test_pre_push_once.py`。
 - `lock.py` は別の鍵を持ったまま（`HF_LOCK_*` あり）別の鍵を取ろうとすると即エラー（終了コード 64）。ci の鍵を ci_local.sh 以外で取ると警告。試験は `tests/test_lock_nested.py`。
+- `lock.py` は先着順（整理券）：待つ人は `lockq/<名前>/` に並び、先頭だけが取れる。死んだ待ち人・死んだ持ち主は pid で外す。試験は `tests/test_lock_fifo.py`。
 
 ### run 1112d のあと（2026-11-12）：赤の直し 1 回・測る場所で分ける
 
