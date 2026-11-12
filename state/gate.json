@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-12T07:03:54+00:00",
+ "changed": true,
+ "checked": "2026-11-12T07:18:35+00:00",
  "fired": {
-  "at": "2026-11-12T07:04:14+00:00",
+  "at": "2026-11-12T07:18:35+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -25,26 +25,29 @@
    "edit": 7
   },
   "2026-11-12": {
-   "edit": 8
+   "edit": 9
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-12T05:28:15+00:00",
+    "at": "2026-11-12T07:18:35+00:00",
     "attempts": 1,
     "day": "2026-11-12",
-    "prog": 382,
-    "resp": "cse_01W4x6f9A7wFPEGWyrSzt5fM",
-    "sig": "5e293b37982a"
+    "prog": 408,
+    "resp": "cse_01W4x6f611R1YnDkoZ1p2Dmo",
+    "sig": "b8725f1e5ac6"
    },
    "items": [
     "A2O LITE",
     "Astrae Oratio",
+    "FROM",
+    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "dota2",
+    "gelato pique",
     "lib:ガンプラ",
     "lib:キャンプ",
     "lib:コーヒー",
@@ -53,7 +56,14 @@
     "lib:東京ディズニーリゾート",
     "lib:筋トレ",
     "lib:観葉植物",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
     "滑雪",
+    "漫威电影",
     "猫用品",
     "绝区零"
    ],
@@ -65,35 +75,47 @@
    "need": true,
    "prog": 408,
    "prog_day": "2026-11-12",
-   "ripe": [],
-   "sig": "2f86b1e47462",
+   "ripe": [
+    "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "dota2",
+    "あつ森",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影"
+   ],
+   "sig": "b8725f1e5ac6",
    "token_cap": 1000000,
    "tokens_today": 462601,
-   "why": "整理待ちの記事 110 件（16 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 185 件（26 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
+   "items": [
     "チェーンソーマン",
-    "周杰伦",
+    "dota2",
     "哈利波特剧集",
     "漫威电影",
+    "FROM",
+    "GTA 6",
+    "あつ森",
+    "周杰伦",
+    "Astrae Oratio"
+   ],
+   "need": true,
+   "sig": "c1eb728a9f50",
+   "waiting": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "The Mandalorian",
+    "Vaundy",
+    "ぐでたま",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 9 版面（Actions で Python が埋める）・失敗 6 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
