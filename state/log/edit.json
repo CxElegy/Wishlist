@@ -1,44 +1,5 @@
 [
 {
-"at": "2026-11-10T19:49:33+00:00",
-"text": "2026-11-11 第 1 バッチを出刊：Astrae Oratio、GTA 6、gelato pique、あつ森、ぐでたま、周杰伦 ほか 2（8 版面・15 本・残り 3 版面） · token 新規入力 5.0万・キャッシュ読み 109.2万・出力 3,801",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.29,
-"mem_total": 16867737600,
-"mem_free": 16017944576,
-"disk_used": 9730699264,
-"disk_free": 31552835584,
-"disk_total": 41283534848,
-"peak": 325357568
-},
-"batch": 1,
-"boards": [
-"Astrae Oratio",
-"GTA 6",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"周杰伦",
-"滑雪",
-"漫威电影"
-],
-"stories": 15,
-"left": 3,
-"edited": 10,
-"run": null,
-"tok": {
-"in": 31,
-"cw": 49850,
-"cr": 1091878,
-"out": 3801,
-"calls": 16,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1145560
-},
-{
 "at": "2026-11-10T19:52:07+00:00",
 "text": "2026-11-11 第 1 バッチを出刊：Astrae Oratio、GTA 6、gelato pique、あつ森、ぐでたま、三星手机 ほか 3（9 版面・19 本・残り 2 版面） · token 新規入力 5.2万・キャッシュ読み 124.9万・出力 4,715",
 "level": "ok",
@@ -2189,6 +2150,45 @@
 "cr": 473029,
 "out": 1708,
 "calls": 8,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-12T21:31:57+00:00",
+"text": "2026-11-13 第 2 バッチを出刊：（新しく終わった版面なし）（0 版面・0 本・今日の整理待ちは全部終わり） · token 新規入力 1,366・キャッシュ読み 13.6万・出力 630",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.88,
+"mem_total": 16867414016,
+"mem_free": 15936888832,
+"disk_used": 10095792128,
+"disk_free": 31187742720,
+"disk_total": 41283534848,
+"peak": 348225536
+},
+"batch": 2,
+"boards": [],
+"stories": 0,
+"left": 0,
+"edited": 23,
+"run": 1794518542.014707,
+"tok": {
+"in": 3,
+"cw": 1363,
+"cr": 136343,
+"out": 630,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 138339,
+"secs": 576,
+"run_tok": {
+"in": 19,
+"cw": 40653,
+"cr": 609372,
+"out": 2338,
+"calls": 10,
 "model": "claude-sonnet-5-5"
 }
 }
