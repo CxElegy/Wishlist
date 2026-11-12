@@ -94,8 +94,14 @@
   },
   "1400px TW・右の列 +14 行": {
    "ok": true,
-   "wallPct": 3,
-   "sidePct": 0
+   "wallPct": 0,
+   "sidePct": 0,
+   "seen_wallPct": [
+    3,
+    0,
+    0,
+    3
+   ]
   },
   "1400px VV": {
    "ok": true,
@@ -104,8 +110,14 @@
   },
   "1400px VWT": {
    "ok": true,
-   "wallPct": 2,
-   "sidePct": 0
+   "wallPct": 0,
+   "sidePct": 0,
+   "seen_wallPct": [
+    2,
+    0,
+    0,
+    2
+   ]
   },
   "1400px WTT・先頭は 2 列の 1 枚": {
    "ok": true,
@@ -218,5 +230,6 @@
    "sidePct": 0
   }
  },
- "made": "直す前の作り（大きい docs/home・写真ごとに PIL・1.2 秒待ち）で測った値。tests/test_wall_shapes.py --baseline"
+ "made": "直す前の作り（大きい docs/home・写真ごとに PIL・1.2 秒待ち）で測った値。tests/test_wall_shapes.py --baseline",
+ "note": "直す前の作りは 1.2 秒の固定待ちなので、負荷で写真の並びが落ち着く前に測ることがある。2 通りは 4 回測って多い方（0）を値にした（seen_wallPct＝測った値。今の作りは 3 回とも 0）"
 }
