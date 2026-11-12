@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-12T17:31:36+00:00",
+ "checked": "2026-11-12T17:39:12+00:00",
  "fired": {
-  "at": "2026-11-12T17:31:36+00:00",
+  "at": "2026-11-12T17:39:28+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -43,12 +43,9 @@
     "sig": "b6838963f843"
    },
    "items": [
-    "A2O LITE",
     "BLEACH Mirrors High",
     "FROM",
-    "The Mandalorian",
     "Vaundy",
-    "gelato pique",
     "lib:Ado",
     "lib:BTS",
     "lib:King Gnu",
@@ -59,38 +56,31 @@
     "lib:原神",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "日本顶级网球赛事",
     "星巴克马克杯",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-12T17:16:13+00:00",
+   "last_batch": "2026-11-12T17:32:10+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 137,
+   "prog": 154,
    "prog_day": "2026-11-13",
    "ripe": [
-    "A2O LITE",
     "BLEACH Mirrors High",
     "FROM",
-    "The Mandalorian",
-    "gelato pique",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "日本顶级网球赛事",
     "星巴克马克杯",
     "猫用品",
     "绝区零"
    ],
-   "sig": "b6838963f843",
+   "sig": "0dfb941735fb",
    "token_cap": 1000000,
-   "tokens_today": 91973,
-   "why": "整理待ちの記事 124 件（21 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 105716,
+   "why": "整理待ちの記事 107 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -183,11 +173,11 @@
    "runs": 10
   },
   "2026-11-13": {
-   "batches": 2,
-   "cr": 3842596,
-   "cw": 79476,
-   "in": 91,
-   "out": 12406,
+   "batches": 3,
+   "cr": 4864186,
+   "cw": 89884,
+   "in": 111,
+   "out": 15721,
    "runs": 1
   }
  }
