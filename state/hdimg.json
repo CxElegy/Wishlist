@@ -444,12 +444,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.autodaily.co.kr/news/photo/202611/601977_203885_5646.png": {
-  "w": 852,
-  "h": 692,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:knsszrujdducsne2yxvzqhph/bafkreicczdpct6piix74afri5nro77n4kfxkapjxsb2ygs5jsxsmcptouy": {
   "w": 1536,
   "h": 1920,
@@ -1283,6 +1277,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.392
+ },
+ "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228137/thumb001.png?height=720&quality=75&version=1793150116&width=1280": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-12"
  },
  "https://images-r2.thebrag.com/pedestrian/uploads/2026/11/daniel-radcliffe-harry-potter-reboot.jpg?v=1794356337052": {
   "w": 1280,
@@ -3410,6 +3410,12 @@
   "h": 630,
   "target": 1280,
   "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/12/1794443617144_galaxy-s27-ultra-duoc-nang-cap-mot-tinh-nang-fan-mong-doi-nhat-3099.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-12"
  },
  "https://wassets.insta360.com/store/c1d5e5a174d5499d9f8f04aa618052a2/x6.jpg": {
   "w": 1200,

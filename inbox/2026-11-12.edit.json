@@ -66,18 +66,18 @@
  ],
  "_covered": {
   "GTA 6": 101,
-  "漫威电影": 80,
-  "三星手机": 24,
+  "漫威电影": 89,
+  "三星手机": 31,
   "Astrae Oratio": 13,
   "哈利波特剧集": 14,
   "滑雪": 16,
   "チェーンソーマン": 21,
   "ILLIT": 10,
   "MMORPG 新作": 10,
-  "周杰伦": 10,
+  "周杰伦": 19,
   "The Mandalorian": 6,
   "dota2": 4,
-  "日本顶级网球赛事": 3,
+  "日本顶级网球赛事": 4,
   "BLEACH Mirrors High": 14,
   "A2O LITE": 4,
   "gelato pique": 5,
@@ -111,7 +111,9 @@
     49,
     57,
     64,
-    80
+    80,
+    85,
+    84
    ],
    "image": "https://www.thewrap.com/wp-content/uploads/2022/06/Elizabeth-Olsen-Wanda.jpg"
   },
@@ -133,7 +135,10 @@
     53,
     61,
     69,
-    75
+    75,
+    81,
+    86,
+    82
    ]
   },
   {
@@ -164,7 +169,8 @@
     13,
     5,
     78,
-    79
+    79,
+    83
    ]
   },
   {
@@ -191,7 +197,8 @@
     6,
     11,
     4,
-    23
+    23,
+    30
    ],
    "image": "https://tech-ish.com/wp-content/uploads/2026/08/techish-galaxy-s27-cad-thumbnail-1920x1080-1-1280x720.png"
   },
@@ -203,7 +210,8 @@
    "refs": [
     2,
     9,
-    20
+    20,
+    25
    ]
   },
   {
@@ -225,7 +233,8 @@
     14,
     12,
     10,
-    21
+    21,
+    31
    ]
   },
   {
@@ -246,6 +255,17 @@
    "weight": "normal",
    "refs": [
     15
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultraは、ファンが最も待ち望んでいたアップグレードを受けるのだろうか？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27,
+    26,
+    28
    ]
   }
  ],
@@ -519,7 +539,8 @@
    "weight": "lead",
    "refs": [
     3,
-    4
+    4,
+    14
    ],
    "image": "https://cdn.hk01.com/di/media/images/dw/20261111/1197247192331456512892673.jpeg/ODE6xwazLwoUSoZaBPa-Y-nLxQtIBVTsAbgygwG4MoM?v=w1280r16_9"
   },
@@ -639,6 +660,15 @@
    "refs": [
     3,
     1
+   ]
+  },
+  {
+   "headline": "女子シングルス1回戦 【ハイライト】L.フェルナンデス(CAN) vs 坂詰 姫野(JPN) 【東レ パン パシフィック オープンテニス 2026】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
