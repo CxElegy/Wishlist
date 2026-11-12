@@ -2158,6 +2158,87 @@ EMB_JS = """
   els.forEach(el => io.observe(el));
 })();
 """
+# React Bits（試作 docs/testground/reactbits.html の E）を vanilla に移した特効。店長のページ（render_index）だけに入れる
+RB_CSS = """
+/* ===== React Bits の特効（E・2026-11-12 店長が選択）：transform / opacity だけ。入場は 1 回・動きを減らす設定では全部止まる =====
+   頭条＝Blur Text（見出し）＋Star Border（写真の枠）／ほかの注目ニュース＝Fade Content（入場）／カード＝Glare Hover（写真）／数字＝Count Up／押した所＝Click Spark（小さい DOM） */
+.rb-pre{opacity:0}
+.rb-n{display:inline-block;text-align:right;font-variant-numeric:tabular-nums}
+/* Star Border：頭条の写真の枠の縁を金と白の光が往復（細い輪の中だけ見える。画面外では止める） */
+.rb-star{position:absolute;inset:-7px;padding:4px;pointer-events:none;z-index:1;overflow:hidden;opacity:.8;
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.rb-star i{position:absolute;width:300%;height:50%;opacity:.95;background:radial-gradient(circle,var(--gold),transparent 20%)}
+.rb-star i:nth-child(1){bottom:-12px;right:-250%;animation:rb-sb 7s linear infinite alternate}
+.rb-star i:nth-child(2){top:-12px;left:-250%;background:radial-gradient(circle,var(--card),transparent 20%);animation:rb-st 7s linear infinite alternate}
+@keyframes rb-sb{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+@keyframes rb-st{from{transform:translateX(0)}to{transform:translateX(100%)}}
+.rb-off .rb-star i{animation-play-state:paused}
+/* Glare Hover：マウスを載せると写真の上を光の帯が 1 回走る（CSS だけ） */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+ .wall>.wc .pic::after,.sec .card .pic::after,.top .frame .pic::after{content:"";position:absolute;top:-25%;bottom:-25%;left:0;width:38%;z-index:3;pointer-events:none;
+  background:linear-gradient(100deg,transparent,color-mix(in srgb,var(--card) 50%,transparent),transparent);transform:translateX(-170%) skewX(-18deg)}
+ .wall>.wc:hover .pic::after,.sec .card:hover .pic::after,.top:hover .frame .pic::after{transform:translateX(380%) skewX(-18deg);transition:transform .85s cubic-bezier(.3,.6,.3,1)}
+}
+/* Click Spark：押した所から 8 本の短い火花（全画面の canvas は使わず、その場だけの小さい箱） */
+.rb-spark{position:fixed;left:0;top:0;width:0;height:0;pointer-events:none;z-index:9999}
+.rb-spark i{position:absolute;left:-1.5px;top:-7px;width:3px;height:14px;border-radius:2px;background:var(--gold);box-shadow:0 0 0 1.5px var(--ink)}
+@media (prefers-reduced-motion:reduce){.rb-pre{opacity:1}.rb-star i{animation:none}.rb-spark{display:none}}
+"""
+RB_JS = """
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window) || !Element.prototype.animate) return;
+  const PHONE = matchMedia('(max-width:760px)').matches, EASE = 'cubic-bezier(.2,.8,.3,1)', below = el => el.getBoundingClientRect().top > innerHeight;
+  // ---------- Fade Content：ほかの注目ニュースのカードがスクロールで 1 回ふわっと入る ----------
+  // 最初の画面のカードは隠さない（すぐ読める）。区切りが画面の下 1 枚ぶんまで近づいたら、その中の画面の下にあるカードだけ隠して待つ。
+  // 版面のカード（約 2000 枚）には掛けない：スクロールの計測で PC の script の時間が増えた（2026-11-12）
+  // translate は個別の性質＝カードの傾き（transform）を壊さない。scale は使わない（組み方の計測が大きさを読むため）
+  const rv = new IntersectionObserver(es => { let k = 0; es.forEach(e => { if (!e.isIntersecting) return; const el = e.target; rv.unobserve(el); el.classList.remove('rb-pre');
+    el.animate([{ opacity: 0, translate: '0 ' + (PHONE ? 10 : 18) + 'px' }, { opacity: 1, translate: '0 0' }], { duration: 560, delay: Math.min(k++, 4) * 60, easing: EASE, fill: 'backwards' }); }); }, { threshold: .08 });
+  const arm = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; arm.unobserve(e.target);
+    const cs = [...e.target.querySelectorAll('.wall>.wc')].filter(below);   // 読むのを全部先に、書くのはあと
+    cs.forEach(c => { c.classList.add('rb-pre'); rv.observe(c); }); }), { rootMargin: '0px 0px 100% 0px' });
+  document.querySelectorAll('.spot').forEach(s => arm.observe(s));
+  // ---------- Count Up：版面の「今週」の数・話題度・頭条の件数・欲しい物の合計が 0 から数える。幅は最後の数字で固定＝周りがずれない ----------
+  const nums = [...document.querySelectorAll('.phead span:nth-child(2),.band .cnt b,.heat summary b,.stot b')].map(el => {
+    const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let nd, hit = null;
+    while ((nd = tw.nextNode())) { const ms = [...nd.nodeValue.matchAll(/\\d[\\d,]*/g)]; if (ms.length) hit = [nd, ms[ms.length - 1]]; }
+    if (!hit) return null; const [n, m] = hit, s = n.nodeValue, sp = document.createElement('span');
+    sp.className = 'rb-n'; sp.dataset.to = m[0].replace(/,/g, ''); if (m[0].includes(',')) sp.dataset.c = '1'; sp.textContent = m[0];
+    n.nodeValue = s.slice(0, m.index); n.after(sp, document.createTextNode(s.slice(m.index + m[0].length))); return sp; }).filter(Boolean);
+  const fmt = (sp, v) => sp.dataset.c ? v.toLocaleString('en-US') : String(v);
+  // 時刻は performance.now() で測る（rAF の時刻は t0 より前のことがあり、負の数を出した）
+  const count = sp => { const to = +sp.dataset.to, t0 = performance.now(), D = 900;
+    const f = () => { const k = Math.min(1, Math.max(0, (performance.now() - t0) / D)); sp.textContent = fmt(sp, Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1 && !document.hidden) requestAnimationFrame(f); else sp.textContent = fmt(sp, to); };
+    requestAnimationFrame(f); };
+  const cu = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { cu.unobserve(e.target); count(e.target); } }), { threshold: .6 });
+  const ws = nums.map(sp => sp.getBoundingClientRect().width);   // 幅を全部読んでから書く（1 回の計算で済む）
+  nums.forEach((sp, i) => { if (!ws[i]) return; sp.style.minWidth = ws[i] + 'px'; sp.textContent = '0'; cu.observe(sp); });
+  // ---------- 頭条：Blur Text（見出しが語ごとにぼけからピントが合う。1 回・1 秒ほど。スマホは opacity だけ）＋ Star Border ----------
+  const h = document.querySelector('.top h2');
+  if (h) { const keep = h.innerHTML, us = [], CJK = /[\\u3000-\\u9fff\\uff00-\\uffef]/, tw = document.createTreeWalker(h, NodeFilter.SHOW_TEXT), nodes = []; let n;
+    while ((n = tw.nextNode())) nodes.push(n);
+    nodes.forEach(nd => { const f = document.createDocumentFragment();
+      nd.nodeValue.split(/(\\s+)/).forEach(tok => { if (!tok) return; if (/^\\s+$/.test(tok)) return f.append(tok);
+        (CJK.test(tok) ? tok.match(/[\\s\\S]{1,3}/g) : [tok]).forEach(p => { const s = document.createElement('span'); s.textContent = p; s.style.opacity = 0; if (!CJK.test(tok)) s.style.whiteSpace = 'nowrap'; f.append(s); us.push(s); }); });
+      nd.replaceWith(f); });
+    let done = 0; const back = () => { if (!done) { done = 1; h.innerHTML = keep; } };   // 終わったら元の字に戻す（部品を残さない）
+    const st = Math.min(85, 450 / Math.max(1, us.length));
+    const go = () => { let last; us.forEach((u, i) => { last = u.animate(PHONE ? [{ opacity: 0 }, { opacity: 1 }] : [{ opacity: 0, filter: 'blur(10px)' }, { opacity: .55, filter: 'blur(4px)', offset: .55 }, { opacity: 1, filter: 'blur(0)' }], { duration: 640, delay: 120 + i * st, easing: 'ease-out', fill: 'backwards' }); u.style.opacity = ''; });
+      if (last) last.onfinish = back; setTimeout(back, 3000); };
+    let gone = 0; const start = () => { if (!gone) { gone = 1; go(); } };
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(start); setTimeout(start, 150); }
+  const fr = document.querySelector('.top .frame');
+  if (fr) { const s = document.createElement('div'); s.className = 'rb-star'; s.setAttribute('aria-hidden', 'true'); s.innerHTML = '<i></i><i></i>'; fr.append(s);
+    new IntersectionObserver(es => fr.classList.toggle('rb-off', !es[0].isIntersecting)).observe(fr); }
+  // ---------- Click Spark：押した所から火花（👍・👎 には自分の演出があるので出さない。字を打つ所でも出さない） ----------
+  addEventListener('pointerdown', ev => { if (ev.button || ev.target.closest('.vote,.vt,input,textarea,select,[contenteditable]')) return;
+    const b = document.createElement('span'); b.className = 'rb-spark'; b.style.translate = ev.clientX + 'px ' + ev.clientY + 'px'; const o = Math.random() * 45;
+    for (let i = 0; i < 8; i++) { const s = document.createElement('i'), a = o + i * 45; b.append(s);
+      s.animate([{ transform: 'rotate(' + a + 'deg) translateY(-10px) scaleY(1)', opacity: 1 }, { transform: 'rotate(' + a + 'deg) translateY(-34px) scaleY(.2)', opacity: 0 }], { duration: 420, easing: 'cubic-bezier(.2,.8,.3,1)', fill: 'forwards' }); }
+    document.body.append(b); setTimeout(() => b.remove(), 460); }, { passive: true });
+})();
+"""
+
 # 擬音の書体（使う文字だけ）と粒のライブラリ canvas-confetti（読めなくても演出は自作の粒で動く）
 LIKEFX_HEAD = (font_link(e(likefx.SFX_FONT)) +
                f'<script src="{likefx.CONFETTI_JS}" defer crossorigin="anonymous"></script>')
@@ -5081,7 +5162,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {font_link(FONTS)}
-<style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
+<style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style><style>{RB_CSS}</style>
 {LIKEFX_HEAD if fb else ""}
 {_live_head("index")}{f"<style>{BUSY_CSS}</style>" if busy else ""}
 <script>{EMB_HEAD_JS}</script>
@@ -5102,6 +5183,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <script>{FIT_JS}</script>
 {f"<script>{LIKEFX_JS}</script><script>{VOTE_JS.replace('__CFG__', json.dumps(fb))}</script>" if fb else ""}
 <script>{EMB_JS}</script>
+<script>{RB_JS}</script>
 <script>{LIVE_JS}</script>
 {_busy_tag(busy, generated)}
 </body>
