@@ -71,14 +71,14 @@
   "漫威电影": 100,
   "三星手机": 38,
   "Astrae Oratio": 34,
-  "哈利波特剧集": 14,
-  "滑雪": 16,
+  "哈利波特剧集": 17,
+  "滑雪": 19,
   "チェーンソーマン": 21,
-  "ILLIT": 10,
+  "ILLIT": 13,
   "MMORPG 新作": 10,
   "周杰伦": 24,
   "The Mandalorian": 6,
-  "dota2": 4,
+  "dota2": 7,
   "日本顶级网球赛事": 4,
   "BLEACH Mirrors High": 14,
   "A2O LITE": 4,
@@ -88,7 +88,8 @@
   "FROM": 2,
   "ぐでたま": 13,
   "Vaundy": 3,
-  "猫用品": 3
+  "猫用品": 3,
+  "あつ森": 4
  },
  "漫威电影": [
   {
@@ -405,7 +406,9 @@
     8,
     10,
     13,
-    14
+    14,
+    15,
+    17
    ]
   },
   {
@@ -457,7 +460,8 @@
     13,
     14,
     15,
-    16
+    16,
+    19
    ]
   },
   {
@@ -467,6 +471,28 @@
    "weight": "normal",
    "refs": [
     11
+   ]
+  },
+  {
+   "headline": "【東御市】湯の丸スキー場が11月21日（土）にオープン予定です",
+   "highlight": "11月21日（土）",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
+   ],
+   "event": {
+    "date": "2026-11-21",
+    "label": "オープン"
+   }
+  },
+  {
+   "headline": "パラスノーボードの岡本圭司「挑戦する人を応援する」SANNとスポンサー契約",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
    ]
   }
  ],
@@ -541,7 +567,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    11
    ]
   },
   {
@@ -552,6 +579,15 @@
    "refs": [
     2,
     1
+   ]
+  },
+  {
+   "headline": "ILLIT、女子中学校にサプライズ登場で生徒たちが大絶叫！ あまりの歓声にメンバーも驚き「音楽が聞こえなかった」【動画あり】",
+   "highlight": "サプライズ登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
    ]
   }
  ],
@@ -686,7 +722,8 @@
    "weight": "lead",
    "refs": [
     3,
-    4
+    4,
+    7
    ],
    "image": "https://d3h9qea4qy4169.cloudfront.net/16x9_7_b17f7953c2.png"
   },
@@ -706,6 +743,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "June Mar prefers ‘Dota 2’ over ‘Grand Theft Auto 6’",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -971,6 +1017,18 @@
    "refs": [
     2
    ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "【あつ森】住民の性格一覧｜性格別のキャラと全8種類の特徴【あつまれどうぶつの森】",
+   "highlight": "全8種類",
+   "blurb": "住民の性格8種類ごとの特徴とキャラクターをまとめた攻略記事。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/gamepedia/wp-content/uploads/sites/25/2020/03/31043615/e75842b5661fac75ca14b3f0a96d3529.jpg"
   }
  ]
 }

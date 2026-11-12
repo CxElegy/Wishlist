@@ -1,6 +1,6 @@
 {
  "date": "2026-11-12",
- "edit_sig": "6bbd1d73ff7c",
+ "edit_sig": "c725fce1c8b8",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -263,29 +263,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 17,
-     "source": "日刊スポーツ",
-     "title": "パラスノーボードの岡本圭司「挑戦する人を応援する」SANNとスポンサー契約",
-     "url": "https://www.nikkansports.com/sports/news/202611120000167.html"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 18,
-     "source": "ueda.goguynet.jp",
-     "title": "【東御市】湯の丸スキー場が11月21日（土）にオープン予定です",
-     "url": "https://ueda.goguynet.jp/2026/11/12/yunomaru-ski-open/"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 19,
-     "source": "Top-Notch Outdoor",
-     "title": "Burton Step On Re:Flex Review: Tested on Glacier Snow",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNa2JkWjZ0eUJoR084dUJPWlROSVR3d0xBY0FyblFiN3dPX0xqbURXcmlicVpHVkxZcy1ZWEdQZTY3SEVKdzFLd0luTVEweHdBT0xEZkZsUXR0bHp0cEpjN2lyQ2pyX0RJY203YjlYTTRzZVdBV2ZvVGFsTjJrQ0hYVQ?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -326,6 +303,30 @@
      "image": "https://prcdn.freetls.fastly.net/release_image/30133/919/30133-919-6583ad30b5ec0b185d812c6c0513ad74-1200x630.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
      "image_via": "og:image",
      "url": "https://prtimes.jp/main/html/rd/p/000000919.000030133.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "event": {
+      "date": "2026-11-21",
+      "label": "オープン"
+     },
+     "headline": "【東御市】湯の丸スキー場が11月21日（土）にオープン予定です",
+     "highlight": "11月21日（土）",
+     "image": "https://ueda.goguynet.jp/wp-content/uploads/sites/54/2025/06/sub4.jpg",
+     "image_via": "og:image",
+     "url": "https://ueda.goguynet.jp/2026/11/12/yunomaru-ski-open/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-12",
+     "headline": "パラスノーボードの岡本圭司「挑戦する人を応援する」SANNとスポンサー契約",
+     "highlight": "",
+     "image": "https://www.nikkansports.com/sports/news/img/202611120000167-w500_0.jpg",
+     "image_via": "og:image",
+     "url": "https://www.nikkansports.com/sports/news/202611120000167.html",
      "weight": "normal"
     }
    ],
@@ -414,29 +415,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 15,
-     "source": "primetimer.com",
-     "title": "\"It's appalling\": Harry Potter showrunner condemns racist abuse directed at Paapa Essiedu after Snape casting",
-     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQUFNpMFNXNmp2ZUFKeDdURFBYTEhOZkcyUFNnSVBZM3dOWGJLWGdsSC1EUFNMMWphQlV4R0pfZWtYai1NeldNRkM0Q3ZRWlZlX1RZdGZnNE56Y1I5bTVjU2t2RTA2VXJLOHZsMllTSmJFem0wVXk4eXowZEF2VnJyWTNvSHBlQl81UThFeXZWYlN3ZG54N2szWWl2WTZzQTNBYUNzNG9hemI3YzF4VEdZQUZCQWdIY0E0bENnSW5Kb0FiOWlvRU0yRjd1Mk1WV0JVbjlCeFRGUXk?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 16,
-     "source": "EkSukoon",
-     "title": "HBO's Harry Potter Cast: Where You've Seen Dumbledore, Snape, Hagrid and McGonagall Before",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9meTl3UDNTblI2bGtlRWpGRmdwVmpBTldXUlo5S29sbjRNWWU3MmNteEUtZm5qREpTTGNKNWlnRW5jeHpGanZ6bXJtQ1dDSnN1SnhKcFdjamFtUVU5VDE5U19UUFJQUDk1X1BnM3JENEVOWTJhb1l5Q2NqTQ?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 17,
-     "source": "Collider",
-     "title": "Harry Potter’s New Snape Officially Doubles Down on Opposing J.K. Rowling",
-     "url": "https://collider.com/hbo-harry-potter-reboot-paapa-esiedu-jk-rowling-comments/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -934,38 +912,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "住民の性格8種類ごとの特徴とキャラクターをまとめた攻略記事。",
      "date": "2026-11-12",
-     "n": 1,
-     "source": "攻略大百科",
-     "title": "【あつ森】住民の性格一覧｜性格別のキャラと全8種類の特徴【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5vRlVYZG40Y0d2VTlTeEJhZ0Y0X1AwT1FXSUlGWTVUZUZpTG1faWV1ZTRGMlU0TENLNTdyczAzaFVmalRDUlZDNU9Qc00zQnZldzhBZ2VBNA?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 2,
-     "source": "Ray(レイ) on MSN",
-     "title": "【略語クイズ】「あつ森」はなんの略? 長年愛されてきたゲーム!",
-     "url": "https://www.msn.com/ja-jp/news/other/%E7%95%A5%E8%AA%9E%E3%82%AF%E3%82%A4%E3%82%BA-%E3%81%82%E3%81%A4%E6%A3%AE-%E3%81%AF%E3%81%AA%E3%82%93%E3%81%AE%E7%95%A5-%E9%95%B7%E5%B9%B4%E6%84%9B%E3%81%95%E3%82%8C%E3%81%A6%E3%81%8D%E3%81%9F%E3%82%B2%E3%83%BC%E3%83%A0/ar-AA2hgJN4"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 3,
-     "source": "Howl.Link",
-     "title": "【あつ森 配信】今日もゆったり家具＆レシピあつめ🏝いらないレシピあったらください！！👀初見さんも大歓迎◎【エルブ島】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBud2wyTFdEUVVoTHBUd3g1Ty1QbFNEMTlWLWlVSTE1ZlN1TUdwYzltSTFWRkQxQWtzRVlv?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "note",
-     "title": "授業直前まであつ森をやってた私のことを、生徒が配信で話していた",
-     "url": "https://note.com/koni_zm/n/n5a4a3f49c048"
+     "headline": "【あつ森】住民の性格一覧｜性格別のキャラと全8種類の特徴【あつまれどうぶつの森】",
+     "highlight": "全8種類",
+     "image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/gamepedia/wp-content/uploads/sites/25/2020/03/31043615/e75842b5661fac75ca14b3f0a96d3529.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://gamepedia.jp/ac-switch/archives/6974",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -1126,29 +1085,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 5,
-     "source": "FASTBREAK.com.ph",
-     "title": "June Mar prefers ‘Dota 2’ over ‘Grand Theft Auto 6’",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOWWRlUDVpc09PX05QRG15MWdvODRYV0RfRkRwa3BNbFJoTDY3aWpkRkdXY0w1MXhzdER5U0I4Z0FweXZSV0JqdzJjdW94ckJ3SUItejFsNlk2eWRYZmVJX25ka2tZNGFFOXpDUG9qMFR5SnViTVdCbEU2S0hmNWFDX3Z0ZXpXZWxUcHFTZEFwSEI?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 6,
-     "source": "GosuGamers",
-     "title": "Nemiga Gaming vs Power Rangers Live Score on 2026-11-12 of Dota 2 DreamLeague Division 2 Series 5",
-     "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQRGx4cU80TWhpcXctUk5YOExsUF9BMGUyejRFZVltc0Q2RHkxaVVVM21aZHdINjBkWm5JT2RCS0JlLTFGTXdpY2dvek9QTlM0c1Q3ZEU1WlJPZ19DekIyMVNrek9KbUJGMWNvUzg5MTJDWUFCNzFBV2RIRU4yVlZYVnU2U3ZTUFY2LTFxUUh6aUktaHpYV3JDRElXNmhuby1ENjlxNTBSekJmN2pjZk1FbEI4eVdKSUtLU0R3SW14X093blNzNS1r?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 7,
-     "source": "Esports.net",
-     "title": "Dota 2 confirmed for a fourth straight Esports World Cup, with 2027 format and prize pool unannounced",
-     "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxONF9FSzlKTHJrQXVIaHVRTktYWEhGa2V0SGhNWmlMLVpwb1Q0WFdRY1FsS2FIZ3N0NHRjTUpQSnpMRWQzSFp6SGtTTTg3eXB2VXJCLWFQWVgtM2dZOTVtYzg4UFVXM2NCbjRVNFU1cVVHVEd0RlNLTWZuTlNDVjVFUTRPVHdaWG9FSkR4SGxfd2pMOWhGZkxwcE1BTWVIa1hHVTI4cmNFekdrSVh5MUVhZjAxUFU1VHEzNlZqLUs1RGY5Z1hEdWNPNTlTUElIWVp0TGM4?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1179,6 +1115,16 @@
      "image": "https://hawk.live/storage/images/posts/dyrachyo-weighs-prospect-team-spirit-disbanding-25072.jpg",
      "image_via": "og:image",
      "url": "https://hawk.live/posts/malr1ne-reflected-dyrachyos-current-skill-level-dota-2",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-12",
+     "headline": "June Mar prefers ‘Dota 2’ over ‘Grand Theft Auto 6’",
+     "highlight": "",
+     "image": "https://fastbreak.com.ph/wp-content/uploads/2026/11/June-Mar.png",
+     "image_via": "og:image",
+     "url": "https://fastbreak.com.ph/june-mar-prefers-dota-2-over-grand-theft-auto-6/sports-galore/",
      "weight": "normal"
     }
    ],
@@ -1263,29 +1209,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 11,
-     "source": "USENの音楽情報サイト",
-     "title": "ILLIT、米「Billboard 200」6位に続き「Bubbling Under Hot 100」にもランクイン！ メインソングチャート入りに期待",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPYnFMVDR2VlFYQl9iZWJMc1JwaDVBcTBUYzB0bTZ6ZzVGOVc5MDlaa3AwODlVX0ZvSzJ5M2RPVVQ4M2hGaHhLb1daZXV3TUU4aFZySzNCazFJd0RWVXhxTEdLSGVlcGJZQ0QtZVhkMm54Q3dGcUxySzROTk14b1AtZ3ZScDg3dXdvd0Z3?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 12,
-     "source": "RBB TODAY",
-     "title": "IVEやILLITが両手を合わせ、涙目で共演を懇願？ ガールズグループ“立場逆転”イラストに賛否が分かれたワケ",
-     "url": "https://www.rbbtoday.com/article/2026/11/12/255768.html"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 13,
-     "source": "KPOP monster",
-     "title": "ILLIT、女子中学校にサプライズ登場で生徒たちが大絶叫！ あまりの歓声にメンバーも驚き「音楽が聞こえなかった」【動画あり】",
-     "url": "https://www.kpopmonster.jp/?p=178903"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1316,6 +1239,16 @@
      "image": "https://cdn.topstarnews.net/news/photo/202611/16273906_2085141_5412.jpg",
      "image_via": "JSON-LD",
      "url": "https://www.topstarnews.net/news/articleView.html?idxno=16273906",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "headline": "ILLIT、女子中学校にサプライズ登場で生徒たちが大絶叫！ あまりの歓声にメンバーも驚き「音楽が聞こえなかった」【動画あり】",
+     "highlight": "サプライズ登場",
+     "image": "https://www.kpopmonster.jp/wp-content/uploads/2026/11/illit03.webp",
+     "image_via": "og:image",
+     "url": "https://www.kpopmonster.jp/?p=178903",
      "weight": "normal"
     }
    ],

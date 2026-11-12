@@ -940,7 +940,7 @@
  "https://fastbreak.com.ph/wp-content/uploads/2026/11/June-Mar.png": {
   "w": 820,
   "h": 472,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://fictionhorizon.com/wp-content/uploads/2026/11/Doomsday.webp": {
@@ -1077,6 +1077,12 @@
   "v": 3
  },
  "https://hawk.live/storage/images/posts/nix-spoke-about-the-main-mistake-of-dendi-on-the-dota-2-pro-scene-24091.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/noticed-commented-patch-741e-25215.jpg": {
   "w": 1200,
   "h": 628,
   "target": 720,
@@ -1917,6 +1923,12 @@
   "v": 3
  },
  "https://m.media-amazon.com/images/I/41PtnfgMlaL._SL500_.jpg": {
+  "w": 500,
+  "h": 500,
+  "target": 720,
+  "v": 3
+ },
+ "https://m.media-amazon.com/images/I/41sVaqScGAL._SL500_.jpg": {
   "w": 500,
   "h": 500,
   "target": 720,
@@ -3313,7 +3325,7 @@
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/gamepedia/wp-content/uploads/sites/25/2020/03/31043615/e75842b5661fac75ca14b3f0a96d3529.jpg": {
   "w": 1200,
   "h": 630,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2020/11/27144954/EnzsotEVcAALgh5.jpg": {
@@ -3355,6 +3367,12 @@
  "https://travelbinger.com/cdn-cgi/image/width=1600,height=900,quality=80,format=auto,fit=cover/https://backend.travelbinger.com/wp-content/uploads/2026/11/38d0ffa1b7a661b12b2b2d6b66abf0cd.webp": {
   "w": 1600,
   "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://ueda.goguynet.jp/wp-content/uploads/sites/54/2025/06/sub4.jpg": {
+  "w": 1280,
+  "h": 852,
   "target": 720,
   "v": 3
  },
@@ -4106,6 +4124,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.kpopmonster.jp/wp-content/uploads/2026/11/illit03.webp": {
+  "w": 1200,
+  "h": 818,
+  "target": 720,
+  "v": 3
+ },
  "https://www.levelup.com/resizer/v2/FXXM3EWXNVAUBHS5FETNDEBHL4.jpg?auth=5d8f0891b79c44ba70f0570efc5253faa3cf3c9e84d881b49d0a119d0e7abee0&height=630&width=1200&quality=70&smart=true": {
   "w": 1200,
   "h": 630,
@@ -4152,8 +4176,15 @@
  "https://www.nikkansports.com/sports/news/img/202611120000167-w500_0.jpg": {
   "w": 500,
   "h": 396,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.501,
+  "local": "pics/2802406aa3b04b33.webp",
+  "out": [
+   1280,
+   1014
+  ],
+  "why": "看不清"
  },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6TrophiesAchievements.jpg": {
   "w": 2000,
