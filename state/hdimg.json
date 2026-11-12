@@ -131,19 +131,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/006dNg2Ply1iizp6xr3lsj31dk26mgut.jpg": {
-  "w": 1784,
-  "h": 2830,
-  "target": 720,
-  "v": 3,
-  "local": "pics/0f37db57a8551a48.webp",
-  "out": [
-   807,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008kvqgEgy1iir5xk8577j30u01o04qp.jpg": {
   "w": 1080,
   "h": 2160,
@@ -267,6 +254,12 @@
  "https://assets-prd.ignimgs.com/2026/11/05/gta-6-kodak-black-1793895386725.jpg?width=1280&format=jpg&auto=webp&quality=80": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets.games.gg/gta_6_xbox_one_cloud_gaming_launch_og_f87c169d16_8f13b9b481.webp": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -454,6 +447,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gamemeca.com/data_center/347/527/20261112142009.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/gmdata/0001/783/239/gm833993_thumb___.webp": {
   "w": 1200,
   "h": 670,
@@ -514,6 +513,12 @@
   "w": 960,
   "h": 542,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png": {
+  "w": 1280,
+  "h": 1323,
+  "target": 720,
   "v": 3
  },
  "https://cdn.iwate-np.co.jp/media-static/article/198453/thumbnail/sw4b0-tm6af2f0c3_862574b10.jpg": {
@@ -1052,6 +1057,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/11/galaxy-s27-design-dummy-units.jpg?fit=1200%2C675&ssl=1": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://i1.ytimg.com/vi/xENOnsvbPhY/hqdefault.jpg": {
   "w": 480,
   "h": 360,
@@ -1096,6 +1107,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/7/c/7c150_230_e4422bfc_fa0e7a51.jpg": {
+  "w": 452,
+  "h": 639,
+  "target": 720,
+  "v": 3
+ },
  "https://image.news.livedoor.com/newsimage/stf/a/3/a36dc_1604_88a23a30_4ddd025c.jpg": {
   "w": 1200,
   "h": 900,
@@ -1114,6 +1131,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.bauerhosting.com/celebrity/sites/42/2026/11/empjan27-avengers-doomsday-crop-vvd-dd.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=undefined&q=80": {
+  "w": 1500,
+  "h": 844,
+  "target": 720,
+  "v": 3
+ },
  "https://images.chinatimes.com/newsphoto/2026-11-10/1024/20261110001857.jpg": {
   "w": 1024,
   "h": 573,
@@ -1124,6 +1147,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://images.purexbox.com/3798dd5f281c3/1280x720.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://images.pushsquare.com/860514e821a93/1280x720.jpg": {
@@ -1175,6 +1204,12 @@
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/mandalorian-star-wars-filoni.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://images.thedirect.com/media/article_full/marvel-studios-x-men-teams.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -1338,6 +1373,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hi97t.img": {
+  "w": 780,
+  "h": 438,
+  "target": 720,
+  "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img": {
   "w": 504,
@@ -1572,6 +1613,12 @@
   ],
   "why": "看不清"
  },
+ "https://insider-gaming.com/wp-content/uploads/2026/10/GTA6Screen1.webp": {
+  "w": 2560,
+  "h": 1440,
+  "target": 720,
+  "v": 3
+ },
  "https://insidethemagic.net/wp-content/uploads/2026/11/6.jpg": {
   "w": 1200,
   "h": 600,
@@ -1599,12 +1646,6 @@
  "https://kagit-media.atreez.cc/uploads/2026-11-03/ljq7ctjeii5y3g618urvqfj4.jpg": {
   "w": 1600,
   "h": 900,
-  "target": 1280,
-  "v": 3
- },
- "https://lee.hpplus.jp/wp-content/uploads/2026/11/04/38600e3e5a2f85da5c5a7b8da08242c9.jpeg": {
-  "w": 1200,
-  "h": 628,
   "target": 1280,
   "v": 3
  },
@@ -1926,12 +1967,6 @@
    959
   ],
   "why": "看不清"
- },
- "https://news.walkerplus.com/article/188772/1129553_615.jpg": {
-  "w": 615,
-  "h": 871,
-  "target": 720,
-  "v": 3
  },
  "https://news.walkerplus.com/article/198145/1195520_615.jpg": {
   "w": 615,
@@ -2469,6 +2504,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/0077d72c4379a412a7fab37d93718c2fa2d033e557af9b4fc6c700b97135e31e/lightyear_networkapi/resizefill_w960_h540%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd3cbd44d1b4a0104808f4a1b51d68371.jpg": {
+  "w": 960,
+  "h": 540,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/06271fb120c17a195373e8638da869ed98f56cafdda52a7bcfef1e931b344d33/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flooper_vertical_video_161%2Fcefa1bdd4f18b4283e7192738bd531d1.jpg": {
   "w": 1200,
   "h": 2133,
@@ -2482,6 +2523,12 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/23d28f55bf106cc1a2255a89e8081f0a3fc7d2a0f9a47f986aaa40f20f252c55/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2F03d1b48c4241bc56b05f1525a54221a0.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/2dbe7f2bd1676e86801b0a51a5fa559c7b12c23469d6aa57fc4cbdbc162e9f0b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fftvn_sports_106%2Fbf49b2853a3d6a9d7f06fc76f5faf436.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -2588,6 +2635,12 @@
   "w": 984,
   "h": 808,
   "target": 1280,
+  "v": 3
+ },
+ "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/11/12/galaxy-s27-ultra-could-finally-get-the-battery-upgrade-samsung-fans-want-ff87dc10c5284f96b90b1239d982d1f1-1109.png?width=0&s=KMw2n92sCn44x5YAtg7Rgg": {
+  "w": 1746,
+  "h": 935,
+  "target": 720,
   "v": 3
  },
  "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/8/11/samsungs-new-200mp-camera-sparks-galaxy-s27-ultra-speculation-98a1d797d1744d85b1e28258b356bf5d-538.png?width=0&s=YnOKsmBaWrFil0J3cKSeoQ": {
@@ -2946,6 +2999,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://sumahodigest.com/wp-content/uploads/2026/11/HW6zVaQXcAAkP6g.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
  "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-10-081808.jpg": {
   "w": 1270,
   "h": 913,
@@ -3121,12 +3180,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.ahui3c.com/wp-content/uploads/2026/11/vivo-X500-Pro-SERIES-6.jpg": {
-  "w": 2222,
-  "h": 1482,
-  "target": 1280,
-  "v": 3
- },
  "https://www.anewsa.com/news_images/2026/11/01/mark/20261101211331.jpg": {
   "w": 580,
   "h": 387,
@@ -3188,12 +3241,6 @@
  "https://www.bing.com/th?id=ONUT.1e3uumhEBBmXkAMcYFuC6w&pid=News&w=720": {
   "w": 700,
   "h": 251,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.54UxHRkuPi0sAS9h4h1CMA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3338,6 +3385,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
+  "w": 700,
+  "h": 322,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.UWGUlJuDHZlIbuW-Yq7lEQ&pid=News&w=700": {
   "w": 700,
   "h": 445,
@@ -3387,6 +3440,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.dmDVd6FuKl6McU40vrzJDg&pid=News&w=1200": {
+  "w": 700,
+  "h": 462,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.mSRgEXP9xOJgO4sM674NZA&pid=News&w=1200": {
   "w": 700,
@@ -3556,6 +3615,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.disneydining.com/wp-content/uploads/2024/06/avengers-secret-wars.jpg": {
+  "w": 1200,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
  "https://www.easterneye.biz/media-library/toshiyuki-morikawa-will-voice-robert-downey-jr-s-doctor-doom.jpg?id=68604449&width=1200&height=600&coordinates=0%2C95%2C0%2C238": {
   "w": 1200,
   "h": 600,
@@ -3568,6 +3633,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.292
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-Ultra-.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-1.jpg": {
   "w": 1280,
@@ -3798,6 +3869,12 @@
  "https://www.sportzorg24.tv/wp-content/uploads/2026/10/tennis-tokyo-20261024-r4bd0d6-header-1024x576.jpg": {
   "w": 1024,
   "h": 576,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Anthony-Mackie.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
