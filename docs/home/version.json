@@ -1,10 +1,10 @@
 {
- "admin": "478d686a396e",
- "admin-ai": "9bad47879f96",
+ "admin": "4c64c7cd61c4",
+ "admin-ai": "881ff25668c5",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "e500582d"
+   "ece88a2f"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "6e6310b18e29",
+ "admin-emblem": "96591078ee6c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "6e8ef01b"
+   "248bdd4e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "405b3d0733d6",
+ "admin-now": "23235e419df2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9aeb9f95"
+   "11877334"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "57465903"
   ]
  },
- "admin-system": "8e01097f81a4",
+ "admin-system": "e4dc9da1b4af",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "6fcddd10"
+   "23b1c90d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c44b1113"
+   "0889c4f2"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "064a8ef3"
   ]
  },
- "index": "15b9f51c6c67",
+ "index": "5371e23746fc",
  "index_marks": {
   "front": [
    "トップ",
-   "09381919"
+   "85ac7c42"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "1af26cf8"
+   "d4a7fa91"
   ],
   "w-130724c0": [
    "猫用品",
@@ -137,11 +137,11 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "fdb5de7f"
+   "6bd09678"
   ],
   "w-79b3c280": [
    "滑雪",
-   "46fbbb2b"
+   "a522c548"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "dbcd8290"
+   "d295aa50"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "da7a4d1b"
+   "4219a42e"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "a8f1b7f3"
+   "a5b73933"
   ],
   "w-f303ad09": [
    "绝区零",
    "669ea3a4"
   ]
  },
- "updated": "11.13 01:55",
+ "updated": "11.13 02:15",
  "wishlist": "ae6c9ab27ddb"
 }

@@ -226,6 +226,150 @@
   "漫威电影": 32,
   "三星手机": 27,
   "Astrae Oratio": 9,
-  "周杰伦": 8
- }
+  "周杰伦": 8,
+  "dota2": 6,
+  "滑雪": 6,
+  "哈利波特剧集": 5,
+  "ILLIT": 4,
+  "MMORPG 新作": 4
+ },
+ "dota2": [
+  {
+   "headline": "Topson Reveals When the New Dota 2 Patch Will Actually Be Released",
+   "highlight": "",
+   "blurb": "Topson reveals when the next Dota 2 patch is expected to be released.",
+   "weight": "lead",
+   "refs": [
+    1,
+    5
+   ],
+   "image": "https://hawk.live/storage/images/posts/noone-discusses-topsons-influence-dota-2-25118.jpg"
+  },
+  {
+   "headline": "Valve fixes free Aghanim's Shard bug in Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Dota 2連續第四年進駐電競世界盃 EWC 2027賽期獎金未公布",
+   "highlight": "連續第四年",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "「新体制」の新シーズンへ準備着々…大山スキー場でリフトの取り付け作業進む",
+   "highlight": "",
+   "blurb": "鳥取・大山町の大山スキー場で、新体制での新シーズンに向けたリフトの取り付け作業が進んでいる。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ],
+   "image": "https://media.image.infoseek.co.jp/isnews/photos/nkt/nkt_2026111206463415_0-enlarge.jpg"
+  },
+  {
+   "headline": "たんばらスキーパーク 2026 - 27 シーズン開幕！平日「小学生以下リフト無料」",
+   "highlight": "小学生以下リフト無料",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "親子でお得に雪山デビュー！全国16スキー場で使える「NSDキッズプログラム」",
+   "highlight": "全国16スキー場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "一時廃止方針も町民の要望で復活「会津高原だいくらスキー場」シーズンに向け準備進む",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "「ハリー・ポッター」新スネイプ役、J・K・ローリングとの思想の違いを語る",
+   "highlight": "",
+   "blurb": "HBOドラマ新スネイプ役のパーパ・エシエドゥが、J・K・ローリングとの考えの違いについて語った。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1,
+    3
+   ],
+   "image": "https://images.cnbctv18.com/uploads/2026/11/paapa-essiedu-2026-11-2a0b32fa32faf440241bccfa64077ce8.jpg?im=FitAndFill,width=1200,height=675"
+  },
+  {
+   "headline": "Daniel Radcliffe Takes Brutal Swipe At New Harry Potter Series",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    5
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT (アイリット)、新曲｢You’re Under Arrest｣初披露＆翌週は1位―笛を吹いて逮捕",
+   "highlight": "翌週は1位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "아일릿 ＇브레이크 이븐＇, 빌보드 메인 앨범 차트 6위로 진입",
+   "highlight": "빌보드 메인 앨범 차트 6위",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "MMORPG with Zelda look announces abrupt release on Steam",
+   "highlight": "release on Steam",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Single-Player Simulated MMORPG Erenshor Welcomes New Bard Class, UI Overhaul, and new Mid-level Dungeon December 1st",
+   "highlight": "December 1st",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-12-01",
+    "label": "アップデート"
+   }
+  }
+ ]
 }
