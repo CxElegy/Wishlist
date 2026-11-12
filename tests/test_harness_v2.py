@@ -527,6 +527,24 @@ class Script(unittest.TestCase):
         stuck = {c["label"]: c["model"] for c in self.smoke("stuck")["calls"]}
         self.assertEqual((stuck["build:T-0009"], stuck["fix:T-0009:1"], stuck["diag:T-0009"]), ("haiku", "haiku", "opus"))   # light は Haiku・見立ては Opus
 
+    def test_every_agent_gets_a_type_and_args_types_changes_it(self):
+        """係の型（道具を絞る）：型なしだと MCP 込みの約 80 個の道具が毎回付く。args.types=false で今までどおり。"""
+        d = self.smoke("happy")
+        ty = {c["label"].split(":")[0]: c["agentType"] for c in d["calls"]}
+        self.assertEqual(ty, {"intake": "hw-edit", "plan": "hw-edit", "build": "hw-edit", "fix": "hw-edit", "kpi": "hw-edit",
+                              "evalF": "hw-read", "evalV": "hw-read",
+                              "verify": "hw-ops", "learn": "hw-ops", "ship": "hw-ops", "announce": "hw-ops", "scout": "search"})
+        self.assertEqual({c["agentType"] for c in self.smoke("stuck")["calls"] if c["label"].startswith("diag:")}, {"hw-diag"})
+        off = self.smoke("happy", {"types": False})["calls"]
+        self.assertEqual({c["label"].split(":")[0] for c in off if c["agentType"]}, {"scout"})
+        self.assertEqual({c["agentType"] for c in off if c["label"].startswith("scout:")}, {"search"})
+        one = self.smoke("happy", {"types": {"evalV": "x"}})["calls"]
+        self.assertEqual({c["agentType"] for c in one if c["label"].startswith("evalV:")}, {"x"})
+        self.assertEqual({c["agentType"] for c in one if c["label"].startswith("evalF:")}, {"hw-read"})
+        # 型は他の決まりを変えない：モデル・係の順は同じ
+        key = lambda cs: [(c["label"], c["model"], c["phase"]) for c in cs]
+        self.assertEqual(key(off), key(self.smoke("happy")["calls"]))
+
     def test_model_overrides(self):
         d = self.smoke("stuck", {"model": "fable"})                                          # 全部 Fable は受け付けない
         self.assertEqual([c["label"] for c in d["calls"] if c["model"] == "fable"], ["plan:1"])

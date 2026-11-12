@@ -40,6 +40,12 @@ const M = Object.assign({ plan: 'fable', scout: 'haiku', verify: 'haiku', learn:
   evalV: 'opus', diag: 'opus', light: 'haiku', normal: 'sonnet', hard: 'opus' }, A.models || {})
 // args.model＝全部の役を 1 つに（試すときだけ）。fable は受け付けない：「Fable は計画だけ」を 1 つの引数で破らせない
 if (A.model && A.model !== 'fable') for (const k of Object.keys(M)) M[k] = A.model
+// 係の型（agentType）。型は道具を絞る（.claude/agents/hw-*.md の tools:）。型なしだと MCP を含む全部の道具（約 80）が毎回付き、最初の 1 手が約 9 万。
+// scout は元から search。args.types=false で scout 以外は型なし（今までどおり）。args.types={evalV:'x'} でその役だけ別の型。
+const TYPE0 = { intake: 'hw-edit', plan: 'hw-edit', build: 'hw-edit', fix: 'hw-edit', kpi: 'hw-edit', evalF: 'hw-read', evalV: 'hw-read', diag: 'hw-diag',
+  verify: 'hw-ops', learn: 'hw-ops', ship: 'hw-ops', announce: 'hw-ops' }
+const TYPES = A.types === false ? {} : Object.assign({}, TYPE0, (A.types && typeof A.types === 'object') ? A.types : {})
+const ty = role => { const n = role === 'scout' ? (TYPES.scout || 'search') : TYPES[role]; return n ? { agentType: n } : {} }
 const buildModel = t => M.build || M[t.complexity] || M.normal   // args.models.build を言えば重さに関係なくそれ
 const ON = { intake: A.intake !== false, scout: A.scout !== false, kpi: A.kpi !== false && A.newuser !== false, options: A.options !== false, ship: A.ship !== false }
 const BUDGET = { intake: 20, plan: 15, scout: 5, build: 45, kpi: 45, evalF: 30, evalV: 20, fix: 30, diag: 15, ship: 40, verify: 12, learn: 8, announce: 5 }
@@ -294,9 +300,9 @@ ${run} harness/hb.py summary
 
 // ---------- 1 つの段：作る → 確かめる → 直す → 合併（合併は台本の中で 1 つずつ並ぶ） ----------
 async function evaluate(t, r, k, ag) {
-  let v = await ag(evalFPrompt(t, r, k), { label: `evalF:${t.id}:${k}`, phase: 'Evaluate', model: M.evalF, effort: 'medium', schema: VERDICT })
+  let v = await ag(evalFPrompt(t, r, k), { label: `evalF:${t.id}:${k}`, phase: 'Evaluate', model: M.evalF, ...ty('evalF'), effort: 'medium', schema: VERDICT })
   if (v && v.ok && isVisual(t)) {
-    v = await ag(evalVPrompt(t, r, k), { label: `evalV:${t.id}:${k}`, phase: 'Evaluate', model: M.evalV, effort: 'high', schema: VERDICT })
+    v = await ag(evalVPrompt(t, r, k), { label: `evalV:${t.id}:${k}`, phase: 'Evaluate', model: M.evalV, ...ty('evalV'), effort: 'high', schema: VERDICT })
     if (v) v.ok = vOk(v)
   }
   return v
@@ -311,12 +317,12 @@ async function build(t, ag) {
     return { t, r: { branch: R.branch, worktree: R.worktree || wtFor(t), commit: R.commit, summary: R.note || '' }, state: 'evaluated', resumed: true }
   let scout = null
   if (ON.scout && t.kind !== 'kpi' && !R) {   // 続きの段は前の係が地図を持っている
-    const s = await ag(scoutPrompt(t), { label: `scout:${t.id}`, phase: 'Build', model: M.scout, agentType: 'search', schema: SCOUT })
+    const s = await ag(scoutPrompt(t), { label: `scout:${t.id}`, phase: 'Build', model: M.scout, ...ty('scout'), schema: SCOUT })
     scout = s && s.map
   }
   let r = t.kind === 'kpi'
-    ? await ag(kpiPrompt(t), { label: `kpi:${t.id}`, phase: 'Build', model: M.kpi, schema: BUILT })
-    : await ag(buildPrompt(t, scout), { label: `build:${t.id}`, phase: 'Build', model: buildModel(t), schema: BUILT })
+    ? await ag(kpiPrompt(t), { label: `kpi:${t.id}`, phase: 'Build', model: M.kpi, ...ty('kpi'), schema: BUILT })
+    : await ag(buildPrompt(t, scout), { label: `build:${t.id}`, phase: 'Build', model: buildModel(t), ...ty('build'), schema: BUILT })
   let fixes = 0, diags = 0, last = null, k = 0
   for (;;) {
     if (!r) return { t, state: 'parked', cls: 'infra', resume: res(t), why: '係から返事がない（止まった・飛ばされた）' }
@@ -335,7 +341,7 @@ async function build(t, ag) {
       if (diags >= MAX_DIAG) return { t, r, state: 'parked', cls: 'work', resume: keep(t, r, 'fix', `審査で落ちた所：${why}`), why: `審査を通らない（直し ${fixes} 回・見立て ${diags} 回）：${why}` }
       if (ag.n + 3 > MAX_AGENTS) return { t, r, state: 'parked', cls: 'work', resume: keep(t, r, 'fix', `審査で落ちた所：${why}`), why: `係の上限 ${MAX_AGENTS}（見立て・直し・審査が入らない）：${why}` }
       diags++
-      const d = await ag(diagPrompt(t, r, v), { label: `diag:${t.id}`, phase: 'Fix', model: M.diag, effort: 'high', schema: DIAG })
+      const d = await ag(diagPrompt(t, r, v), { label: `diag:${t.id}`, phase: 'Fix', model: M.diag, ...ty('diag'), effort: 'high', schema: DIAG })
       if (!d || d.give_up) return { t, r, state: 'parked', cls: 'work', resume: keep(t, r, 'fix', d ? d.plan : ''), why: `見立て：${one(d ? d.plan : '返事がない', 300)}` }
       plan = d.plan
     } else {
@@ -343,7 +349,7 @@ async function build(t, ag) {
       fixes++
     }
     const prev = r
-    r = await ag(fixPrompt(t, prev, v, plan, fixes + diags), { label: `fix:${t.id}:${fixes + diags}`, phase: 'Fix', model: buildModel(t), schema: BUILT })
+    r = await ag(fixPrompt(t, prev, v, plan, fixes + diags), { label: `fix:${t.id}:${fixes + diags}`, phase: 'Fix', model: buildModel(t), ...ty('fix'), schema: BUILT })
     if (r && (r.status === 'built' || r.status === 'partial')) r = Object.assign({}, prev, r)   // 枝・作業ツリー・見る所は前の係のものを引き継ぐ
   }
 }
@@ -354,18 +360,18 @@ let shipChain = Promise.resolve()
 const merged = []
 async function shipOne(x, c, ag) {
   if (!ON.ship) { x.state = 'parked'; x.cls = 'work'; x.resume = keep(x.t, x.r, 'ship', '合併なしの回（args.ship=false）'); x.why = '合併なしの回（args.ship=false）：枝は手元にある'; return x }
-  let s = await ag(shipPrompt(x, c), { label: `ship:${x.t.id}`, phase: 'Ship', model: M.ship, schema: SHIPPED })
+  let s = await ag(shipPrompt(x, c), { label: `ship:${x.t.id}`, phase: 'Ship', model: M.ship, ...ty('ship'), schema: SHIPPED })
   // 手元の CI が本物の試験の赤（rc=1・failed_class=work）で落ちた：すぐ止めず、作る係に 1 回だけ直させて（同じ作業ツリー・重さどおりのモデル）もう一度合併へ。
   // それでも赤なら止める（run 1112d：T-0004 は fake402 の名簿に 1 行足し忘れただけの赤で止まった）
   if (s && s.status === 'failed' && (s.failed_class || 'work') === 'work' && (s.failed_tests || []).length && !x.shipFixed && x.r && x.r.branch && ag.n + 2 <= MAX_AGENTS) {
     x.shipFixed = true
     const prev = x.r
     const v = { problems: [`合併の前の手元の CI（harness/ci_local.sh）が赤：${(s.failed_tests || []).join(' ')}`, one(s.summary, 600)], preexisting: [] }
-    const r2 = await ag(fixPrompt(x.t, prev, v, '落ちた試験の中身を読み、足し忘れ（名簿・登録・期待値）か本物のバグかを決めて直す。試験を弱めない・スキップしない。直したら落ちた試験だけ \`harness/ci_local.sh <名前>\` で通す。', 'ship 後'), { label: `fix:${x.t.id}:ship`, phase: 'Fix', model: buildModel(x.t), schema: BUILT })
+    const r2 = await ag(fixPrompt(x.t, prev, v, '落ちた試験の中身を読み、足し忘れ（名簿・登録・期待値）か本物のバグかを決めて直す。試験を弱めない・スキップしない。直したら落ちた試験だけ \`harness/ci_local.sh <名前>\` で通す。', 'ship 後'), { label: `fix:${x.t.id}:ship`, phase: 'Fix', model: buildModel(x.t), ...ty('fix'), schema: BUILT })
     if (r2 && (r2.status === 'built' || r2.status === 'partial')) {
       x.r = Object.assign({}, prev, r2)
       x.resumed = true   // 記録のコミットは枝にもうある
-      s = await ag(shipPrompt(x, c), { label: `ship:${x.t.id}:2`, phase: 'Ship', model: M.ship, schema: SHIPPED })
+      s = await ag(shipPrompt(x, c), { label: `ship:${x.t.id}:2`, phase: 'Ship', model: M.ship, ...ty('ship'), schema: SHIPPED })
     }
   }
   x.ship = s || { status: 'failed', failed_class: 'infra', summary: '合併の係から返事がない' }
@@ -405,8 +411,8 @@ for (let c = 1; c <= CYCLES; c++) {
 
   // 0 受付と、前の回の「本番でまだ」（どちらも軽い・互いに触らない）
   const pre = await parallel([
-    () => ON.intake ? agent(intakePrompt(c), { label: `intake:${c}`, phase: 'Intake', model: M.intake, effort: 'high', schema: INTAKE }) : null,
-    () => agent(verifyPrompt(c, null), { label: `verify:${c}:a`, phase: 'Intake', model: M.verify, schema: VERIFIED }),
+    () => ON.intake ? agent(intakePrompt(c), { label: `intake:${c}`, phase: 'Intake', model: M.intake, ...ty('intake'), effort: 'high', schema: INTAKE }) : null,
+    () => agent(verifyPrompt(c, null), { label: `verify:${c}:a`, phase: 'Intake', model: M.verify, ...ty('verify'), schema: VERIFIED }),
   ])
   const intake = pre[0], carried = (pre[1] && pre[1].results) || []
   if (intake) { log(`受付：${intake.status} ${one(intake.summary, 200)}`); cyc.intake = { status: intake.status, tasks: intake.tasks || [], for_brain: intake.for_brain || [] } }
@@ -416,7 +422,7 @@ for (let c = 1; c <= CYCLES; c++) {
   const intakeShip = intakeX ? shipSerial(intakeX, c, agent) : null
 
   // 1 計画
-  const p = await agent(planPrompt(c, MAX_TASKS, handled), { label: `plan:${c}`, phase: 'Plan', model: M.plan, schema: PLAN })
+  const p = await agent(planPrompt(c, MAX_TASKS, handled), { label: `plan:${c}`, phase: 'Plan', model: M.plan, ...ty('plan'), schema: PLAN })
   const wanted = ((p && p.tasks) || []).filter(t => t && t.id && !handled.includes(t.id) && (t.kind !== 'kpi' || (ON.kpi && c === 1)) && (t.kind !== 'options' || ON.options))
   const tasks = pickDisjoint(wanted, MAX_TASKS)   // 係の答えを信じず、範囲の重なりは台本でもう一度落とす
   // 計画の係が取った（claim）のに台本が外した段は、記録の係が印を返す（2026-11-12：T-0006 の印が 60 分残った）
@@ -441,7 +447,7 @@ for (let c = 1; c <= CYCLES; c++) {
   // 8 本番の確かめ（10 分まで。出ていなければ verify の段を残して先へ）
   let fresh = []
   if (merged.length) {
-    const v = await agent(verifyPrompt(c, merged), { label: `verify:${c}:b`, phase: 'Verify', model: M.verify, schema: VERIFIED })
+    const v = await agent(verifyPrompt(c, merged), { label: `verify:${c}:b`, phase: 'Verify', model: M.verify, ...ty('verify'), schema: VERIFIED })
     fresh = (v && v.results) || []
     for (const x of merged) { const hit = fresh.find(f => f.id === x.t.id); x.live = !!(hit && hit.live); if (hit && x.t.kind === 'options') { hit.kind = 'options'; hit.choice_url = hit.choice_url || x.r.choice_url; hit.question = hit.question || x.r.question } }
   }
@@ -449,13 +455,13 @@ for (let c = 1; c <= CYCLES; c++) {
   // 6 案のページ：本番に出たものだけ店長に知らせる
   for (const v of carried.concat(fresh)) {
     if (!ON.options || !v.live || v.kind !== 'options' || !v.choice_url) continue
-    const a = await agent(announcePrompt(v), { label: `announce:${v.id}`, phase: 'Verify', model: M.verify, schema: DONE })
+    const a = await agent(announcePrompt(v), { label: `announce:${v.id}`, phase: 'Verify', model: M.verify, ...ty('announce'), schema: DONE })
     log(`案のページ ${v.id}：${a && a.ok ? '店長に知らせた' : '知らせていない'} ${v.choice_url}`)
   }
 
   // 9 記録
   const rows = outs.concat(intakeX ? [intakeX] : [])
-  await agent(learnPrompt(c, rows, dropped), { label: `learn:${c}`, phase: 'Learn', model: M.learn, effort: 'low', schema: DONE })
+  await agent(learnPrompt(c, rows, dropped), { label: `learn:${c}`, phase: 'Learn', model: M.learn, ...ty('learn'), effort: 'low', schema: DONE })
   for (const x of outs) {
     handled.push(x.t.id)
     cyc.tasks.push({ id: x.t.id, kind: x.t.kind, state: x.state, cls: x.cls || '', live: !!x.live, pr: (x.ship && x.ship.pr) || '', agents: x.agents || 0,

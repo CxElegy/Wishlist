@@ -34,6 +34,20 @@
 段の重さ（`complexity`：light｜normal｜hard）は段のファイルの約束の 1 つで、計画の係が `q.py contract --complexity` で付ける（迷ったら軽い方・hard は 1 周に 1 つまで）。
 `args.models = {hard: 'sonnet', evalV: 'sonnet', …}` で役ごと・重さごとに変えられる。`args.model` は「全部の役を 1 つに」する試し用で、**fable を入れても使われない**（台本が断って既定のモデルで回す）。
 
+## 係の型（道具を絞る）
+
+型なしの係には MCP を含む全部の道具（約 80 個）が毎回付き、最初の 1 手が約 9 万トークン。型（`.claude/agents/hw-*.md` の `tools:`）で絞ると約 1 万。型は道具だけを決め、モデルは台本が役ごとに決める（型に `model` は書かない）。
+
+| 型 | 道具 | 付ける役 |
+|---|---|---|
+| hw-edit | Read, Edit, Write, Glob, Grep, Bash | intake・plan・build・fix・kpi |
+| hw-read | Read, Glob, Grep, Bash | evalF・evalV |
+| hw-diag | Read, Glob, Grep, Bash, WebSearch, WebFetch | diag |
+| hw-ops | Bash, Read | verify・learn・ship・announce |
+| search（元から） | Read, Glob, Grep, Bash | scout |
+
+型のファイルはリポジトリの `.claude/agents/` が元。主の会話は D:/Claude にありリポジトリの外なので、`python harness/install_agents.py` で `~/.claude/agents/` にも入れる（`--check` で同じ中身か確かめる）。**型を使わない・戻す時は `args.types: false`**（scout 以外は型なし＝今までどおり）。`args.types = {evalV: 'x'}` でその役だけ別の型。
+
 ## 1 周の流れ（`harness-v2.js`）
 
 ```
