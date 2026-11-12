@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "edit_sig": "8a04090e4653",
+ "edit_sig": "8c341fb1b3d4",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -376,9 +376,9 @@
      "blurb": "アルカラス選手がジャパンオープンテニス2026で優勝し、大会連覇を果たした。",
      "date": "2026-11-12",
      "headline": "アルカラス選手がジャパンオープンテニス2026で優勝、大会連覇",
-     "highlight": "大会連覇",
+     "highlight": "優勝、大会連覇",
      "image": "https://news.dellows.jp/wp-content/uploads/2026/10/636470_1.jpg",
-     "image_via": "AI 挑选",
+     "image_via": "og:image",
      "url": "https://news.dellows.jp/636470/",
      "weight": "lead"
     },
@@ -387,9 +387,9 @@
      "date": "2026-11-11",
      "event": {
       "date": "2026-11-14",
-      "label": "放送"
+      "label": "放送・配信"
      },
-     "headline": "11/14（土）放送・配信「錦織圭 ラストロード～最後のグランドスラムからジャパンオープンまでの軌跡～」",
+     "headline": "「錦織圭 ラストロード」11/14（土）放送・配信、松岡修造氏が出演",
      "highlight": "11/14（土）",
      "image": "https://prcdn.freetls.fastly.net/release_image/1355/9018/1355-9018-cad601b939804fc52340828ffdef7710-1800x1201.jpg",
      "image_via": "og:image",
@@ -485,12 +485,12 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "ジェラート ピケ×サンリオ第2弾に、ハローキティやクロミなど5キャラクターが登場。",
+     "blurb": "ジェラート ピケとサンリオのコラボ第2弾に、ハローキティやクロミなど5キャラクターが登場。",
      "date": "2026-11-12",
      "headline": "ジェラート ピケ×サンリオ第2弾、キティやクロミなど5キャラクターが登場",
-     "highlight": "サンリオ第2弾",
+     "highlight": "第2弾",
      "image": "https://www.diarypoint.com/media/96d11654-c1c5-467d-bbaf-b17f08b48ea4.jpg",
-     "image_via": "AI 挑选",
+     "image_via": "og:image",
      "url": "https://www.diarypoint.com/ja/news/7100/gelato-pique-and-sanrio-launch-second-collaboration-collection-featuring-5-chara",
      "weight": "lead"
     },
@@ -498,7 +498,7 @@
      "blurb": "",
      "date": "2026-11-12",
      "headline": "スヌーピー×ジェラピケがコラボ！おうち時間にぴったりの大人かわいいアイテム",
-     "highlight": "スヌーピー×ジェラピケ",
+     "highlight": "",
      "image": "https://news.walkerplus.com/article/1045959/10429130_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1045959/",
@@ -507,10 +507,10 @@
     {
      "blurb": "",
      "date": "2026-11-12",
-     "headline": "【豪華付録】GELATO PIQUE 「さわって楽しい！ しかけつきベビー用布絵本」が1冊に1つついてくる『ひよこクラブ』冬号が発売中！",
+     "headline": "【豪華付録】GELATO PIQUE 「さわって楽しい！ しかけつきベビー用布絵本」が付く『ひよこクラブ』冬号が発売中",
      "highlight": "",
      "image": "https://portal.auone.jp/media/thumbnails/2026/11/12/https___news_jp_i_1493525061302158094_w700.webp",
-     "image_via": "转载 article.auone.jp",
+     "image_via": "og:image",
      "url": "https://article.auone.jp/228aea82-a370-4492-9ce2-abd39c5e49c2",
      "weight": "normal"
     }
@@ -567,12 +567,12 @@
    "section": "影视",
    "stories": [
     {
-     "blurb": "レゼ篇の劇場版（IMAX 2D）の興行収入が速報されている。",
+     "blurb": "Sacnilk tracks the live box office collection for the IMAX 2D run of Chainsaw Man The Movie: Reze Arc.",
      "date": "2026-11-12",
      "headline": "Chainsaw Man The Movie: Reze Arc (IMAX 2D) box office collection live",
-     "highlight": "",
+     "highlight": "box office",
      "image": "https://cdn.sacnilk.com/image/news/1000023554.jpg",
-     "image_via": "AI 挑选",
+     "image_via": "og:image",
      "url": "https://www.sacnilk.com/livetracker/Chainsaw_Man_The_Movie_Reze_Arc_2025_Release-Week-Live",
      "weight": "lead"
     },
@@ -616,33 +616,23 @@
    "section": "影视",
    "stories": [
     {
-     "blurb": "The Mandalorian’s new release returns to an abandoned George Lucas Star Wars TV show.",
+     "blurb": "The Mandalorian and Grogu art book shows concept art, character designs, and a dropped Coruscant plot from the film.",
      "date": "2026-11-12",
-     "headline": "The Mandalorian’s New Release Returns To An Abandoned George Lucas Star Wars TV Show",
-     "highlight": "",
-     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/the-mandalorian-with-grogu-on-his-shoulder-and-sparks-behind-them-in-the-mandalorian-and-grogu.jpg?w=1600&h=900&fit=crop",
-     "image_via": "AI 挑选",
-     "url": "https://screenrant.com/the-mandalorian-new-star-wars-art-book-george-lucas/",
+     "headline": "The Mandalorian and Grogu art book takes fans on a journey behind the film’s biggest moments",
+     "highlight": "art book",
+     "image": "https://d1rldr9jdodfaa.cloudfront.net/images/01M785S9F342NWSBB937R365F6/6913369a-1814-4eaf-9a8e-1800a0db96d3_1794497095.webp",
+     "image_via": "og:image",
+     "url": "https://www.primetimer.com/features/the-mandalorian-and-grogu-art-book-takes-fans-on-a-journey-behind-the-film-s-biggest-moments",
      "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-11-12",
-     "headline": "The Mandalorian and Grogu art book takes fans on a journey behind the film’s biggest moments",
+     "headline": "The Mandalorian’s New Release Returns To An Abandoned George Lucas Star Wars TV Show",
      "highlight": "",
-     "image": "https://d1rldr9jdodfaa.cloudfront.net/images/01M785S9F342NWSBB937R365F6/6913369a-1814-4eaf-9a8e-1800a0db96d3_1794497095.webp",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/the-mandalorian-with-grogu-on-his-shoulder-and-sparks-behind-them-in-the-mandalorian-and-grogu.jpg?w=1600&h=900&fit=crop",
      "image_via": "og:image",
-     "url": "https://www.primetimer.com/features/the-mandalorian-and-grogu-art-book-takes-fans-on-a-journey-behind-the-film-s-biggest-moments",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-12",
-     "headline": "The Mandalorian 7th Anniversary: Fans on X Celebrate Din-Grogu’s Journey With Nostalgic Clips",
-     "highlight": "",
-     "image": "https://i0.wp.com/leisurebyte.com/wp-content/uploads/2026/11/The-Mandolrian-7th-Anniversary-Still-from-Star-Wars-The-Mandalorian-and-Grogu-2-1-1.jpg",
-     "image_via": "og:image",
-     "url": "https://leisurebyte.com/the-mandalorian-7th-anniversary-fans-x-celebrate/",
+     "url": "https://screenrant.com/the-mandalorian-new-star-wars-art-book-george-lucas/",
      "weight": "normal"
     }
    ],
@@ -810,23 +800,24 @@
    "section": "演出",
    "stories": [
     {
-     "blurb": "A2O LITE 아윤의 포토.",
+     "blurb": "新浪网的 11 月 11 日榜单报道，RESCENE 与 A2O LITE 表现强势。",
      "date": "2026-11-12",
-     "headline": "[ET포토] A2O LITE 아윤, '밝고 맑은 미소'",
-     "highlight": "",
-     "image": "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925610301426948504.jpg",
-     "image_via": "AI 挑选",
-     "url": "https://www.etnews.com/tools/image_popup.html?v=bjQ5VkNYY2dLZTZMZFBUbmNzandvWmpGcjBTK1pHYm1CUVRXR0pTMldlYVZkdE5JeGJVUFVVNURJN04rbmhKTVpaWi83c0FOL3NKSTVITFl0VU41R0RqOW0wa3YxMjhibTVZaWttMlgvWXBKYTFUVmdYUmNpaDlHeFpBRXFIMEMwUWxoQlFDanU2MENHblpHMWdFNE1CMVI0ajEvdGovb21JbkpmZFJkaHBnbzJDa25ZaHdZdHBmOFdJNStnbHdhcHJDUUFIZGt2cjVyWjVEejVFbDZmclEvS0luRzVXVGVWQkdUVkdSUktHUnlNQlR4WEpFQloxenlKRjZudThQSmtMSy9CL0F5TWUxT0FBR3pTNTVOVVE9PQ",
+     "headline": "2026 年 11 月 11 日榜：RESCENE 与 A2O LITE 的强势表现",
+     "highlight": "A2O LITE 的强势表现",
+     "image": "http://wx2.sinaimg.cn/middle/006dNg2Ply1iizp6xr3lsj31dk26mgut.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5364532895548280.html",
      "weight": "lead"
     },
     {
      "blurb": "",
-     "date": "2026-11-12",
-     "headline": "2026 年 11 月 11 日榜：RESCENE 与 A2O LITE 的强势表现",
+     "date": "2026-11-06",
+     "headline": "“艾静”A2O LITE遇到了什么争议？为什么人们纷纷出来批评",
      "highlight": "",
-     "image": "http://wx2.sinaimg.cn/middle/006dNg2Ply1iizp6xr3lsj31dk26mgut.jpg",
-     "image_via": "正文图（本站保存）",
-     "url": "https://www.sina.cn/news/detail/5364532895548280.html",
+     "image": null,
+     "source": "TNN Thailand",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.tnnthailand.com&sz=128",
+     "url": "https://www.tnnthailand.com/cn/entertainment/250414/",
      "weight": "normal"
     }
    ],

@@ -1,10 +1,10 @@
 {
- "admin": "e7220d56890a",
- "admin-ai": "bdd3e30f3922",
+ "admin": "2adb2ac3e119",
+ "admin-ai": "b5260b61d4e8",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ebea6f2d"
+   "56da8cb0"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "ffca4defa081",
+ "admin-emblem": "52766ac0d021",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "7988bba9"
+   "d4738562"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -62,11 +62,11 @@
    "e3c053e4"
   ]
  },
- "admin-system": "d595e44ed1cc",
+ "admin-system": "d05e8e8bd39d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3a37c73b"
+   "f593af68"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9c277cfb"
+   "24665a8c"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "eb8cfe8b"
   ]
  },
- "index": "f69fc5a6174a",
+ "index": "b6256f2a7f3b",
  "index_marks": {
   "front": [
    "トップ",
-   "290dedff"
+   "8c527898"
   ],
   "picks": [
    "気になるかも？",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "e5d4cfaf"
+   "96343899"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "e66ba6a9"
+   "6f14f4a4"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -169,15 +169,15 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "870dfb20"
+   "09f77d13"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "7ad8cfcf"
+   "eb6ccf8d"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "6d980566"
+   "635df687"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "3dd2c092"
   ]
  },
- "updated": "11.13 02:50",
+ "updated": "11.13 02:54",
  "wishlist": "ae6c9ab27ddb"
 }
