@@ -2746,7 +2746,7 @@ def _write_page():
                           {i["name"]: render.template_for(i) for i in items}, themes,
                           [x for x in (load_json(RECOMMEND_FILE) or {}).get("taste", [])
                            if not str(x[0]).startswith(WORK_KEY) or str(x[0])[len(WORK_KEY):] in {i["name"] for i in items}], heat_scores,
-                          {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
+                          {i["name"]: (render.mark_own_emblems(i), i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
                           {n: v for n, v in own_sub.items() if v}, settings.get("nav_hide", render.NAV_HIDE),
                           {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},
