@@ -190,11 +190,14 @@ class Graph:
     def _reads(self, facts, path):
         """facts の .py が path（変わったファイル）を名指しで読むか、覗くディレクトリに入っているか。"""
         base = path.rsplit("/", 1)[-1]
-        for s in facts.strings:
+        quiet = bool(QUIET_RE.search(path))
+        # 文章・絵の名前が scripts/ に書いてあるのは、ほとんど網页のリンクや名簿（processes.py の doc）。読むのは試験が名指しする物と .glob の方で拾う
+        for s in (facts.strings if not quiet or facts.path.startswith("tests/") else ()):
             s2 = _norm(s)
             if not s2:
                 continue
-            if s2 == path or ("/" in s2 and (path.endswith("/" + s2) or path.startswith(s2 + "/"))):
+            # ディレクトリの名前だけ（"docs/testground"）は、文章・絵には数えない（出力先の名前が多い。md を読むのは .glob("*.md") の方で拾う）
+            if s2 == path or ("/" in s2 and (path.endswith("/" + s2) or (path.startswith(s2 + "/") and not quiet))):
                 return True
             if "/" not in s2 and "." in s2 and s2 == base:
                 return True
