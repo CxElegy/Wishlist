@@ -233,9 +233,9 @@
   "target": 720,
   "v": 3
  },
- "https://appmedia.jp/wp-content/uploads/2026/10/154528_akvy1.webp": {
-  "w": 740,
-  "h": 389,
+ "https://appmedia.jp/wp-content/uploads/2026/10/151001_cb6v7.webp": {
+  "w": 710,
+  "h": 373,
   "target": 720,
   "v": 3
  },
@@ -479,6 +479,12 @@
   "blur": 0.345
  },
  "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg": {
+  "w": 800,
+  "h": 369,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
   "target": 720,
@@ -1534,6 +1540,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/12/5638786_1.jpg": {
+  "w": 800,
+  "h": 1064,
+  "target": 720,
+  "v": 3
+ },
  "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
   "w": 640,
   "h": 434,
@@ -1779,12 +1791,6 @@
   "why": "看不清"
  },
  "https://m.media-amazon.com/images/I/419UKeIQVTL._SL500_.jpg": {
-  "w": 500,
-  "h": 500,
-  "target": 720,
-  "v": 3
- },
- "https://m.media-amazon.com/images/I/41PtnfgMlaL._SL500_.jpg": {
   "w": 500,
   "h": 500,
   "target": 720,
@@ -2142,6 +2148,13 @@
   ],
   "why": "看不清"
  },
+ "https://news.walkerplus.com/article/52948/288968_615.jpg": {
+  "w": 615,
+  "h": 505,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.413
+ },
  "https://news.walkerplus.com/article/55811/307229_615.jpg": {
   "w": 615,
   "h": 516,
@@ -2152,6 +2165,25 @@
   "out": [
    1280,
    1074
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/61968/345189_615.jpg": {
+  "w": 615,
+  "h": 820,
+  "target": 1280,
+  "v": 3
+ },
+ "https://news.walkerplus.com/article/62102/346062_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.487,
+  "local": "pics/1f635478e7f865b5.webp",
+  "out": [
+   1280,
+   853
   ],
   "why": "看不清"
  },
@@ -2707,12 +2739,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/2dbe7f2bd1676e86801b0a51a5fa559c7b12c23469d6aa57fc4cbdbc162e9f0b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fftvn_sports_106%2Fbf49b2853a3d6a9d7f06fc76f5faf436.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/74f35a083cff840f66783c92d955d53956a815f17f8fc1c338e7c6d11d969191/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fa11653e42e3e266fd5750215b71c84b8.jpg": {
   "w": 1200,
   "h": 1819,
@@ -3088,6 +3114,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.anpoimages.com/wordpress/wp-content/uploads/2026/08/samsung-galaxy-z-fold-8-and-google-pixel-10-pro-standing-side-by-side.png?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/01/bobamando-1200x600.jpg?w=1200&h=675&fit=crop": {
   "w": 1200,
   "h": 600,
@@ -3430,12 +3462,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.7xZBDBe-JvDuXUKWzmMQXQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -3454,19 +3480,6 @@
   "h": 366,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.EeNxbWe3OrtZRPFeeThe2w&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.491,
-  "local": "pics/e0f45b14a8983115.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
@@ -3499,12 +3512,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.JG2RA4-I9_9_46jqkm9WTw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.JpCGa5gTOp-LoOapCFVdCg&pid=News&w=700": {
   "w": 560,
@@ -3565,12 +3572,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
-  "w": 700,
-  "h": 322,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3591,6 +3592,12 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.b9Up3UKzuujXa2vwn9WJKQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3618,6 +3625,12 @@
  "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700": {
   "w": 700,
   "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.if7PjIjrIEYNee0BpacpMA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
   "target": 720,
   "v": 3
  },
@@ -3691,6 +3704,18 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.vzuwnTUP7Yea-vtAreS8ww&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.x8HYFiQrxV6S50VqjFJK8A&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.chosun.com/resizer/v2/G5SDINLDHFRWGZBRGYZWCNLCGA.jpg?auth=739573127a990fd5ef680a1b099c16fa28b384086240fdaa5d7bc97289559047&width=650&height=341&smart=true": {
   "w": 650,
   "h": 341,
@@ -3744,6 +3769,12 @@
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Sentinel-marvel-comics-Thor.webp": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.dailysunny.com/wp-content/uploads/2026/10/20251101-Pumpkin-Smash-6-e1791895860938.jpg": {
+  "w": 900,
+  "h": 600,
   "target": 1280,
   "v": 3
  },

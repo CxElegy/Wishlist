@@ -1,32 +1,32 @@
 {
- "admin": "32e04b251f5b",
- "admin-ai": "392975f5940b",
+ "admin": "74abd54e66cf",
+ "admin-ai": "ade36a448a69",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "bf5e7ee8"
+   "4dacb328"
   ],
   "tokens": [
    "AI 編集のトークン",
    "6fad543b"
   ]
  },
- "admin-boards": "b0fa0cad98d7",
+ "admin-boards": "cdd3b75f484b",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e9e1ad46"
+   "0196c43a"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "822adf3c3671",
+ "admin-emblem": "ead0ebde0f4f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "565c48ff"
+   "cc06decb"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "ffaed58cb54e",
+ "admin-now": "64baaeac2dda",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "00a0df29"
+   "7d1fe49d"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "cb88446d"
+   "4618fbc1"
   ],
   "term-panel": [
    "ライブログ",
-   "04f792b3"
+   "2cf8fbb9"
   ]
  },
- "admin-system": "c09e2395b400",
+ "admin-system": "372bba9614da",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9b02608f"
+   "7fcc1e94"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "74643718"
+   "67feb60a"
   ]
  },
  "admin_marks": {},
- "heat": "138e57788dc1",
+ "heat": "3c091efbc0a9",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "3e30e952"
+   "618e3e41"
   ],
   "ranking": [
    "ランキング",
-   "eb8cfe8b"
+   "ff78905b"
   ]
  },
- "index": "14594656f1da",
+ "index": "955b574086d8",
  "index_marks": {
   "front": [
    "トップ",
-   "9d089da6"
+   "00c487fa"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "d1281845"
+   "2b90c961"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "51ef0bc6"
+   "b1a2972a"
   ],
   "w-6676e624": [
    "三星手机",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "f783cd1a"
+   "5cc6b3f8"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "6f4b7b0b"
+   "cec122ba"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "38552a70"
   ]
  },
- "updated": "11.13 03:24",
- "wishlist": "046c5472ed54"
+ "updated": "11.13 03:32",
+ "wishlist": "118c2a36ca6b"
 }
