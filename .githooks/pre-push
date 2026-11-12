@@ -29,7 +29,7 @@ for f in $(echo "$changed" | grep -E '^(scripts|harness)/[^/]+\.py$'); do
 done
 for t in $(echo "$changed" | grep -E '^tests/test_[^/]+\.py$'); do [ -f "$t" ] && tests="$tests $t"; done
 if [ -n "$tests" ] && [ "$have_docker" = 1 ]; then
-  echo "pre-push ② 飛ばす：④ がコンテナ（Linux）で同じ試験を全部流すため"
+  echo "pre-push ② 飛ばす：④ がコンテナ（Linux）で同じ試験を流すため（④ の組は ② の名前の決まりを含む）"
 elif [ -n "$tests" ]; then
   mods=$(echo $tests | tr ' ' '\n' | sort -u | sed 's#/#.#; s#\.py$##' | tr '\n' ' ')
   echo "pre-push ② 変えた所の試験：$mods"
@@ -47,7 +47,9 @@ if echo "$changed" | grep -qE '^docs/.*\.html$'; then
   python3 harness/js_check.py $(echo "$changed" | grep -E '^docs/.*\.html$') || fail=1
 fi
 
-# ④ CI と同じ検査（Linux のコンテナ・全部の試験）。赤い CI を店長に見せない（2026-11-07）。コンテナが動く PC だけ
+# ④ CI と同じ検査（Linux のコンテナ）。赤い CI を店長に見せない（2026-11-07）。コンテナが動く PC だけ
+# 2026-11-13：全部（13 分）ではなく、変わったファイルに当たる試験だけ（harness/affected.py。分からない・harness/・.githooks/・requirements・
+# Dockerfile が変わった時は全部）。全部の試験は GitHub の CI が合併の前に必ず流す。手元で全部は `bash harness/ci_local.sh`（引数なし）
 # 同じ中身（tree の指紋）で ci_local.sh が 2 時間以内に全部緑なら流さない（係が push の前に流した分。印は ci_local.sh が残す）
 green_dir="${HF_CI_GREEN_DIR:-}"
 [ -z "$green_dir" ] && [ -d D:/Claude/hf/state ] && green_dir=D:/Claude/hf/state/ci_green
@@ -59,8 +61,8 @@ if [ "$fail" = 0 ] && [ "$have_docker" = 1 ]; then
   if echo "$stamp_at" | grep -qE '^[0-9]+$' && [ $((now - stamp_at)) -ge 0 ] && [ $((now - stamp_at)) -le "${HF_CI_GREEN_TTL:-7200}" ]; then
     echo "pre-push ④ さっき緑だったので流さない（同じ中身 $tree、$((now - stamp_at)) 秒前）"
   else
-    echo "pre-push ④ CI と同じ検査（harness/ci_local.sh）"
-    bash harness/ci_local.sh; ci_rc=$?
+    echo "pre-push ④ CI と同じ検査・当たる試験だけ（harness/ci_local.sh --affected）"
+    bash harness/ci_local.sh --affected; ci_rc=$?
     # 3 は「負荷の時間切れ」（本物の赤ではない）。丸めずにそのまま返して、係が待って再試行できるようにする
     if [ "$ci_rc" = 3 ]; then fail=3; elif [ "$ci_rc" != 0 ]; then fail=1; fi
   fi

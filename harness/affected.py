@@ -302,7 +302,7 @@ def main(argv=None):
     ap.add_argument("--root", default=str(ROOT))
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--names", action="store_true", help="ALL か、空白区切りの名前")
-    ap.add_argument("--fast", action="store_true", help="--names で fast だけ")
+    ap.add_argument("--fast", action="store_true", help="--names で fast だけ（全部の時も fast の名前を出す）")
     a = ap.parse_args(argv)
     try:
         sys.stdout.reconfigure(encoding="utf-8")
@@ -324,7 +324,10 @@ def main(argv=None):
     if a.json:
         print(json.dumps(res, ensure_ascii=False, indent=1))
     elif a.names:
-        print("ALL" if res["all"] else " ".join(res["fast"] + ([] if a.fast else res["browser"])))
+        if a.fast:   # 軽い試験だけ：全部の時も名前で（ブラウザの試験を外すため）
+            print(" ".join(res["fast"]) if res["fast"] or not res["all"] else "ALL")
+        else:
+            print("ALL" if res["all"] else " ".join(res["fast"] + res["browser"]))
     else:
         for c, w in res["why"].items():
             print(f"{c}: {w}")
