@@ -594,6 +594,38 @@ class Script(unittest.TestCase):
         self.assertIn("--resume-stage ship", learn)
         self.assertNotIn("worktree remove", learn)
 
+    def test_real_red_in_local_ci_gets_one_fix_round_then_ships(self):
+        """2026-11-12 run 1112d：手元の CI の本物の赤（failed_class=work）は、すぐ止めず作る係が 1 回直して、もう一度合併へ。"""
+        d = self.smoke("shipfix")
+        labels = [c["label"] for c in d["calls"] if "T-0011" in c["label"]]
+        self.assertEqual(labels[-3:], ["ship:T-0011", "fix:T-0011:ship", "ship:T-0011:2"])
+        self.assertEqual(d["result"][0]["tasks"][0]["state"], "merged")
+        fix = d["prompts"]["fix:T-0011:ship"]
+        self.assertIn("test_fake402", fix)                       # 落ちた試験の名前を渡す
+        self.assertIn("試験を弱めない", fix)
+        model = {c["label"]: c["model"] for c in d["calls"]}
+        self.assertEqual(model["fix:T-0011:ship"], model["build:T-0011"])   # 重さどおりのモデル（Fable は使わない）
+        self.assertNotIn("fable", {c["model"] for c in d["calls"] if not c["label"].startswith("plan:")})
+
+    def test_still_red_after_the_ship_fix_parks_once(self):
+        d = self.smoke("shipred")
+        labels = [c["label"] for c in d["calls"] if "T-0012" in c["label"]]
+        self.assertEqual(labels.count("fix:T-0012:ship"), 1)     # 直しは 1 回だけ
+        self.assertEqual(labels.count("ship:T-0012:2"), 1)
+        t = d["result"][0]["tasks"][0]
+        self.assertEqual((t["state"], t["cls"], t["resume"]["stage"]), ("parked", "work", "fix"))
+
+    def test_infra_red_does_not_trigger_a_ship_fix(self):
+        d = self.smoke("infra")
+        self.assertFalse([c for c in d["calls"] if c["label"].endswith(":ship")])
+
+    def test_plan_splits_what_only_another_environment_can_measure(self):
+        plan = self.smoke("happy")["prompts"]["plan:1"]
+        self.assertIn("2c.", plan)
+        self.assertIn("測る段", plan)                            # 別の環境でしか測れない条件は「仕組みを作る段」と後の「測る段」に分ける
+        self.assertIn("クラウド", plan)
+        self.assertIn("測る場所", (ROOT / "HARNESS_V2.md").read_text(encoding="utf-8") + "測る場所")
+
     def test_partial_build_keeps_commit_and_note(self):
         d = self.smoke("partial")
         self.assertEqual([c["label"] for c in d["calls"] if "T-0007" in c["label"]], ["scout:T-0007", "build:T-0007"])
