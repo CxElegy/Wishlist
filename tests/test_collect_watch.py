@@ -532,11 +532,12 @@ class Workflows(unittest.TestCase):
         add = commit[commit.index("ゲートの記録は"):commit.index("git add state/gate.json")]
         add = next(line for line in add.splitlines() if line.strip().startswith("if ["))   # 条件の行（説明の行は除く）
         self.assertNotIn("GATE_FIRE", add)   # 変数が開いているだけでは足さない
-        self.assertIn("steps.fire.outputs.fired", add)
+        self.assertNotIn("steps.fire.outputs.fired", add)   # 起こすのは提交（push）のあと：記録は scripts/gate_fire.py が自分で push する
         self.assertIn("steps.kick.outputs.tried", add)       # 起こせなかったときも（管理ページ・ライブログに出す）
         self.assertIn("steps.more.outputs.changed", add)     # 小元素のあとの check で判断が変わったときも
         names = [s.get("id") or s.get("name") for s in wf["jobs"]["run"]["steps"]]
         self.assertLess(names.index("kick"), names.index("gate"))   # 控えの時計はゲートの判断より前：判断が落ちても毎時通る
+        self.assertLess(names.index("commit"), names.index("fire"))   # AI 編集は提交（push）のあとに起こす
         self.assertEqual(emblem.get("id"), "fill")
         self.assertIn("steps.fill.outcome == 'success'", steps["more"]["if"])   # 落ちた回は同じ落ち方で起こし直さない
         self.assertLess(commit.index("yaml.safe_load(open('items.yaml'"), commit.index("git add \"$f\""))   # 壊れた items.yaml は push しない
@@ -556,15 +557,13 @@ class Workflows(unittest.TestCase):
         self.assertGreater(40, digest.COLLECT_DEADLINE_MIN * 2)   # 締め切りのあとに出刊・通知・push の時間が残る
         self.assertGreaterEqual(40 - (digest.COLLECT_DEADLINE_MIN + digest.COLLECT_GRACE_MIN), 15)   # 固まった版面を待つのをやめたあとも
         step = next(s for s in wf["jobs"]["run"]["steps"] if "溜まった版面 → 立刻 AI 编辑" in s.get("name", ""))
-        self.assertIn("gate.py fire", step["run"])
+        self.assertIn("gate_fire.py", step["run"])
         self.assertNotIn("api.anthropic.com", step["run"])       # 直接起こさない（一時停止・記録を通す）
         self.assertNotIn("if", step)                              # 収集のたびに（溜まった版面があれば起こす）
         self.assertIn("export GATE_NOW=edit", step["run"])        # 新しい関注項は GATE_NOW
-        self.assertIn("push_main.py", step["run"])                   # 起こした記録を push
-        self.assertIn("すぐの頼みを残した", step["run"])          # 60 分以内で止められた頼み（now_pending）も push する
         self.assertIn("GATE_NOW_ITEMS", step["run"])
         for line in step["run"].splitlines():                    # ゲートが落ちても、データを push したあとの job を赤くしない
-            if "gate.py check" in line or "gate.py fire" in line:
+            if "gate.py check" in line or "gate_fire.py" in line:
                 self.assertIn("||", line)
 
 
