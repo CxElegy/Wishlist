@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "edit_sig": "24ada8b626f7",
+ "edit_sig": "d339e8bc0962",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,8 +23,8 @@
      "date": "2026-11-12",
      "headline": "'아스트라에 오라티오' 성우진 총정리, 익숙한 목소리는 누구?",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800",
-     "image_via": "Bing 缩略图",
+     "image": "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg",
+     "image_via": "og:image",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216958",
      "weight": "normal"
     }
@@ -477,43 +477,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 28,
-     "source": "PhoneArena",
-     "title": "Samsung Galaxy S27 release date expectations, price estimates, and upgrades",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5zOFRjMXFYRk1PdmhGd1p5UkZ6bV92WW1HOEFrUVE3c0s4a3hTMGpCOGJxYWpjcGMzRHdkQjBBbW1PeDJCRmxiMkpQeS1jUUVHUzlJNTRnOURmcDRLTzRZcjlhNEVlaE9MRnh6RkZQZ0F0VUV5V0FBY0pB?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 29,
-     "source": "iPhone Mania",
-     "title": "Galaxy S27の本体カラーがリーク〜Appleを揶揄しながらバーガンディ復活？ - iPhone Mania",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE95YWZoN2w1YUZTWTdEOUpIWlRzMVBlckgtT2FJOWt1RDNXSmV5TzJtOFlLOGE4OHh5TUsxZnNMVjhrTmRHazdYeEI3Q2VWSV9V0gFWQVVfeXFMUFpOd2JFbnRYMlZ1cjBXUjlGNEhHMHJhWm8wZFpCQ29OeTUwRHFMSHZNVFlUNWlRSk1LRnZ6WWRIancwd0U0N2hTdDlDQzNNMWZGVk1QeVE?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 30,
-     "source": "Talk Android",
-     "title": "Galaxy S27 Colors: Leaked Wallpapers Hint at Five Shades",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5TSHd1dnZkVzVGR1hpeWRUYm9vNlpUdi1KMGEtNDQxQ2VGYnBhbFozOHVadE83YVRLaW5rTjZabzBRRFJXSjNYWEZFLU1jTzl1cUFlYUEzQ0s3MWdval8zMHZwSklGcWpNVHZlSzJ2NG9kUDNNczRrMQ?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 31,
-     "source": "Notebookcheck",
-     "title": "Galaxy S27 official colors tipped, with one interesting yet familiar addition",
-     "url": "https://www.notebookcheck.net/Galaxy-S27-official-colors-tipped-with-one-interesting-yet-familiar-addition.1449038.0.html"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 32,
-     "source": "Gadget Review",
-     "title": "Samsung Galaxy S27 Colors Leak, Revealing a Surprise Connection to Apple’s iPhone 18 Pro",
-     "url": "https://www.gadgetreview.com/samsung-galaxy-s27-colors-leak-revealing-a-surprise-connection-to-apples-iphone-18-pro"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -523,7 +486,7 @@
      "highlight": "カラーがリーク",
      "image": "https://sumahodigest.com/wp-content/uploads/2026/11/HW6zVaQXcAAkP6g.jpg",
      "image_via": "AI 挑选",
-     "url": "https://sumahodigest.com/?p=76374",
+     "url": "https://iphone-mania.jp/android-608637/",
      "weight": "lead"
     },
     {
@@ -564,6 +527,17 @@
      "image": "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png",
      "image_via": "og:image",
      "url": "https://it.chosun.com/news/articleView.html?idxno=3000000000883",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "Samsung Galaxy S27 release date expectations, price estimates, and upgrades",
+     "highlight": "",
+     "image": null,
+     "source": "PhoneArena",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.phonearena.com&sz=128",
+     "url": "https://www.phonearena.com/galaxy-s27-release-date-price-features-news",
      "weight": "normal"
     }
    ],
