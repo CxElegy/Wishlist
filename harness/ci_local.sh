@@ -14,26 +14,21 @@ py=""
 for c in "${HF_PYTHON:-}" .venv/Scripts/python.exe D:/Claude/Wishlist/.venv/Scripts/python.exe python3 python; do
   [ -n "$c" ] && command -v "$c" >/dev/null 2>&1 && { py=$c; break; }
 done
-if [ -z "${HF_LOCK_CI:-}" ]; then
-  if [ -n "$py" ] && "$py" -c "import sys; sys.path.insert(0, 'harness'); import lock" >/dev/null 2>&1; then
-    MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*' PYTHONIOENCODING=utf-8 "$py" harness/lock.py ci --wait "${CI_LOCK_WAIT:-2400}" -- bash "$0" "$@"
-    exit $?
-  fi
-  echo "（鍵を取る python が無い：鍵なしで流す）"
-fi
-# --affected / --fast：当たる試験の名前に置き換える（ALL＝全部なら引数なしと同じ＝緑の印も残る。空なら流す物が無い）
-pages=0
+# --affected / --fast：当たる試験の名前に置き換える（ALL＝全部なら引数なしと同じ＝緑の印も残る。空なら流す物が無い）。
+# 鍵を取る前に決める（流す物が無い時に ci の鍵の列に並ばない）。名前と HF_CI_PAGES（網页の生成も流す）を持って下の鍵へ
 if [ "${1:-}" = --affected ] || [ "${1:-}" = --fast ]; then
   sel=ALL
   git fetch -q origin main 2>/dev/null
   if [ -n "$py" ]; then
     flag=""; [ "$1" = --fast ] && flag=--fast
-    sel=$(env -u GIT_DIR -u GIT_WORK_TREE -u GIT_INDEX_FILE PYTHONIOENCODING=utf-8 "$py" harness/affected.py --base origin/main --names $flag 2>/dev/null) || sel=ALL
+    # pipefail：affected.py が落ちたら（空の出力でも）全部に倒す。tr は Windows の python の \r を外す
+    sel=$(set -o pipefail; env -u GIT_DIR -u GIT_WORK_TREE -u GIT_INDEX_FILE PYTHONIOENCODING=utf-8 "$py" harness/affected.py --base origin/main --names $flag 2>/dev/null | tr -d '\r') || sel=ALL
   fi
-  [ "$1" = --affected ] && pages=1
+  [ "$1" = --affected ] && export HF_CI_PAGES=1
   if [ "$sel" = ALL ]; then
     [ "$1" = --fast ] && { echo "✗ fast の試験の名前が取れない（harness/affected.py）"; exit 1; }
     echo "当たる試験：全部（分からない・試験の流し方が変わった。harness/affected.py）"
+    unset HF_CI_PAGES
     set --
   elif [ -z "$sel" ]; then
     echo "✓ 当たる試験なし（文章・絵だけ。harness/affected.py）"
@@ -44,6 +39,14 @@ if [ "${1:-}" = --affected ] || [ "${1:-}" = --fast ]; then
     echo "当たる試験 $# 本（harness/affected.py。全部は GitHub の CI が流す）：$*"
   fi
 fi
+if [ -z "${HF_LOCK_CI:-}" ]; then
+  if [ -n "$py" ] && "$py" -c "import sys; sys.path.insert(0, 'harness'); import lock" >/dev/null 2>&1; then
+    MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*' PYTHONIOENCODING=utf-8 "$py" harness/lock.py ci --wait "${CI_LOCK_WAIT:-2400}" -- bash "$0" "$@"
+    exit $?
+  fi
+  echo "（鍵を取る python が無い：鍵なしで流す）"
+fi
+pages=${HF_CI_PAGES:-0}
 image=wishlist-ci
 if command -v docker >/dev/null 2>&1; then
   for i in $(seq 1 "${CI_FOREIGN_WAIT:-120}"); do   # 鍵を使わない古い台本・別の作業ツリーのコンテナ（10 秒 × 既定 120 回＝20 分まで待つ）

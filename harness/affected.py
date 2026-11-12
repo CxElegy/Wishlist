@@ -308,7 +308,7 @@ def main(argv=None):
     ap.add_argument("--fast", action="store_true", help="--names で fast だけ（全部の時も fast の名前を出す）")
     a = ap.parse_args(argv)
     try:
-        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stdout.reconfigure(encoding="utf-8", newline="\n")   # Windows でも \r を付けない（bash の $(...) が \r を残す）
     except (AttributeError, ValueError):
         pass
     root = Path(a.root).resolve()
