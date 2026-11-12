@@ -7,6 +7,10 @@ cd "$(git rev-parse --show-toplevel)" || exit 0
 base=origin/main
 git fetch -q origin main 2>/dev/null || true
 fail=0
+ci_rc=0
+# ④（Linux のコンテナで全部の試験）が走る PC か。走るなら ② は ④ に全部含まれるので飛ばす（同じ検査を 2 回やらない）
+have_docker=0
+docker info >/dev/null 2>&1 && have_docker=1
 
 echo "pre-push ① 架构图（check_arch）"
 if ! python3 scripts/check_arch.py "$base"; then
@@ -22,7 +26,9 @@ for f in $(echo "$changed" | grep -E '^(scripts|harness)/[^/]+\.py$'); do
   for t in tests/test_"$n".py tests/test_"$n"_*.py; do [ -f "$t" ] && tests="$tests $t"; done
 done
 for t in $(echo "$changed" | grep -E '^tests/test_[^/]+\.py$'); do [ -f "$t" ] && tests="$tests $t"; done
-if [ -n "$tests" ]; then
+if [ -n "$tests" ] && [ "$have_docker" = 1 ]; then
+  echo "pre-push ② 飛ばす：④ がコンテナ（Linux）で同じ試験を全部流すため"
+elif [ -n "$tests" ]; then
   mods=$(echo $tests | tr ' ' '\n' | sort -u | sed 's#/#.#; s#\.py$##' | tr '\n' ' ')
   echo "pre-push ② 変えた所の試験：$mods"
   timeout 600 python3 -m unittest $mods 2>&1 | tail -n 5 || fail=1
@@ -40,13 +46,27 @@ if echo "$changed" | grep -qE '^docs/.*\.html$'; then
 fi
 
 # ④ CI と同じ検査（Linux のコンテナ・全部の試験）。赤い CI を店長に見せない（2026-11-07）。コンテナが動く PC だけ
-if [ "$fail" = 0 ] && docker info >/dev/null 2>&1; then
-  echo "pre-push ④ CI と同じ検査（harness/ci_local.sh）"
-  bash harness/ci_local.sh || fail=1
+# 同じ中身（tree の指紋）で ci_local.sh が 2 時間以内に全部緑なら流さない（係が push の前に流した分。印は ci_local.sh が残す）
+green_dir="${HF_CI_GREEN_DIR:-}"
+[ -z "$green_dir" ] && [ -d D:/Claude/hf/state ] && green_dir=D:/Claude/hf/state/ci_green
+if [ "$fail" = 0 ] && [ "$have_docker" = 1 ]; then
+  tree=$(git rev-parse 'HEAD^{tree}' 2>/dev/null)
+  stamp_at=""
+  [ -n "$green_dir" ] && [ -n "$tree" ] && [ -f "$green_dir/$tree" ] && stamp_at=$(head -n 1 "$green_dir/$tree" 2>/dev/null)
+  now=$(date +%s)
+  if echo "$stamp_at" | grep -qE '^[0-9]+$' && [ $((now - stamp_at)) -ge 0 ] && [ $((now - stamp_at)) -le "${HF_CI_GREEN_TTL:-7200}" ]; then
+    echo "pre-push ④ さっき緑だったので流さない（同じ中身 $tree、$((now - stamp_at)) 秒前）"
+  else
+    echo "pre-push ④ CI と同じ検査（harness/ci_local.sh）"
+    bash harness/ci_local.sh; ci_rc=$?
+    # 3 は「負荷の時間切れ」（本物の赤ではない）。丸めずにそのまま返して、係が待って再試行できるようにする
+    if [ "$ci_rc" = 3 ]; then fail=3; elif [ "$ci_rc" != 0 ]; then fail=1; fi
+  fi
 fi
 
 if [ "$fail" != 0 ]; then
   echo "✗ pre-push：上の赤を直してから push（急ぎは --no-verify、そのときは PR に理由を書く）"
+  [ "$fail" = 3 ] && { echo "（終了コード 3：負荷の時間切れ。ロックを持ったまま少し待って再試行）"; exit 3; }
   exit 1
 fi
 echo "✓ pre-push 緑"
