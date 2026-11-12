@@ -207,6 +207,12 @@
   "target": 720,
   "v": 3
  },
+ "https://ampmedia.jp/wp-content/uploads/2026/11/25847-266-53413d9ebc7d639256ecebe9932b19f6-1200x800-1.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
   "w": 506,
   "h": 253,
@@ -226,6 +232,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.3
+ },
+ "https://appmedia.jp/wp-content/uploads/2025/12/sub2_result-65.webp": {
+  "w": 600,
+  "h": 338,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.538,
+  "local": "pics/546e3d512b741485.webp",
+  "out": [
+   1280,
+   721
+  ],
+  "why": "看不清"
  },
  "https://appmedia.jp/wp-content/uploads/2026/10/143855_7yzfg.webp": {
   "w": 710,
@@ -251,6 +270,13 @@
   "target": 720,
   "v": 3
  },
+ "https://appmedia.jp/wp-content/uploads/2026/10/173706_th2s4.webp": {
+  "w": 740,
+  "h": 389,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.313
+ },
  "https://appmedia.jp/wp-content/uploads/2026/10/201853_imk7r.webp": {
   "w": 740,
   "h": 389,
@@ -270,7 +296,7 @@
   "target": 720,
   "v": 3
  },
- "https://assets-prd.ignimgs.com/2026/07/25/latverian-witches-thumb-1785004807890.jpg?width=1280&format=jpg&auto=webp&quality=80": {
+ "https://assets-prd.ignimgs.com/2024/07/23/deadpoolwolverinealt-blogroll-1721757176365.jpg?width=1280&format=jpg&auto=webp&quality=80": {
   "w": 1280,
   "h": 720,
   "target": 720,
@@ -484,12 +510,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
-  "w": 800,
-  "h": 369,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
@@ -652,6 +672,12 @@
  "https://charagoo.jp/wp-content/uploads/2025/08/D104748_01.jpg": {
   "w": 1000,
   "h": 1000,
+  "target": 720,
+  "v": 3
+ },
+ "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
+  "w": 668,
+  "h": 668,
   "target": 720,
   "v": 3
  },
@@ -1404,6 +1430,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h4Gyi.img": {
+  "w": 3840,
+  "h": 2160,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2har4k.img": {
   "w": 1280,
   "h": 1071,
@@ -1537,12 +1569,6 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/08/5633521_3.jpg": {
   "w": 800,
   "h": 533,
-  "target": 720,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/12/5638786_1.jpg": {
-  "w": 800,
-  "h": 1064,
   "target": 720,
   "v": 3
  },
@@ -1791,6 +1817,12 @@
   "why": "看不清"
  },
  "https://m.media-amazon.com/images/I/419UKeIQVTL._SL500_.jpg": {
+  "w": 500,
+  "h": 500,
+  "target": 720,
+  "v": 3
+ },
+ "https://m.media-amazon.com/images/I/41PtnfgMlaL._SL500_.jpg": {
   "w": 500,
   "h": 500,
   "target": 720,
@@ -2581,6 +2613,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://portal.auone.jp/media/thumbnails/2026/11/09/https___news_mynavi_jp_article_20261109-5240755__w600.webp": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
+  "v": 3
+ },
  "https://portal.auone.jp/media/thumbnails/2026/11/12/https___news_jp_i_1493525061302158094_w700.webp": {
   "w": 700,
   "h": 540,
@@ -2734,6 +2772,12 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/23d28f55bf106cc1a2255a89e8081f0a3fc7d2a0f9a47f986aaa40f20f252c55/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2F03d1b48c4241bc56b05f1525a54221a0.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/2dbe7f2bd1676e86801b0a51a5fa559c7b12c23469d6aa57fc4cbdbc162e9f0b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fftvn_sports_106%2Fbf49b2853a3d6a9d7f06fc76f5faf436.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3513,6 +3557,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.JG2RA4-I9_9_46jqkm9WTw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.JpCGa5gTOp-LoOapCFVdCg&pid=News&w=700": {
   "w": 560,
   "h": 700,
@@ -3571,6 +3621,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
+  "w": 700,
+  "h": 322,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
   "w": 700,
@@ -3705,12 +3761,6 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.vzuwnTUP7Yea-vtAreS8ww&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.x8HYFiQrxV6S50VqjFJK8A&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,

@@ -24,7 +24,8 @@
    "refs": [
     25,
     30,
-    27
+    27,
+    49
    ]
   },
   {
@@ -43,7 +44,18 @@
    "weight": "normal",
    "refs": [
     4,
-    33
+    33,
+    52,
+    45
+   ]
+  },
+  {
+   "headline": "GTA 6 hasn't launched yet. It's already made $1 billion",
+   "highlight": "$1 billion",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    51
    ]
   }
  ],
@@ -72,7 +84,10 @@
     25,
     21,
     22,
-    7
+    7,
+    47,
+    49,
+    54
    ],
    "event": {
     "date": "2026-11-13",
@@ -94,18 +109,24 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    37,
+    42,
+    43,
+    53
    ]
   },
   {
-   "headline": "'Avengers' and 'Dune' sequels will battle for holiday movie supremacy",
+   "headline": "New Avengers: Doomsday Detail All But Confirms Deadpool and Wolverine Are In the Film",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    23,
-    16,
-    27
+    33,
+    41,
+    45,
+    50,
+    46
    ]
   }
  ],
@@ -222,25 +243,25 @@
   }
  ],
  "_covered": {
-  "GTA 6": 36,
-  "漫威电影": 32,
+  "GTA 6": 56,
+  "漫威电影": 54,
   "三星手机": 27,
   "Astrae Oratio": 9,
   "周杰伦": 8,
   "dota2": 6,
-  "滑雪": 6,
+  "滑雪": 9,
   "哈利波特剧集": 5,
   "ILLIT": 4,
   "MMORPG 新作": 4,
   "The Mandalorian": 4,
-  "チェーンソーマン": 4,
+  "チェーンソーマン": 7,
   "A2O LITE": 3,
   "gelato pique": 3,
   "日本顶级网球赛事": 3,
   "FROM": 2,
   "猫用品": 2,
   "绝区零": 2,
-  "BLEACH Mirrors High": 1,
+  "BLEACH Mirrors High": 5,
   "あつ森": 1,
   "ぐでたま": 1,
   "星巴克马克杯": 1
@@ -313,6 +334,37 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "滋賀県の「グランスノー奥伊吹」、11月13日よりスキー場をオープン 「人工造雪機＋人工降雪機」追加導入で早期かつ長期の営業へ",
+   "highlight": "11月13日よりスキー場をオープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ],
+   "event": {
+    "date": "2026-11-13",
+    "label": "オープン"
+   }
+  },
+  {
+   "headline": "【星野リゾート】福島県・ネコマ マウンテンと山形県・蔵王温泉スキー場を結ぶ直行バス運行! 特別滞在パッケージも発売",
+   "highlight": "直行バス運行",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "2026-27シーズン・村内スキー場「白馬村民デー」のお知らせ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
@@ -430,6 +482,17 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "劇場版『チェンソーマン レゼ篇』 おおきなSOFVIMATES～てくてくポチタ～の入荷日・価格｜プライズ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    5,
+    7
    ]
   }
  ],
@@ -560,6 +623,24 @@
   }
  ],
  "BLEACH Mirrors High": [
+  {
+   "headline": "【BLEACH Mirrors High】配信日と事前登録情報｜最新情報｜ミラハイ",
+   "highlight": "",
+   "blurb": "配信日と事前登録情報をまとめた最新情報。",
+   "weight": "lead",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "【ミラハイ】ターゲットブレイクの攻略と報酬【BLEACHミラーズハイ】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
   {
    "headline": "【ミラハイ】戦術カスタムのやり方【BLEACHミラーズハイ】",
    "highlight": "",
