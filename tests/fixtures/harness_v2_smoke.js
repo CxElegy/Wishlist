@@ -22,6 +22,12 @@ const TASKS = {
     { id: 'T-0004', title: '毎回の点検', kind: 'kpi', complexity: 'light', scope: ['harness/board_kpi.py'], done_when: ['数字が出る'] },
   ],
   stuck: [{ id: 'T-0009', title: '直らない段', kind: 'fix', complexity: 'light', scope: ['scripts/y.py'], done_when: ['試験が通る'] }],
+  // 前の回で審査は通り、合併だけが負荷で落ちた段（resume.stage=ship）／合併が負荷で落ちる段／作る係が途中で返す段
+  resume: [{ id: 'T-0002', title: '続きの段', kind: 'fix', complexity: 'normal', scope: ['scripts/gate.py'], done_when: ['試験が通る'],
+    resume: { branch: 'harness/1112b-T-0002', worktree: 'D:/x/wt/T-0002', commit: 'ce57ac1', stage: 'ship', note: '負荷で test_wall_shapes が時間切れ' } }],
+  infra: [{ id: 'T-0005', title: '合併が負荷で落ちる段', kind: 'fix', complexity: 'normal', scope: ['scripts/z.py'], done_when: ['試験が通る'] }],
+  partial: [{ id: 'T-0007', title: '大きすぎる段', kind: 'visual', complexity: 'normal', scope: ['scripts/render.py'], done_when: ['空き 0'] }],
+  flip: [{ id: 'T-0008', title: '審査の文が毎回変わる段', kind: 'fix', complexity: 'normal', scope: ['scripts/w.py'], done_when: ['試験が通る'] }],
 }
 async function agent(prompt, opts) {
   const label = opts.label, [role, id, n] = label.split(':')
@@ -31,13 +37,19 @@ async function agent(prompt, opts) {
   if (role === 'verify') return { results: n === 'a' ? [] : (prompt.match(/^- (T-\d+)/gm) || []).map(m => ({ id: m.slice(2), live: true })) }
   if (role === 'plan') return { tasks: calls.filter(c => c.label.startsWith('plan:')).length === 1 ? TASKS[scenario] : [] }
   if (role === 'scout') return { map: 'scripts/x.py:1 — 入口' }
+  if (role === 'build' && scenario === 'partial') return Object.assign(built(id), { status: 'partial', summary: '点検だけ', resume_note: '次：render.py の side()' })
   if (role === 'build' || role === 'fix' || role === 'kpi') return built(id)
+  if (role === 'evalF' && scenario === 'flip') {   // 不合格の文は毎回違うが、落ちた条件と試験は同じ：台本は「同じ所」と見る
+    const k = calls.filter(c => c.label.startsWith('evalF:')).length
+    return { ok: false, problems: [`言い方 ${k}：条件 2 の試験が赤`], signature: `自由な文 ${k}`, failed_conditions: [2], failed_tests: ['test_w'] }
+  }
   if (role === 'evalF') return scenario === 'stuck' ? { ok: false, problems: ['条件 1：試験 test_y が赤'], signature: '1|test_y' } : { ok: true, problems: [], signature: '' }
   if (role === 'evalV') {   // 1 回目は「ok と言いながら番号に ✗」：台本が不合格にするはず
     const first = n === '0' && id === 'T-0001'
     return { ok: true, problems: first ? ['A1：写真の下に 40px の帯'] : [], signature: first ? 'A1@sec-a' : '', rules: [{ id: 'A1', pass: !first, shot: 's.png', why: '' }] }
   }
   if (role === 'diag') return { plan: '原因：…\n1. …' }
+  if (role === 'ship' && scenario === 'infra') return { status: 'failed', failed_class: 'infra', failed_tests: ['test_wall_shapes'], summary: 'Page.goto 30 秒切れ' }
   if (role === 'ship') return { status: 'merged', pr: `https://github.com/x/y/pull/${calls.length}`, sha: 'abc1234', summary: '合併' }
   if (role === 'announce' || role === 'learn') return { ok: true, summary: '' }
   throw new Error('知らない係 ' + label)

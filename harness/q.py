@@ -9,7 +9,11 @@ push はしない：取った印（claim）・途中の状態（attempts・parke
   python harness/q.py release T-0003
   python harness/q.py contract T-0003 --kind visual --complexity normal --scope a.py,b.css --done-when "…" [--done-when "…"]   計画の係が約束を決めて凍らせる
   python harness/q.py done T-0003 [--pr URL] [--file]          済み（--file：リポジトリのファイルも status=done にする。合併する枝の中で）
-  python harness/q.py park T-0003 --why "…" [--waiting]        止める（--waiting：店長の答え待ち）
+  python harness/q.py park T-0003 --why "…" [--waiting] [--cls infra|work|size|conflict] [--resume-branch B --resume-worktree W --resume-commit C --resume-stage build|fix|ship --resume-note "…"]
+                                                               止める（--waiting：店長の答え待ち）。--cls infra（PC の負荷・網の不安定で止めた）は次の回にいちばん先に出る（3 回まで）。
+                                                               --resume-*：枝・作業ツリー・コミット・どの段から続けるか（次の係は作り直さずにここから続ける）
+  python harness/q.py split T-0009 --from-json F.json          1 つの係で作りきれない段を、順番つきの小さい段に分ける（{"parts":[{title,kind,complexity,scope,done_when}…]}）。
+                                                               子は凍った約束で生まれ、前の子が済むまで出ない（after）。親は split、子が全部済めば済み
   python harness/q.py reopen T-0003
   python harness/q.py add --title … --why … [--quote …] [--kind fix] [--scope a,b] [--done-when …] [--priority 5] [--local]
   python harness/q.py contract T-0003 --from-json F.json      （おすすめ）UTF-8 の JSON ファイルから読む。シェルの path 変換を受けない
@@ -35,7 +39,10 @@ import sys
 import time
 
 KINDS = ("fix", "visual", "options", "kpi", "verify")   # verify はループが自分で足す「本番でまだ確かめていない」段
-STATUSES = ("open", "done", "parked", "waiting")
+STATUSES = ("open", "done", "parked", "waiting", "split")
+PARK_CLASSES = ("infra", "work", "size", "conflict")   # infra＝PC の負荷・網の不安定（中身は良い）／work＝審査・試験を通らない／size＝1 つの係で作りきれない／conflict＝main と競合
+INFRA_RETRIES = 3   # infra で止めた段を自動でやり直す回数（attempts がこれ未満のあいだ）
+RESUME_KEYS = ("branch", "worktree", "commit", "stage", "note")
 COMPLEXITY = ("light", "normal", "hard")   # 作る・直す係のモデルを決める：light=Haiku・normal=Sonnet・hard=Opus（計画の係が付ける）
 CLAIM_STALE_MIN = 60
 JST = dt.timezone(dt.timedelta(hours=9))
@@ -138,7 +145,7 @@ def load(root=None, state=None):
         # リポジトリで済みになった段は、手元の古い状態で開け直さない
         if t.get("status") == "done" and not t.get("recurring"):
             ov.pop("status", None)
-        t.update({k: v for k, v in ov.items() if k in ("status", "attempts", "notes", "pr", "last_done", "repaired_at")})
+        t.update({k: v for k, v in ov.items() if k in ("status", "attempts", "notes", "pr", "last_done", "repaired_at", "park_class", "resume")})
         t.setdefault("status", "open")
         t.setdefault("scope", [])
         t.setdefault("done_when", [])
@@ -229,23 +236,38 @@ def pick(tasks, n):
     return out
 
 
+def retry_infra(t):
+    """PC の負荷・網で止めた段（中身は良い）：次の回に自動でやり直す。"""
+    return t.get("status") == "parked" and t.get("park_class") == "infra" and t.get("attempts", 0) < INFRA_RETRIES
+
+
+def blocked(t, tasks):
+    """前の段（after）がまだ済んでいない。"""
+    return any((tasks.get(a) or {}).get("status") != "done" for a in t.get("after") or [])
+
+
 def ready(tasks, state=None, now=None, kind=None, owner=None):
-    """開いていて、ほかの係が取っていない段を優先の順に。kind を言わなければ verify は出さない（確かめの係だけが取る）。"""
+    """開いていて、ほかの係が取っていない段を優先の順に。kind を言わなければ verify は出さない（確かめの係だけが取る）。
+    infra で止めた段（中身は良い・PC の負荷で合併できなかった）は open と同じに出し、いちばん先に並べる。前の段（after）が済んでいない段は出さない。"""
     out = []
     for t in tasks.values():
-        if t["status"] != "open" or (kind and t.get("kind") != kind) or (not kind and t.get("kind") == "verify"):
+        if not (t["status"] == "open" or retry_infra(t)) or (kind and t.get("kind") != kind) or (not kind and t.get("kind") == "verify"):
+            continue
+        if blocked(t, tasks):
             continue
         c = claim_of(t["id"], state, now)
         if c and owner != "*" and c.get("owner") != owner:   # owner="*"：取られた段も含める（一覧・要約）
             continue
         out.append(t)
-    return sorted(out, key=lambda t: (t.get("priority", 999), t["id"]))
+    return sorted(out, key=lambda t: (0 if retry_infra(t) else 1, t.get("priority", 999), t["id"]))
 
 
 def brief(t, why=500):
     return {"id": t["id"], "title": t["title"], "kind": t.get("kind", "fix"), "complexity": t.get("complexity", "normal"), "priority": t.get("priority", 999),
             "scope": t.get("scope", []), "done_when": t.get("done_when", []), "frozen": bool(t.get("frozen")),
-            "attempts": t.get("attempts", 0), "why": (t.get("why") or "")[:why], "quote": t.get("quote", "")}
+            "attempts": t.get("attempts", 0), "why": (t.get("why") or "")[:why], "quote": t.get("quote", ""),
+            "status": t.get("status", "open"), "park_class": t.get("park_class", ""), "resume": t.get("resume") or {},
+            "after": t.get("after") or [], "parent": t.get("parent", "")}
 
 
 # ---------- 足す ----------
@@ -312,6 +334,36 @@ def set_contract(tid, kind=None, scope=None, done_when=None, root=None, state=No
     return t
 
 
+def split(tid, parts, root=None, state=None):
+    """1 つの係で作りきれない段を、順番つきの子に分ける（計画の係）。子は凍った約束で手元に生まれ、前の子の after を持つ。
+    親は status=split（子が全部済めば done が親も済みにする）。親の枝・作業ツリー（resume）は最初の子が引き継ぐ。"""
+    state = state or state_dir()
+    t = load(root, state).get(tid)
+    if not t:
+        raise KeyError(tid)
+    if not parts or len(parts) < 2:
+        raise ValueError("分けるなら 2 つ以上（parts）")
+    for i, p in enumerate(parts):
+        if not p.get("title") or not p.get("done_when"):
+            raise ValueError(f"parts[{i}] に title と done_when が要る")
+    ids, prev = [], None
+    for i, p in enumerate(parts):
+        dw = p["done_when"] if isinstance(p["done_when"], list) else [p["done_when"]]
+        extra = {"parent": tid, "after": [prev] if prev else [], "frozen": True}
+        nid, new = add(p["title"], why=p.get("why") or t.get("why", ""), quote=t.get("quote", ""), kind=p.get("kind") or t.get("kind", "fix"),
+                       scope=p.get("scope") or t.get("scope", []), done_when=dw, priority=t.get("priority", 50),
+                       source=f"split:{tid}", root=root, state=state, local=True, extra=extra, complexity=p.get("complexity") or "normal")
+        if not new:
+            raise ValueError(f"同じ題の段がもうある：{nid}（題を変える）")
+        if i == 0 and t.get("resume"):
+            overlay(nid, state, resume=t["resume"])
+        ids.append(nid)
+        prev = nid
+    overlay(tid, state, status="split", note=f"分けた：{' → '.join(ids)}")
+    release(tid, state)
+    return ids
+
+
 def repair(tid, fields, reason, root=None, state=None, now=None):
     """凍った約束を 1 段だけ書き直す（文字化け・path 変換の事故の直し）。主の会話だけが使う。notes に repaired_at と理由。
     約束の置き場に直す：手元の写し（tasks_local）、リポジトリのファイルがもう凍っていればそれも。"""
@@ -358,18 +410,32 @@ def done(tid, pr="", file=False, root=None, state=None, now=None):
     if t.get("recurring"):   # 毎回やる段（新規ユーザーの KPI）：済みにせず、次の回にまた出す
         overlay(tid, state, status="open", last_done=now_iso(now), pr=pr, note=f"1 回終わり {pr}".strip())
     else:
-        overlay(tid, state, status="done", pr=pr, note=f"済み {pr}".strip())
+        overlay(tid, state, status="done", pr=pr, note=f"済み {pr}".strip(), park_class="", resume={})
     release(tid, state)
+    par = t.get("parent")
+    if par:   # 分けた段：子が全部済めば親も済み
+        all_t = load(root, state)
+        kids = [k for k in all_t.values() if k.get("parent") == par]
+        if kids and all(k["status"] == "done" for k in kids) and (all_t.get(par) or {}).get("status") == "split":
+            overlay(par, state, status="done", note=f"子が全部済んだ（{', '.join(sorted(k['id'] for k in kids))}）")
     return t
 
 
-def park(tid, why, waiting=False, root=None, state=None):
+def park(tid, why, waiting=False, root=None, state=None, cls=None, resume=None):
+    """止める。cls（PARK_CLASSES）と resume（枝・作業ツリー・コミット・どの段から）を残すと、次の係は作り直さずにそこから続ける。"""
     state = state or state_dir()
     t = load(root, state).get(tid)
     if not t:
         raise KeyError(tid)
+    if cls and cls not in PARK_CLASSES:
+        raise ValueError(f"--cls は {PARK_CLASSES} のどれか")
+    kv = {"park_class": cls or ""}
+    res = {k: v for k, v in (resume or {}).items() if k in RESUME_KEYS and v}
+    if res:
+        check_mangled(**{k: v for k, v in res.items() if k != "note"})
+        kv["resume"] = {**(t.get("resume") or {}), **res}
     overlay(tid, state, status="waiting" if waiting else "parked", attempts=t.get("attempts", 0) + 1,
-            note=("店長待ち：" if waiting else "止めた：") + why)
+            note=("店長待ち：" if waiting else "止めた" + (f"［{cls}］" if cls else "") + "：") + why, **kv)
     release(tid, state)
 
 
@@ -473,6 +539,10 @@ def main(argv=None):
     s = sub.add_parser("repair"); s.add_argument("id"); s.add_argument("--from-json", required=True); s.add_argument("--reason", required=True)
     s = sub.add_parser("done"); s.add_argument("id"); s.add_argument("--pr", default=""); s.add_argument("--file", action="store_true")
     s = sub.add_parser("park"); s.add_argument("id"); s.add_argument("--why", required=True); s.add_argument("--waiting", action="store_true")
+    s.add_argument("--cls", choices=PARK_CLASSES)
+    for k in RESUME_KEYS:
+        s.add_argument(f"--resume-{k}", default="")
+    s = sub.add_parser("split"); s.add_argument("id"); s.add_argument("--from-json", required=True)
     s = sub.add_parser("reopen"); s.add_argument("id")
     s = sub.add_parser("add"); s.add_argument("--title", default=""); s.add_argument("--why", default=""); s.add_argument("--quote", default="")
     s.add_argument("--kind", default="fix"); s.add_argument("--scope", default=""); s.add_argument("--done-when", action="append", default=[])
@@ -481,6 +551,11 @@ def main(argv=None):
     s = sub.add_parser("show"); s.add_argument("id")
     s = sub.add_parser("import-backlog"); s.add_argument("file"); s.add_argument("--limit", type=int)
     a = ap.parse_args(argv)
+    for f in (sys.stdout, sys.stderr):
+        try:
+            f.reconfigure(errors="replace")   # cp932 の画面でも ✓ ✗ で落ちない
+        except (AttributeError, ValueError):
+            pass
     try:
         return run(a)
     except (KeyError, ValueError) as e:
@@ -519,8 +594,11 @@ def run(a):
         done(a.id, a.pr, a.file)
         print(f"✓ 済み：{a.id}{'（ファイル）' if a.file else ''}")
     elif a.cmd == "park":
-        park(a.id, a.why, a.waiting)
+        park(a.id, a.why, a.waiting, cls=a.cls, resume={k: getattr(a, f"resume_{k}") for k in RESUME_KEYS})
         print(f"✓ {'店長待ち' if a.waiting else '止めた'}：{a.id}")
+    elif a.cmd == "split":
+        j = read_json_arg(a.from_json)
+        print(json.dumps({"parent": a.id, "parts": split(a.id, j.get("parts") or [])}, ensure_ascii=False))
     elif a.cmd == "reopen":
         if a.id not in load():
             raise KeyError(a.id)

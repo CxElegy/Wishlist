@@ -8,7 +8,7 @@
 | 困ったこと | v2 の答え |
 |---|---|
 | 係が 7 時間止まった | 係は小さい仕事だけ（作る係は手元のコミットまで）。全部の係が心拍（`harness/hb.py beat`）を書き、外の見張り（`harness/watchdog.ps1`）が 20 分 心拍のない係を `alerts.jsonl` に書く |
-| CI と CPU の取り合い | 同時に作るのは 2 段まで。CI のコンテナ・ブラウザーは鍵（`harness/lock.py ci｜browser`）で 1 つずつ |
+| CI と CPU の取り合い | 同時に作るのは 2 段まで。CI のコンテナ・ブラウザーは鍵（`harness/lock.py ci｜browser`）で 1 つずつ。**`ci_local.sh` は自分で ci の鍵を取り**、鍵を持たないほかのコンテナが終わるまで待つ（pre-push・ほかの会話から流しても並ばない） |
 | 主の会話が手で直した | 直しは 2 回まで → 見立ての係（強いモデル・手順だけ書く）→ もう 1 回 → だめなら止めて（parked）次の段へ。ループ全体は止めない |
 | 店長が見た目を後から直させた | 画面の段は、1333×677 と 390×844 の絵を撮り、審美基準の番号（A1〜I2）ごとに ○✗。1 つでも ✗ なら合併しない |
 | BACKLOG.md が 551KB | 1 段 1 ファイル（`harness/tasks/T-NNNN.json`）。係は `q.py next` で次の段だけ受け取る |
@@ -39,10 +39,10 @@
 ```
 Intake   受付（店長の言葉 → 決まり＋段＋返事）｜同時に：前の回の「本番でまだ」（verify の段）を確かめる
 Plan     q.py next → 約束を凍らせる → 範囲が重ならない段を max 個（台本がもう一度重なりを落とす）
-Build    2 段ずつ：下調べ → 作る（kind=kpi は新規ユーザーの点検）→ 手元のコミット
+Build    同時に 2 段（1 段終われば次が入る）：下調べ → 作る（kind=kpi は新規ユーザーの点検）→ 手元のコミット。続きの段（resume）は前の枝・作業ツリーから
 Evaluate 機能 →（画面の段は）見た目。✗ が 1 つでもあれば不合格
-Fix      直し 2 回まで／同じ所で落ちた・新しいコミットがない → 見立て 1 回 → 直し → だめなら止める
-Ship     1 つずつ（受付の枝が先）：rebase・記録（段を済みに・PROGRESS.md 1 行・INDEX.md）・CI・push・PR・検査・合併
+Fix      直し 2 回まで／同じ所（不合格の条件の番号＋落ちた試験の名前が同じ）・新しいコミットがない → 見立て 1 回 → 直し → だめなら止める。1 段の係は 9 まで（args.maxAgents）
+Ship     1 つずつ（受付の枝が先、あとは審査を通った順。ほかの段を待たない）：rebase・記録・CI（終了コード 3＝負荷の不安定だけ → 落ちた試験だけ流し直し → まだなら GitHub の検査を関所に）・push・PR・`gh pr checks --watch && gh pr merge --squash`
 Verify   本番に出たか（10 分まで）。出ていなければ verify の段を残して先へ。案のページは出てから Discord（ask_remind.yml cmd=say）
 Learn    q.py done／park・結果 1 行・INDEX・summary.json・合併した段の作業ツリーを消す
 ```
@@ -58,12 +58,34 @@ Learn    q.py done／park・結果 1 行・INDEX・summary.json・合併した�
 | `harness/tasks/T-NNNN.json` | 段（約束：title・why・quote・kind・complexity・scope・done_when。凍ったら変えない）。`INDEX.md` は `q.py index` が作る |
 | `harness/q.py` | 列：`next`・`claim`・`release`・`contract`・`done`・`park`・`reopen`・`add`・`repair`・`index`・`show`（push しない）。`contract`／`add` は `--from-json <UTF-8 の JSON>` が勧め。Git Bash の path 変換で壊れた文字（`C:`+バックスラッシュ+`Program Files`+バックスラッシュ+`Git` や `;C:` など）は書く前に断る。係の命令は全部 `env MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*' …` で呼ぶ。凍った約束の書き直しは主の会話だけが `repair <id> --from-json F --reason …` |
 | `harness/hb.py` | 心拍 `beat`／`end`・`stale --minutes N`・`summary`・`result`・`choice`・`inbox`／`reply`（AgentBoard） |
-| `harness/lock.py` | 鍵（`ci`・`browser`）：空くまで待って命令を流す |
+| `harness/lock.py` | 鍵（`ci`・`browser`）：空くまで待って命令を流す。`--timeout <秒>`・`status`。Windows では `bash`・`timeout` を Git for Windows のものに読み替える（System32 の timeout.exe・WSL の bash が動いた） |
+| `harness/run_tests.py` | 試験。落ちたのが Playwright の起動・goto の時間切れ・切断・つながりの失敗だけなら終了コード 3（基盤の不安定）。`ci_local.sh <名前 …>` で落ちた試験だけを同じコンテナで |
+| `harness/cost.py` | 回のあと主の会話が流す：`python harness/cost.py <ワークフローの記録のフォルダ> --run <run>` → 段ごとの係の数・重さ（input＋output＋cache_creation）・分を `state/costs.jsonl` に。summary.json の `cost` に「合併できた段 1 つあたり」 |
 | `harness/net.sh` | 網の命令のやり直し（5 回・間をあける） |
 | `harness/shots.py`・`shots.sh` | 1333×677・390×844 の絵（`shots.sh` はコミットした中身でページを作ってコンテナの中で撮る＋自己点検の数） |
 | `harness/watchdog.ps1` | 外の見張り（5 分ごと。**登録は店長が**：ファイルの頭の `schtasks` の 1 行） |
 | `D:/Claude/hf/state/`（手元・git の外） | `claims/`（取った印）・`q/`（段の途中の状態）・`tasks_local/`（まだ合併していない段・凍らせた約束）・`hb/`（心拍）・`locks/`・`results.jsonl`・`alerts.jsonl`・`pending_choices.json`・`INDEX.md`・**`summary.json`** |
 | `D:/Claude/hf/v2r/wt/<段>` | 段ごとの作業ツリー（枝 `harness/<run>-<段>`）。止めた段のものは残る（主の会話が見てから消す） |
+
+## 止めた段の続き・分けた段（2026-11-12 run 1112b のあと）
+
+最初の本番（run 1112b：max 4・1 周）は 17 係・47 分・重さ 155 万（cache_read を入れると 2950 万）で合併 0 件だった。重さの内訳（`harness/cost.py`）：
+T-0002 が 11 係・85 万（55%。審査 3 回＋直し 3 回＋見立て＋合併 22 万）、T-0009 が 2 係・29 万（作る係 1 人で 26 分）、共通（受付・確かめ・計画・記録）41 万。
+
+| 何が起きた | 直したこと |
+|---|---|
+| 合併の係の CI（915 秒）がほかの会話の `ci_local.sh` と同時に走り、test_wall_shapes が Page.goto 30 秒切れ。手元の流し直しも同じ負荷の中で赤 → push しない | `ci_local.sh` が自分で鍵を取り、鍵なしのコンテナが終わるまで待つ。`run_tests.py` が負荷の不安定を分けて終了コード 3 → 合併の係は落ちた試験だけを静かになってから流し直し、まだなら push して GitHub の検査を関所に（赤・待ちでは合併しない） |
+| `lock.py ci -- timeout 1500 bash …` が Windows で System32 の timeout.exe と WSL の bash を動かした・hb.py が cp932 で ♥ を書けず落ちた | `lock.py` が Git for Windows のものに読み替える・`--timeout`。q.py・hb.py・lock.py は画面の文字コードで落ちない |
+| 合併の係が CI の終わりを 20 回以上見に行った（重さ 22 万・使い回し 460 万） | 長い命令は run_in_background で流して終わりの知らせを 1 回待つ（全部の係の決まり） |
+| T-0002：前からある Windows だけの赤（test_free_tier_gate）と、範囲の外の同じ壊れ方を審査が不合格にし、直し 3 回＋見立て、4 → 15 ファイル | 審査は落ちた試験を main（`wt/base`）でも流し、main でも落ちるものは `preexisting`（不合格にしない）。この段の規則と関係ない壊れは `q.py add` で新しい段に。「同じ所で落ちた」は条件の番号＋試験の名前で比べる（自由な文の signature は毎回変わった）。約束の試験は `run_tests.py`（venv に pytest は無い） |
+| T-0009：点検を足す＋render.py の組み方＋前後の絵＋試験を 1 係に。作る係は写真 4000 枚超の全ページを 1 回 5 分で測り続けて時間切れ・「failed」で返り続きの手がかりが段に残らない | 計画が大きさを見積もり `q.py split` で順番つきの子に（条件 4 つ以上・点検＋実装・FIT_JS を変える、など）。作る係は `partial`＋`resume_note` で返せる。測るのは test_wall_shapes と同じ小さいページ |
+| T-0002 は審査を通ってから 12 分、同じ組の T-0009 を待った | 合併は審査を通った順に 1 つずつ（組の待ち合わせをやめた） |
+| 計画が取った T-0006 を台本が外し、印が 60 分残った | 記録の係が外した段の印を返す（`q.py release`） |
+
+止めるとき（`q.py park`）は `--cls infra｜work｜size｜conflict` と `--resume-branch/-worktree/-commit/-stage/-note` を残す。
+- `infra`（中身は良い・負荷や網で合併できなかった）：次の回の `q.py next` でいちばん先に出る（3 回まで）。`resume.stage=ship` なら台本は作る・審査をとばして合併から。
+- `work`・`size`・`conflict`：主の会話が見て `q.py reopen` か `q.py split`。開け直しても resume は残り、作る係は前の枝・作業ツリーから続ける（`-B` で作り直さない）。
+- 作業ツリーは回の名前つき（`${scratch}/wt/<run>-<段>`）。前の回で止めた段の作業ツリーとぶつからない。
 
 ## 主の会話の起こし方
 
@@ -80,11 +102,14 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 | `models` | 上の表 | 役ごと：`plan scout verify learn kpi intake evalF ship evalV diag`、重さごと：`light normal hard`（`build` を言えば重さに関係なくそれ） |
 | `model` | なし | 試し用：全部の役をこのモデルに。`fable` は受け付けない（ふだんは使わない） |
 | `max` / `width` / `cycles` | 4 / 2 / 1 | 1 周の段の数・同時に作る数（2 まで）・何周するか |
+| `maxAgents` | 9 | 1 つの段に使う係の上限（下調べ〜合併）。越えたら枝とコミットを残して止める（次の回に続き） |
 | `intake` `scout` `kpi`（`newuser`） `options` `ship` | 全部 true | false で止める。`ship: false` は合併しない試運転（枝は手元に残り、段は止めた扱い） |
 | `repo` `scratch` `state` `board` `inbox` `python` `site` | PC の決まった場所 | 変えるのは試験のときだけ |
 
 起こす前に：この PR が main に入っていること（係は origin/main の `harness/q.py` を使う）。止まったら同じ args と `resumeFromRunId` で続きから。
 最初の 1 回は `{"run": "…", "max": 1, "kpi": false, "ship": false}` で 1 段だけ通して、`summary.json` と作業ツリーを見るのがおすすめ。
+回のあとは `python harness/cost.py <ワークフローの記録のフォルダ（journal.jsonl のある所）> --run <run>` で重さを記録する（台本からはトークンが見えない）。
+**ほかの会話が Playwright・CI を流している間は回さない**（`docker ps` に wishlist-ci が無く、`python harness/lock.py status` が空のとき）。
 
 ## ダッシュボード（AgentBoard）が読むもの
 
@@ -94,6 +119,7 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 - `queue`：open・claimed・waiting・parked・done の数／`next`：次の 5 段／`waiting`・`parked`：理由つき
 - `results`：最近の 10 件（段・結果・PR）／`choices`：店長に選んでもらっている案のページ／`alerts`：見張りの最近の 5 件
 - `kpi`：`harness/kpi/latest.json` のうち目標を越えた段
+- `cost`：最後の回の段ごとの係の数・重さ・分と、合併できた段 1 つあたりの重さ（`harness/cost.py` が書いた `costs.jsonl`）
 
 店長の書き込みは `D:/Claude/AgentBoard/inbox.jsonl`（`{t, text}`）、返事は `outbox.jsonl`（`{t, re, text}`）。
 

@@ -16,6 +16,19 @@ import time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TIMEOUT = 900
+INFRA = 3   # 終了コード：落ちたのは「負荷で落ちる基盤の不安定」だけ（試験の中身の赤ではない）
+# 2026-11-12 run 1112b：PC で 3〜4 の係が Playwright・CI を同時に流し、test_wall_shapes が Page.goto 30 秒切れ（単独の流し直しも同じ負荷の中で赤）。
+# ブラウザの起動・ページを開く・つながる所の時間切れ／切断は、試験の中身ではなく PC の負荷。合併の係はこれを分けて、静かになってから流し直す（HARNESS_V2.md）
+INFRA_RE = re.compile(r"(?:TimeoutError: (?:Page\.goto|BrowserType\.launch|Browser\.new_page|BrowserContext\.new_page|Page\.wait_for_load_state)|"
+                      r"Target (?:page, context or browser|closed)|Browser has been closed|browser has disconnected|net::ERR_|"
+                      r"ConnectionResetError|Connection refused|（\d+ 秒で打ち切り）)")
+FAIL_RE = re.compile(r"^(?:FAIL|ERROR): .*?(?=^={70}|^-{70}\nRan )", re.M | re.S)
+
+
+def is_infra(out):
+    """落ちた試験の出力が全部、基盤の不安定（上の INFRA_RE）によるものか。assert の赤が 1 つでもあれば False。"""
+    blocks = FAIL_RE.findall(out) or [out[-3000:]]
+    return all(bool(INFRA_RE.search(b)) and "AssertionError" not in b for b in blocks)
 
 
 def one(name):
@@ -47,15 +60,20 @@ def main(argv):
     ran = sum(int(m) for r in res for m in re.findall(r"^Ran (\d+) test", r[2], re.M))
     for name, _, out, _ in bad:
         print(f"\n===== {name} =====")
-        blocks = re.findall(r"^(?:FAIL|ERROR): .*?(?=^={70}|^-{70}\nRan )", out, re.M | re.S)
+        blocks = FAIL_RE.findall(out)
         print("\n".join(b[:1500] for b in blocks) or out[-1500:])
     slow = sorted(res, key=lambda r: -r[3])[:3]
     print(f"{len(names)} ファイル・{ran} 試験・{time.time() - t0:.0f} 秒・落ちた {len(bad)} ファイル"
           f"（遅い順：{'、'.join(f'{r[0]} {r[3]:.0f}秒' for r in slow)}）")
     if flaky:
         print("不安定（並列で落ち、単独で通った）：" + " ".join(flaky))
+    infra = [r[0] for r in bad if is_infra(r[2])]
     if bad:
         print("落ちた：" + " ".join(r[0] for r in bad))
+    if infra:
+        print("基盤の不安定（負荷：ブラウザ・つながりの時間切れ）：" + " ".join(infra))
+    if bad and len(infra) == len(bad):
+        return INFRA
     return 1 if bad else 0
 
 
