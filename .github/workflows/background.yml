@@ -88,6 +88,11 @@ jobs:
         continue-on-error: true
         run: python scripts/lib_queue.py sync
 
+      # 版面のデザインを規則で足す：motif・theme のない版面だけ（AI なし・足すだけ・ログは件数だけ。2026-11-12）
+      - name: 版面のデザイン（規則だけ）
+        continue-on-error: true
+        run: python scripts/library_design.py --auto
+
       - name: 判断（有没有活、要不要 AI）
         id: gate
         run: python scripts/gate.py check
