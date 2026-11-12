@@ -60,12 +60,6 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261111ac/533/w480h853/20261111/f9fe-f19a2faba0e6ec781f3ce74ff03f010b.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
  "http://n.sinaimg.cn/sinakd20261112ac/278/w480h598/20261112/9f83-d15bc360c54c8c54e8bc07537072a9f2.jpg": {
   "w": 480,
   "h": 598,
@@ -152,6 +146,19 @@
   "out": [
    640,
    1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/6dc9747egy1iiykkkgid2j24eo2xs7wo.jpg": {
+  "w": 2000,
+  "h": 1333,
+  "target": 720,
+  "v": 3,
+  "local": "pics/3fb79e8e20d7e3f5.webp",
+  "out": [
+   1280,
+   853
   ],
   "why": "防盗链",
   "ref": true
@@ -1076,7 +1083,7 @@
   "target": 720,
   "v": 3
  },
- "https://hawk.live/storage/images/posts/satanic-named-three-dota-2-heroes-for-easy-mmr-gain-23688.jpg": {
+ "https://hawk.live/storage/images/posts/noone-spoke-patch-741-24454.jpg": {
   "w": 1200,
   "h": 628,
   "target": 720,
@@ -1629,6 +1636,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925610301426948504.jpg": {
+  "w": 700,
+  "h": 1050,
+  "target": 720,
+  "v": 3
+ },
  "https://img.famtimes.co.kr/famtimes/2026/11/cc00912f-cb96-4f70-a341-e0934c6a118f-4862d9c5-og16x9.webp": {
   "w": 1200,
   "h": 675,
@@ -1923,18 +1936,6 @@
   "why": "看不清"
  },
  "https://m.media-amazon.com/images/I/419UKeIQVTL._SL500_.jpg": {
-  "w": 500,
-  "h": 500,
-  "target": 720,
-  "v": 3
- },
- "https://m.media-amazon.com/images/I/41PtnfgMlaL._SL500_.jpg": {
-  "w": 500,
-  "h": 500,
-  "target": 720,
-  "v": 3
- },
- "https://m.media-amazon.com/images/I/41sVaqScGAL._SL500_.jpg": {
   "w": 500,
   "h": 500,
   "target": 720,
@@ -2514,6 +2515,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://newsdig.ismcdn.jp/mwimgs/5/b/1200w/img_5b27e269bf927978afa950a713f210362377754.jpg": {
   "w": 1200,
   "h": 674,
@@ -2772,6 +2779,12 @@
   ],
   "why": "看不清"
  },
+ "https://q0.itc.cn/q_70/images03/20261112/5c27dd9c44fe40d49f3c453c9fdd0c1c.jpeg": {
+  "w": 682,
+  "h": 958,
+  "target": 1280,
+  "v": 3
+ },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -2866,12 +2879,6 @@
   "w": 1200,
   "h": 803,
   "target": 1280,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/f1be0b7f732e1bdcefe899d04ea656428216755b72fa9f4548711282a270b2d4/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fwtvo_rockford_articles_137%2Fa1e36d13690331e8d765a384273f449a.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
   "v": 3
  },
  "https://sammyguru.com/wp-content/uploads/2026/04/Galaxy-S26-SammyGuru-1-1024x576.jpg": {
@@ -3419,6 +3426,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://vodjzhs.duoduocdn.com/dc42d44avodtranscq1251542705/b6bfa29a5001834827900006268/coverBySnapshot/coverBySnapshot_10_0.jpg": {
+  "w": 856,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/11/1791684263958_galaxy-s27-pro-lo-dien-voi-cu-soc-camera-69.png": {
   "w": 968,
   "h": 518,
@@ -3648,7 +3661,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.8d60vugvKA32ORc9iw4ejg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.7xZBDBe-JvDuXUKWzmMQXQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3670,12 +3683,6 @@
  "https://www.bing.com/th?id=ONUT.A4oKhTmCQyDL-V9gHR12Ew&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Ennz4NzU-OFd8Ie1pbar2g&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3710,6 +3717,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.JG2RA4-I9_9_46jqkm9WTw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.JpCGa5gTOp-LoOapCFVdCg&pid=News&w=700": {
   "w": 560,
@@ -3846,9 +3859,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.fzgywlUyd_TW-btfiCz19A&pid=News&w=700": {
+ "https://www.bing.com/th?id=ONUT.dmDVd6FuKl6McU40vrzJDg&pid=News&w=1200": {
   "w": 700,
-  "h": 366,
+  "h": 462,
   "target": 720,
   "v": 3
  },
@@ -3928,12 +3941,6 @@
    669
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.xS3YToic-zMBNAecf0m2hA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/03/bnt202611030081.jpg": {
   "w": 2000,
