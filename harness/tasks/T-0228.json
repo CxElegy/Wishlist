@@ -1,0 +1,31 @@
+{
+ "id": "T-0228",
+ "title": "小元素の顔 32px（1/2）：届かない絵を数える関数と、選ぶ段で顔の届く絵を先にする規則",
+ "why": "#1008 のあとも 131 枚中 35 枚が基準未満。表示では直せないので選ぶ段で顔の大きい絵に替える",
+ "quote": "这还是有点小 看不清人脸",
+ "kind": "fix",
+ "complexity": "normal",
+ "priority": 3,
+ "scope": [
+  "scripts/emblem_face.py",
+  "scripts/emblem.py",
+  "harness/emb_check.py",
+  "tests/test_emblem_face.py",
+  "tests/test_emb_check.py",
+  "scripts/processes.py"
+ ],
+ "done_when": [
+  "scripts/emblem_face.py に「規則どおりに表示してもスマホ（390px）の顔が 32px に届かない」を返す関数が 1 つあり、harness/emb_check.py の E31 の情報の行（届かない数）がその関数で数えて枚数と名前を出す（表示の式 shown・CSS・人物の縦横比は変えない）",
+  "人物の絵を選ぶ段（scripts/emblem.py の候補の順）で、届く候補があれば届かない候補より先に選ぶ。tests/test_emblem_face.py に 3 つの型（幅の広い構え・頭上に武器や帽子・頭の大きいキャラ）の例を足し、harness/run_tests.py test_emblem_face test_emb_check test_design が通る",
+  "scripts/check_arch.py origin/main が通る（scripts を変えたら同じコミットで scripts/processes.py）"
+ ],
+ "status": "done",
+ "attempts": 0,
+ "notes": [],
+ "frozen": true,
+ "source": "split:T-0226",
+ "created": "2026-11-12",
+ "parent": "T-0226",
+ "after": [],
+ "pr": ""
+}
