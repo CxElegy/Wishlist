@@ -29,7 +29,7 @@ def is_logic(path):
 
 
 def changed_files(base):
-    out = subprocess.run(["git", "diff", "--name-only", f"{base}...HEAD"], capture_output=True, text=True, check=True)
+    out = subprocess.run(["git", "diff", "--name-only", f"{base}...HEAD"], capture_output=True, text=True, encoding="utf-8", errors="replace", check=True)
     return [p for p in out.stdout.splitlines() if p]
 
 
@@ -43,7 +43,7 @@ def place_info(base):
     """(ファイル → それを files に持つプロセスの id の集まり, 絵が書き換わったプロセスの id の集まり)。
     プロセスが「書き換わった」= 自分の定義、または uses の部品の定義が base と違う。読めなければ None（この検査は飛ばす）。"""
     try:
-        old = subprocess.run(["git", "show", f"{base}:{ARCH_FILE}"], capture_output=True, text=True, check=True).stdout
+        old = subprocess.run(["git", "show", f"{base}:{ARCH_FILE}"], capture_output=True, text=True, encoding="utf-8", errors="replace", check=True).stdout
         with open(ARCH_FILE, encoding="utf-8") as f:
             new = f.read()
         (op, oc), (np, nc) = _load(old), _load(new)

@@ -61,7 +61,7 @@ def fill_max_problems(root=ROOT):
 def sh(name, cmd, timeout, soft=()):
     """(名前, ok, 末尾の 1 行)。時間切れは ✗。終了コードが soft にあれば ok=None（測れず＝✗ にも ✓ にも数えない）。"""
     try:
-        r = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, timeout=timeout)
+        r = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=timeout)
         out = (r.stdout + r.stderr).strip().splitlines()
         return name, None if r.returncode in soft else r.returncode == 0, out[-1] if out else ""
     except subprocess.TimeoutExpired:
