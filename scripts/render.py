@@ -2070,7 +2070,7 @@ META_JS = """
       if (d) { w += d; n++; }
     });
     const room = r.clientWidth - parseFloat(cs.paddingLeft) - (parseFloat(cs.getPropertyValue('--vtw')) || 70);
-    return w + (parseFloat(cs.columnGap) || 0) * Math.max(0, n - 1) > room + 0.5;
+    return w + (parseFloat(cs.columnGap) || 0) * Math.max(0, n - 1) > room - 1;   // ぎりぎり（端数の 1px 以内）は下ろす側に：flex は端数でも折り返す（CI の字体で 159px のとき NEW と日付が割れた）
   };
   const fit = list => {
     const down = list.map(need);
