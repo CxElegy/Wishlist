@@ -169,6 +169,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://0.soompi.io/wp-content/uploads/2026/11/12080334/IVE-RIIZE-ILLIT-A2O-LITE.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://9to5google.com/wp-content/uploads/sites/4/2026/02/Galaxy-S26-camera-1.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
   "h": 628,
@@ -2691,12 +2697,6 @@
   ],
   "why": "看不清"
  },
- "https://q1.itc.cn/q_70/images03/20261111/e6206cc802254c8eac76477efb46308b.jpeg": {
-  "w": 4892,
-  "h": 2937,
-  "target": 720,
-  "v": 3
- },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -2706,6 +2706,12 @@
  "https://q6.itc.cn/images01/20261108/3f7543d7176f4b9f8045718ab6942f18.jpeg": {
   "w": 553,
   "h": 312,
+  "target": 720,
+  "v": 3
+ },
+ "https://q9.itc.cn/q_70/images03/20261111/f83b2ca6e6ab4b0898671901bc1322db.jpeg": {
+  "w": 6488,
+  "h": 4000,
   "target": 720,
   "v": 3
  },
@@ -2991,6 +2997,13 @@
   "h": 1220,
   "target": 1280,
   "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/5/c/b/f/5cbf6250365dbd8527301b0ff81ca3f0_1.jpg": {
+  "w": 640,
+  "h": 469,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.298
  },
  "https://static.sanyonews.jp/image/article/size1/6/1/6/8/616808d3f5599c56ed25f11113ea1818_1.jpg": {
   "w": 640,

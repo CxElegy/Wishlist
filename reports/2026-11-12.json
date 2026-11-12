@@ -1,6 +1,6 @@
 {
  "date": "2026-11-12",
- "edit_sig": "ebca42b52aa5",
+ "edit_sig": "614f5ec2b52c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -961,8 +961,8 @@
      "date": "2026-11-11",
      "headline": "太治愈了！江门把周杰伦的《稻香》搬进现实",
      "highlight": "",
-     "image": "https://q1.itc.cn/q_70/images03/20261111/e6206cc802254c8eac76477efb46308b.jpeg",
-     "image_via": "JSON-LD",
+     "image": "https://q9.itc.cn/q_70/images03/20261111/f83b2ca6e6ab4b0898671901bc1322db.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1100244880_100116740?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }
@@ -1070,29 +1070,6 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-05",
-     "n": 2,
-     "source": "톱스타뉴스",
-     "title": "A2O LITE, 아이돌차트 10월 4주차 아차랭킹 1위 기록",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9BeTRrc25KT2V5MTM0UlB0ekxKQVFZbDYtbVdHS3B4RFhTZWNSSkhfNFBaLTlObmNMd3N4R0Z5bXAyMF9ud1hNbExRbC1TYWJNdjBrbVJtbmNiMUdVcFFPQmlZaHhFQlh3b0h5ZnI1Wktydw?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 3,
-     "source": "山陽新聞",
-     "title": "【YouTubeチャート】EBiDANが4週連続首位 Ayumu Imazuは5位浮上、A2O LITEとLienelが初登場",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOaTUxODNlV25UMnY4aVp5Y3ZKU3RlRXZBQWJZSTZQb1NjcHNIQ0Y4TTVTTUNtNU1TSG9HaXpWVDhtUHFYYTlPZHM5aW1sSmtBYmZRRmlGVWkwX1FkVXJOdVpSWXBfYkdFRVhIOXhXRWJhSEFqdnVCaWdkSmptZDFwVDJLcUozUQ?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 4,
-     "source": "Soompi",
-     "title": "IVE, RIIZE, And ILLIT Top Circle Weekly Charts + A2O LITE Earns Triple Crown",
-     "url": "https://www.soompi.com/article/1886133wpp/ive-riize-and-illit-top-circle-weekly-charts-a2o-earns-triple-crown"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1103,6 +1080,26 @@
      "image": "https://cdn.topstarnews.net/news/photo/202611/16273912_2085144_5931_crop.jpg",
      "image_via": "og:image",
      "url": "https://www.topstarnews.net/news/articleView.html?idxno=16273912",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "headline": "【YouTubeチャート】EBiDANが4週連続首位 Ayumu Imazuは5位浮上、A2O LITEとLienelが初登場",
+     "highlight": "A2O LITEとLienelが初登場",
+     "image": "https://static.sanyonews.jp/image/article/size1/5/c/b/f/5cbf6250365dbd8527301b0ff81ca3f0_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/2012067?rct=oricon_music&kw=%E7%A6%8F%E7%A5%81",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-11",
+     "headline": "IVE, RIIZE, And ILLIT Top Circle Weekly Charts + A2O LITE Earns Triple Crown",
+     "highlight": "A2O LITE Earns Triple Crown",
+     "image": "https://0.soompi.io/wp-content/uploads/2026/11/12080334/IVE-RIIZE-ILLIT-A2O-LITE.jpg",
+     "image_via": "og:image",
+     "url": "https://www.soompi.com/article/1886133wpp/ive-riize-and-illit-top-circle-weekly-charts-a2o-earns-triple-crown",
      "weight": "normal"
     }
    ],
