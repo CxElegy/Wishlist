@@ -563,7 +563,7 @@ class Workflows(unittest.TestCase):
         self.assertIn("export GATE_NOW=edit", step["run"])        # 新しい関注項は GATE_NOW
         self.assertIn("GATE_NOW_ITEMS", step["run"])
         for line in step["run"].splitlines():                    # ゲートが落ちても、データを push したあとの job を赤くしない
-            if "gate.py check" in line or "gate_fire.py" in line:
+            if ("gate.py check" in line or "gate_fire.py" in line) and not line.lstrip().startswith("#"):
                 self.assertIn("||", line)
 
 
