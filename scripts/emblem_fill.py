@@ -2800,6 +2800,15 @@ def reach_rows(item, size="phone"):
 
 
 def reach_swap(item, log=print):
+    """reach_swap_run の外側：どんな失敗でも例外を外へ出さず 0（元の小元素はそのまま）。後台・お客さまの版面の fill_one を落とさない。"""
+    try:
+        return reach_swap_run(item, log)
+    except Exception as e:   # OutOfTime は _check_time を内側で拾う。ここに来るのは思わぬ失敗（rembg 無し・網・書き込み）
+        log(f"  [顔が届く絵へ] {item.get('name')}：失敗して元のまま（{type(e).__name__}: {e}）")
+        return 0
+
+
+def reach_swap_run(item, log=print):
     """顔が届かない全身の小元素（reach_rows）を、同じ人の顔の大きい絵（胸像：Fandom・公式サイト）に入れ替える（胸像の入れ替え stage_closeups と同じ
     bust_replacement・取れた人から入れ替え・取れなければ元のまま。元より質が下がるものは取らない）。1 回 REACH_PER_ROUND 人。
     取れなかった絵は emblem_reach_tried {画像: 回数} に数え、REACH_TRIES 回で探すのをやめる（外さない）。店長もお客さまの版面（fill_one の中）も同じ。→ 入れ替えた人数。"""
@@ -2821,11 +2830,17 @@ def reach_swap(item, log=print):
             orig.load()
         except Exception:
             orig = None
-        got = bust_replacement(item, x, skip, log, orig=orig)
+        env_err = []   # 環境の失敗（rembg が無い・網が落ちた）は「胸像が無かった」ではない：回数に数えない（数えると rembg の無い PC の試走で全員が REACH_TRIES に届き、探すのをやめてしまう）
+
+        def log2(m, *a, **k):
+            if str(m).lstrip().startswith("[胸像]"):   # bust_replacement が find_bust の例外を出すときの印
+                env_err.append(m)
+            log(m, *a, **k)
+        got = bust_replacement(item, x, skip, log2, orig=orig)
         if got:
             swapped[x["image"]] = got
             skip.add(got[0])
-        else:
+        elif not env_err:
             tried[x["image"]] = int(tried.get(x["image"]) or 0) + 1
     if tried != (item.get("emblem_reach_tried") or {}):
         with WRITE_LOCK:
