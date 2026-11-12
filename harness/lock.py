@@ -5,6 +5,7 @@
   python harness/lock.py status                                    # いま誰が鍵を持っているか（JSON）
 
 鍵は D:/Claude/hf/state/locks/<名前>/（mkdir は同時に 1 人しか成功しない）。持ち主が落ちて残った鍵は 30 分で古い扱いにして取り直す。
+別の鍵を持ったまま取ろうとすると即エラー（終了コード 64）。ci の鍵を ci_local.sh 以外で取ると警告。
 命令には HF_LOCK_<名前>=1 を渡す（harness/ci_local.sh は自分で ci の鍵を取るので、鍵の中から呼ばれたら取り直さない）。
 --timeout <秒>：命令を時間で打ち切る（終了コード 124）。Windows では「timeout」「bash」をそのまま渡すと System32 の timeout.exe・WSL の bash.exe が
 動いてしまう（2026-11-12 run 1112b の合併の係が 2 回つまずいた）ので、この 2 つは Git for Windows のものに読み替える。
@@ -22,6 +23,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import q  # noqa: E402
 
 BUSY = 75
+MISUSE = 64   # 鍵の使い方の誤り（別の鍵を持ったまま取ろうとした）
 TIMED_OUT = 124
 GIT_DIRS = ("C:/Program Files/Git", "C:/Program Files (x86)/Git")
 
@@ -93,6 +95,12 @@ def status(state=None, clock=time.time):
     return out
 
 
+def held_other(name, environ=None):
+    """いま環境で持っている（HF_LOCK_<名前>）鍵のうち、name 以外"""
+    env = os.environ if environ is None else environ
+    return sorted(k[len("HF_LOCK_"):].lower() for k, v in env.items() if k.startswith("HF_LOCK_") and v and k[len("HF_LOCK_"):].lower() != name)
+
+
 def run(cmd, timeout=None, env=None):
     try:
         return subprocess.call(resolve(cmd), env=env, timeout=timeout)
@@ -123,6 +131,12 @@ def main(argv=None):
     wait, stale, limit = opt("--wait", 1200), opt("--stale", 1800), opt("--timeout", None)
     name = a[0]
     env = {**os.environ, f"HF_LOCK_{name.upper()}": "1"}
+    held = held_other(name)
+    if held:   # 鍵を持ったまま別の鍵を待つと、全員が止まる（2026-11-13：push が ci を持ったまま browser を待って 40 分の順番待ち）
+        print(f"✗ 鍵 {','.join(held)} を持ったまま鍵 {name} は取れない（持ち主が別の鍵を待つ列で全員が止まる）。先に {','.join(held)} を放してから取り直す")
+        return MISUSE
+    if name == "ci" and not any("ci_local" in c for c in cmd):   # ci の鍵は ci_local.sh のためだけ
+        print("警告：ci の鍵は `bash harness/ci_local.sh` だけが使う。ほかの用途で取らない（撮影は browser の鍵）", file=sys.stderr)
     if os.environ.get(f"HF_LOCK_{name.upper()}"):   # もう鍵の中：取り直さない（同じ鍵を 2 回取ると自分を待ってしまう）
         return run(cmd, limit, env)
     d = acquire(name, wait, stale, who=" ".join(cmd)[:120])
