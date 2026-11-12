@@ -22,7 +22,7 @@ MEASURE = """() => [...document.querySelectorAll('.when')].map(m => {
     else if (n.nodeType === 1) parts.push(n.getBoundingClientRect()); });
   const hit = bs.some(c => parts.some(a => Math.min(a.right, c.right) - Math.max(a.left, c.left) > 0.5 && Math.min(a.bottom, c.bottom) - Math.max(a.top, c.top) > 0.5));
   const out = parts.some(a => a.right > box.right + 0.5);
-  return {hit, out, right: Math.round(bs[bs.length - 1].right - box.right), cut: bs[bs.length - 1].right > innerWidth, down: m.classList.contains('vdown'), lines: new Set(parts.map(a => Math.round(a.top))).size};
+  return {hit, out, right: Math.round(bs[bs.length - 1].right - box.right), cut: bs[bs.length - 1].right > innerWidth, down: m.classList.contains('vdown'), lines: parts.length ? 1 + parts.filter(a => a.top >= parts[0].bottom - 1 || a.bottom <= parts[0].top + 1).length : 0};
 })"""
 
 

@@ -2059,7 +2059,7 @@ META_JS = """
   // 読む → 書く の順に分けて、行ごとに組み直しを起こさない（版面に 2,000 行ある）
   const need = r => {   // 札と日付の幅 ＋ 隙間（👍/👎 の右の空け分は CSS の --vtw）
     const v = r.querySelector(':scope > .vt');
-    if (!v || !r.offsetWidth || getComputedStyle(v).position !== 'absolute') return null;   // 流れの中に置いた 👍（.wc.sb em）は重ならない
+    if (!v || !r.offsetWidth || (!r.classList.contains('vdown') && getComputedStyle(v).position !== 'absolute')) return null;   // 流れの中に置いた 👍（.wc.sb em）は重ならない（.vdown で下ろした 👍 は自分で流れに入れたので測り続ける）
     const cs = getComputedStyle(r);
     let w = 0, n = 0;
     r.childNodes.forEach(x => {
