@@ -64,7 +64,11 @@ class Page(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         from scripts import layout_sample
-        layout_sample.main()
+        layout_sample.OFFLINE = True   # 写真を網で取りに行かない（取ると 10 分。ここで確かめるのは網址の一意・目次・格子で、写真の見分けは test_hash_near が別に確かめる）
+        try:
+            layout_sample.main()
+        finally:
+            layout_sample.OFFLINE = False
         cls.html = PAGE.read_text(encoding="utf-8")
 
     def test_card_img_urls_unique(self):
