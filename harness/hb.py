@@ -160,6 +160,15 @@ def kpi_excerpt(root=None):
     return out
 
 
+def _cost(state):
+    """最後の回の段ごとの重さ・合併できた段 1 つあたり（harness/cost.py が回のあとに書く state/costs.jsonl）。"""
+    try:
+        import cost
+        return cost.last_run(state)
+    except Exception:   # noqa: BLE001  要約は落とさない
+        return None
+
+
 def summary(state=None, root=None, now=None, minutes=20):
     state = state or q.state_dir()
     now = now or time.time()
@@ -174,7 +183,8 @@ def summary(state=None, root=None, now=None, minutes=20):
          "results": _jsonl_tail(state / "results.jsonl", 10),
          "choices": choices(state),
          "alerts": _jsonl_tail(state / "alerts.jsonl", 5),
-         "kpi": kpi_excerpt(root)}
+         "kpi": kpi_excerpt(root),
+         "cost": _cost(state)}
     q._write(state / "summary.json", s)
     return s
 
@@ -192,6 +202,11 @@ def main(argv=None):
     s = sub.add_parser("reply"); s.add_argument("re"); s.add_argument("text"); s.add_argument("--board", default=BOARD)
     s = sub.add_parser("summary"); s.add_argument("--minutes", type=float, default=20)
     a = ap.parse_args(argv)
+    for f in (sys.stdout, sys.stderr):
+        try:
+            f.reconfigure(errors="replace")   # cp932 の画面で ♥ が書けずに落ちた（2026-11-12 run 1112b の合併の係）
+        except (AttributeError, ValueError):
+            pass
     if a.cmd == "beat":
         r = beat(a.role, a.task, a.note)
         print(f"♥ {a.role} {a.task} {r['at']}")

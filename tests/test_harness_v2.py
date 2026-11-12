@@ -80,7 +80,7 @@ class Queue(Base):
         self.assertEqual((self.root / "harness" / "tasks" / f"{a}.json").read_bytes(), before)   # push しない＝リポジトリは変えない
         self.assertIsNone(q.claim_of(a, self.state, T0))                                          # 済みにしたら印を返す
         self.assertEqual(q.ready(t, self.state, T0), [])
-        self.assertEqual(q.counts(t, self.state, T0), {"open": 0, "done": 1, "parked": 1, "waiting": 1, "claimed": 0})
+        self.assertEqual(q.counts(t, self.state, T0), {"open": 0, "done": 1, "parked": 1, "waiting": 1, "split": 0, "claimed": 0})
 
     def test_done_file_goes_into_the_branch(self):
         a = self.add("A", ["a.py"])
@@ -294,7 +294,7 @@ class Heartbeat(Base):
         s = hb.summary(self.state, self.root, T0 + 30 * 60)
         on_disk = json.loads((self.state / "summary.json").read_text(encoding="utf-8"))
         self.assertEqual(on_disk, json.loads(json.dumps(s)))
-        self.assertEqual(s["queue"], {"open": 2, "done": 0, "parked": 0, "waiting": 1, "claimed": 1})
+        self.assertEqual(s["queue"], {"open": 2, "done": 0, "parked": 0, "waiting": 1, "split": 0, "claimed": 1})
         self.assertEqual([x["task"] for x in s["agents"]], [a])
         self.assertEqual([x["task"] for x in s["stale"]], [a])
         self.assertEqual(s["results"][-1]["status"], "merged")
@@ -339,6 +339,129 @@ class Lock(Base):
         self.assertFalse((self.state / "locks" / "ci").exists())
 
 
+class Resume(Base):
+    """2026-11-12 run 1112b：止めた段の枝・コミットを残し、負荷で止めた段は次の回にいちばん先に・大きい段は計画で分ける。"""
+    def test_park_keeps_class_and_resume_and_infra_comes_first(self):
+        a = self.add("先の段", ["a.py"], priority=1)
+        b = self.add("負荷で止めた段", ["b.py"], priority=9)
+        q.park(b, "Page.goto 30 秒切れ", root=self.root, state=self.state, cls="infra",
+               resume={"branch": "harness/1112b-T-0002", "worktree": "D:/Claude/hf/v2r/wt/T-0002", "commit": "ce57ac1", "stage": "ship", "note": "中身は審査済み"})
+        t = self.load()[b]
+        self.assertEqual((t["status"], t["park_class"], t["resume"]["stage"], t["resume"]["commit"]), ("parked", "infra", "ship", "ce57ac1"))
+        self.assertEqual([x["id"] for x in q.ready(self.load(), self.state)], [b, a])          # infra の段がいちばん先
+        self.assertEqual(q.brief(q.ready(self.load(), self.state)[0])["resume"]["branch"], "harness/1112b-T-0002")
+        for _ in range(2):
+            q.park(b, "また", root=self.root, state=self.state, cls="infra")
+        self.assertEqual([x["id"] for x in q.ready(self.load(), self.state)], [a])             # 3 回で主の会話へ
+        self.assertEqual(self.load()[b]["resume"]["commit"], "ce57ac1")                        # 続きの手がかりは消えない
+        q.done(b, "https://example.invalid/pull/1", root=self.root, state=self.state)
+        self.assertEqual((self.load()[b]["resume"], self.load()[b]["park_class"]), ({}, ""))
+
+    def test_work_park_is_not_retried_automatically(self):
+        b = self.add("中身が赤い段", ["b.py"])
+        q.park(b, "AssertionError", root=self.root, state=self.state, cls="work")
+        self.assertEqual(q.ready(self.load(), self.state), [])
+        with self.assertRaises(ValueError):
+            q.park(b, "x", root=self.root, state=self.state, cls="nope")
+
+    def test_park_cli_resume_flags(self):
+        b = self.add("止める段", ["b.py"])
+        env = {**os.environ, "HF_STATE": str(self.state), "HF_ROOT": str(self.root), "PYTHONIOENCODING": "cp932"}
+        r = subprocess.run([sys.executable, str(ROOT / "harness" / "q.py"), "park", b, "--why", "負荷", "--cls", "infra", "--resume-branch", "harness/x-T",
+                            "--resume-worktree", "D:/Claude/hf/v2r/wt/x-T", "--resume-commit", "abc", "--resume-stage", "ship", "--resume-note", "中身は良い"],
+                           env=env, capture_output=True, text=True, encoding="cp932", errors="replace")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)                                 # cp932 の画面でも ✓ で落ちない
+        self.assertEqual(self.load()[b]["resume"]["worktree"], "D:/Claude/hf/v2r/wt/x-T")
+
+    def test_split_makes_ordered_frozen_children(self):
+        p = self.add("大きい段", ["scripts/render.py", "harness/ux_check.py"], priority=3)
+        q.park(p, "途中まで", root=self.root, state=self.state, cls="size", resume={"branch": "harness/1112b-T-0009", "commit": "ea8941c", "stage": "build"})
+        kids = q.split(p, [{"title": "点検だけ：縦長の写真のカードの空きを数える", "done_when": ["前の数を出す"], "scope": ["harness/ux_check.py"]},
+                           {"title": "実装：縦長の写真を案 C に", "done_when": ["空き 0"], "scope": ["scripts/render.py"], "complexity": "hard"}],
+                       root=self.root, state=self.state)
+        t = self.load()
+        self.assertEqual(t[p]["status"], "split")
+        self.assertTrue(all(t[k]["frozen"] for k in kids))
+        self.assertEqual(t[kids[1]]["after"], [kids[0]])
+        self.assertEqual(t[kids[0]]["resume"]["branch"], "harness/1112b-T-0009")              # 最初の子が前の枝を引き継ぐ
+        self.assertFalse((self.root / "harness" / "tasks" / f"{kids[0]}.json").exists())       # 手元だけ（合併のときに入る）
+        self.assertEqual([x["id"] for x in q.ready(t, self.state)], [kids[0]])                 # 前の子が済むまで次は出ない
+        q.done(kids[0], root=self.root, state=self.state)
+        self.assertEqual([x["id"] for x in q.ready(self.load(), self.state)], [kids[1]])
+        q.done(kids[1], root=self.root, state=self.state)
+        self.assertEqual(self.load()[p]["status"], "done")                                     # 子が全部済めば親も
+        with self.assertRaises(ValueError):
+            q.split(kids[0], [{"title": "1 つだけ", "done_when": ["x"]}], root=self.root, state=self.state)
+
+
+class Infra(unittest.TestCase):
+    def test_run_tests_tells_load_flakes_from_real_reds(self):
+        import run_tests
+        sep = "-" * 70
+        flake = f"ERROR: test_wall (tests.test_wall_shapes.WallShapes.test_wall)\nTraceback …\nplaywright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.\n{sep}\nRan 1 test"
+        real = f"FAIL: test_x (tests.test_y.Y.test_x)\nTraceback …\nAssertionError: 3 != 0\n{sep}\nRan 1 test"
+        mixed = f"FAIL: test_x (a)\nAssertionError: Page.goto: 1 != 0\n{'=' * 70}\nERROR: test_z (b)\nTimeoutError: Page.goto: Timeout\n{sep}\nRan 2 tests"
+        self.assertTrue(run_tests.is_infra(flake))
+        self.assertFalse(run_tests.is_infra(real))
+        self.assertFalse(run_tests.is_infra(mixed))
+        self.assertTrue(run_tests.is_infra("FAIL: test_ux_journey（900 秒で打ち切り）\n"))
+
+    def test_lock_resolves_windows_bash_and_timeout_to_git(self):
+        g = pathlib.Path("C:/Program Files/Git")
+        self.assertEqual(lock.resolve(["bash", "x.sh"], windows=True, git_root=g), [str(g / "bin" / "bash.exe"), "x.sh"])
+        self.assertEqual(lock.resolve(["timeout", "5", "bash"], windows=True, git_root=g)[0], str(g / "usr" / "bin" / "timeout.exe"))
+        self.assertEqual(lock.resolve(["python", "-V"], windows=True, git_root=g), ["python", "-V"])
+        self.assertEqual(lock.resolve(["bash", "x.sh"], windows=False, git_root=g), ["bash", "x.sh"])
+
+    @unittest.skipUnless(os.name == "nt" and lock._git_root(), "Windows と Git for Windows のある PC だけ")
+    def test_lock_runs_git_bash_and_timeout_on_this_pc(self):
+        with tempfile.TemporaryDirectory() as d:
+            env = {**os.environ, "HF_STATE": d}
+            r = subprocess.run([sys.executable, str(ROOT / "harness" / "lock.py"), "ci", "--", "timeout", "20", "bash", "-c", "exit 3"], env=env)
+            self.assertEqual(r.returncode, 3)
+
+    def test_lock_timeout_and_reentry(self):
+        with tempfile.TemporaryDirectory() as d:
+            env = {**os.environ, "HF_STATE": d}
+            r = subprocess.run([sys.executable, str(ROOT / "harness" / "lock.py"), "ci", "--timeout", "1", "--", sys.executable, "-c", "import time; time.sleep(30)"], env=env)
+            self.assertEqual(r.returncode, lock.TIMED_OUT)
+            # 鍵の中から同じ鍵を呼んでも自分を待たない（ci_local.sh が自分で鍵を取る）
+            inner = f"import subprocess,sys; sys.exit(subprocess.call([sys.executable, r'{ROOT / 'harness' / 'lock.py'}', 'ci', '--wait', '0', '--', sys.executable, '-c', 'import os,sys; sys.exit(4 if os.environ.get(\"HF_LOCK_CI\") else 9)']))"
+            r = subprocess.run([sys.executable, str(ROOT / "harness" / "lock.py"), "ci", "--", sys.executable, "-c", inner], env=env)
+            self.assertEqual(r.returncode, 4)
+            self.assertFalse((pathlib.Path(d) / "locks" / "ci").exists())
+
+    def test_ci_local_takes_the_lock_and_accepts_test_names(self):
+        s = (ROOT / "harness" / "ci_local.sh").read_text(encoding="utf-8")
+        self.assertIn("harness/lock.py ci", s)
+        self.assertIn("HF_LOCK_CI", s)
+        self.assertIn('run_tests.py "$@"', s)
+        self.assertIn("' ci \"$@\"", s)
+
+
+class Cost(Base):
+    def test_cost_by_task_from_workflow_transcript(self):
+        import cost
+        wf = pathlib.Path(self.tmp.name) / "wf"
+        wf.mkdir()
+        rows = [("a1", "plan:1"), ("a2", "build:T-0002"), ("a3", "fix:T-0002:1"), ("a4", "build:T-0009")]
+        (wf / "journal.jsonl").write_text("\n".join(json.dumps({"type": "started", "agentId": a, "label": l}) for a, l in rows), encoding="utf-8")
+        def msg(i, n, t):
+            return json.dumps({"type": "assistant", "timestamp": t, "message": {"id": f"m{i}", "model": "m", "content": [{"type": "tool_use"}],
+                                                                                "usage": {"input_tokens": n, "output_tokens": 10, "cache_creation_input_tokens": 100, "cache_read_input_tokens": 1000}}})
+        for a, _ in rows:
+            (wf / f"agent-{a}.jsonl").write_text("\n".join([msg(1, 5, "2026-11-12T00:00:00Z"), msg(1, 5, "2026-11-12T00:00:30Z"), msg(2, 5, "2026-11-12T00:03:00Z")]), encoding="utf-8")
+        got = cost.by_task(cost.collect(wf))
+        self.assertEqual(got["T-0002"]["agents"], 2)
+        self.assertEqual(got["T-0002"]["weight"], 2 * 2 * 115)                         # 同じ message id は 1 回・cache_read は重さに入れない
+        self.assertEqual(got["T-0002"]["minutes"], 6.0)
+        self.assertEqual(got[cost.COMMON]["agents"], 1)
+        hb.result("T-0002", "merged", state=self.state)
+        cost.record("1112c", got, state=self.state)
+        s = hb.summary(self.state, self.root, now=T0)
+        self.assertEqual((s["cost"]["run"], s["cost"]["shipped"], s["cost"]["per_shipped"]), ("1112c", 1, sum(v["weight"] for v in got.values())))
+
+
 class Script(unittest.TestCase):
     """台本を node で読み、係を偽物にして 1 段を全部の段階に通す。"""
     SRC = (ROOT / ".claude" / "workflows" / "harness-v2.js").read_text(encoding="utf-8")
@@ -371,8 +494,12 @@ class Script(unittest.TestCase):
         self.assertFalse([x for x in labels if "T-0002" in x])              # T-0001 と同じファイルを触る段は、この回では進めない
         self.assertTrue(any("T-0002" in m for m in d["logs"]))
         ships = [x for x in labels if x.startswith("ship:")]
-        self.assertEqual(ships, ["ship:intake1", "ship:T-0001", "ship:T-0003", "ship:T-0004"])   # 合併は 1 つずつ・受付の枝が先
-        self.assertLess(labels.index("ship:T-0003"), labels.index("verify:1:b"))
+        # 合併は 1 つずつ・受付の枝が先。あとは審査を通った順（T-0003 は T-0001 の直しを待たない：2026-11-12 は 12 分待った）
+        self.assertEqual(ships[0], "ship:intake1")
+        self.assertEqual(sorted(ships[1:]), ["ship:T-0001", "ship:T-0003", "ship:T-0004"])
+        self.assertLess(labels.index("ship:T-0003"), labels.index("ship:T-0001"))
+        for s in ships:
+            self.assertLess(labels.index(s), labels.index("verify:1:b"))
         self.assertLess(labels.index("verify:1:b"), labels.index("announce:T-0003"))   # 案のページは本番に出てから知らせる
         self.assertEqual(labels[-1], "learn:1")
         self.assertEqual([(t["id"], t["state"], t["live"]) for t in d["result"][0]["tasks"]], [("T-0001", "merged", True), ("T-0003", "merged", True), ("T-0004", "merged", True)])
@@ -443,6 +570,75 @@ class Script(unittest.TestCase):
         self.assertIn("harness/q.py add --from-json", d["prompts"]["intake:1"])
         self.assertIn("harness/q.py add", d["prompts"]["intake:1"])
         self.assertIn("docs/rules/aesthetic.md", d["prompts"]["intake:1"])
+
+    # ---------- 2026-11-12 run 1112b（17 係・47 分・合併 0 件）のあと ----------
+    def test_resumed_task_goes_straight_to_ship(self):
+        """審査を通り合併だけが負荷で落ちた段は、作り直さず合併から（resume.stage=ship）。前の枝・作業ツリーを使う。"""
+        d = self.smoke("resume")
+        labels = [c["label"] for c in d["calls"] if "T-0002" in c["label"]]
+        self.assertEqual(labels, ["ship:T-0002"])
+        ship = d["prompts"]["ship:T-0002"]
+        self.assertIn("harness/1112b-T-0002", ship)
+        self.assertIn("D:/x/wt/T-0002", ship)
+        self.assertIn("2 はとばす", ship)
+        self.assertEqual(d["result"][0]["tasks"][0]["state"], "merged")
+        self.assertIn("worktree remove --force D:/x/wt/T-0002", d["prompts"]["learn:1"])
+
+    def test_infra_failure_parks_with_resume_at_ship(self):
+        d = self.smoke("infra")
+        t = d["result"][0]["tasks"][0]
+        self.assertEqual((t["state"], t["cls"], t["resume"]["stage"]), ("parked", "infra", "ship"))
+        learn = d["prompts"]["learn:1"]
+        self.assertIn("harness/q.py park T-0005", learn)
+        self.assertIn("--cls infra --resume-branch harness/smoke-T-0005", learn)
+        self.assertIn("--resume-stage ship", learn)
+        self.assertNotIn("worktree remove", learn)
+
+    def test_partial_build_keeps_commit_and_note(self):
+        d = self.smoke("partial")
+        self.assertEqual([c["label"] for c in d["calls"] if "T-0007" in c["label"]], ["scout:T-0007", "build:T-0007"])
+        t = d["result"][0]["tasks"][0]
+        self.assertEqual((t["state"], t["cls"]), ("parked", "size"))
+        self.assertIn("--cls size", d["prompts"]["learn:1"])
+        self.assertIn("render.py の side()", d["prompts"]["learn:1"])
+
+    def test_same_failed_conditions_count_as_stuck_even_if_text_differs(self):
+        """不合格の文・signature が毎回変わっても、落ちた条件と試験が同じなら直しを重ねず見立てへ。"""
+        labels = [c["label"] for c in self.smoke("flip")["calls"] if "T-0008" in c["label"]]
+        self.assertEqual(labels[:6], ["scout:T-0008", "build:T-0008", "evalF:T-0008:0", "fix:T-0008:1", "evalF:T-0008:1", "diag:T-0008"])
+
+    def test_agents_per_task_are_capped(self):
+        d = self.smoke("stuck", {"maxAgents": 5})
+        labels = [c["label"] for c in d["calls"] if "T-0009" in c["label"]]
+        self.assertLessEqual(len(labels), 5)
+        t = d["result"][0]["tasks"][0]
+        self.assertEqual(t["state"], "parked")
+        self.assertIn("係の上限", t["why"])
+        self.assertEqual(t["resume"]["stage"], "fix")
+
+    def test_prompts_carry_the_run_1112b_lessons(self):
+        d = self.smoke("happy")
+        p = d["prompts"]
+        plan, ship, ev = p["plan:1"], p["ship:T-0001"], p["evalF:T-0001:0"]
+        self.assertIn("q.py split", plan)                        # 大きい段は計画で分ける
+        self.assertIn("park_class=infra", plan)                  # 負荷で止めた段が先
+        self.assertIn("pytest は無い", plan)
+        self.assertIn("preexisting", ev)                         # main でも落ちる試験は不合格の理由にしない
+        self.assertIn("failed_conditions", ev)
+        self.assertIn("run_in_background", ship)                 # CI を見に行かない
+        self.assertIn("rc=3", ship)                              # 基盤の不安定だけなら落ちた試験だけを流し直す
+        self.assertIn("ci_local.sh <落ちた試験の名前", ship)
+        self.assertIn("gh pr checks <番号> --watch --interval 30 && bash harness/net.sh gh pr merge <番号> --squash", ship)
+        self.assertIn("failed_class", ship)
+        self.assertNotIn("lock.py ci --wait 1500 -- timeout", ship)   # Windows で System32 の timeout.exe が動いた形
+        for label, text in p.items():
+            if not label.startswith("scout:"):
+                self.assertIn("lock.py browser", text, label)    # ブラウザは鍵の中で
+        self.assertIn("D:/Claude/hf/v2r/wt/smoke-T-0001", p["build:T-0001"])   # 作業ツリーは回の名前つき
+
+    def test_plan_dropped_tasks_get_released(self):
+        d = self.smoke("happy")
+        self.assertIn("harness/q.py release T-0002", d["prompts"]["learn:1"])   # 計画が取ったが範囲が重なって外した段の印を返す
 
     def test_old_loop_untouched(self):
         self.assertTrue((ROOT / ".claude" / "workflows" / "harness-forever.js").read_text(encoding="utf-8").startswith("export const meta = {\n  name: 'harness-forever'"))
