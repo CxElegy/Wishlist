@@ -315,7 +315,10 @@ def stage_holds(item, emblems, hold, pend, fetch=None):
             orig = Image.open(io.BytesIO((fetch or sbstate.storage_read)(ou))) if ou.startswith("http") else None
         except Exception:
             orig = None
-        got = emblem_fill.bust_replacement(item, by[s], skip, orig=orig)
+        try:
+            got = emblem_fill.bust_replacement(item, by[s], skip, orig=orig)
+        except emblem.EnvFail:   # 網・rembg の一時の失敗：回数に数えない・外さない（次の回にやり直す）
+            continue
         if got:
             swapped[s] = got
             new.pop(s, None)
@@ -484,9 +487,10 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
     note = str(r.get("note") or "").replace("新しい記事・手がかりが来たらすぐ、来なくても規則を直したらもう一度", "手がかり・規則の版が変わったらすぐもう一度")  # 記事は見ない（店長の文のままだと中身と合わない）
     add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES,
                          "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}   # bv：公開の箱の小元素を見直した壊れ方の規則の版   # 名簿の規則の版（上がると、そろった版面も 1 回名簿を数え直す）
-    if add["emblem_state"]["state"] != "ok" and note != "時間切れ":
+    env = note == "時間切れ" or bool(r.get("env"))   # 時間切れ・環境の失敗（顔のモデルが使えない）：回も指紋も残さない
+    if add["emblem_state"]["state"] != "ok" and not env:
         add["emblem_state"]["rounds"] = rounds_of(cfg) + 1   # 回の通し番号（規則の版が変わると 0 から）
-    if add["emblem_state"]["state"] == "failed" and note != "時間切れ":   # 材料の指紋を残す（時間切れ・例外は残さない＝次の見回りですぐ）
+    if add["emblem_state"]["state"] == "failed" and not env:   # 材料の指紋を残す（時間切れ・例外・環境の失敗は残さない＝次の見回りですぐ）
         add["emblem_state"]["m"] = material({**cfg, **add})
     return add
 

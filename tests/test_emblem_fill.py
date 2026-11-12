@@ -789,10 +789,11 @@ class Background(unittest.TestCase):
         self.assertEqual(saved["last_run"]["done"], ["zero", "one", "brand"])
         self.assertTrue(saved["started"] and saved["last_run"]["end"])
         self.assertEqual(prog["summary"], {"ok": 2, "total": 4})
-        # 2 回目：失敗したものは飛ばし、開始時刻は最初のまま
+        # 2 回目：済み（one）は飛ばす。例外で落ちた zero は指紋を残さないのでもう一度（docs/rules/background.md「例外は指紋を残さない」）。開始時刻は最初のまま
+        self.assertIsNone(saved["items"]["zero"].get("material"))
         seen.clear()
         again = ef.background(40, log=lambda m: None, fill=fill, path=self.path, workers=1)
-        self.assertEqual(seen, ["brand"])
+        self.assertEqual(seen, ["zero", "brand"])
         self.assertEqual(again["started"], saved["started"])
         log = runlog.recent(50)
         self.assertTrue(all(r["proc"] == "emblem" for r in log))
