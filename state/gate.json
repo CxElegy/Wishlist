@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-12T16:29:39+00:00",
+ "checked": "2026-11-12T17:31:36+00:00",
  "fired": {
-  "at": "2026-11-12T16:29:39+00:00",
+  "at": "2026-11-12T17:31:36+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -28,120 +28,93 @@
    "edit": 13
   },
   "2026-11-13": {
-   "edit": 1
+   "edit": 2
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-12T16:29:39+00:00",
+    "at": "2026-11-12T17:31:36+00:00",
     "attempts": 1,
     "day": "2026-11-13",
-    "prog": 0,
-    "resp": "cse_01W4x6f947nCV582E94yDTsY",
-    "sig": "14093d37ad32"
+    "prog": 137,
+    "resp": "cse_01W4x6f68Usd26EJaQu8kzS4",
+    "sig": "b6838963f843"
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "gelato pique",
     "lib:Ado",
     "lib:BTS",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
     "lib:YOASOBI",
-    "lib:サッカー日本代表",
+    "lib:【推しの子】",
+    "lib:スプラトゥーン3",
     "lib:原神",
-    "lib:大谷翔平",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
     "日本顶级网球赛事",
     "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-12T09:14:34+00:00",
+   "last_batch": "2026-11-12T17:16:13+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 0,
+   "prog": 137,
    "prog_day": "2026-11-13",
    "ripe": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "FROM",
+    "The Mandalorian",
+    "gelato pique",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "猫用品",
+    "绝区零"
+   ],
+   "sig": "b6838963f843",
+   "token_cap": 1000000,
+   "tokens_today": 91973,
+   "why": "整理待ちの記事 124 件（21 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
     "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
+    "Vaundy",
     "dota2",
-    "gelato pique",
-    "lib:Ado",
-    "lib:BTS",
-    "lib:King Gnu",
-    "lib:Mrs. GREEN APPLE",
-    "lib:YOASOBI",
-    "lib:サッカー日本代表",
-    "lib:原神",
-    "lib:大谷翔平",
+    "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "三星手机",
     "周杰伦",
     "哈利波特剧集",
-    "日本顶级网球赛事",
-    "滑雪",
     "漫威电影",
-    "猫用品",
     "绝区零"
    ],
-   "sig": "14093d37ad32",
-   "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 261 件（31 版面・AI 編集まで版面に載らない）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "FROM",
-    "GTA 6",
-    "あつ森",
-    "A2O LITE",
-    "周杰伦",
-    "The Mandalorian",
-    "Astrae Oratio",
-    "绝区零",
-    "Vaundy",
-    "ぐでたま"
-   ],
-   "need": true,
-   "sig": "76c3b548e348",
-   "waiting": [
-    "BLEACH Mirrors High"
-   ],
-   "why": "足りない 14 版面（Actions で Python が埋める）・失敗 1 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -208,6 +181,14 @@
    "in": 441,
    "out": 72867,
    "runs": 10
+  },
+  "2026-11-13": {
+   "batches": 2,
+   "cr": 3842596,
+   "cw": 79476,
+   "in": 91,
+   "out": 12406,
+   "runs": 1
   }
  }
 }
