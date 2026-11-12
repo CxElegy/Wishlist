@@ -2161,7 +2161,7 @@ EMB_JS = """
 # React Bits（試作 docs/testground/reactbits.html の E）を vanilla に移した特効。店長のページ（render_index）だけに入れる
 RB_CSS = """
 /* ===== React Bits の特効（E・2026-11-12 店長が選択）：transform / opacity だけ。入場は 1 回・動きを減らす設定では全部止まる =====
-   頭条＝Blur Text（見出し）＋Star Border（写真の枠）／カード＝Fade Content（入場）＋Glare Hover（写真）／数字＝Count Up／押した所＝Click Spark（小さい DOM） */
+   頭条＝Blur Text（見出し）＋Star Border（写真の枠）／ほかの注目ニュース＝Fade Content（入場）／カード＝Glare Hover（写真）／数字＝Count Up／押した所＝Click Spark（小さい DOM） */
 .rb-pre{opacity:0}
 .rb-n{display:inline-block;text-align:right;font-variant-numeric:tabular-nums}
 /* Star Border：頭条の写真の枠の縁を金と白の光が往復（細い輪の中だけ見える。画面外では止める） */
@@ -2188,15 +2188,16 @@ RB_JS = """
 (() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window) || !Element.prototype.animate) return;
   const PHONE = matchMedia('(max-width:760px)').matches, EASE = 'cubic-bezier(.2,.8,.3,1)', below = el => el.getBoundingClientRect().top > innerHeight;
-  // ---------- Fade Content：カードがスクロールで 1 回ふわっと入る ----------
-  // 最初の画面のカードは隠さない（すぐ読める）。版面が画面の下 1 枚ぶんまで近づいたら、その中の画面の下にあるカードだけ隠して待つ。
+  // ---------- Fade Content：ほかの注目ニュースのカードがスクロールで 1 回ふわっと入る ----------
+  // 最初の画面のカードは隠さない（すぐ読める）。区切りが画面の下 1 枚ぶんまで近づいたら、その中の画面の下にあるカードだけ隠して待つ。
+  // 版面のカード（約 2000 枚）には掛けない：スクロールの計測で PC の script の時間が増えた（2026-11-12）
   // translate は個別の性質＝カードの傾き（transform）を壊さない。scale は使わない（組み方の計測が大きさを読むため）
   const rv = new IntersectionObserver(es => { let k = 0; es.forEach(e => { if (!e.isIntersecting) return; const el = e.target; rv.unobserve(el); el.classList.remove('rb-pre');
     el.animate([{ opacity: 0, translate: '0 ' + (PHONE ? 10 : 18) + 'px' }, { opacity: 1, translate: '0 0' }], { duration: 560, delay: Math.min(k++, 4) * 60, easing: EASE, fill: 'backwards' }); }); }, { threshold: .08 });
   const arm = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; arm.unobserve(e.target);
-    const cs = [...e.target.querySelectorAll('.wall>.wc,.card')].filter(below);   // 読むのを全部先に、書くのはあと
+    const cs = [...e.target.querySelectorAll('.wall>.wc')].filter(below);   // 読むのを全部先に、書くのはあと
     cs.forEach(c => { c.classList.add('rb-pre'); rv.observe(c); }); }), { rootMargin: '0px 0px 100% 0px' });
-  document.querySelectorAll('.spot,.sec').forEach(s => arm.observe(s));
+  document.querySelectorAll('.spot').forEach(s => arm.observe(s));
   // ---------- Count Up：版面の「今週」の数・話題度・頭条の件数・欲しい物の合計が 0 から数える。幅は最後の数字で固定＝周りがずれない ----------
   const nums = [...document.querySelectorAll('.phead span:nth-child(2),.band .cnt b,.heat summary b,.stot b')].map(el => {
     const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let nd, hit = null;
