@@ -18,6 +18,7 @@ import json
 import math
 import pathlib
 import re
+import unicodedata
 import urllib.parse
 
 import yaml
@@ -838,6 +839,11 @@ def _md_links(text):
     return re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", link, e(text, quote=False))
 
 
+def _rel_text(x):
+    """空きの小元素が「この記事に関係あるか」を見る字（見出し・強調・一言。EMB_REL_JS が読む）。"""
+    return " ".join(str(x[k]) for k in ("headline", "highlight", "blurb") if x.get(k))
+
+
 def _headline(story):
     text = e(story["headline"])
     hl = story.get("highlight")
@@ -1492,6 +1498,19 @@ def _emblem_img(a):
     return img
 
 
+def _own_key(t):
+    """名前の比べ用：全角半角・大小をそろえ、（作品）と末尾の通し番号（Vaundy 2）を除く。"""
+    t = unicodedata.normalize("NFKC", str(t or "")).lower().replace("(作品)", "")
+    return re.sub(r"\s+\d+$", "", t).strip()
+
+
+def mark_own_emblems(item):
+    """空きに置く小元素のうち「その版面そのもの」の印（_own）を付けた写し：主題が版面の名前・keywords・match のどれかと同じもの（ぐでたま板の Gudetama、Vaundy 板の Vaundy）。
+    作品のポスター（work）は emblem 側の印で足りる。それ以外のキャラは記事に名前が出たときだけ関係ありとする（EMB_REL_JS）。"""
+    own = {_own_key(t) for t in [item.get("name"), *(item.get("keywords") or []), *(item.get("match") or [])] if isinstance(t, str)} - {""}
+    return [({**x, "_own": True} if isinstance(x, dict) and _own_key(x.get("subject")) in own else x) for x in item.get("emblem") or []]
+
+
 def _emblem(items, ring="accent"):
     """作品の小元素（items.yaml の emblem、scripts/emblem.py が探した既存の画像）。版面の右上に、枠からはみ出して貼る。
     候補が何枚あっても、網页を開くたびに 1 枚をランダムに（JS がなければ先頭）。画像は元の網址を直接引用（倉庫に保存しない）。
@@ -1502,6 +1521,10 @@ def _emblem(items, ring="accent"):
         if not (isinstance(x, dict) and (_safe_url(x.get("image")) or local)):
             continue   # 網址（http(s)）か、切り抜いて倉庫に置いた画像（docs/emblems/）だけ
         a = {"src": x["image"], "shape": "badge" if x.get("shape") == "badge" else "cutout"}
+        if x.get("subject"):
+            a["name"] = str(x["subject"])   # 空きに置くとき、その記事に関係があるかを見る材料（EMB_REL_JS）
+        if x.get("work") or x.get("_own"):
+            a["own"] = 1   # 版面の作品そのもの（ポスター）か、主題が版面の名前・keywords と同じ（digest が _own を付ける）
         c = x.get("crop")
         if isinstance(c, list) and len(c) == 3 and all(isinstance(v, (int, float)) and 0 <= v <= 1 for v in c) and c[2] > 0:
             a.update(crop=c, ar=float(x.get("ar") or 1))
@@ -3178,7 +3201,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=(), used=None):
     poster = f'<div class="poster"{style}><div class="marks" aria-hidden="true"></div>{head}{top_html}{foot}</div>'
 
     wall = "".join(
-        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}" data-w="{e(x.get("weight") or "normal")}"{_fx(w["name"])} style="--sc:{_sec_var(w.get("section"))}">{_lk(x)}'
+        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}" data-w="{e(x.get("weight") or "normal")}" data-t="{e(_rel_text(x))}"{_fx(w["name"])} style="--sc:{_sec_var(w.get("section"))}">{_lk(x)}'
         f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}{_from(x)}</em><b>{_headline(x)}</b></article>'
         for i, (w, x) in enumerate(more))
     side = _side(works, today, wishes, taste)
@@ -3219,7 +3242,7 @@ def _agenda(works, today, limit=None):
                 '<p class="sempty">発売日・試合・配信など、日付のある記事が入るとここに並びます。</p></div>')
     rows.sort(key=lambda r: r[0])
     items = "".join(
-        f'<li data-k="{e(w["name"])}" style="--sc:{_sec_var(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
+        f'<li data-k="{e(w["name"])}" data-t="{e(_rel_text(x))}" style="--sc:{_sec_var(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
         f'<span class="nm">{e(w["name"])}{" · " + e(ev["label"]) if ev.get("label") else ""}{_from(x)}</span>'
         f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a></li>'
         for d, w, x, ev in rows[:limit or AGENDA_MAX])
@@ -3574,6 +3597,32 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
 
 # 写真の収め方：縦横比が枠とだいたい同じ（±30%）なら枠いっぱいに（.fill）、違えばぼかしの上に全体を表示（既定）。
 # どんな記事の写真でも同じ型に収まる。スクリプトがないときは全部「全体を表示」
+# 空きに置く小元素が「この記事に関係あるか」（2026-11-12 店長「新闻和小图标如果没关系的话不要这么做」）。FIT_JS の gapEmb が使う。node で単体試験できる純粋な関数だけ
+EMB_REL_JS = r"""
+  const EMB_GENERIC = new Set(['black', 'white', 'captain', 'doctor', 'queen', 'prince', 'princess', 'iron', 'spider', 'agent', 'master', 'mister', 'lord', 'king', 'young', 'super', 'little', 'great', 'dark', 'night', 'light', 'blade', 'dragon', 'knight', 'general', 'special', 'official', 'logo']);
+  const embNorm = s => String(s || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const embCjk = s => /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/.test(s);
+  // 名前から探す字：全角の（）の中は役者の名前（全体だけ。Chris のような名は別人に当たる）、半角の ( ) の中は区別の注記（HD Universe など）なので使わない。
+  // 英字の名前は全体（4 字以上）か、キャラ名が複数語のときの 1 語（5 字以上・一般語でない）
+  const embTerms = a => {
+    const out = new Set(), clean = raw => embNorm(raw).replace(/[^\p{L}\p{N}\s.'-]/gu, ' ').replace(/\s+/g, ' ').trim();
+    const add = (raw, parts) => { const p = clean(raw); if (!p || p === '作品') return;
+      if (embCjk(p)) { if (p.length >= 2) out.add(p); return; }
+      if (p.length >= 4 && !EMB_GENERIC.has(p)) out.add(p);
+      if (parts && p.includes(' ')) p.split(' ').forEach(w => { w = w.replace(/^[.'-]+|[.'-]+$/g, ''); if (w.length >= 5 && !EMB_GENERIC.has(w)) out.add(w); }); };
+    const nm = String(a.name || '').replace(/\([^)]*\)/g, ' ');
+    (nm.match(/（[^）]*）/g) || []).forEach(m => m.slice(1, -1).split(/[、\/]/).forEach(x => add(x, false)));
+    nm.replace(/（[^）]*）/g, ' ').split(/[、\/]|\s·\s/).forEach(x => add(x, true));
+    return [...out];
+  };
+  const embHas = (t, w) => embCjk(w) ? t.includes(w) : new RegExp('(^|[^\\p{L}\\p{N}])' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\p{L}\\p{N}])', 'u').test(t);
+  // 関係のある小元素だけを返す：①記事の字に名前（キャラ・役者）が出る小元素 ②なければ、版面の作品そのもの（own）。名前の情報が無い・出てこない小元素は返さない（空なら置かない）
+  const embRel = (alts, text) => {
+    const t = embNorm(text), named = alts.filter(a => a && a.name && embTerms(a).some(w => embHas(t, w)));
+    return named.length ? named : alts.filter(a => a && a.own);
+  };
+"""
+
 FIT_JS = """
 (() => {
   // 写真を枠に合わせて切るとき（小さいカード・気になるかも・主写真・c3・mini・wc・tape すべて）、主役（顔・題字）の分布 data-m「横;縦」が最も残る位置を探す。残る割合を data-keep（%）に残す（点検が数える）。
@@ -4408,20 +4457,33 @@ FIT_JS = """
     setTimeout(gapEmb, 0);
   };
   // 空きに、その版面の小元素を置く（壁の小さい形のカードの写真の下・予定の日付の下。2026-11-12 店長「这么大的空档…可以加点个性化的要素」審美基準 A6）
-  const embOf = k => { const s = [...document.querySelectorAll('section.sec.has-emb')].find(x => x.dataset.k === k), i = s && s.querySelector('.emb img'); return i && (i.currentSrc || i.src) || ''; };
+  // @EMB_REL@
+  // 候補はその版面の小元素（data-alts）。記事に関係あるものだけから、ページを開くたびにランダムに 1 枚（同じ画面で同じ絵を 2 回出さない）。選んだら組み直しても変えない
+  // （2026-11-12 店長「新闻和小图标如果没关系的话不要这么做」「小图标有好多个可以选的情况下 可以给他加点随机性」）
+  const boardAlts = {}, gapPicked = new Map();
+  const altsOfBoard = k => { if (k in boardAlts) return boardAlts[k];
+    const s = [...document.querySelectorAll('section.sec.has-emb')].find(x => x.dataset.k === k), m = s && s.querySelector('.emb'); let a = [];
+    try { a = JSON.parse(m && m.dataset.alts || '[]'); } catch (_) {}
+    return boardAlts[k] = a.filter(x => x && x.src); };
+  const gapPick = (el, k) => {
+    if (gapPicked.has(el)) return gapPicked.get(el);
+    const rel = embRel(altsOfBoard(k), el.dataset.t || ''), used = new Set([...gapPicked.values()].filter(Boolean).map(a => a.src)), free = rel.filter(a => !used.has(a.src)), pool = free.length ? free : rel;
+    const a = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null; gapPicked.set(el, a); return a; };
   const gapEmb = () => {
     document.querySelectorAll('.wemb').forEach(x => x.remove());
     if (innerWidth <= 760) return;
     document.querySelectorAll('.mgrid .wall > .wc.cmp').forEach(c => {
-      if (c.hidden) return; const p = c.querySelector(':scope > .pic'), src = embOf(c.dataset.k); if (!p || !src) return;
+      if (c.hidden) return; const p = c.querySelector(':scope > .pic'); if (!p) return;
       const cr = c.getBoundingClientRect(), pr = p.getBoundingClientRect(), gap = cr.bottom - pr.bottom - 14; if (gap < 44) return;
-      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = src;
+      const pk = gapPick(c, c.dataset.k); if (!pk) return;   // 関係のある小元素が無い記事は、空きのまま（置かない）
+      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = pk.src; img.addEventListener('error', () => img.remove(), { once: true });
       Object.assign(img.style, {gridColumn: 'auto', gridRow: 'auto', left: p.offsetLeft + 'px', top: (p.offsetTop + p.offsetHeight + 6) + 'px', width: p.offsetWidth + 'px', height: Math.min(gap, 120) + 'px'}); c.append(img);   // 絶対配置の子は升目の指定があるとその升が基準になる：auto にしてカード全体を基準に
     });
     document.querySelectorAll('.fside .agenda li[data-k]').forEach(li => {
-      if (li.hidden) return; const b = li.querySelector(':scope > b'), src = embOf(li.dataset.k); if (!b || !src) return;
+      if (li.hidden) return; const b = li.querySelector(':scope > b'); if (!b) return;
       const sm = b.querySelector('small'), gap = li.getBoundingClientRect().bottom - (sm || b).getBoundingClientRect().bottom - 14; if (gap < 36) return;
-      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = src; img.style.height = Math.min(gap, 64) + 'px'; b.append(img);
+      const pk = gapPick(li, li.dataset.k); if (!pk) return;
+      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = pk.src; img.addEventListener('error', () => img.remove(), { once: true }); img.style.height = Math.min(gap, 64) + 'px'; b.append(img);
     });
   };
   // 小元素（版面の右上のキャラ）の実際の幅だけ、見出しの帯の右を空ける（決め打ちの 260px では、横に広いポーズのキャラが「今週」の数に重なった。2026-11-09）
@@ -4465,6 +4527,8 @@ FIT_JS = """
 })();
 """
 
+
+FIT_JS = FIT_JS.replace("// @EMB_REL@", EMB_REL_JS)
 
 NAV_JS = """
 (() => {

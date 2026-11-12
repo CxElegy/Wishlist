@@ -166,6 +166,54 @@ class Components(unittest.TestCase):
         self.assertIn(".wc>.wemb{position:absolute", render.CSS)
         self.assertIn('<li data-k="', (_pl.Path(render.__file__)).read_text(encoding="utf-8"))
 
+    def test_gap_emblem_relevance_and_random(self):
+        """2026-11-12 店長：空きの小元素は、その記事に関係があるときだけ（「新闻和小图标如果没关系的话不要这么做」）。候補が複数あればランダム（「可以给他加点随机性」）。
+        関係＝記事の字（見出し・強調・一言）にキャラ名か役者名が出る。なければ版面の作品そのもの（own）だけ。どちらも無ければ置かない。"""
+        js = render.FIT_JS
+        self.assertNotIn("@EMB_REL@", js)
+        self.assertIn("const embRel = (alts, text)", js)
+        self.assertIn("gapPick(c, c.dataset.k)", js)
+        self.assertIn("gapPick(li, li.dataset.k)", js)
+        self.assertIn("Math.random() * pool.length", js)   # 関係あるものの中からランダム
+        self.assertIn("free = rel.filter(a => !used.has(a.src))", js)   # 同じ画面で同じ絵を 2 回出さない
+        self.assertNotIn("embOf", js)   # 版面の顔に出ている 1 枚をそのまま使わない
+        self.assertIn("if (!pk) return;", js)   # 関係のある小元素が無ければ空きのまま
+        # 記事の字は data-t で渡す
+        story = {"headline": "Wanda's Alive", "blurb": "VisionQuest", "highlight": ""}
+        self.assertEqual(render._rel_text(story), "Wanda's Alive VisionQuest")
+        # 小元素の名前と「作品そのもの」の印が alts に載る
+        html = render._emblem([{"subject": "Steve Rogers（Chris Evans）", "image": "https://e.com/a.png"},
+                               {"subject": "漫威电影（作品）", "image": "https://e.com/b.png", "shape": "badge", "work": True},
+                               {"subject": "Gudetama", "image": "https://e.com/c.png", "_own": True}])
+        alts = json.loads(__import__("html").unescape(re.search(r'data-alts="([^"]*)"', html).group(1)))
+        self.assertEqual([a.get("name") for a in alts], ["Steve Rogers（Chris Evans）", "漫威电影（作品）", "Gudetama"])
+        self.assertEqual([bool(a.get("own")) for a in alts], [False, True, True])
+        # 版面の名前・keywords と同じ主題だけ own（Gudetama は ぐでたま 板の keywords にある）
+        marked = render.mark_own_emblems({"name": "ぐでたま", "keywords": ["ぐでたま", "Gudetama"], "emblem": [{"subject": "Gudetama", "image": "x"}, {"subject": "Sanrio", "image": "y"}]})
+        self.assertEqual([bool(x.get("_own")) for x in marked], [True, False])
+        self.assertTrue(render.mark_own_emblems({"name": "Vaundy", "emblem": [{"subject": "Vaundy 3", "image": "x"}]})[0].get("_own"))
+
+    @unittest.skipUnless(__import__("shutil").which("node"), "node が無い")
+    def test_gap_emblem_relevance_rule(self):
+        """EMB_REL_JS を node で動かす：名前が出る小元素だけ・無ければ作品そのもの・無ければ空。"""
+        import subprocess, shutil
+        alts = [{"name": "Steve Rogers（Chris Evans）"}, {"name": "Peggy Carter（Hayley Atwell）"}, {"name": "漫威电影（作品）", "own": 1},
+                {"name": "Wanda Maximoff（Elizabeth Olsen）"}, {"name": "Jack Howitzer (HD Universe)"}, {"name": "Yelena Belova / Black Widow（Florence Pugh）"},
+                {"name": "Black Panther（Letitia Wright）"}, {"name": "1f409 アイコン"}, {"src": "no-name"}]
+        cases = {"Wanda's Alive: 'VisionQuest' Post-Credits": ["Wanda Maximoff（Elizabeth Olsen）"],
+                 "Hayley Atwell returns": ["Peggy Carter（Hayley Atwell）"],
+                 "Chris Hemsworth cast": ["漫威电影（作品）"],                      # 役者の名（Chris）だけでは別人に当たらない・作品そのものは残る
+                 "New Black Widow trailer": ["Yelena Belova / Black Widow（Florence Pugh）"],   # black だけでは当たらない
+                 "Peggy and Steve reunite": ["Steve Rogers（Chris Evans）", "Peggy Carter（Hayley Atwell）"],
+                 "A cameo in HD Universe": ["漫威电影（作品）"]}                    # 半角の（注記）は名前に使わない
+        js = render.EMB_REL_JS + "const A=%s;for (const t of %s) console.log(JSON.stringify(embRel(A,t).map(a=>a.name)));" % (json.dumps(alts, ensure_ascii=False), json.dumps(list(cases), ensure_ascii=False))
+        r = subprocess.run([shutil.which("node"), "-e", js], capture_output=True, text=True, encoding="utf-8", check=True)
+        got = [json.loads(l) for l in r.stdout.splitlines()]
+        self.assertEqual(got, list(cases.values()))
+        none = subprocess.run([shutil.which("node"), "-e", render.EMB_REL_JS + "console.log(JSON.stringify(embRel([{name:'Peggy Carter（Hayley Atwell）'},{src:'x'}], 'Totally unrelated news')))"],
+                              capture_output=True, text=True, encoding="utf-8", check=True)
+        self.assertEqual(none.stdout.strip(), "[]")   # 関係なし・作品そのものも無い → 置かない
+
     def test_aesthetic_audit_2026_11_11(self):
         """2026-11-11 審美基準で全体を点検して直した規則：見出しは「…」で切らない（D3）・字体は令牌だけ（D2。中国語のページは端末の中国語フォント 1 種類）・
         読む字は 11px 以上（D4）・版面の整行の重大は 1 つだけ（C2・F1）・気になるかもは段の見出しを外して詰められる（F1）。"""

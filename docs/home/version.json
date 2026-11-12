@@ -1,32 +1,32 @@
 {
- "admin": "6cdd220e577e",
- "admin-ai": "5640c6e3243d",
+ "admin": "e4f27ac59b58",
+ "admin-ai": "db70ac9cd5a0",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "05aed7d0"
+   "4c590a4d"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f2d583df"
+   "6b9e949e"
   ]
  },
- "admin-boards": "d8071553cca4",
+ "admin-boards": "f09ae76257e2",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e2de7a78"
+   "7be2e724"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "5909690f80ab",
+ "admin-emblem": "b06f8e7e59f4",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "140524b8"
+   "c4921744"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,39 +34,39 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "830efbe7"
+   "8bb4f9c1"
   ],
   "emblems": [
    "小元素",
-   "02a2b5a3"
+   "7ecf8520"
   ]
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "9c86e10dc584",
+ "admin-now": "585de5c69da3",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c3b040f1"
+   "a48f047d"
   ],
   "queue": [
    "いまの状況",
-   "9e493a15"
+   "9c9a3de8"
   ],
   "status": [
    "運行状況",
-   "c611b4ed"
+   "57ebfe93"
   ],
   "term-panel": [
    "ライブログ",
-   "5af61942"
+   "38c7be6d"
   ]
  },
- "admin-system": "fbef0b94d457",
+ "admin-system": "295da759fa58",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "dd355ed6"
+   "9b119bc1"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "95602ed0"
+   "6b0bdfeb"
   ]
  },
  "admin_marks": {},
- "heat": "d6c72e8457fa",
+ "heat": "7ec996c620cf",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "98c21435"
+   "3075cc38"
   ],
   "ranking": [
    "ランキング",
-   "2259dc9e"
+   "06b8b484"
   ]
  },
- "index": "31b4a65d28d2",
+ "index": "6a8d398eaa21",
  "index_marks": {
   "front": [
    "トップ",
-   "2fe30b2a"
+   "b0facd54"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "a3d24052"
+   "13f04cff"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "6bccccd4"
+   "8801f67e"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "efef4944"
+   "1c1d12de"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "d1bfee08"
+   "86a8b009"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "0907310d"
+   "75c9178d"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "f53a804f"
   ]
  },
- "updated": "11.12 09:50",
+ "updated": "11.12 10:18",
  "wishlist": "29083940f78b"
 }
