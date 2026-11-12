@@ -1,6 +1,6 @@
 {
- "admin": "ddbf4b4ea584",
- "admin-ai": "5bf155576b49",
+ "admin": "e4f27ac59b58",
+ "admin-ai": "db70ac9cd5a0",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "653a0d39"
+   "6b9e949e"
   ]
  },
  "admin-boards": "f09ae76257e2",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "1bad8f992e46",
+ "admin-emblem": "b06f8e7e59f4",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "97530dac"
+   "c4921744"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,20 +34,20 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "830efbe7"
+   "8bb4f9c1"
   ],
   "emblems": [
    "小元素",
-   "02a2b5a3"
+   "7ecf8520"
   ]
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "a6053ec68528",
+ "admin-now": "585de5c69da3",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "66e7b32c"
+   "a48f047d"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "37d58685"
+   "38c7be6d"
   ]
  },
- "admin-system": "747cd7450ae5",
+ "admin-system": "295da759fa58",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e6ced2b5"
+   "9b119bc1"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f3f79505"
+   "6b0bdfeb"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "06b8b484"
   ]
  },
- "index": "4725a4b53ca8",
+ "index": "6a8d398eaa21",
  "index_marks": {
   "front": [
    "トップ",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "18c8d04f"
+   "d5f617b4"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "f53a804f"
   ]
  },
- "updated": "11.12 10:10",
+ "updated": "11.12 10:18",
  "wishlist": "29083940f78b"
 }
