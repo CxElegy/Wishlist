@@ -479,5 +479,62 @@ class Chain(unittest.TestCase):
             self.assertEqual(self.run_main(["--check"], [{"id": 1, "config": {}}], {}, d), {"due": "true"})
 
 
+class ReachSwap(unittest.TestCase):
+    """T-0229：顔が下限（スマホ 32px）に届かない全身の絵を、同じ人の顔の大きい胸像に入れ替える（emblem_fill.reach_swap）。店長もお客さまの版面も fill_one の中で同じ。"""
+    WIDE = {"subject": "Wide", "image": "emblems/a-wide.webp", "source": "s1", "shape": "cutout", "face": [0.09, 0.07, 0.5, 0.1, 100, 300], "body": [0.06, 0.99, 0.5, 1.2, 0.9]}
+    OK = {"subject": "Ok", "image": "emblems/a-ok.webp", "source": "s2", "shape": "cutout", "face": [0.091, 0.07, 0.5, 0.1, 100, 300], "body": [0.062, 0.992, 0.5, 0.31, 0.9]}
+    BUST = {"subject": "Bust", "image": "emblems/a-bust.webp", "source": "s3", "shape": "cutout", "face": [0.3, 0.1, 0.5, 0.3, 100, 100]}
+
+    def item(self, **kw):
+        return {"name": "A", "emblem_kind": "character", "emblem": [dict(self.WIDE), dict(self.OK), dict(self.BUST), {**self.WIDE, "subject": "Locked", "image": "emblems/a-l.webp", "lock": True}], **kw}
+
+    def test_rows_are_only_unreached_full_body_not_locked_not_tried(self):
+        self.assertEqual([x["subject"] for x in emblem_fill.reach_rows(self.item())], ["Wide"])
+        self.assertEqual(emblem_fill.reach_rows(self.item(emblem_reach_tried={"emblems/a-wide.webp": emblem_fill.REACH_TRIES})), [])
+        self.assertEqual(emblem_fill.reach_rows(self.item(emblem_kind="topic")), [])
+
+    def test_swap_replaces_found_and_counts_tries_when_not(self):
+        from PIL import Image
+        item = self.item()
+        item["emblem"].append({**self.WIDE, "subject": "Gone", "image": "emblems/a-gone.webp", "source": "s9"})
+        saved = {}
+
+        def bust(it, x, skip, log=print, **kw):
+            return ("https://o/wide/bust.webp", Image.new("RGBA", (4, 4)), 0.3) if x["subject"] == "Wide" else None
+        with mock.patch.object(emblem_fill, "bust_replacement", side_effect=bust), mock.patch.object(emblem_fill.emblem, "save_cut", side_effect=lambda im, slug: saved.setdefault("slug", slug)),                 mock.patch.object(emblem_fill.emblem, "write_item", side_effect=lambda n, rows, r: saved.setdefault("rows", rows)), mock.patch.object(emblem_fill.emblem_face, "measure_item"),                 mock.patch.object(emblem_fill, "load_items", return_value=[item]), mock.patch.object(emblem_fill, "_set_field", side_effect=lambda n, k, v: saved.setdefault(k, v)):
+            self.assertEqual(emblem_fill.reach_swap(item, log=lambda *a: None), 1)
+        rows = {x["subject"]: x for x in saved["rows"]}
+        self.assertEqual(rows["Wide"]["source"], "https://o/wide/bust.webp")
+        self.assertNotIn("body", rows["Wide"])
+        self.assertEqual(rows["Gone"]["source"], "s9")   # 取れなかった人は元のまま（外さない）
+        self.assertEqual(rows["Locked"]["source"], "s1")
+        self.assertIn('"emblems/a-gone.webp": 1', saved["emblem_reach_tried"])
+
+    def test_env_errors_are_not_counted_and_never_raise(self):
+        """rembg が無い・網が落ちた（bust_replacement が「[胸像]」と記録して None）は回数に数えない。思わぬ例外も外へ出さず 0。"""
+        item = self.item()
+        saved = {}
+
+        def broken_env(it, x, skip, log=print, **kw):
+            log(f"  [胸像] {x['subject']}：No module named 'rembg'")
+        with mock.patch.object(emblem_fill, "bust_replacement", side_effect=broken_env), mock.patch.object(emblem_fill, "_set_field", side_effect=lambda n, k, v: saved.setdefault(k, v)):
+            self.assertEqual(emblem_fill.reach_swap(item, log=lambda *a: None), 0)
+        self.assertNotIn("emblem_reach_tried", saved)
+        with mock.patch.object(emblem_fill, "bust_replacement", side_effect=RuntimeError("boom")):
+            self.assertEqual(emblem_fill.reach_swap(item, log=lambda *a: None), 0)
+
+    def test_ok_board_with_unreached_body_is_due_until_tries_are_used(self):
+        wide = dict(self.WIDE)
+        ok = {"id": 1, "name": "A", "config": {"emblem_state": {"state": "ok", "have": 1, "at": 5, "v": le.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}, "emblem": [wide]}}
+        self.assertEqual([b["id"] for b in le.due([ok], 100)], [1])
+        used = {**ok, "config": {**ok["config"], "emblem_reach_tried": {wide["image"]: emblem_fill.REACH_TRIES}}}
+        self.assertEqual(le.due([used], 100), [])
+
+    def test_swap_is_in_fill_one_chain_for_both_shops(self):
+        src = (ROOT / "scripts" / "emblem_fill.py").read_text(encoding="utf-8")
+        self.assertIn("| reach_swap(item, log)", src)   # fill_one の中：店長もお客さまの版面（library_emblem.fill_board が fill_one を回す）も同じ
+        self.assertIn("emblem_reach_tried", (ROOT / "scripts" / "library_emblem.py").read_text(encoding="utf-8"))
+
+
 if __name__ == "__main__":
     unittest.main()

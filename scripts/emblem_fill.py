@@ -2149,7 +2149,7 @@ def due(prog, items, now):
         unbreak_due = any(x.get("v", 1) < BROKEN_V for x in broken.get(item["name"]) or [])   # 前の規則で外した小元素の見直し待ち
         unbreak_due = unbreak_due or reject_release_due(item)   # 外した画像の札の見直し待ち（規則の版が上がった後 1 回）   # 縮めた網址の札（stale_narrow_rejects）は fill_one の release_small_rejects でしか解けないので、あれば番に入れる（そろった・失敗で材料が同じ版面は due が飛ばし、E24 が 18 のまま残った）
         unbreak_due = unbreak_due or bool(stale_narrow_rejects(item, broken.get(item["name"])))
-        if st["state"] == "ok" and not broken_cuts(item) and not unbreak_due and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
+        if st["state"] == "ok" and not broken_cuts(item) and not unbreak_due and not reach_rows(item) and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
         if (not os.environ.get("EMBLEM_RETRY_NOW") and frozen(item, e, unbreak_due)):   # 名簿にまだ試していない人がいる失敗は、1 周するまで止めない（先頭の 10 人だけで凍っていた：漫威电影 3/81）   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
             continue                                                            # 壊れた小元素（頭が切れた・ぼやけた）が出ている版面も待たずに外して取り直す
@@ -2250,7 +2250,7 @@ def fill_one(item, log=print):
             log(f"  [名簿] {item['name']}：{e}")
     if unbreak(item, log) | release_head_rejects(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
-    if localize_remote(item, log) | off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log) | drop_closeups(item, log) | official_swap(item, log):
+    if localize_remote(item, log) | off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log) | drop_closeups(item, log) | official_swap(item, log) | reach_swap(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
     if status(item)["state"] == "ok":   # 名簿を数え直しても足りている（名簿を確かめに来ただけ）：集めない
         st = status(item)
@@ -2778,6 +2778,91 @@ def swap_source(item, x):
     if item.get("emblem_kind") == "group":
         return "公式サイトの" not in (x.get("why") or "")
     return emblem.fandom_sourced(x)
+
+
+REACH_PER_ROUND = 6   # 1 回の掃除で、顔が下限に届かない全身の絵の代わり（胸像）を探す人数（rembg で切るので重い）
+REACH_TRIES = 2       # 代わりが取れなかった回数がこれに届いた絵は、探すのをやめて元のまま（emblem_reach_tried）。外しはしない
+
+
+def reach_rows(item, size="phone"):
+    """規則どおりに表示してもスマホで顔が下限（32px）に届かない全身の小元素（固定でなく、探して取れなかった回数が REACH_TRIES 未満）→ [(顔の px の小さい順に 小元素)]。
+    点検 E31 の情報の行（emblem_face.unreached）と同じ数え方。胸像・顔なし・固定は対象外。"""
+    if kind_of(item) not in ("person", "group", "character"):
+        return []
+    tried = item.get("emblem_reach_tried") if isinstance(item.get("emblem_reach_tried"), dict) else {}
+    rows, by = [], {}
+    for x in item.get("emblem") or []:
+        r = emblem_face.item_row(x)
+        if r and not x.get("lock") and x.get("shape") != "badge" and int(tried.get(x.get("image")) or 0) < REACH_TRIES:
+            rows.append((x["image"], r))
+            by[x["image"]] = x
+    return [by[n] for n, _ in sorted(emblem_face.unreached(rows, size), key=lambda t: t[1])]
+
+
+def reach_swap(item, log=print):
+    """reach_swap_run の外側：どんな失敗でも例外を外へ出さず 0（元の小元素はそのまま）。後台・お客さまの版面の fill_one を落とさない。"""
+    try:
+        return reach_swap_run(item, log)
+    except Exception as e:   # OutOfTime は _check_time を内側で拾う。ここに来るのは思わぬ失敗（rembg 無し・網・書き込み）
+        log(f"  [顔が届く絵へ] {item.get('name')}：失敗して元のまま（{type(e).__name__}: {e}）")
+        return 0
+
+
+def reach_swap_run(item, log=print):
+    """顔が届かない全身の小元素（reach_rows）を、同じ人の顔の大きい絵（胸像：Fandom・公式サイト）に入れ替える（胸像の入れ替え stage_closeups と同じ
+    bust_replacement・取れた人から入れ替え・取れなければ元のまま。元より質が下がるものは取らない）。1 回 REACH_PER_ROUND 人。
+    取れなかった絵は emblem_reach_tried {画像: 回数} に数え、REACH_TRIES 回で探すのをやめる（外さない）。店長もお客さまの版面（fill_one の中）も同じ。→ 入れ替えた人数。"""
+    rows = reach_rows(item)[:REACH_PER_ROUND]
+    if not rows:
+        return 0
+    name = item["name"]
+    skip = {u for u in item.get("emblem_reject") or []} | {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
+    tried = dict(item.get("emblem_reach_tried") or {})
+    swapped = {}
+    for x in rows:
+        try:
+            _check_time()
+        except OutOfTime:
+            break
+        try:
+            from PIL import Image
+            orig = Image.open(emblem.sitedir.SITE_DIR / str(x["image"]))
+            orig.load()
+        except Exception:
+            orig = None
+        env_err = []   # 環境の失敗（rembg が無い・網が落ちた）は「胸像が無かった」ではない：回数に数えない（数えると rembg の無い PC の試走で全員が REACH_TRIES に届き、探すのをやめてしまう）
+
+        def log2(m, *a, **k):
+            if str(m).lstrip().startswith("[胸像]"):   # bust_replacement が find_bust の例外を出すときの印
+                env_err.append(m)
+            log(m, *a, **k)
+        got = bust_replacement(item, x, skip, log2, orig=orig)
+        if got:
+            swapped[x["image"]] = got
+            skip.add(got[0])
+        elif not env_err:
+            tried[x["image"]] = int(tried.get(x["image"]) or 0) + 1
+    if tried != (item.get("emblem_reach_tried") or {}):
+        with WRITE_LOCK:
+            _set_field(name, "emblem_reach_tried", json.dumps(tried, ensure_ascii=False) + "   # 顔が下限に届かない全身の絵の代わりを探して取れなかった回数（reach_swap。REACH_TRIES 回でやめる）")
+    if not swapped:
+        return 0
+    out = []
+    for x in item.get("emblem") or []:
+        if isinstance(x, dict) and x.get("image") in swapped:
+            url, cut, fs = swapped[x["image"]]
+            slug = emblem.slugify(name, x["subject"]) + "-bust"
+            emblem.save_cut(cut, slug)
+            y = {k: v for k, v in x.items() if k not in emblem.EMBLEM_MEASURED and k != "body"}   # 全身の体つき（body）も捨てる：胸像は顔で枠にそろえる
+            y.update(bust_fields(item, x, url, slug, fs))
+            out.append(y)
+        else:
+            out.append(x)
+    with WRITE_LOCK:
+        emblem.write_item(name, out, None)
+        emblem_face.measure_item(next((i for i in load_items() if i["name"] == name), item), log)
+    log(f"  [顔が届く絵へ] {name}：全身で顔が下限に届かない絵を胸像に入れ替え {len(swapped)}・まだ届かない {len(rows) - len(swapped)}")
+    return len(swapped)
 
 
 def fandom_rows(item):
