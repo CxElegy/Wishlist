@@ -163,7 +163,7 @@ def measure(runs, fit_js=None, log=None, full=False):
                     s = smap.get(u, "S")
                     return r.fulfill(status=200, body=_png(*SHAPES[s]) if full else pngs[s], content_type="image/png")
                 pg.route(re.compile(r".*"), rt)
-                pg.goto("http://wl.test/home/index.html", wait_until="load", timeout=30000)
+                pg.goto("http://wl.test/home/index.html", wait_until="load", timeout=90000 if full else 30000)   # 取り直し（大きいページ）は負荷で 30 秒を超える
                 waited = pg.wait_for_timeout(1200) if full else pg.evaluate(SETTLE_JS, 3000)
                 if vw == NARROW:
                     o = pg.evaluate(NARROW_JS)
