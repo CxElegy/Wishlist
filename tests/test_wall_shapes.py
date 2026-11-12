@@ -11,11 +11,12 @@ ux_check の壁の空き ✓ は、写しが空だと写真が灰色の 8x8 で�
 - 1.2 秒の固定待ちの代わりに、壁の写真が読み終わり・形が 0.3 秒動かなくなるまで待つ（最長 3 秒）。
 - 43 通りを 2 つのファイル（この試験と test_wall_shapes_b）に分けて、run_tests.py が並べて流す。
 直す前の作りで測った通りごとの値は tests/fixtures/wall_shapes_baseline.json。CSS と FIT_JS が測った時と同じ間は、合否が全部同じ・値の差 ±1 以内を確かめる。
-直す前の作りは負荷で落ち着く前に測ることがある（2026-11-13：同じ通りを 4 回測って 0・0・2・2）。そういう通りは何回か測って多い方を値にする（json の note）。
+直す前の作りは負荷で落ち着く前に測ることがある（2026-11-13：1.2 秒待ちで 4 回測って 0・0・2・2、待ちを 4 秒にすると 3 回とも 0）。
+そういう通りは待ちを長くして測り直した値にする（json の note）。
 CSS か FIT_JS が変わったら、その比べ方だけ飛ばして飛ばしたと書く（閾値の点検はいつも流す）。
 取り直し（直す前の作り＝大きいページ・写真ごとの PIL・1.2 秒待ちで測る。Linux のコンテナで。1 回 5 分以内に分ける）：
   python tests/test_wall_shapes.py --fixture            # docs/home から切り出し直す
-  python tests/test_wall_shapes.py --baseline 0/4 … 3/4   # 4 つに分けて測り、wall_shapes_baseline.json に足す"""
+  python tests/test_wall_shapes.py --baseline 0/8 … 7/8   # 8 つに分けて測り（4 つだと負荷で 5 分を超えた）、wall_shapes_baseline.json に足す"""
 import hashlib
 import io
 import itertools
