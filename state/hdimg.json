@@ -36,19 +36,6 @@
   "target": 720,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261109ac/40/w480h360/20261109/1777-867f147d78dceb2e18d1cc5f9eff00a3.jpg": {
-  "w": 480,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.486,
-  "local": "pics/0f07457b3b3be351.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "http://n.sinaimg.cn/sinakd20261109ac/533/w480h853/20261109/440b-04a80a8a155b76351a83ae1d435d6b33.jpg": {
   "w": 480,
   "h": 853,
@@ -72,6 +59,19 @@
   "h": 853,
   "target": 720,
   "v": 3
+ },
+ "http://n.sinaimg.cn/sinakd20261112ac/278/w480h598/20261112/9f83-d15bc360c54c8c54e8bc07537072a9f2.jpg": {
+  "w": 480,
+  "h": 598,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.486,
+  "local": "pics/f5480ea33ba97cab.webp",
+  "out": [
+   1027,
+   1280
+  ],
+  "why": "看不清"
  },
  "http://www.geektown.co.uk/wp-content/uploads/2026/11/jm.jpg": {
   "w": 1300,
@@ -414,6 +414,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cassette.sphdigital.com.sg/image/zaobao/71625317a90339afe6591be559adfc3af779e6ecee39e14a0b7a3e71b75667d9?f=webp&o=zbimg&oloc=se": {
+  "w": 960,
+  "h": 540,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn-origin.cool-style.com.tw/cool/2026/11/spy.jpg": {
   "w": 1200,
   "h": 628,
@@ -483,11 +489,17 @@
   "blur": 0.345
  },
  "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg": {
+  "w": 800,
+  "h": 369,
   "target": 1280,
   "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-12"
+  "blur": 0.422,
+  "local": "pics/c7bbe061933e796f.webp",
+  "out": [
+   1280,
+   590
+  ],
+  "why": "看不清"
  },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
@@ -555,6 +567,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.nc.press/news/photo/202611/630807_869863_5920.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
   "v": 3
  },
  "https://cdn.ome.lt/kDm8ymHW3CqrptnIQ6Gne4xiVXw=/1200x630/smart/filters:format(webp)/extras/conteudos/Monarca_de_la_Lucha_en_Catedral_Esmeralda.png": {
@@ -1259,12 +1277,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.jkn.co.kr/data/images/full/111/03/1110391.png?v=1794310048&width=1200&height=630": {
-  "w": 1200,
-  "h": 604,
-  "target": 720,
-  "v": 3
- },
  "https://images.khan.co.kr/article/2026/11/05/news-p.v1.20261105.5c362c1065ba4ee993fc75e6bed2f3f3_P1.jpg": {
   "w": 1086,
   "h": 1448,
@@ -1488,12 +1500,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h2s8z.img": {
   "w": 600,
   "h": 338,
-  "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2har4k.img": {
-  "w": 1280,
-  "h": 1071,
   "target": 720,
   "v": 3
  },
@@ -1884,12 +1890,6 @@
   "target": 720,
   "v": 3
  },
- "https://m.media-amazon.com/images/I/41sVaqScGAL._SL500_.jpg": {
-  "w": 500,
-  "h": 500,
-  "target": 720,
-  "v": 3
- },
  "https://m.media-amazon.com/images/M/MV5BMzRiY2E4ZDgtMzRkYi00MDliLTgxY2YtNzQ4OWY0Y2I1MTFlXkEyXkFqcGc@._V1_QL75_UX500_CR0,0,500,281_.jpg": {
   "w": 500,
   "h": 281,
@@ -1912,12 +1912,6 @@
  "https://media.assettype.com/outlooktraveller/2026-11-10/vx9d1246/findingharryhoka16x9.avif?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://media.bastillepost.com/wp-content/uploads/hongkong/static/20230718-default-feature-704x369.jpg": {
-  "w": 704,
-  "h": 369,
   "target": 720,
   "v": 3
  },
@@ -1955,12 +1949,6 @@
   "w": 1010,
   "h": 505,
   "target": 1280,
-  "v": 3
- },
- "https://media.trilltrill.jp/articles/5178164/featured-image.22dc5c43a1c941aac39c60a2fb3ccf8a?w=1200": {
-  "w": 1200,
-  "h": 1200,
-  "target": 720,
   "v": 3
  },
  "https://media.vanityfair.com/photos/6af20a08c16158eab34f472e/16:9/w_1280,c_limit/01.jpg": {
@@ -2629,6 +2617,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/175270/5/175270-5-f05ad8883a778c79cbac2917faec7f9e-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/18505/4587/18505-4587-bebfe856e674b513b3c8a75956b34dcb-1500x650.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1500,
   "h": 650,
@@ -2639,6 +2633,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/25284/2077/25284-2077-3cc151eb6f4c55de8fd3cd54a7cfc4f8-2000x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1260,
+  "h": 1260,
+  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/25847/266/25847-266-53413d9ebc7d639256ecebe9932b19f6-1200x800.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3692,15 +3692,15 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.WpotO6JzA7un9x-DZAYdzQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.YGjYsiiW3Rrdmh2HSSaDHg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.YWtQODOba0e7szUvdUr-lA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3741,6 +3741,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.lgxuSY49gqVbCmpf0WKc_Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 527,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.o8UnF04Cw8sWVwpNxcHJ5g&pid=News&w=360": {
   "w": 360,
   "h": 203,
@@ -3753,6 +3759,12 @@
    609
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.p1KmnFB9-vqsApFkUm5iGw&pid=News&w=600": {
+  "w": 600,
+  "h": 450,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
@@ -3799,6 +3811,12 @@
    669
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.wgtCAQlb4BvpVTs9cSRBYA&pid=News&w=820": {
+  "w": 700,
+  "h": 402,
+  "target": 720,
+  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/03/bnt202611030081.jpg": {
   "w": 2000,
@@ -4056,6 +4074,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.nikkansports.com/sports/news/img/202611120000167-w500_0.jpg": {
+  "w": 500,
+  "h": 396,
+  "target": 720,
+  "v": 3
  },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6TrophiesAchievements.jpg": {
   "w": 2000,
