@@ -202,6 +202,51 @@ class ShownFacePx(unittest.TestCase):
         self.assertEqual(ef.face_class([0.1, 2.0, 0.5, 0.5, 0.9], 0.2), "cut")
         self.assertEqual(ef.face_class([0.1, 0.9, 0.5, 0.5, 0.8], 0.1), "full")
         self.assertEqual(ef.face_class([0.1, 0.9, 0.5, 0.5, 0.8], 0.3), "big")
-        self.assertEqual(ef.shown_face_px(0.1, [0.1, 0.9, 0.5, 0.5, 0.8, 0.8]), 14.5)   # 116 / 0.8 = 145 → 顔 14.5px
+        self.assertEqual(ef.shown_face_px(0.1, [0.1, 0.9, 0.5, 0.5, 0.8, 0.8]), 44.0)   # 116 / 0.8 = 145 → 顔 14.5px では見えない → 顔 44px まで大きくして上半身に切る（I1c）
         self.assertEqual(ef.shown_face_px(0.32, None, 1.0), 49.9)
         self.assertIsNone(ef.shown_face_px(0, None, 1.0))
+
+
+class FaceMin(unittest.TestCase):
+    """審美基準 I1c（2026-11-12 店長「这还是有点小 看不清人脸」）：人物の小元素の顔は、どの幅でも下限以上。全身で届かなければ上半身に切る。"""
+
+    def test_full_body_is_cut_to_reach_min(self):
+        makima = [0.062, 0.992, 0.5, 0.31, 0.9, 0.93]   # ふつうの体つきの立ち絵：顔は絵の高さの 9%
+        for size, fmin in (("phone", 32), ("pc", 44)):
+            face, h, vis, cut = ef.shown(0.091, makima, None, size)
+            self.assertGreaterEqual(face, fmin)
+            self.assertTrue(cut)                                     # 全身のままでは入らない → 上半身
+            self.assertLessEqual(vis, ef.SIZES[size]["vmax"])        # 見せる高さは上限まで（点検 E4 の 140・215px に入る）
+            self.assertGreaterEqual(vis, ef.SIZES[size]["eh"])       # 頭だけの小さい切れ端にしない
+
+    def test_cut_and_small_bust_reach_min(self):
+        self.assertGreaterEqual(ef.shown_face_px(0.21, [0.138, 2.4, 0.5, 0.75, 0.9, 2.26], None, "phone"), 32)   # 取るときに切った上半身（绝区零）：前は 17〜24px
+        self.assertGreaterEqual(ef.shown_face_px(0.1, None, 1.6, "phone", 0.4), 32)   # 拡大 1.6 倍で足りなかった胸像（札 small）：前は 16px
+        self.assertLessEqual(ef.shown(0.1, None, 1.6, "phone", 0.85)[1] * 0.85, 140.5)   # 横に広い絵は幅 140px まで（題字・話題度に重ねない）＝下限に届かない（選び方で替える対象）
+        self.assertEqual(ef.shown_face_px(0.32, None, 1.0, "phone"), 32.0)       # そろっている胸像はそのまま（帯に合わせた拡大 1.15 倍で 36.8px）
+
+    def test_big_head_stays_whole(self):
+        face, h, vis, cut = ef.shown(0.3, [0.06, 0.99, 0.5, 0.6, 0.9, 0.93], None, "phone")   # 頭の大きいキャラ・マスコット：切らない（emblem.md「全身のまま」）
+        self.assertFalse(cut)
+        self.assertEqual(h, vis)
+        self.assertEqual((face, h), (30.0, 100))   # 胸像の枠の高さ（100px）いっぱいまで大きく：顔 30px（前は 74 ÷ 0.93 × 0.3 = 24px）。頭が絵の 4 割あるので分かる
+        face, h, vis, cut = ef.shown(0.76, [0.06, 0.998, 0.5, 0.7, 0.9, 0.938], None, "phone")   # ポチタ：顔は十分大きい → 大きさは前のまま
+        self.assertEqual(h, round(74 / 0.938, 1))
+
+    def test_mascot_and_low_face(self):
+        # あつ森の住民：顔の箱が絵の 19%（CUT_BELOW 以上）＝頭の大きいキャラ → 切らず全身のまま枠いっぱい
+        face, h, vis, cut = ef.shown(0.19, [0.06, 0.99, 0.5, 0.75, 0.9, 0.93], None, "phone", None, 0.2)
+        self.assertFalse(cut)
+        self.assertEqual((h, vis), (100, 100))
+        # 頭の上に武器・上げた腕（顔が絵の上から 37% の所）：顔とその下の半分が枠に入る大きさまで。顔の途中で切らない
+        face, h, vis, cut = ef.shown(0.169, [0.138, 2.4, 0.5, 0.9, 0.9, 2.26], None, "phone", None, 0.371)
+        self.assertLessEqual((0.371 + 0.169) * h, vis)
+        self.assertGreater(face, 0.169 * 100)
+
+    def test_wide_pose_is_bounded(self):
+        face, h, vis, cut = ef.shown(0.09, [0.06, 0.99, 0.5, 1.2, 0.9, 0.93], None, "phone")   # 横に広いポーズ：幅 140px まで（題字の場所を取らない）
+        self.assertLessEqual(h * 1.2, 140.5)
+
+
+if __name__ == "__main__":
+    unittest.main()

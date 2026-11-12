@@ -632,14 +632,23 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
   drop-shadow(var(--sx) var(--sy) 0 var(--ink)) drop-shadow(0 10px 12px rgba(0,0,0,.22))}  /* 案 A（2026-10-31 ユーザー）：墨の硬い影 4px＋薄いぼかし。フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
 .emb-in{display:flex;align-items:flex-end}
 .emb{clip-path:inset(-100vh -100vw -14px -100vw)}  /* 帯の線より下は見せない（飛び出す動きの途中）：下のニュースの字・ボタンに重ねない。絵そのものは線より上に置くので切れない。-14px はフチ（5.5px）と影（8px）の分 */
-.emb img.fz{align-self:flex-start;height:calc(100% * var(--m));max-width:230px;object-position:top;clip-path:inset(0 0 calc(100% * (var(--m) - 1) / var(--m)) 0)}  /* 顔が小さい絵は拡大して、頭の位置はそのまま・下を切る（emblem_face.fit：顔の高さを枠の 32% に、1.6 倍まで） */
+.emb{--eh:156px;--fmin:44px;--vmax:156px;--bw:230px}  /* 審美基準 I1c（2026-11-12 店長「这还是有点小 看不清人脸」）：人物の顔の高さの下限 --fmin（PC 44px・スマホ 32px＝胸像の顔と同じ。帯に合わせた拡大 1.15 倍で 36.8px）。--eh = 小元素の枠の高さ（.emb の height と同じ）、--vmax = 顔のために大きくするときの見せる高さの上限（胸像の枠の高さ：切った全身は胸像と同じ枠に入る）。幅の上限は --bw（PC 230px・スマホ 140px：題字・話題度・「今週」の場所を取らない。横に広い絵は下限に届かないことがある） */
+.emb img.fz{align-self:flex-start;--fzh:min(max(calc(var(--eh) * var(--m)),min(calc(var(--fmin) / var(--fs,1)),calc(var(--eh) * 3.4),calc(var(--bw) / var(--fa,.6)))),calc(230px / var(--fa,.6)));height:min(var(--eh),var(--fzh));width:calc(var(--fzh) * var(--fa,.6));max-width:230px;object-fit:cover;object-position:top}  /* 顔が小さい絵は拡大して、頭の位置はそのまま・下を切る（emblem_face.fit：顔の高さを枠の 32% に、1.6 倍まで） */
 .emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:190px;object-fit:contain;object-position:bottom}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
 .emb{--leg:116px;--legc:290px;--anc:62px;--bmax:200px}  /* 全身の立ち絵の「目から足の裏まで」の長さ（emblem.body_marks）。どのキャラも同じ背の高さに見える */
-.emb img.body{--bh:calc(var(--leg) / var(--bl));--bz:min(var(--bh), var(--bmax));height:var(--bz);width:calc(var(--bz) * var(--ba));max-width:none;
+.emb img.body{--bh:calc(var(--leg) / var(--bl));--b0:min(var(--bh), var(--bmax));--bigh:.16;
+ --hf:calc(var(--fmin) / var(--fh,9));--c:calc(var(--be,0) + .4 * (var(--bf) - var(--be,0)));--q:clamp(0,calc((var(--bigh) - var(--fh,9)) * 1000),1);
+ --cc:max(var(--c),calc(var(--ft,0) + 2 * var(--fh,9)));--hw:max(var(--b0),min(var(--hf),var(--vmax)));--hc:min(max(var(--hf),calc(var(--eh) / var(--cc))),calc(var(--vmax) / (var(--ft,0) + 1.5 * var(--fh,9))));
+ --sw:max(0px,min(var(--hc),calc((var(--hf) - var(--vmax)) * 1000 * var(--q)),calc((var(--hc) - var(--hw)) * 1000)));
+ --bz:max(var(--b0),min(max(var(--hw),var(--sw)),calc(var(--bw) / var(--ba))));--vis:min(var(--bz),max(min(calc(var(--cc) * var(--bz)),var(--vmax)),calc(var(--bz) - var(--sw) * 1000)));
+ height:var(--vis);width:calc(var(--bz) * var(--ba));max-width:none;object-fit:cover;object-position:top;
+ /* I1c：顔（--fh = 顔の高さ ÷ 絵の高さ）が --fmin に届く大きさ --hf まで大きくする。全身のまま高さ --vmax に入れば全身（--hw）。入らなければ（--sw > 0）上半身に切る：
+    顔が --fmin（切った所までが枠の高さ --eh 以上）になる大きさ --hc にして、腰（目から「目〜足の裏」の 40%＝--c、emblem.bust_from_body と同じ線。顔の下に顔 1 つ分は見せる＝--cc）か --vmax の近いほうから下を切る。顔が絵の下のほうにある絵（頭の上に武器・帽子・上げた腕：--ft = 顔の上の端）は、顔とその下の半分が枠に入る大きさまで（--vis = 見せる高さ。枠を --vis の高さにして object-fit:cover で上から見せる：切った所が帯の線。隠れた下半分を置かないので、傾きで画面の右へはみ出さない）。
+    頭の大きいキャラ・マスコット（顔が絵の 16% 以上＝emblem_face.CUT_BELOW、--q = 0）は切らず、全身のまま --vmax まで。全身のままのほうが大きく見せられる絵も切らない。顔を測っていない絵（--fh なし）は前のまま。幅は --bw まで */
  margin-bottom:0;  /* 絵の下端を帯の線に（足より下の尻尾・武器・裾があれば、その分だけ足が少し上がる）。帯の線より下へは出さない：下のニュースの字に重ねず、切れもしない。高さは --bmax まで */
- margin-right:calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
+ margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),min(0px,calc(-999px + (var(--bz) - var(--b0)) * 1000)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置。顔のために大きくした絵（--bz > --b0）は右へ出さない（I1c：大きい絵が画面の右へはみ出す・E5） */
 .emb{--nbt:156px;--nw:190px}.emb img.nb{--nz:min(calc(var(--nbt) / var(--nh)),calc(var(--nw) / var(--na)),calc(var(--nbt) * 1.6));height:var(--nz);width:auto;max-width:none;object-fit:fill;margin-bottom:calc(var(--nz) * var(--ng) * -1)}  /* 顔のない絵（怪物・覆面・物）：顔でなく体の枠（不透明な所の外接枠 x.bb）でそろえる。高さ = --nbt ÷ 枠の高さの割合（幅は --nw まで、1.6 倍まで）、下の端を帯の線に。emblem_face.none_kind の ①② */
-.emb img.body.cut{--bh:calc(var(--legc) / var(--bl));margin-bottom:0}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
+.emb img.body.cut{--bh:calc(var(--legc) / var(--bl));--c:1;--bigh:9}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
 .emb img.logo{height:62%;max-width:150px}.emb img.logo.wide{height:auto;width:220px;max-width:220px;margin-bottom:12%}  /* 横長の文字のロゴは幅で大きく */
 .emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
@@ -656,8 +665,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 @keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 6px);rotate:-3deg}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
- .emb img.body{margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),-22px)}}  /* 横に長い立ち絵（武器・尻尾）が画面の右へ 1〜11px はみ出す（ux_check E5：绝区零・Astrae Oratio）：右へ出す分を 22px までに */
+@media (max-width:600px){.emb{height:100px;--eh:100px;--fmin:32px;--vmax:100px;--bw:140px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
+ .emb img.body{margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),min(0px,calc(-22px + (var(--bz) - var(--b0)) * 1000)))}}  /* 横に長い立ち絵（武器・尻尾）が画面の右へ 1〜11px はみ出す（ux_check E5：绝区零・Astrae Oratio）：右へ出す分を 22px までに */
 .emb img{transition:opacity .25s ease-out,transform .25s ease-out}
 .emb-fade .emb img:not(.ld){opacity:0;transform:translateY(8px)}  /* 読み込みが終わる（decode）まで見せず、終わったら下から少し上がって現れる：空 → いきなり絵、の「パッ」をなくす */
 .pic img{transition:opacity .3s ease-out}
@@ -1462,12 +1471,14 @@ def _emblem_img(a):
     """小元素 1 枚の HTML。カード（badge）で取景（crop）があれば 4:5 の窓にその範囲だけを見せる。
     顔の割合（fs）が基準より大きい（アップの）ものは小さく表示して、どの版面でも顔が同じくらいの大きさに見えるように。"""
     m = a.get("m")   # 顔の大きさをそろえる倍率（emblem_face.fit）：1 未満は小さく（アップ）、1 以上は拡大して下を切る（.fz）
-    k = (f' style="--k:{m:.3f}"' if m < 1 else f' style="--m:{m:.3f}"') if m else f' style="--k:{min(1, FACE_SHARE / a["fs"]):.3f}"' if a.get("fs") else ""
+    fsv = (f';--fs:{a["fs"]:.3f}' if a.get("fs") else "") + (f';--fa:{a["fa"]:.3f}' if a.get("fa") else "")   # --fa 幅 ÷ 高さ（大きくしても幅 --bw まで）・ 顔の高さ ÷ 絵の高さ：拡大が足りない絵（.fz）を顔の下限まで大きくする材料（I1c）
+    k = (f' style="--k:{m:.3f}"' if m < 1 else f' style="--m:{m:.3f}{fsv}"') if m else f' style="--k:{min(1, FACE_SHARE / a["fs"]):.3f}"' if a.get("fs") else ""
     if a.get("nb"):   # 顔なし：不透明な所の高さをどの絵も同じに、下の端を帯の線に
         k = ' style="--nh:{};--ng:{};--na:{}"'.format(*a["nb"])
     if a.get("body"):   # 全身：目から足の裏までの長さをどのキャラも同じに、足の裏を帯の線に
         b = a["body"]
-        k = ' style="--bl:{:.3f};--bf:{:.3f};--bc:{:.3f};--ba:{:.3f}"'.format(b[5] if len(b) > 5 else b[1] - b[0], b[1], b[2], b[3])
+        k = ' style="--bl:{:.3f};--bf:{:.3f};--bc:{:.3f};--ba:{:.3f};--be:{:.3f}{}"'.format(b[5] if len(b) > 5 else b[1] - b[0], b[1], b[2], b[3], b[0],
+                                                                                  (f';--fh:{a["bf"]:.3f}' + (f';--ft:{a["bt"]:.3f}' if a.get("bt") else "")) if a.get("bf") else "")   # --be 目の線・--fh 顔の高さ・--ft 顔の上の端：顔の下限（I1c）
     body_cls = (" body cut" if a["body"][1] > 1 else " body") if a.get("body") else " nb" if a.get("nb") else " fz" if m and m >= 1 else ""
     img = (f'<img class="{a["shape"]}{body_cls}"{k} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-e="x">')
     c = a.get("crop")
@@ -1506,10 +1517,14 @@ def _emblem(items, ring="accent"):
         fc = x.get("face")
         if a.get("body") and isinstance(fc, list) and fc and isinstance(fc[0], (int, float)) and fc[0] > 0:
             a["bf"] = float(fc[0])   # 全身の顔の高さ ÷ 絵の高さ：点検（emb_check E29）が表示した顔の px を数える材料
+            if len(fc) > 1 and isinstance(fc[1], (int, float)) and 0 < fc[1] < 1:
+                a["bt"] = float(fc[1])   # 顔の上の端 ÷ 絵の高さ：上半身に切ってよいか（顔の下まで枠に入るか）を決める材料（I1c）
         if not a.get("body") and a["shape"] == "cutout" and isinstance(fc, list) and len(fc) == 6 and all(isinstance(v, (int, float)) for v in fc):
             m, _ = emblem_face.fit(fc)   # 測ってある顔：拡大も縮小もして、顔の高さをそろえる
             if m:
                 a["m"] = m
+                if fc[4] > 0 and fc[5] > 0:
+                    a["fa"] = round(fc[4] / fc[5], 3)   # 幅 ÷ 高さ：顔の下限まで大きくするとき、幅を --bw までに（I1c）
                 a["fs"] = float(fc[0])   # 点検（ux_check E14）が「顔の高さ × 倍率」を数える材料。お客さまの版面は x.fs がない
             else:
                 a["nf"] = 1   # 顔なし（物・生き物・覆面）：測ったがない
@@ -2034,7 +2049,7 @@ EMB_JS = """
       const n = img.cloneNode(); n.src = a.src; n.classList.remove('ld');
       const whole = a.shape === 'badge' && !a.crop && (a.plate || a.ar && (a.ar < 0.95 || a.ar > 1.6));   // render.CARD_AR：カードと比率が離れたら切らない
       n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : a.nb ? ' nb' : a.m >= 1 ? ' fz' : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
-      n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.nb ? '--nh:' + a.nb[0] + ';--ng:' + a.nb[1] + ';--na:' + a.nb[2] : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';   // a.m = emblem_face.fit
+      n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] + ';--be:' + a.body[0] + (a.bf ? ';--fh:' + a.bf + (a.bt ? ';--ft:' + a.bt : '') : '') : a.nb ? '--nh:' + a.nb[0] + ';--ng:' + a.nb[1] + ';--na:' + a.nb[2] : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) + (a.m >= 1 && a.fs ? ';--fs:' + a.fs + (a.fa ? ';--fa:' + a.fa : '') : '') : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';   // a.m = emblem_face.fit
       if (a.shape === 'badge' && a.crop) {
         const c = document.createElement('span'); c.className = 'crop';
         c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1);

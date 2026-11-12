@@ -736,6 +736,61 @@ class EmblemStaysOutOfText(unittest.TestCase):
         self.assertIn("band.style.paddingRight", render.EMB_JS)                              # 本当の幅だけ帯の右を空ける
 
 
+class EmblemFaceMin(unittest.TestCase):
+    """審美基準 I1c（2026-11-12 店長「这还是有点小 看不清人脸」：スマホの全身の小元素の顔が 6〜10px）。
+    人物の顔は、どの幅でも下限以上。全身のままで届かなければ表示で上半身に切る。式は CSS、同じ式の写しが emblem_face.shown（点検 E31 が画面と比べる）。"""
+
+    def test_css_has_the_rule_and_same_numbers(self):
+        import re
+        import render
+        import emblem_face as ef
+        css = open(render.__file__, encoding="utf-8").read()
+        pc = re.search(r"\.emb\{--eh:(\d+)px;--fmin:(\d+)px;--vmax:(\d+)px;--bw:(\d+)px\}", css)
+        ph = re.search(r"@media \(max-width:600px\)\{\.emb\{height:(\d+)px;--eh:(\d+)px;--fmin:(\d+)px;--vmax:(\d+)px;--bw:(\d+)px;", css)
+        self.assertTrue(pc and ph)
+        z = ef.SIZES
+        self.assertEqual([int(v) for v in pc.groups()], [z["pc"][k] for k in ("eh", "fmin", "vmax", "bw")])
+        self.assertEqual([int(v) for v in ph.groups()], [z["phone"]["eh"]] + [z["phone"][k] for k in ("eh", "fmin", "vmax", "bw")])   # 枠の高さ = --eh
+        self.assertIn(".emb{--ring:var(--acc);--r:.15;--z:1;position:absolute;right:calc(clamp(12px,4%%,52px) - 6px);bottom:8px;z-index:5;height:%dpx;" % z["pc"]["eh"], css)
+        for k, name in (("leg", "--leg"), ("legc", "--legc"), ("bmax", "--bmax")):
+            self.assertIn("%s:%dpx" % (name, z["pc"][k]), css)
+            self.assertIn("%s:%dpx" % (name, z["phone"][k]), ph.group(0) + css[ph.end():ph.end() + 200])
+        self.assertGreaterEqual(z["phone"]["fmin"], 32)   # スマホの下限は胸像の顔（100 × 0.32）より小さくしない
+        self.assertEqual((z["phone"]["vmax"], z["pc"]["vmax"]), (z["phone"]["eh"], z["pc"]["eh"]))   # 切った全身・大きくした全身は胸像と同じ枠の高さまで（点検 E4 の上限 140・215px に入る）
+        # 全身：顔が下限に届く大きさ（--hf）→ 入らなければ上半身（--vis まで見せて、下は帯の線の下へ送って切る）。頭の大きいキャラは切らない（--q）
+        self.assertIn("--hf:calc(var(--fmin) / var(--fh,9))", css)
+        self.assertIn("--q:clamp(0,calc((var(--bigh) - var(--fh,9)) * 1000),1)", css)
+        self.assertIn("height:var(--vis);width:calc(var(--bz) * var(--ba));max-width:none;object-fit:cover;object-position:top;", css)   # 枠を見せる高さにして上から：隠れた下半分を置かない（傾きで画面の右へ出ない・E5）
+        self.assertIn("--bigh:.16", css)
+        self.assertIn("calc(var(--vmax) / (var(--ft,0) + 1.5 * var(--fh,9)))", css)   # 顔が絵の下のほうにある絵：顔とその下の半分が枠に入る大きさまで（顔の途中で切らない）
+        self.assertEqual(ef.CUT_BELOW, 0.16)
+        self.assertIn(".emb img.body.cut{--bh:calc(var(--legc) / var(--bl));--c:1;--bigh:9}", css)   # 取るときに切った上半身：腰の線はもう下の端・頭の大きさの例外なし
+        self.assertIn("calc(var(--be,0) + .4 * (var(--bf) - var(--be,0)))", css)
+        self.assertEqual(ef.CUT_AT, 0.4)
+        # 拡大が足りない胸像（.fz）も下限まで（枠の高さの FZ_MAX 倍まで）。枠より下は切る
+        self.assertIn("--fzh:min(max(calc(var(--eh) * var(--m)),min(calc(var(--fmin) / var(--fs,1)),calc(var(--eh) * 3.4),calc(var(--bw) / var(--fa,.6)))),calc(230px / var(--fa,.6)))", css)   # 幅は --bw まで（前からの大きさは 230px まで）
+        self.assertEqual(ef.FZ_MAX, 3.4)
+        self.assertIn("height:min(var(--eh),var(--fzh));width:calc(var(--fzh) * var(--fa,.6));max-width:230px;object-fit:cover;object-position:top}", css)
+
+    def test_markup_and_js_carry_the_face(self):
+        import render
+        full = {"src": "emblems/a.webp", "shape": "cutout", "body": [0.062, 0.992, 0.5, 0.31, 0.9, 0.93], "bf": 0.091}
+        html = render._emblem_img(full)
+        self.assertIn("--fh:0.091", html)
+        self.assertIn("--be:0.062", html)
+        self.assertNotIn("--fh", render._emblem_img({**full, "bf": None}))   # 顔を測っていない絵（動物・マスコット）は前の大きさのまま
+        self.assertIn("--fs:0.100", render._emblem_img({"src": "emblems/b.webp", "shape": "cutout", "m": 1.6, "fs": 0.1}))
+        self.assertIn("';--be:' + a.body[0] + (a.bf ? ';--fh:' + a.bf + (a.bt ? ';--ft:' + a.bt : '') : '')", render.EMB_JS)   # 差し替えた 1 枚も同じ
+        self.assertIn("(a.m >= 1 && a.fs ? ';--fs:' + a.fs + (a.fa ? ';--fa:' + a.fa : '') : '')", render.EMB_JS)
+        self.assertEqual(open(render.__file__, encoding="utf-8").read().count("* 1000)))}"), 2)   # PC・スマホの両方
+        self.assertIn("min(0px,calc(-22px + (var(--bz) - var(--b0)) * 1000))", open(render.__file__, encoding="utf-8").read())   # 大きくした全身は画面の右へ出さない（E5）
+        sys_path = str(pathlib.Path(render.__file__).resolve().parent.parent / "harness")
+        src = open(sys_path + "/emb_check.py", encoding="utf-8").read()
+        self.assertIn("';--be:' + a.body[0] + (a.bf ? ';--fh:' + a.bf + (a.bt ? ';--ft:' + a.bt : '') : '')", src)   # 点検の差し替え（SWAP）も同じ式
+        self.assertIn('"E31": "顔が下限より小さい"', src)
+        self.assertIn("'face'", open(sys_path + "/self_review.py", encoding="utf-8").read())
+
+
 class PhotolessHeadTest(unittest.TestCase):
     """2026-10-25：写真のない記事は版面の頭にしない・アイコンの札ではなく字だけの形"""
 

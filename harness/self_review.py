@@ -25,8 +25,8 @@ import threading
 
 WIDTHS = (1400, 390)
 MAX_SHOTS = 4   # 種類ごとに絵にする数
-KIND = {"gap": "写真の下に空き", "crop": "写真が切れすぎ", "band": "写真に帯", "clip": "文字が欠けている", "icon": "アイコンの大きさが不揃い", "over": "文字が重なっている", "wide": "横にはみ出す"}
-FIX = {"gap": "写真を字の高さまで伸ばす", "crop": "切らずに枠を写真の形にする", "band": "枠を写真の形にする", "clip": "枠を広げる・行を増やす", "icon": "同じ種類は同じ大きさに", "over": "間隔を取る", "wide": "はみ出す要素を縮める"}
+KIND = {"gap": "写真の下に空き", "crop": "写真が切れすぎ", "band": "写真に帯", "clip": "文字が欠けている", "icon": "アイコンの大きさが不揃い", "over": "文字が重なっている", "wide": "横にはみ出す", "face": "小元素の顔が小さい"}
+FIX = {"gap": "写真を字の高さまで伸ばす", "crop": "切らずに枠を写真の形にする", "band": "枠を写真の形にする", "clip": "枠を広げる・行を増やす", "icon": "同じ種類は同じ大きさに", "over": "間隔を取る", "wide": "はみ出す要素を縮める", "face": "顔が下限に届く大きさにして上半身に切る（render.CSS .emb img.body・審美基準 I1c）"}
 
 MEASURE_JS = r"""
 () => {
@@ -97,6 +97,16 @@ MEASURE_JS = r"""
     const g = document.createRange(); g.selectNodeContents(n);
     const a = g.getBoundingClientRect(), b = v.getBoundingClientRect(), btn = v.querySelector('button') || v, c = btn.getBoundingClientRect();
     if (Math.min(a.right, c.right) - Math.max(a.left, c.left) > 1 && Math.min(a.bottom, c.bottom) - Math.max(a.top, c.top) > 1) tag(m.parentElement, 'over', '日付と 👍：' + n.textContent.trim());
+  });
+  // 小元素の顔（審美基準 I1c・2026-11-12「这还是有点小 看不清人脸」）：人物の顔の高さ = 顔の割合（alts の bf・fs）× 絵の高さ × 帯に合わせた拡大。下限は PC 44px・スマホ 32px（emblem_face.SIZES）。
+  // 頭の大きいキャラ（全身のまま）・幅の上限に当たった横に広いポーズ・顔が絵の下のほうにある絵は数えない（規則どおりで届かない＝選び方で替える対象。emb_check E31 の情報の行が数える）
+  document.querySelectorAll('section.sec.has-emb .emb').forEach(el => {
+    const img = el.querySelector('img'); if (!img || !img.offsetHeight) return;
+    let a = null; try { a = JSON.parse(el.dataset.alts || '[]').find(x => x.src === img.getAttribute('src')); } catch (_) {}
+    const share = a && a.shape === 'cutout' && (a.body ? a.bf : a.fs); if (!share) return;
+    const phone = innerWidth <= 600, floor = phone ? 32 : 44, ar = a.body ? a.body[3] : a.m >= 1 ? a.fa : 0, face = share * (ar ? img.offsetWidth / ar : img.offsetHeight) * (parseFloat(getComputedStyle(el).scale) || 1);   // 上半身に切った絵は枠が見える高さ：絵の高さは幅 ÷ 縦横比
+    if (a.body && a.body[1] <= 1 && share >= 0.16 || img.offsetWidth >= (phone ? 138 : 228) || a.body && ((a.bt || 0) + 1.5 * share) * floor / share > (phone ? 100 : 156)) return;   // 最後：顔が絵の下のほうにある（頭の上に武器・帽子）→ 顔が枠に入る大きさまで
+    if (face < floor * 0.95) tag(el.closest('.band') || el, 'face', Math.round(face) + 'px < ' + floor + 'px（' + (el.closest('section').dataset.k || '') + '）');
   });
   if (document.documentElement.scrollWidth > innerWidth + 1) tag(document.body, 'wide', document.documentElement.scrollWidth + 'px > ' + innerWidth + 'px');
   return {items: out, clamped, photos: document.querySelectorAll('.pic img:not(.bg):not(.ico)').length};
