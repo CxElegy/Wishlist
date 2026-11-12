@@ -2205,8 +2205,9 @@ RB_JS = """
     sp.className = 'rb-n'; sp.dataset.to = m[0].replace(/,/g, ''); if (m[0].includes(',')) sp.dataset.c = '1'; sp.textContent = m[0];
     n.nodeValue = s.slice(0, m.index); n.after(sp, document.createTextNode(s.slice(m.index + m[0].length))); return sp; }).filter(Boolean);
   const fmt = (sp, v) => sp.dataset.c ? v.toLocaleString('en-US') : String(v);
+  // 時刻は performance.now() で測る（rAF の時刻は t0 より前のことがあり、負の数を出した）
   const count = sp => { const to = +sp.dataset.to, t0 = performance.now(), D = 900;
-    const f = () => { const k = Math.min(1, Math.max(0, (performance.now() - t0) / D));   // rAF の時刻は t0 より前のことがある（負の数になる） sp.textContent = fmt(sp, Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1 && !document.hidden) requestAnimationFrame(f); else sp.textContent = fmt(sp, to); };
+    const f = () => { const k = Math.min(1, Math.max(0, (performance.now() - t0) / D)); sp.textContent = fmt(sp, Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1 && !document.hidden) requestAnimationFrame(f); else sp.textContent = fmt(sp, to); };
     requestAnimationFrame(f); };
   const cu = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { cu.unobserve(e.target); count(e.target); } }), { threshold: .6 });
   const ws = nums.map(sp => sp.getBoundingClientRect().width);   // 幅を全部読んでから書く（1 回の計算で済む）
