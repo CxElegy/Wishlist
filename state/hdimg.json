@@ -2183,8 +2183,15 @@
  "https://news.walkerplus.com/article/73055/410281_615.jpg": {
   "w": 615,
   "h": 367,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.538,
+  "local": "pics/8630ca9a67483a36.webp",
+  "out": [
+   1280,
+   764
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/75130/431003_615.jpg": {
   "w": 615,
@@ -3081,12 +3088,6 @@
   "target": 720,
   "v": 3
  },
- "https://static0.anpoimages.com/wordpress/wp-content/uploads/2026/08/samsung-galaxy-z-fold-8-and-google-pixel-10-pro-standing-side-by-side.png?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/01/bobamando-1200x600.jpg?w=1200&h=675&fit=crop": {
   "w": 1200,
   "h": 600,
@@ -3453,6 +3454,19 @@
   "h": 366,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.EeNxbWe3OrtZRPFeeThe2w&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.491,
+  "local": "pics/e0f45b14a8983115.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,

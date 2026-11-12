@@ -1,10 +1,10 @@
 {
  "admin": "32e04b251f5b",
- "admin-ai": "8683a88a41c9",
+ "admin-ai": "0df2fcce4f2d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9800b58e"
+   "bf5e7ee8"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "db9e9f9466fd",
+ "admin-emblem": "482be66d06ce",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "48e36ada"
+   "79d4767b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "8950b30c8367",
+ "admin-now": "59786a9f5aa3",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -62,11 +62,11 @@
    "7901c1e8"
   ]
  },
- "admin-system": "e961e098d903",
+ "admin-system": "7133a85fe5f5",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "46713c26"
+   "5d3d38a6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c5d79edc"
+   "417b0415"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "eb8cfe8b"
   ]
  },
- "index": "851fe241c1aa",
+ "index": "13c55bcc9b8c",
  "index_marks": {
   "front": [
    "トップ",
-   "1a4d1b4f"
+   "166ce4f4"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "bb523efd"
+   "d1281845"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "2a8ab9ad"
+   "51ef0bc6"
   ],
   "w-6676e624": [
    "三星手机",
@@ -196,6 +196,6 @@
    "3dd2c092"
   ]
  },
- "updated": "11.13 03:14",
+ "updated": "11.13 03:16",
  "wishlist": "046c5472ed54"
 }
