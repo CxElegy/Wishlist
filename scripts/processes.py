@@ -356,7 +356,7 @@ PROCESSES = [
              "yes": "版面に載せる", "no": "↓ 要紧か見る"},
             {"id": "c9b", "kind": "decision", "lane": "actions", "title": "要紧の記事？", "text": "urgent_patterns に当たる",
              "uses": ["urgent", "fallback"], "yes": "すぐ「重大」で載せる＋Discord", "no": "版面の下の「整理待ち N 件」（折りたたみ・原題だけ）"},
-            {"id": "c9", "kind": "step", "lane": "actions", "title": "出刊 → 通知 → push", "text": "push に失敗したら 3 回まで取り直す · 網页の生成に失敗してもデータは push（WL_RENDER_SOFT、次の生成で作り直す）· このあとゲートが AI 編集を起こす",
+            {"id": "c9", "kind": "step", "lane": "actions", "title": "出刊 → 通知 → push", "text": "push に失敗したら 3 回まで取り直す · 網页の生成に失敗してもデータは push（WL_RENDER_SOFT、次の生成で作り直す）· このあとゲートが AI 編集を起こす（digest.yml の最後の段は scripts/gate_fire.py：最新の main に合わせ → 判断し直し → 記録を push → 通ってから起こす。後台作業と同時に 2 本起こさない）",
              "uses": ["pending", "discord"]},
             {"id": "c9p", "kind": "step", "lane": "actions", "title": "置いていない写真があれば一時保管を起こす（photo_store.py --kick）", "uses": ["supabase"], "text": "push のあと。収集の回で入った新しい記事の写真が次の定時（3 時間ごと）まで原寸の外部画像のまま届くのを防ぐ（ux_check「先頭の写真が置き場に無い」の根）。render.yml・後台作業も同じ段を持つ。"},
             {"id": "c10", "kind": "step", "lane": "actions", "title": "お客さまの版面を集める", "x": "×4 · 8 分まで",
