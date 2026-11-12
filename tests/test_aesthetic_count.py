@@ -92,6 +92,8 @@ class AestheticCount(unittest.TestCase):
         self.assertEqual(self.n(self.run_page(page(sec(EMB_IN, cards(4, hero_w=300)))), "herogap"), 0)   # 300 × 4 + すき間で幅 1200 を埋める
         r = self.run_page(page(sec(EMB_IN, cards(2, hero_w=300))))                                      # 600 / 1200 が空く
         self.assertEqual(self.n(r, "herogap"), 1)
+        flat = self.run_page(page(sec(EMB_IN, cards(2, hero_w=300)).replace('class="card hero"', 'class="card" data-hero="1"')))   # PC の積み上げ後の形
+        self.assertEqual(self.n(flat, "herogap"), 1)
 
     def wemb_page(self, text, name="Makima", own=False):
         alts = json.dumps([{"src": PX, "shape": "cutout", "name": name, **({"own": True} if own else {})}], ensure_ascii=False).replace('"', "&quot;")

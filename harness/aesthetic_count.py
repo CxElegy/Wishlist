@@ -86,7 +86,7 @@ JS_BODY = r"""
     const cards = [...g.querySelectorAll('article.card')].filter(vis)   // PC では .mas（積み上げ）に包まれる; if (!cards.length) return;
     bump('boards');
     if (cards.length === 1) { bump('solo'); tag(sec, 'solo', (sec.dataset.k || '') + '：記事 1 本'); }
-    const hero = cards.find(c => c.classList.contains('hero')); if (!hero) return;
+    const hero = cards.find(c => c.classList.contains('hero') || c.dataset.hero)   // PC の積み上げ（mason）は hero を外して data-hero に写す; if (!hero) return;
     heroN++;
     const gr = g.getBoundingClientRect(), hr = hero.getBoundingClientRect(), rects = cards.map(c => c.getBoundingClientRect());
     let empty = 0, rows = 0;
