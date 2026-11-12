@@ -7,15 +7,21 @@
  "complexity": "normal",
  "priority": 4,
  "scope": [
-  "scripts/lib_queue.py"
+  "scripts/library_design.py",
+  "tests/test_library_design.py",
+  ".github/workflows/background.yml",
+  "scripts/processes.py"
  ],
  "done_when": [
-  "クラウドの AI 編集は service key を持たない（lib_queue.py）。お客さまだけの新しい版面は仮の主題（template_for・写真の色）のまま。board_added か background の回で、規則で決められる分を当てる。"
+  "scripts/library_design.py に --auto を足す：boards.config に motif・theme のない版面へ、規則だけ（AI なし）で仮でないデザインを足す（motif は render.template_for と同じ種類からの規則、theme は scripts/theme.py の規則で 6 色の #RRGGBB）。書き込みは library.put_config だけ・足すだけ（あるものは触らない）・案は problems() が空。--auto --dry は書かずに件数だけ出す",
+  "tests/test_library_design.py に偽の DB で 3 つの型（人物・ゲーム・題材）の版面の例を足す：--auto のあと missing() が空・problems() が空、デザインのある版面への put_config は 0 回、DB に届かないときは終了コード 0。harness/run_tests.py test_library_design test_public_log test_sb_degrade が通る",
+  ".github/workflows/background.yml の「お客さまの版面の受け渡し」の次に continue-on-error で --auto を 1 回走らせる（ログに版面の名前を出さず件数だけ）。同じコミットで scripts/processes.py を直し scripts/check_arch.py origin/main が通る。作る係は本番の DB に --auto を走らせない（--auto --dry の件数だけ summary に）"
  ],
- "status": "open",
+ "status": "done",
  "attempts": 0,
  "notes": [],
- "frozen": false,
+ "frozen": true,
  "source": "BACKLOG.md:12",
- "created": "2026-11-11"
+ "created": "2026-11-11",
+ "pr": ""
 }
