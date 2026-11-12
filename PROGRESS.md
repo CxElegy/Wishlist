@@ -408,3 +408,4 @@
 - 2026-11-11 f1f1：#994 の続き。凍った失敗に passed が付かず E10 ✗ 10 枚が残っていた→sync_progress が frozen() で旗を付ける・点検 test_real_frozen_boards_are_passed_after_sync・次：合併後に background.yml を dispatch して ux_check で E10 0 を確かめる
 - 2026-11-12 v2 T-0002：AI 編集で一度も編集していない新しい lib 版面を 4 時間待たずに起こす（export が fresh を付け gate が LIB_WAKE_HOURS を待たず読む）・path を .as_posix() に揃え fresh の export→gate 接続を試験・ローカル CI で確かめる
 - 2026-11-12 v2 T-0228：小元素の顔 32px（1/2）：emblem_face.unreached（規則どおりでも顔が届かない絵を数える）を E31 の情報の行が使い、cand_reach を auto_pick・emblem_cands.find の先頭の鍵に（表示の式・CSS は不変）・tests/test_emblem_face.py で確かめる・ローカル CI で確認
+- 2026-11-12 v2 T-0004：版面のデザイン（library_design）を規則だけで足す --auto（AI なし・足すだけ）を後台 workflow に追加・tests/test_library_design.py で確かめる・ローカル CI で確認
