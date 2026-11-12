@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-11-10T16:36:44+00:00",
-"text": "出刊に失敗：No module named 'cv2'",
-"level": "error"
-},
-{
 "at": "2026-11-10T16:38:11+00:00",
 "text": "出刊に失敗：No module named 'cv2'",
 "level": "error"
@@ -2111,5 +2106,10 @@
 "calls": 16,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-12T08:46:26+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]

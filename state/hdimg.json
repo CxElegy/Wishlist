@@ -256,6 +256,12 @@
   "target": 720,
   "v": 3
  },
+ "https://appmedia.jp/wp-content/uploads/2026/11/main_result-40.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-12"
+ },
  "https://areajugones.sport.es/wp-admin/admin-ajax.php?action=rank_math_overlay_thumb&id=834607&type=videojuegos&hash=327d1d284ff2a1170fe074f5adf184f2": {
   "w": 1220,
   "h": 686,
@@ -278,12 +284,6 @@
   "w": 704,
   "h": 329,
   "target": 720,
-  "v": 3
- },
- "https://assets.hldycdn.com/70c46b9e-351c-4136-9513-f0aacbdfee08.jpeg": {
-  "w": 1950,
-  "h": 1283,
-  "target": 1280,
   "v": 3
  },
  "https://assets.mmoexp.com/images/202611/75b0f137b41da19f785e2b21d24b20e8edee0087.jpg": {
@@ -463,12 +463,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.autodaily.co.kr/news/photo/202611/601977_203885_5646.png": {
-  "w": 852,
-  "h": 692,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:knsszrujdducsne2yxvzqhph/bafkreicczdpct6piix74afri5nro77n4kfxkapjxsb2ygs5jsxsmcptouy": {
   "w": 1536,
   "h": 1920,
@@ -506,19 +500,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.345
- },
- "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg": {
-  "w": 800,
-  "h": 369,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.422,
-  "local": "pics/c7bbe061933e796f.webp",
-  "out": [
-   1280,
-   590
-  ],
-  "why": "看不清"
  },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
@@ -1134,12 +1115,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://hips.hearstapps.com/hmg-prod/images/e68b5f15-cb38-4c12-bedb-c5c86e7596d6.png?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
-  "w": 1200,
-  "h": 600,
-  "target": 1280,
   "v": 3
  },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261105/photo/bkn-20261105000104965-1105_00862_001_02b.jpg?20261104222519": {
@@ -2533,6 +2508,12 @@
   "target": 720,
   "v": 3
  },
+ "https://nokiapoweruser.com/wp-content/uploads/2026/09/Samsung-Galaxy-S27-Ultra.jpeg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-12"
+ },
  "https://oggi.jp/wp-content/uploads/2026/11/261104gptop1.jpg": {
   "w": 1200,
   "h": 750,
@@ -2606,6 +2587,12 @@
   "h": 373,
   "target": 720,
   "v": 3
+ },
+ "https://pimg.mk.co.kr/news/cms/202611/06/20261106_01160116000002_L00.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-12"
  },
  "https://players.com.ua/wp-content/uploads/2026/11/d2-711-mr.jpg": {
   "w": 1200,
@@ -2722,6 +2709,12 @@
    640
   ],
   "why": "看不清"
+ },
+ "https://q1.itc.cn/q_70/images03/20261111/e6206cc802254c8eac76477efb46308b.jpeg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-12"
  },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
@@ -2886,12 +2879,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static-cdn.nextapple.tw/prod/2026-11/9AAAD6075E95A02408C902A97DDFF1E1/f4e6d443b505e079c966746b8216a39d_1280.jpeg": {
-  "w": 1280,
-  "h": 964,
-  "target": 1280,
-  "v": 3
- },
  "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/8/11/samsungs-new-200mp-camera-sparks-galaxy-s27-ultra-speculation-98a1d797d1744d85b1e28258b356bf5d-538.png?width=0&s=YnOKsmBaWrFil0J3cKSeoQ": {
   "w": 1920,
   "h": 1028,
@@ -2933,6 +2920,12 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://static.inven.co.kr/column/2026/08/19/news/i1574712969.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-12"
  },
  "https://static.invenglobal.com/upload/image/2026/10/30/r1793322194781761.jpeg": {
   "w": 708,
@@ -3333,6 +3326,12 @@
   "h": 788,
   "target": 720,
   "v": 3
+ },
+ "https://times-abema.ismcdn.jp/mwimgs/4/3/1200w/img_4351a3246dbd7f0b3abf2cf0f9a1966d3338550.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-12"
  },
  "https://tokyo-sports.ismcdn.jp/mwimgs/0/e/1200w/img_0e3d0d8e725f2845b1b4e6a5df245394100507.jpg": {
   "w": 1200,

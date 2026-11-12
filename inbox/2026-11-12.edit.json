@@ -29,7 +29,9 @@
     51,
     45,
     74,
-    90
+    90,
+    103,
+    107
    ]
   },
   {
@@ -65,16 +67,16 @@
   }
  ],
  "_covered": {
-  "GTA 6": 101,
-  "漫威电影": 89,
-  "三星手机": 31,
-  "Astrae Oratio": 13,
+  "GTA 6": 118,
+  "漫威电影": 100,
+  "三星手机": 38,
+  "Astrae Oratio": 34,
   "哈利波特剧集": 14,
   "滑雪": 16,
   "チェーンソーマン": 21,
   "ILLIT": 10,
   "MMORPG 新作": 10,
-  "周杰伦": 19,
+  "周杰伦": 24,
   "The Mandalorian": 6,
   "dota2": 4,
   "日本顶级网球赛事": 4,
@@ -113,7 +115,10 @@
     64,
     80,
     85,
-    84
+    84,
+    94,
+    95,
+    99
    ],
    "image": "https://www.thewrap.com/wp-content/uploads/2022/06/Elizabeth-Olsen-Wanda.jpg"
   },
@@ -138,7 +143,10 @@
     75,
     81,
     86,
-    82
+    82,
+    96,
+    90,
+    91
    ]
   },
   {
@@ -198,7 +206,8 @@
     11,
     4,
     23,
-    30
+    30,
+    33
    ],
    "image": "https://tech-ish.com/wp-content/uploads/2026/08/techish-galaxy-s27-cad-thumbnail-1920x1080-1-1280x720.png"
   },
@@ -211,7 +220,8 @@
     2,
     9,
     20,
-    25
+    25,
+    38
    ]
   },
   {
@@ -234,7 +244,9 @@
     12,
     10,
     21,
-    31
+    31,
+    32,
+    36
    ]
   },
   {
@@ -266,6 +278,16 @@
     27,
     26,
     28
+   ]
+  },
+  {
+   "headline": "Still 5,000mAh: Is Samsung Finally Ready To Upgrade The Galaxy S27 Ultra Battery?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    34,
+    37
    ]
   }
  ],
@@ -302,6 +324,43 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "【アストラエ・オラティオ】「AGF 2026」試遊スペースや領地体験ゾーンを含むブースイメージを公開",
+   "highlight": "AGF 2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16,
+    24,
+    33,
+    23,
+    26,
+    25,
+    28,
+    14,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    27,
+    29,
+    30,
+    31,
+    32,
+    34
+   ]
+  },
+  {
+   "headline": "내년 1분기 출시 기대, 아스트라에 오라티오 컨콜 소식",
+   "highlight": "1분기",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
    ]
   }
  ],
@@ -578,6 +637,15 @@
    "weight": "normal",
    "refs": [
     10
+   ]
+  },
+  {
+   "headline": "vivo X500早鳥優惠延長 加碼抽周杰倫演唱會門票",
+   "highlight": "周杰倫演唱會門票",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20
    ]
   }
  ],
