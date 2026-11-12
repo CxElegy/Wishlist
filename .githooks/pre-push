@@ -3,6 +3,8 @@
 # 2026-11-05：係の PR の CI の赤 7 本のうち 5 本が check_arch、#919 は JS の文法で本番の全ページの JS を約 15 分止めた。
 # 有効にする：git config core.hooksPath .githooks（worktree も同じ設定を使う）。急ぎで飛ばす：git push --no-verify（使ったら PR に書く）
 set -u
+# git が hook に渡す変数を、中で流す試験に受け継がせない（2026-11-12：試験の本物の git が本物の repo を書き換えた）
+unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE GIT_OBJECT_DIRECTORY GIT_PREFIX
 cd "$(git rev-parse --show-toplevel)" || exit 0
 base=origin/main
 git fetch -q origin main 2>/dev/null || true

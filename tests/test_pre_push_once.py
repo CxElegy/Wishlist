@@ -13,7 +13,15 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASH = shutil.which("bash")
 
 
+def clean_env(**extra):
+    """子の git に渡す環境。GIT_ で始まる変数は全部外す（受け継ぐと本物の repo を書き換える事故になる）"""
+    env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
+    env.update(extra)
+    return env
+
+
 def sh(cmd, cwd, env=None):
+    env = clean_env() if env is None else env
     return subprocess.run(cmd, cwd=cwd, env=env, capture_output=True, text=True, encoding="utf-8")
 
 
@@ -68,7 +76,7 @@ class PrePushOnce(unittest.TestCase):
         (self.green / tree).write_text(f"{int(time.time()) - age}\n")
 
     def run_hook(self, **extra):
-        env = dict(os.environ, PATH=f"{self.bin.as_posix()}{os.pathsep}{os.environ['PATH']}",
+        env = clean_env(PATH=f"{self.bin.as_posix()}{os.pathsep}{os.environ['PATH']}",
                    HF_CI_GREEN_DIR=self.green.as_posix(), **extra)
         r = sh([BASH, ".githooks/pre-push"], self.repo, env)
         return r.returncode, r.stdout + r.stderr
@@ -102,6 +110,22 @@ class PrePushOnce(unittest.TestCase):
         self.assertEqual(rc, 0, out)
         self.assertEqual(self.mark("unit"), 1, out)
         self.assertEqual(self.mark("ci"), 0, out)
+
+    def test_git_env_not_inherited(self):
+        """hook は GIT_DIR などを外してから中を流す：偽の GIT_DIR（別の repo）を渡しても、hook は自分の repo を見る"""
+        decoy = pathlib.Path(self.green).parent / "decoy"
+        decoy.mkdir()
+        env = clean_env(PATH=f"{self.bin.as_posix()}{os.pathsep}{os.environ['PATH']}",
+                        HF_CI_GREEN_DIR=self.green.as_posix(), GIT_DIR=str(decoy / ".git"))
+        r = sh([BASH, ".githooks/pre-push"], self.repo, env)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertFalse((decoy / ".git").exists())
+        self.assertEqual(self.mark("ci"), 1)
+
+    def test_clean_env_drops_git_vars(self):
+        os.environ["GIT_FOO_TEST"] = "1"
+        self.addCleanup(os.environ.pop, "GIT_FOO_TEST", None)
+        self.assertFalse([k for k in clean_env() if k.startswith("GIT_")])
 
     def test_exit_codes_pass_through(self):
         rc, out = self.run_hook(FAKE_CI_RC="3")
