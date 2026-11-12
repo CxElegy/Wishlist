@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-12T19:03:44+00:00",
+ "checked": "2026-11-12T19:18:26+00:00",
  "fired": {
   "at": "2026-11-12T18:35:08+00:00",
   "results": {
@@ -44,51 +44,40 @@
    },
    "items": [
     "A2O LITE",
-    "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "dota2",
-    "lib:F1",
-    "lib:NBA",
     "lib:Nintendo Switch 2",
     "lib:iPhone",
-    "lib:サッカー日本代表",
+    "lib:ガンプラ",
+    "lib:キャンプ",
+    "lib:コーヒー",
     "lib:ユニクロ",
-    "lib:大相撲",
-    "lib:大谷翔平",
+    "lib:ラーメン",
+    "lib:無印良品",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "日本顶级网球赛事",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影"
+    "星巴克马克杯"
    ],
-   "last_batch": "2026-11-12T18:16:27+00:00",
+   "last_batch": "2026-11-12T18:44:31+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 172,
+   "prog": 229,
    "prog_day": "2026-11-13",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "チェーンソーマン",
-    "滑雪",
-    "漫威电影"
-   ],
-   "sig": "0cf31d53508c",
+   "ripe": [],
+   "sig": "6ca20797c482",
    "token_cap": 1000000,
-   "tokens_today": 168370,
-   "why": "整理待ちの記事 164 件（26 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 233917,
+   "why": "整理待ちの記事 112 件（21 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -181,12 +170,12 @@
    "runs": 10
   },
   "2026-11-13": {
-   "batches": 5,
-   "cr": 7255775,
-   "cw": 143938,
-   "in": 173,
-   "out": 24259,
-   "runs": 2
+   "batches": 6,
+   "cr": 8286747,
+   "cw": 204117,
+   "in": 204,
+   "out": 29596,
+   "runs": 3
   }
  }
 }
