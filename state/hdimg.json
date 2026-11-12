@@ -510,12 +510,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
-  "w": 800,
-  "h": 369,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
@@ -837,6 +831,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://decider.com/wp-content/uploads/2026/06/from-309-boyd-tabitha.jpg?quality=75&strip=all&w=1200": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://digitalpr.jp/simg/1620/147935/715_400_202611091552456af16dbd5fe8d.png": {
   "w": 965,
   "h": 540,
@@ -918,6 +918,12 @@
  "https://fictionhorizon.com/wp-content/uploads/2026/11/Doomsday.webp": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://file.thisisgame.com/upload/email-attachments/2026/11/05/1639295170308889523_76b45f11-bbae-46ae-b8ae-d6f55cb543b0_%5B%EC%9D%B4%EB%AF%B8%EC%A7%801%5D%20%EB%84%A5%EC%8A%A8%2C%20%EC%8B%A0%EC%9E%91%20MMORPG%20%E2%80%98%ED%85%9C%EB%B9%A8%20%EC%98%A4%EB%B2%84%EA%B8%B0%EC%96%B4%EB%93%9C%E2%80%99%2011%EC%9B%94%2026%EC%9D%BC%20%EC%A0%95%EC%8B%9D%20%EC%B6%9C%EC%8B%9C%21.jpg": {
+  "w": 1280,
+  "h": 700,
   "target": 720,
   "v": 3
  },
@@ -1154,6 +1160,12 @@
  "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/11/galaxy-s27-design-dummy-units.jpg?fit=1200%2C675&ssl=1": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://i1.hoopchina.com.cn/bbs-editor-web/17945022417605.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -1490,6 +1502,12 @@
   "w": 1456,
   "h": 819,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hjD9w.img": {
+  "w": 912,
+  "h": 513,
+  "target": 720,
   "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
@@ -3640,6 +3658,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
+  "w": 700,
+  "h": 322,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
   "w": 700,

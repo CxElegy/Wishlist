@@ -260,6 +260,24 @@
     4,
     5
    ]
+  },
+  {
+   "headline": "爱情电影《寻找周杰伦》中国上映23周年",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "周杰伦晒网球训练视频称练球意义在失败中学习面对自己",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
   }
  ],
  "_covered": {
@@ -267,23 +285,23 @@
   "漫威电影": 80,
   "三星手机": 32,
   "Astrae Oratio": 9,
-  "周杰伦": 8,
+  "周杰伦": 10,
   "dota2": 6,
   "滑雪": 9,
   "哈利波特剧集": 5,
   "ILLIT": 4,
-  "MMORPG 新作": 4,
-  "The Mandalorian": 4,
+  "MMORPG 新作": 6,
+  "The Mandalorian": 6,
   "チェーンソーマン": 7,
   "A2O LITE": 3,
   "gelato pique": 3,
   "日本顶级网球赛事": 3,
-  "FROM": 2,
+  "FROM": 4,
   "猫用品": 2,
   "绝区零": 2,
   "BLEACH Mirrors High": 5,
   "あつ森": 1,
-  "ぐでたま": 1,
+  "ぐでたま": 3,
   "星巴克马克杯": 1,
   "Vaundy": 2
  },
@@ -449,11 +467,25 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    5
    ],
    "event": {
     "date": "2026-12-01",
     "label": "アップデート"
+   }
+  },
+  {
+   "headline": "조회수 13억 '템빨' IP, 11월 26일 MMORPG로 나온다",
+   "highlight": "11월 26일",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ],
+   "event": {
+    "date": "2026-11-26",
+    "label": "発売日"
    }
   }
  ],
@@ -464,7 +496,8 @@
    "blurb": "The Mandalorian and Grogu art book shows concept art, character designs, and a dropped Coruscant plot from the film.",
    "weight": "lead",
    "refs": [
-    3
+    3,
+    5
    ]
   },
   {
@@ -474,6 +507,15 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "7 years later, the decline of Disney’s best Star Wars project needs to be studied",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -610,6 +652,24 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "Where To Watch The New Season of ‘From’: Netflix and MGM+ Streaming Info",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "The ‘From’ Viewership Explosion Proves the Netflix Effect Is Alive and Well",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "猫用品": [
@@ -681,6 +741,24 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "ぐでたまがスイーツに！期間限定カフェが関西初登場",
+   "highlight": "関西初登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "ぐでたまが駅員に変身！東京駅に期間限定ショップがオープン",
+   "highlight": "東京駅に期間限定ショップ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
