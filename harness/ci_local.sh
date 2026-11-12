@@ -50,3 +50,13 @@ git archive "$tree" | docker run --rm -i -e TEST_JOBS="${TEST_JOBS:-8}" "$image:
   python harness/page_errors.py home/index.html index.html || exit 1
   echo "✓ CI と同じ検査が緑"
 ' ci "$@"
+rc=$?
+# 全部緑（引数なし）なら、この中身（tree の指紋）の緑の印を残す。pre-push の ④ が同じ中身なら流さない。赤・3・一部だけの試験は残さない
+if [ "$rc" = 0 ] && [ $# = 0 ]; then
+  green_dir="${HF_CI_GREEN_DIR:-}"
+  [ -z "$green_dir" ] && [ -d D:/Claude/hf/state ] && green_dir=D:/Claude/hf/state/ci_green
+  if [ -n "$green_dir" ] && mkdir -p "$green_dir" 2>/dev/null; then
+    head_tree=$(git rev-parse 'HEAD^{tree}' 2>/dev/null) && [ -n "$head_tree" ] && date +%s > "$green_dir/$head_tree" 2>/dev/null && echo "緑の印を残した：$green_dir/$head_tree"
+  fi
+fi
+exit $rc
