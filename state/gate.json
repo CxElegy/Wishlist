@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-12T17:39:12+00:00",
+ "checked": "2026-11-12T18:18:42+00:00",
  "fired": {
-  "at": "2026-11-12T17:39:28+00:00",
+  "at": "2026-11-12T18:19:00+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 4 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -43,44 +43,29 @@
     "sig": "b6838963f843"
    },
    "items": [
-    "BLEACH Mirrors High",
-    "FROM",
     "Vaundy",
-    "lib:Ado",
-    "lib:BTS",
-    "lib:King Gnu",
-    "lib:Mrs. GREEN APPLE",
-    "lib:YOASOBI",
-    "lib:【推しの子】",
-    "lib:スプラトゥーン3",
-    "lib:原神",
-    "あつ森",
-    "ぐでたま",
-    "星巴克马克杯",
-    "猫用品",
-    "绝区零"
+    "lib:F1",
+    "lib:NBA",
+    "lib:Nintendo Switch 2",
+    "lib:iPhone",
+    "lib:サッカー日本代表",
+    "lib:ユニクロ",
+    "lib:大相撲",
+    "lib:大谷翔平"
    ],
-   "last_batch": "2026-11-12T17:32:10+00:00",
+   "last_batch": "2026-11-12T18:16:27+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 154,
+   "prog": 172,
    "prog_day": "2026-11-13",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "FROM",
-    "あつ森",
-    "ぐでたま",
-    "星巴克马克杯",
-    "猫用品",
-    "绝区零"
-   ],
-   "sig": "0dfb941735fb",
+   "ripe": [],
+   "sig": "9989ac25c1c2",
    "token_cap": 1000000,
-   "tokens_today": 105716,
-   "why": "整理待ちの記事 107 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 168370,
+   "why": "整理待ちの記事 97 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -173,12 +158,12 @@
    "runs": 10
   },
   "2026-11-13": {
-   "batches": 3,
-   "cr": 4864186,
-   "cw": 89884,
-   "in": 111,
-   "out": 15721,
-   "runs": 1
+   "batches": 5,
+   "cr": 7255775,
+   "cw": 143938,
+   "in": 173,
+   "out": 24259,
+   "runs": 2
   }
  }
 }
