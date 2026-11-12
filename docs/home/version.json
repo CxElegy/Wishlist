@@ -1,6 +1,6 @@
 {
  "admin": "74abd54e66cf",
- "admin-ai": "ade36a448a69",
+ "admin-ai": "283fa60d070f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "6fad543b"
+   "92b2f19d"
   ]
  },
  "admin-boards": "cdd3b75f484b",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "ead0ebde0f4f",
+ "admin-emblem": "f580ea70fc62",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "cc06decb"
+   "aed236fc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "64baaeac2dda",
+ "admin-now": "b86086e7c86b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2cf8fbb9"
+   "0f2bcecd"
   ]
  },
- "admin-system": "372bba9614da",
+ "admin-system": "0a5e2f7dc50c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "7fcc1e94"
+   "330b3584"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "67feb60a"
+   "92ad3f72"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "ff78905b"
   ]
  },
- "index": "955b574086d8",
+ "index": "099f8a50ab11",
  "index_marks": {
   "front": [
    "トップ",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "5cc6b3f8"
+   "d1d41aab"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "cec122ba"
+   "550a3464"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "38552a70"
   ]
  },
- "updated": "11.13 03:32",
+ "updated": "11.13 03:36",
  "wishlist": "118c2a36ca6b"
 }
