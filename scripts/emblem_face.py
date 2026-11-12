@@ -444,6 +444,16 @@ def unreached(rows, size="phone"):
     return out
 
 
+def item_row(x):
+    """items.yaml（お客さまは boards.config.emblem）の小元素 1 つ → unreached の材料 {fs, body, ft}（全身の絵だけ。胸像・顔なしは None）。
+    render が alts に出す bf（face[0]）・bt（face[1]）と同じ読み方。"""
+    b, fc = x.get("body") if isinstance(x, dict) else None, x.get("face") if isinstance(x, dict) else None
+    if not (isinstance(b, list) and len(b) >= 5 and isinstance(fc, list) and fc and isinstance(fc[0], (int, float)) and fc[0] > 0):
+        return None
+    ft = fc[1] if len(fc) > 1 and isinstance(fc[1], (int, float)) and 0 < fc[1] < 1 else 0
+    return {"fs": float(fc[0]), "body": [float(v) for v in b], "ft": ft}
+
+
 def cand_reach(c, size="phone"):
     """選ぶ段の並べ替えの鍵：0 = 届く（か測れない）、1 = 届かない。候補が測った材料（fs・body・m・fa・bt）を持っていればそれで、
     なければ取る前の画像で測った顔の割合 cfs と縦横比 car から全身の体つきを仮に作る（顔が絵の 20% 未満＝全身のとき。それ以上は胸像かもしれず、取るときに大きさをそろえるので数えない）。"""

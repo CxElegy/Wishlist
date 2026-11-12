@@ -633,6 +633,9 @@ def due(boards, now):
             out.append((1.6, st.get("at", 0), b))
         elif emblem_fill.stale_narrow_rejects({"name": b.get("name"), "emblem_kind": "character", **cfg(b)}):   # 解けていない縮めた網址の札（E24）：済み・材料待ちでも 1 回回して fill_one の release_small_rejects に着く
             out.append((1.5, st.get("at", 0), b))
+        elif emblem_fill.reach_rows({"name": b.get("name"), "emblem_kind": "character", **cfg(b)}):
+            # 顔が下限（スマホ 32px）に届かない全身の絵がある版面（T-0229）：済みでも 1 回回して fill_one の reach_swap に着く（代わりが取れなかった回数 emblem_reach_tried は REACH_TRIES でやめる）
+            out.append((1.7, st.get("at", 0), b))
         elif dropped_left(b):
             # 別人の Commons の写真・reject に入った画像が残る版面（Ado の Alassane Ouattara・フリーレン・鬼滅）：済みでも 1 回回して fill_one の drop_broken（drop_foreign_group）に着く。BROKEN_V は上げない
             out.append((1.5, st.get("at", 0), b))
