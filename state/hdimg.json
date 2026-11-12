@@ -227,6 +227,12 @@
   "v": 3,
   "blur": 0.3
  },
+ "https://appmedia.jp/wp-content/uploads/2026/10/143855_7yzfg.webp": {
+  "w": 710,
+  "h": 373,
+  "target": 720,
+  "v": 3
+ },
  "https://appmedia.jp/wp-content/uploads/2026/10/154528_akvy1.webp": {
   "w": 740,
   "h": 389,
@@ -356,19 +362,6 @@
   "target": 720,
   "v": 3
  },
- "https://auroradesio.it/wp-content/uploads/2026/10/treviglio-77-82-800x445.jpg": {
-  "w": 800,
-  "h": 445,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.438,
-  "local": "pics/2837a628a25bea40.webp",
-  "out": [
-   1280,
-   712
-  ],
-  "why": "看不清"
- },
  "https://automaton-media.com/wp-content/uploads/2026/11/20261109-478278-header.jpg": {
   "w": 1600,
   "h": 900,
@@ -486,6 +479,12 @@
   "blur": 0.345
  },
  "https://cdn.gameple.co.kr/news/photo/202611/216947_250608_146.jpg": {
+  "w": 800,
+  "h": 369,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
   "target": 720,
@@ -1040,6 +1039,12 @@
   "target": 720,
   "v": 3
  },
+ "https://hips.hearstapps.com/hmg-prod/images/e68b5f15-cb38-4c12-bedb-c5c86e7596d6.png?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
+  "w": 1200,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261110/photo/bkn-20261110090140433-1110_00862_001_02b.jpg?20261109221441": {
   "w": 780,
   "h": 789,
@@ -1460,15 +1465,15 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img": {
-  "w": 504,
-  "h": 339,
+ "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
+  "w": 720,
+  "h": 259,
   "target": 720,
   "v": 3
  },
- "https://img.4gamers.com.tw/news-image/9c8daacc-1ea2-4642-be47-0a9f767f5880.jpg": {
-  "w": 1600,
-  "h": 900,
+ "https://img-s.msn.cn/tenant/amp/entityid/AA2gRLrz.img": {
+  "w": 504,
+  "h": 339,
   "target": 720,
   "v": 3
  },
@@ -1557,6 +1562,12 @@
  "https://img.sbsnews.co.kr/newimg/news/20261109/202239307_1280.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -2089,7 +2100,7 @@
  "https://news.walkerplus.com/article/188772/1129553_615.jpg": {
   "w": 615,
   "h": 871,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://news.walkerplus.com/article/198145/1195520_615.jpg": {
@@ -2298,6 +2309,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-00000041-isd-000-2-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 450,
+  "target": 720,
+  "v": 3,
+  "local": "pics/e99b5be402248602.webp",
+  "out": [
+   800,
+   450
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-001-1-view.jpg?pri=l&w=640&h=357&exp=10800": {
   "w": 640,
   "h": 358,
@@ -2424,6 +2447,12 @@
  "https://ogre.natalie.mu/media/news/music/2026/1107/Vaundy_jkt.jpg?impolicy=ogp_face_crop": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://otonanswer.jp/wp-content/uploads/2027/11/20261106veloce01.jpg": {
+  "w": 1200,
+  "h": 997,
   "target": 720,
   "v": 3
  },
@@ -3051,6 +3080,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/07/from.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/09/avengers-doomsday-thor.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3374,12 +3409,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.1e3uumhEBBmXkAMcYFuC6w&pid=News&w=720": {
-  "w": 700,
-  "h": 251,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3396,6 +3425,12 @@
  "https://www.bing.com/th?id=ONUT.7xZBDBe-JvDuXUKWzmMQXQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.8hXbJPxSmijI6Bn4XGBeWA&pid=News&w=700": {
+  "w": 700,
+  "h": 506,
   "target": 720,
   "v": 3
  },
@@ -3515,12 +3550,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
-  "w": 700,
-  "h": 322,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3533,18 +3562,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.XpXZkP55Q_P0X0HzaZPlQA&pid=News&w=640": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.YGkIMl3cowEK7-Z4TVfTqA&pid=News&w=700": {
-  "w": 700,
-  "h": 350,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.YvvCSRNfwzXAtUDdxUVZog&pid=News&w=768": {
   "w": 700,
@@ -3574,6 +3591,12 @@
  "https://www.bing.com/th?id=ONUT.dmDVd6FuKl6McU40vrzJDg&pid=News&w=1200": {
   "w": 700,
   "h": 462,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700": {
+  "w": 700,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -3620,19 +3643,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.tZ8Q9TbUixLHaAoSamae6g&pid=News&w=1200": {
-  "w": 700,
-  "h": 350,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.474,
-  "local": "pics/58d594651eb20cd9.webp",
-  "out": [
-   1280,
-   640
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.uxjb8qApA4NKkBUHrsJ8Sg&pid=News&w=360": {
   "w": 360,
@@ -3734,12 +3744,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/14/Pokemon-Scarlet-violet-Sprigatito-Fuecoco-Quaxly.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3811,12 +3815,6 @@
   "w": 1280,
   "h": 720,
   "target": 720,
-  "v": 3
- },
- "https://www.highpoint.edu/media/home/2026/11/HPU1-Teddy-Bears.jpg": {
-  "w": 1200,
-  "h": 798,
-  "target": 1280,
   "v": 3
  },
  "https://www.hollywoodreporter.com/wp-content/uploads/2024/11/FROM_310_00296_R-H-2024.jpg?w=1296&h=730&crop=1": {

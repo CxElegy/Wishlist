@@ -1,14 +1,14 @@
 {
- "admin": "2adb2ac3e119",
- "admin-ai": "348d51d0aceb",
+ "admin": "e7220d56890a",
+ "admin-ai": "bdd3e30f3922",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "80756dc5"
+   "ebea6f2d"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "eeab2a1f"
+   "9aef136d"
   ]
  },
  "admin-boards": "b0fa0cad98d7",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "bd2033462e5b",
+ "admin-emblem": "ffca4defa081",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "93902fe7"
+   "7988bba9"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "c336b1834508",
+ "admin-now": "08cdb48733cf",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c40b233a"
+   "0470690e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "6cbf785e"
+   "e3c053e4"
   ]
  },
- "admin-system": "003a8afb1c25",
+ "admin-system": "d595e44ed1cc",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b2937c58"
+   "3a37c73b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b1159c62"
+   "9c277cfb"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "eb8cfe8b"
   ]
  },
- "index": "6895b664a824",
+ "index": "f69fc5a6174a",
  "index_marks": {
   "front": [
    "トップ",
-   "f55f7f74"
+   "290dedff"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "b3d66835"
+   "113e44e2"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "11c08ac6"
+   "d5fbfd3d"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,11 +157,11 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "6f4b7b0b"
+   "cec122ba"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "1685a1e8"
+   "fddf88d5"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -173,11 +173,11 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "644b14ab"
+   "7ad8cfcf"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "fc069eed"
+   "6d980566"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "669ea3a4"
+   "3dd2c092"
   ]
  },
- "updated": "11.13 02:42",
+ "updated": "11.13 02:50",
  "wishlist": "ae6c9ab27ddb"
 }

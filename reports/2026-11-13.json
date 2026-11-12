@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "edit_sig": "6c2ce2ca6eef",
+ "edit_sig": "8a04090e4653",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,8 +23,8 @@
      "date": "2026-11-12",
      "headline": "'아스트라에 오라티오' 성우진 총정리, 익숙한 목소리는 누구?",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800",
-     "image_via": "Bing 缩略图",
+     "image": "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg",
+     "image_via": "og:image",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216958",
      "weight": "normal"
     }
@@ -45,17 +45,19 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-11",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】戦術カスタムのやり方【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBkQmk4czRYMXdJM3FMTjV4QjJlUXJVZTE2NkNJNTVuWXdYMV8xaUtMOFJDNUt2WFg4MTVFb01qbU9hVUp4OWFnMlpxVjRiMUU?oc=5"
+     "headline": "【ミラハイ】戦術カスタムのやり方【BLEACHミラーズハイ】",
+     "highlight": "",
+     "image": "https://appmedia.jp/wp-content/uploads/2026/10/143855_7yzfg.webp",
+     "image_via": "og:image",
+     "url": "https://appmedia.jp/bleach-mh/80525497",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -329,24 +331,29 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
-     "date": "2026-11-06",
-     "n": 1,
-     "source": "オトナンサー",
-     "title": "【ベローチェ】福袋 「黒ねこ」トートバッグ、サンドイッチ“すっぽり入る”ポーチ、“肉球スプーン”、フードメニュー引換券封入",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5pU0tRWl9teGJhaWkwUzJyRWg0cjNfbWFNRkRiVlRWWk5MMldaZ21sVWRxQldXUG9ZVEhuelZmUElGYnpEbWhGMmpB?oc=5"
+     "blurb": "",
+     "date": "2026-11-12",
+     "headline": "江戸時代の猫ブームを紹介！宮城県の仙台市博物館で「いつだって猫展」開催中",
+     "highlight": "「いつだって猫展」",
+     "image": "https://news.walkerplus.com/article/188772/1129553_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/188772/",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-12",
-     "n": 2,
-     "source": "Walker Plus",
-     "title": "江戸時代の猫ブームを紹介！宮城県の仙台市博物館で「いつだって猫展」開催中",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9DWE5DdC1jWVB1cnpOX3FfdXZFNUJJZ1JhZ3ZYYkV0dWxrUktnaE1LWGkyUTN5TzRmRlRfUjlOV21PN0RKd2NXTUUwMUEybWJKU3JyT9IBWkFVX3lxTE1tSWlNNWdkZUNKNTg1dVNQMTh3VlZQT1BYRkFJblprbWxoYUZTcVRsaDZhN0paNl9uSlhBVzNqQl9UcDQ0UFpRNWZUS1dFUFFWWGgwc1h0aUVqQQ?oc=5"
+     "blurb": "",
+     "date": "2026-11-06",
+     "headline": "【ベローチェ】福袋 「黒ねこ」トートバッグ、サンドイッチ“すっぽり入る”ポーチ、“肉球スプーン”",
+     "highlight": "",
+     "image": "https://otonanswer.jp/wp-content/uploads/2027/11/20261106veloce01.jpg",
+     "image_via": "og:image",
+     "url": "https://otonanswer.jp/post/407035/",
+     "weight": "normal"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -504,7 +511,7 @@
      "highlight": "",
      "image": "https://portal.auone.jp/media/thumbnails/2026/11/12/https___news_jp_i_1493525061302158094_w700.webp",
      "image_via": "转载 article.auone.jp",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0wS2YwV0NCLXF5ZWpqSmJWR0hmQlY3TVpBQ3o1TFFYa0N4Z0xSbEs0RWRsbzlWTWxWTGNmSm53anp5Uk9wczIyUGt3LWN1U29vV0E1YWhtdmhKeVEtNll2bXNVNkxXQk9KajFvSjRR?oc=5",
+     "url": "https://article.auone.jp/228aea82-a370-4492-9ce2-abd39c5e49c2",
      "weight": "normal"
     }
    ],
@@ -652,33 +659,6 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 1,
-     "source": "Howl.Link",
-     "title": "【 あつ森 】 遠景づくり 🦔 エイブルシスターズ移設｜絵本のような島 【 #島クリエイト / #ぷにLIVE 】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE15UEx5bXoyRWtYVEM1d2djbDJrZU43RmFjVElpM29xeEpoa2FlNWlROGtrQmliWDI5bHBB?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
@@ -748,24 +728,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-05",
-     "n": 1,
-     "source": "18183游戏网 on MSN",
-     "title": "《绝区零》挽昼角色定位 三合一虚狩火C机制解析",
-     "url": "https://www.msn.com/zh-cn/gaming/%E9%80%9A%E7%94%A8/%E7%BB%9D%E5%8C%BA%E9%9B%B6-%E6%8C%BD%E6%98%BC%E8%A7%92%E8%89%B2%E5%AE%9A%E4%BD%8D-%E4%B8%89%E5%90%88%E4%B8%80%E8%99%9A%E7%8B%A9%E7%81%ABc%E6%9C%BA%E5%88%B6%E8%A7%A3%E6%9E%90/ar-AA2gRGq3"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 2,
-     "source": "新浪网",
-     "title": "#COS[超话]##绝区零﻿##绝区零薇薇安# 想和法厄同大人一起玩水出镜:薇薇安@居然是只居11 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5MYnAxWERFUXlCcGVwaVNmUXhHRi1fSzFvY1hBMWxvd19xV3I4WFRsUFR1VFMtdFBVbUxMdkszUW9ESkFmZEVYWFBfOEljQTFIQzR1dDlrRTNfd2tibncwMzFvMA?oc=5"
+     "headline": "《绝区零》挽昼角色定位 三合一虚狩火C机制解析",
+     "highlight": "",
+     "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/zh-cn/gaming/%E9%80%9A%E7%94%A8/%E7%BB%9D%E5%8C%BA%E9%9B%B6-%E6%8C%BD%E6%98%BC%E8%A7%92%E8%89%B2%E5%AE%9A%E4%BD%8D-%E4%B8%89%E5%90%88%E4%B8%80%E8%99%9A%E7%8B%A9%E7%81%ABc%E6%9C%BA%E5%88%B6%E8%A7%A3%E6%9E%90/ar-AA2gRGq3",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -957,24 +932,29 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-11-11",
-     "n": 1,
-     "source": "Collider",
-     "title": "Every Season of 'From', Ranked Before the Final One",
-     "url": "https://collider.com/from-tv-series-ranked/"
+     "blurb": "The MGM+ horror series 'From' will conclude with its fifth and final season.",
+     "date": "2026-11-12",
+     "headline": "'From' Season 5 release: Everything we know about the final season",
+     "highlight": "",
+     "image": "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.theweek.in/news/entertainment/2026/11/12/from-season-5-final-season-streaming-date.html",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-12",
-     "n": 2,
-     "source": "The Week",
-     "title": "'From' Season 5 release: Everything we know about the final season",
-     "url": "https://www.theweek.in/news/entertainment/2026/11/12/from-season-5-final-season-streaming-date.html"
+     "blurb": "",
+     "date": "2026-11-11",
+     "headline": "Every Season of 'From', Ranked Before the Final One",
+     "highlight": "",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/07/from.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://collider.com/from-tv-series-ranked/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
@@ -984,6 +964,31 @@
     "bg": "#0F1512",
     "fg": "#ECE7DC",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-12",
+    "headline": "【あつ森】住民の性格一覧｜性格別のキャラと全8種類の特徴【あつまれどうぶつの森】",
+    "url": "https://gamepedia.jp/ac-switch/archives/6974"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
+    "font": "sans",
     "split": true
    }
   }

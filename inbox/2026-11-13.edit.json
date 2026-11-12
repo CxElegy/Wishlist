@@ -236,7 +236,12 @@
   "チェーンソーマン": 4,
   "A2O LITE": 3,
   "gelato pique": 3,
-  "日本顶级网球赛事": 3
+  "日本顶级网球赛事": 3,
+  "FROM": 2,
+  "猫用品": 2,
+  "绝区零": 2,
+  "BLEACH Mirrors High": 1,
+  "あつ森": 1
  },
  "dota2": [
   {
@@ -514,5 +519,69 @@
     "label": "放送"
    }
   }
- ]
+ ],
+ "FROM": [
+  {
+   "headline": "'From' Season 5 release: Everything we know about the final season",
+   "highlight": "",
+   "blurb": "The MGM+ horror series 'From' will conclude with its fifth and final season.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg"
+  },
+  {
+   "headline": "Every Season of 'From', Ranked Before the Final One",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "江戸時代の猫ブームを紹介！宮城県の仙台市博物館で「いつだって猫展」開催中",
+   "highlight": "「いつだって猫展」",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "【ベローチェ】福袋 「黒ねこ」トートバッグ、サンドイッチ“すっぽり入る”ポーチ、“肉球スプーン”",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "《绝区零》挽昼角色定位 三合一虚狩火C机制解析",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "【ミラハイ】戦術カスタムのやり方【BLEACHミラーズハイ】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "あつ森": []
 }
