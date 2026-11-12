@@ -1752,6 +1752,9 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None, reject_
                     feats.append(None)
                 else:
                     feats.append(feat)
+                    if info and info.get("ratio") and dl[test[k]].get("_img") is not None:   # 取る前の顔の割合と縦横比（選ぶ段で顔の届く絵を先にする：emblem_face.cand_reach）
+                        w_, h_ = dl[test[k]]["_img"].size
+                        dl[test[k]].update(cfs=round(info["ratio"], 3), car=round(w_ / h_, 3))
             anchor = next((k for k, i in enumerate(test) if dl[i].get("anchor")), None)
             if anchor is None or feats[anchor] is None:   # 出演者の顔の基準がない（記事の写真が集合写真：Anjula Murali）：作品・出演者の名前のない役の画像は数えない
                 for k, i in enumerate(test):
@@ -2040,7 +2043,7 @@ def auto_pick(item, good, web=True, strict=False):
         src = src.split("(")[0]
         return order.index(src) if src in order else len(order)
 
-    idx = sorted(range(len(good)), key=lambda i: (rank(good[i]["source"]), i))
+    idx = sorted(range(len(good)), key=lambda i: (emblem_face.cand_reach(good[i]), rank(good[i]["source"]), i))   # 顔の届く絵を先に（T-0228）
     # 代表作のある主題は 1 作品 1 枚（ロゴか記事の画像のどちらか）。代表作のロゴを優先、なければ記事の画像
     per = 1 if kind == "topic" and item.get("emblem_examples") else 99 if kind in ("person", "topic", "brand") else 1
     seen = {}
