@@ -3237,7 +3237,7 @@ def ingest(dry_run=False):
     urgent = sum(e.get("urgent", False) for i in inbox_items for e in i["entries"])
     if urgent:
         print(f"  其中要紧消息 {urgent} 条", file=sys.stderr)
-    print(f"已收集：{path.relative_to(ROOT)}", file=sys.stderr)
+    print(f"已收集：{path.relative_to(ROOT).as_posix()}", file=sys.stderr)
     return path
 
 

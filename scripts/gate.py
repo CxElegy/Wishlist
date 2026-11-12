@@ -274,10 +274,13 @@ def check(tz=DAY_TZ, path=None):
     """→ {job: {need, claude, why, items, sig}}。state/gate.json に書く。"""
     edit = edit_work(tz=tz)
     ripe = edit_ripe(tz=tz)
-    lib = {f"lib:{n}": c for _, n, c in lib_queue.todo()}   # お客さまの版面（lib_queue.py が置いた一覧）。店長の版面と同じ AI 編集の回で編む
+    todo = lib_queue.todo()
+    fresh = lib_queue.fresh_ids()
+    lib = {f"lib:{n}": c for _, n, c in todo}   # お客さまの版面（lib_queue.py が置いた一覧）。店長の版面と同じ AI 編集の回で編む
     edit = {**edit, **lib}
     if lib and lib_due(load(path)):
         ripe = {**ripe, **lib}
+    ripe = {**ripe, **{f"lib:{n}": c for i, n, c in todo if str(i) in fresh}}   # 一度も編集していない版面は LIB_WAKE_HOURS を待たない
     photos = photo_work()
     emblem, emblem_wait = emblem_work()
     jobs = {

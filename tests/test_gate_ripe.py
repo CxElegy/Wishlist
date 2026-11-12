@@ -10,6 +10,7 @@ from unittest import mock
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
 import gate  # noqa: E402
+import library  # noqa: E402
 import runlog  # noqa: E402
 
 UTC = dt.timezone.utc
@@ -106,6 +107,28 @@ class FireRipe(unittest.TestCase):
 
     def test_no_slot_shown(self):
         self.assertEqual(gate.due_slot({**self.job, "ripe": []}, NOW), "")
+
+
+class LibFreshRipe(unittest.TestCase):
+    """お客さまの版面：直近 2 日に AI 編集の記事がないものは LIB_WAKE_HOURS（4 時間）を待たず溜まった扱い。
+    lib_queue.export が fresh を書き、gate がそれを読む接続を本物のまま通す（todo・fresh_ids は mock しない）。"""
+
+    def check(self, stories):
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            state = d / "gate.json"
+            gate.save({"jobs": {"edit": {"fired": {"at": (NOW - dt.timedelta(hours=1)).isoformat()}}}}, state)   # 1 時間前に起こした
+            rows = {7: {"name": "新版面", "day": "2026-11-12", "pending": [{"title": "t", "date": "2026-11-12", "source": "S", "summary": "", "url": "https://a.example/1", "image": None}],
+                        "stories": stories, "prev": []}}
+            with mock.patch.object(gate.lib_queue, "QUEUE", d / "queue.json"),                     mock.patch.object(gate.lib_queue, "EDITS", d / "edits"),                     mock.patch.object(library, "lib_rows", return_value=rows),                     mock.patch.object(library, "edit_todo", return_value=[(7, "新版面", 1)]),                     mock.patch.object(gate, "_now", lambda: NOW),                     mock.patch.object(gate, "edit_work", lambda tz=None: {}),                     mock.patch.object(gate, "edit_ripe", lambda tz=None: {}),                     mock.patch.object(gate, "photo_work", lambda: []),                     mock.patch.object(gate, "emblem_work", lambda: ([], [])),                     mock.patch.object(gate.lib_queue, "done_today", lambda day: 0):
+                gate.lib_queue.export(lambda *a, **k: None, "2026-11-12", [], log=lambda _m: None)
+                return gate.check(path=state)["jobs"]["edit"]["ripe"]
+
+    def test_never_edited_wakes_without_waiting(self):
+        self.assertEqual(self.check([]), ["lib:新版面"])
+
+    def test_edited_before_still_waits(self):
+        self.assertEqual(self.check([{"headline": "x"}]), [])
 
 
 if __name__ == "__main__":

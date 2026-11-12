@@ -27,7 +27,7 @@ def token_hits(root=ROOT):
                 continue
             for i, ln in enumerate(p.read_text(encoding="utf-8", errors="ignore").splitlines(), 1):
                 if TOKEN.search(ln) and not ln.lstrip().startswith("#"):
-                    hits.append("%s:%d" % (p.relative_to(root), i))
+                    hits.append("%s:%d" % (p.relative_to(root).as_posix(), i))
     return hits
 
 
@@ -41,7 +41,7 @@ def storage_url_hits(root=ROOT):
         if p.suffix in (".html", ".js") and p.is_file():
             n = len(STORAGE.findall(p.read_text(encoding="utf-8", errors="ignore")))
             if n:
-                hits.append("%s:%d" % (p.relative_to(root), n))
+                hits.append("%s:%d" % (p.relative_to(root).as_posix(), n))
     return hits
 
 
@@ -54,7 +54,7 @@ def fill_max_problems(root=ROOT):
     for d, pat in ((".github", "*.yml"), ("scripts", "*.py"), ("harness", "*.py")):
         for p in sorted((root / d).rglob(pat)):
             if p.name not in ("browser.py", "free_tier_gate.py") and var in p.read_text(encoding="utf-8", errors="ignore"):
-                bad.append("%s が %s を書く" % (p.relative_to(root), var))
+                bad.append("%s が %s を書く" % (p.relative_to(root).as_posix(), var))
     return bad
 
 

@@ -74,7 +74,7 @@ class SparseImports(unittest.TestCase):
                     seen.add(p)
                     for nm, f in local_imports(p):
                         if f.parent.name not in dirs:
-                            bad.append(f"{wf.name}: {p.relative_to(ROOT)} が import する {f.relative_to(ROOT)} のフォルダが sparse-checkout {sorted(dirs)} に無い")
+                            bad.append(f"{wf.name}: {p.relative_to(ROOT).as_posix()} が import する {f.relative_to(ROOT).as_posix()} のフォルダが sparse-checkout {sorted(dirs)} に無い")
                         else:
                             todo.append(f)
         self.assertEqual(bad, [], "\n".join(bad))

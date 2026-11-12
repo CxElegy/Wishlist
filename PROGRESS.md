@@ -406,3 +406,4 @@
 
 - 2026-11-11 f1：guest ux_check の E10 ✗ を規則から（止める門 passes_left と E10 の物差しを揃え、1 周して 0 枚は passed で情報へ）・PR #994・CI 緑・点検 test_record_marks_passed_after_one_full_pass・StuckPassed・次：E15/E16 の「別人」の規則
 - 2026-11-11 f1f1：#994 の続き。凍った失敗に passed が付かず E10 ✗ 10 枚が残っていた→sync_progress が frozen() で旗を付ける・点検 test_real_frozen_boards_are_passed_after_sync・次：合併後に background.yml を dispatch して ux_check で E10 0 を確かめる
+- 2026-11-12 v2 T-0002：AI 編集で一度も編集していない新しい lib 版面を 4 時間待たずに起こす（export が fresh を付け gate が LIB_WAKE_HOURS を待たず読む）・path を .as_posix() に揃え fresh の export→gate 接続を試験・ローカル CI で確かめる
