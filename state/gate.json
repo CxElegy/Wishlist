@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-12T18:35:08+00:00",
+ "checked": "2026-11-12T19:03:44+00:00",
  "fired": {
   "at": "2026-11-12T18:35:08+00:00",
   "results": {
@@ -92,28 +92,27 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
     "FROM",
     "GTA 6",
-    "あつ森",
-    "A2O LITE",
-    "周杰伦",
     "The Mandalorian",
     "Vaundy",
-    "ぐでたま"
-   ],
-   "need": true,
-   "sig": "306c08fe82df",
-   "waiting": [
-    "Astrae Oratio",
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 13 版面（Actions で Python が埋める）・失敗 2 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
