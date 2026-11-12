@@ -23,7 +23,7 @@ import os
 import re
 import subprocess
 import sys
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CODE_DIRS = ("scripts", "harness", "tests")
@@ -42,7 +42,7 @@ def code_files(root):
     for d in CODE_DIRS:
         for dp, dns, fns in os.walk(root / d):
             dns[:] = [n for n in dns if n not in ("__pycache__", "node_modules", ".venv")]
-            out += [PurePosixPath(Path(dp, f).relative_to(root)).as_posix() for f in fns if f.endswith(".py")]
+            out += [Path(dp, f).relative_to(root).as_posix() for f in fns if f.endswith(".py")]
     return sorted(out)
 
 
