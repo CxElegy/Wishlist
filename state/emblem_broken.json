@@ -3156,6 +3156,26 @@
     "page": "https://nookipedia.com/wiki/File:Jack_NL.png",
     "shape": "cutout"
    }
+  },
+  {
+   "v": 13,
+   "emblem": {
+    "subject": "Reese",
+    "why": "Reese（Fandom のページの胸像：顔だけのアップの代わり）",
+    "image": "emblems/reese-e9e5aea5-bust.webp",
+    "source": "https://dodo.ac/np/images/5/5c/Reese_amiibo_Figure.png",
+    "page": "https://nookipedia.com/wiki/File:Reese_aF.png",
+    "shape": "cutout",
+    "fs": 0.272,
+    "face": [
+     0.272,
+     0.137,
+     0.495,
+     0.498,
+     320,
+     520
+    ]
+   }
   }
  ],
  "Astrae Oratio": [],
