@@ -1,32 +1,32 @@
 {
- "admin": "d0157771335b",
- "admin-ai": "b2dda8c1e9e9",
+ "admin": "aa4efadabf84",
+ "admin-ai": "6453bc919a2f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "16bea9b8"
+   "4a0f1de1"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "fe222b35"
+   "3c8905ca"
   ]
  },
- "admin-boards": "787a80fc09e7",
+ "admin-boards": "9c524a858514",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "9d16f4df"
+   "8f377997"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "01e924d85048",
+ "admin-emblem": "9ab106c79264",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ea38dc8f"
+   "10ca3a15"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f2a2dcf0bf77",
  "admin-members_marks": {},
- "admin-now": "c95e53aa1115",
+ "admin-now": "a8dc4520f1ac",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b1f06bf9"
+   "147fc92d"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c6f378e5"
+   "db9f0d7c"
   ]
  },
- "admin-system": "ac196b6850ff",
+ "admin-system": "56afd0c42b5d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b64afde2"
+   "685fc2d6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f2688d46"
+   "aacdc276"
   ]
  },
  "admin_marks": {},
- "heat": "9f93463fc13c",
+ "heat": "ca9030e539b8",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "672a4b1a"
+   "cba89061"
   ],
   "ranking": [
    "ランキング",
-   "59390874"
+   "5e3fc9ef"
   ]
  },
- "index": "cd5d30485827",
+ "index": "c39159503a5b",
  "index_marks": {
   "front": [
    "トップ",
-   "76c81901"
+   "f7c7fb37"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "7ab2d409"
+   "9ffdda5e"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "8fd0de2e"
+   "6be12296"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,11 +145,11 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "a5045c0d"
+   "59081c26"
   ],
   "w-9cb26dba": [
    "FROM",
-   "dd10722b"
+   "1e6574e3"
   ],
   "w-b867582f": [
    "あつ森",
@@ -173,15 +173,15 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "52efa89e"
+   "f0de14a6"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "9beaaafb"
+   "37650e38"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "75c9178d"
+   "f4e05088"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "f53a804f"
   ]
  },
- "updated": "11.12 13:33",
+ "updated": "11.12 13:37",
  "wishlist": "29083940f78b"
 }

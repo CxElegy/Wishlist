@@ -65,25 +65,27 @@
  ],
  "_covered": {
   "GTA 6": 85,
-  "漫威电影": 77,
-  "三星手机": 21,
-  "Astrae Oratio": 12,
-  "哈利波特剧集": 12,
+  "漫威电影": 80,
+  "三星手机": 24,
+  "Astrae Oratio": 13,
+  "哈利波特剧集": 14,
   "滑雪": 16,
   "チェーンソーマン": 21,
-  "ILLIT": 8,
-  "MMORPG 新作": 7,
+  "ILLIT": 10,
+  "MMORPG 新作": 10,
   "周杰伦": 10,
-  "The Mandalorian": 5,
-  "dota2": 3,
+  "The Mandalorian": 6,
+  "dota2": 4,
   "日本顶级网球赛事": 3,
-  "BLEACH Mirrors High": 13,
+  "BLEACH Mirrors High": 14,
   "A2O LITE": 4,
-  "gelato pique": 4,
+  "gelato pique": 5,
   "星巴克马克杯": 1,
   "绝区零": 1,
-  "FROM": 1,
-  "ぐでたま": 12
+  "FROM": 2,
+  "ぐでたま": 13,
+  "Vaundy": 3,
+  "猫用品": 3
  },
  "漫威电影": [
   {
@@ -107,7 +109,8 @@
     47,
     49,
     57,
-    64
+    64,
+    80
    ],
    "image": "https://www.thewrap.com/wp-content/uploads/2022/06/Elizabeth-Olsen-Wanda.jpg"
   },
@@ -158,7 +161,9 @@
    "refs": [
     1,
     13,
-    5
+    5,
+    78,
+    79
    ]
   },
   {
@@ -184,7 +189,8 @@
     19,
     6,
     11,
-    4
+    4,
+    23
    ],
    "image": "https://tech-ish.com/wp-content/uploads/2026/08/techish-galaxy-s27-cad-thumbnail-1920x1080-1-1280x720.png"
   },
@@ -228,7 +234,8 @@
    "weight": "normal",
    "refs": [
     5,
-    18
+    18,
+    24
    ]
   },
   {
@@ -253,7 +260,8 @@
     4,
     5,
     1,
-    12
+    12,
+    13
    ],
    "image": "https://img1.newsis.com/2026/09/17/NISI20260917_0002242122_web.jpg"
   },
@@ -315,7 +323,9 @@
     2,
     7,
     8,
-    10
+    10,
+    13,
+    14
    ]
   },
   {
@@ -485,7 +495,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    10
    ]
   },
   {
@@ -566,6 +577,15 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "Star Wars Still Hasn’t Fixed George Lucas' Biggest Problem With 'The Mandalorian'",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "dota2": [
@@ -575,7 +595,8 @@
    "blurb": "Dota 2 is returning to the Esports World Cup in 2027.",
    "weight": "lead",
    "refs": [
-    3
+    3,
+    4
    ],
    "image": "https://d3h9qea4qy4169.cloudfront.net/16x9_7_b17f7953c2.png"
   },
@@ -707,6 +728,15 @@
     3,
     2
    ]
+  },
+  {
+   "headline": "ジェラート ピケのクリスマスマーケットが表参道ヒルズに登場！ メリーゴーランドや限定ピケベアグッズも",
+   "highlight": "表参道ヒルズ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "星巴克马克杯": [
@@ -731,7 +761,17 @@
    ]
   }
  ],
- "FROM": [],
+ "FROM": [
+  {
+   "headline": "‘From’ Season 3 Ending Explained: Jim, Julie & The Man in Yellow",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "ぐでたま": [
   {
    "headline": "ペコちゃんが“ぐでたま”にコスプレ！新スイーツ登場",
@@ -782,6 +822,55 @@
     5,
     8,
     10
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy、自身初のライブ音源を配信へ 東京ドーム公演での“圧倒的な歌唱力”を収録",
+   "highlight": "自身初のライブ音源",
+   "blurb": "東京ドーム公演の歌唱を収録した、Vaundy自身初のライブ音源が配信される。",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Apple Music週間ソング11/2〜11/8、Vaundyの「しわあわせ」が3週連続で1位にランクイン",
+   "highlight": "3週連続で1位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Vaundy唱完小巨蛋又有驚喜！化身魔鬼教練助陣JQ：給我變超人啊",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "【ダイソー】大当たりなの売ってた……。思わず欲しくなる猫グッズ3選",
+   "highlight": "猫グッズ3選",
+   "blurb": "ダイソーで見つかった、思わず欲しくなる猫グッズ3選の紹介。",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "40 Cat Toys For Bored Felines They’ll Literally Be Obsessed With",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]

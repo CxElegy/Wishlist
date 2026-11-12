@@ -764,6 +764,19 @@
   "target": 720,
   "v": 3
  },
+ "https://d17gj49471obkc.cloudfront.net/kyodopress_cms/wp-content/uploads/2026/11/kyd_4048751_main-7-scaled-e1794374164954-430x538.jpg": {
+  "w": 430,
+  "h": 538,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.519,
+  "local": "pics/690778c341f095b7.webp",
+  "out": [
+   1023,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://d1lss44hh2trtw.cloudfront.net/assets/articles/2026/11/09/vice-city-13_feature.jpg": {
   "w": 3840,
   "h": 2160,
@@ -932,6 +945,12 @@
  "https://fpimgs.s3.ap-southeast-1.amazonaws.com/uul/2026/11/08/6aef58edf165b0.95265054.jpg": {
   "w": 752,
   "h": 752,
+  "target": 720,
+  "v": 3
+ },
+ "https://freeyorkk.b-cdn.net/wp-content/uploads/2026/11/star-wars-generative-ai-freeyork-1.jpg": {
+  "w": 990,
+  "h": 1238,
   "target": 720,
   "v": 3
  },
@@ -1951,6 +1970,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.trilltrill.jp/articles/5178164/featured-image.22dc5c43a1c941aac39c60a2fb3ccf8a?w=1200": {
+  "w": 1200,
+  "h": 1200,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.vanityfair.com/photos/6af20a08c16158eab34f472e/16:9/w_1280,c_limit/01.jpg": {
   "w": 1280,
   "h": 720,
@@ -2691,6 +2716,12 @@
   ],
   "why": "看不清"
  },
+ "https://q1.itc.cn/q_70/images03/20261111/e6206cc802254c8eac76477efb46308b.jpeg": {
+  "w": 4892,
+  "h": 2937,
+  "target": 720,
+  "v": 3
+ },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -2700,12 +2731,6 @@
  "https://q6.itc.cn/images01/20261108/3f7543d7176f4b9f8045718ab6942f18.jpeg": {
   "w": 553,
   "h": 312,
-  "target": 720,
-  "v": 3
- },
- "https://q9.itc.cn/q_70/images03/20261111/f83b2ca6e6ab4b0898671901bc1322db.jpeg": {
-  "w": 6488,
-  "h": 4000,
   "target": 720,
   "v": 3
  },
@@ -3175,6 +3200,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/movieweb-featured-image-template-2026-11-11t122731-320.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/06/ultimate_edition_electric_fang_02.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3278,9 +3309,9 @@
   "target": 1280,
   "v": 3
  },
- "https://thewpwire.org/wp-content/uploads/2026/11/croppedmarveljump-e1794419376945.jpeg": {
-  "w": 1880,
-  "h": 1426,
+ "https://thewpwire.org/wp-content/uploads/2026/10/2610-WPHS-marching-band-1244564-1200x900.jpg": {
+  "w": 1200,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -3698,18 +3729,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.YWtQODOba0e7szUvdUr-lA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Z8qznNUuoyyH_qoTlJyMrQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ZuMjDJWmJ-jDa0XVQ51nTQ&pid=News&w=1200": {
   "w": 700,
   "h": 376,
@@ -3741,9 +3760,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.lgxuSY49gqVbCmpf0WKc_Q&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700": {
   "w": 700,
-  "h": 527,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -4029,6 +4048,12 @@
  "https://www.joblo.com/wp-content/uploads/2026/04/mandalorian-and-grogu-cinemacon.jpg": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.justjared.com/wp-content/uploads/2026/11/from-season-3-ending.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
