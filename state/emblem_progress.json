@@ -117,31 +117,33 @@
    }
   },
   "BLEACH Mirrors High": {
-   "at": "2026-11-12T01:15:16+00:00",
+   "at": "2026-11-12T01:26:25+00:00",
+   "failed_at": "2026-11-12T01:26:25+00:00",
    "funnel": {
-    "added": 1,
-    "auto": 1,
+    "added": 0,
+    "auto": 0,
     "found": 17,
     "rejected": {
-     "もう使っている・外した画像": 16,
-     "画像のない人": 9
+     "もう使っている・外した画像": 17,
+     "画像のない人": 10
     },
     "usable": 17
    },
    "have": 43,
    "kind": "character",
-   "material": "2649bb22c735",
+   "material": "7a4613a59226",
    "names_v": 16,
-   "note": "1 枚足した（標準 +1 → 名前を広げる +0 → 公式・記事のページ +0）。あと 157 枚、次の回に続きの 10 人",
-   "rounds": 29,
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：もう使っている・外した画像 17・画像のない人 10。新しい記事・手がかりが来たらすぐ、来なくても規則を直したらもう一度",
+   "passed": true,
+   "rounds": 30,
    "rounds_v": {
     "BROKEN_V": 13,
     "NAMES_V": 16
    },
-   "state": "running",
+   "state": "failed",
    "steps": [
     {
-     "added": 1,
+     "added": 0,
      "found": 10,
      "label": "標準"
     },
@@ -970,20 +972,11 @@
   }
  },
  "last_run": {
-  "at": "2026-11-12T01:01:27+00:00",
+  "at": "2026-11-12T01:21:39+00:00",
   "done": [
-   "周杰伦",
-   "GTA 6",
-   "A2O LITE",
-   "Vaundy",
-   "The Mandalorian",
-   "Astrae Oratio",
-   "漫威电影",
-   "哈利波特剧集",
-   "BLEACH Mirrors High",
-   "ぐでたま"
+   "BLEACH Mirrors High"
   ],
-  "end": "2026-11-12T01:15:20+00:00",
+  "end": "2026-11-12T01:26:25+00:00",
   "minutes": 40.0,
   "workers": 6
  },

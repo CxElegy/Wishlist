@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-12T01:15:51+00:00",
+ "checked": "2026-11-12T01:26:50+00:00",
  "fired": {
-  "at": "2026-11-12T01:15:51+00:00",
+  "at": "2026-11-12T01:26:50+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -75,28 +75,30 @@
    "prog": 328,
    "prog_day": "2026-11-12",
    "ripe": [
+    "FROM",
     "GTA 6",
     "MMORPG 新作",
     "Vaundy",
+    "dota2",
     "三星手机",
+    "哈利波特剧集",
     "漫威电影",
     "猫用品"
    ],
-   "sig": "b185b0f67bed",
+   "sig": "0148a346be7c",
    "token_cap": 1000000,
    "tokens_today": 340520,
    "why": "整理待ちの記事 136 件（25 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High"
-   ],
-   "need": true,
-   "sig": "b6804aff6de5",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "BLEACH Mirrors High",
     "FROM",
     "GTA 6",
     "The Mandalorian",
@@ -110,7 +112,7 @@
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
