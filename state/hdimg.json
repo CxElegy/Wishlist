@@ -311,12 +311,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.st-note.com/production/uploads/images/322005895/rectangle_large_type_2_c2fadc46aaccbfcbef163f97e126a410.png?fit=bounds&quality=85&width=1280": {
-  "w": 1280,
-  "h": 670,
-  "target": 720,
-  "v": 3
- },
  "https://assets.st-note.com/production/uploads/images/331430922/rectangle_large_type_2_dbe95185dae4f88d3e28a2cf8def1ce3.jpeg?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -1082,7 +1076,7 @@
   "target": 720,
   "v": 3
  },
- "https://hawk.live/storage/images/posts/noticed-commented-patch-741e-25215.jpg": {
+ "https://hawk.live/storage/images/posts/satanic-named-three-dota-2-heroes-for-easy-mmr-gain-23688.jpg": {
   "w": 1200,
   "h": 628,
   "target": 720,
@@ -1879,6 +1873,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://jazznews.com.tw/wp-content/uploads/2026/11/20261112165613_0_573f2e.jpg?v=1794473774": {
+  "w": 2222,
+  "h": 1482,
+  "target": 1280,
+  "v": 3
+ },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/zrdkuvxctzo8hdvcl57qng4l.jpg": {
   "w": 1600,
   "h": 900,
@@ -2093,6 +2093,19 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1133751/11694997_615.jpg": {
+  "w": 615,
+  "h": 323,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.489,
+  "local": "pics/6d8f572f20bd47d2.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清"
+ },
  "https://news.walkerplus.com/article/1133922/11697468_615.jpg": {
   "w": 615,
   "h": 346,
@@ -2183,19 +2196,6 @@
   "v": 3,
   "blur": 0.329
  },
- "https://news.walkerplus.com/article/139337/781089_615.jpg": {
-  "w": 615,
-  "h": 331,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.469,
-  "local": "pics/dfb39ba6f01121b3.webp",
-  "out": [
-   1280,
-   689
-  ],
-  "why": "看不清"
- },
  "https://news.walkerplus.com/article/1445517/18700632_615.jpg": {
   "w": 615,
   "h": 769,
@@ -2215,6 +2215,19 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/149014/847171_615.jpg": {
+  "w": 615,
+  "h": 500,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.576,
+  "local": "pics/6b9c5c41c4709d4f.webp",
+  "out": [
+   1280,
+   1041
+  ],
+  "why": "看不清"
+ },
  "https://news.walkerplus.com/article/186735/1115046_615.jpg": {
   "w": 615,
   "h": 461,
@@ -2227,6 +2240,12 @@
    959
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/188772/1129553_615.jpg": {
+  "w": 615,
+  "h": 871,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/198145/1195520_615.jpg": {
   "w": 615,
@@ -2273,12 +2292,6 @@
   ],
   "why": "看不清"
  },
- "https://news.walkerplus.com/article/63163/351953_615.jpg": {
-  "w": 615,
-  "h": 854,
-  "target": 1280,
-  "v": 3
- },
  "https://news.walkerplus.com/article/68792/385524_615.jpg": {
   "w": 615,
   "h": 456,
@@ -2295,6 +2308,12 @@
  "https://news.walkerplus.com/article/70253/393787_615.jpg": {
   "w": 615,
   "h": 409,
+  "target": 720,
+  "v": 3
+ },
+ "https://news.walkerplus.com/article/73055/410281_615.jpg": {
+  "w": 615,
+  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -2655,16 +2674,16 @@
   "target": 1280,
   "v": 3
  },
+ "https://portal.auone.jp/media/thumbnails/2026/11/12/https___news_jp_i_1493525061302158094_w700.webp": {
+  "w": 700,
+  "h": 540,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/112568/36/112568-36-b3127b153967cec052843648096d0276-830x436.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 830,
   "h": 436,
   "target": 1280,
-  "v": 3
- },
- "https://prcdn.freetls.fastly.net/release_image/1355/9018/1355-9018-cad601b939804fc52340828ffdef7710-1800x1201.jpg": {
-  "w": 1800,
-  "h": 1201,
-  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/152182/165/152182-165-35ca33887b964c986d921a2630a0708e-1268x951.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -2752,12 +2771,6 @@
    640
   ],
   "why": "看不清"
- },
- "https://q1.itc.cn/q_70/images03/20261111/e6206cc802254c8eac76477efb46308b.jpeg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-12"
  },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
@@ -2853,6 +2866,12 @@
   "w": 1200,
   "h": 803,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/f1be0b7f732e1bdcefe899d04ea656428216755b72fa9f4548711282a270b2d4/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fwtvo_rockford_articles_137%2Fa1e36d13690331e8d765a384273f449a.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://sammyguru.com/wp-content/uploads/2026/04/Galaxy-S26-SammyGuru-1-1024x576.jpg": {
@@ -3610,9 +3629,9 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.1e_Rs7O4H8XlGrXgDbIxFw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.1e3uumhEBBmXkAMcYFuC6w&pid=News&w=720": {
   "w": 700,
-  "h": 393,
+  "h": 251,
   "target": 720,
   "v": 3
  },
@@ -3764,6 +3783,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Myshg7Y7RaFTpPUOyyQWjw&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.VD1nTYo6O_Xi2iyp-s_k6A&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -3796,9 +3821,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ZuMjDJWmJ-jDa0XVQ51nTQ&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.ZWX3t_xxYL6jJ0-hLMatcw&pid=News&w=800": {
   "w": 700,
-  "h": 376,
+  "h": 700,
   "target": 720,
   "v": 3
  },
@@ -3824,18 +3849,6 @@
  "https://www.bing.com/th?id=ONUT.fzgywlUyd_TW-btfiCz19A&pid=News&w=700": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.lgxuSY49gqVbCmpf0WKc_Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 527,
   "target": 720,
   "v": 3
  },
