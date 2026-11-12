@@ -26,6 +26,7 @@ def slim(c):
 def find(item, subject, log=print, n=N):
     """item の subject の候補を n 枚まで。今ある・外した画像は除く。→ [候補]。"""
     import emblem_fill as ef
+    import emblem_face
     base = ef._base_subject(subject)
     kind = ef.kind_of(item)
     probe = {k: v for k, v in item.items() if k != "_no_web"}
@@ -45,7 +46,7 @@ def find(item, subject, log=print, n=N):
         if kind in ("character", "group"):   # 名簿の人は、その人だけ
             cands = [c for c in cands if ef._same_person(ef._base_subject(c["subject"]), base)]
         good = ef.check(cands, log, need_face=ef.needs_face(item), strict=False, reject_looks=ef.reject_looks(item))
-        for c in sorted(good, key=lambda c: rank.get(c["source"].split("(")[0], len(rank))):
+        for c in sorted(good, key=lambda c: (emblem_face.cand_reach(c), rank.get(c["source"].split("(")[0], len(rank)))):   # 顔の届く絵を先に（T-0228）
             k = ef.file_key(c["image"])
             if c["image"] in taken or k in taken or k in seen:
                 continue

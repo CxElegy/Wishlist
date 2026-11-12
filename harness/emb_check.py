@@ -749,8 +749,8 @@ def check(pg, who, width, out, full=False, guest=False):
                 got, floor = fs_ * (m["ow"] / fa if fa else m["oh"]), emblem_face.SIZES[size]["fmin"]
                 if got < min(want[0], floor) * 0.95:
                     found["E31"].append(f"{s['k']} {name} 顔 {got:.0f}px（規則 {want[0]:.0f}px）")
-                elif want[0] < floor * 0.95:
-                    short.append(f"{s['k']} {name} {got:.0f}px")
+                else:
+                    short.append((f"{s['k']} {name}", {"fs": fs_, "body": bd, "m": a.get("m"), "fa": a.get("fa"), "ft": a.get("bt") or 0}))
             hs.append((m["h"] if mm and mm >= 1 else m["h"] / mm if mm else m["h"] * fs / 0.32 if fs > 0.32 and not a.get("body") else m["h"], name, "" if a.get("plate") else a.get("shape", "")))   # 板ごとのタイトルロゴは人物の物差しで測らない
             if m["off"] > 0:
                 found["E5"].append(f"{s['k']} {name} +{m['off']}px")
@@ -858,8 +858,8 @@ def check(pg, who, width, out, full=False, guest=False):
             print(f"  情報 E27 数えられなかった：{e}")
     if guest and (ex := exhausted()):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
-    if short:
-        print(f"  情報 E31 規則どおりでも顔が下限 {emblem_face.SIZES[size]['fmin']}px に届かない {len(short)} 枚（頭の大きいキャラは全身のまま・横に広いポーズは幅の上限。選び方で替える対象）：" + "・".join(short[:6]))
+    if short and (miss := emblem_face.unreached(short, size)):   # 届かない絵の数え方は emblem_face.unreached 1 か所
+        print(f"  情報 E31 規則どおりでも顔が下限 {emblem_face.SIZES[size]['fmin']}px に届かない {len(miss)} 枚（頭の大きいキャラは全身のまま・横に広いポーズは幅の上限。選ぶ段で届く絵を先にする：emblem_face.cand_reach）：" + "・".join(f"{n} {px:.0f}px" for n, px in miss[:6]))
     if px_by:
         print("  情報 E29 表示した顔の高さ px（最大÷最小。基準待ち・✗ にしない）：" + "・".join(
             f"{emblem_face.CLASSES[k]} {len(v)} 枚 {min(v):.0f}〜{max(v):.0f}px（{max(v) / min(v):.2f} 倍）" for k, v in sorted(px_by.items())))

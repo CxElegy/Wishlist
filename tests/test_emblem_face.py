@@ -120,6 +120,33 @@ class CustomerRender(unittest.TestCase):
         self.assertAlmostEqual(a["fs"] * a["m"], 0.32, places=2)
 
 
+class Unreached(unittest.TestCase):
+    """T-0228：規則どおりでも顔が届かない絵を数える（emblem_face.unreached）と、選ぶ段で届く候補を先にする（cand_reach）。"""
+    WIDE = {"fs": 0.09, "body": [0.06, 0.99, 0.5, 1.2, 0.9, 0.93]}                      # 幅の広い構え：幅 140px の上限で顔 10px
+    WEAPON = {"fs": 0.1, "body": [0.138, 2.4, 0.5, 0.9, 0.9, 2.26], "ft": 0.6}          # 頭上に武器・帽子：顔の下の半分が入る大きさまでで 13px
+    BIGHEAD = {"fs": 0.2, "body": [0.06, 0.99, 0.5, 0.6, 0.9, 0.93]}                    # 頭の大きいキャラ：全身のまま枠 100px で 20px
+    OK = {"fs": 0.091, "body": [0.062, 0.992, 0.5, 0.31, 0.9, 0.93]}
+
+    def test_three_types_are_counted(self):
+        rows = [("wide", self.WIDE), ("weapon", self.WEAPON), ("big", self.BIGHEAD), ("ok", self.OK)]
+        got = dict(ef.unreached(rows, "phone"))
+        self.assertEqual(sorted(got), ["big", "weapon", "wide"])
+        self.assertTrue(all(px < 32 * 0.95 for px in got.values()))
+        self.assertEqual(ef.unreached([("ok", self.OK)], "pc"), [])
+
+    def test_shown_is_unchanged(self):
+        self.assertEqual(ef.shown(0.09, self.WIDE["body"], None, "phone")[:2], (10.5, 116.7))
+
+    def test_reaching_candidate_comes_first(self):
+        wide = {"id": "wide", **self.WIDE}
+        ok = {"id": "ok", **self.OK}
+        unknown = {"id": "unknown"}
+        self.assertEqual([ef.cand_reach(c) for c in (wide, ok, unknown)], [1, 0, 0])
+        self.assertEqual([c["id"] for c in sorted([wide, ok, unknown], key=ef.cand_reach)], ["ok", "unknown", "wide"])   # 並べ替えは安定：同じ鍵なら元の順
+        self.assertEqual(ef.cand_reach({"cfs": 0.09, "car": 1.2}), 1)     # 取る前の測り（全身・横に広い）
+        self.assertEqual(ef.cand_reach({"cfs": 0.35, "car": 1.2}), 0)     # 顔が大きい＝胸像かもしれない：数えない
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -246,6 +273,33 @@ class FaceMin(unittest.TestCase):
     def test_wide_pose_is_bounded(self):
         face, h, vis, cut = ef.shown(0.09, [0.06, 0.99, 0.5, 1.2, 0.9, 0.93], None, "phone")   # 横に広いポーズ：幅 140px まで（題字の場所を取らない）
         self.assertLessEqual(h * 1.2, 140.5)
+
+
+class Unreached(unittest.TestCase):
+    """T-0228：規則どおりでも顔が届かない絵を数える（emblem_face.unreached）と、選ぶ段で届く候補を先にする（cand_reach）。"""
+    WIDE = {"fs": 0.09, "body": [0.06, 0.99, 0.5, 1.2, 0.9, 0.93]}                      # 幅の広い構え：幅 140px の上限で顔 10px
+    WEAPON = {"fs": 0.1, "body": [0.138, 2.4, 0.5, 0.9, 0.9, 2.26], "ft": 0.6}          # 頭上に武器・帽子：顔の下の半分が入る大きさまでで 13px
+    BIGHEAD = {"fs": 0.2, "body": [0.06, 0.99, 0.5, 0.6, 0.9, 0.93]}                    # 頭の大きいキャラ：全身のまま枠 100px で 20px
+    OK = {"fs": 0.091, "body": [0.062, 0.992, 0.5, 0.31, 0.9, 0.93]}
+
+    def test_three_types_are_counted(self):
+        rows = [("wide", self.WIDE), ("weapon", self.WEAPON), ("big", self.BIGHEAD), ("ok", self.OK)]
+        got = dict(ef.unreached(rows, "phone"))
+        self.assertEqual(sorted(got), ["big", "weapon", "wide"])
+        self.assertTrue(all(px < 32 * 0.95 for px in got.values()))
+        self.assertEqual(ef.unreached([("ok", self.OK)], "pc"), [])
+
+    def test_shown_is_unchanged(self):
+        self.assertEqual(ef.shown(0.09, self.WIDE["body"], None, "phone")[:2], (10.5, 116.7))
+
+    def test_reaching_candidate_comes_first(self):
+        wide = {"id": "wide", **self.WIDE}
+        ok = {"id": "ok", **self.OK}
+        unknown = {"id": "unknown"}
+        self.assertEqual([ef.cand_reach(c) for c in (wide, ok, unknown)], [1, 0, 0])
+        self.assertEqual([c["id"] for c in sorted([wide, ok, unknown], key=ef.cand_reach)], ["ok", "unknown", "wide"])   # 並べ替えは安定：同じ鍵なら元の順
+        self.assertEqual(ef.cand_reach({"cfs": 0.09, "car": 1.2}), 1)     # 取る前の測り（全身・横に広い）
+        self.assertEqual(ef.cand_reach({"cfs": 0.35, "car": 1.2}), 0)     # 顔が大きい＝胸像かもしれない：数えない
 
 
 if __name__ == "__main__":

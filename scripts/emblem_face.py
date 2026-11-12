@@ -429,3 +429,28 @@ def shown_face_px(fs, body=None, m=None, size="pc", fa=None, ft=0):
     """今の CSS で表示される顔の高さ（px）。size = "pc"（601px 以上）か "phone"。"""
     r = shown(fs, body, m, size, fa, ft)
     return r[0] if r else None
+
+
+REACH = 0.95   # 規則の表示の顔が下限 fmin のこの倍未満なら「届かない」（点検 E31 と同じ）
+
+
+def unreached(rows, size="phone"):
+    """規則どおりに表示しても顔が下限 fmin（スマホ 32px・PC 44px）に届かない絵。rows = [(名前, {fs, body, m, fa, ft})]（shown_face_px と同じ材料）。→ [(名前, 規則の顔 px)]（表示の式 shown は変えない）。"""
+    floor, out = SIZES[size]["fmin"], []
+    for name, a in rows:
+        r = shown(a.get("fs"), a.get("body"), a.get("m"), size, a.get("fa"), a.get("ft") or 0)
+        if r and r[0] < floor * REACH:
+            out.append((name, r[0]))
+    return out
+
+
+def cand_reach(c, size="phone"):
+    """選ぶ段の並べ替えの鍵：0 = 届く（か測れない）、1 = 届かない。候補が測った材料（fs・body・m・fa・bt）を持っていればそれで、
+    なければ取る前の画像で測った顔の割合 cfs と縦横比 car から全身の体つきを仮に作る（顔が絵の 20% 未満＝全身のとき。それ以上は胸像かもしれず、取るときに大きさをそろえるので数えない）。"""
+    fs, body = c.get("fs") or c.get("bf"), c.get("body")
+    if not body and not c.get("m"):
+        cfs, car = c.get("cfs"), c.get("car")
+        if not (cfs and car and cfs < BIG_HEAD):
+            return 0
+        fs, body = cfs, [cfs * 0.6, 1.0, 0.5, car, 0.9, 1.0 - cfs * 0.6]
+    return 1 if fs and unreached([("", {"fs": fs, "body": body, "m": c.get("m"), "fa": c.get("fa"), "ft": c.get("bt")})], size) else 0
