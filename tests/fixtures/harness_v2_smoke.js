@@ -25,6 +25,9 @@ const TASKS = {
   // 前の回で審査は通り、合併だけが負荷で落ちた段（resume.stage=ship）／合併が負荷で落ちる段／作る係が途中で返す段
   resume: [{ id: 'T-0002', title: '続きの段', kind: 'fix', complexity: 'normal', scope: ['scripts/gate.py'], done_when: ['試験が通る'],
     resume: { branch: 'harness/1112b-T-0002', worktree: 'D:/x/wt/T-0002', commit: 'ce57ac1', stage: 'ship', note: '負荷で test_wall_shapes が時間切れ' } }],
+  // 合併の前の手元の CI が本物の試験の赤：1 回だけ直して合併へ（shipfix）／直しても赤なら止める（shipred）
+  shipfix: [{ id: 'T-0011', title: '手元の CI が一度赤になる段', kind: 'fix', complexity: 'normal', scope: ['scripts/s.py'], done_when: ['試験が通る'] }],
+  shipred: [{ id: 'T-0012', title: '手元の CI が直しても赤の段', kind: 'fix', complexity: 'light', scope: ['scripts/s2.py'], done_when: ['試験が通る'] }],
   infra: [{ id: 'T-0005', title: '合併が負荷で落ちる段', kind: 'fix', complexity: 'normal', scope: ['scripts/z.py'], done_when: ['試験が通る'] }],
   partial: [{ id: 'T-0007', title: '大きすぎる段', kind: 'visual', complexity: 'normal', scope: ['scripts/render.py'], done_when: ['空き 0'] }],
   flip: [{ id: 'T-0008', title: '審査の文が毎回変わる段', kind: 'fix', complexity: 'normal', scope: ['scripts/w.py'], done_when: ['試験が通る'] }],
@@ -49,6 +52,7 @@ async function agent(prompt, opts) {
     return { ok: true, problems: first ? ['A1：写真の下に 40px の帯'] : [], signature: first ? 'A1@sec-a' : '', rules: [{ id: 'A1', pass: !first, shot: 's.png', why: '' }] }
   }
   if (role === 'diag') return { plan: '原因：…\n1. …' }
+  if (role === 'ship' && (scenario === 'shipred' || (scenario === 'shipfix' && !calls.some(c => c.label.startsWith('fix:' + id + ':ship'))))) return { status: 'failed', failed_class: 'work', failed_tests: ['test_fake402'], summary: 'AssertionError：名簿に無い入口' }
   if (role === 'ship' && scenario === 'infra') return { status: 'failed', failed_class: 'infra', failed_tests: ['test_wall_shapes'], summary: 'Page.goto 30 秒切れ' }
   if (role === 'ship') return { status: 'merged', pr: `https://github.com/x/y/pull/${calls.length}`, sha: 'abc1234', summary: '合併' }
   if (role === 'announce' || role === 'learn') return { ok: true, summary: '' }

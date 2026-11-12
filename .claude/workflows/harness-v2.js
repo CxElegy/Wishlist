@@ -161,6 +161,7 @@ ${baseWt}
    先頭に status=parked・park_class=infra の段があれば、それは「中身は良い・PC の負荷で合併できなかった」段：済んでいないかだけ確かめ、約束は変えずにそのまま選ぶ（resume があるので作り直さない）。resume のある段はどれも約束を変えない。
 2. 1 つずつ段のファイルを読み（\`q.py show <id>\`）、もう済んでいないかをコード・git log で 5 分以内に確かめる（「無い」と決めつける前に探す）。済んでいれば \`${run} harness/q.py done <id> --pr "もう入っている：<コミット>"\` して次の段へ。
 2b. 大きさを決める（2026-11-12 run 1112b：T-0009 は「点検を足す＋render.py の組み方を変える＋前後の絵＋試験」を 1 つの係に渡し、作る係は点検を足して時間切れ）。1 つの作る係（持ち時間 ${BUDGET.build} 分）で、できたと言える条件を全部満たせるか見積もる。次のどれかなら、作る前に順番つきの小さい段に分ける：条件が 4 つ以上／新しい点検（数える物）と、その点検で見る実装の両方が要る（先に点検だけの段、次に実装の段）／前後の測定と実装と試験の全部／render.py の FIT_JS・壁の組み方を変える（それだけで 1 段・hard）。分け方：\`${run} harness/q.py split <id> --from-json ${SP}/tmp/<id>/split.json\`（{"parts":[{"title","kind","complexity","scope":[…],"done_when":[…]}, …]}。子は凍った約束で生まれ、前の子が済むまで出ない）。この回は最初の子だけを選ぶ。
+2c. 測る場所を見る（2026-11-12 run 1112d：T-0229 の「35 → 10 以下」は rembg のあるクラウドの後台でしか測れず、作る係は仕組みを入れたまま測れずに止まった）。できたと言える条件が、この PC では測れず別の環境でしか測れない場合（クラウドの定時の仕事・合併して何回か回ったあと・デプロイ後の本番のデータ）は、その条件を 1 つの段に置かない。\`q.py split\` で「仕組みを作る段（条件＝試験が通る・失敗しても元のまま〔例外を出さない・数える〕・1 回の上限・既存の動きを変えない）」と、あとで「測る段（kind=kpi か verify・complexity=light・after に作る段・何回回ったあと何を数えるかと目標の数・前の数字を入れる）」の順つき 2 段にする。
 3. frozen=false の段は約束を決める：kind（fix＝機能・点検／visual＝画面が変わる／options＝店長に案を選んでもらう／kpi はそのまま）・範囲（触るファイル。実在するパスで 1〜8 個）・できたと言える条件（数えられる確かめ方を 1〜3 個。画面の段は「どのページのどのセレクタを 1333×677・390×844 で見て、審美基準のどの番号を満たす」まで。試験は \`harness/run_tests.py <test_名前 …>\` で書く：この PC の venv に pytest は無い。Windows だけで赤い既知の試験〔test_free_tier_gate など。harness/ci_local.sh の頭〕を条件に入れない。「範囲の外も全部直す」は、この段が変える規則についてだけ）。\`${run} harness/q.py contract <id> --from-json ${SP}/tmp/<id>/contract.json\`（JSON は {"kind":…,"complexity":"light|normal|hard","scope":[…],"done_when":[…]}。UTF-8 で書く。短い文だけなら \`${run} harness/q.py contract <id> --kind … --complexity … --scope a,b --done-when "…"\` でもよい）。complexity は作る係のモデルを決める（節約のため、迷ったら軽い方）：light＝決まった手順・1 ファイルの小さい直し・文や数字の書き換え（Haiku）／normal＝ふつうの機能・試験・画面の直し・案のページ（Sonnet）／hard＝規則そのものの作り直し・何度も直らなかった所・3 ファイル以上にまたがる設計（Opus。1 周に 1 つまで）。DB の変更・新しい設計の決めごとが先に要る段は \`${run} harness/q.py park <id> --waiting --why "[?] …"\`。
 4. 範囲のファイルが互いに重ならない段を ${n} 個まで選び、\`${run} harness/q.py claim <id> --owner v2:${RUN}\`（取れなかった段は外す）。
 返す：tasks＝選んだ段ごとに id・title・kind・complexity・scope・done_when・resume（q.py の出力のまま。resume は {branch, worktree, commit, stage, note}、無ければ省く）。note に外した理由・分けた段を 1〜2 行。`
@@ -353,7 +354,20 @@ let shipChain = Promise.resolve()
 const merged = []
 async function shipOne(x, c, ag) {
   if (!ON.ship) { x.state = 'parked'; x.cls = 'work'; x.resume = keep(x.t, x.r, 'ship', '合併なしの回（args.ship=false）'); x.why = '合併なしの回（args.ship=false）：枝は手元にある'; return x }
-  const s = await ag(shipPrompt(x, c), { label: `ship:${x.t.id}`, phase: 'Ship', model: M.ship, schema: SHIPPED })
+  let s = await ag(shipPrompt(x, c), { label: `ship:${x.t.id}`, phase: 'Ship', model: M.ship, schema: SHIPPED })
+  // 手元の CI が本物の試験の赤（rc=1・failed_class=work）で落ちた：すぐ止めず、作る係に 1 回だけ直させて（同じ作業ツリー・重さどおりのモデル）もう一度合併へ。
+  // それでも赤なら止める（run 1112d：T-0004 は fake402 の名簿に 1 行足し忘れただけの赤で止まった）
+  if (s && s.status === 'failed' && (s.failed_class || 'work') === 'work' && (s.failed_tests || []).length && !x.shipFixed && x.r && x.r.branch && ag.n + 2 <= MAX_AGENTS) {
+    x.shipFixed = true
+    const prev = x.r
+    const v = { problems: [`合併の前の手元の CI（harness/ci_local.sh）が赤：${(s.failed_tests || []).join(' ')}`, one(s.summary, 600)], preexisting: [] }
+    const r2 = await ag(fixPrompt(x.t, prev, v, '落ちた試験の中身を読み、足し忘れ（名簿・登録・期待値）か本物のバグかを決めて直す。試験を弱めない・スキップしない。直したら落ちた試験だけ \`harness/ci_local.sh <名前>\` で通す。', 'ship 後'), { label: `fix:${x.t.id}:ship`, phase: 'Fix', model: buildModel(x.t), schema: BUILT })
+    if (r2 && (r2.status === 'built' || r2.status === 'partial')) {
+      x.r = Object.assign({}, prev, r2)
+      x.resumed = true   // 記録のコミットは枝にもうある
+      s = await ag(shipPrompt(x, c), { label: `ship:${x.t.id}:2`, phase: 'Ship', model: M.ship, schema: SHIPPED })
+    }
+  }
   x.ship = s || { status: 'failed', failed_class: 'infra', summary: '合併の係から返事がない' }
   x.state = x.ship.status === 'merged' ? 'merged' : x.ship.status === 'pending' ? 'pending' : 'parked'
   if (x.state === 'parked') {
