@@ -62,6 +62,9 @@ def main(argv):
         print(f"\n===== {name} =====")
         blocks = FAIL_RE.findall(out)
         print("\n".join(b[:1500] for b in blocks) or out[-1500:])
+    # 試験が「ℹ 」で始めた行は緑の時も出す（2026-11-13：test_wall_shapes が直す前の値と比べたか・飛ばしたかを黙らせない）
+    for line in sorted({m for r in res for m in re.findall(r"^ℹ .*$", r[2], re.M)}):
+        print(line)
     slow = sorted(res, key=lambda r: -r[3])[:3]
     print(f"{len(names)} ファイル・{ran} 試験・{time.time() - t0:.0f} 秒・落ちた {len(bad)} ファイル"
           f"（遅い順：{'、'.join(f'{r[0]} {r[3]:.0f}秒' for r in slow)}）")

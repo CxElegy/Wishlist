@@ -4,16 +4,17 @@ ux_check の壁の空き ✓ は、写しが空だと写真が灰色の 8x8 で�
 ブラウザが無い環境では飛ばす。
 
 2026-11-12 速くした（全検査 634〜842 秒のうちこの 1 本が 506〜710 秒・負荷で Page.goto 30 秒切れ＝全員の push が詰まった）：
-- 3.5MB の docs/home/index.html（img 4,300 枚）でなく、壁のある節（.front）とページの外側だけの小さいページ tests/fixtures/wall_shapes_page.html
-  （docs/home から cut() で切り出して固定。生成のたびにカードの字が変わって値が揺れない）。<head>（CSS）は今の docs/home のもの、壁の並べ方は今の render.FIT_JS。
+- 3.5MB の docs/home/index.html（img 4,300 枚）をそのまま開かず、試験のたびに cut() で壁のある節（.front）とページの外側だけを切り出す
+  （カードの HTML・CSS は今の docs/home のもの＝render.py がカードの形を変えても試験に入る。壁の並べ方は今の render.FIT_JS）。
+  docs/home が無い時だけ固定の予備 tests/fixtures/wall_shapes_page.html。
   内訳（直す前・1 通り）：goto 6〜14 秒（3.3MB の解析と写真 150〜280 枚の route）・HOLE_JS 1〜4 秒（大きい DOM）・固定待ち 1.2 秒・PIL 2 秒。× 43 通り。
 - 写真の PNG は形ごとに 1 回だけ作る（前は 1 枚ごとに PIL・約 18 万回）。
 - 1.2 秒の固定待ちの代わりに、壁の写真が読み終わり・形が 0.3 秒動かなくなるまで待つ（最長 3 秒）。
 - 43 通りを 2 つのファイル（この試験と test_wall_shapes_b）に分けて、run_tests.py が並べて流す。
-直す前の作りで測った通りごとの値は tests/fixtures/wall_shapes_baseline.json。CSS と FIT_JS が測った時と同じ間は、合否が全部同じ・値の差 ±1 以内を確かめる。
+直す前の作りで測った通りごとの値は tests/fixtures/wall_shapes_baseline.json。CSS・FIT_JS・壁の節の HTML が測った時と同じ間は、合否が全部同じ・値の差 ±1 以内を確かめる。
 直す前の作りでも値が揺れる通りがある（2026-11-13：1400px TW・右の列 +14 行の壁の中が 3・3・0、待ちを 4 秒にしても 3。今の作りは毎回 0）。
 そういう通りは測った値を json の seen_<名前> に残し、その幅 ±1 で比べる（json の note）。
-CSS か FIT_JS が変わったら、その比べ方だけ飛ばして飛ばしたと書く（閾値の点検はいつも流す）。
+どれかが変わったら（docs/home を作り直すたびに変わる）、その比べ方だけ飛ばし、緑の時も「ℹ 」の 1 行で書く（閾値の点検はいつも流す）。
 取り直し（直す前の作り＝大きいページ・写真ごとの PIL・1.2 秒待ちで測る。Linux のコンテナで。1 回 5 分以内に分ける）：
   python tests/test_wall_shapes.py --fixture            # docs/home から切り出し直す
   python tests/test_wall_shapes.py --baseline 0/8 … 7/8   # 8 つに分けて測り（4 つだと負荷で 5 分を超えた）、wall_shapes_baseline.json に足す"""
@@ -95,23 +96,26 @@ def cut(full):
 
 
 def page(fit_js=None, full=False):
-    """測るページ。<head>（CSS）は今の docs/home（無ければ固定した時のもの）、本文は固定した壁の節、壁の並べ方は今の render.FIT_JS。
+    """測るページ。試験のたびに今の docs/home から cut() で壁の節と外側を切り出す（render.py がカードの HTML を変えても試験に入る）。
+    docs/home が無い時だけ固定の予備 tests/fixtures/wall_shapes_page.html。壁の並べ方は今の render.FIT_JS。
     full=True は直す前の作り：今の docs/home をそのまま（取り直し用）。
-    返り値：(ページの文字, 壁のカードの前までの位置 a, 壁の終わり z, 比べ方の鍵＝CSS と FIT_JS の hash)"""
+    返り値：(ページの文字, 壁のカードの前までの位置 a, 壁の終わり z, 比べ方の鍵＝CSS・FIT_JS・壁の節の HTML の hash)"""
     import render
-    src = PAGE.read_text(encoding="utf-8")
     live = DOCS / "home" / "index.html"
     if live.is_file():
         lv = live.read_text(encoding="utf-8")
-        src = lv if full else lv[:lv.index("</head>")] + src[src.index("</head>"):]
+        src = lv if full else cut(lv)
     elif full:
         raise FileNotFoundError(live)
+    else:
+        src = PAGE.read_text(encoding="utf-8")
     js = render.FIT_JS if fit_js is None else fit_js
     m = FIT_RE.search(src)
     src = src[:m.start()] + "<script>" + js + "</script>" + src[m.end():]
-    key = hashlib.sha256(("".join(STYLE_RE.findall(src[:src.index("</head>")])) + "\0" + js).encode("utf-8")).hexdigest()[:16]
     a = src.index('<div class="wall">') + len('<div class="wall">')
     z = src.index("</div><aside", a)
+    sec = src[a:src.index("</section>", z)]   # 壁のカードと右の列の HTML
+    key = hashlib.sha256(("".join(STYLE_RE.findall(src[:src.index("</head>")])) + "\0" + js + "\0" + sec).encode("utf-8")).hexdigest()[:16]
     return src, a, z, key
 
 
@@ -123,7 +127,7 @@ def measure(runs, fit_js=None, log=None, full=False):
         import ux_check
         from browser import launch
         src, a, z, key = page(fit_js, full)
-        key = page(fit_js)[3]   # 鍵はいつも小さいページの CSS と FIT_JS（比べる側と同じ）
+        key = page(fit_js)[3]   # 鍵はいつも切り出したページのもの（比べる側と同じ）
     except Exception as ex:   # noqa: BLE001
         raise unittest.SkipTest(f"ブラウザ・ページが無い：{ex}")
     cards = re.split(r'(?=<article class="wc)', src[a:z])[1:]
@@ -198,7 +202,7 @@ def same_as_baseline(runs, got, key):
     """直す前の作りの値と比べる。CSS・FIT_JS・OS が測った時と違えば (None, 理由)（比べない）、同じなら (食い違いの一覧, None)"""
     base = json.loads(BASE.read_text(encoding="utf-8"))
     if base.get("key") != key:
-        return None, f"CSS か FIT_JS が測った時と違う（鍵 {key}・測った時 {base.get('key')}）"
+        return None, f"CSS・FIT_JS・壁の節の HTML のどれかが測った時と違う（鍵 {key}・測った時 {base.get('key')}）"
     if sys.platform != base.get("platform", "linux"):
         return None, f"OS が違う（{sys.platform}・測ったのは {base.get('platform')}）"
     diff = []
@@ -233,8 +237,9 @@ def check_shard(tc, i):
     got, key = measure(runs, log=lambda t, v, ms: waits.append(ms))
     bad = [m for m in (judge(r, got[tag(r)]) for r in runs) if m]
     diff, why = same_as_baseline(runs, got, key)
-    print(f"\n壁の形 shard {i}：{len(runs)} 通り・待ち 平均 {sum(waits) // max(1, len(waits))}ms 最長 {max(waits, default=0)}ms・"
-          + (f"直す前の値と比べた {len(runs)} 通り" if why is None else f"直す前の値と比べず：{why}"), file=sys.stderr)
+    # run_tests.py は「ℹ 」で始まる行を緑の時も出す（比べ方が止まったことを黙らせない）
+    print(f"\nℹ 壁の形 shard {i}：{len(runs)} 通り・待ち 平均 {sum(waits) // max(1, len(waits))}ms 最長 {max(waits, default=0)}ms・"
+          + (f"直す前の値と比べた {len(runs)} 通り" if why is None else f"直す前の値と比べず：{why}"), flush=True)
     tc.assertEqual(bad, [], "写真の形で壁に空きが出る組み合わせ（W 横長・S 正方形・T 縦長・V 細長）")
     if diff is not None:
         tc.assertEqual(diff, [], "直す前の作り（tests/fixtures/wall_shapes_baseline.json）と合否・値（±1）が同じ")
