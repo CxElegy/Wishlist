@@ -1,9 +1,20 @@
 """写真の形ごとの「ほかの注目ニュース」の壁の空き（2026-11-03）。
 ux_check の壁の空き ✓ は、写しが空だと写真が灰色の 8x8 で測るため、写真の形で決まる空きを見逃した（#725 で ✓ のあと 11/2 に test-a で空きを指摘された）。
 ここは写真の形（横長・正方形・縦長・細長）を手元で作って返し、カードが 2〜4 枚の壁を 1400px で数える。本番にも写しにも触れない。
-ブラウザが無い環境では飛ばす。"""
+ブラウザが無い環境では飛ばす。
+
+2026-11-12 速くした（全検査 634〜842 秒のうちこの 1 本が 506〜710 秒・負荷で Page.goto 30 秒切れ＝全員の push が詰まった）：
+- 3.5MB の docs/home/index.html（img 4,242 枚）でなく、壁と右の列とその外側だけの小さいページ tests/fixtures/wall_shapes_page.html
+  （44546431f の版面から切り出して固定。生成のたびにカードの字が変わって値が揺れない）。CSS は今の docs/home の <style>、壁の並べ方は今の render.FIT_JS。
+- 写真の PNG は形ごとに 1 回だけ作る（前は 1 枚ごとに PIL・約 18 万回）。
+- 1.2 秒の固定待ちの代わりに、壁の写真が読み終わり・形が 0.3 秒動かなくなるまで待つ（最長 3 秒）。
+- 43 通りを 2 つのファイル（この試験と test_wall_shapes_b）に分けて、run_tests.py が並べて流す。
+直す前の作りで測った通りごとの値は tests/fixtures/wall_shapes_baseline.json。CSS と FIT_JS が測った時と同じ間は、合否が全部同じ・値の差 ±1 以内を確かめる。
+CSS か FIT_JS が変わったら、その比べ方だけ飛ばす（閾値の点検はいつも流す）。取り直し：python tests/test_wall_shapes.py --baseline"""
+import hashlib
 import io
 import itertools
+import json
 import re
 import sys
 import unittest
@@ -13,12 +24,43 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 DOCS = ROOT / "docs"
+FIX = ROOT / "tests" / "fixtures"
+PAGE = FIX / "wall_shapes_page.html"
+BASE = FIX / "wall_shapes_baseline.json"
 SHAPES = {"W": (800, 450), "S": (600, 600), "T": (400, 600), "V": (300, 900)}   # 横長・正方形・縦長・細長
 WIDTHS = (1400, 1100, 768)   # 壁が右の列の横に並ぶ幅と、1 列になる手前の幅
 NARROW = 390   # 1 列になる幅（壁は右の列の下に回る）。空きでなく、並びの崩れ（横にはみ出す・カードの間が開く）を数える
 MANY = 14      # 右の列の欲しい物・予定の行を増やす数（隠しても壁の 1.6 倍に収まらない場合の、壁を伸ばしきれない形を作る）
 LEAD_ALONE = ["WWW", "WVV", "WTT", "WVVV"]   # 先頭を 2 列の大きい 1 枚に固定（生成ページの先頭が .tall になっても外れない）：その列に 1 枚だけで、隣が 3 枚以上
 COMBOS = ["WW", "TW", "VV", "WWW", "TWW", "SSS", "VWT", "TTT", "WWWW", "TVWS"]
+RUNS = [(s, w, 0, False) for s, w in itertools.product(COMBOS, WIDTHS)]
+RUNS += [(s, w, MANY, False) for s, w in itertools.product(("WW", "TW", "WWW"), WIDTHS[:2])]   # 右の列が長い版面（欲しい物・予定が多い人）
+RUNS += [(s, NARROW, 0, False) for s in ("WW", "WWWW", "TVWS")]
+RUNS += [(s, w, 0, True) for s, w in itertools.product(LEAD_ALONE, WIDTHS[:1])]
+N_RUNS = 43   # 通りの数（減ったら赤：test_runs_are_43）
+SHARDS = 2    # 43 通りを分けるファイルの数（この試験＝0 番、test_wall_shapes_b＝1 番）
+FIT_RE = re.compile(r"<script>(?:(?!</script>).)*const wall = \(\) =>.*?</script>", re.S)
+STYLE_RE = re.compile(r"<style\b.*?</style>", re.S)
+
+NARROW_JS = """()=>{const w=document.querySelector('.mgrid>.wall');const cs=[...(w?w.querySelectorAll(':scope>.wc'):[])].filter(c=>c.offsetParent);
+let gap=0;cs.forEach((c,i)=>{if(i)gap=Math.max(gap,c.offsetTop-(cs[i-1].offsetTop+cs[i-1].offsetHeight))});
+return {over:Math.max(0,document.documentElement.scrollWidth-innerWidth),gap:Math.round(gap)}}"""
+# 壁の写真が読み終わり、壁と右の列の形が 0.3 秒動かなくなるまで待つ（前は 1.2 秒の固定待ち）
+SETTLE_JS = """async(cap)=>{const t0=performance.now(),sl=ms=>new Promise(r=>setTimeout(r,ms));
+const sig=()=>{const m=document.querySelector('.mgrid');if(!m)return '';return [...m.querySelectorAll('.wc,.fside,.wall,.wc img')].map(e=>{const r=e.getBoundingClientRect();return r.x+','+r.y+','+r.width+','+r.height}).join(';')+'|'+document.documentElement.scrollWidth};
+const imgs=()=>[...document.querySelectorAll('.mgrid img')].every(i=>i.complete);
+let last=sig(),since=performance.now();
+while(performance.now()-t0<cap){await sl(50);const s=sig();if(s!==last||!imgs()){last=s;since=performance.now()}else if(performance.now()-since>=300)break}
+return Math.round(performance.now()-t0)}"""
+
+
+def tag(run):
+    shapes, vw, many, fixed = run
+    return f"{vw}px {shapes}" + (f"・右の列 +{many} 行" if many else "") + ("・先頭は 2 列の 1 枚" if fixed else "")
+
+
+def shard(i):
+    return RUNS[i::SHARDS]
 
 
 def _png(w, h):
@@ -26,11 +68,6 @@ def _png(w, h):
     b = io.BytesIO()
     Image.new("RGB", (w, h), (120, 140, 170)).save(b, "PNG")
     return b.getvalue()
-
-
-NARROW_JS = """()=>{const w=document.querySelector('.mgrid>.wall');const cs=[...(w?w.querySelectorAll(':scope>.wc'):[])].filter(c=>c.offsetParent);
-let gap=0;cs.forEach((c,i)=>{if(i)gap=Math.max(gap,c.offsetTop-(cs[i-1].offsetTop+cs[i-1].offsetHeight))});
-return {over:Math.max(0,document.documentElement.scrollWidth-innerWidth),gap:Math.round(gap)}}"""
 
 
 def _many(tail, k):
@@ -43,35 +80,48 @@ def _many(tail, k):
     return re.sub(r'(<div class="(?:agenda|sbox swish)">.*?<ol>)(.*?)(</ol>)', grow, tail, flags=re.S)
 
 
-class WallShapes(unittest.TestCase):
-    def test_wall_has_no_hole_for_any_photo_shape(self):
+def page(fit_js=None):
+    """測るページ（固定した壁＋右の列）。CSS は今の docs/home の <style>（無ければ固定した時のもの）、壁の並べ方は今の render.FIT_JS。
+    返り値：(ページの文字, 壁のカードの前までの位置 a, 壁の終わり z, 比べ方の鍵＝CSS と FIT_JS の hash)"""
+    import render
+    src = PAGE.read_text(encoding="utf-8")
+    live = DOCS / "home" / "index.html"
+    if live.is_file():
+        lv = live.read_text(encoding="utf-8")
+        new, old = STYLE_RE.findall(lv[:lv.find("</head>")]), STYLE_RE.findall(src[:src.index("</head>")])
+        if new and len(new) == len(old):
+            it = iter(new)
+            head = STYLE_RE.sub(lambda m: next(it), src[:src.index("</head>")])
+            src = head + src[src.index("</head>"):]
+    js = render.FIT_JS if fit_js is None else fit_js
+    m = FIT_RE.search(src)
+    src = src[:m.start()] + "<script>" + js + "</script>" + src[m.end():]
+    key = hashlib.sha256(("".join(STYLE_RE.findall(src[:src.index("</head>")])) + "\0" + js).encode("utf-8")).hexdigest()[:16]
+    a = src.index('<div class="wall">') + len('<div class="wall">')
+    z = src.index("</div><aside", a)
+    return src, a, z, key
+
+
+def measure(runs, fit_js=None, log=None):
+    """runs を 1 つのブラウザで順に流し、{tag: 値} を返す。ブラウザ・ページが無ければ unittest.SkipTest"""
+    try:
+        from playwright.sync_api import sync_playwright
+        import ux_check
+        from browser import launch
+        src, a, z, key = page(fit_js)
+    except Exception as ex:   # noqa: BLE001
+        raise unittest.SkipTest(f"ブラウザ・ページが無い：{ex}")
+    cards = re.split(r'(?=<article class="wc)', src[a:z])[1:]
+    pngs = {k: _png(*v) for k, v in SHAPES.items()}
+    out = {}
+    with sync_playwright() as pw:
         try:
-            from playwright.sync_api import sync_playwright
-            import ux_check
-            from browser import launch
-            src = (DOCS / "home" / "index.html").read_text(encoding="utf-8")
-            import render
-            # 置いてある页面のスクリプトは古いことがある。今の FIT_JS（壁の並べ方）で測る
-            m = re.search(r"<script>(?:(?!</script>).)*const wall = \(\) =>.*?</script>", src, re.S)
-            src = src[:m.start()] + "<script>" + render.FIT_JS + "</script>" + src[m.end():]
-            a = src.index('<div class="wall">') + len('<div class="wall">')
-            z = src.index("</div><aside", a)
+            b = launch(pw)
         except Exception as ex:   # noqa: BLE001
-            self.skipTest(f"ブラウザ・ページが無い：{ex}")
-        cards = re.split(r'(?=<article class="wc)', src[a:z])[1:]
-        if len(cards) < 4:
-            self.skipTest("壁のカードが 4 枚未満")
-        bad = []
-        with sync_playwright() as pw:
-            try:
-                b = launch(pw)
-            except Exception as ex:   # noqa: BLE001
-                self.skipTest(f"ブラウザが開けない：{ex}")
-            runs = [(s, w, 0, False) for s, w in itertools.product(COMBOS, WIDTHS)]
-            runs += [(s, w, MANY, False) for s, w in itertools.product(("WW", "TW", "WWW"), WIDTHS[:2])]   # 右の列が長い版面（欲しい物・予定が多い人）
-            runs += [(s, NARROW, 0, False) for s in ("WW", "WWWW", "TVWS")]
-            runs += [(s, w, 0, True) for s, w in itertools.product(LEAD_ALONE, WIDTHS[:1])]
-            for shapes, vw, many, fixed in runs:
+            raise unittest.SkipTest(f"ブラウザが開けない：{ex}")
+        try:
+            for run in runs:
+                shapes, vw, many, fixed = run
                 n = len(shapes)
                 pg = b.new_page(viewport={"width": vw, "height": 900})
                 use = cards[:n]
@@ -83,31 +133,94 @@ class WallShapes(unittest.TestCase):
                     for u in re.findall(r'<img[^>]*src="([^"]+)"', c):
                         smap[u.replace("&amp;", "&")] = s
 
-                def rt(r):
+                def rt(r, html=html, smap=smap):
                     u = r.request.url
                     if u.startswith("http://wl.test/"):
                         p = DOCS / u[len("http://wl.test/"):].split("?")[0]
                         if p == DOCS / "home" / "index.html":
                             return r.fulfill(status=200, body=html, content_type="text/html")
                         return r.fulfill(path=str(p)) if p.is_file() else r.fulfill(status=404, body="")
-                    return r.fulfill(status=200, body=_png(*SHAPES[smap.get(u, "S")]), content_type="image/png")
-                html, smap = html, dict(smap)
+                    # 外へは取りに行かない（字体・CDN も含めて手元の絵を返す：前の作りと同じ）
+                    return r.fulfill(status=200, body=pngs[smap.get(u, "S")], content_type="image/png")
                 pg.route(re.compile(r".*"), rt)
                 pg.goto("http://wl.test/home/index.html", wait_until="load", timeout=30000)
-                pg.wait_for_timeout(1200)
-                tag = f"{vw}px {shapes}" + (f"・右の列 +{many} 行" if many else "") + ("・先頭は 2 列の 1 枚" if fixed else "")
+                pg.evaluate(SETTLE_JS, 3000)
                 if vw == NARROW:
                     o = pg.evaluate(NARROW_JS)
-                    if o["over"] or o["gap"] > 40:
-                        bad.append(f"{tag}: 横にはみ出し {o['over']}px・カードの間 {o['gap']}px")
+                    out[tag(run)] = {"over": o["over"], "gap": o["gap"]}
                 else:
                     h = pg.evaluate(ux_check.HOLE_JS)
-                    # 先頭固定の形は、2 列の 1 枚が伸びれば 0%（伸びないと 8%・閾値ぎりぎりで通ってしまう）なので 2% で切る
-                    if h["wallPct"] > (2 if fixed else 8) or h["sidePct"] > 8:
-                        bad.append(f"{tag}: 壁の中 {h['wallPct']}%・右の列との差 {h['sidePct']}%")
+                    v = {"wallPct": h["wallPct"], "sidePct": h["sidePct"]}
+                    for k in ("cmpGap", "cmpEmb", "cmpEg"):
+                        if k in h:
+                            v[k] = h[k]
+                    out[tag(run)] = v
+                if log:
+                    log(tag(run), out[tag(run)])
                 pg.close()
+        finally:
             b.close()
-        self.assertEqual(bad, [], "写真の形で壁に空きが出る組み合わせ（W 横長・S 正方形・T 縦長・V 細長）")
+    return out, key
+
+
+def judge(run, v):
+    """1 通りの値の合否：赤の理由の文、緑なら None"""
+    t = tag(run)
+    if run[1] == NARROW:
+        if v["over"] or v["gap"] > 40:
+            return f"{t}: 横にはみ出し {v['over']}px・カードの間 {v['gap']}px"
+        return None
+    # 先頭固定の形は、2 列の 1 枚が伸びれば 0%（伸びないと 8%・閾値ぎりぎりで通ってしまう）なので 2% で切る
+    if v["wallPct"] > (2 if run[3] else 8) or v["sidePct"] > 8:
+        return f"{t}: 壁の中 {v['wallPct']}%・右の列との差 {v['sidePct']}%"
+    if v.get("cmpGap") or v.get("cmpEmb"):   # 2026-11-12：小さい形のカードの写真の下の空き・壁のカードの小元素の札は 0
+        return f"{t}: 小さい形の写真の下の空き {v['cmpGap']}・小元素 {v['cmpEmb']} " + "・".join(v.get("cmpEg", []))
+    return None
+
+
+def same_as_baseline(runs, got, key):
+    """直す前の作りの値と比べる。CSS・FIT_JS が測った時と違えば None（比べない）、同じなら食い違いの一覧"""
+    base = json.loads(BASE.read_text(encoding="utf-8"))
+    if base.get("key") != key or sys.platform != base.get("platform", "linux"):
+        return None
+    diff = []
+    for run in runs:
+        t = tag(run)
+        b, g = base["runs"][t], got[t]
+        if b["ok"] != (judge(run, g) is None):
+            diff.append(f"{t}: 合否が違う（前 {b['ok']}・今 {judge(run, g)}）")
+        for k in ("wallPct", "sidePct", "over", "gap"):
+            if k in b and abs(b[k] - g[k]) > 1:
+                diff.append(f"{t}: {k} 前 {b[k]}・今 {g[k]}")
+    return diff
+
+
+class WallShapesCount(unittest.TestCase):
+    def test_runs_are_43(self):
+        """通りの数は 43 のまま、2 つのファイルで 1 回ずつ（重ならず漏れず）"""
+        self.assertEqual(len(RUNS), N_RUNS)
+        self.assertEqual(len({tag(r) for r in RUNS}), N_RUNS)
+        got = [tag(r) for i in range(SHARDS) for r in shard(i)]
+        self.assertEqual(sorted(got), sorted(tag(r) for r in RUNS))
+        base = json.loads(BASE.read_text(encoding="utf-8"))
+        self.assertEqual(sorted(base["runs"]), sorted(tag(r) for r in RUNS), "直す前の値の通りと今の通りが同じ")
+        b = (ROOT / "tests" / "test_wall_shapes_b.py").read_text(encoding="utf-8")
+        self.assertIn("shard(1)", b)
+
+
+def check_shard(tc, i):
+    runs = shard(i)
+    got, key = measure(runs)
+    bad = [m for m in (judge(r, got[tag(r)]) for r in runs) if m]
+    diff = same_as_baseline(runs, got, key)
+    tc.assertEqual(bad, [], "写真の形で壁に空きが出る組み合わせ（W 横長・S 正方形・T 縦長・V 細長）")
+    if diff is not None:
+        tc.assertEqual(diff, [], "直す前の作り（tests/fixtures/wall_shapes_baseline.json）と合否・値（±1）が同じ")
+
+
+class WallShapes(unittest.TestCase):
+    def test_wall_has_no_hole_for_any_photo_shape(self):
+        check_shard(self, 0)
 
 
 if __name__ == "__main__":
