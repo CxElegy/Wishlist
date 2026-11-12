@@ -1535,6 +1535,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2har4k.img": {
+  "w": 1280,
+  "h": 1071,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
   "w": 1000,
   "h": 666,
@@ -2661,6 +2667,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/152182/165/152182-165-35ca33887b964c986d921a2630a0708e-1268x951.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1268,
+  "h": 951,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/173853/6/173853-6-ed0ba1e5aa452926d73a9c5389a82d41-1280x853.jpg": {
   "w": 1280,
   "h": 853,
@@ -2688,7 +2700,7 @@
  "https://prcdn.freetls.fastly.net/release_image/25284/2077/25284-2077-3cc151eb6f4c55de8fd3cd54a7cfc4f8-2000x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1260,
   "h": 1260,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/25847/266/25847-266-53413d9ebc7d639256ecebe9932b19f6-1200x800.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3490,6 +3502,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.4gamer.net/games/599/G059954/20261106021/SS/013.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://www.4gamer.net/games/975/G097529/20261105039/SS/004.jpg": {
   "w": 1191,
   "h": 1684,
@@ -3778,12 +3796,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.YWtQODOba0e7szUvdUr-lA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ZuMjDJWmJ-jDa0XVQ51nTQ&pid=News&w=1200": {
   "w": 700,
   "h": 376,
@@ -3812,6 +3824,12 @@
  "https://www.bing.com/th?id=ONUT.fzgywlUyd_TW-btfiCz19A&pid=News&w=700": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700": {
+  "w": 700,
+  "h": 466,
   "target": 720,
   "v": 3
  },
