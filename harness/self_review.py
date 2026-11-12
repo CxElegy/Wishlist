@@ -90,13 +90,24 @@ MEASURE_JS = r"""
       if (w > 4 && h > 4) { tag(c, 'over', (a.innerText || '').trim().slice(0, 18)); return; }
     }
   });
-  // 日付と 👍👎 の重なり
+  // 日付の行（NEW・日付・出典）と 👍👎 の重なり・はみ出し（2026-11-13 店長のスマホ：細い字の列で 👍 が日付に重なり 👎 が右端で切れた）
   document.querySelectorAll('.wc em, .when, .kick').forEach(m => {
-    const v = m.querySelector(':scope > .vt'), n = [...m.childNodes].find(x => x.nodeType === 3 && x.textContent.trim());
-    if (!v || !n || !vis(m) || !vis(v) || getComputedStyle(v).position !== 'absolute') return;   // 流れの中に置いた 👍 は重ならない
-    const g = document.createRange(); g.selectNodeContents(n);
-    const a = g.getBoundingClientRect(), b = v.getBoundingClientRect(), btn = v.querySelector('button') || v, c = btn.getBoundingClientRect();
-    if (Math.min(a.right, c.right) - Math.max(a.left, c.left) > 1 && Math.min(a.bottom, c.bottom) - Math.max(a.top, c.top) > 1) tag(m.parentElement, 'over', '日付と 👍：' + n.textContent.trim());
+    const v = m.querySelector(':scope > .vt');
+    if (!v || !vis(m) || !vis(v)) return;
+    const parts = [];
+    m.childNodes.forEach(n => { if (n === v) return;
+      if (n.nodeType === 3 && n.data.trim()) { const g = document.createRange(); g.selectNodeContents(n); [...g.getClientRects()].forEach(q => parts.push([n.data.trim(), q])); }
+      else if (n.nodeType === 1 && vis(n)) parts.push([(n.innerText || '').trim().slice(0, 12), n.getBoundingClientRect()]); });
+    const mr = m.getBoundingClientRect();
+    let clipR = innerWidth; for (let p = m.parentElement; p && p !== document.body; p = p.parentElement) if (/hidden|clip/.test(getComputedStyle(p).overflowX)) { clipR = Math.min(clipR, p.getBoundingClientRect().right); break; }
+    for (const btn of v.querySelectorAll('button')) {
+      if (!vis(btn)) continue; const c = btn.getBoundingClientRect();
+      const hit = parts.find(([, a]) => Math.min(a.right, c.right) - Math.max(a.left, c.left) > 1 && Math.min(a.bottom, c.bottom) - Math.max(a.top, c.top) > 1);
+      if (hit) { tag(m.parentElement, 'over', '日付の行と 👍：' + hit[0]); return; }
+      if (c.right > clipR + 1) { tag(m.parentElement, 'clip', '👎 が右端で切れる（' + Math.round(c.right - clipR) + 'px）'); return; }
+    }
+    const out = parts.find(([, a]) => a.right > mr.right + 1);
+    if (out) tag(m.parentElement, 'clip', '日付の行が列の外へ：' + out[0]);
   });
   // 小元素の顔（審美基準 I1c・2026-11-12「这还是有点小 看不清人脸」）：人物の顔の高さ = 顔の割合（alts の bf・fs）× 絵の高さ × 帯に合わせた拡大。下限は PC 44px・スマホ 32px（emblem_face.SIZES）。
   // 頭の大きいキャラ（全身のまま）・幅の上限に当たった横に広いポーズ・顔が絵の下のほうにある絵は数えない（規則どおりで届かない＝選び方で替える対象。emb_check E31 の情報の行が数える）
@@ -138,7 +149,7 @@ def load_all(pg):
 
 
 def review(url, width, pw_browser, shot=None):
-    ctx = pw_browser.new_context(viewport={"width": width, "height": 900}, locale="ja-JP")
+    ctx = pw_browser.new_context(viewport={"width": width, "height": 900}, locale="ja-JP", has_touch=width <= 760, is_mobile=width <= 760)   # スマホの幅は指の端末として（hover:none で 👍/👎 が大きくなる。2026-11-13 PC の 390px では重ならず見逃した）
     pg = ctx.new_page()
     pg.goto(url, wait_until="load", timeout=60000)
     load_all(pg)

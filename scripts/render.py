@@ -619,6 +619,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .vt button{min-height:var(--vth,28px)}  /* 按钮的高度 = 日期行的高度：按钮区不会伸到标题上 */
 /* 出典が日付の横に入らないとき（JS が .two を付ける）：出典だけ次の行に全幅で。1 行目の右はボタンの分だけ空ける */
 .when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
+/* 日付の行に「札・日付」と 👍/👎 が横に並ばないほど細い列（写真を左に大きく取ったカードなど。2026-11-13 店長のスマホで 👍 が日付に重なり 👎 が切れた）：JS が .vdown を付け、👍/👎 を次の行の右端に下ろす（右端は 1 行のときと同じ位置）。出典はその下に全幅で。何 px で切り替えるかは決めず、字の幅と列の幅を測って決める */
+.vdown{padding-right:0!important;row-gap:0!important}.vdown>.vt{position:static;order:1;flex:0 0 calc(100% + 6px);margin-right:-6px;justify-content:flex-end}.vdown>.from{order:2;flex-basis:100%}
 .vote button{opacity:.75}
 .brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
 /* 作品の小元素：右上で枠からはみ出すステッカー。白いフチ → 版面の強調色のフチ（emblem_ring）→ 墨の硬い影。
@@ -2044,19 +2046,54 @@ VOTE_JS = """
       new Set(Object.keys(old).concat(Object.keys(mine))).forEach(paint);
     })
     .catch(err => console.warn('读不到数据库里的投票，先用本机记录', err));
-  // 日付の行が 2 行になった（出典が入らない）ときは .two：出典を次の行に全幅で出す（途中で切らない）
-  const fit = () => document.querySelectorAll('.when, .wc em').forEach(r => {
-    const v = r.querySelector(':scope > .vt');
-    if (!v || !r.querySelector(':scope > .from')) return;
-    r.classList.remove('two');
-    if (r.offsetHeight > v.offsetHeight + 1) r.classList.add('two');
-  });
-  fit();
-  if (document.fonts) document.fonts.ready.then(fit);
-  let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 150); });
+  __META__
 })();
 """
-VOTE_JS = (VOTE_JS.replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=False))
+# 日付の行（.when・頭条の .kick・照片墙の em）に 👍/👎 を置いたあとの組み方。試験（tests/test_meta_row.py）が単独で開けるように別の箱
+META_JS = """
+(() => {
+  // 日付の行の組み方（どの幅でも重ねない・切らない）：
+  //   1. 札（NEW）と日付が 👍/👎 の分を空けた幅に入らない → .vdown：👍/👎 を次の行の右端へ（細い字の列）
+  //   2. 出典だけ入らない（行が 2 行になった）→ .two：出典を次の行に全幅で（途中で切らない）
+  // 列の幅は写真の読み込み・版面の組み直しのあとに変わるので、行ごとに ResizeObserver で測り直す（札の字が「たった今」に変わったときも札の幅で）
+  // 読む → 書く の順に分けて、行ごとに組み直しを起こさない（版面に 2,000 行ある）
+  const need = r => {   // 札と日付の幅 ＋ 隙間（👍/👎 の右の空け分は CSS の --vtw）
+    const v = r.querySelector(':scope > .vt');
+    if (!v || !r.offsetWidth || getComputedStyle(v).position !== 'absolute') return null;   // 流れの中に置いた 👍（.wc.sb em）は重ならない
+    const cs = getComputedStyle(r);
+    let w = 0, n = 0;
+    r.childNodes.forEach(x => {
+      if (x === v || (x.nodeType === 1 && x.matches('.from'))) return;
+      let d = 0;
+      if (x.nodeType === 3 && x.data.trim()) { const g = document.createRange(); g.selectNodeContents(x); d = g.getBoundingClientRect().width; }
+      else if (x.nodeType === 1) d = x.getBoundingClientRect().width;
+      if (d) { w += d; n++; }
+    });
+    const room = r.clientWidth - parseFloat(cs.paddingLeft) - (parseFloat(cs.getPropertyValue('--vtw')) || 70);
+    return w + (parseFloat(cs.columnGap) || 0) * Math.max(0, n - 1) > room + 0.5;
+  };
+  const fit = list => {
+    const down = list.map(need);
+    list.forEach((r, i) => { r.classList.toggle('vdown', !!down[i]); if (down[i] !== false) r.classList.remove('two'); });
+    const two = list.filter((r, i) => down[i] === false && r.matches('.when, .wc em') && r.querySelector(':scope > .from'));
+    two.forEach(r => r.classList.remove('two'));
+    two.filter(r => r.offsetHeight > r.querySelector(':scope > .vt').offsetHeight + 1).forEach(r => r.classList.add('two'));
+  };
+  const rows = [...document.querySelectorAll('.when, .kick, .wc em')].filter(r => r.querySelector(':scope > .vt'));
+  fit(rows);
+  if (document.fonts) document.fonts.ready.then(() => fit(rows));
+  if ('ResizeObserver' in window) {
+    const seen = new WeakMap();   // 幅が変わったときだけ測り直す（高さの変化は自分の .two/.vdown のせい）
+    const ro = new ResizeObserver(es => {
+      const hit = new Set();
+      es.forEach(e => { const w = Math.round(e.contentRect.width); if (seen.get(e.target) !== w) { seen.set(e.target, w); hit.add(e.target.closest('.when, .kick, .wc em') || e.target); } });
+      if (hit.size) fit([...hit]);
+    });
+    rows.forEach(r => { ro.observe(r); const b = r.querySelector(':scope > b'); if (b) ro.observe(b); });
+  } else { let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => fit(rows), 150); }); }
+})();
+"""
+VOTE_JS = (VOTE_JS.replace("__META__", META_JS.strip()).replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=False))
            .replace("__THUMB__", json.dumps(_THUMB)))
 LIKEFX_JS = likefx.FX_JS.replace("__THUMB__", json.dumps(_THUMB))
 # 作品の小元素：アニメーションできるときだけ最初は隠し（<head> で html に emb-js）、版面がスクロールで入ってきたら .in で飛び出す
