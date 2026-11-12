@@ -7,7 +7,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from tests import test_wall_shapes as ws  # noqa: E402
 
-# 壁を並べる FIT_JS を空にしたとき、空きが出て赤になる通り（直す前の作りで測ると、空のときこの通りは閾値を超える）
+# 壁を並べる FIT_JS を空にしたとき、空きが出て赤になる通り（2026-11-13 Linux のコンテナで測った：空のとき直す前の作りも今の作りも
+# 壁の中 6%・右の列との差 47%＝閾値 8% を大きく超える。並べたときは 0%・0%）
 BROKEN_RUN = ("TVWS", 1400, 0, False)
 
 

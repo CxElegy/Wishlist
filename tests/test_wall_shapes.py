@@ -4,13 +4,17 @@ ux_check の壁の空き ✓ は、写しが空だと写真が灰色の 8x8 で�
 ブラウザが無い環境では飛ばす。
 
 2026-11-12 速くした（全検査 634〜842 秒のうちこの 1 本が 506〜710 秒・負荷で Page.goto 30 秒切れ＝全員の push が詰まった）：
-- 3.5MB の docs/home/index.html（img 4,242 枚）でなく、壁と右の列とその外側だけの小さいページ tests/fixtures/wall_shapes_page.html
-  （44546431f の版面から切り出して固定。生成のたびにカードの字が変わって値が揺れない）。CSS は今の docs/home の <style>、壁の並べ方は今の render.FIT_JS。
+- 3.5MB の docs/home/index.html（img 4,300 枚）でなく、壁のある節（.front）とページの外側だけの小さいページ tests/fixtures/wall_shapes_page.html
+  （docs/home から cut() で切り出して固定。生成のたびにカードの字が変わって値が揺れない）。<head>（CSS）は今の docs/home のもの、壁の並べ方は今の render.FIT_JS。
+  内訳（直す前・1 通り）：goto 6〜14 秒（3.3MB の解析と写真 150〜280 枚の route）・HOLE_JS 1〜4 秒（大きい DOM）・固定待ち 1.2 秒・PIL 2 秒。× 43 通り。
 - 写真の PNG は形ごとに 1 回だけ作る（前は 1 枚ごとに PIL・約 18 万回）。
 - 1.2 秒の固定待ちの代わりに、壁の写真が読み終わり・形が 0.3 秒動かなくなるまで待つ（最長 3 秒）。
 - 43 通りを 2 つのファイル（この試験と test_wall_shapes_b）に分けて、run_tests.py が並べて流す。
 直す前の作りで測った通りごとの値は tests/fixtures/wall_shapes_baseline.json。CSS と FIT_JS が測った時と同じ間は、合否が全部同じ・値の差 ±1 以内を確かめる。
-CSS か FIT_JS が変わったら、その比べ方だけ飛ばす（閾値の点検はいつも流す）。取り直し：python tests/test_wall_shapes.py --baseline"""
+CSS か FIT_JS が変わったら、その比べ方だけ飛ばして飛ばしたと書く（閾値の点検はいつも流す）。
+取り直し（直す前の作り＝大きいページ・写真ごとの PIL・1.2 秒待ちで測る。Linux のコンテナで。1 回 5 分以内に分ける）：
+  python tests/test_wall_shapes.py --fixture            # docs/home から切り出し直す
+  python tests/test_wall_shapes.py --baseline 0/4 … 3/4   # 4 つに分けて測り、wall_shapes_baseline.json に足す"""
 import hashlib
 import io
 import itertools
@@ -45,10 +49,11 @@ STYLE_RE = re.compile(r"<style\b.*?</style>", re.S)
 NARROW_JS = """()=>{const w=document.querySelector('.mgrid>.wall');const cs=[...(w?w.querySelectorAll(':scope>.wc'):[])].filter(c=>c.offsetParent);
 let gap=0;cs.forEach((c,i)=>{if(i)gap=Math.max(gap,c.offsetTop-(cs[i-1].offsetTop+cs[i-1].offsetHeight))});
 return {over:Math.max(0,document.documentElement.scrollWidth-innerWidth),gap:Math.round(gap)}}"""
-# 壁の写真が読み終わり、壁と右の列の形が 0.3 秒動かなくなるまで待つ（前は 1.2 秒の固定待ち）
+# 画面の中の壁の写真が読み終わり、壁と右の列の形が 0.3 秒動かなくなるまで待つ（前は 1.2 秒の固定待ち）。
+# 画面の下の写真は loading=lazy で読まれない（前の作りでも同じ）ので待たない
 SETTLE_JS = """async(cap)=>{const t0=performance.now(),sl=ms=>new Promise(r=>setTimeout(r,ms));
 const sig=()=>{const m=document.querySelector('.mgrid');if(!m)return '';return [...m.querySelectorAll('.wc,.fside,.wall,.wc img')].map(e=>{const r=e.getBoundingClientRect();return r.x+','+r.y+','+r.width+','+r.height}).join(';')+'|'+document.documentElement.scrollWidth};
-const imgs=()=>[...document.querySelectorAll('.mgrid img')].every(i=>i.complete);
+const imgs=()=>[...document.querySelectorAll('.mgrid img')].every(i=>i.complete||i.getBoundingClientRect().top>=innerHeight);
 let last=sig(),since=performance.now();
 while(performance.now()-t0<cap){await sl(50);const s=sig();if(s!==last||!imgs()){last=s;since=performance.now()}else if(performance.now()-since>=300)break}
 return Math.round(performance.now()-t0)}"""
@@ -80,19 +85,25 @@ def _many(tail, k):
     return re.sub(r'(<div class="(?:agenda|sbox swish)">.*?<ol>)(.*?)(</ol>)', grow, tail, flags=re.S)
 
 
-def page(fit_js=None):
-    """測るページ（固定した壁＋右の列）。CSS は今の docs/home の <style>（無ければ固定した時のもの）、壁の並べ方は今の render.FIT_JS。
+def cut(full):
+    """大きいページから、壁のある節（.front）とページの外側（頭・目次・終わりのスクリプト）だけを残す"""
+    w = full.index('<div class="wall">')
+    e = full.index("</section>", w) + len("</section>")
+    return full[:e] + full[full.index("</div></main>", e):]
+
+
+def page(fit_js=None, full=False):
+    """測るページ。<head>（CSS）は今の docs/home（無ければ固定した時のもの）、本文は固定した壁の節、壁の並べ方は今の render.FIT_JS。
+    full=True は直す前の作り：今の docs/home をそのまま（取り直し用）。
     返り値：(ページの文字, 壁のカードの前までの位置 a, 壁の終わり z, 比べ方の鍵＝CSS と FIT_JS の hash)"""
     import render
     src = PAGE.read_text(encoding="utf-8")
     live = DOCS / "home" / "index.html"
     if live.is_file():
         lv = live.read_text(encoding="utf-8")
-        new, old = STYLE_RE.findall(lv[:lv.find("</head>")]), STYLE_RE.findall(src[:src.index("</head>")])
-        if new and len(new) == len(old):
-            it = iter(new)
-            head = STYLE_RE.sub(lambda m: next(it), src[:src.index("</head>")])
-            src = head + src[src.index("</head>"):]
+        src = lv if full else lv[:lv.index("</head>")] + src[src.index("</head>"):]
+    elif full:
+        raise FileNotFoundError(live)
     js = render.FIT_JS if fit_js is None else fit_js
     m = FIT_RE.search(src)
     src = src[:m.start()] + "<script>" + js + "</script>" + src[m.end():]
@@ -102,13 +113,15 @@ def page(fit_js=None):
     return src, a, z, key
 
 
-def measure(runs, fit_js=None, log=None):
-    """runs を 1 つのブラウザで順に流し、{tag: 値} を返す。ブラウザ・ページが無ければ unittest.SkipTest"""
+def measure(runs, fit_js=None, log=None, full=False):
+    """runs を 1 つのブラウザで順に流し、({tag: 値}, 鍵) を返す。ブラウザ・ページが無ければ unittest.SkipTest。
+    full=True は直す前の作り（大きいページ・写真ごとに PIL・1.2 秒の固定待ち）：wall_shapes_baseline.json の取り直し用"""
     try:
         from playwright.sync_api import sync_playwright
         import ux_check
         from browser import launch
-        src, a, z, key = page(fit_js)
+        src, a, z, key = page(fit_js, full)
+        key = page(fit_js)[3]   # 鍵はいつも小さいページの CSS と FIT_JS（比べる側と同じ）
     except Exception as ex:   # noqa: BLE001
         raise unittest.SkipTest(f"ブラウザ・ページが無い：{ex}")
     cards = re.split(r'(?=<article class="wc)', src[a:z])[1:]
@@ -133,7 +146,7 @@ def measure(runs, fit_js=None, log=None):
                     for u in re.findall(r'<img[^>]*src="([^"]+)"', c):
                         smap[u.replace("&amp;", "&")] = s
 
-                def rt(r, html=html, smap=smap):
+                def rt(r):   # 引数は 1 つだけ（2 つ以上だと Playwright が (route, request) で呼ぶ）。html・smap はこの通りのもの
                     u = r.request.url
                     if u.startswith("http://wl.test/"):
                         p = DOCS / u[len("http://wl.test/"):].split("?")[0]
@@ -141,10 +154,11 @@ def measure(runs, fit_js=None, log=None):
                             return r.fulfill(status=200, body=html, content_type="text/html")
                         return r.fulfill(path=str(p)) if p.is_file() else r.fulfill(status=404, body="")
                     # 外へは取りに行かない（字体・CDN も含めて手元の絵を返す：前の作りと同じ）
-                    return r.fulfill(status=200, body=pngs[smap.get(u, "S")], content_type="image/png")
+                    s = smap.get(u, "S")
+                    return r.fulfill(status=200, body=_png(*SHAPES[s]) if full else pngs[s], content_type="image/png")
                 pg.route(re.compile(r".*"), rt)
                 pg.goto("http://wl.test/home/index.html", wait_until="load", timeout=30000)
-                pg.evaluate(SETTLE_JS, 3000)
+                waited = pg.wait_for_timeout(1200) if full else pg.evaluate(SETTLE_JS, 3000)
                 if vw == NARROW:
                     o = pg.evaluate(NARROW_JS)
                     out[tag(run)] = {"over": o["over"], "gap": o["gap"]}
@@ -156,7 +170,7 @@ def measure(runs, fit_js=None, log=None):
                             v[k] = h[k]
                     out[tag(run)] = v
                 if log:
-                    log(tag(run), out[tag(run)])
+                    log(tag(run), out[tag(run)], waited)
                 pg.close()
         finally:
             b.close()
@@ -179,10 +193,12 @@ def judge(run, v):
 
 
 def same_as_baseline(runs, got, key):
-    """直す前の作りの値と比べる。CSS・FIT_JS が測った時と違えば None（比べない）、同じなら食い違いの一覧"""
+    """直す前の作りの値と比べる。CSS・FIT_JS・OS が測った時と違えば (None, 理由)（比べない）、同じなら (食い違いの一覧, None)"""
     base = json.loads(BASE.read_text(encoding="utf-8"))
-    if base.get("key") != key or sys.platform != base.get("platform", "linux"):
-        return None
+    if base.get("key") != key:
+        return None, f"CSS か FIT_JS が測った時と違う（鍵 {key}・測った時 {base.get('key')}）"
+    if sys.platform != base.get("platform", "linux"):
+        return None, f"OS が違う（{sys.platform}・測ったのは {base.get('platform')}）"
     diff = []
     for run in runs:
         t = tag(run)
@@ -192,7 +208,7 @@ def same_as_baseline(runs, got, key):
         for k in ("wallPct", "sidePct", "over", "gap"):
             if k in b and abs(b[k] - g[k]) > 1:
                 diff.append(f"{t}: {k} 前 {b[k]}・今 {g[k]}")
-    return diff
+    return diff, None
 
 
 class WallShapesCount(unittest.TestCase):
@@ -210,9 +226,12 @@ class WallShapesCount(unittest.TestCase):
 
 def check_shard(tc, i):
     runs = shard(i)
-    got, key = measure(runs)
+    waits = []
+    got, key = measure(runs, log=lambda t, v, ms: waits.append(ms))
     bad = [m for m in (judge(r, got[tag(r)]) for r in runs) if m]
-    diff = same_as_baseline(runs, got, key)
+    diff, why = same_as_baseline(runs, got, key)
+    print(f"\n壁の形 shard {i}：{len(runs)} 通り・待ち 平均 {sum(waits) // max(1, len(waits))}ms 最長 {max(waits, default=0)}ms・"
+          + (f"直す前の値と比べた {len(runs)} 通り" if why is None else f"直す前の値と比べず：{why}"), file=sys.stderr)
     tc.assertEqual(bad, [], "写真の形で壁に空きが出る組み合わせ（W 横長・S 正方形・T 縦長・V 細長）")
     if diff is not None:
         tc.assertEqual(diff, [], "直す前の作り（tests/fixtures/wall_shapes_baseline.json）と合否・値（±1）が同じ")
@@ -223,5 +242,26 @@ class WallShapes(unittest.TestCase):
         check_shard(self, 0)
 
 
+def _baseline(part):
+    """直す前の作りで RUNS の part（"0/4" なら 0, 4, 8…番目）を測って wall_shapes_baseline.json に足す"""
+    k, n = map(int, part.split("/"))
+    runs = RUNS[k::n]
+    got, key = measure(runs, full=True, log=lambda t, v, ms: print(t, v, flush=True))
+    base = json.loads(BASE.read_text(encoding="utf-8")) if BASE.is_file() else {}
+    if base.get("key") != key:
+        base = {"key": key, "platform": sys.platform, "runs": {}}
+    base["made"] = "直す前の作り（大きい docs/home・写真ごとに PIL・1.2 秒待ち）で測った値。tests/test_wall_shapes.py --baseline"
+    for r in runs:
+        base["runs"][tag(r)] = {"ok": judge(r, got[tag(r)]) is None, **{x: got[tag(r)][x] for x in ("wallPct", "sidePct", "over", "gap") if x in got[tag(r)]}}
+    base["runs"] = dict(sorted(base["runs"].items()))
+    BASE.write_text(json.dumps(base, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(f"{len(base['runs'])} / {N_RUNS} 通り")
+
+
 if __name__ == "__main__":
-    unittest.main()
+    if sys.argv[1:2] == ["--fixture"]:
+        PAGE.write_text(cut((DOCS / "home" / "index.html").read_text(encoding="utf-8")), encoding="utf-8", newline="")
+    elif sys.argv[1:2] == ["--baseline"]:
+        _baseline(sys.argv[2])
+    else:
+        unittest.main()

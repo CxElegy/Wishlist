@@ -1,0 +1,222 @@
+{
+ "key": "af4283b7871262d3",
+ "platform": "linux",
+ "runs": {
+  "1100px SSS": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1100px TTT": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1100px TVWS": {
+   "ok": true,
+   "wallPct": 1,
+   "sidePct": 0
+  },
+  "1100px TW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1100px TWW": {
+   "ok": true,
+   "wallPct": 1,
+   "sidePct": 0
+  },
+  "1100px TW・右の列 +14 行": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1100px VV": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1100px VWT": {
+   "ok": true,
+   "wallPct": 1,
+   "sidePct": 0
+  },
+  "1100px WW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1100px WWW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1100px WWWW": {
+   "ok": true,
+   "wallPct": 1,
+   "sidePct": 0
+  },
+  "1100px WWW・右の列 +14 行": {
+   "ok": true,
+   "wallPct": 1,
+   "sidePct": 0
+  },
+  "1100px WW・右の列 +14 行": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px SSS": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px TTT": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px TVWS": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px TW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px TWW": {
+   "ok": true,
+   "wallPct": 1,
+   "sidePct": 0
+  },
+  "1400px TW・右の列 +14 行": {
+   "ok": true,
+   "wallPct": 3,
+   "sidePct": 0
+  },
+  "1400px VV": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px VWT": {
+   "ok": true,
+   "wallPct": 2,
+   "sidePct": 0
+  },
+  "1400px WTT・先頭は 2 列の 1 枚": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px WVVV・先頭は 2 列の 1 枚": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px WVV・先頭は 2 列の 1 枚": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px WW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px WWW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px WWWW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px WWW・先頭は 2 列の 1 枚": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px WWW・右の列 +14 行": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "1400px WW・右の列 +14 行": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "390px TVWS": {
+   "ok": true,
+   "over": 0,
+   "gap": 16
+  },
+  "390px WW": {
+   "ok": true,
+   "over": 0,
+   "gap": 16
+  },
+  "390px WWWW": {
+   "ok": true,
+   "over": 0,
+   "gap": 16
+  },
+  "768px SSS": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "768px TTT": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "768px TVWS": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "768px TW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "768px TWW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "768px VV": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "768px VWT": {
+   "ok": true,
+   "wallPct": 2,
+   "sidePct": 0
+  },
+  "768px WW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "768px WWW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  },
+  "768px WWWW": {
+   "ok": true,
+   "wallPct": 0,
+   "sidePct": 0
+  }
+ },
+ "made": "直す前の作り（大きい docs/home・写真ごとに PIL・1.2 秒待ち）で測った値。tests/test_wall_shapes.py --baseline"
+}
