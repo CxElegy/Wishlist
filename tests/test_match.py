@@ -159,10 +159,25 @@ class SpamNotCountedTest(unittest.TestCase):
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
+def yaml_load(text):
+    """items.yaml（420KB）は純 Python の safe_load で 1.3 秒、libyaml の C 版で 0.1 秒。同じ読み方で、速い方を使う（無ければ元の読み方）。"""
+    import yaml
+    return yaml.load(text, Loader=getattr(yaml, "CSafeLoader", yaml.SafeLoader))
+
+
+_CFG = []
+
+
+def items_cfg():
+    """items.yaml を 1 回だけ読む（試験ごとに読み直していた。どの試験も書き換えない）。"""
+    if not _CFG:
+        _CFG.append(yaml_load((ROOT / "items.yaml").read_text(encoding="utf-8")))
+    return _CFG[0]
+
+
 def real_item(name):
     """items.yaml にいま書いてある関注項（match・exclude の正規表現そのものを確かめる）。"""
-    import yaml
-    cfg = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))
+    cfg = items_cfg()
     return cfg["settings"], next(i for i in cfg["items"] if i["name"] == name)
 
 
@@ -386,8 +401,7 @@ class ItemFieldsLimitTest(unittest.TestCase):
     def test_every_item_passes_settings_page_limits(self):
         """設定ページで直した欄は ITEM_FIELDS で確かめる：items.yaml にいま書いてあるものが通らないと、店長が 1 語直しただけで依頼が弾かれる
         （2026-10-22：漫威电影の exclude 35 語・猫用品の match 56 語が上限 30 を超えていた）。"""
-        import yaml
-        cfg = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))
+        cfg = items_cfg()
         for i in cfg["items"]:
             for k in ("keywords", "match", "exclude", "urgent_patterns", "subtitle", "priority", "notes"):
                 if i.get(k):
@@ -401,19 +415,33 @@ class SetItemFieldsRoundTripTest(unittest.TestCase):
     def test_every_field_round_trips(self):
         """設定ページの依頼で keywords / match / exclude を同じ値で書き直しても、items.yaml が壊れず、ほかは変わらない。
         前は複数行の [ … ] の閉じ括弧の行が残って YAML が壊れ、take_item_requests が依頼を skipped にしていた（21 欄）。"""
-        import yaml
         text = (ROOT / "items.yaml").read_text(encoding="utf-8")
-        cfg = yaml.safe_load(text)
+        cfg = yaml_load(text)
+        old = text.split("\n")
+        first = next(n for n, l in enumerate(old) if l.startswith("  - name:"))   # これより前が settings
         for i in cfg["items"]:
+            full = True   # 全文を YAML として読み直すのは、関注項ごとに最初の 1 回だけ（420KB を 126 回読むと CI で 3 分かかった）
             for k in ("keywords", "match", "exclude"):
                 if not i.get(k):
                     continue
                 for value in (digest._clean_field(k, i[k]), [*digest._clean_field(k, i[k])[:3], "新しい語"]):
-                    got = yaml.safe_load(digest.set_item_fields(text, i["name"], {k: value}))
-                    self.assertEqual(got["settings"], cfg["settings"])
-                    for a, b in zip(got["items"], cfg["items"]):
-                        self.assertEqual(a, {**b, k: value} if b["name"] == i["name"] else b, (i["name"], k))
-                    self.assertEqual(len(got["items"]), len(cfg["items"]))
+                    new = digest.set_item_fields(text, i["name"], {k: value})
+                    lines = new.split("\n")
+                    s, e = digest._item_span(old, i["name"])
+                    s2, e2 = digest._item_span(lines, i["name"])
+                    # 別の関注項・settings は 1 字も変わらない（読み直して比べるより強い）
+                    self.assertEqual((lines[:s2], lines[e2:]), (old[:s], old[e:]), (i["name"], k))
+                    if full and new != text:
+                        full = False
+                        got = yaml_load(new)
+                        self.assertEqual(got["settings"], cfg["settings"])
+                        for a, b in zip(got["items"], cfg["items"]):
+                            self.assertEqual(a, {**b, k: value} if b["name"] == i["name"] else b, (i["name"], k))
+                        self.assertEqual(len(got["items"]), len(cfg["items"]))
+                    else:   # 変えた関注項の 1 段だけを settings の頭に付けて読む（閉じ括弧の残りなど YAML が壊れるのはこの段の中）
+                        got = yaml_load("\n".join(old[:first] + lines[s2:e2]))
+                        self.assertEqual(got["settings"], cfg["settings"])
+                        self.assertEqual(got["items"], [{**i, k: value}], (i["name"], k))
 
 
 class DiscoverFilterTest(unittest.TestCase):

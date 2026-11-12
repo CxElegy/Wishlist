@@ -43,6 +43,9 @@ def emoji(u):
     return "twemoji" in u or u.endswith(".svg")
 
 
+OFFLINE = False   # 試験用：True なら http の写真を取りに行かず、網址そのままを鍵にする（取りに行くと 2000 枚で 10 分かかる）
+
+
 def photo_key(u, cache={}):
     """同じ写真か見分ける鍵：画像の 9x8 の差分ハッシュ（取れなければ URL そのもの）。URL が違っても同じ写真を 1 回にするため（L7）。"""
     if u in cache:
@@ -53,7 +56,7 @@ def photo_key(u, cache={}):
         from PIL import Image
         if "/storage/v1/" in u:   # Supabase の配信は点検・生成で読まない（free-tier.md）：写しがあればそれ、なければ網址のまま
             data = (Path(os.environ.get("WL_PHOTO_CACHE") or Path.home() / ".cache" / "wl_photo_cache") / u.split("?")[0].rsplit("/", 1)[-1]).read_bytes()
-        elif u.startswith("http"):
+        elif u.startswith("http") and not OFFLINE:
             import requests
             data = requests.get(u, timeout=15).content
         else:
