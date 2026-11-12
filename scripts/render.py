@@ -4476,14 +4476,14 @@ FIT_JS = """
       if (c.hidden) return; const p = c.querySelector(':scope > .pic'); if (!p) return;
       const cr = c.getBoundingClientRect(), pr = p.getBoundingClientRect(), gap = cr.bottom - pr.bottom - 14; if (gap < 44) return;
       const pk = gapPick(c, c.dataset.k); if (!pk) return;   // 関係のある小元素が無い記事は、空きのまま（置かない）
-      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = pk.src; img.onerror = () => img.remove();
+      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = pk.src; img.addEventListener('error', () => img.remove(), { once: true });
       Object.assign(img.style, {gridColumn: 'auto', gridRow: 'auto', left: p.offsetLeft + 'px', top: (p.offsetTop + p.offsetHeight + 6) + 'px', width: p.offsetWidth + 'px', height: Math.min(gap, 120) + 'px'}); c.append(img);   // 絶対配置の子は升目の指定があるとその升が基準になる：auto にしてカード全体を基準に
     });
     document.querySelectorAll('.fside .agenda li[data-k]').forEach(li => {
       if (li.hidden) return; const b = li.querySelector(':scope > b'); if (!b) return;
       const sm = b.querySelector('small'), gap = li.getBoundingClientRect().bottom - (sm || b).getBoundingClientRect().bottom - 14; if (gap < 36) return;
       const pk = gapPick(li, li.dataset.k); if (!pk) return;
-      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = pk.src; img.onerror = () => img.remove(); img.style.height = Math.min(gap, 64) + 'px'; b.append(img);
+      const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = pk.src; img.addEventListener('error', () => img.remove(), { once: true }); img.style.height = Math.min(gap, 64) + 'px'; b.append(img);
     });
   };
   // 小元素（版面の右上のキャラ）の実際の幅だけ、見出しの帯の右を空ける（決め打ちの 260px では、横に広いポーズのキャラが「今週」の数に重なった。2026-11-09）
