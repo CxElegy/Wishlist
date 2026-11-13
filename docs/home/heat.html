@@ -159,6 +159,7 @@ button{font-family:inherit}
 .mgrid.one .wall>.wc b{-webkit-line-clamp:unset;display:block;overflow:visible}  /* 壁の組み方が高さを決めるので、見出しは「…」で切らない（2026-11-09） */
 .mgrid.one{grid-template-columns:minmax(0,1fr)}.wall>.fside{align-self:start;min-width:0}  /* PC：右の列は壁の升目の右上（FIT_JS の wall()）。下にもカードが入る（2026-11-09） */
 .mgrid .wc{justify-content:flex-start}
+.mgrid .wall>.wc.ban{display:flex;flex-direction:column;gap:8px;justify-content:flex-start}.mgrid .wall>.wc.ban>.pic{flex:none;width:100%!important;height:auto!important;margin:0}.mgrid .wall>.wc.ban>.pic img:not(.bg):not(.ico){object-fit:cover}  /* 壁の小さい形 ③：横長の写真を上・字を下（枠は写真の形。FIT_JS cmpForm）。普通のカードと同じ flex を書く（2026-11-13） */
 .mgrid .wall>.wc.cmp{display:grid;grid-template-columns:46% minmax(0,1fr);column-gap:12px;row-gap:6px;align-content:start;grid-auto-rows:min-content}.mgrid .wall>.wc.cmp>.pic{grid-column:1;grid-row:1/span 9;align-self:start;width:auto!important;height:auto!important;aspect-ratio:4/3!important;margin:0}.mgrid .wall>.wc.cmp>*:not(.pic):not(.lk){grid-column:2;min-width:0}.mgrid .wall>.wc.cmp>.pic img:not(.bg):not(.ico){object-fit:cover}  /* 列の下に入りきらないカードは写真左・字右の小さい形で（2026-11-09 店長：ほかの注目ニュースは画面の下まで） */
 .fside>:last-child{flex:1;display:flex;flex-direction:column}.fside>.swish:has(.sempty){flex:none}.fside:has(.sempty)>.agenda{flex:1 1 auto;display:flex;flex-direction:column}.fside:has(.sempty)>.agenda>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}
 /* 写真が開けず字だけになったカードは、同じ所に写真のあるカードがあれば出さない（2026-11-08 店長「我一定要图」） */
@@ -733,8 +734,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .vt button{min-height:var(--vth,28px)}  /* 按钮的高度 = 日期行的高度：按钮区不会伸到标题上 */
 /* 出典が日付の横に入らないとき（JS が .two を付ける）：出典だけ次の行に全幅で。1 行目の右はボタンの分だけ空ける */
 .when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
-/* 日付の行に「札・日付」と 👍/👎 が横に並ばないほど細い列（写真を左に大きく取ったカードなど。2026-11-13 店長のスマホで 👍 が日付に重なり 👎 が切れた）：JS が .vdown を付け、👍/👎 を次の行の右端に下ろす（右端は 1 行のときと同じ位置）。出典はその下に全幅で。何 px で切り替えるかは決めず、字の幅と列の幅を測って決める */
-.vdown{padding-right:0!important;row-gap:4px!important}.vdown>.vt{position:static;order:1;flex:0 0 calc(100% + 6px);margin-right:-6px;justify-content:flex-end}.vdown>.from{order:2;flex-basis:100%}
+/* 日付の行に「札・日付」と 👍/👎 が横に並ばないほど細い列（写真を左に大きく取ったカードなど。2026-11-13 店長のスマホで 👍 が日付に重なり 👎 が切れた）：JS が .vdown を付け、👍/👎 を次の行の右端に下ろす（右端は 1 行のときと同じ位置）。出典は 👍/👎 と同じ行の左に（2026-11-13：出典を 3 行目に分けると、2 行目の 👍/👎 の左が空いて日付と出典の間が割れて見えた。日付・出典・👍/👎・見出しは 1 つのかたまり）。何 px で切り替えるかは決めず、字の幅と列の幅を測って決める */
+.vdown{padding-right:0!important;row-gap:4px!important}.vdown::after{content:"";order:0;flex:0 0 100%;height:0}.vdown>.vt{position:static;order:2;flex:0 0 auto;margin:0 -6px 0 auto;justify-content:flex-end}.vdown>.from{order:1;flex:1 1 0;min-width:0;overflow-wrap:anywhere}
 .vote button{opacity:.75}
 .brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
 /* 作品の小元素：右上で枠からはみ出すステッカー。白いフチ → 版面の強調色のフチ（emblem_ring）→ 墨の硬い影。
@@ -1152,7 +1153,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 </style>
-<meta name="wl-ver" data-page="heat" content="8cd32d1946d6"><style>
+<meta name="wl-ver" data-page="heat" content="758289c5f220"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2126,7 +2127,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.11.13</b></div>
-<div class="meta"><small>更新</small><b>11.13 12:07</b></div></div>
+<div class="meta"><small>更新</small><b>11.13 12:17</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
