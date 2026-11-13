@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "5930e5ed4e15",
+ "edit_sig": "7b6a86d32a83",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -453,24 +453,21 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-11-11",
-     "n": 1,
-     "source": "note",
-     "title": "극장판 '체인소 맨 레제 편'을 봤다. 울었다.",
-     "url": "https://note.com/mambo_mapleman/n/n39b3d7baeafe?hl=ko"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 2,
+     "headline": "Chainsaw Man – The Movie: Reze Arc Gets New Visual for Valentine’s Day Event",
+     "highlight": "New Visual",
+     "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
+     "image_via": "作品封面",
      "source": "Crunchyroll",
-     "title": "Chainsaw Man – The Movie: Reze Arc Gets New Visual for Valentine’s Day Event",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPMExwdnFCcVJYcHJfVmFzNkFWV2pPZ0tscUxFNlp1dE5waExKTHJBcklmUUd6aUg2a2J1UUZYSGFsZDNValEzT081VjZISVVhdm03VFJOOWNEUkcwNWFnYzJIekNjak83ZVZtYU9CUGk0bGV1aUZTZnR3YXg2anB2MUJ2a21IQm43R3lkWThoM1pHREttVlJjUzhlaFkxVGNuU01oVGpZN3Q5Qk9EWWVKMzU5Mmt6MllIWmFXR0gxUjQ?oc=5"
+     "source_icon": "https://www.crunchyroll.com/news/img/favicons/apple-touch-icon-v2-152x152.png",
+     "url": "https://www.crunchyroll.com/news/latest/2026/11/13/chainsaw-man-the-movie-reze-arc-valentines-event-visual-cinema-live-2027",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
