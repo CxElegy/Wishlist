@@ -336,7 +336,7 @@
   "MMORPG 新作": 9,
   "The Mandalorian": 8,
   "チェーンソーマン": 11,
-  "A2O LITE": 6,
+  "A2O LITE": 10,
   "gelato pique": 4,
   "日本顶级网球赛事": 4,
   "FROM": 4,
@@ -717,7 +717,8 @@
    "blurb": "新浪网的 11 月 11 日榜单报道，RESCENE 与 A2O LITE 表现强势。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    9
    ]
   },
   {
@@ -746,6 +747,25 @@
    "refs": [
     5,
     6
+   ]
+  },
+  {
+   "headline": "2026.11.12 Melon日榜 A2O LITE-NEON日冠×29",
+   "highlight": "日冠×29",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    7
+   ]
+  },
+  {
+   "headline": "Apple Music 全球榜：A2O 回前七，ILLIT 双曲进前40",
+   "highlight": "A2O 回前七",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
