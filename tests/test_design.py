@@ -230,7 +230,7 @@ class Components(unittest.TestCase):
         self.assertEqual(kinds.count("hero"), 1)
         self.assertIn("showRow(true, false)", render.SHUFFLE_JS)
         # E4：版面を画面の上にそろえた時に小元素が全部見える（2026-11-11 店長「scroll 对齐的时候也要小图标全部显示出来」）
-        self.assertIn("section.sec.has-emb{scroll-margin-top:max(24px,calc(var(--embov,0px) + 6px))", css + render.CSS)
+        self.assertIn("section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24px),calc(var(--embov,0px) + 6px)))", css + render.CSS)
         self.assertIn("sec.style.setProperty('--embov'", render.EMB_JS)
         self.assertIn("d >= -Math.max(SNAP, m)", render.FIT_JS)
         self.assertIn("@media (min-width:761px){.wl-auth{position:absolute}}", src)
@@ -240,12 +240,12 @@ class Components(unittest.TestCase):
         """2026-11-09 店長：高さは px でなく画面の割合。ほかの注目ニュース・気になるかもは L＝画面 100%、版面は篇幅 L 100%・M 70%・S 50%。ジャンル別の棚はなし。"""
         js = render.FIT_JS
         self.assertEqual(render.SIZE_VH, {"S": 50, "M": 70, "L": 100})
-        self.assertIn("innerHeight * ((sec && +sec.dataset.vh) || 70) / 100", js)
+        self.assertIn("(innerHeight - bar) * ((sec && +sec.dataset.vh) || 70) / 100", js)
         self.assertNotIn("shelfbox", js)
         self.assertIn("c._hc", js)   # 入りきらない記事は小さい形（.wc.cmp）で列の下を埋める
         self.assertIn(".mgrid .wall>.wc.cmp{", render.CSS)
         self.assertIn("showFlat(true)", render.SHUFFLE_JS)
-        self.assertIn("const T = innerHeight - 16", render.SHUFFLE_JS)
+        self.assertIn("const T = innerHeight - (parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0) - 16", render.SHUFFLE_JS)
 
     def test_agenda_future_sorted_and_deduped(self):
         mk = lambda d, h: {"url": f"https://e.com/{h}", "headline": h, "_issue": "2026-10-10", "event": {"date": d, "label": "発売"}}
