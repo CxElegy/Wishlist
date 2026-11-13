@@ -408,7 +408,7 @@
  "https://biz.chosun.com/resizer/v2/ZXSVQQTU3BFJDFALMARBGC2MII.jpg?auth=244af8bbcdb4ea2f2cff3826d599849bf89156d25d0a03b970de0f5480059eee&width=1000&height=525&smart=true": {
   "w": 1000,
   "h": 525,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg": {
@@ -477,6 +477,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:yic4eez4gizdbpb7hrebcgwz/bafkreid7t6tlxupwxm476nxgnuoaz5j2noek4y7wz765t6x5cii4hq3s3e": {
+  "w": 1920,
+  "h": 804,
+  "target": 720,
+  "v": 3
  },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
   "w": 1950,
@@ -1566,6 +1572,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925610301426948504.jpg": {
+  "w": 700,
+  "h": 1050,
+  "target": 720,
+  "v": 3
+ },
  "https://img.gamewith.jp/article/thumbnail/gamearticle/18874/rectangle/65621.jpg?t=1794376432": {
   "w": 600,
   "h": 315,
@@ -1691,9 +1703,9 @@
   "target": 720,
   "v": 3
  },
- "https://img.wowtv.co.kr/YH/2026-11-10/AKR20261110003600075_01_i.jpg": {
-  "w": 500,
-  "h": 333,
+ "https://img.wowtv.co.kr/thumb/778x403_default_thumb.png": {
+  "w": 778,
+  "h": 403,
   "target": 720,
   "v": 3
  },
@@ -1886,8 +1898,9 @@
  "https://media.image.infoseek.co.jp/isnews/photos/hbc/hbc_1493814760402158525_0-enlarge.jpg": {
   "w": 800,
   "h": 450,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.348
  },
  "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4083048_0-enlarge.jpg": {
   "w": 1200,
@@ -2673,6 +2686,12 @@
   "target": 720,
   "v": 3
  },
+ "https://portal.auone.jp/media/thumbnails/2026/11/12/https___irohani_art__p_48767_w1024.webp": {
+  "w": 1024,
+  "h": 683,
+  "target": 720,
+  "v": 3
+ },
  "https://portal.auone.jp/media/thumbnails/2026/11/12/https___news_jp_i_1493525061302158094_w700.webp": {
   "w": 700,
   "h": 540,
@@ -2780,8 +2799,15 @@
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.598,
+  "local": "pics/d956f21667ab14a0.webp",
+  "out": [
+   748,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://q6.itc.cn/images01/20261108/3f7543d7176f4b9f8045718ab6942f18.jpeg": {
   "w": 553,

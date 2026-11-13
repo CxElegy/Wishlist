@@ -324,13 +324,13 @@
   "Astrae Oratio": 9,
   "周杰伦": 15,
   "dota2": 7,
-  "滑雪": 9,
+  "滑雪": 13,
   "哈利波特剧集": 6,
   "ILLIT": 9,
-  "MMORPG 新作": 6,
-  "The Mandalorian": 6,
-  "チェーンソーマン": 7,
-  "A2O LITE": 4,
+  "MMORPG 新作": 9,
+  "The Mandalorian": 8,
+  "チェーンソーマン": 11,
+  "A2O LITE": 6,
   "gelato pique": 3,
   "日本顶级网球赛事": 4,
   "FROM": 4,
@@ -381,7 +381,8 @@
    "weight": "lead",
    "refs": [
     2,
-    1
+    1,
+    13
    ],
    "image": "https://media.image.infoseek.co.jp/isnews/photos/nkt/nkt_2026111206463415_0-enlarge.jpg"
   },
@@ -442,6 +443,19 @@
    "refs": [
     7
    ]
+  },
+  {
+   "headline": "札幌国際スキー場で安全祈願祭「多く雪が降りゴールデンウィークまで楽しんで」今後の降雪に期待、11月20日オープン予定",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ],
+   "event": {
+    "date": "2026-11-20",
+    "label": "オープン"
+   }
   }
  ],
  "哈利波特剧集": [
@@ -596,6 +610,15 @@
    "refs": [
     6
    ]
+  },
+  {
+   "headline": "7 years ago today, ‘THE MANDALORIAN’ premiered on Disney+ The first ever live-action Star Wars series.",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "チェーンソーマン": [
@@ -618,15 +641,6 @@
    ]
   },
   {
-   "headline": "Dungeon Crawler Carl, Chainsaw Man top October's graphic novel charts",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3
-   ]
-  },
-  {
    "headline": "劇場版『チェンソーマン レゼ篇』 おおきなSOFVIMATES～てくてくポチタ～の入荷日・価格｜プライズ",
    "highlight": "",
    "blurb": "",
@@ -635,6 +649,25 @@
     6,
     5,
     7
+   ]
+  },
+  {
+   "headline": "アニメ『呪術廻戦』や劇場版『チェンソーマン レゼ篇』の原画が集結！MAPPA15周年展で楽しむアニメーションの祭典",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "Crunchyroll to join AGF 2026 in South Korea, bring Chainsaw Man star Toya",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    11
    ]
   }
  ],
@@ -664,6 +697,16 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "A2O LITE闪耀冲刺战落幕：盛艾敬拿下榜首，出道曲初舞台热度拉满",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6
    ]
   }
  ],
