@@ -51,11 +51,11 @@
   "https://www.dailysunny.com/2026/11/05/nynews261105/": "https://www.dailysunny.com/wp-content/uploads/2026/10/20251101-Pumpkin-Smash-6-e1791895860938.jpg",
   "https://www.dexerto.com/pokemon/how-to-get-all-starter-in-pokemon-scarlet-violet-quaxly-fuecoco-sprigatito-1984179/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/14/Pokemon-Scarlet-violet-Sprigatito-Fuecoco-Quaxly.jpg",
   "https://www.dexerto.com/pokemon/pokemon-highest-grossing-media-franchise-of-all-time-959505/": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/Pokemon-Franchise-Biggest.jpg",
+  "https://www.empireonline.com/movies/news/avengers-doomsday-covers-revealed/": "https://images.bauerhosting.com/celebrity/sites/42/2026/11/empjan27-avengers-doomsday-crop-vvd-dd.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=undefined&q=80",
   "https://www.fastcompany.com/91641287/kalshi-will-pay-you-120000-to-play-grand-theft-auto-vi": "https://www.bing.com/th?id=ONUT.-_KoB2mdtFbZ59cvsReglw&pid=News&w=700",
   "https://www.geektown.co.uk/2026/11/11/julianna-margulies-to-star-in-the-american-heiress-as-mgm-greenlights-victorian-romantic-comedy-from-victoria-creator/": "http://www.geektown.co.uk/wp-content/uploads/2026/11/jm.jpg",
   "https://www.haveagood-holiday.com/en/articles/chiikawa-new-year-postcard-3-set-sticker-2026": "https://assets.hldycdn.com/70c46b9e-351c-4136-9513-f0aacbdfee08.jpeg",
   "https://www.highpoint.edu/blog/2026/11/hpu-president-nido-qubein-encourages-gratitude-by-giving-teddy-bears-to-freshmen/": "https://www.highpoint.edu/media/home/2026/11/HPU1-Teddy-Bears.jpg",
-  "https://www.ign.com/articles/hugh-jackman-and-ryan-reynolds-are-credited-as-writers-on-avengers-doomsday-creating-speculation-over-deadpool-and-wolverine-roles": "https://assets-prd.ignimgs.com/2024/07/23/deadpoolwolverinealt-blogroll-1721757176365.jpg?width=1280&format=jpg&auto=webp&quality=80",
   "https://www.inside-games.jp/article/2026/11/07/190517.html": "https://www.inside-games.jp/imgs/ogp_f/1802024.jpg",
   "https://www.inside-games.jp/article/2026/11/09/190576.html": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1804705.jpg",
   "https://www.irishexaminer.com/world/arid-41934183.html": "https://www.irishexaminer.com/cms_media/module_img/10568/5284152_1_org_164f810a-4262-4cdc-adab-a69f4f531822.jpg.jpg",
@@ -1157,27 +1157,6 @@
    "because": "漫威电影",
    "date": "2026-11-12",
    "hits": [],
-   "image": "https://assets-prd.ignimgs.com/2024/07/23/deadpoolwolverinealt-blogroll-1721757176365.jpg?width=1280&format=jpg&auto=webp&quality=80",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "IGN",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "New Avengers: Doomsday Detail All But Confirms Deadpool and Wolverine Are In the Film",
-   "url": "https://www.ign.com/articles/hugh-jackman-and-ryan-reynolds-are-credited-as-writers-on-avengers-doomsday-creating-speculation-over-deadpool-and-wolverine-roles",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 4,
-   "because": "漫威电影",
-   "date": "2026-11-12",
-   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.vSziIpMPlJ4WhORTPNFS5w&pid=News&w=1200",
    "kind": "board",
    "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
@@ -1191,6 +1170,27 @@
    ],
    "title": "Top 10 MCU characters we'll probably never see again",
    "url": "https://www.msn.com/en-us/news/other/top-10-mcu-characters-well-probably-never-see-again/ar-AA2hkthT",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://images.bauerhosting.com/celebrity/sites/42/2026/11/empjan27-avengers-doomsday-crop-vvd-dd.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=undefined&q=80",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "www.empireonline.com",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Empire's World-Exclusive Avengers: Doomsday covers are here – and there are four to collect",
+   "url": "https://www.empireonline.com/movies/news/avengers-doomsday-covers-revealed/",
    "words": [],
    "work": "漫威电影"
   },
@@ -1829,11 +1829,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1841,11 +1841,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [

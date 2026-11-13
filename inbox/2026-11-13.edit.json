@@ -10,7 +10,8 @@
     2,
     5,
     81,
-    93
+    93,
+    103
    ],
    "event": {
     "date": "2026-11-19",
@@ -60,7 +61,10 @@
    "weight": "normal",
    "refs": [
     51,
-    91
+    91,
+    100,
+    109,
+    98
    ]
   }
  ],
@@ -74,7 +78,9 @@
     14,
     19,
     4,
-    6
+    6,
+    61,
+    68
    ],
    "image": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Anthony-Mackie.jpg"
   },
@@ -112,20 +118,18 @@
     63,
     57,
     59,
-    95
+    95,
+    105,
+    108
    ]
   },
   {
-   "headline": "Empire's World-Exclusive Avengers: Doomsday covers are here – and there are four to collect",
+   "headline": "Robert Downey Jr. posts cryptic Avengers: Doomsday teaser: \"Time will tell; Doom won't\"",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2,
-    37,
-    42,
-    43,
-    53
+    109
    ]
   },
   {
@@ -139,7 +143,9 @@
     45,
     50,
     46,
-    83
+    83,
+    102,
+    110
    ]
   }
  ],
@@ -159,7 +165,10 @@
     27,
     30,
     31,
-    32
+    32,
+    34,
+    33,
+    35
    ],
    "image": "https://sumahodigest.com/wp-content/uploads/2026/11/HW6zVaQXcAAkP6g.jpg"
   },
@@ -175,7 +184,9 @@
     20,
     14,
     23,
-    24
+    24,
+    39,
+    41
    ]
   },
   {
@@ -214,6 +225,26 @@
    "weight": "normal",
    "refs": [
     28
+   ]
+  },
+  {
+   "headline": "Samsung weighs paid AI subscription for Galaxy S27",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    36
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra：次期フラッグシップモデルで最も期待される7つのアップグレード。",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    37,
+    38,
+    40
    ]
   }
  ],
@@ -287,15 +318,15 @@
   }
  ],
  "_covered": {
-  "GTA 6": 97,
-  "漫威电影": 100,
-  "三星手机": 32,
+  "GTA 6": 111,
+  "漫威电影": 111,
+  "三星手机": 41,
   "Astrae Oratio": 9,
-  "周杰伦": 10,
+  "周杰伦": 15,
   "dota2": 7,
   "滑雪": 9,
   "哈利波特剧集": 6,
-  "ILLIT": 4,
+  "ILLIT": 9,
   "MMORPG 新作": 6,
   "The Mandalorian": 6,
   "チェーンソーマン": 7,
@@ -448,6 +479,20 @@
  ],
  "ILLIT": [
   {
+   "headline": "ILLIT「ベストアーティスト2026」に出演決定！ミンジュ＆Snow Man ラウールが東京ディズニーシーを舞台にスペシャルコラボも",
+   "highlight": "ベストアーティスト2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    9
+   ],
+   "event": {
+    "date": "2026-11-28",
+    "label": "放送"
+   }
+  },
+  {
    "headline": "ILLIT (アイリット)、新曲｢You’re Under Arrest｣初披露＆翌週は1位―笛を吹いて逮捕",
    "highlight": "翌週は1位",
    "blurb": "",
@@ -463,6 +508,25 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "ILLIT・IROHA、11歳で単身韓国にいった当時の心境告白 憧れの先輩を見た“衝撃”回想",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "멜론뮤직어워드, 아이브·아일릿 특별 무대",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6
    ]
   }
  ],

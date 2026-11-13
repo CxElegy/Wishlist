@@ -577,6 +577,12 @@
   ],
   "why": "看不清"
  },
+ "https://cdn.livedoor.jp/kstyle/4af09f570719ed91dd64c3bbbf036273_WI.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.mainichi.jp/vol1/2026/11/09/20261109pr100m020079000p/0c10.jpg?2": {
   "w": 1200,
   "h": 630,
@@ -1591,12 +1597,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/12/5638786_1.jpg": {
-  "w": 800,
-  "h": 1064,
-  "target": 720,
-  "v": 3
- },
  "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
   "w": 640,
   "h": 434,
@@ -1691,9 +1691,9 @@
   "target": 720,
   "v": 3
  },
- "https://img.wowtv.co.kr/thumb/778x403_default_thumb.png": {
-  "w": 778,
-  "h": 403,
+ "https://img.wowtv.co.kr/YH/2026-11-10/AKR20261110003600075_01_i.jpg": {
+  "w": 500,
+  "h": 333,
   "target": 720,
   "v": 3
  },
@@ -2643,6 +2643,12 @@
   "target": 720,
   "v": 3
  },
+ "https://pimg.mk.co.kr/news/cms/202611/12/news-p.v1.20261007.415c331a07ee4564bd97f4831e67de35_R.jpg": {
+  "w": 1600,
+  "h": 1141,
+  "target": 720,
+  "v": 3
+ },
  "https://players.com.ua/wp-content/uploads/2026/11/d2-711-mr.jpg": {
   "w": 1200,
   "h": 675,
@@ -2814,6 +2820,12 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/23d28f55bf106cc1a2255a89e8081f0a3fc7d2a0f9a47f986aaa40f20f252c55/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2F03d1b48c4241bc56b05f1525a54221a0.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/2dbe7f2bd1676e86801b0a51a5fa559c7b12c23469d6aa57fc4cbdbc162e9f0b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fftvn_sports_106%2Fbf49b2853a3d6a9d7f06fc76f5faf436.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3137,6 +3149,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/b/7/a/0/b7a0d8ce561d7b429b8205a775c650a6_1.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/c/4/5/6/c456bc17ca81222fdf8c9f45b8aa9c0c_1.jpg": {
   "w": 402,
   "h": 640,
@@ -3432,6 +3450,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/12/1794443617144_galaxy-s27-ultra-duoc-nang-cap-mot-tinh-nang-fan-mong-doi-nhat-3099.png": {
   "w": 1746,
   "h": 935,
+  "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794527936990_galaxy-s27-ultra-7-nang-cap-dang-mong-cho-nhat-tren-flagship-sap-ra-mat-3674.png": {
+  "w": 1758,
+  "h": 941,
   "target": 1280,
   "v": 3
  },
@@ -3830,6 +3854,12 @@
  "https://www.bing.com/th?id=ONUT.vSziIpMPlJ4WhORTPNFS5w&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
+  "w": 600,
+  "h": 800,
   "target": 720,
   "v": 3
  },
