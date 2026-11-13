@@ -46,6 +46,7 @@
   "https://turnnewsapp.com/ct-featured/422036.html": "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg",
   "https://www.66wz.com/wendu/system/2026/11/12/105871102.shtml": "https://mmbiz.qpic.cn/mmbiz_png/fXeVwORdalR2DH0CBIemW8EjREoAicFtVoO4F01lgoGxNZoAocFmOtHLYoPibuxeJurdDhMn2v9ibAtIZ7Bdib0u598oUicgD3vpNFk7JP5pTIeA/640?wx_fmt=png&from=appmsg#imgIndex=4",
   "https://www.androidpolice.com/best-t-mobile-deals-of-the-month/": "https://static0.anpoimages.com/wordpress/wp-content/uploads/2026/08/samsung-galaxy-z-fold-8-and-google-pixel-10-pro-standing-side-by-side.png?w=1600&h=900&fit=crop",
+  "https://www.aol.com/articles/doctor-doom-terrifying-avengers-doomsday-203034000.html": "https://www.bing.com/th?id=ONUT.ngUXI6sspb5iI2S9P9dEXw&pid=News&w=1200",
   "https://www.auroradesio.it/top/218998832/": null,
   "https://www.cbc.ca/news/canada/newfoundland-labrador/james-kelloway-suspected-stolen-property-9.7414871": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2har4k.img",
   "https://www.chosun.com/english/national-en/2026/11/11/XURTES4YDVAXXBZFQONSRVDMXY/": "https://www.chosun.com/resizer/v2/MNRTAOJRMIYGGOBYHBSDQNZWGM.jpg?auth=ffbf824053e649bc9bcba36203132d3a6e73c50c8168aef40b5bfa76c6903ca7&width=1200&height=630&focal=1015,498",
@@ -56,7 +57,6 @@
   "https://www.geektown.co.uk/2026/11/11/julianna-margulies-to-star-in-the-american-heiress-as-mgm-greenlights-victorian-romantic-comedy-from-victoria-creator/": "http://www.geektown.co.uk/wp-content/uploads/2026/11/jm.jpg",
   "https://www.haveagood-holiday.com/en/articles/chiikawa-new-year-postcard-3-set-sticker-2026": "https://assets.hldycdn.com/70c46b9e-351c-4136-9513-f0aacbdfee08.jpeg",
   "https://www.highpoint.edu/blog/2026/11/hpu-president-nido-qubein-encourages-gratitude-by-giving-teddy-bears-to-freshmen/": "https://www.highpoint.edu/media/home/2026/11/HPU1-Teddy-Bears.jpg",
-  "https://www.ign.com/articles/hugh-jackman-and-ryan-reynolds-are-credited-as-writers-on-avengers-doomsday-creating-speculation-over-deadpool-and-wolverine-roles": "https://assets-prd.ignimgs.com/2024/07/23/deadpoolwolverinealt-blogroll-1721757176365.jpg?width=1280&format=jpg&auto=webp&quality=80",
   "https://www.inside-games.jp/article/2026/11/07/190517.html": "https://www.inside-games.jp/imgs/ogp_f/1802024.jpg",
   "https://www.inside-games.jp/article/2026/11/09/190576.html": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1804705.jpg",
   "https://www.irishexaminer.com/world/arid-41934183.html": "https://www.irishexaminer.com/cms_media/module_img/10568/5284152_1_org_164f810a-4262-4cdc-adab-a69f4f531822.jpg.jpg",
@@ -1146,27 +1146,6 @@
   },
   {
    "batch": 4,
-   "because": "漫威电影",
-   "date": "2026-11-12",
-   "hits": [],
-   "image": "https://assets-prd.ignimgs.com/2024/07/23/deadpoolwolverinealt-blogroll-1721757176365.jpg?width=1280&format=jpg&auto=webp&quality=80",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "IGN",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "New Avengers: Doomsday Detail All But Confirms Deadpool and Wolverine Are In the Film",
-   "url": "https://www.ign.com/articles/hugh-jackman-and-ryan-reynolds-are-credited-as-writers-on-avengers-doomsday-creating-speculation-over-deadpool-and-wolverine-roles",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 4,
    "because": "The Mandalorian",
    "date": "2026-11-12",
    "hits": [],
@@ -1187,7 +1166,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-12",
    "hits": [],
@@ -1204,6 +1183,27 @@
    ],
    "title": "AVENGERS: DOOMSDAY Empire Covers Assemble Loki, The Avengers, and X-Men for a Showdown With Doctor Doom",
    "url": "https://geektyrant.com/news/avengers-doomsday-empire-covers-assemble-loki-the-avengers-and-x-men-for-a-showdown-with-doctor-doom",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 5,
+   "because": "漫威电影",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.ngUXI6sspb5iI2S9P9dEXw&pid=News&w=1200",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "AOL",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Doctor Doom’s Terrifying Avengers: Doomsday Plan Is Exposed After VisionQuest",
+   "url": "https://www.aol.com/articles/doctor-doom-terrifying-avengers-doomsday-203034000.html",
    "words": [],
    "work": "漫威电影"
   },
@@ -1806,11 +1806,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
