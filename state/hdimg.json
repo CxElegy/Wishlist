@@ -66,6 +66,19 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261114ac/320/w480h640/20261114/948e-c73f05b4707966d1312b8d3d11e67e4e.jpg": {
+  "w": 480,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.643,
+  "local": "pics/2fb4903f46d6ca99.webp",
+  "out": [
+   960,
+   1280
+  ],
+  "why": "看不清"
+ },
  "http://www.geektown.co.uk/wp-content/uploads/2026/11/jm.jpg": {
   "w": 1300,
   "h": 735,
@@ -402,6 +415,12 @@
   "v": 3
  },
  "https://attach.setn.com/newsimages/2022/01/20/3498831-PH.jpg": {
+  "w": 800,
+  "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://attach.setn.com/newsimages/2026/10/28/5766149-PH.jpg": {
   "w": 800,
   "h": 450,
   "target": 720,

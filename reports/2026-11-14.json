@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "9e578f1b2993",
+ "edit_sig": "af576aa66670",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -508,38 +508,29 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "周杰伦发文感慨，21年前在电影里飙车，如今改打网球。",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "周杰伦发文感慨21年前电影飙车如今改打网球",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBISkkwTVBIbTdGbXhPejV4SGpXa1c3MkFHLUxJYU0tbWFhWUNvb3BUYk81UTQ5Ynpkb1oxOEJmVHozM25LNXBTU0ZoTW5nbDMwR2Q0RUgxbWRzc2N2OWozdjlXa2V5OFVQb0tadGVWNkI?oc=5"
+     "headline": "周杰伦发文感慨21年前电影飙车如今改打网球",
+     "highlight": "改打网球",
+     "image": "http://n.sinaimg.cn/sinakd20261114ac/320/w480h640/20261114/948e-c73f05b4707966d1312b8d3d11e67e4e.jpg",
+     "image_via": "og:image",
+     "url": "http://k.sina.com.cn/article_1850268574_m6e48db9e03302ddhy.html",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-12",
-     "n": 2,
-     "source": "三立新聞網SETN.com",
-     "title": "vivo X500系列10/30正式登台！周杰倫簽名版這樣拿",
-     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5CUXd2TWd0YWdVZmhvc1hfM3hpbndKS3JhbWpMYS1ydjNTRkRHcUVvNjF1cl9IcVBfcEdQSWdFWTltdUVnbS1tMNIBTEFVX3lxTE5aUlczZ2xabWdWZE1jenFZWnY5ZXdFRExucUpBNnVRSy1lSldLdzFjMkFTc0ZDSGEyODFwRm5nZWgxTUN2d09XM0E2V1c?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 3,
-     "source": "手机新浪网",
-     "title": "周杰伦概念股和宇树合作卖机器狗，年内具身智能相关企业注册量已超550家",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQTHlFUmdReTdmLUNDaDNId3Y5OU1JdHdQVm11akhaTUU4UG02NnFoRUpCcnVRZ2lTS3pMQXVabkVSc0thbDVlTWo5djZTNmZ4RTlKcUZTeGZvb1lVbU9nMHVNclg5T0p0SGpHRGIwc3lMa2RrS0J4blhGTXdRR2xLSnJB?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 4,
-     "source": "手机新浪网",
-     "title": "两老外自述爱中国文化合唱周杰伦听妈妈的话",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5nbzdXcmlRZ1dxc0o1c2NyN0Q4WDhNbi11Nk5BbFk3ZGFWY2syZFN5RXozNzNZbmcySXZQelFYUy12bzBPOEhGRWxkYjl0OXkyRHg2NzNsLWxyU3RMNU5LSEg1R2JmamZ0T2dkQ0NudXE2M00?oc=5"
+     "headline": "vivo X500系列10/30正式登台！周杰倫簽名版這樣拿",
+     "highlight": "10/30正式登台",
+     "image": "https://attach.setn.com/newsimages/2026/10/28/5766149-PH.jpg",
+     "image_via": "og:image",
+     "url": "https://www.setn.com/news/1929859",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",
