@@ -26,6 +26,9 @@ jobs:
         run: python -c "import sys; sys.path.insert(0, 'scripts'); import digest; digest.load_config(); print(len(digest.load_wishlist()), '件愿望')"
       - name: 改了逻辑就要改架构图
         run: python scripts/check_arch.py
+      # CRLF のファイルを Linux で直して LF に反転し 1 万行の差になった（#1032・#1034）。向きの反転を止める（2026-11-13）
+      - name: 改行の向きが反転していない
+        run: python harness/eol_check.py origin/main
       # ブラウザの試験（壁の形・小元素の列など）が playwright 無しで skip され、手元は赤・CI は緑になっていた（2026-11-04 ③）
       - name: 浏览器（chromium）
         run: pip install playwright && playwright install --with-deps chromium
