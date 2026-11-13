@@ -1,17 +1,15 @@
 {
  "image_misses": {
-  "https://3c.ltn.com.tw/news/68230": "2026-11-12",
-  "https://lee.hpplus.jp/column/3784952/": "2026-11-12",
-  "https://news.pchome.com.tw/game/ldplayer/20261112/index-79447450722986345104.html": "2026-11-12",
-  "https://t.co/UIJZ32Eqan": "2026-11-12",
-  "https://www.auroradesio.it/top/218998832/": "2026-11-12",
-  "https://www.ludens.com.tw/aveltuner-open-world-magic-game/": "2026-11-12",
-  "https://www.sakhaparliament.ru/goods/fashion/z103019154": "2026-11-12",
-  "https://www.sportsdunia.com/gaming/sea-of-remnants-dawnbreaker-closed-beta-registrations": "2026-11-12"
+  "https://news.pchome.com.tw/game/ldplayer/20261112/index-79447450722986345104.html": "2026-11-13",
+  "https://t.co/UIJZ32Eqan": "2026-11-13",
+  "https://www.auroradesio.it/top/218998832/": "2026-11-13",
+  "https://www.ludens.com.tw/aveltuner-open-world-magic-game/": "2026-11-13",
+  "https://www.sakhaparliament.ru/goods/fashion/z103019154": "2026-11-13",
+  "https://www.sportsdunia.com/gaming/sea-of-remnants-dawnbreaker-closed-beta-registrations": "2026-11-13"
  },
  "images": {
   "http://k.sina.com.cn/article_6355176053_m17acc4a7503301c8ja.html": "http://n.sinaimg.cn/sinakd20261112ac/278/w480h598/20261112/9f83-d15bc360c54c8c54e8bc07537072a9f2.jpg",
-  "https://3c.ltn.com.tw/news/68230": null,
+  "https://3c.ltn.com.tw/news/68230": "https://img.ltn.com.tw/Upload/3c/page/2026/11/11/261111-68230-1.jpg",
   "https://appmedia.jp/bleach-mh/80521795": "https://appmedia.jp/wp-content/uploads/2026/10/171809_m6vsz.webp",
   "https://appmedia.jp/bleach-mh/80529382": "https://appmedia.jp/wp-content/uploads/2026/10/151001_cb6v7.webp",
   "https://bleedingcool.com/movies/jumanji-open-world-4-new-character-posters-released/": "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg",
@@ -23,8 +21,10 @@
   "https://gulfnews.com/amp/story/best-buys%2Foffers%2Fsamsung-galaxy-s25-ultra-gets-a-major-price-cut-for-amazon-1111-sale-in-uae-1.500737145": "https://media.assettype.com/gulfnews%2F2026-11-05%2F9r0m63lj%2FSamsung-Galaxy-S25-Ultra-Unboxing-1.png?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100",
   "https://hawk.live/posts/noone-complained-long-delay-dota-2-patches": "https://hawk.live/storage/images/posts/noone-spoke-patch-741-24454.jpg",
   "https://k.sina.com.cn/article_1893711543_70dfbeb704001vhsw.html": "http://n.sinaimg.cn/sinakd/sni/667/w2000h2667/20261110/3505-97972e03895f87e3a7f327f508a847bf.jpg",
-  "https://lee.hpplus.jp/column/3784952/": null,
+  "https://lee.hpplus.jp/column/3784952/": "https://lee.hpplus.jp/wp-content/uploads/2026/11/04/38600e3e5a2f85da5c5a7b8da08242c9.jpeg",
   "https://leisurebyte.com/the-mandalorian-7th-anniversary-fans-x-celebrate/": "https://i0.wp.com/leisurebyte.com/wp-content/uploads/2026/11/The-Mandolrian-7th-Anniversary-Still-from-Star-Wars-The-Mandalorian-and-Grogu-2-1-1.jpg",
+  "https://m.sohu.com/a/1093453633_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
+  "https://m.sohu.com/a/1093454220_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
   "https://mymodernmet.com/studio-ghibli-character-humidifiers/": "https://mymodernmet.com/wp/wp-content/uploads/2026/11/studio-ghibli-donguri-humidifiers-fb.png",
   "https://news.dellows.jp/992392/": "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg",
   "https://news.infoseek.co.jp/article/animeanime_104589/": "https://media.image.infoseek.co.jp/isnews/photos/animeanime/animeanime_104589_0-enlarge.jpg",
@@ -44,31 +44,29 @@
   "https://t.co/UIJZ32Eqan": null,
   "https://timesofindia.indiatimes.com/entertainment/telugu/movies/news/roshan-meka-to-play-a-superhero-in-indraganti-mohanakrishnas-next-makers-announce-the-film-at-a-grand-event/articleshow/135740640.cms": "https://static.toiimg.com/thumb/msid-135740690,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg",
   "https://turnnewsapp.com/ct-featured/422036.html": "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg",
-  "https://variety.com/2026/digital/news/gta-6-release-gaming-industry-takeover-1236945197/": "https://www.bing.com/th?id=ONUT.7RsNbnX8xTPc33yypP4iqA&pid=News&w=1000",
   "https://www.66wz.com/wendu/system/2026/11/12/105871102.shtml": "https://mmbiz.qpic.cn/mmbiz_png/fXeVwORdalR2DH0CBIemW8EjREoAicFtVoO4F01lgoGxNZoAocFmOtHLYoPibuxeJurdDhMn2v9ibAtIZ7Bdib0u598oUicgD3vpNFk7JP5pTIeA/640?wx_fmt=png&from=appmsg#imgIndex=4",
   "https://www.androidpolice.com/best-t-mobile-deals-of-the-month/": "https://static0.anpoimages.com/wordpress/wp-content/uploads/2026/08/samsung-galaxy-z-fold-8-and-google-pixel-10-pro-standing-side-by-side.png?w=1600&h=900&fit=crop",
-  "https://www.aol.com/articles/doctor-doom-terrifying-avengers-doomsday-203034000.html": "https://www.bing.com/th?id=ONUT.ngUXI6sspb5iI2S9P9dEXw&pid=News&w=1200",
   "https://www.auroradesio.it/top/218998832/": null,
   "https://www.cbc.ca/news/canada/newfoundland-labrador/james-kelloway-suspected-stolen-property-9.7414871": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2har4k.img",
   "https://www.chosun.com/english/national-en/2026/11/11/XURTES4YDVAXXBZFQONSRVDMXY/": "https://www.chosun.com/resizer/v2/MNRTAOJRMIYGGOBYHBSDQNZWGM.jpg?auth=ffbf824053e649bc9bcba36203132d3a6e73c50c8168aef40b5bfa76c6903ca7&width=1200&height=630&focal=1015,498",
   "https://www.dailysunny.com/2026/11/05/nynews261105/": "https://www.dailysunny.com/wp-content/uploads/2026/10/20251101-Pumpkin-Smash-6-e1791895860938.jpg",
   "https://www.dexerto.com/pokemon/how-to-get-all-starter-in-pokemon-scarlet-violet-quaxly-fuecoco-sprigatito-1984179/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/14/Pokemon-Scarlet-violet-Sprigatito-Fuecoco-Quaxly.jpg",
   "https://www.dexerto.com/pokemon/pokemon-highest-grossing-media-franchise-of-all-time-959505/": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/Pokemon-Franchise-Biggest.jpg",
-  "https://www.etnews.com/tools/image_popup.html?v=bjQ5VkNYY2dLZTZMZFBUbmNzandvWmpGcjBTK1pHYm1CUVRXR0pTMldlYVZkdE5JeGJVUFVVNURJN04rbmhKTVpaWi83c0FOL3NKSTVITFl0VU41R0RqOW0wa3YxMjhibTVZaWttMlgvWXBKYTFUVmdYUmNpaDlHeFpBRXFIMEMwUWxoQlFDanU2MENHblpHMWdFNE1CMVI0ajEvdGovb21JbkpmZFJkaHBnbzJDa25ZaHdZdHBmOFdJNStnbHdhcHJDUUFIZGt2cjVyWjVEejVFbDZmclEvS0luRzVXVGVWQkdUVkdSUktHUnlNQlR4WEpFQloxenlKRjZudThQSmtMSy9CL0F5TWUxT0FBR3pTNTVOVVE9PQ": "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925610301426948504.jpg",
+  "https://www.fastcompany.com/91641287/kalshi-will-pay-you-120000-to-play-grand-theft-auto-vi": "https://www.bing.com/th?id=ONUT.-_KoB2mdtFbZ59cvsReglw&pid=News&w=700",
   "https://www.geektown.co.uk/2026/11/11/julianna-margulies-to-star-in-the-american-heiress-as-mgm-greenlights-victorian-romantic-comedy-from-victoria-creator/": "http://www.geektown.co.uk/wp-content/uploads/2026/11/jm.jpg",
   "https://www.haveagood-holiday.com/en/articles/chiikawa-new-year-postcard-3-set-sticker-2026": "https://assets.hldycdn.com/70c46b9e-351c-4136-9513-f0aacbdfee08.jpeg",
   "https://www.highpoint.edu/blog/2026/11/hpu-president-nido-qubein-encourages-gratitude-by-giving-teddy-bears-to-freshmen/": "https://www.highpoint.edu/media/home/2026/11/HPU1-Teddy-Bears.jpg",
+  "https://www.ign.com/articles/hugh-jackman-and-ryan-reynolds-are-credited-as-writers-on-avengers-doomsday-creating-speculation-over-deadpool-and-wolverine-roles": "https://assets-prd.ignimgs.com/2024/07/23/deadpoolwolverinealt-blogroll-1721757176365.jpg?width=1280&format=jpg&auto=webp&quality=80",
   "https://www.inside-games.jp/article/2026/11/07/190517.html": "https://www.inside-games.jp/imgs/ogp_f/1802024.jpg",
   "https://www.inside-games.jp/article/2026/11/09/190576.html": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1804705.jpg",
   "https://www.irishexaminer.com/world/arid-41934183.html": "https://www.irishexaminer.com/cms_media/module_img/10568/5284152_1_org_164f810a-4262-4cdc-adab-a69f4f531822.jpg.jpg",
   "https://www.ludens.com.tw/aveltuner-open-world-magic-game/": null,
   "https://www.mirror.co.uk/lifestyle/cats-sleep-ball-vet-explains-37861967": "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700",
   "https://www.motor1.com/news/806962/mitsubishi-teases-smaller-pajero-models/": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bsNCV.img",
-  "https://www.msn.com/en-ca/gaming/general/sony-s-new-oil-slick-gta-vi-controller-might-be-its-best-design-yet/ar-AA2hjVv0": "https://www.bing.com/th?id=ONUT.uXDhAOP8FEy3MsLaCvwopg&pid=News&w=1200",
   "https://www.msn.com/en-us/entertainment/general/how-the-mandalorian-reflects-strict-religious-communities/vi-AA2hbWbO": "https://www.bing.com/th?id=ONUT.HemtJzaVL1zj2EDdbPBDqQ&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/nc-reveals-astrae-oratio-booth-layout-render-for-agf/ar-AA2hg3lO": "https://www.bing.com/th?id=ONUT.s2W8AvAIH_oFfZyHQqnVgA&pid=News&w=1200",
+  "https://www.msn.com/en-xl/news/other/scotland-created-grand-theft-auto-is-its-video-game-industry-still-thriving/ar-AA2hjzPX": "https://www.bing.com/th?id=ONUT.eGfHouee1vdxkk30h2z1BA&pid=News&w=1024",
   "https://www.msn.com/ja-jp/news/other/%E7%95%A5%E8%AA%9E%E3%82%AF%E3%82%A4%E3%82%BA-%E3%81%82%E3%81%A4%E6%A3%AE-%E3%81%AF%E3%81%AA%E3%82%93%E3%81%AE%E7%95%A5-%E9%95%B7%E5%B9%B4%E6%84%9B%E3%81%95%E3%82%8C%E3%81%A6%E3%81%8D%E3%81%9F%E3%82%B2%E3%83%BC%E3%83%A0/ar-AA2hgJN4": "https://www.bing.com/th?id=ONUT.mSRgEXP9xOJgO4sM674NZA&pid=News&w=1200",
-  "https://www.nc.press/news/articleView.html?idxno=630807": "https://cdn.nc.press/news/photo/202611/630807_869863_5920.jpg",
   "https://www.newsandstar.co.uk/news/26706566.benjamin-bunny-beatrix-potter-50p-coin-listed-ebay-35k/": "https://www.newsandstar.co.uk/resources/images/21378190/",
   "https://www.nikkei.com/article/DGXZQOUC105GK0Q6A111C2000000/": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3864241011112026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.36&fp-y=0.35&h=630&w=1200&s=d188c1346dec938e8d79cf75b80d03a1",
   "https://www.notebookcheck.net/Galaxy-S27-official-colors-tipped-with-one-interesting-yet-familiar-addition.1449038.0.html": "https://www.bing.com/th?id=ONUT.-_audigmb88duwA9M5AR1g&pid=News&w=1200",
@@ -96,7 +94,7 @@
     "旗舰手机",
     "手机"
    ],
-   "image": null,
+   "image": "https://img.ltn.com.tw/Upload/3c/page/2026/11/11/261111-68230-1.jpg",
    "kind": "wish",
    "score": 10,
    "source": "自由電子報3C科技",
@@ -609,7 +607,7 @@
     "直发夹 / 卷发棒",
     "美容家电"
    ],
-   "image": null,
+   "image": "https://lee.hpplus.jp/wp-content/uploads/2026/11/04/38600e3e5a2f85da5c5a7b8da08242c9.jpeg",
    "kind": "wish",
    "score": 4,
    "source": "LEE",
@@ -749,19 +747,40 @@
    "because": "GTA 6",
    "date": "2026-11-12",
    "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.7RsNbnX8xTPc33yypP4iqA&pid=News&w=1000",
+   "image": "https://www.bing.com/th?id=ONUT.-_KoB2mdtFbZ59cvsReglw&pid=News&w=700",
    "kind": "board",
    "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
    "score": 8,
-   "source": "Variety",
+   "source": "Fast Company",
    "taste": [
     [
      "作品:GTA 6",
      6
     ]
    ],
-   "title": "‘Unlike Anything Else’: As ‘GTA 6’ Approaches, the Gaming Industry Braces the World for Its Pop Culture Takeover",
-   "url": "https://variety.com/2026/digital/news/gta-6-release-gaming-industry-takeover-1236945197/",
+   "title": "Kalshi will pay you $120,000 to play ‘Grand Theft Auto VI’",
+   "url": "https://www.fastcompany.com/91641287/kalshi-will-pay-you-120000-to-play-grand-theft-auto-vi",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.eGfHouee1vdxkk30h2z1BA&pid=News&w=1024",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "BBC on MSN",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "Scotland created Grand Theft Auto - is its video game industry still thriving?",
+   "url": "https://www.msn.com/en-xl/news/other/scotland-created-grand-theft-auto-is-its-video-game-industry-still-thriving/ar-AA2hjzPX",
    "words": [],
    "work": "GTA 6"
   },
@@ -797,27 +816,6 @@
     "galaxy"
    ],
    "work": "三星手机"
-  },
-  {
-   "batch": 1,
-   "because": "GTA 6",
-   "date": "2026-11-12",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.uXDhAOP8FEy3MsLaCvwopg&pid=News&w=1200",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "USA TODAY on MSN",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "Sony’s new oil-slick GTA VI controller might be its best design yet",
-   "url": "https://www.msn.com/en-ca/gaming/general/sony-s-new-oil-slick-gta-vi-controller-might-be-its-best-design-yet/ar-AA2hjVv0",
-   "words": [],
-   "work": "GTA 6"
   },
   {
    "batch": 1,
@@ -1106,6 +1104,69 @@
   },
   {
    "batch": 4,
+   "because": "A2O LITE",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "Sohu",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "A2O LITE闪耀冲刺战落幕：盛艾敬拿下榜首，出道曲初舞台热度拉满",
+   "url": "https://m.sohu.com/a/1093453633_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 4,
+   "because": "A2O LITE",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "Sohu",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "EYE-CONTACT：盛艾敬舞台对视瞬间，戳中A2O LITE粉丝的心动点",
+   "url": "https://m.sohu.com/a/1093454220_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://assets-prd.ignimgs.com/2024/07/23/deadpoolwolverinealt-blogroll-1721757176365.jpg?width=1280&format=jpg&auto=webp&quality=80",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "IGN",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "New Avengers: Doomsday Detail All But Confirms Deadpool and Wolverine Are In the Film",
+   "url": "https://www.ign.com/articles/hugh-jackman-and-ryan-reynolds-are-credited-as-writers-on-avengers-doomsday-creating-speculation-over-deadpool-and-wolverine-roles",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
    "because": "The Mandalorian",
    "date": "2026-11-12",
    "hits": [],
@@ -1126,7 +1187,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "漫威电影",
    "date": "2026-11-12",
    "hits": [],
@@ -1147,28 +1208,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 4,
-   "because": "漫威电影",
-   "date": "2026-11-12",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.ngUXI6sspb5iI2S9P9dEXw&pid=News&w=1200",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "AOL",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Doctor Doom’s Terrifying Avengers: Doomsday Plan Is Exposed After VisionQuest",
-   "url": "https://www.aol.com/articles/doctor-doom-terrifying-avengers-doomsday-203034000.html",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 4,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-12",
    "hits": [],
@@ -1187,48 +1227,6 @@
    "url": "https://appmedia.jp/bleach-mh/80529382",
    "words": [],
    "work": "BLEACH Mirrors High"
-  },
-  {
-   "batch": 5,
-   "because": "A2O LITE",
-   "date": "2026-11-12",
-   "hits": [],
-   "image": "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925610301426948504.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "전자신문",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "[ET포토] A2O LITE 아윤, '밝고 맑은 미소'",
-   "url": "https://www.etnews.com/tools/image_popup.html?v=bjQ5VkNYY2dLZTZMZFBUbmNzandvWmpGcjBTK1pHYm1CUVRXR0pTMldlYVZkdE5JeGJVUFVVNURJN04rbmhKTVpaWi83c0FOL3NKSTVITFl0VU41R0RqOW0wa3YxMjhibTVZaWttMlgvWXBKYTFUVmdYUmNpaDlHeFpBRXFIMEMwUWxoQlFDanU2MENHblpHMWdFNE1CMVI0ajEvdGovb21JbkpmZFJkaHBnbzJDa25ZaHdZdHBmOFdJNStnbHdhcHJDUUFIZGt2cjVyWjVEejVFbDZmclEvS0luRzVXVGVWQkdUVkdSUktHUnlNQlR4WEpFQloxenlKRjZudThQSmtMSy9CL0F5TWUxT0FBR3pTNTVOVVE9PQ",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 5,
-   "because": "A2O LITE",
-   "date": "2026-11-12",
-   "hits": [],
-   "image": "https://cdn.nc.press/news/photo/202611/630807_869863_5920.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "뉴스컬처",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "A2O LITE·NCT WISH·플레이브 정상…'본질과 서사'로 물든 10월 써클차트",
-   "url": "https://www.nc.press/news/articleView.html?idxno=630807",
-   "words": [],
-   "work": "A2O LITE"
   },
   {
    "batch": 5,
@@ -1808,11 +1806,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [

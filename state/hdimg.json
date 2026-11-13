@@ -510,6 +510,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
+  "w": 800,
+  "h": 369,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
@@ -547,6 +553,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png": {
+  "w": 1280,
+  "h": 1323,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.iwate-np.co.jp/media-static/article/198453/thumbnail/sw4b0-tm6af2f0c3_862574b10.jpg": {
   "w": 1200,
   "h": 802,
@@ -572,17 +584,18 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.nc.press/news/photo/202611/630807_869863_5920.jpg": {
-  "w": 600,
-  "h": 400,
+ "https://cdn.news-report.co.kr/news/thumbnail/202611/4474_6856_614_v150.jpg": {
+  "w": 300,
+  "h": 302,
   "target": 720,
-  "v": 3
- },
- "https://cdn.news-report.co.kr/news/photo/202611/4474_6856_614.png": {
-  "w": 600,
-  "h": 604,
-  "target": 720,
-  "v": 3
+  "v": 3,
+  "blur": 0.644,
+  "local": "pics/fdbf8a14a030b4dd.webp",
+  "out": [
+   715,
+   720
+  ],
+  "why": "看不清"
  },
  "https://cdn.sacnilk.com/image/news/1000023554.jpg": {
   "w": 720,
@@ -729,6 +742,12 @@
   "w": 1500,
   "h": 844,
   "target": 720,
+  "v": 3
+ },
+ "https://comicbookmovie.com/images/articles/banners/patience-subjects---robert-downey-jr-shares-avengers-doomsday-tease-is-the-new-trailer-imminent-ab230968.jpg": {
+  "w": 1500,
+  "h": 1001,
+  "target": 1280,
   "v": 3
  },
  "https://contents.oricon.co.jp/upimg/news/2493000/2492552/20261112_223054_p_o_40402843.jpg": {
@@ -1554,12 +1573,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925610301426948504.jpg": {
-  "w": 700,
-  "h": 1050,
-  "target": 1280,
-  "v": 3
- },
  "https://img.gamewith.jp/article/thumbnail/gamearticle/18874/rectangle/65621.jpg?t=1794376432": {
   "w": 600,
   "h": 315,
@@ -1579,9 +1592,21 @@
   "target": 720,
   "v": 3
  },
+ "https://img.ltn.com.tw/Upload/3c/page/2026/11/11/261111-68230-1.jpg": {
+  "w": 1080,
+  "h": 719,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/08/5633521_3.jpg": {
   "w": 800,
   "h": 533,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/12/5638786_1.jpg": {
+  "w": 800,
+  "h": 1064,
   "target": 720,
   "v": 3
  },
@@ -1801,6 +1826,12 @@
  "https://kagit-media.atreez.cc/uploads/2026-11-03/ljq7ctjeii5y3g618urvqfj4.jpg": {
   "w": 1600,
   "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://lee.hpplus.jp/wp-content/uploads/2026/11/04/38600e3e5a2f85da5c5a7b8da08242c9.jpeg": {
+  "w": 1200,
+  "h": 628,
   "target": 1280,
   "v": 3
  },
@@ -2795,12 +2826,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/2dbe7f2bd1676e86801b0a51a5fa559c7b12c23469d6aa57fc4cbdbc162e9f0b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fftvn_sports_106%2Fbf49b2853a3d6a9d7f06fc76f5faf436.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/74f35a083cff840f66783c92d955d53956a815f17f8fc1c338e7c6d11d969191/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fa11653e42e3e266fd5750215b71c84b8.jpg": {
   "w": 1200,
   "h": 1819,
@@ -3497,6 +3522,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.-_KoB2mdtFbZ59cvsReglw&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.-_audigmb88duwA9M5AR1g&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -3535,12 +3566,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.7RsNbnX8xTPc33yypP4iqA&pid=News&w=1000": {
-  "w": 700,
-  "h": 394,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.9iIAHxV-J7IzHcFwzOJI2Q&pid=News&w=800": {
   "w": 700,
@@ -3665,12 +3690,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
-  "w": 700,
-  "h": 322,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3721,9 +3740,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.eqtTE4TLmWqEmaIkY47Y6g&pid=News&w=773": {
-  "w": 676,
-  "h": 700,
+ "https://www.bing.com/th?id=ONUT.eGfHouee1vdxkk30h2z1BA&pid=News&w=1024": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3740,12 +3759,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.mSRgEXP9xOJgO4sM674NZA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ngUXI6sspb5iI2S9P9dEXw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3784,12 +3797,6 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.s2W8AvAIH_oFfZyHQqnVgA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.uXDhAOP8FEy3MsLaCvwopg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
