@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-13T22:35:24+00:00",
+ "changed": true,
+ "checked": "2026-11-13T23:17:43+00:00",
  "fired": {
   "at": "2026-11-13T22:35:24+00:00",
   "results": {
@@ -48,7 +48,6 @@
    "items": [
     "A2O LITE",
     "BLEACH Mirrors High",
-    "FROM",
     "ILLIT",
     "MMORPG 新作",
     "Vaundy",
@@ -61,21 +60,19 @@
     "滑雪",
     "绝区零"
    ],
-   "last_batch": "2026-11-13T21:50:34+00:00",
+   "last_batch": "2026-11-13T22:42:42+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 150,
+   "prog": 151,
    "prog_day": "2026-11-14",
-   "ripe": [
-    "FROM"
-   ],
-   "sig": "1b4112b41d09",
+   "ripe": [],
+   "sig": "49bfae746232",
    "token_cap": 1000000,
-   "tokens_today": 154884,
-   "why": "整理待ちの記事 18 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 206215,
+   "why": "整理待ちの記事 17 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -176,12 +173,12 @@
    "runs": 14
   },
   "2026-11-14": {
-   "batches": 17,
-   "cr": 6849169,
-   "cw": 130723,
-   "in": 178,
-   "out": 23983,
-   "runs": 2
+   "batches": 18,
+   "cr": 7845669,
+   "cw": 179088,
+   "in": 209,
+   "out": 26918,
+   "runs": 3
   }
  }
 }
