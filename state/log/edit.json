@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-11T05:42:35+00:00",
-"text": "2026-11-11 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、ILLIT、dota2、あつ森 ほか 4（10 版面・21 本・残り 7 版面） · token 新規入力 4.9万・キャッシュ読み 112.0万・出力 5,164",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.52,
-"mem_total": 16867414016,
-"mem_free": 15868203008,
-"disk_used": 10103025664,
-"disk_free": 31180509184,
-"disk_total": 41283534848,
-"peak": 461463552
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"ILLIT",
-"dota2",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"日本顶级网球赛事",
-"漫威电影"
-],
-"stories": 21,
-"left": 7,
-"edited": 17,
-"run": null,
-"tok": {
-"in": 32,
-"cw": 48626,
-"cr": 1119601,
-"out": 5164,
-"calls": 17,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1173423
-},
-{
 "at": "2026-11-11T05:46:53+00:00",
 "text": "2026-11-11 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、dota2 ほか 5（11 版面・26 本・残り 6 版面） · token 新規入力 5.1万・キャッシュ読み 127.5万・出力 5,846",
 "level": "ok",
@@ -2244,5 +2203,37 @@
 "calls": 20,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-13T14:31:35+00:00",
+"text": "2026-11-13 第 1 バッチを出刊：Astrae Oratio（1 版面・2 本・残り 1 版面） · token 新規入力 4.1万・キャッシュ読み 52.7万・出力 1,626",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.65,
+"mem_total": 16867405824,
+"mem_free": 15951343616,
+"disk_used": 10098638848,
+"disk_free": 31184896000,
+"disk_total": 41283534848,
+"peak": 349822976
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio"
+],
+"stories": 2,
+"left": 1,
+"edited": 23,
+"run": 1794579745.5223403,
+"tok": {
+"in": 17,
+"cw": 40945,
+"cr": 527223,
+"out": 1626,
+"calls": 9,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 569811
 }
 ]
