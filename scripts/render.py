@@ -210,6 +210,7 @@ button{font-family:inherit}
 .mgrid.one .wall>.wc b{-webkit-line-clamp:unset;display:block;overflow:visible}  /* 壁の組み方が高さを決めるので、見出しは「…」で切らない（2026-11-09） */
 .mgrid.one{grid-template-columns:minmax(0,1fr)}.wall>.fside{align-self:start;min-width:0}  /* PC：右の列は壁の升目の右上（FIT_JS の wall()）。下にもカードが入る（2026-11-09） */
 .mgrid .wc{justify-content:flex-start}
+.mgrid .wall>.wc.ban{display:flex;flex-direction:column;gap:8px;justify-content:flex-start}.mgrid .wall>.wc.ban>.pic{flex:none;width:100%!important;height:auto!important;margin:0}.mgrid .wall>.wc.ban>.pic img:not(.bg):not(.ico){object-fit:cover}  /* 壁の小さい形 ③：横長の写真を上・字を下（枠は写真の形。FIT_JS cmpForm）。普通のカードと同じ flex を書く（2026-11-13） */
 .mgrid .wall>.wc.cmp{display:grid;grid-template-columns:46% minmax(0,1fr);column-gap:12px;row-gap:6px;align-content:start;grid-auto-rows:min-content}.mgrid .wall>.wc.cmp>.pic{grid-column:1;grid-row:1/span 9;align-self:start;width:auto!important;height:auto!important;aspect-ratio:4/3!important;margin:0}.mgrid .wall>.wc.cmp>*:not(.pic):not(.lk){grid-column:2;min-width:0}.mgrid .wall>.wc.cmp>.pic img:not(.bg):not(.ico){object-fit:cover}  /* 列の下に入りきらないカードは写真左・字右の小さい形で（2026-11-09 店長：ほかの注目ニュースは画面の下まで） */
 .fside>:last-child{flex:1;display:flex;flex-direction:column}.fside>.swish:has(.sempty){flex:none}.fside:has(.sempty)>.agenda{flex:1 1 auto;display:flex;flex-direction:column}.fside:has(.sempty)>.agenda>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}
 /* 写真が開けず字だけになったカードは、同じ所に写真のあるカードがあれば出さない（2026-11-08 店長「我一定要图」） */
@@ -1858,8 +1859,11 @@ SHUFFLE_JS = """
     const lo = Math.max(72, w0 * 0.55), hi = w0 * 1.1;
     const search = () => { let a = lo, b = hi; if (apply(lo) > T) return false; if (apply(hi) <= T) return true;
       for (let i = 0; i < 14; i++) { const m = (a + b) / 2; if (apply(m) <= T) a = m; else b = m; } apply(a); return true; };
-    if (search()) return; showRow(true, false); if (search()) return; showRow(false); if (search()) return;
-    if (big && sm.length >= 3) { showFlat(true); showRow(true); if (search()) return; showRow(true, false); if (search()) return; showRow(false); if (search()) return; }
+    // 大きい 1 枚の写真が、2 段分の高さの枠を帯なしで埋められない（切れない写真で上下・左右に帯が出る。2026-11-13 1440 で上下 190px）なら、大きい 1 枚をやめて横 1 列（④ 普通の形）
+    const bigBad = () => { if (!bigPic || flat || !window.WLcanFill) return false; const im = bigPic.querySelector('img:not(.bg):not(.ico)'), r = bigPic.getBoundingClientRect(); return !!(im && im.naturalWidth && r.height && !window.WLcanFill(im, r.width / r.height)); };
+    const ok = () => search() && !bigBad();
+    if (ok()) return; showRow(true, false); if (ok()) return; showRow(false); if (ok()) return;
+    if (big && sm.length >= 3) { showFlat(true); setTimeout(() => dispatchEvent(new Event('resize')), 0); showRow(true); if (search()) return; showRow(true, false); if (search()) return; showRow(false); if (search()) return; }   // 枠が変わった写真を合わせ直す（fitPk は自分で起こした resize では動かない）
     apply(lo);
   };
   let rt;
@@ -4214,6 +4218,7 @@ FIT_JS = """
   const clamped = c => [...c.querySelectorAll('h2, h3')].some(h => h.scrollHeight > h.clientHeight + 2);   // 見出しが「…」で切れる形は使わない（2026-11-08 店長：文字が欠ける）
   const natOf = img => { const b = img._bands; return img.naturalWidth * (b ? 1 - b.l - b.r : 1) / (img.naturalHeight * (b ? 1 - b.t - b.b : 1)); };
   const okRatio = (img, r) => Math.abs(Math.log(r)) < 0.08 || (!img._bands && cropAt(img, r));   // 帯を外す写真は切らない（形を合わせるだけ）
+  window.WLcanFill = (img, fr) => okRatio(img, natOf(img) / fr);   // 枠（幅÷高さ fr）を帯なしで埋められるか（気になるかもの大きい 1 枚：SHUFFLE_JS fitPk）
   // 形を当てる：f = {k, s（何列分）, pw（R の枠の幅）, w（S の枠の幅）, ph（枠の高さ）}
   const boardForm = (c, f) => {
     if (keepForm(c)) { c.style.gridColumn = c.style.gridRow = ''; const p = c.querySelector(':scope > .pic'); if (f.k === 'D' && p) p.style.setProperty('--ar', (f.w / f.ph).toFixed(4)); return; }   // duo：枠の高さだけ変える（中の 2 つは ResizeObserver が置き直す）
@@ -4258,6 +4263,7 @@ FIT_JS = """
     const bar = sec ? parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0 : 0;   // 上の固定の帯（≤1000）：画面は帯の下だけ・吸着もその下
     const budget = Math.max(160, ((window.WLvh || innerHeight) - bar) * ((sec && +sec.dataset.vh) || 70) / 100 - bar - over - 16 - Math.max(0, ((sec && +sec.dataset.embov) || 0) - 18)), H = c => c.getBoundingClientRect().height;   // 小元素の分だけ下がって吸着する（E4）   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
     const fixed = c => { boardBase(c); const h = H(c); return {k: 'N', s: 1, lo: 0, hi: 0, h: () => h, a: () => 0}; };
+    const fillN = sec ? sec.querySelectorAll('details.pend li:not(.more)').length + [...sec.querySelectorAll('details.older article.card')].filter(c => c.querySelector('a.lk[href]') && c.querySelector('h3,h2')).length : 0;   // 字の下・列の下を埋める見出しの数
     const measure = (c, i, k) => {
       const o = [], p = c.querySelector(':scope > .pic'), img = p && img0(p);
       if (img && !img.naturalWidth && !img._fbw) { img._fbw = 1; img.addEventListener('load', () => spans(), {once: true}); }   // 届いたら組み直す
@@ -4270,20 +4276,23 @@ FIT_JS = """
       if (!p || !img || !img.naturalWidth || keepForm(c)) return [fixed(c)];
       const nat = natOf(img), W = c.clientWidth;
       boardBase(c); const pw0 = p.getBoundingClientRect().width;
+      // 写真を左・字を右（R）の形は、写真の高さ＝字の列の高さのときだけ（2026-11-13 店長：版面のカードの字の下が空く。審美基準 A1・A5）。決め方の順は壁の小さい形（cmpForm）と同じ：
+      // ① 切ってよい写真（主役・文字が欠けない）は枠を字の列の高さに切る（R0 いつもの幅・R1 4 割）
+      // ② 切れない写真は、枠の幅を「字の列の高さ × 写真の比率」に変えて高さを合わせる（Rn。幅を変えると字の列の高さも変わるので測り直す）
+      // ③ どちらも合わなければ R は出さない：写真を上（S）か ④ 普通の形が受ける。字の下を空けた R・写真を伸ばして字より高くする R は作らない
       for (const [kk, pw] of [['R0', pw0], ['R1', Math.round(W * 0.42)]]) {
-        const r = phRange(img, pw, Math.max(48, pw / 2.2), pw / 0.5); if (!r) continue;
         boardForm(c, {k: kk, s: 1, pw, ph: 20}); const ht = H(c); if (clamped(c)) continue;
-        boardForm(c, {k: kk, s: 1, pw, ph: 600}); const pad = H(c) - 600;
-        if (ht - pad > r[1] + 2) continue;   // 字の列のほうが高い：CSS が枠を字の高さまで伸ばし、写真が欠ける形になる
-        const lo = Math.min(r[1], Math.max(r[0], ht - pad));   // 写真は字の列の高さより低くしない（写真の下を空けない）
-        o.push({k: kk, s: 1, pw, lo, hi: r[1], h: ph => Math.max(ht, ph + pad), a: ph => pw * Math.max(ph, ht - pad), b: ph => Math.max(0, ph - (ht - pad)) * (W - pw)});   // b：写真が字より高いときの字の下の空き（面積）
+        const th = p.getBoundingClientRect().height;   // 枠は字の列の高さまで伸びる（CSS）＝字の列の高さ
+        boardForm(c, {k: kk, s: 1, pw, ph: th}); const hh = H(c);
+        const ok = th >= Math.max(48, pw / 2.2) && th <= pw / 0.5 && okRatio(img, nat / (pw / th));
+        img.style.objectPosition = ''; delete img.dataset.keep;
+        if (ok && hh <= ht + 2) o.push({k: kk, s: 1, pw, lo: th, hi: th, h: () => hh, a: () => pw * th, b: () => 0});
       }
-      // Rn：枠の幅を「字の列の高さ × 写真の比率」に合わせる（切れない写真も切らずに左に置ける。高さは字の列で決まる）
       { let pw = Math.min(Math.round(W * 0.5), Math.max(64, Math.round(100 * nat))), th = 0;
         for (let q = 0; q < 4; q++) { boardForm(c, {k: 'Rn', s: 1, pw, ph: 20}); th = p.getBoundingClientRect().height; pw = Math.min(Math.round(W * 0.5), Math.max(64, Math.round(th * nat))); }
-        // 枠は写真の比率ぴったり（切らない）。字の列が少し低ければ、その分は字の下の空き（b）として数える
-        const ph = pw / nat; boardForm(c, {k: 'Rn', s: 1, pw, ph}); const fr = p.getBoundingClientRect().height, hh = H(c);
-        if (fr <= ph * 1.04 && !clamped(c)) o.push({k: 'Rn', s: 1, pw, lo: ph, hi: ph, h: () => hh, a: () => pw * ph, b: () => Math.max(0, ph - th) * (W - pw)}); }
+        boardForm(c, {k: 'Rn', s: 1, pw, ph: 20}); th = p.getBoundingClientRect().height;
+        const ph = pw / nat, fit0 = Math.abs(ph - th) <= 6 || okRatio(img, nat / (pw / th)); img.style.objectPosition = ''; delete img.dataset.keep;
+        if (fit0 && !clamped(c)) { const q = Math.max(th, Math.min(ph, th + 6)); boardForm(c, {k: 'Rn', s: 1, pw, ph: q}); const hh = H(c); o.push({k: 'Rn', s: 1, pw, lo: q, hi: q, h: () => hh, a: () => pw * q, b: () => Math.max(0, q - th) * (W - pw)}); } }
       // S（1 列）と W（頭の記事だけ、2 列分）：写真を上・字を下。枠の高さは切らない形の 0.45〜1.6 倍（幅の 1.35 倍まで）
       for (const s of i === 0 && k >= 2 ? [1, 2] : [1]) {
         boardForm(c, {k: s > 1 ? 'W' : 'S', s, w: 100, ph: 100}); const w = p.getBoundingClientRect().width; if (!w) continue;
@@ -4297,8 +4306,16 @@ FIT_JS = """
       // 重大：2 列分で写真を左・字を右（R2）も。大きいが高くならない（W だと写真だけで 400px になり画面に入らなかった）。写真は切らず、枠は写真の形
       if (i === 0 && c.dataset.hero && k >= 2) {
         boardForm(c, {k: 'R2', s: 2, pw: 100, ph: 20}); const W2 = c.getBoundingClientRect().width;
-        boardForm(c, {k: 'R2', s: 2, pw: Math.round(W2 * 0.5), ph: 20}); const th = H(c);   // 字の列の高さ（写真をごく低くしたとき）
-        if (W2) for (const pw0 of [W2 * 0.3, W2 * 0.36, W2 * 0.42, W2 * 0.5, W2 * 0.58, Math.min(W2 * 0.6, Math.max(W2 * 0.25, th * nat))]) { const pw = Math.round(pw0), ph = pw / nat; boardForm(c, {k: 'R2', s: 2, pw, ph}); const hh = H(c); if (!clamped(c)) o.push({k: 'R2', s: 2, pw, lo: ph, hi: ph, h: () => hh, a: () => pw * ph, b: () => Math.max(0, ph - th) * (W2 - pw)}); }   // b：写真が字より高いとき字の下に空く広さ（A5）
+        // ②：写真の高さ（幅 ÷ 比率）が字の列の高さに一番近い幅を 8px ごとに探す（字の列の高さは行の高さの段で変わるので、繰り返しの近似では合わなかった）
+        const scan = []; if (W2) for (let pw = Math.round(W2 * 0.25); pw <= W2 * 0.6; pw += 8) { boardForm(c, {k: 'R2', s: 2, pw, ph: 20}); scan.push([Math.abs(pw / nat - p.getBoundingClientRect().height), pw]); }
+        scan.sort((a, b) => a[0] - b[0]);
+        if (W2) for (const pw0 of [W2 * 0.3, W2 * 0.36, W2 * 0.42, W2 * 0.5, W2 * 0.58, ...scan.slice(0, 2).map(x => x[1])]) {
+          const pw = Math.round(pw0); boardForm(c, {k: 'R2', s: 2, pw, ph: 20}); if (clamped(c)) continue;
+          const th = p.getBoundingClientRect().height, nph = pw / nat;   // この幅での字の列の高さ
+          const cut = okRatio(img, nat / (pw / th)); img.style.objectPosition = ''; delete img.dataset.keep;
+          const ph = cut ? th : Math.abs(nph - th) <= 6 ? Math.max(th, nph) : nph - th >= 48 && fillN > 0 ? nph : 0; if (!ph) continue;   // 字の下 48px 以上は整理待ちの見出しが埋める（A6）
+          boardForm(c, {k: 'R2', s: 2, pw, ph}); const hh = H(c); o.push({k: 'R2', s: 2, pw, lo: ph, hi: ph, h: () => hh, a: () => pw * ph, b: () => (ph - th > 6 && ph - th < 48 ? (ph - th) * (W2 - pw) : 0)});
+        }
       }
       if (i === 0 && c.dataset.hero && k >= 2 && o.some(x => x.s > 1)) return o.filter(x => x.s > 1);   // 重大は 2 列分の形だけ（審美基準 C1：重大がいちばん大きい）
       return o.length ? o : [fixed(c)];
@@ -4332,6 +4349,7 @@ FIT_JS = """
         let cost = 20 * holes / (Hb * k) - 1.0 * A.reduce((s, v) => s + v, 0) / (Hb * m.clientWidth);
         if (A0 > 0) cost += 1.5 * Math.min(1, Math.max(0, AO / A0 - 1)) + 1.5 * Math.max(0, 0.22 - A0 / (Hb * m.clientWidth)) / 0.22;   // 優先は 画面に収まる（50）> 空きなし（20）> 頭が大きい   // 頭の記事の写真は版面の 2 割以上（2026-11-08 店長：頭がいちばん大きい）
         cost += 0.15 * A.filter(v => v > 0 && v < 14000).length;   // 小さすぎる写真（店長「图有点小了」）
+        for (let j = 0; j < k; j++) { const ws = ix[j].map(i => opts[i][pick[i]]).filter(f => f.s === 1 && f.k[0] === 'R').map(f => f.pw); if (ws.length > 1 && Math.max(...ws) > Math.min(...ws) * 1.12) cost += 0.3 * (ws.length - 1); }   // 同じ列の左の写真の幅がそろわない（D1）
         cost += 0.4 * (vis.length - n);   // 出さない記事 1 本ごと
         cands.push({over: Math.max(0, Hb - budget), cost, k, n, f: opts.slice(0, n).map((o, i) => ({...o[pick[i]], ph: ph[i]})), at: at.slice()});
       };
@@ -4563,10 +4581,10 @@ FIT_JS = """
       cards.forEach((c, i) => {
         const was = c.classList.contains('lead'), now = i === li;
         const p = c.querySelector('.pic'); c.classList.toggle('lead', now); if (was !== now) c.classList.remove('tall', 'nw', 'ls', 'half');
-        c.classList.remove('cmp'); if (p) { if (was && !now) unnarrow(c, p); unside(c, p); c.classList.remove('boxgrow'); p.style.aspectRatio = p.style.width = p.style.height = ''; const im = p.querySelector('img:not(.bg):not(.ico)'); if (im && im.naturalWidth) fit(im); }   // 前の候補の形（.sb・枠の比率・大きい 1 枚のときに足した字の箱と次のニュース）を残さない：同じ候補なら試す順によらず同じ高さ
+        cmpUn(c); if (p) { if (was && !now) unnarrow(c, p); unside(c, p); c.classList.remove('boxgrow'); p.style.aspectRatio = p.style.width = p.style.height = ''; const im = p.querySelector('img:not(.bg):not(.ico)'); if (im && im.naturalWidth) fit(im); }   // 前の候補の形（.sb・枠の比率・大きい 1 枚のときに足した字の箱と次のニュース）を残さない：同じ候補なら試す順によらず同じ高さ
       });
       cards.forEach((c, i) => { c._hc = Infinity; if (i === li || !okPic(c)) return; const p = c.querySelector('.pic'), im = p && p.querySelector('img:not(.bg):not(.ico)'); if (!im || !im.naturalWidth) return;
-        c.classList.add('cmp'); const r = im.naturalWidth / im.naturalHeight / (p.clientWidth / Math.max(1, p.clientHeight)); if (Math.abs(Math.log(r)) < 0.12 || (!im._bands && cropAt(im, r))) c._hc = c.offsetHeight; c.classList.remove('cmp'); fit(im); });   // 小さい形（写真左・字右）の高さ：写真の主役・字が欠けないときだけ
+        if (cmpForm(c)) c._hc = c.offsetHeight; cmpUn(c); fit(im); });   // 小さい形の高さ（cmpForm が決めた形）
     };
     // 右の列の高さ：画面の高さの 7 割まで（入らなければ欲しい物 3 件目以降 → 予定 4 件目以降 → … の順に下から隠す）
     const sideFit = () => {
@@ -4581,6 +4599,28 @@ FIT_JS = """
       const r = im.naturalWidth / im.naturalHeight / (p.clientWidth / (p.clientHeight + d)), ok = Math.abs(Math.log(r)) < 0.08 || (!im._bands && cropAt(im, r));   // 帯を外す写真（trimFit）は真ん中で合わせるので、切る位置を選べない：比率がほぼ同じときだけ（2026-11-09 キャンプの写真が空だけになった）
       if (im.dataset.m || im.dataset.k) cropAt(im, im.naturalWidth / im.naturalHeight / (p.clientWidth / p.clientHeight)); return ok; };
     const maxShrink = k => { const p = cards[k].querySelector('.pic'); if (!p) return 0; let s = 0; for (let d = 8; d <= p.clientHeight * 0.5; d += 8) { if (canGrow(k, -d)) s = d; else break; } return s; };
+    // 小さい形の作り（2026-11-13 店長：写真の下・字の下が空く。空きを小元素・作品のロゴで埋めない）。決め方の順は版面の組み方（fitBoard の R）と同じ：
+    // ① 切ってよい写真（主役・文字が欠けない）は、枠を字の列の高さに切る ② 切れない写真は、写真の列の幅を「字の列の高さ × 写真の比率」に変えて高さを合わせる
+    // ③ 合わない横長の写真は、写真を上・字を下（.ban。枠は写真の形・普通のカードと同じ flex の縦積み） ④ どれも合わなければ小さい形にしない（false：普通の形のまま）
+    // 戻すときは fit が決めた枠の比率（inline の aspect-ratio）に戻す（消すと height:auto だけ残り、枠が 0px に潰れた）
+    const cmpUn = c => { c.classList.remove('cmp', 'ban'); c.style.gridTemplateColumns = ''; const p = c.querySelector(':scope > .pic'); if (p && '_a0' in p) { p.style.removeProperty('aspect-ratio'); if (p._a0) p.style.aspectRatio = p._a0; delete p._a0; } };
+    const cmpForm = c => {
+      cmpUn(c);
+      const p = c.querySelector(':scope > .pic'), im = p && img0(p); if (!im || !im.naturalWidth) return false;
+      p._a0 = p.style.aspectRatio;
+      const nat = natOf(im), ok = r => okRatio(im, r);
+      const txh = () => { const ks = [...c.children].filter(k => k !== p && !k.matches('.lk, .wemb') && k.offsetHeight && getComputedStyle(k).position !== 'absolute'); return ks.length ? Math.max(...ks.map(k => k.getBoundingClientRect().bottom)) - Math.min(...ks.map(k => k.getBoundingClientRect().top)) : 0; };
+      const set = (pw, th) => { p.style.setProperty('aspect-ratio', (pw / th).toFixed(4), 'important'); ok(nat / (pw / th)); return true; };
+      c.classList.add('cmp');
+      let th = txh(), pw = p.getBoundingClientRect().width;
+      if (th >= 48 && ok(nat / (pw / th))) return set(pw, th);   // ①
+      const cw = c.clientWidth - (parseFloat(getComputedStyle(c).paddingLeft) || 0) - (parseFloat(getComputedStyle(c).paddingRight) || 0) - 12;
+      for (let q = 0; q < 4 && th >= 48; q++) { pw = Math.round(Math.min(cw * 0.6, Math.max(cw * 0.3, th * nat))); c.style.gridTemplateColumns = pw + 'px minmax(0,1fr)'; th = txh(); }
+      if (th >= 48 && ok(nat / (pw / th))) return set(pw, th);   // ②
+      cmpUn(c); im.style.objectPosition = ''; delete im.dataset.keep;
+      if (nat >= 1.25) { c.classList.add('ban'); p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); return true; }   // ③
+      return false;   // ④
+    };
     const plan = (cols, ord, sH) => {
       const H = cards.map(c => c.offsetHeight), span = cards.map(c => (c.classList.contains('lead') && !c.classList.contains('tall') && cols >= 3) ? 2 : 1);
       const bot = Array(cols).fill(0), col = Array(cols).fill(0).map(() => []), put = [];
@@ -4633,7 +4673,7 @@ FIT_JS = """
     setup(pick.n, pick.li, true);
     const cols = pick.n, sH = Math.round(sideFit()), chosen = plan(cols, pick.ord, sH); if (!chosen) return;
     const {best, H, span} = chosen, sm = k => best.cmp[k];
-    cards.forEach((c, i) => { if (sm(i)) { c.classList.add('cmp'); H[i] = c.offsetHeight; const p = c.querySelector('.pic'), im = p && p.querySelector('img:not(.bg):not(.ico)'); if (im) cropAt(im, im.naturalWidth / im.naturalHeight / (p.clientWidth / Math.max(1, p.clientHeight))); } });
+    cards.forEach((c, i) => { if (sm(i)) { const p = c.querySelector('.pic'); if (p) unside(c, p); cmpForm(c); H[i] = c.offsetHeight; } });
     cards.forEach((c, i) => { c.hidden = !best.ord.includes(i); });
     if (window.WL_FB_DEBUG) window.WL_WALL = {T, cols, sH, W: best.W, cost: pick.cost, li: pick.li, ord: best.ord, H: best.ord.map(i => H[i]), bot: best.bot};
     // 置く：列ごとの底の差を、その列の（大きい 1 枚でない・文字のない）カードの写真枠に等分して足す
