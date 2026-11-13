@@ -319,12 +319,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.games.gg/gta_6_xbox_one_cloud_gaming_launch_og_f87c169d16_8f13b9b481.webp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://assets.hldycdn.com/70c46b9e-351c-4136-9513-f0aacbdfee08.jpeg": {
   "w": 1950,
   "h": 1283,
@@ -527,6 +521,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
+  "w": 800,
+  "h": 369,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
@@ -601,11 +601,18 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.news-report.co.kr/news/photo/202611/4474_6856_614.png": {
-  "w": 600,
-  "h": 604,
+ "https://cdn.news-report.co.kr/news/thumbnail/202611/4474_6856_614_v150.jpg": {
+  "w": 300,
+  "h": 302,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "blur": 0.644,
+  "local": "pics/fdbf8a14a030b4dd.webp",
+  "out": [
+   715,
+   720
+  ],
+  "why": "看不清"
  },
  "https://cdn.sacnilk.com/image/news/1000023554.jpg": {
   "w": 720,
@@ -659,6 +666,12 @@
  "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-11-06/dc4546ad-121a-47fa-911b-8a19daab33a4.jpg": {
   "w": 1200,
   "h": 1800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn0.techbang.com/system/excerpt_images/134725/original/8f5fb798c488b92f60b52ed4740fa865.jpg?1794480473": {
+  "w": 1200,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -3750,12 +3763,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
-  "w": 700,
-  "h": 322,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
   "w": 700,

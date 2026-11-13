@@ -1,10 +1,10 @@
 {
- "admin": "b2fd8ca19319",
- "admin-ai": "dca92f7e898a",
+ "admin": "9cac72ceef2c",
+ "admin-ai": "ee879b4d933b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "bcb1e2c0"
+   "34a3f23c"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "537a241dc174",
+ "admin-emblem": "4909358f7394",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "802c150e"
+   "3efe322a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "d5ef38a70155",
+ "admin-now": "aa911e584ccb",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "832f456d"
+   "cd76be93"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "f4541b86"
   ]
  },
- "admin-system": "fca7e42c9a26",
+ "admin-system": "a3645fd2f3b8",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "af279451"
+   "daebd076"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2543347b"
+   "0d351524"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "ceab907f"
   ]
  },
- "index": "e2f91b8f3252",
+ "index": "1dd416725dc4",
  "index_marks": {
   "front": [
    "トップ",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "68cab3e8"
+   "34c61a85"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "658d7458"
+   "7aa8320c"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "6f4b7b0b"
+   "550a3464"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "5afcd40e"
   ]
  },
- "updated": "11.13 16:47",
+ "updated": "11.13 16:55",
  "wishlist": "4b8cdabf0a16"
 }
