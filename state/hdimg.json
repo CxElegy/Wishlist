@@ -820,7 +820,7 @@
  "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/13085550/pet-prt-175270-5-1-261113005546608.jpeg": {
   "w": 1000,
   "h": 1000,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://d17gj49471obkc.cloudfront.net/kyodopress_cms/wp-content/uploads/2026/11/kyd_4048751_main-7-scaled-e1794374164954-430x538.jpg": {
@@ -1455,6 +1455,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2har4k.img": {
+  "w": 1280,
+  "h": 1071,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
   "w": 1000,
   "h": 666,
@@ -1977,12 +1983,31 @@
  "https://news.walkerplus.com/article/1006802/10051184_615.jpg": {
   "w": 615,
   "h": 453,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.486,
+  "local": "pics/7359aa46cc6c946d.webp",
+  "out": [
+   1280,
+   943
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/1007171/10055615_615.jpg": {
+  "w": 615,
+  "h": 517,
   "target": 720,
   "v": 3
  },
  "https://news.walkerplus.com/article/1018080/10157455_615.jpg": {
   "w": 615,
   "h": 435,
+  "target": 720,
+  "v": 3
+ },
+ "https://news.walkerplus.com/article/1023819/10211254_615.jpg": {
+  "w": 615,
+  "h": 346,
   "target": 720,
   "v": 3
  },
@@ -2165,6 +2190,12 @@
    833
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/40701/210689_615.jpg": {
+  "w": 615,
+  "h": 409,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/49841/268597_615.jpg": {
   "w": 615,
@@ -2878,13 +2909,13 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/2c6c0efebb3ad716b7357589336c7a465e3d1fe750e67a2efa735be60cc0fa35/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Foregonlive_com_articles_764%2F0363e238be9a9f96f137e8c6b44b6a23.jpg": {
+ "https://s.yimg.com/lo/mysterio/api/367e8e4a5c621b1dc1d32137082f819f3e1886329e86e54e9e2e09e69c87a45c/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2Fa54c86bdc5175eba3e94a275a78852a3.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/367e8e4a5c621b1dc1d32137082f819f3e1886329e86e54e9e2e09e69c87a45c/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2Fa54c86bdc5175eba3e94a275a78852a3.jpg": {
+ "https://s.yimg.com/lo/mysterio/api/83baa46f8eab170e2e2619fd4be6d1b3a946eebe1fa5d802a9218ba7360abbca/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmlive_com_articles_368%2Fb38dd26d671101e32df1e82392404b58.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3735,6 +3766,12 @@
  "https://www.bing.com/th?id=ONUT.if7PjIjrIEYNee0BpacpMA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.mSRgEXP9xOJgO4sM674NZA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },

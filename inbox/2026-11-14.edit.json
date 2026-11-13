@@ -75,7 +75,9 @@
   "哈利波特剧集": 2,
   "日本顶级网球赛事": 2,
   "The Mandalorian": 1,
-  "gelato pique": 1
+  "gelato pique": 1,
+  "あつ森": 3,
+  "猫用品": 3
  },
  "漫威电影": [
   {
@@ -325,6 +327,68 @@
     "time": "12:00",
     "place": "楽天ファッション"
    }
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "【編集部が体験】話題の「あつ森」マイデザインで歴代仮面ライダーを作ってみた！",
+   "highlight": "歴代仮面ライダー",
+   "blurb": "「あつ森」のマイデザインで歴代仮面ライダーを再現する編集部体験レポート。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "「あつ森」で卒業式！「はんなんだいがく島」に行ってみたら学生時代のノスタルジーが満載だった",
+   "highlight": "はんなんだいがく島",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "『あつ森』で再現した神田明神が神社界をざわつかせた？",
+   "highlight": "神田明神",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "貓用品福袋來了 Catis首度推4款福袋 11/20樂天黑色星期五開賣",
+   "highlight": "11/20",
+   "blurb": "Catis首度推出4款貓用品福袋，11/20樂天黑色星期五開賣。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-20",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "A cat mom shares which 3 Walmart cat trees are worth the hype — all under $90 with free shipping",
+   "highlight": "under $90",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "ペットイベント「インターペット」でわんにゃんWalker表紙パネル展を開催中",
+   "highlight": "インターペット",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ]
 }
