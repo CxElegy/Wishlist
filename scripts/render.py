@@ -782,6 +782,8 @@ section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24
  .nav .mtabs a.on{opacity:1;box-shadow:3px 3px 0 var(--gold)}
  .nav .rail{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 16px;border-top:1px solid rgba(251,248,241,.18)}
  .nav:not(.insec) .rail{display:none}
+ .nav .rail{position:absolute;left:0;right:0;top:100%;background:var(--ink)}   /* 作品の段は帯の下に重ねる（流れの外）：版面に入って段が出ても、下の全部を押し下げない（審美基準 F5。前は 46px ずれた）。吸着の余白・版面の予算は --bar-full で段の分を取る */
+ .nav.insec .bar{bottom:calc(var(--bar-tabs) - var(--bar-full))}   /* 進み具合の線は作品の段の下の端に */
  .nav .nslot{display:none}
  .nav .nslot.cur,.nav .nbody{display:contents}
  .nav .nsec,.nav .nsubs,.nav .nlab,.nav .nmore{display:none!important}
@@ -5164,7 +5166,7 @@ NAV_JS = """
     if (!wide.matches && getComputedStyle(nav).position === 'sticky') {
       const had = nav.classList.contains('insec'), top = parseFloat(getComputedStyle(nav).top) || 0, rs = [...rail.querySelectorAll('.nslot')], cur = rs.find(s => s.classList.contains('cur'));
       nav.classList.remove('insec'); tb = top + nav.getBoundingClientRect().height;
-      nav.classList.add('insec'); if (!cur && rs[0]) rs[0].classList.add('cur'); fl = top + nav.getBoundingClientRect().height;   // 作品の段が空でも 1 つ入れて測る
+      nav.classList.add('insec'); if (!cur && rs[0]) rs[0].classList.add('cur'); fl = tb + rail.getBoundingClientRect().height;   // 作品の段が空でも 1 つ入れて測る。段は帯の下に重ねてある（流れの外・F5）ので帯＋段の高さ
       if (!cur && rs[0]) rs[0].classList.remove('cur'); nav.classList.toggle('insec', had);
     }
     const now = [Math.ceil(tb) + 'px', Math.ceil(fl) + 'px'];
