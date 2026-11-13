@@ -4357,7 +4357,7 @@ FIT_JS = """
         cost += 0.15 * A.filter(v => v > 0 && v < 14000).length;   // 小さすぎる写真（店長「图有点小了」）
         for (let j = 0; j < k; j++) { const ws = ix[j].map(i => opts[i][pick[i]]).filter(f => f.s === 1 && f.k[0] === 'R').map(f => f.pw); if (ws.length > 1 && Math.max(...ws) > Math.min(...ws) * 1.12) cost += 0.3 * (ws.length - 1); }   // 同じ列の左の写真の幅がそろわない（D1）
         cost += 0.4 * (vis.length - n);   // 出さない記事 1 本ごと
-        if (opts[0][pick[0]].hs) cost += 1.5;   // 重大を 1 列の形にするのは、2 列分の形が画面に入らないときだけ（審美基準 C1 と F1。2026-11-13 1024×768：狭い版面で 2 列分の重大は画面に入らなかった）
+        if (opts[0][pick[0]].hs) cost += 1.5 + (AO > 0.8 * A0 ? 1.5 : 0);   // 1 列の重大は、ほかの写真より 2 割以上大きい組を先に（C1：同じ大きさの 2 枚に見えない）   // 重大を 1 列の形にするのは、2 列分の形が画面に入らないときだけ（審美基準 C1 と F1。2026-11-13 1024×768：狭い版面で 2 列分の重大は画面に入らなかった）
         cands.push({over: Math.max(0, Hb + gap - lim), overS: Math.max(0, Hb + gap - scr), cost, k, n, f: opts.slice(0, n).map((o, i) => ({...o[pick[i]], ph: ph[i]})), at: at.slice()});
       };
       const walk = i => { if (i >= N8) return score(); for (let q = 0; q < opts[i].length; q++) { pick[i] = q; walk(i + 1); } };

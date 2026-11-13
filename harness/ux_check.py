@@ -198,6 +198,11 @@ if(innerWidth>760){const kidsOf=(c,p)=>[...c.children].filter(k=>k!==p&&!k.match
   const beside=ks.some(k=>k.getBoundingClientRect().left>=pr.right-2),wrap=ks.some(k=>k.getBoundingClientRect().left<pr.right-2&&k.getBoundingClientRect().bottom>pr.bottom+4),d=beside&&!wrap?Math.abs(pr.bottom-tb):cr.bottom-pb-Math.max(tb,pr.bottom);   // 字が写真の下へ回り込む形（F2）は、写真の下を字が埋めるのでカードの底と字の底の差
   if(d>24){out.cmpGap++;out.cmpEg.length<4&&out.cmpEg.push(((c.closest('section.sec')||{dataset:{}}).dataset.k||'壁').slice(0,12)+' '+Math.round(d)+'px')}});
  out.cmpEmb=document.querySelectorAll('.mgrid .wall>.wc>.wemb').length}
+// 2026-11-13 見出しの切れ（審美基準 D3）：見えている版面のカード・頭の記事・壁のカード・気になるかもの見出しで、中身が箱より高い（line-clamp・overflow で隠れる）か横に「…」で切れているものを clip に数える。上限 0
+out.clip=0;out.clipEg=[];
+document.querySelectorAll('section.sec .grid article.card h2,section.sec .grid article.card h3,.mgrid .wall>.wc b,.pk b').forEach(h=>{if(!vis(h)||h.closest('details:not([open])'))return;const c=h.closest('article,.wc,.pk');if(c&&getComputedStyle(c).display==='none')return;
+ const cs=getComputedStyle(h),cut=h.scrollHeight>h.clientHeight+2&&cs.overflow!=='visible'||cs.textOverflow==='ellipsis'&&h.scrollWidth>h.clientWidth+1;
+ if(cut){out.clip++;out.clipEg.length<4&&out.clipEg.push(((h.closest('section.sec')||{dataset:{}}).dataset.k||'壁').slice(0,12)+' '+h.textContent.trim().slice(0,14))}});
 return out}"""
 
 
@@ -425,6 +430,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"記事の並びに空きがある：{hole['gridHole']} 並び（測った並び 過去のニュース {hole['older']}・mason 外 {hole['noMas']}） " + "・".join(hole["gridEg"]))
     if hole.get("cmpGap") or hole.get("cmpEmb"):   # 2026-11-13 PC の小さい形・版面のカード：写真と字の底の差・字の下が 24px 超／空きに小元素を置いた壁のカード
         bad.append(f"小さい形・版面のカードが空いている：{hole['cmpGap']} / {hole['cmpN']} 枚・空きの小元素 {hole['cmpEmb']} " + "・".join(hole["cmpEg"]))
+    if hole.get("clip"):   # 2026-11-13 見出しが line-clamp・「…」で切れる（D3）
+        bad.append(f"見出しが切れている：{hole['clip']} " + "・".join(hole["clipEg"]))
     if hole.get("sideGap"):   # 2026-11-06 スマホの左写真カード：写真の下（日程・価格の行を除く）が 24px 超空いている
         bad.append(f"左写真のカードの写真の下が空いている：{hole['sideGap']} / {hole['sideN']} 枚 " + "・".join(hole["sideEg"]))
     if hole["wc"]:   # 同じく：ほかの注目ニュースの壁のカードは中身で高さが決まる（1 枚でも枠の 30% 超・70px 超が空いたら ✗）
