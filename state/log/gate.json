@@ -1,31 +1,5 @@
 [
 {
-"at": "2026-11-12T21:21:12+00:00",
-"text": "Claude を起こした：AI 編集",
-"level": "ok",
-"results": {
-"edit": "Claude を起こした",
-"photos": "仕事なし（起こさない）"
-}
-},
-{
-"at": "2026-11-12T22:17:27+00:00",
-"text": "ライブラリの控えの時計：最後のライブラリの回から 110 分（定時が抜けた）→ ライブラリ（お客さまの版面）を起こす・起こせなかった：could not create workflow dispatch event: HTTP 500 (https://api.github.com/repos/CxElegy/Wishlist/actions/workflows/3945",
-"level": "error",
-"library_kick": false,
-"kick_err": "could not create workflow dispatch event: HTTP 500 (https://api.github.com/repos/CxElegy/Wishlist/actions/workflows/3945"
-},
-{
-"at": "2026-11-12T22:17:51+00:00",
-"text": "判断：emblem あり（足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）） · edit あり（整理待ちの記事 115 件（22 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）） · photos なし（受付の写真なし）",
-"level": "info",
-"jobs": {
-"emblem": true,
-"edit": true,
-"photos": false
-}
-},
-{
 "at": "2026-11-12T22:30:21+00:00",
 "text": "判断：emblem なし（失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）） · edit あり（整理待ちの記事 115 件（22 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
 "level": "info",
@@ -517,6 +491,32 @@
 "results": {
 "edit": "Claude を起こした",
 "photos": "仕事なし（起こさない）"
+}
+},
+{
+"at": "2026-11-13T22:17:27+00:00",
+"text": "ライブラリの控えの時計：最後のライブラリの回から 234 分（定時が抜けた）→ ライブラリ（お客さまの版面）を起こす",
+"level": "warn",
+"library_kick": true
+},
+{
+"at": "2026-11-13T22:17:42+00:00",
+"text": "判断：emblem あり（足りない 11 版面（Actions で Python が埋める）・失敗 4 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）） · edit あり（整理待ちの記事 18 件（14 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": true,
+"edit": true,
+"photos": false
+}
+},
+{
+"at": "2026-11-13T22:32:12+00:00",
+"text": "判断：emblem なし（失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）） · edit あり（整理待ちの記事 18 件（14 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": false,
+"edit": true,
+"photos": false
 }
 }
 ]
