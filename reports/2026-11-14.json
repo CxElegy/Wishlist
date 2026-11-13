@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "8314eab582c4",
+ "edit_sig": "00a129a319b2",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -420,17 +420,25 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "ジェラートピケの福袋「HAPPY BOX 2027」に落選しても、次は11月20日12時から楽天ファッションで先着販売がある。",
      "date": "2026-11-12",
-     "n": 1,
-     "source": "note",
-     "title": "ジェラピケ福袋2027、落選したら？次は11月20日12時の楽天ファッション先着販売",
-     "url": "https://note.com/fine_jacana739/n/n1f2fc5091c97"
+     "event": {
+      "date": "2026-11-20",
+      "label": "先着販売",
+      "place": "楽天ファッション",
+      "time": "12:00"
+     },
+     "headline": "ジェラピケ福袋2027、落選したら？次は11月20日12時の楽天ファッション先着販売",
+     "highlight": "11月20日12時",
+     "image": "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png",
+     "image_via": "og:image",
+     "url": "https://note.com/fine_jacana739/n/n1f2fc5091c97",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",

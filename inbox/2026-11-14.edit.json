@@ -69,7 +69,8 @@
   "チェーンソーマン": 2,
   "哈利波特剧集": 2,
   "日本顶级网球赛事": 2,
-  "The Mandalorian": 1
+  "The Mandalorian": 1,
+  "gelato pique": 1
  },
  "漫威电影": [
   {
@@ -301,5 +302,22 @@
    ]
   }
  ],
- "The Mandalorian": []
+ "The Mandalorian": [],
+ "gelato pique": [
+  {
+   "headline": "ジェラピケ福袋2027、落選したら？次は11月20日12時の楽天ファッション先着販売",
+   "highlight": "11月20日12時",
+   "blurb": "ジェラートピケの福袋「HAPPY BOX 2027」に落選しても、次は11月20日12時から楽天ファッションで先着販売がある。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-11-20",
+    "label": "先着販売",
+    "time": "12:00",
+    "place": "楽天ファッション"
+   }
+  }
+ ]
 }
