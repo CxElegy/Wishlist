@@ -194,7 +194,7 @@ class Layout(unittest.TestCase):
 
     def test_shop_settings_unchanged(self):
         s = render.render_settings([{"name": "あつ森", "section": "游戏", "size": "M"}], {"url": "u", "key": "k"}, "x")
-        for w in ("additem.js", "新增关注项", 'lang="zh-CN"', "删除这个板块"):
+        for w in ("additem.js", "追いかけるものを足す", 'lang="ja"', "このジャンルを削除"):
             self.assertIn(w, s)
         self.assertNotIn('"own": true', s)
 

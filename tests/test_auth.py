@@ -248,7 +248,7 @@ class PyWording(unittest.TestCase):
     def test_first_board_and_also_come_from_table(self):
         import user_pages
         self.assertEqual(user_pages.FIRST_BOARD, render.SETTINGS_JA["first_board"])
-        for T in (render.SETTINGS_ZH, render.SETTINGS_JA):
+        for T in (render.SETTINGS_OWNER, render.SETTINGS_JA):
             self.assertIn("{}", T["also"])
 
     def test_settings_tables_have_same_keys(self):
@@ -256,10 +256,10 @@ class PyWording(unittest.TestCase):
         import inspect
         used = set(re.findall(r'T\["(\w+)"\]', inspect.getsource(render.render_settings)))
         own_only = {"out", "out_aria"}   # 「外す」は本人の設定ページ（日本語の表）だけ
-        for name, T in (("ZH", render.SETTINGS_ZH), ("JA", render.SETTINGS_JA)):
+        for name, T in (("ZH", render.SETTINGS_OWNER), ("JA", render.SETTINGS_JA)):
             self.assertEqual(used - own_only - set(T), set(), name)
         self.assertEqual(own_only - set(render.SETTINGS_JA), set())
-        self.assertEqual(set(render.SETTINGS_ZH) - set(render.SETTINGS_JA), set())   # 店長の表の鍵は本人の表にもある
+        self.assertEqual(set(render.SETTINGS_OWNER) - set(render.SETTINGS_JA), set())   # 店長の表の鍵は本人の表にもある
 
     def test_table_keys_exist(self):
         for k in ("none_hint", "pick", "start_h", "start_p", "none_status", "collecting", "out", "out_aria", "other"):
