@@ -28,7 +28,6 @@
   "https://m.hupu.com/bbs/643888011.html": "https://i1.hoopchina.com.cn/bbs-editor-web/17945022417605.jpg",
   "https://m.sohu.com/a/1093454220_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
   "https://mymodernmet.com/studio-ghibli-character-humidifiers/": "https://mymodernmet.com/wp/wp-content/uploads/2026/11/studio-ghibli-donguri-humidifiers-fb.png",
-  "https://news.dellows.jp/462389/?from=recommend_list": "https://news.dellows.jp/wp-content/uploads/2026/09/462389_1.jpg",
   "https://news.dellows.jp/992392/": "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg",
   "https://news.gamebase.com.tw/news/detail/99441959": "https://image.gamebase.com.tw/gb_img/7/004/521/4521597.jpg?og=y",
   "https://news.infoseek.co.jp/article/animeanime_104589/": "https://media.image.infoseek.co.jp/isnews/photos/animeanime/animeanime_104589_0-enlarge.jpg",
@@ -1565,21 +1564,6 @@
   },
   {
    "batch": 7,
-   "because": "日本顶级网球赛事",
-   "date": "2026-11-12",
-   "hits": [],
-   "image": "https://news.dellows.jp/wp-content/uploads/2026/09/462389_1.jpg",
-   "kind": "board",
-   "score": 4,
-   "source": "Dellows News",
-   "taste": [],
-   "title": "WOWOWが木下グループジャパンオープンテニスを生中継へ 予選と1回戦を無料配信",
-   "url": "https://news.dellows.jp/462389/?from=recommend_list",
-   "words": [],
-   "work": "日本顶级网球赛事"
-  },
-  {
-   "batch": 7,
    "because": "滑雪",
    "date": "2026-11-12",
    "hits": [],
@@ -1624,7 +1608,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 8,
+   "batch": 7,
    "because": "FROM",
    "date": "2026-11-11",
    "hits": [],
@@ -2035,11 +2019,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2047,7 +2031,7 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
@@ -2055,7 +2039,7 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ]
  ]

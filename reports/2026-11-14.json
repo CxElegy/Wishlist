@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "c1da97e00991",
+ "edit_sig": "0106a17edd16",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -342,24 +342,29 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "木下グループジャパンオープンの1回戦で、坂詰姫野は第8シードのブルターに2日がかりの末ストレートで敗れた。",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "テニスマガジンONLINE",
-     "title": "坂詰姫野は2日がかりの1回戦で第8シードのブルターにストレート負け [木下グループジャパンオープン]",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1RSks3MFhoYV9DRzFkODV0ZVJpQmRTWk1OWG9uWkZHRnRaSGdyNndMcU9iSGotUHA4UjBmRTNjVzc1TXBiR2xPT2h2Z2xHaUtRM1NINkRIZnVWSHhveXc?oc=5"
+     "headline": "坂詰姫野は2日がかりの1回戦で第8シードのブルターにストレート負け [木下グループジャパンオープン]",
+     "highlight": "ストレート負け",
+     "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnf5NpyUQZzRcq1nx-ObCXEHBkc-me1kh93-P-Go12VnIgwnj_1VQ92hOSsmDOswow7fWbjUnXrpbTyEx52aBQHBDQtAu9zAzHMdIrQFXrXi8zqlDKDDUh0JvYrLjpIr_UQ==",
+     "image_via": "转载 news.yahoo.co.jp",
+     "url": "https://tennismagazine.jp/article/gallery/35736/1",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-12",
-     "n": 2,
-     "source": "Dellows News",
-     "title": "WOWOWが木下グループジャパンオープンテニスを生中継へ 予選と1回戦を無料配信",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1fS3BDWGVSd3dMeTNOSVJfUGI5YVpGLXVjUEhDcTE3LWVOLWdPWVd4VjBKT2NUTWJkLTVGazFqUnFrUVJHM2VVZGpJdGRnRUk1MWN3THR5Q2NxSHpFMThMMg?oc=5"
+     "headline": "WOWOWが木下グループジャパンオープンテニスを生中継へ 予選と1回戦を無料配信",
+     "highlight": "予選と1回戦を無料配信",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/09/462389_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/462389/?from=recommend_list",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
