@@ -11,6 +11,12 @@
   "target": 720,
   "v": 3
  },
+ "http://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252Fkaiyou_n%252F1c%252Fkaiyou_n_1493901684021018961%252Fkaiyou_n_1493901684021018961_1.jpg,zoom=600,quality=70,type=webp": {
+  "w": 600,
+  "h": 848,
+  "target": 1280,
+  "v": 3
+ },
  "http://j.people.com.cn/NMediaFile/2026/1106/FOREIGN1793954874382MGKOCA4UCX.png": {
   "w": 730,
   "h": 484,
@@ -1671,12 +1677,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/12/5638786_1.jpg": {
-  "w": 800,
-  "h": 1064,
-  "target": 720,
-  "v": 3
- },
  "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
   "w": 640,
   "h": 434,
@@ -1771,9 +1771,9 @@
   "target": 720,
   "v": 3
  },
- "https://img.wowtv.co.kr/thumb/778x403_default_thumb.png": {
-  "w": 778,
-  "h": 403,
+ "https://img.wowtv.co.kr/YH/2026-11-10/AKR20261110003600075_01_i.jpg": {
+  "w": 500,
+  "h": 333,
   "target": 720,
   "v": 3
  },
@@ -2689,12 +2689,6 @@
   "target": 1280,
   "v": 3
  },
- "https://ogre.natalie.mu/media/news/comic/2026/1113/CSM_cinemalive_visal.jpg?impolicy=ogp_face_crop": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://ogre.natalie.mu/media/news/music/2026/1107/Vaundy_jkt.jpg?impolicy=ogp_face_crop": {
   "w": 1200,
   "h": 630,
@@ -2983,6 +2977,12 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/23d28f55bf106cc1a2255a89e8081f0a3fc7d2a0f9a47f986aaa40f20f252c55/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2F03d1b48c4241bc56b05f1525a54221a0.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/2dbe7f2bd1676e86801b0a51a5fa559c7b12c23469d6aa57fc4cbdbc162e9f0b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fftvn_sports_106%2Fbf49b2853a3d6a9d7f06fc76f5faf436.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3715,12 +3715,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.-4KT3sKZBuLkxdBFIRM_iQ&pid=News&w=900": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.-_KoB2mdtFbZ59cvsReglw&pid=News&w=700": {
   "w": 700,
   "h": 393,
   "target": 720,

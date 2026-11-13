@@ -64,7 +64,6 @@
   "https://www.elle.com/tw/life/hot-news/g74386876/starbucks-bearista-xmas/": "https://hips.hearstapps.com/hmg-prod/images/d6cf19fc-e400-401f-9921-0e511c13d813.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*",
   "https://www.empireonline.com/movies/news/avengers-doomsday-covers-revealed/": "https://images.bauerhosting.com/celebrity/sites/42/2026/11/empjan27-avengers-doomsday-crop-vvd-dd.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=undefined&q=80",
   "https://www.etnews.com/tools/image_popup.html?v=bjQ5VkNYY2dLZTZMZFBUbmNzandvWmpGcjBTK1pHYm1CUVRXR0pTMldlYVZkdE5JeGJVUFVVNURJN04rbmhKTVpaWi83c0FOL3NKSTVITFl0VU41R0RqOW0wa3YxMjhibTVZaWttMlgvWXFFTndoNXhmRFozYnhjODlsTjlHdys5R2t2a3hqaE1RcldYczR4Y3pZY3hlb3g2OS9FeTJNakNxY01VeHRUYm8vUUJ0N01RZ3R6enNMQzJhL0VCN1ViS21McEtRdEkrWERpSjU5dmlPYmMrOWR4bzdweWZKd2pBaStIZENINVRuRGJRNlJMM09xU0FKV2diUjBLbGZMcg": "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_1792559362272867813.jpg",
-  "https://www.fastcompany.com/91641287/kalshi-will-pay-you-120000-to-play-grand-theft-auto-vi": "https://www.bing.com/th?id=ONUT.-_KoB2mdtFbZ59cvsReglw&pid=News&w=700",
   "https://www.geektown.co.uk/2026/11/11/julianna-margulies-to-star-in-the-american-heiress-as-mgm-greenlights-victorian-romantic-comedy-from-victoria-creator/": "http://www.geektown.co.uk/wp-content/uploads/2026/11/jm.jpg",
   "https://www.inside-games.jp/article/2026/11/07/190517.html": "https://www.inside-games.jp/imgs/ogp_f/1802024.jpg",
   "https://www.inside-games.jp/article/2026/11/09/190576.html": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1804705.jpg",
@@ -86,6 +85,7 @@
   "https://www.sina.cn/news/detail/5364868833613038.html": "http://wx3.sinaimg.cn/middle/90b10eb9ly1ij0rr906ynj21mc1mc1ky.jpg",
   "https://www.soft4fun.net/tech/ai/samsung-galaxy-ai-premium-subscription-leak.htm/faq/3": "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png",
   "https://www.sportsdunia.com/gaming/sea-of-remnants-dawnbreaker-closed-beta-registrations": null,
+  "https://www.techbang.com/posts/134725-gta-6-ps5-physical-box-leak-no-disc": "https://cdn0.techbang.com/system/excerpt_images/134725/original/8f5fb798c488b92f60b52ed4740fa865.jpg?1794480473",
   "https://www.thepitchkc.com/drink-this-now-corn-to-be-wild-at-goat-rabbit/": "https://www.thepitchkc.com/content/uploads/2026/11/f/l/screenshot-2026-11-09-at-15444pm.png",
   "https://www.usatoday.com/story/money/food/2026/11/05/starbucks-releases-holiday-themed-pup-cup-design/92566104007/": "https://www.bing.com/th?id=ONUT.I0uFt_9_duaL8nRiTOBaFw&pid=News&w=1200",
   "https://www.vietnam.vn/ja/samsung-galaxy-studio-lo-dien-tren-fcc-tai-nghe-chup-tai-gap-phang-du-kien-ra-mat-dau-nam-2027": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/06/1793968579645_img_05a16d7c.jpeg",
@@ -956,6 +956,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-13",
+   "hits": [],
+   "image": "https://cdn0.techbang.com/system/excerpt_images/134725/original/8f5fb798c488b92f60b52ed4740fa865.jpg?1794480473",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "T客邦",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "《GTA6》PS5實體盒流出確認無光碟！ 全面改用序號下載防偷跑洩密",
+   "url": "https://www.techbang.com/posts/134725-gta-6-ps5-physical-box-leak-no-disc",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-11-13",
    "hits": [],
@@ -976,7 +997,7 @@
    "work": "チェーンソーマン"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "ILLIT",
    "date": "2026-11-12",
    "hits": [],
@@ -1014,27 +1035,6 @@
    ],
    "title": "Grand Theft Auto: The thrill of breaking bad from the safety of your sofa",
    "url": "https://www.irishtimes.com/culture/2026/11/13/grand-theft-auto-the-thrill-of-breaking-bad-from-the-safety-of-your-sofa/",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 2,
-   "because": "GTA 6",
-   "date": "2026-11-12",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.-_KoB2mdtFbZ59cvsReglw&pid=News&w=700",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "Fast Company",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "Kalshi will pay you $120,000 to play ‘Grand Theft Auto VI’",
-   "url": "https://www.fastcompany.com/91641287/kalshi-will-pay-you-120000-to-play-grand-theft-auto-vi",
    "words": [],
    "work": "GTA 6"
   },
@@ -2080,11 +2080,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2092,11 +2092,11 @@
    8
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
