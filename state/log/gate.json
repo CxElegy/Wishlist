@@ -1,15 +1,5 @@
 [
 {
-"at": "2026-11-12T18:35:08+00:00",
-"text": "判断：emblem あり（足りない 13 版面（Actions で Python が埋める）・失敗 2 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）） · edit あり（整理待ちの記事 164 件（26 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
-"level": "info",
-"jobs": {
-"emblem": true,
-"edit": true,
-"photos": false
-}
-},
-{
 "at": "2026-11-12T18:35:10+00:00",
 "text": "Claude を起こした：AI 編集",
 "level": "ok",
@@ -526,6 +516,15 @@
 "emblem": false,
 "edit": true,
 "photos": false
+}
+},
+{
+"at": "2026-11-13T19:19:19+00:00",
+"text": "Claude を起こした：AI 編集",
+"level": "ok",
+"results": {
+"edit": "Claude を起こした（2 回目：前は動かなかった）",
+"photos": "仕事なし（起こさない）"
 }
 }
 ]

@@ -1,10 +1,10 @@
 {
- "changed": true,
- "checked": "2026-11-13T18:20:40+00:00",
+ "changed": false,
+ "checked": "2026-11-13T19:19:17+00:00",
  "fired": {
-  "at": "2026-11-13T17:56:20+00:00",
+  "at": "2026-11-13T19:19:17+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "Claude を起こした（2 回目：前は動かなかった）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -31,19 +31,19 @@
    "edit": 15
   },
   "2026-11-14": {
-   "edit": 1
+   "edit": 2
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-13T17:56:20+00:00",
-    "attempts": 1,
+    "at": "2026-11-13T19:19:17+00:00",
+    "attempts": 2,
     "day": "2026-11-14",
     "prog": 8,
-    "resp": "cse_01W4x6f98oZ4jsgyHAkrFx8J",
-    "sig": "0a23631216b0"
+    "resp": "",
+    "sig": "da09beaa64a0"
    },
    "items": [
     "FROM",
