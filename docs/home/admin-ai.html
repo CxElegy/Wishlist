@@ -790,7 +790,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .pic img{transition:opacity .3s ease-out}
 .emb-fade .pic img:not(.bg):not(.ico):not(.ld){opacity:0}  /* 記事の写真も同じ：届くまで枠の薄い地だけ、届いたら ふわっと（背景のぼかし .bg と来源の小さい印 .ico はそのまま） */
 @media (prefers-reduced-motion:reduce){.pic img{transition:opacity .15s linear}}
-.emb-fade .emb-in:has(img:not(.ld)){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
+.emb-fade .emb-in:has(img:not(.ld):not([width])){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}.emb img{transition:opacity .2s linear}.emb-fade .emb img:not(.ld){transform:none}}
 .boom{position:fixed;z-index:60;width:0;height:0;pointer-events:none}
 .boom>svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
@@ -931,6 +931,8 @@ section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24
  .nav .mtabs a.on{opacity:1;box-shadow:3px 3px 0 var(--gold)}
  .nav .rail{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 16px;border-top:1px solid rgba(251,248,241,.18)}
  .nav:not(.insec) .rail{display:none}
+ .nav .rail{position:absolute;left:0;right:0;top:100%;background:var(--ink)}   /* 作品の段は帯の下に重ねる（流れの外）：版面に入って段が出ても、下の全部を押し下げない（審美基準 F5。前は 46px ずれた）。吸着の余白・版面の予算は --bar-full で段の分を取る */
+ .nav.insec .bar{bottom:calc(var(--bar-tabs) - var(--bar-full))}   /* 進み具合の線は作品の段の下の端に */
  .nav .nslot{display:none}
  .nav .nslot.cur,.nav .nbody{display:contents}
  .nav .nsec,.nav .nsubs,.nav .nlab,.nav .nmore{display:none!important}
@@ -1692,7 +1694,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-ai" content="bd20905fafe0"><style>
+<meta name="wl-ver" data-page="admin-ai" content="679c867d62fe"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2658,7 +2660,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ④ AI 編集</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.13 11:26</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.13 11:44</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html" aria-current="page"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
