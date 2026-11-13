@@ -7,6 +7,7 @@ push はしない：取った印（claim）・途中の状態（attempts・parke
   python harness/q.py next [--n 3] [--kind fix] [--json]      次に進められる段（範囲のファイルが重ならないものだけ）
   python harness/q.py claim T-0003 --owner build:T-0003        取る（同じ持ち主がもう一度呼べば時刻を更新。60 分動きがなければ取り直せる）
   python harness/q.py release T-0003
+  python harness/q.py contract T-0003 --lint [--scope … --done-when … | --from-json F]   凍らせず点検だけ。「合併後」「本番で」など あとでしか測れない条件・scope 9 ファイル以上・done_when 7 個以上は ✗（終了コード 1）
   python harness/q.py contract T-0003 --kind visual --complexity normal --scope a.py,b.css --done-when "…" [--done-when "…"]   計画の係が約束を決めて凍らせる
   python harness/q.py done T-0003 [--pr URL] [--file]          済み（--file：リポジトリのファイルも status=done にする。合併する枝の中で）
   python harness/q.py park T-0003 --why "…" [--waiting] [--cls infra|work|size|conflict] [--resume-branch B --resume-worktree W --resume-commit C --resume-stage build|fix|ship --resume-note "…"]
@@ -334,6 +335,31 @@ def set_contract(tid, kind=None, scope=None, done_when=None, root=None, state=No
     return t
 
 
+# 約束の点検（contract --lint，ハーネス v3 B）：計画の時点で「あとでしか測れない条件」「大きすぎる段」を断る。
+LINT_MAX_SCOPE = 8       # 範囲のファイルがこれを超えたら大きすぎる（q.py split で分ける）
+LINT_MAX_DONE_WHEN = 6   # 確かめ方がこれを超えたら大きすぎる
+LATE_RE = re.compile(r"合併(した)?後|合併して|マージ(した)?後|マージして|本番で|本番に(出|反映|入)|デプロイ(した)?後|リリース(した)?後|何回か回った|翌日|"
+                     r"after (the )?(pr )?(is )?merg|post-?merge|once merged|in production|on production|after (the )?deploy|once deployed|after release", re.I)
+
+
+def lint_contract(scope=(), done_when=()):
+    """約束の問題の一覧（空なら合格）。この PC・この段の中で測れない条件と、1 つの係で作りきれない大きさを断る。"""
+    bad = []
+    scope = [s for s in (scope or []) if s]
+    done_when = [d for d in (done_when or []) if d]
+    if not done_when:
+        bad.append("done_when が 1 つも無い")
+    for i, d in enumerate(done_when, 1):
+        m = LATE_RE.search(d)
+        if m:
+            bad.append(f"done_when {i} 番に「{m.group(0)}」：あとでしか測れない条件。仕組みを作る段と、あとの「測る段（kind=verify／kpi・after）」に分ける")
+    if len(scope) > LINT_MAX_SCOPE:
+        bad.append(f"scope が {len(scope)} ファイル（上限 {LINT_MAX_SCOPE}）：大きすぎる。q.py split で順番つきの小さい段に分ける")
+    if len(done_when) > LINT_MAX_DONE_WHEN:
+        bad.append(f"done_when が {len(done_when)} 個（上限 {LINT_MAX_DONE_WHEN}）：大きすぎる。q.py split で分ける")
+    return bad
+
+
 def split(tid, parts, root=None, state=None):
     """1 つの係で作りきれない段を、順番つきの子に分ける（計画の係）。子は凍った約束で手元に生まれ、前の子の after を持つ。
     親は status=split（子が全部済めば done が親も済みにする）。親の枝・作業ツリー（resume）は最初の子が引き継ぐ。"""
@@ -535,7 +561,7 @@ def main(argv=None):
     s = sub.add_parser("next"); s.add_argument("--n", type=int, default=3); s.add_argument("--kind"); s.add_argument("--json", action="store_true"); s.add_argument("--owner")
     s = sub.add_parser("claim"); s.add_argument("id"); s.add_argument("--owner", required=True)
     s = sub.add_parser("release"); s.add_argument("id")
-    s = sub.add_parser("contract"); s.add_argument("id"); s.add_argument("--kind"); s.add_argument("--complexity", choices=COMPLEXITY); s.add_argument("--scope"); s.add_argument("--done-when", action="append", default=[]); s.add_argument("--from-json")
+    s = sub.add_parser("contract"); s.add_argument("id"); s.add_argument("--kind"); s.add_argument("--complexity", choices=COMPLEXITY); s.add_argument("--scope"); s.add_argument("--done-when", action="append", default=[]); s.add_argument("--from-json"); s.add_argument("--lint", action="store_true", help="凍らせず、約束を点検するだけ（あとでしか測れない条件・大きすぎる段は終了コード 1）")
     s = sub.add_parser("repair"); s.add_argument("id"); s.add_argument("--from-json", required=True); s.add_argument("--reason", required=True)
     s = sub.add_parser("done"); s.add_argument("id"); s.add_argument("--pr", default=""); s.add_argument("--file", action="store_true")
     s = sub.add_parser("park"); s.add_argument("id"); s.add_argument("--why", required=True); s.add_argument("--waiting", action="store_true")
@@ -585,6 +611,16 @@ def run(a):
     elif a.cmd == "contract":
         j = read_json_arg(a.from_json) if a.from_json else {}
         scope = j["scope"] if "scope" in j else a.scope.split(",") if a.scope is not None else None
+        if a.lint:
+            tk = load().get(a.id)
+            if not tk:
+                raise KeyError(a.id)
+            sc = j["scope"] if "scope" in j else a.scope.split(",") if a.scope is not None else tk.get("scope")
+            bad = lint_contract(sc, j.get("done_when") or a.done_when or tk.get("done_when"))
+            for b in bad:
+                print(f"✗ {a.id}：{b}")
+            print(f"約束の点検：{'✗ ' + str(len(bad)) + ' 件' if bad else '✓ 合格'}")
+            return 1 if bad else 0
         t = set_contract(a.id, j.get("kind") or a.kind, scope, j.get("done_when") or a.done_when, complexity=j.get("complexity") or a.complexity)
         print(json.dumps(brief(t), ensure_ascii=False))
     elif a.cmd == "repair":

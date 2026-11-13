@@ -1,0 +1,27 @@
+{
+  "_doc": "審美基準（docs/rules/aesthetic.md）の番号 → 測る検査の名前。検査の名前は harness/self_review.py の KIND（gap crop band clip icon over wide face）と harness/aesthetic_count.py の KIND（edge hid solo herogap emrel cgap ell strong）。検査が無い番号（数にできない：A3 A4 A7 B5 C1 など）は checks を空にして人の目（kind=visual の審査）に残す。aesthetic_count.py が main に無い間は、その検査の名前は結果に出ない＝未測定として扱う（落とさない。visual_gate.py --strict なら落とす）。",
+  "items": {
+    "A1":  {"checks": ["gap", "band", "cgap", "herogap"]},
+    "A2":  {"checks": ["gap", "cgap"]},
+    "A3":  {"checks": []},
+    "A4":  {"checks": []},
+    "A5":  {"checks": ["gap", "cgap"]},
+    "A6":  {"checks": ["herogap"]},
+    "A7":  {"checks": []},
+    "A8":  {"checks": ["emrel"]},
+    "B1":  {"checks": ["clip", "crop"]},
+    "B2":  {"checks": ["crop"]},
+    "B3":  {"checks": ["crop"]},
+    "B5":  {"checks": []},
+    "C1":  {"checks": []},
+    "C2":  {"checks": ["solo"]},
+    "C4":  {"checks": ["strong"]},
+    "D1":  {"checks": ["icon"]},
+    "D3":  {"checks": ["ell", "clip"]},
+    "E1":  {"checks": ["over"]},
+    "E2":  {"checks": ["wide"]},
+    "E4":  {"checks": ["edge", "hid"]},
+    "I1b": {"checks": ["edge"]},
+    "I1c": {"checks": ["face"]}
+  }
+}

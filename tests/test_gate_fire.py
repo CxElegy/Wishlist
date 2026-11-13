@@ -12,6 +12,8 @@ import unittest
 from unittest import mock
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "harness"))
+import gitsafe  # noqa: E402
 sys.path.insert(0, str(ROOT / "scripts"))
 import gate  # noqa: E402
 import gate_fire  # noqa: E402
@@ -22,8 +24,9 @@ ENV = {"ROUTINE_TOKEN_EDIT": "t", "GATE_FIRE": "edit", "EDIT_MODE": "run"}
 
 
 def sh(cwd, *a):
+    gitsafe.guard(cwd)
     r = subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", *a], cwd=str(cwd), capture_output=True, text=True, encoding="utf-8", errors="replace",
-                       env={k: v for k, v in os.environ.items() if not k.startswith("GIT_")})   # hook から受け継いだ GIT_DIR で本物の repo を書き換えない
+                       env=gitsafe.clean_env())   # hook から受け継いだ GIT_DIR で本物の repo を書き換えない
     assert r.returncode == 0, r.stderr
     return r.stdout
 
