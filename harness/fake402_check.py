@@ -116,6 +116,11 @@ ALLOW = {
 RATIO = {"state/photo_store.json": 0.02, "state/recommend.json": 0.2, "state/hdimg.json": 0.2, "state/img_retry.json": 0.3, "state/log/collect.json": 0.5}
 # 縮んでよいファイルの数の上限つきの名簿（前方一致）。
 ALLOW_COUNT = {"docs/home/pics/": (10, "hdimg が使わなくなった写しを消す（窓から出た分）。10 枚を超える消え方は赤")}
+# 土台を作り直す入口（2026-11-13）：docs/ を書く入口は、PR の「コミット済みの docs/home」ではなく、PR 自身のコードを
+# 402 でない偽サーバー（200 で空の JSON を返す）で 1 回走らせた結果を土台にして、その上で 402 を当てて差を数える。
+# こうすると render.py を正しく変えて出力が縮む PR でも docs/home をコミットし直さなくてよい（main では render.yml が合併のたびに
+# docs/home を作り直すので、docs/home を含む PR は合併のたびに競合していた）。縮みとして赤になるのは 402 のせいの分だけ。
+REBASE = {"render", "user_pages"}
 WATCH = ("docs/", "state/", "inbox/", "reports/", "items.yaml", "wishlist.yaml")
 
 
@@ -123,10 +128,16 @@ class _H(http.server.BaseHTTPRequestHandler):
     hits = []      # 作業枠（worker）ごとに make_handler が自分の hits を持たせる
 
     def _r(self):
-        self.server.hits.append(f"{self.command} {self.path[:80]}")
         n = int(self.headers.get("Content-Length") or 0)
         if n:
             self.rfile.read(n)
+        if getattr(self.server, "ok", False):      # 土台を作る回：動いている Supabase の代わり（空の結果）
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(b"[]")
+            return
+        self.server.hits.append(f"{self.command} {self.path[:80]}")
         self.send_response(402)
         self.send_header("Content-Type", "application/json")
         self.end_headers()
@@ -209,6 +220,19 @@ def shrunk(d, fake=""):
     return out
 
 
+def baseline(d, srv, args, env, sec, name):
+    """402 でない偽サーバーで入口を 1 回走らせ、その出力を土台としてコミットする（落ちても続ける：土台が作れなければ今までの比べ方）。"""
+    srv.ok = True
+    try:
+        subprocess.run([PY, *args], cwd=d, env=env, capture_output=True, text=True, timeout=sec)
+    except subprocess.TimeoutExpired:
+        pass
+    finally:
+        srv.ok = False
+    _git(d, "add", "-A")
+    _git(d, "commit", "-qm", f"baseline {name}", "--allow-empty")
+
+
 def _worker(q, results, env, keep):
     """作業枠 1 つ = 偽サーバー 1 つ + 作業ツリーの写し 1 つ。入口は枠の中では 1 本ずつ（差を入口だけの変化にするため）、枠どうしは並べて走らせる。"""
     srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), _H)
@@ -222,9 +246,12 @@ def _worker(q, results, env, keep):
             i, name, args, sec = q.get_nowait()
         except queue.Empty:
             break
+        e = {**env, **ENTRY_ENV.get(name, {})}
+        if name in REBASE:
+            baseline(d, srv, args, e, sec, name)
         h0, t0 = len(srv.hits), time.time()
         try:
-            rc = subprocess.run([PY, *args], cwd=d, env={**env, **ENTRY_ENV.get(name, {})}, capture_output=True, text=True, timeout=sec).returncode
+            rc = subprocess.run([PY, *args], cwd=d, env=e, capture_output=True, text=True, timeout=sec).returncode
         except subprocess.TimeoutExpired:
             rc = "timeout"
         s = shrunk(d, fake)

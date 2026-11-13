@@ -80,6 +80,52 @@ class Fake402(unittest.TestCase):
         f.write_text('{"a":[1,2,3],"b":{"c":2}}\n', encoding="utf-8")
         self.assertEqual(fake402_check.shrunk(d), {})
 
+    def _rebase_case(self, script):
+        """一時の git に 10 行の docs/x.html を置き、入口 ent.py を「土台 → 402」の順で走らせて shrunk を返す（本物の入口は使わない）。"""
+        import http.server
+        import subprocess
+        import tempfile
+        import threading
+        d = pathlib.Path(tempfile.mkdtemp(prefix="rebase_"))
+        (d / "docs").mkdir()
+        (d / "docs" / "x.html").write_text("".join(f"{i}\n" for i in range(10)), encoding="utf-8")
+        (d / "ent.py").write_text(script, encoding="utf-8")
+        env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
+        os.environ.pop("GIT_DIR", None)
+        saved = {k: os.environ.pop(k) for k in list(os.environ) if k.startswith("GIT_")}
+        try:
+            fake402_check._git(d, "init", "-q")
+            fake402_check._git(d, "add", "-A")
+            fake402_check._git(d, "commit", "-qm", "b")
+            srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), fake402_check._H)
+            srv.hits = []
+            threading.Thread(target=srv.serve_forever, daemon=True).start()
+            env["FAKE_URL"] = f"http://127.0.0.1:{srv.server_address[1]}"
+            fake402_check.baseline(d, srv, ["ent.py"], env, 60, "ent")
+            subprocess.run([sys.executable, "ent.py"], cwd=d, env=env, check=True, timeout=60)
+            srv.shutdown()
+            return fake402_check.shrunk(d)
+        finally:
+            os.environ.update(saved)
+
+    _ENT = ("import os, urllib.request, urllib.error\n"
+            "try:\n    urllib.request.urlopen(os.environ['FAKE_URL'] + '/x'); ok = True\n"
+            "except urllib.error.HTTPError:\n    ok = False\n")
+
+    def test_code_change_shrink_is_not_flagged(self):
+        """コードを変えて出力が 10 行 → 5 行に縮んでも、土台（402 でない回）も 5 行なので縮みに数えない（docs/home をコミットし直さなくてよい）。"""
+        out = self._rebase_case(self._ENT + "open('docs/x.html','w').write(''.join(f'{i}\\n' for i in range(5)))\n")
+        self.assertEqual(out, {})
+
+    def test_402_emptying_is_still_flagged(self):
+        """402 のときだけ出力が空になる入口は、土台（5 行）より縮むので赤。"""
+        out = self._rebase_case(self._ENT + "open('docs/x.html','w').write(''.join(f'{i}\\n' for i in range(5 if ok else 0)))\n")
+        self.assertIn("docs/x.html", out)
+
+    def test_rebase_entries_exist(self):
+        names = {n for n, _, _ in fake402_check.ENTRIES}
+        self.assertEqual(sorted(fake402_check.REBASE - names), [])
+
 
 if __name__ == "__main__":
     unittest.main()
