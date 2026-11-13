@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-13T17:56:20+00:00",
+ "checked": "2026-11-13T18:20:40+00:00",
  "fired": {
   "at": "2026-11-13T17:56:20+00:00",
   "results": {
@@ -52,9 +52,9 @@
     "MMORPG 新作",
     "The Mandalorian",
     "gelato pique",
+    "lib:ユニバーサル・スタジオ・ジャパン",
     "lib:京都",
     "lib:宇宙・ロケット",
-    "lib:将棋",
     "lib:東京ディズニーリゾート",
     "lib:温泉",
     "lib:生成AI",
@@ -88,35 +88,34 @@
     "漫威电影",
     "绝区零"
    ],
-   "sig": "0a23631216b0",
+   "sig": "da09beaa64a0",
    "token_cap": 1000000,
    "tokens_today": 0,
    "why": "整理待ちの記事 177 件（22 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "漫威电影",
-    "FROM",
-    "GTA 6",
-    "周杰伦",
-    "Astrae Oratio",
-    "绝区零",
-    "The Mandalorian",
-    "ぐでたま"
-   ],
-   "need": true,
-   "sig": "1972fc353345",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
     "dota2",
-    "あつ森"
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 4 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
