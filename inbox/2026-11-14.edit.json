@@ -62,7 +62,8 @@
   "漫威电影": 24,
   "MMORPG 新作": 4,
   "三星手机": 4,
-  "周杰伦": 4
+  "周杰伦": 4,
+  "ILLIT": 3
  },
  "漫威电影": [
   {
@@ -185,6 +186,28 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "【紅白】K-POP勢が激減 韓国出身含むグループはILLIT、&TEAMのみ",
+   "highlight": "ILLIT",
+   "blurb": "紅白歌合戦に出場する韓国出身メンバーを含むグループはILLITと&TEAMのみ。ILLITは3年連続の出場で、スノーマンのラウールとのコラボステージを予告している。",
+   "weight": "hero",
+   "refs": [
+    3,
+    2
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000169-spnannex-000-20-view.jpg?exp=10800"
+  },
+  {
+   "headline": "ILLIT社群貼文 - 글릿! 프레스 스타트 앙코르 콘서트가 끝났어요오!",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "af576aa66670",
+ "edit_sig": "b411c2c6ccab",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -300,31 +300,29 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "紅白歌合戦に出場する韓国出身メンバーを含むグループはILLITと&TEAMのみ。ILLITは3年連続の出場で、スノーマンのラウールとのコラボステージを予告している。",
+     "date": "2026-11-13",
+     "headline": "【紅白】K-POP勢が激減 韓国出身含むグループはILLIT、&TEAMのみ",
+     "highlight": "ILLIT",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000169-spnannex-000-20-view.jpg?exp=10800",
+     "image_via": "AI 挑选",
+     "url": "https://news.yahoo.co.jp/articles/ce703ee43234d8d2746d1ee00ec13d9bb7522ed4",
+     "weight": "hero"
+    },
+    {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 1,
-     "source": "Weverse",
-     "title": "ILLIT社群貼文 - 글릿! 프레스 스타트 앙코르 콘서트가 끝났어요오!",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9UamxsdnVhVXRxcUdYLUdYQXBQV3VWY0E2UmN4WU9BQ29zMndNR0QzQm05a3hjMFFxSVY1d19sN2VzOWxBeU1DZzUxa3lQYUtXcTd3N2txdEd6UHpnY0hDdlRB?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 2,
-     "source": "티브이데일리",
-     "title": "아일릿, 3년 연속 일본 \\'홍백가합전\\' 초청…스노우 맨 라울과 협업 무대 예고",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE50TEd6ZDU0TFBYbHV1ZWJwamhGVlN2RWZTV1RTYl9PdGhCSm1YT053bVVXV1ZRcnZIZmFVdzNIT3h3SkJFUk5IVmhSQ1pTRUtvVjJqbzRQQmdrNDlfMm1xZ2hTSmEzbUR0dG9n?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 3,
-     "source": "Yahoo!ニュース",
-     "title": "【紅白】K-POP勢が激減 韓国出身含むグループはILLIT、&TEAMのみ 2年前は歴代最多6組（スポニチアネックス）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9rT2hqTUNCRTZEdF9JbW84Tkd6U0MxMTNXQ1RkVkxtV0JCd0NzNmNFaWQ0VWxsdkZBRm9GZVZiRUNqMWdoN0FrMTlvck8tRTJkUkY2cklvU1M5S0ZMV0JGWThqa1B4d28xMDBXVzF0WGprY0RhTzY1ZVROZ0xVTW8?oc=5"
+     "headline": "ILLIT社群貼文 - 글릿! 프레스 스타트 앙코르 콘서트가 끝났어요오!",
+     "highlight": "",
+     "image": "https://phinf.wevpstatic.net/MjAyNjEwMTlfOTAg/MDAxNzkyMzkwMzgzODkx.J5-qTJVzi5Ed7yjnetSTfKJ3lItsNIaMTRfW4G8LBXcg.Md6Y5nozoQIb6ngdYLxGwrvVsjUEm9pZCPzrd7Wrx2wg.JPEG/image.jpg?type=w1414",
+     "image_via": "og:image",
+     "url": "https://weverse.io/illit/artist/2-181078675?hl=zh-tw",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",
