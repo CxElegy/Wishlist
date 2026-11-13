@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-13T21:17:58+00:00",
+ "changed": true,
+ "checked": "2026-11-13T21:34:35+00:00",
  "fired": {
-  "at": "2026-11-13T19:19:17+00:00",
+  "at": "2026-11-13T21:34:35+00:00",
   "results": {
-   "edit": "Claude を起こした（2 回目：前は動かなかった）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -31,22 +31,39 @@
    "edit": 15
   },
   "2026-11-14": {
-   "edit": 2
+   "edit": 3
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-13T19:19:17+00:00",
-    "attempts": 2,
+    "at": "2026-11-13T21:34:35+00:00",
+    "attempts": 1,
     "day": "2026-11-14",
-    "prog": 8,
-    "resp": "cse_01W4x6f6mY5EP6sNZNGjkMQ1",
-    "sig": "da09beaa64a0"
+    "prog": 96,
+    "resp": "",
+    "sig": "cbe205a6022c"
    },
    "items": [
-    "FROM"
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "Vaundy",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "ぐでたま",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-13T20:06:31+00:00",
    "last_error": {
@@ -56,35 +73,41 @@
    "need": true,
    "prog": 96,
    "prog_day": "2026-11-14",
-   "ripe": [],
-   "sig": "602a83cd3fca",
+   "ripe": [
+    "GTA 6",
+    "あつ森",
+    "漫威电影",
+    "猫用品"
+   ],
+   "sig": "cbe205a6022c",
    "token_cap": 1000000,
    "tokens_today": 88860,
-   "why": "整理待ちの記事 1 件（1 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 72 件（18 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
+   "items": [
     "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
     "dota2",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
     "哈利波特剧集",
     "漫威电影",
-    "绝区零"
+    "GTA 6",
+    "あつ森",
+    "A2O LITE",
+    "周杰伦",
+    "绝区零",
+    "Vaundy",
+    "ぐでたま"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "need": true,
+   "sig": "62ac0b7137cd",
+   "waiting": [
+    "Astrae Oratio",
+    "FROM",
+    "The Mandalorian",
+    "チェーンソーマン"
+   ],
+   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 4 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
