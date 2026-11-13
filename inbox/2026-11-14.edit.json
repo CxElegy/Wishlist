@@ -77,7 +77,8 @@
   "The Mandalorian": 1,
   "gelato pique": 1,
   "あつ森": 3,
-  "猫用品": 3
+  "猫用品": 3,
+  "FROM": 1
  },
  "漫威电影": [
   {
@@ -389,6 +390,18 @@
    "refs": [
     3
    ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "Streaming Ratings: 'From' Dominates an Otherwise Quiet Halloween Week",
+   "highlight": "'From' Dominates",
+   "blurb": "'From' dominated the streaming ratings in an otherwise quiet Halloween week, according to The Hollywood Reporter.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.hollywoodreporter.com/wp-content/uploads/2022/02/From-Still-Epix-Publicity-H-2022.jpg?w=1296&h=730&crop=1"
   }
  ]
 }

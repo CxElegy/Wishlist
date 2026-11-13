@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "3d59dffce503",
+ "edit_sig": "d589752a5ddf",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -299,17 +299,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "'From' dominated the streaming ratings in an otherwise quiet Halloween week, according to The Hollywood Reporter.",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "The Hollywood Reporter",
-     "title": "Streaming Ratings: ‘From’ Dominates an Otherwise Quiet Halloween Week",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQd05vV2k5cERUeGk0Y0ZGZ3BmVTVuTFl4R1JiaEtyeU01QlVGTWxHYXN0emxkdmFVX1lNVjdxdjBQaFlxSjlfUmZjY0VqdzZpOVU0VEZjVTVYZkprRlQwQ0FxWUVyOTdDUTVFOHltbDhnNzBKM1labTFJeldVZnBSNlNUa1B5TjlIT1hLXzdaMXJvaFQwbjM4?oc=5"
+     "headline": "Streaming Ratings: 'From' Dominates an Otherwise Quiet Halloween Week",
+     "highlight": "'From' Dominates",
+     "image": "https://www.hollywoodreporter.com/wp-content/uploads/2022/02/From-Still-Epix-Publicity-H-2022.jpg?w=1296&h=730&crop=1",
+     "image_via": "AI 挑选",
+     "url": "https://www.hollywoodreporter.com/tv/tv-news/streaming-ratings-oct-26-nov-1-2026-1236754707/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
