@@ -159,6 +159,7 @@ button{font-family:inherit}
 .mgrid.one .wall>.wc b{-webkit-line-clamp:unset;display:block;overflow:visible}  /* 壁の組み方が高さを決めるので、見出しは「…」で切らない（2026-11-09） */
 .mgrid.one{grid-template-columns:minmax(0,1fr)}.wall>.fside{align-self:start;min-width:0}  /* PC：右の列は壁の升目の右上（FIT_JS の wall()）。下にもカードが入る（2026-11-09） */
 .mgrid .wc{justify-content:flex-start}
+.mgrid .wall>.wc.ban{display:flex;flex-direction:column;gap:8px;justify-content:flex-start}.mgrid .wall>.wc.ban>.pic{flex:none;width:100%!important;height:auto!important;margin:0}.mgrid .wall>.wc.ban>.pic img:not(.bg):not(.ico){object-fit:cover}  /* 壁の小さい形 ③：横長の写真を上・字を下（枠は写真の形。FIT_JS cmpForm）。普通のカードと同じ flex を書く（2026-11-13） */
 .mgrid .wall>.wc.cmp{display:grid;grid-template-columns:46% minmax(0,1fr);column-gap:12px;row-gap:6px;align-content:start;grid-auto-rows:min-content}.mgrid .wall>.wc.cmp>.pic{grid-column:1;grid-row:1/span 9;align-self:start;width:auto!important;height:auto!important;aspect-ratio:4/3!important;margin:0}.mgrid .wall>.wc.cmp>*:not(.pic):not(.lk){grid-column:2;min-width:0}.mgrid .wall>.wc.cmp>.pic img:not(.bg):not(.ico){object-fit:cover}  /* 列の下に入りきらないカードは写真左・字右の小さい形で（2026-11-09 店長：ほかの注目ニュースは画面の下まで） */
 .fside>:last-child{flex:1;display:flex;flex-direction:column}.fside>.swish:has(.sempty){flex:none}.fside:has(.sempty)>.agenda{flex:1 1 auto;display:flex;flex-direction:column}.fside:has(.sempty)>.agenda>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}
 /* 写真が開けず字だけになったカードは、同じ所に写真のあるカードがあれば出さない（2026-11-08 店長「我一定要图」） */
@@ -296,7 +297,6 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 /* 話題度（_heat_badge）：見出しの右に数字、押すと内訳のカード。数字の色は版面の --acc、カードは紙とインク */
 .heat{position:relative;margin-left:auto}
 .heat+.cnt{margin-left:0}
-.band .nums{margin-left:auto;display:flex;flex-wrap:nowrap;align-items:center;gap:8px 18px;flex:none;max-width:100%}.band .nums>.heat,.band .nums>.cnt{margin-left:0}  /* 数字のまとまり（2026-11-13）：題の横か、まとめて次の行へ */
 .heat summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:6px;white-space:nowrap;font:700 12px/1.3 var(--font-sans)}
 .heat summary::-webkit-details-marker{display:none}
 .heat summary small{font:700 var(--fs-label) var(--font-sans);letter-spacing:.08em;opacity:.85}
@@ -734,8 +734,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .vt button{min-height:var(--vth,28px)}  /* 按钮的高度 = 日期行的高度：按钮区不会伸到标题上 */
 /* 出典が日付の横に入らないとき（JS が .two を付ける）：出典だけ次の行に全幅で。1 行目の右はボタンの分だけ空ける */
 .when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
-/* 日付の行に「札・日付」と 👍/👎 が横に並ばないほど細い列（写真を左に大きく取ったカードなど。2026-11-13 店長のスマホで 👍 が日付に重なり 👎 が切れた）：JS が .vdown を付け、👍/👎 を次の行の右端に下ろす（右端は 1 行のときと同じ位置）。出典はその下に全幅で。何 px で切り替えるかは決めず、字の幅と列の幅を測って決める */
-.vdown{padding-right:0!important;row-gap:4px!important}.vdown>.vt{position:static;order:1;flex:0 0 calc(100% + 6px);margin-right:-6px;justify-content:flex-end}.vdown>.from{order:2;flex-basis:100%}
+/* 日付の行に「札・日付」と 👍/👎 が横に並ばないほど細い列（写真を左に大きく取ったカードなど。2026-11-13 店長のスマホで 👍 が日付に重なり 👎 が切れた）：JS が .vdown を付け、👍/👎 を次の行の右端に下ろす（右端は 1 行のときと同じ位置）。出典は 👍/👎 と同じ行の左に（2026-11-13：出典を 3 行目に分けると、2 行目の 👍/👎 の左が空いて日付と出典の間が割れて見えた。日付・出典・👍/👎・見出しは 1 つのかたまり）。何 px で切り替えるかは決めず、字の幅と列の幅を測って決める */
+.vdown{padding-right:0!important;row-gap:4px!important}.vdown::after{content:"";order:0;flex:0 0 100%;height:0}.vdown>.vt{position:static;order:2;flex:0 0 auto;margin:0 -6px 0 auto;justify-content:flex-end}.vdown>.from{order:1;flex:1 1 0;min-width:0;overflow-wrap:anywhere}
 .vote button{opacity:.75}
 .brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
 /* 作品の小元素：右上で枠からはみ出すステッカー。白いフチ → 版面の強調色のフチ（emblem_ring）→ 墨の硬い影。
@@ -781,9 +781,9 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
 .emb:has(img.badge){--z:.82;transform:rotate(5deg)}  /* 写真の小元素は人の絵の 0.82 倍で +5° 傾けて角を外へ（ロゴ・記号は元から小さいので倍率なし） */
 @keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 6px);rotate:-3deg}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
-.has-emb .band{padding-right:260px;--embmin:180px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
+.has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;--eh:100px;--fmin:32px;--vmax:100px;--bw:140px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px;--embmin:110px}
+@media (max-width:600px){.emb{height:100px;--eh:100px;--fmin:32px;--vmax:100px;--bw:140px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
  .emb img.body{margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),min(0px,calc(-22px + (var(--bz) - var(--b0)) * 1000)))}}  /* 横に長い立ち絵（武器・尻尾）が画面の右へ 1〜11px はみ出す（ux_check E5：绝区零・Astrae Oratio）：右へ出す分を 22px までに */
 .emb img{transition:opacity .25s ease-out,transform .25s ease-out}
 .emb-fade .emb img:not(.ld){opacity:0;transform:translateY(8px)}  /* 読み込みが終わる（decode）まで見せず、終わったら下から少し上がって現れる：空 → いきなり絵、の「パッ」をなくす */
@@ -869,8 +869,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
  .picks{padding:18px 14px 22px;box-shadow:5px 5px 0 var(--rose)}.pknav{margin-left:0;width:100%}
  .pkgrid,.pkgrid.row{grid-template-columns:minmax(0,1fr);gap:28px}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/10}
  .pk.big .pic{--pko:26px}.pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
- .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat,.band .nums{margin-left:0}.band .deco{display:none}
- .hx{position:static;width:auto;margin-top:10px}.heat[open],.band .nums:has(.heat[open]){flex-basis:100%}.band .nums:has(.heat[open]){flex-wrap:wrap}
+ .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat{margin-left:0}.band .deco{display:none}
+ .hx{position:static;width:auto;margin-top:10px}.heat[open]{flex-basis:100%}
  .grid{padding:16px 14px 18px;gap:24px 14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}.pend summary{padding:10px 14px}.pend ul{padding:0 14px 12px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
@@ -2124,7 +2124,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>11.13 12:28</b></div></div></header>
+<div class="meta"><small>更新</small><b>11.13 12:30</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
