@@ -110,19 +110,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx1.sinaimg.cn/middle/006dNg2Ply1iizp6xqfr9j30t229m138.jpg": {
-  "w": 1046,
-  "h": 2938,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/6216e8b88bc71698.webp",
-  "out": [
-   456,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx1.sinaimg.cn/middle/007148Qbly1iiw7o15fbmj30n012owfu.jpg": {
   "w": 828,
   "h": 1392,
@@ -144,6 +131,19 @@
   "local": "pics/65fa3ff8a54cba67.webp",
   "out": [
    778,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx2.sinaimg.cn/middle/006dNg2Ply1iizp6xr3lsj31dk26mgut.jpg": {
+  "w": 1784,
+  "h": 2830,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/0f37db57a8551a48.webp",
+  "out": [
+   807,
    1280
   ],
   "why": "防盗链",
@@ -1621,6 +1621,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/12/5638786_1.jpg": {
+  "w": 800,
+  "h": 1064,
+  "target": 720,
+  "v": 3
+ },
  "https://img.mydaily.co.kr/photos/2026/11/05/2026110511433783151_l.jpg": {
   "w": 640,
   "h": 434,
@@ -2528,6 +2534,19 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000037-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327,
+  "local": "pics/f101adb93e2b36a8.webp",
+  "out": [
+   800,
+   450
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg": {
   "w": 1200,
   "h": 675,
@@ -2863,12 +2882,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/2dbe7f2bd1676e86801b0a51a5fa559c7b12c23469d6aa57fc4cbdbc162e9f0b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fftvn_sports_106%2Fbf49b2853a3d6a9d7f06fc76f5faf436.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/74f35a083cff840f66783c92d955d53956a815f17f8fc1c338e7c6d11d969191/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fa11653e42e3e266fd5750215b71c84b8.jpg": {
   "w": 1200,
   "h": 1819,
@@ -2959,6 +2972,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://skream.jp/news/2026/11/13/images/kouhaku77.jpg": {
+  "w": 800,
+  "h": 1000,
+  "target": 720,
+  "v": 3
  },
  "https://sm.mashable.com/mashable_in/seo/default/z3wq-2026-11-09t133252175_zxvt.jpg": {
   "w": 1200,
@@ -3641,12 +3660,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.A4oKhTmCQyDL-V9gHR12Ew&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3798,12 +3811,6 @@
  "https://www.bing.com/th?id=ONUT.dmDVd6FuKl6McU40vrzJDg&pid=News&w=1200": {
   "w": 700,
   "h": 462,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.eGfHouee1vdxkk30h2z1BA&pid=News&w=1024": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4101,6 +4108,12 @@
   "w": 2000,
   "h": 1333,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.irishtimes.com/resizer/v2/7YU5IQJBWSHVFPA2HLRYNCPU2U.jpg?smart=true&auth=392b58011329c6a1fa0d952825eca3630ea4e5b73f11e8098ec741509cbaf880&width=1200&height=630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.jedinews.com/wp-content/uploads/2025/09/Warwick-Davis-Harry-Potter-Aug25.jpg": {

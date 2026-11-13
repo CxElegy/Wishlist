@@ -1,32 +1,32 @@
 {
- "admin": "6baf0b806a5a",
- "admin-ai": "d9c8fade8ebb",
+ "admin": "242d127c5e79",
+ "admin-ai": "23164200bc66",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6c0458c5"
+   "1e2588cb"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ac5511dd"
   ]
  },
- "admin-boards": "f99be8639d6e",
+ "admin-boards": "465331dd33e5",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e579d34c"
+   "a6e3c89a"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "571d0f6dfaf9",
+ "admin-emblem": "b726704fd595",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f79ddd4f"
+   "d2e10d01"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "0b1e82d948fc",
+ "admin-now": "7b98b1bee1a9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8808b9ac"
+   "fa68c928"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "3f01e85b"
+   "edbf107a"
   ],
   "term-panel": [
    "ライブログ",
-   "95952ccf"
+   "f8ce3236"
   ]
  },
- "admin-system": "f6545151181e",
+ "admin-system": "46268092143f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f8b776ab"
+   "d12a3333"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "006b27bb"
+   "8c944851"
   ]
  },
  "admin_marks": {},
- "heat": "8309255f3a3c",
+ "heat": "dc4fcda090d3",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "27d11917"
+   "c7932c4e"
   ],
   "ranking": [
    "ランキング",
-   "6741173e"
+   "1619fb5a"
   ]
  },
- "index": "f5043fd174b6",
+ "index": "b99da85d73f1",
  "index_marks": {
   "front": [
    "トップ",
-   "c75245fb"
+   "449126df"
   ],
   "picks": [
    "気になるかも？",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "4829696b"
+   "4389cec3"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "ed978315"
+   "5afcd40e"
   ]
  },
- "updated": "11.13 16:19",
+ "updated": "11.13 16:33",
  "wishlist": "4b8cdabf0a16"
 }
