@@ -6,7 +6,7 @@ usage: python harness/shift_check.py [--root docs] [--widths 390x844,412x915,133
 URL 欄が隠れる・出る resize（高さだけ 56px 変わる）をまねる。全版面（section.sec）で歩くたびに測る：
   - cnt：帯が画面に入っている間に「今週」の位置（帯の中の上端）が 8px より動いた版面の数（題名の横 ↔ 下の行を行き来した）
   - band：見出しの帯の高さが 2px より変わった版面の数
-  - sec：版面の高さが、画面に入っている間に 2px より変わった版面の数（sec_off は画面の外も含めた参考）
+  - sec：版面の下の縁が画面に入っている間に、版面の高さが 2px より変わった版面の数（下の版面が目の前で押される。sec_off は画面の外も含めた参考）
   - cls：スクロール中の layout shift の合計（hadRecentInput なし。URL 欄の出入りの瞬間の分は cls_rz に分ける）
 写真は外の網に出ないので、どの網址も 16:9 の灰色の絵を返す（lazy の写真はスクロールで近づいてから届く）。
 小元素（docs/home/emblems）と網页は手元の本物。字体（Google Fonts）は止める（CI と同じ代わりの字体）。
@@ -45,11 +45,12 @@ INIT = r"""
       const k = n ? n.nodeName + '.' + String(n.className || '').split(' ')[0] + '@' + ((n.closest && n.closest('section[data-k]') || {}).dataset || {}).k : '?'; M.src[k] = (M.src[k] || 0) + e.value; }); } })
     .observe({type: 'layout-shift', buffered: false}); } catch (_) {} })();
 """
+# 版面の高さは下の縁が画面に入っている間だけ数える（縦に長い版面の、画面の下の外で写真が届いて伸びるのは見えない）
 MEASURE = r"""
 () => [...document.querySelectorAll('section.sec')].map(s => { const b = s.querySelector(':scope > .band'); if (!b) return null;
   const c = b.querySelector('.cnt'), br = b.getBoundingClientRect(), cr = c && c.getBoundingClientRect();
   const sr = s.getBoundingClientRect(), H = innerHeight;
-  return [s.dataset.k || s.id, Math.round(s.offsetHeight), Math.round(br.height), cr ? Math.round(cr.top - br.top) : null, sr.top < H && sr.bottom > 0, br.top < H && br.bottom > 0]; }).filter(Boolean)
+  return [s.dataset.k || s.id, Math.round(s.offsetHeight), Math.round(br.height), cr ? Math.round(cr.top - br.top) : null, sr.bottom > 0 && sr.bottom <= H, br.top < H && br.bottom > 0]; }).filter(Boolean)
 """
 
 
