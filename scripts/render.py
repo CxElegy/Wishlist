@@ -675,7 +675,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .pic img{transition:opacity .3s ease-out}
 .emb-fade .pic img:not(.bg):not(.ico):not(.ld){opacity:0}  /* 記事の写真も同じ：届くまで枠の薄い地だけ、届いたら ふわっと（背景のぼかし .bg と来源の小さい印 .ico はそのまま） */
 @media (prefers-reduced-motion:reduce){.pic img{transition:opacity .15s linear}}
-.emb-fade .emb-in:has(img:not(.ld)){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
+.emb-fade .emb-in:has(img:not(.ld):not([width])){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}.emb img{transition:opacity .2s linear}.emb-fade .emb img:not(.ld){transform:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
@@ -1492,7 +1492,8 @@ def _emblem_img(a):
         k = ' style="--bl:{:.3f};--bf:{:.3f};--bc:{:.3f};--ba:{:.3f};--be:{:.3f}{}"'.format(b[5] if len(b) > 5 else b[1] - b[0], b[1], b[2], b[3], b[0],
                                                                                   (f';--fh:{a["bf"]:.3f}' + (f';--ft:{a["bt"]:.3f}' if a.get("bt") else "")) if a.get("bf") else "")   # --be 目の線・--fh 顔の高さ・--ft 顔の上の端：顔の下限（I1c）
     body_cls = (" body cut" if a["body"][1] > 1 else " body") if a.get("body") else " nb" if a.get("nb") else " fz" if m and m >= 1 else ""
-    img = (f'<img class="{a["shape"]}{body_cls}"{k} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-e="x">')
+    wh = f' width="{a["w"]}" height="{a["h"]}"' if a.get("w") and a.get("h") else ""   # 届く前から絵の形の場所を取る（F5）
+    img = (f'<img class="{a["shape"]}{body_cls}"{k}{wh} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-e="x">')
     c = a.get("crop")
     ar = a.get("ar")
     if a["shape"] == "badge" and not c and (a.get("plate") or ar and not (CARD_AR[0] <= float(ar) <= CARD_AR[1])):
@@ -1515,6 +1516,32 @@ def mark_own_emblems(item):
     作品のポスター（work）は emblem 側の印で足りる。それ以外のキャラは記事に名前が出たときだけ関係ありとする（EMB_REL_JS）。"""
     own = {_own_key(t) for t in [item.get("name"), *(item.get("keywords") or []), *(item.get("match") or [])] if isinstance(t, str)} - {""}
     return [({**x, "_own": True} if isinstance(x, dict) and _own_key(x.get("subject")) in own else x) for x in item.get("emblem") or []]
+
+
+_EMB_DIMS = {}
+
+
+def _emb_size(src):
+    """小元素の絵の元の大きさ (幅, 高さ)。<img> に書いて、届く前から場所を取る（審美基準 F5：描いた後に動かない）。
+    倉庫の絵（docs/<面>/emblems/・docs/emblems/）は読んで、twemoji は 36×36（svg の viewBox）。分からない外の絵は None（届いたら 1 回だけ測る）。"""
+    if src in _EMB_DIMS:
+        return _EMB_DIMS[src]
+    wh = None
+    if "/twemoji@" in src:
+        wh = (36, 36)
+    elif re.fullmatch(r"emblems/[a-z0-9-]+\.webp", src):
+        for d in (sitedir.SITE_DIR, sitedir.ROOT / "docs"):
+            f = d / src
+            if f.is_file():
+                try:
+                    from PIL import Image
+                    with Image.open(f) as im:
+                        wh = im.size
+                except Exception:   # noqa: BLE001  読めない絵は測らない（網页の作りは止めない）
+                    wh = None
+                break
+    _EMB_DIMS[src] = wh
+    return wh
 
 
 def _emblem(items, ring="accent"):
@@ -1568,6 +1595,9 @@ def _emblem(items, ring="accent"):
             a["shape"] = "logo"   # 名前が logo の画像（shape が cutout のまま網址で引いた ArcheAge_Logo.png）は人物でなくロゴ：顔の物差しに入れない
         if x.get("plate"):   # 濃い地の板ごとのタイトルロゴ：カードの窓で切らず、板そのものに枠
             a["plate"] = True
+        wh = _emb_size(a["src"])
+        if wh:
+            a["w"], a["h"] = wh   # 元の大きさ：EMB_JS が差し替えた <img> にも width/height を書く（F5）
         alts.append(a)
     alts = alts[:max(EMB_TOP, -(-len(alts) // 5))]   # 版面の顔に出すのは「知られている順」の上位だけ（並びは名簿の順）。脇役は管理ページの一覧に残る
     _body_len(alts)
@@ -1813,7 +1843,7 @@ SHUFFLE_JS = """
     showFlat(false);
     if (innerWidth <= 760) return;
     if (sm.length < 2) return;
-    const T = innerHeight - (parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0) - 16, w0 = sm[0].querySelector('.pic')?.getBoundingClientRect().width || 200;
+    const T = (window.WLvh || innerHeight) - (parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0) - 16, w0 = sm[0].querySelector('.pic')?.getBoundingClientRect().width || 200;
     const hk = k => k ? k.getBoundingClientRect().height : 0;
     const apply = h => {
       wishGrid.style.setProperty('--pkh', Math.round(h) + 'px'); wishGrid.style.removeProperty('--pkbig');
@@ -2105,13 +2135,21 @@ LIKEFX_JS = likefx.FX_JS.replace("__THUMB__", json.dumps(_THUMB))
 EMB_HEAD_JS = ("document.documentElement.classList.add('emb-fade');"
                "if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)"
                "document.documentElement.classList.add('emb-js')")
+# URL 欄の出入りの門（審美基準 F5）：スマホで URL 欄が隠れる・出るたびに resize（幅は同じで高さだけ数十 px）が来て、
+# 版面の高さの予算（画面の高さの割合）が変わり、全版面を組み直していた。幅が同じで高さだけ 160px 未満の変化は、ほかの resize の聞き手に渡さない
+# （<head> で最初に聞くので stopImmediatePropagation が効く）。版面の高さの予算は window.WLvh（門を通った高さ）で計る
+VIEW_GATE_JS = ("(function(){var W=innerWidth,H=innerHeight;window.WLvh=H;addEventListener('resize',function(e){var w=innerWidth,h=innerHeight;"
+                "if(e.isTrusted&&w===W&&Math.abs(h-H)<160&&(w<=760||matchMedia('(pointer:coarse)').matches)){e.stopImmediatePropagation();return}"
+                "W=w;H=h;window.WLvh=h},true)})();")
 EMB_JS = """
 (() => {
   const els = [...document.querySelectorAll('.emb')];
   // 1 枚の小元素を差し替える（開いたときのランダムと、読めなかったときの次の候補で同じ形）
   const put = (el, img, a) => {
       const inner = el.querySelector('.emb-in');
-      const n = img.cloneNode(); n.src = a.src; n.classList.remove('ld');
+      // 前の絵を写さず（cloneNode は前の絵の width/height・形を持ち越す）新しく作り、元の大きさを書いてから src を入れる：届く前から場所を取る（審美基準 F5）
+      const n = document.createElement('img'); n.alt = ''; n.loading = img.loading; n.decoding = 'async'; n.referrerPolicy = 'no-referrer'; n.dataset.e = 'x';
+      if (a.w && a.h) { n.width = a.w; n.height = a.h; }
       const whole = a.shape === 'badge' && !a.crop && (a.plate || a.ar && (a.ar < 0.95 || a.ar > 1.6));   // render.CARD_AR：カードと比率が離れたら切らない
       n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : a.nb ? ' nb' : a.m >= 1 ? ' fz' : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
       n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] + ';--be:' + a.body[0] + (a.bf ? ';--fh:' + a.bf + (a.bt ? ';--ft:' + a.bt : '') : '') : a.nb ? '--nh:' + a.nb[0] + ';--ng:' + a.nb[1] + ';--na:' + a.nb[2] : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) + (a.m >= 1 && a.fs ? ';--fs:' + a.fs + (a.fa ? ';--fa:' + a.fa : '') : '') : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';   // a.m = emblem_face.fit
@@ -2120,6 +2158,7 @@ EMB_JS = """
         c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1);
         c.appendChild(n); inner.replaceChildren(c);
       } else inner.replaceChildren(n);
+      n.src = a.src;
       return n;
   };
   const altsOf = el => { try { return JSON.parse(el.dataset.alts || '[]'); } catch (_) { return []; } };
@@ -2128,7 +2167,7 @@ EMB_JS = """
     const tried = (el.dataset.tried ? el.dataset.tried.split('\\n') : []).concat(img.getAttribute('src') || '');
     const a = altsOf(el).find(x => x && x.src && !tried.includes(x.src)); el.dataset.tried = tried.join('\\n');
     if (!a) return false;
-    const n = put(el, img, a); const show = () => n.classList.add('ld'); (n.decode ? n.decode() : Promise.reject()).then(show, show); return true; };
+    const n = put(el, img, a); const show = () => n.classList.add('ld'); (n.decode ? n.decode() : Promise.reject()).then(show, show); settle(el); watch(el); return true; };
   els.forEach(el => {
     const alts = altsOf(el), img = el.querySelector('img');
     if (alts.length > 1 && el.querySelector('.emb-in') && img)
@@ -2170,26 +2209,39 @@ EMB_JS = """
     Promise.all(first.map(i => new Promise(r => { i.addEventListener('load', r, { once: true }); i.addEventListener('error', r, { once: true }); }))).then(start); setTimeout(start, 2500); }
   const near = ev => { const a = ev.target.closest && ev.target.closest('a[href^="#"]'), s = a && document.getElementById(a.getAttribute('href').slice(1)); if (s) pull(s.closest('section') || s, true); };
   ['pointerover', 'touchstart', 'focusin'].forEach(n => document.addEventListener(n, near, { passive: true }));
-  // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）
-  const room = el => { const band = el.parentElement, img = el.querySelector('img'); if (!band || !img) return;
-    const go = () => { const b = band.getBoundingClientRect(), r = el.getBoundingClientRect();
-      if (r.width) band.style.paddingRight = Math.ceil(b.right - r.left + 12) + 'px'; };
-    if (img.complete) go(); else img.addEventListener('load', go, { once: true }); };
   // はみ出し（案 A：絵の高さの --r＝15% を帯の上の縁から外へ）。下端は帯の線のまま：帯が背の高いスマホでは絵を最大 1.15 倍に、それでも届かなければ持ち上げる（--lift）
-  const place = el => { const band = el.parentElement, c = el.querySelector('.emb-in > *'); if (!band || !c) return;
+  // 倍率 --s は最初に 1 回だけ決める（keep で持ち上げ --lift だけ帯の高さに合わせ直す）。倍率と帯の右の空きが互いを書き合うと、帯の高さ・「今週」の行が止まらない（審美基準 F5）
+  const place = (el, keep) => { const band = el.parentElement, c = el.querySelector('.emb-in > *'); if (!band || !c) return;
     const r = parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0, z = parseFloat(getComputedStyle(el).getPropertyValue('--z')) || 1, h = el.offsetHeight - c.offsetTop;   // 帯の線より上に見える高さ（足の下の余りは clip-path で切れる）
     if (!h || !r) return;
-    const avail = band.offsetHeight - 8, s = Math.min(Math.max(avail / ((1 - r) * h), z), z * 1.15), lift = -Math.max(0, avail - s * h * (1 - r));
+    const avail = band.offsetHeight - 8, s0 = parseFloat(el.style.getPropertyValue('--s')), s = keep && s0 ? s0 : Math.min(Math.max(avail / ((1 - r) * h), z), z * 1.15), lift = -Math.max(0, avail - s * h * (1 - r));
     el.style.setProperty('--s', s.toFixed(3)); el.style.setProperty('--lift', lift.toFixed(1) + 'px');
     // 帯の上にはみ出す高さ（＋浮く 6px・傾きで上がる角 12px）を版面に持たせる：吸着の位置（scroll-margin-top）と版面の間を、その分だけ上へ。
     // 版面を画面の上にそろえた時も小元素が全部見え、上の版面にも重ならない（審美基準 E4・I1b。2026-11-11 店長「scroll 对齐的时候也要小图标全部显示出来」）
     const sec = band.closest('section'); if (!sec) return;
     const ov = Math.ceil(Math.max(0, s * h - avail - lift + 6 + 12)), was = +sec.dataset.embov || 0;
     sec.style.setProperty('--embov', ov + 'px'); sec.dataset.embov = ov;
-    if (ov !== was) { clearTimeout(place.t); place.t = setTimeout(() => dispatchEvent(new Event('resize')), 60); } };   // 画面 1 枚に入れる高さが変わった：版面の組み直しをもう一度
-  els.forEach(el => { const img = el.querySelector('img'); if (img && !img.complete) img.addEventListener('load', () => place(el), { once: true }); place(el); });
-  els.forEach(room);
-  addEventListener('resize', () => els.forEach(el => { place(el); room(el); }));
+    if (ov !== was) { clearTimeout(place.t); place.t = setTimeout(() => dispatchEvent(new Event('resize')), 60); } };   // 画面 1 枚に入れる高さが変わった：版面の組み直しをもう一度（作った resize は下の門を通る・小元素は組み直さない）
+  // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）。ここ 1 か所だけが書く。
+  // 変形の前の箱（offsetLeft/Top）で測り、変形（倍率 --s・傾き 6°・浮く動き embdrift の 3°）は式で足す：スクロールや絵の到着で値が変わらない（F5。前は変形の後の箱を測り 118↔192px を行き来した）
+  const TILT = 9 * Math.PI / 180;
+  const room = el => { const band = el.parentElement; if (!band || !el.offsetWidth) return;
+    const ox = el.offsetLeft + el.offsetWidth, oy = el.offsetTop + el.offsetHeight, s = parseFloat(el.style.getPropertyValue('--s')) || 1;   // 変形の基点：小元素の右下
+    let far = 0;
+    el.querySelectorAll('img').forEach(i => { let x = 0, y = 0, n = i; while (n && n !== band) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+      if (!i.offsetWidth) return; far = Math.max(far, (ox - x) * Math.cos(TILT) + Math.max(0, oy - y) * Math.sin(TILT)); });
+    if (!far) return;
+    const need = Math.ceil(band.clientWidth - ox + s * far + 12);
+    if (Math.abs((parseFloat(band.style.paddingRight) || 0) - need) > 1) band.style.paddingRight = need + 'px'; };
+  const settle = el => { place(el); room(el); place(el, 1); };   // 倍率を決める → その倍率で右を空ける → 空けて変わった帯の高さに持ち上げだけ合わせる
+  // 絵の到着：width/height を書いた絵（倉庫の絵・twemoji）は届く前に正しい場所を取っているので何もしない。書いていない・届いた形が違う絵だけ 1 回取り直す
+  const watch = el => { const img = el.querySelector('img'); if (!img || img.complete) return;
+    img.addEventListener('load', () => { const w = +img.getAttribute('width'), h = +img.getAttribute('height');
+      if (!(w && h) || Math.abs(img.naturalWidth / img.naturalHeight - w / h) > 0.02) settle(el); }, { once: true }); };
+  els.forEach(settle); els.forEach(watch);
+  if (document.fonts) document.fonts.ready.then(() => els.forEach(settle));   // 字体が届くと題字の幅・帯の高さが変わる：読み込みの中で 1 回だけ
+  let embW = innerWidth;   // 幅が変わったときだけ組み直す（URL 欄の出入り・自分で起こした resize では組み直さない）
+  addEventListener('resize', () => { if (innerWidth === embW) return; embW = innerWidth; els.forEach(settle); });
   if (!els.length || !document.documentElement.classList.contains('emb-js')) return;
   // 下へスクロールして見えたら飛び出す（.in）。上へ戻って版面が画面の下へ消えたら、引っ込んで消える（.out）→ もう一度下へ来るとまた飛び出す
   const io = new IntersectionObserver(es => es.forEach(en => {
@@ -2253,8 +2305,10 @@ RB_JS = """
     const f = () => { const k = Math.min(1, Math.max(0, (performance.now() - t0) / D)); sp.textContent = fmt(sp, Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1 && !document.hidden) requestAnimationFrame(f); else sp.textContent = fmt(sp, to); };
     requestAnimationFrame(f); };
   const cu = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { cu.unobserve(e.target); count(e.target); } }), { threshold: .6 });
+  // 途中の数は、最後の数が取った場所の中で描く（審美基準 E5）。場所は px でなく字の幅（ch・tabular-nums）で取る：字体があとから届いて数字の幅が変わっても、箱が数字に合わせて伸び縮みしない
   const ws = nums.map(sp => sp.getBoundingClientRect().width);   // 幅を全部読んでから書く（1 回の計算で済む）
-  nums.forEach((sp, i) => { if (!ws[i]) return; sp.style.minWidth = ws[i] + 'px'; sp.textContent = '0'; cu.observe(sp); });
+  nums.forEach((sp, i) => { const d = sp.dataset.to.length, c = (sp.textContent.match(/,/g) || []).length; if (!ws[i] || !d) return;
+    sp.style.minWidth = 'max(' + Math.ceil(ws[i]) + 'px, calc(' + d + 'ch + ' + (c * 0.35).toFixed(2) + 'em))'; sp.textContent = '0'; cu.observe(sp); });
   // ---------- 頭条：Blur Text（見出しが語ごとにぼけからピントが合う。1 回・1 秒ほど。スマホは opacity だけ）＋ Star Border ----------
   const h = document.querySelector('.top h2');
   if (h) { const keep = h.innerHTML, us = [], CJK = /[\\u3000-\\u9fff\\uff00-\\uffef]/, tw = document.createTreeWalker(h, NodeFilter.SHOW_TEXT), nodes = []; let n;
@@ -3960,7 +4014,7 @@ FIT_JS = """
       p.classList.toggle('fill', ok);
       if (!ok && img._bands) trimFit(img, p, img._bands);
       if (!ok && r0 < 1 && innerWidth > 760) {
-        const ph = Math.min(w0 / nat, Math.max(h0, innerHeight * 0.6)), w = Math.round(ph * nat); p.style.width = w + 'px'; p.style.height = Math.round(ph) + 'px';   // 頭条はいちばん大きく（C1）：高さは画面の 6 割まで伸ばしてよい p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); img.style.objectPosition = '';
+        const ph = Math.min(w0 / nat, Math.max(h0, (window.WLvh || innerHeight) * 0.6)), w = Math.round(ph * nat); p.style.width = w + 'px'; p.style.height = Math.round(ph) + 'px';   // 頭条はいちばん大きく（C1）：高さは画面の 6 割まで伸ばしてよい p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); img.style.objectPosition = '';
         if (fr) { fr.style.justifySelf = 'end'; const fw = fr.getBoundingClientRect().width; top.style.gridTemplateColumns = 'minmax(0,1fr) ' + Math.ceil(fw + 16) + 'px'; }
         if (img._bands) trimFit(img, p, img._bands);
       } else if (!ok && (r0 > 1 || innerWidth <= 760)) {   // 横長の絵・スマホの縦長の絵：枠を写真の形に（縦は幅の 1.3 倍まで、超える分は主役が残るときだけ切る）
@@ -4160,7 +4214,7 @@ FIT_JS = """
     vis.forEach(boardBase);
     const over = sec ? sec.getBoundingClientRect().height - m.getBoundingClientRect().height : 120;
     const bar = sec ? parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0 : 0;   // 上の固定の帯（≤1000）：画面は帯の下だけ・吸着もその下
-    const budget = Math.max(160, (innerHeight - bar) * ((sec && +sec.dataset.vh) || 70) / 100 - bar - over - 16 - Math.max(0, ((sec && +sec.dataset.embov) || 0) - 18)), H = c => c.getBoundingClientRect().height;   // 小元素の分だけ下がって吸着する（E4）   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
+    const budget = Math.max(160, ((window.WLvh || innerHeight) - bar) * ((sec && +sec.dataset.vh) || 70) / 100 - bar - over - 16 - Math.max(0, ((sec && +sec.dataset.embov) || 0) - 18)), H = c => c.getBoundingClientRect().height;   // 小元素の分だけ下がって吸着する（E4）   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
     const fixed = c => { boardBase(c); const h = H(c); return {k: 'N', s: 1, lo: 0, hi: 0, h: () => h, a: () => 0}; };
     const measure = (c, i, k) => {
       const o = [], p = c.querySelector(':scope > .pic'), img = p && img0(p);
@@ -4404,7 +4458,7 @@ FIT_JS = """
     if (innerWidth <= 760) return;
     document.querySelectorAll('section.sec').forEach(sec => {
       const g = sec.querySelector(':scope > .grid'), h = g && g.querySelector(':scope > article.hero'); if (!h || !sec.offsetParent) return;
-      const bar = parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0, B = (innerHeight - bar) * ((+sec.dataset.vh || 70) / 100) - bar - 16 - Math.max(0, (+sec.dataset.embov || 0) - 18), over = () => sec.getBoundingClientRect().height - B;
+      const bar = parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0, B = ((window.WLvh || innerHeight) - bar) * ((+sec.dataset.vh || 70) / 100) - bar - 16 - Math.max(0, (+sec.dataset.embov || 0) - 18), over = () => sec.getBoundingClientRect().height - B;
       if (over() <= 0) return;
       const im = h.querySelector('.pic img:not(.bg):not(.ico)');
       const p = h.querySelector('.pic');
@@ -4449,7 +4503,7 @@ FIT_JS = """
     G.classList.add('one');   // 壁が横いっぱい（右の列は壁の中）
     // 画面 1 枚の高さ：壁の上端（見出しの下）から画面の下端まで
     const spot = G.closest('.spot');
-    const T = Math.max(300, innerHeight - (parseFloat(getComputedStyle(spot || w).getPropertyValue('--snapbar')) || 0) - (w.getBoundingClientRect().top - (spot || w).getBoundingClientRect().top) - 24);   // 上の固定の帯（≤1000）の分も引く   // 見出しの下から画面の下まで（2026-11-09 店長：ジャンル別の棚はなし・ほかの注目ニュースは画面 1 枚の高さいっぱい）
+    const T = Math.max(300, (window.WLvh || innerHeight) - (parseFloat(getComputedStyle(spot || w).getPropertyValue('--snapbar')) || 0) - (w.getBoundingClientRect().top - (spot || w).getBoundingClientRect().top) - 24);   // 上の固定の帯（≤1000）の分も引く   // 見出しの下から画面の下まで（2026-11-09 店長：ジャンル別の棚はなし・ほかの注目ニュースは画面 1 枚の高さいっぱい）
     w.style.gridTemplateColumns = '';
     const W0 = w.clientWidth;
     const okPic = c => !c.classList.contains('nophoto') && c.querySelector('.pic img:not(.bg):not(.ico)');
@@ -4610,17 +4664,7 @@ FIT_JS = """
       const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = pk.src; img.addEventListener('error', () => img.remove(), { once: true }); img.style.height = Math.min(gap, 64) + 'px'; b.append(img);
     });
   };
-  // 小元素（版面の右上のキャラ）の実際の幅だけ、見出しの帯の右を空ける（決め打ちの 260px では、横に広いポーズのキャラが「今週」の数に重なった。2026-11-09）
-  const embPad = () => document.querySelectorAll('section.sec.has-emb').forEach(s => {
-    const b = s.querySelector('.band'), em = s.querySelector('.emb'); if (!b || !em) return;
-    const ims = [...em.querySelectorAll('img')].filter(i => i.offsetWidth); if (!ims.length) return;
-    b.style.paddingRight = '';
-    const left = Math.min(...ims.map(i => i.getBoundingClientRect().left)), need = Math.round(b.getBoundingClientRect().right - left + 12), cur = parseFloat(getComputedStyle(b).paddingRight) || 0;
-    if (need > cur) b.style.paddingRight = need + 'px';
-  });
-  addEventListener('load', embPad);
-  addEventListener('resize', () => setTimeout(embPad, 250));
-  document.addEventListener('load', e => { if (e.target.closest && e.target.closest('.emb')) embPad(); }, true);   // 写真の load は document の capture で聞く（window には上がらない）
+  // 帯の右の空き（小元素の幅）は EMB_JS の room が 1 か所で決める（F5：前はここの embPad と EMB_JS が変形の後の箱で書き合い、スマホで「今週」が行を行き来した）
   // 写真・字体が届いて高さが変わったら詰め直す（1 フレームにまとめる）。足した分で自分の大きさが変わっても、同じ結果になるので繰り返さない
   let wallReady = document.readyState === 'complete'; addEventListener('load', () => { wallReady = true; });
   let wq = 0; const wallSoon = () => { if (!wq) wq = requestAnimationFrame(() => { wq = 0; wall(); }); };
@@ -5226,7 +5270,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style><style>{RB_CSS}</style>
 {LIKEFX_HEAD if fb else ""}
 {_live_head("index")}{f"<style>{BUSY_CSS}</style>" if busy else ""}
-<script>{EMB_HEAD_JS}</script>
+<script>{VIEW_GATE_JS}{EMB_HEAD_JS}</script>
 <script>{IMG_FALLBACK_JS}</script>
 </head>
 <body>

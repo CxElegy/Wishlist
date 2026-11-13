@@ -18,6 +18,7 @@
 2026-10-25 に枠が 24px に潰れた）・枠の下の空白 800px 以下（Actions の枠だけ 5,129px で下の枠が押し下げられた）・部品の重なり 0・枠や部品の字のはみ出し 0・横にはみ出さない。写真 OUT/admin-arch-<幅>.png。
 写真は OUT/<だれ>-<幅>x<高さ>.png・OUT/<だれ>-settings-<幅>x<高さ>.png。
 0 個の人（test-c）は 390 幅で高さ 667・740 でも、最初の画面・設定・欲しい物（wishlist.html）を点検（主役のボタンが画面に入り固定ボタンと重ならない）。
+「F5 描いた後に動かない」（--shift、2026-11-13）：harness/shift_check.py を手元の docs/ で 4 幅。
 「1 日通し」（--journey、2026-10-27）：空のアカウント test-d で、押して通す。入口 →「ログイン」→ 空の最初の画面の「好きなものを選ぶ」→ ジャンル → カード → 確認 →「足す」→
 自分のページに札が出る → 設定ページに出る →札を押して外れる → 空に戻る（本人の追いかけるものを空にする）。各段で本物のクリック（ほかの部品が上に重なっていれば押せずに ✗）、前後の画面を OUT/journey-<幅>-<段>.png に残す。
 ✗：押せない・押しても変わらない・JS のエラー・素の箱・横にはみ出す・同じ id の重複。始めと終わりに本人の追いかけるもの（prefs.picks）を空にする（本人の行だけ、my_keywords_set）。
@@ -1492,6 +1493,7 @@ def main(argv):
     ap.add_argument("--diff-admin", action="store_true", help="店長のページ（ログインなし）とお客さまのページを部品の有無で比べ、違いを 1 行ずつ出す（harness/diff_admin.py）")
     ap.add_argument("--fresh", action="store_true", help="本番の読みを写しにせず毎回読む（直した直後の比べ用。egress を使う）")
     ap.add_argument("--journey", action="store_true", help="1 日通し（空のアカウントで押して通す）だけを走らせる")
+    ap.add_argument("--shift", action="store_true", help="F5 描いた後に動かない（harness/shift_check.py）だけ：手元の docs/ を 390/412/1333/1440 でゆっくりスクロールし、「今週」の行・帯と版面の高さ・shift を数える")
     a = ap.parse_args(argv)
     if a.fast:
         a.emb = "off"
@@ -1505,6 +1507,16 @@ def main(argv):
             return diff_admin.run(pw, a.base, [x for x in a.who.split(",") if x != "guest"], [int(w) for w in a.widths.split(",")], session, WHO)
     out.mkdir(parents=True, exist_ok=True)
     fails = 0
+    if a.shift:   # F5（審美基準）：スマホは URL 欄の出入りもまねる。1 枚でも「今週」が行を行き来したら ✗
+        import shift_check
+        for s in ("390x844", "412x915", "1333x720", "1440x900"):
+            w, h = map(int, s.split("x"))
+            r = shift_check.run(ROOT / "docs", w, h)
+            over = [k for k, lim in shift_check.LIMITS.items() if r[k] > lim]
+            fails += bool(over)
+            print(("✗ " if over else "✓ ") + f"F5 {s}：今週が動いた {r['cnt']}・帯 {r['band']}・版面の高さ {r['sec']}・shift {r['cls']}（版面 {r['boards']}）")
+        print(f"F5：✗ {fails} 件")
+        return 1 if fails else 0
     with sync_playwright() as pw:
         if a.journey:
             for w in a.widths.split(","):
