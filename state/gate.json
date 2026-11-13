@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-13T15:32:42+00:00",
+ "checked": "2026-11-13T16:32:11+00:00",
  "fired": {
   "at": "2026-11-13T15:32:42+00:00",
   "results": {
@@ -43,12 +43,6 @@
     "sig": "edb0a13c2cc5"
    },
    "items": [
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
     "lib:京都",
     "lib:宇宙・ロケット",
     "lib:将棋",
@@ -56,15 +50,7 @@
     "lib:温泉",
     "lib:生成AI",
     "lib:筋トレ",
-    "lib:観葉植物",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
+    "lib:観葉植物"
    ],
    "last_batch": "2026-11-13T14:40:26+00:00",
    "last_error": {
@@ -72,42 +58,37 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 542,
-   "prog_day": "2026-11-13",
-   "ripe": [
-    "GTA 6",
-    "MMORPG 新作",
-    "漫威电影"
-   ],
-   "sig": "edb0a13c2cc5",
+   "prog": 8,
+   "prog_day": "2026-11-14",
+   "ripe": [],
+   "sig": "c54aadfb8d6e",
    "token_cap": 1000000,
-   "tokens_today": 884821,
-   "why": "整理待ちの記事 149 件（22 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "周杰伦",
-    "The Mandalorian",
-    "Vaundy"
-   ],
-   "need": true,
-   "sig": "5f2494366862",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
+    "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
