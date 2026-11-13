@@ -46,7 +46,6 @@
   "https://turnnewsapp.com/ct-featured/422036.html": "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg",
   "https://www.66wz.com/wendu/system/2026/11/12/105871102.shtml": "https://mmbiz.qpic.cn/mmbiz_png/fXeVwORdalR2DH0CBIemW8EjREoAicFtVoO4F01lgoGxNZoAocFmOtHLYoPibuxeJurdDhMn2v9ibAtIZ7Bdib0u598oUicgD3vpNFk7JP5pTIeA/640?wx_fmt=png&from=appmsg#imgIndex=4",
   "https://www.androidpolice.com/best-t-mobile-deals-of-the-month/": "https://static0.anpoimages.com/wordpress/wp-content/uploads/2026/08/samsung-galaxy-z-fold-8-and-google-pixel-10-pro-standing-side-by-side.png?w=1600&h=900&fit=crop",
-  "https://www.aol.com/articles/doctor-doom-terrifying-avengers-doomsday-203034000.html": "https://www.bing.com/th?id=ONUT.ngUXI6sspb5iI2S9P9dEXw&pid=News&w=1200",
   "https://www.auroradesio.it/top/218998832/": null,
   "https://www.cbc.ca/news/canada/newfoundland-labrador/james-kelloway-suspected-stolen-property-9.7414871": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2har4k.img",
   "https://www.chosun.com/english/national-en/2026/11/11/XURTES4YDVAXXBZFQONSRVDMXY/": "https://www.chosun.com/resizer/v2/MNRTAOJRMIYGGOBYHBSDQNZWGM.jpg?auth=ffbf824053e649bc9bcba36203132d3a6e73c50c8168aef40b5bfa76c6903ca7&width=1200&height=630&focal=1015,498",
@@ -65,6 +64,7 @@
   "https://www.motor1.com/news/806962/mitsubishi-teases-smaller-pajero-models/": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bsNCV.img",
   "https://www.msn.com/en-us/entertainment/general/how-the-mandalorian-reflects-strict-religious-communities/vi-AA2hbWbO": "https://www.bing.com/th?id=ONUT.HemtJzaVL1zj2EDdbPBDqQ&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/nc-reveals-astrae-oratio-booth-layout-render-for-agf/ar-AA2hg3lO": "https://www.bing.com/th?id=ONUT.s2W8AvAIH_oFfZyHQqnVgA&pid=News&w=1200",
+  "https://www.msn.com/en-us/news/other/top-10-mcu-characters-well-probably-never-see-again/ar-AA2hkthT": "https://www.bing.com/th?id=ONUT.vSziIpMPlJ4WhORTPNFS5w&pid=News&w=1200",
   "https://www.msn.com/en-xl/news/other/scotland-created-grand-theft-auto-is-its-video-game-industry-still-thriving/ar-AA2hjzPX": "https://www.bing.com/th?id=ONUT.eGfHouee1vdxkk30h2z1BA&pid=News&w=1024",
   "https://www.msn.com/ja-jp/news/other/%E7%95%A5%E8%AA%9E%E3%82%AF%E3%82%A4%E3%82%BA-%E3%81%82%E3%81%A4%E6%A3%AE-%E3%81%AF%E3%81%AA%E3%82%93%E3%81%AE%E7%95%A5-%E9%95%B7%E5%B9%B4%E6%84%9B%E3%81%95%E3%82%8C%E3%81%A6%E3%81%8D%E3%81%9F%E3%82%B2%E3%83%BC%E3%83%A0/ar-AA2hgJN4": "https://www.bing.com/th?id=ONUT.mSRgEXP9xOJgO4sM674NZA&pid=News&w=1200",
   "https://www.newsandstar.co.uk/news/26706566.benjamin-bunny-beatrix-potter-50p-coin-listed-ebay-35k/": "https://www.newsandstar.co.uk/resources/images/21378190/",
@@ -1146,6 +1146,27 @@
   },
   {
    "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.vSziIpMPlJ4WhORTPNFS5w&pid=News&w=1200",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "MSN",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Top 10 MCU characters we'll probably never see again",
+   "url": "https://www.msn.com/en-us/news/other/top-10-mcu-characters-well-probably-never-see-again/ar-AA2hkthT",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
    "because": "The Mandalorian",
    "date": "2026-11-12",
    "hits": [],
@@ -1166,7 +1187,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "漫威电影",
    "date": "2026-11-12",
    "hits": [],
@@ -1183,27 +1204,6 @@
    ],
    "title": "AVENGERS: DOOMSDAY Empire Covers Assemble Loki, The Avengers, and X-Men for a Showdown With Doctor Doom",
    "url": "https://geektyrant.com/news/avengers-doomsday-empire-covers-assemble-loki-the-avengers-and-x-men-for-a-showdown-with-doctor-doom",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 5,
-   "because": "漫威电影",
-   "date": "2026-11-12",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.ngUXI6sspb5iI2S9P9dEXw&pid=News&w=1200",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "AOL",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Doctor Doom’s Terrifying Avengers: Doomsday Plan Is Exposed After VisionQuest",
-   "url": "https://www.aol.com/articles/doctor-doom-terrifying-avengers-doomsday-203034000.html",
    "words": [],
    "work": "漫威电影"
   },

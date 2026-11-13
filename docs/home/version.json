@@ -1,32 +1,32 @@
 {
- "admin": "a765193a844f",
- "admin-ai": "b913d8f945db",
+ "admin": "09bfc573323f",
+ "admin-ai": "afd05a1701ca",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "93f25ed7"
+   "4f90a906"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "4f2f846f"
+   "d9793d83"
   ]
  },
- "admin-boards": "20019bf90d13",
+ "admin-boards": "086a4d87305c",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "4b3239fa"
+   "6966ac04"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "bde163b98765",
+ "admin-emblem": "ba0b4d4e6b0b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "63fba98d"
+   "8b61c1d3"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "1110265f918d",
  "admin-members_marks": {},
- "admin-now": "a27a98d8dd60",
+ "admin-now": "28f6f1edc9b2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3b0b8ba8"
+   "348bc4c0"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "78e7d22b"
+   "878024de"
   ],
   "term-panel": [
    "ライブログ",
-   "a8315215"
+   "88b806aa"
   ]
  },
- "admin-system": "64b711ba76a5",
+ "admin-system": "e9cc2c1affd2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "eb289ef3"
+   "58262a07"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "75d3a742"
+   "63f1e9e5"
   ]
  },
  "admin_marks": {},
- "heat": "95acb32c9c80",
+ "heat": "d1ac3113e82e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "d84e9668"
+   "ce8c9ffe"
   ],
   "ranking": [
    "ランキング",
-   "1ad61b32"
+   "5dedf3e4"
   ]
  },
- "index": "e1756bbd59fb",
+ "index": "8a3544e759d7",
  "index_marks": {
   "front": [
    "トップ",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "4829696b"
+   "4389cec3"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "6f4b7b0b"
+   "550a3464"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "38552a70"
   ]
  },
- "updated": "11.13 09:49",
+ "updated": "11.13 10:15",
  "wishlist": "ca2c14ae4a3a"
 }

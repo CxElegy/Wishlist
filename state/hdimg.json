@@ -510,6 +510,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
+  "w": 800,
+  "h": 369,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gamey.kr/news/thumbnail/202609/3018752_170370_5622_v150.jpg": {
   "w": 300,
   "h": 225,
@@ -1589,6 +1595,12 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/08/5633521_3.jpg": {
   "w": 800,
   "h": 533,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/12/5638786_1.jpg": {
+  "w": 800,
+  "h": 1064,
   "target": 720,
   "v": 3
  },
@@ -2808,12 +2820,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/2dbe7f2bd1676e86801b0a51a5fa559c7b12c23469d6aa57fc4cbdbc162e9f0b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fftvn_sports_106%2Fbf49b2853a3d6a9d7f06fc76f5faf436.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/74f35a083cff840f66783c92d955d53956a815f17f8fc1c338e7c6d11d969191/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpethelpful_ecomm_277%2Fa11653e42e3e266fd5750215b71c84b8.jpg": {
   "w": 1200,
   "h": 1819,
@@ -3678,12 +3684,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800": {
-  "w": 700,
-  "h": 322,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.W-HrhvpP2nMHirurSEX-oA&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3758,12 +3758,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ngUXI6sspb5iI2S9P9dEXw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.o8UnF04Cw8sWVwpNxcHJ5g&pid=News&w=360": {
   "w": 360,
   "h": 203,
@@ -3827,6 +3821,12 @@
    669
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.vSziIpMPlJ4WhORTPNFS5w&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.chosun.com/resizer/v2/G5SDINLDHFRWGZBRGYZWCNLCGA.jpg?auth=739573127a990fd5ef680a1b099c16fa28b384086240fdaa5d7bc97289559047&width=650&height=341&smart=true": {
   "w": 650,
