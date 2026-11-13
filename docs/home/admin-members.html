@@ -1694,7 +1694,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-members" content="27d2af6b537e"><style>
+<meta name="wl-ver" data-page="admin-members" content="7f6d3cd30f41"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1829,6 +1829,10 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 .wl-toast[hidden]{display:none}
 html[data-lock="1"] [data-vote]{cursor:not-allowed}
 .wl-ro{margin:0 0 4px;padding:8px 12px;border:2px dashed var(--ink);background:var(--sheet);font:700 13px/1.6 var(--font-sans)}
+/* 見るだけ（ログインなし）：止めている操作は薄くして、押せないとわかるように（クリックは AUTH_JS が止めて理由を言う）。
+   設定ページは ページ全体の入力部品、欲しい物ページは「写真で足す」の箱だけ */
+html[data-lock="1"][data-page="settings"] .page :is(button,input,select,textarea,[contenteditable]),
+html[data-lock="1"][data-page="wishlist"] #snap :is(button,input,textarea,.drop){opacity:.45;cursor:not-allowed}
 html[data-gate="1"] body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
@@ -1979,7 +1983,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     gate2:'<div><h1>管理ページ<\/h1><p>',
     gate3:'店長だけが見られます。店長のメールアドレスとパスワードでログインしてください。',
     gate4:'<a href="./">← ウォッチリスト通信に戻る<\/a><\/div>',
-    readOnlyNote1:'見るだけです。設定を変えるには「ログイン」から。',
+    readOnlyNote1:'見るだけです。設定を変えるには「ログイン」から。',readOnlyNote2:'見るだけです。欲しい物を足すには「ログイン」から。',
     secJa1:'その他',
     mine1:'<p class="wl-msg" role="status">読み込み中…<\/p>',
     route1:'あなたが足したもの',
@@ -2176,13 +2180,16 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     bindLogin(g);
   }
   function readOnlyNote(){
-    if(page!=='settings') return;
-    var n=document.querySelector('.wl-ro');
-    if(!locked()){if(n) n.remove(); return;}
-    if(n) return;
-    n=document.createElement('p'); n.className='wl-ro';
-    n.textContent=R.dataset.sb==='down'?L.pausedRO:L.readOnlyNote1;
-    var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
+    if(page!=='settings'&&page!=='wishlist') return;
+    var ns=document.querySelectorAll('.wl-ro');
+    if(!locked()){ns.forEach(function(n){n.remove();}); return;}
+    if(ns.length) return;
+    // 設定：ページの上と「追いかけるものを足す」の上。欲しい物：「写真で足す」の上（押せない箱のすぐ上に理由を置く）
+    var txt=R.dataset.sb==='down'?L.pausedRO:page==='wishlist'?L.readOnlyNote2:L.readOnlyNote1;
+    function put(before){ var n=document.createElement('p'); n.className='wl-ro'; n.textContent=txt; before.parentNode.insertBefore(n,before); }
+    if(page==='wishlist'){ var sn=document.getElementById('snap'); if(sn) put(sn); return; }
+    var at=document.querySelector('.page'); if(at) put(at.firstChild);
+    var wz=document.getElementById('wiz'); if(wz) put(wz);
   }
   // お客さま自分のページ（2026-10-22，用户定的：アカウントは 1 つずつ独立。ログインしたお客さまに店長の中身は出さない）。
   // 簡報・欲しい物・話題度・設定で、店長の中身の代わりに自分の（最初は空の）ページを出す。中身は Supabase の my_page()（本人の行だけ、db/my_page.sql）。
@@ -2660,7 +2667,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ⑥ お客さまと店長</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.13 11:44</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.13 11:50</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html" aria-current="page"><span>⑥ お客さまと店長</span></a></li></ul></nav>

@@ -1281,6 +1281,10 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 .wl-toast[hidden]{display:none}
 html[data-lock="1"] [data-vote]{cursor:not-allowed}
 .wl-ro{margin:0 0 4px;padding:8px 12px;border:2px dashed var(--ink);background:var(--sheet);font:700 13px/1.6 var(--font-sans)}
+/* 見るだけ（ログインなし）：止めている操作は薄くして、押せないとわかるように（クリックは AUTH_JS が止めて理由を言う）。
+   設定ページは ページ全体の入力部品、欲しい物ページは「写真で足す」の箱だけ */
+html[data-lock="1"][data-page="settings"] .page :is(button,input,select,textarea,[contenteditable]),
+html[data-lock="1"][data-page="wishlist"] #snap :is(button,input,textarea,.drop){opacity:.45;cursor:not-allowed}
 html[data-gate="1"] body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
@@ -1431,7 +1435,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     gate2:'<div><h1>管理ページ<\/h1><p>',
     gate3:'店長だけが見られます。店長のメールアドレスとパスワードでログインしてください。',
     gate4:'<a href="./">← ウォッチリスト通信に戻る<\/a><\/div>',
-    readOnlyNote1:'見るだけです。設定を変えるには「ログイン」から。',
+    readOnlyNote1:'見るだけです。設定を変えるには「ログイン」から。',readOnlyNote2:'見るだけです。欲しい物を足すには「ログイン」から。',
     secJa1:'その他',
     mine1:'<p class="wl-msg" role="status">読み込み中…<\/p>',
     route1:'あなたが足したもの',
@@ -1628,13 +1632,16 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     bindLogin(g);
   }
   function readOnlyNote(){
-    if(page!=='settings') return;
-    var n=document.querySelector('.wl-ro');
-    if(!locked()){if(n) n.remove(); return;}
-    if(n) return;
-    n=document.createElement('p'); n.className='wl-ro';
-    n.textContent=R.dataset.sb==='down'?L.pausedRO:L.readOnlyNote1;
-    var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
+    if(page!=='settings'&&page!=='wishlist') return;
+    var ns=document.querySelectorAll('.wl-ro');
+    if(!locked()){ns.forEach(function(n){n.remove();}); return;}
+    if(ns.length) return;
+    // 設定：ページの上と「追いかけるものを足す」の上。欲しい物：「写真で足す」の上（押せない箱のすぐ上に理由を置く）
+    var txt=R.dataset.sb==='down'?L.pausedRO:page==='wishlist'?L.readOnlyNote2:L.readOnlyNote1;
+    function put(before){ var n=document.createElement('p'); n.className='wl-ro'; n.textContent=txt; before.parentNode.insertBefore(n,before); }
+    if(page==='wishlist'){ var sn=document.getElementById('snap'); if(sn) put(sn); return; }
+    var at=document.querySelector('.page'); if(at) put(at.firstChild);
+    var wz=document.getElementById('wiz'); if(wz) put(wz);
   }
   // お客さま自分のページ（2026-10-22，用户定的：アカウントは 1 つずつ独立。ログインしたお客さまに店長の中身は出さない）。
   // 簡報・欲しい物・話題度・設定で、店長の中身の代わりに自分の（最初は空の）ページを出す。中身は Supabase の my_page()（本人の行だけ、db/my_page.sql）。
