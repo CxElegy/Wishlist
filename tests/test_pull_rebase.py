@@ -1,15 +1,19 @@
 """scripts/pull_rebase.py：消した側（「違う」）を勝たせて rebase を続ける。"""
 import os
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "harness"))
+import gitsafe  # noqa: E402
 SCRIPT = Path(__file__).resolve().parent.parent / "scripts" / "pull_rebase.py"
 
 
 def sh(cwd, *a):
-    subprocess.run(a, cwd=cwd, check=True, capture_output=True)
+    gitsafe.guard(cwd)   # 本物のリポジトリでは流さない・GIT_* を外す
+    subprocess.run(a, cwd=cwd, check=True, capture_output=True, env=gitsafe.clean_env())
 
 
 class PullRebase(unittest.TestCase):
