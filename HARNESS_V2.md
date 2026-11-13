@@ -155,3 +155,12 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 ## まだ入れていないもの（次の段）
 
 合格の見本の絵との画素の比べ（golden）・店長の判定の記録（owner_verdicts.jsonl）で審査の係を合わせる・1 つの PR に 3 段まとめる合併・本番のページに build の印・ダッシュボードのボタン（優先を変える・飛ばす）・見張りが残ったプロセスを止める。設計は `D:/Claude/hf/research/harness-v2.md`。
+
+## ハーネス v3（2026-11-13）：失敗を溜めて直す・計画で断る・見た目を数で止める・git を隔離する
+
+| 道具 | することと決まり |
+|---|---|
+| `harness/lessons.py`（失敗の台帳） | `add --type 鍵 --task T-… --what … --why-missed …`・`list`・`due [--min 3] [--out DIR]`。1 行 1 件の JSONL を **手元の state（`D:/Claude/hf/state/lessons.jsonl`、`HF_STATE` で変更）** に置く＝q.py の取った印と同じ置き場で、リポジトリには入れない。同じ種類（type）が **3 回** たまると、直す段（「手元で見つかる検査を足す」）の JSON を出す。`q.py add --from-json` にそのまま渡せる。CI が赤になったら「なぜ手元で見つからなかったか」を `add` する（WORKING.md §1-5） |
+| `q.py contract <id> --lint` | 凍らせず約束を点検。✗ なら終了コード 1。**あとでしか測れない条件**（「合併後」「マージ後」「本番で」「デプロイ後」「何回か回った」／after merge・in production・post-merge など）は、仕組みを作る段と あとの測る段（verify／kpi・after）に分ける。**大きすぎる段**：scope が **9 ファイル以上**（上限 8）・done_when が **7 個以上**（上限 6）は `q.py split`。計画の係は凍らせる前に必ず流す |
+| `harness/visual_gate.py` ＋ `harness/aesthetic_map.json` | 審美基準の番号（A1〜I2）→ 検査の名前（self_review の gap crop band clip icon over wide face／aesthetic_count の edge hid solo herogap emrel cgap ell strong）。`visual_gate.py 結果.json …` が番号ごとに ○✗、1 つでも ✗ なら終了コード 1。結果に名前の無い検査は未測定（既定は落とさない・`--strict` で落とす。aesthetic_count.py が main に入る前でも動く）。検査の無い番号は人の目（evalV）に残す |
+| `harness/gitsafe.py` | `clean_env()`（GIT_* を外す）・`guard(cwd)`（本物のリポジトリの中・最上位なら AssertionError）・`run(cwd, …)`。git を書く試験（test_pull_rebase・test_push_main・test_gate_fire）はこれを通す。`tests/test_harness_v3.py` が「git を流す試験は gitsafe か GIT_* の除去を使う」を全試験ファイルで確かめる。`tests/test_ship.py`・`harness/ship.py` は無い（合併は台本の係が `gh` で行う）ので、作るときは同じ入口を使う |

@@ -11,10 +11,13 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = ROOT / "scripts" / "push_main.py"
 sys.path.insert(0, str(ROOT / "scripts"))
+sys.path.insert(0, str(ROOT / "harness"))
+import gitsafe  # noqa: E402
 
 
 def sh(cwd, *a):
-    return subprocess.run(a, cwd=cwd, check=True, capture_output=True, text=True).stdout
+    gitsafe.guard(cwd)   # 本物のリポジトリでは流さない・GIT_* を外す
+    return subprocess.run(a, cwd=cwd, check=True, capture_output=True, text=True, env=gitsafe.clean_env()).stdout
 
 
 def clone(d, origin, name):
@@ -26,7 +29,7 @@ def clone(d, origin, name):
 
 
 def run(cwd, *a):
-    env = {**os.environ, "GH_TOKEN": ""}
+    env = {**gitsafe.clean_env(), "GH_TOKEN": ""}
     return subprocess.run([sys.executable, str(SCRIPT), *a], cwd=cwd, capture_output=True, text=True, env=env)
 
 
