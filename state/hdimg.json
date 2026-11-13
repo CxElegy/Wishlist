@@ -5,6 +5,12 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/games/crawl/60/w550h310/20261113/63b1-5e04de43c06b10d8fadf0b0b7e64dccf.png": {
+  "w": 550,
+  "h": 310,
+  "target": 720,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd/sni/400/w1080h1720/20261107/c821-9ec944bfb0b7f330821dc35a869b52d8.jpg": {
   "w": 1080,
   "h": 1720,
@@ -53,19 +59,6 @@
   "h": 853,
   "target": 1280,
   "v": 3
- },
- "http://n.sinaimg.cn/sinakd20261112ac/278/w480h598/20261112/9f83-d15bc360c54c8c54e8bc07537072a9f2.jpg": {
-  "w": 480,
-  "h": 598,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.486,
-  "local": "pics/f5480ea33ba97cab.webp",
-  "out": [
-   1027,
-   1280
-  ],
-  "why": "看不清"
  },
  "http://www.geektown.co.uk/wp-content/uploads/2026/11/jm.jpg": {
   "w": 1300,
@@ -410,6 +403,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://biz.chosun.com/resizer/v2/ZXSVQQTU3BFJDFALMARBGC2MII.jpg?auth=244af8bbcdb4ea2f2cff3826d599849bf89156d25d0a03b970de0f5480059eee&width=1000&height=525&smart=true": {
+  "w": 1000,
+  "h": 525,
+  "target": 720,
   "v": 3
  },
  "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg": {
@@ -1059,12 +1058,6 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
-  "v": 3
- },
- "https://hawk.live/storage/images/posts/noone-spoke-patch-741-24454.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/sikle-discussed-oracle-bug-25415.jpg": {
@@ -1887,6 +1880,12 @@
  "https://media.image.infoseek.co.jp/isnews/photos/animeanime/animeanime_104589_0-enlarge.jpg": {
   "w": 512,
   "h": 640,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/hbc/hbc_1493814760402158525_0-enlarge.jpg": {
+  "w": 800,
+  "h": 450,
   "target": 720,
   "v": 3
  },
@@ -2850,6 +2849,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/c6cd9be18895489275a9b064c93360bb2368f6945c8dcb406ff38fcc7160bb1b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2F58622eaefda25e06e340b6f5675acc34.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/e5e99a1788b14d479c8fa6c984fe3cc42670696dc5b19a57b4cc77f10b1679de/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmoney_ca_594%2F167321a3e8b469a3cfa0a76a6719f83d.jpg": {
   "w": 1200,
   "h": 675,
@@ -3697,15 +3702,15 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.ZqTkm0fMMy6y4-azOeMsZQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
+ "https://www.bing.com/th?id=ONUT.W1IlWvGd2OqCIWZSr3zX7w&pid=News&w=536": {
+  "w": 536,
+  "h": 302,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ZuMjDJWmJ-jDa0XVQ51nTQ&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.ZqTkm0fMMy6y4-azOeMsZQ&pid=News&w=1200": {
   "w": 700,
-  "h": 376,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3740,15 +3745,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.if7PjIjrIEYNee0BpacpMA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.jUw1x7nnhvK56FgMR0bonQ&pid=News&w=680": {
+  "w": 680,
+  "h": 408,
   "target": 720,
   "v": 3
  },
