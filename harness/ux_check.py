@@ -188,14 +188,14 @@ if(innerWidth<=760)document.querySelectorAll('.wc,.card.mini,.card.sb,.tape').fo
  const blank=bot-pr.bottom;   // 写真の底からカードの底まで（字が長くて枠が高くても、写真が届いていなければ空き）
  if(blank>24){out.sideGap++;out.sideEg.length<3&&out.sideEg.push((c.dataset.k||c.className).slice(0,20)+' '+Math.round(blank)+'px')}});
 // 2026-11-12〜13 小さい形・版面のカードの空き（PC）：壁の小さい形（.wc.cmp 写真左・字右）と版面の組み方（fitBoard）のカードで、
-// 写真が字の横にあれば写真の底と字の底の差、写真が上ならカードの底と中身の底の差が 24px を超えたら cmpGap に数える。
+// 写真が字の横にあれば写真の底と字の底の差、写真が上ならカードの底と中身の底の差が 24px を超えたら cmpGap に数える。字が写真の右から写真の下へ回り込む形（版面の頭の記事 F2、2026-11-13）は、写真が上の形と同じくカードの底と中身の底の差。
 // 壁のカードの空きに置いた小元素（.wemb）は cmpEmb に数える（空きは形で消す。小元素・作品のロゴで埋めない：2026-11-13）
 out.cmpN=0;out.cmpGap=0;out.cmpEmb=0;out.cmpEg=[];
 if(innerWidth>760){const kidsOf=(c,p)=>[...c.children].filter(k=>k!==p&&!k.matches('.lk,.wemb')&&vis(k)&&getComputedStyle(k).position!=='absolute'&&k.getBoundingClientRect().height>0);
  document.querySelectorAll('.mgrid .wall>.wc.cmp,.mgrid .wall>.wc.ban,section.sec .mas.fb>article.card').forEach(c=>{if(!vis(c)||c.hidden||getComputedStyle(c).display==='none')return;
   const p=c.querySelector(':scope>.pic');if(!p||!vis(p))return;const ks=kidsOf(c,p);if(!ks.length)return;out.cmpN++;
   const pr=p.getBoundingClientRect(),cr=c.getBoundingClientRect(),tb=Math.max(...ks.map(k=>k.getBoundingClientRect().bottom)),pb=parseFloat(getComputedStyle(c).paddingBottom)||0;
-  const beside=ks.some(k=>k.getBoundingClientRect().left>=pr.right-2),d=beside?Math.abs(pr.bottom-tb):cr.bottom-pb-Math.max(tb,pr.bottom);
+  const beside=ks.some(k=>k.getBoundingClientRect().left>=pr.right-2),wrap=ks.some(k=>k.getBoundingClientRect().left<pr.right-2&&k.getBoundingClientRect().bottom>pr.bottom+4),d=beside&&!wrap?Math.abs(pr.bottom-tb):cr.bottom-pb-Math.max(tb,pr.bottom);   // 字が写真の下へ回り込む形（F2）は、写真の下を字が埋めるのでカードの底と字の底の差
   if(d>24){out.cmpGap++;out.cmpEg.length<4&&out.cmpEg.push(((c.closest('section.sec')||{dataset:{}}).dataset.k||'壁').slice(0,12)+' '+Math.round(d)+'px')}});
  out.cmpEmb=document.querySelectorAll('.mgrid .wall>.wc>.wemb').length}
 return out}"""

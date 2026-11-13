@@ -475,6 +475,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .stk.stk.stk.stk.stk{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
 .stk.stk.stk.stk.stk>*{grid-column:1!important}
 .stk.stk.stk.stk.stk>.pic{grid-row:auto!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:var(--ar)!important;margin-bottom:8px}
+.flt.flt.flt.flt.flt{display:flow-root}.flt.flt.flt.flt.flt>.pic{float:left;width:var(--fw)!important;height:auto!important;min-height:0!important;aspect-ratio:var(--ar)!important;margin:0 16px 4px 0}.flt.flt.flt.flt.flt>.when{margin-bottom:6px}.flt.flt.flt.flt.flt>.tag{display:inline-block;margin-bottom:4px}  /* 版面の頭の記事・回り込み（F2。FIT_JS fitBoard）：写真は切らずに左、字は右から写真の下へ回り込む。字の下も写真の下も空かない（狭い版面で頭の写真が字入りで切れないとき。2026-11-13 1024×768） */
 .pic.trim img:not(.bg):not(.ico){inset:auto;max-width:none;object-fit:fill!important}
 .brief{padding:12px 26px 18px;border-top:1px solid var(--line)}
 .brief h4{margin:0 0 8px;font:900 13px var(--font-sans);letter-spacing:.12em;opacity:.8}
@@ -4202,8 +4203,8 @@ FIT_JS = """
     c.style.gridColumn = c.style.gridRow = '';
     if (keepForm(c)) return;
     const p = c.querySelector(':scope > .pic'), img = p && img0(p);
-    c.classList.remove('stk', 'sb'); c.style.gridTemplateColumns = c.style.minHeight = '';
-    if (p) { p.style.removeProperty('--ar'); p.style.height = p.style.width = p.style.aspectRatio = p.style.minHeight = ''; p.classList.remove('whole'); }
+    c.classList.remove('stk', 'sb', 'flt'); c.style.gridTemplateColumns = c.style.minHeight = '';
+    if (p) { p.style.removeProperty('--ar'); p.style.removeProperty('--fw'); p.style.height = p.style.width = p.style.aspectRatio = p.style.minHeight = ''; p.classList.remove('whole'); }
     if (img) { img.style.objectPosition = ''; img.style.transform = ''; delete img.dataset.keep; }
   };
   const clamped = c => [...c.querySelectorAll('h2, h3')].some(h => h.scrollHeight > h.clientHeight + 2);   // 見出しが「…」で切れる形は使わない（2026-11-08 店長：文字が欠ける）
@@ -4218,6 +4219,7 @@ FIT_JS = """
     const p = c.querySelector(':scope > .pic'), img = p && img0(p);
     if (!p || !img || !img.naturalWidth || f.k === 'N') return;
     if (f.k === 'S' || f.k === 'W') { c.classList.add('stk'); p.style.setProperty('--ar', (f.w / f.ph).toFixed(4)); }
+    else if (f.k === 'F2') { c.classList.add('flt'); p.style.setProperty('--fw', Math.round(f.pw) + 'px'); p.style.setProperty('--ar', (f.pw / f.ph).toFixed(4)); }   // 回り込み：枠は写真の形（切らない）
     else { c.style.gridTemplateColumns = Math.round(f.pw) + 'px minmax(0,1fr)'; p.style.minHeight = Math.round(f.ph) + 'px'; }   // 左の写真の枠は字の列の高さまで伸びる（CSS）：枠の高さは min-height で足す
     const ok = okRatio(img, natOf(img) / ((f.pw || f.w) / f.ph));
     p.classList.add('fill');
@@ -4308,16 +4310,29 @@ FIT_JS = """
           boardForm(c, {k: 'R2', s: 2, pw, ph}); const hh = H(c); o.push({k: 'R2', s: 2, pw, lo: ph, hi: ph, h: () => hh, a: () => pw * ph, b: () => (ph - th > 6 && ph - th < 48 ? (ph - th) * (W2 - pw) : 0)});
         }
       }
-      if (i === 0 && c.dataset.hero && k >= 2 && o.some(x => x.s > 1)) return o.filter(x => x.s > 1);   // 重大は 2 列分の形だけ（審美基準 C1：重大がいちばん大きい）
+      // 回り込み（F2、頭の記事・2 列分）：写真は切らずに左（枠は写真の形）、字は写真の右から写真の下へ回り込む。字が写真の下の端より下まで届く幅だけ（届かない幅は字の下が空く）。
+      // 狭い版面（1024×768 は目次の横で 620px・2 列）で、字入り・人の並ぶ頭の写真が切れず、W（写真を上に 2 列分）では画面 1 枚に入らなかった（gelato pique +365px・绝区零 +222px。2026-11-13）
+      if (i === 0 && k >= 2) {
+        boardForm(c, {k: 'F2', s: 2, pw: 100, ph: 100 / nat}); const W2 = c.getBoundingClientRect().width, fs = [];
+        if (W2) for (let pw = Math.round(W2 * 0.3); pw <= W2 * 0.6; pw += 12) {
+          const ph = pw / nat; boardForm(c, {k: 'F2', s: 2, pw, ph}); if (clamped(c)) continue;
+          const pr = p.getBoundingClientRect(), kids = [...c.children].filter(x => x !== p && !x.matches('.lk, .pfill') && x.offsetHeight && getComputedStyle(x).position !== 'absolute');
+          const tb = kids.length ? Math.max(...kids.map(x => x.getBoundingClientRect().bottom)) : 0;
+          if (tb >= pr.bottom + 4) fs.push({k: 'F2', s: 2, pw, lo: ph, hi: ph, h: (hh => () => hh)(H(c)), a: () => pw * ph});
+        }
+        if (fs.length) [0, 0.34, 0.67, 1].map(q => fs[Math.round((fs.length - 1) * q)]).filter((x, j, a) => a.indexOf(x) === j).forEach(x => o.push(x));   // 幅の違う 4 つまで（組の数を増やしすぎない）
+      }
+      if (i === 0 && c.dataset.hero && k >= 2 && o.some(x => x.s > 1)) o.forEach(x => { if (x.s === 1) x.hs = 1; });   // 重大は 2 列分の形が先（審美基準 C1：重大がいちばん大きい）。1 列の形は印を付け、採点で重く（画面 1 枚に入らないときだけ選ばれる）
       return o.length ? o : [fixed(c)];
     };
     let best = null; const cands = [];
+    const scr = (window.WLvh || innerHeight) - (sec ? parseFloat(getComputedStyle(sec).scrollMarginTop) || 0 : 0) - over - 4, lim = Math.min(budget, scr);   // 画面 1 枚（F1）：吸着した所から画面の下の端まで。版面の割合（data-vh）に入る組がないときは、せめて画面に入る組から選ぶ
     for (const k of [...new Set([Math.min(cols0, vis.length), cols0 - 1, cols0 + 1])].filter(k => k >= 2 && k <= vis.length && m.clientWidth / k >= 260)) {   // 列を 1 つ増やす案も（見出しの長い記事が 4 本の版面が画面に収まらなかった）   // 1 列に並べる形は使わない（2026-11-08 店長「一列に羅列するのは全部なし。デザイン性がない」）
       m.style.gridTemplateColumns = 'repeat(' + k + ',minmax(0,1fr))';
       const opts = vis.map((c, i) => measure(c, i, k));
       if (window.WL_FB_DEBUG) (window.WL_FB_LOG = window.WL_FB_LOG || []).push(['opts', m.closest('section') && m.closest('section').dataset.k, k, opts.map(o => o.map(f => f.k + '[' + Math.round(f.lo) + '-' + Math.round(f.hi) + ']').join('|'))]);
       vis.forEach(boardBase);
-      for (let n = vis.length; n >= Math.max(2, vis.length - 3); n--) {   // 入りきらなければ後ろの記事を出さない（2026-11-09 店長：数は少なくてよい・1 画面で見終わる）
+      for (let n = vis.length; n >= 2; n--) {   // 2 本まで減らしてよい（F1：数は減らしてよい。6 本の版面が 1024×768 で 3 本までしか減らせず入らなかった）   // 入りきらなければ後ろの記事を出さない（2026-11-09 店長：数は少なくてよい・1 画面で見終わる）
       const pick = Array(n).fill(0), N8 = Math.min(n, 8);
       const score = () => {
         const bot = Array(k).fill(0), at = [];
@@ -4330,7 +4345,7 @@ FIT_JS = """
         const colH = (j, u) => top(j) + ix[j].reduce((s, i) => { const f = opts[i][pick[i]]; return s + f.h(f.lo + (f.hi - f.lo) * u); }, 0) + gap * Math.max(0, ix[j].length - 1);
         const used = ix.map((l, j) => j).filter(j => ix[j].length || top(j));
         const need = Math.max(...used.map(j => colH(j, 0))), room = Math.min(...used.map(j => colH(j, 1)));
-        const T = room >= need ? Math.max(need, Math.min(room, budget)) : need;
+        const T = room >= need ? Math.max(need, Math.min(room, lim - gap)) : need;   // 組んだ版面の底には行の間（gap）が 1 つ残る（最後の記事も span h+gap）：その分を引く（1024×768 で 28px はみ出した）
         const U = Array(n).fill(0);
         used.forEach(j => { let a = 0, b = 1; if (colH(j, 1) <= T) a = 1; else for (let q = 0; q < 30; q++) { const mid = (a + b) / 2; if (colH(j, mid) < T) a = mid; else b = mid; } ix[j].forEach(i => { U[i] = a; }); });
         const ph = opts.slice(0, n).map((o, i) => { const f = o[pick[i]]; return f.lo + (f.hi - f.lo) * U[i]; });
@@ -4342,13 +4357,15 @@ FIT_JS = """
         cost += 0.15 * A.filter(v => v > 0 && v < 14000).length;   // 小さすぎる写真（店長「图有点小了」）
         for (let j = 0; j < k; j++) { const ws = ix[j].map(i => opts[i][pick[i]]).filter(f => f.s === 1 && f.k[0] === 'R').map(f => f.pw); if (ws.length > 1 && Math.max(...ws) > Math.min(...ws) * 1.12) cost += 0.3 * (ws.length - 1); }   // 同じ列の左の写真の幅がそろわない（D1）
         cost += 0.4 * (vis.length - n);   // 出さない記事 1 本ごと
-        cands.push({over: Math.max(0, Hb - budget), cost, k, n, f: opts.slice(0, n).map((o, i) => ({...o[pick[i]], ph: ph[i]})), at: at.slice()});
+        if (opts[0][pick[0]].hs) cost += 1.5;   // 重大を 1 列の形にするのは、2 列分の形が画面に入らないときだけ（審美基準 C1 と F1。2026-11-13 1024×768：狭い版面で 2 列分の重大は画面に入らなかった）
+        cands.push({over: Math.max(0, Hb + gap - lim), overS: Math.max(0, Hb + gap - scr), cost, k, n, f: opts.slice(0, n).map((o, i) => ({...o[pick[i]], ph: ph[i]})), at: at.slice()});
       };
       const walk = i => { if (i >= N8) return score(); for (let q = 0; q < opts[i].length; q++) { pick[i] = q; walk(i + 1); } };
       walk(0);
       }
     }
     // 画面の高さに収まる組があればその中から、なければ一番はみ出しの少ない組（＋20px まで）の中から、空き・大きさの点で選ぶ
+    if (cands.length && Math.min(...cands.map(x => x.over)) > 0) { const ms = Math.min(...cands.map(x => x.overS)); cands.splice(0, cands.length, ...cands.filter(x => x.overS <= ms + (ms ? 20 : 0))); }   // 割合に入らない版面（1024×768 の M・S は帯の下が 160〜320px）：画面からはみ出す組を外してから選ぶ
     if (cands.length) { const minOver = Math.min(...cands.map(x => x.over)); cands.forEach(x => { const c2 = x.cost + 50 * Math.max(0, x.over - minOver - (minOver ? 20 : 0)) / budget; if (!best || c2 < best.c2 - 1e-9) best = {...x, c2}; }); }
     if (!best) { m.style.gridTemplateColumns = ''; return false; }
     m.style.gridTemplateColumns = 'repeat(' + best.k + ',minmax(0,1fr))';
@@ -4364,7 +4381,7 @@ FIT_JS = """
     // 整理待ちが尽きたら「もっと見る」の記事の見出しで埋め（使った記事は「もっと見る」から外す：同じ記事は 1 回、F4）。48px から（見出しの行は 80px 以上のときだけ。2026-11-11 審美基準 A2・A6）
     const pend = sec && sec.querySelector('details.pend'), pl = pend ? [...pend.querySelectorAll('li:not(.more)')] : [];
     const olds = sec ? [...sec.querySelectorAll('details.older article.card')].filter(c => getComputedStyle(c).display !== 'none' && c.querySelector('a.lk[href]') && c.querySelector('h3,h2')) : [];
-    const items = [...pl.map(li => ({li})), ...olds.map(c => ({c}))];
+    const items = [...vis.slice(best.n).filter(c => c.querySelector('a.lk[href]') && c.querySelector('h3,h2')).map(c => ({c})), ...pl.map(li => ({li})), ...olds.map(c => ({c}))];   // 入りきらずに出さなかった記事を先に（見出しだけでも版面に残す）
     const Hmax = Math.max(...y) - gap; let used = 0;
     const order = Array.from({length: best.k}, (_, j) => j).sort((a, b) => y[a] - y[b]);   // いちばん空いた列から
     for (const j of order) {
