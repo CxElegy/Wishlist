@@ -124,6 +124,28 @@ REBASE = {"render", "user_pages"}
 WATCH = ("docs/", "state/", "inbox/", "reports/", "items.yaml", "wishlist.yaml")
 
 
+def _replay(method, path, root):
+    """土台の回の偽サーバーの返事。空の `[]` だと、digest.py が state/ の写し（feedback・sizes・nav_schemes）を「空の本物」で
+    上書きして、そのあとの 402 の回が読む写しまで空になり、402 で写しに戻れなくなっても気づけない。だから、写しのある表は
+    コミット済みの state/ の写しを、Supabase が返す形にして返す（動いている Supabase の代わり）。写しの無い表は空。"""
+    import json
+    if method != "GET" or root is None:
+        return b"[]"
+    table = path.split("?")[0].rsplit("/", 1)[-1]
+    try:
+        if table == "feedback":
+            rows = json.loads((root / "state" / "feedback.json").read_text(encoding="utf-8")).get("rows", [])
+        elif table == "sizes":
+            rows = [{"item": k, "size": v} for k, v in json.loads((root / "state" / "sizes.json").read_text(encoding="utf-8")).items()]
+        elif table == "nav_schemes":
+            rows = [{"section": k, "scheme": v} for k, v in json.loads((root / "state" / "nav_schemes.json").read_text(encoding="utf-8")).items()]
+        else:
+            rows = []
+    except (OSError, ValueError, AttributeError):
+        rows = []
+    return json.dumps(rows, ensure_ascii=False).encode()
+
+
 class _H(http.server.BaseHTTPRequestHandler):
     hits = []      # 作業枠（worker）ごとに make_handler が自分の hits を持たせる
 
@@ -135,7 +157,7 @@ class _H(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            self.wfile.write(b"[]")
+            self.wfile.write(_replay(self.command, self.path, getattr(self.server, "root", None)))
             return
         self.server.hits.append(f"{self.command} {self.path[:80]}")
         self.send_response(402)
@@ -222,7 +244,7 @@ def shrunk(d, fake=""):
 
 def baseline(d, srv, args, env, sec, name):
     """402 でない偽サーバーで入口を 1 回走らせ、その出力を土台としてコミットする（落ちても続ける：土台が作れなければ今までの比べ方）。"""
-    srv.ok = True
+    srv.ok, srv.root = True, d
     try:
         subprocess.run([PY, *args], cwd=d, env=env, capture_output=True, text=True, timeout=sec)
     except subprocess.TimeoutExpired:

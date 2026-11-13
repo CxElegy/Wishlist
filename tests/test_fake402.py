@@ -90,6 +90,8 @@ class Fake402(unittest.TestCase):
         (d / "docs").mkdir()
         (d / "docs" / "x.html").write_text("".join(f"{i}\n" for i in range(10)), encoding="utf-8")
         (d / "ent.py").write_text(script, encoding="utf-8")
+        (d / "state").mkdir()
+        (d / "state" / "sizes.json").write_text('{"a":"M","b":"S","c":"L","d":"M","e":"S"}', encoding="utf-8")
         env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
         os.environ.pop("GIT_DIR", None)
         saved = {k: os.environ.pop(k) for k in list(os.environ) if k.startswith("GIT_")}
@@ -121,6 +123,15 @@ class Fake402(unittest.TestCase):
         """402 のときだけ出力が空になる入口は、土台（5 行）より縮むので赤。"""
         out = self._rebase_case(self._ENT + "open('docs/x.html','w').write(''.join(f'{i}\\n' for i in range(5 if ok else 0)))\n")
         self.assertIn("docs/x.html", out)
+
+    def test_402_emptying_of_supabase_derived_section_is_flagged(self):
+        """docs が Supabase の sizes 表から作る節を持つ入口。402 で state/ の写しに戻れず空になる壊れ方は、土台が空の JSON だと
+        土台も空で見えなくなる。土台の偽サーバーは state/ の写しを返すので、土台は 5 行・402 の回は 0 行で赤。"""
+        ent = ("import os, json, urllib.request, urllib.error\n"
+               "try:\n    rows = json.load(urllib.request.urlopen(os.environ['FAKE_URL'] + '/rest/v1/sizes?select=item,size'))\n"
+               "except urllib.error.HTTPError:\n    rows = []   # 壊れ方：402 のとき写し（state/sizes.json）に戻らない\n"
+               "open('docs/x.html','w').write(''.join(r['item'] + '\\n' for r in rows))\n")
+        self.assertIn("docs/x.html", self._rebase_case(ent))
 
     def test_rebase_entries_exist(self):
         names = {n for n, _, _ in fake402_check.ENTRIES}
