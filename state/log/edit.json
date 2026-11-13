@@ -1,92 +1,5 @@
 [
 {
-"at": "2026-11-11T05:50:59+00:00",
-"text": "2026-11-11 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、dota2 ほか 6（12 版面・30 本・残り 5 版面） · token 新規入力 5.3万・キャッシュ読み 143.5万・出力 6,511",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.31,
-"mem_total": 16867414016,
-"mem_free": 16033153024,
-"disk_used": 10108403712,
-"disk_free": 31175131136,
-"disk_total": 41283534848,
-"peak": 322674688
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"GTA 6",
-"ILLIT",
-"dota2",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"三星手机",
-"日本顶级网球赛事",
-"漫威电影"
-],
-"stories": 30,
-"left": 5,
-"edited": 17,
-"run": null,
-"tok": {
-"in": 40,
-"cw": 52670,
-"cr": 1434718,
-"out": 6511,
-"calls": 21,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1493939
-},
-{
-"at": "2026-11-11T05:58:33+00:00",
-"text": "2026-11-11 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作 ほか 7（13 版面・33 本・残り 4 版面） · token 新規入力 5.4万・キャッシュ読み 151.6万・出力 7,178",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.48,
-"mem_total": 16867414016,
-"mem_free": 15978184704,
-"disk_used": 10113753088,
-"disk_free": 31169781760,
-"disk_total": 41283534848,
-"peak": 351150080
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"GTA 6",
-"ILLIT",
-"MMORPG 新作",
-"dota2",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"三星手机",
-"日本顶级网球赛事",
-"漫威电影"
-],
-"stories": 33,
-"left": 4,
-"edited": 17,
-"run": null,
-"tok": {
-"in": 42,
-"cw": 53836,
-"cr": 1515926,
-"out": 7178,
-"calls": 22,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1576982
-},
-{
 "at": "2026-11-11T06:02:26+00:00",
 "text": "2026-11-11 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作 ほか 8（14 版面・38 本・残り 3 版面） · token 新規入力 5.5万・キャッシュ読み 159.8万・出力 7,675",
 "level": "ok",
@@ -2234,5 +2147,67 @@
 "calls": 13,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-13T19:25:26+00:00",
+"text": "2026-11-14 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 12 版面） · token 新規入力 4.9万・キャッシュ読み 124.0万・出力 4,420",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.84,
+"mem_total": 16867405824,
+"mem_free": 15787479040,
+"disk_used": 10980065280,
+"disk_free": 30303469568,
+"disk_total": 41283534848,
+"peak": 445689856
+},
+"batch": 1,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 12,
+"edited": 1,
+"run": 1794597736.711827,
+"tok": {
+"in": 34,
+"cw": 49431,
+"cr": 1239622,
+"out": 4420,
+"calls": 18,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1293507
+},
+{
+"at": "2026-11-13T19:27:37+00:00",
+"text": "2026-11-14 第 2 バッチを出刊：（新しく終わった版面なし）（0 版面・0 本・残り 12 版面） · token 新規入力 1,287・キャッシュ読み 23.5万・出力 594",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.62,
+"mem_total": 16867405824,
+"mem_free": 15872688128,
+"disk_used": 10980102144,
+"disk_free": 30303432704,
+"disk_total": 41283534848,
+"peak": 350908416
+},
+"batch": 2,
+"boards": [],
+"stories": 0,
+"left": 12,
+"edited": 1,
+"run": 1794597736.711827,
+"tok": {
+"in": 8,
+"cw": 1279,
+"cr": 234660,
+"out": 594,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 236541
 }
 ]

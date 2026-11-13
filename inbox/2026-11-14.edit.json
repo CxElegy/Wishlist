@@ -1,0 +1,63 @@
+{
+ "GTA 6": [
+  {
+   "headline": "《GTA 6》19日零點上線 PS5、Xbox已開放預載 需預留212GB空間",
+   "highlight": "19日零點上線",
+   "blurb": "《GTA 6》將於19日零點上線，PS5與Xbox已開放預載，需預留212GB空間。",
+   "weight": "hero",
+   "refs": [
+    27,
+    20
+   ],
+   "event": {
+    "date": "2026-11-19",
+    "label": "発売日",
+    "time": "00:00"
+   },
+   "image": "https://www.vice.com/wp-content/uploads/sites/2/2026/11/GTA-6-Day-One-Patch-Is-Already-Rolling-Out-on-PS5.jpg?w=1280"
+  },
+  {
+   "headline": "Grand Theft Auto VI game tops $1B in pre-sales, with 11 million copies sold",
+   "highlight": "$1B in pre-sales",
+   "blurb": "With its release still days away, the next Grand Theft Auto game is already racking up blockbuster sales and setting records.",
+   "weight": "lead",
+   "refs": [
+    14,
+    7,
+    23
+   ],
+   "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/lucia_caminos_10.jpg?w=1600&h=900&fit=crop"
+  },
+  {
+   "headline": "GTA 6 Day One Patch Is Already Rolling Out on PS5",
+   "highlight": "Day One Patch",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20,
+    6
+   ]
+  },
+  {
+   "headline": "GTA 6 Shares First Teaser for Macca & Friends, Leonida’s Hit TV Show",
+   "highlight": "Macca & Friends",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    26
+   ]
+  },
+  {
+   "headline": "GTA 6 Online release window has apparently leaked",
+   "highlight": "Online release window",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22
+   ]
+  }
+ ],
+ "_covered": {
+  "GTA 6": 27
+ }
+}

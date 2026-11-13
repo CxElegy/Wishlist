@@ -13,7 +13,6 @@
   "https://appmedia.jp/bleach-mh/80521795": "https://appmedia.jp/wp-content/uploads/2026/10/171809_m6vsz.webp",
   "https://appmedia.jp/bleach-mh/80529382": "https://appmedia.jp/wp-content/uploads/2026/10/151001_cb6v7.webp",
   "https://article.auone.jp/e104359f-6bf6-4201-8bab-698580fe0f39": "https://portal.auone.jp/media/thumbnails/2026/11/11/95773_w1280.webp",
-  "https://beebom.com/gta-6-macca-and-friends-first-teaser-revealed/": "https://static.beebom.com/wp-content/uploads/2026/11/macca-and-friends-cover-image-in-gta-6.jpg",
   "https://biz.chosun.com/en/en-it/2026/11/13/4S5WLPA4RZCVHFRU3TJAXKINGA/?outputType=amp": "https://biz.chosun.com/resizer/v2/ZXSVQQTU3BFJDFALMARBGC2MII.jpg?auth=244af8bbcdb4ea2f2cff3826d599849bf89156d25d0a03b970de0f5480059eee&width=1000&height=525&smart=true",
   "https://bleedingcool.com/movies/jumanji-open-world-4-new-character-posters-released/": "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg",
   "https://dmksnowboard.com/slopes-app-update-2026-27/": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/slopes.jpg",
@@ -66,6 +65,7 @@
   "https://www.geektown.co.uk/2026/11/11/julianna-margulies-to-star-in-the-american-heiress-as-mgm-greenlights-victorian-romantic-comedy-from-victoria-creator/": "http://www.geektown.co.uk/wp-content/uploads/2026/11/jm.jpg",
   "https://www.inside-games.jp/article/2026/11/07/190517.html": "https://www.inside-games.jp/imgs/ogp_f/1802024.jpg",
   "https://www.inside-games.jp/article/2026/11/09/190576.html": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1804705.jpg",
+  "https://www.irishtimes.com/culture/2026/11/13/grand-theft-auto-the-thrill-of-breaking-bad-from-the-safety-of-your-sofa/": "https://www.irishtimes.com/resizer/v2/7YU5IQJBWSHVFPA2HLRYNCPU2U.jpg?smart=true&auth=392b58011329c6a1fa0d952825eca3630ea4e5b73f11e8098ec741509cbaf880&width=1200&height=630",
   "https://www.ludens.com.tw/aveltuner-open-world-magic-game/": null,
   "https://www.motor1.com/news/806962/mitsubishi-teases-smaller-pajero-models/": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bsNCV.img",
   "https://www.msn.com/en-us/entertainment/general/how-the-mandalorian-reflects-strict-religious-communities/vi-AA2hbWbO": "https://www.bing.com/th?id=ONUT.HemtJzaVL1zj2EDdbPBDqQ&pid=News&w=1200",
@@ -932,27 +932,6 @@
   },
   {
    "batch": 1,
-   "because": "GTA 6",
-   "date": "2026-11-13",
-   "hits": [],
-   "image": "https://static.beebom.com/wp-content/uploads/2026/11/macca-and-friends-cover-image-in-gta-6.jpg",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "Beebom",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "GTA 6 Shares First Teaser for Macca & Friends, Leonida’s Hit TV Show",
-   "url": "https://beebom.com/gta-6-macca-and-friends-first-teaser-revealed/",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 1,
    "because": "绝区零",
    "date": "2026-11-13",
    "hits": [],
@@ -994,7 +973,7 @@
    "work": "GTA 6"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-11-13",
    "hits": [],
@@ -1034,6 +1013,27 @@
    "url": "https://www.bntnews.co.kr/article/view/bnt202611130110",
    "words": [],
    "work": "ILLIT"
+  },
+  {
+   "batch": 2,
+   "because": "GTA 6",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://www.irishtimes.com/resizer/v2/7YU5IQJBWSHVFPA2HLRYNCPU2U.jpg?smart=true&auth=392b58011329c6a1fa0d952825eca3630ea4e5b73f11e8098ec741509cbaf880&width=1200&height=630",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "The Irish Times",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "Grand Theft Auto: The thrill of breaking bad from the safety of your sofa",
+   "url": "https://www.irishtimes.com/culture/2026/11/13/grand-theft-auto-the-thrill-of-breaking-bad-from-the-safety-of-your-sofa/",
+   "words": [],
+   "work": "GTA 6"
   },
   {
    "batch": 2,
@@ -2035,11 +2035,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2047,15 +2047,15 @@
    8
   ],
   [
-   "galaxy",
-   7
-  ],
-  [
    "作品:三星手机",
    7
   ],
   [
    "三星 Galaxy",
+   7
+  ],
+  [
+   "galaxy",
    7
   ]
  ]

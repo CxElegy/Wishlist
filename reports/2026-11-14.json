@@ -1,204 +1,69 @@
 {
  "date": "2026-11-14",
- "edit_sig": "",
+ "edit_sig": "5f0afee78e02",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "The Union Democrat",
-     "title": "'GTA VI': Ban it or allow it? The dilemma facing millions of parents",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQWTVvRTVhdG9rakN6ZkpiVGZUdXd1VkhDTEQxT3FqZ2JyVzBwWXVfQVlrUFM2NURDZUxLZ0cwOFU0RFU2bGZiVWJtS282VnhTQV85Z0EwMGhpVU5VeW1NUlpDRXByQ1dFMkFvYlFPYUFIOVJLRzFzZ2pLejVGVDg1N0RZUkVxRVhsTG1ycmFuR0xZUGs?oc=5"
+     "event": {
+      "date": "2026-11-19",
+      "label": "発売日",
+      "time": "00:00"
+     },
+     "headline": "GTA 6 Day One Patch Is Already Rolling Out on PS5",
+     "highlight": "",
+     "image": "https://www.vice.com/wp-content/uploads/sites/2/2026/11/GTA-6-Day-One-Patch-Is-Already-Rolling-Out-on-PS5.jpg?w=1280",
+     "image_via": "og:image",
+     "url": "https://www.vice.com/en/article/gta-6-day-one-patch-ps5-version-1002/",
+     "weight": "hero"
     },
     {
+     "blurb": "With its release still days away, the next Grand Theft Auto game is already racking up blockbuster sales and setting records.",
      "date": "2026-11-13",
-     "n": 2,
-     "source": "WPLG Local 10",
-     "title": "Grand Theft Auto VI: Here is a list of official events in Miami",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOWklwcm5nUlVmejdCNzEzd1I3NzBFVTdTQVlNRE9zd2FrX2h3OVJrTUpLWEZndEFSRGlHbU5yZ3MyVHRJQjFPZF9xWXlQeVhnLWFwZ1otNk8ySllsQ0VvbThjSXZhSmh0c1FyQkNJNUtWaC1kdVBxYzNjeTV1ZXhnOUhVTVpOY1pvYXVhNE1IdkZoVkZJaXowUlB3cjNmUXVQSTZpdVRfbjZYVTlYUTFlQjR3?oc=5"
+     "headline": "Grand Theft Auto VI game tops $1B in pre-sales, with 11 million copies sold",
+     "highlight": "$1B in pre-sales",
+     "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/lucia_caminos_10.jpg?w=1600&h=900&fit=crop",
+     "image_via": "AI 挑选",
+     "url": "https://local12.com/news/entertainment/grand-theft-auto-vi-game-tops-1b-in-pre-sales-with-11-million-copies-sold-rockstar-games-gta",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 3,
-     "source": "Bloomberg.com",
-     "title": "Ahead of ‘Grand Theft Auto VI,’ Rockstar Staff Vote on Union Effort",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOYUN3Qm1hT2ViX0JpU1VwcmlKSnNPZmRGSzhXN2ZwMjhSOGpmMjZmVzFJVXdQdzRmaGNudUt3MlBpcmlfMGlWdTJaMURpRXhoWC1sRkdaengwUWtmcU1ReE1TSk5vVlhmYzA1T3lHc3pBR09xRDdZZUR5UFVEUXdvN0pwM29Lb2hyaWVNSVU1ME5obE82QlZhakpEazZKeE4yNWJBZ25hNHNGNzA?oc=5"
+     "headline": "GTA 6 Day One Patch Is Already Rolling Out on PS5",
+     "highlight": "Day One Patch",
+     "image": "https://www.vice.com/wp-content/uploads/sites/2/2026/11/GTA-6-Day-One-Patch-Is-Already-Rolling-Out-on-PS5.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://www.vice.com/en/article/gta-6-day-one-patch-ps5-version-1002/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 4,
-     "source": "CNBC",
-     "title": "GTA 6's massive launch on deck: Here's what you need to know",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWVRpMTBybDM2Qk9FNlZoZ21xMUdfbTFrczdwdWVrbW9BWWk2UXhVT0tsM3gtTzh1ZEpLTmdweGpsOURwb2Eyb2pXX2c0RjVhbGtwZ0R0OEc3Qi15SXJteVdlVmU0YV9zZ1dzZXhlaE1JLWNHNGUyVWVOcXJkSnNORElNWU9WeFdIY0ttZDBxMFpUb0Q0SWNpYk1UUFdMSmdnOEE?oc=5"
+     "headline": "GTA 6 Shares First Teaser for Macca & Friends, Leonida’s Hit TV Show",
+     "highlight": "Macca & Friends",
+     "image": "https://static.beebom.com/wp-content/uploads/2026/11/macca-and-friends-cover-image-in-gta-6.jpg",
+     "image_via": "og:image",
+     "url": "https://beebom.com/gta-6-macca-and-friends-first-teaser-revealed/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 5,
-     "source": "Zeek玩家誌",
-     "title": "PChome 24h購物《俠盜獵車手6》實體盒裝版正式出貨 官網首頁同步主題換裝",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE50OThnWDJuR2hHMUN5ZndaMWV5UmhYemtsZUVraUZ1N21kMjFhZ24zejJTcHNjcjBkUzV1NmJ6SGQ1VVdIZ2hxX2djMmNmNVlHb2c?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 6,
-     "source": "Polygon.com",
-     "title": "GTA 6's Official First Update Is Great News For Fans",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOVTdTbktQZk5sMzJPMVc0MUNUV19FVEx6Vi0tSDc2ZGluczhKaHlCWDZ4QkhkY2k5NURGcnRMMnZBQW1DeFgxQkhUa3VWOGZHdV9IRkwzUG01UjlfUGEtT1dZS1FFaVFhRERNTFMzMHNDYXk3WEppYmlKY0RISnJaYVN0LWE?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 7,
-     "source": "Polygon.com",
-     "title": "GTA 6 Preorder Sales Suggest a Record Nobody Can Touch",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNcXNMSEhRbkJRenY2bDBlNEUyUlY0LVNOSnpXTjY2NF9FQXlsdW9ZcTNsRVJ1Z0xQNWJvTndBbkNkTWE1NmJYdmtTTVNPMGFIcUF3aGpYZHFURERHSENrMHdWTFp4dGlhYVZNdFNjRkR3V0JlX194QjR4SDdhaXJNTVZ3?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 8,
-     "source": "92 Moose",
-     "title": "Should I Use My Floating Holiday to Stay Home & Play GTA VI?",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5iNGN2NG5GQl9BbHFWb0wzUlA3NXJLYmFTYmpqWlYzX09mUlhhaURSZHpyLVBHUzJLRG94dUJFS21FdExPQjRKNlNnMzdOWlFXdHY3cGFRUEo1Qnhu?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 9,
-     "source": "Variety",
-     "title": "Zohran Mamdani Launches Two-Day NYC Youth Video Game Design Competition With a Transit Twist Ahead of ‘GTA 6’ Launch (EXCLUSIVE)",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPZzNIOFk1Yks1TTFJZmJVVmFrbmJ3ZnZHVVhYX0tmOFpIVDFXeGdYdnpoc29YOHFsYWFpVEtxbjc1WXJCUUV4ZGdpRTkzbHdpWGxOWDVCMDB5UU9mNVFzcHVjY1NqZGN5bVdIbWZNYmhTVmVNRFpVMElhSW14YTBTWHZmeWJPejEwUDhRaFVrcXN5dG8?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 10,
-     "source": "The Independent",
-     "title": "GTA 6: An essential guide to the biggest release in gaming history",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQdUZnS3Znb3Vjd3VrM05PTzVnZm1hRkZFQmFkVG12NEluN3NyZk5iYzVQYk5hVkxqVmZ6czBDaHJwSGVmVVl3ZXpJaTNFZko1RGw1LTBIeUFLVUNyNjZ5dE00d0N2REpSMVBpd3lzSHB1Zmx5SmZLSUcwSjVKRUR1cW10V0xud3UxM21PZExONjloUDJrNzRXUmpfRzVoSU5ZbGxOYg?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 11,
-     "source": "The Independent",
-     "title": "GTA 6: What’s included in the Ultimate Edition – and how much is it?",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNRVk4dlJ5ZDJnTHdiY1lmSkhUcGxBV0MyR1pSSUd0NkUzcTFQNmFOZGpHMHFMXzJoT0dqQkF4RXNaQjBOQjJESHhMeFE3Qzl5ZDRRNXZLOWM4emZCTDhXZV9aOTBGMUMtc3dFaEpXV0FPaEVyaTlrMXZUTE8wZkdBVFpNR1VyM1NIZ1htUnBvenhoajlkb01QbG1pRWd0b0RhMVNjTA?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 12,
-     "source": "LiveNOW from FOX",
-     "title": "Pilot recreates GTA VI logo from the sky",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1kU3h4emg3VVZsUm84QkxHc0pnRzk0M1ZWQmt0WUlBME1BcVBsS2UzYzczVFFlQW9PT2RFdUEycklKOVNLWS1adGZtWGhyMnZ5V240bjZQSUN5SG1oaGxFNzRMSQ?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 13,
-     "source": "WeLiveSecurity",
-     "title": "GTA VI isn’t out yet – and the scams are already out in full forc",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdjhOenI1Y1FoWDZpR01QRC1jMjVVemFTd2xmM0xqVlBQOVpvd3FzaTJfMzE0ekZaOExQejRxLUNRajlmcGZncVp0cXFuYnVZdHE1OG9LbENnRXdWdERtYW55M3NQaUdNOWthUi04MnRaSnBxblJkRmN0Z0ZqUEIwOGVDYl9Ka1o2RVRDTHF3?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 14,
-     "source": "Local 12 WKRC-TV",
-     "title": "Grand Theft Auto VI game tops $1B in pre-sales, with 11 million copies sold",
-     "url": "https://local12.com/news/entertainment/grand-theft-auto-vi-game-tops-1b-in-pre-sales-with-11-million-copies-sold-rockstar-games-gta"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 15,
-     "source": "Bluesky",
-     "title": "Its Evelyn doing that GTA 6 pose, but she's at the pool in Tranquility City. #myart #sketch #EvelynStirling",
-     "url": "https://bsky.app/profile/groundbyte.bsky.social/post/3n26fdyx5kc2c"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 16,
-     "source": "IMDb",
-     "title": "Why a Netflix Exec Thinks ‘Grand Theft Auto VI’ Is Like ‘Ready Player One’",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9vb3NQbVBVS3oyLXpTYmZjWDFJcUFQTWJGdnNUdlUxek1JZFk2d3hLWjdrbHktYTQ4T3VEQXhpTlZ5TEtqSVlzZXg3TlhGZ3FTSEZQN25zdUVXdkQycXkxckVYS2dBZ1U?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 17,
-     "source": "Bluesky",
-     "title": "Believe it guys! GTA 6! Just a week away! GTA 6 is in a week! Woohoo! I am so happy about this information :DDD GTA 6, just a week away! Oh wow. Can you believe it?! GTA 6! Just in a week! It got here",
-     "url": "https://bsky.app/profile/darkviper.au/post/3n25ghutodk2h"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 18,
-     "source": "GAMINGbible",
-     "title": "GTA 6 very narrowly avoided a ban for the most hilarious reason",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPQ2dseWpxM1NuR3RBdVNGeU9admZqT3FjREpTMk9uamtLUXhKdkFPeEV4R2JqVEd3M21sVEpDTHRoTHdScFRscHZzZktXYTdKZ3VBYUJhbzN0RFBjNUdxa0xid2MyOWtQdFJrTVJodjhIbFpYTDRmQWI1RHUwc3FvcmU3MlRjOU5YbGlV?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 19,
-     "source": "Sporked",
-     "title": "GTA 6 Fans Will Love Popeyes’ New Sandwich",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA5VjRnYTBRWU1aMUtzNVlyRFZXX0hCbEtkVWFTVHg3MWNvNE56eGRwcXI2aGg5YkE0N1pEdl9WckM1MHVVTjMxMzVMaVBuXzFvUFdrZ2FDa29wc0tGUnFxUWUzUlhTVFk?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 20,
-     "source": "VICE",
-     "title": "GTA 6 Day One Patch Is Already Rolling Out on PS5",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1FcTA1cnQyaVphNno0Tm5PSDl5ZUgtSVZJMkhycWtDdElrcnFmZkVscllER3BzcTcwa1pnaEg3Zml5a1NjYkFOeGc4LXh5RDdqUHd3RGVydDZseW5qV3Rkd2pTc0o1QlItTG1vdFVjNkJLaVlvemNQVw?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 21,
-     "source": "Radio Times",
-     "title": "Will the new GTA 6 be discounted for Black Friday 2026?",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNVGM3RUIzNDZYcDcyNjlwM3RmQTBxa3g3WlppQW1XQmM5UHdXcEVaSVg1T3hOZjd4MG9rRHVMTnJZYmFPR1dkLVJjeVZwaFN3M0J4TlItOXBCcml1b29jN09Sb3dKOTF3VThMYlp2MExsVGdLby1qTmx5M2pRdXVablc5eW5kdw?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 22,
-     "source": "Notebookcheck",
-     "title": "GTA 6 Online release window has apparently leaked",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNN2MyZ3ZmRk1PMndPdktPWVFKaFY4U3VjWUZETDFhemRrbGMzNEsyVGR6RGJ6SWF5QUFmcEFGS3ItMnZIMUZrTGdTc0JieHNHTktUZjdOcnM2MC1idVcyV1cyblhEX3hkWEpEWE1MMm5CVHdfZnNRdnpXNUhUTXVKVHlLSjdLZ0Y3QUw1a3BzbXVORHFGT2pCSVpR?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 23,
-     "source": "Radio Times",
-     "title": "GTA 6 sales numbers: First year projection revealed, and it's massive",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5pcndQeDJ0MHI1czl0NnJ2NkRhS0NtWHlDSWF4bDNVaDUyOW5tQUpSQ0Z0UUJodDhaNXcyNDBUa0lLTjJGTDBkQVdHOV9vaGxnQ2JPNVplazJ1T3pVTGZkV3NUbXAwV0s0VkxKWFFtRlZDTWs?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 24,
-     "source": "The Jerusalem Post",
-     "title": "Kalshi offers up to $135,000 for people to play GTA VI on launch day, research 'game's economy'",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBGTWhMOFVjM3drTEVnZmc5VlZFSlltYUJ4ZnJxS29rTC1Zc2pDLVpoNFdNeVdVNXZHNF90ZW0wMmZ0ZV91S2xyeTB0LXQ1RXVPemc?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 25,
-     "source": "SWI swissinfo.ch",
-     "title": "Grand Theft Auto VI slows down Swiss data networks",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOUFRRQVlzRGRIV1cxclRHNnZHVWtyU2hJU1QwRnJCc2xxRkhDRElRZWwyYlJ4ZkZ6d3ppS0tfakpmRzYxMjB6S2VPZXdSNldJX0hBMEt6WVlNb09VT1NSdzMwYThmOTdBWUQ2clF6ZlZuTGs3MWVKcXQ0aXdkdF9PUkVRbnY4ck1zRWh5cVY4dktEcjFEdmJEdVFiZm1EdmZvR1pJTHQyWGo0QQ?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 26,
-     "source": "Beebom",
-     "title": "GTA 6 Shares First Teaser for Macca & Friends, Leonida’s Hit TV Show",
-     "url": "https://beebom.com/gta-6-macca-and-friends-first-teaser-revealed/"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 27,
-     "source": "蕃新聞",
-     "title": "《GTA 6》19日零點上線 PS5、Xbox已開放預載 需預留212GB空間",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9IN29UNUppaDZrMXhHS3Fnc3RmYkpuMHVlNU1MY2VDQ2otdnZYdWZnNE1mVVFWZTEzRlVjMTdNMW5SRy1qYVA1bXNfUmZURnhZZEE?oc=5"
+     "headline": "GTA 6 Online release window has apparently leaked",
+     "highlight": "Online release window",
+     "image": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA-6-online-release-window-leaked.jpg",
+     "image_via": "og:image",
+     "url": "https://www.notebookcheck.net/GTA-6-Online-release-window-has-apparently-leaked.1449676.0.html",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
    "theme": {
     "accent": "#FF5FA2",

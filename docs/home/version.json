@@ -1,14 +1,14 @@
 {
- "admin": "fd5d1e593767",
- "admin-ai": "5211a00acf91",
+ "admin": "e8d70fb68c73",
+ "admin-ai": "d847edbd5c19",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f7be5bf6"
+   "57aa21b2"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "74e1441e"
+   "0a1043f6"
   ]
  },
  "admin-boards": "633248f02d09",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "9aab33160004",
+ "admin-emblem": "868688d62f52",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d411ae47"
+   "d817fd59"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "58d5d5e99b3f",
+ "admin-now": "5eabb7d03bc2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d081bb10"
+   "f5d243ee"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "df135952"
+   "e16a702a"
   ],
   "term-panel": [
    "ライブログ",
-   "d32f377e"
+   "dfb12ed6"
   ]
  },
- "admin-system": "07bd9b39b561",
+ "admin-system": "8cf8c61d4cd9",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2b455247"
+   "764354c5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1ba3d62a"
+   "71077449"
   ]
  },
  "admin_marks": {},
- "heat": "b9f5123ed625",
+ "heat": "b728e3a153c8",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "54fe5708"
+   "c3bdb51c"
   ],
   "ranking": [
    "ランキング",
-   "17ba873e"
+   "2ea6ef8f"
   ]
  },
- "index": "db8ac1e0d89a",
+ "index": "c5e5ae8f0d57",
  "index_marks": {
   "front": [
    "トップ",
-   "f6412c17"
+   "1ca9a9d4"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "54997e68"
+   "c00ff14b"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "d2b468a4"
+   "099aad1e"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -196,6 +196,6 @@
    "f85c0004"
   ]
  },
- "updated": "11.14 03:20",
+ "updated": "11.14 04:27",
  "wishlist": "3a71649835a5"
 }
