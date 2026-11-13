@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-13T08:29:43+00:00",
+ "checked": "2026-11-13T09:18:29+00:00",
  "fired": {
   "at": "2026-11-13T07:37:26+00:00",
   "results": {
@@ -46,14 +46,10 @@
     "Astrae Oratio",
     "Vaundy",
     "dota2",
-    "lib:Ado",
     "lib:F1",
-    "lib:King Gnu",
-    "lib:Mrs. GREEN APPLE",
-    "lib:YOASOBI",
+    "lib:NBA",
     "lib:サッカー日本代表",
     "lib:大相撲",
-    "lib:大谷翔平",
     "ぐでたま",
     "三星手机",
     "周杰伦",
@@ -68,7 +64,7 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 485,
+   "prog": 490,
    "prog_day": "2026-11-13",
    "ripe": [
     "Astrae Oratio",
@@ -77,10 +73,10 @@
     "日本顶级网球赛事",
     "猫用品"
    ],
-   "sig": "e8d96354f958",
+   "sig": "c5825ea1c83c",
    "token_cap": 1000000,
    "tokens_today": 668482,
-   "why": "整理待ちの記事 110 件（18 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 62 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
