@@ -24,7 +24,8 @@
    "refs": [
     14,
     7,
-    23
+    23,
+    42
    ],
    "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/lucia_caminos_10.jpg?w=1600&h=900&fit=crop"
   },
@@ -35,7 +36,9 @@
    "weight": "normal",
    "refs": [
     20,
-    6
+    6,
+    40,
+    46
    ]
   },
   {
@@ -53,12 +56,14 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    22
+    22,
+    43,
+    48
    ]
   }
  ],
  "_covered": {
-  "GTA 6": 27,
+  "GTA 6": 49,
   "漫威电影": 50,
   "MMORPG 新作": 4,
   "三星手机": 4,
