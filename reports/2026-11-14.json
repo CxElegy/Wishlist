@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "08a70d76cf3d",
+ "edit_sig": "5930e5ed4e15",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -553,31 +553,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-12",
-     "n": 1,
-     "source": "note",
-     "title": "Why is the Protagonist Named \"Phaethon\"? — Two Horses and the Reins Held Once More",
-     "url": "https://note.com/zzz_hoihoi/n/n53e60f456a9a?hl=en"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 2,
-     "source": "新浪网",
-     "title": "#绝区零# うまさん @ umasikayade ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBPbndnMFY3V0dVWXV0U0Z2TjF1ZXdydC0wZTAwVy1LZzY2bTd5T2J0aDA4NXBqS3RDTUxnaFl6aV9MYXNZbi1SbVdiSG5vNjdCQ0lMbUQ4S3NjMGRoal9XYU13cw?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 3,
-     "source": "4Gamers",
-     "title": "Razer再次合作HoYoverse，《崩壞：星穹鐵道》聯名系列銀狼LV.999登場",
-     "url": "https://www.4gamers.com.tw/news/detail/83298/razer-x-honkai-starrail-collab-series"
+     "headline": "Why is the Protagonist Named \"Phaethon\"? — Two Horses and the Reins Held Once More",
+     "highlight": "Phaethon",
+     "image": "https://assets.st-note.com/production/uploads/images/335605931/rectangle_large_type_2_d97be2ec40a6c97502df2cb38dad76b1.png?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/zzz_hoihoi/n/n53e60f456a9a?hl=en",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",

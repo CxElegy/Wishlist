@@ -64,7 +64,8 @@
   "三星手机": 4,
   "周杰伦": 4,
   "ILLIT": 3,
-  "滑雪": 3
+  "滑雪": 3,
+  "绝区零": 3
  },
  "漫威电影": [
   {
@@ -237,6 +238,17 @@
    "highlight": "",
    "blurb": "",
    "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "Why is the Protagonist Named \"Phaethon\"? — Two Horses and the Reins Held Once More",
+   "highlight": "Phaethon",
+   "blurb": "",
+   "weight": "lead",
    "refs": [
     1
    ]
