@@ -7,7 +7,7 @@ URL 欄が隠れる・出る resize（高さだけ 56px 変わる）をまねる
   - cnt：帯が画面に入っている間に「今週」の位置（帯の中の上端）が 8px より動いた版面の数（題名の横 ↔ 下の行を行き来した）
   - band：見出しの帯の高さが 2px より変わった版面の数
   - sec：版面の下の縁が画面に入っている間に、版面の高さが 2px より変わった版面の数（下の版面が目の前で押される。sec_off は画面の外も含めた参考）
-  - cls：スクロール中の layout shift の合計（hadRecentInput なし。URL 欄の出入りの瞬間の分は cls_rz に分ける）
+  - cls：スクロール中の layout shift の合計（hadRecentInput なし。URL 欄の出入りの瞬間の分は cls_rz、左の目次の中だけの動き〔読んでいる版面の段が開く〕は cls_nav に分ける）
 写真は外の網に出ないので、どの網址も 16:9 の灰色の絵を返す（lazy の写真はスクロールで近づいてから届く）。
 小元素（docs/home/emblems）と網页は手元の本物。字体（Google Fonts）は止める（CI と同じ代わりの字体）。
 ux_check.py の「F5」もこれを呼ぶ。終わりのコード：上限（LIMITS）を超えたら 1。
@@ -39,8 +39,11 @@ EMOJI = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><circle cx
 
 INIT = r"""
 (() => { let sd = 7; Math.random = () => (sd = (sd * 16807) % 2147483647) / 2147483647; })();   // 小元素のランダムな 1 枚を前後で同じに
-(() => { const M = window.__ls = {on: false, v: 0, n: 0, src: {}};
-  try { new PerformanceObserver(l => { for (const e of l.getEntries()) { if (!M.on || e.hadRecentInput) continue; M.v += e.value; M.n++;
+(() => { const M = window.__ls = {on: false, v: 0, n: 0, nav: 0, src: {}};
+  try { new PerformanceObserver(l => { for (const e of l.getEntries()) { if (!M.on || e.hadRecentInput) continue;
+    const ns = (e.sources || []).map(s => s.node && (s.node.nodeType === 1 ? s.node : s.node.parentElement)).filter(Boolean);
+    if (ns.length && ns.every(n => n.closest('.nav'))) { M.nav += e.value; continue; }   // 左の目次（読んでいる版面の段が開く・v6 の形）だけの動きは別に数える
+    M.v += e.value; M.n++;
     (e.sources || []).forEach(s => { const n = s.node && s.node.nodeType === 1 ? s.node : s.node && s.node.parentElement;
       const k = n ? n.nodeName + '.' + String(n.className || '').split(' ')[0] + '@' + ((n.closest && n.closest('section[data-k]') || {}).dataset || {}).k : '?'; M.src[k] = (M.src[k] || 0) + e.value; }); } })
     .observe({type: 'layout-shift', buffered: false}); } catch (_) {} })();
@@ -127,7 +130,7 @@ def run(root, w, h, page_path="home/"):
             moved["sec_off"].append((k, d(sa)))
     top = sorted(ls["src"].items(), key=lambda x: -x[1])[:5]
     return {"size": f"{w}x{h}", "boards": len(seen), "cnt": len(moved["cnt"]), "band": len(moved["band"]), "sec": len(moved["sec"]),
-            "cls": round(ls["v"] - rz, 4), "cls_rz": round(rz, 4), "sec_off": len(moved["sec_off"]), "moved": moved, "cls_src": [(k, round(v, 4)) for k, v in top]}
+            "cls": round(ls["v"] - rz, 4), "cls_rz": round(rz, 4), "cls_nav": round(ls["nav"], 4), "sec_off": len(moved["sec_off"]), "moved": moved, "cls_src": [(k, round(v, 4)) for k, v in top]}
 
 
 def main():
@@ -143,7 +146,7 @@ def main():
         out.append(r)
         over = [k for k, lim in LIMITS.items() if r[k] > lim]
         bad |= bool(over)
-        print(f"{'✗' if over else '✓'} {r['size']}: 版面 {r['boards']}・今週が動いた {r['cnt']}・帯の高さ {r['band']}・版面の高さ {r['sec']}（画面の外も {r['sec_off']}）・shift {r['cls']}（URL 欄 {r['cls_rz']}）"
+        print(f"{'✗' if over else '✓'} {r['size']}: 版面 {r['boards']}・今週が動いた {r['cnt']}・帯の高さ {r['band']}・版面の高さ {r['sec']}（画面の外も {r['sec_off']}）・shift {r['cls']}（URL 欄 {r['cls_rz']}・目次 {r['cls_nav']}）"
               + (f"  ← {','.join(over)}" if over else ""), flush=True)
         for k in ("cnt", "band", "sec"):
             if r["moved"][k]:
