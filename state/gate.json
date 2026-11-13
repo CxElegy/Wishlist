@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-13T00:32:47+00:00",
+ "checked": "2026-11-13T01:30:17+00:00",
  "fired": {
   "at": "2026-11-13T00:32:47+00:00",
   "results": {
@@ -49,14 +49,12 @@
     "MMORPG 新作",
     "The Mandalorian",
     "gelato pique",
-    "lib:ユニバーサル・スタジオ・ジャパン",
-    "lib:京都",
-    "lib:宇宙・ロケット",
-    "lib:将棋",
-    "lib:恐竜",
-    "lib:東京ディズニーリゾート",
-    "lib:温泉",
-    "lib:生成AI",
+    "lib:ちいかわ",
+    "lib:サカナクション",
+    "lib:ブルーアーカイブ",
+    "lib:モンスターハンターワイルズ",
+    "lib:台風・天気",
+    "lib:広島旅行",
     "チェーンソーマン",
     "三星手机",
     "周杰伦",
@@ -64,47 +62,53 @@
     "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-12T22:51:58+00:00",
+   "last_batch": "2026-11-13T00:49:56+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 315,
+   "prog": 363,
    "prog_day": "2026-11-13",
    "ripe": [
     "GTA 6",
-    "漫威电影"
+    "ILLIT",
+    "gelato pique",
+    "lib:ちいかわ",
+    "lib:サカナクション",
+    "lib:ブルーアーカイブ",
+    "三星手机",
+    "滑雪",
+    "绝区零"
    ],
-   "sig": "b1965b23718b",
+   "sig": "9482ebf836ce",
    "token_cap": 1000000,
-   "tokens_today": 355945,
-   "why": "整理待ちの記事 151 件（20 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 415415,
+   "why": "整理待ちの記事 98 件（18 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE",
-    "周杰伦",
-    "The Mandalorian"
-   ],
-   "need": true,
-   "sig": "2d60439da02f",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
     "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -173,12 +177,12 @@
    "runs": 10
   },
   "2026-11-13": {
-   "batches": 14,
-   "cr": 11129470,
-   "cw": 314919,
-   "in": 284,
-   "out": 40742,
-   "runs": 5
+   "batches": 16,
+   "cr": 13253118,
+   "cw": 369126,
+   "in": 349,
+   "out": 45940,
+   "runs": 6
   }
  }
 }
