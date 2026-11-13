@@ -895,9 +895,11 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 @media (prefers-reduced-motion:reduce){.wc,.tape,.frame,.vote button,.vt button,.mastwish{transition:none}}
 /* ---------- 左侧目录（v6：testground/compare.html で決めた形。宽屏的样子见 NAV_STYLES，窄屏是顶部两排横条） ---------- */
 html{scroll-behavior:smooth}
-[data-k]{scroll-margin-top:24px}
-section.sec.has-emb{scroll-margin-top:max(24px,calc(var(--embov,0px) + 6px))}  /* 小元素の上の端で吸着する（E4）。上の版面との間はあけない：吸着した時に上の版面の縁が見え、小元素がその上に立つ（2026-11-11 店長「上一个板块的边缘也显示出来会更有立体感」） */
-.spot,.front .poster{scroll-margin-top:16px}
+:root{--bar-tabs:0px;--bar-full:0px}   /* 上の固定の帯（≤1000 の横帯）の高さ：tabs＝板块の段だけ・full＝作品の段まで。NAV_JS が実測して入れる。吸着の余白（scroll-margin-top）と版面の高さの予算（FIT_JS・SHUFFLE_JS の --snapbar）はどちらもここから決める（2026-11-12：1000 幅で題が帯に隠れ・版面が画面に入らなかった） */
+[data-k]{--snapbar:var(--bar-full);scroll-margin-top:calc(var(--snapbar) + var(--snapgap,24px))}
+section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24px),calc(var(--embov,0px) + 6px)))}  /* 小元素の上の端で吸着する（E4）。上の版面との間はあけない：吸着した時に上の版面の縁が見え、小元素がその上に立つ（2026-11-11 店長「上一个板块的边缘也显示出来会更有立体感」） */
+.spot,.front .poster,#picks{--snapbar:var(--bar-tabs)}   /* 版面の外（トップ・気になるかも？）では帯は板块の段だけ */
+.spot,.front .poster{scroll-margin-top:calc(var(--snapbar) + 16px)}
 .page{max-width:1480px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px 32px;align-items:start}
 .mast{grid-column:1/-1}
 .issues{display:flex;flex-direction:column;gap:28px;min-width:0}
@@ -938,9 +940,11 @@ section.sec.has-emb{scroll-margin-top:max(24px,calc(var(--embov,0px) + 6px))}  /
  .nav .pill.media,.nav .nsum{display:none!important}   /* スマホの横帯にはシリーズの中身・作品名の行を出さない */
  .nav .pill.on{background:var(--card);color:var(--ink);border-color:var(--card)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,var(--alert));width:calc(var(--prog,0) * 100%)}
- [data-k]{scroll-margin-top:104px}section.sec.has-emb{scroll-margin-top:calc(104px + var(--embov,0px))}
+ :root{--bar-tabs:46px;--bar-full:94px}   /* NAV_JS が実測するまでの仮の値 */
+ [data-k]{--snapgap:10px}   /* 帯の下の余白（スマホは今までの 104px と同じ位置） */
 }
 @media (max-width:600px){.nav{margin:0 -16px}}
+@media (min-width:761px) and (max-width:1000px){.pk .why small{white-space:normal}}   /* 1000 幅前後：理由の行を「…」で切らない（D3）。高さは fitPk が測る */
 /* ---------- 愿望清单 ---------- */
 .wish{--bg:var(--sheet);--fg:var(--ink);--acc:var(--rose);--abg:var(--ink);--afg:var(--sheet);--aacc:#F2A7C3;--ac:var(--rose);
  --line:color-mix(in srgb,var(--ink) 18%,var(--sheet));background:var(--bg);color:var(--fg);border:1px solid var(--line)}
@@ -1688,7 +1692,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin" content="09bfc573323f"><style>
+<meta name="wl-ver" data-page="admin" content="bf157d5cf324"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2654,7 +2658,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.13 10:17</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.13 10:26</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html" aria-current="page"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
