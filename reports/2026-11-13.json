@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "edit_sig": "792cc9361ada",
+ "edit_sig": "5bd36f2229e0",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -638,23 +638,12 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-12",
-     "headline": "Gelato Pique攜手三麗鷗推出第二彈聯名系列，5款角色登場",
-     "highlight": "",
-     "image": "https://www.diarypoint.com/media/96d11654-c1c5-467d-bbaf-b17f08b48ea4.jpg",
-     "image_via": "og:image",
-     "url": "https://www.diarypoint.com/zh-hant/news/7100/gelato-pique-and-sanrio-launch-second-collaboration-collection-featuring-5-chara",
-     "weight": "hero"
-    },
-    {
      "blurb": "ジェラート ピケとサンリオのコラボ第2弾に、ハローキティやクロミなど5キャラクターが登場。",
      "date": "2026-11-12",
      "headline": "ジェラート ピケ×サンリオ第2弾、キティやクロミなど5キャラクターが登場",
      "highlight": "第2弾",
-     "image": null,
-     "source": "www.diarypoint.com",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.diarypoint.com&sz=128",
+     "image": "https://www.diarypoint.com/media/96d11654-c1c5-467d-bbaf-b17f08b48ea4.jpg",
+     "image_via": "og:image",
      "url": "https://www.diarypoint.com/ja/news/7100/gelato-pique-and-sanrio-launch-second-collaboration-collection-featuring-5-chara",
      "weight": "lead"
     },
@@ -965,22 +954,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-10",
-     "n": 3,
-     "source": "17173",
-     "title": "《绝区零》赛维里安角色展示 | 督察是怎样练成的",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1jNVN4RXhJQ2pXcGpvLU12bFp3VUJLVEVrd0FqTGczT2hPTUVhTW5RYjdmQzF2d1Y1cGhfWTdUdV9UOWRWdU1admJDMjdFNHRDY1dSeWdBVUZkTjBEUVZkLTI5UF8?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 4,
-     "source": "17173",
-     "title": "《绝区零》3.3版本「商城」上新说明",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5LdjVJaGd0UDJybDJNNkdYeEppVDNraFAtZWpZT2N3Y09leHpwVTlkdGpFQXktaVFWZWY2M2R3N0RqNjc4N3JsYkRlRGZwcjVITHRjNGRNbmR0clNoaG01Z2hzbWQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -991,6 +964,26 @@
      "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/zh-cn/gaming/%E9%80%9A%E7%94%A8/%E7%BB%9D%E5%8C%BA%E9%9B%B6-%E6%8C%BD%E6%98%BC%E8%A7%92%E8%89%B2%E5%AE%9A%E4%BD%8D-%E4%B8%89%E5%90%88%E4%B8%80%E8%99%9A%E7%8B%A9%E7%81%ABc%E6%9C%BA%E5%88%B6%E8%A7%A3%E6%9E%90/ar-AA2gRGq3",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "《绝区零》赛维里安角色展示 | 督察是怎样练成的",
+     "highlight": "",
+     "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/TCbxlYbuhcakEyx.jpg",
+     "image_via": "正文图",
+     "url": "http://news.17173.com/content/11102026/135417166.shtml",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-10",
+     "headline": "《绝区零》3.3版本「商城」上新说明",
+     "highlight": "",
+     "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/DSYjFmbuhcifcaq.jpg",
+     "image_via": "正文图",
+     "url": "http://news.17173.com/content/11102026/161052892.shtml",
      "weight": "normal"
     }
    ],
@@ -1076,7 +1069,7 @@
      "date": "2026-11-12",
      "headline": "2026 年 11 月 11 日榜：RESCENE 与 A2O LITE 的强势表现",
      "highlight": "A2O LITE 的强势表现",
-     "image": "http://wx2.sinaimg.cn/middle/006dNg2Ply1iizp6xr3lsj31dk26mgut.jpg",
+     "image": "http://wx1.sinaimg.cn/middle/006dNg2Ply1iizp6xqfr9j30t229m138.jpg",
      "image_via": "正文图（本站保存）",
      "url": "https://www.sina.cn/news/detail/5364532895548280.html",
      "weight": "lead"

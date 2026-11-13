@@ -331,11 +331,11 @@
   "The Mandalorian": 8,
   "チェーンソーマン": 11,
   "A2O LITE": 6,
-  "gelato pique": 3,
+  "gelato pique": 4,
   "日本顶级网球赛事": 4,
   "FROM": 4,
   "猫用品": 2,
-  "绝区零": 2,
+  "绝区零": 4,
   "BLEACH Mirrors High": 5,
   "あつ森": 2,
   "ぐでたま": 3,
@@ -717,7 +717,8 @@
    "blurb": "ジェラート ピケとサンリオのコラボ第2弾に、ハローキティやクロミなど5キャラクターが登場。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    4
    ]
   },
   {
@@ -831,6 +832,24 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "《绝区零》赛维里安角色展示 | 督察是怎样练成的",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "《绝区零》3.3版本「商城」上新说明",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
