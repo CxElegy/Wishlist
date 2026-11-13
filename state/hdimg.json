@@ -3381,6 +3381,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794567809227_galaxy-s27-ultra-wallpaper-leak-hints-at-new-color-options-17945529653611120276072.jpeg": {
+  "w": 631,
+  "h": 355,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.504,
+  "local": "pics/48aa7ce0c83386d3.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://wassets.insta360.com/store/c1d5e5a174d5499d9f8f04aa618052a2/x6.jpg": {
   "w": 1200,
   "h": 630,
@@ -3391,6 +3404,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.3elife.net/Uploads/Article/images/202611/10/1734064806161.jpg": {
+  "w": 600,
+  "h": 545,
+  "target": 720,
   "v": 3
  },
  "https://www.4gamer.net/games/042/G104263/20261110017/SS/002.jpg": {

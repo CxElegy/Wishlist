@@ -60,7 +60,8 @@
  "_covered": {
   "GTA 6": 27,
   "漫威电影": 24,
-  "MMORPG 新作": 4
+  "MMORPG 新作": 4,
+  "三星手机": 4
  },
  "漫威电影": [
   {
@@ -141,6 +142,28 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "流出した壁紙から、Galaxy S27シリーズのカラーバリエーションが明らかになった。",
+   "highlight": "Galaxy S27シリーズのカラーバリエーション",
+   "blurb": "流出した壁紙から、Galaxy S27シリーズの色の展開が明らかになった。",
+   "weight": "lead",
+   "refs": [
+    3,
+    4
+   ],
+   "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794567809227_galaxy-s27-ultra-wallpaper-leak-hints-at-new-color-options-17945529653611120276072.jpeg"
+  },
+  {
+   "headline": "三星S27系列影像配置曝光，均为后置三摄模组",
+   "highlight": "均为后置三摄模组",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]

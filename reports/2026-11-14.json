@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "b3a5cbb873bf",
+ "edit_sig": "9e578f1b2993",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -375,38 +375,29 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "流出した壁紙から、Galaxy S27シリーズの色の展開が明らかになった。",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "Samsung Magazine",
-     "title": "Galaxy S27 Pro 망원 렌즈 성능이 더 나빠진다 Galaxy Note8삼성은 정말 큰 망신을 당할 것이다.",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1QbFZ0QzJfRUtmYXUycVRQaEkxdDIxR0RQRzk3OVhvS3dQajV1Rm4yMG1JT1hFQVpncjZlYlFISHB0T1dmbXUzbTdMNE1qdWZ2b3h0R0p5c0xqWjBCQS1XNG5QbEx5cUJkQXhReDBWVHNGakgz?oc=5"
+     "headline": "流出した壁紙から、Galaxy S27シリーズのカラーバリエーションが明らかになった。",
+     "highlight": "Galaxy S27シリーズのカラーバリエーション",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794567809227_galaxy-s27-ultra-wallpaper-leak-hints-at-new-color-options-17945529653611120276072.jpeg",
+     "image_via": "AI 挑选",
+     "url": "https://www.vietnam.vn/ja/ro-ri-hinh-nen-he-lo-loat-mau-sac-dong-galaxy-s27",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 2,
-     "source": "三易生活",
-     "title": "三星S27系列影像配置曝光，均为后置三摄模组",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBUd0tHSFN6bHdMelByMk16OV9ETk1ORXRnOV85VUlCY0NOLThZamNvb2RiejhvcVVTUHVxRnpCdG9HbmNXVGxXUnBZVS01Y0RWY1A4Q29Xd1Y4LXMtcHUxS1RnWjVYQQ?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 3,
-     "source": "Vietnam.vn",
-     "title": "流出した壁紙から、Galaxy S27シリーズのカラーバリエーションが明らかになった。",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNalh5ZkJSc0F0dXN2c3ExQURhWUVJSFJkWFg1Z0NRZDY5Wk5GQ090Ykt6dGY3Z3BFMVFURlYyN0ZvSk5xMTRUTjVDeVk1SHBwMTA5cTlHZ1g0RlgyeTRCLUl1VVMtMzREaDh0QWZKV1A3Z1pGSjltSDNJbEVzdTlmcQ?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 4,
-     "source": "Vietnam.vn",
-     "title": "유출된 배경화면을 통해 갤럭시 S27 시리즈의 다양한 색상이 공개되었습니다.",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQQ2FfWS1Ha2FsT2ljM1VnclBta1prRmZYWDRUcG1adnNnUl9sZTB4aVpjWVgtTDBOblIyTVo1NGxLRFNTdFViT1F1RldQUHhKeDJIdzBxOU80RE1aS2hRZVNpN0hNNmdHazFIcjIyM1U2Q2tKMnVQWWlabGZLZWd2bQ?oc=5"
+     "headline": "三星S27系列影像配置曝光，均为后置三摄模组",
+     "highlight": "均为后置三摄模组",
+     "image": "https://www.3elife.net/Uploads/Article/images/202611/10/1734064806161.jpg",
+     "image_via": "正文图（4 枚から）",
+     "url": "https://www.3elife.net/Art/mobile/202611/13/110750.html",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",
