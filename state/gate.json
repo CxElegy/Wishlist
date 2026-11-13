@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-13T09:21:55+00:00",
+ "changed": true,
+ "checked": "2026-11-13T10:15:47+00:00",
  "fired": {
   "at": "2026-11-13T09:21:55+00:00",
   "results": {
@@ -44,39 +44,42 @@
    },
    "items": [
     "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
     "Vaundy",
     "dota2",
-    "lib:F1",
-    "lib:NBA",
-    "lib:サッカー日本代表",
-    "lib:大相撲",
-    "ぐでたま",
+    "gelato pique",
+    "lib:BTS",
+    "チェーンソーマン",
     "三星手机",
     "周杰伦",
-    "日本顶级网球赛事",
     "滑雪",
-    "猫用品",
+    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-13T08:16:17+00:00",
+   "last_batch": "2026-11-13T09:32:38+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 490,
+   "prog": 500,
    "prog_day": "2026-11-13",
    "ripe": [
-    "Astrae Oratio",
-    "dota2",
-    "ぐでたま",
-    "日本顶级网球赛事",
-    "猫用品"
+    "GTA 6",
+    "ILLIT",
+    "Vaundy",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "漫威电影",
+    "绝区零"
    ],
-   "sig": "c5825ea1c83c",
+   "sig": "271d213acf72",
    "token_cap": 1000000,
-   "tokens_today": 668482,
-   "why": "整理待ちの記事 62 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 716034,
+   "why": "整理待ちの記事 70 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -169,12 +172,12 @@
    "runs": 10
   },
   "2026-11-13": {
-   "batches": 24,
-   "cr": 19363860,
-   "cw": 592421,
-   "in": 524,
-   "out": 75537,
-   "runs": 10
+   "batches": 25,
+   "cr": 19970829,
+   "cw": 636466,
+   "in": 544,
+   "out": 79024,
+   "runs": 11
   }
  }
 }

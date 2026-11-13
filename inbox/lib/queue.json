@@ -1,426 +1,111 @@
 {
 "done": {
 "day": "2026-11-13",
-"n": 51
+"n": 55
 },
 "boards": [
 {
-"id": 155,
-"name": "サッカー日本代表",
+"id": 153,
+"name": "BTS",
 "day": "2026-11-13",
-"fp": "d358d7df23f9",
+"fp": "647c358510ec",
 "fresh": false,
 "rows": [
 {
-"title": "U-21サッカー日本代表、スペイン＆エジプトとの海外遠征2連戦をABEMAで無料生中継（TVガイドWeb）",
-"date": "2026-11-12T22:20:48+00:00",
+"title": "BTS・JUNG KOOK「GOLDEN」、Spotify世界アルバムチャートに156週…アジアソロ最長",
+"date": "2026-11-13T02:05:18+00:00",
+"source": "AFPBB News",
+"summary": "",
+"url": "https://www.afpbb.com/articles/-/3662212",
+"image": "https://afpbb.ismcdn.jp/mwimgs/b/5/1000x/img_b5ef6a52eab77fda2d3d2e8a1113655e98001.jpg"
+},
+{
+"title": "BTSジョングクが充実の1年回顧 「カムバックとツアーは特別」と語る現在地",
+"date": "2026-11-12T00:21:31+00:00",
+"source": "emogram",
+"summary": "",
+"url": "https://emogram.sankei.com/120077",
+"image": "https://emogram.sankei.com/wp-content/uploads/2026/11/DSC09205-2-1024x683.jpeg"
+},
+{
+"title": "グローバルスーパースターBTS、｢BTS WORLD TOUR ‘ARIRANG’｣高雄公演＆ジャカルタ公演ライブビューイング予告編公開―パフォーマンスを収録",
+"date": "2026-11-11T13:30:20+00:00",
+"source": "韓スタ！",
+"summary": "",
+"url": "https://kanstarpress.com/?p=208281",
+"image": "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/11/01b34168af3e4bb98bf86e73f8141126.webp?fit=960%2C1200&ssl=1"
+},
+{
+"title": "BTS「ARIRANG」ライブビューイング、新たな予告編解禁！ メンバー集合ステージ写真使用の特典も",
+"date": "2026-11-11T09:51:31+00:00",
+"source": "Infoseek",
+"summary": "",
+"url": "https://news.infoseek.co.jp/article/oshiraku_30434/",
+"image": "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_30434_0-enlarge.jpg"
+},
+{
+"title": "BTSのパフォーマンスを収めた映像が到着！ワールドツアーライブビューイング新予告公開",
+"date": "2026-11-11T09:11:36+00:00",
+"source": "THE FIRST TIMES",
+"summary": "",
+"url": "https://www.thefirsttimes.jp/news/0000916916/",
+"image": "https://www.thefirsttimes.jp/admin/wp-content/uploads/5026/11/20261111-atm-172601-1200x630.jpg"
+},
+{
+"title": "『BTS WORLD TOUR 'ARIRANG'』11月21日(土)高雄公演、12月30日(水)ジャカルタ公演ライブビューイングの最新予告が解禁！さらに、高雄公演ライブビューイング来場者特典の詳細が発表になりました！",
+"date": "2026-11-11T09:00:31+00:00",
+"source": "BTS JAPAN OFFICIAL FANCLUB",
+"summary": "",
+"url": "https://bts-official.jp/news/7c1afecf3d0c",
+"image": "https://officialsite.cds-jp.online/prod/site/101/b8105b754686494c90f1a0a7e6d8b30a.png"
+},
+{
+"title": "BTSワールドツアー高雄＆ジャカルタ公演のライブビューイング新予告解禁！ 高雄公演の来場者特典も発表（クランクイン！）",
+"date": "2026-11-11T09:00:00+00:00",
 "source": "Yahoo!ニュース",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/c0e1c3a88884ba2fe332a43329f4f26ab4193c22",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000007-tvguidew-000-1-view.jpg?exp=10800"
+"url": "https://news.yahoo.co.jp/articles/1f2f4fc674aab16c243a1642e54e4eb4bfe58717",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-00194146-crankinn-000-1-view.jpg?exp=10800"
 },
 {
-"title": "サッカー日本代表、ブラジル戦の背番号を発表！復帰の南野拓実と町田浩樹は「大怪我前」の番号に…福田師王が“末席”28番",
-"date": "2026-11-12T13:11:21+00:00",
-"source": "Qoly on MSN",
-"summary": "日本サッカー協会（JFA）は12日、「MIZUHO BLUE CHALLENGE THE KALLANG FOOTBALL SERIES SINGAPORE」に臨むSAMURAI BLUE（日本代表）の背番号が決定したと発表した。 シンガポールの地でブラジル、パラグアイを戦う日本代表。注目の背番号はこちら。 1．鈴木彩",
-"url": "https://www.msn.com/ja-jp/sports/soccer/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E6%97%A5%E6%9C%AC%E4%BB%A3%E8%A1%A8-%E3%83%96%E3%83%A9%E3%82%B8%E3%83%AB%E6%88%A6%E3%81%AE%E8%83%8C%E7%95%AA%E5%8F%B7%E3%82%92%E7%99%BA%E8%A1%A8-%E5%BE%A9%E5%B8%B0%E3%81%AE%E5%8D%97%E9%87%8E%E6%8B%93%E5%AE%9F%E3%81%A8%E7%94%BA%E7%94%B0%E6%B5%A9%E6%A8%B9%E3%81%AF-%E5%A4%A7%E6%80%AA%E6%88%91%E5%89%8D-%E3%81%AE%E7%95%AA%E5%8F%B7%E3%81%AB-%E7%A6%8F%E7%94%B0%E5%B8%AB%E7%8E%8B%E3%81%8C-%E6%9C%AB%E5%B8%AD-28%E7%95%AA/ar-AA2hjToi",
-"image": "https://www.bing.com/th?id=ONUT.ZsyIvMhMEphGk02mIXVZhw&pid=News&w=700"
-},
-{
-"title": "サッカー日本代表、14日のブラジル戦へ28選手全員で調整 初招集の福田師王ら汗流す",
-"date": "2026-11-12T12:44:00+00:00",
-"source": "産経ニュース",
-"summary": "サッカー日本代表は14日にシンガポールでの国際親善試合でブラジル代表と対戦する。12日は大半を非公開として調整し、冒頭部分では主力の堂安（アイントラハト・フランクフルト）や初招集の福田（カールスルーエ）ら28選手全員が、ランニングやパス回しで汗を流した。",
-"url": "https://www.sankei.com/article/20261112-KRRJXIITZRM4JGBC25BOBFS2ZU/",
-"image": "https://www.bing.com/th?id=ONUT.bFg09T08kGySoIbf2SAcDw&pid=News&w=480"
-},
-{
-"title": "【11月14日】サッカー日本代表 vs ブラジル代表 試合情報｜地上波テレビ放送・ネット配信・中継｜スコア｜実況・解説｜MIZUHO BLUE CHALLENGE THE KALLANG FOOTBALL SERIES SINGAPORE",
-"date": "2026-11-12T11:01:31+00:00",
-"source": "サッカーキング",
+"title": "BTSの次なる一手は「グループとソロの継続」 HYBE決算で明かされたワールドツアー後の展望",
+"date": "2026-11-10T07:00:00+00:00",
+"source": "ｄメニューニュース",
 "summary": "",
-"url": "https://www.soccer-king.jp/news/japan/national/fixed/2213855.html",
-"image": "https://www.soccer-king.jp/wp-content/uploads/2026/11/japan-brazil-broadcast-20261104.jpg"
+"url": "https://topics.smt.docomo.ne.jp/article/searchkoreanews/world/searchkoreanews-38397?fm=latestnews",
+"image": "https://img.topics.smt.news.goo.ne.jp/picture/searchkoreanews/m_searchkoreanews-38397.jpg"
 },
 {
-"title": "喜びかみしめ集大成へ 復帰の南野「やってやる」―サッカー日本代表",
-"date": "2026-11-12T10:33:00+00:00",
-"source": "時事ドットコム",
+"title": "「BTS」Jin、ブラジルで完璧なビジュアルと夢のようなライブ…Xのトレンドに「BRASIL AMA KIM SEOKJIN」",
+"date": "2026-11-07T21:02:47+00:00",
+"source": "ｄメニューニュース",
 "summary": "",
-"url": "https://www.jiji.com/jc/article?k=2026111200969&g=spo",
-"image": "https://www.jiji.com/news2/kiji_photos/202611/20261112at68S_o.jpg"
+"url": "https://topics.smt.docomo.ne.jp/article/wowkorea/entertainment/wowkorea-20261108wow004",
+"image": "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261108wow004.jpg"
 },
 {
-"title": "Suchmos、新曲「hi-liter」が『サッカー日本代表映画「最高の景色」への挑戦』オープニング曲に",
-"date": "2026-11-12T09:22:07+00:00",
-"source": "リアルサウンド",
+"title": "'BRASIL AMA KIM SEOKJIN' 防弾少年団のジン、ブBTSだ..完璧なビジュアル→幻想的なライブ",
+"date": "2026-11-06T22:15:00+00:00",
+"source": "스타뉴스",
 "summary": "",
-"url": "https://realsound.jp/2026/11/post-2582556.html",
-"image": "https://realsound.jp/wp-content/uploads/2026/11/20261112-suchmos-99.jpg"
+"url": "https://www.starnewskorea.com/ja/music/2026/11/07/2026110707113556545",
+"image": "https://image.starnewskorea.com/21/2026/11/2026110707113556545_1.jpg"
 },
 {
-"title": "サッカー最新FIFAランキング1位〜100位。サッカー日本代表の順位は？（2026年11月13日付）",
-"date": "2026-11-12T09:18:00+00:00",
-"source": "フットボールチャンネル",
-"summary": "国際サッカー連盟（FIFA）によって発表された最新のFIFAランキング（2026年10月6日付）の1位から100位を掲載。FIFAワールドカップ（W杯）や大陸予選、大陸別選手権の結果をもとに算出された各国代表やサッカー日本代表の現在のランキ ...",
-"url": "https://www.footballchannel.jp/2026/11/13/post484208/",
-"image": "https://www.bing.com/th?id=ONUT.2fWxaHyqdgyAwV8Q4PWNyw&pid=News&w=230"
+"title": "BTS Copyright Infringement Lawsuits: Both Cases Fully Concluded!",
+"date": "2026-11-06T06:45:00+00:00",
+"source": "note",
+"summary": "BTS copyright infringement lawsuits concludedAs I wrote in my article the other day, the copyright infringement lawsuit surrounding the title track \"SWIM\" from ",
+"url": "https://note.com/thracia776/n/nc058eafb3b90?hl=en",
+"image": "https://assets.st-note.com/production/uploads/images/333013463/rectangle_large_type_2_07be6e8ba7b367de020c6418e193d4a9.png?fit=bounds&quality=85&width=1280"
 },
 {
-"title": "【11月17日】サッカー日本代表 vs パラグアイ代表 試合情報｜地上波テレビ放送・ネット配信・中継｜スコア｜実況・解説｜MIZUHO BLUE CHALLENGE THE KALLANG FOOTBALL SERIES SINGAPORE",
-"date": "2026-11-12T08:42:43+00:00",
-"source": "サッカーキング",
+"title": "Calcutta ARMYs turn South City’s PVR-INOX into a BTS fan fest at a screening of the group’s recent Sao Paulo concert",
+"date": "2026-11-06T03:00:00+00:00",
+"source": "t2ONLINE",
 "summary": "",
-"url": "https://www.soccer-king.jp/news/japan/national/fixed/2213927.html",
-"image": "https://www.soccer-king.jp/wp-content/uploads/2026/10/20261117-japan-paraguay-broadcast.jpg"
-},
-{
-"title": "サッカー日本代表2026｜年間試合日程・放送予定・テレビ&ネット配信スケジュール",
-"date": "2026-11-12T08:12:00+00:00",
-"source": "DAZN",
-"summary": "",
-"url": "https://www.dazn.com/ja-JP/news/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC/football-japan-national-schedule-broadcast/bt9p0hprblci1rz6698lt8iki",
-"image": ""
-},
-{
-"title": "ブラジル＆パラグアイ戦に臨む日本代表の背番号が決定！ 初招集の福田師王は「28」を着用 ｜ サッカー日本代表",
-"date": "2026-11-12T07:47:24+00:00",
-"source": "DAZN",
-"summary": "",
-"url": "https://www.dazn.com/ja-JP/news/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC/2026-11-12-soccer-japan-national-team-uniform-number/k3c19jv82qe81qi3qfoxz1rit",
-"image": "https://www.bing.com/th?id=ONUT.RHiU_tKSP5QpRDgOrwXFuQ&pid=News&w=934"
-},
-{
-"title": "『サッカー日本代表映画「最高の景色」への挑戦』OP曲はSuchmosに決定 特別映像も解禁（ぴあ）",
-"date": "2026-11-12T07:31:53+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/f7d2bce5038ac0ff8e23eb450b72b36eb950fb97",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261112-00010006-piaeigat-000-1-view.jpg?exp=10800"
-},
-{
-"title": "サッカーブラジル代表の最新メンバー｜日本代表戦の招集選手は？",
-"date": "2026-11-12T07:00:00+00:00",
-"source": "GOAL",
-"summary": "サッカー日本代表は2026年11月14日 (土)に「MIZUHO BLUE CHALLENGE THE KALLANG FOOTBALL SERIES SINGAPORE」でブラジル代表と対戦する。 11月のインターナショナルブレイクで日本代表と対戦するブラジル代表は、25選手を招集。ハフィーニャやヴィニシウス・ジュニ",
-"url": "https://www.goal.com/jp/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/brazil-national-fooball-team-member-20261114/blt41e8c53318c0fd5d",
-"image": "https://www.bing.com/th?id=ONUT.TOekXQ3QnvSxpXdIIJmW4A&pid=News&w=700"
-}
-]
-},
-{
-"id": 156,
-"name": "大相撲",
-"day": "2026-11-13",
-"fp": "688a4610c473",
-"fresh": false,
-"rows": [
-{
-"title": "「探しても見つからない」カード入り『大相撲せんべい』が売り切れ続出で早くもレア化！交錯するファンの希望（週刊女性PRIME）",
-"date": "2026-11-12T23:40:06+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/0752a254c3404a4fc2f7f6b62bfe0fd3d11b6b5d",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00044621-jprime-000-1-view.png?fmt=jpeg&q=85&exp=10800"
-},
-{
-"title": "96歳を迎えた元名物アナウンサー、大相撲中継で見せた姿に反響「本当にお好き」「眼光の鋭さは健在」【九州場所】",
-"date": "2026-11-12T22:44:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/5b481875a82999e835759c35f4afed928aa76a3a",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00122722-thedigest-000-4-view.jpg?exp=10800"
-},
-{
-"title": "大相撲九州場所 6日目の見どころ 藤凌駕が大関 霧島に挑む",
-"date": "2026-11-12T20:28:13+00:00",
-"source": "NHKニュース",
-"summary": "",
-"url": "https://news.web.nhk/newsweb/na/nd-20261112de75063",
-"image": "https://imgu.web.nhk/news/u/news/nd/kiji/20261112de75063/20261112de75063_E0000003490_1_l.jpg"
-},
-{
-"title": "御嶽海が連勝で３勝１敗 大相撲九州場所",
-"date": "2026-11-12T20:16:43+00:00",
-"source": "市民タイムス",
-"summary": "",
-"url": "https://www.shimintimes.co.jp/news/2026/11/post-16500/",
-"image": "https://www.shimintimes.co.jp/wp-content/uploads/2026/11/ej11110078.jpg?20250725"
-},
-{
-"title": "豊昇龍３敗目 大相撲九州場所・５日目",
-"date": "2026-11-12T20:00:00+00:00",
-"source": "朝日新聞",
-"summary": "",
-"url": "https://www.asahi.com/articles/DA3S16586646.html",
-"image": "https://imgopt.asahi.com/ogp/AS20261113000166_comm.jpg"
-},
-{
-"title": "［きょうの取組］［大相撲九州場所］",
-"date": "2026-11-12T18:59:00+00:00",
-"source": "沖縄タイムス社",
-"summary": "",
-"url": "https://www.okinawatimes.co.jp/articles/-/1965187",
-"image": "https://oki.ismcdn.jp/mwimgs/a/b/1200wm/img_ab6f79b6f5d5bcf015c8ca98fed834ab681251.jpg"
-},
-{
-"title": "【大相撲】霧島が綱取り失敗から得た教訓…師匠の音羽山親方「苦しいところで逃げなかった」",
-"date": "2026-11-12T13:09:16+00:00",
-"source": "東スポWEB on MSN",
-"summary": "失敗を糧にする。大相撲九州場所５日目（１２日、福岡国際センター）、大関霧島（３０＝音羽山）が元大関の幕内朝乃山（３２＝高砂）を寄り切って４勝目（１敗）。首位と１差で序盤を終えて「これからも長い。集中力が切れないように、しっかり一番一番取っていきたい」と気を引き締めた。",
-"url": "https://www.msn.com/ja-jp/sports/%E5%85%A8%E8%88%AC/%E5%A4%A7%E7%9B%B8%E6%92%B2-%E9%9C%A7%E5%B3%B6%E3%81%8C%E7%B6%B1%E5%8F%96%E3%82%8A%E5%A4%B1%E6%95%97%E3%81%8B%E3%82%89%E5%BE%97%E3%81%9F%E6%95%99%E8%A8%93-%E5%B8%AB%E5%8C%A0%E3%81%AE%E9%9F%B3%E7%BE%BD%E5%B1%B1%E8%A6%AA%E6%96%B9-%E8%8B%A6%E3%81%97%E3%81%84%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A7%E9%80%83%E3%81%92%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F/ar-AA2hjTmj",
-"image": "https://www.bing.com/th?id=ONUT.h32UTQFKH3IlMnoLKqbeiQ&pid=News&w=1200"
-},
-{
-"title": "大相撲客席にいた96歳男性の正体「お元気そう」「毎日…凄いな」 花道脇、中継で抜かれ「偉大だよ」（THE ANSWER）",
-"date": "2026-11-12T12:33:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/d5c1221aa5b7b57181d92b27a9eec2c0f8fe3272",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261112-00751630-theanswer-000-1-view.jpg?exp=10800"
-},
-{
-"title": "大相撲九州場所5日目 休場明けの横綱 豊昇龍が敗れて3連敗",
-"date": "2026-11-12T12:28:46+00:00",
-"source": "NHKニュース",
-"summary": "",
-"url": "https://news.web.nhk/newsweb/na/nd-20261112de74742",
-"image": "https://imgu.web.nhk/news/u/news/nd/kiji/20261112de74742/20261112de74742_E0000169602_1_l.jpg"
-},
-{
-"title": "【大相撲】霧島が元大関の朝乃山を退けて4勝目「これからも長い。集中力が切れないように」",
-"date": "2026-11-12T12:15:00+00:00",
-"source": "東スポWEB",
-"summary": "大相撲九州場所５日目（１２日、福岡国際センター）、大関霧島（３０＝音羽山）が大関経験者の幕内朝乃山（３２＝高砂）を寄り切って４勝目。序盤を１敗で乗り切った取組後は「しっかり最後まで落ち着いて取れた。一番一番、しっかり集中して取ってます」とうなずいた。 今年は春場所で３度目の優勝を果たして大関に復帰。横綱昇進を目指して臨",
-"url": "https://www.tokyo-sports.co.jp/articles/-/409710",
-"image": "https://tokyo-sports.ismcdn.jp/mwimgs/e/1/1200w/img_e131986b0b6e09b819a64ef3fdb3c5a1128095.jpg"
-},
-{
-"title": "大相撲 絶好調の熱海富士にまさかのハプニング 同門の先輩と土俵下で激突→困惑する姿にファンも笑顔 取組では圧倒的強さで唯一５連勝「明らかに前場所と違う」（デイリースポーツ）",
-"date": "2026-11-12T11:47:25+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/21456b99607180ace717bf91af4d98c8cba81bf3",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261112-00000132-dal-000-9-view.jpg?exp=10800"
-},
-{
-"title": "【大相撲】安青錦が伯乃富士を退けて３勝目「始まったばかり。どんどん調子を上げていければ」（東スポWEB）",
-"date": "2026-11-12T11:40:25+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/cbc4bc174c8e850dbc005154c5f1eaf7810e9b0d",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261112-00409712-tospoweb-000-1-view.jpg?exp=10800"
-}
-]
-},
-{
-"id": 157,
-"name": "F1",
-"day": "2026-11-13",
-"fp": "ce4280b9c908",
-"fresh": false,
-"rows": [
-{
-"title": "A Gulf Finale, 2 Race Weekends and Zero Backup: F1 Just Told Imola to Stop Holding the Date",
-"date": "2026-11-12T22:15:00+00:00",
-"source": "Yahoo Sports",
-"summary": "",
-"url": "https://sports.yahoo.com/articles/gulf-finale-2-race-weekends-221500330.html",
-"image": "https://s.yimg.com/lo/mysterio/api/839bfb0d66284192bdaa9f2b46f040531ec503ebebcda5a8153b9a983d72deac/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbackfire_racing_653%2F02af40bbf028c6c97517d8fe64f84ca5.jpg"
-},
-{
-"title": "Antonelli names the F1 rival he fears most ahead of 2027 title defence",
-"date": "2026-11-12T22:00:00+00:00",
-"source": "Yahoo Sports",
-"summary": "",
-"url": "https://sports.yahoo.com/articles/antonelli-names-f1-rival-fears-220000875.html",
-"image": "https://s.yimg.com/lo/mysterio/api/c4670b58a2520b1b6d3bc9c7472c3160959ec190124c3eef4d7704ea29d389c2/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgpblog_716%2Fcf6bd9426980f27d182b2bc616a2c72a"
-},
-{
-"title": "「結果がすべて」識者が分析するレーシングブルズの体制継続…ローソン＆リンドブラッドの奮闘がツォロフ見送りに繋がった理由｜F1（DAZN News）",
-"date": "2026-11-12T21:04:27+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/f5367a916b09167a46f58ab1cccb6bd2369f7056",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00010003-dazn-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【F1】角田裕毅の来季は？ツォロフがレッドブル＆レーシングブルズのリザーブに就任 続投のローソンを両代表が称賛",
-"date": "2026-11-12T21:01:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/d6c2cb3ef152dc56c895b86976a22341e87a043c",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000001-fliv-000-1-view.jpg?exp=10800"
-},
-{
-"title": "F1 Today: Lawson's future finally decided as FIA makes crucial decision",
-"date": "2026-11-12T21:00:00+00:00",
-"source": "Yahoo Sports",
-"summary": "",
-"url": "https://sports.yahoo.com/articles/f1-today-lawsons-future-finally-210000112.html",
-"image": "https://s.yimg.com/lo/mysterio/api/65656b6dea083c14638eb42eeac0362242831b03e55ca340639939b6d1353997/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgpblog_716%2F7d165257b865d1586ac381fe691886fc"
-},
-{
-"title": "Ferrari’s F1 Team Is Worth $8.2 Billion, and Even Last-Place Cadillac Is Worth $2.7B",
-"date": "2026-11-12T20:50:57+00:00",
-"source": "MotorBiscuit",
-"summary": "",
-"url": "https://www.motorbiscuit.com/ferraris-f1-team-is-worth-8-2-billion-and-even-last-place-cadillac-is-worth-2-7b/",
-"image": "https://www.motorbiscuit.com/wp-content/uploads/2026/11/M643907_F1_Grand_Prix_of_United_States-1.jpg"
-},
-{
-"title": "【F1シート争い2027】角田裕毅にキャデラック入りの可能性は？残る最大2席、ベアマンとボッタスの現状",
-"date": "2026-11-12T20:37:00+00:00",
-"source": "TopNews",
-"summary": "",
-"url": "https://topnews.jp/2026/11/13/news/f1/f1-2027/262515.html",
-"image": "https://i0.wp.com/topnews.jp/wp-content/uploads/2026/11/collage-2027raceseat.jpg?fit=1200%2C675&quality=89&ssl=1"
-},
-{
-"title": "FIA、ADUOの追加改良枠は変更なし 2027年に向け制度改善を検討／F1（TopNews）",
-"date": "2026-11-12T20:09:53+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/050bb31c434b94c7f47afcefe1b410f0c3876af2",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000000-fliv-000-1-view.jpg?exp=10800"
-},
-{
-"title": "F1級迫力期待の 第4世代「フォーミュラE」 中東情勢で1月メキシコ開幕へ 7月東京開催変わらず（桃田健史） - エキスパート",
-"date": "2026-11-12T20:00:56+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/expert/articles/f6788023d3f4d253eb30ef5a86772e02c7fd9024",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/momotakenjiex/02764508/title-1794481060073.jpeg?exp=10800"
-},
-{
-"title": "Liam Lawson keeps F1 seat with Racing Bulls for ’27",
-"date": "2026-11-12T18:57:45+00:00",
-"source": "Field Level Media",
-"summary": "",
-"url": "https://fieldlevelmedia.com/formula-1/liam-lawson-keeps-f1-seat-with-racing-bulls-for-27/",
-"image": "https://fieldlevelmedia.com/wp-content/uploads/2026/11/28019655-1024x683.jpg"
-},
-{
-"title": "Kimi Antonelli honours F1 title promise with hilarious Valentino Rossi look",
-"date": "2026-11-12T18:49:16+00:00",
-"source": "Crash.net",
-"summary": "",
-"url": "https://www.crash.net/f1/news/1110080/1/kimi-antonelli-honours-f1-title-promise-hilarious-valentino-rossi-look",
-"image": "https://www.crash.net/sites/default/files/2026-11/xpb_1453737_hires.jpg?width=1600&aspect_ratio=16:9"
-},
-{
-"title": "Lawson warned Red Bull exit is the only way to fulfilling F1 title dream",
-"date": "2026-11-12T15:01:00+00:00",
-"source": "Yahoo Sports",
-"summary": "Liam Lawson may have secured his Formula 1 future with Racing Bulls for 2027, but former Haas team principal Guenther Steiner believes the New Zealander must ev",
-"url": "https://sports.yahoo.com/articles/lawson-warned-red-bull-exit-230100481.html",
-"image": "https://www.bing.com/th?id=ONUT.0lhSe_HS_D0Lwj5W3_DS7A&pid=News&w=1200"
-}
-]
-},
-{
-"id": 158,
-"name": "NBA",
-"day": "2026-11-13",
-"fp": "dd5ccb82ca9f",
-"fresh": false,
-"rows": [
-{
-"title": "Where to watch NBA G League for the 2026-27 season",
-"date": "2026-11-12T15:36:00+00:00",
-"source": "ESPN",
-"summary": "",
-"url": "https://www.espn.com/nba/story/_/id/50462110/where-nba-g-league-2026-27-season",
-"image": ""
-},
-{
-"title": "ESPN: Why OKC Thunder will likely have quiet 2027 NBA trade deadline",
-"date": "2026-11-12T12:00:00+00:00",
-"source": "OKC Thunder Wire",
-"summary": "If the Oklahoma City Thunder are going to salvage the 2026-27 season, it's going to have to happen internally. Entering the year with NBA championship aspiratio",
-"url": "https://okcthunderwire.usatoday.com/story/sports/nba/thunder/2026/11/12/espn-why-okc-thunder-will-likely-have-quiet-2027-nba-trade-deadline/92743745007/",
-"image": "https://www.bing.com/th?id=ONUT.YIXQr55piUit_dkLqUYIqQ&pid=News&w=1200"
-},
-{
-"title": "NBAの試合をライブ配信・見逃し配信",
-"date": "2026-11-12T05:48:49+00:00",
-"source": "NBA docomo",
-"summary": "",
-"url": "https://nba.docomo.ne.jp/",
-"image": "https://nba.docomo.ne.jp/assets/images/ogp.png"
-},
-{
-"title": "Rob Dillingham to sign in NBA G League, expected to join Westchester Knicks",
-"date": "2026-11-12T00:08:00+00:00",
-"source": "Yahoo Sports",
-"summary": "",
-"url": "https://sports.yahoo.com/articles/rob-dillingham-sign-nba-g-000859445.html",
-"image": "https://s.yimg.com/lo/mysterio/api/bb12434477972f4c7e218af05494a4f25be86962f938537687701a629a0432be/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fhoops_hype_usa_today_sports_articles_974%2Ff97ef2afab41a945db10d508f5f8b083.png"
-},
-{
-"title": "How 3 Former Boilers Have Performed in First Month of NBA, G League Action",
-"date": "2026-11-11T15:13:57+00:00",
-"source": "Sports Illustrated",
-"summary": "",
-"url": "https://www.si.com/college/purdue/basketball/how-three-former-boilers-have-performed-first-month-nba-action",
-"image": "https://images2.minutemediacdn.com/image/upload/c_crop,x_305,y_157,w_2659,h_1495/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ReutersImages/mmsport/boilermakers_country/01m75j5g1vp5fmte0yje.jpg"
-},
-{
-"title": "Stephen A Smith says white players are not good enough to win NBA championships",
-"date": "2026-11-11T14:24:00+00:00",
-"source": "Yahoo Sports",
-"summary": "Stephen A. Smith claims the Los Angeles Lakers can't win a championship because Luka Doncic, Austin Reaves, and Walker Kessler are white.",
-"url": "https://sports.yahoo.com/articles/stephen-smith-says-white-players-222348565.html",
-"image": "https://www.bing.com/th?id=ONUT.f9Bdd9LyngANi9vN7-eN-w&pid=News&w=1200"
-},
-{
-"title": "15 NBA star-studded duos that totally failed",
-"date": "2026-11-11T14:03:00+00:00",
-"source": "ClutchPoints on MSN",
-"summary": "Talent is always an important factor for a team contending for a championship. They execute the winning plays and make the difference whenever it matters the mo",
-"url": "https://www.msn.com/en-us/news/other/15-nba-star-studded-duos-that-totally-failed/ar-AA2hfeI1",
-"image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2heP6U.img"
-},
-{
-"title": "NBA Week 4 Injury Report: Keyonte George latest early-season injury for Jazz",
-"date": "2026-11-11T06:23:00+00:00",
-"source": "NBC Sports",
-"summary": "Even if he’s coming off the bench, Collier can continue to be streamed, assuming George remains out. Thankfully, there aren’t too many other injury updates arou",
-"url": "https://www.nbcsports.com/fantasy/basketball/news/nba-week-4-injury-report-keyonte-george-latest-early-season-injury-for-jazz",
-"image": "https://www.bing.com/th?id=ONUT.ncBXTryKeKEN32FyaBLzDQ&pid=News&w=1200"
-},
-{
-"title": "NBA power rankings: Luka Dončić, Lakers on a tear as top team shifts again",
-"date": "2026-11-11T05:06:30+00:00",
-"source": "USA TODAY on MSN",
-"summary": "For the third consecutive week, there's a new team atop the USA TODAY Sports NBA power rankings. This time, it's the team of the league's top scorer.",
-"url": "https://www.msn.com/en-us/news/other/nba-power-rankings-luka-don%C4%8Di%C4%87-lakers-on-a-tear-as-top-team-shifts-again/ar-AA2hdKKf",
-"image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hdlNe.img"
-},
-{
-"title": "‘Spouting Absolute Nonsense,’ ‘Hater’ — NBA Fans Rip Stephen A. Smith for Doubling Down on Claim Lakers Can’t Win Title With ‘Top 3 Players Being White’",
-"date": "2026-11-10T20:18:00+00:00",
-"source": "Yahoo Sports",
-"summary": "ESPN’s Stephen A. Smith is standing by his offseason claim that the Los Angeles Lakers won’t win an NBA championship with three white players leading the way, e",
-"url": "https://sports.yahoo.com/articles/spouting-absolute-nonsense-hater-nba-041827563.html",
-"image": "https://www.bing.com/th?id=ONUT.4oXiXW0ANrRGu9bvzwqagQ&pid=News&w=1200"
-},
-{
-"title": "NBA League Pass price, cost: Score 3 months free and $200 bonus with DraftKings promo code",
-"date": "2026-11-10T10:51:00+00:00",
-"source": "CBS Sports",
-"summary": "New users can get three months of NBA League Pass free, and $200 in bonus bets, with the all-new DraftKings NBA promo code ...",
-"url": "https://www.cbssports.com/betting/news/nba-league-pass-price-cost-score-3-months-free-and-200-bonus-with-draftkings-promo-code/",
-"image": "https://www.bing.com/th?id=ONUT.LgL9enSL6weVbQ3E-MheNw&pid=News&w=1200"
-},
-{
-"title": "Miami Set to Finally Host Another NBA All-Star Weekend",
-"date": "2026-11-09T10:52:00+00:00",
-"source": "Sports Illustrated on MSN",
-"summary": "The NBA is finalizing plans for Miami to host the 2028 All-Star Weekend, bringing the league's biggest stars back to South Florida for the first time since 1990",
-"url": "https://www.msn.com/en-us/news/other/miami-set-to-finally-host-another-nba-all-star-weekend/ar-AA2h5fSU",
-"image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h5Mtc.img"
+"url": "https://t2online.in/events/events-1/calcutta-armys-turn-south-city-s-pvr-inox-into-a-bts-fan-fest-at-a-screening-of-the-group-s-recent-sao-paulo-concert/2009045",
+"image": "https://images.t2online.in/cdn-cgi/image/width=1280,height=720,fit=cover,gravity=face,quality=50,format=auto/https://apis.t2online.in/getImageStream/10607/1793881277509.jpeg"
 }
 ]
 }
