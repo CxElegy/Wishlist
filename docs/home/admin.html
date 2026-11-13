@@ -1014,7 +1014,7 @@ html[data-theme="indigo"] body{background:#EFE7D6}
 .kv{display:flex;align-items:baseline;gap:6px;min-width:0}
 .kv b{font:700 34px/1.1 var(--font-sans);letter-spacing:-.01em}
 .kv small{font:700 12px var(--font-sans);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.kd{font:500 12px/1.45 var(--font-sans);opacity:.75}
+.kd{font:500 12px/1.45 var(--font-sans);opacity:.75;word-break:auto-phrase}
 .tw{overflow:visible}
 table.rank{width:100%;border-collapse:collapse;font-size:13px}
 .rank th,.rank td{padding:7px 6px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:middle}
@@ -1147,7 +1147,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .cl.bl{display:none}  /* 狭い画面では等級の名前を省く（線は残す。等級は計算方法に書いてある） */
  .legend li{grid-template-columns:12px 76px 28px 40px minmax(0,1fr)}
 }
-@media (max-width:560px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi{border-left:0!important;border-top:1px solid var(--hair)}.kpi:nth-child(-n+2){border-top:0}
+@media (max-width:560px){.sh>span{white-space:nowrap}.sh small{flex:1 1 100%}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi{border-left:0!important;border-top:1px solid var(--hair)}.kpi:nth-child(-n+2){border-top:0}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 
@@ -1692,7 +1692,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin" content="35460a9ef77a"><style>
+<meta name="wl-ver" data-page="admin" content="9c1aead31b6b"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2658,7 +2658,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.13 11:08</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.13 11:26</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html" aria-current="page"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
