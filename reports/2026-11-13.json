@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "edit_sig": "dea8def8e8ce",
+ "edit_sig": "423518598f4c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,8 +23,8 @@
      "date": "2026-11-12",
      "headline": "'아스트라에 오라티오' 성우진 총정리, 익숙한 목소리는 누구?",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.Sq4X4w0UWhjHIOfga5g7NA&pid=News&w=800",
-     "image_via": "Bing 缩略图",
+     "image": "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg",
+     "image_via": "og:image",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216958",
      "weight": "normal"
     }
@@ -1096,22 +1096,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 9,
-     "source": "Hawk Live",
-     "title": "Malr1ne Reveals His Main Motivation as a Dota 2 Pro Player",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9va3FVNGFZQkpIRUI3Q3VIY2lVaWE4OUgtWElfZDdLLVIzdjdISjN6bmRraTNvc0tTZ0pYdFpFeG1LbDRSWkVJTXFUbTB3LVFBU3FVQXhtY0NjSHgwcUJpOHJRLUV1WFZ6Nm5veFdDMEJnYk04Vmp0YXg0SWxEZw?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 10,
-     "source": "escorenews.com",
-     "title": "Valve adds reports for botting to Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOX3RxVUJSMTRMZGdFdlVaU2NHbGdCYThfa0hNY1R5bVJsbTFkRy1vMG9tdXlCRUxGQkxmaHZacHdETGNGVHhwYkw0aHdieVU4SE5CVndnZk40RGNVRW5makFHVEVPOW9iTkVvdlBiY0IwenEwY0ExT3ZnNEVTRHVZamF4MHdPeTh2LUdDag?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1143,6 +1127,17 @@
      "image": "https://ni.yam.com/20261112/ewc-2027-dota2-golden-trophy-confetti-20261112-ad7a67cd92053b92.webp",
      "image_via": "og:image",
      "url": "https://n.yam.com/Article/20261112651560",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "headline": "Valve adds reports for botting to Dota 2",
+     "highlight": "reports for botting",
+     "image": null,
+     "source": "escorenews.com",
+     "source_icon": "https://www.google.com/s2/favicons?domain=escorenews.com&sz=128",
+     "url": "https://escorenews.com/en/dota-2/news/82646-valve-adds-reports-for-botting-to-dota-2",
      "weight": "normal"
     }
    ],

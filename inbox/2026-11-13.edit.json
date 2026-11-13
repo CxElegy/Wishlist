@@ -350,7 +350,7 @@
   "三星手机": 51,
   "Astrae Oratio": 12,
   "周杰伦": 21,
-  "dota2": 8,
+  "dota2": 10,
   "滑雪": 15,
   "哈利波特剧集": 6,
   "ILLIT": 37,
@@ -398,6 +398,15 @@
    "refs": [
     6,
     8
+   ]
+  },
+  {
+   "headline": "Valve adds reports for botting to Dota 2",
+   "highlight": "reports for botting",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
