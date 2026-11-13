@@ -348,6 +348,7 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 /* 話題度（_heat_badge）：見出しの右に数字、押すと内訳のカード。数字の色は版面の --acc、カードは紙とインク */
 .heat{position:relative;margin-left:auto}
 .heat+.cnt{margin-left:0}
+.band .nums{margin-left:auto;display:flex;flex-wrap:nowrap;align-items:center;gap:8px 18px;flex:none;max-width:100%}.band .nums>.heat,.band .nums>.cnt{margin-left:0}  /* 数字のまとまり（2026-11-13）：題の横か、まとめて次の行へ */
 .heat summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:6px;white-space:nowrap;font:700 12px/1.3 var(--font-sans)}
 .heat summary::-webkit-details-marker{display:none}
 .heat summary small{font:700 var(--fs-label) var(--font-sans);letter-spacing:.08em;opacity:.85}
@@ -667,9 +668,9 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
 .emb:has(img.badge){--z:.82;transform:rotate(5deg)}  /* 写真の小元素は人の絵の 0.82 倍で +5° 傾けて角を外へ（ロゴ・記号は元から小さいので倍率なし） */
 @keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 6px);rotate:-3deg}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
-.has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
+.has-emb .band{padding-right:260px;--embmin:180px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;--eh:100px;--fmin:32px;--vmax:100px;--bw:140px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
+@media (max-width:600px){.emb{height:100px;--eh:100px;--fmin:32px;--vmax:100px;--bw:140px;--nbt:100px;--nw:140px;right:4px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px;--embmin:110px}
  .emb img.body{margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),min(0px,calc(-22px + (var(--bz) - var(--b0)) * 1000)))}}  /* 横に長い立ち絵（武器・尻尾）が画面の右へ 1〜11px はみ出す（ux_check E5：绝区零・Astrae Oratio）：右へ出す分を 22px までに */
 .emb img{transition:opacity .25s ease-out,transform .25s ease-out}
 .emb-fade .emb img:not(.ld){opacity:0;transform:translateY(8px)}  /* 読み込みが終わる（decode）まで見せず、終わったら下から少し上がって現れる：空 → いきなり絵、の「パッ」をなくす */
@@ -721,8 +722,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
  .picks{padding:18px 14px 22px;box-shadow:5px 5px 0 var(--rose)}.pknav{margin-left:0;width:100%}
  .pkgrid,.pkgrid.row{grid-template-columns:minmax(0,1fr);gap:28px}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/10}
  .pk.big .pic{--pko:26px}.pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
- .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat{margin-left:0}.band .deco{display:none}
- .hx{position:static;width:auto;margin-top:10px}.heat[open]{flex-basis:100%}
+ .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat,.band .nums{margin-left:0}.band .deco{display:none}
+ .hx{position:static;width:auto;margin-top:10px}.heat[open],.band .nums:has(.heat[open]){flex-basis:100%}.band .nums:has(.heat[open]){flex-wrap:wrap}
  .grid{padding:16px 14px 18px;gap:24px 14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}.pend summary{padding:10px 14px}.pend ul{padding:0 14px 12px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
@@ -1648,6 +1649,7 @@ def _section(block, anchor=""):
     quiet += " softalt" if _loud(t["alt_bg"]) else ""
     cnt = f'<span class="cnt"><b>{len(recent)}</b>今週</span>' if recent else ""
     cnt = _heat_badge(block) + cnt
+    cnt = f'<span class="nums">{cnt}</span>' if cnt else ""   # 話題度と「今週」は 1 つのまとまり：「今週」だけ次の行に落ちない（帯の場所の順は 題 → 数字 → 小元素、EMB_JS の room）
     emb_html = _emblem(block.get("_emblems") or [], block.get("_ring") or "accent")
     return (f'<section id="{anchor}" data-k="{e(block["name"])}"{_fx(block["name"])} class="sec{" m-" + motif if motif else ""}{" has-emb" if emb_html else ""}{quiet}" data-vh="{SIZE_VH.get(block.get("_size"), SIZE_VH["M"])}" style="{style}">'
             f'<div class="band">{emb_html}{MOTIFS.get(motif, "")}<span class="title">{e(block["name"])}</span>{sub}{cnt}</div>'
@@ -2237,7 +2239,20 @@ EMB_JS = """
     el.querySelectorAll('img').forEach(i => { let x = 0, y = 0, n = i; while (n && n !== band) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
       if (!i.offsetWidth) return; far = Math.max(far, (ox - x) * Math.cos(TILT) + Math.max(0, oy - y) * Math.sin(TILT)); });
     if (!far) return;
-    const need = Math.ceil(band.clientWidth - ox + s * far + 12);
+    // 帯の場所の順は 題 → 数字（話題度＋「今週」の 1 つのまとまり .nums）→ 小元素（残りの幅）。2026-11-13：横に広いロゴ（三星の SAMSUNG）が数字に重なり、
+    // 小元素の幅だけ空けると「今週」が次の行に落ちた。題と数字の幅は max-content（今の右の空きに左右されない：F5）で測り、小元素は残りに入る大きさまで縮める（形はそのまま）
+    const bs = getComputedStyle(band), pl = parseFloat(bs.paddingLeft) || 0, gap = parseFloat(bs.columnGap) || 0, free = band.clientWidth - pl;
+    const fmin = parseFloat(bs.getPropertyValue('--embmin')) || 0, items = [':scope > .title', ':scope > .sub', ':scope > .nums'].map(q => band.querySelector(q)).filter(Boolean);
+    items.forEach(x => { x.style.flex = 'none'; x.style.width = 'max-content'; });
+    const ws = items.map(x => x.offsetWidth + 2);   // 題の傾き（-1°）の分 +2
+    items.forEach(x => { x.style.flex = ''; x.style.width = ''; });
+    const nums = band.querySelector(':scope > .nums'), nw = nums ? ws[ws.length - 1] : 0, tw = ws[0] || 0, line = ws.reduce((a, w) => a + w, 0) + gap * (ws.length - 1);
+    const base = band.clientWidth - ox + 12, fmax = Math.ceil(base + s * far), lo = Math.min(fmax, fmin);
+    let need = line <= free - fmax ? fmax   // 全部 1 行に入る：小元素はそのまま
+      : line <= free - lo ? free - line   // 小元素を縮めれば数字が題の行に入る
+      : Math.min(fmax, free - nw, Math.max(lo, free - tw));   // 数字はまとめて次の行：小元素は題と数字の長いほうの横（数字は切らない・題は折り返してよい）
+    need = Math.max(pl, Math.floor(need));
+    if (need < fmax) el.style.setProperty('--s', (Math.max(0, need - base) / far).toFixed(3));   // 幅の上限（高さの上限は place の 1.15 倍）
     if (Math.abs((parseFloat(band.style.paddingRight) || 0) - need) > 1) band.style.paddingRight = need + 'px'; };
   const settle = el => { place(el); room(el); place(el, 1); };   // 倍率を決める → その倍率で右を空ける → 空けて変わった帯の高さに持ち上げだけ合わせる
   // 絵の到着：width/height を書いた絵（倉庫の絵・twemoji）は届く前に正しい場所を取っているので何もしない。書いていない・届いた形が違う絵だけ 1 回取り直す
@@ -2245,6 +2260,7 @@ EMB_JS = """
     img.addEventListener('load', () => { const w = +img.getAttribute('width'), h = +img.getAttribute('height');
       if (!(w && h) || Math.abs(img.naturalWidth / img.naturalHeight - w / h) > 0.02) settle(el); }, { once: true }); };
   els.forEach(settle); els.forEach(watch);
+  els.forEach(el => { el.wlAlt = a => { if (!a) return settle(el); const n = put(el, el.querySelector('img'), a); n.classList.add('ld'); settle(el); return n; }; });   // 点検（harness/head_check.py）が候補を 1 枚ずつ入れて帯の重なりを数える
   if (document.fonts) document.fonts.ready.then(() => els.forEach(settle));   // 字体が届くと題字の幅・帯の高さが変わる：読み込みの中で 1 回だけ
   let embW = innerWidth;   // 幅が変わったときだけ組み直す（URL 欄の出入り・自分で起こした resize では組み直さない）
   addEventListener('resize', () => { if (innerWidth === embW) return; embW = innerWidth; els.forEach(settle); });

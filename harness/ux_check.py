@@ -19,6 +19,7 @@
 写真は OUT/<だれ>-<幅>x<高さ>.png・OUT/<だれ>-settings-<幅>x<高さ>.png。
 0 個の人（test-c）は 390 幅で高さ 667・740 でも、最初の画面・設定・欲しい物（wishlist.html）を点検（主役のボタンが画面に入り固定ボタンと重ならない）。
 「F5 描いた後に動かない」（--shift、2026-11-13）：harness/shift_check.py を手元の docs/ で 4 幅。
+「帯の重なり・今週の折り返し」（--head、2026-11-13）：harness/head_check.py を手元の docs/ で 5 幅（1440x900・1333x677・1000x800・390x844・412x915）。帯の場所の順は 題 → 数字 → 小元素。小元素が題・話題度・「今週」に重なった版面、「今週」が話題度と別の行・題の横に入るのに下の行に落ちた版面を数える。両方 0。
 「1 日通し」（--journey、2026-10-27）：空のアカウント test-d で、押して通す。入口 →「ログイン」→ 空の最初の画面の「好きなものを選ぶ」→ ジャンル → カード → 確認 →「足す」→
 自分のページに札が出る → 設定ページに出る →札を押して外れる → 空に戻る（本人の追いかけるものを空にする）。各段で本物のクリック（ほかの部品が上に重なっていれば押せずに ✗）、前後の画面を OUT/journey-<幅>-<段>.png に残す。
 ✗：押せない・押しても変わらない・JS のエラー・素の箱・横にはみ出す・同じ id の重複。始めと終わりに本人の追いかけるもの（prefs.picks）を空にする（本人の行だけ、my_keywords_set）。
@@ -1507,6 +1508,7 @@ def main(argv):
     ap.add_argument("--fresh", action="store_true", help="本番の読みを写しにせず毎回読む（直した直後の比べ用。egress を使う）")
     ap.add_argument("--journey", action="store_true", help="1 日通し（空のアカウントで押して通す）だけを走らせる")
     ap.add_argument("--shift", action="store_true", help="F5 描いた後に動かない（harness/shift_check.py）だけ：手元の docs/ を 390/412/1333/1440 でゆっくりスクロールし、「今週」の行・帯と版面の高さ・shift を数える")
+    ap.add_argument("--head", action="store_true", help="帯の重なり・今週の折り返し（harness/head_check.py）だけ：手元の docs/ を 5 幅で、全版面の見出しの帯を数える（両方 0）")
     a = ap.parse_args(argv)
     if a.fast:
         a.emb = "off"
@@ -1520,6 +1522,17 @@ def main(argv):
             return diff_admin.run(pw, a.base, [x for x in a.who.split(",") if x != "guest"], [int(w) for w in a.widths.split(",")], session, WHO)
     out.mkdir(parents=True, exist_ok=True)
     fails = 0
+    if a.head:   # 帯の場所の順 題 → 数字 → 小元素（2026-11-13）：重なり・「今週」の折り返しは 1 枚でも ✗
+        import head_check
+        for s in head_check.SIZES:
+            w, h = map(int, s.split("x"))
+            r = head_check.run(ROOT / "docs", w, h, fonts=True)
+            fails += bool(r["overlap"] or r["wrap"])
+            print(("✗ " if r["overlap"] or r["wrap"] else "✓ ") + f"帯 {s}：重なり {r['overlap']}・今週の折り返し {r['wrap']}（版面 {r['boards']}）"
+                  + "".join(f"\n    重なり {k}: {'・'.join(v)}" for k, v in r["over_list"].items())
+                  + "".join(f"\n    折り返し {k}: {v}" for k, v in r["wrap_list"].items()))
+        print(f"帯：✗ {fails} 件")
+        return 1 if fails else 0
     if a.shift:   # F5（審美基準）：スマホは URL 欄の出入りもまねる。1 枚でも「今週」が行を行き来したら ✗
         import shift_check
         for s in ("390x844", "412x915", "1333x720", "1440x900"):

@@ -75,6 +75,32 @@ class OnePlace(unittest.TestCase):
         self.assertIn("if (innerWidth === embW) return;", render.EMB_JS)
 
 
+class HeadOrder(unittest.TestCase):
+    """帯の場所の順は 題 → 数字（話題度＋今週）→ 小元素（2026-11-13）。全版面・5 幅の実測は harness/head_check.py（ux_check --head）。"""
+
+    def _sec(self):
+        import theme
+        h = {"score": 44, "label": "話題", "delta": -12, "rising": False, "dims": []}
+        return render._section({"name": "X", "theme": dict(theme.DEFAULT), "_today": "2026-10-16", "_heat": h, "stories": []}, "w")
+
+    def test_numbers_one_unit(self):
+        """話題度と「今週」は 1 つのまとまり（.nums）：「今週」だけ次の行に落ちない。"""
+        out = self._sec()
+        m = re.search(r'<span class="nums">(.*?)</span></div>', out, re.S)
+        self.assertTrue(m, out[:400])
+        self.assertIn('class="heat', m.group(1))
+        self.assertRegex(render.CSS, r"\.band \.nums\{[^}]*flex-wrap:nowrap")
+
+    def test_emblem_gets_the_rest(self):
+        """小元素は題と数字のあとの残りの幅：max-content で測り、入らなければ --s を縮める（下限 --embmin）。"""
+        i = render.EMB_JS.index("const room = el =>")
+        body = render.EMB_JS[i:render.EMB_JS.index("const settle", i)]
+        for s in ("':scope > .nums'", "max-content", "--embmin", "el.style.setProperty('--s'"):
+            self.assertIn(s, body)
+        self.assertIn("--embmin:180px", render.CSS)
+        self.assertIn("--embmin:110px", render.CSS)
+
+
 class UrlBarGate(unittest.TestCase):
     def test_gate_first_in_head(self):
         """URL 欄の出入り（幅が同じ・高さだけ）の resize を、ほかの聞き手より先に止める門が <head> にある。"""
