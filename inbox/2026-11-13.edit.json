@@ -326,7 +326,7 @@
   "dota2": 7,
   "滑雪": 13,
   "哈利波特剧集": 6,
-  "ILLIT": 9,
+  "ILLIT": 31,
   "MMORPG 新作": 9,
   "The Mandalorian": 8,
   "チェーンソーマン": 11,
@@ -493,6 +493,31 @@
  ],
  "ILLIT": [
   {
+   "headline": "ILLIT、『第77回NHK紅白歌合戦』にK-POPアーティストで唯一の出場決定 史上3組目の快挙も",
+   "highlight": "3年連続",
+   "blurb": "ILLITが『第77回NHK紅白歌合戦』に3年連続で出場決定。今年出場するK-POPアーティストは唯一で、3年連続はTWICE、LE SSERAFIMに次ぐ史上3組目。",
+   "weight": "lead",
+   "refs": [
+    13,
+    16,
+    19,
+    25,
+    28,
+    12,
+    10,
+    11,
+    17,
+    20,
+    23,
+    24,
+    14,
+    21,
+    15,
+    18
+   ],
+   "image": "https://www.rbbtoday.com/imgs/ogp_f/1066101.jpg"
+  },
+  {
    "headline": "ILLIT「ベストアーティスト2026」に出演決定！ミンジュ＆Snow Man ラウールが東京ディズニーシーを舞台にスペシャルコラボも",
    "highlight": "ベストアーティスト2026",
    "blurb": "",
@@ -534,14 +559,22 @@
    ]
   },
   {
-   "headline": "멜론뮤직어워드, 아이브·아일릿 특별 무대",
-   "highlight": "",
+   "headline": "aespa、ILLIT、IVE、HANAらが出演！ 韓国音楽授賞式「MMA2026」U‐NEXTにて独占ライブ配信",
+   "highlight": "U‐NEXTにて独占ライブ配信",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    29,
     5,
-    6
-   ]
+    6,
+    22,
+    26,
+    27
+   ],
+   "event": {
+    "date": "2026-11-14",
+    "label": "MMA2026"
+   }
   }
  ],
  "MMORPG 新作": [

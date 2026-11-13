@@ -1,32 +1,32 @@
 {
- "admin": "242d127c5e79",
- "admin-ai": "7b3dccedca65",
+ "admin": "b2fd8ca19319",
+ "admin-ai": "dca92f7e898a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1e2588cb"
+   "bcb1e2c0"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0b82816f"
+   "fd5e663f"
   ]
  },
- "admin-boards": "465331dd33e5",
+ "admin-boards": "a94cb212473a",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "a6e3c89a"
+   "5b4aebfd"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "c311d3369a0a",
+ "admin-emblem": "537a241dc174",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "dd372f3a"
+   "802c150e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "1f292c52c858",
+ "admin-now": "d5ef38a70155",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "fa68c928"
+   "832f456d"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "789f5cd1"
+   "f4541b86"
   ]
  },
- "admin-system": "b833bb8dd1ae",
+ "admin-system": "fca7e42c9a26",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c67ce8b8"
+   "af279451"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b7b15389"
+   "2543347b"
   ]
  },
  "admin_marks": {},
- "heat": "dc4fcda090d3",
+ "heat": "975725102143",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "c7932c4e"
+   "d9443ba4"
   ],
   "ranking": [
    "ランキング",
-   "1619fb5a"
+   "ceab907f"
   ]
  },
- "index": "ec7fafb38d78",
+ "index": "e2f91b8f3252",
  "index_marks": {
   "front": [
    "トップ",
-   "449126df"
+   "477c6f16"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "7aa8320c"
+   "658d7458"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "4389cec3"
+   "4829696b"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "550a3464"
+   "6f4b7b0b"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "286642d3"
+   "679332bb"
   ],
   "w-f303ad09": [
    "绝区零",
    "5afcd40e"
   ]
  },
- "updated": "11.13 16:38",
+ "updated": "11.13 16:47",
  "wishlist": "4b8cdabf0a16"
 }
