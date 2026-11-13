@@ -769,12 +769,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cimg.kgl-systems.io/camion/files/93966/thumbnail_FlOv.jpg?x=1280": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://cimg.kgl-systems.io/camion/files/dengeki/93627/af99687dd719c4e8bc6a39e946c3d9ef7.jpg?x=1280": {
   "w": 1280,
   "h": 1709,
@@ -1943,6 +1937,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.dellows.jp/wp-content/uploads/2026/09/462389_1.jpg": {
+  "w": 1024,
+  "h": 616,
+  "target": 720,
+  "v": 3
+ },
  "https://news.dellows.jp/wp-content/uploads/2026/10/609169_1.jpg": {
   "w": 1024,
   "h": 632,
@@ -1964,6 +1964,12 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/931298_1.jpg": {
   "w": 1023,
   "h": 1024,
+  "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/11/1181899_1.jpg": {
+  "w": 1024,
+  "h": 576,
   "target": 1280,
   "v": 3
  },
