@@ -44,8 +44,8 @@
   "https://note.com/fuuko2022/n/nd6cee42702d0?hl=en": "https://assets.st-note.com/production/uploads/images/334326647/rectangle_large_type_2_fd4efc14427479e68c40c25785e8488b.jpg?fit=bounds&quality=85&width=1280",
   "https://note.com/row_row_rho/n/nc2969bb495b6?hl=en": "https://www.bing.com/th?id=ONUT.A4oKhTmCQyDL-V9gHR12Ew&pid=News&w=1200",
   "https://otia.com/news/pokemon-go-chandelure-super-mega-raid-day-halloween-2026": "https://otia.com/uploads/posts/discover/c190cf2e230f8172d26061d3f462427fc13327f9c71da9cb17df41316fd0221e.webp",
-  "https://samsungmagazine.eu/ja/2026/11/12/galaxy-s27-wallpapers/": "https://www.bing.com/th?id=ONUT.dmDVd6FuKl6McU40vrzJDg&pid=News&w=1200",
   "https://t.co/UIJZ32Eqan": null,
+  "https://tbreak.com/galaxy-s27-design-dummy-units/": "https://www.bing.com/th?id=ONUT.54UxHRkuPi0sAS9h4h1CMA&pid=News&w=1200",
   "https://theatreweekly.com/reece-shearsmith-and-jessica-hynes-join-final-weeks-of-white-rabbit-red-rabbit-in-the-west-end/": "https://eghcszbxego.exactdn.com/wp-content/uploads/2026/11/Reece-Shearsmith-and-Jessica-Hynes-Images-supplied-without-credit-by-publicist.jpg",
   "https://timesofindia.indiatimes.com/entertainment/telugu/movies/news/roshan-meka-to-play-a-superhero-in-indraganti-mohanakrishnas-next-makers-announce-the-film-at-a-grand-event/articleshow/135740640.cms": "https://static.toiimg.com/thumb/msid-135740690,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg",
   "https://turnnewsapp.com/ct-featured/422036.html": "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg",
@@ -1094,6 +1094,39 @@
   },
   {
    "batch": 2,
+   "because": "三星手机",
+   "date": "2026-11-12",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.54UxHRkuPi0sAS9h4h1CMA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "score": 8,
+   "source": "Tbreak",
+   "taste": [
+    [
+     "galaxy",
+     7
+    ],
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
+    ]
+   ],
+   "title": "Galaxy S27 dummies show Ultra and Pro with a wide camera slab",
+   "url": "https://tbreak.com/galaxy-s27-design-dummy-units/",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 3,
    "because": "あつ森",
    "date": "2026-11-12",
    "hits": [],
@@ -1112,39 +1145,6 @@
    "url": "https://t.co/UIJZ32Eqan",
    "words": [],
    "work": "あつ森"
-  },
-  {
-   "batch": 3,
-   "because": "三星手机",
-   "date": "2026-11-12",
-   "hits": [
-    "三星 Galaxy"
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.dmDVd6FuKl6McU40vrzJDg&pid=News&w=1200",
-   "kind": "board",
-   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
-   "score": 8,
-   "source": "Samsung Magazine",
-   "taste": [
-    [
-     "galaxy",
-     7
-    ],
-    [
-     "三星 Galaxy",
-     7
-    ],
-    [
-     "作品:三星手机",
-     7
-    ]
-   ],
-   "title": "シリーズの壁紙が流出した Galaxy S27 そして最大の秘密を明かしました。今すぐ無料でダウンロードできます。",
-   "url": "https://samsungmagazine.eu/ja/2026/11/12/galaxy-s27-wallpapers/",
-   "words": [
-    "galaxy"
-   ],
-   "work": "三星手机"
   },
   {
    "batch": 3,
@@ -2092,11 +2092,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [

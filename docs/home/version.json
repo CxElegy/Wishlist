@@ -1,10 +1,10 @@
 {
- "admin": "d6be805b63ae",
- "admin-ai": "efb27155be7b",
+ "admin": "c2cea697e775",
+ "admin-ai": "c3420bb72b1d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f1415520"
+   "e2e53cf0"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "419de0c75daf",
+ "admin-emblem": "f46f123cfccb",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3b7ea654"
+   "679cb55d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "cc2019db4174",
+ "admin-now": "ec3a98be4fb2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4db43d4b"
+   "92462286"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "4337ed55"
   ]
  },
- "admin-system": "046da32ffcaa",
+ "admin-system": "e6fcc0c28463",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "7207e745"
+   "c98a9a1e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "536bdef7"
+   "aa6949f0"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "c046bed4"
   ]
  },
- "index": "137afa9e393f",
+ "index": "c2460129bd4d",
  "index_marks": {
   "front": [
    "トップ",
-   "89bf9b3f"
+   "be942529"
   ],
   "picks": [
    "気になるかも？",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "a29bb674"
+   "f9e15443"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -169,11 +169,11 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "16850e85"
+   "343a70a8"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "eb6ccf8d"
+   "df62e726"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "6258b558"
+   "679332bb"
   ],
   "w-f303ad09": [
    "绝区零",
    "8b9d88f5"
   ]
  },
- "updated": "11.13 21:44",
- "wishlist": "3420f478083b"
+ "updated": "11.13 21:57",
+ "wishlist": "3a71649835a5"
 }

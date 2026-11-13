@@ -11,12 +11,6 @@
   "target": 720,
   "v": 3
  },
- "http://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252Fkaiyou_n%252F1c%252Fkaiyou_n_1493901684021018961%252Fkaiyou_n_1493901684021018961_1.jpg,zoom=600,quality=70,type=webp": {
-  "w": 600,
-  "h": 848,
-  "target": 1280,
-  "v": 3
- },
  "http://j.people.com.cn/NMediaFile/2026/1106/FOREIGN1793954874382MGKOCA4UCX.png": {
   "w": 730,
   "h": 484,
@@ -977,6 +971,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
+  "w": 300,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.608,
+  "local": "pics/dd04afef992b0570.webp",
+  "out": [
+   900,
+   900
+  ],
+  "why": "看不清"
+ },
  "https://fashionsnap-assets.com/asset/format=auto,width=1280,height=670,gravity=auto,fit=pad/article/images/2026/11/75969f7f-c62a-4e57-a727-ee633bd11568.jpg": {
   "w": 1280,
   "h": 670,
@@ -1240,12 +1247,6 @@
  "https://i0.wp.com/leisurebyte.com/wp-content/uploads/2026/11/The-Mandolrian-7th-Anniversary-Still-from-Star-Wars-The-Mandalorian-and-Grogu-2-1-1.jpg": {
   "w": 1617,
   "h": 850,
-  "target": 720,
-  "v": 3
- },
- "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/11/galaxy-s27-design-dummy-units.jpg?fit=1200%2C675&ssl=1": {
-  "w": 1200,
-  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -1771,9 +1772,9 @@
   "target": 720,
   "v": 3
  },
- "https://img.wowtv.co.kr/YH/2026-11-10/AKR20261110003600075_01_i.jpg": {
-  "w": 500,
-  "h": 333,
+ "https://img.wowtv.co.kr/thumb/778x403_default_thumb.png": {
+  "w": 778,
+  "h": 403,
   "target": 720,
   "v": 3
  },
@@ -2852,6 +2853,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/25615/3966/25615-3966-8885b994956218981c38c3e0009caef9-782x800.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 782,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.377
+ },
  "https://prcdn.freetls.fastly.net/release_image/25847/266/25847-266-53413d9ebc7d639256ecebe9932b19f6-1200x800.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1200,
   "h": 800,
@@ -3051,6 +3059,12 @@
  "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-Unbox-8.jpg": {
   "w": 1900,
   "h": 1425,
+  "target": 1280,
+  "v": 3
+ },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png": {
+  "w": 1434,
+  "h": 948,
   "target": 1280,
   "v": 3
  },
@@ -3746,6 +3760,12 @@
   "v": 3,
   "blur": 0.391
  },
+ "https://www.bing.com/th?id=ONUT.54UxHRkuPi0sAS9h4h1CMA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.65gbw56gFITMvcySo5p1Jg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -3919,12 +3939,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.dmDVd6FuKl6McU40vrzJDg&pid=News&w=1200": {
-  "w": 700,
-  "h": 462,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.gAs0KDjBRmllGl797jBSRg&pid=News&w=700": {
   "w": 700,

@@ -106,7 +106,8 @@
     47,
     49,
     54,
-    98
+    98,
+    126
    ],
    "event": {
     "date": "2026-11-13",
@@ -128,7 +129,9 @@
     95,
     105,
     108,
-    114
+    114,
+    130,
+    133
    ]
   },
   {
@@ -154,7 +157,9 @@
     83,
     102,
     110,
-    117
+    117,
+    131,
+    124
    ]
   }
  ],
@@ -201,7 +206,9 @@
     43,
     46,
     47,
-    48
+    48,
+    50,
+    49
    ]
   },
   {
@@ -210,7 +217,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
+    10,
+    51
    ]
   },
   {
@@ -336,19 +344,19 @@
  ],
  "_covered": {
   "GTA 6": 151,
-  "漫威电影": 123,
-  "三星手机": 48,
+  "漫威电影": 133,
+  "三星手机": 51,
   "Astrae Oratio": 10,
   "周杰伦": 21,
   "dota2": 8,
   "滑雪": 15,
   "哈利波特剧集": 6,
   "ILLIT": 37,
-  "MMORPG 新作": 13,
+  "MMORPG 新作": 16,
   "The Mandalorian": 8,
-  "チェーンソーマン": 15,
-  "A2O LITE": 10,
-  "gelato pique": 4,
+  "チェーンソーマン": 20,
+  "A2O LITE": 13,
+  "gelato pique": 9,
   "日本顶级网球赛事": 5,
   "FROM": 4,
   "猫用品": 4,
@@ -608,7 +616,8 @@
    "weight": "lead",
    "refs": [
     10,
-    11
+    11,
+    14
    ],
    "image": "https://www.4gamer.net/games/058/G105823/20261113025/SS/001.jpg"
   },
@@ -679,17 +688,20 @@
    "headline": "Chainsaw Man The Movie: Reze Arc (IMAX 2D) box office collection live",
    "highlight": "box office",
    "blurb": "Sacnilk tracks the live box office collection for the IMAX 2D run of Chainsaw Man The Movie: Reze Arc.",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     2
    ]
   },
   {
-   "headline": "劇場版『チェンソーマン レゼ篇』シネマライブに元NUMBER GIRLの田渕ひさ子が出演 牛尾憲輔と劇伴を生演奏",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
+   "headline": "劇場版『チェンソーマン レゼ篇』シネマライブの描き下ろしビジュアル＆告知映像が公開",
+   "highlight": "告知映像が公開",
+   "blurb": "「劇場版『チェンソーマン レゼ篇』-CINEMA LIVE 2027-」の描き下ろしビジュアルと告知映像が公開。本日からチケットの先行抽選受付も始まった。",
+   "weight": "hero",
    "refs": [
+    17,
+    18,
+    19,
     12,
     13,
     14
@@ -707,23 +719,21 @@
    ]
   },
   {
+   "headline": "劇場版『チェンソーマン レゼ篇』より「レゼ/ボム」の1/4スケールフィギュアがDX版と通常版で登場",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
+  },
+  {
    "headline": "アニメ『呪術廻戦』や劇場版『チェンソーマン レゼ篇』の原画が集結！MAPPA15周年展で楽しむアニメーションの祭典",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
     8
-   ]
-  },
-  {
-   "headline": "Crunchyroll to join AGF 2026 in South Korea, bring Chainsaw Man star Toya",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    9,
-    11,
-    15
    ]
   }
  ],
@@ -773,7 +783,8 @@
    "weight": "normal",
    "refs": [
     8,
-    7
+    7,
+    13
    ]
   },
   {
@@ -794,8 +805,24 @@
    "weight": "lead",
    "refs": [
     1,
-    4
+    4,
+    6
    ]
+  },
+  {
+   "headline": "「ジェラート ピケ」のホリデーマーケットが表参道に出現 限定アイテムも販売",
+   "highlight": "11月14日から29日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    5
+   ],
+   "event": {
+    "date": "2026-11-14",
+    "label": "クリスマスマーケット開始",
+    "place": "表参道ヒルズ B3F"
+   }
   },
   {
    "headline": "スヌーピー×ジェラピケがコラボ！おうち時間にぴったりの大人かわいいアイテム",
