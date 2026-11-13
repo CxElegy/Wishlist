@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "5f0afee78e02",
+ "edit_sig": "0d419b4096ff",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -169,178 +169,59 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Empire's exclusive look at the team in Avengers: Doomsday, which explores the consequences of years without an organised team.",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "LaughingPlace.com",
-     "title": "Spirit Jersey Debuts New Doctor Doom Apparel Ahead of \"Avengers: Doomsday\"",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOWEtYejlneTRVS3BvbWpybmJyS1VQTGNHUkhmUHlUdTVHUnlZeGZacUdIX2ZoN3hjT0RLMy1abS1vUnYySHI5cXlfNmVQVWU4dVRmdnN5UFFHZHVwUGo1WHhiVFcwQVdFanBvZVFmOUZvUkdBU1hZUHc0c20zSzBpcHNmUkxmaEJjOFcwLU1mYnp4Q2ZQdGR1UUFqc0dDbDhsX2Nn?oc=5"
+     "headline": "Who are Doomsday's Avengers? The film explores consequence of 'years of no organised team'",
+     "highlight": "Doomsday's Avengers",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/untitled-4.jpg?w=1600&h=900&fit=crop",
+     "image_via": "AI 挑选",
+     "url": "https://www.empireonline.com/movies/news/avengers-doomsday-consequence-of-no-organised-team-exclusive/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 2,
-     "source": "IMDb",
-     "title": "Avengers: Doomsday Star Pedro Pascal Reveals Mister Fantastic's Unique \"Bond\" With Doctor Doom",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE03UVRzOGVkdjJWVmJGeGhsc2djYmYxSFJ3Yk5YWkdkWXJjRW9NalFrakhyRndZQm9pZEZveDE4TXg4V3paTGZSMlpEaDBTZFRtODBnVlFuYUEyUGZ4aUVBakpubU5sb1k?oc=5"
+     "headline": "Avengers: Doomsday Star Pedro Pascal Reveals Mister Fantastic's Unique \"Bond\" With Doctor Doom",
+     "highlight": "Unique \"Bond\"",
+     "image": "https://www.denofgeek.com/wp-content/uploads/2026/07/Paul-Rudd-and-Kathryn-Newton-in-Avengers_-Doomsday.jpg?fit=1311%2C675",
+     "image_via": "og:image（其它来源）",
+     "url": "https://www.imdb.com/news/ni66109831/?ref_=ttnw_art_perm",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 3,
-     "source": "POST Wrestling",
-     "title": "DC Studios Shakeup | VisionQuest Ep. 5-8 Review | MCU L8R",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQeFBOdGUzMWxkX2RIWTEwamxaOHdCTWdpckRNeWIzTEFwQVRnSnpxeXNJNnVjUHVvSDdkaHdTYmVKaThkdG9DLW1KaUR3NjRHdDZtdDBJVWdGOG9iY0NOUDVPclBRaWFFTjFPb0RCZnhRTE10N1dIeTdyYXZIbUV6cUd6NUlTYmRHTkQzTU0tZ2owel9VNFZ5TDJB?oc=5"
+     "headline": "After Receiving a Writing Credit for Avengers: Doomsday, Deadpool Star Ryan Reynolds Issues an Intriguing Response",
+     "highlight": "Writing Credit",
+     "image": "https://assets-prd.ignimgs.com/2024/08/20/deadpool-and-wolverine-wolverinepool-variant-1724166282353.jpg?width=1280&format=jpg&auto=webp&quality=80",
+     "image_via": "og:image",
+     "url": "https://www.ign.com/articles/deadpool-star-ryan-reynolds-responds-after-avengers-doomsday-writing-credit-reportedly-revealed",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 4,
-     "source": "U Lifestyle",
-     "title": "🎄東京竟然有 Avengers 聖誕樹?!😍",
-     "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOUTBMMU5Za3hXMVFfOF9VY2hIVk56LVFFbFJ2TDhRS25TUWM1eWFXdnJTcHVBOHEtRWMtdEVEdWZHU3dyODdGaGtRM3VEdjJ5T29qUExMTDlMdWtwX1h4di1YU0hDSkZFUS1oUjNXa25xelNkY3QxWE1tbGZEZkd6Z1hBQVJlS0tWdlozQnFsVzAwUmNYZ0hzLV9CTWdHazI5dlBwQTlsSVc2ZXdSbTBQajZWRklBZVRYSWg1bkdRUlRLaHBSaHRLTElLX1lyZjQzcXYyeTA5bl95eUd6?oc=5"
+     "headline": "Spider-Man: Brand New Day's extended edition arrives in theaters before Avengers: Doomsday",
+     "highlight": "extended edition",
+     "image": "https://s.yimg.com/lo/mysterio/api/367e8e4a5c621b1dc1d32137082f819f3e1886329e86e54e9e2e09e69c87a45c/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2Fa54c86bdc5175eba3e94a275a78852a3.jpg",
+     "image_via": "og:image",
+     "url": "https://www.yahoo.com/entertainment/movies/articles/spider-man-brand-days-extended-105915159.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 5,
-     "source": "The Main Street Mouse",
-     "title": "Smirnoff Is Taking Avengers: Doomsday to Grand Rapids With a Chalice Only 200 Fans Can Get",
-     "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQTFpCZjhNVFQ0SE5fRFlidGpRNE5MOFgxbUh0V05XUkNrbjltWDduVklxWHRBRUR6MWtPNjRmLTdfV1FxeVJCekxnY1htdE5BblFXRXRHNnprR0lRdTB5ZHNZX0R2bkFicWVjVmo1SHRRMTN6N2k2d3RmNDFGc00zRFBrVUMtS01sTGJYUGlESW5pN21hWmJXcWZqcHl4aVZEbHNtRllmdE50c1R6aHhaZXNVdHlsWVJZZ1NSTEZfajE5MkR4bFBRMVJrUlNZU2Y0Z3BXZjhTOEhGblk?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 6,
-     "source": "The Main Street Mouse",
-     "title": "Smirnoff and Avengers Doomsday Are Bringing the MCU to Life in the 616 With an Exclusive Collectible",
-     "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPRVJJYjRaWHNmRjV4R00tR1VUYTU1alM2aWFpcVJkaXhvRjZ2WGZkMUZXV3lKODlKY0N3Z1NPVTJOZnN4bDZtTUNobUs4OVN2YlZNaDRuNUtROXJxdEl4MDRudGNBWjdUWGJfUDFMMzFRNXhTOVJzaVJHcnluaU9TRGl2djVUVUlZMzNZUDVLX2hkUDhzbnliNWp6cHBDVUE2cC1XNXBHc2RqUmZOR2FqSTBOMVpxZ0JyU0xrRGQzSVNzSmo4MEpqYlhpbDJCdGFZMnh6b0I2R0IyMjVNNTJIZw?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 7,
-     "source": "ScreenRant",
-     "title": "Captain America’s Avengers Team Roster Confirms 5 MCU Heroes Ahead Of Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxONzh1YjJvalRNOUlud05hUG4xWDBaZGFYRHRFd1hNbll6cFNObEpEUXFfdlZXWlYzSWp5dUtkNTZZU2NVNGpKSXpVeE5tYlFFZEJaUnFWaDBVVzlaNE94RElZRk5KYTJCdENNNEx2MkJxdVFyWWRsSHJmaTQ5ZF9VVmJaRQ?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 8,
-     "source": "Empire",
-     "title": "Who are Doomsday's Avengers? The film explores consequence of 'years of no organised team' (Exclusive)",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOS0tDVzdwbjNGaG9xODV0anhhVWN6eXFFQVBadEFBQTJfVzltR0pXZEsyZFAwaUNaLXFVdGpjQVhmcTUxZm1fa0RVc05CMzJZOEZtek1tRWFkSEV4UXlsRkgtd3ZSeHJ3VDhxUmJqUTg5UXd5S0RJa1BfNGxJMHBVMHg3Vmt4QlplZkRQS0otb09vMGtjOEVFajNHYVdzTnJyZWNzZg?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 9,
-     "source": "Den of Geek",
-     "title": "Avengers: Doomsday Is Shaping Up To Be A Story About Fatherhood",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQeHMtUVUyWkx4b0RLMEotbmZXeHkxRVBQMmNHUWE5MjBvZDJ4TmhQX29NNG8wZ0NfZ1BnSDNKUlZSWmJJeTlkbGxhRmN6ZHdBRl9yQjJ5WkxUeHZoM0xUN0FfaHZ3NzdoaXdpLW9IT1czd0VzWGIyRmt6eDRBV3BKSTZDNk9kYUZvci1WMFl3?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 10,
-     "source": "MovieWeb",
-     "title": "New 'Avengers Endgame: Encore' Ending Has Officially Been Released",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE11RFZyUk0xRURWb3UyNWVaVFV2bWdLb1Rfbmphb01tODV5VjQ0a0RhNkkxU2pVd2xfWDBkRThIdWd5R25LRnEwdU1TMXoyVVBsWXJNTjdQcGZiV2p5Z1I5VnA2ZE12VXY4OWRMZ09R?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 11,
-     "source": "Yahoo",
-     "title": "Every MCU Post-Credits Scene That Sets Up Avengers: Doomsday Explained",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQY2lRWlFYcVY5em5HMkxwWW54UVY4RFpXU1pZRVhxZFk3TzRnZ0R2OTRxNktLUnljTkR0TWdLMV9JZGU5WVZ3YlBVc0drNkFMRnRBSU84WUdac3ptdGswZVBQMWVrbDctREU3Y3hFVzBLQjQ4b1QybS04MTNfd0gydmoyZ0pZSUNSQ01IX3RaRQ?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 12,
-     "source": "JustWatch",
-     "title": "‘VisionQuest’s Biggest Reveal Makes This ‘Doomsday’ Theory More Likely Than Ever",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPTEVGbjZkVmhNYjN6RndaTWh6MnN4MlpwVGFjUHhoN3NBSHdmTktNQ0ZMLWlZeHVHY0JIZ1hGdGhnNW41RTNwdVVZRkc1a0NON0E1LV9rQ2F3d0JYcGdaYVpJbXRGdkFEaUhzbkdMWXRXUUZORDZNdjBuRWJNWnVXajFmbjJWa3JBbnl4SUpKQU1ad2U2bWYxaDZHMlV3c0pFZlVF?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 13,
-     "source": "IGN",
-     "title": "After Receiving a Writing Credit for Avengers: Doomsday, Deadpool Star Ryan Reynolds Issues an Intriguing Response",
-     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPa2RDVGI2bl85X2VZcFBva0RZeldOT2YwUUxSLTRyenVHR3l1cVd1UXI2R1lsd1RORTBocFpiLXNmQ19saGlMLXdxaDVLUEJ2WklyX0F6MGgyWGNwRlZjdmlRbXBxVHY1ek9HckRsQkE5WHdzRk1YVVpxaUo4UXlvOFZQWnAtdHkzZFNidmNxNmhwU1ItaU5UczVVMnJtZkxlTjhhSzgwZUhTbEF2UzFPMFdLYjRyOVNManN5dVV0eXlwUQ?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 14,
-     "source": "note",
-     "title": "Doomsday Preparation | 5 MCU Films + Alpha to Watch Before Release",
-     "url": "https://note.com/aoin/n/nb7ced12f5079?hl=en"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 15,
-     "source": "ScreenRant",
-     "title": "New MCU Release Officially Hits Disney+ Today, And It's Perfectly Timed After Major Doomsday Twist Confirmation",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPdVN6MnFjdjBBekVoSmptaXhpcDJ1cjR3NjV3c3pIT1dYc0VTRWpzbHIwN29UU1VyRHhSS2luaHhyZHhYdHdqb3cxNlNqOVNTZlB1TTlEUFJWWTFacEl4NFN0UmN6VzBhaFVpNjVOQkxrQkQwNV9RTXVQTUZXa3hLSVBJSzd0c3duN1pV?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 16,
-     "source": "IMDb",
-     "title": "Miles Teller Has Blunt Marvel Advice for His ‘Paper Tiger’ Co-Star Adam Driver",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBlYktOX3ZVY3VPTk5vTjZUNGx0Q0s4WWRpT1NNR2R2QUdmWHdubnpUNFJ2U3B4SEtCVDJqN3hJcW9rdGFSN2FYU01kV2NYUDFEaTcwZ181N0hwSnFGOUFUTkhMT21ubEE?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 17,
-     "source": "ComicBookMovie.com",
-     "title": "Rumor: Predator: Badlands Director Dan Trachtenberg To Write And Direct Upcoming MCU Movie",
-     "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNdG00bkJSTTFKRXRCUWo4MmotRUsyc1ByOVktSWFDWEgtbmZQOFVZamw1NERIZEVUaVpIdXpQWXZoV0JySDZZRzNBR0ZLRHo3dGdXVWRfM2dXazdFRU9PVUE5VW5RRGhycnJMNkxwRDVqYnFKQ29uUVJSXzRCbWZGc1BSaUoyT1VIemw1TDlRcHQ1Wm5kRFdWTnNwclhTRDFIcUNfYVEweFlkLTdwUHBpYU5FQ0kyQUZQVmFRTGdqM25qVDIydHhMaERfNV92ZlZpZnZ4dw?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 18,
-     "source": "Yahoo",
-     "title": "Spider-Man: Brand New Day's extended edition arrives in theaters before Avengers: Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPWF9RaFphYlZrc3d2YTNSNHJrREczUDlDbXB5cWhoY0lqNHAtRHd1NVBYVWoyWXhDcTFraDV5NEJrUEV0NGN2R1hWSkU4RE5od1dIU3pKWGxfRVpBbldrMzRPOC00OWp4TFltYUdPa0U1cHV6S2c1cnBWV0ZQcDg3WkFmdmVRb2Q0NlN1TDZwamFQUFFaenREaXhrRU5sQQ?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 19,
-     "source": "Independent Journal Review",
-     "title": "Production of Avengers: Doomsday and Avengers: Secret Wars",
-     "url": "https://ijr.com/x/production-of-avengers-doomsday-and-avengers-secret-wars-Q133779833"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 20,
-     "source": "Nacionale",
-     "title": "Is Xochitl Gomez in Avengers: Doomsday? Not confirmed, but she says a return is 'possible'",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPLW50Q1JXR2VMTGVRRnZpYjdoUmZsVklYMXhJM1BUdU8xSnBJOUxBSzRVSFZxUkNvS2o5Q0hIQUxVbTZPTDdPdjJUNHE1aHZGRzlSMkpMaGhQblZOYVdaUlJOMzlpcVp1MWZrOVg3bXNWbDdVb1dVT0Q0emNWVTZRdmp6M2xqdDVmZW4zRGpJSXFkckJDZmVQdzFXa3FORXB6VWxqa3dnXzM?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 21,
-     "source": "大纪元",
-     "title": "《复仇者5》死侍与金刚狼当编剧 4张新剧照公开",
-     "url": "https://www.epochtimes.com/gb/26/11/13/n14888392.htm"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 22,
-     "source": "Yahoo",
-     "title": "The Entire MCU Timeline Explained Before Avengers: Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPbElJeV9GYlVfellxOUhaWU9xSGhzbW1xSk04aG1IdXlGZlRwTGlBSm0wNG9ZOFVOcUw2Vl9jdmlrY1RiRFRrMFB2MVRaRDdzRGdGbDhDbE0zaVJ2QV9JSU1VRTFoQi1vWVZacTk2ZnRnVXBWQVV5S193eWFYWTFJMTBTUnF3ek81M2sxeF9pSk9jdmpGYmhtcVJvTU4?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 23,
-     "source": "MediaPost",
-     "title": "Dave & Busters Welcomes 'Doomsday' With Store Takeover 11/12/2026",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOcDk3R29MNlh3MXBhV3Naa0MyZ0ZKMkhzc2FOWGR0VXdFbW8yb2VqOU1reWJIR0dPVXBhQVNaUUFhVnNqQnVjWE45SHVqcTNrdTdNM2hoTVQ4bGtZYWJsc2dROV9uRF9iWjFGMnpVMFB2dHMyZXBJU09wb09iY0l6RVdsQTlDTHotNmQ3Sk1KV1dxNnZlZjhOaW82Q3piOW40d09SWEJBWHVCaUxPb0RCZHBwdHNWLTVwUXVCTw?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 24,
-     "source": "Maxblizz",
-     "title": "New Avengers: Secret Wars Leak Reveals Tony Stark’s Return",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQSUY1RV8tVjAxM0NUQ1FOcXNrbWFxYTh4R1NUbzdOTGJqVno4V1FKaXRBZHk0bHJRMG1rVnRMalYyVXJMdmx4aTFkaFFlVHZ4NDA5X2VuaTlQR0RobktYQ0NoOWZ0OTd1ZExFNHZxTERnajU2VWxrZ0tIZnVZQ293dXlnakM?oc=5"
+     "headline": "Rumor: Predator: Badlands Director Dan Trachtenberg To Write And Direct Upcoming MCU Movie",
+     "highlight": "Rumor",
+     "image": "https://comicbookmovie.com/images/articles/banners/rumor-predator-badlands-director-dan-trachtenberg-to-write-and-direct-upcoming-mcu-movie-ab230975.jpg",
+     "image_via": "og:image",
+     "url": "https://comicbookmovie.com/marvel-studios/rumor-predator-badlands-director-dan-trachtenberg-to-write-and-direct-upcoming-mcu-movie-a230975",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",

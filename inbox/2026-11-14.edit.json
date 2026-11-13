@@ -58,6 +58,59 @@
   }
  ],
  "_covered": {
-  "GTA 6": 27
- }
+  "GTA 6": 27,
+  "漫威电影": 24
+ },
+ "漫威电影": [
+  {
+   "headline": "Who are Doomsday's Avengers? The film explores consequence of 'years of no organised team'",
+   "highlight": "Doomsday's Avengers",
+   "blurb": "Empire's exclusive look at the team in Avengers: Doomsday, which explores the consequences of years without an organised team.",
+   "weight": "lead",
+   "refs": [
+    8,
+    7,
+    21
+   ],
+   "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/untitled-4.jpg?w=1600&h=900&fit=crop"
+  },
+  {
+   "headline": "Avengers: Doomsday Star Pedro Pascal Reveals Mister Fantastic's Unique \"Bond\" With Doctor Doom",
+   "highlight": "Unique \"Bond\"",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    9
+   ]
+  },
+  {
+   "headline": "After Receiving a Writing Credit for Avengers: Doomsday, Deadpool Star Ryan Reynolds Issues an Intriguing Response",
+   "highlight": "Writing Credit",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13,
+    21
+   ]
+  },
+  {
+   "headline": "Spider-Man: Brand New Day's extended edition arrives in theaters before Avengers: Doomsday",
+   "highlight": "extended edition",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
+   ]
+  },
+  {
+   "headline": "Rumor: Predator: Badlands Director Dan Trachtenberg To Write And Direct Upcoming MCU Movie",
+   "highlight": "Rumor",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
+   ]
+  }
+ ]
 }
