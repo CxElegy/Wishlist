@@ -22,6 +22,9 @@ import zlib
 
 from playwright.sync_api import sync_playwright
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import browser as hb  # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = "https://cxelegy.github.io/Wishlist/"
 # 上限：直した後の数（2026-11-13）。どれか 1 つでも超えたら赤。「今週」は 1 枚でも行き来したら赤
@@ -78,8 +81,7 @@ def route(root):
 def run(root, w, h, page_path="home/"):
     phone = w <= 760
     with sync_playwright() as p:
-        exe = next((str(x) for x in (pathlib.Path("/opt/pw-browsers/chromium"),) if x.exists() and p.chromium.executable_path and not pathlib.Path(p.chromium.executable_path).exists()), None)
-        b = p.chromium.launch(**({"executable_path": exe} if exe else {}))   # 入れてある Playwright と版が違う時（クラウドの箱）だけ /opt の chromium
+        b = hb.launch(p)   # 点検のブラウザは共通の 1 か所から（free-tier.md：Supabase の写真を取りに行かない）
         ctx = b.new_context(viewport={"width": w, "height": h}, is_mobile=phone, has_touch=phone, device_scale_factor=1)
         ctx.route("**/*", route(root))
         pg = ctx.new_page()
