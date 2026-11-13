@@ -3844,7 +3844,7 @@ FIT_JS = """
   // 読み込みが終わらない写真（相手が返事をしない）は、画面に入ってから 8 秒で「開けない」とみなし、代わりの写真か、カードを出さない形へ（2026-11-08：灰色の空の枠）
   if (window.IntersectionObserver) {
     const late = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; late.unobserve(e.target); const i = e.target;
-      setTimeout(() => { if (i.isConnected && !(i.complete && i.naturalWidth) && i.dataset.e) i.dispatchEvent(new Event('error')); }, 8000); }), {rootMargin: '200px'});
+      const chk = n => setTimeout(() => { if (!i.isConnected || (i.complete && i.naturalWidth) || !i.dataset.e) return; if (!i.complete && n < 6) return chk(n + 1); i.dispatchEvent(new Event('error')); }, n ? 5000 : 8000); chk(0); }), {rootMargin: '200px'});   // まだ読み込み中（complete が false）なら 5 秒ずつ最大 6 回待つ。遅いだけの写真を「開けない」にしない
     document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(i => late.observe(i));
   }
   // 空きを挟んだ 2 つの物（data-s，photo_bands.segments）：空きだけ詰めて並べる。物ごとに枠の中で cover（2026-11-08 店長：ユニクロの人と服）
@@ -4435,6 +4435,7 @@ FIT_JS = """
   // 先行例：Flipboard の Duplo・新聞の自動組版（候補を組んで採点して選ぶ）。候補 = 列の数 × 大きくする記事 × 並べる順 × 出す枚数。
   // 点数 = 画面の高さを超えた分（いちばん重い）＋ 列の底の差（写真の枠を伸ばして埋めきれない分）＋ 大きい 1 枚の下の空き ＋ 画面の高さの使い残し ＋ 大きさの順（頭条 > 大きい 1 枚 > ほか）
   const wall = () => {
+    document.querySelectorAll('.wemb').forEach(x => x.remove());   // 途中で return しても、前の組みの小元素が残って字に重ならないように（gapEmb は最後にまた置く）
     const G = document.querySelector('.mgrid'), w = G && G.querySelector(':scope > .wall');
     if (!w) return;
     const side = G.querySelector(':scope > .fside') || w.querySelector(':scope > .fside');
@@ -4623,6 +4624,7 @@ FIT_JS = """
   document.addEventListener('load', e => { if (e.target.closest && e.target.closest('.emb')) embPad(); }, true);   // 写真の load は document の capture で聞く（window には上がらない）
   // 写真・字体が届いて高さが変わったら詰め直す（1 フレームにまとめる）。足した分で自分の大きさが変わっても、同じ結果になるので繰り返さない
   let wallReady = document.readyState === 'complete'; addEventListener('load', () => { wallReady = true; });
+  if (!wallReady) setTimeout(() => { if (!wallReady) { wallReady = true; wallSoon(); } }, 6000);   // load が遅い（広告・動画など）ときも 6 秒で組む
   let wq = 0; const wallSoon = () => { if (!wq) wq = requestAnimationFrame(() => { wq = 0; wall(); }); };
   if (window.ResizeObserver) { const ro = new ResizeObserver(wallSoon); document.querySelectorAll('.mgrid > .wall > .wc').forEach(c => ro.observe(c)); }
   wall();
@@ -5837,7 +5839,7 @@ AUTH_JS = r"""
     if(/rate limit|security purposes|too many/i.test(m)) return L.sayRate;
     return m||L.sayMail;
   }
-  var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+L.sayRate;};
+  var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+L.sayErr2;};
   // 右上はログインだけ。新しく始めるのは入口の流れ（言語・ジャンル・最初の版面を選ぶ）に一本化（2026-10-21，サイト全体で同じ始め方に）
   function loginForm(){
     return '<form class="wl-login" data-mode="old" novalidate>'+
