@@ -159,7 +159,6 @@ button{font-family:inherit}
 .mgrid.one .wall>.wc b{-webkit-line-clamp:unset;display:block;overflow:visible}  /* 壁の組み方が高さを決めるので、見出しは「…」で切らない（2026-11-09） */
 .mgrid.one{grid-template-columns:minmax(0,1fr)}.wall>.fside{align-self:start;min-width:0}  /* PC：右の列は壁の升目の右上（FIT_JS の wall()）。下にもカードが入る（2026-11-09） */
 .mgrid .wc{justify-content:flex-start}
-.mgrid .wall>.wc.ban{display:flex;flex-direction:column;gap:8px;justify-content:flex-start}.mgrid .wall>.wc.ban>.pic{flex:none;width:100%!important;height:auto!important;margin:0}.mgrid .wall>.wc.ban>.pic img:not(.bg):not(.ico){object-fit:cover}  /* 壁の小さい形 ③：横長の写真を上・字を下（枠は写真の形。FIT_JS cmpForm）。普通のカードと同じ flex を書く（2026-11-13） */
 .mgrid .wall>.wc.cmp{display:grid;grid-template-columns:46% minmax(0,1fr);column-gap:12px;row-gap:6px;align-content:start;grid-auto-rows:min-content}.mgrid .wall>.wc.cmp>.pic{grid-column:1;grid-row:1/span 9;align-self:start;width:auto!important;height:auto!important;aspect-ratio:4/3!important;margin:0}.mgrid .wall>.wc.cmp>*:not(.pic):not(.lk){grid-column:2;min-width:0}.mgrid .wall>.wc.cmp>.pic img:not(.bg):not(.ico){object-fit:cover}  /* 列の下に入りきらないカードは写真左・字右の小さい形で（2026-11-09 店長：ほかの注目ニュースは画面の下まで） */
 .fside>:last-child{flex:1;display:flex;flex-direction:column}.fside>.swish:has(.sempty){flex:none}.fside:has(.sempty)>.agenda{flex:1 1 auto;display:flex;flex-direction:column}.fside:has(.sempty)>.agenda>ol{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-around}
 /* 写真が開けず字だけになったカードは、同じ所に写真のあるカードがあれば出さない（2026-11-08 店長「我一定要图」） */
@@ -1059,7 +1058,7 @@ html[data-theme="indigo"] body{background:#EFE7D6}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="56c414ff5492"><style>
+<meta name="wl-ver" data-page="wishlist" content="eeef301d01c0"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2032,7 +2031,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>欲しい物リスト</h1></div>
-<div class="tools"><div class="meta"><small>更新</small><b>11.13 12:04</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>11.13 12:07</b></div></div>
 </header>
 <a class="back" href="./">← トップに戻る</a>
 <div class="wsum">
