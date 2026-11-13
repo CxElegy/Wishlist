@@ -1,14 +1,14 @@
 {
- "admin": "5c4a241f51d0",
- "admin-ai": "82c63ebbf578",
+ "admin": "42e671e3a5ba",
+ "admin-ai": "6409a50ac1af",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "76dccd07"
+   "40692dfd"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "a9390f81"
+   "feecaf8d"
   ]
  },
  "admin-boards": "c8e0d4bc8829",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "3d061a4f7dca",
+ "admin-emblem": "b00a0d08f625",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a31a592c"
+   "7a3b83e8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "150983a5b8a0",
+ "admin-now": "f7c862549161",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3fa5a53f"
+   "424c55fc"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "d4fdcb71"
+   "ba15605b"
   ]
  },
- "admin-system": "bf851d2ec3fc",
+ "admin-system": "692abd36c68c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c11f167a"
+   "5fe8a7fe"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d1abe816"
+   "b37acc0a"
   ]
  },
  "admin_marks": {},
- "heat": "57fb502a94fa",
+ "heat": "9d7bba49e254",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "65c8d383"
+   "022154cb"
   ],
   "ranking": [
    "ランキング",
-   "8964dbb3"
+   "27272057"
   ]
  },
- "index": "1710ff656b73",
+ "index": "a3272fed062a",
  "index_marks": {
   "front": [
    "トップ",
-   "8b6635e0"
+   "9740aa86"
   ],
   "picks": [
    "気になるかも？",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "b6cdb37f"
+   "c9a9ed7c"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "4389cec3"
+   "4829696b"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "79f2cc2d"
+   "099b7a88"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "901e882a"
+   "27a31224"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "6258b558"
+   "679332bb"
   ],
   "w-f303ad09": [
    "绝区零",
-   "148c8ed7"
+   "8b9d88f5"
   ]
  },
- "updated": "11.13 20:18",
+ "updated": "11.13 20:31",
  "wishlist": "de32c7ce9ce1"
 }

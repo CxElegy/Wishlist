@@ -325,7 +325,7 @@
   }
  ],
  "_covered": {
-  "GTA 6": 123,
+  "GTA 6": 137,
   "漫威电影": 120,
   "三星手机": 41,
   "Astrae Oratio": 10,
@@ -333,21 +333,21 @@
   "dota2": 8,
   "滑雪": 13,
   "哈利波特剧集": 6,
-  "ILLIT": 31,
+  "ILLIT": 37,
   "MMORPG 新作": 13,
   "The Mandalorian": 8,
-  "チェーンソーマン": 11,
+  "チェーンソーマン": 15,
   "A2O LITE": 10,
   "gelato pique": 4,
   "日本顶级网球赛事": 5,
   "FROM": 4,
   "猫用品": 4,
-  "绝区零": 4,
+  "绝区零": 8,
   "BLEACH Mirrors High": 5,
   "あつ森": 2,
   "ぐでたま": 4,
   "星巴克马克杯": 2,
-  "Vaundy": 2
+  "Vaundy": 6
  },
  "dota2": [
   {
@@ -521,7 +521,11 @@
     14,
     21,
     15,
-    18
+    18,
+    32,
+    33,
+    34,
+    37
    ],
    "image": "https://www.rbbtoday.com/imgs/ogp_f/1066101.jpg"
   },
@@ -577,7 +581,8 @@
     6,
     22,
     26,
-    27
+    27,
+    35
    ],
    "event": {
     "date": "2026-11-14",
@@ -670,12 +675,14 @@
    ]
   },
   {
-   "headline": "Chainsaw Man Episode 3 review: Some predictable but fun action",
+   "headline": "劇場版『チェンソーマン レゼ篇』シネマライブに元NUMBER GIRLの田渕ひさ子が出演 牛尾憲輔と劇伴を生演奏",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    12,
+    13,
+    14
    ]
   },
   {
@@ -705,7 +712,8 @@
    "weight": "normal",
    "refs": [
     9,
-    11
+    11,
+    15
    ]
   }
  ],
@@ -936,6 +944,24 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "『ゼンゼロ』×Discordコラボの装飾テーマ登場！星見雅、エレン・ジョー、ビリー・キッドモチーフのデコレーション",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "『ゼンゼロ』のコラボバイク「XSR900 GP」も展示ー横浜みなとみらい「Yamaha E-Ride Base」がリニューアル",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "BLEACH Mirrors High": [
@@ -1020,14 +1046,34 @@
  ],
  "Vaundy": [
   {
+   "headline": "第77回「NHK紅白歌合戦」出場歌手発表、Vaundy・Ado・YOASOBIらが出場決定",
+   "highlight": "Vaundy",
+   "blurb": "第77回NHK紅白歌合戦の出場歌手が発表され、Vaundyも出場者に名を連ねた。",
+   "weight": "lead",
+   "refs": [
+    4,
+    3,
+    6
+   ]
+  },
+  {
    "headline": "『ROCK IN JAPAN FESTIVAL 2026』ライブ映像の配信タイムテーブル公開",
    "highlight": "配信タイムテーブル公開",
    "blurb": "XG、Vaundy、バンプ、超特急、M!LK、ずとまよ、HANAら4日間のステージをYouTubeで配信。",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     1
    ],
    "image": "https://contents.oricon.co.jp/upimg/news/2493000/2492552/20261112_223054_p_o_40402843.jpg"
+  },
+  {
+   "headline": "【先ヨミ・デジタル】Vaundy「しわあわせ」引き続きストリーミング・ソング首位",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ]
 }

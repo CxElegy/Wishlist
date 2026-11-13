@@ -5618,7 +5618,9 @@
     },
     {
      "date": "2026-11-13T09:11:00+00:00",
-     "image": "",
+     "image": "https://s.eximg.jp/exnews/feed/kaiyou_n/1c/kaiyou_n_1493901684021018961/kaiyou_n_1493901684021018961_1.jpg",
+     "image_via": "og:image",
+     "link": "http://www.excite.co.jp/news/article/kaiyou_n_1493901684021018961/",
      "n": 12,
      "seen": "2026-11-13T09:40:44+00:00",
      "site": "http://www.excite.co.jp",
@@ -5631,6 +5633,7 @@
     {
      "date": "2026-11-13T09:00:00+00:00",
      "image": "",
+     "link": "https://natalie.mu/comic/news/697939",
      "n": 13,
      "seen": "2026-11-13T09:40:44+00:00",
      "site": "https://natalie.mu",
@@ -6105,6 +6108,7 @@
     {
      "date": "2026-11-13T04:50:00+00:00",
      "image": "",
+     "link": "https://skream.jp/news/2026/11/kouhaku_77.php",
      "n": 3,
      "seen": "2026-11-13T07:27:55+00:00",
      "site": "https://skream.jp",
@@ -6116,7 +6120,9 @@
     },
     {
      "date": "2026-11-13T04:29:00+00:00",
-     "image": "",
+     "image": "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png",
+     "image_via": "og:image",
+     "link": "https://news.denfaminicogamer.jp/news/261113y",
      "n": 4,
      "seen": "2026-11-13T07:27:55+00:00",
      "site": "https://news.denfaminicogamer.jp",
@@ -6128,7 +6134,9 @@
     },
     {
      "date": "2026-11-13T09:00:00+00:00",
-     "image": "",
+     "image": "https://www.billboard-japan.com/common/sys/img/news/00000167/167437/image.jpg",
+     "image_via": "og:image",
+     "link": "https://www.billboard-japan.com/d_news/detail/167437",
      "n": 5,
      "seen": "2026-11-13T09:40:56+00:00",
      "site": "https://www.billboard-japan.com",
@@ -6141,6 +6149,7 @@
     {
      "date": "2026-11-13T07:30:03+00:00",
      "image": "",
+     "link": "https://news.yahoo.co.jp/articles/fb2fd370ed76dcf4430a35e65f74914f3695b66e",
      "n": 6,
      "seen": "2026-11-13T09:40:56+00:00",
      "site": "https://news.yahoo.co.jp",
