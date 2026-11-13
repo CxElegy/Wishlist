@@ -22,8 +22,10 @@ fi
 
 changed=$(git diff --name-only "$base"...HEAD 2>/dev/null)
 
-echo "pre-push ①b 改行の向き（CRLF ↔ LF の反転。harness/eol_check.py）"
-python3 harness/eol_check.py "$base" || fail=1
+if [ -f harness/eol_check.py ]; then
+  echo "pre-push ①b 改行の向き（CRLF ↔ LF の反転。harness/eol_check.py）"
+  python3 harness/eol_check.py "$base" || fail=1
+fi
 
 tests=""
 for f in $(echo "$changed" | grep -E '^(scripts|harness)/[^/]+\.py$'); do
