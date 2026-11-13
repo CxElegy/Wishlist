@@ -186,6 +186,17 @@ if(innerWidth<=760)document.querySelectorAll('.wc,.card.mini,.card.sb,.tape').fo
  out.sideN++;let bot=cr.bottom-(parseFloat(cs.paddingBottom)||0);ex.forEach(k=>{bot=Math.min(bot,k.getBoundingClientRect().top)});
  const blank=bot-pr.bottom;   // 写真の底からカードの底まで（字が長くて枠が高くても、写真が届いていなければ空き）
  if(blank>24){out.sideGap++;out.sideEg.length<3&&out.sideEg.push((c.dataset.k||c.className).slice(0,20)+' '+Math.round(blank)+'px')}});
+// 2026-11-12〜13 小さい形・版面のカードの空き（PC）：壁の小さい形（.wc.cmp 写真左・字右）と版面の組み方（fitBoard）のカードで、
+// 写真が字の横にあれば写真の底と字の底の差、写真が上ならカードの底と中身の底の差が 24px を超えたら cmpGap に数える。
+// 壁のカードの空きに置いた小元素（.wemb）は cmpEmb に数える（空きは形で消す。小元素・作品のロゴで埋めない：2026-11-13）
+out.cmpN=0;out.cmpGap=0;out.cmpEmb=0;out.cmpEg=[];
+if(innerWidth>760){const kidsOf=(c,p)=>[...c.children].filter(k=>k!==p&&!k.matches('.lk,.wemb')&&vis(k)&&getComputedStyle(k).position!=='absolute'&&k.getBoundingClientRect().height>0);
+ document.querySelectorAll('.mgrid .wall>.wc.cmp,.mgrid .wall>.wc.ban,section.sec .mas.fb>article.card').forEach(c=>{if(!vis(c)||c.hidden||getComputedStyle(c).display==='none')return;
+  const p=c.querySelector(':scope>.pic');if(!p||!vis(p))return;const ks=kidsOf(c,p);if(!ks.length)return;out.cmpN++;
+  const pr=p.getBoundingClientRect(),cr=c.getBoundingClientRect(),tb=Math.max(...ks.map(k=>k.getBoundingClientRect().bottom)),pb=parseFloat(getComputedStyle(c).paddingBottom)||0;
+  const beside=ks.some(k=>k.getBoundingClientRect().left>=pr.right-2),d=beside?Math.abs(pr.bottom-tb):cr.bottom-pb-Math.max(tb,pr.bottom);
+  if(d>24){out.cmpGap++;out.cmpEg.length<4&&out.cmpEg.push(((c.closest('section.sec')||{dataset:{}}).dataset.k||'壁').slice(0,12)+' '+Math.round(d)+'px')}});
+ out.cmpEmb=document.querySelectorAll('.mgrid .wall>.wc>.wemb').length}
 return out}"""
 
 
@@ -411,6 +422,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"積み上げ（mason）に入らない 4 枚以上の並び：{hole['noMasBig']}")
     if hole["gridHole"]:   # 2026-11-01 L2：版面の中の記事の並びで、記事の外の空きが 3% 超の版面
         bad.append(f"記事の並びに空きがある：{hole['gridHole']} 並び（測った並び 過去のニュース {hole['older']}・mason 外 {hole['noMas']}） " + "・".join(hole["gridEg"]))
+    if hole.get("cmpGap") or hole.get("cmpEmb"):   # 2026-11-13 PC の小さい形・版面のカード：写真と字の底の差・字の下が 24px 超／空きに小元素を置いた壁のカード
+        bad.append(f"小さい形・版面のカードが空いている：{hole['cmpGap']} / {hole['cmpN']} 枚・空きの小元素 {hole['cmpEmb']} " + "・".join(hole["cmpEg"]))
     if hole.get("sideGap"):   # 2026-11-06 スマホの左写真カード：写真の下（日程・価格の行を除く）が 24px 超空いている
         bad.append(f"左写真のカードの写真の下が空いている：{hole['sideGap']} / {hole['sideN']} 枚 " + "・".join(hole["sideEg"]))
     if hole["wc"]:   # 同じく：ほかの注目ニュースの壁のカードは中身で高さが決まる（1 枚でも枠の 30% 超・70px 超が空いたら ✗）
