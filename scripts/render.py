@@ -2176,9 +2176,9 @@ EMB_JS = """
       put(el, img, alts[Math.floor(Math.random() * Math.min(alts.length, 3))]);   // 最初に出る 1 枚は知られている順の 1〜3 位から
   });
   // 3 秒の保険は、画面に入ってから数える（画面外の lazy の写真に先に .ld を付けると、近づいたとき transition なしで「パッ」と出る）
-  const late = img => { const go = () => setTimeout(() => img.classList.add('ld'), 3000);
-    if (!('IntersectionObserver' in window)) return go();
-    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); go(); } }); io.observe(img); };
+  // 観測者は 1 個を全部の写真で共有する（写真ごとに作ると 4,000 個超になり、スクロールのたびに毎 frame 全部が交差を測った。2026-11-13）
+  const lateIO = 'IntersectionObserver' in window && new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; lateIO.unobserve(e.target); setTimeout(() => e.target.classList.add('ld'), 3000); }));
+  const late = img => { if (lateIO) lateIO.observe(img); else setTimeout(() => img.classList.add('ld'), 3000); };
   // 読み込み（decode）が終わってから .ld を付けて、透明 → 不透明で出す。1 画面目の小元素は先に読む。3 秒たっても終わらなければ出す
   els.forEach(el => { const img = el.querySelector('img'); if (!img) return;
     if (el.getBoundingClientRect().top < innerHeight) { img.loading = 'eager'; img.fetchPriority = 'high'; }
@@ -2257,43 +2257,23 @@ EMB_JS = """
 # React Bits（試作 docs/testground/reactbits.html の E）を vanilla に移した特効。店長のページ（render_index）だけに入れる
 RB_CSS = """
 /* ===== React Bits の特効（E・2026-11-12 店長が選択）：transform / opacity だけ。入場は 1 回・動きを減らす設定では全部止まる =====
-   頭条＝Blur Text（見出し）＋Star Border（写真の枠）／ほかの注目ニュース＝Fade Content（入場）／カード＝Glare Hover（写真）／数字＝Count Up／押した所＝Click Spark（小さい DOM） */
-.rb-pre{opacity:0}
+   頭条＝Blur Text（見出し）＋Star Border（写真の枠）／数字＝Count Up。カードの Glare Hover・Fade Content・Click Spark は外した（2026-11-13 店長「動きが多くて重い」） */
 .rb-n{display:inline-block;text-align:right;font-variant-numeric:tabular-nums}
 /* Star Border：頭条の写真の枠の縁を金と白の光が往復（細い輪の中だけ見える。画面外では止める） */
 .rb-star{position:absolute;inset:-7px;padding:4px;pointer-events:none;z-index:1;overflow:hidden;opacity:.8;
  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
-.rb-star i{position:absolute;width:300%;height:50%;opacity:.95;background:radial-gradient(circle,var(--gold),transparent 20%)}
+.rb-star i{position:absolute;width:300%;height:50%;will-change:transform;opacity:.95;background:radial-gradient(circle,var(--gold),transparent 20%)}
 .rb-star i:nth-child(1){bottom:-12px;right:-250%;animation:rb-sb 7s linear infinite alternate}
 .rb-star i:nth-child(2){top:-12px;left:-250%;background:radial-gradient(circle,var(--card),transparent 20%);animation:rb-st 7s linear infinite alternate}
 @keyframes rb-sb{from{transform:translateX(0)}to{transform:translateX(-100%)}}
 @keyframes rb-st{from{transform:translateX(0)}to{transform:translateX(100%)}}
 .rb-off .rb-star i{animation-play-state:paused}
-/* Glare Hover：マウスを載せると写真の上を光の帯が 1 回走る（CSS だけ） */
-@media (hover:hover) and (prefers-reduced-motion:no-preference){
- .wall>.wc .pic::after,.sec .card .pic::after,.top .frame .pic::after{content:"";position:absolute;top:-25%;bottom:-25%;left:0;width:38%;z-index:3;pointer-events:none;
-  background:linear-gradient(100deg,transparent,color-mix(in srgb,var(--card) 50%,transparent),transparent);transform:translateX(-170%) skewX(-18deg)}
- .wall>.wc:hover .pic::after,.sec .card:hover .pic::after,.top:hover .frame .pic::after{transform:translateX(380%) skewX(-18deg);transition:transform .85s cubic-bezier(.3,.6,.3,1)}
-}
-/* Click Spark：押した所から 8 本の短い火花（全画面の canvas は使わず、その場だけの小さい箱） */
-.rb-spark{position:fixed;left:0;top:0;width:0;height:0;pointer-events:none;z-index:9999}
-.rb-spark i{position:absolute;left:-1.5px;top:-7px;width:3px;height:14px;border-radius:2px;background:var(--gold);box-shadow:0 0 0 1.5px var(--ink)}
-@media (prefers-reduced-motion:reduce){.rb-pre{opacity:1}.rb-star i{animation:none}.rb-spark{display:none}}
+@media (prefers-reduced-motion:reduce){.rb-star i{animation:none}}
 """
 RB_JS = """
 (() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window) || !Element.prototype.animate) return;
   const PHONE = matchMedia('(max-width:760px)').matches, EASE = 'cubic-bezier(.2,.8,.3,1)', below = el => el.getBoundingClientRect().top > innerHeight;
-  // ---------- Fade Content：ほかの注目ニュースのカードがスクロールで 1 回ふわっと入る ----------
-  // 最初の画面のカードは隠さない（すぐ読める）。区切りが画面の下 1 枚ぶんまで近づいたら、その中の画面の下にあるカードだけ隠して待つ。
-  // 版面のカード（約 2000 枚）には掛けない：スクロールの計測で PC の script の時間が増えた（2026-11-12）
-  // translate は個別の性質＝カードの傾き（transform）を壊さない。scale は使わない（組み方の計測が大きさを読むため）
-  const rv = new IntersectionObserver(es => { let k = 0; es.forEach(e => { if (!e.isIntersecting) return; const el = e.target; rv.unobserve(el); el.classList.remove('rb-pre');
-    el.animate([{ opacity: 0, translate: '0 ' + (PHONE ? 10 : 18) + 'px' }, { opacity: 1, translate: '0 0' }], { duration: 560, delay: Math.min(k++, 4) * 60, easing: EASE, fill: 'backwards' }); }); }, { threshold: .08 });
-  const arm = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; arm.unobserve(e.target);
-    const cs = [...e.target.querySelectorAll('.wall>.wc')].filter(below);   // 読むのを全部先に、書くのはあと
-    cs.forEach(c => { c.classList.add('rb-pre'); rv.observe(c); }); }), { rootMargin: '0px 0px 100% 0px' });
-  document.querySelectorAll('.spot').forEach(s => arm.observe(s));
   // ---------- Count Up：版面の「今週」の数・話題度・頭条の件数・欲しい物の合計が 0 から数える。幅は最後の数字で固定＝周りがずれない ----------
   const nums = [...document.querySelectorAll('.phead span:nth-child(2),.band .cnt b,.heat summary b,.stot b')].map(el => {
     const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let nd, hit = null;
@@ -2328,12 +2308,6 @@ RB_JS = """
   const fr = document.querySelector('.top .frame');
   if (fr) { const s = document.createElement('div'); s.className = 'rb-star'; s.setAttribute('aria-hidden', 'true'); s.innerHTML = '<i></i><i></i>'; fr.append(s);
     new IntersectionObserver(es => fr.classList.toggle('rb-off', !es[0].isIntersecting)).observe(fr); }
-  // ---------- Click Spark：押した所から火花（👍・👎 には自分の演出があるので出さない。字を打つ所でも出さない） ----------
-  addEventListener('pointerdown', ev => { if (ev.button || ev.target.closest('.vote,.vt,input,textarea,select,[contenteditable]')) return;
-    const b = document.createElement('span'); b.className = 'rb-spark'; b.style.translate = ev.clientX + 'px ' + ev.clientY + 'px'; const o = Math.random() * 45;
-    for (let i = 0; i < 8; i++) { const s = document.createElement('i'), a = o + i * 45; b.append(s);
-      s.animate([{ transform: 'rotate(' + a + 'deg) translateY(-10px) scaleY(1)', opacity: 1 }, { transform: 'rotate(' + a + 'deg) translateY(-34px) scaleY(.2)', opacity: 0 }], { duration: 420, easing: 'cubic-bezier(.2,.8,.3,1)', fill: 'forwards' }); }
-    document.body.append(b); setTimeout(() => b.remove(), 460); }, { passive: true });
 })();
 """
 
@@ -4031,7 +4005,7 @@ FIT_JS = """
     // 左写真のカード：枠は字の列の高さいっぱい。主役の位置 data-m があれば主役が残る位置で切る。ないときは 15% まで切って埋める（文字を欠かさない）。
     // それ以上切れる絵（ロゴ・文字入りが多い）だけ全体を見せ、周りを絵の端の色で埋める（.whole：文字を欠かさず、白い帯にも見えない）
     const mini = p.closest('.card.mini:not(.nophoto)') || (innerWidth <= 760 && sm && !sm.classList.contains('nophoto') ? sm : null);
-    if (mini && mini.parentElement && mini.parentElement.dataset.fit != null && innerWidth > 760) { setTimeout(() => spans(), 0); return; }   // 版面の組み方（fitBoard）が形を決めた版面：ここでは触らず、組み直しを頼む
+    if (mini && mini.parentElement && mini.parentElement.dataset.fit != null && innerWidth > 760) { setTimeout(() => spans(mini.closest('.grid') || 0), 0); return; }   // 版面の組み方（fitBoard）が形を決めた版面：ここでは触らず、組み直しを頼む
     if (mini) {
       p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar'); mini.style.gridTemplateColumns = '';
       const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
@@ -4056,7 +4030,8 @@ FIT_JS = """
       p.classList.toggle('fill', ok);
       if (!ok && img._bands) trimFit(img, p, img._bands);
       if (!ok && r0 < 1 && innerWidth > 760) {
-        const ph = Math.min(w0 / nat, Math.max(h0, (window.WLvh || innerHeight) * 0.6)), w = Math.round(ph * nat); p.style.width = w + 'px'; p.style.height = Math.round(ph) + 'px';   // 頭条はいちばん大きく（C1）：高さは画面の 6 割まで伸ばしてよい p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); img.style.objectPosition = '';
+        const ph = Math.min(w0 / nat, Math.max(h0, (window.WLvh || innerHeight) * 0.6)), w = Math.round(ph * nat); p.style.width = w + 'px'; p.style.height = Math.round(ph) + 'px';   // 頭条はいちばん大きく（C1）：高さは画面の 6 割まで伸ばしてよい
+        p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); img.style.objectPosition = '';
         if (fr) { fr.style.justifySelf = 'end'; const fw = fr.getBoundingClientRect().width; top.style.gridTemplateColumns = 'minmax(0,1fr) ' + Math.ceil(fw + 16) + 'px'; }
         if (img._bands) trimFit(img, p, img._bands);
       } else if (!ok && (r0 > 1 || innerWidth <= 760)) {   // 横長の絵・スマホの縦長の絵：枠を写真の形に（縦は幅の 1.3 倍まで、超える分は主役が残るときだけ切る）
@@ -4260,7 +4235,7 @@ FIT_JS = """
     const fixed = c => { boardBase(c); const h = H(c); return {k: 'N', s: 1, lo: 0, hi: 0, h: () => h, a: () => 0}; };
     const measure = (c, i, k) => {
       const o = [], p = c.querySelector(':scope > .pic'), img = p && img0(p);
-      if (img && !img.naturalWidth && !img._fbw) { img._fbw = 1; img.addEventListener('load', () => spans(), {once: true}); }   // 届いたら組み直す
+      if (img && !img.naturalWidth && !img._fbw) { img._fbw = 1; img.addEventListener('load', () => spans(img.closest('.grid') || 0), {once: true}); }   // 届いたら組み直す
       if (p && img && img.naturalWidth && keepForm(c) && c.classList.contains('stk')) {   // duo：fit が決めた枠の 0.7〜1.05 倍で伸び縮み（2026-11-08 BTS の版面が画面より高かった）
         if (!p.dataset.ar0) p.dataset.ar0 = p.style.getPropertyValue('--ar') || '';
         const w = p.getBoundingClientRect().width, a0 = parseFloat(p.dataset.ar0) || (w / p.getBoundingClientRect().height);
@@ -4397,9 +4372,11 @@ FIT_JS = """
     if (window.WL_FB_DEBUG) (window.WL_FB_LOG = window.WL_FB_LOG || []).push([m.closest('section') && m.closest('section').dataset.k, best.k, best.c2, best.f.map(f => f.k + ':' + Math.round(f.ph || 0))]);
     return true;
   };
-  let mt; const mro = window.ResizeObserver && new ResizeObserver(() => { clearTimeout(mt); mt = setTimeout(mason, 60); });
-  const mason = () => {
+  // 大きさが変わった記事のある版面だけ組み直す（全部の版面を毎回組むと、スクロール中に写真が届くたび 1 秒以上止まった。2026-11-13）
+  let mt, mtg = new Set(); const mro = window.ResizeObserver && new ResizeObserver(es => { es.forEach(e => mtg.add(e.target.closest('.grid') || 0)); clearTimeout(mt); mt = setTimeout(() => { const s = mtg; mtg = new Set(); mason(s.has(0) ? null : s); }, 60); });
+  const mason = only => {
     document.querySelectorAll('section.sec .grid').forEach(g => {
+      if (only && !only.has(g)) return;
       const old = !!g.closest('.older');
       if (!g.offsetParent || (old && !g.closest('details').open)) return;   // 閉じた「もっと見る」は包まない（包むと隠れた写真の測りが 0 のまま、点検の写真の余白に数えられた）。開いたとき toggle で積む   // 過去のニュース：c3 の記事が全部同じ積み方（閉じていると高さ 0 なので、開いたとき〔toggle〕に積む）
       let m = g.querySelector(':scope > .mas');
@@ -4510,7 +4487,8 @@ FIT_JS = """
       if (h.classList.contains('tight') && ph) { const cap = Math.max(120, Math.min(ph - Math.max(0, over()), Math.max(th, 120))); if (cap < ph - 4) { h.classList.add('capped'); h.style.setProperty('--hmax', Math.round(cap) + 'px'); } }   // 枠は写真の形で列の幅いっぱい（絞りと「次のニュース」を出さない：写真の下が空いた）
     });
   };
-  const spans = () => { clearTimeout(spt); spt = setTimeout(() => { unHero(); document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(); fitHeroes(); }, 150); };
+  let spg = new Set();   // 写真が届いた版面（引数なしの呼び出しは全部の版面）
+  const spans = g => { spg.add(g || 0); clearTimeout(spt); spt = setTimeout(() => { const s = spg; spg = new Set(); unHero(); document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(s.has(0) ? null : s); fitHeroes(); }, 150); };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     if (img.complete) fit(img);
   });
@@ -4523,7 +4501,7 @@ FIT_JS = """
     new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => n.nodeType === 1 && obs(n)))).observe(document.body, {childList: true, subtree: true});   // あとから JS で足された版面の写真も
   }
   // あとから足された写真（JS で作った版面）の load も拾う（load は泡立たないので capture で）
-  document.addEventListener('load', e => { const i = e.target; if (i.tagName === 'IMG' && i.matches('.pic img:not(.bg):not(.ico)')) { fit(i); spans(); } }, true);
+  document.addEventListener('load', e => { const i = e.target; if (i.tagName === 'IMG' && i.matches('.pic img:not(.bg):not(.ico)')) { fit(i); spans(i.closest('.grid') || -1); } }, true);
   let t;
   addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { once(); document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit); wall(); spans(); }, 200); });
   // 写真の壁（ほかの注目ニュース）の組み方（2026-11-09 店長：PC ではこの区切りを画面 1 枚で見終わる・右の列の下も空けない・予定と欲しい物は必ず出す）。

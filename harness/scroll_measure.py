@@ -14,7 +14,7 @@ from playwright.sync_api import sync_playwright  # noqa: E402
 
 import os
 OUT = Path(os.environ.get("WL_SCROLL_OUT") or "/tmp/wl_scroll"); OUT.mkdir(parents=True, exist_ok=True)
-URL = "https://cxelegy.github.io/Wishlist/home/"
+URL = os.environ.get("WL_URL") or "https://cxelegy.github.io/Wishlist/home/"   # 手元で作った写しを測るときは WL_URL=http://127.0.0.1:8765/home/
 MODE = "desktop"
 RUNS = sys.argv[1].split(",")
 TAG = sys.argv[2] if len(sys.argv) > 2 else "s3"
@@ -120,7 +120,7 @@ EXP_CSS = {
 
 def ctx_opts():
     if MODE == "desktop":
-        return dict(viewport={"width": 1400, "height": 900}, device_scale_factor=1)
+        return dict(viewport={"width": int(os.environ.get("WL_W") or 1400), "height": int(os.environ.get("WL_H") or 900)}, device_scale_factor=1)
     return dict(viewport={"width": 390, "height": 844}, device_scale_factor=3, is_mobile=True, has_touch=True,
                 user_agent="Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Mobile Safari/537.36")
 
