@@ -66,7 +66,8 @@
   "ILLIT": 3,
   "滑雪": 3,
   "绝区零": 3,
-  "チェーンソーマン": 2
+  "チェーンソーマン": 2,
+  "哈利波特剧集": 2
  },
  "漫威电影": [
   {
@@ -263,6 +264,18 @@
    "weight": "lead",
    "refs": [
     2
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Nicola Coughlan rules out watching new Harry Potter series: ‘It’s not for me’",
+   "highlight": "rules out watching",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
    ]
   }
  ]

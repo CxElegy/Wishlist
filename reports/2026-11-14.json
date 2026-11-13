@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "7b6a86d32a83",
+ "edit_sig": "c1da97e00991",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -274,24 +274,19 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "The Independent",
-     "title": "Nicola Coughlan delivers blunt verdict on actors appearing in Harry Potter TV series",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPUkRVZVdvRm9IRU1pVktHX0VyX1JsSFpqM2s1ek1uLThZdlpmQXptVG05QWx0Y2lWTEJxRVNSSVhmVmN0YlRRUjZPSlcwcXVISUZZdUM4WDI5bThMOEZkZ0dScUhTbHJuYTFFUzNia1dKVk1JQ1BVTURVSDFkYzRXTGV1dWVtV1l6X2VNUGVWeWROZDltMks1U3p1am0?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 2,
-     "source": "The Independent",
-     "title": "Nicola Coughlan rules out watching new Harry Potter series: ‘It’s not for me’",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQWV9uaUhzMzd5MzlUYWUtUXk2a3g3Q2t5bUhWZlRZTEVnaEhNTG4wSXRyUGhKV0hKR1BMdVZlcUprVnhoWk9jWjNtdGlmQ2VjVm83Nk9MWEJWQUFxdG1CcXFiTUx0ZjRfcEowSktnYWcwVmhrSmNKMllZZFY4MUhFbjBBS2RGanp2dnh3bU9DWDJKTTZMTGRPbGhSTV9MaHhaUXpxSmRvem1NY2hPcWxr?oc=5"
+     "headline": "Nicola Coughlan rules out watching new Harry Potter series: ‘It’s not for me’",
+     "highlight": "rules out watching",
+     "image": "https://static.the-independent.com/2026/11/13/12/01M6PTRNCR7TCBFABTRD6S8YM1.jpg?trim=0,2,0,2&width=1200&height=800&crop=1200:800",
+     "image_via": "og:image",
+     "url": "https://www.independent.co.uk/arts-entertainment/tv/news/nicola-coughlan-harry-potter-jk-rowling-b3084540.html",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
