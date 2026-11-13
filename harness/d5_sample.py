@@ -122,6 +122,14 @@ def base(html, title):
     return html
 
 
+def put(path, text):
+    """書く。既にあるファイルが CRLF なら CRLF のまま（Linux で LF に反転して全行の差になるのを防ぐ。harness/eol_check.py）"""
+    eol = "\n"
+    if path.exists() and path.read_bytes().count(b"\r\n") * 2 > path.read_bytes().count(b"\n"):
+        eol = "\r\n"
+    path.write_bytes(text.replace("\r\n", "\n").replace("\n", eol).encode("utf-8"))
+
+
 def fresh():
     """写し 2 枚が今の render.AUTH_CSS（殻）を含むか（tests の test_testground_copies_carry_current_shell_css と同じ見方）"""
     sys.path.insert(0, str(ROOT / "scripts"))
@@ -136,7 +144,7 @@ def main():
     src = SRC.read_text(encoding="utf-8")
     assert src.count("<head>") == 1
     now = base(src, "D5 見本・今")
-    (OUT / "d5-now.html").write_text(now, encoding="utf-8")
+    put(OUT / "d5-now.html", now)
 
     worst = {}
 
@@ -149,7 +157,7 @@ def main():
     new = re.sub(r'(<section [^>]*class="sec [^"]*" style=")([^"]*)"', repl, now)
     assert new.count("</head>") == 1
     new = new.replace("</head>", CSS + "</head>", 1).replace("<title>D5 見本・今</title>", "<title>D5 見本・案</title>")
-    (OUT / "d5-new.html").write_text(new, encoding="utf-8")
+    put(OUT / "d5-new.html", new)
     print("いちばん低いコントラスト：" + "、".join(f"{k} {v:.1f}" for k, v in worst.items()))
     assert all(v >= 4.5 for v in worst.values()), worst
 
