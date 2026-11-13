@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-13T16:32:11+00:00",
+ "checked": "2026-11-13T17:56:20+00:00",
  "fired": {
-  "at": "2026-11-13T15:32:42+00:00",
+  "at": "2026-11-13T17:56:20+00:00",
   "results": {
-   "edit": "Claude を起こした（2 回目：前は動かなかった）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -29,20 +29,29 @@
   },
   "2026-11-13": {
    "edit": 15
+  },
+  "2026-11-14": {
+   "edit": 1
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-13T15:32:42+00:00",
-    "attempts": 2,
-    "day": "2026-11-13",
-    "prog": 542,
-    "resp": "cse_01W4x6f7ZfyXBFSWbgKMPCe7",
-    "sig": "edb0a13c2cc5"
+    "at": "2026-11-13T17:56:20+00:00",
+    "attempts": 1,
+    "day": "2026-11-14",
+    "prog": 8,
+    "resp": "",
+    "sig": "0a23631216b0"
    },
    "items": [
+    "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "gelato pique",
     "lib:京都",
     "lib:宇宙・ロケット",
     "lib:将棋",
@@ -50,7 +59,15 @@
     "lib:温泉",
     "lib:生成AI",
     "lib:筋トレ",
-    "lib:観葉植物"
+    "lib:観葉植物",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
    ],
    "last_batch": "2026-11-13T14:40:26+00:00",
    "last_error": {
@@ -60,35 +77,46 @@
    "need": true,
    "prog": 8,
    "prog_day": "2026-11-14",
-   "ripe": [],
-   "sig": "c54aadfb8d6e",
-   "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
+   "ripe": [
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
+    "ILLIT",
+    "MMORPG 新作",
+    "三星手机",
     "周杰伦",
-    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "滑雪",
     "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "0a23631216b0",
+   "token_cap": 1000000,
+   "tokens_today": 0,
+   "why": "整理待ちの記事 177 件（22 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "BLEACH Mirrors High",
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "漫威电影",
+    "FROM",
+    "GTA 6",
+    "周杰伦",
+    "Astrae Oratio",
+    "绝区零",
+    "The Mandalorian",
+    "ぐでたま"
+   ],
+   "need": true,
+   "sig": "1972fc353345",
+   "waiting": [
+    "A2O LITE",
+    "Vaundy",
+    "dota2",
+    "あつ森"
+   ],
+   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 4 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
