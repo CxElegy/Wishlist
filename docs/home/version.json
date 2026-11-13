@@ -1,32 +1,32 @@
 {
- "admin": "ee5bcd0c4efe",
- "admin-ai": "6efc71ada4c3",
+ "admin": "67626b417ef1",
+ "admin-ai": "5b01d1ea277b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "0cae146d"
+   "14eeac4a"
   ],
   "tokens": [
    "AI 編集のトークン",
    "b1b47877"
   ]
  },
- "admin-boards": "502bdde1edb8",
+ "admin-boards": "6f5893a6c1ed",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "d416fa8f"
+   "ab93bd58"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "9d5c34ee2889",
+ "admin-emblem": "95ec66f46130",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e81a2c46"
+   "6e4fe8d6"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "f104fa239036",
+ "admin-now": "84270212a853",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "db0a663e"
+   "891f7a84"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "daf0ae0a"
+   "be7458e1"
   ],
   "term-panel": [
    "ライブログ",
-   "fd252e2c"
+   "c1037e17"
   ]
  },
- "admin-system": "74073c5a6007",
+ "admin-system": "b2ebc0483a7c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a3cc50e9"
+   "8c475928"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b34587f0"
+   "ef7cee3f"
   ]
  },
  "admin_marks": {},
- "heat": "d518896fca2d",
+ "heat": "5f2b0716fdf6",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e8f1e803"
+   "0bc38fbd"
   ],
   "ranking": [
    "ランキング",
-   "29b63063"
+   "6b1140ff"
   ]
  },
- "index": "dc280b58f8e2",
+ "index": "94e88b975ed6",
  "index_marks": {
   "front": [
    "トップ",
-   "84b9e425"
+   "f37f4cf2"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "9dd5fc36"
+   "a8cd9680"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -196,6 +196,6 @@
    "397f6c85"
   ]
  },
- "updated": "11.14 08:18",
+ "updated": "11.14 08:44",
  "wishlist": "69a11cca5599"
 }

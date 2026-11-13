@@ -1298,12 +1298,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.bauerhosting.com/celebrity/sites/42/2026/11/empjan27-avengers-doomsday-crop-vvd-dd.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=undefined&q=80": {
-  "w": 1500,
-  "h": 844,
-  "target": 720,
-  "v": 3
- },
  "https://images.chinatimes.com/newsphoto/2026-11-10/1024/20261110001857.jpg": {
   "w": 1024,
   "h": 573,
@@ -2133,6 +2127,19 @@
   "h": 383,
   "target": 720,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/1447118/18760300_615.jpg": {
+  "w": 615,
+  "h": 346,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.453,
+  "local": "pics/c158cac8037bb388.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/1453739/19024802_615.jpg": {
   "w": 615,
@@ -3745,6 +3752,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.OKZqWjm0fV6fE9FY4yaRwg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.XztTBU2SN6r-qFHxk-0TsQ&pid=News&w=1120": {
   "w": 700,
   "h": 393,
@@ -3766,6 +3779,12 @@
  "https://www.bing.com/th?id=ONUT.if7PjIjrIEYNee0BpacpMA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.kPcayW2FWa-vaSMiTg5ZWQ&pid=News&w=1102": {
+  "w": 700,
+  "h": 329,
   "target": 720,
   "v": 3
  },
@@ -3826,6 +3845,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.v67tJuGtE7OSoPeVpTqEKA&pid=News&w=1024": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.v8bfO7hLnAVNL1miyL-CSw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3851,12 +3876,6 @@
    720
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.vSziIpMPlJ4WhORTPNFS5w&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
