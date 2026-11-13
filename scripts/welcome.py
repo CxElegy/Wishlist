@@ -621,7 +621,47 @@ def build(out=OUT, base="", cards=None):
     return cards
 
 
+OUT_404 = ROOT / "docs" / "404.html"   # 存在しない網址で GitHub Pages が返すページ（打ち間違い・昔の網址を入口へ戻す）
+ENTRANCE = "https://cxelegy.github.io/Wishlist/"
+
+
+def build_404(out=OUT_404):
+    """docs/404.html：どの深さの網址でも読めるよう、リンクと部品は絶対網址だけ（相対パスは使わない）。網址を打たせず、ボタンで入口へ戻す。"""
+    page = f"""<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ページが見つかりません</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{render.font_link(render.FONTS)}
+<style>{render.CSS}{CSS}
+body{{min-height:100vh;min-height:100dvh;display:flex}}
+.nf{{width:min(560px,100%);margin:auto;padding:32px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px;align-items:flex-start}}
+.nf .code{{font:900 clamp(72px,22vw,120px)/1 var(--font-sans);margin:0;letter-spacing:.02em;text-shadow:5px 5px 0 var(--rose)}}
+.nf .catch{{margin:0}}
+.nf .acts{{display:flex;flex-wrap:wrap;gap:14px}}
+</style>
+</head>
+<body>
+<main class="nf">
+<p class="logo">ウォッチリスト通信</p>
+<p class="code">404</p>
+<p class="catch">このページは<em>見つかりません</em></p>
+<p class="lede">アドレスが変わったか、もう無いページです。入口に戻れば、ここから先へ進めます。</p>
+<div class="acts"><a class="btn main" href="{ENTRANCE}">入口へ戻る →</a><a class="btn sub" href="{sitedir.URL}">ページを見る</a></div>
+</main>
+</body>
+</html>
+"""
+    pathlib.Path(out).write_text(page, encoding="utf-8")
+    print(out)
+
+
 def build_all():
+    build_404()
     cards = build(OUT, "")
     build(OUT_TG, "../", [{**c, "img": c["img"]} for c in cards if not c.get("shop")] + shop_picks(""))
 

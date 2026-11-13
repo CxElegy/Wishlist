@@ -6612,7 +6612,7 @@ def _chart(points, kind, color, unit, ymax=None, bands=(), partial_last=False, c
     各日に透明な当たり判定（data-tip）を重ねる。"""
     if not points or not any(v for _, v in points):
         return f'<p class="empty">{e(caption)}：まだデータがありません</p>'
-    W, H, L, R, T, B = 640, 168, 40, 44, 10, 24
+    W, H, L, R, T, B = 640, 168, 40, 56, 10, 24
     pw, ph = W - L - R, H - T - B
     top = ymax or _nice(max(v for _, v in points))
     n = len(points)
@@ -6632,7 +6632,7 @@ def _chart(points, kind, color, unit, ymax=None, bands=(), partial_last=False, c
     for t in ([0, 50, 100] if bands else [0, top / 2, top]):
         svg.append(f'<line class="grid" x1="{L}" x2="{L + pw}" y1="{y(t):.1f}" y2="{y(t):.1f}"/>')
         lab("yt z" if t == 0 else "yt", L - 6, y(t), _compact(t))
-    gap = math.ceil(58 / band)   # 日付の字（390px 幅で約 32px）が入る日数
+    gap = math.ceil(96 / band)   # 日付の字（390px 幅で約 32px）＋余白が入る日数（スマホで日付どうしが詰まらないよう広め）
     for i, (d, _) in enumerate(points):
         if i == 0 and n > 1 and (n - 1) % 7 != 0 and ((n - 1) % 7) < gap:
             continue
@@ -6852,7 +6852,7 @@ HEAT_PAGE_CSS = """
 .kv{display:flex;align-items:baseline;gap:6px;min-width:0}
 .kv b{font:700 34px/1.1 var(--font-sans);letter-spacing:-.01em}
 .kv small{font:700 12px var(--font-sans);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.kd{font:500 12px/1.45 var(--font-sans);opacity:.75}
+.kd{font:500 12px/1.45 var(--font-sans);opacity:.75;word-break:auto-phrase}
 .tw{overflow:visible}
 table.rank{width:100%;border-collapse:collapse;font-size:13px}
 .rank th,.rank td{padding:7px 6px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:middle}
@@ -6985,7 +6985,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .cl.bl{display:none}  /* 狭い画面では等級の名前を省く（線は残す。等級は計算方法に書いてある） */
  .legend li{grid-template-columns:12px 76px 28px 40px minmax(0,1fr)}
 }
-@media (max-width:560px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi{border-left:0!important;border-top:1px solid var(--hair)}.kpi:nth-child(-n+2){border-top:0}
+@media (max-width:560px){.sh>span{white-space:nowrap}.sh small{flex:1 1 100%}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi{border-left:0!important;border-top:1px solid var(--hair)}.kpi:nth-child(-n+2){border-top:0}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 """
@@ -7279,7 +7279,7 @@ def render_heat(analysis, works, updated):
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
-報道量・広がり・出来事・勢い・一般の関心（Wikipedia）・ファンの反応の 6 つの指標から計算します。数字にカーソルを合わせると根拠が出ます。</p>
+報道量・広がり・出来事・勢い・一般の関心（Wikipedia）・ファンの反応の 6 つの指標から計算します。数字を押すと根拠が出ます（パソコンではカーソルを合わせても出ます）。</p>
 {_heat_kpis(rows, analysis)}
 <section class="panel" id="ranking"><h2 class="sh"><span>ランキング</span><small>指標の列見出しで並べ替え · ×は重み</small></h2>{_heat_table(rows)}</section>
 <section class="panel" id="movers"><h2 class="sh"><span>前週比</span><small>7 日前の話題度との差</small></h2>{_heat_movers(rows)}</section>
