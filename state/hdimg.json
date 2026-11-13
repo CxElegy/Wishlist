@@ -528,6 +528,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.gamemeca.com/gmdata/0001/783/374/gm764778_thumb____.webp": {
+  "w": 1200,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gameple.co.kr/news/photo/202611/216924_250536_2851.jpg": {
   "w": 800,
   "h": 562,
@@ -1903,6 +1909,12 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/931298_1.jpg": {
   "w": 1023,
   "h": 1024,
+  "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/11/1181899_1.jpg": {
+  "w": 1024,
+  "h": 576,
   "target": 1280,
   "v": 3
  },

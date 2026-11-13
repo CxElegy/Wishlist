@@ -59,7 +59,8 @@
  ],
  "_covered": {
   "GTA 6": 27,
-  "漫威电影": 24
+  "漫威电影": 24,
+  "MMORPG 新作": 4
  },
  "漫威电影": [
   {
@@ -110,6 +111,36 @@
    "weight": "normal",
    "refs": [
     17
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "ガンホー、新作MMORPGラグナロク：ニューワールドを国内提供へ",
+   "highlight": "国内提供へ",
+   "blurb": "ガンホーが新作MMORPG「ラグナロク：ニューワールド」を国内で提供する。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/11/1181899_1.jpg"
+  },
+  {
+   "headline": "Loftia Preview: A Cozy MMO That Could Win Over Palia Fans",
+   "highlight": "Cozy MMO",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "エムゲーム、MMORPG『ナイトオンライン』グローバル新サーバーをオープン",
+   "highlight": "新サーバー",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]

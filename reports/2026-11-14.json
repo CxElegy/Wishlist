@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "0d419b4096ff",
+ "edit_sig": "b3a5cbb873bf",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -80,38 +80,39 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "ガンホーが新作MMORPG「ラグナロク：ニューワールド」を国内で提供する。",
+     "date": "2026-11-13",
+     "headline": "ガンホー、新作MMORPGラグナロク：ニューワールドを国内提供へ",
+     "highlight": "国内提供へ",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/11/1181899_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.dellows.jp/1181899/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-11-10",
-     "n": 1,
-     "source": "Noisy Pixel",
-     "title": "Loftia Preview: A Cozy MMO That Could Win Over Palia Fans",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1GbmxjZ0RQMjVxc2YtVXA2dFpTWW51UzNWd0w5Ukd6MGxiNWFvY1FobnhlRlo5ZTI4SmJ4VG1BY1ZzX2ZyZ1pVZGFydmh3T252a2NuN195X3dXQm80Nk53Ng?oc=5"
+     "headline": "Loftia Preview: A Cozy MMO That Could Win Over Palia Fans",
+     "highlight": "Cozy MMO",
+     "image": "https://noisypixel.net/wp-content/uploads/2026/11/Loftia-Preview.jpg",
+     "image_via": "og:image",
+     "url": "https://noisypixel.net/loftia-early-access-preview/",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-13",
-     "n": 2,
-     "source": "Dellows News",
-     "title": "ガンホー、新作MMORPGラグナロク：ニューワールドを国内提供へ",
-     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE5uLThRVEhOeXpibkI0Wktwclc2b3phaFM0Z20wQUlFM19NX2NhVnV1OXFtNW5YTTBlLVlTeFVJWXdzMmhvUWZZ?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 3,
-     "source": "위키트리 on MSN",
-     "title": "판타지포유, 출시 이틀 만에 구글 플레이 인기 1위…1999년 PC게임 되살렸다",
-     "url": "https://www.msn.com/ko-kr/entertainment/%EC%9D%BC%EB%B0%98/%ED%8C%90%ED%83%80%EC%A7%80%ED%8F%AC%EC%9C%A0-%EC%B6%9C%EC%8B%9C-%EC%9D%B4%ED%8B%80-%EB%A7%8C%EC%97%90-%EA%B5%AC%EA%B8%80-%ED%94%8C%EB%A0%88%EC%9D%B4-%EC%9D%B8%EA%B8%B0-1%EC%9C%84-1999%EB%85%84-pc%EA%B2%8C%EC%9E%84-%EB%90%98%EC%82%B4%EB%A0%B8%EB%8B%A4/ar-AA2hnhPK"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-12",
-     "n": 4,
-     "source": "게임메카",
-     "title": "エムゲーム、MMORPG『ナイトオンライン』グローバル新サーバーをオープン",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBSOUJNZTIwMzdkSW90YjQzZ29QbFZ1cWhFbldiTlUzY3ZfN1RLM3REckpaQ3ZnSHotNm9FajFNbmhIeWZ4SG94NXZ6R1ZpeGY4Q3FuWUtFTDRYNGww?oc=5"
+     "headline": "エムゲーム、MMORPG『ナイトオンライン』グローバル新サーバーをオープン",
+     "highlight": "新サーバー",
+     "image": "https://cdn.gamemeca.com/gmdata/0001/783/374/gm764778_thumb____.webp",
+     "image_via": "og:image",
+     "url": "https://www.gamemeca.com/ja/view.php?gid=1783374",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
