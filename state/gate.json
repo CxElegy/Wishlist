@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-13T14:21:19+00:00",
+ "changed": true,
+ "checked": "2026-11-13T15:18:13+00:00",
  "fired": {
   "at": "2026-11-13T14:21:19+00:00",
   "results": {
@@ -43,37 +43,32 @@
     "sig": "d107713d98b8"
    },
    "items": [
-    "Astrae Oratio",
     "ILLIT",
-    "dota2",
-    "lib:Nintendo Switch 2",
-    "lib:iPhone",
-    "lib:ガンプラ",
-    "lib:キャンプ",
-    "lib:コーヒー",
-    "lib:ユニクロ",
-    "lib:ラーメン",
-    "lib:無印良品",
+    "lib:京都",
+    "lib:宇宙・ロケット",
+    "lib:将棋",
+    "lib:東京ディズニーリゾート",
+    "lib:温泉",
+    "lib:生成AI",
+    "lib:筋トレ",
+    "lib:観葉植物",
     "日本顶级网球赛事",
     "滑雪",
     "绝区零"
    ],
-   "last_batch": "2026-11-13T12:58:03+00:00",
+   "last_batch": "2026-11-13T14:40:26+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 600,
+   "prog": 542,
    "prog_day": "2026-11-13",
-   "ripe": [
-    "Astrae Oratio",
-    "dota2"
-   ],
-   "sig": "d107713d98b8",
+   "ripe": [],
+   "sig": "29656c61899b",
    "token_cap": 1000000,
-   "tokens_today": 839274,
-   "why": "整理待ちの記事 106 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 884821,
+   "why": "整理待ちの記事 102 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -166,12 +161,12 @@
    "runs": 10
   },
   "2026-11-13": {
-   "batches": 30,
-   "cr": 22438253,
-   "cw": 748756,
-   "in": 612,
-   "out": 89906,
-   "runs": 13
+   "batches": 32,
+   "cr": 23247265,
+   "cw": 791719,
+   "in": 637,
+   "out": 92465,
+   "runs": 14
   }
  }
 }
