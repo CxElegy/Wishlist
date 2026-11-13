@@ -240,12 +240,12 @@ class Components(unittest.TestCase):
         """2026-11-09 店長：高さは px でなく画面の割合。ほかの注目ニュース・気になるかもは L＝画面 100%、版面は篇幅 L 100%・M 70%・S 50%。ジャンル別の棚はなし。"""
         js = render.FIT_JS
         self.assertEqual(render.SIZE_VH, {"S": 50, "M": 70, "L": 100})
-        self.assertIn("(innerHeight - bar) * ((sec && +sec.dataset.vh) || 70) / 100", js)
+        self.assertIn("((window.WLvh || innerHeight) - bar) * ((sec && +sec.dataset.vh) || 70) / 100", js)   # 画面の高さは URL 欄の門を通った高さ（審美基準 F5・2026-11-13）
         self.assertNotIn("shelfbox", js)
         self.assertIn("c._hc", js)   # 入りきらない記事は小さい形（.wc.cmp）で列の下を埋める
         self.assertIn(".mgrid .wall>.wc.cmp{", render.CSS)
         self.assertIn("showFlat(true)", render.SHUFFLE_JS)
-        self.assertIn("const T = innerHeight - (parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0) - 16", render.SHUFFLE_JS)
+        self.assertIn("const T = (window.WLvh || innerHeight) - (parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0) - 16", render.SHUFFLE_JS)
 
     def test_agenda_future_sorted_and_deduped(self):
         mk = lambda d, h: {"url": f"https://e.com/{h}", "headline": h, "_issue": "2026-10-10", "event": {"date": d, "label": "発売"}}
@@ -778,7 +778,7 @@ class EmblemStaysOutOfText(unittest.TestCase):
         css = render.STYLES if hasattr(render, "STYLES") else open(render.__file__, encoding="utf-8").read()
         self.assertIn("@keyframes embdrift{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 6px);rotate:-3deg}}", css)   # 上へ浮く（下は +6px まで。clip-path が帯の線より下を切る）・案 A の持ち上げ --lift
         self.assertIn("--r:.15", css)   # 案 A：絵の高さの 15% を帯の上の縁から外へ
-        self.assertIn("const place = el =>", render.EMB_JS)   # 帯の高さを測って --s・--lift を決める
+        self.assertIn("const place = (el, keep) =>", render.EMB_JS)   # 帯の高さを測って --s・--lift を決める（keep：倍率は最初の 1 回のまま、持ち上げだけ・F5）
         self.assertIn(".emb{clip-path:inset(-100vh -100vw -14px -100vw)}", css)             # 帯の線より下は見せない（フチと影の分だけ余裕）
         self.assertNotIn("margin-bottom:calc(var(--bz) * (var(--bf) - 1))", css)              # 絵は線より上に置く（足が切れない）
         self.assertIn("band.style.paddingRight", render.EMB_JS)                              # 本当の幅だけ帯の右を空ける
