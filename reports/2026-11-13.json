@@ -1,20 +1,11 @@
 {
  "date": "2026-11-13",
- "edit_sig": "ab9842b4abec",
+ "edit_sig": "cc1c71f3c12b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 10,
-     "source": "게임인",
-     "title": "아스트라에 오라티오, AGF 부스에 시연 기기 80대",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE42UTBVQ0l2SmZQYTVhQUJ2cll0OGc3QlFxdXY4RnpIc0hVWm0tTlB3R2FGWHpCZDJwX25jQXowSXhxVTRROXQxc0F6M2FjR1lzaW5pLWhNLUVFQVVOc3N4VWRGZEQxSXI2eWfSAW5BVV95cUxPUFZnM3RpOGY3QnY0S0VCU29LNzJaYnhmV3hnc2ZSUVJrRFdYOUxOemhwLWZDNGd1Qk14RmRIQkNueU81TUdFb3VXMU5sOG4tUGVKOE5mYmhfcFlRTHRfR01SbG9kYS1TcXBoOVlRZw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -392,8 +383,8 @@
      "date": "2026-11-09",
      "headline": "아일릿 ＇브레이크 이븐＇, 빌보드 메인 앨범 차트 6위로 진입",
      "highlight": "빌보드 메인 앨범 차트 6위",
-     "image": "https://img.wowtv.co.kr/thumb/778x403_default_thumb.png",
-     "image_via": "JSON-LD",
+     "image": "https://img.wowtv.co.kr/YH/2026-11-10/AKR20261110003600075_01_i.jpg",
+     "image_via": "og:image",
      "url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=AKR20261110003600075",
      "weight": "normal"
     },
@@ -438,22 +429,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 3,
-     "source": "PR TIMES",
-     "title": "【獣医師発ねこヘルスケアブランド uniam】「猫狂研究所」を始動。ねこの研究とものづくりの裏側に触れる体験型POPUPを開催。",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE40TlBFWHA4aXA4UmRiakJjbG0yZ1lOdnBMNjJmUVNlYm5kajBIMUI2TTZhQUQ0SWpiVHRXb2tMV2JFeENmWjJ2bFk2OUNLbDZ4dWNzOTZHWVpOQ0VWaloyT0dsaW80U1VJRUE?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 4,
-     "source": "時事ドットコム",
-     "title": "【Neakasa】ブラックフライデー先行セールを11月13日より開催！全自動猫トイレの人気セットが24,000円OFF、ペットケア家電も特別価格に",
-     "url": "https://www.jiji.com/jc/article?k=000000375.000033130&g=prt"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -475,6 +450,26 @@
      "image_via": "og:image",
      "url": "https://otonanswer.jp/post/407035/",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "headline": "【獣医師発ねこヘルスケアブランド uniam】「猫狂研究所」を始動。ねこの研究とものづくりの裏側に触れる体験型POPUPを開催",
+     "highlight": "",
+     "image": "https://prcdn.freetls.fastly.net/release_image/112568/37/112568-37-6221e619bbaa1189ae5f052195bc858a-810x539.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000037.000112568.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-12",
+     "headline": "【Neakasa】ブラックフライデー先行セールを11月13日より開催！全自動猫トイレの人気セットが24,000円OFF",
+     "highlight": "24,000円OFF",
+     "image": "https://prcdn.freetls.fastly.net/release_image/33130/375/33130-375-ed5678162b157bdc93871490d99befc1-1200x628.jpg",
+     "image_via": "og:image",
+     "url": "https://www.jiji.com/jc/article?k=000000375.000033130&g=prt",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
@@ -493,15 +488,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 5,
-     "source": "朝日新聞",
-     "title": "アース製薬の『みんなのシリカ』が「東レ パン パシフィック オープンテニス 2026」大会公式ウォーターに決定！",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBCNGN6V0twMWJ2NEh4SktzT0k4NjJ0NDJTTktVZWZRd0hmWFV0U2U3R2lkRUxrX21rczY5ZGdFNzBKU3hESm00Qy1VaG1aTmFIcy1lWjB2Qy1CYUk?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -526,6 +512,16 @@
      "image": "https://prcdn.freetls.fastly.net/release_image/1355/9018/1355-9018-cad601b939804fc52340828ffdef7710-1800x1201.jpg",
      "image_via": "og:image",
      "url": "https://www.jiji.com/jc/article?k=000009018.000001355&g=prt",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-12",
+     "headline": "アース製薬の『みんなのシリカ』が「東レ パン パシフィック オープンテニス 2026」大会公式ウォーターに決定！",
+     "highlight": "大会公式ウォーター",
+     "image": "https://www.asahi.com/and/ogp/ogp_and.png",
+     "image_via": "og:image",
+     "url": "https://www.asahi.com/and/pressrelease/16966592",
      "weight": "normal"
     }
    ],
@@ -608,8 +604,8 @@
      "date": "2026-11-11",
      "headline": "프로에 힘주고 기본형은 유지…삼성 갤S27 셈법은",
      "highlight": "",
-     "image": "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.PR5RBt74K6SG9PUw_BlRbw&pid=News&w=1200",
+     "image_via": "转载 www.msn.com（Bing 缩略图）",
      "url": "https://it.chosun.com/news/articleView.html?idxno=3000000000883",
      "weight": "normal"
     },
@@ -710,15 +706,6 @@
    "cover": null,
    "facts": [],
    "name": "ぐでたま",
-   "pending": [
-    {
-     "date": "2026-11-06",
-     "n": 4,
-     "source": "AppMedia",
-     "title": "【パズドラ】アテンぐでたま装備の評価と性能",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5fSGdUZzhILVI3TmRDU0hJbER0bWJCNVVjallmaWhWV01nLVh4YkZBbENJWTdHeVJyck9QTFhvRDBYSHJyRHhLS3Y2Y3hSUQ?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -1073,15 +1060,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 8,
-     "source": "新浪游戏",
-     "title": "DOTA2入选2027电竞世俱杯项目",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNMmw1Rld3VXNCYjVBcDF4NE8xcWRKbnE2WFdadGhoRWM3Y3dtVnF0b1VYVHZLclBsc0U0b05FeHEwOU1teHBBVkxJSURzcVN0Q25DY2Y5Q0puRFlJbkpiTVBVRzFSTnRYTEE5OHd4MEw2ZnViWlNSRkpsU0VxWkFXZ3RLMkJWa1hGeU9XRQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {

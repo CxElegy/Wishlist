@@ -4148,7 +4148,9 @@
     },
     {
      "date": "2026-11-13T03:38:09+00:00",
-     "image": "",
+     "image": "https://prcdn.freetls.fastly.net/release_image/112568/37/112568-37-6221e619bbaa1189ae5f052195bc858a-810x539.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "link": "https://prtimes.jp/main/html/rd/p/000000037.000112568.html",
      "n": 3,
      "seen": "2026-11-13T04:24:14+00:00",
      "site": "https://prtimes.jp",
@@ -4229,7 +4231,9 @@
     },
     {
      "date": "2026-11-12T12:35:31+00:00",
-     "image": "",
+     "image": "https://www.asahi.com/and/ogp/ogp_and.png",
+     "image_via": "og:image",
+     "link": "https://www.asahi.com/and/pressrelease/16966592",
      "n": 5,
      "seen": "2026-11-13T04:24:15+00:00",
      "site": "https://www.asahi.com",
@@ -6247,6 +6251,7 @@
     {
      "date": "2026-11-13T03:14:00+00:00",
      "image": "",
+     "link": "https://games.sina.cn/esports/2026-11-13/edetail-iniyqfwf1232745.d.html?vt=4&pos=108",
      "n": 8,
      "seen": "2026-11-13T04:24:34+00:00",
      "site": "https://games.sina.cn",

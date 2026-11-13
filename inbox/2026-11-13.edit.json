@@ -268,7 +268,8 @@
     6,
     8,
     4,
-    9
+    9,
+    10
    ],
    "image": "https://cdn.gamemeca.com/data_center/347/527/20261112142009.webp"
   },
@@ -327,9 +328,9 @@
   "GTA 6": 123,
   "漫威电影": 120,
   "三星手机": 41,
-  "Astrae Oratio": 9,
+  "Astrae Oratio": 10,
   "周杰伦": 15,
-  "dota2": 7,
+  "dota2": 8,
   "滑雪": 13,
   "哈利波特剧集": 6,
   "ILLIT": 31,
@@ -338,13 +339,13 @@
   "チェーンソーマン": 11,
   "A2O LITE": 10,
   "gelato pique": 4,
-  "日本顶级网球赛事": 4,
+  "日本顶级网球赛事": 5,
   "FROM": 4,
-  "猫用品": 2,
+  "猫用品": 4,
   "绝区零": 4,
   "BLEACH Mirrors High": 5,
   "あつ森": 2,
-  "ぐでたま": 3,
+  "ぐでたま": 4,
   "星巴克马克杯": 2,
   "Vaundy": 2
  },
@@ -375,7 +376,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    8
    ]
   }
  ],
@@ -819,6 +821,15 @@
     "date": "2026-11-14",
     "label": "放送・配信"
    }
+  },
+  {
+   "headline": "アース製薬の『みんなのシリカ』が「東レ パン パシフィック オープンテニス 2026」大会公式ウォーターに決定！",
+   "highlight": "大会公式ウォーター",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "FROM": [
@@ -877,6 +888,24 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "【獣医師発ねこヘルスケアブランド uniam】「猫狂研究所」を始動。ねこの研究とものづくりの裏側に触れる体験型POPUPを開催",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "【Neakasa】ブラックフライデー先行セールを11月13日より開催！全自動猫トイレの人気セットが24,000円OFF",
+   "highlight": "24,000円OFF",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -947,7 +976,8 @@
    "weight": "lead",
    "refs": [
     1
-   ]
+   ],
+   "image": "https://news.walkerplus.com/article/73055/410281_615.jpg"
   },
   {
    "headline": "ぐでたまがスイーツに！期間限定カフェが関西初登場",
