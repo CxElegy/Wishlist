@@ -389,6 +389,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/335215707/rectangle_large_type_2_b2241dc0e704315c21fca70592dd3922.png?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.st-note.com/production/uploads/images/335217845/rectangle_large_type_2_501ad2c29e6603dc61bc4e4752eb59a7.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -1722,6 +1728,12 @@
   "target": 720,
   "v": 3
  },
+ "https://karryon.com.au/wp-content/uploads/2026/05/IMG_2026-05-21-111441.jpg": {
+  "w": 1000,
+  "h": 650,
+  "target": 720,
+  "v": 3
+ },
  "https://lee.hpplus.jp/wp-content/uploads/2026/11/04/38600e3e5a2f85da5c5a7b8da08242c9.jpeg": {
   "w": 1200,
   "h": 628,
@@ -2459,6 +2471,12 @@
    637
   ],
   "why": "期限付きの網址"
+ },
+ "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
  },
  "https://ni.yam.com/20261110/jp-prt-85653-838-1-261110025630647-3bb0d786b74afbc6.webp": {
   "w": 1920,
@@ -3520,8 +3538,9 @@
  "https://www.bing.com/th?id=ONUT.-4KT3sKZBuLkxdBFIRM_iQ&pid=News&w=900": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.333
  },
  "https://www.bing.com/th?id=ONUT.-_audigmb88duwA9M5AR1g&pid=News&w=1200": {
   "w": 700,

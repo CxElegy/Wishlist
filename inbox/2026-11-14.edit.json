@@ -63,7 +63,8 @@
   "MMORPG 新作": 4,
   "三星手机": 4,
   "周杰伦": 4,
-  "ILLIT": 3
+  "ILLIT": 3,
+  "滑雪": 3
  },
  "漫威电影": [
   {
@@ -203,6 +204,36 @@
   },
   {
    "headline": "ILLIT社群貼文 - 글릿! 프레스 스타트 앙코르 콘서트가 끝났어요오!",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "亜布力スキーリゾートがオープン＝黒竜江省",
+   "highlight": "オープン",
+   "blurb": "中国黒竜江省ハルビン市から200キロ余り離れた亜布力スキー観光リゾートで、2026～27年シーズンのスキー場がオープンした。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.-4KT3sKZBuLkxdBFIRM_iQ&pid=News&w=900"
+  },
+  {
+   "headline": "スキー・スノーボード滑走記録アプリ「Slopes」が大型アップデート！高精細3Dマップや降雪予報を刷新",
+   "highlight": "大型アップデート",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "【保存版】「知らずに行って後悔した…」を防ぐ、子連れ北海道スキー完全攻略ガイド（2026–27最新）",
    "highlight": "",
    "blurb": "",
    "weight": "normal",

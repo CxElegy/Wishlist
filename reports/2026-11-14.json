@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "b411c2c6ccab",
+ "edit_sig": "08a70d76cf3d",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -129,31 +129,39 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "中国黒竜江省ハルビン市から200キロ余り離れた亜布力スキー観光リゾートで、2026～27年シーズンのスキー場がオープンした。",
+     "date": "2026-11-13",
+     "headline": "亜布力スキーリゾートがオープン＝黒竜江省",
+     "highlight": "オープン",
+     "image": "https://www.bing.com/th?id=ONUT.-4KT3sKZBuLkxdBFIRM_iQ&pid=News&w=900",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/ja-jp/news/other/%E4%BA%9C%E5%B8%83%E5%8A%9B%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%E3%81%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3-%E9%BB%92%E7%AB%9C%E6%B1%9F%E7%9C%81/ar-AA2hmoM1",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "headline": "スキー・スノーボード滑走記録アプリ「Slopes」が大型アップデート！高精細3Dマップや降雪予報を刷新",
+     "highlight": "大型アップデート",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/slopes.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/slopes-app-update-2026-27/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-11-11",
-     "n": 1,
-     "source": "note",
-     "title": "【保存版】「知らずに行って後悔した…」を防ぐ、子連れ北海道スキー完全攻略ガイド（2026–27最新）",
-     "url": "https://note.com/serene_curlew334/n/n9b13ef463c1c"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 2,
-     "source": "Record China on MSN",
-     "title": "亜布力スキーリゾートがオープン＝黒竜江省",
-     "url": "https://www.msn.com/ja-jp/news/other/%E4%BA%9C%E5%B8%83%E5%8A%9B%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%E3%81%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3-%E9%BB%92%E7%AB%9C%E6%B1%9F%E7%9C%81/ar-AA2hmoM1"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 3,
-     "source": "dmksnowboard.com",
-     "title": "スキー・スノーボード滑走記録アプリ「Slopes」が大型アップデート！高精細3Dマップや降雪予報を刷新、新プラン「Slopes Explore」も登場",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5kT2FZaU9xM3pXMGQyZVd3ekFkQ21OYTk0NFhTWW1jOVZRSERBYjVzcDZqV29wX214c0k5ZFZqWXhqZDhiQ2JrNDk4ajBvakpEY242Vjg0R3lZX05hRXJ5WQ?oc=5"
+     "headline": "【保存版】「知らずに行って後悔した…」を防ぐ、子連れ北海道スキー完全攻略ガイド（2026–27最新）",
+     "highlight": "",
+     "image": "https://assets.st-note.com/production/uploads/images/335215707/rectangle_large_type_2_b2241dc0e704315c21fca70592dd3922.png?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/serene_curlew334/n/n9b13ef463c1c",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
