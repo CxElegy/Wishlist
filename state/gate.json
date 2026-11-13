@@ -28,19 +28,19 @@
    "edit": 13
   },
   "2026-11-13": {
-   "edit": 12
+   "edit": 11
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-13T10:23:26+00:00",
+    "at": "2026-11-13T09:21:55+00:00",
     "attempts": 1,
     "day": "2026-11-13",
-    "prog": 500,
-    "resp": "",
-    "sig": "9d8e911813b9"
+    "prog": 490,
+    "resp": "cse_01W4x6f6YT2HL5Z2zzSfzyQR",
+    "sig": "c5825ea1c83c"
    },
    "items": [
     "Astrae Oratio",
