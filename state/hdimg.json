@@ -175,19 +175,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/6dc9747egy1iiykkkgid2j24eo2xs7wo.jpg": {
-  "w": 2000,
-  "h": 1333,
-  "target": 720,
-  "v": 3,
-  "local": "pics/3fb79e8e20d7e3f5.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/6f5ef307ly1ij01arog9aj21121jk7g2.jpg": {
   "w": 1334,
   "h": 2000,
@@ -196,6 +183,19 @@
   "local": "pics/4fb5c4829e50bdbb.webp",
   "out": [
    854,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/90b10eb9ly1ij0rr906ynj21mc1mc1ky.jpg": {
+  "w": 2000,
+  "h": 2000,
+  "target": 720,
+  "v": 3,
+  "local": "pics/417b70bb80a68b4e.webp",
+  "out": [
+   1280,
    1280
   ],
   "why": "防盗链",
@@ -380,6 +380,12 @@
   "w": 1280,
   "h": 670,
   "target": 1280,
+  "v": 3
+ },
+ "https://assets.st-note.com/production/uploads/images/335217845/rectangle_large_type_2_501ad2c29e6603dc61bc4e4752eb59a7.png?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
   "v": 3
  },
  "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg": {
@@ -1189,6 +1195,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i.daily.jp/gossip/2026/11/13/Images/f_21030533.jpg": {
+  "w": 910,
+  "h": 799,
+  "target": 720,
+  "v": 3
+ },
  "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-Ultra-AH-2.png?fit=1920%2C1080&ssl=1": {
   "w": 1920,
   "h": 1080,
@@ -1622,7 +1634,7 @@
   "target": 720,
   "v": 3
  },
- "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925610301426948504.jpg": {
+ "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_1792559362272867813.jpg": {
   "w": 700,
   "h": 1050,
   "target": 720,
@@ -1656,6 +1668,12 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/08/5633521_3.jpg": {
   "w": 800,
   "h": 533,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/12/5638786_1.jpg": {
+  "w": 800,
+  "h": 1064,
   "target": 720,
   "v": 3
  },
@@ -2048,6 +2066,12 @@
    854
   ],
   "why": "看不清"
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/09/462389_1.jpg": {
+  "w": 1024,
+  "h": 616,
+  "target": 720,
+  "v": 3
  },
  "https://news.dellows.jp/wp-content/uploads/2026/10/609169_1.jpg": {
   "w": 1024,
@@ -2604,12 +2628,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://ni.yam.com/20261110/jp-prt-85653-838-1-261110025630647-3bb0d786b74afbc6.webp": {
   "w": 1920,
   "h": 1280,
@@ -2668,6 +2686,12 @@
  "https://oggi.jp/wp-content/uploads/2026/11/261104gptop1.jpg": {
   "w": 1200,
   "h": 750,
+  "target": 1280,
+  "v": 3
+ },
+ "https://ogre.natalie.mu/media/news/comic/2026/1113/CSM_cinemalive_visal.jpg?impolicy=ogp_face_crop": {
+  "w": 1200,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -2959,12 +2983,6 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/23d28f55bf106cc1a2255a89e8081f0a3fc7d2a0f9a47f986aaa40f20f252c55/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2F03d1b48c4241bc56b05f1525a54221a0.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/2dbe7f2bd1676e86801b0a51a5fa559c7b12c23469d6aa57fc4cbdbc162e9f0b/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fftvn_sports_106%2Fbf49b2853a3d6a9d7f06fc76f5faf436.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3696,6 +3714,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.-4KT3sKZBuLkxdBFIRM_iQ&pid=News&w=900": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.-_KoB2mdtFbZ59cvsReglw&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -4110,12 +4134,6 @@
   "why": "看不清"
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/03/27/Dexerto-Header-2.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/25/Chainsaw-Man-episode-3-1600x900-1.jpg": {
   "w": 1600,
   "h": 900,
   "target": 720,
