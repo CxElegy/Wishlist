@@ -571,6 +571,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png": {
+  "w": 1280,
+  "h": 1323,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.iwate-np.co.jp/media-static/article/198453/thumbnail/sw4b0-tm6af2f0c3_862574b10.jpg": {
   "w": 1200,
   "h": 802,
@@ -1716,9 +1722,9 @@
   "target": 720,
   "v": 3
  },
- "https://img.wowtv.co.kr/YH/2026-11-10/AKR20261110003600075_01_i.jpg": {
-  "w": 500,
-  "h": 333,
+ "https://img.wowtv.co.kr/thumb/778x403_default_thumb.png": {
+  "w": 778,
+  "h": 403,
   "target": 720,
   "v": 3
  },
@@ -1752,19 +1758,6 @@
   "out": [
    1280,
    720
-  ],
-  "why": "看不清"
- },
- "https://imgeucdn.gamespress.com/cdn/files/Games%20Press/2026/11/110715-6fceea2a/CoverVOV.png?w=360&mode=max&otf=y&quality=90&format=png&bgcolor=transparent&sky=fab4fd0fe3b645aada32cce187536dba02c56a2e36738cae7ceee8b1b6aa1f68": {
-  "w": 360,
-  "h": 203,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.641,
-  "local": "pics/3842f51bc0873ef7.webp",
-  "out": [
-   1080,
-   609
   ],
   "why": "看不清"
  },
@@ -3535,6 +3528,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.4gamer.net/games/058/G105823/20261113025/SS/001.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.4gamer.net/games/199/G019924/20261106033/SS/001.jpg": {
   "w": 1200,
   "h": 800,
@@ -3818,12 +3817,6 @@
  "https://www.bing.com/th?id=ONUT.dmDVd6FuKl6McU40vrzJDg&pid=News&w=1200": {
   "w": 700,
   "h": 462,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.eqtTE4TLmWqEmaIkY47Y6g&pid=News&w=773": {
-  "w": 676,
-  "h": 700,
   "target": 720,
   "v": 3
  },

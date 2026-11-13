@@ -1,6 +1,6 @@
 {
  "date": "2026-11-13",
- "edit_sig": "6d731fbce3c8",
+ "edit_sig": "ab9842b4abec",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -176,38 +176,18 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 10,
-     "source": "4Gamer.net",
-     "title": "「ラグナロク：ニューワールド」，2027年上半期に日本国内でサービス開始。シリーズ初のシームレスなオープンワールドを採用したMMORPG",
-     "url": "https://www.4gamer.net/games/058/G105823/20261113025/"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 11,
-     "source": "電ファミニコゲーマー",
-     "title": "『ラグナロクオンライン』シリーズ初のオープンワールドMMORPG『ラグナロク：ニューワールド』2027年上半期に日本国内でのサービス提供が決定",
-     "url": "https://news.denfaminicogamer.jp/news/2611132f"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 12,
-     "source": "게임포커스",
-     "title": "지앤아이소프트 신작 MMORPG '판타지포유', 출시 이틀 만에 구글 플레이 인기 1위 기록",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA5QWVHQXhqMkFaQmRHSXJHbGMzNUV5djlMcmtfaTZVcWhIUUxjY0pLWEROeWl5Nmd4ZVpPYVE0bzJDX0VQQkktRG9MZ3ViQ0lWa09Dcm1jZzhYekVOcklIUQ?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 13,
-     "source": "GNN 新聞網",
-     "title": "休閒放置 MMORPG《RO 仙境傳說 Together》首度公開 主打治癒與社交合作、保留 GvG 經典策略",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE15TXhCWWxtMnc1eTdkRWFhdm1DZGxWR0NDV010eVYtUFpxa2RfSkVfMVRieGNmVHUtWG1ZeWMwU0ZvcDEzcHd4TU9fUk9Ra3pMZWhFbS1TMmU?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
+    {
+     "blurb": "ガンホー・オンラインがシリーズ初のシームレスなオープンワールドMMORPG『ラグナロク：ニューワールド』を2027年上半期に日本で開始すると発表。",
+     "date": "2026-11-13",
+     "headline": "「ラグナロク：ニューワールド」，2027年上半期に日本国内でサービス開始。シリーズ初のシームレスなオープンワールドを採用したMMORPG",
+     "highlight": "2027年上半期に日本国内でサービス開始",
+     "image": "https://www.4gamer.net/games/058/G105823/20261113025/SS/001.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.4gamer.net/games/058/G105823/20261113025/",
+     "weight": "lead"
+    },
     {
      "blurb": "",
      "date": "2026-11-12",
@@ -216,20 +196,6 @@
      "image": "https://images.mein-mmo.de/medien/2025/06/BitCraft-Online-Early-Access.jpg",
      "image_via": "og:image",
      "url": "https://mein-mmo.de/en/mmorpg-with-zelda-look-announces-abrupt-release-on-steam-player-with-6000-hours-speaks-horrified-of-disaster,1596176/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-12",
-     "event": {
-      "date": "2026-12-01",
-      "label": "アップデート"
-     },
-     "headline": "Single-Player Simulated MMORPG Erenshor Welcomes New Bard Class, UI Overhaul, and new Mid-level Dungeon December 1st",
-     "highlight": "December 1st",
-     "image": "https://imgeucdn.gamespress.com/cdn/files/Games%20Press/2026/11/110715-6fceea2a/CoverVOV.png?w=360&mode=max&otf=y&quality=90&format=png&bgcolor=transparent&sky=fab4fd0fe3b645aada32cce187536dba02c56a2e36738cae7ceee8b1b6aa1f68",
-     "image_via": "og:image",
-     "url": "https://www.gamespress.com/Erenshor-v08-Offers-a-First-Look-at-Decembers-Verses-of-Adventure-Upda",
      "weight": "normal"
     },
     {
@@ -426,8 +392,8 @@
      "date": "2026-11-09",
      "headline": "아일릿 ＇브레이크 이븐＇, 빌보드 메인 앨범 차트 6위로 진입",
      "highlight": "빌보드 메인 앨범 차트 6위",
-     "image": "https://img.wowtv.co.kr/YH/2026-11-10/AKR20261110003600075_01_i.jpg",
-     "image_via": "og:image",
+     "image": "https://img.wowtv.co.kr/thumb/778x403_default_thumb.png",
+     "image_via": "JSON-LD",
      "url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=AKR20261110003600075",
      "weight": "normal"
     },
@@ -642,8 +608,8 @@
      "date": "2026-11-11",
      "headline": "프로에 힘주고 기본형은 유지…삼성 갤S27 셈법은",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.eqtTE4TLmWqEmaIkY47Y6g&pid=News&w=773",
-     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "image": "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png",
+     "image_via": "og:image",
      "url": "https://it.chosun.com/news/articleView.html?idxno=3000000000883",
      "weight": "normal"
     },

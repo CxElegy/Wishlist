@@ -333,7 +333,7 @@
   "滑雪": 13,
   "哈利波特剧集": 6,
   "ILLIT": 31,
-  "MMORPG 新作": 9,
+  "MMORPG 新作": 13,
   "The Mandalorian": 8,
   "チェーンソーマン": 11,
   "A2O LITE": 10,
@@ -585,6 +585,17 @@
  ],
  "MMORPG 新作": [
   {
+   "headline": "「ラグナロク：ニューワールド」，2027年上半期に日本国内でサービス開始。シリーズ初のシームレスなオープンワールドを採用したMMORPG",
+   "highlight": "2027年上半期に日本国内でサービス開始",
+   "blurb": "ガンホー・オンラインがシリーズ初のシームレスなオープンワールドMMORPG『ラグナロク：ニューワールド』を2027年上半期に日本で開始すると発表。",
+   "weight": "lead",
+   "refs": [
+    10,
+    11
+   ],
+   "image": "https://www.4gamer.net/games/058/G105823/20261113025/SS/001.jpg"
+  },
+  {
    "headline": "MMORPG with Zelda look announces abrupt release on Steam",
    "highlight": "release on Steam",
    "blurb": "",
@@ -592,20 +603,6 @@
    "refs": [
     3
    ]
-  },
-  {
-   "headline": "Single-Player Simulated MMORPG Erenshor Welcomes New Bard Class, UI Overhaul, and new Mid-level Dungeon December 1st",
-   "highlight": "December 1st",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1,
-    5
-   ],
-   "event": {
-    "date": "2026-12-01",
-    "label": "アップデート"
-   }
   },
   {
    "headline": "조회수 13억 '템빨' IP, 11월 26일 MMORPG로 나온다",
