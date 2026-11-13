@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "0106a17edd16",
+ "edit_sig": "8314eab582c4",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -481,33 +481,6 @@
    }
   },
   {
-   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
-   "facts": [],
-   "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 1,
-     "source": "Bluesky",
-     "title": "Frog Lady fan art from this day in 2020 🐸 #StarWars #TheMandalorian",
-     "url": "https://bsky.app/profile/dmacalvert.bsky.social/post/3n24wb2xtv222"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "ザ・マンダロリアン",
-   "theme": {
-    "accent": "#C9A66B",
-    "alt_accent": "#7A5A1F",
-    "alt_bg": "#ECEAE4",
-    "alt_fg": "#1B1D20",
-    "bg": "#14161A",
-    "fg": "#E8EAEC",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": null,
    "facts": [],
    "name": "周杰伦",
@@ -697,6 +670,31 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+   "facts": [],
+   "last": {
+    "date": "2026-11-13",
+    "headline": "The Mandalorian and Grogu art book takes fans on a journey behind the film’s biggest moments",
+    "url": "https://www.primetimer.com/features/the-mandalorian-and-grogu-art-book-takes-fans-on-a-journey-behind-the-film-s-biggest-moments"
+   },
+   "name": "The Mandalorian",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "ザ・マンダロリアン",
+   "theme": {
+    "accent": "#C9A66B",
+    "alt_accent": "#7A5A1F",
+    "alt_bg": "#ECEAE4",
+    "alt_fg": "#1B1D20",
+    "bg": "#14161A",
+    "fg": "#E8EAEC",
+    "font": "serif",
     "split": true
    }
   },

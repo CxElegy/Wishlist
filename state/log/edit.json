@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-11T20:25:03+00:00",
-"text": "2026-11-12 第 1 バッチを出刊：FROM（1 版面・0 本・今日の整理待ちは全部終わり） · token 新規入力 4.3万・キャッシュ読み 99.0万・出力 3,220",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.37,
-"mem_total": 16867414016,
-"mem_free": 15986548736,
-"disk_used": 10088087552,
-"disk_free": 31195447296,
-"disk_total": 41283534848,
-"peak": 339791872
-},
-"batch": 1,
-"boards": [
-"FROM"
-],
-"stories": 0,
-"left": 0,
-"edited": 19,
-"run": 1794428475.137881,
-"tok": {
-"in": 31,
-"cw": 42997,
-"cr": 990235,
-"out": 3220,
-"calls": 16,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1036483,
-"secs": 228,
-"run_tok": {
-"in": 31,
-"cw": 42997,
-"cr": 990235,
-"out": 3220,
-"calls": 16,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-11T21:39:00+00:00",
 "text": "2026-11-12 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、The Mandalorian、あつ森 ほか 6（12 版面・35 本・残り 2 版面） · token 新規入力 5.6万・キャッシュ読み 88.3万・出力 4,982",
 "level": "ok",
@@ -2125,5 +2084,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 100171
+},
+{
+"at": "2026-11-13T20:03:13+00:00",
+"text": "2026-11-14 第 13 バッチを出刊：The Mandalorian（1 版面・0 本・残り 1 版面） · token 新規入力 834・キャッシュ読み 10.0万・出力 437",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.82,
+"mem_total": 16867405824,
+"mem_free": 15880212480,
+"disk_used": 11012661248,
+"disk_free": 30270873600,
+"disk_total": 41283534848,
+"peak": 338690048
+},
+"batch": 13,
+"boards": [
+"The Mandalorian"
+],
+"stories": 0,
+"left": 1,
+"edited": 12,
+"run": 1794597736.711827,
+"tok": {
+"in": 2,
+"cw": 832,
+"cr": 99535,
+"out": 437,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 100806
 }
 ]
