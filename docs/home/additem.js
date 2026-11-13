@@ -10,8 +10,8 @@
   const box = document.getElementById("wiz");
   if (!box) return;
 
-  const LANGS = {"zh-TW": "中文（港台）", "en-US": "英文", "ja-JP": "日文", "ko-KR": "韩文", "zh-CN": "中文（大陆）"};
-  const TYPES = {game: "游戏", anime: "动画 / 漫画", show: "电影 / 剧集", event: "艺人演出", product: "具体商品", category: "一类产品"};
+  const LANGS = {"zh-TW": "中国語（香港・台湾）", "en-US": "英語", "ja-JP": "日本語", "ko-KR": "韓国語", "zh-CN": "中国語（大陸）"};
+  const TYPES = {game: "ゲーム", anime: "アニメ / マンガ", show: "映画 / ドラマ", event: "アーティストの公演", product: "具体的な商品", category: "ある種類の商品"};
   const esc = s => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
   // 选项的 when：只在名字 / 维基数据说明里提到这些词时才出现（比如「猫相关的」只给跟猫有关的东西）
@@ -25,114 +25,114 @@
   // rec = 「你帮我定」时选它。priority 写进「最关心什么」，urgent 是要紧消息的动词（和名字一起拼成正则），
   // kw 是额外的搜索词（{n} = 名字，{en} / {ja} = 英文 / 日文名），ask 表示还要追问一句
   const KINDS = {
-    game: {label: "游戏", hint: "手游、主机、PC 游戏", type: "game", section: "游戏", focus: [
-      {rec: true, id: "play", label: "什么时候能玩", hint: "测试招募、上线日期、预约", priority: "什么时候能玩（测试招募、上线日期、预约）",
+    game: {label: "ゲーム", hint: "スマホ・家庭用・PC のゲーム", type: "game", section: "游戏", focus: [
+      {rec: true, id: "play", label: "いつ遊べるか", hint: "テスト募集・配信日・事前登録", priority: "什么时候能玩（测试招募、上线日期、预约）",
        urgent: "(测试|測試|封測|内测|β|CBT|テスト|事前登録|預約|预约|上線|上线|正式サービス|配信開始|リリース|發售|发售|release date|launch|beta)"},
-      {rec: true, id: "update", label: "版本更新、活动、新角色", hint: "大版本、周年、联动活动", priority: "大版本更新、新角色、周年活动",
+      {rec: true, id: "update", label: "アップデート・イベント・新キャラ", hint: "大型アップデート・周年・コラボ", priority: "大版本更新、新角色、周年活动",
        urgent: "(新角色|新キャラ|周年|週年|大型アップデート|大版本|新版本|Ver\\.?\\s?\\d)"},
-      {id: "esports", label: "电竞比赛", hint: "赛程、比赛结果、战队", priority: "电竞赛事的日程和结果、战队消息",
+      {id: "esports", label: "eスポーツの大会", hint: "日程・結果・チーム", priority: "电竞赛事的日程和结果、战队消息",
        urgent: "(世界大赛|世界賽|決勝|决赛|總決賽|总决赛|World Championship|Worlds|Major|優勝|冠军|冠軍)",
        kw: ["{en} esports", "{ja} 大会", "{n} 電競"]},
-      {id: "sale", label: "打折、免费送", hint: "史低、限免", priority: "什么时候打折或限免",
+      {id: "sale", label: "セール・無料配布", hint: "過去最安・期間限定の無料", priority: "什么时候打折或限免",
        urgent: "(セール|特價|特价|折扣|降價|降价|史低|免費|免费|無料|sale)"},
-      {sec: ["好物", {kind: "キャラグッズ", owner: "キャラクター"}], id: "collab", label: "联名、周边", hint: "跨界联动、手办、周边", priority: "联名和周边",
+      {sec: ["好物", {kind: "キャラグッズ", owner: "キャラクター"}], id: "collab", label: "コラボ・グッズ", hint: "他社コラボ・フィギュア・グッズ", priority: "联名和周边",
        urgent: "(コラボ|联名|聯名|collab|グッズ|周边|周邊|フィギュア)"},
-      {id: "story", label: "剧情、角色、世界观", hint: "新剧情、角色设定", priority: "新剧情和角色设定"},
+      {id: "story", label: "ストーリー・キャラ・世界観", hint: "新しいストーリー・キャラ設定", priority: "新剧情和角色设定"},
     ]},
-    anime: {label: "动画 / 漫画", hint: "番剧、漫画、轻小说", type: "anime", section: "影视", focus: [
-      {rec: true, id: "sequel", label: "新一季 / 续作 / 剧场版", hint: "什么时候官宣、定档", priority: "新一季、续作或剧场版什么时候出",
+    anime: {label: "アニメ / マンガ", hint: "アニメ・マンガ・ライトノベル", type: "anime", section: "影视", focus: [
+      {rec: true, id: "sequel", label: "新シーズン / 続編 / 劇場版", hint: "いつ発表されるか・公開日", priority: "新一季、续作或剧场版什么时候出",
        urgent: "(第\\s?[0-9一二三四五六七八九十]+\\s?(季|期)|続編|续篇|續篇|新作|劇場版|剧场版|映画化|放送決定|定档|定檔|製作決定|制作决定|season \\d|sequel)"},
-      {rec: true, id: "air", label: "播出时间、每集更新", hint: "什么时候播、在哪看", priority: "播出时间和每集更新"},
-      {sec: ["影视", {kind: "マンガ"}], id: "manga", label: "漫画连载、单行本", hint: "最新话、出刊、完结", priority: "漫画连载和单行本",
+      {rec: true, id: "air", label: "放送時間・毎話の更新", hint: "いつ放送か・どこで見られるか", priority: "播出时间和每集更新"},
+      {sec: ["影视", {kind: "マンガ"}], id: "manga", label: "マンガの連載・単行本", hint: "最新話・発売・完結", priority: "漫画连载和单行本",
        urgent: "(単行本|单行本|最新刊|最終回|最终话|最終話|完結|完结|休載|休刊)"},
-      {sec: ["好物", {kind: "キャラグッズ", owner: "キャラクター"}], id: "collab", label: "周边、联名、展览", hint: "快闪店、联名商品", priority: "周边、联名和展览",
+      {sec: ["好物", {kind: "キャラグッズ", owner: "キャラクター"}], id: "collab", label: "グッズ・コラボ・展示", hint: "ポップアップ・コラボ商品", priority: "周边、联名和展览",
        urgent: "(コラボ|联名|聯名|展覧会|展览|展覽|POP ?UP|ポップアップ|快闪)"},
-      {id: "cast", label: "声优、活动、演唱会", hint: "舞台剧、见面会", priority: "声优活动和演唱会",
+      {id: "cast", label: "声優・イベント・ライブ", hint: "舞台・ファンミーティング", priority: "声优活动和演唱会",
        urgent: "(イベント|ライブ|舞台|声優|声优|聲優)"},
     ]},
-    show: {label: "电影 / 剧集", hint: "美剧、日剧、电影系列", type: "show", section: "影视", focus: [
-      {rec: true, id: "sequel", label: "新一季 / 续集", hint: "续订、官宣", priority: "新一季或续集什么时候出",
+    show: {label: "映画 / ドラマ", hint: "海外ドラマ・日本のドラマ・映画シリーズ", type: "show", section: "影视", focus: [
+      {rec: true, id: "sequel", label: "新シーズン / 続編", hint: "更新決定・公式発表", priority: "新一季或续集什么时候出",
        urgent: "(第\\s?[0-9一二三四五六七八九十]+\\s?季|新一季|續訂|续订|renewed|season \\d|sequel|續集|续集|続編)"},
-      {rec: true, id: "date", label: "上映 / 播出日期、在哪看", hint: "定档、上线平台", priority: "上映或播出日期、在哪个平台能看",
+      {rec: true, id: "date", label: "公開・放送日、どこで見られるか", hint: "公開日・配信サービス", priority: "上映或播出日期、在哪个平台能看",
        urgent: "(定档|定檔|上映日|首播|premiere|release date|公開日|配信開始|上線|上线)"},
-      {id: "trailer", label: "预告片", hint: "正式预告、剧照", priority: "预告片", urgent: "(预告|預告|trailer|予告)"},
-      {id: "cast", label: "演员、幕后", hint: "选角、导演、采访", priority: "演员和幕后消息"},
+      {id: "trailer", label: "予告編", hint: "公式予告・スチル", priority: "预告片", urgent: "(预告|預告|trailer|予告)"},
+      {id: "cast", label: "キャスト・舞台裏", hint: "キャスティング・監督・インタビュー", priority: "演员和幕后消息"},
     ]},
-    artist: {label: "歌手 / 艺人", hint: "乐队、偶像团体、演员", type: "event", section: "演出", focus: [
-      {rec: true, id: "live", label: "演唱会、巡演", hint: "尤其是日本 / 大阪附近", priority: "演唱会和巡演（尤其是日本、大阪附近的场次）",
+    artist: {label: "歌手 / アーティスト", hint: "バンド・アイドルグループ・俳優", type: "event", section: "演出", focus: [
+      {rec: true, id: "live", label: "ライブ・ツアー", hint: "とくに日本・大阪の近く", priority: "演唱会和巡演（尤其是日本、大阪附近的场次）",
        urgent: "(演唱會|演唱会|巡演|巡迴|ツアー|ライブ|コンサート|concert|tour|公演|ドーム|大阪)"},
-      {rec: true, id: "ticket", label: "门票：抽选、发售", hint: "先行抽选、一般发售", priority: "门票怎么买（抽选、发售时间）",
+      {rec: true, id: "ticket", label: "チケット：抽選・発売", hint: "先行抽選・一般発売", priority: "门票怎么买（抽选、发售时间）",
        urgent: "(抽選|抽选|先行|チケット|門票|门票|售票|ticket|一般発売)"},
-      {rec: true, id: "music", label: "新歌、新专辑、回归", hint: "MV、回归日期", priority: "新歌、新专辑和回归",
+      {rec: true, id: "music", label: "新曲・新アルバム・カムバック", hint: "MV・カムバックの日程", priority: "新歌、新专辑和回归",
        urgent: "(回归|回歸|컴백|comeback|カムバック|新曲|新歌|新專輯|新专辑|album|リリース|MV)"},
-      {id: "fan", label: "见面会、综艺、粉丝活动", hint: "签售、综艺出演", priority: "见面会、综艺和粉丝活动",
+      {id: "fan", label: "ファンミ・バラエティ・ファンイベント", hint: "サイン会・バラエティ出演", priority: "见面会、综艺和粉丝活动",
        urgent: "(見面會|见面会|ファンミ|fan ?meeting|팬미팅|サイン会|签售)"},
-      {id: "collab", label: "联名、代言、周边", hint: "品牌合作", priority: "联名、代言和周边",
+      {id: "collab", label: "コラボ・広告起用・グッズ", hint: "ブランドとの提携", priority: "联名、代言和周边",
        urgent: "(コラボ|联名|聯名|代言|アンバサダー|ambassador)"},
     ]},
-    sports: {label: "运动 / 赛事", hint: "比赛、联赛、运动项目", type: "category", section: "运动", focus: [
-      {rec: true, id: "schedule", label: "赛程、门票", hint: "什么时候比、怎么买票", priority: "赛程和门票",
+    sports: {label: "スポーツ / 大会", hint: "試合・リーグ・競技", type: "category", section: "运动", focus: [
+      {rec: true, id: "schedule", label: "日程・チケット", hint: "いつ試合か・チケットの買い方", priority: "赛程和门票",
        urgent: "(日程|赛程|賽程|チケット|门票|門票|抽選|発売)"},
-      {rec: true, id: "result", label: "比赛结果", hint: "谁赢了、名次", priority: "比赛结果",
+      {rec: true, id: "result", label: "試合の結果", hint: "勝敗・順位", priority: "比赛结果",
        urgent: "(優勝|优胜|冠军|冠軍|決勝|决赛|決賽|champion|wins)"},
-      {id: "player", label: "某个选手 / 队伍", hint: "下一步填名字", priority: "", ask: "player"},
-      {id: "watch", label: "转播、在哪看直播", hint: "电视台、网络直播", priority: "在哪看转播和直播"},
-      {id: "join", label: "自己去玩", hint: "场地、装备、季节开放", priority: "自己去玩：场地、装备、开放时间",
+      {id: "player", label: "特定の選手 / チーム", hint: "次の画面で名前を入れます", priority: "", ask: "player"},
+      {id: "watch", label: "中継・どこで見られるか", hint: "テレビ局・ネット配信", priority: "在哪看转播和直播"},
+      {id: "join", label: "自己去玩", hint: "場所・道具・シーズンの開放", priority: "自己去玩：场地、装备、开放时间",
        urgent: "(オープン|開業|开业|開幕|开放|營業|营业|シーズン)"},
     ]},
-    character: {label: "角色 / IP", hint: "三丽鸥、宝可梦、蜡笔小新这类角色", type: "category", section: "好物", focus: [
-      {id: "collab", label: "联名商品", hint: "和服装、杂货、零食品牌的联名", priority: "新的联名商品什么时候出、怎么买", rec: true,
+    character: {label: "キャラクター / IP", hint: "サンリオ・ポケモン・クレヨンしんちゃんなどのキャラ", type: "category", section: "好物", focus: [
+      {id: "collab", label: "コラボ商品", hint: "服・雑貨・お菓子ブランドとのコラボ", priority: "新的联名商品什么时候出、怎么买", rec: true,
        urgent: "(コラボ|联名|聯名|collab|×)"},
-      {id: "goods", label: "新周边、新品", hint: "毛绒、文具、扭蛋、一番赏", priority: "新周边和新品", rec: true,
+      {id: "goods", label: "新グッズ・新商品", hint: "ぬいぐるみ・文具・ガチャ・一番くじ", priority: "新周边和新品", rec: true,
        urgent: "(新商品|新作|発売|发售|發售|登場|ぬいぐるみ|一番くじ|ガチャ|扭蛋|一番賞|一番赏)"},
-      {id: "popup", label: "快闪店、主题咖啡、展览", hint: "期间限定店、主题餐厅", priority: "快闪店、主题咖啡和展览（尤其是日本、大阪附近）", rec: true,
+      {id: "popup", label: "ポップアップ・コラボカフェ・展示", hint: "期間限定ショップ・テーマレストラン", priority: "快闪店、主题咖啡和展览（尤其是日本、大阪附近）", rec: true,
        urgent: "(ポップアップ|POP ?UP|快闪|快閃|カフェ|咖啡|展覧会|展览|展覽|期間限定ショップ)"},
-      {id: "lottery", label: "抽选、限定、预约", hint: "要抢的东西", priority: "抽选、限定品和预约怎么买",
+      {id: "lottery", label: "抽選・限定・予約", hint: "早い者勝ちのもの", priority: "抽选、限定品和预约怎么买",
        urgent: "(抽選|抽选|限定|予約|预约|預約|受注)"},
-      {sec: ["影视", {kind: "アニメ"}], id: "media", label: "动画、电影、活动", hint: "新动画、剧场版、生日、周年庆", priority: "新动画、活动和周年纪念",
+      {sec: ["影视", {kind: "アニメ"}], id: "media", label: "アニメ・映画・イベント", hint: "新アニメ・劇場版・誕生日・周年", priority: "新动画、活动和周年纪念",
        urgent: "(アニメ|动画|動畫|周年|週年|アニバーサリー|anniversary|誕生日|生日)"},
     ]},
-    book: {label: "书 / 杂志 / 漫画单行本", hint: "杂志、小说、漫画、写真集", type: "product", section: "影视", focus: [
-      {rec: true, id: "release", label: "发售日、新刊", hint: "下一期、新卷什么时候出", priority: "发售日和新刊",
+    book: {label: "本 / 雑誌 / マンガ単行本", hint: "雑誌・小説・マンガ・写真集", type: "product", section: "影视", focus: [
+      {rec: true, id: "release", label: "発売日・新刊", hint: "次の号・新刊がいつ出るか", priority: "发售日和新刊",
        urgent: "(発売日|発売|最新号|最新刊|新刊|新卷|发售|發售|release|on sale|刊行)"},
-      {rec: true, id: "furoku", label: "付录、限定版", hint: "附赠品、特装版", priority: "付录和限定版（附赠什么、怎么买）",
+      {rec: true, id: "furoku", label: "付録・限定版", hint: "特典・特装版", priority: "付录和限定版（附赠什么、怎么买）",
        urgent: "(付録|付录|附錄|附录|特装版|特裝版|限定版|増刊|增刊|特別号|特别号)"},
-      {id: "cover", label: "封面、特集", hint: "谁上封面、做了什么特集", priority: "封面人物和特集",
+      {id: "cover", label: "表紙・特集", hint: "誰が表紙か・どんな特集か", priority: "封面人物和特集",
        urgent: "(表紙|封面|cover|特集|特辑|特輯)"},
-      {id: "media", label: "改编、得奖", hint: "动画化、影视化、得奖", priority: "改编和得奖",
+      {id: "media", label: "映像化・受賞", hint: "アニメ化・映像化・受賞", priority: "改编和得奖",
        urgent: "(アニメ化|映像化|実写化|映画化|ドラマ化|改编|改編|受賞|得奖|得獎|award)"},
-      {id: "event", label: "签售、展览、活动", hint: "作者签售、原画展", priority: "签售、展览和活动",
+      {id: "event", label: "サイン会・展示・イベント", hint: "作者のサイン会・原画展", priority: "签售、展览和活动",
        urgent: "(サイン会|签售|簽售|原画展|展覧会|展览|展覽|イベント)"},
     ]},
-    food: {label: "吃的 / 喝的", hint: "咖啡店、甜点、餐厅、零食", type: "product", section: "生活", focus: [
-      {rec: true, id: "new", label: "新品、季节限定", hint: "新口味、季节菜单", priority: "新品和季节限定",
+    food: {label: "食べ物 / 飲み物", hint: "カフェ・スイーツ・レストラン・お菓子", type: "product", section: "生活", focus: [
+      {rec: true, id: "new", label: "新商品・季節限定", hint: "新しい味・季節のメニュー", priority: "新品和季节限定",
        urgent: "(新作|新品|新発売|新発売|新商品|季節限定|期間限定|限定|新口味|新菜单|新菜單|new menu)"},
-      {rec: true, id: "collab", label: "联名", hint: "和动画、角色的联名", priority: "联名", urgent: "(コラボ|联名|聯名|collab)"},
-      {id: "shop", label: "开店、关店", hint: "新店、日本 / 大阪附近", priority: "开店和关店（尤其是日本、大阪附近）",
+      {rec: true, id: "collab", label: "コラボ", hint: "アニメ・キャラとのコラボ", priority: "联名", urgent: "(コラボ|联名|聯名|collab)"},
+      {id: "shop", label: "開店・閉店", hint: "新店、日本 / 大阪附近", priority: "开店和关店（尤其是日本、大阪附近）",
        urgent: "(オープン|開店|开店|開業|新店|閉店|关店|閉店)"},
-      {id: "sale", label: "优惠、活动", hint: "打折、买一送一", priority: "优惠和活动", urgent: "(セール|割引|半額|优惠|優惠|キャンペーン|折扣)"},
+      {id: "sale", label: "お得・キャンペーン", hint: "割引・1 つ買うともう 1 つ", priority: "优惠和活动", urgent: "(セール|割引|半額|优惠|優惠|キャンペーン|折扣)"},
     ]},
-    place: {label: "去的地方 / 展览", hint: "主题乐园、美术馆、展览、旅行地", type: "category", section: "出行", focus: [
-      {rec: true, id: "event", label: "新活动、新展览", hint: "期间限定活动、特别展", priority: "新的活动和展览",
+    place: {label: "行く場所 / 展示", hint: "テーマパーク・美術館・展示・旅行先", type: "category", section: "出行", focus: [
+      {rec: true, id: "event", label: "新しいイベント・展示", hint: "期間限定イベント・特別展", priority: "新的活动和展览",
        urgent: "(開催|开幕|開幕|開催決定|特別展|企画展|新エリア|新アトラクション|イベント)"},
-      {rec: true, id: "ticket", label: "门票、预约", hint: "什么时候开卖、要不要抽选", priority: "门票和预约",
+      {rec: true, id: "ticket", label: "チケット・予約", hint: "いつ発売か・抽選か", priority: "门票和预约",
        urgent: "(チケット|門票|门票|予約|预约|預約|抽選|抽选|発売)"},
-      {id: "open", label: "开业、闭馆、休园", hint: "营业时间变化", priority: "开业、闭馆和营业时间",
+      {id: "open", label: "開業・閉館・休園", hint: "営業時間の変更", priority: "开业、闭馆和营业时间",
        urgent: "(オープン|開業|开业|閉館|闭馆|休園|休馆|リニューアル)"},
-      {id: "crowd", label: "人多不多、交通", hint: "排队、交通方式", priority: "人流和交通"},
+      {id: "crowd", label: "混雑・アクセス", hint: "行列・行き方", priority: "人流和交通"},
     ]},
-    product: {label: "商品 / 品牌", hint: "手机、杯子、衣服、品牌", type: "product", section: "好物", focus: [
-      {rec: true, id: "new", label: "新品、新款发售", hint: "新色、新型号", priority: "新品和新款什么时候发售",
+    product: {label: "商品 / ブランド", hint: "スマホ・マグ・服・ブランド", type: "product", section: "好物", focus: [
+      {rec: true, id: "new", label: "新商品・新モデルの発売", hint: "新色・新モデル", priority: "新品和新款什么时候发售",
        urgent: "(新品|新作|新款|発売|発表|发售|發售|上市|launch|release|新色)"},
-      {rec: true, id: "sale", label: "降价、促销", hint: "打折、优惠券", priority: "什么时候降价促销",
+      {rec: true, id: "sale", label: "値下げ・セール", hint: "割引・クーポン", priority: "什么时候降价促销",
        urgent: "(セール|特價|特价|折扣|降價|降价|sale|値下げ|半額|半价)"},
-      {rec: true, id: "collab", label: "联名、限定款", hint: "季节限定、地区限定", priority: "联名和限定款",
+      {rec: true, id: "collab", label: "コラボ・限定モデル", hint: "季節限定・地域限定", priority: "联名和限定款",
        urgent: "(コラボ|联名|聯名|限定|collab)"},
-      {id: "lottery", label: "福袋、抽选、预约", hint: "要抢的东西", priority: "福袋、抽选和预约怎么买",
+      {id: "lottery", label: "福袋・抽選・予約", hint: "早い者勝ちのもの", priority: "福袋、抽选和预约怎么买",
        urgent: "(福袋|抽選|抽选|予約|预约|預約|HAPPY ?BOX)"},
-      {id: "cat", label: "猫相关的", hint: "猫柄、猫咪造型、猫用", priority: "猫系商品（猫柄、猫咪造型、猫角色联名）",
+      {id: "cat", label: "猫に関係するもの", hint: "猫柄・猫の形・猫用", priority: "猫系商品（猫柄、猫咪造型、猫角色联名）",
        urgent: "(ねこ|ネコ|猫|貓|キャット|cat)", when: about(/猫|ねこ|ネコ|貓|キャット|\bcats?\b|kitty|ペット|宠物|寵物|\bpets?\b/i)},
-      {id: "review", label: "评测、好不好用", hint: "开箱、口碑", priority: "评测和口碑"},
+      {id: "review", label: "レビュー・使い心地", hint: "開封・口コミ", priority: "评测和口碑"},
     ]},
   };
   const KIND_OF_TYPE = {game: "game", anime: "anime", show: "show", event: "artist", product: "product", category: "product"};
@@ -217,29 +217,29 @@
     goods: /グッズ|コラボ|商品|一番くじ|merchandise|collaboration|goods/i};
   const SECT_SKIP = /脚注|出典|参考|外部リンク|関連項目|References|Notes|External links|See also/i;
   const MEDIA = {
-    goods: {label: "グッズ・コラボ", hint: "联名、周边、一番赏、快闪店", kind: "character", sec: "好物", subs: {kind: "キャラグッズ", owner: "キャラクター"},
+    goods: {label: "グッズ・コラボ", hint: "コラボ・グッズ・一番くじ・ポップアップ", kind: "character", sec: "好物", subs: {kind: "キャラグッズ", owner: "キャラクター"},
             kw: ["コラボ", "グッズ 新作", "一番くじ"], re: "コラボ(?!カフェ)|グッズ|一番くじ|フィギュア|ぬいぐるみ|联名|聯名|周边|周邊|merch|collab|figure",
             tail: "グッズ", hit: /キャラクター|character|mascot|マスコット|角色|吉祥物/i},
-    anime: {label: "アニメ", hint: "电视动画、配信、声优", kind: "anime", sec: "影视", subs: {kind: "アニメ"},
+    anime: {label: "アニメ", hint: "テレビアニメ・配信・声優", kind: "anime", sec: "影视", subs: {kind: "アニメ"},
             kw: ["アニメ", "アニメ 放送"], re: "アニメ(?!映画)|anime(?! film)|動畫|动画(?!电影)|animated series", tail: "アニメ",
             hit: /アニメ|anime|animated (television|TV|series)|动画|動畫/i},
-    movie: {label: "映画", hint: "剧场版、电影：定档、预告、票房", kind: "show", sec: "影视", subs: {kind: "映画"},
+    movie: {label: "映画", hint: "劇場版・映画：公開日・予告・興行", kind: "show", sec: "影视", subs: {kind: "映画"},
             kw: ["映画", "劇場版"], re: "映画|劇場版|剧场版|電影|电影|movie|film|box office|興行", tail: "映画",
             hit: /映画|劇場|film|movie|电影|電影/i},
-    drama: {label: "ドラマ・実写", hint: "电视剧、网剧、实写版", kind: "show", sec: "影视", subs: {kind: "ドラマ"},
+    drama: {label: "ドラマ・実写", hint: "ドラマ・配信ドラマ・実写版", kind: "show", sec: "影视", subs: {kind: "ドラマ"},
             kw: ["ドラマ", "実写"], re: "ドラマ|実写|drama|电视剧|電視劇|剧集|劇集", tail: "ドラマ",
             hit: /ドラマ|television (drama|series)|TV series|电视剧|電視劇|剧集/i},
-    manga: {label: "漫画・本", hint: "连载、单行本、画集", kind: "book", sec: "影视", subs: {kind: "マンガ"},
+    manga: {label: "漫画・本", hint: "連載・単行本・画集", kind: "book", sec: "影视", subs: {kind: "マンガ"},
             kw: ["単行本", "最新刊"], re: "漫画|漫畫|マンガ|manga|comic|単行本|单行本|最新刊|連載|连载|画集", tail: "漫画",
             hit: /漫画|漫畫|マンガ|manga|comic/i},
-    game: {label: "ゲーム", hint: "游戏、手游的新作和更新", kind: "game", sec: "游戏", subs: {},
+    game: {label: "ゲーム", hint: "ゲーム・スマホゲームの新作とアップデート", kind: "game", sec: "游戏", subs: {},
            kw: ["ゲーム", "game"], re: "ゲーム|game|游戏|遊戲|アプリ|Switch|PS5|Steam", tail: "ゲーム",
            hit: /ゲーム|video game|游戏|遊戲/i},
     // 联名咖啡・展览・快闪店 = 出かけて行くもの → おでかけ・アート（2026-10-19 用户的树状图）。舞台・ミュージカル・演唱会は音楽・ライブ
-    event: {label: "イベント・カフェ・展示", hint: "联名咖啡、展览、快闪店", kind: "place", sec: "出行", subs: {kind: "季節イベント"},
+    event: {label: "イベント・カフェ・展示", hint: "コラボカフェ・展示・ポップアップ", kind: "place", sec: "出行", subs: {kind: "季節イベント"},
             kw: ["コラボカフェ", "展", "ポップアップ"], re: "コラボカフェ|カフェ|展覧会|展示|ポップアップ|POP ?UP|イベント|フェア|展(?!開)", tail: "イベント",
             hit: /exhibition|展覧会|展示会|テーマパーク|theme park|attraction|amusement|施設|facility|パーク|museum|博物館|美術館|カフェ|café|cafe|ポップアップ|pop-up|イベント|event/i},
-    live: {label: "舞台・ライブ", hint: "舞台、音乐剧、演唱会", kind: "artist", sec: "演出", subs: {scene: "舞台・ミュージカル", form: "舞台"},
+    live: {label: "舞台・ライブ", hint: "舞台・ミュージカル・ライブ", kind: "artist", sec: "演出", subs: {scene: "舞台・ミュージカル", form: "舞台"},
            kw: ["舞台", "ミュージカル"], re: "ライブ|舞台|ミュージカル|コンサート|concert|musical|stage", tail: "舞台",
            hit: /ミュージカル|musical|舞台|stage|concert|ライブ/i},
   };
@@ -384,11 +384,11 @@
   };
 
   const EXCLUDES = [
-    {id: "resale", rec: true, label: "转卖、二手", words: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale"]},
-    {id: "guide", label: "攻略、抽卡教学、排行榜", words: ["攻略", "リセマラ", "ガチャ", "抽卡", "tier list", "最強ランキング"], kinds: ["game", "anime"]},
-    {id: "roundup", rec: true, label: "带货清单、合集、推荐榜", words: ["おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]},
-    {id: "rumor", label: "传闻、爆料", words: ["リーク", "leak", "爆料", "傳聞", "传闻", "rumor", "噂"]},
-    {id: "spoiler", label: "剧透", words: ["ネタバレ", "剧透", "劇透", "spoiler"], kinds: ["game", "anime", "show"]},
+    {id: "resale", rec: true, label: "転売・中古", words: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale"]},
+    {id: "guide", label: "攻略・ガチャ解説・ランキング", words: ["攻略", "リセマラ", "ガチャ", "抽卡", "tier list", "最強ランキング"], kinds: ["game", "anime"]},
+    {id: "roundup", rec: true, label: "おすすめまとめ・ランキング記事", words: ["おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]},
+    {id: "rumor", label: "噂・リーク", words: ["リーク", "leak", "爆料", "傳聞", "传闻", "rumor", "噂"]},
+    {id: "spoiler", label: "ネタバレ", words: ["ネタバレ", "剧透", "劇透", "spoiler"], kinds: ["game", "anime", "show"]},
   ];
 
   // ---------- 维基数据 ----------
@@ -427,7 +427,7 @@
   const THIN_RATIO = 4;
   const thin = (list, base) => { const n = (list || []).map(x => x.links).filter(v => v != null);
     return n.length > 0 && base > 0 && Math.max(...n) * THIN_RATIO < base; };
-  const THIN_TAG = "情報少なめ", THIN_NOTE = "比主题本身冷门得多，新闻可能不多";
+  const THIN_TAG = "情報少なめ", THIN_NOTE = "主題そのものよりずっとマイナーで、ニュースは少ないかもしれません";
   const desc = ent => label({labels: ent.descriptions}, ["zh-hans", "zh", "zh-cn", "zh-hant", "zh-tw", "ja", "en"]);
 
   async function lookup(name) {
@@ -495,35 +495,35 @@
     {id: "facets", when: () => S.mode === "add" && facetPlan().type !== "", render: askFacets},
     // 「怎么放」は聞かない（用户定的、2026-10-19）：規則で固定＝板块ごとに版面 1 つ（同じ板块の面は 1 つにまとめる・主面の板块に主項、ほかは下級）
     {id: "arrange", when: () => false, render: askArrange},
-    {id: "kind", when: () => !(S.ans.facets || []).length || facetPlan().type === "topic", render: () => single("kind", "这是什么？", guessHint(),
+    {id: "kind", when: () => !(S.ans.facets || []).length || facetPlan().type === "topic", render: () => single("kind", "これは何ですか？", guessHint(),
       Object.entries(KINDS).map(([v, k]) => ({v, label: k.label, hint: k.hint})))},
-    {id: "focus", render: () => chosenFacets().length && facetPlan().type === "media" ? askFocusGrouped() : multi("focus", `你关注「${S.name}」的哪方面？`, "可以多选。会按这个给消息排序：直接回答这些的新消息排最前面。",
-      focusOpts().map(f => ({v: f.id, label: f.label, hint: f.hint})), {other: "其他（自己写）", min: 1})},
+    {id: "focus", render: () => chosenFacets().length && facetPlan().type === "media" ? askFocusGrouped() : multi("focus", `「${S.name}」のどの面を追いますか？`, "複数選べます。この順番でニュースを並べます：ここで答えたことに直接当てはまる新しい記事を先頭にします。",
+      focusOpts().map(f => ({v: f.id, label: f.label, hint: f.hint})), {other: "その他（自分で書く）", min: 1})},
     {id: "player", when: () => (S.ans.focus || []).includes("player"), render: () => text("player",
-      "关注哪个选手 / 队伍？", "写名字，几个就用逗号隔开。会加进搜索词，只留提到他们的消息。", "如：大坂なおみ, 錦織圭")},
+      "どの選手 / チームを追いますか？", "名前を書いてください。複数ならカンマで区切ります。検索語に加わり、その名前が出る記事だけを残します。", "例：大坂なおみ, 錦織圭")},
     // Discord 通知の質問は保留中（PENDING.md）：聞かない。urgent_patterns は新規は空、修正は今のまま（S.ans.urgent が空なので上書きしない）
     {id: "urgent", when: () => URGENT_ASK && chosenFocus().some(f => f.urgent), render: () => multi("urgent",
-      "哪些消息要当天推到 Discord？", "其余的只在简报和每周一的周报里。传闻、Reddit 帖子不算要紧消息。",
+      "どのニュースを当日 Discord に送りますか？", "それ以外は、ページと毎週月曜の週報だけに載せます。噂・Reddit の投稿は急ぎのニュースに数えません。",
       [...chosenFocus().filter(f => f.urgent).map(f => ({v: f.id, label: f.label, hint: f.hint})),
-       {v: "none", label: "都不用，周报里看就行", only: true}])},
-    {id: "exclude", render: () => multi("exclude", "这些不想看？", "标题里有这些词的直接丢掉。",
+       {v: "none", label: "どれも不要。週報で見るだけでいい", only: true}])},
+    {id: "exclude", render: () => multi("exclude", "見たくないものは？", "見出しにこれらの語があるものは捨てます。",
       [...EXCLUDES.filter(x => !x.kinds || x.kinds.includes(S.ans.kind)).map(x => ({v: x.id, label: x.label, hint: x.words.slice(0, 4).join("、")})),
-       {v: "none", label: "都可以看", only: true}])},
-    {id: "langs", render: () => multi("langs", "看哪些语言的新闻？", langHint(),
-      Object.entries(LANGS).map(([v, l]) => ({v, label: l, hint: v === "zh-CN" ? "大陆网站常拦海外、图片防盗链，一般不用" : ""})), {min: 1})},
+       {v: "none", label: "どれも見てよい", only: true}])},
+    {id: "langs", render: () => multi("langs", "どの言語のニュースを見ますか？", langHint(),
+      Object.entries(LANGS).map(([v, l]) => ({v, label: l, hint: v === "zh-CN" ? "大陸のサイトは海外からの閲覧や画像の直リンクを止めることが多く、ふつうは不要" : ""})), {min: 1})},
     {id: "parent", when: () => (tops().length > 0 || newSeries().length > 0) && S.ans.arrange !== "split", render: askParent},
     {id: "related", when: () => S.mode === "add" && related().length > 0, render: askRelated},
     {id: "section", when: () => !S.ans.parent && !(S.ans.facets || []).length, render: askSections},
     // 面を選んでいれば小分類は規則で決まっている（applyFacets：シリーズ判断・各板块の分け方）。確認の画面で直せる
     {id: "subs", when: () => !(S.ans.facets || []).length, render: askSubs},
-    {id: "size", when: () => S.mode === "add", render: () => single("size", "每期给它多大篇幅？", "以后在上面的列表里随时能改。", [
-      {v: "S", label: "S · 少", hint: "每期最多 3 条，大约一行"}, {v: "M", label: "M · 中等", hint: "每期最多 5 条"},
-      {v: "L", label: "L · 多", hint: "每期最多 8 条，满满一整屏"}])},
+    {id: "size", when: () => S.mode === "add", render: () => single("size", "1 回にどれくらいの大きさで載せますか？", "あとから、上の一覧でいつでも変えられます。", [
+      {v: "S", label: "S · 小", hint: "1 回に 3 本まで、だいたい 1 行"}, {v: "M", label: "M · 中", hint: "1 回に 5 本まで"},
+      {v: "L", label: "L · 大", hint: "1 回に 8 本まで、画面いっぱい"}])},
     {id: "review", render: review},
   ];
   const live = () => STEPS.filter(s => !s.when || s.when());
-  const LABELS = {name: "名字", which: "是哪个", facets: "关注的面", arrange: "怎么放", kind: "这是", focus: "关注", player: "选手 / 队伍", urgent: "立刻通知",
-                  exclude: "不看", langs: "语言", parent: "上级", related: "同系列", section: "板块", subs: "小分类", size: "篇幅"};
+  const LABELS = {name: "名前", which: "どれ", facets: "追う面", arrange: "置き方", kind: "種類", focus: "関心", player: "選手 / チーム", urgent: "すぐ通知",
+                  exclude: "見ない", langs: "言語", parent: "上位", related: "同じシリーズ", section: "ジャンル", subs: "小分類", size: "大きさ"};
 
   function defaults(id) {
     const pick = wdPick();
@@ -559,9 +559,9 @@
     if (id === "exclude") return EXCLUDES.filter(x => v.includes(x.id)).map(x => x.label).join("、") || "都看";
     if (id === "langs") return v.map(l => LANGS[l]).join("、");
     if (id === "section") return [v, ...alsoRec(v)].map(k => secOf(k).ja).join(" ＋ ");
-    if (id === "parent") return v || "不属于";
+    if (id === "parent") return v || "属さない";
     if (id === "facets") return (v || []).map(k => facetOf(k)?.label).join("、") || "—";
-    if (id === "arrange") return v === "split" ? "每个面一个版面" : "合成一个版面";
+    if (id === "arrange") return v === "split" ? "面ごとに版面を分ける" : "ひとつの版面にまとめる";
     if (id === "subs") return Object.values(v || {}).join(" · ");
     return v || "";
   }
@@ -580,12 +580,12 @@
 
   const guessHint = () => {
     const p = wdPick();
-    if (p?.kind) return `按维基数据猜是「${KINDS[p.kind].label}」${p.desc ? `（${p.desc}）` : ""}，不对就改。`;
-    return "选最接近的一类，后面的问题会跟着变。";
+    if (p?.kind) return `Wikidata から「${KINDS[p.kind].label}」と推測しました${p.desc ? `（${p.desc}）` : ""}。違えば変えてください。`;
+    return "いちばん近い種類を選んでください。このあとの質問が変わります。";
   };
   const langHint = () => {
     const o = (wdPick()?.origin || []).filter(l => l !== "zh-CN");
-    return o.length ? `它来自${o.map(l => LANGS[l].replace(/（.*）/, "")).join("、")}，已经帮你勾上。` : "中文默认用港台媒体。";
+    return o.length ? `${o.map(l => LANGS[l].replace(/（.*）/, "")).join("・")}の作品なので、チェックを入れておきました。` : "中国語は香港・台湾のメディアが標準です。";
   };
 
   // ---------- 画面 ----------
@@ -614,13 +614,13 @@
   function draw() {
     ensureFacets();
     const steps = live(), step = steps[Math.min(S.step, steps.length - 1)];
-    const title = S.mode === "edit" ? `修改「${S.name}」` : "＋ 新增关注项";
+    const title = S.mode === "edit" ? `「${S.name}」を変更` : "＋ 追いかけるものを足す";
     const asked = S.mode === "add" || S.ans.focus;   // 修改时直接到汇总的，没有回答过问题
     // 已经回答的：一个问题一个方块，从左到右排（窄屏从上到下），点方块回到那一问重选
-    const trail = h("ol", {class: "trail", "aria-label": "已经回答的，点一下可以改"},
+    const trail = h("ol", {class: "trail", "aria-label": "答えたもの。押すと変えられます"},
       (asked ? steps.slice(0, S.step) : []).map((s, i) => s.id === "review" ? null : h("li", {}, h("button", {type: "button", onclick: () => go(i),
-        class: S.auto[s.id] ? "auto" : null, title: "点一下改这一项"},
-        h("span", {}, `${i + 1} · ${LABELS[s.id] || s.id}${S.auto[s.id] ? " · 你帮我定的" : ""}`), h("b", {}, answerText(s.id) || "—")))));
+        class: S.auto[s.id] ? "auto" : null, title: "押すとこの項目を変えられます"},
+        h("span", {}, `${i + 1} · ${LABELS[s.id] || s.id}${S.auto[s.id] ? " · おまかせ" : ""}`), h("b", {}, answerText(s.id) || "—")))));
     box.replaceChildren(h("h2", {}, title), trail, step.render(), queueList);
     const first = box.querySelector(".q input[type=text], .q .opt[aria-pressed=true], .q .opt, .rv input, .rv select");
     if (first && S.touched) first.focus({preventScroll: true});
@@ -632,9 +632,9 @@
     if (id === "which") return wdPick()?.title || "不用查";
     if (id === "kind") return KINDS[a]?.label || "";
     if (id === "section") return a ? [a, ...(S.ans.sections || []).filter(k => k !== a)].map(k => secOf(k).ja).join(" ＋ ") : "";
-    if (id === "parent") return a || "不属于";
+    if (id === "parent") return a || "属さない";
     if (id === "facets") return (a || []).map(k => facetOf(k)?.label).join("、");
-    if (id === "arrange") return a === "split" ? `每个面一个版面（主：${facetOf(mainFacet())?.label || ""}）` : `合成一个版面（${facetOf(mainFacet())?.label || ""}）`;
+    if (id === "arrange") return a === "split" ? `面ごとに版面を分ける（主：${facetOf(mainFacet())?.label || ""}）` : `ひとつの版面にまとめる（${facetOf(mainFacet())?.label || ""}）`;
     if (id === "subs") return Object.values(a || {}).join(" · ");
     if (id === "focus") return [...chosenFocus().map(f => f.label), S.ans.focus_other].filter(Boolean).join("、");
     if (id === "urgent") return (a || []).includes("none") ? "不用" : chosenFocus().filter(f => (a || []).includes(f.id)).map(f => f.label).join("、");
@@ -643,19 +643,19 @@
     return Array.isArray(a) ? a.join("、") : a || "";
   }
 
-  const no = () => { const steps = live().filter(s => s.id !== "review"); return `第 ${S.step + 1} / ${steps.length} 问`; };
+  const no = () => { const steps = live().filter(s => s.id !== "review"); return `質問 ${S.step + 1} / ${steps.length}`; };
   const go = i => { S.touched = true; S.step = i; draw(); };
   const next = () => { S.touched = true; S.step = Math.min(S.step + 1, live().length - 1); if (live()[S.step].id === "review") S.draft = build(); draw(); };
   const back = () => { if (S.step > 0) { S.touched = true; S.step--; draw(); } };
-  const nav = (ok, label = "下一步") => h("div", {class: "wnav"},
-    S.step > 0 ? h("button", {type: "button", onclick: back}, "← 上一步") : null,
+  const nav = (ok, label = "次へ") => h("div", {class: "wnav"},
+    S.step > 0 ? h("button", {type: "button", onclick: back}, "← 前へ") : null,
     h("button", {type: "button", class: "main", disabled: !ok, onclick: next}, label),
-    AUTO_STEPS.includes(live()[S.step]?.id) ? h("button", {type: "button", onclick: autoRest, title: "没回答的问题都按推荐选好，直接看汇总"}, "剩下的都交给你") : null,
-    S.mode === "edit" ? h("button", {type: "button", onclick: () => { S.step = live().length - 1; S.draft = build(); draw(); }}, "跳到最后") : null,
-    h("button", {type: "button", onclick: reset}, "取消"));
+    AUTO_STEPS.includes(live()[S.step]?.id) ? h("button", {type: "button", onclick: autoRest, title: "答えていない質問はおすすめで選び、まとめの画面へ進みます"}, "残りはおまかせ") : null,
+    S.mode === "edit" ? h("button", {type: "button", onclick: () => { S.step = live().length - 1; S.draft = build(); draw(); }}, "最後へ") : null,
+    h("button", {type: "button", onclick: reset}, "キャンセル"));
 
   function askName() {
-    const input = h("input", {type: "text", maxlength: 80, value: S.name, placeholder: "如：原神、鬼灭之刃、ILLIT、大阪马拉松",
+    const input = h("input", {type: "text", maxlength: 80, value: S.name, placeholder: "例：原神、鬼滅の刃、ILLIT、大阪マラソン",
                               "aria-label": "名字"});
     const submit = () => {
       const name = input.value.trim();
@@ -664,10 +664,10 @@
       next();
     };
     input.addEventListener("keydown", ev => { if (ev.key === "Enter" && !ev.isComposing) { ev.preventDefault(); submit(); } });
-    return h("div", {class: "q"}, h("span", {class: "no"}, "第 1 问"), h("h3", {}, "想关注什么？"),
-      h("p", {}, "只写名字就行。接下来一步一步问你关注它的哪方面、什么要立刻通知、不想看什么，最后汇总给你看，都能改。"),
-      input, h("div", {class: "wnav"}, h("button", {type: "button", class: "main", onclick: submit}, "下一步"),
-      S.name ? h("button", {type: "button", onclick: reset}, "取消") : null));
+    return h("div", {class: "q"}, h("span", {class: "no"}, "質問 1"), h("h3", {}, "何を追いかけますか？"),
+      h("p", {}, "名前だけで大丈夫です。このあと、どの面を追うか・何をすぐ通知するか・何を見たくないかを順に聞き、最後にまとめて見せます。どれも変えられます。"),
+      input, h("div", {class: "wnav"}, h("button", {type: "button", class: "main", onclick: submit}, "次へ"),
+      S.name ? h("button", {type: "button", onclick: reset}, "キャンセル") : null));
   }
 
   function startLookup(name) {
@@ -821,20 +821,20 @@
   const newSeries = () => seriesOfPick().filter(x => !seriesItem(x) && normName(x.title) !== normName(S.name));
 
   function askWhich() {
-    const head = [h("span", {class: "no"}, no()), h("h3", {}, `你说的「${S.name}」是哪一个？`)];
+    const head = [h("span", {class: "no"}, no()), h("h3", {}, `「${S.name}」はどれですか？`)];
     if (S.wdState === "loading") {
-      return h("div", {class: "q"}, ...head, h("p", {}, "正在维基数据里查各语言的正式名称…"),
-        h("div", {class: "wnav"}, h("button", {type: "button", onclick: back}, "← 上一步"),
+      return h("div", {class: "q"}, ...head, h("p", {}, "Wikidata で各言語の正式名称を調べています…"),
+        h("div", {class: "wnav"}, h("button", {type: "button", onclick: back}, "← 前へ"),
           h("button", {type: "button", class: "main", onclick: () => { S.wdState = "off"; S.ans.which = ""; S.step--; next(); }}, "不查了，直接下一步")));
     }
     if (!S.wd?.length) {
       return h("div", {class: "q"}, ...head,
-        h("p", {}, S.wdState === "fail" ? "维基数据现在连不上，没关系：搜索词就先用名字，最后可以自己补。" : "维基数据里没查到，没关系：搜索词就先用名字，最后可以自己补。"),
+        h("p", {}, S.wdState === "fail" ? "Wikidata につながりませんが大丈夫です。検索語はまず名前を使い、最後に自分で足せます。" : "Wikidata に見つかりませんでしたが大丈夫です。検索語はまず名前を使い、最後に自分で足せます。"),
         nav(true));
     }
-    const opts = [...S.wd.map(x => ({v: x.id, label: x.title + (x.names.ja && x.names.ja !== x.title ? ` · ${x.names.ja}` : ""), hint: x.desc || "（没有说明）"})),
-                  {v: "", label: "都不是", hint: "不用查了，搜索词先用名字"}];
-    return single("which", head[1].textContent, "选对的那个，会自动补上中日韩英的正式名称、官网等。", opts);
+    const opts = [...S.wd.map(x => ({v: x.id, label: x.title + (x.names.ja && x.names.ja !== x.title ? ` · ${x.names.ja}` : ""), hint: x.desc || "（説明なし）"})),
+                  {v: "", label: "どれでもない", hint: "調べずに、検索語はまず名前を使います"}];
+    return single("which", head[1].textContent, "合っているものを選ぶと、中日韓英の正式名称や公式サイトなどを自動で補います。", opts);
   }
 
   function options(id, opts, multiSel) {
@@ -854,12 +854,12 @@
       }}, o.label, o.hint ? h("small", {}, o.hint) : null)),
       AUTO_STEPS.includes(id) ? h("button", {type: "button", class: "opt auto", "aria-pressed": String(!!S.auto[id]),
         onclick: () => { S.ans[id] = autoValue(id); S.auto[id] = true; next(); }},
-        "不确定，你帮我定", h("small", {}, `会选：${autoText(id) || "—"}`)) : null);
+        "わからないので、おまかせ", h("small", {}, `選ぶもの：${autoText(id) || "—"}`)) : null);
   }
 
   function single(id, ask, hint, opts) {
     const body = [h("span", {class: "no"}, no()), h("h3", {}, ask), hint ? h("p", {}, hint) : null, options(id, opts, false)];
-    body.push(nav(S.ans[id] != null || id === "which", "下一步"));
+    body.push(nav(S.ans[id] != null || id === "which", "次へ"));
     return h("div", {class: "q"}, ...body);
   }
 
@@ -876,15 +876,15 @@
     let okBtn;
     const n = nav(cur().length + (S.ans.focus_other ? 1 : 0) >= 1); okBtn = n.querySelector(".main");
     return h("div", {class: "q"}, h("span", {class: "no"}, no()),
-      h("h3", {}, `「${S.name}」的新闻，哪些排在最前面？`),
-      h("p", {}, "新闻已经按上一问的面收进同一个版面。这里只决定顺序：勾的这些一出来就排最前面、做成大的报道。默认全勾。"),
-      h("button", {type: "button", class: "selall", "aria-pressed": String(all), onclick: () => set(all ? [] : [...ids])}, all ? "取消全选" : `全选（${ids.length}）`),
+      h("h3", {}, `「${S.name}」のニュースで、先頭に並べるのは？`),
+      h("p", {}, "ニュースは前の質問の面でひとつの版面に集まります。ここで決めるのは順番だけ。チェックしたものは出たらすぐ先頭に、大きな記事にします。初めは全部チェック済みです。"),
+      h("button", {type: "button", class: "selall", "aria-pressed": String(all), onclick: () => set(all ? [] : [...ids])}, all ? "全部はずす" : `全部選ぶ（${ids.length}）`),
       h("div", {class: "fgrid"}, groups.map(([k, list]) => h("section", {class: "fgrp"},
         h("h4", {}, MEDIA_LABEL[k] || facetOf(k)?.label || k, h("small", {}, `${list.filter(o => cur().includes(o.id)).length} / ${list.length}`)),
         h("ul", {class: "fchips"}, list.map(o => h("li", {}, h("label", {class: "fc" + (cur().includes(o.id) ? " on" : ""), title: o.hint || ""},
           h("input", {type: "checkbox", checked: cur().includes(o.id), onchange: () => set(cur().includes(o.id) ? cur().filter(x => x !== o.id) : [...cur(), o.id])}),
           o.label))))))),
-      h("input", {type: "text", maxlength: 200, value: S.ans.focus_other || "", placeholder: "其他（自己写）", "aria-label": "其他（自己写）",
+      h("input", {type: "text", maxlength: 200, value: S.ans.focus_other || "", placeholder: "その他（自分で書く）", "aria-label": "その他（自分で書く）",
         oninput: ev => { S.ans.focus_other = ev.target.value.trim(); okBtn.disabled = !(cur().length || S.ans.focus_other); }}),
       n);
   }
@@ -899,7 +899,7 @@
       // 条目は日本語の名前を先に、維基百科の目次の節は「（目次）」を付けて後ろに
       const ev = [...(f.ev || [])].sort((a, b) => /章节/.test(a.desc || "") - /章节/.test(b.desc || ""));
       const ts = uniq(ev.map(x => /章节/.test(x.desc || "") ? `${x.title}（目次）` : String(x.names?.ja || x.title || "")));
-      return ts.length ? `找到：${ts.slice(0, 2).join("、")}${ts.length > 2 ? ` 等 ${ts.length} 个` : ""}` : (f.hint || "");
+      return ts.length ? `見つかった：${ts.slice(0, 2).join("・")}${ts.length > 2 ? ` ほか ${ts.length} 件` : ""}` : (f.hint || "");
     };
     const row = f => h("li", {}, h("label", {class: "fr" + (on(f) ? " on" : "") + (f.thin ? " thin" : "")},
       h("input", {type: "checkbox", checked: on(f), onchange: () => toggle(f.key)}),
@@ -909,27 +909,27 @@
         f.thin ? h("i", {}, THIN_TAG) : null),
       h("small", {}, found(f) + (f.thin ? ` · ${THIN_NOTE}` : ""))));
     const groups = plan.type === "media"
-      ? [["作品", "维基数据里确认有的作品"], ["展開", "按规则推定的周边・活动"]].map(([k, note]) => [k, note, plan.list.filter(f => f.layer === k)])
+      ? [["作品", "Wikidata で確認できた作品"], ["展開", "ルールで推定したグッズ・イベント"]].map(([k, note]) => [k, note, plan.list.filter(f => f.layer === k)])
       : [["", "", plan.list]];
     const fs = chosenFacets(), main = fs.length ? facetOf(mainFacet()) : null;
     const branches = fs.length ? mediaOf(fs) : [];
     const sub = main ? firstSub(main.sec, withSeries(main.sec, facetSubs(main), fs.filter(f => f.sec === main.sec).length)) : "";
     // 加进去以后：作品 › シリーズ › 「ちいかわ」└ マンガ · アニメ …
     const preview = h("div", {class: "fprev", style: `--sc:${main ? secOf(main.sec).color || "#1A1C22" : "#1A1C22"}`},
-      h("span", {class: "fp-h"}, "加进去以后"),
+      h("span", {class: "fp-h"}, "足したあと"),
       main ? h("div", {class: "fp-path"}, h("b", {class: "t-tag"}, secOf(main.sec).ja), sub ? h("span", {}, `› ${sub}`) : null)
-           : h("div", {class: "fp-path"}, "（一个都没勾）"),
-      main ? h("div", {class: "fp-st"}, h("b", {}, S.name), h("small", {}, "版面 1 个")) : null,
+           : h("div", {class: "fp-path"}, "（ひとつもチェックされていません）"),
+      main ? h("div", {class: "fp-st"}, h("b", {}, S.name), h("small", {}, "版面 1 つ")) : null,
       branches.length >= 2 ? h("ul", {class: "fp-br"}, branches.map(b => h("li", {}, b))) : null,
-      main ? h("small", {class: "fp-note"}, branches.length >= 2 ? "勾的面在目录里是这个版面下面的枝，新闻都收进同一个版面" : "") : null);
-    const kws = h("details", {class: "fkw"}, h("summary", {}, "每个面加的搜索词"),
+      main ? h("small", {class: "fp-note"}, branches.length >= 2 ? "チェックした面は目次ではこの版面の下の枝になり、ニュースはすべて同じ版面に入ります" : "") : null);
+    const kws = h("details", {class: "fkw"}, h("summary", {}, "面ごとに足す検索語"),
       h("ul", {}, plan.list.filter(on).map(f => h("li", {}, h("b", {}, f.label), `：${kwOf(f)}`))));
     return h("div", {class: "facets2", role: "group", "aria-label": `「${S.name}」的面`},
       preview,
       groups.filter(g => g[2].length).map(([k, note, list]) => h("section", {class: "fgrp"},
         k ? h("h4", {}, k, h("small", {}, note)) : null,
         h("ul", {}, list.sort((a, b) => isMain(b) - isMain(a)).map(row)))),
-      plan.missing?.length ? h("p", {class: "fmiss"}, `没找到：${plan.missing.join("、")}（${Object.keys(MEDIA).length} 个面都查过）`) : null,
+      plan.missing?.length ? h("p", {class: "fmiss"}, `見つからなかった：${plan.missing.join("・")}（${Object.keys(MEDIA).length} 個の面をすべて調べました）`) : null,
       kws);
   }
   // 面：全部列出，有依据的默认勾上（依据写在下面）。勾了几个就放进几个板块
@@ -941,15 +941,15 @@
                           S.auto.facets = false; delete S.ans.focus; delete S.ans.urgent; applyFacets(); draw(); };
     const kwOf = f => uniq([...(f.titles || []), ...(f.kw || []).slice(0, 2).map(w => `${S.name} ${w}`)]).slice(0, 3).join(" / ");
     return h("div", {class: "q"}, h("span", {class: "no"}, no()),
-      h("h3", {}, plan.type === "media" ? `「${S.name}」的版面里收哪些新闻？` : `「${S.name}」关注哪几方面？可以多选`),
+      h("h3", {}, plan.type === "media" ? `「${S.name}」の版面に入れるニュースは？` : `「${S.name}」のどの面を追いますか？（複数選べます）`),
       h("p", {}, plan.type === "media"
-        ? `只开「${S.name}」一个版面。勾的面 = 这个版面里收哪些新闻（多勾只是多收，不会多开版面）。找到依据的已经勾上，冷门的（情報少なめ）没勾。`
-        : "名字是普通词，只用名字会收进很多不相关的新闻，所以按面来收：每个面的词和名字同时出现才收。推荐的已经勾上。"),
+        ? `版面は「${S.name}」の 1 つだけです。チェックした面 = この版面に入れるニュース（多く選ぶとニュースが増えるだけで、版面は増えません）。根拠が見つかった面はチェック済み、マイナーな面（情報少なめ）は未チェックです。`
+        : "名前が普通の語なので、名前だけだと関係のないニュースがたくさん入ります。そこで面ごとに集めます：面の語と名前が両方出たものだけ入れます。おすすめはチェック済みです。"),
       (() => { const keys = plan.list.map(f => f.key), all = keys.every(k => S.ans.facets.includes(k));
         return keys.length >= 2 ? h("button", {type: "button", class: "selall", "aria-pressed": String(all),
           onclick: () => { S.ans.facets = all ? [] : [...keys]; S.auto.facets = false; delete S.ans.focus; delete S.ans.urgent; applyFacets(); draw(); }},
-          all ? "取消全选" : `全选（${keys.length}）`) : null; })(),
-      sim.length ? h("p", {class: "simnote"}, `已经有相近的关注项：${sim.map(i => `「${i.name}」`).join("")}。想往里加，可以在上面的列表里点「改」；也可以在后面「属于哪个」一问挂到它下面。`) : null,
+          all ? "全部はずす" : `全部選ぶ（${keys.length}）`) : null; })(),
+      sim.length ? h("p", {class: "simnote"}, `似たものがすでにあります：${sim.map(i => `「${i.name}」`).join("")}。そこに足すなら、上の一覧で「改」を押してください。あとの「どれに属するか」の質問で、その下にぶら下げることもできます。`) : null,
       facetTree(plan, toggle, kwOf),
       nav(S.ans.facets.length > 0));
   }
@@ -989,11 +989,11 @@
     const old = (sec, sub) => (CFG.items || []).filter(i => i.name !== S.name && !i.parent && i.section === sec && firstSub(sec, i.subs) === sub);
     const item = (r, kids = []) => h("li", {class: "t-it " + r.role},
       h("span", {class: "t-nm"}, r.role === "xfer" ? "⇄ " : "", r.name,
-        h("i", {}, r.role === "main" ? "新・版面" : r.role === "kid" ? "新・下级" : `乗換站 → ${secOf(r.home).ja}`)),
-      r.role === "kid" && r.of && !kids.hosted ? h("small", {}, `挂在「${r.of}」下面`) : null,
+        h("i", {}, r.role === "main" ? "新規・版面" : r.role === "kid" ? "新規・下位" : `乗換の駅 → ${secOf(r.home).ja}`)),
+      r.role === "kid" && r.of && !kids.hosted ? h("small", {}, `「${r.of}」の下`) : null,
       r.media?.length || kids.length ? h("ul", {}, (r.media || []).map(m => h("li", {class: "t-md"}, m)), kids.map(k => item({...k}, Object.assign([], {hosted: true})))) : null);
-    return h("div", {class: "tree", "aria-label": "加进去以后的目录"},
-      h("span", {class: "t-h"}, "加进去以后，左边目录会是这样"),
+    return h("div", {class: "tree", "aria-label": "足したあとの目次"},
+      h("span", {class: "t-h"}, "足すと、左の目次はこうなります"),
       h("ul", {}, secs.map(sec => h("li", {class: "t-sec", style: `--sc:${secOf(sec).color || "#1A1C22"}`},
         h("b", {class: "t-tag"}, secOf(sec).ja),
         h("ul", {}, [...new Set(rows.filter(r => r.sec === sec).map(r => r.sub || ""))].map(sub => {
@@ -1019,15 +1019,15 @@
     const nameOf = ([sec, g]) => sec === mainSec ? S.name : `${S.name} ${g[0].tail || g[0].label}`;
     const others = groups.filter(([sec]) => sec !== mainSec).map(([sec]) => secOf(sec).ja);
     const split = h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.arrange === "split"), onclick: () => set("arrange", "split")},
-      "每个板块一个版面" + (rec === "split" ? "（推荐）" : ""),
+      "ジャンルごとに 1 つの版面" + (rec === "split" ? "（おすすめ）" : ""),
       h("small", {}, groups.map(([sec, g]) => `「${nameOf([sec, g])}」→ ${secOf(sec).ja}（${g.map(f => f.label).join("・")}）`).join("、")),
-      h("small", {}, "每个板块都看得到对应的新闻。同一个板块里只有一个版面：同一板块的面合在一起（漫画・アニメ・映画都在「作品」里 → 一个版面，小分类「シリーズ」）；同一条新闻只出现在一个版面。"));
+      h("small", {}, "どのジャンルでも、そのニュースが見られます。1 つのジャンルに版面は 1 つ：同じジャンルの面はまとめます（マンガ・アニメ・映画はどれも「作品」→ 1 つの版面、小分類「シリーズ」）。同じニュースは 1 つの版面にだけ出ます。"));
     const merge = h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.arrange !== "split"), onclick: () => set("arrange", "merge")},
-      "全部合成一个版面" + (rec === "merge" ? "（推荐）" : ""),
-      h("small", {}, `新闻都在「${secOf(mainSec).ja}」的一个版面里` + (others.length ? `；${others.join("・")}的目录里放「⇄ 乗換」站，点了跳过去。` : "。")));
-    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, "怎么放？"),
+      "全部ひとつの版面にまとめる" + (rec === "merge" ? "（おすすめ）" : ""),
+      h("small", {}, `ニュースはすべて「${secOf(mainSec).ja}」の 1 つの版面に入ります` + (others.length ? `。${others.join("・")}の目次には「⇄ 乗換」の駅を置き、押すとそちらへ移ります。` : "。")));
+    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, "どう置きますか？"),
       h("div", {class: "opts", role: "radiogroup"}, split, merge),
-      h("div", {class: "subrow"}, h("h4", {}, `「${S.name}」本身放在哪个板块？（主）`),
+      h("div", {class: "subrow"}, h("h4", {}, `「${S.name}」自体はどのジャンルに置きますか？（主）`),
         h("div", {class: "opts", role: "radiogroup"}, groups.map(([sec, g]) => h("button", {type: "button", class: "opt", "aria-pressed": String(mainSec === sec),
           onclick: () => set("mainFacet", g[0].key)}, `${secOf(sec).ja}（${g.map(f => f.label).join("・")}）`)))),
       placeTree(), nav(true));
@@ -1045,13 +1045,13 @@
       S.auto.section = false; delete S.ans.subs; delete S.ans.also; draw();
     };
     const chosen = S.ans.sections;
-    const main = chosen.length > 1 ? h("div", {class: "subrow"}, h("h4", {}, "版面放在哪个？（主板块）"),
+    const main = chosen.length > 1 ? h("div", {class: "subrow"}, h("h4", {}, "版面をどこに置きますか？（主なジャンル）"),
       h("div", {class: "opts", role: "radiogroup"}, chosen.map(k => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.section === k),
         onclick: () => { S.ans.section = k; delete S.ans.subs; delete S.ans.also; draw(); }}, secOf(k).ja)))) : null;
-    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, "放在头版哪个板块？"),
-      h("p", {}, "按它本身是什么放（一个名字一个版面）。推荐的是按维基数据的说明、名字和你选的关注方面定的。"),
+    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, "トップのどのジャンルに置きますか？"),
+      h("p", {}, "それ自体が何かで置きます（1 つの名前に 1 つの版面）。おすすめは、Wikidata の説明・名前・選んだ面から決めています。"),
       h("div", {class: "opts secgrid", role: "group"}, SECS.map(x => h("button", {type: "button", class: "opt", "aria-pressed": String(chosen.includes(x.key)),
-        onclick: () => toggle(x.key)}, x.ja, rec.has(x.key) ? h("small", {}, "推荐") : null))),
+        onclick: () => toggle(x.key)}, x.ja, rec.has(x.key) ? h("small", {}, "おすすめ") : null))),
       main, nav(chosen.length > 0));
   }
 
@@ -1065,17 +1065,17 @@
     const pickNew = x => { const nm = x.names.ja || x.title; S.ans.parent = nm; S.ans.newParent = {...x, name: nm}; S.auto.parent = false;
                            delete S.ans.subs; S.ans.section = undefined; };
     const fresh = newSeries();
-    const opts = [...cand.map(i => ({v: i.name, label: i.name, hint: `推荐 · 跟着它放在「${secOf(i.section).ja}」` +
-                    (seriesOfPick().some(x => seriesItem(x) === i) ? "（维基数据：属于这个系列）" : "")})),
-                  ...fresh.map(x => ({v: "new:" + x.id, x, label: `一起添加上级「${x.names.ja || x.title}」`,
-                    hint: `维基数据：「${S.name}」属于这个系列${x.desc ? `（${x.desc}）` : ""}。会先加它，再把「${S.name}」挂在它下面`})),
-                  {v: "", label: "不属于任何一个", hint: "单独一个版面"}];
+    const opts = [...cand.map(i => ({v: i.name, label: i.name, hint: `おすすめ · これと同じ「${secOf(i.section).ja}」に置く` +
+                    (seriesOfPick().some(x => seriesItem(x) === i) ? "（Wikidata：このシリーズに属します）" : "")})),
+                  ...fresh.map(x => ({v: "new:" + x.id, x, label: `上位の「${x.names.ja || x.title}」も一緒に足す`,
+                    hint: `Wikidata：「${S.name}」はこのシリーズに属します${x.desc ? `（${x.desc}）` : ""}。先にこれを足し、その下に「${S.name}」を置きます`})),
+                  {v: "", label: "どれにも属さない", hint: "独立した版面"}];
     const cur = S.ans.newParent ? "new:" + S.ans.newParent.id : S.ans.parent;
-    const sel = h("select", {"aria-label": "从全部关注项里选上级", onchange: ev => { if (ev.target.value) { pick(ev.target.value); next(); } }},
-      h("option", {value: ""}, "其他关注项…"), rest.map(i => h("option", {value: i.name, selected: S.ans.parent === i.name}, `${i.name}（${secOf(i.section).ja}）`)));
-    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, fresh.length ? `「${S.name}」属于哪个系列？` : `「${S.name}」属于哪个已有的关注项？`),
-      h("p", {}, "同一个 IP、系列、品牌里的一部作品或一个商品，挂在它下面（比如「ちいかわ アニメ」挂在「ちいかわ」下面）。" +
-                 "放在同一个板块，同一条新闻只出现在下级的版面。只做一层。"),
+    const sel = h("select", {"aria-label": "すべての追いかけるものから上位を選ぶ", onchange: ev => { if (ev.target.value) { pick(ev.target.value); next(); } }},
+      h("option", {value: ""}, "ほかのもの…"), rest.map(i => h("option", {value: i.name, selected: S.ans.parent === i.name}, `${i.name}（${secOf(i.section).ja}）`)));
+    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, fresh.length ? `「${S.name}」はどのシリーズに属しますか？` : `「${S.name}」は、すでにあるどれに属しますか？`),
+      h("p", {}, "同じ IP・シリーズ・ブランドの作品や商品は、その下にぶら下げます（例：「ちいかわ アニメ」は「ちいかわ」の下）。" +
+                 "同じジャンルに置き、同じニュースは下位の版面にだけ出ます。1 段だけです。"),
       h("div", {class: "opts", role: "radiogroup"}, opts.map(o => h("button", {type: "button", class: "opt", "aria-pressed": String(cur === o.v),
         onclick: () => { if (o.x) pickNew(o.x); else pick(o.v); next(); }}, o.label, h("small", {}, o.hint)))),
       rest.length ? sel : null, nav(true));
@@ -1095,9 +1095,9 @@
     }
     const par = list.length ? relParent(list[0]) : "";
     return h("div", {class: "q"}, h("span", {class: "no"}, no()),
-      h("h3", {}, `「${ser.map(x => x.names.ja || x.title).join("・")}」里还有这些，也一起关注吗？`),
-      h("p", {}, "维基数据里属于同一个系列、或名字里有系列名的。可以多选，也可以都不要。" +
-                 "每个放进它自己的板块（活动・展览 → おでかけ・アート），各一个版面" + (par ? `，挂在「${par}」下面。` : "。")),
+      h("h3", {}, `「${ser.map(x => x.names.ja || x.title).join("・")}」には、こんなものもあります。一緒に追いかけますか？`),
+      h("p", {}, "Wikidata で同じシリーズ、または名前にシリーズ名を含むものです。複数選んでも、選ばなくても構いません。" +
+                 "それぞれ自分のジャンルに入り（イベント・展示 → おでかけ・アート）、1 つずつ版面になります" + (par ? `。「${par}」の下に置きます。` : "。")),
       ...body, placeTree(), nav(true));
   }
 
@@ -1115,14 +1115,14 @@
       return h("div", {class: "subrow"}, h("h4", {}, sc.label),
         h("div", {class: "opts", role: "radiogroup", "aria-label": sc.label}, vals.map(v => h("button", {type: "button", class: "opt",
           "aria-pressed": String(subs[sc.id] === v), onclick: () => { subs[sc.id] = v; S.auto.subs = false; draw(); }}, v))),
-        h("input", {type: "text", maxlength: 20, value: own, placeholder: "放不进去就自己写（日语、短）", "aria-label": `${sc.label}：自己写`,
+        h("input", {type: "text", maxlength: 20, value: own, placeholder: "当てはまらなければ自分で書く（日本語・短く）", "aria-label": `${sc.label}：自分で書く`,
           oninput: ev => { const t = ev.target.value.trim(); if (t) subs[sc.id] = t; else subs[sc.id] = vals[0]; S.auto.subs = false; okBtn.disabled = !done(); }}));
     });
     // 也放在的板块：各自的小分类（乗換の駅がその板块のどの小分類に並ぶか）
     const others = S.ans.parent ? [] : (S.ans.sections || []).filter(k => k !== S.ans.section);
     S.ans.also = Object.fromEntries(others.map(k => [k, S.ans.also?.[k] || alsoSubs(k)]));
     for (const k of others) {
-      rows.push(h("h4", {class: "alsoh"}, `⇄「${secOf(k).ja}」里的小分类（乗換の站）`));
+      rows.push(h("h4", {class: "alsoh"}, `⇄「${secOf(k).ja}」の小分類（乗換の駅）`));
       for (const sc of secOf(k).schemes || []) {
         const vals = (sc.values || []).map(vOf), cur = S.ans.also[k];
         rows.push(h("div", {class: "subrow"}, h("h4", {}, sc.label),
@@ -1131,11 +1131,11 @@
       }
     }
     const n = nav(done()); okBtn = n.querySelector(".main");
-    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, `「${sec.ja}」里的小分类`),
-      h("p", {}, "左边目录按它分组。每种分法各选一个，用哪种分法在本页上面的「目录的小分类分法」选。"), ...rows,
+    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, `「${sec.ja}」の小分類`),
+      h("p", {}, "左の目次はこれで分けます。分け方ごとに 1 つ選びます。どの分け方を使うかは、このページ上の「目次の小分類の分け方」で選びます。"), ...rows,
       h("div", {class: "opts"}, h("button", {type: "button", class: "opt auto", "aria-pressed": String(!!S.auto.subs),
         onclick: () => { S.ans.subs = guessSubs(S.ans.section); S.auto.subs = true; next(); }},
-        "不确定，你帮我定", h("small", {}, `会选：${Object.values(guessSubs(S.ans.section)).join(" · ") || "—"}`))), placeTree(), n);
+        "わからないので、おまかせ", h("small", {}, `会选：${Object.values(guessSubs(S.ans.section)).join(" · ") || "—"}`))), placeTree(), n);
   }
 
   function multi(id, ask, hint, opts, {other, min = 0} = {}) {
@@ -1143,7 +1143,7 @@
     const pickable = opts.filter(o => !o.only).map(o => o.v), now = S.ans[id] || [];
     const all = pickable.length >= 2 && pickable.every(v => now.includes(v));
     const selAll = pickable.length >= 2 ? h("button", {type: "button", class: "selall", "aria-pressed": String(all),
-      onclick: () => { S.auto[id] = false; S.ans[id] = all ? [] : [...pickable]; draw(); }}, all ? "取消全选" : `全选（${pickable.length}）`) : null;
+      onclick: () => { S.auto[id] = false; S.ans[id] = all ? [] : [...pickable]; draw(); }}, all ? "全部はずす" : `全部選ぶ（${pickable.length}）`) : null;
     const body = [h("span", {class: "no"}, no()), h("h3", {}, ask), hint ? h("p", {}, hint) : null, selAll, options(id, opts, true)];
     let okBtn;
     const valid = () => (S.ans[id] || []).length + (other && S.ans[id + "_other"] ? 1 : 0) >= min;
@@ -1271,20 +1271,20 @@
 
   // ---------- 汇总（最后一步；修改时直接从这里开始） ----------
   const FIELDS = [
-    ["subtitle", "副标题", "板块标题旁的小字，如日文名", "text"],
-    ["keywords", "搜索关键词", "每个词单独搜一次，一行一个；各语言的正式名称都写上", "lines"],
-    ["match", "只留提到这些词的", "标题或摘要里至少有一个，否则丢掉，一行一个；不填就用搜索关键词", "lines"],
-    ["priority", "最关心它的什么", "直接回答这个的新消息排最前面、做成大板块", "area"],
-    ["exclude", "不想看的词", "标题里有这些词的直接丢掉，一行一个", "lines"],
+    ["subtitle", "サブタイトル", "ジャンル見出しの横の小さな字（日本語名など）", "text"],
+    ["keywords", "検索キーワード", "1 語ずつ検索します。1 行に 1 語、各言語の正式名称も書きます", "lines"],
+    ["match", "これらの語が出るものだけ残す", "見出しか要約に 1 つは必要で、なければ捨てます。1 行に 1 語。空なら検索キーワードを使います", "lines"],
+    ["priority", "いちばん知りたいこと", "これに直接答える新しい記事を先頭に、大きく載せます", "area"],
+    ["exclude", "見たくない語", "見出しにこれらの語があるものは捨てます。1 行に 1 語", "lines"],
   ];
   const ADVANCED = [
-    ["urgent_patterns", "要紧消息规则", "标题命中这些正则的当天推 Discord，一行一条", "code"],
-    ["steam_appid", "Steam 编号", "Steam 商店网址里的数字，用来抓公告和价格", "text"],
-    ["anilist_id", "AniList 编号", "anilist.co 网址里的数字", "text"],
-    ["anilist_type", "AniList 类型", "ANIME 或 MANGA", "text"],
+    ["urgent_patterns", "急ぎのニュースのルール", "見出しがこれらの正規表現に当たると当日 Discord に送ります。1 行に 1 つ", "code"],
+    ["steam_appid", "Steam の番号", "Steam ストアの URL にある数字。お知らせと価格の取得に使います", "text"],
+    ["anilist_id", "AniList の番号", "anilist.co の URL にある数字", "text"],
+    ["anilist_type", "AniList の種類", "ANIME 或 MANGA", "text"],
     ["tmdb", "TMDB", "如 tv/1399 或 movie/693134", "text"],
-    ["site", "官网", "用来找封面图", "text"],
-    ["notes", "给 AI 编辑的背景说明", "读者是谁、已经知道什么、不报什么", "area"],
+    ["site", "公式サイト", "表紙の画像探しに使います", "text"],
+    ["notes", "AI 編集への背景メモ", "読者は誰か・何をすでに知っているか・何は載せないか", "area"],
   ];
 
   function review() {
@@ -1300,8 +1300,8 @@
     const types = h("select", {"data-k": "type"}, Object.entries(TYPES).map(([v, l]) => h("option", {value: v, selected: d.type === v}, l)));
     const section = h("select", {"data-k": "section", disabled: !!d.parent}, SECS.map(x => h("option", {value: x.key, selected: d.section === x.key}, x.ja)));
     const np = S.ans.newParent && d.parent === S.ans.newParent.name ? S.ans.newParent : null;
-    const parentSel = h("select", {"data-k": "parent"}, h("option", {value: ""}, "不属于（单独一个版面）"),
-      np ? h("option", {value: np.name, selected: true}, `${np.name}（新加的上级系列，和这一项放在同一个板块）`) : null,
+    const parentSel = h("select", {"data-k": "parent"}, h("option", {value: ""}, "属さない（独立した版面）"),
+      np ? h("option", {value: np.name, selected: true}, `${np.name}（新しく足す上位シリーズ。これと同じジャンルに置きます）`) : null,
       tops().map(i => h("option", {value: i.name, selected: d.parent === i.name}, `${i.name}（${secOf(i.section).ja}）`)));
     parentSel.addEventListener("change", () => {   // 上级を選んだら板块は上級と同じ（変えられない）
       const p = (CFG.items || []).find(i => i.name === parentSel.value);
@@ -1314,7 +1314,7 @@
       const cur = key === d.section ? d.subs || {} : guessSubs(key);
       subsBox.replaceChildren(...(secOf(key).schemes || []).map(sc => {
         const vals = uniq([...(sc.values || []).map(vOf), cur[sc.id]]);
-        return h("label", {}, h("span", {}, `小分类・${sc.label}`),
+        return h("label", {}, h("span", {}, `小分類・${sc.label}`),
           h("select", {"data-sub": sc.id}, vals.map(v => h("option", {value: v, selected: cur[sc.id] === v}, v))));
       }));
     };
@@ -1322,7 +1322,7 @@
     const alsoBox = h("div", {class: "alsobox"});
     const drawAlso = () => {
       const main = section.value, cur = d.also || {};
-      alsoBox.replaceChildren(h("span", {}, "也放在（目录里放 ⇄ 乗換的站，版面只有一个）"),
+      alsoBox.replaceChildren(h("span", {}, "ここにも置く（目次に「⇄ 乗換」の駅を置きます。版面は 1 つだけ）"),
         h("div", {class: "checks"}, SECS.filter(x => x.key !== main).map(x => h("label", {}, h("input", {type: "checkbox", value: x.key,
           checked: !!cur[x.key], "data-also": "", onchange: ev => { if (ev.target.checked) cur[x.key] = cur[x.key] || alsoSubs(x.key); else delete cur[x.key]; d.also = cur; drawAlso(); }}), x.ja))),
         ...Object.keys(cur).filter(k => k !== main).map(k => h("div", {class: "two subs"}, (secOf(k).schemes || []).map(sc =>
@@ -1337,7 +1337,7 @@
     const size = S.mode === "add" ? h("div", {class: "f"}, h("span", {}, "篇幅"), h("div", {class: "checks"}, ["S", "M", "L"].map(v =>
       h("label", {}, h("input", {type: "radio", name: "wl-size", value: v, checked: d.size === v}), v)))) : null;
     const msg = h("span", {class: "msg", role: "status"});
-    const send = h("button", {type: "button", class: "main", onclick: () => submit(form, msg, send)}, S.mode === "edit" ? "提交修改" : "提交");
+    const send = h("button", {type: "button", class: "main", onclick: () => submit(form, msg, send)}, S.mode === "edit" ? "変更を送る" : "送る");
     // test2：既定は 1 つの版面。ほかの板块の面（グッズ・イベント…）を別の版面（本体の下級）にするかは、ここで勾を付けたときだけ
     const others = S.mode === "add" && multiSec() ? chosenFacets().filter(f => f.sec !== facetOf(mainFacet()).sec) : [];
     const splitBox = others.length ? h("div", {class: "f", "data-split": ""}, h("span", {}, "版面"),
@@ -1349,35 +1349,35 @@
     if (!S.kids || S.kidsFor !== JSON.stringify([S.ans.facets, S.ans.arrange, S.ans.mainFacet])) {
       S.kids = buildChildren(d); S.kidsFor = JSON.stringify([S.ans.facets, S.ans.arrange, S.ans.mainFacet]);
     }
-    const kids = S.kids.length ? h("div", {class: "kids"}, h("span", {}, `一起加的版面（挂在「${S.name}」下面）`),
+    const kids = S.kids.length ? h("div", {class: "kids"}, h("span", {}, `一緒に足す版面（「${S.name}」の下に置きます）`),
       S.kids.map((x, i) => h("label", {class: "kid"}, h("input", {type: "checkbox", checked: x.on, onchange: ev => { x.on = ev.target.checked; }}),
         h("input", {type: "text", value: x.name, maxlength: 80, "aria-label": `${x.label}的版面名`, oninput: ev => { x.name = ev.target.value.trim(); }}),
-        h("small", {}, `${x.label} → ${secOf(x.config.section).ja}・${Object.values(x.config.subs).join(" · ")} · 搜索词：${x.config.keywords.slice(0, 3).join(" / ")}`)))) : null;
+        h("small", {}, `${x.label} → ${secOf(x.config.section).ja}・${Object.values(x.config.subs).join(" · ")} · 検索語：${x.config.keywords.slice(0, 3).join(" / ")}`)))) : null;
     const form = h("div", {class: "rv"},
-      S.mode === "add" ? h("label", {}, h("span", {}, "名字"), h("small", {}, "简报上显示的名字"),
+      S.mode === "add" ? h("label", {}, h("span", {}, "名前"), h("small", {}, "ページに表示される名前"),
         h("input", {type: "text", value: S.name, maxlength: 80, "data-k": "name"})) : null,
       splitBox,
       kids,
-      h("div", {class: "two"}, h("label", {}, h("span", {}, "类型"), types),
-        h("label", {}, h("span", {}, "板块"), section)),
+      h("div", {class: "two"}, h("label", {}, h("span", {}, "種類"), types),
+        h("label", {}, h("span", {}, "ジャンル"), section)),
       d.parent || S.kids.length || S.mode === "add" ? null : alsoBox,   // test2：新しく足すときは乗換の駅を置かない
-      (tops().length || np) && !S.kids.length ? h("label", {}, h("span", {}, "上级"), h("small", {}, "同一个 IP・系列・品牌里的作品或商品，挂在它下面；板块跟着上级"), parentSel) : null,
+      (tops().length || np) && !S.kids.length ? h("label", {}, h("span", {}, "上位"), h("small", {}, "同じ IP・シリーズ・ブランドの作品や商品はその下に置きます。ジャンルは上位に合わせます"), parentSel) : null,
       subsBox,
       size,
       FIELDS.map(field),
-      h("div", {class: "f"}, h("span", {}, "新闻语言"), langs),
-      h("details", {open: S.mode === "edit" ? null : null}, h("summary", {}, "高级：要紧消息规则、编号、官网、背景说明"),
+      h("div", {class: "f"}, h("span", {}, "ニュースの言語"), langs),
+      h("details", {open: S.mode === "edit" ? null : null}, h("summary", {}, "詳細：急ぎのニュースのルール・番号・公式サイト・背景メモ"),
         h("div", {class: "rv"}, ADVANCED.map(field))));
     return h("div", {class: "q"},
-      h("span", {class: "no"}, S.mode === "edit" ? "现在的设置" : "最后一步：看一眼"),
-      h("h3", {}, S.mode === "edit" ? `「${S.name}」现在是这样` : "按你的回答，会这样加进关注清单"),
-      h("p", {}, S.mode === "edit" ? `直接改下面的内容，或者「重新问一遍」按问题重新设置。提交后${eta()}生效，下面会显示进度。`
-                                   : `都可以直接改。提交后${eta()}加进关注清单，接着马上收集新闻（往前补抓 6 周），Discord 会收到通知；下面会显示进度。`),
+      h("span", {class: "no"}, S.mode === "edit" ? "いまの設定" : "最後：確認"),
+      h("h3", {}, S.mode === "edit" ? `「${S.name}」はいまこうなっています` : "答えた内容から、こう追加されます"),
+      h("p", {}, S.mode === "edit" ? `下の内容を直接変えるか、「最初から聞き直す」で質問からやり直せます。送信後、${eta()}反映され、下に進み具合が出ます。`
+                                   : `どれも直接変えられます。送信後、${eta()}追いかけるものに加わり、すぐニュースを集め（6 週間ぶんさかのぼります）、Discord に通知が届きます。下に進み具合が出ます。`),
       form,
       h("div", {class: "wnav"},
-        S.mode === "add" ? h("button", {type: "button", onclick: back}, "← 上一步")
-                         : h("button", {type: "button", onclick: () => { S.step = 0; S.ans = {}; draw(); }}, "重新问一遍"),
-        send, h("button", {type: "button", onclick: reset}, "取消"), msg));
+        S.mode === "add" ? h("button", {type: "button", onclick: back}, "← 前へ")
+                         : h("button", {type: "button", onclick: () => { S.step = 0; S.ans = {}; draw(); }}, "最初から聞き直す"),
+        send, h("button", {type: "button", onclick: reset}, "キャンセル"), msg));
   }
 
   function readForm(form) {
@@ -1404,15 +1404,15 @@
 
   function problems(d, name) {
     if (!name) return "名字要填";
-    if (!d.section) return "板块要选";
-    if ((secOf(d.section).schemes || []).some(sc => !(d.subs || {})[sc.id])) return "小分类每种分法都要选";
-    for (const [k, v] of Object.entries(d.also || {})) if ((secOf(k).schemes || []).some(sc => !v[sc.id])) return `「${secOf(k).ja}」的小分类每种分法都要选`;
-    if (!d.news_langs.length) return "至少选一种新闻语言";
-    for (const p of d.urgent_patterns || []) { try { new RegExp(p); } catch (_) { return `要紧消息规则写错了：${p.slice(0, 30)}…`; } }
-    for (const k of ["steam_appid", "anilist_id"]) if (d[k] !== "" && d[k] != null && !Number.isInteger(d[k])) return `${k} 要是数字`;
-    if (d.tmdb && !/^(tv|movie)\/\d+$/.test(d.tmdb)) return "TMDB 要写成 tv/1399 或 movie/693134";
-    if (d.site && !/^https?:\/\/\S+$/.test(d.site)) return "官网要是 http(s) 网址";
-    if (d.anilist_type && !["ANIME", "MANGA"].includes(d.anilist_type)) return "AniList 类型只能是 ANIME 或 MANGA";
+    if (!d.section) return "ジャンルを選んでください";
+    if ((secOf(d.section).schemes || []).some(sc => !(d.subs || {})[sc.id])) return "小分類は分け方ごとに選んでください";
+    for (const [k, v] of Object.entries(d.also || {})) if ((secOf(k).schemes || []).some(sc => !v[sc.id])) return `「${secOf(k).ja}」の小分類は分け方ごとに選んでください`;
+    if (!d.news_langs.length) return "ニュースの言語を 1 つ以上選んでください";
+    for (const p of d.urgent_patterns || []) { try { new RegExp(p); } catch (_) { return `急ぎのニュースのルールが正しくありません：${p.slice(0, 30)}…`; } }
+    for (const k of ["steam_appid", "anilist_id"]) if (d[k] !== "" && d[k] != null && !Number.isInteger(d[k])) return `${k} は数字にしてください`;
+    if (d.tmdb && !/^(tv|movie)\/\d+$/.test(d.tmdb)) return "TMDB は tv/1399 または movie/693134 の形で書いてください";
+    if (d.site && !/^https?:\/\/\S+$/.test(d.site)) return "公式サイトは http(s) の URL にしてください";
+    if (d.anilist_type && !["ANIME", "MANGA"].includes(d.anilist_type)) return "AniList の種類は ANIME か MANGA のみです";
     return "";
   }
 
@@ -1427,14 +1427,14 @@
     const bad = problems(d, name);
     const sayMsg = (t, cls) => { msg.textContent = t; msg.className = "msg " + (cls || ""); };
     if (bad) { sayMsg(bad, "err"); return; }
-    if (S.mode === "add" && CFG.items.some(i => i.name === name)) { sayMsg(`关注清单里已经有「${name}」了，在上面的列表里点「改」`, "err"); return; }
+    if (S.mode === "add" && CFG.items.some(i => i.name === name)) { sayMsg(`「${name}」はすでにあります。上の一覧で「改」を押してください`, "err"); return; }
     const config = {};
     for (const k of KEYS) {
       if (S.mode === "edit") { if (!same(k, d[k], S.original[k])) config[k] = d[k] ?? null; }
       else if (d[k] != null && d[k] !== "" && !(Array.isArray(d[k]) && !d[k].length)) config[k] = d[k];
     }
-    if (S.mode === "edit" && !Object.keys(config).length) { sayMsg("没有改动", "err"); return; }
-    btn.disabled = true; sayMsg("提交中…");
+    if (S.mode === "edit" && !Object.keys(config).length) { sayMsg("変更がありません", "err"); return; }
+    btn.disabled = true; sayMsg("送っています…");
     // 一起添加的上级系列（维基数据的 P179 / P8345 / P361）：先加系列，处理时它已经在了，这一项才能挂上去
     const np = S.mode === "add" && S.ans.newParent && d.parent === S.ans.newParent.name && !CFG.items.some(i => i.name === d.parent) ? S.ans.newParent : null;
     if (np) {
@@ -1446,8 +1446,8 @@
           body: JSON.stringify({p_account: window.WL_ACCOUNT, p_action: "add", p_name: np.name, p_config: {type: d.type, section: d.section, subs: {...d.subs, ...series},
             keywords: names.slice(0, 8), match: names, news_langs: d.news_langs, size: "M",
             notes: `维基数据：${np.title}${np.desc ? `（${np.desc}）` : ""}。设置页加「${name}」时一起加的上级系列。`}})});
-        if (!rp.ok) { const err = await rp.json().catch(() => ({})); sayMsg("上级系列没存上：" + (err.message || rp.status), "err"); btn.disabled = false; return; }
-      } catch (_) { sayMsg("连不上数据库", "err"); btn.disabled = false; return; }
+        if (!rp.ok) { const err = await rp.json().catch(() => ({})); sayMsg("上位シリーズを保存できませんでした：" + (err.message || rp.status), "err"); btn.disabled = false; return; }
+      } catch (_) { sayMsg("データベースにつながりません", "err"); btn.disabled = false; return; }
     }
     try {
       const r = await fetch(`${CFG.url}/rest/v1/rpc/submit_item`, {method: "POST",
@@ -1472,43 +1472,43 @@
               notes: `维基数据：${r.title}（${r.desc}）。设置页加「${name}」时一起加的同系列。`}})}).catch(() => null);
           if (rr?.ok) done.push(r.name);
         }
-        const what = S.mode === "edit" ? `已提交「${name}」的修改 ✓ 进度看下面「最近提交的」，会自动刷新`
-                                       : `已提交${np ? `上级「${np.name}」和` : ""}「${name}」${done.length ? `和 ${done.map(n => `「${n}」`).join("")}` : ""} ✓ 进度看下面「最近提交的」，会自动刷新`;
+        const what = S.mode === "edit" ? `「${name}」の変更を送りました ✓ 進み具合は下の「最近送ったもの」で見られ、自動で更新されます`
+                                       : `${np ? `上位の「${np.name}」と` : ""}「${name}」${done.length ? `と ${done.map(n => `「${n}」`).join("")}` : ""}を送りました ✓ 進み具合は下の「最近送ったもの」で見られ、自動で更新されます`;
         reset(); loadQueue();
         const note = box.querySelector(".hint, .q p"); if (note) { note.textContent = what; note.className = "msg ok"; }
         return;
       }
       const err = await r.json().catch(() => ({}));
-      sayMsg("没存上：" + (err.message || r.status), "err");
-    } catch (_) { sayMsg("连不上数据库", "err"); }
+      sayMsg("保存できませんでした：" + (err.message || r.status), "err");
+    } catch (_) { sayMsg("データベースにつながりません", "err"); }
     btn.disabled = false;
   }
 
   // ---------- 最近提交的（进度，有没处理完的就每 15 秒刷新一次） ----------
   // 一提交数据库就立刻叫 GitHub 的「网页请求」工作流（事件触发）：处理完标成 done，新增的马上开始收集新闻
-  const queueList = h("ul", {class: "queue", "aria-label": "最近提交的，自动刷新"});
-  const ago = t => { const m = Math.max(0, Math.round((Date.now() - new Date(t)) / 60000)); return m < 1 ? "刚刚" : m < 60 ? `${m} 分钟前` : `${Math.round(m / 60)} 小时前`; };
+  const queueList = h("ul", {class: "queue", "aria-label": "最近送ったもの（自動で更新）"});
+  const ago = t => { const m = Math.max(0, Math.round((Date.now() - new Date(t)) / 60000)); return m < 1 ? "たった今" : m < 60 ? `${m} 分前` : `${Math.round(m / 60)} 時間前`; };
   const progress = x => {
-    if (x.status === "skipped") return ["err", `没处理：${x.note || "内容不对"}`];
-    if (x.status === "done") return ["ok", x.action === "edit" ? "✓ 已改好，网页 1 分钟内更新（刷新本页就能看到）"
-                                                            : "✓ 已加进关注清单，首页已经有它的版面，新闻收集完（几分钟）就会出现"];
+    if (x.status === "skipped") return ["err", `処理されませんでした：${x.note || "内容が正しくありません"}`];
+    if (x.status === "done") return ["ok", x.action === "edit" ? "✓ 変更しました。ページは 1 分ほどで更新されます（このページを読み込み直すと見られます）"
+                                                            : "✓ 追加しました。トップにもう版面があり、ニュースの収集が終わる（数分）と並びます"];
     const m = (Date.now() - new Date(x.created_at)) / 60000;
-    if (!INSTANT) return ["wait", "已收到 ✓ 还没设 GitHub 令牌，下次每 2 小时的更新时处理"];
-    return ["wait", m < 5 ? "已收到 ✓ 已经叫 GitHub 马上处理，网页正在重新生成"
-                          : "已收到 ✓ GitHub 这次有点慢，还在处理"];
+    if (!INSTANT) return ["wait", "受け付けました ✓ GitHub のトークンが未設定のため、2 時間ごとの次の更新で処理します"];
+    return ["wait", m < 5 ? "受け付けました ✓ GitHub にすぐ処理を頼みました。ページを作り直しています"
+                          : "受け付けました ✓ GitHub が少し遅く、まだ処理中です"];
   };
   let timer = null;
   // 数据库里设了 GitHub 令牌（db/instant.sql）时，提交后立刻叫 GitHub 处理；没设就等每 2 小时的更新
   let INSTANT = false;
-  const eta = () => INSTANT ? "马上" : "下次更新时（最多 2 小时）";
+  const eta = () => INSTANT ? "すぐ" : "次の更新のとき（最長 2 時間）";
   function loadQueue() {
     if (!CFG.url || !CFG.key) return;
     fetch(`${CFG.url}/rest/v1/rpc/list_item_requests`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"}, body: JSON.stringify({p_account: window.WL_ACCOUNT})})
       .then(r => r.ok ? r.json() : []).then(list => {
         list = list || [];
-        queueList.replaceChildren(...(list.length ? [h("li", {class: "qh"}, "最近提交的（自动刷新）")] : []), ...list.map(x => {
+        queueList.replaceChildren(...(list.length ? [h("li", {class: "qh"}, "最近送ったもの（自動で更新）")] : []), ...list.map(x => {
           const [cls, text] = progress(x);
-          return h("li", {}, h("b", {}, x.name), h("span", {}, ` · ${x.action === "edit" ? "修改" : "新增"} · ${ago(x.created_at)}`),
+          return h("li", {}, h("b", {}, x.name), h("span", {}, ` · ${x.action === "edit" ? "変更" : "追加"} · ${ago(x.created_at)}`),
             h("strong", {class: "st-" + cls}, text));
         }));
         qNeed = list.some(x => x.status === "pending"); qFail = false; qArm();
@@ -1540,7 +1540,7 @@
   };
 
   if (!CFG.url || !CFG.key) {
-    box.replaceChildren(h("h2", {}, "＋ 新增关注项"), h("p", {class: "hint"}, "还没连数据库（items.yaml 的 supabase_url / supabase_key），暂时只能跟 Claude 说。"));
+    box.replaceChildren(h("h2", {}, "＋ 追いかけるものを足す"), h("p", {class: "hint"}, "まだデータベースにつながっていません（items.yaml の supabase_url / supabase_key）。いまは Claude に伝えてください。"));
     return;
   }
   reset();
@@ -1549,7 +1549,7 @@
     .then(r => r.ok ? r.json() : false).then(on => {
       INSTANT = on === true;
       const el = document.getElementById("wl-eta");
-      if (el && INSTANT) el.textContent = "马上叫 GitHub 更新网页";
+      if (el && INSTANT) el.textContent = "GitHub にすぐページの更新を頼みます";
       if (INSTANT) loadQueue();
     }).catch(() => {});
 })();

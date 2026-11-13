@@ -85,7 +85,7 @@ class RenderJsBugs(unittest.TestCase):
         # 頭条の縦長の写真：枠の形・fill・objectPosition の 3 文が、直前のコメントに飲まれていた（2026-11-13）
         s = cut(part("頭条のポスター"), "if (!ok && r0 < 1 && innerWidth > 760) {", "img.style.objectPosition = '';")
         pre = ("const p={style:{},classList:{s:new Set(),add(c){this.s.add(c)}}};const img={style:{objectPosition:'x'}};"
-               "const ok=false,r0=.7,innerWidth=1200,innerHeight=800,w0=400,h0=300,nat=.7,top={},fr=null,trimFit=()=>{};")
+               "const window={},ok=false,r0=.7,innerWidth=1200,innerHeight=800,w0=400,h0=300,nat=.7,top={},fr=null,trimFit=()=>{};")
         out = node(pre + s + "\n}\nconsole.log(JSON.stringify([p.style.aspectRatio,p.classList.s.has('fill'),img.style.objectPosition]))")
         self.assertEqual(out, ["0.7000", True, ""])
 

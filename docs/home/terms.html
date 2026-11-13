@@ -789,7 +789,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .pic img{transition:opacity .3s ease-out}
 .emb-fade .pic img:not(.bg):not(.ico):not(.ld){opacity:0}  /* 記事の写真も同じ：届くまで枠の薄い地だけ、届いたら ふわっと（背景のぼかし .bg と来源の小さい印 .ico はそのまま） */
 @media (prefers-reduced-motion:reduce){.pic img{transition:opacity .15s linear}}
-.emb-fade .emb-in:has(img:not(.ld)){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
+.emb-fade .emb-in:has(img:not(.ld):not([width])){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}.emb img{transition:opacity .2s linear}.emb-fade .emb img:not(.ld){transform:none}}
 .boom{position:fixed;z-index:60;width:0;height:0;pointer-events:none}
 .boom>svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
@@ -930,6 +930,8 @@ section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24
  .nav .mtabs a.on{opacity:1;box-shadow:3px 3px 0 var(--gold)}
  .nav .rail{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 16px;border-top:1px solid rgba(251,248,241,.18)}
  .nav:not(.insec) .rail{display:none}
+ .nav .rail{position:absolute;left:0;right:0;top:100%;background:var(--ink)}   /* 作品の段は帯の下に重ねる（流れの外）：版面に入って段が出ても、下の全部を押し下げない（審美基準 F5。前は 46px ずれた）。吸着の余白・版面の予算は --bar-full で段の分を取る */
+ .nav.insec .bar{bottom:calc(var(--bar-tabs) - var(--bar-full))}   /* 進み具合の線は作品の段の下の端に */
  .nav .nslot{display:none}
  .nav .nslot.cur,.nav .nbody{display:contents}
  .nav .nsec,.nav .nsubs,.nav .nlab,.nav .nmore{display:none!important}
@@ -1279,6 +1281,10 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 .wl-toast[hidden]{display:none}
 html[data-lock="1"] [data-vote]{cursor:not-allowed}
 .wl-ro{margin:0 0 4px;padding:8px 12px;border:2px dashed var(--ink);background:var(--sheet);font:700 13px/1.6 var(--font-sans)}
+/* 見るだけ（ログインなし）：止めている操作は薄くして、押せないとわかるように（クリックは AUTH_JS が止めて理由を言う）。
+   設定ページは ページ全体の入力部品、欲しい物ページは「写真で足す」の箱だけ */
+html[data-lock="1"][data-page="settings"] .page :is(button,input,select,textarea,[contenteditable]),
+html[data-lock="1"][data-page="wishlist"] #snap :is(button,input,textarea,.drop){opacity:.45;cursor:not-allowed}
 html[data-gate="1"] body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
@@ -1429,7 +1435,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     gate2:'<div><h1>管理ページ<\/h1><p>',
     gate3:'店長だけが見られます。店長のメールアドレスとパスワードでログインしてください。',
     gate4:'<a href="./">← ウォッチリスト通信に戻る<\/a><\/div>',
-    readOnlyNote1:'見るだけです。設定を変えるには「ログイン」から。',
+    readOnlyNote1:'見るだけです。設定を変えるには「ログイン」から。',readOnlyNote2:'見るだけです。欲しい物を足すには「ログイン」から。',
     secJa1:'その他',
     mine1:'<p class="wl-msg" role="status">読み込み中…<\/p>',
     route1:'あなたが足したもの',
@@ -1626,13 +1632,16 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     bindLogin(g);
   }
   function readOnlyNote(){
-    if(page!=='settings') return;
-    var n=document.querySelector('.wl-ro');
-    if(!locked()){if(n) n.remove(); return;}
-    if(n) return;
-    n=document.createElement('p'); n.className='wl-ro';
-    n.textContent=R.dataset.sb==='down'?L.pausedRO:L.readOnlyNote1;
-    var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
+    if(page!=='settings'&&page!=='wishlist') return;
+    var ns=document.querySelectorAll('.wl-ro');
+    if(!locked()){ns.forEach(function(n){n.remove();}); return;}
+    if(ns.length) return;
+    // 設定：ページの上と「追いかけるものを足す」の上。欲しい物：「写真で足す」の上（押せない箱のすぐ上に理由を置く）
+    var txt=R.dataset.sb==='down'?L.pausedRO:page==='wishlist'?L.readOnlyNote2:L.readOnlyNote1;
+    function put(before){ var n=document.createElement('p'); n.className='wl-ro'; n.textContent=txt; before.parentNode.insertBefore(n,before); }
+    if(page==='wishlist'){ var sn=document.getElementById('snap'); if(sn) put(sn); return; }
+    var at=document.querySelector('.page'); if(at) put(at.firstChild);
+    var wz=document.getElementById('wiz'); if(wz) put(wz);
   }
   // お客さま自分のページ（2026-10-22，用户定的：アカウントは 1 つずつ独立。ログインしたお客さまに店長の中身は出さない）。
   // 簡報・欲しい物・話題度・設定で、店長の中身の代わりに自分の（最初は空の）ページを出す。中身は Supabase の my_page()（本人の行だけ、db/my_page.sql）。

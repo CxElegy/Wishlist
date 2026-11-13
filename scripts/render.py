@@ -675,7 +675,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .pic img{transition:opacity .3s ease-out}
 .emb-fade .pic img:not(.bg):not(.ico):not(.ld){opacity:0}  /* 記事の写真も同じ：届くまで枠の薄い地だけ、届いたら ふわっと（背景のぼかし .bg と来源の小さい印 .ico はそのまま） */
 @media (prefers-reduced-motion:reduce){.pic img{transition:opacity .15s linear}}
-.emb-fade .emb-in:has(img:not(.ld)){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
+.emb-fade .emb-in:has(img:not(.ld):not([width])){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}.emb img{transition:opacity .2s linear}.emb-fade .emb img:not(.ld){transform:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
@@ -782,6 +782,8 @@ section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24
  .nav .mtabs a.on{opacity:1;box-shadow:3px 3px 0 var(--gold)}
  .nav .rail{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 16px;border-top:1px solid rgba(251,248,241,.18)}
  .nav:not(.insec) .rail{display:none}
+ .nav .rail{position:absolute;left:0;right:0;top:100%;background:var(--ink)}   /* 作品の段は帯の下に重ねる（流れの外）：版面に入って段が出ても、下の全部を押し下げない（審美基準 F5。前は 46px ずれた）。吸着の余白・版面の予算は --bar-full で段の分を取る */
+ .nav.insec .bar{bottom:calc(var(--bar-tabs) - var(--bar-full))}   /* 進み具合の線は作品の段の下の端に */
  .nav .nslot{display:none}
  .nav .nslot.cur,.nav .nbody{display:contents}
  .nav .nsec,.nav .nsubs,.nav .nlab,.nav .nmore{display:none!important}
@@ -1492,7 +1494,8 @@ def _emblem_img(a):
         k = ' style="--bl:{:.3f};--bf:{:.3f};--bc:{:.3f};--ba:{:.3f};--be:{:.3f}{}"'.format(b[5] if len(b) > 5 else b[1] - b[0], b[1], b[2], b[3], b[0],
                                                                                   (f';--fh:{a["bf"]:.3f}' + (f';--ft:{a["bt"]:.3f}' if a.get("bt") else "")) if a.get("bf") else "")   # --be 目の線・--fh 顔の高さ・--ft 顔の上の端：顔の下限（I1c）
     body_cls = (" body cut" if a["body"][1] > 1 else " body") if a.get("body") else " nb" if a.get("nb") else " fz" if m and m >= 1 else ""
-    img = (f'<img class="{a["shape"]}{body_cls}"{k} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-e="x">')
+    wh = f' width="{a["w"]}" height="{a["h"]}"' if a.get("w") and a.get("h") else ""   # 届く前から絵の形の場所を取る（F5）
+    img = (f'<img class="{a["shape"]}{body_cls}"{k}{wh} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-e="x">')
     c = a.get("crop")
     ar = a.get("ar")
     if a["shape"] == "badge" and not c and (a.get("plate") or ar and not (CARD_AR[0] <= float(ar) <= CARD_AR[1])):
@@ -1515,6 +1518,32 @@ def mark_own_emblems(item):
     作品のポスター（work）は emblem 側の印で足りる。それ以外のキャラは記事に名前が出たときだけ関係ありとする（EMB_REL_JS）。"""
     own = {_own_key(t) for t in [item.get("name"), *(item.get("keywords") or []), *(item.get("match") or [])] if isinstance(t, str)} - {""}
     return [({**x, "_own": True} if isinstance(x, dict) and _own_key(x.get("subject")) in own else x) for x in item.get("emblem") or []]
+
+
+_EMB_DIMS = {}
+
+
+def _emb_size(src):
+    """小元素の絵の元の大きさ (幅, 高さ)。<img> に書いて、届く前から場所を取る（審美基準 F5：描いた後に動かない）。
+    倉庫の絵（docs/<面>/emblems/・docs/emblems/）は読んで、twemoji は 36×36（svg の viewBox）。分からない外の絵は None（届いたら 1 回だけ測る）。"""
+    if src in _EMB_DIMS:
+        return _EMB_DIMS[src]
+    wh = None
+    if "/twemoji@" in src:
+        wh = (36, 36)
+    elif re.fullmatch(r"emblems/[a-z0-9-]+\.webp", src):
+        for d in (sitedir.SITE_DIR, sitedir.ROOT / "docs"):
+            f = d / src
+            if f.is_file():
+                try:
+                    from PIL import Image
+                    with Image.open(f) as im:
+                        wh = im.size
+                except Exception:   # noqa: BLE001  読めない絵は測らない（網页の作りは止めない）
+                    wh = None
+                break
+    _EMB_DIMS[src] = wh
+    return wh
 
 
 def _emblem(items, ring="accent"):
@@ -1568,6 +1597,9 @@ def _emblem(items, ring="accent"):
             a["shape"] = "logo"   # 名前が logo の画像（shape が cutout のまま網址で引いた ArcheAge_Logo.png）は人物でなくロゴ：顔の物差しに入れない
         if x.get("plate"):   # 濃い地の板ごとのタイトルロゴ：カードの窓で切らず、板そのものに枠
             a["plate"] = True
+        wh = _emb_size(a["src"])
+        if wh:
+            a["w"], a["h"] = wh   # 元の大きさ：EMB_JS が差し替えた <img> にも width/height を書く（F5）
         alts.append(a)
     alts = alts[:max(EMB_TOP, -(-len(alts) // 5))]   # 版面の顔に出すのは「知られている順」の上位だけ（並びは名簿の順）。脇役は管理ページの一覧に残る
     _body_len(alts)
@@ -1813,7 +1845,7 @@ SHUFFLE_JS = """
     showFlat(false);
     if (innerWidth <= 760) return;
     if (sm.length < 2) return;
-    const T = innerHeight - (parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0) - 16, w0 = sm[0].querySelector('.pic')?.getBoundingClientRect().width || 200;
+    const T = (window.WLvh || innerHeight) - (parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0) - 16, w0 = sm[0].querySelector('.pic')?.getBoundingClientRect().width || 200;
     const hk = k => k ? k.getBoundingClientRect().height : 0;
     const apply = h => {
       wishGrid.style.setProperty('--pkh', Math.round(h) + 'px'); wishGrid.style.removeProperty('--pkbig');
@@ -2105,13 +2137,21 @@ LIKEFX_JS = likefx.FX_JS.replace("__THUMB__", json.dumps(_THUMB))
 EMB_HEAD_JS = ("document.documentElement.classList.add('emb-fade');"
                "if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)"
                "document.documentElement.classList.add('emb-js')")
+# URL 欄の出入りの門（審美基準 F5）：スマホで URL 欄が隠れる・出るたびに resize（幅は同じで高さだけ数十 px）が来て、
+# 版面の高さの予算（画面の高さの割合）が変わり、全版面を組み直していた。幅が同じで高さだけ 160px 未満の変化は、ほかの resize の聞き手に渡さない
+# （<head> で最初に聞くので stopImmediatePropagation が効く）。版面の高さの予算は window.WLvh（門を通った高さ）で計る
+VIEW_GATE_JS = ("(function(){var W=innerWidth,H=innerHeight;window.WLvh=H;addEventListener('resize',function(e){var w=innerWidth,h=innerHeight;"
+                "if(e.isTrusted&&w===W&&Math.abs(h-H)<160&&(w<=760||matchMedia('(pointer:coarse)').matches)){e.stopImmediatePropagation();return}"
+                "W=w;H=h;window.WLvh=h},true)})();")
 EMB_JS = """
 (() => {
   const els = [...document.querySelectorAll('.emb')];
   // 1 枚の小元素を差し替える（開いたときのランダムと、読めなかったときの次の候補で同じ形）
   const put = (el, img, a) => {
       const inner = el.querySelector('.emb-in');
-      const n = img.cloneNode(); n.src = a.src; n.classList.remove('ld');
+      // 前の絵を写さず（cloneNode は前の絵の width/height・形を持ち越す）新しく作り、元の大きさを書いてから src を入れる：届く前から場所を取る（審美基準 F5）
+      const n = document.createElement('img'); n.alt = ''; n.loading = img.loading; n.decoding = 'async'; n.referrerPolicy = 'no-referrer'; n.dataset.e = 'x';
+      if (a.w && a.h) { n.width = a.w; n.height = a.h; }
       const whole = a.shape === 'badge' && !a.crop && (a.plate || a.ar && (a.ar < 0.95 || a.ar > 1.6));   // render.CARD_AR：カードと比率が離れたら切らない
       n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : a.nb ? ' nb' : a.m >= 1 ? ' fz' : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
       n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] + ';--be:' + a.body[0] + (a.bf ? ';--fh:' + a.bf + (a.bt ? ';--ft:' + a.bt : '') : '') : a.nb ? '--nh:' + a.nb[0] + ';--ng:' + a.nb[1] + ';--na:' + a.nb[2] : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) + (a.m >= 1 && a.fs ? ';--fs:' + a.fs + (a.fa ? ';--fa:' + a.fa : '') : '') : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';   // a.m = emblem_face.fit
@@ -2120,6 +2160,7 @@ EMB_JS = """
         c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1);
         c.appendChild(n); inner.replaceChildren(c);
       } else inner.replaceChildren(n);
+      n.src = a.src;
       return n;
   };
   const altsOf = el => { try { return JSON.parse(el.dataset.alts || '[]'); } catch (_) { return []; } };
@@ -2128,7 +2169,7 @@ EMB_JS = """
     const tried = (el.dataset.tried ? el.dataset.tried.split('\\n') : []).concat(img.getAttribute('src') || '');
     const a = altsOf(el).find(x => x && x.src && !tried.includes(x.src)); el.dataset.tried = tried.join('\\n');
     if (!a) return false;
-    const n = put(el, img, a); const show = () => n.classList.add('ld'); (n.decode ? n.decode() : Promise.reject()).then(show, show); return true; };
+    const n = put(el, img, a); const show = () => n.classList.add('ld'); (n.decode ? n.decode() : Promise.reject()).then(show, show); settle(el); watch(el); return true; };
   els.forEach(el => {
     const alts = altsOf(el), img = el.querySelector('img');
     if (alts.length > 1 && el.querySelector('.emb-in') && img)
@@ -2170,26 +2211,39 @@ EMB_JS = """
     Promise.all(first.map(i => new Promise(r => { i.addEventListener('load', r, { once: true }); i.addEventListener('error', r, { once: true }); }))).then(start); setTimeout(start, 2500); }
   const near = ev => { const a = ev.target.closest && ev.target.closest('a[href^="#"]'), s = a && document.getElementById(a.getAttribute('href').slice(1)); if (s) pull(s.closest('section') || s, true); };
   ['pointerover', 'touchstart', 'focusin'].forEach(n => document.addEventListener(n, near, { passive: true }));
-  // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）
-  const room = el => { const band = el.parentElement, img = el.querySelector('img'); if (!band || !img) return;
-    const go = () => { const b = band.getBoundingClientRect(), r = el.getBoundingClientRect();
-      if (r.width) band.style.paddingRight = Math.ceil(b.right - r.left + 12) + 'px'; };
-    if (img.complete) go(); else img.addEventListener('load', go, { once: true }); };
   // はみ出し（案 A：絵の高さの --r＝15% を帯の上の縁から外へ）。下端は帯の線のまま：帯が背の高いスマホでは絵を最大 1.15 倍に、それでも届かなければ持ち上げる（--lift）
-  const place = el => { const band = el.parentElement, c = el.querySelector('.emb-in > *'); if (!band || !c) return;
+  // 倍率 --s は最初に 1 回だけ決める（keep で持ち上げ --lift だけ帯の高さに合わせ直す）。倍率と帯の右の空きが互いを書き合うと、帯の高さ・「今週」の行が止まらない（審美基準 F5）
+  const place = (el, keep) => { const band = el.parentElement, c = el.querySelector('.emb-in > *'); if (!band || !c) return;
     const r = parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0, z = parseFloat(getComputedStyle(el).getPropertyValue('--z')) || 1, h = el.offsetHeight - c.offsetTop;   // 帯の線より上に見える高さ（足の下の余りは clip-path で切れる）
     if (!h || !r) return;
-    const avail = band.offsetHeight - 8, s = Math.min(Math.max(avail / ((1 - r) * h), z), z * 1.15), lift = -Math.max(0, avail - s * h * (1 - r));
+    const avail = band.offsetHeight - 8, s0 = parseFloat(el.style.getPropertyValue('--s')), s = keep && s0 ? s0 : Math.min(Math.max(avail / ((1 - r) * h), z), z * 1.15), lift = -Math.max(0, avail - s * h * (1 - r));
     el.style.setProperty('--s', s.toFixed(3)); el.style.setProperty('--lift', lift.toFixed(1) + 'px');
     // 帯の上にはみ出す高さ（＋浮く 6px・傾きで上がる角 12px）を版面に持たせる：吸着の位置（scroll-margin-top）と版面の間を、その分だけ上へ。
     // 版面を画面の上にそろえた時も小元素が全部見え、上の版面にも重ならない（審美基準 E4・I1b。2026-11-11 店長「scroll 对齐的时候也要小图标全部显示出来」）
     const sec = band.closest('section'); if (!sec) return;
     const ov = Math.ceil(Math.max(0, s * h - avail - lift + 6 + 12)), was = +sec.dataset.embov || 0;
     sec.style.setProperty('--embov', ov + 'px'); sec.dataset.embov = ov;
-    if (ov !== was) { clearTimeout(place.t); place.t = setTimeout(() => dispatchEvent(new Event('resize')), 60); } };   // 画面 1 枚に入れる高さが変わった：版面の組み直しをもう一度
-  els.forEach(el => { const img = el.querySelector('img'); if (img && !img.complete) img.addEventListener('load', () => place(el), { once: true }); place(el); });
-  els.forEach(room);
-  addEventListener('resize', () => els.forEach(el => { place(el); room(el); }));
+    if (ov !== was) { clearTimeout(place.t); place.t = setTimeout(() => dispatchEvent(new Event('resize')), 60); } };   // 画面 1 枚に入れる高さが変わった：版面の組み直しをもう一度（作った resize は下の門を通る・小元素は組み直さない）
+  // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）。ここ 1 か所だけが書く。
+  // 変形の前の箱（offsetLeft/Top）で測り、変形（倍率 --s・傾き 6°・浮く動き embdrift の 3°）は式で足す：スクロールや絵の到着で値が変わらない（F5。前は変形の後の箱を測り 118↔192px を行き来した）
+  const TILT = 9 * Math.PI / 180;
+  const room = el => { const band = el.parentElement; if (!band || !el.offsetWidth) return;
+    const ox = el.offsetLeft + el.offsetWidth, oy = el.offsetTop + el.offsetHeight, s = parseFloat(el.style.getPropertyValue('--s')) || 1;   // 変形の基点：小元素の右下
+    let far = 0;
+    el.querySelectorAll('img').forEach(i => { let x = 0, y = 0, n = i; while (n && n !== band) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+      if (!i.offsetWidth) return; far = Math.max(far, (ox - x) * Math.cos(TILT) + Math.max(0, oy - y) * Math.sin(TILT)); });
+    if (!far) return;
+    const need = Math.ceil(band.clientWidth - ox + s * far + 12);
+    if (Math.abs((parseFloat(band.style.paddingRight) || 0) - need) > 1) band.style.paddingRight = need + 'px'; };
+  const settle = el => { place(el); room(el); place(el, 1); };   // 倍率を決める → その倍率で右を空ける → 空けて変わった帯の高さに持ち上げだけ合わせる
+  // 絵の到着：width/height を書いた絵（倉庫の絵・twemoji）は届く前に正しい場所を取っているので何もしない。書いていない・届いた形が違う絵だけ 1 回取り直す
+  const watch = el => { const img = el.querySelector('img'); if (!img || img.complete) return;
+    img.addEventListener('load', () => { const w = +img.getAttribute('width'), h = +img.getAttribute('height');
+      if (!(w && h) || Math.abs(img.naturalWidth / img.naturalHeight - w / h) > 0.02) settle(el); }, { once: true }); };
+  els.forEach(settle); els.forEach(watch);
+  if (document.fonts) document.fonts.ready.then(() => els.forEach(settle));   // 字体が届くと題字の幅・帯の高さが変わる：読み込みの中で 1 回だけ
+  let embW = innerWidth;   // 幅が変わったときだけ組み直す（URL 欄の出入り・自分で起こした resize では組み直さない）
+  addEventListener('resize', () => { if (innerWidth === embW) return; embW = innerWidth; els.forEach(settle); });
   if (!els.length || !document.documentElement.classList.contains('emb-js')) return;
   // 下へスクロールして見えたら飛び出す（.in）。上へ戻って版面が画面の下へ消えたら、引っ込んで消える（.out）→ もう一度下へ来るとまた飛び出す
   const io = new IntersectionObserver(es => es.forEach(en => {
@@ -2233,8 +2287,10 @@ RB_JS = """
     const f = () => { const k = Math.min(1, Math.max(0, (performance.now() - t0) / D)); sp.textContent = fmt(sp, Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1 && !document.hidden) requestAnimationFrame(f); else sp.textContent = fmt(sp, to); };
     requestAnimationFrame(f); };
   const cu = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { cu.unobserve(e.target); count(e.target); } }), { threshold: .6 });
+  // 途中の数は、最後の数が取った場所の中で描く（審美基準 E5）。場所は px でなく字の幅（ch・tabular-nums）で取る：字体があとから届いて数字の幅が変わっても、箱が数字に合わせて伸び縮みしない
   const ws = nums.map(sp => sp.getBoundingClientRect().width);   // 幅を全部読んでから書く（1 回の計算で済む）
-  nums.forEach((sp, i) => { if (!ws[i]) return; sp.style.minWidth = ws[i] + 'px'; sp.textContent = '0'; cu.observe(sp); });
+  nums.forEach((sp, i) => { const d = sp.dataset.to.length, c = (sp.textContent.match(/,/g) || []).length; if (!ws[i] || !d) return;
+    sp.style.minWidth = 'max(' + Math.ceil(ws[i]) + 'px, calc(' + d + 'ch + ' + (c * 0.35).toFixed(2) + 'em))'; sp.textContent = '0'; cu.observe(sp); });
   // ---------- 頭条：Blur Text（見出しが語ごとにぼけからピントが合う。1 回・1 秒ほど。スマホは opacity だけ）＋ Star Border ----------
   const h = document.querySelector('.top h2');
   if (h) { const keep = h.innerHTML, us = [], CJK = /[\\u3000-\\u9fff\\uff00-\\uffef]/, tw = document.createTreeWalker(h, NodeFilter.SHOW_TEXT), nodes = []; let n;
@@ -2276,17 +2332,10 @@ def _asset_ver(name):
         return "0"
 
 
-SETTINGS_ZH = {
-    "lang": "zh-CN", "also": "⇄ 也在 {}", "title": "设置", "back": "← 回到简报", "back_href": "index.html", "updated": "更新于", "add": "",
-    "links": '<p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a>　<a href="admin.html">管理页（运行状况・投票・各关注项的记事数）→</a></p>',
-    "intro": '点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，<span id="wl-eta">下次更新时（最多 2 小时）网页按新的设置更新</span>。',
-    "legend": "<dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd>",
-    "theme_h": "网站配色", "theme_intro": "形状不变，只换颜色。点一下马上换，这台设备会记住（板块里作品自己的颜色不变）。", "theme_default": "默认",
-    "sch_h": "目录的小分类分法", "sch_intro": "每个板块选一种分法：左边目录的小分类札、板块里版面的排序都按它来。选了网页大约 1 分钟后更新。",
-    "sch_aria": "的小分类分法", "size_aria": "的篇幅",
-    "js_nodb": "未连数据库", "js_saving": "保存中…", "js_saved": "已保存 ✓", "js_fail": "没存上", "js_offline": "连不上"}
 # お客さま本人の設定ページ（user_pages.py）。画面の文字は日本語（app_users.ui_lang、今の登録者は日本語）
 SETTINGS_JA = {
+    "edit": "変更", "del": "削除", "edit_aria": "{} を変更", "del_aria": "{} を削除", "secdel": "このジャンルを削除", "secdel_aria": "ジャンル {} のすべてを削除",
+    "wiz_h": "＋ 追いかけるものを足す", "wiz_load": "読み込み中…",
     "lang": "ja", "also": "⇄ {} にも", "first_board": "はじめに", "title": "設定", "back": "← 自分のページへ", "back_href": "./", "updated": "更新", "add": "＋ 追いかけるものを足す", "links": "",
     # 0 個の人の入口の文字（設定ページ・最初のポスター・本人のページの静かな版面）。Python 側の日本語はここに置く（tests が数える）
     "picks_flag": "あなたへのおすすめ",
@@ -2298,7 +2347,21 @@ SETTINGS_JA = {
     "theme_h": "サイトの配色", "theme_intro": "形はそのまま、色だけ変わります。押すとすぐ変わり、この端末が覚えます（版面の中の作品の色は変わりません）。", "theme_default": "標準",
     "sch_h": "目次の小分類の分け方", "sch_intro": "ジャンルごとに 1 つ選ぶと、左の目次の札とジャンルの中の版面の並びがその分け方になります。",
     "sch_aria": "の小分類の分け方", "size_aria": "の大きさ",
-    "js_nodb": "つながっていません", "js_saving": "保存しています…", "js_saved": "保存しました ✓", "js_fail": "保存できませんでした", "js_offline": "つながりません"}
+    "js_nodb": "つながっていません", "js_saving": "保存しています…", "js_saved": "保存しました ✓", "js_fail": "保存できませんでした", "js_offline": "つながりません",
+    # 削除・外す（確認の文と結果）。{name} {n} {ok} {kids} {sec} {names} は JS が埋める
+    "js_out_confirm": "「{name}」を外しますか？\nページからこの版面がなくなります（次の作り直しで、通常数分）。", "js_out_done": "外しました ✓",
+    "js_sending": "送っています…", "js_del_ok": "削除を送りました ✓", "js_del_fail": "送れませんでした",
+    "js_del_confirm": "「{name}」を削除しますか？\n版面と設定が消えます（次の更新で、通常は数分）。", "js_del_kids": "\n下位の {kids} は残り、独立した版面になります。",
+    "js_sec_confirm": "「{sec}」ジャンルの {n} 件を削除しますか？\n{names}\n\n版面と設定が消えます（次の更新で）。",
+    "js_sec_done": "{ok} 件の削除を送りました ✓", "js_sec_part": "{ok} / {n} 件を送りました"}
+# 店長のページの設定ページ（render_settings の own なし）。日本語（2026-11-13：中国語が混ざっていたのを直した）。
+# 画面の文字がない鍵は SETTINGS_JA と同じ
+SETTINGS_OWNER = {**SETTINGS_JA,
+    "back": "← 簡報へ戻る", "back_href": "index.html", "add": "",
+    "links": '<p class="hint"><a href="themes.html">版面のテーマ（30 種）と 👍 の演出（20 種）の一覧 →</a>　<a href="admin.html">管理ページ（稼働状況・投票・追いかけるものごとの記事数）→</a></p>',
+    "intro": "S / M / L で版面の大きさを、「変更」でその項目の追い方を変えられます。新しく追いかけたいものは、いちばん下の「＋ 追いかけるものを足す」に名前を書き、いくつかの質問に答えれば足せます。"
+             "変更はすぐデータベースに保存され、<span id=\"wl-eta\">次の更新（最長 2 時間）でページに反映されます</span>。",
+    "sch_intro": "ジャンルごとに 1 つ選ぶと、左の目次の札とジャンルの中の版面の並びがその分け方になります。選ぶと約 1 分でページが更新されます。"}
 
 
 def _own_add(own, items):
@@ -2321,7 +2384,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
     own：お客さま本人の設定ページ（scripts/user_pages.py が作る。{picks, add}）。同じ部品・同じ画面で、文字は日本語、
     書くのは本人の分だけ（my_size_set → follows.size・my_nav_scheme_set → nav_schemes、db/my_layout.sql）。
     向導・改・删の代わりに「＋ 追いかけるものを足す」（入口と同じ流れ）と各行の「外す」（my_keywords_set）。"""
-    T = SETTINGS_JA if own else SETTINGS_ZH
+    T = SETTINGS_JA if own else SETTINGS_OWNER
     sch = []
     for r in schemes or ():
         btns = "".join(f'<button type="button" data-v="{e(o["id"])}" aria-pressed="{str(o["id"] == r["chosen"]).lower()}">{e(o["label"])}</button>'
@@ -2340,8 +2403,9 @@ def render_settings(items, db, updated, schemes=(), own=None):
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     rows = []
     for name in order:
-        secdel = "" if own else (f'<button type="button" class="secdel" aria-label="删除板块 {e(_sec_name(name))} 里的全部关注项">'
-                                 '删除这个板块</button>')
+        rows.append('<div class="blk">')   # ジャンルごとの塊（広い画面では塊ごとに 2 列へ分ける）
+        secdel = "" if own else (f'<button type="button" class="secdel" aria-label="{e(T["secdel_aria"].format(_sec_name(name)))}">'
+                                 f'{T["secdel"]}</button>')
         rows.append(f'<h2 style="--sc:{_sec_var(name)}" data-sec="{e(name)}">{e(_sec_name(name))}<small>{_sec_en(name)}</small>'
                     f'{secdel}<span class="st" aria-live="polite"></span></h2>')
         for it in groups[name]:
@@ -2352,11 +2416,12 @@ def render_settings(items, db, updated, schemes=(), own=None):
             btns = "".join(f'<button type="button" data-v="{v}" aria-pressed="{str(v == (it.get("size") or "M")).lower()}">'
                            f'{v}</button>' for v in ("S", "M", "L"))
             tail = (f'<button type="button" class="edit out" aria-label="{e(it["name"])}{T["out_aria"]}">{T["out"]}</button>' if own else
-                    f'<button type="button" class="edit" aria-label="修改 {e(it["name"])}">改</button>'
-                    f'<button type="button" class="del" aria-label="删除 {e(it["name"])}">删</button>')
+                    f'<button type="button" class="edit" aria-label="{e(T["edit_aria"].format(it["name"]))}">{T["edit"]}</button>'
+                    f'<button type="button" class="del" aria-label="{e(T["del_aria"].format(it["name"]))}">{T["del"]}</button>')
             rows.append(f'<div class="row" data-item="{e(it["name"])}"><div class="nm"><b>{e(it["name"])}</b>{sub}</div>'
                         f'<div class="seg" role="group" aria-label="{e(it["name"])} {T["size_aria"]}">{btns}</div>'
                         f'{tail}<span class="st" aria-live="polite"></span></div>')
+        rows.append("</div>")
     data = {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
             "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": taxonomy.for_page(),
             "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items],
@@ -2380,7 +2445,9 @@ def render_settings(items, db, updated, schemes=(), own=None):
 .back:hover{{color:#B8336A}}
 .intro{{font-size:14px;line-height:1.7;opacity:.8;margin:0}}
 .cfg{{align-self:stretch;width:100%;display:block}}
-.cfg h2{{display:flex;align-items:baseline;gap:10px;margin:22px 0 4px;padding-bottom:6px;border-bottom:3px solid var(--sc);
+.blk{{margin-bottom:36px}}.blk:last-child{{margin-bottom:0}}
+.schemes,.cfg,.wiz{{margin-top:18px}}   /* 大きな塊の間は 18px（gap）＋18px ＝ 36px、ジャンルの塊の間も 36px にそろえる */
+.cfg h2{{display:flex;align-items:baseline;gap:10px;margin:0 0 4px;padding-bottom:6px;border-bottom:3px solid var(--sc);
  font:900 20px/1 var(--font-sans);letter-spacing:.08em;color:var(--sc)}}
 .cfg h2 small{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.7}}
 .row{{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,#1A1C22 15%,transparent)}}
@@ -2405,16 +2472,30 @@ def render_settings(items, db, updated, schemes=(), own=None):
 .st{{width:64px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.05em;text-align:right}}
 .st.ok{{color:#1F9D6B}}.st.err{{color:#C0392B}}
 .schemes{{align-self:stretch;display:flex;flex-direction:column}}
-.schemes h2{{margin:8px 0 4px;font:900 20px/1 var(--font-sans);letter-spacing:.08em}}
+.schemes h2{{margin:0 0 4px;font:900 20px/1 var(--font-sans);letter-spacing:.08em}}
 .srow{{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 15%,transparent)}}
 .srow .nm b{{color:var(--sc)}}
 .srow .pv{{margin:0;font-size:12px;opacity:.7}}
 .srow .pv b{{font:700 12px var(--font-mono)}}
 .seg.wide button{{width:auto;min-width:56px;padding:0 10px;font:900 13px var(--font-sans)}}
 @media (max-width:600px){{.srow{{flex-wrap:wrap}}.srow .nm{{flex-basis:100%}}}}
+/* 広い画面（1000px〜）：760px の細い列を左右の空きごと放っておかない。説明と凡例を横に、分け方とジャンルの塊を 2 列に。
+   本文の行は 46em までに留める（伸ばしすぎない）。名前の下の字は折り返して「…」で切らない（審美基準 D3） */
+@media (min-width:1000px){{
+ .page{{padding-top:64px;max-width:1160px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;align-content:start;align-items:start}}
+ .page>*{{grid-column:1/-1}}
+ .page>.lead{{grid-column:1;max-width:46em}}
+ .page>.legend{{grid-column:2;grid-template-columns:auto minmax(0,1fr)}}
+ .schemes{{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;align-items:start}}
+ .schemes>:not(.srow){{grid-column:1/-1}}
+ .schemes>.srow:nth-child(n+3){{border-bottom:1px solid color-mix(in srgb,var(--ink) 15%,transparent)}}
+ .cfg{{columns:2;column-gap:56px}}
+ .blk{{break-inside:avoid}}
+ .nm small{{white-space:normal;overflow:visible}}
+}}
 .legend{{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin:0}}
 .legend dt{{font:900 13px 'JetBrains Mono',monospace}}.legend dd{{margin:0;opacity:.75}}
-.wiz{{display:flex;flex-direction:column;gap:14px;margin-top:18px;padding:18px 18px 20px;border:2px solid #1A1C22;background:#F7F5F0;scroll-margin-top:16px}}
+.wiz{{display:flex;flex-direction:column;gap:14px;padding:18px 18px 20px;border:2px solid #1A1C22;background:#F7F5F0;scroll-margin-top:16px}}
 .wiz>h2{{margin:0;font:900 20px/1 var(--font-sans);letter-spacing:.08em}}
 .wiz .hint{{margin:0;font-size:13px;line-height:1.7;opacity:.75}}
 .trail{{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:stretch;gap:8px}}
@@ -2531,12 +2612,12 @@ def render_settings(items, db, updated, schemes=(), own=None):
 <a class="back" href="{T["back_href"]}">{T["back"]}</a>
 <header><h1 style="margin:0;font:900 40px/1.1 var(--font-sans);letter-spacing:.04em">{T["title"]}</h1></header>
 {T["links"] if not own else _own_add(own, items)}
-<p class="intro">{T["intro"]}</p>
+<p class="intro lead">{T["intro"]}</p>
 <dl class="legend">{T["legend"]}</dl>
 {sch_html}
 {_theme_pick(T)}
 <div class="cfg">{''.join(rows)}</div>
-{"" if own else '<section class="wiz" id="wiz" aria-live="polite"><h2>＋ 新增关注项</h2><p class="hint">正在加载…</p></section>'}
+{"" if own else f'<section class="wiz" id="wiz" aria-live="polite"><h2>{T["wiz_h"]}</h2><p class="hint">{T["wiz_load"]}</p></section>'}
 <p class="intro" style="font-size:12px">{T["updated"]} {e(updated)}</p>
 </div>
 <script type="application/json" id="wl-cfg">{cfg}</script>
@@ -2544,6 +2625,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
 (() => {{
   const CFG = JSON.parse(document.getElementById("wl-cfg").textContent);
   const T = CFG.t || {{}};
+  const fmt = (s, o) => s.replace(/[{{]([a-z]+)[}}]/g, (_, k) => o[k]);   // fill the placeholders from the table
   // どの関数も自分のアカウント（db/accounts.sql）。お客さま本人のページ（CFG.own）は p_account を渡さない my_* 関数（db/my_layout.sql、ログインの鍵は AUTH_JS が付ける）
   const OWNFN = {{set_size: "my_size_set", set_nav_scheme: "my_nav_scheme_set"}};
   const rpc = (fn, body) => fetch(`${{CFG.url}}/rest/v1/rpc/${{CFG.own ? (OWNFN[fn] || fn) : fn}}`, {{
@@ -2605,10 +2687,10 @@ def render_settings(items, db, updated, schemes=(), own=None):
     if (del) {{
       const row = del.closest(".row"), name = row.dataset.item;
       const kids = CFG.items.filter(i => i.parent === name).map(i => `「${{i.name}}」`).join("");
-      if (!confirm(`删除「${{name}}」？\\n版面和设置都会删掉（下次更新时，通常几分钟）。` + (kids ? `\\n下级 ${{kids}} 会留下，变成单独的版面。` : ""))) return;
-      say(row, "提交中…");
-      try {{ const r = await delItem(name); if (r.ok) {{ gone(row); say(row, "已提交删除 ✓", "ok"); }} else say(row, "没提交上", "err"); }}
-      catch (_) {{ say(row, "连不上", "err"); }}
+      if (!confirm(fmt(T.js_del_confirm, {{name}}) + (kids ? fmt(T.js_del_kids, {{kids}}) : ""))) return;
+      say(row, T.js_sending);
+      try {{ const r = await delItem(name); if (r.ok) {{ gone(row); say(row, T.js_del_ok, "ok"); }} else say(row, T.js_del_fail, "err"); }}
+      catch (_) {{ say(row, T.js_offline, "err"); }}
       return;
     }}
     if (secdel) {{
@@ -2616,26 +2698,26 @@ def render_settings(items, db, updated, schemes=(), own=None):
       for (let el = h2.nextElementSibling; el && el.classList.contains("row"); el = el.nextElementSibling) if (!el.classList.contains("gone")) rows.push(el);
       if (!rows.length) return;
       const names = rows.map(r => r.dataset.item);
-      if (!confirm(`删除「${{h2.firstChild.textContent}}」板块里的 ${{names.length}} 个关注项？\\n${{names.map(n => `・${{n}}`).join("\\n")}}\\n\\n版面和设置都会删掉（下次更新时）。`)) return;
-      say(h2, "提交中…");
+      if (!confirm(fmt(T.js_sec_confirm, {{sec: h2.firstChild.textContent, n: names.length, names: names.map(n => `・${{n}}`).join("\\n")}}))) return;
+      say(h2, T.js_sending);
       let ok = 0;
       for (const row of rows) {{
-        try {{ const r = await delItem(row.dataset.item); if (r.ok) {{ ok++; gone(row); say(row, "已提交删除 ✓", "ok"); }} else say(row, "没提交上", "err"); }}
-        catch (_) {{ say(row, "连不上", "err"); }}
+        try {{ const r = await delItem(row.dataset.item); if (r.ok) {{ ok++; gone(row); say(row, T.js_del_ok, "ok"); }} else say(row, T.js_del_fail, "err"); }}
+        catch (_) {{ say(row, T.js_offline, "err"); }}
       }}
-      say(h2, ok === rows.length ? `已提交删除 ${{ok}} 项 ✓` : `提交了 ${{ok}} / ${{rows.length}} 项`, ok === rows.length ? "ok" : "err");
+      say(h2, fmt(ok === rows.length ? T.js_sec_done : T.js_sec_part, {{ok, n: rows.length}}), ok === rows.length ? "ok" : "err");
       return;
     }}
     const out = ev.target.closest(".out");
     if (out && CFG.own) {{   // お客さま：追いかけるもの（app_users.prefs.picks）から外す。入口・トップの「外す」と同じ my_keywords_set
       const row = out.closest(".row"), name = row.dataset.item;
-      if (!confirm(`「${{name}}」を外しますか？\nページからこの版面がなくなります（次の作り直しで、通常数分）。`)) return;
+      if (!confirm(fmt(T.js_out_confirm, {{name}}))) return;
       const rest = (CFG.picks || []).filter(p => p.name !== name);
       say(row, T.js_saving);
       try {{
         const r = await fetch(`${{CFG.url}}/rest/v1/rpc/my_keywords_set`, {{method: "POST", headers: {{apikey: CFG.key, "Content-Type": "application/json"}},
           body: JSON.stringify({{p_picks: rest}})}});
-        if (r.ok) {{ CFG.picks = rest; gone(row); say(row, "外しました ✓", "ok"); }} else say(row, T.js_fail, "err");
+        if (r.ok) {{ CFG.picks = rest; gone(row); say(row, T.js_out_done, "ok"); }} else say(row, T.js_fail, "err");
       }} catch (_) {{ say(row, T.js_offline, "err"); }}
       return;
     }}
@@ -2681,25 +2763,25 @@ def render_wishlist(wishes, works, updated, finds=(), db=None, own=False):
     total = _total(wishes, "想要")
     counts = {k: sum(1 for x in wishes if (x.get("status") or "想要") == k) for k in WISH_STATUSES}
     chips = "".join(f'<button type="button" class="chip" data-f="{k}" aria-pressed="{str(k == "全部").lower()}">'
-                    f'{k}<small>{len(wishes) if k == "全部" else counts[k]}</small></button>'
+                    f'{WISH_JA.get(k, "すべて")}<small>{len(wishes) if k == "全部" else counts[k]}</small></button>'
                     for k in ("全部",) + WISH_STATUSES if k == "全部" or counts[k])
     live = [x for x in wishes if x.get("status") not in ("已过期", "纠结")]
     torn = [x for x in wishes if x.get("status") == "纠结"]
     gone = [x for x in wishes if x.get("status") == "已过期"]
     section = _wish_section(live, works, own=own)
     if torn:
-        section += (f'<div class="gonehead torn"><h2>纠结名单</h2><span>还在犹豫买不买 · {len(torn)} 件 · 合计 {e(_total(wishes, "纠结"))}'
-                    f' · 下面列出类似的好产品，每天也会帮你搜新的</span></div>'
+        section += (f'<div class="gonehead torn"><h2>迷っているもの</h2><span>{"" if own else "まだ買うか迷っている · "}{len(torn)} 件 · 合計 {e(_total(wishes, "纠结"))}'
+                    f'{"" if own else " · 下に似たおすすめを並べ、毎日新しい候補も探します"}</span></div>'
                     + _wish_section(torn, works, finds, own=own).replace('class="sec wish"', 'class="sec wish torn"').replace('id="wishlist" ', ''))
     if gone:
-        section += (f'<div class="gonehead"><h2>过期的愿望</h2><span>去不了、买不到了，但还想要 · {len(gone)} 件</span></div>'
+        section += (f'<div class="gonehead"><h2>終わったもの</h2><span>{"" if own else "行けない・買えなくなったが、まだ欲しい · "}{len(gone)} 件</span></div>'
                     + _wish_section(gone, works, own=own).replace('class="sec wish"', 'class="sec wish expired"').replace('id="wishlist" ', ''))
     page = f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>愿望清单</title>
+<title>欲しい物リスト</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {font_link(FONTS)}
@@ -2734,6 +2816,28 @@ def render_wishlist(wishes, works, updated, finds=(), db=None, own=False):
 .wcard .alts li p{{margin:2px 0 0;font-size:13px;opacity:.8}}
 .wcard .alts li a:hover b{{color:var(--acc)}}
 .wcard .alts li small{{font:700 11px var(--font-mono);opacity:.6;letter-spacing:.08em}}
+.wcard .wimg.noimg{{aspect-ratio:auto;flex:1 1 auto;min-height:104px;display:flex;align-items:center;justify-content:center;padding:0;
+ background:color-mix(in srgb,var(--acc) 14%,#FFF)}}
+.wcard .wimg .mono{{font:900 56px/1 var(--font-sans);color:var(--acc);opacity:.85}}
+/* 列の数：広い画面は 6 分割に 2 つずつ（3 列）。最後の 1 枚・2 枚が余ったら横いっぱいに広げて、右に空きを残さない（審美基準 A1・A7） */
+.wgrid{{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.wgrid>.wcard:last-child:nth-child(odd){{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}}
+.wgrid>.wcard:last-child:nth-child(odd) .wimg{{aspect-ratio:auto;min-height:300px}}
+.wgrid>.wcard:last-child:nth-child(odd) .wtxt{{justify-content:center;border-left:1px solid var(--line)}}
+@media (min-width:1000px){{
+ .wgrid{{grid-template-columns:repeat(6,minmax(0,1fr))}}
+ .wgrid>.wcard{{grid-column:span 2}}
+ .wgrid>.wcard:last-child:nth-child(odd){{grid-column:span 2;display:flex}}
+ .wgrid>.wcard:last-child:nth-child(odd) .wimg{{aspect-ratio:1/1;min-height:0}}
+ .wgrid>.wcard:last-child:nth-child(odd) .wtxt{{justify-content:flex-start;border-left:0}}
+ .wgrid>.wcard:last-child:nth-child(3n+1){{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}}
+ .wgrid>.wcard:last-child:nth-child(3n+1) .wimg{{aspect-ratio:auto;min-height:300px}}
+ .wgrid>.wcard:last-child:nth-child(3n+1) .wtxt{{justify-content:center;border-left:1px solid var(--line)}}
+ .wgrid>.wcard:last-child:nth-child(3n+2),.wgrid>.wcard:nth-last-child(2):nth-child(3n+1){{grid-column:span 3}}
+ .wgrid>.wcard:last-child:nth-child(3n+2) .wimg,.wgrid>.wcard:nth-last-child(2):nth-child(3n+1) .wimg{{aspect-ratio:4/3}}
+}}
+@media (max-width:640px){{.wgrid{{grid-template-columns:minmax(0,1fr)}}.wgrid>.wcard:last-child:nth-child(odd){{display:flex}}
+ .wgrid>.wcard:last-child:nth-child(odd) .wimg{{aspect-ratio:1/1;min-height:0}}.wgrid>.wcard:last-child:nth-child(odd) .wtxt{{border-left:0}}}}
 .wish.expired .wimg img{{filter:grayscale(.65) contrast(.95);opacity:.85}}
 .wish.expired .wcard:hover .wimg img{{filter:none;opacity:1}}
 </style>
@@ -2742,14 +2846,14 @@ def render_wishlist(wishes, works, updated, finds=(), db=None, own=False):
 <body>
 <div class="page">
 <header class="mast">
-<div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>{e(updated)}</b></div></div>
+<div class="mtitle"><h1>欲しい物リスト</h1></div>
+<div class="tools"><div class="meta"><small>更新</small><b>{e(updated)}</b></div></div>
 </header>
-<a class="back" href="./">← 回到关注清单通信</a>
+<a class="back" href="./">← トップに戻る</a>
 <div class="wsum">
-<div class="stat"><span>共</span><b>{len(wishes)} 件</b></div>
-<div class="stat"><span>想要的合计</span><b>{e(total)}</b></div>
-<div class="chips" role="group" aria-label="按状态筛选">{chips}</div>
+<div class="stat"><span>全部</span><b>{len(wishes)} 件</b></div>
+<div class="stat"><span>欲しいものの合計</span><b>{e(total)}</b></div>
+<div class="chips" role="group" aria-label="状態で絞り込む">{chips}</div>
 </div>
 {_own_wish_panel(db) if own else _snap_panel(db)}
 {section}
@@ -2770,7 +2874,7 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
 </body>
 </html>
 """
-    return _wish_page_ja(page) if own else page
+    return _wish_page_ja(page)
 
 
 SNAP_CSS = """
@@ -2832,10 +2936,10 @@ SNAP_JS = """
       let p = drop.querySelector('img'); if (!p) { p = document.createElement('img'); drop.appendChild(p); }
       p.src = url; drop.querySelector('span').hidden = true; say('');
     };
-    im.onerror = () => say('这张图打不开，换一张试试', 'err');
+    im.onerror = () => say('この写真は開けません。別の写真にしてください', 'err');
     im.src = url;
   });
-  const STATE = { new: '排队中', exported: 'Claude 处理中', done: '已加入' };
+  const STATE = { new: '順番待ち', exported: 'Claude が処理中', done: '追加済み' };
   const queue = async () => {
     try {
       const r = await rpc('get_photo_inbox'); if (!r.ok) return;
@@ -2845,30 +2949,30 @@ SNAP_JS = """
         const li = document.createElement('li');
         const t = document.createElement('img'); if (x.thumb) t.src = x.thumb; t.alt = '';
         const d = document.createElement('div');
-        const b = document.createElement('b'); b.textContent = x.state === 'done' && x.wish_name ? x.wish_name : (x.note || '照片 #' + x.id);
+        const b = document.createElement('b'); b.textContent = x.state === 'done' && x.wish_name ? x.wish_name : (x.note || '写真 #' + x.id);
         const s = document.createElement('span'); s.className = 'state';
-        s.textContent = (STATE[x.state] || x.state) + ' · ' + x.status + ' · ' + new Date(x.created_at).toLocaleString('zh-CN', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        s.textContent = (STATE[x.state] || x.state) + ' · ' + x.status + ' · ' + new Date(x.created_at).toLocaleString('ja-JP', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         d.append(b, s); li.append(t, d); ul.appendChild(li);
       });
     } catch (_) {}
   };
   send.addEventListener('click', async ev => {
     ev.preventDefault();
-    if (!img) { say('先选一张照片', 'err'); return; }
+    if (!img) { say('先に写真を選んでください', 'err'); return; }
     let big = shrink(img, 1600, .85);
     if (big.length > 2900000) big = shrink(img, 1200, .75);
-    send.disabled = true; say('上传中…');
+    send.disabled = true; say('送っています…');
     try {
       const r = await rpc('add_photo', { p_pass: '', p_image: big, p_thumb: shrink(img, 240, .7), p_status: status, p_note: note.value.trim() });
       if (r.ok) {
-        say('收到了 ✓ Claude 定时处理后会出现在下面的清单里（一般几个小时内）', 'ok');
+        say('受け取りました ✓ Claude が定時に処理すると、下の一覧に出ます（ふつう数時間以内）', 'ok');
         img = null; file.value = ''; note.value = ''; drop.querySelector('img')?.remove(); drop.querySelector('span').hidden = false;
         queue();
       } else {
         const err = await r.json().catch(() => ({}));
-        say('没传上：' + (err.message || r.status), 'err');
+        say('送れませんでした：' + (err.message || r.status), 'err');
       }
-    } catch (_) { say('连不上，稍后再试', 'err'); }
+    } catch (_) { say('つながりません。しばらくしてからもう一度', 'err'); }
     send.disabled = false;
   });
   queue();
@@ -2877,20 +2981,12 @@ SNAP_JS = """
 
 
 WISH_JA = {"想要": "欲しい", "纠结": "迷い中", "已入手": "入手済み", "没买到": "買えなかった", "已过期": "終わった"}
-_WISH_PAGE_JA = (('<html lang="zh-CN">', '<html lang="ja">'), ("<title>愿望清单</title>", "<title>欲しい物リスト</title>"), ("<h1>愿望清单</h1>", "<h1>欲しい物リスト</h1>"),
-                 ("<small>更新于</small>", "<small>更新</small>"), ("← 回到关注清单通信", "← トップに戻る"), ("<span>共</span>", "<span>全部</span>"),
-                 ("<span>想要的合计</span>", "<span>欲しいものの合計</span>"), ('aria-label="按状态筛选"', 'aria-label="状態で絞り込む"'),
-                 ('<span class="title">愿望清单</span>', '<span class="title">欲しい物リスト</span>'), (" · 想要 ", " · 欲しい "), ("去看看 ↗", "見に行く ↗"), ("加入于 ", "追加 "),
-                 ("<h2>纠结名单</h2>", "<h2>迷っているもの</h2>"), ("还在犹豫买不买 · ", ""), (" · 合计 ", " · 合計 "), (" · 下面列出类似的好产品，每天也会帮你搜新的", ""),
-                 ("<h2>过期的愿望</h2>", "<h2>終わったもの</h2>"), ("去不了、买不到了，但还想要 · ", ""))
 
 
 def _wish_page_ja(page):
     """本人の欲しい物のページの文字（お客さまの画面は日本語、render_settings の own と同じ）。data-status・data-f の値は DB と同じままにして、見える字だけ替える。"""
-    for a, b in _WISH_PAGE_JA:
-        page = page.replace(a, b)
     for k, v in WISH_JA.items():
-        page = page.replace(f'">{k}<small>', f'">{v}<small>').replace(f"♥ {k}<", f"♥ {v}<")
+        page = page.replace(f"♥ {k}<", f"♥ {v}<")
     return page
 
 
@@ -3031,14 +3127,14 @@ def _snap_panel(db):
     """愿望清单页顶部的「📷 拍照加愿望」。没配数据库时不显示。"""
     if not (db and db.get("url") and db.get("key")):
         return ""
-    return (f'<style>{SNAP_CSS}</style><section class="snap" id="snap"><h2>📷 拍照加愿望'
-            f'<small>上传一张照片，Claude 会认出是什么、整理好加进清单（定时处理，一般几个小时内）</small></h2>'
-            f'<form><label class="drop"><span>点这里选照片<br>或拍一张</span><input type="file" id="snap-file" accept="image/*"></label>'
-            f'<div class="seg" role="group" aria-label="加到哪一栏"><button type="button" data-v="想要" aria-pressed="true">想要</button>'
-            f'<button type="button" data-v="纠结" aria-pressed="false">纠结</button></div>'
-            f'<input type="text" id="snap-note" maxlength="500" placeholder="备注（可不填）：在哪看到的、想要哪个颜色、大概多少钱…">'
-            f'<div class="row"><button type="button" class="send">提交</button><span class="st" role="status"></span></div></form>'
-            f'<ul class="snapq" aria-label="最近上传的照片"></ul></section>'
+    return (f'<style>{SNAP_CSS}</style><section class="snap" id="snap"><h2>📷 写真で足す'
+            f'<small>写真を送ると、Claude が何かを確かめて一覧に足します（定時の処理で、ふつう数時間以内）</small></h2>'
+            f'<form><label class="drop"><span>写真を選ぶ<br>または撮る</span><input type="file" id="snap-file" accept="image/*"></label>'
+            f'<div class="seg" role="group" aria-label="どちらに足すか"><button type="button" data-v="想要" aria-pressed="true">欲しい</button>'
+            f'<button type="button" data-v="纠结" aria-pressed="false">迷い中</button></div>'
+            f'<input type="text" id="snap-note" maxlength="500" placeholder="メモ（なくても大丈夫）：どこで見たか、欲しい色、だいたいの値段など">'
+            f'<div class="row"><button type="button" class="send">送る</button><span class="st" role="status"></span></div></form>'
+            f'<ul class="snapq" aria-label="最近送った写真"></ul></section>'
             f'<script>{SNAP_JS % json.dumps({"url": db["url"], "key": db["key"]})}</script>')
 
 
@@ -3056,11 +3152,11 @@ def _alts(x, finds):
     mine = sorted((f for f in finds if f["item"] == x["name"]), key=lambda f: f.get("date") or "", reverse=True)
     for f in mine[:FINDS_PER_WISH]:
         date = (f.get("date") or "")[5:10].replace("-", ".")
-        rows.append(f'<li><a href="{e(f["url"])}" target="_blank" rel="noopener"><small>新发现 · {e(f["label"])}'
+        rows.append(f'<li><a href="{e(f["url"])}" target="_blank" rel="noopener"><small>新着 · {e(f["label"])}'
                     f'{" · " + e(date) if date else ""}</small><br><b>{e(f["title"])}</b></a></li>')
     if not rows:
         return ""
-    return f'<div class="alts"><span>类似的好产品</span><ul>{"".join(rows)}</ul></div>'
+    return f'<div class="alts"><span>似ているおすすめ</span><ul>{"".join(rows)}</ul></div>'
 
 
 def _wish_section(wishes, works, finds=(), own=False):
@@ -3081,18 +3177,18 @@ def _wish_section(wishes, works, finds=(), own=False):
         specs = "".join(f"<dt>{e(str(k))}</dt><dd>{e(str(v))}</dd>" for k, v in (x.get("specs") or {}).items())
         links = []
         if x.get("url"):
-            links.append(f'<a href="{e(x["url"])}" target="_blank" rel="noopener">去看看 ↗</a>')
+            links.append(f'<a href="{e(x["url"])}" target="_blank" rel="noopener">見に行く ↗</a>')
         watch = ""
         if x.get("watch"):
-            links.append(f'<a href="./#{_wid(x["watch"])}">{e(x["watch"])} 版面 →</a>')
+            links.append(f'<a href="./#{_wid(x["watch"])}">{e(x["watch"])} の版面 →</a>')
             st = latest.get(x["watch"])
             if st:
-                watch = (f'<a class="watch" href="{e(st["url"])}" target="_blank" rel="noopener"><span>相关最新 · '
+                watch = (f'<a class="watch" href="{e(st["url"])}" target="_blank" rel="noopener"><span>関連の最新 · '
                          f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}{_from(st)}</span>{e(st["headline"])}</a>')
-        added = f'<span class="added">加入于 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
+        added = f'<span class="added">追加 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
         cards.append(
             f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}" data-key="{e(x["name"])}"{f' data-id="{e(str(x["id"]))}"' if own and x.get("id") else ""}>'
-            f'<div class="wimg">{f"""<img src="{e(img)}" alt="{e(x["name"])}" loading="lazy" referrerpolicy="no-referrer">""" if img else ""}'
+            f'<div class="wimg{"" if img else " noimg"}">{f"""<img src="{e(img)}" alt="{e(x["name"])}" loading="lazy" referrerpolicy="no-referrer">""" if img else f"""<span class="mono" aria-hidden="true">{e(str(x["name"]).strip()[:1])}</span>"""}'
             f'<span class="heart {cls}">♥ {e(status)}</span></div>'
             f'<div class="wtxt">' + (f'<span class="shop">{e(x["shop"])}</span>' if x.get("shop") else "")
             + f'<h3>{e(x["name"])}</h3>{price}'
@@ -3102,7 +3198,7 @@ def _wish_section(wishes, works, finds=(), own=False):
             + f'<div class="links">{"".join(links)}{added}</div>' + (_own_wish_controls(status) if own else "") + '</div></article>')
     want = sum(1 for x in wishes if (x.get("status") or "想要") == "想要")
     return (f'<section id="wishlist" data-k="wishlist" class="sec wish"><div class="band split">'
-            f'<span class="title">愿望清单</span><span class="sub">WISHLIST · {len(wishes)} 件 · 想要 {want}</span></div>'
+            f'<span class="title">欲しい物リスト</span><span class="sub">WISHLIST · {len(wishes)} 件 · 欲しい {want}</span></div>'
             f'<div class="wgrid">{"".join(cards)}</div></section>')
 
 
@@ -3934,7 +4030,7 @@ FIT_JS = """
       p.classList.toggle('fill', ok);
       if (!ok && img._bands) trimFit(img, p, img._bands);
       if (!ok && r0 < 1 && innerWidth > 760) {
-        const ph = Math.min(w0 / nat, Math.max(h0, innerHeight * 0.6)), w = Math.round(ph * nat); p.style.width = w + 'px'; p.style.height = Math.round(ph) + 'px';   // 頭条はいちばん大きく（C1）：高さは画面の 6 割まで伸ばしてよい
+        const ph = Math.min(w0 / nat, Math.max(h0, (window.WLvh || innerHeight) * 0.6)), w = Math.round(ph * nat); p.style.width = w + 'px'; p.style.height = Math.round(ph) + 'px';   // 頭条はいちばん大きく（C1）：高さは画面の 6 割まで伸ばしてよい
         p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); img.style.objectPosition = '';
         if (fr) { fr.style.justifySelf = 'end'; const fw = fr.getBoundingClientRect().width; top.style.gridTemplateColumns = 'minmax(0,1fr) ' + Math.ceil(fw + 16) + 'px'; }
         if (img._bands) trimFit(img, p, img._bands);
@@ -4135,7 +4231,7 @@ FIT_JS = """
     vis.forEach(boardBase);
     const over = sec ? sec.getBoundingClientRect().height - m.getBoundingClientRect().height : 120;
     const bar = sec ? parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0 : 0;   // 上の固定の帯（≤1000）：画面は帯の下だけ・吸着もその下
-    const budget = Math.max(160, (innerHeight - bar) * ((sec && +sec.dataset.vh) || 70) / 100 - bar - over - 16 - Math.max(0, ((sec && +sec.dataset.embov) || 0) - 18)), H = c => c.getBoundingClientRect().height;   // 小元素の分だけ下がって吸着する（E4）   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
+    const budget = Math.max(160, ((window.WLvh || innerHeight) - bar) * ((sec && +sec.dataset.vh) || 70) / 100 - bar - over - 16 - Math.max(0, ((sec && +sec.dataset.embov) || 0) - 18)), H = c => c.getBoundingClientRect().height;   // 小元素の分だけ下がって吸着する（E4）   // 版面の高さは画面の割合（2026-11-09 店長：L は画面 1 枚・M は 7 割・S は 5 割。px で決めない）
     const fixed = c => { boardBase(c); const h = H(c); return {k: 'N', s: 1, lo: 0, hi: 0, h: () => h, a: () => 0}; };
     const measure = (c, i, k) => {
       const o = [], p = c.querySelector(':scope > .pic'), img = p && img0(p);
@@ -4381,7 +4477,7 @@ FIT_JS = """
     if (innerWidth <= 760) return;
     document.querySelectorAll('section.sec').forEach(sec => {
       const g = sec.querySelector(':scope > .grid'), h = g && g.querySelector(':scope > article.hero'); if (!h || !sec.offsetParent) return;
-      const bar = parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0, B = (innerHeight - bar) * ((+sec.dataset.vh || 70) / 100) - bar - 16 - Math.max(0, (+sec.dataset.embov || 0) - 18), over = () => sec.getBoundingClientRect().height - B;
+      const bar = parseFloat(getComputedStyle(sec).getPropertyValue('--snapbar')) || 0, B = ((window.WLvh || innerHeight) - bar) * ((+sec.dataset.vh || 70) / 100) - bar - 16 - Math.max(0, (+sec.dataset.embov || 0) - 18), over = () => sec.getBoundingClientRect().height - B;
       if (over() <= 0) return;
       const im = h.querySelector('.pic img:not(.bg):not(.ico)');
       const p = h.querySelector('.pic');
@@ -4428,7 +4524,7 @@ FIT_JS = """
     G.classList.add('one');   // 壁が横いっぱい（右の列は壁の中）
     // 画面 1 枚の高さ：壁の上端（見出しの下）から画面の下端まで
     const spot = G.closest('.spot');
-    const T = Math.max(300, innerHeight - (parseFloat(getComputedStyle(spot || w).getPropertyValue('--snapbar')) || 0) - (w.getBoundingClientRect().top - (spot || w).getBoundingClientRect().top) - 24);   // 上の固定の帯（≤1000）の分も引く   // 見出しの下から画面の下まで（2026-11-09 店長：ジャンル別の棚はなし・ほかの注目ニュースは画面 1 枚の高さいっぱい）
+    const T = Math.max(300, (window.WLvh || innerHeight) - (parseFloat(getComputedStyle(spot || w).getPropertyValue('--snapbar')) || 0) - (w.getBoundingClientRect().top - (spot || w).getBoundingClientRect().top) - 24);   // 上の固定の帯（≤1000）の分も引く   // 見出しの下から画面の下まで（2026-11-09 店長：ジャンル別の棚はなし・ほかの注目ニュースは画面 1 枚の高さいっぱい）
     w.style.gridTemplateColumns = '';
     const W0 = w.clientWidth;
     const okPic = c => !c.classList.contains('nophoto') && c.querySelector('.pic img:not(.bg):not(.ico)');
@@ -4589,17 +4685,7 @@ FIT_JS = """
       const img = new Image(); img.className = 'wemb'; img.alt = ''; img.src = pk.src; img.addEventListener('error', () => img.remove(), { once: true }); img.style.height = Math.min(gap, 64) + 'px'; b.append(img);
     });
   };
-  // 小元素（版面の右上のキャラ）の実際の幅だけ、見出しの帯の右を空ける（決め打ちの 260px では、横に広いポーズのキャラが「今週」の数に重なった。2026-11-09）
-  const embPad = () => document.querySelectorAll('section.sec.has-emb').forEach(s => {
-    const b = s.querySelector('.band'), em = s.querySelector('.emb'); if (!b || !em) return;
-    const ims = [...em.querySelectorAll('img')].filter(i => i.offsetWidth); if (!ims.length) return;
-    b.style.paddingRight = '';
-    const left = Math.min(...ims.map(i => i.getBoundingClientRect().left)), need = Math.round(b.getBoundingClientRect().right - left + 12), cur = parseFloat(getComputedStyle(b).paddingRight) || 0;
-    if (need > cur) b.style.paddingRight = need + 'px';
-  });
-  addEventListener('load', embPad);
-  addEventListener('resize', () => setTimeout(embPad, 250));
-  document.addEventListener('load', e => { if (e.target.closest && e.target.closest('.emb')) embPad(); }, true);   // 写真の load は document の capture で聞く（window には上がらない）
+  // 帯の右の空き（小元素の幅）は EMB_JS の room が 1 か所で決める（F5：前はここの embPad と EMB_JS が変形の後の箱で書き合い、スマホで「今週」が行を行き来した）
   // 写真・字体が届いて高さが変わったら詰め直す（1 フレームにまとめる）。足した分で自分の大きさが変わっても、同じ結果になるので繰り返さない
   let wallReady = document.readyState === 'complete'; addEventListener('load', () => { wallReady = true; });
   if (!wallReady) setTimeout(() => { if (!wallReady) { wallReady = true; wallSoon(); } }, 6000);   // load が遅い（広告・動画など）ときも 6 秒で組む
@@ -5100,7 +5186,7 @@ NAV_JS = """
     if (!wide.matches && getComputedStyle(nav).position === 'sticky') {
       const had = nav.classList.contains('insec'), top = parseFloat(getComputedStyle(nav).top) || 0, rs = [...rail.querySelectorAll('.nslot')], cur = rs.find(s => s.classList.contains('cur'));
       nav.classList.remove('insec'); tb = top + nav.getBoundingClientRect().height;
-      nav.classList.add('insec'); if (!cur && rs[0]) rs[0].classList.add('cur'); fl = top + nav.getBoundingClientRect().height;   // 作品の段が空でも 1 つ入れて測る
+      nav.classList.add('insec'); if (!cur && rs[0]) rs[0].classList.add('cur'); fl = tb + rail.getBoundingClientRect().height;   // 作品の段が空でも 1 つ入れて測る。段は帯の下に重ねてある（流れの外・F5）ので帯＋段の高さ
       if (!cur && rs[0]) rs[0].classList.remove('cur'); nav.classList.toggle('insec', had);
     }
     const now = [Math.ceil(tb) + 'px', Math.ceil(fl) + 'px'];
@@ -5206,7 +5292,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style><style>{RB_CSS}</style>
 {LIKEFX_HEAD if fb else ""}
 {_live_head("index")}{f"<style>{BUSY_CSS}</style>" if busy else ""}
-<script>{EMB_HEAD_JS}</script>
+<script>{VIEW_GATE_JS}{EMB_HEAD_JS}</script>
 <script>{IMG_FALLBACK_JS}</script>
 </head>
 <body>
@@ -5586,6 +5672,10 @@ AUTH_CSS = """
 .wl-toast[hidden]{display:none}
 html[data-lock="1"] [data-vote]{cursor:not-allowed}
 .wl-ro{margin:0 0 4px;padding:8px 12px;border:2px dashed var(--ink);background:var(--sheet);font:700 13px/1.6 var(--font-sans)}
+/* 見るだけ（ログインなし）：止めている操作は薄くして、押せないとわかるように（クリックは AUTH_JS が止めて理由を言う）。
+   設定ページは ページ全体の入力部品、欲しい物ページは「写真で足す」の箱だけ */
+html[data-lock="1"][data-page="settings"] .page :is(button,input,select,textarea,[contenteditable]),
+html[data-lock="1"][data-page="wishlist"] #snap :is(button,input,textarea,.drop){opacity:.45;cursor:not-allowed}
 html[data-gate="1"] body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
@@ -5738,7 +5828,7 @@ AUTH_JS = r"""
     gate2:'<div><h1>管理ページ</h1><p>',
     gate3:'店長だけが見られます。店長のメールアドレスとパスワードでログインしてください。',
     gate4:'<a href="./">← ウォッチリスト通信に戻る</a></div>',
-    readOnlyNote1:'見るだけです。設定を変えるには「ログイン」から。',
+    readOnlyNote1:'見るだけです。設定を変えるには「ログイン」から。',readOnlyNote2:'見るだけです。欲しい物を足すには「ログイン」から。',
     secJa1:'その他',
     mine1:'<p class="wl-msg" role="status">読み込み中…</p>',
     route1:'あなたが足したもの',
@@ -5935,13 +6025,16 @@ AUTH_JS = r"""
     bindLogin(g);
   }
   function readOnlyNote(){
-    if(page!=='settings') return;
-    var n=document.querySelector('.wl-ro');
-    if(!locked()){if(n) n.remove(); return;}
-    if(n) return;
-    n=document.createElement('p'); n.className='wl-ro';
-    n.textContent=R.dataset.sb==='down'?L.pausedRO:L.readOnlyNote1;
-    var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
+    if(page!=='settings'&&page!=='wishlist') return;
+    var ns=document.querySelectorAll('.wl-ro');
+    if(!locked()){ns.forEach(function(n){n.remove();}); return;}
+    if(ns.length) return;
+    // 設定：ページの上と「追いかけるものを足す」の上。欲しい物：「写真で足す」の上（押せない箱のすぐ上に理由を置く）
+    var txt=R.dataset.sb==='down'?L.pausedRO:page==='wishlist'?L.readOnlyNote2:L.readOnlyNote1;
+    function put(before){ var n=document.createElement('p'); n.className='wl-ro'; n.textContent=txt; before.parentNode.insertBefore(n,before); }
+    if(page==='wishlist'){ var sn=document.getElementById('snap'); if(sn) put(sn); return; }
+    var at=document.querySelector('.page'); if(at) put(at.firstChild);
+    var wz=document.getElementById('wiz'); if(wz) put(wz);
   }
   // お客さま自分のページ（2026-10-22，用户定的：アカウントは 1 つずつ独立。ログインしたお客さまに店長の中身は出さない）。
   // 簡報・欲しい物・話題度・設定で、店長の中身の代わりに自分の（最初は空の）ページを出す。中身は Supabase の my_page()（本人の行だけ、db/my_page.sql）。
