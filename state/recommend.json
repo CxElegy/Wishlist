@@ -78,7 +78,6 @@
   "https://www.motor1.com/news/806962/mitsubishi-teases-smaller-pajero-models/": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bsNCV.img",
   "https://www.msn.com/en-us/entertainment/celebrities/5-harry-potter-characters-cut-from-the-movies-that-can-appear-in-the-hbo-series/ar-AA2hpkyw": "https://www.bing.com/th?id=ONUT.ZzSrdKSQOJpuveN0DxDbSQ&pid=News&w=1200",
   "https://www.msn.com/ko-kr/news/techandscience/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27%EC%9D%80-%EB%84%A4%EC%9D%B4%EB%B9%84-%EB%B2%84%EA%B1%B4%EB%94%94-%EB%93%B1-5%EA%B0%80%EC%A7%80-%EC%83%89%EC%83%81/ar-AA2hoSBS": "https://www.bing.com/th?id=ONUT.ErKMOQndpn0XuuqtExe7TQ&pid=News&w=640",
-  "https://www.sanyonews.jp/article/1985192?rct=movie_animation&kw=%E7%A6%8F%E7%A5%89": "https://static.sanyonews.jp/image/article/size1/f/3/2/6/f326269d8ddcb4c98d77b3cdb2ef639f_1.jpg",
   "https://www.sina.cn/news/detail/5363439830829086.html": "http://wx1.sinaimg.cn/middle/007148Qbly1iiw7o15fbmj30n012owfu.jpg",
   "https://www.sina.cn/news/detail/5364868833613038.html": "http://wx3.sinaimg.cn/middle/90b10eb9ly1ij0rr906ynj21mc1mc1ky.jpg",
   "https://www.sina.cn/news/detail/5365058814608065.html": null,
@@ -1621,12 +1620,12 @@
    "hits": [
     "新作动画・动画化"
    ],
-   "image": "https://static.sanyonews.jp/image/article/size1/f/3/2/6/f326269d8ddcb4c98d77b3cdb2ef639f_1.jpg",
+   "image": "https://ni.yam.com/20261113/11HECL72ZT1E88G8CS0K0-e33401fca4a21a13.webp",
    "kind": "follow",
-   "source": "山陽新聞",
+   "source": "蕃新聞",
    "taste": [],
-   "title": "ホロライブ、初のテレビアニメ化決定 『おでホロ』制作はスタジオKAI",
-   "url": "https://www.sanyonews.jp/article/1985192?rct=movie_animation&kw=%E7%A6%8F%E7%A5%89",
+   "title": "日本累計發行量突破2,200萬冊！《來自深淵》全新劇場版11/20全台上映首週特典、特別場情報公開",
+   "url": "https://n.yam.com/Article/20261113178214",
    "words": [],
    "work": "チェーンソーマン"
   },
@@ -1784,22 +1783,6 @@
   },
   {
    "batch": 3,
-   "because": "チェーンソーマン",
-   "date": "2026-11-13",
-   "hits": [
-    "新作动画・动画化"
-   ],
-   "image": "https://ni.yam.com/20261113/11HECL72ZT1E88G8CS0K0-e33401fca4a21a13.webp",
-   "kind": "follow",
-   "source": "蕃新聞",
-   "taste": [],
-   "title": "日本累計發行量突破2,200萬冊！《來自深淵》全新劇場版11/20全台上映首週特典、特別場情報公開",
-   "url": "https://n.yam.com/Article/20261113178214",
-   "words": [],
-   "work": "チェーンソーマン"
-  },
-  {
-   "batch": 3,
    "because": "日本顶级网球赛事",
    "date": "2026-11-08",
    "hits": [
@@ -1815,7 +1798,7 @@
    "work": "日本顶级网球赛事"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "漫威电影",
    "date": "2026-11-11",
    "hits": [
@@ -1899,7 +1882,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "GTA 6",
    "date": "2026-11-10",
    "hits": [
@@ -1966,7 +1949,7 @@
    8
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
@@ -1974,7 +1957,7 @@
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ]
  ]

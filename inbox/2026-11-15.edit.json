@@ -185,7 +185,10 @@
   "A2O LITE": 2,
   "dota2": 2,
   "哈利波特剧集": 1,
-  "绝区零": 1
+  "绝区零": 1,
+  "ILLIT": 2,
+  "Vaundy": 2,
+  "Astrae Oratio": 1
  },
  "dota2": [
   {
@@ -219,6 +222,39 @@
     1
    ],
    "image": "https://file.topuplist.com/2026/11/1794554543_DQaI6yEHcl.jpg"
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT 'You're Under Arrest' Thorough Analysis: Pop as a Verdict, Blowing the Whistle on the Ambiguity of Love",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "ロッキン2026のライブ映像をYouTubeで無料配信！BE:FIRST、櫻坂46、Vaundyらが登場",
+   "highlight": "無料配信",
+   "blurb": "ロッキン2026のライブ映像がYouTubeで無料配信。Vaundyらが登場する。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
+   "highlight": "AGF 2026 최대 규모",
+   "blurb": "엔씨 아스오라 부스가 공개됐다. AGF 2026 최대 규모로 꾸린다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }

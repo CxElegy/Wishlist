@@ -837,6 +837,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://d2l930y2yx77uc.cloudfront.net/production/social_images/8f9505c6ea91e2fb579db4b06af9bc08d5d093ba.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-15"
+ },
  "https://d3h9qea4qy4169.cloudfront.net/16x9_7_b17f7953c2.png": {
   "w": 1920,
   "h": 1080,
@@ -2827,6 +2833,12 @@
   ],
   "why": "看不清"
  },
+ "https://pub-6e6736ba37d64d4aa5ae63b074884090.r2.dev/2026/11/FNhUpg2K-00_2.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-15"
+ },
  "https://q0.itc.cn/q_70/images03/20261112/5c27dd9c44fe40d49f3c453c9fdd0c1c.jpeg": {
   "w": 682,
   "h": 958,
@@ -3254,12 +3266,6 @@
  "https://static.sanyonews.jp/image/article/size1/e/9/1/c/e91cfc669da43d9b6481596167e4e53a_1.jpg": {
   "w": 427,
   "h": 640,
-  "target": 720,
-  "v": 3
- },
- "https://static.sanyonews.jp/image/article/size1/f/3/2/6/f326269d8ddcb4c98d77b3cdb2ef639f_1.jpg": {
-  "w": 640,
-  "h": 360,
   "target": 720,
   "v": 3
  },
@@ -3792,6 +3798,12 @@
    609
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-15"
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,

@@ -1,22 +1,24 @@
 {
  "date": "2026-11-15",
- "edit_sig": "e2610da73637",
+ "edit_sig": "59e45aa3e68f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "엔씨 아스오라 부스가 공개됐다. AGF 2026 최대 규모로 꾸린다.",
      "date": "2026-11-12",
-     "n": 1,
-     "source": "게임플",
-     "title": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBxREF3NlF2STRkUVkwb1dxcl9xTnFlUEFmcUY0U0RDMlhOTVpLT19sV1E4UUZNaHltTjZ3ZUwyenVpRHR4VVRHT09waUxWXzZRMlp6TWNqNXNpZmJKbmVOaDMzZTl0cXR4N0JUVQ?oc=5"
+     "headline": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
+     "highlight": "AGF 2026 최대 규모",
+     "image": "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700",
+     "image_via": "Bing 缩略图",
+     "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216955",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -303,24 +305,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "ロッキン2026のライブ映像がYouTubeで無料配信。Vaundyらが登場する。",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "WWSチャンネル",
-     "title": "ロッキン2026のライブ映像をYouTubeで無料配信！BE:FIRST、櫻坂46、Vaundyらが登場",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9yS0RCTFZJMHlONWJUbVV3NGVxRVF0NkZKOXRiSHByUTFlSDBRalFaV0FtNU5lUmFqSnhwNEhzYk1rSFhYTHlFQVcyZDB4WXo1d1NPTFM2cko1QQ?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 2,
-     "source": "Howl.Link",
-     "title": "怪獣の花唄 - Vaundy / dongdang (cover)",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9nTGx6d1h3cjE1elUxa0NjbkpwZlN4OG5rMmJHaXlyQkdZekMxWlQzaTdvNXpqSzQ4MVNB?oc=5"
+     "headline": "ロッキン2026のライブ映像をYouTubeで無料配信！BE:FIRST、櫻坂46、Vaundyらが登場",
+     "highlight": "無料配信",
+     "image": "https://pub-6e6736ba37d64d4aa5ae63b074884090.r2.dev/2026/11/FNhUpg2K-00_2.jpg",
+     "image_via": "og:image",
+     "url": "https://www.wws-channel.com/music2/680872.html",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
@@ -471,24 +468,19 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "note",
-     "title": "ILLIT 'You're Under Arrest' Thorough Analysis: Pop as a Verdict, Blowing the Whistle on the Ambiguity of Love [Song Analysis no.126]",
-     "url": "https://note.com/music_anatomy/n/n9552738f0993?hl=en"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 2,
-     "source": "Weverse",
-     "title": "ILLIT社区帖子 - 😻 - MINJU",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1tT25qY29qX2lkWlRVbWlJY2xkVkhDa1NwckFRWVRqUFRJdmxiYVdFdE9WY2NrMjJrZDluUHUxUXZrN3pfZ2x3R0kwR1VqTm1EZVNlN1l6SWJHeDRXeDBNS25n?oc=5"
+     "headline": "ILLIT 'You're Under Arrest' Thorough Analysis: Pop as a Verdict, Blowing the Whistle on the Ambiguity of Love",
+     "highlight": "",
+     "image": "https://d2l930y2yx77uc.cloudfront.net/production/social_images/8f9505c6ea91e2fb579db4b06af9bc08d5d093ba.png",
+     "image_via": "og:image",
+     "url": "https://note.com/music_anatomy/n/n9552738f0993?hl=en",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",

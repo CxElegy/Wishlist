@@ -1,41 +1,5 @@
 [
 {
-"at": "2026-11-12T22:40:01+00:00",
-"text": "2026-11-13 第 1 バッチを出刊：FROM、MMORPG 新作、The Mandalorian、ぐでたま、周杰伦（5 版面・17 本・残り 6 版面） · token 新規入力 5.4万・キャッシュ読み 71.5万・出力 3,354",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.55,
-"mem_total": 16867414016,
-"mem_free": 15909675008,
-"disk_used": 10092294144,
-"disk_free": 31191240704,
-"disk_total": 41283534848,
-"peak": 403349504
-},
-"batch": 1,
-"boards": [
-"FROM",
-"MMORPG 新作",
-"The Mandalorian",
-"ぐでたま",
-"周杰伦"
-],
-"stories": 17,
-"left": 6,
-"edited": 23,
-"run": 1794522863.0499384,
-"tok": {
-"in": 23,
-"cw": 54061,
-"cr": 715243,
-"out": 3354,
-"calls": 12,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 772681
-},
-{
 "at": "2026-11-12T22:47:40+00:00",
 "text": "2026-11-13 第 2 バッチを出刊：A2O LITE（1 版面・3 本・残り 1 版面） · token 新規入力 997・キャッシュ読み 16.6万・出力 1,203",
 "level": "ok",
@@ -2157,5 +2121,10 @@
 "calls": 23,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-14T19:40:01+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
