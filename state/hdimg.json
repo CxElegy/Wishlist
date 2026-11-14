@@ -444,12 +444,6 @@
   "target": 1280,
   "v": 3
  },
- "https://biz.chosun.com/resizer/v2/ZXSVQQTU3BFJDFALMARBGC2MII.jpg?auth=244af8bbcdb4ea2f2cff3826d599849bf89156d25d0a03b970de0f5480059eee&width=1000&height=525&smart=true": {
-  "w": 1000,
-  "h": 525,
-  "target": 720,
-  "v": 3
- },
  "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg": {
   "w": 2000,
   "h": 1125,
@@ -2770,6 +2764,12 @@
   "target": 720,
   "v": 3
  },
+ "https://popscene.jp/img/event20261114.jpg": {
+  "w": 1280,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "https://portal.auone.jp/media/thumbnails/2026/11/09/https___news_mynavi_jp_article_20261109-5240755__w600.webp": {
   "w": 600,
   "h": 400,
@@ -3838,6 +3838,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.L-94pAdfo_MWhyLnouylTg&pid=News&w=633": {
+  "w": 633,
+  "h": 512,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Lt1OUxkMqFidKtwEbLUKoA&pid=News&w=1200": {
   "w": 700,
   "h": 390,
@@ -3888,12 +3894,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.kPcayW2FWa-vaSMiTg5ZWQ&pid=News&w=1102": {
-  "w": 700,
-  "h": 329,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.lDuej9PaulClYnc5TjFwyw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3935,6 +3935,12 @@
  "https://www.bing.com/th?id=ONUT.s2W8AvAIH_oFfZyHQqnVgA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.uqDrHefzhypCU51rqJsvQw&pid=News&w=1200": {
+  "w": 700,
+  "h": 523,
   "target": 720,
   "v": 3
  },
