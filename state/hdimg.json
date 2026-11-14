@@ -709,12 +709,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png": {
-  "w": 1500,
-  "h": 844,
-  "target": 1280,
-  "v": 3
- },
  "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261109100056098580d3244b4fed58141237106.jpg&nmt=30": {
   "w": 1400,
   "h": 1075,
@@ -1293,6 +1287,19 @@
   "target": 720,
   "v": 3
  },
+ "https://image.zdnet.co.kr/2026/11/12/ccb869c3838a5d6f9e2bafa6fe63634c.jpg": {
+  "w": 640,
+  "h": 602,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.507,
+  "local": "pics/85a17cf8d09987db.webp",
+  "out": [
+   1280,
+   1204
+  ],
+  "why": "看不清"
+ },
  "https://images-r2.thebrag.com/pedestrian/uploads/2026/11/daniel-radcliffe-harry-potter-reboot.jpg?v=1794356337052": {
   "w": 1280,
   "h": 720,
@@ -1544,12 +1551,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.etimg.com/thumb/msid-135841400,width-1200,height-900,imgsize-135774,overlay-economictimes/articleshow.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_1792559495320859328.jpg": {
   "w": 700,
   "h": 1050,
@@ -1746,6 +1747,12 @@
   "w": 1000,
   "h": 650,
   "target": 720,
+  "v": 3
+ },
+ "https://komonews.com/resources/media2/16x9/1280/1320/center/90/d4073018-af99-405a-b357-6a0a1e8399d7-BlackCat2.jpg": {
+  "w": 1320,
+  "h": 743,
+  "target": 1280,
   "v": 3
  },
  "https://lee.hpplus.jp/wp-content/uploads/2026/11/04/38600e3e5a2f85da5c5a7b8da08242c9.jpeg": {
@@ -2182,6 +2189,19 @@
   ],
   "why": "看不清"
  },
+ "https://news.walkerplus.com/article/184834/1101752_615.jpg": {
+  "w": 615,
+  "h": 412,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.513,
+  "local": "pics/f6ebccfa1836f1bf.webp",
+  "out": [
+   1280,
+   857
+  ],
+  "why": "看不清"
+ },
  "https://news.walkerplus.com/article/188772/1129553_615.jpg": {
   "w": 615,
   "h": 871,
@@ -2426,19 +2446,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800": {
-  "w": 615,
-  "h": 615,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.59,
-  "local": "pics/0fe2201b1c527be2.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2513,12 +2520,6 @@
    530
   ],
   "why": "期限付きの網址"
- },
- "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
  },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
@@ -2602,6 +2603,12 @@
  "https://nokiapoweruser.com/wp-content/uploads/2026/09/Samsung-Galaxy-S27-Ultra.jpeg": {
   "w": 1024,
   "h": 559,
+  "target": 720,
+  "v": 3
+ },
+ "https://nypost.com/wp-content/uploads/sites/2/2026/11/game-follows-two-main-characters-148671384.jpg?quality=75&strip=all": {
+  "w": 2000,
+  "h": 1333,
   "target": 720,
   "v": 3
  },
@@ -3768,6 +3775,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.RZ3hz11ADDNU0IOyzp1pOA&pid=News&w=1200": {
+  "w": 700,
+  "h": 365,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.UmrUWqbE3o-U9f9KWMz6ag&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3837,6 +3850,13 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.qqJZSYRcq871-q0kraSeaQ&pid=News&w=400": {
+  "w": 400,
+  "h": 260,
+  "target": 720,
+  "v": 3,
+  "blur": 0.409
+ },
  "https://www.bing.com/th?id=ONUT.uxjb8qApA4NKkBUHrsJ8Sg&pid=News&w=360": {
   "w": 360,
   "h": 240,
@@ -3860,19 +3880,6 @@
   "out": [
    1280,
    669
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.vCIrPcZQyfgKfd2KywtKFA&pid=News&w=640": {
-  "w": 640,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.512,
-  "local": "pics/cc6d4f104b408769.webp",
-  "out": [
-   1280,
-   720
   ],
   "why": "看不清"
  },
@@ -3922,12 +3929,6 @@
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Sentinel-marvel-comics-Thor.webp": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
-  "w": 1200,
-  "h": 900,
   "target": 1280,
   "v": 3
  },
