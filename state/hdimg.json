@@ -603,6 +603,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.513,
+  "local": "pics/b84bf57f910f0c92.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://cdn.kpab.net/news/photo/202611/1865_1898_3119.png": {
   "w": 600,
   "h": 400,
@@ -777,12 +790,6 @@
  },
  "https://comicbookmovie.com/images/articles/banners/avengers-secret-wars-rumored-to-feature-spoilers-return-for-one-final-send-off-ab230669.jpg": {
   "w": 1500,
-  "h": 844,
-  "target": 720,
-  "v": 3
- },
- "https://comicbookmovie.com/images/articles/banners/rumor-predator-badlands-director-dan-trachtenberg-to-write-and-direct-upcoming-mcu-movie-ab230975.jpg": {
-  "w": 1503,
   "h": 844,
   "target": 720,
   "v": 3
@@ -3379,6 +3386,12 @@
   "v": 3
  },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/07/from.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 1280,
