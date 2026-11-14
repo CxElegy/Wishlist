@@ -3269,6 +3269,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/f/3/2/6/f326269d8ddcb4c98d77b3cdb2ef639f_1.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/f/a/5/3/fa53d6bb2a79d4838238076752cf8fcd_1.jpg": {
   "w": 640,
   "h": 360,
@@ -3800,10 +3806,11 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
+  "w": 700,
+  "h": 491,
   "target": 1280,
   "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-15"
+  "blur": 0.402
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
