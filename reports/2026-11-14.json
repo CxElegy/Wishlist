@@ -1,20 +1,11 @@
 {
  "date": "2026-11-14",
- "edit_sig": "40af36a15f78",
+ "edit_sig": "a72ef0af1ea2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 4,
-     "source": "AUTOMATON",
-     "title": "Astrae Oratio to release between January and March 2027, according to publisher’s earnings call",
-     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNVFc2d2VucnJTdTJVYXV2b19aR2RDNnpBZlRINldGdW9PMEhmdlhkZ1lRbU9TQ0pIbnR2WnA5akdrU0J2Um5kdWFQS0NwMXVvRGVrU28wbDBtRUNCWTRvRlVRcXJfVUIzNjA0d3ZiM0JHSUNxb3kzY0lXYUlhV2czRnVrWUdYZS1zSk5qNjB0N1dhdlV1MWxRRzhmSkRrTng5clExSzNLVUxXWnZKVGJRZkFaTmhhRWdnVW1ySFg5ZmJ2VlBBNF9zNHN3?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -35,6 +26,16 @@
      "image": "https://preview.redd.it/gf2z52q2wb1i1.jpeg?width=640&crop=smart&auto=webp&s=fe15663ef38b314f747ea6da7595a9958a8a859d",
      "image_via": "条目自带",
      "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xv13kf/character_introduction_komori_yuu/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "headline": "Astrae Oratio to release between January and March 2027, according to publisher’s earnings call",
+     "highlight": "",
+     "image": "https://automaton-media.com/en/wp-content/uploads/2026/11/20261113-75190-header.jpg",
+     "image_via": "og:image",
+     "url": "https://automaton-media.com/en/news/astrae-oratio-to-release-between-january-and-march-2027-according-to-publishers-earnings-call/",
      "weight": "normal"
     }
    ],
@@ -544,15 +545,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 3,
-     "source": "クランクイン！",
-     "title": "木下ジャパンオープンテニスに越前リョーマ＆リョーガが！ 錦織圭選手と撮影も",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBjRUNMb1JDZnROb3JNU09xTGlYRmtHVzY1NnA3LS11Wk9JUzBrX3NQczFQSkM0U2dGTC01eGhULUZiU3VrVE8yY0RscWFLS0didjV3cUhHdnFjT2EyNzVLYWVR?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -573,6 +565,16 @@
      "image": "https://news.dellows.jp/wp-content/uploads/2026/09/462389_1.jpg",
      "image_via": "og:image",
      "url": "https://news.dellows.jp/462389/?from=recommend_list",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "木下ジャパンオープンテニスに越前リョーマ＆リョーガが！ 錦織圭選手と撮影も",
+     "highlight": "",
+     "image": "https://www.crank-in.net/img/db/267108025175442_1200.jpg",
+     "image_via": "og:image",
+     "url": "https://www.crank-in.net/stage/gallery/2_5d/192132/2",
      "weight": "normal"
     }
    ],
