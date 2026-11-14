@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-14T01:18:05+00:00",
+ "checked": "2026-11-14T02:17:47+00:00",
  "fired": {
   "at": "2026-11-13T23:45:54+00:00",
   "results": {
@@ -67,11 +67,24 @@
    "need": true,
    "prog": 191,
    "prog_day": "2026-11-14",
-   "ripe": [],
-   "sig": "1e24e9d7bac7",
+   "ripe": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "ILLIT",
+    "Vaundy",
+    "dota2",
+    "gelato pique",
+    "ぐでたま",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "绝区零"
+   ],
+   "sig": "f912a8be3256",
    "token_cap": 1000000,
    "tokens_today": 264850,
-   "why": "整理待ちの記事 17 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 17 件（12 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
