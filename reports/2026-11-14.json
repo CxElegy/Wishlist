@@ -1,36 +1,34 @@
 {
  "date": "2026-11-14",
- "edit_sig": "4639cef60c4b",
+ "edit_sig": "29e4e5ef5f38",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "개발진이 수동 조작의 재미를 살리면서 편의성 강화와 BM 개편 등으로 완성도를 높이겠다고 밝혔다.",
      "date": "2026-11-09",
-     "n": 1,
-     "source": "경향게임스",
-     "title": "아스트라에 오라티오 개발진, '수동 조작' 재미, '편의성 강화', 'BM개편' 등 완성도 높인다",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5jeGtobkxzOTNZS1NsYmZSWUlHNi1oSURxTFhjck8wMGIxajFPTDJqQkxwME43ZGtRV3FHczVLOWtMLTdwbGJtaXl0WUdFSUN4Tl9QQWM3NXhFZEx0dGh1SlVQYVh5T1hKZ0I3VA?oc=5"
+     "headline": "아스트라에 오라티오 개발진, '수동 조작' 재미, '편의성 강화', 'BM개편' 등 완성도 높인다",
+     "highlight": "'편의성 강화', 'BM개편'",
+     "image": "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg",
+     "image_via": "转载 www.khgames.co.kr",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5jeGtobkxzOTNZS1NsYmZSWUlHNi1oSURxTFhjck8wMGIxajFPTDJqQkxwME43ZGtRV3FHczVLOWtMLTdwbGJtaXl0WUdFSUN4Tl9QQWM3NXhFZEx0dGh1SlVQYVh5T1hKZ0I3VA?oc=5",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 2,
-     "source": "r/Astrae_Oratio",
-     "title": "Character Introduction - Komori Yuu",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xv13kf/character_introduction_komori_yuu/"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 3,
-     "source": "r/Astrae_Oratio",
-     "title": "Kamikura Kotoha [@TOTOTOTO_TK]",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xt1wo0/kamikura_kotoha_totototo_tk/"
+     "headline": "Character Introduction - Komori Yuu",
+     "highlight": "",
+     "image": "https://preview.redd.it/gf2z52q2wb1i1.jpeg?width=640&crop=smart&auto=webp&s=fe15663ef38b314f747ea6da7595a9958a8a859d",
+     "image_via": "条目自带",
+     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xv13kf/character_introduction_komori_yuu/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",

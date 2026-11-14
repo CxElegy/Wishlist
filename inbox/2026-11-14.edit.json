@@ -81,7 +81,8 @@
   "gelato pique": 1,
   "あつ森": 3,
   "猫用品": 3,
-  "FROM": 1
+  "FROM": 1,
+  "Astrae Oratio": 3
  },
  "漫威电影": [
   {
@@ -409,6 +410,26 @@
     1
    ],
    "image": "https://www.hollywoodreporter.com/wp-content/uploads/2022/02/From-Still-Epix-Publicity-H-2022.jpg?w=1296&h=730&crop=1"
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "아스트라에 오라티오 개발진, '수동 조작' 재미, '편의성 강화', 'BM개편' 등 완성도 높인다",
+   "highlight": "'편의성 강화', 'BM개편'",
+   "blurb": "개발진이 수동 조작의 재미를 살리면서 편의성 강화와 BM 개편 등으로 완성도를 높이겠다고 밝혔다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Character Introduction - Komori Yuu",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }
