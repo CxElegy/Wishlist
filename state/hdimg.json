@@ -1711,12 +1711,6 @@
   "target": 720,
   "v": 3
  },
- "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg": {
-  "w": 800,
-  "h": 533,
-  "target": 720,
-  "v": 3
- },
  "https://inews.gtimg.com/om_bt/OAfxMyK9k9Ay4Jz45p_yZ5zTCbdKGZK-RBEHC17pB0Kq4AA/1000": {
   "w": 1000,
   "h": 750,
@@ -1820,6 +1814,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.348
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4087765_0-enlarge.jpg": {
+  "w": 2000,
+  "h": 1333,
+  "target": 720,
+  "v": 3
  },
  "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4088774_0-enlarge.jpg": {
   "w": 2448,
@@ -2558,12 +2558,6 @@
  "https://ni.yam.com/20261112/ewc-2027-dota2-golden-trophy-confetti-20261112-ad7a67cd92053b92.webp": {
   "w": 1200,
   "h": 764,
-  "target": 720,
-  "v": 3
- },
- "https://ni.yam.com/20261113/11HECL72ZT1E88G8CS0K0-e33401fca4a21a13.webp": {
-  "w": 1920,
-  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -3310,6 +3304,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static.toiimg.com/thumb/msid-135740690,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://static.tweaktown.com/news/1/1/114599_2_rockstar-confirms-gta-6-playable-on-xbox-one-at-xbox-series-settings-via-cloud-gaming_full.png": {
   "w": 1500,
   "h": 844,
@@ -3682,30 +3682,11 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.3z_BUnhGPY8hmvOtwbjPwg&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.54UxHRkuPi0sAS9h4h1CMA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.8WfrEvQu2t8WeURrehUefw&pid=News&w=700": {
-  "w": 700,
-  "h": 525,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.491,
-  "local": "pics/d55a3334f3b691c0.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
@@ -3781,6 +3762,12 @@
  "https://www.bing.com/th?id=ONUT.OKZqWjm0fV6fE9FY4yaRwg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.PZP4fsmTflVuekqQxxzn9g&pid=News&w=800": {
+  "w": 700,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -3975,6 +3962,12 @@
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Sentinel-marvel-comics-Thor.webp": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
+  "w": 1200,
+  "h": 900,
   "target": 1280,
   "v": 3
  },

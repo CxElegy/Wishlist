@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-12T04:44:53+00:00",
-"text": "2026-11-12 第 3 バッチを出刊：GTA 6（1 版面・5 本・残り 4 版面） · token 新規入力 1.1万・キャッシュ読み 129.1万・出力 2,758",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.49,
-"mem_total": 16867414016,
-"mem_free": 15938052096,
-"disk_used": 10113372160,
-"disk_free": 31170162688,
-"disk_total": 41283534848,
-"peak": 391315456
-},
-"batch": 3,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 4,
-"edited": 22,
-"run": 1794457162.7841258,
-"tok": {
-"in": 32,
-"cw": 11125,
-"cr": 1291311,
-"out": 2758,
-"calls": 15,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1305226
-},
-{
 "at": "2026-11-12T05:34:57+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2097,5 +2065,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 304464
+},
+{
+"at": "2026-11-14T00:50:39+00:00",
+"text": "2026-11-14 第 4 バッチを出刊：MMORPG 新作（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 4,773・キャッシュ読み 71.1万・出力 2,046",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.6,
+"mem_total": 16869146624,
+"mem_free": 15868203008,
+"disk_used": 10120749056,
+"disk_free": 31162785792,
+"disk_total": 41283534848,
+"peak": 402366464
+},
+"batch": 4,
+"boards": [
+"MMORPG 新作"
+],
+"stories": 3,
+"left": 0,
+"edited": 17,
+"run": 1794613612.94807,
+"tok": {
+"in": 17,
+"cw": 4756,
+"cr": 710628,
+"out": 2046,
+"calls": 9,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 717447,
+"secs": 3826,
+"run_tok": {
+"in": 46,
+"cw": 52788,
+"cr": 1709667,
+"out": 5801,
+"calls": 24,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
