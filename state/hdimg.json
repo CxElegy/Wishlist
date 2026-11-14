@@ -444,12 +444,6 @@
   "target": 1280,
   "v": 3
  },
- "https://biz.chosun.com/resizer/v2/ZXSVQQTU3BFJDFALMARBGC2MII.jpg?auth=244af8bbcdb4ea2f2cff3826d599849bf89156d25d0a03b970de0f5480059eee&width=1000&height=525&smart=true": {
-  "w": 1000,
-  "h": 525,
-  "target": 1280,
-  "v": 3
- },
  "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg": {
   "w": 2000,
   "h": 1125,
@@ -477,12 +471,6 @@
  "https://buzzap.net/images/2026/11/13/galaxy-s27-camera/top.jpg": {
   "w": 1200,
   "h": 900,
-  "target": 1280,
-  "v": 3
- },
- "https://cassette.sphdigital.com.sg/image/zaobao/71625317a90339afe6591be559adfc3af779e6ecee39e14a0b7a3e71b75667d9?f=webp&o=zbimg&oloc=se": {
-  "w": 960,
-  "h": 540,
   "target": 1280,
   "v": 3
  },
@@ -952,6 +940,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://escharts.com/metaImage/tournaments/esports-world-cup-2026-dota2?v=1794634143": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
   "w": 300,
   "h": 300,
@@ -1201,12 +1195,6 @@
   "target": 1280,
   "v": 3
  },
- "https://i.daily.jp/gossip/2026/11/13/Images/f_21030533.jpg": {
-  "w": 910,
-  "h": 799,
-  "target": 720,
-  "v": 3
- },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
@@ -1240,12 +1228,6 @@
  "https://i0.wp.com/leisurebyte.com/wp-content/uploads/2026/11/The-Mandolrian-7th-Anniversary-Still-from-Star-Wars-The-Mandalorian-and-Grogu-2-1-1.jpg": {
   "w": 1617,
   "h": 850,
-  "target": 720,
-  "v": 3
- },
- "https://i1.hoopchina.com.cn/bbs-editor-web/17945022417605.jpg": {
-  "w": 1280,
-  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -1474,12 +1456,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2har4k.img": {
-  "w": 1280,
-  "h": 1071,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
   "w": 1000,
   "h": 666,
@@ -1586,7 +1562,7 @@
   "target": 720,
   "v": 3
  },
- "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_1792559362272867813.jpg": {
+ "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_1792559495320859328.jpg": {
   "w": 700,
   "h": 1050,
   "target": 720,
@@ -2583,6 +2559,18 @@
   "out": [
    1200,
    637
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00146577-toushin-000-1-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/f3fbf0aa5c53717b.webp",
+  "out": [
+   1200,
+   800
   ],
   "why": "期限付きの網址"
  },
@@ -3763,6 +3751,12 @@
   "v": 3,
   "blur": 0.391
  },
+ "https://www.bing.com/th?id=ONUT.9G1Vkeu7EIMHMfBuEpkXVQ&pid=News&w=800": {
+  "w": 394,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ErKMOQndpn0XuuqtExe7TQ&pid=News&w=640": {
   "w": 640,
   "h": 357,
@@ -3846,12 +3840,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.RuiUE9EagH8n-NNDgFY-Cg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ZqTkm0fMMy6y4-azOeMsZQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3859,6 +3847,18 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.gi924GMRfBjozAwVeL-rig&pid=News&w=756": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.glBa4ntxeCcYVCCfRFGtig&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3882,12 +3882,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.lyfBqG6PWqBixcjIquMPjQ&pid=News&w=700": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.mSRgEXP9xOJgO4sM674NZA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3906,12 +3900,6 @@
    609
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.p1KmnFB9-vqsApFkUm5iGw&pid=News&w=600": {
-  "w": 600,
-  "h": 450,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
@@ -3944,12 +3932,6 @@
    720
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.v67tJuGtE7OSoPeVpTqEKA&pid=News&w=1024": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.v8bfO7hLnAVNL1miyL-CSw&pid=News&w=1200": {
   "w": 700,
