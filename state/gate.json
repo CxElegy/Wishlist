@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-14T20:18:07+00:00",
+ "checked": "2026-11-14T20:54:02+00:00",
  "fired": {
-  "at": "2026-11-14T19:34:35+00:00",
+  "at": "2026-11-14T20:54:02+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -34,23 +34,33 @@
    "edit": 12
   },
   "2026-11-15": {
-   "edit": 2
+   "edit": 3
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-14T19:34:35+00:00",
+    "at": "2026-11-14T20:54:02+00:00",
     "attempts": 1,
     "day": "2026-11-15",
-    "prog": 47,
-    "resp": "cse_01W4x6f87pEiTvU4vcQDUjLj",
-    "sig": "c78623daced6"
+    "prog": 52,
+    "resp": "",
+    "sig": "de46e50fd3ce"
    },
    "items": [
+    "A2O LITE",
+    "GTA 6",
     "MMORPG 新作",
-    "周杰伦"
+    "dota2",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-14T19:46:52+00:00",
    "last_error": {
@@ -60,35 +70,41 @@
    "need": true,
    "prog": 52,
    "prog_day": "2026-11-15",
-   "ripe": [],
-   "sig": "a993cfbdfe20",
+   "ripe": [
+    "GTA 6",
+    "dota2",
+    "三星手机",
+    "漫威电影"
+   ],
+   "sig": "de46e50fd3ce",
    "token_cap": 1000000,
    "tokens_today": 119310,
-   "why": "整理待ちの記事 3 件（2 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 47 件（12 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
+    "チェーンソーマン",
+    "dota2",
+    "漫威电影",
+    "GTA 6",
     "A2O LITE",
+    "周杰伦",
+    "绝区零"
+   ],
+   "need": true,
+   "sig": "033b080ffcb8",
+   "waiting": [
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "哈利波特剧集"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
