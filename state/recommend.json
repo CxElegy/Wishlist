@@ -38,6 +38,7 @@
   "https://news.yahoo.co.jp/articles/653a31d2e6624e19c70e528e4958da5fe5e5d059": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/6ae50ee8b4d6734638d558cb35f74dcddbd00fcc": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-00000041-isd-000-2-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/f55217655a48f37ae3c2888b5ec8864cef54ca8c": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261109-00096815-vballk-000-1-view.jpg?exp=10800",
+  "https://news.zhibo8.com/game/2026-11-12/6af591d6d84aenative.htm": "https://vodjzhs.duoduocdn.com/dc42d44avodtranscq1251542705/b6bfa29a5001834827900006268/coverBySnapshot/coverBySnapshot_10_0.jpg",
   "https://newsdig.tbs.co.jp/articles/mrt/3081772": "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg",
   "https://nijimen.kusuguru.co.jp/topics/653500": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg",
   "https://nijimen.kusuguru.co.jp/topics/654389": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/0dabda83b0e848c08b840f5f91b2c4a0.jpg",
@@ -1420,6 +1421,27 @@
   },
   {
    "batch": 6,
+   "because": "dota2",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://vodjzhs.duoduocdn.com/dc42d44avodtranscq1251542705/b6bfa29a5001834827900006268/coverBySnapshot/coverBySnapshot_10_0.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "直播吧",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "icon谈Ale加盟WBG：最吓人的H4cker 打DOTA2都8000分了还复出LPL",
+   "url": "https://news.zhibo8.com/game/2026-11-12/6af591d6d84aenative.htm",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-11-09",
    "hits": [],
@@ -1440,7 +1462,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "滑雪",
    "date": "2026-11-12",
    "hits": [],
@@ -1932,11 +1954,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1948,11 +1970,11 @@
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ]
  ]

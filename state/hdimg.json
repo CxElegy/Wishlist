@@ -170,6 +170,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/008qwiEkgy1ij0nhruyiaj30u0191n79.jpg": {
+  "w": 1080,
+  "h": 1621,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/72e52a224d0ccf5f.webp",
+  "out": [
+   853,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "https://0.soompi.io/wp-content/uploads/2026/11/08093529/LE-SSERAFIM-ILLIT-KATSEYE.jpeg": {
   "w": 3441,
   "h": 2294,
@@ -940,6 +953,12 @@
   "target": 720,
   "v": 3
  },
+ "https://file.topuplist.com/2026/11/1794554543_DQaI6yEHcl.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://fpimgs.s3.ap-southeast-1.amazonaws.com/uul/2026/11/08/6aef58edf165b0.95265054.jpg": {
   "w": 752,
   "h": 752,
@@ -1035,6 +1054,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/another-update-released-dota-2-25427.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/arteezy-said-his-mmr-was-stolen-in-dota-2-24547.jpg": {
@@ -3429,6 +3454,12 @@
   "w": 1600,
   "h": 1066,
   "target": 1280,
+  "v": 3
+ },
+ "https://vodjzhs.duoduocdn.com/dc42d44avodtranscq1251542705/b6bfa29a5001834827900006268/coverBySnapshot/coverBySnapshot_10_0.jpg": {
+  "w": 856,
+  "h": 480,
+  "target": 720,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/11/1791684263958_galaxy-s27-pro-lo-dien-voi-cu-soc-camera-69.png": {

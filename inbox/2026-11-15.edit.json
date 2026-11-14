@@ -182,6 +182,43 @@
   "漫威电影": 9,
   "三星手机": 5,
   "チェーンソーマン": 3,
-  "A2O LITE": 2
- }
+  "A2O LITE": 2,
+  "dota2": 2,
+  "哈利波特剧集": 1,
+  "绝区零": 1
+ },
+ "dota2": [
+  {
+   "headline": "Valve has released another update for Dota 2 amid the anticipation of a major patch",
+   "highlight": "another update",
+   "blurb": "Valve released another Dota 2 update while players await a major patch.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://hawk.live/storage/images/posts/another-update-released-dota-2-25427.jpg"
+  },
+  {
+   "headline": "阔别已久的塞尔维亚，XG 把训练室搬进了落地窗前|Blast Slam S9",
+   "highlight": "Blast Slam S9",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "哈利波特剧集": [],
+ "绝区零": [
+  {
+   "headline": "绝区零3.3最久未复刻角色盘点：7位代理人如今还值得期待吗？",
+   "highlight": "最久未复刻",
+   "blurb": "绝区零3.3版本下，盘点最久未复刻的7位代理人。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://file.topuplist.com/2026/11/1794554543_DQaI6yEHcl.jpg"
+  }
+ ]
 }

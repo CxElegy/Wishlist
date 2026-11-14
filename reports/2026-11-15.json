@@ -1,6 +1,6 @@
 {
  "date": "2026-11-15",
- "edit_sig": "c60f200e45fd",
+ "edit_sig": "e2610da73637",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -208,33 +208,6 @@
   {
    "cover": null,
    "facts": [],
-   "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 1,
-     "source": "Bluesky",
-     "title": "I mean I tend to hear a lot of people asking to boycott the new HBO Harry Potter series, yet whenever some new FNAF thing happens I do not see even remotely the same amount of fervor despite cawthon a",
-     "url": "https://bsky.app/profile/tonyawolfe.bsky.social/post/3n2a2hk6n222l"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
-   "theme": {
-    "accent": "#D4A646",
-    "alt_accent": "#E7C66B",
-    "alt_bg": "#740001",
-    "alt_fg": "#F1E9D6",
-    "bg": "#121826",
-    "fg": "#F1E9D6",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "三星手机",
    "section": "好物",
    "stories": [
@@ -391,17 +364,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "绝区零3.3版本下，盘点最久未复刻的7位代理人。",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "topuplist.com",
-     "title": "绝区零3.3最久未复刻角色盘点：7位代理人如今还值得期待吗？",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNkM0bzUtMEQxVDR2ZGk4QmFBY3RNT1ZGejE5MlRhSmxHN2pnRVVSUjVodTJnVHhSdElidGxSS2RKTW9hRnNoSUJzNHpCbHdYUkJKSUs0SUJFUFdHX3IyNVFlVm1uUUpiQ3RsMndVcFRMYUJjblFKdXB3bHJCTE5xNDJwTzNEcThiQW5CZ2xzbw?oc=5"
+     "headline": "绝区零3.3最久未复刻角色盘点：7位代理人如今还值得期待吗？",
+     "highlight": "最久未复刻",
+     "image": "https://file.topuplist.com/2026/11/1794554543_DQaI6yEHcl.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://topuplist.com/zh-cn/article/zenless-zone-zero-3-3-longest-rerun-waits-7-agents",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -418,24 +393,29 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Valve released another Dota 2 update while players await a major patch.",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "Valve has released another update for Dota 2 amid the anticipation of a major patch",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQeWlRZlFsSExvMnk2SWpTYWNuMDVZdmJyaVhhTTVEMVdvcnJYVlI5cVAwSHVNUW1LZGpVSGtZQU8xZFJyWkxVcl9mWXN0YjVGS3o3ZVhZbjZxR1d6MXJiZ1U5elJxWDBsanFKeUpIZXdTU29ZV1c0dFgzcUtjazZ4RndTcncwV1Rrd3VfT3YzWUY2UGZL?oc=5"
+     "headline": "Valve has released another update for Dota 2 amid the anticipation of a major patch",
+     "highlight": "another update",
+     "image": "https://hawk.live/storage/images/posts/another-update-released-dota-2-25427.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://hawk.live/posts/valve-released-another-update-dota-2-amid-anticipation-major-patch",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 2,
-     "source": "新浪网",
-     "title": "阔别已久的塞尔维亚，XG 把训练室搬进了落地窗前|Blast Slam S9|dota2_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE4xVkJZNjVKNTItaG9XTkpXblE5Q2ZkdWNLcm9IaE0zZUdpY2xTeGxvWjNDLU00R3NoOHVEQnVodjJCX08xSmxWdnlrOFR0SlFCVWF6cmxBc292SGNzbzlfd0M4RQ?oc=5"
+     "headline": "阔别已久的塞尔维亚，XG 把训练室搬进了落地窗前|Blast Slam S9",
+     "highlight": "Blast Slam S9",
+     "image": "http://wx4.sinaimg.cn/middle/008qwiEkgy1ij0nhruyiaj30u0191n79.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5364833458325508.html",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -592,6 +572,31 @@
     "alt_fg": "#0F1512",
     "bg": "#0F1512",
     "fg": "#ECE7DC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "Nicola Coughlan rules out watching new Harry Potter series: ‘It’s not for me’",
+    "url": "https://www.independent.co.uk/arts-entertainment/tv/news/nicola-coughlan-harry-potter-jk-rowling-b3084540.html"
+   },
+   "name": "哈利波特剧集",
+   "quiet": true,
+   "section": "影视",
+   "status": "第一季《魔法石》2026/12/25 HBO 首播 · 日本配信未公布",
+   "stories": [],
+   "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
+   "theme": {
+    "accent": "#D4A646",
+    "alt_accent": "#E7C66B",
+    "alt_bg": "#740001",
+    "alt_fg": "#F1E9D6",
+    "bg": "#121826",
+    "fg": "#F1E9D6",
     "font": "serif",
     "split": true
    }
