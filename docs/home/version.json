@@ -1,14 +1,14 @@
 {
- "admin": "a61f41c41aff",
- "admin-ai": "8501e06c996f",
+ "admin": "b19769c7de16",
+ "admin-ai": "fc1ab36c4bdb",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4158d8f5"
+   "38a718d5"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0b38c542"
+   "89beb173"
   ]
  },
  "admin-boards": "3542bef89329",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "ff40009bf65c",
+ "admin-emblem": "e218ca83c25c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "25dded77"
+   "f08854bd"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "99f0ec3dcd0b",
+ "admin-now": "a877d1de8a50",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "a320bc92"
+   "f8aa5a18"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "6027c837"
+   "3aa1a43d"
   ]
  },
- "admin-system": "8039b0a6194c",
+ "admin-system": "72c84f0b7813",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b0007f87"
+   "c87f4d9a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "7540e915"
+   "22def45e"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "d81ff6b4"
   ]
  },
- "index": "7c7e6b54ea43",
+ "index": "7a509decbb06",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "08a51a3a"
+   "379f8d60"
   ],
   "w-130724c0": [
    "猫用品",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "1acfb0cf"
+   "dcfb2b4d"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "49d6eae7"
+   "17d8ac8f"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "5b684c94"
+   "21f68ab4"
   ],
   "w-f303ad09": [
    "绝区零",
    "397f6c85"
   ]
  },
- "updated": "11.14 11:50",
+ "updated": "11.14 11:57",
  "wishlist": "983e73a64db4"
 }

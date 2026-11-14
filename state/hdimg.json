@@ -302,6 +302,13 @@
   "v": 3,
   "blur": 0.313
  },
+ "https://appmedia.jp/wp-content/uploads/2026/10/182616_ik0dw.webp": {
+  "w": 740,
+  "h": 389,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.295
+ },
  "https://appmedia.jp/wp-content/uploads/2026/10/201853_imk7r.webp": {
   "w": 740,
   "h": 389,
@@ -1127,6 +1134,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hawk.live/storage/post-images/ns-spoke-virtuspro-failure-23323.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
  "https://hermes.media.static.aol.com/media/2026/11/07/7b4ef813-c408-30d0-a0fa-b0f4a51d2e5b/454d9de9-5699-4cd1-bdea-645ef4519750.png": {
   "w": 1600,
   "h": 1200,
@@ -1278,6 +1291,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.mediapen.com/news/202611/news_1137356_1794550420_m.jpg": {
+  "w": 600,
+  "h": 407,
+  "target": 720,
   "v": 3
  },
  "https://image.newdaily.co.kr/site/data/img/2026/11/11/2026111100337_0.jpg?u=20261111174521": {
@@ -1476,12 +1495,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hcPKO.img": {
   "w": 870,
   "h": 580,
-  "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hcPhL.img": {
-  "w": 1998,
-  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -2572,6 +2585,12 @@
    637
   ],
   "why": "期限付きの網址"
+ },
+ "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
  },
  "https://ni.yam.com/20261110/jp-prt-85653-838-1-261110025630647-3bb0d786b74afbc6.webp": {
   "w": 1920,
@@ -3744,19 +3763,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.DBYSnY5j3iEiaNMtRXx55Q&pid=News&w=500": {
-  "w": 500,
-  "h": 500,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.485,
-  "local": "pics/84aae6faa3b3b061.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.ErKMOQndpn0XuuqtExe7TQ&pid=News&w=640": {
   "w": 640,
   "h": 357,
@@ -3983,6 +3989,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true": {
+  "w": 500,
+  "h": 262,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.524,
+  "local": "pics/90f0d635188356ba.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清"
+ },
  "https://www.chosun.com/resizer/v2/G5SDINLDHFRWGZBRGYZWCNLCGA.jpg?auth=739573127a990fd5ef680a1b099c16fa28b384086240fdaa5d7bc97289559047&width=650&height=341&smart=true": {
   "w": 650,
   "h": 341,
@@ -4020,6 +4039,12 @@
    672
   ],
   "why": "看不清"
+ },
+ "https://www.chosun.com/resizer/v2/MNRTAOJRMIYGGOBYHBSDQNZWGM.jpg?auth=ffbf824053e649bc9bcba36203132d3a6e73c50c8168aef40b5bfa76c6903ca7&width=1200&height=630&focal=1015,498": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/10/avengers-doomsday5.webp": {
   "w": 1200,

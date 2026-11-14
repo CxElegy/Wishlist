@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "4c5d7e2ec1a3",
+ "edit_sig": "423ac768b434",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -54,17 +54,19 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "BLEACH Mirrors High の課金要素とパックをまとめた攻略記事。",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】課金要素のおすすめとパックまとめ【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1BVFo5RXVQOUVtRmxBNVl2V21iMHAzQVMtVzhaMGpxdjBWb01RU0VoVXhnblU0VE1VNGtOeGNyemZOLTlUakRUdW5hY1R1TVU?oc=5"
+     "headline": "【ミラハイ】課金要素のおすすめとパックまとめ【BLEACHミラーズハイ】",
+     "highlight": "課金要素のおすすめ",
+     "image": "https://appmedia.jp/wp-content/uploads/2026/10/182616_ik0dw.webp",
+     "image_via": "og:image",
+     "url": "https://appmedia.jp/bleach-mh/80531035",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -213,15 +215,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 4,
-     "source": "DMKsnowboard",
-     "title": "【2027年1月23日限定】懐かしの夜行列車「シュプール号」が復活！夜出発・早朝到着で湯沢のゲレンデへ",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBnNFVkSTNlVjllRVVfcWtjelctTDhzQkxDczlUMlVWNUhSZnpZZndGRHUxZFo5bzA2Ylk3V3hmREQ0UWNrMmFkRFZpQ0otSU1DU1Fkd3hQV3hGbktDclE?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -252,6 +245,21 @@
      "image": "https://assets.st-note.com/production/uploads/images/335215707/rectangle_large_type_2_b2241dc0e704315c21fca70592dd3922.png?fit=bounds&quality=85&width=1280",
      "image_via": "og:image",
      "url": "https://note.com/serene_curlew334/n/n9b13ef463c1c",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "event": {
+      "date": "2027-01-23",
+      "label": "運行日",
+      "place": "湯沢"
+     },
+     "headline": "【2027年1月23日限定】懐かしの夜行列車「シュプール号」が復活！夜出発・早朝到着で湯沢のゲレンデへ",
+     "highlight": "「シュプール号」が復活",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/jr-ski.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/yako-shupuru-train-2027/",
      "weight": "normal"
     }
    ],
@@ -438,15 +446,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 4,
-     "source": "미디어펜",
-     "title": "[뮤직뱅크 라인업] 리센느·아일릿·NCT 드림·에이티즈·TWS·베스티·지수 등",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE11dmZaalRUNnQ0QTZJYllQQ1UxaHJXR2xPX2RZdV9QQ2wyMG85dTBSNllwZXZwRmRUSmNxT3NOZUxXQU9PQWd4NDVfdUF4QkR3V0lyatIBWEFVX3lxTFBmWVZaZWV4Z05CLUs5TUhOTmItb2w5Y2Ryd3dsOHNTSWgwejhLdGthSU1ER3RGOEJpYnN3TWx5anduS2VmcVVPNTcyck8wVGJVMmpvdUJScDM?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -467,6 +466,16 @@
      "image": "https://phinf.wevpstatic.net/MjAyNjEwMTlfOTAg/MDAxNzkyMzkwMzgzODkx.J5-qTJVzi5Ed7yjnetSTfKJ3lItsNIaMTRfW4G8LBXcg.Md6Y5nozoQIb6ngdYLxGwrvVsjUEm9pZCPzrd7Wrx2wg.JPEG/image.jpg?type=w1414",
      "image_via": "og:image",
      "url": "https://weverse.io/illit/artist/2-181078675?hl=zh-tw",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "headline": "[뮤직뱅크 라인업] 리센느·아일릿·NCT 드림·에이티즈·TWS·베스티·지수 등",
+     "highlight": "",
+     "image": "https://image.mediapen.com/news/202611/news_1137356_1794550420_m.jpg",
+     "image_via": "og:image",
+     "url": "https://www.mediapen.com/news/view/1137356",
      "weight": "normal"
     }
    ],
@@ -907,17 +916,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "NS looks back on the decline of the Dota 2 pro scene.",
      "date": "2026-11-10",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "NS Reflects on the Decline of the Dota 2 Pro Scene",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1YeF9FRlFVYmlFamxKTkl0YlhOQ1B4eElkN1NyZlZmX0w2Q3Mxd2JTYTZ5ZERDa01BWnlTZ3NidFRxaVJYV0xzeS1ON1hxZndRUmQ3VmlWZUsxeGhkQzFUYlFOYktkc2s0WW52dA?oc=5"
+     "headline": "NS Reflects on the Decline of the Dota 2 Pro Scene",
+     "highlight": "Decline of the Dota 2 Pro Scene",
+     "image": "https://hawk.live/storage/post-images/ns-spoke-virtuspro-failure-23323.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://hawk.live/posts/ns-reflects-decline-dota-2-pro-scene",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
