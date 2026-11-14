@@ -1,14 +1,14 @@
 {
- "admin": "0f3e881a160f",
- "admin-ai": "ad0e63b0a08c",
+ "admin": "a61f41c41aff",
+ "admin-ai": "8501e06c996f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "975dadc8"
+   "4158d8f5"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "79cab7ec"
+   "0b38c542"
   ]
  },
  "admin-boards": "3542bef89329",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "0977123dd3bc",
+ "admin-emblem": "ff40009bf65c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "0592333c"
+   "25dded77"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "959e3acecd6d",
+ "admin-now": "99f0ec3dcd0b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "741c227a"
+   "a320bc92"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "92f1fd0d"
+   "6027c837"
   ]
  },
- "admin-system": "55c06acda461",
+ "admin-system": "8039b0a6194c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b0922e95"
+   "b0007f87"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0a751e05"
+   "7540e915"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "d81ff6b4"
   ]
  },
- "index": "d86e976337ad",
+ "index": "7c7e6b54ea43",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "d5293955"
+   "c1fd3bc3"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "20e08c18"
+   "290915e7"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "84766f75"
+   "81918051"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "6ca85fed"
+   "6ab3be86"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "397f6c85"
   ]
  },
- "updated": "11.14 11:42",
+ "updated": "11.14 11:50",
  "wishlist": "983e73a64db4"
 }

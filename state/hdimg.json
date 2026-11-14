@@ -817,6 +817,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/14095431/pet-prt-112568-37-1-261114015428809.jpeg": {
+  "w": 1872,
+  "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
  "https://d17gj49471obkc.cloudfront.net/kyodopress_cms/wp-content/uploads/2026/11/kyd_4048751_main-7-scaled-e1794374164954-430x538.jpg": {
   "w": 430,
   "h": 538,
@@ -1473,6 +1479,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hcPhL.img": {
+  "w": 1998,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hdUIx.img": {
   "w": 1280,
   "h": 720,
@@ -1510,6 +1522,18 @@
   "target": 1280,
   "v": 3,
   "blur": 0.388
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hp0Y6.img": {
+  "w": 1600,
+  "h": 1600,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hp8oo.img": {
+  "w": 780,
+  "h": 438,
+  "target": 720,
+  "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
   "w": 720,
@@ -1699,6 +1723,12 @@
   "target": 720,
   "v": 3
  },
+ "https://inews.gtimg.com/news_ls/ODKjWJbFMjeAvin0rkN39GXrSMWQEdE_ANmYc9G2Gy6uQAA/0": {
+  "w": 2864,
+  "h": 1611,
+  "target": 720,
+  "v": 3
+ },
  "https://inews.gtimg.com/om_bt/OAfxMyK9k9Ay4Jz45p_yZ5zTCbdKGZK-RBEHC17pB0Kq4AA/1000": {
   "w": 1000,
   "h": 750,
@@ -1832,6 +1862,12 @@
   "w": 1010,
   "h": 505,
   "target": 1280,
+  "v": 3
+ },
+ "https://media.radaronline.com/brand-img/1X8y5W8xl/1200x628/paapa-essiedu-reaffirms-trans-rights-stance-ahead-of-hboas-aharry-pottera-series-1794424962324.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://media.trilltrill.jp/articles/5178164/featured-image.22dc5c43a1c941aac39c60a2fb3ccf8a?w=1200": {
@@ -3708,6 +3744,19 @@
   "v": 3,
   "blur": 0.391
  },
+ "https://www.bing.com/th?id=ONUT.DBYSnY5j3iEiaNMtRXx55Q&pid=News&w=500": {
+  "w": 500,
+  "h": 500,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.485,
+  "local": "pics/84aae6faa3b3b061.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.ErKMOQndpn0XuuqtExe7TQ&pid=News&w=640": {
   "w": 640,
   "h": 357,
@@ -3800,12 +3849,6 @@
  "https://www.bing.com/th?id=ONUT.ZqTkm0fMMy6y4-azOeMsZQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ZzSrdKSQOJpuveN0DxDbSQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 392,
   "target": 720,
   "v": 3
  },
@@ -3940,19 +3983,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true": {
-  "w": 500,
-  "h": 262,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.524,
-  "local": "pics/90f0d635188356ba.webp",
-  "out": [
-   1280,
-   671
-  ],
-  "why": "看不清"
- },
  "https://www.chosun.com/resizer/v2/G5SDINLDHFRWGZBRGYZWCNLCGA.jpg?auth=739573127a990fd5ef680a1b099c16fa28b384086240fdaa5d7bc97289559047&width=650&height=341&smart=true": {
   "w": 650,
   "h": 341,
@@ -3990,12 +4020,6 @@
    672
   ],
   "why": "看不清"
- },
- "https://www.chosun.com/resizer/v2/MNRTAOJRMIYGGOBYHBSDQNZWGM.jpg?auth=ffbf824053e649bc9bcba36203132d3a6e73c50c8168aef40b5bfa76c6903ca7&width=1200&height=630&focal=1015,498": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/10/avengers-doomsday5.webp": {
   "w": 1200,
