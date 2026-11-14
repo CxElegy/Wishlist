@@ -182,19 +182,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/6f5ef307ly1ij01arog9aj21121jk7g2.jpg": {
-  "w": 1334,
-  "h": 2000,
-  "target": 720,
-  "v": 3,
-  "local": "pics/4fb5c4829e50bdbb.webp",
-  "out": [
-   854,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/90b10eb9ly1ij0rr906ynj21mc1mc1ky.jpg": {
   "w": 2000,
   "h": 2000,
@@ -395,12 +382,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.st-note.com/production/uploads/images/335217845/rectangle_large_type_2_501ad2c29e6603dc61bc4e4752eb59a7.png?fit=bounds&quality=85&width=1280": {
-  "w": 1280,
-  "h": 670,
-  "target": 720,
-  "v": 3
- },
  "https://assets.st-note.com/production/uploads/images/335605931/rectangle_large_type_2_d97be2ec40a6c97502df2cb38dad76b1.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -431,6 +412,19 @@
   "h": 450,
   "target": 720,
   "v": 3
+ },
+ "https://attach.setn.com/newsimages/2026/02/11/5451715-PH.jpg": {
+  "w": 800,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.464,
+  "local": "pics/c8f35dc3c4c7585a.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "https://attach.setn.com/newsimages/2026/10/28/5766149-PH.jpg": {
   "w": 800,
@@ -742,12 +736,6 @@
  "https://cdn3.wionews.com/prod/wion/images/2026/20261110/image-1794315924585.png?rect=(0,0,1280,720)&imwidth=896&imheight=504&format=webp&quality=medium": {
   "w": 896,
   "h": 504,
-  "target": 1280,
-  "v": 3
- },
- "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png": {
-  "w": 1500,
-  "h": 844,
   "target": 1280,
   "v": 3
  },
@@ -1195,12 +1183,6 @@
   "target": 1280,
   "v": 3
  },
- "https://i.daily.jp/gossip/2026/11/13/Images/f_21030533.jpg": {
-  "w": 910,
-  "h": 799,
-  "target": 720,
-  "v": 3
- },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
@@ -1304,6 +1286,19 @@
   "h": 720,
   "target": 720,
   "v": 3
+ },
+ "https://image.zdnet.co.kr/2026/11/12/ccb869c3838a5d6f9e2bafa6fe63634c.jpg": {
+  "w": 640,
+  "h": 602,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.507,
+  "local": "pics/85a17cf8d09987db.webp",
+  "out": [
+   1280,
+   1204
+  ],
+  "why": "看不清"
  },
  "https://images-r2.thebrag.com/pedestrian/uploads/2026/11/daniel-radcliffe-harry-potter-reboot.jpg?v=1794356337052": {
   "w": 1280,
@@ -1511,17 +1506,18 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hifd0.img": {
-  "w": 1456,
-  "h": 819,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hjD9w.img": {
   "w": 912,
   "h": 513,
   "target": 720,
   "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hopa6.img": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.388
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
   "w": 720,
@@ -1584,12 +1580,6 @@
   "w": 600,
   "h": 315,
   "target": 720,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/3c/page/2026/11/11/261111-68230-1.jpg": {
-  "w": 1080,
-  "h": 719,
-  "target": 1280,
   "v": 3
  },
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/08/5633521_3.jpg": {
@@ -1711,6 +1701,12 @@
   "target": 720,
   "v": 3
  },
+ "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg": {
+  "w": 800,
+  "h": 533,
+  "target": 720,
+  "v": 3
+ },
  "https://inews.gtimg.com/om_bt/OAfxMyK9k9Ay4Jz45p_yZ5zTCbdKGZK-RBEHC17pB0Kq4AA/1000": {
   "w": 1000,
   "h": 750,
@@ -1757,6 +1753,12 @@
   "w": 1000,
   "h": 650,
   "target": 720,
+  "v": 3
+ },
+ "https://komonews.com/resources/media2/16x9/1280/1320/center/90/d4073018-af99-405a-b357-6a0a1e8399d7-BlackCat2.jpg": {
+  "w": 1320,
+  "h": 743,
+  "target": 1280,
   "v": 3
  },
  "https://leho.com.tw/wp-content/uploads/2026/11/【vivo-新聞照片1】vivo-全新年度影像旗艦-X500-系列，攜手品牌影像大使周杰倫，以「蔡司電影感．創作無界」掀起熱烈迴響，上市短短兩週即展現亮眼銷售表現.jpg": {
@@ -2486,19 +2488,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800": {
-  "w": 615,
-  "h": 615,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.59,
-  "local": "pics/0fe2201b1c527be2.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2558,6 +2547,12 @@
  "https://ni.yam.com/20261112/ewc-2027-dota2-golden-trophy-confetti-20261112-ad7a67cd92053b92.webp": {
   "w": 1200,
   "h": 764,
+  "target": 720,
+  "v": 3
+ },
+ "https://ni.yam.com/20261113/11HECL72ZT1E88G8CS0K0-e33401fca4a21a13.webp": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -2880,6 +2875,12 @@
   "target": 720,
   "v": 3
  },
+ "https://research.image.itmedia.co.jp/wp-content/uploads/2026/07/1784614666_IMG_7837-scaled.jpg": {
+  "w": 2560,
+  "h": 1440,
+  "target": 720,
+  "v": 3
+ },
  "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt0c32cf4cba5df376/6af1931e90b593e6e7563eba/gta6online2027.png": {
   "w": 1200,
   "h": 675,
@@ -3012,6 +3013,12 @@
   "w": 1200,
   "h": 678,
   "target": 720,
+  "v": 3
+ },
+ "https://smhn.info/wp-content/uploads/2026/11/galaxy-s27-ultra-dummy-camera-closeup.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://snowbrains.com/wp-content/uploads/2026/11/forecast-23.png": {
@@ -3656,12 +3663,6 @@
   "v": 3,
   "blur": 0.333
  },
- "https://www.bing.com/th?id=ONUT.-_audigmb88duwA9M5AR1g&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.0jSvDj9_OKXahGrGv8hnxA&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3682,9 +3683,9 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.54UxHRkuPi0sAS9h4h1CMA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
+ "https://www.bing.com/th?id=ONUT.ErKMOQndpn0XuuqtExe7TQ&pid=News&w=640": {
+  "w": 640,
+  "h": 357,
   "target": 720,
   "v": 3
  },
@@ -3733,6 +3734,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.K6lKE0FQvUZRVov6jcZl1g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.KkdkWY33I2sB7CHn2yWe_A&pid=News&w=1000": {
   "w": 700,
   "h": 394,
@@ -3759,27 +3766,21 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.OKZqWjm0fV6fE9FY4yaRwg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.RuiUE9EagH8n-NNDgFY-Cg&pid=News&w=1200": {
   "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.PZP4fsmTflVuekqQxxzn9g&pid=News&w=800": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.XztTBU2SN6r-qFHxk-0TsQ&pid=News&w=1120": {
-  "w": 700,
-  "h": 393,
+  "h": 366,
   "target": 720,
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ZqTkm0fMMy6y4-azOeMsZQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ZzSrdKSQOJpuveN0DxDbSQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 392,
   "target": 720,
   "v": 3
  },
@@ -3798,6 +3799,18 @@
  "https://www.bing.com/th?id=ONUT.kPcayW2FWa-vaSMiTg5ZWQ&pid=News&w=1102": {
   "w": 700,
   "h": 329,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.lDuej9PaulClYnc5TjFwyw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.lyfBqG6PWqBixcjIquMPjQ&pid=News&w=700": {
+  "w": 700,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -3877,19 +3890,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.vCIrPcZQyfgKfd2KywtKFA&pid=News&w=640": {
-  "w": 640,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.512,
-  "local": "pics/cc6d4f104b408769.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
   "h": 800,
@@ -3965,12 +3965,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://www.denofgeek.com/wp-content/uploads/2026/07/Paul-Rudd-and-Kathryn-Newton-in-Avengers_-Doomsday.jpg?fit=1311%2C675": {
   "w": 1311,
   "h": 675,
@@ -3998,6 +3992,12 @@
  "https://www.disneydining.com/wp-content/uploads/2024/06/avengers-secret-wars.jpg": {
   "w": 1200,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dissmercury.co.uk/resources/images/19009459/": {
+  "w": 2400,
+  "h": 1350,
   "target": 720,
   "v": 3
  },

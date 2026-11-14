@@ -1,32 +1,32 @@
 {
- "admin": "ee5bcd0c4efe",
- "admin-ai": "1d0353993ad3",
+ "admin": "96e98f3fc451",
+ "admin-ai": "d41f0e43b19f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "bcac6dd2"
+   "8f601b08"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0d8d53e3"
+   "87d07e8d"
   ]
  },
- "admin-boards": "6f5893a6c1ed",
+ "admin-boards": "32bf9e296fe5",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "ab93bd58"
+   "9b79997e"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "1f90b5063680",
+ "admin-emblem": "5c12a32a4264",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a6fcde91"
+   "0fe9a282"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "cb9d95e89136",
+ "admin-now": "cba86db41e67",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f310f3a6"
+   "8cb187ee"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "be7458e1"
+   "880cd1f4"
   ],
   "term-panel": [
    "ライブログ",
-   "fe3ae114"
+   "8c4ff848"
   ]
  },
- "admin-system": "850dcbd981e7",
+ "admin-system": "fc28f8e44960",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c0daf9ed"
+   "7db22ca9"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "231a4033"
+   "ee3a0cb1"
   ]
  },
  "admin_marks": {},
- "heat": "5f2b0716fdf6",
+ "heat": "49ebb90ec06f",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "0bc38fbd"
+   "7de1d8a5"
   ],
   "ranking": [
    "ランキング",
-   "6b1140ff"
+   "0591dbf3"
   ]
  },
- "index": "55934cdbb13e",
+ "index": "a078990ae18d",
  "index_marks": {
   "front": [
    "トップ",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "160a591f"
+   "84766f75"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "397f6c85"
   ]
  },
- "updated": "11.14 11:18",
+ "updated": "11.14 11:28",
  "wishlist": "69a11cca5599"
 }
