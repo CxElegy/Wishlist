@@ -413,19 +413,6 @@
   "target": 720,
   "v": 3
  },
- "https://attach.setn.com/newsimages/2026/02/11/5451715-PH.jpg": {
-  "w": 800,
-  "h": 450,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.464,
-  "local": "pics/c8f35dc3c4c7585a.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
  "https://attach.setn.com/newsimages/2026/10/28/5766149-PH.jpg": {
   "w": 800,
   "h": 450,
@@ -736,6 +723,12 @@
  "https://cdn3.wionews.com/prod/wion/images/2026/20261110/image-1794315924585.png?rect=(0,0,1280,720)&imwidth=896&imheight=504&format=webp&quality=medium": {
   "w": 896,
   "h": 504,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png": {
+  "w": 1500,
+  "h": 844,
   "target": 1280,
   "v": 3
  },
@@ -1189,6 +1182,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i.daily.jp/gossip/2026/11/13/Images/f_21030533.jpg": {
+  "w": 910,
+  "h": 799,
+  "target": 720,
+  "v": 3
+ },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
@@ -1292,19 +1291,6 @@
   "h": 720,
   "target": 720,
   "v": 3
- },
- "https://image.zdnet.co.kr/2026/11/12/ccb869c3838a5d6f9e2bafa6fe63634c.jpg": {
-  "w": 640,
-  "h": 602,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.507,
-  "local": "pics/85a17cf8d09987db.webp",
-  "out": [
-   1280,
-   1204
-  ],
-  "why": "看不清"
  },
  "https://images-r2.thebrag.com/pedestrian/uploads/2026/11/daniel-radcliffe-harry-potter-reboot.jpg?v=1794356337052": {
   "w": 1280,
@@ -1759,12 +1745,6 @@
   "w": 1000,
   "h": 650,
   "target": 720,
-  "v": 3
- },
- "https://komonews.com/resources/media2/16x9/1280/1320/center/90/d4073018-af99-405a-b357-6a0a1e8399d7-BlackCat2.jpg": {
-  "w": 1320,
-  "h": 743,
-  "target": 1280,
   "v": 3
  },
  "https://leho.com.tw/wp-content/uploads/2026/11/【vivo-新聞照片1】vivo-全新年度影像旗艦-X500-系列，攜手品牌影像大使周杰倫，以「蔡司電影感．創作無界」掀起熱烈迴響，上市短短兩週即展現亮眼銷售表現.jpg": {
@@ -2494,6 +2474,19 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800": {
+  "w": 615,
+  "h": 615,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.59,
+  "local": "pics/0fe2201b1c527be2.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2691,6 +2684,19 @@
   "target": 720,
   "v": 3
  },
+ "https://photo.jtbc.co.kr/news/jam_photo/202610/27/4dc5077c-057e-48af-9229-bf42564d5c44.jpg": {
+  "w": 559,
+  "h": 373,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.487,
+  "local": "pics/e5ddbc048b33c71b.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
+ },
  "https://pimg.mk.co.kr/news/cms/202611/12/news-p.v1.20261007.415c331a07ee4564bd97f4831e67de35_R.jpg": {
   "w": 1600,
   "h": 1141,
@@ -2884,7 +2890,7 @@
  "https://research.image.itmedia.co.jp/wp-content/uploads/2026/07/1784614666_IMG_7837-scaled.jpg": {
   "w": 2560,
   "h": 1440,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt0c32cf4cba5df376/6af1931e90b593e6e7563eba/gta6online2027.png": {
@@ -3577,6 +3583,12 @@
   ],
   "why": "看不清"
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/14/1794616436419_xy-8241-png.webp": {
+  "w": 958,
+  "h": 533,
+  "target": 1280,
+  "v": 3
+ },
  "https://wassets.insta360.com/store/c1d5e5a174d5499d9f8f04aa618052a2/x6.jpg": {
   "w": 1200,
   "h": 630,
@@ -3785,12 +3797,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.XztTBU2SN6r-qFHxk-0TsQ&pid=News&w=1120": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ZqTkm0fMMy6y4-azOeMsZQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3909,9 +3915,28 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.vCIrPcZQyfgKfd2KywtKFA&pid=News&w=640": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.512,
+  "local": "pics/cc6d4f104b408769.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.breaknews.com/data/breaknews_com/bigimg/2026111214571608.jpg": {
+  "w": 690,
+  "h": 460,
   "target": 720,
   "v": 3
  },
@@ -3981,6 +4006,12 @@
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Sentinel-marvel-comics-Thor.webp": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
+  "w": 1200,
+  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -4205,6 +4236,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.seventietwo.com/uploads/2026/11/cb47ffb469ce1809d18f6e6c784b3244.jpg": {
+  "w": 840,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://www.slashfilm.com/img/gallery/marvels-2027-release-schedule-all-8-movies-and-tv-shows-explained/l-intro-1793897625.jpg": {
   "w": 1600,
   "h": 899,
@@ -4306,6 +4343,13 @@
   "h": 1080,
   "target": 1280,
   "v": 3
+ },
+ "https://www.wowkorea.jp/img/news/108/542268/459714_tmb.webp": {
+  "w": 320,
+  "h": 240,
+  "target": 720,
+  "v": 3,
+  "blur": 0.41
  },
  "https://www.yamakei-online.com/new_images/journal/column/8649_b.jpg": {
   "w": 1200,

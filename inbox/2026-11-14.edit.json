@@ -25,7 +25,9 @@
     14,
     7,
     23,
-    42
+    42,
+    76,
+    77
    ],
    "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/lucia_caminos_10.jpg?w=1600&h=900&fit=crop"
   },
@@ -39,7 +41,9 @@
     6,
     40,
     46,
-    60
+    60,
+    69,
+    70
    ]
   },
   {
@@ -50,7 +54,8 @@
    "refs": [
     26,
     57,
-    58
+    58,
+    71
    ]
   },
   {
@@ -66,10 +71,10 @@
   }
  ],
  "_covered": {
-  "GTA 6": 64,
-  "漫威电影": 69,
+  "GTA 6": 81,
+  "漫威电影": 75,
   "MMORPG 新作": 7,
-  "三星手机": 6,
+  "三星手机": 18,
   "周杰伦": 4,
   "ILLIT": 3,
   "滑雪": 3,
@@ -78,13 +83,14 @@
   "哈利波特剧集": 4,
   "日本顶级网球赛事": 2,
   "The Mandalorian": 1,
-  "gelato pique": 3,
+  "gelato pique": 7,
   "あつ森": 3,
   "猫用品": 3,
   "FROM": 1,
   "Astrae Oratio": 3,
   "Vaundy": 2,
-  "ぐでたま": 2
+  "ぐでたま": 2,
+  "A2O LITE": 4
  },
  "漫威电影": [
   {
@@ -183,7 +189,11 @@
    "weight": "lead",
    "refs": [
     3,
-    4
+    4,
+    8,
+    10,
+    12,
+    14
    ],
    "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794567809227_galaxy-s27-ultra-wallpaper-leak-hints-at-new-color-options-17945529653611120276072.jpeg"
   },
@@ -195,6 +205,25 @@
    "refs": [
     2,
     5
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultraには、7つの主要なアップグレードが施されると予想されている。",
+   "highlight": "7つの主要なアップグレード",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    7
+   ]
+  },
+  {
+   "headline": "ハイエンドスマホ、弱体化の流れ？次期Galaxy S27 Ultra、3倍望遠を失う可能性。",
+   "highlight": "3倍望遠を失う可能性",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
    ]
   }
  ],
@@ -376,6 +405,26 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "志尊淳が「ジェラート ピケ」のクリスマスマーケットに来場 3回目の開催となる今年も初日から長蛇の列",
+   "highlight": "クリスマスマーケット",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "headline": "「カバンの中で迷子になることがなくてストレスフリー」 ジェラートピケの“2WAYリュック”が好評",
+   "highlight": "2WAYリュック",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "あつ森": [
@@ -502,6 +551,36 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "A2O LITE, 美 빌보드 글로벌 차트 톱10 동시 진입",
+   "highlight": "빌보드 글로벌 차트 톱10",
+   "blurb": "A2O LITE가 미국 빌보드 글로벌 차트 톱10에 동시 진입했다.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://photo.jtbc.co.kr/news/jam_photo/202610/27/4dc5077c-057e-48af-9229-bf42564d5c44.jpg"
+  },
+  {
+   "headline": "2026년 10월 써클차트, A2O LITE·플레이브·NCT 위시..뜨거운 인기 입증",
+   "highlight": "써클차트",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "「A2O LITE」のデビュー曲「NEON」をキレッキレで踊るイ・スマン？ サニー（少女時代）、叔父のAI動画をさらし、テギョン（2PM）も「大丈夫？」",
+   "highlight": "「NEON」",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]
