@@ -462,6 +462,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg": {
+  "w": 2000,
+  "h": 1125,
+  "target": 720,
+  "v": 3
+ },
  "https://blog.playstation.com/tachyon/2048/11/f1fb77ba440f1402ae155dc56989230e7a24c2f8-scaled.jpg": {
   "w": 2560,
   "h": 1440,
@@ -2707,12 +2713,6 @@
   "target": 720,
   "v": 3
  },
- "https://portal.auone.jp/media/thumbnails/2026/11/11/95773_w1280.webp": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://portal.auone.jp/media/thumbnails/2026/11/12/https___irohani_art__p_48767_w1024.webp": {
   "w": 1024,
   "h": 683,
@@ -3669,12 +3669,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.1BCeCGT5pen0DhAzqHk_pw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.54UxHRkuPi0sAS9h4h1CMA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3757,19 +3751,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.UpC6ZhwCJw_895JbNxW-CQ&pid=News&w=800": {
-  "w": 700,
-  "h": 466,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/84d749c59accd01a.webp",
-  "out": [
-   1280,
-   852
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.XztTBU2SN6r-qFHxk-0TsQ&pid=News&w=1120": {
   "w": 700,
@@ -4049,6 +4030,19 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://www.inside-games.jp/imgs/ogp_f/1802024.jpg": {
+  "w": 600,
+  "h": 399,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.496,
+  "local": "pics/95f5c2e7b367011e.webp",
+  "out": [
+   1280,
+   851
+  ],
+  "why": "看不清"
  },
  "https://www.joblo.com/wp-content/uploads/2025/10/chainsaw_man_review_joblo_2.jpg": {
   "w": 1200,

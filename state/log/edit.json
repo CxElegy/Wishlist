@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-12T04:25:09+00:00",
-"text": "2026-11-12 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 9 版面） · token 新規入力 4.3万・キャッシュ読み 48.7万・出力 1,902",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.66,
-"mem_total": 16867414016,
-"mem_free": 15985213440,
-"disk_used": 10090287104,
-"disk_free": 31193247744,
-"disk_total": 41283534848,
-"peak": 859226112
-},
-"batch": 1,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 9,
-"edited": 20,
-"run": 1794457162.7841258,
-"tok": {
-"in": 16,
-"cw": 43277,
-"cr": 487002,
-"out": 1902,
-"calls": 8,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 532197
-},
-{
 "at": "2026-11-12T04:34:29+00:00",
 "text": "2026-11-12 第 2 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、ILLIT、MMORPG 新作、The Mandalorian ほか 8（14 版面・49 本・残り 1 版面） · token 新規入力 9,429・キャッシュ読み 52.8万・出力 3,388",
 "level": "ok",
@@ -2110,5 +2078,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 454650
+},
+{
+"at": "2026-11-14T00:10:28+00:00",
+"text": "2026-11-14 第 2 バッチを出刊：GTA 6（1 版面・5 本・残り 2 版面） · token 新規入力 3,689・キャッシュ読み 28.7万・出力 958",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.4,
+"mem_total": 16869146624,
+"mem_free": 15898787840,
+"disk_used": 10101739520,
+"disk_free": 31181795328,
+"disk_total": 41283534848,
+"peak": 394588160
+},
+"batch": 2,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 2,
+"edited": 16,
+"run": 1794613612.94807,
+"tok": {
+"in": 7,
+"cw": 3682,
+"cr": 287094,
+"out": 958,
+"calls": 4,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 291741
 }
 ]
