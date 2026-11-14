@@ -79,7 +79,7 @@
   "MMORPG 新作": 9,
   "三星手机": 33,
   "周杰伦": 28,
-  "ILLIT": 7,
+  "ILLIT": 9,
   "滑雪": 6,
   "绝区零": 8,
   "チェーンソーマン": 12,
@@ -89,7 +89,7 @@
   "gelato pique": 13,
   "あつ森": 5,
   "猫用品": 7,
-  "FROM": 1,
+  "FROM": 2,
   "Astrae Oratio": 4,
   "Vaundy": 3,
   "ぐでたま": 2,
@@ -352,6 +352,15 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "아일릿, 일본 앙코르 콘서트 추가 좌석 오픈…민주·라울 듀엣도 예고",
+   "highlight": "추가 좌석 오픈",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ],
@@ -730,7 +739,8 @@
    "blurb": "'From' dominated the streaming ratings in an otherwise quiet Halloween week, according to The Hollywood Reporter.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    2
    ],
    "image": "https://www.hollywoodreporter.com/wp-content/uploads/2022/02/From-Still-Epix-Publicity-H-2022.jpg?w=1296&h=730&crop=1"
   }

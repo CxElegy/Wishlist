@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "72d56831ba1a",
+ "edit_sig": "ce4981e7a0ab",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -360,15 +360,6 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 2,
-     "source": "FandomWire",
-     "title": "From Season 4 Officially Cements Its Place as the World’s No. 1 Show This Week",
-     "url": "https://fandomwire.com/from-season-4-most-popular-show-rotten-tomatoes/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -476,22 +467,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-14",
-     "n": 8,
-     "source": "톱스타뉴스 on MSN",
-     "title": "아일릿, 일본 앙코르 콘서트 추가 좌석 오픈…민주·라울 듀엣도 예고",
-     "url": "https://www.msn.com/ko-kr/entertainment/music/%EC%95%84%EC%9D%BC%EB%A6%BF-%EC%9D%BC%EB%B3%B8-%EC%95%99%EC%BD%94%EB%A5%B4-%EC%BD%98%EC%84%9C%ED%8A%B8-%EC%B6%94%EA%B0%80-%EC%A2%8C%EC%84%9D-%EC%98%A4%ED%94%88-%EB%AF%BC%EC%A3%BC-%EB%9D%BC%EC%9A%B8-%EB%93%80%EC%97%A3%EB%8F%84-%EC%98%88%EA%B3%A0/ar-AA2hpzv2"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 9,
-     "source": "YouTube · ILLIT",
-     "title": "#IROHA EZ class comeback (NO MORE EASY VER.) #체포하겠어 #You_re_Under_Arrest #ILLIT",
-     "url": "https://www.youtube.com/watch?v=4dG3c6Ba11c"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -532,6 +507,16 @@
      "image": "https://image.mediapen.com/news/202611/news_1137356_1794550420_m.jpg",
      "image_via": "og:image",
      "url": "https://www.mediapen.com/news/view/1137356",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "아일릿, 일본 앙코르 콘서트 추가 좌석 오픈…민주·라울 듀엣도 예고",
+     "highlight": "추가 좌석 오픈",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hpLLN.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ko-kr/entertainment/music/%EC%95%84%EC%9D%BC%EB%A6%BF-%EC%9D%BC%EB%B3%B8-%EC%95%99%EC%BD%94%EB%A5%B4-%EC%BD%98%EC%84%9C%ED%8A%B8-%EC%B6%94%EA%B0%80-%EC%A2%8C%EC%84%9D-%EC%98%A4%ED%94%88-%EB%AF%BC%EC%A3%BC-%EB%9D%BC%EC%9A%B8-%EB%93%80%EC%97%A3%EB%8F%84-%EC%98%88%EA%B3%A0/ar-AA2hpzv2",
      "weight": "normal"
     }
    ],
