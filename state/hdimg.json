@@ -79,6 +79,12 @@
   ],
   "why": "看不清"
  },
+ "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "http://www.geektown.co.uk/wp-content/uploads/2026/11/jm.jpg": {
   "w": 1300,
   "h": 735,
@@ -223,6 +229,12 @@
  "https://9to5google.com/wp-content/uploads/sites/4/2026/02/Galaxy-S26-camera-1.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
   "h": 628,
+  "target": 1280,
+  "v": 3
+ },
+ "https://a-rabbitsfoot.com/wp-content/uploads/2026/11/D04654B4-06D4-4305-9E37-BD3BA976725D-Large.jpeg": {
+  "w": 1280,
+  "h": 853,
   "target": 1280,
   "v": 3
  },
@@ -1548,6 +1560,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hqbzw.img": {
+  "w": 1456,
+  "h": 819,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
   "w": 720,
   "h": 259,
@@ -1778,6 +1796,19 @@
   "target": 720,
   "v": 3
  },
+ "https://jomo.ismcdn.jp/mwimgs/c/d/-/img_cdf0658b8e5c6af0489feed75c71ff10131718.png": {
+  "w": 450,
+  "h": 253,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.476,
+  "local": "pics/d93beca3f5e3c2e1.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/zrdkuvxctzo8hdvcl57qng4l.jpg": {
   "w": 1600,
   "h": 900,
@@ -1790,11 +1821,30 @@
   "target": 720,
   "v": 3
  },
+ "https://lee.hpplus.jp/wp-content/uploads/2026/11/04/38600e3e5a2f85da5c5a7b8da08242c9.jpeg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
  "https://leho.com.tw/wp-content/uploads/2026/11/【vivo-新聞照片1】vivo-全新年度影像旗艦-X500-系列，攜手品牌影像大使周杰倫，以「蔡司電影感．創作無界」掀起熱烈迴響，上市短短兩週即展現亮眼銷售表現.jpg": {
   "w": 1024,
   "h": 683,
   "target": 1280,
   "v": 3
+ },
+ "https://lp.p.pia.jp/shared/materials/4f148f42-32ff-4b08-9bb2-3ae764a9e014/origin.png": {
+  "w": 480,
+  "h": 338,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.515,
+  "local": "pics/6d5db49c73d334dd.webp",
+  "out": [
+   1280,
+   901
+  ],
+  "why": "看不清"
  },
  "https://lp.p.pia.jp/shared/materials/56193ef9-0fac-4034-bf94-6de73ff55fc2/origin.jpg": {
   "w": 1200,
@@ -1827,12 +1877,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.assettype.com/gulfnews%2F2026-11-05%2F9r0m63lj%2FSamsung-Galaxy-S25-Ultra-Unboxing-1.png?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://media.assettype.com/outlooktraveller/2026-11-10/vx9d1246/findingharryhoka16x9.avif?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
   "w": 1200,
   "h": 675,
@@ -1851,12 +1895,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.348
- },
- "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4087765_0-enlarge.jpg": {
-  "w": 2000,
-  "h": 1333,
-  "target": 720,
-  "v": 3
  },
  "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4088774_0-enlarge.jpg": {
   "w": 2448,
@@ -2112,6 +2150,19 @@
   "h": 820,
   "target": 1280,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/1185230/12771515_615.jpg": {
+  "w": 615,
+  "h": 493,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.483,
+  "local": "pics/804d6b4741f9ca33.webp",
+  "out": [
+   1280,
+   1026
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/1216984/13511513_615.jpg": {
   "w": 615,
@@ -2653,6 +2704,12 @@
   "target": 720,
   "v": 3
  },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1558df6ac88a42e5a7a01c3c0a9952db.jpg": {
+  "w": 513,
+  "h": 381,
+  "target": 720,
+  "v": 3
+ },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg": {
   "w": 736,
   "h": 414,
@@ -2789,6 +2846,19 @@
   ],
   "why": "看不清"
  },
+ "https://pimg.mk.co.kr/news/cms/202611/09/news-p.v1.20261109.49d87d5052534e4587d7f91c43a9268d_R.png": {
+  "w": 640,
+  "h": 392,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.487,
+  "local": "pics/3dd7534715852f23.webp",
+  "out": [
+   1280,
+   784
+  ],
+  "why": "看不清"
+ },
  "https://pimg.mk.co.kr/news/cms/202611/12/news-p.v1.20261007.415c331a07ee4564bd97f4831e67de35_R.jpg": {
   "w": 1600,
   "h": 1141,
@@ -2804,12 +2874,6 @@
  "https://players.com.ua/wp-content/uploads/2026/11/gg-m-r.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://popscene.jp/img/event20261114.jpg": {
-  "w": 1280,
-  "h": 853,
   "target": 720,
   "v": 3
  },
@@ -2904,6 +2968,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/49377/84/49377-84-f392fb2efef8b7fcd2df9f9853680105-3900x2194.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2240,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/55787/1080/55787-1080-355f0e8982c8566a433b1b72105f2285-874x583.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 874,
   "h": 583,
@@ -2940,12 +3010,6 @@
    819
   ],
   "why": "看不清"
- },
- "https://prtimes.jp/img/49377/84/resize/d49377-84-6f01a69e1c06fdca3097-0.png": {
-  "w": 650,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://prtimes.jp/img/55787/1084/resize/d55787-1084-cff70434ce567d7ce25d-0.jpg": {
   "w": 650,
@@ -3464,12 +3528,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/09/avengers-doomsday-thor.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3588,12 +3646,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://thecolgatemaroonnews.com/wp-content/uploads/2026/11/IMG_2751.jpeg": {
-  "w": 1501,
-  "h": 2001,
-  "target": 1280,
   "v": 3
  },
  "https://thewpwire.org/wp-content/uploads/2026/11/croppedmarveljump-e1794419376945.jpeg": {
@@ -3830,9 +3882,34 @@
   "v": 3,
   "blur": 0.391
  },
+ "https://www.bing.com/th?id=ONUT.1nAAF_3RPtlNNyIHs4fFow&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.9G1Vkeu7EIMHMfBuEpkXVQ&pid=News&w=800": {
   "w": 394,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.A5Yit1Xmub4kAWaUb4-4wQ&pid=News&w=615": {
+  "w": 615,
+  "h": 615,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.541,
+  "local": "pics/4f6973037c18d014.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.CJjowbdo-OohgSHwtFMqrw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3949,21 +4026,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.gi924GMRfBjozAwVeL-rig&pid=News&w=756": {
+ "https://www.bing.com/th?id=ONUT.gNeqmJfDUh8pQSWEyrf9dQ&pid=News&w=1043": {
   "w": 700,
-  "h": 466,
+  "h": 467,
   "target": 720,
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.if7PjIjrIEYNee0BpacpMA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.lDuej9PaulClYnc5TjFwyw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4119,12 +4190,6 @@
   ],
   "why": "看不清"
  },
- "https://www.chosun.com/resizer/v2/MNRTAOJRMIYGGOBYHBSDQNZWGM.jpg?auth=ffbf824053e649bc9bcba36203132d3a6e73c50c8168aef40b5bfa76c6903ca7&width=1200&height=630&focal=1015,498": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://www.comicbasics.com/wp-content/uploads/2026/10/avengers-doomsday5.webp": {
   "w": 1200,
   "h": 675,
@@ -4158,6 +4223,12 @@
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2023/05/15/best-studio-ghibli-movies.jpg": {
+  "w": 1600,
+  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -4246,19 +4317,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.inside-games.jp/imgs/ogp_f/1802024.jpg": {
-  "w": 600,
-  "h": 399,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.496,
-  "local": "pics/95f5c2e7b367011e.webp",
-  "out": [
-   1280,
-   851
-  ],
-  "why": "看不清"
- },
  "https://www.joblo.com/wp-content/uploads/2025/10/chainsaw_man_review_joblo_2.jpg": {
   "w": 1200,
   "h": 630,
@@ -4268,6 +4326,12 @@
  "https://www.joblo.com/wp-content/uploads/2026/04/mandalorian-and-grogu-cinemacon.jpg": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.joblo.com/wp-content/uploads/2026/06/wtf-supergirl.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -4404,6 +4468,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/07/batman-bale.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Anthony-Mackie.jpg": {
