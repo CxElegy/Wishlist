@@ -203,7 +203,8 @@
   "绝区零": 1,
   "ILLIT": 2,
   "Vaundy": 2,
-  "Astrae Oratio": 1
+  "Astrae Oratio": 1,
+  "MMORPG 新作": 2
  },
  "dota2": [
   {
@@ -267,6 +268,17 @@
    "headline": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
    "highlight": "AGF 2026 최대 규모",
    "blurb": "엔씨 아스오라 부스가 공개됐다. AGF 2026 최대 규모로 꾸린다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "MMO Hype Train: Eight MMOs launched in 2026 that lived up to the hype",
+   "highlight": "Eight MMOs launched in 2026",
+   "blurb": "Massively Overpowered looks back at eight MMOs from 2026 that delivered on their hype.",
    "weight": "lead",
    "refs": [
     1

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-15",
- "edit_sig": "abf5ed6f35e0",
+ "edit_sig": "092919d8aba8",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,8 +13,8 @@
      "date": "2026-11-12",
      "headline": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
      "highlight": "AGF 2026 최대 규모",
-     "image": "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700",
+     "image_via": "Bing 缩略图",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216955",
      "weight": "lead"
     }
@@ -108,24 +108,19 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Massively Overpowered looks back at eight MMOs from 2026 that delivered on their hype.",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "Massively Overpowered",
-     "title": "MMO Hype Train: Eight MMOs launched in 2026 that lived up to the hype",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxORjBRYkJ1TkoxQlFya2NKZlB0eUc1YU8wWWlac0l1THg3M2tkVlpEUWN1VVJUemNLb3ZrMVphNXVteGhiQXJQbXhVUHhkZUhYdzBOQ1o0OWdkQjdJbzNTX1BkTjRtQklOa3NUZGoyN0kxV25oRkRNN1ZIbF9vTWRmYm5tNmVYcERFUmVYMER6eFJFYUFmMGNjWXdIblRSVVFXbFhlelJZRQ?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 2,
-     "source": "게임메카",
-     "title": "MMORPG 신작 제우스: 오만의 신이 오늘(8월 26일) 낮 12시 정식 오픈했습니다.",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQMkp5ZjVPYktzQnMzWjlxZ0hIZmNMMmNXOGNNZFVFdjZ5bTBwVVdiZlY2bWdtN0NLd2ZXeVEtUEdPeUNRNEtCWVFKM18tdnpzRG1KS0hkOWZjcDA3aEh0QWg4SDB2N3pYSXF6U2c5M3BBV2VQRkxqd3IwQ2o1dXFreUZyN2M?oc=5"
+     "headline": "MMO Hype Train: Eight MMOs launched in 2026 that lived up to the hype",
+     "highlight": "Eight MMOs launched in 2026",
+     "image": "https://massivelyop.com/wp-content/uploads/2023/07/loftia.jpg",
+     "image_via": "og:image",
+     "url": "https://massivelyop.com/2026/11/14/mmo-hype-train-eight-mmos-launched-in-2026-that-lived-up-to-the-hype/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
