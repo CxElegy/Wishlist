@@ -11,12 +11,6 @@
   "target": 720,
   "v": 3
  },
- "http://n.sinaimg.cn/games/crawl/60/w550h310/20261113/63b1-5e04de43c06b10d8fadf0b0b7e64dccf.png": {
-  "w": 550,
-  "h": 310,
-  "target": 720,
-  "v": 3
- },
  "http://n.sinaimg.cn/sinakd/sni/400/w1080h1720/20261107/c821-9ec944bfb0b7f330821dc35a869b52d8.jpg": {
   "w": 1080,
   "h": 1720,
@@ -143,6 +137,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/90b10eb9ly1ij1dv15cagj20u31kwe81.jpg": {
+  "w": 1083,
+  "h": 2048,
+  "target": 720,
+  "v": 3,
+  "local": "pics/b8dd1f8234580401.webp",
+  "out": [
+   677,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/006dNg2Ply1ij1qvjm32vj30go0gomxi.jpg": {
   "w": 600,
   "h": 600,
@@ -150,19 +157,6 @@
   "v": 3,
   "blur": 0.433,
   "local": "pics/8cd9a08d49d7f7ad.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx3.sinaimg.cn/middle/90b10eb9ly1ij0rr906ynj21mc1mc1ky.jpg": {
-  "w": 2000,
-  "h": 2000,
-  "target": 720,
-  "v": 3,
-  "local": "pics/417b70bb80a68b4e.webp",
   "out": [
    1280,
    1280
@@ -555,6 +549,13 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
+  "w": 800,
+  "h": 562,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327
+ },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
@@ -635,6 +636,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://cdn.newsrpm.com/image/612057?maxWidth=1200": {
+  "w": 710,
+  "h": 710,
+  "target": 720,
+  "v": 3
  },
  "https://cdn.sacnilk.com/image/news/1000023554.jpg": {
   "w": 720,
@@ -963,6 +970,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://foro3d.com/2026/noviembre/imagenes/counter-strike-supera-a-league-of-legends-y-dota-2-se-queda-sin-premio.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://fpimgs.s3.ap-southeast-1.amazonaws.com/uul/2026/11/08/6aef58edf165b0.95265054.jpg": {
@@ -1527,6 +1540,12 @@
   "blur": 0.38
  },
  "https://img.etimg.com/thumb/msid-135658667,width-1200,height-900,imgsize-1144081,overlay-economictimes/articleshow.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.etimg.com/thumb/msid-135841400,width-1200,height-900,imgsize-135774,overlay-economictimes/articleshow.jpg": {
   "w": 1200,
   "h": 900,
   "target": 720,
@@ -3330,6 +3349,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/lucia-and-jason-gta-vi.jpg?&fit=crop": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/movieweb-featured-image-template-2026-11-11t122731-320.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3466,12 +3491,6 @@
   "w": 1600,
   "h": 1066,
   "target": 1280,
-  "v": 3
- },
- "https://vodjzhs.duoduocdn.com/dc42d44avodtranscq1251542705/b6bfa29a5001834827900006268/coverBySnapshot/coverBySnapshot_10_0.jpg": {
-  "w": 856,
-  "h": 480,
-  "target": 720,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/11/1791684263958_galaxy-s27-pro-lo-dien-voi-cu-soc-camera-69.png": {
@@ -3661,12 +3680,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.2r3Ov4rnL0B9aT9envzrCA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.A5Yit1Xmub4kAWaUb4-4wQ&pid=News&w=615": {
   "w": 615,
   "h": 615,
@@ -3679,18 +3692,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.CJjowbdo-OohgSHwtFMqrw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ErKMOQndpn0XuuqtExe7TQ&pid=News&w=640": {
-  "w": 640,
-  "h": 357,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
@@ -3762,6 +3763,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.UmrUWqbE3o-U9f9KWMz6ag&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.WONYtMnno6z1Qjd3TrwwxQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3804,13 +3811,6 @@
    609
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
-  "w": 700,
-  "h": 491,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
@@ -3970,12 +3970,6 @@
  "https://www.disneydining.com/wp-content/uploads/2024/06/avengers-secret-wars.jpg": {
   "w": 1200,
   "h": 600,
-  "target": 720,
-  "v": 3
- },
- "https://www.dissmercury.co.uk/resources/images/19009459/": {
-  "w": 2400,
-  "h": 1350,
   "target": 720,
   "v": 3
  },

@@ -1,32 +1,32 @@
 {
- "admin": "700071d4504b",
- "admin-ai": "3f4a8732d0dc",
+ "admin": "efcc32175ed9",
+ "admin-ai": "16c170caac50",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "432cddac"
+   "ce184f68"
   ],
   "tokens": [
    "AI 編集のトークン",
    "4d91ff19"
   ]
  },
- "admin-boards": "5ab1c6062cc7",
+ "admin-boards": "eaf7e29b0cd6",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "8873c339"
+   "6442082f"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "4184bbad67bd",
+ "admin-emblem": "9e57f0bdd045",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e9704b38"
+   "cc9c84b3"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "e17c42f450d9",
+ "admin-now": "3fb06fde0c5a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "06f151da"
+   "4242b1e2"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "b8228406"
+   "0b0f5a3d"
   ],
   "term-panel": [
    "ライブログ",
-   "98ada0f0"
+   "e34f157a"
   ]
  },
- "admin-system": "aa33dc9c990f",
+ "admin-system": "56deba0ed2c1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "aaa15760"
+   "f33a0db6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "3f6f8ab2"
+   "24827728"
   ]
  },
  "admin_marks": {},
- "heat": "ce7297d18df6",
+ "heat": "40fa670f014f",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "7e29d7fe"
+   "6f1820fd"
   ],
   "ranking": [
    "ランキング",
-   "e6ea793b"
+   "b02dba3b"
   ]
  },
- "index": "803df321292d",
+ "index": "3df867f27d2f",
  "index_marks": {
   "front": [
    "トップ",
-   "01f9aa55"
+   "15380cf1"
   ],
   "picks": [
    "気になるかも？",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "68cc5875"
+   "b445023a"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "acee7250"
+   "c1305e78"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "25234a1d"
   ]
  },
- "updated": "11.15 05:18",
+ "updated": "11.15 05:53",
  "wishlist": "5621db01013a"
 }
