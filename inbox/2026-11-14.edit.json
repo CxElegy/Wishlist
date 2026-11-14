@@ -69,20 +69,22 @@
   "GTA 6": 64,
   "漫威电影": 69,
   "MMORPG 新作": 7,
-  "三星手机": 4,
+  "三星手机": 6,
   "周杰伦": 4,
   "ILLIT": 3,
   "滑雪": 3,
   "绝区零": 3,
   "チェーンソーマン": 2,
-  "哈利波特剧集": 2,
+  "哈利波特剧集": 4,
   "日本顶级网球赛事": 2,
   "The Mandalorian": 1,
-  "gelato pique": 1,
+  "gelato pique": 3,
   "あつ森": 3,
   "猫用品": 3,
   "FROM": 1,
-  "Astrae Oratio": 3
+  "Astrae Oratio": 3,
+  "Vaundy": 2,
+  "ぐでたま": 2
  },
  "漫威电影": [
   {
@@ -191,7 +193,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    5
    ]
   }
  ],
@@ -299,6 +302,24 @@
     2,
     1
    ]
+  },
+  {
+   "headline": "HBO’s Harry Potter Series: Full Cast and Character Guide",
+   "highlight": "Full Cast",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Everything we know about the Harry Potter TV show on HBO",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "日本顶级网球赛事": [
@@ -337,6 +358,24 @@
     "time": "12:00",
     "place": "楽天ファッション"
    }
+  },
+  {
+   "headline": "ジェラート ピケ×ポケモン、コラボ第3弾 ピッピ＆マリルなどが新登場",
+   "highlight": "コラボ第3弾",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "ジェラピケ×セサミストリートのコラボアイテム新作が発売！本田翼の着こなしがかわいすぎるルームウェアなど全67アイテム",
+   "highlight": "全67アイテム",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "あつ森": [
@@ -426,6 +465,39 @@
   {
    "headline": "Character Introduction - Komori Yuu",
    "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy、初の甲子園球場で貴重ショット 夏の高校野球応援ソングに込めた思い「あえて答えを用意していません」",
+   "highlight": "初の甲子園球場",
+   "blurb": "Vaundyが初めて甲子園球場に立ち、夏の高校野球応援ソングに込めた思いを語った。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg"
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "「ぐでたま」がついに宇宙へ！5周年記念コラボカフェが池袋にオープン",
+   "highlight": "5周年記念コラボカフェ",
+   "blurb": "「ぐでたま」の5周年を記念したコラボカフェが池袋にオープンした。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/150620/858239_615.jpg"
+  },
+  {
+   "headline": "「ぐでたま」コラボ雑貨全16種がサンキューマートに登場！「外出たくない」「あー…だりぃ…」名言つき",
+   "highlight": "全16種",
    "blurb": "",
    "weight": "normal",
    "refs": [

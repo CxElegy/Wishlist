@@ -1037,6 +1037,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://gdm-universal-media.b-cdn.net/epicstream/a8c1ef98-harry-potter.webp?width=1600&height=840": {
+  "w": 1493,
+  "h": 840,
+  "target": 1280,
+  "v": 3
+ },
  "https://gdm-universal-media.b-cdn.net/epicstream/e8a4cfc4-hbo-harry-potter2.webp?width=1600&height=840": {
   "w": 1493,
   "h": 840,
@@ -3185,6 +3191,13 @@
   ],
   "why": "看不清"
  },
+ "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg": {
+  "w": 640,
+  "h": 433,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.389
+ },
  "https://static.sanyonews.jp/image/article/size1/6/b/d/5/6bd5ae98a8676317af2175d8ef86b187_1.jpg": {
   "w": 450,
   "h": 640,
@@ -3768,7 +3781,13 @@
  },
  "https://www.bing.com/th?id=ONUT.RuiUE9EagH8n-NNDgFY-Cg&pid=News&w=1200": {
   "w": 700,
-  "h": 366,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.XztTBU2SN6r-qFHxk-0TsQ&pid=News&w=1120": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3975,6 +3994,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2025/12/17/ron-harry-hermione-harry-potter-hbo.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/dota-2-players-copping-massive-20-years-bans-following-update.jpg": {

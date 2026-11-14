@@ -1,32 +1,32 @@
 {
- "admin": "96e98f3fc451",
- "admin-ai": "d41f0e43b19f",
+ "admin": "ecd6626663ca",
+ "admin-ai": "1ad5ac42dcc4",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8f601b08"
+   "9c69a5ec"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "87d07e8d"
+   "79cab7ec"
   ]
  },
- "admin-boards": "32bf9e296fe5",
+ "admin-boards": "3542bef89329",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "9b79997e"
+   "dd74e29b"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "5c12a32a4264",
+ "admin-emblem": "017312accf9f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "0fe9a282"
+   "00fe7881"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "cba86db41e67",
+ "admin-now": "57f78df91a8b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8cb187ee"
+   "98c63373"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "8c4ff848"
+   "92f1fd0d"
   ]
  },
- "admin-system": "fc28f8e44960",
+ "admin-system": "67b4fb280747",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "7db22ca9"
+   "2b52a150"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ee3a0cb1"
+   "3ec8bbda"
   ]
  },
  "admin_marks": {},
- "heat": "49ebb90ec06f",
+ "heat": "7fdb23f4e90e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "7de1d8a5"
+   "cef57ef9"
   ],
   "ranking": [
    "ランキング",
-   "0591dbf3"
+   "d81ff6b4"
   ]
  },
- "index": "a078990ae18d",
+ "index": "594ce45b21f3",
  "index_marks": {
   "front": [
    "トップ",
-   "f37f4cf2"
+   "25ec9eeb"
   ],
   "picks": [
    "気になるかも？",
@@ -113,11 +113,11 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "a8cd9680"
+   "ad8615af"
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "55b3f849"
+   "c00ff14b"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "b01d0fc9"
+   "887019c9"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "4cc2b2d3"
+   "66065f6d"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -181,11 +181,11 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "e73e0e60"
+   "097ef5e8"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "795a719e"
+   "6ca85fed"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "397f6c85"
   ]
  },
- "updated": "11.14 11:28",
+ "updated": "11.14 11:32",
  "wishlist": "69a11cca5599"
 }

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "65b1e6a409b6",
+ "edit_sig": "7f3c2daecd51",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -534,43 +534,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 3,
-     "source": "Epicstream",
-     "title": "HBO’s Harry Potter Series: Full Cast and Character Guide",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQakpBX3kzN3pQWjVaSnJtTjQwSHI2UDdpZnU0dU14MkZGcWZpaEtHb1FTdGttc2F6a1R5clZjZ18wandvcjVHTXNKdWNISVA3SXRKSFdnSGRTbmhiR3l5YUQ0Zk9PaU41ZjV0YmptWWxINjF0OEVmeU81QldVS0NGYkJZd0UtcVJJUzV0Qy1n?oc=5"
-    },
-    {
-     "date": "2026-11-09",
-     "n": 4,
-     "source": "Dexerto",
-     "title": "Everything we know about the Harry Potter TV show on HBO",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOeFJtTmtTM2JWbmZpcGdMUld3QVVWQk9yaGJyZzJZQ2c2UHpPTTlZa2JpVVZuRzg3TUdXYUdCaDh4M3dwNTF6VXJIT042b1pfOWdtYmlvZS04SWhiSFB2ZWc4QndpVzI1LUtCc21pRWVqMEx6UlNFd2ljVGFEY1RhOTB3VkdwbmJ6a1pmaXZQMkFNTmZHT2JHdGNB?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 5,
-     "source": "TV Line on MSN",
-     "title": "5 Harry Potter Characters Cut From The Movies That Can Appear In The HBO Series",
-     "url": "https://www.msn.com/en-us/entertainment/celebrities/5-harry-potter-characters-cut-from-the-movies-that-can-appear-in-the-hbo-series/ar-AA2hpkyw"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 6,
-     "source": "RadarOnline",
-     "title": "'Harry Potter' Star Paapa Essiedu Refuses to Be J.K. Rowling's 'Mouthpiece' as He Reaffirms Trans Rights",
-     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOT29DUEF1a3l4eUs3b1R3NXV2ZXRDQnFubVBEaER6TzlkTnNvS1lmeVh1dURBSnl2NGVCalBLNkpwVGs3SmJISDVBWDdUY1dDNHdaQm1HcndhQmdJdGNuVjhBMFhDZWMwWHVBVGtCbG9EVWtvN0tXaVU0dTlvSUsxaU5kcUUtS2c4MG5MSjRRazZQQ1F0M091cDNTTW5WYm5neC1nTVZ1TzZsNXFSV2ZFbWs3dXlKTHhvVGtONi16N3M4Zw?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 7,
-     "source": "Fandom Pulse",
-     "title": "Harry Potter Press Run Turns to Politics as Paapa Essiedu Declines to Discuss J.K. Rowling, Then Restates His Trans Rights Stance",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1Gd2F5RHhPMFVjR0FMRnMwWDBBQlRWVWUzaGJxQ1NEZnBFaV9tSklYaVQxblp5MDV4NDVTOUZjSFZLRVF3NmFxRVR5Wmoxd3RwVVRPVkdRR1k3THJYQWVNVkpPQ3ZPQzRLRk52cWNqTFQtUkR3TlBxS1hn?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -582,6 +545,26 @@
      "image_via": "og:image",
      "url": "https://www.independent.co.uk/arts-entertainment/tv/news/nicola-coughlan-harry-potter-jk-rowling-b3084540.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "headline": "HBO’s Harry Potter Series: Full Cast and Character Guide",
+     "highlight": "Full Cast",
+     "image": "https://gdm-universal-media.b-cdn.net/epicstream/a8c1ef98-harry-potter.webp?width=1600&height=840",
+     "image_via": "og:image",
+     "url": "https://epicstream.com/article/hbos-harry-potter-series-full-cast-and-character-guide",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-09",
+     "headline": "Everything we know about the Harry Potter TV show on HBO",
+     "highlight": "",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2025/12/17/ron-harry-hermione-harry-potter-hbo.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/tv-movies/harry-potter-tv-show-release-date-trailer-cast-plot-2104182/",
+     "weight": "normal"
     }
    ],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
@@ -696,106 +679,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 5,
-     "source": "Unboxholics",
-     "title": "This is what the Samsung Galaxy S27 lineup could look like!",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQdFd0eDcyVEpVUXJaOWt2UUV3R3lHS2tCLTctUWpPSFJTX3RTOHZEU3RQd0lYRXJkQ1Eza2tPalBETXlYZm9BWWpQWkhROTV5cHo2NXIwVGNYeUFZMV9aUFRGNHo2amdXcjRSWEVqMlpESE9jWlFoMTJ4VU5WWTVMQzB5bndPREJ0?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 6,
-     "source": "YAHOO!",
-     "title": "Android Circuit: Galaxy S27 Pro Camera, Honor’s Chinese Win, OnePlus 16 Thoughts",
-     "url": "https://tech.yahoo.com/phones/articles/android-circuit-galaxy-s27-pro-225429559.html"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 7,
-     "source": "Vietnam.vn",
-     "title": "갤럭시 S27 울트라는 7가지 주요 업그레이드가 있을 것으로 예상됩니다.",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9oZWJjYzNEbUVQQVFBakpmQmVLNmlVZlA5eGNLZ01oSmc3OGUzbFlKY1Nsa1pZNVpJZUp1akVWdFVDZ051cmNZR2pmaHdXUko2d2RkNEJEQ2VySUUyVl8zc3VDMVhVR0dWV042RDJNYmJMbHpTOGFJeG5pWmE5UQ?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 8,
-     "source": "Sammy Fans",
-     "title": "Samsung may launch Galaxy S27 phones in these five colors",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOUXN4NmdqcVpoRHVIUkxRd2FpRkxRUmVtdHdYX2tRS3lQaEI2ZXREVHlwbXU2OVBqallubDcwejhmQXUtSF9GYktjSmtuNTRTQjFiWDI4LWloNG1IZzlVS0JaR3lMeHR5YjVZWEk4YnM4dU9udDU0SGdMY1dSSHJzOHVhNWZMMHNOLWUwb0E4eWFIVGN0NnVWUkZOSdIBoAFBVV95cUxNSzVNOEVlU204cEM4bUVsVG5RUEtZaGtEblN1R3BhU0NaVHR3QXJTd2g5UjVqY2V4bk53S3R0Ujl3WEZGOVZIZEJHOHcxbFRrbHRJNm5TdkdJU0hiekQ0d3lWY2xBR3hLb09QdVRBQUFFNHVWX1duVlRhamJyRVdGTmFPeGlVb3dUVFhoRXJGdjZlT3kxX0VMa1R2ZmY2MHRx?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 9,
-     "source": "Vietnam.vn",
-     "title": "Galaxy S27 Ultraには、7つの主要なアップグレードが施されると予想されている。",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFB1SFB3RWRsa3N0a1dkQTNjbVF6bVNzXzlMeHppSmJKeXpUUTBzT05FTGpsdEdGNnZwVXVRc3djcjFqdlU5dm1tbGhtM3h6N3MwU1lKZDFpTFZDMjRnenRpZnhjM2JPRXN6dlBNamVKb3RBQ3BzUmphczF2OE1Wdw?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 10,
-     "source": "BigGo ファイナンス",
-     "title": "Galaxy S27、ネイビー・バーガンディなど5色が流出…Ultra専用色の可能性も",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE4tdHhRMU9ha0xYQldQMnc5THNvWU1rMDNTdUNWeHVyTUVtdnZqc0g2ckJuYmFxQ3lUQ2kwbTVpUzVYejY1OXVVSHd4VDVha2o1cE9oTVpxdC1jTFN2VHNNTmhxWFNOVE5mc0J4dl9oeEpiM0Jl?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 11,
-     "source": "Android Police",
-     "title": "Samsung might have accidentally shown off Galaxy S27's most eye-catching feature",
-     "url": "https://www.androidpolice.com/samsung-might-leaked-galaxy-s27-most-eye-catching-feature-colors/"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 12,
-     "source": "지디넷코리아 on MSN",
-     "title": "갤럭시S27은 네이비·버건디 등 5가지 색상?",
-     "url": "https://www.msn.com/ko-kr/news/techandscience/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27%EC%9D%80-%EB%84%A4%EC%9D%B4%EB%B9%84-%EB%B2%84%EA%B1%B4%EB%94%94-%EB%93%B1-5%EA%B0%80%EC%A7%80-%EC%83%89%EC%83%81/ar-AA2hoSBS"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 13,
-     "source": "Andro-News",
-     "title": "Galaxy S27 and S27+ Will Keep the Galaxy S22 Era Formula, Korean Cost-Cutting Crosses Every Line",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQeDRvOUl4bG9tazE4NUNrcTZyR2lyQnBfakNrYVNndFBZemFuemhpVkt1cW1WQnBzSmdRTE1pYjVDLXBaSzNPcHNZd3dXTDlaSnMwMjl1YUFRTFBweDRLaWZVaTFXYTVaVGpjV1dwLVJqMXBmUVF0LUxHVmNlcEhNdF95dnRDQkZYZW9faGU5M1RyLThTUFM5MHNkWGRsd1QzNGdHdzNlTk85THFxMmFfeFpmV09vcXNmV2ZFbEZB?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 14,
-     "source": "케이벤치",
-     "title": "갤럭시S27 기본 배경화면 유출…전용 배경화면 5종 포착",
-     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE0zQl9VeTUxV1FndC1YZ21hSy1uWjZwNXZEblRvYmhXeXNrcmw5djlPVThfaGszUTlaN2FNNE5waV9jQmZfRFBPcw?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 15,
-     "source": "iNews Zoombangla",
-     "title": "Samsung Galaxy S27 Pro Leaks Point to Ultra-Grade Cameras",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOd0FkZEFuMC1pT1dVTGttV3J3Z2tuaHRUazg0Ym9xcnhqeU8yb05zTmc0aUdNUlV4bUYyeDA4Z1lNNVE1dXhMNGlVeUpnMEpzY3BNcXhENzhpNFFMb2JzUzJpbm5sbThUQnNFNGdtYnlqRy1KQTAzdDZ0M2l4Q2N0QWdTZWNWY2tYbHVTakFidVI?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 16,
-     "source": "すまほん!!",
-     "title": "ハイエンドスマホ、弱体化の流れ？次期Galaxy S27 Ultra、3倍望遠を失う可能性。",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1wZjFHV1VaZEpGQVlLZmQyc1NZRUdWQWFsUzJwWHlUdjBWUXl4cWtGd2h0RGQ5d0RvaWtQNW5oNUZ2NEtwQ1pRcDhjNzJybDRfS3RIRWd1cW5YSmVWWkFPYjNkakFyVXhCN3pkSGtUMNIBdEFVX3lxTFBNUHA1VGdjak5jeDY0UnlTc1BDTVlmelJXR2J0ZUtvclFEa2lWa0JVYUExajZwOHZYNC01a29BVlROREJVbjkteGJWZWRWUUwzZTdjM3htSWtsOGNud0dUdFlNbGdQdDBmQS1hbXM2Ym5idThx?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 17,
-     "source": "GSMArena.com",
-     "title": "Samsung Galaxy S27 series dummy units surface in new leak - GSMArena.com news",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOaXVGWDFiYjgzcUlOUHpYTGpEbjRoUjE2YkI5akFkYVp4U0QxNG9IZmJ6dnVyY1R0UWJQbm5WSjJ1aDVVYXU0Ulc2aGE2XzhnNW96RlNZejNRQ2tSUDQ4bTM1MzVJTEFRZHdtemk0YU9SMkdUMUtEb2R6YTFkdGVObTZSZWo2YUNtNVpnejgyc0VCTHN2S3dSUkZlSTVQZ9IBmgFBVV95cUxNQTJ0N2dNUUF4WTZOcm9ReFZwQTR3VlZmdnNXX0hWR2FZSTQ1Q3o5ZWtucENMdnhoS1JsRHZ0NmVmd0RDMDViUEJLaXh1Vm1RSUlBa3JIcExlQXNwaTZZWkZjTFdNNjJKMFdKd0JtemNCRV9QelRuWFJDQ0Q2RmxZT3BmWXhqQ0FCbWZEdld2cFFRS1V4QXVBTkR3?oc=5"
-    },
-    {
-     "date": "2026-11-10",
-     "n": 18,
-     "source": "GSMArena",
-     "title": "Samsung Galaxy S27 series' cameras detailed, Pro to get a lower resolution telephoto than previously rumored",
-     "url": "https://www.gsmarena.com/samsung_galaxy_s27_series_camera_setup_detailed-news-75416.php"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -810,12 +693,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-13",
-     "headline": "三星S27系列影像配置曝光，均为后置三摄模组",
-     "highlight": "均为后置三摄模组",
+     "date": "2026-11-12",
+     "headline": "This is what the Samsung Galaxy S27 lineup could look like!",
+     "highlight": "",
      "image": "https://www.3elife.net/Uploads/Article/images/202611/10/1734064806161.jpg",
      "image_via": "正文图（4 枚から）",
-     "url": "https://www.3elife.net/Art/mobile/202611/13/110750.html",
+     "url": "https://unboxholics.com/en/news/tech/138809-samsung-galaxy-s27-first-design-leaks",
      "weight": "normal"
     }
    ],
@@ -868,26 +751,6 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-12",
-     "headline": "ジェラピケ×セサミストリートのコラボアイテム新作が発売！本田翼の着こなしがかわいすぎるルームウェアなど全67アイテム(1/4)",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/1224658/13665354_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/1224658/",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-13",
-     "headline": "ジェラート ピケ×ポケモン、コラボ第3弾 ピッピ＆マリルなどが新登場",
-     "highlight": "",
-     "image": "https://static.sanyonews.jp/image/article/size1/1/9/a/4/19a437ddf115dcddc38bac417318a495_1.jpg",
-     "image_via": "og:image",
-     "url": "https://www.sanyonews.jp/article/1981248?kw=%E7%A6%8F%E7%A5%8F",
-     "weight": "hero"
-    },
-    {
      "blurb": "ジェラートピケの福袋「HAPPY BOX 2027」に落選しても、次は11月20日12時から楽天ファッションで先着販売がある。",
      "date": "2026-11-12",
      "event": {
@@ -902,6 +765,26 @@
      "image_via": "og:image",
      "url": "https://note.com/fine_jacana739/n/n1f2fc5091c97",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "headline": "ジェラート ピケ×ポケモン、コラボ第3弾 ピッピ＆マリルなどが新登場",
+     "highlight": "コラボ第3弾",
+     "image": "https://static.sanyonews.jp/image/article/size1/1/9/a/4/19a437ddf115dcddc38bac417318a495_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1981248?kw=%E7%A6%8F%E7%A5%8F",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-12",
+     "headline": "ジェラピケ×セサミストリートのコラボアイテム新作が発売！本田翼の着こなしがかわいすぎるルームウェアなど全67アイテム",
+     "highlight": "全67アイテム",
+     "image": "https://news.walkerplus.com/article/1224658/13665354_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1224658/",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",
@@ -923,24 +806,24 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "「ぐでたま」の5周年を記念したコラボカフェが池袋にオープンした。",
      "date": "2026-11-11",
      "headline": "「ぐでたま」がついに宇宙へ！5周年記念コラボカフェが池袋にオープン",
-     "highlight": "",
+     "highlight": "5周年記念コラボカフェ",
      "image": "https://news.walkerplus.com/article/150620/858239_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/150620/",
-     "weight": "hero"
+     "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-11-12",
-     "headline": "画像2 / 5＞「ぐでたま」コラボ雑貨全16種がサンキューマートに登場！「外出たくない」「あー…だりぃ…」名言つき",
-     "highlight": "",
+     "headline": "「ぐでたま」コラボ雑貨全16種がサンキューマートに登場！「外出たくない」「あー…だりぃ…」名言つき",
+     "highlight": "全16種",
      "image": "https://news.walkerplus.com/article/1447118/18760300_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1447118/image18760305.html?utm_source=news.yahoo.co.jp&utm_medium=referral&utm_campaign=related_link&utm_content=1447118",
-     "weight": "hero"
+     "weight": "normal"
     }
    ],
    "subtitle": "Gudetama",
@@ -1082,24 +965,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "Vaundyが初めて甲子園球場に立ち、夏の高校野球応援ソングに込めた思いを語った。",
      "date": "2026-11-11",
-     "n": 1,
-     "source": "Mikiki by TOWER RECORDS",
-     "title": "SWEET LOVE SHOWER 2026が大盛況のうちに終幕! あいみょん、Creepy Nuts、レミオロメン、アジカン、Vaundyら96組が集結した3日間",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5OcXRGUWFaMGxlM3F3eE03bkhuNHZaVGJ2RktjVXl3cmtaRFFkMEVpSTVXSW04UGNSdWQ4SjAwQXUxZzdBNUxrRDZZeG13WG9KQnc?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 2,
-     "source": "山陽新聞",
-     "title": "Vaundy、初の甲子園球場で貴重ショット 夏の高校野球応援ソングに込めた思い「あえて答えを用意していません」【コメント】",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQdUI5bC1mcFRDb1I4RjFWang4YmRzOVRCZk5xZ2laZ1ZVaFg0UVJlYUtjY1l0eW1WTDBVQXQxdmNNMm14a1pibXNzMElacXRNTDFGaUw3RTRrMVIwY1VDOHBEQ2x6MTcySGpRNExicWxlMWx4Ui1iQXdzQk5HVzhDdkI4R2pBdw?oc=5"
+     "headline": "Vaundy、初の甲子園球場で貴重ショット 夏の高校野球応援ソングに込めた思い「あえて答えを用意していません」",
+     "highlight": "初の甲子園球場",
+     "image": "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/1965453?rct=oricon_music&kw=%E7%A6%8F%E7%A5%B1",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
