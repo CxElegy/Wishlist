@@ -1,6 +1,6 @@
 {
  "date": "2026-11-15",
- "edit_sig": "e409b6362c5f",
+ "edit_sig": "fe90a68991ef",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -211,36 +211,6 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-14",
-     "n": 6,
-     "source": "Samsung Magazine",
-     "title": "予想される仕様を比較しました Galaxy S27 Ultra 反対 Galaxy S26 Ultra結局、ニュースはかなりたくさんある。",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUF90SGd4WU1WZ0VLM3dIQ3NJenlCVUtDYnNsU1NzUVoxcC1HblVUSk84Y1d6T19WNGFvS21aVUsyQmcyei1rcWZ1bEVIYUw0QUZlUGRfODM1blFWTlhsRU5QMmVIdjRuQmdrR0ZPelZhQ3NIcjJfRmRiaWFTN1Q4STExOUM?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 7,
-     "source": "Forbes",
-     "title": "Galaxy S27 Release Date: Samsung Bets Big On New 'Pro' Phone",
-     "url": "https://www.forbes.com/sites/jaymcgregor/2026/11/14/samsung-galaxy-s27-release-date-galaxy-s27-pro-ultra-production-price/"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 8,
-     "source": "PhoneArena on MSN",
-     "title": "Galaxy S27 Ultra might take inspiration from the iPhone 18 Pro, and this time I’d be glad",
-     "url": "https://www.msn.com/en-us/technology/tech-companies/galaxy-s27-ultra-might-take-inspiration-from-the-iphone-18-pro-and-this-time-i-d-be-glad/ar-AA2hrsgV"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 9,
-     "source": "Nokiapoweruser",
-     "title": "Samsung’s New Galaxy S27 Pro Leaks: Bold Redesign Ditching Classic Look",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOa0FkeW12NUhidkY4amloVS1Ma0hUT1UySmJBMWtCSDhvUC0xZE8yZWtyV0Z1YVphRktVemFXWDNBb0tFbUV1dUY5RUlvRjZHOW5VaVk4SGtab0pWLTM1YU56YjRHZW83VmtQcE9rR0g5UXhpbm1KaXBHVXBUbzFhVEhWcw?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -266,11 +236,11 @@
     {
      "blurb": "",
      "date": "2026-11-14",
-     "headline": "예상 사양을 비교해 보았습니다. Galaxy S27 Ultra 반대 Galaxy S26 Ultra",
-     "highlight": "Galaxy S27 Ultra",
+     "headline": "予想される仕様を比較しました Galaxy S27 Ultra 反対 Galaxy S26 Ultra",
+     "highlight": "",
      "image": "https://samsungmagazine.eu/wp-content/uploads/2026/02/Galaxy-S26-Ultra-cover-2.jpg",
      "image_via": "og:image",
-     "url": "https://samsungmagazine.eu/ko/2026/11/14/galaxy-s27-ultra-vs-galaxy-s26-ultra/",
+     "url": "https://samsungmagazine.eu/ja/2026/11/14/galaxy-s27-ultra-vs-galaxy-s26-ultra/",
      "weight": "normal"
     },
     {
@@ -281,6 +251,16 @@
      "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png",
      "image_via": "og:image",
      "url": "https://samsungmagazine.eu/en/2026/11/12/galaxy-s27-wallpapers/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "Galaxy S27 Release Date: Samsung Bets Big On New 'Pro' Phone",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.UmrUWqbE3o-U9f9KWMz6ag&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://www.forbes.com/sites/jaymcgregor/2026/11/14/samsung-galaxy-s27-release-date-galaxy-s27-pro-ultra-production-price/",
      "weight": "normal"
     }
    ],
