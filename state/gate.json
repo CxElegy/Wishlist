@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-14T02:21:04+00:00",
+ "changed": true,
+ "checked": "2026-11-14T03:29:05+00:00",
  "fired": {
   "at": "2026-11-14T02:21:04+00:00",
   "results": {
@@ -46,45 +46,21 @@
     "sig": "f912a8be3256"
    },
    "items": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
-    "ILLIT",
-    "Vaundy",
-    "dota2",
-    "gelato pique",
-    "ぐでたま",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "绝区零"
+    "Astrae Oratio",
+    "MMORPG 新作",
+    "あつ森",
+    "日本顶级网球赛事"
    ],
-   "last_batch": "2026-11-14T00:50:39+00:00",
-   "last_error": {
-    "at": "2026-11-12T08:46:26+00:00",
-    "text": "出刊に失敗：No module named 'requests'"
-   },
+   "last_batch": "2026-11-14T02:57:48+00:00",
+   "last_error": {},
    "need": true,
-   "prog": 191,
+   "prog": 263,
    "prog_day": "2026-11-14",
-   "ripe": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
-    "ILLIT",
-    "Vaundy",
-    "dota2",
-    "gelato pique",
-    "ぐでたま",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "绝区零"
-   ],
-   "sig": "f912a8be3256",
+   "ripe": [],
+   "sig": "f4192cabab3b",
    "token_cap": 1000000,
-   "tokens_today": 264850,
-   "why": "整理待ちの記事 17 件（12 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 349900,
+   "why": "整理待ちの記事 4 件（4 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -185,12 +161,12 @@
    "runs": 14
   },
   "2026-11-14": {
-   "batches": 22,
-   "cr": 9555336,
-   "cw": 231876,
-   "in": 255,
-   "out": 32719,
-   "runs": 4
+   "batches": 26,
+   "cr": 12434064,
+   "cw": 304637,
+   "in": 327,
+   "out": 44936,
+   "runs": 5
   }
  }
 }
