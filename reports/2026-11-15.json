@@ -1,6 +1,6 @@
 {
  "date": "2026-11-15",
- "edit_sig": "",
+ "edit_sig": "c60f200e45fd",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -33,122 +33,63 @@
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Rockstar's GTA VI launches Nov. 19 and pre-loading is open now, with a roughly 700GB install reported.",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "shattered.io",
-     "title": "GTA VI Release: 13% More PTO Requests, 1 in 5 Off",
-     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTWNzeUZBbUxUcTJpN2c5TWlPUHdkWFZpMjZnX0FyTzVRdEhUVHdOWWNiVlNrVnhnNkpzc0R0R1RaX0oyeHJGaG9SbVAyWFg3M251M0RwdHU2d19ldnVjcUZ1Z2dCcU1ZTFVvNWFHTlpRN0N6bXdoaEFtVHliOS1QZ2w2Z1B6dEhYdWJuaHlEbGp3Zw?oc=5"
+     "event": {
+      "date": "2026-11-19",
+      "label": "発売日"
+     },
+     "headline": "GTA 6 launches Thursday and is available for pre-load now",
+     "highlight": "available for pre-load now",
+     "image": "https://s.yimg.com/lo/mysterio/api/ddeff4a25e26ace41830ca125423da06615b93a25d88e20ed4ec3e381b307812/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg",
+     "image_via": "og:image",
+     "url": "https://tech.yahoo.com/gaming/breaking-news/article/gta-6-launches-thursday-and-is-available-for-pre-load-now-everything-you-need-to-know-about-the-new-rockstar-game-140009247.html",
+     "weight": "hero"
     },
     {
+     "blurb": "A leaked 34-song lineup has sparked interest in the game's musical direction; the tracklist is unconfirmed.",
      "date": "2026-11-14",
-     "n": 2,
-     "source": "GameGPU",
-     "title": "GTA Online for Grand Theft Auto VI is expected to launch in the first quarter of 2027.",
-     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNazJzSVllckVjOG1UYVMxa193cURLUjFMbVNoeFJxdm1DNzBjMmtOM191TVE2NGp5c0JfbGI4bk9xUTNEYVJfTGJpWHE2U3ZDM1NTcS1tSHhWQ1hPekE3bmFVUjBTZ0xrZnA1dUgtU1pRYUNBQWtXU0JFRHh2aF83eDBkT0lTc1BwSFV1RXRvQVZKT05UdllCdFQzcEtZcjJHalNLWl95VzlmNmZwWXFGUXFwVXNPQQ?oc=5"
+     "headline": "GTA 6 album leak reveals 34-song tracklist featuring Travis Scott, Dua Lipa, Morgan Wallen and more",
+     "highlight": "34-song tracklist",
+     "image": "https://www.bing.com/th?id=ONUT.-GUQ33mXT9wP2JHemimbKA&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.dexerto.com/gta/gta-6-album-leak-reveals-34-song-tracklist-featuring-travis-scott-dua-lipa-morgan-wallen-and-more-3428203/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-14",
-     "n": 3,
-     "source": "電腦廣場",
-     "title": "【GTA 6 準備篇】硬碟容量 700GB？實測下載時間曝光 實體版點解得個盒？",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9DSVpiYkN4UzlGcG9GenB5b1k3X1otcUFaak54TXdrZTd0bUtQUjV2VDZRVmZiVVVXaVMwdnVGcWotM1Q1eGdjOWNFa1lYdVNjUlh2Z3FHb2syUDFRNUwwNmp2TkNjdUlVSUZvcUY1Vm5yQQ?oc=5"
+     "headline": "Twitch Plans to Give Away Free Copies of GTA 6 Ultimate Edition",
+     "highlight": "Free Copies",
+     "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2026/11/twitch-giving-away-free-grand-theft-auto-6.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://gamerant.com/gta-6-ultimate-twitch-giveaway-ps5-xbox-free-keys/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-14",
-     "n": 4,
-     "source": "Forbes",
-     "title": "‘GTA 6’ Reveals Jason And Lucia’s Limited Crime Options To Start",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPOUJ5eFFIMzRzVnlOcm5JYWVUbUF0eVloSVVLRkZHMEl5YVZaSjRUaUU5ZDVNS3ZoU0JLaFNSRDVWS0M5Z3R2bTJmTkNIMkNYVUlTS2NJVDFDYlBtMzJ0OTByalVleUVQNzV1ekZ3UkZtMEZKT2hTaFpFbHp0c05OZktoTDdxWk5rS1VYUTJYek44MlJIM1dtNlNxRlBQdVR1bDF6SUFrNGJja21QbENDQnlR?oc=5"
+     "headline": "GTA Online for Grand Theft Auto VI is expected to launch in the first quarter of 2027.",
+     "highlight": "first quarter of 2027",
+     "image": "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/14/re2wr6re2wr6re2_gpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/nov/14/re2wr6re2wr6re2_gpu.webp?width=1920&height=1080",
+     "image_via": "og:image",
+     "url": "https://en.gamegpu.com/news/igry/zapusk-gta-online-dlya-grand-theft-auto-vi-ozhidaetsya-v-pervom-kvartale-2027-goda",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-14",
-     "n": 5,
-     "source": "Yahoo Tech",
-     "title": "GTA 6 launches Thursday and is available for pre-load now: Everything you need to know about the new Rockstar game",
-     "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxQRWJjQkM2b0hfclU4Y21TaG5CQW5qaTRVd1ItcnVfbzF5UVRxYTU5eFdhQ0xJTTNTdkViVGZ3NnU4eEJqU1lhaE1XeXMxWDZVOGNLZzduVHNWbFRETTlGVG9zdVRxdThsU054VXBva0dGS0QzODJkbzRpX2wtRl9oc0R2X0VUQS1uNEI4VG5Md3k0WGpERnNJOURBbFI0c3JUYXNfblI0RWx6SUY5UWZNMTFJT2RMVmE1bEpOLUZ2VkQyaXpLMW9yRWhnUVY4a1A1ajdtenBYQTNLRW9jN1JxbzN3SmdTQnk5dHhwVUx0ekNEVFgtQUdyNWc4Wnd2ZGFlZXE5b3VULU1fY1NE?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 6,
-     "source": "The Big Lead",
-     "title": "GTA 6 soundtrack tracklist: Full list of songs & artists leaks",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQZ1hZSzl6TGxuZC1jTk1ELURvRXBTTWJacmtKd3RtZWR5a0hiRlJxSERTbnFMWk16Um82MmtzYjBEWGUzQ2Y4ejFjWC1GWUV3SV9qVU14NHhQY3doVi1JYlZoR1E3NDUzYlQ0SXppaEE5R3oxNUJVQm1tM0V6MkwxY3lXT05uZFRtT0hR?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 7,
-     "source": "shattered.io",
-     "title": "GTA 6 Map Leak Names 9 Places, Sequel Tease Unverified",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPWUlqblMtRXlWbGoyS3dyeGR1enRhbkVuWURYXzQxSEx4R1Y3SHJsWndBSXNCNHFkUWlBM2VkRXpfM0Vab29xa3J5NkdDZ0pFVWMwVndjQk5JTUREajRqT09YRzFJbmdlUUV2QVZkdnROYmFMclpZWlFXM1hIbUgzQ09ucGt1S2hWTEdYWQ?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 8,
-     "source": "autoevolution",
-     "title": "Don't Download \"GTA 6 for Free\" Because You'll Instantly Regret It",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPNktwTWY0a3NFc3RSTHVoR0lzNGdnUlkyYTZGeDFKUkpVcWhiYmxhVm1oVTZJeldra1JYekdGZnB6YWpTVWdJdk5wd1JLYndwRFJXZWxZYWhnQXdVTndQQXd5NkN1N21Ta0JZOUVVN3Z3NW82OFpPUVdPWGVmeXNwOVdMa1QySm9FVG1QeXZmOFF2eC05d18zczNwZzltMDZVOTVyX3lYUXFRbjdqSEZoYg?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 9,
-     "source": "Insider Gaming",
-     "title": "GTA 6’s Jason and Lucia Start The Story As Small-Time Criminals with Basic Abilities",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5ZcUZQS0F3UjFJNTZ6Wi15WlVNSlB2ZGx6cW40TUt5UVF5UmVDSGR6NkJIMHhZUEN4Z2IzcFJtOU9OeUk4U2RWYkdEUDlMRFg4THlRTVc4a2l3QjdzSm5uTFFUTEI2NHJBNU94YWJKSmczQ1p4ZVN1aWQyVQ?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 10,
-     "source": "Insider Gaming",
-     "title": "GTA 6 Will ‘Encourage’ Empathy For The First Time in Franchise History",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBaZk9UaDBFdlBiWWZjalRZdVJFYV9GZ1RoaWk2N0trZFNLVnd2c0xuWTlSTUtzN3NwVFU5R1lTb2FlMnZPMFRGWS0zNzBFcG9DUzJDWU1QbnNxM19wbmM1clF2MHl2TkFhR1Ewa0Jtb0pTMEV6UllNag?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 11,
-     "source": "Game Rant",
-     "title": "Twitch Plans to Give Away Free Copies of GTA 6 Ultimate Edition",
-     "url": "https://gamerant.com/gta-6-ultimate-twitch-giveaway-ps5-xbox-free-keys/"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 12,
-     "source": "PRIMETIMER",
-     "title": "GTA 6 Tracklist Leak: Travis Scott, Lana Del Rey, JENNIE and more artists reportedly featured",
-     "url": "https://www.primetimer.com/news/gta-6-tracklist-leak-travis-scott-lana-del-rey-jennie-and-more-artists-reportedly-featured"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 13,
-     "source": "CNBC",
-     "title": "How Rockstar's 'GTA VI' release could reshape gaming, streaming and even paid time off",
-     "url": "https://www.cnbc.com/2026/11/14/gta-6-grand-theft-auto-launch.html"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 14,
-     "source": "Dexerto",
-     "title": "GTA 6 album leak reveals 34-song tracklist featuring Travis Scott, Dua Lipa, Morgan Wallen and more",
-     "url": "https://www.dexerto.com/gta/gta-6-album-leak-reveals-34-song-tracklist-featuring-travis-scott-dua-lipa-morgan-wallen-and-more-3428203/"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 15,
-     "source": "Insider Gaming",
-     "title": "New GTA 6 ‘MACCA & FRIENDS’ In-Game Trailer Revealed",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNYjYtUzV3TXVsb004OVFXNVhpYUsybWg0T3JZU0tmZUF1YlQ0eDNXOE9sRVduT2RmRnVHUDhLN1JORTNHbWp2bkFXamVWOE90NzlfNjI5ako1MHFZOWNaZzlrMWRRakxKMWZ1blNUcnZzSG5qVlhObl81c3JNVkYwMkVB?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 16,
-     "source": "NDTV",
-     "title": "'Got Another Microsoft Outage Before GTA 6': Memes Flood Internet As Outlook, Teams Remain Dark",
-     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNaW5UcXo1TVdtZUxkYXM3S0g5YXgwZkVxdU96dzU2djZnSVVUZkcwbzNtMFhjTERwQTJpTGV2cGFhWW5EUDc4cmNfS0QzRXRid19mb2o0dWtkcUc2TW1UX2ZMYWo5OU1McFQ5c0xrTWlJd1JEblpBLXkxWWlURzJ1Umk5WnptMGd4a1BXZlR3bllzYWFCOEo2c3dENVNTdHMtbnhHQ3k5WVVRQlBKM210eVZZTG5xWUdNNjVGZks1bVRWLXc0eVVTWtIB0AFBVV95cUxQcnJuYkpzaGdkbVZXNmlrR1JvR1IwTlZhVFhtN2hzNGl0alhHb3Rpa0pFSERvekNncGphLTZiRWtWZkg3U2g4REdrVW8tSE5XRlBNTkZxRVRsOXB6NzNGcGM1bDZNTmdFTTdLWXA0cXdCU1FFWkRMMjBxNnlxWnZURndMUENOUVc2eG80Uk1BckxXaUcxUTBsRWRhZGJMUUVCRFRpNE5GUHhCeTFtR2Zud25sTWgxN1NlTlNVUk1fTW40QjU4d1owUjdQcnFFWTN4?oc=5"
+     "headline": "New GTA 6 ‘MACCA & FRIENDS’ In-Game Trailer Revealed",
+     "highlight": "In-Game Trailer",
+     "image": "https://insider-gaming.com/wp-content/uploads/2025/11/gta-6-stock.jpg",
+     "image_via": "og:image",
+     "url": "https://insider-gaming.com/new-gta-6-macca-friends-in-game-trailer-revealed/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
    "theme": {
     "accent": "#FF5FA2",
@@ -199,73 +140,59 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-11-14",
-     "n": 1,
-     "source": "Men's Journal",
-     "title": "Tom Hiddleston Says ‘Happiness Is Overrated’ Ahead of Avengers: Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNb0xYSF80cEZEaUo3aTNtV0hVemVqNXk3WGNCZDhYOHBLODNla0lNRF92dklPWHdqQnhhY1I2WG1DMzlxc1l3djhTQjlBczBoODhCXy02dXJDUmZQZXJaSUR5bXhTT2tFcWduZDJIbFUxUDZrM3VVNjZwZEM4S1ZsM0pqQjk1Smk2WFU2VGZ3S0o0VXlVM1E5R3lacUVwdUc4WnVHeA?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 2,
-     "source": "Sortir à Paris",
-     "title": "Avengers: Endgame Extended on Disney+ with a First Look at Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNa19veUVUYURFb2dMeUVObmV4dTZkMm10U3IzSEJDYzlxa1lCYWpyX1NxLXk2blNEaHdFWHRTb1JHVk5oNlZpSi04MEZZUmtOZE1jYjI5MkZEbHY1VG41bkhWYkt2Z0x2SFcyRnRRNTctLTFPSTVpVWNaM0ZYY2NEOEt0SHN0VzcyZVZabmF6cTE4cS1HLWcxb21fZ2lsbGNrQ05uNWFWNW9IcTJZWWg1cEszNS0zeEhvM1FNb0psUXVnbjlNVDEtU2RR?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 3,
-     "source": "JustWatch",
-     "title": "Every Scarlet Witch Movie & TV Show In Order (MCU)",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1xc3dKZ0NXeGhlc3hkQ3NNd19obUJHVWlpZkY3Rlh1dUwzNGhfQzF4QkhOYjJRY2ROeUx4OG5GblotMTdCMXNVTnRFT0JhTTNHSVpQcHBkLWtsajB3cXVGcUpZWFhCdWpnRVNmemFGWVpPMllLN0Y0dGoxc1p5WTQ?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 4,
-     "source": "ScreenRant",
-     "title": "There’s 1 Problem With Chris Hemsworth’s Thor In Avengers: Doomsday That No One Is Talking About",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA3cEFtRVBrN1ZnSW1nQUF4VWdLSjdBZWx6a1NXMHItUTVJM0h3WnRTX0R4bEdxU2d1OF9RQ3BvT0JuMnBoM3pKZHpHdkNQa1FURzVTblluQldzYWcyUzBEZTExZDhZd0w1bk9CaTVpQ0ZHSlZKd1pXd21tT21GSHM?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 5,
-     "source": "Howl.Link",
-     "title": "A ★★★½ review of The Marvels (2023)",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE5UMWxKZmVKUTNMUl9MMmFhX3dXUUZldW1KNGROQzRYclNCdWtTYk1WOUZueXRrYnFzZnRz?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 6,
-     "source": "Nexus Point News",
-     "title": "‘The Children’s Crusade’ and Why It Could Be Important for Scarlet Witch’s Return in ‘Avengers: Doomsday’",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNSnhFb3VaRElzQXU2STRYalZQSDdSSkZCMThEUy1fUzVudWw1MnpoMGJyWjNCUmhEa3IwOU5EdnZTdi1aX25IbjR4bXAyTm84Qk5qUjdrQV9Sa0ZPMnZSdnE4WjlrOTdLZUdidzFiX1FtRkFwNFI0d2I4VjBQSG9uaHl3eURJM2xLenQ2alJYbklRT1E?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 7,
-     "source": "The Direct",
-     "title": "Avengers: Secret Wars' Rumored Spider-Man Plot Can Use 1 Special Symbiote Character",
-     "url": "https://thedirect.com/article/avengers-secret-wars-spider-man-plot-symbiote-character"
-    },
-    {
+     "blurb": "《復仇者聯盟：毀滅日》新預告曝光，小勞勃道尼飾演的反派「兩根手指擋下雷神」。",
      "date": "2026-11-13",
-     "n": 8,
-     "source": "IMDb",
-     "title": "Anthony Mackie Has a Math Problem With Marvel’s Solo Movie Count",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBwZ3lWdEJKM2Z3WmxiY29ab2ZYSjlHaU4yNVFFN1cyUXRiRmN1dmE3QjVxXzhibjV0aXo3Yl9Bczk3N3NmV1o2OFk0eXJPaGdnb3FTbHFUYWw2TXJKQ2I5WVRycDVzT28?oc=5"
+     "headline": "漫威超強反派！《復仇者》新預告曝光 小勞勃道尼「兩根手指擋下雷神」",
+     "highlight": "新預告曝光",
+     "image": "https://attach.setn.com/newsimages/2026/08/15/5670686-PH.jpg",
+     "image_via": "og:image",
+     "url": "https://www.setn.com/news/1889851",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-13",
-     "n": 9,
-     "source": "三立新聞網SETN.com",
-     "title": "漫威超強反派！《復仇者》新預告曝光 小勞勃道尼「兩根手指擋下雷神」",
-     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFAtclBMNF9JVTZ6el9YTjZnNHlFbGZGczBGa09hZU5MR1FIdHJCOUxCSmRSWEYxZGdRdWxnQTVhSGVKRGttYmxHTNIBTEFVX3lxTE5oQUZySHAxTWNDalV3d0JxcGFRQThSb0hvbTBRTl9YSWxnZU1oUWJCT1kxU3IxUFdMbFozVDA5clhTN2lYUXNSNVIySHo?oc=5"
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "Avengers: Endgame Extended on Disney+ with a First Look at Doomsday",
+     "highlight": "First Look at Doomsday",
+     "image": "https://cdn.sortiraparis.com/images/80/66131/417039-avengers-endgame-decouvrez-la-premiere-bande-annonce.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sortiraparis.com/en/what-to-do-in-paris/cinema-series/articles/181965-avengers-endgame-extended-is-available-on-disney",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "There’s 1 Problem With Chris Hemsworth’s Thor In Avengers: Doomsday That No One Is Talking About",
+     "highlight": "",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/thor-from-the-avengers.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/avengers-doomsday-thor-chris-hemsworth-mcu-problem/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "‘The Children’s Crusade’ and Why It Could Be Important for Scarlet Witch’s Return in ‘Avengers: Doomsday’",
+     "highlight": "Scarlet Witch’s Return",
+     "image": "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg",
+     "image_via": "og:image",
+     "url": "https://nexuspointnews.com/the-childrens-crusade-scarlet-witchs-return-avengers-doomsday/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "Avengers: Secret Wars' Rumored Spider-Man Plot Can Use 1 Special Symbiote Character",
+     "highlight": "Secret Wars",
+     "image": "https://images.thedirect.com/media/article_full/tom-holland-tobey-maguire-spider-man.jpg",
+     "image_via": "og:image",
+     "url": "https://thedirect.com/article/avengers-secret-wars-spider-man-plot-symbiote-character",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",
@@ -309,45 +236,49 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Galaxy S27 Pro's Korean model could get an Exynos chip with a surprise upgrade, per leaks.",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "Sammy Fans",
-     "title": "Galaxy S27 Pro’s Korean variant may have a big hardware advantage",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQZF81d2E5NXo0amRpNDlFd3ZJZlZYUVg3cGdoSXZVXzNGODNWZFJMLV9FbndCMjFQRl9QV1REMmZWaVN0UW1qeXFLQkdMRlBETFJhdWdIUXFubmltbVdqUkw0dkhJNVVnelJHLW93eGNicFdyUm83U0JLeEx0dEUwbFhFSi0zNXZXcTJPZG9LVXB3Y3V1R0hvbklXaHdVM0pDYVZURNIBqgFBVV95cUxQNUh5LVdjUEN0NnRFdHEwWnVIZFl5eFdpejQtd1dHdUdubWZFcjFhSktKNHlzMFJhc3FDRW1oUUhWMlNBNDd1ZndHN2NNYU5ScnZUQUJwREhpRGZIWFNfNUxKZnFWZ09Vb044Rm5fZERMMl9lM1RjcGZOcGlNb0hha3ZCdG9EeHhIaW1GNTRKaUpxWTJPeEw1My1YWEFxTXVZeUpBMDZaOXRfZw?oc=5"
+     "headline": "Galaxy S27 Pro’s Korean variant may have a big hardware advantage",
+     "highlight": "Korean variant",
+     "image": "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sammyfans.com/2026/11/14/galaxy-s27-pros-korean-variant-may-have-a-big-hardware-advantage/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-14",
-     "n": 2,
-     "source": "SammyGuru",
-     "title": "Galaxy S27 Pro Could Get Exynos in Korea With a Surprise Upgrade",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE85RzBzUTJ6STVtNHc3WTVscVI5RFRQUVZ4VVR5TkFNN296RUExckNuX014WWhESzhHOVEzNGpuaVRVTWZRcnJSN2ZQTThvSzIxT1lmbjFQbHgxOXpfN2xSUF81NXF4cXZmeDRlVQ?oc=5"
+     "headline": "Galaxy S27 Pro May Get LPDDR6 Only in Its 1TB Model, Leak Claims",
+     "highlight": "LPDDR6 Only in Its 1TB Model",
+     "image": "https://www.digitbin.com/wp-content/uploads/2026/11/galaxy-s27-pro-lpddr6-1tb-leak-1280x714.jpg",
+     "image_via": "og:image",
+     "url": "https://www.digitbin.com/galaxy-s27-pro-lpddr6-1tb-leak/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-14",
-     "n": 3,
-     "source": "DigitBin",
-     "title": "Galaxy S27 Pro May Get LPDDR6 Only in Its 1TB Model, Leak Claims",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5xXzZ3Z2FuWm9tNmx0Z2x0M0pfUTI5T3FUS1U5bG1oSmFlTllyc09GSGxOSnNfN2E5aHpiRm9pVnY0ZzFkVnlJMTJkOGxjSTNRVHdNX1A2ZUU2V0lERWQ4VTdvaWFMd3c?oc=5"
+     "headline": "예상 사양을 비교해 보았습니다. Galaxy S27 Ultra 반대 Galaxy S26 Ultra",
+     "highlight": "Galaxy S27 Ultra",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/02/Galaxy-S26-Ultra-cover-2.jpg",
+     "image_via": "og:image",
+     "url": "https://samsungmagazine.eu/ko/2026/11/14/galaxy-s27-ultra-vs-galaxy-s26-ultra/",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-14",
-     "n": 4,
-     "source": "Samsung Magazine",
-     "title": "예상 사양을 비교해 보았습니다. Galaxy S27 Ultra 반대 Galaxy S26 Ultra어쨌든 전할 소식이 꽤 많네요.",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPWkxBTkpwWk1HeV85bURWeG1FSEFKYnlIOXJBY0ZsWWZLUHZXMWlpNlFwS0lxRnlSLVkzb0o0WEVrWXBzVU40X2JWUUo1VFlIUE1jS2Q2S3hwaFE5MFNqTmYyVUxGOVVRdzI0Z2lSdmtxb2dOdFdjNHVEcDZBc2Y3dFQ4ZTg?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-12",
-     "n": 5,
-     "source": "Samsung Magazine",
-     "title": "Wallpapers for the series have leaked Galaxy S27 and revealed the biggest secret. You can download them for free now",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBRd3ZmeGdxOW1mTm5kUUJvTWxfNm9HSnZRNGJ4U0RSZzVNZkJGOVcyQmFhVVpGcnZYZDhmR0ZrekNmd2c5eUNMMENNbHhWZm1zbW9xcVRqcHJiaURaaE9FM2xySUdYVE95SjRHdkJGOTE?oc=5"
+     "headline": "Wallpapers for the series have leaked Galaxy S27 and revealed the biggest secret",
+     "highlight": "Wallpapers",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png",
+     "image_via": "og:image",
+     "url": "https://samsungmagazine.eu/en/2026/11/12/galaxy-s27-wallpapers/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",
@@ -370,31 +301,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-11-13",
-     "n": 1,
-     "source": "note",
-     "title": "숨 막힐 듯한 지금의 세상을 만든 것은 누구인가. '체인소 맨' 레제 편에서 보이는, 꿈을 현실로 만들 여지를 빼앗긴 세계",
-     "url": "https://note.com/kimonoclub/n/nf97519a828fe?hl=ko"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 2,
-     "source": "note",
-     "title": "Who Created This Suffocating World? The World Deprived of the Room to Make Dreams Reality, Seen Through the Reze Arc of 'Chainsaw Man'",
-     "url": "https://note.com/kimonoclub/n/nf97519a828fe?hl=en"
-    },
-    {
+     "blurb": "Reze Arc CINEMA LIVE 2027 announces February dates and a new key visual.",
      "date": "2026-11-14",
-     "n": 3,
-     "source": "AnimeTV チェーン",
-     "title": "Chainsaw Man – The Movie: Reze Arc -CINEMA LIVE 2027- Announces February Dates and New Visual",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRkVFWWoxRzZxcTdIdTB1b3R6azdDaXMySldLRTZfZkdUSGpkeURhWWg1UWlpZmZ4b2w4ci1vcnRoSDloQUU0Wk9kS1oxWktaOGZWNmR6ZTBRLWJ2NnJJdUtSR2V3T2ZRN2g2YW9XR3I0R2lmOVhmc3VfNHp6R01Xa3haZVlLOUdyUGpWeHJNQi11U25oYnY3N2RreGJKbnF3RF9SSlRZdHEzTHFkMGtLR0d3?oc=5"
+     "headline": "Chainsaw Man – The Movie: Reze Arc -CINEMA LIVE 2027- Announces February Dates and New Visual",
+     "highlight": "February Dates",
+     "image": "https://animetv-jp.net/wp-content/uploads/2026/11/images-32.jpeg",
+     "image_via": "og:image",
+     "url": "https://animetv-jp.net/chainsaw-man-the-movie-reze-arc-cinema-live-2027-announces-february-dates-and-new-visual/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -533,24 +452,29 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
-     "date": "2026-11-14",
-     "n": 1,
-     "source": "新浪网",
-     "title": "【2026年Melon24小时最高收听人数TOP6】1 A2O LITE-NEON 291,5552 I.O.I-Suddenly 278,6413 乐童音乐家-传说的乐园275,0714 meomuru-你成为曾经憧憬的大人了吗? 265,543🔼5 乐童音乐家-喜悦,悲伤,美丽的心灵264,9516 RESCENE-With 264,278",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5pdlNpYjd2UXNlWk9IQWVCTG1oNjJ2WDF5YXJPaGFteWs2R09aM0k2TEpiaU1nNEdFdnNNaVM2UEFBbnZmTmc1YkF0bzRmcmdGdWRyWEpZLWVfeVVIWHZhQmtYRQ?oc=5"
+     "blurb": "AIJINGの両親による約7000万円の借金投資が話題に、中国のファンから支援の声が上がっている。",
+     "date": "2026-11-13",
+     "headline": "「A2O LITE」AIJINGの両親による約7000万円の“借金投資”に中国ファンたち、「われわれが金を貸そう」",
+     "highlight": "約7000万円の“借金投資”",
+     "image": "https://www.wowkorea.jp/img/news/107/539793/456608_1280W.webp",
+     "image_via": "og:image",
+     "url": "https://www3.wowkorea.jp/news/read/539793.html",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-13",
-     "n": 2,
-     "source": "wowKorea",
-     "title": "「A2O LITE」AIJINGの両親による約7000万円の“借金投資”に中国ファンたち、「われわれが金を貸そう」",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9lYXNwZXFzaWsyZ2FMb2RnLUFLTERsRzNMbnlaV2puNmJoVVh1bGZuUjY4QWZ6LWhGbk9jLUZta0JwOXNfMkNFV0tmckhQSGRxcGRsWnRUcHpNZw?oc=5"
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "【2026年Melon24小时最高收听人数TOP6】1 A2O LITE-NEON 291,555",
+     "highlight": "A2O LITE-NEON",
+     "image": "http://wx3.sinaimg.cn/middle/006dNg2Ply1ij1qvjm32vj30go0gomxi.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5365204841922881.html",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
@@ -648,7 +572,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "last": {
     "date": "2026-11-14",

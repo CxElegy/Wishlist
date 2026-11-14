@@ -143,6 +143,20 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/006dNg2Ply1ij1qvjm32vj30go0gomxi.jpg": {
+  "w": 600,
+  "h": 600,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.433,
+  "local": "pics/8cd9a08d49d7f7ad.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/90b10eb9ly1ij0rr906ynj21mc1mc1ky.jpg": {
   "w": 2000,
   "h": 2000,
@@ -191,6 +205,13 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://animetv-jp.net/wp-content/uploads/2026/11/images-32.jpeg": {
+  "w": 739,
+  "h": 415,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.308
  },
  "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
   "w": 506,
@@ -367,6 +388,19 @@
   "h": 450,
   "target": 720,
   "v": 3
+ },
+ "https://attach.setn.com/newsimages/2026/08/15/5670686-PH.jpg": {
+  "w": 800,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.453,
+  "local": "pics/e8864d75fea83f61.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "https://automaton-media.com/en/wp-content/uploads/2026/11/20261113-75190-header.jpg": {
   "w": 1305,
@@ -599,6 +633,12 @@
  "https://cdn.sanity.io/images/pu5wtzfc/production/69eb8f1d911f34c3e2c4e143012cb0495abff595-2000x1250.png?rect=0,100,2000,1050&w=1200&h=630": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.sortiraparis.com/images/80/66131/417039-avengers-endgame-decouvrez-la-premiere-bande-annonce.jpg": {
+  "w": 972,
+  "h": 545,
   "target": 720,
   "v": 3
  },
@@ -916,6 +956,12 @@
   "w": 1440,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/14/re2wr6re2wr6re2_gpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/nov/14/re2wr6re2wr6re2_gpu.webp?width=1920&height=1080": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/8/1794134326995.webp": {
@@ -1264,6 +1310,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/tom-holland-tobey-maguire-spider-man.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1TIlCI.img": {
   "w": 640,
   "h": 360,
@@ -1455,6 +1507,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925601191810044349.jpg": {
+  "w": 700,
+  "h": 1050,
+  "target": 720,
+  "v": 3
+ },
  "https://img.gamewith.jp/article/thumbnail/gamearticle/18874/rectangle/65621.jpg?t=1794376432": {
   "w": 600,
   "h": 315,
@@ -1584,6 +1642,12 @@
   "w": 1000,
   "h": 750,
   "target": 1280,
+  "v": 3
+ },
+ "https://insider-gaming.com/wp-content/uploads/2025/11/gta-6-stock.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://insider-gaming.com/wp-content/uploads/2026/10/GTA6Screen1.webp": {
@@ -2401,6 +2465,12 @@
   "target": 720,
   "v": 3
  },
+ "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
+  "w": 1600,
+  "h": 840,
+  "target": 720,
+  "v": 3
+ },
  "https://ni.yam.com/20261110/jp-prt-85653-838-1-261110025630647-3bb0d786b74afbc6.webp": {
   "w": 1920,
   "h": 1280,
@@ -2836,6 +2906,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/ddeff4a25e26ace41830ca125423da06615b93a25d88e20ed4ec3e381b307812/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/e5e99a1788b14d479c8fa6c984fe3cc42670696dc5b19a57b4cc77f10b1679de/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmoney_ca_594%2F167321a3e8b469a3cfa0a76a6719f83d.jpg": {
   "w": 1200,
   "h": 675,
@@ -2846,6 +2922,12 @@
   "w": 1200,
   "h": 1200,
   "target": 1280,
+  "v": 3
+ },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/02/Galaxy-S26-Ultra-cover-2.jpg": {
+  "w": 1900,
+  "h": 1425,
+  "target": 720,
   "v": 3
  },
  "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png": {
@@ -3205,6 +3287,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2026/11/twitch-giving-away-free-grand-theft-auto-6.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/movieweb-featured-image-template-2026-11-11t122731-320.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3257,6 +3345,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/thor-from-the-avengers.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/untitled-4.jpg?w=1600&h=900&fit=crop": {
@@ -3497,6 +3591,13 @@
   "v": 3,
   "blur": 0.333
  },
+ "https://www.bing.com/th?id=ONUT.-GUQ33mXT9wP2JHemimbKA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.404
+ },
  "https://www.bing.com/th?id=ONUT.0jSvDj9_OKXahGrGv8hnxA&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3535,6 +3636,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.CJjowbdo-OohgSHwtFMqrw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ErKMOQndpn0XuuqtExe7TQ&pid=News&w=640": {
   "w": 640,
@@ -3612,6 +3719,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.WONYtMnno6z1Qjd3TrwwxQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ZZuqrCTolC_GgeJvgvZbDw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3630,21 +3743,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.gCJjsPbZWvEvSDn-ti42fQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.if7PjIjrIEYNee0BpacpMA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.kMMzZfu1AYYJ7jxHnjh-HQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3808,6 +3909,12 @@
   "w": 1280,
   "h": 640,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.digitbin.com/wp-content/uploads/2026/11/galaxy-s27-pro-lpddr6-1tb-leak-1280x714.jpg": {
+  "w": 1280,
+  "h": 714,
+  "target": 720,
   "v": 3
  },
  "https://www.disneydining.com/wp-content/uploads/2024/06/avengers-secret-wars.jpg": {
@@ -3988,6 +4095,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.sammyfans.com/wp-content/uploads/2026/10/galaxy-s27-series-img.jpg": {
   "w": 1200,
   "h": 675,
@@ -4099,6 +4212,12 @@
  "https://www.videogameschronicle.com/files/2026/11/social-basic.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.wowkorea.jp/img/news/107/539793/456608_1280W.webp": {
+  "w": 1280,
+  "h": 960,
   "target": 1280,
   "v": 3
  },
