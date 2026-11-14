@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-14T19:34:35+00:00",
+ "changed": true,
+ "checked": "2026-11-14T20:18:07+00:00",
  "fired": {
   "at": "2026-11-14T19:34:35+00:00",
   "results": {
@@ -49,26 +49,22 @@
     "sig": "c78623daced6"
    },
    "items": [
-    "Astrae Oratio",
-    "ILLIT",
     "MMORPG 新作",
-    "Vaundy",
     "周杰伦"
    ],
-   "last_batch": "2026-11-14T18:46:41+00:00",
-   "last_error": {},
+   "last_batch": "2026-11-14T19:46:52+00:00",
+   "last_error": {
+    "at": "2026-11-14T19:42:47+00:00",
+    "text": "出刊に失敗：No module named 'requests'"
+   },
    "need": true,
-   "prog": 47,
+   "prog": 52,
    "prog_day": "2026-11-15",
-   "ripe": [
-    "Astrae Oratio",
-    "ILLIT",
-    "Vaundy"
-   ],
-   "sig": "c78623daced6",
+   "ripe": [],
+   "sig": "a993cfbdfe20",
    "token_cap": 1000000,
-   "tokens_today": 67913,
-   "why": "整理待ちの記事 8 件（5 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 119310,
+   "why": "整理待ちの記事 3 件（2 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -177,12 +173,12 @@
    "runs": 11
   },
   "2026-11-15": {
-   "batches": 3,
-   "cr": 1690164,
-   "cw": 58697,
-   "in": 43,
-   "out": 9173,
-   "runs": 1
+   "batches": 4,
+   "cr": 2869889,
+   "cw": 105738,
+   "in": 77,
+   "out": 13495,
+   "runs": 2
   }
  }
 }
