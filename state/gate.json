@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-14T12:33:52+00:00",
+ "checked": "2026-11-14T13:30:39+00:00",
  "fired": {
   "at": "2026-11-14T12:33:52+00:00",
   "results": {
@@ -48,59 +48,50 @@
    "items": [
     "A2O LITE",
     "FROM",
-    "GTA 6",
     "ILLIT",
     "Vaundy",
     "dota2",
-    "gelato pique",
     "チェーンソーマン",
-    "三星手机",
+    "哈利波特剧集",
+    "绝区零"
+   ],
+   "last_batch": "2026-11-14T12:40:44+00:00",
+   "last_error": {},
+   "need": true,
+   "prog": 396,
+   "prog_day": "2026-11-14",
+   "ripe": [
+    "FROM",
+    "ILLIT"
+   ],
+   "sig": "25417437741d",
+   "token_cap": 1000000,
+   "tokens_today": 583648,
+   "why": "整理待ちの記事 10 件（8 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
     "周杰伦",
     "哈利波特剧集",
     "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-14T09:43:49+00:00",
-   "last_error": {},
-   "need": true,
-   "prog": 359,
-   "prog_day": "2026-11-14",
-   "ripe": [
-    "GTA 6",
-    "gelato pique",
-    "三星手机",
-    "周杰伦",
-    "漫威电影"
-   ],
-   "sig": "2ec41294bbe7",
-   "token_cap": 1000000,
-   "tokens_today": 533629,
-   "why": "整理待ちの記事 47 件（13 版面・AI 編集まで版面に載らない）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE",
-    "周杰伦",
-    "绝区零",
-    "Vaundy"
-   ],
-   "need": true,
-   "sig": "7cf0d7ba9c12",
-   "waiting": [
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
-    "The Mandalorian",
-    "あつ森",
-    "ぐでたま"
-   ],
-   "why": "足りない 9 版面（Actions で Python が埋める）・失敗 6 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -177,12 +168,12 @@
    "runs": 14
   },
   "2026-11-14": {
-   "batches": 33,
-   "cr": 16671488,
-   "cw": 469005,
-   "in": 447,
-   "out": 64177,
-   "runs": 8
+   "batches": 34,
+   "cr": 17295508,
+   "cw": 515598,
+   "in": 466,
+   "out": 67584,
+   "runs": 9
   }
  }
 }
