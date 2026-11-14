@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-14T22:17:43+00:00",
+ "changed": true,
+ "checked": "2026-11-14T23:17:44+00:00",
  "fired": {
   "at": "2026-11-14T20:54:02+00:00",
   "results": {
@@ -66,11 +66,14 @@
    "need": true,
    "prog": 88,
    "prog_day": "2026-11-15",
-   "ripe": [],
-   "sig": "ae2df1a52829",
+   "ripe": [
+    "MMORPG 新作",
+    "周杰伦"
+   ],
+   "sig": "5d6d5e9cf496",
    "token_cap": 1000000,
    "tokens_today": 168210,
-   "why": "整理待ちの記事 11 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 11 件（8 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
