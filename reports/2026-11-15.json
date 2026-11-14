@@ -1,0 +1,852 @@
+{
+ "date": "2026-11-15",
+ "edit_sig": "",
+ "items": [
+  {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "name": "Astrae Oratio",
+   "pending": [
+    {
+     "date": "2026-11-12",
+     "n": 1,
+     "source": "게임플",
+     "title": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBxREF3NlF2STRkUVkwb1dxcl9xTnFlUEFmcUY0U0RDMlhOTVpLT19sV1E4UUZNaHltTjZ3ZUwyenVpRHR4VVRHT09waUxWXzZRMlp6TWNqNXNpZmJKbmVOaDMzZTl0cXR4N0JUVQ?oc=5"
+    }
+   ],
+   "section": "游戏",
+   "stories": [],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#C27270",
+    "alt_accent": "#A14744",
+    "alt_bg": "#F6EAE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211212",
+    "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
+   "facts": [],
+   "name": "GTA 6",
+   "pending": [
+    {
+     "date": "2026-11-14",
+     "n": 1,
+     "source": "shattered.io",
+     "title": "GTA VI Release: 13% More PTO Requests, 1 in 5 Off",
+     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTWNzeUZBbUxUcTJpN2c5TWlPUHdkWFZpMjZnX0FyTzVRdEhUVHdOWWNiVlNrVnhnNkpzc0R0R1RaX0oyeHJGaG9SbVAyWFg3M251M0RwdHU2d19ldnVjcUZ1Z2dCcU1ZTFVvNWFHTlpRN0N6bXdoaEFtVHliOS1QZ2w2Z1B6dEhYdWJuaHlEbGp3Zw?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 2,
+     "source": "GameGPU",
+     "title": "GTA Online for Grand Theft Auto VI is expected to launch in the first quarter of 2027.",
+     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNazJzSVllckVjOG1UYVMxa193cURLUjFMbVNoeFJxdm1DNzBjMmtOM191TVE2NGp5c0JfbGI4bk9xUTNEYVJfTGJpWHE2U3ZDM1NTcS1tSHhWQ1hPekE3bmFVUjBTZ0xrZnA1dUgtU1pRYUNBQWtXU0JFRHh2aF83eDBkT0lTc1BwSFV1RXRvQVZKT05UdllCdFQzcEtZcjJHalNLWl95VzlmNmZwWXFGUXFwVXNPQQ?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 3,
+     "source": "電腦廣場",
+     "title": "【GTA 6 準備篇】硬碟容量 700GB？實測下載時間曝光 實體版點解得個盒？",
+     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9DSVpiYkN4UzlGcG9GenB5b1k3X1otcUFaak54TXdrZTd0bUtQUjV2VDZRVmZiVVVXaVMwdnVGcWotM1Q1eGdjOWNFa1lYdVNjUlh2Z3FHb2syUDFRNUwwNmp2TkNjdUlVSUZvcUY1Vm5yQQ?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 4,
+     "source": "Forbes",
+     "title": "‘GTA 6’ Reveals Jason And Lucia’s Limited Crime Options To Start",
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPOUJ5eFFIMzRzVnlOcm5JYWVUbUF0eVloSVVLRkZHMEl5YVZaSjRUaUU5ZDVNS3ZoU0JLaFNSRDVWS0M5Z3R2bTJmTkNIMkNYVUlTS2NJVDFDYlBtMzJ0OTByalVleUVQNzV1ekZ3UkZtMEZKT2hTaFpFbHp0c05OZktoTDdxWk5rS1VYUTJYek44MlJIM1dtNlNxRlBQdVR1bDF6SUFrNGJja21QbENDQnlR?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 5,
+     "source": "Yahoo Tech",
+     "title": "GTA 6 launches Thursday and is available for pre-load now: Everything you need to know about the new Rockstar game",
+     "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxQRWJjQkM2b0hfclU4Y21TaG5CQW5qaTRVd1ItcnVfbzF5UVRxYTU5eFdhQ0xJTTNTdkViVGZ3NnU4eEJqU1lhaE1XeXMxWDZVOGNLZzduVHNWbFRETTlGVG9zdVRxdThsU054VXBva0dGS0QzODJkbzRpX2wtRl9oc0R2X0VUQS1uNEI4VG5Md3k0WGpERnNJOURBbFI0c3JUYXNfblI0RWx6SUY5UWZNMTFJT2RMVmE1bEpOLUZ2VkQyaXpLMW9yRWhnUVY4a1A1ajdtenBYQTNLRW9jN1JxbzN3SmdTQnk5dHhwVUx0ekNEVFgtQUdyNWc4Wnd2ZGFlZXE5b3VULU1fY1NE?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 6,
+     "source": "The Big Lead",
+     "title": "GTA 6 soundtrack tracklist: Full list of songs & artists leaks",
+     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQZ1hZSzl6TGxuZC1jTk1ELURvRXBTTWJacmtKd3RtZWR5a0hiRlJxSERTbnFMWk16Um82MmtzYjBEWGUzQ2Y4ejFjWC1GWUV3SV9qVU14NHhQY3doVi1JYlZoR1E3NDUzYlQ0SXppaEE5R3oxNUJVQm1tM0V6MkwxY3lXT05uZFRtT0hR?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 7,
+     "source": "shattered.io",
+     "title": "GTA 6 Map Leak Names 9 Places, Sequel Tease Unverified",
+     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPWUlqblMtRXlWbGoyS3dyeGR1enRhbkVuWURYXzQxSEx4R1Y3SHJsWndBSXNCNHFkUWlBM2VkRXpfM0Vab29xa3J5NkdDZ0pFVWMwVndjQk5JTUREajRqT09YRzFJbmdlUUV2QVZkdnROYmFMclpZWlFXM1hIbUgzQ09ucGt1S2hWTEdYWQ?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 8,
+     "source": "autoevolution",
+     "title": "Don't Download \"GTA 6 for Free\" Because You'll Instantly Regret It",
+     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPNktwTWY0a3NFc3RSTHVoR0lzNGdnUlkyYTZGeDFKUkpVcWhiYmxhVm1oVTZJeldra1JYekdGZnB6YWpTVWdJdk5wd1JLYndwRFJXZWxZYWhnQXdVTndQQXd5NkN1N21Ta0JZOUVVN3Z3NW82OFpPUVdPWGVmeXNwOVdMa1QySm9FVG1QeXZmOFF2eC05d18zczNwZzltMDZVOTVyX3lYUXFRbjdqSEZoYg?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 9,
+     "source": "Insider Gaming",
+     "title": "GTA 6’s Jason and Lucia Start The Story As Small-Time Criminals with Basic Abilities",
+     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5ZcUZQS0F3UjFJNTZ6Wi15WlVNSlB2ZGx6cW40TUt5UVF5UmVDSGR6NkJIMHhZUEN4Z2IzcFJtOU9OeUk4U2RWYkdEUDlMRFg4THlRTVc4a2l3QjdzSm5uTFFUTEI2NHJBNU94YWJKSmczQ1p4ZVN1aWQyVQ?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 10,
+     "source": "Insider Gaming",
+     "title": "GTA 6 Will ‘Encourage’ Empathy For The First Time in Franchise History",
+     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBaZk9UaDBFdlBiWWZjalRZdVJFYV9GZ1RoaWk2N0trZFNLVnd2c0xuWTlSTUtzN3NwVFU5R1lTb2FlMnZPMFRGWS0zNzBFcG9DUzJDWU1QbnNxM19wbmM1clF2MHl2TkFhR1Ewa0Jtb0pTMEV6UllNag?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 11,
+     "source": "Game Rant",
+     "title": "Twitch Plans to Give Away Free Copies of GTA 6 Ultimate Edition",
+     "url": "https://gamerant.com/gta-6-ultimate-twitch-giveaway-ps5-xbox-free-keys/"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 12,
+     "source": "PRIMETIMER",
+     "title": "GTA 6 Tracklist Leak: Travis Scott, Lana Del Rey, JENNIE and more artists reportedly featured",
+     "url": "https://www.primetimer.com/news/gta-6-tracklist-leak-travis-scott-lana-del-rey-jennie-and-more-artists-reportedly-featured"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 13,
+     "source": "CNBC",
+     "title": "How Rockstar's 'GTA VI' release could reshape gaming, streaming and even paid time off",
+     "url": "https://www.cnbc.com/2026/11/14/gta-6-grand-theft-auto-launch.html"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 14,
+     "source": "Dexerto",
+     "title": "GTA 6 album leak reveals 34-song tracklist featuring Travis Scott, Dua Lipa, Morgan Wallen and more",
+     "url": "https://www.dexerto.com/gta/gta-6-album-leak-reveals-34-song-tracklist-featuring-travis-scott-dua-lipa-morgan-wallen-and-more-3428203/"
+    },
+    {
+     "date": "2026-11-13",
+     "n": 15,
+     "source": "Insider Gaming",
+     "title": "New GTA 6 ‘MACCA & FRIENDS’ In-Game Trailer Revealed",
+     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNYjYtUzV3TXVsb004OVFXNVhpYUsybWg0T3JZU0tmZUF1YlQ0eDNXOE9sRVduT2RmRnVHUDhLN1JORTNHbWp2bkFXamVWOE90NzlfNjI5ako1MHFZOWNaZzlrMWRRakxKMWZ1blNUcnZzSG5qVlhObl81c3JNVkYwMkVB?oc=5"
+    },
+    {
+     "date": "2026-11-13",
+     "n": 16,
+     "source": "NDTV",
+     "title": "'Got Another Microsoft Outage Before GTA 6': Memes Flood Internet As Outlook, Teams Remain Dark",
+     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNaW5UcXo1TVdtZUxkYXM3S0g5YXgwZkVxdU96dzU2djZnSVVUZkcwbzNtMFhjTERwQTJpTGV2cGFhWW5EUDc4cmNfS0QzRXRid19mb2o0dWtkcUc2TW1UX2ZMYWo5OU1McFQ5c0xrTWlJd1JEblpBLXkxWWlURzJ1Umk5WnptMGd4a1BXZlR3bllzYWFCOEo2c3dENVNTdHMtbnhHQ3k5WVVRQlBKM210eVZZTG5xWUdNNjVGZks1bVRWLXc0eVVTWtIB0AFBVV95cUxQcnJuYkpzaGdkbVZXNmlrR1JvR1IwTlZhVFhtN2hzNGl0alhHb3Rpa0pFSERvekNncGphLTZiRWtWZkg3U2g4REdrVW8tSE5XRlBNTkZxRVRsOXB6NzNGcGM1bDZNTmdFTTdLWXA0cXdCU1FFWkRMMjBxNnlxWnZURndMUENOUVc2eG80Uk1BckxXaUcxUTBsRWRhZGJMUUVCRFRpNE5GUHhCeTFtR2Zud25sTWgxN1NlTlNVUk1fTW40QjU4d1owUjdQcnFFWTN4?oc=5"
+    }
+   ],
+   "section": "游戏",
+   "stories": [],
+   "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
+   "theme": {
+    "accent": "#FF5FA2",
+    "alt_accent": "#C2185B",
+    "alt_bg": "#FFB25B",
+    "alt_fg": "#1E1033",
+    "bg": "#1E1033",
+    "fg": "#FFF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "MMORPG 新作",
+   "pending": [
+    {
+     "date": "2026-11-14",
+     "n": 1,
+     "source": "Massively Overpowered",
+     "title": "MMO Hype Train: Eight MMOs launched in 2026 that lived up to the hype",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxORjBRYkJ1TkoxQlFya2NKZlB0eUc1YU8wWWlac0l1THg3M2tkVlpEUWN1VVJUemNLb3ZrMVphNXVteGhiQXJQbXhVUHhkZUhYdzBOQ1o0OWdkQjdJbzNTX1BkTjRtQklOa3NUZGoyN0kxV25oRkRNN1ZIbF9vTWRmYm5tNmVYcERFUmVYMER6eFJFYUFmMGNjWXdIblRSVVFXbFhlelJZRQ?oc=5"
+    },
+    {
+     "date": "2026-11-11",
+     "n": 2,
+     "source": "게임메카",
+     "title": "MMORPG 신작 제우스: 오만의 신이 오늘(8월 26일) 낮 12시 정식 오픈했습니다.",
+     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQMkp5ZjVPYktzQnMzWjlxZ0hIZmNMMmNXOGNNZFVFdjZ5bTBwVVdiZlY2bWdtN0NLd2ZXeVEtUEdPeUNRNEtCWVFKM18tdnpzRG1KS0hkOWZjcDA3aEh0QWg4SDB2N3pYSXF6U2c5M3BBV2VQRkxqd3IwQ2o1dXFreUZyN2M?oc=5"
+    }
+   ],
+   "section": "游戏",
+   "stories": [],
+   "subtitle": "近期上线 · 测试 · 新公布的网游",
+   "theme": {
+    "accent": "#E3B341",
+    "alt_accent": "#B794F6",
+    "alt_bg": "#2C2148",
+    "alt_fg": "#F3EEDF",
+    "bg": "#15131F",
+    "fg": "#F3EEDF",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
+   "facts": [],
+   "name": "漫威电影",
+   "pending": [
+    {
+     "date": "2026-11-14",
+     "n": 1,
+     "source": "Men's Journal",
+     "title": "Tom Hiddleston Says ‘Happiness Is Overrated’ Ahead of Avengers: Doomsday",
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNb0xYSF80cEZEaUo3aTNtV0hVemVqNXk3WGNCZDhYOHBLODNla0lNRF92dklPWHdqQnhhY1I2WG1DMzlxc1l3djhTQjlBczBoODhCXy02dXJDUmZQZXJaSUR5bXhTT2tFcWduZDJIbFUxUDZrM3VVNjZwZEM4S1ZsM0pqQjk1Smk2WFU2VGZ3S0o0VXlVM1E5R3lacUVwdUc4WnVHeA?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 2,
+     "source": "Sortir à Paris",
+     "title": "Avengers: Endgame Extended on Disney+ with a First Look at Doomsday",
+     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNa19veUVUYURFb2dMeUVObmV4dTZkMm10U3IzSEJDYzlxa1lCYWpyX1NxLXk2blNEaHdFWHRTb1JHVk5oNlZpSi04MEZZUmtOZE1jYjI5MkZEbHY1VG41bkhWYkt2Z0x2SFcyRnRRNTctLTFPSTVpVWNaM0ZYY2NEOEt0SHN0VzcyZVZabmF6cTE4cS1HLWcxb21fZ2lsbGNrQ05uNWFWNW9IcTJZWWg1cEszNS0zeEhvM1FNb0psUXVnbjlNVDEtU2RR?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 3,
+     "source": "JustWatch",
+     "title": "Every Scarlet Witch Movie & TV Show In Order (MCU)",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1xc3dKZ0NXeGhlc3hkQ3NNd19obUJHVWlpZkY3Rlh1dUwzNGhfQzF4QkhOYjJRY2ROeUx4OG5GblotMTdCMXNVTnRFT0JhTTNHSVpQcHBkLWtsajB3cXVGcUpZWFhCdWpnRVNmemFGWVpPMllLN0Y0dGoxc1p5WTQ?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 4,
+     "source": "ScreenRant",
+     "title": "There’s 1 Problem With Chris Hemsworth’s Thor In Avengers: Doomsday That No One Is Talking About",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA3cEFtRVBrN1ZnSW1nQUF4VWdLSjdBZWx6a1NXMHItUTVJM0h3WnRTX0R4bEdxU2d1OF9RQ3BvT0JuMnBoM3pKZHpHdkNQa1FURzVTblluQldzYWcyUzBEZTExZDhZd0w1bk9CaTVpQ0ZHSlZKd1pXd21tT21GSHM?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 5,
+     "source": "Howl.Link",
+     "title": "A ★★★½ review of The Marvels (2023)",
+     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE5UMWxKZmVKUTNMUl9MMmFhX3dXUUZldW1KNGROQzRYclNCdWtTYk1WOUZueXRrYnFzZnRz?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 6,
+     "source": "Nexus Point News",
+     "title": "‘The Children’s Crusade’ and Why It Could Be Important for Scarlet Witch’s Return in ‘Avengers: Doomsday’",
+     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNSnhFb3VaRElzQXU2STRYalZQSDdSSkZCMThEUy1fUzVudWw1MnpoMGJyWjNCUmhEa3IwOU5EdnZTdi1aX25IbjR4bXAyTm84Qk5qUjdrQV9Sa0ZPMnZSdnE4WjlrOTdLZUdidzFiX1FtRkFwNFI0d2I4VjBQSG9uaHl3eURJM2xLenQ2alJYbklRT1E?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 7,
+     "source": "The Direct",
+     "title": "Avengers: Secret Wars' Rumored Spider-Man Plot Can Use 1 Special Symbiote Character",
+     "url": "https://thedirect.com/article/avengers-secret-wars-spider-man-plot-symbiote-character"
+    },
+    {
+     "date": "2026-11-13",
+     "n": 8,
+     "source": "IMDb",
+     "title": "Anthony Mackie Has a Math Problem With Marvel’s Solo Movie Count",
+     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBwZ3lWdEJKM2Z3WmxiY29ab2ZYSjlHaU4yNVFFN1cyUXRiRmN1dmE3QjVxXzhibjV0aXo3Yl9Bczk3N3NmV1o2OFk0eXJPaGdnb3FTbHFUYWw2TXJKQ2I5WVRycDVzT28?oc=5"
+    },
+    {
+     "date": "2026-11-13",
+     "n": 9,
+     "source": "三立新聞網SETN.com",
+     "title": "漫威超強反派！《復仇者》新預告曝光 小勞勃道尼「兩根手指擋下雷神」",
+     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFAtclBMNF9JVTZ6el9YTjZnNHlFbGZGczBGa09hZU5MR1FIdHJCOUxCSmRSWEYxZGdRdWxnQTVhSGVKRGttYmxHTNIBTEFVX3lxTE5oQUZySHAxTWNDalV3d0JxcGFRQThSb0hvbTBRTl9YSWxnZU1oUWJCT1kxU3IxUFdMbFozVDA5clhTN2lYUXNSNVIySHo?oc=5"
+    }
+   ],
+   "section": "影视",
+   "stories": [],
+   "subtitle": "Marvel Studios · MCU",
+   "theme": {
+    "accent": "#EC1D24",
+    "alt_accent": "#151515",
+    "alt_bg": "#EC1D24",
+    "alt_fg": "#FFFFFF",
+    "bg": "#151515",
+    "fg": "#F5F5F5",
+    "font": "serif",
+    "split": false
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "哈利波特剧集",
+   "pending": [
+    {
+     "date": "2026-11-13",
+     "n": 1,
+     "source": "Bluesky",
+     "title": "I mean I tend to hear a lot of people asking to boycott the new HBO Harry Potter series, yet whenever some new FNAF thing happens I do not see even remotely the same amount of fervor despite cawthon a",
+     "url": "https://bsky.app/profile/tonyawolfe.bsky.social/post/3n2a2hk6n222l"
+    }
+   ],
+   "section": "影视",
+   "stories": [],
+   "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
+   "theme": {
+    "accent": "#D4A646",
+    "alt_accent": "#E7C66B",
+    "alt_bg": "#740001",
+    "alt_fg": "#F1E9D6",
+    "bg": "#121826",
+    "fg": "#F1E9D6",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "三星手机",
+   "pending": [
+    {
+     "date": "2026-11-14",
+     "n": 1,
+     "source": "Sammy Fans",
+     "title": "Galaxy S27 Pro’s Korean variant may have a big hardware advantage",
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQZF81d2E5NXo0amRpNDlFd3ZJZlZYUVg3cGdoSXZVXzNGODNWZFJMLV9FbndCMjFQRl9QV1REMmZWaVN0UW1qeXFLQkdMRlBETFJhdWdIUXFubmltbVdqUkw0dkhJNVVnelJHLW93eGNicFdyUm83U0JLeEx0dEUwbFhFSi0zNXZXcTJPZG9LVXB3Y3V1R0hvbklXaHdVM0pDYVZURNIBqgFBVV95cUxQNUh5LVdjUEN0NnRFdHEwWnVIZFl5eFdpejQtd1dHdUdubWZFcjFhSktKNHlzMFJhc3FDRW1oUUhWMlNBNDd1ZndHN2NNYU5ScnZUQUJwREhpRGZIWFNfNUxKZnFWZ09Vb044Rm5fZERMMl9lM1RjcGZOcGlNb0hha3ZCdG9EeHhIaW1GNTRKaUpxWTJPeEw1My1YWEFxTXVZeUpBMDZaOXRfZw?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 2,
+     "source": "SammyGuru",
+     "title": "Galaxy S27 Pro Could Get Exynos in Korea With a Surprise Upgrade",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE85RzBzUTJ6STVtNHc3WTVscVI5RFRQUVZ4VVR5TkFNN296RUExckNuX014WWhESzhHOVEzNGpuaVRVTWZRcnJSN2ZQTThvSzIxT1lmbjFQbHgxOXpfN2xSUF81NXF4cXZmeDRlVQ?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 3,
+     "source": "DigitBin",
+     "title": "Galaxy S27 Pro May Get LPDDR6 Only in Its 1TB Model, Leak Claims",
+     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5xXzZ3Z2FuWm9tNmx0Z2x0M0pfUTI5T3FUS1U5bG1oSmFlTllyc09GSGxOSnNfN2E5aHpiRm9pVnY0ZzFkVnlJMTJkOGxjSTNRVHdNX1A2ZUU2V0lERWQ4VTdvaWFMd3c?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 4,
+     "source": "Samsung Magazine",
+     "title": "예상 사양을 비교해 보았습니다. Galaxy S27 Ultra 반대 Galaxy S26 Ultra어쨌든 전할 소식이 꽤 많네요.",
+     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPWkxBTkpwWk1HeV85bURWeG1FSEFKYnlIOXJBY0ZsWWZLUHZXMWlpNlFwS0lxRnlSLVkzb0o0WEVrWXBzVU40X2JWUUo1VFlIUE1jS2Q2S3hwaFE5MFNqTmYyVUxGOVVRdzI0Z2lSdmtxb2dOdFdjNHVEcDZBc2Y3dFQ4ZTg?oc=5"
+    },
+    {
+     "date": "2026-11-12",
+     "n": 5,
+     "source": "Samsung Magazine",
+     "title": "Wallpapers for the series have leaked Galaxy S27 and revealed the biggest secret. You can download them for free now",
+     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBRd3ZmeGdxOW1mTm5kUUJvTWxfNm9HSnZRNGJ4U0RSZzVNZkJGOVcyQmFhVVpGcnZYZDhmR0ZrekNmd2c5eUNMMENNbHhWZm1zbW9xcVRqcHJiaURaaE9FM2xySUdYVE95SjRHdkJGOTE?oc=5"
+    }
+   ],
+   "section": "好物",
+   "stories": [],
+   "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
+   "theme": {
+    "accent": "#4C8DFF",
+    "alt_accent": "#1428A0",
+    "alt_bg": "#C9CDD5",
+    "alt_fg": "#0E1016",
+    "bg": "#0E1016",
+    "fg": "#EEF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
+   "facts": [
+    {
+     "changed": false,
+     "label": "播出状态",
+     "text": "[《チェンソーマン 刺客篇》](https://anilist.co/anime/204429) · 未开播 · 开播日期未定"
+    }
+   ],
+   "name": "チェーンソーマン",
+   "pending": [
+    {
+     "date": "2026-11-13",
+     "n": 1,
+     "source": "note",
+     "title": "숨 막힐 듯한 지금의 세상을 만든 것은 누구인가. '체인소 맨' 레제 편에서 보이는, 꿈을 현실로 만들 여지를 빼앗긴 세계",
+     "url": "https://note.com/kimonoclub/n/nf97519a828fe?hl=ko"
+    },
+    {
+     "date": "2026-11-13",
+     "n": 2,
+     "source": "note",
+     "title": "Who Created This Suffocating World? The World Deprived of the Room to Make Dreams Reality, Seen Through the Reze Arc of 'Chainsaw Man'",
+     "url": "https://note.com/kimonoclub/n/nf97519a828fe?hl=en"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 3,
+     "source": "AnimeTV チェーン",
+     "title": "Chainsaw Man – The Movie: Reze Arc -CINEMA LIVE 2027- Announces February Dates and New Visual",
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRkVFWWoxRzZxcTdIdTB1b3R6azdDaXMySldLRTZfZkdUSGpkeURhWWg1UWlpZmZ4b2w4ci1vcnRoSDloQUU0Wk9kS1oxWktaOGZWNmR6ZTBRLWJ2NnJJdUtSR2V3T2ZRN2g2YW9XR3I0R2lmOVhmc3VfNHp6R01Xa3haZVlLOUdyUGpWeHJNQi11U25oYnY3N2RreGJKbnF3RF9SSlRZdHEzTHFkMGtLR0d3?oc=5"
+    }
+   ],
+   "section": "影视",
+   "stories": [],
+   "subtitle": "チェンソーマン",
+   "theme": {
+    "accent": "#DD8355",
+    "alt_accent": "#AE5223",
+    "alt_bg": "#F7EDE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211712",
+    "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "name": "Vaundy",
+   "pending": [
+    {
+     "date": "2026-11-14",
+     "n": 1,
+     "source": "WWSチャンネル",
+     "title": "ロッキン2026のライブ映像をYouTubeで無料配信！BE:FIRST、櫻坂46、Vaundyらが登場",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9yS0RCTFZJMHlONWJUbVV3NGVxRVF0NkZKOXRiSHByUTFlSDBRalFaV0FtNU5lUmFqSnhwNEhzYk1rSFhYTHlFQVcyZDB4WXo1d1NPTFM2cko1QQ?oc=5"
+    },
+    {
+     "date": "2026-11-14",
+     "n": 2,
+     "source": "Howl.Link",
+     "title": "怪獣の花唄 - Vaundy / dongdang (cover)",
+     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9nTGx6d1h3cjE1elUxa0NjbkpwZlN4OG5rMmJHaXlyQkdZekMxWlQzaTdvNXpqSzQ4MVNB?oc=5"
+    }
+   ],
+   "section": "演出",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "周杰伦",
+   "pending": [
+    {
+     "date": "2026-11-14",
+     "n": 1,
+     "source": "on.cc東網",
+     "title": "周杰伦出Po充当和事老陈冠希蒲头搭讪与余文乐破冰在望｜即时新闻｜缤FUN星网｜on.cc东网",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOekRsdlJXOGl2MFhvcUpLanFvZElNMFJScEhTV2d2SEt3OERpWC1qQUo1LXQ0enFJMHNpSFd0amhUY21fZkktVnVXTXhYWGtCSFZqd1B4elQ5TlVXZXF1Ung3aGU5WjdLdGVmQ3Z3SWp6QUc0blI4aTJNdlJpT0YtMkZremR1VnFzSGZrVjU5SlNkNDRjQVh1bFc0Zw?oc=5"
+    }
+   ],
+   "section": "演出",
+   "stories": [],
+   "subtitle": "周杰倫",
+   "theme": {
+    "accent": "#2F5F8F",
+    "alt_accent": "#8DB6DE",
+    "alt_bg": "#14202E",
+    "alt_fg": "#EEF1F4",
+    "bg": "#F6F2EA",
+    "fg": "#1D2430",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
+   "facts": [],
+   "name": "绝区零",
+   "pending": [
+    {
+     "date": "2026-11-13",
+     "n": 1,
+     "source": "topuplist.com",
+     "title": "绝区零3.3最久未复刻角色盘点：7位代理人如今还值得期待吗？",
+     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNkM0bzUtMEQxVDR2ZGk4QmFBY3RNT1ZGejE5MlRhSmxHN2pnRVVSUjVodTJnVHhSdElidGxSS2RKTW9hRnNoSUJzNHpCbHdYUkJKSUs0SUJFUFdHX3IyNVFlVm1uUUpiQ3RsMndVcFRMYUJjblFKdXB3bHJCTE5xNDJwTzNEcThiQW5CZ2xzbw?oc=5"
+    }
+   ],
+   "section": "游戏",
+   "stories": [],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#A9898A",
+    "alt_accent": "#856062",
+    "alt_bg": "#F2EDEE",
+    "alt_fg": "#1E1A18",
+    "bg": "#1E1516",
+    "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+   "facts": [],
+   "name": "dota2",
+   "pending": [
+    {
+     "date": "2026-11-14",
+     "n": 1,
+     "source": "Hawk Live",
+     "title": "Valve has released another update for Dota 2 amid the anticipation of a major patch",
+     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQeWlRZlFsSExvMnk2SWpTYWNuMDVZdmJyaVhhTTVEMVdvcnJYVlI5cVAwSHVNUW1LZGpVSGtZQU8xZFJyWkxVcl9mWXN0YjVGS3o3ZVhZbjZxR1d6MXJiZ1U5elJxWDBsanFKeUpIZXdTU29ZV1c0dFgzcUtjazZ4RndTcncwV1Rrd3VfT3YzWUY2UGZL?oc=5"
+    },
+    {
+     "date": "2026-11-13",
+     "n": 2,
+     "source": "新浪网",
+     "title": "阔别已久的塞尔维亚，XG 把训练室搬进了落地窗前|Blast Slam S9|dota2_新浪新闻",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE4xVkJZNjVKNTItaG9XTkpXblE5Q2ZkdWNLcm9IaE0zZUdpY2xTeGxvWjNDLU00R3NoOHVEQnVodjJCX08xSmxWdnlrOFR0SlFCVWF6cmxBc292SGNzbzlfd0M4RQ?oc=5"
+    }
+   ],
+   "section": "游戏",
+   "stories": [],
+   "subtitle": "Dota 2",
+   "theme": {
+    "accent": "#E0503C",
+    "alt_accent": "#A63A28",
+    "alt_bg": "#F6EDEA",
+    "alt_fg": "#1E1A18",
+    "bg": "#17100F",
+    "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
+   "facts": [],
+   "name": "A2O LITE",
+   "pending": [
+    {
+     "date": "2026-11-14",
+     "n": 1,
+     "source": "新浪网",
+     "title": "【2026年Melon24小时最高收听人数TOP6】1 A2O LITE-NEON 291,5552 I.O.I-Suddenly 278,6413 乐童音乐家-传说的乐园275,0714 meomuru-你成为曾经憧憬的大人了吗? 265,543🔼5 乐童音乐家-喜悦,悲伤,美丽的心灵264,9516 RESCENE-With 264,278",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5pdlNpYjd2UXNlWk9IQWVCTG1oNjJ2WDF5YXJPaGFteWs2R09aM0k2TEpiaU1nNEdFdnNNaVM2UEFBbnZmTmc1YkF0bzRmcmdGdWRyWEpZLWVfeVVIWHZhQmtYRQ?oc=5"
+    },
+    {
+     "date": "2026-11-13",
+     "n": 2,
+     "source": "wowKorea",
+     "title": "「A2O LITE」AIJINGの両親による約7000万円の“借金投資”に中国ファンたち、「われわれが金を貸そう」",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9lYXNwZXFzaWsyZ2FMb2RnLUFLTERsRzNMbnlaV2puNmJoVVh1bGZuUjY4QWZ6LWhGbk9jLUZta0JwOXNfMkNFV0tmckhQSGRxcGRsWnRUcHpNZw?oc=5"
+    }
+   ],
+   "section": "演出",
+   "stories": [],
+   "subtitle": "",
+   "theme": {
+    "accent": "#B5285F",
+    "alt_accent": "#F07AA8",
+    "alt_bg": "#1E1218",
+    "alt_fg": "#F4EEE4",
+    "bg": "#FBEFF4",
+    "fg": "#1E1A18",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
+   "facts": [],
+   "name": "ILLIT",
+   "pending": [
+    {
+     "date": "2026-11-13",
+     "n": 1,
+     "source": "note",
+     "title": "ILLIT 'You're Under Arrest' Thorough Analysis: Pop as a Verdict, Blowing the Whistle on the Ambiguity of Love [Song Analysis no.126]",
+     "url": "https://note.com/music_anatomy/n/n9552738f0993?hl=en"
+    },
+    {
+     "date": "2026-11-10",
+     "n": 2,
+     "source": "Weverse",
+     "title": "ILLIT社区帖子 - 😻 - MINJU",
+     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1tT25qY29qX2lkWlRVbWlJY2xkVkhDa1NwckFRWVRqUFRJdmxiYVdFdE9WY2NrMjJrZDluUHUxUXZrN3pfZ2x3R0kwR1VqTm1EZVNlN1l6SWJHeDRXeDBNS25n?oc=5"
+    }
+   ],
+   "section": "演出",
+   "stories": [],
+   "subtitle": "アイリット · 日本公演特别关注",
+   "theme": {
+    "accent": "#E8394F",
+    "alt_accent": "#FFD1DA",
+    "alt_bg": "#E8394F",
+    "alt_fg": "#FFFFFF",
+    "bg": "#FFF4F6",
+    "fg": "#2A1A20",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "【ミラハイ】課金要素のおすすめとパックまとめ【BLEACHミラーズハイ】",
+    "url": "https://appmedia.jp/bleach-mh/80531035"
+   },
+   "name": "BLEACH Mirrors High",
+   "quiet": true,
+   "section": "游戏",
+   "status": "事前登录中 · 官方称 2026 年内上线，具体日期未定",
+   "stories": [],
+   "subtitle": "死神 新作手游",
+   "theme": {
+    "accent": "#9A550E",
+    "alt_accent": "#EE9944",
+    "alt_bg": "#211A12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F0E9",
+    "fg": "#1E1A18",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "亜布力スキーリゾートがオープン＝黒竜江省",
+    "url": "https://www.msn.com/ja-jp/news/other/%E4%BA%9C%E5%B8%83%E5%8A%9B%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%E3%81%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3-%E9%BB%92%E7%AB%9C%E6%B1%9F%E7%9C%81/ar-AA2hmoM1"
+   },
+   "name": "滑雪",
+   "quiet": true,
+   "section": "运动",
+   "status": "",
+   "stories": [],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "Streaming Ratings: 'From' Dominates an Otherwise Quiet Halloween Week",
+    "url": "https://www.hollywoodreporter.com/tv/tv-news/streaming-ratings-oct-26-nov-1-2026-1236754707/"
+   },
+   "name": "FROM",
+   "quiet": true,
+   "section": "影视",
+   "status": "第 4 季已于 2026 年 6 月播完 · 第 5 季（最终季）已续订，预计 2027 年，日期未定",
+   "stories": [],
+   "subtitle": "美剧 · MGM+ 恐怖悬疑",
+   "theme": {
+    "accent": "#E3B04B",
+    "alt_accent": "#8C2F1E",
+    "alt_bg": "#ECE7DC",
+    "alt_fg": "#0F1512",
+    "bg": "#0F1512",
+    "fg": "#ECE7DC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
+   "facts": [],
+   "last": {
+    "date": "2026-11-13",
+    "headline": "スターバックスのJIMOTO Madeに、1000年の伝統を伝える備前焼のマグが誕生",
+    "url": "https://www.walkerplus.com/article/1216984/"
+   },
+   "name": "星巴克马克杯",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
+   "theme": {
+    "accent": "#00704A",
+    "alt_accent": "#C9A27E",
+    "alt_bg": "#1E3932",
+    "alt_fg": "#F6F1E7",
+    "bg": "#F6F1E7",
+    "fg": "#1E3932",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "貓用品福袋來了 Catis首度推4款福袋 11/20樂天黑色星期五開賣",
+    "url": "https://www.marketersgo.com/%E5%AA%92%E9%AB%94%E6%96%B0%E8%81%9E/202611/%E8%B2%93%E7%94%A8%E5%93%81%E7%A6%8F%E8%A2%8B%E4%BE%86%E4%BA%86%E3%80%80catis%E9%A6%96%E5%BA%A6%E6%8E%A84%E6%AC%BE%E7%A6%8F%E8%A2%8B%E3%80%8011-20%E6%A8%82%E5%A4%A9%E9%BB%91%E8%89%B2%E6%98%9F%E6%9C%9F/"
+   },
+   "name": "猫用品",
+   "quiet": true,
+   "section": "生活",
+   "status": "",
+   "stories": [],
+   "subtitle": "猫グッズ · 家里两只猫",
+   "theme": {
+    "accent": "#E8875B",
+    "alt_accent": "#F3B6B0",
+    "alt_bg": "#3A2C24",
+    "alt_fg": "#FBF4EA",
+    "bg": "#FBF4EA",
+    "fg": "#3A2C24",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "坂詰姫野は2日がかりの1回戦で第8シードのブルターにストレート負け [木下グループジャパンオープン]",
+    "url": "https://tennismagazine.jp/article/gallery/35736/1"
+   },
+   "name": "日本顶级网球赛事",
+   "quiet": true,
+   "section": "运动",
+   "status": "大阪 WTA250 10/17–25（周末：10/17–18 资格赛、10/24 半决赛、10/25 决赛）· 东京东丽 PPO 10/24–11/1",
+   "stories": [],
+   "subtitle": "ATP・WTA ツアー 日本開催",
+   "theme": {
+    "accent": "#D7F03C",
+    "alt_accent": "#2E7D32",
+    "alt_bg": "#F5F7F2",
+    "alt_fg": "#1F4E79",
+    "bg": "#1F4E79",
+    "fg": "#F5F7F2",
+    "font": "sans",
+    "split": false
+   }
+  },
+  {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "ジェラピケ福袋2027、落選したら？次は11月20日12時の楽天ファッション先着販売",
+    "url": "https://note.com/fine_jacana739/n/n1f2fc5091c97"
+   },
+   "name": "gelato pique",
+   "quiet": true,
+   "section": "好物",
+   "status": "10/20 Mrs. GREEN APPLE 联名发售 · 10/21 三丽鸥联名第 2 弾 · 福袋 2027 待公布（往年 10 月底抽选）",
+   "stories": [],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "「ぐでたま」がついに宇宙へ！5周年記念コラボカフェが池袋にオープン",
+    "url": "https://www.walkerplus.com/article/150620/"
+   },
+   "name": "ぐでたま",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "Gudetama",
+   "theme": {
+    "accent": "#885D0C",
+    "alt_accent": "#EEB444",
+    "alt_bg": "#211C12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+   "facts": [],
+   "last": {
+    "date": "2026-11-13",
+    "headline": "The Mandalorian and Grogu art book takes fans on a journey behind the film’s biggest moments",
+    "url": "https://www.primetimer.com/features/the-mandalorian-and-grogu-art-book-takes-fans-on-a-journey-behind-the-film-s-biggest-moments"
+   },
+   "name": "The Mandalorian",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "ザ・マンダロリアン",
+   "theme": {
+    "accent": "#C9A66B",
+    "alt_accent": "#7A5A1F",
+    "alt_bg": "#ECEAE4",
+    "alt_fg": "#1B1D20",
+    "bg": "#14161A",
+    "fg": "#E8EAEC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "【編集部が体験】話題の「あつ森」マイデザインで歴代仮面ライダーを作ってみた！",
+    "url": "https://www.walkerplus.com/trend/matome/article/1006802/image10051204.html"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  }
+ ],
+ "no": 35
+}
