@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-14T18:32:38+00:00",
+ "checked": "2026-11-14T19:31:45+00:00",
  "fired": {
   "at": "2026-11-14T18:32:38+00:00",
   "results": {
@@ -49,64 +49,50 @@
     "sig": "ce47809274d1"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "Vaundy",
-    "dota2",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "周杰伦"
    ],
-   "last_batch": "2026-11-14T15:35:39+00:00",
+   "last_batch": "2026-11-14T18:46:41+00:00",
    "last_error": {},
    "need": true,
-   "prog": 8,
+   "prog": 47,
    "prog_day": "2026-11-15",
    "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "dota2",
-    "チェーンソーマン",
-    "三星手机",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "Astrae Oratio",
+    "ILLIT",
+    "Vaundy"
    ],
-   "sig": "ce47809274d1",
+   "sig": "c78623daced6",
    "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 47 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 67913,
+   "why": "整理待ちの記事 8 件（5 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE",
-    "The Mandalorian",
-    "绝区零",
-    "周杰伦",
-    "Astrae Oratio",
-    "ぐでたま",
-    "Vaundy"
-   ],
-   "need": true,
-   "sig": "d17b4bf1b7fc",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "あつ森"
+    "GTA 6",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 12 版面（Actions で Python が埋める）・失敗 3 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -189,6 +175,14 @@
    "in": 498,
    "out": 72542,
    "runs": 11
+  },
+  "2026-11-15": {
+   "batches": 3,
+   "cr": 1690164,
+   "cw": 58697,
+   "in": 43,
+   "out": 9173,
+   "runs": 1
   }
  }
 }
