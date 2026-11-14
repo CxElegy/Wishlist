@@ -182,19 +182,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/90b10eb9ly1ij0rr906ynj21mc1mc1ky.jpg": {
-  "w": 2000,
-  "h": 2000,
-  "target": 720,
-  "v": 3,
-  "local": "pics/417b70bb80a68b4e.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx4.sinaimg.cn/middle/693810ffgy1iir60k9ekoj20wi1yc0yl.jpg": {
   "w": 1170,
   "h": 2532,
@@ -415,12 +402,6 @@
   "v": 3
  },
  "https://attach.setn.com/newsimages/2022/01/20/3498831-PH.jpg": {
-  "w": 800,
-  "h": 450,
-  "target": 720,
-  "v": 3
- },
- "https://attach.setn.com/newsimages/2026/10/28/5766149-PH.jpg": {
   "w": 800,
   "h": 450,
   "target": 720,
@@ -1542,6 +1523,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hpXYz.img": {
+  "w": 800,
+  "h": 1422,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
   "w": 720,
   "h": 259,
@@ -1581,6 +1568,12 @@
   "v": 3
  },
  "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_1792559495320859328.jpg": {
+  "w": 700,
+  "h": 1050,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925601191810044349.jpg": {
   "w": 700,
   "h": 1050,
   "target": 720,
@@ -1727,12 +1720,6 @@
  "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg": {
   "w": 800,
   "h": 533,
-  "target": 720,
-  "v": 3
- },
- "https://inews.gtimg.com/news_ls/ODKjWJbFMjeAvin0rkN39GXrSMWQEdE_ANmYc9G2Gy6uQAA/0": {
-  "w": 2864,
-  "h": 1611,
   "target": 720,
   "v": 3
  },
@@ -1941,6 +1928,12 @@
  "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png": {
   "w": 1280,
   "h": 672,
+  "target": 1280,
+  "v": 3
+ },
+ "https://news-images.tvbs.com.tw/api/v1/image/01a1d812-94b3-7143-8c78-15766b9afae9.jpg?t=16x9&c=0,176,4032,2444&w=1200&h=675": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -3427,12 +3420,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/09/avengers-doomsday-thor.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3888,6 +3875,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.ZRmcd6Hkl4xzpmX677QGdA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ZqTkm0fMMy6y4-azOeMsZQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3903,12 +3896,6 @@
  "https://www.bing.com/th?id=ONUT.gi924GMRfBjozAwVeL-rig&pid=News&w=756": {
   "w": 700,
   "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.glBa4ntxeCcYVCCfRFGtig&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3959,6 +3946,18 @@
  "https://www.bing.com/th?id=ONUT.s2W8AvAIH_oFfZyHQqnVgA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.s55yAoppOpc3xGEC9GRn0Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.t_tLM-sWn163PjRWEFuh4g&pid=News&w=640": {
+  "w": 640,
+  "h": 480,
   "target": 720,
   "v": 3
  },
@@ -4348,6 +4347,12 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Anthony-Mackie.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Avengers-Doomsday-Fans-Are-Convinced-Jean-Grey-Is-in-MCU-Movie-Following-New-Video.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
