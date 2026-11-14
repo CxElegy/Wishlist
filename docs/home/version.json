@@ -1,14 +1,14 @@
 {
- "admin": "ac14e86f902e",
- "admin-ai": "e8d002fbd096",
+ "admin": "9b0443063fe5",
+ "admin-ai": "1e7be1632a00",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "906a9ba2"
+   "a3bf93b7"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "139c79d2"
+   "9c506c7c"
   ]
  },
  "admin-boards": "1175df0fcac3",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "73f943c4c952",
+ "admin-emblem": "0e9fd593de8b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3a75c98e"
+   "baeae582"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "61cde76517e1",
+ "admin-now": "a8276b6542b1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0dd2b106"
+   "85a3b803"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "e4c3defd"
+   "bde6d724"
   ]
  },
- "admin-system": "71bfd858ec6c",
+ "admin-system": "cb76d5486993",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e23b574d"
+   "019a4f54"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "732fccdf"
+   "f9cc2bbc"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "c8cd955c"
   ]
  },
- "index": "9a918e18ab83",
+ "index": "98696e37e14e",
  "index_marks": {
   "front": [
    "トップ",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "c00ff14b"
+   "7ace26d5"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "c8b1a7c8"
+   "f263210d"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "08890b96"
+   "a187683b"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "42041a27"
+   "e4b17876"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "397f6c85"
   ]
  },
- "updated": "11.14 15:35",
+ "updated": "11.14 15:44",
  "wishlist": "983e73a64db4"
 }

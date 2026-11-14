@@ -432,6 +432,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://automaton-media.com/wp-content/uploads/2026/11/bitcraft-20261114-479269-header.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://autos-pctr.c.yimg.jp/dzF9o7ZTfctyx6yoKaI790Nk5GmrQv6w1hGpCL3eqdbqGRvfUjqNwIE9e2rOMJPmGGxfBo106_F8jajvdjF9N47DdQzUjTkQR_lify-ZJfvbGiHxvNv2btavJghI-LhQniXrzKIKfOqjV-R-CS2j3HLOf0Z7qswfOi9_bXDwKYs=": {
   "w": 968,
   "h": 633,
@@ -1290,6 +1296,12 @@
  "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228137/thumb001.png?height=720&quality=75&version=1793150116&width=1280": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://image.theregister.com/5309343.jpg?imageId=5309343&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683": {
+  "w": 1200,
+  "h": 683,
   "target": 720,
   "v": 3
  },
@@ -3529,6 +3541,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2022/11/28130615/344abd0b2e6359cef023a330754f9c2f.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://thecolgatemaroonnews.com/wp-content/uploads/2026/11/IMG_2751.jpeg": {
   "w": 1501,
   "h": 2001,
@@ -4125,6 +4143,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Samsung-S27-Series.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-1.jpg": {
   "w": 1280,
   "h": 720,
@@ -4235,12 +4259,6 @@
    1014
   ],
   "why": "看不清"
- },
- "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA-6-online-release-window-leaked.jpg": {
-  "w": 900,
-  "h": 675,
-  "target": 720,
-  "v": 3
  },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6TrophiesAchievements.jpg": {
   "w": 2000,
