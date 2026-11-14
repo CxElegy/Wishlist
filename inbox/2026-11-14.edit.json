@@ -74,12 +74,12 @@
   "GTA 6": 93,
   "漫威电影": 87,
   "MMORPG 新作": 7,
-  "三星手机": 18,
-  "周杰伦": 6,
-  "ILLIT": 4,
+  "三星手机": 21,
+  "周杰伦": 15,
+  "ILLIT": 7,
   "滑雪": 4,
   "绝区零": 6,
-  "チェーンソーマン": 6,
+  "チェーンソーマン": 9,
   "哈利波特剧集": 7,
   "日本顶级网球赛事": 2,
   "The Mandalorian": 1,
@@ -196,7 +196,9 @@
     8,
     10,
     12,
-    14
+    14,
+    19,
+    20
    ],
    "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794567809227_galaxy-s27-ultra-wallpaper-leak-hints-at-new-color-options-17945529653611120276072.jpeg"
   },
@@ -226,7 +228,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    16
+    16,
+    21
    ]
   }
  ],
@@ -270,6 +273,15 @@
     2
    ],
    "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000169-spnannex-000-20-view.jpg?exp=10800"
+  },
+  {
+   "headline": "K-Pop’s ILLIT Tops U.S. Album Sales Chart With ‘BREAK EVEN’",
+   "highlight": "Tops U.S. Album Sales Chart",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   },
   {
    "headline": "ILLIT社群貼文 - 글릿! 프레스 스타트 앙코르 콘서트가 끝났어요오!",
@@ -355,9 +367,19 @@
    "refs": [
     4,
     2,
-    3
+    3,
+    7
    ],
    "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hopa6.img"
+  },
+  {
+   "headline": "劇場版『チェンソーマン レゼ篇』からポチタの「いっぱいコレクション」が登場!",
+   "highlight": "ポチタの「いっぱいコレクション」",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "哈利波特剧集": [

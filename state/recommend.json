@@ -15,6 +15,7 @@
   "https://appmedia.jp/bleach-mh/80521795": "https://appmedia.jp/wp-content/uploads/2026/10/171809_m6vsz.webp",
   "https://appmedia.jp/bleach-mh/80529382": "https://appmedia.jp/wp-content/uploads/2026/10/151001_cb6v7.webp",
   "https://article.auone.jp/e104359f-6bf6-4201-8bab-698580fe0f39": "https://portal.auone.jp/media/thumbnails/2026/11/11/95773_w1280.webp",
+  "https://biz.chosun.com/en/en-it/2026/11/13/4S5WLPA4RZCVHFRU3TJAXKINGA/?outputType=amp": "https://biz.chosun.com/resizer/v2/ZXSVQQTU3BFJDFALMARBGC2MII.jpg?auth=244af8bbcdb4ea2f2cff3826d599849bf89156d25d0a03b970de0f5480059eee&width=1000&height=525&smart=true",
   "https://bleedingcool.com/movies/jumanji-open-world-4-new-character-posters-released/": "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg",
   "https://comicbook.com/movies/list/5-x-men-the-animated-series-heroes-who-deserve-to-be-in-the-mcu-and-one-has-never-been-in-live-action/": "https://www.bing.com/th?id=ONUT.glBa4ntxeCcYVCCfRFGtig&pid=News&w=1200",
   "https://ent.ltn.com.tw/news/breakingnews/5640519": "https://www.bing.com/th?id=ONUT.9G1Vkeu7EIMHMfBuEpkXVQ&pid=News&w=800",
@@ -928,6 +929,27 @@
   },
   {
    "batch": 2,
+   "because": "チェーンソーマン",
+   "date": "2026-11-13",
+   "hits": [],
+   "image": "https://biz.chosun.com/resizer/v2/ZXSVQQTU3BFJDFALMARBGC2MII.jpg?auth=244af8bbcdb4ea2f2cff3826d599849bf89156d25d0a03b970de0f5480059eee&width=1000&height=525&smart=true",
+   "kind": "board",
+   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
+   "score": 8,
+   "source": "Chosunbiz",
+   "taste": [
+    [
+     "作品:チェーンソーマン",
+     5
+    ]
+   ],
+   "title": "Crunchyroll to join AGF 2026 in South Korea, bring Chainsaw Man star Toya",
+   "url": "https://biz.chosun.com/en/en-it/2026/11/13/4S5WLPA4RZCVHFRU3TJAXKINGA/?outputType=amp",
+   "words": [],
+   "work": "チェーンソーマン"
+  },
+  {
+   "batch": 2,
    "because": "ILLIT",
    "date": "2026-11-12",
    "hits": [],
@@ -969,7 +991,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "gelato pique",
    "date": "2026-11-12",
    "hits": [],
@@ -1074,7 +1096,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "A2O LITE",
    "date": "2026-11-14",
    "hits": [],
@@ -1179,7 +1201,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-12",
    "hits": [],
@@ -1284,7 +1306,7 @@
    "work": "ぐでたま"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "dota2",
    "date": "2026-11-13",
    "hits": [],
@@ -1377,7 +1399,7 @@
    "work": "FROM"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "滑雪",
    "date": "2026-11-12",
    "hits": [],
@@ -1840,11 +1862,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1856,11 +1878,11 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ]
  ]
