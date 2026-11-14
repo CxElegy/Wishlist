@@ -1560,12 +1560,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hqbzw.img": {
-  "w": 1456,
-  "h": 819,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
   "w": 720,
   "h": 259,
@@ -1958,6 +1952,12 @@
   "v": 3
  },
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2614188-9a5bf05ab73c.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2616259-2a3e66df40ec.jpg": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -3528,6 +3528,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/09/avengers-doomsday-thor.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -4082,12 +4088,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.uqDrHefzhypCU51rqJsvQw&pid=News&w=1200": {
-  "w": 700,
-  "h": 523,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.uxjb8qApA4NKkBUHrsJ8Sg&pid=News&w=360": {
   "w": 360,
   "h": 240,
@@ -4126,6 +4126,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.wwKZP0Ry6gc9r3aVwOA63w&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
@@ -4341,6 +4347,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.koimoi.com/wp-content/new-galleries/2026/11/avengers-doomsday-north-america-box-office-early-tracking-signals-a-historic-debut-threatening-spider-man-brand-new-days-record.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.kpopmonster.jp/wp-content/uploads/2026/11/illit03.webp": {
   "w": 1200,
   "h": 818,
@@ -4479,12 +4491,6 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Anthony-Mackie.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Avengers-Doomsday-Fans-Are-Convinced-Jean-Grey-Is-in-MCU-Movie-Following-New-Video.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },

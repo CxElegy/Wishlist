@@ -43,7 +43,8 @@
     46,
     60,
     69,
-    70
+    70,
+    115
    ]
   },
   {
@@ -65,16 +66,19 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    102
+    102,
+    107,
+    108,
+    111
    ]
   }
  ],
  "_covered": {
-  "GTA 6": 105,
-  "漫威电影": 96,
+  "GTA 6": 115,
+  "漫威电影": 104,
   "MMORPG 新作": 9,
-  "三星手机": 24,
-  "周杰伦": 21,
+  "三星手机": 33,
+  "周杰伦": 28,
   "ILLIT": 7,
   "滑雪": 6,
   "绝区零": 8,
@@ -82,7 +86,7 @@
   "哈利波特剧集": 10,
   "日本顶级网球赛事": 3,
   "The Mandalorian": 1,
-  "gelato pique": 10,
+  "gelato pique": 13,
   "あつ森": 5,
   "猫用品": 7,
   "FROM": 1,
@@ -134,12 +138,15 @@
    ]
   },
   {
-   "headline": "Is That Jean Grey? Fans Spot Glowing Red Eyes in the New ‘Avengers: Doomsday’ Disney+ Teaser",
-   "highlight": "Jean Grey",
+   "headline": "‘Avengers: Doomsday’ Presales Climb Into Box Office History With Weeks Still To Go",
+   "highlight": "Presales Climb Into Box Office History",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    90
+    97,
+    101,
+    100,
+    104
    ]
   },
   {
@@ -150,7 +157,8 @@
    "refs": [
     79,
     76,
-    95
+    95,
+    103
    ]
   }
  ],
@@ -200,7 +208,10 @@
     14,
     19,
     20,
-    23
+    23,
+    25,
+    26,
+    32
    ],
    "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794567809227_galaxy-s27-ultra-wallpaper-leak-hints-at-new-color-options-17945529653611120276072.jpeg"
   },
@@ -221,7 +232,8 @@
    "weight": "normal",
    "refs": [
     9,
-    7
+    7,
+    28
    ]
   },
   {
@@ -251,6 +263,19 @@
    "refs": [
     24
    ]
+  },
+  {
+   "headline": "Galaxy S27 Proの1TB版には、LPDDR6を搭載する可能性",
+   "highlight": "LPDDR6を搭載する可能性",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    27,
+    29,
+    31,
+    33
+   ]
   }
  ],
  "周杰伦": [
@@ -261,7 +286,11 @@
    "weight": "lead",
    "refs": [
     1,
-    16
+    16,
+    25,
+    22,
+    24,
+    26
    ]
   },
   {
@@ -272,7 +301,8 @@
    "refs": [
     19,
     20,
-    21
+    21,
+    27
    ]
   },
   {
@@ -585,7 +615,8 @@
     7,
     8,
     9,
-    10
+    10,
+    11
    ]
   },
   {
