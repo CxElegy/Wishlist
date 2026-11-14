@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-14T00:17:51+00:00",
+ "checked": "2026-11-14T01:18:05+00:00",
  "fired": {
   "at": "2026-11-13T23:45:54+00:00",
   "results": {
@@ -47,10 +47,8 @@
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
     "BLEACH Mirrors High",
     "ILLIT",
-    "MMORPG 新作",
     "Vaundy",
     "dota2",
     "gelato pique",
@@ -61,22 +59,19 @@
     "滑雪",
     "绝区零"
    ],
-   "last_batch": "2026-11-14T00:10:28+00:00",
+   "last_batch": "2026-11-14T00:50:39+00:00",
    "last_error": {
     "at": "2026-11-12T08:46:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 185,
+   "prog": 191,
    "prog_day": "2026-11-14",
-   "ripe": [
-    "Astrae Oratio",
-    "MMORPG 新作"
-   ],
-   "sig": "777d9be27069",
+   "ripe": [],
+   "sig": "1e24e9d7bac7",
    "token_cap": 1000000,
-   "tokens_today": 254386,
-   "why": "整理待ちの記事 23 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 264850,
+   "why": "整理待ちの記事 17 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -177,11 +172,11 @@
    "runs": 14
   },
   "2026-11-14": {
-   "batches": 20,
-   "cr": 8543889,
-   "cw": 224595,
-   "in": 230,
-   "out": 29561,
+   "batches": 22,
+   "cr": 9555336,
+   "cw": 231876,
+   "in": 255,
+   "out": 32719,
    "runs": 4
   }
  }
