@@ -1,6 +1,6 @@
 {
  "date": "2026-11-15",
- "edit_sig": "092919d8aba8",
+ "edit_sig": "f558f529ca81",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -14,7 +14,7 @@
      "headline": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
      "highlight": "AGF 2026 최대 규모",
      "image": "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700",
-     "image_via": "Bing 缩略图",
+     "image_via": "条目自带（Bing 缩略图）",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216955",
      "weight": "lead"
     }
@@ -348,24 +348,19 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "周杰伦在社交平台发文充当和事老，陈冠希在蒲头主动搭讪，与余文乐关系破冰在望。",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "on.cc東網",
-     "title": "周杰伦出Po充当和事老陈冠希蒲头搭讪与余文乐破冰在望｜即时新闻｜缤FUN星网｜on.cc东网",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOekRsdlJXOGl2MFhvcUpLanFvZElNMFJScEhTV2d2SEt3OERpWC1qQUo1LXQ0enFJMHNpSFd0amhUY21fZkktVnVXTXhYWGtCSFZqd1B4elQ5TlVXZXF1Ung3aGU5WjdLdGVmQ3Z3SWp6QUc0blI4aTJNdlJpT0YtMkZremR1VnFzSGZrVjU5SlNkNDRjQVh1bFc0Zw?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 2,
-     "source": "Yahoo新聞",
-     "title": "彈頭〈小時候〉靠周杰倫登巔峰 投靠大自然迷上「吸鯨」",
-     "url": "https://news.google.com/rss/articles/CBMi1AJBVV95cUxOakN3b29KcldjTko0RlRnemxXbUJOdkVVR183RThpV2I3cm15cFN5QWktTkZTdE5jS1FwZGE0WXlHcE82MHY1NWRQRGRMQ09jR0p2RTdPRWliVlZMb1M1S3NpdnBZaFlZbFdZakFFWXI3T1RCWGRQWm5PSFZscXZ4d2UxajNuMFlfbUhEbG9vdTZLak9KYi1CSThRUnFYRW5uRnR3ajFTWXllQmVzS1hDQkdVTjQyTWtnWEQ0YWVlSUxjVUFIRWJpc25vSG9aZDZGUnpOU1ZaSmxqTUY3MngtQmFIVzU0NnBlRzRLblZzdS1SVGdsd1JWRzlKTDFHdG0xb0VSY2JDNkxjSW14OFdpUkVWWHFnbk9IdGNCbWJ1QXN6Y3RmLUl3LXNhZlR4RTNHT0o0V3pKOHVmTW90S0xtdDNlRlRJWnVwSDNhVG12MDJBcGNV?oc=5"
+     "headline": "周杰伦出Po充当和事老陈冠希蒲头搭讪与余文乐破冰在望",
+     "highlight": "余文乐破冰在望",
+     "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261115/photo/bkn-20261115000118716-1115_00862_001_02b.jpg?20261114221958",
+     "image_via": "JSON-LD",
+     "url": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261115/bkn-20261115000118716-1115_00862_001_cn.html",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",

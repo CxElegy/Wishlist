@@ -1,14 +1,14 @@
 {
- "admin": "6318a919cb69",
- "admin-ai": "90f3863854be",
+ "admin": "c851f11bc873",
+ "admin-ai": "a00c0a9cfbbf",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4b629ead"
+   "7765ba40"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c22a0cd5"
+   "b87599ff"
   ]
  },
  "admin-boards": "eaf7e29b0cd6",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "f82b9999ae82",
+ "admin-emblem": "7239ab0e58b1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "67a4e1e4"
+   "909c05fb"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "cb9f147610ba",
+ "admin-now": "312d7b9b8ae0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "01681d1f"
+   "ac1ee715"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a7aa0802"
+   "4148221c"
   ]
  },
- "admin-system": "f36741a12dcb",
+ "admin-system": "0ad0006d3532",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f3bc9607"
+   "ed03051c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f2d864b0"
+   "cb9e0dc2"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "b02dba3b"
   ]
  },
- "index": "0cd3c5611aa4",
+ "index": "1467a7ea2426",
  "index_marks": {
   "front": [
    "トップ",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1f78ee17"
+   "4183f1d1"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -196,6 +196,6 @@
    "25234a1d"
   ]
  },
- "updated": "11.15 08:27",
+ "updated": "11.15 08:30",
  "wishlist": "5621db01013a"
 }

@@ -204,7 +204,8 @@
   "ILLIT": 2,
   "Vaundy": 2,
   "Astrae Oratio": 1,
-  "MMORPG 新作": 2
+  "MMORPG 新作": 2,
+  "周杰伦": 2
  },
  "dota2": [
   {
@@ -279,6 +280,17 @@
    "headline": "MMO Hype Train: Eight MMOs launched in 2026 that lived up to the hype",
    "highlight": "Eight MMOs launched in 2026",
    "blurb": "Massively Overpowered looks back at eight MMOs from 2026 that delivered on their hype.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦出Po充当和事老陈冠希蒲头搭讪与余文乐破冰在望",
+   "highlight": "余文乐破冰在望",
+   "blurb": "周杰伦在社交平台发文充当和事老，陈冠希在蒲头主动搭讪，与余文乐关系破冰在望。",
    "weight": "lead",
    "refs": [
     1
