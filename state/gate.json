@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-14T15:46:16+00:00",
+ "checked": "2026-11-14T16:17:57+00:00",
  "fired": {
   "at": "2026-11-14T15:26:13+00:00",
   "results": {
@@ -45,26 +45,17 @@
     "resp": "cse_01W4x6f5VnWeWHaDUpLmkpTo",
     "sig": "3af079e64c40"
    },
-   "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "ILLIT",
-    "Vaundy",
-    "dota2",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "绝区零"
-   ],
+   "items": [],
    "last_batch": "2026-11-14T15:35:39+00:00",
    "last_error": {},
-   "need": true,
-   "prog": 437,
-   "prog_day": "2026-11-14",
+   "need": false,
+   "prog": 8,
+   "prog_day": "2026-11-15",
    "ripe": [],
-   "sig": "7867083084a8",
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 676473,
-   "why": "整理待ちの記事 12 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
