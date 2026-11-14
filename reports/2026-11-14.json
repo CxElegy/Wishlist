@@ -1,6 +1,6 @@
 {
  "date": "2026-11-14",
- "edit_sig": "e9cc9d0c0cb2",
+ "edit_sig": "f5075734a444",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -207,22 +207,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 5,
-     "source": "Infoseek",
-     "title": "ハンターマウンテン塩原 2026 - 2027 ウィンターシーズン 2026 年 11 月 28 日（土）いよいよOPEN！ 今シーズン、小学生のリフト券を平日無料",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9vR1JTYk9GQ2ZjdkpRenFnaDZYb0wwd2pUbVZmbTl4NDlEVF9TU3JGblZsSzREQXd4Z1Vucy0yZkx2T1lzLWtzWUQ4WTRKQzdzdVhET3p4eV9mVW5sYjNKcmhqSjQ1TGRlbGgyN0VuVFJoUQ?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 6,
-     "source": "日本海新聞",
-     "title": "大山スキー場でリフト設置作業",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE13N051eGcxcTRySzgydlJPVEdBRDJ4VFNFak5kdlNrN0pDQlJCWW12SHRPSktreEVjeE1CakE1WHlxd1c0SllpTE1LSW5Gd3Jp?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -268,6 +252,26 @@
      "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/jr-ski.jpg",
      "image_via": "og:image",
      "url": "https://dmksnowboard.com/yako-shupuru-train-2027/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "headline": "ハンターマウンテン塩原 2026 - 2027 ウィンターシーズン 2026 年 11 月 28 日（土）いよいよOPEN！",
+     "highlight": "11 月 28 日（土）",
+     "image": "https://prtimes.jp/img/55787/1084/resize/d55787-1084-cff70434ce567d7ce25d-0.jpg",
+     "image_via": "正文图（2 枚から）",
+     "url": "https://news.infoseek.co.jp/article/prtimes_000001084_000055787/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-12",
+     "headline": "大山スキー場でリフト設置作業",
+     "highlight": "",
+     "image": "https://nihonkai.ismcdn.jp/common/images/nnn/noimg_nnn.png",
+     "image_via": "og:image",
+     "url": "https://www.nnn.co.jp/articles/-/828687",
      "weight": "normal"
     }
    ],
@@ -394,29 +398,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-14",
-     "n": 8,
-     "source": "Gaye Magazine",
-     "title": "Harry Potter Star Paapa Essiedu Declines to Weigh in on J.K. Rowling, Emphasizes Love for the Trans Community",
-     "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQWHNpSVU1VUhoRTZndXREMWYzLVhTdlkwR1hPbVJkTFYtZnd0QTQxUWNPa2tIS3paNzlYS3BjRnVLYmFlMU1WaUxpWEJXTjR0VlRsRmNlZWpMVVBZOC1WZUVBbklqZXFNTkZHa0tjNmNXbHlmRm16Q3E0WkU0ZEx0dzR0a3EyN2RoeDU4R1lrdmhjRUlpcDhUMnlkN3FiLWF4MWR4eHlNbEdSUWpTUmRDM21ZMWN1VzgzVU5tU3Z0TVVqeWdWckxscHE5U2p4eHNnYjlJ?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 9,
-     "source": "News9live",
-     "title": "Paapa Essiedu breaks silence on racist backlash over Snape casting in Harry Potter series",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPYm13T0RFTlUzUXJKd3NSa3AxMnp2MFV5NUE1V2lWREZTTHVuZkd6cW16V0Vyck1HZzN5YzhkalQ1MG1nVzMtcTV3QXA4R1E1ZExIY0tuSjJXTTRFeXNHMDc5eG1YZ2JWNUhVYVVPTk5aMzVReGFTUThwMENpTGxzandLcjB4RnhsSUhZZUFxMUJBN09PM21sTnljcjZ4VlNZVlk5UWtJbkJFd9IBrwFBVV95cUxNbm9XMjJkQ0VSZG9sN2EyRDJhUlNLakd5WGFfUm91X1I4dlp6bm80OWJ2Y2ROY1N0MmpoYWg0ckFZU01UN1R3ZXdaMzJmMWQ4aUgyaktLeHBTVThjOXVEVEdCak03a2dxNVh1VUFiZjBrRzB4a0ZWV1JYSHEyNEJkbmlqcXpoYnNwdTJwV05ZbWVHbTkxRUdVRWtVYUJQZFB0V2ZubGJ2STVZR1piWmZJ?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 10,
-     "source": "https://ascendants.in/",
-     "title": "Daniel Radcliffe Reveals Why He May Skip HBO’s New Harry Potter Series",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPdmJKNnVXMklzUElteU9rUUtGUDhSMENLeWRFaHdMUjFSLWZiaHVVY2N4MXhZLVg4UGloN1NUTWVrTllfNFdsNHl1TW5DNFhNUklnS1JyRkhsSm9XUVZ5TFJ0WkpZWmxmQmYwMnczc3RBRmVxTUEwNHA3bFNjR21oVXRJWGJxVTVuV3FNSHNITjJTS2V1?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -451,12 +432,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-13",
-     "headline": "5 Harry Potter Characters Cut From The Movies That Can Appear In The HBO Series",
-     "highlight": "",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hp8oo.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/en-us/entertainment/celebrities/5-harry-potter-characters-cut-from-the-movies-that-can-appear-in-the-hbo-series/ar-AA2hpkyw",
+     "date": "2026-11-14",
+     "headline": "Daniel Radcliffe Reveals Why He May Skip HBO’s New Harry Potter Series",
+     "highlight": "Daniel Radcliffe",
+     "image": "https://ascendants.in/wp-content/uploads/2026/11/harry-potter.jpg",
+     "image_via": "og:image",
+     "url": "https://ascendants.in/spotlight/daniel-radcliffe-hbo-harry-potter-series-not-watch-reason/",
      "weight": "normal"
     },
     {
@@ -952,15 +933,6 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-14",
-     "n": 3,
-     "source": "佐賀新聞",
-     "title": "【僕らの事にさせて（Prod.Vaundy）／Jeremy Quartus】人間関係の距離感描く",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBGNnJtanNUVUZ4Tnl5a3FpSmtIXzEzbVV0dDF5aDA1SG9sLTZjaG9LWF9oOWc1U0tUaWFtY0kzcjA5dV9hSFptYkcwTHphNko4OF94NTV3?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -972,6 +944,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.sanyonews.jp/article/1965453?rct=oricon_music&kw=%E7%A6%8F%E7%A5%B1",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "【僕らの事にさせて（Prod.Vaundy）／Jeremy Quartus】人間関係の距離感描く",
+     "highlight": "",
+     "image": "https://saga.ismcdn.jp/mwimgs/f/1/1200m/img_f1fc6cd0ba1e65d22f26af0c76ce24901516707.jpg",
+     "image_via": "og:image",
+     "url": "https://www.saga-s.co.jp/articles/-/1829284",
+     "weight": "normal"
     }
    ],
    "subtitle": "演唱会",
@@ -1039,22 +1021,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 7,
-     "source": "HappyGamer",
-     "title": "Zenless Zone Zero Repair! Drifting Art Event Starts November 16 With Polychromes",
-     "url": "https://happygamer.com/zenless-zone-zero-repair-drifting-art-event-november-16-173764/"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 8,
-     "source": "Notebookcheck",
-     "title": "Zenless Zone Zero players have until Dec 2 to get Severian's gear",
-     "url": "https://www.notebookcheck.net/Zenless-Zone-Zero-players-have-until-Dec-2-to-get-Severian-s-gear.1450226.0.html"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1066,6 +1032,26 @@
      "image_via": "og:image",
      "url": "https://note.com/zzz_hoihoi/n/n53e60f456a9a?hl=en",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-13",
+     "headline": "Zenless Zone Zero Repair! Drifting Art Event Starts November 16 With Polychromes",
+     "highlight": "November 16",
+     "image": "https://happygamer.com/wp-content/uploads/2026/11/zenless-zone-zero-repair-drifting-art-event-starts-november-16-with-polychromes.jpg",
+     "image_via": "og:image",
+     "url": "https://happygamer.com/zenless-zone-zero-repair-drifting-art-event-november-16-173764/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "Zenless Zone Zero players have until Dec 2 to get Severian's gear",
+     "highlight": "Dec 2",
+     "image": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Severian-launch.jpg",
+     "image_via": "og:image",
+     "url": "https://www.notebookcheck.net/Zenless-Zone-Zero-players-have-until-Dec-2-to-get-Severian-s-gear.1450226.0.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",
@@ -1131,7 +1117,7 @@
      "headline": "2026.11.10 Melon日榜 #MelonChart# A2O LITE-NEON日冠×27👑 BESTie",
      "highlight": "",
      "image": "https://www.breaknews.com/data/breaknews_com/bigimg/2026111214571608.jpg",
-     "image_via": "og:image（本站保存）",
+     "image_via": "条目自带（本站保存）",
      "url": "https://www.sina.cn/news/detail/5364033504414544.html",
      "weight": "normal"
     },
@@ -1162,15 +1148,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-13",
-     "n": 7,
-     "source": "Yahoo!ニュース",
-     "title": "249円の猫グッズ！ニトリ『デコネコちゃんのバッグ』が使いやすい！幅が45cmもあるから大きいものも入る（LIMO）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE03alZnN2MtQVItRlRseG1GOF83eFlEZXJBTjkxWkh5SjI4cFdmRUcwT09JR0lBbVdtSWl3SXJPREZIcHBHeldyTHJyQ05oclY4QXZzQTljZHFMZmEzd2ZBaDBvdWlCbXNVSTRiUi1kNUZGQWxvTGpjc2ozbDM4TDQ?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {

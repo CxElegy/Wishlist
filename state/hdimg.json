@@ -182,6 +182,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/90b10eb9ly1ij0rr906ynj21mc1mc1ky.jpg": {
+  "w": 2000,
+  "h": 2000,
+  "target": 720,
+  "v": 3,
+  "local": "pics/417b70bb80a68b4e.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/693810ffgy1iir60k9ekoj20wi1yc0yl.jpg": {
   "w": 1170,
   "h": 2532,
@@ -308,6 +321,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.402
+ },
+ "https://ascendants.in/wp-content/uploads/2026/11/harry-potter.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
  },
  "https://assets-prd.ignimgs.com/2024/07/23/deadpoolwolverinealt-blogroll-1721757176365.jpg?width=1280&format=jpg&auto=webp&quality=80": {
   "w": 1280,
@@ -1067,6 +1086,12 @@
   "target": 720,
   "v": 3
  },
+ "https://happygamer.com/wp-content/uploads/2026/11/zenless-zone-zero-repair-drifting-art-event-starts-november-16-with-polychromes.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://hawk.live/storage/images/posts/arteezy-said-his-mmr-was-stolen-in-dota-2-24547.jpg": {
   "w": 1200,
   "h": 628,
@@ -1514,12 +1539,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hp0Y6.img": {
   "w": 1600,
   "h": 1600,
-  "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hp8oo.img": {
-  "w": 780,
-  "h": 438,
   "target": 720,
   "v": 3
  },
@@ -2622,6 +2641,12 @@
   "target": 720,
   "v": 3
  },
+ "https://nihonkai.ismcdn.jp/common/images/nnn/noimg_nnn.png": {
+  "w": 1024,
+  "h": 632,
+  "target": 720,
+  "v": 3
+ },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/0dabda83b0e848c08b840f5f91b2c4a0.jpg": {
   "w": 913,
   "h": 1200,
@@ -2922,6 +2947,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prtimes.jp/img/55787/1084/resize/d55787-1084-cff70434ce567d7ce25d-0.jpg": {
+  "w": 650,
+  "h": 209,
+  "target": 720,
+  "v": 3
+ },
  "https://prtimes.jp/img/86964/322/resize/d86964-322-920ce4fb1c6d125252e4-0.jpg": {
   "w": 650,
   "h": 325,
@@ -3049,6 +3080,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://saga.ismcdn.jp/mwimgs/f/1/1200m/img_f1fc6cd0ba1e65d22f26af0c76ce24901516707.jpg": {
+  "w": 1200,
+  "h": 1200,
+  "target": 1280,
   "v": 3
  },
  "https://sammyguru.com/wp-content/uploads/2026/09/Galaxy-H1-Headphones.png": {
@@ -3900,6 +3937,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.ZzSrdKSQOJpuveN0DxDbSQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 392,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT._KLhUnVu81A1FEflHuLCiw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3959,12 +4002,6 @@
  "https://www.bing.com/th?id=ONUT.s2W8AvAIH_oFfZyHQqnVgA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.s55yAoppOpc3xGEC9GRn0Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
   "target": 720,
   "v": 3
  },
@@ -4306,6 +4343,12 @@
   "w": 1672,
   "h": 941,
   "target": 720,
+  "v": 3
+ },
+ "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Severian-launch.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://www.rbbtoday.com/imgs/ogp_f/1066101.jpg": {

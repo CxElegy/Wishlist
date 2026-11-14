@@ -76,18 +76,18 @@
   "三星手机": 24,
   "周杰伦": 21,
   "ILLIT": 7,
-  "滑雪": 4,
-  "绝区零": 6,
+  "滑雪": 6,
+  "绝区零": 8,
   "チェーンソーマン": 12,
-  "哈利波特剧集": 7,
+  "哈利波特剧集": 10,
   "日本顶级网球赛事": 3,
   "The Mandalorian": 1,
   "gelato pique": 10,
   "あつ森": 5,
-  "猫用品": 6,
+  "猫用品": 7,
   "FROM": 1,
   "Astrae Oratio": 4,
-  "Vaundy": 2,
+  "Vaundy": 3,
   "ぐでたま": 2,
   "A2O LITE": 7,
   "BLEACH Mirrors High": 1,
@@ -367,6 +367,24 @@
     "label": "運行日",
     "place": "湯沢"
    }
+  },
+  {
+   "headline": "ハンターマウンテン塩原 2026 - 2027 ウィンターシーズン 2026 年 11 月 28 日（土）いよいよOPEN！",
+   "highlight": "11 月 28 日（土）",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "大山スキー場でリフト設置作業",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "绝区零": [
@@ -378,6 +396,24 @@
    "refs": [
     1,
     4
+   ]
+  },
+  {
+   "headline": "Zenless Zone Zero Repair! Drifting Art Event Starts November 16 With Polychromes",
+   "highlight": "November 16",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "Zenless Zone Zero players have until Dec 2 to get Severian's gear",
+   "highlight": "Dec 2",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ],
@@ -453,12 +489,12 @@
    ]
   },
   {
-   "headline": "5 Harry Potter Characters Cut From The Movies That Can Appear In The HBO Series",
-   "highlight": "",
+   "headline": "Daniel Radcliffe Reveals Why He May Skip HBO’s New Harry Potter Series",
+   "highlight": "Daniel Radcliffe",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    10
    ]
   },
   {
@@ -468,7 +504,9 @@
    "weight": "normal",
    "refs": [
     6,
-    7
+    7,
+    8,
+    9
    ]
   }
  ],
@@ -705,6 +743,15 @@
     2
    ],
    "image": "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg"
+  },
+  {
+   "headline": "【僕らの事にさせて（Prod.Vaundy）／Jeremy Quartus】人間関係の距離感描く",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "ぐでたま": [
