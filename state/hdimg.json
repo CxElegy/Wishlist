@@ -763,6 +763,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cinema.ne.jp/wp-content/uploads/2026/11/chainsaw-cinemalive-2027-visual.jpg": {
+  "w": 849,
+  "h": 1200,
+  "target": 1280,
+  "v": 3
+ },
  "https://collabo-cafe.com/wp-content/uploads/7c9e8a3a299ba6bb332313dcb291be63.jpg": {
   "w": 1400,
   "h": 989,
@@ -1283,12 +1289,6 @@
  "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228137/thumb001.png?height=720&quality=75&version=1793150116&width=1280": {
   "w": 1280,
   "h": 720,
-  "target": 720,
-  "v": 3
- },
- "https://image.theregister.com/5309343.jpg?imageId=5309343&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683": {
-  "w": 1200,
-  "h": 683,
   "target": 720,
   "v": 3
  },
@@ -1928,12 +1928,6 @@
  "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png": {
   "w": 1280,
   "h": 672,
-  "target": 1280,
-  "v": 3
- },
- "https://news-images.tvbs.com.tw/api/v1/image/01a1d812-94b3-7143-8c78-15766b9afae9.jpg?t=16x9&c=0,176,4032,2444&w=1200&h=675": {
-  "w": 1200,
-  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -2591,6 +2585,19 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261114-00000048-nataliec-000-1-view.jpg?exp=10800": {
+  "w": 750,
+  "h": 530,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.397,
+  "local": "pics/df03b90d0cde4a2a.webp",
+  "out": [
+   750,
+   530
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg": {
   "w": 1200,
   "h": 675,
@@ -3002,12 +3009,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/367e8e4a5c621b1dc1d32137082f819f3e1886329e86e54e9e2e09e69c87a45c/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2Fa54c86bdc5175eba3e94a275a78852a3.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/83baa46f8eab170e2e2619fd4be6d1b3a946eebe1fa5d802a9218ba7360abbca/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmlive_com_articles_368%2Fb38dd26d671101e32df1e82392404b58.jpg": {
   "w": 1200,
   "h": 675,
@@ -3102,6 +3103,12 @@
  "https://snowbrains.com/wp-content/uploads/2026/11/forecast-23.png": {
   "w": 984,
   "h": 808,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static-cdn.nextapple.tw/prod/2026-11/07DF7BDC4398893472D7589BF4DA8F77/7dee8c1f68be2d1f9b735d8a7ea603c8_1280.webp": {
+  "w": 1170,
+  "h": 2305,
   "target": 1280,
   "v": 3
  },
@@ -3415,6 +3422,12 @@
   "v": 3
  },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/07/from.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 1280,
@@ -4270,6 +4283,12 @@
    1014
   ],
   "why": "看不清"
+ },
+ "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6PS5Box-4.jpg": {
+  "w": 2000,
+  "h": 1500,
+  "target": 1280,
+  "v": 3
  },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6TrophiesAchievements.jpg": {
   "w": 2000,
