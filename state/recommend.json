@@ -732,6 +732,27 @@
   },
   {
    "batch": 1,
+   "because": "ILLIT",
+   "date": "2026-11-15",
+   "hits": [],
+   "image": "https://news-images.tvbs.com.tw/api/v1/image/01a1def5-4983-73cd-b1aa-02d9000705f9.jpg?t=16x9&wp=l,t&c=0,385,4080,2680&w=1200&h=675",
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "TVBS新聞網",
+   "taste": [
+    [
+     "作品:ILLIT",
+     6
+    ]
+   ],
+   "title": "2026MMA／ILLIT熱唱破億神曲！台下男團全起立共舞 超紅「哨子舞」嗨翻萬人",
+   "url": "https://news.tvbs.com.tw/entertainment/jk-pop/4050925",
+   "words": [],
+   "work": "ILLIT"
+  },
+  {
+   "batch": 1,
    "because": "GTA 6",
    "date": "2026-11-15",
    "hits": [],
@@ -806,7 +827,7 @@
    "work": "绝区零"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "GTA 6",
    "date": "2026-11-15",
    "hits": [],
@@ -1796,11 +1817,11 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ]
  ]

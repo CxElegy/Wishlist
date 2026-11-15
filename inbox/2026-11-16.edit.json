@@ -7,7 +7,8 @@
    "weight": "hero",
    "refs": [
     5,
-    9
+    9,
+    23
    ],
    "event": {
     "date": "2026-11-19",
@@ -22,7 +23,8 @@
    "weight": "lead",
    "refs": [
     3,
-    6
+    6,
+    13
    ]
   },
   {
@@ -41,6 +43,16 @@
    "weight": "normal",
    "refs": [
     10
+   ]
+  },
+  {
+   "headline": "GTA 6 players furious as physical copies reportedly arrive with missing or already-used codes",
+   "highlight": "missing or already-used codes",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    26,
+    16
    ]
   }
  ],
@@ -125,7 +137,7 @@
   }
  ],
  "_covered": {
-  "GTA 6": 10,
+  "GTA 6": 28,
   "哈利波特剧集": 7,
   "チェーンソーマン": 3,
   "三星手机": 3,
