@@ -2657,12 +2657,6 @@
   "target": 720,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1558df6ac88a42e5a7a01c3c0a9952db.jpg": {
-  "w": 513,
-  "h": 381,
-  "target": 720,
-  "v": 3
- },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg": {
   "w": 736,
   "h": 414,
@@ -3821,6 +3815,12 @@
   "v": 3,
   "blur": 0.404
  },
+ "https://www.bing.com/th?id=ONUT.-m1aWc14g1nOCLd7ONKAoA&pid=News&w=700": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.0Z1UWwIbUPAv55cB5RVnJw&pid=News&w=1200": {
   "w": 472,
   "h": 700,
@@ -3939,6 +3939,12 @@
  "https://www.bing.com/th?id=ONUT.ZqTkm0fMMy6y4-azOeMsZQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ZzSrdKSQOJpuveN0DxDbSQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 392,
   "target": 720,
   "v": 3
  },
