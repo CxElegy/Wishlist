@@ -1,6 +1,6 @@
 {
  "date": "2026-11-15",
- "edit_sig": "1c4b4ae99d10",
+ "edit_sig": "18dc2b162112",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -573,22 +573,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-15",
-     "n": 15,
-     "source": "壹蘋新聞網",
-     "title": "周杰倫一句話鋪路《頭文字D》續集 畫風大變全網瘋",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxON3VfcGFMWC1MTnZrSHVzMFFxUk1qRWFJQXNHLWpkV0FVMk56cWE0MFFXVjRsQ1B6bXJxZ3M3RFZodnh1VWlqRGh6VFpEcFVNYm5SYkNhaHdIa09FN2gzRThyZDBBVUVaaDkwVGpIaEl3Xzh6Qk5lRWZGZW1yMjVuV3IwWHdDYThNclE?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 16,
-     "source": "手机新浪网",
-     "title": "佛罗伦萨郑思维模仿周杰伦，王昶标准00后",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE96S1NHR0hESjZWQjdzN2J2aWRtRUJ6eVFqQ3FMWmZVNjlzVzRvaW5BUktYR3dwWkc0YlFDdGZSQ3NJd0VneTF1VmRGQ21wS0tleno1SWdYX1RVd191YzVlY25ZSU1xUHh1NFpBcVdhN2ktT1E?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -609,6 +593,16 @@
      "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261115/photo/bkn-20261115113442018-1115_00862_001_02b.jpg?20261115115016",
      "image_via": "JSON-LD",
      "url": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261115/bkn-20261115113442018-1115_00862_001_cn.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-15",
+     "headline": "周杰倫一句話鋪路《頭文字D》續集 畫風大變全網瘋",
+     "highlight": "",
+     "image": "https://static-cdn.nextapple.tw/prod/2026-11/E63255C956BEB6F7C6E945CFF74CFB6E/f0ca0702091e7cf3159d12c6f4ce6f75_1280.jpeg",
+     "image_via": "og:image",
+     "url": "https://news.nextapple.com/entertainment/20261115/E63255C956BEB6F7C6E945CFF74CFB6E",
      "weight": "normal"
     }
    ],
