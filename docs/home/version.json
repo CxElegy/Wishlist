@@ -1,14 +1,14 @@
 {
- "admin": "50f89353ffd8",
- "admin-ai": "44cbddb7e5d4",
+ "admin": "4b8a350e4093",
+ "admin-ai": "976d672ee45c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "08d5b6e3"
+   "9e9e9691"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "a809d69a"
+   "4d7fb705"
   ]
  },
  "admin-boards": "4a86a5ba6305",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "2cce5063bc2b",
+ "admin-emblem": "2675a6e27767",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b7511c14"
+   "d11b5614"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "12d6577b26a0",
+ "admin-now": "357bdc84d398",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "dd162e5a"
+   "cfa88f42"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "dba7a821"
+   "417c1485"
   ],
   "term-panel": [
    "ライブログ",
-   "35730ae7"
+   "f4d088a2"
   ]
  },
- "admin-system": "b6433443cb04",
+ "admin-system": "9808f800ce40",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "16eb2fe2"
+   "cbdb8fad"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ae793982"
+   "8a6b675d"
   ]
  },
  "admin_marks": {},
- "heat": "6202d4e0e014",
+ "heat": "a20e972ef557",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "0057e9c8"
+   "0aee434c"
   ],
   "ranking": [
    "ランキング",
-   "84d71621"
+   "77254767"
   ]
  },
- "index": "fa43c909b86c",
+ "index": "da87526b62d5",
  "index_marks": {
   "front": [
    "トップ",
-   "d89320f3"
+   "6a7219ff"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "66dcc998"
+   "5c81a092"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "445d0323"
+   "abba9285"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "8fcead30"
+   "1765c5a2"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "74612301"
+   "1584b791"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "45f327c7"
+   "aa28cd83"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "babc4a69"
   ]
  },
- "updated": "11.16 02:22",
- "wishlist": "bc3a3c088252"
+ "updated": "11.16 02:32",
+ "wishlist": "bfe47b2ec486"
 }
