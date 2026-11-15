@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "efac6604bd71",
+ "edit_sig": "85a2f8092074",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -379,33 +379,6 @@
    }
   },
   {
-   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
-   "facts": [],
-   "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-15",
-     "n": 1,
-     "source": "Red Five on MSN",
-     "title": "Mandalorian star viper starfighter: Four-wing design and criminal use",
-     "url": "https://www.msn.com/en-us/entertainment/general/mandalorian-star-viper-starfighter-four-wing-design-and-criminal-use/vi-AA2hjuvB"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "ザ・マンダロリアン",
-   "theme": {
-    "accent": "#C9A66B",
-    "alt_accent": "#7A5A1F",
-    "alt_bg": "#ECEAE4",
-    "alt_fg": "#1B1D20",
-    "bg": "#14161A",
-    "fg": "#E8EAEC",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
@@ -650,6 +623,31 @@
     "bg": "#FBF4EA",
     "fg": "#3A2C24",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+   "facts": [],
+   "last": {
+    "date": "2026-11-15",
+    "headline": "How the Mandalorian N-1 Starfighter Ultimate Collectors Series Lego set (2026) was created?",
+    "url": "https://bsky.app/profile/thespaceshipper.com/post/3n2cns4s7w22q"
+   },
+   "name": "The Mandalorian",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "ザ・マンダロリアン",
+   "theme": {
+    "accent": "#C9A66B",
+    "alt_accent": "#7A5A1F",
+    "alt_bg": "#ECEAE4",
+    "alt_fg": "#1B1D20",
+    "bg": "#14161A",
+    "fg": "#E8EAEC",
+    "font": "serif",
     "split": true
    }
   },

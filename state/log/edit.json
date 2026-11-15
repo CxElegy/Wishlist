@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-13T20:03:13+00:00",
-"text": "2026-11-14 第 13 バッチを出刊：The Mandalorian（1 版面・0 本・残り 1 版面） · token 新規入力 834・キャッシュ読み 10.0万・出力 437",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.82,
-"mem_total": 16867405824,
-"mem_free": 15880212480,
-"disk_used": 11012661248,
-"disk_free": 30270873600,
-"disk_total": 41283534848,
-"peak": 338690048
-},
-"batch": 13,
-"boards": [
-"The Mandalorian"
-],
-"stories": 0,
-"left": 1,
-"edited": 12,
-"run": 1794597736.711827,
-"tok": {
-"in": 2,
-"cw": 832,
-"cr": 99535,
-"out": 437,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 100806
-},
-{
 "at": "2026-11-13T20:06:31+00:00",
 "text": "2026-11-14 第 14 バッチを出刊：gelato pique（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 758・キャッシュ読み 10.0万・出力 567",
 "level": "ok",
@@ -2147,5 +2115,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 357794
+},
+{
+"at": "2026-11-15T20:31:32+00:00",
+"text": "2026-11-16 第 3 バッチを出刊：The Mandalorian（1 版面・0 本・残り 2 版面） · token 新規入力 564・キャッシュ読み 7.2万・出力 463",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.53,
+"mem_total": 16869146624,
+"mem_free": 15931404288,
+"disk_used": 10094874624,
+"disk_free": 31188660224,
+"disk_total": 41283534848,
+"peak": 347312128
+},
+"batch": 3,
+"boards": [
+"The Mandalorian"
+],
+"stories": 0,
+"left": 2,
+"edited": 10,
+"run": 1794774129.7452915,
+"tok": {
+"in": 2,
+"cw": 562,
+"cr": 72418,
+"out": 463,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 73445
 }
 ]
