@@ -692,6 +692,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.topstarnews.net/news/photo/202611/16276953_2088989_4211_crop.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn0.techbang.com/system/excerpt_images/134725/original/8f5fb798c488b92f60b52ed4740fa865.jpg?1794480473": {
   "w": 1200,
   "h": 630,
@@ -1546,12 +1552,6 @@
   "v": 3
  },
  "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_1792559495320859328.jpg": {
-  "w": 700,
-  "h": 1050,
-  "target": 720,
-  "v": 3
- },
- "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_17925601191810044349.jpg": {
   "w": 700,
   "h": 1050,
   "target": 720,
@@ -2561,12 +2561,6 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/0dabda83b0e848c08b840f5f91b2c4a0.jpg": {
   "w": 913,
   "h": 1200,
-  "target": 720,
-  "v": 3
- },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1558df6ac88a42e5a7a01c3c0a9952db.jpg": {
-  "w": 513,
-  "h": 381,
   "target": 720,
   "v": 3
  },
