@@ -132,7 +132,8 @@
   "BLEACH Mirrors High": 1,
   "FROM": 1,
   "绝区零": 1,
-  "ILLIT": 2
+  "ILLIT": 2,
+  "日本顶级网球赛事": 2
  },
  "FROM": [
   {
@@ -167,6 +168,27 @@
     2
    ],
    "image": "https://pimg.mk.co.kr/news/cms/202611/15/news-p.v1.20261115.9f6b4a481b034cd9a61aaaf7d3d6a627_R.jpg"
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "内島萌夏が東レPPO初戦で痛感したトップ選手との差。“総合力が高い”世界14位メルテンスの「隙のなさ」",
+   "highlight": "東レPPO初戦",
+   "blurb": "内島萌夏が東レPPO初戦で世界14位メルテンスと対戦し、トップ選手との差を痛感した。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://img.topics.smt.news.goo.ne.jp/picture/thedigestweb/m_thedigestweb-122005.jpg"
+  },
+  {
+   "headline": "伊藤あおい、2時間40分の激闘も実らず予選決勝で敗退「決定力が上がればもっと戦える」",
+   "highlight": "予選決勝で敗退",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }

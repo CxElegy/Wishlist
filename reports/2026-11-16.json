@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "625bb1229db4",
+ "edit_sig": "efac6604bd71",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -205,24 +205,29 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "内島萌夏が東レPPO初戦で世界14位メルテンスと対戦し、トップ選手との差を痛感した。",
      "date": "2026-11-15",
-     "n": 1,
-     "source": "ｄメニューニュース",
-     "title": "内島萌夏が東レPPO初戦で痛感したトップ選手との差。“総合力が高い”世界14位メルテンスの「隙のなさ」＜SMASH＞",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNRHVhSFloc0hmZHY0QXNRQWFfdEFYWngwNHNMYVA0ODBFRHB3MW1kYkJaeXdCek56MlhDNWotODRFYUE2OTFiNTZEU0g5T2lxU2doUHJEVlVwcEZHY0ItdkdUbnoya2d2LTZWMlVNTzBZTHpBYlJFU2RkcXVLY2tTWlROaEY1Qm1ZZEVFcnRmZ9IBiwFBVV95cUxOVUh2SjNKU0FlOXhMMFdmb0NyM2lteUZRMm5QTVZaYXJMT0dWUmhoYVJlU19MQjlkYzhvQ3huOXdSaXhrZWw5VmppM0tXRVFBdGxRY2ZpZU1vRnJpYlZuYmJhNkY2QWgtN0l3Q2NzZW1icEItSjVaVHowRUx2OUJzMHgzdE14RmtuUTY4?oc=5"
+     "headline": "内島萌夏が東レPPO初戦で痛感したトップ選手との差。“総合力が高い”世界14位メルテンスの「隙のなさ」",
+     "highlight": "東レPPO初戦",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/thedigestweb/m_thedigestweb-122005.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://topics.smt.docomo.ne.jp/article/thedigestweb/sports/thedigestweb-122005?page=2",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-15",
-     "n": 2,
-     "source": "ｄメニューニュース",
-     "title": "伊藤あおい、2時間40分の激闘も実らず予選決勝で敗退「決定力が上がればもっと戦える」[木下グループジャパンOP]",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNY2I5Ry03aGQtRTBBbjFVN1BpeDE4MjdVRldTbHFhRlREU2V1TVNMQUY3OWRib0lJU3NCUmFrNTdWWTFDWTI3YmFVaS02UHZaUUpfSlU4UTBDd05vMUN0NW44Z1U2c1Fnb0pub0NueEdjSTROdzdSYnJObFJ6U1lpUktsdzRMbjJaZWd4c2lsa9IBiwFBVV95cUxOOUhwaE9USjhTYThZbG5VdDBKVjRxczI3VHh6bHdRT0FSb0FtWElGZXhESUQ1Qjl5Rk5vYkd4dFVKbkI1cENBSUNBT19ZVTBXQTZEcTM4YXRWZFRkWU5GQzNTR1hnMDZELW44T2lvN2hwTXA0T1hDOWVpdXlMVV9kamlUUDc1bkR6LXp3?oc=5"
+     "headline": "伊藤あおい、2時間40分の激闘も実らず予選決勝で敗退「決定力が上がればもっと戦える」",
+     "highlight": "予選決勝で敗退",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/tennisclassic/m_tennisclassic-7764.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/tennisclassic/sports/tennisclassic-7764?page=1",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",

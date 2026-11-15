@@ -1568,8 +1568,28 @@
  "https://img.topics.smt.news.goo.ne.jp/picture/tennisclassic/m_tennisclassic-7764.jpg": {
   "w": 640,
   "h": 427,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.574,
+  "local": "pics/3a46326b3a9b3bd6.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/thedigestweb/m_thedigestweb-122005.jpg": {
+  "w": 640,
+  "h": 427,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.537,
+  "local": "pics/10eae8f422b829ef.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/wowkorea/m_wowkorea-20261110wow056.jpg": {
   "w": 640,
