@@ -549,6 +549,13 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
+  "w": 800,
+  "h": 562,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327
+ },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
@@ -3855,13 +3862,6 @@
    609
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
-  "w": 700,
-  "h": 491,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
