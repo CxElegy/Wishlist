@@ -1,32 +1,32 @@
 {
- "admin": "9fe50b6d5f35",
- "admin-ai": "8e24f980c851",
+ "admin": "2edb954f6fdb",
+ "admin-ai": "caeb13569bbd",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "80327fe9"
+   "41a15c94"
   ],
   "tokens": [
    "AI 編集のトークン",
    "655b2e51"
   ]
  },
- "admin-boards": "ae6dcce2e92f",
+ "admin-boards": "da4710173f33",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "4604a21b"
+   "14b0b797"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "1732e381b1fc",
+ "admin-emblem": "dcccb56f5d19",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "37f46315"
+   "247e1f6d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "b6f9322d818d",
+ "admin-now": "30b898356a4f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c00eea6a"
+   "5d20d547"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "ae5ca778"
+   "3d08f0d3"
   ],
   "term-panel": [
    "ライブログ",
-   "be701e24"
+   "fddc9c5e"
   ]
  },
- "admin-system": "2948cf17c1b2",
+ "admin-system": "d644865d501b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3f9c7c39"
+   "604bcf7d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "fb0aba24"
+   "8fe6ebad"
   ]
  },
  "admin_marks": {},
- "heat": "74eec3e44ed7",
+ "heat": "e93887399654",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "a7a7d681"
+   "be1f44f6"
   ],
   "ranking": [
    "ランキング",
-   "c4806020"
+   "cfdb3141"
   ]
  },
- "index": "b6068b4ef968",
+ "index": "9f5cbcd0c3bc",
  "index_marks": {
   "front": [
    "トップ",
-   "ade8d1a4"
+   "5cef1f70"
   ],
   "picks": [
    "気になるかも？",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "68cc5875"
+   "b445023a"
   ],
   "w-b867582f": [
    "あつ森",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "a3a287c4"
+   "3f589fc5"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "ba9215bb"
   ]
  },
- "updated": "11.15 17:18",
+ "updated": "11.15 17:30",
  "wishlist": "792e3e3c0cbf"
 }
