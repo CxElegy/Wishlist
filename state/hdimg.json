@@ -1923,6 +1923,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://mtnweekly.com/wp-content/uploads/2026/11/Rossignol-Juggernaut-Snowboard-3.jpg": {
+  "w": 1090,
+  "h": 1200,
+  "target": 1280,
+  "v": 3
+ },
  "https://mugglenet.com/wp-content/uploads/2026/11/cropped-wands-shop-feature.png": {
   "w": 1280,
   "h": 672,
@@ -2540,6 +2546,12 @@
    530
   ],
   "why": "期限付きの網址"
+ },
+ "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-15"
  },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
@@ -3805,12 +3817,6 @@
  "https://www.bing.com/th?id=ONUT.PSAopu4_9HBPJyzSc5NbmQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.RZ3hz11ADDNU0IOyzp1pOA&pid=News&w=1200": {
-  "w": 700,
-  "h": 365,
   "target": 720,
   "v": 3
  },

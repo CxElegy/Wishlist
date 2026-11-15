@@ -32,13 +32,13 @@
   "https://lee.hpplus.jp/column/3784952/": "https://lee.hpplus.jp/wp-content/uploads/2026/11/04/38600e3e5a2f85da5c5a7b8da08242c9.jpeg",
   "https://leisurebyte.com/the-mandalorian-7th-anniversary-fans-x-celebrate/": "https://i0.wp.com/leisurebyte.com/wp-content/uploads/2026/11/The-Mandolrian-7th-Anniversary-Still-from-Star-Wars-The-Mandalorian-and-Grogu-2-1-1.jpg",
   "https://movieweb.com/grand-theft-auto-6-easter-eggs-references/": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/lucia-and-jason-gta-vi.jpg?&fit=crop",
-  "https://mtnweekly.com/reviews/snowboards/rossignol-juggernaut-snowboard/": "https://www.bing.com/th?id=ONUT.RZ3hz11ADDNU0IOyzp1pOA&pid=News&w=1200",
   "https://news.dellows.jp/992392/": "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg",
   "https://news.infoseek.co.jp/article/inside_190908/": "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_190908_0-enlarge.jpg",
   "https://news.nicovideo.jp/watch/nw19971071": "https://www.bing.com/th?id=ONUT.A5Yit1Xmub4kAWaUb4-4wQ&pid=News&w=615",
   "https://news.pchome.com.tw/entertainment/enews/20261113/index-79456640250513339006.html": null,
   "https://news.yahoo.co.jp/articles/476e885f49398e6c2479969ffa006764c2f7c2ce": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00146577-toushin-000-1-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/f55217655a48f37ae3c2888b5ec8864cef54ca8c": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261109-00096815-vballk-000-1-view.jpg?exp=10800",
+  "https://newsdig.tbs.co.jp/articles/mrt/3081772": "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg",
   "https://nijimen.kusuguru.co.jp/topics/653500": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg",
   "https://nijimen.kusuguru.co.jp/topics/654389": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/0dabda83b0e848c08b840f5f91b2c4a0.jpg",
   "https://note.com/enjoymoremusic/n/n1acdaaa2f0e5?hl=en": "https://www.bing.com/th?id=ONUT.if7PjIjrIEYNee0BpacpMA&pid=News&w=1200",
@@ -1384,21 +1384,6 @@
   {
    "batch": 6,
    "because": "滑雪",
-   "date": "2026-11-14",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.RZ3hz11ADDNU0IOyzp1pOA&pid=News&w=1200",
-   "kind": "board",
-   "score": 4,
-   "source": "Mountain Weekly News",
-   "taste": [],
-   "title": "2027 Rossignol Juggernaut Snowboard Review: TETON Tested",
-   "url": "https://mtnweekly.com/reviews/snowboards/rossignol-juggernaut-snowboard/",
-   "words": [],
-   "work": "滑雪"
-  },
-  {
-   "batch": 7,
-   "because": "滑雪",
    "date": "2026-11-12",
    "hits": [],
    "image": "https://karryon.com.au/wp-content/uploads/2026/05/IMG_2026-05-21-111441.jpg",
@@ -1425,6 +1410,21 @@
    "url": "https://www.yahoo.com/entertainment/tv/articles/viewership-explosion-proves-netflix-effect-193000561.html",
    "words": [],
    "work": "FROM"
+  },
+  {
+   "batch": 7,
+   "because": "滑雪",
+   "date": "2026-11-12",
+   "hits": [],
+   "image": "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg",
+   "kind": "board",
+   "score": 4,
+   "source": "TBS NEWS DIG",
+   "taste": [],
+   "title": "日本最南端のスキー場が営業終了して初めての冬に 五ヶ瀬町の観光や産業にはどのような影響が?",
+   "url": "https://newsdig.tbs.co.jp/articles/mrt/3081772",
+   "words": [],
+   "work": "滑雪"
   },
   {
    "batch": 0,
@@ -1883,11 +1883,11 @@
    8
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
