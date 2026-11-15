@@ -581,6 +581,13 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
+  "w": 800,
+  "h": 562,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327
+ },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
@@ -2236,6 +2243,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1407513/17648997_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/1445517/18700632_615.jpg": {
   "w": 615,
   "h": 769,
@@ -2988,6 +3001,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://prtimes.jp/img/165636/12/resize/d165636-12-a415dda3aae89418a36d-0.jpg": {
+  "w": 650,
+  "h": 366,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.419
+ },
  "https://prtimes.jp/img/55787/1084/resize/d55787-1084-cff70434ce567d7ce25d-0.jpg": {
   "w": 650,
   "h": 209,
@@ -3672,6 +3692,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://vphoto.vietnam.vn/thumb/640x360/vietnam/resource/IMAGE/2026/11/15/1794729171724_img_1015f1d0.png": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/11/1791684263958_galaxy-s27-pro-lo-dien-voi-cu-soc-camera-69.png": {
   "w": 968,
   "h": 518,
@@ -4021,13 +4047,6 @@
    609
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
-  "w": 700,
-  "h": 491,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
@@ -4486,6 +4505,12 @@
   "w": 1280,
   "h": 960,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.wowkorea.jp/img/news/107/537006/453469_1280W.webp": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
   "v": 3
  },
  "https://www.wowkorea.jp/img/news/107/539793/456608_1280W.webp": {

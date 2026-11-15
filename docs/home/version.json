@@ -1,14 +1,14 @@
 {
- "admin": "131ed81deb41",
- "admin-ai": "ef31566c2572",
+ "admin": "ab8b9781e9a4",
+ "admin-ai": "d9fc8037bb50",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "a0716fa5"
+   "62732a64"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "80db3270"
+   "cf8d55ce"
   ]
  },
  "admin-boards": "7871db6d5afd",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "b76a0dd2aca7",
+ "admin-emblem": "a633c14816ed",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f5b67847"
+   "dbe8bf67"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "d845111e7fa7",
+ "admin-now": "a5b9cd043fa7",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "fa1ee2bc"
+   "f16f41b3"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "830048e0"
+   "9cb93854"
   ]
  },
- "admin-system": "861014134b9e",
+ "admin-system": "ebf088dc59dd",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "97b468c6"
+   "17be2219"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "700647de"
+   "ec5c5725"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "d46e2ee2"
   ]
  },
- "index": "1e640dba3e3b",
+ "index": "d941a673b2cf",
  "index_marks": {
   "front": [
    "トップ",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "ecac7343"
+   "38a6f85f"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "259ef1f4"
+   "b6d0dc9f"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "acee7250"
+   "c1305e78"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "3f589fc5"
+   "fd04e7cc"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "ba9215bb"
   ]
  },
- "updated": "11.15 21:40",
+ "updated": "11.15 21:45",
  "wishlist": "bc3a3c088252"
 }
