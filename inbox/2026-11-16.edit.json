@@ -134,7 +134,8 @@
   "绝区零": 1,
   "ILLIT": 2,
   "日本顶级网球赛事": 2,
-  "The Mandalorian": 1
+  "The Mandalorian": 1,
+  "ぐでたま": 1
  },
  "FROM": [
   {
@@ -192,5 +193,17 @@
    ]
   }
  ],
- "The Mandalorian": []
+ "The Mandalorian": [],
+ "ぐでたま": [
+  {
+   "headline": "ローソンで“ぐでたまお昼寝マット”が当たる!?",
+   "highlight": "お昼寝マット",
+   "blurb": "ローソンで「ぐでたまお昼寝マット」が当たるキャンペーンが登場。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/54048/295705_615.jpg"
+  }
+ ]
 }
