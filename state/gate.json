@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-15T22:17:51+00:00",
+ "checked": "2026-11-15T22:58:23+00:00",
  "fired": {
-  "at": "2026-11-15T21:27:40+00:00",
+  "at": "2026-11-15T22:58:23+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -37,26 +37,32 @@
    "edit": 14
   },
   "2026-11-16": {
-   "edit": 3
+   "edit": 4
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-15T21:27:40+00:00",
+    "at": "2026-11-15T22:58:23+00:00",
     "attempts": 1,
     "day": "2026-11-16",
-    "prog": 80,
-    "resp": "cse_01W4x6f5f66BgWxvH9LF1zsq",
-    "sig": "7d9bbf3a04b7"
+    "prog": 83,
+    "resp": "",
+    "sig": "b1c163a0a2fa"
    },
    "items": [
+    "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "ぐでたま",
-    "滑雪"
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影"
    ],
    "last_batch": "2026-11-15T21:32:46+00:00",
    "last_error": {
@@ -66,35 +72,41 @@
    "need": true,
    "prog": 83,
    "prog_day": "2026-11-16",
-   "ripe": [],
-   "sig": "27090b2b386e",
+   "ripe": [
+    "GTA 6",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
+   ],
+   "sig": "b1c163a0a2fa",
    "token_cap": 1000000,
    "tokens_today": 171493,
-   "why": "整理待ちの記事 5 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 34 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "d45c93972d9a",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 11 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
