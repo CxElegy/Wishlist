@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-15T06:33:01+00:00",
+ "changed": true,
+ "checked": "2026-11-15T07:17:52+00:00",
  "fired": {
   "at": "2026-11-15T06:33:01+00:00",
   "results": {
@@ -49,27 +49,22 @@
     "sig": "bb38188d1af0"
    },
    "items": [
-    "A2O LITE",
     "The Mandalorian",
-    "Vaundy",
     "dota2"
    ],
-   "last_batch": "2026-11-15T05:44:30+00:00",
+   "last_batch": "2026-11-15T06:39:05+00:00",
    "last_error": {
     "at": "2026-11-15T04:26:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 202,
+   "prog": 205,
    "prog_day": "2026-11-15",
-   "ripe": [
-    "A2O LITE",
-    "Vaundy"
-   ],
-   "sig": "bb38188d1af0",
+   "ripe": [],
+   "sig": "4043c529560d",
    "token_cap": 1000000,
-   "tokens_today": 422668,
-   "why": "整理待ちの記事 6 件（4 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 464122,
+   "why": "整理待ちの記事 3 件（2 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -178,12 +173,12 @@
    "runs": 11
   },
   "2026-11-15": {
-   "batches": 16,
-   "cr": 8312511,
-   "cw": 385185,
-   "in": 237,
-   "out": 37246,
-   "runs": 8
+   "batches": 17,
+   "cr": 8721647,
+   "cw": 425110,
+   "in": 251,
+   "out": 38761,
+   "runs": 9
   }
  }
 }
