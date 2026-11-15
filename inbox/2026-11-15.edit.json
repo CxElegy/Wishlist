@@ -134,7 +134,8 @@
    "weight": "lead",
    "refs": [
     1,
-    2
+    2,
+    15
    ],
    "image": "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg"
   },
@@ -175,6 +176,24 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Pro: leak points to a 50 MP telephoto lens and less zoom",
+   "highlight": "50 MP telephoto lens",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
+   ]
+  },
+  {
+   "headline": "삼성, 기본형·플러스 비중 줄인다... S27 프로와 울트라에 생산 올인",
+   "highlight": "S27 프로와 울트라",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
    ]
   }
  ],
@@ -233,12 +252,12 @@
  "_covered": {
   "GTA 6": 72,
   "漫威电影": 47,
-  "三星手机": 12,
+  "三星手机": 15,
   "チェーンソーマン": 6,
   "A2O LITE": 5,
   "dota2": 6,
   "哈利波特剧集": 7,
-  "绝区零": 2,
+  "绝区零": 5,
   "ILLIT": 5,
   "Vaundy": 2,
   "Astrae Oratio": 1,
@@ -247,7 +266,8 @@
   "星巴克马克杯": 3,
   "猫用品": 2,
   "日本顶级网球赛事": 1,
-  "滑雪": 1
+  "滑雪": 1,
+  "gelato pique": 3
  },
  "dota2": [
   {
@@ -305,6 +325,24 @@
     1
    ],
    "image": "https://file.topuplist.com/2026/11/1794554543_DQaI6yEHcl.jpg"
+  },
+  {
+   "headline": "横滨港未来免费看展，打卡领限定周边|雅马哈发动机|绝区零|联动",
+   "highlight": "免费看展",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Zenless Zone Zero 玩家可在12月2日前获取 Severian 的装备",
+   "highlight": "12月2日前",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "ILLIT": [
@@ -468,6 +506,27 @@
     1
    ],
    "image": "https://mtnweekly.com/wp-content/uploads/2026/11/Rossignol-Juggernaut-Snowboard-3.jpg"
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "志尊淳、ルームウェア＆クマが似合いすぎ（笑） 祖父母への愛も語る『GELATO PIQUE CHRISTMAS GIFT MARKET 2026』",
+   "highlight": "GELATO PIQUE CHRISTMAS GIFT MARKET 2026",
+   "blurb": "ルームウェアブランド gelato pique のクリスマスギフトマーケット 2026 のイベントに志尊淳が登場。",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ]
+  },
+  {
+   "headline": "【松本市】イオンモール松本 晴庭2階に、gelato piqueやSNIDELを扱うセレクトショップ「BIBI’S BOUTIQUE」がオープンしました",
+   "highlight": "BIBI’S BOUTIQUE",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ]
 }

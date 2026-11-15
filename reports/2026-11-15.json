@@ -1,6 +1,6 @@
 {
  "date": "2026-11-15",
- "edit_sig": "4245b00ffbfb",
+ "edit_sig": "6b5d24b7c08e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,8 +13,8 @@
      "date": "2026-11-12",
      "headline": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
      "highlight": "AGF 2026 최대 규모",
-     "image": "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700",
-     "image_via": "Bing 缩略图",
+     "image": "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg",
+     "image_via": "og:image",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216955",
      "weight": "lead"
     }
@@ -245,29 +245,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-15",
-     "n": 13,
-     "source": "Foro3D",
-     "title": "Galaxy S27 Pro: leak points to a 50 MP telephoto lens and less zoom",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNT0xIcF9mUEtTLTZSV2IxbEp6RVRxekV1eGlNWE00UHBRVENZTUVqeFhDUVY4aFcya2FEMjFnemo3T1JrODRPUTlDR2UxM0RudUp6dUVWM0xDMk5fdlJudXBxQUk1a2Y1R1RNVG5zcV9zQk9hd0JBS2pkdHp6Q0hoYVdjLWMzTnl4dGJ5Y2VNdk82cUR3S0J6YU5NZnM3cWVsQzdCX2VUYmRXWFJONUFqYlN3?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 14,
-     "source": "베타뉴스 on MSN",
-     "title": "삼성, 기본형·플러스 비중 줄인다... S27 프로와 울트라에 생산 올인",
-     "url": "https://www.msn.com/ko-kr/%EA%B8%B0%EC%88%A0/%EC%86%8C%EB%B9%84%EC%9E%90-%EC%A0%84%EC%9E%90-%EA%B8%B0%EA%B8%B0/%EC%82%BC%EC%84%B1-%EA%B8%B0%EB%B3%B8%ED%98%95-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EB%B9%84%EC%A4%91-%EC%A4%84%EC%9D%B8%EB%8B%A4-s27-%ED%94%84%EB%A1%9C%EC%99%80-%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90-%EC%83%9D%EC%82%B0-%EC%98%AC%EC%9D%B8/ar-AA2hrFSq"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 15,
-     "source": "Notebookcheck CN",
-     "title": "Exynos 版 Galaxy S27 Pro 将拥有一项 Snapdragon 版所不具备的独家优势",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQSWtTUnpNVzZZN1JsaWpyaHdOM3hpczFuTkFhSlVRX1R5TWdaVXB4TmlpV191LW8wVURGTEJmT3NlOWdUajBjQ1d1VHBHc01WTHJSVE1MTDFsNVU0ZldWYlJtbE04WjRxdjFWTEt3cXN4MWNXRFJVMzhxTFl6cWZXRXpsWm5hbEU?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -319,6 +296,26 @@
      "image_via": "条目自带（Bing 缩略图）",
      "url": "https://www.forbes.com/sites/jaymcgregor/2026/11/14/samsung-galaxy-s27-release-date-galaxy-s27-pro-ultra-production-price/",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-15",
+     "headline": "Galaxy S27 Pro: leak points to a 50 MP telephoto lens and less zoom",
+     "highlight": "50 MP telephoto lens",
+     "image": "https://foro3d.com/2026/noviembre/imagenes/galaxy-s27-pro-filtracion-apunta-a-un-teleobjetivo-de-50-mp-y-menos-zo.webp",
+     "image_via": "og:image",
+     "url": "https://foro3d.com/en/2026/noviembre/galaxy-s27-pro-filtracion-apunta-a-un-teleobjetivo-de-50-mp-y-menos-zo.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "삼성, 기본형·플러스 비중 줄인다... S27 프로와 울트라에 생산 올인",
+     "highlight": "S27 프로와 울트라",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hspxP.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ko-kr/%EA%B8%B0%EC%88%A0/%EC%86%8C%EB%B9%84%EC%9E%90-%EC%A0%84%EC%9E%90-%EA%B8%B0%EA%B8%B0/%EC%82%BC%EC%84%B1-%EA%B8%B0%EB%B3%B8%ED%98%95-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EB%B9%84%EC%A4%91-%EC%A4%84%EC%9D%B8%EB%8B%A4-s27-%ED%94%84%EB%A1%9C%EC%99%80-%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90-%EC%83%9D%EC%82%B0-%EC%98%AC%EC%9D%B8/ar-AA2hrFSq",
+     "weight": "normal"
     }
    ],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
@@ -337,31 +334,31 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "ルームウェアブランド gelato pique のクリスマスギフトマーケット 2026 のイベントに志尊淳が登場。",
      "date": "2026-11-14",
-     "n": 1,
+     "headline": "志尊淳、ルームウェア＆クマが似合いすぎ（笑） 祖父母への愛も語る『GELATO PIQUE CHRISTMAS GIFT MARKET 2026』",
+     "highlight": "GELATO PIQUE CHRISTMAS GIFT MARKET 2026",
+     "image": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+     "image_via": "作品封面",
      "source": "イチオシ on MSN",
-     "title": "志尊淳、ルームウェア＆クマが似合いすぎ（笑） 祖父母への愛も語る「思い出の味は…」『GELATO PIQUE CHRISTMAS GIFT MARKET 2026』",
-     "url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E5%BF%97%E5%B0%8A%E6%B7%B3-%E3%83%AB%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2-%E3%82%AF%E3%83%9E%E3%81%8C%E4%BC%BC%E5%90%88%E3%81%84%E3%81%99%E3%81%8E-%E7%AC%91-%E7%A5%96%E7%88%B6%E6%AF%8D%E3%81%B8%E3%81%AE%E6%84%9B%E3%82%82%E8%AA%9E%E3%82%8B-%E6%80%9D%E3%81%84%E5%87%BA%E3%81%AE%E5%91%B3%E3%81%AF-gelato-pique-christmas-gift-market-2026/ar-AA2hrUFs"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.msn.com&sz=128",
+     "url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E5%BF%97%E5%B0%8A%E6%B7%B3-%E3%83%AB%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2-%E3%82%AF%E3%83%9E%E3%81%8C%E4%BC%BC%E5%90%88%E3%81%84%E3%81%99%E3%81%8E-%E7%AC%91-%E7%A5%96%E7%88%B6%E6%AF%8D%E3%81%B8%E3%81%AE%E6%84%9B%E3%82%82%E8%AA%9E%E3%82%8B-%E6%80%9D%E3%81%84%E5%87%BA%E3%81%AE%E5%91%B3%E3%81%AF-gelato-pique-christmas-gift-market-2026/ar-AA2hrUFs",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-14",
-     "n": 2,
-     "source": "イチオシ on MSN",
-     "title": "＜フル＞志尊淳、今年のクリスマスは「ロマンチックの…」＆幼少期のサンタへの願いが可愛すぎ!『GELATO PIQUE CHRISTMAS GIFT MARKET 2026』",
-     "url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E3%83%95%E3%83%AB-%E5%BF%97%E5%B0%8A%E6%B7%B3-%E4%BB%8A%E5%B9%B4%E3%81%AE%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%81%AF-%E3%83%AD%E3%83%9E%E3%83%B3%E3%83%81%E3%83%83%E3%82%AF%E3%81%AE-%E5%B9%BC%E5%B0%91%E6%9C%9F%E3%81%AE%E3%82%B5%E3%83%B3%E3%82%BF%E3%81%B8%E3%81%AE%E9%A1%98%E3%81%84%E3%81%8C%E5%8F%AF%E6%84%9B%E3%81%99%E3%81%8E-gelato-pique-christmas-gift-market-2026/ar-AA2hryab"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-15",
-     "n": 3,
-     "source": "号外NET 松本",
-     "title": "【松本市】イオンモール松本 晴庭2階に、gelato piqueやSNIDELを扱うセレクトショップ「BIBI’S BOUTIQUE」がオープンしました",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5tMFZaV0FqdWtqbVE0eGcwaF9wZHlWWHJOUFRJa2djUExyMFhHN1VUN1cxekpxLXZMS2N0ckhzT0hjTHVSTVdYYVBOVGQwbXVYYVp3SHZRc1Jkc2pEWnRTbDlGdV9tYmJzTHVWb1JB?oc=5"
+     "headline": "【松本市】イオンモール松本 晴庭2階に、gelato piqueやSNIDELを扱うセレクトショップ「BIBI’S BOUTIQUE」がオープンしました",
+     "highlight": "BIBI’S BOUTIQUE",
+     "image": "https://matsumoto.goguynet.jp/wp-content/uploads/sites/89/2026/11/bibis-boutique-aeon-20261113043146.jpg",
+     "image_via": "og:image",
+     "url": "https://matsumoto.goguynet.jp/2026/11/15/bibis-boutique-aeon/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",
@@ -527,29 +524,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-15",
-     "n": 3,
-     "source": "新浪网",
-     "title": "#绝区零# HellK | Commission OPEN @ hellK111 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE52dlpyMWZhZ1I5cmhCcnE4alNTRFVMQzJvbVNQZHBxTHdpSV8yd2hocW5hMjhNenJmcDhfZWU5V2xTS3RoVVlTQnp4azBKTFB1MXh4T1dHYVB5MmlZVTF3MXg4MA?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 4,
-     "source": "新浪网",
-     "title": "横滨港未来免费看展，打卡领限定周边|雅马哈发动机|绝区零|联动",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9qa0lLc0NYa2VwMDR3ZkhFMU1pMS0tUVpGQzByUlUxWDVzS29XQTJKRnBSRE10enR4Rnl6djhESTBZcHh3a0tUaVdnWUNfYzJ5SUNWWmlaTEFpSENwYndjU1RLaw?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 5,
-     "source": "Notebookcheck CN",
-     "title": "Zenless Zone Zero 玩家可在12月2日前获取 Severian 的装备",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNbTNzNVhuTk5HMFA2cVBmOWtmaDVHNkVhTFdlUmlWbk92ZGVfbWtkOW84RFhJdDdUMUdMLWh0WHRXaGlFNHlzQmpGa1VERmktemFxSXFGM0NIcGFxejdZZjFXcjFvb0F3cElWMHA1SWJiTlRzQnVDQ0VjdnpXUHlWSXRHdlBWUQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -561,6 +535,26 @@
      "image_via": "AI 挑选",
      "url": "https://topuplist.com/zh-cn/article/zenless-zone-zero-3-3-longest-rerun-waits-7-agents",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-15",
+     "headline": "横滨港未来免费看展，打卡领限定周边|雅马哈发动机|绝区零|联动",
+     "highlight": "免费看展",
+     "image": "http://wx2.sinaimg.cn/middle/6f5ef307gy1ij1zbcu2afj20xc0xcdux.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5365430169895120.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "Zenless Zone Zero 玩家可在12月2日前获取 Severian 的装备",
+     "highlight": "12月2日前",
+     "image": "https://www.notebookcheck-cn.com/fileadmin/Notebooks/News/_nc5/Severian-launch.jpg",
+     "image_via": "og:image",
+     "url": "https://www.notebookcheck-cn.com/Zenless-Zone-Zero-12-2-Severian.1450335.0.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",

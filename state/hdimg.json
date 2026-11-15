@@ -146,12 +146,25 @@
  "http://wx2.sinaimg.cn/middle/6f5ef307gy1ij1zbcu2afj20xc0xcdux.jpg": {
   "w": 1200,
   "h": 1200,
-  "target": 720,
+  "target": 1280,
   "v": 3,
   "local": "pics/30af9400868d74dc.webp",
   "out": [
    1200,
    1200
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx2.sinaimg.cn/middle/90b10eb9ly1ij1dv15cagj20u31kwe81.jpg": {
+  "w": 1083,
+  "h": 2048,
+  "target": 720,
+  "v": 3,
+  "local": "pics/b8dd1f8234580401.webp",
+  "out": [
+   677,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -567,6 +580,13 @@
   "h": 369,
   "target": 720,
   "v": 3
+ },
+ "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
+  "w": 800,
+  "h": 562,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327
  },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
@@ -995,6 +1015,12 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
+  "v": 3
+ },
+ "https://foro3d.com/2026/noviembre/imagenes/galaxy-s27-pro-filtracion-apunta-a-un-teleobjetivo-de-50-mp-y-menos-zo.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
   "v": 3
  },
  "https://fpimgs.s3.ap-southeast-1.amazonaws.com/uul/2026/11/08/6aef58edf165b0.95265054.jpg": {
@@ -1550,6 +1576,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hspxP.img": {
+  "w": 1672,
+  "h": 941,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
   "w": 720,
   "h": 259,
@@ -1833,7 +1865,7 @@
  "https://matsumoto.goguynet.jp/wp-content/uploads/sites/89/2026/11/bibis-boutique-aeon-20261113043146.jpg": {
   "w": 1280,
   "h": 960,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/4023/files/2026/11/449921812-1200x675.jpg": {
@@ -2610,6 +2642,12 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/0dabda83b0e848c08b840f5f91b2c4a0.jpg": {
   "w": 913,
   "h": 1200,
+  "target": 720,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1558df6ac88a42e5a7a01c3c0a9952db.jpg": {
+  "w": 513,
+  "h": 381,
   "target": 720,
   "v": 3
  },
@@ -3843,6 +3881,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.K6lKE0FQvUZRVov6jcZl1g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.KkdkWY33I2sB7CHn2yWe_A&pid=News&w=1000": {
   "w": 700,
   "h": 394,
@@ -3910,19 +3954,6 @@
    609
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
-  "w": 700,
-  "h": 491,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402
- },
- "https://www.bing.com/th?id=ONUT.pJ6NgPDwjAycHuiZLYWPGA&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
@@ -4189,6 +4220,12 @@
    1014
   ],
   "why": "看不清"
+ },
+ "https://www.notebookcheck-cn.com/fileadmin/Notebooks/News/_nc5/Severian-launch.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 720,
+  "v": 3
  },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6PS5Box-4.jpg": {
   "w": 2000,
