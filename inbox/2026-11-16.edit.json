@@ -160,7 +160,8 @@
   "The Mandalorian": 1,
   "ぐでたま": 1,
   "漫威电影": 14,
-  "dota2": 3
+  "dota2": 3,
+  "周杰伦": 1
  },
  "FROM": [
   {
@@ -291,6 +292,17 @@
     2
    ],
    "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2haTdu.img"
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "QQ 音乐 1 亿成就单曲盘点：周杰伦独占21 首",
+   "highlight": "独占21 首",
+   "blurb": "QQ 音乐 1 亿成就单曲盘点，周杰伦独占 21 首，孙燕姿・薛之谦・李荣浩等也上榜。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }

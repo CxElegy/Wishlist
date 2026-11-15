@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "1f8aff527fd6",
+ "edit_sig": "a45e4f4400eb",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -561,17 +561,19 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "QQ 音乐 1 亿成就单曲盘点，周杰伦独占 21 首，孙燕姿・薛之谦・李荣浩等也上榜。",
      "date": "2026-11-15",
-     "n": 1,
-     "source": "新浪网",
-     "title": "QQ 音乐 1 亿成就单曲盘点：周杰伦独占21 首|QQ 音乐|周杰伦|孙燕姿|薛之谦|李荣浩|邓紫棋|蔡诗芸|王力宏|林俊杰|陈粒",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBQRHNDaXZLWElOQklfUXoyM2k0eFR2aU1waTlIbTkyQmxfYzRQOWhkZ1BDY01pV09KTUd1T1E1bG9LOGk5RGVRMUxzS2dxVzNBb0xmaHlyWW9ab1NlV2pRalU4UQ?oc=5"
+     "headline": "QQ 音乐 1 亿成就单曲盘点：周杰伦独占21 首",
+     "highlight": "独占21 首",
+     "image": "http://wx3.sinaimg.cn/middle/006H9hSBgy1ij32fbhpl5j310o1y9n7v.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5365589742981130.html",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",
