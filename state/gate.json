@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-15T21:27:40+00:00",
+ "changed": true,
+ "checked": "2026-11-15T22:17:51+00:00",
  "fired": {
   "at": "2026-11-15T21:27:40+00:00",
   "results": {
@@ -52,30 +52,25 @@
     "sig": "7d9bbf3a04b7"
    },
    "items": [
-    "Astrae Oratio",
     "ILLIT",
     "The Mandalorian",
     "Vaundy",
-    "gelato pique",
     "ぐでたま",
     "滑雪"
    ],
-   "last_batch": "2026-11-15T20:51:59+00:00",
+   "last_batch": "2026-11-15T21:32:46+00:00",
    "last_error": {
     "at": "2026-11-15T04:26:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 80,
+   "prog": 83,
    "prog_day": "2026-11-16",
-   "ripe": [
-    "Astrae Oratio",
-    "gelato pique"
-   ],
-   "sig": "7d9bbf3a04b7",
+   "ripe": [],
+   "sig": "27090b2b386e",
    "token_cap": 1000000,
-   "tokens_today": 126249,
-   "why": "整理待ちの記事 8 件（7 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 171493,
+   "why": "整理待ちの記事 5 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -192,12 +187,12 @@
    "runs": 17
   },
   "2026-11-16": {
-   "batches": 12,
-   "cr": 3439064,
-   "cw": 109641,
-   "in": 93,
-   "out": 16515,
-   "runs": 2
+   "batches": 13,
+   "cr": 3990569,
+   "cw": 152669,
+   "in": 110,
+   "out": 18714,
+   "runs": 3
   }
  }
 }
