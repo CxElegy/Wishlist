@@ -1,14 +1,14 @@
 {
- "admin": "5f2b8647c8cf",
- "admin-ai": "31e97df82b78",
+ "admin": "1906aec6c5b2",
+ "admin-ai": "7bb9e96ffda5",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c5ef3275"
+   "8c50463e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "a2d86b6b"
+   "c80db247"
   ]
  },
  "admin-boards": "88443d1a079d",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "5303acb136fb",
+ "admin-emblem": "68f4385afdcc",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b7418774"
+   "8e275bd2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "ea3d668204c6",
+ "admin-now": "1e5f0cd80975",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "fae26f0b"
+   "7df0102b"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "da460567"
+   "7cf58522"
   ]
  },
- "admin-system": "d7be30081ffa",
+ "admin-system": "be0258475a7b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "02971704"
+   "7869b837"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2211d4df"
+   "f3c38c40"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "7535ad4d"
   ]
  },
- "index": "9105590c8552",
+ "index": "3971241765e7",
  "index_marks": {
   "front": [
    "トップ",
-   "5cef1f70"
+   "ade8d1a4"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "21beb72a"
+   "712ccc17"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "b445023a"
+   "68cc5875"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "c1305e78"
+   "acee7250"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "ba9215bb"
   ]
  },
- "updated": "11.15 18:37",
+ "updated": "11.15 18:46",
  "wishlist": "792e3e3c0cbf"
 }
