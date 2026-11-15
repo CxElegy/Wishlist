@@ -1,6 +1,6 @@
 {
  "date": "2026-11-15",
- "edit_sig": "65e0c4eb4f8b",
+ "edit_sig": "97a9958233f3",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,8 +13,8 @@
      "date": "2026-11-12",
      "headline": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
      "highlight": "AGF 2026 최대 규모",
-     "image": "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700",
-     "image_via": "Bing 缩略图",
+     "image": "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg",
+     "image_via": "og:image",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216955",
      "weight": "lead"
     }
@@ -520,17 +520,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "Bluesky",
-     "title": "How the Mandalorian N-1 Starfighter Ultimate Collectors Series Lego set (2026) was created? César Soares, master model designer at the Lego Group: \"There were a number of different challenges with the",
-     "url": "https://bsky.app/profile/thespaceshipper.com/post/3n2cns4s7w22q"
+     "headline": "How the Mandalorian N-1 Starfighter Ultimate Collectors Series Lego set (2026) was created?",
+     "highlight": "",
+     "image": "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:so362smrcoypah6gusrtkqvz/bafkreia5l6qgjgzfpx4j7hdaimv5sfztsnmqt6oguemc3dl53b66p3flqq",
+     "image_via": "条目自带",
+     "url": "https://bsky.app/profile/thespaceshipper.com/post/3n2cns4s7w22q",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",

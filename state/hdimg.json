@@ -525,6 +525,19 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:so362smrcoypah6gusrtkqvz/bafkreia5l6qgjgzfpx4j7hdaimv5sfztsnmqt6oguemc3dl53b66p3flqq": {
+  "w": 600,
+  "h": 338,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.484,
+  "local": "pics/3bdfbc0e246722a2.webp",
+  "out": [
+   1280,
+   721
+  ],
+  "why": "看不清"
+ },
  "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:xglig6vyxav74acw6g4jbxiy/bafkreihl5zhpk6za6aztlqby2pkwnmu5hbcw6oo3l3vdhiqvtz23sxcciy": {
   "w": 553,
   "h": 709,
@@ -580,6 +593,13 @@
   "h": 369,
   "target": 720,
   "v": 3
+ },
+ "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
+  "w": 800,
+  "h": 562,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327
  },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
@@ -3965,13 +3985,6 @@
    609
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
-  "w": 700,
-  "h": 491,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
