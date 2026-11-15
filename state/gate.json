@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-15T12:32:24+00:00",
+ "checked": "2026-11-15T13:35:21+00:00",
  "fired": {
   "at": "2026-11-15T12:32:24+00:00",
   "results": {
@@ -49,76 +49,50 @@
     "sig": "976963852966"
    },
    "items": [
-    "A2O LITE",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "gelato pique",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
-    "三星手机",
     "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-15T09:51:04+00:00",
+   "last_batch": "2026-11-15T12:50:12+00:00",
    "last_error": {
     "at": "2026-11-15T04:26:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 236,
+   "prog": 292,
    "prog_day": "2026-11-15",
    "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "gelato pique",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
-    "三星手机",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影"
+    "周杰伦"
    ],
-   "sig": "976963852966",
+   "sig": "1f7426552d2e",
    "token_cap": 1000000,
-   "tokens_today": 604923,
-   "why": "整理待ちの記事 61 件（17 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 667463,
+   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
-    "哈利波特剧集",
-    "漫威电影",
     "FROM",
     "GTA 6",
-    "A2O LITE",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "2abd717816cc",
-   "waiting": [
-    "Astrae Oratio",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン"
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -203,12 +177,12 @@
    "runs": 11
   },
   "2026-11-15": {
-   "batches": 21,
-   "cr": 11195381,
-   "cw": 556705,
-   "in": 325,
-   "out": 47893,
-   "runs": 12
+   "batches": 24,
+   "cr": 12323724,
+   "cw": 612867,
+   "in": 356,
+   "out": 54240,
+   "runs": 13
   }
  }
 }
