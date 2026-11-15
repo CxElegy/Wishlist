@@ -1,14 +1,14 @@
 {
- "admin": "a1f8d5561dfa",
- "admin-ai": "aaed260235e4",
+ "admin": "97dff2fbddf0",
+ "admin-ai": "e21ffd0b9c90",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "fe9f7513"
+   "77b25bbb"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "4a94d05f"
+   "aefbdd14"
   ]
  },
  "admin-boards": "1b973d8c2f7e",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "b3aa0c98a2c8",
+ "admin-emblem": "dcd0d37595d7",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "066ccac5"
+   "073f416a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "2a75ea7061c0",
+ "admin-now": "d0c8728a62df",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "1fa12c5a"
+   "d9b98fae"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "064c0ffd"
+   "84e77289"
   ]
  },
- "admin-system": "1c40041bacc9",
+ "admin-system": "937f419f0240",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "63414871"
+   "03398ee8"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "fbdbf89b"
+   "92a4545a"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "ec308dd0"
   ]
  },
- "index": "68aa0eb9598b",
+ "index": "f40757396cbe",
  "index_marks": {
   "front": [
    "トップ",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "99bff9e6"
+   "03c12f0c"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "ba9215bb"
   ]
  },
- "updated": "11.16 00:44",
+ "updated": "11.16 00:49",
  "wishlist": "bc3a3c088252"
 }

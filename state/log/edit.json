@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-13T19:43:49+00:00",
-"text": "2026-11-14 第 7 バッチを出刊：ILLIT（1 版面・2 本・残り 7 版面） · token 新規入力 1,847・キャッシュ読み 27.8万・出力 1,193",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.48,
-"mem_total": 16867405824,
-"mem_free": 15864045568,
-"disk_used": 10995302400,
-"disk_free": 30288232448,
-"disk_total": 41283534848,
-"peak": 366465024
-},
-"batch": 7,
-"boards": [
-"ILLIT"
-],
-"stories": 2,
-"left": 7,
-"edited": 6,
-"run": 1794597736.711827,
-"tok": {
-"in": 6,
-"cw": 1841,
-"cr": 277694,
-"out": 1193,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 280734
-},
-{
 "at": "2026-11-13T19:47:18+00:00",
 "text": "2026-11-14 第 8 バッチを出刊：滑雪（1 版面・3 本・残り 6 版面） · token 新規入力 2,320・キャッシュ読み 28.4万・出力 1,077",
 "level": "ok",
@@ -2127,5 +2095,50 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1388279
+},
+{
+"at": "2026-11-15T15:49:36+00:00",
+"text": "2026-11-15 第 1 バッチを出刊：A2O LITE、Astrae Oratio、GTA 6、MMORPG 新作、Vaundy、dota2 ほか 8（14 版面・42 本・今日の整理待ちは全部終わり） · token 新規入力 4.9万・キャッシュ読み 148.9万・出力 5,097",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.28,
+"mem_total": 16869146624,
+"mem_free": 15936622592,
+"disk_used": 10094759936,
+"disk_free": 31188774912,
+"disk_total": 41283534848,
+"peak": 355602432
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"GTA 6",
+"MMORPG 新作",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"チェーンソーマン",
+"哈利波特剧集",
+"星巴克马克杯",
+"滑雪",
+"漫威电影",
+"猫用品"
+],
+"stories": 42,
+"left": 0,
+"edited": 21,
+"run": null,
+"tok": {
+"in": 46,
+"cw": 49078,
+"cr": 1489071,
+"out": 5097,
+"calls": 22,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1543292
 }
 ]
