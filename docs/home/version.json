@@ -1,32 +1,32 @@
 {
- "admin": "74caf905442d",
- "admin-ai": "8b874ecf66c9",
+ "admin": "fa3ad749090d",
+ "admin-ai": "f702e9fa8556",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c456faff"
+   "9824964d"
   ],
   "tokens": [
    "AI 編集のトークン",
    "de6687c6"
   ]
  },
- "admin-boards": "ef5c70b56ab7",
+ "admin-boards": "c161b498f3ed",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "d90e076e"
+   "052da6d8"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "0f4296928647",
+ "admin-emblem": "f0799020e39a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ae4bc85f"
+   "8309d7a1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "b02c7e727c02",
+ "admin-now": "afc57ae9c50b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "ed95e8ee"
+   "c0edef83"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "47b17883"
+   "6f605da6"
   ],
   "term-panel": [
    "ライブログ",
-   "5157ba99"
+   "13cb862b"
   ]
  },
- "admin-system": "e2c14ddb1f4a",
+ "admin-system": "90f07ed6722d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "98fb444b"
+   "3e6c3171"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "208ba8ce"
+   "937ac2e4"
   ]
  },
  "admin_marks": {},
- "heat": "93cba9e57dea",
+ "heat": "aa0480e5c038",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "d80d4d6b"
+   "7dcf3117"
   ],
   "ranking": [
    "ランキング",
-   "d0bb398e"
+   "24d7475d"
   ]
  },
- "index": "29115729026d",
+ "index": "fd98e5d54ffc",
  "index_marks": {
   "front": [
    "トップ",
@@ -196,6 +196,6 @@
    "b4c55f1d"
   ]
  },
- "updated": "11.16 07:18",
+ "updated": "11.16 07:57",
  "wishlist": "bfe47b2ec486"
 }
