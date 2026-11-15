@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-15T04:20:55+00:00",
+ "changed": true,
+ "checked": "2026-11-15T05:18:06+00:00",
  "fired": {
   "at": "2026-11-15T04:20:55+00:00",
   "results": {
@@ -52,27 +52,22 @@
     "A2O LITE",
     "ILLIT",
     "Vaundy",
-    "dota2",
     "gelato pique",
-    "周杰伦",
-    "滑雪"
+    "周杰伦"
    ],
-   "last_batch": "2026-11-15T02:17:58+00:00",
+   "last_batch": "2026-11-15T04:31:02+00:00",
    "last_error": {
-    "at": "2026-11-14T19:42:47+00:00",
+    "at": "2026-11-15T04:26:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 156,
+   "prog": 158,
    "prog_day": "2026-11-15",
-   "ripe": [
-    "dota2",
-    "滑雪"
-   ],
-   "sig": "66e05374fb94",
+   "ripe": [],
+   "sig": "5dd7f0efddc9",
    "token_cap": 1000000,
-   "tokens_today": 315353,
-   "why": "整理待ちの記事 10 件（7 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 360747,
+   "why": "整理待ちの記事 8 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -181,12 +176,12 @@
    "runs": 11
   },
   "2026-11-15": {
-   "batches": 13,
-   "cr": 6116865,
-   "cw": 287241,
-   "in": 174,
-   "out": 27938,
-   "runs": 6
+   "batches": 14,
+   "cr": 6980081,
+   "cw": 329784,
+   "in": 201,
+   "out": 30762,
+   "runs": 7
   }
  }
 }
