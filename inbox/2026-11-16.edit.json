@@ -161,7 +161,9 @@
   "ぐでたま": 1,
   "漫威电影": 14,
   "dota2": 3,
-  "周杰伦": 1
+  "周杰伦": 1,
+  "Astrae Oratio": 2,
+  "gelato pique": 1
  },
  "FROM": [
   {
@@ -303,6 +305,25 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "Astrae Oratio": [],
+ "gelato pique": [
+  {
+   "headline": "ジェラピケ福袋2027、楽天で売り切れても諦めないで！Amazonで起きた4回の在庫復活",
+   "highlight": "11月20日（金）12時",
+   "blurb": "ジェラピケ福袋2027は楽天Fashionで11月20日（金）12時から販売開始予定。Amazonの販売開始日時は未確認。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-11-20",
+    "label": "販売開始",
+    "time": "12:00",
+    "place": "楽天Fashion"
+   },
+   "image": "https://assets.st-note.com/production/uploads/images/336004495/rectangle_large_type_2_113ac6333f944aaccf908cc8f893de57.png?fit=bounds&quality=85&width=1280"
   }
  ]
 }

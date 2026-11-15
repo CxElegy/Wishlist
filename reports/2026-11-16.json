@@ -1,41 +1,7 @@
 {
  "date": "2026-11-16",
- "edit_sig": "a45e4f4400eb",
+ "edit_sig": "0bbf922bee10",
  "items": [
-  {
-   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-   "facts": [],
-   "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 1,
-     "source": "r/Astrae_Oratio",
-     "title": "Being Smothered by the Big Doggo",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xu6pem/being_smothered_by_the_big_doggo/"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 2,
-     "source": "r/Astrae_Oratio",
-     "title": "They just keep coming",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xtzmr9/they_just_keep_coming/"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "アストラエ・オラティオ",
-   "theme": {
-    "accent": "#C27270",
-    "alt_accent": "#A14744",
-    "alt_bg": "#F6EAE9",
-    "alt_fg": "#1E1A18",
-    "bg": "#211212",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
@@ -338,17 +304,25 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "ジェラピケ福袋2027は楽天Fashionで11月20日（金）12時から販売開始予定。Amazonの販売開始日時は未確認。",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "note",
-     "title": "ジェラピケ福袋2027、楽天で売り切れても諦めないで！Amazonで起きた4回の在庫復活",
-     "url": "https://note.com/iimono_pickup/n/nb47c1f6134fd"
+     "event": {
+      "date": "2026-11-20",
+      "label": "販売開始",
+      "place": "楽天Fashion",
+      "time": "12:00"
+     },
+     "headline": "ジェラピケ福袋2027、楽天で売り切れても諦めないで！Amazonで起きた4回の在庫復活",
+     "highlight": "11月20日（金）12時",
+     "image": "https://assets.st-note.com/production/uploads/images/336004495/rectangle_large_type_2_113ac6333f944aaccf908cc8f893de57.png?fit=bounds&quality=85&width=1280",
+     "image_via": "AI 挑选",
+     "url": "https://note.com/iimono_pickup/n/nb47c1f6134fd",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",
@@ -677,6 +651,31 @@
     "bg": "#F4F8FB",
     "fg": "#14233A",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "last": {
+    "date": "2026-11-15",
+    "headline": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
+    "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216955"
+   },
+   "name": "Astrae Oratio",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#C27270",
+    "alt_accent": "#A14744",
+    "alt_bg": "#F6EAE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211212",
+    "fg": "#F4EEE4",
+    "font": "serif",
     "split": true
    }
   },
