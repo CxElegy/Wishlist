@@ -234,6 +234,12 @@
   "v": 3,
   "blur": 0.308
  },
+ "https://api.elle.com.hk/var/site/storage/images/_aliases/img_776_w/9/1/5/1/39811519-1-chi-HK/d1f67b1d9bdf-SnapInsta.to_888351302_18645145030061039_5022405180871811437_n.jpg": {
+  "w": 775,
+  "h": 1034,
+  "target": 720,
+  "v": 3
+ },
  "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
   "w": 506,
   "h": 253,
@@ -2313,6 +2319,19 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/90965/509951_615.jpg": {
+  "w": 615,
+  "h": 492,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.494,
+  "local": "pics/0e4a8d826a01f1e8.webp",
+  "out": [
+   1280,
+   1024
+  ],
+  "why": "看不清"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261109-00096815-vballk-000-1-view.jpg?exp=10800": {
   "w": 1007,
   "h": 565,
@@ -2856,6 +2875,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://realsound.jp/wp-content/uploads/2026/11/20261115-ichiban-99.jpeg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
  },
  "https://research.image.itmedia.co.jp/wp-content/uploads/2026/07/1784614666_IMG_7837-scaled.jpg": {
   "w": 2560,
@@ -3664,12 +3689,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.BosuMTrMVFm3vcE5bpQc9Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.GaoGL2fTfOOpUB5JQdABLA&pid=News&w=1200": {
   "w": 546,
   "h": 700,
@@ -3721,7 +3740,19 @@
   "v": 3,
   "blur": 0.383
  },
+ "https://www.bing.com/th?id=ONUT.MQcby3fiJa8yf5ao2dyInA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.QqoZxs0-OekvDp5hmSqCPw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.UaEQa3roomSBsWMYqxPQUA&pid=News&w=754": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3746,12 +3777,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ZZuqrCTolC_GgeJvgvZbDw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.c_5I_z0TjNqvNUEZlEUdMg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,

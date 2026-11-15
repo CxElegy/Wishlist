@@ -1,32 +1,32 @@
 {
- "admin": "e02ff1524511",
- "admin-ai": "e19cf24755d0",
+ "admin": "6d8a3b7a07db",
+ "admin-ai": "3b04f6e08c33",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "bff54ff6"
+   "e144c420"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "5f7360f9"
+   "5fdcabbe"
   ]
  },
- "admin-boards": "4a86a5ba6305",
+ "admin-boards": "ef5c70b56ab7",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "957cc562"
+   "d90e076e"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "76a468a33924",
+ "admin-emblem": "ebf055405a5d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "aa00de78"
+   "0ee0e891"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "329f1520984a",
+ "admin-now": "b411151c451d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "44deb081"
+   "1c736640"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "417c1485"
+   "47b17883"
   ],
   "term-panel": [
    "ライブログ",
-   "5d10f3b8"
+   "76e835fe"
   ]
  },
- "admin-system": "82efdb70d41d",
+ "admin-system": "759e47a237f0",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c5727eed"
+   "7a2d2697"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "186de288"
+   "ae7f4adc"
   ]
  },
  "admin_marks": {},
- "heat": "a20e972ef557",
+ "heat": "93cba9e57dea",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "0aee434c"
+   "d80d4d6b"
   ],
   "ranking": [
    "ランキング",
-   "77254767"
+   "d0bb398e"
   ]
  },
- "index": "e3bbb6aa6282",
+ "index": "c7e11718b95e",
  "index_marks": {
   "front": [
    "トップ",
-   "55832746"
+   "e1b70355"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "ad8615af"
+   "b51a5a18"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -189,7 +189,7 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "50bd4192"
+   "0c497c50"
   ],
   "w-f303ad09": [
    "绝区零",
