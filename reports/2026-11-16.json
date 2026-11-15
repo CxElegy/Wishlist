@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "f840073046c1",
+ "edit_sig": "fafb348bbd31",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -289,36 +289,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-15",
-     "n": 4,
-     "source": "Mezha.net",
-     "title": "Galaxy S27 Ultra and S27 Pro may share a more compact camera layout",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQdzA2enlpX29iUndFdnJlM0xpUTlMUVNfWDkyNlZKZ3Jod290VEdGUFpia2tqY3JlaUc0ZUJDRGN6WkhnV2VoMUVVVGJnQXdad2hsRklqeGR0aUlQVnRFM2xmU0Q1enQ5eFBpblJVSV9DemZoeEc0VmxiTVpsa3BWVw?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 5,
-     "source": "Gizmochina",
-     "title": "Galaxy S27 Ultra and S27 Pro to share this camera layout, here’s the design",
-     "url": "https://www.gizmochina.com/2026/11/15/galaxy-s27-ultra-s27-pro-final-camera-design-leak/"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 6,
-     "source": "SSBCrack",
-     "title": "Galaxy S27 Camera Specs Suggest Few Upgrades, With Pro and Ultra Sharing a 200MP Main Sensor",
-     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQeW5HVHJhdE9jTUlrSUMyc0tmWjY4bWtzSm9SbUtPZ21RalprejNEamVLTmFJOHJDam5LSTRqTkg0YjBkV1RSQnd1ekxtOXNfcUxmbV9adGxWR096bDRYcDBYak00SHFPbGI2QzF0ZWRwMWV3UnMyaTZwcGJJYWg2dmVzSzU1Wlk4U2RsNVV4Qkw3STd6NW1tNzZhOHVVYzBETjNOSnNsd0Vwek90RFRLTEZUUnM3Tl80akE?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 7,
-     "source": "Nokiapoweruser",
-     "title": "Galaxy S27 Ultra Leaks Surface—And It Gives Serious Midrange Vibes",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQM29UR1BTc253U0tmSVVMYlh1bGdTRWY5WDhuRU9CSTY3LVhtVWRIVzJwN3BuLWdiRElNMXpHQjdyU1FyLW1pVF9IakZLcUJoZlVvYVlsVFliTVh6Z0RVek5rRi0wZUtvWk8wUHlCVFh6SVBIX2NROFVBOG40dWtHWjB3ck0zNTdf?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -339,6 +309,16 @@
      "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-recenze-1.jpg",
      "image_via": "og:image",
      "url": "https://samsungmagazine.eu/zh-CN/2026/11/15/5-upgrades-galaxy-s27-ultra/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-15",
+     "headline": "Galaxy S27 Ultra and S27 Pro may share a more compact camera layout",
+     "highlight": "compact camera layout",
+     "image": "https://mezha.net/eng/wp-content/mezha-og-r205/kd_image_generate/eng/3745119-fc1c0eea235c.jpg",
+     "image_via": "og:image",
+     "url": "https://mezha.net/eng/news/mezha-17d85c7e79732db285dc71cc_galaxy_s27_ultra/",
      "weight": "normal"
     }
    ],
