@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "fafb348bbd31",
+ "edit_sig": "1f8aff527fd6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -532,31 +532,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-15",
-     "n": 1,
-     "source": "GosuGamers",
-     "title": "PARIVISION vs GamerLegion Live Score on 2026-11-15 of Dota 2 1win Essence III",
-     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPTUxHWDBlR0JUMzBDR25hMlBWNjZMZk8xTG9lRWZKRm5XQ1Q5V1lueXVsUEpUZjNHTGUtWldCY1dRV1NuWDgydE4ycno2R0xMeFZXc2lGdERMQUF6SzRsNzlxU0ZiMTFMaV9tenNpUEZheVdsTl9hOXlXQlp1T0czQVlzMTFrdDJ0eV9CN1hWTU5peWM5aVNsbmlrT2wwSnNEU0pWQ3BFVjR4WVYy?oc=5"
-    },
-    {
+     "blurb": "泰国籍选手23savage称，战队在吉隆坡的集训基地遭警方突袭，他与队友被戴上手铐盘问约两小时，最终靠现场打一局比赛证明职业选手身份。目前仅有其本人叙述，尚无独立信源证实。",
      "date": "2026-11-10",
-     "n": 2,
-     "source": "18183游戏网 on MSN",
-     "title": "《DOTA2》选手集训遭警方盘问两小时 当场打一局自证职业身份",
-     "url": "https://www.msn.com/zh-cn/news/other/dota2-%E9%80%89%E6%89%8B%E9%9B%86%E8%AE%AD%E9%81%AD%E8%AD%A6%E6%96%B9%E7%9B%98%E9%97%AE%E4%B8%A4%E5%B0%8F%E6%97%B6-%E5%BD%93%E5%9C%BA%E6%89%93%E4%B8%80%E5%B1%80%E8%87%AA%E8%AF%81%E8%81%8C%E4%B8%9A%E8%BA%AB%E4%BB%BD/ar-AA2hbPkS"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 3,
-     "source": "新浪网",
-     "title": "胜者组鲷哥队战胜aq队，下一场败者组是aq队 vs 菜哥队。 #dota2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5ybU8wOGh6ZW1PRWJuNzI5NHZrc29hbDdnbnlwWjlmdDAxTk5TZmtqd3ZHam9zNVZDN2NXZGZEVnc0N1ZfazJBcnpMNnZxWVptQkR0X05QeDRzZG91TS1MY2FmVQ?oc=5"
+     "headline": "《DOTA2》选手集训遭警方盘问两小时 当场打一局自证职业身份",
+     "highlight": "遭警方盘问两小时",
+     "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2haTdu.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/zh-cn/news/other/dota2-%E9%80%89%E6%89%8B%E9%9B%86%E8%AE%AD%E9%81%AD%E8%AD%A6%E6%96%B9%E7%9B%98%E9%97%AE%E4%B8%A4%E5%B0%8F%E6%97%B6-%E5%BD%93%E5%9C%BA%E6%89%93%E4%B8%80%E5%B1%80%E8%87%AA%E8%AF%81%E8%81%8C%E4%B8%9A%E8%BA%AB%E4%BB%BD/ar-AA2hbPkS",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
