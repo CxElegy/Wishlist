@@ -549,6 +549,13 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
+  "w": 800,
+  "h": 562,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327
+ },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
@@ -1183,6 +1190,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i.pcmag.com/imagery/articles/04H6IwEv0E6cx1rnnkowZes-2.fit_lim.size_1200x630.v1793906374.png": {
+  "w": 1120,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
@@ -1287,19 +1300,6 @@
   "target": 720,
   "v": 3
  },
- "https://image.zdnet.co.kr/2026/11/12/ccb869c3838a5d6f9e2bafa6fe63634c.jpg": {
-  "w": 640,
-  "h": 602,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.507,
-  "local": "pics/85a17cf8d09987db.webp",
-  "out": [
-   1280,
-   1204
-  ],
-  "why": "看不清"
- },
  "https://images-r2.thebrag.com/pedestrian/uploads/2026/11/daniel-radcliffe-harry-potter-reboot.jpg?v=1794356337052": {
   "w": 1280,
   "h": 720,
@@ -1370,12 +1370,6 @@
   "w": 640,
   "h": 360,
   "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bsNCV.img": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cCV3B.img": {
@@ -1824,12 +1818,24 @@
   "v": 3,
   "blur": 0.348
  },
+ "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_190908_0-enlarge.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://media.image.infoseek.co.jp/isnews/photos/nkt/nkt_2026111206463415_0-enlarge.jpg": {
   "w": 550,
   "h": 309,
   "target": 1280,
   "v": 3,
   "blur": 0.315
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/otonanswer/otonanswer_408267_0-enlarge.jpg": {
+  "w": 960,
+  "h": 1200,
+  "target": 1280,
+  "v": 3
  },
  "https://media.image.infoseek.co.jp/isnews/photos/tokaitv/tokaitv_49184_0-enlarge.jpg": {
   "w": 720,
@@ -2208,6 +2214,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.walkerplus.com/article/198076/1194751_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.473,
+  "local": "pics/141f37b44eefa3c4.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://news.walkerplus.com/article/198145/1195520_615.jpg": {
   "w": 615,
   "h": 410,
@@ -2252,6 +2271,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
+ },
+ "https://news.walkerplus.com/article/54135/297391_615.jpg": {
+  "w": 615,
+  "h": 1131,
+  "target": 1280,
+  "v": 3
  },
  "https://news.walkerplus.com/article/55811/307229_615.jpg": {
   "w": 615,
@@ -2397,18 +2422,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-00000041-isd-000-2-view.jpg?exp=10800": {
-  "w": 800,
-  "h": 450,
-  "target": 720,
-  "v": 3,
-  "local": "pics/e99b5be402248602.webp",
-  "out": [
-   800,
-   450
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-001-1-view.jpg?pri=l&w=640&h=357&exp=10800": {
   "w": 640,
   "h": 358,
@@ -2539,12 +2552,6 @@
   "target": 720,
   "v": 3
  },
- "https://ni.yam.com/20261113/11HECL72ZT1E88G8CS0K0-e33401fca4a21a13.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://nihonkai.ismcdn.jp/common/images/nnn/noimg_nnn.png": {
   "w": 1024,
   "h": 632,
@@ -2575,6 +2582,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/614d674cbc04425092f91517c1246529.png": {
+  "w": 800,
+  "h": 450,
+  "target": 720,
+  "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg": {
   "w": 750,
@@ -3002,6 +3015,12 @@
   "w": 1434,
   "h": 948,
   "target": 1280,
+  "v": 3
+ },
+ "https://sdprodstorage.blob.core.windows.net/sd-cms-prod/featured-image/Sea%20of%20Remnants%20Dawnbreaker%20-1794310281633.webp": {
+  "w": 901,
+  "h": 507,
+  "target": 720,
   "v": 3
  },
  "https://shattered.io/wp-content/uploads/2026/11/gta-6-physical-copy-leak-230-gb-claim-vs-212-gb-preload-2026-gen.webp": {
@@ -3830,13 +3849,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
-  "w": 700,
-  "h": 491,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402
- },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4269,6 +4281,12 @@
  "https://www.videogameschronicle.com/files/2026/11/social-basic.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.wowkorea.jp/img/news/107/536956/453389_1280W.webp": {
+  "w": 1280,
+  "h": 960,
   "target": 1280,
   "v": 3
  },

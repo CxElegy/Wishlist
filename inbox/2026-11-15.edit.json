@@ -26,7 +26,10 @@
     12,
     6,
     17,
-    29
+    29,
+    36,
+    46,
+    45
    ],
    "image": "https://www.bing.com/th?id=ONUT.-GUQ33mXT9wP2JHemimbKA&pid=News&w=1200"
   },
@@ -38,7 +41,8 @@
    "refs": [
     11,
     30,
-    31
+    31,
+    49
    ]
   },
   {
@@ -77,7 +81,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    24
    ]
   },
   {
@@ -170,6 +175,15 @@
     3
    ],
    "image": "https://animetv-jp.net/wp-content/uploads/2026/11/images-32.jpeg"
+  },
+  {
+   "headline": "『チェンソーマン レゼ篇』レゼ/ボム1/4フィギュア、DX版はボムの上半身付き",
+   "highlight": "1/4フィギュア",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "A2O LITE": [
@@ -179,8 +193,10 @@
    "blurb": "AIJINGの両親による約7000万円の借金投資が話題に、中国のファンから支援の声が上がっている。",
    "weight": "lead",
    "refs": [
-    2
-   ]
+    2,
+    4
+   ],
+   "image": "https://www.wowkorea.jp/img/news/107/539793/456608_1280W.webp"
   },
   {
    "headline": "【2026年Melon24小时最高收听人数TOP6】1 A2O LITE-NEON 291,555",
@@ -190,14 +206,23 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "パダ（S.E.S.）、“生みの親”イ・スマンの再出発を応援「今、デビューしていたらその中に私がいる」…「A2O SOUL」＆「A2O LITE」に熱視線",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "_covered": {
-  "GTA 6": 34,
-  "漫威电影": 20,
+  "GTA 6": 51,
+  "漫威电影": 28,
   "三星手机": 9,
-  "チェーンソーマン": 3,
-  "A2O LITE": 2,
+  "チェーンソーマン": 6,
+  "A2O LITE": 5,
   "dota2": 5,
   "哈利波特剧集": 1,
   "绝区零": 1,
@@ -205,7 +230,8 @@
   "Vaundy": 2,
   "Astrae Oratio": 1,
   "MMORPG 新作": 2,
-  "周杰伦": 2
+  "周杰伦": 2,
+  "星巴克马克杯": 3
  },
  "dota2": [
   {
@@ -294,6 +320,36 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "渋かわいいマグカップ!? スタバから熊本限定で発売！",
+   "highlight": "熊本限定",
+   "blurb": "スターバックスから熊本限定のマグカップが発売された。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/198076/1194751_615.jpg"
+  },
+  {
+   "headline": "スターバックスのスタッフの声から生まれた、愛媛県地元限定「砥部焼マグ」制作の舞台裏",
+   "highlight": "砥部焼マグ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "【今日まで】スタバ福袋2027抽選エントリー受付中 SNS「金色のマグ欲しい～！」",
+   "highlight": "福袋2027",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]

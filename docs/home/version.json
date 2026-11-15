@@ -1,14 +1,14 @@
 {
- "admin": "b3c2c17474e1",
- "admin-ai": "0a8ecf1fb7eb",
+ "admin": "2350b3db0dc1",
+ "admin-ai": "fda998ae8eef",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f81a4cce"
+   "61968389"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7f4cdc5e"
+   "17442a54"
   ]
  },
  "admin-boards": "574101ac378f",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "2720c20c5c4a",
+ "admin-emblem": "c50c8771de42",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "91c46d1e"
+   "7c314396"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "7f5b75b77c56",
+ "admin-now": "61889a900a4b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e11480bc"
+   "20ae8fc5"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "045d8357"
+   "771825ad"
   ]
  },
- "admin-system": "f22cb0ddc06c",
+ "admin-system": "dff8f1d43dd7",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9925cdd9"
+   "ed03051c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "72ba39d1"
+   "63e5a423"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "73a1c42b"
   ]
  },
- "index": "737f5d43e5d4",
+ "index": "c8b8b7f6dec3",
  "index_marks": {
   "front": [
    "トップ",
-   "15380cf1"
+   "01f9aa55"
   ],
   "picks": [
    "気になるかも？",
@@ -129,11 +129,11 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "45288541"
+   "ecac7343"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "45e13214"
+   "01fad52b"
   ],
   "w-6676e624": [
    "三星手机",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "b445023a"
+   "68cc5875"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "acee7250"
+   "c1305e78"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "9cce7f16"
+   "7145d9d4"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "25234a1d"
   ]
  },
- "updated": "11.15 09:28",
- "wishlist": "5621db01013a"
+ "updated": "11.15 09:39",
+ "wishlist": "893286bcaacc"
 }
