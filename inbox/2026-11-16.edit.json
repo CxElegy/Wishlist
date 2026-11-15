@@ -131,7 +131,8 @@
   "三星手机": 3,
   "BLEACH Mirrors High": 1,
   "FROM": 1,
-  "绝区零": 1
+  "绝区零": 1,
+  "ILLIT": 2
  },
  "FROM": [
   {
@@ -154,6 +155,18 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT（アイリット）・キキ、ベストパフォーマンス賞…「意義深い一年、応援に感謝」【MMA 2026】",
+   "highlight": "ベストパフォーマンス賞",
+   "blurb": "ILLITとキキが「MMA 2026」でベストパフォーマンス賞を受賞。15日午後6時、ソウルの高尺スカイドームで開かれた授賞式で受賞した。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://pimg.mk.co.kr/news/cms/202611/15/news-p.v1.20261115.9f6b4a481b034cd9a61aaaf7d3d6a627_R.jpg"
   }
  ]
 }

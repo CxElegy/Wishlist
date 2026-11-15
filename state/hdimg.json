@@ -1874,6 +1874,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news-images.tvbs.com.tw/api/v1/image/01a1def5-4983-73cd-b1aa-02d9000705f9.jpg?t=16x9&wp=l,t&c=0,385,4080,2680&w=1200&h=675": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnf5NpyUQZzRcq1nx-ObCXEHBkc-me1kh93-P-Go12VnIgwnj_1VQ92hOSsmDOswow7fWbjUnXrpbTyEx52aBQHBDQtAu9zAzHMdIrQFXrXi8zqlDKDDUh0JvYrLjpIr_UQ==": {
   "w": 934,
   "h": 701,
@@ -2632,6 +2638,12 @@
   "w": 1600,
   "h": 1141,
   "target": 720,
+  "v": 3
+ },
+ "https://pimg.mk.co.kr/news/cms/202611/15/news-p.v1.20261115.9f6b4a481b034cd9a61aaaf7d3d6a627_R.jpg": {
+  "w": 700,
+  "h": 1091,
+  "target": 1280,
   "v": 3
  },
  "https://pimg.mk.co.kr/news/cms/202611/15/news-p.v1.20261115.ddc331d8f41644f5bb8ad06a53e76517_R.jpg": {
@@ -3704,12 +3716,6 @@
  "https://www.bing.com/th?id=ONUT.XOqyjc2rxekzC518TOCsqQ&pid=News&w=1200": {
   "w": 700,
   "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.XhFSerLH7naOVBpjRD_f6Q&pid=News&w=700": {
-  "w": 449,
-  "h": 700,
   "target": 720,
   "v": 3
  },

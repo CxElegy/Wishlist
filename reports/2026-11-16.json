@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "527a69c431ed",
+ "edit_sig": "625bb1229db4",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -494,24 +494,19 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
-     "date": "2026-11-15",
-     "n": 1,
-     "source": "YouTube · ILLIT",
-     "title": "It's Me Dance Break😎🖤 @MelonOfficial #MMA2026 #멜론뮤직어워드 #ILLIT #아일릿",
-     "url": "https://www.youtube.com/watch?v=TkV6B6j06NA"
-    },
-    {
+     "blurb": "ILLITとキキが「MMA 2026」でベストパフォーマンス賞を受賞。15日午後6時、ソウルの高尺スカイドームで開かれた授賞式で受賞した。",
      "date": "2026-11-14",
-     "n": 2,
-     "source": "Maeil Business Newspaper",
-     "title": "ILLIT（アイリット）・キキ、ベストパフォーマンス賞…「意義深い一年、応援に感謝」【MMA 2026】",
-     "url": "https://www.mk.co.kr/jp/musics/12209479"
+     "headline": "ILLIT（アイリット）・キキ、ベストパフォーマンス賞…「意義深い一年、応援に感謝」【MMA 2026】",
+     "highlight": "ベストパフォーマンス賞",
+     "image": "https://pimg.mk.co.kr/news/cms/202611/15/news-p.v1.20261115.9f6b4a481b034cd9a61aaaf7d3d6a627_R.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.mk.co.kr/jp/musics/12209479",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",
