@@ -8,7 +8,8 @@
    "refs": [
     5,
     3,
-    13
+    13,
+    90
    ],
    "event": {
     "date": "2026-11-19",
@@ -37,7 +38,8 @@
     29,
     67,
     69,
-    80
+    80,
+    92
    ],
    "image": "https://www.bing.com/th?id=ONUT.-GUQ33mXT9wP2JHemimbKA&pid=News&w=1200"
   },
@@ -61,7 +63,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    85
    ]
   },
   {
@@ -102,16 +105,18 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    39
+    39,
+    53
    ]
   },
   {
-   "headline": "There’s 1 Problem With Chris Hemsworth’s Thor In Avengers: Doomsday That No One Is Talking About",
+   "headline": "VisionQuest Officially Drives Up Avengers: Doomsday Tickets After Robert Downey Jr. Cameo",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    58,
+    52
    ]
   },
   {
@@ -264,18 +269,18 @@
   }
  ],
  "_covered": {
-  "GTA 6": 84,
-  "漫威电影": 51,
+  "GTA 6": 96,
+  "漫威电影": 61,
   "三星手机": 19,
   "チェーンソーマン": 6,
   "A2O LITE": 7,
   "dota2": 10,
-  "哈利波特剧集": 10,
+  "哈利波特剧集": 20,
   "绝区零": 5,
-  "ILLIT": 5,
+  "ILLIT": 9,
   "Vaundy": 3,
   "Astrae Oratio": 1,
-  "MMORPG 新作": 2,
+  "MMORPG 新作": 6,
   "周杰伦": 14,
   "星巴克马克杯": 3,
   "猫用品": 2,
@@ -327,7 +332,16 @@
     7,
     8,
     9,
-    10
+    10,
+    18,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19,
+    20
    ],
    "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/untitled2.jpg?w=1600&h=900&fit=crop"
   },
@@ -339,6 +353,15 @@
    "refs": [
     6,
     4
+   ]
+  },
+  {
+   "headline": "All 8 Harry Potter Movies Are Officially Disappearing Ahead of HBO’s Reboot",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -399,6 +422,18 @@
    "refs": [
     5
    ]
+  },
+  {
+   "headline": "ILLIT（アイリット）、「MMA 2026」で本賞受賞…「まだお見せしていない姿がたくさん」と受賞コメント",
+   "highlight": "本賞受賞",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    7,
+    6,
+    8
+   ]
   }
  ],
  "Vaundy": [
@@ -441,6 +476,24 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "MMO Horizon Steel Frontiers 'Nearing Completion', NC Discussing Release Timing with Sony",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "『S.T.A.L.K.E.R.』ライクなMMOシューター『PIONER』サービス終了へ―資金のめどが立たず",
+   "highlight": "サービス終了",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
