@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-15T15:32:52+00:00",
+ "checked": "2026-11-15T16:27:42+00:00",
  "fired": {
   "at": "2026-11-15T15:32:52+00:00",
   "results": {
@@ -48,62 +48,44 @@
     "resp": "cse_01W4x6f9ENAQoxHwxXKQ82Tt",
     "sig": "26126f246d48"
    },
-   "items": [
-    "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
-    "ILLIT",
-    "The Mandalorian",
-    "ぐでたま",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "漫威电影",
-    "绝区零"
-   ],
-   "last_batch": "2026-11-15T13:44:42+00:00",
+   "items": [],
+   "last_batch": "2026-11-15T15:49:36+00:00",
    "last_error": {
     "at": "2026-11-15T04:26:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 294,
-   "prog_day": "2026-11-15",
-   "ripe": [
-    "GTA 6",
-    "哈利波特剧集",
-    "漫威电影"
-   ],
-   "sig": "26126f246d48",
+   "need": false,
+   "prog": 8,
+   "prog_day": "2026-11-16",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 712511,
-   "why": "整理待ちの記事 36 件（12 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "The Mandalorian",
-    "周杰伦",
-    "ぐでたま"
-   ],
-   "need": true,
-   "sig": "1d425f036e5d",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
+    "ぐでたま",
     "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -188,12 +170,12 @@
    "runs": 11
   },
   "2026-11-15": {
-   "batches": 25,
-   "cr": 12665189,
-   "cw": 656497,
-   "in": 368,
-   "out": 55646,
-   "runs": 14
+   "batches": 28,
+   "cr": 16534119,
+   "cw": 796349,
+   "in": 488,
+   "out": 68259,
+   "runs": 17
   }
  }
 }
