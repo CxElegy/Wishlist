@@ -156,19 +156,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/90b10eb9ly1ij1dv15cagj20u31kwe81.jpg": {
-  "w": 1083,
-  "h": 2048,
-  "target": 720,
-  "v": 3,
-  "local": "pics/b8dd1f8234580401.webp",
-  "out": [
-   677,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/90b10eb9ly1ij2srxduf9j22bc330e82.jpg": {
   "w": 2000,
   "h": 2664,
@@ -2634,6 +2621,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261115-00000036-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 533,
+  "target": 720,
+  "v": 3,
+  "local": "pics/6f6184139972f284.webp",
+  "out": [
+   800,
+   533
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsdig.ismcdn.jp/mwimgs/5/7/1200w/img_57ad55df568c11a4f8b6671263b6f7e2392622.jpg": {
   "target": 720,
   "v": 3,
@@ -3486,12 +3485,6 @@
   "target": 720,
   "v": 3
  },
- "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/lucia-and-jason-gta-vi.jpg?&fit=crop": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/movieweb-featured-image-template-2026-11-11t122731-320.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3834,12 +3827,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.0Z1UWwIbUPAv55cB5RVnJw&pid=News&w=1200": {
-  "w": 472,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.0jSvDj9_OKXahGrGv8hnxA&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3860,6 +3847,12 @@
   "v": 3,
   "blur": 0.391
  },
+ "https://www.bing.com/th?id=ONUT.7HGxactznXC9QCRfChcjGw&pid=News&w=700": {
+  "w": 700,
+  "h": 359,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.A5Yit1Xmub4kAWaUb4-4wQ&pid=News&w=615": {
   "w": 615,
   "h": 615,
@@ -3872,6 +3865,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.BosuMTrMVFm3vcE5bpQc9Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.FqDAIPjWrsNf9Wblxsuczg&pid=News&w=1200": {
   "w": 700,
@@ -3931,6 +3930,12 @@
   "v": 3,
   "blur": 0.383
  },
+ "https://www.bing.com/th?id=ONUT.QqoZxs0-OekvDp5hmSqCPw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546": {
   "w": 546,
   "h": 409,
@@ -3955,13 +3960,13 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ZzSrdKSQOJpuveN0DxDbSQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 392,
+ "https://www.bing.com/th?id=ONUT.bEJTIMIV_GUuXauJxLkw-A&pid=News&w=821": {
+  "w": 636,
+  "h": 700,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.gCJjsPbZWvEvSDn-ti42fQ&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.c_5I_z0TjNqvNUEZlEUdMg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
