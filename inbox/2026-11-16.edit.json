@@ -147,7 +147,8 @@
   "ILLIT": 2,
   "日本顶级网球赛事": 2,
   "The Mandalorian": 1,
-  "ぐでたま": 1
+  "ぐでたま": 1,
+  "漫威电影": 14
  },
  "FROM": [
   {
@@ -216,6 +217,56 @@
     1
    ],
    "image": "https://news.walkerplus.com/article/54048/295705_615.jpg"
+  }
+ ],
+ "漫威电影": [
+  {
+   "headline": "Kevin Feige Felt Bringing X-Men Into ‘Avengers’ Franchise Was “Fun Way” To Celebrate 25 Years",
+   "highlight": "Fun Way",
+   "blurb": "Kevin Feige says bringing the X-Men into the Avengers franchise was a fun way to celebrate 25 years.",
+   "weight": "lead",
+   "refs": [
+    4
+   ],
+   "image": "https://deadline.com/wp-content/uploads/2026/11/X-MEN-Hugh-Jackman-James-Marsden-Patrick-Stewart-Halle-Berry-Famke-Janssen-2000.-TM-and-Copyri-MCDAVDO-WD014-1000.jpg"
+  },
+  {
+   "headline": "Marvel Reveals It Spent $120 Million Developing ‘Avengers: Doomsday’ Prequel",
+   "highlight": "$120 Million",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
+  },
+  {
+   "headline": "Robert Downey Jr.'s Latest MCU Cameo Makes Avengers History",
+   "highlight": "Avengers History",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    12,
+    2
+   ]
+  },
+  {
+   "headline": "Marvel Hero Officially Eyes New Solo Action Sequels Ahead of Avengers: Doomsday Release",
+   "highlight": "Solo Action Sequels",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Universal’s $66 Million Horror Story To Take On ‘Avengers: Doomsday’",
+   "highlight": "$66 Million",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
   }
  ]
 }

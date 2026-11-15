@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "93bceb6710c1",
+ "edit_sig": "f840073046c1",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -142,108 +142,59 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Kevin Feige says bringing the X-Men into the Avengers franchise was a fun way to celebrate 25 years.",
      "date": "2026-11-15",
-     "n": 1,
-     "source": "IMDb",
-     "title": "From ScarJo to Mahershala Ali: MCU’s 6 Most Mismanaged Stars, Ranked",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBCZE80U3Q2M3hGMFFlSFVweTAydU43M0FBc05rOGZNU0xzV1pXbkpfd1R6d3g0Y2J0ZkdBdVRDQ0RhbFF1ZVB6eFNOeWtqNHpuYzFRS2x4WGZwTGtWWFVKWFUtS2hhWXM?oc=5"
+     "headline": "Kevin Feige Felt Bringing X-Men Into ‘Avengers’ Franchise Was “Fun Way” To Celebrate 25 Years",
+     "highlight": "Fun Way",
+     "image": "https://deadline.com/wp-content/uploads/2026/11/X-MEN-Hugh-Jackman-James-Marsden-Patrick-Stewart-Halle-Berry-Famke-Janssen-2000.-TM-and-Copyri-MCDAVDO-WD014-1000.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://deadline.com/2026/11/kevin-feige-x-men-avengerss-fun-way-celebrate-25-years-1237224515/",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-13",
-     "n": 2,
-     "source": "ScreenRant",
-     "title": "Avengers: Endgame's Ending Explained (Including Encore's New Scenes)",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNM3A1aE8xSlc5ODNEbXU4c1JEQ2F3TGNoZlM4dUlicU83aUEzbXItaE1fSGtWNFdiZjB6amZ6MUhON01mRFV5MjlaQ0lxYlVvYjV5TjZLVE1zWTJ6VEtiZktmMmVqVFY4ajlGQXBjcmd6X3VibUtZcTNIUnZDZTdrdFBUdw?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-15",
-     "n": 3,
-     "source": "MovieWeb",
-     "title": "Marvel Hero Officially Eyes New Solo Action Sequels Ahead of Avengers: Doomsday Release",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBGOVdZN2hVVkNiRC1nd3cxdVNDSkZMMFFHRUlhWE14MEY5bVpFdjJydVU1elFzSF83OHNCNHd2WHRZT181UXpqM3BPSERGUkpnM3pmdWtJWmZDVE9MNm5hY2JpbGI4b2x0Y1ZnemZ4Umw?oc=5"
+     "headline": "Marvel Reveals It Spent $120 Million Developing ‘Avengers: Doomsday’ Prequel",
+     "highlight": "$120 Million",
+     "image": "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://www.forbes.com/sites/carolinereid/2026/11/15/marvel-reveals-it-spent-120-million-developing-avengers-doomsday-prequel/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-15",
-     "n": 4,
-     "source": "Deadline",
-     "title": "Kevin Feige Felt Bringing X-Men Into ‘Avengers’ Franchise Was “Fun Way” To Celebrate 25 Years",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPNVc1NzlKdmszMFZ2NzJSc3pCT094YTN4LWJnMFFjeF9HZEZ4YUE0Vm5GOVcwbVFyMzhUZEx1bWRWZ09tbGtFWDg1b09aTW9aVkhkZkxTOG1oN3BPbkVFLWM2V0txeDZQY1hJMHY3ekFjR2cxNUw4S3IyMmY3QnQ3ZHpzOGR3bzQwVm9mSlpNMGkySDB2ZTJhU0RxVQ?oc=5"
+     "headline": "Robert Downey Jr.'s Latest MCU Cameo Makes Avengers History",
+     "highlight": "Avengers History",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/robert-downey-jr-standing-in-a-spaceship-in-avengers-infinity-war.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/robert-downey-jr-visionquest-cameo-doom-thanos-record/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-15",
-     "n": 5,
-     "source": "Comic Book Resources",
-     "title": "Doctor Doom’s Latest MCU Appearance Has Fans Speculating About a Forgotten Secret Wars Comics Villain",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNZmQzTDA5dHkzejRjZ1pCckw2UXpyT2d2OEpQWEhHZTRweFZTTVdieFdlUDFUeG5Ua0dMUTVIUnJKOHZLV1c2N0loNzRmSEpIVGhnMlF2cXg1a0ZPNWE3Q2VzaHJJUmZEdEpwcGNudTRzUUg3bnBVbkJXYUR6UHZYQlZmOG1JN3NWLTR6dmxKUWFlSmVuRlRJSHFVNEw4dV9DVXBFeW0xalJhUWgzZko4dXM0RUNSUTc1bm5LNjVR?oc=5"
+     "headline": "Marvel Hero Officially Eyes New Solo Action Sequels Ahead of Avengers: Doomsday Release",
+     "highlight": "Solo Action Sequels",
+     "image": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/vision-scarlet-witch-and-falcon-in-captain-america-civil-war.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://movieweb.com/captain-america-mcu-future-anthony-mackie/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-15",
-     "n": 6,
-     "source": "ScreenRant",
-     "title": "Robert Downey Jr.'s Latest MCU Cameo Makes Avengers History",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNby05TXhFSUVKcm1mTW1QcTd0NDRDQ2dhaUFFR0ItYWE1M1BpSlRhMWhRYlVFWWJjcUdUa1lIWGE1cU5vQ2ZldndBSURGVWZZTF9KQUVHSmQtN3U5WGdKN2NjSnRrdEVEUElGbkVPQjFhc2tESEFKeGlOQkVZMVA2LVBWTQ?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 7,
-     "source": "ScreenRant",
-     "title": "10 Strongest MCU Characters Confirmed For Avengers: Doomsday, Ranked By Power (#2 Just Changed Everything)",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE8ySnAzeDQzSFFQa2wwamEwa1RHQVotTUpCMDNfLVN2NS1OZzU3ZGpmZVU5NUtRLVVuaEFoM0ctNXI3c0NjLTIwS1JVdm04Q0p1dXlaQ3lEeUZuTW4xU2x0MGY1RWZUcDF2OWdvcHpqdVhUNWloZ2hNeXh4eFlXdw?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 8,
-     "source": "ComicBook.com",
-     "title": "Chris Evans' Forgotten Superhero Movie Is an Underrated Gem, And Predates the MCU's Captain America",
-     "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQWW9ncGVkZjVsVzR3SndRLU84OE5lZVp6bTdUYVRUSXB4RVpfa3R1Z003NC1vdHRKT1M0bkpGdXVMM1g0dGh6bk1wSUx1MUp1N3RPRlVaR19YSGxnQjVlNjNZVHFvMHZLNk1BaGdHM2NCcFdISFd0eDRkc1ZKOThoV25tclM4UlpreU45SFNpVWJDcWdrbGZGSkhjVEt6eFBvZFlzSEJHTmJjbXBCVHo5NlNiWkFUTl80NUo2RTFQRUJINEpvaldHNFdKVi1tcGs?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 9,
-     "source": "Yahoo Finance",
-     "title": "Universal’s $66 Million Horror Story To Take On ‘Avengers: Doomsday’",
-     "url": "https://finance.yahoo.com/media-advertising/articles/universal-66-million-horror-story-200204808.html"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 10,
-     "source": "Variety on MSN",
-     "title": "Domestic Ticket Sales Up 20% From 2025 Before Hunger Games, Dune, Avengers",
-     "url": "https://www.msn.com/en-us/money/general/domestic-ticket-sales-up-20-from-2025-before-hunger-games-dune-avengers/ar-AA2hulvP"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 11,
-     "source": "Forbes",
-     "title": "Marvel Reveals It Spent $120 Million Developing ‘Avengers: Doomsday’ Prequel",
-     "url": "https://www.forbes.com/sites/carolinereid/2026/11/15/marvel-reveals-it-spent-120-million-developing-avengers-doomsday-prequel/"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 12,
-     "source": "Yahoo",
-     "title": "I Threw On Avengers Endgame: Encore To Grab All The New Doomsday Scene Timestamps",
-     "url": "https://www.yahoo.com/entertainment/movies/articles/threw-avengers-endgame-encore-grab-152224041.html"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 13,
-     "source": "Yahoo",
-     "title": "Marvel has now given Doctor Doom the same number of appearances as Thanos in just over a year",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNMWFabWdCSHNvRmtPaVFybTd4bmU0cXV4RkYyclFJVjJNTmUtdElzTWxkYVpwdDdtTnRIZmNqWGg2bHBmVXNZbGRMa2dndGlacXVvekRvSU9LemFXTTMtNjlwSWU2Z1hubno1cVI2azZ4bk9RcTE4X19RZEs1aHVUeDZzaHB5YjZ6bGxvSE9DMWJ2UUpFYmFIbnpPcw?oc=5"
-    },
-    {
-     "date": "2026-11-13",
-     "n": 14,
-     "source": "Rotten Tomatoes",
-     "title": "The Essential Marvel Movies to Watch Before Avengers: Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9IMEZKVk5vTjdpRWY3R3hCdWZLR0hEaUpBRGRNaW5LV3VVSFQ4LW1ZU2FKVGFQREV0QlQzTFVLbU9WUVdZa2UwNEZuTDRXRldZblhUT2Ntd3QzYUJMQ2RjYmQ4NkhfMVNWT1FnbWdNb19DYzM3U3p6VFpJSHhXdw?oc=5"
+     "headline": "Universal’s $66 Million Horror Story To Take On ‘Avengers: Doomsday’",
+     "highlight": "$66 Million",
+     "image": "https://s.yimg.com/lo/mysterio/api/7b8b62bbe6292fadc10cbfe1716a1697650cb2f4967f728742b07e66289fa95a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2F938b4a4445b3ebd7e9a716c4348411e9.jpg",
+     "image_via": "og:image",
+     "url": "https://finance.yahoo.com/media-advertising/articles/universal-66-million-horror-story-200204808.html",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",
