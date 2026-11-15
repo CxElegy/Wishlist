@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-15T19:17:41+00:00",
+ "changed": true,
+ "checked": "2026-11-15T20:18:07+00:00",
  "fired": {
   "at": "2026-11-15T17:25:14+00:00",
   "results": {
@@ -70,11 +70,17 @@
    "need": true,
    "prog": 34,
    "prog_day": "2026-11-16",
-   "ripe": [],
-   "sig": "336c9b4cd7e4",
+   "ripe": [
+    "ILLIT",
+    "The Mandalorian",
+    "ぐでたま",
+    "周杰伦",
+    "日本顶级网球赛事"
+   ],
+   "sig": "87c576287a6d",
    "token_cap": 1000000,
    "tokens_today": 59797,
-   "why": "整理待ちの記事 14 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 14 件（9 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
