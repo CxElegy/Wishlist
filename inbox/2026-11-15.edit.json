@@ -32,7 +32,11 @@
     45,
     56,
     57,
-    60
+    60,
+    6,
+    29,
+    67,
+    69
    ],
    "image": "https://www.bing.com/th?id=ONUT.-GUQ33mXT9wP2JHemimbKA&pid=News&w=1200"
   },
@@ -45,7 +49,8 @@
     11,
     30,
     31,
-    49
+    49,
+    65
    ]
   },
   {
@@ -85,7 +90,17 @@
    "weight": "normal",
    "refs": [
     2,
-    24
+    24,
+    44
+   ]
+  },
+  {
+   "headline": "New Doctor Doom Appearance Solves A Major Avengers: Doomsday Mystery (& Raises 2 Huge Questions)",
+   "highlight": "Doctor Doom",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    39
    ]
   },
   {
@@ -103,19 +118,11 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6,
     3,
+    6,
     11,
-    36
-   ]
-  },
-  {
-   "headline": "Avengers: Secret Wars' Rumored Spider-Man Plot Can Use 1 Special Symbiote Character",
-   "highlight": "Secret Wars",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    7
+    36,
+    41
    ]
   }
  ],
@@ -224,19 +231,19 @@
   }
  ],
  "_covered": {
-  "GTA 6": 64,
-  "漫威电影": 38,
+  "GTA 6": 72,
+  "漫威电影": 47,
   "三星手机": 12,
   "チェーンソーマン": 6,
   "A2O LITE": 5,
   "dota2": 6,
-  "哈利波特剧集": 1,
+  "哈利波特剧集": 7,
   "绝区零": 2,
-  "ILLIT": 2,
+  "ILLIT": 5,
   "Vaundy": 2,
   "Astrae Oratio": 1,
   "MMORPG 新作": 2,
-  "周杰伦": 2,
+  "周杰伦": 11,
   "星巴克马克杯": 3,
   "猫用品": 2,
   "日本顶级网球赛事": 1,
@@ -263,7 +270,31 @@
    ]
   }
  ],
- "哈利波特剧集": [],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO shares first full Harry Potter series clip set at Hogwarts",
+   "highlight": "first full Harry Potter series clip",
+   "blurb": "HBO released the first full clip from the Harry Potter series, set at Hogwarts: Harry's first feast in the Great Hall and McGonagall's reaction to him joining Gryffindor.",
+   "weight": "lead",
+   "refs": [
+    2,
+    3,
+    5,
+    7
+   ],
+   "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/untitled2.jpg?w=1600&h=900&fit=crop"
+  },
+  {
+   "headline": "Nickelodeon KCAs drops trailer for HBO's Harry Potter series - and the internet is divided",
+   "highlight": "internet is divided",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    4
+   ]
+  }
+ ],
  "绝区零": [
   {
    "headline": "绝区零3.3最久未复刻角色盘点：7位代理人如今还值得期待吗？",
@@ -284,6 +315,24 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "ILLIT adds seventh song to Spotify’s 200 million-stream club with ‘It’s me’",
+   "highlight": "200 million-stream",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Kohaku 2026 lineup: Ado, YOASOBI and ILLIT headline NHK's big night",
+   "highlight": "Kohaku 2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -328,7 +377,22 @@
    "blurb": "周杰伦在社交平台发文充当和事老，陈冠希在蒲头主动搭讪，与余文乐关系破冰在望。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    3,
+    7,
+    9
+   ],
+   "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261115/photo/bkn-20261115000118716-1115_00862_001_02b.jpg?20261114221958"
+  },
+  {
+   "headline": "山下智久高雄开骚与周杰伦梦幻互动",
+   "highlight": "梦幻互动",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6,
+    4
    ]
   }
  ],

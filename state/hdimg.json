@@ -568,13 +568,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
-  "w": 800,
-  "h": 562,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.327
- },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
@@ -1204,6 +1197,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hk.on.cc/hk/bkn/cnt/entertainment/20261115/photo/bkn-20261115113442018-1115_00862_001_02b.jpg?20261115115016": {
+  "w": 780,
+  "h": 1387,
+  "target": 1280,
+  "v": 3
+ },
  "https://hobby.watch.impress.co.jp/img/hbw/list/2152/818/02.jpg": {
   "w": 1524,
   "h": 1920,
@@ -1392,12 +1391,6 @@
   "target": 1280,
   "v": 3
  },
- "https://images.thedirect.com/media/article_full/tom-holland-tobey-maguire-spider-man.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1TIlCI.img": {
   "w": 640,
   "h": 360,
@@ -1533,9 +1526,21 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hrAkP.img": {
+  "w": 1200,
+  "h": 795,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hriO8.img": {
   "w": 1200,
   "h": 624,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hsTAK.img": {
+  "w": 1456,
+  "h": 819,
   "target": 720,
   "v": 3
  },
@@ -3472,6 +3477,18 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/untitled2.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/doctor-doom-in-visionquest-s-post-credits-scene.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/gta-6-new-screenshots-jason-lucia.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3845,12 +3862,6 @@
   "v": 3,
   "blur": 0.383
  },
- "https://www.bing.com/th?id=ONUT.PSAopu4_9HBPJyzSc5NbmQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.UmrUWqbE3o-U9f9KWMz6ag&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3875,6 +3886,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.gCJjsPbZWvEvSDn-ti42fQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.if7PjIjrIEYNee0BpacpMA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3893,6 +3910,13 @@
    609
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
+  "w": 700,
+  "h": 491,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
  },
  "https://www.bing.com/th?id=ONUT.pJ6NgPDwjAycHuiZLYWPGA&pid=News&w=700": {
   "w": 700,
@@ -3945,12 +3969,6 @@
    669
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ORMS.58c0bb5f2501f0e4b44e99fc74592845&pid=News&w=788": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
