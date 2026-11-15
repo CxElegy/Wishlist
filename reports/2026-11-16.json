@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "0379beeb1f40",
+ "edit_sig": "527a69c431ed",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -404,17 +404,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-15",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "【コスプレ】黒ニーハイ×ガーターベルトで魅せる妖艶な太もも！『ゼンゼロ』レミエールの妖しくも美しい魅力に惑わされる【写真11枚】（インサイド）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAxQXphQVh2T2h5T1dKVk5rNER6WXVRbkFNMmNSQ0s0UjZtWXo0TkZzZXRsNkctSXFSVDZEcjAwMGNicldaVGl6R1pfLUdsVko3RXNuY0NKYm13SFQ4MFdkTXZ1d1ppb2RmT2VfLXJCalBVdWF4Wmt6Z0FGR1A5OU0?oc=5"
+     "headline": "【コスプレ】黒ニーハイ×ガーターベルトで魅せる妖艶な太もも！『ゼンゼロ』レミエールの妖しくも美しい魅力に惑わされる【写真11枚】",
+     "highlight": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261115-00000036-isd-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/56c26cc9184ea75238e7308ed7c389f4ca6a3a19",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -526,17 +528,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "The MGM+ horror staple From finally began streaming on Netflix, and ahead of its final season has proved a hit.",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "Screen Rant on MSN",
-     "title": "'Twin Peaks meets Stephen King' series, now a major Netflix hit, only has one season left",
-     "url": "https://www.msn.com/en-ca/news/other/twin-peaks-meets-stephen-king-series-now-a-major-netflix-hit-only-has-one-season-left/ar-AA2hsBhk"
+     "headline": "'Twin Peaks meets Stephen King' series, now a major Netflix hit, only has one season left",
+     "highlight": "only has one season left",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hsQ66.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-ca/news/other/twin-peaks-meets-stephen-king-series-now-a-major-netflix-hit-only-has-one-season-left/ar-AA2hsBhk",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
