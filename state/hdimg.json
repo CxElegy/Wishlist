@@ -60,6 +60,12 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261115ac/533/w480h853/20261115/095b-319eba518b6123a58709f48032949b5e.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -137,14 +143,27 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/90b10eb9ly1ij1dv15cagj20u31kwe81.jpg": {
-  "w": 1083,
-  "h": 2048,
+ "http://wx2.sinaimg.cn/middle/6f5ef307gy1ij1zbcu2afj20xc0xcdux.jpg": {
+  "w": 1200,
+  "h": 1200,
   "target": 720,
   "v": 3,
-  "local": "pics/b8dd1f8234580401.webp",
+  "local": "pics/30af9400868d74dc.webp",
   "out": [
-   677,
+   1200,
+   1200
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx2.sinaimg.cn/middle/90b10eb9ly1ij2srxduf9j22bc330e82.jpg": {
+  "w": 2000,
+  "h": 2664,
+  "target": 720,
+  "v": 3,
+  "local": "pics/4bdd60641401bdb0.webp",
+  "out": [
+   961,
    1280
   ],
   "why": "防盗链",
@@ -1520,6 +1539,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hsmhl.img": {
+  "w": 810,
+  "h": 540,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
   "w": 720,
   "h": 259,
@@ -1555,12 +1580,6 @@
  "https://img.etimg.com/thumb/msid-135658667,width-1200,height-900,imgsize-1144081,overlay-economictimes/articleshow.jpg": {
   "w": 1200,
   "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_1792559495320859328.jpg": {
-  "w": 700,
-  "h": 1050,
   "target": 720,
   "v": 3
  },
@@ -1804,6 +1823,12 @@
   "w": 880,
   "h": 290,
   "target": 1280,
+  "v": 3
+ },
+ "https://matsumoto.goguynet.jp/wp-content/uploads/sites/89/2026/11/bibis-boutique-aeon-20261113043146.jpg": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
   "v": 3
  },
  "https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/4023/files/2026/11/449921812-1200x675.jpg": {
@@ -2946,6 +2971,12 @@
   "v": 3,
   "blur": 0.405
  },
+ "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/0077d72c4379a412a7fab37d93718c2fa2d033e557af9b4fc6c700b97135e31e/lightyear_networkapi/resizefill_w960_h540%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd3cbd44d1b4a0104808f4a1b51d68371.jpg": {
   "w": 960,
   "h": 540,
@@ -3717,6 +3748,12 @@
   "v": 3,
   "blur": 0.404
  },
+ "https://www.bing.com/th?id=ONUT.0Z1UWwIbUPAv55cB5RVnJw&pid=News&w=1200": {
+  "w": 472,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.0jSvDj9_OKXahGrGv8hnxA&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3789,12 +3826,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.K6lKE0FQvUZRVov6jcZl1g&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.KkdkWY33I2sB7CHn2yWe_A&pid=News&w=1000": {
   "w": 700,
   "h": 394,
@@ -3823,12 +3854,6 @@
  "https://www.bing.com/th?id=ONUT.UmrUWqbE3o-U9f9KWMz6ag&pid=News&w=1200": {
   "w": 700,
   "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.WONYtMnno6z1Qjd3TrwwxQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3868,6 +3893,12 @@
    609
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.pJ6NgPDwjAycHuiZLYWPGA&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
@@ -3914,6 +3945,12 @@
    669
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ORMS.58c0bb5f2501f0e4b44e99fc74592845&pid=News&w=788": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
