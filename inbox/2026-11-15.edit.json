@@ -84,7 +84,8 @@
    "blurb": "《復仇者聯盟：毀滅日》新預告曝光，小勞勃道尼飾演的反派「兩根手指擋下雷神」。",
    "weight": "lead",
    "refs": [
-    9
+    9,
+    67
    ],
    "image": "https://attach.setn.com/newsimages/2026/08/15/5670686-PH.jpg"
   },
@@ -106,7 +107,8 @@
    "weight": "normal",
    "refs": [
     39,
-    53
+    53,
+    66
    ]
   },
   {
@@ -116,7 +118,10 @@
    "weight": "normal",
    "refs": [
     58,
-    52
+    52,
+    68,
+    64,
+    62
    ]
   },
   {
@@ -139,6 +144,15 @@
    "weight": "normal",
    "refs": [
     51
+   ]
+  },
+  {
+   "headline": "Sandra Hüller joins Avengers: Doomsday in a secret cameo role",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    71
    ]
   }
  ],
@@ -291,7 +305,7 @@
  ],
  "_covered": {
   "GTA 6": 96,
-  "漫威电影": 61,
+  "漫威电影": 72,
   "三星手机": 22,
   "チェーンソーマン": 7,
   "A2O LITE": 10,

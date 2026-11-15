@@ -581,13 +581,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
-  "w": 800,
-  "h": 562,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.327
- },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
@@ -1003,12 +996,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://fieldcaster.net/wp-content/uploads/2026/11/67b206529b7a80ce267110e70e7f262d.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
   "v": 3
  },
  "https://file.thisisgame.com/upload/email-attachments/2026/11/05/1639295170308889523_76b45f11-bbae-46ae-b8ae-d6f55cb543b0_%5B%EC%9D%B4%EB%AF%B8%EC%A7%801%5D%20%EB%84%A5%EC%8A%A8%2C%20%EC%8B%A0%EC%9E%91%20MMORPG%20%E2%80%98%ED%85%9C%EB%B9%A8%20%EC%98%A4%EB%B2%84%EA%B8%B0%EC%96%B4%EB%93%9C%E2%80%99%2011%EC%9B%94%2026%EC%9D%BC%20%EC%A0%95%EC%8B%9D%20%EC%B6%9C%EC%8B%9C%21.jpg": {
@@ -1436,12 +1423,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.thedirect.com/media/article_full/avengers-doomsday-trailer-need.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://images.thedirect.com/media/article_full/doomleader.jpg": {
   "w": 1280,
   "h": 720,
@@ -1629,6 +1610,12 @@
   "w": 1672,
   "h": 941,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2htcVk.img": {
+  "w": 768,
+  "h": 1024,
+  "target": 1280,
   "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gRDVj.img": {
@@ -2694,6 +2681,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-15"
+ },
+ "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
+  "w": 1600,
+  "h": 840,
+  "target": 720,
+  "v": 3
  },
  "https://ni.yam.com/20261110/jp-prt-85653-838-1-261110025630647-3bb0d786b74afbc6.webp": {
   "w": 1920,
@@ -4084,6 +4077,13 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
+  "w": 700,
+  "h": 491,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
+ },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4543,17 +4543,24 @@
   "target": 720,
   "v": 3
  },
- "https://www.wowkorea.jp/img/news/107/539793/456608_1280W.webp": {
-  "w": 1280,
-  "h": 960,
-  "target": 1280,
-  "v": 3
- },
  "https://www.wowkorea.jp/img/news/108/542268/459714_tmb.webp": {
   "w": 320,
   "h": 240,
   "target": 720,
   "v": 3,
   "blur": 0.41
+ },
+ "https://www3.wowkorea.jp/img/news/108/541853/459107_tmb.webp": {
+  "w": 320,
+  "h": 240,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.622,
+  "local": "pics/74944215b26dbb65.webp",
+  "out": [
+   960,
+   720
+  ],
+  "why": "看不清"
  }
 }

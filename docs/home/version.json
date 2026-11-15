@@ -1,32 +1,32 @@
 {
- "admin": "2edb954f6fdb",
- "admin-ai": "708c3ecd4d57",
+ "admin": "607248f2f6bf",
+ "admin-ai": "45918605fc50",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "140120f1"
+   "fbf09491"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "6b1a6ff0"
+   "7b231986"
   ]
  },
- "admin-boards": "097502a7f223",
+ "admin-boards": "1b973d8c2f7e",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "c19bb739"
+   "044fccf6"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "508aa20b3bc8",
+ "admin-emblem": "c6180d4ea2b0",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a3d02d5c"
+   "eb3ddb51"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "1056bbc39250",
+ "admin-now": "7c4733a9b62a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "72fd4e69"
+   "447e1b56"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c5c57ddb"
+   "7bcbefab"
   ]
  },
- "admin-system": "b0b099de1533",
+ "admin-system": "d0f71be4f2e1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "64a8f1a5"
+   "6912352f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "da99a46f"
+   "f3e3746c"
   ]
  },
  "admin_marks": {},
- "heat": "61913a17ccb9",
+ "heat": "47d0e843b53e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "29c78e99"
+   "5e2efea1"
   ],
   "ranking": [
    "ランキング",
-   "7de67faa"
+   "ec308dd0"
   ]
  },
- "index": "de327e9a963b",
+ "index": "9ac7be1e6d98",
  "index_marks": {
   "front": [
    "トップ",
-   "0f1984d5"
+   "b69c759f"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "430fe508"
+   "5c3fce58"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "c1305e78"
+   "acee7250"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "fd04e7cc"
+   "2e8dab1f"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "ba9215bb"
   ]
  },
- "updated": "11.16 00:30",
+ "updated": "11.16 00:38",
  "wishlist": "bc3a3c088252"
 }
