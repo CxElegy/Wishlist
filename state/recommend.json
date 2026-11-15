@@ -41,6 +41,7 @@
   "https://note.com/trend_select/n/n5c84145725b9?hl=en": "https://www.bing.com/th?id=ONUT.-m1aWc14g1nOCLd7ONKAoA&pid=News&w=700",
   "https://prtimes.jp/main/html/rd/p/000000084.000049377.html": "https://prcdn.freetls.fastly.net/release_image/49377/84/49377-84-f392fb2efef8b7fcd2df9f9853680105-3900x2194.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://realsound.jp/2026/11/post-2584847.html": "https://realsound.jp/wp-content/uploads/2026/11/20261115-ichiban-99.jpeg",
+  "https://samsungmagazine.eu/zh-CN/2026/11/15/5-upgrades-galaxy-s27-ultra/": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-recenze-1.jpg",
   "https://t.co/JqUvlHGSKl": null,
   "https://t.co/XMlZZx2nzv": null,
   "https://the-gadgeteer.com/2026/11/09/samsung-black-friday-deals-2026/": "https://the-gadgeteer.com/wp-content/uploads/2026/11/samsung-z-fold8-hero-bf-tr-uniform.jpg",
@@ -67,7 +68,6 @@
   "https://www.msn.com/en-us/news/other/magical-grand-banquet-in-surprise-first-clip-from-harry-potter-hbo-tv-series/ar-AA2htIrg": "https://www.bing.com/th?id=ONUT.XOqyjc2rxekzC518TOCsqQ&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/ms-marvel-star-iman-vellani-believes-this-is-the-perfect-x-men-story-and-shes-right/ar-AA2huIzF": "https://www.bing.com/th?id=ONUT.yT0kCzeHJgVfedeEjsngRA&pid=News&w=1200",
   "https://www.msn.com/en-us/technology/consumer-electronics/real-galaxy-s27-ultra-design-suggests-aesthetics-are-low-on-the-list/ar-AA2huFKw": "https://www.bing.com/th?id=ONUT.5FaIo7zDs0jDHqJ-5aUbJQ&pid=News&w=1200",
-  "https://www.msn.com/ko-kr/news/other/%EC%97%B0%EC%86%8D-%EC%A0%81%EC%9E%90-%EB%AA%B0%EB%A6%B0-%EB%85%B8%ED%83%9C%EB%AC%B8-%EA%B0%A4s27-%EC%97%91%EC%8B%9C%EB%85%B8%EC%8A%A4-%ED%99%95%EB%8C%80-%EC%A0%95%EB%A9%B4%EB%8F%8C%ED%8C%8C/ar-AA2huw3c": "https://www.bing.com/th?id=ONUT.msmyk1BvAPruxbYzo6i0Qw&pid=News&w=1113",
   "https://www.newspim.com/news/view/20261112001395": "https://www.bing.com/th?id=ONUT.qqJZSYRcq871-q0kraSeaQ&pid=News&w=400",
   "https://www.sanyonews.jp/article/1985192?rct=movie_animation&kw=2024%3Cbr%20/%3E%E2%80%9D%20target": "https://static.sanyonews.jp/image/article/size1/f/3/2/6/f326269d8ddcb4c98d77b3cdb2ef639f_1.jpg",
   "https://www.sina.cn/news/detail/5363439830829086.html": "http://wx1.sinaimg.cn/middle/007148Qbly1iiw7o15fbmj30n012owfu.jpg",
@@ -736,21 +736,33 @@
    "batch": 1,
    "because": "三星手机",
    "date": "2026-11-15",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.msmyk1BvAPruxbYzo6i0Qw&pid=News&w=1113",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-recenze-1.jpg",
    "kind": "board",
    "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
    "score": 8,
-   "source": "IT 조선 on MSN",
+   "source": "Samsung Magazine",
    "taste": [
+    [
+     "galaxy",
+     7
+    ],
+    [
+     "三星 Galaxy",
+     7
+    ],
     [
      "作品:三星手机",
      7
     ]
    ],
-   "title": "연속 적자 몰린 노태문, 갤S27 엑시노스 확대 정면돌파",
-   "url": "https://www.msn.com/ko-kr/news/other/%EC%97%B0%EC%86%8D-%EC%A0%81%EC%9E%90-%EB%AA%B0%EB%A6%B0-%EB%85%B8%ED%83%9C%EB%AC%B8-%EA%B0%A4s27-%EC%97%91%EC%8B%9C%EB%85%B8%EC%8A%A4-%ED%99%95%EB%8C%80-%EC%A0%95%EB%A9%B4%EB%8F%8C%ED%8C%8C/ar-AA2huw3c",
-   "words": [],
+   "title": "以下是我希望看到的5项主要改进： Galaxy S27 Ultra 我会告诉你为什么",
+   "url": "https://samsungmagazine.eu/zh-CN/2026/11/15/5-upgrades-galaxy-s27-ultra/",
+   "words": [
+    "galaxy"
+   ],
    "work": "三星手机"
   },
   {
@@ -1845,11 +1857,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1857,15 +1869,15 @@
    8
   ],
   [
-   "作品:三星手机",
-   7
-  ],
-  [
    "三星 Galaxy",
    7
   ],
   [
    "galaxy",
+   7
+  ],
+  [
+   "作品:三星手机",
    7
   ]
  ]
