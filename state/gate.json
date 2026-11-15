@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-15T13:38:39+00:00",
+ "changed": true,
+ "checked": "2026-11-15T14:17:58+00:00",
  "fired": {
   "at": "2026-11-15T13:38:39+00:00",
   "results": {
@@ -51,24 +51,21 @@
    "items": [
     "BLEACH Mirrors High",
     "FROM",
-    "周杰伦",
     "绝区零"
    ],
-   "last_batch": "2026-11-15T12:50:12+00:00",
+   "last_batch": "2026-11-15T13:44:42+00:00",
    "last_error": {
     "at": "2026-11-15T04:26:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 292,
+   "prog": 294,
    "prog_day": "2026-11-15",
-   "ripe": [
-    "周杰伦"
-   ],
-   "sig": "1f7426552d2e",
+   "ripe": [],
+   "sig": "0cfd4ae9ffc8",
    "token_cap": 1000000,
-   "tokens_today": 667463,
-   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 712511,
+   "why": "整理待ちの記事 3 件（3 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -177,12 +174,12 @@
    "runs": 11
   },
   "2026-11-15": {
-   "batches": 24,
-   "cr": 12323724,
-   "cw": 612867,
-   "in": 356,
-   "out": 54240,
-   "runs": 13
+   "batches": 25,
+   "cr": 12665189,
+   "cw": 656497,
+   "in": 368,
+   "out": 55646,
+   "runs": 14
   }
  }
 }
