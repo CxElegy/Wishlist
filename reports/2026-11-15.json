@@ -1,6 +1,6 @@
 {
  "date": "2026-11-15",
- "edit_sig": "7b6aeea11d2c",
+ "edit_sig": "1c4b4ae99d10",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -13,8 +13,8 @@
      "date": "2026-11-12",
      "headline": "엔씨 '아스오라' 부스 공개 \"AGF 2026 최대 규모\"",
      "highlight": "AGF 2026 최대 규모",
-     "image": "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700",
+     "image_via": "Bing 缩略图",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216955",
      "weight": "lead"
     }
@@ -457,33 +457,6 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "name": "ぐでたま",
-   "pending": [
-    {
-     "date": "2026-11-09",
-     "n": 1,
-     "source": "Polygon",
-     "title": "Where is Tophat Gudetama this week in Hello Kitty Island Adventure?",
-     "url": "https://www.polygon.com/hello-kitty-island-adventure-guides/518836/tophat-gudetama-location-map-week-where-to-find/"
-    }
-   ],
-   "section": "好物",
-   "stories": [],
-   "subtitle": "Gudetama",
-   "theme": {
-    "accent": "#885D0C",
-    "alt_accent": "#EEB444",
-    "alt_bg": "#211C12",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7F2E9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
    "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
    "facts": [
     {
@@ -493,25 +466,16 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-15",
-     "n": 7,
-     "source": "Yahoo!ニュース",
-     "title": "劇場版「チェンソーマン レゼ篇」がシネマライブ 描き下ろしビジュアルを公開（WWDJAPAN.com）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9MZTNWazFwY0NveG1sZ1NQNmdzeVdMUWdtRi0tcG9sOUlXekw5QlBPS2gzSC1ZWFBzRFAzaHY0RTl4Mk4zZFRNOF9WWkMyQ0txMHlRWHpQQ2FkaWlkdEtINmlENWVPdDV6OGVxaTd1WV9JS21kNEFUVzlneUlJUWM?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
      "blurb": "Reze Arc CINEMA LIVE 2027 announces February dates and a new key visual.",
-     "date": "2026-11-14",
-     "headline": "Chainsaw Man – The Movie: Reze Arc -CINEMA LIVE 2027- Announces February Dates and New Visual",
-     "highlight": "February Dates",
+     "date": "2026-11-15",
+     "headline": "劇場版「チェンソーマン レゼ篇」がシネマライブ 描き下ろしビジュアルを公開",
+     "highlight": "シネマライブ",
      "image": "https://animetv-jp.net/wp-content/uploads/2026/11/images-32.jpeg",
      "image_via": "og:image",
-     "url": "https://animetv-jp.net/chainsaw-man-the-movie-reze-arc-cinema-live-2027-announces-february-dates-and-new-visual/",
+     "url": "https://news.yahoo.co.jp/articles/be5b0530ea745b3ddb5791e11fa619ef346b3162",
      "weight": "lead"
     },
     {
@@ -1008,15 +972,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-15",
-     "n": 2,
-     "source": "ニコニコニュース",
-     "title": "自分だけのスキー場をつくるゲーム『ゲレンデ社長！伝説のスキーリゾート経営』が「非常に好評」スタート。山に直接コースを描",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5kY1drYktYQjRkUW9zVWozSFFadDRoVWxma3VDUVY4RzJUeUhNMi1CRUFGaWxIemwzZWNUQXpMTl9HdnRRUHhBd2F5MUF1M3Y2c2lvbjZ0XzlHSWV1MVI0NWFwdjhYSnhjVVNQT25RdFgzOGc?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1066,6 +1021,31 @@
     "bg": "#0F1512",
     "fg": "#ECE7DC",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-14",
+    "headline": "「ぐでたま」がついに宇宙へ！5周年記念コラボカフェが池袋にオープン",
+    "url": "https://www.walkerplus.com/article/150620/"
+   },
+   "name": "ぐでたま",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "Gudetama",
+   "theme": {
+    "accent": "#885D0C",
+    "alt_accent": "#EEB444",
+    "alt_bg": "#211C12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
     "split": true
    }
   },
