@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-13T19:40:14+00:00",
-"text": "2026-11-14 第 6 バッチを出刊：周杰伦（1 版面・2 本・残り 8 版面） · token 新規入力 1,681・キャッシュ読み 27.3万・出力 859",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.65,
-"mem_total": 16867405824,
-"mem_free": 15881256960,
-"disk_used": 10992295936,
-"disk_free": 30291238912,
-"disk_total": 41283534848,
-"peak": 394240000
-},
-"batch": 6,
-"boards": [
-"周杰伦"
-],
-"stories": 2,
-"left": 8,
-"edited": 5,
-"run": 1794597736.711827,
-"tok": {
-"in": 6,
-"cw": 1675,
-"cr": 272697,
-"out": 859,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 275237
-},
-{
 "at": "2026-11-13T19:43:49+00:00",
 "text": "2026-11-14 第 7 バッチを出刊：ILLIT（1 版面・2 本・残り 7 版面） · token 新規入力 1,847・キャッシュ読み 27.8万・出力 1,193",
 "level": "ok",
@@ -2115,5 +2083,49 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1089944
+},
+{
+"at": "2026-11-15T15:44:34+00:00",
+"text": "2026-11-15 第 1 バッチを出刊：A2O LITE、Astrae Oratio、GTA 6、MMORPG 新作、Vaundy、dota2 ほか 7（13 版面・38 本・残り 1 版面） · token 新規入力 4.7万・キャッシュ読み 133.7万・出力 4,324",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.36,
+"mem_total": 16869146624,
+"mem_free": 15923859456,
+"disk_used": 10091917312,
+"disk_free": 31191617536,
+"disk_total": 41283534848,
+"peak": 354865152
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"GTA 6",
+"MMORPG 新作",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"チェーンソーマン",
+"星巴克马克杯",
+"滑雪",
+"漫威电影",
+"猫用品"
+],
+"stories": 38,
+"left": 1,
+"edited": 21,
+"run": null,
+"tok": {
+"in": 42,
+"cw": 47298,
+"cr": 1336615,
+"out": 4324,
+"calls": 20,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1388279
 }
 ]

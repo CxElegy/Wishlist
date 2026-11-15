@@ -4543,24 +4543,17 @@
   "target": 720,
   "v": 3
  },
+ "https://www.wowkorea.jp/img/news/107/539793/456608_1280W.webp": {
+  "w": 1280,
+  "h": 960,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.wowkorea.jp/img/news/108/542268/459714_tmb.webp": {
   "w": 320,
   "h": 240,
   "target": 720,
   "v": 3,
   "blur": 0.41
- },
- "https://www3.wowkorea.jp/img/news/108/541853/459107_tmb.webp": {
-  "w": 320,
-  "h": 240,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.622,
-  "local": "pics/74944215b26dbb65.webp",
-  "out": [
-   960,
-   720
-  ],
-  "why": "看不清"
  }
 }
