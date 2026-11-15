@@ -581,6 +581,13 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
+  "w": 800,
+  "h": 562,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327
+ },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
@@ -1294,6 +1301,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i1.ytimg.com/vi/TkV6B6j06NA/hqdefault.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://i1.ytimg.com/vi/xENOnsvbPhY/hqdefault.jpg": {
   "w": 480,
   "h": 360,
@@ -1421,6 +1434,12 @@
   "w": 1280,
   "h": 720,
   "target": 720,
+  "v": 3
+ },
+ "https://images.thedirect.com/media/article_full/avengers-doomsday-trailer-need.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/doomleader.jpg": {
@@ -1690,6 +1709,12 @@
  "https://img.theweek.in/content/dam/week/en/wire-updates/pti-preview-theweek.jpg": {
   "w": 760,
   "h": 429,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/tennisclassic/m_tennisclassic-7764.jpg": {
+  "w": 640,
+  "h": 427,
   "target": 720,
   "v": 3
  },
@@ -2669,12 +2694,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-15"
- },
- "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
-  "w": 1600,
-  "h": 840,
-  "target": 720,
-  "v": 3
  },
  "https://ni.yam.com/20261110/jp-prt-85653-838-1-261110025630647-3bb0d786b74afbc6.webp": {
   "w": 1920,
@@ -3903,12 +3922,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.7HGxactznXC9QCRfChcjGw&pid=News&w=700": {
-  "w": 700,
-  "h": 359,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.A5Yit1Xmub4kAWaUb4-4wQ&pid=News&w=615": {
   "w": 615,
   "h": 615,
@@ -3998,6 +4011,24 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.V_eH1hMGS8AhCfBSXZabOQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 467,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.XOqyjc2rxekzC518TOCsqQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.XhFSerLH7naOVBpjRD_f6Q&pid=News&w=700": {
+  "w": 449,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ZMrDhC95gLEgEgQ9GPvgBw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4028,6 +4059,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.fkSkE_nnXxgExr71Yz3bvg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.if7PjIjrIEYNee0BpacpMA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -4046,13 +4083,6 @@
    609
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
-  "w": 700,
-  "h": 491,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402
  },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
@@ -4099,12 +4129,6 @@
    669
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ORMS.58c0bb5f2501f0e4b44e99fc74592845&pid=News&w=788": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
