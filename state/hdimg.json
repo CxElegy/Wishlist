@@ -549,13 +549,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gameple.co.kr/news/photo/202611/216955_250644_412.jpg": {
-  "w": 800,
-  "h": 562,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.327
- },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
   "w": 800,
   "h": 369,
@@ -640,8 +633,15 @@
  "https://cdn.newsrpm.com/image/612057?maxWidth=1200": {
   "w": 710,
   "h": 710,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.522,
+  "local": "pics/b3db916e72e5fdde.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://cdn.sacnilk.com/image/news/1000023554.jpg": {
   "w": 720,
@@ -3627,6 +3627,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.agara.co.jp/image/article/size1/d/b/c/5/dbc580a479ab6065efcfbfd8941006dd_1.jpg": {
+  "w": 640,
+  "h": 425,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.446,
+  "local": "pics/fe28a58e51e4b12f.webp",
+  "out": [
+   1280,
+   850
+  ],
+  "why": "看不清"
+ },
  "https://www.anewsa.com/news_images/2026/11/01/mark/20261101211331.jpg": {
   "w": 580,
   "h": 387,
@@ -3843,6 +3856,13 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
+  "w": 700,
+  "h": 491,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
+ },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3983,12 +4003,18 @@
  "https://www.digitbin.com/wp-content/uploads/2026/11/galaxy-s27-pro-lpddr6-1tb-leak-1280x714.jpg": {
   "w": 1280,
   "h": 714,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.disneydining.com/wp-content/uploads/2024/06/avengers-secret-wars.jpg": {
   "w": 1200,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dissmercury.co.uk/resources/images/19009459/": {
+  "w": 2400,
+  "h": 1350,
   "target": 720,
   "v": 3
  },

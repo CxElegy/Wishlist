@@ -62,6 +62,7 @@
   "https://www.chosun.com/english/opinion-en/2026/11/12/GDGHSFCY7FDMTBSMF2F7HFT5HQ/": "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true",
   "https://www.dexerto.com/anime/best-studio-ghibli-movies-2144774/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2023/05/15/best-studio-ghibli-movies.jpg",
   "https://www.diarypoint.com/zh-hant/news/7100/gelato-pique-and-sanrio-launch-second-collaboration-collection-featuring-5-chara": "https://www.diarypoint.com/media/96d11654-c1c5-467d-bbaf-b17f08b48ea4.jpg",
+  "https://www.dissmercury.co.uk/news/national/uk-today/26725860.uk-cat-owners-issued-warning-hazard-can-kill-pets/": "https://www.dissmercury.co.uk/resources/images/19009459/",
   "https://www.elle.com/tw/life/hot-news/g74386876/starbucks-bearista-xmas/": "https://hips.hearstapps.com/hmg-prod/images/d6cf19fc-e400-401f-9921-0e511c13d813.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*",
   "https://www.etnews.com/tools/image_popup.html?v=bjQ5VkNYY2dLZTZMZFBUbmNzandvWmpGcjBTK1pHYm1CUVRXR0pTMldlYVZkdE5JeGJVUFVVNURJN04rbmhKTVpaWi83c0FOL3NKSTVITFl0VU41R0RqOW0wa3YxMjhibTVZaWttMlgvWXBWUXBwdEdoemtyRGJHcTNNNHh5cjl4Z2x1L21qYUdJYkU0RWFtMXUzd1gybGJDKzVabCtpMEdoTVpSdnNJYUZwMjhTSlpYNFN1ellYRDlmWEs0VFFWcTFiSWRiaElvNGVmRmFhemlXeVFEQWhmaHJaYXlEYThzbHJoSzZORjAxSDZxVHMyMUNPVXZuRTNCRHVya2RhRXVSY2kyY2k0NUgxdlNNTzBGdERLZEVSUmhZWGhHbW5RcHBERk9vU0VJTFk9": "https://img.etnews.com/news/article/2026/10/21/cms_temp_stats_1792559495320859328.jpg",
   "https://www.gametoc.co.kr/news/articleView.html?idxno=113022": "https://cdn.gametoc.co.kr/news/photo/202611/113022_328233_412.jpg",
@@ -78,7 +79,6 @@
   "https://www.sina.cn/news/detail/5365058814608065.html": null,
   "https://www.sina.cn/news/detail/5365061094998294.html": "http://wx2.sinaimg.cn/middle/90b10eb9ly1ij1dv15cagj20u31kwe81.jpg",
   "https://www.sportsdunia.com/gaming/sea-of-remnants-dawnbreaker-closed-beta-registrations": "https://sdprodstorage.blob.core.windows.net/sd-cms-prod/featured-image/Sea%20of%20Remnants%20Dawnbreaker%20-1794310281633.webp",
-  "https://www.streetinsider.com/Press+Releases/Hong+Kong+Biotech+Pioneer+GCC+Pet+BioTech+Launches+Worlds+First+Dual-Action+Pest-Control+Tofu+Cat+Litter/27346138.html": "https://cdn.newsrpm.com/image/612057?maxWidth=1200",
   "https://www.superherohype.com/news/705123-batman-the-brave-and-the-bold-release-date-window-catch": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/07/batman-bale.jpg?resize=1200,630",
   "https://www.thepitchkc.com/drink-this-now-corn-to-be-wild-at-goat-rabbit/": "https://www.thepitchkc.com/content/uploads/2026/11/f/l/screenshot-2026-11-09-at-15444pm.png",
   "https://www.topstarnews.net/news/articleView.html?idxno=16276953": "https://cdn.topstarnews.net/news/photo/202611/16276953_2088989_4211_crop.jpg",
@@ -784,27 +784,6 @@
   },
   {
    "batch": 1,
-   "because": "猫用品",
-   "date": "2026-11-14",
-   "hits": [],
-   "image": "https://cdn.newsrpm.com/image/612057?maxWidth=1200",
-   "kind": "board",
-   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
-   "score": 8,
-   "source": "StreetInsider",
-   "taste": [
-    [
-     "作品:猫用品",
-     5
-    ]
-   ],
-   "title": "Hong Kong Biotech Pioneer GCC Pet BioTech Launches World's First Dual-Action Pest-Control Tofu Cat Litter",
-   "url": "https://www.streetinsider.com/Press+Releases/Hong+Kong+Biotech+Pioneer+GCC+Pet+BioTech+Launches+Worlds+First+Dual-Action+Pest-Control+Tofu+Cat+Litter/27346138.html",
-   "words": [],
-   "work": "猫用品"
-  },
-  {
-   "batch": 1,
    "because": "三星手机",
    "date": "2026-11-14",
    "hits": [
@@ -858,7 +837,7 @@
    "work": "チェーンソーマン"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "绝区零",
    "date": "2026-11-13",
    "hits": [],
@@ -980,6 +959,27 @@
    "words": [
     "猫"
    ],
+   "work": "猫用品"
+  },
+  {
+   "batch": 2,
+   "because": "猫用品",
+   "date": "2026-11-13",
+   "hits": [],
+   "image": "https://www.dissmercury.co.uk/resources/images/19009459/",
+   "kind": "board",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "score": 8,
+   "source": "Diss Mercury",
+   "taste": [
+    [
+     "作品:猫用品",
+     5
+    ]
+   ],
+   "title": "UK cat owners issued urgent warning over hazard that can kill pets in 24 hours",
+   "url": "https://www.dissmercury.co.uk/news/national/uk-today/26725860.uk-cat-owners-issued-warning-hazard-can-kill-pets/",
+   "words": [],
    "work": "猫用品"
   },
   {
@@ -1883,15 +1883,15 @@
    8
   ],
   [
-   "三星 Galaxy",
-   7
-  ],
-  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
+   7
+  ],
+  [
+   "三星 Galaxy",
    7
   ]
  ]

@@ -29,7 +29,10 @@
     29,
     36,
     46,
-    45
+    45,
+    56,
+    57,
+    60
    ],
    "image": "https://www.bing.com/th?id=ONUT.-GUQ33mXT9wP2JHemimbKA&pid=News&w=1200"
   },
@@ -102,7 +105,8 @@
    "refs": [
     6,
     3,
-    11
+    11,
+    36
    ]
   },
   {
@@ -128,11 +132,13 @@
    "image": "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg"
   },
   {
-   "headline": "Galaxy S27 Pro May Get LPDDR6 Only in Its 1TB Model, Leak Claims",
-   "highlight": "LPDDR6 Only in Its 1TB Model",
+   "headline": "Samsung「Galaxy S27 Pro」がリーク！1TBモデルのみ次世代LPDDR6メモリを独占搭載へ",
+   "highlight": "LPDDR6",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    12,
+    10,
     3
    ]
   },
@@ -218,9 +224,9 @@
   }
  ],
  "_covered": {
-  "GTA 6": 51,
-  "漫威电影": 28,
-  "三星手机": 9,
+  "GTA 6": 64,
+  "漫威电影": 38,
+  "三星手机": 12,
   "チェーンソーマン": 6,
   "A2O LITE": 5,
   "dota2": 5,
@@ -231,7 +237,9 @@
   "Astrae Oratio": 1,
   "MMORPG 新作": 2,
   "周杰伦": 2,
-  "星巴克马克杯": 3
+  "星巴克马克杯": 3,
+  "猫用品": 2,
+  "日本顶级网球赛事": 1
  },
  "dota2": [
   {
@@ -351,6 +359,38 @@
    "refs": [
     2
    ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "Hong Kong Biotech Pioneer GCC Pet BioTech Launches World's First Dual-Action Pest-Control Tofu Cat Litter",
+   "highlight": "Dual-Action Pest-Control Tofu Cat Litter",
+   "blurb": "GCC Pet BioTech launched a tofu cat litter it calls the world's first dual-action pest-control litter.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "The 11 Best Cat Litter for Odor Control of 2026",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "【東レPPO】ダブルス決勝、エラニ／パオリーニが優勝を飾る「東京は大好きな街」",
+   "highlight": "エラニ／パオリーニが優勝",
+   "blurb": "東レ パン パシフィック オープン2026の女子ダブルス決勝で、エラニ／パオリーニ組（イタリア）が優勝した。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.agara.co.jp/image/article/size1/d/b/c/5/dbc580a479ab6065efcfbfd8941006dd_1.jpg"
   }
  ]
 }
