@@ -1,14 +1,14 @@
 {
- "admin": "2edb954f6fdb",
- "admin-ai": "caeb13569bbd",
+ "admin": "379d86d86c5f",
+ "admin-ai": "be100195860a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "41a15c94"
+   "b88f25dd"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "655b2e51"
+   "d5e7eb83"
   ]
  },
  "admin-boards": "da4710173f33",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "dcccb56f5d19",
+ "admin-emblem": "e0d0c8c9f1b1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "247e1f6d"
+   "1da763bb"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "30b898356a4f",
+ "admin-now": "d2e00b96f02a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5d20d547"
+   "27b10ba2"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "fddc9c5e"
+   "51f7a614"
   ]
  },
- "admin-system": "d644865d501b",
+ "admin-system": "31a666d10040",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "604bcf7d"
+   "dcd0f7f9"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8fe6ebad"
+   "5061b491"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "cfdb3141"
   ]
  },
- "index": "9f5cbcd0c3bc",
+ "index": "b49478a08e34",
  "index_marks": {
   "front": [
    "トップ",
-   "5cef1f70"
+   "ade8d1a4"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "47479761"
+   "ecbaaee6"
   ],
   "w-130724c0": [
    "猫用品",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "eff24d66"
+   "259ef1f4"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "b445023a"
+   "68cc5875"
   ],
   "w-b867582f": [
    "あつ森",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "3f589fc5"
+   "a3a287c4"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "ba9215bb"
   ]
  },
- "updated": "11.15 17:30",
+ "updated": "11.15 17:40",
  "wishlist": "792e3e3c0cbf"
 }

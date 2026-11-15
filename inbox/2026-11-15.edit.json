@@ -36,7 +36,8 @@
     6,
     29,
     67,
-    69
+    69,
+    80
    ],
    "image": "https://www.bing.com/th?id=ONUT.-GUQ33mXT9wP2JHemimbKA&pid=News&w=1200"
   },
@@ -50,7 +51,8 @@
     30,
     31,
     49,
-    65
+    65,
+    79
    ]
   },
   {
@@ -124,6 +126,15 @@
     36,
     41
    ]
+  },
+  {
+   "headline": "Marvel's Kevin Feige Refutes Popular 'Avengers: Doomsday' Theory",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    51
+   ]
   }
  ],
  "三星手机": [
@@ -175,7 +186,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    17,
+    18
    ]
   },
   {
@@ -184,7 +197,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    13
+    13,
+    16
    ]
   },
   {
@@ -250,19 +264,19 @@
   }
  ],
  "_covered": {
-  "GTA 6": 72,
-  "漫威电影": 47,
-  "三星手机": 15,
+  "GTA 6": 81,
+  "漫威电影": 51,
+  "三星手机": 19,
   "チェーンソーマン": 6,
   "A2O LITE": 7,
-  "dota2": 6,
+  "dota2": 10,
   "哈利波特剧集": 7,
   "绝区零": 5,
   "ILLIT": 5,
   "Vaundy": 3,
   "Astrae Oratio": 1,
   "MMORPG 新作": 2,
-  "周杰伦": 11,
+  "周杰伦": 14,
   "星巴克马克杯": 3,
   "猫用品": 2,
   "日本顶级网球赛事": 1,
@@ -287,6 +301,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Dota 2 Back at Esports World Cup 2027, Prize Pool Unset",
+   "highlight": "Esports World Cup 2027",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -427,7 +450,10 @@
     1,
     3,
     7,
-    9
+    9,
+    12,
+    13,
+    14
    ],
    "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261115/photo/bkn-20261115000118716-1115_00862_001_02b.jpg?20261114221958"
   },
