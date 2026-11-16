@@ -54,6 +54,7 @@
   "https://today.line.me/tw/v3/article/7NG3zgl": "https://today-obs.line-scdn.net/0h3aMEVUSBbE5wPHDeQ_oTGUhqYD9DWnZHUgonKFJsMXgKEHkfGw8_LQI_ZWIOWX5IUFlxeAU5YSwNDXsfSA/w1200",
   "https://turnnewsapp.com/ct-featured/422036.html": "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg",
   "https://www.66wz.com/wendu/system/2026/11/12/105871102.shtml": "https://mmbiz.qpic.cn/mmbiz_png/fXeVwORdalR2DH0CBIemW8EjREoAicFtVoO4F01lgoGxNZoAocFmOtHLYoPibuxeJurdDhMn2v9ibAtIZ7Bdib0u598oUicgD3vpNFk7JP5pTIeA/640?wx_fmt=png&from=appmsg#imgIndex=4",
+  "https://www.artinsight.co.kr/news/view.php?no=83296": "https://www.bing.com/th?id=ONUT.L-94pAdfo_MWhyLnouylTg&pid=News&w=633",
   "https://www.bgr.com/2313174/enough-compact-android-phones-kickstarter/": "https://www.bgr.com/img/gallery/if-you-miss-compact-phones-this-brand-is-trying-to-resurrect-them/l-intro-1794398036.jpg",
   "https://www.chiba-tv.com/plus/detail/2026112217602": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1493566334632657942/origin_1.jpg",
   "https://www.chosun.com/english/opinion-en/2026/11/12/GDGHSFCY7FDMTBSMF2F7HFT5HQ/": "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true",
@@ -1012,6 +1013,27 @@
   },
   {
    "batch": 3,
+   "because": "チェーンソーマン",
+   "date": "2026-11-13",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.L-94pAdfo_MWhyLnouylTg&pid=News&w=633",
+   "kind": "board",
+   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
+   "score": 8,
+   "source": "아트인사이트",
+   "taste": [
+    [
+     "作品:チェーンソーマン",
+     5
+    ]
+   ],
+   "title": "[Opinion] 체인소맨, 어쩌다 몰락했는가? [만화/애니메이션]",
+   "url": "https://www.artinsight.co.kr/news/view.php?no=83296",
+   "words": [],
+   "work": "チェーンソーマン"
+  },
+  {
+   "batch": 3,
    "because": "猫用品",
    "date": "2026-11-13",
    "hits": [
@@ -1040,7 +1062,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "周杰伦",
    "date": "2026-11-16",
    "hits": [],
@@ -1145,7 +1167,7 @@
    "work": "哈利波特剧集"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "漫威电影",
    "date": "2026-11-15",
    "hits": [],
@@ -1250,7 +1272,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-11-16",
    "hits": [],
@@ -1349,7 +1371,7 @@
    "work": "日本顶级网球赛事"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "滑雪",
    "date": "2026-11-12",
    "hits": [],
@@ -1846,11 +1868,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [

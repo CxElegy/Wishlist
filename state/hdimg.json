@@ -73,6 +73,19 @@
   "target": 720,
   "v": 3
  },
+ "http://tu.duoduocdn.com/uploads/day_261116/202611161358177268_thumb.jpg": {
+  "w": 300,
+  "h": 200,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.637,
+  "local": "pics/72556cc741533f95.webp",
+  "out": [
+   900,
+   600
+  ],
+  "why": "看不清"
+ },
  "http://www.mountainwatch.com/wp-content/uploads/2026/11/Screenshot-2026-11-09-at-2.07.42-PM.png": {
   "w": 1408,
   "h": 786,
@@ -600,6 +613,12 @@
   "why": "看不清"
  },
  "https://cdn.livedoor.jp/kstyle/4af09f570719ed91dd64c3bbbf036273_WI.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn.livedoor.jp/kstyle/9125e1de6c092a3984efd64d3fe46fc5_WI.jpg": {
   "w": 1024,
   "h": 576,
   "target": 1280,
@@ -1552,6 +1571,12 @@
  "https://img-s.msn.cn/tenant/amp/entityid/AA2haTdu.img": {
   "w": 1080,
   "h": 588,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img.4gamers.com.tw/news-image/5eb2ce4a-a6b4-4136-b48f-d788b877b3ea.jpg": {
+  "w": 1600,
+  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -3336,6 +3361,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/4/d/4/f/4d4f13d5e99de3f5780b3e1d0970b701_1.jpg": {
+  "w": 406,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/5/7/6/e/576eccefb71ec7aa4f1e22b3d4cfeadd_1.jpg": {
   "w": 640,
   "h": 640,
@@ -3933,6 +3964,12 @@
  "https://www.bing.com/th?id=ONUT.KkdkWY33I2sB7CHn2yWe_A&pid=News&w=1000": {
   "w": 700,
   "h": 394,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.L-94pAdfo_MWhyLnouylTg&pid=News&w=633": {
+  "w": 633,
+  "h": 512,
   "target": 720,
   "v": 3
  },
