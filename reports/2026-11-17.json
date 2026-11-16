@@ -1,6 +1,6 @@
 {
  "date": "2026-11-17",
- "edit_sig": "cd716b1cd928",
+ "edit_sig": "253c5b5115b9",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -357,17 +357,19 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "ジェラート ピケとジョエル・ロブションのコラボで、配色ラインのふわふわカーディガンとワンピースが登場。",
      "date": "2026-11-16",
-     "n": 1,
-     "source": "ファッションプレス on MSN",
-     "title": "ジェラート ピケ×ジョエル・ロブション、配色ラインのふわふわカーディガン＆ワンピース",
-     "url": "https://www.msn.com/ja-jp/lifestyle/other/%E3%82%B8%E3%82%A7%E3%83%A9%E3%83%BC%E3%83%88-%E3%83%94%E3%82%B1-%E3%82%B8%E3%83%A7%E3%82%A8%E3%83%AB-%E3%83%AD%E3%83%96%E3%82%B7%E3%83%A7%E3%83%B3-%E9%85%8D%E8%89%B2%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E3%81%B5%E3%82%8F%E3%81%B5%E3%82%8F%E3%82%AB%E3%83%BC%E3%83%87%E3%82%A3%E3%82%AC%E3%83%B3-%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9/ar-AA2hwXxS"
+     "headline": "ジェラート ピケ×ジョエル・ロブション、配色ラインのふわふわカーディガン＆ワンピース",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.2OyEI7Q8Q2znC2NwuWqeog&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/ja-jp/lifestyle/other/%E3%82%B8%E3%82%A7%E3%83%A9%E3%83%BC%E3%83%88-%E3%83%94%E3%82%B1-%E3%82%B8%E3%83%A7%E3%82%A8%E3%83%AB-%E3%83%AD%E3%83%96%E3%82%B7%E3%83%A7%E3%83%B3-%E9%85%8D%E8%89%B2%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E3%81%B5%E3%82%8F%E3%81%B5%E3%82%8F%E3%82%AB%E3%83%BC%E3%83%87%E3%82%A3%E3%82%AC%E3%83%B3-%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9/ar-AA2hwXxS",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",
@@ -390,24 +392,29 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-11-15",
-     "n": 1,
-     "source": "Togetter",
-     "title": "一目で「こいつヤバいな」ってなるキャラの初登場シーンがマジで大好き、チェンソーマンの闇の悪魔とか (2ページ目)",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1FdGxEajY4dk5rNzVLR0tnSFV3OGFoaHR6eGxkWEZ2U0VjUlBGdU53QVVVTUpBdi03RW84SFRHWU15eV9fN0tXQW5hdkR5UzA?oc=5"
+     "blurb": "劇場版『チェンソーマン レゼ篇』のレゼ／ボム DX ボーナス版フィギュアの画像ギャラリー。",
+     "date": "2026-11-14",
+     "headline": "「アルティメットプレミアムマスターライン 劇場版『チェンソーマン レゼ篇』 レゼ／ボム DX ボーナス版」",
+     "highlight": "",
+     "image": "https://ogre.natalie.mu/media/news/comic/2026/1114/reze_bomb_statue_009.jpg?imwidth=1460&imdensity=1&impolicy=hq",
+     "image_via": "AI 挑选",
+     "url": "https://natalie.mu/comic/gallery/news/698025/3018199",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-14",
-     "n": 2,
-     "source": "ナタリー",
-     "title": "「アルティメットプレミアムマスターライン 劇場版『チェンソーマン レゼ篇』 レゼ／ボム DX ボーナス版」 [画像ギャラリー 4/29]",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9Fay1iaDNSaS1aVk45cG83M1Y2Q1pZWG96TmQzQ29ockx6TDdQOTdSRXVjM1k0ZFZWVTd3SUQyMWllOUdDTm9Pck1ocDZWWXF5VVNrNkxRTzA0NEVSX2xDMkNn?oc=5"
+     "blurb": "",
+     "date": "2026-11-15",
+     "headline": "一目で「こいつヤバいな」ってなるキャラの初登場シーンがマジで大好き、チェンソーマンの闇の悪魔とか",
+     "highlight": "",
+     "image": "https://s.tgstc.com/ogp3/760f2926a6e28e8c47578d75d690ef03-1200x630.jpeg",
+     "image_via": "og:image",
+     "url": "https://togetter.com/li/2769556?page=2",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -487,24 +494,30 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Dota 2 earned an estimated $94.46 million on Steam in October 2026, among the platform's top three highest-grossing games.",
      "date": "2026-11-16",
-     "n": 1,
-     "source": "OtakuKart",
-     "title": "Dota 2 Earns an Estimated $94.46 Million on Steam in October 2026, Ranking Among the Platform’s Top Three Highest-Grossing Games",
-     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNN0JBRFNNMjZnRmNTQWJMWWo1dkxYdjktLWdNTVZuWTIzT0V0dE9HUGVDWExfSEVob0pUSkd5M2x3alRkU2dVb2ZLTTNnT0IxR0R3a3Y0R1RLSzV2UlhxRkFGX1VTUHJNZU1oemdMTXVscjRQSjcycUE1YnhZYWxJdFRfaks4ZlZwTW1EZ3RNNzY3Nmo0RHl1SWZmOTI5X1R1STdFNzB5SmhTc05TbGgwWURyWkFKemFhZ2VjWWVTdm9HWUdTeUtZYmpEZUNZMy1aMXpnR0NuWlhKMG5wNDA1cFlR?oc=5"
+     "headline": "Dota 2 Earns an Estimated $94.46 Million on Steam in October 2026, Ranking Among the Platform’s Top Three Highest-Grossing Games",
+     "highlight": "$94.46 Million",
+     "image": "https://otakukart.com/wp-content/uploads/2026/11/Valves-free-to-play-MOBA-generated-an-estimated-94.46-million-in-gross-Steam-revenue-during-October-2026.-Image-via-Valve.jpg",
+     "image_via": "og:image",
+     "url": "https://otakukart.com/dota-2-earns-an-estimated-94-46-million-on-steam-in-october-2026-ranking-among-the-platforms-top-three-highest-grossing-games/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-16",
-     "n": 2,
+     "headline": "DO KONCA Dota 2 (DK)チームの概要と視聴者統計",
+     "highlight": "",
+     "image": null,
      "source": "Esports Charts",
-     "title": "DO KONCA Dota 2 (DK)チームの概要と視聴者統計",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAxTXhtbVgxelZoQlY1dkptM1p5aGNNODFVODVZWXJ6ai1uQmMzd0RKcWFGRjFMOGROUzBtOG5jb0oyQ1laZXMtTFRfWjd6Mzk0Qmc?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
+     "url": "https://escharts.com/ja/teams/dota2/dk-1",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -521,17 +534,19 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-16",
-     "n": 1,
-     "source": "www.esquirekorea.co.kr",
-     "title": "요즘 A2O LITE 듣는다면 '클래식'도 한번 들어보세요",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwOVdIV2dPUEZGNjQtd29XSjk5NE9oYXRwWkZEOGpZQ3dIYVFTZmNDcDJZa2hSVkYwLW5OX3RjdHcySkxLTXIwYmc4V0VMdENFZ3diTWZwMF9WUQ?oc=5"
+     "headline": "요즘 A2O LITE 듣는다면 '클래식'도 한번 들어보세요",
+     "highlight": "",
+     "image": "https://www.esquirekorea.co.kr/resources/online/thumbnail/hf/2026/11/09/7c930ac6-4a91-4fe9-931c-d73cb1b9c70e.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.esquirekorea.co.kr/article/1912835",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
@@ -548,24 +563,19 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "来季の女子テニス WTA ツアーを WOWOW と Lemino が独占放送・配信し、年間を通して大会を中継する。",
      "date": "2026-11-16",
-     "n": 1,
-     "source": "MANTANWEB（まんたんウェブ） on MSN",
-     "title": "女子テニス：WTAツアーをWOWOWとLeminoで独占放送・配信 年間を通して大会を中継",
-     "url": "https://www.msn.com/ja-jp/entertainment/celebrity/%E5%A5%B3%E5%AD%90%E3%83%86%E3%83%8B%E3%82%B9-wta%E3%83%84%E3%82%A2%E3%83%BC%E3%82%92wowow%E3%81%A8lemino%E3%81%A7%E7%8B%AC%E5%8D%A0%E6%94%BE%E9%80%81-%E9%85%8D%E4%BF%A1-%E5%B9%B4%E9%96%93%E3%82%92%E9%80%9A%E3%81%97%E3%81%A6%E5%A4%A7%E4%BC%9A%E3%82%92%E4%B8%AD%E7%B6%99/ar-AA2hwQYN"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 2,
-     "source": "サンスポ",
-     "title": "WOWOW、来季の「女子テニスWTAツアー driven by Mercedes-Benz」を放送・配信！ 全豪オープンも連日独占生中継",
-     "url": "https://www.sanspo.com/article/20261116-GC6SC43RWNJUFLHRN2P2JJU4CE/"
+     "headline": "女子テニス：WTAツアーをWOWOWとLeminoで独占放送・配信 年間を通して大会を中継",
+     "highlight": "独占放送・配信",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hwwYo.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/ja-jp/entertainment/celebrity/%E5%A5%B3%E5%AD%90%E3%83%86%E3%83%8B%E3%82%B9-wta%E3%83%84%E3%82%A2%E3%83%BC%E3%82%92wowow%E3%81%A8lemino%E3%81%A7%E7%8B%AC%E5%8D%A0%E6%94%BE%E9%80%81-%E9%85%8D%E4%BF%A1-%E5%B9%B4%E9%96%93%E3%82%92%E9%80%9A%E3%81%97%E3%81%A6%E5%A4%A7%E4%BC%9A%E3%82%92%E4%B8%AD%E7%B6%99/ar-AA2hwQYN",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",

@@ -42,6 +42,12 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261115ac/533/w480h853/20261115/095b-319eba518b6123a58709f48032949b5e.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -187,12 +193,6 @@
  "https://9to5google.com/wp-content/uploads/sites/4/2026/02/Galaxy-S26-camera-1.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
   "h": 628,
-  "target": 1280,
-  "v": 3
- },
- "https://a-rabbitsfoot.com/wp-content/uploads/2026/11/D04654B4-06D4-4305-9E37-BD3BA976725D-Large.jpeg": {
-  "w": 1280,
-  "h": 853,
   "target": 1280,
   "v": 3
  },
@@ -1348,6 +1348,19 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbUYl.img": {
+  "w": 615,
+  "h": 615,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.59,
+  "local": "pics/6a3f59855e335b51.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
   "w": 1000,
   "h": 666,
@@ -1473,6 +1486,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2htcVk.img": {
   "w": 768,
   "h": 1024,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hwwYo.img": {
+  "w": 900,
+  "h": 600,
   "target": 1280,
   "v": 3
  },
@@ -1639,12 +1658,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.384
- },
- "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg": {
-  "w": 800,
-  "h": 533,
-  "target": 720,
-  "v": 3
  },
  "https://inews.gtimg.com/om_bt/OAfxMyK9k9Ay4Jz45p_yZ5zTCbdKGZK-RBEHC17pB0Kq4AA/1000": {
   "w": 1000,
@@ -1926,12 +1939,6 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
-  "v": 3
- },
- "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg": {
-  "w": 1024,
-  "h": 768,
-  "target": 720,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png": {
@@ -2405,19 +2412,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800": {
-  "w": 615,
-  "h": 615,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.59,
-  "local": "pics/0fe2201b1c527be2.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2578,13 +2572,6 @@
   "target": 720,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1eb9127c7e124628962148a4f6c6374f.png": {
-  "w": 448,
-  "h": 252,
-  "target": 720,
-  "v": 3,
-  "blur": 0.373
- },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg": {
   "w": 736,
   "h": 414,
@@ -2601,6 +2588,12 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/614d674cbc04425092f91517c1246529.png": {
   "w": 800,
   "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg": {
+  "w": 750,
+  "h": 750,
   "target": 720,
   "v": 3
  },
@@ -2641,15 +2634,34 @@
   "target": 1280,
   "v": 3
  },
+ "https://ogre.natalie.mu/media/news/comic/2026/1114/reze_bomb_statue_009.jpg?imwidth=1460&imdensity=1&impolicy=hq": {
+  "w": 565,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
+ },
  "https://ogre.natalie.mu/media/news/music/2026/1107/Vaundy_jkt.jpg?impolicy=ogp_face_crop": {
   "w": 1200,
   "h": 630,
   "target": 720,
   "v": 3
  },
+ "https://otakukart.com/wp-content/uploads/2026/11/Valves-free-to-play-MOBA-generated-an-estimated-94.46-million-in-gross-Steam-revenue-during-October-2026.-Image-via-Valve.jpg": {
+  "w": 1527,
+  "h": 860,
+  "target": 1280,
+  "v": 3
+ },
  "https://otonanswer.jp/wp-content/uploads/2027/11/20261106veloce01.jpg": {
   "w": 1200,
   "h": 997,
+  "target": 720,
+  "v": 3
+ },
+ "https://p2.bahamut.com.tw/B/2KU/16/30fcd6de225e1cc72fc79a41cb212yc5.PNG": {
+  "w": 1096,
+  "h": 617,
   "target": 720,
   "v": 3
  },
@@ -2962,6 +2974,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.405
+ },
+ "https://s.tgstc.com/ogp3/760f2926a6e28e8c47578d75d690ef03-1200x630.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
  },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
@@ -3646,12 +3664,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bgr.com/img/gallery/if-you-miss-compact-phones-this-brand-is-trying-to-resurrect-them/l-intro-1794398036.jpg": {
-  "w": 1600,
-  "h": 899,
-  "target": 1280,
-  "v": 3
- },
  "https://www.billboard-japan.com/common/sys/img/news/00000167/167355/image.jpg": {
   "w": 999,
   "h": 999,
@@ -3684,6 +3696,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.391
+ },
+ "https://www.bing.com/th?id=ONUT.2OyEI7Q8Q2znC2NwuWqeog&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.443,
+  "local": "pics/5e1b75281e1645f5.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
@@ -3747,6 +3772,19 @@
   "h": 337,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Ta_3et2dGUofwAQH1RowuQ&pid=News&w=780": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.43,
+  "local": "pics/f17ddb8c9a02b416.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546": {
   "w": 546,
@@ -3943,8 +3981,15 @@
  "https://www.esquirekorea.co.kr/resources/online/thumbnail/hf/2026/11/09/7c930ac6-4a91-4fe9-931c-d73cb1b9c70e.jpg": {
   "w": 800,
   "h": 421,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.497,
+  "local": "pics/d896aa49c3671de9.webp",
+  "out": [
+   1280,
+   674
+  ],
+  "why": "看不清"
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-Ultra-.jpg": {
   "w": 1280,
