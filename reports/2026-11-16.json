@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "01de55eae915",
+ "edit_sig": "0c2a1ce67a6d",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -306,8 +306,8 @@
      "date": "2026-11-16",
      "headline": "Samsung Eyes Exynos for Galaxy S27",
      "highlight": "",
-     "image": "https://www.sammyfans.com/wp-content/uploads/2026/07/snapdragon-8-elite-for-galaxy-img-1000x600.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://cdn.it.chosun.com/news/photo/202611/3000000001091_501236_2113.jpg",
+     "image_via": "og:image",
      "url": "https://it.chosun.com/news/articleView.html?idxno=3000000001091",
      "weight": "normal"
     },
@@ -537,17 +537,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 3,
-     "source": "The Hollywood Reporter",
-     "title": "Disney Admits ‘The Mandalorian and Grogu’ Disappointed at Box Office | THR News Video",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQT1FkOGZMUjZoRGowSUZPWGNpeFY2ODVIQXE3dVpzOGNrXzZSR1M1SjUxbjF1NE9UckRwZUg0d3lwbU9udWJWZFBHcC1sSWl6UThmenYzbUtDV1lfUGctWG4yRDRtaDZBR0tOZFlQNWgyTXFaamxVZEw2UzhIamx3dlR3azZ1NkxKOGVhTU54RjlFbDdCaXM1X083c1kyTjVkS2pXcDlIWXdJUQ?oc=5"
+     "headline": "Disney Admits ‘The Mandalorian and Grogu’ Disappointed at Box Office",
+     "highlight": "Disappointed at Box Office",
+     "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/THND-FF-000193-H-2026.jpg?w=1296&h=730&crop=1",
+     "image_via": "og:image",
+     "url": "https://www.hollywoodreporter.com/video/disney-admits-mandalorian-and-grogu-disappointed-box-office-video/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
