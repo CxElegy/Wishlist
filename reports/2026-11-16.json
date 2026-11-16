@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "18f189e7956c",
+ "edit_sig": "e7d94c85a0f5",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -420,16 +420,6 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-15",
-     "headline": "＜画像4 / 4＞ 「京急×ぐでたま」コラボグッズが登場する「第7回 京急鉄道フェア」開催！",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/69154/387994_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/69154/image387999.html",
-     "weight": "hero"
-    },
-    {
      "blurb": "ローソンで「ぐでたまお昼寝マット」が当たるキャンペーンが登場。",
      "date": "2026-11-14",
      "headline": "ローソンで“ぐでたまお昼寝マット”が当たる!?",
@@ -447,6 +437,16 @@
      "image": "https://news.walkerplus.com/article/90965/509951_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/90965/image509956.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-15",
+     "headline": "「京急×ぐでたま」コラボグッズが登場する「第7回 京急鉄道フェア」開催！",
+     "highlight": "第7回 京急鉄道フェア",
+     "image": "https://news.walkerplus.com/article/69154/387994_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/69154/image387999.html",
      "weight": "normal"
     }
    ],
