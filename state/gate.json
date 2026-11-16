@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-16T14:18:45+00:00",
+ "checked": "2026-11-16T15:18:11+00:00",
  "fired": {
   "at": "2026-11-16T13:35:46+00:00",
   "results": {
@@ -74,13 +74,22 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 419,
+   "prog": 395,
    "prog_day": "2026-11-16",
-   "ripe": [],
-   "sig": "4dc73aac535d",
+   "ripe": [
+    "lib:F1",
+    "lib:NBA",
+    "lib:Nintendo Switch 2",
+    "lib:iPhone",
+    "lib:ガンプラ",
+    "lib:ユニクロ",
+    "lib:大相撲",
+    "lib:無印良品"
+   ],
+   "sig": "f56ad910a2c3",
    "token_cap": 1000000,
    "tokens_today": 705896,
-   "why": "整理待ちの記事 105 件（15 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 105 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
