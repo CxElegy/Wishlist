@@ -1,10 +1,4 @@
 {
- "http://ctdsb.clouddiffuse.xyz/10316859-ee33-497a-a9ba-3622ced91a69": {
-  "w": 1080,
-  "h": 1224,
-  "target": 1280,
-  "v": 3
- },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/DSYjFmbuhcifcaq.jpg": {
   "w": 690,
   "h": 320,
@@ -1411,12 +1405,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cn8nF.img": {
-  "w": 1125,
-  "h": 800,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dBBlh.img": {
   "w": 1600,
   "h": 900,
@@ -1744,12 +1732,6 @@
    960
   ],
   "why": "看不清"
- },
- "https://img0.utuku.imgcdc.com/650x0/news/20261116/f5c26ea7-fe83-4835-bcd2-62dbc35c8579.jpg": {
-  "w": 650,
-  "h": 947,
-  "target": 1280,
-  "v": 3
  },
  "https://img1.newsis.com/2026/09/17/NISI20260917_0002242122_web.jpg": {
   "w": 720,
@@ -2678,6 +2660,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-16"
  },
+ "https://ni.yam.com/20261116/c2f73abd642a45ceb34ab5986c5ff2571794814612-19921fdf3d9f2c2d.webp": {
+  "w": 941,
+  "h": 546,
+  "target": 1280,
+  "v": 3
+ },
  "https://nihonkai.ismcdn.jp/common/images/nnn/noimg_nnn.png": {
   "w": 1024,
   "h": 632,
@@ -2850,6 +2838,19 @@
   "h": 903,
   "target": 720,
   "v": 3
+ },
+ "https://pimg.mk.co.kr/news/cms/202611/16/news-p.v1.20261116.6437d4ad3b254d1a8520c8f674f5f597_R.jpg": {
+  "w": 700,
+  "h": 382,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.426,
+  "local": "pics/100f2dfe23934204.webp",
+  "out": [
+   1280,
+   699
+  ],
+  "why": "看不清"
  },
  "https://players.com.ua/wp-content/uploads/2026/11/gg-m-r.jpg": {
   "w": 1200,
@@ -3042,12 +3043,6 @@
   "target": 1280,
   "v": 3
  },
- "https://q4.itc.cn/q_70/images03/20261116/f94426b10ff24dbd95deaf2c6a392e22.jpeg": {
-  "w": 2730,
-  "h": 4096,
-  "target": 1280,
-  "v": 3
- },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -3064,6 +3059,12 @@
  "https://q5.itc.cn/q_70/images03/20261116/b9186e279f484f578077dd20a291e9b4.jpeg": {
   "w": 1080,
   "h": 1920,
+  "target": 1280,
+  "v": 3
+ },
+ "https://q5.itc.cn/q_70/images03/20261116/c8ef85eb81034a989736cd4abb2a8816.jpeg": {
+  "w": 1440,
+  "h": 2560,
   "target": 1280,
   "v": 3
  },
@@ -3150,6 +3151,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/cbf3428b493694e56a381bba193de38b7e8ea5438c9f14dd402ae59368bcbafe/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fybrand.cinema.com.my%2F6d8151815bcd878c4515f5ee7e40aef0.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/ddeff4a25e26ace41830ca125423da06615b93a25d88e20ed4ec3e381b307812/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
@@ -3544,12 +3551,6 @@
   "v": 3
  },
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/movieweb-featured-image-template-2026-11-11t122731-320.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/11/vision-scarlet-witch-and-falcon-in-captain-america-civil-war.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 720,
@@ -4136,6 +4137,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.wPAM16RyVDCNHp3Bk2a6Aw&pid=News&w=650": {
+  "w": 480,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,

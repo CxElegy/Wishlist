@@ -11,7 +11,11 @@
     23,
     65,
     33,
-    67
+    67,
+    83,
+    93,
+    94,
+    86
    ],
    "event": {
     "date": "2026-11-19",
@@ -68,7 +72,8 @@
     16,
     50,
     79,
-    69
+    69,
+    92
    ]
   }
  ],
@@ -185,7 +190,19 @@
     26,
     30,
     29,
-    32
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
    ]
   },
   {
@@ -239,10 +256,10 @@
   }
  ],
  "_covered": {
-  "GTA 6": 79,
+  "GTA 6": 96,
   "哈利波特剧集": 13,
   "チェーンソーマン": 7,
-  "三星手机": 32,
+  "三星手机": 44,
   "BLEACH Mirrors High": 1,
   "FROM": 2,
   "绝区零": 5,
@@ -250,14 +267,14 @@
   "日本顶级网球赛事": 2,
   "The Mandalorian": 2,
   "ぐでたま": 2,
-  "漫威电影": 47,
+  "漫威电影": 60,
   "dota2": 3,
-  "周杰伦": 16,
+  "周杰伦": 26,
   "Astrae Oratio": 2,
   "gelato pique": 4,
   "Vaundy": 1,
   "滑雪": 1,
-  "MMORPG 新作": 6,
+  "MMORPG 新作": 17,
   "A2O LITE": 1,
   "猫用品": 2
  },
@@ -399,7 +416,8 @@
     28,
     32,
     30,
-    46
+    46,
+    54
    ],
    "image": "https://deadline.com/wp-content/uploads/2026/11/X-MEN-Hugh-Jackman-James-Marsden-Patrick-Stewart-Halle-Berry-Famke-Janssen-2000.-TM-and-Copyri-MCDAVDO-WD014-1000.jpg"
   },
@@ -424,12 +442,16 @@
    ]
   },
   {
-   "headline": "Marvel Hero Officially Eyes New Solo Action Sequels Ahead of Avengers: Doomsday Release",
-   "highlight": "Solo Action Sequels",
+   "headline": "Disney Reports a Massive Ticket Sales Spike for 'Avengers: Doomsday' Following the 'VisionQuest' Finale",
+   "highlight": "Massive Ticket Sales Spike",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    50,
+    49,
+    57,
+    51,
+    55
    ]
   },
   {
@@ -465,7 +487,11 @@
     12,
     11,
     13,
-    15
+    15,
+    22,
+    25,
+    23,
+    24
    ],
    "event": {
     "date": "2027-04-09",
@@ -558,22 +584,32 @@
    ]
   },
   {
-   "headline": "Indie MMO Spotlight - I'm A Real BitCraft Boy Now!",
-   "highlight": "BitCraft",
-   "blurb": "Indie MMO Spotlight で BitCraft を取り上げ。",
-   "weight": "normal",
-   "refs": [
-    2
-   ]
-  },
-  {
-   "headline": "부담 없는 MMORPG?…‘이클립스’ 어떤 점이 가벼웠나 직접 해보니",
-   "highlight": "이클립스",
+   "headline": "\"2027년 2분기 글로벌 출시 목표\" 아키에이지 S, 개발진 Q&A 영상 공개",
+   "highlight": "2027년 2분기 글로벌 출시 목표",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    7,
+    8,
+    11,
+    14,
+    15
    ]
+  },
+  {
+   "headline": "넥슨 ‘템빨: 오버기어드’, 26일 출격…MMORPG 매출 경쟁 가세",
+   "highlight": "26일 출격",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    9,
+    12
+   ],
+   "event": {
+    "date": "2026-11-26",
+    "label": "発売日"
+   }
   }
  ],
  "A2O LITE": [
