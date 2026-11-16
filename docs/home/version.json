@@ -1,32 +1,32 @@
 {
- "admin": "c1ad39d96210",
- "admin-ai": "053159a2a3b2",
+ "admin": "e02ff1524511",
+ "admin-ai": "acdf894f338d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4e899ebf"
+   "c61bee80"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e61cdc43"
+   "569e7538"
   ]
  },
- "admin-boards": "d7b334456705",
+ "admin-boards": "91ae2b5d49ea",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "c69a9d97"
+   "073d2244"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "8ec7606ca0fc",
+ "admin-emblem": "bf60519948bb",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a6e16c2e"
+   "e55e976e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "ae473e73c00b",
+ "admin-now": "948db270d2ee",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "43ec5d73"
+   "906980ce"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2409a8ee"
+   "10805f4c"
   ]
  },
- "admin-system": "ee7c72cc0c61",
+ "admin-system": "e6851748ae80",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "5ea457d7"
+   "c5727eed"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "dc69b26e"
+   "00e8cc27"
   ]
  },
  "admin_marks": {},
- "heat": "cfd130875495",
+ "heat": "78e44730b237",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "afbd0841"
+   "bdfb7800"
   ],
   "ranking": [
    "ランキング",
-   "8fa55812"
+   "6969afe4"
   ]
  },
- "index": "8fea875e27b7",
+ "index": "3f05ba439774",
  "index_marks": {
   "front": [
    "トップ",
-   "0b202138"
+   "26e5397d"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "7e456ca5"
+   "400218cb"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "3ceafe2e"
+   "9582cbc3"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "82f39d6d"
+   "7d4e96fa"
   ],
   "w-b867582f": [
    "あつ森",
@@ -196,6 +196,6 @@
    "dd26eb9b"
   ]
  },
- "updated": "11.16 15:32",
+ "updated": "11.16 15:40",
  "wishlist": "f2cd23f23a6d"
 }

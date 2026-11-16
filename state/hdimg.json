@@ -2560,6 +2560,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00146577-toushin-000-1-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/f3fbf0aa5c53717b.webp",
+  "out": [
+   1200,
+   800
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261114-00000048-nataliec-000-1-view.jpg?exp=10800": {
   "w": 750,
   "h": 530,
@@ -2834,8 +2846,15 @@
  "https://prcdn.freetls.fastly.net/release_image/10075/627/10075-627-21de463403e714d699d36cf0143475f0-574x319.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 574,
   "h": 319,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.602,
+  "local": "pics/ee09bc12e2e73490.webp",
+  "out": [
+   1280,
+   711
+  ],
+  "why": "看不清"
  },
  "https://prcdn.freetls.fastly.net/release_image/112568/36/112568-36-b3127b153967cec052843648096d0276-830x436.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 830,
@@ -3828,6 +3847,19 @@
   "v": 3,
   "blur": 0.391
  },
+ "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
+  "w": 650,
+  "h": 502,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.469,
+  "local": "pics/1c25dfae618677ad.webp",
+  "out": [
+   1280,
+   989
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.A5Yit1Xmub4kAWaUb4-4wQ&pid=News&w=615": {
   "w": 615,
   "h": 615,
@@ -4129,6 +4161,12 @@
  "https://www.disneydining.com/wp-content/uploads/2024/06/avengers-secret-wars.jpg": {
   "w": 1200,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dissmercury.co.uk/resources/images/19009459/": {
+  "w": 2400,
+  "h": 1350,
   "target": 720,
   "v": 3
  },

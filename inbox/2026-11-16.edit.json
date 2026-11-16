@@ -224,7 +224,7 @@
   "チェーンソーマン": 3,
   "三星手机": 28,
   "BLEACH Mirrors High": 1,
-  "FROM": 1,
+  "FROM": 2,
   "绝区零": 5,
   "ILLIT": 13,
   "日本顶级网球赛事": 2,
@@ -237,7 +237,9 @@
   "gelato pique": 1,
   "Vaundy": 1,
   "滑雪": 1,
-  "MMORPG 新作": 6
+  "MMORPG 新作": 6,
+  "A2O LITE": 1,
+  "猫用品": 2
  },
  "FROM": [
   {
@@ -249,6 +251,15 @@
     1
    ],
    "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hsQ66.img"
+  },
+  {
+   "headline": "FROM season 5 premiere date: A November 2026 update",
+   "highlight": "season 5 premiere date",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "绝区零": [
@@ -497,6 +508,38 @@
   {
    "headline": "부담 없는 MMORPG?…‘이클립스’ 어떤 점이 가벼웠나 직접 해보니",
    "highlight": "이클립스",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "한 곡으로 이게 되네‥A2O LITE, 피지컬 음반 없이 음방 11관왕",
+   "highlight": "음방 11관왕",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "獣医師監修の猫専門メディア「にゃんと！」をオープン",
+   "highlight": "「にゃんと！」",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://prcdn.freetls.fastly.net/release_image/10075/627/10075-627-21de463403e714d699d36cf0143475f0-574x319.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+  },
+  {
+   "headline": "How Long Can You Leave Your Cat Alone? Things Every Cat Owner Should Know",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [

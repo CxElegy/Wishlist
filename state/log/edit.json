@@ -1,47 +1,5 @@
 [
 {
-"at": "2026-11-14T06:48:27+00:00",
-"text": "2026-11-14 第 2 バッチを出刊：Astrae Oratio、日本顶级网球赛事（2 版面・6 本・今日の整理待ちは全部終わり） · token 新規入力 1,321・キャッシュ読み 14.8万・出力 837",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.55,
-"mem_total": 16869146624,
-"mem_free": 15906119680,
-"disk_used": 10089844736,
-"disk_free": 31193690112,
-"disk_total": 41283534848,
-"peak": 383234048
-},
-"batch": 2,
-"boards": [
-"Astrae Oratio",
-"日本顶级网球赛事"
-],
-"stories": 6,
-"left": 0,
-"edited": 22,
-"run": 1794638356.3843389,
-"tok": {
-"in": 4,
-"cw": 1317,
-"cr": 148174,
-"out": 837,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 150332,
-"secs": 551,
-"run_tok": {
-"in": 21,
-"cw": 46530,
-"cr": 701675,
-"out": 3990,
-"calls": 11,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-14T09:39:07+00:00",
 "text": "2026-11-14 第 1 バッチを出刊：A2O LITE、GTA 6、チェーンソーマン、周杰伦、漫威电影（5 版面・20 本・残り 5 版面） · token 新規入力 5.2万・キャッシュ読み 70.5万・出力 4,654",
 "level": "ok",
@@ -2133,5 +2091,53 @@
 "calls": 17,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-16T06:40:55+00:00",
+"text": "2026-11-16 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 11（17 版面・42 本・今日の整理待ちは全部終わり） · token 新規入力 4.3万・キャッシュ読み 54.9万・出力 2,586",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.62,
+"mem_total": 16869146624,
+"mem_free": 15846100992,
+"disk_used": 10089824256,
+"disk_free": 31193710592,
+"disk_total": 41283534848,
+"peak": 443498496
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"ILLIT",
+"MMORPG 新作",
+"Vaundy",
+"dota2",
+"ぐでたま",
+"三星手机",
+"周杰伦",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"漫威电影",
+"猫用品",
+"绝区零"
+],
+"stories": 42,
+"left": 0,
+"edited": 21,
+"run": null,
+"tok": {
+"in": 17,
+"cw": 42571,
+"cr": 549379,
+"out": 2586,
+"calls": 9,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 594553
 }
 ]

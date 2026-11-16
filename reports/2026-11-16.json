@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "0e8cc9d72c71",
+ "edit_sig": "a5b46ae49864",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -634,17 +634,19 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-09",
-     "n": 1,
-     "source": "뉴스엔",
-     "title": "한 곡으로 이게 되네‥A2O LITE, 피지컬 음반 없이 음방 11관왕",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9sVDlGek00OVJGekJKNXluelh1WVZobG1SNXFEUHBjbEpiTnhsTFZxRHFQOUs4TjAzSGJEWDRrY25HQWM5WlNFLTFfemstSWZab3p6cHBtYnVQX1BSV1duTi03NFFGU21r?oc=5"
+     "headline": "한 곡으로 이게 되네‥A2O LITE, 피지컬 음반 없이 음방 11관왕",
+     "highlight": "음방 11관왕",
+     "image": "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650",
+     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "url": "https://m.newsen.com/news_view.php?uid=202611091743086310",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
@@ -762,16 +764,6 @@
    "section": "影视",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-16",
-     "headline": "FROM season 5 premiere date: A November 2026 update",
-     "highlight": "",
-     "image": "https://cartermatt.com/wp-content/uploads/2026/04/FROM-season-4.webp",
-     "image_via": "og:image",
-     "url": "https://cartermatt.com/731567/from-season-5-premiere-date-a-november-2026-update/",
-     "weight": "hero"
-    },
-    {
      "blurb": "The MGM+ horror staple From finally began streaming on Netflix, and ahead of its final season has proved a hit.",
      "date": "2026-11-14",
      "headline": "'Twin Peaks meets Stephen King' series, now a major Netflix hit, only has one season left",
@@ -780,6 +772,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.msn.com/en-ca/news/other/twin-peaks-meets-stephen-king-series-now-a-major-netflix-hit-only-has-one-season-left/ar-AA2hsBhk",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-16",
+     "headline": "FROM season 5 premiere date: A November 2026 update",
+     "highlight": "season 5 premiere date",
+     "image": "https://cartermatt.com/wp-content/uploads/2026/04/FROM-season-4.webp",
+     "image_via": "og:image",
+     "url": "https://cartermatt.com/731567/from-season-5-premiere-date-a-november-2026-update/",
+     "weight": "normal"
     }
    ],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
@@ -882,24 +884,30 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
-     "date": "2026-11-14",
-     "n": 1,
-     "source": "Bunko.pet",
-     "title": "How Long Can You Leave Your Cat Alone? Things Every Cat Owner Should Know",
-     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQQkNrcUc4ZzIxUWt4d2xxSjdnUE50dTJWMHZYU2NFMlRPU2ZKM2lCZE9YY3d6LU0xNlJ6VUVxWmcwVlFhSkprYlBZQmRXVXNfQlhkNlBReDlMX3RLajlkR2doby1ZanI2WWZqODlJbHpjRlpoTzV5MHljdk9BVjZsalNaTjZlOEFQbENzenV0TUs2ZWtuUjJ5bHEtSUFlS0JLY1hieWtjS3pEM19sU21hck1CZl9rclU?oc=5"
+     "blurb": "",
+     "date": "2026-11-16",
+     "headline": "獣医師監修の猫専門メディア「にゃんと！」をオープン",
+     "highlight": "「にゃんと！」",
+     "image": "https://prcdn.freetls.fastly.net/release_image/10075/627/10075-627-21de463403e714d699d36cf0143475f0-574x319.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "AI 挑选",
+     "url": "https://prtimes.jp/main/html/rd/p/000000627.000010075.html",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-16",
-     "n": 2,
-     "source": "PR TIMES",
-     "title": "【エステー】獣医師監修の猫専門メディア「にゃんと！」をオープン",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9fcFFFR2lXTS1xbGZGa2xsTUM0U1luamZxY2tCZ3RGSV9CWDJoLTBucDBTb0ZhOXd0Q2JHdURweEZ1UjRKVFBRcUJEZjA2YVdCb2o3a3BNQTBhZExjdGFYRExYZ1hqMXNXdHc?oc=5"
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "How Long Can You Leave Your Cat Alone? Things Every Cat Owner Should Know",
+     "highlight": "",
+     "image": null,
+     "source": "Bunko.pet",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.bunko.pet&sz=128",
+     "url": "https://www.bunko.pet/en/how-long-can-you-leave-your-cat-alone-things-every-cat-owner-should-know-t202611140002.html",
+     "weight": "normal"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
