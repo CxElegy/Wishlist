@@ -15,7 +15,9 @@
     83,
     93,
     94,
-    86
+    86,
+    112,
+    75
    ],
    "event": {
     "date": "2026-11-19",
@@ -50,16 +52,18 @@
    "refs": [
     8,
     41,
-    42
+    42,
+    25,
+    97
    ]
   },
   {
-   "headline": "Fake GTA 6 Downloads Hide Vidar Malware, ESET Warns",
-   "highlight": "Vidar Malware",
+   "headline": "GTA6 預購銷量突破1200萬份，Take-Two 盤前升超4%",
+   "highlight": "預購銷量突破1200萬份",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
+    108
    ]
   },
   {
@@ -91,7 +95,13 @@
     6,
     7,
     8,
-    9
+    9,
+    17,
+    18,
+    19,
+    20,
+    21,
+    23
    ],
    "image": "https://static.independent.co.uk/2026/11/15/15/06/hp.png?trim=0,211,0,210&width=1200&height=800&crop=1200:800"
   },
@@ -209,7 +219,12 @@
     41,
     42,
     43,
-    44
+    44,
+    45,
+    46,
+    48,
+    50,
+    51
    ]
   },
   {
@@ -229,7 +244,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    17
+    17,
+    47
    ]
   },
   {
@@ -263,10 +279,10 @@
   }
  ],
  "_covered": {
-  "GTA 6": 96,
-  "哈利波特剧集": 16,
+  "GTA 6": 114,
+  "哈利波特剧集": 23,
   "チェーンソーマン": 7,
-  "三星手机": 44,
+  "三星手机": 53,
   "BLEACH Mirrors High": 1,
   "FROM": 2,
   "绝区零": 7,
@@ -274,9 +290,9 @@
   "日本顶级网球赛事": 2,
   "The Mandalorian": 3,
   "ぐでたま": 3,
-  "漫威电影": 60,
+  "漫威电影": 71,
   "dota2": 3,
-  "周杰伦": 26,
+  "周杰伦": 34,
   "Astrae Oratio": 2,
   "gelato pique": 4,
   "Vaundy": 1,
@@ -455,7 +471,8 @@
     32,
     30,
     46,
-    54
+    54,
+    62
    ],
    "image": "https://deadline.com/wp-content/uploads/2026/11/X-MEN-Hugh-Jackman-James-Marsden-Patrick-Stewart-Halle-Berry-Famke-Janssen-2000.-TM-and-Copyri-MCDAVDO-WD014-1000.jpg"
   },
@@ -489,7 +506,9 @@
     49,
     57,
     51,
-    55
+    55,
+    66,
+    68
    ]
   },
   {
@@ -499,7 +518,9 @@
    "weight": "normal",
    "refs": [
     37,
-    42
+    42,
+    61,
+    64
    ]
   }
  ],
@@ -529,7 +550,11 @@
     22,
     25,
     23,
-    24
+    24,
+    28,
+    27,
+    29,
+    33
    ],
    "event": {
     "date": "2027-04-09",

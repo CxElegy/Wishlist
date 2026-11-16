@@ -118,19 +118,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx1.sinaimg.cn/middle/007148Qbly1iiw7o15fbmj30n012owfu.jpg": {
-  "w": 828,
-  "h": 1392,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/e73eec93e464ac31.webp",
-  "out": [
-   761,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/006dNg2Ply1iizp6xr3lsj31dk26mgut.jpg": {
   "w": 1784,
   "h": 2830,
@@ -340,12 +327,6 @@
   "w": 1024,
   "h": 683,
   "target": 720,
-  "v": 3
- },
- "https://assets.murphysmultiverse.com/uploads/2026/11/Dolby-Doomsday-e1794061409310.jpg": {
-  "w": 1086,
-  "h": 942,
-  "target": 1280,
   "v": 3
  },
  "https://assets.st-note.com/production/uploads/images/334159776/rectangle_large_type_2_ea2d8126a01c8f0ca52696209d806b37.jpg?fit=bounds&quality=85&width=1280": {
@@ -599,19 +580,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.it.chosun.com/news/photo/202611/3000000001091_501236_2113.jpg": {
-  "w": 600,
-  "h": 431,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.478,
-  "local": "pics/60a33c1508526f18.webp",
-  "out": [
-   1280,
-   919
-  ],
-  "why": "看不清"
- },
  "https://cdn.iwate-np.co.jp/media-static/article/198453/thumbnail/sw4b0-tm6af2f0c3_862574b10.jpg": {
   "w": 1200,
   "h": 802,
@@ -733,6 +701,12 @@
  "https://cdn3.wionews.com/prod/wion/images/2026/20261110/image-1794315924585.png?rect=(0,0,1280,720)&imwidth=896&imheight=504&format=webp&quality=medium": {
   "w": 896,
   "h": 504,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png": {
+  "w": 1500,
+  "h": 844,
   "target": 1280,
   "v": 3
  },
@@ -922,6 +896,12 @@
   "w": 850,
   "h": 481,
   "target": 1280,
+  "v": 3
+ },
+ "https://eeo.today/media/wp-content/uploads/2026/11/1116ww.jpg": {
+  "w": 1000,
+  "h": 1400,
+  "target": 720,
   "v": 3
  },
  "https://english.loktej.com/media/c876x438/2026-11/samsung-galaxy-s27-ultra-leak-representative-image1.webp": {
@@ -1200,12 +1180,6 @@
  "https://i.abcnewsfe.com/a/3f4d22ad-8045-4791-a537-3773774a4769/doomsday-1-ht-jef-260720_1784553718149_hpMain_16x9.jpg?w=1600": {
   "w": 1600,
   "h": 900,
-  "target": 1280,
-  "v": 3
- },
- "https://i.pcmag.com/imagery/articles/04H6IwEv0E6cx1rnnkowZes-2.fit_lim.size_1200x630.v1793906374.png": {
-  "w": 1120,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -1782,19 +1756,6 @@
   "target": 1280,
   "v": 3
  },
- "https://jomo.ismcdn.jp/mwimgs/c/d/-/img_cdf0658b8e5c6af0489feed75c71ff10131718.png": {
-  "w": 450,
-  "h": 253,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.476,
-  "local": "pics/d93beca3f5e3c2e1.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/zrdkuvxctzo8hdvcl57qng4l.jpg": {
   "w": 1600,
   "h": 900,
@@ -1867,12 +1828,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://media.assettype.com/esquireindia%2F2026-11-16%2Fyw3p3vxm%2FAvengers-Doomsday-Trailer-Release-date.jpg?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://media.assettype.com/outlooktraveller/2026-11-10/vx9d1246/findingharryhoka16x9.avif?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
@@ -2475,18 +2430,6 @@
   ],
   "why": "看不清"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261109-00096815-vballk-000-1-view.jpg?exp=10800": {
-  "w": 1007,
-  "h": 565,
-  "target": 720,
-  "v": 3,
-  "local": "pics/705658fc04154700.webp",
-  "out": [
-   1007,
-   565
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261109-01454947-tkwalk-000-1-view.jpg?exp=10800": {
   "w": 1128,
   "h": 1410,
@@ -2545,6 +2488,19 @@
   "out": [
    1280,
    788
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800": {
+  "w": 615,
+  "h": 615,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.59,
+  "local": "pics/0fe2201b1c527be2.webp",
+  "out": [
+   1280,
+   1280
   ],
   "why": "期限付きの網址"
  },
@@ -2641,6 +2597,18 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-16"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-00000014-anmanmv-000-1-view.jpg?exp=10800": {
+  "w": 440,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/878e4e193180ebc5.webp",
+  "out": [
+   440,
+   800
+  ],
+  "why": "期限付きの網址"
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-10169848-lasisa-000-13-view.jpg?exp=10800": {
   "w": 1200,
@@ -2826,19 +2794,6 @@
   ],
   "why": "看不清"
  },
- "https://pimg.mk.co.kr/news/cms/202611/09/news-p.v1.20261109.49d87d5052534e4587d7f91c43a9268d_R.png": {
-  "w": 640,
-  "h": 392,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/3dd7534715852f23.webp",
-  "out": [
-   1280,
-   784
-  ],
-  "why": "看不清"
- },
  "https://pimg.mk.co.kr/news/cms/202611/12/news-p.v1.20261007.415c331a07ee4564bd97f4831e67de35_R.jpg": {
   "w": 1600,
   "h": 1141,
@@ -2880,12 +2835,6 @@
   "w": 600,
   "h": 400,
   "target": 720,
-  "v": 3
- },
- "https://portal.auone.jp/media/thumbnails/2026/11/11/95773_w1280.webp": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
   "v": 3
  },
  "https://portal.auone.jp/media/thumbnails/2026/11/12/https___irohani_art__p_48767_w1024.webp": {
@@ -3074,12 +3023,6 @@
   "target": 1280,
   "v": 3
  },
- "https://q0.itc.cn/q_70/images03/20261116/3a34923851f343b3894276eb2583b944.jpeg": {
-  "w": 720,
-  "h": 1280,
-  "target": 1280,
-  "v": 3
- },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -3099,18 +3042,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://q5.itc.cn/q_70/images03/20261116/c8ef85eb81034a989736cd4abb2a8816.jpeg": {
+  "w": 1440,
+  "h": 2560,
+  "target": 1280,
+  "v": 3
+ },
  "https://q8.itc.cn/q_70/images03/20261116/5c3775b43d8d47e69bf261e48581419b.jpeg": {
   "w": 360,
   "h": 640,
   "target": 1280,
   "v": 3,
   "blur": 0.38
- },
- "https://q9.itc.cn/q_70/images03/20261116/41d9e637593749799b6ab947f336ba33.jpeg": {
-  "w": 690,
-  "h": 1005,
-  "target": 1280,
-  "v": 3
  },
  "https://realsound.jp/wp-content/uploads/2026/11/20261115-ichiban-99.jpeg": {
   "w": 1200,
@@ -3140,7 +3083,7 @@
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
   "h": 630,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/0077d72c4379a412a7fab37d93718c2fa2d033e557af9b4fc6c700b97135e31e/lightyear_networkapi/resizefill_w960_h540%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Fd3cbd44d1b4a0104808f4a1b51d68371.jpg": {
@@ -3197,6 +3140,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/cbf3428b493694e56a381bba193de38b7e8ea5438c9f14dd402ae59368bcbafe/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fybrand.cinema.com.my%2F6d8151815bcd878c4515f5ee7e40aef0.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/ddeff4a25e26ace41830ca125423da06615b93a25d88e20ed4ec3e381b307812/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
   "w": 1200,
   "h": 675,
@@ -3236,12 +3185,6 @@
  "https://sdprodstorage.blob.core.windows.net/sd-cms-prod/featured-image/Sea%20of%20Remnants%20Dawnbreaker%20-1794310281633.webp": {
   "w": 901,
   "h": 507,
-  "target": 720,
-  "v": 3
- },
- "https://shattered.io/wp-content/uploads/2026/11/fake-gta-vi-downloads-vidar-infostealer-eset-warns-nov-19-launch-img13.webp": {
-  "w": 1880,
-  "h": 1058,
   "target": 720,
   "v": 3
  },
@@ -3483,12 +3426,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.sanyonews.jp/image/article/size1/c/b/a/2/cba273f59330f6c3faeb6c632b5a6ee2_1.jpg": {
-  "w": 454,
-  "h": 640,
-  "target": 720,
-  "v": 3
- },
  "https://static.sanyonews.jp/image/article/size1/c/c/8/a/cc8a68666a0c0ab2af51729864d4d114_1.jpg": {
   "w": 453,
   "h": 640,
@@ -3642,6 +3579,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/robert-downey-jr-standing-in-a-spaceship-in-avengers-infinity-war.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/the-mandalorian_qnug7h.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3771,6 +3714,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/12/1794443617144_galaxy-s27-ultra-duoc-nang-cap-mot-tinh-nang-fan-mong-doi-nhat-3099.png": {
   "w": 1746,
   "h": 935,
+  "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/12/1794477618287_img_4030566e.jpeg": {
+  "w": 1200,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -3943,19 +3892,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.A5Yit1Xmub4kAWaUb4-4wQ&pid=News&w=615": {
-  "w": 615,
-  "h": 615,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.541,
-  "local": "pics/4f6973037c18d014.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.EF-AKr8OdiiH0IENmrRNoQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4067,6 +4003,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.kO31PuzcNcfZ38K7C62b7Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 467,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
   "w": 700,
   "h": 491,
@@ -4081,19 +4023,6 @@
   "v": 3,
   "blur": 0.433,
   "local": "pics/a3a6ddefd6ecf27c.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.qNxYnoXu0ow7oE-rmzr0zQ&pid=News&w=500": {
-  "w": 500,
-  "h": 281,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.438,
-  "local": "pics/39bd07cff1fa432b.webp",
   "out": [
    1280,
    719
@@ -4176,6 +4105,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.crank-in.net/img/db/267108025175442_1200.jpg": {
   "w": 1200,
   "h": 800,
@@ -4185,12 +4120,6 @@
  "https://www.denofgeek.com/wp-content/uploads/2026/07/Paul-Rudd-and-Kathryn-Newton-in-Avengers_-Doomsday.jpg?fit=1311%2C675": {
   "w": 1311,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2023/05/15/best-studio-ghibli-movies.jpg": {
-  "w": 1600,
-  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -4380,6 +4309,12 @@
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.sammyfans.com/wp-content/uploads/2026/07/snapdragon-8-elite-for-galaxy-img-1000x600.jpg": {
+  "w": 1000,
+  "h": 600,
   "target": 1280,
   "v": 3
  },
