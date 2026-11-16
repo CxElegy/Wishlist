@@ -1,6 +1,6 @@
 {
  "date": "2026-11-17",
- "edit_sig": "253c5b5115b9",
+ "edit_sig": "0a3b9866922e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -255,8 +255,8 @@
      "date": "2026-11-16",
      "headline": "2027 Grammy Nominations: New Asian pop category takes centre stage as BINI, LE SSERAFIM and ILLIT draw attention",
      "highlight": "",
-     "image": "https://businessupturn.com/uploads/media/1794830799107-r6g345-untitled-design---2026-11-16t173622-305.webp",
-     "image_via": "og:image",
+     "image": "https://pbs.twimg.com/media/HXOLLE8W0AAIfuh?format=jpg&name=large",
+     "image_via": "正文图（2 枚から）",
      "url": "https://www.businessupturn.com/entertainment/hollywood/2027-grammy-nominations-new-asian-pop-category-takes-centre-stage-as-bini-le-sserafim-and-illit-draw-attention/",
      "weight": "normal"
     }
@@ -631,17 +631,19 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "GALA 湯沢スキー場は、南エリアを今シーズン営業休止とする。",
      "date": "2026-11-12",
-     "n": 1,
-     "source": "千葉テレビ放送",
-     "title": "GALA湯沢スキー場、南エリアを今シーズン営業休止",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1fMHhDUjlEUDNHa2NvdGtqdjNnaHJDTElpNTl3M2xTWDQxbDlrdUxiVGl1RUNJVmF0QlpncS1wWXpHcERobnVWUFFsb2ZwUkhnQ0JJZndRU0ZmTzhsb0FV?oc=5"
+     "headline": "GALA湯沢スキー場、南エリアを今シーズン営業休止",
+     "highlight": "営業休止",
+     "image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1493566334632657942/origin_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.chiba-tv.com/plus/detail/2026112217602",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -707,17 +709,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "2026年冬のスターバックスは、ネイビー×ボルドーのチェック柄ボトルやニット風タンブラーが登場。",
      "date": "2026-11-16",
-     "n": 1,
-     "source": "ファッションプレス",
-     "title": "スターバックス26年冬グッズ、ネイビー×ボルドーの“チェック柄”ボトルやニット風タンブラー",
-     "url": "https://www.fashion-press.net/news/153423"
+     "headline": "スターバックス26年冬グッズ、ネイビー×ボルドーの“チェック柄”ボトルやニット風タンブラー",
+     "highlight": "26年冬グッズ",
+     "image": "https://www.fashion-press.net/img/news/153423/top.jpg?1794817828",
+     "image_via": "AI 挑选",
+     "url": "https://www.fashion-press.net/news/153423",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",

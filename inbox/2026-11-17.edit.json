@@ -282,7 +282,9 @@
   "チェーンソーマン": 2,
   "日本顶级网球赛事": 2,
   "A2O LITE": 1,
-  "gelato pique": 1
+  "gelato pique": 1,
+  "星巴克马克杯": 1,
+  "滑雪": 1
  },
  "ILLIT": [
   {
@@ -463,6 +465,30 @@
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.2OyEI7Q8Q2znC2NwuWqeog&pid=News&w=1200"
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "スターバックス26年冬グッズ、ネイビー×ボルドーの“チェック柄”ボトルやニット風タンブラー",
+   "highlight": "26年冬グッズ",
+   "blurb": "2026年冬のスターバックスは、ネイビー×ボルドーのチェック柄ボトルやニット風タンブラーが登場。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.fashion-press.net/img/news/153423/top.jpg?1794817828"
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "GALA湯沢スキー場、南エリアを今シーズン営業休止",
+   "highlight": "営業休止",
+   "blurb": "GALA 湯沢スキー場は、南エリアを今シーズン営業休止とする。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1493566334632657942/origin_1.jpg"
   }
  ]
 }

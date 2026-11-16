@@ -215,12 +215,6 @@
   "v": 3,
   "blur": 0.308
  },
- "https://api.elle.com.hk/var/site/storage/images/_aliases/img_776_w/9/1/5/1/39811519-1-chi-HK/d1f67b1d9bdf-SnapInsta.to_888351302_18645145030061039_5022405180871811437_n.jpg": {
-  "w": 775,
-  "h": 1034,
-  "target": 720,
-  "v": 3
- },
  "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
   "w": 506,
   "h": 253,
@@ -456,12 +450,6 @@
  "https://bloximages.newyork1.vip.townnews.com/newsminer.com/content/tncms/assets/v3/editorial/d/23/d23ae209-448d-4015-a740-21bf869a6e23/6af211105521e.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize": {
   "w": 1200,
   "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://businessupturn.com/uploads/media/1794830799107-r6g345-untitled-design---2026-11-16t173622-305.webp": {
-  "w": 1200,
-  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -1045,12 +1033,6 @@
   "target": 720,
   "v": 3
  },
- "https://hawk.live/storage/images/posts/33-thinking-get-pro-stage-25428.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 720,
-  "v": 3
- },
  "https://hawk.live/storage/images/posts/another-update-released-dota-2-25427.jpg": {
   "w": 1200,
   "h": 628,
@@ -1348,19 +1330,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbUYl.img": {
-  "w": 615,
-  "h": 615,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.59,
-  "local": "pics/6a3f59855e335b51.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
   "w": 1000,
   "h": 666,
@@ -1542,13 +1511,13 @@
  "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1493566334632657942/origin_1.jpg": {
   "w": 360,
   "h": 240,
-  "target": 720,
+  "target": 1280,
   "v": 3,
-  "blur": 0.452,
+  "blur": 0.544,
   "local": "pics/22574abb15a5a162.webp",
   "out": [
-   720,
-   480
+   1080,
+   720
   ],
   "why": "看不清"
  },
@@ -1658,6 +1627,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.384
+ },
+ "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg": {
+  "w": 800,
+  "h": 533,
+  "target": 720,
+  "v": 3
  },
  "https://inews.gtimg.com/om_bt/OAfxMyK9k9Ay4Jz45p_yZ5zTCbdKGZK-RBEHC17pB0Kq4AA/1000": {
   "w": 1000,
@@ -1939,6 +1914,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg": {
+  "w": 1024,
+  "h": 768,
+  "target": 720,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png": {
@@ -2412,6 +2393,19 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800": {
+  "w": 615,
+  "h": 615,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.59,
+  "local": "pics/0fe2201b1c527be2.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2665,9 +2659,9 @@
   "target": 720,
   "v": 3
  },
- "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG": {
-  "w": 500,
-  "h": 282,
+ "https://pbs.twimg.com/media/HXOLLE8W0AAIfuh?format=jpg&name=large": {
+  "w": 1644,
+  "h": 925,
   "target": 720,
   "v": 3
  },
@@ -3428,6 +3422,12 @@
   "target": 720,
   "v": 3
  },
+ "https://substackcdn.com/image/fetch/$s_!fjUl!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F07f536c8-1efe-482a-a5af-c9e24c3c373a_5905x3937.jpeg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://sumahodigest.com/wp-content/uploads/2026/11/HW6zVaQXcAAkP6g.jpg": {
   "w": 1024,
   "h": 576,
@@ -3664,6 +3664,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bgr.com/img/gallery/if-you-miss-compact-phones-this-brand-is-trying-to-resurrect-them/l-intro-1794398036.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.billboard-japan.com/common/sys/img/news/00000167/167355/image.jpg": {
   "w": 999,
   "h": 999,
@@ -3772,19 +3778,6 @@
   "h": 337,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Ta_3et2dGUofwAQH1RowuQ&pid=News&w=780": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.43,
-  "local": "pics/f17ddb8c9a02b416.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546": {
   "w": 546,
@@ -3990,6 +3983,12 @@
    674
   ],
   "why": "看不清"
+ },
+ "https://www.fashion-press.net/img/news/153423/top.jpg?1794817828": {
+  "w": 1500,
+  "h": 1000,
+  "target": 1280,
+  "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-Ultra-.jpg": {
   "w": 1280,
