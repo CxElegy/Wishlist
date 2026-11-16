@@ -442,6 +442,12 @@
   "target": 720,
   "v": 3
  },
+ "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg": {
+  "w": 2000,
+  "h": 1125,
+  "target": 720,
+  "v": 3
+ },
  "https://blog.playstation.com/tachyon/2048/11/f1fb77ba440f1402ae155dc56989230e7a24c2f8-scaled.jpg": {
   "w": 2560,
   "h": 1440,
@@ -1223,6 +1229,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.fnnews.com/resource/media/image/2026/11/17/202611170500345065_e.jpg": {
+  "w": 1200,
+  "h": 541,
+  "target": 720,
+  "v": 3
+ },
  "https://image.hkhl.hk/f/1200p0/0x0/100/none/a3777c705f19f53a5ceccb9fee5308fb/2026-11/Copy_of_Copy_of_KF_82.png": {
   "w": 1200,
   "h": 675,
@@ -1361,19 +1373,6 @@
   "h": 2160,
   "target": 720,
   "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbUYl.img": {
-  "w": 615,
-  "h": 615,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.59,
-  "local": "pics/6a3f59855e335b51.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
   "w": 1000,
@@ -1896,6 +1895,12 @@
   "v": 3
  },
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2616259-2a3e66df40ec.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2617751-0a7aa7228341.jpg": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -2451,6 +2456,19 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800": {
+  "w": 615,
+  "h": 615,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.59,
+  "local": "pics/0fe2201b1c527be2.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2539,6 +2557,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-00000014-anmanmv-000-1-view.jpg?exp=10800": {
+  "w": 440,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/878e4e193180ebc5.webp",
+  "out": [
+   440,
+   800
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-10169848-lasisa-000-13-view.jpg?exp=10800": {
   "w": 1200,
   "h": 800,
@@ -2599,13 +2629,6 @@
   "target": 720,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1eb9127c7e124628962148a4f6c6374f.png": {
-  "w": 448,
-  "h": 252,
-  "target": 720,
-  "v": 3,
-  "blur": 0.373
- },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg": {
   "w": 736,
   "h": 414,
@@ -2622,6 +2645,12 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/614d674cbc04425092f91517c1246529.png": {
   "w": 800,
   "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg": {
+  "w": 750,
+  "h": 750,
   "target": 720,
   "v": 3
  },
@@ -3576,6 +3605,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/12/1794477618287_img_4030566e.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794527936990_galaxy-s27-ultra-7-nang-cap-dang-mong-cho-nhat-tren-flagship-sap-ra-mat-3674.png": {
   "w": 1758,
   "h": 941,
@@ -3731,12 +3766,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.1BCeCGT5pen0DhAzqHk_pw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.2OyEI7Q8Q2znC2NwuWqeog&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3788,12 +3817,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.JISvm-2GnaZbxzx_RQPaoQ&pid=News&w=352": {
-  "w": 352,
-  "h": 640,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.K-ueSVO5E4V6l8_eMP41Bw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3824,19 +3847,6 @@
   "h": 337,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.P96SKX6camtl5CVyYLP-2g&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.462,
-  "local": "pics/edfd5ee34c70e033.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.TpQqcVZ4WNHRgzGqSdxwfg&pid=News&w=1200": {
   "w": 700,
@@ -3880,12 +3890,6 @@
    852
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.d-443DD11ZrDzHhF5MiZKQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 315,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.fGWfu_k0AQbTeHAylNOUnw&pid=News&w=1200": {
   "w": 700,
@@ -3945,6 +3949,12 @@
   "v": 3,
   "blur": 0.409
  },
+ "https://www.bing.com/th?id=ONUT.xY8qPcKcyq3GQJzCdw3Keg&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
   "h": 800,
@@ -3980,6 +3990,12 @@
   "w": 1200,
   "h": 400,
   "target": 720,
+  "v": 3
+ },
+ "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://www.crank-in.net/img/db/267108025175442_1200.jpg": {
