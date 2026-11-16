@@ -131,6 +131,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/006tofKggy1ij3caieck0j32802yokjt.jpg": {
+  "w": 2000,
+  "h": 2667,
+  "target": 720,
+  "v": 3,
+  "local": "pics/1710c104d71083bb.webp",
+  "out": [
+   960,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/6f5ef307gy1ij1zbcu2afj20xc0xcdux.jpg": {
   "w": 1200,
   "h": 1200,
@@ -140,19 +153,6 @@
   "out": [
    1200,
    1200
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx2.sinaimg.cn/middle/90b10eb9ly1ij1dv15cagj20u31kwe81.jpg": {
-  "w": 1083,
-  "h": 2048,
-  "target": 720,
-  "v": 3,
-  "local": "pics/b8dd1f8234580401.webp",
-  "out": [
-   677,
-   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -475,6 +475,12 @@
  "https://buzzap.net/images/2026/11/13/galaxy-s27-camera/top.jpg": {
   "w": 1200,
   "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cartermatt.com/wp-content/uploads/2026/04/FROM-season-4.webp": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -1943,12 +1949,6 @@
   "target": 1280,
   "v": 3
  },
- "https://news-images.tvbs.com.tw/api/v1/image/01a1def5-4983-73cd-b1aa-02d9000705f9.jpg?t=16x9&wp=l,t&c=0,385,4080,2680&w=1200&h=675": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnf5NpyUQZzRcq1nx-ObCXEHBkc-me1kh93-P-Go12VnIgwnj_1VQ92hOSsmDOswow7fWbjUnXrpbTyEx52aBQHBDQtAu9zAzHMdIrQFXrXi8zqlDKDDUh0JvYrLjpIr_UQ==": {
   "w": 934,
   "h": 701,
@@ -2702,6 +2702,12 @@
    533
   ],
   "why": "期限付きの網址"
+ },
+ "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414": {
+  "w": 1414,
+  "h": 1207,
+  "target": 1280,
+  "v": 3
  },
  "https://phinf.wevpstatic.net/MjAyNjEwMTlfMTA1/MDAxNzkyNDAzNTIwNjg3.TPqKBh9lZxpL4iBwlxPxfGnYO0gRmYHMUuSnM89YLaUg.MOURt5XovA-MgCy3ajd1ElLt6gyUHJ-fShswaszV9zUg.JPEG/image.jpg?type=w1414": {
   "w": 1414,
@@ -3800,6 +3806,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.JfKu1wGkIT4ZjaJdWI1wLA&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.JkF8LxDJxNL7wiIAn1MwPg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3847,12 +3859,6 @@
  "https://www.bing.com/th?id=ONUT.SrLzZilTbNcLH4fWk3UZ1g&pid=News&w=1200": {
   "w": 700,
   "h": 392,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.UaEQa3roomSBsWMYqxPQUA&pid=News&w=754": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3957,6 +3963,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.y3ppD0hcT6E1lJl_vRsVEA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.yT0kCzeHJgVfedeEjsngRA&pid=News&w=1200": {
   "w": 700,
   "h": 392,
@@ -4057,12 +4069,6 @@
  "https://www.disneydining.com/wp-content/uploads/2024/06/avengers-secret-wars.jpg": {
   "w": 1200,
   "h": 600,
-  "target": 720,
-  "v": 3
- },
- "https://www.dissmercury.co.uk/resources/images/19009459/": {
-  "w": 2400,
-  "h": 1350,
   "target": 720,
   "v": 3
  },
