@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-16T13:35:46+00:00",
+ "changed": true,
+ "checked": "2026-11-16T14:18:45+00:00",
  "fired": {
   "at": "2026-11-16T13:35:46+00:00",
   "results": {
@@ -53,55 +53,34 @@
    },
    "items": [
     "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "Vaundy",
-    "dota2",
-    "lib:Ado",
-    "lib:BTS",
-    "lib:King Gnu",
-    "lib:Mrs. GREEN APPLE",
-    "lib:YOASOBI",
-    "lib:サッカー日本代表",
-    "lib:スプラトゥーン3",
-    "lib:大谷翔平",
+    "lib:F1",
+    "lib:NBA",
+    "lib:Nintendo Switch 2",
+    "lib:iPhone",
+    "lib:ガンプラ",
+    "lib:ユニクロ",
+    "lib:大相撲",
+    "lib:無印良品",
     "ぐでたま",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
     "日本顶级网球赛事",
     "星巴克马克杯",
     "滑雪",
-    "漫威电影",
-    "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-16T11:37:14+00:00",
+   "last_batch": "2026-11-16T13:49:31+00:00",
    "last_error": {
     "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 341,
+   "prog": 419,
    "prog_day": "2026-11-16",
-   "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "dota2",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "猫用品"
-   ],
-   "sig": "cbf3ffc54b2c",
+   "ripe": [],
+   "sig": "4dc73aac535d",
    "token_cap": 1000000,
-   "tokens_today": 645462,
-   "why": "整理待ちの記事 175 件（25 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 705896,
+   "why": "整理待ちの記事 105 件（15 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -218,12 +197,12 @@
    "runs": 17
   },
   "2026-11-16": {
-   "batches": 35,
-   "cr": 12365071,
-   "cw": 588450,
-   "in": 348,
-   "out": 56664,
-   "runs": 12
+   "batches": 37,
+   "cr": 13306652,
+   "cw": 643735,
+   "in": 375,
+   "out": 61786,
+   "runs": 13
   }
  }
 }
