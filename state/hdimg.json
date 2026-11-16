@@ -215,12 +215,6 @@
   "target": 720,
   "v": 3
  },
- "https://animeanime.jp/imgs/ogp_f/956273.jpg": {
-  "w": 600,
-  "h": 1090,
-  "target": 720,
-  "v": 3
- },
  "https://animetv-jp.net/wp-content/uploads/2026/11/images-32.jpeg": {
   "w": 739,
   "h": 415,
@@ -448,15 +442,15 @@
   "target": 720,
   "v": 3
  },
- "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg": {
-  "w": 2000,
-  "h": 1125,
-  "target": 720,
-  "v": 3
- },
  "https://blog.playstation.com/tachyon/2048/11/f1fb77ba440f1402ae155dc56989230e7a24c2f8-scaled.jpg": {
   "w": 2560,
   "h": 1440,
+  "target": 1280,
+  "v": 3
+ },
+ "https://bloximages.chicago2.vip.townnews.com/jdnews.com/content/tncms/assets/v3/editorial/6/4d/64d1d788-cdbb-5941-b36f-3cacff633c76/6ae9268703664.image.jpg?crop=1199%2C630%2C0%2C49": {
+  "w": 1199,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -735,12 +729,6 @@
  "https://cdn3.wionews.com/prod/wion/images/2026/20261110/image-1794315924585.png?rect=(0,0,1280,720)&imwidth=896&imheight=504&format=webp&quality=medium": {
   "w": 896,
   "h": 504,
-  "target": 1280,
-  "v": 3
- },
- "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png": {
-  "w": 1500,
-  "h": 844,
   "target": 1280,
   "v": 3
  },
@@ -1028,6 +1016,12 @@
   "target": 720,
   "v": 3
  },
+ "https://getnavi.jp/wp-content/uploads/2026/11/71O1DhluJJL._AC_SL1500_.jpg": {
+  "w": 1200,
+  "h": 1223,
+  "target": 1280,
+  "v": 3
+ },
  "https://gonintendo.com/attachments/image/88856/file/medium-0d951c4558c74d8a62690b066a64bde9.jpg": {
   "w": 780,
   "h": 439,
@@ -1160,6 +1154,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://i.ytimg.com/vi/laiTH6GAzmo/maxresdefault.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-Ultra-AH-2.png?fit=1920%2C1080&ssl=1": {
@@ -1368,12 +1368,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbBaq.img": {
-  "w": 615,
-  "h": 323,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
   "w": 1000,
   "h": 666,
@@ -1538,6 +1532,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.38
+ },
+ "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg": {
+  "w": 700,
+  "h": 394,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.485,
+  "local": "pics/25098d5a17c7b263.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "https://img.gamewith.jp/article/thumbnail/gamearticle/18874/rectangle/65621.jpg?t=1794376432": {
   "w": 600,
@@ -1802,6 +1809,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://massivelyop.com/wp-content/uploads/2026/04/eldramoor-06.jpg": {
+  "w": 880,
+  "h": 290,
+  "target": 720,
+  "v": 3
+ },
  "https://matsumoto.goguynet.jp/wp-content/uploads/sites/89/2026/11/bibis-boutique-aeon-20261113043146.jpg": {
   "w": 1280,
   "h": 960,
@@ -1977,12 +1990,6 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
-  "v": 3
- },
- "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg": {
-  "w": 1024,
-  "h": 768,
-  "target": 720,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png": {
@@ -2163,6 +2170,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/1453739/19024802_615.jpg": {
+  "w": 615,
+  "h": 323,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/149014/847171_615.jpg": {
   "w": 615,
@@ -2413,18 +2426,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-00000041-isd-000-2-view.jpg?exp=10800": {
-  "w": 800,
-  "h": 450,
-  "target": 720,
-  "v": 3,
-  "local": "pics/e99b5be402248602.webp",
-  "out": [
-   800,
-   450
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-001-1-view.jpg?pri=l&w=640&h=357&exp=10800": {
   "w": 640,
   "h": 358,
@@ -2560,6 +2561,18 @@
   "out": [
    1280,
    912
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-00000014-anmanmv-000-1-view.jpg?exp=10800": {
+  "w": 440,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/878e4e193180ebc5.webp",
+  "out": [
+   440,
+   800
   ],
   "why": "期限付きの網址"
  },
@@ -2891,6 +2904,12 @@
  "https://prcdn.freetls.fastly.net/release_image/33130/375/33130-375-ed5678162b157bdc93871490d99befc1-1200x628.jpg": {
   "w": 1200,
   "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/49377/84/49377-84-f392fb2efef8b7fcd2df9f9853680105-3900x2194.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2240,
+  "h": 1260,
   "target": 720,
   "v": 3
  },
@@ -3521,6 +3540,12 @@
   "target": 720,
   "v": 3
  },
+ "https://the-gadgeteer.com/wp-content/uploads/2026/11/samsung-z-fold8-hero-bf-tr-uniform.jpg": {
+  "w": 1440,
+  "h": 810,
+  "target": 1280,
+  "v": 3
+ },
  "https://themainstreetmouse.com/wp-content/uploads/2026/06/Avengers-Secret-Wars.webp": {
   "w": 1920,
   "h": 1080,
@@ -3748,6 +3773,12 @@
   "v": 3,
   "blur": 0.391
  },
+ "https://www.bing.com/th?id=ONUT.1BCeCGT5pen0DhAzqHk_pw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.2OyEI7Q8Q2znC2NwuWqeog&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3771,19 +3802,6 @@
   "out": [
    1280,
    989
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.DBYSnY5j3iEiaNMtRXx55Q&pid=News&w=500": {
-  "w": 500,
-  "h": 500,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.485,
-  "local": "pics/84aae6faa3b3b061.webp",
-  "out": [
-   1280,
-   1280
   ],
   "why": "看不清"
  },
@@ -3937,13 +3955,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.qqJZSYRcq871-q0kraSeaQ&pid=News&w=400": {
-  "w": 400,
-  "h": 260,
-  "target": 720,
-  "v": 3,
-  "blur": 0.409
- },
  "https://www.bing.com/th?id=ONUT.xY8qPcKcyq3GQJzCdw3Keg&pid=News&w=1200": {
   "w": 700,
   "h": 394,
@@ -3961,6 +3972,19 @@
   "h": 460,
   "target": 720,
   "v": 3
+ },
+ "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true": {
+  "w": 500,
+  "h": 262,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.524,
+  "local": "pics/90f0d635188356ba.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清"
  },
  "https://www.chosun.com/resizer/v2/GZRTIOBXGNSTCZRTGE4TCY3CMQ.jpg?auth=b677f07bc60f2dca003e527e47af3534619cbbabc59d9f64d632c6e54e76fc8e&width=700&height=367&smart=true": {
   "w": 700,
@@ -4075,12 +4099,6 @@
   "w": 1199,
   "h": 800,
   "target": 1280,
-  "v": 3
- },
- "https://www.joblo.com/wp-content/uploads/2026/06/wtf-supergirl.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
   "v": 3
  },
  "https://www.justjared.com/wp-content/uploads/2026/11/from-season-3-ending.jpg": {

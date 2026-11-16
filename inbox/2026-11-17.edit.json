@@ -320,7 +320,8 @@
   "A2O LITE": 1,
   "gelato pique": 1,
   "星巴克马克杯": 1,
-  "滑雪": 1
+  "滑雪": 1,
+  "MMORPG 新作": 3
  },
  "ILLIT": [
   {
@@ -526,6 +527,26 @@
     1
    ],
    "image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1493566334632657942/origin_1.jpg"
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "웹젠, 신작 MMORPG ‘뮤 테오스’ BI 공개…2027년 상반기 출시 목표",
+   "highlight": "2027년 상반기 출시",
+   "blurb": "웹젠이 신작 MMORPG ‘뮤 테오스’의 BI를 공개했고, 2027년 상반기 출시를 목표로 한다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "VR MMORPG Eldramoor opens a new zone as its beta test nears its final days",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ]
 }

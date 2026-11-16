@@ -1,6 +1,6 @@
 {
  "date": "2026-11-17",
- "edit_sig": "e257a789a9aa",
+ "edit_sig": "4b90b20dd4ed",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -847,31 +847,31 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "웹젠이 신작 MMORPG ‘뮤 테오스’의 BI를 공개했고, 2027년 상반기 출시를 목표로 한다.",
      "date": "2026-11-11",
-     "n": 1,
+     "headline": "웹젠, 신작 MMORPG ‘뮤 테오스’ BI 공개…2027년 상반기 출시 목표",
+     "highlight": "2027년 상반기 출시",
+     "image": "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg",
+     "image_via": "转载 www.etnews.com",
      "source": "시사신문",
-     "title": "웹젠, 신작 MMORPG ‘뮤 테오스’ BI 공개…2027년 상반기 출시 목표",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBBQXJ0T1Z3QnhzN2J5V1g0dHAtRTA1cU0xZlpuQ1RxRzlkMW53Qm9DMzh2TmNLYUs4TUtfWDlBNE82d3VXOF9BQ041UF9WSUhQa2k1TFpDR3BnRTMtWlRQZ1hEVFoxQVppRU9JSDln?oc=5"
+     "source_icon": "https://cdn.sisasinmun.com/image/logo/favicon.png",
+     "url": "https://www.sisasinmun.com/news/articleView.html?idxno=409688",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-17",
-     "n": 2,
-     "source": "4Gamer.net",
-     "title": "今日は何をして過ごそう？ 「クロスランド せいれいたちとつむぐせかい」で楽しむ，目的に縛られない雲の上の暮らし【PR】",
-     "url": "https://www.4gamer.net/games/968/G096831/20261113002/"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-16",
-     "n": 3,
-     "source": "Massively Overpowered",
-     "title": "VR MMORPG Eldramoor opens a new zone as its beta test nears its final days",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQLWRpM29RTElacGJlTTRMUExob252ZzJ0RW9qZkVVdEZZcld0a2tOZkJwZUNWT240TVBRU1BsZUR0b2x4eXA1NnB3LVNRUmhkaWptdm91TWlhZVR3UUpnaUlXY1ZuV0pwZWhndjJzQnJCQnhfLW91aGdHdEFDX0FEMV9MTXAwS1k1ZjA2YkJwQkhfSm9XaW53bHdIUzNwUTBpQkgwTi1lSDVjMDZSclR3?oc=5"
+     "headline": "VR MMORPG Eldramoor opens a new zone as its beta test nears its final days",
+     "highlight": "",
+     "image": "https://massivelyop.com/wp-content/uploads/2026/04/eldramoor-06.jpg",
+     "image_via": "og:image",
+     "url": "https://massivelyop.com/2026/11/16/vr-mmorpg-eldramoor-opens-a-new-zone-as-its-beta-test-nears-its-final-days/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
