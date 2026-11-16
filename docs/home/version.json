@@ -1,32 +1,32 @@
 {
- "admin": "e02ff1524511",
- "admin-ai": "acdf894f338d",
+ "admin": "bdcaa3c515f3",
+ "admin-ai": "e13113ed98b3",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c61bee80"
+   "9cdbda81"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "569e7538"
+   "2ea46f65"
   ]
  },
- "admin-boards": "91ae2b5d49ea",
+ "admin-boards": "a32534d8b42d",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "073d2244"
+   "017a5f52"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "bf60519948bb",
+ "admin-emblem": "0c6815274dfd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e55e976e"
+   "d0ce0b42"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "948db270d2ee",
+ "admin-now": "86b402bdb90d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "906980ce"
+   "7a46cba5"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "da79cd9d"
+   "902a6263"
   ],
   "term-panel": [
    "ライブログ",
-   "10805f4c"
+   "e2f8a00f"
   ]
  },
- "admin-system": "e6851748ae80",
+ "admin-system": "3ff12b164a43",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c5727eed"
+   "c3d7abd6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "00e8cc27"
+   "183dd5e8"
   ]
  },
  "admin_marks": {},
- "heat": "78e44730b237",
+ "heat": "3037aece6200",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "bdfb7800"
+   "69c68470"
   ],
   "ranking": [
    "ランキング",
-   "6969afe4"
+   "a028ff4d"
   ]
  },
- "index": "3f05ba439774",
+ "index": "bac1c9ae8ee3",
  "index_marks": {
   "front": [
    "トップ",
-   "26e5397d"
+   "9024e56c"
   ],
   "picks": [
    "気になるかも？",
@@ -113,11 +113,11 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "1bbe72ff"
+   "3371c48b"
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "34a2ab01"
+   "c1b1b8f7"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "9582cbc3"
+   "3ceafe2e"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "3b79e900"
+   "f975746e"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "e9ec15b3"
+   "9db0824e"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "dd26eb9b"
   ]
  },
- "updated": "11.16 15:40",
+ "updated": "11.16 15:42",
  "wishlist": "f2cd23f23a6d"
 }
