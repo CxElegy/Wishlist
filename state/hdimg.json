@@ -48,25 +48,6 @@
   ],
   "why": "看不清"
  },
- "http://n.sinaimg.cn/sinakd20261115ac/533/w480h853/20261115/095b-319eba518b6123a58709f48032949b5e.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
- "http://n.sinaimg.cn/sinakd20261115ac/765/w405h360/20261115/b9ab-9200c2c8caec468709d5cf0ca916bc35.jpg": {
-  "w": 405,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.455,
-  "local": "pics/d762da2453b27fba.webp",
-  "out": [
-   1215,
-   1080
-  ],
-  "why": "看不清"
- },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -593,6 +574,19 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.it.chosun.com/news/photo/202611/3000000001091_501236_2113.jpg": {
+  "w": 600,
+  "h": 431,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.478,
+  "local": "pics/60a33c1508526f18.webp",
+  "out": [
+   1280,
+   919
+  ],
+  "why": "看不清"
+ },
  "https://cdn.iwate-np.co.jp/media-static/article/198453/thumbnail/sw4b0-tm6af2f0c3_862574b10.jpg": {
   "w": 1200,
   "h": 802,
@@ -714,6 +708,12 @@
  "https://cdn2.ettoday.net/images/9009/e9009075.jpg": {
   "w": 1065,
   "h": 799,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn2.ettoday.net/images/9015/e9015536.jpg": {
+  "w": 1280,
+  "h": 854,
   "target": 1280,
   "v": 3
  },
@@ -1030,6 +1030,12 @@
   "w": 1200,
   "h": 674,
   "target": 1280,
+  "v": 3
+ },
+ "https://gamesbeat.com/wp-content/uploads/2026/09/Lingokids-2.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://gdm-universal-media.b-cdn.net/epicstream/5182de2d-finding-harry-potter-the-craft-behind-the-magic.webp?width=1600&height=840": {
@@ -1756,6 +1762,19 @@
   "h": 750,
   "target": 1280,
   "v": 3
+ },
+ "https://inews.gtimg.com/om_ls/OP11PO3hHxyuukzxslfXwg28QjyN2zp8cN7W6JnrZmOxsAA_330330/0": {
+  "w": 330,
+  "h": 330,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.596,
+  "local": "pics/219750b8c350333b.webp",
+  "out": [
+   990,
+   990
+  ],
+  "why": "看不清"
  },
  "https://insider-gaming.com/wp-content/uploads/2026/10/GTA6Screen1.webp": {
   "w": 2560,
@@ -2579,18 +2598,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00146577-toushin-000-1-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
-  "v": 3,
-  "local": "pics/f3fbf0aa5c53717b.webp",
-  "out": [
-   1200,
-   800
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261114-00000048-nataliec-000-1-view.jpg?exp=10800": {
   "w": 750,
   "h": 530,
@@ -3073,13 +3080,6 @@
   "target": 1280,
   "v": 3
  },
- "https://q8.itc.cn/q_70/images03/20261116/5c3775b43d8d47e69bf261e48581419b.jpeg": {
-  "w": 360,
-  "h": 640,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.38
- },
  "https://realsound.jp/wp-content/uploads/2026/11/20261115-ichiban-99.jpeg": {
   "w": 1200,
   "h": 675,
@@ -3163,12 +3163,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/cbf3428b493694e56a381bba193de38b7e8ea5438c9f14dd402ae59368bcbafe/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fybrand.cinema.com.my%2F6d8151815bcd878c4515f5ee7e40aef0.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 720,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/ddeff4a25e26ace41830ca125423da06615b93a25d88e20ed4ec3e381b307812/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
@@ -3852,6 +3846,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.atpress.ne.jp/attachments/Z7AuARgAsrAca4O7XJ39.jpg": {
+  "w": 2880,
+  "h": 1620,
+  "target": 720,
+  "v": 3
+ },
  "https://www.avclub.com/wp-content/uploads/2026/11/09/daniel-radcliffe-steps-premiere-featured.jpg": {
   "w": 1200,
   "h": 675,
@@ -3909,6 +3909,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.391
+ },
+ "https://www.bing.com/th?id=ONUT.2fxWEIGhIeC10Sxm2gCOOw&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
@@ -3973,24 +3979,12 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.LTmoqoy847fO1yiuruF25Q&pid=News&w=800": {
-  "w": 700,
-  "h": 340,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Lt1OUxkMqFidKtwEbLUKoA&pid=News&w=1200": {
   "w": 700,
   "h": 390,
   "target": 1280,
   "v": 3,
   "blur": 0.383
- },
- "https://www.bing.com/th?id=ONUT.MQcby3fiJa8yf5ao2dyInA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.MkjvvMFF64HksngkAoCYeg&pid=News&w=600": {
   "w": 600,
@@ -4001,12 +3995,6 @@
  "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546": {
   "w": 546,
   "h": 409,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Z6Lv8sApp2rfJNB81WFVfA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4040,12 +4028,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.kO31PuzcNcfZ38K7C62b7Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 467,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
   "w": 700,
   "h": 491,
@@ -4073,12 +4055,6 @@
   "v": 3,
   "blur": 0.409
  },
- "https://www.bing.com/th?id=ONUT.urj4etuNU32tOeWth4aFWQ&pid=News&w=1148": {
-  "w": 700,
-  "h": 358,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.uxjb8qApA4NKkBUHrsJ8Sg&pid=News&w=360": {
   "w": 360,
   "h": 240,
@@ -4104,6 +4080,12 @@
    669
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.xY8qPcKcyq3GQJzCdw3Keg&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
+  "target": 720,
+  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
@@ -4193,6 +4175,12 @@
  "https://www.disneydining.com/wp-content/uploads/2024/06/avengers-secret-wars.jpg": {
   "w": 1200,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.esquirekorea.co.kr/resources/online/thumbnail/hf/2026/11/09/7c930ac6-4a91-4fe9-931c-d73cb1b9c70e.jpg": {
+  "w": 800,
+  "h": 421,
   "target": 720,
   "v": 3
  },
@@ -4346,12 +4334,6 @@
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://www.sammyfans.com/wp-content/uploads/2026/07/snapdragon-8-elite-for-galaxy-img-1000x600.jpg": {
-  "w": 1000,
-  "h": 600,
   "target": 1280,
   "v": 3
  },
