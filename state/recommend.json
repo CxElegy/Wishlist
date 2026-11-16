@@ -40,7 +40,6 @@
   "https://newscast.jp/smart/news/7435990": "https://www.atpress.ne.jp/attachments/Z7AuARgAsrAca4O7XJ39.jpg",
   "https://nijimen.kusuguru.co.jp/topics/653500": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg",
   "https://nijimen.kusuguru.co.jp/topics/654389": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/0dabda83b0e848c08b840f5f91b2c4a0.jpg",
-  "https://note.com/inspire_design/n/nb108f0e50c91?hl=en": "https://www.bing.com/th?id=ONUT.y3ppD0hcT6E1lJl_vRsVEA&pid=News&w=1200",
   "https://note.com/kimonoclub/n/nf97519a828fe?hl=ko": "https://www.bing.com/th?id=ONUT.VBdeB2_gRzAbhykIu63Gdw&pid=News&w=1200",
   "https://note.com/maaris/n/n15e030f1e551?hl=ko": "https://www.bing.com/th?id=ONUT.ZMrDhC95gLEgEgQ9GPvgBw&pid=News&w=1200",
   "https://note.com/trend_select/n/n5c84145725b9?hl=en": "https://www.bing.com/th?id=ONUT.-m1aWc14g1nOCLd7ONKAoA&pid=News&w=700",
@@ -999,27 +998,6 @@
   },
   {
    "batch": 3,
-   "because": "ILLIT",
-   "date": "2026-11-14",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.y3ppD0hcT6E1lJl_vRsVEA&pid=News&w=1200",
-   "kind": "board",
-   "liked": "李沅禧出席香奈儿活动",
-   "score": 8,
-   "source": "note",
-   "taste": [
-    [
-     "作品:ILLIT",
-     6
-    ]
-   ],
-   "title": "I looked into my subordinate's favorite, ILLIT. There were more tricks than just calling them 'cute'",
-   "url": "https://note.com/inspire_design/n/nb108f0e50c91?hl=en",
-   "words": [],
-   "work": "ILLIT"
-  },
-  {
-   "batch": 3,
    "because": "チェーンソーマン",
    "date": "2026-11-14",
    "hits": [],
@@ -1061,7 +1039,7 @@
    "work": "gelato pique"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "チェーンソーマン",
    "date": "2026-11-13",
    "hits": [],
@@ -1166,7 +1144,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "哈利波特剧集",
    "date": "2026-11-16",
    "hits": [],
@@ -1271,7 +1249,7 @@
    "work": "dota2"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "dota2",
    "date": "2026-11-15",
    "hits": [],
@@ -1825,11 +1803,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1837,11 +1815,11 @@
    8
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
