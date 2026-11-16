@@ -1302,6 +1302,13 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/6/d/6d626_760_2493135_20261116_122419_size640wh_46866926.jpg": {
+  "w": 452,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.348
+ },
  "https://image.news.livedoor.com/newsimage/stf/b/7/b7abb_230_094fe041904b3ced8a6e45ad077f685f.jpg": {
   "w": 615,
   "h": 461,
@@ -4167,12 +4174,6 @@
   "v": 3
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2023/05/15/best-studio-ghibli-movies.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/07/03/chainsaw-man-chapter-170.jpg": {
   "w": 1600,
   "h": 900,
   "target": 1280,

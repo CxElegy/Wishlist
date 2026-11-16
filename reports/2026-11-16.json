@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "6bfe0d0460c9",
+ "edit_sig": "022d376ebd8e",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -543,41 +543,8 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-16",
-     "n": 4,
-     "source": "ライブドアニュース",
-     "title": "劇場版『チェンソーマン レゼ篇』-CINEMA LIVE 2027-告知映像公開 (2026年11月16日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9oSUliQWtJREVRUHBMbFk2U2todVZteVZOdlEzeVQ0LXdYRFBmamFmRjF5bnlBTzBMSjF1eVF6eVc4Skx6blF5LVhza3AybGdzbEkwMDNTUDVDYlZOeXc?oc=5"
-    },
-    {
-     "date": "2026-11-16",
-     "n": 6,
-     "source": "Japan Anime News",
-     "title": "Chainsaw Man – The Movie: Reze Arc CINEMA LIVE 2027 Unveils New Visual and Promotional Video",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE45NG94eGxDaUVPTWNGSXNob0lsOC1FaTh4cWVqRHVyZWhDQ0dESENEd0E4Z0w2MUJqTjBXR1Vid2Rndk0tLW5FWkZQNkh1aDQ?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 7,
-     "source": "アニメイトタイムズ",
-     "title": "「劇場版『チェンソーマン レゼ篇』-CINEMA LIVE 2027-」雨の中、デンジの手を引くレゼの姿を描いた描きおろしビジュアル＆イベント ...",
-     "url": "https://www.animatetimes.com/news/details.php?id=1794805056"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-13",
-     "headline": "Chainsaw Man Season 2: Everything we know – cast, plot, more",
-     "highlight": "",
-     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/07/03/chainsaw-man-chapter-170.jpg",
-     "image_via": "og:image",
-     "url": "https://www.dexerto.com/tv-movies/chainsaw-man-season-2-details-2012239/",
-     "weight": "hero"
-    },
     {
      "blurb": "舞台『チェンソーマン』レゼ篇の最新ビジュアルが公開され、デンジとレゼが見つめ合う。レゼ役は相馬結衣、天使の悪魔など全キャストも発表された。",
      "date": "2026-11-15",
@@ -596,6 +563,16 @@
      "image": "https://static.sanyonews.jp/image/article/size1/4/a/3/c/4a3c7bc2295e332eb581ecd2ef7a66d0_1.jpg",
      "image_via": "og:image",
      "url": "https://www.sanyonews.jp/article/1888073",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-16",
+     "headline": "劇場版『チェンソーマン レゼ篇』-CINEMA LIVE 2027-告知映像公開",
+     "highlight": "CINEMA LIVE 2027",
+     "image": "https://image.news.livedoor.com/newsimage/stf/6/d/6d626_760_2493135_20261116_122419_size640wh_46866926.jpg",
+     "image_via": "og:image",
+     "url": "https://news.livedoor.com/topics/detail/32828742/",
      "weight": "normal"
     }
    ],

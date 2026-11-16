@@ -1,50 +1,5 @@
 [
 {
-"at": "2026-11-14T12:40:44+00:00",
-"text": "2026-11-14 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、GTA 6、MMORPG 新作、The Mandalorian、gelato pique ほか 8（14 版面・52 本・今日の整理待ちは全部終わり） · token 新規入力 4.7万・キャッシュ読み 62.4万・出力 3,407",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.44,
-"mem_total": 16869146624,
-"mem_free": 15888232448,
-"disk_used": 10088083456,
-"disk_free": 31195451392,
-"disk_total": 41283534848,
-"peak": 399261696
-},
-"batch": 1,
-"boards": [
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"GTA 6",
-"MMORPG 新作",
-"The Mandalorian",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"三星手机",
-"周杰伦",
-"日本顶级网球赛事",
-"滑雪",
-"漫威电影",
-"猫用品"
-],
-"stories": 52,
-"left": 0,
-"edited": 22,
-"run": null,
-"tok": {
-"in": 19,
-"cw": 46593,
-"cr": 624020,
-"out": 3407,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 674039
-},
-{
 "at": "2026-11-14T14:28:50+00:00",
 "text": "2026-11-14 第 1 バッチを出刊：ILLIT（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4.1万・キャッシュ読み 47.7万・出力 1,940",
 "level": "ok",
@@ -2126,5 +2081,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 364157
+},
+{
+"at": "2026-11-16T08:36:58+00:00",
+"text": "2026-11-16 第 3 バッチを出刊：チェーンソーマン（1 版面・3 本・残り 3 版面） · token 新規入力 1,165・キャッシュ読み 14.9万・出力 650",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.35,
+"mem_total": 16869146624,
+"mem_free": 15951261696,
+"disk_used": 10096439296,
+"disk_free": 31187095552,
+"disk_total": 41283534848,
+"peak": 353464320
+},
+"batch": 3,
+"boards": [
+"チェーンソーマン"
+],
+"stories": 3,
+"left": 3,
+"edited": 21,
+"run": 1794817385.684041,
+"tok": {
+"in": 4,
+"cw": 1161,
+"cr": 148736,
+"out": 650,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 150551
 }
 ]

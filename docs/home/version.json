@@ -1,14 +1,14 @@
 {
- "admin": "e92cc45e96cb",
- "admin-ai": "42ee148182b6",
+ "admin": "db33e09a7ed6",
+ "admin-ai": "6eb75606e83e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "0d449602"
+   "b2a4202a"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "17529d9c"
+   "2ef3abc7"
   ]
  },
  "admin-boards": "a32534d8b42d",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "155a67284fca",
+ "admin-emblem": "1555625b92e6",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a6b776e8"
+   "3111ea30"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "686f5aaea394",
+ "admin-now": "51bd34032afa",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "31622bbd"
+   "ba415ab0"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "0d21561b"
+   "dc9031b5"
   ]
  },
- "admin-system": "2c62c7a35f62",
+ "admin-system": "fc166de531ef",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "23b1c90d"
+   "f4d3ded9"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b0d85bd6"
+   "035d3fc8"
   ]
  },
  "admin_marks": {},
- "heat": "2486b27ec307",
+ "heat": "f98eba548f56",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "160fbd78"
+   "c4a9be6b"
   ],
   "ranking": [
    "ランキング",
-   "14f5fb62"
+   "8b1cfd92"
   ]
  },
- "index": "fb72a92a1649",
+ "index": "4b2a754f17a6",
  "index_marks": {
   "front": [
    "トップ",
-   "07e08005"
+   "9f9666db"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "34a2ab01"
+   "c872f731"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "e9ec15b3"
+   "37e80d79"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "dd26eb9b"
   ]
  },
- "updated": "11.16 17:32",
+ "updated": "11.16 17:36",
  "wishlist": "f2cd23f23a6d"
 }
