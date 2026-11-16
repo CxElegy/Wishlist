@@ -1,32 +1,32 @@
 {
- "admin": "9c093e5239d1",
- "admin-ai": "d6caa4826fc2",
+ "admin": "242d127c5e79",
+ "admin-ai": "6f2d622ee7b1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "0318ec36"
+   "011617ab"
   ],
   "tokens": [
    "AI 編集のトークン",
    "3f07a8e9"
   ]
  },
- "admin-boards": "27aa13ba4f85",
+ "admin-boards": "27b640c7cc0f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "a53021e7"
+   "385d96f0"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "39f6d89a7c1e",
+ "admin-emblem": "aa04137c15b7",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "65d2d271"
+   "a6dda897"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "a6f662fe08c6",
+ "admin-now": "c20a5a9ffa67",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "97f46d63"
+   "96d066b1"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "7bc46317"
+   "29c0c610"
   ],
   "term-panel": [
    "ライブログ",
-   "6fa6423f"
+   "e4ee5005"
   ]
  },
- "admin-system": "5b4804592d80",
+ "admin-system": "b6bfe6b38c0a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "efc3f8f8"
+   "22087ae4"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2a68636d"
+   "0bb35b2a"
   ]
  },
  "admin_marks": {},
- "heat": "6b3a000b182d",
+ "heat": "d22311dc183b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "b02c8926"
+   "4c273c3c"
   ],
   "ranking": [
    "ランキング",
-   "97e4f96e"
+   "71c15a2e"
   ]
  },
- "index": "ae9a959dcb5a",
+ "index": "a52bd118e3f7",
  "index_marks": {
   "front": [
    "トップ",
-   "be2c6172"
+   "315fb7f3"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "e7357d74"
+   "065f7841"
   ],
   "w-130724c0": [
    "猫用品",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "7e4ad336"
+   "b9bf3969"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "350ade24"
+   "e2727d9d"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "607be562"
+   "a81153e3"
   ],
   "w-b867582f": [
    "あつ森",
@@ -196,6 +196,6 @@
    "4575d1e8"
   ]
  },
- "updated": "11.17 07:18",
+ "updated": "11.17 07:31",
  "wishlist": "4adaf3440014"
 }
