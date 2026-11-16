@@ -110,8 +110,15 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
-   ]
+    10,
+    15,
+    14,
+    16
+   ],
+   "event": {
+    "date": "2026-12-25",
+    "label": "放送開始"
+   }
   }
  ],
  "チェーンソーマン": [
@@ -257,13 +264,13 @@
  ],
  "_covered": {
   "GTA 6": 96,
-  "哈利波特剧集": 13,
+  "哈利波特剧集": 16,
   "チェーンソーマン": 7,
   "三星手机": 44,
   "BLEACH Mirrors High": 1,
   "FROM": 2,
   "绝区零": 5,
-  "ILLIT": 13,
+  "ILLIT": 20,
   "日本顶级网球赛事": 2,
   "The Mandalorian": 2,
   "ぐでたま": 2,
@@ -273,10 +280,12 @@
   "Astrae Oratio": 2,
   "gelato pique": 4,
   "Vaundy": 1,
-  "滑雪": 1,
+  "滑雪": 3,
   "MMORPG 新作": 17,
   "A2O LITE": 1,
-  "猫用品": 2
+  "猫用品": 2,
+  "あつ森": 2,
+  "星巴克马克杯": 2
  },
  "FROM": [
   {
@@ -357,6 +366,15 @@
     11,
     5,
     12
+   ]
+  },
+  {
+   "headline": "ILLIT wins four Melon awards and secures third straight Kōhaku appearance",
+   "highlight": "third straight Kōhaku appearance",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
    ]
   }
  ],
@@ -572,7 +590,27 @@
   }
  ],
  "Vaundy": [],
- "滑雪": [],
+ "滑雪": [
+  {
+   "headline": "【男子 ハイライト】アルペンスキー FIS ワールドカップ 2026/27 スラローム（11月15日(現地)）",
+   "highlight": "スラローム",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-c5107fb3cab563f904aec69918eb1145/images/ed1e92c6-9632-4f56-8421-59c7b32366a0.jpg"
+  },
+  {
+   "headline": "【ふじてんスノーリゾート】2026-2027ウインターシーズンは、12月中旬営業開始予定！開場40周年記念イベントやキャンペーンを開催！",
+   "highlight": "12月中旬営業開始予定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
  "MMORPG 新作": [
   {
    "headline": "Riot Games MMO Gameplay Details Reportedly Leaked, Featuring Three Factions, PvPvE Combat, and Loot Loss on Death",
@@ -642,6 +680,25 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "あつ森": [],
+ "星巴克马克杯": [
+  {
+   "headline": "スタバ、冬限定グッズを発売 チェック柄のステンレスボトルやベアリスタのキーチェーンなど",
+   "highlight": "11月20日",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ],
+   "event": {
+    "date": "2026-11-20",
+    "label": "発売日",
+    "place": "全国"
+   },
+   "image": "https://www.ssnp.co.jp/uploads/2026/11/261116starbucks-13.jpg"
   }
  ]
 }

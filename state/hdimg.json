@@ -441,6 +441,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://biz.chosun.com/resizer/v2/MU4TKZJSGFRWKODFGJSDMNDGMY.jpg?auth=d5d781a08144fc3ecbffab8ddb662f77297fde6b0d303a24484c0e2d684d3c2f&width=572&height=300&smart=true": {
+  "w": 572,
+  "h": 300,
+  "target": 720,
+  "v": 3
+ },
  "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg": {
   "w": 2000,
   "h": 1125,
@@ -600,19 +606,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.it.chosun.com/news/photo/202611/3000000001091_501236_2113.jpg": {
-  "w": 600,
-  "h": 431,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.478,
-  "local": "pics/60a33c1508526f18.webp",
-  "out": [
-   1280,
-   919
-  ],
-  "why": "看不清"
- },
  "https://cdn.iwate-np.co.jp/media-static/article/198453/thumbnail/sw4b0-tm6af2f0c3_862574b10.jpg": {
   "w": 1200,
   "h": 802,
@@ -689,12 +682,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.thecoolist.com/wp-content/uploads/2026/11/black-cats-get-very-close-to-their-owners.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.theouterhaven.net/wp-content/uploads/2026/11/Character_Customization-01.jpg": {
   "w": 608,
   "h": 1080,
@@ -740,12 +727,6 @@
  "https://cdn3.wionews.com/prod/wion/images/2026/20261110/image-1794315924585.png?rect=(0,0,1280,720)&imwidth=896&imheight=504&format=webp&quality=medium": {
   "w": 896,
   "h": 504,
-  "target": 1280,
-  "v": 3
- },
- "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png": {
-  "w": 1500,
-  "h": 844,
   "target": 1280,
   "v": 3
  },
@@ -1213,6 +1194,12 @@
  "https://i.abcnewsfe.com/a/3f4d22ad-8045-4791-a537-3773774a4769/doomsday-1-ht-jef-260720_1784553718149_hpMain_16x9.jpg?w=1600": {
   "w": 1600,
   "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://i.pcmag.com/imagery/articles/04H6IwEv0E6cx1rnnkowZes-2.fit_lim.size_1200x630.v1793906374.png": {
+  "w": 1120,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -1793,6 +1780,12 @@
   "w": 1600,
   "h": 900,
   "target": 720,
+  "v": 3
+ },
+ "https://komonews.com/resources/media2/16x9/1280/1320/center/90/d4073018-af99-405a-b357-6a0a1e8399d7-BlackCat2.jpg": {
+  "w": 1320,
+  "h": 743,
+  "target": 1280,
   "v": 3
  },
  "https://leho.com.tw/wp-content/uploads/2026/11/【vivo-新聞照片1】vivo-全新年度影像旗艦-X500-系列，攜手品牌影像大使周杰倫，以「蔡司電影感．創作無界」掀起熱烈迴響，上市短短兩週即展現亮眼銷售表現.jpg": {
@@ -2517,19 +2510,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800": {
-  "w": 615,
-  "h": 615,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.59,
-  "local": "pics/0fe2201b1c527be2.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2911,6 +2891,12 @@
   "w": 1800,
   "h": 1201,
   "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/137984/187/137984-187-2dbe9936a0487d0356d868a9bb420136-3900x2925.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1680,
+  "h": 1260,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/152182/165/152182-165-35ca33887b964c986d921a2630a0708e-1268x951.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3785,12 +3771,6 @@
   "target": 1280,
   "v": 3
  },
- "https://weisradio.com/wp-content/uploads/2026/08/shannon-fagan-thinking-football-picks-weis-news.png": {
-  "w": 1536,
-  "h": 864,
-  "target": 1280,
-  "v": 3
- },
  "https://win.gg/wp-content/uploads/2026/08/ti15-power-ranking.jpg.webp": {
   "w": 1200,
   "h": 675,
@@ -4005,19 +3985,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Q9SL1qwFg1KFfaq_iKxN6A&pid=News&w=1000": {
-  "w": 700,
-  "h": 700,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.46,
-  "local": "pics/a286b2dc64624b15.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.Rz16HvUAXDigj5I-TdpHrQ&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -4125,19 +4092,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.vCIrPcZQyfgKfd2KywtKFA&pid=News&w=640": {
-  "w": 640,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.512,
-  "local": "pics/cc6d4f104b408769.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.wPAM16RyVDCNHp3Bk2a6Aw&pid=News&w=650": {
   "w": 480,
   "h": 700,
@@ -4178,12 +4132,6 @@
  "https://www.comicbasics.com/wp-content/uploads/2026/11/Sentinel-marvel-comics-Thor.webp": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
-  "w": 1200,
-  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -4388,6 +4336,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.sammyfans.com/wp-content/uploads/2026/07/snapdragon-8-elite-for-galaxy-img-1000x600.jpg": {
+  "w": 1000,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.sammyfans.com/wp-content/uploads/2026/10/galaxy-s27-series-img.jpg": {
   "w": 1200,
   "h": 675,
@@ -4404,6 +4358,12 @@
   "w": 840,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://www.ssnp.co.jp/uploads/2026/11/261116starbucks-13.jpg": {
+  "w": 1000,
+  "h": 1000,
+  "target": 1280,
   "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Anthony-Mackie.jpg": {
@@ -4427,12 +4387,6 @@
  "https://www.talkesport.com/wp-content/uploads/dota-2-organisations-leaving-2026-scaled.webp": {
   "w": 1920,
   "h": 1080,
-  "target": 1280,
-  "v": 3
- },
- "https://www.techadvisor.com/wp-content/uploads/2026/11/3182041-0-17409400-1794583487-Samsung-Galaxy-S26-Ultra-review-13.jpg?quality=50&strip=all&w=1024": {
-  "w": 1024,
-  "h": 574,
   "target": 1280,
   "v": 3
  },
@@ -4520,5 +4474,11 @@
   "target": 720,
   "v": 3,
   "blur": 0.41
+ },
+ "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-c5107fb3cab563f904aec69918eb1145/images/ed1e92c6-9632-4f56-8421-59c7b32366a0.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
  }
 }
