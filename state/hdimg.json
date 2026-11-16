@@ -466,6 +466,13 @@
   "target": 720,
   "v": 3
  },
+ "https://businessupturn.com/uploads/media/1794830799107-r6g345-untitled-design---2026-11-16t173622-305.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-17"
+ },
  "https://buzzap.net/images/2026/11/13/galaxy-s27-camera/top.jpg": {
   "w": 1200,
   "h": 900,
@@ -894,12 +901,6 @@
   "target": 1280,
   "v": 3
  },
- "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
   "w": 300,
   "h": 300,
@@ -1104,12 +1105,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://hips.hearstapps.com/hmg-prod/images/d6cf19fc-e400-401f-9921-0e511c13d813.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
-  "w": 1200,
-  "h": 600,
-  "target": 1280,
   "v": 3
  },
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261110/photo/bkn-20261110090140433-1110_00862_001_02b.jpg?20261109221441": {
@@ -1953,12 +1948,6 @@
   "target": 1280,
   "v": 3
  },
- "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg": {
-  "w": 1024,
-  "h": 768,
-  "target": 720,
-  "v": 3
- },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png": {
   "w": 1600,
   "h": 900,
@@ -2220,19 +2209,6 @@
   "h": 410,
   "target": 720,
   "v": 3
- },
- "https://news.walkerplus.com/article/40260/207548_615.jpg": {
-  "w": 615,
-  "h": 461,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.461,
-  "local": "pics/2f4682dce51fd6ae.webp",
-  "out": [
-   1280,
-   959
-  ],
-  "why": "看不清"
  },
  "https://news.walkerplus.com/article/40701/210689_615.jpg": {
   "w": 615,
@@ -2519,18 +2495,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261115-00000108-dal-000-4-view.jpg?exp=10800": {
-  "w": 2200,
-  "h": 1568,
-  "target": 720,
-  "v": 3,
-  "local": "pics/db8c60fc202f0caf.webp",
-  "out": [
-   1280,
-   912
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-00000014-anmanmv-000-1-view.jpg?exp=10800": {
   "w": 440,
   "h": 800,
@@ -2699,12 +2663,6 @@
  "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG": {
   "w": 500,
   "h": 282,
-  "target": 720,
-  "v": 3
- },
- "https://pbs.twimg.com/media/HXOLLE8W0AAIfuh?format=jpg&name=large": {
-  "w": 1644,
-  "h": 925,
   "target": 720,
   "v": 3
  },
@@ -3585,12 +3543,6 @@
   "target": 1280,
   "v": 3
  },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/12/1794477618287_img_4030566e.jpeg": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794527936990_galaxy-s27-ultra-7-nang-cap-dang-mong-cho-nhat-tren-flagship-sap-ra-mat-3674.png": {
   "w": 1758,
   "h": 941,
@@ -3928,6 +3880,12 @@
   "v": 3,
   "blur": 0.402
  },
+ "https://www.bing.com/th?id=ONUT.qE9if0nTZNiY-3ODnzgs2A&pid=News&w=1200": {
+  "w": 700,
+  "h": 498,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3947,6 +3905,19 @@
   "target": 720,
   "v": 3,
   "blur": 0.409
+ },
+ "https://www.bing.com/th?id=ONUT.rY_Sy5TMzmwa5Y68lA0DOQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 665,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.611,
+  "local": "pics/5b76d5f7b229a2e3.webp",
+  "out": [
+   1280,
+   1216
+  ],
+  "why": "看不清"
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
@@ -4225,12 +4196,6 @@
  "https://www.talkesport.com/wp-content/uploads/dota-2-organisations-leaving-2026-scaled.webp": {
   "w": 1920,
   "h": 1080,
-  "target": 1280,
-  "v": 3
- },
- "https://www.thepitchkc.com/content/uploads/2026/11/f/l/screenshot-2026-11-09-at-15444pm.png": {
-  "w": 986,
-  "h": 612,
   "target": 1280,
   "v": 3
  },
