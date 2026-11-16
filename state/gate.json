@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-16T05:18:13+00:00",
+ "checked": "2026-11-16T05:34:31+00:00",
  "fired": {
-  "at": "2026-11-16T04:21:02+00:00",
+  "at": "2026-11-16T05:34:31+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -37,24 +37,36 @@
    "edit": 14
   },
   "2026-11-16": {
-   "edit": 7
+   "edit": 8
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-16T04:21:02+00:00",
+    "at": "2026-11-16T05:34:31+00:00",
     "attempts": 1,
     "day": "2026-11-16",
-    "prog": 146,
-    "resp": "cse_01W4x6f4tB7hbwifY791AoWE",
-    "sig": "275564658d4e"
+    "prog": 148,
+    "resp": "",
+    "sig": "dc6e7bafdf96"
    },
    "items": [
     "A2O LITE",
     "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "gelato pique",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
     "周杰伦",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
     "猫用品",
     "绝区零"
    ],
@@ -66,35 +78,45 @@
    "need": true,
    "prog": 148,
    "prog_day": "2026-11-16",
-   "ripe": [],
-   "sig": "a917a3f47c1e",
-   "token_cap": 1000000,
-   "tokens_today": 368340,
-   "why": "整理待ちの記事 6 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
+   "ripe": [
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
+    "ILLIT",
+    "MMORPG 新作",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "dc6e7bafdf96",
+   "token_cap": 1000000,
+   "tokens_today": 368340,
+   "why": "整理待ちの記事 75 件（17 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "あつ森",
+    "The Mandalorian",
+    "周杰伦",
+    "绝区零"
+   ],
+   "need": true,
+   "sig": "fa5fb2522f0e",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "Vaundy",
+    "dota2",
+    "ぐでたま"
+   ],
+   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
