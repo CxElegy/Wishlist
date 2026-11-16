@@ -9,7 +9,8 @@
     2,
     34,
     41,
-    29
+    29,
+    56
    ],
    "event": {
     "date": "2026-11-19",
@@ -50,7 +51,17 @@
    "weight": "normal",
    "refs": [
     24,
-    40
+    40,
+    61
+   ]
+  },
+  {
+   "headline": "Gamers racing to pre-load ‘GTA VI’ shatter internet traffic records, cause slowdowns",
+   "highlight": "shatter internet traffic records",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    70
    ]
   }
  ],
@@ -270,7 +281,7 @@
   }
  ],
  "_covered": {
-  "GTA 6": 53,
+  "GTA 6": 73,
   "漫威电影": 67,
   "三星手机": 26,
   "哈利波特剧集": 13,
