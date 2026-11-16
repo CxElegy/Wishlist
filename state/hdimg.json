@@ -54,6 +54,19 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261115ac/765/w405h360/20261115/b9ab-9200c2c8caec468709d5cf0ca916bc35.jpg": {
+  "w": 405,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.455,
+  "local": "pics/d762da2453b27fba.webp",
+  "out": [
+   1215,
+   1080
+  ],
+  "why": "看不清"
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -731,12 +744,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png": {
-  "w": 1500,
-  "h": 844,
-  "target": 1280,
-  "v": 3
- },
  "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261109100056098580d3244b4fed58141237106.jpg&nmt=30": {
   "w": 1400,
   "h": 1075,
@@ -1192,17 +1199,17 @@
   "target": 1280,
   "v": 3
  },
+ "https://i.pcmag.com/imagery/articles/04H6IwEv0E6cx1rnnkowZes-2.fit_lim.size_1200x630.v1793906374.png": {
+  "w": 1120,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
   "v": 3
- },
- "https://i.ytimg.com/vi/pWSIskVoAdY/hqdefault.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-16"
  },
  "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-Ultra-AH-2.png?fit=1920%2C1080&ssl=1": {
   "w": 1920,
@@ -1295,19 +1302,6 @@
   "h": 461,
   "target": 720,
   "v": 3
- },
- "https://image.p-c2-x.abema-tv.com/image/programs/89-42_s0_p544739/thumb001.png?height=720&quality=75&version=1793616187&width=1280": {
-  "w": 640,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/c6c0f4c540b7200b.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
  },
  "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228137/thumb001.png?height=720&quality=75&version=1793150116&width=1280": {
   "w": 1280,
@@ -1601,6 +1595,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.etnews.com/news/article/2026/11/16/article_16140044145380.jpeg": {
+  "w": 1440,
+  "h": 810,
+  "target": 720,
+  "v": 3
+ },
  "https://img.gamewith.jp/article/thumbnail/gamearticle/18874/rectangle/65621.jpg?t=1794376432": {
   "w": 600,
   "h": 315,
@@ -1613,6 +1613,12 @@
    672
   ],
   "why": "看不清"
+ },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/187052.png?date=1582018744": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
  },
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/08/5633521_3.jpg": {
   "w": 800,
@@ -1774,6 +1780,12 @@
   "w": 1600,
   "h": 900,
   "target": 720,
+  "v": 3
+ },
+ "https://komonews.com/resources/media2/16x9/1280/1320/center/90/d4073018-af99-405a-b357-6a0a1e8399d7-BlackCat2.jpg": {
+  "w": 1320,
+  "h": 743,
+  "target": 1280,
   "v": 3
  },
  "https://leho.com.tw/wp-content/uploads/2026/11/【vivo-新聞照片1】vivo-全新年度影像旗艦-X500-系列，攜手品牌影像大使周杰倫，以「蔡司電影感．創作無界」掀起熱烈迴響，上市短短兩週即展現亮眼銷售表現.jpg": {
@@ -2012,6 +2024,12 @@
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png": {
   "w": 1600,
   "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://news.mynavi.jp/article/20261116-5337015/ogp_images/ogp.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -2479,19 +2497,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800": {
-  "w": 615,
-  "h": 615,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.59,
-  "local": "pics/0fe2201b1c527be2.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-10176667-it_nlab-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1755,
@@ -2542,18 +2547,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00146577-toushin-000-1-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
-  "v": 3,
-  "local": "pics/f3fbf0aa5c53717b.webp",
-  "out": [
-   1200,
-   800
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261114-00000048-nataliec-000-1-view.jpg?exp=10800": {
   "w": 750,
   "h": 530,
@@ -2585,6 +2578,18 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-16"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-10169848-lasisa-000-13-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/54d5aadc53be13d8.webp",
+  "out": [
+   1200,
+   800
+  ],
+  "why": "期限付きの網址"
  },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
@@ -2810,6 +2815,12 @@
  "https://portal.auone.jp/media/thumbnails/2026/11/12/https___news_jp_i_1493525061302158094_w700.webp": {
   "w": 700,
   "h": 540,
+  "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/10075/627/10075-627-21de463403e714d699d36cf0143475f0-574x319.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 574,
+  "h": 319,
   "target": 720,
   "v": 3
  },
@@ -3160,6 +3171,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://static.beebom.com/wp-content/uploads/2026/11/GTA-6-Jason-and-Lucia-Image-with-GTA-5s-Michael.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://static.beebom.com/wp-content/uploads/2026/11/macca-and-friends-cover-image-in-gta-6.jpg": {
@@ -3798,12 +3815,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.5FaIo7zDs0jDHqJ-5aUbJQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.A5Yit1Xmub4kAWaUb4-4wQ&pid=News&w=615": {
   "w": 615,
   "h": 615,
@@ -3842,12 +3853,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.JkF8LxDJxNL7wiIAn1MwPg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.K-ueSVO5E4V6l8_eMP41Bw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3873,6 +3878,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.L9GVZheGwTi1pLQu8dplVg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Lt1OUxkMqFidKtwEbLUKoA&pid=News&w=1200": {
   "w": 700,
   "h": 390,
@@ -3886,21 +3897,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.SrLzZilTbNcLH4fWk3UZ1g&pid=News&w=1200": {
-  "w": 700,
-  "h": 392,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546": {
   "w": 546,
   "h": 409,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.XOqyjc2rxekzC518TOCsqQ&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.Z-e-jeUO3cliozcNsZlsUg&pid=News&w=1200": {
   "w": 700,
-  "h": 466,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3910,15 +3915,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ZZuqrCTolC_GgeJvgvZbDw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
   "h": 287,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.dOvOFsqMEa-J2Jypr7Ki4Q&pid=News&w=640": {
+  "w": 640,
+  "h": 360,
   "target": 720,
   "v": 3
  },
@@ -3941,6 +3946,18 @@
   "v": 3,
   "blur": 0.402
  },
+ "https://www.bing.com/th?id=ONUT.pUZQEPssFMXMaQK1OLme4g&pid=News&w=898": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.q3p3kMRYfntauDcVmoeF_w&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3960,6 +3977,12 @@
   "target": 720,
   "v": 3,
   "blur": 0.409
+ },
+ "https://www.bing.com/th?id=ONUT.urj4etuNU32tOeWth4aFWQ&pid=News&w=1148": {
+  "w": 700,
+  "h": 358,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.uxjb8qApA4NKkBUHrsJ8Sg&pid=News&w=360": {
   "w": 360,
@@ -3993,21 +4016,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.yT0kCzeHJgVfedeEjsngRA&pid=News&w=1200": {
-  "w": 700,
-  "h": 392,
-  "target": 720,
-  "v": 3
- },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
   "h": 800,
-  "target": 720,
-  "v": 3
- },
- "https://www.bntnews.co.kr/data/bnt/image/2026/11/16/bnt202611160118.jpg": {
-  "w": 2000,
-  "h": 1334,
   "target": 720,
   "v": 3
  },
@@ -4042,12 +4053,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://www.crank-in.net/img/db/267108025175442_1200.jpg": {
   "w": 1200,
   "h": 800,
@@ -4066,13 +4071,13 @@
   "target": 1280,
   "v": 3
  },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2025/12/17/ron-harry-hermione-harry-potter-hbo.jpg": {
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/07/03/chainsaw-man-chapter-170.jpg": {
   "w": 1600,
   "h": 900,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2026/11/15/gta-6.jpg": {
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2025/12/17/ron-harry-hermione-harry-potter-hbo.jpg": {
   "w": 1600,
   "h": 900,
   "target": 720,
