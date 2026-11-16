@@ -144,19 +144,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/006tofKggy1ij3caieck0j32802yokjt.jpg": {
-  "w": 2000,
-  "h": 2667,
-  "target": 720,
-  "v": 3,
-  "local": "pics/1710c104d71083bb.webp",
-  "out": [
-   960,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/6f5ef307gy1ij1zbcu2afj20xc0xcdux.jpg": {
   "w": 1200,
   "h": 1200,
@@ -353,6 +340,12 @@
   "w": 1024,
   "h": 683,
   "target": 720,
+  "v": 3
+ },
+ "https://assets.murphysmultiverse.com/uploads/2026/11/Dolby-Doomsday-e1794061409310.jpg": {
+  "w": 1086,
+  "h": 942,
+  "target": 1280,
   "v": 3
  },
  "https://assets.st-note.com/production/uploads/images/334159776/rectangle_large_type_2_ea2d8126a01c8f0ca52696209d806b37.jpg?fit=bounds&quality=85&width=1280": {
@@ -1614,6 +1607,19 @@
   ],
   "why": "看不清"
  },
+ "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1493566334632657942/origin_1.jpg": {
+  "w": 360,
+  "h": 240,
+  "target": 720,
+  "v": 3,
+  "blur": 0.452,
+  "local": "pics/22574abb15a5a162.webp",
+  "out": [
+   720,
+   480
+  ],
+  "why": "看不清"
+ },
  "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1494878739212108658/origin_1.jpg": {
   "w": 360,
   "h": 203,
@@ -1861,6 +1867,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://media.assettype.com/esquireindia%2F2026-11-16%2Fyw3p3vxm%2FAvengers-Doomsday-Trailer-Release-date.jpg?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://media.assettype.com/outlooktraveller/2026-11-10/vx9d1246/findingharryhoka16x9.avif?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
@@ -2255,6 +2267,19 @@
   "out": [
    1280,
    847
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/153903/881093_615.jpg": {
+  "w": 615,
+  "h": 464,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.437,
+  "local": "pics/4cda2ff1099fb0e4.webp",
+  "out": [
+   1280,
+   966
   ],
   "why": "看不清"
  },
@@ -3036,9 +3061,22 @@
   ],
   "why": "看不清"
  },
+ "https://pub-6e6736ba37d64d4aa5ae63b074884090.r2.dev/2026/11/lkSDsuna-00_2.jpg": {
+  "w": 700,
+  "h": 467,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.362
+ },
  "https://q0.itc.cn/q_70/images03/20261112/5c27dd9c44fe40d49f3c453c9fdd0c1c.jpeg": {
   "w": 682,
   "h": 958,
+  "target": 1280,
+  "v": 3
+ },
+ "https://q0.itc.cn/q_70/images03/20261116/3a34923851f343b3894276eb2583b944.jpeg": {
+  "w": 720,
+  "h": 1280,
   "target": 1280,
   "v": 3
  },
@@ -3061,9 +3099,16 @@
   "target": 1280,
   "v": 3
  },
- "https://q5.itc.cn/q_70/images03/20261116/c8ef85eb81034a989736cd4abb2a8816.jpeg": {
-  "w": 1440,
-  "h": 2560,
+ "https://q8.itc.cn/q_70/images03/20261116/5c3775b43d8d47e69bf261e48581419b.jpeg": {
+  "w": 360,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.38
+ },
+ "https://q9.itc.cn/q_70/images03/20261116/41d9e637593749799b6ab947f336ba33.jpeg": {
+  "w": 690,
+  "h": 1005,
   "target": 1280,
   "v": 3
  },
@@ -3150,12 +3195,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/cbf3428b493694e56a381bba193de38b7e8ea5438c9f14dd402ae59368bcbafe/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fybrand.cinema.com.my%2F6d8151815bcd878c4515f5ee7e40aef0.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 720,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/ddeff4a25e26ace41830ca125423da06615b93a25d88e20ed4ec3e381b307812/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
@@ -3603,12 +3642,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/robert-downey-jr-standing-in-a-spaceship-in-avengers-infinity-war.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/the-mandalorian_qnug7h.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3897,12 +3930,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.3U-Jq8dNYFQj_E9mhMXkEw&pid=News&w=1200": {
-  "w": 700,
-  "h": 386,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
   "h": 502,
@@ -3928,6 +3955,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.EF-AKr8OdiiH0IENmrRNoQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.GaoGL2fTfOOpUB5JQdABLA&pid=News&w=1200": {
   "w": 546,
@@ -3967,12 +4000,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.L-94pAdfo_MWhyLnouylTg&pid=News&w=633": {
-  "w": 633,
-  "h": 512,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.LTmoqoy847fO1yiuruF25Q&pid=News&w=800": {
   "w": 700,
   "h": 340,
@@ -3998,12 +4025,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Rz16HvUAXDigj5I-TdpHrQ&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546": {
   "w": 546,
   "h": 409,
@@ -4019,6 +4040,12 @@
  "https://www.bing.com/th?id=ONUT.ZMrDhC95gLEgEgQ9GPvgBw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT._pmoNLdUHkbMp_S2F3sm9A&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4047,12 +4074,6 @@
   "v": 3,
   "blur": 0.402
  },
- "https://www.bing.com/th?id=ONUT.pUZQEPssFMXMaQK1OLme4g&pid=News&w=898": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4060,6 +4081,19 @@
   "v": 3,
   "blur": 0.433,
   "local": "pics/a3a6ddefd6ecf27c.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.qNxYnoXu0ow7oE-rmzr0zQ&pid=News&w=500": {
+  "w": 500,
+  "h": 281,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.438,
+  "local": "pics/39bd07cff1fa432b.webp",
   "out": [
    1280,
    719
@@ -4104,12 +4138,6 @@
    669
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.wPAM16RyVDCNHp3Bk2a6Aw&pid=News&w=650": {
-  "w": 480,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
