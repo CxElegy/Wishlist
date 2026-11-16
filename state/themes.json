@@ -683,6 +683,16 @@
   "font": "serif",
   "split": false
  },
+ "hero|https://images.purexbox.com/28d73798bb173/1280x720.jpg": {
+  "accent": "#8196B1",
+  "alt_accent": "#4E637E",
+  "alt_bg": "#F0EBEB",
+  "alt_fg": "#1A1C22",
+  "bg": "#201818",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "hero|https://images.pushsquare.com/76e10b1c421ef/1280x720.jpg": {
   "accent": "#E6B24C",
   "alt_accent": "#8F6614",
