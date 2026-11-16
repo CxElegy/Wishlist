@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "94dbb484f92f",
+ "edit_sig": "534cb2cf4358",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -370,29 +370,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-16",
-     "n": 2,
-     "source": "PR TIMES",
-     "title": "【gelato pique (ジェラート ピケ)】心を込めてお届けする「Joël Robuchon」との新作コレクション！シックなモノトーンや上品なデザインが際立つラインアップ＜11月20日(金)＞",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9CZVQ2dW91YWtGUWhVQ0RmRndWaWpSSEpoaG81ZjlmMFQ2WEQ2d0lld250UG5NZFVaaXpuZ29vMEs3TktJSHBVVHhRNXNLVGZxcFoxZ1Z4Ry1nY0RPcXlYSUI0dzA0TnQ3VXc?oc=5"
-    },
-    {
-     "date": "2026-11-16",
-     "n": 3,
-     "source": "千葉テレビ放送",
-     "title": "志尊淳「暗くしてる時間が僕にとっては心地いい」 ジェラートピケのイベントで夜の過ごし方明かす",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFAtajFpT0xQWlRoSDluN25kaW1vb1VtblNwVmJFTGZWNHFENkM1S1gweUo0M2RIMTNiMzg0UGhvYV8xLTU1MkZIcFFtOGxsRkliQUUwNXZoMGo3eVVBdFQw?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 4,
-     "source": "山陽新聞",
-     "title": "【gelato pique(ジェラート ピケ)】10/9(金)にアーバンドック ららぽーと豊洲店、10/30(金)にシャミネ松江店に新店舗オープン！限定アイテムの柴犬をあしらったルームウェアを発売",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1mYmdPeGtwUm41MmpCX1ZEZHhOTXFEMDBFNWt2U2ZHZDlUMDlNQ1VyTnQ4cnI4SEtnXzlHQU1MakdYa242aV9KOXJiRzhxeUIyS1E?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -410,6 +387,30 @@
      "image_via": "AI 挑选",
      "url": "https://note.com/iimono_pickup/n/nb47c1f6134fd",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-16",
+     "event": {
+      "date": "2026-11-20",
+      "label": "発売日"
+     },
+     "headline": "「Joël Robuchon」との新作コレクション！シックなモノトーンや上品なデザインが際立つラインアップ",
+     "highlight": "11月20日",
+     "image": "https://prcdn.freetls.fastly.net/release_image/18505/4512/18505-4512-07ffbf467d1a4b374f187c363c6908fe-1081x1350.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000004512.000018505.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-16",
+     "headline": "志尊淳「暗くしてる時間が僕にとっては心地いい」 ジェラートピケのイベントで夜の過ごし方明かす",
+     "highlight": "",
+     "image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1494878739212108658/origin_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.chiba-tv.com/plus/detail/2026112227117",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",

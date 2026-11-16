@@ -1620,6 +1620,19 @@
   "target": 720,
   "v": 3
  },
+ "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1494878739212108658/origin_1.jpg": {
+  "w": 360,
+  "h": 203,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.591,
+  "local": "pics/172a0729fc3dd16e.webp",
+  "out": [
+   1080,
+   609
+  ],
+  "why": "看不清"
+ },
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/08/5633521_3.jpg": {
   "w": 800,
   "h": 533,
@@ -2903,6 +2916,12 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/18505/4512/18505-4512-07ffbf467d1a4b374f187c363c6908fe-1081x1350.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1009,
+  "h": 1260,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/25284/2077/25284-2077-3cc151eb6f4c55de8fd3cd54a7cfc4f8-2000x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
