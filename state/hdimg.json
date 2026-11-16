@@ -215,6 +215,12 @@
   "target": 720,
   "v": 3
  },
+ "https://animeanime.jp/imgs/ogp_f/956273.jpg": {
+  "w": 600,
+  "h": 1090,
+  "target": 720,
+  "v": 3
+ },
  "https://animetv-jp.net/wp-content/uploads/2026/11/images-32.jpeg": {
   "w": 739,
   "h": 415,
@@ -451,12 +457,6 @@
  "https://blog.playstation.com/tachyon/2048/11/f1fb77ba440f1402ae155dc56989230e7a24c2f8-scaled.jpg": {
   "w": 2560,
   "h": 1440,
-  "target": 1280,
-  "v": 3
- },
- "https://bloximages.chicago2.vip.townnews.com/jdnews.com/content/tncms/assets/v3/editorial/6/4d/64d1d788-cdbb-5941-b36f-3cacff633c76/6ae9268703664.image.jpg?crop=1199%2C630%2C0%2C49": {
-  "w": 1199,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -1028,12 +1028,6 @@
   "target": 720,
   "v": 3
  },
- "https://getnavi.jp/wp-content/uploads/2026/11/71O1DhluJJL._AC_SL1500_.jpg": {
-  "w": 1200,
-  "h": 1223,
-  "target": 1280,
-  "v": 3
- },
  "https://gonintendo.com/attachments/image/88856/file/medium-0d951c4558c74d8a62690b066a64bde9.jpg": {
   "w": 780,
   "h": 439,
@@ -1371,6 +1365,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2h4Gyi.img": {
   "w": 3840,
   "h": 2160,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbBaq.img": {
+  "w": 615,
+  "h": 323,
   "target": 720,
   "v": 3
  },
@@ -2164,12 +2164,6 @@
   ],
   "why": "看不清"
  },
- "https://news.walkerplus.com/article/1453739/19024802_615.jpg": {
-  "w": 615,
-  "h": 323,
-  "target": 720,
-  "v": 3
- },
  "https://news.walkerplus.com/article/149014/847171_615.jpg": {
   "w": 615,
   "h": 500,
@@ -2419,6 +2413,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-00000041-isd-000-2-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 450,
+  "target": 720,
+  "v": 3,
+  "local": "pics/e99b5be402248602.webp",
+  "out": [
+   800,
+   450
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-001-1-view.jpg?pri=l&w=640&h=357&exp=10800": {
   "w": 640,
   "h": 358,
@@ -2554,18 +2560,6 @@
   "out": [
    1280,
    912
-  ],
-  "why": "期限付きの網址"
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-00000014-anmanmv-000-1-view.jpg?exp=10800": {
-  "w": 440,
-  "h": 800,
-  "target": 720,
-  "v": 3,
-  "local": "pics/878e4e193180ebc5.webp",
-  "out": [
-   440,
-   800
   ],
   "why": "期限付きの網址"
  },
@@ -2897,12 +2891,6 @@
  "https://prcdn.freetls.fastly.net/release_image/33130/375/33130-375-ed5678162b157bdc93871490d99befc1-1200x628.jpg": {
   "w": 1200,
   "h": 628,
-  "target": 720,
-  "v": 3
- },
- "https://prcdn.freetls.fastly.net/release_image/49377/84/49377-84-f392fb2efef8b7fcd2df9f9853680105-3900x2194.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 2240,
-  "h": 1260,
   "target": 720,
   "v": 3
  },
@@ -3533,12 +3521,6 @@
   "target": 720,
   "v": 3
  },
- "https://the-gadgeteer.com/wp-content/uploads/2026/11/samsung-z-fold8-hero-bf-tr-uniform.jpg": {
-  "w": 1440,
-  "h": 810,
-  "target": 1280,
-  "v": 3
- },
  "https://themainstreetmouse.com/wp-content/uploads/2026/06/Avengers-Secret-Wars.webp": {
   "w": 1920,
   "h": 1080,
@@ -3792,6 +3774,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.DBYSnY5j3iEiaNMtRXx55Q&pid=News&w=500": {
+  "w": 500,
+  "h": 500,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.485,
+  "local": "pics/84aae6faa3b3b061.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.GaoGL2fTfOOpUB5JQdABLA&pid=News&w=1200": {
   "w": 546,
   "h": 700,
@@ -3966,19 +3961,6 @@
   "h": 460,
   "target": 720,
   "v": 3
- },
- "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true": {
-  "w": 500,
-  "h": 262,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.524,
-  "local": "pics/90f0d635188356ba.webp",
-  "out": [
-   1280,
-   671
-  ],
-  "why": "看不清"
  },
  "https://www.chosun.com/resizer/v2/GZRTIOBXGNSTCZRTGE4TCY3CMQ.jpg?auth=b677f07bc60f2dca003e527e47af3534619cbbabc59d9f64d632c6e54e76fc8e&width=700&height=367&smart=true": {
   "w": 700,
