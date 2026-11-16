@@ -10,7 +10,6 @@
   "https://abema.tv/video/episode/89-42_s0_p544739": "https://www.bing.com/th?id=ONUT.vCIrPcZQyfgKfd2KywtKFA&pid=News&w=640",
   "https://arabbitsfoot.substack.com/p/a-rabbits-foot-film-club-launches": "https://a-rabbitsfoot.com/wp-content/uploads/2026/11/D04654B4-06D4-4305-9E37-BD3BA976725D-Large.jpeg",
   "https://article.auone.jp/e104359f-6bf6-4201-8bab-698580fe0f39": "https://portal.auone.jp/media/thumbnails/2026/11/11/95773_w1280.webp",
-  "https://beebom.com/how-to-refuel-cars-bikes-in-gta-6/": "https://www.bing.com/th?id=ONUT.JfKu1wGkIT4ZjaJdWI1wLA&pid=News&w=700",
   "https://bleedingcool.com/movies/jumanji-open-world-4-new-character-posters-released/": "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg",
   "https://enuchi.jp/14622/recolte-kedamatori-202611": "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg",
   "https://gamewith.jp/atsumori/": "https://img.gamewith.jp/article/thumbnail/rectangle_l/187052.png?date=1582018744",
@@ -21,6 +20,7 @@
   "https://gnn.gamer.com.tw/detail.php?sn=314945": "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG",
   "https://hawk.live/posts/33-told-beginner-can-get-professional-dota-2-team": "https://hawk.live/storage/images/posts/33-thinking-get-pro-stage-25428.jpg",
   "https://malaysia.news.yahoo.com/jay-chou-shawn-yue-had-040900866.html": "https://www.bing.com/th?id=ONUT.q3p3kMRYfntauDcVmoeF_w&pid=News&w=1200",
+  "https://mndaily.com/arts-entertainment/following-a-year-of-delays-grand-theft-auto-vi-is-nearly-here/11/16/2026/eicmndaily-com/": "https://mndaily.com/wp-content/uploads/2026/11/GTALead.png",
   "https://n.yam.com/Article/20261113178214": "https://ni.yam.com/20261113/11HECL72ZT1E88G8CS0K0-e33401fca4a21a13.webp",
   "https://news.dellows.jp/992392/": "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg",
   "https://news.infoseek.co.jp/article/inside_190908/": "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_190908_0-enlarge.jpg",
@@ -28,6 +28,7 @@
   "https://news.qq.com/rain/a/20261116A080XN00": "https://www.bing.com/th?id=ONUT.JVL7a-PQxrlWdXRr-hbhNw&pid=News&w=640",
   "https://news.tennis365.net/news/today/202611/159479.html": "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546",
   "https://news.yahoo.co.jp/articles/0f31feba7fe0af242ed55215d7e22f657b4b0bc3": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-10169848-lasisa-000-13-view.jpg?exp=10800",
+  "https://news.yahoo.co.jp/articles/476e885f49398e6c2479969ffa006764c2f7c2ce": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00146577-toushin-000-1-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/653a31d2e6624e19c70e528e4958da5fe5e5d059": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-01454565-tkwalk-000-1-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/74ed0c0fc872766dc5dca91d849aa53f240db09f": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261115-00000108-dal-000-4-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/f55217655a48f37ae3c2888b5ec8864cef54ca8c": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261109-00096815-vballk-000-1-view.jpg?exp=10800",
@@ -861,6 +862,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-16",
+   "hits": [],
+   "image": "https://mndaily.com/wp-content/uploads/2026/11/GTALead.png",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "The Minnesota Daily",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "Following a year of delays, Grand Theft Auto VI is nearly here",
+   "url": "https://mndaily.com/arts-entertainment/following-a-year-of-delays-grand-theft-auto-vi-is-nearly-here/11/16/2026/eicmndaily-com/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "绝区零",
    "date": "2026-11-16",
    "hits": [],
@@ -879,35 +901,6 @@
    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1849458702688311",
    "words": [],
    "work": "绝区零"
-  },
-  {
-   "batch": 1,
-   "because": "猫用品",
-   "date": "2026-11-16",
-   "hits": [
-    "猫"
-   ],
-   "image": "https://prcdn.freetls.fastly.net/release_image/10075/627/10075-627-21de463403e714d699d36cf0143475f0-574x319.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
-   "kind": "board",
-   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
-   "score": 8,
-   "source": "PR TIMES",
-   "taste": [
-    [
-     "猫",
-     6
-    ],
-    [
-     "作品:猫用品",
-     5
-    ]
-   ],
-   "title": "【エステー】獣医師監修の猫専門メディア「にゃんと！」をオープン",
-   "url": "https://prtimes.jp/main/html/rd/p/000000627.000010075.html",
-   "words": [
-    "猫"
-   ],
-   "work": "猫用品"
   },
   {
    "batch": 1,
@@ -983,27 +976,6 @@
    "url": "https://www.sina.cn/news/detail/5365674286514888.html",
    "words": [],
    "work": "绝区零"
-  },
-  {
-   "batch": 2,
-   "because": "GTA 6",
-   "date": "2026-11-15",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.JfKu1wGkIT4ZjaJdWI1wLA&pid=News&w=700",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "Beebom",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "How to Refuel Cars in GTA 6: Gas Stations and Fuel Explained",
-   "url": "https://beebom.com/how-to-refuel-cars-bikes-in-gta-6/",
-   "words": [],
-   "work": "GTA 6"
   },
   {
    "batch": 2,
@@ -2039,15 +2011,15 @@
    8
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
    "作品:三星手机",
    7
   ],
   [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "galaxy",
    7
   ]
  ]
