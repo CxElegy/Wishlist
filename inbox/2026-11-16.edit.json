@@ -92,6 +92,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "Harry Potter HBO series: When will all 8 episodes release? Check full schedule",
+   "highlight": "all 8 episodes",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
   }
  ],
  "チェーンソーマン": [
@@ -211,12 +220,12 @@
  ],
  "_covered": {
   "GTA 6": 66,
-  "哈利波特剧集": 9,
+  "哈利波特剧集": 13,
   "チェーンソーマン": 3,
   "三星手机": 28,
   "BLEACH Mirrors High": 1,
   "FROM": 1,
-  "绝区零": 1,
+  "绝区零": 5,
   "ILLIT": 13,
   "日本顶级网球赛事": 2,
   "The Mandalorian": 2,
@@ -228,7 +237,7 @@
   "gelato pique": 1,
   "Vaundy": 1,
   "滑雪": 1,
-  "MMORPG 新作": 3
+  "MMORPG 新作": 6
  },
  "FROM": [
   {
@@ -244,12 +253,27 @@
  ],
  "绝区零": [
   {
+   "headline": "「ゼンレスゾーンゼロ」Ver.3.4予告番組を11月20日に配信。サンブリンガーらの最新情報を公開",
+   "highlight": "11月20日に配信",
+   "blurb": "HoYoverseがVer.3.4の予告番組を11月20日に配信し、サンブリンガーらの最新情報を公開する。",
+   "weight": "lead",
+   "refs": [
+    4
+   ],
+   "event": {
+    "date": "2026-11-20",
+    "label": "予告番組"
+   },
+   "image": "https://news.mynavi.jp/article/20261116-5337015/ogp_images/ogp.jpg"
+  },
+  {
    "headline": "【コスプレ】黒ニーハイ×ガーターベルトで魅せる妖艶な太もも！『ゼンゼロ』レミエールの妖しくも美しい魅力に惑わされる【写真11枚】",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    3
    ]
   }
  ],
@@ -453,10 +477,19 @@
  "滑雪": [],
  "MMORPG 新作": [
   {
+   "headline": "Riot Games MMO Gameplay Details Reportedly Leaked, Featuring Three Factions, PvPvE Combat, and Loot Loss on Death",
+   "highlight": "Riot Games MMO",
+   "blurb": "Reported leak of Riot's MMO: three factions, PvPvE combat and loot loss on death.",
+   "weight": "lead",
+   "refs": [
+    4
+   ]
+  },
+  {
    "headline": "Indie MMO Spotlight - I'm A Real BitCraft Boy Now!",
    "highlight": "BitCraft",
    "blurb": "Indie MMO Spotlight で BitCraft を取り上げ。",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     2
    ]
