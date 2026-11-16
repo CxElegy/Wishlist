@@ -272,6 +272,114 @@
   "漫威电影": 46,
   "三星手机": 26,
   "哈利波特剧集": 13,
-  "周杰伦": 6
- }
+  "周杰伦": 6,
+  "ILLIT": 4,
+  "猫用品": 4,
+  "绝区零": 4,
+  "Astrae Oratio": 3,
+  "The Mandalorian": 3
+ },
+ "ILLIT": [
+  {
+   "headline": "ILLIT、「MMA2026」で4冠達成 受賞スピーチで活動休止中のMOKAへ呼び掛け「早く一緒に活動しようね」",
+   "highlight": "4冠達成",
+   "blurb": "MMA2026 で 4 冠を達成。受賞スピーチでは活動休止中の MOKA に「早く一緒に活動しようね」と呼び掛けた。",
+   "weight": "lead",
+   "refs": [
+    3,
+    1
+   ],
+   "image": "https://thetv.jp/i/nw/1457877/19194822.jpg?w=1284"
+  },
+  {
+   "headline": "2027 Grammy Nominations: New Asian pop category takes centre stage as BINI, LE SSERAFIM and ILLIT draw attention",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "愛猫が本気で蹴るまで試作を重ねたチュロス形 猫の友社が猫用キッカー「チュロチュロ」を11/2発売",
+   "highlight": "11/2発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "FIPから猫を守る、新たなアプローチ。腸管FCoVに着目した経口薬候補「HNW-001」、猫での探索試験を完了",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "北千住でニャンともかわいいネコグッズを発見！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "《绝区零》3.4版本「长日终尽」特别节目即将上线！",
+   "highlight": "11月20日18:30",
+   "blurb": "3.4 版本「长日终尽」前瞻特别节目将于 11 月 20 日 18:30 上线，将公开 Sunbringer、Kafka、Robin 等内容。",
+   "weight": "hero",
+   "refs": [
+    3,
+    1,
+    4
+   ],
+   "event": {
+    "date": "2026-11-20",
+    "label": "特別番組",
+    "time": "18:30"
+   },
+   "image": "https://www.bing.com/th?id=ONUT.nn6MK0AG2-qOL_vC_Rkxow&pid=News&w=1200"
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "NC Expects Magic RPG Astrae Oratio to Launch on Mobile in Early 2027, With a PC Version to Follow",
+   "highlight": "Early 2027",
+   "blurb": "NC expects Astrae Oratio to launch on mobile in early 2027, with a PC version to follow.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "엔씨, ‘AGF 2026’ 메인 스폰서 참가…‘아스트라에 오라티오’ 출품",
+   "highlight": "AGF 2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Grammys 2027: ‘The Mandalorian and Grogu’ and ‘Zero Company’ Earn Nominations",
+   "highlight": "Nominations",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/The-Mandalorian-and-Grogu-Poster-Banner-e1776671838138.jpeg"
+  }
+ ]
 }
