@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "e79110d22cc5",
+ "edit_sig": "66a022680d9d",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -361,16 +361,6 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-14",
-     "headline": "＜画像4 / 8＞「ぐでたまカフェ」が西武池袋本店に期間限定オープン！",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/90965/509951_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/90965/image509956.html",
-     "weight": "hero"
-    },
-    {
      "blurb": "ローソンで「ぐでたまお昼寝マット」が当たるキャンペーンが登場。",
      "date": "2026-11-14",
      "headline": "ローソンで“ぐでたまお昼寝マット”が当たる!?",
@@ -379,6 +369,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.walkerplus.com/article/54048/image295706.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-14",
+     "headline": "「ぐでたまカフェ」が西武池袋本店に期間限定オープン！",
+     "highlight": "西武池袋本店に期間限定オープン",
+     "image": "https://news.walkerplus.com/article/90965/509951_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/90965/image509956.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "Gudetama",
@@ -434,60 +434,6 @@
     "alt_fg": "#1E1A18",
     "bg": "#211712",
     "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
-   "facts": [],
-   "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-15",
-     "n": 2,
-     "source": "note",
-     "title": "I went to the movie theater to see \"The Mandalorian & Grogu\"",
-     "url": "https://note.com/ikitaro/n/ne1cb9e979b0d?hl=en"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "ザ・マンダロリアン",
-   "theme": {
-    "accent": "#C9A66B",
-    "alt_accent": "#7A5A1F",
-    "alt_bg": "#ECEAE4",
-    "alt_fg": "#1B1D20",
-    "bg": "#14161A",
-    "fg": "#E8EAEC",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://vaundy.jp/og_image.png",
-   "facts": [],
-   "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-16",
-     "n": 1,
-     "source": "Real Sound",
-     "title": "岡田准一＆上白石萌音、『発表！今年イチバン聴いた歌～年間ミュージックアワード2026～』MCに",
-     "url": "https://realsound.jp/2026/11/post-2584847.html"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "演唱会",
-   "theme": {
-    "accent": "#B9A6F2",
-    "alt_accent": "#5B43A8",
-    "alt_bg": "#F1EEF8",
-    "alt_fg": "#1C1826",
-    "bg": "#15131C",
-    "fg": "#EEEAF4",
     "font": "serif",
     "split": true
    }
@@ -583,15 +529,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-14",
-     "n": 3,
-     "source": "note",
-     "title": "I looked into my subordinate's favorite, ILLIT. There were more tricks than just calling them 'cute'",
-     "url": "https://note.com/inspire_design/n/nb108f0e50c91?hl=en"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -649,33 +586,6 @@
   {
    "cover": null,
    "facts": [],
-   "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-11",
-     "n": 1,
-     "source": "ELLE HK",
-     "title": "BEAMS再度聯乘Salomon！全黑Gore-Tex波鞋加入滑雪靴設計，2026「所羅門」行山鞋與防水鞋推薦",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPVndKVEZNOGFVNzFPeE9zWFltejNpbmNXcTQ1MHZid2U5TmFPWnRzeVBUT2ozdGFQRl9hWTVCdWVPQnVMbjA4a0JoZ21jMHVNdmpiZEI2ZVhuUkF3T0RONU9LVC03S2ZmN1h6TWtlZzBlT3RpT0RSNUt5Z1FxUzBfLXJKUkd3TkE?oc=5"
-    }
-   ],
-   "section": "运动",
-   "stories": [],
-   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
-   "theme": {
-    "accent": "#D9412B",
-    "alt_accent": "#8EC5E8",
-    "alt_bg": "#14233A",
-    "alt_fg": "#F4F8FB",
-    "bg": "#F4F8FB",
-    "fg": "#14233A",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "MMORPG 新作",
    "pending": [
     {
@@ -722,6 +632,31 @@
     "bg": "#211212",
     "fg": "#F4EEE4",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-15",
+    "headline": "2027 Rossignol Juggernaut Snowboard Review: TETON Tested",
+    "url": "https://mtnweekly.com/reviews/snowboards/rossignol-juggernaut-snowboard/"
+   },
+   "name": "滑雪",
+   "quiet": true,
+   "section": "运动",
+   "status": "",
+   "stories": [],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
     "split": true
    }
   },
@@ -776,6 +711,31 @@
    }
   },
   {
+   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+   "facts": [],
+   "last": {
+    "date": "2026-11-15",
+    "headline": "How the Mandalorian N-1 Starfighter Ultimate Collectors Series Lego set (2026) was created?",
+    "url": "https://bsky.app/profile/thespaceshipper.com/post/3n2cns4s7w22q"
+   },
+   "name": "The Mandalorian",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "ザ・マンダロリアン",
+   "theme": {
+    "accent": "#C9A66B",
+    "alt_accent": "#7A5A1F",
+    "alt_bg": "#ECEAE4",
+    "alt_fg": "#1B1D20",
+    "bg": "#14161A",
+    "fg": "#E8EAEC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
    "cover": null,
    "facts": [],
    "last": {
@@ -797,6 +757,31 @@
     "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "last": {
+    "date": "2026-11-15",
+    "headline": "ロッキン2026のライブ映像をYouTubeで無料配信！BE:FIRST、櫻坂46、Vaundyらが登場",
+    "url": "https://www.wws-channel.com/music2/680872.html"
+   },
+   "name": "Vaundy",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
+    "font": "serif",
     "split": true
    }
   },
