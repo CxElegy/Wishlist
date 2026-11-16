@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-16T00:18:03+00:00",
+ "changed": true,
+ "checked": "2026-11-16T01:17:48+00:00",
  "fired": {
   "at": "2026-11-15T22:58:23+00:00",
   "results": {
@@ -68,11 +68,17 @@
    "need": true,
    "prog": 110,
    "prog_day": "2026-11-16",
-   "ripe": [],
-   "sig": "1c8d0477a547",
+   "ripe": [
+    "ILLIT",
+    "The Mandalorian",
+    "Vaundy",
+    "ぐでたま",
+    "滑雪"
+   ],
+   "sig": "2a83c6e67698",
    "token_cap": 1000000,
    "tokens_today": 228759,
-   "why": "整理待ちの記事 7 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 7 件（7 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
