@@ -707,6 +707,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-09-17/8489b739-2058-4f80-b318-2967a227826f.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn0.techbang.com/system/excerpt_images/134725/original/8f5fb798c488b92f60b52ed4740fa865.jpg?1794480473": {
   "w": 1200,
   "h": 630,
@@ -1327,6 +1333,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.etnownews.com/thumb/msid-156514534,thumbsize-76169,width-1280,height-720,resizemode-75/156514534.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://images.khan.co.kr/article/2026/11/10/news-p.v1.20261110.3eb1441616cc4d2486b968acb06ad2e9_P1.jpg": {
   "w": 1200,
   "h": 675,
@@ -1379,6 +1391,12 @@
   "w": 638,
   "h": 424,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cn8nF.img": {
+  "w": 1125,
+  "h": 800,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dBBlh.img": {
@@ -3528,6 +3546,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-15-181331.jpg": {
+  "w": 1813,
+  "h": 992,
+  "target": 720,
+  "v": 3
+ },
  "https://tech-ish.com/wp-content/uploads/2026/08/techish-galaxy-s27-cad-thumbnail-1920x1080-1-1280x720.png": {
   "w": 1280,
   "h": 720,
@@ -3641,6 +3665,12 @@
   "w": 958,
   "h": 533,
   "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/15/1794719035310_galaxy-s27-pro-flagship-1-713.png": {
+  "w": 1478,
+  "h": 774,
+  "target": 720,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/15/1794729171724_img_1015f1d0.png": {
@@ -3963,12 +3993,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.y3ppD0hcT6E1lJl_vRsVEA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.yT0kCzeHJgVfedeEjsngRA&pid=News&w=1200": {
   "w": 700,
   "h": 392,
@@ -3978,6 +4002,12 @@
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bntnews.co.kr/data/bnt/image/2026/11/16/bnt202611160118.jpg": {
+  "w": 2000,
+  "h": 1334,
   "target": 720,
   "v": 3
  },

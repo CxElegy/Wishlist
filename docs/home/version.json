@@ -1,32 +1,32 @@
 {
- "admin": "d83dd04e035c",
- "admin-ai": "8dbb1ba2f2d9",
+ "admin": "ab8b9781e9a4",
+ "admin-ai": "f3a2d730ca47",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "fbc51350"
+   "50e7f2bf"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "efa459ea"
+   "32d175cc"
   ]
  },
- "admin-boards": "a1dd069f3677",
+ "admin-boards": "733ca4e4cd0f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "2cf5bece"
+   "fc168841"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "0f8a6f4f8d10",
+ "admin-emblem": "1497835fb7a9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d03e9900"
+   "5aa165a9"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "63665c843de1",
+ "admin-now": "be1d86a23cd1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "35b64751"
+   "fdb51c19"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a7c77f23"
+   "1957fa1e"
   ]
  },
- "admin-system": "c6bd2d2cc4e9",
+ "admin-system": "0bfd186fca21",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "6b8ec8c0"
+   "14ae19fe"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "65d6d215"
+   "99823271"
   ]
  },
  "admin_marks": {},
- "heat": "ce770adcb3a2",
+ "heat": "43d288562ddc",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "7513bbd1"
+   "ad743430"
   ],
   "ranking": [
    "ランキング",
-   "458f0a96"
+   "f082af5f"
   ]
  },
- "index": "2fbe02a316e1",
+ "index": "459aa5f5cd32",
  "index_marks": {
   "front": [
    "トップ",
-   "74e3b8b5"
+   "c61e3c5c"
   ],
   "picks": [
    "気になるかも？",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "0566d534"
+   "2094b619"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "bd1bf18a"
+   "4e8a0952"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "9db5d098"
+   "81bd3c5d"
   ],
   "w-f303ad09": [
    "绝区零",
    "b4c55f1d"
   ]
  },
- "updated": "11.16 11:31",
+ "updated": "11.16 11:40",
  "wishlist": "bfe47b2ec486"
 }

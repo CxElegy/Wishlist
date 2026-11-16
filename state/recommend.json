@@ -36,7 +36,6 @@
   "https://nijimen.kusuguru.co.jp/topics/653500": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg",
   "https://nijimen.kusuguru.co.jp/topics/654389": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/0dabda83b0e848c08b840f5f91b2c4a0.jpg",
   "https://note.com/ikitaro/n/ne1cb9e979b0d?hl=en": "https://www.bing.com/th?id=ONUT.MQcby3fiJa8yf5ao2dyInA&pid=News&w=1200",
-  "https://note.com/inspire_design/n/nb108f0e50c91?hl=en": "https://www.bing.com/th?id=ONUT.y3ppD0hcT6E1lJl_vRsVEA&pid=News&w=1200",
   "https://note.com/maaris/n/n15e030f1e551?hl=ko": "https://www.bing.com/th?id=ONUT.ZMrDhC95gLEgEgQ9GPvgBw&pid=News&w=1200",
   "https://note.com/trend_select/n/n5c84145725b9?hl=en": "https://www.bing.com/th?id=ONUT.-m1aWc14g1nOCLd7ONKAoA&pid=News&w=700",
   "https://prtimes.jp/main/html/rd/p/000000084.000049377.html": "https://prcdn.freetls.fastly.net/release_image/49377/84/49377-84-f392fb2efef8b7fcd2df9f9853680105-3900x2194.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
@@ -51,6 +50,7 @@
   "https://www.66wz.com/wendu/system/2026/11/12/105871102.shtml": "https://mmbiz.qpic.cn/mmbiz_png/fXeVwORdalR2DH0CBIemW8EjREoAicFtVoO4F01lgoGxNZoAocFmOtHLYoPibuxeJurdDhMn2v9ibAtIZ7Bdib0u598oUicgD3vpNFk7JP5pTIeA/640?wx_fmt=png&from=appmsg#imgIndex=4",
   "https://www.artinsight.co.kr/news/view.php?no=83296": "https://www.bing.com/th?id=ONUT.L-94pAdfo_MWhyLnouylTg&pid=News&w=633",
   "https://www.bgr.com/2313174/enough-compact-android-phones-kickstarter/": "https://www.bgr.com/img/gallery/if-you-miss-compact-phones-this-brand-is-trying-to-resurrect-them/l-intro-1794398036.jpg",
+  "https://www.bntnews.co.kr/article/view/bnt202611160071": "https://www.bntnews.co.kr/data/bnt/image/2026/11/16/bnt202611160118.jpg",
   "https://www.bunko.pet/en/how-long-can-you-leave-your-cat-alone-things-every-cat-owner-should-know-t202611140002.html": null,
   "https://www.chosun.com/english/opinion-en/2026/11/12/GDGHSFCY7FDMTBSMF2F7HFT5HQ/": "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true",
   "https://www.crank-in.net/trend/item/194105/1": "https://www.crank-in.net/img/db/263119116118117_1200.jpg",
@@ -712,6 +712,27 @@
   },
   {
    "batch": 1,
+   "because": "ILLIT",
+   "date": "2026-11-15",
+   "hits": [],
+   "image": "https://www.bntnews.co.kr/data/bnt/image/2026/11/16/bnt202611160118.jpg",
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "www.bntnews.co.kr",
+   "taste": [
+    [
+     "作品:ILLIT",
+     6
+    ]
+   ],
+   "title": "아일릿, ‘MMA2026’ 4관왕",
+   "url": "https://www.bntnews.co.kr/article/view/bnt202611160071",
+   "words": [],
+   "work": "ILLIT"
+  },
+  {
+   "batch": 1,
    "because": "绝区零",
    "date": "2026-11-15",
    "hits": [],
@@ -807,7 +828,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "三星手机",
    "date": "2026-11-15",
    "hits": [
@@ -936,7 +957,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "猫用品",
    "date": "2026-11-14",
    "hits": [],
@@ -955,27 +976,6 @@
    "url": "https://www.bunko.pet/en/how-long-can-you-leave-your-cat-alone-things-every-cat-owner-should-know-t202611140002.html",
    "words": [],
    "work": "猫用品"
-  },
-  {
-   "batch": 3,
-   "because": "ILLIT",
-   "date": "2026-11-14",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.y3ppD0hcT6E1lJl_vRsVEA&pid=News&w=1200",
-   "kind": "board",
-   "liked": "李沅禧出席香奈儿活动",
-   "score": 8,
-   "source": "note",
-   "taste": [
-    [
-     "作品:ILLIT",
-     6
-    ]
-   ],
-   "title": "I looked into my subordinate's favorite, ILLIT. There were more tricks than just calling them 'cute'",
-   "url": "https://note.com/inspire_design/n/nb108f0e50c91?hl=en",
-   "words": [],
-   "work": "ILLIT"
   },
   {
    "batch": 3,
@@ -1861,11 +1861,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1873,11 +1873,11 @@
    8
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [

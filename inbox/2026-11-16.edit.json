@@ -25,7 +25,8 @@
     3,
     6,
     13,
-    31
+    31,
+    43
    ],
    "image": "https://insider-gaming.com/wp-content/uploads/2026/11/gta-6-how-long-will-it-take-to-complete-scaled.jpg"
   },
@@ -35,7 +36,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    41,
+    42
    ]
   },
   {
@@ -138,7 +141,10 @@
     5,
     6,
     8,
-    11
+    11,
+    13,
+    15,
+    16
    ]
   },
   {
@@ -148,6 +154,33 @@
    "weight": "normal",
    "refs": [
     10
+   ]
+  },
+  {
+   "headline": "Galaxy S27とOne UI 9.5でExpert RAWが大幅刷新、新機能や動画撮影対応の兆候も",
+   "highlight": "Expert RAWが大幅刷新",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
+   ]
+  },
+  {
+   "headline": "Why is Samsung pushing 70% of Galaxy S27 lineup towards Pro and Ultra models? South Korean giant going big on premium phones",
+   "highlight": "70% of Galaxy S27 lineup",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Pro：1,399ドルという価格に見合うだけの価値がある理由は？",
+   "highlight": "1,399ドル",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
    ]
   }
  ],
@@ -163,24 +196,25 @@
   }
  ],
  "_covered": {
-  "GTA 6": 40,
+  "GTA 6": 48,
   "哈利波特剧集": 7,
   "チェーンソーマン": 3,
-  "三星手机": 12,
+  "三星手机": 19,
   "BLEACH Mirrors High": 1,
   "FROM": 1,
   "绝区零": 1,
-  "ILLIT": 3,
+  "ILLIT": 8,
   "日本顶级网球赛事": 2,
   "The Mandalorian": 2,
   "ぐでたま": 2,
-  "漫威电影": 21,
+  "漫威电影": 29,
   "dota2": 3,
   "周杰伦": 4,
   "Astrae Oratio": 2,
   "gelato pique": 1,
   "Vaundy": 1,
-  "滑雪": 1
+  "滑雪": 1,
+  "MMORPG 新作": 3
  },
  "FROM": [
   {
@@ -212,9 +246,29 @@
    "blurb": "ILLITとキキが「MMA 2026」でベストパフォーマンス賞を受賞。15日午後6時、ソウルの高尺スカイドームで開かれた授賞式で受賞した。",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    6
    ],
    "image": "https://pimg.mk.co.kr/news/cms/202611/15/news-p.v1.20261115.9f6b4a481b034cd9a61aaaf7d3d6a627_R.jpg"
+  },
+  {
+   "headline": "『ILLIT LIVE 'PRESS START❤' ENCORE in JAPAN』公演記念ラッキードロー開催決定！",
+   "highlight": "ラッキードロー開催決定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    7
+   ]
+  },
+  {
+   "headline": "ILLIT’s “It’s Me” Surpasses 200 Million Spotify Streams, Marking Its Seventh Major Milestone",
+   "highlight": "200 Million Spotify Streams",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "日本顶级网球赛事": [
@@ -267,7 +321,10 @@
    "blurb": "Kevin Feige says bringing the X-Men into the Avengers franchise was a fun way to celebrate 25 years.",
    "weight": "lead",
    "refs": [
-    4
+    4,
+    22,
+    27,
+    28
    ],
    "image": "https://deadline.com/wp-content/uploads/2026/11/X-MEN-Hugh-Jackman-James-Marsden-Patrick-Stewart-Halle-Berry-Famke-Janssen-2000.-TM-and-Copyri-MCDAVDO-WD014-1000.jpg"
   },
@@ -353,5 +410,25 @@
   }
  ],
  "Vaundy": [],
- "滑雪": []
+ "滑雪": [],
+ "MMORPG 新作": [
+  {
+   "headline": "Indie MMO Spotlight - I'm A Real BitCraft Boy Now!",
+   "highlight": "BitCraft",
+   "blurb": "Indie MMO Spotlight で BitCraft を取り上げ。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "부담 없는 MMORPG?…‘이클립스’ 어떤 점이 가벼웠나 직접 해보니",
+   "highlight": "이클립스",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }
