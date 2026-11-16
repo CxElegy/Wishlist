@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-16T01:21:23+00:00",
+ "changed": true,
+ "checked": "2026-11-16T02:18:17+00:00",
  "fired": {
   "at": "2026-11-16T01:21:23+00:00",
   "results": {
@@ -52,33 +52,22 @@
     "sig": "2a83c6e67698"
    },
    "items": [
-    "ILLIT",
     "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "ぐでたま",
-    "哈利波特剧集",
-    "滑雪"
+    "哈利波特剧集"
    ],
-   "last_batch": "2026-11-15T23:11:36+00:00",
+   "last_batch": "2026-11-16T01:30:54+00:00",
    "last_error": {
-    "at": "2026-11-15T04:26:55+00:00",
+    "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 110,
+   "prog": 115,
    "prog_day": "2026-11-16",
-   "ripe": [
-    "ILLIT",
-    "The Mandalorian",
-    "Vaundy",
-    "ぐでたま",
-    "滑雪"
-   ],
-   "sig": "2a83c6e67698",
+   "ripe": [],
+   "sig": "b174b71d4d8f",
    "token_cap": 1000000,
-   "tokens_today": 228759,
-   "why": "整理待ちの記事 7 件（7 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 274085,
+   "why": "整理待ちの記事 2 件（2 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -195,12 +184,12 @@
    "runs": 17
   },
   "2026-11-16": {
-   "batches": 17,
-   "cr": 5292008,
-   "cw": 204258,
-   "in": 146,
-   "out": 24355,
-   "runs": 4
+   "batches": 18,
+   "cr": 5849595,
+   "cw": 247395,
+   "in": 163,
+   "out": 26527,
+   "runs": 5
   }
  }
 }
