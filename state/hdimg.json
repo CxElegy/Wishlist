@@ -1,4 +1,10 @@
 {
+ "http://ctdsb.clouddiffuse.xyz/10316859-ee33-497a-a9ba-3622ced91a69": {
+  "w": 1080,
+  "h": 1224,
+  "target": 1280,
+  "v": 3
+ },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/DSYjFmbuhcifcaq.jpg": {
   "w": 690,
   "h": 320,
@@ -474,6 +480,12 @@
  "https://cartermatt.com/wp-content/uploads/2026/04/FROM-season-4.webp": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn-origin.cool-style.com.tw/cool/2026/11/56565665.png": {
+  "w": 1200,
+  "h": 628,
   "target": 1280,
   "v": 3
  },
@@ -1614,12 +1626,6 @@
   ],
   "why": "看不清"
  },
- "https://img.gamewith.jp/article/thumbnail/rectangle_l/187052.png?date=1582018744": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1494878739212108658/origin_1.jpg": {
   "w": 360,
   "h": 203,
@@ -1738,6 +1744,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://img0.utuku.imgcdc.com/650x0/news/20261116/f5c26ea7-fe83-4835-bcd2-62dbc35c8579.jpg": {
+  "w": 650,
+  "h": 947,
+  "target": 1280,
+  "v": 3
  },
  "https://img1.newsis.com/2026/09/17/NISI20260917_0002242122_web.jpg": {
   "w": 720,
@@ -3030,6 +3042,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://q4.itc.cn/q_70/images03/20261116/f94426b10ff24dbd95deaf2c6a392e22.jpeg": {
+  "w": 2730,
+  "h": 4096,
+  "target": 1280,
+  "v": 3
+ },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -3046,12 +3064,6 @@
  "https://q5.itc.cn/q_70/images03/20261116/b9186e279f484f578077dd20a291e9b4.jpeg": {
   "w": 1080,
   "h": 1920,
-  "target": 1280,
-  "v": 3
- },
- "https://q5.itc.cn/q_70/images03/20261116/c8ef85eb81034a989736cd4abb2a8816.jpeg": {
-  "w": 1440,
-  "h": 2560,
   "target": 1280,
   "v": 3
  },
@@ -3138,12 +3150,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/cbf3428b493694e56a381bba193de38b7e8ea5438c9f14dd402ae59368bcbafe/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fybrand.cinema.com.my%2F6d8151815bcd878c4515f5ee7e40aef0.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 720,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/ddeff4a25e26ace41830ca125423da06615b93a25d88e20ed4ec3e381b307812/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
@@ -3948,12 +3954,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.JVL7a-PQxrlWdXRr-hbhNw&pid=News&w=640": {
-  "w": 640,
-  "h": 330,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.K-ueSVO5E4V6l8_eMP41Bw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3979,6 +3979,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.LTmoqoy847fO1yiuruF25Q&pid=News&w=800": {
+  "w": 700,
+  "h": 340,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Lt1OUxkMqFidKtwEbLUKoA&pid=News&w=1200": {
   "w": 700,
   "h": 390,
@@ -3989,6 +3995,12 @@
  "https://www.bing.com/th?id=ONUT.MQcby3fiJa8yf5ao2dyInA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.MkjvvMFF64HksngkAoCYeg&pid=News&w=600": {
+  "w": 600,
+  "h": 337,
   "target": 720,
   "v": 3
  },
@@ -4005,9 +4017,21 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Rz16HvUAXDigj5I-TdpHrQ&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546": {
   "w": 546,
   "h": 409,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Z6Lv8sApp2rfJNB81WFVfA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4023,12 +4047,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.dOvOFsqMEa-J2Jypr7Ki4Q&pid=News&w=640": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.fheXwQ87G0MjymhrusPdPw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4036,12 +4054,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.fkSkE_nnXxgExr71Yz3bvg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.jy2R_SWWFotLaolAGZCppQ&pid=News&w=1080": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -4124,18 +4136,6 @@
    720
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.wkcxakqJn0ZtzywgtvLa-A&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.y3ppD0hcT6E1lJl_vRsVEA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
@@ -4231,12 +4231,6 @@
  "https://www.disneydining.com/wp-content/uploads/2024/06/avengers-secret-wars.jpg": {
   "w": 1200,
   "h": 600,
-  "target": 720,
-  "v": 3
- },
- "https://www.dissmercury.co.uk/resources/images/19009459/": {
-  "w": 2400,
-  "h": 1350,
   "target": 720,
   "v": 3
  },
