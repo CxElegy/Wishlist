@@ -11,19 +11,6 @@
   "target": 720,
   "v": 3
  },
- "http://n.sinaimg.cn/front20261116ac/184/w690h294/20261116/d2a6-108460ce331767e4ed7d288da6f1386a.jpg": {
-  "w": 690,
-  "h": 294,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.485,
-  "local": "pics/fa729240586d7a8b.webp",
-  "out": [
-   1280,
-   545
-  ],
-  "why": "看不清"
- },
  "http://n.sinaimg.cn/sinakd20261108ac/718/w480h1038/20261108/f106-556c91c00f756e60d7c12d158f6f09e7.jpg": {
   "w": 480,
   "h": 1038,
@@ -3030,6 +3017,12 @@
   ],
   "why": "看不清"
  },
+ "https://q5.itc.cn/q_70/images03/20261116/b9186e279f484f578077dd20a291e9b4.jpeg": {
+  "w": 1080,
+  "h": 1920,
+  "target": 720,
+  "v": 3
+ },
  "https://q5.itc.cn/q_70/images03/20261116/c8ef85eb81034a989736cd4abb2a8816.jpeg": {
   "w": 1440,
   "h": 2560,
@@ -3119,6 +3112,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/cbf3428b493694e56a381bba193de38b7e8ea5438c9f14dd402ae59368bcbafe/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fybrand.cinema.com.my%2F6d8151815bcd878c4515f5ee7e40aef0.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/ddeff4a25e26ace41830ca125423da06615b93a25d88e20ed4ec3e381b307812/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
@@ -4032,12 +4031,6 @@
  "https://www.bing.com/th?id=ONUT.pUZQEPssFMXMaQK1OLme4g&pid=News&w=898": {
   "w": 700,
   "h": 367,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.q3p3kMRYfntauDcVmoeF_w&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
   "target": 720,
   "v": 3
  },

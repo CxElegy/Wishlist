@@ -1,6 +1,6 @@
 {
  "date": "2026-11-16",
- "edit_sig": "b7beba84a35d",
+ "edit_sig": "6bfe0d0460c9",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -788,63 +788,21 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-16",
-     "n": 10,
-     "source": "汽车之家",
-     "title": "周杰伦出镜，别克全新至境世家MPV即将登场",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9POFhQSWxEa1VrZ2RpeTJCNDdmRlRaWE5rMGJiSWFYdEFBQ2o1dEpoaG5oaV96cTFmNExuVlVyak82S0JpUElKNkFDTTFhTXNYWnJOb2k5RUlhV0E?oc=5"
-    },
-    {
-     "date": "2026-11-16",
-     "n": 12,
-     "source": "手机新浪网",
-     "title": "周杰伦武汉演唱会正式官宣！将于2027年4月9日、10日、11日连唱3天",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBmWi1tcjY0Z1Fka3FMdTZrbm5pUlJNSld2blJkeXJFWVAxdDRZdXh6cU41b2FtWkptb0l4dlYwaTMtUDItd0Z4Z0VTeEJYR0tLLXBuS1Z4cGdpamduR2NTNEpyWUxKaGZVdC1lTG1LRTg?oc=5"
-    },
-    {
-     "date": "2026-11-16",
-     "n": 14,
-     "source": "Sohu",
-     "title": "周杰伦概念股与权志龙经纪公司合作再升级，将联合开发AI与机器人产品",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPVng5Z1A3bGxremhfVnRqQjJPdWZ4ZFVrOXExQzZhS2Z5V0tsbU1WWWt2UC05Ml9ENG5sTk0tM01teVBQX1ZFWXJETWhDZkpwMklwWUdILTh1Rm9CVThkY2wtclQ3S1FWVXphOTBOQXhYcFNJdEpJcTZwRXR3ZEJSM3hlVy1xeG1p?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 15,
-     "source": "腾讯网",
-     "title": "周杰伦将来武汉开演唱会，连唱3天！",
-     "url": "https://news.qq.com/rain/a/20261116A080XN00"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 16,
-     "source": "搜狐",
-     "title": "陈冠希、余文乐要世纪大和解了吗？周杰伦在线邀约二人同场打网球",
-     "url": "https://www.sohu.com/a/1102168385_121164110"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "武汉市文化和旅游局11月16日官宣，演唱会已在各大平台上架，正式开票时间暂未确定。",
      "date": "2026-11-16",
-     "headline": "周杰伦武汉演唱会官宣连唱3天 ：2027年4月9日至11日，正式开票时间暂未确定。",
-     "highlight": "",
+     "event": {
+      "date": "2027-04-09",
+      "label": "ライブ",
+      "place": "武汉体育中心主体育场"
+     },
+     "headline": "周杰伦武汉演唱会正式官宣！将于2027年4月9日、10日、11日连唱3天",
+     "highlight": "2027年4月9日、10日、11日连唱3天",
      "image": "https://q5.itc.cn/q_70/images03/20261116/c8ef85eb81034a989736cd4abb2a8816.jpeg",
      "image_via": "og:image",
      "url": "https://m.sohu.com/a/1102182575_121019331?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-16",
-     "headline": "周杰伦官宣将在武汉连开三天演唱会",
-     "highlight": "",
-     "image": "http://n.sinaimg.cn/front20261116ac/184/w690h294/20261116/d2a6-108460ce331767e4ed7d288da6f1386a.jpg",
-     "image_via": "同一件事的别家报道 k.sina.com.cn",
-     "url": "https://m.sohu.com/a/1102178876_121284943?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "hero"
     },
     {
@@ -855,7 +813,17 @@
      "image": "http://n.sinaimg.cn/sinakd20261115ac/765/w405h360/20261115/b9ab-9200c2c8caec468709d5cf0ca916bc35.jpg",
      "image_via": "og:image",
      "url": "https://k.sina.com.cn/article_7811249616_m1d19635d003302iebg.html",
-     "weight": "lead"
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-15",
+     "headline": "Jay Chou and Shawn Yue had a game of tennis and got fans reminiscing about \"Initial D\"",
+     "highlight": "",
+     "image": "https://s.yimg.com/lo/mysterio/api/cbf3428b493694e56a381bba193de38b7e8ea5438c9f14dd402ae59368bcbafe/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fybrand.cinema.com.my%2F6d8151815bcd878c4515f5ee7e40aef0.jpg",
+     "image_via": "og:image",
+     "url": "https://malaysia.news.yahoo.com/jay-chou-shawn-yue-had-040900866.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "周杰倫",

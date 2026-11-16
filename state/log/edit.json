@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-14T09:43:49+00:00",
-"text": "2026-11-14 第 2 バッチを出刊：哈利波特剧集（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4,958・キャッシュ読み 40.8万・出力 2,339",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.54,
-"mem_total": 16869146624,
-"mem_free": 15849775104,
-"disk_used": 10090446848,
-"disk_free": 31193088000,
-"disk_total": 41283534848,
-"peak": 434892800
-},
-"batch": 2,
-"boards": [
-"哈利波特剧集"
-],
-"stories": 5,
-"left": 0,
-"edited": 22,
-"run": 1794648762.5097933,
-"tok": {
-"in": 9,
-"cw": 4949,
-"cr": 408423,
-"out": 2339,
-"calls": 5,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 415720,
-"secs": 667,
-"run_tok": {
-"in": 30,
-"cw": 56448,
-"cr": 1113846,
-"out": 6993,
-"calls": 16,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-14T12:40:44+00:00",
 "text": "2026-11-14 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、GTA 6、MMORPG 新作、The Mandalorian、gelato pique ほか 8（14 版面・52 本・今日の整理待ちは全部終わり） · token 新規入力 4.7万・キャッシュ読み 62.4万・出力 3,407",
 "level": "ok",
@@ -2135,5 +2094,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 532237
+},
+{
+"at": "2026-11-16T08:33:21+00:00",
+"text": "2026-11-16 第 2 バッチを出刊：周杰伦（1 版面・4 本・残り 4 版面） · token 新規入力 3,261・キャッシュ読み 36.0万・出力 1,395",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.54,
+"mem_total": 16869146624,
+"mem_free": 15939203072,
+"disk_used": 10093572096,
+"disk_free": 31189962752,
+"disk_total": 41283534848,
+"peak": 373374976
+},
+"batch": 2,
+"boards": [
+"周杰伦"
+],
+"stories": 4,
+"left": 4,
+"edited": 21,
+"run": 1794817385.684041,
+"tok": {
+"in": 9,
+"cw": 3252,
+"cr": 359501,
+"out": 1395,
+"calls": 5,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 364157
 }
 ]
