@@ -536,5 +536,46 @@ class ReachSwap(unittest.TestCase):
         self.assertIn("emblem_reach_tried", (ROOT / "scripts" / "library_emblem.py").read_text(encoding="utf-8"))
 
 
+class GoneEmblems(unittest.TestCase):
+    """公開の箱に無い（404・410）小元素は外して取り直しへ。時間切れ・5xx・写しが無いものは残す（2026-11-17：自前版へ移した箱に着かなかった名前）。"""
+    NEW = "https://elegy.tailc8cfff.ts.net/storage/v1/object/public/emblems/"
+
+    def fetcher(self, errors):
+        import urllib.error
+
+        def fetch(u):
+            n = u.rsplit("/", 1)[-1]
+            if n in errors:
+                code = errors[n]
+                raise urllib.error.HTTPError(u, code, "x", {}, None) if code else TimeoutError("t")
+            raise OSError("other")
+        return fetch
+
+    def test_unbroken_404_dropped_transient_kept(self):
+        xs = [{"subject": s, "image": self.NEW + s + ".webp"} for s in ("a404", "b410", "c500", "dtime", "ecache")]
+        lost = []
+        out = le.unbroken(xs, False, fetch=self.fetcher({"a404.webp": 404, "b410.webp": 410, "c500.webp": 500, "dtime.webp": 0}), gone=lost)
+        self.assertEqual([x["subject"] for x in out], ["c500", "dtime", "ecache"])
+        self.assertEqual([x["subject"] for x in lost], ["a404", "b410"])
+
+    def test_fill_board_queues_repick(self):
+        em = [{"subject": "Gone", "image": self.NEW + "gone.webp", "shape": "cutout"}]
+        for cfg_state in ({"state": "ok", "v": le.RULES, "bv": emblem_fill.BROKEN_V},):   # gv が無い＝まだ見ていない版面も 1 回見直す
+            b = {"id": 9, "name": "x", "wd": None, "config": {"emblem": em, "emblem_state": dict(cfg_state)}}
+            with mock.patch.object(le.sbstate, "storage_read", self.fetcher({"gone.webp": 404})):
+                add = le.fill_board(b, {"section": "生活"}, None, BASE, fill=lambda item, log=None: {"state": "ok", "note": ""}, now=1)
+            self.assertEqual(add["emblem"], [])
+            self.assertEqual(add["emblem_redo"], ["Gone"])
+            self.assertEqual(add["emblem_state"]["state"], "running")   # due の途中（running）が次の回に拾う
+            self.assertEqual(add["emblem_state"]["gv"], le.GONE_V)
+
+    def test_due_rechecks_boards_without_gv(self):
+        st = {"state": "ok", "have": 1, "v": le.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}
+        b = {"id": 1, "name": "x", "config": {"emblem": [{"image": "u"}], "emblem_state": st}}
+        self.assertEqual(le.due([b], 10**9), [b])
+        b["config"]["emblem_state"] = {**st, "gv": le.GONE_V}
+        self.assertEqual(le.due([b], 10**9), [])
+
+
 if __name__ == "__main__":
     unittest.main()

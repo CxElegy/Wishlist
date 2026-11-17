@@ -373,6 +373,10 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
             bad.append(f"E-rl：役割の札が出ている {rl[:3]}（一般のユーザーは名前だけ）")
     if not page and emb != "off":
         bad += emb_check.check(pg, who, width, out, full=emb == "full", guest=not WHO[who])
+    if not page and WHO[who] and who != "admin":   # 2026-11-17：お客さまのページで小元素が消えた（箱の網址が 404：移行で着かなかった）。候補が尽きて消えた数＝data-emb-gone（IMG_FALLBACK_JS x）
+        gone = pg.evaluate("+document.documentElement.dataset.embGone||0")
+        if gone:
+            bad.append(f"E-emb：{who} のページで小元素が {gone} 版面ぶん消えた（画像が読めず候補も尽きた。boards.config の網址を見る）")
     b.close()
     if page:   # 設定ページ：版面・目次はないので、枠組み（題字・令牌）と本人の分か
         shell = page in ("wishlist.html", "heat.html") and WHO[who]   # AUTH_JS の「index・settings 以外」の枝：本人の殻（.wl-mine .empty）が出ているのが正しい。殻は字が少ない（0 個 77・1 個 72 字）ので下限 40、殻がなければ 100

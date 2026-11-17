@@ -130,6 +130,18 @@ class Follows(unittest.TestCase):
         self.assertIn("運営中", html_)
         self.assertIn("観光地", html_)
 
+    def test_emblems_marked_own_like_owner_page(self):
+        """お客さまのページも店長と同じに render.mark_own_emblems を通す（版面そのものの小元素の _own・空きの小元素の「関係あるか」の材料）。
+        版面の小元素が店長のページと同じ数だけ出る（has-emb）。"""
+        src = (ROOT / "scripts" / "user_pages.py").read_text(encoding="utf-8")
+        self.assertIn("render.mark_own_emblems(i)", src)
+        em = [{"subject": "Vaundy", "image": "https://e.org/v.webp"}, {"subject": "Other", "image": "https://e.org/o.webp"}]
+        fol = [{"pos": 0, "section": "演出", "boards": {"name": "Vaundy", "config": {"motif": "film", "emblem": em}}}]
+        html_ = user_pages.build("a@example.com", {"picks": [{"name": "Vaundy", "sec": "演出"}]}, {}, [], None, {}, 0, {}, fol)
+        self.assertRegex(html_, r'<section[^>]* class="sec[^"]*has-emb')
+        self.assertIn("&quot;name&quot;: &quot;Vaundy&quot;, &quot;own&quot;: 1}", html_)   # 版面と同じ主題だけ own
+        self.assertNotIn("&quot;name&quot;: &quot;Other&quot;, &quot;own&quot;", html_)
+
     def test_removed_pick_disappears(self):
         # 設定の「外す」は picks だけを書き換え、follows の行は残る → 外した版面は出さない
         out = user_pages.own_picks(self.FOL, [{"name": "京都", "sec": "出行"}])

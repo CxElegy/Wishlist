@@ -69,7 +69,8 @@ def pages_on():
     return _ON[0]
 
 
-EMBLEM_URL = re.compile(r"https://[^/\"'\s]+\.supabase\.co/storage/v1/object/public/emblems/([0-9A-Za-z_.-]+\.webp)")
+# 箱の置き場の host は問わない（旧 *.supabase.co・2026-11-07 から店長の PC の自前版 items.yaml supabase_url）。移行で箱の中身が着いていない名前は Pages にも無い
+EMBLEM_URL = re.compile(r"https://[^/\"'\s]+/storage/v1/object/public/emblems/([0-9A-Za-z_.-]+\.webp)")
 
 
 # 外の小元素（boards.config の Commons の Special:FilePath・Twemoji）。よそへ直リンクすると止められる・429（ux_check E2）ので、
@@ -94,12 +95,12 @@ def published():
 
 
 def emblems_to_pages(html, pub=None):
-    """お客さまのページの小元素（ライブラリの boards.config.emblem の網址＝Supabase の emblems 箱）を Pages の /p/<名前> に書き換える。
-    外の小元素（EXT_EMBLEM）は pub（Pages に載った名前）にあるものだけ /p/ に。旗 off ならそのまま。
+    """お客さまのページの小元素（ライブラリの boards.config.emblem の網址＝emblems 箱、host は問わない）を Pages の /p/<名前> に書き換える（pub にある名前だけ）。
+    箱の小元素も外の小元素（EXT_EMBLEM）も pub（Pages に載った名前）にあるものだけ /p/ に。旗 off ならそのまま。
     写しの対象は harness/photo_cache_fill（boards の config から同じ名前を数える）。2026-11-03：ログイン中の storage 取得 19 件の根。"""
     if not pages_on():
         return html
-    html = EMBLEM_URL.sub(lambda m: f"{PAGES_BASE}/{m.group(1)}", html)
+    html = EMBLEM_URL.sub(lambda m: f"{PAGES_BASE}/{m.group(1)}" if m.group(1) in (pub or ()) else m.group(0), html)   # 写しが Pages に載った名前だけ（無いものを /p/ にすると 404）
     return EXT_EMBLEM.sub(lambda m: f"{PAGES_BASE}/{ext_name(m.group(0))}" if ext_name(m.group(0)) in (pub or ()) else m.group(0), html)
 
 
