@@ -11,6 +11,26 @@
   "target": 720,
   "v": 3
  },
+ "http://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FJiji%252Fcd%252FJiji_3913808%252FJiji_3913808_1.jpg,zoom=560x320,quality=100,type=jpg": {
+  "w": 480,
+  "h": 320,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.586,
+  "local": "pics/afee423b39db959f.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
+ "http://n.sinaimg.cn/gp/278/w690h388/20261021/90af-f7e9067a8943d02ba5e746f2a5c6cfab.jpg": {
+  "w": 690,
+  "h": 388,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.334
+ },
  "http://n.sinaimg.cn/sinakd20261109ac/533/w480h853/20261109/440b-04a80a8a155b76351a83ae1d435d6b33.jpg": {
   "w": 480,
   "h": 853,
@@ -398,6 +418,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assetsio.gnwcdn.com/mafia-city-of-lost-heaven-car-park-shootout.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg": {
   "w": 510,
   "h": 340,
@@ -458,12 +484,6 @@
  "https://biz.chosun.com/resizer/v2/MU4TKZJSGFRWKODFGJSDMNDGMY.jpg?auth=d5d781a08144fc3ecbffab8ddb662f77297fde6b0d303a24484c0e2d684d3c2f&width=572&height=300&smart=true": {
   "w": 572,
   "h": 300,
-  "target": 720,
-  "v": 3
- },
- "https://bleedingcool.com/wp-content/uploads/2026/11/jumanjo-open-world-character-posters-feature-image-2000x1125.jpg": {
-  "w": 2000,
-  "h": 1125,
   "target": 720,
   "v": 3
  },
@@ -738,6 +758,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.upmedia.mg/upfile/img/2026/1113/202611132114154264.webp": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-09-17/8489b739-2058-4f80-b318-2967a227826f.jpg": {
   "w": 1200,
   "h": 800,
@@ -802,6 +828,12 @@
   "w": 1400,
   "h": 989,
   "target": 1280,
+  "v": 3
+ },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/09/Batman-Mask-of-the-Phantasm-Art.jpg?resize=2000,1125": {
+  "w": 2000,
+  "h": 1125,
+  "target": 720,
   "v": 3
  },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/11/Harry-Potter-TV-Series-Character-Posters-Hogwarts-First-Year-Students.jpg?w=1920": {
@@ -1406,6 +1438,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.purexbox.com/d57e4aaafc1fd/1280x720.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://images.pushsquare.com/860514e821a93/1280x720.jpg": {
   "w": 1280,
   "h": 720,
@@ -1841,12 +1879,6 @@
   "target": 720,
   "v": 3
  },
- "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg": {
-  "w": 800,
-  "h": 533,
-  "target": 720,
-  "v": 3
- },
  "https://inews.gtimg.com/om_bt/OAfxMyK9k9Ay4Jz45p_yZ5zTCbdKGZK-RBEHC17pB0Kq4AA/1000": {
   "w": 1000,
   "h": 750,
@@ -2103,6 +2135,12 @@
   "w": 1280,
   "h": 672,
   "target": 1280,
+  "v": 3
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26r5ySXHfe0WCdfTYD3xgG4TB761X7GinD36KPb-e5Zk6q5RzPocnCPRK3X-Q704GCZMcplFw3xngXyUUyquz3v6N2ysUkN8DNJRVzKKinfLpQBivTA7EDYLiNkT2IQCR-g==": {
+  "w": 497,
+  "h": 702,
+  "target": 720,
   "v": 3
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnf5NpyUQZzRcq1nx-ObCXEHBkc-me1kh93-P-Go12VnIgwnj_1VQ92hOSsmDOswow7fWbjUnXrpbTyEx52aBQHBDQtAu9zAzHMdIrQFXrXi8zqlDKDDUh0JvYrLjpIr_UQ==": {
@@ -2736,6 +2774,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000010-manetatsun-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 450,
+  "target": 720,
+  "v": 3,
+  "local": "pics/bbac4bac088137c7.webp",
+  "out": [
+   800,
+   450
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000165-spnannex-000-14-view.jpg?exp=10800": {
   "target": 720,
   "v": 3,
@@ -2761,12 +2811,6 @@
   "target": 720,
   "v": 3
  },
- "https://ni.yam.com/20261113/11HECL72ZT1E88G8CS0K0-e33401fca4a21a13.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://ni.yam.com/20261116/1116---7-a5592e45c78adf3e.webp": {
   "w": 1024,
   "h": 427,
@@ -2782,12 +2826,6 @@
  "https://nihonkai.ismcdn.jp/common/images/nnn/noimg_nnn.png": {
   "w": 1024,
   "h": 632,
-  "target": 720,
-  "v": 3
- },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/0dabda83b0e848c08b840f5f91b2c4a0.jpg": {
-  "w": 913,
-  "h": 1200,
   "target": 720,
   "v": 3
  },
@@ -2810,9 +2848,9 @@
   "target": 720,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg": {
-  "w": 750,
-  "h": 750,
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/c903cf959a864a2ca9f59aed8ab26226.jpg": {
+  "w": 588,
+  "h": 598,
   "target": 720,
   "v": 3
  },
@@ -2884,12 +2922,6 @@
   "target": 720,
   "v": 3
  },
- "https://p2.bahamut.com.tw/B/2KU/16/30fcd6de225e1cc72fc79a41cb212yc5.PNG": {
-  "w": 1096,
-  "h": 617,
-  "target": 720,
-  "v": 3
- },
  "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG": {
   "w": 500,
   "h": 282,
@@ -2906,19 +2938,6 @@
   "out": [
    800,
    600
-  ],
-  "why": "期限付きの網址"
- },
- "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/16/35523025.jpg&M=1&s=Y&x=0&y=0&sw=1279&sh=852&sl=W&fw=800&exp=3600": {
-  "w": 798,
-  "h": 532,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.497,
-  "local": "pics/e80f3991dc941a0b.webp",
-  "out": [
-   1280,
-   853
   ],
   "why": "期限付きの網址"
  },
@@ -3602,6 +3621,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/f/3/2/6/f326269d8ddcb4c98d77b3cdb2ef639f_1.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/f/a/5/3/fa53d6bb2a79d4838238076752cf8fcd_1.jpg": {
   "w": 640,
   "h": 360,
@@ -3798,12 +3823,6 @@
  "https://thewpwire.org/wp-content/uploads/2026/11/croppedmarveljump-e1794419376945.jpeg": {
   "w": 1880,
   "h": 1426,
-  "target": 720,
-  "v": 3
- },
- "https://today-obs.line-scdn.net/0h3aMEVUSBbE5wPHDeQ_oTGUhqYD9DWnZHUgonKFJsMXgKEHkfGw8_LQI_ZWIOWX5IUFlxeAU5YSwNDXsfSA/w1200": {
-  "w": 1200,
-  "h": 800,
   "target": 720,
   "v": 3
  },
@@ -4056,19 +4075,6 @@
   "out": [
    1280,
    852
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.3x1AfoR2FQ13krZpoe5i5w&pid=News&w=1024": {
-  "w": 466,
-  "h": 700,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.455,
-  "local": "pics/945ceaa13719772d.webp",
-  "out": [
-   852,
-   1280
   ],
   "why": "看不清"
  },
@@ -4345,6 +4351,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.dreamnews.jp/press/0000368872/images/bodyimage1": {
+  "w": 282,
+  "h": 399,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.542,
+  "local": "pics/aab544e4a66cadf2.webp",
+  "out": [
+   846,
+   1197
+  ],
+  "why": "看不清"
+ },
  "https://www.enduins.com/wp-content/uploads/2026/11/19e3d8c2757-f2539405-541e-4806-a27f-29bc4c338b97.jpg": {
   "w": 1920,
   "h": 1349,
@@ -4406,12 +4425,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.joblo.com/wp-content/uploads/2026/06/wtf-supergirl.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://www.justjared.com/wp-content/uploads/2026/11/from-season-3-ending.jpg": {
   "w": 1200,
   "h": 675,
@@ -4471,6 +4484,12 @@
   "w": 1200,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/11/14.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.rbbtoday.com/imgs/ogp_f/1066101.jpg": {
