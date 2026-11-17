@@ -411,6 +411,19 @@
   ],
   "why": "看不清"
  },
+ "https://attach.setn.com/newsimages/2026/11/15/5789231-PH.jpg": {
+  "w": 760,
+  "h": 440,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.485,
+  "local": "pics/e2a5dcb96966f3b4.webp",
+  "out": [
+   1280,
+   741
+  ],
+  "why": "看不清"
+ },
  "https://automaton-media.com/en/wp-content/uploads/2026/11/20261113-75190-header.jpg": {
   "w": 1305,
   "h": 852,
@@ -452,6 +465,13 @@
   "h": 630,
   "target": 720,
   "v": 3
+ },
+ "https://businessupturn.com/uploads/media/1794830799107-r6g345-untitled-design---2026-11-16t173622-305.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-17"
  },
  "https://buzzap.net/images/2026/11/13/galaxy-s27-camera/top.jpg": {
   "w": 1200,
@@ -897,12 +917,6 @@
   "w": 876,
   "h": 438,
   "target": 1280,
-  "v": 3
- },
- "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
@@ -2004,12 +2018,6 @@
   ],
   "why": "看不清"
  },
- "https://mmbiz.qpic.cn/mmbiz_png/fXeVwORdalR2DH0CBIemW8EjREoAicFtVoO4F01lgoGxNZoAocFmOtHLYoPibuxeJurdDhMn2v9ibAtIZ7Bdib0u598oUicgD3vpNFk7JP5pTIeA/640?wx_fmt=png&from=appmsg#imgIndex=4": {
-  "w": 1080,
-  "h": 646,
-  "target": 1280,
-  "v": 3
- },
  "https://mndaily.com/wp-content/uploads/2026/11/GTALead.png": {
   "w": 2001,
   "h": 1397,
@@ -2056,12 +2064,6 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
-  "v": 3
- },
- "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg": {
-  "w": 1024,
-  "h": 768,
-  "target": 720,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png": {
@@ -2641,18 +2643,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-10169848-lasisa-000-13-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/54d5aadc53be13d8.webp",
-  "out": [
-   1200,
-   800
-  ],
-  "why": "期限付きの網址"
- },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
   "h": 840,
@@ -2800,12 +2790,6 @@
   "target": 720,
   "v": 3
  },
- "https://pbs.twimg.com/media/HXOLLE8W0AAIfuh?format=jpg&name=large": {
-  "w": 1644,
-  "h": 925,
-  "target": 720,
-  "v": 3
- },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/12/35509846.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=960&sl=W&fw=800&exp=3600": {
   "w": 800,
   "h": 600,
@@ -2816,6 +2800,19 @@
   "out": [
    800,
    600
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/16/35523025.jpg&M=1&s=Y&x=0&y=0&sw=1279&sh=852&sl=W&fw=800&exp=3600": {
+  "w": 798,
+  "h": 532,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.497,
+  "local": "pics/e80f3991dc941a0b.webp",
+  "out": [
+   1280,
+   853
   ],
   "why": "期限付きの網址"
  },
@@ -3848,6 +3845,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bgr.com/img/gallery/if-you-miss-compact-phones-this-brand-is-trying-to-resurrect-them/l-intro-1794398036.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.billboard-japan.com/common/sys/img/news/00000167/167355/image.jpg": {
   "w": 999,
   "h": 999,
@@ -3871,12 +3874,6 @@
  "https://www.bing.com/th?id=ONUT.-m1aWc14g1nOCLd7ONKAoA&pid=News&w=700": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.08BTKAHywhu_5gWXAxV2OQ&pid=News&w=650": {
-  "w": 601,
-  "h": 700,
   "target": 720,
   "v": 3
  },
@@ -3999,19 +3996,6 @@
   "h": 337,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Ta_3et2dGUofwAQH1RowuQ&pid=News&w=780": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.43,
-  "local": "pics/f17ddb8c9a02b416.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546": {
   "w": 546,

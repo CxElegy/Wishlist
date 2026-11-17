@@ -43,7 +43,8 @@
     37,
     45,
     75,
-    54
+    54,
+    94
    ]
   },
   {
@@ -55,7 +56,9 @@
     24,
     40,
     61,
-    78
+    78,
+    103,
+    108
    ]
   },
   {
@@ -95,7 +98,8 @@
     81,
     84,
     83,
-    78
+    78,
+    86
    ],
    "image": "https://themainstreetmouse.com/wp-content/uploads/2026/06/Avengers-Secret-Wars.webp"
   },
@@ -126,7 +130,9 @@
     25,
     75,
     72,
-    85
+    85,
+    89,
+    88
    ]
   },
   {
@@ -322,31 +328,32 @@
    "image": "https://attach.setn.com/newsimages/2026/11/15/5789231-PH.jpg"
   },
   {
-   "headline": "葛萊美首屆亞洲流行獎入圍揭曉 蔡依林、周杰倫未入圍",
-   "highlight": "周杰倫未入圍",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1,
-    2
-   ]
-  },
-  {
    "headline": "周杰伦大屏票卖的是氛围还是观演 现场体验值不值",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    11,
+    10
+   ]
+  },
+  {
+   "headline": "周杰伦27年演唱会官宣 武汉兰亭序嘉年华",
+   "highlight": "27年演唱会官宣",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
    ]
   }
  ],
  "_covered": {
-  "GTA 6": 93,
-  "漫威电影": 85,
+  "GTA 6": 108,
+  "漫威电影": 93,
   "三星手机": 41,
   "哈利波特剧集": 17,
-  "周杰伦": 9,
+  "周杰伦": 12,
   "ILLIT": 13,
   "猫用品": 5,
   "绝区零": 5,
