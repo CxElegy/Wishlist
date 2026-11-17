@@ -42,6 +42,12 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261115ac/533/w480h853/20261115/095b-319eba518b6123a58709f48032949b5e.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -151,6 +157,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/008eZAxIly1ij58zvht0fj32bk2w01l2.jpg": {
+  "w": 2000,
+  "h": 2489,
+  "target": 720,
+  "v": 3,
+  "local": "pics/ed7c5190fbd37081.webp",
+  "out": [
+   1029,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/6f5ef307gy1ij1zbcu2afj20xc0xcdux.jpg": {
   "w": 1200,
   "h": 1200,
@@ -173,19 +192,6 @@
   "local": "pics/8cd9a08d49d7f7ad.webp",
   "out": [
    1280,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx4.sinaimg.cn/middle/005TgT6Zly1ij5a7tme5aj32bk2w0e7k.jpg": {
-  "w": 2000,
-  "h": 2489,
-  "target": 720,
-  "v": 3,
-  "local": "pics/bfb4ef817fe40a8d.webp",
-  "out": [
-   1029,
    1280
   ],
   "why": "防盗链",
@@ -604,7 +610,7 @@
  "https://cdn.hk01.com/di/media/images/dw/20261117/1199414283188834304423987.png/Zc9kB6t8QeJyWu-HAKYG0joPf85Ez5YOeb_7v3m_-78?v=w1280r16_9": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png": {
@@ -1283,12 +1289,6 @@
   "target": 720,
   "v": 3
  },
- "https://image.fnnews.com/resource/media/image/2026/11/17/202611170500345065_e.jpg": {
-  "w": 1200,
-  "h": 541,
-  "target": 720,
-  "v": 3
- },
  "https://image.hkhl.hk/f/1200p0/0x0/100/none/a3777c705f19f53a5ceccb9fee5308fb/2026-11/Copy_of_Copy_of_KF_82.png": {
   "w": 1200,
   "h": 675,
@@ -1414,6 +1414,12 @@
  "https://images.thedirect.com/media/article_full/mandalorian-star-wars-filoni.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-mdpr.freetls.fastly.net/article/DdoV/nm/DdoVya_Y8A-72PaweUh1swCf-4LT3-_lR5GLrTui56A.jpg?width=700&disable=upscale&auto=webp&quality=80": {
+  "w": 700,
+  "h": 933,
   "target": 1280,
   "v": 3
  },
@@ -1612,6 +1618,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.18183.com/image/2026/11/17/cf1f4b2e7398310954adf8de3a3e6cb3.jpg@q_80": {
+  "w": 2560,
+  "h": 1440,
+  "target": 720,
+  "v": 3
+ },
  "https://img.4gamers.com.tw/news-image/5eb2ce4a-a6b4-4136-b48f-d788b877b3ea.jpg": {
   "w": 1600,
   "h": 900,
@@ -1701,6 +1713,13 @@
    995
   ],
   "why": "看不清"
+ },
+ "https://img.mydaily.co.kr/photos/2026/11/16/2026111615042091238_m.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-17"
  },
  "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg": {
   "w": 1200,
@@ -2796,6 +2815,12 @@
   "target": 720,
   "v": 3
  },
+ "https://nokiapoweruser.com/wp-content/uploads/2026/11/galxy-s27-pro.jpg": {
+  "w": 1408,
+  "h": 768,
+  "target": 720,
+  "v": 3
+ },
  "https://ocmsmedia.sfccn.com/vod-4310da/image/default/A752B29E205C490485F25BD28801CFF8-6-2.png": {
   "w": 500,
   "h": 281,
@@ -3217,6 +3242,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://realsound.jp/wp-content/uploads/2026/11/20261117-bleach-99.jpg": {
+  "w": 1200,
+  "h": 1603,
+  "target": 1280,
   "v": 3
  },
  "https://research.image.itmedia.co.jp/wp-content/uploads/2026/07/1784614666_IMG_7837-scaled.jpg": {

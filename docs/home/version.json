@@ -1,14 +1,14 @@
 {
- "admin": "3e594862d9d3",
- "admin-ai": "2d45b075ce95",
+ "admin": "47998a6ffb1c",
+ "admin-ai": "b1b009ed2660",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6f4dd75e"
+   "e6501158"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "80d298ac"
+   "e39bc78e"
   ]
  },
  "admin-boards": "0a822112b937",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "f79b6b0154bc",
+ "admin-emblem": "18cf6a933d75",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "5d708fdc"
+   "c51557d5"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "49a8771afaa6",
+ "admin-now": "8363ab136449",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "64676e73"
+   "5f6d41b8"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "0c2b8934"
+   "ddb1f7a0"
   ]
  },
- "admin-system": "0fdf9861bed8",
+ "admin-system": "d7b64f0d70a5",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "39483768"
+   "c970c51a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "7c5d5461"
+   "252ab611"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "2bf87210"
   ]
  },
- "index": "4d01ab825d5a",
+ "index": "2eb152008b57",
  "index_marks": {
   "front": [
    "トップ",
-   "530e1efe"
+   "9ed762be"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "653638b1"
+   "3ed64506"
   ],
   "w-130724c0": [
    "猫用品",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "c7a3e10d"
+   "7d8e2bd1"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "c66c8ef1"
+   "8671ef24"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "286ba5d6"
+   "c100624f"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -196,6 +196,6 @@
    "b2dd4fac"
   ]
  },
- "updated": "11.17 21:46",
+ "updated": "11.17 21:52",
  "wishlist": "7ca07c85eea0"
 }

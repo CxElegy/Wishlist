@@ -138,7 +138,9 @@
    "entries": [
     {
      "date": "2026-11-17T07:10:37+00:00",
-     "image": "",
+     "image": "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png",
+     "image_via": "og:image",
+     "link": "https://appmedia.jp/bleach-mh/80522830",
      "n": 1,
      "seen": "2026-11-17T09:24:56+00:00",
      "site": "https://appmedia.jp",
@@ -150,7 +152,9 @@
     },
     {
      "date": "2026-11-17T10:22:09+00:00",
-     "image": "",
+     "image": "https://realsound.jp/wp-content/uploads/2026/11/20261117-bleach-99.jpg",
+     "image_via": "og:image",
+     "link": "https://realsound.jp/tech/2026/11/post-2587065.html/amp",
      "n": 2,
      "seen": "2026-11-17T12:26:11+00:00",
      "site": "https://realsound.jp",
@@ -163,6 +167,7 @@
     {
      "date": "2026-11-17T09:20:00+00:00",
      "image": "",
+     "link": "https://www.gamer.ne.jp/news/202611170046/",
      "n": 3,
      "seen": "2026-11-17T12:26:11+00:00",
      "site": "https://www.gamer.ne.jp",
@@ -5658,7 +5663,8 @@
     },
     {
      "date": "2026-11-17T11:38:42+00:00",
-     "image": "",
+     "image": "https://nokiapoweruser.com/wp-content/uploads/2026/11/galxy-s27-pro.jpg",
+     "image_via": "og:image",
      "link": "https://nokiapoweruser.com/galaxy-s27-pro-exynos-2700-snapdragon-8-elite-gen-6-rumor/",
      "n": 68,
      "seen": "2026-11-17T12:26:41+00:00",
@@ -5696,6 +5702,7 @@
     {
      "date": "2026-11-17T10:31:11+00:00",
      "image": "",
+     "link": "https://sammyguru.com/galaxy-s27-pro-exynos-snapdragon/",
      "n": 71,
      "seen": "2026-11-17T12:26:41+00:00",
      "site": "https://sammyguru.com",
@@ -5780,6 +5787,7 @@
     {
      "date": "2026-11-17T08:16:15+00:00",
      "image": "",
+     "link": "https://www.sammyfans.com/2026/11/17/samsung-wants-snapdragon-out-of-more-galaxy-s27-phones/",
      "n": 78,
      "seen": "2026-11-17T12:26:41+00:00",
      "site": "https://www.sammyfans.com",
@@ -7065,6 +7073,7 @@
     {
      "date": "2026-11-17T09:40:18+00:00",
      "image": "",
+     "link": "https://esports.gg/guides/dota-2/how-to-increase-communication-score-dota-2/",
      "n": 9,
      "seen": "2026-11-17T12:26:50+00:00",
      "site": "https://esports.gg",
@@ -7246,7 +7255,9 @@
     },
     {
      "date": "2026-11-17T09:00:00+00:00",
-     "image": "",
+     "image": "https://img-mdpr.freetls.fastly.net/article/DdoV/nm/DdoVya_Y8A-72PaweUh1swCf-4LT3-_lR5GLrTui56A.jpg?width=700&disable=upscale&auto=webp&quality=80",
+     "image_via": "JSON-LD",
+     "link": "https://mdpr.jp/k-enta/detail/4877587",
      "n": 4,
      "seen": "2026-11-17T09:25:43+00:00",
      "site": "https://mdpr.jp",
@@ -7258,7 +7269,9 @@
     },
     {
      "date": "2026-11-17T08:02:00+00:00",
-     "image": "",
+     "image": "http://wx2.sinaimg.cn/middle/008eZAxIly1ij58zvht0fj32bk2w01l2.jpg",
+     "image_via": "正文图（本站保存）",
+     "link": "https://www.sina.cn/news/detail/5366272634390771.html",
      "n": 5,
      "seen": "2026-11-17T09:25:43+00:00",
      "site": "https://www.sina.cn",
@@ -7270,7 +7283,9 @@
     },
     {
      "date": "2026-11-17T11:45:00+00:00",
-     "image": "",
+     "image": "https://cdn.hk01.com/di/media/images/dw/20261117/1199414283188834304423987.png/Zc9kB6t8QeJyWu-HAKYG0joPf85Ez5YOeb_7v3m_-78?v=w1280r16_9",
+     "image_via": "og:image",
+     "link": "https://global.hk01.com/%E5%8D%B3%E6%97%B6%E5%A8%B1%E4%B9%90/60411813/%E6%9D%8E%E7%A7%80%E6%BB%A1%E5%A5%B3%E5%9B%A2a2o-lite-3%E4%BA%BA%E4%BB%8513%E5%B2%81-%E9%99%B7%E4%BD%8E%E9%BE%84%E4%BA%89%E8%AE%AE-%E6%94%BF%E5%BA%9C%E5%87%BA%E6%89%8B%E5%BC%80%E5%90%AF%E8%B0%83%E6%9F%A5",
      "n": 6,
      "seen": "2026-11-17T12:26:51+00:00",
      "site": "https://global.hk01.com",
@@ -7283,6 +7298,7 @@
     {
      "date": "2026-11-17T08:44:00+00:00",
      "image": "",
+     "link": "https://www.sina.cn/news/detail/5366283166024589.html",
      "n": 7,
      "seen": "2026-11-17T12:26:51+00:00",
      "site": "https://www.sina.cn",

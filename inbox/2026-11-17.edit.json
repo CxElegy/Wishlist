@@ -471,17 +471,18 @@
   "绝区零": 8,
   "Astrae Oratio": 5,
   "The Mandalorian": 6,
-  "dota2": 6,
+  "dota2": 9,
   "チェーンソーマン": 3,
   "日本顶级网球赛事": 2,
-  "A2O LITE": 3,
+  "A2O LITE": 7,
   "gelato pique": 12,
   "星巴克马克杯": 2,
   "滑雪": 9,
   "MMORPG 新作": 19,
   "FROM": 1,
   "あつ森": 3,
-  "ぐでたま": 1
+  "ぐでたま": 1,
+  "BLEACH Mirrors High": 3
  },
  "ILLIT": [
   {
@@ -674,7 +675,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    8
    ]
   },
   {
@@ -683,7 +685,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    7
+   ]
+  },
+  {
+   "headline": "Communication Score in Dota 2: How to increase and keep it high",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
    ]
   }
  ],
@@ -739,6 +751,34 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "デビュー曲「NEON」が記録連発 A2O LITEって？音楽番組11冠、高難度ダンス＆生歌で実力証明",
+   "highlight": "音楽番組11冠",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "李秀满女团A2O LITE“3人仅13岁”陷低龄争议 政府出手开启调查",
+   "highlight": "政府出手开启调查",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "A2O LITE 登上Harper’s BAZAAR Korea特别刊「BAZAAR STAR」封面公开",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    7
    ]
   }
  ],
@@ -952,6 +992,27 @@
    "highlight": "クレープに新メニュー",
    "blurb": "サンリオキャラ「ぐでたま」のクレープに新メニューが登場。",
    "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "『BLEACH Mirrors High』に「浦原喜助」が新登場 ★4の限界突破イラスト、必殺技演出も公開中",
+   "highlight": "浦原喜助",
+   "blurb": "『BLEACH Mirrors High』に［浦原商店店長］浦原喜助が登場。公式Xでカードイラスト全種類と必殺技演出が公開された。",
+   "weight": "lead",
+   "refs": [
+    2,
+    3
+   ]
+  },
+  {
+   "headline": "【ミラハイ】星1黒崎一護の評価と性能",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1
    ]
