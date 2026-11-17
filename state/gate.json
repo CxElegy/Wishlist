@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-17T17:31:32+00:00",
+ "checked": "2026-11-17T17:34:46+00:00",
  "fired": {
-  "at": "2026-11-17T16:32:16+00:00",
+  "at": "2026-11-17T17:34:46+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -43,19 +43,19 @@
    "edit": 13
   },
   "2026-11-18": {
-   "edit": 1
+   "edit": 2
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-17T16:32:16+00:00",
+    "at": "2026-11-17T17:34:46+00:00",
     "attempts": 1,
     "day": "2026-11-18",
-    "prog": 8,
-    "resp": "cse_01W4x6f7fNXLZ8Eebcc9FCgy",
-    "sig": "3c0a8800de07"
+    "prog": 66,
+    "resp": "",
+    "sig": "e7b644d87c1c"
    },
    "items": [
     "FROM",
@@ -77,11 +77,13 @@
    "need": true,
    "prog": 66,
    "prog_day": "2026-11-18",
-   "ripe": [],
-   "sig": "b6c80bf2eaaa",
+   "ripe": [
+    "日本顶级网球赛事"
+   ],
+   "sig": "e7b644d87c1c",
    "token_cap": 1000000,
    "tokens_today": 81682,
-   "why": "整理待ちの記事 12 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 12 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
