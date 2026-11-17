@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-17T13:50:52+00:00",
+ "checked": "2026-11-17T14:18:03+00:00",
  "fired": {
   "at": "2026-11-17T13:41:14+00:00",
   "results": {
@@ -55,42 +55,25 @@
     "sig": "9d3744cf5e42"
    },
    "items": [
-    "Astrae Oratio",
-    "GTA 6",
     "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
     "日本顶级网球赛事",
-    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-17T12:52:28+00:00",
+   "last_batch": "2026-11-17T13:55:14+00:00",
    "last_error": {
     "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 626,
+   "prog": 676,
    "prog_day": "2026-11-17",
-   "ripe": [
-    "Astrae Oratio",
-    "GTA 6",
-    "MMORPG 新作",
-    "Vaundy",
-    "gelato pique",
-    "三星手机",
-    "周杰伦",
-    "漫威电影"
-   ],
-   "sig": "9d3744cf5e42",
+   "ripe": [],
+   "sig": "2110b77fcf48",
    "token_cap": 1000000,
-   "tokens_today": 773428,
-   "why": "整理待ちの記事 55 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 885353,
+   "why": "整理待ちの記事 5 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -215,12 +198,12 @@
    "runs": 13
   },
   "2026-11-17": {
-   "batches": 24,
-   "cr": 15009674,
-   "cw": 702149,
-   "in": 405,
-   "out": 70874,
-   "runs": 13
+   "batches": 26,
+   "cr": 16805829,
+   "cw": 806270,
+   "in": 457,
+   "out": 78626,
+   "runs": 15
   }
  }
 }
