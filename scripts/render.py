@@ -2011,10 +2011,15 @@ VOTE_JS = """
     try { tok = (JSON.parse(localStorage.getItem('wl-auth') || '{}') || {}).access_token || ''; } catch (_) {}
     return tok ? { ...headers, Authorization: 'Bearer ' + tok } : headers;
   };
+  // 押した形（aria-pressed）を見せるのは、その票の持ち主だけ（2026-11-17：访客に店長の 👍 が押された形で出ていた）。
+  // 本人のページ＝ログイン中（令牌あり）。店長のページ＝店長（役目が決まるまでは令牌があれば先に見せる：押した形が一度消えて出直すのを避ける）。访客は何も塗らない
+  const R = document.documentElement;
+  const hasTok = () => { try { return !!(JSON.parse(localStorage.getItem('wl-auth') || '{}') || {}).access_token; } catch (_) { return false; } };
+  const mineShown = () => hasTok() && (OWN || R.dataset.role === 'admin' || R.dataset.auth !== 'ok');
   const boxes = [];   // [控件, 数据, 投踩后变淡的元素, 提示文字]
   const paint = url => boxes.forEach(([box, data, dim, tip]) => {
     if (data.url !== url) return;
-    const v = mine[url] || 0;
+    const v = mineShown() ? (mine[url] || 0) : 0;
     box.querySelectorAll('button[data-vote]').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.vote) === v)));
     box.classList.toggle('on', v !== 0);
     if (dim) dim.classList.toggle(dim.classList.contains('pk') ? 'down' : 'downv', v === -1);
@@ -2077,7 +2082,9 @@ VOTE_JS = """
   document.querySelectorAll('.sec .card, .top, .wc').forEach(c => { const a = c.querySelector(':scope > .lk'); if (a) story(a, c, c); });
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
   new Set(boxes.map(b => b[1].url)).forEach(paint);
-  // 数据库里「我点过的票」为准：换浏览器、换手机、清了缓存也显示成按过的样子（db/my_votes.sql）
+  // 数据库里「我点过的票」为准：换浏览器、换手机、清了缓存也显示成按过的样子（db/my_votes.sql）。访客は読まない（読めても塗らない）
+  let loaded = false;
+  const loadMine = () => { if (loaded || !mineShown()) return; loaded = true;
   fetch(cfg.url.replace(/\\/$/, '') + (OWN ? '/rest/v1/rpc/my_votes_own' : '/rest/v1/rpc/my_votes'),
     { method: 'POST', headers: authHeaders(), body: JSON.stringify(OWN ? {} : { p_account: window.WL_ACCOUNT || 'test1' }) })
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
@@ -2089,7 +2096,12 @@ VOTE_JS = """
       try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
       new Set(Object.keys(old).concat(Object.keys(mine))).forEach(paint);
     })
-    .catch(err => console.warn('读不到数据库里的投票，先用本机记录', err));
+    .catch(err => { loaded = false; console.warn('读不到数据库里的投票，先用本机记录', err); });
+  };
+  loadMine();
+  // 役目・令牌が決まったら（访客 → 店長 / 店長 → 访客）塗り直す
+  const repaint = () => { loadMine(); new Set(boxes.map(b => b[1].url)).forEach(paint); };
+  document.addEventListener('wl-role', repaint); document.addEventListener('wl-token', repaint);
   __META__
 })();
 """
