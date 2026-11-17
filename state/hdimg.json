@@ -333,6 +333,19 @@
   "v": 3,
   "blur": 0.402
  },
+ "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3874506013112026000000-1.jpg?ixlib=js-3.8.0&w=696&h=464&auto=compress&fit=crop&bg=FFFFFF&fm=jpg&s=f6dbcf9dae03f837a1588c147d78f276": {
+  "w": 696,
+  "h": 464,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.439,
+  "local": "pics/1af41432f078da03.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://ascendants.in/wp-content/uploads/2026/11/harry-potter.jpg": {
   "w": 1600,
   "h": 900,
@@ -588,6 +601,12 @@
   "w": 1080,
   "h": 608,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.hk01.com/di/media/images/dw/20261117/1199397595915489280194028.png/KOtAcXYeVasFnI6FZrBf_1RIh92zgvoZR4UTjUeFE40?v=w1280r16_9": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://cdn.hk01.com/di/media/images/dw/20261117/1199414283188834304423987.png/Zc9kB6t8QeJyWu-HAKYG0joPf85Ez5YOeb_7v3m_-78?v=w1280r16_9": {
@@ -1307,12 +1326,6 @@
  "https://images.thedirect.com/media/article_full/doomleader.jpg": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_616,w_1086,h_610/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m7k0ah6bs0xecgznqs.jpg": {
-  "w": 1440,
-  "h": 810,
   "target": 1280,
   "v": 3
  },
@@ -2656,6 +2669,12 @@
   "target": 720,
   "v": 3
  },
+ "https://p.potaufeu.asahi.com/0522-p/picture/31557957/235eedbabe4894881c0efff253edf809.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG": {
   "w": 500,
   "h": 282,
@@ -2973,6 +2992,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
+  "w": 1024,
+  "h": 572,
+  "target": 720,
+  "v": 3
+ },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -2996,6 +3021,12 @@
   "w": 860,
   "h": 1178,
   "target": 1280,
+  "v": 3
+ },
+ "https://readysteadycut.com/wp-content/uploads/2026/11/Avengers-Doomsday.webp": {
+  "w": 1500,
+  "h": 844,
+  "target": 720,
   "v": 3
  },
  "https://realsound.jp/wp-content/uploads/2026/11/20261115-ichiban-99.jpeg": {
@@ -3322,7 +3353,7 @@
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/doctor-doom-raising-the-sentinels-in-avengers-doomsday-trailer.jpg?q=70&fit=crop&w=1200&h=628&dpr=1": {
   "w": 1200,
   "h": 628,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/doctor-doom-raising-the-sentinels-in-avengers-doomsday-trailer.jpg?w=1600&h=900&fit=crop": {
@@ -3374,6 +3405,12 @@
   "v": 3
  },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/avengers_-doomsday-_-special-look-_-in-theaters-december-18-1-40-screenshot.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/jason_and_lucia_09.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 1280,
@@ -3765,6 +3802,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.6gzcD9QwtFIRWUfkozUUtQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.FOoggTFAL_2bZZS_uZ1pTg&pid=News&w=494": {
   "w": 494,
   "h": 640,
@@ -4032,6 +4075,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-Ultra-.jpg": {
   "w": 1280,
   "h": 720,
@@ -4196,6 +4245,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.syfy.com/sites/syfy/files/2026/11/article-promotes-1825x1217_15.jpg": {
+  "w": 1825,
+  "h": 1217,
+  "target": 720,
+  "v": 3
+ },
  "https://www.thewrap.com/wp-content/uploads/2022/06/Elizabeth-Olsen-Wanda.jpg": {
   "w": 1200,
   "h": 675,
@@ -4230,6 +4285,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.whatmobile.com.pk/control/news/assets/17112026/9d543b67c334750e591509e173a0ad3e_meta.jpg": {
+  "w": 728,
+  "h": 410,
+  "target": 720,
   "v": 3
  },
  "https://www.wowkorea.jp/img/news/107/536956/453389_1280W.webp": {

@@ -1,219 +1,332 @@
 {
-  "_covered": {
-    "漫威电影": 25,
-    "GTA 6": 23,
-    "ILLIT": 3,
-    "The Mandalorian": 3,
-    "哈利波特剧集": 3,
-    "チェーンソーマン": 1,
-    "日本顶级网球赛事": 1
+ "_covered": {
+  "漫威电影": 36,
+  "GTA 6": 43,
+  "ILLIT": 3,
+  "The Mandalorian": 3,
+  "哈利波特剧集": 3,
+  "チェーンソーマン": 1,
+  "日本顶级网球赛事": 1,
+  "三星手机": 8,
+  "周杰伦": 5,
+  "gelato pique": 3
+ },
+ "漫威电影": [
+  {
+   "headline": "Ryan Gosling joins Marvel as Ghost Rider in new film",
+   "highlight": "Ghost Rider",
+   "blurb": "Ryan Gosling joins Marvel as Ghost Rider in a new film.",
+   "weight": "lead",
+   "refs": [
+    19
+   ],
+   "image": "https://i.abcnewsfe.com/a/02d94113-efa9-481c-9232-0dfafe5b3238/RyanGosling-gty-sn-260726_1785097233106_hpMain_16x9.jpg?w=1600"
   },
-  "漫威电影": [
-    {
-      "headline": "Ryan Gosling joins Marvel as Ghost Rider in new film",
-      "highlight": "Ghost Rider",
-      "blurb": "Ryan Gosling joins Marvel as Ghost Rider in a new film.",
-      "weight": "lead",
-      "refs": [
-        19
-      ],
-      "image": "https://i.abcnewsfe.com/a/02d94113-efa9-481c-9232-0dfafe5b3238/RyanGosling-gty-sn-260726_1785097233106_hpMain_16x9.jpg?w=1600"
-    },
-    {
-      "headline": "Marvel Boss Officially Reveals Why Avengers Switched from Kang to Doctor Doom",
-      "highlight": "Kang to Doctor Doom",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4,
-        11
-      ]
-    },
-    {
-      "headline": "Marvel Sets Historic Disney+ Record Ahead of Avengers: Doomsday",
-      "highlight": "Historic Disney+ Record",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "Avengers: Doomsday Final Runtime Reportedly Revealed",
-      "highlight": "Final Runtime",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        9,
-        6
-      ]
-    },
-    {
-      "headline": "Here's when you can expect Marvel's final Avengers: Doomsday trailer",
-      "highlight": "final Avengers: Doomsday trailer",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        20,
-        23
-      ]
-    }
-  ],
-  "GTA 6": [
-    {
-      "headline": "全新 GTA 6 遊戲截圖展現 Leonida 的風暴與迷霧效果",
-      "highlight": "風暴與迷霧",
-      "blurb": "全新 GTA 6 截圖展現 Leonida 的風暴與迷霧天氣效果。",
-      "weight": "lead",
-      "refs": [
-        9,
-        11,
-        12
-      ],
-      "image": "https://img.asmedia.epimg.net/resizer/v2/UOFRRXQQGREZVP2RNPQXXZWFPY.jpg?auth=9e5d1b39f4bc08f6f145639ed061b4859ba97463baefd48e74808fa3b48f2f91&width=1472&height=828&smart=true"
-    },
-    {
-      "headline": "Your Final ‘GTA 6’ Checklist To Prepare For Launch",
-      "highlight": "Final ‘GTA 6’ Checklist",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        23
-      ]
-    },
-    {
-      "headline": "GTA 6 Launches This Week, and Wall Street Has Already Set a $1.5 Billion Bar for Its First Weekend",
-      "highlight": "$1.5 Billion",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        14,
-        8
-      ]
-    },
-    {
-      "headline": "The Metacritic Review Score Bar For ‘GTA 6’ Is Historically High",
-      "highlight": "Metacritic",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        15
-      ]
-    },
-    {
-      "headline": "Twitchers rejoice: GTA 6 will have 62 different species of birds",
-      "highlight": "62 different species of birds",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        20
-      ]
-    }
-  ],
-  "ILLIT": [
-    {
-      "headline": "『紅白』出場控えるILLIT、韓国授賞式で4冠の快挙！会場を魅了した圧巻パフォーマンスに反響",
-      "highlight": "4冠の快挙",
-      "blurb": "『紅白』出場を控えるILLITが韓国の授賞式で4冠を獲得し、圧巻のパフォーマンスが反響を呼んだ。",
-      "weight": "lead",
-      "refs": [
-        1
-      ],
-      "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-163679.jpg"
-    },
-    {
-      "headline": "休養中のILLIT・MOKA、韓国公演を客席から応援「ILLITはいつでも5人」 新曲をステージ初披露",
-      "highlight": "ILLITはいつでも5人",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "#체포하겠어 🚨 with @ITZY #CHAERYEONG #You_re_Under_Arrest #ILLIT",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    }
-  ],
-  "The Mandalorian": [
-    {
-      "headline": "Martin Scorsese voices an alien in The Mandalorian & Grogu set walkthrough",
-      "highlight": "Martin Scorsese",
-      "blurb": "Brandon Davis tours the sets built for The Mandalorian & Grogu movie, and Martin Scorsese voices an alien.",
-      "weight": "lead",
-      "refs": [
-        1
-      ],
-      "image": "https://www.bing.com/th?id=ONUT.f1E46G67auPpxWK_IDQvrw&pid=News&w=1200"
-    },
-    {
-      "headline": "The Grammys honor Ludwig Göransson for The Mandalorian and Grogu and The Odyssey",
-      "highlight": "Grammys",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "Mando and Grogu Trapped on a Lava River | LEGO Star Wars: The Mandalorian",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    }
-  ],
-  "哈利波特剧集": [
-    {
-      "headline": "Harry Potter fans confused by first clip of new series as they spot big difference with famous scar",
-      "highlight": "famous scar",
-      "blurb": "Fans are confused by the newly released trailer for the Harry Potter series.",
-      "weight": "lead",
-      "refs": [
-        2
-      ],
-      "image": "https://www.bing.com/th?id=ONUT.-0h2yEJgemXPPiwNXJBpkA&pid=News&w=1200"
-    },
-    {
-      "headline": "Bridgerton Lead To Boycott HBO’s Harry Potter Remake, Slams J.K. Rowling",
-      "highlight": "Boycott",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3,
-        1
-      ]
-    }
-  ],
-  "チェーンソーマン": [
-    {
-      "headline": "Chainsaw Man movie: Everything we know so far",
-      "highlight": "Everything we know",
-      "blurb": "",
-      "weight": "lead",
-      "refs": [
-        1
-      ],
-      "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg"
-    }
-  ],
-  "日本顶级网球赛事": [
-    {
-      "headline": "錦織圭「指導はいつかしたい。でも…」 オファー明かすも「自信なかった」",
-      "highlight": "指導はいつかしたい",
-      "blurb": "島根県の県民栄誉賞・松江市の市民栄誉賞の表彰式後、錦織圭が「指導はいつかしたいなと思っています」と語った。",
-      "weight": "lead",
-      "refs": [
-        1
-      ],
-      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00010009-tennisnet-000-1-view.jpg?pri=l&w=640&h=481&exp=10800"
-    }
-  ]
+  {
+   "headline": "Disney Sets The Record Straight On Those Avengers: Secret Wars Release Date Delay Rumors",
+   "highlight": "Secret Wars Release Date Delay Rumors",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    36
+   ]
+  },
+  {
+   "headline": "Marvel Sets Historic Disney+ Record Ahead of Avengers: Doomsday",
+   "highlight": "Historic Disney+ Record",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    35
+   ]
+  },
+  {
+   "headline": "Avengers: Doomsday Final Runtime Reportedly Revealed",
+   "highlight": "Final Runtime",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    6,
+    27
+   ]
+  },
+  {
+   "headline": "Kevin Feige Says Avengers: Doomsday Will Be the Final Goodbye to Original X-Men",
+   "highlight": "Final Goodbye to Original X-Men",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    29
+   ]
+  }
+ ],
+ "GTA 6": [
+  {
+   "headline": "全新 GTA 6 遊戲截圖展現 Leonida 的風暴與迷霧效果",
+   "highlight": "風暴與迷霧",
+   "blurb": "全新 GTA 6 截圖展現 Leonida 的風暴與迷霧天氣效果。",
+   "weight": "lead",
+   "refs": [
+    9,
+    11,
+    12
+   ],
+   "image": "https://img.asmedia.epimg.net/resizer/v2/UOFRRXQQGREZVP2RNPQXXZWFPY.jpg?auth=9e5d1b39f4bc08f6f145639ed061b4859ba97463baefd48e74808fa3b48f2f91&width=1472&height=828&smart=true"
+  },
+  {
+   "headline": "GTA 6 officially becomes the clear Game Awards 2026 frontrunner",
+   "highlight": "clear Game Awards 2026 frontrunner",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    35,
+    26,
+    36,
+    42,
+    40,
+    43
+   ]
+  },
+  {
+   "headline": "Your Final ‘GTA 6’ Checklist To Prepare For Launch",
+   "highlight": "Final ‘GTA 6’ Checklist",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23
+   ]
+  },
+  {
+   "headline": "GTA 6 Launches This Week, and Wall Street Has Already Set a $1.5 Billion Bar for Its First Weekend",
+   "highlight": "$1.5 Billion",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    8
+   ]
+  },
+  {
+   "headline": "The Metacritic Review Score Bar For ‘GTA 6’ Is Historically High",
+   "highlight": "Metacritic",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "『紅白』出場控えるILLIT、韓国授賞式で4冠の快挙！会場を魅了した圧巻パフォーマンスに反響",
+   "highlight": "4冠の快挙",
+   "blurb": "『紅白』出場を控えるILLITが韓国の授賞式で4冠を獲得し、圧巻のパフォーマンスが反響を呼んだ。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-163679.jpg"
+  },
+  {
+   "headline": "休養中のILLIT・MOKA、韓国公演を客席から応援「ILLITはいつでも5人」 新曲をステージ初披露",
+   "highlight": "ILLITはいつでも5人",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "#체포하겠어 🚨 with @ITZY #CHAERYEONG #You_re_Under_Arrest #ILLIT",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Martin Scorsese voices an alien in The Mandalorian & Grogu set walkthrough",
+   "highlight": "Martin Scorsese",
+   "blurb": "Brandon Davis tours the sets built for The Mandalorian & Grogu movie, and Martin Scorsese voices an alien.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.f1E46G67auPpxWK_IDQvrw&pid=News&w=1200"
+  },
+  {
+   "headline": "The Grammys honor Ludwig Göransson for The Mandalorian and Grogu and The Odyssey",
+   "highlight": "Grammys",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Mando and Grogu Trapped on a Lava River | LEGO Star Wars: The Mandalorian",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter fans confused by first clip of new series as they spot big difference with famous scar",
+   "highlight": "famous scar",
+   "blurb": "Fans are confused by the newly released trailer for the Harry Potter series.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.-0h2yEJgemXPPiwNXJBpkA&pid=News&w=1200"
+  },
+  {
+   "headline": "Bridgerton Lead To Boycott HBO’s Harry Potter Remake, Slams J.K. Rowling",
+   "highlight": "Boycott",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    1
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man movie: Everything we know so far",
+   "highlight": "Everything we know",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg"
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "錦織圭「指導はいつかしたい。でも…」 オファー明かすも「自信なかった」",
+   "highlight": "指導はいつかしたい",
+   "blurb": "島根県の県民栄誉賞・松江市の市民栄誉賞の表彰式後、錦織圭が「指導はいつかしたいなと思っています」と語った。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00010009-tennisnet-000-1-view.jpg?pri=l&w=640&h=481&exp=10800"
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "New One UI 9.5 leaks show Samsung’s vision for the Galaxy S27 series",
+   "highlight": "One UI 9.5",
+   "blurb": "New One UI 9.5 leaks show Samsung's plans for the Galaxy S27 series, which may include a four-model lineup.",
+   "weight": "lead",
+   "refs": [
+    3,
+    2
+   ],
+   "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg"
+  },
+  {
+   "headline": "Samsung Galaxy S27 Pro and Ultra’s New Camera Design Revealed Up Close",
+   "highlight": "New Camera Design",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "headline": "Leak hints Samsung Galaxy S27 could debut extremely bezel-less displays",
+   "highlight": "bezel-less displays",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "RAM Crisis Threatens the Price of the Galaxy S27 Ultra 1 TB More Expensive",
+   "highlight": "RAM Crisis",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "三星Galaxy S27系列或将内置个人AI助手",
+   "highlight": "个人AI助手",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "热闻|580元周杰伦演唱会门票“仅支持看大屏”？中演协：避免将视野严重遮挡区域划入售票区",
+   "highlight": "580元周杰伦演唱会门票",
+   "blurb": "580元周杰伦演唱会门票被指“仅支持看大屏”，中演协表示应避免将视野严重遮挡区域划入售票区。",
+   "weight": "lead",
+   "refs": [
+    5
+   ],
+   "image": "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg"
+  },
+  {
+   "headline": "第69届格林美奖入围名单出炉！周杰伦无缘提名日韩菲包办亚洲新奖",
+   "highlight": "周杰伦无缘提名",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    2
+   ]
+  },
+  {
+   "headline": "相亲因伴侣有异性朋友未成，周杰伦演唱会官宣",
+   "highlight": "周杰伦演唱会官宣",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "｢ジェラピケ｣、創業初の社長交代 マッシュスタイルラボ、楠神氏に 近藤氏は会長",
+   "highlight": "創業初の社長交代",
+   "blurb": "マッシュスタイルラボは楠神あさみ副社長が2027年1月1日付で社長に昇格する人事を発表。近藤広幸社長は会長に就く。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3874506013112026000000-1.jpg?ixlib=js-3.8.0&w=696&h=464&auto=compress&fit=crop&bg=FFFFFF&fm=jpg&s=f6dbcf9dae03f837a1588c147d78f276"
+  },
+  {
+   "headline": "【期間限定】ジェラート ピケ最大級のポップアップイベントが11/14開幕！ 限定アイテムが当たるホリデーくじが初登場",
+   "highlight": "11/14開幕",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    2
+   ]
+  }
+ ]
 }
