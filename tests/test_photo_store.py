@@ -35,6 +35,65 @@ class PhotoStore(unittest.TestCase):
         self.assertEqual(P.evict(p, set(), 120, keep_days=14, cap=10**9), ["a"])      # 載っていない 14 日超え
         self.assertEqual(P.evict({"b": p["b"], "c": p["c"]}, {"b"}, 120, cap=15), ["c"])  # 上限超え：載っていないものから古い順
 
+    def test_evict_limit_takes_oldest_first(self):
+        p = {c: {"at": 100 + i, "b": 10} for i, c in enumerate("abcd")}
+        self.assertEqual(P.evict(p, set(), 200, keep_days=14, limit=2), ["a", "b"])   # 古い順に 2 枚だけ
+        self.assertEqual(P.evict(p, {"a"}, 200, keep_days=14, limit=10), ["b", "c", "d"])   # 載っているものは日数では消さない
+        self.assertEqual(P.evict(p, {"a", "b", "c", "d"}, 200, keep_days=14, cap=25, limit=1), ["a"])   # 上限超えでも 1 回の上限は守る
+
+    def _run_env(self, d, imgs):
+        """b: 載っていない古い 3 枚・a: 載っている古い 1 枚。imgs = お客さまの網址の一覧（None = 読めない）。"""
+        (d / "i.html").write_text('<img src="https://x.example/a.jpg" data-e="s">', encoding="utf-8")
+        ka = P.key("https://x.example/a.jpg")
+        old = P.day() - 30
+        p = {ka: {"at": old, "b": 5, "cc": 1, "c": "#000000", "m": []}}
+        for c in "bcd":
+            p[P.key(c)] = {"at": old, "b": 5, "cc": 1, "c": "#000000", "m": []}
+        st = d / "s.json"
+        st.write_text(json.dumps({"base": "https://s.example", "p": p}), encoding="utf-8")
+        removed = []
+        saved = (P.user_imgs, P.remove, P.MAX_EVICT)
+        P.user_imgs = lambda b, k: imgs
+        P.remove = lambda b, k, ks: removed.append(list(ks))
+        self.addCleanup(lambda: (setattr(P, "user_imgs", saved[0]), setattr(P, "remove", saved[1]), setattr(P, "MAX_EVICT", saved[2])))
+        return st, ka, removed
+
+    def test_run_evicts_unreferenced_old_photos_only(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            st, ka, removed = self._run_env(d, [])
+            s = P.run(site=d, path=st, base="https://s.example", keyv="k")
+            left = set(json.loads(st.read_text())["p"])
+            self.assertEqual(left, {ka})                 # 載っている a は 30 日前でも残る
+            self.assertEqual(s["gone"], 3)
+            self.assertEqual(len(removed[0]), 3)
+            self.assertNotIn(ka, removed[0])
+
+    def test_run_evict_is_capped_per_run(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            st, ka, removed = self._run_env(d, [])
+            P.MAX_EVICT = 2
+            s = P.run(site=d, path=st, base="https://s.example", keyv="k")
+            self.assertEqual((s["gone"], len(json.loads(st.read_text())["p"])), (2, 2))
+
+    def test_run_keeps_everything_when_user_list_unreadable(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            st, ka, removed = self._run_env(d, None)   # お客さまの網址の一覧が読めない回は日数で消さない
+            s = P.run(site=d, path=st, base="https://s.example", keyv="k")
+            self.assertEqual((s["gone"], len(json.loads(st.read_text())["p"]), removed), (0, 4, []))
+
+    def test_run_keeps_records_when_remove_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            st, ka, removed = self._run_env(d, [])
+            def boom(b, k, ks):
+                raise OSError("down")
+            P.remove = boom
+            s = P.run(site=d, path=st, base="https://s.example", keyv="k")
+            self.assertEqual((s["gone"], len(json.loads(st.read_text())["p"])), (0, 4))
+
     def test_todo_count_skips_stored_and_recent_failures(self):
         # render のあと、置いていない写真があれば一時保管を起こす印。取れなかった分は 1 日あけるので回り続けない
         with tempfile.TemporaryDirectory() as d:
