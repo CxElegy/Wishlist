@@ -237,14 +237,22 @@ def stash(emblems, site, stem, upload, base):
     return out
 
 
+def drop_gone_on():
+    """箱に無い（404・410）小元素を外して取り直す開關。既定は OFF（環境変数 EMBLEM_DROP_GONE=1 で ON）。
+    移行で箱のファイルが着く前に回すと、良い選び（boards.config）を消して一斉に取り直すため、店長の許可が出るまで書かない。OFF でも数えてログに出す。"""
+    import os
+    return os.environ.get("EMBLEM_DROP_GONE", "") == "1"
+
+
 def is_gone(ex):
     """取得の失敗が「ファイルが無い」（HTTP 404・410）か。時間切れ・5xx・写しが無い（NotCached）はそうでない（一時のこと：残す）。"""
     return getattr(ex, "code", None) in (404, 410)
 
 
-def unbroken(emblems, photo, fetch=None, gone=None):
+def unbroken(emblems, photo, fetch=None, gone=None, drop_gone=None):
     """公開の箱の網址の小元素のうち、壊れたもの（emblem_fill.broken_image）を外す。→ 新しいリスト。読めないものは残す（次の回）。
-    ただし 404・410（箱にファイルが無い：2026-11-07 の移行で着かなかった名前）は残さず外し、gone（リスト）に足す＝呼び側が取り直しに回す。"""
+    404・410（箱にファイルが無い：2026-11-07 の移行で着かなかった名前）は gone（リスト）に足す。外すのは drop_gone（既定は drop_gone_on()＝OFF）が真のときだけ。OFF は残す（数えるだけ）。"""
+    drop_gone = drop_gone_on() if drop_gone is None else drop_gone
     import urllib.request
     from PIL import Image
     import emblem
@@ -271,7 +279,8 @@ def unbroken(emblems, photo, fetch=None, gone=None):
                 if is_gone(ex):
                     if gone is not None:
                         gone.append(x)
-                    continue
+                    if drop_gone:
+                        continue
         out.append(x)
     return out
 
@@ -435,7 +444,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
                 r = {"state": "failed", "note": "時間切れ"}
         got = (yaml.safe_load((root / "items.yaml").read_text(encoding="utf-8"))["items"] or [{}])[0]
         st0 = (board.get("config") or {}).get("emblem_state") or {}
-        recheck = int(st0.get("bv") or 0) < emblem_fill.BROKEN_V or int(st0.get("gv") or 0) < GONE_V
+        recheck = int(st0.get("bv") or 0) < emblem_fill.BROKEN_V or (drop_gone_on() and int(st0.get("gv") or 0) < GONE_V)
         lost = []   # 箱に無い（404・410）小元素：外して、その人を次の回に取り直す
         touched = False
         pend = dict(((board.get("config") or {}).get("emblem_closeup")) or {})   # 顔だけのアップを段階的に入れ替え中の人 {人: 取れなかった回数}
@@ -495,13 +504,17 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
         measured, n = measure_faces(cur_em, fetch)
         if n:
             add["emblem"] = measured
-    if lost:
+    if lost and not drop_gone_on():
+        print(f"箱に無い小元素 {len(lost)} 枚（{board.get('name')}）：開關 EMBLEM_DROP_GONE が OFF なので外さない・書かない", file=sys.stderr)
+    elif lost:
         add["emblem_redo"] = list(dict.fromkeys(list(add.get("emblem_redo") or got.get("emblem_redo") or cfg.get("emblem_redo") or []) + [g["subject"] for g in lost if g.get("subject")]))
     have = len(add.get("emblem") or []) if "emblem" in add else len(got.get("emblem") or [])
     note = str(r.get("note") or "").replace("新しい記事・手がかりが来たらすぐ、来なくても規則を直したらもう一度", "手がかり・規則の版が変わったらすぐもう一度")  # 記事は見ない（店長の文のままだと中身と合わない）
     add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES,
-                         "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "gv": GONE_V}   # bv：公開の箱の小元素を見直した壊れ方の規則の版   # 名簿の規則の版（上がると、そろった版面も 1 回名簿を数え直す）
-    if lost and add["emblem_state"]["state"] == "ok":
+                         "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}   # bv：公開の箱の小元素を見直した壊れ方の規則の版   # 名簿の規則の版（上がると、そろった版面も 1 回名簿を数え直す）
+    if drop_gone_on():
+        add["emblem_state"]["gv"] = GONE_V
+    if lost and drop_gone_on() and add["emblem_state"]["state"] == "ok":
         add["emblem_state"]["state"] = "running"   # 取り直しの印（due の途中＝running が次の回に拾う。管理ページ「小元素」の依頼と同じ道）
     env = note == "時間切れ" or bool(r.get("env"))   # 時間切れ・環境の失敗（顔のモデルが使えない）：回も指紋も残さない
     if add["emblem_state"]["state"] != "ok" and not env:
@@ -659,7 +672,7 @@ def due(boards, now):
         elif dropped_left(b):
             # 別人の Commons の写真・reject に入った画像が残る版面（Ado の Alassane Ouattara・フリーレン・鬼滅）：済みでも 1 回回して fill_one の drop_broken（drop_foreign_group）に着く。BROKEN_V は上げない
             out.append((1.5, st.get("at", 0), b))
-        elif not zero and (int(st.get("bv") or 0) < emblem_fill.BROKEN_V or int(st.get("gv") or 0) < GONE_V):
+        elif not zero and (int(st.get("bv") or 0) < emblem_fill.BROKEN_V or (drop_gone_on() and int(st.get("gv") or 0) < GONE_V)):
             # 公開の箱の小元素を今の壊れ方の規則（頭が切れた・ぼやけた）でまだ見ていない版面は、届かなかった・済みでも待たずに 1 回（ポケモンが 24 時間待ち）
             out.append((1.5, st.get("at", 0), b))
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]

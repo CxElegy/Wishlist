@@ -155,7 +155,7 @@ class Fill(unittest.TestCase):
         self.assertEqual(add["emblem"][1]["image"], "https://e.org/b.png")
         self.assertNotIn("emblem_kind", add)          # 種類は毎回規則から（config に残さない）
         self.assertEqual(add["emblem_state"], {"state": "ok", "have": 2, "at": 100, "note": "2 枚", "v": le.RULES,
-                                               "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "gv": le.GONE_V})
+                                               "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V})
 
     def test_note_uses_library_retry(self):
         b = {"id": 9, "name": "x", "wd": None, "config": {}}
@@ -554,7 +554,7 @@ class GoneEmblems(unittest.TestCase):
     def test_unbroken_404_dropped_transient_kept(self):
         xs = [{"subject": s, "image": self.NEW + s + ".webp"} for s in ("a404", "b410", "c500", "dtime", "ecache")]
         lost = []
-        out = le.unbroken(xs, False, fetch=self.fetcher({"a404.webp": 404, "b410.webp": 410, "c500.webp": 500, "dtime.webp": 0}), gone=lost)
+        out = le.unbroken(xs, False, fetch=self.fetcher({"a404.webp": 404, "b410.webp": 410, "c500.webp": 500, "dtime.webp": 0}), gone=lost, drop_gone=True)
         self.assertEqual([x["subject"] for x in out], ["c500", "dtime", "ecache"])
         self.assertEqual([x["subject"] for x in lost], ["a404", "b410"])
 
@@ -562,17 +562,37 @@ class GoneEmblems(unittest.TestCase):
         em = [{"subject": "Gone", "image": self.NEW + "gone.webp", "shape": "cutout"}]
         for cfg_state in ({"state": "ok", "v": le.RULES, "bv": emblem_fill.BROKEN_V},):   # gv が無い＝まだ見ていない版面も 1 回見直す
             b = {"id": 9, "name": "x", "wd": None, "config": {"emblem": em, "emblem_state": dict(cfg_state)}}
-            with mock.patch.object(le.sbstate, "storage_read", self.fetcher({"gone.webp": 404})):
+            with mock.patch.object(le.sbstate, "storage_read", self.fetcher({"gone.webp": 404})), mock.patch.dict("os.environ", {"EMBLEM_DROP_GONE": "1"}):
                 add = le.fill_board(b, {"section": "生活"}, None, BASE, fill=lambda item, log=None: {"state": "ok", "note": ""}, now=1)
             self.assertEqual(add["emblem"], [])
             self.assertEqual(add["emblem_redo"], ["Gone"])
             self.assertEqual(add["emblem_state"]["state"], "running")   # due の途中（running）が次の回に拾う
             self.assertEqual(add["emblem_state"]["gv"], le.GONE_V)
 
+    def test_switch_off_removes_nothing(self):
+        """開關 EMBLEM_DROP_GONE が OFF（既定）：404 でも外さず、取り直しも gv の見直しも書かない（数えてログに出すだけ）。"""
+        xs = [{"subject": "a", "image": self.NEW + "a.webp"}]
+        lost = []
+        with mock.patch.dict("os.environ", {}, clear=False):
+            import os
+            os.environ.pop("EMBLEM_DROP_GONE", None)
+            self.assertEqual(le.unbroken(xs, False, fetch=self.fetcher({"a.webp": 404}), gone=lost), xs)
+            self.assertEqual(len(lost), 1)   # 数える
+            b = {"id": 9, "name": "x", "wd": None, "config": {"emblem": xs, "emblem_state": {"state": "ok", "v": le.RULES, "bv": emblem_fill.BROKEN_V}}}
+            with mock.patch.object(le.sbstate, "storage_read", self.fetcher({"a.webp": 404})):
+                add = le.fill_board(b, {"section": "生活"}, None, BASE, fill=lambda item, log=None: {"state": "ok", "note": ""}, now=1)
+            self.assertNotIn("emblem_redo", add)
+            self.assertEqual([x["image"] for x in add.get("emblem", xs)], [xs[0]["image"]])   # 残る
+            self.assertEqual(add["emblem_state"]["state"], "ok")
+            self.assertNotIn("gv", add["emblem_state"])
+            st = {"state": "ok", "have": 1, "v": le.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}
+            self.assertEqual(le.due([{"id": 1, "name": "x", "config": {"emblem": xs, "emblem_state": st}}], 10**9), [])
+
     def test_due_rechecks_boards_without_gv(self):
         st = {"state": "ok", "have": 1, "v": le.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}
         b = {"id": 1, "name": "x", "config": {"emblem": [{"image": "u"}], "emblem_state": st}}
-        self.assertEqual(le.due([b], 10**9), [b])
+        with mock.patch.dict("os.environ", {"EMBLEM_DROP_GONE": "1"}):
+            self.assertEqual(le.due([b], 10**9), [b])
         b["config"]["emblem_state"] = {**st, "gv": le.GONE_V}
         self.assertEqual(le.due([b], 10**9), [])
 
