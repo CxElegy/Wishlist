@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-15T08:44:45+00:00",
-"text": "2026-11-15 第 2 バッチを出刊：哈利波特剧集（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 1,516・キャッシュ読み 29.8万・出力 817",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.35,
-"mem_total": 16869146624,
-"mem_free": 15937900544,
-"disk_used": 10091495424,
-"disk_free": 31192039424,
-"disk_total": 41283534848,
-"peak": 360058880
-},
-"batch": 2,
-"boards": [
-"哈利波特剧集"
-],
-"stories": 2,
-"left": 0,
-"edited": 18,
-"run": 1794731635.5580606,
-"tok": {
-"in": 7,
-"cw": 1509,
-"cr": 297599,
-"out": 817,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 299932,
-"secs": 650,
-"run_tok": {
-"in": 34,
-"cw": 46730,
-"cr": 1169556,
-"out": 4133,
-"calls": 18,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-15T09:46:32+00:00",
 "text": "2026-11-15 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、GTA 6、Vaundy、dota2、星巴克马克杯 ほか 2（8 版面・19 本・残り 1 版面） · token 新規入力 4.2万・キャッシュ読み 54.6万・出力 2,125",
 "level": "ok",
@@ -2177,5 +2136,59 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1457203
+},
+{
+"at": "2026-11-17T02:10:47+00:00",
+"text": "2026-11-17 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 17（23 版面・58 本・今日の整理待ちは全部終わり） · token 新規入力 6.2万・キャッシュ読み 156.5万・出力 8,500",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.54,
+"mem_total": 16869134336,
+"mem_free": 15797207040,
+"disk_used": 10107060224,
+"disk_free": 31176474624,
+"disk_total": 41283534848,
+"peak": 499433472
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"ILLIT",
+"MMORPG 新作",
+"The Mandalorian",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"三星手机",
+"周杰伦",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"星巴克马克杯",
+"滑雪",
+"漫威电影",
+"猫用品",
+"绝区零"
+],
+"stories": 58,
+"left": 0,
+"edited": 19,
+"run": null,
+"tok": {
+"in": 42,
+"cw": 61513,
+"cr": 1565499,
+"out": 8500,
+"calls": 22,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1635554
 }
 ]

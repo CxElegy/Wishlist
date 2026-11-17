@@ -348,18 +348,19 @@
   "哈利波特剧集": 17,
   "周杰伦": 9,
   "ILLIT": 13,
-  "猫用品": 4,
-  "绝区零": 4,
-  "Astrae Oratio": 3,
-  "The Mandalorian": 3,
-  "dota2": 2,
-  "チェーンソーマン": 2,
+  "猫用品": 5,
+  "绝区零": 5,
+  "Astrae Oratio": 4,
+  "The Mandalorian": 5,
+  "dota2": 3,
+  "チェーンソーマン": 3,
   "日本顶级网球赛事": 2,
-  "A2O LITE": 1,
-  "gelato pique": 1,
+  "A2O LITE": 3,
+  "gelato pique": 2,
   "星巴克马克杯": 1,
   "滑雪": 5,
-  "MMORPG 新作": 3
+  "MMORPG 新作": 5,
+  "FROM": 1
  },
  "ILLIT": [
   {
@@ -440,6 +441,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "Volition expands Nu.Q® Vet Feline Test to Japan, aiming for first affordable blood test for cats",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "绝区零": [
@@ -451,7 +461,8 @@
    "refs": [
     3,
     1,
-    4
+    4,
+    5
    ],
    "event": {
     "date": "2026-11-20",
@@ -477,7 +488,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    4
    ]
   }
  ],
@@ -489,7 +501,8 @@
    "weight": "lead",
    "refs": [
     1,
-    2
+    2,
+    4
    ],
    "image": "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/The-Mandalorian-and-Grogu-Poster-Banner-e1776671838138.jpeg"
   }
@@ -511,6 +524,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "A new cheat has appeared in Dota 2, allowing players to manage the inventories of allies",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
@@ -558,6 +580,15 @@
     1
    ],
    "image": "https://www.esquirekorea.co.kr/resources/online/thumbnail/hf/2026/11/09/7c930ac6-4a91-4fe9-931c-d73cb1b9c70e.jpg"
+  },
+  {
+   "headline": "A2O LITE将参与Arirang TV打歌节目《K- POPCON》的录制，会有特别舞台！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "gelato pique": [
@@ -570,6 +601,15 @@
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.2OyEI7Q8Q2znC2NwuWqeog&pid=News&w=1200"
+  },
+  {
+   "headline": "ジェラート ピケから“子犬スヌーピー”デザインが初登場！家族全員でリンクコーデできる新作70アイテム以上",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "星巴克马克杯": [
@@ -649,6 +689,26 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "『クロスランド』が11月17日発売！ Switch・Switch 2・PC向けコージーMMOが登場",
+   "highlight": "11月17日発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "‘From’ Season 5 Wraps as Netflix Sends the Show to No. 1",
+   "highlight": "No. 1",
+   "blurb": "‘From’ Season 5 has wrapped, and Netflix sent the show to No. 1.",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

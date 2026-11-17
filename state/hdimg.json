@@ -42,6 +42,12 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261115ac/533/w480h853/20261115/095b-319eba518b6123a58709f48032949b5e.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -76,7 +82,7 @@
  "http://wx1.sinaimg.cn/middle/005TgT6Zly1ij49o7h830j30u00z8wn2.jpg": {
   "w": 1080,
   "h": 1268,
-  "target": 720,
+  "target": 1280,
   "v": 3,
   "local": "pics/7188717b34994b60.webp",
   "out": [
@@ -134,19 +140,6 @@
   "out": [
    807,
    1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx2.sinaimg.cn/middle/006gNTEUly1ij3ylnb5qlj399c6n3he6.jpg": {
-  "w": 2000,
-  "h": 1435,
-  "target": 720,
-  "v": 3,
-  "local": "pics/6235f094ae1474e0.webp",
-  "out": [
-   1280,
-   918
   ],
   "why": "防盗链",
   "ref": true
@@ -738,12 +731,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png": {
-  "w": 1500,
-  "h": 844,
-  "target": 1280,
-  "v": 3
- },
  "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
   "w": 668,
   "h": 668,
@@ -783,6 +770,12 @@
  "https://comicbookmovie.com/images/articles/banners/avengers-secret-wars-rumored-to-feature-spoilers-return-for-one-final-send-off-ab230669.jpg": {
   "w": 1500,
   "h": 844,
+  "target": 720,
+  "v": 3
+ },
+ "https://contents.oricon.co.jp/upimg/news/2486000/2485303/20261008_170517_p_o_27890202.jpg": {
+  "w": 1200,
+  "h": 848,
   "target": 720,
   "v": 3
  },
@@ -1028,6 +1021,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://getnavi.jp/wp-content/uploads/2026/11/51lbbb1HCjL._AC_SL1500_.jpg": {
+  "w": 1200,
+  "h": 874,
+  "target": 720,
+  "v": 3
+ },
  "https://getnavi.jp/wp-content/uploads/2026/11/71O1DhluJJL._AC_SL1500_.jpg": {
   "w": 1200,
   "h": 1223,
@@ -1229,6 +1228,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://ihorror.com/wp-content/uploads/2026/11/From-season-4-official-trailer.webp": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://image-cdn.pluang.com/web/news-cards/v2/GSS/c2d77a3b85d81d0725ba420279e1592b94974ad2185b2997d705f1a2aba94fbd-en.webp": {
   "w": 1200,
   "h": 600,
@@ -1264,6 +1269,19 @@
   "h": 360,
   "target": 720,
   "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/b/2/b287f_230_98f16e0b_325d0d03.jpg": {
+  "w": 217,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.508,
+  "local": "pics/b86ff45422ffe219.webp",
+  "out": [
+   651,
+   1200
+  ],
+  "why": "看不清"
  },
  "https://image.news.livedoor.com/newsimage/stf/6/d/6d626_760_2493135_20261116_122419_size640wh_46866926.jpg": {
   "w": 452,
@@ -1647,22 +1665,10 @@
   "target": 720,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/16/2026111615042091238_x.jpg": {
-  "w": 640,
-  "h": 804,
-  "target": 720,
-  "v": 3
- },
  "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg": {
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://img.topics.smt.news.goo.ne.jp/picture/getnavi/m_getnavi-https_getnavi.jp_p_1120792.jpg": {
-  "w": 640,
-  "h": 467,
-  "target": 720,
   "v": 3
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/tennisclassic/m_tennisclassic-7764.jpg": {
@@ -1727,6 +1733,19 @@
   "h": 403,
   "target": 720,
   "v": 3
+ },
+ "https://img0.utuku.imgcdc.com/650x0/news/20261117/3ec3b9a1-f34e-4572-97f2-bfd18e22d255.jpg": {
+  "w": 650,
+  "h": 756,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.507,
+  "local": "pics/ff8e1627c7b57c29.webp",
+  "out": [
+   1101,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://img1.newsis.com/2026/09/17/NISI20260917_0002242122_web.jpg": {
   "w": 720,
@@ -2188,6 +2207,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1304639/15595279_615.jpg": {
+  "w": 615,
+  "h": 769,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/1317098/15915699_615.jpg": {
   "w": 615,
   "h": 870,
@@ -2360,12 +2385,6 @@
    1036
   ],
   "why": "看不清"
- },
- "https://news.walkerplus.com/article/54135/297391_615.jpg": {
-  "w": 615,
-  "h": 1131,
-  "target": 1280,
-  "v": 3
  },
  "https://news.walkerplus.com/article/55811/307229_615.jpg": {
   "w": 615,
@@ -3408,12 +3427,6 @@
   "v": 3,
   "blur": 0.407
  },
- "https://static.sanyonews.jp/image/article/size1/9/b/0/5/9b05df79c18042eeebd337cf4f085cfd_1.jpg": {
-  "w": 640,
-  "h": 452,
-  "target": 720,
-  "v": 3
- },
  "https://static.sanyonews.jp/image/article/size1/b/7/a/0/b7a0d8ce561d7b429b8205a775c650a6_1.jpg": {
   "w": 640,
   "h": 480,
@@ -3656,12 +3669,6 @@
   "target": 720,
   "v": 3
  },
- "https://uploads.posu.tw/73/738/b2026103116580040.jpg": {
-  "w": 1280,
-  "h": 960,
-  "target": 1280,
-  "v": 3
- },
  "https://vergemagazine.co.uk/wp-content/uploads/2026/10/16x9-@2X-1-Medium-1.jpg": {
   "w": 1365,
   "h": 768,
@@ -3777,12 +3784,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.4gamer.net/games/421/G042182/20261116028/SS/002.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://www.4gamer.net/games/579/G057943/20261105063/SS/002.jpg": {
   "w": 1280,
   "h": 545,
@@ -3811,6 +3812,12 @@
  "https://www.androidheadlines.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-AH-999-scaled.png": {
   "w": 2560,
   "h": 1440,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.appbank.net/wp-content/uploads/2026/11/20261117_084139_289_01.webp": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -3863,19 +3870,6 @@
   "h": 366,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.08BTKAHywhu_5gWXAxV2OQ&pid=News&w=650": {
-  "w": 601,
-  "h": 700,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.566,
-  "local": "pics/da0d75e0b2c15575.webp",
-  "out": [
-   1099,
-   1280
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.176DxYc3hT_0ivqS9dWeSQ&pid=News&w=1200": {
   "w": 700,
@@ -3985,17 +3979,30 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.LTmoqoy847fO1yiuruF25Q&pid=News&w=800": {
+  "w": 700,
+  "h": 340,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.MkjvvMFF64HksngkAoCYeg&pid=News&w=600": {
   "w": 600,
   "h": 337,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.TpQqcVZ4WNHRgzGqSdxwfg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.P96SKX6camtl5CVyYLP-2g&pid=News&w=1200": {
   "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
+  "h": 525,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.462,
+  "local": "pics/edfd5ee34c70e033.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.V-H3gwbWQbwCvmeNWVakwQ&pid=News&w=546": {
   "w": 546,
@@ -4126,12 +4133,6 @@
   "w": 1200,
   "h": 400,
   "target": 720,
-  "v": 3
- },
- "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
   "v": 3
  },
  "https://www.crank-in.net/img/db/267108025175442_1200.jpg": {
