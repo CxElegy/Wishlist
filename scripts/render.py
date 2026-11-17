@@ -690,6 +690,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .shuffle.back{background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
 .shuffle[disabled]{opacity:.35;cursor:default;pointer-events:none}
 @media (hover:none){.vt button,.vote button{padding:0 9px;opacity:.75}.vote button{min-height:34px}.when,.kick,.wc em,.brief li{--vth:36px;--vtw:82px}}  /* 指で押せる大きさ */
+@media (hover:none){.vt button::after,.vote button::after{content:"";position:absolute;inset:-4px -6px}}  /* 👍👎 の押せる所を 44px 以上に（見た目と並びは変えない。transform の箱が基準になる。2026-11-17 スマホ点検） */
+@media (max-width:760px){:root{--fs-label:12px;--fs-tag:11px}.from,.brief .d .from,.vote small,.pk .taste,.pk .tags i,.pfoot span,.mast .meta small,.pdate small,.shuffle small,.when b,.when b.fresh-tag{font-size:12px}.hx-more{padding:8px 6px}.shuffle{padding:13px 14px}}  /* 読む字は 12px 未満にしない（D4。スマホ点検：出どころ 2346 件が 11px だった） */
 .shuffle:active,.mastwish:active{transform:translate(3px,3px);box-shadow:none}  /* 押した感触：影の分だけ沈む */
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
@@ -800,7 +802,7 @@ section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24
  [data-k]{--snapgap:10px}   /* 帯の下の余白（スマホは今までの 104px と同じ位置） */
 }
 @media (max-width:600px){.nav{margin:0 -16px}}
-@media (min-width:761px) and (max-width:1000px){.pk .why small{white-space:normal}}   /* 1000 幅前後：理由の行を「…」で切らない（D3）。高さは fitPk が測る */
+@media (max-width:1000px){.pk .why small{white-space:normal}}   /* 1000 幅前後：理由の行を「…」で切らない（D3）。高さは fitPk が測る */
 /* ---------- 愿望清单 ---------- */
 .wish{--bg:var(--sheet);--fg:var(--ink);--acc:var(--rose);--abg:var(--ink);--afg:var(--sheet);--aacc:#F2A7C3;--ac:var(--rose);
  --line:color-mix(in srgb,var(--ink) 18%,var(--sheet));background:var(--bg);color:var(--fg);border:1px solid var(--line)}
@@ -834,6 +836,7 @@ section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24
 .wcard .watch{display:flex;flex-direction:column;gap:4px;padding:12px 14px;background:color-mix(in srgb,var(--acc) 8%,transparent);border-left:3px solid var(--acc);font-size:14px;line-height:1.55}
 .wcard .watch span{font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--acc)}
 .wcard .added{font:700 11px var(--font-mono);opacity:.5;letter-spacing:.1em}
+@media (max-width:760px){.wcard dt,.wcard .shop,.wcard .added,.wcard .watch span{font-size:12px}}
 @media (max-width:760px){.wcard.solo{grid-template-columns:1fr}.wcard.solo .wimg{min-height:0;aspect-ratio:1/1}
  .wcard.solo .wtxt{border-left:0;padding:22px}.wcard.solo h3{font-size:28px}.wish .band .title{font-size:30px}}
 """
@@ -2482,20 +2485,22 @@ def render_settings(items, db, updated, schemes=(), own=None):
 .schemes,.cfg,.wiz{{margin-top:18px}}   /* 大きな塊の間は 18px（gap）＋18px ＝ 36px、ジャンルの塊の間も 36px にそろえる */
 .cfg h2{{display:flex;align-items:baseline;gap:10px;margin:0 0 4px;padding-bottom:6px;border-bottom:3px solid var(--sc);
  font:900 20px/1 var(--font-sans);letter-spacing:.08em;color:var(--sc)}}
-.cfg h2 small{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.7}}
+.cfg h2 small{{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.7}}
 .row{{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,#1A1C22 15%,transparent)}}
 .nm{{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}}
 .nm b{{font:900 16px var(--font-sans)}}
-.nm small{{font-size:12px;opacity:.6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+.nm small{{font-size:12px;opacity:.6;overflow-wrap:anywhere}}
 .seg{{display:flex;border:2px solid #1A1C22}}
 .seg button{{width:44px;height:36px;border:0;border-left:2px solid #1A1C22;background:transparent;color:#1A1C22;
  font:900 15px 'JetBrains Mono',monospace;cursor:pointer}}
 .seg button:first-child{{border-left:0}}
+@media (hover:none){{.seg button,.seg.wide button{{height:44px}}}}
 .seg button[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
 .row .edit{{height:36px;padding:0 12px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;
  font:900 14px var(--font-sans);cursor:pointer}}
 .row .edit:hover{{background:#1A1C22;color:#F4EDE4}}
 .row .del{{height:36px;padding:0 10px;border:2px solid #B8336A;background:transparent;color:#B8336A;font:900 14px var(--font-sans);cursor:pointer}}
+@media (hover:none){{.row .edit,.row .del{{height:44px}}}}
 .row .del:hover,.secdel:hover{{background:#B8336A;color:#FBF8F1}}
 .secdel{{margin-left:auto;height:28px;padding:0 10px;border:1.5px solid #B8336A;background:transparent;color:#B8336A;font:700 12px var(--font-sans);cursor:pointer}}
 .row.gone .nm{{text-decoration:line-through;opacity:.5}}
@@ -2849,6 +2854,7 @@ def render_wishlist(wishes, works, updated, finds=(), db=None, own=False):
 .wcard .alts li p{{margin:2px 0 0;font-size:13px;opacity:.8}}
 .wcard .alts li a:hover b{{color:var(--acc)}}
 .wcard .alts li small{{font:700 11px var(--font-mono);opacity:.6;letter-spacing:.08em}}
+@media (max-width:760px){{.wsum .stat span,.chip small,.wcard .alts>span,.wcard .alts li small{{font-size:12px}}}}
 .wcard .wimg.noimg{{aspect-ratio:auto;flex:1 1 auto;min-height:104px;display:flex;align-items:center;justify-content:center;padding:0;
  background:color-mix(in srgb,var(--acc) 14%,#FFF)}}
 .wcard .wimg .mono{{font:900 56px/1 var(--font-sans);color:var(--acc);opacity:.85}}
@@ -5702,10 +5708,10 @@ AUTH_CSS = """
 .wl-auth{position:fixed;top:10px;right:12px;z-index:90;display:flex;align-items:center;gap:8px;font:700 13px/1.4 var(--font-sans)}
 @media (min-width:761px){.wl-auth{position:absolute}}  /* PC はページの上にだけ置き、スクロールで流れる（版面を画面の上にそろえた時、右上の小元素・題に重ならない。審美基準 E4・2026-11-11 店長「エンブレムが見きれない」） */
 .wl-auth .shop{padding:2px 9px;background:var(--ink);color:var(--card);font:500 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.06em;transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--rose)}
-.wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
+.wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:44px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
  background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
 .wl-auth>button.in{padding-left:12px}
-.wl-auth>a.new{display:flex;align-items:center;min-height:36px;padding:4px 12px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
+.wl-auth>a.new{display:flex;align-items:center;min-height:44px;padding:4px 12px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
  box-shadow:3px 3px 0 var(--ink);text-decoration:none;font:inherit}
 .wl-auth>a.new:hover,.wl-auth>a.new:focus-visible{background:var(--card)}
 .wl-auth>a.new.home{background:var(--card)}
@@ -5760,7 +5766,7 @@ html[data-lock="1"] [data-vote]{cursor:not-allowed}
 /* 見るだけ（ログインなし）：止めている操作は薄くして、押せないとわかるように（クリックは AUTH_JS が止めて理由を言う）。
    設定ページは ページ全体の入力部品、欲しい物ページは「写真で足す」の箱だけ */
 html[data-lock="1"][data-page="settings"] .page :is(button,input,select,textarea,[contenteditable]),
-html[data-lock="1"][data-page="wishlist"] #snap :is(button,input,textarea,.drop){opacity:.45;cursor:not-allowed}
+html[data-lock="1"][data-page="wishlist"] #snap :is(button,input:not([type=file]),textarea,.drop){opacity:.45;cursor:not-allowed}
 html[data-gate="1"] body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
@@ -7045,6 +7051,7 @@ td.na,.scale i.na{background:repeating-linear-gradient(45deg,transparent 0 4px,c
 .movers{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-width:760px}
 .movers li{display:grid;grid-template-columns:150px minmax(0,1fr) 44px;gap:10px;align-items:center;font-size:13px}
 .mn{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:560px){.mn{white-space:normal;line-height:1.3}}
 .mbar{position:relative;height:14px;background:linear-gradient(90deg,transparent calc(50% - .5px),var(--ink) calc(50% - .5px) calc(50% + .5px),transparent 0)}
 .mbar i{position:absolute;top:2px;height:10px}
 .mbar i.up{left:50%;background:var(--up);border-radius:0 4px 4px 0}
