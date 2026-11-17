@@ -54,12 +54,6 @@
   "target": 720,
   "v": 3
  },
- "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af8b61a6b6c3a05a6d731ba/1794841230408/Marvel+Studios+Reportedly+%2522Secretly%2522+Developing+IRON+MAN+4+With+Robert+Downey+Jr.+Potentially+Returning.jpg?format=1500w": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "http://tu.duoduocdn.com/uploads/day_261116/202611161358177268_thumb.jpg": {
   "w": 300,
   "h": 200,
@@ -762,6 +756,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn2.ettoday.net/images/9019/e9019934.jpg": {
+  "w": 990,
+  "h": 660,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn3.wionews.com/prod/wion/images/2026/20261110/image-1794315924585.png?rect=(0,0,1280,720)&imwidth=896&imheight=504&format=webp&quality=medium": {
   "w": 896,
   "h": 504,
@@ -941,6 +941,12 @@
   "w": 876,
   "h": 438,
   "target": 1280,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
@@ -1339,6 +1345,12 @@
   ],
   "why": "看不清"
  },
+ "https://images-fe.ssl-images-amazon.com/images/G/09/prime/yourprime/yourprime-client-fallback._V314779227_.png": {
+  "w": 436,
+  "h": 508,
+  "target": 720,
+  "v": 3
+ },
  "https://images-r2.thebrag.com/pedestrian/uploads/2026/11/daniel-radcliffe-harry-potter-reboot.jpg?v=1794356337052": {
   "w": 1280,
   "h": 720,
@@ -1350,6 +1362,19 @@
   "h": 573,
   "target": 1280,
   "v": 3
+ },
+ "https://images.chinatimes.com/newsphoto/2026-11-17/656/20261117004516.jpg": {
+  "w": 656,
+  "h": 369,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.492,
+  "local": "pics/bdd56ee7b546a753.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "https://images.cnbctv18.com/uploads/2026/11/paapa-essiedu-2026-11-2a0b32fa32faf440241bccfa64077ce8.jpg?im=FitAndFill,width=1200,height=675": {
   "w": 1200,
@@ -1803,19 +1828,6 @@
   "v": 3,
   "blur": 0.384
  },
- "https://img2.utuku.imgcdc.com/650x0/news/20261117/352ef8dc-c9d2-4e4e-bba6-f2e3371f0361.jpg": {
-  "w": 650,
-  "h": 946,
-  "target": 1280,
-  "v": 3
- },
- "https://img2.westca.com/uploads/202611/000000011998.jpg": {
-  "w": 660,
-  "h": 448,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.361
- },
  "https://img4.yna.co.kr/etc/inner/JP/2026/11/13/AJP20261113002200882_01_i_P4.jpg": {
   "w": 500,
   "h": 375,
@@ -2085,6 +2097,19 @@
   "h": 672,
   "target": 1280,
   "v": 3
+ },
+ "https://n.sinaimg.cn/finance/transform/76/w550h326/20261117/9d4d-ddf9f35e9d075c294cd095ec8c2d09a5.png": {
+  "w": 550,
+  "h": 326,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.423,
+  "local": "pics/1859a313d5556b72.webp",
+  "out": [
+   1280,
+   759
+  ],
+  "why": "看不清"
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnf5NpyUQZzRcq1nx-ObCXEHBkc-me1kh93-P-Go12VnIgwnj_1VQ92hOSsmDOswow7fWbjUnXrpbTyEx52aBQHBDQtAu9zAzHMdIrQFXrXi8zqlDKDDUh0JvYrLjpIr_UQ==": {
   "w": 934,
@@ -2745,12 +2770,6 @@
  "https://ni.yam.com/20261113/11HECL72ZT1E88G8CS0K0-e33401fca4a21a13.webp": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
-  "v": 3
- },
- "https://ni.yam.com/20261116/1116---7-a5592e45c78adf3e.webp": {
-  "w": 1024,
-  "h": 427,
   "target": 720,
   "v": 3
  },
@@ -3450,6 +3469,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.jingjiribao.cn/2026/11/17/20261117190301_7282.JPEG": {
+  "w": 1080,
+  "h": 1270,
+  "target": 1280,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/0/4/2/a/042a1b12585c38456947632a8f942cc5_1.jpg": {
   "w": 640,
   "h": 267,
@@ -4117,27 +4142,21 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.KAzeeM874LXWPHwo2hu5xw&pid=News&w=1200": {
-  "w": 700,
-  "h": 327,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.KkdkWY33I2sB7CHn2yWe_A&pid=News&w=1000": {
   "w": 700,
   "h": 394,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.MQcby3fiJa8yf5ao2dyInA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.M7t11GqdRNZ4_lNFWPuJMg&pid=News&w=1154": {
   "w": 700,
-  "h": 366,
+  "h": 700,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.UIRwobxGi-CEmYR9HbM4Bw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.MQcby3fiJa8yf5ao2dyInA&pid=News&w=1200": {
   "w": 700,
-  "h": 393,
+  "h": 366,
   "target": 720,
   "v": 3
  },
