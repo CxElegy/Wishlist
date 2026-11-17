@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-17T10:35:17+00:00",
+ "changed": true,
+ "checked": "2026-11-17T11:18:03+00:00",
  "fired": {
   "at": "2026-11-17T10:35:17+00:00",
   "results": {
@@ -58,31 +58,24 @@
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
-    "The Mandalorian",
     "Vaundy",
     "dota2",
     "gelato pique",
-    "ぐでたま",
-    "哈利波特剧集",
-    "星巴克马克杯"
+    "哈利波特剧集"
    ],
-   "last_batch": "2026-11-17T09:43:33+00:00",
+   "last_batch": "2026-11-17T10:42:07+00:00",
    "last_error": {
     "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 530,
+   "prog": 533,
    "prog_day": "2026-11-17",
-   "ripe": [
-    "The Mandalorian",
-    "ぐでたま",
-    "星巴克马克杯"
-   ],
-   "sig": "6439505b690e",
+   "ripe": [],
+   "sig": "cc2c493eb2a7",
    "token_cap": 1000000,
-   "tokens_today": 668838,
-   "why": "整理待ちの記事 13 件（10 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 712397,
+   "why": "整理待ちの記事 10 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -207,12 +200,12 @@
    "runs": 13
   },
   "2026-11-17": {
-   "batches": 19,
-   "cr": 13001387,
-   "cw": 605961,
-   "in": 348,
-   "out": 62529,
-   "runs": 11
+   "batches": 20,
+   "cr": 13618192,
+   "cw": 647301,
+   "in": 367,
+   "out": 64729,
+   "runs": 12
   }
  }
 }
