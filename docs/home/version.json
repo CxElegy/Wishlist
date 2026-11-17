@@ -1,32 +1,32 @@
 {
- "admin": "2012c6bcb7e0",
- "admin-ai": "71ddaa38421e",
+ "admin": "9a8502df2fc2",
+ "admin-ai": "458bc9a21bac",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8af52ab8"
+   "4296012c"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f525052b"
+   "a148d265"
   ]
  },
- "admin-boards": "67ec7f3ac978",
+ "admin-boards": "9f8dd7ef3a2f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "7b76c0c6"
+   "61c7498d"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "e8c4784719ed",
+ "admin-emblem": "cc9a578d3a23",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f18da95c"
+   "e082a329"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "cc642798cec3",
+ "admin-now": "ecbd55be82b1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4d9903cd"
+   "12a58cdf"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "5908a509"
+   "763a75e0"
   ],
   "term-panel": [
    "ライブログ",
-   "2f0746d9"
+   "ff0554fb"
   ]
  },
- "admin-system": "80ba9011464e",
+ "admin-system": "1c9725829ba2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a4106b82"
+   "b5698948"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b7f3946f"
+   "bba8ba52"
   ]
  },
  "admin_marks": {},
- "heat": "4d487108abfa",
+ "heat": "e7d2d402377c",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "8f3119ff"
+   "5e0fb255"
   ],
   "ranking": [
    "ランキング",
-   "377721c4"
+   "9526428b"
   ]
  },
- "index": "9cfe25139899",
+ "index": "5037bab201bb",
  "index_marks": {
   "front": [
    "トップ",
-   "7eca7cfd"
+   "7dee2d6f"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "1f57cc6e"
+   "21769beb"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -196,6 +196,6 @@
    "038d74d3"
   ]
  },
- "updated": "11.18 01:28",
+ "updated": "11.18 01:36",
  "wishlist": "873a4d809d9a"
 }
