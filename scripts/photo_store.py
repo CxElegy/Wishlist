@@ -7,6 +7,8 @@
 render.py の _pic は置いてあるものなら 800 の網址を先頭にし、原寸の網址は落ち先（data-fb）に残す。
 置く数は state/photo_store.json（キーは網址の指紋）。保つのは「いまのページに載っている」か「最後に使ってから 14 日以内」まで、
 全体が上限（300MB）を超えたら古い順に消す。消すのは photos の箱の中だけ。
+2026-11-17：消す側が動いていなかった（「消した」が毎回 0・置き場が 91→240MB と伸び続けた）。お客さまの写真の網址も数えられるようになったので、
+載っていない（いまのページ・お客さまの網址の一覧のどちらにも無い）まま 14 日たった写真は消す。1 回 300 枚まで・網址の一覧が読めない回は日数で消さない。
 
     python scripts/photo_store.py [--minutes 10]     # photo_store.yml（SUPABASE_SERVICE_KEY）
     python scripts/photo_store.py --kick             # render のあと（digest・background・render.yml）：置いていない写真があれば photo_store.yml を起こす
@@ -33,7 +35,8 @@ STATE = ROOT / "state" / "photo_store.json"
 BUCKET = "photos"
 WIDTHS = (400, 800)
 KEEP_DAYS = 14
-CAP = 300 * 1024 * 1024
+CAP = 300 * 1024 * 1024   # 2026-11-07 から置き場は店長の PC の自前版（無料枠の 300MB ではない）。数字を変えるかは店長が決める（PR #photo-store-budget）
+MAX_EVICT = 300           # 1 回に消す枚数の上限（幅 400／800 で 2 倍のファイル）。誤判定があっても一度に大きく消さない
 RETRY_DAYS = 1       # 取れなかった網址は 1 日あけて取り直す
 MAX_FETCH = 12 * 1024 * 1024
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
@@ -160,11 +163,11 @@ def scan_text(texts, seen, want):
 
 def user_imgs(base, keyv):
     """お客さまのページの写真の網址（user_pages が組み立て時に書く pages/_fp/imgs.json の 1 本だけ・小さい）。pages/ の一覧・本文は読まない。取れなければ空。"""
-    try:
+    try:   # 読めなかったときは None（空の一覧と区別する：読めない回は「載っていない」と言えない）
         req = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/pages/_fp/imgs.json", headers={"apikey": keyv, "Authorization": f"Bearer {keyv}"})
         return [u for u in json.loads(sbstate.sb_open(req, 30).read()) if isinstance(u, str) and u.startswith("http")]
     except Exception:  # noqa: BLE001
-        return []
+        return None
 
 
 def scan(site=None, extra=(), urls=()):
@@ -315,9 +318,12 @@ def remove(base, keyv, ks):
         _req(base, keyv, BUCKET, json.dumps({"prefixes": names[i:i + 200]}).encode(), "DELETE", "application/json")
 
 
-def evict(p, seen, today, keep_days=KEEP_DAYS, cap=CAP):
-    """消す指紋のリスト。ページに載っていない＆最後に使ってから keep_days 超え → 先に。まだ上限超えなら古い順（載っていないものから）。"""
-    gone = [k for k, v in p.items() if k not in seen and today - v["at"] > keep_days]
+def evict(p, seen, today, keep_days=KEEP_DAYS, cap=CAP, limit=None):
+    """消す指紋のリスト。ページに載っていない＆最後に使ってから keep_days 超え → 先に。まだ上限超えなら古い順（載っていないものから）。
+    limit：1 回に消す数の上限（古い順に切る）。載っている写真（seen）は日数では消さない。"""
+    gone = sorted((k for k, v in p.items() if k not in seen and today - v["at"] > keep_days), key=lambda k: p[k]["at"])
+    if limit is not None and len(gone) > limit:
+        return gone[:limit]
     left = {k: v for k, v in p.items() if k not in gone}
     over = sum(v["b"] for v in left.values()) - cap
     if over > 0:
@@ -326,6 +332,8 @@ def evict(p, seen, today, keep_days=KEEP_DAYS, cap=CAP):
                 break
             gone.append(k)
             over -= v["b"]
+            if limit is not None and len(gone) >= limit:
+                break
     return gone
 
 
@@ -346,7 +354,9 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     st = load(path)
     p, x = st["p"], st["x"]
     # お客さまのページ（storage の pages/）は読まない：3 時間ごとに全部落とすと cached egress を使う（2026-11-04）。写真の網址の小さな 1 本だけ読む
-    seen, want, total = scan(site, urls=user_imgs(base, keyv) if base and keyv else ())
+    ui = user_imgs(base, keyv) if base and keyv else None
+    seen, want, total = scan(site, urls=ui or ())
+    complete = ui is not None and bool(pages(site))   # お客さまの網址の一覧も公開ページも読めた回だけ「載っていない」と言える
     today = day()
     seen |= set(want) & set(p)   # 置いたが、まだ網页を作り直していない分
     for k in seen & set(p):
@@ -397,9 +407,13 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
                     nm += 1
     for k in [k for k, d in x.items() if today - d > KEEP_DAYS]:
         del x[k]
-    gone = evict(p, seen, today, keep_days=10 ** 6)   # お客さまのページを数えないので、載っていない＝使われていないとは言えない：日数では消さず、上限（CAP）超えだけ古い順
+    # お客さまの写真は網址の一覧（imgs.json）で seen に入る。それが読めた回は日数（14 日）でも消し、読めない回は上限（CAP）超えだけ古い順。1 回 MAX_EVICT 枚まで
+    gone = evict(p, seen, today, keep_days=KEEP_DAYS if complete else 10 ** 6, limit=MAX_EVICT)
     if gone and base and keyv:
-        remove(base, keyv, gone)
+        try:
+            remove(base, keyv, gone)
+        except Exception:  # noqa: BLE001  箱から消せなかった回は記録も残す（次の回にまた試す）
+            gone = []
     for k in gone:
         p.pop(k, None)
     used = sum(v["b"] for v in p.values())
