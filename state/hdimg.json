@@ -2527,6 +2527,19 @@
   "dead": true,
   "day": "2026-11-18"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00010009-tennisnet-000-1-view.jpg?pri=l&w=640&h=481&exp=10800": {
+  "w": 640,
+  "h": 481,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.632,
+  "local": "pics/b02641b6894f2fef.webp",
+  "out": [
+   1280,
+   962
+  ],
+  "why": "期限付きの網址"
+ },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
   "h": 840,
@@ -4024,13 +4037,6 @@
   "h": 800,
   "target": 1280,
   "v": 3
- },
- "https://www.jedinews.com/wp-content/uploads/2026/11/maxresdefault-29.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-18"
  },
  "https://www.justjared.com/wp-content/uploads/2026/11/from-season-3-ending.jpg": {
   "w": 1200,
