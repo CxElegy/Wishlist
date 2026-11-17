@@ -151,19 +151,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/008eZAxIly1ij58zvht0fj32bk2w01l2.jpg": {
-  "w": 2000,
-  "h": 2489,
-  "target": 720,
-  "v": 3,
-  "local": "pics/ed7c5190fbd37081.webp",
-  "out": [
-   1029,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/6f5ef307gy1ij1zbcu2afj20xc0xcdux.jpg": {
   "w": 1200,
   "h": 1200,
@@ -186,6 +173,19 @@
   "local": "pics/8cd9a08d49d7f7ad.webp",
   "out": [
    1280,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx4.sinaimg.cn/middle/005TgT6Zly1ij5a7tme5aj32bk2w0e7k.jpg": {
+  "w": 2000,
+  "h": 2489,
+  "target": 720,
+  "v": 3,
+  "local": "pics/bfb4ef817fe40a8d.webp",
+  "out": [
+   1029,
    1280
   ],
   "why": "防盗链",
@@ -418,19 +418,6 @@
   ],
   "why": "看不清"
  },
- "https://attach.setn.com/newsimages/2026/11/15/5789231-PH.jpg": {
-  "w": 760,
-  "h": 440,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.485,
-  "local": "pics/e2a5dcb96966f3b4.webp",
-  "out": [
-   1280,
-   741
-  ],
-  "why": "看不清"
- },
  "https://automaton-media.com/en/wp-content/uploads/2026/11/20261113-75190-header.jpg": {
   "w": 1305,
   "h": 852,
@@ -488,12 +475,6 @@
  "https://cartermatt.com/wp-content/uploads/2026/04/FROM-season-4.webp": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://cdn-origin.cool-style.com.tw/cool/2026/11/5656561.png": {
-  "w": 1200,
-  "h": 628,
   "target": 1280,
   "v": 3
  },
@@ -605,6 +586,12 @@
   "w": 1080,
   "h": 608,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.hk01.com/di/media/images/dw/20261117/1199414283188834304423987.png/Zc9kB6t8QeJyWu-HAKYG0joPf85Ez5YOeb_7v3m_-78?v=w1280r16_9": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png": {
@@ -937,6 +924,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
   "w": 300,
   "h": 300,
@@ -1026,12 +1019,6 @@
   "w": 1200,
   "h": 674,
   "target": 1280,
-  "v": 3
- },
- "https://gamesbeat.com/wp-content/uploads/2026/09/Lingokids-2.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
   "v": 3
  },
  "https://gdm-universal-media.b-cdn.net/epicstream/5182de2d-finding-harry-potter-the-craft-behind-the-magic.webp?width=1600&height=840": {
@@ -1695,6 +1682,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/17/5644169_1.jpg": {
+  "w": 800,
+  "h": 876,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.ltn.com.tw/Upload/news/600/2026/11/11/php2ObZRT.jpg": {
   "w": 800,
   "h": 622,
@@ -1707,12 +1700,6 @@
    995
   ],
   "why": "看不清"
- },
- "https://img.mydaily.co.kr/photos/2026/11/16/2026111615042091238_x.jpg": {
-  "w": 640,
-  "h": 804,
-  "target": 720,
-  "v": 3
  },
  "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg": {
   "w": 1200,
@@ -1783,6 +1770,19 @@
   "target": 720,
   "v": 3
  },
+ "https://img1.mydrivers.com/img/20261117/S2afe0836-b1cb-4240-b0f6-7901ba11f416.png": {
+  "w": 600,
+  "h": 415,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.489,
+  "local": "pics/22bb4e5b9ee58840.webp",
+  "out": [
+   1280,
+   885
+  ],
+  "why": "看不清"
+ },
  "https://img1.newsis.com/2026/09/17/NISI20260917_0002242122_web.jpg": {
   "w": 720,
   "h": 505,
@@ -1795,13 +1795,6 @@
   "h": 946,
   "target": 1280,
   "v": 3
- },
- "https://img2.westca.com/uploads/202611/000000011998.jpg": {
-  "w": 660,
-  "h": 448,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.361
  },
  "https://img4.yna.co.kr/etc/inner/JP/2026/11/13/AJP20261113002200882_01_i_P4.jpg": {
   "w": 500,
@@ -2735,15 +2728,15 @@
   "target": 720,
   "v": 3
  },
- "https://ni.yam.com/20261116/1116---7-a5592e45c78adf3e.webp": {
-  "w": 1024,
-  "h": 427,
-  "target": 720,
-  "v": 3
- },
  "https://ni.yam.com/20261116/c2f73abd642a45ceb34ab5986c5ff2571794814612-19921fdf3d9f2c2d.webp": {
   "w": 941,
   "h": 546,
+  "target": 1280,
+  "v": 3
+ },
+ "https://ni.yam.com/20261117/819x1024-6ef66db0b69953af.webp": {
+  "w": 819,
+  "h": 1024,
   "target": 1280,
   "v": 3
  },
@@ -3142,6 +3135,19 @@
   "target": 720,
   "v": 3
  },
+ "https://prtimes.jp/img/25615/3977/thumb/d25615-3977-aa4a063ede2cc2731156-0.jpg": {
+  "w": 400,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.585,
+  "local": "pics/52f009d662dac780.webp",
+  "out": [
+   1200,
+   900
+  ],
+  "why": "看不清"
+ },
  "https://prtimes.jp/img/55787/1084/resize/d55787-1084-cff70434ce567d7ce25d-0.jpg": {
   "w": 650,
   "h": 209,
@@ -3184,6 +3190,12 @@
  "https://q0.itc.cn/q_70/images03/20261112/5c27dd9c44fe40d49f3c453c9fdd0c1c.jpeg": {
   "w": 682,
   "h": 958,
+  "target": 1280,
+  "v": 3
+ },
+ "https://q4.itc.cn/q_70/images03/20261117/5188db02f14640cd9c05b8de654c69de.jpeg": {
+  "w": 690,
+  "h": 1005,
   "target": 1280,
   "v": 3
  },
@@ -4002,12 +4014,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.2YkJP-9tq8b4ZG39UrTiNQ&pid=News&w=750": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.3x1AfoR2FQ13krZpoe5i5w&pid=News&w=1024": {
   "w": 466,
   "h": 700,
@@ -4097,9 +4103,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Qoqx9xzx9OYa9tIF8rWmkQ&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.MQcby3fiJa8yf5ao2dyInA&pid=News&w=1200": {
   "w": 700,
-  "h": 393,
+  "h": 366,
   "target": 720,
   "v": 3
  },
@@ -4124,12 +4130,6 @@
  "https://www.bing.com/th?id=ONUT.ZMrDhC95gLEgEgQ9GPvgBw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ZzQLDKIVqVnmPw64Q_0WZg&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -4170,12 +4170,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.oMNVnw1Akdh1gUxjGr-YBg&pid=News&w=540": {
-  "w": 540,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
   "w": 700,
   "h": 491,
@@ -4195,6 +4189,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.qcvJd7RQh3wft_WolKqxiQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.u6PsJ-1gxyLQhEBAa2Ub2w&pid=News&w=700": {
   "w": 700,
