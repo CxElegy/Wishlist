@@ -134,6 +134,20 @@ class VoteButtons(unittest.TestCase):
         self.assertIn("security definer", sql)
         self.assertIn("grant execute on function public.my_votes() to anon", sql)
 
+    def test_my_votes_guard_sql(self):
+        """my_votes は anon に開けない：門（auth.uid・can_edit）と revoke anon が my_votes_guard.sql にあること（DB は使わない）。"""
+        sql = open(os.path.join(os.path.dirname(__file__), "..", "db", "my_votes_guard.sql"), encoding="utf-8").read()
+        live = "\n".join(l for l in sql.splitlines() if not l.lstrip().startswith("--")).lower()
+        self.assertIn("create or replace function public.my_votes(p_account text)", live)
+        self.assertIn("returns table (url text, vote smallint)", live)
+        self.assertIn("auth.uid()", live)
+        self.assertIn("public.can_edit(p_account)", live)
+        self.assertRegex(live, r"revoke all on function public\.my_votes\(text\) from public, anon")
+        self.assertRegex(live, r"revoke all on function public\.my_votes\(\) from public, anon")
+        self.assertNotRegex(live, r"grant execute on function public\.my_votes\([^)]*\) to [^;]*\banon\b")
+        self.assertIn("to authenticated", live)
+        self.assertIn("p_account not like 'u\\_%'", live)
+
     def test_source_after_date(self):
         out = render._when({"date": "2026-10-13", "url": "https://www.gamewith.jp/a", "source": "GameWith <b>"}, "2026-10-16")
         self.assertIn('10.13<span class="from">GameWith &lt;b&gt;</span>', out)
