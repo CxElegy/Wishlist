@@ -1,7 +1,11 @@
 {
  "_covered": {
   "漫威电影": 25,
-  "GTA 6": 23
+  "GTA 6": 23,
+  "ILLIT": 3,
+  "The Mandalorian": 3,
+  "哈利波特剧集": 3,
+  "チェーンソーマン": 1
  },
  "漫威电影": [
   {
@@ -103,6 +107,100 @@
    "refs": [
     20
    ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "『紅白』出場控えるILLIT、韓国授賞式で4冠の快挙！会場を魅了した圧巻パフォーマンスに反響",
+   "highlight": "4冠の快挙",
+   "blurb": "『紅白』出場を控えるILLITが韓国の授賞式で4冠を獲得し、圧巻のパフォーマンスが反響を呼んだ。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-163679.jpg"
+  },
+  {
+   "headline": "休養中のILLIT・MOKA、韓国公演を客席から応援「ILLITはいつでも5人」 新曲をステージ初披露",
+   "highlight": "ILLITはいつでも5人",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "#체포하겠어 🚨 with @ITZY #CHAERYEONG #You_re_Under_Arrest #ILLIT",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Martin Scorsese voices an alien in The Mandalorian & Grogu set walkthrough",
+   "highlight": "Martin Scorsese",
+   "blurb": "Brandon Davis tours the sets built for The Mandalorian & Grogu movie, and Martin Scorsese voices an alien.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.f1E46G67auPpxWK_IDQvrw&pid=News&w=1200"
+  },
+  {
+   "headline": "The Grammys honor Ludwig Göransson for The Mandalorian and Grogu and The Odyssey",
+   "highlight": "Grammys",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Mando and Grogu Trapped on a Lava River | LEGO Star Wars: The Mandalorian",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter fans confused by first clip of new series as they spot big difference with famous scar",
+   "highlight": "famous scar",
+   "blurb": "Fans are confused by the newly released trailer for the Harry Potter series.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.-0h2yEJgemXPPiwNXJBpkA&pid=News&w=1200"
+  },
+  {
+   "headline": "Bridgerton Lead To Boycott HBO’s Harry Potter Remake, Slams J.K. Rowling",
+   "highlight": "Boycott",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    1
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man movie: Everything we know so far",
+   "highlight": "Everything we know",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg"
   }
  ]
 }
