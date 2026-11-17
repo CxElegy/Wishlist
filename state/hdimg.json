@@ -921,12 +921,6 @@
   "target": 1280,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/epl-masters-iii?v=1794954416": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
   "w": 300,
   "h": 300,
@@ -1096,12 +1090,6 @@
   "target": 720,
   "v": 3
  },
- "https://hermes.media.transform.aol.com/d927c993de177b6e26b89f2c5d3ab11d50dafeb9/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/17/d7768200-3fc6-3e47-97ba-45183d92ac70/7d407f6a-3e8d-4740-966d-5bdcf4dd6734.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://hips.hearstapps.com/hmg-prod/images/d6cf19fc-e400-401f-9921-0e511c13d813.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
   "w": 1200,
   "h": 600,
@@ -1127,12 +1115,6 @@
   "v": 3
  },
  "https://i.cdn.newsbytesapp.com/images/l144_17791794849218.jpg": {
-  "w": 1440,
-  "h": 809,
-  "target": 720,
-  "v": 3
- },
- "https://i.cdn.newsbytesapp.com/images/l144_6541794935287.jpg": {
   "w": 1440,
   "h": 809,
   "target": 720,
@@ -1958,6 +1940,12 @@
   "w": 1200,
   "h": 1200,
   "target": 1280,
+  "v": 3
+ },
+ "https://media.unboxholics.com/media/source/Articles/139067/images/socialMediaImage/harry-potter-fans-hans-zimmer.jpg": {
+  "w": 1120,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://media.vanityfair.com/photos/6af20a08c16158eab34f472e/16:9/w_1280,c_limit/01.jpg": {
@@ -3034,12 +3022,6 @@
   "target": 1280,
   "v": 3
  },
- "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
-  "w": 1024,
-  "h": 572,
-  "target": 720,
-  "v": 3
- },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -3059,10 +3041,16 @@
   "target": 1280,
   "v": 3
  },
- "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg": {
-  "w": 690,
-  "h": 1005,
+ "https://q6.itc.cn/q_70/images03/20261117/f443d125585f4a1aa5af3558bec1dfa3.png": {
+  "w": 860,
+  "h": 1178,
   "target": 1280,
+  "v": 3
+ },
+ "https://readysteadycut.com/wp-content/uploads/2026/11/Avengers-Doomsday.webp": {
+  "w": 1500,
+  "h": 844,
+  "target": 720,
   "v": 3
  },
  "https://realsound.jp/wp-content/uploads/2026/11/20261115-ichiban-99.jpeg": {
@@ -3142,6 +3130,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/c7cc9fb40e40c91e72b5fc4d55f537e72b07e61c3dc4caecd1903e08328394bf/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Foxford_mail_251%2F884cb8e89468e71512928715fb14eb50.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/ddeff4a25e26ace41830ca125423da06615b93a25d88e20ed4ec3e381b307812/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fgta-6-key-art_0183.jpg": {
@@ -3264,6 +3258,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.384
+ },
+ "https://static.sanyonews.jp/image/article/size1/2/f/a/d/2fad61127a6842248d305ff76caa749d_1.jpg": {
+  "w": 427,
+  "h": 640,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/3/7/5/0/37501ba56a6c4ed315b10a3d6a20f267_1.jpg": {
   "w": 640,
@@ -3843,6 +3843,12 @@
    989
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.6gzcD9QwtFIRWUfkozUUtQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.FOoggTFAL_2bZZS_uZ1pTg&pid=News&w=494": {
   "w": 494,

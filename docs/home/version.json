@@ -1,14 +1,14 @@
 {
- "admin": "50d2eed2db1c",
- "admin-ai": "d3dc6b5396d6",
+ "admin": "47998a6ffb1c",
+ "admin-ai": "c77ef2fb1b4d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1c158ba9"
+   "caba8364"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f5b9c39a"
+   "bcb6f772"
   ]
  },
  "admin-boards": "43be923c0001",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "7a49f4dafea4",
+ "admin-emblem": "84c0794351b7",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "71f2cf55"
+   "fe59aa50"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "e4bd338099e7",
+ "admin-now": "85cb59558adf",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c8954369"
+   "c9aaedd7"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "92467819"
+   "65790ecf"
   ]
  },
- "admin-system": "a04e0ad37c16",
+ "admin-system": "19e4a6af2c7e",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e096250c"
+   "645605ae"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1f647555"
+   "5fe15f2e"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "0d2abded"
   ]
  },
- "index": "af79dd0bea02",
+ "index": "597b17ee6d9f",
  "index_marks": {
   "front": [
    "トップ",
-   "a8ed6d17"
+   "05b730d0"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "d2d1f62d"
+   "8e5b84eb"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "a34671ab"
+   "9da50508"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "8b9b5563"
+   "4137d114"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1f27b5ae"
+   "99b31f5d"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "c136d25e"
+   "ee17ecab"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "b0fc877e"
+   "48d48b3b"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "43d76906"
+   "26f3d2cc"
   ],
   "w-f303ad09": [
    "绝区零",
    "49caf819"
   ]
  },
- "updated": "11.18 07:28",
+ "updated": "11.18 07:36",
  "wishlist": "50553b4fe1e9"
 }
