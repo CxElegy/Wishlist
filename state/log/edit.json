@@ -1,48 +1,5 @@
 [
 {
-"at": "2026-11-15T05:44:30+00:00",
-"text": "2026-11-15 第 2 バッチを出刊：gelato pique、三星手机、绝区零（3 版面・12 本・今日の整理待ちは全部終わり） · token 新規入力 2,947・キャッシュ読み 32.7万・出力 1,867",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.49,
-"mem_total": 16869146624,
-"mem_free": 15840239616,
-"disk_used": 10091905024,
-"disk_free": 31191629824,
-"disk_total": 41283534848,
-"peak": 450236416
-},
-"batch": 2,
-"boards": [
-"gelato pique",
-"三星手机",
-"绝区零"
-],
-"stories": 12,
-"left": 0,
-"edited": 18,
-"run": 1794720750.5877516,
-"tok": {
-"in": 8,
-"cw": 2939,
-"cr": 327002,
-"out": 1867,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 331816,
-"secs": 720,
-"run_tok": {
-"in": 36,
-"cw": 55401,
-"cr": 1332430,
-"out": 6484,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-15T06:39:05+00:00",
 "text": "2026-11-15 第 1 バッチを出刊：A2O LITE、Vaundy（2 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4.0万・キャッシュ読み 40.9万・出力 1,515",
 "level": "ok",
@@ -2173,5 +2130,43 @@
 "calls": 17,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-17T01:43:37+00:00",
+"text": "2026-11-17 第 1 バッチを出刊：BLEACH Mirrors High、GTA 6、Vaundy、あつ森、ぐでたま、日本顶级网球赛事 ほか 1（7 版面・7 本・残り 6 版面） · token 新規入力 4.4万・キャッシュ読み 62.2万・出力 2,800",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.51,
+"mem_total": 16869134336,
+"mem_free": 15827505152,
+"disk_used": 10091782144,
+"disk_free": 31191752704,
+"disk_total": 41283534848,
+"peak": 463405056
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High",
+"GTA 6",
+"Vaundy",
+"あつ森",
+"ぐでたま",
+"日本顶级网球赛事",
+"星巴克马克杯"
+],
+"stories": 7,
+"left": 6,
+"edited": 18,
+"run": null,
+"tok": {
+"in": 19,
+"cw": 44281,
+"cr": 621925,
+"out": 2800,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 669025
 }
 ]
