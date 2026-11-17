@@ -56,6 +56,21 @@ class RenderJsBugs(unittest.TestCase):
                    + head + "wall();console.log(JSON.stringify(removed))")
         self.assertEqual(out, 2)
 
+    def test_visitor_never_sees_pressed_votes(self):
+        """访客（令牌なし）には、店長の 👍👎 を押した形で見せない。店長・本人は令牌があれば見える（2026-11-17）"""
+        s = cut(part("const hasTok"), "const R = document.documentElement;", "R.dataset.auth !== 'ok');")
+        cases = [  # (OWN, 令牌, role, auth) -> 見せるか
+            (False, None, "guest", "ok", False), (False, None, "guest", "wait", False), (False, None, None, None, False),
+            (False, "t", "guest", "ok", False), (False, "t", "user", "ok", False),
+            (False, "t", "admin", "ok", True), (False, "t", None, None, True), (False, "t", "guest", "wait", True),
+            (True, None, "guest", "ok", False), (True, "t", "user", "ok", True)]
+        for own, tok, role, auth, want in cases:
+            ds = {k: v for k, v in (("role", role), ("auth", auth)) if v}
+            out = node("const OWN=%s;const localStorage={getItem:()=>%s};const document={documentElement:{dataset:%s}};"
+                       % (json.dumps(own), json.dumps(json.dumps({"access_token": tok}) if tok else None), json.dumps(ds))
+                       + s + "console.log(JSON.stringify(mineShown()))")
+            self.assertEqual(out, want, (own, tok, role, auth))
+
     def _late(self):
         s = cut(part("const late = new IntersectionObserver"), "const late = new IntersectionObserver", "{rootMargin: '200px'});")
         return (TIMERS + "let cb;const IntersectionObserver=function(c){cb=c;this.unobserve=()=>{};this.observe=()=>{}};"

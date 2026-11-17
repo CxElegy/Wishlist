@@ -466,7 +466,7 @@ PROCESSES = [
     {
         "id": "colors", "name": "トップの配色", "en": "COLORS", "lane": "actions", "when": "ページ生成のたび",
         "trigger": "ページを作るとき。同じ画像の色は state/themes.json に残して使い回す",
-        "summary": "その日の頭条の写真から、トップの地色と強調色を取る。字が必ず読めるように明るさを直す。お客さまのページも同じ殻の CSS（render.py）で、票のボタン・棚を隠さない。休止モードの部品（SB_DEG_TAG）は配色の枠に影響しない。",
+        "summary": "その日の頭条の写真から、トップの地色と強調色を取る。字が必ず読めるように明るさを直す。お客さまのページも同じ殻の CSS（render.py）で、票のボタン・棚を隠さない。休止モードの部品（SB_DEG_TAG）は配色の枠に影響しない。【2026-11-17】票のボタン（VOTE_JS）は访客に押した形を出さない（配色には影響しない）。",
         "files": ["scripts/theme.py", "scripts/render.py", "state/themes.json"], "doc": "docs/rules/design.md", "uses": ["facefit", "octree"],
         "flow": [
             {"id": "t1", "kind": "step", "lane": "actions", "title": "頭条の写真", "text": "200×200 に縮める"},
@@ -608,7 +608,7 @@ PROCESSES = [
     {
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
-        "summary": "【2026-11-05】小元素が読めないとき（/p/ に無い・外が落ちた）は EMB_JS の WLembNext が同じ版面の次の候補へ替え、尽きたら枠を消して data-emb-gone を数える（pages_served が 0 を確かめる）。収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。全身の小元素の高さは「目から足」をそろえ、しゃがみの見積もりは 1.4 倍まで（体の大きいマスコットが 100px を割らない）。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。ログイン中の右上の役割の札（AUTH_JS）は店長だけ、一般のユーザーは名前だけ。お客さまのページも 👍👎・気になるかも？・これからの予定を店長と同じ部品で出す（票は VOTE_JS が meta wl-own のとき本人の account の関数へ）。Supabase を呼ぶ静的ページには render.with_sb_deg で休止の部品を入れる（入口・本人の殻・見本の審査）。",
+        "summary": "【2026-11-05】小元素が読めないとき（/p/ に無い・外が落ちた）は EMB_JS の WLembNext が同じ版面の次の候補へ替え、尽きたら枠を消して data-emb-gone を数える（pages_served が 0 を確かめる）。収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。全身の小元素の高さは「目から足」をそろえ、しゃがみの見積もりは 1.4 倍まで（体の大きいマスコットが 100px を割らない）。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。ログイン中の右上の役割の札（AUTH_JS）は店長だけ、一般のユーザーは名前だけ。お客さまのページも 👍👎・気になるかも？・これからの予定を店長と同じ部品で出す（票は VOTE_JS が meta wl-own のとき本人の account の関数へ）。Supabase を呼ぶ静的ページには render.with_sb_deg で休止の部品を入れる（入口・本人の殻・見本の審査）。【2026-11-17】记事の 👍👎（VOTE_JS）：押した形は令牌のある店長・本人にだけ塗る。访客は塗らず my_votes も読まない（役目が決まったら wl-role で塗り直す）。",
         "files": [".github/workflows/render.yml", ".github/workflows/pages.yml", ".github/workflows/live_clear.yml", "scripts/render.py", "scripts/lang.py", "harness/d5_sample.py", "scripts/layout_sample.py", "scripts/layout_ba.py", "harness/layout_v2_check.py"], "doc": "docs/rules/design.md", "uses": ["pushmain", "facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
             {"id": "p4ulg", "kind": "step", "lane": "web", "title": "ログイン中の user_login は 1 時間に 1 回（同意済みの版も保存〔me.v〕。前は未保存で毎回呼んでいた）（render.AUTH_JS start）", "uses": ["supabase"], "text": "ページを開くたびに呼ぶと last_seen の書き込みと応答が積もる（egress）。規約に同意済み（me.v が TV 以上）で、前に確かめてから 1 時間以内（me.chk）なら呼ばない。同意前・ログイン直後は必ず呼ぶ。"},
@@ -681,7 +681,7 @@ PROCESSES = [
             {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
              "text": "〔2026-11-13 docs/404.html（welcome.build_404）：存在しない網址・昔の網址は素の 404 でなく入口へ戻るボタンのページ（網址を打たせない）〕 〔2026-11-04 公開の箱 photos は scripts/nostorage.py が止める：この流れの Python は写真を本番から落とさない〕 何のサイトか・店長のページの本物の画面。メール・パスワードと規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → 候補のタイルを押して選ぶ・名前でも足せる（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
             {"id": "a1", "kind": "step", "lane": "web", "title": "右上の「はじめのページ」（入口 ../?stay、見るだけでもログイン中でもいつも見える）/「ログイン」",
-             "text": "だれでもメールアドレス＋パスワード（2026-10-21：ユーザー名 → メールだけ → メール＋パスワード）。ログイン = signInWithPassword → user_login（規約の版）。休止中（402）に押したときは「ログインして」でなく「いまはお休み中で変えられません」・访客には「あなたの投票」（店長の票）を出さない（F8 2026-11-05）。ログアウト = signOut の scope local（この端末だけ）＋本人の票の写し・置き場の名前・設定の控えを localStorage から消す。鍵の知らせが続けて来ても refresh は 120ms で 1 回にまとめる。殻 me.html は 12 秒で前の画面へ・置き場の名前（my_page_path）は同じ人なら端末に覚えて呼ばない（F6・F7 2026-11-05）。新しく始める（入口）＝メールが未登録かを打つたびに確かめ（name_available）、パスワード 8 文字以上を 2 回、規約に同意 → user_signup（p_password つき）→ そのままログイン。このブラウザが覚える（ログアウトまで）。退会の機能はなし", "uses": ["maillink", "terms"]},
+             "text": "だれでもメールアドレス＋パスワード（2026-10-21：ユーザー名 → メールだけ → メール＋パスワード）。ログイン = signInWithPassword → user_login（規約の版）。休止中（402）に押したときは「ログインして」でなく「いまはお休み中で変えられません」・访客には「あなたの投票」（店長の票）を出さない（F8 2026-11-05）。【2026-11-17】记事の 👍👎 も同じ：访客には押した形で出さない（VOTE_JS は令牌のない访客なら my_votes を読まず塗らない。店長・本人は令牌があれば先に塗り、役目が決まったら塗り直す）。ログアウト = signOut の scope local（この端末だけ）＋本人の票の写し・置き場の名前・設定の控えを localStorage から消す。鍵の知らせが続けて来ても refresh は 120ms で 1 回にまとめる。殻 me.html は 12 秒で前の画面へ・置き場の名前（my_page_path）は同じ人なら端末に覚えて呼ばない（F6・F7 2026-11-05）。新しく始める（入口）＝メールが未登録かを打つたびに確かめ（name_available）、パスワード 8 文字以上を 2 回、規約に同意 → user_signup（p_password つき）→ そのままログイン。このブラウザが覚える（ログアウトまで）。退会の機能はなし", "uses": ["maillink", "terms"]},
             {"id": "a1b", "kind": "decision", "lane": "web", "title": "同意した版 ＜ いまの版？",
              "text": "規約の版（TERMS_VERSION）を user_login で確かめる（同意済みなら 1 時間に 1 回まで。2026-11-04 egress 対策）",
              "yes": "同意の画面（同意しないならログアウトして見るだけ）", "no": "そのまま"},
