@@ -67,7 +67,7 @@ class FillFollowsRender(unittest.TestCase):
         photo_store._ON[:] = [True]
         try:
             h = 'a&quot;https://x.supabase.co/storage/v1/object/public/emblems/Q123-ab12.webp&quot; https://x.supabase.co/storage/v1/object/public/photos/aa-400.webp'
-            out = photo_store.emblems_to_pages(h)
+            out = photo_store.emblems_to_pages(h, {"Q123-ab12.webp"})
             self.assertIn(photo_store.PAGES_BASE + "/Q123-ab12.webp&quot;", out)
             self.assertIn("/object/public/photos/aa-400.webp", out)   # 写真は別の規則（stored）
         finally:

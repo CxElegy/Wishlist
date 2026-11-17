@@ -51,10 +51,11 @@ class Rewrite(unittest.TestCase):
         h = f'<img src="{F1}"><div data-alts="[{{&quot;src&quot;: &quot;{TW}&quot;}}]"></div><img src="{EMB}">'
         with mock.patch.object(photo_store, "pages_on", return_value=True):
             none = photo_store.emblems_to_pages(h, set())
-            both = photo_store.emblems_to_pages(h, {photo_store.ext_name(F1), photo_store.ext_name(TW)})
+            both = photo_store.emblems_to_pages(h, {photo_store.ext_name(F1), photo_store.ext_name(TW), "Q1-abc.webp"})
         self.assertIn(F1, none)
         self.assertIn(TW, none)
-        self.assertNotIn("supabase.co", none)
+        self.assertIn(EMB, none)   # 箱の網址も、写しが載っていない名前は書き換えない（/p/ が 404 になる）
+        self.assertNotIn("supabase.co", both)
         self.assertNotIn("commons.wikimedia.org", both)
         self.assertNotIn("jsdelivr", both)
         self.assertIn(photo_store.PAGES_BASE + "/" + photo_store.ext_name(TW), both)

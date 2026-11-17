@@ -312,7 +312,7 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")},
                           {i["name"]: i["size"] for i in items if i.get("size")},
                           motifs, themes, rec["taste"], heat_scores,
-                          {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
+                          {i["name"]: (render.mark_own_emblems(i), i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")}, {n: v for n, v in subs.items() if v},
                           settings.get("nav_hide", render.NAV_HIDE),
                           {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},

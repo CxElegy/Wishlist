@@ -16,6 +16,19 @@ class PhotoStore(unittest.TestCase):
         P._ON[:] = [False]
         self.addCleanup(lambda: P._ON.__setitem__(slice(None), self._on))
 
+    def test_emblem_url_any_host_only_published(self):
+        """小元素の箱の網址は host を問わず（旧 supabase.co・自前版）、Pages に写しが載った名前だけ /p/ に。載っていないものは書き換えない（404 にしない）。"""
+        P._ON[:] = [True]
+        old = "https://x.supabase.co/storage/v1/object/public/emblems/Q1-aa.webp"
+        new = "https://elegy.tailc8cfff.ts.net/storage/v1/object/public/emblems/Q2-bb.webp"
+        h = f'<img src="{old}"><img src="{new}">'
+        self.assertEqual(P.emblems_to_pages(h, set()), h)
+        out = P.emblems_to_pages(h, {"Q1-aa.webp", "Q2-bb.webp"})
+        self.assertEqual(out, f'<img src="{P.PAGES_BASE}/Q1-aa.webp"><img src="{P.PAGES_BASE}/Q2-bb.webp">')
+        out = P.emblems_to_pages(h, {"Q2-bb.webp"})
+        self.assertIn(old, out)
+        self.assertIn(P.PAGES_BASE + "/Q2-bb.webp", out)
+
     def test_evict_age_then_cap(self):
         p = {"a": {"at": 100, "b": 10}, "b": {"at": 120, "b": 10}, "c": {"at": 119, "b": 10}}
         self.assertEqual(P.evict(p, {"a"}, 120, keep_days=14, cap=10**9), [])        # a は載っている → 古くても残る
