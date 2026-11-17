@@ -1,3 +1,4 @@
+-- ⚠ 流し直し禁止（2026-11-17）：末尾の my_votes(p_account) は my_votes_guard.sql が上書きした古い形（門なし）。my_votes_own()・my_vote_add() はここが今の形。
 -- お客さまの 👍👎 は本人の account（public.my_account() = 'u_' + md5(メール) 16 字）の feedback 行に入る（2026-11-02，ユーザー：
 -- 「ユーザーの機能は管理できない以外、店長と同じ。個人保持の Like / dislike」）。店長の票（account = test1）とは混ざらない。
 -- p_account を取らない（ほかの人の票は書けない・読めない）。add だけ：消す文・表の形を変える文はない。
