@@ -924,12 +924,6 @@
   "target": 1280,
   "v": 3
  },
- "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
   "w": 300,
   "h": 300,
@@ -1680,12 +1674,6 @@
   "w": 800,
   "h": 1064,
   "target": 720,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/17/5644169_1.jpg": {
-  "w": 800,
-  "h": 876,
-  "target": 1280,
   "v": 3
  },
  "https://img.ltn.com.tw/Upload/news/600/2026/11/11/php2ObZRT.jpg": {
@@ -3196,6 +3184,12 @@
  "https://q4.itc.cn/q_70/images03/20261117/5188db02f14640cd9c05b8de654c69de.jpeg": {
   "w": 690,
   "h": 1005,
+  "target": 1280,
+  "v": 3
+ },
+ "https://q4.itc.cn/q_70/images03/20261117/c2dd623e46ee4e1a89fbdbf53545447b.jpeg": {
+  "w": 1080,
+  "h": 1224,
   "target": 1280,
   "v": 3
  },

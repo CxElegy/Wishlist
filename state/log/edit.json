@@ -1,49 +1,5 @@
 [
 {
-"at": "2026-11-15T15:44:34+00:00",
-"text": "2026-11-15 第 1 バッチを出刊：A2O LITE、Astrae Oratio、GTA 6、MMORPG 新作、Vaundy、dota2 ほか 7（13 版面・38 本・残り 1 版面） · token 新規入力 4.7万・キャッシュ読み 133.7万・出力 4,324",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.36,
-"mem_total": 16869146624,
-"mem_free": 15923859456,
-"disk_used": 10091917312,
-"disk_free": 31191617536,
-"disk_total": 41283534848,
-"peak": 354865152
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"GTA 6",
-"MMORPG 新作",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"チェーンソーマン",
-"星巴克马克杯",
-"滑雪",
-"漫威电影",
-"猫用品"
-],
-"stories": 38,
-"left": 1,
-"edited": 21,
-"run": null,
-"tok": {
-"in": 42,
-"cw": 47298,
-"cr": 1336615,
-"out": 4324,
-"calls": 20,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1388279
-},
-{
 "at": "2026-11-15T15:49:36+00:00",
 "text": "2026-11-15 第 1 バッチを出刊：A2O LITE、Astrae Oratio、GTA 6、MMORPG 新作、Vaundy、dota2 ほか 8（14 版面・42 本・今日の整理待ちは全部終わり） · token 新規入力 4.9万・キャッシュ読み 148.9万・出力 5,097",
 "level": "ok",
@@ -2189,5 +2145,37 @@
 "calls": 10,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-17T12:39:10+00:00",
+"text": "2026-11-17 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 7 版面） · token 新規入力 4.4万・キャッシュ読み 62.0万・出力 2,335",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.15,
+"mem_total": 16869134336,
+"mem_free": 15914000384,
+"disk_used": 10099400704,
+"disk_free": 31184134144,
+"disk_total": 41283534848,
+"peak": 370077696
+},
+"batch": 1,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 7,
+"edited": 21,
+"run": 1794918845.8458204,
+"tok": {
+"in": 19,
+"cw": 43719,
+"cr": 619947,
+"out": 2335,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 666020
 }
 ]
