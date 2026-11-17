@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-17T09:32:29+00:00",
+ "checked": "2026-11-17T10:32:00+00:00",
  "fired": {
   "at": "2026-11-17T09:32:29+00:00",
   "results": {
@@ -58,71 +58,55 @@
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "gelato pique",
-    "あつ森",
     "ぐでたま",
-    "三星手机",
-    "周杰伦",
     "哈利波特剧集",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
+    "星巴克马克杯"
    ],
-   "last_batch": "2026-11-17T08:01:16+00:00",
+   "last_batch": "2026-11-17T09:43:33+00:00",
    "last_error": {
     "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 453,
+   "prog": 530,
    "prog_day": "2026-11-17",
    "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "あつ森",
-    "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
+    "The Mandalorian",
+    "ぐでたま",
+    "星巴克马克杯"
    ],
-   "sig": "8863e4dba0c2",
+   "sig": "6439505b690e",
    "token_cap": 1000000,
-   "tokens_today": 549893,
-   "why": "整理待ちの記事 90 件（19 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 668838,
+   "why": "整理待ちの記事 13 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "あつ森",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "A2O LITE",
     "Astrae Oratio",
-    "周杰伦",
-    "绝区零",
-    "Vaundy"
-   ],
-   "need": true,
-   "sig": "ff3d1d087c44",
-   "waiting": [
+    "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "あつ森",
     "ぐでたま",
-    "チェーンソーマン"
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 4 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -223,12 +207,12 @@
    "runs": 13
   },
   "2026-11-17": {
-   "batches": 17,
-   "cr": 10333493,
-   "cw": 497774,
-   "in": 276,
-   "out": 51843,
-   "runs": 9
+   "batches": 19,
+   "cr": 13001387,
+   "cw": 605961,
+   "in": 348,
+   "out": 62529,
+   "runs": 11
   }
  }
 }
