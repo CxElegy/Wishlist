@@ -1045,6 +1045,12 @@
   "target": 720,
   "v": 3
  },
+ "https://getnavi.jp/wp-content/uploads/2026/11/71O1DhluJJL._AC_SL1500_.jpg": {
+  "w": 1200,
+  "h": 1223,
+  "target": 1280,
+  "v": 3
+ },
  "https://gonintendo.com/attachments/image/88856/file/medium-0d951c4558c74d8a62690b066a64bde9.jpg": {
   "w": 780,
   "h": 439,
@@ -1287,6 +1293,19 @@
   "h": 360,
   "target": 720,
   "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/b/2/b287f_230_98f16e0b_325d0d03.jpg": {
+  "w": 217,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.508,
+  "local": "pics/b86ff45422ffe219.webp",
+  "out": [
+   651,
+   1200
+  ],
+  "why": "看不清"
  },
  "https://image.news.livedoor.com/newsimage/stf/6/d/6d626_760_2493135_20261116_122419_size640wh_46866926.jpg": {
   "w": 452,
@@ -1676,12 +1695,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/16/2026111615042091238_x.jpg": {
-  "w": 640,
-  "h": 804,
-  "target": 720,
-  "v": 3
- },
  "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg": {
   "w": 1200,
   "h": 675,
@@ -2016,12 +2029,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://mmbiz.qpic.cn/mmbiz_png/fXeVwORdalR2DH0CBIemW8EjREoAicFtVoO4F01lgoGxNZoAocFmOtHLYoPibuxeJurdDhMn2v9ibAtIZ7Bdib0u598oUicgD3vpNFk7JP5pTIeA/640?wx_fmt=png&from=appmsg#imgIndex=4": {
-  "w": 1080,
-  "h": 646,
-  "target": 1280,
-  "v": 3
  },
  "https://mndaily.com/wp-content/uploads/2026/11/GTALead.png": {
   "w": 2001,
@@ -2397,12 +2404,6 @@
   ],
   "why": "看不清"
  },
- "https://news.walkerplus.com/article/54135/297391_615.jpg": {
-  "w": 615,
-  "h": 1131,
-  "target": 1280,
-  "v": 3
- },
  "https://news.walkerplus.com/article/55811/307229_615.jpg": {
   "w": 615,
   "h": 516,
@@ -2630,18 +2631,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261115-00000108-dal-000-4-view.jpg?exp=10800": {
-  "w": 2200,
-  "h": 1568,
-  "target": 720,
-  "v": 3,
-  "local": "pics/db8c60fc202f0caf.webp",
-  "out": [
-   1280,
-   912
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-00000014-anmanmv-000-1-view.jpg?exp=10800": {
   "w": 440,
   "h": 800,
@@ -2721,13 +2710,6 @@
   "target": 720,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1eb9127c7e124628962148a4f6c6374f.png": {
-  "w": 448,
-  "h": 252,
-  "target": 720,
-  "v": 3,
-  "blur": 0.373
- },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg": {
   "w": 736,
   "h": 414,
@@ -2744,6 +2726,12 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/614d674cbc04425092f91517c1246529.png": {
   "w": 800,
   "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg": {
+  "w": 750,
+  "h": 750,
   "target": 720,
   "v": 3
  },
@@ -2812,6 +2800,12 @@
  "https://p2.bahamut.com.tw/B/2KU/16/30fcd6de225e1cc72fc79a41cb212yc5.PNG": {
   "w": 1096,
   "h": 617,
+  "target": 720,
+  "v": 3
+ },
+ "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG": {
+  "w": 500,
+  "h": 282,
   "target": 720,
   "v": 3
  },
@@ -3978,6 +3972,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.DBYSnY5j3iEiaNMtRXx55Q&pid=News&w=500": {
+  "w": 500,
+  "h": 500,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.485,
+  "local": "pics/84aae6faa3b3b061.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.GG1ee3pBwZPQ7_B4rpWpgg&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -4046,19 +4053,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.YdtcC3Y3ka07ps6IRnPhpg&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.643,
-  "local": "pics/a101cfd85797a2d3.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.ZzQLDKIVqVnmPw64Q_0WZg&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -4109,6 +4103,12 @@
   "v": 3,
   "blur": 0.402
  },
+ "https://www.bing.com/th?id=ONUT.qE9if0nTZNiY-3ODnzgs2A&pid=News&w=1200": {
+  "w": 700,
+  "h": 498,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4119,6 +4119,19 @@
   "out": [
    1280,
    719
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.u6PsJ-1gxyLQhEBAa2Ub2w&pid=News&w=700": {
+  "w": 700,
+  "h": 663,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.531,
+  "local": "pics/ea1d1d01b9dbb5ec.webp",
+  "out": [
+   1280,
+   1212
   ],
   "why": "看不清"
  },
@@ -4145,19 +4158,6 @@
   "h": 628,
   "target": 1280,
   "v": 3
- },
- "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true": {
-  "w": 500,
-  "h": 262,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.524,
-  "local": "pics/90f0d635188356ba.webp",
-  "out": [
-   1280,
-   671
-  ],
-  "why": "看不清"
  },
  "https://www.chosun.com/resizer/v2/GZRTIOBXGNSTCZRTGE4TCY3CMQ.jpg?auth=b677f07bc60f2dca003e527e47af3534619cbbabc59d9f64d632c6e54e76fc8e&width=700&height=367&smart=true": {
   "w": 700,
