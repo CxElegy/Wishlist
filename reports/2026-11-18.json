@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "9f009f8528d2",
+ "edit_sig": "00d374d879e5",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -392,9 +392,8 @@
      "date": "2026-11-17",
      "headline": "三星Galaxy S27系列或将内置个人AI助手",
      "highlight": "个人AI助手",
-     "image": null,
-     "source": "Sohu",
-     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
+     "image": "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1102877029_114765?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }
@@ -574,8 +573,8 @@
      "date": "2026-11-17",
      "headline": "热闻|580元周杰伦演唱会门票“仅支持看大屏”？中演协：避免将视野严重遮挡区域划入售票区",
      "highlight": "580元周杰伦演唱会门票",
-     "image": "https://q6.itc.cn/q_70/images03/20261117/f443d125585f4a1aa5af3558bec1dfa3.png",
-     "image_via": "JSON-LD",
+     "image": "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg",
+     "image_via": "AI 挑选",
      "url": "https://m.sohu.com/a/1102689714_121218495?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "lead"
     },
@@ -616,17 +615,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Arknights: Endfield has won Best Game at the Google Play awards for 2026, with Warframe and Zenless Zone Zero also taking awards.",
      "date": "2026-11-16",
-     "n": 1,
-     "source": "Tbreak",
-     "title": "Google Play awards name Arknights: Endfield Best Game",
-     "url": "https://tbreak.com/google-play-best-of-2026-games/"
+     "headline": "Google Play awards name Arknights: Endfield Best Game",
+     "highlight": "Best Game",
+     "image": "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/11/google-play-best-of-2026-games.png?fit=1200%2C675&ssl=1",
+     "image_via": "og:image",
+     "url": "https://tbreak.com/google-play-best-of-2026-games/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",

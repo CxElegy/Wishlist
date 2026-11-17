@@ -14,7 +14,8 @@
   "FROM": 1,
   "MMORPG 新作": 1,
   "ぐでたま": 1,
-  "星巴克马克杯": 1
+  "星巴克马克杯": 1,
+  "绝区零": 1
  },
  "漫威电影": [
   {
@@ -392,6 +393,17 @@
    "headline": "Starbucks’ Winter Wonderland Collection Is Here, With a Snow Globe Mug Set and an Icy Blue Gem Cup",
    "highlight": "Winter Wonderland Collection",
    "blurb": "Starbucks' Winter Wonderland Collection arrives with a snow globe mug set and an icy blue gem cup.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "Google Play awards name Arknights: Endfield Best Game",
+   "highlight": "Best Game",
+   "blurb": "Arknights: Endfield has won Best Game at the Google Play awards for 2026, with Warframe and Zenless Zone Zero also taking awards.",
    "weight": "lead",
    "refs": [
     1
