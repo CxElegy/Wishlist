@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-17T16:32:16+00:00",
+ "checked": "2026-11-17T17:31:32+00:00",
  "fired": {
   "at": "2026-11-17T16:32:16+00:00",
   "results": {
@@ -59,67 +59,53 @@
    },
    "items": [
     "FROM",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
-    "The Mandalorian",
     "dota2",
     "gelato pique",
     "ぐでたま",
-    "チェーンソーマン",
     "三星手机",
     "周杰伦",
-    "哈利波特剧集",
     "日本顶级网球赛事",
     "星巴克马克杯",
-    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-17T13:55:14+00:00",
+   "last_batch": "2026-11-17T16:43:00+00:00",
    "last_error": {
     "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 8,
+   "prog": 66,
    "prog_day": "2026-11-18",
-   "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "The Mandalorian",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "漫威电影"
-   ],
-   "sig": "3c0a8800de07",
+   "ripe": [],
+   "sig": "b6c80bf2eaaa",
    "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 70 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 81682,
+   "why": "整理待ちの記事 12 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "FROM",
-    "GTA 6",
-    "あつ森",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
     "The Mandalorian",
-    "绝区零",
-    "ぐでたま",
     "Vaundy",
-    "周杰伦"
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "need": true,
-   "sig": "29a320235adb",
-   "waiting": [
-    "BLEACH Mirrors High"
-   ],
-   "why": "足りない 14 版面（Actions で Python が埋める）・失敗 1 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -226,6 +212,14 @@
    "in": 457,
    "out": 78626,
    "runs": 15
+  },
+  "2026-11-18": {
+   "batches": 3,
+   "cr": 2823700,
+   "cw": 72641,
+   "in": 75,
+   "out": 8966,
+   "runs": 1
   }
  }
 }
