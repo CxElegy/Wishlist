@@ -23,10 +23,10 @@
   "https://gnn.gamer.com.tw/detail.php?sn=314945": "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG",
   "https://go2senkyo.com/seijika/200828/posts/1583940": null,
   "https://hawk.live/posts/another-wave-bans-begun-dota-2-due-new-cheat": "https://hawk.live/storage/images/posts/wave-bans-dota-2-25437.jpg",
-  "https://hawk.live/posts/teaguvnor-launched-stream-ahead-new-patch-dota-2": "https://hawk.live/storage/images/posts/teaguvnor-launched-stream-anticipation-patch-25438.jpg",
   "https://k.sina.com.cn/article_7879996034_1d5af328206809ev32.html?from=digit": "http://n.sinaimg.cn/gp/278/w690h388/20261021/90af-f7e9067a8943d02ba5e746f2a5c6cfab.jpg",
   "https://kbench.com/?q=node/283281": "https://www.bing.com/th?id=ONUT.u6PsJ-1gxyLQhEBAa2Ub2w&pid=News&w=700",
   "https://komonews.com/seattle-refined/gallery/paws-lynnwood-black-cats-and-dogs-adopt-foster-rescue-shelter-halloween-superstitions-myths-animals-pnw-pets?photo=2": "https://komonews.com/resources/media2/16x9/1280/1320/center/90/d4073018-af99-405a-b357-6a0a1e8399d7-BlackCat2.jpg",
+  "https://m.18183.com/news/yxxw/202611/9190638.html": "https://img.18183.com/image/2026/11/17/ee50f12eae73db784b4f64bbb09e3d18.jpg@!18183",
   "https://mndaily.com/arts-entertainment/following-a-year-of-delays-grand-theft-auto-vi-is-nearly-here/11/16/2026/eicmndaily-com/": "https://mndaily.com/wp-content/uploads/2026/11/GTALead.png",
   "https://n.yam.com/Article/20261117552069": "https://ni.yam.com/20261117/819x1024-6ef66db0b69953af.webp",
   "https://news.dellows.jp/992392/": null,
@@ -1429,27 +1429,6 @@
    "because": "dota2",
    "date": "2026-11-17",
    "hits": [],
-   "image": "https://hawk.live/storage/images/posts/teaguvnor-launched-stream-anticipation-patch-25438.jpg",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "Hawk Live",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "Teaguvnor launched a stream ahead of the new patch for Dota 2",
-   "url": "https://hawk.live/posts/teaguvnor-launched-stream-ahead-new-patch-dota-2",
-   "words": [],
-   "work": "dota2"
-  },
-  {
-   "batch": 6,
-   "because": "dota2",
-   "date": "2026-11-17",
-   "hits": [],
    "image": "https://hawk.live/storage/images/posts/wave-bans-dota-2-25437.jpg",
    "kind": "board",
    "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
@@ -1463,6 +1442,27 @@
    ],
    "title": "Another wave of bans has begun in Dota 2 due to a new cheat",
    "url": "https://hawk.live/posts/another-wave-bans-begun-dota-2-due-new-cheat",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 6,
+   "because": "dota2",
+   "date": "2026-11-16",
+   "hits": [],
+   "image": "https://img.18183.com/image/2026/11/17/ee50f12eae73db784b4f64bbb09e3d18.jpg@!18183",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "18183游戏网",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "《Dota 2》玩家Gabe Newell游艇曝光：与船员同吃同住",
+   "url": "https://m.18183.com/news/yxxw/202611/9190638.html",
    "words": [],
    "work": "dota2"
   },
@@ -1977,11 +1977,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1989,15 +1989,15 @@
    8
   ],
   [
+   "作品:三星手机",
+   7
+  ],
+  [
    "三星 Galaxy",
    7
   ],
   [
    "galaxy",
-   7
-  ],
-  [
-   "作品:三星手机",
    7
   ]
  ]

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "20ae715b6360",
+ "edit_sig": "9f009f8528d2",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -75,17 +75,19 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "'제우스: 오만의 신' 콜로세움 업데이트の詳細まとめ。",
      "date": "2026-11-17",
-     "n": 1,
-     "source": "게임메카",
-     "title": "MMORPG 신작 추천, '제우스: 오만의 신' 콜로세움 업데이트 상세 내용 정리",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQWTYzNmdRLW9BNEwyMDJRNmxkaW5YTmhYRW1zZXYxMU5lNjVEOXZ2SWRXbkNYSG0tMkxzQXNQOUlBeWpEY3VtbW9iNHppYkVQVWpfRURkMnZKUE9LSDhoakk1NkpkajNsTzVzTVJIRDRiYmgzNEVDYldFeXYyWEhyRjhOVlpkS0d6?oc=5"
+     "headline": "MMORPG 신작 추천, '제우스: 오만의 신' 콜로세움 업데이트 상세 내용 정리",
+     "highlight": "콜로세움 업데이트",
+     "image": "https://cdn.gamemeca.com/gmboard/mobile_userreview/2026/09/13/20260913205623_218538.png",
+     "image_via": "正文图（2 枚から）",
+     "url": "https://www.gamemeca.com/fam.php?gcode=mobile_userreview&bt=title&p=3&gid=1780416",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -171,17 +173,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Netflix が最初の3シーズンを追加したことで、FROM が米国の配信ランキング1位に。",
      "date": "2026-11-17",
-     "n": 1,
-     "source": "Creepy Catalog",
-     "title": "FROM Became America’s No. 1 Streaming Show After Netflix Added Its First Three Seasons",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNUEp2emUwdUFFVG85bWJqbTdrTy1mZFVwb0h5U21IWjFGVDlJVy1Bemw5QjFSaXhYaEJKLURGdzlfOS1YQ1k2ek1CR0lxSkx2Q3RwZjFfdUlVaGc2eWVQMVpCZ01taC1PeFdxVFltd2huRERncTV6R2wxSEZxNmZld1cydlYwendvQ1hEbW5yMDlqaXdsTXY4VTdIcFpiNEotMGpyYjROajN5Q0c4QkowNQ?oc=5"
+     "headline": "FROM Became America’s No. 1 Streaming Show After Netflix Added Its First Three Seasons",
+     "highlight": "No. 1 Streaming Show",
+     "image": "https://creepycatalog.com/wp-content/uploads/sites/2/2026/11/from-became-america-s-no-1-streaming-show-after-netflix-added-its-first-three-se.png?w=1024",
+     "image_via": "og:image",
+     "url": "https://creepycatalog.com/from-became-americas-no-1-streaming-show-after-netflix-added-its-first-three-seasons/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
@@ -311,17 +315,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Starbucks' Winter Wonderland Collection arrives with a snow globe mug set and an icy blue gem cup.",
      "date": "2026-11-17",
-     "n": 1,
-     "source": "Totally The Bomb",
-     "title": "Starbucks’ Winter Wonderland Collection Is Here, With a Snow Globe Mug Set and an Icy Blue Gem Cup",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1fd3hxTkZEbWJNajJyTVU0MWdsYVZ6d3EtV3BUdTMzSm5qb1RnYlNocHh4OHByMnAwcGxiNjMyZWFVbjhlV3lkVE1mMjZIdlFqUVFBRGI3a21VSEd4elJOUUJsbDg5V0ZyUm1weTR6V0ZDZEE?oc=5"
+     "headline": "Starbucks’ Winter Wonderland Collection Is Here, With a Snow Globe Mug Set and an Icy Blue Gem Cup",
+     "highlight": "Winter Wonderland Collection",
+     "image": "https://cdn.totallythebomb.com/wp-content/uploads/2026/11/starbucks-winter-wonderland-cups-2026-official.jpg",
+     "image_via": "og:image",
+     "url": "https://totallythebomb.com/starbucks-winter-wonderland-cups-2026/",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
@@ -386,8 +392,9 @@
      "date": "2026-11-17",
      "headline": "三星Galaxy S27系列或将内置个人AI助手",
      "highlight": "个人AI助手",
-     "image": "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "Sohu",
+     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
      "url": "https://m.sohu.com/a/1102877029_114765?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }
@@ -450,14 +457,14 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "47都道府県の地域限定ぐでたまのステッカーが発売され、ファンから歓喜の声。",
      "date": "2026-11-16",
-     "headline": "画像4 / 9＞「これならコンプリートできる」と『ぐでたま』ファンも歓喜、47都道府県の地域限定ぐでたまのステッカーが発売",
-     "highlight": "",
+     "headline": "「これならコンプリートできる」と『ぐでたま』ファンも歓喜、47都道府県の地域限定ぐでたまのステッカーが発売",
+     "highlight": "47都道府県の地域限定ぐでたまのステッカーが発売",
      "image": "https://news.walkerplus.com/article/1005677/10040979_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1005677/image10040973.html",
-     "weight": "hero"
+     "weight": "lead"
     }
    ],
    "subtitle": "Gudetama",
@@ -636,24 +643,31 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "EPL Masters III の視聴者数・賞金などの概要まとめ。",
      "date": "2026-11-17",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "Teaguvnor launched a stream ahead of the new patch for Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE44dDNkTFJoTExwWlNrVjV5b2xLSEV3eHotWENUNlJxbXNRTmpQMlgtVDJhazFfNlBnWVB0eW5hQWJsVExYSU1mLXlvWTJwSmM4MU9oRGVyY1lKMkY3dldRdEhmdEpiMTF5WGM1ODkyaTZOVm0wbGt5ckJRT3E?oc=5"
+     "headline": "EPL Masters III - Dota 2 - Viewership, Overview, Prize Pool",
+     "highlight": "Viewership",
+     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+     "image_via": "作品封面",
+     "source": "Esports Charts",
+     "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
+     "url": "https://escharts.com/tournaments/dota2/epl-masters-iii",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-17",
-     "n": 2,
-     "source": "Esports Charts",
-     "title": "EPL Masters III - Dota 2 - Viewership, Overview, Prize Pool",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9JUXZIWVl4ZzBPNzZZZ1A2UmJ5YXJ5NVpUWXctNXQ3ZDBfVllPVDhBdWUzQjNIZDZmZWtGYm1wQnk5QVdEM0lZQmxTUjQtcE96Sks0eC0wemQ0Q3BWSld2V0ZRZzk?oc=5"
+     "headline": "Teaguvnor launched a stream ahead of the new patch for Dota 2",
+     "highlight": "new patch",
+     "image": "https://hawk.live/storage/images/posts/teaguvnor-launched-stream-anticipation-patch-25438.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/teaguvnor-launched-stream-ahead-new-patch-dota-2",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",

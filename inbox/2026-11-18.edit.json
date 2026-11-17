@@ -9,7 +9,12 @@
   "日本顶级网球赛事": 1,
   "三星手机": 8,
   "周杰伦": 5,
-  "gelato pique": 3
+  "gelato pique": 3,
+  "dota2": 2,
+  "FROM": 1,
+  "MMORPG 新作": 1,
+  "ぐでたま": 1,
+  "星巴克马克杯": 1
  },
  "漫威电影": [
   {
@@ -326,6 +331,70 @@
    "refs": [
     3,
     2
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "EPL Masters III - Dota 2 - Viewership, Overview, Prize Pool",
+   "highlight": "Viewership",
+   "blurb": "EPL Masters III の視聴者数・賞金などの概要まとめ。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Teaguvnor launched a stream ahead of the new patch for Dota 2",
+   "highlight": "new patch",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "FROM Became America’s No. 1 Streaming Show After Netflix Added Its First Three Seasons",
+   "highlight": "No. 1 Streaming Show",
+   "blurb": "Netflix が最初の3シーズンを追加したことで、FROM が米国の配信ランキング1位に。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "MMORPG 신작 추천, '제우스: 오만의 신' 콜로세움 업데이트 상세 내용 정리",
+   "highlight": "콜로세움 업데이트",
+   "blurb": "'제우스: 오만의 신' 콜로세움 업데이트の詳細まとめ。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "「これならコンプリートできる」と『ぐでたま』ファンも歓喜、47都道府県の地域限定ぐでたまのステッカーが発売",
+   "highlight": "47都道府県の地域限定ぐでたまのステッカーが発売",
+   "blurb": "47都道府県の地域限定ぐでたまのステッカーが発売され、ファンから歓喜の声。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "Starbucks’ Winter Wonderland Collection Is Here, With a Snow Globe Mug Set and an Icy Blue Gem Cup",
+   "highlight": "Winter Wonderland Collection",
+   "blurb": "Starbucks' Winter Wonderland Collection arrives with a snow globe mug set and an icy blue gem cup.",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]
