@@ -1118,7 +1118,10 @@ class Resources(unittest.TestCase):
                                            "disk_used": 11 * G, "disk_total": 40 * G, "disk_free": 29 * G}}},
                "tokens": {"edit": {"name": "AI 編集", "last": 12345, "week": 50000, "runs": 4},
                           "collect": {"name": "<収集>", "last": None, "week": 0, "runs": 0}}}
-        out = render._admin_resources(res)
+        import photo_store   # 写真の一時保管の使用量は repo の state（毎日変わる）から読むので、試験では空にする（2026-11-17：80% を超えて赤が 3 つになった）
+        from unittest import mock
+        with mock.patch.object(photo_store, "load", return_value={"stat": {}}):
+            out = render._admin_resources(res)
         self.assertIn('class="mt warn"', out)   # リポジトリ 88% は赤
         self.assertEqual(out.count('class="mt warn"'), 2)   # メモリのピーク 81% も赤・ディスク 28% は赤にしない
         self.assertIn("<b>11.00 GB</b> / 40.00 GB", out)
