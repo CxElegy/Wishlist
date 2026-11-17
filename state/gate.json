@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-17T19:31:08+00:00",
+ "checked": "2026-11-17T20:30:16+00:00",
  "fired": {
   "at": "2026-11-17T19:31:08+00:00",
   "results": {
@@ -59,65 +59,60 @@
    },
    "items": [
     "FROM",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "dota2",
-    "gelato pique",
     "ぐでたま",
-    "三星手机",
-    "周杰伦",
     "哈利波特剧集",
     "日本顶级网球赛事",
     "星巴克马克杯",
     "滑雪",
-    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-17T17:38:59+00:00",
+   "last_batch": "2026-11-17T19:37:08+00:00",
    "last_error": {
     "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 67,
+   "prog": 114,
    "prog_day": "2026-11-18",
    "ripe": [
-    "GTA 6",
-    "gelato pique",
-    "三星手机",
-    "周杰伦",
-    "漫威电影"
+    "FROM",
+    "MMORPG 新作",
+    "dota2",
+    "ぐでたま",
+    "星巴克马克杯",
+    "绝区零"
    ],
-   "sig": "cb5305bdcf01",
+   "sig": "a778843f91f7",
    "token_cap": 1000000,
-   "tokens_today": 124825,
-   "why": "整理待ちの記事 59 件（15 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 183370,
+   "why": "整理待ちの記事 12 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "f336dc338ee4",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 10 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -226,12 +221,12 @@
    "runs": 15
   },
   "2026-11-18": {
-   "batches": 4,
-   "cr": 3371351,
-   "cw": 113737,
-   "in": 92,
-   "out": 10996,
-   "runs": 2
+   "batches": 5,
+   "cr": 4159396,
+   "cw": 167245,
+   "in": 115,
+   "out": 16010,
+   "runs": 3
   }
  }
 }
