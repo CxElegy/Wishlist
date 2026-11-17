@@ -155,7 +155,7 @@ class Fill(unittest.TestCase):
         self.assertEqual(add["emblem"][1]["image"], "https://e.org/b.png")
         self.assertNotIn("emblem_kind", add)          # 種類は毎回規則から（config に残さない）
         self.assertEqual(add["emblem_state"], {"state": "ok", "have": 2, "at": 100, "note": "2 枚", "v": le.RULES,
-                                               "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V})
+                                               "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "gv": le.GONE_V})
 
     def test_note_uses_library_retry(self):
         b = {"id": 9, "name": "x", "wd": None, "config": {}}
@@ -177,14 +177,14 @@ class Fill(unittest.TestCase):
         bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv}}},   # 済み・今の規則 → 飛ばす
               {"id": 9, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv - 1}}},   # 済みでも名簿の規則が前の版 → 途中より先に数え直す
               {"id": 8, "config": {"emblem_state": {"state": "ok", "at": 0, "have": 3}}},   # 済みでも前の版の規則 → 作り直し
-              {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V}}},   # 今の規則で届かなかった・指紋なし → 1 回だけ（指紋が付く）
+              {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V, "gv": le.GONE_V}}},   # 今の規則で届かなかった・指紋なし → 1 回だけ（指紋が付く）
               {"id": 6, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2}}},   # 前の版の規則 → すぐ
               {"id": 3, "config": {"emblem_state": {"state": "failed", "at": 0}}},   # 0 枚 → 途中より先
               {"id": 4, "config": {"emblem_state": {"state": "running", "at": now, "have": 5}}},
               {"id": 7, "config": {"emblem_state": {"state": "running", "at": now, "have": 0}}},
               {"id": 5, "config": {}},
               {"id": 10, "config": {"emblem_fandom": "jjk", "emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES}}},   # 届かなかったキャラの版面も名簿の版で
-              {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V}}},   # 手がかりなし・指紋なし → 1 回だけ
+              {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V, "gv": le.GONE_V}}},   # 手がかりなし・指紋なし → 1 回だけ
               {"id": 12, "config": {"emblem_state": {"state": "failed", "at": now - 60, "have": 49, "v": le.RULES, "nv": nv}}}]   # 公開の箱の小元素を今の壊れ方の規則で見ていない → 待たない
         self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 2, 7, 10, 12, 9, 4, 8, 6, 11])   # 指紋のない古い失敗（2・11）は 1 回だけ（指紋が付く）
 
@@ -192,7 +192,7 @@ class Fill(unittest.TestCase):
         """届かなかった版面でも名簿にまだ試していない人が多ければ、1 周するまで次の見回りでも続ける（店長 emblem_fill と同じ規則）。"""
         nv = emblem_fill.NAMES_V
         cfg0 = {"emblem_kind": "character", "emblem_who": [f"p{i}" for i in range(35)], "emblem_pool": 35, "emblem_fandom": "x"}
-        st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V, "m": le.material(cfg0)}
+        st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V, "gv": le.GONE_V, "m": le.material(cfg0)}
         for rounds, want in ((0, [1]), (3, [1]), (4, [])):
             b = {"id": 1, "config": {**cfg0, "emblem_state": {**st, "rounds": rounds}}}
             self.assertEqual([x["id"] for x in le.due([b], 10 ** 4)], want, rounds)
@@ -202,7 +202,7 @@ class Fill(unittest.TestCase):
         """届かなかった版面は、手がかり・規則の版が同じなら 1 日に 1 回だけ（見回りのたびには試さない）。変わったらすぐ。"""
         nv = emblem_fill.NAMES_V
         cfg0 = {"emblem_fandom": "jjk"}
-        st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V, "m": le.material(cfg0)}
+        st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V, "gv": le.GONE_V, "m": le.material(cfg0)}
         b = {"id": 1, "config": {**cfg0, "emblem_state": st}}
         self.assertEqual(le.due([b], le.RETRY_S - 1), [])   # 1 日たつまでは試さない
         self.assertEqual([x["id"] for x in le.due([b], le.RETRY_S)], [1])   # 材料が同じでも日に 1 回（F10：お客さまの版面が 41 時間止まった）
@@ -215,7 +215,7 @@ class Fill(unittest.TestCase):
         """済み・材料待ちの版面でも、名簿の先頭の欠けた人の縮めた網址の札が解けていなければ番に入る（E24：漫威电影 Chris Hemsworth）。解いた（emblem_small_tried）あとは入らない。"""
         u = "https://static.wikia.nocookie.net/x/images/1/1f/Thor-chris-hemsworth-2.jpg/revision/latest/scale-to-width-down/600?cb=1"
         cfg0 = {"emblem_fandom": "mcu", "emblem_who": ["Chris Hemsworth"], "emblem_reject": [u], "emblem": []}
-        st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "m": le.material(cfg0)}
+        st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "gv": le.GONE_V, "m": le.material(cfg0)}
         b = {"id": 1, "name": "M", "config": {**cfg0, "emblem_state": st}}
         self.assertEqual([x["id"] for x in le.due([b], 10 ** 4)], [1])
         b["config"]["emblem_small_tried"] = [u]
@@ -525,7 +525,7 @@ class ReachSwap(unittest.TestCase):
 
     def test_ok_board_with_unreached_body_is_due_until_tries_are_used(self):
         wide = dict(self.WIDE)
-        ok = {"id": 1, "name": "A", "config": {"emblem_state": {"state": "ok", "have": 1, "at": 5, "v": le.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}, "emblem": [wide]}}
+        ok = {"id": 1, "name": "A", "config": {"emblem_state": {"state": "ok", "have": 1, "at": 5, "v": le.RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "gv": le.GONE_V}, "emblem": [wide]}}
         self.assertEqual([b["id"] for b in le.due([ok], 100)], [1])
         used = {**ok, "config": {**ok["config"], "emblem_reach_tried": {wide["image"]: emblem_fill.REACH_TRIES}}}
         self.assertEqual(le.due([used], 100), [])
