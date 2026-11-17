@@ -1,32 +1,32 @@
 {
- "admin": "3c454409a228",
- "admin-ai": "4a39002192c2",
+ "admin": "b0ca5e69b333",
+ "admin-ai": "70c4d62607a7",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "44688c51"
+   "ad09ae28"
   ],
   "tokens": [
    "AI 編集のトークン",
    "45585836"
   ]
  },
- "admin-boards": "9f8dd7ef3a2f",
+ "admin-boards": "7759984591da",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "61c7498d"
+   "b6c76bee"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "4412020b3b17",
+ "admin-emblem": "9ec738148428",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "8a14a690"
+   "c6970c25"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "59bd0723667a",
+ "admin-now": "1f4175e8577d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "ca48ff12"
+   "51002572"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "763a75e0"
+   "38fb51e5"
   ],
   "term-panel": [
    "ライブログ",
-   "462ee441"
+   "b22412a0"
   ]
  },
- "admin-system": "55464adbcd88",
+ "admin-system": "c8f48a3e9ce0",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cc66b93f"
+   "34b42855"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "728d248e"
+   "2f1a8928"
   ]
  },
  "admin_marks": {},
- "heat": "e7d2d402377c",
+ "heat": "e2950e35caef",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "5e0fb255"
+   "34e69fd3"
   ],
   "ranking": [
    "ランキング",
-   "9526428b"
+   "feac2a8e"
   ]
  },
- "index": "138a37ca6b4f",
+ "index": "44f50f781197",
  "index_marks": {
   "front": [
    "トップ",
-   "196e60f9"
+   "0f670f5e"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "21769beb"
+   "06f226bb"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1417cd72"
+   "7e776a52"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "04b1d025"
+   "9bce684e"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "038d74d3"
   ]
  },
- "updated": "11.18 04:18",
+ "updated": "11.18 04:27",
  "wishlist": "873a4d809d9a"
 }

@@ -28,6 +28,7 @@
   "https://kbench.com/?q=node/283281": "https://www.bing.com/th?id=ONUT.u6PsJ-1gxyLQhEBAa2Ub2w&pid=News&w=700",
   "https://komonews.com/seattle-refined/gallery/paws-lynnwood-black-cats-and-dogs-adopt-foster-rescue-shelter-halloween-superstitions-myths-animals-pnw-pets?photo=2": "https://komonews.com/resources/media2/16x9/1280/1320/center/90/d4073018-af99-405a-b357-6a0a1e8399d7-BlackCat2.jpg",
   "https://mndaily.com/arts-entertainment/following-a-year-of-delays-grand-theft-auto-vi-is-nearly-here/11/16/2026/eicmndaily-com/": "https://mndaily.com/wp-content/uploads/2026/11/GTALead.png",
+  "https://n.yam.com/Article/20261117552069": "https://ni.yam.com/20261117/819x1024-6ef66db0b69953af.webp",
   "https://news.dellows.jp/992392/": null,
   "https://news.infoseek.co.jp/article/inside_190908/": "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_190908_0-enlarge.jpg",
   "https://news.ltn.com.tw/news/politics/breakingnews/5636425": "https://img.ltn.com.tw/Upload/news/600/2026/11/11/php2ObZRT.jpg",
@@ -47,6 +48,7 @@
   "https://t.co/1NMYmLLW1U": null,
   "https://t.co/Io7wPwYFPN": null,
   "https://t.co/qKM35OaOIF": "https://images-fe.ssl-images-amazon.com/images/G/09/prime/yourprime/yourprime-client-fallback._V314779227_.png",
+  "https://thetab.com/2026/11/17/every-single-reason-the-upcoming-hbo-harry-potter-series-just-feels-weird-and-off": "https://www.bing.com/th?id=ONUT.LKuT1oYT-6V6WrWSEG0YAA&pid=News&w=1200",
   "https://udn.com/news/amp/story/7320/9873667": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/12/35509846.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=960&sl=W&fw=800&exp=3600",
   "https://vergemagazine.co.uk/starbucks-unveils-new-mummy-frappuccino-and-halloween-cake-pop-for-spooky-season-2026/": "https://vergemagazine.co.uk/wp-content/uploads/2026/10/16x9-@2X-1-Medium-1.jpg",
   "https://www.66wz.com/wendu/system/2026/11/12/105871102.shtml": "https://mmbiz.qpic.cn/mmbiz_png/fXeVwORdalR2DH0CBIemW8EjREoAicFtVoO4F01lgoGxNZoAocFmOtHLYoPibuxeJurdDhMn2v9ibAtIZ7Bdib0u598oUicgD3vpNFk7JP5pTIeA/640?wx_fmt=png&from=appmsg#imgIndex=4",
@@ -1298,6 +1300,48 @@
   },
   {
    "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-17",
+   "hits": [],
+   "image": "https://ni.yam.com/20261117/819x1024-6ef66db0b69953af.webp",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "蕃新聞",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "《復仇者聯盟：末日崛起》第二波預售情報重磅公開",
+   "url": "https://n.yam.com/Article/20261117552069",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 5,
+   "because": "哈利波特剧集",
+   "date": "2026-11-17",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.LKuT1oYT-6V6WrWSEG0YAA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
+   "score": 6,
+   "source": "The Tab",
+   "taste": [
+    [
+     "作品:哈利波特剧集",
+     2
+    ]
+   ],
+   "title": "Every single reason the upcoming HBO Harry Potter series just feels weird and off",
+   "url": "https://thetab.com/2026/11/17/every-single-reason-the-upcoming-hbo-harry-potter-series-just-feels-weird-and-off",
+   "words": [],
+   "work": "哈利波特剧集"
+  },
+  {
+   "batch": 5,
    "because": "The Mandalorian",
    "date": "2026-11-16",
    "hits": [],
@@ -1381,7 +1425,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "dota2",
    "date": "2026-11-17",
    "hits": [],
@@ -1402,7 +1446,7 @@
    "work": "dota2"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "dota2",
    "date": "2026-11-17",
    "hits": [],
@@ -1933,11 +1977,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1945,15 +1989,15 @@
    8
   ],
   [
-   "galaxy",
-   7
-  ],
-  [
    "作品:三星手机",
    7
   ],
   [
    "三星 Galaxy",
+   7
+  ],
+  [
+   "galaxy",
    7
   ]
  ]
