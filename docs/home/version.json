@@ -1,32 +1,32 @@
 {
- "admin": "29811998e2a6",
- "admin-ai": "cee7c2498df7",
+ "admin": "9a8502df2fc2",
+ "admin-ai": "9f3c18e27de5",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "51e86b94"
+   "36545232"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "da3e4329"
+   "80e0ea80"
   ]
  },
- "admin-boards": "6ffdd8e43a23",
+ "admin-boards": "0a822112b937",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "4e7caaf4"
+   "c1cd46df"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "88f0d21d5b87",
+ "admin-emblem": "7a8a4f53ae81",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "9a6c7619"
+   "a28f3c4b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "f89adec48f36",
+ "admin-now": "d2eb0476d645",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5ff3eedd"
+   "6e634edf"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "ede26171"
+   "94bca1a0"
   ]
  },
- "admin-system": "4ba9cfe6f8dd",
+ "admin-system": "e4326fcd1f8d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d80f0d85"
+   "21a380d4"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d613d6be"
+   "8bbce6d2"
   ]
  },
  "admin_marks": {},
- "heat": "0e4667060021",
+ "heat": "d6486ecfdce1",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "b5679813"
+   "e49c5727"
   ],
   "ranking": [
    "ランキング",
-   "d929922d"
+   "eb52f9e7"
   ]
  },
- "index": "977d080e473b",
+ "index": "c8149f69f511",
  "index_marks": {
   "front": [
    "トップ",
-   "d50ab4ec"
+   "b372deb1"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "d2dcfa0f"
+   "3628d329"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "cb36427a"
+   "6cc03198"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "0ddb4c3d"
+   "4cd4a245"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "b2dd4fac"
   ]
  },
- "updated": "11.17 21:38",
+ "updated": "11.17 21:42",
  "wishlist": "7ca07c85eea0"
 }
