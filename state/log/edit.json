@@ -1,47 +1,5 @@
 [
 {
-"at": "2026-11-15T06:39:05+00:00",
-"text": "2026-11-15 第 1 バッチを出刊：A2O LITE、Vaundy（2 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4.0万・キャッシュ読み 40.9万・出力 1,515",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.63,
-"mem_total": 16869146624,
-"mem_free": 15934353408,
-"disk_used": 10088222720,
-"disk_free": 31195312128,
-"disk_total": 41283534848,
-"peak": 359305216
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Vaundy"
-],
-"stories": 5,
-"left": 0,
-"edited": 18,
-"run": 1794724430.3288825,
-"tok": {
-"in": 14,
-"cw": 39925,
-"cr": 409136,
-"out": 1515,
-"calls": 7,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 450590,
-"secs": 315,
-"run_tok": {
-"in": 14,
-"cw": 39925,
-"cr": 409136,
-"out": 1515,
-"calls": 7,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-15T08:40:33+00:00",
 "text": "2026-11-15 第 1 バッチを出刊：周杰伦（1 版面・2 本・残り 1 版面） · token 新規入力 4.5万・キャッシュ読み 87.2万・出力 3,316",
 "level": "ok",
@@ -2168,5 +2126,44 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 669025
+},
+{
+"at": "2026-11-17T01:55:37+00:00",
+"text": "2026-11-17 第 1 バッチを出刊：BLEACH Mirrors High、GTA 6、Vaundy、あつ森、ぐでたま、三星手机 ほか 2（8 版面・15 本・残り 5 版面） · token 新規入力 4.8万・キャッシュ読み 91.9万・出力 3,996",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.36,
+"mem_total": 16869134336,
+"mem_free": 15765987328,
+"disk_used": 10100641792,
+"disk_free": 31182893056,
+"disk_total": 41283534848,
+"peak": 535683072
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High",
+"GTA 6",
+"Vaundy",
+"あつ森",
+"ぐでたま",
+"三星手机",
+"日本顶级网球赛事",
+"星巴克马克杯"
+],
+"stories": 15,
+"left": 5,
+"edited": 18,
+"run": null,
+"tok": {
+"in": 27,
+"cw": 48267,
+"cr": 919203,
+"out": 3996,
+"calls": 14,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 971493
 }
 ]
