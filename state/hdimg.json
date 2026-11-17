@@ -1280,19 +1280,6 @@
   "target": 1280,
   "v": 3
  },
- "https://images.chinatimes.com/newsphoto/2026-11-17/656/20261117004516.jpg": {
-  "w": 656,
-  "h": 369,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.492,
-  "local": "pics/bdd56ee7b546a753.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
  "https://images.cnbctv18.com/uploads/2026/11/paapa-essiedu-2026-11-2a0b32fa32faf440241bccfa64077ce8.jpg?im=FitAndFill,width=1200,height=675": {
   "w": 1200,
   "h": 675,
@@ -3902,6 +3889,12 @@
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
   "h": 287,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.eqDivri85H5wQVjtSRHGzg&pid=News&w=640": {
+  "w": 640,
+  "h": 426,
   "target": 720,
   "v": 3
  },
