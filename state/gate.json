@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-17T01:35:02+00:00",
+ "checked": "2026-11-17T02:31:30+00:00",
  "fired": {
   "at": "2026-11-17T01:35:02+00:00",
   "results": {
@@ -55,15 +55,6 @@
     "sig": "b0c0fca966b2"
    },
    "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "gelato pique",
     "lib:SPY×FAMILY",
     "lib:【推しの子】",
     "lib:ゼルダの伝説",
@@ -71,62 +62,45 @@
     "lib:原神",
     "lib:呪術廻戦",
     "lib:葬送のフリーレン",
-    "lib:鬼滅の刃",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "lib:鬼滅の刃"
    ],
-   "last_batch": "2026-11-16T23:14:35+00:00",
+   "last_batch": "2026-11-17T02:10:47+00:00",
    "last_error": {
     "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 255,
+   "prog": 330,
    "prog_day": "2026-11-17",
-   "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影"
-   ],
-   "sig": "b0c0fca966b2",
+   "ripe": [],
+   "sig": "eb0c1812c74e",
    "token_cap": 1000000,
-   "tokens_today": 160438,
-   "why": "整理待ちの記事 171 件（25 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 392636,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "Astrae Oratio",
-    "绝区零",
-    "周杰伦",
-    "The Mandalorian"
-   ],
-   "need": true,
-   "sig": "7a150f85896a",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン"
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -227,12 +201,12 @@
    "runs": 13
   },
   "2026-11-17": {
-   "batches": 9,
-   "cr": 3264814,
-   "cw": 141885,
-   "in": 77,
-   "out": 18476,
-   "runs": 2
+   "batches": 13,
+   "cr": 7765891,
+   "cw": 351884,
+   "in": 203,
+   "out": 40549,
+   "runs": 6
   }
  }
 }
