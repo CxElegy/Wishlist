@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-17T19:17:59+00:00",
+ "changed": true,
+ "checked": "2026-11-17T19:31:08+00:00",
  "fired": {
-  "at": "2026-11-17T17:34:46+00:00",
+  "at": "2026-11-17T19:31:08+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -43,29 +43,35 @@
    "edit": 13
   },
   "2026-11-18": {
-   "edit": 2
+   "edit": 3
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-17T17:34:46+00:00",
+    "at": "2026-11-17T19:31:08+00:00",
     "attempts": 1,
     "day": "2026-11-18",
-    "prog": 66,
-    "resp": "cse_01W4x6f999taHFrYTdrAtjai",
-    "sig": "e7b644d87c1c"
+    "prog": 67,
+    "resp": "",
+    "sig": "cb5305bdcf01"
    },
    "items": [
     "FROM",
+    "GTA 6",
+    "ILLIT",
     "MMORPG 新作",
     "dota2",
     "gelato pique",
     "ぐでたま",
     "三星手机",
     "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
     "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
     "绝区零"
    ],
    "last_batch": "2026-11-17T17:38:59+00:00",
@@ -76,35 +82,42 @@
    "need": true,
    "prog": 67,
    "prog_day": "2026-11-18",
-   "ripe": [],
-   "sig": "93c9e230a93e",
+   "ripe": [
+    "GTA 6",
+    "gelato pique",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
+   ],
+   "sig": "cb5305bdcf01",
    "token_cap": 1000000,
    "tokens_today": 124825,
-   "why": "整理待ちの記事 11 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 59 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "f336dc338ee4",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 10 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
