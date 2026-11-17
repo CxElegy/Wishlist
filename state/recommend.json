@@ -61,6 +61,7 @@
   "https://www.androidheadlines.com/2026/11/galaxy-s27-ultra-and-pro-wallpapers-are-here-ahead-of-time.html": "https://www.bing.com/th?id=ONUT.M7t11GqdRNZ4_lNFWPuJMg&pid=News&w=1154",
   "https://www.bgr.com/2313174/enough-compact-android-phones-kickstarter/": "https://www.bgr.com/img/gallery/if-you-miss-compact-phones-this-brand-is-trying-to-resurrect-them/l-intro-1794398036.jpg",
   "https://www.chinapress.com.my/20261112/%E9%93%B2%E5%B1%8E%E5%AE%98%E6%AC%A0%E9%92%B1%E9%80%BE1-2%E4%B8%87-12%E5%8F%AA%E5%B9%BC%E7%8C%AB%E9%81%AD%E6%B3%95%E6%8B%8D%E6%8A%B5%E5%80%BA/": "https://www.chinapress.com.my/wp-content/uploads/2026/11/2026-11-11-Chinapress-125.jpg",
+  "https://www.chinatimes.com/realtimenews/20261117004515-260404": "https://images.chinatimes.com/newsphoto/2026-11-17/656/20261117004516.jpg",
   "https://www.chosun.com/english/opinion-en/2026/11/12/GDGHSFCY7FDMTBSMF2F7HFT5HQ/": "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true",
   "https://www.cool-style.com.tw/wd2/archives/1365694-%E3%80%8Agta-6%E3%80%8B%E7%99%BC%E5%94%AE%E5%9C%A8%E5%8D%B3%EF%BC%8C%E8%A5%BF%E7%8F%AD%E7%89%99%E6%95%99%E6%8E%88%E5%AE%A3%E5%B8%83%E3%80%8C%E4%BD%9C%E6%A5%AD%E5%85%A8%E5%8F%96%E6%B6%88%E3%80%81": "https://cdn-origin.cool-style.com.tw/cool/2026/11/collage54.png",
   "https://www.crank-in.net/trend/item/194105/1": "https://www.crank-in.net/img/db/263119116118117_1200.jpg",
@@ -1287,6 +1288,27 @@
   },
   {
    "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-17",
+   "hits": [],
+   "image": "https://images.chinatimes.com/newsphoto/2026-11-17/656/20261117004516.jpg",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "中時新聞網",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "快設鬧鐘！《復仇者聯盟5》預售開跑 限定小卡曝光",
+   "url": "https://www.chinatimes.com/realtimenews/20261117004515-260404",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
    "because": "A2O LITE",
    "date": "2026-11-16",
    "hits": [],
@@ -1328,7 +1350,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "The Mandalorian",
    "date": "2026-11-15",
    "hits": [],
@@ -1433,7 +1455,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-11-14",
    "hits": [],
@@ -1982,11 +2004,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ]
  ]

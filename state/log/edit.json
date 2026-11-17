@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-15T17:35:23+00:00",
-"text": "2026-11-16 第 3 バッチを出刊：FROM（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 1,968・キャッシュ読み 32.1万・出力 1,079",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.28,
-"mem_total": 16869146624,
-"mem_free": 15898779648,
-"disk_used": 10092593152,
-"disk_free": 31190941696,
-"disk_total": 41283534848,
-"peak": 416210944
-},
-"batch": 3,
-"boards": [
-"FROM"
-],
-"stories": 1,
-"left": 0,
-"edited": 7,
-"run": 1794763614.145509,
-"tok": {
-"in": 7,
-"cw": 1961,
-"cr": 320960,
-"out": 1079,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 324007,
-"secs": 510,
-"run_tok": {
-"in": 34,
-"cw": 52795,
-"cr": 1254891,
-"out": 6968,
-"calls": 18,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-15T20:25:23+00:00",
 "text": "2026-11-16 第 1 バッチを出刊：ILLIT（1 版面・1 本・残り 4 版面） · token 新規入力 4.1万・キャッシュ読み 64.8万・出力 2,306",
 "level": "ok",
@@ -2179,5 +2138,51 @@
 "calls": 20,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-17T13:49:12+00:00",
+"text": "2026-11-17 第 1 バッチを出刊：A2O LITE、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作、dota2 ほか 9（15 版面・59 本・残り 3 版面） · token 新規入力 5.1万・キャッシュ読み 77.8万・出力 3,246",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.72,
+"mem_total": 16869134336,
+"mem_free": 15856107520,
+"disk_used": 10096402432,
+"disk_free": 31187132416,
+"disk_total": 41283534848,
+"peak": 439427072
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"MMORPG 新作",
+"dota2",
+"あつ森",
+"ぐでたま",
+"三星手机",
+"周杰伦",
+"哈利波特剧集",
+"星巴克马克杯",
+"滑雪",
+"漫威电影",
+"猫用品"
+],
+"stories": 59,
+"left": 3,
+"edited": 22,
+"run": null,
+"tok": {
+"in": 23,
+"cw": 50774,
+"cr": 778167,
+"out": 3246,
+"calls": 12,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 832210
 }
 ]
