@@ -418,6 +418,19 @@
   ],
   "why": "看不清"
  },
+ "https://attach.setn.com/newsimages/2026/11/15/5789231-PH.jpg": {
+  "w": 760,
+  "h": 440,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.485,
+  "local": "pics/e2a5dcb96966f3b4.webp",
+  "out": [
+   1280,
+   741
+  ],
+  "why": "看不清"
+ },
  "https://automaton-media.com/en/wp-content/uploads/2026/11/20261113-75190-header.jpg": {
   "w": 1305,
   "h": 852,
@@ -1676,12 +1689,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/11/17/5644169_1.jpg": {
-  "w": 800,
-  "h": 876,
-  "target": 1280,
-  "v": 3
- },
  "https://img.ltn.com.tw/Upload/news/600/2026/11/11/php2ObZRT.jpg": {
   "w": 800,
   "h": 622,
@@ -1770,19 +1777,6 @@
   "target": 720,
   "v": 3
  },
- "https://img1.mydrivers.com/img/20261117/S2afe0836-b1cb-4240-b0f6-7901ba11f416.png": {
-  "w": 600,
-  "h": 415,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.489,
-  "local": "pics/22bb4e5b9ee58840.webp",
-  "out": [
-   1280,
-   885
-  ],
-  "why": "看不清"
- },
  "https://img1.newsis.com/2026/09/17/NISI20260917_0002242122_web.jpg": {
   "w": 720,
   "h": 505,
@@ -1795,6 +1789,13 @@
   "h": 946,
   "target": 1280,
   "v": 3
+ },
+ "https://img2.westca.com/uploads/202611/000000011998.jpg": {
+  "w": 660,
+  "h": 448,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.361
  },
  "https://img4.yna.co.kr/etc/inner/JP/2026/11/13/AJP20261113002200882_01_i_P4.jpg": {
   "w": 500,
@@ -3190,12 +3191,6 @@
  "https://q0.itc.cn/q_70/images03/20261112/5c27dd9c44fe40d49f3c453c9fdd0c1c.jpeg": {
   "w": 682,
   "h": 958,
-  "target": 1280,
-  "v": 3
- },
- "https://q4.itc.cn/q_70/images03/20261117/5188db02f14640cd9c05b8de654c69de.jpeg": {
-  "w": 690,
-  "h": 1005,
   "target": 1280,
   "v": 3
  },
