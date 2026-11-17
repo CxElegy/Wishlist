@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-17T14:54:49+00:00",
+ "changed": true,
+ "checked": "2026-11-17T16:18:00+00:00",
  "fired": {
   "at": "2026-11-17T13:41:14+00:00",
   "results": {
@@ -54,26 +54,20 @@
     "resp": "cse_01W4x6f8yrYT6PkzYHbb4hoC",
     "sig": "9d3744cf5e42"
    },
-   "items": [
-    "ILLIT",
-    "The Mandalorian",
-    "チェーンソーマン",
-    "日本顶级网球赛事",
-    "绝区零"
-   ],
+   "items": [],
    "last_batch": "2026-11-17T13:55:14+00:00",
    "last_error": {
     "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 676,
-   "prog_day": "2026-11-17",
+   "need": false,
+   "prog": 8,
+   "prog_day": "2026-11-18",
    "ripe": [],
-   "sig": "2110b77fcf48",
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 885353,
-   "why": "整理待ちの記事 5 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
