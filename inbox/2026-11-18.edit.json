@@ -1,6 +1,7 @@
 {
  "_covered": {
-  "漫威电影": 25
+  "漫威电影": 25,
+  "GTA 6": 23
  },
  "漫威电影": [
   {
@@ -50,6 +51,57 @@
    "refs": [
     20,
     23
+   ]
+  }
+ ],
+ "GTA 6": [
+  {
+   "headline": "全新 GTA 6 遊戲截圖展現 Leonida 的風暴與迷霧效果",
+   "highlight": "風暴與迷霧",
+   "blurb": "全新 GTA 6 截圖展現 Leonida 的風暴與迷霧天氣效果。",
+   "weight": "lead",
+   "refs": [
+    9,
+    11,
+    12
+   ],
+   "image": "https://img.asmedia.epimg.net/resizer/v2/UOFRRXQQGREZVP2RNPQXXZWFPY.jpg?auth=9e5d1b39f4bc08f6f145639ed061b4859ba97463baefd48e74808fa3b48f2f91&width=1472&height=828&smart=true"
+  },
+  {
+   "headline": "Your Final ‘GTA 6’ Checklist To Prepare For Launch",
+   "highlight": "Final ‘GTA 6’ Checklist",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23
+   ]
+  },
+  {
+   "headline": "GTA 6 Launches This Week, and Wall Street Has Already Set a $1.5 Billion Bar for Its First Weekend",
+   "highlight": "$1.5 Billion",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    8
+   ]
+  },
+  {
+   "headline": "The Metacritic Review Score Bar For ‘GTA 6’ Is Historically High",
+   "highlight": "Metacritic",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
+   ]
+  },
+  {
+   "headline": "Twitchers rejoice: GTA 6 will have 62 different species of birds",
+   "highlight": "62 different species of birds",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20
    ]
   }
  ]

@@ -800,6 +800,12 @@
   ],
   "why": "看不清"
  },
+ "https://d1epq84pwgteub.cloudfront.net/0e1d80f9cb2a4d89965a248e7bda62dc.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://d1lss44hh2trtw.cloudfront.net/assets/articles/2026/11/10/gta-6-gator_feature.jpg": {
   "w": 3840,
   "h": 2160,
@@ -1489,6 +1495,12 @@
  "https://img.4gamers.com.tw/news-image/5eb2ce4a-a6b4-4136-b48f-d788b877b3ea.jpg": {
   "w": 1600,
   "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img.asmedia.epimg.net/resizer/v2/UOFRRXQQGREZVP2RNPQXXZWFPY.jpg?auth=9e5d1b39f4bc08f6f145639ed061b4859ba97463baefd48e74808fa3b48f2f91&width=1472&height=828&smart=true": {
+  "w": 1472,
+  "h": 828,
   "target": 1280,
   "v": 3
  },
@@ -3633,6 +3645,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.4_WjmbQHty-xHY3L1L6aXw&pid=News&w=960": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.591,
+  "local": "pics/b762ade5db019835.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
   "h": 502,
@@ -3680,6 +3705,12 @@
  "https://www.bing.com/th?id=ONUT.MQcby3fiJa8yf5ao2dyInA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
+  "w": 697,
+  "h": 414,
   "target": 720,
   "v": 3
  },
