@@ -48,6 +48,12 @@
   "target": 720,
   "v": 3
  },
+ "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af8b61a6b6c3a05a6d731ba/1794841230408/Marvel+Studios+Reportedly+%2522Secretly%2522+Developing+IRON+MAN+4+With+Robert+Downey+Jr.+Potentially+Returning.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -779,12 +785,6 @@
   "target": 720,
   "v": 3
  },
- "https://contents.oricon.co.jp/upimg/news/2486000/2485303/20261008_170517_p_o_27890202.jpg": {
-  "w": 1200,
-  "h": 848,
-  "target": 720,
-  "v": 3
- },
  "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/13085550/pet-prt-175270-5-1-261113005546608.jpeg": {
   "w": 1000,
   "h": 1000,
@@ -1043,12 +1043,6 @@
   "w": 1200,
   "h": 874,
   "target": 720,
-  "v": 3
- },
- "https://getnavi.jp/wp-content/uploads/2026/11/71O1DhluJJL._AC_SL1500_.jpg": {
-  "w": 1200,
-  "h": 1223,
-  "target": 1280,
   "v": 3
  },
  "https://gonintendo.com/attachments/image/88856/file/medium-0d951c4558c74d8a62690b066a64bde9.jpg": {
@@ -1599,12 +1593,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.18183.com/image/2026/11/17/cf1f4b2e7398310954adf8de3a3e6cb3.jpg@q_80": {
-  "w": 2560,
-  "h": 1440,
-  "target": 720,
-  "v": 3
- },
  "https://img.4gamers.com.tw/news-image/5eb2ce4a-a6b4-4136-b48f-d788b877b3ea.jpg": {
   "w": 1600,
   "h": 900,
@@ -1786,6 +1774,12 @@
  "https://img4.yna.co.kr/etc/inner/JP/2026/11/13/AJP20261113002200882_01_i_P4.jpg": {
   "w": 500,
   "h": 375,
+  "target": 720,
+  "v": 3
+ },
+ "https://imgv2.azureedge.net/wpupload/2026/11/1-6af2861874b86.jpg": {
+  "w": 800,
+  "h": 533,
   "target": 720,
   "v": 3
  },
@@ -2075,12 +2069,6 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
-  "v": 3
- },
- "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg": {
-  "w": 1024,
-  "h": 768,
-  "target": 720,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png": {
@@ -2666,6 +2654,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-10169848-lasisa-000-22-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/8202a5d5846596df.webp",
+  "out": [
+   1200,
+   800
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000165-spnannex-000-14-view.jpg?exp=10800": {
   "target": 720,
   "v": 3,
@@ -2688,6 +2688,12 @@
  "https://ni.yam.com/20261112/ewc-2027-dota2-golden-trophy-confetti-20261112-ad7a67cd92053b92.webp": {
   "w": 1200,
   "h": 764,
+  "target": 720,
+  "v": 3
+ },
+ "https://ni.yam.com/20261113/11HECL72ZT1E88G8CS0K0-e33401fca4a21a13.webp": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -2715,6 +2721,13 @@
   "target": 720,
   "v": 3
  },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1eb9127c7e124628962148a4f6c6374f.png": {
+  "w": 448,
+  "h": 252,
+  "target": 720,
+  "v": 3,
+  "blur": 0.373
+ },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/32887aae2dd548b1bad1e5d737a0e726.jpg": {
   "w": 736,
   "h": 414,
@@ -2731,12 +2744,6 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/614d674cbc04425092f91517c1246529.png": {
   "w": 800,
   "h": 450,
-  "target": 720,
-  "v": 3
- },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/6a864cda268d4954bef981a244e95b83.jpg": {
-  "w": 750,
-  "h": 750,
   "target": 720,
   "v": 3
  },
@@ -2805,12 +2812,6 @@
  "https://p2.bahamut.com.tw/B/2KU/16/30fcd6de225e1cc72fc79a41cb212yc5.PNG": {
   "w": 1096,
   "h": 617,
-  "target": 720,
-  "v": 3
- },
- "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG": {
-  "w": 500,
-  "h": 282,
   "target": 720,
   "v": 3
  },
@@ -2978,6 +2979,12 @@
  "https://prcdn.freetls.fastly.net/release_image/18505/4512/18505-4512-07ffbf467d1a4b374f187c363c6908fe-1081x1350.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1009,
   "h": 1260,
+  "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/18505/4600/18505-4600-f5483b6687a3148c15338c473be2cf52-1801x2700.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff": {
+  "w": 901,
+  "h": 1350,
   "target": 1280,
   "v": 3
  },
@@ -3444,6 +3451,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.407
+ },
+ "https://static.sanyonews.jp/image/article/size1/9/b/0/5/9b05df79c18042eeebd337cf4f085cfd_1.jpg": {
+  "w": 640,
+  "h": 452,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/b/7/a/0/b7a0d8ce561d7b429b8205a775c650a6_1.jpg": {
   "w": 640,
@@ -4015,12 +4028,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.PZP4fsmTflVuekqQxxzn9g&pid=News&w=700": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.SGu_tvWdfC0QWRldElgEdg&pid=News&w=650": {
   "w": 650,
   "h": 270,
@@ -4036,12 +4043,6 @@
  "https://www.bing.com/th?id=ONUT.VBdeB2_gRzAbhykIu63Gdw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Wf2TzzrFBp0EjJ9Pi-VihA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4247,6 +4248,12 @@
   "w": 1500,
   "h": 1000,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.fashion-press.net/img/news/153462/top.jpg?1794886283": {
+  "w": 1398,
+  "h": 932,
+  "target": 720,
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-Ultra-.jpg": {

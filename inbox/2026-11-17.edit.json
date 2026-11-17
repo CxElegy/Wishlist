@@ -394,11 +394,11 @@
   "绝区零": 5,
   "Astrae Oratio": 4,
   "The Mandalorian": 5,
-  "dota2": 3,
+  "dota2": 6,
   "チェーンソーマン": 3,
   "日本顶级网球赛事": 2,
   "A2O LITE": 3,
-  "gelato pique": 2,
+  "gelato pique": 12,
   "星巴克马克杯": 1,
   "滑雪": 5,
   "MMORPG 新作": 15,
@@ -557,7 +557,8 @@
    "weight": "lead",
    "refs": [
     1
-   ]
+   ],
+   "image": "https://otakukart.com/wp-content/uploads/2026/11/Valves-free-to-play-MOBA-generated-an-estimated-94.46-million-in-gross-Steam-revenue-during-October-2026.-Image-via-Valve.jpg"
   },
   {
    "headline": "DO KONCA Dota 2 (DK)チームの概要と視聴者統計",
@@ -575,6 +576,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "Dota 2 BLAST SLAM 9 2026: Schedule, teams, format, and prize pool",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -635,10 +645,27 @@
  ],
  "gelato pique": [
   {
+   "headline": "志尊淳氏をgelato pique Holiday Museに初起用！あたたかなルームウェアに包まれて過ごす最新ビジュアルとスペシャル動画を公開",
+   "highlight": "志尊淳氏をgelato pique Holiday Museに初起用",
+   "blurb": "11/17(火)より「HOLIDAY COLLECTION 2026 with Jun Shison」の最新ビジュアルとスペシャル動画を公開。",
+   "weight": "lead",
+   "refs": [
+    7,
+    5,
+    8,
+    6,
+    9,
+    10,
+    11,
+    4
+   ],
+   "image": "https://prcdn.freetls.fastly.net/release_image/18505/4600/18505-4600-f5483b6687a3148c15338c473be2cf52-1801x2700.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff"
+  },
+  {
    "headline": "ジェラート ピケ×ジョエル・ロブション、配色ラインのふわふわカーディガン＆ワンピース",
    "highlight": "",
    "blurb": "ジェラート ピケとジョエル・ロブションのコラボで、配色ラインのふわふわカーディガンとワンピースが登場。",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     1
    ],
@@ -651,6 +678,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "ジェラート ピケのクリスマスルームウェア、“窓辺のベア”柄カーディガンやもこもこボーダーニット",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
    ]
   }
  ],
