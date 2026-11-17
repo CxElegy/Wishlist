@@ -1,6 +1,6 @@
 {
  "date": "2026-11-17",
- "edit_sig": "405e40df1cca",
+ "edit_sig": "be36507dc486",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -534,17 +534,19 @@
    "cover": null,
    "facts": [],
    "name": "ぐでたま",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "サンリオキャラ「ぐでたま」のクレープに新メニューが登場。",
      "date": "2026-11-16",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "＜画像2 / 3＞サンリオキャラ「ぐでたま」のクレープに新メニュー",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBXeWZOS1BvaVdGUkhQUF80SkhQbm1JMTZCX0h4NW1meGEyNEhvSzNETFlheEFOWVlaR09jRktOaGFqajFKYmsyU1Ezbnp5NnlvajAxT2dBa216UDRYZmZwaEIzazVIMzJw?oc=5"
+     "headline": "サンリオキャラ「ぐでたま」のクレープに新メニュー",
+     "highlight": "クレープに新メニュー",
+     "image": "https://news.walkerplus.com/article/49501/266317_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/49501/image266318.html",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Gudetama",
    "theme": {
     "accent": "#885D0C",
@@ -606,15 +608,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-16",
-     "n": 6,
-     "source": "Bluesky",
-     "title": "A Sheriff Cobb Vanth on toned tan paper from this day in 2020. #StarWars #TheMandalorian",
-     "url": "https://bsky.app/profile/dmacalvert.bsky.social/post/3n2hmiwlkek2z"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -1112,15 +1105,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-16",
-     "n": 2,
-     "source": "Pirates & Princesses on MSN",
-     "title": "Starbucks Winter Wonderland collection hits stores Nov. 17: prices",
-     "url": "https://www.msn.com/en-us/news/other/starbucks-winter-wonderland-collection-hits-stores-nov-17-prices/ar-AA2hAbAO"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -1132,6 +1116,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.fashion-press.net/news/153423",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-16",
+     "headline": "Starbucks Winter Wonderland collection hits stores Nov. 17: prices",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hAe6i.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/starbucks-winter-wonderland-collection-hits-stores-nov-17-prices/ar-AA2hAbAO",
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",

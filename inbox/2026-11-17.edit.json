@@ -430,17 +430,18 @@
   "猫用品": 7,
   "绝区零": 8,
   "Astrae Oratio": 5,
-  "The Mandalorian": 5,
+  "The Mandalorian": 6,
   "dota2": 6,
   "チェーンソーマン": 3,
   "日本顶级网球赛事": 2,
   "A2O LITE": 3,
   "gelato pique": 12,
-  "星巴克马克杯": 1,
+  "星巴克马克杯": 2,
   "滑雪": 9,
   "MMORPG 新作": 19,
   "FROM": 1,
-  "あつ森": 3
+  "あつ森": 3,
+  "ぐでたま": 1
  },
  "ILLIT": [
   {
@@ -758,6 +759,15 @@
     1
    ],
    "image": "https://www.fashion-press.net/img/news/153423/top.jpg?1794817828"
+  },
+  {
+   "headline": "Starbucks Winter Wonderland collection hits stores Nov. 17: prices",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "滑雪": [
@@ -893,6 +903,17 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "サンリオキャラ「ぐでたま」のクレープに新メニュー",
+   "highlight": "クレープに新メニュー",
+   "blurb": "サンリオキャラ「ぐでたま」のクレープに新メニューが登場。",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

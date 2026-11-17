@@ -1,48 +1,5 @@
 [
 {
-"at": "2026-11-15T15:39:16+00:00",
-"text": "2026-11-15 第 1 バッチを出刊：A2O LITE、Astrae Oratio、MMORPG 新作、Vaundy、dota2、gelato pique ほか 6（12 版面・32 本・残り 2 版面） · token 新規入力 4.4万・キャッシュ読み 104.3万・出力 3,192",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.3,
-"mem_total": 16869146624,
-"mem_free": 15859695616,
-"disk_used": 10088943616,
-"disk_free": 31194591232,
-"disk_total": 41283534848,
-"peak": 423387136
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"MMORPG 新作",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"チェーンソーマン",
-"星巴克马克杯",
-"滑雪",
-"漫威电影",
-"猫用品"
-],
-"stories": 32,
-"left": 2,
-"edited": 21,
-"run": null,
-"tok": {
-"in": 32,
-"cw": 43476,
-"cr": 1043244,
-"out": 3192,
-"calls": 16,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1089944
-},
-{
 "at": "2026-11-15T15:44:34+00:00",
 "text": "2026-11-15 第 1 バッチを出刊：A2O LITE、Astrae Oratio、GTA 6、MMORPG 新作、Vaundy、dota2 ほか 7（13 版面・38 本・残り 1 版面） · token 新規入力 4.7万・キャッシュ読み 133.7万・出力 4,324",
 "level": "ok",
@@ -2191,5 +2148,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1476777
+},
+{
+"at": "2026-11-17T10:42:07+00:00",
+"text": "2026-11-17 第 1 バッチを出刊：星巴克马克杯（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 4.1万・キャッシュ読み 61.7万・出力 2,200",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.76,
+"mem_total": 16869134336,
+"mem_free": 15882874880,
+"disk_used": 10925146112,
+"disk_free": 30358388736,
+"disk_total": 41283534848,
+"peak": 377643008
+},
+"batch": 1,
+"boards": [
+"星巴克马克杯"
+],
+"stories": 2,
+"left": 0,
+"edited": 21,
+"run": 1794911777.228831,
+"tok": {
+"in": 19,
+"cw": 41340,
+"cr": 616805,
+"out": 2200,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 660364,
+"secs": 350,
+"run_tok": {
+"in": 19,
+"cw": 41340,
+"cr": 616805,
+"out": 2200,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

@@ -1447,6 +1447,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hAe6i.img": {
+  "w": 1456,
+  "h": 819,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbUYl.img": {
   "w": 615,
   "h": 615,
@@ -2393,7 +2399,7 @@
  "https://news.walkerplus.com/article/49501/266317_615.jpg": {
   "w": 615,
   "h": 837,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://news.walkerplus.com/article/49841/268597_615.jpg": {
@@ -4202,12 +4208,6 @@
    1212
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ORMS.0f6ecd4a5ea590025e7b7208a420c90d&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
