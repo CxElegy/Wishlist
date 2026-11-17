@@ -1,32 +1,32 @@
 {
- "admin": "22c6db7ff9ef",
- "admin-ai": "5f07ac28f13f",
+ "admin": "0162ae74b65c",
+ "admin-ai": "86696ad93762",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "878cc885"
+   "388b3cca"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "ef97bb50"
+   "c0265332"
   ]
  },
- "admin-boards": "b00e4128dc4a",
+ "admin-boards": "d4dc0ddea523",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "9fd4605e"
+   "ea1c17aa"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "ce577d288519",
+ "admin-emblem": "b7421b04aa97",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "87534c40"
+   "948ae83a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "d6fb650e9658",
+ "admin-now": "f4c85ff92e44",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "eea5cd70"
+   "1a1b227c"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "42090c77"
+   "ba5095b9"
   ]
  },
- "admin-system": "39770c871b79",
+ "admin-system": "911f40e60ba8",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "eb212a4c"
+   "243331c2"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e7d785cf"
+   "e6a20f00"
   ]
  },
  "admin_marks": {},
- "heat": "e438810bcfb4",
+ "heat": "1cdeb8e34f6d",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "8ee505cd"
+   "121c462b"
   ],
   "ranking": [
    "ランキング",
-   "f9d8ef78"
+   "77273bd1"
   ]
  },
- "index": "64c7621cc67e",
+ "index": "86a661e98364",
  "index_marks": {
   "front": [
    "トップ",
-   "d586429d"
+   "530e1efe"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "ee3af054"
+   "653638b1"
   ],
   "w-130724c0": [
    "猫用品",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "b9bf3969"
+   "36de79bb"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "fd16821f"
+   "3628d329"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,15 +137,15 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "f58ffe20"
+   "f6493be3"
   ],
   "w-79b3c280": [
    "滑雪",
-   "6127e386"
+   "40374d11"
   ],
   "w-7a894105": [
    "周杰伦",
-   "e7060d13"
+   "5e59ce94"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "0ef49b2c"
+   "c9913317"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "7ca3bba8"
+   "f7a7e758"
   ]
  },
- "updated": "11.17 18:29",
+ "updated": "11.17 18:43",
  "wishlist": "7ca07c85eea0"
 }
