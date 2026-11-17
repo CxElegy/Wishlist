@@ -1,45 +1,5 @@
 [
 {
-"at": "2026-11-15T09:51:04+00:00",
-"text": "2026-11-15 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、GTA 6、The Mandalorian、Vaundy、dota2 ほか 3（9 版面・20 本・今日の整理待ちは全部終わり） · token 新規入力 4.3万・キャッシュ読み 75.9万・出力 2,874",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.34,
-"mem_total": 16869146624,
-"mem_free": 15899041792,
-"disk_used": 10091433984,
-"disk_free": 31192100864,
-"disk_total": 41283534848,
-"peak": 385576960
-},
-"batch": 1,
-"boards": [
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"GTA 6",
-"The Mandalorian",
-"Vaundy",
-"dota2",
-"星巴克马克杯",
-"猫用品",
-"绝区零"
-],
-"stories": 20,
-"left": 0,
-"edited": 19,
-"run": null,
-"tok": {
-"in": 23,
-"cw": 43276,
-"cr": 758615,
-"out": 2874,
-"calls": 12,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 804788
-},
-{
 "at": "2026-11-15T12:40:33+00:00",
 "text": "2026-11-15 第 1 バッチを出刊：GTA 6、ILLIT、MMORPG 新作、哈利波特剧集、漫威电影（5 版面・21 本・残り 8 版面） · token 新規入力 4.9万・キャッシュ読み 56.3万・出力 3,736",
 "level": "ok",
@@ -2194,5 +2154,37 @@
 "calls": 11,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-17T06:49:44+00:00",
+"text": "2026-11-17 第 1 バッチを出刊：MMORPG 新作（1 版面・3 本・残り 2 版面） · token 新規入力 5.3万・キャッシュ読み 94.5万・出力 4,582",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.38,
+"mem_total": 16869134336,
+"mem_free": 15780974592,
+"disk_used": 10092679168,
+"disk_free": 31190855680,
+"disk_total": 41283534848,
+"peak": 527470592
+},
+"batch": 1,
+"boards": [
+"MMORPG 新作"
+],
+"stories": 3,
+"left": 2,
+"edited": 19,
+"run": 1794897478.2005575,
+"tok": {
+"in": 27,
+"cw": 53046,
+"cr": 945284,
+"out": 4582,
+"calls": 14,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1002939
 }
 ]

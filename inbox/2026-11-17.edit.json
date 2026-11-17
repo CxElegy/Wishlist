@@ -10,7 +10,8 @@
     34,
     41,
     29,
-    56
+    56,
+    109
    ],
    "event": {
     "date": "2026-11-19",
@@ -29,7 +30,8 @@
     43,
     12,
     39,
-    10
+    10,
+    116
    ]
   },
   {
@@ -44,7 +46,8 @@
     45,
     75,
     54,
-    94
+    94,
+    114
    ]
   },
   {
@@ -99,7 +102,11 @@
     84,
     83,
     78,
-    86
+    86,
+    81,
+    92,
+    98,
+    106
    ],
    "image": "https://themainstreetmouse.com/wp-content/uploads/2026/06/Avengers-Secret-Wars.webp"
   },
@@ -113,7 +120,9 @@
     10,
     19,
     74,
-    73
+    73,
+    103,
+    104
    ]
   },
   {
@@ -132,7 +141,8 @@
     72,
     85,
     89,
-    88
+    88,
+    95
    ]
   },
   {
@@ -177,16 +187,25 @@
     5,
     35,
     37,
-    39
+    39,
+    46,
+    50
    ],
    "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/16/1794838128578_img_40f463c2.jpeg"
   },
   {
-   "headline": "Galaxy S27 Ultra’s Final Design May Not Be the Reboot Fans Wanted",
+   "headline": "Galaxy S27 Ultra、iPhone 18 Pro Maxに着想を得てデザイン全面刷新か",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    55,
+    56,
+    53,
+    54,
+    47,
+    48,
+    58,
     7,
     12,
     13,
@@ -196,11 +215,12 @@
    ]
   },
   {
-   "headline": "Samsung’s Expert RAW Is Getting a Major Redesign for the Galaxy S27",
+   "headline": "Galaxy S27向けExpert RAWに動画対応の兆し―開発版でUI刷新やRAW連写も",
    "highlight": "Expert RAW",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    49,
     11,
     3,
     14,
@@ -227,15 +247,17 @@
     26,
     36,
     38,
-    40
+    40,
+    52
    ]
   },
   {
-   "headline": "Samsung Galaxy S27 Series Stock Wallpapers Spotted in Firmware Files, Hint at Possible Colourways",
+   "headline": "全体的に明るめ？Galaxy S27シリーズのカラバリ判明？",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    44,
     23,
     28
    ]
@@ -246,6 +268,11 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
+    42,
+    51,
+    43,
+    45,
+    59,
     32,
     27,
     33,
@@ -259,7 +286,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    34
+    34,
+    60
    ]
   }
  ],
@@ -323,7 +351,9 @@
    "refs": [
     3,
     4,
-    5
+    5,
+    21,
+    16
    ],
    "image": "https://attach.setn.com/newsimages/2026/11/15/5789231-PH.jpg"
   },
@@ -335,7 +365,10 @@
    "refs": [
     8,
     11,
-    10
+    10,
+    14,
+    15,
+    22
    ]
   },
   {
@@ -344,16 +377,18 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    12
+    12,
+    19,
+    20
    ]
   }
  ],
  "_covered": {
-  "GTA 6": 108,
-  "漫威电影": 93,
-  "三星手机": 41,
+  "GTA 6": 121,
+  "漫威电影": 106,
+  "三星手机": 60,
   "哈利波特剧集": 17,
-  "周杰伦": 12,
+  "周杰伦": 23,
   "ILLIT": 13,
   "猫用品": 5,
   "绝区零": 5,
@@ -366,7 +401,7 @@
   "gelato pique": 2,
   "星巴克马克杯": 1,
   "滑雪": 5,
-  "MMORPG 新作": 5,
+  "MMORPG 新作": 15,
   "FROM": 1
  },
  "ILLIT": [
@@ -704,7 +739,11 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    11,
+    8,
+    9,
+    10
    ]
   }
  ],
