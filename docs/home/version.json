@@ -1,32 +1,32 @@
 {
- "admin": "a61f41c41aff",
- "admin-ai": "dd8733c3e37f",
+ "admin": "351d6cff78c1",
+ "admin-ai": "dc3323aafc52",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "09d0beb0"
+   "3887d214"
   ],
   "tokens": [
    "AI 編集のトークン",
    "f14ede5f"
   ]
  },
- "admin-boards": "a6f5d286f36a",
+ "admin-boards": "61c1eb8bdb84",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e8e035b6"
+   "291b273a"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "4de09dec236a",
+ "admin-emblem": "b0d481de26b1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1ba20620"
+   "04acee6f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "bf2cefc27424",
+ "admin-now": "729711159720",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9c4ab9e9"
+   "2656d3d9"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "de5d71b5"
+   "cdb2aa76"
   ],
   "term-panel": [
    "ライブログ",
-   "f456bfb4"
+   "f8a97356"
   ]
  },
- "admin-system": "5dbf6dcd56ea",
+ "admin-system": "f5fa0890cde6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "fc3df36b"
+   "32b29dc9"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8cb85420"
+   "79874ad9"
   ]
  },
  "admin_marks": {},
- "heat": "8a71b76db092",
+ "heat": "b757d89abb6e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "8f5f4ea1"
+   "76fb4ac8"
   ],
   "ranking": [
    "ランキング",
-   "33d99739"
+   "b210d9b9"
   ]
  },
- "index": "7c518f18a5d9",
+ "index": "99044fe22eb4",
  "index_marks": {
   "front": [
    "トップ",
-   "f821d624"
+   "917df0e0"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "e795d188"
+   "1bd4673e"
   ],
   "w-130724c0": [
    "猫用品",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "36de79bb"
+   "b9bf3969"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "5e59ce94"
+   "fff605ef"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "205af6f1"
+   "19cb3121"
   ],
   "w-f303ad09": [
    "绝区零",
    "4575d1e8"
   ]
  },
- "updated": "11.17 15:18",
+ "updated": "11.17 15:33",
  "wishlist": "4adaf3440014"
 }
