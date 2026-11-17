@@ -1,14 +1,14 @@
 {
- "admin": "aa9d174443d2",
- "admin-ai": "1be21278fecc",
+ "admin": "462b06c56c0a",
+ "admin-ai": "4d86b6320313",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "450c4ae6"
+   "287b14cb"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c7da9ab6"
+   "d71b148c"
   ]
  },
  "admin-boards": "7f4a8ce404cd",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "2ee5cee0ffc8",
+ "admin-emblem": "caf80d56525d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "0ba4b7fa"
+   "3e751384"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f063f9aab2d3",
  "admin-members_marks": {},
- "admin-now": "98c837b6c778",
+ "admin-now": "d300b96ff4ad",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "ca48ea55"
+   "e2571f2e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "557e21d5"
+   "5b4fc94e"
   ]
  },
- "admin-system": "44ec1ef43004",
+ "admin-system": "5667bb8d0de0",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c3d7abd6"
+   "243331c2"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8bce09e9"
+   "2ce24f59"
   ]
  },
  "admin_marks": {},
- "heat": "4eedb205d24f",
+ "heat": "c5bf83e9a094",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "6fe7cd2b"
+   "84ccdb72"
   ],
   "ranking": [
    "ランキング",
-   "63e2c3a8"
+   "9ff98aaf"
   ]
  },
- "index": "8c7b32a1f126",
+ "index": "314af20dc0fe",
  "index_marks": {
   "front": [
    "トップ",
-   "f3eec708"
+   "cbaba8af"
   ],
   "picks": [
    "気になるかも？",
@@ -141,11 +141,11 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "3462a61f"
+   "4ba78b0c"
   ],
   "w-7a894105": [
    "周杰伦",
-   "a8a72822"
+   "eac6e0b0"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "4f7fd9cc"
+   "a2461803"
   ],
   "w-f303ad09": [
    "绝区零",
    "4575d1e8"
   ]
  },
- "updated": "11.17 10:55",
+ "updated": "11.17 11:02",
  "wishlist": "4adaf3440014"
 }

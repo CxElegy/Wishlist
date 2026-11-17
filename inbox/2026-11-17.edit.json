@@ -88,7 +88,14 @@
     32,
     43,
     65,
-    64
+    64,
+    70,
+    69,
+    79,
+    81,
+    84,
+    83,
+    78
    ],
    "image": "https://themainstreetmouse.com/wp-content/uploads/2026/06/Avengers-Secret-Wars.webp"
   },
@@ -100,7 +107,9 @@
    "refs": [
     12,
     10,
-    19
+    19,
+    74,
+    73
    ]
   },
   {
@@ -114,7 +123,10 @@
     35,
     40,
     23,
-    25
+    25,
+    75,
+    72,
+    85
    ]
   },
   {
@@ -124,7 +136,8 @@
    "weight": "normal",
    "refs": [
     15,
-    17
+    17,
+    76
    ]
   },
   {
@@ -134,7 +147,8 @@
    "weight": "normal",
    "refs": [
     14,
-    16
+    16,
+    68
    ]
   }
  ],
@@ -251,7 +265,9 @@
    "weight": "lead",
    "refs": [
     3,
-    4
+    4,
+    17,
+    16
    ]
   },
   {
@@ -277,7 +293,8 @@
     1,
     5,
     9,
-    10
+    10,
+    15
    ]
   },
   {
@@ -286,7 +303,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    14
    ]
   }
  ],
@@ -312,15 +330,24 @@
     1,
     2
    ]
+  },
+  {
+   "headline": "周杰伦大屏票卖的是氛围还是观演 现场体验值不值",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "_covered": {
   "GTA 6": 93,
-  "漫威电影": 67,
+  "漫威电影": 85,
   "三星手机": 41,
-  "哈利波特剧集": 13,
-  "周杰伦": 6,
-  "ILLIT": 7,
+  "哈利波特剧集": 17,
+  "周杰伦": 9,
+  "ILLIT": 13,
   "猫用品": 4,
   "绝区零": 4,
   "Astrae Oratio": 3,
@@ -331,7 +358,7 @@
   "A2O LITE": 1,
   "gelato pique": 1,
   "星巴克马克杯": 1,
-  "滑雪": 1,
+  "滑雪": 5,
   "MMORPG 新作": 3
  },
  "ILLIT": [
@@ -343,7 +370,9 @@
    "refs": [
     3,
     1,
-    6
+    6,
+    10,
+    12
    ],
    "image": "https://thetv.jp/i/nw/1457877/19194822.jpg?w=1284"
   },
@@ -354,6 +383,33 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "ILLITと&TEAM 紅白歌合戦出場決定",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
+   ]
+  },
+  {
+   "headline": "11/30「CDTVライブ!ライブ!」出演アーティスト発表",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "ILLIT LIVE ‘PRESS START♥’ ENCORE in KOREA 予約パッケージ Play&Stay発売のご案内",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -538,6 +594,42 @@
     1
    ],
    "image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1493566334632657942/origin_1.jpg"
+  },
+  {
+   "headline": "【川場スキー場】11月20日より人工降雪開始、12月5日(土)オープンを予定",
+   "highlight": "12月5日(土)オープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "2026-27シーズン スキー場の「マイナ割」まとめ｜リフト券が最大39％引き",
+   "highlight": "最大39％引き",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "【アルピナリゾーツ】今冬シーズンもますます進化！アルピナリゾーツ6スキー場2026-27ウインターシーズンオープン情報",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "xID、マイナンバーカードを活用したデジタルIDアプリ「xID」を川場スキー場に提供",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "MMORPG 新作": [
