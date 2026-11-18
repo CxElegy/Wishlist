@@ -1,14 +1,14 @@
 {
- "admin": "bb56228a03a6",
- "admin-ai": "6cf6a4836b97",
+ "admin": "4cf7de3f6286",
+ "admin-ai": "1cd0d722a7e1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "439c7095"
+   "26355792"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "1ef28cb7"
+   "7e0eabef"
   ]
  },
  "admin-boards": "50a9a586c2ee",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "66eeac76d389",
+ "admin-emblem": "409c4eb37f3e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "08030a44"
+   "1f1bba59"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "df293dc8590f",
+ "admin-now": "de284e189281",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "adb0bbed"
+   "daabbe4b"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "1fec76a9"
+   "3328928f"
   ]
  },
- "admin-system": "67538c6aad98",
+ "admin-system": "1fce9a43ecc4",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "51278a56"
+   "24385962"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b1125366"
+   "cc70965d"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "c88776dc"
   ]
  },
- "index": "7a3542e8e42f",
+ "index": "5cc717d43263",
  "index_marks": {
   "front": [
    "トップ",
-   "1f546552"
+   "c3a4bb81"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "fe0a84ae"
+   "d4dd11ee"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "4fc1f509"
+   "cd2d4822"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "3f04806c"
+   "940ffe1d"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "c10489c5"
+   "d081ed09"
   ],
   "w-f303ad09": [
    "绝区零",
    "b3b62546"
   ]
  },
- "updated": "11.18 23:39",
- "wishlist": "df913db1293d"
+ "updated": "11.18 23:47",
+ "wishlist": "7fa0fd8ac2ed"
 }
