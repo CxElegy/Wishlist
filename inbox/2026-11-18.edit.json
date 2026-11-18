@@ -1,14 +1,14 @@
 {
  "_covered": {
-  "漫威电影": 82,
-  "GTA 6": 130,
-  "ILLIT": 13,
+  "漫威电影": 98,
+  "GTA 6": 158,
+  "ILLIT": 17,
   "The Mandalorian": 6,
   "哈利波特剧集": 8,
   "チェーンソーマン": 1,
   "日本顶级网球赛事": 2,
-  "三星手机": 11,
-  "周杰伦": 7,
+  "三星手机": 14,
+  "周杰伦": 12,
   "gelato pique": 4,
   "dota2": 11,
   "FROM": 3,
@@ -90,7 +90,9 @@
    "refs": [
     116,
     128,
-    121
+    121,
+    140,
+    144
    ],
    "image": "https://cdn.hk01.com/di/media/images/dw/20261117/1199430966200766464274359.jpeg/JDkZUSPrzp6fDAzU1tTa6hFYCJg9kqVLYSBLuWEgS7k?v=w1280r16_9"
   },
@@ -131,7 +133,8 @@
     104,
     101,
     107,
-    123
+    123,
+    147
    ]
   },
   {
@@ -143,7 +146,11 @@
     127,
     105,
     106,
-    129
+    129,
+    153,
+    139,
+    136,
+    157
    ]
   },
   {
@@ -187,7 +194,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    14
    ]
   },
   {
@@ -206,7 +214,8 @@
    "weight": "normal",
    "refs": [
     7,
-    12
+    12,
+    15
    ]
   },
   {
@@ -216,6 +225,24 @@
    "weight": "normal",
    "refs": [
     13
+   ]
+  },
+  {
+   "headline": "ILLIT、一日警察官に!小学校を訪問・犯罪予防＆交通安全教育に参加",
+   "highlight": "一日警察官",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
+  },
+  {
+   "headline": "1週間で「いちばんプレイリスト入りしたアーティストTOP30」を発表…米津玄師、Mrs. GREEN APPLE、ILLITらがランクイン【AWA調査】",
+   "highlight": "ILLITらがランクイン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
    ]
   }
  ],
@@ -345,11 +372,14 @@
    "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg"
   },
   {
-   "headline": "Samsung Galaxy S27 Pro and Ultra’s New Camera Design Revealed Up Close",
-   "highlight": "New Camera Design",
+   "headline": "リークされたGalaxy S27 Ultraの横型カメラデザイン：なぜコミュニティはそれを低価格帯のスマートフォンと比較しているのか？",
+   "highlight": "横型カメラデザイン",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    12,
+    14,
+    13,
     4,
     5,
     6,
@@ -408,12 +438,14 @@
    ]
   },
   {
-   "headline": "相亲因伴侣有异性朋友未成，周杰伦演唱会官宣",
-   "highlight": "周杰伦演唱会官宣",
+   "headline": "周杰倫、二姐江蕙演唱會戰袍曝光 黃韻玲、許富凱驚喜獻聲",
+   "highlight": "戰袍曝光",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    9,
+    10,
+    12
    ]
   }
  ],
