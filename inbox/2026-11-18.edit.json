@@ -1,22 +1,23 @@
 {
  "_covered": {
-  "漫威电影": 58,
-  "GTA 6": 84,
+  "漫威电影": 68,
+  "GTA 6": 104,
   "ILLIT": 10,
-  "The Mandalorian": 3,
+  "The Mandalorian": 6,
   "哈利波特剧集": 6,
   "チェーンソーマン": 1,
   "日本顶级网球赛事": 2,
-  "三星手机": 8,
+  "三星手机": 11,
   "周杰伦": 5,
   "gelato pique": 3,
-  "dota2": 2,
+  "dota2": 5,
   "FROM": 1,
   "MMORPG 新作": 1,
   "ぐでたま": 1,
   "星巴克马克杯": 1,
   "绝区零": 1,
-  "滑雪": 3
+  "滑雪": 3,
+  "A2O LITE": 4
  },
  "漫威电影": [
   {
@@ -46,7 +47,8 @@
    "refs": [
     1,
     35,
-    51
+    51,
+    62
    ]
   },
   {
@@ -68,7 +70,8 @@
    "weight": "normal",
    "refs": [
     30,
-    29
+    29,
+    67
    ]
   }
  ],
@@ -93,6 +96,7 @@
    "weight": "normal",
    "refs": [
     35,
+    89,
     26,
     36,
     42,
@@ -122,7 +126,9 @@
    "weight": "normal",
    "refs": [
     14,
-    8
+    8,
+    104,
+    101
    ]
   },
   {
@@ -211,6 +217,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Snoke could appear in The Mandalorian",
+   "highlight": "Snoke",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -307,7 +322,9 @@
    "refs": [
     4,
     5,
-    6
+    6,
+    10,
+    11
    ]
   },
   {
@@ -409,6 +426,15 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "DreamLeague Season 30: China Closed Qualifier - Dota 2 - 視聴率、概要、賞金総額",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "FROM": [
@@ -490,6 +516,21 @@
    "refs": [
     3
    ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "A2O LITE, ‘하퍼스 바자’ 12월호 별책 첫 패션 화보 커버 장식",
+   "highlight": "첫 패션 화보",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    4,
+    1,
+    2,
+    3
+   ],
+   "image": "https://www.harpersbazaar.co.kr/resources/online/online_image/2026/11/17/8f37e4a5-c786-4efa-98a2-6b3520eb0b4a.jpg"
   }
  ]
 }

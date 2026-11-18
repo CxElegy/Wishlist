@@ -1,14 +1,14 @@
 {
- "admin": "50d2eed2db1c",
- "admin-ai": "2feed8c3ef6a",
+ "admin": "6770acb13e10",
+ "admin-ai": "121dc2ec7451",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "3d844ef3"
+   "8f7aba64"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "749d1f56"
+   "129d1744"
   ]
  },
  "admin-boards": "20fd1def0706",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "edd453efa8f9",
+ "admin-emblem": "c2c029460d6d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d75f7235"
+   "e5e80f5f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "f49e88dee819",
+ "admin-now": "93e0b8e90cd4",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "815660c5"
+   "db00db88"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "67a2a300"
+   "d64b47c6"
   ]
  },
- "admin-system": "7b00e1021b89",
+ "admin-system": "1e94959baeaa",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "26882c6b"
+   "eb289ef3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "82e7173c"
+   "66fdc5b4"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "bf108207"
   ]
  },
- "index": "a1d61c07b580",
+ "index": "a803840cfc97",
  "index_marks": {
   "front": [
    "トップ",
-   "3f84f39c"
+   "8e5e21c5"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "55f52b44"
+   "ff0041a8"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "586041b2"
+   "5d39fb89"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "c8ec6d4b"
+   "d4fa50c9"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "6eafa026"
+   "c6678ca2"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "c43bd23d"
+   "a171eca0"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "7ff75247"
   ]
  },
- "updated": "11.18 10:35",
+ "updated": "11.18 10:45",
  "wishlist": "50553b4fe1e9"
 }
