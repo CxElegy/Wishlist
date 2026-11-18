@@ -31,6 +31,12 @@
   "v": 3,
   "blur": 0.334
  },
+ "http://n.sinaimg.cn/sinakd20114/533/w480h853/20261117/86ac-0fad9a8554a678d484e7fd865ffc7a76.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 1280,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261109ac/533/w480h853/20261109/440b-04a80a8a155b76351a83ae1d435d6b33.jpg": {
   "w": 480,
   "h": 853,
@@ -138,19 +144,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx1.sinaimg.cn/middle/006lXbtkly1ij4zbeuzndj30kw0u0jtl.jpg": {
-  "w": 752,
-  "h": 1080,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/b44155dbbea16538.webp",
-  "out": [
-   752,
-   1080
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/006dNg2Ply1iizp6xr3lsj31dk26mgut.jpg": {
   "w": 1784,
   "h": 2830,
@@ -173,19 +166,6 @@
   "out": [
    1029,
    1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx2.sinaimg.cn/middle/008p3wpYgy1ij0sy593gaj30sg0sgx6j.jpg": {
-  "w": 1024,
-  "h": 1024,
-  "target": 720,
-  "v": 3,
-  "local": "pics/1a927881f17d36d2.webp",
-  "out": [
-   1024,
-   1024
   ],
   "why": "防盗链",
   "ref": true
@@ -728,6 +708,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.topstarnews.net/news/photo/202611/16279557_2091943_2755_crop.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.totallythebomb.com/wp-content/uploads/2026/11/starbucks-winter-wonderland-cups-2026-official.jpg": {
   "w": 1600,
   "h": 1130,
@@ -939,6 +925,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794965319": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/epl-masters-iii?v=1794954416": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
   "w": 300,
   "h": 300,
@@ -1016,12 +1014,6 @@
   "w": 1200,
   "h": 674,
   "target": 1280,
-  "v": 3
- },
- "https://gamesbeat.com/wp-content/uploads/2026/09/Lingokids-2.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
   "v": 3
  },
  "https://gdm-universal-media.b-cdn.net/epicstream/5182de2d-finding-harry-potter-the-craft-behind-the-magic.webp?width=1600&height=840": {
@@ -1114,6 +1106,12 @@
   "target": 720,
   "v": 3
  },
+ "https://hermes.media.transform.aol.com/d927c993de177b6e26b89f2c5d3ab11d50dafeb9/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/17/d7768200-3fc6-3e47-97ba-45183d92ac70/7d407f6a-3e8d-4740-966d-5bdcf4dd6734.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://hips.hearstapps.com/hmg-prod/images/d6cf19fc-e400-401f-9921-0e511c13d813.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
   "w": 1200,
   "h": 600,
@@ -1139,6 +1137,12 @@
   "v": 3
  },
  "https://i.cdn.newsbytesapp.com/images/l144_17791794849218.jpg": {
+  "w": 1440,
+  "h": 809,
+  "target": 720,
+  "v": 3
+ },
+ "https://i.cdn.newsbytesapp.com/images/l144_6541794935287.jpg": {
   "w": 1440,
   "h": 809,
   "target": 720,
@@ -1577,12 +1581,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.18183.com/image/2026/11/17/ee50f12eae73db784b4f64bbb09e3d18.jpg@!18183": {
-  "w": 600,
-  "h": 338,
-  "target": 720,
-  "v": 3
- },
  "https://img.4gamers.com.tw/news-image/5eb2ce4a-a6b4-4136-b48f-d788b877b3ea.jpg": {
   "w": 1600,
   "h": 900,
@@ -1684,12 +1682,6 @@
    995
   ],
   "why": "看不清"
- },
- "https://img.mydaily.co.kr/photos/2026/11/16/2026111615042091238_m.jpg": {
-  "w": 480,
-  "h": 603,
-  "target": 720,
-  "v": 3
  },
  "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg": {
   "w": 1200,
@@ -1805,6 +1797,12 @@
   "target": 720,
   "v": 3
  },
+ "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://inews.gtimg.com/om_ls/OP11PO3hHxyuukzxslfXwg28QjyN2zp8cN7W6JnrZmOxsAA_330330/0": {
   "w": 330,
   "h": 330,
@@ -1847,6 +1845,19 @@
   "h": 743,
   "target": 1280,
   "v": 3
+ },
+ "https://lalalausa.com/wp-content/uploads/2026/11/LALALA-20261117-09.jpg": {
+  "w": 800,
+  "h": 600,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.602,
+  "local": "pics/4bade686bf421674.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
  },
  "https://leho.com.tw/wp-content/uploads/2026/11/【vivo-新聞照片1】vivo-全新年度影像旗艦-X500-系列，攜手品牌影像大使周杰倫，以「蔡司電影感．創作無界」掀起熱烈迴響，上市短短兩週即展現亮眼銷售表現.jpg": {
   "w": 1024,
@@ -2586,18 +2597,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261116-10169848-lasisa-000-22-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/8202a5d5846596df.webp",
-  "out": [
-   1200,
-   800
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000010-manetatsun-000-1-view.jpg?exp=10800": {
   "w": 800,
   "h": 450,
@@ -3051,6 +3050,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
+  "w": 1024,
+  "h": 572,
+  "target": 720,
+  "v": 3
+ },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -3070,16 +3075,10 @@
   "target": 1280,
   "v": 3
  },
- "https://q6.itc.cn/q_70/images03/20261117/f443d125585f4a1aa5af3558bec1dfa3.png": {
-  "w": 860,
-  "h": 1178,
+ "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg": {
+  "w": 690,
+  "h": 1005,
   "target": 1280,
-  "v": 3
- },
- "https://readysteadycut.com/wp-content/uploads/2026/11/Avengers-Doomsday.webp": {
-  "w": 1500,
-  "h": 844,
-  "target": 720,
   "v": 3
  },
  "https://realsound.jp/wp-content/uploads/2026/11/20261115-ichiban-99.jpeg": {
@@ -3841,6 +3840,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.4Hpz4Ai7jxyXy8Q8d4teng&pid=News&w=566": {
+  "w": 566,
+  "h": 435,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.533,
+  "local": "pics/75637b9e61a87ae9.webp",
+  "out": [
+   1280,
+   984
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.4_WjmbQHty-xHY3L1L6aXw&pid=News&w=960": {
   "w": 700,
   "h": 393,
@@ -3867,12 +3879,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.6gzcD9QwtFIRWUfkozUUtQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.FOoggTFAL_2bZZS_uZ1pTg&pid=News&w=494": {
   "w": 494,
   "h": 640,
@@ -3885,6 +3891,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.FwNHZrK0fWr7M2j5iDVqjQ&pid=News&w=640": {
+  "w": 640,
+  "h": 577,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Je1DGBbrEmnZC1gtylM6Pw&pid=News&w=800": {
   "w": 700,
@@ -3979,6 +3991,12 @@
   "v": 3,
   "blur": 0.402
  },
+ "https://www.bing.com/th?id=ONUT.pP3q55Xm0q9SIYjJu4xWqw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.qISV_R3Wfh1OFQ3ecy0Ftg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3992,12 +4010,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.qcvJd7RQh3wft_WolKqxiQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.u6PsJ-1gxyLQhEBAa2Ub2w&pid=News&w=700": {
   "w": 700,
   "h": 663,
@@ -4010,6 +4022,12 @@
    1212
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.wJsqFmnC4gX5iSFTuVVUvw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
