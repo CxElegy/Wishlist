@@ -690,6 +690,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.thecoolist.com/wp-content/uploads/2026/11/black-cats-get-very-close-to-their-owners.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.topstarnews.net/news/photo/202611/16273906_2085141_5412.jpg": {
   "w": 1600,
   "h": 1138,
@@ -735,12 +741,6 @@
  "https://cdn3.wionews.com/prod/wion/images/2026/20261110/image-1794315924585.png?rect=(0,0,1280,720)&imwidth=896&imheight=504&format=webp&quality=medium": {
   "w": 896,
   "h": 504,
-  "target": 1280,
-  "v": 3
- },
- "https://cf.img.soft4fun.net/2026/11/Galaxy-AI-Premium-scaled.png": {
-  "w": 1500,
-  "h": 844,
   "target": 1280,
   "v": 3
  },
@@ -1112,9 +1112,9 @@
   "target": 720,
   "v": 3
  },
- "https://i.insider.com/6af5d4ecb2c29afb4e56a297?width=1200&format=jpeg": {
-  "w": 1200,
-  "h": 600,
+ "https://i.pcmag.com/imagery/articles/04H6IwEv0E6cx1rnnkowZes-2.fit_lim.size_1200x630.v1793906374.png": {
+  "w": 1120,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -1397,19 +1397,6 @@
   "h": 660,
   "target": 1280,
   "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbUYl.img": {
-  "w": 615,
-  "h": 615,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.59,
-  "local": "pics/6a3f59855e335b51.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
   "w": 1000,
@@ -1820,19 +1807,6 @@
   "h": 743,
   "target": 1280,
   "v": 3
- },
- "https://lalalausa.com/wp-content/uploads/2026/11/LALALA-20261117-09.jpg": {
-  "w": 800,
-  "h": 600,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.602,
-  "local": "pics/4bade686bf421674.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
  },
  "https://leho.com.tw/wp-content/uploads/2026/11/【vivo-新聞照片1】vivo-全新年度影像旗艦-X500-系列，攜手品牌影像大使周杰倫，以「蔡司電影感．創作無界」掀起熱烈迴響，上市短短兩週即展現亮眼銷售表現.jpg": {
   "w": 1024,
@@ -2289,19 +2263,6 @@
   ],
   "why": "看不清"
  },
- "https://news.walkerplus.com/article/33564/160123_615.jpg": {
-  "w": 615,
-  "h": 278,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.57,
-  "local": "pics/23f686cec91d52c3.webp",
-  "out": [
-   1280,
-   579
-  ],
-  "why": "看不清"
- },
  "https://news.walkerplus.com/article/40260/207548_615.jpg": {
   "w": 615,
   "h": 461,
@@ -2632,6 +2593,18 @@
   "out": [
    1200,
    1200
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-10170484-lasisa-000-1-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/5d3d4ab651105228.webp",
+  "out": [
+   1200,
+   800
   ],
   "why": "期限付きの網址"
  },
@@ -3064,11 +3037,10 @@
   "v": 3
  },
  "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
+  "w": 1024,
+  "h": 572,
   "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-18"
+  "v": 3
  },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
@@ -3228,16 +3200,16 @@
   "target": 1280,
   "v": 3
  },
+ "https://scotscoop.com/wp-content/uploads/2026/11/starbucks-halloween-photo-1200x800.png": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://sdprodstorage.blob.core.windows.net/sd-cms-prod/featured-image/Sea%20of%20Remnants%20Dawnbreaker%20-1794310281633.webp": {
   "w": 901,
   "h": 507,
   "target": 720,
-  "v": 3
- },
- "https://shattered.io/wp-content/uploads/2026/10/india-smartphone-shipments-fall-20-percent-samsung-leads-q3-2026-gen-1.webp": {
-  "w": 1344,
-  "h": 768,
-  "target": 1280,
   "v": 3
  },
  "https://singtaousa2025.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/11/11003304/WhatsApp_Image_2021-09-05_at_12_38_33-1.jpeg": {
@@ -3918,6 +3890,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.AzzfiwTLOKrfyXeVuTyENg&pid=News&w=615": {
+  "w": 615,
+  "h": 615,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.664,
+  "local": "pics/a89fba6eb0fc5ac7.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.FOoggTFAL_2bZZS_uZ1pTg&pid=News&w=494": {
   "w": 494,
   "h": 640,
@@ -4016,19 +4001,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.hxJb0BQDUM-ZU16QaHNw6A&pid=News&w=1024": {
-  "w": 700,
-  "h": 467,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.551,
-  "local": "pics/47f1aad37f3935e2.webp",
-  "out": [
-   1280,
-   854
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.jdYPkT2FLoh7VE9gZZXxgw&pid=News&w=800": {
   "w": 700,
@@ -4131,6 +4103,19 @@
   "h": 628,
   "target": 1280,
   "v": 3
+ },
+ "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true": {
+  "w": 500,
+  "h": 262,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.524,
+  "local": "pics/90f0d635188356ba.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清"
  },
  "https://www.computerweekly.com/rms/computerweekly/gta-vi-editorial-do-not-reuse-getty.jpg": {
   "w": 1200,
@@ -4416,6 +4401,12 @@
   "w": 1825,
   "h": 1217,
   "target": 720,
+  "v": 3
+ },
+ "https://www.techadvisor.com/wp-content/uploads/2026/11/3182041-0-17409400-1794583487-Samsung-Galaxy-S26-Ultra-review-13.jpg?quality=50&strip=all&w=1024": {
+  "w": 1024,
+  "h": 574,
+  "target": 1280,
   "v": 3
  },
  "https://www.thewrap.com/wp-content/uploads/2022/06/Elizabeth-Olsen-Wanda.jpg": {

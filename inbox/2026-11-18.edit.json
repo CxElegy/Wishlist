@@ -4,7 +4,7 @@
   "GTA 6": 130,
   "ILLIT": 13,
   "The Mandalorian": 6,
-  "哈利波特剧集": 6,
+  "哈利波特剧集": 8,
   "チェーンソーマン": 1,
   "日本顶级网球赛事": 2,
   "三星手机": 11,
@@ -14,11 +14,12 @@
   "FROM": 3,
   "MMORPG 新作": 7,
   "ぐでたま": 1,
-  "星巴克马克杯": 1,
-  "绝区零": 1,
+  "星巴克马克杯": 3,
+  "绝区零": 2,
   "滑雪": 6,
   "A2O LITE": 4,
-  "猫用品": 2
+  "猫用品": 2,
+  "あつ森": 1
  },
  "漫威电影": [
   {
@@ -293,7 +294,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    7
    ]
   }
  ],
@@ -562,21 +564,42 @@
  ],
  "星巴克马克杯": [
   {
-   "headline": "Starbucks’ Winter Wonderland Collection Is Here, With a Snow Globe Mug Set and an Icy Blue Gem Cup",
-   "highlight": "Winter Wonderland Collection",
-   "blurb": "Starbucks' Winter Wonderland Collection arrives with a snow globe mug set and an icy blue gem cup.",
+   "headline": "米スタバ、冬限定のタンブラーや雪の結晶グッズを17日発売 マグセットは29.95ドル",
+   "highlight": "29.95ドル",
+   "blurb": "米スターバックスが冬限定のタンブラーや雪の結晶デザインのグッズを17日に発売。スノードーム風マグセットは29.95ドル。",
    "weight": "lead",
    "refs": [
+    2,
     1
+   ],
+   "image": "https://cdn.totallythebomb.com/wp-content/uploads/2026/11/starbucks-winter-wonderland-cups-2026-official.jpg"
+  },
+  {
+   "headline": "【スタバ新作グッズ】「チェックかわいすぎる」SNS歓喜！ベアリスタや“クマ耳マグ”など",
+   "highlight": "クマ耳マグ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
  "绝区零": [
   {
+   "headline": "ヤマハ発動機、“体験型ショールーム”リニューアルオープン 「ゼンレスゾーンゼロ×ヤマハ発動機スペシャルコラボ展」も開催",
+   "highlight": "ゼンレスゾーンゼロ×ヤマハ発動機スペシャルコラボ展",
+   "blurb": "ヤマハ発動機が横浜みなとみらいの「Yamaha E-Ride Base」をリニューアルし、ゼンレスゾーンゼロとのスペシャルコラボ展を開催する。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.4Hpz4Ai7jxyXy8Q8d4teng&pid=News&w=566"
+  },
+  {
    "headline": "Google Play awards name Arknights: Endfield Best Game",
    "highlight": "Best Game",
-   "blurb": "Arknights: Endfield has won Best Game at the Google Play awards for 2026, with Warframe and Zenless Zone Zero also taking awards.",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1
    ]
@@ -653,6 +676,17 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "『あつ森』大特集の『ぴこぷり 2027 ヒミツいっぱいスペシャル』が発売！付録は164ページのデザインブック",
+   "highlight": "164ページのデザインブック",
+   "blurb": "『あつ森』を大特集した『ぴこぷり 2027 ヒミツいっぱいスペシャル』が発売。付録は164ページのデザインブック。",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

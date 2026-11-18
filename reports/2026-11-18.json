@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "9bd5d20588b7",
+ "edit_sig": "a934f9675f3a",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -236,22 +236,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 7,
-     "source": "Tbreak",
-     "title": "The First Taste of HBO’s Harry Potter Soundtrack Isn’t Winning Over Fans",
-     "url": "https://tbreak.com/hans-zimmer-harry-potter-score-fan-reaction/"
-    },
-    {
-     "date": "2026-11-16",
-     "n": 8,
-     "source": "搜狐",
-     "title": "影版‘哈利·波特’不会指导剧版也不会看剧？丹尼尔亲曝真相，2026年HBO新剧引爆全网热议",
-     "url": "https://www.sohu.com/a/1102367101_122066679"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -390,33 +374,27 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 2,
-     "source": "LALALA USA",
-     "title": "米スタバ、冬限定のタンブラーや雪の結晶グッズを17日発売 マグセットは29.95ドル（11/17）",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBlWm5JbnBWb2xMSTNESng5U0l0Y0dDRDFVcFByS0VKbWFDY1o5Sm9rVXZVclhNNmYxRklXRE9EdzdzUXFmZ2xsSmNSMkM?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 3,
-     "source": "Yahoo!ニュース",
-     "title": "【スタバ新作グッズ】〜明日から〜「チェックかわいすぎる」SNS歓喜！ベアリスタや、“クマ耳マグ”など（LASISA）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9OZFZDcS1ITlAwNThpbkVWZDd1X3pTOXktVzNNTEIwbnFIYkhKcXY3TFd5QVpSSF8zc3pmendXbU9pbzlBellfaF9xNG5BeEdtcG0yUUNNMWxnSy1MVHljX2tXaExrME1fYWM1em1YMXlBR1cxVXBydUgzcUpKS1U?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
-     "blurb": "Starbucks' Winter Wonderland Collection arrives with a snow globe mug set and an icy blue gem cup.",
-     "date": "2026-11-17",
-     "headline": "Starbucks’ Winter Wonderland Collection Is Here, With a Snow Globe Mug Set and an Icy Blue Gem Cup",
-     "highlight": "Winter Wonderland Collection",
+     "blurb": "米スターバックスが冬限定のタンブラーや雪の結晶デザインのグッズを17日に発売。スノードーム風マグセットは29.95ドル。",
+     "date": "2026-11-18",
+     "headline": "米スタバ、冬限定のタンブラーや雪の結晶グッズを17日発売 マグセットは29.95ドル",
+     "highlight": "29.95ドル",
      "image": "https://cdn.totallythebomb.com/wp-content/uploads/2026/11/starbucks-winter-wonderland-cups-2026-official.jpg",
      "image_via": "og:image",
-     "url": "https://totallythebomb.com/starbucks-winter-wonderland-cups-2026/",
+     "url": "https://lalalausa.com/archives/84884",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "【スタバ新作グッズ】「チェックかわいすぎる」SNS歓喜！ベアリスタや“クマ耳マグ”など",
+     "highlight": "クマ耳マグ",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-10170484-lasisa-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/967a9a312a3dba61bbbd50edb93c089d27c39acd",
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
@@ -701,17 +679,20 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "『あつ森』を大特集した『ぴこぷり 2027 ヒミツいっぱいスペシャル』が発売。付録は164ページのデザインブック。",
      "date": "2026-11-18",
-     "n": 1,
+     "headline": "『あつ森』大特集の『ぴこぷり 2027 ヒミツいっぱいスペシャル』が発売！付録は164ページのデザインブック",
+     "highlight": "164ページのデザインブック",
+     "image": null,
      "source": "ニコニコニュース",
-     "title": "『あつ森』大特集の『ぴこぷり 2027 ヒミツいっぱいスペシャル』が発売！付録は164ページのデザインブック",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5RalFQVjZmeVBEZzAtNDRJaVdjTmZkLVNmVm4teVliZ0xJLVZNZ0d2R3BjbU5UQUFzdEROQVVwVUVQTEplSll3cUoyYU40bEI5Z0pXdXZCZi1ZOExUQndnWmxGMXpfRGFzWGUtcXBuX0NadWt1akVsSlJnZw?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=nicovideo.jp&sz=128",
+     "url": "https://news.nicovideo.jp/watch/nw20003759?news_ref=watch_70_nw19647428",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -816,24 +797,24 @@
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "ヤマハ発動機が横浜みなとみらいの「Yamaha E-Ride Base」をリニューアルし、ゼンレスゾーンゼロとのスペシャルコラボ展を開催する。",
      "date": "2026-11-17",
      "headline": "ヤマハ発動機、“体験型ショールーム”リニューアルオープン 「ゼンレスゾーンゼロ×ヤマハ発動機スペシャルコラボ展」も開催",
-     "highlight": "",
+     "highlight": "ゼンレスゾーンゼロ×ヤマハ発動機スペシャルコラボ展",
      "image": "https://www.bing.com/th?id=ONUT.4Hpz4Ai7jxyXy8Q8d4teng&pid=News&w=566",
-     "image_via": "条目自带（Bing 缩略图）",
+     "image_via": "AI 挑选",
      "url": "https://www.msn.com/ja-jp/entertainment/celebrity/%E3%83%A4%E3%83%9E%E3%83%8F%E7%99%BA%E5%8B%95%E6%A9%9F-%E4%BD%93%E9%A8%93%E5%9E%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%AB%E3%83%BC%E3%83%A0-%E3%83%AA%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%A2%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3-%E3%82%BC%E3%83%B3%E3%83%AC%E3%82%B9%E3%82%BE%E3%83%BC%E3%83%B3%E3%82%BC%E3%83%AD-%E3%83%A4%E3%83%9E%E3%83%8F%E7%99%BA%E5%8B%95%E6%A9%9F%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%B3%E3%83%A9%E3%83%9C%E5%B1%95-%E3%82%82%E9%96%8B%E5%82%AC/ar-AA2hEWnS",
-     "weight": "hero"
+     "weight": "lead"
     },
     {
-     "blurb": "Arknights: Endfield has won Best Game at the Google Play awards for 2026, with Warframe and Zenless Zone Zero also taking awards.",
+     "blurb": "",
      "date": "2026-11-16",
      "headline": "Google Play awards name Arknights: Endfield Best Game",
      "highlight": "Best Game",
      "image": "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/11/google-play-best-of-2026-games.png?fit=1200%2C675&ssl=1",
      "image_via": "og:image",
      "url": "https://tbreak.com/google-play-best-of-2026-games/",
-     "weight": "lead"
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",
