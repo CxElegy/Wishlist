@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-18T00:22:05+00:00",
+ "changed": true,
+ "checked": "2026-11-18T01:18:17+00:00",
  "fired": {
   "at": "2026-11-18T00:22:05+00:00",
   "results": {
@@ -59,8 +59,6 @@
    },
    "items": [
     "FROM",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "gelato pique",
@@ -73,30 +71,21 @@
     "lib:大相撲",
     "lib:無印良品",
     "周杰伦",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-11-17T22:37:04+00:00",
+   "last_batch": "2026-11-18T00:30:23+00:00",
    "last_error": {
     "at": "2026-11-16T01:27:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 169,
+   "prog": 198,
    "prog_day": "2026-11-18",
-   "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影"
-   ],
-   "sig": "b2b5afc954f2",
+   "ripe": [],
+   "sig": "1cf713400ec8",
    "token_cap": 1000000,
-   "tokens_today": 286518,
-   "why": "整理待ちの記事 133 件（19 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 334794,
+   "why": "整理待ちの記事 104 件（14 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -229,12 +218,12 @@
    "runs": 15
   },
   "2026-11-18": {
-   "batches": 8,
-   "cr": 5351553,
-   "cw": 264600,
-   "in": 151,
-   "out": 21767,
-   "runs": 5
+   "batches": 9,
+   "cr": 6049007,
+   "cw": 309545,
+   "in": 172,
+   "out": 25077,
+   "runs": 6
   }
  }
 }
