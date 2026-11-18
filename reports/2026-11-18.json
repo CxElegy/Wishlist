@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "da8868a927b0",
+ "edit_sig": "76f5102aec0f",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -902,22 +902,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 3,
-     "source": "Geek Culture",
-     "title": "Xiaomi 18 Pro Max Gaming Test: Delta Force, Zenless Zone Zero & Genshin Impact",
-     "url": "https://geekculture.co/xiaomi-18-pro-max-gaming-test/"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 4,
-     "source": "PR TIMES",
-     "title": "11月20日、「コミLab.」が三重県に初出店！ 『原神』『ゼンレスゾーンゼロ』『崩壊：スターレイル』など、 公式グッズ1,400種類以上を取り揃えた売場を展開",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5MM3hpcWxDTnh2Wjg2NXBvYlZBVl9vMlozVzcydnAxcS0zQktYSHFYLVRUcXdWQ0ZYOFRVam9jaXIzQUxrTFE0Y0VTOHJaMHpaQlE0dkdWZnNNVjRfY1d3ZWtLY19wSUJFVXc?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -938,6 +922,21 @@
      "image": "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/11/google-play-best-of-2026-games.png?fit=1200%2C675&ssl=1",
      "image_via": "og:image",
      "url": "https://tbreak.com/google-play-best-of-2026-games/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "event": {
+      "date": "2026-11-20",
+      "label": "オープン",
+      "place": "三重県"
+     },
+     "headline": "11月20日、「コミLab.」が三重県に初出店！『原神』『ゼンレスゾーンゼロ』『崩壊：スターレイル』など公式グッズ1,400種類以上を取り揃えた売場を展開",
+     "highlight": "11月20日",
+     "image": "https://prcdn.freetls.fastly.net/release_image/152182/166/152182-166-dc2e18123fe4de5e4ac0595bc44df96b-1268x951.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000166.000152182.html",
      "weight": "normal"
     }
    ],
