@@ -1,14 +1,14 @@
 {
- "admin": "e00b402bf340",
- "admin-ai": "c83c4c04469e",
+ "admin": "a10aa0d479c7",
+ "admin-ai": "aeef6e40f0b6",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1a1034f1"
+   "42bdf837"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7fb5448d"
+   "b81a9f3a"
   ]
  },
  "admin-boards": "fab21702329d",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "631e427c4c68",
+ "admin-emblem": "c7cd2ea80b0e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "956b3483"
+   "bc4f0525"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "f93027b1bf3a",
+ "admin-now": "a4686dd90371",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "00bbe74f"
+   "d45bdba2"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "20d8e63a"
+   "1aeb9562"
   ]
  },
- "admin-system": "955f47f7aa9b",
+ "admin-system": "62406a04395c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e926f773"
+   "6ac94d04"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "03f15bc7"
+   "d9240505"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "14848708"
   ]
  },
- "index": "f320c11446fa",
+ "index": "6877120bf76e",
  "index_marks": {
   "front": [
    "トップ",
-   "241a6652"
+   "4e6d33c9"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "fb7f9b93"
+   "3ab50871"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "97045f3a"
+   "6d7c017a"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "e29464b0"
+   "f7a17852"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "9ec73f6f"
+   "2e215501"
   ],
   "w-f303ad09": [
    "绝区零",
    "72edf8a8"
   ]
  },
- "updated": "11.19 05:32",
+ "updated": "11.19 05:37",
  "wishlist": "475d604848d8"
 }

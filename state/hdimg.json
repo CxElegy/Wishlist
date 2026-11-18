@@ -424,6 +424,12 @@
   "target": 720,
   "v": 3
  },
+ "https://biz.chosun.com/resizer/v2/MZSGCYJQMU2TKZJZMFQWMZDEGY.jpg?auth=8f7b1e13511a5e94603cf80c934628cd70eb2e1c23b43c0a6088e65ef0fba802&width=572&height=300&smart=true": {
+  "w": 572,
+  "h": 300,
+  "target": 720,
+  "v": 3
+ },
  "https://books.r10s.jp/fan/images/oshiraku-images/kohaku_shikai_main_202cd0bee7.png?fitin=838:628": {
   "w": 838,
   "h": 472,
@@ -576,6 +582,12 @@
    919
   ],
   "why": "看不清"
+ },
+ "https://cdn.jk-daily.co.kr/news/photo/202611/42115_36219_590.png": {
+  "w": 600,
+  "h": 352,
+  "target": 720,
+  "v": 3
  },
  "https://cdn.kfenews.co.kr/news/photo/202611/668014_141321_5557.jpg": {
   "w": 932,
@@ -755,7 +767,7 @@
   "target": 1280,
   "v": 3
  },
- "https://clan.fastly.steamstatic.com/images/3703047/adf1013ad1d68cac20ef37fe8bdb5282c3d9c245.png": {
+ "https://clan.akamai.steamstatic.com/images/3703047/adf1013ad1d68cac20ef37fe8bdb5282c3d9c245.png": {
   "w": 800,
   "h": 450,
   "target": 720,
@@ -826,6 +838,12 @@
   "w": 1920,
   "h": 1079,
   "target": 1280,
+  "v": 3
+ },
+ "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
+  "w": 4525,
+  "h": 3016,
+  "target": 720,
   "v": 3
  },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
@@ -910,12 +928,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
@@ -1117,12 +1129,6 @@
   "target": 1280,
   "v": 3
  },
- "https://i.tribune.com.pk/media/images/x-men-first-class-640x4801/x-men-first-class-640x4801-640x480.webp": {
-  "w": 640,
-  "h": 480,
-  "target": 720,
-  "v": 3
- },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
@@ -1190,6 +1196,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.inews24.com/v1/fc0da764dc14f3.jpg": {
+  "w": 400,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://image.mediapen.com/news/202611/news_1137356_1794550420_m.jpg": {
   "w": 600,
   "h": 407,
@@ -1213,6 +1225,12 @@
   "w": 615,
   "h": 461,
   "target": 720,
+  "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/stf/f/5/f5ad3_1682_d34914d9_204701f0.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228137/thumb001.png?height=720&quality=75&version=1793150116&width=1280": {
@@ -3865,6 +3883,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
   "h": 414,
@@ -4129,6 +4153,12 @@
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Samsung-S27-Series.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-ultra-2.jpg": {
+  "w": 1280,
+  "h": 721,
   "target": 720,
   "v": 3
  },

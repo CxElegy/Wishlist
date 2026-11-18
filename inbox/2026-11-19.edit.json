@@ -7,7 +7,8 @@
    "weight": "hero",
    "refs": [
     21,
-    19
+    19,
+    28
    ],
    "event": {
     "date": "2026-12-17",
@@ -36,7 +37,11 @@
    "refs": [
     1,
     9,
-    18
+    18,
+    44,
+    29,
+    35,
+    37
    ]
   },
   {
@@ -69,7 +74,12 @@
     15,
     14,
     8,
-    9
+    9,
+    24,
+    26,
+    21,
+    23,
+    25
    ],
    "event": {
     "date": "2026-11-19",
@@ -97,7 +107,9 @@
    "refs": [
     5,
     12,
-    18
+    18,
+    31,
+    34
    ]
   },
   {
@@ -187,15 +199,43 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "7.42 Gameplay Update",
+   "highlight": "7.42",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Valve begins banning cheaters for inventory abuse in Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "1win Essence I - Dota 2 - Viewership, Overview, Prize Pool",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    10
+   ]
   }
  ],
  "_covered": {
-  "漫威电影": 23,
-  "GTA 6": 20,
+  "漫威电影": 52,
+  "GTA 6": 35,
   "周杰伦": 4,
   "A2O LITE": 3,
-  "dota2": 3,
-  "三星手机": 3,
+  "dota2": 10,
+  "三星手机": 7,
   "gelato pique": 2,
   "チェーンソーマン": 2,
   "Vaundy": 1,
@@ -203,7 +243,8 @@
   "滑雪": 2,
   "绝区零": 2,
   "猫用品": 2,
-  "星巴克马克杯": 1
+  "星巴克马克杯": 1,
+  "ILLIT": 7
  },
  "三星手机": [
   {
@@ -231,6 +272,24 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "The Galaxy S27 Pro is leaving the Galaxy S Plus in an awkward position",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Samsung’s Galaxy S27 Ultra Leaks Hint at Big Sensor Upgrades and One Surprising Loss",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
@@ -365,6 +424,46 @@
     "date": "2026-11-19",
     "label": "発売日"
    }
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT、米ビルボード主要チャートで順位上昇続く！「一日警察官」として子ども向け安全教育に参加も",
+   "highlight": "米ビルボード主要チャートで順位上昇",
+   "blurb": "ILLITが米ビルボードの主要チャートで順位を上げ続けており、「一日警察官」として子ども向けの安全教育ボランティアにも参加した。",
+   "weight": "lead",
+   "refs": [
+    3,
+    4,
+    6
+   ]
+  },
+  {
+   "headline": "日 NHK 홍백가합전 출연 가수 발표…아일릿·요아소비 등 출연",
+   "highlight": "NHK 홍백가합전",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "[Photo] ILLIT’s Won-hee and Iroha head to Japan",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "아이유·엔하이픈·아일릿, 수능 앞둔 수험생 응원 \"후회 없는 하루 되길\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }
