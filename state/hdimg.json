@@ -1380,12 +1380,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hDZt3.img": {
-  "w": 1422,
-  "h": 800,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hDqQi.img": {
   "w": 1280,
   "h": 720,
@@ -1396,6 +1390,12 @@
   "w": 640,
   "h": 426,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hEdED.img": {
+  "w": 1200,
+  "h": 660,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbUYl.img": {
@@ -3750,6 +3750,13 @@
   "h": 545,
   "target": 1280,
   "v": 3
+ },
+ "https://www.4gamer.net/games/579/G057943/20261111057/TN/001.jpg": {
+  "w": 512,
+  "h": 288,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.333
  },
  "https://www.4gamer.net/games/599/G059954/20261106021/SS/013.jpg": {
   "w": 1920,

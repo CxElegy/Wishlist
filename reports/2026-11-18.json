@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "28a3b06ba53c",
+ "edit_sig": "6804e9941c5f",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -75,56 +75,40 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 4,
-     "source": "電ファミニコゲーマー",
-     "title": "画面は4：3、移動も攻撃もマウスクリック、街中でもPK。2000年代初期のMMORPGの不便さと緊張感、その先にある中毒性まで再現した『リネージュ クラシック』を先行プレイ",
-     "url": "https://news.denfaminicogamer.jp/kikakuthetower/261118e"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 5,
-     "source": "4Gamer.net",
-     "title": "令和のいまMMORPG黎明期を体験できる「リネージュ クラシック」を先行プレイ。キャラの非透過に暗いダンジョン，“不便さ”すら愛おしい完全再現［プレイレポ］",
-     "url": "https://www.4gamer.net/games/579/G057943/20261111057/"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 6,
-     "source": "스포츠조선 on MSN",
-     "title": "'리니지M', 신규 업데이트 'Unbreakable' 사전예약 시작…기사 클래스 리부트 예고",
-     "url": "https://www.msn.com/ko-kr/gaming/mmo/%EB%A6%AC%EB%8B%88%EC%A7%80m-%EC%8B%A0%EA%B7%9C-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-unbreakable-%EC%82%AC%EC%A0%84%EC%98%88%EC%95%BD-%EC%8B%9C%EC%9E%91-%EA%B8%B0%EC%82%AC-%ED%81%B4%EB%9E%98%EC%8A%A4-%EB%A6%AC%EB%B6%80%ED%8A%B8-%EC%98%88%EA%B3%A0/ar-AA2hEZP5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 7,
-     "source": "뉴스핌 on MSN",
-     "title": "엔씨 리니지M, 신규 업데이트 '언브레이커블' 사전예약 실지",
-     "url": "https://www.msn.com/ko-kr/gaming/mmo/%EC%97%94%EC%94%A8-%EB%A6%AC%EB%8B%88%EC%A7%80m-%EC%8B%A0%EA%B7%9C-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EC%96%B8%EB%B8%8C%EB%A0%88%EC%9D%B4%EC%BB%A4%EB%B8%94-%EC%82%AC%EC%A0%84%EC%98%88%EC%95%BD-%EC%8B%A4%EC%A7%80/ar-AA2hFh1T"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
-     "blurb": "'제우스: 오만의 신' 콜로세움 업데이트の詳細まとめ。",
+     "blurb": "NCは「リネージュクラシック」のプレオープンを12月2日に開始。2000年代初期の4：3画面や当時の不便さまで再現した本作の先行体験会レポート。",
+     "date": "2026-11-18",
+     "event": {
+      "date": "2026-12-02",
+      "label": "プレオープン"
+     },
+     "headline": "令和のいまMMORPG黎明期を体験できる「リネージュ クラシック」を先行プレイ",
+     "highlight": "リネージュ クラシック",
+     "image": "https://www.4gamer.net/games/579/G057943/20261111057/TN/001.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.4gamer.net/games/579/G057943/20261111057/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "'리니지M', 신규 업데이트 'Unbreakable' 사전예약 시작…기사 클래스 리부트 예고",
+     "highlight": "사전예약 시작",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hEdED.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ko-kr/gaming/mmo/%EB%A6%AC%EB%8B%88%EC%A7%80m-%EC%8B%A0%EA%B7%9C-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-unbreakable-%EC%82%AC%EC%A0%84%EC%98%88%EC%95%BD-%EC%8B%9C%EC%9E%91-%EA%B8%B0%EC%82%AC-%ED%81%B4%EB%9E%98%EC%8A%A4-%EB%A6%AC%EB%B6%80%ED%8A%B8-%EC%98%88%EA%B3%A0/ar-AA2hEZP5",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-11-17",
      "headline": "MMORPG 신작 추천, '제우스: 오만의 신' 콜로세움 업데이트 상세 내용 정리",
      "highlight": "콜로세움 업데이트",
      "image": "https://cdn.gamemeca.com/gmboard/mobile_userreview/2026/09/13/20260913205623_218538.png",
      "image_via": "正文图（2 枚から）",
      "url": "https://www.gamemeca.com/fam.php?gcode=mobile_userreview&bt=title&p=3&gid=1780416",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-17",
-     "headline": "킹덤2: 타오르는 전장, 대만·홍콩·마카오 정식 출시",
-     "highlight": "정식 출시",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hDZt3.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/ko-kr/gaming/%EC%9D%BC%EB%B0%98/%ED%82%B9%EB%8D%A42-%ED%83%80%EC%98%A4%EB%A5%B4%EB%8A%94-%EC%A0%84%EC%9E%A5-%EB%8C%80%EB%A7%8C-%ED%99%8D%EC%BD%A9-%EB%A7%88%EC%B9%B4%EC%98%A4-%EC%A0%95%EC%8B%9D-%EC%B6%9C%EC%8B%9C-%EC%98%A4%EB%8A%98%EC%9D%98-%EA%B2%8C%EC%9E%84-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/ar-AA2hEmdg",
      "weight": "normal"
     }
    ],
