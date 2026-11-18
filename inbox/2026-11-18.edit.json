@@ -20,7 +20,8 @@
   "A2O LITE": 6,
   "猫用品": 3,
   "あつ森": 1,
-  "Vaundy": 1
+  "Vaundy": 1,
+  "BLEACH Mirrors High": 1
  },
  "漫威电影": [
   {
@@ -831,5 +832,17 @@
    ]
   }
  ],
- "Vaundy": []
+ "Vaundy": [],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "『BLEACH ミラハイ』に浦原喜助が登場。必殺技やイラスト公開",
+   "highlight": "浦原喜助が登場",
+   "blurb": "『BLEACH Mirrors High』に浦原喜助が参戦。必殺技とイラストが公開された。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://cimg.kgl-systems.io/camion/files/dengeki/94341/a135007e7085979a7d5b41ce54c0e54d7.jpg?x=1280"
+  }
+ ]
 }

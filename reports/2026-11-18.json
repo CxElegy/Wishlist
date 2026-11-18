@@ -1,22 +1,24 @@
 {
  "date": "2026-11-18",
- "edit_sig": "76f5102aec0f",
+ "edit_sig": "933af7b5850e",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "『BLEACH Mirrors High』に浦原喜助が参戦。必殺技とイラストが公開された。",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "電撃オンライン",
-     "title": "『BLEACH ミラハイ』に浦原喜助が登場。必殺技やイラスト公開",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1JcERnVzdDUFZKYVFibWtVNTItejVvYUU0OXdiZ1MxZVp5WjJCYmtLcG1samlsQVBCY1pfWFJtdXQyTW5INTlLbFM4M01PVWF5QVRMTC1Td0pvdw?oc=5"
+     "headline": "『BLEACH ミラハイ』に浦原喜助が登場。必殺技やイラスト公開",
+     "highlight": "浦原喜助が登場",
+     "image": "https://cimg.kgl-systems.io/camion/files/dengeki/94341/a135007e7085979a7d5b41ce54c0e54d7.jpg?x=1280",
+     "image_via": "AI 挑选",
+     "url": "https://dengekionline.com/article/202611/94341",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -860,8 +862,8 @@
      "date": "2026-11-17",
      "headline": "热闻|580元周杰伦演唱会门票“仅支持看大屏”？中演协：避免将视野严重遮挡区域划入售票区",
      "highlight": "580元周杰伦演唱会门票",
-     "image": "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg",
-     "image_via": "AI 挑选",
+     "image": "https://q6.itc.cn/q_70/images03/20261117/f443d125585f4a1aa5af3558bec1dfa3.png",
+     "image_via": "JSON-LD",
      "url": "https://m.sohu.com/a/1102689714_121218495?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "lead"
     },
