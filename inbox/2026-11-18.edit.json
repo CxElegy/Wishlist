@@ -1,7 +1,7 @@
 {
  "_covered": {
   "漫威电影": 68,
-  "GTA 6": 104,
+  "GTA 6": 130,
   "ILLIT": 10,
   "The Mandalorian": 6,
   "哈利波特剧集": 6,
@@ -78,17 +78,16 @@
  ],
  "GTA 6": [
   {
-   "headline": "全新 GTA 6 遊戲截圖展現 Leonida 的風暴與迷霧效果",
-   "highlight": "風暴與迷霧",
-   "blurb": "全新 GTA 6 截圖展現 Leonida 的風暴與迷霧天氣效果。",
+   "headline": "GTA 6全球解鎖時間出爐 港澳台今晚12時開放 新西蘭搶先5小時",
+   "highlight": "今晚12時開放",
+   "blurb": "GTA 6 全球解鎖時間公布，港澳台於今晚 12 時開放，新西蘭搶先 5 小時。",
    "weight": "lead",
    "refs": [
-    9,
-    11,
-    12,
-    82
+    116,
+    128,
+    121
    ],
-   "image": "https://img.asmedia.epimg.net/resizer/v2/UOFRRXQQGREZVP2RNPQXXZWFPY.jpg?auth=9e5d1b39f4bc08f6f145639ed061b4859ba97463baefd48e74808fa3b48f2f91&width=1472&height=828&smart=true"
+   "image": "https://cdn.hk01.com/di/media/images/dw/20261117/1199430966200766464274359.jpeg/JDkZUSPrzp6fDAzU1tTa6hFYCJg9kqVLYSBLuWEgS7k?v=w1280r16_9"
   },
   {
    "headline": "GTA 6 officially becomes the clear Game Awards 2026 frontrunner",
@@ -108,16 +107,12 @@
     73,
     74,
     72,
-    70
-   ]
-  },
-  {
-   "headline": "Your Final ‘GTA 6’ Checklist To Prepare For Launch",
-   "highlight": "Final ‘GTA 6’ Checklist",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    23
+    70,
+    126,
+    108,
+    111,
+    110,
+    117
    ]
   },
   {
@@ -129,17 +124,35 @@
     14,
     8,
     104,
-    101
+    101,
+    107,
+    123
    ]
   },
   {
-   "headline": "The Metacritic Review Score Bar For ‘GTA 6’ Is Historically High",
-   "highlight": "Metacritic",
+   "headline": "GTA 6 Vice City NBA Court Revealed by Miami Heat",
+   "highlight": "Vice City NBA Court",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    15
+    127,
+    105,
+    106,
+    129
    ]
+  },
+  {
+   "headline": "全新 GTA 6 遊戲截圖展現 Leonida 的風暴與迷霧效果",
+   "highlight": "風暴與迷霧",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    11,
+    12,
+    82
+   ],
+   "image": "https://img.asmedia.epimg.net/resizer/v2/UOFRRXQQGREZVP2RNPQXXZWFPY.jpg?auth=9e5d1b39f4bc08f6f145639ed061b4859ba97463baefd48e74808fa3b48f2f91&width=1472&height=828&smart=true"
   }
  ],
  "ILLIT": [
