@@ -657,6 +657,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.nc.press/news/photo/202611/630749_869718_2628.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-18"
+ },
  "https://cdn.news-report.co.kr/news/thumbnail/202611/4474_6856_614_v150.jpg": {
   "w": 300,
   "h": 302,
@@ -748,12 +755,6 @@
   "w": 896,
   "h": 504,
   "target": 1280,
-  "v": 3
- },
- "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=202611031247249730205868f676220867377_0.png&nmt=30": {
-  "w": 5953,
-  "h": 3969,
-  "target": 720,
   "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
@@ -4455,6 +4456,12 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Untitled-design-16.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.syfy.com/sites/syfy/files/2026/11/article-promotes-1825x1217_15.jpg": {
+  "w": 1825,
+  "h": 1217,
   "target": 720,
   "v": 3
  },
