@@ -2187,7 +2187,9 @@
     },
     {
      "date": "2026-11-18T18:00:00+00:00",
-     "image": "",
+     "image": "https://cdn.wamiz.fr/cdn-cgi/image/format=auto,quality=80,width=1200,height=675,fit=cover/article/main-picture/tabby-kitten-looking-side-on-from-camera-6afdda82c77be.png",
+     "image_via": "og:image",
+     "link": "https://wamiz.co.uk/news/205100/cat-owners-warned-fatal-hazard-lurking-homes-winter",
      "n": 3,
      "seen": "2026-11-18T20:24:33+00:00",
      "site": "https://wamiz.co.uk",
@@ -2199,7 +2201,9 @@
     },
     {
      "date": "2026-11-15T08:00:00+00:00",
-     "image": "",
+     "image": "https://news.walkerplus.com/article/130616/727260_615.jpg",
+     "image_via": "og:image",
+     "link": "https://www.walkerplus.com/article/130616/",
      "n": 4,
      "seen": "2026-11-18T20:24:33+00:00",
      "site": "https://www.walkerplus.com",
@@ -2211,7 +2215,9 @@
     },
     {
      "date": "2026-11-18T23:00:00+00:00",
-     "image": "",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/yorozoonews/yorozoonews_17057073_0.jpg",
+     "image_via": "og:image",
+     "link": "https://news.infoseek.co.jp/article/yorozoonews_17057073/",
      "n": 5,
      "seen": "2026-11-18T23:25:01+00:00",
      "site": "https://news.infoseek.co.jp",
@@ -2611,7 +2617,8 @@
     },
     {
      "date": "2026-11-18T14:26:33+00:00",
-     "image": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hJB7o.img",
+     "image_via": "MSN 接口",
      "n": 5,
      "seen": "2026-11-18T23:25:19+00:00",
      "source": "CAGE on MSN",
