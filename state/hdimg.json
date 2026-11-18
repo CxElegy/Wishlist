@@ -298,7 +298,7 @@
  "https://ascii.jp/img/2026/11/18/4553768/xl/86f2c4f94d1d8e57.jpg?20200122": {
   "w": 900,
   "h": 506,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://assets-prd.ignimgs.com/2024/07/23/deadpoolwolverinealt-blogroll-1721757176365.jpg?width=1280&format=jpg&auto=webp&quality=80": {
@@ -770,7 +770,7 @@
  "https://d.latintimes.com/en/full/594942/us-trade-china-tariffs.jpg": {
   "w": 2500,
   "h": 1449,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/13085550/pet-prt-175270-5-1-261113005546608.jpeg": {
@@ -1765,6 +1765,19 @@
   "target": 720,
   "v": 3
  },
+ "https://m.media-amazon.com/images/I/41GOidvp9JL._SL500_.jpg": {
+  "w": 500,
+  "h": 500,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.534,
+  "local": "pics/cfbe27088b1b5548.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://mashdigi.com/wp-content/uploads/Official_Cover_Art.jpg": {
   "w": 1200,
   "h": 800,
@@ -2496,6 +2509,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000165-spnannex-000-16-view.jpg?exp=10800": {
+  "w": 1122,
+  "h": 1200,
+  "target": 720,
+  "v": 3,
+  "local": "pics/da8502f0e5b182eb.webp",
+  "out": [
+   1122,
+   1200
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00010009-tennisnet-000-1-view.jpg?pri=l&w=640&h=481&exp=10800": {
   "w": 640,
   "h": 481,
@@ -2646,6 +2671,12 @@
  "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG": {
   "w": 500,
   "h": 282,
+  "target": 720,
+  "v": 3
+ },
+ "https://pbs.twimg.com/media/HW9Ya5ZXwAE6Ybm?format=jpg&name=large": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -3671,6 +3702,12 @@
   "v": 3,
   "blur": 0.404
  },
+ "https://www.bing.com/th?id=ONUT.1N1TTyE5qoadMN7RMaNvuw&pid=News&w=680": {
+  "w": 680,
+  "h": 383,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
   "w": 466,
   "h": 700,
@@ -3927,7 +3964,7 @@
  "https://www.cgames.com/upload/images/2026/11/s_34c4856fd634954b.jpg": {
   "w": 1080,
   "h": 444,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.chinapress.com.my/wp-content/uploads/2026/11/2026-11-11-Chinapress-125.jpg": {
@@ -4117,6 +4154,13 @@
   "h": 818,
   "target": 720,
   "v": 3
+ },
+ "https://www.moneydigest.sg/wp-content/uploads/2026/11/Unknown-1385.jpg": {
+  "w": 699,
+  "h": 366,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.381
  },
  "https://www.moviecollection.jp/wp/wp-content/uploads/2026/12/05407a6f6692aab722470a7b3b9aa5d9.jpg": {
   "w": 801,

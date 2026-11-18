@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "edit_sig": "9016ede15487",
+ "edit_sig": "8a4cd0ac2961",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?K1OF2OByoQie0QQKb3wpE",
@@ -106,24 +106,30 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "Whistler で実際に滑って検証した CAPiTA Mega Mercury の 2026 年モデルレビュー。",
      "date": "2026-11-12",
-     "n": 1,
-     "source": "Top-Notch Outdoor",
-     "title": "CAPiTA Mega Mercury Review (2026): Tested at Whistler",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA5RWpmZGdqSzF2ZWRLcGZmS3pvSUwzTXVhRlVLR3NMT2xKNmRxTk5PNXhURlFYYk9HcnpVUEVlWTRIdEVSRGJqdm45R3VGaVBHdzR4VTY5RlhCQzUtZldjOHkwMVJMWXVKWF9TNzRDOGQwQVU?oc=5"
+     "headline": "CAPiTA Mega Mercury Review (2026): Tested at Whistler",
+     "highlight": "",
+     "image": "https://m.media-amazon.com/images/I/41GOidvp9JL._SL500_.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://topnotchoutdoor.com/capita-mega-mercury-snowboard-review/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-12",
-     "n": 2,
+     "headline": "CAPiTA Slush Slasher 2.0 Review (2026): Field-Tested",
+     "highlight": "",
+     "image": null,
      "source": "Top-Notch Outdoor",
-     "title": "CAPiTA Slush Slasher 2.0 Review (2026): Field-Tested",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBlZzMxX3h6WnVmUXQ1VGQ2a183VEJJNnlCYi13QnVBQ01CWXNnM0VISEI3NEhxRVJaU3RIcm1hcVF5eXRLOC1qeG55Wlc3LVJqay1OX1BKRkNuNW1qU0R6OG1zTUR4UkdxMVAteW84cGxGMHRZaUw1LWd3?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=topnotchoutdoor.com&sz=128",
+     "url": "https://topnotchoutdoor.com/capita-slush-slasher-2-0-snowboard-review/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -267,24 +273,29 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "猫耳と肉球がついた Switch 2 用カバーが見つかった、という紹介記事。",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "Latin Times",
-     "title": "What NBC News Found Inside a 'Safe' AI Cat Toy at Walmart: Genocide, Gang Rape, and No Federal Rules to Stop It",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOUVhRUDFZcE1VSFh0VDFfVVBBQ2tzc21nVkpnR2ZRTkQwYlhBMThYWU9US2trWDlfekhpeVRtQURBR2k1RFNfMVl5U2hVeElBd25pN0tzbXF6cENRLUk4UVhVZDBNaE83VHBRaXlsUElSel82bkpOblJodDc3SU50Q3ROLXQ?oc=5"
+     "headline": "猫耳と肉球がついたSwitch 2用カバーを発見。やっぱり猫が好きな人にオススメ！",
+     "highlight": "Switch 2用カバー",
+     "image": "https://ascii.jp/img/2026/11/18/4553768/xl/86f2c4f94d1d8e57.jpg?20200122",
+     "image_via": "og:image",
+     "url": "https://ascii.jp/elem/000/004/452/4452848/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 2,
-     "source": "ASCII.jp",
-     "title": "猫耳と肉球がついたSwitch 2用カバーを発見。やっぱり猫が好きな人にオススメ！",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9jWkh4RzBRR2dIUjVfLXhnWnltMHFwd0FYUzQxOTllaEYzTk5KdjMzZFF4TTEtVUF1LWFNdXhvaUkxeGwyRzZtT1pmLUY0TDE0UlNHdA?oc=5"
+     "headline": "What NBC News Found Inside a 'Safe' AI Cat Toy at Walmart",
+     "highlight": "",
+     "image": "https://d.latintimes.com/en/full/594942/us-trade-china-tariffs.jpg",
+     "image_via": "og:image",
+     "url": "https://www.latintimes.com/ai-toy-pixie-paw-graphic-content-nbc-testing-601496",
+     "weight": "normal"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -472,24 +483,33 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "《绝区零》在海外获得大奖。",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "竞核",
-     "title": "刚刚，绝区零在国外拿了个大奖",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE0xWmh6LVZVRU5ocGpNQ1MyVGdWc1k0dHE1eXk0NmFZQ3BfX1FIbjF5TTEzNFFIR1g3N0hYWkxJMFdJYXc2SFhGR3Y4MUJzTkd3ZHc?oc=5"
+     "headline": "刚刚，绝区零在国外拿了个大奖",
+     "highlight": "",
+     "image": "https://www.cgames.com/upload/images/2026/11/s_34c4856fd634954b.jpg",
+     "image_via": "og:image",
+     "url": "https://cgames.com/contents/2/13450.html",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-15",
-     "n": 2,
-     "source": "인벤",
-     "title": "젠레스 존 제로 | 디스코드 협업 프로필 꾸미기 대회",
-     "url": "https://www.inven.co.kr/board/party/6553/432"
+     "event": {
+      "date": "2026-11-27",
+      "label": "コンテスト終了"
+     },
+     "headline": "젠레스 존 제로 | 디스코드 협업 프로필 꾸미기 대회",
+     "highlight": "",
+     "image": "https://pbs.twimg.com/media/HW9Ya5ZXwAE6Ybm?format=jpg&name=large",
+     "image_via": "og:image",
+     "url": "https://www.inven.co.kr/board/party/6553/432",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -586,17 +606,23 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Starbucks Korea x Hello Kitty collection launches 19 November, with a mini Christmas tree, mugs and more.",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "MoneyDigest",
-     "title": "Starbucks Korea x Hello Kitty drops on 19 November with a mini Christmas tree, mugs and more",
-     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOYzJMWkJGOU1qWXBQRDNfdm54OW0xN1FMampLa285aGxKX2FQNnQ4b21EM2NpZU1iczd3WlVKSXdWek53VFo2NVB2aGFZM0VFWkZZbVdLQUZ1TElMekVhbkpaa2RXWHQzZk5QTm92MnhNYnkwbWNQZmNRci04M1JlT2xyWU50TFd1Q3FDZ01pX2RvYUEwU1lUSzBuNlFKV24tdzgyc2JES1NtN1BKNnVJVmM5Q0lOLXpWUGZJ?oc=5"
+     "event": {
+      "date": "2026-11-19",
+      "label": "発売日"
+     },
+     "headline": "Starbucks Korea x Hello Kitty drops on 19 November with a mini Christmas tree, mugs and more",
+     "highlight": "19 November",
+     "image": "https://www.moneydigest.sg/wp-content/uploads/2026/11/Unknown-1385.jpg",
+     "image_via": "og:image",
+     "url": "https://www.moneydigest.sg/starbucks-korea-x-hello-kitty-drops-on-19-november-with-a-mini-christmas-tree-mugs-and-more/",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",

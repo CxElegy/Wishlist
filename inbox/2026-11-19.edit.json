@@ -199,7 +199,11 @@
   "gelato pique": 2,
   "チェーンソーマン": 2,
   "Vaundy": 1,
-  "日本顶级网球赛事": 1
+  "日本顶级网球赛事": 1,
+  "滑雪": 2,
+  "绝区零": 2,
+  "猫用品": 2,
+  "星巴克马克杯": 1
  },
  "三星手机": [
   {
@@ -282,6 +286,85 @@
     1
    ],
    "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnbKO4yRvCMedPqwW7GIyRes6Dq0-b0horielnHQmI9zAruanx6ZKZWl6cDtpTc45KsWtFHrAtf0hY-u3uVJ2J_0vwb3XyyKGnBDcA-AiRgVr8i_xiyB76dzWC-cmpqoEog=="
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "CAPiTA Mega Mercury Review (2026): Tested at Whistler",
+   "highlight": "",
+   "blurb": "Whistler で実際に滑って検証した CAPiTA Mega Mercury の 2026 年モデルレビュー。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "CAPiTA Slush Slasher 2.0 Review (2026): Field-Tested",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "刚刚，绝区零在国外拿了个大奖",
+   "highlight": "",
+   "blurb": "《绝区零》在海外获得大奖。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "젠레스 존 제로 | 디스코드 협업 프로필 꾸미기 대회",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-27",
+    "label": "コンテスト終了"
+   }
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "猫耳と肉球がついたSwitch 2用カバーを発見。やっぱり猫が好きな人にオススメ！",
+   "highlight": "Switch 2用カバー",
+   "blurb": "猫耳と肉球がついた Switch 2 用カバーが見つかった、という紹介記事。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "What NBC News Found Inside a 'Safe' AI Cat Toy at Walmart",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "Starbucks Korea x Hello Kitty drops on 19 November with a mini Christmas tree, mugs and more",
+   "highlight": "19 November",
+   "blurb": "Starbucks Korea x Hello Kitty collection launches 19 November, with a mini Christmas tree, mugs and more.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-11-19",
+    "label": "発売日"
+   }
   }
  ]
 }
