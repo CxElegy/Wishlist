@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-11-18T19:17:51+00:00",
+ "changed": false,
+ "checked": "2026-11-18T19:20:39+00:00",
  "fired": {
-  "at": "2026-11-18T17:37:34+00:00",
+  "at": "2026-11-18T19:20:39+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -46,19 +46,19 @@
    "edit": 14
   },
   "2026-11-19": {
-   "edit": 1
+   "edit": 2
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-18T17:37:34+00:00",
+    "at": "2026-11-18T19:20:39+00:00",
     "attempts": 1,
     "day": "2026-11-19",
-    "prog": 8,
-    "resp": "cse_01W4x6f7BJKRLFD9NGwg6j8W",
-    "sig": "752fc0220a06"
+    "prog": 74,
+    "resp": "",
+    "sig": "09984595ebad"
    },
    "items": [
     "ILLIT",
