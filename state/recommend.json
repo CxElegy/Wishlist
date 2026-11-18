@@ -82,7 +82,6 @@
   "https://www.walkerplus.com/article/1453739/": "https://news.walkerplus.com/article/1453739/19024802_615.jpg",
   "https://www.walkerplus.com/article/40260/image207549.html": "https://news.walkerplus.com/article/40260/207548_615.jpg",
   "https://www.walkerplus.com/article/54135/image297391.html": "https://news.walkerplus.com/article/54135/297391_615.jpg",
-  "https://www.youtube.com/watch?v=6VZ7smS-9GU": "https://i3.ytimg.com/vi/6VZ7smS-9GU/hqdefault.jpg",
   "https://www.zaobao.com.sg/entertainment/story20261118-10018901": "https://cassette.sphdigital.com.sg/image/zaobao/ff28d7efc8d13e40dadb7b8b6461c6d9c14015e3cac0c881a7d860cbb6df659a",
   "https://zdnet.co.kr/view/?no=20261112081626": "https://image.zdnet.co.kr/2026/11/12/ccb869c3838a5d6f9e2bafa6fe63634c.jpg"
  },
@@ -1045,27 +1044,6 @@
   },
   {
    "batch": 2,
-   "because": "ILLIT",
-   "date": "2026-11-17",
-   "hits": [],
-   "image": "https://i3.ytimg.com/vi/6VZ7smS-9GU/hqdefault.jpg",
-   "kind": "board",
-   "liked": "李沅禧出席香奈儿活动",
-   "score": 8,
-   "source": "YouTube · ILLIT",
-   "taste": [
-    [
-     "作品:ILLIT",
-     6
-    ]
-   ],
-   "title": "ILLIT(아일릿) 이 전하는 2027 수능 응원 메시지 🍀",
-   "url": "https://www.youtube.com/watch?v=6VZ7smS-9GU",
-   "words": [],
-   "work": "ILLIT"
-  },
-  {
-   "batch": 2,
    "because": "猫用品",
    "date": "2026-11-17",
    "hits": [
@@ -1094,7 +1072,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "Astrae Oratio",
    "date": "2026-11-16",
    "hits": [],
@@ -1207,7 +1185,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "周杰伦",
    "date": "2026-11-17",
    "hits": [],
@@ -1312,7 +1290,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "哈利波特剧集",
    "date": "2026-11-17",
    "hits": [],
@@ -1417,7 +1395,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "dota2",
    "date": "2026-11-17",
    "hits": [],
@@ -1930,11 +1908,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1942,15 +1920,15 @@
    8
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
    "作品:三星手机",
    7
   ],
   [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "galaxy",
    7
   ]
  ]
