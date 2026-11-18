@@ -437,19 +437,6 @@
   ],
   "why": "看不清"
  },
- "https://attach.setn.com/newsimages/2026/11/18/5793636-PH.jpg": {
-  "w": 800,
-  "h": 449,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.442,
-  "local": "pics/233827096e1cfb66.webp",
-  "out": [
-   1280,
-   718
-  ],
-  "why": "看不清"
- },
  "https://automaton-media.com/en/wp-content/uploads/2026/11/20261113-75190-header.jpg": {
   "w": 1305,
   "h": 852,
@@ -608,6 +595,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.hk01.com/di/media/images/dw/20261117/1199397595915489280194028.png/KOtAcXYeVasFnI6FZrBf_1RIh92zgvoZR4UTjUeFE40?v=w1280r16_9": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.hk01.com/di/media/images/dw/20261117/1199414283188834304423987.png/Zc9kB6t8QeJyWu-HAKYG0joPf85Ez5YOeb_7v3m_-78?v=w1280r16_9": {
   "w": 1280,
   "h": 720,
@@ -674,6 +667,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.nc.press/news/photo/202611/630749_869718_2628.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
   "v": 3
  },
  "https://cdn.news-report.co.kr/news/thumbnail/202611/4474_6856_614_v150.jpg": {
@@ -767,12 +766,6 @@
   "w": 896,
   "h": 504,
   "target": 1280,
-  "v": 3
- },
- "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=202611031247249730205868f676220867377_0.png&nmt=30": {
-  "w": 5953,
-  "h": 3969,
-  "target": 720,
   "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
@@ -1433,6 +1426,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hH6Uq.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
@@ -2640,6 +2639,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-00000561-oric-000-1-view.jpg?exp=10800": {
+  "w": 960,
+  "h": 639,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/6f8ade4b21c9308e.webp",
+  "out": [
+   960,
+   639
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-02554992-wwdjapan-000-3-view.jpg?exp=10800": {
   "w": 1200,
   "h": 1200,
@@ -3142,6 +3153,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg": {
+  "w": 690,
+  "h": 1005,
+  "target": 1280,
+  "v": 3
+ },
  "https://readysteadycut.com/wp-content/uploads/2026/11/Avengers-Doomsday.webp": {
   "w": 1500,
   "h": 844,
@@ -3257,12 +3274,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/f7b17973c566ef1ec763f0b5955bf5b5967ea4d92d077b634fd21a6de0b962f3/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fzh-tw%2Ftaisounds_com_380%2Fe836d843a3f28714ea08fa206de88751.jpg": {
-  "w": 1200,
-  "h": 676,
-  "target": 1280,
-  "v": 3
- },
  "https://saga.ismcdn.jp/mwimgs/f/1/1200m/img_f1fc6cd0ba1e65d22f26af0c76ce24901516707.jpg": {
   "w": 1200,
   "h": 1200,
@@ -3314,6 +3325,12 @@
  "https://static-cdn.nextapple.tw/prod/2026-11/07DF7BDC4398893472D7589BF4DA8F77/7dee8c1f68be2d1f9b735d8a7ea603c8_1280.webp": {
   "w": 1170,
   "h": 2305,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static-cdn.nextapple.tw/prod/2026-11/08132DFFCBB7C9B3E69047C93F08824E/503ba9d0f15cbff16d7fd4d4122886ee_1280.jpeg": {
+  "w": 1280,
+  "h": 853,
   "target": 1280,
   "v": 3
  },
@@ -3664,12 +3681,6 @@
  "https://thewpwire.org/wp-content/uploads/2026/11/croppedmarveljump-e1794419376945.jpeg": {
   "w": 1880,
   "h": 1426,
-  "target": 720,
-  "v": 3
- },
- "https://times-abema.ismcdn.jp/mwimgs/e/1/-/img_e1949ec40bc7a7311b0b7df4487bc73f152176.jpg": {
-  "w": 1200,
-  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -4570,13 +4581,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.369
- },
- "https://x0.ifengimg.com/res/qr/2026/20A89B209BDCD5E917E9ED0A004B663CEB0CF7C3_size61_w640_h420.png": {
-  "w": 640,
-  "h": 420,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.319
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-c5107fb3cab563f904aec69918eb1145/images/ed1e92c6-9632-4f56-8421-59c7b32366a0.jpg": {
   "w": 1920,

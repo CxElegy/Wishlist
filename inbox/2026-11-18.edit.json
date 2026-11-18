@@ -2,17 +2,17 @@
  "_covered": {
   "漫威电影": 123,
   "GTA 6": 225,
-  "ILLIT": 23,
-  "The Mandalorian": 6,
+  "ILLIT": 29,
+  "The Mandalorian": 9,
   "哈利波特剧集": 9,
   "チェーンソーマン": 1,
   "日本顶级网球赛事": 2,
-  "三星手机": 24,
-  "周杰伦": 15,
+  "三星手机": 35,
+  "周杰伦": 23,
   "gelato pique": 6,
-  "dota2": 14,
+  "dota2": 18,
   "FROM": 3,
-  "MMORPG 新作": 10,
+  "MMORPG 新作": 13,
   "ぐでたま": 1,
   "星巴克马克杯": 3,
   "绝区零": 4,
@@ -244,7 +244,8 @@
    "refs": [
     7,
     12,
-    15
+    15,
+    24
    ]
   },
   {
@@ -269,12 +270,12 @@
    ]
   },
   {
-   "headline": "1週間で「いちばんプレイリスト入りしたアーティストTOP30」を発表…米津玄師、Mrs. GREEN APPLE、ILLITらがランクイン【AWA調査】",
-   "highlight": "ILLITらがランクイン",
+   "headline": "ILLIT、新曲活動を一部縮小「メンバーたちの回復のため」 大阪開催『MAMA』は出演予定【報告全文】",
+   "highlight": "新曲活動を一部縮小",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    17
+    28
    ]
   }
  ],
@@ -314,6 +315,16 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "The Mandalorian and Grogu (2026) escape from the Empire – opening scene",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    9
    ]
   }
  ],
@@ -430,7 +441,11 @@
     16,
     21,
     19,
-    22
+    22,
+    26,
+    27,
+    28,
+    32
    ]
   },
   {
@@ -442,7 +457,8 @@
     7,
     15,
     18,
-    20
+    20,
+    31
    ]
   },
   {
@@ -451,7 +467,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    33
    ]
   },
   {
@@ -482,7 +499,9 @@
    "refs": [
     5,
     7,
-    13
+    13,
+    17,
+    21
    ],
    "image": "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg"
   },
@@ -505,7 +524,9 @@
     9,
     10,
     12,
-    14
+    14,
+    22,
+    19
    ]
   }
  ],
@@ -585,7 +606,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    17
    ]
   },
   {
@@ -662,6 +684,19 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "スマートフォン向けMMORPG「晴空物語 もふもふランド」，2027年1月19日15：00をもってサービス終了",
+   "highlight": "2027年1月19日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ],
+   "event": {
+    "date": "2027-01-19",
+    "label": "サービス終了"
+   }
   }
  ],
  "ぐでたま": [
