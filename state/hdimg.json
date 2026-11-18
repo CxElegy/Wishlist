@@ -1100,12 +1100,6 @@
   "target": 1280,
   "v": 3
  },
- "https://hk.on.cc/hk/bkn/cnt/entertainment/20261117/photo/bkn-20261117152047603-1117_00862_001_02b.jpg?20261117170305": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-18"
- },
  "https://i.abcnewsfe.com/a/02d94113-efa9-481c-9232-0dfafe5b3238/RyanGosling-gty-sn-260726_1785097233106_hpMain_16x9.jpg?w=1600": {
   "w": 1600,
   "h": 900,
@@ -3999,6 +3993,12 @@
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
   "h": 414,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.XPyrg0MgtGhHhSARkQjGXQ&pid=News&w=800": {
+  "w": 700,
+  "h": 394,
   "target": 720,
   "v": 3
  },
