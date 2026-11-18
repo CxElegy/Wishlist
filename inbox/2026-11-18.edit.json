@@ -10,7 +10,7 @@
   "三星手机": 24,
   "周杰伦": 15,
   "gelato pique": 6,
-  "dota2": 11,
+  "dota2": 14,
   "FROM": 3,
   "MMORPG 新作": 10,
   "ぐでたま": 1,
@@ -540,7 +540,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    14
    ]
   },
   {
@@ -568,6 +569,15 @@
    "weight": "normal",
    "refs": [
     9
+   ]
+  },
+  {
+   "headline": "Main title contenders for Dota 2 BLAST SLAM IX esports tournament",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
    ]
   }
  ],

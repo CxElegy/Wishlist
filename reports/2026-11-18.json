@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "e8ab26cee379",
+ "edit_sig": "dedfb3e57175",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -532,8 +532,9 @@
      "date": "2026-11-17",
      "headline": "三星Galaxy S27系列或将内置个人AI助手",
      "highlight": "个人AI助手",
-     "image": "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "Sohu",
+     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
      "url": "https://m.sohu.com/a/1102877029_114765?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     },
@@ -860,8 +861,8 @@
      "date": "2026-11-17",
      "headline": "热闻|580元周杰伦演唱会门票“仅支持看大屏”？中演协：避免将视野严重遮挡区域划入售票区",
      "highlight": "580元周杰伦演唱会门票",
-     "image": "https://q6.itc.cn/q_70/images03/20261117/f443d125585f4a1aa5af3558bec1dfa3.png",
-     "image_via": "JSON-LD",
+     "image": "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg",
+     "image_via": "AI 挑选",
      "url": "https://m.sohu.com/a/1102689714_121218495?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "lead"
     },
@@ -957,29 +958,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 12,
-     "source": "BusinessMirror",
-     "title": "Main title contenders for Dota 2 BLAST SLAM IX esports tournament",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbFVEZWRnX1lrNEw4ZE9sRFBJNm5wRFVEa0VfYy1OS2d1U0ZjZ2JPQ2QwcUNfUkZyUDYzaFpyaUlfRUN2N285dTZlSlZ5bFV6Y0hQOGFIRnRpQnRXRmcyR0tITEEyd01rMHNMNnMyT2J6eDBfc09pZlRSdGxSVHhDdzhPVVpPSlh5Z2g1eXRqLW5EZVNPWXRlNVFod1NPQ21rRFpNZHJnbUJjMlE?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 13,
-     "source": "Hawk Live",
-     "title": "The Team Spirit manager explained why there are no female players on the professional Dota 2 scene",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVUhDdFhQZW5pbi1iTlNlVlVhakhlcUI1cGlNTGhxT0dzWElEOFBtaTc1d2hIWEtrNURYT2NLbzJaOG5lcEpaVGFvUllET3RGTTFaOEtMNEF5TnRhMVBfMlpXdC1heEMxMmRwUDY4aUlBVkJ4NEc0QjVsOVVTWVphMjN0QlFlODJkVDNReHJXUFpqUXh2c1hVVGl3eDh5UQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 14,
-     "source": "Hawk Live",
-     "title": "TeaGuvnor pondered when the new patch for Dota 2 would be released",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBza2dqNEZYcl9hWWp5c1M1encwN3Y4dzAtRURIUzlaYlZSMnJELVVuaG5hYURuOGg0ODVycU9FUDUtUV9LUUdQaFc2X2VtaEltLXIyMi1nZTBIMVFoUXd4LVlXRERkRE5ObDROLUd6WTkxRlQ5LXZ3?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1034,6 +1012,17 @@
      "source": "Esports Charts",
      "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
      "url": "https://escharts.com/ja/tournaments/dota2/epl-world-series-southeast-asia-season-18",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "Main title contenders for Dota 2 BLAST SLAM IX esports tournament",
+     "highlight": "",
+     "image": null,
+     "source": "BusinessMirror",
+     "source_icon": "https://www.google.com/s2/favicons?domain=businessmirror.com.ph&sz=128",
+     "url": "https://businessmirror.com.ph/2026/11/18/main-title-contenders-for-dota-2-blast-slam-ix-esports-tournament/",
      "weight": "normal"
     }
    ],

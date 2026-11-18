@@ -1,6 +1,7 @@
 {
  "image_misses": {
   "https://dressy.pla-cole.wedding/niigata-toshikosi-countdown/": "2026-11-18",
+  "https://escharts.com/ja/tournaments/dota2/nexus-series-ii": "2026-11-18",
   "https://escharts.com/ja/tournaments/dota2/pakistan-dota-masters-season-3": "2026-11-18",
   "https://rollercoaster.ie/lifestyle/occasions/last-minute-halloween-costumes-for-adults/": "2026-11-18",
   "https://t.co/1NMYmLLW1U": "2026-11-18"
@@ -12,6 +13,7 @@
   "https://comicbook.com/movies/list/5-90s-superhero-movie-flops-that-millennials-actually-know-are-classics/": "https://comicbook.com/wp-content/uploads/sites/4/2026/09/Batman-Mask-of-the-Phantasm-Art.jpg?resize=2000,1125",
   "https://dressy.pla-cole.wedding/niigata-toshikosi-countdown/": null,
   "https://enuchi.jp/14622/recolte-kedamatori-202611": "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg",
+  "https://escharts.com/ja/tournaments/dota2/nexus-series-ii": null,
   "https://escharts.com/ja/tournaments/dota2/pakistan-dota-masters-season-3": null,
   "https://gamewith.jp/atsumori/": "https://img.gamewith.jp/article/thumbnail/rectangle_l/187052.png?date=1582018744",
   "https://geekculture.co/xiaomi-18-pro-max-gaming-test/": "https://www.bing.com/th?id=ONUT.ioi8PD0JlJDLyFyiqXX6fA&pid=News&w=1200",
@@ -1417,6 +1419,27 @@
   },
   {
    "batch": 6,
+   "because": "dota2",
+   "date": "2026-11-17",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "Esports Charts",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "NEXUS SERIES II - Dota 2 - 視聴率、概要、賞金総額",
+   "url": "https://escharts.com/ja/tournaments/dota2/nexus-series-ii",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-11-16",
    "hits": [],
@@ -1924,11 +1947,11 @@
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ]
  ]
