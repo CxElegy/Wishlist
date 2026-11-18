@@ -65,7 +65,6 @@
   "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9C-s27-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EC%B6%A9%EA%B2%A9-%EB%B3%80%ED%99%94-%EC%B9%B4%EB%A9%94%EB%9D%BC-4%EA%B0%9C-%EB%B2%84%EB%A6%AC%EA%B3%A0-3%EA%B0%9C%EB%A1%9C/vi-AA2hGqjT": "https://www.bing.com/th?id=ONUT.DOK_Vi6TspGTJxAUsjw7Vw&pid=News&w=1200",
   "https://www.msn.com/ko-kr/news/techandscience/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EC%B9%B4%EB%A9%94%EB%9D%BC-%EC%9D%B4%EB%A0%87%EA%B2%8C-%EC%83%9D%EA%B2%BC%EB%8B%A4/ar-AA2hElf0": "https://www.bing.com/th?id=ONUT.FwNHZrK0fWr7M2j5iDVqjQ&pid=News&w=640",
   "https://www.msn.com/zh-cn/news/other/%E7%8B%97%E8%A1%A3%E6%9C%8D%E5%8D%96%E4%BA%8617%E4%B8%87%E4%BB%B6-%E7%8C%AB%E7%B2%AE4362%E4%B8%87%E8%A2%8B-95%E4%B8%AA%E5%A4%A7%E7%89%8C%E6%8A%A2%E7%9D%80%E8%B5%9A-%E6%AF%9B%E5%AD%A9%E5%AD%90-%E7%9A%84%E9%92%B1-%E5%AE%A0%E7%89%A9%E5%85%AC%E5%8F%B8%E5%8D%B4%E9%9B%86%E4%BD%93%E4%B8%8D%E8%B5%9A%E9%92%B1%E4%BA%86/ar-AA2hvsGy": "https://www.bing.com/th?id=ONUT.LTmoqoy847fO1yiuruF25Q&pid=News&w=800",
-  "https://www.pcgames.de/Harry-Potter-Brands-23301/News/Harry-Potter-One-series-apparently-isnt-enough-for-HBO-two-more-reportedly-planned-1560322/": "https://www.bing.com/th?id=ONUT.iLMIKuXI0VMfhnR_hc0lZQ&pid=News&w=1200",
   "https://www.pcmag.com/deals/samsung-galaxy-smartphone-early-black-friday-2026-deals": "https://i.pcmag.com/imagery/articles/04H6IwEv0E6cx1rnnkowZes-2.fit_lim.size_1200x630.v1793906374.png",
   "https://www.playstationlifestyle.net/2026/11/16/crazy-taxi-world-tour-india-map-reveal": "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/11/14.jpg?resize=1200,630",
   "https://www.purexbox.com/news/2026/04/open-world-rpg-the-blood-of-dawnwalker-gets-september-2026-release-date-for-xbox-series-xs": "https://images.purexbox.com/d57e4aaafc1fd/1280x720.jpg",
@@ -1295,27 +1294,6 @@
    "because": "哈利波特剧集",
    "date": "2026-11-17",
    "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.iLMIKuXI0VMfhnR_hc0lZQ&pid=News&w=1200",
-   "kind": "board",
-   "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
-   "score": 6,
-   "source": "PC Games",
-   "taste": [
-    [
-     "作品:哈利波特剧集",
-     2
-    ]
-   ],
-   "title": "Harry Potter: One series apparently isn't enough for HBO – two more reportedly planned",
-   "url": "https://www.pcgames.de/Harry-Potter-Brands-23301/News/Harry-Potter-One-series-apparently-isnt-enough-for-HBO-two-more-reportedly-planned-1560322/",
-   "words": [],
-   "work": "哈利波特剧集"
-  },
-  {
-   "batch": 5,
-   "because": "哈利波特剧集",
-   "date": "2026-11-17",
-   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.LKuT1oYT-6V6WrWSEG0YAA&pid=News&w=1200",
    "kind": "board",
    "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
@@ -1417,7 +1395,7 @@
    "work": "dota2"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "dota2",
    "date": "2026-11-17",
    "hits": [],
@@ -1942,7 +1920,7 @@
    8
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
@@ -1950,7 +1928,7 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ]
  ]

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "933af7b5850e",
+ "edit_sig": "1ae04970b4b9",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -281,15 +281,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 9,
-     "source": "PC Games",
-     "title": "Harry Potter: One series apparently isn't enough for HBO – two more reportedly planned",
-     "url": "https://www.pcgames.de/Harry-Potter-Brands-23301/News/Harry-Potter-One-series-apparently-isnt-enough-for-HBO-two-more-reportedly-planned-1560322/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -330,6 +321,16 @@
      "image": "https://media.unboxholics.com/media/source/Articles/139067/images/socialMediaImage/harry-potter-fans-hans-zimmer.jpg",
      "image_via": "og:image",
      "url": "https://unboxholics.com/en/news/tv/139067-harry-potter-series-fans-react-to-hans-zimmers-score",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "Harry Potter: One series apparently isn't enough for HBO – two more reportedly planned",
+     "highlight": "",
+     "image": "https://www.pcgames.de/screenshots/original/2026/10/Harry-Potter-HBO-pc-games_artwork31.jpg",
+     "image_via": "og:image",
+     "url": "https://www.pcgames.de/Harry-Potter-Brands-23301/News/Harry-Potter-One-series-apparently-isnt-enough-for-HBO-two-more-reportedly-planned-1560322/",
      "weight": "normal"
     }
    ],
