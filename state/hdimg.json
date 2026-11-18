@@ -2018,6 +2018,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news-images.tvbs.com.tw/api/v1/image/01a1ec79-47b1-7103-a625-a0aeb201ba72.jpg?t=16x9&c=0,6,1024,582&w=1200&h=675": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26r5ySXHfe0WCdfTYD3xgG4TB761X7GinD36KPb-e5Zk6q5RzPocnCPRK3X-Q704GCZMcplFw3xngXyUUyquz3v6N2ysUkN8DNJRVzKKinfLpQBivTA7EDYLiNkT2IQCR-g==": {
   "w": 497,
   "h": 702,
@@ -2617,12 +2623,12 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-02554992-wwdjapan-000-1-view.jpg?exp=10800": {
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-02554992-wwdjapan-000-3-view.jpg?exp=10800": {
   "w": 1200,
   "h": 1200,
   "target": 720,
   "v": 3,
-  "local": "pics/6277435a7bcff260.webp",
+  "local": "pics/88a50bc75157beb4.webp",
   "out": [
    1200,
    1200
@@ -3048,12 +3054,6 @@
   "w": 682,
   "h": 958,
   "target": 1280,
-  "v": 3
- },
- "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
-  "w": 1024,
-  "h": 572,
-  "target": 720,
   "v": 3
  },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
@@ -3837,6 +3837,12 @@
  "https://www.bing.com/th?id=ONUT.1N1TTyE5qoadMN7RMaNvuw&pid=News&w=680": {
   "w": 680,
   "h": 383,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
+  "w": 466,
+  "h": 700,
   "target": 720,
   "v": 3
  },

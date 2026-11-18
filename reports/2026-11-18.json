@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "6804e9941c5f",
+ "edit_sig": "698c4a80062d",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -311,29 +311,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 11,
-     "source": "Weverse",
-     "title": "ILLITコミュニティの投稿 - 졸리당 - ミンジュ",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBocUk0ekF2NzlQdjBqMlU3RUxhaHJDaXR2RXU4QVlfQVljUTlLMy1nQ3JlTWRFSG1KTThIWVBDcTBtNW5hUlBodmJ2N24xbWttSHAxLWV5cjk4ejlYQ0E?oc=5"
-    },
-    {
-     "date": "2026-11-11",
-     "n": 12,
-     "source": "뉴스컬처",
-     "title": "ILLIT、『BREAK EVEN』がBillboard 200で6位 「You’re Under Arrest」も米チャート入り",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1hUG10aWZlbHllbmtUdTduekZBMXMxVURTc3VTSGRjLTlRdG5oUG5LQnNtSGt6OFFIZ1htT0hHTUlIYm1aSlZNak1WaGNGSDRDR3JfWmpCbVVRWUQwV3NwWlNseTZHZw?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 13,
-     "source": "TVBS新聞網",
-     "title": "2026MAMA／女團神仙打架！aespa、IVE 領軍爭大獎 ILLIT、BABYMONSTER 強勢踢館",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5ITElxNlRTSVJ0NGFxRV9NVE5fUW43NlpteGUwdGJoTVh6bkdBenVMV2VxdTA4cmpIdWhWQ1pjUlpzY0E1QnBmcmJ4eGZvZHk0UWtaTkt0OTJMQjJ5VmxXZlFB?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -378,12 +355,22 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-17",
-     "headline": "아일릿 ‘체포하겠어’, 美 빌보드 ‘글로벌 200’ 150위→24위→22위",
-     "highlight": "22위",
+     "date": "2026-11-11",
+     "headline": "ILLIT、『BREAK EVEN』がBillboard 200で6位 「You’re Under Arrest」も米チャート入り",
+     "highlight": "",
      "image": "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=202611031247249730205868f676220867377_0.png&nmt=30",
      "image_via": "正文图（3 枚から）",
-     "url": "https://www.beyondpost.co.kr/view.php?ud=20261118072859574d3244b4fed_30",
+     "url": "https://www.nc.press/news/articleView.html?idxno=630749",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "2026MAMA／女團神仙打架！aespa、IVE 領軍爭大獎 ILLIT、BABYMONSTER 強勢踢館",
+     "highlight": "2026MAMA",
+     "image": "https://news-images.tvbs.com.tw/api/v1/image/01a1ec79-47b1-7103-a625-a0aeb201ba72.jpg?t=16x9&c=0,6,1024,582&w=1200&h=675",
+     "image_via": "og:image",
+     "url": "http://news.tvbs.com.tw/entertainment/jk-pop/4052228",
      "weight": "normal"
     }
    ],
@@ -511,8 +498,9 @@
      "date": "2026-11-17",
      "headline": "三星Galaxy S27系列或将内置个人AI助手",
      "highlight": "个人AI助手",
-     "image": "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "Sohu",
+     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
      "url": "https://m.sohu.com/a/1102877029_114765?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }
@@ -569,7 +557,7 @@
      "date": "2026-11-17",
      "headline": "ふわもこ、だけど盤石 ルームウエアで年商400億円に迫る「ジェラート ピケ」というビジネスモデル",
      "highlight": "年商400億円",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-02554992-wwdjapan-000-1-view.jpg?exp=10800",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-02554992-wwdjapan-000-3-view.jpg?exp=10800",
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/93d0d0ea8b0c223b819eb5394a41b190fbdc675e",
      "weight": "normal"
@@ -1112,9 +1100,8 @@
      "date": "2026-11-16",
      "headline": "【神奈川県川崎市】マダニ感染症SFTSにワクチン開発の光！獣医師が解説",
      "highlight": "ワクチン開発の光",
-     "image": null,
-     "source": "選挙ドットコム",
-     "source_icon": "https://www.google.com/s2/favicons?domain=go2senkyo.com&sz=128",
+     "image": "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466",
+     "image_via": "Bing 缩略图",
      "url": "https://go2senkyo.com/seijika/200828/posts/1584569",
      "weight": "normal"
     }

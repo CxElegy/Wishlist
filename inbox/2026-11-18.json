@@ -3258,6 +3258,7 @@
     {
      "date": "2026-11-11T05:31:31+00:00",
      "image": "",
+     "link": "https://www.nc.press/news/articleView.html?idxno=630749",
      "n": 12,
      "seen": "2026-11-18T01:25:48+00:00",
      "site": "https://www.nc.press",
@@ -3269,7 +3270,9 @@
     },
     {
      "date": "2026-11-18T02:29:00+00:00",
-     "image": "",
+     "image": "https://news-images.tvbs.com.tw/api/v1/image/01a1ec79-47b1-7103-a625-a0aeb201ba72.jpg?t=16x9&c=0,6,1024,582&w=1200&h=675",
+     "image_via": "og:image",
+     "link": "http://news.tvbs.com.tw/entertainment/jk-pop/4052228",
      "n": 13,
      "seen": "2026-11-18T04:28:27+00:00",
      "site": "http://news.tvbs.com.tw",
@@ -4902,7 +4905,8 @@
     },
     {
      "date": "2026-11-16T16:00:00+00:00",
-     "image": "",
+     "image": "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466",
+     "image_via": "Bing 缩略图",
      "n": 2,
      "seen": "2026-11-17T22:26:00+00:00",
      "source": "選挙ドットコム",
