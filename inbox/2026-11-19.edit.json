@@ -244,7 +244,9 @@
   "绝区零": 2,
   "猫用品": 2,
   "星巴克马克杯": 1,
-  "ILLIT": 7
+  "ILLIT": 7,
+  "MMORPG 新作": 3,
+  "哈利波特剧集": 3
  },
  "三星手机": [
   {
@@ -463,6 +465,64 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "'기사' 리부트가 온다…'리니지M', '언브레이커블' 사전 예약 돌입",
+   "highlight": "사전 예약 돌입",
+   "blurb": "'리니지M'이 '기사' 클래스 리부트를 앞세운 '언브레이커블' 사전 예약에 돌입했다.",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "[게임대상 26] 카카오게임즈 ‘도깨비의세계’, 출시 한 달여 만에 우수상",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Mini-MMO Farever adds a new mountainous region with new activities and level cap December 3",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "'Harry Potter' reboot officially releases first full footage of Hogwarts magic",
+   "highlight": "first full footage",
+   "blurb": "Dominic McLaughlin and John Lithgow take the spotlight in the first full clip from the new 'Harry Potter' series.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "HBO's Harry Potter Unveils First Sample of Hans Zimmer's Soundtrack & Fans Rush to Criticize It",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "HBO’s ‘Harry Potter’ reboot is about to take one iconic scene much further",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ]

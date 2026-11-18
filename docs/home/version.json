@@ -1,10 +1,10 @@
 {
- "admin": "a10aa0d479c7",
- "admin-ai": "aeef6e40f0b6",
+ "admin": "4919da9d848b",
+ "admin-ai": "4d3371f1de30",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "42bdf837"
+   "85cccfc5"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "c7cd2ea80b0e",
+ "admin-emblem": "c1925c69f6ce",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "bc4f0525"
+   "e684b80d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "a4686dd90371",
+ "admin-now": "244629ce3956",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d45bdba2"
+   "d3e1ac7b"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "1aeb9562"
   ]
  },
- "admin-system": "62406a04395c",
+ "admin-system": "5f5ca8a0aab1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "6ac94d04"
+   "c5727eed"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "14848708"
   ]
  },
- "index": "6877120bf76e",
+ "index": "470b95051a76",
  "index_marks": {
   "front": [
    "トップ",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "59f90d98"
+   "28921d48"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "3a4597ce"
+   "d7abd99d"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "47bad36e"
+   "708f4429"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "72edf8a8"
   ]
  },
- "updated": "11.19 05:37",
+ "updated": "11.19 05:45",
  "wishlist": "475d604848d8"
 }

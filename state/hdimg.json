@@ -11,6 +11,12 @@
   "target": 720,
   "v": 3
  },
+ "http://img4.wtsimg.com/flashnews/images/images/20261117/feishu-CHbQbl1yko59g6xECGpcPsQancf-58a6e5fc.jpg!1200": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "http://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FJiji%252Fcd%252FJiji_3913808%252FJiji_3913808_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "w": 480,
   "h": 320,
@@ -507,6 +513,12 @@
  "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:yic4eez4gizdbpb7hrebcgwz/bafkreid7t6tlxupwxm476nxgnuoaz5j2noek4y7wz765t6x5cii4hq3s3e": {
   "w": 1920,
   "h": 804,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.ebn.co.kr/news/photo/202611/1732202_768402_88.jpg": {
+  "w": 600,
+  "h": 348,
   "target": 720,
   "v": 3
  },
@@ -1324,6 +1336,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cpRlT.img": {
+  "w": 2800,
+  "h": 1400,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2e7yP9.img": {
   "w": 1422,
   "h": 800,
@@ -1376,6 +1394,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hGK2E.img": {
+  "w": 1200,
+  "h": 660,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hH6Uq.img": {
@@ -1498,6 +1522,12 @@
   "w": 1672,
   "h": 941,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2htXbF.img": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2htcVk.img": {
@@ -1715,12 +1745,6 @@
   "v": 3,
   "blur": 0.361
  },
- "https://img4.wtsimg.com/flashnews/images/images/20261117/crop-3x2-115230522030-302e1081.jpg": {
-  "w": 1215,
-  "h": 810,
-  "target": 720,
-  "v": 3
- },
  "https://img4.yna.co.kr/etc/inner/JP/2026/11/13/AJP20261113002200882_01_i_P4.jpg": {
   "w": 500,
   "h": 375,
@@ -1839,6 +1863,12 @@
   "v": 3
  },
  "https://massivelyop.com/wp-content/uploads/2026/04/eldramoor-06.jpg": {
+  "w": 880,
+  "h": 290,
+  "target": 720,
+  "v": 3
+ },
+ "https://massivelyop.com/wp-content/uploads/2026/11/farever-its-peak.jpg": {
   "w": 880,
   "h": 290,
   "target": 720,
@@ -3374,6 +3404,12 @@
   "v": 3
  },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/doctor-doom-raising-the-sentinels-in-avengers-doomsday-trailer.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/dominic-mclaughlin-as-harry-potter-in-hbo-s-reboot.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 1280,

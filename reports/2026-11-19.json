@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "edit_sig": "c4969e4787b7",
+ "edit_sig": "a23c70dd7190",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -106,31 +106,39 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "'리니지M'이 '기사' 클래스 리부트를 앞세운 '언브레이커블' 사전 예약에 돌입했다.",
+     "date": "2026-11-18",
+     "headline": "'기사' 리부트가 온다…'리니지M', '언브레이커블' 사전 예약 돌입",
+     "highlight": "사전 예약 돌입",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hGK2E.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ko-kr/news/other/%EA%B8%B0%EC%82%AC-%EB%A6%AC%EB%B6%80%ED%8A%B8%EA%B0%80-%EC%98%A8%EB%8B%A4-%EB%A6%AC%EB%8B%88%EC%A7%80m-%EC%96%B8%EB%B8%8C%EB%A0%88%EC%9D%B4%EC%BB%A4%EB%B8%94-%EC%82%AC%EC%A0%84-%EC%98%88%EC%95%BD-%EB%8F%8C%EC%9E%85/ar-AA2hFVKO",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-11-17",
-     "n": 1,
-     "source": "EBN",
-     "title": "[게임대상 26] 카카오게임즈 ‘도깨비의세계’, 출시 한 달여 만에 우수상",
-     "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1732202"
+     "headline": "[게임대상 26] 카카오게임즈 ‘도깨비의세계’, 출시 한 달여 만에 우수상",
+     "highlight": "",
+     "image": "https://cdn.ebn.co.kr/news/photo/202611/1732202_768402_88.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1732202",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 2,
-     "source": "Massively Overpowered",
-     "title": "Mini-MMO Farever adds a new mountainous region with new activities and level cap December 3",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNMW9BX0l2M1IyaDRVQzYzbDEzQ3lhMjdCOUtMUGduWWYzbWlIbkxfX1B5bHdUcWtGVGN3dlh6eWhaWmlCV0NFckN6UEpMMkx5TVR5VzNFYnN3NldSZHI3MTZIR2ZOSWZtY0hmMHY1bUJsVGsyNEZwaHRHcnR5VFF2cGVsZzhKT0FBTVpkeTg0TXhWbk1hejFqSzZ2M2RsSm1rU1JxeWNQQlhyRFZ4XzVhUjVfWVFtdGt2RGVkdEktbDVzOGdQZ1E?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 3,
-     "source": "엑스포츠뉴스 on MSN",
-     "title": "'기사' 리부트가 온다…'리니지M', '언브레이커블' 사전 예약 돌입",
-     "url": "https://www.msn.com/ko-kr/news/other/%EA%B8%B0%EC%82%AC-%EB%A6%AC%EB%B6%80%ED%8A%B8%EA%B0%80-%EC%98%A8%EB%8B%A4-%EB%A6%AC%EB%8B%88%EC%A7%80m-%EC%96%B8%EB%B8%8C%EB%A0%88%EC%9D%B4%EC%BB%A4%EB%B8%94-%EC%82%AC%EC%A0%84-%EC%98%88%EC%95%BD-%EB%8F%8C%EC%9E%85/ar-AA2hFVKO"
+     "headline": "Mini-MMO Farever adds a new mountainous region with new activities and level cap December 3",
+     "highlight": "",
+     "image": "https://massivelyop.com/wp-content/uploads/2026/11/farever-its-peak.jpg",
+     "image_via": "og:image",
+     "url": "https://massivelyop.com/2026/11/18/mini-mmo-farever-adds-a-new-mountainous-region-with-new-activities-and-level-cap-december-3/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -260,31 +268,39 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Dominic McLaughlin and John Lithgow take the spotlight in the first full clip from the new 'Harry Potter' series.",
      "date": "2026-11-14",
-     "n": 1,
-     "source": "MovieWeb on MSN",
-     "title": "'Harry Potter' reboot officially releases first full footage of Hogwarts magic",
-     "url": "https://www.msn.com/en-us/news/other/harry-potter-reboot-officially-releases-first-full-footage-of-hogwarts-magic/ar-AA2htXbR"
+     "headline": "'Harry Potter' reboot officially releases first full footage of Hogwarts magic",
+     "highlight": "first full footage",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2htXbF.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/harry-potter-reboot-officially-releases-first-full-footage-of-hogwarts-magic/ar-AA2htXbR",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 2,
-     "source": "Comic Book Resources",
-     "title": "HBO's Harry Potter Unveils First Sample of Hans Zimmer's Soundtrack & Fans Rush to Criticize It",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9PZlRCNUVvbkZfUEZFa01oSjBKQ1g3WlJBTUxHZWFpVndjWkpVU3VlUlRUZDdoaHJuSUFsU01pTkp6MFEzMWxuRzRhdFM1ZTM4Y3RRTHotbks1d2RBbVFzSk5uMDFjRDJYel94cmFwamp4Qzhod2ZQcE4wZw?oc=5"
+     "headline": "HBO's Harry Potter Unveils First Sample of Hans Zimmer's Soundtrack & Fans Rush to Criticize It",
+     "highlight": "",
+     "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/dominic-mclaughlin-as-harry-potter-in-hbo-s-reboot.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://www.cbr.com/hbo-harry-potter-hans-zimmers-soundtrack-criticism/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-17",
-     "n": 3,
-     "source": "Collider on MSN",
-     "title": "HBO’s ‘Harry Potter’ reboot is about to take one iconic scene much further",
-     "url": "https://www.msn.com/en-us/entertainment/celebrities/hbo-s-harry-potter-reboot-is-about-to-take-one-iconic-scene-much-further/ar-AA2hHD7O"
+     "headline": "HBO’s ‘Harry Potter’ reboot is about to take one iconic scene much further",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cpRlT.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/entertainment/celebrities/hbo-s-harry-potter-reboot-is-about-to-take-one-iconic-scene-much-further/ar-AA2hHD7O",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -643,8 +659,8 @@
      "date": "2026-11-18",
      "headline": "别克又搞事情了！全新至境世家MPV官宣即将登场，周杰伦代言背后的门道你看懂了吗？",
      "highlight": "",
-     "image": "https://img4.wtsimg.com/flashnews/images/images/20261117/crop-3x2-115230522030-302e1081.jpg",
-     "image_via": "JSON-LD",
+     "image": "http://img4.wtsimg.com/flashnews/images/images/20261117/feishu-CHbQbl1yko59g6xECGpcPsQancf-58a6e5fc.jpg!1200",
+     "image_via": "正文图（4 枚から）",
      "url": "http://auto.news18a.com/news/storys_316171.html",
      "weight": "normal"
     }
