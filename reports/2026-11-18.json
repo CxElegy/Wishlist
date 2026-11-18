@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "6e442a32900d",
+ "edit_sig": "16d49959d283",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -747,33 +747,6 @@
    }
   },
   {
-   "cover": "https://vaundy.jp/og_image.png",
-   "facts": [],
-   "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "画像2 / 24＞新しい「銀座の庭」Ginza Sony Parkがグランドオープン！YOASOBIやVaundyらとコラボしたオープニングプログラム「Sony Park展 2025」を体験レポ",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1iQS14NlFROUpLNEZrWlRoTnVVdFo4M2hWS2xGQThveC1sTksxN1ZoNjAzUVJuNFZPUDZTVzlzamdvMzJ0TG8yX2Y1VUV5bm1qMFZvRmFrRHd5MFNHN0h3ZkFnaW1jMWNjZEtidzFB?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "演唱会",
-   "theme": {
-    "accent": "#B9A6F2",
-    "alt_accent": "#5B43A8",
-    "alt_bg": "#F1EEF8",
-    "alt_fg": "#1C1826",
-    "bg": "#15131C",
-    "fg": "#EEEAF4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": null,
    "facts": [],
    "name": "周杰伦",
@@ -784,8 +757,8 @@
      "date": "2026-11-17",
      "headline": "热闻|580元周杰伦演唱会门票“仅支持看大屏”？中演协：避免将视野严重遮挡区域划入售票区",
      "highlight": "580元周杰伦演唱会门票",
-     "image": "https://q6.itc.cn/q_70/images03/20261117/f443d125585f4a1aa5af3558bec1dfa3.png",
-     "image_via": "JSON-LD",
+     "image": "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg",
+     "image_via": "AI 挑选",
      "url": "https://m.sohu.com/a/1102689714_121218495?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "lead"
     },
@@ -1098,15 +1071,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 3,
-     "source": "ｄメニューニュース",
-     "title": "9割の飼い主が「出待ち」を経験！？ 猫はどんな人を出待ちするの？ 獣医師に聞いた（ねこのきもち WEB MAGAZINE）",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQeFd2S1RCRUlySVRxUldFb2gzaVJWNVhrSW9HRFNSNXhQa3VWZUNLT0lpY1VsT1Jya2l3SFJvX095T1dONG5JVTlfeFcyVU5QVndfWXZmaXloamgtY2R3NDJjU19GRTgtbnkyMi1UMGxQUkRIMnItd2kwMHhVaWRNVg?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1130,6 +1094,16 @@
      "image": "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466",
      "image_via": "Bing 缩略图",
      "url": "https://go2senkyo.com/seijika/200828/posts/1584569",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "9割の飼い主が「出待ち」を経験！？ 猫はどんな人を出待ちするの？ 獣医師に聞いた",
+     "highlight": "",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100643.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/cat_benesse/life/cat_benesse-100643",
      "weight": "normal"
     }
    ],
@@ -1166,6 +1140,31 @@
     "alt_fg": "#1E1A18",
     "bg": "#211212",
     "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "last": {
+    "date": "2026-11-17",
+    "headline": "オンデマンド楽譜『しわあわせ／Vaundy』が発売（ピアノソロ・ピアノ＆ヴォーカル・メロディ譜・やさしく弾けるピアノソロ）",
+    "url": "http://www.excite.co.jp/news/article/Dreamnews_0000368876/"
+   },
+   "name": "Vaundy",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
     "font": "serif",
     "split": true
    }
