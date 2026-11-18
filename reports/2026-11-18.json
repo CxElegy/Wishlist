@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "dedfb3e57175",
+ "edit_sig": "da8868a927b0",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -532,9 +532,8 @@
      "date": "2026-11-17",
      "headline": "三星Galaxy S27系列或将内置个人AI助手",
      "highlight": "个人AI助手",
-     "image": null,
-     "source": "Sohu",
-     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
+     "image": "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1102877029_114765?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     },
@@ -1145,29 +1144,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 7,
-     "source": "Dressy(ドレシー)",
-     "title": "【新潟 カウントダウン・年越しイベント2026-2027】スキー場で年越し！おすすめイベント9選",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1ZUjNVQU85NkgyWTVUa2Z3R0lWQURoNmp2eWVIQjdNXzhNSmkwaWprdTd4TnpmUkg5a1FOLU52eEI3OHVtbEowWHBpUDk4eUdPQU15d2ZNZnRXVGE0eFAtVkxPdzVwaG5Bd0hsWQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 8,
-     "source": "トラベルボイス",
-     "title": "楽天トラベル、レンタカー予約でAI対応、「スキー場に行きたい」など用途に合わせて車両を提案",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE51LU5EZ2VFMXhYTk45ZGpQMmRxVlExUEJRaUFjMnJIRjVBQVJtQXllM3JHbU1EM1NfOW95YTdwUFBGZkdaakFpbWkxU202cE1EQlZpag?oc=5"
-    },
-    {
-     "date": "2026-11-12",
-     "n": 9,
-     "source": "Top-Notch Outdoor",
-     "title": "Burton Process Camber Review: Tested at Whistler Blackcomb",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1JbFVGZldSZU1CVTRQV1NKbFdWTTluN29jYk8wb1B1aXp5YkJCOVVlRHEtWjJicktVWThOWWNXUHliUld1bFFHR21tMlhiSG5vSFB5NG5YTlNKSWFBZnlHUFhybFFCSTJuWVhrUQ?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1203,6 +1179,30 @@
      "image": "https://prtimes.jp/img/183117/47/resize/d183117-47-ee02b95daf8ef3adac9a-0.jpg",
      "image_via": "og:image",
      "url": "https://mantan-web.jp/prtimes/article/20261118prt00m200000358a.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "event": {
+      "date": "2026-12-31",
+      "label": "年越しイベント"
+     },
+     "headline": "【新潟 カウントダウン・年越しイベント2026-2027】スキー場で年越し！おすすめイベント9選",
+     "highlight": "",
+     "image": "https://dressy.pla-cole.wedding/wp-content/uploads/2025/10/IMG_5151.jpeg",
+     "image_via": "og:image",
+     "url": "https://dressy.pla-cole.wedding/niigata-toshikosi-countdown/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "楽天トラベル、レンタカー予約でAI対応、「スキー場に行きたい」など用途に合わせて車両を提案",
+     "highlight": "",
+     "image": "https://www.travelvoice.jp/wp-content/uploads/2023/05/b8727131-15d8-4513-a616-51ecaea0908d.jpg",
+     "image_via": "og:image",
+     "url": "https://www.travelvoice.jp/20261118-160879",
      "weight": "normal"
     }
    ],
