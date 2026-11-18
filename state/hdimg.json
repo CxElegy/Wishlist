@@ -11,12 +11,6 @@
   "target": 720,
   "v": 3
  },
- "http://img4.wtsimg.com/flashnews/images/images/20261117/feishu-CHbQbl1yko59g6xECGpcPsQancf-58a6e5fc.jpg!1200": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "http://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FJiji%252Fcd%252FJiji_3913808%252FJiji_3913808_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "w": 480,
   "h": 320,
@@ -614,6 +608,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.mos.cms.futurecdn.net/3GRMih55Lhb8xiQTfctXgP-2560-80.jpg": {
+  "w": 2560,
+  "h": 1442,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.nc.press/news/photo/202611/630749_869718_2628.jpg": {
   "w": 600,
   "h": 400,
@@ -705,6 +705,12 @@
   "w": 1280,
   "h": 854,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdnweb01.wikitree.co.kr/webdata/editor/202611/19/img_20261119020844_75dfdc78.jpeg": {
+  "w": 1200,
+  "h": 676,
+  "target": 720,
   "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
@@ -1661,6 +1667,12 @@
   "v": 3,
   "blur": 0.361
  },
+ "https://img4.wtsimg.com/flashnews/images/images/20261117/crop-3x2-115230522030-302e1081.jpg": {
+  "w": 1215,
+  "h": 810,
+  "target": 720,
+  "v": 3
+ },
  "https://img4.yna.co.kr/etc/inner/JP/2026/11/13/AJP20261113002200882_01_i_P4.jpg": {
   "w": 500,
   "h": 375,
@@ -1808,6 +1820,12 @@
   "v": 3,
   "blur": 0.348
  },
+ "https://media.image.infoseek.co.jp/isnews/photos/iza/iza_25IJUH4SOFHDHIMQVGSKBRGF2M_0-enlarge.jpg": {
+  "w": 1200,
+  "h": 1200,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.image.infoseek.co.jp/isnews/photos/nkt/nkt_2026111206463415_0-enlarge.jpg": {
   "w": 550,
   "h": 309,
@@ -1910,6 +1928,12 @@
   "w": 497,
   "h": 702,
   "target": 720,
+  "v": 3
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnbKO4yRvCMedPqwW7GIyRes6Dq0-b0horielnHQmI9zAruanx6ZKZWl6cDtpTc45KsWtFHrAtf0hY-u3uVJ2J_0vwb3XyyKGnBDcA-AiRgVr8i_xiyB76dzWC-cmpqoEog==": {
+  "w": 934,
+  "h": 701,
+  "target": 1280,
   "v": 3
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnf5NpyUQZzRcq1nx-ObCXEHBkc-me1kh93-P-Go12VnIgwnj_1VQ92hOSsmDOswow7fWbjUnXrpbTyEx52aBQHBDQtAu9zAzHMdIrQFXrXi8zqlDKDDUh0JvYrLjpIr_UQ==": {
@@ -2021,6 +2045,19 @@
   "out": [
    1280,
    1195
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/1185230/12771515_615.jpg": {
+  "w": 615,
+  "h": 493,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.483,
+  "local": "pics/804d6b4741f9ca33.webp",
+  "out": [
+   1280,
+   1026
   ],
   "why": "看不清"
  },
@@ -3200,12 +3237,25 @@
   "v": 3,
   "blur": 0.389
  },
+ "https://static.sanyonews.jp/image/article/size1/7/a/9/8/7a9874075471c27e646838f53ce747be_1.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/9/3/9/4/9394f4f3331c6e9822a0f43eabed7b2a_1.jpg": {
   "w": 452,
   "h": 640,
   "target": 1280,
   "v": 3,
   "blur": 0.407
+ },
+ "https://static.sanyonews.jp/image/article/size1/9/e/6/b/9e6bcbf941cd4a8a8c20b6b3f4e9a27e_1.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.411
  },
  "https://static.sanyonews.jp/image/article/size1/b/7/a/0/b7a0d8ce561d7b429b8205a775c650a6_1.jpg": {
   "w": 640,
@@ -3716,6 +3766,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.G_2In5W5ammNCnAqj-iKXQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Je1DGBbrEmnZC1gtylM6Pw&pid=News&w=800": {
   "w": 700,
   "h": 491,
@@ -3757,6 +3813,12 @@
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
   "h": 287,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.dcrOy8pNXC-oSihoH6vvcg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3837,19 +3899,6 @@
   "v": 3,
   "blur": 0.402
  },
- "https://www.bing.com/th?id=ONUT.u6PsJ-1gxyLQhEBAa2Ub2w&pid=News&w=700": {
-  "w": 700,
-  "h": 663,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.531,
-  "local": "pics/ea1d1d01b9dbb5ec.webp",
-  "out": [
-   1280,
-   1212
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.vPUoNearTSYFrl0EZ2uqMQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3862,12 +3911,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.ylpne_Jxbt33a8IbV4_Kzw&pid=News&w=1200": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,

@@ -1,10 +1,10 @@
 {
- "admin": "8928e4738e85",
- "admin-ai": "660a83f9e03b",
+ "admin": "f4aced0accc2",
+ "admin-ai": "dc7a3e17acd6",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "414685c4"
+   "d78ef5cd"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "38e980aa468e",
+ "admin-emblem": "de4aef70f27e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "cda146d1"
+   "9ef07d5b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "334f72229b46",
+ "admin-now": "19f037e45cd2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "104ae322"
+   "7a807a3b"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "5dcb6f49"
   ]
  },
- "admin-system": "5eafc80b43d0",
+ "admin-system": "5731df0fd73b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1783aa2d"
+   "645605ae"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2d8bc77c"
+   "4fb59ef3"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "1151d34a"
   ]
  },
- "index": "483face92b08",
+ "index": "7d0e12aa8cb7",
  "index_marks": {
   "front": [
    "トップ",
-   "d7b16664"
+   "3578465c"
   ],
   "picks": [
    "気になるかも？",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "6d5fd627"
+   "d8abc52f"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "210b4367"
+   "62ef4ea6"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "61e2421c"
+   "de4a978c"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -169,11 +169,11 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "2c716172"
+   "7c5905b5"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "c4452663"
+   "8fc8b67c"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "182ea006"
   ]
  },
- "updated": "11.19 02:46",
- "wishlist": "7fa0fd8ac2ed"
+ "updated": "11.19 02:53",
+ "wishlist": "b976fc0e052f"
 }

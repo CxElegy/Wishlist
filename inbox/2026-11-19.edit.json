@@ -194,6 +194,94 @@
   "GTA 6": 20,
   "周杰伦": 4,
   "A2O LITE": 3,
-  "dota2": 3
- }
+  "dota2": 3,
+  "三星手机": 3,
+  "gelato pique": 2,
+  "チェーンソーマン": 2,
+  "Vaundy": 1,
+  "日本顶级网球赛事": 1
+ },
+ "三星手机": [
+  {
+   "headline": "Samsung Galaxy S27 twist revealed – mystery bezel-less display reportedly coming to one of Samsung's new flagship phones",
+   "highlight": "bezel-less display",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "The Galaxy S27 and S27 Plus are dead on arrival, and Samsung knows it",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "삼성 가변 조리개 복귀설, 이번엔 S28 프로·울트라…S26 울트라는 불발됐다",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラピケ福袋2027当落でX明暗「数年越しの当選」「嬉しいけどお財布が…」",
+   "highlight": "福袋2027",
+   "blurb": "マッシュスタイルラボが展開するルームウェアブランド「gelato pique」の福袋2027の当落をめぐり、Xで明暗が分かれた。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "大人気ルームウエア「ジェラートピケ」から販売されるHAPPY BOX",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "「足元にポチタが…！」『チェンソーマン』×クロックス初コラボ 愛らしい表情を再現したモデルなど全4種類",
+   "highlight": "初コラボ",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/9/e/6/b/9e6bcbf941cd4a8a8c20b6b3f4e9a27e_1.jpg"
+  },
+  {
+   "headline": "チェンソーマン作者の藤本タツキ『ダンダダン』イラスト描く 「エグくなってる」「自然過ぎて天才」と大反響",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "Vaundy": [],
+ "日本顶级网球赛事": [
+  {
+   "headline": "元世界4位の錦織圭、現役最後の公式戦 [木下グループジャパンオープンテニス]",
+   "highlight": "現役最後の公式戦",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnbKO4yRvCMedPqwW7GIyRes6Dq0-b0horielnHQmI9zAruanx6ZKZWl6cDtpTc45KsWtFHrAtf0hY-u3uVJ2J_0vwb3XyyKGnBDcA-AiRgVr8i_xiyB76dzWC-cmpqoEog=="
+  }
+ ]
 }
