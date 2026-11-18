@@ -425,19 +425,6 @@
   ],
   "why": "看不清"
  },
- "https://attach.setn.com/newsimages/2026/11/18/5792970-PH.jpg": {
-  "w": 800,
-  "h": 451,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.521,
-  "local": "pics/821d4a3db4871c39.webp",
-  "out": [
-   1280,
-   722
-  ],
-  "why": "看不清"
- },
  "https://automaton-media.com/en/wp-content/uploads/2026/11/20261113-75190-header.jpg": {
   "w": 1305,
   "h": 852,
@@ -588,6 +575,12 @@
   "w": 1080,
   "h": 608,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.hk01.com/di/media/images/dw/20261117/1199397595915489280194028.png/KOtAcXYeVasFnI6FZrBf_1RIh92zgvoZR4UTjUeFE40?v=w1280r16_9": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://cdn.hk01.com/di/media/images/dw/20261117/1199414283188834304423987.png/Zc9kB6t8QeJyWu-HAKYG0joPf85Ez5YOeb_7v3m_-78?v=w1280r16_9": {
@@ -751,6 +744,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=202611031247249730205868f676220867377_0.png&nmt=30": {
+  "w": 5953,
+  "h": 3969,
+  "target": 720,
+  "v": 3
+ },
  "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
   "w": 668,
   "h": 668,
@@ -869,7 +868,7 @@
  "https://d3lmgsai2rsy7d.cloudfront.net/xuan/media/uploads/image/2026-11/XUAN_HXAbnNtaQAE7r_fd.jpg?VersionId=u1aQnn50rRk8l6ovlnakt3KFw0YTtFhX": {
   "w": 1100,
   "h": 619,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://deadline.com/wp-content/uploads/2026/11/TCDVISI_G5012.jpg?w=1024": {
@@ -1163,12 +1162,6 @@
   "why": "看不清"
  },
  "https://i3.ytimg.com/vi/6VZ7smS-9GU/hqdefault.jpg": {
-  "w": 480,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
- "https://i3.ytimg.com/vi/FU6Ol_ZbK3k/hqdefault.jpg": {
   "w": 480,
   "h": 360,
   "target": 720,
@@ -3049,6 +3042,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
+  "w": 1024,
+  "h": 572,
+  "target": 720,
+  "v": 3
+ },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -3068,9 +3067,9 @@
   "target": 1280,
   "v": 3
  },
- "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg": {
-  "w": 690,
-  "h": 1005,
+ "https://q6.itc.cn/q_70/images03/20261117/f443d125585f4a1aa5af3558bec1dfa3.png": {
+  "w": 860,
+  "h": 1178,
   "target": 1280,
   "v": 3
  },
@@ -3996,6 +3995,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.XPyrg0MgtGhHhSARkQjGXQ&pid=News&w=800": {
+  "w": 700,
+  "h": 394,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
   "h": 287,
@@ -4327,6 +4332,12 @@
  "https://www.maison-et-domotique.com/wp-content/uploads/2026/11/test-gamesir-g77-pro-zzz-1006.jpg": {
   "w": 1440,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.moviecollection.jp/wp/wp-content/uploads/2026/12/05407a6f6692aab722470a7b3b9aa5d9.jpg": {
+  "w": 801,
+  "h": 1200,
   "target": 1280,
   "v": 3
  },
