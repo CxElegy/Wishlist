@@ -8,16 +8,17 @@
   "チェーンソーマン": 1,
   "日本顶级网球赛事": 2,
   "三星手机": 11,
-  "周杰伦": 5,
+  "周杰伦": 7,
   "gelato pique": 3,
   "dota2": 5,
-  "FROM": 1,
-  "MMORPG 新作": 1,
+  "FROM": 3,
+  "MMORPG 新作": 3,
   "ぐでたま": 1,
   "星巴克马克杯": 1,
   "绝区零": 1,
   "滑雪": 3,
-  "A2O LITE": 4
+  "A2O LITE": 4,
+  "猫用品": 2
  },
  "漫威电影": [
   {
@@ -362,7 +363,8 @@
    "blurb": "580元周杰伦演唱会门票被指“仅支持看大屏”，中演协表示应避免将视野严重遮挡区域划入售票区。",
    "weight": "lead",
    "refs": [
-    5
+    5,
+    7
    ],
    "image": "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg"
   },
@@ -446,6 +448,15 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "From season 5 finally wraps filming, paving the way for a 2027 premiere",
+   "highlight": "2027 premiere",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "MMORPG 新作": [
@@ -456,6 +467,16 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "킹덤2: 타오르는 전장, 대만·홍콩·마카오 정식 출시",
+   "highlight": "정식 출시",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3
    ]
   }
  ],
@@ -531,6 +552,29 @@
     3
    ],
    "image": "https://www.harpersbazaar.co.kr/resources/online/online_image/2026/11/17/8f37e4a5-c786-4efa-98a2-6b3520eb0b4a.jpg"
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "Amazon’s $45 Compact Christmas Cat Tree Comes With the Cutest Candy Cane Scratching Posts",
+   "highlight": "$45",
+   "blurb": "Amazon’s $45 compact Christmas cat tree comes with candy cane scratching posts.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "price": {
+    "now": "$45"
+   }
+  },
+  {
+   "headline": "【神奈川県川崎市】マダニ感染症SFTSにワクチン開発の光！獣医師が解説",
+   "highlight": "ワクチン開発の光",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }

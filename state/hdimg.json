@@ -31,12 +31,6 @@
   "v": 3,
   "blur": 0.334
  },
- "http://n.sinaimg.cn/sinakd20114/533/w480h853/20261117/86ac-0fad9a8554a678d484e7fd865ffc7a76.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 1280,
-  "v": 3
- },
  "http://n.sinaimg.cn/sinakd20261109ac/533/w480h853/20261109/440b-04a80a8a155b76351a83ae1d435d6b33.jpg": {
   "w": 480,
   "h": 853,
@@ -226,6 +220,12 @@
   "w": 1200,
   "h": 800,
   "target": 720,
+  "v": 3
+ },
+ "https://andro-news.com/wp-content/uploads/2026/11/compact-smartphone-samsung-galaxy-s26-1024x576.webp": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
   "v": 3
  },
  "https://animetv-jp.net/wp-content/uploads/2026/11/images-32.jpeg": {
@@ -1124,6 +1124,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i.insider.com/6af5d4ecb2c29afb4e56a297?width=1200&format=jpeg": {
+  "w": 1200,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
@@ -1341,7 +1347,7 @@
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_426,y_237,w_1864,h_1048/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/357/01m7ndtf0a2j0mmy6brs.jpg": {
   "w": 1440,
   "h": 810,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://img-mdpr.freetls.fastly.net/article/DdoV/nm/DdoVya_Y8A-72PaweUh1swCf-4LT3-_lR5GLrTui56A.jpg?width=700&disable=upscale&auto=webp&quality=80": {
@@ -1383,6 +1389,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hC471.img": {
   "w": 912,
   "h": 513,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hDZt3.img": {
+  "w": 1422,
+  "h": 800,
   "target": 1280,
   "v": 3
  },
@@ -1651,19 +1663,6 @@
   "h": 1064,
   "target": 720,
   "v": 3
- },
- "https://img.ltn.com.tw/Upload/news/600/2026/11/11/php2ObZRT.jpg": {
-  "w": 800,
-  "h": 622,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.452,
-  "local": "pics/4bbb8c5fe8466db7.webp",
-  "out": [
-   1280,
-   995
-  ],
-  "why": "看不清"
  },
  "https://img.mydaily.co.kr/photos/2026/11/16/2026111615042091238_m.jpg": {
   "w": 480,
@@ -1946,6 +1945,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.mauinow.com/file/mauinow/2026/11/1794625130452310.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.radaronline.com/brand-img/1X8y5W8xl/1200x628/paapa-essiedu-reaffirms-trans-rights-stance-ahead-of-hboas-aharry-pottera-series-1794424962324.jpg": {
   "w": 1200,
   "h": 628,
@@ -2059,12 +2064,6 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
-  "v": 3
- },
- "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg": {
-  "w": 1024,
-  "h": 768,
-  "target": 720,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png": {
@@ -2293,6 +2292,19 @@
   "out": [
    1280,
    853
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/33564/160123_615.jpg": {
+  "w": 615,
+  "h": 278,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.57,
+  "local": "pics/23f686cec91d52c3.webp",
+  "out": [
+   1280,
+   579
   ],
   "why": "看不清"
  },
@@ -3038,6 +3050,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
+  "w": 1024,
+  "h": 572,
+  "target": 720,
+  "v": 3
+ },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
@@ -3057,9 +3075,9 @@
   "target": 1280,
   "v": 3
  },
- "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg": {
-  "w": 690,
-  "h": 1005,
+ "https://q6.itc.cn/q_70/images03/20261117/f443d125585f4a1aa5af3558bec1dfa3.png": {
+  "w": 860,
+  "h": 1178,
   "target": 1280,
   "v": 3
  },
@@ -3163,7 +3181,7 @@
  "https://s.yimg.com/lo/mysterio/api/e0f2315d9bf5132ffeb978bcd12cb57d44879eebfe88fa00da685fd4528a25ff/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fpethelpful.com%2F.image%2FNDowMDAwMDAwMDAwMzIwNTI0%2F71lbdsjmiwl-_ac_sl1402_-jpg.avif%3Fprofile%3Dfull%26x%3D50%26y%3D50": {
   "w": 1200,
   "h": 1499,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/f1c81ed44c079d93b8cde1eb7e0551afe299016a263eb0a0424e1970afb20c79/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmandatory_995%2Fc3c351cede7deb8b1a58e4e54d650e57.jpg": {
@@ -3200,6 +3218,12 @@
   "w": 901,
   "h": 507,
   "target": 720,
+  "v": 3
+ },
+ "https://shattered.io/wp-content/uploads/2026/10/india-smartphone-shipments-fall-20-percent-samsung-leads-q3-2026-gen-1.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 1280,
   "v": 3
  },
  "https://singtaousa2025.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/11/11003304/WhatsApp_Image_2021-09-05_at_12_38_33-1.jpeg": {
@@ -3600,12 +3624,6 @@
   "target": 720,
   "v": 3
  },
- "https://uploads.posu.tw/73/738/b2026103116580040.jpg": {
-  "w": 1280,
-  "h": 960,
-  "target": 1280,
-  "v": 3
- },
  "https://vergemagazine.co.uk/wp-content/uploads/2026/10/16x9-@2X-1-Medium-1.jpg": {
   "w": 1365,
   "h": 768,
@@ -3622,12 +3640,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/11/1794352737362_samsung.jpeg": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/11/1794401555537_img_0a2d4268.jpeg": {
@@ -3703,6 +3715,12 @@
   "target": 720,
   "v": 3
  },
+ "https://weisradio.com/wp-content/uploads/2026/08/shannon-fagan-thinking-football-picks-weis-news.png": {
+  "w": 1536,
+  "h": 864,
+  "target": 1280,
+  "v": 3
+ },
  "https://win.gg/wp-content/uploads/2026/08/ti15-power-ranking.jpg.webp": {
   "w": 1200,
   "h": 675,
@@ -3767,12 +3785,6 @@
  "https://www.atpress.ne.jp/attachments/5hyxKwgznMzJ1AVVM446.jpg": {
   "w": 2880,
   "h": 1620,
-  "target": 1280,
-  "v": 3
- },
- "https://www.bgr.com/img/gallery/if-you-miss-compact-phones-this-brand-is-trying-to-resurrect-them/l-intro-1794398036.jpg": {
-  "w": 1600,
-  "h": 899,
   "target": 1280,
   "v": 3
  },
@@ -3910,11 +3922,30 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.LTmoqoy847fO1yiuruF25Q&pid=News&w=800": {
+  "w": 700,
+  "h": 340,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.M7t11GqdRNZ4_lNFWPuJMg&pid=News&w=1154": {
   "w": 700,
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.MpghNpWO8ffxSUeE1opjTQ&pid=News&w=700": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.519,
+  "local": "pics/31d6d75436e45463.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
@@ -3958,6 +3989,32 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.hxJb0BQDUM-ZU16QaHNw6A&pid=News&w=1024": {
+  "w": 700,
+  "h": 467,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.551,
+  "local": "pics/47f1aad37f3935e2.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.jdYPkT2FLoh7VE9gZZXxgw&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.47,
+  "local": "pics/463d6eaf331303a8.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.muh9h7O9xIdxMWj___ud9w&pid=News&w=1200": {
   "w": 700,
@@ -4011,6 +4068,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.vPUoNearTSYFrl0EZ2uqMQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.432,
+  "local": "pics/7fd67f375dc89a0d.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.wJsqFmnC4gX5iSFTuVVUvw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4035,29 +4105,10 @@
   "target": 1280,
   "v": 3
  },
- "https://www.chosun.com/resizer/v2/7CCDLA7FBZDPJD3AGCCDHPOVUY.png?auth=4a6ef8c867091f09b09503989422f383dc118c084bc66f06b0a2990a751db14d&width=500&height=262&smart=true": {
-  "w": 500,
-  "h": 262,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.524,
-  "local": "pics/90f0d635188356ba.webp",
-  "out": [
-   1280,
-   671
-  ],
-  "why": "看不清"
- },
  "https://www.computerweekly.com/rms/computerweekly/gta-vi-editorial-do-not-reuse-getty.jpg": {
   "w": 1200,
   "h": 400,
   "target": 720,
-  "v": 3
- },
- "https://www.crank-in.net/img/db/263119116118117_1200.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
   "v": 3
  },
  "https://www.crank-in.net/img/db/267108025175442_1200.jpg": {
