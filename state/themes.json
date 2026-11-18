@@ -109,6 +109,16 @@
   "font": "serif",
   "split": false
  },
+ "GTA 6|https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?K1OF2OByoQie0QQKb3wpE": {
+  "accent": "#CF636F",
+  "alt_accent": "#BB3A48",
+  "alt_bg": "#F0E7F3",
+  "alt_fg": "#1A1C22",
+  "bg": "#201226",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "GTA 6|https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?bqVdDUNTL2GwsM_MMMW0M": {
   "accent": "#CF636F",
   "alt_accent": "#BB3A48",
@@ -1210,6 +1220,16 @@
   "alt_bg": "#1B2137",
   "alt_fg": "#F2EEE6",
   "bg": "#E7EAF3",
+  "fg": "#1A1C22",
+  "font": "serif",
+  "split": false
+ },
+ "hero|https://news-images.tvbs.com.tw/api/v1/image/01a1ef6d-be9b-7227-bfcb-8625f20714c1.jpg?t=16x9&c=0,55,2448,1432&w=1200&h=675": {
+  "accent": "#936039",
+  "alt_accent": "#C0885E",
+  "alt_bg": "#2B2A26",
+  "alt_fg": "#F2EEE6",
+  "bg": "#EEEEEC",
   "fg": "#1A1C22",
   "font": "serif",
   "split": false
