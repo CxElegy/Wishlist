@@ -1,7 +1,7 @@
 {
  "_covered": {
   "漫威电影": 102,
-  "GTA 6": 178,
+  "GTA 6": 203,
   "ILLIT": 17,
   "The Mandalorian": 6,
   "哈利波特剧集": 8,
@@ -84,10 +84,27 @@
  ],
  "GTA 6": [
   {
+   "headline": "GTA 6 Review: One of The Most Impressive Games Ever Made",
+   "highlight": "One of The Most Impressive Games Ever Made",
+   "blurb": "IGN・GameSpot・Digital Foundry など各誌のレビューが解禁。Metacritic の初期スコアは 99 と報じられ、発売初日から高評価が並んでいる。",
+   "weight": "lead",
+   "refs": [
+    203,
+    187,
+    190,
+    186,
+    184,
+    191,
+    193,
+    183
+   ],
+   "image": "https://assets-prd.ignimgs.com/2026/11/18/gta6-review-blogroll-1794996674466.jpg?width=1280&height=720&fit=crop&format=jpg&auto=webp&quality=80"
+  },
+  {
    "headline": "GTA 6全球解鎖時間出爐 港澳台今晚12時開放 新西蘭搶先5小時",
    "highlight": "今晚12時開放",
-   "blurb": "GTA 6 全球解鎖時間公布，港澳台於今晚 12 時開放，新西蘭搶先 5 小時。",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     116,
     128,
@@ -158,19 +175,6 @@
     157,
     167
    ]
-  },
-  {
-   "headline": "全新 GTA 6 遊戲截圖展現 Leonida 的風暴與迷霧效果",
-   "highlight": "風暴與迷霧",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    9,
-    11,
-    12,
-    82
-   ],
-   "image": "https://img.asmedia.epimg.net/resizer/v2/UOFRRXQQGREZVP2RNPQXXZWFPY.jpg?auth=9e5d1b39f4bc08f6f145639ed061b4859ba97463baefd48e74808fa3b48f2f91&width=1472&height=828&smart=true"
   }
  ],
  "ILLIT": [

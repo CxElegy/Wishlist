@@ -344,6 +344,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets-prd.ignimgs.com/2026/11/18/gta6-review-blogroll-1794996674466.jpg?width=1280&height=720&fit=crop&format=jpg&auto=webp&quality=80": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-18"
+ },
  "https://assets.mmoexp.com/images/202611/75b0f137b41da19f785e2b21d24b20e8edee0087.jpg": {
   "w": 800,
   "h": 216,
@@ -1076,12 +1082,6 @@
   "target": 720,
   "v": 3
  },
- "https://hermes.media.transform.aol.com/d927c993de177b6e26b89f2c5d3ab11d50dafeb9/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/17/d7768200-3fc6-3e47-97ba-45183d92ac70/7d407f6a-3e8d-4740-966d-5bdcf4dd6734.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://hips.hearstapps.com/hmg-prod/images/d6cf19fc-e400-401f-9921-0e511c13d813.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
   "w": 1200,
   "h": 600,
@@ -1100,6 +1100,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hk.on.cc/hk/bkn/cnt/entertainment/20261117/photo/bkn-20261117152047603-1117_00862_001_02b.jpg?20261117170305": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-18"
+ },
  "https://i.abcnewsfe.com/a/02d94113-efa9-481c-9232-0dfafe5b3238/RyanGosling-gty-sn-260726_1785097233106_hpMain_16x9.jpg?w=1600": {
   "w": 1600,
   "h": 900,
@@ -1107,12 +1113,6 @@
   "v": 3
  },
  "https://i.cdn.newsbytesapp.com/images/l144_17791794849218.jpg": {
-  "w": 1440,
-  "h": 809,
-  "target": 720,
-  "v": 3
- },
- "https://i.cdn.newsbytesapp.com/images/l144_6541794935287.jpg": {
   "w": 1440,
   "h": 809,
   "target": 720,
@@ -1553,12 +1553,6 @@
  "https://img.4gamers.com.tw/news-image/5eb2ce4a-a6b4-4136-b48f-d788b877b3ea.jpg": {
   "w": 1600,
   "h": 900,
-  "target": 1280,
-  "v": 3
- },
- "https://img.asmedia.epimg.net/resizer/v2/UOFRRXQQGREZVP2RNPQXXZWFPY.jpg?auth=9e5d1b39f4bc08f6f145639ed061b4859ba97463baefd48e74808fa3b48f2f91&width=1472&height=828&smart=true": {
-  "w": 1472,
-  "h": 828,
   "target": 1280,
   "v": 3
  },
@@ -3080,6 +3074,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://readysteadycut.com/wp-content/uploads/2026/11/Avengers-Doomsday.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-18"
+ },
  "https://realsound.jp/wp-content/uploads/2026/11/20261115-ichiban-99.jpeg": {
   "w": 1200,
   "h": 675,
@@ -3897,6 +3897,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.6gzcD9QwtFIRWUfkozUUtQ&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-18"
+ },
  "https://www.bing.com/th?id=ONUT.A7Eb2m5oa8Oz4rC2-5vHHA&pid=News&w=572": {
   "w": 572,
   "h": 300,
@@ -3993,12 +3999,6 @@
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
   "h": 414,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.XPyrg0MgtGhHhSARkQjGXQ&pid=News&w=800": {
-  "w": 700,
-  "h": 394,
   "target": 720,
   "v": 3
  },

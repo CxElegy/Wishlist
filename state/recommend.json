@@ -19,6 +19,7 @@
   "https://getnavi.jp/appliances/1120774/": "https://getnavi.jp/wp-content/uploads/2026/11/71O1DhluJJL._AC_SL1500_.jpg",
   "https://getnavi.jp/appliances/1120792/": "https://getnavi.jp/wp-content/uploads/2026/11/51lbbb1HCjL._AC_SL1500_.jpg",
   "https://gnn.gamer.com.tw/detail.php?sn=314945": "https://p2.bahamut.com.tw/B/2KU/96/c47dbf2b85ba8f0254c19fff42213h85.PNG",
+  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261117/bkn-20261117152047603-1117_00862_001.html": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261117/photo/bkn-20261117152047603-1117_00862_001_02b.jpg?20261117170305",
   "https://k.sina.com.cn/article_7811105939_m1d19404930330229dg.html": "http://n.sinaimg.cn/sinakd20261117ac/533/w480h853/20261117/4940-39f253c3abc504902065c6610a8589f8.jpg",
   "https://k.sina.com.cn/article_7879996034_1d5af328206809ev32.html?from=digit": "http://n.sinaimg.cn/gp/278/w690h388/20261021/90af-f7e9067a8943d02ba5e746f2a5c6cfab.jpg",
   "https://kbench.com/?q=node/283281": "https://www.bing.com/th?id=ONUT.u6PsJ-1gxyLQhEBAa2Ub2w&pid=News&w=700",
@@ -38,7 +39,6 @@
   "https://realsound.jp/2026/11/post-2584847.html": "https://realsound.jp/wp-content/uploads/2026/11/20261115-ichiban-99.jpeg",
   "https://rollercoaster.ie/lifestyle/occasions/last-minute-halloween-costumes-for-adults/": null,
   "https://scotscoop.com/staff_name/starbucks-halloween-hideya-hamano-flickr-cc-by-2-0/": "https://scotscoop.com/wp-content/uploads/2026/11/starbucks-halloween-photo-1200x800.png",
-  "https://star.setn.com/news/1941026": "https://www.bing.com/th?id=ONUT.XPyrg0MgtGhHhSARkQjGXQ&pid=News&w=800",
   "https://t.co/1NMYmLLW1U": null,
   "https://thetab.com/2026/11/17/every-single-reason-the-upcoming-hbo-harry-potter-series-just-feels-weird-and-off": "https://www.bing.com/th?id=ONUT.LKuT1oYT-6V6WrWSEG0YAA&pid=News&w=1200",
   "https://udn.com/news/amp/story/7320/9873667": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/12/35509846.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=960&sl=W&fw=800&exp=3600",
@@ -1211,27 +1211,6 @@
    "because": "周杰伦",
    "date": "2026-11-17",
    "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.XPyrg0MgtGhHhSARkQjGXQ&pid=News&w=800",
-   "kind": "board",
-   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
-   "score": 7,
-   "source": "娛樂星聞",
-   "taste": [
-    [
-     "作品:周杰伦",
-     3
-    ]
-   ],
-   "title": "江蕙、周杰倫演唱會戰袍在這裡！北流展覽升級 21位大咖也助陣",
-   "url": "https://star.setn.com/news/1941026",
-   "words": [],
-   "work": "周杰伦"
-  },
-  {
-   "batch": 4,
-   "because": "周杰伦",
-   "date": "2026-11-17",
-   "hits": [],
    "image": "http://n.sinaimg.cn/sinakd20261117ac/533/w480h853/20261117/4940-39f253c3abc504902065c6610a8589f8.jpg",
    "kind": "board",
    "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
@@ -1245,6 +1224,27 @@
    ],
    "title": "相亲因伴侣有异性朋友未成，周杰伦演唱会官宣",
    "url": "https://k.sina.com.cn/article_7811105939_m1d19404930330229dg.html",
+   "words": [],
+   "work": "周杰伦"
+  },
+  {
+   "batch": 4,
+   "because": "周杰伦",
+   "date": "2026-11-17",
+   "hits": [],
+   "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261117/photo/bkn-20261117152047603-1117_00862_001_02b.jpg?20261117170305",
+   "kind": "board",
+   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
+   "score": 7,
+   "source": "on.cc東網",
+   "taste": [
+    [
+     "作品:周杰伦",
+     3
+    ]
+   ],
+   "title": "周杰倫無緣入圍格林美 來年武漢演唱會惹爭議",
+   "url": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261117/bkn-20261117152047603-1117_00862_001.html",
    "words": [],
    "work": "周杰伦"
   },
@@ -1930,11 +1930,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1942,15 +1942,15 @@
    8
   ],
   [
-   "三星 Galaxy",
-   7
-  ],
-  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
+   7
+  ],
+  [
+   "三星 Galaxy",
    7
   ]
  ]
