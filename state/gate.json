@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-18T07:36:02+00:00",
+ "checked": "2026-11-18T08:34:35+00:00",
  "fired": {
   "at": "2026-11-18T07:36:02+00:00",
   "results": {
@@ -61,65 +61,68 @@
     "A2O LITE",
     "BLEACH Mirrors High",
     "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "Vaundy",
     "dota2",
     "gelato pique",
+    "lib:SPY×FAMILY",
+    "lib:【推しの子】",
     "lib:ちいかわ",
-    "lib:サカナクション",
     "lib:ブルーアーカイブ",
     "lib:モンスターハンターワイルズ",
-    "lib:台風・天気",
-    "lib:広島旅行",
-    "三星手机",
+    "lib:呪術廻戦",
+    "lib:観葉植物",
+    "lib:鬼滅の刃",
     "周杰伦",
+    "哈利波特剧集",
     "滑雪",
     "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-18T06:45:04+00:00",
+   "last_batch": "2026-11-18T07:48:24+00:00",
    "last_error": {},
    "need": true,
-   "prog": 336,
+   "prog": 395,
    "prog_day": "2026-11-18",
    "ripe": [
+    "A2O LITE",
     "GTA 6",
-    "ILLIT",
-    "三星手机",
+    "MMORPG 新作",
+    "Vaundy",
+    "gelato pique",
     "周杰伦",
-    "漫威电影"
+    "漫威电影",
+    "猫用品"
    ],
-   "sig": "c4b182c080fd",
+   "sig": "f0223a3d2dfa",
    "token_cap": 1000000,
-   "tokens_today": 567576,
-   "why": "整理待ちの記事 137 件（20 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 623111,
+   "why": "整理待ちの記事 134 件（21 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High",
-    "dota2",
-    "漫威电影",
-    "GTA 6",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "7a6a63c22566",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "哈利波特剧集"
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -228,12 +231,12 @@
    "runs": 15
   },
   "2026-11-18": {
-   "batches": 21,
-   "cr": 13524681,
-   "cw": 518710,
-   "in": 379,
-   "out": 48487,
-   "runs": 10
+   "batches": 22,
+   "cr": 14609538,
+   "cw": 569475,
+   "in": 412,
+   "out": 53224,
+   "runs": 11
   }
  }
 }
