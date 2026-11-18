@@ -11,12 +11,6 @@
   "target": 720,
   "v": 3
  },
- "http://img4.wtsimg.com/flashnews/images/images/20261117/feishu-CHbQbl1yko59g6xECGpcPsQancf-58a6e5fc.jpg!1200": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "http://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FJiji%252Fcd%252FJiji_3913808%252FJiji_3913808_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "w": 480,
   "h": 320,
@@ -713,12 +707,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.wamiz.fr/cdn-cgi/image/format=auto,quality=80,width=1200,height=675,fit=cover/article/main-picture/tabby-kitten-looking-side-on-from-camera-6afdda82c77be.png": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-09-17/8489b739-2058-4f80-b318-2967a227826f.jpg": {
   "w": 1200,
   "h": 800,
@@ -852,12 +840,6 @@
   "target": 1280,
   "v": 3
  },
- "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
-  "w": 4525,
-  "h": 3016,
-  "target": 720,
-  "v": 3
- },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
   "w": 1280,
   "h": 670,
@@ -873,6 +855,12 @@
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/8f9505c6ea91e2fb579db4b06af9bc08d5d093ba.png": {
   "w": 1280,
   "h": 670,
+  "target": 720,
+  "v": 3
+ },
+ "https://d2phebdq64jyfk.cloudfront.net/media/article/6e08a883c1fb477eb94f339f262d2875.webp": {
+  "w": 800,
+  "h": 449,
   "target": 720,
   "v": 3
  },
@@ -918,12 +906,6 @@
   "target": 720,
   "v": 3
  },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/uru.jpg": {
-  "w": 1199,
-  "h": 834,
-  "target": 720,
-  "v": 3
- },
  "https://dressy.pla-cole.wedding/wp-content/uploads/2025/10/IMG_5151.jpeg": {
   "w": 1179,
   "h": 1179,
@@ -940,6 +922,30 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/1win-essence-i?v=1795044405": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/epl-masters-iii?v=1794954416": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
@@ -1025,12 +1031,6 @@
   "w": 1200,
   "h": 1223,
   "target": 1280,
-  "v": 3
- },
- "https://gray-wfsb-prod.gtv-cdn.com/resizer/v2/4KGTEME5OFBIVBUSSQW23RKTYY.jpg?auth=fc6202a05f268d922e15912df153683f28b1fbcbd101ba29730c0d41279ace3a&width=1200&height=600&smart=true": {
-  "w": 1200,
-  "h": 600,
-  "target": 720,
   "v": 3
  },
  "https://happygamer.com/wp-content/uploads/2026/11/zenless-zone-zero-repair-drifting-art-event-starts-november-16-with-polychromes.jpg": {
@@ -1139,6 +1139,12 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://i.tribune.com.pk/media/images/x-men-first-class-640x4801/x-men-first-class-640x4801-640x480.webp": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
   "v": 3
  },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
@@ -1318,6 +1324,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/doomrdj.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_426,y_237,w_1864,h_1048/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/357/01m7ndtf0a2j0mmy6brs.jpg": {
   "w": 1440,
   "h": 810,
@@ -1406,6 +1418,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hJB7o.img": {
+  "w": 800,
+  "h": 565,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbjPx.img": {
@@ -1745,6 +1763,12 @@
   "v": 3,
   "blur": 0.361
  },
+ "https://img4.wtsimg.com/flashnews/images/images/20261117/crop-3x2-115230522030-302e1081.jpg": {
+  "w": 1215,
+  "h": 810,
+  "target": 720,
+  "v": 3
+ },
  "https://img4.yna.co.kr/etc/inner/JP/2026/11/13/AJP20261113002200882_01_i_P4.jpg": {
   "w": 500,
   "h": 375,
@@ -1928,6 +1952,12 @@
   "w": 960,
   "h": 1200,
   "target": 1280,
+  "v": 3
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/yorozoonews/yorozoonews_17057073_0.jpg": {
+  "w": 640,
+  "h": 677,
+  "target": 720,
   "v": 3
  },
  "https://media.radaronline.com/brand-img/1X8y5W8xl/1200x628/paapa-essiedu-reaffirms-trans-rights-stance-ahead-of-hboas-aharry-pottera-series-1794424962324.jpg": {
@@ -2584,18 +2614,6 @@
   "out": [
    800,
    450
-  ],
-  "why": "期限付きの網址"
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000165-spnannex-000-16-view.jpg?exp=10800": {
-  "w": 1122,
-  "h": 1200,
-  "target": 720,
-  "v": 3,
-  "local": "pics/da8502f0e5b182eb.webp",
-  "out": [
-   1122,
-   1200
   ],
   "why": "期限付きの網址"
  },
@@ -3421,12 +3439,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3850,6 +3862,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.4_WjmbQHty-xHY3L1L6aXw&pid=News&w=960": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
   "h": 502,
@@ -3863,9 +3881,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.9AuVeK4vh6rNX0P_1ElJvA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.7NejZ14D8qYvZO-v0GUa0w&pid=News&w=800": {
   "w": 700,
-  "h": 367,
+  "h": 499,
   "target": 720,
   "v": 3
  },
@@ -3918,12 +3936,6 @@
    852
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
@@ -4222,6 +4234,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.indexbox.io/landing/img/reports/world-kitten-wet-cat-food-market-analysis-forecast-size-trends-and-insights.webp?v=1774179250": {
+  "w": 600,
+  "h": 847,
+  "target": 720,
+  "v": 3
+ },
  "https://www.iza.ne.jp/resizer/v2/E6KL7R452VHM5E4DRZTV2NOXOE.jpg?auth=572cdcf59c1695096878faad7052a2bdc166a860fd9376549362efe02f541741&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,
   "h": 675,
@@ -4326,6 +4344,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Plus-review-3.jpg": {
+  "w": 1920,
+  "h": 1078,
+  "target": 720,
+  "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
