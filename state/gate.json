@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-18T11:18:14+00:00",
+ "checked": "2026-11-18T11:38:47+00:00",
  "fired": {
-  "at": "2026-11-18T08:38:07+00:00",
+  "at": "2026-11-18T11:38:47+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -43,23 +43,30 @@
    "edit": 13
   },
   "2026-11-18": {
-   "edit": 12
+   "edit": 13
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-18T08:38:07+00:00",
+    "at": "2026-11-18T11:38:47+00:00",
     "attempts": 1,
     "day": "2026-11-18",
-    "prog": 395,
-    "resp": "cse_01W4x6f95YM35tNR4tBRQ8vB",
-    "sig": "f0223a3d2dfa"
+    "prog": 435,
+    "resp": "",
+    "sig": "af8b2be6d981"
    },
    "items": [
+    "A2O LITE",
     "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy",
     "dota2",
+    "gelato pique",
     "lib:Ado",
     "lib:BTS",
     "lib:Mrs. GREEN APPLE",
@@ -68,8 +75,13 @@
     "lib:スプラトゥーン3",
     "lib:大谷翔平",
     "lib:葬送のフリーレン",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
     "哈利波特剧集",
+    "日本顶级网球赛事",
     "滑雪",
+    "漫威电影",
     "绝区零"
    ],
    "last_batch": "2026-11-18T08:56:39+00:00",
@@ -77,35 +89,45 @@
    "need": true,
    "prog": 435,
    "prog_day": "2026-11-18",
-   "ripe": [],
-   "sig": "7e061d036704",
-   "token_cap": 1000000,
-   "tokens_today": 678378,
-   "why": "整理待ちの記事 101 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
+   "ripe": [
     "BLEACH Mirrors High",
-    "FROM",
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
+    "ILLIT",
     "dota2",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
+    "三星手机",
+    "滑雪",
     "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "af8b2be6d981",
+   "token_cap": 1000000,
+   "tokens_today": 678378,
+   "why": "整理待ちの記事 166 件（25 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "チェーンソーマン",
+    "dota2",
+    "漫威电影",
+    "GTA 6",
+    "A2O LITE",
+    "The Mandalorian",
+    "绝区零",
+    "Vaundy",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "a57691de80e5",
+   "waiting": [
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "あつ森",
+    "ぐでたま",
+    "哈利波特剧集"
+   ],
+   "why": "足りない 9 版面（Actions で Python が埋める）・失敗 6 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
