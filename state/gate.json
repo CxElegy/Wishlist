@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-18T08:38:07+00:00",
+ "changed": true,
+ "checked": "2026-11-18T09:19:27+00:00",
  "fired": {
   "at": "2026-11-18T08:38:07+00:00",
   "results": {
@@ -58,47 +58,26 @@
     "sig": "f0223a3d2dfa"
    },
    "items": [
-    "A2O LITE",
     "BLEACH Mirrors High",
-    "GTA 6",
-    "MMORPG 新作",
-    "Vaundy",
     "dota2",
-    "gelato pique",
-    "lib:SPY×FAMILY",
-    "lib:【推しの子】",
     "lib:ちいかわ",
     "lib:ブルーアーカイブ",
     "lib:モンスターハンターワイルズ",
-    "lib:呪術廻戦",
     "lib:観葉植物",
-    "lib:鬼滅の刃",
-    "周杰伦",
     "哈利波特剧集",
     "滑雪",
-    "漫威电影",
-    "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-18T07:48:24+00:00",
+   "last_batch": "2026-11-18T08:56:39+00:00",
    "last_error": {},
    "need": true,
-   "prog": 395,
+   "prog": 435,
    "prog_day": "2026-11-18",
-   "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "MMORPG 新作",
-    "Vaundy",
-    "gelato pique",
-    "周杰伦",
-    "漫威电影",
-    "猫用品"
-   ],
-   "sig": "f0223a3d2dfa",
+   "ripe": [],
+   "sig": "27d2ae71c7f9",
    "token_cap": 1000000,
-   "tokens_today": 623111,
-   "why": "整理待ちの記事 134 件（21 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 678378,
+   "why": "整理待ちの記事 50 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -231,12 +210,12 @@
    "runs": 15
   },
   "2026-11-18": {
-   "batches": 22,
-   "cr": 14609538,
-   "cw": 569475,
-   "in": 412,
-   "out": 53224,
-   "runs": 11
+   "batches": 24,
+   "cr": 15716685,
+   "cw": 620302,
+   "in": 442,
+   "out": 57634,
+   "runs": 12
   }
  }
 }

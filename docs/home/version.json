@@ -1,6 +1,6 @@
 {
  "admin": "838533fd3220",
- "admin-ai": "cc711011da0f",
+ "admin-ai": "6e79b8a06a9c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c85b3387"
+   "79a6b366"
   ]
  },
  "admin-boards": "430fc5d2888e",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "5e7737faa21c",
+ "admin-emblem": "32c3ec4da48c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "19e7b45d"
+   "4f9552ee"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "b28e1c52f7e9",
+ "admin-now": "8abc8756f9a9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "f131a0d0"
+   "6cacc0f2"
   ]
  },
- "admin-system": "fcb0ff1b0c35",
+ "admin-system": "de19739ec762",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cf399ee1"
+   "2d1e608b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e7501762"
+   "9c206208"
   ]
  },
  "admin_marks": {},
@@ -196,6 +196,6 @@
    "d194c696"
   ]
  },
- "updated": "11.18 17:55",
+ "updated": "11.18 18:19",
  "wishlist": "df913db1293d"
 }
