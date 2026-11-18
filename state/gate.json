@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-18T14:38:04+00:00",
+ "checked": "2026-11-18T15:28:21+00:00",
  "fired": {
   "at": "2026-11-18T14:38:04+00:00",
   "results": {
@@ -59,7 +59,6 @@
    },
    "items": [
     "A2O LITE",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
@@ -80,57 +79,53 @@
     "日本顶级网球赛事",
     "星巴克马克杯",
     "滑雪",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-18T12:54:36+00:00",
+   "last_batch": "2026-11-18T14:57:33+00:00",
    "last_error": {
     "at": "2026-11-18T11:45:57+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 501,
+   "prog": 537,
    "prog_day": "2026-11-18",
    "ripe": [
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "三星手机",
-    "周杰伦",
-    "漫威电影"
+    "周杰伦"
    ],
-   "sig": "8a736e241fdd",
+   "sig": "7c104c982666",
    "token_cap": 1000000,
-   "tokens_today": 747181,
-   "why": "整理待ちの記事 180 件（25 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 796290,
+   "why": "整理待ちの記事 144 件（23 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "dota2",
-    "漫威电影",
-    "GTA 6",
-    "The Mandalorian",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "b3beaf01db98",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "哈利波特剧集"
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -239,12 +234,12 @@
    "runs": 15
   },
   "2026-11-18": {
-   "batches": 33,
-   "cr": 18379720,
-   "cw": 679635,
-   "in": 511,
-   "out": 67035,
-   "runs": 13
+   "batches": 35,
+   "cr": 19154404,
+   "cw": 725751,
+   "in": 534,
+   "out": 70005,
+   "runs": 14
   }
  }
 }
