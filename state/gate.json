@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-18T04:35:58+00:00",
+ "checked": "2026-11-18T04:55:29+00:00",
  "fired": {
   "at": "2026-11-18T04:35:58+00:00",
   "results": {
@@ -65,13 +65,13 @@
     "Vaundy",
     "dota2",
     "gelato pique",
+    "lib:King Gnu",
     "lib:ガンプラ",
     "lib:キャンプ",
     "lib:コーヒー",
     "lib:ゼルダの伝説",
     "lib:ポケットモンスター",
     "lib:ラーメン",
-    "lib:東京ディズニーリゾート",
     "lib:筋トレ",
     "あつ森",
     "三星手机",
@@ -99,35 +99,34 @@
     "滑雪",
     "漫威电影"
    ],
-   "sig": "366e8e352a8f",
+   "sig": "c77d7f9ce49e",
    "token_cap": 1000000,
    "tokens_today": 438209,
    "why": "整理待ちの記事 165 件（24 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE",
-    "Vaundy",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "75d7cc4a345f",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
+    "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
