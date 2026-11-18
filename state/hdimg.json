@@ -689,6 +689,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.wamiz.fr/cdn-cgi/image/format=auto,quality=80,width=1200,height=675,fit=cover/article/main-picture/tabby-kitten-looking-side-on-from-camera-6afdda82c77be.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-09-17/8489b739-2058-4f80-b318-2967a227826f.jpg": {
   "w": 1200,
   "h": 800,
@@ -719,6 +725,12 @@
   "target": 720,
   "v": 3
  },
+ "https://charagoo.jp/wp-content/uploads/2026/11/1000260529_1.jpg": {
+  "w": 1200,
+  "h": 1200,
+  "target": 1280,
+  "v": 3
+ },
  "https://cimg.kgl-systems.io/camion/files/93725/thumbnail_YJih.jpg?x=1280": {
   "w": 1280,
   "h": 721,
@@ -741,6 +753,12 @@
   "w": 849,
   "h": 1200,
   "target": 1280,
+  "v": 3
+ },
+ "https://clan.fastly.steamstatic.com/images/3703047/adf1013ad1d68cac20ef37fe8bdb5282c3d9c245.png": {
+  "w": 800,
+  "h": 450,
+  "target": 720,
   "v": 3
  },
  "https://collabo-cafe.com/wp-content/uploads/maho-girls-precure-10th-anniversary-party-2027-kv.jpg": {
@@ -808,12 +826,6 @@
   "w": 1920,
   "h": 1079,
   "target": 1280,
-  "v": 3
- },
- "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
-  "w": 4525,
-  "h": 3016,
-  "target": 720,
   "v": 3
  },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
@@ -894,6 +906,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
   "w": 300,
   "h": 300,
@@ -955,12 +979,6 @@
   "target": 1280,
   "v": 3
  },
- "https://gamesbeat.com/wp-content/uploads/2026/09/Lingokids-2.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
-  "v": 3
- },
  "https://gdm-universal-media.b-cdn.net/epicstream/5182de2d-finding-harry-potter-the-craft-behind-the-magic.webp?width=1600&height=840": {
   "w": 1493,
   "h": 840,
@@ -983,6 +1001,12 @@
   "w": 1200,
   "h": 1223,
   "target": 1280,
+  "v": 3
+ },
+ "https://gray-wfsb-prod.gtv-cdn.com/resizer/v2/4KGTEME5OFBIVBUSSQW23RKTYY.jpg?auth=fc6202a05f268d922e15912df153683f28b1fbcbd101ba29730c0d41279ace3a&width=1200&height=600&smart=true": {
+  "w": 1200,
+  "h": 600,
+  "target": 720,
   "v": 3
  },
  "https://happygamer.com/wp-content/uploads/2026/11/zenless-zone-zero-repair-drifting-art-event-starts-november-16-with-polychromes.jpg": {
@@ -1091,6 +1115,12 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://i.tribune.com.pk/media/images/x-men-first-class-640x4801/x-men-first-class-640x4801-640x480.webp": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
   "v": 3
  },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
@@ -3023,6 +3053,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://qz.com/cdn-cgi/image/width=320,height=240,fit=cover,quality=85,format=auto/https://assets.qz.com/media/images.jpeg": {
+  "w": 320,
+  "h": 240,
+  "target": 720,
+  "v": 3,
+  "blur": 0.5,
+  "local": "pics/ee362b116cf7073c.webp",
+  "out": [
+   720,
+   540
+  ],
+  "why": "看不清"
+ },
  "https://readysteadycut.com/wp-content/uploads/2026/11/Avengers-Doomsday.webp": {
   "w": 1500,
   "h": 844,
@@ -3753,12 +3796,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.6A2_Rp6eEvDaqaWP_BJseg&pid=News&w=1200": {
-  "w": 700,
-  "h": 392,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
   "h": 502,
@@ -3796,12 +3833,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.GWjY4kXGiliRu5222CW3TA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.G_2In5W5ammNCnAqj-iKXQ&pid=News&w=1200": {
   "w": 700,
@@ -3948,6 +3979,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.xsI6hwpgyJbblr6QTroQfQ&pid=News&w=1010": {
+  "w": 700,
+  "h": 350,
+  "target": 720,
+  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,
