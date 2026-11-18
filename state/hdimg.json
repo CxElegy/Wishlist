@@ -1852,12 +1852,6 @@
   "target": 1280,
   "v": 3
  },
- "https://jubileecast-29b4.kxcdn.com/data/images/full/31876/avengers-doomsday.jpg?l=50&t=5": {
-  "w": 587,
-  "h": 855,
-  "target": 1280,
-  "v": 3
- },
  "https://komonews.com/resources/media2/16x9/1280/1320/center/90/d4073018-af99-405a-b357-6a0a1e8399d7-BlackCat2.jpg": {
   "w": 1320,
   "h": 743,
@@ -3559,6 +3553,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/08/doctor-doom-sitting-on-throne-in-avengers-doomsday-d23-trailer.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/the-mandalorian-with-grogu-on-his-shoulder-and-sparks-behind-them-in-the-mandalorian-and-grogu.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -4114,12 +4114,6 @@
  "https://www.bing.com/th?id=ONUT.rMFKG9cQJbtbWngQ4OUj_Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.rRHUE1i_a0COl2FM1DoLTg&pid=News&w=700": {
-  "w": 700,
-  "h": 293,
   "target": 720,
   "v": 3
  },
