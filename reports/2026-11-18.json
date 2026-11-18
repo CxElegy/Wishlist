@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "03828b9d23ab",
+ "edit_sig": "72680cb10115",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -482,15 +482,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 4,
-     "source": "Yahoo!ニュース",
-     "title": "ふわもこ、だけど盤石 ルームウエアで年商400億円に迫る「ジェラート ピケ」というビジネスモデル",
-     "url": "https://news.yahoo.co.jp/articles/93d0d0ea8b0c223b819eb5394a41b190fbdc675e"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -511,6 +502,16 @@
      "image": "https://p.potaufeu.asahi.com/0522-p/picture/31557957/235eedbabe4894881c0efff253edf809.jpg",
      "image_via": "og:image",
      "url": "https://www.asahi.com/and/w/article/17045139",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "ふわもこ、だけど盤石 ルームウエアで年商400億円に迫る「ジェラート ピケ」というビジネスモデル",
+     "highlight": "年商400億円",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-02554992-wwdjapan-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/93d0d0ea8b0c223b819eb5394a41b190fbdc675e",
      "weight": "normal"
     }
    ],
@@ -688,7 +689,7 @@
      "headline": "热闻|580元周杰伦演唱会门票“仅支持看大屏”？中演协：避免将视野严重遮挡区域划入售票区",
      "highlight": "580元周杰伦演唱会门票",
      "image": "https://q6.itc.cn/q_70/images03/20261117/f443d125585f4a1aa5af3558bec1dfa3.png",
-     "image_via": "JSON-LD",
+     "image_via": "条目自带",
      "url": "https://m.sohu.com/a/1102689714_121218495?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "lead"
     },

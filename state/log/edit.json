@@ -1,48 +1,5 @@
 [
 {
-"at": "2026-11-15T23:11:36+00:00",
-"text": "2026-11-16 第 4 バッチを出刊：三星手机、周杰伦、漫威电影（3 版面・10 本・今日の整理待ちは全部終わり） · token 新規入力 4,517・キャッシュ読み 39.0万・出力 1,843",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.61,
-"mem_total": 16869146624,
-"mem_free": 15929540608,
-"disk_used": 10095513600,
-"disk_free": 31188021248,
-"disk_total": 41283534848,
-"peak": 358023168
-},
-"batch": 4,
-"boards": [
-"三星手机",
-"周杰伦",
-"漫威电影"
-],
-"stories": 10,
-"left": 0,
-"edited": 16,
-"run": 1794783567.7222056,
-"tok": {
-"in": 9,
-"cw": 4508,
-"cr": 390071,
-"out": 1843,
-"calls": 5,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 396431,
-"secs": 729,
-"run_tok": {
-"in": 36,
-"cw": 51589,
-"cr": 1301439,
-"out": 5641,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-16T01:27:20+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2267,5 +2224,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 741283
+},
+{
+"at": "2026-11-18T02:52:03+00:00",
+"text": "2026-11-18 第 2 バッチを出刊：gelato pique（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 1,337・キャッシュ読み 21.5万・出力 731",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.4,
+"mem_total": 16869130240,
+"mem_free": 15929655296,
+"disk_used": 10462203904,
+"disk_free": 31207153664,
+"disk_total": 41669357568,
+"peak": 364904448
+},
+"batch": 2,
+"boards": [
+"gelato pique"
+],
+"stories": 3,
+"left": 0,
+"edited": 19,
+"run": 1794969354.411485,
+"tok": {
+"in": 6,
+"cw": 1331,
+"cr": 214757,
+"out": 731,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 216825,
+"secs": 969,
+"run_tok": {
+"in": 27,
+"cw": 43618,
+"cr": 911074,
+"out": 3389,
+"calls": 14,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
