@@ -425,6 +425,19 @@
   ],
   "why": "看不清"
  },
+ "https://attach.setn.com/newsimages/2026/11/18/5792970-PH.jpg": {
+  "w": 800,
+  "h": 451,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.521,
+  "local": "pics/821d4a3db4871c39.webp",
+  "out": [
+   1280,
+   722
+  ],
+  "why": "看不清"
+ },
  "https://automaton-media.com/en/wp-content/uploads/2026/11/20261113-75190-header.jpg": {
   "w": 1305,
   "h": 852,
@@ -575,12 +588,6 @@
   "w": 1080,
   "h": 608,
   "target": 1280,
-  "v": 3
- },
- "https://cdn.hk01.com/di/media/images/dw/20261117/1199397595915489280194028.png/KOtAcXYeVasFnI6FZrBf_1RIh92zgvoZR4UTjUeFE40?v=w1280r16_9": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  },
  "https://cdn.hk01.com/di/media/images/dw/20261117/1199414283188834304423987.png/Zc9kB6t8QeJyWu-HAKYG0joPf85Ez5YOeb_7v3m_-78?v=w1280r16_9": {
@@ -4015,6 +4022,12 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.fkSkE_nnXxgExr71Yz3bvg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.iLMIKuXI0VMfhnR_hc0lZQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
