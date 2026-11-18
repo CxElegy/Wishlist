@@ -1,50 +1,5 @@
 [
 {
-"at": "2026-11-16T01:30:54+00:00",
-"text": "2026-11-16 第 1 バッチを出刊：ILLIT、The Mandalorian、Vaundy、ぐでたま、滑雪（5 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 4.3万・キャッシュ読み 55.8万・出力 2,172",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.44,
-"mem_total": 16869146624,
-"mem_free": 15896485888,
-"disk_used": 10931265536,
-"disk_free": 30352269312,
-"disk_total": 41283534848,
-"peak": 361930752
-},
-"batch": 1,
-"boards": [
-"ILLIT",
-"The Mandalorian",
-"Vaundy",
-"ぐでたま",
-"滑雪"
-],
-"stories": 3,
-"left": 0,
-"edited": 18,
-"run": 1794792170.2267704,
-"tok": {
-"in": 17,
-"cw": 43137,
-"cr": 557587,
-"out": 2172,
-"calls": 9,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 602913,
-"secs": 485,
-"run_tok": {
-"in": 17,
-"cw": 43137,
-"cr": 557587,
-"out": 2172,
-"calls": 9,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-16T02:40:58+00:00",
 "text": "2026-11-16 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作、The Mandalorian ほか 10（16 版面・31 本・今日の整理待ちは全部終わり） · token 新規入力 4.8万・キャッシュ読み 99.2万・出力 4,797",
 "level": "ok",
@@ -2292,5 +2247,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 750941
+},
+{
+"at": "2026-11-18T04:52:25+00:00",
+"text": "2026-11-18 第 2 バッチを出刊：漫威电影（1 版面・5 本・残り 4 版面） · token 新規入力 2,336・キャッシュ読み 22.4万・出力 946",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.62,
+"mem_total": 16869130240,
+"mem_free": 15935000576,
+"disk_used": 10466070528,
+"disk_free": 31203287040,
+"disk_total": 41669357568,
+"peak": 395894784
+},
+"batch": 2,
+"boards": [
+"漫威电影"
+],
+"stories": 5,
+"left": 4,
+"edited": 19,
+"run": 1794976653.4453955,
+"tok": {
+"in": 6,
+"cw": 2330,
+"cr": 223932,
+"out": 946,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 227214
 }
 ]
