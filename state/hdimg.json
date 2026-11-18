@@ -657,12 +657,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.nc.press/news/photo/202611/630749_869718_2628.jpg": {
-  "w": 600,
-  "h": 400,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.news-report.co.kr/news/thumbnail/202611/4474_6856_614_v150.jpg": {
   "w": 300,
   "h": 302,
@@ -754,6 +748,12 @@
   "w": 896,
   "h": 504,
   "target": 1280,
+  "v": 3
+ },
+ "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=202611031247249730205868f676220867377_0.png&nmt=30": {
+  "w": 5953,
+  "h": 3969,
+  "target": 720,
   "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
@@ -1390,6 +1390,12 @@
   "w": 1200,
   "h": 660,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hG6db.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbfus.img": {
@@ -3714,6 +3720,12 @@
   "target": 720,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1794986357296_img_f9d3b9cd.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://weisradio.com/wp-content/uploads/2026/08/shannon-fagan-thinking-football-picks-weis-news.png": {
   "w": 1536,
   "h": 864,
@@ -3890,12 +3902,6 @@
    989
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.6gzcD9QwtFIRWUfkozUUtQ&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-18"
  },
  "https://www.bing.com/th?id=ONUT.A7Eb2m5oa8Oz4rC2-5vHHA&pid=News&w=572": {
   "w": 572,
