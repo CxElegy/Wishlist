@@ -255,6 +255,12 @@
   "v": 3,
   "blur": 0.308
  },
+ "https://api.elle.com.hk/var/site/storage/images/_aliases/img_776_w/9/1/5/1/39811519-1-chi-HK/d1f67b1d9bdf-SnapInsta.to_888351302_18645145030061039_5022405180871811437_n.jpg": {
+  "w": 775,
+  "h": 1034,
+  "target": 720,
+  "v": 3
+ },
  "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
   "w": 506,
   "h": 253,
@@ -764,6 +770,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=202611031247249730205868f676220867377_0.png&nmt=30": {
+  "w": 5953,
+  "h": 3969,
+  "target": 1280,
+  "v": 3
+ },
  "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
   "w": 668,
   "h": 668,
@@ -897,6 +909,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/hakuba-happo.jpg": {
+  "w": 1962,
+  "h": 1102,
+  "target": 1280,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/jr-ski.jpg": {
   "w": 900,
   "h": 600,
@@ -943,6 +961,12 @@
  "https://fastbreak.com.ph/wp-content/uploads/2026/11/June-Mar.png": {
   "w": 820,
   "h": 472,
+  "target": 1280,
+  "v": 3
+ },
+ "https://feeds.abplive.com/onecms/images/uploaded-images/2026/11/17/6d1c5a00321aa39b7e907f09241af2ea17949099283831501_original.jpg?impolicy=abp_cdn&imwidth=1200": {
+  "w": 1080,
+  "h": 608,
   "target": 1280,
   "v": 3
  },
@@ -1380,6 +1404,12 @@
   "w": 912,
   "h": 513,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hE0cd.img": {
+  "w": 640,
+  "h": 426,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hbUYl.img": {
@@ -2032,6 +2062,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg": {
+  "w": 1024,
+  "h": 768,
+  "target": 720,
+  "v": 3
+ },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/kohaku_77_simple-1.png": {
   "w": 1600,
   "h": 900,
@@ -2400,6 +2436,18 @@
    1024
   ],
   "why": "看不清"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261102-00035871-tennismagv-000-2-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3,
+  "local": "pics/edf65731a1284e83.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-01676052-motorfan-001-1-view.jpg?pri=l&w=640&h=357&exp=10800": {
   "w": 640,
@@ -2932,12 +2980,6 @@
   "target": 1280,
   "v": 3
  },
- "https://preview.redd.it/gf2z52q2wb1i1.jpeg?width=640&crop=smart&auto=webp&s=fe15663ef38b314f747ea6da7595a9958a8a859d": {
-  "w": 640,
-  "h": 853,
-  "target": 1280,
-  "v": 3
- },
  "https://prtimes.jp/img/165636/12/resize/d165636-12-a415dda3aae89418a36d-0.jpg": {
   "w": 650,
   "h": 366,
@@ -3377,12 +3419,6 @@
   "w": 1600,
   "h": 900,
   "target": 720,
-  "v": 3
- },
- "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/doctor-doom-raising-the-sentinels-in-avengers-doomsday-trailer.jpg?q=70&fit=crop&w=1200&h=628&dpr=1": {
-  "w": 1200,
-  "h": 628,
-  "target": 1280,
   "v": 3
  },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/doctor-doom-raising-the-sentinels-in-avengers-doomsday-trailer.jpg?w=1600&h=900&fit=crop": {
@@ -3889,12 +3925,6 @@
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
   "h": 287,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.eqDivri85H5wQVjtSRHGzg&pid=News&w=640": {
-  "w": 640,
-  "h": 426,
   "target": 720,
   "v": 3
  },

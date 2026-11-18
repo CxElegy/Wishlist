@@ -1,14 +1,14 @@
 {
- "admin": "3bdc90671f34",
- "admin-ai": "1bd8ca94f224",
+ "admin": "512fd9e4890e",
+ "admin-ai": "30925d93154b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "358c6d23"
+   "b06fc032"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "91d9d2f0"
+   "1f1bacb8"
   ]
  },
  "admin-boards": "0c1f5b61c3a7",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "84734c91608a",
+ "admin-emblem": "ab12b989e2ef",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "6fbc2495"
+   "05ef04ca"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "4ae4a923ba89",
+ "admin-now": "617480c2a592",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2718b06a"
+   "c64fc56a"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "ee0e50d9"
+   "84c7284b"
   ]
  },
- "admin-system": "e30ca1209709",
+ "admin-system": "2b9c2282ba85",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "8398ab0c"
+   "14ae19fe"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "73ea4f82"
+   "952cc4e9"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "746fd77a"
   ]
  },
- "index": "0d115e9e9099",
+ "index": "e1b9beaab79c",
  "index_marks": {
   "front": [
    "トップ",
-   "4cda6ac7"
+   "b2869b2a"
   ],
   "picks": [
    "気になるかも？",
@@ -121,11 +121,11 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "439bfbb3"
+   "57fce365"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "3feb9f93"
+   "057163bc"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "1853cca3"
+   "0a9bf805"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "2354c517"
+   "c566a72c"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "26f3d2cc"
+   "353081f8"
   ],
   "w-f303ad09": [
    "绝区零",
    "77328bca"
   ]
  },
- "updated": "11.18 09:18",
+ "updated": "11.18 09:30",
  "wishlist": "50553b4fe1e9"
 }
