@@ -11,6 +11,12 @@
   "target": 720,
   "v": 3
  },
+ "http://img4.wtsimg.com/flashnews/images/images/20261117/feishu-CHbQbl1yko59g6xECGpcPsQancf-58a6e5fc.jpg!1200": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "http://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FJiji%252Fcd%252FJiji_3913808%252FJiji_3913808_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "w": 480,
   "h": 320,
@@ -48,12 +54,6 @@
    1280
   ],
   "why": "看不清"
- },
- "http://n.sinaimg.cn/sinakd20261117ac/533/w480h853/20261117/4940-39f253c3abc504902065c6610a8589f8.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 1280,
-  "v": 3
  },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
@@ -457,7 +457,7 @@
  "https://cassette.sphdigital.com.sg/image/zaobao/ff28d7efc8d13e40dadb7b8b6461c6d9c14015e3cac0c881a7d860cbb6df659a": {
   "w": 900,
   "h": 600,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cdn-origin.cool-style.com.tw/cool/2026/11/56565665.png": {
@@ -804,6 +804,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
+  "w": 4525,
+  "h": 3016,
+  "target": 720,
+  "v": 3
+ },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
   "w": 1280,
   "h": 670,
@@ -1012,7 +1018,7 @@
  "https://hawk.live/storage/images/posts/nix-commented-741-patch-dota-2-24406.jpg": {
   "w": 1200,
   "h": 628,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/noone-discusses-topsons-influence-dota-2-25118.jpg": {
@@ -1031,6 +1037,18 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://helios-i.mashable.com/imagery/articles/02eaGJEEvgyCPLPEm5KnYyE/hero-image.fill.size_1200x675.v1794995375.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://helios-i.mashable.com/imagery/articles/05EdmJFLopYngXaxZLE0zaI/hero-image.fill.size_1200x675.v1795005781.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://hermes.media.transform.aol.com/87b39707d7d6f4de7cd23344dd71e71b5cbce2ea/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/16/245fba71-85c7-3ea9-b2ce-cc782b41df09/acce73cf-3e97-4268-a25a-5282e10d280b.jpg": {
@@ -1121,6 +1139,12 @@
  "https://image-cdn.pluang.com/web/news-cards/v2/GSS/c2d77a3b85d81d0725ba420279e1592b94974ad2185b2997d705f1a2aba94fbd-en.webp": {
   "w": 1200,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://image.cmoney.tw/attachment/blog/1794931200/f94433d9-4fd3-40ed-9373-f4a4ff191325.jpg": {
+  "w": 688,
+  "h": 384,
   "target": 720,
   "v": 3
  },
@@ -1876,9 +1900,9 @@
   "target": 1280,
   "v": 3
  },
- "https://news-images.tvbs.com.tw/api/v1/image/01a1ef6d-be9b-7227-bfcb-8625f20714c1.jpg?t=16x9&c=0,55,2448,1432&w=1200&h=675": {
-  "w": 1200,
-  "h": 675,
+ "https://news-images.tvbs.com.tw/api/v1/image/01a1ef6f-225f-71f0-8e82-7a1de8ab54a5.jpg?w=1024&h=576": {
+  "w": 1024,
+  "h": 576,
   "target": 1280,
   "v": 3
  },
@@ -2588,6 +2612,12 @@
   "target": 720,
   "v": 3
  },
+ "https://people.com/thmb/Oh54gbBTFZKtPxHeADbCj3UGvMw=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(779x441:781x443):format(webp)/Grand-Theft-Auto-VI-Billbaord-Berlin-2026-93f0ab82feb347899b8c2d0c32b847f9.jpg": {
+  "w": 1500,
+  "h": 1000,
+  "target": 1280,
+  "v": 3
+ },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/12/35509846.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=960&sl=W&fw=800&exp=3600": {
   "w": 800,
   "h": 600,
@@ -3112,12 +3142,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.life.tw/photo/origin/11HEI9FA9Q93SCK8888O4.jpeg": {
-  "w": 1672,
-  "h": 941,
-  "target": 1280,
-  "v": 3
- },
  "https://static.sanyonews.jp/image/article/size1/0/4/2/a/042a1b12585c38456947632a8f942cc5_1.jpg": {
   "w": 640,
   "h": 267,
@@ -3217,6 +3241,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
@@ -3610,6 +3640,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.4CCKgEEUcJtphSyLQjNbpQ&pid=News&w=640": {
+  "w": 640,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.561,
+  "local": "pics/dbca9ad34a19ec8c.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.4Hpz4Ai7jxyXy8Q8d4teng&pid=News&w=566": {
   "w": 566,
   "h": 435,
@@ -3622,6 +3665,12 @@
    984
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.6A2_Rp6eEvDaqaWP_BJseg&pid=News&w=1200": {
+  "w": 700,
+  "h": 392,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
@@ -3720,8 +3769,15 @@
  "https://www.bing.com/th?id=ONUT.ee8EAM65b_DJm8yBWHC1TQ&pid=News&w=1200": {
   "w": 700,
   "h": 367,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.448,
+  "local": "pics/0970e0ec4acf32b0.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.f1E46G67auPpxWK_IDQvrw&pid=News&w=1200": {
   "w": 700,
@@ -3977,6 +4033,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/GTA6.jpg?w=1440&h=810&crop=1": {
+  "w": 1440,
+  "h": 810,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.iza.ne.jp/resizer/v2/E6KL7R452VHM5E4DRZTV2NOXOE.jpg?auth=572cdcf59c1695096878faad7052a2bdc166a860fd9376549362efe02f541741&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,
   "h": 675,
@@ -4090,6 +4152,12 @@
  "https://www.seventietwo.com/uploads/2026/11/cb47ffb469ce1809d18f6e6c784b3244.jpg": {
   "w": 840,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.slashfilm.com/img/gallery/avengers-the-kang-dynastys-scrapped-doctor-doom-twist-explained-by-marvels-kevin-feige/l-intro-1795013877.jpg": {
+  "w": 1600,
+  "h": 900,
   "target": 720,
   "v": 3
  },

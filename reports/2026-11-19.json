@@ -1,155 +1,68 @@
 {
  "date": "2026-11-19",
- "edit_sig": "",
+ "edit_sig": "67c4281d2100",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?K1OF2OByoQie0QQKb3wpE",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "Forbes",
-     "title": "‘Grand Theft Auto 6’ Review: A Perfect Crime",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNZ2NfVGdCLVd3aXNwRkcycTFCX0d0MWRkd0NTLUItNFg2VmZ5V1ZSZV9qQzExQ1d4UkhRNHZXSHlqTjhVRW1rS1lXRGRhLXAxY2lUaDM5UUJ3b0JjcUtHMFRTTHBZR0RZeWJSR3NaS1BrRUJPUmhIWGZ4bUpfazE2VTNZX2pjSGxGS3Z6REVwVWR1X0lMeF9N?oc=5"
+     "event": {
+      "date": "2026-11-19",
+      "label": "発売日"
+     },
+     "headline": "‘Grand Theft Auto VI’ Arrives After 13-Year Wait as Gamers Worldwide Celebrate Long-Awaited Release",
+     "highlight": "Arrives",
+     "image": "https://people.com/thmb/Oh54gbBTFZKtPxHeADbCj3UGvMw=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(779x441:781x443):format(webp)/Grand-Theft-Auto-VI-Billbaord-Berlin-2026-93f0ab82feb347899b8c2d0c32b847f9.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://people.com/grand-theft-auto-vi-arrives-after-13-year-wait-as-gamers-worldwide-celebrate-long-awaited-release-12262350",
+     "weight": "hero"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 2,
-     "source": "Scripps News",
-     "title": "Could Grand Theft Auto VI become the best-selling video game of all time?",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNdE1BWFlDbGtWNFRTMmJUR2ZWWkpGeVVGOUhzSUtib0VQMFlSRHdROEFHa0hJbERYZl9qaEFFdFcyNU9qZkczT25OWGJnQnlFQXFRQ2VoS2NVOV9lS0FLcHVuNi01cXBmSUxnQmVvSGpQTkd1NWU4WTFiZVhsVGVXVDQwdUlxOHNZb2xLMi1BTFNrbTM5dDdZYmk4anlrUURSYTc5WnNuY1ZULXFLelNqV3Rlc3g?oc=5"
+     "headline": "‘Grand Theft Auto 6’ Reviews: Critics Hail “The Most Impressive Video Game Ever”",
+     "highlight": "Critics Hail",
+     "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/GTA6.jpg?w=1440&h=810&crop=1",
+     "image_via": "AI 挑选",
+     "url": "https://www.hollywoodreporter.com/business/digital/grand-theft-auto-6-review-1236758379/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 3,
-     "source": "Red Bull",
-     "title": "GTA 6 cheats: All the codes and how to unlock them",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5fN0M0MldZbU1FaUhjeFlTRFBHenFZa0N6RWtlcWV5OVJydDNqVThyUC1IaWVVeEp0Z1Z5R2tndGZVTVVQakhfRTdQTEJxZFN4SUtYbHpwU1NadlVt?oc=5"
+     "headline": "‘GTA VI’ Nears $1.7 Billion In Pre-Order Sales—One Day Before Launch",
+     "highlight": "$1.7 Billion",
+     "image": "https://image.cmoney.tw/attachment/blog/1794931200/f94433d9-4fd3-40ed-9373-f4a4ff191325.jpg",
+     "image_via": "og:image（其它来源）",
+     "url": "https://www.forbes.com/sites/conormurray/2026/11/18/grand-theft-auto-vi-nears-17-billion-in-revenue-with-one-day-to-go-until-release/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 4,
-     "source": "6abc Philadelphia",
-     "title": "GTA flu: XBOX, DJ Khaled collaborate to offer doctor's note for video game players amid Grand Theft Auto VI release",
-     "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPNE9Ndmt5NjFxUkNOT2hQS3pMVERzNHNIOE85aEtIYjVacTlZMHFXVDZScXdHc1Uzc0NzLXpYWHdWM055Y3ZaVFV3QzdEM1VjWDhDT1Z4c1Bqdi1vd1d1enVfWkdudmRqc2dHYnRnVTNiaExiUUZ3YXVlem4tTmhCWHBhbWFxRmpZVm5lVzA5ekFFVmtlZWFTdmVoNzBRdUkxYm82Smx4cmY0TjdTTGtrdHljQ2phUVBlVUUyaEtabXJQXzZRbmJwQTg0NzRQM2dhaHJN0gHYAUFVX3lxTE8yaTBDaHJoWFczZ09vX1g4YWkzUW9XbzdMOS1oZll0cmlSaE9yOTJGM0tDVTgxRFlQb05GM3d2eGFLNFh5dEF1OVplWXZmNWtEWDd0YjFfRmRLdHlMZ0d3N2dkbFk5OXJJdUQ5ZUUyRzVyRFlFVkF6RUd3MWU5Ym1uY2x5ZXo1aU9MU0ZBa3ZJV1hVRThqZWZzcEtYenN6ZGVqbnY4NDNLcXhJYUdKYzQ5bzJVOGRWZkFERUJOQzVxdkVyc0RHMGV4bkpncjk2bVQ1cGRQYmpPTQ?oc=5"
+     "headline": "'GTA 6' on Xbox Series S: How well it actually runs",
+     "highlight": "",
+     "image": "https://helios-i.mashable.com/imagery/articles/05EdmJFLopYngXaxZLE0zaI/hero-image.fill.size_1200x675.v1795005781.jpg",
+     "image_via": "og:image",
+     "url": "https://mashable.com/entertainment/gta-6-xbox-series-s-how-it-runs",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 5,
-     "source": "Forbes",
-     "title": "‘GTA VI’ Nears $1.7 Billion In Pre-Order Sales—One Day Before Launch",
-     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQdW16Z2NzdVhEZG5FYk5BUmpPcWZ2bnFEYUJ1RHdWeE1XUzRoV3dpODVHZTROelBRdzRRUF9ONUlDb0ppelNMV2ViMDdjWlRmeUtnaHNlUm5ZZ1FKbEk2TURra3ZnMzV0WUFIeXhXajBhZGRqM0oxOG8zSk10R0ROekwxd0JGcC1KSzVpYWNsSWtFc2x6LU1GNWhCdFA1b0dPby1oOUNBUFUxSXlkOWtHcUYtZlRVelRjTm9ZTmRGbkFvd3JtMXNRMC1JZThJUQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 6,
-     "source": "Mashable",
-     "title": "'GTA 6' on Xbox Series S: How well it actually runs",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5tTTVvM0JOMzF6MGFJOXNUa2lwOE5GWVQtRmU2TUY2dkFNcXhFUlR1NVJHTTVtakM0clFiUlV4Zzdhb3NnandTeVk0OEhfWWhfTzdMLXVDenp0cm5SYjF4SUd2bFp5N2IyZm1WRFZ6RmFfczl1?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 7,
-     "source": "GNN 新聞網",
-     "title": "PS5 釋出最新版系統軟體 想玩《俠盜獵車手 6》就一定得更新",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9XSWUtdWF6UC04ZGpsVkgzaVU2NDh3Vk5qRVNqcWtmMXUwNjdRVzh6OGlrTGRhWEh4LUxTR3NqQ2dobUdHTHhGSDNJZ1p5Z2NGc3hGRkhYU2o?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 8,
-     "source": "Bergen Record",
-     "title": "Can you play GTA 6 right now? When it's playable in the U.S.",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPVWRqenRmMEs3QkRKTlBNbUNCcmFKSUJnbE1NMnpENlM0UnlBc1dGalB6eHpjTU9wREoyT1NZdWVxNUt0OXIzS2tZMDRySTZxLWhqM2VlRjJ4R1FfT2s2NzllYV95Q2FZc2JabVladTFTbGJKWGxoaWJGR1VKOGo3NEZkMktvNmJCeTRqajJjdlFzelBsNC13OGJHblJ3Vk5EZG1JUy15UVVFeUhpZmJtcXJQOUlicktnQ3JDV0FR?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 9,
-     "source": "CBS News",
-     "title": "Grand Theft Auto 6 is ready to roll. \"Visually, it's incredible,\" one player said.",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPOWtFR1hDTV9qSEd0WmlfRVg2MW03SUlNc3Q0OVJWTVJQV2RzcDlENElrcFZtRzg1aWtoY0pXcmFCN3lBVlZHRmNFRVIzQnhEWTZ5eER0LWVCc1JTR1dKUW51SHlMbFMzRFU5ckJOdlpwbTRCZGhfSVZGNVJOeXI3UmxibzhKOUE?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 10,
-     "source": "Yahoo Finance UK",
-     "title": "Grand Theft Auto 6 release sparks massive boom in Xbox and PlayStation 5 sales",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNSXVmM0ZMTXRQcTg1Q0FkQ01sYjd0UlBrUkhSUEQ0TTBidC1kRGYxYXRSRmFMc2dwMFQ5TDhhZml3UktPeWxNOGQ2VzUzVFRzczJ4ZGRJaXY1T1d4bFdkMmlnVG1wVEw5SE9uamFyR3FkUUxZMTFHUnVRcmFGYlNONA?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 11,
-     "source": "USA Today",
-     "title": "Meet the gamers who are skipping work to play GTA 6",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOQV9GYkxpUWJWZl9ZaVZ0U1AxMmtwRnNnTlNqd3pPd0tSaU5Yenk2dWFuU1ZtbWtpQ1F3M05ja0RNRzNiOUtleS1MXzNmS2JwX0lnRVM5UWdLdVFseDZmUUJvUTY2QXQ3aXM2MUdDREFWZE83VDl2U1Roa0lGQ2dHdVJ0dFVEQzl3SlpoZkFCbExqZ0dBZFRVVQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 12,
-     "source": "CMoney投資網誌",
-     "title": "【即時新聞】最新遊戲巨作GTA VI狂賣千萬套！Take-Two(TTWO)獲法人上調財測，盤前股價狂飆逾6%",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNNWdDUVpuTy01bVFYdnJkRjVObUtvTHRyamZibEVKWW5iX3FpUFFuYVl5RGl5YmJJemd6ZXN4VllmQTBiNVlVRWtpOElWdk40bFJmd3ZnOXc5TkdnQVUySExiVXlDUURBdDNQYUtyTlJZRFpzVkVzMHZhZ0JicWZwdGNTaTBWV0ZnTk9nZzZvQ04?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 13,
-     "source": "RouteNote",
-     "title": "GTA 6 Dirty South Classics Tracklist: Every Confirmed Hip-Hop Song",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPVVVwa3ZyTkdPOEptbUJXSEZjVDBJa2JSSDM3c3JvMzUybVhJUVZTOGdvOFJma1QwNTRLX2xOLUZTdmZmM3lTa2paR2dKMHQzRlA0dk5XVEJScEFKbGhWTkRibTlyc0VwNXNnV2tRTTgySmc4ZTE5NnNEa0t5REZsU3RGbWkxR2hXejRhbHVNbmc1Skh5T1MzTzFB?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 14,
-     "source": "The Detroit News",
-     "title": "When does GTA 6 come out? Release date, price and platforms",
-     "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNZmsydVdmR2VMaGFobzd2THBfNWg2RkZJYW42YTI1Y2NxVm9ZZHBZcEdvdzdHS2s2VHFLeGJsaWczNjZKS1RSOTJyMEFCTENXdWY2Si1pWFdOcG1mQzNwM1VMMHRCMXljMUJOZTlEUU1zTVlfdW52eTB6UkZoUWR0UVJlV0ZCbGRCbHdMaDVOLVlGTjFzUkFOeGtYZE5xaHIxMUFxNmJfSGtVS0dBY3ZaSVVjeGxBWWdIa1htY25Ka1JERTA5MjdYNEVmTQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 15,
-     "source": "People.com",
-     "title": "‘Grand Theft Auto VI’ Arrives After 13-Year Wait as Gamers Worldwide Celebrate Long-Awaited Release",
-     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPUTIxMkxycEtmUnJwb0o4UmZ1TVJ2MEVzWXowbWpaaXVUa0FHN2hBWXRaN1VjMjFWUWRuLU5LdHhjOFNjWEEweE5zQzh6blpRb2JCZHdwaUliZF9HVkJIRGstUmhadWxUQzNONGhwUjJFT3FMSWRUVm9YNHA1eEVsQlZnaU13R0RXYmZXdXZYdlk0WlZEQ25HNFZNOFA2NjNuVTVCX0lKNDlpTXU0M2R1QlFPNzlIV2xZd0JBUUxrbkt5d2M?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 16,
-     "source": "Mashable",
-     "title": "'GTA 6' on PC: What we know about the PC release",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1tMVl1NzVTX2JPWXB4WlhNMlNaQlQtVTk1Z2JBVUtHcTc5OXJrbmNVY29yN0lfcC1GSEM5Q2c0YUl4a0FGTjVGRDVuUGtyUlVuaEV5V3M5WjRiZUpMd195ME1WY0Z6Zw?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 17,
-     "source": "Mashable",
-     "title": "'GTA 6' reviews are in: What's the verdict?",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBDMVRiTFl4S0l2OEUta2w1X2VmS3RpZGx3STd0RmVDYm1SU2tsdU5jMGp4eURlMjhPY2l1UlRQOHlDelFoNlc5Wlp0UzMwVl9WdnNhTzlFNllPSFRmYS04elRaQmFwZw?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 18,
-     "source": "CMoney投資網誌",
-     "title": "GTA VI全球開賣掀狂潮！Take-Two股價飆升 投資人押注銷量與營收暴衝",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNanpLUlc3VVdleW9FOXhjTEVHYUwxUVlGR3lVWlpoR3VVcVNzNURsUWp0NzNxYV9IR0w5VVBkQ2tsekYteUMzZERxMWFaQ0ZLc3ktM2U3ZnpDcmZHcG1jc2UzZGNDLXFYRHQwV1VPNzlIN3cyQVhpdFVrSEZpY3NFSk5CSGplVkVDajRCR0VR?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 19,
-     "source": "The Hollywood Reporter",
-     "title": "‘Grand Theft Auto 6’ Reviews: Critics Hail “The Most Impressive Video Game Ever”",
-     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQcGY1TXNtODFsSVlTMlV0emlUNFBHVllPMDZSV016Z3FNOHdzLXdvNE1NYmVXNDFEU3N5QVd6VXMyUENHTEhYNGVSNk1yN0RWX0d0YWl6TnlNWjV5SjZtU0VPODlNR1QzTU82X3VxTTdvUW90WnNLWHFfOEtNNGVtbGNHeXQ0cmctMUNZVVB1RlBGdw?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 20,
-     "source": "Audacy",
-     "title": "Grand Theft Auto VI: a watershed cultural and industry moment",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNYXF1cTM0eDFDaS1NSmJBV29odHNJcWZ5cVVXN3ZTZjNveG9rUWJwVlg0U3BuVWVyc2ZaT2l0cHIzc201dGp3TW13SVpfM3cwcmZPQXRKb1JWUWhUU1FFeG45MmI2ZG9XaUw1TEo5VGFZNEROLVZfMUJpTlpnN1kxRTFFcjRIT2ZBdGlUTy1pVFdKM1RZd1JzbmY3UWNWQQ?oc=5"
+     "headline": "'GTA 6' on PC: What we know about the PC release",
+     "highlight": "",
+     "image": "https://helios-i.mashable.com/imagery/articles/02eaGJEEvgyCPLPEm5KnYyE/hero-image.fill.size_1200x675.v1794995375.jpg",
+     "image_via": "og:image",
+     "url": "https://mashable.com/entertainment/gta-6-pc-launch-date",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
    "theme": {
     "accent": "#FF5FA2",
@@ -227,171 +140,63 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Avengers Doomsday is set to release on December 17. The official advance booking for day 1 began on Tuesday.",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "bsinews.id",
-     "title": "Feige Says Marvel Planned Doom Before Dropping Kang",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE0yemhvQjZKZEtnakhaS3dOaWdjUGJ3QzZhekNpNEs3cVp5SFJHTnBBSFNFYVlYcEdLaTI1V0EwSW5vM1F0d21vNUNxMDJKa2pqVDFvcjR4YmdfVFFkME1FWFdDYw?oc=5"
+     "event": {
+      "date": "2026-12-17",
+      "label": "公開日"
+     },
+     "headline": "Avengers: Doomsday India advance booking: Marvel film with ₹4,300 tickets beats Ramayana, surpass ₹10 crore gross",
+     "highlight": "advance booking",
+     "image": "https://www.bing.com/th?id=ONUT.4CCKgEEUcJtphSyLQjNbpQ&pid=News&w=640",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-in/entertainment/movies/avengers-doomsday-india-advance-booking-marvel-film-with-4-300-tickets-beats-ramayana-surpass-10-crore-gross/ar-AA2hGQY2",
+     "weight": "hero"
     },
     {
+     "blurb": "Avengers: Doomsday has received its official MPA rating, introducing an unusual distinction for Marvel's PG-13 releases.",
      "date": "2026-11-18",
-     "n": 2,
-     "source": "AllEars.Net",
-     "title": "QUIZ: Which ‘Avengers: Doomsday’ Character Are You?",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQZHdoTjdiblctSk1ETjRLel9zSnZqbHFINDJIa2l1cmxiRjMwWWhmNkRHVEF6eWZfaFczX3NaeUg0ZDN3Nm8tdTZhUTlmMmJvVEF5WlFfdHE2Z0hIdXFlc2hXbnhOQ3gtcmFvXzFyY2xvcXBHdWw4M2k1QzU3Ukx5UmFxQ3U?oc=5"
+     "headline": "Avengers: Doomsday Sets an MCU First With Its MPA Rating",
+     "highlight": "MPA Rating",
+     "image": "https://www.bing.com/th?id=ONUT.ee8EAM65b_DJm8yBWHC1TQ&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.superherohype.com/movies/707205-avengers-doomsday-mpa-rating-marvel-first",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 3,
-     "source": "ScreenRant",
-     "title": "Major MCU Team Reportedly Confirmed Dead Ahead Of Avengers: Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNY1BNbll2a0FGcWJsdlRaVlFCdEc4SW8zZWFiSFA2cWRsanlrd1VGZTJiMEltd0ZfWDhFUDV3Qmt5RDVxRU9leUp6Rkg5c2xUbUJyVE83eXNzMTdvem1hM2hKc0EtQ1JveE1VbFRlYlZfOFIwaDhmR3A1WjBqc2MyU1h1ODNBQXA3?oc=5"
+     "headline": "Feige Says Marvel Planned Doom Before Dropping Kang",
+     "highlight": "",
+     "image": "https://www.slashfilm.com/img/gallery/avengers-the-kang-dynastys-scrapped-doctor-doom-twist-explained-by-marvels-kevin-feige/l-intro-1795013877.jpg",
+     "image_via": "og:image（其它来源）",
+     "url": "https://bsinews.id/en/marvel-doom-kang-avengers-pivot",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 4,
-     "source": "IMDb",
-     "title": "X-Men: Hunter Schafer Expresses Interest In Playing Mystique - But Is Raven Even In The MCU Reboot?",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5qdm5fMDhQMWZqUGNIR25jVk5vekZrdDEtOTlLUFo0RkF6c255elh0b2ZZQVhwOExVQnhUQzNkQTc1SlpkMFN4NTY3UTNUZHdBM0xJaWRBMWMxaU9QaTB2ZmNvVWJ2ZGM?oc=5"
+     "headline": "Kevin Feige teases Avengers: Doomsday marks the final goodbye for the original X-Men",
+     "highlight": "",
+     "image": "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp",
+     "image_via": "og:image",
+     "url": "https://www.primetimer.com/features/kevin-feige-teases-avengers-doomsday-marks-the-final-goodbye-for-the-original-x-men",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 5,
-     "source": "Sortir à Paris",
-     "title": "Mahershala Ali Won’t Be Blade: The Story of the Marvel Reboot That Never Got Off the Ground",
-     "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPSC05aW5mQlJRSkVVR1MyU2RxWkVKZkJpaVZ1UkhEWHZ6VkhyOEdRbHMyMVYtT1BPX0ZhRVAxX1UtRnFWbTg0Y2t6Zkw0Z1VERWRuWVdURVg1OTRqMVFhX1BRU3R1Q3NaQTllN0U4cUlVdXhDdTlLNkRQeWFLeG1VQ2RpNldyMm4xWWRPeWl0bTR0UTBZbWJoM1IxdVNDMnBkbUYzSFppLXd3dEZqN3JpVHdwQnNkNGVfVjFHSXBDZ1B6enRZcURnOFkzT081SE9EcXUwdTVIVm9tWHZxYVVoU0xhSG9Ielh2U190cjRsNA?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 6,
-     "source": "IMDb",
-     "title": "Avengers: Doomsday Star Pedro Pascal Shares Intriguing New Details About Reed Richards And Doctor Doom",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9hUEwzMDFXYlIzZWZmSHR0dkcwSjh3Z2JwaC1sOHNqVkpORUNIV0xaSm9TanZKdGRTQnIzMVhOaHRqM2pzck9kOWtLWjZMY3h2UTA0OTBxMkxNb1YwMkN1T2ZlRkNmZ3c?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 7,
-     "source": "Sortir à Paris",
-     "title": "Blade: The story of Marvel’s reboot and its casting changes",
-     "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQY3RWc0pzdVpwUE9QSVNvNTE3TThqMEFtanhWdkVtQTRVc0VIb1hxMnY5TVQ5MDdLR1RSN2lwRjNKZnJqMnpoSWJpdTB6Sm9Yd2o5dFRVNHJFZ2xhYWRJZ3cwbFZlSXBCa1lKY0oyaVUteXF6Q3VyUnNGcDBNdnI3OTRoaTBiWERlRkMxQzdIQUFFVTJ3clZKNUY3VGJQbW5XeG81RzE0MUhfTTN4QjFORlNVUTJDYmpRTzNtUkxxVDNVeDJUaWJNUFZjWQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 8,
-     "source": "JustWatch",
-     "title": "Every Young Avenger Already In The MCU (And How Likely They Are To Return)",
-     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNR011YlZva2NCaG9vT19lMlZlSVFtbkJhVHhGTXVXQy1pckNjczUxOHBGOXJHZXk3YmJQM1l1b21kS0hUV1RwekktVjYyNjVNbzRLYWRDUmlhS3gtZXc0Y2pqaWMtQ0ZDaHJuQTlCN0t3NlFlNFZRZXNaSHdlMGI2VGFabG5LVUxQbDVCRy1xemNnUQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 9,
-     "source": "SlashFilm",
-     "title": "Avengers: The Kang Dynasty's Scrapped Doctor Doom Twist Explained By Marvel's Kevin Feige",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNNHRORGt3amxnVTZyMWhkLV9qb0dwM2l4cE95d2Y2ekdsakp2em81QldWZmVZWGtuc25DTHhVeFZ5RmFpTlJBSWZiOEJMTmpSRnN4T3d4MFBjSFl6Y0hsanJBaFFnV0ZKRXM2LTBUcFN1M3pBbEVKejFQcElDZ1FiVzRxLXhQbzN3eHRrdGRTdXlpMFVFNW9jcmZNUzhTQQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 10,
-     "source": "ScreenRant",
-     "title": "Avengers: Doomsday Vs. Dune 3: 4 Biggest Ways They Are Competing & Which Will Win",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9uVFlyc3M1X0RsWXRCZXdSR1R3LUtOSEwtcTJkSVRVN0s2V296Z0xaQ2NjRC1Ld3NaVDEzMXdtYUtYcTQteXNLN0o5MWNXZzROcjRZLWhiWlMtV2RzNEp6bU5DUWp6YW0xNkc2WVZ2bVNORHc?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 11,
-     "source": "MovieWeb",
-     "title": "'Avengers: Doomsday' Official Rating Promises Darkest MCU Film Yet After 18 Years",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1tdFpGMVhvNmhMM3lBTDhoZmdtYnpZSlRhcWdBalo1QWsyTWZOWkxkV0ZGSXdjLVdrdzJEVS0tbWZIZ1pxT1R6T09YaWczRmxQal9jWVZaU0drb29VZmhF?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 12,
-     "source": "ComingSoon.net",
-     "title": "Marvel’s Lord Doom Figure Shows the RDJ Look Cut From Doomsday",
-     "url": "https://www.comingsoon.net/movies/news/2226351-rdj-cut-doctor-doom-look-lord-doom-figure"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 13,
-     "source": "SuperHeroHype",
-     "title": "Avengers: Doomsday Sets an MCU First With Its MPA Rating",
-     "url": "https://www.superherohype.com/movies/707205-avengers-doomsday-mpa-rating-marvel-first"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 14,
-     "source": "Tech Times on MSN",
-     "title": "Avengers: Doomsday PG-13 rating drops sci-fi label, adds bloody images Endgame never had",
-     "url": "https://www.msn.com/en-us/news/other/avengers-doomsday-pg-13-rating-drops-sci-fi-label-adds-bloody-images-endgame-never-had/ar-AA2hHzRw"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 15,
-     "source": "/Film on MSN",
-     "title": "Avengers: Doomsday's PG-13 Rating Explained",
-     "url": "https://www.msn.com/en-us/news/other/avengers-doomsdays-pg-13-rating-explained/ar-AA2hIIju"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 16,
-     "source": "Parade on MSN",
-     "title": "Marvel fans can get a limited-edition Doctor Doom watch ahead of 'Avengers: Doomsday'—but only 3,100 exist",
-     "url": "https://www.msn.com/en-us/news/other/marvel-fans-can-get-a-limited-edition-doctor-doom-watch-ahead-of-avengers-doomsday-but-only-3100-exist/ar-AA2hIlSR"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 17,
-     "source": "Collider",
-     "title": "‘Avengers: Secret Wars’ Will Officially Be Even Bigger Than ‘Doomsday’",
-     "url": "https://collider.com/avengers-secret-wars-story-tease-kevin-feige/"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 18,
-     "source": "PRIMETIMER",
-     "title": "\"A set-up for Doom\": Kevin Feige sheds light on Kang and how it would have led to Secret Wars",
-     "url": "https://www.primetimer.com/features/a-set-up-for-doom-kevin-feige-sheds-light-on-kang-and-how-it-would-have-led-to-secret-wars"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 19,
-     "source": "Newspoint on MSN",
-     "title": "Avengers: Doomsday ticket price reaches ₹4,300 in Mumbai ahead of December release, advance booking creates buzz",
-     "url": "https://www.msn.com/en-in/news/other/avengers-doomsday-ticket-price-reaches-4300-in-mumbai-ahead-of-december-release-advance-booking-creates-buzz/ar-AA2hI3tu"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 20,
-     "source": "The Express Tribune",
-     "title": "Is ‘Avengers: Doomsday’ the last time fans will see Fox’s X-Men together? Kevin Feige reveals",
-     "url": "https://tribune.com.pk/story/2641021/is-avengers-doomsday-the-last-time-fans-will-see-foxs-x-men-together-keving-feige-reveals"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 21,
-     "source": "Mint on MSN",
-     "title": "Avengers Doomsday India advance booking: Marvel film with ₹4,300 tickets beats Ramayana, surpass ₹10 crore gross",
-     "url": "https://www.msn.com/en-in/entertainment/movies/avengers-doomsday-india-advance-booking-marvel-film-with-4-300-tickets-beats-ramayana-surpass-10-crore-gross/ar-AA2hGQY2"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 22,
-     "source": "PRIMETIMER",
-     "title": "Kevin Feige teases Avengers: Doomsday marks the final goodbye for the original X-Men",
-     "url": "https://www.primetimer.com/features/kevin-feige-teases-avengers-doomsday-marks-the-final-goodbye-for-the-original-x-men"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 23,
-     "source": "AOL.com",
-     "title": "Tom Holland’s Avengers: Doomsday Rumor Adds a Twist to Spider-Man’s MCU Future",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOSnk3VlVvTHFNUFYwZ3BaVi10NWthMjZRYjF0T3drLUY2UF9BNURsQW1SOHVtSnJpVlNMUHcwc0tMcFNkV2VjZEVnZ3B6UXAwZ1JRYXdLcFo2a2NWRkExeDE0QzV1ejJrM1lDV2xnOGVtLUtDMEhnLXBYOEFyeXZ3TXJvcUU2Zw?oc=5"
+     "headline": "‘Avengers: Secret Wars’ Will Officially Be Even Bigger Than ‘Doomsday’",
+     "highlight": "",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://collider.com/avengers-secret-wars-story-tease-kevin-feige/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",
@@ -632,43 +437,32 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 1,
-     "source": "网通社",
-     "title": "别克又搞事情了！全新至境世家MPV官宣即将登场，周杰伦代言背后的门道你看懂了吗？",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4yRkJMLWszelZDSFoyVEtSSHNuVlZTTXF5ODN4S29NcklrS0tPUGVQMjluSV9UMG03ZUFfVHdHUUNKR0U1aXVKVjY4Wk9XQ1Vud19WamlFSmtnd1k?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 3,
-     "source": "蕃新聞",
-     "title": "周杰倫、江蕙戰袍曝光！北流《唱我們的歌2.0》登場，金曲陣容獻聲導覽",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1SaUZ2Tm1KMmM0dHpMcEJtbkl0NVdFWEJqSEFteDBMYkRZRnAxeWxjLVZLQjZHZ0k2cHhTMGlxSG1IQjZqaHZXTDVvbzk2bEJUb0E?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
      "blurb": "",
      "date": "2026-11-18",
+     "event": {
+      "date": "2026-12-05",
+      "label": "展覧開幕",
+      "place": "臺北流行音樂中心"
+     },
      "headline": "周杰倫、江蕙演唱會服裝在這裡！21位音樂人獻聲導覽 許富凱也加入",
-     "highlight": "",
-     "image": "https://news-images.tvbs.com.tw/api/v1/image/01a1ef6d-be9b-7227-bfcb-8625f20714c1.jpg?t=16x9&c=0,55,2448,1432&w=1200&h=675",
-     "image_via": "og:image",
+     "highlight": "12月5日",
+     "image": "https://news-images.tvbs.com.tw/api/v1/image/01a1ef6f-225f-71f0-8e82-7a1de8ab54a5.jpg?w=1024&h=576",
+     "image_via": "AI 挑选",
      "url": "https://news.tvbs.com.tw/entertainment/music/4052372",
-     "weight": "hero"
+     "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-11-18",
-     "headline": "周杰倫、江蕙演唱會戰袍曝光！北流流行音樂故事展2.0登場 重現1930年代大稻埕「孔雀珈琲店」",
+     "headline": "别克又搞事情了！全新至境世家MPV官宣即将登场，周杰伦代言背后的门道你看懂了吗？",
      "highlight": "",
-     "image": "https://static.life.tw/photo/origin/11HEI9FA9Q93SCK8888O4.jpeg",
-     "image_via": "og:image",
-     "url": "https://life.tw/article/%E5%91%A8%E6%9D%B0%E5%80%AB-%E6%B1%9F%E8%95%99%E6%BC%94%E5%94%B1%E6%9C%83%E6%88%B0%E8%A2%8D%E6%9B%9D%E5%85%89-%E5%8C%97%E6%B5%81%E6%B5%81%E8%A1%8C%E9%9F%B3%E6%A8%82%E6%95%85%E4%BA%8B%E5%B1%9520%E7%99%BB%E5%A0%B4-%E9%87%8D%E7%8F%BE-3224683",
-     "weight": "hero"
+     "image": "http://img4.wtsimg.com/flashnews/images/images/20261117/feishu-CHbQbl1yko59g6xECGpcPsQancf-58a6e5fc.jpg!1200",
+     "image_via": "正文图（5 枚から）",
+     "url": "http://auto.news18a.com/news/storys_316171.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "周杰倫",
@@ -721,31 +515,31 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-18",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "Nix named the condition under which Dota 2 will start to decline",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5lc2RwNzhJcVJXRlNyV21wc29ZeWU2MEpyM0NSWEdTbi1NWXlVUlhRMkdzTzhBaWF4N3pReTJPdDVaMWhjai1QcVlpTm01OEltaW9qT3RlVDE1Y2hKMVFoQzVKN0xaSURkSExYQ0R3VTBJUGdhdWhndQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 2,
-     "source": "Bluesky",
-     "title": "Drow Ranger | Dota 2 #drowranger #dota #dota2 #fanart #feet",
-     "url": "https://bsky.app/profile/lyashuu.bsky.social/post/3n2litlxgnk2n"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-17",
-     "n": 3,
+     "headline": "The International 2026: South America Open Qualifier #2 - Dota 2",
+     "highlight": "",
+     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+     "image_via": "作品封面",
      "source": "Esports Charts",
-     "title": "The International 2026: South America Open Qualifier #2 - Dota 2 - 視聴率、概要、賞金総額",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNY0lvZXpqZWptQ3V3T2NvaXNTNlg5V3pIeENYZ2psUUtlUzQ4Q2VoTUYxVUd2el9DS1VKdlJWWkl4aFVhZXNNVlZDX1NHWTJQeXNVbXN2STdudWg1aTJsWHRJUWJxX0YyOUxtMVpxeGN1ZWN3RVJSYU5pbWtxSDJ6bWNvcTQxVXNJdkpHUlI5VU1uM2JIT2c?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
+     "url": "https://escharts.com/ja/tournaments/dota2/international-2026-south-america-open-qualifier-2",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "Nix named the condition under which Dota 2 will start to decline",
+     "highlight": "",
+     "image": "https://hawk.live/storage/images/posts/nix-commented-741-patch-dota-2-24406.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/nix-named-condition-dota-2-will-start-decline",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -762,31 +556,29 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "아시아뉴스통신",
-     "title": "A2O LITE, 9人 9色 매력",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFA3Yk9nSGdxdTdPY3hBNFp4Sk1BMUQxRHlfSFZBMklfTFJac21SOTNuNjV2RTJsSU1neWI1UmotNHgweVJFNXd3M0pIOWZ3NVhIR3psRS1mQXliQnRIeExIZldJQ3dJNlFoZHZRSWY5cm10bUFp?oc=5"
+     "headline": "A2O LITE三成员年仅13岁 争议惊动韩政府启动调查",
+     "highlight": "启动调查",
+     "image": "https://cassette.sphdigital.com.sg/image/zaobao/ff28d7efc8d13e40dadb7b8b6461c6d9c14015e3cac0c881a7d860cbb6df659a",
+     "image_via": "AI 挑选",
+     "url": "https://www.zaobao.com.sg/entertainment/story20261118-10018901",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 2,
-     "source": "联合早报",
-     "title": "A2O LITE三成员年仅13岁 争议惊动韩政府启动调查",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBfMFJLOTBXRkhycHppRzBSdEtDYi1xWDBaV1lkS0liUWhodVAzOF9yZk9yUVFUSWNualJHYjVwVmxVY2V5WmZTT0VXSDJjQ2F1eGN2N01NZDNlTkpaaGRmQ0NxeENMUXl0cktadk5aWQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 3,
-     "source": "on.cc東網",
-     "title": "SM创办人上月推新女团A2O LITE 网民关注未成年成员权益｜即时新闻｜缤FUN星网｜on.cc东网",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTlUxQ0xYUlMtblJIeVNIT0NHN3plS25RT0hUVnNFazBBejRPaURheXBuRjJlWjc5N3ZLY2hiTTJiRFViNGpnZUx1ZjJUTHIxbmxVMXYtZkZ1MldGT2Ixa3FWTndqUnhLdHBnOVNPQlR0R1pCSzBtRVpKT3NNUEtLNHI4c0trN0ZkandfdGZockY1UFE0a3pPNUN2SQ?oc=5"
+     "headline": "A2O LITE, 9人 9色 매력",
+     "highlight": "",
+     "image": "https://www.anewsa.com/news_images/2026/11/18/mark/20261118105200.jpg",
+     "image_via": "og:image",
+     "url": "https://m.anewsa.com/article_sub3.php?number=3219426&type=&mobile=",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
