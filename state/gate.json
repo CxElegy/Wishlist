@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-18T15:28:21+00:00",
+ "checked": "2026-11-18T16:19:33+00:00",
  "fired": {
   "at": "2026-11-18T14:38:04+00:00",
   "results": {
@@ -58,50 +58,24 @@
     "sig": "8a736e241fdd"
    },
    "items": [
-    "A2O LITE",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "gelato pique",
-    "lib:F1",
-    "lib:NBA",
-    "lib:Nintendo Switch 2",
-    "lib:iPhone",
-    "lib:ユニクロ",
-    "lib:原神",
-    "lib:大相撲",
-    "lib:無印良品",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "滑雪",
-    "猫用品",
-    "绝区零"
+    "lib:ちいかわ",
+    "lib:ブルーアーカイブ",
+    "lib:モンスターハンターワイルズ",
+    "lib:観葉植物"
    ],
-   "last_batch": "2026-11-18T14:57:33+00:00",
+   "last_batch": "2026-11-18T15:27:39+00:00",
    "last_error": {
     "at": "2026-11-18T11:45:57+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 537,
-   "prog_day": "2026-11-18",
-   "ripe": [
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "三星手机",
-    "周杰伦"
-   ],
-   "sig": "7c104c982666",
+   "prog": 8,
+   "prog_day": "2026-11-19",
+   "ripe": [],
+   "sig": "6994f573e1cd",
    "token_cap": 1000000,
-   "tokens_today": 796290,
-   "why": "整理待ちの記事 144 件（23 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 45 件（4 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -234,11 +208,11 @@
    "runs": 15
   },
   "2026-11-18": {
-   "batches": 35,
-   "cr": 19154404,
-   "cw": 725751,
-   "in": 534,
-   "out": 70005,
+   "batches": 41,
+   "cr": 19786067,
+   "cw": 735064,
+   "in": 549,
+   "out": 73162,
    "runs": 14
   }
  }
