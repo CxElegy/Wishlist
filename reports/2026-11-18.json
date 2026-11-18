@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "edit_sig": "698c4a80062d",
+ "edit_sig": "9bd5d20588b7",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?yvw8ZozOI7a7Kz1war9qe",
@@ -498,9 +498,8 @@
      "date": "2026-11-17",
      "headline": "三星Galaxy S27系列或将内置个人AI助手",
      "highlight": "个人AI助手",
-     "image": null,
-     "source": "Sohu",
-     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
+     "image": "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1102877029_114765?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }
@@ -1004,29 +1003,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 4,
-     "source": "蕃新聞",
-     "title": "長野白馬八方尾根滑雪場12/1開季 新開放6區包括森林滑行、雪地遊戲場",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5YaXpDS29ZY2x1eWFKM1JHdzIxLS1iN194N2ZjV2hCQVMxSklRWlp4WFJTcThGaV9XTmNrNWptVVZkNWdrOXlhckh0cG05Ml9TNnc?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 5,
-     "source": "Mantan Web",
-     "title": "【長野・佐久】高速道路直結の「佐久スキーガーデン パラダ」で2026-27ウィンターシーズンの開業準備が本格化！安全・快適なゲレンデづくりへ、リフト搬器取り付けやキッズランド設営など現場の舞台裏を公開",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1pejRwNXNacjgzRExsYTJzSWM3eGgzY3BvcHRxd2dNZzM4MmlwSmlYTGRmeEZ0RGFBc2ZlUGRDZDFWTnBudTdTa0I2eGVaSVhPRjRVSFNqZ1hURy1HeE5maVpoRTlWV2VsdXZoZFJlWTBqOUMtVXc?oc=5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 6,
-     "source": "ニコニコニュース",
-     "title": "雪不足の時代に、雪を長く活かすスキー場づくりへ",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9HRDFNM1F4SDNFOUFzbmlXRWFtSEpXSExHUkg3SWNEbFRDS2NfcTNlM1I1VXFqYVhhaC1vaUMtX2FDaHZFN2JLbjNYWGNiM2xjUGdtRHk5SWFYeXcycjRIUFExX0NRcHdf?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1052,6 +1028,16 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hE0cd.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/ja-jp/lifestyle/other/11-30%E3%81%BE%E3%81%A7-%E5%B7%9D%E5%A0%B4%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4-%E6%97%A9%E5%89%B2%E3%83%AA%E3%83%95%E3%83%88%E5%88%B81%E6%97%A55-800%E5%86%86-%E6%9C%80%E5%A4%A72-600%E5%86%86%E3%81%8A%E5%BE%97/ar-AA2hEJbL",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "【長野・佐久】高速道路直結の「佐久スキーガーデン パラダ」で2026-27ウィンターシーズンの開業準備が本格化！",
+     "highlight": "開業準備が本格化",
+     "image": "https://prtimes.jp/img/183117/47/resize/d183117-47-ee02b95daf8ef3adac9a-0.jpg",
+     "image_via": "og:image",
+     "url": "https://mantan-web.jp/prtimes/article/20261118prt00m200000358a.html",
      "weight": "normal"
     }
    ],

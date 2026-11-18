@@ -2998,6 +2998,13 @@
   "target": 720,
   "v": 3
  },
+ "https://prtimes.jp/img/183117/47/resize/d183117-47-ee02b95daf8ef3adac9a-0.jpg": {
+  "w": 650,
+  "h": 432,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.309
+ },
  "https://prtimes.jp/img/25615/3977/thumb/d25615-3977-aa4a063ede2cc2731156-0.jpg": {
   "w": 400,
   "h": 300,
@@ -3055,6 +3062,13 @@
   "h": 958,
   "target": 1280,
   "v": 3
+ },
+ "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-18"
  },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
