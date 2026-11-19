@@ -1,6 +1,6 @@
 {
  "admin": "74c7b9ad4395",
- "admin-ai": "15d6c2e05053",
+ "admin-ai": "2726400ff6f9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "ac1b41b9"
+   "efeb7685"
   ]
  },
  "admin-boards": "72bd41cc6924",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "27eacc29fbdd",
+ "admin-emblem": "bbe5a0284fbd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "11b1a2cc"
+   "ada7c7b2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "182e4d958763",
+ "admin-now": "82e76a5bb4fa",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "15fdd074"
+   "ddc48ea5"
   ]
  },
- "admin-system": "055b57c86c85",
+ "admin-system": "e9739f4cfbeb",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "41c09d23"
+   "666cfde6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "59f26baf"
+   "50027f52"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "885bf333"
   ]
  },
- "index": "1f94e5fd2184",
+ "index": "de73455c21b6",
  "index_marks": {
   "front": [
    "トップ",
-   "f56504c1"
+   "348cbc85"
   ],
   "picks": [
    "気になるかも？",
@@ -113,11 +113,11 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "82b6ef0e"
+   "33852429"
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "7fc11ca8"
+   "73db58d0"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "5a790ec4"
+   "64b81482"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -165,15 +165,15 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "594cb942"
+   "22d00f6d"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "251e60a0"
+   "2da9ca46"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "7531516d"
+   "52f643f9"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -181,11 +181,11 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "65f0c11c"
+   "461bdda8"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "2592429b"
+   "fbd020a7"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "ae025946"
   ]
  },
- "updated": "11.20 01:51",
+ "updated": "11.20 01:55",
  "wishlist": "307bdfd6c446"
 }
