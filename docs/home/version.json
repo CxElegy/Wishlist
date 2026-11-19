@@ -1,14 +1,14 @@
 {
- "admin": "fd9fd525a52d",
- "admin-ai": "6448d3d81ee2",
+ "admin": "8db3ce306849",
+ "admin-ai": "291f58f88d09",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "3452418f"
+   "2c4ccd6f"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "bfbb597c"
+   "1ee497a7"
   ]
  },
  "admin-boards": "ef82de9a4ac6",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "bef7a4deba3e",
+ "admin-emblem": "3e785b3ebbff",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "706b88f6"
+   "78ba42e5"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "a7e0db08f522",
+ "admin-now": "b272f5461f40",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "897100d4"
+   "d61efea7"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "82f55379"
+   "5242c679"
   ]
  },
- "admin-system": "fe7a9222d281",
+ "admin-system": "92e78d377c86",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a53fe372"
+   "15569889"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "fe42a196"
+   "b1219794"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "7e1699fd"
   ]
  },
- "index": "85af74a79657",
+ "index": "8f6f11c3b8c6",
  "index_marks": {
   "front": [
    "トップ",
-   "5fee1c2a"
+   "f81ea08d"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "f802dbad"
+   "c5baad0c"
   ],
   "w-130724c0": [
    "猫用品",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "5a662b56"
+   "cf5becc6"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "29ccb6ea"
+   "bc1495fc"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "133a0d5c"
+   "39955b72"
   ],
   "w-f303ad09": [
    "绝区零",
    "72edf8a8"
   ]
  },
- "updated": "11.19 13:31",
+ "updated": "11.19 13:42",
  "wishlist": "7302e2d33029"
 }

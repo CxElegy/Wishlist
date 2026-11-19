@@ -960,12 +960,6 @@
   "target": 720,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/1win-essence-i?v=1795044405": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
   "w": 1200,
   "h": 630,
@@ -982,12 +976,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/res-unchained-4-blast-slam-vii-southeast-asia-open-qualifier-2?v=1795012228": {
@@ -1696,18 +1684,12 @@
   "target": 720,
   "v": 3
  },
- "https://img.tenasia.co.kr/photo/202611/BF.46475392.3.jpg": {
-  "w": 400,
-  "h": 406,
+ "https://img.tenasia.co.kr/photo/202611/BF.46476827.3.jpg": {
   "target": 720,
   "v": 3,
-  "blur": 0.461,
-  "local": "pics/c2690e7f638617ca.webp",
-  "out": [
-   709,
-   720
-  ],
-  "why": "看不清"
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-11-19"
  },
  "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg": {
   "w": 1200,
@@ -2767,6 +2749,12 @@
   "w": 1024,
   "h": 632,
   "target": 720,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/184a0401830a403eabe2252f7c654311.webp": {
+  "w": 772,
+  "h": 1000,
+  "target": 1280,
   "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/614d674cbc04425092f91517c1246529.png": {
@@ -4030,6 +4018,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
   "h": 414,
@@ -4279,6 +4273,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/esports-gaming-setup.png?v=72240b6c111d7c67dbf43f89ddbfc186f0a0c1e5": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg": {
   "w": 1280,
   "h": 720,
@@ -4431,12 +4431,6 @@
    960
   ],
   "why": "看不清"
- },
- "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Plus-review-3.jpg": {
-  "w": 1920,
-  "h": 1078,
-  "target": 720,
-  "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
