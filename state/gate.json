@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-19T02:20:17+00:00",
+ "changed": true,
+ "checked": "2026-11-19T02:50:07+00:00",
  "fired": {
   "at": "2026-11-19T02:20:17+00:00",
   "results": {
@@ -62,14 +62,8 @@
    },
    "items": [
     "MMORPG 新作",
-    "lib:BTS",
-    "lib:Mrs. GREEN APPLE",
-    "lib:YOASOBI",
-    "lib:サッカー日本代表",
-    "lib:スプラトゥーン3",
-    "lib:大谷翔平",
-    "lib:葬送のフリーレン",
-    "lib:藤井風",
+    "lib:ポケモンGO",
+    "lib:牧野植物園",
     "あつ森",
     "哈利波特剧集",
     "滑雪",
@@ -82,15 +76,16 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 270,
+   "prog": 278,
    "prog_day": "2026-11-19",
    "ripe": [
-    "lib:藤井風"
+    "lib:ポケモンGO",
+    "lib:牧野植物園"
    ],
-   "sig": "faa0e2bdd5ed",
+   "sig": "cc4f628e9e1e",
    "token_cap": 1000000,
    "tokens_today": 366091,
-   "why": "整理待ちの記事 104 件（14 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 24 件（8 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
