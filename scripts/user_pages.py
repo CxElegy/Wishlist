@@ -850,9 +850,8 @@ def main(argv):
             return latest_stories(_supa, ids)
         except sbstate.Limited:
             raise
-        except Exception as ex:  # noqa: BLE001  読めなければ前の user_boards だけで作る
-            print(f"::warning::board_stories が読めなかった（{type(ex).__name__}）")
-            return {}
+        except Exception as ex:  # noqa: BLE001  読めなければ前の user_boards だけで作る（ログは main：運用の文はそこだけ）
+            return ex
 
     def read_pub():   # 読めない回（時間切れ）は 1 回読み直す
         got = photo_store.published(None)
@@ -863,6 +862,9 @@ def main(argv):
             fps, latest, pub = jf.result(), jl.result(), jp.result()
         except sbstate.Limited:
             return
+    if isinstance(latest, Exception):
+        print(f"::warning::board_stories が読めなかった（{type(latest).__name__}）")
+        latest = {}
     tb = _lap(boot, "指紋・記事・写しの一覧（並べて）", tb)
     now_dt = dt.datetime.now(dt.timezone.utc)
     # 写真のない記事の代表の写真（og:image。og_image.py：取れた写真と、取れなかった理由・時刻）。指紋と同じ 1 本に入れる。
