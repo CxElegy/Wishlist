@@ -158,8 +158,14 @@ def _story(row, weight):
             "source": row.get("source") or ""}
 
 
+FIND = {"tried": 0, "found": 0, "saved": 0}   # find_images の数（1 回分。main が 1 行に出す：数だけ）
+FIND_MEMO = None   # main が og_image の覚え（_fp/all.json の _og）を渡す：取れた写真を覚え、次の回の og_image.fill が記事に書き戻す
+
+
 def find_images(stories, deadline):
-    """写真のない記事に、店長と同じ規則（images.pick）で写真を探す。時間の上限を超えたらやめる。"""
+    """写真のない記事に、店長と同じ規則（images.pick）で写真を探す。時間の上限を超えたらやめる。
+    og_image.demote のあとなので、ここに来るのは写真が 1 枚も無い版面の頭だけ（最後の手）。SAVED（本站に保存しないと開けない）は使わない。"""
+    import images
     # 本物のブラウザ（images._browser_html）は開いた記事の網址を公開の Actions ログに書く。library_emblem.yml は小元素のために
     # SCRAPLING_BROWSER=1 を立てたまま user_pages を回すので、お客さまの記事ではここで切る（userfeed と同じ）
     os.environ.pop("SCRAPLING_BROWSER", None)
@@ -168,13 +174,21 @@ def find_images(stories, deadline):
         if s.get("image") or time.time() > deadline:
             continue
         e = sources.Entry(title=s["headline"], url=s["url"], published=None, source=s.get("source", ""))
+        FIND["tried"] += 1
         try:
-            img = digest.find_image(None, [e], s["url"])
+            res = images.pick(None, [e], s["url"])
+            img = res.image
+            if img and images.SAVED in (res.source or ""):
+                FIND["saved"] += 1
+                img = None
         except Exception:  # noqa: BLE001  写真がなくても版面は出す
             img = None
         if img and img not in used:
             s["image"] = img
             used.add(img)
+            FIND["found"] += 1
+            if FIND_MEMO is not None and s.get("url"):
+                FIND_MEMO[s["url"]] = {"img": img, "at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")}
     return stories
 
 
@@ -273,37 +287,138 @@ def own_recommend(votes, items, issue, rows=None):
         return {"picks": [], "taste": []}
 
 
-def photo_tally(brows, tally=None):
-    """写真を取る段の数（2026-11-19 店長「点検は、本物の写真が取れるかどうかを含めること」）：版面に載せる記事（AI 編集の記事・まだなら集めた記事）の
-    うち写真の網址が付いた数・写真の置き場（photo_store）に入った数。整理待ちは数えない（カードにしない）。tally に足して返す [記事, 網址あり, 置き場]。"""
-    t = tally if tally is not None else [0, 0, 0]
+def photo_count(brows):
+    """版面に載せる記事（AI 編集の記事・まだなら集めた記事。整理待ちは数えない）の数・写真あり・包みのまま（Google の網址）・置き場に入った。"""
+    t = {"n": 0, "img": 0, "wrapped": 0, "stored": 0}
     for r in (brows or {}).values():
         for s in r.get("stories") or []:
             u = s.get("image")
-            t[0] += 1
+            t["n"] += 1
+            t["wrapped"] += "news.google.com" in str(s.get("url") or "")
             if u:
-                t[1] += 1
-                if photo_store.stored(u):
-                    t[2] += 1
+                t["img"] += 1
+                t["stored"] += bool(photo_store.stored(u))
     return t
+
+
+TALLY_KEYS = ("n", "img", "feed", "page", "demoted", "wrapped", "stored")
+
+
+def photo_tally(brows, og, tally=None, fill=None, now=None):
+    """写真を取る段の数（2026-11-19 店長「点検は、本物の写真が取れるかどうかを含めること」）。og_image.fill（残りの最後の手）と
+    og_image.demote（それでも写真の無い記事は整理待ちへ）を、前と後で数えて tally に足す：
+    n 版面の記事・img 写真あり（feed＝記事集めで付いていた／page＝ページ作りで付けた）・demoted 整理待ちへ回した・wrapped 包みのまま・
+    stored 置き場に入った（n・img・wrapped は demote の前＝実際より良く見せない。stored は demote の後＝カードに残ったもの）。
+    → og_image.fill の数（touched：写真を入れた記事）"""
+    t = tally if tally is not None else {}
+    for k in TALLY_KEYS:
+        t.setdefault(k, 0)
+    pre = photo_count(brows)
+    got = (fill or og_image.fill)(brows, og, now=now, log=lambda _m: None)
+    if not isinstance(got, dict):   # 差し替えた fill（試験）
+        got = {"read": 0, "new": 0, "memo": 0, "wrapped": 0, "saved": 0, "why": {}, "touched": []}
+    mid = photo_count(brows)
+    k = og_image.demote(brows)
+    post = photo_count(brows)
+    t["n"] += mid["n"]
+    t["img"] += mid["img"]
+    t["feed"] += pre["img"]
+    t["page"] += mid["img"] - pre["img"]
+    t["demoted"] += k
+    t["wrapped"] += mid["wrapped"]
+    t["stored"] += post["stored"]
+    return got
+
+
+def tally_line(t):
+    """photo_tally の 1 行（数だけ：名前・題・網址は出さない。Actions のログは公開）。"""
+    return (f"お客さまの写真：記事 {t['n']} 本・写真あり {t['img']} 本（記事集めで {t['feed']}／ページ作りで {t['page']}）"
+            f"・整理待ちへ回した {t['demoted']} 本・包みのまま {t['wrapped']} 本・置き場に入った {t['stored']} 本")
+
+
+def _eq(col, v):
+    return f"{col}=is.null" if v in (None, "") else f"{col}=eq.{urllib.parse.quote(str(v), safe='')}"
+
+
+def write_back(brows, latest, rows, og, touched, acct, put):
+    """ページ作りで付けた写真（og_image の覚え）を記事に書き戻す（2026-11-19：前は表に出すだけで、次の回もまた探していた）。
+    - ライブラリの版面（_src = bs）：board_stories のその日の行の pending（全員が同じもの）。stories（AI 編集）は書かない＝refs で引き継ぐ（inherit）。
+    - 本人の user_boards の行：記事集め（userfeed.merge）は前の行の写真を残すので、ここに書けば次の記事集めでも消えない。
+    どちらも読んだときの時刻（updated_at・checked_at）が変わっていない行だけ書く（記事集めが書いた後なら書かない＝新しい記事を消さない。次の回にまた付ける）。
+    → [書いた版面, 書いた行, 書けなかった数]"""
+    ids = {id(s) for s in touched or []}
+    done = [0, 0, 0]
+
+    def send(path, body):
+        try:
+            put(path, json.dumps(body, ensure_ascii=False).encode("utf-8"), "PATCH")
+            return True
+        except Exception:  # noqa: BLE001  書けなくても次の回に覚えからまた付ける
+            done[2] += 1
+            return False
+    for bid in sorted({r["_src"][1] for r in (brows or {}).values() if isinstance(r, dict) and (r.get("_src") or ("",))[0] == "bs"}):
+        bs = latest.get(bid) or {}
+        pend = bs.get("pending") or []
+        if og_image.apply(pend, og) or any(id(p) in ids for p in pend):
+            if send(f"/rest/v1/board_stories?board_id=eq.{int(bid)}&day=eq.{bs.get('day')}&{_eq('updated_at', bs.get('updated_at'))}", {"pending": pend}):
+                done[0] += 1
+    for r in (rows or {}).values():
+        st = r.get("stories") or []
+        if r.get("item") and (og_image.apply(st, og) or any(id(s) in ids for s in st)):
+            if send(f"/rest/v1/user_boards?account=eq.{urllib.parse.quote(acct, safe='')}&item=eq.{urllib.parse.quote(r['item'], safe='')}"
+                    f"&{_eq('checked_at', r.get('checked_at'))}", {"stories": st}):
+                done[1] += 1
+    return done
+
+
+def _pics(*lists):
+    """記事の網址（包みの網址 gurl も）→ 写真。整理待ち・本人の user_boards の行から（AI 編集の記事へ引き継ぐ）。"""
+    out = {}
+    for st in lists:
+        for p in st or []:
+            if isinstance(p, dict) and p.get("image"):
+                for u in (p.get("url"), p.get("gurl")):
+                    if u:
+                        out.setdefault(u, p["image"])
+    return out
+
+
+def inherit(ed, *lists):
+    """AI 編集の記事のうち写真の無いものに、refs の網址で整理待ち（記事集めが後から付けた写真）・本人の前の行の写真を引く（2026-11-19）。
+    AI 編集は編んだ時点の refs の写真で固まる（library.edited_stories）ので、後から付いた写真が表に出なかった。編み直さない（token 0）。
+    同じ版面で同じ写真は 2 回使わない。→ 写しの list（全員で共有の行は書き換えない）"""
+    pics = _pics(*lists)
+    used = {s.get("image") for s in ed if s.get("image")}
+    out = []
+    for s in ed:
+        if not s.get("image"):
+            img = next((pics[u] for u in s.get("refs") or [s.get("url")] if pics.get(u) and pics[u] not in used), None)
+            if img:
+                s = {**s, "image": img}
+                used.add(img)
+        out.append(s)
+    return out
 
 
 def board_rows(follows, latest, rows):
     """本人の版面の記事 {そろえた名前: {stories}}：ライブラリの board_stories（版面ごとに 1 回・全員が同じもの、library.md）が先。
     stories（AI 編集のあと）があればそれ、なければ pending（規則で集めたまま）。board_stories にまだ無い版面だけ古い user_boards の行（rows）。
-    latest = {版面 id: board_stories のいちばん新しい日の行}。"""
-    out = dict(rows or {})
+    latest = {版面 id: board_stories のいちばん新しい日の行}。AI 編集の記事に写真が無ければ整理待ち・本人の行から引き継ぐ（inherit）。
+    _src＝どの行から来たか（og_image が取った写真を書き戻す先：write_back）。"""
+    out = {k: {**v, "_src": ("ub", k)} if isinstance(v, dict) else v for k, v in (rows or {}).items()}
     for f in follows or []:
         b = f.get("boards") or {}
         bs = latest.get(b.get("id")) or {}
         ed = [s for s in bs.get("stories") or [] if s.get("headline")]   # 題のない行＝AI 編集が全部見送った印（_fp だけ）
         if b.get("name") and (bs.get("stories") or bs.get("pending")):
-            if bs.get("stories"):   # AI 編集のあと：記事は AI の、使わなかった新着は店長と同じ「整理待ち」へ
+            src = ("bs", b.get("id"))
+            if bs.get("stories"):   # AI 編集のあと：記事は AI の、使わなかった新着は店長と同じ「整理待ち」へ（原文に戻した記事は前の網址 gurl でも当てる）
                 used = {u for s in ed for u in s.get("refs") or [s.get("url")]}
-                out[norm(b["name"])] = {"stories": ed, "edited": True,
-                                        "pending": [p for p in bs.get("pending") or [] if p.get("url") not in used]}
+                own = (rows or {}).get(norm(b["name"])) or {}
+                out[norm(b["name"])] = {"stories": inherit(ed, bs.get("pending"), own.get("stories")), "edited": True, "_src": src,
+                                        "pending": [p for p in bs.get("pending") or [] if p.get("url") not in used and p.get("gurl") not in used]}
             else:
-                out[norm(b["name"])] = {"stories": bs["pending"], "edited": False}
+                out[norm(b["name"])] = {"stories": bs["pending"], "edited": False, "_src": src}
     return out
 
 
@@ -312,7 +427,7 @@ def latest_stories(get):
     （無料枠：14 日分を毎回読まない）。get = _supa と同じ形。"""
     since = (dt.date.today() - dt.timedelta(days=READ_DAYS)).isoformat()
     out = {}
-    for r in get(f"/rest/v1/board_stories?day=gte.{since}&select=board_id,day,stories,pending&order=day.desc") or []:
+    for r in get(f"/rest/v1/board_stories?day=gte.{since}&select=board_id,day,stories,pending,updated_at&order=day.desc") or []:
         cur = out.setdefault(r["board_id"], dict(r))
         if not cur.get("stories") and r.get("stories"):   # 今日まだ編んでいない版面は、前の日の AI 編集の記事（持ち越し。library.edit_todo と同じ）
             cur["stories"] = r["stories"]
@@ -469,7 +584,11 @@ def main(argv):
         return
     users, partial = pick_users(users, argv, _supa)
     made = failed = skipped = 0
-    photos = [0, 0, 0]   # 写真を取る段の数（photo_tally）
+    photos = {}   # 写真を取る段の数（photo_tally）
+    ogt = {"read": 0, "new": 0, "memo": 0, "wrapped": 0, "saved": 0, "why": {}}   # og_image.fill の数（1 人ずつ足す）
+    back = [0, 0, 0]   # 書き戻した 版面・行・書けなかった数
+    # 本物のブラウザ（images._browser_html）は開いた記事の網址を公開のログに書く・state/browser_skip.json に網址を残す：お客さまの記事では使わない
+    os.environ.pop("SCRAPLING_BROWSER", None)
     force = "--force" in argv
     fp_path = "/storage/v1/object/pages/_fp/all.json"   # 置いたページの指紋（全員で 1 つ。本人のページと同じ非公開の箱）
     try:
@@ -479,7 +598,10 @@ def main(argv):
         return
     except Exception:  # noqa: BLE001  まだ無い・読めない → 全部置く
         fps = {}
-    og = dict(fps.get("_og") or {})   # 写真のない記事の代表の写真（og:image。og_image.py）。指紋と同じ 1 本に入れる
+    og = dict(fps.get("_og") or {})   # 写真のない記事の代表の写真（og:image。og_image.py：取れた写真と、取れなかった理由・時刻）。指紋と同じ 1 本に入れる
+    og_image.prune(og, dt.datetime.now(dt.timezone.utc))
+    global FIND_MEMO
+    FIND_MEMO = og
     bands = dict(fps.get("_bands") or {})   # 写真に焼き込まれた余白の割合（網址ごと。photo_bands.py）。指紋と同じ 1 本に入れる（storage の読みを増やさない）
     try:
         latest = latest_stories(_supa)
@@ -494,16 +616,20 @@ def main(argv):
     for u in users or []:
         acct = account_of(u["email"])
         try:
-            rows = _supa(f"/rest/v1/user_boards?account=eq.{acct}&select=item,sec,state,stories")
+            rows = _supa(f"/rest/v1/user_boards?account=eq.{acct}&select=item,sec,state,stories,checked_at")
             follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(id,name,config)&order=pos")
             chosen = {r["section"]: r["scheme"] for r in _supa(f"/rest/v1/nav_schemes?account=eq.{acct}&select=section,scheme") or []}
             pages = {}
             wishes = _supa(f"/rest/v1/wishes?account=eq.{acct}&select=id,name,status,price,currency,url,shop,note,specs,image,photo,added&order=id.desc") or []
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
-            brows = board_rows(follows, latest, {norm(r["item"]): r for r in rows or []})
-            og_image.fill(brows, og)   # 写真のない記事に記事のページの代表の写真を付ける（2026-11-08 店長「我一定要图」）
-            og_image.demote(brows)   # それでも写真の無い記事はカードにせず「整理待ち」へ（カードには必ず写真）
-            photo_tally(brows, photos)
+            urows = {norm(r["item"]): r for r in rows or []}
+            brows = board_rows(follows, latest, urows)
+            # 写真のない記事に記事のページの代表の写真（2026-11-08 店長「我一定要图」。記事集めで取れなかった残りの最後の手）→ それでも無い記事は
+            # カードにせず「整理待ち」へ（カードには必ず写真）。前と後で数える（photo_tally）。取れた写真は記事に書き戻す（write_back）
+            got = photo_tally(brows, og, photos)
+            og_image.add(ogt, got)
+            w = write_back(brows, latest, urows, og, got["touched"], acct, _supa)
+            back = [a + b for a, b in zip(back, w)]
             html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
                           settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
             if design_moved(follows, _supa):   # 作っている間に小元素の回（board_added.yml の速い道）が config を書いた：今の config で作り直す（古い config で上書きして小元素を消さない）
@@ -543,7 +669,11 @@ def main(argv):
         except Exception:  # noqa: BLE001  書けなくても次の回が書く
             pass
     print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}）・失敗 {failed}")
-    print(f"お客さまの写真：記事 {photos[0]} 本・写真の網址あり {photos[1]} 本・置き場に入った {photos[2]} 本")   # 数だけ（名前・網址は出さない：公開のログ）
+    # 数だけ（名前・網址は出さない：公開のログ）
+    print(og_image.log_line(ogt, back))
+    print(f"版面の頭の写真探し（写真が 1 枚も無い版面・images.pick）：{FIND['tried']} 本を探し、{FIND['found']} 本に付けた" + (f"・SAVED で捨てた {FIND['saved']}" if FIND["saved"] else ""))
+    if photos:
+        print(tally_line(photos))
     if failed and not made:
         raise SystemExit(1)
 

@@ -49,14 +49,18 @@ UPSERT_BATCH = 200
 MEDIA_S = 150              # 1 回のうち写真・原文の網址に取っておく秒（記事集めはその残り。足りなければ次の回に続き）
 MEDIA_STORIES = MAX_STORIES  # 1 版面で写真を探す記事（新しい順の頭から＝頭条・ほかの注目ニュースに上がる記事を先に。時間が足りなければ次の回に続き）
 # 2026-10-24 本番：頭 4 本だけでは test-a 438 本中 177 本（40%）。版面に並ぶ記事はどれも写真のカードにしたいので全部
-PICK_S = 20                # 1 本の写真探しの上限（秒）
-RETRY_IMG_H = 3            # 写真が見つからなかった記事は、この時間あけて探し直す（毎回同じ記事で時間を使わない）
-RETRY_IMG_N = 3            # 探す回数の上限（2026-10-25：1 回で諦めていた。3 回探してもなければ写真なし＝字だけの記事の形で出す）
+# 2026-11-19 店長の道（digest.attach_media）にそろえた：1 本 60 秒（images.STORY_BUDGET）・包みの網址のままでも探す・同じ出来事の別の記事（siblings）・
+# 回数で諦めない（理由ごとに間をあける：og_image.RETRY_H。1 回目のあとは 3 時間＝前の RETRY_IMG_H）
+PICK_S = 60                # 1 本の写真探しの上限（秒）＝images.STORY_BUDGET（店長と同じ）
+MIN_PICK_S = 10            # 残りの時間がこれより短ければ新しく探さない（次の回へ持ち越し）
+MEDIA_MARGIN_S = 45        # 写真探しは run_parallel の締め切りのこれだけ前に始めるのをやめる（images.pick は頁を読む間は締め切りを見ないので、版面ごと切られて全部捨てない）
+MEDIA_HEAD = 3             # 1 回目の周回で全部の版面の頭のこの本数を先に（新しい版面の点検：本人のページに写真 3 枚。harness/board_kpi.py の photo）
+RETRY_IMG_H = 3            # 1 回目に見つからなかった記事を探し直すまで（og_image.FIRST_RETRY_H と同じ）
 # 期限付きの網址（Yahoo ニュースの ?exp=10800，images.expiring）は数時間〜数日で 404・1×1 の空白に変わる（#178）。
 # 店長は hdimg が本站に保存・dead を原文から探し直す。お客さまのページは本站に保存しないので、この時間ごとに開けるか確かめ、
 # 開けなくなっていたら原文から探し直す（原文は新しい有効な網址を出す）。2026-10-24 本番：お客さまの写真 419 枚のうち 82 枚
 EXP_CHECK_H = 6
-RESOLVE_FAILS = 4          # Google の跳转が続けてこの回数戻せなかったら、この回は戻すのをやめる（断られているときに 1 本 6 秒待たない）
+RESOLVE_FAILS = 4          # Google の跳转が続けてこの回数戻せなかったら、この回は戻すのを休む（残りは次の回。写真探しは包みのまま続ける）
 
 # 入口の「新しく始める」で選ぶ言語（welcome.LANG_GROUPS の code）→ 収集の言語（digest.NEWS_LANGS）・lang.py の言語
 NEWS_LANG = {"ja": "ja-JP", "en": "en-US", "zh-Hans": "zh-CN", "zh-Hant": "zh-TW", "ko": "ko-KR"}
@@ -382,27 +386,40 @@ def merge(old, new, now=None):
 
 
 class Media:
-    """記事に原文の網址と写真を付ける（店長の出刊 digest.attach_media と同じ部品：sources.resolve_url・images.pick）。
-    同じ網址は 1 回の中で 1 度だけ調べる（同じ版面を何人が追いかけていても）。写真の見つからなかった記事は RETRY_IMG_H 時間あける。
-    本站に保存しないと出せない写真（images.SAVED：読者のブラウザでは拒まれる）は使わない（お客さまのページは hdimg を通らない）。"""
+    """記事に原文の網址と写真を付ける（店長の出刊 digest.attach_media と同じ部品：sources.resolve_url・images.pick・digest.same_event）。
+    2026-11-19 店長の道にそろえた：原文に戻すのは店長と同じ回数（sources.RESOLVE_TRIES）・続けて RESOLVE_FAILS 本戻せなければこの回は戻すのを休む
+    （残りは次の回）が、写真探しは包みの網址のままでも続ける（images.pick が Bing の縮小画像・同じ出来事の別の記事・転載の検索へ進む）・
+    1 本 PICK_S 秒（店長の images.STORY_BUDGET）・回数で諦めず理由ごとに間をあける（og_image.retry_due）。
+    同じ網址は 1 回の中で 1 度だけ調べる（同じ版面を何人が追いかけていても）。
+    本站に保存しないと出せない写真（images.SAVED：読者のブラウザでは拒まれる）は使わない（お客さまのページは hdimg を通らない。捨てた数を stats に）。"""
 
     def __init__(self, deadline, now=None, resolve=None, pick=None, check=None):
         import threading
         self.deadline, self.now = deadline, now or dt.datetime.now(dt.timezone.utc)
-        self.resolve = resolve or (lambda u: sources.resolve_url(u, tries=1))
+        self.resolve = resolve or sources.resolve_url   # 店長と同じ回数（RESOLVE_TRIES）
         self.pick = pick or self._pick
         self.check = check or self._check
         self.links, self.imgs, self.lock = {}, {}, threading.Lock()
         self.fails = 0
-        self.stats = {"links": 0, "images": 0, "expired": 0}
+        # 数だけ（名前・題・網址は持たない）：links 原文に戻した・unresolved 戻せなかった（休んで残した分も）・cooled 戻すのを休んだ回・
+        # images 写真を付けた（wrapped_img はそのうち包みのままで見つけた）・saved SAVED で捨てた・timeout 1 本の時間切れ・
+        # carry 時間が足りず次の回へ持ち越した記事・miss 見つからなかった理由ごと
+        self.stats = {"links": 0, "unresolved": 0, "cooled": 0, "images": 0, "wrapped_img": 0, "expired": 0,
+                      "saved": 0, "timeout": 0, "carry": 0, "miss": {}}
 
     @staticmethod
-    def _pick(story, budget, avoid):
+    def _pick(story, budget, avoid, siblings=()):
+        """店長と同じ images.pick。→ {"image", "why"（見つからなかった理由の大分類）, "saved"（SAVED で捨てたか）}"""
         import images
+        import og_image
         e = sources.Entry(title=story["title"], url=story["url"], published=None, source=story.get("source") or "",
-                          image=story.get("image") or None)
-        res = images.pick(None, [e], story["url"], budget=budget, avoid=avoid)
-        return res.image if res.image and images.SAVED not in (res.source or "") else None
+                          image=story.get("image") or "")
+        res = images.pick(None, [e], story["url"], budget=budget, avoid=avoid, siblings=siblings)
+        if res.image and images.SAVED in (res.source or ""):
+            return {"image": None, "why": "saved", "saved": True}
+        if res.image:
+            return {"image": res.image, "why": None, "saved": False}
+        return {"image": None, "why": og_image.why_of(res.reason), "saved": False}
 
     @staticmethod
     def _check(url):
@@ -422,10 +439,10 @@ class Media:
             s["img_chk"] = self.now.isoformat(timespec="seconds")
         else:
             s["image"] = ""
-            s.pop("img_chk", None)
-            s.pop("img_at", None)
-            s.pop("img_n", None)
-            self.stats["expired"] += 1
+            for k in IMG_MARKS:
+                s.pop(k, None)
+            with self.lock:
+                self.stats["expired"] += 1
         return True
 
     def _left(self):
@@ -433,7 +450,11 @@ class Media:
 
     def link(self, s):
         u = s["url"]
-        if not _google(u) or self.fails >= RESOLVE_FAILS or self._left() < 5:
+        if not _google(u) or self._left() < 5:
+            return False
+        if self.fails >= RESOLVE_FAILS:   # この回は休む（続けて断られている）。記事は包みのまま・写真探しは続ける
+            with self.lock:
+                self.stats["unresolved"] += 1
             return False
         with self.lock:
             real = self.links.get(u)
@@ -446,49 +467,99 @@ class Media:
             with self.lock:
                 self.links[u] = real
                 self.fails = 0 if real else self.fails + 1
+                if self.fails == RESOLVE_FAILS:
+                    self.stats["cooled"] += 1
         if not real:
+            with self.lock:
+                self.stats["unresolved"] += 1
             return False
         s["url"] = real
-        self.stats["links"] += 1
+        s.setdefault("gurl", u)   # 包みの網址を残す（AI 編集の refs・整理待ちの指紋は前の網址のことがある：library.pending_fp・user_pages.board_rows）
+        if not s.get("image"):    # 原文に戻せた：包みのままの失敗の印は消して、すぐ原文から探す
+            for k in IMG_MARKS:
+                s.pop(k, None)
+        with self.lock:
+            self.stats["links"] += 1
         return True
 
-    def image(self, s, avoid):
-        if s.get("image") or _google(s["url"]) or self._left() < 5:
+    def image(self, s, avoid, siblings=()):
+        if s.get("image") or not img_due(s, self.now):
             return False
-        tried = _when({"date": s.get("img_at")})
-        if int(s.get("img_n") or 0) >= RETRY_IMG_N or tried and self.now - tried < dt.timedelta(hours=RETRY_IMG_H):
+        left = self._left()
+        if left < MIN_PICK_S:
+            with self.lock:
+                self.stats["carry"] += 1
             return False
+        budget = min(PICK_S, max(1, left - 3))
         with self.lock:
             hit = self.imgs.get(s["url"], ())
         if hit == ():
             try:
-                hit = self.pick(s, min(PICK_S, max(1, self._left() - 3)), set(avoid))
+                hit = self.pick(s, budget, set(avoid), siblings) if siblings else self.pick(s, budget, set(avoid))
             except Exception:  # noqa: BLE001  写真がなくても記事は出す
                 hit = None
+            hit = hit if isinstance(hit, dict) else {"image": hit or None, "why": None if hit else "none", "saved": False}
             with self.lock:
                 self.imgs[s["url"]] = hit
-        if hit and hit not in avoid:
-            s["image"] = hit
-            s.pop("img_at", None)
-            s.pop("img_n", None)
-            s.pop("img_chk", None)
-            avoid.add(hit)
-            self.stats["images"] += 1
-        else:
-            s["img_at"] = self.now.isoformat(timespec="seconds")
-            s["img_n"] = int(s.get("img_n") or 0) + 1
+                self.stats["saved"] += bool(hit.get("saved"))
+        img, why = hit.get("image"), hit.get("why") or "none"
+        if img and img not in avoid:
+            s["image"] = img
+            for k in IMG_MARKS:
+                s.pop(k, None)
+            avoid.add(img)
+            with self.lock:
+                self.stats["images"] += 1
+                self.stats["wrapped_img"] += _google(s["url"])
+            return True
+        if img:
+            why = "none"   # 同じ版面の別の記事と同じ写真
+        if why == "timeout" and budget < PICK_S - 1:   # この回の残りの時間で切れた（そのサイトのせいではない）：印を付けずに次の回へ
+            with self.lock:
+                self.stats["carry"] += 1
+                self.imgs.pop(s["url"], None)
+            return False
+        with self.lock:
+            self.stats["timeout"] += why == "timeout"
+            self.stats["miss"][why] = self.stats["miss"].get(why, 0) + 1
+        s["img_at"] = self.now.isoformat(timespec="seconds")
+        s["img_n"] = int(s.get("img_n") or 0) + 1
+        s["img_why"] = why
         return True
 
-    def board(self, stories):
-        """1 版面の記事（新しい順）を直す。→ 変わったか"""
+    def board(self, stories, name="", upto=None, start=0):
+        """1 版面の記事（新しい順）を直す。[start:upto] の記事だけ（1 回目の周回は頭の MEDIA_HEAD 本、2 回目はその後ろ）。→ 変わったか"""
         changed = False
-        for s in stories or []:
+        head = list(enumerate(stories or []))[start:MEDIA_STORIES if upto is None else upto]
+        for _, s in head:
             changed |= self.link(s)
             changed |= self.expired(s)
         avoid = {s["image"] for s in stories or [] if s.get("image")}
-        for s in (stories or [])[:MEDIA_STORIES]:
-            changed |= self.image(s, avoid)
+        es = [sources.Entry(title=s.get("title") or "", url=s["url"], published=None, source=s.get("source") or "",
+                            image=s.get("image") or "") for s in stories or []]
+        for i, s in head:
+            if s.get("image") or not img_due(s, self.now):
+                continue
+            try:   # 同じ出来事の別の記事（店長の digest.same_event と同じ判断）：原文が拒む・写真が無いときに別のサイトから
+                sib = digest.same_event({"name": name}, [es[i]], es[:i] + es[i + 1:], s.get("title") or "")
+            except Exception:  # noqa: BLE001
+                sib = []
+            changed |= self.image(s, avoid, sib)
         return changed
+
+
+IMG_MARKS = ("img_at", "img_n", "img_why", "img_chk")   # 写真を探した印（写真が付いた・外れたら消す）
+
+
+def img_due(s, now):
+    """写真のない記事を、いま探してよいか（前に探していなければ探す。取れなかった記事は理由ごとに間をあける：og_image.retry_due）。
+    前の形（img_why の無い・3 回で諦めた img_n=3 の記事）も、理由「写真が無い」の間で試し直す（回数では諦めない）。"""
+    import og_image
+    if s.get("image"):
+        return False
+    if not s.get("img_at"):
+        return True
+    return og_image.retry_due(s.get("img_at"), s.get("img_why") or "none", s.get("img_n") or 1, now)
 
 
 def exp_due(s, now):
@@ -501,20 +572,38 @@ def exp_due(s, now):
 
 
 def needs_media(stories, now):
-    """まだ原文の網址・写真を付けられる記事があるか（Google の跳转、または頭の数本に写真がなく、前に探してから RETRY_IMG_H 時間たった）。"""
+    """まだ原文の網址・写真を付けられる記事があるか（Google の跳转、または写真がなく、理由ごとの間があいた記事）。"""
     for i, s in enumerate(stories or []):
         if _google(s.get("url")) or exp_due(s, now):
             return True
-        if i < MEDIA_STORIES and not s.get("image") and int(s.get("img_n") or 0) < RETRY_IMG_N:
-            tried = _when({"date": s.get("img_at")})
-            if not tried or now - tried >= dt.timedelta(hours=RETRY_IMG_H):
-                return True
+        if i < MEDIA_STORIES and img_due(s, now):
+            return True
     return False
+
+
+def _due_count(stories, now):
+    return sum(1 for i, s in enumerate(stories or []) if i < MEDIA_STORIES and img_due(s, now))
+
+
+def media_log(m, fixed, cut_n):
+    """写真探しの数の 1 行（数だけ：名前・題・網址は出さない）。"""
+    st = m.stats
+    miss = "・".join(f"{k} {v}" for k, v in sorted(st["miss"].items()))
+    return (f"お客さまの記事の写真：{fixed} 版面を直した・原文の網址 {st['links']} 本"
+            + (f"（戻せず {st['unresolved']}" + ("・続けて断られたので休んだ" if st["cooled"] else "") + "）" if st["unresolved"] else "")
+            + f"・写真 {st['images']} 枚" + (f"（うち包みのまま {st['wrapped_img']}）" if st["wrapped_img"] else "")
+            + (f"・見つからず {miss}" if miss else "")
+            + (f"・SAVED で捨てた {st['saved']}" if st["saved"] else "")
+            + (f"・時間切れ {st['timeout']}" if st["timeout"] else "")
+            + (f"・期限切れで探し直し {st['expired']} 枚" if st["expired"] else "")
+            + (f"・持ち越し {st['carry']} 本" if st["carry"] else "")
+            + (f"・版面ごと時間切れ {cut_n}（次の回へ）" if cut_n else ""))
 
 
 def add_media(make, out, rows, keep, now, started, log):
     """書く行（out）と、今回は探さなかった行のうち原文の網址・写真がまだのものに、残りの時間で Media をかける（並列）。
-    探さなかった行で変わったものは out に足して書く。時間が足りなければ次の回に続き（needs_media がまた拾う）。"""
+    1 回目の周回は全部の版面の頭 MEDIA_HEAD 本（新しい版面も古い版面も頭のカードから）、残りの時間で 2 回目に全部。
+    探さなかった行で変わったものは out に足して書く。時間が足りなければ次の回に続き（needs_media がまた拾う。持ち越した数をログに）。"""
     left = budget_sec() - (time.monotonic() - started) - 10
     written = {(r["account"], r["item"]) for r in out}
     cand = [r for r in out if r.get("state") == "ok" and needs_media(r.get("stories"), now)]
@@ -524,26 +613,38 @@ def add_media(make, out, rows, keep, now, started, log):
         if cand or extra:
             log(f"お客さまの記事の写真：時間が足りないので次の回へ（{len(cand) + len(extra)} 版面）")
         return
-    m = make(time.monotonic() + left, now)
-
-    def one(r):
-        stories = [dict(s) for s in r.get("stories") or []]   # 時間切れのスレッドが書く行を書き換えないように写しで
-        return stories if m.board(stories) else None
+    end = time.monotonic() + left
+    m = make(end - min(MEDIA_MARGIN_S, left / 3), now)
     key = lambda r: (r["account"], r["item"])   # noqa: E731
-    got, cut = digest.run_parallel(one, cand + extra, WORKERS, left, key=key)
+    work = {key(r): [dict(s) for s in r.get("stories") or []] for r in cand + extra}   # 時間切れのスレッドが書く行を書き換えないように写しで
+    changed, cut = set(), []
+    for start, upto in ((0, MEDIA_HEAD), (MEDIA_HEAD, None)):
+        rest = end - time.monotonic()
+        todo = [r for r in cand + extra if key(r) not in cut and needs_media(work[key(r)], now)]
+        if not todo or rest < 20:
+            break
+
+        def one(r, start=start, upto=upto):
+            stories = [dict(s) for s in work[key(r)]]
+            return stories if m.board(stories, r["item"], upto, start) else None
+        got, cut_now = digest.run_parallel(one, todo, WORKERS, rest, key=key)
+        for k, st in got.items():
+            if st is not None:
+                work[k] = st
+                changed.add(k)
+        cut += cut_now
+    m.stats["carry"] += sum(_due_count(work[k], now) for k in cut)
     fixed = 0
     for r in cand:
-        if got.get(key(r)) is not None:
-            r["stories"] = got[key(r)]
+        if key(r) in changed:
+            r["stories"] = work[key(r)]
             fixed += 1
     for r in extra:
-        if got.get(key(r)) is not None:
+        if key(r) in changed:
             out.append({k: r.get(k) for k in ("account", "item", "sec", "state", "checked_at", "updated_at")}
-                       | {"found": int(r.get("found") or 0), "fails": int(r.get("fails") or 0), "stories": got[key(r)]})
+                       | {"found": int(r.get("found") or 0), "fails": int(r.get("fails") or 0), "stories": work[key(r)]})
             fixed += 1
-    log(f"お客さまの記事の写真：{fixed} 版面を直した・原文の網址 {m.stats['links']} 本・写真 {m.stats['images']} 枚"
-        + (f"・期限切れで探し直し {m.stats['expired']} 枚" if m.stats['expired'] else "")
-        + (f"・時間切れ {len(cut)}（次の回へ）" if cut else ""))
+    log(media_log(m, fixed, len(cut)))
 
 
 def _ts(at):

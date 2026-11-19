@@ -300,21 +300,100 @@ class Issue(unittest.TestCase):
 
 
 class Photos(unittest.TestCase):
-    """写真を取る段の数（2026-11-19）：記事・写真の網址あり・置き場に入った数。偽の入力（本番 DB・網なし）。"""
-    def test_photo_tally(self):
+    """写真を取る段の数・AI 編集の記事への引き継ぎ・書き戻し（2026-11-19）。偽の入力（本番 DB・網なし）。"""
+
+    def test_photo_tally_before_and_after_demote(self):
+        """(6) og_image.fill と demote の前後で数える：記事 N・写真あり M（記事集めで／ページ作りで）・整理待ちへ K・包みのまま W・置き場 S。"""
         import photo_store
-        brows = {"a": {"stories": [{"image": "https://e.org/1.jpg"}, {"image": None}, {"image": "https://e.org/2.jpg"}], "pending": [{"image": "https://e.org/p.jpg"}]},
-                 "b": {"stories": []}}
+        g = "https://news.google.com/rss/articles/z"
+        brows = {"a": {"stories": [{"url": "https://e.org/a", "image": "https://e.org/1.jpg"}, {"url": "https://e.org/b"}, {"url": g},
+                                   {"url": "https://e.org/c", "image": "https://e.org/2.jpg"}], "pending": [{"image": "https://e.org/p.jpg"}]},
+                 "b": {"stories": [{"url": "https://e.org/d"}]}}
+
+        def fill(rows, og, **k):   # ページ作りで 1 本だけ取れた
+            rows["a"]["stories"][1]["image"] = "https://e.org/new.jpg"
+            return {"read": 1, "new": 1, "memo": 0, "wrapped": 1, "saved": 0, "why": {}, "touched": [rows["a"]["stories"][1]]}
         old = photo_store.stored
         photo_store.stored = lambda u, w=800: "x" if u.endswith("1.jpg") else None
         try:
-            self.assertEqual(user_pages.photo_tally(brows), [3, 2, 1])   # 整理待ちは数えない
-            t = [1, 1, 1]
-            user_pages.photo_tally(brows, t)
-            self.assertEqual(t, [4, 3, 2])                               # 人ごとに足していく
+            t = {}
+            got = user_pages.photo_tally(brows, {}, t, fill=fill)
+            self.assertEqual(t, {"n": 5, "img": 3, "feed": 2, "page": 1, "demoted": 1, "wrapped": 1, "stored": 1})
+            self.assertEqual(len(got["touched"]), 1)
+            self.assertEqual([s["url"] for s in brows["a"]["stories"]], ["https://e.org/a", "https://e.org/b", "https://e.org/c"])   # 包みの 1 本は整理待ちへ
+            self.assertEqual([s["url"] for s in brows["b"]["stories"]], ["https://e.org/d"])   # 写真が 1 枚も無い版面は動かさない
+            user_pages.photo_tally({"c": {"stories": [{"url": "https://e.org/e", "image": "https://e.org/3.jpg"}]}}, {}, t, fill=lambda *a, **k: 0)
+            self.assertEqual((t["n"], t["img"], t["feed"]), (6, 4, 3))   # 人ごとに足していく
         finally:
             photo_store.stored = old
-        self.assertIn("お客さまの写真：記事", (ROOT / "scripts" / "user_pages.py").read_text(encoding="utf-8"))
+        line = user_pages.tally_line(t)
+        self.assertIn("お客さまの写真：記事 6 本・写真あり 4 本（記事集めで 3／ページ作りで 1）・整理待ちへ回した 1 本・包みのまま 1 本", line)
+
+    def test_edited_story_inherits_pending_photo(self):
+        """(3) AI 編集の記事は編んだ時点の写真で固まる。後から整理待ちに付いた写真を refs の網址（原文に戻した記事は前の網址 gurl）で引き継ぐ。編み直さない。"""
+        import library
+        pend = [{"title": "t1", "url": "https://news.google.com/rss/articles/1", "source": "S", "date": "2026-11-19"},
+                {"title": "t2", "url": "https://x.example/2", "source": "S", "date": "2026-11-19"},
+                {"title": "t3", "url": "https://x.example/3", "source": "S", "date": "2026-11-19"}]
+        st = library.edited_stories(pend, [{"headline": "H1", "refs": [1]}, {"headline": "H2", "refs": [2]}], library.pending_fp(pend), "at")
+        self.assertEqual([s["image"] for s in st], [None, None])   # 編んだ時はまだ写真が無い
+        later = [{**pend[0], "url": "https://real.example/1", "gurl": pend[0]["url"], "image": "https://img.example/1.jpg"},
+                 {**pend[1], "image": "https://img.example/2.jpg"}, pend[2]]
+        self.assertEqual(library.pending_fp(later), library.pending_fp(pend))   # 原文に戻しただけでは編み直さない（token 0）
+        rows = user_pages.board_rows([{"boards": {"id": 7, "name": "A"}}], {7: {"stories": st, "pending": later}}, {})
+        self.assertEqual([s["image"] for s in rows["a"]["stories"]], ["https://img.example/1.jpg", "https://img.example/2.jpg"])
+        self.assertEqual([p["title"] for p in rows["a"]["pending"]], ["t3"])   # 使った記事は前の網址でも整理待ちから外す
+        self.assertEqual([s["image"] for s in st], [None, None])   # 全員で共有の行は書き換えない（写しに付ける）
+        # 本人の前の行（user_boards）の写真からも
+        st2 = library.edited_stories(pend, [{"headline": "H3", "refs": [3]}], "fp", "at")
+        rows = user_pages.board_rows([{"boards": {"id": 7, "name": "A"}}], {7: {"stories": st2, "pending": pend}},
+                                     {"a": {"item": "A", "stories": [{**pend[2], "image": "https://img.example/3.jpg"}]}})
+        self.assertEqual(rows["a"]["stories"][0]["image"], "https://img.example/3.jpg")
+
+    def test_edited_story_takes_photo_from_second_ref(self):
+        import library
+        pend = [{"title": "t1", "url": "https://x.example/1"}, {"title": "t2", "url": "https://x.example/2", "image": "https://img.example/2.jpg"}]
+        st = library.edited_stories(pend, [{"headline": "H", "refs": [1, 2]}], "fp", "at")
+        self.assertEqual((st[0]["url"], st[0]["image"]), ("https://x.example/1", "https://img.example/2.jpg"))
+
+    def test_page_photos_are_written_back(self):
+        """(5) ページ作りで取れた写真を記事に書き戻す：board_stories の pending（読んだ時の updated_at のときだけ）と本人の user_boards の行。"""
+        sent = []
+
+        def put(path, data, method):
+            sent.append((path, method, __import__("json").loads(data)))
+            return ""
+        latest = {7: {"day": "2026-11-19", "updated_at": "2026-11-19T10:00:00+00:00",
+                      "pending": [{"url": "https://x.example/1"}, {"url": "https://x.example/2"}]}}
+        rows = {"a": {"item": "A", "checked_at": None, "stories": [{"url": "https://x.example/1"}]},
+                "b": {"item": "B", "checked_at": "2026-11-19T09:00:00+00:00", "stories": [{"url": "https://y.example/9", "image": "https://keep.jpg"}]}}
+        brows = user_pages.board_rows([{"boards": {"id": 7, "name": "A"}}], latest, rows)
+        og = {}
+
+        def fill(rows_, cache, **k):   # 1 本目だけ取れた
+            s = rows_["a"]["stories"][0]
+            s["image"] = cache.setdefault(s["url"], {"img": "https://img.example/1.jpg", "at": "x"})["img"]
+            return {"read": 1, "new": 1, "memo": 0, "wrapped": 0, "saved": 0, "why": {}, "touched": [s]}
+        got = user_pages.photo_tally(brows, og, {}, fill=fill)
+        done = user_pages.write_back(brows, latest, rows, og, got["touched"], "u_abc", put)
+        self.assertEqual(done, [1, 1, 0])
+        self.assertEqual([(p.split("?")[0], m) for p, m, _ in sent], [("/rest/v1/board_stories", "PATCH"), ("/rest/v1/user_boards", "PATCH")])
+        self.assertIn("updated_at=eq.2026-11-19T10%3A00%3A00%2B00%3A00", sent[0][0])   # 記事集めが後から書いた行は書き換えない
+        self.assertEqual(sent[0][2]["pending"][0]["image"], "https://img.example/1.jpg")
+        self.assertIn("checked_at=is.null", sent[1][0])
+        self.assertEqual(sent[1][2]["stories"][0]["image"], "https://img.example/1.jpg")
+        # 次の人（同じ版面）：もう付いているので書かない
+        sent.clear()
+        self.assertEqual(user_pages.write_back(brows, latest, rows, og, [], "u_def", put), [0, 0, 0])
+        self.assertEqual(sent, [])
+
+    def test_write_back_failure_is_counted_not_raised(self):
+        def put(path, data, method):
+            raise RuntimeError("HTTP 500")
+        latest = {7: {"day": "d", "pending": [{"url": "https://x.example/1"}]}}
+        og = {"https://x.example/1": {"img": "https://img.example/1.jpg", "at": "x"}}
+        brows = user_pages.board_rows([{"boards": {"id": 7, "name": "A"}}], latest, {})
+        self.assertEqual(user_pages.write_back(brows, latest, {}, og, [], "u_abc", put), [0, 0, 1])
 
 
 class Loader(unittest.TestCase):

@@ -521,7 +521,7 @@ class MediaRules(unittest.TestCase):
     def media(self, resolve=None, pick=None, now=NOW):
         import time
         return userfeed.Media(time.monotonic() + 60, now, resolve=resolve or (lambda u: u.replace("https://news.google.com/rss/articles/", "https://real.example/")),
-                              pick=pick or (lambda s, budget, avoid: s["url"] + ".jpg"))
+                              pick=pick or (lambda s, budget, avoid, *_: s["url"] + ".jpg"))
 
     def g(self, n, title, **kw):
         return {**story(n, title), "url": f"https://news.google.com/rss/articles/{n}", **kw}
@@ -537,60 +537,140 @@ class MediaRules(unittest.TestCase):
     def test_only_head_stories_get_photos_and_no_retry_soon(self):
         st = [story(n, f"記事{n}") for n in range(userfeed.MEDIA_STORIES + 2)]
         calls = []
-        m = self.media(pick=lambda s, b, a: calls.append(s["url"]) or None)
+        m = self.media(pick=lambda s, b, a, *_: calls.append(s["url"]) or None)
         m.board(st)
         self.assertEqual(len(calls), userfeed.MEDIA_STORIES)            # 頭の数本だけ
         self.assertTrue(all(s.get("img_at") for s in st[:userfeed.MEDIA_STORIES]))
         self.assertFalse(userfeed.needs_media(st, NOW + dt.timedelta(hours=1)))   # 見つからなかった記事は 24 時間あける
         self.assertTrue(userfeed.needs_media(st, NOW + dt.timedelta(hours=userfeed.RETRY_IMG_H)))
 
-    def test_retry_three_times_then_stop(self):
+    def test_retry_by_reason_never_gives_up(self):
+        """回数で諦めない（前は 3 回で写真なし）：1 回目のあと 3 時間、2 回目からは理由ごと（写真が無い＝3 日）に試し直す。"""
+        import og_image
         st = [story(1, "一")]
         calls = []
         now = NOW
-        for _ in range(5):
-            m = self.media(pick=lambda s, b, a: calls.append(1) or None, now=now)
+        for _ in range(6):
+            m = self.media(pick=lambda s, b, a, *_: calls.append(1) or None, now=now)
             m.board(st)
-            now += dt.timedelta(hours=userfeed.RETRY_IMG_H)
-        self.assertEqual(len(calls), userfeed.RETRY_IMG_N)
-        self.assertFalse(userfeed.needs_media(st, now))
+            now += dt.timedelta(hours=og_image.RETRY_H["none"])
+        self.assertEqual(len(calls), 6)
+        self.assertEqual((st[0]["img_n"], st[0]["img_why"]), (6, "none"))
+        self.assertFalse(userfeed.needs_media(st, now - dt.timedelta(hours=og_image.RETRY_H["none"]) + dt.timedelta(hours=1)))
+        self.assertTrue(userfeed.needs_media(st, now))
 
-    def test_same_photo_not_twice_in_board(self):
-        st = [story(1, "一"), story(2, "二")]
-        self.media(pick=lambda s, b, a: "https://img.example/same.jpg").board(st)
-        self.assertEqual([bool(s["image"]) for s in st], [True, False])
+    def test_old_given_up_marks_are_retried(self):
+        """前の仕組みで 3 回探して諦めた記事（img_n=3・理由なし）も、写真が無いの間（3 日）がたてば試す。"""
+        import og_image
+        s = {**story(1, "一"), "img_at": NOW.isoformat(), "img_n": 3}
+        self.assertFalse(userfeed.img_due(s, NOW + dt.timedelta(hours=og_image.RETRY_H["none"] - 1)))
+        self.assertTrue(userfeed.img_due(s, NOW + dt.timedelta(hours=og_image.RETRY_H["none"])))
 
-    def test_unresolved_google_kept_and_breaker(self):
-        calls = []
-        m = self.media(resolve=lambda u: calls.append(u) or u)
+    def test_wrapped_google_still_searched(self):
+        """(1) 原文に戻せなくても、包みの網址のまま写真を探す（images.pick が Bing の縮小画像・転載の検索へ進む）。"""
+        seen = []
+        m = self.media(resolve=lambda u: u, pick=lambda s, b, a, *_: seen.append(s["url"]) or "https://img.example/bing.jpg")
+        st = [self.g(1, "一")]
+        self.assertTrue(m.board(st))
+        self.assertEqual(seen, ["https://news.google.com/rss/articles/1"])
+        self.assertEqual(st[0]["image"], "https://img.example/bing.jpg")
+        self.assertIn("news.google.com", st[0]["url"])
+        self.assertEqual((m.stats["unresolved"], m.stats["wrapped_img"]), (1, 1))
+
+    def test_unresolved_cools_down_but_photos_continue(self):
+        """(2) 4 本続けて戻せなくても、その回は戻すのを休むだけで、残りの記事の写真探しは止まらない。"""
+        calls, picks = [], []
+        m = self.media(resolve=lambda u: calls.append(u) or u, pick=lambda s, b, a, *_: picks.append(s["url"]) or None)
         st = [self.g(n, f"記事{n}") for n in range(userfeed.RESOLVE_FAILS + 3)]
         m.board(st)
-        self.assertEqual(len(calls), userfeed.RESOLVE_FAILS)   # 続けて断られたらこの回はやめる
-        self.assertTrue(all("news.google.com" in s["url"] for s in st))   # 記事は残す
-        self.assertTrue(all(not s["image"] for s in st))                # 跳转のままの記事には写真を探さない
+        self.assertEqual(len(calls), userfeed.RESOLVE_FAILS)            # 続けて断られたらこの回は戻すのを休む
+        self.assertEqual(len(picks), len(st))                           # 写真探しは全部の記事で
+        self.assertTrue(all("news.google.com" in s["url"] for s in st))  # 記事は残す
+        self.assertEqual((m.stats["cooled"], m.stats["unresolved"]), (1, len(st)))
+        self.assertTrue(all(s.get("img_why") == "none" for s in st))
+        self.assertTrue(userfeed.needs_media(st, NOW + dt.timedelta(minutes=1)))   # 包みのままは次の回にまた戻す
+        line = userfeed.media_log(m, 1, 0)
+        self.assertIn("休んだ", line)
+        self.assertNotIn("http", line)
+
+    def test_resolved_link_clears_wrapped_failure(self):
+        """包みのままで見つからなかった記事は、原文に戻せたらすぐ原文から探す（間を待たない）。"""
+        st = [self.g(1, "一", img_at=NOW.isoformat(), img_n=1, img_why="wrapped")]
+        picks = []
+        self.media(pick=lambda s, b, a, *_: picks.append(s["url"]) or "https://img.example/x.jpg").board(st)
+        self.assertEqual(picks, ["https://real.example/1"])
+        self.assertEqual(st[0]["gurl"], "https://news.google.com/rss/articles/1")   # 前の網址を残す（AI 編集の refs・整理待ちの指紋）
+        self.assertNotIn("img_why", st[0])
 
     def test_saved_photo_not_used(self):
         import images
         res = images.Result(image="https://img.example/a.jpg", source="og:image" + images.SAVED)
         with mock.patch.object(images, "pick", return_value=res):
-            self.assertIsNone(userfeed.Media._pick(story(1, "一"), 5, set()))
+            self.assertEqual(userfeed.Media._pick(story(1, "一"), 5, set()), {"image": None, "why": "saved", "saved": True})
         res = images.Result(image="https://img.example/a.jpg", source="og:image")
         with mock.patch.object(images, "pick", return_value=res):
-            self.assertEqual(userfeed.Media._pick(story(1, "一"), 5, set()), "https://img.example/a.jpg")
+            self.assertEqual(userfeed.Media._pick(story(1, "一"), 5, set())["image"], "https://img.example/a.jpg")
+        m = self.media(pick=lambda s, b, a, *_: {"image": None, "why": "saved", "saved": True})
+        st = [story(1, "一")]
+        m.board(st)
+        self.assertEqual((st[0]["image"], st[0]["img_why"], m.stats["saved"]), ("", "saved", 1))   # 捨てた数を数える
+        self.assertIn("SAVED で捨てた 1", userfeed.media_log(m, 1, 0))
+
+    def test_same_as_shop_tools(self):
+        """店長の道と同じ部品：1 本の時間は images.STORY_BUDGET・戻す回数は sources.RESOLVE_TRIES・同じ出来事の別の記事を渡す。"""
+        import images
+        self.assertEqual(userfeed.PICK_S, images.STORY_BUDGET)
+        self.assertIs(userfeed.Media(1e9).resolve, sources.resolve_url)
+        got = []
+        m = self.media(pick=lambda s, b, a, sib=(): got.append([e.title for e in sib]) or None)
+        st = [story(1, "新作ゲーム 発売日 決定 体験版 配信"), story(2, "新作ゲーム 発売日 決定 体験版 配信 開始"), story(3, "別の話題")]
+        m.board(st, "作品")
+        self.assertIn(["新作ゲーム 発売日 決定 体験版 配信 開始"], got)   # 同じ出来事の別の記事を siblings に
+
+    def test_short_time_carries_over_without_marks(self):
+        """残りの時間が短いときは探さず次の回へ（印を付けない・持ち越しの数をログに）。"""
+        import time
+        m = userfeed.Media(time.monotonic() + userfeed.MIN_PICK_S - 1, NOW, resolve=lambda u: u, pick=lambda *a: "https://img.example/x.jpg")
+        st = [story(1, "一"), story(2, "二")]
+        m.board(st)
+        self.assertEqual(m.stats["carry"], 2)
+        self.assertTrue(all("img_at" not in s for s in st))
+        self.assertIn("持ち越し 2 本", userfeed.media_log(m, 0, 0))
+
+    def test_head_first_across_boards(self):
+        """1 回目の周回は全部の版面の頭 MEDIA_HEAD 本から（新しい版面の点検：写真 3 枚）、2 回目に残り。"""
+        order = []
+        a = userfeed.account_of("a@example.com")
+        rows = [{"account": a, "item": f"版{b}", "sec": "其他", "state": "ok", "found": 1, "fails": 0, "checked_at": NOW.isoformat(),
+                 "updated_at": NOW.isoformat(), "stories": [story(10 * b + n, f"版{b}の記事{n}") for n in range(5)]} for b in range(2)]
+        keep = {a: {"版0", "版1"}}
+        logs = []
+        with mock.patch.object(userfeed, "WORKERS", 1):
+            userfeed.add_media(lambda d, now: self.media(pick=lambda s, b, av, *_: order.append(s["url"]) or None, now=now),
+                               [], rows, keep, NOW, __import__("time").monotonic(), logs.append)
+        heads = [f"https://news.example.jp/{10 * b + n}" for b in range(2) for n in range(userfeed.MEDIA_HEAD)]
+        self.assertEqual(sorted(order[:len(heads)]), sorted(heads))
+        self.assertEqual(len(order), 10)
+        self.assertTrue(logs and "http" not in logs[-1])
+
+    def test_same_photo_not_twice_in_board(self):
+        st = [story(1, "一"), story(2, "二")]
+        self.media(pick=lambda s, b, a, *_: "https://img.example/same.jpg").board(st)
+        self.assertEqual([bool(s["image"]) for s in st], [True, False])
 
     def test_expiring_photo_rechecked_and_repicked(self):
         """期限付きの網址（?exp=）の写真：EXP_CHECK_H ごとに開けるか確かめ、開けなければ原文から探し直す（だれの版面でも同じ規則）"""
         old = "https://img.example/a.jpg?exp=10800"
         st = [{**story(1, "一"), "image": old}]
         self.assertTrue(userfeed.needs_media(st, NOW))
-        m = self.media(pick=lambda s, b, a: "https://img.example/new.jpg")
+        m = self.media(pick=lambda s, b, a, *_: "https://img.example/new.jpg")
         m.check = lambda u: True                       # まだ開ける：そのまま・確かめた時刻だけ
         self.assertTrue(m.board(st))
         self.assertEqual(st[0]["image"], old)
         self.assertFalse(userfeed.needs_media(st, NOW + dt.timedelta(hours=1)))
         later = NOW + dt.timedelta(hours=userfeed.EXP_CHECK_H)
         self.assertTrue(userfeed.needs_media(st, later))
-        m = self.media(pick=lambda s, b, a: "https://img.example/new.jpg", now=later)
+        m = self.media(pick=lambda s, b, a, *_: "https://img.example/new.jpg", now=later)
         m.check = lambda u: None                       # 分からない（時間切れ）：消さない
         m.board(st)
         self.assertEqual(st[0]["image"], old)
