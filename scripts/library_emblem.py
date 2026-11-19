@@ -1041,6 +1041,7 @@ def fresh_main(argv):
         stop = time.time() + FRESH_TOOLS_S
         while not tools_ready(tools) and time.time() < stop:
             time.sleep(1)
+        idle()   # 版面の行が python より先にある回（待つ間が無い）も、模型は 1 回だけ先に読む。1 版面の上限の時計は fresh_fill の中＝この後から
 
     def idle():
         if not warmed[0] and tools_ready(tools):
