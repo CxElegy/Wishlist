@@ -213,23 +213,58 @@ class Continue(unittest.TestCase):
         self.assertEqual(len(seen), 1)
 
     def test_skip_is_kept_until_the_roster_is_done(self):
-        b = {"id": 21, "name": "x", "wd": None, "config": {"keywords": ["x"], "emblem_state": {"state": "failed", "have": 0, "fast_tried": ["A"], "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "v": le.RULES}}}
+        c = {"keywords": ["x"]}
+        b = {"id": 21, "name": "x", "wd": None, "config": {**c, "emblem_state": {"state": "failed", "have": 0, "fast_tried": ["A"], "fast_key": le.fast_key(c),
+                                                                                "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "v": le.RULES}}}
         up = lambda n, d: None  # noqa: E731
         add = le.fill_board(b, {"section": "生活"}, up, BASE, fill=lambda item, log=None: {"state": "failed", "note": "時間切れ"}, now=NOW)
         self.assertEqual(add["emblem_state"]["fast_tried"], ["A"])   # 時間切れ（指紋なし）：まだ飛ばす
         add = le.fill_board(b, {"section": "生活"}, up, BASE, fill=lambda item, log=None: {"state": "failed", "note": "0 枚"}, now=NOW)
         self.assertNotIn("fast_tried", add["emblem_state"])   # 1 周して指紋が付いた：消して、日に 1 回の試し直しに入れる
 
+    def test_skip_ends_when_rules_or_material_change(self):
+        """見直し 3：規則の版（RULES・NAMES_V・BROKEN_V）や材料（emblem_urls・site・emblem_reject）が変わったら、速い道が試した人も試し直す。"""
+        c = {"keywords": ["x"]}
+        st = {"state": "running", "have": 1, "fast_tried": ["A", "B"], "fast_key": le.fast_key(c)}
+        b = lambda cc: {"id": 21, "name": "x", "wd": None, "config": {**cc, "emblem_state": st}}  # noqa: E731
+        self.assertIn("_skip", le.board_item(b(c), {"section": "游戏"}))
+        self.assertNotIn("_skip", le.board_item(b({**c, "emblem_reject": ["https://e.org/bad.png"]}), {"section": "游戏"}))   # 材料が変わった
+        self.assertNotIn("_skip", le.board_item(b({**c, "site": "https://official.example"}), {"section": "游戏"}))
+        with mock.patch.object(le, "RULES", le.RULES + 1):
+            self.assertNotIn("_skip", le.board_item(b(c), {"section": "游戏"}))   # 規則の版が上がった
+        with mock.patch.object(emblem_fill, "NAMES_V", emblem_fill.NAMES_V + 1):
+            self.assertNotIn("_skip", le.board_item(b(c), {"section": "游戏"}))
+
+    def test_queue_does_not_skip_a_missing_lead(self):
+        """見直し 3：名簿の先頭で欠けた主役は、速い道が試していても見回りの列は飛ばさない（「欠けた主役を毎回先に」E15・BLEACH Rukia）。
+        速い道の中（FIRST_STOP）は飛ばして続きへ進む。"""
+        it = {"name": "x", "emblem_who": ["A", "B", "C", "D", "E", "F"], "emblem_kind": "character", "_round": 0, "_skip": ["A", "B", "C"],
+              "emblem": [{"subject": "B", "image": "https://e.org/b.png"}]}
+        step, first = emblem_fill.STEP, emblem_fill.FIRST_STOP
+        try:
+            emblem_fill.STEP = 3
+            emblem_fill.FIRST_STOP = False
+            got = emblem_fill.subjects(dict(it), "character", 200)
+            self.assertIn("A", got)          # 欠けた主役（先頭 3 人で小元素が無い）は戻る
+            self.assertNotIn("B", got)       # もういる人は今までどおり外れる
+            emblem_fill.FIRST_STOP = True
+            self.assertNotIn("A", emblem_fill.subjects(dict(it), "character", 200))
+        finally:
+            emblem_fill.STEP, emblem_fill.FIRST_STOP = step, first
+
     def test_queue_skips_people_the_fast_path_tried(self):
-        b = {"id": 21, "name": "x", "wd": None, "config": {"keywords": ["x"], "emblem_state": {"state": "failed", "have": 0, "fast_tried": ["A", "B"]}}}
+        c = {"keywords": ["x"]}
+        b = {"id": 21, "name": "x", "wd": None, "config": {**c, "emblem_state": {"state": "failed", "have": 0, "fast_tried": ["A", "B"], "fast_key": le.fast_key(c)}}}
         self.assertEqual(le.board_item(b, {"section": "游戏"})["_skip"], ["A", "B"])
         step = emblem_fill.STEP
+        it = {"name": "x", "emblem_who": ["A", "B", "C", "D", "E", "F", "G"], "emblem_kind": "character", "_round": 0, "_skip": ["D", "E"],
+              "emblem": [{"subject": w, "image": f"https://e.org/{w}.png"} for w in ("A", "B", "C")]}   # 主役はそろっている
         try:
             emblem_fill.STEP = 2
-            got = emblem_fill.subjects({"name": "x", "emblem_who": ["A", "B", "C", "D", "E"], "emblem_kind": "character", "_round": 0, "_skip": ["A", "B"]}, "character", 200)
+            got = emblem_fill.subjects(it, "character", 200)
         finally:
             emblem_fill.STEP = step
-        self.assertEqual(got, ["C", "D"])
+        self.assertEqual(got, ["F", "G"])   # 速い道が試した D・E を飛ばして続きから
 
 
 class Loop(unittest.TestCase):

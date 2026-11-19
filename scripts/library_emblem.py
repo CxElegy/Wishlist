@@ -181,11 +181,11 @@ def board_item(board, follow, get=None):
     item.update(name=board["name"], type=user_pages.TYPE_OF_SEC.get(sec, "category"),
                 keywords=cfg.get("keywords") or [board["name"]])
     item.setdefault("emblem_kind", kind_for(sec, (follow or {}).get("subs"), human))
+    import emblem_fill
     item["_round"] = rounds_of(cfg)   # 店長と同じ：名簿の残りを STEP 人ずつ順に 1 周する
     skip = (cfg.get("emblem_state") or {}).get("fast_tried")
-    if skip:   # 速い道が試した人は、見回りの列も試し直さない（名簿を 1 周して指紋 m が付いたら消える：fill_board）
+    if skip and (emblem_fill.FIRST_STOP or skip_valid(cfg)):   # 速い道が試した人は、見回りの列も試し直さない（規則の版・材料が変わったら・名簿を 1 周したら消える：fill_board）
         item["_skip"] = list(skip)
-    import emblem_fill
     item["_recount"] = (cfg.get("emblem_state") or {}).get("nv") != emblem_fill.NAMES_V   # 店長と同じ：名簿の規則の版が上がったら、名簿がそろっていても 1 回数え直す（NAMES_V 14 の種族・物がスプラ 3 の名簿に残った）
     if item["emblem_kind"] == "character":   # 名簿（roster）と Fandom の立ち絵の手がかり。前の回に書いたもの・店長の手書きが先
         if wd.get("anilist") and str(wd["anilist"]).isdigit():
@@ -441,6 +441,18 @@ def measure_faces(emblems, fetch=None):
     return out, emblem_face.measure_emblems(out, load)
 
 
+def fast_key(c):
+    """速い道が試した人（emblem_state.fast_tried）を作った時の規則の版と材料の指紋。変わったら飛ばすのをやめる（新しい規則・手がかりで試し直す）。"""
+    import emblem_fill
+    return {"v": RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "m": material(c)}
+
+
+def skip_valid(c):
+    """見回りの列が fast_tried を飛ばしてよいか：作った時の規則の版・材料のまま。"""
+    st = (c or {}).get("emblem_state") or {}
+    return bool(st.get("fast_tried")) and st.get("fast_key") == fast_key(c)
+
+
 def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch=None, result=None):
     """版面 1 つ → boards.config に足す分 {emblem, theme, emblem_*, emblem_state}。result（dict）に fill の答え（want・funnel・note）を入れる。"""
     import emblem
@@ -538,8 +550,9 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
     if add["emblem_state"]["state"] == "failed" and not env:   # 材料の指紋を残す（時間切れ・例外・環境の失敗は残さない＝次の見回りですぐ）
         add["emblem_state"]["m"] = material({**cfg, **add})
     ft = st0.get("fast_tried")
-    if ft and add["emblem_state"]["state"] != "ok" and ("m" not in add["emblem_state"] or passes_left({"config": {**cfg, **add}}) > 0):
-        add["emblem_state"]["fast_tried"] = ft   # 速い道が試した人：名簿を 1 周するまでは飛ばし続ける（1 周したら消して、日に 1 回の試し直しには入れる）
+    if ft and add["emblem_state"]["state"] != "ok" and skip_valid(cfg) and ("m" not in add["emblem_state"] or passes_left({"config": {**cfg, **add}}) > 0):
+        add["emblem_state"]["fast_tried"] = ft   # 速い道が試した人：名簿を 1 周するまで・規則の版と材料が同じ間は飛ばし続ける（1 周したら消して、日に 1 回の試し直しには入れる）
+        add["emblem_state"]["fast_key"] = st0.get("fast_key")
     return add
 
 
@@ -970,8 +983,9 @@ def fresh_fill(board, follow, upload, base, end, fill=None, get=None, now=None, 
             st["rounds"] = rounds0
         if st.get("have"):
             st["state"] = "running"
-    if not int(st.get("have") or 0) and tried:
-        st["fast_tried"] = tried   # 見回りの列は続きから
+    if tried and st.get("state") != "ok":
+        st["fast_tried"] = tried   # 見回りの列は続きから（作った時の規則の版・材料と一緒に：変わったら飛ばさない）
+        st["fast_key"] = fast_key({**cfg(board), **add})
     if not int(st.get("have") or 0) and res.get("note") != "時間切れ" and not res.get("env"):
         st["fast_why"] = "rejected" if found else "none"
     st["seen"], st["passes"] = [found, usable], passes

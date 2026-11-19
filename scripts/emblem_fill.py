@@ -513,6 +513,8 @@ def subjects(item, kind, hi):
     if who and kind in ("character", "group"):   # まだ小元素のいない人から STEP 人。足りない人が多いときは回ごとにずらす（見つからない人で止まらない）
         have = {n for x in item.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
         skip = set(item.get("_skip") or [])   # お客さまの新しい版面の速い道がもう試した人（emblem_state.fast_tried）：試し直さず続きから
+        if skip and not FIRST_STOP:   # 見回りの列：名簿の先頭で欠けた主役は飛ばさない（「欠けた主役を毎回先に」E15・BLEACH Rukia の決まりのまま）
+            skip -= set(head_missing(item))
         rest = [w for w in who[:hi] if w not in have and w not in skip]
         redo = {n for s in item.get("emblem_redo") or [] for n in _who_of(s)}   # 管理ページで「別の写真に替える」を押した人は先に
         miss = head_missing(item)   # 名簿の先頭 3 人で小元素がいない人は、別の写真に替える人（redo）より先（BLEACH Rukia：redo 48 人の後ろで何時間も対象に入らなかった：E15）
