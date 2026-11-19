@@ -6,6 +6,7 @@ test-b の非公開ページを不合格にした 8 つ）。本物のお客さ�
   a  版面 1 つ（広島旅行）・AI 編集済みの記事 3 本＋整理待ち 4 件・予定と欲しい物なし（test-b の形）
   b  版面 1 つ・整理待ちだけ（AI 編集がまだ）
   c  版面 3 つ・うち 2 つは記事 0〜1 本
+  d  版面 2 つ・うち 1 つは足したばかりで記事 5 本未満（user_pages.held：場所だけ「集めています」）
 """
 import pathlib
 import sys
@@ -73,7 +74,14 @@ def shapes(imgs):
               n("京都の紅葉"): {"edited": True, "stories": [story(10, HEADS[4], imgs[4], "hero")], "pending": [pend(10, PEND[4], imgs[1]), pend(11, PEND[5])]},
               n("ゼルダの伝説"): {"edited": False, "stories": []}}
     pk = lambda names: {"picks": [{"name": nm, "sec": s} for nm, s in names], "sizes": {}}
-    return {"a": (pk(one), a_rows, fol(one)), "b": (pk(one), b_rows, fol(one)), "c": (pk(three), c_rows, fol(three))}
+    two = [("広島旅行", "出行"), ("京都の紅葉", "出行")]
+    import datetime as dt
+    now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")   # 足した時刻（db/board_added.sql が picks に付ける added_at）
+    d_picks = {"picks": [{"name": "広島旅行", "sec": "出行"}, {"name": "京都の紅葉", "sec": "出行", "added_at": now}], "sizes": {}}
+    d_rows = {n("広島旅行"): a_rows[n("広島旅行")],
+              n("京都の紅葉"): {"edited": False, "stories": [{"title": PEND[5], "url": "https://example.com/new/0", "image": imgs[6], "date": "2026-11-19", "source": "例の新聞"}]}}
+    return {"a": (pk(one), a_rows, fol(one)), "b": (pk(one), b_rows, fol(one)), "c": (pk(three), c_rows, fol(three)),
+            "d": (d_picks, d_rows, fol(two)[:1])}
 
 
 def build(out):
