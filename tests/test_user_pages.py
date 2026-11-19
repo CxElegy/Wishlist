@@ -299,6 +299,24 @@ class Issue(unittest.TestCase):
         self.assertIn("/^(index|settings|heat|wishlist)$/", render.AUTH_JS)
 
 
+class Photos(unittest.TestCase):
+    """写真を取る段の数（2026-11-19）：記事・写真の網址あり・置き場に入った数。偽の入力（本番 DB・網なし）。"""
+    def test_photo_tally(self):
+        import photo_store
+        brows = {"a": {"stories": [{"image": "https://e.org/1.jpg"}, {"image": None}, {"image": "https://e.org/2.jpg"}], "pending": [{"image": "https://e.org/p.jpg"}]},
+                 "b": {"stories": []}}
+        old = photo_store.stored
+        photo_store.stored = lambda u, w=800: "x" if u.endswith("1.jpg") else None
+        try:
+            self.assertEqual(user_pages.photo_tally(brows), [3, 2, 1])   # 整理待ちは数えない
+            t = [1, 1, 1]
+            user_pages.photo_tally(brows, t)
+            self.assertEqual(t, [4, 3, 2])                               # 人ごとに足していく
+        finally:
+            photo_store.stored = old
+        self.assertIn("お客さまの写真：記事", (ROOT / "scripts" / "user_pages.py").read_text(encoding="utf-8"))
+
+
 class Loader(unittest.TestCase):
     def test_auth_js_reads_own_page(self):
         js = render.AUTH_JS
