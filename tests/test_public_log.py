@@ -105,6 +105,38 @@ class PublicLog(unittest.TestCase):
             lg.removeHandler(h)
         self.assertEqual(seen, [])
 
+    def test_scrapling_errors_do_not_show_the_host(self):
+        """取れなかったときの scrapling の ERROR（「Could not resolve host: <host>」）も公開のログに出さない（見直し 2 回目 7）。
+        取れなかった結果（Fetched の error）は今までどおり返る＝店長の道の結果は同じ。"""
+        import images
+        seen = []
+
+        class H(logging.Handler):
+            def emit(self, rec):
+                seen.append(rec.getMessage())
+
+        lg = logging.getLogger("scrapling")
+        h = H()
+        lg.addHandler(h)
+        lg.setLevel(logging.INFO)
+
+        class Fetcher:
+            @staticmethod
+            def get(url, **kw):
+                lg.error("Failed after 1 attempts: Could not resolve host: secret-host.example")
+                raise OSError("resolve")
+
+        fake = types.ModuleType("scrapling.fetchers")
+        fake.Fetcher = Fetcher
+        try:
+            with mock.patch.dict(sys.modules, {"scrapling": types.ModuleType("scrapling"), "scrapling.fetchers": fake}), \
+                    mock.patch.object(images, "SCRAPLING", True):
+                got = images._scrape("https://secret-host.example/a", 1000)
+        finally:
+            lg.removeHandler(h)
+        self.assertEqual(seen, [])
+        self.assertEqual(got.error, "scrapling OSError")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -179,8 +179,9 @@ def _scrape(url, limit, referer=None, page=False):
         from scrapling.fetchers import Fetcher
     except Exception:
         return None
-    # scrapling は取った網址を INFO で出す。Actions のログは公開で、お客さまのページ（user_pages）の記事も通るので出さない
-    logging.getLogger("scrapling").setLevel(logging.WARNING)
+    # scrapling は取った網址を INFO で、取れなかった host を ERROR（「Failed after 1 attempts: … Could not resolve host: <host>」）で出す。
+    # Actions のログは公開で、お客さまの記事（user_pages・og_image・photo_store の Referer 付きの取り方）も通るので全部黙らせる（結果は Fetched で返る）
+    logging.getLogger("scrapling").setLevel(logging.CRITICAL)
     try:
         r = Fetcher.get(url, impersonate="chrome", stealthy_headers=page, timeout=TIMEOUT, retries=1,
                         **({"headers": {"Referer": referer}} if referer else {}))
