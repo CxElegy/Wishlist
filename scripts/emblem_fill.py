@@ -512,7 +512,8 @@ def subjects(item, kind, hi):
     who = [w for w in item.get("emblem_who") or [] if kind != "character" or not emblem.not_character(w)]   # もうある名簿にも（あつ森の Player・Parents）
     if who and kind in ("character", "group"):   # まだ小元素のいない人から STEP 人。足りない人が多いときは回ごとにずらす（見つからない人で止まらない）
         have = {n for x in item.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
-        rest = [w for w in who[:hi] if w not in have]
+        skip = set(item.get("_skip") or [])   # お客さまの新しい版面の速い道がもう試した人（emblem_state.fast_tried）：試し直さず続きから
+        rest = [w for w in who[:hi] if w not in have and w not in skip]
         redo = {n for s in item.get("emblem_redo") or [] for n in _who_of(s)}   # 管理ページで「別の写真に替える」を押した人は先に
         miss = head_missing(item)   # 名簿の先頭 3 人で小元素がいない人は、別の写真に替える人（redo）より先（BLEACH Rukia：redo 48 人の後ろで何時間も対象に入らなかった：E15）
         first = [w for w in rest if w in miss] + [w for w in rest if w not in miss and official_has(item, w)]   # 主役が欠けた人と、公式サイトの立ち絵がある人は回しに入れず毎回先に（BLEACH Rukia・Kisuke：回しの先頭から外れて何周も取られなかった）
@@ -2340,13 +2341,13 @@ def fill_one(item, log=print):
     path = " → ".join(f"{x['label']} +{x['added']}" for x in steps)
     top = "・".join(f"{k} {v}" for k, v in sorted(reasons.items(), key=lambda kv: -kv[1])[:3])
     if st["state"] == "ok":
-        return {"state": "ok", "note": f"{added} 枚足して目標に届いた（{path}）", "tried": tried, "funnel": funnel, "steps": steps}
+        return {"state": "ok", "note": f"{added} 枚足して目標に届いた（{path}）", "tried": tried, "funnel": funnel, "steps": steps, "want": want}
     if added and queued > STEP and kind_of(item) in ("character", "group"):   # STEP 人ずつ足している途中：失敗ではなく進行中。次の回に続き
-        return {"state": "running", "tried": tried, "funnel": funnel, "steps": steps,
+        return {"state": "running", "tried": tried, "funnel": funnel, "steps": steps, "want": want,
                 "note": f"{added} 枚足した（{path}）。あと {st['target'] - st['have']} 枚、次の回に続きの {STEP} 人"}
     left = st["target"] - st["have"]
     only = f"。残り {left} 枚のうち試した {len(noimg)} 人は全員が画像のない人（使える画像が 1 枚もない）" if noimg and len(noimg) == len([w for w in want if w not in have1]) and queued <= len(want) else ""   # 名簿の残り全員を試したときだけ（BLEACH は残り 108 人のうち 10 人で 24 時間待ちになっていた）   # 名簿の残り全員を試したときだけ（BLEACH は残り 108 人のうち 10 人を試しただけで 24 時間待ちになっていた）
-    return {"state": "failed", "tried": tried, "funnel": funnel, "steps": steps, "material": material(fresh),
+    return {"state": "failed", "tried": tried, "funnel": funnel, "steps": steps, "material": material(fresh), "want": want,   # want：今回試した人（速い道が名簿の続きへ進む）
             "exhausted": bool(only),   # 残りの人が全員「画像のない人」＝いまは取れる候補が尽きた（失敗と分けて数える・次は材料が変わったとき）
             "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}{only}。新しい記事・手がかりが来たらすぐ、来なくても規則を直したらもう一度"}
 

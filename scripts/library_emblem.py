@@ -182,6 +182,9 @@ def board_item(board, follow, get=None):
                 keywords=cfg.get("keywords") or [board["name"]])
     item.setdefault("emblem_kind", kind_for(sec, (follow or {}).get("subs"), human))
     item["_round"] = rounds_of(cfg)   # 店長と同じ：名簿の残りを STEP 人ずつ順に 1 周する
+    skip = (cfg.get("emblem_state") or {}).get("fast_tried")
+    if skip:   # 速い道が試した人は、見回りの列も試し直さない（名簿を 1 周して指紋 m が付いたら消える：fill_board）
+        item["_skip"] = list(skip)
     import emblem_fill
     item["_recount"] = (cfg.get("emblem_state") or {}).get("nv") != emblem_fill.NAMES_V   # 店長と同じ：名簿の規則の版が上がったら、名簿がそろっていても 1 回数え直す（NAMES_V 14 の種族・物がスプラ 3 の名簿に残った）
     if item["emblem_kind"] == "character":   # 名簿（roster）と Fandom の立ち絵の手がかり。前の回に書いたもの・店長の手書きが先
@@ -438,8 +441,8 @@ def measure_faces(emblems, fetch=None):
     return out, emblem_face.measure_emblems(out, load)
 
 
-def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch=None):
-    """版面 1 つ → boards.config に足す分 {emblem, theme, emblem_*, emblem_state}。"""
+def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch=None, result=None):
+    """版面 1 つ → boards.config に足す分 {emblem, theme, emblem_*, emblem_state}。result（dict）に fill の答え（want・funnel・note）を入れる。"""
     import emblem
     import emblem_fill
     import yaml
@@ -453,6 +456,8 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
                 r = fill(item, log=lambda *a, **k: None)
             except emblem_fill.OutOfTime:
                 r = {"state": "failed", "note": "時間切れ"}
+        if result is not None:
+            result.update(r)
         got = (yaml.safe_load((root / "items.yaml").read_text(encoding="utf-8"))["items"] or [{}])[0]
         st0 = (board.get("config") or {}).get("emblem_state") or {}
         recheck = int(st0.get("bv") or 0) < emblem_fill.BROKEN_V or (drop_gone_on() and int(st0.get("gv") or 0) < GONE_V)
@@ -532,6 +537,9 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
         add["emblem_state"]["rounds"] = rounds_of(cfg) + 1   # 回の通し番号（規則の版が変わると 0 から）
     if add["emblem_state"]["state"] == "failed" and not env:   # 材料の指紋を残す（時間切れ・例外・環境の失敗は残さない＝次の見回りですぐ）
         add["emblem_state"]["m"] = material({**cfg, **add})
+    ft = st0.get("fast_tried")
+    if ft and add["emblem_state"]["state"] != "ok" and ("m" not in add["emblem_state"] or passes_left({"config": {**cfg, **add}}) > 0):
+        add["emblem_state"]["fast_tried"] = ft   # 速い道が試した人：名簿を 1 周するまでは飛ばし続ける（1 周したら消して、日に 1 回の試し直しには入れる）
     return add
 
 
@@ -751,6 +759,7 @@ FRESH_GRACE_S = 90       # board の job の様子が分からない（API が�
 FRESH_QUIET_S = 60       # 同じく分からないとき：1 つでも取ったあと、新しい版面がこれだけ来なければ終える
 FRESH_TOOLS_S = 120      # 後ろで入れる rembg を待つ上限（job 全体で 1 つ：python が始まってから。過ぎても入らなければ取らずに列へ）
 FRESH_TAIL_S = 30        # 締め切りのこの秒数前からは新しい版面を始めない
+FRESH_PASS_MIN_S = 10    # 1 版面の上限の残りがこれより少なければ、名簿の続きの人を始めない（始めても時間切れになるだけ）
 FRESH_DB_FAILS = 6       # 版面の読みが続けてこの回数（5 秒おき＝30 秒）失敗したら、数を出して終える（DB は店長の PC・Tailscale 経由：一瞬の 5xx・時間切れはありうる）
 RECENT_PICK_S = 900      # board の job の様子が分からないとき：足してからこの間で、まだどの版面の名前にも当たらない名前があれば「来る」と見て待つ
 
@@ -890,20 +899,74 @@ def fresh_limits(end):
         emblem_fill.STEP, emblem_fill._deadline[0], emblem_fill.FIRST_STOP = saved
 
 
+def _memo_get(get):
+    """Wikidata の読みを 1 版面の間だけ覚える（速い道が名簿の続きへ進むたびに同じ項目を読み直さない）。断られたら WdBlocked のまま。"""
+    import library
+    get = get or library._wd_get
+    box = {}
+
+    def mget(params):
+        k = json.dumps(params, sort_keys=True, ensure_ascii=False)
+        if k not in box:
+            box[k] = get(params)
+        return box[k]
+    return mget
+
+
+def fresh_why(st):
+    """速い道の 1 版面の結果の分け方（ログ・KPI。board_kpi.py が同じ言葉で数える）：
+    小元素あり／候補が通らず（候補はあったが検査を 1 枚も通らなかった）／候補なし（候補そのものが無い）／時間切れ（試している途中で上限）／失敗（例外・道具）。"""
+    if int(st.get("have") or 0) > 0:
+        return "小元素あり"
+    if st.get("fast_why") == "rejected":
+        return "候補が通らず"
+    if st.get("fast_why") == "none":
+        return "候補なし"
+    if st.get("note") == "時間切れ":
+        return "時間切れ"
+    return "失敗"
+
+
 def fresh_fill(board, follow, upload, base, end, fill=None, get=None, now=None, fetch=None):
-    """速い道の版面 1 つ → config に足す分。中身は fill_board（店長と同じ規則）を FRESH_STEP 人・FRESH_BOARD_S 秒で。
-    そろわなかったら：名簿の先頭だけを試したので「届かなかった」とは言えない → 材料の指紋 m を残さず回の番号も進めない
-    （見回りの列が名簿の先頭から STEP 人ずつすぐ続ける）。1 枚でも取れていれば running（列の「途中」）。"""
+    """速い道の版面 1 つ → config に足す分。中身は fill_board（店長と同じ規則）を FRESH_STEP 人ずつ・合わせて FRESH_BOARD_S 秒まで。
+    2026-11-19 本番の実測 2 回目：名簿の先頭 3 人を 1 回試して 0 枚のまま、上限を 65 秒以上残して終わっていた → 1 枚目が検査を通るか上限が来るまで、
+    名簿の続きを FRESH_STEP 人ずつ試し続ける（試した人は emblem_state.fast_tried に積み、次の回は subjects が飛ばす＝同じ人を試し直さない。検査は同じ）。
+    そろわなかったら：名簿の一部だけを試したので「届かなかった」とは言えない → 材料の指紋 m を残さず回の番号も進めない
+    （見回りの列は、速い道が試した人を飛ばして続きから STEP 人ずつ）。1 枚でも取れていれば running（列の「途中」）。
+    0 枚なら fast_why に「候補はあったが通らなかった（rejected）」か「候補そのものが無い（none）」、seen に [候補, 使えた候補] を足す。"""
     rounds0 = rounds_of(cfg(board))
-    with fresh_limits(min(end, time.time() + FRESH_BOARD_S)):
-        add = fill_board(board, follow, upload, base, fill=fill, get=get, now=now, fetch=fetch)
-    st = add["emblem_state"]
+    stop = min(end, time.time() + FRESH_BOARD_S)
+    get = _memo_get(get)
+    b, tried, found, usable, passes = board, [], 0, 0, 0
+    while True:
+        res = {}
+        with fresh_limits(stop):
+            add = fill_board(b, follow, upload, base, fill=fill, get=get, now=now, fetch=fetch, result=res)
+        passes += 1
+        st = add["emblem_state"]
+        fun = res.get("funnel") or {}
+        found, usable = found + int(fun.get("found") or 0), usable + int(fun.get("usable") or 0)
+        want = [w for w in res.get("want") or [] if w not in tried]
+        tried += want
+        if (int(st.get("have") or 0) > 0 or st.get("state") == "ok" or res.get("note") == "時間切れ" or res.get("env")
+                or not want or stop - time.time() < FRESH_PASS_MIN_S):
+            break
+        # 次の人へ：この回の手がかり（名簿・分類など）を引き継ぎ、回の番号は進めず、試した人を積む
+        nxt = {k: v for k, v in st.items() if k not in ("m", "rounds")}
+        if "rounds" in (cfg(b).get("emblem_state") or {}) or rounds0:
+            nxt["rounds"] = rounds0
+        b = {**b, "config": {**cfg(b), **add, "emblem_state": {**nxt, "fast_tried": tried}}}
     if st.get("state") != "ok":
         st.pop("m", None)
         if "rounds" in st:
             st["rounds"] = rounds0
         if st.get("have"):
             st["state"] = "running"
+    if not int(st.get("have") or 0) and tried:
+        st["fast_tried"] = tried   # 見回りの列は続きから
+    if not int(st.get("have") or 0) and res.get("note") != "時間切れ" and not res.get("env"):
+        st["fast_why"] = "rejected" if found else "none"
+    st["seen"], st["passes"] = [found, usable], passes
     st["fast"] = 1   # 速い道で始めた印（点検・KPI 用。規則は見ない）
     add["emblem_claim"] = None
     return add
@@ -1115,7 +1178,10 @@ def fresh_main(argv):
             m["write"] = f"{at()}（書けず）"
             return None
         m["write"] = at()
-        print(f"速い道 版面 {b['id']}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m['write']}（{have} 枚・{add['emblem_state'].get('state')}）", flush=True)
+        m["why"] = fresh_why(add["emblem_state"])
+        sn = add["emblem_state"].get("seen") or [0, 0]
+        print(f"速い道 版面 {b['id']}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m['write']}（{have} 枚・{add['emblem_state'].get('state')}・"
+              f"{m['why']}・候補 {sn[0]}・使えた候補 {sn[1]}・試した回 {add['emblem_state'].get('passes', 1)}）", flush=True)
         if have and start_pages:
             start_pages(b["id"])   # この版面を追う人のページだけ、すぐ（ほかの版面を待たない）
         return add
@@ -1132,7 +1198,7 @@ def fresh_main(argv):
             for bid, (t, rc) in finish_pages(dict(FRESH_BUDGET)["page"] * 3).items():
                 marks[bid]["page"] = at(t) if rc == 0 else f"{at(t)}（終了 {rc}）"
         for bid, m in marks.items():   # 版面ごとに 1 行：PC の board_kpi が照らせるように（id と秒だけ）
-            print(f"速い道の時刻 版面 {bid}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m.get('write', '—')}・ページ {m.get('page', '—')}", flush=True)
+            print(f"速い道の時刻 版面 {bid}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m.get('write', '—')}・ページ {m.get('page', '—')}・結果 {m.get('why', '失敗')}", flush=True)
         more = bool(r["left"] or rest is None or rest or counts["blocked"] or crash or r.get("stopped") or any(counts[k] for k in ("claim", "write", "tools")))
         _out(worked="true" if r["ids"] else "false", more="true" if more else "false")
     ok = sum(1 for a in r["done"] if a["emblem_state"].get("state") == "ok")

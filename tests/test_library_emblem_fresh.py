@@ -145,6 +145,75 @@ class FreshFill(unittest.TestCase):
         self.assertTrue(le.due([{"id": 11, "config": {**self.board["config"], **add}}], NOW))
 
 
+class Continue(unittest.TestCase):
+    """2026-11-19 本番の実測 2 回目：先頭 3 人を 1 回試して 0 枚のまま、上限を 65 秒以上残して終わった → 上限まで名簿の続きを試す。"""
+    board = {"id": 21, "name": "x", "wd": None, "config": {"keywords": ["x"], "emblem_claim": NOW}}
+
+    def run_fill(self, passes):
+        """passes = [(試す人, 候補の数, 使えた数, 小元素を書くか)]。fill は 1 回ごとに次を返す。"""
+        seen = []
+
+        def fake(item, log=None):
+            i = len(seen)
+            seen.append(list(item.get("_skip") or []))
+            want, found, usable, write = passes[min(i, len(passes) - 1)]
+            if write:
+                import emblem
+                emblem.write_item(item["name"], [{"subject": want[0], "image": "https://e.org/a.png", "shape": "badge"}], None)
+            return {"state": "failed", "note": "x", "want": want, "funnel": {"found": found, "usable": usable}, "material": "m"}
+        add = le.fresh_fill(self.board, {"section": "游戏"}, lambda n, d: None, BASE, time.time() + 600, fill=fake, now=NOW)
+        return add, seen
+
+    def test_next_people_until_one_passes(self):
+        add, seen = self.run_fill([(["A", "B", "C"], 4, 2, False), (["D", "E", "F"], 3, 1, True)])
+        self.assertEqual(seen, [[], ["A", "B", "C"]])   # 2 回目は試した人を飛ばして続きから
+        st = add["emblem_state"]
+        self.assertEqual((st["state"], st["have"], st["passes"]), ("running", 1, 2))
+        self.assertNotIn("m", st)
+        self.assertEqual(st.get("rounds", 0), 0)   # 回の番号は進めない
+        self.assertEqual(le.fresh_why(st), "小元素あり")
+
+    def test_whole_roster_without_a_pass_is_rejected_not_fingerprinted(self):
+        add, seen = self.run_fill([(["A", "B", "C"], 2, 1, False), (["D"], 1, 0, False), (["A"], 0, 0, False)])
+        st = add["emblem_state"]
+        self.assertEqual(len(seen), 3)   # 名簿が尽きる（試す人が試した人だけ）まで
+        self.assertEqual(st["fast_tried"], ["A", "B", "C", "D"])   # 見回りの列は続きから（同じ人を試し直さない）
+        self.assertEqual(st["fast_why"], "rejected")   # 候補はあったが 1 枚も通らなかった
+        self.assertEqual(st["seen"], [3, 1])
+        self.assertNotIn("m", st)
+        self.assertEqual(le.fresh_why(st), "候補が通らず")
+        self.assertTrue(le.due([{"id": 21, "config": {**self.board["config"], **add}}], NOW))   # 列がすぐ拾う
+
+    def test_no_candidates_is_counted_apart(self):
+        add, _ = self.run_fill([(["A"], 0, 0, False)])
+        self.assertEqual(add["emblem_state"]["fast_why"], "none")
+        self.assertEqual(le.fresh_why(add["emblem_state"]), "候補なし")
+
+    def test_stops_when_little_time_is_left(self):
+        with mock.patch.object(le, "FRESH_PASS_MIN_S", 10 ** 6):
+            add, seen = self.run_fill([(["A", "B", "C"], 1, 0, False), (["D"], 1, 1, True)])
+        self.assertEqual(len(seen), 1)
+
+    def test_skip_is_kept_until_the_roster_is_done(self):
+        b = {"id": 21, "name": "x", "wd": None, "config": {"keywords": ["x"], "emblem_state": {"state": "failed", "have": 0, "fast_tried": ["A"], "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "v": le.RULES}}}
+        up = lambda n, d: None  # noqa: E731
+        add = le.fill_board(b, {"section": "生活"}, up, BASE, fill=lambda item, log=None: {"state": "failed", "note": "時間切れ"}, now=NOW)
+        self.assertEqual(add["emblem_state"]["fast_tried"], ["A"])   # 時間切れ（指紋なし）：まだ飛ばす
+        add = le.fill_board(b, {"section": "生活"}, up, BASE, fill=lambda item, log=None: {"state": "failed", "note": "0 枚"}, now=NOW)
+        self.assertNotIn("fast_tried", add["emblem_state"])   # 1 周して指紋が付いた：消して、日に 1 回の試し直しに入れる
+
+    def test_queue_skips_people_the_fast_path_tried(self):
+        b = {"id": 21, "name": "x", "wd": None, "config": {"keywords": ["x"], "emblem_state": {"state": "failed", "have": 0, "fast_tried": ["A", "B"]}}}
+        self.assertEqual(le.board_item(b, {"section": "游戏"})["_skip"], ["A", "B"])
+        step = emblem_fill.STEP
+        try:
+            emblem_fill.STEP = 2
+            got = emblem_fill.subjects({"name": "x", "emblem_who": ["A", "B", "C", "D", "E"], "emblem_kind": "character", "_round": 0, "_skip": ["A", "B"]}, "character", 200)
+        finally:
+            emblem_fill.STEP = step
+        self.assertEqual(got, ["C", "D"])
+
+
 class Loop(unittest.TestCase):
     def run_loop(self, appear, wait=240, minutes=9, results=None, upstream=None, shard=0):
         """appear = {時刻（秒）: [版面]}：その時刻から DB に現れる。upstream = 時刻 → True／False／None（board の job の様子）。"""
