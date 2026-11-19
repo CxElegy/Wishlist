@@ -5561,6 +5561,7 @@ LIVE_CSS = """
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
 .wl-live[hidden]{display:none}
+html[data-mine="2"] .wl-live{display:none!important}  /* 代わりの画面：LIVE_JS が開いた直後に出した「更新しました：（店長の版面の名前）」も隠す（hush の前に出た分） */
 .wl-live span{flex:1 1 auto;min-width:0}
 .wl-live button{flex:none;border:0;cursor:pointer;background:var(--gold);color:var(--ink);padding:4px 12px;font:700 13px/1.4 var(--font-sans)}
 .wl-live .x{background:none;color:var(--card);padding:4px 6px}
@@ -5912,7 +5913,6 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-mine="2"] .wl-off{display:none!important}
-html[data-mine="2"] .wl-live{display:none!important}  /* 代わりの画面：LIVE_JS が開いた直後に出した「更新しました：（店長の版面の名前）」も隠す（hush の前に出た分） */
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}
 @media (max-width:560px){html[data-mine="2"] body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.wl-cards>a.np{display:flex}}
