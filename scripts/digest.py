@@ -2208,7 +2208,7 @@ def recommend(force_discover=False, user=None):
             continue  # 同一件事已经有一条了（不同媒体、不同语言的报道），或者版面里已经有了
         explore = score < PICK_THRESHOLD  # 候选按分数排好了，「换换口味」的排在够分的后面
         url = resolve(d.get("link") or d["url"])
-        if taken(url):
+        if not url or taken(url):   # 本人の分の resolve が None（小元素だけの回で前の答えが無い）：出さない
             continue
         used |= key
         if url not in images:
@@ -2233,7 +2233,7 @@ def recommend(force_discover=False, user=None):
         if any(_similar(g, x) for x in grams) or dedupe.same(d["title"]):
             continue
         url = resolve(d.get("link") or d["url"])
-        if taken(url) or any(b["url"] == url for b in boards):
+        if not url or taken(url) or any(b["url"] == url for b in boards):
             continue
         if url not in images:
             images[url] = fimg(d.get("image"), [entry_from_dict(d)], url)
@@ -2259,7 +2259,7 @@ def recommend(force_discover=False, user=None):
         got = []
         for x in [x for x in found if x["item"] == name][:FOLLOW_PER_ITEM * 2]:
             url = resolve(x["url"])
-            if url in voted or url in seen_urls or url in on_page or dedupe.same(x["title"]):
+            if not url or url in voted or url in seen_urls or url in on_page or dedupe.same(x["title"]):
                 continue
             if url not in images:
                 images[url] = fimg(x.get("image"), [entry_from_dict(x)], url)
