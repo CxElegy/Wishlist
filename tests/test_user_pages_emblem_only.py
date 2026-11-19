@@ -1,6 +1,6 @@
 """小元素だけの作り直し（user_pages.py --boards-file F --emblem-only、2026-11-19 店長「新しい版面を足したら小元素が出るまで 5 分未満」）。
 前は 1 人分 92 秒（記事の代表の写真を読み直す・写真の余白と主役を測り直す・「気になるかも？」の跳转を 1 本ずつ戻す・頭の写真を 1 本ずつ聞く）。
-重い段を呼ばず、前の回の結果（pages/_fp/all.json）で同じページを作る。網・DB なし。"""
+重い段を呼ばず、前の回の結果（pages/_fp/all.json）で「前のページ＋小元素」を作る（2026-11-19 本番 2 回目：前の結果が足りない人をふつうに作り 153 秒）。網・DB なし。"""
 import contextlib
 import json
 import pathlib
@@ -86,8 +86,8 @@ class Limits(unittest.TestCase):
         with mock.patch.object(photo_bands, "bands", lambda d: []), mock.patch.object(photo_bands, "mass_css", lambda d: ""), \
                 mock.patch.object(photo_bands, "text_box", lambda d: None), mock.patch.object(photo_bands, "people_box", lambda d: None), \
                 mock.patch.object(photo_bands, "segments", lambda d: []):
-            photo_bands.measure([f"https://p/{i}.jpg" for i in range(40)], {}, lambda u: seen.append(u) or b"x", log=lambda *a: None, limit=user_pages.ONLY_NEW_PHOTOS)
-        self.assertEqual(len(seen), user_pages.ONLY_NEW_PHOTOS)
+            photo_bands.measure([f"https://p/{i}.jpg" for i in range(40)], {}, lambda u: seen.append(u) or b"x", log=lambda *a: None, limit=16)
+        self.assertEqual(len(seen), 16)
 
 
 class MemoTests(unittest.TestCase):
@@ -166,6 +166,9 @@ class EmblemOnlyMain(unittest.TestCase):
         self.db = {"config": {"emblem_state": {"have": 0}}}   # 版面 5 の config（小元素なし）
         self.store = {}
         self.more = []   # 2 回目から足す記事（前の回の覚えに無い記事）
+        self.added = "2999-01-01T00:00:00Z"   # 版面 5 を足した時刻（既定は --recent が選ぶ「足したばかり」）
+        self.fps_down = False   # 指紋（all.json）の読みが失敗する回
+        self.new_board = None   # 2 回目から足す版面 {"config", "pending"}（新しく足した版面：id 6）
 
     def page(self):
         return (self.store.get(f"/storage/v1/object/pages/{self.acct}/index.html") or b"").decode("utf-8")
@@ -174,27 +177,43 @@ class EmblemOnlyMain(unittest.TestCase):
         story = {"title": "t", "url": "https://n.example/1", "summary": "", "source": "s", "date": "2026-11-19"}
 
         def follows():
-            return [{"pos": 0, "section": "生活", "subs": {}, "size": "M",
-                     "boards": {"id": 5, "name": "自分の版面", "config": json.loads(json.dumps(self.db["config"]))}}]
+            out = [{"pos": 0, "section": "生活", "subs": {}, "size": "M",
+                    "boards": {"id": 5, "name": "自分の版面", "config": json.loads(json.dumps(self.db["config"]))}}]
+            if self.new_board:
+                out.append({"pos": 1, "section": "生活", "subs": {}, "size": "M",
+                            "boards": {"id": 6, "name": "新しい版面", "config": json.loads(json.dumps(self.new_board["config"]))}})
+            return out
 
         def supa(path, data=None, method="GET", ctype="application/json"):
             if "rpc/userfeed_users" in path:
-                return [{"email": self.EMAIL, "prefs": {"picks": [{"name": "自分の版面", "sec": "生活", "added_at": "2999-01-01T00:00:00Z"}]}}]
+                picks = [{"name": "自分の版面", "sec": "生活", "added_at": self.added}]
+                if self.new_board:
+                    picks.append({"name": "新しい版面", "sec": "生活"})
+                return [{"email": self.EMAIL, "prefs": {"picks": picks}}]
             if path.startswith("/storage/"):
                 if method == "POST":
                     self.store[path] = json.loads(data) if ctype.startswith("application/json") else data
                     return {}
+                if path == FP and self.fps_down:
+                    raise OSError("timeout")   # 一瞬読めない（Tailscale 越しの時間切れ）
                 if path in self.store:
                     return json.loads(json.dumps(self.store[path])) if isinstance(self.store[path], dict) else self.store[path]
-                raise OSError("404")
+                import urllib.error
+                raise urllib.error.HTTPError(path, 404, "not found", {}, None)   # まだ無い
             if "follows?board_id=in." in path:
                 return [{"account": self.acct}]
             if "follows?account" in path:
                 return follows()
             if "board_stories" in path:
-                return [{"board_id": 5, "day": "2026-11-19", "stories": [], "pending": [story, *self.more]}]
+                out = [{"board_id": 5, "day": "2026-11-19", "stories": [], "pending": [story, *self.more]}]
+                if self.new_board:
+                    out.append({"board_id": 6, "day": "2026-11-19", "stories": [], "pending": self.new_board["pending"]})
+                return json.loads(json.dumps(out))
             if "boards?id=in." in path:
-                return [{"id": 5, "emblem_state": self.db["config"].get("emblem_state")}]
+                out = [{"id": 5, "emblem_state": self.db["config"].get("emblem_state")}]
+                if self.new_board:
+                    out.append({"id": 6, "emblem_state": self.new_board["config"].get("emblem_state")})
+                return out
             return []
         calls = {"og": 0, "pick": 0, "resolve": 0, "opens": 0, "photo": 0, "measure_limit": []}
         real_measure = photo_bands.measure
@@ -231,7 +250,8 @@ class EmblemOnlyMain(unittest.TestCase):
         self.assertEqual(calls["pick"], 0)      # 記事の写真探し（1 本 20 秒）はしない
         self.assertEqual(calls["og"], 0)        # 前に読んだ記事の代表の写真は読み直さない
         self.assertEqual(calls["resolve"], 0)   # 跳转の戻しは前の答えだけ
-        self.assertEqual(calls["measure_limit"], [user_pages.ONLY_NEW_PHOTOS])   # 測るのは前に無い写真を 1 束まで
+        self.assertEqual(calls["measure_limit"], [])   # 写真の余白と主役は前の結果だけ（模型を読まない）
+        self.assertEqual(calls["opens"], 0)     # 頭の写真が開くかも前の答えだけ
         self.assertIn(self.EMB, self.page())
 
     def test_emblem_only_does_not_retry_old_misses(self):
@@ -244,17 +264,20 @@ class EmblemOnlyMain(unittest.TestCase):
         self.write_emblem()
         calls = self.run_main(["--boards-file", "IDS", "--emblem-only"])
         self.assertEqual(calls["og"], 0)
-        self.assertEqual(calls["measure_limit"], [user_pages.ONLY_NEW_PHOTOS])   # ふつうに作り直してもいない（小元素だけの回のまま）
+        self.assertEqual(calls["measure_limit"], [])   # ふつうに作り直してもいない（小元素だけの回のまま）
         self.assertIn(self.EMB, self.page())
 
-    def test_one_story_without_previous_result_means_full_build(self):
-        """見直し 2 回目 1：前の結果（og の覚え）に無い写真なしの記事が 1 本でもあれば、その人はふつうに作る（小元素だけの回は og を読まない）。"""
+    def test_story_after_previous_page_waits_for_the_normal_run(self):
+        """本番 2 回目：前のページの後に来た記事（前の結果に無い）は、小元素だけの回では載せない（ふつうに作らない・網に出ない）。"""
+        self.added = "2026-01-01T00:00:00Z"   # 前からの版面（記事 5 本までの待ちに入らない）
         self.run_main(["--boards-file", "IDS"])
+        self.assertIn("https://n.example/1", self.page())
         self.more = [{"title": "t2", "url": "https://n.example/2", "summary": "", "source": "s", "date": "2026-11-19"}]
         self.write_emblem()
         calls = self.run_main(["--boards-file", "IDS", "--emblem-only"])
-        self.assertEqual(calls["og"], 1)                    # ふつうに作った（新しい 1 本だけを読む）
-        self.assertEqual(calls["measure_limit"], [None])
+        self.assertEqual((calls["og"], calls["measure_limit"]), (0, []))   # ふつうに作っていない
+        self.assertIn("https://n.example/1", self.page())       # 前のページの記事は残る
+        self.assertNotIn("https://n.example/2", self.page())    # 後に来た記事は次のふつうの回で
         self.assertIn(self.EMB, self.page())
 
     def test_full_run_still_searches(self):
@@ -264,14 +287,122 @@ class EmblemOnlyMain(unittest.TestCase):
         self.assertIn("_up_pick", self.store[FP])   # 次の --emblem-only が使う前の結果を残す
         self.assertIn("_res", self.store[FP])
         self.assertIn(f"{self.acct}/_emb", self.store[FP])   # このページに入った小元素の状態
+        self.assertEqual(self.store[FP][f"{self.acct}/_urls"], user_pages.story_keys({"x": {"pending": [{"url": "https://n.example/1"}]}}))   # 載せた記事
 
-    def test_person_without_previous_results_gets_a_full_build(self):
-        # 一度もページを作っていない人：前の結果が無い → 写真の少ないページを置かず、この人だけふつうに作る
+    def test_first_page_is_collecting_plus_emblem(self):
+        # 一度もページを作っていない人（登録した直後）：置く物が無いより「集めています」＋小元素のページを、同じ速い道で
         self.write_emblem()
         calls = self.run_main(["--boards-file", "IDS", "--emblem-only"])
-        self.assertEqual(calls["og"], 1)
-        self.assertEqual(calls["measure_limit"], [None])
+        self.assertEqual((calls["og"], calls["measure_limit"], calls["pick"]), (0, [], 0))
         self.assertIn(self.EMB, self.page())
+        self.assertIn(user_pages.render.SETTINGS_JA["collecting"], self.page())
+        self.assertNotIn("https://n.example/1", self.page())
+
+    def _prev_page(self):
+        self.added = "2026-01-01T00:00:00Z"
+        self.run_main(["--boards-file", "IDS"])
+        self.assertIn("https://n.example/1", self.page())
+        return self.page()
+
+    def test_story_restored_to_original_url_is_kept(self):
+        """見直し 6：前のページの後に記事の網址が原文に戻った（Google の網址は gurl に残る）・AI 編集の記事が別の網址になった、でも前の記事として残す。"""
+        g = "https://news.google.com/rss/articles/abc"
+        self.added = "2026-01-01T00:00:00Z"
+        self.more = [{"title": "包みの記事", "url": g, "summary": "", "source": "s", "date": "2026-11-19"}]
+        self.run_main(["--boards-file", "IDS"])
+        self.assertIn("包みの記事", self.page())
+        self.more = [{"title": "包みの記事", "url": "https://origin.example/a", "gurl": g, "summary": "", "source": "s", "date": "2026-11-19"}]   # 原文に戻った
+        self.write_emblem()
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertIn("包みの記事", self.page())
+        self.assertIn("https://n.example/1", self.page())
+        got, cut = user_pages.keep_known({"x": {"stories": [{"url": "https://ai.example/x", "refs": ["https://n.example/1"]}]}},
+                                         user_pages.story_keys({"x": {"pending": [{"url": "https://n.example/1"}]}}))
+        self.assertEqual((len(got["x"]["stories"]), cut), (1, 0))   # AI 編集の記事は refs で当たる
+
+    def test_newer_normal_page_is_rebuilt_not_overwritten(self):
+        """見直し 9：feed の job のふつうのページ（新しい記事あり）が置かれ、その指紋が書かれる前に小元素だけの回が指紋を読んだ →
+        前の記録で作ると新しい記事のページを前の記事のページで上書きする → 先に置かれたページの記録で作り直して置く。"""
+        self.added = "2026-01-01T00:00:00Z"
+        self.run_main(["--boards-file", "IDS"])
+        s1 = json.loads(json.dumps(self.store[FP]))
+        self.more = [{"title": "新しい記事", "url": "https://n.example/2", "summary": "", "source": "s", "date": "2026-11-19"}]
+        self.run_main(["--boards-file", "IDS"])   # feed のふつうの回：新しい記事を載せて置く
+        s2 = json.loads(json.dumps(self.store[FP]))
+        self.assertIn("https://n.example/2", self.page())
+        self.store[FP] = s1   # 小元素だけの回が読む時は、まだ前の指紋
+        self.write_emblem()
+        calls = {"n": 0}
+
+        def fresh(fp_path):
+            calls["n"] += 1
+            return json.loads(json.dumps(s2))   # 置く前に読み直すと、feed の回の指紋
+        with mock.patch.object(user_pages, "_fresh_fps", fresh):
+            self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertIn("https://n.example/2", self.page())   # 新しい記事を消さない
+        self.assertIn(self.EMB, self.page())                # 小元素も入る
+
+    def test_emblem_only_logs_unknown_photos(self):
+        """見直し 8：前の答えに無い写真を「開く」とみなした数・測らなかった写真の数を 1 行（数だけ）。"""
+        import io
+        self._prev_page()
+        self.write_emblem()
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertIn("小元素だけの回：前の答えに無い写真", buf.getvalue())
+
+    def test_unreadable_fingerprints_place_nothing(self):
+        """見直し 1(a)：指紋が一瞬読めない回に作ると known が空になり、前からある記事まで全部消えたページを置いていた → 誰のページも置かない。"""
+        before = self._prev_page()
+        self.write_emblem()
+        self.fps_down = True
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertEqual(self.page(), before)
+
+    def test_page_without_story_record_is_left_to_the_normal_run(self):
+        """見直し 1(b)(c)：前のページはあるが載せた記事の記録（_urls）が無い（記録を残す前の回が置いた・その人のふつうの回が失敗した）→ 置かない。"""
+        before = self._prev_page()
+        del self.store[FP][f"{self.acct}/_urls"]
+        self.write_emblem()
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertEqual(self.page(), before)
+        self.assertIn("https://n.example/1", self.page())
+
+    def test_collecting_page_only_for_people_without_any_page(self):
+        """「集めています」だけのページを置いてよいのは、index.html の指紋が無い人（一度もページが無い人）だけ。"""
+        self.write_emblem()
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])   # 一度も無い：置く
+        self.assertIn(user_pages.render.SETTINGS_JA["collecting"], self.page())
+        self.store[FP].pop(f"{self.acct}/_urls", None)
+        self.store[FP][f"{self.acct}/index.html"] = "x"            # ページはあるが記録が無い：置かない
+        self.store.pop(f"/storage/v1/object/pages/{self.acct}/index.html")
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertEqual(self.page(), "")
+
+    def test_previous_page_plus_emblem(self):
+        """店長の決め（直し 2 回目 F2）：前のページを作る → 新しい版面と新しい記事を足す → 小元素だけの回 →
+        前の記事と写真が全部ある＋新しい版面は「集めています」＋小元素。前のページより写真・記事が減らない。"""
+        import re
+        self.added = "2026-01-01T00:00:00Z"
+        self.more = [{"title": "写真の記事", "url": "https://n.example/p", "summary": "", "source": "s", "date": "2026-11-19", "image": "https://img.example/p.jpg"}]
+        self.run_main(["--boards-file", "IDS"])
+        before = self.page()
+        old = set(re.findall(r"https://(?:n|img)\.example/[\w./]+", before))
+        self.assertIn("https://img.example/p.jpg", old)
+        self.more.append({"title": "あとの記事", "url": "https://n.example/late", "summary": "", "source": "s", "date": "2026-11-19"})
+        emb6 = "https://e.example/new.webp"
+        self.new_board = {"config": {"emblem": [{"image": emb6, "subject": "b"}], "emblem_state": {"have": 1, "at": 3}},
+                          "pending": [{"title": "新しい版面の記事", "url": "https://n.example/new1", "summary": "", "source": "s", "date": "2026-11-19"}]}
+        calls = self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        after = self.page()
+        self.assertEqual((calls["og"], calls["pick"], calls["resolve"], calls["measure_limit"]), (0, 0, 0, []))   # 網に出ない
+        self.assertLessEqual(old, set(re.findall(r"https://(?:n|img)\.example/[\w./]+", after)))   # 前の記事と写真は全部ある
+        self.assertNotIn("https://n.example/late", after)
+        self.assertNotIn("https://n.example/new1", after)
+        self.assertIn(emb6, after)                                            # 新しい版面の小元素
+        self.assertIn(user_pages.render.SETTINGS_JA["collecting"], after)     # 新しい版面は「集めています」
+        self.assertIn("新しい版面", after)
 
     def test_emblem_written_while_feed_measures_reaches_the_page(self):
         # 見直しの順：feed（--recent）が先に組む → 写真の測りの間に速い道が小元素を書く → feed が置く → 小元素だけの回

@@ -236,9 +236,12 @@ def observe(run):
         s, nm = b["seen"], b["name"]
         if "picked" not in s and nm in picks:
             s["picked"] = run["t0"]
-        br = q(f"select id, key, created_at, created_by, coalesce(config->'emblem','null'::jsonb)::text from public.boards where name={lit(nm)} order by id limit 1")
+        br = q(f"select id, key, created_at, created_by, coalesce(config->'emblem','null'::jsonb)::text, coalesce(config->'emblem_state'->>'fast_why','') "
+               f"from public.boards where name={lit(nm)} order by id limit 1")
         if br:
-            bid, bkey, bcreated, _, emb = br[0]
+            bid, bkey, bcreated, _, emb, fwhy = (list(br[0]) + [""])[:6]
+            if fwhy in FAST_WHY:   # 速い道が上限まで試して 0 枚（候補が通らず／候補なし）：5 分の合否には入れず別に数える
+                b["fast"] = FAST_WHY[fwhy]
             b["board_id"], b["key"] = int(bid), bkey
             if "board" not in s:
                 s["board"] = iso(max(parse(bcreated), parse(run["t0"]))) if b["path"] == "C" else run["t0"]
@@ -358,6 +361,8 @@ def judge(run, t=None):
     red = []
     for n, b in enumerate(run["boards"], 1):
         for k, target in TARGETS.get(b["path"], {}).items():
+            if k in ("emblem", "page_emblem") and b.get("fast") and "emblem" not in b["seen"]:
+                continue   # 速い道が上限まで試して 0 枚：「遅い」でなく「候補が通らず／候補なし」として別に数える（report の fast）
             m = minutes(run, b, k, None)
             if m is None:
                 why = "出ないまま" if age >= RED_AFTER_MIN else "まだ出ない" if age >= target else None
@@ -412,11 +417,19 @@ def cmd_report(a):
         summ.setdefault(p, {})[k] = {"n": len(v), "p50": v[len(v) // 2], "max": v[-1], "target": tg if tg is not None else TARGET[k],
                                     "ok": v[-1] < tg if tg is not None else None}   # None＝この経路では目標を置かない段
     print(json.dumps(summ, ensure_ascii=False, indent=1))
+    fastmix = {}
+    for f in files:   # 小元素の速い道の結果の内訳（小元素あり／候補が通らず／候補なし）。5 分の合否は「小元素あり」の版面だけ
+        for b in json.loads(f.read_text(encoding="utf-8"))["boards"]:
+            if b.get("path") == "C":
+                k = b.get("fast") or ("小元素あり" if "emblem" in b.get("seen", {}) else "まだ")
+                fastmix[k] = fastmix.get(k, 0) + 1
+    if fastmix:
+        print("小元素の速い道（経路 C）：" + "・".join(f"{k} {v}" for k, v in sorted(fastmix.items())))
     mix = photo_summary(files)
     for p, m in sorted(mix.items()):
         print(f"写真 経路 {p}：記事 {m['n']} 本・写真あり {m['img_pct']}%・包みのまま {m['wrapped_pct']}%・探し中 {m['waiting_pct']}%")
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"at": iso(now()), "boards": summ, "runs": len(files), "red": red, "photos": mix}, ensure_ascii=False, indent=1), encoding="utf-8")
+    OUT.write_text(json.dumps({"at": iso(now()), "boards": summ, "runs": len(files), "red": red, "photos": mix, "fast": fastmix}, ensure_ascii=False, indent=1), encoding="utf-8")
     for x in red:
         print(f"赤 経路 {x['path']} {x['run']} 版面 {x['board']} {x['stage']}：{x['why']} {x['minutes']:g} 分（目標 {x['target']} 分未満）")
     if red and not a.no_fail:
@@ -511,14 +524,18 @@ def cmd_kick(a):
         sys.exit(1)
 
 
-FAST_RE = re.compile(r"速い道の時刻 版面 (\d+)：取り始め \+(\d+)s・1 枚目 (?:\+(\d+)s|—)・書いた (?:\+(\d+)s|—)・ページ (?:\+(\d+)s|—)")
+FAST_RE = re.compile(r"速い道の時刻 版面 (\d+)：取り始め \+(\d+)s・1 枚目 (?:\+(\d+)s|—)・書いた (?:\+(\d+)s|—)[^・\n]*・ページ (?:\+(\d+)s|—)[^・\n]*(?:・結果 (\S+))?")
+FAST_WHY = {"rejected": "候補が通らず", "none": "候補なし"}   # emblem_state.fast_why → 言葉（library_emblem.fresh_why と同じ）
+FAST_ZERO = set(FAST_WHY.values())   # 速い道が上限まで試して 0 枚：5 分の合否に入れず別に数える
 
 
 def fast_times(text):
     """board_added.yml の job emblem のログ（library_emblem.fresh_main の「速い道の時刻」の行）→ [{board, claim, first, write, page}]（起きてからの秒）。"""
     out = []
     for m in FAST_RE.finditer(text or ""):
-        out.append({"board": int(m.group(1)), **{k: (int(v) if v else None) for k, v in zip(("claim", "first", "write", "page"), m.groups()[1:])}})
+        g = m.groups()
+        out.append({"board": int(g[0]), **{k: (int(v) if v else None) for k, v in zip(("claim", "first", "write", "page"), g[1:5])},
+                    "why": g[5] or ("小元素あり" if g[2] else "失敗")})   # 結果の無い前の行：1 枚目があれば小元素あり
     return out
 
 
@@ -535,13 +552,20 @@ def cmd_fastlog(a):
         log = subprocess.run(["gh", "run", "view", str(r["databaseId"]), "--log"], capture_output=True, text=True, encoding="utf-8").stdout
         for x in fast_times(log):
             rows.append({"run": r["databaseId"], "at": r["createdAt"], **x})
-            if x["page"] is None or x["page"] >= limit:
+            # 赤：「候補が通らず」「候補なし」（上限まで試して 0 枚＝別に数える）でない版面のうち、ページが目標の秒に届かないもの。
+            # 小元素ありの遅れも、時間切れ・失敗（例外・rembg が入らない）も赤（見直し 5：小元素ありだけを見ると時間切れ・失敗が赤にならなかった）
+            if x["why"] not in FAST_ZERO and (x["page"] is None or x["page"] >= limit):
                 red.append(rows[-1])
     print(json.dumps(rows, ensure_ascii=False, indent=1))
+    mix = {}
+    for x in rows:
+        mix[x["why"]] = mix.get(x["why"], 0) + 1
+    ok = [x["page"] for x in rows if x["why"] == "小元素あり" and x["page"] is not None]
+    print("速い道の結果：" + "・".join(f"{k} {v}" for k, v in sorted(mix.items())) + (f"・小元素ありのページ 最長 {max(ok)} 秒" if ok else ""))
     for x in red:
-        print(f"赤 速い道 run {x['run']} 版面 {x['board']}：ページ {x['page']} 秒（起きてから {limit} 秒未満が目標）")
+        print(f"赤 速い道 run {x['run']} 版面 {x['board']}：{x['why']}・ページ {x['page']} 秒（起きてから {limit} 秒未満が目標）")
     cur = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
-    cur["fast"] = {"at": iso(now()), "limit_s": limit, "rows": rows, "red": len(red)}
+    cur["fast"] = {"at": iso(now()), "limit_s": limit, "rows": rows, "red": len(red), "mix": mix}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(cur, ensure_ascii=False, indent=1), encoding="utf-8")
 

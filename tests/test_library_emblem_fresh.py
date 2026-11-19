@@ -145,6 +145,129 @@ class FreshFill(unittest.TestCase):
         self.assertTrue(le.due([{"id": 11, "config": {**self.board["config"], **add}}], NOW))
 
 
+class Continue(unittest.TestCase):
+    """2026-11-19 本番の実測 2 回目：先頭 3 人を 1 回試して 0 枚のまま、上限を 65 秒以上残して終わった → 上限まで名簿の続きを試す。"""
+    board = {"id": 21, "name": "x", "wd": None, "config": {"keywords": ["x"], "emblem_claim": NOW}}
+
+    def run_fill(self, passes):
+        """passes = [(試す人, 候補の数, 使えた数, 小元素を書くか)]。fill は 1 回ごとに次を返す。"""
+        seen = []
+
+        def fake(item, log=None):
+            i = len(seen)
+            seen.append(list(item.get("_skip") or []))
+            want, found, usable, write = passes[min(i, len(passes) - 1)]
+            if write:
+                import emblem
+                emblem.write_item(item["name"], [{"subject": want[0], "image": "https://e.org/a.png", "shape": "badge"}], None)
+            return {"state": "failed", "note": "x", "want": want, "funnel": {"found": found, "usable": usable}, "material": "m"}
+        add = le.fresh_fill(self.board, {"section": "游戏"}, lambda n, d: None, BASE, time.time() + 600, fill=fake, now=NOW)
+        return add, seen
+
+    def test_next_people_until_one_passes(self):
+        add, seen = self.run_fill([(["A", "B", "C"], 4, 2, False), (["D", "E", "F"], 3, 1, True)])
+        self.assertEqual(seen, [[], ["A", "B", "C"]])   # 2 回目は試した人を飛ばして続きから
+        st = add["emblem_state"]
+        self.assertEqual((st["state"], st["have"], st["passes"]), ("running", 1, 2))
+        self.assertNotIn("m", st)
+        self.assertEqual(st.get("rounds", 0), 0)   # 回の番号は進めない
+        self.assertEqual(le.fresh_why(st), "小元素あり")
+
+    def test_keys_found_in_the_first_pass_are_written(self):
+        """見直し 2：fill_board は渡した config と違う鍵だけ返す。2 回目からは 1 回目の結果を足した config と比べるので、
+        積まないと 1 回目に見つけた名簿・分類・reject が DB に書かれなかった。"""
+        n = [0]
+
+        def fake(item, log=None):
+            n[0] += 1
+            if n[0] == 1:
+                p = emblem_fill.ROOT / "items.yaml"
+                p.write_text(p.read_text(encoding="utf-8") + '    emblem_who: ["A","B","C","D","E","F","G"]\n    emblem_category: "Main"\n'
+                             '    emblem_reject: ["https://e.org/bad.png"]\n', encoding="utf-8")
+            return {"state": "failed", "note": "x", "want": ["A", "B", "C"] if n[0] == 1 else ["D", "E", "F"], "funnel": {"found": 1, "usable": 0}}
+        add = le.fresh_fill(self.board, {"section": "游戏"}, lambda n, d: None, BASE, time.time() + 600, fill=fake, now=NOW)
+        self.assertGreaterEqual(n[0], 2)
+        self.assertEqual(add.get("emblem_who"), ["A", "B", "C", "D", "E", "F", "G"])
+        self.assertEqual(add.get("emblem_category"), "Main")
+        self.assertEqual(add.get("emblem_reject"), ["https://e.org/bad.png"])
+        self.assertNotIn("_skip", add)   # 見直し 7：一時の場所の印は config に書かない
+
+    def test_whole_roster_without_a_pass_is_rejected_not_fingerprinted(self):
+        add, seen = self.run_fill([(["A", "B", "C"], 2, 1, False), (["D"], 1, 0, False), (["A"], 0, 0, False)])
+        st = add["emblem_state"]
+        self.assertEqual(len(seen), 3)   # 名簿が尽きる（試す人が試した人だけ）まで
+        self.assertEqual(st["fast_tried"], ["A", "B", "C", "D"])   # 見回りの列は続きから（同じ人を試し直さない）
+        self.assertEqual(st["fast_why"], "rejected")   # 候補はあったが 1 枚も通らなかった
+        self.assertEqual(st["seen"], [3, 1])
+        self.assertNotIn("m", st)
+        self.assertEqual(le.fresh_why(st), "候補が通らず")
+        self.assertTrue(le.due([{"id": 21, "config": {**self.board["config"], **add}}], NOW))   # 列がすぐ拾う
+
+    def test_no_candidates_is_counted_apart(self):
+        add, _ = self.run_fill([(["A"], 0, 0, False)])
+        self.assertEqual(add["emblem_state"]["fast_why"], "none")
+        self.assertEqual(le.fresh_why(add["emblem_state"]), "候補なし")
+
+    def test_stops_when_little_time_is_left(self):
+        with mock.patch.object(le, "FRESH_PASS_MIN_S", 10 ** 6):
+            add, seen = self.run_fill([(["A", "B", "C"], 1, 0, False), (["D"], 1, 1, True)])
+        self.assertEqual(len(seen), 1)
+
+    def test_skip_is_kept_until_the_roster_is_done(self):
+        c = {"keywords": ["x"]}
+        b = {"id": 21, "name": "x", "wd": None, "config": {**c, "emblem_state": {"state": "failed", "have": 0, "fast_tried": ["A"], "fast_key": le.fast_key(c),
+                                                                                "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "v": le.RULES}}}
+        up = lambda n, d: None  # noqa: E731
+        add = le.fill_board(b, {"section": "生活"}, up, BASE, fill=lambda item, log=None: {"state": "failed", "note": "時間切れ"}, now=NOW)
+        self.assertEqual(add["emblem_state"]["fast_tried"], ["A"])   # 時間切れ（指紋なし）：まだ飛ばす
+        add = le.fill_board(b, {"section": "生活"}, up, BASE, fill=lambda item, log=None: {"state": "failed", "note": "0 枚"}, now=NOW)
+        self.assertNotIn("fast_tried", add["emblem_state"])   # 1 周して指紋が付いた：消して、日に 1 回の試し直しに入れる
+
+    def test_skip_ends_when_rules_or_material_change(self):
+        """見直し 3：規則の版（RULES・NAMES_V・BROKEN_V）や材料（emblem_urls・site・emblem_reject）が変わったら、速い道が試した人も試し直す。"""
+        c = {"keywords": ["x"]}
+        st = {"state": "running", "have": 1, "fast_tried": ["A", "B"], "fast_key": le.fast_key(c)}
+        b = lambda cc: {"id": 21, "name": "x", "wd": None, "config": {**cc, "emblem_state": st}}  # noqa: E731
+        self.assertIn("_skip", le.board_item(b(c), {"section": "游戏"}))
+        self.assertNotIn("_skip", le.board_item(b({**c, "emblem_reject": ["https://e.org/bad.png"]}), {"section": "游戏"}))   # 材料が変わった
+        self.assertNotIn("_skip", le.board_item(b({**c, "site": "https://official.example"}), {"section": "游戏"}))
+        with mock.patch.object(le, "RULES", le.RULES + 1):
+            self.assertNotIn("_skip", le.board_item(b(c), {"section": "游戏"}))   # 規則の版が上がった
+        with mock.patch.object(emblem_fill, "NAMES_V", emblem_fill.NAMES_V + 1):
+            self.assertNotIn("_skip", le.board_item(b(c), {"section": "游戏"}))
+
+    def test_queue_does_not_skip_a_missing_lead(self):
+        """見直し 3：名簿の先頭で欠けた主役は、速い道が試していても見回りの列は飛ばさない（「欠けた主役を毎回先に」E15・BLEACH Rukia）。
+        速い道の中（FIRST_STOP）は飛ばして続きへ進む。"""
+        it = {"name": "x", "emblem_who": ["A", "B", "C", "D", "E", "F"], "emblem_kind": "character", "_round": 0, "_skip": ["A", "B", "C"],
+              "emblem": [{"subject": "B", "image": "https://e.org/b.png"}]}
+        step, first = emblem_fill.STEP, emblem_fill.FIRST_STOP
+        try:
+            emblem_fill.STEP = 3
+            emblem_fill.FIRST_STOP = False
+            got = emblem_fill.subjects(dict(it), "character", 200)
+            self.assertIn("A", got)          # 欠けた主役（先頭 3 人で小元素が無い）は戻る
+            self.assertNotIn("B", got)       # もういる人は今までどおり外れる
+            emblem_fill.FIRST_STOP = True
+            self.assertNotIn("A", emblem_fill.subjects(dict(it), "character", 200))
+        finally:
+            emblem_fill.STEP, emblem_fill.FIRST_STOP = step, first
+
+    def test_queue_skips_people_the_fast_path_tried(self):
+        c = {"keywords": ["x"]}
+        b = {"id": 21, "name": "x", "wd": None, "config": {**c, "emblem_state": {"state": "failed", "have": 0, "fast_tried": ["A", "B"], "fast_key": le.fast_key(c)}}}
+        self.assertEqual(le.board_item(b, {"section": "游戏"})["_skip"], ["A", "B"])
+        step = emblem_fill.STEP
+        it = {"name": "x", "emblem_who": ["A", "B", "C", "D", "E", "F", "G"], "emblem_kind": "character", "_round": 0, "_skip": ["D", "E"],
+              "emblem": [{"subject": w, "image": f"https://e.org/{w}.png"} for w in ("A", "B", "C")]}   # 主役はそろっている
+        try:
+            emblem_fill.STEP = 2
+            got = emblem_fill.subjects(it, "character", 200)
+        finally:
+            emblem_fill.STEP = step
+        self.assertEqual(got, ["F", "G"])   # 速い道が試した D・E を飛ばして続きから
+
+
 class Loop(unittest.TestCase):
     def run_loop(self, appear, wait=240, minutes=9, results=None, upstream=None, shard=0):
         """appear = {時刻（秒）: [版面]}：その時刻から DB に現れる。upstream = 時刻 → True／False／None（board の job の様子）。"""
@@ -307,8 +430,14 @@ class Budget(unittest.TestCase):
     def test_budget_fits_under_five_minutes(self):
         total = sum(s for _, s in le.FRESH_BUDGET)
         self.assertLess(total, le.FRESH_TOTAL_S)                        # 300 秒「未満」
-        self.assertLessEqual(total + le.FRESH_SPARE_S, le.FRESH_TOTAL_S)   # 余り 60 秒を残す（240 + 60 ≤ 300）
+        self.assertLessEqual(total + le.FRESH_SPARE_S, le.FRESH_TOTAL_S)   # 余りを残す（250 + 50 ≤ 300）
+        self.assertGreaterEqual(le.FRESH_SPARE_S, 50)
         self.assertEqual(le.FRESH_TOTAL_S, 300)
+        self.assertEqual(dict(le.FRESH_BUDGET)["kick"], 20)   # 見直し 12：本番 1 回の 8 秒だけでは縮めない（推測の上限 20）
+        rules = (pathlib.Path(__file__).resolve().parent.parent / "docs" / "rules" / "emblem.md").read_text(encoding="utf-8")
+        self.assertIn("道具（rembg）を待つ上限は job 全体で 120 秒", rules)   # 見直し 11：決まりの文から消さない
+        self.assertIn("前の結果が足りない人はふつうに作る（ページを悪くしない方が先）", rules)   # 経緯を残す
+        self.assertEqual(le.FRESH_TOOLS_S, 120)
         self.assertEqual([k for k, _ in le.FRESH_BUDGET], ["kick", "setup", "first", "write", "page"])
         self.assertEqual(le.FRESH_BOARD_S, dict(le.FRESH_BUDGET)["first"])   # 1 版面の上限は割り当ての「1 枚目」
         self.assertLessEqual(le.FRESH_BOARD_S, 90)
@@ -380,7 +509,7 @@ class FreshMain(unittest.TestCase):
                 mock.patch.object(le, "pages_runner", runner), \
                 mock.patch.object(le, "board_job_done", lambda: True), \
                 mock.patch.object(le, "run_started", lambda: None), \
-                mock.patch.object(le, "warm", lambda: log.append(("warm",))):
+                mock.patch.object(le, "warm", lambda face=True: log.append(("warm", face))):
             le.fresh_main(["--fresh", "--wait", "0", "--minutes", "5", "--pages-dir", d] + (["--tools", tools] if tools else []))
             out = (pathlib.Path(d) / "o").read_text()
         self.rows = rows
@@ -388,7 +517,7 @@ class FreshMain(unittest.TestCase):
 
     def test_each_board_is_written_then_its_page_right_away(self):
         log, out = self.run_main([{"id": 1, "name": "a", "config": {}}, {"id": 2, "name": "b", "config": {}}])
-        log = [x for x in log if x != ("warm",)]
+        log = [x for x in log if x[0] != "warm"]
         self.assertEqual(log, [("fill", 1, "生活"), ("write", 1), ("page", 1), ("fill", 2, "生活"), ("write", 2), ("page", 2)])
         self.assertIn("worked=true", out)
         self.assertIn("more=true", out)   # running：続きは今までの列
@@ -396,8 +525,9 @@ class FreshMain(unittest.TestCase):
     def test_models_are_warmed_once_before_the_first_fill(self):
         # 行が python の起動前にもうある（待つ間が無い）回：模型の読み込み（≈ 40 秒）を 90 秒の上限の中に入れない
         log, _ = self.run_main([{"id": 1, "name": "a", "config": {}}, {"id": 2, "name": "b", "config": {}}])
-        self.assertEqual(log[0], ("warm",))
-        self.assertEqual(log.count(("warm",)), 1)
+        # rembg の切り抜きは python の始めから後ろの糸で（行を待つ間に）、顔の模型（糸ごと）は取る糸で 1 回。どちらも最初の版面の前
+        self.assertEqual(log[:2], [("warm", False), ("warm", True)])
+        self.assertEqual(sum(1 for x in log if x[0] == "warm"), 2)
         src = inspect.getsource(le.fresh_fill)
         self.assertIn("time.time() + FRESH_BOARD_S", src)   # 上限の時計は fresh_fill の始め＝warm の後から
 
@@ -408,23 +538,29 @@ class FreshMain(unittest.TestCase):
 
     def test_route_ab_ends_without_taking(self):
         log, out = self.run_main([])
-        self.assertEqual(log, [])   # 経路 A/B：版面を取らないので模型も読まない
+        self.assertEqual(log, [])   # 経路 A/B：版面を取らない・足したばかりの名前も無いので模型も読まない（見直し 10）
+
+    def test_models_start_early_when_new_names_are_waiting(self):
+        # 足したばかりでまだ版面になっていない名前がある：行が見える前から後ろで読み始める（F3 の効きを保つ）
+        with mock.patch.object(le, "_waiting", lambda db, now, unknown=0: 1):
+            log, out = self.run_main([])
+        self.assertEqual(log, [("warm", False)])
         self.assertIn("worked=false", out)
         self.assertIn("more=false", out)
 
     def test_one_failure_does_not_stop_writing(self):
         log, _ = self.run_main([{"id": 1, "name": "a", "config": {}}], fill_error=RuntimeError("x"))
-        self.assertEqual([x for x in log if x != ("warm",)], [("write", 1)])   # 失敗も書く（指紋なしの failed・印を外す）＝次の見回りですぐ
+        self.assertEqual([x for x in log if x[0] != "warm"], [("write", 1)])   # 失敗も書く（指紋なしの failed・印を外す）＝次の見回りですぐ
 
     def test_one_500_on_read_does_not_stop(self):
         # DB は店長の PC（Tailscale 経由）：一瞬の 500 で shard ごと落ちない。「無い」とも決めない（board の job が終わっていても）
         log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], read_fail={0})
-        self.assertEqual([x for x in log if x != ("warm",)][:2], [("fill", 1, "生活"), ("write", 1)])
+        self.assertEqual([x for x in log if x[0] != "warm"][:2], [("fill", 1, "生活"), ("write", 1)])
         self.assertIn("worked=true", out)
 
     def test_reads_keep_failing_ends_with_outputs(self):
         log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], read_fail=set(range(50)))
-        self.assertEqual(log, [])
+        self.assertEqual([x for x in log if x[0] != "warm"], [])
         self.assertIn("worked=false", out)
         self.assertIn("more=true", out)   # 読めないまま：続きは列へ
 
@@ -440,7 +576,7 @@ class FreshMain(unittest.TestCase):
 
     def test_claim_error_does_not_crash(self):
         log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], claim_fail=True)
-        self.assertEqual(log, [])
+        self.assertEqual([x for x in log if x[0] != "warm"], [])
         self.assertIn("more=true", out)
 
     def test_tools_wait_is_one_limit_for_the_whole_job(self):
@@ -466,6 +602,8 @@ class FreshMain(unittest.TestCase):
             self.run_main([{"id": 41, "name": "秘密の名前", "config": {}}])
         s = buf.getvalue()
         self.assertIn("速い道の時刻 版面 41：取り始め +", s)
+        self.assertIn("速い道の待ち 版面 41：行が見えた +", s)   # 待ちの内訳（行・rembg・模型・印）
+        self.assertIn("・模型 +", s)
         self.assertIn("・ページ +", s)
         self.assertNotIn("秘密の名前", s)
 
@@ -505,6 +643,29 @@ class Upstream(unittest.TestCase):
             f.write_text("done=1\n")   # rembg が入らなくても終わりの印で進む（取るときは EnvFail＝指紋なし）
             self.assertTrue(le.tools_ready(str(f)))
         self.assertTrue(le.tools_ready(None))
+
+
+class WarmThread(unittest.TestCase):
+    def test_main_thread_output_survives_background_warm(self):
+        """見直し 4：redirect_stdout は python 全体に効く。後ろの糸が模型を読んでいる間の元の糸の print が捨てられていた。"""
+        import contextlib
+        import io
+        import types
+        started, go = threading.Event(), threading.Event()
+
+        def slow(name):
+            started.set()
+            go.wait(5)
+        fake = types.SimpleNamespace(_session=slow)
+        buf = io.StringIO()
+        with mock.patch.dict(sys.modules, {"emblem": fake}), contextlib.redirect_stdout(buf):
+            th = threading.Thread(target=le.warm, kwargs={"face": False})
+            th.start()
+            started.wait(5)
+            print("元の糸の行")
+            go.set()
+            th.join(5)
+        self.assertIn("元の糸の行", buf.getvalue())
 
 
 class WaitingPicks(unittest.TestCase):

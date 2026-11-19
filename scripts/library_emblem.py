@@ -181,8 +181,11 @@ def board_item(board, follow, get=None):
     item.update(name=board["name"], type=user_pages.TYPE_OF_SEC.get(sec, "category"),
                 keywords=cfg.get("keywords") or [board["name"]])
     item.setdefault("emblem_kind", kind_for(sec, (follow or {}).get("subs"), human))
-    item["_round"] = rounds_of(cfg)   # 店長と同じ：名簿の残りを STEP 人ずつ順に 1 周する
     import emblem_fill
+    item["_round"] = rounds_of(cfg)   # 店長と同じ：名簿の残りを STEP 人ずつ順に 1 周する
+    skip = (cfg.get("emblem_state") or {}).get("fast_tried")
+    if skip and (emblem_fill.FIRST_STOP or skip_valid(cfg)):   # 速い道が試した人は、見回りの列も試し直さない（規則の版・材料が変わったら・名簿を 1 周したら消える：fill_board）
+        item["_skip"] = list(skip)
     item["_recount"] = (cfg.get("emblem_state") or {}).get("nv") != emblem_fill.NAMES_V   # 店長と同じ：名簿の規則の版が上がったら、名簿がそろっていても 1 回数え直す（NAMES_V 14 の種族・物がスプラ 3 の名簿に残った）
     if item["emblem_kind"] == "character":   # 名簿（roster）と Fandom の立ち絵の手がかり。前の回に書いたもの・店長の手書きが先
         if wd.get("anilist") and str(wd["anilist"]).isdigit():
@@ -438,8 +441,20 @@ def measure_faces(emblems, fetch=None):
     return out, emblem_face.measure_emblems(out, load)
 
 
-def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch=None):
-    """版面 1 つ → boards.config に足す分 {emblem, theme, emblem_*, emblem_state}。"""
+def fast_key(c):
+    """速い道が試した人（emblem_state.fast_tried）を作った時の規則の版と材料の指紋。変わったら飛ばすのをやめる（新しい規則・手がかりで試し直す）。"""
+    import emblem_fill
+    return {"v": RULES, "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V, "m": material(c)}
+
+
+def skip_valid(c):
+    """見回りの列が fast_tried を飛ばしてよいか：作った時の規則の版・材料のまま。"""
+    st = (c or {}).get("emblem_state") or {}
+    return bool(st.get("fast_tried")) and st.get("fast_key") == fast_key(c)
+
+
+def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch=None, result=None):
+    """版面 1 つ → boards.config に足す分 {emblem, theme, emblem_*, emblem_state}。result（dict）に fill の答え（want・funnel・note）を入れる。"""
     import emblem
     import emblem_fill
     import yaml
@@ -453,6 +468,8 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
                 r = fill(item, log=lambda *a, **k: None)
             except emblem_fill.OutOfTime:
                 r = {"state": "failed", "note": "時間切れ"}
+        if result is not None:
+            result.update(r)
         got = (yaml.safe_load((root / "items.yaml").read_text(encoding="utf-8"))["items"] or [{}])[0]
         st0 = (board.get("config") or {}).get("emblem_state") or {}
         recheck = int(st0.get("bv") or 0) < emblem_fill.BROKEN_V or (drop_gone_on() and int(st0.get("gv") or 0) < GONE_V)
@@ -479,7 +496,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
             got["emblem"], _ = official_swap_board({**item, **got}, got["emblem"], fetch)
         stem = board.get("wd") or f"b{board['id']}"
         cfg = board.get("config") or {}
-        add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}
+        add = {k: v for k, v in got.items() if k not in KEEP and k != "_skip" and v != cfg.get(k)}   # _skip は一時の場所の印（config に書かない）
         if touched and (pend or cfg.get("emblem_closeup")):
             add.update(closeup_fields(pend, item.get("emblem_who") or []))
         if got.get("emblem"):
@@ -532,6 +549,10 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
         add["emblem_state"]["rounds"] = rounds_of(cfg) + 1   # 回の通し番号（規則の版が変わると 0 から）
     if add["emblem_state"]["state"] == "failed" and not env:   # 材料の指紋を残す（時間切れ・例外・環境の失敗は残さない＝次の見回りですぐ）
         add["emblem_state"]["m"] = material({**cfg, **add})
+    ft = st0.get("fast_tried")
+    if ft and add["emblem_state"]["state"] != "ok" and skip_valid(cfg) and ("m" not in add["emblem_state"] or passes_left({"config": {**cfg, **add}}) > 0):
+        add["emblem_state"]["fast_tried"] = ft   # 速い道が試した人：名簿を 1 周するまで・規則の版と材料が同じ間は飛ばし続ける（1 周したら消して、日に 1 回の試し直しには入れる）
+        add["emblem_state"]["fast_key"] = st0.get("fast_key")
     return add
 
 
@@ -734,9 +755,12 @@ FRESH_AGE_S = 6 * 3600   # 速い道の「最近足された」：作られて�
 # board の job が行を挿すのも ≈ 50 秒なので重なる）。1 枚目：前は 1 版面 150 秒の上限をほぼ毎回使った（9 分 38 秒で 4 版面）→
 # 1 枚目が通ったらそこで書く（emblem_fill.FIRST_STOP）＋上限 90 秒。書く：公開の箱へ上げる＋config ≈ 2〜5 秒。
 # ページ：小元素だけの作り直し（user_pages.py --emblem-only、前の測った結果を使う）45 秒。前は 92 秒（記事の写真と写真の測りをし直していた）。
-FRESH_BUDGET = (("kick", 20), ("setup", 80), ("first", 90), ("write", 5), ("page", 45))
-FRESH_TOTAL_S = 300      # 目標（未満）。割り当ての合計 240 は、これから FRESH_SPARE_S を引いた分まで（合計 + 余り ≤ 300。tests が数える）
-FRESH_SPARE_S = 60
+# 直し 2 回目（2026-11-19 本番 run 44474603849：足して 8 秒で run・python +35〜47・行 +31〜79・取り始め +118〜138・1 枚目まで 78・書く 11・ページ 153）：
+# 起こす 20（本番 1 回の 8 秒しか根拠が無いので、推測の上限 20 のまま。見直し 12）・用意と待ち 90（rembg を用意の段で・模型は python の始めから後ろで）・1 枚目 90（上限まで名簿の続きを試す）・書く 5・
+# ページ 45（前のページ＋小元素・網に出ない・読みを絞って並べる）。目安 取り始め +100 → 1 枚目 +190 → 書く +200 → ページ +245。合計 250・余り 50。
+FRESH_BUDGET = (("kick", 20), ("setup", 90), ("first", 90), ("write", 5), ("page", 45))
+FRESH_TOTAL_S = 300      # 目標（未満）。割り当ての合計 250 は、これから FRESH_SPARE_S を引いた分まで（合計 + 余り ≤ 300。tests が数える）
+FRESH_SPARE_S = 50
 # ログの秒（「速い道の時刻」の +s）は run の created_at（GitHub が dispatch を受けた時刻）から数える。割り当ての「起こす 20」（dispatch → runner）は
 # この秒の中に入っている。足した時刻 → created_at（DB の net.http_post が GitHub に届くまで）は推測 5 秒。だからログの秒の目標（未満）は
 # FRESH_TOTAL_S − FRESH_ADD_TO_RUN_S ＝ 295 秒。目標の秒の決め方はここ 1 か所（harness/board_kpi.py fastlog が読む）
@@ -749,8 +773,9 @@ FRESH_POLL_S = 5         # 版面の行（library.py --users が作る）が DB 
 FRESH_UP_S = 15          # 同じ run の board の job（library.py --users）が終わったかを GitHub に聞く間隔（3 つ並べて 1 回 2 分なら 24 回：GITHUB_TOKEN の 1 時間 1000 回に余裕）
 FRESH_GRACE_S = 90       # board の job の様子が分からない（API が読めない）とき：これだけ待っても来ず、足したばかりの名前（added_at）も無ければ終える
 FRESH_QUIET_S = 60       # 同じく分からないとき：1 つでも取ったあと、新しい版面がこれだけ来なければ終える
-FRESH_TOOLS_S = 120      # 後ろで入れる rembg を待つ上限（job 全体で 1 つ：python が始まってから。過ぎても入らなければ取らずに列へ）
+FRESH_TOOLS_S = 120      # rembg が使えるようになる（--tools の rembg_done=1。いまは用意の段で入れるので始めから）のを待つ上限（job 全体で 1 つ：python が始まってから。過ぎても使えなければ取らずに列へ）
 FRESH_TAIL_S = 30        # 締め切りのこの秒数前からは新しい版面を始めない
+FRESH_PASS_MIN_S = 10    # 1 版面の上限の残りがこれより少なければ、名簿の続きの人を始めない（始めても時間切れになるだけ）
 FRESH_DB_FAILS = 6       # 版面の読みが続けてこの回数（5 秒おき＝30 秒）失敗したら、数を出して終える（DB は店長の PC・Tailscale 経由：一瞬の 5xx・時間切れはありうる）
 RECENT_PICK_S = 900      # board の job の様子が分からないとき：足してからこの間で、まだどの版面の名前にも当たらない名前があれば「来る」と見て待つ
 
@@ -846,12 +871,17 @@ def tools_ready(path):
     return "rembg_done=1" in lines or "done=1" in lines
 
 
-def warm():
+def warm(face=True):
     """待っている間に重い模型（rembg の切り抜き・顔）を先に読む。1 枚目の版面の時間から読み込みの 40 秒ほどを外す（2026-11-19 run 2：
-    --fresh の最初の 40 秒は onnxruntime の読み込みまで何も出ていなかった）。読めなくても何もしない（取るときに今までどおり読む）。"""
-    for f in (lambda: __import__("emblem")._session("birefnet-general-lite"), lambda: __import__("face_id").engine()):
+    --fresh の最初の 40 秒は onnxruntime の読み込みまで何も出ていなかった）。読めなくても何もしない（取るときに今までどおり読む）。
+    face=False は rembg の切り抜きだけ（後ろの糸で読む：顔の模型は糸ごとに持つので、取る糸＝main で読む。face_id.engine）。"""
+    # 後ろの糸（face=False）では出力を切り替えない：redirect_stdout／stderr は糸ごとでなく python 全体の sys.stdout を替えるので、
+    # 読んでいる間の元の糸の print・traceback まで捨てていた（見直し 4）。rembg の出力（模型の取り込みの行）はそのまま出す（版面の名前は無い）
+    for f in (lambda: __import__("emblem")._session("birefnet-general-lite"), lambda: __import__("face_id").engine()) if face else \
+            (lambda: __import__("emblem")._session("birefnet-general-lite"),):
         try:
-            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            with (contextlib.redirect_stdout(io.StringIO()) if face else contextlib.nullcontext()), \
+                    (contextlib.redirect_stderr(io.StringIO()) if face else contextlib.nullcontext()):
                 f()
         except Exception:  # noqa: BLE001
             pass
@@ -890,20 +920,78 @@ def fresh_limits(end):
         emblem_fill.STEP, emblem_fill._deadline[0], emblem_fill.FIRST_STOP = saved
 
 
+def _memo_get(get):
+    """Wikidata の読みを 1 版面の間だけ覚える（速い道が名簿の続きへ進むたびに同じ項目を読み直さない）。断られたら WdBlocked のまま。"""
+    import library
+    get = get or library._wd_get
+    box = {}
+
+    def mget(params):
+        k = json.dumps(params, sort_keys=True, ensure_ascii=False)
+        if k not in box:
+            box[k] = get(params)
+        return box[k]
+    return mget
+
+
+def fresh_why(st):
+    """速い道の 1 版面の結果の分け方（ログ・KPI。board_kpi.py が同じ言葉で数える）：
+    小元素あり／候補が通らず（候補はあったが検査を 1 枚も通らなかった）／候補なし（候補そのものが無い）／時間切れ（試している途中で上限）／失敗（例外・道具）。"""
+    if int(st.get("have") or 0) > 0:
+        return "小元素あり"
+    if st.get("fast_why") == "rejected":
+        return "候補が通らず"
+    if st.get("fast_why") == "none":
+        return "候補なし"
+    if st.get("note") == "時間切れ":
+        return "時間切れ"
+    return "失敗"
+
+
 def fresh_fill(board, follow, upload, base, end, fill=None, get=None, now=None, fetch=None):
-    """速い道の版面 1 つ → config に足す分。中身は fill_board（店長と同じ規則）を FRESH_STEP 人・FRESH_BOARD_S 秒で。
-    そろわなかったら：名簿の先頭だけを試したので「届かなかった」とは言えない → 材料の指紋 m を残さず回の番号も進めない
-    （見回りの列が名簿の先頭から STEP 人ずつすぐ続ける）。1 枚でも取れていれば running（列の「途中」）。"""
+    """速い道の版面 1 つ → config に足す分。中身は fill_board（店長と同じ規則）を FRESH_STEP 人ずつ・合わせて FRESH_BOARD_S 秒まで。
+    2026-11-19 本番の実測 2 回目：名簿の先頭 3 人を 1 回試して 0 枚のまま、上限を 65 秒以上残して終わっていた → 1 枚目が検査を通るか上限が来るまで、
+    名簿の続きを FRESH_STEP 人ずつ試し続ける（試した人は emblem_state.fast_tried に積み、次の回は subjects が飛ばす＝同じ人を試し直さない。検査は同じ）。
+    そろわなかったら：名簿の一部だけを試したので「届かなかった」とは言えない → 材料の指紋 m を残さず回の番号も進めない
+    （見回りの列は、速い道が試した人を飛ばして続きから STEP 人ずつ）。1 枚でも取れていれば running（列の「途中」）。
+    0 枚なら fast_why に「候補はあったが通らなかった（rejected）」か「候補そのものが無い（none）」、seen に [候補, 使えた候補] を足す。"""
     rounds0 = rounds_of(cfg(board))
-    with fresh_limits(min(end, time.time() + FRESH_BOARD_S)):
-        add = fill_board(board, follow, upload, base, fill=fill, get=get, now=now, fetch=fetch)
-    st = add["emblem_state"]
+    stop = min(end, time.time() + FRESH_BOARD_S)
+    get = _memo_get(get)
+    b, tried, found, usable, passes = board, [], 0, 0, 0
+    acc = {}   # 回ごとの差を積む（fill_board は「渡した config と違う鍵」だけ返す：2 回目からは 1 回目の結果を足した config と比べるので、積まないと 1 回目の名簿・分類・reject が書かれない）
+    while True:
+        res = {}
+        with fresh_limits(stop):
+            add = fill_board(b, follow, upload, base, fill=fill, get=get, now=now, fetch=fetch, result=res)
+        passes += 1
+        acc.update({k: v for k, v in add.items() if k != "emblem_state"})
+        st = add["emblem_state"]
+        fun = res.get("funnel") or {}
+        found, usable = found + int(fun.get("found") or 0), usable + int(fun.get("usable") or 0)
+        want = [w for w in res.get("want") or [] if w not in tried]
+        tried += want
+        if (int(st.get("have") or 0) > 0 or st.get("state") == "ok" or res.get("note") == "時間切れ" or res.get("env")
+                or not want or stop - time.time() < FRESH_PASS_MIN_S):
+            break
+        # 次の人へ：この回の手がかり（名簿・分類など）を引き継ぎ、回の番号は進めず、試した人を積む
+        nxt = {k: v for k, v in st.items() if k not in ("m", "rounds")}
+        if "rounds" in (cfg(b).get("emblem_state") or {}) or rounds0:
+            nxt["rounds"] = rounds0
+        b = {**b, "config": {**cfg(b), **add, "emblem_state": {**nxt, "fast_tried": tried}}}
+    add = {**acc, **add}   # 全部の回の鍵＋最後の回の emblem_state
     if st.get("state") != "ok":
         st.pop("m", None)
         if "rounds" in st:
             st["rounds"] = rounds0
         if st.get("have"):
             st["state"] = "running"
+    if tried and st.get("state") != "ok":
+        st["fast_tried"] = tried   # 見回りの列は続きから（作った時の規則の版・材料と一緒に：変わったら飛ばさない）
+        st["fast_key"] = fast_key({**cfg(board), **add})
+    if not int(st.get("have") or 0) and res.get("note") != "時間切れ" and not res.get("env"):
+        st["fast_why"] = "rejected" if found else "none"
+    st["seen"], st["passes"] = [found, usable], passes
     st["fast"] = 1   # 速い道で始めた印（点検・KPI 用。規則は見ない）
     add["emblem_claim"] = None
     return add
@@ -1044,6 +1132,24 @@ def fresh_main(argv):
     marks = {}   # 版面 id → {claim, first, write, page}（起きてからの秒）
     start_pages, finish_pages = pages_runner(argv[argv.index("--pages-dir") + 1]) if "--pages-dir" in argv else (None, None)
     warmed = [False]
+    import threading
+    waits = {"row": None, "rembg": None, "model": None}   # 待ちの内訳（起きてからの秒）：行が見えた・rembg が使える・模型を読み終えた
+    bg = [None]   # 模型を後ろで読む糸（python の始めから。行を待つ間に済ませる）
+
+    # 経路 A/B（新しい版面が来ない回）で 3 本とも模型を読まないように：足したばかりでまだ版面になっていない名前がある（読めなければ「ある」）か、
+    # 版面の行が見えたら読み始める（見直し 10。行は board の job が +31〜79 秒に書くので、名前があればすぐ読み始めて F3 の効きを保つ）
+    armed = [_waiting(db, time.time(), unknown=1) > 0]
+
+    def start_warm():
+        if armed[0] and bg[0] is None and tools_ready(tools):
+            waits["rembg"] = waits["rembg"] or at()
+
+            def run():
+                warm(face=False)
+                waits["model"] = at()
+            bg[0] = threading.Thread(target=run, daemon=True)
+            bg[0].start()
+    start_warm()
 
     tools_stop = t0 + FRESH_TOOLS_S   # 待つ上限は job 全体で 1 つ（版面ごとに 120 秒ずつ待たない）
 
@@ -1053,17 +1159,25 @@ def fresh_main(argv):
             time.sleep(1)
         if not tools_ready(tools):   # 入れ終わらない：入れている途中に import しない。取らずに列へ
             return False
+        armed[0] = True
+        start_warm()
+        if bg[0] is not None:
+            bg[0].join()   # 後ろで読んでいる模型を待つ（同じ模型を 2 本で読まない）
         idle()   # 版面の行が python より先にある回（待つ間が無い）も、模型は 1 回だけ先に読む。1 版面の上限の時計は fresh_fill の中＝この後から
         return True
 
     def idle():
-        if not warmed[0] and tools_ready(tools):
+        start_warm()
+        if not warmed[0] and bg[0] is not None and not bg[0].is_alive():
             warmed[0] = True
-            warm()
+            warm()   # 顔の模型（糸ごと）はこの糸で。rembg の切り抜きはもう読んである
 
     def list_fresh():
         try:
             got = fresh_boards(db, time.time(), shop)
+            if got and not waits["row"]:
+                waits["row"] = at()
+                armed[0] = True
         except Exception:  # noqa: BLE001  一瞬の失敗は [] で続ける。続けて FRESH_DB_FAILS 回なら終える
             counts["read"] += 1
             streak[0] += 1
@@ -1098,6 +1212,9 @@ def fresh_main(argv):
             counts["tools"] += 1
             unclaim(b["id"])
             return None
+        if not m.get("ready"):
+            m["ready"] = at()
+            print(f"速い道の待ち 版面 {b['id']}：行が見えた {waits['row'] or '—'}・rembg {waits['rembg'] or '—'}・模型 {waits['model'] or '—'}・印 {m['claim']}・始めた {m['ready']}", flush=True)
         try:
             add = fresh_fill(b, b.get("_follow") or {}, up, base, end)
         except library.WdBlocked:   # 種類が決まらない：書かず、印だけ外して列へ（次の見回り）
@@ -1115,7 +1232,10 @@ def fresh_main(argv):
             m["write"] = f"{at()}（書けず）"
             return None
         m["write"] = at()
-        print(f"速い道 版面 {b['id']}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m['write']}（{have} 枚・{add['emblem_state'].get('state')}）", flush=True)
+        m["why"] = fresh_why(add["emblem_state"])
+        sn = add["emblem_state"].get("seen") or [0, 0]
+        print(f"速い道 版面 {b['id']}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m['write']}（{have} 枚・{add['emblem_state'].get('state')}・"
+              f"{m['why']}・候補 {sn[0]}・使えた候補 {sn[1]}・試した回 {add['emblem_state'].get('passes', 1)}）", flush=True)
         if have and start_pages:
             start_pages(b["id"])   # この版面を追う人のページだけ、すぐ（ほかの版面を待たない）
         return add
@@ -1132,7 +1252,7 @@ def fresh_main(argv):
             for bid, (t, rc) in finish_pages(dict(FRESH_BUDGET)["page"] * 3).items():
                 marks[bid]["page"] = at(t) if rc == 0 else f"{at(t)}（終了 {rc}）"
         for bid, m in marks.items():   # 版面ごとに 1 行：PC の board_kpi が照らせるように（id と秒だけ）
-            print(f"速い道の時刻 版面 {bid}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m.get('write', '—')}・ページ {m.get('page', '—')}", flush=True)
+            print(f"速い道の時刻 版面 {bid}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m.get('write', '—')}・ページ {m.get('page', '—')}・結果 {m.get('why', '失敗')}", flush=True)
         more = bool(r["left"] or rest is None or rest or counts["blocked"] or crash or r.get("stopped") or any(counts[k] for k in ("claim", "write", "tools")))
         _out(worked="true" if r["ids"] else "false", more="true" if more else "false")
     ok = sum(1 for a in r["done"] if a["emblem_state"].get("state") == "ok")
@@ -1142,15 +1262,18 @@ def fresh_main(argv):
           f"{'・読めないので途中で終えた' if r.get('stopped') else ''}{f'・止まった {crash}' if crash else ''}・終わり {at()}")
 
 
-def _waiting(db, now):
-    """board の job の様子が分からないときだけ使う：足したばかりでまだ版面になっていない名前の数（waiting_picks）。読めなければ 0。"""
+def _waiting(db, now, unknown=0):
+    """足したばかりでまだ版面になっていない名前の数（waiting_picks）。board の job の様子が分からないときの終わり方と、模型を読み始めるかに使う。
+    読めなければ unknown（終わり方は 0＝待たない・模型は 1＝読む）。"""
     import userfeed
     try:
         users, _ = userfeed.fetch_all(db, "rpc/userfeed_users", {})
         boards, _ = userfeed.fetch_all(db, "boards?select=name,names&order=id")
+        if users is None:
+            return unknown
         return waiting_picks(users, boards or [], now)
     except Exception:  # noqa: BLE001
-        return 0
+        return unknown
 
 
 def main(argv):
