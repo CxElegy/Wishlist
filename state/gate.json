@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-19T10:39:24+00:00",
+ "changed": true,
+ "checked": "2026-11-19T11:12:15+00:00",
  "fired": {
   "at": "2026-11-19T10:39:24+00:00",
   "results": {
@@ -62,9 +62,10 @@
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
+    "GTA 6",
+    "MMORPG 新作",
     "Vaundy",
-    "gelato pique",
+    "dota2",
     "lib:King Gnu",
     "lib:ガンプラ",
     "lib:キャンプ",
@@ -73,29 +74,29 @@
     "lib:ポケットモンスター",
     "lib:ラーメン",
     "lib:観葉植物",
-    "哈利波特剧集",
+    "三星手机",
+    "周杰伦",
+    "星巴克马克杯",
     "滑雪",
+    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-19T09:57:02+00:00",
+   "last_batch": "2026-11-19T10:48:07+00:00",
    "last_error": {
     "at": "2026-11-18T23:39:22+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 477,
+   "prog": 489,
    "prog_day": "2026-11-19",
    "ripe": [
-    "Astrae Oratio",
-    "gelato pique",
-    "哈利波特剧集",
-    "滑雪",
-    "绝区零"
+    "GTA 6",
+    "漫威电影"
    ],
-   "sig": "a5fec93b879a",
+   "sig": "4f721a8af149",
    "token_cap": 1000000,
-   "tokens_today": 559648,
-   "why": "整理待ちの記事 110 件（15 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 615458,
+   "why": "整理待ちの記事 132 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -236,12 +237,12 @@
    "runs": 14
   },
   "2026-11-19": {
-   "batches": 23,
-   "cr": 11077447,
-   "cw": 506617,
-   "in": 300,
-   "out": 52731,
-   "runs": 9
+   "batches": 24,
+   "cr": 11647924,
+   "cw": 559603,
+   "in": 317,
+   "out": 55538,
+   "runs": 10
   }
  }
 }
