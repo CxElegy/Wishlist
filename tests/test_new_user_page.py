@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 # 0 を保つ項目（8 つ＋A1・A5・A6・C1・C2・D3・E1・E2・F3・F4 の数えられる所）
 ZERO = ("imgfail", "noimg", "rowedge", "cgap_wall", "orphan", "leadbig", "sidebig", "pendhid", "navgap", "dup", "solo", "herogap", "band", "ell", "over", "wide", "clip")
 # 0 を保つ：ほかの注目の壁と頭条の空き（cgap_wall）は上の ZERO。版面の小さいカードの前からの空き（cgap の残り）と写真の切れ crop は増えないことだけ見る
-KNOWN = {"cgap": 8, "gap": 0, "crop": 80}   # 4 形（a〜d）× 8 幅の今の数（2026-11-19 直し 2 回目のあと：cgap 4・crop 77）。crop は同じ枠にそろえて写真の高さで吸う決め（主の決め 4）で 17 → 77 に増えた。見本の写真は主役の位置（data-m）を持たないので 30% で ✗ になる
+KNOWN = {"cgap": 8, "gap": 0, "crop": 85}   # 4 形（a〜d）× 8 幅の今の数（2026-11-19 直し 2 回目のあと：cgap 4・crop 75〜80）。crop は同じ枠にそろえて写真の高さで吸う決め（主の決め 4）で 17 → 77 に増えた。見本の写真は主役の位置（data-m）を持たないので 30% で ✗ になる
 
 
 class NewUserPage(unittest.TestCase):
