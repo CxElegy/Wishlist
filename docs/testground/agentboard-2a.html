@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AgentBoard 案 2A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<!-- テストグラウンドの案 2A（2026-11-19）：本番の board（docs/board/index.html）と同じ部品・同じ動き・同じ見本のデータで、見た目の層（<style>）だけを入れ替えたもの。
+     店長「元素脱离我之前的例子了」→ 部品は例のまま、仕上げだけを上げる。いつも見本のデータ（令牌は要らない）。
+     以下は本番の説明：AgentBoard（2026-11-19 作り直し）。前の PC の AgentBoard（D:/Claude/AgentBoard・2026-11-11 に店長の参考画像
+     「CLAUDE CODE SUBAGENT TIP」どおりに作った端末風の画面）と同じ作りで、PC とクラウドの係を 1 つの画面に出す。
+     このページ自体にはデータを置かない。データは非公開のリポジトリ cxelegy/agentboard：
+       枝 live-<機械>  … 集め係 collect.py が機械ごとに 1 枚（host.json）を上書き（PC・クラウドの BRAIN の係・workflow の回）
+       main の agents/ … ab.py beat（会話が自分で書く心拍）  inbox/ outbox/ … 店長 ⇄ BRAIN
+     読むのは店長がこの端末に貼った GitHub の令牌だけ（localStorage・その端末だけ）。 -->
+<style>
+/* 案 2A「同じ部品・仕上げだけ上げる」（2026-11-19）：店長の例（X の CLAUDE CODE SUBAGENT TIP の図・いまの board の札）の部品はそのまま。
+   外したもの：数字の雨の背景・グリッチ・走査線・めくれる板の箱・札の傾き・指の光・押した所の火花・止まった札の赤い塗り。
+   変えたもの：字は 13px 以上（D4）・角を 10px で丸める・線は細く 1 色・色はモデルの色だけ・余白を 8 の倍数に・地に細かい点の方眼。 */
+:root{--bg:#06070a;--win:#0a0c11;--panel:#0e1117;--bar:#0c0f14;--line:#1b2029;--line2:#272d38;--fg:#c6cbd4;--dim:#8b92a1;--white:#f2f4f8;
+ --lead:#ff9f5a;--haiku:#6aaeff;--sonnet:#f0c75e;--harness:#4fdc8f;--opus:#b39bff;--red:#ff6369;
+ --mono:'JetBrains Mono','Noto Sans JP',ui-monospace,monospace;--ja:'Noto Sans JP','JetBrains Mono',sans-serif}
+*{box-sizing:border-box}
+html{background-color:var(--bg);background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.3px);background-size:24px 24px}
+body{margin:0;color:var(--fg);font:400 13px/1.65 var(--mono);-webkit-font-smoothing:antialiased;word-break:auto-phrase;overflow-wrap:anywhere}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.c-lead{color:var(--lead)}.c-haiku{color:var(--haiku)}.c-sonnet{color:var(--sonnet)}.c-harness{color:var(--harness)}.c-opus{color:var(--opus)}.c-red{color:var(--red)}.c-dim{color:var(--dim)}.c-white{color:var(--white)}.c-other{color:var(--fg)}
+.b-lead{--c:var(--lead)}.b-haiku{--c:var(--haiku)}.b-sonnet{--c:var(--sonnet)}.b-opus{--c:var(--opus)}.b-harness{--c:var(--harness)}.b-other{--c:var(--dim)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+/* 窓 */
+.win{width:calc(100% - 48px);max-width:1320px;margin:28px auto 16px;border:1px solid var(--line2);border-radius:14px;overflow:hidden;background:var(--win);position:relative;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 40px 100px -30px rgba(0,0,0,.9)}
+.bar{height:42px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid var(--line);background:var(--bar);position:relative}
+.bar i{width:12px;height:12px;border-radius:50%;display:block}
+.bar i:nth-child(1){background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar span{position:absolute;left:0;right:0;text-align:center;color:var(--dim);font-size:13px;pointer-events:none}
+.bar #bar{left:50%;right:auto;transform:translateX(-50%);white-space:nowrap}
+.bar .live{position:relative;left:auto;right:auto;margin-left:auto;display:flex;align-items:center;gap:8px;height:26px;padding:0 12px;border-radius:999px;pointer-events:none;
+ border:1px solid color-mix(in srgb,var(--harness) 35%,transparent);background:color-mix(in srgb,var(--harness) 7%,transparent);color:var(--harness);font:700 13px var(--mono);letter-spacing:.14em}
+.bar .live i{width:7px;height:7px;background:var(--harness);animation:pulse 1.6s ease-in-out infinite}
+.bar .live em{font-style:normal}
+.bar .live .wave.mini{position:relative;width:44px;height:14px;margin:0;display:inline-block;color:var(--harness)}
+.bar .live .wave .amp{color:inherit}
+.bar button{margin-left:12px;background:none;border:1px solid var(--line2);border-radius:6px;color:var(--dim);font-size:13px;padding:2px 10px;cursor:pointer;position:relative}
+.body{padding:26px 32px 28px}
+/* 見出し・凡例・数 */
+.title{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 30px;padding:2px 0 18px;border-bottom:1px solid var(--line);font:700 15px var(--mono);letter-spacing:.16em}
+.title b{white-space:nowrap}
+.legend{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 18px;padding:14px 2px 18px}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:8px;background:currentColor;vertical-align:0}
+.legend em{font-style:normal;color:var(--fg)}
+.flaps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:0 0 24px}
+.flaps .k{display:flex;flex-direction:column;gap:4px;padding:14px 18px;border-left:1px solid var(--line);color:var(--dim);letter-spacing:.04em;min-width:0}
+.flaps .k:first-child{border-left:0}
+.flaps .v{display:flex;perspective:300px}
+.fl{display:inline-block;font:600 26px/1.15 var(--mono);color:var(--white);letter-spacing:-.01em}
+.fl.flip{animation:flip .42s cubic-bezier(.3,1.4,.5,1) both;transform-origin:50% 50%}
+@keyframes flip{from{transform:rotateX(-90deg);opacity:.3}to{transform:none;opacity:1}}
+.flaps .hot .fl{color:var(--harness)}
+/* いまの Claude（会話ごとの札） */
+fieldset{border:1px solid var(--line);border-radius:10px;margin:24px 0 0;padding:10px 18px 16px;min-width:0}
+legend{padding:0 10px;color:var(--fg);font-weight:700;letter-spacing:.04em}
+fieldset.now{margin:0;border-color:color-mix(in srgb,var(--harness) 30%,var(--line));padding:10px 18px 18px}
+fieldset.now legend{color:var(--harness);font-size:14px}
+fieldset.now legend .mix{font-weight:400;margin-left:6px}
+fieldset.now legend .mix span,#nowage{white-space:nowrap}
+.conn{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--dim);margin:2px 0 14px}
+.conn .on{color:var(--harness)}.conn .off{color:var(--red)}.conn .miss{color:var(--lead)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid color-mix(in srgb,var(--c,var(--dim)) 32%,var(--line));border-radius:10px;padding:16px 16px 14px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;
+ cursor:pointer;min-width:0;position:relative;overflow:hidden;isolation:isolate;animation:cardIn .5s cubic-bezier(.22,1,.36,1) backwards;transition:border-color .2s}
+.card:hover{border-color:color-mix(in srgb,var(--c,var(--dim)) 65%,var(--line))}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card .spot,.card .bbeam,.card .cover{display:none}
+.card .ring{position:absolute;left:16px;top:22px;width:10px;height:10px;border-radius:50%;border:1.5px solid var(--c,#fff);opacity:0;pointer-events:none;z-index:3}
+.card.ping .ring{animation:ring 1s ease-out}
+@keyframes ring{from{transform:scale(.6);opacity:.8}to{transform:scale(8);opacity:0}}
+/* 作業中：札の上の縁を細い光が走る */
+.card.st-working::before{content:"";position:absolute;top:0;left:0;width:40%;height:1px;pointer-events:none;z-index:2;background:linear-gradient(90deg,transparent,var(--c,#fff),transparent);animation:starTop 4s linear infinite}
+@keyframes starTop{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
+.card .hd{display:flex;align-items:center;gap:10px}
+.card .stt{font-weight:700;white-space:nowrap}
+.card .tg{color:var(--dim);border:1px solid var(--line2);border-radius:5px;padding:0 7px;line-height:20px}
+.card .hd .r{margin-left:auto;display:flex;gap:8px;align-items:center}
+.card a.open,.lead a.open,.ag a.open{color:var(--dim);text-decoration:none;border-bottom:1px dotted var(--dim)}
+.card a.open:hover,.lead a.open:hover,.ag a.open:hover{color:var(--white)}
+.card .ttl{color:var(--white);font:700 16px/1.45 var(--ja)}
+.card .ttl small{display:block;color:var(--dim);font:400 13px/1.5 var(--ja);margin-top:1px}
+.card .mdl{display:flex;align-items:baseline;gap:10px;margin-top:2px}
+.card .mdl b{font:700 22px/1.2 var(--mono);letter-spacing:.03em}
+.card .mdl .role{color:var(--dim)}
+.shine{color:var(--harness)}
+.card.st-working .stt{color:var(--harness)}
+.card.st-working .stt i{display:inline-block;animation:pulse 1.6s ease-in-out infinite;font-style:normal}
+.card.st-ask{border-color:color-mix(in srgb,var(--lead) 60%,var(--line))}.card.st-ask .stt{color:var(--lead)}
+.card.st-quiet{border-color:color-mix(in srgb,var(--red) 55%,var(--line))}.card.st-quiet .stt{color:var(--red)}
+.card.st-yours .stt{color:var(--haiku)}
+.card.st-idle,.card.st-off{opacity:.6}.card.st-idle .stt,.card.st-off .stt{color:var(--dim)}
+/* 波：流れていれば動いている（横に流れるのは transform だけ） */
+.wave{position:relative;height:30px;overflow:hidden;color:var(--c,var(--harness));flex:none}
+.wave .amp{position:absolute;inset:0;transform:scaleY(var(--amp,1));transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.wave svg{position:absolute;left:0;top:0;width:200%;height:100%;overflow:visible;animation:wave var(--spd,1.6s) linear infinite}
+.wave svg.b{animation-duration:calc(var(--spd,1.6s)*1.8);opacity:.4}
+.wave path{fill:none;stroke:currentColor;stroke-width:1.6;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.wave svg.a path.g{stroke-width:6;opacity:.12}
+@keyframes wave{to{transform:translateX(-50%)}}
+.wave.run{--amp:1;--spd:1.6s}
+.wave.ask{--amp:.6;--spd:3s;color:var(--lead)}
+.wave.ask .amp,.wave.dead .amp{animation:wpulse 1.6s ease-in-out infinite}
+@keyframes wpulse{50%{opacity:.35}}
+.wave.calm{--amp:.3;--spd:5s;color:var(--haiku)}
+.wave.flat{--amp:.03}.wave.flat svg{animation:none}
+.wave.dead{color:var(--red)}
+.wave.idle{color:var(--dim);opacity:.5}
+/* 30 分の棒：どの札も同じ高さ */
+.spark{display:grid;grid-template-columns:repeat(30,minmax(0,1fr));grid-template-rows:1fr;gap:2px;align-items:end;height:48px;flex:none;border-bottom:1px solid var(--line)}
+.spark i{display:block;height:100%;background:currentColor;opacity:.9;border-radius:1px 1px 0 0;transform-origin:50% 100%;transform:scaleY(var(--v,.04));transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .6s}
+.spark i.z{opacity:.16}
+.card .sx{display:flex;justify-content:space-between;color:var(--dim);margin-top:-4px}
+.card .you{color:var(--lead);font:400 13px/1.6 var(--ja)}
+.card .now{color:var(--white);font:400 13px/1.6 var(--ja)}
+.card .now.said{color:var(--fg)}
+.caret::after{content:"▌";margin-left:1px;animation:blink 1s steps(1) infinite;color:var(--c,var(--white))}
+@keyframes blink{50%{opacity:0}}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips:empty{display:none}
+.chip{border:1px solid color-mix(in srgb,currentColor 55%,transparent);border-radius:6px;padding:1px 8px;line-height:1.6;background:color-mix(in srgb,currentColor 6%,transparent)}
+.chip.stuck{color:var(--red)}
+.card .ft{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--dim);margin-top:2px;padding-top:10px;border-top:1px solid var(--line)}
+.card .ft b{color:var(--white);font-weight:500}
+.card .tl{border-top:1px solid var(--line);padding-top:8px}
+.card .tl div{display:grid;grid-template-columns:70px 1fr;gap:8px;font:400 13px/1.6 var(--ja)}
+.card .tl .err{color:var(--red)}
+/* 係の流れ（advisor・BRAIN・HARNESS・係・back to lead） */
+.grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:0 40px;align-items:stretch;margin-top:28px}
+.adv{border:1px solid color-mix(in srgb,var(--opus) 50%,var(--line));border-radius:10px;background:color-mix(in srgb,var(--opus) 4%,var(--panel));padding:16px 16px 14px;display:flex;flex-direction:column;position:relative}
+.adv h3{margin:0;text-align:center;font:700 15px var(--mono);letter-spacing:.08em;color:var(--opus)}
+.adv .sub{text-align:center;color:var(--white);margin:2px 0 6px}
+.adv .when{color:var(--white);margin-top:16px;font-weight:700}
+.adv .when::before{content:"◇ ";color:var(--opus)}
+.adv .ja{color:var(--fg);font:400 13px/1.6 var(--ja)}
+.adv p{margin:14px 0 0;color:var(--fg)}
+.adv .advice{color:var(--opus)}
+.adv .kv{display:flex;justify-content:space-between}.adv .kv b{color:var(--white)}
+.adv .tick{display:none}
+.adv .when{position:relative}
+.adv .when::after{content:"›";position:absolute;top:50%;left:calc(100% + 17px);width:40px;height:0;border-top:1px dashed color-mix(in srgb,var(--opus) 50%,transparent);color:var(--opus);line-height:0;text-align:right;font-size:15px}
+.adv .rail{flex:1;min-height:8px;margin:10px 0 0 5px;border-left:1px dashed color-mix(in srgb,var(--opus) 40%,transparent)}
+.center{display:flex;flex-direction:column;align-items:center;min-width:0;position:relative}
+.beams{position:absolute;left:0;top:0;pointer-events:none;z-index:0;overflow:visible}
+.beams .base{fill:none;stroke:var(--line2);stroke-width:1;stroke-dasharray:2 5}
+.beams .glow{fill:none;stroke-width:2;stroke-linecap:round;stroke-dasharray:28 572;animation:beam 3s linear infinite}
+.beams .glow.stuck{animation:none;stroke-dasharray:none;opacity:.3}
+@keyframes beam{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+.lead,.route,.ag,.back,.deleg{position:relative;z-index:1}
+.lead{border:1px solid color-mix(in srgb,var(--lead) 55%,var(--line));border-radius:10px;background:color-mix(in srgb,var(--lead) 4%,var(--panel));width:440px;max-width:100%;text-align:center;padding:14px 18px}
+.lead .t{color:var(--lead);font-weight:700;letter-spacing:.04em}.lead .w{color:var(--white)}
+.lead .h{display:flex;justify-content:center;gap:2px 16px;flex-wrap:wrap}
+.vline{width:1px;height:22px;background:var(--line2)}
+.route{border:1px solid color-mix(in srgb,var(--harness) 50%,var(--line));border-radius:10px;background:color-mix(in srgb,var(--harness) 3%,var(--panel));width:700px;max-width:100%;padding:14px 18px}
+.route .hd{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.route .hd b{color:var(--harness);letter-spacing:.04em}
+.route .row{display:grid;grid-template-columns:210px 1fr 140px;gap:12px;align-items:center;margin-top:4px}
+.route .row>span:first-child{white-space:nowrap}
+.route .row b{color:var(--white)}
+.route .row .n{text-align:right}
+.meter{height:9px;border:1px solid color-mix(in srgb,currentColor 55%,transparent);border-radius:2px;position:relative;overflow:hidden;display:block}
+.meter i{position:absolute;left:0;top:0;bottom:0;background:repeating-linear-gradient(90deg,currentColor 0 3px,transparent 3px 5px)}
+.route .q{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);color:var(--dim)}
+.route .q b{color:var(--white)}
+.deleg{margin:20px 0 10px;color:var(--white);font-weight:700;letter-spacing:.04em;text-align:center;width:100%}
+.deleg::before{content:"";position:absolute;left:14%;right:14%;top:-10px;border-top:1px solid var(--line)}
+.agents{display:flex;flex-wrap:wrap;gap:14px;width:100%}
+.agents>.ag{flex:1 1 calc((100% - 42px)/4)}
+.ag{background:var(--panel);border:1px solid color-mix(in srgb,var(--c,var(--dim)) 45%,var(--line));border-radius:10px;padding:12px 12px 10px;text-align:center;min-width:0;display:flex;flex-direction:column;gap:3px}
+.ag .agb{display:flex;flex-direction:column;gap:3px;flex:1}
+.ag .nm{color:var(--white);font-weight:700}
+.ag .md small{color:var(--dim);font-size:13px}
+.ag .mt{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin:4px 0 2px;color:var(--dim)}
+.ag .act{color:var(--fg);font:400 13px/1.6 var(--ja)}
+.ag .st{margin-top:auto;padding-top:6px}
+.ag .wave{margin-top:6px;height:24px}
+.ag.stuck{border-color:color-mix(in srgb,var(--red) 60%,var(--line))}
+.more{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 10px;color:var(--dim);margin-top:14px}
+.more:empty{display:none}
+.more .dn{border:1px solid color-mix(in srgb,currentColor 40%,transparent);border-radius:6px;padding:0 8px;line-height:1.7}
+.back{border:1px solid color-mix(in srgb,var(--lead) 55%,var(--line));border-radius:10px;background:color-mix(in srgb,var(--lead) 4%,var(--panel));width:560px;max-width:100%;margin-top:22px;padding:14px 18px}
+.back h4{margin:0 0 8px;color:var(--lead);text-align:center;font-size:13px;letter-spacing:.04em}
+.back div{font:400 13px/1.6 var(--ja)}
+/* 記録・site・伝言・最後の 2 行 */
+.log .r{display:grid;grid-template-columns:84px 200px minmax(0,1fr);gap:0 12px;padding:2px 0}
+.log .r .tx{color:var(--fg);font:400 13px/1.65 var(--ja)}
+.log .r .tx.err{color:var(--red)}
+.log .r.in{animation:rowIn .45s cubic-bezier(.22,1,.36,1) both}
+@keyframes rowIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.site{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px 22px}
+.site>div{font:400 13px/1.65 var(--ja)}
+.site .k{color:var(--white);font-family:var(--mono);margin-right:6px}
+.inbox .msg{font:400 13px/1.65 var(--ja);white-space:pre-wrap}
+.inbox .msg.me{color:var(--lead)}.inbox .msg.re{color:var(--fg);padding-left:16px}
+.inbox form{display:flex;align-items:center;gap:10px;margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+.inbox form label{color:var(--lead);white-space:nowrap}
+.inbox input[type=text]{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--white);font:400 14px var(--ja)}
+.inbox input::placeholder{color:var(--dim)}
+.inbox select{background:var(--panel);border:1px solid var(--line2);border-radius:6px;color:var(--fg);font-size:13px;padding:2px 6px}
+.status{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--fg)}
+.status .cmd{color:var(--white)}.status .br{color:var(--haiku)}
+/* 令牌を貼る画面 */
+#setup{padding:32px 24px 34px;max-width:720px;margin:0 auto}
+#setup h2{margin:0 0 12px;font-size:15px;color:var(--white)}
+#setup ol,#setup p{font:400 14px/1.7 var(--ja)}
+#setup .ln{display:flex;gap:8px;align-items:center;border:1px solid var(--line2);border-radius:8px;padding:8px 12px}
+#setup .ln label{color:var(--lead)}
+#setup input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--white)}
+#setup button{background:none;border:1px solid var(--lead);border-radius:6px;color:var(--lead);padding:2px 12px;cursor:pointer}
+#setup .err{min-height:1.6em;color:var(--red);margin-top:6px;font-family:var(--ja)}
+.tgback{display:block;width:calc(100% - 48px);max-width:1320px;margin:0 auto 28px;color:var(--dim);font:400 13px var(--ja)}
+.paused *,.paused *::before,.paused *::after{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){.wave svg,.wave .amp,.fl.flip,.card.ping .ring,.bar .live i,.beams .glow,.log .r.in,.card.st-working .stt i,.card,.card.st-working::before,.caret::after{animation:none}.spark i{transition:none}}
+@media (max-width:1100px){
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .flaps{grid-template-columns:repeat(3,minmax(0,1fr))}.flaps .k:nth-child(4){border-left:0}.flaps .k:nth-child(n+4){border-top:1px solid var(--line)}
+ .agents>.ag{flex-basis:calc((100% - 14px)/2)}
+ .grid{grid-template-columns:230px minmax(0,1fr);gap:0 32px}
+ .route .row{grid-template-columns:150px 1fr 110px}.route .row span.ja{display:none}
+}
+@media (max-width:760px){
+ html{background-image:none}
+ .win{width:100%;margin:0;border-radius:0;border-left:0;border-right:0}
+ .body{padding:18px 16px 22px}
+ .title{gap:4px 18px;font-size:14px;letter-spacing:.1em}
+ .legend{display:grid;grid-template-columns:1fr 1fr;justify-content:start}
+ .flaps .k{padding:12px}.fl{font-size:22px}
+ fieldset.now{padding:8px 12px 14px}
+ .grid{display:flex;flex-direction:column}
+ .lead,.route,.back{width:100%}
+ .grid .adv{order:2;margin-top:16px}
+ .grid .center{display:contents}
+ .lead{order:1}.vline{display:none}.route{order:3;margin-top:16px}.deleg{order:4}.agents{order:5}.more{order:6}.back{order:7}
+ .route .row{grid-template-columns:120px 1fr 78px;gap:8px}
+ .route .row>span:first-child{white-space:normal}
+ .agents>.ag{flex-basis:100%}
+ .ag{text-align:left}
+ .adv .when::after{display:none}
+ .bar #bar{display:none}
+ .log .r{grid-template-columns:70px minmax(0,1fr)}
+ .log .r .tx{grid-column:2}
+ .site{grid-template-columns:1fr}
+ .cards{grid-template-columns:1fr}
+ .deleg::before{left:0;right:0}
+ .beams{display:none}
+ .tgback{width:auto;padding:0 16px;margin-top:16px}
+}
+</style></head>
+<body>
+<div class="win">
+ <div class="bar"><i></i><i></i><i></i><span id="bar">~/agentboard · zsh</span><span class="live" id="livebadge" hidden><i></i><b class="wave mini flat dead" id="livewave"></b><em id="livetxt">LIVE</em></span><button id="logout" type="button" hidden>令牌を外す</button></div>
+
+ <div id="setup" hidden>
+  <h2>$ agentboard login</h2>
+  <p>係の様子は非公開のリポジトリ <b class="c-white">cxelegy/agentboard</b> にあります。読む鍵（GitHub の令牌）をこの端末に 1 回だけ貼ってください。令牌はこの端末の中にだけ残ります。</p>
+  <ol>
+   <li><a id="newtok" href="https://github.com/settings/personal-access-tokens/new?name=AgentBoard&description=AgentBoard%20%E3%81%AE%E7%94%BB%E9%9D%A2%E3%81%8C%20cxelegy%2Fagentboard%20%E3%82%92%E8%AA%AD%E3%82%80%E3%83%BB%E4%BC%9D%E8%A8%80%E3%82%92%E9%80%81%E3%82%8B&target_name=CxElegy&expires_in=366&contents=write" target="_blank" rel="noopener" class="c-lead">GitHub で令牌を作る</a>（この端末用の名前・説明・期限・Contents の書き込みは入れてあります）</li>
+   <li>Repository access：<b class="c-white">Only select repositories</b> → <b class="c-white">agentboard</b> を選ぶ（ここだけ手で）</li>
+   <li>Generate token → <span class="c-white">github_pat_…</span> を下に貼って Enter</li>
+  </ol>
+  <form class="ln" id="tokf"><label>token $</label><input id="tok" type="password" autocomplete="off" placeholder="github_pat_…" aria-label="GitHub の令牌"><button type="submit">開く</button></form>
+  <div class="err" id="err"></div>
+ </div>
+
+ <div class="body" id="app" hidden>
+  <div class="title"><b class="c-white">AGENTBOARD</b><b class="c-sonnet">SONNET BUILDS</b><b class="c-haiku">HAIKU SWARMS</b><b class="c-opus">OPUS ADVISES</b></div>
+  <div class="legend"><span class="c-lead"><em>brain · lead</em></span><span class="c-haiku"><em>haiku · swarm</em></span><span class="c-sonnet"><em>sonnet · build</em></span><span class="c-harness"><em>harness · routing</em></span><span class="c-opus"><em>opus · advisor</em></span></div>
+  <div class="flaps" id="flaps"></div>
+  <fieldset class="now"><legend>now · claude <span id="nowmix" class="mix"></span> <span id="nowage" class="c-dim"></span></legend><div class="conn" id="conn"></div><div id="now"></div></fieldset>
+  <div class="grid">
+   <aside class="adv" id="adv"></aside>
+   <div class="center"><svg class="beams" id="beams" aria-hidden="true"></svg>
+    <div class="lead" id="lead"></div>
+    <div class="vline"></div>
+    <div class="route" id="route"></div>
+    <div class="deleg">delegate to subagents · <span class="c-haiku">haiku</span> / <span class="c-sonnet">sonnet</span></div>
+    <div class="agents" id="agents"></div>
+    <div class="more" id="more"></div>
+    <div class="back" id="back"></div>
+   </div>
+  </div>
+  <fieldset class="log"><legend>session log</legend><div id="log"></div></fieldset>
+  <fieldset><legend>site</legend><div class="site" id="site"></div></fieldset>
+  <fieldset class="inbox"><legend>owner → brain · inbox</legend><div id="msgs"></div>
+   <form id="talk"><label for="text">owner $</label><input type="text" id="text" placeholder="BRAIN への伝言（Enter で送る）" autocomplete="off">
+    <select id="to" aria-label="宛先"><option value="both">両方</option><option value="cloud">cloud</option><option value="pc">pc</option></select></form>
+  </fieldset>
+  <div class="status" id="status"></div>
+ </div>
+</div>
+<a class="tgback" href="index.html">← テストグラウンドへ戻る</a>
+
+<script>
+(function(){
+'use strict';
+var OWNER='cxelegy', REPO='agentboard', SITE='Wishlist', KEY='agentboard.token', POLL=5000;
+var STUCK=15, ONLINE=6, RECENT_H=2;
+var $=function(id){return document.getElementById(id)};
+var demo=true;   // テストグラウンド：いつも見本のデータ
+var tok=null;try{tok=localStorage.getItem(KEY)}catch(e){}
+var last=null,timer=null,clockT=null;
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function ts(x){if(x==null||x==='')return 0;if(typeof x==='number')return x<1e12?x*1000:x;var n=Date.parse(x);return isNaN(n)?0:n}
+function hms(t){var d=new Date(t);return d.getHours()+':'+('0'+d.getMinutes()).slice(-2)+':'+('0'+d.getSeconds()).slice(-2)}
+function dur(min){min=Math.max(0,min||0);return min<1?'<1m':min<60?Math.round(min)+'m':min<600?Math.floor(min/60)+'h'+('0'+Math.round(min%60)).slice(-2)+'m':min<2880?Math.round(min/60)+'h':Math.round(min/1440)+'d'}
+function mname(m){var r=/(haiku|sonnet|opus|fable)[-_ ]?(\d+)(?:[-_.](\d+))?/i.exec(String(m||''));return r?r[1].charAt(0).toUpperCase()+r[1].slice(1).toLowerCase()+' '+r[2]+(r[3]?'.'+r[3]:''):String(m||'')}
+function ago(ms){return dur(ms/60e3)+' ago'}
+function k(n){n=+n||0;return n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?Math.round(n/1e3)+'k':String(n)}
+function fam(m){m=String(m||'').toLowerCase();return /haiku/.test(m)?'haiku':/sonnet/.test(m)?'sonnet':/opus/.test(m)?'opus':/fable/.test(m)?'lead':'other'}
+function famc(f){return f==='fable'?'lead':(f||'other')}
+
+// ---- 読む（GraphQL 1 回：live-* の枝・main の agents/inbox/outbox・Wishlist の PR） ----
+function gql(query){
+  return fetch('https://api.github.com/graphql',{method:'POST',headers:{'Authorization':'bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({query:query})})
+   .then(function(r){if(r.status===401)throw {auth:1};return r.json()})
+   .then(function(j){if(!j.data)throw {msg:(j.errors&&j.errors[0]&&j.errors[0].message)||'読めない'};if(!j.data.ab)throw {msg:'agentboard が読めません（令牌の Repository access に agentboard を入れてください）'};return j.data});
+}
+var Q='fragment F on Tree{entries{name object{... on Blob{text}}}}'+
+ 'query{ab:repository(owner:"'+OWNER+'",name:"'+REPO+'"){'+
+ 'live:refs(refPrefix:"refs/heads/",query:"live-",first:30){nodes{name target{... on Commit{committedDate file(path:"host.json"){object{... on Blob{text}}}}}}}'+
+ 'agents:object(expression:"main:agents"){...F} inbox:object(expression:"main:inbox"){...F} outbox:object(expression:"main:outbox"){...F}'+
+ 'pcsum:object(expression:"main:pc/summary.json"){... on Blob{text}}}'+
+ 'wl:repository(owner:"'+OWNER+'",name:"'+SITE+'"){pullRequests(first:4,orderBy:{field:UPDATED_AT,direction:DESC}){nodes{number title state merged updatedAt commits(last:1){nodes{commit{statusCheckRollup{state}}}}}}}}';
+function rows(tree){var out=[];(tree&&tree.entries||[]).forEach(function(e){if(!/\.json$/.test(e.name)||!e.object||e.object.text==null)return;try{out.push(JSON.parse(e.object.text))}catch(x){}});return out}
+function parse(t){try{return t?JSON.parse(t):null}catch(x){return null}}
+function load(){
+  if(demo)return Promise.resolve(DEMO());
+  return gql(Q).then(function(d){
+    var hosts=[];((d.ab.live&&d.ab.live.nodes)||[]).forEach(function(n){var t=n.target&&n.target.file&&n.target.file.object&&n.target.file.object.text;var h=parse(t);if(h)hosts.push(h)});
+    var prs=((d.wl&&d.wl.pullRequests&&d.wl.pullRequests.nodes)||[]).map(function(p){var c=p.commits&&p.commits.nodes[0];var s=c&&c.commit.statusCheckRollup&&c.commit.statusCheckRollup.state;return {n:p.number,title:p.title,state:p.merged?'MERGED':p.state,ci:s||''}});
+    return {hosts:hosts,beats:rows(d.ab.agents),inbox:rows(d.ab.inbox),outbox:rows(d.ab.outbox),pcsum:parse(d.ab.pcsum&&d.ab.pcsum.text),prs:prs};
+  });
+}
+
+// ---- 合わせる（PC とクラウドの機械ごとの 1 枚 → 1 つの画面） ----
+function merge(d,now){
+  var M={sessions:[],brains:[],agents:[],events:[],models:{},opus:{calls:0,tokens:0,active:false,recent:[]},pending:[],route:null,site:null,harness:null,older:0,hosts:[]};
+  (d.hosts||[]).forEach(function(h){
+    var t=ts(h.ts||h.at), on=now-t<ONLINE*60e3, tag=h.kind==='pc'?'pc':'cloud';
+    if(now-t>24*3600e3)return;
+    M.hosts.push({host:h.host,tag:tag,on:on,t:t});
+    (h.sessions||[]).forEach(function(s){M.sessions.push(Object.assign({tag:tag,on:on,host:h.host,hostT:t},s))});
+    if(h.brain)M.brains.push(Object.assign({tag:tag,on:on,host:h.host},h.brain,{quiet:(h.brain.quiet||0)+(now-t)/60e3}));
+    (h.agents||[]).forEach(function(a){var x=Object.assign({tag:tag},a);
+      if(x.status==='running'){x.quiet=(now-ts(x.t1))/60e3;x.min=(now-ts(x.t0))/60e3;if(x.quiet>=STUCK||!on)x.status='stuck'}
+      M.agents.push(x)});
+    M.older+=h.older_done||0;
+    (h.events||[]).forEach(function(e){M.events.push(Object.assign({tag:tag},e))});
+    Object.keys(h.models||{}).forEach(function(f){M.models[f]=(M.models[f]||0)+h.models[f]});
+    if(h.opus){M.opus.calls+=h.opus.calls||0;M.opus.tokens+=h.opus.tokens||0;M.opus.active=M.opus.active||(on&&h.opus.active);(h.opus.recent||[]).forEach(function(r){M.opus.recent.push(r)})}
+    (h.pending||[]).forEach(function(p){M.pending.push(p)});
+    if(h.route&&(!M.route||ts(h.route.t)>ts(M.route.t)))M.route=Object.assign({tag:tag},h.route);
+    if(h.site&&(!M.site||t>M.site._t))M.site=Object.assign({_t:t},h.site);
+    if(h.harness&&(!M.harness||h.kind==='pc'))M.harness=h.harness;
+  });
+  if(!M.harness&&d.pcsum)M.harness=d.pcsum;
+  // 会話が自分で書いた心拍（ab.py beat）も同じ箱に
+  (d.beats||[]).forEach(function(b){
+    var t=ts(b.ts||b.beat);if(b.status!=='working'&&now-t>RECENT_H*3600e3)return;
+    var st=b.status==='working'?((now-t)/60e3>=20?'stuck':'running'):(b.status==='failed'?'failed':'done');
+    var f=fam(b.model);if(f==='other'&&/主|brain/i.test(b.role||''))f='lead';
+    M.agents.push({label:(b.role||'agent')+(b.task?':'+b.task:''),model:mname(b.model),fam:f,tools:null,min:(now-ts(b.started))/60e3,quiet:(now-t)/60e3,
+      action:b.note||'',status:st,tag:b.where==='pc'?'pc':'cloud',session:b.session,t1:t});
+  });
+  // PC のハーネスの係（hb.py の心拍）で、記録から拾えていないもの
+  ((M.harness&&M.harness.agents)||[]).forEach(function(a){
+    if(M.agents.some(function(x){return x.tag==='pc'&&String(x.label).indexOf(a.task)>=0}))return;
+    var q=(a.quiet||0)+(M.harness.at?(now-ts(M.harness.at))/60e3:0);
+    M.agents.push({label:a.role+':'+a.task,model:'',fam:'other',tools:null,min:a.elapsed||0,quiet:q,action:a.note||'',status:q>=20?'stuck':'running',tag:'pc',t1:now-q*60e3});
+  });
+  var order={stuck:0,running:1,failed:2,done:3};
+  M.agents.sort(function(a,b){return ((order[a.status]||0)-(order[b.status]||0))||(ts(b.t1)-ts(a.t1))});
+  M.events.sort(function(a,b){return ts(a.t)-ts(b.t)});M.events=M.events.slice(-14);
+  M.opus.recent.sort(function(a,b){return ts(b.t)-ts(a.t)});
+  M.pending.sort(function(a,b){return ts(b.t)-ts(a.t)});
+  return M;
+}
+
+// ---- 描く ----
+function bar(ratio,cls){var p=Math.max(0,Math.min(1,ratio||0));return '<span class="meter '+cls+'"><i style="width:'+(p*100).toFixed(1)+'%"></i></span>'}
+var OPEN={};   // 開いた札（その会話の流れを出す）
+var STATE={working:['<i>●</i> <span class="shine">作業中</span>','working'],ask:['? 選んで','ask'],quiet:['■ 動きなし','quiet'],yours:['◆ あなたの番','yours'],idle:['休み','idle']};
+var ROLE={fable:'計画',opus:'難しい判断',sonnet:'ふつうの実装',haiku:'探す・点検',lead:'計画'};
+var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+// ---- 動き（React Bits〔reactbits.dev・© 2026 David Haz・MIT + Commons Clause〕の DecryptedText・TextType・CountUp・ClickSpark・LetterGlitch を、このページ用に素の JS で） ----
+var GLYPH='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*+=<>?/';
+function decrypt(el,text,ms){ // DecryptedText：乱れた字から本当の字へ
+  if(RM||!text){el.textContent=text;return}
+  var n=text.length,t0=performance.now(),dur=ms||700,id=(el._dec||0)+1;el._dec=id;
+  (function step(now){if(el._dec!==id)return;var p=Math.min(1,(now-t0)/dur),k=Math.floor(p*n),out='';
+    for(var i=0;i<n;i++){var c=text[i];out+=i<k||c===' '||c==='·'?c:GLYPH[(Math.random()*GLYPH.length)|0]}
+    el.textContent=out;if(p<1)requestAnimationFrame(step)})(t0);
+}
+function typeText(el,text){ // TextType：いまの道具を打っていく
+  if(RM||!text){el.textContent=text;el.classList.remove('caret');return}
+  var id=(el._typ||0)+1,i=0,per=Math.max(8,Math.min(28,700/text.length));el._typ=id;el.classList.add('caret');
+  (function step(){if(el._typ!==id)return;i++;el.textContent=text.slice(0,i);if(i<text.length)setTimeout(step,per);else setTimeout(function(){if(el._typ===id)el.classList.remove('caret')},1600)})();
+}
+function countTo(el,to,fmt){ // CountUp：数が変わったら数え上げる
+  var from=el._v==null?to:el._v;el._v=to;fmt=fmt||String;
+  if(RM||from===to){el.textContent=fmt(to);return}
+  var t0=performance.now(),id=(el._cnt||0)+1;el._cnt=id;
+  (function step(now){if(el._cnt!==id)return;var p=Math.min(1,(now-t0)/700),q=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(from+(to-from)*q));if(p<1)requestAnimationFrame(step)})(t0);
+}
+function setHTML(el,html){if(el._h!==html){el._h=html;el.innerHTML=html}}
+// 波の SVG（周期が 200 を割り切る正弦波を 2 本：translateX(-50%) でつなぎ目なく流れる）
+function sinePath(per,amp,ph){var d='';for(var x=0;x<=400;x+=4){d+=(x?'L':'M')+x+','+(10+amp*Math.sin(x/per*2*Math.PI+ph)).toFixed(2)}return d}
+var WAVE_SVG=(function(){var a=sinePath(100,8,0),b=sinePath(50,5,1.3);
+  return '<span class="amp"><svg class="a" viewBox="0 0 400 20" preserveAspectRatio="none" aria-hidden="true"><path class="g" d="'+a+'"/><path d="'+a+'"/></svg>'+
+         '<svg class="b" viewBox="0 0 400 20" preserveAspectRatio="none" aria-hidden="true"><path d="'+b+'"/></svg></span>'})();
+function waveMode(state){return {working:'run',running:'run',ask:'ask',yours:'calm',quiet:'flat dead',stuck:'flat dead',failed:'flat dead'}[state]||'flat idle'}
+function setWave(el,mode){var c='wave '+(el.classList.contains('mini')?'mini ':'')+mode;if(!el.firstChild)el.innerHTML=WAVE_SVG;if(el.className!==c)el.className=c}
+var CARDS={};
+function makeCard(key){
+  var e=document.createElement('div');e.dataset.id=key;
+  e.innerHTML='<span class="bbeam"></span><span class="cover"></span><span class="spot"></span><span class="ring"></span><div class="hd"><span class="stt"></span><span class="tg"></span><span class="r"></span></div>'+
+    '<div class="ttl"><span class="tx"></span><small></small></div><div class="mdl"><b></b><span class="role"></span></div><div class="wave"></div>'+
+    '<div class="spark">'+new Array(31).join('<i class="z"></i>')+'</div><div class="sx"><span>30m</span><span>今</span></div>'+
+    '<div class="you"></div><div class="now"></div><div class="chips"></div>'+
+    '<div class="ft"><span class="fturn"></span><span><b class="ftools">0</b> tools</span><span class="ftok"><b>0</b> tok</span><span class="fsub c-sonnet"></span></div><div class="tl" hidden></div>';
+  e.onclick=function(ev){if(ev.target.closest('a'))return;OPEN[key]=!OPEN[key];e.querySelector('.tl').hidden=!OPEN[key]};
+  return {el:e,first:true};
+}
+// SplitFlap（React Bits の SplitFlapText の考え方）：数が変わった字だけめくれる
+function flapSet(el,text){
+  text=String(text);var kids=el.children;
+  while(kids.length<text.length){var s=document.createElement('span');s.className='fl';s.textContent=' ';el.appendChild(s)}
+  while(kids.length>text.length)el.removeChild(el.lastChild);
+  for(var i=0;i<text.length;i++){var f=kids[i];if(f.textContent!==text[i]){f.textContent=text[i];if(!RM&&el._init){f.classList.remove('flip');void f.offsetWidth;f.classList.add('flip')}}}
+  el._init=true;
+}
+function flaps(M,ss){
+  var box=$('flaps');if(!box._made){box._made=true;box.innerHTML=[['n','会話'],['w','作業中'],['a','係'],['t','30分の道具'],['k','token'],['h','機械']].map(function(x){return '<span class="k" data-k="'+x[0]+'">'+x[1]+' <span class="v"></span></span>'}).join('')}
+  var on=ss.filter(function(s){return s.on}), working=on.filter(function(s){return s.state==='working'}).length;
+  var agents=M.agents.filter(function(a){return a.status==='running'}).length;
+  var tools=0,tok=0;on.forEach(function(s){(s.spark||[]).forEach(function(v){tools+=v});tok+=s.turn_tok||0});
+  var hosts=M.hosts.filter(function(h){return h.on}).length+'/'+Math.max(1,M.hosts.length);
+  var vals={n:String(on.length).padStart(2,'0'),w:String(working).padStart(2,'0'),a:String(agents).padStart(2,'0'),t:String(tools).padStart(3,'0'),k:k(tok).padStart(4,' '),h:hosts};
+  Object.keys(vals).forEach(function(key){var kEl=box.querySelector('[data-k="'+key+'"]');kEl.classList.toggle('hot',key==='w'&&working>0);flapSet(kEl.querySelector('.v'),vals[key])});
+}
+function renderConn(M,now){
+  // つながっている機械：届いている＝●、6 分 来ない＝○、PC がまだ一度も来ていない＝やり方
+  var hs=M.hosts.slice().sort(function(a,b){return (a.tag==='pc'?0:1)-(b.tag==='pc'?0:1)});
+  var html=hs.map(function(h){return '<span class="'+(h.on?'on':'off')+'">'+(h.on?'●':'○')+' '+esc(h.host)+' · '+(h.on?Math.max(0,Math.round((now-h.t)/1000))+' 秒前':dur((now-h.t)/60e3)+' 来ていない')+'</span>'});
+  if(!hs.some(function(h){return h.tag==='pc'}))html.push('<span class="miss">○ pc · まだつながっていない（PC の Claude に「setup_pc.ps1 を流して」）</span>');
+  setHTML($('conn'),html.join(''));
+}
+function renderNow(M,now){
+  renderConn(M,now);
+  var box=$('now'), rank={working:0,ask:1,quiet:2,yours:3,idle:4};
+  var ss=M.sessions.slice().sort(function(a,b){var ra=a.on?(rank[a.state]||0):5, rb=b.on?(rank[b.state]||0):5;return (ra-rb)||(ts(b.t1)-ts(a.t1))});
+  var mix={};ss.forEach(function(s){var f=famc(s.fam);mix[f]=(mix[f]||0)+1});
+  flaps(M,ss);
+  setHTML($('nowmix'),ss.length?'· '+ss.length+' 会話 '+['lead','opus','sonnet','haiku','other'].filter(function(f){return mix[f]}).map(function(f){return '<span class="c-'+f+'">'+({lead:'Fable',opus:'Opus',sonnet:'Sonnet',haiku:'Haiku',other:'他'}[f])+' '+mix[f]+'</span>'}).join(' '):'');
+  var grid=box.querySelector('.cards');
+  if(!ss.length){CARDS={};setHTML(box,'<div class="c-dim">まだ会話が届いていません（PC とクラウドの集め係が動くと、ここに会話ごとの札が出ます）</div>');return}
+  if(!grid){box.innerHTML='';box._h=null;grid=document.createElement('div');grid.className='cards';box.appendChild(grid)}
+  var keep={}, order=[];
+  ss.slice(0,12).forEach(function(s){
+    var key=s.host+'/'+s.id, c=CARDS[key]||(CARDS[key]=makeCard(key)), e=c.el;keep[key]=1;order.push(e);
+    var f=famc(s.fam), st=s.on?(STATE[s.state]||STATE.idle):['○ 届いていない','off'];
+    var q=s.on?(now-ts(s.t1))/60e3:(now-s.hostT)/60e3;
+    var cls='card b-'+f+' st-'+st[1];if(e.className!==cls)e.className=cls;
+    setHTML(e.querySelector('.stt'),st[0]+((s.on&&(s.state==='quiet'||s.state==='idle'))||!s.on?' · '+dur(q):''));
+    setHTML(e.querySelector('.tg'),esc(s.tag));
+    setHTML(e.querySelector('.r'),/^session_\w+$/.test(s.link||'')?'<a class="open" href="https://claude.ai/code/'+encodeURIComponent(s.link)+'" target="_blank" rel="noopener">開く</a>':'');
+    var title=s.title||s.id, tx=e.querySelector('.ttl .tx');
+    if(c.title!==title){c.title=title;tx.textContent=title}
+    setHTML(e.querySelector('.ttl small'),esc(s.project||''));
+    var mb=e.querySelector('.mdl b');mb.className='c-'+f;setHTML(mb,esc(String(s.model||'?').toUpperCase()));
+    setHTML(e.querySelector('.mdl .role'),esc(ROLE[f]||''));
+    setWave(e.querySelector('.wave'),s.on?waveMode(s.state):'flat idle');
+    var sp=e.querySelector('.spark');sp.className='spark c-'+f;var arr=s.spark||[],mx=Math.max.apply(null,[1].concat(arr));
+    Array.prototype.forEach.call(sp.children,function(b,i){var v=arr[i]||0;b.className=v?'':'z';b.style.setProperty('--v',v?Math.max(.12,v/mx).toFixed(3):'.04')});
+    var you=e.querySelector('.you');setHTML(you,s.prompt?'› '+esc(s.prompt):'');
+    var act=(s.state==='working'||s.state==='quiet'||s.state==='ask')&&s.action, nw=e.querySelector('.now'), line=act?'▸ '+s.action:(s.said?'✓ '+s.said:'');
+    nw.classList.toggle('said',!act);
+    if(c.line!==line){var was=c.line;c.line=line;if(act&&was!==undefined)typeText(nw,line);else{nw.textContent=line;nw.classList.remove('caret')}
+      if(was!==undefined&&!RM){e.classList.remove('ping');void e.offsetWidth;e.classList.add('ping')}}
+    var subs=M.agents.filter(function(a){return a.sid===s.id&&a.tag===s.tag&&(a.status==='running'||a.status==='stuck')});
+    setHTML(e.querySelector('.chips'),subs.map(function(a){var af=famc(a.fam);return '<span class="chip c-'+af+(a.status==='stuck'?' stuck':'')+'" title="'+esc(a.action||'')+'">'+esc(a.model||'')+' · '+esc(a.label)+'</span>'}).join(''));
+    setHTML(e.querySelector('.fturn'),s.turn_t0?'この回 <b>'+dur((now-ts(s.turn_t0))/60e3)+'</b>':'');
+    countTo(e.querySelector('.ftools'),s.turn_tools||0);
+    var tk=e.querySelector('.ftok');tk.hidden=!s.turn_tok;countTo(tk.querySelector('b'),s.turn_tok||0,k);
+    setHTML(e.querySelector('.fsub'),s.sub?'係 '+s.sub:'');
+    var tl=e.querySelector('.tl');setHTML(tl,(s.events||[]).slice().reverse().map(function(x){return '<div><span class="c-dim">'+hms(ts(x.t))+'</span><span'+(x.err?' class="err"':'')+'>'+esc(x.text)+'</span></div>'}).join(''));
+    tl.hidden=!OPEN[key];c.first=false;
+  });
+  Object.keys(CARDS).forEach(function(kk){if(!keep[kk]){CARDS[kk].el.remove();delete CARDS[kk]}});
+  var cur=Array.prototype.slice.call(grid.children);
+  if(cur.length!==order.length||cur.some(function(x,i){return x!==order[i]}))order.forEach(function(x){grid.appendChild(x)});
+  var more=box.querySelector('.more2');if(ss.length>12){if(!more){more=document.createElement('div');more.className='more2 c-dim';more.style.marginTop='6px';box.appendChild(more)}more.textContent='+'+(ss.length-12)+' 会話（休み）'}else if(more)more.remove();
+}
+// ---- Animated Beam（Magic UI〔magicui.design・MIT〕の考え方）：delegate の下から、動いている係の箱の上へ ----
+var COLORS={lead:'#ff9a3c',haiku:'#5ea3ff',sonnet:'#e6c14a',opus:'#a98bff',harness:'#3fd17c',other:'#6c7480',red:'#ff5c57'};
+function beams(){
+  var svg=$('beams');if(!svg||innerWidth<761)return;
+  var c=svg.parentNode, cr=c.getBoundingClientRect(), dl=c.querySelector('.deleg').getBoundingClientRect();
+  svg.setAttribute('width',cr.width);svg.setAttribute('height',cr.height);svg.setAttribute('viewBox','0 0 '+cr.width+' '+cr.height);
+  var sx=dl.left+dl.width/2-cr.left, sy=dl.bottom-cr.top, keep={};
+  Array.prototype.forEach.call(document.querySelectorAll('#agents .ag[data-s="running"],#agents .ag[data-s="stuck"]'),function(a,i){
+    var r=a.getBoundingClientRect(), ex=r.left+r.width/2-cr.left, ey=r.top-cr.top, k=a.dataset.k;keep[k]=1;
+    var d='M'+sx.toFixed(1)+','+sy.toFixed(1)+' C'+sx.toFixed(1)+','+(sy+(ey-sy)*.75).toFixed(1)+' '+ex.toFixed(1)+','+(sy+(ey-sy)*.25).toFixed(1)+' '+ex.toFixed(1)+','+ey.toFixed(1);
+    var g=svg.querySelector('g[data-k="'+CSS.escape(k)+'"]');
+    if(!g){g=document.createElementNS('http://www.w3.org/2000/svg','g');g.dataset.k=k;
+      g.innerHTML='<path class="base"/><path class="glow" pathLength="600"/>';svg.appendChild(g);g.lastChild.style.animationDelay=(-(i*0.37)%2.6).toFixed(2)+'s'}
+    var stuck=a.dataset.s==='stuck', f=(a.className.match(/b-(\w+)/)||[])[1]||'other';
+    g.firstChild.setAttribute('d',d);g.lastChild.setAttribute('d',d);g.lastChild.setAttribute('stroke',stuck?COLORS.red:(COLORS[f]||COLORS.other));
+    g.lastChild.classList.toggle('stuck',stuck);
+  });
+  Array.prototype.forEach.call(svg.querySelectorAll('g'),function(g){if(!keep[g.dataset.k])g.remove()});
+}
+(function(){var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){requestAnimationFrame(beams)},150)})})();
+// ---- ClickSpark：押した所に火花 ----
+(function(){var cv=$('sparkfx');if(!cv||RM)return;var ctx=cv.getContext('2d'),bursts=[],raf=0;
+  function size(){var r=Math.min(2,window.devicePixelRatio||1);cv.width=innerWidth*r;cv.height=innerHeight*r;ctx.setTransform(r,0,0,r,0,0)}
+  size();addEventListener('resize',size);
+  addEventListener('pointerdown',function(ev){var col=getComputedStyle(ev.target.closest('.card,.ag')||document.body).getPropertyValue('--c').trim()||'#ffd27a';
+    bursts.push({x:ev.clientX,y:ev.clientY,t:performance.now(),c:col});if(!raf)raf=requestAnimationFrame(draw)});
+  function draw(now){ctx.clearRect(0,0,cv.width,cv.height);
+    bursts=bursts.filter(function(b){var p=(now-b.t)/450;if(p>=1)return false;var e=1-Math.pow(1-p,3);ctx.strokeStyle=b.c;ctx.lineWidth=1.6;ctx.globalAlpha=1-p;
+      for(var i=0;i<8;i++){var a=i*Math.PI/4,r1=6+22*e,r2=r1+8*(1-p);ctx.beginPath();ctx.moveTo(b.x+Math.cos(a)*r1,b.y+Math.sin(a)*r1);ctx.lineTo(b.x+Math.cos(a)*r2,b.y+Math.sin(a)*r2);ctx.stroke()}return true});
+    ctx.globalAlpha=1;raf=bursts.length?requestAnimationFrame(draw):0}
+})();
+// ---- FaultyTerminal（React Bits）の考え方：古い CRT の端末に数字が流れる背景。WebGL2 で、半分の解像度・30fps・隠れたら止める・指に寄って明るくなる ----
+var BG_GL=(function(){var cv=$('bgfx');if(!cv||innerWidth<761)return false;
+  var gl=cv.getContext('webgl2',{antialias:false,alpha:false,powerPreference:'low-power'});if(!gl)return false;
+  var FONT=[[14,25,21,19,14],[4,12,4,4,14],[30,1,14,16,31],[30,1,14,1,30],[18,18,31,2,2],[31,16,30,1,30],[14,16,30,17,14],[31,1,2,4,4],[14,17,14,17,14],[14,17,15,1,14],[0,4,14,4,0],[0,0,14,0,0],[8,4,2,4,8],[1,2,4,8,16],[0,21,14,21,0],[0,31,0,31,0],[0,0,0,0,31]];
+  var bits=FONT.map(function(r){var v=0;for(var y=0;y<5;y++)for(var x=0;x<5;x++)if(r[y]&(16>>x))v+=Math.pow(2,y*5+x);return v+'u'}).join(',');
+  var VS='#version 300 es\nvoid main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));gl_Position=vec4(p*2.0-1.0,0.0,1.0);}';
+  var FS='#version 300 es\nprecision highp float;precision highp int;uniform float t;uniform vec2 res;uniform vec2 mo;uniform float cs;out vec4 o;'+
+   'const uint F['+FONT.length+']=uint['+FONT.length+']('+bits+');'+
+   'float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}'+
+   'float n(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}'+
+   'float fb(vec2 p){float v=0.0,a=0.5;for(int i=0;i<4;i++){v+=a*n(p);p=mat2(1.6,1.2,-1.2,1.6)*p;a*=0.5;}return v;}'+
+   'void main(){vec2 fc=gl_FragCoord.xy;vec2 c=floor(fc/cs),ic=fract(fc/cs);'+
+   'float q=fb(c*0.06+vec2(t*0.035,-t*0.02));float r=fb(c*0.09+vec2(q*2.0,t*0.03));float I=smoothstep(0.42,0.78,r);'+
+   'float md=distance(c*cs,mo);I+=exp(-md/(cs*14.0))*0.9;'+
+   'float g=floor(h(c+floor(t*0.8+h(c*1.7)*20.0))*'+FONT.length+'.0);uint b=F[int(g)];'+
+   'ivec2 px=ivec2(floor(ic*7.0))-ivec2(1);float on=0.0;if(px.x>=0&&px.x<5&&px.y>=0&&px.y<5){int k=(4-px.y)*5+px.x;on=float((b>>uint(k))&1u);}'+
+   'float scan=0.82+0.18*sin(fc.y*3.14159);float fl=0.94+0.06*sin(t*7.0+c.y*0.3);vec2 uv=fc/res;float vg=smoothstep(1.15,0.25,length((uv-0.5)*vec2(1.2,1.0))*1.35);'+
+   'vec3 tint=mix(vec3(0.247,0.82,0.486),vec3(0.66,0.55,1.0),step(0.985,h(c+floor(t*0.5))));'+
+   'vec3 col=vec3(0.027,0.035,0.05)+tint*on*I*scan*fl*vg*0.55;o=vec4(col,1.0);}';
+  function sh(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(s));return null}return s}
+  var vs=sh(gl.VERTEX_SHADER,VS),fs=sh(gl.FRAGMENT_SHADER,FS);if(!vs||!fs)return false;
+  var pg=gl.createProgram();gl.attachShader(pg,vs);gl.attachShader(pg,fs);gl.linkProgram(pg);if(!gl.getProgramParameter(pg,gl.LINK_STATUS))return false;
+  gl.useProgram(pg);gl.bindVertexArray(gl.createVertexArray());
+  var U={t:gl.getUniformLocation(pg,'t'),res:gl.getUniformLocation(pg,'res'),mo:gl.getUniformLocation(pg,'mo'),cs:gl.getUniformLocation(pg,'cs')};
+  var S=0.5,mx=-9999,my=-9999,last=0,t0=performance.now();cv.classList.add('gl');
+  function size(){cv.width=Math.ceil(innerWidth*S);cv.height=Math.ceil(innerHeight*S);gl.viewport(0,0,cv.width,cv.height)}
+  function draw(now){gl.uniform1f(U.t,(now-t0)/1000);gl.uniform2f(U.res,cv.width,cv.height);gl.uniform2f(U.mo,mx*S,(innerHeight-my)*S);gl.uniform1f(U.cs,7.0);gl.drawArrays(gl.TRIANGLES,0,3)}
+  function tick(now){if(!document.hidden&&now-last>=33){last=now;draw(now)}requestAnimationFrame(tick)}
+  addEventListener('pointermove',function(ev){mx=ev.clientX;my=ev.clientY},{passive:true});
+  size();var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){size();draw(performance.now())},200)});
+  if(RM)draw(t0+4000);else requestAnimationFrame(tick);
+  return true;
+})();
+// ---- LetterGlitch：WebGL2 が無いとき、窓の外に、ゆっくり入れ替わる字の場（PC の幅だけ・隠れている間は止める） ----
+(function(){var cv=$('bgfx');if(BG_GL)return;if(!cv||innerWidth<761){cv&&(cv.hidden=true);return}
+  var ctx=cv.getContext('2d'),fs=14,cols=0,rows=0,cells=[],cs=['#ff9a3c','#5ea3ff','#e6c14a','#3fd17c','#a98bff','#2a313c','#2a313c','#2a313c'],last=0;
+  function size(){var r=Math.min(2,window.devicePixelRatio||1);cv.width=innerWidth*r;cv.height=innerHeight*r;ctx.setTransform(r,0,0,r,0,0);
+    cols=Math.ceil(innerWidth/(fs*.62)/1);rows=Math.ceil(innerHeight/fs);cells=[];for(var i=0;i<cols*rows;i++)cells.push({ch:GLYPH[(Math.random()*GLYPH.length)|0],c:cs[(Math.random()*cs.length)|0]});drawAll()}
+  function drawAll(){ctx.fillStyle='#07090d';ctx.fillRect(0,0,innerWidth,innerHeight);ctx.font=fs+'px JetBrains Mono, monospace';ctx.textBaseline='top';
+    for(var i=0;i<cells.length;i++)drawCell(i)}
+  function drawCell(i){var x=(i%cols)*fs*.62,y=((i/cols)|0)*fs;ctx.fillStyle='#07090d';ctx.fillRect(x,y,fs*.62,fs);ctx.globalAlpha=.32;ctx.fillStyle=cells[i].c;ctx.fillText(cells[i].ch,x,y);ctx.globalAlpha=1}
+  function tick(now){if(!document.hidden&&now-last>90){last=now;var n=Math.max(1,(cells.length*.012)|0);
+      for(var j=0;j<n;j++){var i=(Math.random()*cells.length)|0;cells[i].ch=GLYPH[(Math.random()*GLYPH.length)|0];cells[i].c=cs[(Math.random()*cs.length)|0];drawCell(i)}}
+    if(!RM)requestAnimationFrame(tick)}
+  size();var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(size,200)});if(!RM)requestAnimationFrame(tick);
+})();
+// 見出しの字（DecryptedText）
+function render(d){
+  last=d;var now=Date.now(), M=merge(d,now);
+  renderNow(M,now);
+  lastSeen=Math.max.apply(null,[0].concat(M.hosts.map(function(h){return h.t})));
+  // BRAIN
+  var b0=M.brains[0], bm=b0?b0.model:'Fable 5.2', bf=fam(bm)==='lead'?'fable':fam(bm);
+  M.brains.sort(function(a,b){return (a.tag==='pc'?0:1)-(b.tag==='pc'?0:1)||a.quiet-b.quiet});
+  var bh=M.brains.length?M.brains.slice(0,4).map(function(b){var on=b.on&&b.active;
+    var lk=/^session_\w+$/.test(b.link||'')?' <a class="open" href="https://claude.ai/code/'+encodeURIComponent(b.link)+'" target="_blank" rel="noopener">開く</a>':'';
+    return '<span class="'+(on?'c-harness':'c-dim')+'">● '+(on?'active':'idle · '+dur(b.quiet))+' <span class="c-dim">'+esc(b.tag)+(b.name?' · '+esc(b.name):'')+'</span>'+lk+'</span>'}).join('')+(M.brains.length>4?'<span class="c-dim">+'+(M.brains.length-4)+'</span>':''):'<span class="c-dim">● 記録なし</span>';
+  $('lead').innerHTML='<div class="t">BRAIN · '+esc(bm)+' · lead</div><div class="w">plans only · 計画だけ</div><div class="h">'+bh+'</div><div class="c-dim">--model '+esc(bf)+'</div>';
+  // advisor
+  var o=M.opus, r0=o.recent[0];
+  $('adv').innerHTML='<h3>OPUS 5.5</h3><div class="sub">advisor · '+(o.active?'<span class="c-opus">active</span>':'on call')+'</div>'+
+   '<div class="when">hard diagnosis</div><div class="ja">難しい診断・同じ設計の迷い</div><span class="tick" style="top:62px">›</span>'+
+   '<p>reads the whole session, every tool call and every result</p>'+
+   '<p>last advice:<br>'+(r0?'<span class="advice">» '+esc(r0.advice||'（結果の記録なし）')+'</span><br><span class="ja">'+esc(r0.label)+' · '+ago(now-ts(r0.t))+'</span>':'<span class="c-dim">（まだ呼ばれていない）</span>')+'</p>'+
+   '<p><span class="kv">calls (24h)<b>'+o.calls+'</b></span><span class="kv">tokens read<b>'+k(o.tokens)+'</b></span></p>'+
+   '<p>silent on every routine turn<br><span class="ja">ふつうの回は黙っている</span></p><div class="rail"></div>'+
+   '<div class="when">same error x2</div><div class="ja">同じ失敗が 2 回続いたとき</div>'+
+   '<p>never writes code itself. Sonnet / Haiku applies the advice.</p><div class="rail"></div>'+
+   '<div class="when">before done</div><div class="ja">審美の最終判定</div>';
+  // HARNESS routing
+  var mh=M.models.haiku||0, ms=M.models.sonnet||0, mo=M.models.opus||0, mx=Math.max(1,mh,ms,mo), tot=0;Object.keys(M.models).forEach(function(f){tot+=M.models[f]});
+  var hq=(M.harness&&M.harness.queue)||{}, bl=(M.site&&M.site.backlog)||{};
+  var qo=hq.open!=null?hq.open:bl.open, qd=hq.claimed!=null?hq.claimed:bl.doing, qa=hq.waiting!=null?hq.waiting:bl.ask;
+  var rt=M.route;
+  $('route').innerHTML='<div class="hd"><b>HARNESS · routing</b><span>'+(rt?'run '+esc(rt.run)+' · '+esc(rt.stage)+' · '+esc(rt.status)+' <span class="c-dim">'+esc(rt.tag)+'</span>':'<span class="c-dim">run なし</span>')+'</span></div>'+
+   '<div class="row"><span><b>light</b> <span class="ja c-dim">軽い</span> → Haiku</span>'+bar(mh/mx,'c-haiku')+'<span class="n"><span class="c-haiku">'+mh+'</span> <span class="c-dim">haiku</span></span></div>'+
+   '<div class="row"><span><b>normal</b> <span class="ja c-dim">ふつう</span> → Sonnet</span>'+bar(ms/mx,'c-sonnet')+'<span class="n"><span class="c-sonnet">'+ms+'</span> <span class="c-dim">sonnet</span></span></div>'+
+   '<div class="row"><span><b>hard</b> <span class="ja c-dim">難しい</span> → Opus</span>'+bar(mo/mx,'c-opus')+'<span class="n"><span class="c-opus">'+mo+'</span> <span class="c-dim">opus</span></span></div>'+
+   '<div class="q">queue <b>'+(qo!=null?qo:'–')+'</b> open  <b>'+(qd!=null?qd:'–')+'</b> doing  <b>'+(qa!=null?qa:'–')+'</b> ask owner  <span>24h agents '+tot+' · plan(fable) '+(M.models.fable||0)+'</span></div>';
+  // 係の箱
+  var box=$('agents'), AGK=box._k||(box._k={}), keepA={}, orderA=[];
+  var shown=M.agents.filter(function(a){return a.status!=='done'||now-ts(a.t1)<RECENT_H*3600e3});
+  var older=M.older+(M.agents.length-shown.length);
+  var live=shown.filter(function(a){return a.status!=='done'}), done=shown.filter(function(a){return a.status==='done'});
+  var maxT=1;live.forEach(function(a){if(a.tools)maxT=Math.max(maxT,a.tools)});
+  if(!live.length){box._k={};setHTML(box,'<div class="ag" style="grid-column:1/-1"><span class="c-dim">いま動いている係はいません</span></div>');}
+  else if(box._h){box._h=null;box.innerHTML=''}
+  live.slice(0,16).forEach(function(a){
+    var f=famc(a.fam), key=a.tag+'|'+a.label, e=AGK[key];
+    if(!e){e=AGK[key]=document.createElement('div');e.innerHTML='<div class="agb"></div><div class="wave"></div>'}
+    keepA[key]=1;orderA.push(e);
+    var cls='ag b-'+f+(a.status==='stuck'?' stuck':'');if(e.className!==cls)e.className=cls;e.dataset.k=key;e.dataset.s=a.status;
+    var st=a.status==='running'?'<span class="c-'+f+'">● running</span>':a.status==='stuck'?'<span class="c-red">■ stuck · '+dur(a.quiet)+' 動きなし</span>':a.status==='failed'?'<span class="c-red">✗ failed</span>':'<span class="c-harness">✓ done'+(a.pr?' · PR #'+esc(a.pr):a.errors?' · 問題あり':'')+'</span>';
+    var open=/^session_\w+$/.test(a.session||'')?' · <a class="open" href="https://claude.ai/code/'+encodeURIComponent(a.session)+'" target="_blank" rel="noopener">開く</a>':'';
+    setHTML(e.firstChild,'<div class="nm">'+esc(a.label)+'</div><div class="md c-'+f+'">'+esc(a.model||'—')+' <small>· '+esc(a.tag)+'</small></div>'+
+      '<div class="mt">'+(a.tools!=null?bar(a.tools/maxT,'c-'+f):'<span></span>')+'<span>'+(a.tools!=null?a.tools+' tools · ':'')+dur(a.min)+'</span></div>'+
+      '<div class="act">'+esc(a.status==='done'||a.status==='failed'?(a.result||'結果を返す'):(a.action||''))+'</div><div class="st">'+st+open+'</div>');
+    setWave(e.lastChild,waveMode(a.status));
+  });
+  Object.keys(AGK).forEach(function(kk){if(!keepA[kk]){AGK[kk].remove();delete AGK[kk]}});
+  if(live.length){var curA=Array.prototype.slice.call(box.children);
+    if(curA.length!==orderA.length||curA.some(function(x,i){return x!==orderA[i]}))orderA.forEach(function(x){box.appendChild(x)})}
+  setHTML($('more'),(done.length?'<span class="c-dim">済み</span>'+done.slice(0,6).map(function(a){var f=famc(a.fam);return '<span class="dn c-'+f+'" title="'+esc(a.result||'')+'">✓ '+esc(a.label)+(a.pr?' · #'+esc(a.pr):a.errors?' · 問題あり':'')+'</span>'}).join(''):'')+(older>0?'<span class="c-dim">+'+older+' 済み（2 時間より前）</span>':''));
+  requestAnimationFrame(beams);
+  // back to lead
+  var bk=['<h4>back to lead — review + verify</h4>'];
+  M.pending.slice(0,3).forEach(function(p){bk.push('<div><span class="'+(p.status==='failed'?'c-red':'c-harness')+'">'+(p.status==='failed'?'✗':'✓')+' '+esc(p.label)+'</span> '+esc(p.text)+'</div>')});
+  (d.prs||[]).filter(function(p){return p.state==='OPEN'}).slice(0,3).forEach(function(p){
+    var c=p.ci==='SUCCESS'?['c-harness','CI 緑']:p.ci==='FAILURE'||p.ci==='ERROR'?['c-red','CI 赤']:['c-lead','CI 待ち'];
+    bk.push('<div><span class="c-lead">#'+p.n+'</span> '+esc(p.title)+' <span class="'+c[0]+'">['+c[1]+']</span></div>')});
+  ((M.harness&&M.harness.choices)||[]).slice(0,2).forEach(function(c){bk.push('<div><span class="c-opus">? '+esc(c.task)+'</span> '+esc(c.question||'')+(c.url?' <a class="c-lead" href="'+esc(c.url)+'" target="_blank" rel="noopener">案</a>':'')+'</div>')});
+  if(bk.length===1)bk.push('<div class="c-dim">確認待ちはありません</div>');
+  $('back').innerHTML=bk.join('');
+  // session log
+  var lg=$('log'), have={}, rows=[], first=!lg._init;
+  Array.prototype.forEach.call(lg.children,function(r){if(r.dataset.k)have[r.dataset.k]=r});
+  M.events.forEach(function(e,i){var k=ts(e.t)+'|'+e.label+'|'+e.text, r=have[k];
+    if(!r){var f=famc(e.fam);r=document.createElement('div');r.className='r in';r.dataset.k=k;if(first)r.style.animationDelay=(i*45)+'ms';
+      r.innerHTML='<span class="c-dim">'+hms(ts(e.t))+'</span><b class="c-'+f+'" title="'+esc(e.label)+'">'+esc(e.label)+'</b><span class="tx'+(e.err?' err':'')+'">'+esc(e.text)+'</span>';
+      r.addEventListener('animationend',function(){r.classList.remove('in');r.style.animationDelay=''},{once:true})}
+    rows.push(r)});
+  if(!rows.length){var em=document.createElement('div');em.className='c-dim';em.textContent='まだ記録がありません';rows.push(em)}
+  var same=lg.children.length===rows.length&&rows.every(function(r,i){return lg.children[i]===r});
+  if(!same)lg.replaceChildren.apply(lg,rows);lg._init=true;
+  // site
+  var s=M.site||{}, kp=s.kpi, html=[];
+  html.push('<div><span class="k">kpi</span> '+(kp&&kp.routes?kp.routes.map(function(r){return esc(r.route)+' <span class="'+(r.ok===r.total?'c-harness':'c-lead')+'">'+r.ok+'/'+r.total+'</span>'+(r.bad&&r.bad.length?' <span class="c-lead">'+esc(r.bad.join(' '))+'</span>':'')}).join(' · ')+(kp.at?' · '+ago(now-ts(kp.at)):''):'<span class="c-dim">–</span>')+'</div>');
+  html.push('<div><span class="k">prs</span> '+((d.prs||[]).length?d.prs.map(function(p){var c=p.state==='MERGED'?['c-harness','merged']:p.state==='CLOSED'?['c-dim','closed']:p.ci==='SUCCESS'?['c-harness','pass']:p.ci==='FAILURE'||p.ci==='ERROR'?['c-red','fail']:['c-lead','pending'];return '<a class="'+c[0]+'" href="https://github.com/'+OWNER+'/'+SITE+'/pull/'+p.n+'" target="_blank" rel="noopener">#'+p.n+'</a> '+c[1]}).join(' '):'<span class="c-dim">取得できず</span>')+'</div>');
+  html.push('<div><span class="k">main</span> '+(s.main?'<span class="c-white">'+esc(s.main.sha)+'</span> '+esc(s.main.msg)+' · '+ago(now-ts(s.main.t)):'<span class="c-dim">–</span>')+'</div>');
+  html.push('<div><span class="k">backlog</span> '+(qo!=null?'<b class="c-white">'+qo+'</b> open · <b class="c-white">'+(qd||0)+'</b> doing · <span class="c-lead">'+(qa||0)+' ask</span>':'<span class="c-dim">–</span>')+(bl.top?'<br><span class="c-dim">›</span> '+esc(bl.top):'')+'</div>');
+  $('site').innerHTML=html.join('');
+  // inbox
+  var answered={};(d.outbox||[]).forEach(function(m){answered[String(m.re)]=m});
+  var mb=$('msgs');mb.innerHTML='';
+  (d.inbox||[]).slice().sort(function(a,b){return ts(a.t)-ts(b.t)}).slice(-4).forEach(function(m){
+    var r=answered[String(m.t)];
+    mb.insertAdjacentHTML('beforeend','<div class="msg me">&gt; '+esc(m.text)+(m.to&&m.to!=='both'?' <span class="c-dim">→ '+esc(m.to)+'</span>':'')+'</div>'+(r?'<div class="msg re">↳ '+esc(r.text)+' <span class="c-dim">'+esc(r.who||'')+'</span></div>':'<div class="msg re c-dim">↳ まだ返事なし</div>'));
+  });
+  if(!(d.inbox||[]).length)mb.innerHTML='<div class="msg re c-dim">まだ伝言はありません</div>';
+  // 最後の 2 行
+  var run=M.agents.filter(function(a){return a.status==='running'}).length, stk=M.agents.filter(function(a){return a.status==='stuck'}).length;
+  var hs=M.hosts.map(function(h){return h.host}).join(',')||'none';
+  $('status').innerHTML='<div><span class="c-dim">~/agentboard $</span> <span class="cmd">agentboard --hosts '+esc(hs)+' --brain '+esc(bf)+' --advisor opus</span></div>'+
+   '<div>haiku <span class="br">['+(mh?'swarming':'idle')+']</span>   subagents <span class="br">['+run+'/'+shown.length+']</span>'+(stk?' <span class="c-red">stuck '+stk+'</span>':'')+'   opus <span class="c-opus">['+(o.active?'advising':'on call')+']</span>   24h <span class="c-harness">[ '+tot+' agents ]</span>   '+
+   M.hosts.map(function(h){return '<span class="'+(h.on?'c-harness':'c-red')+'">'+esc(h.tag)+(h.on?' ●':' ○ '+ago(now-h.t))+'</span>'}).join(' ')+'</div>';
+  tickBar();
+}
+var lastSeen=0;
+function tickBar(){$('bar').textContent='~/agentboard · zsh · '+(demo?'demo':'live')+' · '+hms(Date.now());
+  var a=$('nowage');if(a)a.textContent=lastSeen?'· '+Math.max(0,Math.round((Date.now()-lastSeen)/1000))+' 秒前に届いた':'';
+  var lw=$('livewave');if(lw)setWave(lw,lastSeen&&Date.now()-lastSeen<30000?'run':'flat dead');}
+
+function tick(){
+  return load().then(render).catch(function(e){
+    if(e&&e.auth){forget('令牌が使えません（期限切れ・消された）。作り直して貼ってください');return}
+    $('bar').textContent='~/agentboard · 読めませんでした：'+((e&&e.msg)||'通信')+' · 5 秒後にもう一度';
+  });
+}
+function start(){
+  $('setup').hidden=true;$('app').hidden=false;$('logout').hidden=demo;$('livebadge').hidden=false;$('livetxt').textContent=demo?'DEMO':'LIVE';
+  tick();clearInterval(timer);timer=setInterval(function(){if(!document.hidden)tick()},POLL);
+  clearInterval(clockT);clockT=setInterval(tickBar,1000);
+}
+function forget(msg){
+  try{localStorage.removeItem(KEY)}catch(e){}
+  tok=null;clearInterval(timer);clearInterval(clockT);$('app').hidden=true;$('logout').hidden=true;$('livebadge').hidden=true;$('setup').hidden=false;$('err').textContent=msg||'';$('bar').textContent='~/agentboard · zsh · login';
+}
+$('tokf').onsubmit=function(ev){
+  ev.preventDefault();
+  var v=$('tok').value.trim();
+  if(!/^(github_pat_|ghp_)\w{20,}$/.test(v)){$('err').textContent='github_pat_ で始まる令牌を貼ってください';return}
+  tok=v;$('err').textContent='確かめています…';
+  gql('query{ab:repository(owner:"'+OWNER+'",name:"'+REPO+'"){name}}').then(function(){
+    try{localStorage.setItem(KEY,v)}catch(e){}
+    $('tok').value='';$('err').textContent='';start();
+  }).catch(function(e){tok=null;$('err').textContent=e&&e.auth?'この令牌は使えません':(e&&e.msg)||'読めませんでした'});
+};
+$('logout').onclick=function(){forget('令牌を外しました')};
+// 令牌の名前はこの端末用に決めておく（GitHub は同じ名前の令牌を 2 つ作れない）：agentboard-<端末>-<日付>
+(function(){var ua=navigator.userAgent||'',a=$('newtok');if(!a)return;
+  var dev=/iPhone|iPod|Android.+Mobile/.test(ua)?'phone':/iPad|Android/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1)?'tablet':/Macintosh/.test(ua)?'mac':'pc';
+  var d=new Date(),ymd=d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2)+('0'+d.getDate()).slice(-2);
+  try{var u=new URL(a.href);u.searchParams.set('name','agentboard-'+dev+'-'+ymd);a.href=u.toString()}catch(e){}
+})();
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&(tok||demo))tick()});
+
+// 店長の伝言 → inbox/<t>.json（BRAIN は ab.py inbox で読み、ab.py reply で返す）
+$('talk').onsubmit=function(ev){
+  ev.preventDefault();
+  var text=$('text').value.trim();if(!text)return;
+  var t=Date.now(), rec={t:t,text:text,to:$('to').value,at:new Date(t).toISOString()};
+  if(demo){last.inbox.push(rec);render(last);$('text').value='';return}
+  var b64=btoa(unescape(encodeURIComponent(JSON.stringify(rec,null,1)+'\n')));
+  $('text').disabled=true;
+  fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/inbox/'+t+'.json',{method:'PUT',headers:{'Authorization':'bearer '+tok,'Accept':'application/vnd.github+json'},body:JSON.stringify({message:'owner '+t,content:b64})})
+   .then(function(r){if(!r.ok)throw r.status;$('text').value='';if(last){last.inbox.push(rec);render(last)}})
+   .catch(function(s){alert(s===403||s===404?'送れません：令牌の Contents を Read and write にしてください':'送れませんでした（'+s+'）')})
+   .then(function(){$('text').disabled=false;$('text').focus()});
+};
+
+// 見本（?demo：前の AgentBoard の demo と同じ埋まり方。試験と絵の確かめ用）
+function DEMO(){
+  var n=Date.now()/1000, m=60, iso=function(s){return new Date((n-s)*1000).toISOString()};
+  function E(list){return list.map(function(x){return {t:n-x[0],text:x[1],err:!!x[2]}})}
+  function S(o){return Object.assign({sub:0,turn_tools:0,said:'',action:'',prompt:'',events:[]},o)}
+  function A(label,model,f,tools,min,quiet,action,status,extra){return Object.assign({label:label,model:model,fam:f,tools:tools,tok:tools*9000,t0:n-min*m,t1:n-quiet*m,min:min,quiet:quiet,action:action,result:'',pr:'',status:status},extra||{})}
+  var pc={v:1,host:'pc',kind:'pc',at:iso(20),ts:n-20,
+    brain:{session:'50b60877',model:'Fable 5.2',fam:'fable',action:'計画を書く',quiet:1,active:true},
+    agents:[A('fix:f1:1','Sonnet 5.5','sonnet',14,9,0.5,'書き換える：docs/assets/board.css','running',{sid:'50b60877'}),
+            A('check:f1:2','Haiku 5.5','haiku',12,38,19,'コマンド：PR の CI を待つ（最大 9.5 分）','running',{sid:'50b60877'}),
+            A('step:f1','Sonnet 5.5','sonnet',86,44,30,'コマンド：PR の CI を待つ','done',{result:'版面の高さの決め方を直した。PR #1010・CI 緑・合併済み。',pr:'1010'}),
+            A('check:f1:1','Haiku 5.5','haiku',31,18,25,'','done',{result:'390 幅で見出しが 1 行はみ出している。',errors:1})],
+    older_done:3,
+    sessions:[S({id:'50b60877',project:'Claude',title:'ハーネス v2 の回（run 1119a）',model:'Fable 5.2',fam:'fable',state:'working',t1:n-20,turn_t0:n-14*m,turn_tools:23,turn_tok:1830000,sub:2,spark:[0,0,1,2,0,3,4,2,1,0,0,2,5,6,3,2,1,0,0,1,3,4,6,8,5,3,2,4,6,7],
+                 action:'任せる：390 幅の見出しのはみ出しを直す',prompt:'次の段を 2 つずつ回して',events:E([[700,'読む：harness/tasks/INDEX.md'],[640,'コマンド：q.py next'],[300,'任せる：版面の高さの決め方を直す'],[20,'任せる：390 幅の見出しのはみ出しを直す']])}),
+              S({id:'7a1c3e90',project:'SupabaseLocal',title:'DB の引っ越しとバックアップ',model:'Opus 5.5',fam:'opus',state:'ask',t1:n-2*m,turn_t0:n-9*m,turn_tools:6,turn_tok:210000,spark:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,0,1,1,0,0,0],
+                 action:'道具：AskUserQuestion',prompt:'バックアップを毎日にして',events:E([[400,'読む：backup.ps1'],[120,'道具：AskUserQuestion']])}),
+              S({id:'c2d4e6f8',project:'LocalServer',title:'Live2D MCP の確認',model:'Sonnet 5.5',fam:'sonnet',state:'idle',t1:n-95*m,turn_tools:4,turn_tok:90000,spark:[],prompt:'動いた？',said:'3 つとも動きました。Cubism の設定は済みです。'})],
+    events:[[600,'step:f1','sonnet','書き換える：scripts/render.py'],[540,'step:f1','sonnet','コマンド：テストを流す'],[480,'step:f1','sonnet','PR #1010 を出して合併まで済ませた。'],[420,'check:f1:1','haiku','コマンド：本番を 1400 / 390 で開いて点検'],[360,'check:f1:1','haiku','道具がエラー：timeout 120s',1],[300,'check:f1:1','haiku','390 幅で見出しが 1 行はみ出している。'],[240,'fix:f1:1','sonnet','読む：scripts/render.py'],[180,'fix:f1:1','sonnet','探す：fitBoard'],[60,'fix:f1:1','sonnet','書き換える：docs/assets/board.css']]
+      .map(function(x){return {t:n-x[0],label:x[1],fam:x[2],text:x[3],err:!!x[4]}}),
+    models:{haiku:9,sonnet:6,opus:1,fable:3},opus:{calls:1,tokens:547000,active:false,recent:[{label:'店長の好みを集める',status:'done',t:n-3*m,advice:'版面の失敗は同じ原因。直すのは高さの決め方で、見た目の調整ではない。'}]},
+    pending:[{label:'step:f1',text:'版面の高さの決め方を直した。PR #1010・CI 緑・合併済み。',pr:'1010',t:n-30*m,status:'done'},{label:'check:f1:1',text:'390 幅で見出しが 1 行はみ出している。',t:n-25*m,status:'done'}],
+    route:{run:'demo0001',t:n-60,stage:'Fix',status:'running',agents:6},
+    site:{main:{sha:'a1b2c3d',t:n-12*m,msg:'ゲート：溜まった版面で AI 編集を起こした'},kpi:{at:iso(5*3600),routes:[{route:'A',ok:6,total:6,bad:[]},{route:'B',ok:5,total:6,bad:['AI 編集']},{route:'C',ok:4,total:4,bad:[]}]},
+          backlog:{open:258,doing:32,ask:22,top:'【最優先】新規ユーザーの通し点検を毎回'}},
+    harness:{at:iso(60),queue:{open:258,claimed:32,waiting:22,parked:3,done:41},choices:[]}};
+  var cloud={v:1,host:'cloud-3136e785',kind:'cloud',at:iso(30),ts:n-30,
+    brain:{session:'3136e785',model:'Opus 5.5',fam:'opus',action:'書き換える：docs/board/index.html',quiet:3,active:false},
+    agents:[A('写真の出どころ調べ','Haiku 5.5','haiku',23,12,0.3,'ページを開く：https://example.com/','running',{sid:'3136e785'}),
+            A('店長の好みを集める','Opus 5.5','opus',41,77,3,'','done',{result:'読む：memory/owner-aesthetic.md'})],
+    older_done:2,events:[{t:n-20,label:'写真の出どころ調べ',fam:'haiku',text:'ページを開く：https://example.com/',err:false}],
+    sessions:[S({id:'3136e785',project:'Wishlist',title:'AgentBoard の会話',model:'Opus 5.5',fam:'opus',state:'working',t1:n-5,turn_t0:n-6*m,turn_tools:31,turn_tok:2400000,link:'session_demo',spark:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,5,4,6,7,5],
+                 action:'書き換える：docs/board/index.html',prompt:'この board で Claude がいま何をしているか、実時間で見えるように',events:E([[300,'読む：collect.py'],[120,'コマンド：試験を流す'],[60,'道具がエラー：timeout 120s',1],[5,'書き換える：docs/board/index.html']])}),
+              S({id:'8f2b9a11',project:'Wishlist',title:'新規ユーザーの流れを本番で試す',model:'Sonnet 5.5',fam:'sonnet',state:'yours',t1:n-4*m,turn_tools:12,turn_tok:640000,spark:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,1,2,4,2,1,0,0,0,0,0,0,0,0],prompt:'test-c で試して',said:'5 分以内に小元素が出ました（4 分 12 秒）。'}),
+              S({id:'aa11bb22',project:'Wishlist',title:'写真の出どころ調べ',model:'Haiku 5.5',fam:'haiku',state:'quiet',t1:n-18*m,turn_t0:n-40*m,turn_tools:40,turn_tok:880000,spark:[3,4,2,5,3,2,4,3,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],action:'コマンド：PR の CI を待つ',prompt:'写真の出どころを全部調べて'})],
+    models:{haiku:5,sonnet:3},opus:{calls:0,tokens:0,active:false,recent:[]},pending:[],route:null,site:null,harness:null};
+  return {hosts:[pc,cloud],
+    beats:[{role:'新規ユーザーの点検',task:'kpi',note:'test-c で版面を足して 5 分を測る',where:'cloud',status:'working',ts:n-2*m,started:iso(20*m),model:'claude-sonnet-5-5',session:'session_demo'}],
+    inbox:[{t:(n-40*m)*1000,text:'390 の見出し、まだはみ出てるよ',to:'both'}],
+    outbox:[{t:(n-38*m)*1000,re:String((n-40*m)*1000),text:'見ました。fix:f1:1 に回しています。',who:'PC の BRAIN'}],
+    pcsum:null,
+    prs:[{n:1011,title:'390 幅の見出しのはみ出しを直す',state:'OPEN',ci:'PENDING'},{n:1009,title:'空きにその版面の小元素を置く',state:'OPEN',ci:'FAILURE'},{n:1008,title:'新規ユーザーの点検：足したばかりの版面を先頭に',state:'OPEN',ci:'SUCCESS'}]};
+}
+
+document.addEventListener('visibilitychange',function(){document.documentElement.classList.toggle('paused',document.hidden)});
+if(tok||demo)start();else forget('');
+})();
+</script>
+</body></html>
