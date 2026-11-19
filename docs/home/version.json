@@ -1,10 +1,10 @@
 {
- "admin": "ae2825fee9fc",
- "admin-ai": "fd578ea45889",
+ "admin": "5377bc840d4a",
+ "admin-ai": "d9af6fde951b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d66cf5f8"
+   "6bd751d7"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "0cd4b824de34",
+ "admin-emblem": "539fe22f8bdc",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c8eed7d3"
+   "d08391f2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "33aa8d149517",
  "admin-members_marks": {},
- "admin-now": "58a339f94076",
+ "admin-now": "a93560911879",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3df51772"
+   "12cde25b"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "6ad92678"
   ]
  },
- "admin-system": "aee70a955d10",
+ "admin-system": "658bcbf5a71c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "139a9330"
+   "14ae19fe"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "521f0657"
+   "7c686e35"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "d94c985c"
   ]
  },
- "index": "ab6d123fd56d",
+ "index": "b8adb4797e6e",
  "index_marks": {
   "front": [
    "トップ",
-   "97241d0d"
+   "2587a749"
   ],
   "picks": [
    "気になるかも？",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "041f8e0a"
+   "fd8ebcca"
   ],
   "w-6676e624": [
    "三星手机",
@@ -145,11 +145,11 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "59f90d98"
+   "28921d48"
   ],
   "w-9cb26dba": [
    "FROM",
-   "8741ef2e"
+   "16ab7a16"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "aba72473"
+   "1252fe62"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "016b81f3"
+   "3d725af2"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "72edf8a8"
   ]
  },
- "updated": "11.19 09:48",
+ "updated": "11.19 09:57",
  "wishlist": "475d604848d8"
 }

@@ -11,6 +11,12 @@
   "target": 720,
   "v": 3
  },
+ "http://img4.wtsimg.com/flashnews/images/images/20261117/feishu-CHbQbl1yko59g6xECGpcPsQancf-58a6e5fc.jpg!1200": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "http://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FJiji%252Fcd%252FJiji_3913808%252FJiji_3913808_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "w": 480,
   "h": 320,
@@ -434,6 +440,12 @@
   "w": 572,
   "h": 300,
   "target": 720,
+  "v": 3
+ },
+ "https://bleedingcool.com/wp-content/uploads/2026/11/1814047620361-2000x1125.jpeg": {
+  "w": 2000,
+  "h": 1125,
+  "target": 1280,
   "v": 3
  },
  "https://books.r10s.jp/fan/images/oshiraku-images/kohaku_shikai_main_202cd0bee7.png?fitin=838:628": {
@@ -1021,6 +1033,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://gamesbeat.com/wp-content/uploads/2026/09/Lingokids-2.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://gdm-universal-media.b-cdn.net/epicstream/5182de2d-finding-harry-potter-the-craft-behind-the-magic.webp?width=1600&height=840": {
   "w": 1493,
   "h": 840,
@@ -1327,6 +1345,12 @@
  "https://images.pushsquare.com/f4516012179b5/1280x720.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.static-bluray.com/movies/covers/414975_front.jpg": {
+  "w": 1758,
+  "h": 2200,
   "target": 720,
   "v": 3
  },
@@ -1776,12 +1800,6 @@
   "v": 3,
   "blur": 0.361
  },
- "https://img4.wtsimg.com/flashnews/images/images/20261117/crop-3x2-115230522030-302e1081.jpg": {
-  "w": 1215,
-  "h": 810,
-  "target": 720,
-  "v": 3
- },
  "https://img4.yna.co.kr/etc/inner/JP/2026/11/13/AJP20261113002200882_01_i_P4.jpg": {
   "w": 500,
   "h": 375,
@@ -1973,6 +1991,12 @@
   "target": 720,
   "v": 3
  },
+ "https://media.pocketgamer.com/artwork/na-38549-1795023259/astrae-oratio-fireworks-keyscreen.png": {
+  "w": 1010,
+  "h": 505,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.radaronline.com/brand-img/1X8y5W8xl/1200x628/paapa-essiedu-reaffirms-trans-rights-stance-ahead-of-hboas-aharry-pottera-series-1794424962324.jpg": {
   "w": 1200,
   "h": 628,
@@ -2115,6 +2139,12 @@
  "https://news.ponycanyon.co.jp/wp/wp-content/uploads/2026/11/くくルプティザービジュアル_1023-410x580.jpg": {
   "w": 410,
   "h": 580,
+  "target": 720,
+  "v": 3
+ },
+ "https://news.walkerplus.com/article/1005392/10038375_615.jpg": {
+  "w": 615,
+  "h": 482,
   "target": 720,
   "v": 3
  },
@@ -2539,6 +2569,18 @@
   "out": [
    1280,
    1021
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261112-00000018-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 621,
+  "target": 720,
+  "v": 3,
+  "local": "pics/f3435dc6554705b2.webp",
+  "out": [
+   800,
+   621
   ],
   "why": "期限付きの網址"
  },
@@ -3153,13 +3195,13 @@
  "https://qz.com/cdn-cgi/image/width=320,height=240,fit=cover,quality=85,format=auto/https://assets.qz.com/media/images.jpeg": {
   "w": 320,
   "h": 240,
-  "target": 720,
+  "target": 1280,
   "v": 3,
-  "blur": 0.5,
+  "blur": 0.647,
   "local": "pics/ee362b116cf7073c.webp",
   "out": [
-   720,
-   540
+   960,
+   720
   ],
   "why": "看不清"
  },
@@ -4100,12 +4142,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.xsI6hwpgyJbblr6QTroQfQ&pid=News&w=1010": {
-  "w": 700,
-  "h": 350,
-  "target": 720,
-  "v": 3
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,

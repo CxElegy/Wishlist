@@ -1,22 +1,24 @@
 {
  "date": "2026-11-19",
- "edit_sig": "7f8432d83dd4",
+ "edit_sig": "dca242855ffd",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Astrae Oratio's game director offered his thoughts on what the game can achieve, as well as how combat works after the closed beta.",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "Pocket Gamer",
-     "title": "Interview: Astrae Oratio's game director offers new insights into the upcoming RPG's combat after closed beta",
-     "url": "https://www.pocketgamer.com/astrae-oratio/closed-beta-test-combat-reactions/"
+     "headline": "Interview: Astrae Oratio's game director offers new insights into the upcoming RPG's combat after closed beta",
+     "highlight": "",
+     "image": "https://media.pocketgamer.com/artwork/na-38549-1795023259/astrae-oratio-fireworks-keyscreen.png",
+     "image_via": "og:image",
+     "url": "https://www.pocketgamer.com/astrae-oratio/closed-beta-test-combat-reactions/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -681,24 +683,29 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Bleeding Cool が、マンダロリアン関連のスーパーコマンドー・ヘルメットのレプリカ公開を報じた。",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "Bleeding Cool News",
-     "title": "Star Wars: Mandalorian Super Commando Helmet Replica Revealed",
-     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNTGxJUGxLbDBZRElqVndLY2VDTG1JQU9GbGlvemlnQTQxODRaYTZUUWFOckJibVVBQlVrWUlDNDRPY3BXX0hTSmFxZU1NTGc0UEJBQjhkZTNVNGVtOEVON2NYekdUN2hDRkJMSDJ3RE1LR3dpMDJUa0VObjlxaVE5WUVBMjViN2g5R1V0dXlfVDIxcGpScmlDSjY4U0dyaUpF?oc=5"
+     "headline": "Star Wars: Mandalorian Super Commando Helmet Replica Revealed",
+     "highlight": "",
+     "image": "https://bleedingcool.com/wp-content/uploads/2026/11/1814047620361-2000x1125.jpeg",
+     "image_via": "og:image",
+     "url": "https://bleedingcool.com/collectibles/star-wars-mandalorian-super-commando-helmet-replica-revealed/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-17",
-     "n": 2,
-     "source": "Blu-ray.com",
-     "title": "Blu-ray Sales: August 30-September 5: The Mandalorian and Grogu Avoid the Infected in Second Week",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9pamxnUGlJZlE5STBlOHFSVjFvZjJvME52UTNaYy1CeGltYzF3YUxuOHVzUG1OUjZxY3VtMDI3YW54RWFTNVViRWFwT1lFZ1E?oc=5"
+     "headline": "Blu-ray Sales: August 30-September 5: The Mandalorian and Grogu Avoid the Infected in Second Week",
+     "highlight": "",
+     "image": "https://images.static-bluray.com/movies/covers/414975_front.jpg",
+     "image_via": "og:image",
+     "url": "https://www.blu-ray.com/news/?id=39019",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -764,8 +771,8 @@
      "date": "2026-11-18",
      "headline": "别克又搞事情了！全新至境世家MPV官宣即将登场，周杰伦代言背后的门道你看懂了吗？",
      "highlight": "",
-     "image": "https://img4.wtsimg.com/flashnews/images/images/20261117/crop-3x2-115230522030-302e1081.jpg",
-     "image_via": "JSON-LD",
+     "image": "http://img4.wtsimg.com/flashnews/images/images/20261117/feishu-CHbQbl1yko59g6xECGpcPsQancf-58a6e5fc.jpg!1200",
+     "image_via": "正文图（4 枚から）",
      "url": "http://auto.news18a.com/news/storys_316171.html",
      "weight": "normal"
     }
@@ -977,22 +984,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 2,
-     "source": "Yahoo!ニュース",
-     "title": "大人気「スターバックス福袋2027」が抽選販売！今年の当たりはゴールデンマグ＆ベアリスタ（インサイド）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFB6VDdnbFphei1wZV9uRG00a0lheVpRQlgxQXV1bFRGaGQ0VEdLWkVzUk9kcXA4TjA4NzI2LWpNOGVBS1loMndvaUZqb1RtenpjUzFLVXhhSEhDbENhbmo5Q1dJeDNCOGRzQVJ4Qm80M1lCRF9LRXB2ZnFaN1o2YXM?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 3,
-     "source": "ウォーカープラス",
-     "title": "お家でスターバックス気分に！マグカップやタンブラーなどお洒落アイテム5選",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1RRlQyS2d3WWFoOGxqRURYalVraFVEQ2FWYVg5TVpvajJTZVdqNzFuQWppRHZtdkduUHpaeFg2ZGMxcVl4UEt1SkUwY1ViWFNPYnNDb0F30gFbQVVfeXFMUE9kYldjWkpsYTZIMk5mLUNycWpKa2gxTTF4TXM5Yks2NTFGTWljN3AzWXh5U0xHeDhiNnJPWEZHZ3lpWEJaNXNacXViSFlOc0cxWVpyWGd1Zl9uMA?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -1008,6 +999,26 @@
      "image_via": "og:image",
      "url": "https://www.moneydigest.sg/starbucks-korea-x-hello-kitty-drops-on-19-november-with-a-mini-christmas-tree-mugs-and-more/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-12",
+     "headline": "大人気「スターバックス福袋2027」が抽選販売！今年の当たりはゴールデンマグ＆ベアリスタ",
+     "highlight": "抽選販売",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261112-00000018-isd-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/224531d9e8e2cfff262ebd8b483f4bfaccc43353",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-15",
+     "headline": "お家でスターバックス気分に！マグカップやタンブラーなどお洒落アイテム5選",
+     "highlight": "",
+     "image": "https://news.walkerplus.com/article/1005392/10038375_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1005392/",
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
@@ -1055,17 +1066,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "qz.com",
-     "title": "FROM Season 5 mysteries: 11 unresolved questions the final season must address",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5EUXhmSkRBX3VXRjRJY3J3Q24xeGh1bzdfYzVndlBtazQyTXpOai1zcFNDNmpKajdWczZoT05nd3lLWU9DQS1yOEFCVUd6aFBoWFM2ZXAtZFl1aFFyZXc?oc=5"
+     "headline": "FROM Season 5 mysteries: 11 unresolved questions the final season must address",
+     "highlight": "Season 5",
+     "image": "https://qz.com/cdn-cgi/image/width=320,height=240,fit=cover,quality=85,format=auto/https://assets.qz.com/media/images.jpeg",
+     "image_via": "JSON-LD",
+     "url": "https://qz.com/unresolved-from-mysteries-season-5",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
