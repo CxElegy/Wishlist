@@ -7,6 +7,11 @@
 
 作業は店長の PC の Claude Code へ移る。**PC の Claude は最初に `harness/HANDOFF.md` を読む**（これまでの流れ・PC での回し方・次の順番・店長が決めること）。
 
+**AgentBoard（2026-11-19，用户定的・店長がまとめて許可済み＝聞き直さない）**：係の様子は https://cxelegy.github.io/Wishlist/board/ （PC とクラウドを 1 つの画面に）。
+- **PC の Claude**：会話の始めに `schtasks /Query /TN AgentBoardCollector` が無ければ、`git clone https://github.com/CxElegy/agentboard D:\Claude\agentboard`（無ければ）→ `powershell -NoProfile -ExecutionPolicy Bypass -File D:\Claude\agentboard\setup_pc.ps1`。PC の全部の作業場所の会話を読んでよい。
+- **クラウドの会話（主も、主が作る会話も）**：会話の始めに `/home/user/agentboard` が無ければ `add_repo cxelegy/agentboard（push）`→ `git clone https://github.com/CxElegy/agentboard /home/user/agentboard` → `python3 /home/user/agentboard/ab.py whoami <get_session の session_ id> "<会話の名前>"` → `python3 .claude/hooks/agentboard_start.py`。人のいない会話（AI 編集・予約で起こされた回）は足さない（許可待ちで止まらないように）。
+- **店長の伝言**：主の会話は返事の前に `python3 <agentboard>/ab.py inbox` を見て、`ab.py reply <t> "返事" --who "クラウドの主"`（PC は `"PC の主"`）で返す。詳しくは `HARNESS_V2.md`「AgentBoard をクラウドでも」。
+
 ## 詳しい仕様は docs/rules/（その分野を触る前に必ず読む）
 
 ここは毎回要る決まりだけ。細かい仕様は下のファイルへ移した（2026-10-24，用户定的：決まりは 1 つも消さない）。
@@ -66,7 +71,7 @@
 - 回复提到网页・PR・设置页，就贴能点开的链接：
   简报（店長のページ）https://cxelegy.github.io/Wishlist/home/ 、设置页 https://cxelegy.github.io/Wishlist/home/settings.html 、
   愿望清单 https://cxelegy.github.io/Wishlist/home/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/home/heat.html 、テーマ見本 https://cxelegy.github.io/Wishlist/home/themes.html 、管理ページ https://cxelegy.github.io/Wishlist/home/admin.html 、テストグラウンド https://cxelegy.github.io/Wishlist/testground/ 、PR 用完整网址。
-  入口 https://cxelegy.github.io/Wishlist/ ，存档 test2 https://cxelegy.github.io/Wishlist/test2/ 。
+  入口 https://cxelegy.github.io/Wishlist/ ，存档 test2 https://cxelegy.github.io/Wishlist/test2/ 。 AgentBoard https://cxelegy.github.io/Wishlist/board/ 。
 - 合并 PR 后网页约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；确认更新了再告诉我、附链接。收集新闻・发通知仍由「关注清单通信」慢慢跑。
 
 ## test1 / test2・account（要点。全文 `docs/rules/accounts.md`）

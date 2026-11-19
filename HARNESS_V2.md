@@ -152,6 +152,27 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 
 店長の書き込みは `D:/Claude/AgentBoard/inbox.jsonl`（`{t, text}`）、返事は `outbox.jsonl`（`{t, re, text}`）。
 
+### AgentBoard をクラウドでも（2026-11-19，店長：PC とクラウドの係を 1 つの画面で・前と同じ画面で）
+
+前の AgentBoard（PC の `D:/Claude/AgentBoard`・`server.mjs` が http://localhost:4747・2026-11-11 に参考画像「CLAUDE CODE SUBAGENT TIP」どおりの端末風に作り直した）は、PC の中の記録しか読めず、PC の上の仕組みが止まると画面ごと消えた（2026-11-19 に 502）。
+画面は**同じ作り**のまま、置き場をクラウドに移した。
+
+| 何 | どこ |
+|---|---|
+| 画面 | https://cxelegy.github.io/Wishlist/board/ （`docs/board/index.html`。ページ自体にデータは無い・noindex。左に Opus advisor、中央に BRAIN → HARNESS routing → 係の箱 → back to lead、下に session log・site・owner → brain・最後の 2 行。係の箱に pc / cloud の札） |
+| データ | 非公開のリポジトリ `cxelegy/agentboard`：枝 `live-<機械>` の `host.json`（集め係が機械ごとに 1 枚・親なしの 1 コミットを force-push＝履歴が増えない）・main の `agents/`（`ab.py beat`）・`inbox/`・`outbox/` |
+| 読む鍵 | 店長が端末ごとに 1 回貼る GitHub の令牌（agentboard だけ・Contents read/write）。その端末の localStorage だけ。クラウド・リポジトリには置かない |
+| 集め係 | `agentboard/collect.py`（標準ライブラリだけ）。前の `server.mjs` と同じく Claude Code の記録を読む：`~/.claude/projects/<作業場所>/<会話>.jsonl`（BRAIN）・`<会話>/subagents/agent-*.jsonl`＋`.meta.json`（単独の係）・`subagents/workflows/wf_*/journal.jsonl`＋`agent-*.jsonl`（workflow の回）。＋ Wishlist の main・kpi・段の列、PC は `summary.json` |
+
+- **PC**：`setup_pc.ps1` を 1 回 → タスク AgentBoardCollector がログオンのたびに `collect.py --host pc --loop 30` を起こす（4747 の server.mjs は要らなくなる）。
+- **クラウドの会話（主も、主が作る会話も。店長が 2026-11-19 にまとめて許可）**：会話の始めに `add_repo cxelegy/agentboard（push）`→ `/home/user/agentboard` に clone → `ab.py whoami <session_ id> "<会話の名前>"`（BRAIN の箱に名前と「開く」）→ `python3 .claude/hooks/agentboard_start.py`。次からは hook（SessionStart・UserPromptSubmit）が、clone があれば 1 つだけ起こす（Windows・clone が無い会話は何もしない）。会話ごとに `live-cloud-<id>` の 1 枚。人のいない会話（AI 編集・予約の回）は足さない。
+- 記録を集め係が読めない係（別の機械など）は `ab.py beat <役> <段> "<いま>" --session session_… --model claude-…` → 同じ箱に出る。
+- **令牌は 1 回で**：画面の「GitHub で令牌を作る」は名前・期限・Contents の書き込みを入れた GitHub の作成ページ（template URL）。店長が手で選ぶのは Repository access の agentboard だけ。
+- **店長の伝言**：画面の `owner $` → `inbox/`（宛先：両方・cloud・pc）。BRAIN は `ab.py inbox` で読み、`ab.py reply <t> "返事" --who "クラウドの BRAIN"` で返す。
+- 状態：作業中／完了／失敗／**15 分 記録が増えない＝止まっている（赤）**。機械の 1 枚が 6 分 来なければ、その機械の作業中の係も赤。2 時間より前に終わった係は「+N 済み」。
+- 画面は 15 秒ごと（タブが隠れている間は読まない）に GraphQL 1 回：live-* の全部・main の agents/inbox/outbox・Wishlist の PR と CI。
+- 試験：Wishlist `tests/test_agentboard_page.py`（GitHub を差し替えて読む・合わせる・伝言・令牌切れ）・`tests/test_agentboard_hook.py`、agentboard `tests/test_collect.py`・`tests/test_ab.py`。
+
 ## まだ入れていないもの（次の段）
 
 合格の見本の絵との画素の比べ（golden）・店長の判定の記録（owner_verdicts.jsonl）で審査の係を合わせる・1 つの PR に 3 段まとめる合併・本番のページに build の印・ダッシュボードのボタン（優先を変える・飛ばす）・見張りが残ったプロセスを止める。設計は `D:/Claude/hf/research/harness-v2.md`。
