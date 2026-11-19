@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-19T22:18:32+00:00",
+ "changed": true,
+ "checked": "2026-11-19T23:18:50+00:00",
  "fired": {
   "at": "2026-11-19T22:18:32+00:00",
   "results": {
@@ -66,48 +66,35 @@
    "items": [
     "Astrae Oratio",
     "FROM",
-    "GTA 6",
-    "ILLIT",
     "The Mandalorian",
     "dota2",
-    "gelato pique",
-    "lib:iPhone",
-    "lib:ユニクロ",
-    "lib:宇宙・ロケット",
+    "lib:ちいかわ",
+    "lib:サカナクション",
+    "lib:ブルーアーカイブ",
+    "lib:台風・天気",
     "lib:将棋",
+    "lib:広島旅行",
     "lib:恐竜",
-    "lib:温泉",
-    "lib:無印良品",
     "lib:生成AI",
     "チェーンソーマン",
     "三星手机",
-    "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-11-19T20:48:54+00:00",
+   "last_batch": "2026-11-19T22:28:24+00:00",
    "last_error": {
     "at": "2026-11-18T23:39:22+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 115,
+   "prog": 156,
    "prog_day": "2026-11-20",
-   "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "gelato pique",
-    "周杰伦",
-    "漫威电影",
-    "绝区零"
-   ],
-   "sig": "5f3a40914b65",
+   "ripe": [],
+   "sig": "3b544d481db5",
    "token_cap": 1000000,
-   "tokens_today": 199783,
-   "why": "整理待ちの記事 145 件（23 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 253486,
+   "why": "整理待ちの記事 109 件（17 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -256,12 +243,12 @@
    "runs": 12
   },
   "2026-11-20": {
-   "batches": 4,
-   "cr": 3411008,
-   "cw": 185739,
-   "in": 104,
-   "out": 13940,
-   "runs": 4
+   "batches": 6,
+   "cr": 4325702,
+   "cw": 234966,
+   "in": 131,
+   "out": 18389,
+   "runs": 5
   }
  }
 }

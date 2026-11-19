@@ -1,534 +1,9 @@
 {
 "done": {
 "day": "2026-11-20",
-"n": 19
+"n": 24
 },
 "boards": [
-{
-"id": 160,
-"name": "iPhone",
-"day": "2026-11-20",
-"fp": "23fa5bf920d6",
-"fresh": false,
-"rows": [
-{
-"title": "iPhone 18発売はやはり「2027年3月」か、最新のウワサと異なる発表時期の真相",
-"date": "2026-11-19T06:30:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/baeaedf35cd36ff5a3792635e9600cfc76d541e5",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00108396-forbes-000-1-view.jpg?exp=10800"
-},
-{
-"title": "iPhone Duo対応ガラスフィルム「PREMIUM GLASS for iPhone Duo」を発売",
-"date": "2026-11-18T07:20:40+00:00",
-"source": "ASCII.jp",
-"summary": "",
-"url": "https://ascii.jp/elem/000/004/452/4452833/",
-"image": "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122"
-},
-{
-"title": "【App Store iPhoneゲームチャート】新作『キン肉マン マッスルタッグマッチ令和復活編』が有料チャートTOP3入り（11/9～15）",
-"date": "2026-11-17T03:15:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/63b078f3717964074a87771da4de464f160b2c7a",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000344-oric-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【Amazonセール】TORRAS 薄型iPhoneケース ブラック・クリアの6商品がプライム会員限定で5%オフ",
-"date": "2026-11-14T21:22:32+00:00",
-"source": "AppBank",
-"summary": "",
-"url": "https://www.appbank.net/2026/11/15/iphone-news/3166616.php",
-"image": "https://www.appbank.net/wp-content/uploads/2026/11/amazon-deal-appbank-b0ff4klqg8-20261114-hero.jpg"
-},
-{
-"title": "iPhone18と18eが2027年春発売との予想に自信〜シェア1位に貢献？",
-"date": "2026-11-14T01:31:28+00:00",
-"source": "iPhone Mania",
-"summary": "",
-"url": "https://iphone-mania.jp/iphone18-608654/",
-"image": "https://iphone-mania.jp/wp-content/uploads/2026/11/14/iPhone18-AC-1114.jpg"
-},
-{
-"title": "Apple新製品「HomeView」米国で発売。iPhoneがあれば要らない？ 海外評価で見えた弱点（カーミー） - エキスパート",
-"date": "2026-11-13T21:30:50+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/expert/articles/e488345573dfedb20d695fbe52d80c540cd791a7",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/creators/kamix/02764919/title-1794539358713.jpeg?exp=10800"
-},
-{
-"title": "ベルキン、iPhone 18 Pro向けレザー調シリコンケース発売 360度回転するキックスタンド付き（ITmedia Mobile）",
-"date": "2026-11-13T12:43:24+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/d9145a79db0f3bf8e1c7bad19c2f63f4505bc620",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000048-zdn_m-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【Amazonセール】NIMASO アンチグレア iPhone 17/iPhone 16 Pro用ガラスフィルムが2,279円(プライム会員限定)",
-"date": "2026-11-12T23:54:45+00:00",
-"source": "AppBank",
-"summary": "",
-"url": "https://www.appbank.net/2026/11/13/iphone-news/3164310.php",
-"image": "https://www.appbank.net/wp-content/uploads/2026/11/amazon-deal-appbank-b0fdg3fjlj-20261113-hero.jpg"
-},
-{
-"title": "【Amazonセール】TORRAS Guardian Series ケースがプライム会員限定で5%オフ、iPhone 17 Pro Max用・iPhone 16用・Pixel 9a用の3機種",
-"date": "2026-11-12T22:54:43+00:00",
-"source": "AppBank",
-"summary": "",
-"url": "https://www.appbank.net/2026/11/13/iphone-news/3164316.php",
-"image": "https://www.appbank.net/wp-content/uploads/2026/11/amazon-deal-appbank-b0ff8spxwd-20261113-hero.jpg"
-},
-{
-"title": "ディズニーの脇役たちが主役に！SKINNYDIP新作iPhoneケースが名古屋で先行発売",
-"date": "2026-11-11T06:11:50+00:00",
-"source": "いこーよニュース",
-"summary": "",
-"url": "https://report.iko-yo.net/articles/35598",
-"image": "https://d28w2qw7dtr435.cloudfront.net/uploaded/cover_images/images/35785/large.jpg?1794376242"
-},
-{
-"title": "iPhone 18 ProとiPhone 18 Pro Max、発売から1ヶ月：バッテリー寿命とカメラのレビュー。",
-"date": "2026-11-10T10:54:28+00:00",
-"source": "Vietnam.vn",
-"summary": "",
-"url": "https://www.vietnam.vn/ja/iphone-18-pro-va-iphone-18-pro-max-sau-1-thang-ra-mat-danh-gia-thoi-luong-pin-voi-camera",
-"image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/10/1794305540973_cover-ip-18.jpeg"
-},
-{
-"title": "Apple初のフォルダブル「iPhone Duo」、発売2週間で中古価格が38%急落",
-"date": "2026-11-10T07:28:56+00:00",
-"source": "BigGo ファイナンス",
-"summary": "",
-"url": "https://finance.biggo.jp/news/7f8f0b46-2727-490e-9376-b551b562f254",
-"image": "https://img.biggo.com/tCNl1l7isXDkngXdCksEZhjK8ne9IIh9ci3P8FFYsL4/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExLzdmOGYwYjQ2LTI3MjctNDkwZS05Mzc2LWI1NTFiNTYyZjI1NF8xNzk0Mjc2MjE2X2RlZmF1bHQud2VicA.jpg"
-}
-]
-},
-{
-"id": 161,
-"name": "ユニクロ",
-"day": "2026-11-20",
-"fp": "6498ac44abbc",
-"fresh": false,
-"rows": [
-{
-"title": "ユニクロが20日から感謝祭 初日にあんぱん配布 | スマートニュース",
-"date": "2026-11-19T14:45:00+00:00",
-"source": "SmartNews",
-"summary": "",
-"url": "https://www.smartnews.com/news/article/5014221371291470095-%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD%E3%81%8C20%E6%97%A5%E3%81%8B%E3%82%89%E6%84%9F%E8%AC%9D%E7%A5%AD%E3%80%80%E5%88%9D%E6%97%A5%E3%81%AB%E3%81%82%E3%82%93%E3%81%B1%E3%82%93%E9%85%8D%E5%B8%83",
-"image": "https://smartnews-se-public-img-prd.s3.ap-northeast-1.amazonaws.com/thumbnail/5014070643809846980/a7b21c38a5b3748df84fb8afe9e6a317.jpeg"
-},
-{
-"title": "「この冬1番お世話になりそう」 ユニクロの“ショート丈ダウンジャケット”が好評 「おしゃれに着こなせる」「中Tシャツ一枚でも温かくて手放せない」 (ねとらぼ)",
-"date": "2026-11-19T14:00:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/3f9f101cb74fcdd3366710b6624d3efabf61e15c/images/000",
-"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26m6vN0haqGJSPHfCJke66Uk7ObCPI16oJy7Fg_pzpURYkfAvI64lv3273ZlGTVFaBMuxEdb61HfCAQqgMC_fd7Xblhm_XutqZt2YfhLe-vncLrse7i-FskLl7acfGcKhqQ=="
-},
-{
-"title": "ユニクロ感謝祭、明日20日開始でチラシ先行公開。ヒートテックインナー990円、UNIQLO：CのカシミヤTが1990円、シームレスダウン2000円引き",
-"date": "2026-11-19T13:33:46+00:00",
-"source": "トラベル Watch",
-"summary": "",
-"url": "https://travel.watch.impress.co.jp/docs/news/2158034.html",
-"image": "https://travel.watch.impress.co.jp/img/trw/list/2158/034/01.jpg"
-},
-{
-"title": "「すごく楽ちん」 ユニクロの“気楽に履けるコーデュロイパンツ”が人気！ 「ウエストがゴムなので履きやすい」「スウェット感覚で履けるのがとてもよい」（ねとらぼ）",
-"date": "2026-11-19T12:30:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/a9858626953397e31c964d1f4ee520e638a6104e",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-10178040-it_nlab-000-1-view.jpg?exp=10800"
-},
-{
-"title": "「1万円以上でビッグトートがもらえる！」ユニクロ感謝祭で全5色の便利なパッカブルバッグをプレゼント！木村屋總本店のあんぱん先着配布も見逃せない（LIMO）",
-"date": "2026-11-19T11:50:33+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/80ca4f1d63e389d8e7181d534ad422925dad4416",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-90000225-toushin-000-1-view.jpg?exp=10800"
-},
-{
-"title": "齋藤飛鳥：ヒートテックをレイヤード 「ユニクロ」のシンプルアイテムでこなれ感を演出",
-"date": "2026-11-19T11:10:00+00:00",
-"source": "毎日キレイ",
-"summary": "",
-"url": "https://mainichikirei.jp/article/20261119dog00m100018000a.html",
-"image": "https://www.bing.com/th?id=ONUT.STxvOONC5hZSR90F7-zZfA&pid=News&w=1200"
-},
-{
-"title": "ユニクロnews｜｢Bリーグオールスター2027｣全9チームにユニフォーム提供",
-"date": "2026-11-19T10:29:28+00:00",
-"source": "流通スーパーニュース",
-"summary": "",
-"url": "https://news.shoninsha.co.jp/csr/325072",
-"image": ""
-},
-{
-"title": "「か、可愛いと試着室で声が出た」 ユニクロの“カーディガン“が4990円→3990円 「羽織りとしてもトップスとしても◎」「こんなカーディガンを待ってました！」（ねとらぼ）",
-"date": "2026-11-19T10:15:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/e903eb828611d37dfe646ce1a5fac88f66eab802",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-10178063-it_nlab-000-1-view.jpg?exp=10800"
-},
-{
-"title": "ファストリ、26年度のスコープ3での温室効果ガス排出量は増加見込み 事業成長との両立に苦戦",
-"date": "2026-11-19T18:55:39+09:00",
-"source": "FASHIONSNAP",
-"summary": "「ユニクロ（UNIQLO）」「ジーユー（GU）」を手掛けるファーストリテイリングが、生産工場などサプライチェーン領域（専門用語でスコープ3と呼ぶ）での温室効果ガス（以下、GHG）排出量が、2026年度（2026年8月期）は前年度比で増加する見込みであると発表した。同社は2030年度までに2019年度比で30％削減する目",
-"url": "https://www.fashionsnap.com/article/2026-11-19/fast-retailing-sustainability-2026/",
-"image": "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/f5349437-4f99-44eb-983d-63c230807586.jpg"
-},
-{
-"title": "【明日から】ユニクロ「感謝祭」開催 ヒートテック、パフテック、フリース…“感謝価格”に（オトナンサー）",
-"date": "2026-11-19T09:15:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/0c0a396fbf4355fdab89c616ecd5389f30db4b8e",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00410778-otonans-000-10-view.jpg?exp=10800"
-},
-{
-"title": "「全種類買いました」ユニクロの“あったかカーディガン”何枚でも欲しくなる！「一気にオシャレ感がでます」「この秋の一番のヒットです」《購入レビュー》（ダイヤモンド・オンライン）",
-"date": "2026-11-19T09:12:16+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/27e4da459e0d301b881385d725b51cafa040626a",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00403646-diamond-000-1-view.jpg?exp=10800"
-},
-{
-"title": "Bリーグオールスター2027の全ユニフォームをユニクロが提供…“しゃちほこ”大会ロゴを基にデザイン（バスケットボールキング）",
-"date": "2026-11-19T09:01:04+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/212b6951e990fc7c7b2306003d09f3dbbeed74d4",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00644175-bballk-000-1-view.jpg?exp=10800"
-}
-]
-},
-{
-"id": 162,
-"name": "無印良品",
-"day": "2026-11-20",
-"fp": "4444e48b4bb8",
-"fresh": false,
-"rows": [
-{
-"title": "2位『ワークマン』3位『無印良品』【毎年頼りにしている防寒インナーブランド】300名が選ぶ1位に「一番活躍」「やめられない」",
-"date": "2026-11-19T13:35:00+00:00",
-"source": "TRILL",
-"summary": "",
-"url": "https://trilltrill.jp/articles/5160512",
-"image": "https://media.trilltrill.jp/articles/5160512/thumbnail-image.a02d242f988ef5685c67e81febd18024?w=1200"
-},
-{
-"title": "【無印良品】買ってよかった新作収納！“複数使い”が大正解だった話（実物レビュー）（1/2） - ハピママ*",
-"date": "2026-11-19T12:20:00+00:00",
-"source": "ウレぴあ総研",
-"summary": "",
-"url": "https://ure.pia.co.jp/articles/-/3545455",
-"image": "https://urepia.ismcdn.jp/mwimgs/a/7/-/img_a753f1841e8cfd907d836ab4f0066c8d45066.jpg"
-},
-{
-"title": "無印良品、株主優待を「電子→紙」に変更 情報流出問題受け“時代に逆行”する事態に",
-"date": "2026-11-19T10:05:07+00:00",
-"source": "オタク総研",
-"summary": "",
-"url": "https://0115765.com/archives/214553",
-"image": "https://0115765.com/wp-content/uploads/2026/11/20261119-at8bgj3j.jpg"
-},
-{
-"title": "え、これ【無印良品の服】なのッ！？ カジュアル派に推したい『シャレ見えアイテム』",
-"date": "2026-11-19T10:00:00+00:00",
-"source": "ｄメニューニュース",
-"summary": "",
-"url": "https://topics.smt.docomo.ne.jp/article/ftnews/trend/ftnews-69b854e8813fa60371906664a07b6cc7f806f947",
-"image": "https://img.topics.smt.news.goo.ne.jp/picture/ftnews/m_ftnews-69b854e8813fa60371906664a07b6cc7f806f947.jpg"
-},
-{
-"title": "【久喜市】いよいよ明日11月20日！埼玉初の大型店「無印良品 久喜吉羽」がグランドオープン♪ 品ぞろえにも注目です！",
-"date": "2026-11-19T09:42:26+00:00",
-"source": "埼玉マガジン",
-"summary": "",
-"url": "https://saitama-city-marathon.jp/2026/11/19/kukisi-113/",
-"image": "https://saitama-city-marathon.jp/wp-content/uploads/2026/11/IMG_7491-1-scaled.jpeg"
-},
-{
-"title": "11月中に買っておくべき！ 無印良品の掃除グッズ 5選【2026秋】",
-"date": "2026-11-19T08:07:40+00:00",
-"source": "LEE",
-"summary": "",
-"url": "https://lee.hpplus.jp/column/3789895/",
-"image": ""
-},
-{
-"title": "水回りがすっきり整う♪無印良品のおすすめアイテム6選",
-"date": "2026-11-19T06:00:00+00:00",
-"source": "Excite エキサイト",
-"summary": "",
-"url": "http://www.excite.co.jp/news/article/ExnewsRoomclip_94681/",
-"image": "https://s.eximg.jp/exnews/feed/ExnewsRoomclip/d0/ExnewsRoomclip_94681/ExnewsRoomclip_94681_1.jpg"
-},
-{
-"title": "【高評価】「これは美味しい！ちゃんとキャラメル強い。... - 無印良品 不揃い 塩キャラメルバウム」のクチコミ・評価 - るんるん7さん",
-"date": "2026-11-19T03:58:25+00:00",
-"source": "もぐナビ",
-"summary": "",
-"url": "https://mognavi.jp/assessment/11388227",
-"image": "https://img1.esimg.jp/resize/1024x1024/image/food/02/56/11/3013145_original.jpg"
-},
-{
-"title": "無印良品の携帯用ソーイングセット 中のハサミの“意外なメーカー”を知って買いに行くと…「買いに行こ！」（LIMO）",
-"date": "2026-11-19T01:05:33+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/0141b6fe8fce34b352cb1f2f8a5d1ba4a451c471",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-90000138-toushin-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【クレカ109万件流出】「無印良品」良品計画で大規模情報漏洩が起きたワケ《3期連続増過去最高益の影で…》",
-"date": "2026-11-18T22:00:00+00:00",
-"source": "文春オンライン",
-"summary": "",
-"url": "https://bunshun.jp/articles/-/93839",
-"image": "https://bunshun.jp/mwimgs/c/6/1200wm/img_c69e808d6d14eed20a0423bd7bca747144186.jpg"
-},
-{
-"title": "無印良品 カード109万件に漏洩の疑い 最高益の裏で (2026年11月19日掲載)",
-"date": "2026-11-18T22:00:00+00:00",
-"source": "ライブドアニュース",
-"summary": "",
-"url": "https://news.livedoor.com/topics/detail/32850634/",
-"image": "https://image.news.livedoor.com/newsimage/stf/9/3/93ba4_1386_4f9c9f0ff07af10cbf6b08a0d7756798.jpg"
-},
-{
-"title": "無印良品｢最大2726万件の情報流出｣を招いたセキュリティの盲点…クレカ全桁も､最高益の裏で露呈したガバナンスの死角",
-"date": "2026-11-18T21:00:00+00:00",
-"source": "東洋経済オンライン",
-"summary": "",
-"url": "https://toyokeizai.net/articles/-/965153?page=2",
-"image": "https://tk.ismcdn.jp/mwimgs/0/1/1200xm/img_01c5311f6c998d8a5e6a6a4c9c74f07f290728.jpg"
-}
-]
-},
-{
-"id": 173,
-"name": "温泉",
-"day": "2026-11-20",
-"fp": "ebea43a4e616",
-"fresh": false,
-"rows": [
-{
-"title": "【波浪警報】兵庫県・豊岡市、香美町、新温泉町に発表 04:50時点（TBS NEWS DIG Powered by JNN）",
-"date": "2026-11-19T19:54:16+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/b42f6db4844225a5f23d36e11a3c0493a95c8a60",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-23099553-jnn-000-1-view.jpg?exp=10800"
-},
-{
-"title": "花水月のこれからを考える会 ～竹田温泉花水月 再生リニューアル 市民説明会・意見交換～",
-"date": "2026-11-19T19:41:15+00:00",
-"source": "竹田市",
-"summary": "",
-"url": "https://www.city.taketa.oita.jp/soshiki/kankopromotion/hanamizuki/13405.html",
-"image": "https://www.city.taketa.oita.jp/material/images/group/13/11112255844.png"
-},
-{
-"title": "内牧温泉の宿、掲載確認9軒の冬料金は1室2名平均約4.4万円｜土曜・年末年始の差と阿蘇駅からの行き方",
-"date": "2026-11-19T10:59:00+00:00",
-"source": "HotelBank (ホテルバンク)",
-"summary": "阿蘇・内牧温泉で2026年12月〜2027年1月の掲載価格を確認できた宿は9軒。1室2名・税込の全プラン平均は12月43,967円、1月43,571円。土曜は平日比+22%、12/31〜1/2は+44%。大型温泉ホテルと小規模旅館の違い、公式記載の泉質、阿蘇駅・熊本空港からの行き方も整理した。",
-"url": "https://hotelbank.jp/lifestyle/uchinomaki-onsen-winter-price-2026/",
-"image": "https://www.bing.com/th?id=ONUT.owaPQHyS9X4J_0bJtmRUPQ&pid=News&w=1200"
-},
-{
-"title": "ポケモン「カイリュー」随所に、客室お目見え あわら市の温泉旅館グランディア芳泉 29日オープン",
-"date": "2026-11-19T10:30:00+00:00",
-"source": "福井新聞社",
-"summary": "",
-"url": "https://www.fukuishimbun.co.jp/articles/-/2751355",
-"image": "https://fki.ismcdn.jp/mwimgs/0/c/-/img_0cd8c84ec6f4f3efb074b7b4af8a947b369155.jpg"
-},
-{
-"title": "寒さ本格化 鹿屋・串良さくら温泉に朝から入浴客 鹿児島市も12月上旬並み（MBC南日本放送）",
-"date": "2026-11-19T10:20:24+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/74b94dec3a501253b9186221d4da98b38ebd44a4",
-"image": "https://newsdig.ismcdn.jp/mwimgs/3/0/1200w/img_30cfc696514914d1321242cfb2b5165049213.jpg"
-},
-{
-"title": "温泉施設ロッカーで窃盗、男２人に実刑判決…曜日を決めて合鍵作成に裁判官「職業的とも言える犯行」（読売新聞オンライン）",
-"date": "2026-11-19T10:11:13+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/f22488863bc453ac7923b00e6e84669919ab2254",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000482-yom-000-9-view.jpg?exp=10800"
-},
-{
-"title": "一茶ゆかりの山ノ内町湯田中温泉で二百回忌法要 最晩年に旅館へ滞在",
-"date": "2026-11-19T10:06:00+00:00",
-"source": "信濃毎日新聞デジタル",
-"summary": "",
-"url": "https://www.shinmai.co.jp/news/article/gf01dbvcjif6q3v49iv1k690",
-"image": "https://image.shinmai.co.jp/web-image/20261119/gf01dbvcji8vbt4um9igh850_M.jpg"
-},
-{
-"title": "こんなあったかグッズがあったか！？ 急な冷え込みに「肩温泉」「ねおちスト」 電気不要の節電・最新アイテムに注目",
-"date": "2026-11-19T09:50:00+00:00",
-"source": "TBS NEWS DIG",
-"summary": "",
-"url": "https://newsdig.tbs.co.jp/articles/rkk/3098007",
-"image": "https://newsdig.ismcdn.jp/mwimgs/6/5/1200w/img_6501c0e64d6012a1502727e9fbf3c7a9313348.jpg"
-},
-{
-"title": "新温泉町の学校給食にセコガニ／兵庫県（サンテレビ）",
-"date": "2026-11-19T09:43:30+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/6836a20468e4f31c3fdac4315d252a522fccb125",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00010007-suntvv-000-1-view.jpg?exp=10800"
-},
-{
-"title": "死因は熱中症 温泉の配管修理中に倒れ男性(54)死亡 いわき市・福島（2026年11月19日掲載）｜中テレNEWS NNN",
-"date": "2026-11-19T09:35:00+00:00",
-"source": "日テレNEWS NNN",
-"summary": "",
-"url": "https://news.ntv.co.jp/n/fct/category/society/fcf871c6967c734a3a8743651929365c18",
-"image": "https://image.gallery.play.jp/fct-news/articles/10bcb8588d9a40209a24b0b0788daf60/437c8227-1437-4de6-9277-06fabab94d73.jpg?w=1200"
-},
-{
-"title": "東京駅も武雄温泉楼門も！唐津出身の建築家・辰野金吾の功績を児童が塗り絵で学ぶ【佐賀県】｜佐賀のニュース",
-"date": "2026-11-19T09:14:00+00:00",
-"source": "サガテレビ",
-"summary": "",
-"url": "https://www.sagatv.co.jp/news/archives/2026111925025",
-"image": "https://www.sagatv.co.jp/files/blog/7/blog_posts/2026/11/25025.jpg?1219326885"
-},
-{
-"title": "カジカガエルの生息環境守ろう 三朝温泉保存研究会、山林で植樹活動",
-"date": "2026-11-19T08:46:33+00:00",
-"source": "日本海新聞",
-"summary": "",
-"url": "https://www.nnn.co.jp/articles/-/832478",
-"image": "https://nihonkai.ismcdn.jp/mwimgs/8/2/-/img_8286ea805132d945c332dba71de75b56199049.jpg"
-}
-]
-},
-{
-"id": 174,
-"name": "宇宙・ロケット",
-"day": "2026-11-20",
-"fp": "091bbfdd7dd0",
-"fresh": false,
-"rows": [
-{
-"title": "グーグル、宇宙AIの本番へ 2029年に大型ロケットで「データセンター1ラック級」衛星",
-"date": "2026-11-19T01:44:00+00:00",
-"source": "ビジネス+IT",
-"summary": "グーグルは11月19日、宇宙でAIの計算基盤を広げる構想「Project Suncatcher」の初の大型ロケット打ち上げで、ブルーオリジンと提携すると発表した。2029年第1四半期を目標に、同社の大型ロケット「New Glenn」が、データセンターのラック1台分ほどの計算能力を持つ衛星を太陽同期軌道へ運ぶ計画だ。",
-"url": "https://www.sbbit.jp/article/cont1/188606",
-"image": "https://www.bing.com/th?id=ONUT.1NX_DWngLVM05dlV-hJElA&pid=News&w=1200"
-},
-{
-"title": "H3ロケット、火星圏の試料採取へ 「日本の探査機」問われる真価",
-"date": "2026-11-18T18:00:00+00:00",
-"source": "日本経済新聞",
-"summary": "宇宙航空研究開発機構（JAXA）は10月20日、種子島宇宙センター（鹿児島県南種子町）からH3ロケット10号機を打ち上げた。今回の搭載物である火星衛星探査機「MMX」が目指すのは、火星圏にある第1衛星「フォボス」からの天体の試料を持ち帰るという世界初の快挙だ。試料採取が成功すれば、フォボスの拠点化への期待など火星での有",
-"url": "https://www.nikkei.com/article/DGXZQOUC0953B0Z01C26A1000000/",
-"image": "https://www.bing.com/th?id=ONUT.jMVmCIDeAiU78IdL3myZPw&pid=News&w=380"
-},
-{
-"title": "スペースXが世界を驚かせた。 最近、ロケット「スターシップ」の15次試験発射で、地球の軌道を回って帰ってきた2段宇宙船をロボットアームで捕らえ、回収するのに初めて成功した。 発射体を再使用してコストを..",
-"date": "2026-11-18T08:19:00+00:00",
-"source": "매일경제",
-"summary": "",
-"url": "https://www.mk.co.kr/jp/journalist/12212690",
-"image": "https://pimg.mk.co.kr/news/cms/202611/19/20261119_01110138000004_M00.jpg"
-},
-{
-"title": "モデルロケット全国大会「宇宙甲子園」福島県代表・福島工業高校「NOSU（のす）」を表彰｜福島ロケットチャレンジ2026表彰式を11月28日、ロボット航空宇宙フェスタで開催",
-"date": "2026-11-18T07:15:24+00:00",
-"source": "Infoseek",
-"summary": "",
-"url": "https://news.infoseek.co.jp/article/prtimes_000000046_000075397/",
-"image": "https://prtimes.jp/img/75397/46/resize/d75397-46-3961d17e07821c17ae8d-0.jpg"
-},
-{
-"title": "衛星からロケットまで、宇宙スタートアップ11社に投資",
-"date": "2026-11-17T17:24:00+00:00",
-"source": "マイナビニュース",
-"summary": "トヨタ自動車が宇宙事業への参入を探っているという。同社はToyota Ventures、Woven Capital、Toyota Invention Partnersの3つの投資部門を通じ、宇宙関連の11社のスタートアップに2億4000万ドル以上を投資していることを初めて明らかにしたという。",
-"url": "https://news.mynavi.jp/techplus/article/20261118-5352705/",
-"image": "https://www.bing.com/th?id=ONUT.TQTwJOz0NLb_0S8KKaYaIQ&pid=News&w=1200"
-},
-{
-"title": "中国、有人宇宙船「神舟24号」を近く打ち上げへ",
-"date": "2026-11-17T16:00:00+00:00",
-"source": "ライブドアニュース",
-"summary": "【新華社酒泉11月17日】中国の有人宇宙船「神舟24号」を搭載した運搬ロケット「長征2号F遥24」が17日、発射エリアへの移動を終えた。打ち上げは近日中の適切なタイミングで実施する。",
-"url": "https://news.livedoor.com/article/detail/32841487/",
-"image": "https://www.bing.com/th?id=ONUT.RQf2J7OmRqw2ehobkAqPWw&pid=News&w=465"
-},
-{
-"title": "清水建設／ロケット液体燃料タンクを一体造形／金属3Dプリンターで直径1m規模",
-"date": "2026-11-17T13:00:00+00:00",
-"source": "日刊建設工業新聞 on MSN",
-"summary": "清水建設は金属３Ｄプリンターの技術を活用し、直径１メートルのロケット用液体燃料タンクを一体造形した。宇宙航空研究開発機構（ＪＡＸＡ）と研究開発した「大型ハイブリッド積層造形システム」を使った。金属ワイヤを溶かしながら積層造形するロボットアーム型の金属３Ｄプリンターに、積層面の不良を整形する切削加工ロボットを組み合わせた",
-"url": "https://www.msn.com/ja-jp/technology/hardware-and-devices/%E6%B8%85%E6%B0%B4%E5%BB%BA%E8%A8%AD-%E3%83%AD%E3%82%B1%E3%83%83%E3%83%88%E6%B6%B2%E4%BD%93%E7%87%83%E6%96%99%E3%82%BF%E3%83%B3%E3%82%AF%E3%82%92%E4%B8%80%E4%BD%93%E9%80%A0%E5%BD%A2-%E9%87%91%E5%B1%9E%EF%BC%93%EF%BD%84%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%A7%E7%9B%B4%E5%BE%84%EF%BC%91%EF%BD%8D%E8%A6%8F%E6%A8%A1/ar-AA2hDX2K",
-"image": "https://www.bing.com/th?id=ONUT.S4YlYLkoStPFwErbfoaayA&pid=News&w=802"
-},
-{
-"title": "EPSILON CUP 2026 OSUMI-KIMOTSUKI［宇宙甲子園ロケット部門鹿児島大会］学校法人池田学園池田高等学校チームが初優勝、2027年2月全国大会に出場へ - 写真・画像(1/1)",
-"date": "2026-11-17T10:34:57+00:00",
-"source": "西日本新聞me",
-"summary": "",
-"url": "https://www.nishinippon.co.jp/image/1103798/",
-"image": "https://www.bing.com/th?id=ONUT.iDmoTRieLQZj2oeAHSwLLw&pid=News&w=1200"
-},
-{
-"title": "EPSILON CUP 2026 OSUMI-KIMOTSUKI[宇宙甲子園ロケット部門鹿児島大会]学校法人池田学園池田高等学校チームが初優勝、2027年2月全国大会に ...",
-"date": "2026-11-17T09:45:00+00:00",
-"source": "産経ニュース",
-"summary": "第2回大会に向け、これまでの鹿児島県に加え、初めて宮崎県での事前ワークショップを開催（全3回総勢71名が参加）し、結果、当初9校・11チーム（鹿児島県立鶴丸高、甲南高は辞退）が大会エントリーしました。",
-"url": "https://www.sankei.com/pressrelease/prtimes/MLKCEVRNKZNOZPLSYY2IUYZ77Y/",
-"image": "https://www.bing.com/th?id=ONUT.xMtY4KgBk8Oc-dMkhGT5Pg&pid=News&w=1200"
-},
-{
-"title": "EPSILON CUP 2026 OSUMI-KIMOTSUKI［宇宙甲子園ロケット部門鹿児島大会］学校法人池田学園池田高等学校チームが初優勝、2027年2月全国大会に出場へ",
-"date": "2026-11-17T08:45:14+00:00",
-"source": "PR TIMES",
-"summary": "",
-"url": "https://prtimes.jp/main/html/rd/p/000000032.000169767.html",
-"image": "https://prcdn.freetls.fastly.net/release_image/169767/32/169767-32-ce04347049c452a4ca4a2064d41776d9-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
-},
-{
-"title": "EPSILON CUP 2026 OSUMI-KIMOTSUKI［宇宙甲子園ロケット部門鹿児島大会］学校法人池田学園池田高等学校チームが初優勝、2027年2月全国大会に出場へ | 一般社団法人九州みらい共創のプレスリリース",
-"date": "2026-11-17T08:45:14+00:00",
-"source": "PR TIMES",
-"summary": "",
-"url": "https://prtimes.jp/main/html/rd/p/000000032.000169767.html",
-"image": "https://prcdn.freetls.fastly.net/release_image/169767/32/169767-32-ce04347049c452a4ca4a2064d41776d9-3900x2600.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff"
-},
-{
-"title": "自作ロケット、無事に卵生還？！ 「宇宙甲子園」地区大会……池田高校が優勝し全国へ",
-"date": "2026-11-17T04:31:00+00:00",
-"source": "南日本新聞",
-"summary": "",
-"url": "https://373news.com/news/local/detail/242899",
-"image": "https://373news.com/_photo/2026/11/20261117D091003-imgIMAG2026111102041_imo_03_GD.jpg"
-}
-]
-},
 {
 "id": 175,
 "name": "生成AI",
@@ -841,6 +316,531 @@
 "summary": "",
 "url": "https://www.fukuishimbun.co.jp/articles/-/2750233",
 "image": "https://fki.ismcdn.jp/mwimgs/b/2/-/img_b222f402a6d61bc40c14e7f79ad7c015567871.jpg"
+}
+]
+},
+{
+"id": 178,
+"name": "台風・天気",
+"day": "2026-11-20",
+"fp": "5a9d9df27c3d",
+"fresh": false,
+"rows": [
+{
+"title": "【解説】「台風が来たときと同じような強い風」も ３連休は“冬本番” 今後3日間で1メートル雪が積もるところも 気象予報士が解説「お天気のパターンは冬です」（関西テレビ）",
+"date": "2026-11-19T07:15:01+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/bfacbbd90d28c1e14d8ff3826945f50f6464d8dd?source=rss",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-90031092-kantelev-000-1-view.jpg?exp=10800"
+},
+{
+"title": "【大雪・暴風情報】北海道【菅井さんの天気予報 18日(水)】低気圧が台風並みに発達！空高くには真冬並みの強い寒気も…雪雲が発達し大雪や猛吹雪のおそれ＿冬の嵐のピークは？",
+"date": "2026-11-18T09:06:09+00:00",
+"source": "UHB 北海道文化放送",
+"summary": "",
+"url": "https://www.uhb.jp/news/single.html?id=63710",
+"image": "https://www.uhb.jp/news/data/63710/image.jpg?v=1794992306"
+},
+{
+"title": "富山県内、夕方から天気急変で雨の見通し 19日は台風並みの暴風と真冬の寒さに警戒",
+"date": "2026-11-18T03:25:00+00:00",
+"source": "FNNプライムオンライン",
+"summary": "",
+"url": "https://www.fnn.jp/articles/-/1154555",
+"image": "https://fnn.ismcdn.jp/mwimgs/f/e/1200/img_fe93a152e4e0ccf8a20ca602985530d632549.jpg"
+},
+{
+"title": "「風に向かって歩けないぐらい」“爆弾低気圧”で台風並みの暴風か 今シーズン初の寒波も…3連休の天気に注意",
+"date": "2026-11-17T02:14:00+00:00",
+"source": "ABEMA TIMES on MSN",
+"summary": "17日、竹内青空気象予報士が今後の天気について解説した。 西日本から東日本にかけて雨雲が広がり、関東では局地的に激しい雨が降る恐れがある。竹内気象予報士は「関東の沿岸部では局地的に激しい雨が降る恐れがありまして、道路の冠水などに注意が必要です」と説明。",
+"url": "https://www.msn.com/ja-jp/weather/meteorology/%E9%A2%A8%E3%81%AB%E5%90%91%E3%81%8B%E3%81%A3%E3%81%A6%E6%AD%A9%E3%81%91%E3%81%AA%E3%81%84%E3%81%90%E3%82%89%E3%81%84-%E7%88%86%E5%BC%BE%E4%BD%8E%E6%B0%97%E5%9C%A7-%E3%81%A7%E5%8F%B0%E9%A2%A8%E4%B8%A6%E3%81%BF%E3%81%AE%E6%9A%B4%E9%A2%A8%E3%81%8B-%E4%BB%8A%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%E5%88%9D%E3%81%AE%E5%AF%92%E6%B3%A2%E3%82%82-3%E9%80%A3%E4%BC%91%E3%81%AE%E5%A4%A9%E6%B0%97%E3%81%AB%E6%B3%A8%E6%84%8F/ar-AA2hCfF7",
+"image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hBwDC.img"
+},
+{
+"title": "【まるわかり天気】週の後半は北日本を中心に大荒れ 台風並みの暴風や大雪に警戒 交通障害にも注意を",
+"date": "2026-11-16T03:36:00+00:00",
+"source": "FNNプライムオンライン",
+"summary": "",
+"url": "https://www.fnn.jp/articles/-/1153042",
+"image": "https://fnn.ismcdn.jp/mwimgs/6/3/1200/img_639efe8594c26e164af8d9963c5af9f61377898.jpg"
+},
+{
+"title": "【冬の嵐】18日（水）「台風並み」に発達する低気圧 大雨だけでなく「暴風と高波」にも警戒【3時間ごと雨風シミュレーション19日（木）まで/ 3連休まで天気予報（23日まで）】気象庁（MBC南日本放送）",
+"date": "2026-11-13T11:20:27+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/68d667369f15d7d9e768b9e9fe558b62e46316c8",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-23085472-mbcnewsv-000-4-view.jpg?exp=10800"
+},
+{
+"title": "【熊本の天気】台風30号の影響 26日(月)は台風最接近で\"警報級の大雨\"の可能性 24時間雨量150ｍｍ予想",
+"date": "2026-11-13T09:58:00+00:00",
+"source": "TBS NEWS DIG",
+"summary": "",
+"url": "https://newsdig.tbs.co.jp/articles/gallery/3036033",
+"image": "https://newsdig.ismcdn.jp/mwimgs/0/1/1200w/img_0182f7a45d125513e7571cd0b095fc98174468.jpg"
+},
+{
+"title": "【冬の嵐】18日（水）「台風並み」に発達する低気圧 大雨だけでなく「暴風と高波」にも警戒【3時間ごと雨風シミュレーション19 ...",
+"date": "2026-11-13T03:26:22+00:00",
+"source": "TBS NEWS DIG on MSN",
+"summary": "【急速に発達する低気圧】台風並みの中心気圧964hpa予想 18日（水）から19日（木）にかけて、低気圧が急速に発達しながら日本海を進むため「強い冬型」の気圧配置になり、全国的に大荒れの天気になりそうです。 大雨だけでなく暴風や高波にも警戒しておきましょう。今後、気象庁から発表される気象情報に注意してください。",
+"url": "https://www.msn.com/ja-jp/news/other/%E5%86%AC%E3%81%AE%E5%B5%90-18%E6%97%A5-%E6%B0%B4-%E5%8F%B0%E9%A2%A8%E4%B8%A6%E3%81%BF-%E3%81%AB%E7%99%BA%E9%81%94%E3%81%99%E3%82%8B%E4%BD%8E%E6%B0%97%E5%9C%A7-%E5%A4%A7%E9%9B%A8%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AA%E3%81%8F-%E6%9A%B4%E9%A2%A8%E3%81%A8%E9%AB%98%E6%B3%A2-%E3%81%AB%E3%82%82%E8%AD%A6%E6%88%92-3%E6%99%82%E9%96%93%E3%81%94%E3%81%A8%E9%9B%A8%E9%A2%A8%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B319%E6%97%A5-%E6%9C%A8-%E3%81%BE%E3%81%A7-3%E9%80%A3%E4%BC%91%E3%81%BE%E3%81%A7%E5%A4%A9%E6%B0%97%E4%BA%88%E5%A0%B1-23%E6%97%A5%E3%81%BE%E3%81%A7/ar-AA2hmpQL",
+"image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hmZnF.img"
+},
+{
+"title": "【今後の雨は?】14日（土）に西から天気がくずれる見込み 15日（日）は全国的に雨や曇りのところが多く ※16日までの雨風シミュレーション 強い台風32号（チャンパカ）は小笠原近海を東北東へ進む 12日（木）には温帯低気圧に（ＳＢＣ信越放送）",
+"date": "2026-11-11T03:09:15+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/df80ae4563f6f1455ac9ed1e09ac6e97a18f4694",
+"image": ""
+},
+{
+"title": "【台風情報】台風32号（チャンパカ）10日夜遅くから小笠原諸島に接近…高波や土砂災害に注意・警戒、最新の雨風シミュレーション（11/10～14） | 長崎のニュース | 天気 | NBC長崎放送",
+"date": "2026-11-10T00:31:00+00:00",
+"source": "TBS NEWS DIG",
+"summary": "",
+"url": "https://newsdig.tbs.co.jp/articles/nbc/3073335",
+"image": "https://newsdig.ismcdn.jp/mwimgs/4/f/1200w/img_4f3bb40e563b5f31e52af610bd881c09243370.jpg"
+},
+{
+"title": "【動画】10日の天気 - 天気回復へ 晴れる所も北風冷たく 関東など寒さ続く 台風32号は小笠原諸島接近へ（10日7時更新）",
+"date": "2026-11-09T22:30:17+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/31921834782cd1cde1e89cd2d908e866a54b8769",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261110-00010000-wmapv-000-2-thumb.jpg?exp=10800"
+},
+{
+"title": "天気回復へ 晴れる所も北風冷たく 関東は師走並みの寒さ 台風32号 あすにかけて小笠原諸島接近へ",
+"date": "2026-11-09T22:13:00+00:00",
+"source": "TBS NEWS DIG",
+"summary": "きょうの日中は天気が回復して晴れ間の戻る所もあるでしょう。ただ、気温はこの時季としては低く、雲の取れにくい関東などは寒さが続きそうです。小笠原諸島は台風32号の影響で、あす ...",
+"url": "https://newsdig.tbs.co.jp/articles/-/3073259",
+"image": "https://www.bing.com/th?id=ONUT.k55ZX8d3awAccpn8QDWE6g&pid=News&w=1200"
+}
+]
+},
+{
+"id": 179,
+"name": "広島旅行",
+"day": "2026-11-20",
+"fp": "288f5d4d75af",
+"fresh": false,
+"rows": [
+{
+"title": "「推し活」需要を観光に、ANAが松山・広島でアイドル参加のツアー",
+"date": "2026-11-19T08:15:00+00:00",
+"source": "日本経済新聞",
+"summary": "",
+"url": "https://www.nikkei.com/article/DGXZQOCC167V80W6A111C2000000/",
+"image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3904798019112026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.54&fp-y=0.7&h=630&w=1200&s=d9135dc9575884e680818acaf2c9eca0"
+},
+{
+"title": "広島から島根へのインバウンド周遊促進へ 一畑バスなど4社と自治体が高速バス利用拡大プロモーションを開始",
+"date": "2026-11-17T14:00:00+00:00",
+"source": "訪日ラボ",
+"summary": "一畑バス、広島電鉄、JRバス中国、WILLER ACROSSの4社は11月9日、広島から島根へのインバウンド周遊を促進するプロモーションを開始すると発表しました。 島根県、出雲市、松江市とも連携し、広島を訪れるインバウンド観光客の島根への周遊拡大と、高速バス「広島～松江線」「広島～出雲線」の利用促進を図ります。 関連記",
+"url": "https://honichi.com/news/2026/11/18/hiroshima-shimane-bus-promotion/",
+"image": "https://www.bing.com/th?id=ONUT.2ACq-T9f1giiDppK-qoVJw&pid=News&w=1200"
+},
+{
+"title": "【3連休が最後のチャンス】『頭文字D』ポップアップストア広島、初週末2日間で売上640万円の大盛況。AE86実車展示は11月23日まで",
+"date": "2026-11-17T00:29:00+00:00",
+"source": "Newscast.jp",
+"summary": "",
+"url": "https://newscast.jp/smart/news/1289963",
+"image": "https://www.atpress.ne.jp/attachments/yceYS38E8oX5gY2srV3J.png"
+},
+{
+"title": "原爆の悲惨さを生徒教員が熱演 島田高・公開授業で「父と暮せば」 広島への修学旅行控え事前学習",
+"date": "2026-11-15T21:00:00+00:00",
+"source": "静岡新聞DIGITAL",
+"summary": "",
+"url": "https://news.at-s.com/article/2099196",
+"image": ""
+},
+{
+"title": "「平和教育ってこれでいいの？」８月６日に生まれ、広島で育って感じた疑問 「戦争はダメだね」だけで終わらせたくない。新しい修学旅行に挑戦する高校も",
+"date": "2026-11-14T08:00:00+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1971022",
+"image": "https://static.sanyonews.jp/image/article/size1/a/a/8/0/aa8057fdf6b56a604365ee04736efa4f_1.jpg"
+},
+{
+"title": "神戸市、客船「MSCベリッシマ」の市民クルーズ参加者を募集 2027年4月に広島・鹿児島・済州島・佐世保を巡る8日間、旅行代金1万円引き",
+"date": "2026-11-12T23:54:23+00:00",
+"source": "Funeco",
+"summary": "",
+"url": "https://funeco.jp/news/news-37521/",
+"image": "https://funeco.jp/wp-content/uploads/2023/05/D20I8805s.jpg"
+},
+{
+"title": "【広島呉グルメ】ぶち旨い！阿賀駅前と阿賀中央の老舗３軒食べ歩き【呉観光/広島旅行】",
+"date": "2026-11-12T05:53:47+00:00",
+"source": "ライブドアニュース",
+"summary": "",
+"url": "https://news.livedoor.com/topics/detail/32799730/?_clicked=echoes_list",
+"image": "https://image.news.livedoor.com/newsimage/stf/1/1/1127b_1845_d88ead88_cdae2589.jpg"
+},
+{
+"title": "壱岐の遊覧船が定員１．７倍の８０人超を乗せる 広島の修学旅行生ら 海保、船舶安全法違反疑い（長崎新聞）",
+"date": "2026-11-12T01:10:21+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/5124a0fdc0fe02f2e61ed21a611793f804f19139",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261112-00000001-nagasaki-000-1-view.jpg?exp=10800"
+},
+{
+"title": "壱岐の遊覧船が定員１．７倍の８０人超を乗せる 広島の修学旅行生ら 海保、船舶安全法違反疑い",
+"date": "2026-11-12T01:10:00+00:00",
+"source": "ｄメニューニュース",
+"summary": "",
+"url": "https://topics.smt.docomo.ne.jp/article/nagasaki/region/nagasaki-20261112100622?fm=latestnews",
+"image": "https://img.topics.smt.news.goo.ne.jp/picture/nagasaki/m_nagasaki-20261112100622.jpg"
+},
+{
+"title": "遊覧船が定員を大幅に超えて航行 修学旅行で広島市内の中学校の生徒が貸切乗船 長崎県・辰ノ島からの帰路 【広島発】",
+"date": "2026-11-12T00:42:00+00:00",
+"source": "FNNプライムオンライン",
+"summary": "",
+"url": "https://www.fnn.jp/articles/-/1150853",
+"image": "https://fnn.ismcdn.jp/mwimgs/4/1/1200/img_413a6a9aa0a75b418ce963393305ef322030689.png"
+},
+{
+"title": "遊覧船が定員を大幅に超えて航行 修学旅行で広島市内の中学校の生徒が貸切乗船 長崎県・辰ノ島からの帰路 (テレビ新広島)",
+"date": "2026-11-11T22:00:01+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/c4125bad07dadc200f402c6e17014664a8ba81b0/images/001",
+"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26hKjXNjwWhSld2unzGv5pLvdrvSKYPGzt8nIGzQBtiGBjT0lFQsNpxWL2OMNlIAGyrAOVTbCQm3WVQfvgUKJan_-ypiBAKR1ZyEB_a10UkW6"
+},
+{
+"title": "遊覧船が定員を大幅に超えて航行 修学旅行で広島市内の中学校の生徒が貸切乗船 長崎県・辰ノ島からの帰路",
+"date": "2026-11-11T14:00:00+00:00",
+"source": "TSSテレビ新広島 on MSN",
+"summary": "先月、長崎県壱岐市で、広島市内にある中学校の修学旅行生を乗せた遊覧船が、定員を大幅に超えた状態で航行していたことがわかりました。 船舶安全法違反の疑いで第七管区海上保安本部から捜査を受けているのは、長崎県の無人島、辰ノ島をめぐる遊覧船「エメラルド壱岐」です。",
+"url": "https://www.msn.com/ja-jp/travel/cruises/%E9%81%8A%E8%A6%A7%E8%88%B9%E3%81%8C%E5%AE%9A%E5%93%A1%E3%82%92%E5%A4%A7%E5%B9%85%E3%81%AB%E8%B6%85%E3%81%88%E3%81%A6%E8%88%AA%E8%A1%8C-%E4%BF%AE%E5%AD%A6%E6%97%85%E8%A1%8C%E3%81%A7%E5%BA%83%E5%B3%B6%E5%B8%82%E5%86%85%E3%81%AE%E4%B8%AD%E5%AD%A6%E6%A0%A1%E3%81%AE%E7%94%9F%E5%BE%92%E3%81%8C%E8%B2%B8%E5%88%87%E4%B9%97%E8%88%B9-%E9%95%B7%E5%B4%8E%E7%9C%8C-%E8%BE%B0%E3%83%8E%E5%B3%B6%E3%81%8B%E3%82%89%E3%81%AE%E5%B8%B0%E8%B7%AF/ar-AA2hf28v",
+"image": "https://www.bing.com/th?id=ONUT.y_rCMP1BYM3A_TulW9nacQ&pid=News&w=1200"
+}
+]
+},
+{
+"id": 11795,
+"name": "サカナクション",
+"day": "2026-11-19",
+"fp": "2e014c7b45e0",
+"fresh": false,
+"rows": [
+{
+"title": "「コンセプト最高ですね！」サカナクション・山口一郎出演のCMに“魚民”大盛り上がり「いけいけいっくん！！」「コレ見たら ...",
+"date": "2026-11-18T16:01:00+00:00",
+"source": "中日新聞Web",
+"summary": "人気ロックバンド「サカナクション」の山口一郎（46）が、18日までに自身のX（旧ツイッター）を更新。自身が出演した「ジャンボ宝くじ」のCM映像を投稿したところ、代名詞といえる曲の歌詞をもじった内容に、ファンから絶賛の声が多く上がっている。 山口は「新宝く島。」と題し、1本の動画を投稿。18日に宝くじ公式Xアカウントで公",
+"url": "https://www.chunichi.co.jp/article/1341607",
+"image": "https://www.bing.com/th?id=ONUT._lMNAtwrqinDnwrSXS_NwQ&pid=News&w=994"
+},
+{
+"title": "福岡市科学館で「サカナクション グッドナイト・プラネタリウム」再上映が決定【11/19～販売】（ファンファン福岡）",
+"date": "2026-11-18T09:03:02+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/f9d949f2911db2dead70baaed3ba7e8917ae84a6",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-00010002-fanfun-000-1-view.jpg?exp=10800"
+},
+{
+"title": "サカナクション 山口一郎が\"年末ジャンボ宝くじ\"新CMに出演。「新宝島」が\"新宝く島\"として使用",
+"date": "2026-11-18T03:55:00+00:00",
+"source": "Skream!",
+"summary": "\"年末ジャンボ宝くじ\"新CMにサカナクションの山口一郎が出演。そして「新宝島」が\"新宝く島\"として使用されることが決定した。 11月24日の師走の風物詩\"年末ジャンボ宝くじ\"の全国販売に合わせ、11月20日から俳優の吉岡里帆、今田美桜に加え、特別ゲストとして山口一郎が出演する新CM（全7篇）が全国で放映開始。本作でしか",
+"url": "https://skream.jp/news/2026/11/sakanaction_takarakuji_cm.php",
+"image": "https://www.bing.com/th?id=ONUT.D-J2WsIkcajCZYm0y0lWNQ&pid=News&w=1000"
+},
+{
+"title": "サカナクション山口一郎「年末ジャンボ宝くじ」CMで「新宝く島」を熱唱、今田美桜は「イケイケいっくん！」",
+"date": "2026-11-18T03:03:00+00:00",
+"source": "Yahoo!ニュース",
+"summary": "山口一郎（サカナクション）が特別ゲストとして出演する「年末ジャンボ宝くじ」の新CMが11月20日よりオンエアされる。【CM映像】山口一郎が「新宝く島」を熱唱昨年と比較して、100万円の当せん本数が1.5倍の1380本となっている今年の「年末ジャンボ宝くじ」。年末のちょっとしたごほうびとして宝くじを購入するワクワク感と期",
+"url": "https://news.yahoo.co.jp/articles/b31e299e775d922979e9b2c5446e762a30ead34c",
+"image": "https://www.bing.com/th?id=ONUT.Fxi6rjqJZNRqWJafvU9eNg&pid=News&w=750"
+},
+{
+"title": "サカナクション山口一郎「曲の最中に『来い来い来い来い来い！』」 紅白で“後輩”との共演ならず無念",
+"date": "2026-11-18T02:40:00+00:00",
+"source": "iza（イザ！）",
+"summary": "人気ロックバンド・サカナクションの山口一郎が11月17日深夜、パーソナリティーを務めるニッポン放送「サカナクション山口一郎のオールナイトニッポン」（火曜深夜1時）に生出演。第77回NHK紅白歌合戦への出場決定を受け、共演を熱望していた“後輩”への思いや、昨年の紅白の舞台裏を明かした。 2年連続3回目の紅白出場を決めた山",
+"url": "https://www.iza.ne.jp/article/20261118-HHHBNWM2EVFTZMYYXG4YCTZINI/",
+"image": "https://www.bing.com/th?id=ONUT.K2yY8hYyz5ogf38aqhR1Vg&pid=News&w=1200"
+},
+{
+"title": "サカナクション・山口一郎 〜Night Fishing Radio〜",
+"date": "2026-11-18T02:05:03+00:00",
+"source": "NHK",
+"summary": "",
+"url": "https://www.nhk.jp/p/nf-radio/rs/X76L524JX1/episode/re/8JBHARL7N4/",
+"image": "https://img.nhk.jp/static/assets/images/radioseries/rs/X76L524JX1/X76L524JX1-eyecatch_4f4ba6533f5f0ef7f2a8083ef171d47d.jpg"
+},
+{
+"title": "〈元中日ドラ1〉「昨日できたことが、今日はできない」引退したブライト健太が明かした「うつ病」の絶望の日々と、サカナクション山口一郎が差し伸べた救いの手",
+"date": "2026-11-18T02:00:40+00:00",
+"source": "Infoseek",
+"summary": "",
+"url": "https://news.infoseek.co.jp/topics/shueisha_259279/",
+"image": "https://media.image.infoseek.co.jp/isnews/photos/shueisha/shueisha_259279_0-enlarge.jpg"
+},
+{
+"title": "元中日ドラ1〉「昨日できたことが、今日はできない」引退したブライト健太が明かした「うつ病」の絶望の日々と、サカナクション山口一郎が差し伸べた救いの手（集英社オンライン",
+"date": "2026-11-18T02:00:34+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/1610dc0c17f827d736268c87c7f6712f3efdfaab",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-00259279-shueisha-000-1-view.jpg?exp=10800"
+},
+{
+"title": "サカナクション山口一郎「結構不快だったね」 高橋文哉の番組への“乱入封印”を宣言",
+"date": "2026-11-18T01:20:00+00:00",
+"source": "イザ！",
+"summary": "",
+"url": "https://www.iza.ne.jp/article/20261118-OWSGX7AWQVHHPMLNGG7XF4WMUE/",
+"image": "https://www.iza.ne.jp/resizer/v2/GWW2NC6UVBFG3PJMCBAIES6P2U.jpg?auth=fabc4273e125262f774b9d83213507093ac9b57e1e0b0343615d29befd886ae6&quality=50&focal=1178%2C804&width=1200&height=675"
+},
+{
+"title": "2年連続紅白出場！サカナクション 山口一郎『夜の踊り子』再ヒットに「自分にとって嬉しい体験」来年はデビュー20周年「常に音楽とまっすぐ真摯に」【「年末ジャンボ」新TVCM撮影メイキング＆インタビュー】",
+"date": "2026-11-17T21:14:51+00:00",
+"source": "ｄメニューニュース",
+"summary": "",
+"url": "https://topics.smt.docomo.ne.jp/article/fujitvview/entertainment/fujitvview-6afc44bfb576220aa1000001",
+"image": "https://img.topics.smt.news.goo.ne.jp/-/20261110160945/img/entertainment_x2.png"
+},
+{
+"title": "サカナクション山口一郎が吉岡里帆・今田美桜と年末ジャンボCMで替え歌熱唱",
+"date": "2026-11-17T21:11:19+00:00",
+"source": "X",
+"summary": "",
+"url": "https://x.com/i/trending/2122787546308420088",
+"image": "https://pbs.twimg.com/media/HXWVi2ra8AEY8AC?format=webp&name=medium"
+},
+{
+"title": "サカナクション山口一郎が『新宝島』替え歌熱唱 今田美桜のコールに吉岡里帆も笑顔",
+"date": "2026-11-17T19:00:34+00:00",
+"source": "emogram",
+"summary": "",
+"url": "https://emogram.sankei.com/120951",
+"image": "https://emogram.sankei.com/wp-content/uploads/2026/11/93b6eb01a24a36cc497cb2fcaef0cc4c-1024x576.jpeg"
+}
+]
+},
+{
+"id": 11796,
+"name": "ブルーアーカイブ",
+"day": "2026-11-19",
+"fp": "bb526d7fc724",
+"fresh": false,
+"rows": [
+{
+"title": "『ブルーアーカイブ』×丸善ジュンク堂のポップアップストア開催 ミレニアムの生徒9名が“ペインタースタイル”で登場",
+"date": "2026-11-18T08:58:41+00:00",
+"source": "リアルサウンド",
+"summary": "",
+"url": "https://realsound.jp/tech/2026/11/post-2588132.html/amp",
+"image": "https://realsound.jp/wp-content/uploads/2026/11/20261118-bluearchive-99.jpeg"
+},
+{
+"title": "【11/17更新】『ブルーアーカイブ×Ｊリーグ』コラボイベント開催のお知らせ",
+"date": "2026-11-18T08:56:13+00:00",
+"source": "東京ヴェルディ",
+"summary": "",
+"url": "https://www.verdy.co.jp/page/3168",
+"image": "https://verdy.s3.ap-northeast-1.amazonaws.com/image/page/84431_1200x675_6af3ecb260d3a.jpg"
+},
+{
+"title": "『ブルーアーカイブ -Blue Archive-』「キサキ」「レイジョ」「シロコ(水着)」の復刻ピックアップ募集開催！",
+"date": "2026-11-18T08:07:42+00:00",
+"source": "GameWith",
+"summary": "",
+"url": "https://gamewith.jp/gamedb/6253/articles/65946",
+"image": "https://img.gamewith.jp/article/thumbnail/gamearticle/6253/rectangle/65946.png?t=1794989263"
+},
+{
+"title": "『ブルーアーカイブ』×丸善ジュンク堂書店コラボが12月2日から開催！ ペインタースタイルのグッズ全15種が登場",
+"date": "2026-11-18T08:05:36+00:00",
+"source": "AppBank",
+"summary": "",
+"url": "https://www.appbank.net/2026/11/18/game/3169530.php",
+"image": "https://www.appbank.net/wp-content/uploads/2026/11/20261118_133816_523_01.webp"
+},
+{
+"title": "DeNAの「SUKI+PLUS（スキプラ）」、12月2日より「ブルーアーカイブ POP UP STORE in 丸善ジュンク堂書店 2026」を国内4店舗で開催",
+"date": "2026-11-18T07:45:00+00:00",
+"source": "gamebiz【ゲームビズ】",
+"summary": "",
+"url": "https://gamebiz.jp/news/435693",
+"image": ""
+},
+{
+"title": "『ブルーアーカイブ』×丸善ジュンク堂書店のコラボが12/2より国内4店舗にて開催決定！",
+"date": "2026-11-18T04:00:01+00:00",
+"source": "PR TIMES",
+"summary": "",
+"url": "https://prtimes.jp/main/html/rd/p/000000266.000013971.html",
+"image": "https://prcdn.freetls.fastly.net/release_image/13971/266/13971-266-79d319e4b4ec2ae0a3986301d9c6a5be-1200x1350.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+},
+{
+"title": "約40センチのビッグサイズ！『ブルーアーカイブ』シロコ、ホシノ、ノミ、セリカのぬいぐるみが再販！2027年5月頃発送分が楽天ブックスで予約受付中！",
+"date": "2026-11-17T08:30:00+00:00",
+"source": "電撃ホビーウェブ",
+"summary": "",
+"url": "https://hobby.dengeki.com/news/3234703/",
+"image": "https://hobby.dengeki.com/ss/hobby/2026/11/DTWcard_KgBVROhRLjAP-6qi7a8EwGwJR4iBkfDm_FZcGyApC9v9yjnfxsNdVWzQcF6eeYnNy.jpg"
+},
+{
+"title": "「ブルーアーカイブ」より「ミカ（水着） メモリアルロビーVer.」が1/7スケールフィギュアで登場！ 2027年11月発売予定",
+"date": "2026-11-17T03:23:17+00:00",
+"source": "hobby Watch",
+"summary": "",
+"url": "https://hobby.watch.impress.co.jp/docs/news/2157000.html",
+"image": "https://hobby.watch.impress.co.jp/img/hbw/list/2157/000/001.jpg"
+},
+{
+"title": "全国のアミューズメント施設へ出発進行！『ブルーアーカイブ』から「ヒカリ」＆「ノゾミ」の双子姉妹がセガの“XStellar”にてプライズフィギュア化!!",
+"date": "2026-11-16T01:30:00+00:00",
+"source": "電撃ホビーウェブ",
+"summary": "",
+"url": "https://hobby.dengeki.com/news/3185564/",
+"image": "https://hobby.dengeki.com/ss/hobby/2026/11/15_tc_4LtbxHi3pGj200UNYC2EnniJgTlhkBpa_2e1mq7fm7IRhLT7MiP-iD-hL6eiaZfC3.jpg"
+},
+{
+"title": "グッドスマイルカンパニー『ブルーアーカイブ』ねんどろいど 天童ケイが登場！C108を席巻した「有明の女王」をキュートに立体化",
+"date": "2026-11-14T08:22:43+00:00",
+"source": "玩具人 TOY PEOPLE",
+"summary": "",
+"url": "https://www.toy-people.com/jp/?p=116552",
+"image": "https://img.toy-people.com/member/179464425423_1200.png"
+},
+{
+"title": "大人気ゲーム『ブルーアーカイブ』より、ミレニアムサイエンススクール所属、特異現象捜査部の「ケイ」がねんどろいどで登場です！",
+"date": "2026-11-13T23:40:00+00:00",
+"source": "Infoseek",
+"summary": "",
+"url": "https://news.infoseek.co.jp/article/prtimes_000001091_000042572/",
+"image": "https://prtimes.jp/img/42572/1091/resize/d42572-1091-b0f6c439042d4095c888-0.jpg"
+},
+{
+"title": "『ブルーアーカイブ』より、パジャマ姿の「ノア」がフィギュアで登場。あみあみにて予約受付中。",
+"date": "2026-11-13T16:30:27+00:00",
+"source": "ニコニコニュース",
+"summary": "",
+"url": "https://news.nicovideo.jp/watch/nw19990704?news_ref=top_newComments",
+"image": ""
+}
+]
+},
+{
+"id": 11797,
+"name": "ちいかわ",
+"day": "2026-11-19",
+"fp": "0046a3d201fe",
+"fresh": false,
+"rows": [
+{
+"title": "『ちいかわ』アニメ全382話、ABEMAで期間限定無料配信 「ちいかわクリスマスマーケット」開催記念（リアルサウンド）",
+"date": "2026-11-19T03:11:42+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/7bb79b3d8b7b4a130c43c081d360994445955128",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00010025-realsound-000-1-view.jpg?exp=10800"
+},
+{
+"title": "くら寿司×「ちいかわ」コラボ、中止となった「寿司皿」の配布が決定！合計100万名分を抽選形式でプレゼント、11月25日から",
+"date": "2026-11-19T02:50:02+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/a24de9d2c55c647d7c2d89a3e8ddebbe4d4f97c2",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000019-isd-000-1-view.jpg?exp=10800"
+},
+{
+"title": "くら寿司、ちいかわ寿司皿配布は「抽選制」へ 公式発表 従業員不祥事から2カ月…不満の声噴出（スポニチアネックス）",
+"date": "2026-11-19T02:29:43+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/3b2fd8d207fb4a535748352a9444077ab3c58479",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000152-spnannex-000-4-view.jpg?exp=10800"
+},
+{
+"title": "メルカリ、『ちいかわ』寿司皿の一時的な出品禁止を発表 従業員の不正行為で延期に…抽選プレゼントとして再配布が決定",
+"date": "2026-11-19T02:22:19+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/088e0489cc41763b7241c780b5ac1513be6ddeec",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000401-oric-000-10-view.jpg?exp=10800"
+},
+{
+"title": "くら寿司、中止になっていた『ちいかわ』寿司皿の配布を発表 抽選プレゼント形式に（クランクイン！）",
+"date": "2026-11-19T02:03:00+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/1e8e3b058084ed2fc2553c8f90bfd6e3ae9630cb",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00194545-crankinn-000-13-view.jpg?exp=10800"
+},
+{
+"title": "しまむら・アベイルで「ちいかわ」グッズが11月21日発売！アパレルやバッグ類、寒い時期に嬉しいアームウォーマーや腹巻付パンツも（インサイド）",
+"date": "2026-11-19T01:25:02+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/25d9333855b04149ec66410f226d4f88e3d27d3d",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000011-isd-000-1-view.jpg?exp=10800"
+},
+{
+"title": "『ちいかわ』×「GU」第1弾は明日発売！ もこもこのフード姿がかわいいニットやポーチを展開（クランクイン！）",
+"date": "2026-11-19T01:00:00+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/1b01bccd6038edbd129297103a7f4d4f1a043a7c",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00194418-crankinn-000-1-view.jpg?exp=10800"
+},
+{
+"title": "「サラミーからの」ちいかわ好きの72歳・高見沢俊彦、「巻きミー」仕様で推しの「うさぎ」と仲良し腕組み ネット「裏でこんなことしてたなんて」「うぉぉぉぉお～～」（中日スポーツ）",
+"date": "2026-11-18T22:11:44+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/b9fe28e840ced4c487c5403d4e06958ae6c7aebe",
+"image": ""
+},
+{
+"title": "11月19日(木)の「ちいかわ占い」",
+"date": "2026-11-18T22:00:00+00:00",
+"source": "めざましmedia",
+"summary": "",
+"url": "https://mezamashi.media/articles/-/370453",
+"image": "https://mezamashi.ismcdn.jp/mwimgs/d/7/1200xm/img_d7acc7d854adb04f8ca06c8fb31d9ab8180247.jpg"
+},
+{
+"title": "「5000回は行きたい」【ちいかわパーク】11/20よりクリスマス仕様に。“あのこ”のもふもふハットなど新商品も登場",
+"date": "2026-11-18T16:01:00+00:00",
+"source": "朝日新聞デジタル",
+"summary": "「ちいかわパーク」クリスマス限定企画が11月20日（金）〜12月25日（金）開催！限定衣装の特別グリーティングやクリスマス装飾、ステッカーがもらえるSNSキャンペーン、11月24日発売の新作アパレルグッズ（マフラー、スウェット等）の価格からチケット料金・営業時間まで完全網羅してご紹介。",
+"url": "https://www.asahi.com/and/w/article/17055893",
+"image": "https://www.bing.com/th?id=ONUT.T11SBm2Xi-UxggLOOJaJ1A&pid=News&w=1200"
+},
+{
+"title": "くら寿司、「ちいかわ 寿司皿」100万枚をLINE抽選にて配布へ 9月にコラボキャンペーン中止",
+"date": "2026-11-18T16:01:00+00:00",
+"source": "福井新聞ONLINE",
+"summary": "くら寿司は19日、中止となっていた『ちいかわ』とのコラボキャンペーンの「ちいかわ寿司皿」100万枚について、公式SNSと公式サイトを通じて配布方法を発表した。【写真】ちいかわコラボ「ビッくらポン」景品の一部 くら寿司各店舗の公式LINEを通じた抽選プレゼントの形式にて実施すると発表。抽選期間は11月25日午前11時～1",
+"url": "https://www.fukuishimbun.co.jp/articles/-/2750958",
+"image": "https://www.bing.com/th?id=ONUT.3tTtH7HDojVe_nxspkQRSw&pid=News&w=571"
+},
+{
+"title": "ちいかわたちの日常をセリフプレート付きで立体化! フィギュア付き食玩「チョコサプ」の『ちいかわ』第2弾が登場!",
+"date": "2026-11-18T15:00:00+00:00",
+"source": "電撃ホビーウェブ on MSN",
+"summary": "バンダイより、食玩「チョコサプ ちいかわ2」が登場！ 2026年11月23日より発売予定です。 フィギュア付き食玩「チョコサプ」シリーズより、『ちいかわ』の第2弾が登場！",
+"url": "https://www.msn.com/ja-jp/food-and-drink/%E5%85%A8%E8%88%AC/%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F%E3%81%9F%E3%81%A1%E3%81%AE%E6%97%A5%E5%B8%B8%E3%82%92%E3%82%BB%E3%83%AA%E3%83%95%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E4%BB%98%E3%81%8D%E3%81%A7%E7%AB%8B%E4%BD%93%E5%8C%96-%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%82%A2%E4%BB%98%E3%81%8D%E9%A3%9F%E7%8E%A9-%E3%83%81%E3%83%A7%E3%82%B3%E3%82%B5%E3%83%97-%E3%81%AE-%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F-%E7%AC%AC2%E5%BC%BE%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2hJhjb",
+"image": "https://www.bing.com/th?id=ONUT.p6QtZuL75I_b_usZVW7BEQ&pid=News&w=1200"
 }
 ]
 }
