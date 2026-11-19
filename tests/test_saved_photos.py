@@ -145,7 +145,7 @@ class MainPartial(unittest.TestCase):
         with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), \
                 mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0), mock.patch.object(user_pages.og_image, "fill", lambda *a, **k: 0), \
                 mock.patch.object(user_pages, "build", lambda *a, **k: '<html><section><img src="https://ok.example/1.jpg" data-e="s"></section></html>'), \
-                mock.patch.object(user_pages.render, "photo_opens", None, create=True), mock.patch.object(user_pages.photo_store, "published", lambda: set()):
+                mock.patch.object(user_pages.render, "photo_opens", None, create=True), mock.patch.object(user_pages.photo_store, "published", lambda *a: set()):
             user_pages.main(["--recent", "3600"])
         self.assertEqual(len(written), 1)
         got = written[0]
@@ -259,7 +259,7 @@ class MainWriteBack(unittest.TestCase):
         page = images.Page("https://n.example/1", True, og=["https://img.example/og1.jpg"])
         with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), \
                 mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0), mock.patch.object(user_pages, "build", lambda *a, **k: "<html></html>"), \
-                mock.patch.object(user_pages.render, "photo_opens", None, create=True), mock.patch.object(user_pages.photo_store, "published", lambda: set()), \
+                mock.patch.object(user_pages.render, "photo_opens", None, create=True), mock.patch.object(user_pages.photo_store, "published", lambda *a: set()), \
                 mock.patch.object(images, "page", lambda u: page if u == page.url else images.Page(u, False, "x")), \
                 mock.patch.object(images, "check", lambda u, referer=None: (True, "800×450")):
             user_pages.main([])
@@ -315,7 +315,7 @@ class EmblemOnlySame(unittest.TestCase):
             ids.write_text("[5]")
             for args in (["--boards-file", str(ids)], ["--boards-file", str(ids), "--emblem-only", "--force"]):
                 writes.clear()
-                with mock.patch.object(user_pages, "_supa", supa), mock.patch.object(user_pages.photo_store, "published", lambda: set()), \
+                with mock.patch.object(user_pages, "_supa", supa), mock.patch.object(user_pages.photo_store, "published", lambda *a: set()), \
                         mock.patch.object(images, "pick", lambda *a, **k: counts.__setitem__("pick", counts["pick"] + 1) or images.Result()), \
                         mock.patch.object(images, "page", lambda u: counts.__setitem__("og", counts["og"] + 1) or images.Page(u, True)), \
                         mock.patch.object(user_pages.sources, "resolve_url", lambda u, tries=None: u), \
@@ -337,6 +337,62 @@ class EmblemOnlySame(unittest.TestCase):
         self.assertNotIn("hard.example/pic", h)                  # 置き場に入っていない防盗链の写真は出さない
 
 
+class Manifest(unittest.TestCase):
+    def test_unreadable_manifest_is_none_and_read_twice(self):
+        """見直し 2 回目 4：Pages の manifest が読めないのを「載っていない」と分ける（None）。user_pages は 1 回読み直し、だめなら置き場待ちと同じ側へ。"""
+        with mock.patch.object(P.urllib.request, "urlopen", lambda *a, **k: (_ for _ in ()).throw(OSError("timeout"))):
+            self.assertIsNone(P.published(None))
+            self.assertEqual(P.published(), set())   # 既定（ほかの呼び側）は今までどおり空
+        asked = []
+
+        def pub(missing=frozenset()):
+            asked.append(missing)
+            return None if len(asked) == 1 else {"x.webp"}
+        seen = {}
+        real_mask = user_pages.mask_saved
+
+        def mask(brows, want, p=None):
+            seen["pub"] = p
+            return real_mask(brows, want, p)
+
+        def fake(path, data=None, method="GET", ctype=""):
+            if "userfeed_users" in path:
+                return [{"email": "a@example.com", "prefs": {}}]
+            if path.endswith("_fp/all.json"):
+                return {} if method == "GET" else ""
+            return "" if "/storage/" in path else []
+        with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), \
+                mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0), mock.patch.object(user_pages, "build", lambda *a, **k: "<html></html>"), \
+                mock.patch.object(user_pages.render, "photo_opens", None, create=True), mock.patch.object(user_pages.photo_store, "published", pub), \
+                mock.patch.object(user_pages, "mask_saved", mask):
+            user_pages.main([])
+        self.assertEqual(asked, [None, None])
+        self.assertEqual(seen["pub"], {"x.webp"})
+
+
+class MainPartialBadList(unittest.TestCase):
+    def test_partial_run_does_not_replace_a_non_list(self):
+        """見直し 2 回目 5：一部の人だけの回で imgs.json の本文が列でなければ書かない（今回の分だけに置き換えない）。"""
+        written = []
+
+        def fake(path, data=None, method="GET", ctype=""):
+            if "userfeed_users" in path:
+                return [{"email": "a@example.com", "prefs": {"picks": [{"name": "A", "added_at": "2999-01-01T00:00:00+00:00"}]}}]
+            if path.endswith("_fp/all.json"):
+                return {} if method == "GET" else ""
+            if path.endswith("_fp/imgs.json"):
+                if method != "GET":
+                    written.append(data)
+                return "<html>gateway error</html>"
+            return "" if "/storage/" in path else []
+        with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), \
+                mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0), mock.patch.object(user_pages.photo_store, "published", lambda *a: set()), \
+                mock.patch.object(user_pages, "build", lambda *a, **k: '<html><section><img src="https://ok.example/1.jpg" data-e="s"></section></html>'), \
+                mock.patch.object(user_pages.render, "photo_opens", None, create=True):
+            user_pages.main(["--recent", "3600"])
+        self.assertEqual(written, [])
+
+
 class MainFull(unittest.TestCase):
     def test_full_run_without_photos_writes_empty_list(self):
         """見直し 5(b)：全員作れた回で写真が 0 なら [] を書く（前の列を残さない）。"""
@@ -354,7 +410,7 @@ class MainFull(unittest.TestCase):
             return "" if "/storage/" in path else []
         with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), \
                 mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0), mock.patch.object(user_pages, "build", lambda *a, **k: "<html></html>"), \
-                mock.patch.object(user_pages.render, "photo_opens", None, create=True), mock.patch.object(user_pages.photo_store, "published", lambda: set()):
+                mock.patch.object(user_pages.render, "photo_opens", None, create=True), mock.patch.object(user_pages.photo_store, "published", lambda *a: set()):
             user_pages.main([])
         self.assertEqual(written, [[]])
 

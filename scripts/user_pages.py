@@ -815,7 +815,14 @@ def main(argv):
         print(f"::warning::board_stories が読めなかった（{type(ex).__name__}）")
         latest = {}
     new_fps = dict(fps)
-    pub = photo_store.published()   # Pages に載った写しの名前（外の小元素を /p/ に替えるのは載ったものだけ）
+    # Pages に載った写しの名前（外の小元素・防盗链の写真を /p/ に替えるのは載ったものだけ）。読めない回（時間切れ）は 1 回読み直し、
+    # それでもだめなら空の集まり＝防盗链の写真は「置き場待ち」と同じ（写真なしとして整理待ちへ。404 の写真を出さない安全な側）・ログに 1 行（見直し 2 回目 4）
+    pub = photo_store.published(None)
+    if pub is None:
+        pub = photo_store.published(None)
+    if pub is None:
+        print("::warning::Pages の写しの一覧（manifest）が読めなかった（2 回）：この回は防盗链の写真を置き場待ちとして扱う（整理待ちへ）・外の小元素は元の網址のまま")
+        pub = set()
     imgs = {}   # 作ったページの原寸の写真の網址（置き場に未収のもの）。photo_store が読んでお客さまの写真も置き場に入れる
     saved = {}  # 防盗链の写真 {指紋: [網址, Referer]}（mask_saved。photo_store が Referer 付きで置き場へ）
     if partial:
@@ -937,7 +944,9 @@ def main(argv):
         try:
             if partial or failed:
                 old = _supa(IMGS_PATH)
-                body = merge_imgs(old if isinstance(old, list) else [], cur)
+                if not isinstance(old, list):   # 読めた本文が列でない（壊れた・別の物）：今回の分だけに置き換えない（見直し 2 回目 5）
+                    raise ValueError("imgs.json が列でない")
+                body = merge_imgs(old, cur)
             else:
                 body = merge_imgs([], cur)
             _supa(IMGS_PATH, json.dumps(body).encode("utf-8"), "POST", "application/json")

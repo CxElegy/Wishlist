@@ -210,7 +210,7 @@ class EmblemOnlyMain(unittest.TestCase):
             argv = [x if x != "IDS" else str(ids) for x in args]
             fill = og_image.fill
             with mock.patch.object(user_pages, "_supa", supa), \
-                    mock.patch.object(user_pages.photo_store, "published", lambda: set()), \
+                    mock.patch.object(user_pages.photo_store, "published", lambda *a: set()), \
                     pick_patch(lambda *a: calls.__setitem__("pick", calls["pick"] + 1)), \
                     mock.patch.object(user_pages.sources, "resolve_url", lambda u, tries=None: calls.__setitem__("resolve", calls["resolve"] + 1) or u), \
                     mock.patch.object(user_pages.render, "photo_opens", lambda u: calls.__setitem__("opens", calls["opens"] + 1) or True), \

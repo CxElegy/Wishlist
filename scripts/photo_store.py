@@ -89,13 +89,14 @@ def ext_name(url):
     return "x" + key(url) + (".svg" if path.endswith(".svg") and "width=" not in url else ".png")
 
 
-def published():
-    """Pages に載っている写しの名前（docs/p/manifest.json、Pages から 1 回読む。Supabase は読まない）。読めなければ空。"""
+def published(missing=frozenset()):
+    """Pages に載っている写しの名前（docs/p/manifest.json、Pages から 1 回読む。Supabase は読まない）。読めなければ missing（既定は空。
+    user_pages は None を渡して「読めない」と「載っていない」を分ける）。"""
     try:
         with urllib.request.urlopen(PAGES_BASE + "/manifest.json", timeout=20) as r:
             return set(json.loads(r.read()).get("names") or [])
     except Exception:  # noqa: BLE001
-        return set()
+        return set(missing) if missing is not None else None
 
 
 def emblems_to_pages(html, pub=None):
