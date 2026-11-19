@@ -737,6 +737,11 @@ FRESH_AGE_S = 6 * 3600   # 速い道の「最近足された」：作られて�
 FRESH_BUDGET = (("kick", 20), ("setup", 80), ("first", 90), ("write", 5), ("page", 45))
 FRESH_TOTAL_S = 300      # 目標（未満）。割り当ての合計 240 は、これから FRESH_SPARE_S を引いた分まで（合計 + 余り ≤ 300。tests が数える）
 FRESH_SPARE_S = 60
+# ログの秒（「速い道の時刻」の +s）は run の created_at（GitHub が dispatch を受けた時刻）から数える。割り当ての「起こす 20」（dispatch → runner）は
+# この秒の中に入っている。足した時刻 → created_at（DB の net.http_post が GitHub に届くまで）は推測 5 秒。だからログの秒の目標（未満）は
+# FRESH_TOTAL_S − FRESH_ADD_TO_RUN_S ＝ 295 秒。目標の秒の決め方はここ 1 か所（harness/board_kpi.py fastlog が読む）
+FRESH_ADD_TO_RUN_S = 5
+FRESH_LOG_LIMIT_S = FRESH_TOTAL_S - FRESH_ADD_TO_RUN_S
 FRESH_BOARD_S = dict(FRESH_BUDGET)["first"]   # 速い道の 1 版面の上限（秒）。1 枚目（看板の姿）まで。過ぎたら時間切れ＝指紋も回数も残さず列へ
 FRESH_STEP = 3           # 速い道で 1 回に試す人数（名簿の先頭から＝看板の姿。残りは今までの列が STEP 人ずつ）
 FRESH_SHARDS = 3         # 速い道を並べる数（board_added.yml の job emblem の matrix）。同じ 30 秒に 3 つ足されても 3 つとも 1 回目の割り当てに入る

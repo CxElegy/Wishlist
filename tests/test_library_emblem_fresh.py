@@ -313,6 +313,12 @@ class Budget(unittest.TestCase):
         self.assertEqual(le.FRESH_BOARD_S, dict(le.FRESH_BUDGET)["first"])   # 1 版面の上限は割り当ての「1 枚目」
         self.assertLessEqual(le.FRESH_BOARD_S, 90)
         self.assertLess(le.FRESH_TOOLS_S + le.FRESH_BOARD_S, library.CLAIM_S)   # 道具を待つ間も印は切れない
+        # ログの秒は run の created_at から（「起こす」の段は中に入っている）：目標は 300 − 足してから run ができるまで。もう一度「起こす 20」を引かない
+        self.assertEqual(le.FRESH_LOG_LIMIT_S, le.FRESH_TOTAL_S - le.FRESH_ADD_TO_RUN_S)
+        import sys as _s
+        _s.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import board_kpi
+        self.assertIn("library_emblem.FRESH_LOG_LIMIT_S", inspect.getsource(board_kpi.cmd_fastlog))
 
     def test_first_stop_is_only_a_scope(self):
         src = inspect.getsource(emblem_fill.fill_one)

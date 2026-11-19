@@ -457,10 +457,10 @@ def fast_times(text):
 
 def cmd_fastlog(a):
     """直近の board_added.yml の回のログから、版面ごとの「取り始め・1 枚目・書いた・ページ」（起きてからの秒）を出す（gh が要る）。
-    ページが FRESH_TOTAL_S − 起こす割り当て（足してから起きるまで）以上なら赤。"""
+    ページが library_emblem.FRESH_LOG_LIMIT_S（created_at から 295 秒）以上なら赤。"""
     sys.path.insert(0, str(ROOT / "scripts"))
     import library_emblem
-    limit = library_emblem.FRESH_TOTAL_S - dict(library_emblem.FRESH_BUDGET)["kick"]
+    limit = library_emblem.FRESH_LOG_LIMIT_S   # 秒は run の created_at から（「起こす」の段はもう中に入っている）。決め方は library_emblem の 1 か所
     runs = json.loads(subprocess.run(["gh", "run", "list", "--workflow", "board_added.yml", "-L", str(a.runs), "--json", "databaseId,createdAt"],
                                      capture_output=True, text=True, encoding="utf-8", check=True).stdout)
     rows, red = [], []
