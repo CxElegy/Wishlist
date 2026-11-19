@@ -352,7 +352,8 @@
    "refs": [
     8,
     10,
-    23
+    23,
+    35
    ]
   },
   {
@@ -370,20 +371,20 @@
   "GTA 6": 109,
   "周杰伦": 16,
   "A2O LITE": 9,
-  "dota2": 34,
-  "三星手机": 10,
+  "dota2": 37,
+  "三星手机": 18,
   "gelato pique": 2,
-  "チェーンソーマン": 5,
+  "チェーンソーマン": 10,
   "Vaundy": 1,
   "日本顶级网球赛事": 1,
   "滑雪": 7,
   "绝区零": 4,
   "猫用品": 8,
-  "星巴克马克杯": 3,
+  "星巴克马克杯": 8,
   "ILLIT": 18,
-  "MMORPG 新作": 7,
+  "MMORPG 新作": 11,
   "哈利波特剧集": 4,
-  "The Mandalorian": 2,
+  "The Mandalorian": 5,
   "Astrae Oratio": 1,
   "FROM": 1,
   "あつ森": 1
@@ -431,7 +432,28 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    15
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra dummies disagree on camera layout, and what that means for the final design",
+   "highlight": "camera layout",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11,
+    12,
+    16
+   ]
+  },
+  {
+   "headline": "The Galaxy S27 may integrate an AI assistant that can make calls and send messages on behalf of the user.",
+   "highlight": "AI assistant",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
    ]
   }
  ],
@@ -491,6 +513,16 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "劇場版チェンソーマン レゼのカフェ二道ver. 11月25日より登場!",
+   "highlight": "11月25日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    9
    ]
   }
  ],
@@ -661,6 +693,35 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "スターバックス、ネイビーを基調にしたホリデー仕様のステンレスボトル/マグ/タンブラー/ベアリスタキーチェーンなど発売",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    6,
+    7
+   ]
+  },
+  {
+   "headline": "米Disney Storeにスターバックスのクリスマス新作 タンブラーやマグなど",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "스타벅스, 헬로키티 입힌 텀블러·머그 22종 선봬...크리스마스 상품 강화",
+   "highlight": "22종",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "ILLIT": [
@@ -792,6 +853,15 @@
     5,
     7
    ]
+  },
+  {
+   "headline": "総勢24名のVTuberが天族と魔族に分かれて大激闘！「AION2天魔配信祭」開催！",
+   "highlight": "AION2",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
   }
  ],
  "哈利波特剧集": [
@@ -849,6 +919,24 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Disney+ Insider: The Mandalorian and Grogu — A New Mission Launches at Disneyland Resort",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "George Lucas’s Original Vision and The Mandalorian’s Star Wars Legacy",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
