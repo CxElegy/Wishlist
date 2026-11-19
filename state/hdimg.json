@@ -191,6 +191,12 @@
   "target": 720,
   "v": 3
  },
+ "https://0.soompi.io/wp-content/uploads/2026/11/19054506/A2O-LITE-NCT-WISH-ILLIT.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202611/harry-potter-161027592-16x9_0.png?VersionId=Tsigm3PizjRZGabyq9btzLKVCpsYMe_w&size=1280:720": {
   "w": 1280,
   "h": 720,
@@ -846,6 +852,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
+  "w": 4525,
+  "h": 3016,
+  "target": 720,
+  "v": 3
+ },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
   "w": 1280,
   "h": 670,
@@ -930,12 +942,6 @@
   "target": 720,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/1win-essence-i?v=1795044405": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
   "w": 1200,
   "h": 630,
@@ -952,12 +958,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://fashionsnap-assets.com/asset/format=auto,fit=crop,width=300,height=300/article/images/2026/11/4119a835-5472-442e-9402-698a7b1b1355.jpg": {
@@ -1151,12 +1151,6 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
-  "v": 3
- },
- "https://i.tribune.com.pk/media/images/x-men-first-class-640x4801/x-men-first-class-640x4801-640x480.webp": {
-  "w": 640,
-  "h": 480,
-  "target": 720,
   "v": 3
  },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
@@ -1667,6 +1661,19 @@
   "target": 720,
   "v": 3
  },
+ "https://img.tenasia.co.kr/photo/202611/BF.46475392.3.jpg": {
+  "w": 400,
+  "h": 406,
+  "target": 720,
+  "v": 3,
+  "blur": 0.461,
+  "local": "pics/c2690e7f638617ca.webp",
+  "out": [
+   709,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg": {
   "w": 1200,
   "h": 675,
@@ -2037,6 +2044,12 @@
   "w": 1090,
   "h": 1200,
   "target": 1280,
+  "v": 3
+ },
+ "https://news-images.tvbs.com.tw/api/v1/image/01a1deb3-bfc6-73d5-ac23-232d7e8c5ead.jpg?t=16x9&wp=l,t&c=0,285,5472,3363&w=1200&h=675": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://news-images.tvbs.com.tw/api/v1/image/01a1ec79-47b1-7103-a625-a0aeb201ba72.jpg?t=16x9&c=0,6,1024,582&w=1200&h=675": {
@@ -3463,6 +3476,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3955,6 +3974,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
   "h": 414,
@@ -4368,12 +4393,6 @@
    960
   ],
   "why": "看不清"
- },
- "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Plus-review-3.jpg": {
-  "w": 1920,
-  "h": 1078,
-  "target": 720,
-  "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
