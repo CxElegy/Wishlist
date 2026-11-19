@@ -290,6 +290,21 @@ def own_recommend(votes, items, issue, rows=None, resolve=None):
         return {"picks": [], "taste": []}
 
 
+def photo_tally(brows, tally=None):
+    """写真を取る段の数（2026-11-19 店長「点検は、本物の写真が取れるかどうかを含めること」）：版面に載せる記事（AI 編集の記事・まだなら集めた記事）の
+    うち写真の網址が付いた数・写真の置き場（photo_store）に入った数。整理待ちは数えない（カードにしない）。tally に足して返す [記事, 網址あり, 置き場]。"""
+    t = tally if tally is not None else [0, 0, 0]
+    for r in (brows or {}).values():
+        for s in r.get("stories") or []:
+            u = s.get("image")
+            t[0] += 1
+            if u:
+                t[1] += 1
+                if photo_store.stored(u):
+                    t[2] += 1
+    return t
+
+
 def board_rows(follows, latest, rows):
     """本人の版面の記事 {そろえた名前: {stories}}：ライブラリの board_stories（版面ごとに 1 回・全員が同じもの、library.md）が先。
     stories（AI 編集のあと）があればそれ、なければ pending（規則で集めたまま）。board_stories にまだ無い版面だけ古い user_boards の行（rows）。
@@ -543,6 +558,7 @@ def main(argv):
     users, partial = pick_users(users, argv, _supa)
     only = "--emblem-only" in argv   # 小元素が足されただけ：前の測った結果だけで作る（網に出ない・模型を読まない）
     made = failed = skipped = kept = 0
+    photos = [0, 0, 0]   # 写真を取る段の数（photo_tally）
     force = "--force" in argv
     fp_path = "/storage/v1/object/pages/_fp/all.json"   # 置いたページの指紋（全員で 1 つ。本人のページと同じ非公開の箱）
     try:
@@ -590,6 +606,7 @@ def main(argv):
             t1 = _lap(lap, "読む", t0)
             og_image.fill(brows, og, limit=ONLY_NEW_OG if only else None)   # 写真のない記事に記事のページの代表の写真を付ける（2026-11-08 店長「我一定要图」）。--emblem-only は前の結果＋無い分を 1 束だけ
             og_image.demote(brows)   # それでも写真の無い記事はカードにせず「整理待ち」へ（カードには必ず写真）
+            photo_tally(brows, photos)
             t1 = _lap(lap, "記事の代表の写真", t1)
             html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
                           settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes, picks, not only, res)
@@ -646,6 +663,7 @@ def main(argv):
         except Exception:  # noqa: BLE001  書けなくても次の回が書く
             pass
     print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}・ほかの回が先に置いた {kept}）・失敗 {failed}・{time.time() - t_start:.1f}s")
+    print(f"お客さまの写真：記事 {photos[0]} 本・写真の網址あり {photos[1]} 本・置き場に入った {photos[2]} 本")   # 数だけ（名前・網址は出さない：公開のログ）
     if failed and not made:
         raise SystemExit(1)
 

@@ -839,6 +839,8 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
 .shuffle.back{background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
 .shuffle[disabled]{opacity:.35;cursor:default;pointer-events:none}
 @media (hover:none){.vt button,.vote button{padding:0 9px;opacity:.75}.vote button{min-height:34px}.when,.kick,.wc em,.brief li{--vth:36px;--vtw:82px}}  /* 指で押せる大きさ */
+@media (hover:none){.vt button::after,.vote button::after{content:"";position:absolute;inset:-4px -6px}}  /* 👍👎 の押せる所を 44px 以上に（見た目と並びは変えない。transform の箱が基準になる。2026-11-17 スマホ点検） */
+@media (max-width:760px){:root{--fs-label:12px;--fs-tag:11px}.from,.brief .d .from,.vote small,.pk .taste,.pk .tags i,.pfoot span,.mast .meta small,.pdate small,.shuffle small,.when b,.when b.fresh-tag{font-size:12px}.hx-more{padding:8px 6px}.shuffle{padding:13px 14px}}  /* 読む字は 12px 未満にしない（D4。スマホ点検：出どころ 2346 件が 11px だった） */
 .shuffle:active,.mastwish:active{transform:translate(3px,3px);box-shadow:none}  /* 押した感触：影の分だけ沈む */
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
@@ -949,7 +951,7 @@ section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24
  [data-k]{--snapgap:10px}   /* 帯の下の余白（スマホは今までの 104px と同じ位置） */
 }
 @media (max-width:600px){.nav{margin:0 -16px}}
-@media (min-width:761px) and (max-width:1000px){.pk .why small{white-space:normal}}   /* 1000 幅前後：理由の行を「…」で切らない（D3）。高さは fitPk が測る */
+@media (max-width:1000px){.pk .why small{white-space:normal}}   /* 1000 幅前後：理由の行を「…」で切らない（D3）。高さは fitPk が測る */
 /* ---------- 愿望清单 ---------- */
 .wish{--bg:var(--sheet);--fg:var(--ink);--acc:var(--rose);--abg:var(--ink);--afg:var(--sheet);--aacc:#F2A7C3;--ac:var(--rose);
  --line:color-mix(in srgb,var(--ink) 18%,var(--sheet));background:var(--bg);color:var(--fg);border:1px solid var(--line)}
@@ -983,6 +985,7 @@ section.sec.has-emb{scroll-margin-top:calc(var(--snapbar) + max(var(--snapgap,24
 .wcard .watch{display:flex;flex-direction:column;gap:4px;padding:12px 14px;background:color-mix(in srgb,var(--acc) 8%,transparent);border-left:3px solid var(--acc);font-size:14px;line-height:1.55}
 .wcard .watch span{font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--acc)}
 .wcard .added{font:700 11px var(--font-mono);opacity:.5;letter-spacing:.1em}
+@media (max-width:760px){.wcard dt,.wcard .shop,.wcard .added,.wcard .watch span{font-size:12px}}
 @media (max-width:760px){.wcard.solo{grid-template-columns:1fr}.wcard.solo .wimg{min-height:0;aspect-ratio:1/1}
  .wcard.solo .wtxt{border-left:0;padding:22px}.wcard.solo h3{font-size:28px}.wish .band .title{font-size:30px}}
 

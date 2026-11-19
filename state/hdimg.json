@@ -836,7 +836,7 @@
  "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/19105546/jp-prt-52177-1130-1-261119025543294.jpeg": {
   "w": 1950,
   "h": 1300,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://d17gj49471obkc.cloudfront.net/kyodopress_cms/wp-content/uploads/2026/11/kyd_4048751_main-7-scaled-e1794374164954-430x538.jpg": {
@@ -862,6 +862,12 @@
   "w": 1920,
   "h": 1079,
   "target": 1280,
+  "v": 3
+ },
+ "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
+  "w": 4525,
+  "h": 3016,
+  "target": 720,
   "v": 3
  },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
@@ -900,12 +906,6 @@
   "target": 1280,
   "v": 3
  },
- "https://dam.mediacorp.sg/image/upload/s--ZE_vpNir--/c_crop,h_626,w_1113,x_1,y_0/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/8world/images/2026/11/19/20261118_ent_e-news-jay-chou-concert_in-wuhanws_.png?itok=6qDXuIoo": {
-  "w": 1200,
-  "h": 676,
-  "target": 1280,
-  "v": 3
- },
  "https://deadline.com/wp-content/uploads/2026/11/X-MEN-Hugh-Jackman-James-Marsden-Patrick-Stewart-Halle-Berry-Famke-Janssen-2000.-TM-and-Copyri-MCDAVDO-WD014-1000.jpg": {
   "w": 1000,
   "h": 563,
@@ -922,12 +922,6 @@
   "w": 1962,
   "h": 1102,
   "target": 1280,
-  "v": 3
- },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/hakuba-night.jpg": {
-  "w": 1920,
-  "h": 1280,
-  "target": 720,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/jr-ski.jpg": {
@@ -960,12 +954,6 @@
   "target": 720,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/1win-essence-i?v=1795044405": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
   "w": 1200,
   "h": 630,
@@ -982,12 +970,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/res-unchained-4-blast-slam-vii-southeast-asia-open-qualifier-2?v=1795012228": {
@@ -1353,12 +1335,6 @@
   "target": 720,
   "v": 3
  },
- "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_1278,h_718/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/shape/cover/sport/maxresdefault-68-ea17485849859a9815d493656c679d4f.jpg": {
-  "w": 1440,
-  "h": 810,
-  "target": 1280,
-  "v": 3
- },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_426,y_237,w_1864,h_1048/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/357/01m7ndtf0a2j0mmy6brs.jpg": {
   "w": 1440,
   "h": 810,
@@ -1447,6 +1423,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hIRoe.img": {
+  "w": 800,
+  "h": 571,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hJB7o.img": {
@@ -1699,13 +1681,13 @@
  "https://img.tenasia.co.kr/photo/202611/BF.46475392.3.jpg": {
   "w": 400,
   "h": 406,
-  "target": 720,
+  "target": 1280,
   "v": 3,
-  "blur": 0.461,
+  "blur": 0.607,
   "local": "pics/c2690e7f638617ca.webp",
   "out": [
-   709,
-   720
+   1200,
+   1218
   ],
   "why": "看不清"
  },
@@ -2684,12 +2666,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000165-spnannex-000-16-view.jpg?exp=10800": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-19"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00010009-tennisnet-000-1-view.jpg?pri=l&w=640&h=481&exp=10800": {
   "w": 640,
   "h": 481,
@@ -2767,6 +2743,12 @@
   "w": 1024,
   "h": 632,
   "target": 720,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/184a0401830a403eabe2252f7c654311.webp": {
+  "w": 772,
+  "h": 1000,
+  "target": 1280,
   "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/614d674cbc04425092f91517c1246529.png": {
@@ -2871,19 +2853,6 @@
   "out": [
    1280,
    853
-  ],
-  "why": "期限付きの網址"
- },
- "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/19/35532256.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
-  "w": 799,
-  "h": 532,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.416,
-  "local": "pics/66baf86800b2cd5f.webp",
-  "out": [
-   799,
-   532
   ],
   "why": "期限付きの網址"
  },
@@ -3034,6 +3003,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/190744/1/190744-1-c1f2043601ae3f6835e9bc571017eb5d-1920x1280.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1890,
+  "h": 1260,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/25284/2077/25284-2077-3cc151eb6f4c55de8fd3cd54a7cfc4f8-2000x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1260,
   "h": 1260,
@@ -3078,10 +3053,22 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/33130/380/33130-380-97e23811facc60de5363ca30768faf70-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1672,
+  "h": 941,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/37505/183/37505-183-e777a4708c1445d69f248c00da7bbe84-1280x680.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1280,
   "h": 680,
   "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/38757/32/38757-32-f364540e2133fbf20c201aaab5c63d3f-1794x1274.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1774,
+  "h": 1260,
+  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/45524/162/45524-162-bc88fc61e35f1f558e83024870283cef-1920x1280.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3233,6 +3220,12 @@
   "w": 2560,
   "h": 1440,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.eximg.jp/exnews/feed/Atpress/a0/Atpress_647917/Atpress_647917_1.jpg": {
+  "w": 1200,
+  "h": 722,
+  "target": 720,
   "v": 3
  },
  "https://s.eximg.jp/exnews/feed/kaiyou_n/1c/kaiyou_n_1493901684021018961/kaiyou_n_1493901684021018961_1.jpg": {
@@ -3524,6 +3517,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3690,6 +3689,12 @@
   "w": 1880,
   "h": 1426,
   "target": 720,
+  "v": 3
+ },
+ "https://today-obs.line-scdn.net/0hjiIQVYaPNUZ0KCnfGo5KEUx-OTdHTi9PVhp7IFl4aiRcBCJHGBpmJVgqPmoJTyVFVE15d1B4Y35dGXEZHw/w1200": {
+  "w": 1200,
+  "h": 676,
+  "target": 1280,
   "v": 3
  },
  "https://ueda.goguynet.jp/wp-content/uploads/sites/54/2025/06/sub4.jpg": {
@@ -4030,6 +4035,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
   "h": 414,
@@ -4211,6 +4222,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/dota-ban-2.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://www.diarypoint.com/media/96d11654-c1c5-467d-bbaf-b17f08b48ea4.jpg": {
   "w": 1280,
   "h": 640,
@@ -4276,6 +4293,12 @@
  "https://www.fashion-press.net/img/news/153462/top.jpg?1794886283": {
   "w": 1398,
   "h": 932,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/esports-gaming-setup.png?v=72240b6c111d7c67dbf43f89ddbfc186f0a0c1e5": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -4431,12 +4454,6 @@
    960
   ],
   "why": "看不清"
- },
- "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Plus-review-3.jpg": {
-  "w": 1920,
-  "h": 1078,
-  "target": 720,
-  "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,

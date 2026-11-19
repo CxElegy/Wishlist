@@ -9,7 +9,9 @@
     21,
     19,
     28,
-    74
+    74,
+    81,
+    86
    ],
    "event": {
     "date": "2026-12-17",
@@ -48,7 +50,8 @@
     54,
     59,
     61,
-    79
+    79,
+    88
    ]
   },
   {
@@ -59,7 +62,8 @@
    "refs": [
     22,
     20,
-    77
+    77,
+    82
    ]
   },
   {
@@ -69,6 +73,17 @@
    "weight": "normal",
    "refs": [
     17
+   ]
+  },
+  {
+   "headline": "New Avengers: Doomsday promo trailer unleashes larger look at the Marvel movie",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    84,
+    80,
+    83
    ]
   }
  ],
@@ -94,7 +109,9 @@
     59,
     60,
     61,
-    64
+    64,
+    88,
+    85
    ],
    "event": {
     "date": "2026-11-19",
@@ -111,7 +128,9 @@
     19,
     17,
     1,
-    63
+    63,
+    79,
+    83
    ],
    "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/GTA6.jpg?w=1440&h=810&crop=1"
   },
@@ -127,7 +146,9 @@
     31,
     34,
     67,
-    68
+    68,
+    76,
+    81
    ]
   },
   {
@@ -159,7 +180,8 @@
     4,
     2,
     3,
-    7
+    7,
+    9
    ],
    "event": {
     "date": "2026-12-05",
@@ -175,6 +197,33 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "周杰伦《嘉年华Ⅱ》悉尼站震撼来袭！Homart活曼特集团多年携手周董",
+   "highlight": "悉尼站",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "周杰伦武汉演唱会，花$112看大屏幕，你要吗？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  },
+  {
+   "headline": "周杰伦IP牵手涉足智能戒指引关注",
+   "highlight": "智能戒指",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -248,7 +297,12 @@
    "refs": [
     4,
     11,
-    12
+    12,
+    19,
+    20,
+    21,
+    22,
+    24
    ]
   },
   {
@@ -267,31 +321,42 @@
    "weight": "normal",
    "refs": [
     8,
-    10
+    10,
+    23
+   ]
+  },
+  {
+   "headline": "Dota 2 bug causes players to be hit with 20 year matchmaking bans",
+   "highlight": "20 year matchmaking bans",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    26
    ]
   }
  ],
  "_covered": {
-  "漫威电影": 79,
-  "GTA 6": 72,
-  "周杰伦": 7,
+  "漫威电影": 88,
+  "GTA 6": 88,
+  "周杰伦": 11,
   "A2O LITE": 6,
-  "dota2": 18,
+  "dota2": 28,
   "三星手机": 10,
   "gelato pique": 2,
   "チェーンソーマン": 5,
   "Vaundy": 1,
   "日本顶级网球赛事": 1,
-  "滑雪": 2,
-  "绝区零": 2,
-  "猫用品": 6,
+  "滑雪": 7,
+  "绝区零": 4,
+  "猫用品": 8,
   "星巴克马克杯": 3,
-  "ILLIT": 11,
-  "MMORPG 新作": 3,
+  "ILLIT": 15,
+  "MMORPG 新作": 7,
   "哈利波特剧集": 3,
   "The Mandalorian": 2,
   "Astrae Oratio": 1,
-  "FROM": 1
+  "FROM": 1,
+  "あつ森": 1
  },
  "三星手机": [
   {
@@ -430,6 +495,34 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "白馬コルチナスキー場、夜も楽しめる新コンテンツ「Night Park」を2026-27シーズンに開始",
+   "highlight": "Night Park",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    5
+   ]
+  },
+  {
+   "headline": "無事故と降雪祈願 夏油高原スキー場で神事【北上】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "雅高首進北海道二世古 Mercure Niseko Resort 11/20開幕",
+   "highlight": "11/20開幕",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "绝区零": [
@@ -476,13 +569,17 @@
    ]
   },
   {
-   "headline": "Cat owners warned over fatal hazard lurking in homes this winter",
-   "highlight": "",
+   "headline": "【Neakasa】ブラックフライデー本セールが11月19日より開催！全自動猫トイレが最大33,000円OFF",
+   "highlight": "最大33,000円OFF",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
-   ]
+    7,
+    8
+   ],
+   "price": {
+    "now": "最大33,000円OFF"
+   }
   },
   {
    "headline": "フルーツタルトの具になって寝るだけでかわいい猫用クッションが新登場！",
@@ -581,7 +678,11 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    14,
+    15,
+    12,
+    13
    ]
   },
   {
@@ -621,6 +722,26 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "究極のMMORPG『レイヴン2（RAVEN2）』「エルの大祝祭」イベントを開催！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "출시 하루 만에 매출 1위 제우스, 게임대상 우수상까지",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    5,
+    7
    ]
   }
  ],
@@ -694,5 +815,6 @@
     1
    ]
   }
- ]
+ ],
+ "あつ森": []
 }
