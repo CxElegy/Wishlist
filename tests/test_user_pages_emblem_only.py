@@ -17,6 +17,23 @@ import user_pages  # noqa: E402
 FP = "/storage/v1/object/pages/_fp/all.json"
 
 
+def as_pick(find):
+    """digest.find_image の形（chosen, refs, url → 網址）の偽物を images.pick の形に（find_images は SAVED を見るので images.pick を呼ぶ。2026-11-19 合わせ）。"""
+    import images
+    return lambda chosen, refs, url, **k: images.Result(image=find(chosen, refs, url) or None)
+
+
+def pick_patch(find):
+    import images
+    return mock.patch.object(images, "pick", as_pick(find))
+
+
+def og_page(count):
+    """og_image の読み（images.page の形）の偽物：読んだら count() を呼び、写真は無い。"""
+    import images
+    return lambda u: count() or images.Page(u, True)
+
+
 class FindImages(unittest.TestCase):
     def stories(self):
         return [{"headline": "a", "url": "https://n.example/1"}, {"headline": "b", "url": "https://n.example/2"}]
@@ -24,7 +41,7 @@ class FindImages(unittest.TestCase):
     def test_cache_only_does_not_search(self):
         calls = []
         cache = {"https://n.example/1": {"img": "https://img/1.jpg", "at": 0}, "https://n.example/2": {"img": "", "at": 0}}
-        with mock.patch.object(user_pages.digest, "find_image", lambda *a: calls.append(a) or "x"):
+        with pick_patch(lambda *a: calls.append(a) or "x"):
             st = user_pages.find_images(self.stories(), 9e18, cache, new=False)
             st2 = user_pages.find_images([{"headline": "c", "url": "https://n.example/3"}], 9e18, {}, new=False)
         self.assertEqual(calls, [])
@@ -38,7 +55,7 @@ class FindImages(unittest.TestCase):
             if url.endswith("/2"):
                 raise OSError("net")
             return "https://img/" + url[-1] + ".jpg"
-        with mock.patch.object(user_pages.digest, "find_image", pick):
+        with pick_patch(pick):
             user_pages.find_images(self.stories(), 9e18, cache, now=1000)
         self.assertEqual(cache, {"https://n.example/1": {"img": "https://img/1.jpg", "at": 1000}})   # 読めなかったものは覚えない（次の回にまた探す）
 
@@ -47,7 +64,7 @@ class FindImages(unittest.TestCase):
         calls = []
         cache = {"https://n.example/1": {"img": "", "at": 1000}}
         st = [{"headline": "a", "url": "https://n.example/1"}]
-        with mock.patch.object(user_pages.digest, "find_image", lambda *a: calls.append(a) or "https://img/new.jpg"):
+        with pick_patch(lambda *a: calls.append(a) or "https://img/new.jpg"):
             user_pages.find_images([dict(s) for s in st], 9e18, cache, now=1000 + 60)   # 見つからなかったばかり：探さない
             self.assertEqual(calls, [])
             got = user_pages.find_images([dict(s) for s in st], 9e18, cache, now=1000 + user_pages.PICK_RETRY_S)   # 間をあけたら探し直す
@@ -60,8 +77,8 @@ class Limits(unittest.TestCase):
     def test_og_fill_limit_zero_reads_nothing(self):
         rows = {"x": {"stories": [{"url": "https://n.example/1"}, {"url": "https://n.example/2"}]}}
         seen = []
-        n = og_image.fill(rows, {"https://n.example/1": "https://img/og1.jpg"}, fetch=lambda u: seen.append(u) or "", log=lambda *a: None, limit=0)
-        self.assertEqual((n, seen), (0, []))
+        n = og_image.fill(rows, {"https://n.example/1": "https://img/og1.jpg"}, page=og_page(lambda: seen.append(1)), log=lambda *a: None, limit=0)
+        self.assertEqual((n["read"], seen), (0, []))
         self.assertEqual(rows["x"]["stories"][0]["image"], "https://img/og1.jpg")   # 前の結果は付く
 
     def test_bands_limit(self):
@@ -193,10 +210,10 @@ class EmblemOnlyMain(unittest.TestCase):
             fill = og_image.fill
             with mock.patch.object(user_pages, "_supa", supa), \
                     mock.patch.object(user_pages.photo_store, "published", lambda: set()), \
-                    mock.patch.object(user_pages.digest, "find_image", lambda *a: calls.__setitem__("pick", calls["pick"] + 1)), \
+                    pick_patch(lambda *a: calls.__setitem__("pick", calls["pick"] + 1)), \
                     mock.patch.object(user_pages.sources, "resolve_url", lambda u, tries=None: calls.__setitem__("resolve", calls["resolve"] + 1) or u), \
                     mock.patch.object(user_pages.render, "photo_opens", lambda u: calls.__setitem__("opens", calls["opens"] + 1) or True), \
-                    mock.patch.object(user_pages.og_image, "fill", lambda rows, cache, log=print, limit=None: fill(rows, cache, fetch=lambda u: calls.__setitem__("og", calls["og"] + 1) or "", log=lambda *a: None, limit=limit)), \
+                    mock.patch.object(user_pages.og_image, "fill", lambda rows, cache, **kw: fill(rows, cache, **{**kw, "page": og_page(lambda: calls.__setitem__("og", calls["og"] + 1)), "log": lambda *a: None})), \
                     mock.patch.object(user_pages.photo_bands, "measure", measure), \
                     mock.patch.object(user_pages.render, "OPENS", None), \
                     (mock.patch.object(user_pages, "design_moved", moved) if moved else contextlib.nullcontext()):

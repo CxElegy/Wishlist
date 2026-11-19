@@ -255,6 +255,72 @@ class MainWriteBack(unittest.TestCase):
         self.assertEqual(alljson[-1]["_og"]["https://n.example/1"]["img"], "https://img.example/og1.jpg")   # 覚えにも入る
 
 
+class EmblemOnlySame(unittest.TestCase):
+    """合わせ（#1058 の --emblem-only）：小元素だけの回が置くページは、ふつうの回と同じ中身（AI 編集の記事が整理待ちの写真を引き継ぐ・
+    置き場に入った防盗链の写真だけ出す・置き場待ちは整理待ちへ）。小元素だけの回は網に出ず、記事に書き戻さず、imgs.json を書かない。"""
+    EMAIL = "test-y@example.com"
+
+    def test_same_page_and_no_writes(self):
+        acct = user_pages.account_of(self.EMAIL)
+        u1, u2, u3 = "https://n.example/1", REF, "https://n.example/3"
+        latest = [{"board_id": 5, "day": "2026-11-19", "updated_at": "2026-11-19T10:00:00+00:00",
+                   "stories": [{"headline": "H1", "url": u1, "refs": [u1], "image": None, "weight": "hero", "_fp": "f", "_at": "2999-01-01T00:00:00+00:00"},
+                               {"headline": "H3", "url": u3, "refs": [u3], "image": "https://img.example/3.jpg", "weight": "normal", "_fp": "f", "_at": "x"}],
+                   "pending": [{"title": "t1", "url": u1, "image": "https://img.example/1.jpg"},
+                               {"title": "t2", "url": u2, "image": IMG, "img_ref": REF},
+                               {"title": "t3", "url": u3, "image": "https://img.example/3.jpg"},
+                               {"title": "t4", "url": "https://n.example/4"}]}]
+        store, writes, counts = {user_pages.IMGS_PATH: []}, [], {"og": 0, "pick": 0}   # 一部の回は前の列を読んでから足す（読めない回は書かない）
+
+        def supa(path, data=None, method="GET", ctype="application/json"):
+            if "rpc/userfeed_users" in path:
+                return [{"email": self.EMAIL, "prefs": {"picks": [{"name": "自分の版面", "sec": "生活"}]}}]
+            if path.startswith("/storage/"):
+                if method == "POST":
+                    writes.append(path)
+                    store[path] = json.loads(data) if ctype.startswith("application/json") else data
+                    return {}
+                if path in store:
+                    return json.loads(json.dumps(store[path])) if isinstance(store[path], (dict, list)) else store[path]
+                raise OSError("404")
+            if method == "PATCH":
+                writes.append(path)
+                return ""
+            if "follows?board_id=in." in path:
+                return [{"account": acct}]
+            if "follows?account" in path:
+                return [{"pos": 0, "section": "生活", "subs": {}, "size": "M", "boards": {"id": 5, "name": "自分の版面", "config": {}}}]
+            if "board_stories" in path:
+                return json.loads(json.dumps(latest))
+            if "boards?id=in." in path:
+                return [{"id": 5, "emblem_state": None}]
+            return []
+        pages = []
+        with tempfile.TemporaryDirectory() as d:
+            ids = pathlib.Path(d) / "ids.json"
+            ids.write_text("[5]")
+            for args in (["--boards-file", str(ids)], ["--boards-file", str(ids), "--emblem-only", "--force"]):
+                writes.clear()
+                with mock.patch.object(user_pages, "_supa", supa), mock.patch.object(user_pages.photo_store, "published", lambda: set()), \
+                        mock.patch.object(images, "pick", lambda *a, **k: counts.__setitem__("pick", counts["pick"] + 1) or images.Result()), \
+                        mock.patch.object(images, "page", lambda u: counts.__setitem__("og", counts["og"] + 1) or images.Page(u, True)), \
+                        mock.patch.object(user_pages.sources, "resolve_url", lambda u, tries=None: u), \
+                        mock.patch.object(user_pages.render, "photo_opens", lambda u: True), mock.patch.object(user_pages.render, "OPENS", None), \
+                        mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0):
+                    before = dict(counts)
+                    user_pages.main(args)
+                pages.append(store[f"/storage/v1/object/pages/{acct}/index.html"])
+                if "--emblem-only" in args:
+                    self.assertEqual(counts, before)   # 網に出ない（og の読み・写真探し 0）
+                    self.assertFalse([w for w in writes if "imgs.json" in w or w.startswith("/rest/")])   # 書き戻し・imgs.json なし
+                else:
+                    self.assertTrue(any("imgs.json" in w for w in writes))
+        self.assertEqual(pages[0], pages[1])                     # ふつうの回と同じ中身
+        h = pages[0].decode("utf-8")
+        self.assertIn("https://img.example/1.jpg", h)            # AI 編集の記事が整理待ちの写真を引き継ぐ
+        self.assertNotIn("hard.example/pic", h)                  # 置き場に入っていない防盗链の写真は出さない
+
+
 class MainFull(unittest.TestCase):
     def test_full_run_without_photos_writes_empty_list(self):
         """見直し 5(b)：全員作れた回で写真が 0 なら [] を書く（前の列を残さない）。"""
