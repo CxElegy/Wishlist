@@ -1684,12 +1684,18 @@
   "target": 720,
   "v": 3
  },
- "https://img.tenasia.co.kr/photo/202611/BF.46476827.3.jpg": {
+ "https://img.tenasia.co.kr/photo/202611/BF.46475392.3.jpg": {
+  "w": 400,
+  "h": 406,
   "target": 720,
   "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-11-19"
+  "blur": 0.461,
+  "local": "pics/c2690e7f638617ca.webp",
+  "out": [
+   709,
+   720
+  ],
+  "why": "看不清"
  },
  "https://img.theweek.in/content/dam/week/en/archive/news/entertainment/images/2026/11/12/from-season-5-release-date.jpg": {
   "w": 1200,
@@ -4200,6 +4206,12 @@
   "v": 3
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2026/11/15/gta-6.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/dota-ban-2.jpg": {
   "w": 1600,
   "h": 900,
   "target": 720,
