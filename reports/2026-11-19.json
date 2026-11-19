@@ -1,27 +1,11 @@
 {
  "date": "2026-11-19",
- "edit_sig": "f61af6d36271",
+ "edit_sig": "64028ac07d41",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 2,
-     "source": "이지경제",
-     "title": "엔씨 아스오라, AGF 2026에 150부스 마련…현장 구성 공개",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9JRHJYamVYWS1UVS1xZm05eHNIVGJZbHpFM1c3OHBxNEVDdVctcXJxWVJKQjdNQ19ESDN3SHFPWXhydmQwZmV6cURlRUdObnZhVzZjYXRvMm9rS1h4RXdPemdsQ2VfSWdyRTBvZ2NB?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 3,
-     "source": "투데이신문",
-     "title": "엔씨, AGF 첫 메인 스폰서 출격…‘아스오라’ 앞세워 서브컬처 공략",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE12NS1GeldoQ3h6UUt0WkplcGdyWEtoZk5JdHF6NlgyUlcydnlndnltTUd1VHVrdlZJZXU5bWxsUF90WWZqTlF4U2FYcTBJNDRYU05hclA1OG1DcnJTMWJrRHA2dFFaY0ExXzc1aUoyd9IBb0FVX3lxTE12NS1GeldoQ3h6UUt0WkplcGdyWEtoZk5JdHF6NlgyUlcydnlndnltTUd1VHVrdlZJZXU5bWxsUF90WWZqTlF4U2FYcTBJNDRYU05hclA1OG1DcnJTMWJrRHA2dFFaY0ExXzc1aUoydw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -33,6 +17,16 @@
      "image_via": "og:image",
      "url": "https://www.pocketgamer.com/astrae-oratio/closed-beta-test-combat-reactions/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "엔씨, AGF 첫 메인 스폰서 출격…‘아스오라’ 앞세워 서브컬처 공략",
+     "highlight": "",
+     "image": "https://www.ntoday.co.kr/news/photo/202611/130958_118695_1131.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://www.ntoday.co.kr/news/articleViewAmp.html?idxno=130958",
+     "weight": "normal"
     }
    ],
    "subtitle": "アストラエ・オラティオ",
@@ -303,36 +297,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 8,
-     "source": "Web東奥",
-     "title": "長野県 竜王スキーパーク 12月5日（土）より2026-27シーズンの営業を開始！",
-     "url": "https://www.toonippo.co.jp/articles/-/2406553"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 9,
-     "source": "ABEMA",
-     "title": "レヴィ／フィンランド(11/15) 男子 スラローム【アルペンスキー FIS ワールドカップ 2026/27】",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9MbE9IWmczQTk2blVYTFhfdGtpS1Buc2g5UFRtcUhLQXBRdk40eWZvcjNMV0FEbzlzalhTdlYxZlZkMlB5Q3l3ek1WUW9Ib3pIejhzM2pZX2hXNFlVQTBybzl4MEl0M2JRNWFtc01jbFVxQQ?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 10,
-     "source": "PR TIMES",
-     "title": "白馬五竜、新しいブランドアイデンティティを制定。山を愛し、山に愛される 日本を代表するマウンテン・パークへ",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9CWHlVWGpXS3RFcHoxX3RDd3ljdkNOVFYybXhwc2VyUE4xRlFUem01dU1vMU5nWEkxcHYwVzZaZlRzcE5GenJUeTB3WTItbmp5MWlFa2VtNk82YThIaGhZeEpMakl2Sl9rWkE?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 11,
-     "source": "DMKsnowboard",
-     "title": "白馬五竜、新ブランドアイデンティティを制定！公式サイトも全面リニューアル",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5YMjhUUWlTMXhDNjU3aGlPdGdUM1RfN0FGWXhzY3Y1a2NEbG1Ua2JGbWw2ZmppQXR6Y3BXUmtIRm5WVlFyWFY3V09UNEUzaEdHbUdqNHdUTDNBekFoV0UxQWNDV2V3eWQwdzktZmVRbw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -384,6 +348,26 @@
      "image": "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/19105546/jp-prt-52177-1130-1-261119025543294.jpeg",
      "image_via": "og:image",
      "url": "https://www.contentplatform.info/articles/582339/%E9%9B%85%E9%AB%98%E9%A6%96%E9%80%B2%E5%8C%97%E6%B5%B7%E9%81%93%E4%BA%8C%E4%B8%96%E5%8F%A4%E3%80%80mercure-niseko-resort-11-20%E9%96%8B%E5%B9%95/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "長野県 竜王スキーパーク 12月5日（土）より2026-27シーズンの営業を開始！",
+     "highlight": "12月5日（土）",
+     "image": "https://prtimes.jp/img/31800/233/resize/d31800-233-d1d6e47d22dd3df00a76-0.jpg",
+     "image_via": "og:image",
+     "url": "https://www.toonippo.co.jp/articles/-/2406553",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "白馬五竜、新しいブランドアイデンティティを制定。山を愛し、山に愛される 日本を代表するマウンテン・パークへ",
+     "highlight": "",
+     "image": "https://prcdn.freetls.fastly.net/release_image/79579/45/79579-45-b53d5215e15367af5e35e1dcb7fa8873-2400x1350.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000045.000079579.html",
      "weight": "normal"
     }
    ],
@@ -548,22 +532,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 5,
-     "source": "SHEfinds on MSN",
-     "title": "HBO subscribers are threatening to boycott their Harry Potter series after JK Rowling's political views",
-     "url": "https://www.msn.com/en-us/entertainment/general/hbo-subscribers-are-threatening-to-boycott-their-harry-potter-series-after-jk-rowling-s-political-views/ar-AA2hKrUh"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 6,
-     "source": "BBC",
-     "title": "How online mocking of antique gates led to a Harry Potter TV opportunity",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE0yZ3hhRDZhbl9OUEJIcjRSMHRGeXhEU0kxaHlSTlNqYWM5RE1yVERQZzVlN09iUnlGWUc1WEVvYjYwY2FsUmN6anZ2ZW5LdUJYVkVFLVFkNzBUa28?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -604,6 +572,16 @@
      "image": "https://hermes.media.static.aol.com/media/2026/11/18/b2fecc17-6867-35eb-893f-232a69589212/525e06a8-8dfe-471f-a5c9-dc01d15ccec5.jpg",
      "image_via": "og:image",
      "url": "https://www.aol.com/articles/5-harry-potter-characters-deserve-221200000.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "HBO subscribers are threatening to boycott their Harry Potter series after JK Rowling's political views",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hKaIG.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/entertainment/general/hbo-subscribers-are-threatening-to-boycott-their-harry-potter-series-after-jk-rowling-s-political-views/ar-AA2hKrUh",
      "weight": "normal"
     }
    ],
@@ -892,22 +870,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 3,
-     "source": "iza（イザ！）",
-     "title": "買えなかった人に朗報！「ジェラピケ」福袋が楽天ファッションに登場【11月20日12時～】",
-     "url": "https://www.iza.ne.jp/article/20261119-XYUY6BGTAFBJBJZOUUULP2XPRM/?outputType=theme_osusume"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 4,
-     "source": "Dellows News",
-     "title": "ジェラート ピケが2027年福袋の抽選販売を11月2日正午から開始へ",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFB4QTZpVVZsdl94S0dkZEUxRXlRVG1PUXFvblk0eUZZcVJjcU9odnpzWW5YTS1kOHR1VHdWcm9OQlQ3akpEVXc?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -928,6 +890,26 @@
      "image": "https://www.iza.ne.jp/resizer/v2/E6KL7R452VHM5E4DRZTV2NOXOE.jpg?auth=572cdcf59c1695096878faad7052a2bdc166a860fd9376549362efe02f541741&quality=50&smart=true&width=1200&height=675",
      "image_via": "og:image",
      "url": "https://www.iza.ne.jp/article/20261118-25IJUH4SOFHDHIMQVGSKBRGF2M/photo/E6KL7R452VHM5E4DRZTV2NOXOE/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "買えなかった人に朗報！「ジェラピケ」福袋が楽天ファッションに登場【11月20日12時～】",
+     "highlight": "11月20日12時",
+     "image": "https://www.iza.ne.jp/resizer/v2/7XMPAQEKS5BR7EW5WGDZN5UWW4.jpg?auth=67084e060b57a2cc1343e7c7e2248594ee572ab482621ceed943def176606b73&quality=50&smart=true&width=1200&height=675",
+     "image_via": "og:image",
+     "url": "https://www.iza.ne.jp/article/20261119-XYUY6BGTAFBJBJZOUUULP2XPRM/?outputType=theme_osusume",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "ジェラート ピケが2027年福袋の抽選販売を開始へ",
+     "highlight": "",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/885290_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/885290/",
      "weight": "normal"
     }
    ],
@@ -1162,43 +1144,8 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 5,
-     "source": "Yahoo!ニュース",
-     "title": "ヤマハ「バイクに興味がない人」にも来てほしい理由とは？ 横浜のショールームが大変身！人気ゲーム「ゼンゼロ」とのコラボも【Yamaha E-Ride Base】（MotorFan）",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNSHVaRThhX2dTdmw5TEJTaFdzRTBVTmZqTW1zeksxOGt5cDd0MWVwTlFYcGNTdlZrRVNad2JMNDFzMkVqeE5VRkJWUzNJWFRGNDAxQXczaXpxYk1ZTHVNNWVKOFRBNDdzbDBOMjA2VDhTZVhTaTJUamVXZ2hNU1RzY0tLM1ZvbnZh?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 7,
-     "source": "파이낸셜뉴스 on MSN",
-     "title": "\"2시간 반 기다려야 들어가요\"…해외 게임사에 몰린 인파[지스타 2026]",
-     "url": "https://www.msn.com/ko-kr/news/other/2%EC%8B%9C%EA%B0%84-%EB%B0%98-%EA%B8%B0%EB%8B%A4%EB%A0%A4%EC%95%BC-%EB%93%A4%EC%96%B4%EA%B0%80%EC%9A%94-%ED%95%B4%EC%99%B8-%EA%B2%8C%EC%9E%84%EC%82%AC%EC%97%90-%EB%AA%B0%EB%A6%B0-%EC%9D%B8%ED%8C%8C-%EC%A7%80%EC%8A%A4%ED%83%80-2026/ar-AA2hKFs6"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 8,
-     "source": "파이낸셜뉴스",
-     "title": "해외신작 열기 후끈… 부스마다 '대기열 마감' [지스타 2026]",
-     "url": "https://www.fnnews.com/news/202611191816267022"
-    }
-   ],
    "section": "游戏",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-19",
-     "headline": "『ゼンレスゾーンゼロ』Ver.2.8「新・エリー都の落日」は5月6日（水）にリリース！",
-     "highlight": "",
-     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-     "image_via": "作品封面",
-     "source": "Appliv Games",
-     "source_icon": "https://www.google.com/s2/favicons?domain=games.app-liv.jp&sz=128",
-     "url": "https://games.app-liv.jp/archives/586001",
-     "weight": "hero"
-    },
     {
      "blurb": "《绝区零》在海外获得大奖。",
      "date": "2026-11-18",
@@ -1221,6 +1168,26 @@
      "image": "https://pbs.twimg.com/media/HW9Ya5ZXwAE6Ybm?format=jpg&name=large",
      "image_via": "og:image",
      "url": "https://www.inven.co.kr/board/party/6553/432",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "『ゼンレスゾーンゼロ』Ver.2.8「新・エリー都の落日」は5月6日（水）にリリース！",
+     "highlight": "5月6日（水）",
+     "image": "https://games.app-liv.jp/images/articles/2026/05/gd_586001_-18.png",
+     "image_via": "og:image",
+     "url": "https://games.app-liv.jp/archives/586001",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "ヤマハ「バイクに興味がない人」にも来てほしい理由とは？ 横浜のショールームが大変身！人気ゲーム「ゼンゼロ」とのコラボも",
+     "highlight": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-01681451-motorfan-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/1555ccf278c1bf3ec307e35b2e12556465b7782f?page=2",
      "weight": "normal"
     }
    ],

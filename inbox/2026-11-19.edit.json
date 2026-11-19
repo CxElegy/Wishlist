@@ -392,19 +392,19 @@
   "A2O LITE": 9,
   "dota2": 37,
   "三星手机": 18,
-  "gelato pique": 2,
+  "gelato pique": 4,
   "チェーンソーマン": 10,
   "Vaundy": 1,
   "日本顶级网球赛事": 1,
-  "滑雪": 7,
-  "绝区零": 4,
+  "滑雪": 10,
+  "绝区零": 7,
   "猫用品": 8,
   "星巴克马克杯": 8,
   "ILLIT": 25,
   "MMORPG 新作": 11,
-  "哈利波特剧集": 4,
+  "哈利波特剧集": 6,
   "The Mandalorian": 5,
-  "Astrae Oratio": 1,
+  "Astrae Oratio": 3,
   "FROM": 1,
   "あつ森": 1
  },
@@ -493,6 +493,24 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "買えなかった人に朗報！「ジェラピケ」福袋が楽天ファッションに登場【11月20日12時～】",
+   "highlight": "11月20日12時",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ジェラート ピケが2027年福袋の抽選販売を開始へ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -604,6 +622,24 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "長野県 竜王スキーパーク 12月5日（土）より2026-27シーズンの営業を開始！",
+   "highlight": "12月5日（土）",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "白馬五竜、新しいブランドアイデンティティを制定。山を愛し、山に愛される 日本を代表するマウンテン・パークへ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
   }
  ],
  "绝区零": [
@@ -628,6 +664,24 @@
     "date": "2026-11-27",
     "label": "コンテスト終了"
    }
+  },
+  {
+   "headline": "『ゼンレスゾーンゼロ』Ver.2.8「新・エリー都の落日」は5月6日（水）にリリース！",
+   "highlight": "5月6日（水）",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "ヤマハ「バイクに興味がない人」にも来てほしい理由とは？ 横浜のショールームが大変身！人気ゲーム「ゼンゼロ」とのコラボも",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "猫用品": [
@@ -923,6 +977,15 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "HBO subscribers are threatening to boycott their Harry Potter series after JK Rowling's political views",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "The Mandalorian": [
@@ -971,6 +1034,16 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "엔씨, AGF 첫 메인 스폰서 출격…‘아스오라’ 앞세워 서브컬처 공략",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    2
    ]
   }
  ],

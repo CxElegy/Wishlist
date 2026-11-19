@@ -19,6 +19,7 @@
     {
      "date": "2026-11-12T06:23:12+00:00",
      "image": "",
+     "link": "https://www.ezyeconomy.com/news/articleView.html?idxno=241797",
      "n": 2,
      "seen": "2026-11-19T06:26:36+00:00",
      "site": "https://www.ezyeconomy.com",
@@ -30,7 +31,9 @@
     },
     {
      "date": "2026-11-19T07:29:55+00:00",
-     "image": "",
+     "image": "https://www.ntoday.co.kr/news/photo/202611/130958_118695_1131.jpg",
+     "image_via": "JSON-LD",
+     "link": "https://www.ntoday.co.kr/news/articleViewAmp.html?idxno=130958",
      "n": 3,
      "seen": "2026-11-19T09:25:24+00:00",
      "site": "https://www.ntoday.co.kr",
@@ -2677,7 +2680,9 @@
     },
     {
      "date": "2026-11-19T01:00:02+00:00",
-     "image": "",
+     "image": "https://prcdn.freetls.fastly.net/release_image/79579/45/79579-45-b53d5215e15367af5e35e1dcb7fa8873-2400x1350.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "link": "https://prtimes.jp/main/html/rd/p/000000045.000079579.html",
      "n": 10,
      "seen": "2026-11-19T09:25:43+00:00",
      "site": "https://prtimes.jp",
@@ -5171,7 +5176,9 @@
     },
     {
      "date": "2026-11-19T04:16:50+00:00",
-     "image": "",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/885290_1.jpg",
+     "image_via": "og:image",
+     "link": "https://news.dellows.jp/885290/",
      "n": 4,
      "seen": "2026-11-19T06:28:02+00:00",
      "site": "https://news.dellows.jp",
@@ -6244,7 +6251,9 @@
     },
     {
      "date": "2026-11-18T22:10:00+00:00",
-     "image": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-01681451-motorfan-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "link": "https://news.yahoo.co.jp/articles/1555ccf278c1bf3ec307e35b2e12556465b7782f?page=2",
      "n": 5,
      "seen": "2026-11-19T06:29:08+00:00",
      "site": "https://news.yahoo.co.jp",
