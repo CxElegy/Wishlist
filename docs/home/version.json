@@ -1,14 +1,14 @@
 {
- "admin": "6b27b12605c3",
- "admin-ai": "4a12ce765351",
+ "admin": "2147b6e37c21",
+ "admin-ai": "8d3c081cccab",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8e82e0b2"
+   "59b8042d"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "3bca7617"
+   "3d5ce4e8"
   ]
  },
  "admin-boards": "14375f861403",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "53568b5be732",
+ "admin-emblem": "7963d846c00e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ec78dc24"
+   "fd3444be"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "bd97a37aff77",
+ "admin-now": "576769c34abb",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4845d740"
+   "29d73afd"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "44ca615e"
+   "0d3fee63"
   ]
  },
- "admin-system": "6ae5b5fc48ea",
+ "admin-system": "c5bd26e6f25a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "38d16d42"
+   "6c48c1f0"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "933dca70"
+   "87b24a07"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "c310c860"
   ]
  },
- "index": "a2b419f70913",
+ "index": "0d0b33b86153",
  "index_marks": {
   "front": [
    "トップ",
-   "90bb4be5"
+   "22e76850"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "72c5ca34"
+   "8bb0ec6d"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "c0b6e67b"
+   "73f07b93"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "deaa14e7"
+   "770f4eea"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "0bf9df17"
+   "2189f6e6"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "b4b9aa88"
   ]
  },
- "updated": "11.19 15:45",
+ "updated": "11.19 15:49",
  "wishlist": "c5b812629fba"
 }
