@@ -24,6 +24,12 @@ REF = "https://hard.example/news/himitsu-kiji-777"
 TITLE = "お客さまだけの版面の題"
 
 
+def og_image_fill(rows, og, read):
+    """og_image.fill の本物（images.page の代わりに読んだ網址を数える）。"""
+    import og_image
+    return og_image.fill(rows, og, page=lambda u: read.append(u) or images.Page(u, False, "x"), check=lambda u: (False, "x"), log=lambda _m: None)
+
+
 class Mask(unittest.TestCase):
     def setUp(self):
         on = list(P._ON)
@@ -49,6 +55,28 @@ class Mask(unittest.TestCase):
         out = user_pages.mask_saved(self.brows(), {})
         self.assertEqual(out["a"]["stories"][0]["image"], f"{P.PAGES_BASE}/{P.key(IMG)}-800.webp")
         self.assertNotIn("img_ref", out["a"]["stories"][0])
+
+    def test_waiting_photo_is_not_a_photoless_card(self):
+        """見直し 2：置き場待ちの防盗链の写真の記事は、写真なしとして整理待ちへ回る（写真のないカードとして版面に残さない・B7）。
+        og_image.fill・find_images は探し直さない。数の 1 行に「置き場待ち」。"""
+        b = user_pages.mask_saved(self.brows(), {})
+        read = []
+        t = {}
+        user_pages.photo_tally(b, {}, t, fill=lambda rows, og, **k: og_image_fill(rows, og, read))
+        self.assertEqual(read, [])                                                   # og のページを読みに行かない
+        self.assertEqual([s.get("url") for s in b["a"]["stories"]], ["https://ok.example/1"])   # カードには写真のある記事だけ
+        self.assertIn(REF, [s.get("url") for s in b["a"]["pending"]])
+        self.assertEqual(t["wait"], 1)
+        self.assertIn("置き場待ち 1 本", user_pages.tally_line(t))
+        # 写真が 1 枚も無い版面（demote が動かさない）でも、find_images は置き場待ちを探し直さない
+        only = user_pages.mask_saved({"a": {"stories": [{"title": TITLE, "url": REF, "image": IMG, "img_ref": REF}]}}, {})
+        picked = []
+        with mock.patch.object(images, "pick", lambda *a, **k: picked.append(a) or images.Result()):
+            issue = user_pages.user_issue([{"name": "A", "section": "其他"}], None, only, 1e12, {})
+            only["a"]["edited"] = True
+            user_pages.user_issue([{"name": "A", "section": "其他"}], None, only, 1e12, {})
+        self.assertEqual(picked, [])
+        self.assertIsNone(issue["items"][0]["stories"][0]["image"])
 
     def test_page_html_never_has_the_hard_url(self):
         """作ったページの HTML に、置き場に入っていない防盗链の写真の網址が出ない（src にも落ち先にも）。"""

@@ -151,7 +151,7 @@ def fill(rows, cache, page=None, check=None, now=None, log=print, hard=None, dea
     now = now or dt.datetime.now(dt.timezone.utc)
     stamp = now.isoformat(timespec="seconds")
     lack = [s for r in (rows or {}).values() for k in ("stories", "pending") for s in r.get(k) or []
-            if isinstance(s, dict) and not s.get("image") and str(s.get("url") or "").startswith("http")]
+            if isinstance(s, dict) and not s.get("image") and not s.get("_wait") and str(s.get("url") or "").startswith("http")]   # _wait：防盗链の写真の置き場待ち
     out = {"read": 0, "new": 0, "memo": 0, "wrapped": 0, "saved": 0, "carry": 0, "why": {}, "touched": []}
     wrapped = {s["url"] for s in lack if _google(s["url"])}
     out["wrapped"] = len(wrapped)

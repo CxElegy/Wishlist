@@ -318,7 +318,7 @@ class Photos(unittest.TestCase):
         try:
             t = {}
             got = user_pages.photo_tally(brows, {}, t, fill=fill)
-            self.assertEqual(t, {"n": 5, "img": 3, "feed": 2, "page": 1, "demoted": 1, "wrapped": 1, "stored": 1})
+            self.assertEqual(t, {"n": 5, "img": 3, "feed": 2, "page": 1, "demoted": 1, "wrapped": 1, "stored": 1, "wait": 0})
             self.assertEqual(len(got["touched"]), 1)
             self.assertEqual([s["url"] for s in brows["a"]["stories"]], ["https://e.org/a", "https://e.org/b", "https://e.org/c"])   # 包みの 1 本は整理待ちへ
             self.assertEqual([s["url"] for s in brows["b"]["stories"]], ["https://e.org/d"])   # 写真が 1 枚も無い版面は動かさない

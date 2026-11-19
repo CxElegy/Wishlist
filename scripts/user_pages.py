@@ -156,7 +156,8 @@ def user_items(picks, shop_items):
 def _story(row, weight):
     return {"headline": row.get("title") or "", "url": row.get("url") or "", "image": row.get("image") or None,
             "date": str(row.get("date") or "")[:10], "blurb": row.get("summary") or "", "highlight": "", "weight": weight,
-            "source": row.get("source") or "", **({"img_ref": row["img_ref"]} if row.get("img_ref") else {})}
+            "source": row.get("source") or "", **({"img_ref": row["img_ref"]} if row.get("img_ref") else {}),
+            **({"_wait": True} if row.get("_wait") else {})}
 
 
 FIND = {"tried": 0, "found": 0, "saved": 0}   # find_images の数（1 回分。main が 1 行に出す：数だけ）
@@ -172,7 +173,7 @@ def find_images(stories, deadline):
     os.environ.pop("SCRAPLING_BROWSER", None)
     used = set()
     for s in stories[:IMG_PER_BOARD]:
-        if s.get("image") or time.time() > deadline:
+        if s.get("image") or s.get("_wait") or time.time() > deadline:   # _wait：防盗链の写真の置き場待ち（探し直しても SAVED を捨てるだけ）
             continue
         e = sources.Entry(title=s["headline"], url=s["url"], published=None, source=s.get("source", ""))
         FIND["tried"] += 1
@@ -231,7 +232,7 @@ def user_issue(items, shop_issue, rows, deadline, themes):
                            "status": render.SETTINGS_JA["collecting"]})
             continue
         if row.get("edited"):   # AI 編集の記事（library.edited_stories：見出し・重さ・要約は AI のまま）
-            st = [{k: v for k, v in s.items() if not k.startswith("_") and k != "refs"} for s in (row.get("stories") or [])[:cap]]
+            st = [{k: v for k, v in s.items() if (not k.startswith("_") or k == "_wait") and k != "refs"} for s in (row.get("stories") or [])[:cap]]
         else:
             st = [_story(r, "hero" if i == 0 else "normal") for i, r in enumerate((row.get("stories") or [])[:cap])]
         st = find_images(st, deadline)
@@ -290,11 +291,12 @@ def own_recommend(votes, items, issue, rows=None):
 
 def photo_count(brows):
     """版面に載せる記事（AI 編集の記事・まだなら集めた記事。整理待ちは数えない）の数・写真あり・包みのまま（Google の網址）・置き場に入った。"""
-    t = {"n": 0, "img": 0, "wrapped": 0, "stored": 0}
+    t = {"n": 0, "img": 0, "wrapped": 0, "stored": 0, "wait": 0}
     for r in (brows or {}).values():
         for s in r.get("stories") or []:
             u = s.get("image")
             t["n"] += 1
+            t["wait"] += bool(s.get("_wait"))
             t["wrapped"] += "news.google.com" in str(s.get("url") or "")
             if u:
                 t["img"] += 1
@@ -302,13 +304,14 @@ def photo_count(brows):
     return t
 
 
-TALLY_KEYS = ("n", "img", "feed", "page", "demoted", "wrapped", "stored")
+TALLY_KEYS = ("n", "img", "feed", "page", "demoted", "wrapped", "stored", "wait")
 
 
 def photo_tally(brows, og, tally=None, fill=None, now=None, deadline=None):
     """写真を取る段の数（2026-11-19 店長「点検は、本物の写真が取れるかどうかを含めること」）。og_image.fill（残りの最後の手）と
     og_image.demote（それでも写真の無い記事は整理待ちへ）を、前と後で数えて tally に足す：
     n 版面の記事・img 写真あり（feed＝記事集めで付いていた／page＝ページ作りで付けた）・demoted 整理待ちへ回した・wrapped 包みのまま・
+    wait 防盗链の写真の置き場待ち（mask_saved が写真を外した＝写真なしとして整理待ちへ回る）・
     stored 置き場に入った（n・img・wrapped は demote の前＝実際より良く見せない。stored は demote の後＝カードに残ったもの）。
     → og_image.fill の数（touched：写真を入れた記事）"""
     t = tally if tally is not None else {}
@@ -327,6 +330,7 @@ def photo_tally(brows, og, tally=None, fill=None, now=None, deadline=None):
     t["page"] += mid["img"] - pre["img"]
     t["demoted"] += k
     t["wrapped"] += mid["wrapped"]
+    t["wait"] += mid["wait"]
     t["stored"] += post["stored"]
     return got
 
@@ -334,7 +338,7 @@ def photo_tally(brows, og, tally=None, fill=None, now=None, deadline=None):
 def tally_line(t):
     """photo_tally の 1 行（数だけ：名前・題・網址は出さない。Actions のログは公開）。"""
     return (f"お客さまの写真：記事 {t['n']} 本・写真あり {t['img']} 本（記事集めで {t['feed']}／ページ作りで {t['page']}）"
-            f"・整理待ちへ回した {t['demoted']} 本・包みのまま {t['wrapped']} 本・置き場に入った {t['stored']} 本")
+            f"・整理待ちへ回した {t['demoted']} 本・包みのまま {t['wrapped']} 本・防盗链の写真の置き場待ち {t.get('wait', 0)} 本・置き場に入った {t['stored']} 本")
 
 
 def _eq(col, v):
@@ -386,7 +390,8 @@ def write_back(brows, latest, rows, og, touched, acct, put):
 def mask_saved(brows, want):
     """防盗链の写真（記事に img_ref＝Referer の印がある：userfeed.Media が SAVED を取った。2026-11-19 店長の決定 1A）を画面に出す形にする。
     置き場（photo_store）に入ったものは置き場の網址（Pages の /p/<指紋>）に替える＝どの描き方でも元のサイトへ直に読みに行かない。
-    まだのものは写真を外す（読む人のブラウザでは 403 になる。今までの落ち先＝備えの絵・出典のアイコン・札へ）。入った後の作り直しで本物に替わる。
+    まだのものは写真を外して _wait の印を付ける（読む人のブラウザでは 403 になる。写真なしとして og_image.demote が整理待ちへ回し、
+    og_image.fill・find_images は探し直さない）。入った後の作り直しで本物に替わる。fill・demote の前に呼ぶ（見直し 2）。
     どちらも want（{指紋: [網址, Referer]}）に入れ、imgs.json で photo_store へ渡す（入ったものも：使っている印＝14 日で消さない）。
     → 写しの brows（記事集めの行・全員で共有の行は書き換えない。書き戻し write_back の後に呼ぶ）"""
     def fix(s):
@@ -395,7 +400,7 @@ def mask_saved(brows, want):
         u = s["image"]
         want[photo_store.key(u)] = [u, s["img_ref"]]
         got = photo_store.stored(u)
-        return {k: v for k, v in s.items() if k != "img_ref"} | {"image": got or None}
+        return {k: v for k, v in s.items() if k != "img_ref"} | ({"image": got} if got else {"image": None, "_wait": True})
     out = {}
     for k, r in (brows or {}).items():
         if not isinstance(r, dict):
@@ -672,13 +677,13 @@ def main(argv):
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
             urows = {norm(r["item"]): r for r in rows or []}
             brows = board_rows(follows, latest, urows)
+            brows = mask_saved(brows, saved)   # 防盗链の写真：置き場に入ったものだけ出す。まだのものは写真なしとして demote へ（写しで・fill の前）
             # 写真のない記事に記事のページの代表の写真（2026-11-08 店長「我一定要图」。記事集めで取れなかった残りの最後の手）→ それでも無い記事は
             # カードにせず「整理待ち」へ（カードには必ず写真）。前と後で数える（photo_tally）。取れた写真は記事に書き戻す（write_back）
             got = photo_tally(brows, og, photos, deadline=og_deadline)
             og_image.add(ogt, got)
             w = write_back(brows, latest, urows, og, got["touched"], acct, _supa)
             back = [a + b for a, b in zip(back, w)]
-            brows = mask_saved(brows, saved)   # 防盗链の写真：置き場に入ったものだけ出す（書き戻しの後・写しで）
             html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
                           settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
             if design_moved(follows, _supa):   # 作っている間に小元素の回（board_added.yml の速い道）が config を書いた：今の config で作り直す（古い config で上書きして小元素を消さない）
