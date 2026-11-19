@@ -315,6 +315,8 @@ def fake_images(ctx):
     def h(route):
         if route.request.resource_type == "image":
             return route.fulfill(status=200, content_type="image/png", body=_fake_png(route.request.url))
+        if route.request.url.split("?")[0].endswith("version.json"):   # 自動更新（LIVE_JS）が版の違いで開き直すと数えている途中のページが消える
+            return route.abort()
         if route.request.url.startswith(("http://127.0.0.1", "http://localhost")):
             return route.continue_()
         return route.abort()   # 外（字体・supabase など）は読まない：揺れの元を断つ
