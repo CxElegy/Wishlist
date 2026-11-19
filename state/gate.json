@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-19T19:18:20+00:00",
+ "checked": "2026-11-19T19:33:51+00:00",
  "fired": {
-  "at": "2026-11-19T18:14:31+00:00",
+  "at": "2026-11-19T19:33:51+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -49,24 +49,29 @@
    "edit": 14
   },
   "2026-11-20": {
-   "edit": 2
+   "edit": 3
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-19T18:14:31+00:00",
+    "at": "2026-11-19T19:33:51+00:00",
     "attempts": 1,
     "day": "2026-11-20",
-    "prog": 62,
-    "resp": "cse_01W4x6f9DZoRA7R7ig96uUoX",
-    "sig": "59598fbd625a"
+    "prog": 66,
+    "resp": "",
+    "sig": "10b56f7a72f0"
    },
    "items": [
     "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
+    "ILLIT",
     "MMORPG 新作",
+    "The Mandalorian",
     "dota2",
     "gelato pique",
     "lib:BTS",
@@ -76,7 +81,14 @@
     "lib:YOASOBI",
     "lib:サッカー日本代表",
     "lib:大相撲",
-    "lib:大谷翔平"
+    "lib:大谷翔平",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-19T18:37:22+00:00",
    "last_error": {
@@ -86,35 +98,41 @@
    "need": true,
    "prog": 66,
    "prog_day": "2026-11-20",
-   "ripe": [],
-   "sig": "e63781e95042",
+   "ripe": [
+    "GTA 6",
+    "dota2",
+    "gelato pique",
+    "漫威电影"
+   ],
+   "sig": "10b56f7a72f0",
    "token_cap": 1000000,
    "tokens_today": 103890,
-   "why": "整理待ちの記事 102 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 149 件（25 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
+   "items": [
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
     "FROM",
     "GTA 6",
     "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "Astrae Oratio",
+    "绝区零",
+    "周杰伦"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "need": true,
+   "sig": "7d72101261f1",
+   "waiting": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "Vaundy",
+    "あつ森",
+    "ぐでたま"
+   ],
+   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 5 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
