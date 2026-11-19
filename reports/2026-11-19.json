@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "edit_sig": "d1871fe88e88",
+ "edit_sig": "aa35083ac07e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -300,15 +300,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 4,
-     "source": "AOL",
-     "title": "5 Harry Potter Characters Who Deserve Bigger Roles In The HBO TV Series",
-     "url": "https://www.aol.com/articles/5-harry-potter-characters-deserve-221200000.html"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -339,6 +330,16 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cpRlT.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/en-us/entertainment/celebrities/hbo-s-harry-potter-reboot-is-about-to-take-one-iconic-scene-much-further/ar-AA2hHD7O",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "5 Harry Potter Characters Who Deserve Bigger Roles In The HBO TV Series",
+     "highlight": "",
+     "image": "https://hermes.media.static.aol.com/media/2026/11/18/b2fecc17-6867-35eb-893f-232a69589212/525e06a8-8dfe-471f-a5c9-dc01d15ccec5.jpg",
+     "image_via": "og:image",
+     "url": "https://www.aol.com/articles/5-harry-potter-characters-deserve-221200000.html",
      "weight": "normal"
     }
    ],

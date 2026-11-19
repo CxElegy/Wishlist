@@ -1129,6 +1129,12 @@
   "target": 720,
   "v": 3
  },
+ "https://hermes.media.static.aol.com/media/2026/11/18/b2fecc17-6867-35eb-893f-232a69589212/525e06a8-8dfe-471f-a5c9-dc01d15ccec5.jpg": {
+  "w": 1600,
+  "h": 898,
+  "target": 1280,
+  "v": 3
+ },
  "https://hermes.media.transform.aol.com/87b39707d7d6f4de7cd23344dd71e71b5cbce2ea/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/16/245fba71-85c7-3ea9-b2ce-cc782b41df09/acce73cf-3e97-4268-a25a-5282e10d280b.jpg": {
   "w": 1200,
   "h": 675,
@@ -4059,12 +4065,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.36
- },
- "https://www.bing.com/th?id=ONUT._mL0Vw68gCradEQxaJdRPg&pid=News&w=1200": {
-  "w": 700,
-  "h": 392,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
