@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-19T18:14:31+00:00",
+ "changed": true,
+ "checked": "2026-11-19T18:21:10+00:00",
  "fired": {
   "at": "2026-11-19T18:14:31+00:00",
   "results": {
@@ -72,13 +72,13 @@
     "dota2",
     "gelato pique",
     "lib:BTS",
+    "lib:F1",
     "lib:Mrs. GREEN APPLE",
     "lib:YOASOBI",
     "lib:サッカー日本代表",
-    "lib:大谷翔平",
-    "lib:宇宙・ロケット",
-    "lib:温泉",
-    "lib:生成AI"
+    "lib:原神",
+    "lib:大相撲",
+    "lib:大谷翔平"
    ],
    "last_batch": "2026-11-19T17:05:30+00:00",
    "last_error": {
@@ -92,7 +92,7 @@
     "Astrae Oratio",
     "The Mandalorian"
    ],
-   "sig": "59598fbd625a",
+   "sig": "186cdf2035ff",
    "token_cap": 1000000,
    "tokens_today": 54568,
    "why": "整理待ちの記事 105 件（15 版面・AI 編集まで版面に載らない）"
