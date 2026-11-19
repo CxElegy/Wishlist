@@ -195,7 +195,7 @@ function render(d){
   list.forEach(function(a){
     var c=a.status!=='working'?'d':a.quiet>=STALE?'s':a.quiet>=SLOW?'w':'';
     var r=el('div','ag');
-    var open=a.where==='cloud'&&a.session?' <a class="open" href="https://claude.ai/code/'+encodeURIComponent(a.session)+'" target="_blank" rel="noopener">開く</a>':'';
+    var open=/^session_\w+$/.test(a.session||'')?' <a class="open" href="https://claude.ai/code/'+encodeURIComponent(a.session)+'" target="_blank" rel="noopener">開く</a>':'';
     var min=a.status!=='working'?'<small>'+esc(a.status==='done'?'済':a.status==='failed'?'失敗':'止め')+'</small>':Math.round(a.quiet)+'<small> 分</small>';
     r.innerHTML='<span class="dot '+c+'" title="'+(c==='s'?'20 分 知らせなし':c==='w'?'10 分 知らせなし':'')+'"></span>'+
       '<div><b>'+esc(a.role)+'</b> <span class="tag '+(a.where==='pc'?'pc':'cloud')+'">'+(a.where==='pc'?'PC':'クラウド')+'</span> <span class="wh">'+esc(a.task)+'</span>'+open+'</div>'+
