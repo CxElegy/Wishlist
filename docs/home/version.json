@@ -1,14 +1,14 @@
 {
- "admin": "c7a7237e2e59",
- "admin-ai": "0abdd89e9ea2",
+ "admin": "3d986aaef4cd",
+ "admin-ai": "4e9ddf2652d0",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d9ced267"
+   "76611832"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "147e0943"
+   "3604a0f9"
   ]
  },
  "admin-boards": "98a954c2f6aa",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "623f55b86f37",
+ "admin-emblem": "08cf3d6c8ef4",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "07b4e6ea"
+   "9adebcea"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "56627da56379",
+ "admin-now": "f9a8fb3de013",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3869eaf4"
+   "7c4ae04f"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "1ff05678"
+   "4009f103"
   ]
  },
- "admin-system": "a32c980c8f67",
+ "admin-system": "5ea2dff06325",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "07655213"
+   "63414871"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "bfa1845c"
+   "a0721bc9"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "0cad05cd"
   ]
  },
- "index": "183aef36380b",
+ "index": "40248eef2564",
  "index_marks": {
   "front": [
    "トップ",
-   "5abd010b"
+   "4d5ded93"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "ff2b15c8"
+   "8bb0ec6d"
   ],
   "w-130724c0": [
    "猫用品",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "f1b59d1c"
+   "4312cfab"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "64402d18"
+   "9b2f8b86"
   ],
   "w-f303ad09": [
    "绝区零",
    "b4b9aa88"
   ]
  },
- "updated": "11.19 13:56",
+ "updated": "11.19 14:14",
  "wishlist": "c5b812629fba"
 }

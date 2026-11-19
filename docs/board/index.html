@@ -95,6 +95,8 @@ button,input,select{font:inherit;color:inherit}
 fieldset.now{margin:0 0 16px;border-color:var(--harness);padding:8px 12px 12px}
 fieldset.now legend{color:var(--harness);font-weight:700}
 fieldset.now legend .mix{font-weight:400;margin-left:6px}
+.conn{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:var(--dim);margin:0 0 8px}
+.conn .on{color:var(--harness)}.conn .off{color:var(--red)}.conn .miss{color:var(--lead)}
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .card{border:1px solid var(--line);padding:10px 12px 9px;display:flex;flex-direction:column;gap:5px;cursor:pointer;min-width:0;position:relative;overflow:hidden;isolation:isolate;
  animation:cardIn .5s cubic-bezier(.22,1,.36,1) both}
@@ -245,7 +247,7 @@ legend{padding:0 8px;color:var(--fg)}
  <div class="body" id="app" hidden>
   <div class="title"><b class="c-white">AGENTBOARD</b><b class="c-sonnet">SONNET BUILDS</b><b class="c-haiku">HAIKU SWARMS</b><b class="c-opus">OPUS ADVISES</b></div>
   <div class="legend"><span class="c-lead"><em>brain · lead</em></span><span class="c-haiku"><em>haiku · swarm</em></span><span class="c-sonnet"><em>sonnet · build</em></span><span class="c-harness"><em>harness · routing</em></span><span class="c-opus"><em>opus · advisor</em></span></div>
-  <fieldset class="now"><legend>now · claude <span id="nowmix" class="mix"></span> <span id="nowage" class="c-dim"></span></legend><div id="now"></div></fieldset>
+  <fieldset class="now"><legend>now · claude <span id="nowmix" class="mix"></span> <span id="nowage" class="c-dim"></span></legend><div class="conn" id="conn"></div><div id="now"></div></fieldset>
   <div class="grid">
    <aside class="adv" id="adv"></aside>
    <div class="center"><svg class="beams" id="beams" aria-hidden="true"></svg>
@@ -296,7 +298,7 @@ function gql(query){
 }
 var Q='fragment F on Tree{entries{name object{... on Blob{text}}}}'+
  'query{ab:repository(owner:"'+OWNER+'",name:"'+REPO+'"){'+
- 'live:refs(refPrefix:"refs/heads/live-",first:20){nodes{name target{... on Commit{committedDate file(path:"host.json"){object{... on Blob{text}}}}}}}'+
+ 'live:refs(refPrefix:"refs/heads/",query:"live-",first:30){nodes{name target{... on Commit{committedDate file(path:"host.json"){object{... on Blob{text}}}}}}}'+
  'agents:object(expression:"main:agents"){...F} inbox:object(expression:"main:inbox"){...F} outbox:object(expression:"main:outbox"){...F}'+
  'pcsum:object(expression:"main:pc/summary.json"){... on Blob{text}}}'+
  'wl:repository(owner:"'+OWNER+'",name:"'+SITE+'"){pullRequests(first:4,orderBy:{field:UPDATED_AT,direction:DESC}){nodes{number title state merged updatedAt commits(last:1){nodes{commit{statusCheckRollup{state}}}}}}}}';
@@ -394,7 +396,15 @@ function makeCard(key){
   e.onpointermove=function(ev){var r=e.getBoundingClientRect();e.style.setProperty('--mx',(ev.clientX-r.left)+'px');e.style.setProperty('--my',(ev.clientY-r.top)+'px')};
   return {el:e,first:true};
 }
+function renderConn(M,now){
+  // つながっている機械：届いている＝●、6 分 来ない＝○、PC がまだ一度も来ていない＝やり方
+  var hs=M.hosts.slice().sort(function(a,b){return (a.tag==='pc'?0:1)-(b.tag==='pc'?0:1)});
+  var html=hs.map(function(h){return '<span class="'+(h.on?'on':'off')+'">'+(h.on?'●':'○')+' '+esc(h.host)+' · '+(h.on?Math.max(0,Math.round((now-h.t)/1000))+' 秒前':dur((now-h.t)/60e3)+' 来ていない')+'</span>'});
+  if(!hs.some(function(h){return h.tag==='pc'}))html.push('<span class="miss">○ pc · まだつながっていない（PC の Claude に「setup_pc.ps1 を流して」）</span>');
+  setHTML($('conn'),html.join(''));
+}
 function renderNow(M,now){
+  renderConn(M,now);
   var box=$('now'), rank={working:0,ask:1,quiet:2,yours:3,idle:4};
   var ss=M.sessions.slice().sort(function(a,b){var ra=a.on?(rank[a.state]||0):5, rb=b.on?(rank[b.state]||0):5;return (ra-rb)||(ts(b.t1)-ts(a.t1))});
   var mix={};ss.forEach(function(s){var f=famc(s.fam);mix[f]=(mix[f]||0)+1});

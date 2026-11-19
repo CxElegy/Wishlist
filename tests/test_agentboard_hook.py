@@ -35,13 +35,20 @@ class Hook(unittest.TestCase):
             time.sleep(0.3)
             self.assertTrue(hook.alive(pid))
             self.assertEqual(hook.start(board, str(ROOT)), "running")      # 2 つ目は起こさない
-            self.assertIn(b"--wishlist", pathlib.Path(f"/proc/{pid}/cmdline").read_bytes())
+            cmd = pathlib.Path(f"/proc/{pid}/cmdline").read_bytes()
+            self.assertIn(b"--wishlist", cmd)
+            self.assertIn(b"while :", cmd)                                   # 落ちても起き直す輪の中で動く
         finally:
             hook.CANDIDATES = old
             try:
-                os.kill(pid, 9)
+                os.killpg(pid, 9)            # 見守りの輪（bash）と中の集め係をまとめて
             except (OSError, UnboundLocalError):
                 pass
+
+    def test_agent_log_keeps_board(self):
+        """道具を使うたびの記録の hook（agent_log.py）からも、止まっていたら起こし直す"""
+        s = (ROOT / ".claude" / "hooks" / "agent_log.py").read_text(encoding="utf-8")
+        self.assertIn("keep_board()", s)
 
     def test_registered_in_settings(self):
         s = (ROOT / ".claude" / "settings.json").read_text(encoding="utf-8")

@@ -38,9 +38,12 @@ def start(board, project):
             return "running"
     except (OSError, ValueError):
         pass
-    args = [sys.executable or "python3", str(board / "collect.py"), "--loop", "5"]
+    py = sys.executable or "python3"
+    cmd = f'"{py}" "{board / "collect.py"}" --loop 5'
     if project and (pathlib.Path(project) / "harness").is_dir():
-        args += ["--wishlist", str(project)]
+        cmd += f' --wishlist "{project}"'
+    # 見守りの輪：集め係が落ちても 5 秒で起き直す（2026-11-19：worker の再起動のあと 19 分 止まっていた）
+    args = ["bash", "-c", f"while :; do {cmd}; sleep 5; done"]
     with open(board / ".collector.log", "ab") as log:
         p = subprocess.Popen(args, cwd=str(board), stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
     pidf.write_text(str(p.pid))
