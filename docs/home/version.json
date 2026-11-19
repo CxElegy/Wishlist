@@ -1,6 +1,6 @@
 {
  "admin": "2147b6e37c21",
- "admin-ai": "4c496568fd5a",
+ "admin-ai": "49c93cc44c9a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "5d4597c1"
+   "d43e718e"
   ]
  },
  "admin-boards": "14375f861403",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "5fd336cf2313",
+ "admin-emblem": "69d7b7bcf21a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "0b9b7219"
+   "64bacb27"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "f8ef539443bf",
+ "admin-now": "7df962a19037",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b067fd84"
+   "0b36e152"
   ]
  },
- "admin-system": "02fa328dafeb",
+ "admin-system": "1dd6e7d36413",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "8bca0e7b"
+   "6c48c1f0"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "7cc3ffe8"
+   "5650ea0e"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "c310c860"
   ]
  },
- "index": "0d0b33b86153",
+ "index": "d86475c9a272",
  "index_marks": {
   "front": [
    "トップ",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "2189f6e6"
+   "0bf9df17"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "b4b9aa88"
   ]
  },
- "updated": "11.19 16:38",
+ "updated": "11.19 17:19",
  "wishlist": "c5b812629fba"
 }
