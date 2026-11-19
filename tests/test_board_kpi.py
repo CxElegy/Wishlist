@@ -24,8 +24,8 @@ def board(path, name="作品", **mins):
     return {"name": name, "path": path, "seen": {k: at(v) for k, v in mins.items()}}
 
 
-GOOD_C = dict(picked=0, follow=2, board=2, raw=15, pending=25, emblem=4, edited=300, page=15, page_emblem=8)
-GOOD_B = dict(picked=0, follow=2, raw=15, emblem=0, page=15)
+GOOD_C = dict(picked=0, follow=2, board=2, raw=15, pending=25, emblem=4, edited=300, page=15, page_emblem=8, photo=16)
+GOOD_B = dict(picked=0, follow=2, raw=15, emblem=0, page=15, photo=16)
 GOOD_A = dict(picked=0, page=10)
 
 
@@ -74,7 +74,7 @@ class Kpi(unittest.TestCase):
         self.assertIn(("emblem", "出ないまま"), [(x["stage"], x["why"]) for x in j["red"]])
 
     def test_unseen_stage_waits_until_target_then_red(self):
-        c = {k: v for k, v in GOOD_C.items() if k not in ("emblem", "page_emblem", "edited")}
+        c = {k: v for k, v in GOOD_C.items() if k not in ("emblem", "page_emblem", "edited", "photo")}
         code, _, j = self.report([[board("C", **c)]], now_min=3)
         self.assertEqual((code, j["red"]), (0, []))   # まだ 3 分：5 分の目標には間がある
         code, _, j = self.report([[board("C", **c)]], now_min=6)
@@ -88,6 +88,27 @@ class Kpi(unittest.TestCase):
         self.assertEqual((code, j["red"]), (0, []))
         code, _, j = self.report([[board("B", **{**GOOD_B, "emblem": 20})]])   # B で小元素がまだ無かった（足した時点で既にあるはず）
         self.assertEqual([(x["path"], x["stage"]) for x in j["red"]], [("B", "emblem")])
+
+    def test_photo_stage_counts_real_photos_in_the_board(self):
+        """本物の写真（記事自身の写真 data-o="1"）が版面に min(3, カード数) 枚。備えの絵（data-o="0"）・ほかの版面の写真は数えない。"""
+        def card(o):
+            return f'<article class="card a c3"><img src="x" alt="" data-e="s" data-o="{o}"></article>'
+        html = ('<section class="sec" data-k="甲">' + card(1) + card(1) + card(0) + card(1) + '</section>'
+                '<section class="sec" data-k="乙">' + card(1) + card(0) + card(0) + '</section>'
+                '<section class="sec" data-k="丙">' + card(1) + '</section>')
+        self.assertEqual(board_kpi.page_photos(html, "甲"), (4, 3))
+        self.assertTrue(board_kpi.photo_ok(html, "甲"))
+        self.assertFalse(board_kpi.photo_ok(html, "乙"))   # 3 枚のうち 1 枚だけ本物
+        self.assertTrue(board_kpi.photo_ok(html, "丙"))    # カード 1 枚なら 1 枚で足りる
+        self.assertFalse(board_kpi.photo_ok(html, "丁"))
+        code, _, j = self.report([[board("C", **{k: v for k, v in GOOD_C.items() if k != "photo"})]], now_min=21)
+        self.assertEqual([x["stage"] for x in j["red"]], ["photo"])   # 経路 C は 20 分未満
+
+    def test_photo_mix_in_report(self):
+        b = {**board("C", **GOOD_C), "photos": {"n": 10, "img": 7, "wrapped": 2, "waiting": 3}}
+        code, out, j = self.report([[b]])
+        self.assertEqual(j["photos"]["C"], {"n": 10, "img_pct": 70, "wrapped_pct": 20, "waiting_pct": 30})
+        self.assertIn("写真 経路 C", out)
 
     def test_page_has_emblem(self):
         html = '<section class="sec" data-k="甲"><div class="emb ring-accent"></div></section><section class="sec" data-k="乙"><p>x</p></section>'

@@ -55,13 +55,14 @@ STAGES = [   # (キー, 名前, 目標の分。経路 C のとき)
     ("edited", "AI 編集の見出し（board_stories.stories）", 480),
     ("page", "本人のページに載る", 20),
     ("page_emblem", "小元素が本人のページに載る", 10),   # 小元素が出たあとの作り直し（数分）。ページの版面の中に絵がある
+    ("photo", "本物の写真が版面に載る", 20),   # 2026-11-19 店長「点検は、本物の写真が取れるかどうかを含めること」：版面の中に記事自身の写真（data-o="1"）が min(3, カード数) 枚
 ]
 TARGET = {k: m for k, _, m in STAGES}
 # 経路ごとの目標（分）と、赤かどうかを見る段。A は店長の号の写し、B はライブラリにある版面（follows と記事だけ新しい）なので、
 # 小元素は足した時点で既にある（B は 1 分未満。A は店長の号の写しで page と同時に揃うので小元素の段は見ない）。
 TARGETS = {
     "C": dict(TARGET),
-    "B": {"picked": 1, "follow": 5, "raw": 20, "emblem": 1, "page": 20},
+    "B": {"picked": 1, "follow": 5, "raw": 20, "emblem": 1, "page": 20, "photo": 20},
     "A": {"picked": 1, "page": 15},
 }
 RED_AFTER_MIN = 24 * 60   # これだけたっても見えない段は「出ないまま」
@@ -175,6 +176,42 @@ def page_has_emblem(html, name):
     return 'class="emb ' in html[i:j if j > 0 else len(html)]
 
 
+PHOTO_MIN = 3   # 版面に本物の写真がこの枚数（カードがそれより少なければカードの数）載れば photo の段
+
+
+def section_of(html, name):
+    """本人のページの、この版面の <section> の中身（無ければ ""）。"""
+    i = html.find(f'data-k="{name}"')
+    if i < 0:
+        return ""
+    j = html.find("<section", i)
+    return html[i:j if j > 0 else len(html)]
+
+
+def page_photos(html, name):
+    """版面の (カード数, 記事自身の写真の数)。写真は render._pic の img[data-e="s"][data-o="1"]（備えの絵・作品の表紙は data-o="0"）。"""
+    import re
+    sec = section_of(html, name)
+    cards = sec.count('<article class="card')
+    real = len(re.findall(r'<img\b(?=[^>]*\bdata-e="s")(?=[^>]*\bdata-o="1")[^>]*>', sec))
+    return cards, real
+
+
+def photo_ok(html, name):
+    cards, real = page_photos(html, name)
+    return cards > 0 and real >= min(PHOTO_MIN, cards)
+
+
+def photo_mix(bid):
+    """ライブラリの版面のいちばん新しい日の整理待ち（board_stories.pending）の写真の内訳（DB は PC の psql で読むだけ）：
+    {n 記事, img 写真あり, wrapped 包みのまま, waiting 写真なしで探し中（img_why の印＝間をあけて試し直す。回数で諦めないので「諦めた」は無い）}"""
+    r = q(f"select count(*), count(*) filter (where coalesce(e->>'image','')<>''), count(*) filter (where e->>'url' like '%news.google.com%'), "
+          f"count(*) filter (where coalesce(e->>'image','')='' and e ? 'img_why') from public.board_stories s, jsonb_array_elements(coalesce(s.pending,'[]')) e "
+          f"where s.board_id={int(bid)} and s.day=(select max(day) from public.board_stories where board_id={int(bid)})")
+    n, img, w, wait = (int(x or 0) for x in (r[0] if r else (0, 0, 0, 0)))
+    return {"n": n, "img": img, "wrapped": w, "waiting": wait}
+
+
 def observe(run):
     """今の状態を見て、まだ記録していない段で「できている」ものに今の時刻（DB に時刻があればその時刻）を付ける。"""
     t = now()
@@ -207,15 +244,19 @@ def observe(run):
         ub = q(f"select coalesce(jsonb_array_length(stories),0), updated_at from public.user_boards where account={lit(a)} and item={lit(nm)}")
         if ub and "raw" not in s and int(ub[0][0] or 0) > 0:
             s["raw"] = ub[0][1] or iso(t)
-        if page_at and page_at > parse(run["t0"]) and ("page" not in s or ("page_emblem" not in s and "emblem" in s)):
+        if page_at and page_at > parse(run["t0"]) and ("page" not in s or ("page_emblem" not in s and "emblem" in s) or "photo" not in s):
             if html is None:
                 html = page_html(a)
             if f'data-k="{nm}"' in html or f'>{nm}<' in html:
                 s.setdefault("page", iso(page_at))
                 if "emblem" in s and page_has_emblem(html, nm):
                     s["page_emblem"] = iso(page_at)
-        if b["path"] == "A":   # 店長と同じ名前：小元素・AI 編集は店長の号のもの（本人のページに載った時点でそろう）
-            for k in ("emblem", "edited", "pending"):
+                if "photo" not in s and photo_ok(html, nm):
+                    s["photo"] = iso(page_at)
+        if b.get("board_id") and b["path"] != "A":
+            b["photos"] = photo_mix(b["board_id"])
+        if b["path"] == "A":   # 店長と同じ名前：小元素・AI 編集・写真は店長の号のもの（本人のページに載った時点でそろう）
+            for k in ("emblem", "edited", "pending", "photo"):
                 if k not in s and "page" in s:
                     s[k] = s["page"]
     run["checked"] = iso(t)
@@ -223,7 +264,7 @@ def observe(run):
 
 
 def done(run):
-    need = {"A": ["picked", "page"], "B": ["picked", "follow", "raw", "page"], "C": [k for k, _, _ in STAGES]}
+    need = {"A": ["picked", "page"], "B": ["picked", "follow", "raw", "page", "photo"], "C": [k for k, _, _ in STAGES]}
     return all(all(k in b["seen"] for k in need[b["path"]]) for b in run["boards"])
 
 
@@ -317,6 +358,22 @@ def judge(run, t=None):
     return red
 
 
+def photo_summary(files):
+    """整理待ちの写真の内訳（observe が DB から数えた最後の値）を経路ごとに足して割合に：写真あり／包みのまま／探し中（回数で諦めない）。"""
+    mix = {}
+    for f in files:
+        for b in json.loads(f.read_text(encoding="utf-8"))["boards"]:
+            for k, v in (b.get("photos") or {}).items():
+                mix.setdefault(b["path"], {}).setdefault(k, 0)
+                mix[b["path"]][k] += int(v or 0)
+    out = {}
+    for p, m in mix.items():
+        n = m.get("n") or 0
+        if n:
+            out[p] = {"n": n, **{f"{k}_pct": round(100 * m.get(k, 0) / n) for k in ("img", "wrapped", "waiting")}}
+    return out
+
+
 def cmd_report(a):
     """各段の分と目標の比べ。目標を割った段・出ないままの段があれば 1 行ずつ出して終了コード 1（--no-fail で 0）。
     引数なしは直近 --days 日（既定 3）の回だけ（前の仕組みのときの遅い回で赤のままにしない）。"""
@@ -342,8 +399,11 @@ def cmd_report(a):
         summ.setdefault(p, {})[k] = {"n": len(v), "p50": v[len(v) // 2], "max": v[-1], "target": tg if tg is not None else TARGET[k],
                                     "ok": v[-1] < tg if tg is not None else None}   # None＝この経路では目標を置かない段
     print(json.dumps(summ, ensure_ascii=False, indent=1))
+    mix = photo_summary(files)
+    for p, m in sorted(mix.items()):
+        print(f"写真 経路 {p}：記事 {m['n']} 本・写真あり {m['img_pct']}%・包みのまま {m['wrapped_pct']}%・探し中 {m['waiting_pct']}%")
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"at": iso(now()), "boards": summ, "runs": len(files), "red": red}, ensure_ascii=False, indent=1), encoding="utf-8")
+    OUT.write_text(json.dumps({"at": iso(now()), "boards": summ, "runs": len(files), "red": red, "photos": mix}, ensure_ascii=False, indent=1), encoding="utf-8")
     for x in red:
         print(f"赤 経路 {x['path']} {x['run']} {x['name']} {x['stage']}：{x['why']} {x['minutes']:g} 分（目標 {x['target']} 分未満）")
     if red and not a.no_fail:
