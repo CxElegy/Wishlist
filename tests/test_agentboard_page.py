@@ -98,6 +98,18 @@ class Browser(unittest.TestCase):
         self.assertGreater(m["cloud"], 0)                     # PC とクラウドの係が同じ並びに
         self.assertGreaterEqual(m["log"], 10)
         self.assertTrue(m["advLeft"])                         # advisor は左の縦の列
+        # いまの Claude：会話ごとに状態・最後に頼んだこと・いまの道具。押すと流れが開く
+        rows = p.locator("#now .ss")
+        self.assertEqual(rows.count(), 6)
+        self.assertEqual(p.locator("#now .ss.st-working").count(), 2)
+        for cls in ("st-ask", "st-quiet", "st-yours", "st-idle"):
+            self.assertEqual(p.locator("#now .ss." + cls).count(), 1, cls)
+        first = rows.first
+        self.assertIn("作業中", first.inner_text())
+        self.assertTrue(first.locator(".tl").is_hidden())
+        first.locator(".ttl").click()
+        self.assertTrue(first.locator(".tl").is_visible())
+        self.assertIn("道具がエラー", first.locator(".tl").inner_text())
         p.fill("#text", "見本の伝言")
         p.press("#text", "Enter")
         self.assertIn("見本の伝言", p.inner_text("#msgs"))
@@ -119,7 +131,13 @@ class Browser(unittest.TestCase):
         pc = host("pc", "pc", now, [ag("fix:T-0242", "Sonnet 5.5", "sonnet", "running", now), ag("check:T-0242", "Haiku 5.5", "haiku", "running", now, quiet=30)],
                   site={"main": {"sha": "abc1234", "t": now - 600, "msg": "出刊"}, "backlog": {"open": 7, "doing": 1, "ask": 2, "top": "写真の下の空き"}},
                   harness={"queue": {"open": 7, "claimed": 1, "waiting": 2}, "choices": [{"task": "T-0236", "question": "目次の色", "url": "https://example.com/c"}]})
-        cl = host("cloud", "cloud-3136e785", now, [ag("写真の出どころ調べ", "Opus 5.5", "opus", "done", now, result="直すのは高さ")], brain_model="Opus 5.5")
+        cl = host("cloud", "cloud-3136e785", now, [ag("写真の出どころ調べ", "Opus 5.5", "opus", "done", now, result="直すのは高さ")], brain_model="Opus 5.5",
+                  sessions=[{"id": "3136e785", "project": "Wishlist", "title": "AgentBoard の会話", "model": "Opus 5.5", "fam": "opus", "state": "working",
+                             "t1": now - 3, "turn_t0": now - 300, "turn_tools": 9, "action": "書き換える：docs/board/index.html", "prompt": "実時間で見えるように",
+                             "said": "", "sub": 0, "link": "session_01Live", "events": [{"t": now - 3, "text": "書き換える：docs/board/index.html", "err": False}]}])
+        old = host("pc", "pc", now - 3600, [], sessions=[{"id": "50b60877", "project": "Claude", "title": "古い PC の会話", "model": "Fable 5.2", "fam": "fable",
+                                                         "state": "working", "t1": now - 3600, "turn_tools": 1, "action": "x", "prompt": "y", "said": "", "sub": 0, "events": []}])
+        old["host"], old["ts"] = "pc-old", now - 3600              # 1 時間 届いていない機械
         cl["brain"].update(link="session_01Cloud", name="クラウドの主")          # ab.py whoami の名札
         seen = {"q": 0, "put": None}
 
@@ -130,7 +148,7 @@ class Browser(unittest.TestCase):
                 return route.fulfill(json={"data": {"ab": {"name": "agentboard"}}})
             node = lambda h: {"name": "live-" + h["host"], "target": {"committedDate": "x", "file": {"object": {"text": json.dumps(h, ensure_ascii=False)}}}}
             tree = lambda rows: {"entries": [{"name": f"{i}.json", "object": {"text": json.dumps(r, ensure_ascii=False)}} for i, r in enumerate(rows)]}
-            route.fulfill(json={"data": {"ab": {"live": {"nodes": [node(pc), node(cl)]},
+            route.fulfill(json={"data": {"ab": {"live": {"nodes": [node(pc), node(cl), node(old)]},
                                                 "agents": tree([{"role": "主の会話", "task": "brain", "note": "伝言を読んだ", "where": "cloud", "status": "working", "ts": now - 60, "started": now - 600, "session": "session_01AbC"}]),
                                                 "inbox": tree([{"t": 1, "text": "写真もっと大きく", "to": "both"}]), "outbox": tree([{"t": 2, "re": "1", "text": "了解", "who": "PC の BRAIN"}]), "pcsum": None},
                                          "wl": {"pullRequests": {"nodes": [{"number": 1111, "title": "直す", "state": "OPEN", "merged": False, "updatedAt": "x",
@@ -150,6 +168,13 @@ class Browser(unittest.TestCase):
         self.assertEqual(p.locator("#agents .ag.stuck").count(), 1)                    # 30 分 動かない Haiku
         self.assertEqual(p.locator("#agents a.open").count(), 1)                       # session_ の会話だけ「開く」
         self.assertIn("pc,cloud-3136e785", p.inner_text("#status"))
+        now_rows = p.locator("#now .ss")
+        self.assertEqual(now_rows.count(), 2)
+        self.assertIn("実時間で見えるように", now_rows.first.inner_text())                  # 最後に頼んだこと
+        self.assertIn("書き換える：docs/board/index.html", now_rows.first.inner_text())     # いまの道具
+        self.assertEqual(now_rows.first.locator("a.open").get_attribute("href"), "https://claude.ai/code/session_01Live")
+        self.assertIn("届いていない", now_rows.nth(1).inner_text())                         # 止まった機械の会話は「作業中」と言わない
+        self.assertIn("秒前に届いた", p.inner_text("#nowage"))
         self.assertIn("クラウドの主", p.inner_text("#lead"))                         # BRAIN の箱に会話の名前と「開く」
         self.assertEqual(p.locator("#lead a.open").get_attribute("href"), "https://claude.ai/code/session_01Cloud")
         p.fill("#text", "AgentBoard 見えた")

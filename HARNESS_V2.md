@@ -170,7 +170,8 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 - **令牌は 1 回で**：画面の「GitHub で令牌を作る」は名前・期限・Contents の書き込みを入れた GitHub の作成ページ（template URL）。店長が手で選ぶのは Repository access の agentboard だけ。
 - **店長の伝言**：画面の `owner $` → `inbox/`（宛先：両方・cloud・pc）。BRAIN は `ab.py inbox` で読み、`ab.py reply <t> "返事" --who "クラウドの BRAIN"` で返す。
 - 状態：作業中／完了／失敗／**15 分 記録が増えない＝止まっている（赤）**。機械の 1 枚が 6 分 来なければ、その機械の作業中の係も赤。2 時間より前に終わった係は「+N 済み」。
-- 画面は 15 秒ごと（タブが隠れている間は読まない）に GraphQL 1 回：live-* の全部・main の agents/inbox/outbox・Wishlist の PR と CI。
+- 画面は 5 秒ごと（タブが隠れている間は読まない）に GraphQL 1 回：live-* の全部・main の agents/inbox/outbox・Wishlist の PR と CI。集め係は 5 秒ごとに見て、変わったら push（8 秒に 1 回まで）＝だいたい 10 秒遅れ。
+- **now · claude**（2026-11-19，店長：Claude がいま何をしているかを実時間で）：凡例のすぐ下に、PC とクラウドの会話ごとに 1 行。状態（作業中・選んで＝AskUserQuestion で待っている・動きなし＝作業の途中で 15 分 記録が増えない・あなたの番＝返事を終えた・休み＝30 分）、店長が最後に頼んだこと（`›`）、いまの道具（`▸`）か最後に言ったこと（`✓`）、この回の時間と道具の数、動いている係の数。押すとその会話の最近 10 の道具の流れ。機械から 6 分 届かなければ「○ 届いていない」。
 - 試験：Wishlist `tests/test_agentboard_page.py`（GitHub を差し替えて読む・合わせる・伝言・令牌切れ）・`tests/test_agentboard_hook.py`、agentboard `tests/test_collect.py`・`tests/test_ab.py`。
 
 ## まだ入れていないもの（次の段）

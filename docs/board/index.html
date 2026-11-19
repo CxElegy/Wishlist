@@ -80,6 +80,33 @@ button,input,select{font:inherit;color:inherit}
 .back{border:1px solid var(--lead);width:460px;max-width:100%;margin-top:18px;padding:10px 14px}
 .back h4{margin:0 0 6px;color:var(--lead);text-align:center;font-size:12.5px}
 .back div{font-family:'Noto Sans JP',var(--mono);font-size:12px;overflow-wrap:anywhere}
+/* いまの Claude（会話ごと・5 秒ごと） */
+fieldset.now{margin:0 0 16px;border-color:var(--harness)}
+fieldset.now legend{color:var(--harness);font-weight:700}
+.ss{border-top:1px dashed var(--line);padding:7px 2px 6px;cursor:pointer}
+.ss:first-child{border-top:0}
+.ss .l1{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px}
+.ss .stt{min-width:118px;font-weight:700;white-space:nowrap}
+.ss .ttl{color:var(--white);font-weight:700;font-family:'Noto Sans JP',var(--mono);font-size:12.5px;overflow-wrap:anywhere}
+.ss .tg{color:var(--dim);font-size:11px;border:1px solid var(--line);padding:0 5px}
+.ss .tm{color:var(--dim);font-size:11.5px;margin-left:auto;white-space:nowrap}
+.ss .l2,.ss .l3{padding-left:128px;font-family:'Noto Sans JP',var(--mono);font-size:12px;overflow-wrap:anywhere}
+.ss .l2{color:var(--lead)}
+.ss .l3{color:var(--fg)}
+.ss .l3.act{color:var(--white)}
+.ss .tl{padding:4px 0 2px 128px}
+.ss .tl div{display:grid;grid-template-columns:62px 1fr;gap:8px;font-size:12px;font-family:'Noto Sans JP',var(--mono)}
+.ss .tl .err{color:var(--red)}
+.ss a.open{color:var(--dim);font-size:11px;text-decoration:none;border-bottom:1px dotted var(--dim)}
+.st-working .stt{color:var(--harness)}
+.st-working .stt i{display:inline-block;animation:pulse 1.6s ease-in-out infinite;font-style:normal}
+.st-ask .stt{color:var(--lead)}
+.st-quiet .stt{color:var(--red)}
+.st-yours .stt{color:var(--haiku)}
+.st-idle .stt,.st-off .stt{color:var(--dim)}
+.st-idle .ttl,.st-off .ttl{color:var(--fg);font-weight:400}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.st-working .stt i{animation:none}}
 /* 下の欄 */
 fieldset{border:1px solid var(--line);margin:16px 0 0;padding:6px 12px 10px;min-width:0}
 legend{padding:0 8px;color:var(--fg)}
@@ -131,6 +158,8 @@ legend{padding:0 8px;color:var(--fg)}
  .log .r{grid-template-columns:62px 1fr}
  .log .r .tx{grid-column:2}
  .site{grid-template-columns:1fr}
+ .ss .l2,.ss .l3,.ss .tl{padding-left:0}
+ .ss .tm{margin-left:0}
  .deleg::before{left:0;right:0}
 }
 </style></head>
@@ -153,6 +182,7 @@ legend{padding:0 8px;color:var(--fg)}
  <div class="body" id="app" hidden>
   <div class="title"><b class="c-white">AGENTBOARD</b><b class="c-sonnet">SONNET BUILDS</b><b class="c-haiku">HAIKU SWARMS</b><b class="c-opus">OPUS ADVISES</b></div>
   <div class="legend"><span class="c-lead"><em>brain · lead</em></span><span class="c-haiku"><em>haiku · swarm</em></span><span class="c-sonnet"><em>sonnet · build</em></span><span class="c-harness"><em>harness · routing</em></span><span class="c-opus"><em>opus · advisor</em></span></div>
+  <fieldset class="now"><legend>now · claude <span id="nowage" class="c-dim"></span></legend><div id="now"></div></fieldset>
   <div class="grid">
    <aside class="adv" id="adv"></aside>
    <div class="center">
@@ -178,7 +208,7 @@ legend{padding:0 8px;color:var(--fg)}
 <script>
 (function(){
 'use strict';
-var OWNER='cxelegy', REPO='agentboard', SITE='Wishlist', KEY='agentboard.token', POLL=15000;
+var OWNER='cxelegy', REPO='agentboard', SITE='Wishlist', KEY='agentboard.token', POLL=5000;
 var STUCK=15, ONLINE=6, RECENT_H=2;
 var $=function(id){return document.getElementById(id)};
 var demo=/[?&]demo\b/.test(location.search);
@@ -220,11 +250,12 @@ function load(){
 
 // ---- 合わせる（PC とクラウドの機械ごとの 1 枚 → 1 つの画面） ----
 function merge(d,now){
-  var M={brains:[],agents:[],events:[],models:{},opus:{calls:0,tokens:0,active:false,recent:[]},pending:[],route:null,site:null,harness:null,older:0,hosts:[]};
+  var M={sessions:[],brains:[],agents:[],events:[],models:{},opus:{calls:0,tokens:0,active:false,recent:[]},pending:[],route:null,site:null,harness:null,older:0,hosts:[]};
   (d.hosts||[]).forEach(function(h){
     var t=ts(h.ts||h.at), on=now-t<ONLINE*60e3, tag=h.kind==='pc'?'pc':'cloud';
     if(now-t>24*3600e3)return;
     M.hosts.push({host:h.host,tag:tag,on:on,t:t});
+    (h.sessions||[]).forEach(function(s){M.sessions.push(Object.assign({tag:tag,on:on,host:h.host,hostT:t},s))});
     if(h.brain)M.brains.push(Object.assign({tag:tag,on:on,host:h.host},h.brain,{quiet:(h.brain.quiet||0)+(now-t)/60e3}));
     (h.agents||[]).forEach(function(a){var x=Object.assign({tag:tag},a);
       if(x.status==='running'){x.quiet=(now-ts(x.t1))/60e3;x.min=(now-ts(x.t0))/60e3;if(x.quiet>=STUCK||!on)x.status='stuck'}
@@ -263,8 +294,34 @@ function merge(d,now){
 
 // ---- 描く ----
 function bar(ratio,cls){var p=Math.max(0,Math.min(1,ratio||0));return '<span class="meter '+cls+'"><i style="width:'+(p*100).toFixed(1)+'%"></i></span>'}
+var OPEN={};   // 開いた会話（その流れを出す）
+var STATE={working:['<i>●</i> 作業中','working'],ask:['? 選んで','ask'],quiet:['■ 動きなし','quiet'],yours:['◆ あなたの番','yours'],idle:['休み','idle']};
+function renderNow(M,now){
+  var box=$('now'), rank={working:0,ask:1,quiet:2,yours:3,idle:4};
+  var ss=M.sessions.slice().sort(function(a,b){var ra=a.on?(rank[a.state]||0):5, rb=b.on?(rank[b.state]||0):5;return (ra-rb)||(ts(b.t1)-ts(a.t1))});
+  box.innerHTML=ss.length?'':'<div class="c-dim">まだ会話が届いていません（PC とクラウドの集め係が動くと、ここに会話ごとに出ます）</div>';
+  ss.slice(0,12).forEach(function(s){
+    var st=s.on?(STATE[s.state]||STATE.idle):['○ 届いていない','off'];
+    var q=s.on?(now-ts(s.t1))/60e3:(now-s.hostT)/60e3;
+    var lab=st[0]+(s.on&&(s.state==='quiet'||s.state==='idle')?' · '+dur(q):'')+(s.on?'':' · '+dur(q));
+    var turn=s.turn_t0?dur((now-ts(s.turn_t0))/60e3):'';
+    var e=document.createElement('div');e.className='ss st-'+st[1];e.dataset.id=s.host+'/'+s.id;
+    var link=/^session_\w+$/.test(s.link||'')?' <a class="open" href="https://claude.ai/code/'+encodeURIComponent(s.link)+'" target="_blank" rel="noopener">開く</a>':'';
+    var l3=(s.state==='working'||s.state==='quiet'||s.state==='ask')&&s.action?'<div class="l3 act">▸ '+esc(s.action)+'</div>':(s.said?'<div class="l3">✓ '+esc(s.said)+'</div>':'');
+    e.innerHTML='<div class="l1"><span class="stt">'+lab+'</span><span class="tg">'+esc(s.tag)+'</span><span class="ttl">'+esc(s.project?s.project+' · ':'')+esc(s.title||s.id)+'</span>'+
+      '<span class="c-'+famc(s.fam)+'">'+esc(s.model||'')+'</span>'+(s.sub?'<span class="c-sonnet">係 '+s.sub+'</span>':'')+
+      '<span class="tm">'+(turn?'この回 '+turn+' · ':'')+(s.turn_tools||0)+' tools</span>'+link+'</div>'+
+      (s.prompt?'<div class="l2">› '+esc(s.prompt)+'</div>':'')+l3+
+      '<div class="tl"'+(OPEN[e.dataset.id]?'':' hidden')+'>'+(s.events||[]).slice().reverse().map(function(x){return '<div><span class="c-dim">'+hms(ts(x.t))+'</span><span'+(x.err?' class="err"':'')+'>'+esc(x.text)+'</span></div>'}).join('')+'</div>';
+    e.onclick=function(ev){if(ev.target.closest('a'))return;OPEN[e.dataset.id]=!OPEN[e.dataset.id];e.querySelector('.tl').hidden=!OPEN[e.dataset.id]};
+    box.appendChild(e);
+  });
+  if(ss.length>12)box.insertAdjacentHTML('beforeend','<div class="c-dim">+'+(ss.length-12)+' 件（休み）</div>');
+}
 function render(d){
   last=d;var now=Date.now(), M=merge(d,now);
+  renderNow(M,now);
+  lastSeen=Math.max.apply(null,[0].concat(M.hosts.map(function(h){return h.t})));
   // BRAIN
   var b0=M.brains[0], bm=b0?b0.model:'Fable 5.2', bf=fam(bm)==='lead'?'fable':fam(bm);
   M.brains.sort(function(a,b){return (a.tag==='pc'?0:1)-(b.tag==='pc'?0:1)||a.quiet-b.quiet});
@@ -344,12 +401,14 @@ function render(d){
    M.hosts.map(function(h){return '<span class="'+(h.on?'c-harness':'c-red')+'">'+esc(h.tag)+(h.on?' ●':' ○ '+ago(now-h.t))+'</span>'}).join(' ')+'</div>';
   tickBar();
 }
-function tickBar(){$('bar').textContent='~/agentboard · zsh · '+(demo?'demo':'live')+' · '+hms(Date.now())}
+var lastSeen=0;
+function tickBar(){$('bar').textContent='~/agentboard · zsh · '+(demo?'demo':'live')+' · '+hms(Date.now());
+  var a=$('nowage');if(a)a.textContent=lastSeen?'· '+Math.max(0,Math.round((Date.now()-lastSeen)/1000))+' 秒前に届いた':'';}
 
 function tick(){
   return load().then(render).catch(function(e){
     if(e&&e.auth){forget('令牌が使えません（期限切れ・消された）。作り直して貼ってください');return}
-    $('bar').textContent='~/agentboard · 読めませんでした：'+((e&&e.msg)||'通信')+' · 15 秒後にもう一度';
+    $('bar').textContent='~/agentboard · 読めませんでした：'+((e&&e.msg)||'通信')+' · 5 秒後にもう一度';
   });
 }
 function start(){
@@ -397,6 +456,8 @@ $('talk').onsubmit=function(ev){
 // 見本（?demo：前の AgentBoard の demo と同じ埋まり方。試験と絵の確かめ用）
 function DEMO(){
   var n=Date.now()/1000, m=60, iso=function(s){return new Date((n-s)*1000).toISOString()};
+  function E(list){return list.map(function(x){return {t:n-x[0],text:x[1],err:!!x[2]}})}
+  function S(o){return Object.assign({sub:0,turn_tools:0,said:'',action:'',prompt:'',events:[]},o)}
   function A(label,model,f,tools,min,quiet,action,status,extra){return Object.assign({label:label,model:model,fam:f,tools:tools,tok:tools*9000,t0:n-min*m,t1:n-quiet*m,min:min,quiet:quiet,action:action,result:'',pr:'',status:status},extra||{})}
   var pc={v:1,host:'pc',kind:'pc',at:iso(20),ts:n-20,
     brain:{session:'50b60877',model:'Fable 5.2',fam:'fable',action:'計画を書く',quiet:1,active:true},
@@ -405,6 +466,11 @@ function DEMO(){
             A('step:f1','Sonnet 5.5','sonnet',86,44,30,'コマンド：PR の CI を待つ','done',{result:'版面の高さの決め方を直した。PR #1010・CI 緑・合併済み。',pr:'1010'}),
             A('check:f1:1','Haiku 5.5','haiku',31,18,25,'','done',{result:'390 幅で見出しが 1 行はみ出している。',errors:1})],
     older_done:3,
+    sessions:[S({id:'50b60877',project:'Claude',title:'ハーネス v2 の回（run 1119a）',model:'Fable 5.2',fam:'fable',state:'working',t1:n-20,turn_t0:n-14*m,turn_tools:23,sub:2,
+                 action:'任せる：390 幅の見出しのはみ出しを直す',prompt:'次の段を 2 つずつ回して',events:E([[700,'読む：harness/tasks/INDEX.md'],[640,'コマンド：q.py next'],[300,'任せる：版面の高さの決め方を直す'],[20,'任せる：390 幅の見出しのはみ出しを直す']])}),
+              S({id:'7a1c3e90',project:'SupabaseLocal',title:'DB の引っ越しとバックアップ',model:'Opus 5.5',fam:'opus',state:'ask',t1:n-2*m,turn_t0:n-9*m,turn_tools:6,
+                 action:'道具：AskUserQuestion',prompt:'バックアップを毎日にして',events:E([[400,'読む：backup.ps1'],[120,'道具：AskUserQuestion']])}),
+              S({id:'c2d4e6f8',project:'LocalServer',title:'Live2D MCP の確認',model:'Sonnet 5.5',fam:'sonnet',state:'idle',t1:n-95*m,turn_tools:4,prompt:'動いた？',said:'3 つとも動きました。Cubism の設定は済みです。'})],
     events:[[600,'step:f1','sonnet','書き換える：scripts/render.py'],[540,'step:f1','sonnet','コマンド：テストを流す'],[480,'step:f1','sonnet','PR #1010 を出して合併まで済ませた。'],[420,'check:f1:1','haiku','コマンド：本番を 1400 / 390 で開いて点検'],[360,'check:f1:1','haiku','道具がエラー：timeout 120s',1],[300,'check:f1:1','haiku','390 幅で見出しが 1 行はみ出している。'],[240,'fix:f1:1','sonnet','読む：scripts/render.py'],[180,'fix:f1:1','sonnet','探す：fitBoard'],[60,'fix:f1:1','sonnet','書き換える：docs/assets/board.css']]
       .map(function(x){return {t:n-x[0],label:x[1],fam:x[2],text:x[3],err:!!x[4]}}),
     models:{haiku:9,sonnet:6,opus:1,fable:3},opus:{calls:1,tokens:547000,active:false,recent:[{label:'店長の好みを集める',status:'done',t:n-3*m,advice:'版面の失敗は同じ原因。直すのは高さの決め方で、見た目の調整ではない。'}]},
@@ -418,6 +484,10 @@ function DEMO(){
     agents:[A('写真の出どころ調べ','Haiku 5.5','haiku',23,12,0.3,'ページを開く：https://example.com/','running'),
             A('店長の好みを集める','Opus 5.5','opus',41,77,3,'','done',{result:'読む：memory/owner-aesthetic.md'})],
     older_done:2,events:[{t:n-20,label:'写真の出どころ調べ',fam:'haiku',text:'ページを開く：https://example.com/',err:false}],
+    sessions:[S({id:'3136e785',project:'Wishlist',title:'AgentBoard の会話',model:'Opus 5.5',fam:'opus',state:'working',t1:n-5,turn_t0:n-6*m,turn_tools:31,link:'session_demo',
+                 action:'書き換える：docs/board/index.html',prompt:'この board で Claude がいま何をしているか、実時間で見えるように',events:E([[300,'読む：collect.py'],[120,'コマンド：試験を流す'],[60,'道具がエラー：timeout 120s',1],[5,'書き換える：docs/board/index.html']])}),
+              S({id:'8f2b9a11',project:'Wishlist',title:'新規ユーザーの流れを本番で試す',model:'Sonnet 5.5',fam:'sonnet',state:'yours',t1:n-4*m,turn_tools:12,prompt:'test-c で試して',said:'5 分以内に小元素が出ました（4 分 12 秒）。'}),
+              S({id:'aa11bb22',project:'Wishlist',title:'写真の出どころ調べ',model:'Haiku 5.5',fam:'haiku',state:'quiet',t1:n-18*m,turn_t0:n-40*m,turn_tools:40,action:'コマンド：PR の CI を待つ',prompt:'写真の出どころを全部調べて'})],
     models:{haiku:5,sonnet:3},opus:{calls:0,tokens:0,active:false,recent:[]},pending:[],route:null,site:null,harness:null};
   return {hosts:[pc,cloud],
     beats:[{role:'新規ユーザーの点検',task:'kpi',note:'test-c で版面を足して 5 分を測る',where:'cloud',status:'working',ts:n-2*m,started:iso(20*m),model:'claude-sonnet-5-5',session:'session_demo'}],
