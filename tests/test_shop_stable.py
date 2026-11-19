@@ -10,9 +10,9 @@ sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 # 8 幅の合計の上限。直す前（origin/main）：orphan 48・cgap 10・gap 6・herogap 2・pendhid 0・solo 0・edge 0。
-# 直した後：orphan 0・cgap 13・gap 6・herogap 1。同じページを 2 回数えても cgap は ±3・orphan は ±1 揺れた（壁の組みの候補の選び方）ので、その分だけ足す
+# 直した後：orphan 0・cgap 13・gap 6・herogap 1。同じページを 2 回数えても cgap は ±3・orphan は ±1 揺れた（壁の組みの候補の選び方）ので、その分だけ足す（main の render のページでも cgap 10〜13 が出たので cgap は 16）
 # 8 幅を 2 つのファイルに分ける（1 つで 270 秒かかり、並列の試験の最後を待たせる）：このファイルは前の 4 幅、test_shop_stable_b.py が後ろの 4 幅。上限は 8 幅の合計を幅の数で分けずにそのまま使う（片方で上限を超えれば合計も超える）
-CEIL = {"orphan": 50, "cgap": 13, "gap": 6, "herogap": 2, "pendhid": 0, "solo": 0, "edge": 0, "dup": 0, "navgap": 0, "sidebig": 0}
+CEIL = {"orphan": 50, "cgap": 16, "gap": 6, "herogap": 2, "pendhid": 0, "solo": 0, "edge": 0, "dup": 0, "navgap": 0, "sidebig": 0}
 
 
 WIDTHS = (390, 412, 768, 1000)
