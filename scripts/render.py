@@ -5568,6 +5568,9 @@ LIVE_JS = """
   var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'新增 %n 条',m:'有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新',more:'等 %n 处',sep:'：'}
     :{n:'新着 %n 件',m:'更新',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新',more:'ほか %n か所',sep:'：'};
   // 版面・パネルの名前（data-k か見出し）。ここでの id は section の id
+  // お客さまの代わりの画面（AUTH_JS の showMine・drawMine が店長のページを絞った・隠した画面：html[data-mine]）では、変わった版面を名前で知らせない
+  // （隠れている店長の版面の名前が出る。2026-11-19）。読み直しは今までどおり、操作していないときに静かに
+  function hush(){return /^[12]$/.test(document.documentElement.getAttribute('data-mine')||'');}
   function label(s){var k=s.getAttribute('data-k');if(k)return {front:'トップ',picks:'気になるかも？',wishlist:'愿望清单'}[k]||k;var h=s.querySelector('.sh>span');return h?h.textContent:s.id;}
   function art(a){return a.closest('article');}
   function keyed(){var l=[];Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){l.push([a.getAttribute('href'),art(a)]);});
@@ -5610,7 +5613,7 @@ LIVE_JS = """
         if(s.classList.contains('panel')){s.classList.add('fresh');tag(s,T.upd);}}});
     var items=order.map(function(s){return [label(s),T.n.replace('%n',by[s.id]),s.id];}).concat(other.map(function(s){return [label(s),T.m,s.id];}));
     var shown=items.slice(0,4),rest=items.length-shown.length;
-    if(items.length||n){toast(ZH?'有新内容':'更新しました',false,shown);
+    if((items.length||n)&&!hush()){toast(ZH?'有新内容':'更新しました',false,shown);
       if(rest>0){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',rest);bar.firstChild.appendChild(r);}}
     if(document.hidden)badge(n||other.length);
   }
@@ -5636,7 +5639,7 @@ LIVE_JS = """
         // version.json の <ページ>_marks と自分の data-h を見比べて、どの版面が変わったかを先に言う
         var mk=j[PAGE+'_marks']||{},mine=marks(),ch=[];Object.keys(mk).forEach(function(id){if(mine[id]&&mine[id]!==mk[id][1])ch.push([mk[id][0],'',id]);});
         // 名前を挙げられる変化（AI 編集が整理した記事の増減など）がないときは何も出さない。静かに（操作していないとき）読み直すだけ
-        if(ch.length){var sh=ch.slice(0,3);toast(T.p,true,sh);
+        if(ch.length&&!hush()){var sh=ch.slice(0,3);toast(T.p,true,sh);
           if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}}
       maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
@@ -5889,6 +5892,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-mine="2"] .wl-off{display:none!important}
+html[data-mine="2"] .wl-live{display:none!important}  /* 代わりの画面：LIVE_JS が開いた直後に出した「更新しました：（店長の版面の名前）」も隠す（hush の前に出た分） */
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}
 @media (max-width:560px){html[data-mine="2"] body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.wl-cards>a.np{display:flex}}
@@ -5982,6 +5986,8 @@ AUTH_JS = r"""
   var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
   R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
   var OWN=!!document.querySelector('meta[name="wl-own"]'), signedOut=false;   // 本人のページ（user_pages.py）の中か
+  // 読む人が開き直した（F5）か。LIVE_JS の静かな読み直し（wl-live:<page> を残して reload。LIVE_JS は body の終わりで読んで消すので、ここではまだある）は数えない
+  var RELOAD=false;try{var nv=performance.getEntriesByType('navigation')[0];RELOAD=!!nv&&nv.type==='reload'&&!sessionStorage.getItem('wl-live:'+page);}catch(e){}
   try{ if(!OWN&&/^(index|wishlist|heat|settings)$/.test(page)&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない（本人のページはもう本人のものなので隠さない）
   var ROLE=__ROLE__, LOCK=__LOCK__[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
   // お客さまの画面の文字。言語は app_users.ui_lang〔今は ja だけ〕。直書きを足さずここへ（tests が数える）
@@ -6286,9 +6292,12 @@ AUTH_JS = r"""
   // 止めるのは「跳ね返された」回数（me.html の back が sessionStorage の wl-own-at に書く）が 30 秒に 3 回のとき。入った回数ではない
   // （足す → 設定 → 戻る と速く動く人・通しの点検は 30 秒に 3 回入る。入った回数で止めると 3 回目に殻でない画面になり、素の箱が 2 個出た。2026-10-27）
   function ownPage(){
-    if(!tok||!/^(index|settings|heat|wishlist)$/.test(page)||/[?&]own=0/.test(location.search)) return Promise.resolve(false);   // 話題度も本人の分（F5 2026-11-05、L13）
+    if(!tok||!/^(index|settings|heat|wishlist)$/.test(page)) return Promise.resolve(false);   // 話題度も本人の分（F5 2026-11-05、L13）
     var hist=[];try{hist=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});}catch(_){}
     if(hist.length>=3) return Promise.resolve(false);
+    // ?own=0（殻が読めずに戻った代わりの画面）は送らない。ただし読む人が開き直した（F5）ときは殻をもう一度試す（2026-11-19：?own=0 が残って代わりの画面に居続けた）。
+    // 跳ね返りの歯止め（上の 30 秒に 3 回）はそのまま：殻が読めなければまた ?own=0 に戻り、続けて 3 回でここに留まる。自動で読み直す仕組みでは試さない（白い画面をくり返さない）
+    if(/[?&]own=0/.test(location.search)&&!RELOAD) return Promise.resolve(false);
     location.replace('me.html'+(page==='index'?'':'?p='+page)+location.hash);   // 設定も本人の分（同じ部品の render_settings）
     return Promise.resolve(true);
   }
@@ -6347,6 +6356,15 @@ AUTH_JS = r"""
     if(pkS){pkS.querySelectorAll('.pk[data-w]').forEach(function(c){var on=hit(c.dataset.w,picks);c.classList.toggle('wl-off',!on);if(on)keepPicks=true;});
       pkS.classList.toggle('wl-off',!keepPicks);}
     document.querySelectorAll('.nmore,.nsum').forEach(function(x){x.classList.add('wl-off');});
+    // 代わりの画面（本人のページが読めなかったとき）は店長のページを絞ったもの：店長の数字・店長だけの中身は出さない（login.md L10「まだ使えないもの」、2026-11-19）。
+    // 欲しい物の件数（入口のリンクは残す）・更新の時刻・トップの件数と刷った時刻・話題度（ロゴの「今日の最高」・小分類の点）・気になるかも？の未読の数と店長の票（「あなたの投票」「👍した…と関連」）
+    document.querySelectorAll('.mastwish small,.navwish small,.mast .meta,.nav .logo .hm,.nav .nlab b,#front .phead>span:not(.lab):not(.day),#front .pfoot>span:not(.cbar),#picks .shuffle small,#picks .taste,#picks .why small').forEach(function(x){x.classList.add('wl-off');});
+    // トップの右の列（店長の欲しい物の名前・値段・合計、選んでいない版面の予定）と、ほかの注目の隠した記事は消す → 壁を組み直す
+    // （隠すだけだと壁の組み FIT_JS の wall が右の列の場所を取り・隠した記事も数えて、出ている記事まで「入らない」と隠した。2026-11-19 手元で再現）
+    var sd=document.querySelectorAll('#front .fside,#front .fstrip,#front .wall>.wc.wl-off');
+    if(sd.length){sd.forEach(function(x){x.remove();});var sp=fr&&fr.querySelector('.spot');if(sp&&!sp.querySelector('.wc'))sp.classList.add('wl-off');dispatchEvent(new Event('resize'));}
+    document.title=document.title.replace(/^\(\d+\) /,'');   // 裏のタブの件数（LIVE_JS の badge：店長の全部の版面の新着の数）
+    document.querySelectorAll('.wl-live').forEach(function(b){b.textContent='';b.hidden=true;});   // LIVE_JS が開いた直後（お客さまと分かる前）に作った「更新しました：（店長の版面の名前）」の帯
     var wait=picks.filter(function(x){return !Object.keys(got).some(function(k){return shopHit(k,x.name);});});
     var name=(p&&p.name)||(user&&user.email)||'', sh=isMail(name)?name.split('@')[0]:name;
     var bar=document.querySelector('.wl-mybar')||document.createElement('div');bar.className='wl-mybar';
@@ -6424,7 +6442,9 @@ AUTH_JS = r"""
       var first={};
       [].slice.call(issue.querySelectorAll(':scope>[data-k]:not(.wl-off)')).forEach(function(s){var k=s.dataset.sec||secOf[norm(s.dataset.k)];if(k&&!first[k])first[k]='#'+s.id;});
       rail.querySelectorAll('.nslot').forEach(function(d){
-        var ps=[].slice.call(d.querySelectorAll('.nbody .pill:not(.wl-off)')), subs={};ps.forEach(function(p){subs[p.dataset.sub||'']=1;});
+        var ps=[].slice.call(d.querySelectorAll('.nbody .pill:not(.wl-off)')), subs={}, cnt={};ps.forEach(function(p){var s=p.dataset.sub||'';subs[s]=1;if(!p.classList.contains('media'))cnt[s]=(cnt[s]||0)+1;});
+        // 小分類の札の数は店長の版面の数 → ここに出ている駅の数に（シリーズの枝は数えない＝_nav と同じ）
+        d.querySelectorAll('.nsubs a[data-sub]:not(.wl-uchip)>small').forEach(function(s){s.textContent=String(cnt[s.parentNode.dataset.sub]||0);});
         d.classList.toggle('wl-off',!ps.length);
         d.querySelectorAll('.nsubs a[data-sub],.nlab[data-sub]').forEach(function(c){c.classList.toggle('wl-off',!subs[c.dataset.sub]);});
         var a=d.querySelector('.nsec');if(a&&first[d.dataset.sec])a.setAttribute('href',first[d.dataset.sec]);});
