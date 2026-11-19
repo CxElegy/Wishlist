@@ -10,16 +10,16 @@ name: 版面が足されたとき
 #   feed   ：board のあと。記事集め（userfeed.py）→ 足した人のページだけ（user_pages.py --recent）。記事が先・ページが後
 #            （足したばかりの版面は記事 5 本までページに記事を載せない：user_pages.held）。
 #   emblem ：board を待たずに最初から 3 つ並べて走る（matrix shard 0〜2 = library_emblem.FRESH_SHARDS。group は shard ごと：
-#            library・library-emblem の列には並ばない）。重い道具（rembg・scrapling）は同じ step の中で後ろで入れ、その間に
-#            library_emblem.py --fresh が版面の行（＋follows）が DB に現れるのを 5 秒おきに待つ。1 回見て「無い」と決めない
+#            library・library-emblem の列には並ばない）。rembg は用意の段で入れ（requirements-emblem.txt）、scrapling は同じ step の後ろで入れ、
+#            library_emblem.py --fresh が模型を始めから後ろで読みながら、版面の行（＋follows）が DB に現れるのを 5 秒おきに待つ。1 回見て「無い」と決めない
 #            （2026-11-19 run 1：board の job が行を書く前に --check-fresh が「0」を見て終わり、小元素は 31〜34 分後だった）。
-#            現れたら各 shard が未試行の版面を 1 つずつ claim（library.claim_board）して速い道（1 枚目が通った段で書く・上限 90 秒・規則は fill_one のまま）、
-#            書いたらすぐその版面を追う人のページだけ作り直す（user_pages.py --boards-file F --emblem-only：前の測った結果で 10 秒ほど）。
+#            現れたら各 shard が未試行の版面を 1 つずつ claim（library.claim_board）して速い道（上限 90 秒まで名簿の続きを試し、1 枚目が通った段で書く・規則は fill_one のまま）、
+#            書いたらすぐその版面を追う人のページだけ作り直す（user_pages.py --boards-file F --emblem-only：前のページ＋小元素・網に出ない）。
 #            同じ run の board の job が終わったのを見たあとに読んでも新しい版面が無ければ終える（経路 A/B は ≈ 1 分。GitHub の API：actions: read）。
 #            続き（名簿の残り）は library_emblem.yml の列へ。
 # 5 分の割り当て（library_emblem.FRESH_BUDGET。tests が「合計 + 余り 60 秒 ≤ 300」を数える）：
-#   起こす 20（dispatch → runner）・用意 80（checkout・python・pip・写し・模型 ≈ 40 ＋ 後ろで rembg 13・scrapling 26、board の job が行を書く ≈ 50 と重なる）・
-#   1 枚目 90・書く 5・ページ 45 ＝ 240 秒（余り 60）。各段の秒は「速い道の時刻 版面 N：…」の行（起きてからの秒）。
+#   起こす 10（本番 8）・用意と待ち 90（python +35〜47・行 +31〜79。rembg を用意の段で・模型は python の始めから）・
+#   1 枚目 90・書く 5・ページ 45 ＝ 240 秒（余り 60）。各段の秒は「速い道の待ち／速い道の時刻 版面 N：…」の行（起きてからの秒）。
 # 経路 A/B（店長・ライブラリにある名前）：board の job の終わりを見て終わる。重い道具は後ろで入れかけのまま job ごと終わる。
 
 on:
