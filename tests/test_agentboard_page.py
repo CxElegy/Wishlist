@@ -99,11 +99,19 @@ class Browser(unittest.TestCase):
         self.assertGreaterEqual(m["log"], 10)
         self.assertTrue(m["advLeft"])                         # advisor は左の縦の列
         # いまの Claude：会話ごとに状態・最後に頼んだこと・いまの道具。押すと流れが開く
-        rows = p.locator("#now .ss")
+        rows = p.locator("#now .card")
         self.assertEqual(rows.count(), 6)
-        self.assertEqual(p.locator("#now .ss.st-working").count(), 2)
+        self.assertEqual(p.locator("#now .card.st-working").count(), 2)
         for cls in ("st-ask", "st-quiet", "st-yours", "st-idle"):
-            self.assertEqual(p.locator("#now .ss." + cls).count(), 1, cls)
+            self.assertEqual(p.locator("#now .card." + cls).count(), 1, cls)
+        # 札：枠の色＝モデル・大きなモデル名・30 分の棒グラフ・動いている係のチップ
+        self.assertIn("b-opus", rows.first.get_attribute("class"))
+        self.assertEqual(rows.first.locator(".mdl b").inner_text(), "OPUS 5.5")
+        self.assertEqual(rows.first.locator(".spark i").count(), 30)
+        harness = p.locator("#now .card", has_text="ハーネス v2")
+        self.assertEqual(harness.locator(".chip").count(), 2)
+        self.assertEqual(harness.locator(".chip.stuck").count(), 1)               # 19 分 動かない Haiku の係は赤
+        self.assertIn("Fable 1", p.inner_text("#nowmix"))
         first = rows.first
         self.assertIn("作業中", first.inner_text())
         self.assertTrue(first.locator(".tl").is_hidden())
@@ -168,7 +176,7 @@ class Browser(unittest.TestCase):
         self.assertEqual(p.locator("#agents .ag.stuck").count(), 1)                    # 30 分 動かない Haiku
         self.assertEqual(p.locator("#agents a.open").count(), 1)                       # session_ の会話だけ「開く」
         self.assertIn("pc,cloud-3136e785", p.inner_text("#status"))
-        now_rows = p.locator("#now .ss")
+        now_rows = p.locator("#now .card")
         self.assertEqual(now_rows.count(), 2)
         self.assertIn("実時間で見えるように", now_rows.first.inner_text())                  # 最後に頼んだこと
         self.assertIn("書き換える：docs/board/index.html", now_rows.first.inner_text())     # いまの道具
