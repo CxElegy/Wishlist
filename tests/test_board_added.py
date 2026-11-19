@@ -29,8 +29,10 @@ class BoardAdded(unittest.TestCase):
     def test_kpi_tool_paths_and_targets(self):
         import board_kpi
         self.assertEqual(board_kpi.acct("test-c@example.com"), "u_96014d316e98b2b8")
-        self.assertEqual([k for k, _, _ in board_kpi.STAGES], ["picked", "follow", "board", "raw", "pending", "emblem", "edited", "page"])
-        self.assertLessEqual(board_kpi.TARGET["page"], 150)
+        self.assertEqual([k for k, _, _ in board_kpi.STAGES], ["picked", "follow", "board", "raw", "pending", "emblem", "edited", "page", "page_emblem"])
+        self.assertEqual(board_kpi.TARGET["emblem"], 5)   # 店長の決まり：小元素は 5 分未満（比べ方は「未満」）
+        self.assertLessEqual(board_kpi.TARGET["page"], 20)
+        self.assertEqual(set(board_kpi.TARGETS), {"A", "B", "C"})
         self.assertNotIn("harness", str(board_kpi.RUNS))   # 本人のデータが入る計測の回はリポジトリの外
 
     def test_architecture_has_the_flow(self):

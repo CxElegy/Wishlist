@@ -196,9 +196,9 @@ const kpiPrompt = t => `${head('kpi', t.id, BUDGET.kpi)}
 ${ownWt(t.id, t)}
 
 新規ユーザーの点検の係（2026-11-11 店長：新規アカウントを作った人・版面を足した人に、サイトの機能とデザインが届くかを、点検 → 改善で続ける）。毎回やる段（${t.id}）。
-1. 測る：\`timeout 900 ${run} harness/board_kpi.py tick\` → report → pages → shop。計測の回は D:/Claude/kpi/runs（リポジトリの外。中身をコミットしない）。数字だけの harness/kpi/latest.json はコミットしてよい。
+1. 測る：\`timeout 900 ${run} harness/board_kpi.py tick\` → report（赤＝目標を割った・出ないままの段があると終了コード 1。それは正常で、出た「赤」の行を読んで続けて pages → shop。0 にしたいときは --no-fail） → pages → shop。計測の回は D:/Claude/kpi/runs（リポジトリの外。中身をコミットしない）。数字だけの harness/kpi/latest.json はコミットしてよい。
 2. 次の回：前の回が全部そろったか 24 時間たったら、test-d と test-e を交互に使って新しい回を作る：board_kpi.py add --reset --email test-d@example.com --pick "名前:板块" …（経路 A＝items.yaml の店長の版面 1 つ・B＝ライブラリにある版面 1 つ・C＝まだどこにも無い実在の作品・人・物 2〜3 つ。板块は sections.yaml のキー）。ログインは localhost の自前版 Supabase だけ（本番の画面でテスト用の鍵を入れない）。DB に書くのは本人と同じ RPC（board_kpi.py add）だけ。
-3. 段にする：report の目標を越えた段、pages の ✗（errors・broken・words・overflow・足してから 150 分すぎても missing）を \`${run} harness/q.py add --kind fix --priority 2 --title "【新規ユーザー】…" --why "数字…" --done-when "…"\`（同じ題があれば足されない）。
+3. 段にする：report の目標を越えた段、pages の ✗（errors・broken・words・overflow・足してから 20 分すぎても missing）を \`${run} harness/q.py add --kind fix --priority 2 --title "【新規ユーザー】…" --why "数字…" --done-when "…"\`（同じ題があれば足されない）。
 4. 見る：D:/Claude/kpi/pages/<u_…>.html を \`${run} harness/lock.py browser -- timeout 600 ${run} harness/shots.py --url file:///D:/Claude/kpi/pages/<u_…>.html --out ${SP}/tmp/${t.id}/shots\` で撮り、docs/rules/aesthetic.md の番号で採点し、✗ を同じく kind=visual の段にする。
 最後：latest.json と足した段のファイル（harness/tasks/）が変わっていれば手元でコミット（push しない）して status=built・branch=${brFor(t)}・worktree=${wtFor(t)}・commit。変わっていなければ status=none。summary は日本語 3 行（KPI の数字・✗ の数・足した段）。prod_check は url・contains とも空文字。`
 
