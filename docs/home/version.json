@@ -1,14 +1,14 @@
 {
- "admin": "a0643b5bdc51",
- "admin-ai": "8e2b654321e8",
+ "admin": "118b606fd22c",
+ "admin-ai": "99e0677a4540",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "e9026243"
+   "77ae0f18"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "41a98af3"
+   "fe5f7aec"
   ]
  },
  "admin-boards": "98a954c2f6aa",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "3d53119bfde4",
+ "admin-emblem": "6120a7196002",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d6006c2e"
+   "9fe6b88c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "52a872f0c1d0",
+ "admin-now": "13d11f3ce826",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "853c3df0"
+   "19366f9e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "cf4e78b6"
+   "ac08dca0"
   ]
  },
- "admin-system": "74fa3fd9b521",
+ "admin-system": "310b2a5281ce",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ff1ade7a"
+   "fe889b2a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8cd1b1ca"
+   "c37cc61c"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "cb787e23"
   ]
  },
- "index": "c77f31690a5f",
+ "index": "10da041eaaeb",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "58850a9e"
+   "a7973b1d"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "0bf9df17"
+   "2189f6e6"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "5cd5bcf1"
+   "06e46328"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "9b2f8b86"
+   "264925fa"
   ],
   "w-f303ad09": [
    "绝区零",
    "b4b9aa88"
   ]
  },
- "updated": "11.19 14:25",
+ "updated": "11.19 14:47",
  "wishlist": "c5b812629fba"
 }
