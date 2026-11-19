@@ -9,7 +9,9 @@
     21,
     19,
     28,
-    74
+    74,
+    81,
+    86
    ],
    "event": {
     "date": "2026-12-17",
@@ -48,7 +50,8 @@
     54,
     59,
     61,
-    79
+    79,
+    88
    ]
   },
   {
@@ -59,7 +62,8 @@
    "refs": [
     22,
     20,
-    77
+    77,
+    82
    ]
   },
   {
@@ -69,6 +73,17 @@
    "weight": "normal",
    "refs": [
     17
+   ]
+  },
+  {
+   "headline": "New Avengers: Doomsday promo trailer unleashes larger look at the Marvel movie",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    84,
+    80,
+    83
    ]
   }
  ],
@@ -293,7 +308,7 @@
   }
  ],
  "_covered": {
-  "漫威电影": 79,
+  "漫威电影": 88,
   "GTA 6": 88,
   "周杰伦": 7,
   "A2O LITE": 6,

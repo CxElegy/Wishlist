@@ -864,6 +864,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
+  "w": 4525,
+  "h": 3016,
+  "target": 720,
+  "v": 3
+ },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
   "w": 1280,
   "h": 670,
@@ -1339,12 +1345,6 @@
   "w": 1758,
   "h": 2200,
   "target": 720,
-  "v": 3
- },
- "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_1278,h_718/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/shape/cover/sport/maxresdefault-68-ea17485849859a9815d493656c679d4f.jpg": {
-  "w": 1440,
-  "h": 810,
-  "target": 1280,
   "v": 3
  },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_426,y_237,w_1864,h_1048/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/357/01m7ndtf0a2j0mmy6brs.jpg": {
@@ -3516,6 +3516,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
