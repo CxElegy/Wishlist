@@ -410,15 +410,24 @@ def mask_saved(brows, want):
     return out
 
 
-def merge_imgs(old, new):
-    """imgs.json（写真の置き場の列）を合わせる：前の列に今回の分を足す（--recent・--boards-file の一部の人の回が、ほかの人の分を消さない）。
-    同じ網址は今回の形（防盗链の [網址, Referer]）を先に。→ 指紋の順の list"""
+def merge_imgs(old, new, today=None, keep=None):
+    """imgs.json（写真の置き場の列）を合わせる。1 つずつに最後に見た日 d を持つ {"u": 網址, "r": Referer（防盗链だけ）, "d": 日}。
+    前の列（old）の分は、最後に見てから keep 日（photo_store.KEEP_DAYS）を過ぎたら外す（見直し 5：毎回失敗する人がいても列が縮み、
+    photo_store が使わなくなった写真を消せる）。今回の分（new = {指紋: 網址 or [網址, Referer]}）は今日の日で入れる。
+    前の形（文字列・[網址, Referer]）は日が無いので今日として扱う（そこから keep 日で外れる）。→ 指紋の順の list"""
+    today = photo_store.day() if today is None else today
+    keep = photo_store.KEEP_DAYS if keep is None else keep
     out = {}
     for x in old or []:
         e = photo_store.user_entry(x)
-        if e:
-            out[photo_store.key(e[0])] = x
-    out.update(new)
+        if not e:
+            continue
+        d = x.get("d") if isinstance(x, dict) and isinstance(x.get("d"), int) else today
+        if today - d <= keep:
+            out[photo_store.key(e[0])] = {"u": e[0], **({"r": e[1]} if e[1] else {}), "d": d}
+    for k, v in (new or {}).items():
+        u, r = (v[0], v[1]) if isinstance(v, list) else (v, None)
+        out[k] = {"u": u, **({"r": r} if r else {}), "d": today}
     return [out[k] for k in sorted(out)]
 
 
@@ -720,8 +729,9 @@ def main(argv):
     # 写真の置き場の列（pages/_fp/imgs.json・非公開の箱。pages/ は読まず、この 1 本だけを photo_store が読む）：
     # 全員作れた回は今回の分で置き換える（使わなくなった写真を外す）。一部の人だけの回（--boards-file／--recent）・一部が失敗した回は、
     # 前の列を読んで今回の分を足すだけ（ほかの人の網址を消さない。2026-11-19：足したばかりの人の写真が次の全員の回まで置き場に入らなかった）
+    # 1 つずつに最後に見た日を持ち、一部の回は前の列の 14 日を過ぎた分を外す（merge_imgs）。全員作れた回は空でも [] を書く（古い列を残さない）
     cur = {photo_store.key(u): u for u in imgs.values()} | saved
-    if made and cur:
+    if made and (cur or not (partial or failed)):
         try:
             if partial or failed:
                 old = _supa(IMGS_PATH)

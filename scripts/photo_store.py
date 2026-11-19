@@ -164,7 +164,13 @@ def scan_text(texts, seen, want):
 
 def user_entry(x):
     """imgs.json の 1 つ → (網址, Referer or None)。文字列＝ふつうの写真、[網址, 記事の頁]＝防盗链の写真（2026-11-19 店長の決定 1A：
-    元のサイトを通さないと開けない写真も、記事の頁を Referer にして置き場に入れる）。読めない形は None。"""
+    元のサイトを通さないと開けない写真も、記事の頁を Referer にして置き場に入れる）、{"u", "r"?, "d"}＝最後に見た日つき（user_pages.merge_imgs）。
+    読めない形は None。"""
+    if isinstance(x, dict):
+        u, r = x.get("u"), x.get("r")
+        if isinstance(u, str) and u.startswith("http"):
+            return u, r if isinstance(r, str) and r.startswith("http") else None
+        return None
     if isinstance(x, str) and x.startswith("http"):
         return x, None
     if isinstance(x, list) and len(x) == 2 and all(isinstance(v, str) and v.startswith("http") for v in x):

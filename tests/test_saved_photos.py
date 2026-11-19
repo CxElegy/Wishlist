@@ -100,11 +100,22 @@ class Mask(unittest.TestCase):
         self.assertEqual((rows["a"]["stories"][0]["image"], rows["a"]["stories"][0]["img_ref"]), (IMG, REF))
 
     def test_merge_keeps_others(self):
-        old = ["https://o.example/1.jpg", ["https://o.example/2.jpg", "https://o.example/n2"], "junk", 3]
-        out = user_pages.merge_imgs(old, {P.key(IMG): [IMG, REF]})
-        self.assertEqual(len(out), 3)                                            # 前の 2 つ＋今回の 1 つ（読めない形は捨てる）
-        self.assertIn([IMG, REF], out)
-        self.assertIn("https://o.example/1.jpg", out)
+        old = ["https://o.example/1.jpg", ["https://o.example/2.jpg", "https://o.example/n2"], "junk", 3,
+               {"u": "https://o.example/old.jpg", "d": 100}, {"u": "https://o.example/new.jpg", "d": 195}]
+        out = user_pages.merge_imgs(old, {P.key(IMG): [IMG, REF]}, today=200, keep=14)
+        self.assertEqual(sorted(x["u"] for x in out), sorted(["https://o.example/1.jpg", "https://o.example/2.jpg", "https://o.example/new.jpg", IMG]))
+        self.assertIn({"u": IMG, "r": REF, "d": 200}, out)                       # 今回の分は今日の日で
+        self.assertIn({"u": "https://o.example/new.jpg", "d": 195}, out)          # 前の分は最後に見た日のまま
+        self.assertEqual([P.user_entry(x) for x in out if x["u"] == IMG], [(IMG, REF)])   # photo_store が読める形
+        self.assertEqual(P.user_entry(["https://o.example/2.jpg", "https://o.example/n2"]), ("https://o.example/2.jpg", "https://o.example/n2"))   # 前の形も読む
+
+    def test_list_shrinks_even_if_someone_always_fails(self):
+        """見直し 5：毎回失敗する人がいて「前の列に足す」回が続いても、最後に見てから 14 日を過ぎた分は外れる。全員の回は空でも []。"""
+        lst = [{"u": "https://gone.example/a.jpg", "d": 100}]
+        for day in range(101, 120):
+            lst = user_pages.merge_imgs(lst, {P.key("https://live.example/b.jpg"): "https://live.example/b.jpg"}, today=day, keep=14)
+        self.assertEqual([x["u"] for x in lst], ["https://live.example/b.jpg"])
+        self.assertEqual(user_pages.merge_imgs([], {}), [])
 
 
 class MainPartial(unittest.TestCase):
@@ -136,9 +147,31 @@ class MainPartial(unittest.TestCase):
             user_pages.main(["--recent", "3600"])
         self.assertEqual(len(written), 1)
         got = written[0]
-        self.assertIn("https://other.example/keep.jpg", got)    # ほかの人の分は残る
-        self.assertIn([IMG, REF], got)                         # 防盗链の写真は Referer と一緒に
-        self.assertIn("https://ok.example/1.jpg", got)
+        self.assertIn("https://other.example/keep.jpg", [x["u"] for x in got])    # ほかの人の分は残る
+        self.assertIn((IMG, REF), [P.user_entry(x) for x in got])                # 防盗链の写真は Referer と一緒に
+        self.assertIn("https://ok.example/1.jpg", [x["u"] for x in got])
+
+
+class MainFull(unittest.TestCase):
+    def test_full_run_without_photos_writes_empty_list(self):
+        """見直し 5(b)：全員作れた回で写真が 0 なら [] を書く（前の列を残さない）。"""
+        written = []
+
+        def fake(path, data=None, method="GET", ctype=""):
+            if path.endswith("_fp/all.json"):
+                return {} if method == "GET" else ""
+            if "userfeed_users" in path:
+                return [{"email": "a@example.com", "prefs": {}}]
+            if path.endswith("_fp/imgs.json"):
+                if method != "GET":
+                    written.append(json.loads(data))
+                return ["https://stale.example/x.jpg"]
+            return "" if "/storage/" in path else []
+        with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), \
+                mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0), mock.patch.object(user_pages, "build", lambda *a, **k: "<html></html>"), \
+                mock.patch.object(user_pages.render, "photo_opens", None, create=True), mock.patch.object(user_pages.photo_store, "published", lambda: set()):
+            user_pages.main([])
+        self.assertEqual(written, [[]])
 
 
 class Store(unittest.TestCase):

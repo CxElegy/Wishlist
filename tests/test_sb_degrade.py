@@ -254,9 +254,9 @@ class PageSide(unittest.TestCase):
             user_pages.main(["--force"])
         self.assertEqual(len(sent), 2)   # 1 回目と --force だけ
         # お客さまだけの版面の写真の網址を、pages/ を読まずに置き場（photo_store）へ渡す 1 本（2026-11-04）
-        self.assertEqual(imgs[-1], ["https://ex.com/a.jpg"])
+        self.assertEqual([x["u"] for x in imgs[-1]], ["https://ex.com/a.jpg"])   # 2026-11-19：{"u", "d"（最後に見た日）}
         import photo_store
-        seen, want, _ = photo_store.scan(pathlib.Path(tempfile.mkdtemp()), urls=imgs[-1])
+        seen, want, _ = photo_store.scan(pathlib.Path(tempfile.mkdtemp()), urls=[photo_store.user_entry(x) for x in imgs[-1]])
         self.assertEqual(list(want.values()), ["https://ex.com/a.jpg"])
 
     def test_entrance_rebuilds_without_it(self):
