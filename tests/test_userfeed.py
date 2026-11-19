@@ -649,6 +649,27 @@ class MediaRules(unittest.TestCase):
         m.board(st, "作品")
         self.assertIn(["新作ゲーム 発売日 決定 体験版 配信 開始"], got)   # 同じ出来事の別の記事を siblings に
 
+    def test_siblings_do_not_ask_google(self):
+        """同じ出来事の別の記事は link を入れて渡す：images.pick の sources.entry_link が Google に戻しに行かない（休止中も増えない）。
+        包みのままで写真の無い別の記事は渡さない。"""
+        asked = []
+        passed = []
+
+        def pick(s, b, a, sib=()):
+            passed.append([e.url for e in sib])
+            for e in sib:   # images.pick の siblings の段と同じ取り方
+                sources.entry_link(e)
+            return None
+        m = self.media(resolve=lambda u: u, pick=pick)   # Google が断っている：4 本で休む
+        t = "新作ゲーム 発売日 決定 体験版 配信"
+        st = [self.g(1, t), self.g(2, t + " 開始"), self.g(3, t + " 予約", image=""), story(4, t + " 速報"),
+              self.g(5, t + " 情報", image="https://img.example/bing5.jpg")]
+        with mock.patch.object(sources, "resolve_url", lambda u, tries=None: asked.append(u) or u):
+            m.board(st, "作品")
+        self.assertEqual(asked, [])
+        self.assertTrue(passed and all("https://news.google.com/rss/articles/2" not in p for p in passed))   # 包みのまま・写真なしは外す
+        self.assertTrue(any("https://news.google.com/rss/articles/5" in p for p in passed))                 # 写真のある包みは残す（Bing の縮小画像）
+
     def test_short_time_carries_over_without_marks(self):
         """残りの時間が短いときは探さず次の回へ（印を付けない・持ち越しの数をログに）。"""
         import time

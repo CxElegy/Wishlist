@@ -540,8 +540,10 @@ class Media:
             changed |= self.link(s)
             changed |= self.expired(s)
         avoid = {s["image"] for s in stories or [] if s.get("image")}
+        # link を入れておく：images.pick は siblings の原文を sources.entry_link で取り、link が無いと resolve_url（3 回＋待ち）で戻そうとする。
+        # Media の休止（RESOLVE_FAILS）を通らない・失敗を覚えない・pick の締め切りを見ないので、戻すのは link() の 1 か所だけにする
         es = [sources.Entry(title=s.get("title") or "", url=s["url"], published=None, source=s.get("source") or "",
-                            image=s.get("image") or "") for s in stories or []]
+                            image=s.get("image") or "", link=s["url"]) for s in stories or []]
         for i, s in head:
             if s.get("image") or not img_due(s, self.now):
                 continue
@@ -549,6 +551,7 @@ class Media:
                 sib = digest.same_event({"name": name}, [es[i]], es[:i] + es[i + 1:], s.get("title") or "")
             except Exception:  # noqa: BLE001
                 sib = []
+            sib = [e for e in sib if not _google(e.url) or e.image]   # 包みのままの別の記事は読めない（自分の写真がある時だけ）
             changed |= self.image(s, avoid, sib)
         return changed
 
