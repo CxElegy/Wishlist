@@ -611,8 +611,15 @@
  "https://cdn.jk-daily.co.kr/news/photo/202611/42115_36219_590.png": {
   "w": 600,
   "h": 352,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.474,
+  "local": "pics/f90be76bf5623136.webp",
+  "out": [
+   1280,
+   751
+  ],
+  "why": "看不清"
  },
  "https://cdn.kfenews.co.kr/news/photo/202611/668014_141321_5557.jpg": {
   "w": 932,
@@ -3261,12 +3268,6 @@
   "target": 1280,
   "v": 3
  },
- "https://q8.itc.cn/images01/20261119/308bb60efc0f4d20909d33c088bebce5.jpeg": {
-  "w": 1098,
-  "h": 1139,
-  "target": 1280,
-  "v": 3
- },
  "https://q8.itc.cn/q_70/images03/20261117/1de15b44fe504f93a73a5366d5f3127b.jpeg": {
   "w": 690,
   "h": 1005,
@@ -3599,6 +3600,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3711,12 +3718,6 @@
   "w": 1600,
   "h": 900,
   "target": 720,
-  "v": 3
- },
- "https://static0.srcdn.com/wordpress/wp-content/uploads/sharedimages/2026/08/avengers-doomsday-poster.jpg?w=1200&h=675&fit=crop": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://sumahodigest.com/wp-content/uploads/2026/11/HW6zVaQXcAAkP6g.jpg": {
@@ -4140,12 +4141,6 @@
    922
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.PmBKIconqgsoL1ViHGJ-2A&pid=News&w=550": {
-  "w": 550,
-  "h": 301,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
   "w": 700,

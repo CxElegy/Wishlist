@@ -1,32 +1,32 @@
 {
- "admin": "755a395a2143",
- "admin-ai": "8ebdf90bbb94",
+ "admin": "3d79511f566c",
+ "admin-ai": "eae60431e882",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f73971ce"
+   "8625624e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "db9a7bad"
+   "5cf3ab5e"
   ]
  },
- "admin-boards": "245a639cd010",
+ "admin-boards": "912876ead589",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "bb76f35e"
+   "401753ef"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "2a8a1c2edfb1",
+ "admin-emblem": "c44d5c5dd9bd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d4f27c0c"
+   "e9313d49"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "ecacac1f04b1",
+ "admin-now": "28c36ab1d996",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d36f2904"
+   "3c8079ae"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "150c5ffc"
+   "93eaf5d6"
   ]
  },
- "admin-system": "7c2095b17123",
+ "admin-system": "3757a4515248",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e3055cf6"
+   "ae53b266"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "6364d46a"
+   "72f62797"
   ]
  },
  "admin_marks": {},
- "heat": "304222666d4c",
+ "heat": "fc7d29b66300",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "74b50882"
+   "b656c9fc"
   ],
   "ranking": [
    "ランキング",
-   "d4e43ee0"
+   "5214f872"
   ]
  },
- "index": "6ddc6df0b430",
+ "index": "8a0080337df7",
  "index_marks": {
   "front": [
    "トップ",
-   "7f5d26e6"
+   "82e1ac8c"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "7a5d06b5"
+   "80584494"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "6caa9619"
+   "73f07b93"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "23490520"
+   "e4b22f60"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "d05506f4"
+   "abae8266"
   ],
   "w-f303ad09": [
    "绝区零",
    "04ff7589"
   ]
  },
- "updated": "11.19 18:52",
+ "updated": "11.19 18:56",
  "wishlist": "77aab4a7256d"
 }
