@@ -318,11 +318,11 @@
   "チェーンソーマン": 5,
   "Vaundy": 1,
   "日本顶级网球赛事": 1,
-  "滑雪": 2,
+  "滑雪": 7,
   "绝区零": 2,
   "猫用品": 6,
   "星巴克马克杯": 3,
-  "ILLIT": 11,
+  "ILLIT": 15,
   "MMORPG 新作": 3,
   "哈利波特剧集": 3,
   "The Mandalorian": 2,
@@ -465,6 +465,34 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "白馬コルチナスキー場、夜も楽しめる新コンテンツ「Night Park」を2026-27シーズンに開始",
+   "highlight": "Night Park",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    5
+   ]
+  },
+  {
+   "headline": "無事故と降雪祈願 夏油高原スキー場で神事【北上】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "雅高首進北海道二世古 Mercure Niseko Resort 11/20開幕",
+   "highlight": "11/20開幕",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -617,7 +645,11 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    14,
+    15,
+    12,
+    13
    ]
   },
   {
