@@ -526,6 +526,7 @@ def cmd_kick(a):
 
 FAST_RE = re.compile(r"速い道の時刻 版面 (\d+)：取り始め \+(\d+)s・1 枚目 (?:\+(\d+)s|—)・書いた (?:\+(\d+)s|—)[^・\n]*・ページ (?:\+(\d+)s|—)[^・\n]*(?:・結果 (\S+))?")
 FAST_WHY = {"rejected": "候補が通らず", "none": "候補なし"}   # emblem_state.fast_why → 言葉（library_emblem.fresh_why と同じ）
+FAST_ZERO = set(FAST_WHY.values())   # 速い道が上限まで試して 0 枚：5 分の合否に入れず別に数える
 
 
 def fast_times(text):
@@ -551,7 +552,9 @@ def cmd_fastlog(a):
         log = subprocess.run(["gh", "run", "view", str(r["databaseId"]), "--log"], capture_output=True, text=True, encoding="utf-8").stdout
         for x in fast_times(log):
             rows.append({"run": r["databaseId"], "at": r["createdAt"], **x})
-            if x["why"] == "小元素あり" and (x["page"] is None or x["page"] >= limit):   # 5 分の合否は「小元素あり」の版面の「ページ」の秒で
+            # 赤：「候補が通らず」「候補なし」（上限まで試して 0 枚＝別に数える）でない版面のうち、ページが目標の秒に届かないもの。
+            # 小元素ありの遅れも、時間切れ・失敗（例外・rembg が入らない）も赤（見直し 5：小元素ありだけを見ると時間切れ・失敗が赤にならなかった）
+            if x["why"] not in FAST_ZERO and (x["page"] is None or x["page"] >= limit):
                 red.append(rows[-1])
     print(json.dumps(rows, ensure_ascii=False, indent=1))
     mix = {}
@@ -560,7 +563,7 @@ def cmd_fastlog(a):
     ok = [x["page"] for x in rows if x["why"] == "小元素あり" and x["page"] is not None]
     print("速い道の結果：" + "・".join(f"{k} {v}" for k, v in sorted(mix.items())) + (f"・小元素ありのページ 最長 {max(ok)} 秒" if ok else ""))
     for x in red:
-        print(f"赤 速い道 run {x['run']} 版面 {x['board']}：ページ {x['page']} 秒（起きてから {limit} 秒未満が目標）")
+        print(f"赤 速い道 run {x['run']} 版面 {x['board']}：{x['why']}・ページ {x['page']} 秒（起きてから {limit} 秒未満が目標）")
     cur = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
     cur["fast"] = {"at": iso(now()), "limit_s": limit, "rows": rows, "red": len(red), "mix": mix}
     OUT.parent.mkdir(parents=True, exist_ok=True)

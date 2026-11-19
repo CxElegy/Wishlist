@@ -173,6 +173,28 @@ class KickAndFastLog(unittest.TestCase):
                                    "速い道の時刻 版面 45：取り始め +90s・1 枚目 +150s・書いた +155s（書けず）・ページ +200s（終了 1）・結果 小元素あり")
         self.assertEqual([(x["board"], x["why"], x["page"]) for x in got], [(43, "候補が通らず", None), (44, "候補なし", None), (45, "小元素あり", 200)])
 
+    def test_fastlog_red_includes_timeouts_and_failures(self):
+        """見直し 5：赤は「候補が通らず」「候補なし」以外の全部（小元素ありの遅れ・時間切れ・失敗）。"""
+        import json as _j
+        import subprocess as _sp
+        log = ("速い道の時刻 版面 1：取り始め +90s・1 枚目 +150s・書いた +155s・ページ +200s・結果 小元素あり\n"
+               "速い道の時刻 版面 2：取り始め +90s・1 枚目 —・書いた +180s・ページ —・結果 時間切れ\n"
+               "速い道の時刻 版面 3：取り始め +90s・1 枚目 —・書いた +100s・ページ —・結果 失敗\n"
+               "速い道の時刻 版面 4：取り始め +90s・1 枚目 —・書いた +170s・ページ —・結果 候補が通らず\n"
+               "速い道の時刻 版面 5：取り始め +90s・1 枚目 —・書いた +100s・ページ —・結果 候補なし\n"
+               "速い道の時刻 版面 6：取り始め +90s・1 枚目 +250s・書いた +255s・ページ +320s・結果 小元素あり\n")
+
+        def run(args, **k):
+            out = _j.dumps([{"databaseId": 9, "createdAt": "2026-11-19T06:46:16Z"}]) if args[:3] == ["gh", "run", "list"] else log
+            return _sp.CompletedProcess(args, 0, out, "")
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(board_kpi, "OUT", pathlib.Path(d) / "latest.json"), \
+                mock.patch.object(board_kpi.subprocess, "run", run), contextlib.redirect_stdout(io.StringIO()):
+            board_kpi.cmd_fastlog(board_kpi.argparse.Namespace(runs=1))
+            got = _j.loads((pathlib.Path(d) / "latest.json").read_text(encoding="utf-8"))["fast"]
+        red = {x["board"] for x in got["rows"] if x["why"] not in board_kpi.FAST_ZERO and (x["page"] is None or x["page"] >= got["limit_s"])}
+        self.assertEqual(red, {2, 3, 6})
+        self.assertEqual(got["red"], 3)
+
     def test_report_counts_fast_results_apart(self):
         """2026-11-19 F4：速い道が上限まで試して 0 枚の版面は、小元素の段の「まだ出ない」（赤）にせず「候補が通らず／候補なし」で数える。"""
         run = {"t0": at(0), "boards": [dict(board("C", "a", **{k: v for k, v in GOOD_C.items() if k not in ("emblem", "page_emblem")}), fast="候補が通らず"),
