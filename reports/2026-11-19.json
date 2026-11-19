@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "edit_sig": "df6a1469b417",
+ "edit_sig": "e22ec0029b4e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -375,8 +375,9 @@
      "date": "2026-11-13",
      "headline": "日 NHK 홍백가합전 출연 가수 발표…아일릿·요아소비 등 출연",
      "highlight": "NHK 홍백가합전",
-     "image": "https://cdn.jk-daily.co.kr/news/photo/202611/42115_36219_590.png",
-     "image_via": "og:image",
+     "image": null,
+     "source": "재팬코리아데일리",
+     "source_icon": "https://cdn.jk-daily.co.kr/favicon.ico",
      "url": "https://www.jk-daily.co.kr/news/articleView.html?idxno=42115",
      "weight": "normal"
     },
@@ -437,22 +438,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 7,
-     "source": "PR TIMES",
-     "title": "【Neakasa】ブラックフライデー本セールが11月19日より開催！全自動猫トイレが最大33,000円OFF、先着限定プレゼントやアクセサリー最大15%OFFも！",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9fLVpPbWRHUkt3dFhvcS15RWVXbVRJUDVfWHNFcGhQTV81NlBGNUVTRjJkX0R5VnVEMGtobGY2V01YRFQtanRBQkxxMl80YmhqeFBlQlg4VHNZemxrM1Q4QVJaS1hLM0FUMnc?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 8,
-     "source": "報新聞 Mega News",
-     "title": "Neakasa黑色星期五11月30日止 全自動貓砂盆最多折3.3萬日圓、前20名送貓砂",
-     "url": "https://news.google.com/rss/articles/CBMi4gJBVV95cUxPdzNSbE5iTE5tMjZ0Qy1YVkZkYnVYNjlCOHppSGVMS0dNQ3ZOcHZXc3g3UVd1YzBxaXlDTkpoQ2xYLWhkMWZMZDRpZGpyaXVmZ1NjV3Vud2hoRnQ3WFc0dXBIZ05WSlVMdFU5c3daWXY4MUo5ZTlib2JwM1I2bFJKVEhFbTNCVjFDc3FfelE1Uk5SR1BFOFNNcTRlVmNLblhsM2NMT3V5dmJfU2NNRzB5Q0xTemFaYUN5dlRQSkM2eE5HTDZwZVRVcTlibE9WdlROS3MwR3lkTTVpMUhJTVRNei01TEh4QlFiMFhCb2JheE0wUHRSNHA3VnJ4YloydVNYLXA0Z1l1RDNURkhyb2NrUTN2bGNNNWhLa1hZbTJnUGIzckZBSUdhWVV4YkpwN3VxMjlEdlRnMk4yQlgwOXM3b2hFT3VDMzIzUHVHLTNvbmVsV0pDMTEwcGFuWHlmSDhxdnc?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -477,12 +462,15 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-18",
-     "headline": "Cat owners warned over fatal hazard lurking in homes this winter",
-     "highlight": "",
-     "image": "https://cdn.wamiz.fr/cdn-cgi/image/format=auto,quality=80,width=1200,height=675,fit=cover/article/main-picture/tabby-kitten-looking-side-on-from-camera-6afdda82c77be.png",
+     "date": "2026-11-19",
+     "headline": "【Neakasa】ブラックフライデー本セールが11月19日より開催！全自動猫トイレが最大33,000円OFF",
+     "highlight": "最大33,000円OFF",
+     "image": "https://prcdn.freetls.fastly.net/release_image/33130/380/33130-380-97e23811facc60de5363ca30768faf70-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
      "image_via": "og:image",
-     "url": "https://wamiz.co.uk/news/205100/cat-owners-warned-fatal-hazard-lurking-homes-winter",
+     "price": {
+      "now": "最大33,000円OFF"
+     },
+     "url": "https://prtimes.jp/main/html/rd/p/000000380.000033130.html",
      "weight": "normal"
     },
     {

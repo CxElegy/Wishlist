@@ -607,12 +607,6 @@
   ],
   "why": "看不清"
  },
- "https://cdn.jk-daily.co.kr/news/photo/202611/42115_36219_590.png": {
-  "w": 600,
-  "h": 352,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.kfenews.co.kr/news/photo/202611/668014_141321_5557.jpg": {
   "w": 932,
   "h": 524,
@@ -2666,12 +2660,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000165-spnannex-000-16-view.jpg?exp=10800": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-19"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00010009-tennisnet-000-1-view.jpg?pri=l&w=640&h=481&exp=10800": {
   "w": 640,
   "h": 481,
@@ -3057,6 +3045,12 @@
   "w": 1200,
   "h": 628,
   "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/33130/380/33130-380-97e23811facc60de5363ca30768faf70-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1672,
+  "h": 941,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/37505/183/37505-183-e777a4708c1445d69f248c00da7bbe84-1280x680.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
