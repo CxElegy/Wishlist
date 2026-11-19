@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-19T00:40:39+00:00",
+ "checked": "2026-11-19T01:02:06+00:00",
  "fired": {
   "at": "2026-11-19T00:40:39+00:00",
   "results": {
@@ -70,8 +70,11 @@
     "The Mandalorian",
     "dota2",
     "lib:サカナクション",
+    "lib:ポケモンGO",
     "lib:台風・天気",
     "lib:広島旅行",
+    "lib:牧野植物園",
+    "lib:藤井風",
     "あつ森",
     "周杰伦",
     "哈利波特剧集",
@@ -97,39 +100,41 @@
     "ILLIT",
     "The Mandalorian",
     "dota2",
+    "lib:ポケモンGO",
+    "lib:牧野植物園",
+    "lib:藤井風",
     "周杰伦",
     "星巴克马克杯",
     "漫威电影"
    ],
-   "sig": "665c93d4ad2a",
+   "sig": "9a10be1840b7",
    "token_cap": 1000000,
    "tokens_today": 306567,
-   "why": "整理待ちの記事 90 件（19 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 118 件（22 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "6181970e7012",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン"
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
