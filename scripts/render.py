@@ -4694,10 +4694,11 @@ FIT_JS = """
         const nat = natOf(im), cw = cwOf(c);
         p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); im.style.objectPosition = ''; c.classList.add('cmp');
         p.style.gridRow = '1 / span ' + Math.max(1, kids(c, p).length);   // 写真が字の行の数だけまたがる（9 段またぐと行の間の空きが下に残った）
-        let pw = cw * 0.4; for (let q = 0; q < 4; q++) { setPw(c, p, pw); pw = Math.min(cw * 0.6, Math.max(cw * 0.25, txh(c, p) * nat)); }
+        const HA = headArea(), cap = HA ? Math.sqrt(HA * 0.64 * nat) : Infinity;   // ② 頭条の写真の面積の 7 割まで
+        let pw = cw * 0.4; for (let q = 0; q < 4; q++) { setPw(c, p, pw); pw = Math.min(cap, cw * 0.6, Math.max(cw * 0.25, txh(c, p) * nat)); }
         setPw(c, p, pw);
         { const th = txh(c, p); if (th >= 48 && pw / th < nat * 0.92 && okRatio(im, nat / (pw / th))) p.style.setProperty('aspect-ratio', (pw / th).toFixed(4), 'important'); }   // 縦長で幅の下限に当たった写真：主役・字が欠けない切り方があれば字の高さに切る（B4）。無ければ写真の形のまま
-        if (txh(c, p) * nat > cw * 0.6 + 8) { cmpUn(c); p.style.gridRow = ''; c.classList.add('ban'); p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); }   // ③
+        if (txh(c, p) * nat > cw * 0.6 + 8 && cw * cw / nat <= HA * 0.64) { cmpUn(c); p.style.gridRow = ''; c.classList.add('ban'); p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); }   // ③
         form[i] = {c, p, nat, cw};
         if (p.classList.contains('trim') && im._bands) trimFit(im, p, im._bands); });
       return;
@@ -4862,6 +4863,14 @@ FIT_JS = """
 
 
 FIT_JS = FIT_JS.replace("// @EMB_REL@", EMB_REL_JS).replace("__FEW_WALL__", str(FEW_WALL))
+# 見出しの最後の行を 1〜2 字にしない（2026-11-19 店長 ①）：CSS の balance で残った見出しだけ、字の幅を 1 字ずつ狭めて折り直す（8 字まで・4 字の幅は残す）。狭められない細い列は字を 4% ずつ 16% まで小さくする（主経由の店長の決め：字の大きさを列に合わせ、最後の行を 3 字以上に）。
+# 全部のニュースの見出しに同じ決め（頭条だけの特例にしない）。幅が変わったときだけやり直す（F5）
+NOORPHAN_JS = r"""(()=>{const S='.top h2,.wc>b,section.sec article.card h2,section.sec article.card h3',rg=document.createRange();
+const last=el=>{const ys=[];const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);for(let n;(n=tw.nextNode());)for(let i=0;i<n.data.length;i++){if(!n.data[i].trim())continue;rg.setStart(n,i);rg.setEnd(n,i+1);const q=rg.getClientRects()[0];if(q&&q.width)ys.push(Math.round(q.top+q.height/2));}
+ if(!ys.length)return 99;const b=Math.max(...ys),h=parseFloat(getComputedStyle(el).fontSize)||16,n=ys.filter(y=>Math.abs(y-b)<h*0.5).length;return n===ys.length?99:n;};
+const go=()=>document.querySelectorAll(S).forEach(h=>{h.style.maxWidth=h.style.fontSize='';if(!h.offsetWidth||last(h)>=3)return;const w=h.getBoundingClientRect().width,em=parseFloat(getComputedStyle(h).fontSize)||16;
+ for(let k=1;k<=8&&w-k*em>=4*em;k++){h.style.maxWidth=(w-k*em)+'px';if(last(h)>=3)return;}h.style.maxWidth='';for(let s=1;s<=4;s++){h.style.fontSize=(em*(1-s*0.04)).toFixed(1)+'px';if(last(h)>=3)return;}h.style.fontSize='';});
+let W=innerWidth;(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(go,300));addEventListener('load',()=>{setTimeout(go,800);setTimeout(go,2500);});addEventListener('resize',()=>{if(innerWidth!==W){W=innerWidth;setTimeout(go,300);}});})();"""
 
 NAV_JS = """
 (() => {
@@ -5481,6 +5490,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 </div>
 <script>{NAV_JS}</script>
 <script>{FIT_JS}</script>
+<script>{NOORPHAN_JS}</script>
 {f"<script>{LIKEFX_JS}</script><script>{VOTE_JS.replace('__CFG__', json.dumps(fb))}</script>" if fb else ""}
 <script>{EMB_JS}</script>
 <script>{RB_JS}</script>
