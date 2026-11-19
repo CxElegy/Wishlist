@@ -155,7 +155,7 @@ JS_BODY = r"""
     if (txt.length && low > -1e8) { const g = ib - low; if (g > ih * P.cText && g >= P.cMin) why.push('字の下 ' + Math.round(g) + 'px'); }
     const right = Math.max(...kids.map(k => k.getBoundingClientRect().right)), gr = ir - right;
     if (gr > iw * P.cRight && gr >= P.cMin) why.push('右 ' + Math.round(gr) + 'px');
-    if (why.length) { bump('cgap'); why.forEach(w => bump('cgap_' + (w[0] === '写' ? 'photo' : w[0] === '字' ? 'text' : 'right'))); tag(c, 'cgap', why.join('・') + '（' + (c.querySelector('h2,h3') ? c.querySelector('h2,h3').innerText.trim().slice(0, 16) : '') + '）'); }
+    if (why.length) { bump('cgap'); if (c.matches('.wc')) bump('cgap_wall'); why.forEach(w => bump('cgap_' + (w[0] === '写' ? 'photo' : w[0] === '字' ? 'text' : 'right'))); tag(c, 'cgap', why.join('・') + '（' + (c.querySelector('h2,h3') ? c.querySelector('h2,h3').innerText.trim().slice(0, 16) : '') + '）'); }
   });
 
   // 5. 見出しの「…」
@@ -191,16 +191,16 @@ JS_BODY = r"""
   // 7〜12：新しい人のページの形（2026-11-19 店長が test-b を不合格にした 8 つ）。店長のページにも同じに当てる
   // 7. 見出しの最後の行が 1〜2 字（孤立。P.orphanMin 字未満）
   const lastLine = el => {
-    const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), rg = document.createRange(), lines = [];
+    const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), rg = document.createRange(), lines = [], bot = el.getBoundingClientRect().bottom + 1;   // 切って隠れた行は数えない
     for (let n; (n = tw.nextNode());) for (let i = 0; i < n.data.length; i++) {
       if (!n.data[i].trim()) continue;
-      rg.setStart(n, i); rg.setEnd(n, i + 1); const q = rg.getClientRects()[0]; if (!q || !q.width) continue;
+      rg.setStart(n, i); rg.setEnd(n, i + 1); const q = rg.getClientRects()[0]; if (!q || !q.width || q.bottom > bot) continue;
       const y = Math.round(q.top + q.height / 2), L = lines.find(l => Math.abs(l.y - y) < q.height * 0.5);
       if (L) L.n++; else lines.push({y, n: 1});
     }
     lines.sort((a, b) => a.y - b.y); return lines.length >= 2 ? lines[lines.length - 1].n : 99;
   };
-  [...document.querySelectorAll('.top h2 .hb, .wall > .wc > b, section.sec article.card h2, section.sec article.card h3')].forEach(h => {
+  [...document.querySelectorAll('.top h2 .hb, .wall > .wc > b, section.sec article.card h2, section.sec article.card h3, .top p, .wc > .wbl, section.sec article.card p.blurb')].forEach(h => {   // 要約も（11-19 主の指摘 3）
     if (!vis(h) || h.closest('details:not([open])')) return;
     bump('orphanHeads'); const n = lastLine(h);
     if (n < P.orphanMin) { bump('orphan'); tag(h, 'orphan', '最後の行 ' + n + ' 字（' + (h.innerText || '').trim().slice(-8) + '）'); }
@@ -291,6 +291,7 @@ def page_counts(pg):
     for i in items:
         out[i["kind"]] = out.get(i["kind"], 0) + 1
         notes.setdefault(i["kind"], []).append(i["note"])
+    out["cgap_wall"] = x["stats"].get("cgap_wall", 0)   # cgap のうち「ほかの注目」の壁のカード（版面の小さいカードの前からの分と分けて数える）
     out["_notes"] = {k: v[:6] for k, v in notes.items()}
     out["_stats"] = x["stats"]
     return out
@@ -301,7 +302,7 @@ def new_user_counts(url, browser_, views=NEW_USER_VIEWS):
     import self_review
     res = {}
     for w, h in views:
-        ctx = browser_.new_context(viewport={"width": w, "height": h}, locale="ja-JP", has_touch=w <= 760, is_mobile=w <= 760)
+        ctx = browser_.new_context(viewport={"width": w, "height": h}, locale="ja-JP", has_touch=w <= 760, is_mobile=w <= 760, reduced_motion="reduce")   # 演出（Blur Text）の途中を数えない：描き終わった形を数える
         pg = ctx.new_page()
         pg.goto(url, wait_until="load", timeout=60000)
         self_review.load_all(pg)

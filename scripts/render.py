@@ -194,7 +194,7 @@ button{font-family:inherit}
 /* ニュースの見出しは最後の行を 1〜2 字にしない（2026-11-19 店長 ①「始」1 字）：全部の見出しに同じ決め＝行の長さをそろえる（balance。行の数は増やさない＝版面の高さを変えない）。残りは NOORPHAN_JS が直す */
 .top h2,.wc>b,section.sec article.card :is(h2,h3),.pend li a{text-wrap:balance}
 .top:hover .hb{background:var(--deep,var(--ink))}
-.top p{margin:0;max-width:560px;font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.top p{margin:0;max-width:560px;font-size:14px;line-height:1.7;max-height:calc(1.7em * 3);overflow:hidden;text-wrap:pretty}   /* 要約は「…」を付けず行の終わりで切る（D3・11-19 主の指摘 3） */
 .startgo{display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;min-height:56px;padding:10px 26px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
  font:900 19px/1.3 var(--font-sans);letter-spacing:.04em;text-decoration:none;box-shadow:5px 5px 0 var(--ink);transform:skewX(var(--skew,-10deg))}
 .startgo:hover,.startgo:focus-visible{background:var(--card);box-shadow:2px 2px 0 var(--ink)}
@@ -277,7 +277,8 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .fside>.agenda li b small{color:var(--card0);opacity:.78}
 /* 空の脇の箱は 1 行の細い帯（2026-11-19 店長の決め：A7・C4。F3「箱は出す」はこの帯で満たす）。両方とも空なら右の列を作らず壁の上に 1 本（.fstrip）・壁は横いっぱい */
 .fstrip{display:flex;flex-wrap:wrap;gap:10px 16px}
-.wc>.wbl{margin:0;font-size:13px;line-height:1.7}   /* 記事が少ない壁（FEW_WALL 本以下）は要約も出し、写真の高さまで字で埋める（A1・A6） */
+.wc>.wbl{margin:0;font-size:13px;line-height:1.7;text-wrap:pretty}.wc:has(>.wbl)>b{min-height:0}   /* 要約のある壁のカード（記事が少ない時）は見出しを 3 行分の高さに取らない：見出しと要約の間を空けない（11-19 主の指摘 4） */
+@media (max-width:760px){.wc:not(.lead)>.wbl{grid-column:1/-1;grid-row:auto}}   /* スマホの要約はカードの幅いっぱい（写真の下の細い列に字を流さない・写真の下を空けない。11-19 主の指摘 1） */   /* 記事が少ない壁（FEW_WALL 本以下）は要約も出し、写真の高さまで字で埋める（A1・A6） */
 .fstrip>*{flex:1 1 440px;min-width:0;--ink:var(--card0);--card:var(--ink0);background:var(--ink0);color:var(--card0);border:2px solid var(--ink0);box-shadow:4px 4px 0 var(--rose)}
 .fside>.sline{flex:none!important}
 :is(.fside,.fstrip)>.sline{display:flex!important;align-items:center;flex-wrap:wrap;gap:4px 12px;padding:6px 12px}
@@ -4660,7 +4661,7 @@ FIT_JS = """
     // ① 切ってよい写真（主役・文字が欠けない）は、枠を字の列の高さに切る ② 切れない写真は、写真の列の幅を「字の列の高さ × 写真の比率」に変えて高さを合わせる
     // ③ 合わない横長の写真は、写真を上・字を下（.ban。枠は写真の形・普通のカードと同じ flex の縦積み） ④ どれも合わなければ小さい形にしない（false：普通の形のまま）
     // 戻すときは fit が決めた枠の比率（inline の aspect-ratio）に戻す（消すと height:auto だけ残り、枠が 0px に潰れた）
-    const cmpUn = c => { c.classList.remove('cmp', 'ban'); c.style.gridTemplateColumns = ''; const p = c.querySelector(':scope > .pic'); if (p) p.style.gridRow = ''; if (p && '_a0' in p) { p.style.removeProperty('aspect-ratio'); if (p._a0) p.style.aspectRatio = p._a0; delete p._a0; } };
+    const cmpUn = c => { c.classList.remove('cmp', 'ban'); c.style.gridTemplateColumns = c.style.gridTemplateRows = ''; const p = c.querySelector(':scope > .pic'); if (p) p.style.gridRow = ''; if (p && '_a0' in p) { p.style.removeProperty('aspect-ratio'); if (p._a0) p.style.aspectRatio = p._a0; delete p._a0; } };
     const cmpForm = c => {
       cmpUn(c);
       const p = c.querySelector(':scope > .pic'), im = p && img0(p); if (!im || !im.naturalWidth) return false;
@@ -4693,7 +4694,7 @@ FIT_JS = """
         const im = img0(p); if (!im || !im.naturalWidth) return;
         const nat = natOf(im), cw = cwOf(c);
         p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); im.style.objectPosition = ''; c.classList.add('cmp');
-        p.style.gridRow = '1 / span ' + Math.max(1, kids(c, p).length);   // 写真が字の行の数だけまたがる（9 段またぐと行の間の空きが下に残った）
+        { const n = Math.max(1, kids(c, p).length); c.style.gridTemplateRows = 'repeat(' + n + ',min-content) 1fr'; p.style.gridRow = '1 / span ' + (n + 1); }   // 写真が字の行の数＋1 だけまたがる：写真が字より高い分は最後の行に入り、札・日付・見出し・要約の間に散らない（11-19 主の指摘 4）
         const HA = headArea(), cap = HA ? Math.sqrt(HA * 0.64 * nat) : Infinity;   // ② 頭条の写真の面積の 7 割まで
         let pw = cw * 0.4; for (let q = 0; q < 4; q++) { setPw(c, p, pw); pw = Math.min(cap, cw * 0.6, Math.max(cw * 0.25, txh(c, p) * nat)); }
         setPw(c, p, pw);
@@ -4863,13 +4864,13 @@ FIT_JS = """
 
 
 FIT_JS = FIT_JS.replace("// @EMB_REL@", EMB_REL_JS).replace("__FEW_WALL__", str(FEW_WALL))
-# 見出しの最後の行を 1〜2 字にしない（2026-11-19 店長 ①）：CSS の balance で残った見出しだけ、字の幅を 1 字ずつ狭めて折り直す（8 字まで・4 字の幅は残す）。狭められない細い列は字を 4% ずつ 16% まで小さくする（主経由の店長の決め：字の大きさを列に合わせ、最後の行を 3 字以上に）。
+# 見出しの最後の行を 1〜2 字にしない（2026-11-19 店長 ①）：CSS の balance で残った見出しだけ、列の幅を保ったまま ① 字間を 0.01em ずつ ② 字を 4% ずつ小さく ③ 字を 4% ずつ大きく、の順に試し、だめなときだけ ④ 幅を 1 字ずつ狭める（主経由の店長の決め 1：列を埋め、最後の行を 3 字以上に。11-19 主の指摘 2）。要約（.top p・.wbl・.blurb）も同じ決め。
 # 全部のニュースの見出しに同じ決め（頭条だけの特例にしない）。幅が変わったときだけやり直す（F5）
-NOORPHAN_JS = r"""(()=>{const S='.top h2,.wc>b,section.sec article.card h2,section.sec article.card h3',rg=document.createRange();
-const last=el=>{const ys=[];const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);for(let n;(n=tw.nextNode());)for(let i=0;i<n.data.length;i++){if(!n.data[i].trim())continue;rg.setStart(n,i);rg.setEnd(n,i+1);const q=rg.getClientRects()[0];if(q&&q.width)ys.push(Math.round(q.top+q.height/2));}
+NOORPHAN_JS = r"""(()=>{const S='.top h2,.wc>b,section.sec article.card h2,section.sec article.card h3,.top p,.wc>.wbl,section.sec article.card p.blurb',rg=document.createRange();
+const last=el=>{const ys=[],bot=el.getBoundingClientRect().bottom+1;const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);for(let n;(n=tw.nextNode());)for(let i=0;i<n.data.length;i++){if(!n.data[i].trim())continue;rg.setStart(n,i);rg.setEnd(n,i+1);const q=rg.getClientRects()[0];if(q&&q.width&&q.bottom<=bot)ys.push(Math.round(q.top+q.height/2));}
  if(!ys.length)return 99;const b=Math.max(...ys),h=parseFloat(getComputedStyle(el).fontSize)||16,n=ys.filter(y=>Math.abs(y-b)<h*0.5).length;return n===ys.length?99:n;};
-const go=()=>document.querySelectorAll(S).forEach(h=>{h.style.maxWidth=h.style.fontSize='';if(!h.offsetWidth||last(h)>=3)return;const w=h.getBoundingClientRect().width,em=parseFloat(getComputedStyle(h).fontSize)||16;
- for(let k=1;k<=8&&w-k*em>=4*em;k++){h.style.maxWidth=(w-k*em)+'px';if(last(h)>=3)return;}h.style.maxWidth='';for(let s=1;s<=4;s++){h.style.fontSize=(em*(1-s*0.04)).toFixed(1)+'px';if(last(h)>=3)return;}h.style.fontSize='';});
+const go=()=>document.querySelectorAll(S).forEach(h=>{h.style.maxWidth=h.style.fontSize=h.style.letterSpacing='';if(!h.offsetWidth||last(h)>=3)return;const w=h.getBoundingClientRect().width,em=parseFloat(getComputedStyle(h).fontSize)||16;
+ for(let s=1;s<=4;s++){h.style.letterSpacing=(-0.01*s).toFixed(2)+'em';if(last(h)>=3)return;}h.style.letterSpacing='';for(let s=1;s<=4;s++){h.style.fontSize=(em*(1-s*0.04)).toFixed(1)+'px';if(last(h)>=3)return;}h.style.fontSize='';for(let s=1;s<=4;s++){h.style.fontSize=(em*(1+s*0.04)).toFixed(1)+'px';if(last(h)>=3&&h.getBoundingClientRect().width<=w+1)return;}h.style.fontSize='';for(let k=1;k<=8&&w-k*em>=4*em;k++){h.style.maxWidth=(w-k*em)+'px';if(last(h)>=3)return;}h.style.maxWidth='';});
 let W=innerWidth;(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(go,300));addEventListener('load',()=>{setTimeout(go,800);setTimeout(go,2500);});addEventListener('resize',()=>{if(innerWidth!==W){W=innerWidth;setTimeout(go,300);}});})();"""
 
 NAV_JS = """
