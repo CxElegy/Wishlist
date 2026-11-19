@@ -130,12 +130,6 @@
    0.666
   ]
  },
- "http://p0.qhimg.com/t11508c75c8220d5d5beea7637c.jpg": {
-  "w": 815,
-  "h": 522,
-  "target": 1280,
-  "v": 3
- },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -2254,6 +2248,12 @@
  "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg": {
   "w": 1280,
   "h": 672,
+  "target": 720,
+  "v": 3
+ },
+ "https://image.fnnews.com/resource/media/image/2026/11/19/202611191816264459_e.jpg": {
+  "w": 1050,
+  "h": 1400,
   "target": 720,
   "v": 3
  },

@@ -1,10 +1,10 @@
 {
- "admin": "3d986aaef4cd",
- "admin-ai": "34bc7578ac00",
+ "admin": "118b606fd22c",
+ "admin-ai": "5d2f6ef97a0e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9d91b44a"
+   "dc7953c1"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "962239a1b031",
+ "admin-emblem": "38b578c2bf5d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "87f0ed2a"
+   "bee80adb"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "040e3e17999a",
+ "admin-now": "f941ea85334a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c41d2829"
+   "f08f4334"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "3b34ee28"
   ]
  },
- "admin-system": "acb86815edef",
+ "admin-system": "f10cbc59e57c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "63414871"
+   "ed03051c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "86082981"
+   "02fb9fe8"
   ]
  },
  "admin_marks": {},
- "heat": "04bdb5c210a4",
+ "heat": "33e07ea40cfd",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "98da9582"
+   "fa2e9650"
   ],
   "ranking": [
    "ランキング",
-   "54d8a723"
+   "2c7c20c2"
   ]
  },
- "index": "6394b8999070",
+ "index": "801e421ae99a",
  "index_marks": {
   "front": [
    "トップ",
-   "db8d864a"
+   "08de00a6"
   ],
   "picks": [
    "気になるかも？",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "cf860c06"
+   "2d13ff00"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "9cb96dc9"
+   "6041e513"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "0ad5fffd"
+   "5050a5fd"
   ]
  },
- "updated": "11.19 22:43",
+ "updated": "11.19 22:53",
  "wishlist": "307bdfd6c446"
 }
