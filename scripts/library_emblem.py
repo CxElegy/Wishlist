@@ -943,11 +943,13 @@ def fresh_fill(board, follow, upload, base, end, fill=None, get=None, now=None, 
     stop = min(end, time.time() + FRESH_BOARD_S)
     get = _memo_get(get)
     b, tried, found, usable, passes = board, [], 0, 0, 0
+    acc = {}   # 回ごとの差を積む（fill_board は「渡した config と違う鍵」だけ返す：2 回目からは 1 回目の結果を足した config と比べるので、積まないと 1 回目の名簿・分類・reject が書かれない）
     while True:
         res = {}
         with fresh_limits(stop):
             add = fill_board(b, follow, upload, base, fill=fill, get=get, now=now, fetch=fetch, result=res)
         passes += 1
+        acc.update({k: v for k, v in add.items() if k != "emblem_state"})
         st = add["emblem_state"]
         fun = res.get("funnel") or {}
         found, usable = found + int(fun.get("found") or 0), usable + int(fun.get("usable") or 0)
@@ -961,6 +963,7 @@ def fresh_fill(board, follow, upload, base, end, fill=None, get=None, now=None, 
         if "rounds" in (cfg(b).get("emblem_state") or {}) or rounds0:
             nxt["rounds"] = rounds0
         b = {**b, "config": {**cfg(b), **add, "emblem_state": {**nxt, "fast_tried": tried}}}
+    add = {**acc, **add}   # 全部の回の鍵＋最後の回の emblem_state
     if st.get("state") != "ok":
         st.pop("m", None)
         if "rounds" in st:

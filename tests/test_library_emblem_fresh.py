@@ -173,6 +173,24 @@ class Continue(unittest.TestCase):
         self.assertEqual(st.get("rounds", 0), 0)   # 回の番号は進めない
         self.assertEqual(le.fresh_why(st), "小元素あり")
 
+    def test_keys_found_in_the_first_pass_are_written(self):
+        """見直し 2：fill_board は渡した config と違う鍵だけ返す。2 回目からは 1 回目の結果を足した config と比べるので、
+        積まないと 1 回目に見つけた名簿・分類・reject が DB に書かれなかった。"""
+        n = [0]
+
+        def fake(item, log=None):
+            n[0] += 1
+            if n[0] == 1:
+                p = emblem_fill.ROOT / "items.yaml"
+                p.write_text(p.read_text(encoding="utf-8") + '    emblem_who: ["A","B","C","D","E","F","G"]\n    emblem_category: "Main"\n'
+                             '    emblem_reject: ["https://e.org/bad.png"]\n', encoding="utf-8")
+            return {"state": "failed", "note": "x", "want": ["A", "B", "C"] if n[0] == 1 else ["D", "E", "F"], "funnel": {"found": 1, "usable": 0}}
+        add = le.fresh_fill(self.board, {"section": "游戏"}, lambda n, d: None, BASE, time.time() + 600, fill=fake, now=NOW)
+        self.assertGreaterEqual(n[0], 2)
+        self.assertEqual(add.get("emblem_who"), ["A", "B", "C", "D", "E", "F", "G"])
+        self.assertEqual(add.get("emblem_category"), "Main")
+        self.assertEqual(add.get("emblem_reject"), ["https://e.org/bad.png"])
+
     def test_whole_roster_without_a_pass_is_rejected_not_fingerprinted(self):
         add, seen = self.run_fill([(["A", "B", "C"], 2, 1, False), (["D"], 1, 0, False), (["A"], 0, 0, False)])
         st = add["emblem_state"]
