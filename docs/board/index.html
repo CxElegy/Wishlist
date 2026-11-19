@@ -142,7 +142,7 @@ legend{padding:0 8px;color:var(--fg)}
   <h2>$ agentboard login</h2>
   <p>係の様子は非公開のリポジトリ <b class="c-white">cxelegy/agentboard</b> にあります。読む鍵（GitHub の令牌）をこの端末に 1 回だけ貼ってください。令牌はこの端末の中にだけ残ります。</p>
   <ol>
-   <li><a href="https://github.com/settings/personal-access-tokens/new?name=AgentBoard&description=AgentBoard%20%E3%81%AE%E7%94%BB%E9%9D%A2%E3%81%8C%20cxelegy%2Fagentboard%20%E3%82%92%E8%AA%AD%E3%82%80%E3%83%BB%E4%BC%9D%E8%A8%80%E3%82%92%E9%80%81%E3%82%8B&target_name=CxElegy&expires_in=366&contents=write" target="_blank" rel="noopener" class="c-lead">GitHub で令牌を作る</a>（名前・期限・Contents の書き込みは入れてあります）</li>
+   <li><a id="newtok" href="https://github.com/settings/personal-access-tokens/new?name=AgentBoard&description=AgentBoard%20%E3%81%AE%E7%94%BB%E9%9D%A2%E3%81%8C%20cxelegy%2Fagentboard%20%E3%82%92%E8%AA%AD%E3%82%80%E3%83%BB%E4%BC%9D%E8%A8%80%E3%82%92%E9%80%81%E3%82%8B&target_name=CxElegy&expires_in=366&contents=write" target="_blank" rel="noopener" class="c-lead">GitHub で令牌を作る</a>（この端末用の名前・説明・期限・Contents の書き込みは入れてあります）</li>
    <li>Repository access：<b class="c-white">Only select repositories</b> → <b class="c-white">agentboard</b> を選ぶ（ここだけ手で）</li>
    <li>Generate token → <span class="c-white">github_pat_…</span> を下に貼って Enter</li>
   </ol>
@@ -372,6 +372,12 @@ $('tokf').onsubmit=function(ev){
   }).catch(function(e){tok=null;$('err').textContent=e&&e.auth?'この令牌は使えません':(e&&e.msg)||'読めませんでした'});
 };
 $('logout').onclick=function(){forget('令牌を外しました')};
+// 令牌の名前はこの端末用に決めておく（GitHub は同じ名前の令牌を 2 つ作れない）：agentboard-<端末>-<日付>
+(function(){var ua=navigator.userAgent||'',a=$('newtok');if(!a)return;
+  var dev=/iPhone|iPod|Android.+Mobile/.test(ua)?'phone':/iPad|Android/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1)?'tablet':/Macintosh/.test(ua)?'mac':'pc';
+  var d=new Date(),ymd=d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2)+('0'+d.getDate()).slice(-2);
+  try{var u=new URL(a.href);u.searchParams.set('name','agentboard-'+dev+'-'+ymd);a.href=u.toString()}catch(e){}
+})();
 document.addEventListener('visibilitychange',function(){if(!document.hidden&&(tok||demo))tick()});
 
 // 店長の伝言 → inbox/<t>.json（BRAIN は ab.py inbox で読み、ab.py reply で返す）
