@@ -1,32 +1,32 @@
 {
- "admin": "e5cb6e9130b0",
- "admin-ai": "5b125c89cdbc",
+ "admin": "d45bfd4f67e7",
+ "admin-ai": "1033b2199a9d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "2dd9d80e"
+   "0f87a8b2"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ea672e0b"
   ]
  },
- "admin-boards": "ac8ad5631b36",
+ "admin-boards": "426b6f644b43",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "bdb93bd9"
+   "7c50b0cb"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "ab7e6b0442d0",
+ "admin-emblem": "d8bb081f45b8",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "99718107"
+   "90c5c118"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "338985250654",
+ "admin-now": "c8da51483b87",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f32e72c4"
+   "e5af0398"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "1607a29e"
+   "1c9ad955"
   ],
   "term-panel": [
    "ライブログ",
-   "ba399d04"
+   "7ebfcfd9"
   ]
  },
- "admin-system": "bb176f0db54f",
+ "admin-system": "c2fae61b5233",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "71f7c653"
+   "b62eaea4"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b37d6030"
+   "da8ca1ba"
   ]
  },
  "admin_marks": {},
- "heat": "f1413649a544",
+ "heat": "04bdb5c210a4",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "f322675d"
+   "98da9582"
   ],
   "ranking": [
    "ランキング",
-   "6e064903"
+   "54d8a723"
   ]
  },
- "index": "8056a54b69f9",
+ "index": "745f8b4d59dc",
  "index_marks": {
   "front": [
    "トップ",
-   "db8d864a"
+   "4aa8e801"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "4ed7fc33"
+   "84ddd0c7"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "4ee7ae5d"
+   "f1837d11"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "2d12825a"
+   "a64ce1b5"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "6041e513"
+   "9cb96dc9"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "0ad5fffd"
+   "be86670e"
   ]
  },
- "updated": "11.19 22:19",
+ "updated": "11.19 22:30",
  "wishlist": "77aab4a7256d"
 }
