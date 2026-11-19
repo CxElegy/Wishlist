@@ -38,7 +38,7 @@ def start(board, project):
             return "running"
     except (OSError, ValueError):
         pass
-    args = [sys.executable or "python3", str(board / "collect.py"), "--loop", "30"]
+    args = [sys.executable or "python3", str(board / "collect.py"), "--loop", "5"]
     if project and (pathlib.Path(project) / "harness").is_dir():
         args += ["--wishlist", str(project)]
     with open(board / ".collector.log", "ab") as log:

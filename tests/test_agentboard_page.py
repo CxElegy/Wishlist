@@ -69,7 +69,7 @@ class Browser(unittest.TestCase):
         cls.pw.stop()
 
     def open(self, w, h, q="?demo", token=None, gql=None, put=None):
-        ctx = self.b.new_context(viewport={"width": w, "height": h})
+        ctx = self.b.new_context(viewport={"width": w, "height": h}, reduced_motion="reduce")   # 中身の試験は動きなしで（字が打ち終わるのを待たない）
         p = ctx.new_page()
         errs = []
         p.on("pageerror", lambda e: errs.append(str(e)))
@@ -98,6 +98,26 @@ class Browser(unittest.TestCase):
         self.assertGreater(m["cloud"], 0)                     # PC とクラウドの係が同じ並びに
         self.assertGreaterEqual(m["log"], 10)
         self.assertTrue(m["advLeft"])                         # advisor は左の縦の列
+        # いまの Claude：会話ごとに状態・最後に頼んだこと・いまの道具。押すと流れが開く
+        rows = p.locator("#now .card")
+        self.assertEqual(rows.count(), 6)
+        self.assertEqual(p.locator("#now .card.st-working").count(), 2)
+        for cls in ("st-ask", "st-quiet", "st-yours", "st-idle"):
+            self.assertEqual(p.locator("#now .card." + cls).count(), 1, cls)
+        # 札：枠の色＝モデル・大きなモデル名・30 分の棒グラフ・動いている係のチップ
+        self.assertIn("b-opus", rows.first.get_attribute("class"))
+        self.assertEqual(rows.first.locator(".mdl b").inner_text(), "OPUS 5.5")
+        self.assertEqual(rows.first.locator(".spark i").count(), 30)
+        harness = p.locator("#now .card", has_text="ハーネス v2")
+        self.assertEqual(harness.locator(".chip").count(), 2)
+        self.assertEqual(harness.locator(".chip.stuck").count(), 1)               # 19 分 動かない Haiku の係は赤
+        self.assertIn("Fable 1", p.inner_text("#nowmix"))
+        first = rows.first
+        self.assertIn("作業中", first.inner_text())
+        self.assertTrue(first.locator(".tl").is_hidden())
+        first.locator(".ttl").click()
+        self.assertTrue(first.locator(".tl").is_visible())
+        self.assertIn("道具がエラー", first.locator(".tl").inner_text())
         p.fill("#text", "見本の伝言")
         p.press("#text", "Enter")
         self.assertIn("見本の伝言", p.inner_text("#msgs"))
@@ -119,7 +139,13 @@ class Browser(unittest.TestCase):
         pc = host("pc", "pc", now, [ag("fix:T-0242", "Sonnet 5.5", "sonnet", "running", now), ag("check:T-0242", "Haiku 5.5", "haiku", "running", now, quiet=30)],
                   site={"main": {"sha": "abc1234", "t": now - 600, "msg": "出刊"}, "backlog": {"open": 7, "doing": 1, "ask": 2, "top": "写真の下の空き"}},
                   harness={"queue": {"open": 7, "claimed": 1, "waiting": 2}, "choices": [{"task": "T-0236", "question": "目次の色", "url": "https://example.com/c"}]})
-        cl = host("cloud", "cloud-3136e785", now, [ag("写真の出どころ調べ", "Opus 5.5", "opus", "done", now, result="直すのは高さ")], brain_model="Opus 5.5")
+        cl = host("cloud", "cloud-3136e785", now, [ag("写真の出どころ調べ", "Opus 5.5", "opus", "done", now, result="直すのは高さ")], brain_model="Opus 5.5",
+                  sessions=[{"id": "3136e785", "project": "Wishlist", "title": "AgentBoard の会話", "model": "Opus 5.5", "fam": "opus", "state": "working",
+                             "t1": now - 3, "turn_t0": now - 300, "turn_tools": 9, "action": "書き換える：docs/board/index.html", "prompt": "実時間で見えるように",
+                             "said": "", "sub": 0, "link": "session_01Live", "events": [{"t": now - 3, "text": "書き換える：docs/board/index.html", "err": False}]}])
+        old = host("pc", "pc", now - 3600, [], sessions=[{"id": "50b60877", "project": "Claude", "title": "古い PC の会話", "model": "Fable 5.2", "fam": "fable",
+                                                         "state": "working", "t1": now - 3600, "turn_tools": 1, "action": "x", "prompt": "y", "said": "", "sub": 0, "events": []}])
+        old["host"], old["ts"] = "pc-old", now - 3600              # 1 時間 届いていない機械
         cl["brain"].update(link="session_01Cloud", name="クラウドの主")          # ab.py whoami の名札
         seen = {"q": 0, "put": None}
 
@@ -130,7 +156,7 @@ class Browser(unittest.TestCase):
                 return route.fulfill(json={"data": {"ab": {"name": "agentboard"}}})
             node = lambda h: {"name": "live-" + h["host"], "target": {"committedDate": "x", "file": {"object": {"text": json.dumps(h, ensure_ascii=False)}}}}
             tree = lambda rows: {"entries": [{"name": f"{i}.json", "object": {"text": json.dumps(r, ensure_ascii=False)}} for i, r in enumerate(rows)]}
-            route.fulfill(json={"data": {"ab": {"live": {"nodes": [node(pc), node(cl)]},
+            route.fulfill(json={"data": {"ab": {"live": {"nodes": [node(pc), node(cl), node(old)]},
                                                 "agents": tree([{"role": "主の会話", "task": "brain", "note": "伝言を読んだ", "where": "cloud", "status": "working", "ts": now - 60, "started": now - 600, "session": "session_01AbC"}]),
                                                 "inbox": tree([{"t": 1, "text": "写真もっと大きく", "to": "both"}]), "outbox": tree([{"t": 2, "re": "1", "text": "了解", "who": "PC の BRAIN"}]), "pcsum": None},
                                          "wl": {"pullRequests": {"nodes": [{"number": 1111, "title": "直す", "state": "OPEN", "merged": False, "updatedAt": "x",
@@ -150,6 +176,13 @@ class Browser(unittest.TestCase):
         self.assertEqual(p.locator("#agents .ag.stuck").count(), 1)                    # 30 分 動かない Haiku
         self.assertEqual(p.locator("#agents a.open").count(), 1)                       # session_ の会話だけ「開く」
         self.assertIn("pc,cloud-3136e785", p.inner_text("#status"))
+        now_rows = p.locator("#now .card")
+        self.assertEqual(now_rows.count(), 2)
+        self.assertIn("実時間で見えるように", now_rows.first.inner_text())                  # 最後に頼んだこと
+        self.assertIn("書き換える：docs/board/index.html", now_rows.first.inner_text())     # いまの道具
+        self.assertEqual(now_rows.first.locator("a.open").get_attribute("href"), "https://claude.ai/code/session_01Live")
+        self.assertIn("届いていない", now_rows.nth(1).inner_text())                         # 止まった機械の会話は「作業中」と言わない
+        self.assertIn("秒前に届いた", p.inner_text("#nowage"))
         self.assertIn("クラウドの主", p.inner_text("#lead"))                         # BRAIN の箱に会話の名前と「開く」
         self.assertEqual(p.locator("#lead a.open").get_attribute("href"), "https://claude.ai/code/session_01Cloud")
         p.fill("#text", "AgentBoard 見えた")
@@ -159,6 +192,35 @@ class Browser(unittest.TestCase):
         import base64
         self.assertEqual(json.loads(base64.b64decode(seen["put"]["content"]).decode())["text"], "AgentBoard 見えた")
         p.close()
+
+    def test_motion_effects(self):
+        """React Bits の動き（DecryptedText・StarBorder・ShinyText・Micro Slats 風の棒・LetterGlitch）が動き、最後は正しい字になる"""
+        ctx = self.b.new_context(viewport={"width": 1440, "height": 900})
+        p = ctx.new_page()
+        errs = []
+        p.on("pageerror", lambda e: errs.append(str(e)))
+        p.route(re.compile(r"https://fonts\.(googleapis|gstatic)\.com/.*"), lambda r: r.abort())
+        p.goto(PAGE.as_uri() + "?demo")
+        p.wait_for_timeout(1600)
+        self.assertEqual(errs, [])
+        self.assertEqual(p.inner_text(".title b"), "AGENTBOARD")                         # 乱れた字から戻った
+        card = p.locator("#now .card.st-working").first
+        self.assertNotEqual(p.evaluate("e=>getComputedStyle(e,'::before').animationName", card.element_handle()), "none")   # 縁を光が走る
+        self.assertEqual(card.locator(".shine").count(), 1)
+        self.assertNotEqual(card.locator(".spark i").first.evaluate("e=>getComputedStyle(e).transform"), "")
+        self.assertTrue(p.is_visible("#bgfx"))
+        # Magic UI：Animated Beam（動いている係・止まりの係へ線＝見本は 4 本）・Border Beam（選んでほしい札）・Animated List（記録の行）
+        self.assertEqual(p.locator("#beams g").count(), 4)
+        self.assertEqual(p.locator("#beams .glow.stuck").count(), 1)
+        self.assertEqual(p.locator(".card.st-ask .bbeam").evaluate("e=>getComputedStyle(e).animationName"), "bspin")
+        self.assertEqual(p.locator(".card.st-working .bbeam").first.evaluate("e=>getComputedStyle(e).display"), "none")
+        self.assertGreaterEqual(p.locator("#log .r").count(), 10)
+        # 5 秒ごとに読み直しても札は作り直さない（動きが始めからにならない）
+        h = card.element_handle()
+        p.evaluate("()=>{}")
+        p.wait_for_timeout(5600)
+        self.assertTrue(h.evaluate("e=>e.isConnected"))
+        ctx.close()
 
     def test_token_name_per_device(self):
         ctx = self.b.new_context(viewport={"width": 390, "height": 844},
