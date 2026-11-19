@@ -25,6 +25,7 @@
   "https://memeburn.com/galaxy-tab-s12-vs-galaxy-tab-s10/": "https://memeburn.com/wp-content/uploads/2026/11/Galaxy-Tab-S12-vs-Galaxy-Tab-S10-Is-Samsungs-Newer-Tablet-Worth-the-Premium.jpg",
   "https://news.jkn.co.kr/editions/chinese/post/1098502": "https://images.jkn.co.kr/data/images/full/111/64/1116440.jpg?v=1794792282&width=1200",
   "https://news.nicovideo.jp/watch/nw19989291": "https://www.bing.com/th?id=ONUT.OOJfb-VcFRjRtGR5auQJ6w&pid=News&w=615",
+  "https://news.nicovideo.jp/watch/nw20000894?news_ref=20_20": "https://prcdn.freetls.fastly.net/release_image/38757/32/38757-32-f364540e2133fbf20c201aaab5c63d3f-1794x1274.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://news.yahoo.co.jp/articles/74ed0c0fc872766dc5dca91d849aa53f240db09f": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261115-00000108-dal-000-4-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/e9de9e7613f66d419f0486c2d18de40876fb0cd4": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000010-manetatsun-000-1-view.jpg?exp=10800",
   "https://nijimen.kusuguru.co.jp/topics/660768": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/c903cf959a864a2ca9f59aed8ab26226.jpg",
@@ -1525,6 +1526,21 @@
    "work": "滑雪"
   },
   {
+   "batch": 6,
+   "because": "滑雪",
+   "date": "2026-11-17",
+   "hits": [],
+   "image": "https://prcdn.freetls.fastly.net/release_image/38757/32/38757-32-f364540e2133fbf20c201aaab5c63d3f-1794x1274.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+   "kind": "board",
+   "score": 4,
+   "source": "ニコニコニュース",
+   "taste": [],
+   "title": "雪不足の時代に、雪を長く活かすスキー場づくりへ",
+   "url": "https://news.nicovideo.jp/watch/nw20000894?news_ref=20_20",
+   "words": [],
+   "work": "滑雪"
+  },
+  {
    "batch": 0,
    "because": "漫威电影",
    "date": "2026-11-17",
@@ -1903,11 +1919,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1919,11 +1935,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ]
  ]

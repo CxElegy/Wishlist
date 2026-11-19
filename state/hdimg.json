@@ -802,6 +802,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.hldycdn.com/64b9e15a-1619-4f07-840d-c5c381ef6945.jpeg": {
+  "w": 1920,
+  "h": 1280,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.murphysmultiverse.com/uploads/2026/11/Real3D-Avengers-Doomsday-e1794837338393.jpg": {
   "w": 1086,
   "h": 1097,
@@ -1510,6 +1516,12 @@
  "https://comicbook.com/wp-content/uploads/sites/4/2026/11/Harry-Potter-TV-Series-Character-Posters-Hogwarts-First-Year-Students.jpg?w=1920": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cosmicbook.news/wp-content/uploads/2026/11/from-tv-series-ratings-netflix.webp": {
+  "w": 1500,
+  "h": 844,
   "target": 1280,
   "v": 3
  },
@@ -5876,6 +5888,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/38757/32/38757-32-f364540e2133fbf20c201aaab5c63d3f-1794x1274.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1774,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/45524/162/45524-162-bc88fc61e35f1f558e83024870283cef-1920x1280.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1890,
   "h": 1260,
@@ -6639,6 +6657,12 @@
   "w": 1813,
   "h": 992,
   "target": 720,
+  "v": 3
+ },
+ "https://tabiris.com/wp1/images/2026/11/happo20262.jpg": {
+  "w": 1280,
+  "h": 853,
+  "target": 1280,
   "v": 3
  },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2022/11/28130615/344abd0b2e6359cef023a330754f9c2f.jpg": {
@@ -7681,6 +7705,52 @@
   "target": 1280,
   "v": 3,
   "blur": 0.35
+ },
+ "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.441,
+  "local": "pics/2d32f24e3e02c29d.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    6,
+    10,
+    13,
+    9,
+    7,
+    8,
+    6,
+    8,
+    7,
+    8,
+    9,
+    8
+   ],
+   [
+    10,
+    11,
+    8,
+    7,
+    9,
+    9,
+    10,
+    13,
+    9,
+    6,
+    3,
+    5
+   ]
+  ],
+  "c": "#5d5354",
+  "k": null,
+  "p": null
  },
  "https://www.bing.com/th?id=ONUT.zwzfS2O-WRaU57U3vuqwLQ&pid=News&w=1200": {
   "w": 700,

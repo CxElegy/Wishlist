@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "13fb5748b2ad",
+ "edit_sig": "5e2dfbc0e2b0",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -748,36 +748,6 @@
    "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "name": "FROM",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 2,
-     "source": "Cosmic Book News",
-     "title": "‘From’ Hits 5 Billion Minutes on Netflix: Is Season 5 Really the End?",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1wNVFHUzh1LWdqbUZMSGF0REZwbDBvTjQ5M3cwTGRRYzNFc2dOcnA0UHZSSEdSSzNHMjd4ZE5BVHBaVlFud2E0enZveUc1YjUzbnZzY0NZMVdSQQ?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 3,
-     "source": "Deadline",
-     "title": "‘From’ Lures Over 5 Billion Minutes Viewed In 3 Weeks After MGM+ Series Lands On Netflix",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNSVhsVzllXzdBLU1aR3FNclV6NHFoQ0lpR0o1VzIwQ1E0QTBPaHJZMTFZQWFWNkJqRzA3NnRDOWM5bTdya3E5SVZSbFo4MkRrV1VUX0VOanRjVjFyRDBVaUZ2SmRTTEJxQkd1T09EemM1V01fa3Z3OXlqRjNjRUpiTzhEejlaU3BhLXc0R1BR?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 4,
-     "source": "The Hollywood Reporter",
-     "title": "Streaming Ratings: Rough Week for Original Series, ‘From’ Remains No. 1 Overall",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPeTdyUDZsQXRabzN0V2NjVzNxbENxYXN1Y1lFRnVZQ1NqZmdWdGtoSlp2c3FlWWVpV3ZSbmlRM3R3UGMwc2V2N0pzaTJ6WmI5YW9XQllBRnU3QTBwaTJOazI5bm50RnM0bTRWRFplMXRXWGxGVnhaZUFnMWZnRENtUkNkdllRZXM0d05MMXNrSVM?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 5,
-     "source": "Deadline on MSN",
-     "title": "'From' lures massive audience as MGM+ series lands on Netflix",
-     "url": "https://www.msn.com/en-us/news/other/from-lures-massive-audience-as-mgm-series-lands-on-netflix/ar-AA2hNZD4"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -789,6 +759,16 @@
      "image_via": "转载 fictionhorizon.com（Bing 缩略图）",
      "url": "https://www.imdb.com/news/ni66097971/?ref_=int_nwr_6",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "‘From’ Hits 5 Billion Minutes on Netflix: Is Season 5 Really the End?",
+     "highlight": "",
+     "image": "https://cosmicbook.news/wp-content/uploads/2026/11/from-tv-series-ratings-netflix.webp",
+     "image_via": "og:image",
+     "url": "https://cosmicbook.news/from-netflix-5-billion",
+     "weight": "normal"
     }
    ],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
@@ -807,17 +787,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Starbucks Japan's Cosy Winter Moment collection includes its first advent calendar, a bear-shaped mug and a Bearista cup.",
      "date": "2026-11-19",
-     "n": 1,
-     "source": "Pirates & Princesses on MSN",
-     "title": "Starbucks Japan's first Christmas advent calendar hides 7 surprises",
-     "url": "https://www.msn.com/en-us/news/other/starbucks-japans-first-christmas-advent-calendar-hides-7-surprises/ar-AA2hNFGl"
+     "headline": "Starbucks Japan's first Christmas advent calendar hides 7 surprises",
+     "highlight": "first Christmas advent calendar",
+     "image": "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/news/other/starbucks-japans-first-christmas-advent-calendar-hides-7-surprises/ar-AA2hNFGl",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
@@ -833,17 +815,54 @@
   {
    "cover": null,
    "facts": [],
-   "name": "猫用品",
-   "pending": [
+   "name": "滑雪",
+   "section": "运动",
+   "stories": [
     {
-     "date": "2026-11-17",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "＜画像15 / 20＞ネコグッズ大放出！ネコ好きにはたまらない「ちよだ猫まつり」に行ってきた",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1CNloyOVdHR2FLbFozZkJDUHRqNFEwVWhUeUtSUjY0RmpvY29BWW9GMHhoa2pWNHpfWVlhNjhaWGJoYjhKREQ1NUZnTTJjQjRrcVZkUTFFVUNrTWJDQVVnSld1aVVXbkVmX2U2eDc4OWtvOHh2aXBXVTU0MA?oc=5"
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "白馬八方尾根、山頂エリアに「初心者専用コース」新設。ファミリーにもやさしく？",
+     "highlight": "初心者専用コース",
+     "image": "https://tabiris.com/wp1/images/2026/11/happo20262.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://tabiris.com/archives/happo-shoshinsha/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "白馬コルチナ國際滑雪場將於 12 月 19 日開放夜間雪地景點「Night Park」",
+     "highlight": "12 月 19 日",
+     "image": "https://assets.hldycdn.com/64b9e15a-1619-4f07-840d-c5c381ef6945.jpeg",
+     "image_via": "og:image",
+     "url": "https://www.haveagood-holiday.com/zh-TW/articles/hakuba-cortina-night-park-ar-quiz-rally-2026-27",
+     "weight": "normal"
     }
    ],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-19",
+    "headline": "猫耳と肉球がついたSwitch 2用カバーを発見。やっぱり猫が好きな人にオススメ！",
+    "url": "https://ascii.jp/elem/000/004/452/4452848/"
+   },
+   "name": "猫用品",
+   "quiet": true,
    "section": "生活",
+   "status": "",
    "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
@@ -853,47 +872,6 @@
     "alt_fg": "#FBF4EA",
     "bg": "#FBF4EA",
     "fg": "#3A2C24",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 1,
-     "source": "タビリス",
-     "title": "白馬八方尾根、山頂エリアに「初心者専用コース」新設。ファミリーにもやさしく？",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5nZ09Jdjlsd0VXT0lDb0JoS3JMYWQyb0MxQS1WQ24yeTQtS1k4UVVNSFJjSUlCbVptbl84Z1dZVDBqeXVwa0dZdy1xR3dNLU5LMTRnRWJWa0VQQQ?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 2,
-     "source": "www.haveagood-holiday.com",
-     "title": "白馬コルチナ國際滑雪場將於 12 月 19 日開放夜間雪地景點「Night Park」",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOZEY4UnVxbGNxcUlCdzFrRU8wamI5TDRXNHVnSW5Cc0szX1FjZUVBcG5aZFdWMnpTRXQyRHBYVFVlQmk5QUNLOEFaa1E5R3E0YTNWbDhPQ0tHb2hBTS15X09ZZ1A1cXdLakxSV1Zmb3BsV3c5TWFGcXdHLTJqSmJUZUc2MU1lWmxFU05iam1LdlloYVhSQ2g1bGI3MlM?oc=5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 3,
-     "source": "香港01",
-     "title": "二世古酒店10間推介｜新開幕／近滑雪場／無邊際溫泉／人均$184起",
-     "url": "https://news.google.com/rss/articles/CBMi_gJBVV95cUxPa2Y3OEU1Nkstdy0ybl9POXNjMGtnMnNoU3hUZUVpLXVEbVh5c0M5UHlTeUpYSjN1ZTNZSXhRU19Xb0E3QTJzd3dLejJlOHlSTEhnX0piREVvRDFQRFg1U0N2cXlVUG16YVlRalNYd3Zza2EteEwxVDRpdkZRMzlhVnJmQkF1TFg2azJJeVR0dWR2R1R2RzZ5SzA2NHNGaTAtc09nWTkyS2E5TEFkcnlxSDYzb25fYXpDeGJ0ck9wbUdCbl9OcWw0TVNnNERtZ3VhZ2NyZUZrNkJiLVhxVC1LeXktWFY0QmZzc3ZETU5ZVjBfSmZQaDFlRDMtRzYtTEdzSEd2MjFKdEJlR2RPYkFRRE9QUnd6Z0g5bzFLb1JlWTJnY0E2cG1rSmV4akg1azU5R1JEMjk5Wnd0MlFlTk03XzgzUDBfTmlMOENhZEsybGQtRmdFd0VTSFBHSXUxc3RyWTJjTnpIb2s2MlVhQVBCZ0pJMUdiQk9IM1dpMEt3?oc=5"
-    }
-   ],
-   "section": "运动",
-   "stories": [],
-   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
-   "theme": {
-    "accent": "#D9412B",
-    "alt_accent": "#8EC5E8",
-    "alt_bg": "#14233A",
-    "alt_fg": "#F4F8FB",
-    "bg": "#F4F8FB",
-    "fg": "#14233A",
     "font": "sans",
     "split": true
    }

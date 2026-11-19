@@ -252,7 +252,10 @@
   "周杰伦": 21,
   "绝区零": 4,
   "チェーンソーマン": 2,
-  "FROM": 1
+  "FROM": 5,
+  "星巴克马克杯": 1,
+  "猫用品": 1,
+  "滑雪": 3
  },
  "Astrae Oratio": [
   {
@@ -472,7 +475,54 @@
    "blurb": "",
    "weight": "lead",
    "refs": [
+    1,
+    4
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.zwzfS2O-WRaU57U3vuqwLQ&pid=News&w=1200"
+  },
+  {
+   "headline": "‘From’ Hits 5 Billion Minutes on Netflix: Is Season 5 Really the End?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3,
+    5
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "Starbucks Japan's first Christmas advent calendar hides 7 surprises",
+   "highlight": "first Christmas advent calendar",
+   "blurb": "Starbucks Japan's Cosy Winter Moment collection includes its first advent calendar, a bear-shaped mug and a Bearista cup.",
+   "weight": "lead",
+   "refs": [
     1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200"
+  }
+ ],
+ "猫用品": [],
+ "滑雪": [
+  {
+   "headline": "白馬八方尾根、山頂エリアに「初心者専用コース」新設。ファミリーにもやさしく？",
+   "highlight": "初心者専用コース",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://tabiris.com/wp1/images/2026/11/happo20262.jpg"
+  },
+  {
+   "headline": "白馬コルチナ國際滑雪場將於 12 月 19 日開放夜間雪地景點「Night Park」",
+   "highlight": "12 月 19 日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]
