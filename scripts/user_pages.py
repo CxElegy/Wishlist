@@ -349,7 +349,6 @@ def latest_stories(get):
 READ_DAYS = 2
 ONLY_NEW_OG = 12       # --emblem-only：前の結果に無い記事の代表の写真は、並べて読む 1 束（og_image の 12 本並び・1 本 10 秒）まで
 ONLY_NEW_PHOTOS = 16   # --emblem-only：前の結果に無い写真の余白と主役は 1 束（photo_bands の 16 本並び）まで。手元の測りで 1 枚 0.5 秒（400 枚 200 秒）＝ 16 枚 ≈ 8 秒
-RESOLVE_FAILS = 4   # 「気になるかも？」の Google の跳转が続けてこの回数戻せなかったら、この回は戻すのをやめる（userfeed.RESOLVE_FAILS と同じ）
 IMGS_PATH = "/storage/v1/object/pages/_fp/imgs.json"   # 写真の網址の一覧（非公開の箱・アカウントは持たない）
 
 
@@ -533,15 +532,19 @@ def newer_page(fps, fp_path, acct):
     return cur is not None and cur.get(f"{acct}/index.html") != fps.get(f"{acct}/index.html")
 
 
-def merge_fps(cur, old, mine):
-    """一部の人だけの回の指紋の書き込み：いまの指紋（cur：ほかの回が書いたもの）に、この回が変えた分（old との差）だけを足す。
-    _og・_bands・_up_pick の測りは両方の和（同じ網址はいまのもの）。cur が読めなければ mine のまま。"""
+def merge_fps(cur, old, mine, exact=()):
+    """指紋の書き込み：いまの指紋（cur：ほかの回が書いたもの）に、この回が変えた分（old との差）だけを足す。
+    _og・_bands・_up_pick などの測りは両方の和で、この回が変えた網址はこの回のもの（探し直して見つかった写真を前の「無い」で消さない）。
+    exact の箱はこの回のまま（全員の回の _open・_res：使った分だけにして増え続けない）。cur が読めなければ mine のまま。"""
     if cur is None:
         return mine
     out = dict(cur)
     for k, v in mine.items():
-        if k.startswith("_") and isinstance(v, dict):
-            out[k] = {**v, **(cur.get(k) or {})}
+        if k in exact:
+            out[k] = v
+        elif k.startswith("_") and isinstance(v, dict):
+            o = old.get(k) or {}
+            out[k] = {**v, **(cur.get(k) or {}), **{kk: vv for kk, vv in v.items() if o.get(kk) != vv}}
         elif v != old.get(k):
             out[k] = v
     return out
@@ -596,8 +599,9 @@ def main(argv):
     opens = Memo(fps.get("_open"), render.photo_opens, reuse=only) if render.OPENS else None
     if opens:
         render.OPENS = opens
-    res_memo = Memo(fps.get("_res"), lambda u: sources.resolve_url(u, tries=1), new=not only,
-                    keep=lambda u, v: v != u, fails_max=RESOLVE_FAILS)   # 「気になるかも？」の Google の跳转の戻し先
+    # 「気になるかも？」の Google の跳转の戻し先。ふつうの回は前の試し方のまま（sources.resolve_url の既定：3 回・失敗の数は持たない。
+    # 1 回だけ・全員で失敗を数えると、4 本続けて断られた後の人は全員 Google の網址のままで票と合わなかった）。戻せた答えだけ覚え、小元素だけの回が使う
+    res_memo = Memo(fps.get("_res"), lambda u: sources.resolve_url(u), new=not only, keep=lambda u, v: v != u)
 
     def res(u):   # 跳转でない網址はそのまま（覚えない・失敗に数えない）
         return res_memo(u) if "news.google.com" in str(u or "") else u
@@ -694,8 +698,10 @@ def main(argv):
         new_fps["_open"] = opens.box(partial)   # 全員の回はこの回に使った分だけ（増え続けない）
     new_fps["_res"] = res_memo.box(partial)
     if new_fps != fps:
-        if partial:   # 一部の人だけの回は、作っている間にほかの回が書いた指紋・測りを消さない（読み直して足す）
-            new_fps = merge_fps(_fresh_fps(fp_path), fps, new_fps)
+        # 作っている間にほかの回（小元素だけの回など）が書いた指紋・測りを消さない：読み直して、この回が変えた分だけ差し替える（全員の回も。
+        # 前は全員の回が上書きして、置かれたページと記録の指紋が食い違い、次の回が「変わっていない」と置き直さなかった）。
+        # 全員の回の _open・_res はこの回に使った分だけ（増え続けない）
+        new_fps = merge_fps(_fresh_fps(fp_path), fps, new_fps, exact=() if partial else ("_open", "_res"))
         try:
             _supa(fp_path, json.dumps(new_fps, sort_keys=True).encode(), "POST", "application/json")
         except Exception:  # noqa: BLE001  指紋が書けなくても次の回が全部置き直すだけ

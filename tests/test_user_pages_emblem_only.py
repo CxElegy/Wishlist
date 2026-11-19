@@ -109,6 +109,27 @@ class Fps(unittest.TestCase):
         self.assertEqual(got["_og"], {"a": "A", "b": "B", "c": "C"})
         self.assertEqual(user_pages.merge_fps(None, old, mine), mine)
 
+    def test_full_run_does_not_undo_a_page_placed_meanwhile(self):
+        # 全員の回が組んでいる間に小元素だけの回がこの人のページを置いた（指紋 2）。全員の回は変わらず置かなかった（1 のまま）：
+        # 上書きすると記録の指紋が 1 に戻り、次の回が「変わっていない」と見て置き直さなかった
+        old = {"u1/index.html": "1", "u2/index.html": "a", "_up_pick": {"x": {"img": "", "at": 1}}, "_open": {"o": True}}
+        cur = {"u1/index.html": "2", "u2/index.html": "a", "_up_pick": {"x": {"img": "", "at": 1}}, "_open": {"o": True, "p": True}}
+        mine = {"u1/index.html": "1", "u2/index.html": "b", "_up_pick": {"x": {"img": "https://img/x.jpg", "at": 9}}, "_open": {"q": False}}
+        got = user_pages.merge_fps(cur, old, mine, exact=("_open", "_res"))
+        self.assertEqual(got["u1/index.html"], "2")   # この回が変えていない人の分はいまのまま
+        self.assertEqual(got["u2/index.html"], "b")   # この回が置いた人の分だけ差し替える
+        self.assertEqual(got["_up_pick"]["x"]["img"], "https://img/x.jpg")   # 探し直して見つかった写真を前の「無い」で消さない
+        self.assertEqual(got["_open"], {"q": False})   # 全員の回の _open は使った分だけ（増え続けない）
+        src = __import__("inspect").getsource(user_pages.main)
+        self.assertIn("new_fps = merge_fps(_fresh_fps(fp_path), fps, new_fps, exact=", src)   # 全員の回も読み直して差し替える
+
+    def test_full_run_resolves_like_before(self):
+        # ふつうの回の跳转の戻しは前の試し方のまま（3 回・失敗の数を全員で持たない）。速くするのは --emblem-only だけ
+        src = __import__("inspect").getsource(user_pages.main)
+        self.assertIn("lambda u: sources.resolve_url(u)", src)
+        self.assertNotIn("tries=1", src)
+        self.assertNotIn("fails_max", src)
+
     def test_newer_page(self):
         with mock.patch.object(user_pages, "_supa", lambda p: {"u1/index.html": "new"}):
             self.assertTrue(user_pages.newer_page({"u1/index.html": "old"}, FP, "u1"))
