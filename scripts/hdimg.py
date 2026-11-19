@@ -22,6 +22,7 @@
 不在最近 WINDOW_DAYS 天报道里的图连文件一起删掉（Pages 有 1GB 上限）。
 
     python scripts/hdimg.py            # 处理最近几期（出刊时 digest.publish 会自动调用）
+    python scripts/hdimg.py --marks    # 本站文件の主役の位置（m）・平均の色（c）だけ測る（render の data-m・下絵。網に出ない）
 """
 
 import concurrent.futures
@@ -251,6 +252,50 @@ def local_map():
             if isinstance(r, dict) and r.get("local") and (PICS_DIR.parent / r["local"]).exists()}
 
 
+def marks_of(path):
+    """本站文件（docs/pics/…）の切る位置の材料。網に出ない（手元の文件を測るだけ・1 枚 0.8 秒ほど）。
+      m 主役の分布・c 平均の色：photo_store.mass / tint と同じ物差し（幅 400 に縮めて測る）
+      k 字の範囲・p 人の範囲：photo_bands.text_box / people_box（お客さまのページの別のサイトの写真と同じ物差し）
+    2026-11-19：本站保存の写真は photo_store の列（http の網址だけ）に入らず、render の data-m が 1 枚も付かなかった（116 枚中 0）。
+    m だけ付けると FIT_JS cropAt が題字を切ることがある（見本の嘉年华のポスター）ので、字と人の範囲も一緒に測る。"""
+    import io
+    import photo_bands
+    import photo_store
+    from PIL import Image
+    raw = pathlib.Path(path).read_bytes()
+    im = Image.open(io.BytesIO(raw)).convert("RGB")
+    if im.width > 400:
+        im = im.resize((400, round(im.height * 400 / im.width)), Image.LANCZOS)
+    b = io.BytesIO()
+    im.save(b, "PNG")
+    data = b.getvalue()
+    return {"m": photo_store.mass(data) or [], "c": photo_store.tint(data), "k": photo_bands.text_box(raw), "p": photo_bands.people_box(raw)}
+
+
+def fill_marks(state):
+    """本站文件があって m のまだ無い記録に m・c・k・p を足す（新しく存した分・前からの分）。→ 足した数。測れない（壊れた）文件は次の回に。"""
+    todo = [r for r in state.values() if isinstance(r, dict) and r.get("local") and "m" not in r and (PICS_DIR.parent / r["local"]).exists()]
+
+    def one(r):
+        try:
+            return marks_of(PICS_DIR.parent / r["local"])
+        except Exception:  # noqa: BLE001
+            return None
+    n = 0
+    with concurrent.futures.ThreadPoolExecutor(WORKERS) as pool:
+        for r, got in zip(todo, pool.map(one, todo)):
+            if got:
+                r.update(got)
+                n += 1
+    return n
+
+
+def local_marks():
+    """render 用：本站文件（pics/…）→ {m, c, k, p}（fill_marks が測った物だけ）。"""
+    return {r["local"]: {"m": r.get("m") or [], "c": r.get("c"), "k": r.get("k"), "p": r.get("p")} for r in load_state().values()
+            if isinstance(r, dict) and r.get("local") and "m" in r}
+
+
 def run(today=None, reports=None):
     """处理最近几期的配图，删掉不再用的文件。返回 (新处理几张, 存到本站几张)。"""
     if reports is None:
@@ -286,10 +331,11 @@ def run(today=None, reports=None):
         for f in PICS_DIR.glob("*.webp"):
             if f"pics/{f.name}" not in keep:
                 f.unlink()
+    marked = fill_marks(state)   # 本站文件の主役の位置・色（render の data-m・下絵。手元の文件を測るだけ・1 枚 0.06 秒ほど）
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     STATE_FILE.write_text(json.dumps(dict(sorted(state.items())), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     saved = sum(1 for url, *_ in todo if state.get(url, {}).get("local"))
-    print(f"配图高清化：检查 {len(todo)} 张，存到本站 {saved} 张（看不清・Bing 小图・防盗链），本站共 {len(keep)} 张", file=sys.stderr)
+    print(f"配图高清化：检查 {len(todo)} 张，存到本站 {saved} 张（看不清・Bing 小图・防盗链），本站共 {len(keep)} 张（主役の位置を測った {marked} 张）", file=sys.stderr)
     return len(todo), saved
 
 
@@ -301,4 +347,9 @@ def _safe(url, target, referer):
 
 
 if __name__ == "__main__":
-    run()
+    if "--marks" in sys.argv[1:]:   # 本站文件の主役の位置・色だけ測り直す（網に出ない）
+        st = load_state()
+        print(f"主役の位置を測った {fill_marks(st)} 张")
+        STATE_FILE.write_text(json.dumps(dict(sorted(st.items())), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    else:
+        run()
