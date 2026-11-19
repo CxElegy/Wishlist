@@ -836,7 +836,7 @@
  "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/11/19105546/jp-prt-52177-1130-1-261119025543294.jpeg": {
   "w": 1950,
   "h": 1300,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://d17gj49471obkc.cloudfront.net/kyodopress_cms/wp-content/uploads/2026/11/kyd_4048751_main-7-scaled-e1794374164954-430x538.jpg": {
@@ -928,12 +928,6 @@
   "w": 1962,
   "h": 1102,
   "target": 1280,
-  "v": 3
- },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/hakuba-night.jpg": {
-  "w": 1920,
-  "h": 1280,
-  "target": 720,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/jr-ski.jpg": {
@@ -1435,6 +1429,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hIRoe.img": {
+  "w": 800,
+  "h": 571,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hJB7o.img": {
@@ -3028,6 +3028,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/190744/1/190744-1-c1f2043601ae3f6835e9bc571017eb5d-1920x1280.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1890,
+  "h": 1260,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/25284/2077/25284-2077-3cc151eb6f4c55de8fd3cd54a7cfc4f8-2000x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1260,
   "h": 1260,
@@ -3076,6 +3082,12 @@
   "w": 1280,
   "h": 680,
   "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/38757/32/38757-32-f364540e2133fbf20c201aaab5c63d3f-1794x1274.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1774,
+  "h": 1260,
+  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/45524/162/45524-162-bc88fc61e35f1f558e83024870283cef-1920x1280.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3227,6 +3239,12 @@
   "w": 2560,
   "h": 1440,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.eximg.jp/exnews/feed/Atpress/a0/Atpress_647917/Atpress_647917_1.jpg": {
+  "w": 1200,
+  "h": 722,
+  "target": 720,
   "v": 3
  },
  "https://s.eximg.jp/exnews/feed/kaiyou_n/1c/kaiyou_n_1493901684021018961/kaiyou_n_1493901684021018961_1.jpg": {
