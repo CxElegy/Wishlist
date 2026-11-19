@@ -22,11 +22,12 @@ class FindImages(unittest.TestCase):
 
     def test_cache_only_does_not_search(self):
         calls = []
+        cache = {"https://n.example/1": {"img": "https://img/1.jpg", "at": 0}, "https://n.example/2": {"img": "", "at": 0}}
         with mock.patch.object(user_pages.digest, "find_image", lambda *a: calls.append(a) or "x"):
-            st = user_pages.find_images(self.stories(), 9e18, {"https://n.example/1": "https://img/1.jpg", "https://n.example/2": ""}, new=False)
+            st = user_pages.find_images(self.stories(), 9e18, cache, new=False)
             st2 = user_pages.find_images([{"headline": "c", "url": "https://n.example/3"}], 9e18, {}, new=False)
         self.assertEqual(calls, [])
-        self.assertEqual([s.get("image") for s in st], ["https://img/1.jpg", None])   # 探して無かった（""）は無いまま
+        self.assertEqual([s.get("image") for s in st], ["https://img/1.jpg", None])   # 小元素だけの回：見つからなかった記事は無いまま（探さない）
         self.assertIsNone(st2[0].get("image"))   # 前の結果に無いものは探さない
 
     def test_full_run_remembers_results_but_not_errors(self):
@@ -37,8 +38,21 @@ class FindImages(unittest.TestCase):
                 raise OSError("net")
             return "https://img/" + url[-1] + ".jpg"
         with mock.patch.object(user_pages.digest, "find_image", pick):
-            user_pages.find_images(self.stories(), 9e18, cache)
-        self.assertEqual(cache, {"https://n.example/1": "https://img/1.jpg"})   # 読めなかったものは覚えない（次の回にまた探す）
+            user_pages.find_images(self.stories(), 9e18, cache, now=1000)
+        self.assertEqual(cache, {"https://n.example/1": {"img": "https://img/1.jpg", "at": 1000}})   # 読めなかったものは覚えない（次の回にまた探す）
+
+    def test_full_run_retries_a_miss_after_a_while(self):
+        # images.pick は断られた・20 秒で止まった時も None：「無い」を永久に信じると、その記事は二度と探されず整理待ちのまま
+        calls = []
+        cache = {"https://n.example/1": {"img": "", "at": 1000}}
+        st = [{"headline": "a", "url": "https://n.example/1"}]
+        with mock.patch.object(user_pages.digest, "find_image", lambda *a: calls.append(a) or "https://img/new.jpg"):
+            user_pages.find_images([dict(s) for s in st], 9e18, cache, now=1000 + 60)   # 見つからなかったばかり：探さない
+            self.assertEqual(calls, [])
+            got = user_pages.find_images([dict(s) for s in st], 9e18, cache, now=1000 + user_pages.PICK_RETRY_S)   # 間をあけたら探し直す
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(got[0]["image"], "https://img/new.jpg")
+        self.assertEqual(cache["https://n.example/1"]["img"], "https://img/new.jpg")
 
 
 class Limits(unittest.TestCase):
@@ -154,7 +168,7 @@ class EmblemOnlyMain(unittest.TestCase):
         return calls, store
 
     def test_emblem_only_uses_previous_results(self):
-        fps = {"_og": {"https://n.example/1": ""}, "_pick": {"https://n.example/1": ""}, "_bands": {}, "_res": {}, "_open": {}}
+        fps = {"_og": {"https://n.example/1": ""}, "_up_pick": {"https://n.example/1": {"img": "", "at": 0}}, "_bands": {}, "_res": {}, "_open": {}}
         calls, store = self.run_main(True, fps)
         self.assertEqual(calls["pick"], 0)      # 記事の写真探し（1 本 20 秒）はしない
         self.assertEqual(calls["og"], 0)        # 前に読んだ記事の代表の写真は読み直さない
@@ -166,7 +180,7 @@ class EmblemOnlyMain(unittest.TestCase):
         calls, store = self.run_main(False, {})
         self.assertEqual(calls["og"], 1)
         self.assertEqual(calls["measure_limit"], [None])
-        self.assertIn("_pick", store[FP])   # 次の --emblem-only が使う前の結果を残す
+        self.assertIn("_up_pick", store[FP])   # 次の --emblem-only が使う前の結果を残す
         self.assertIn("_res", store[FP])
 
 

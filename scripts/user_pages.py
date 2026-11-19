@@ -16,7 +16,7 @@
     python scripts/user_pages.py --boards-file F --emblem-only   # 新しい版面の速い道（library_emblem.pages_runner）：小元素が足されただけの作り直し
 
 --emblem-only（2026-11-19 店長「新しい版面を足したら小元素が出るまで 5 分未満」。前は 1 人分 92 秒）：記事は前の作り直しと同じなので、
-網に聞く物は前の回の結果（pages/_fp/all.json の _og・_bands・_pick・_res・_open）を使う：記事の代表の写真（og_image）・写真の余白と主役
+網に聞く物は前の回の結果（pages/_fp/all.json の _og・_bands・_up_pick・_res・_open）を使う：記事の代表の写真（og_image）・写真の余白と主役
 （photo_bands）は無い分だけ 1 束まで（ONLY_NEW_OG・ONLY_NEW_PHOTOS）、記事の写真探し（find_images：1 本 20 秒）・「気になるかも？」の
 Google の跳转の戻し（resolve_url）は前の結果だけ、頭の写真が開くか（photo_opens）は無い網址だけ聞く。前の結果は前のページを作った回が残したものなので、
 ページは前と同じ写真・記事に小元素が足されたもの（手元の測り：同じ入力で HTML が一致・1 人分 56 秒 → 10 秒）。無い分は次のふつうの作り直しが測る。
@@ -166,10 +166,15 @@ def _story(row, weight):
             "source": row.get("source") or ""}
 
 
-def find_images(stories, deadline, cache=None, new=True):
+PICK_RETRY_S = 3 * 3600   # 記事の写真探しで見つからなかった記事は、この間をあけてふつうの作り直しが探し直す（userfeed の「3 時間あけて探し直す」と同じ）
+
+
+def find_images(stories, deadline, cache=None, new=True, now=None):
     """写真のない記事に、店長と同じ規則（images.pick）で写真を探す。時間の上限を超えたらやめる。
-    cache = {記事の網址: 写真の網址 か ""（探して無かった）}：前の回に探した結果（pages/_fp/all.json の _pick）。あればそれを使い、探した結果は入れる。
-    new=False（--emblem-only）は前の結果だけ（網に出ない）。"""
+    cache = {記事の網址: {"img": 写真の網址 か ""（見つからなかった）, "at": 探した時刻}}：前の回に探した結果（pages/_fp/all.json の _up_pick）。
+    見つかった写真はいつも使う。見つからなかった記事は、ふつうの回（new=True）は PICK_RETRY_S たったら探し直す（images.pick は断られても
+    20 秒で止まっても None を返すので、「無い」を永久に信じない）。new=False（--emblem-only）は前の結果だけ（網に出ない・無いものは無いまま）。"""
+    now = now or time.time()
     # 本物のブラウザ（images._browser_html）は開いた記事の網址を公開の Actions ログに書く。library_emblem.yml は小元素のために
     # SCRAPLING_BROWSER=1 を立てたまま user_pages を回すので、お客さまの記事ではここで切る（userfeed と同じ）
     os.environ.pop("SCRAPLING_BROWSER", None)
@@ -177,8 +182,10 @@ def find_images(stories, deadline, cache=None, new=True):
     for s in stories[:IMG_PER_BOARD]:
         if s.get("image"):
             continue
-        if cache is not None and s.get("url") in cache:
-            img = cache[s["url"]] or None
+        got = (cache or {}).get(s.get("url"))
+        got = got if isinstance(got, dict) else None
+        if got and (got.get("img") or not new or now - float(got.get("at") or 0) < PICK_RETRY_S):
+            img = got.get("img") or None   # 見つかった写真・見つからなかったばかりの記事（ふつうの回は間をあけてから探し直す）
         elif not new or time.time() > deadline:
             continue
         else:
@@ -186,7 +193,7 @@ def find_images(stories, deadline, cache=None, new=True):
             try:
                 img = digest.find_image(None, [e], s["url"])
                 if cache is not None and s.get("url"):
-                    cache[s["url"]] = img or ""
+                    cache[s["url"]] = {"img": img or "", "at": int(now)}
             except Exception:  # noqa: BLE001  写真がなくても版面は出す（読めなかったものは覚えない：次の回にまた探す）
                 img = None
         if img and img not in used:
@@ -514,7 +521,7 @@ def newer_page(fps, fp_path, acct):
 
 def merge_fps(cur, old, mine):
     """一部の人だけの回の指紋の書き込み：いまの指紋（cur：ほかの回が書いたもの）に、この回が変えた分（old との差）だけを足す。
-    _og・_bands・_pick の測りは両方の和（同じ網址はいまのもの）。cur が読めなければ mine のまま。"""
+    _og・_bands・_up_pick の測りは両方の和（同じ網址はいまのもの）。cur が読めなければ mine のまま。"""
     if cur is None:
         return mine
     out = dict(cur)
@@ -570,7 +577,7 @@ def main(argv):
         fps = {}
     og = dict(fps.get("_og") or {})   # 写真のない記事の代表の写真（og:image。og_image.py）。指紋と同じ 1 本に入れる
     bands = dict(fps.get("_bands") or {})   # 写真に焼き込まれた余白の割合（網址ごと。photo_bands.py）。指紋と同じ 1 本に入れる（storage の読みを増やさない）
-    picks = dict(fps.get("_pick") or {})   # 記事の写真探し（find_images）の結果。同じ 1 本に（--emblem-only が前の結果で同じ写真を付ける）
+    picks = dict(fps.get("_up_pick") or {})   # 記事の写真探し（find_images）の結果と時刻（鍵の名前はお客さまの写真の枝の覚えと分ける）。同じ 1 本に（--emblem-only が前の結果で同じ写真を付ける）
     # 網に聞く答えの前の回の分（Memo）。頭の写真が開くか：小元素だけの回も、前に無い網址は聞く（開かない写真を頭にしない）
     opens = Memo(fps.get("_open"), render.photo_opens, reuse=only) if render.OPENS else None
     if opens:
@@ -646,7 +653,7 @@ def main(argv):
             print(f"::warning::1 人分のページを作れなかった（{type(ex).__name__}）")
     new_fps["_bands"] = bands
     new_fps["_og"] = og
-    new_fps["_pick"] = picks
+    new_fps["_up_pick"] = picks
     if opens:
         new_fps["_open"] = opens.box(partial)   # 全員の回はこの回に使った分だけ（増え続けない）
     new_fps["_res"] = res_memo.box(partial)
