@@ -7,6 +7,8 @@
 
 作業は店長の PC の Claude Code へ移る。**PC の Claude は最初に `harness/HANDOFF.md` を読む**（これまでの流れ・PC での回し方・次の順番・店長が決めること）。
 
+**AgentBoard（2026-11-19）**：係の様子は https://cxelegy.github.io/Wishlist/board/ （PC とクラウドを 1 つの画面に）。クラウドの主の会話は始めに `add_repo cxelegy/agentboard（push）`→ `/home/user/agentboard` に clone → `python3 .claude/hooks/agentboard_start.py`。店長の伝言は `python3 /home/user/agentboard/ab.py inbox` で読み `ab.py reply` で返す。詳しくは `HARNESS_V2.md`「AgentBoard をクラウドでも」。
+
 ## 詳しい仕様は docs/rules/（その分野を触る前に必ず読む）
 
 ここは毎回要る決まりだけ。細かい仕様は下のファイルへ移した（2026-10-24，用户定的：決まりは 1 つも消さない）。
@@ -66,7 +68,7 @@
 - 回复提到网页・PR・设置页，就贴能点开的链接：
   简报（店長のページ）https://cxelegy.github.io/Wishlist/home/ 、设置页 https://cxelegy.github.io/Wishlist/home/settings.html 、
   愿望清单 https://cxelegy.github.io/Wishlist/home/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/home/heat.html 、テーマ見本 https://cxelegy.github.io/Wishlist/home/themes.html 、管理ページ https://cxelegy.github.io/Wishlist/home/admin.html 、テストグラウンド https://cxelegy.github.io/Wishlist/testground/ 、PR 用完整网址。
-  入口 https://cxelegy.github.io/Wishlist/ ，存档 test2 https://cxelegy.github.io/Wishlist/test2/ 。
+  入口 https://cxelegy.github.io/Wishlist/ ，存档 test2 https://cxelegy.github.io/Wishlist/test2/ 。 AgentBoard https://cxelegy.github.io/Wishlist/board/ 。
 - 合并 PR 后网页约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；确认更新了再告诉我、附链接。收集新闻・发通知仍由「关注清单通信」慢慢跑。
 
 ## test1 / test2・account（要点。全文 `docs/rules/accounts.md`）

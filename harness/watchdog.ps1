@@ -8,8 +8,7 @@ param(
   [string]$Repo = "D:\Claude\Wishlist",
   [string]$State = $(if ($env:HF_STATE) { $env:HF_STATE } else { "D:\Claude\hf\state" }),
   [string]$Python = "",
-  [double]$Minutes = 20,
-  [string]$Board = "D:\Claude\agentboard"
+  [double]$Minutes = 20
 )
 $ErrorActionPreference = "Continue"
 if (-not $Python) { $Python = Join-Path $Repo ".venv\Scripts\python.exe" }
@@ -40,7 +39,4 @@ foreach ($a in $stale) {
   [System.IO.File]::AppendAllText($alerts, (($rec | ConvertTo-Json -Compress) + "`n"), $utf8)
 }
 & $Python $hb summary --minutes $Minutes
-# AgentBoard（クラウドの画面 https://cxelegy.github.io/Wishlist/board/）へ要約を送る：非公開のリポジトリ cxelegy/agentboard の pc/summary.json に push（HARNESS_V2.md「ダッシュボード」）
-$ab = Join-Path $Board "ab.py"
-if (Test-Path $ab) { & $Python $ab --repo $Board summary (Join-Path $State "summary.json") | Out-Null }
 exit 0

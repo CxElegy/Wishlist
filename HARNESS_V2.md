@@ -152,21 +152,25 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 
 店長の書き込みは `D:/Claude/AgentBoard/inbox.jsonl`（`{t, text}`）、返事は `outbox.jsonl`（`{t, re, text}`）。
 
-### クラウドの AgentBoard（2026-11-19，店長：PC の係とクラウドの係を 1 つの画面で・PC が止まっても見える）
+### AgentBoard をクラウドでも（2026-11-19，店長：PC とクラウドの係を 1 つの画面で・前と同じ画面で）
 
-前の AgentBoard（PC の `D:/Claude/AgentBoard`・`https://elegy.tailc8cfff.ts.net/board/`）は PC の中のファイルしか読めず、頭がクラウドにあると係が出なかった。PC の上の仕組みが止まると画面ごと消えた（2026-11-19 に 502）。
+前の AgentBoard（PC の `D:/Claude/AgentBoard`・`server.mjs` が http://localhost:4747・2026-11-11 に参考画像「CLAUDE CODE SUBAGENT TIP」どおりの端末風に作り直した）は、PC の中の記録しか読めず、PC の上の仕組みが止まると画面ごと消えた（2026-11-19 に 502）。
+画面は**同じ作り**のまま、置き場をクラウドに移した。
 
 | 何 | どこ |
 |---|---|
-| 画面 | https://cxelegy.github.io/Wishlist/board/ （`docs/board/index.html`。ページ自体にデータは無い・noindex） |
-| データ | 非公開のリポジトリ `cxelegy/agentboard`：`agents/<どこ>-<役>-<段>.json`（1 係 1 ファイル）・`pc/summary.json`（PC の要約）・`inbox/<t>.json`（店長）・`outbox/<t>.json`（返事） |
-| 読む鍵 | 店長が端末ごとに 1 回貼る GitHub の令牌（agentboard だけ・Contents read/write）。その端末の localStorage だけに残る。クラウド・リポジトリには置かない |
-| 書く道具 | `agentboard/ab.py`（標準ライブラリだけ）。push は git の認証だけ＝クラウドは会話に agentboard を足す（add_repo・push）、PC は店長の git |
+| 画面 | https://cxelegy.github.io/Wishlist/board/ （`docs/board/index.html`。ページ自体にデータは無い・noindex。左に Opus advisor、中央に BRAIN → HARNESS routing → 係の箱 → back to lead、下に session log・site・owner → brain・最後の 2 行。係の箱に pc / cloud の札） |
+| データ | 非公開のリポジトリ `cxelegy/agentboard`：枝 `live-<機械>` の `host.json`（集め係が機械ごとに 1 枚・親なしの 1 コミットを force-push＝履歴が増えない）・main の `agents/`（`ab.py beat`）・`inbox/`・`outbox/` |
+| 読む鍵 | 店長が端末ごとに 1 回貼る GitHub の令牌（agentboard だけ・Contents read/write）。その端末の localStorage だけ。クラウド・リポジトリには置かない |
+| 集め係 | `agentboard/collect.py`（標準ライブラリだけ）。前の `server.mjs` と同じく Claude Code の記録を読む：`~/.claude/projects/<作業場所>/<会話>.jsonl`（BRAIN）・`<会話>/subagents/agent-*.jsonl`＋`.meta.json`（単独の係）・`subagents/workflows/wf_*/journal.jsonl`＋`agent-*.jsonl`（workflow の回）。＋ Wishlist の main・kpi・段の列、PC は `summary.json` |
 
-- **クラウドの係**：`python /home/user/agentboard/ab.py beat <役> <段> "<いま>"`（`--where` は自動・会話の id から画面に「開く」）、終わったら `ab.py end <役> <段> done`。Agent の子の係は主の会話が代わりに書く。同じ中身の心拍は 4 分 push しない。
-- **PC の係**：今までどおり `hb.py beat`。見張り（`watchdog.ps1`）が 5 分ごとに `summary.json` を `ab.py summary` で `pc/summary.json` へ（`D:/Claude/agentboard` に clone してあるときだけ）。
-- **店長の書き込み**：画面の「送る」→ `inbox/`（宛先：両方・クラウドの主・PC の主）。主の会話は `ab.py inbox` で読み、`ab.py reply <t> "返事" --who "クラウドの主"` で返す。
-- 画面は 30 秒ごと（タブが隠れている間は読まない）に GraphQL 1 回で全部を読む。20 分 心拍なし＝赤、10 分＝黄。
+- **PC**：`setup_pc.ps1` を 1 回 → タスク AgentBoardCollector がログオンのたびに `collect.py --host pc --loop 30` を起こす（4747 の server.mjs は要らなくなる）。
+- **クラウドの BRAIN**：会話の始めに `add_repo cxelegy/agentboard（push）`→ `/home/user/agentboard` に clone → `python3 .claude/hooks/agentboard_start.py`。次からは hook（SessionStart・UserPromptSubmit）が、clone があれば 1 つだけ起こす（Windows・clone が無い会話は何もしない）。
+- **ほかのクラウドの会話**（記録が別の容器にあるもの）：その会話か BRAIN が `ab.py beat <役> <段> "<いま>" --session session_… --model claude-…` を書く → 同じ箱に出る（`session_` なら「開く」）。
+- **店長の伝言**：画面の `owner $` → `inbox/`（宛先：両方・cloud・pc）。BRAIN は `ab.py inbox` で読み、`ab.py reply <t> "返事" --who "クラウドの BRAIN"` で返す。
+- 状態：作業中／完了／失敗／**15 分 記録が増えない＝止まっている（赤）**。機械の 1 枚が 6 分 来なければ、その機械の作業中の係も赤。2 時間より前に終わった係は「+N 済み」。
+- 画面は 15 秒ごと（タブが隠れている間は読まない）に GraphQL 1 回：live-* の全部・main の agents/inbox/outbox・Wishlist の PR と CI。
+- 試験：Wishlist `tests/test_agentboard_page.py`（GitHub を差し替えて読む・合わせる・伝言・令牌切れ）・`tests/test_agentboard_hook.py`、agentboard `tests/test_collect.py`・`tests/test_ab.py`。
 
 ## まだ入れていないもの（次の段）
 
