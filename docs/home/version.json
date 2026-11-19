@@ -1,10 +1,10 @@
 {
- "admin": "9ddf82c41050",
- "admin-ai": "916171c55385",
+ "admin": "2ba8ab12e7e9",
+ "admin-ai": "0f0e55bb4970",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5de8a85e"
+   "ba59fd9a"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "a90e6cf1ff6b",
+ "admin-emblem": "0b40b0a39113",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ed80573d"
+   "2c002e83"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e86fbe3fb12f",
  "admin-members_marks": {},
- "admin-now": "cd5419f901b2",
+ "admin-now": "919462bd4631",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4b2906a2"
+   "8bc67168"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "d80d582c"
+   "6df6d218"
   ]
  },
- "admin-system": "75322ee7e97b",
+ "admin-system": "f72195ffbce6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ed03051c"
+   "4223df8e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "66c66522"
+   "f7f22dae"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "76acddb4"
   ]
  },
- "index": "8f15b4ea5ad6",
+ "index": "e0ef683fb11c",
  "index_marks": {
   "front": [
    "トップ",
-   "58ce5bf5"
+   "0bc45886"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "d250efe9"
+   "e620e40d"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "f82271b3"
+   "edc0da5a"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "dc543053"
   ]
  },
- "updated": "11.20 04:00",
+ "updated": "11.20 04:07",
  "wishlist": "d1479eee2be4"
 }

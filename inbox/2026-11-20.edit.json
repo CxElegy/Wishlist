@@ -183,7 +183,8 @@
   "哈利波特剧集": 3,
   "ILLIT": 5,
   "三星手机": 3,
-  "Astrae Oratio": 2
+  "Astrae Oratio": 2,
+  "The Mandalorian": 1
  },
  "Astrae Oratio": [
   {
@@ -202,6 +203,17 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Image Engine breaks down its 154 VFX shots in The Mandalorian & Grogu",
+   "highlight": "154 VFX shots",
+   "blurb": "Image Engine shares a breakdown of its 154 VFX shots for The Mandalorian & Grogu.",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

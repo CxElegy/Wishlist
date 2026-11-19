@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "fc2d14b66d36",
+ "edit_sig": "6d6f04445abe",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -203,7 +203,7 @@
      },
      "headline": "罗素兄弟晒出《复仇者联盟 5》更多角色概念海报：X 教授、万磁王、洛基等悉数登场",
      "highlight": "内地已定档 12 月 16 日",
-     "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2hKPq6.img",
+     "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2d59wD.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/zh-cn/entertainment/%E5%90%8D%E4%BA%BA/%E7%BD%97%E7%B4%A0%E5%85%84%E5%BC%9F%E6%99%92%E5%87%BA-%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F-5-%E6%9B%B4%E5%A4%9A%E8%A7%92%E8%89%B2%E6%A6%82%E5%BF%B5%E6%B5%B7%E6%8A%A5-x-%E6%95%99%E6%8E%88-%E4%B8%87%E7%A3%81%E7%8E%8B-%E6%B4%9B%E5%9F%BA%E7%AD%89%E6%82%89%E6%95%B0%E7%99%BB%E5%9C%BA/ar-AA2hKFtr",
      "weight": "normal"
@@ -397,17 +397,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Image Engine shares a breakdown of its 154 VFX shots for The Mandalorian & Grogu.",
      "date": "2026-11-19",
-     "n": 1,
-     "source": "Foro3D",
-     "title": "Image Engine breaks down its 154 VFX shots in The Mandalorian & Grogu",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNR0NkaUFZQXlBVHRPNXlwOGczeVd6Zjhqa0ZIaERjU1l5N21pbmRacXF1dUp2Q3FTNVA1NGkwaVhFRzhBdUxYUzZCd0s3MThEcFc5NkFtTlJaSmtPNVM4Wm5aSXZwWlR0UHpnVWxOYTJfZUdPb0pJZThjTjFta04yMm1zLURORWxKRldfaE5naFZtbEM4N3I0LXNxaUZ2ZTlCMmk1dHlyVEpZaUp2RS1j?oc=5"
+     "headline": "Image Engine breaks down its 154 VFX shots in The Mandalorian & Grogu",
+     "highlight": "154 VFX shots",
+     "image": "https://foro3d.com/2026/noviembre/imagenes/image-engine-desglosa-sus-154-planos-de-vfx-en-the-mandalorian-grogu.webp",
+     "image_via": "og:image",
+     "url": "https://foro3d.com/en/2026/noviembre/image-engine-desglosa-sus-154-planos-de-vfx-en-the-mandalorian-grogu.html",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
