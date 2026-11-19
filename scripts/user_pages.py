@@ -365,10 +365,21 @@ def write_back(brows, latest, rows, og, touched, acct, put):
                 done[0] += 1
     for r in (rows or {}).values():
         st = r.get("stories") or []
-        if r.get("item") and (og_image.apply(st, og) or any(id(s) in ids for s in st)):
-            if send(f"/rest/v1/user_boards?account=eq.{urllib.parse.quote(acct, safe='')}&item=eq.{urllib.parse.quote(r['item'], safe='')}"
-                    f"&{_eq('checked_at', r.get('checked_at'))}", {"stories": st}):
-                done[1] += 1
+        if not (r.get("item") and (og_image.apply(st, og) or any(id(s) in ids for s in st))):
+            continue
+        # 書く直前にその行を読み直し、覚えの写真だけを当てて書く（見直し 1：記事集めが今回探さなかった行の写真・原文の網址だけを直して書くときは
+        # checked_at が前の値のままなので、読んだ時の写しで書くと記事集めの付けた写真・gurl・img_ref を古い写しで戻してしまう。隙は数秒に）
+        path = f"/rest/v1/user_boards?account=eq.{urllib.parse.quote(acct, safe='')}&item=eq.{urllib.parse.quote(r['item'], safe='')}"
+        try:
+            fresh = put(path + "&select=stories,checked_at")
+        except Exception:  # noqa: BLE001  読めなければ書かない（次の回に覚えからまた付ける）
+            done[2] += 1
+            continue
+        fresh = fresh[0] if isinstance(fresh, list) and fresh and isinstance(fresh[0], dict) else None
+        if not fresh or not og_image.apply(fresh.get("stories") or [], og):
+            continue
+        if send(path + f"&{_eq('checked_at', fresh.get('checked_at'))}", {"stories": fresh["stories"]}):
+            done[1] += 1
     return done
 
 

@@ -360,7 +360,9 @@ class Photos(unittest.TestCase):
         """(5) ページ作りで取れた写真を記事に書き戻す：board_stories の pending（読んだ時の updated_at のときだけ）と本人の user_boards の行。"""
         sent = []
 
-        def put(path, data, method):
+        def put(path, data=None, method="GET"):
+            if method == "GET":   # 書く直前の読み直し（DB の今の行）
+                return [{"stories": [{"url": "https://x.example/1"}], "checked_at": None}]
             sent.append((path, method, __import__("json").loads(data)))
             return ""
         latest = {7: {"day": "2026-11-19", "updated_at": "2026-11-19T10:00:00+00:00",
@@ -386,6 +388,35 @@ class Photos(unittest.TestCase):
         sent.clear()
         self.assertEqual(user_pages.write_back(brows, latest, rows, og, [], "u_def", put), [0, 0, 0])
         self.assertEqual(sent, [])
+
+    def test_write_back_does_not_restore_an_old_copy(self):
+        """見直し 1：ページ作りが行を読む → 記事集めが（今回は探さなかった行として checked_at はそのまま）写真・原文の網址を直して書く →
+        ページ作りが書き戻す、の順でも、記事集めの付けた写真・gurl・img_ref を古い写しで戻さない（書く直前に読み直して覚えの写真だけ当てる）。"""
+        old = {"a": {"item": "A", "checked_at": "2026-11-19T09:00:00+00:00",
+                     "stories": [{"url": "https://news.google.com/rss/articles/1"}, {"url": "https://x.example/2"}]}}
+        db = {"stories": [{"url": "https://real.example/1", "gurl": "https://news.google.com/rss/articles/1", "image": "https://img.example/feed.jpg",
+                           "img_ref": "https://real.example/1"}, {"url": "https://x.example/2"}], "checked_at": "2026-11-19T09:00:00+00:00"}
+        sent = []
+
+        def put(path, data=None, method="GET"):
+            if method == "GET":
+                return [__import__("copy").deepcopy(db)]
+            sent.append((path, __import__("json").loads(data)))
+            return ""
+        og = {}
+        brows = user_pages.board_rows([], {}, old)
+
+        def fill(rows_, cache, **k):   # ページ作りは 2 本目に og の写真を取った（1 本目は包みのままなので読まない）
+            s = rows_["a"]["stories"][1]
+            s["image"] = cache.setdefault(s["url"], {"img": "https://img.example/og2.jpg", "at": "x"})["img"]
+            return {"read": 1, "new": 1, "memo": 0, "wrapped": 1, "saved": 0, "why": {}, "touched": [s]}
+        got = user_pages.photo_tally(brows, og, {}, fill=fill)
+        self.assertEqual(user_pages.write_back(brows, {}, old, og, got["touched"], "u_abc", put), [0, 1, 0])
+        st = sent[0][1]["stories"]
+        self.assertEqual((st[0]["url"], st[0]["image"], st[0]["gurl"], st[0]["img_ref"]),
+                         ("https://real.example/1", "https://img.example/feed.jpg", "https://news.google.com/rss/articles/1", "https://real.example/1"))
+        self.assertEqual(st[1]["image"], "https://img.example/og2.jpg")
+        self.assertIn("checked_at=eq.2026-11-19T09%3A00%3A00%2B00%3A00", sent[0][0])
 
     def test_write_back_failure_is_counted_not_raised(self):
         def put(path, data, method):
