@@ -1082,6 +1082,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.factinnews.co.kr/news/photo/202611/301074_50935_130.jpg": {
+  "w": 600,
+  "h": 338,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gameinsight.co.kr/news/photo/202611/37002_91031_72.jpg": {
   "w": 900,
   "h": 600,
@@ -2126,6 +2132,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.khan.co.kr/article/2026/11/20/news-p.v1.20261120.6b2ae1d6e17e49ca9d08f1bcab07ca1c_P1.png": {
+  "w": 1200,
+  "h": 756,
+  "target": 720,
+  "v": 3
+ },
  "https://images.mein-mmo.de/medien/2025/06/BitCraft-Online-Early-Access.jpg": {
   "w": 1920,
   "h": 1080,
@@ -2274,6 +2286,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hKaIG.img": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hMGfC.img": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -3375,12 +3393,6 @@
  "https://mtnweekly.com/wp-content/uploads/2026/11/Rossignol-Juggernaut-Snowboard-3.jpg": {
   "w": 1090,
   "h": 1200,
-  "target": 1280,
-  "v": 3
- },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/11/17/179489203108498782_664_2000.JPEG": {
-  "w": 664,
-  "h": 885,
   "target": 1280,
   "v": 3
  },
@@ -6034,17 +6046,67 @@
   "v": 3,
   "blur": 0.362
  },
- "https://q3.itc.cn/images01/20261119/e4a4cf6653c84b26aed575b158c65a2c.jpeg": {
-  "w": 664,
-  "h": 846,
-  "target": 1280,
-  "v": 3
- },
  "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
   "w": 1024,
   "h": 572,
   "target": 720,
   "v": 3
+ },
+ "https://q5.itc.cn/images01/20261119/8771a2ab3fc446a98978b7fc8d7de4d4.jpeg": {
+  "w": 681,
+  "h": 711,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.488,
+  "local": "pics/60c8a058e56b4f95.webp",
+  "out": [
+   1226,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    1,
+    1,
+    1,
+    3,
+    6,
+    5,
+    25,
+    29,
+    19,
+    6,
+    3,
+    1
+   ],
+   [
+    0,
+    0,
+    14,
+    23,
+    22,
+    4,
+    8,
+    11,
+    7,
+    5,
+    3,
+    3
+   ]
+  ],
+  "c": "#643e2d",
+  "k": [
+   0.564,
+   0.298,
+   0.655,
+   0.413
+  ],
+  "p": [
+   0.403,
+   0.153,
+   0.776,
+   0.631
+  ]
  },
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
@@ -6314,6 +6376,12 @@
  "https://smhn.info/wp-content/uploads/2026/11/galaxy-s27-ultra-dummy-camera-closeup.webp": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://socialbeta.oss-cn-hangzhou.aliyuncs.com/upload/22771-20260924154059-4f2cc13f.jpg": {
+  "w": 1080,
+  "h": 1440,
   "target": 1280,
   "v": 3
  },
@@ -7289,12 +7357,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.KJhpzrEiUcOtenRa6utVww&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.OOJfb-VcFRjRtGR5auQJ6w&pid=News&w=615": {
   "w": 615,
   "h": 443,
@@ -7349,6 +7411,12 @@
  "https://www.bing.com/th?id=ONUT.PCXHZ_HTDPNy_bZxiKLpVA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Q4vtI7pS1kRLhoMrxtn27g&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -7489,12 +7557,6 @@
  "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500": {
   "w": 500,
   "h": 281,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.jM9YZVy03brliN5yr42pzw&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -8203,12 +8265,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/avengers-doomsday-1.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://www.travelvoice.jp/wp-content/uploads/2023/05/b8727131-15d8-4513-a616-51ecaea0908d.jpg": {
   "w": 800,
   "h": 533,
@@ -8309,6 +8365,12 @@
   "target": 720,
   "v": 3,
   "blur": 0.41
+ },
+ "https://x0.ifengimg.com/res/2026/313F33E3667448FF6E3C5C1B4C6E0CA870EE0697_size36_w720_h380.webp": {
+  "w": 720,
+  "h": 380,
+  "target": 720,
+  "v": 3
  },
  "https://x0.ifengimg.com/res/2026/3BA54408B6394E0C89C02BCC8E89709159DE5B3B_size9_w720_h380.webp": {
   "w": 720,

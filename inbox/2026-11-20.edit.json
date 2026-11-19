@@ -12,7 +12,11 @@
     7,
     4,
     43,
-    39
+    39,
+    64,
+    50,
+    51,
+    59
    ]
   },
   {
@@ -23,7 +27,8 @@
    "refs": [
     5,
     18,
-    14
+    14,
+    53
    ]
   },
   {
@@ -66,7 +71,8 @@
     5,
     29,
     36,
-    40
+    40,
+    45
    ]
   },
   {
@@ -79,7 +85,9 @@
     12,
     7,
     14,
-    22
+    22,
+    43,
+    48
    ]
   },
   {
@@ -168,6 +176,16 @@
     2,
     3
    ]
+  },
+  {
+   "headline": "ILLIT and NCT DREAM both No. 1 on Hanteo country charts",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    11
+   ]
   }
  ],
  "三星手机": [
@@ -177,7 +195,8 @@
    "blurb": "갤럭시 S27 울트라가 베젤 두께 1.28mm의 베젤리스 디스플레이를 탑재할 가능성이 있다는 소식.",
    "weight": "lead",
    "refs": [
-    3
+    3,
+    4
    ]
   },
   {
@@ -197,14 +216,32 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "One UI 9.5 Leaks and First Beta Reveal Samsung's Galaxy S27 Vision: Galaxy Claw AI Agent, S Beam Revival, and Native App Lock",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "삼성전자, 엑시노스 2700 양산…갤럭시 S27 탑재 확대 주목",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "_covered": {
-  "GTA 6": 49,
-  "漫威电影": 42,
+  "GTA 6": 64,
+  "漫威电影": 55,
   "哈利波特剧集": 5,
-  "ILLIT": 9,
-  "三星手机": 3,
+  "ILLIT": 13,
+  "三星手机": 6,
   "Astrae Oratio": 3,
   "The Mandalorian": 2,
   "dota2": 5,
@@ -212,7 +249,7 @@
   "A2O LITE": 1,
   "BLEACH Mirrors High": 1,
   "MMORPG 新作": 1,
-  "周杰伦": 4,
+  "周杰伦": 21,
   "绝区零": 4,
   "チェーンソーマン": 2,
   "FROM": 1
@@ -354,30 +391,34 @@
  ],
  "周杰伦": [
   {
-   "headline": "vivo 邀请周杰伦担任影像大使",
-   "highlight": "影像大使",
-   "blurb": "vivo 宣布邀请周杰伦担任影像大使。",
+   "headline": "周杰伦武汉演唱会最低票价580，见不到真人，只能看大屏",
+   "highlight": "最低票价580",
+   "blurb": "只花五百八十元，也能在武汉聆听周杰伦的歌声。但别指望看见他本人——这档票仅支持看大屏。",
    "weight": "lead",
    "refs": [
-    1
-   ]
+    5,
+    9,
+    12
+   ],
+   "image": "https://q5.itc.cn/images01/20261119/8771a2ab3fc446a98978b7fc8d7de4d4.jpeg"
   },
   {
-   "headline": "新航KrisFlyer台灣會員專屬 訂機票抽周杰倫新加坡2027演唱會門票",
-   "highlight": "周杰倫新加坡2027演唱會門票",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4
-   ]
-  },
-  {
-   "headline": "周杰倫概念股與權志龍經紀公司Galaxy將聯合開發AI與機器人產品",
+   "headline": "周杰伦2027武汉连开三场！兰亭序限定",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    10,
+    15
+   ]
+  },
+  {
+   "headline": "vivo 邀请周杰伦担任影像大使",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ],

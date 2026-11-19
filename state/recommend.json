@@ -55,7 +55,6 @@
   "https://www.koreaherald.com/article/10943077": "https://www.bing.com/th?id=ONUT.1F8acBXQNnru-cXiGwts7g&pid=News&w=700",
   "https://www.lifestyleasia.com/kl/style/fashion/uniqlo-studio-ghibli-ut-collection-mens-kids/": "https://www.bing.com/th?id=ONUT.jdYPkT2FLoh7VE9gZZXxgw&pid=News&w=800",
   "https://www.lubbockonline.com/story/shopping/deals/black-friday/2026/11/17/amazon-black-friday-silver-buffalo-snoopy-tumblers/92816732007/": "https://www.bing.com/th?id=ONUT.7NT5Zc5Xc4Py487Bj1vlZg&pid=News&w=664",
-  "https://www.msn.com/en-us/technology/consumer-electronics/should-you-buy-the-galaxy-s26-ultra-now-or-wait-for-the-s27-ultra/ar-AA2hHXHq": "https://www.bing.com/th?id=ONUT.KJhpzrEiUcOtenRa6utVww&pid=News&w=1200",
   "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E3%82%B8%E3%82%A7%E3%83%A9%E3%83%94%E3%82%B1-%E3%83%9D%E3%83%83%E3%83%97%E3%82%A2%E3%83%83%E3%83%97%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%8C%E5%A4%A7%E6%B7%B7%E9%9B%91-%E6%95%B4%E7%90%86%E5%88%B8%E3%82%84%E4%BA%88%E7%B4%84%E5%88%B6%E5%B0%8E%E5%85%A5-%E8%B3%BC%E5%85%A5%E5%88%B6%E9%99%90%E5%A4%89%E6%9B%B4%E3%81%AA%E3%81%A9%E9%81%8B%E5%96%B6%E5%AF%BE%E5%BF%9C%E3%81%8C%E4%BA%8C%E8%BB%A2%E4%B8%89%E8%BB%A2/ar-AA2hEVXz": "https://www.bing.com/th?id=ONUT.G_2In5W5ammNCnAqj-iKXQ&pid=News&w=1200",
   "https://www.msn.com/ko-kr/news/other/2%EC%8B%9C%EA%B0%84-%EB%B0%98-%EA%B8%B0%EB%8B%A4%EB%A0%A4%EC%95%BC-%EB%93%A4%EC%96%B4%EA%B0%80%EC%9A%94-%ED%95%B4%EC%99%B8-%EA%B2%8C%EC%9E%84%EC%82%AC%EC%97%90-%EB%AA%B0%EB%A6%B0-%EC%9D%B8%ED%8C%8C-%EC%A7%80%EC%8A%A4%ED%83%80-2026/ar-AA2hKFs6": "https://www.bing.com/th?id=ONUT.7S06JMqtMA629nxFuibXvQ&pid=News&w=1087",
   "https://www.msn.com/zh-cn/gaming/%E9%80%9A%E7%94%A8/tga2026%E6%9C%80%E4%BD%B3%E7%94%B5%E7%AB%9E%E9%80%89%E6%89%8B%E6%8F%90%E5%90%8D%E9%83%BD%E6%9C%89%E8%B0%81-%E4%BA%94%E4%B8%AA%E4%BA%BA%E5%88%86%E5%88%AB%E6%9D%A5%E8%87%AA%E5%93%AA%E4%B8%AA%E9%A1%B9%E7%9B%AE/ar-AA2hEOh3": "https://www.bing.com/th?id=ONUT.J06QUwHopb-uS79Si_i8sA&pid=News&w=1080",
@@ -71,6 +70,7 @@
   "https://www.techradar.com/news/best-tablet": null,
   "https://www.tenasia.co.kr/article/2026111961294": "https://img.tenasia.co.kr/photo/202611/BF.46475392.3.jpg",
   "https://www.upmedia.mg/tw/game/pc-game/274204": "https://cdn.upmedia.mg/upfile/img/2026/1113/202611132114154264.webp",
+  "https://www.vietnam.vn/ko/galaxy-s27-ultra-co-the-dung-man-hinh-khong-vien-vien-chi-1-28mm-theo-tin-don-tu-chuoi-cung-ung": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1794986357296_img_f9d3b9cd.jpeg",
   "https://www.walkerland.com.tw/subject/view/425707": "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/11/1794975918325-2dbd480da6fe4a49a7788df4dbd16c99-850x446.webp",
   "https://www.walkerplus.com/article/1004716/": "https://news.walkerplus.com/article/1004716/10032764_615.jpg",
   "https://www.walkerplus.com/article/1178257/": "https://news.walkerplus.com/article/1178257/12605406_615.jpg",
@@ -1097,6 +1097,39 @@
   },
   {
    "batch": 2,
+   "because": "三星手机",
+   "date": "2026-11-18",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1794986357296_img_f9d3b9cd.jpeg",
+   "kind": "board",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "score": 8,
+   "source": "Vietnam.vn",
+   "taste": [
+    [
+     "galaxy",
+     7
+    ],
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
+    ]
+   ],
+   "title": "공급망 소식통에 따르면 갤럭시 S27 울트라는 베젤 두께가 1.28mm에 불과한 베젤리스 디스플레이를 탑재할 가능성이 있다고 합니다.",
+   "url": "https://www.vietnam.vn/ko/galaxy-s27-ultra-co-the-dung-man-hinh-khong-vien-vien-chi-1-28mm-theo-tin-don-tu-chuoi-cung-ung",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 3,
    "because": "チェーンソーマン",
    "date": "2026-11-18",
    "hits": [],
@@ -1177,39 +1210,6 @@
    ],
    "title": "Samsung Galaxy S27 Ultra vs. S27 Pro: Which Should You Choose?",
    "url": "https://www.geeky-gadgets.com/galaxy-s27-ultra-vs-pro/",
-   "words": [
-    "galaxy"
-   ],
-   "work": "三星手机"
-  },
-  {
-   "batch": 3,
-   "because": "三星手机",
-   "date": "2026-11-18",
-   "hits": [
-    "三星 Galaxy"
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.KJhpzrEiUcOtenRa6utVww&pid=News&w=1200",
-   "kind": "board",
-   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
-   "score": 8,
-   "source": "PhoneArena on MSN",
-   "taste": [
-    [
-     "galaxy",
-     7
-    ],
-    [
-     "三星 Galaxy",
-     7
-    ],
-    [
-     "作品:三星手机",
-     7
-    ]
-   ],
-   "title": "Should you buy the Galaxy S26 Ultra now or wait for the S27 Ultra?",
-   "url": "https://www.msn.com/en-us/technology/consumer-electronics/should-you-buy-the-galaxy-s26-ultra-now-or-wait-for-the-s27-ultra/ar-AA2hHXHq",
    "words": [
     "galaxy"
    ],
@@ -1342,7 +1342,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "A2O LITE",
    "date": "2026-11-19",
    "hits": [],
@@ -1363,7 +1363,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-11-19",
    "hits": [],
@@ -1903,11 +1903,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1915,15 +1915,15 @@
    8
   ],
   [
+   "三星 Galaxy",
+   7
+  ],
+  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
-   7
-  ],
-  [
-   "三星 Galaxy",
    7
   ]
  ]
