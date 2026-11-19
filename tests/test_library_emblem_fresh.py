@@ -430,8 +430,14 @@ class Budget(unittest.TestCase):
     def test_budget_fits_under_five_minutes(self):
         total = sum(s for _, s in le.FRESH_BUDGET)
         self.assertLess(total, le.FRESH_TOTAL_S)                        # 300 秒「未満」
-        self.assertLessEqual(total + le.FRESH_SPARE_S, le.FRESH_TOTAL_S)   # 余り 60 秒を残す（240 + 60 ≤ 300）
+        self.assertLessEqual(total + le.FRESH_SPARE_S, le.FRESH_TOTAL_S)   # 余りを残す（250 + 50 ≤ 300）
+        self.assertGreaterEqual(le.FRESH_SPARE_S, 50)
         self.assertEqual(le.FRESH_TOTAL_S, 300)
+        self.assertEqual(dict(le.FRESH_BUDGET)["kick"], 20)   # 見直し 12：本番 1 回の 8 秒だけでは縮めない（推測の上限 20）
+        rules = (pathlib.Path(__file__).resolve().parent.parent / "docs" / "rules" / "emblem.md").read_text(encoding="utf-8")
+        self.assertIn("道具（rembg）を待つ上限は job 全体で 120 秒", rules)   # 見直し 11：決まりの文から消さない
+        self.assertIn("前の結果が足りない人はふつうに作る（ページを悪くしない方が先）", rules)   # 経緯を残す
+        self.assertEqual(le.FRESH_TOOLS_S, 120)
         self.assertEqual([k for k, _ in le.FRESH_BUDGET], ["kick", "setup", "first", "write", "page"])
         self.assertEqual(le.FRESH_BOARD_S, dict(le.FRESH_BUDGET)["first"])   # 1 版面の上限は割り当ての「1 枚目」
         self.assertLessEqual(le.FRESH_BOARD_S, 90)
