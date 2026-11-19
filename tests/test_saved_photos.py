@@ -329,7 +329,9 @@ class EmblemOnlySame(unittest.TestCase):
                     self.assertFalse([w for w in writes if "imgs.json" in w or w.startswith("/rest/")])   # 書き戻し・imgs.json なし
                 else:
                     self.assertTrue(any("imgs.json" in w for w in writes))
-        self.assertEqual(pages[0], pages[1])                     # ふつうの回と同じ中身
+        import re
+        clock = re.compile(rb"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:[+-]\d{2}:\d{2}|Z)|\d{2}\.\d{2} \d{2}:\d{2}")   # 作った時刻（分・秒が変わる所で落ちない）
+        self.assertEqual(clock.sub(b"T", pages[0]), clock.sub(b"T", pages[1]))   # ふつうの回と同じ中身（作った時刻だけ違う）
         h = pages[0].decode("utf-8")
         self.assertIn("https://img.example/1.jpg", h)            # AI 編集の記事が整理待ちの写真を引き継ぐ
         self.assertNotIn("hard.example/pic", h)                  # 置き場に入っていない防盗链の写真は出さない
