@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-19T15:19:35+00:00",
+ "checked": "2026-11-19T16:18:11+00:00",
  "fired": {
   "at": "2026-11-19T14:34:46+00:00",
   "results": {
@@ -61,9 +61,6 @@
     "sig": "e121307049f6"
    },
    "items": [
-    "Astrae Oratio",
-    "ILLIT",
-    "The Mandalorian",
     "lib:BTS",
     "lib:Mrs. GREEN APPLE",
     "lib:YOASOBI",
@@ -71,8 +68,7 @@
     "lib:スプラトゥーン3",
     "lib:大谷翔平",
     "lib:温泉",
-    "lib:葬送のフリーレン",
-    "哈利波特剧集"
+    "lib:葬送のフリーレン"
    ],
    "last_batch": "2026-11-19T14:52:42+00:00",
    "last_error": {
@@ -80,13 +76,13 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 528,
-   "prog_day": "2026-11-19",
+   "prog": 8,
+   "prog_day": "2026-11-20",
    "ripe": [],
-   "sig": "c91d409a62e4",
+   "sig": "436e43f85359",
    "token_cap": 1000000,
-   "tokens_today": 735629,
-   "why": "整理待ちの記事 101 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
