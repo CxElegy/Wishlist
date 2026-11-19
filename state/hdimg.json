@@ -49,12 +49,6 @@
   ],
   "why": "看不清"
  },
- "http://p0.qhimg.com/t11508c75c8efdf72efad050177.jpg": {
-  "w": 750,
-  "h": 1033,
-  "target": 1280,
-  "v": 3
- },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -633,6 +627,12 @@
   ],
   "why": "看不清"
  },
+ "https://cdn.livedoor.jp/kstyle/424ab55ca9afb3a344907449a662ec69_WI.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.livedoor.jp/kstyle/4af09f570719ed91dd64c3bbbf036273_WI.jpg": {
   "w": 1024,
   "h": 576,
@@ -640,6 +640,12 @@
   "v": 3
  },
  "https://cdn.livedoor.jp/kstyle/9125e1de6c092a3984efd64d3fe46fc5_WI.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn.livedoor.jp/kstyle/a8e8a00332063099e5e2fc7f0034f687_WI.jpg": {
   "w": 1024,
   "h": 576,
   "target": 1280,
@@ -2132,6 +2138,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news-images.tvbs.com.tw/api/v1/image/01a1ef6f-225f-71f0-8e82-7a1de8ab54a5.jpg?w=1024&h=576": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnbKO4yRvCMedPqwW7GIyRes6Dq0-b0horielnHQmI9zAruanx6ZKZWl6cDtpTc45KsWtFHrAtf0hY-u3uVJ2J_0vwb3XyyKGnBDcA-AiRgVr8i_xiyB76dzWC-cmpqoEog==": {
   "w": 934,
   "h": 701,
@@ -2926,6 +2938,19 @@
   ],
   "why": "看不清"
  },
+ "https://photo.newsen.com/news_photo/2026/11/19/202611191400460410_51.jpg": {
+  "w": 650,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.485,
+  "local": "pics/9945436bbb81676c.webp",
+  "out": [
+   1280,
+   945
+  ],
+  "why": "看不清"
+ },
  "https://pimg.mk.co.kr/news/cms/202611/12/news-p.v1.20261007.415c331a07ee4564bd97f4831e67de35_R.jpg": {
   "w": 1600,
   "h": 1141,
@@ -3196,12 +3221,6 @@
  "https://q0.itc.cn/q_70/images03/20261112/5c27dd9c44fe40d49f3c453c9fdd0c1c.jpeg": {
   "w": 682,
   "h": 958,
-  "target": 1280,
-  "v": 3
- },
- "https://q1.itc.cn/images01/20261119/e7e73596e4c248f28b6bbd3963525ae2.jpeg": {
-  "w": 1080,
-  "h": 1101,
   "target": 1280,
   "v": 3
  },
