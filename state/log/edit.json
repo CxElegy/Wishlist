@@ -1,125 +1,5 @@
 [
 {
-"at": "2026-11-17T17:38:59+00:00",
-"text": "2026-11-18 第 1 バッチを出刊：日本顶级网球赛事（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 4.1万・キャッシュ読み 54.8万・出力 2,030",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.42,
-"mem_total": 16869134336,
-"mem_free": 15898456064,
-"disk_used": 10095099904,
-"disk_free": 31188434944,
-"disk_total": 41283534848,
-"peak": 400248832
-},
-"batch": 1,
-"boards": [
-"日本顶级网球赛事"
-],
-"stories": 1,
-"left": 0,
-"edited": 7,
-"run": 1794936952.2745728,
-"tok": {
-"in": 17,
-"cw": 41096,
-"cr": 547651,
-"out": 2030,
-"calls": 9,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 590794,
-"secs": 188,
-"run_tok": {
-"in": 17,
-"cw": 41096,
-"cr": 547651,
-"out": 2030,
-"calls": 9,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-11-17T19:37:08+00:00",
-"text": "2026-11-18 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、The Mandalorian、Vaundy ほか 6（12 版面・24 本・今日の整理待ちは全部終わり） · token 新規入力 5.4万・キャッシュ読み 78.8万・出力 5,014",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.5,
-"mem_total": 16869134336,
-"mem_free": 15827025920,
-"disk_used": 11276619776,
-"disk_free": 30436245504,
-"disk_total": 41712865280,
-"peak": 495370240
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"GTA 6",
-"The Mandalorian",
-"Vaundy",
-"gelato pique",
-"あつ森",
-"チェーンソーマン",
-"三星手机",
-"周杰伦",
-"漫威电影"
-],
-"stories": 24,
-"left": 0,
-"edited": 10,
-"run": null,
-"tok": {
-"in": 23,
-"cw": 53508,
-"cr": 788045,
-"out": 5014,
-"calls": 12,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 846590
-},
-{
-"at": "2026-11-17T20:40:14+00:00",
-"text": "2026-11-18 第 1 バッチを出刊：FROM、MMORPG 新作、dota2、ぐでたま、星巴克马克杯（5 版面・6 本・残り 1 版面） · token 新規入力 4.4万・キャッシュ読み 48.2万・出力 2,526",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.83,
-"mem_total": 16869134336,
-"mem_free": 15850037248,
-"disk_used": 11282407424,
-"disk_free": 30430457856,
-"disk_total": 41712865280,
-"peak": 459440128
-},
-"batch": 1,
-"boards": [
-"FROM",
-"MMORPG 新作",
-"dota2",
-"ぐでたま",
-"星巴克马克杯"
-],
-"stories": 6,
-"left": 1,
-"edited": 15,
-"run": 1794947714.3419065,
-"tok": {
-"in": 16,
-"cw": 44337,
-"cr": 482362,
-"out": 2526,
-"calls": 8,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 529241
-},
-{
 "at": "2026-11-17T20:43:13+00:00",
 "text": "2026-11-18 第 2 バッチを出刊：绝区零（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 905・キャッシュ読み 14.7万・出力 608",
 "level": "ok",
@@ -2098,5 +1978,112 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 473411
+},
+{
+"at": "2026-11-19T09:36:42+00:00",
+"text": "2026-11-19 第 1 バッチを出刊：A2O LITE、ILLIT、dota2、周杰伦、漫威电影（5 版面・30 本・残り 5 版面） · token 新規入力 4.9万・キャッシュ読み 78.5万・出力 3,686",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.57,
+"mem_total": 16869126144,
+"mem_free": 15827079168,
+"disk_used": 11238899712,
+"disk_free": 30430457856,
+"disk_total": 41669357568,
+"peak": 463122432
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"ILLIT",
+"dota2",
+"周杰伦",
+"漫威电影"
+],
+"stories": 30,
+"left": 5,
+"edited": 21,
+"run": 1795080521.7640936,
+"tok": {
+"in": 23,
+"cw": 49143,
+"cr": 785362,
+"out": 3686,
+"calls": 12,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 838214
+},
+{
+"at": "2026-11-19T09:53:27+00:00",
+"text": "2026-11-19 第 2 バッチを出刊：MMORPG 新作、The Mandalorian、チェーンソーマン、三星手机、星巴克马克杯（5 版面・28 本・残り 7 版面） · token 新規入力 1.4万・キャッシュ読み 67.1万・出力 3,967",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.51,
+"mem_total": 16869126144,
+"mem_free": 15820775424,
+"disk_used": 11259244544,
+"disk_free": 30410113024,
+"disk_total": 41669357568,
+"peak": 657444864
+},
+"batch": 2,
+"boards": [
+"MMORPG 新作",
+"The Mandalorian",
+"チェーンソーマン",
+"三星手机",
+"星巴克马克杯"
+],
+"stories": 28,
+"left": 7,
+"edited": 21,
+"run": 1795080521.7640936,
+"tok": {
+"in": 15,
+"cw": 14446,
+"cr": 671209,
+"out": 3967,
+"calls": 8,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 689637
+},
+{
+"at": "2026-11-19T09:57:02+00:00",
+"text": "2026-11-19 第 3 バッチを出刊：GTA 6、ILLIT、周杰伦、漫威电影（4 版面・24 本・残り 3 版面） · token 新規入力 2,911・キャッシュ読み 18.7万・出力 1,569",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.5,
+"mem_total": 16869126144,
+"mem_free": 15848873984,
+"disk_used": 11262451712,
+"disk_free": 30406905856,
+"disk_total": 41669357568,
+"peak": 410214400
+},
+"batch": 3,
+"boards": [
+"GTA 6",
+"ILLIT",
+"周杰伦",
+"漫威电影"
+],
+"stories": 24,
+"left": 3,
+"edited": 21,
+"run": 1795080521.7640936,
+"tok": {
+"in": 4,
+"cw": 2907,
+"cr": 186636,
+"out": 1569,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 191116
 }
 ]
