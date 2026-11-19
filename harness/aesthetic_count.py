@@ -28,14 +28,25 @@ CGAP_RIGHT = 0.12
 CGAP_MIN_PX = 24        # 割合を超えても、これ未満の px は数えない
 STRONG_AREA = 0.15      # 強い要素：彩度 0.55 以上の地が箱の面積のこの割合以上
 SNAP_MIN_W = 761        # 吸着は PC だけ（render.FIT_JS の snap が innerWidth <= 760 では動かない）
+# 2026-11-19 新しい人のページ（店長が test-b を不合格にした 8 つ・主経由の底の決め）
+ORPHAN_MIN = 3          # 見出しの最後の行はこの字数以上（1〜2 字の孤立は ✗）
+LEAD_MAX = 0.70         # ほかの注目の大きい 1 枚の写真は頭条の写真の面積の 7 割まで
+FEW_WALL = 3            # ほかの注目がこの本数以下なら、大きい 1 枚を作らず同じ大きさで並べる
+SIDE_LINE_PX = 64       # 空の脇の箱（予定・欲しい物）は 1 行の細い帯（この高さまで）
+NAV_GAP_PX = 80         # 左の目次の中身の底から箱の底・欲しい物のボタンまでの空き
 
 KIND = {"edge": "吸着した位置で小元素・題・札が画面の端で切れている", "hid": "吸着した位置で固定のボタンの下に隠れている",
         "solo": "記事が 1 本だけの版面", "herogap": "重大の横に大きな空き", "emrel": "空きの小元素がその記事と無関係",
-        "cgap": "カードの中に空き（写真の下・字の下・右）", "ell": "見出しが「…」で切れている", "strong": "脇役の部品に強い要素が 2 つ以上"}
+        "cgap": "カードの中に空き（写真の下・字の下・右）", "ell": "見出しが「…」で切れている", "strong": "脇役の部品に強い要素が 2 つ以上",
+        "orphan": "見出しの最後の行が 1〜2 字", "leadbig": "ほかの注目の大きい 1 枚が頭条に近い大きさ", "sidebig": "空の脇の箱が 1 行の帯より大きい",
+        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回"}
 FIX = {"edge": "scroll-margin-top を小元素のはみ出し分だけ取る（render.CSS section.sec.has-emb）", "hid": "固定のボタンの下に入らない位置で吸着する",
        "solo": "版面の記事を増やす・隣の版面と一緒に組む", "herogap": "重大の横に記事・予定を置くか幅を広げる",
        "emrel": "関係のある小元素が無ければ空きのまま（置かない）", "cgap": "写真を字の高さまで伸ばす・カードを縮める",
-       "ell": "行数を増やす・見出しを短くする", "strong": "脇役の箱は墨の地・小さい札だけにする（C4）"}
+       "ell": "行数を増やす・見出しを短くする", "strong": "脇役の箱は墨の地・小さい札だけにする（C4）",
+       "orphan": "字の大きさを列に合わせる・text-wrap: balance（render FIT_JS fitHead）", "leadbig": "記事 3 本以下は同じ大きさで並べる・大きい 1 枚は頭条の 7 割まで",
+       "sidebig": "空の箱は 1 行の細い帯に畳む（render._side）", "pendhid": "整理待ちの見出しを写真付きで並べる（render._section）",
+       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）"}
 
 
 def emb_rel_js():
@@ -176,6 +187,64 @@ JS_BODY = r"""
     });
     if (strong.length >= 2) { bump('strong'); tag(box, 'strong', strong.length + ' 個（' + ((box.querySelector('h4') || {}).innerText || '').trim().slice(0, 14) + '）'); }
   });
+
+  // 7〜12：新しい人のページの形（2026-11-19 店長が test-b を不合格にした 8 つ）。店長のページにも同じに当てる
+  // 7. 見出しの最後の行が 1〜2 字（孤立。P.orphanMin 字未満）
+  const lastLine = el => {
+    const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), rg = document.createRange(), lines = [];
+    for (let n; (n = tw.nextNode());) for (let i = 0; i < n.data.length; i++) {
+      if (!n.data[i].trim()) continue;
+      rg.setStart(n, i); rg.setEnd(n, i + 1); const q = rg.getClientRects()[0]; if (!q || !q.width) continue;
+      const y = Math.round(q.top + q.height / 2), L = lines.find(l => Math.abs(l.y - y) < q.height * 0.5);
+      if (L) L.n++; else lines.push({y, n: 1});
+    }
+    lines.sort((a, b) => a.y - b.y); return lines.length >= 2 ? lines[lines.length - 1].n : 99;
+  };
+  [...document.querySelectorAll('.top h2 .hb, .wall > .wc > b, section.sec article.card h2, section.sec article.card h3')].forEach(h => {
+    if (!vis(h) || h.closest('details:not([open])')) return;
+    bump('orphanHeads'); const n = lastLine(h);
+    if (n < P.orphanMin) { bump('orphan'); tag(h, 'orphan', '最後の行 ' + n + ' 字（' + (h.innerText || '').trim().slice(-8) + '）'); }
+  });
+  // 8. ほかの注目の大きい 1 枚：頭条の写真の面積の P.leadMax 超／記事が P.fewWall 本以下なのに 2 列にまたがる 1 枚
+  const tp = document.querySelector('#front .top .pic'), tpr = tp && vis(tp) ? tp.getBoundingClientRect() : null, TA = tpr ? tpr.width * tpr.height : 0;
+  const wcs = [...document.querySelectorAll('.wall > .wc')].filter(c => vis(c) && !c.hidden);
+  if (TA && wcs.length) {
+    let worst = 0, who = null; wcs.forEach(c => { const p = c.querySelector(':scope > .pic'); if (!p || !vis(p)) return; const r = p.getBoundingClientRect(), a = r.width * r.height; if (a > worst) { worst = a; who = c; } });
+    stats.leadPct = Math.round(worst / TA * 100);
+    const span2 = wcs.length <= P.fewWall && wcs.some(c => c.classList.contains('lead') && /span\s*2|\/\s*span 2/.test(getComputedStyle(c).gridColumn + getComputedStyle(c).gridColumnEnd));
+    if (who && (worst > TA * P.leadMax || span2)) { bump('leadbig'); tag(who, 'leadbig', '頭条の ' + stats.leadPct + '%' + (span2 ? '・' + wcs.length + ' 本で大きい 1 枚' : '')); }
+  }
+  // 9. 脇の箱（予定・欲しい物）が空なのに 1 行の帯より高い（A7・C4。F3 の「箱は出す」は細い帯で満たす）
+  document.querySelectorAll('.fside > *, .fstrip > *').forEach(b => {
+    if (!vis(b) || !b.querySelector('.sempty')) return;
+    bump('sideEmpty'); const h = b.getBoundingClientRect().height;
+    if (h > P.sideLine) { bump('sidebig'); tag(b, 'sidebig', '空の箱 ' + Math.round(h) + 'px'); }
+  });
+  // 10. 版面に記事が 1 本以下なのに、整理待ちを「N 件」とたたんだまま並べていない（A6・合格の見本 4）
+  document.querySelectorAll('section.sec').forEach(sec => {
+    const pd = sec.querySelector('details.pend'); if (!pd || !vis(pd) || pd.open || getComputedStyle(pd).display === 'none') return;
+    bump('pendClosed');
+    const n = [...sec.querySelectorAll('article.card')].filter(c => vis(c) && !c.closest('details:not([open])')).length;
+    if (n <= 1) { bump('pendhid'); tag(sec, 'pendhid', (sec.dataset.k || '') + '：記事 ' + n + ' 本・整理待ちはたたんだまま'); }
+  });
+  // 11. 左の目次の箱の下の空き（PC。中身の底 → 目次の箱の底・欲しい物のボタンまで）
+  const nav = document.querySelector('.nav');
+  if (nav && vis(nav) && innerWidth > 1000) {
+    const nr = nav.getBoundingClientRect(), wish = nav.querySelector('.navwish');
+    const kids = [...nav.querySelectorAll('.nslot, .nhead, .logo')].filter(vis), low = kids.length ? Math.max(...kids.map(k => { const r = k.getBoundingClientRect(); const ins = [...k.querySelectorAll('.pill, .nsec, .nsubs, .nmore')].filter(vis); return ins.length ? Math.max(...ins.map(x => x.getBoundingClientRect().bottom)) : r.bottom; })) : nr.top;
+    const wr = wish && vis(wish) ? wish.getBoundingClientRect() : null, gap = Math.round(Math.max(wr ? wr.top - low : 0, nr.bottom - (wr ? wr.bottom : low)));
+    stats.navGap = gap;
+    if (gap > P.navGap) { bump('navgap'); tag(nav, 'navgap', '目次の下 ' + gap + 'px'); }
+  }
+  // 12. 同じ記事・同じ写真が 1 ページに 2 回（F4）
+  const seenU = new Map(), seenP = new Map();
+  document.querySelectorAll('#front .top, .wall > .wc, section.sec article.card, section.sec .calm, .pendwall li').forEach(c => {
+    if (!vis(c) || c.closest('details:not([open])')) return;
+    const a = c.querySelector('a.lk[href], a[href]'), u = a && a.getAttribute('href');
+    if (u && !/^#|wishlist|settings/.test(u)) { if (seenU.has(u)) { bump('dup'); tag(c, 'dup', '同じ記事：' + (c.innerText || '').trim().slice(0, 16)); } else seenU.set(u, c); }
+    const im = c.querySelector('.pic img:not(.bg):not(.ico)'), s = im && vis(im) && (im.currentSrc || im.src);
+    if (s && !/^data:/.test(s) && !(u && seenU.get(u) !== c)) { if (seenP.has(s)) { bump('dup'); tag(c, 'dup', '同じ写真：' + s.split('/').pop().slice(0, 24)); } else seenP.set(s, c); }
+  });
   return {items: out, stats};
 }
 """
@@ -198,8 +267,47 @@ def measure(pg, start=0):
     """開いたページで測る。{items:[{i,kind,note,sel}], stats:{…}}（items は self_review の MEASURE_JS と同じ形）。"""
     body, rel = build_js()
     p = {"snapMinW": SNAP_MIN_W, "heroMax": HERO_SIDE_MAX, "heroMinW": HERO_SIDE_MIN_W, "cPhoto": CGAP_PHOTO, "cText": CGAP_TEXT, "cRight": CGAP_RIGHT,
-         "cMin": CGAP_MIN_PX, "strongArea": STRONG_AREA, "relFn": REL_FN % rel if rel else ""}
+         "cMin": CGAP_MIN_PX, "strongArea": STRONG_AREA, "relFn": REL_FN % rel if rel else "",
+         "orphanMin": ORPHAN_MIN, "leadMax": LEAD_MAX, "fewWall": FEW_WALL, "sideLine": SIDE_LINE_PX, "navGap": NAV_GAP_PX}
     return pg.evaluate("(a) => (" + body.strip() + ")(a[0], a[1], a[2])", [start, p, bool(rel)])
+
+
+# 新しい人のページ（2026-11-19）を数える幅（主経由の店長の決め：どの幅でも同じ決め方・この 8 幅で数える）
+NEW_USER_VIEWS = ((390, 844), (412, 915), (768, 1024), (1000, 800), (1024, 768), (1333, 720), (1440, 900), (1920, 1080))
+# 8 つの指摘 → 数える項目（self_review の band・cgap と、上の 7〜12）。審美基準の番号は aesthetic_map.json
+NEW_USER_KINDS = ("orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
+                  "solo", "herogap", "ell", "over", "wide", "clip", "gap")
+
+
+def page_counts(pg):
+    """開いて読み込み終えたページ（self_review.load_all のあと）で、self_review の数と上の数を 1 つにした {種類: 件数, '_notes': {種類: [..]}, '_stats': {}}。
+    PC の会話が本物の非公開ページ（ログインして開いた本人のページ）に同じ数え方を当てる呼び口。board_kpi.py pages もここを呼べる。"""
+    import self_review   # self_review が aesthetic_count を import するので、使うときに読む
+    r = pg.evaluate(self_review.MEASURE_JS)
+    x = measure(pg, len(r["items"]))
+    items = r["items"] + x["items"]
+    out = {k: 0 for k in NEW_USER_KINDS}
+    notes = {}
+    for i in items:
+        out[i["kind"]] = out.get(i["kind"], 0) + 1
+        notes.setdefault(i["kind"], []).append(i["note"])
+    out["_notes"] = {k: v[:6] for k, v in notes.items()}
+    out["_stats"] = x["stats"]
+    return out
+
+
+def new_user_counts(url, browser_, views=NEW_USER_VIEWS):
+    """1 つのページを 8 幅で開いて page_counts。{'390x844': {...}, …}。browser_ は harness/browser.launch の返すもの。"""
+    import self_review
+    res = {}
+    for w, h in views:
+        ctx = browser_.new_context(viewport={"width": w, "height": h}, locale="ja-JP", has_touch=w <= 760, is_mobile=w <= 760)
+        pg = ctx.new_page()
+        pg.goto(url, wait_until="load", timeout=60000)
+        self_review.load_all(pg)
+        res[f"{w}x{h}"] = page_counts(pg)
+        ctx.close()
+    return res
 
 
 def main(argv=None):
