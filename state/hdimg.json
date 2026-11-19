@@ -374,12 +374,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets.st-note.com/production/uploads/images/336513170/rectangle_large_type_2_fb58c823c8ed88226743cc9756c24947.jpeg?fit=bounds&quality=85&width=1280": {
-  "w": 1280,
-  "h": 670,
-  "target": 720,
-  "v": 3
- },
  "https://assets.st-note.com/production/uploads/images/336780444/rectangle_large_type_2_b175847254676ae645d5e1160c4fd98e.jpeg?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -446,12 +440,6 @@
   "w": 2000,
   "h": 1125,
   "target": 1280,
-  "v": 3
- },
- "https://books.r10s.jp/fan/images/oshiraku-images/kohaku_shikai_main_202cd0bee7.png?fitin=838:628": {
-  "w": 838,
-  "h": 472,
-  "target": 720,
   "v": 3
  },
  "https://businessupturn.com/uploads/media/1794830799107-r6g345-untitled-design---2026-11-16t173622-305.webp": {
@@ -528,6 +516,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.e-science.co.kr/news/photo/202611/139894_72945_1815.jpg": {
+  "w": 600,
+  "h": 750,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.ebn.co.kr/news/photo/202611/1732202_768402_88.jpg": {
   "w": 600,
   "h": 348,
@@ -587,6 +581,19 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://cdn.hk01.com/di/media/images/dw/20261119/1200114133408681984467831.png/wwH5R3DdX7eXj8vlJBzRk_ciHYYPL01tudBfJLnQXyQ?v=w1280r16_9": {
+  "w": 638,
+  "h": 359,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.497,
+  "local": "pics/65e0e6a78fbfa1de.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png": {
   "w": 1280,
@@ -785,6 +792,12 @@
   "target": 720,
   "v": 3
  },
+ "https://collabo-cafe.com/wp-content/uploads/chainsawman-prize-glitter-glamours-reze-cafe-nimichi-2026-featured-1.jpg": {
+  "w": 1200,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
  "https://collabo-cafe.com/wp-content/uploads/maho-girls-precure-10th-anniversary-party-2027-kv.jpg": {
   "w": 1000,
   "h": 1384,
@@ -858,12 +871,6 @@
   "target": 1280,
   "v": 3
  },
- "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
-  "w": 4525,
-  "h": 3016,
-  "target": 720,
-  "v": 3
- },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
   "w": 1280,
   "h": 670,
@@ -898,6 +905,12 @@
   "w": 1100,
   "h": 619,
   "target": 1280,
+  "v": 3
+ },
+ "https://danamic-media.danamic.org/danamic-production/2026/11/18160256/pitch-2e93a415-afa-2026-key-visual-link_800844dce5804e08becfaad93a7cda98.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://deadline.com/wp-content/uploads/2026/11/X-MEN-Hugh-Jackman-James-Marsden-Patrick-Stewart-Halle-Berry-Famke-Janssen-2000.-TM-and-Copyri-MCDAVDO-WD014-1000.jpg": {
@@ -948,6 +961,12 @@
   "target": 720,
   "v": 3
  },
+ "https://escharts.com/metaImage/tournaments/1win-essence-i?v=1795044405": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
   "w": 1200,
   "h": 630,
@@ -964,6 +983,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/res-unchained-4-blast-slam-vii-southeast-asia-open-qualifier-2?v=1795012228": {
@@ -1163,6 +1188,12 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://i.tribune.com.pk/media/images/x-men-first-class-640x4801/x-men-first-class-640x4801-640x480.webp": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
   "v": 3
  },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
@@ -1811,6 +1842,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.384
+ },
+ "https://img2.animatetimes.com/2026/11/0e4c7b8d9fb50ebe2354a8a499d5d3456afc6f11bcc504_65499051_6b86dfb216456206a2a701b40d2fe89368d1d682.jpg": {
+  "w": 1280,
+  "h": 864,
+  "target": 720,
+  "v": 3
  },
  "https://img2.utuku.imgcdc.com/650x0/news/20261117/352ef8dc-c9d2-4e4e-bba6-f2e3371f0361.jpg": {
   "w": 650,
@@ -3091,6 +3128,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/79579/45/79579-45-b53d5215e15367af5e35e1dcb7fa8873-2400x1350.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2240,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prtimes.jp/img/165636/12/resize/d165636-12-a415dda3aae89418a36d-0.jpg": {
   "w": 650,
   "h": 366,
@@ -3531,12 +3574,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3649,6 +3686,12 @@
   "w": 1600,
   "h": 900,
   "target": 720,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/sharedimages/2026/08/avengers-doomsday-poster.jpg?w=1200&h=675&fit=crop": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://sumahodigest.com/wp-content/uploads/2026/11/HW6zVaQXcAAkP6g.jpg": {
@@ -3840,12 +3883,6 @@
   ],
   "why": "看不清"
  },
- "https://www.aljazeera.com/wp-content/uploads/2026/11/AP26322012517816-1795060878.jpg?resize=1920%2C1440": {
-  "w": 1920,
-  "h": 1440,
-  "target": 720,
-  "v": 3
- },
  "https://www.androidheadlines.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-AH-999-scaled.png": {
   "w": 2560,
   "h": 1440,
@@ -3909,9 +3946,15 @@
   "v": 3,
   "blur": 0.404
  },
- "https://www.bing.com/th?id=ONUT.1N1TTyE5qoadMN7RMaNvuw&pid=News&w=680": {
-  "w": 680,
-  "h": 383,
+ "https://www.bing.com/th?id=ONUT.00q_3SKAZTpUktsTEvv6GQ&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.1F8acBXQNnru-cXiGwts7g&pid=News&w=700": {
+  "w": 700,
+  "h": 467,
   "target": 720,
   "v": 3
  },
@@ -3972,6 +4015,12 @@
    989
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.7S06JMqtMA629nxFuibXvQ&pid=News&w=1087": {
+  "w": 526,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.AwiSJHKEma7JnzhA9uxbmg&pid=News&w=700": {
   "w": 700,
@@ -4042,27 +4091,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.NHwS4bqcv-E8uKRGaESTiw&pid=News&w=650": {
-  "w": 650,
-  "h": 292,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.PCXHZ_HTDPNy_bZxiKLpVA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.PmBKIconqgsoL1ViHGJ-2A&pid=News&w=550": {
   "w": 550,
   "h": 301,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4075,6 +4106,12 @@
  "https://www.bing.com/th?id=ONUT.XBcESbSi_Eum0R-T3jZIEg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.bPn_Kvj1yQiErcTGtlonXQ&pid=News&w=700": {
+  "w": 700,
+  "h": 525,
   "target": 720,
   "v": 3
  },
@@ -4321,12 +4358,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/esports-gaming-setup.png?v=72240b6c111d7c67dbf43f89ddbfc186f0a0c1e5": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg": {
   "w": 1280,
   "h": 720,
@@ -4493,6 +4524,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Plus-review-3.jpg": {
+  "w": 1920,
+  "h": 1078,
+  "target": 720,
+  "v": 3
+ },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
   "h": 675,
@@ -4533,6 +4570,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.sxcntv.com/imgtuku/keji/11.jpg": {
+  "w": 900,
+  "h": 561,
+  "target": 720,
   "v": 3
  },
  "https://www.teepr.com/wp-content/uploads/2026/11/1956585-photo1.jpg": {
