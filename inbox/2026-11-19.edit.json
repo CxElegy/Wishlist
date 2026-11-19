@@ -180,7 +180,8 @@
     4,
     2,
     3,
-    7
+    7,
+    9
    ],
    "event": {
     "date": "2026-12-05",
@@ -196,6 +197,33 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "周杰伦《嘉年华Ⅱ》悉尼站震撼来袭！Homart活曼特集团多年携手周董",
+   "highlight": "悉尼站",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "周杰伦武汉演唱会，花$112看大屏幕，你要吗？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  },
+  {
+   "headline": "周杰伦IP牵手涉足智能戒指引关注",
+   "highlight": "智能戒指",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -310,7 +338,7 @@
  "_covered": {
   "漫威电影": 88,
   "GTA 6": 88,
-  "周杰伦": 7,
+  "周杰伦": 11,
   "A2O LITE": 6,
   "dota2": 28,
   "三星手机": 10,

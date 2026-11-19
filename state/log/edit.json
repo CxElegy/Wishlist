@@ -1,48 +1,5 @@
 [
 {
-"at": "2026-11-17T12:52:28+00:00",
-"text": "2026-11-17 第 4 バッチを出刊：A2O LITE、BLEACH Mirrors High、dota2（3 版面・12 本・今日の整理待ちは全部終わり） · token 新規入力 2,951・キャッシュ読み 24.5万・出力 1,534",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.24,
-"mem_total": 16869134336,
-"mem_free": 15816818688,
-"disk_used": 10108665856,
-"disk_free": 31174868992,
-"disk_total": 41283534848,
-"peak": 483708928
-},
-"batch": 4,
-"boards": [
-"A2O LITE",
-"BLEACH Mirrors High",
-"dota2"
-],
-"stories": 12,
-"left": 0,
-"edited": 22,
-"run": 1794918845.8458204,
-"tok": {
-"in": 5,
-"cw": 2946,
-"cr": 244925,
-"out": 1534,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 249410,
-"secs": 1103,
-"run_tok": {
-"in": 38,
-"cw": 54848,
-"cr": 1391482,
-"out": 6145,
-"calls": 20,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-17T13:49:12+00:00",
 "text": "2026-11-17 第 1 バッチを出刊：A2O LITE、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作、dota2 ほか 9（15 版面・59 本・残り 3 版面） · token 新規入力 5.1万・キャッシュ読み 77.8万・出力 3,246",
 "level": "ok",
@@ -2143,5 +2100,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 158753
+},
+{
+"at": "2026-11-19T05:20:59+00:00",
+"text": "2026-11-19 第 7 バッチを出刊：周杰伦（1 版面・5 本・残り 4 版面） · token 新規入力 1,313・キャッシュ読み 16.0万・出力 728",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.55,
+"mem_total": 16869126144,
+"mem_free": 15957434368,
+"disk_used": 10713718784,
+"disk_free": 30955638784,
+"disk_total": 41669357568,
+"peak": 353882112
+},
+"batch": 7,
+"boards": [
+"周杰伦"
+],
+"stories": 5,
+"left": 4,
+"edited": 20,
+"run": 1795062886.8473575,
+"tok": {
+"in": 4,
+"cw": 1309,
+"cr": 159567,
+"out": 728,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 161608
 }
 ]

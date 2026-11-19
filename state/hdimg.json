@@ -906,12 +906,6 @@
   "target": 1280,
   "v": 3
  },
- "https://dam.mediacorp.sg/image/upload/s--ZE_vpNir--/c_crop,h_626,w_1113,x_1,y_0/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/8world/images/2026/11/19/20261118_ent_e-news-jay-chou-concert_in-wuhanws_.png?itok=6qDXuIoo": {
-  "w": 1200,
-  "h": 676,
-  "target": 1280,
-  "v": 3
- },
  "https://deadline.com/wp-content/uploads/2026/11/X-MEN-Hugh-Jackman-James-Marsden-Patrick-Stewart-Halle-Berry-Famke-Janssen-2000.-TM-and-Copyri-MCDAVDO-WD014-1000.jpg": {
   "w": 1000,
   "h": 563,
@@ -2865,19 +2859,6 @@
   "out": [
    1280,
    853
-  ],
-  "why": "期限付きの網址"
- },
- "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/19/35532256.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
-  "w": 799,
-  "h": 532,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.416,
-  "local": "pics/66baf86800b2cd5f.webp",
-  "out": [
-   799,
-   532
   ],
   "why": "期限付きの網址"
  },
