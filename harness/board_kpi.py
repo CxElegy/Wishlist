@@ -7,8 +7,9 @@
       計測の回（D:/Claude/kpi/runs/<時刻>.json）を作る。
   python harness/board_kpi.py watch <回のファイル> [--every 600] [--hours 18]
       回の版面ごとに、各段（follows・boards・記事・小元素・AI 編集・本人のページ）が初めて見えた時刻を書き足す。全部そろうか時間切れで終わる。
-  python harness/board_kpi.py report [<回のファイル> …]
-      回ごとの「足してから各段まで」の分と、目標との比較。harness/kpi/latest.json に数字だけ（アカウント・版面名はテスト用だけ）。
+  python harness/board_kpi.py report [<回のファイル> …] [--no-fail] [--days 3]
+      回ごとの「足してから各段まで」の分と、目標（経路別。「未満」）との比較。harness/kpi/latest.json に数字と red の一覧（アカウント・版面名はテスト用だけ）。
+      目標を割った段・出ないままの段があれば 1 行ずつ出して終了コード 1（--no-fail で 0）。
   python harness/board_kpi.py tick
       まだ終わっていない回（24 時間以内）を 1 回だけ見て書き足す（ハーネスのループが毎回呼ぶ）。
   python harness/board_kpi.py pages
@@ -40,17 +41,30 @@ OUT = ROOT / "harness" / "kpi" / "latest.json"
 LOCAL = "http://localhost:8000"
 ENV = pathlib.Path("D:/Claude/SupabaseLocal/stack/.env")
 PASSWORD = "0000"   # テスト用アカウント（test-a〜e@example.com）の決まった値。CLAUDE.md・ux_check と同じ
+# 目標（2026-11-19 店長：「新しい版面を足したら小元素が出るまでは 5 分未満を保つ」）。
+# 根拠：DB の my_keywords_set が足したその場で board_added.yml を起こす（follows・boards は 2 分以内、小元素は別 job で最初に取って 5 分未満、
+# 記事 15 分、本人のページ 1 回目 15 分、小元素の後の作り直しは数分）。AI 編集だけは今までどおり gate 待ち。
+# 比べ方は「未満」：目標ちょうど（5.0 分）は赤（judge）。全部、足した時刻（t0）からの分。
 STAGES = [   # (キー, 名前, 目標の分。経路 C のとき)
     ("picked", "本人の picks に入る", 1),
-    ("follow", "ライブラリの follows", 60),
-    ("board", "ライブラリの boards（C）", 60),
-    ("raw", "記事が集まる（user_boards）", 120),
-    ("pending", "ライブラリの記事（board_stories.pending）", 180),
-    ("emblem", "小元素", 120),
+    ("follow", "ライブラリの follows", 5),
+    ("board", "ライブラリの boards（C）", 5),
+    ("raw", "記事が集まる（user_boards）", 20),
+    ("pending", "ライブラリの記事（board_stories.pending）", 30),
+    ("emblem", "小元素", 5),
     ("edited", "AI 編集の見出し（board_stories.stories）", 480),
-    ("page", "本人のページに載る", 150),
+    ("page", "本人のページに載る", 20),
+    ("page_emblem", "小元素が本人のページに載る", 10),   # 小元素が出たあとの作り直し（数分）。ページの版面の中に絵がある
 ]
 TARGET = {k: m for k, _, m in STAGES}
+# 経路ごとの目標（分）と、赤かどうかを見る段。A は店長の号の写し、B はライブラリにある版面（follows と記事だけ新しい）なので、
+# 小元素は足した時点で既にある（B は 1 分未満。A は店長の号の写しで page と同時に揃うので小元素の段は見ない）。
+TARGETS = {
+    "C": dict(TARGET),
+    "B": {"picked": 1, "follow": 5, "raw": 20, "emblem": 1, "page": 20},
+    "A": {"picked": 1, "page": 15},
+}
+RED_AFTER_MIN = 24 * 60   # これだけたっても見えない段は「出ないまま」
 
 
 def q(sql):
@@ -152,6 +166,15 @@ def page_html(account):
         return ""
 
 
+def page_has_emblem(html, name):
+    """本人のページの、この版面の <section> の中に小元素（render._emblem の <div class="emb …">）があるか。"""
+    i = html.find(f'data-k="{name}"')
+    if i < 0:
+        return False
+    j = html.find("<section", i)
+    return 'class="emb ' in html[i:j if j > 0 else len(html)]
+
+
 def observe(run):
     """今の状態を見て、まだ記録していない段で「できている」ものに今の時刻（DB に時刻があればその時刻）を付ける。"""
     t = now()
@@ -184,11 +207,13 @@ def observe(run):
         ub = q(f"select coalesce(jsonb_array_length(stories),0), updated_at from public.user_boards where account={lit(a)} and item={lit(nm)}")
         if ub and "raw" not in s and int(ub[0][0] or 0) > 0:
             s["raw"] = ub[0][1] or iso(t)
-        if "page" not in s and page_at and page_at > parse(run["t0"]):
+        if page_at and page_at > parse(run["t0"]) and ("page" not in s or ("page_emblem" not in s and "emblem" in s)):
             if html is None:
                 html = page_html(a)
             if f'data-k="{nm}"' in html or f'>{nm}<' in html:
-                s["page"] = iso(page_at)
+                s.setdefault("page", iso(page_at))
+                if "emblem" in s and page_has_emblem(html, nm):
+                    s["page_emblem"] = iso(page_at)
         if b["path"] == "A":   # 店長と同じ名前：小元素・AI 編集は店長の号のもの（本人のページに載った時点でそろう）
             for k in ("emblem", "edited", "pending"):
                 if k not in s and "page" in s:
@@ -264,16 +289,43 @@ def cmd_pages(a):
     OUT.write_text(json.dumps(cur, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
-def minutes(run, b, k):
+def minutes(run, b, k, nd=1):
     v = b["seen"].get(k)
-    return None if not v else round((parse(v) - parse(run["t0"])).total_seconds() / 60, 1)
+    if not v:
+        return None
+    m = (parse(v) - parse(run["t0"])).total_seconds() / 60
+    return m if nd is None else round(m, nd)
+
+
+def judge(run, t=None):
+    """目標を割った段・出ないままの段の一覧（赤）。目標は「未満」：目標ちょうども赤。
+    まだ見えない段は、足してからの経過が目標以上なら「まだ出ない」、24 時間以上なら「出ないまま」で赤。"""
+    t = t or now()
+    age = (t - parse(run["t0"])).total_seconds() / 60
+    red = []
+    for b in run["boards"]:
+        for k, target in TARGETS.get(b["path"], {}).items():
+            m = minutes(run, b, k, None)
+            if m is None:
+                why = "出ないまま" if age >= RED_AFTER_MIN else "まだ出ない" if age >= target else None
+                m = round(age, 1)
+            else:
+                why = "遅い" if m >= target else None
+                m = round(m, 1)
+            if why:
+                red.append({"path": b["path"], "name": b["name"], "stage": k, "minutes": m, "target": target, "why": why})
+    return red
 
 
 def cmd_report(a):
-    files = [pathlib.Path(x) for x in a.runs] or sorted(RUNS.glob("*.json"))
-    rows, agg = [], {}
+    """各段の分と目標の比べ。目標を割った段・出ないままの段があれば 1 行ずつ出して終了コード 1（--no-fail で 0）。
+    引数なしは直近 --days 日（既定 3）の回だけ（前の仕組みのときの遅い回で赤のままにしない）。"""
+    files = [pathlib.Path(x) for x in a.runs] or [f for f in sorted(RUNS.glob("*.json"))
+                                                  if now() - parse(json.loads(f.read_text(encoding="utf-8"))["t0"]) <= dt.timedelta(days=a.days)]
+    rows, agg, red = [], {}, []
     for f in files:
         run = json.loads(f.read_text(encoding="utf-8"))
+        red += [{"run": f.stem, **x} for x in judge(run)]
         for b in run["boards"]:
             r = {"run": f.stem, "name": b["name"], "path": b["path"], **{k: minutes(run, b, k) for k, _, _ in STAGES}}
             rows.append(r)
@@ -286,10 +338,16 @@ def cmd_report(a):
     summ = {}
     for (p, k), v in sorted(agg.items()):
         v = sorted(v)
-        summ.setdefault(p, {})[k] = {"n": len(v), "p50": v[len(v) // 2], "max": v[-1], "target": TARGET[k], "ok": v[-1] <= TARGET[k]}
+        tg = TARGETS.get(p, {}).get(k)
+        summ.setdefault(p, {})[k] = {"n": len(v), "p50": v[len(v) // 2], "max": v[-1], "target": tg if tg is not None else TARGET[k],
+                                    "ok": v[-1] < tg if tg is not None else None}   # None＝この経路では目標を置かない段
     print(json.dumps(summ, ensure_ascii=False, indent=1))
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"at": iso(now()), "boards": summ, "runs": len(files)}, ensure_ascii=False, indent=1), encoding="utf-8")
+    OUT.write_text(json.dumps({"at": iso(now()), "boards": summ, "runs": len(files), "red": red}, ensure_ascii=False, indent=1), encoding="utf-8")
+    for x in red:
+        print(f"赤 経路 {x['path']} {x['run']} {x['name']} {x['stage']}：{x['why']} {x['minutes']:g} 分（目標 {x['target']} 分未満）")
+    if red and not a.no_fail:
+        sys.exit(1)
 
 
 def git_time(path):
@@ -325,7 +383,7 @@ def main():
     sp = ap.add_subparsers(dest="cmd", required=True)
     p = sp.add_parser("add"); p.add_argument("--email", required=True); p.add_argument("--pick", action="append", required=True); p.add_argument("--reset", action="store_true")
     p = sp.add_parser("watch"); p.add_argument("run"); p.add_argument("--every", type=int, default=600); p.add_argument("--hours", type=float, default=18)
-    p = sp.add_parser("report"); p.add_argument("runs", nargs="*")
+    p = sp.add_parser("report"); p.add_argument("runs", nargs="*"); p.add_argument("--no-fail", action="store_true", help="赤でも終了コード 0"); p.add_argument("--days", type=float, default=3, help="引数なしのとき見る回の新しさ（日）")
     sp.add_parser("shop")
     sp.add_parser("tick")
     sp.add_parser("pages")
