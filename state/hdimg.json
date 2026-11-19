@@ -846,12 +846,6 @@
   "target": 1280,
   "v": 3
  },
- "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-19"
- },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
   "w": 1280,
   "h": 670,
@@ -936,6 +930,12 @@
   "target": 720,
   "v": 3
  },
+ "https://escharts.com/metaImage/tournaments/1win-essence-i?v=1795044405": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
   "w": 1200,
   "h": 630,
@@ -943,6 +943,18 @@
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/epl-masters-iii?v=1794954416": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/epl-world-series-southeast-asia-season-18?v=1794986951": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
   "w": 1200,
   "h": 630,
   "target": 1280,
@@ -1139,6 +1151,12 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://i.tribune.com.pk/media/images/x-men-first-class-640x4801/x-men-first-class-640x4801-640x480.webp": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
   "v": 3
  },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
@@ -3301,6 +3319,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.dw.com/image/79980440_6.jpg": {
+  "w": 940,
+  "h": 529,
+  "target": 720,
+  "v": 3
+ },
  "https://static.independent.co.uk/2026/03/02/13/50/Samsung-Galaxy-S26.png?trim=0,0,0,0&width=1200&height=800&crop=1200:800": {
   "w": 1200,
   "h": 800,
@@ -3438,12 +3462,6 @@
   "h": 900,
   "target": 1280,
   "v": 3
- },
- "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-19"
  },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
@@ -3868,12 +3886,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.4_WjmbQHty-xHY3L1L6aXw&pid=News&w=960": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
   "h": 502,
@@ -3943,12 +3955,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-19"
- },
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
   "h": 414,
@@ -3961,6 +3967,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.36
+ },
+ "https://www.bing.com/th?id=ONUT._mL0Vw68gCradEQxaJdRPg&pid=News&w=1200": {
+  "w": 700,
+  "h": 392,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
@@ -4357,6 +4369,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Plus-review-3.jpg": {
+  "w": 1920,
+  "h": 1078,
+  "target": 720,
+  "v": 3
+ },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
   "h": 675,
@@ -4402,6 +4420,12 @@
  "https://www.techadvisor.com/wp-content/uploads/2026/11/3182041-0-17409400-1794583487-Samsung-Galaxy-S26-Ultra-review-13.jpg?quality=50&strip=all&w=1024": {
   "w": 1024,
   "h": 574,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.teepr.com/wp-content/uploads/2026/11/1956585-photo1.jpg": {
+  "w": 1200,
+  "h": 628,
   "target": 1280,
   "v": 3
  },
