@@ -2107,6 +2107,7 @@ def recommend(force_discover=False, user=None):
     wish_urls = {w.get("url") for w in wishes}
     votes = user["votes"] if user else load_feedback()
     fimg = (lambda chosen, refs, url: chosen or images.get(url)) if user else find_image   # 本人の分はネットで写真を探さない
+    resolve = (user or {}).get("resolve") or sources.resolve_url   # 本人の分は呼び側の resolve（user_pages：前の回の答え・1 回だけ・続けて断られたらやめる）
     taste = learn_taste(votes, wishes, common)
     disliked = {r["url"] for r in votes if r["vote"] < 0}
     disliked_grams = [_title_grams(r.get("title") or "", []) for r in votes if r["vote"] < 0]
@@ -2206,7 +2207,7 @@ def recommend(force_discover=False, user=None):
         if dedupe.same(d["title"]):
             continue  # 同一件事已经有一条了（不同媒体、不同语言的报道），或者版面里已经有了
         explore = score < PICK_THRESHOLD  # 候选按分数排好了，「换换口味」的排在够分的后面
-        url = sources.resolve_url(d.get("link") or d["url"])
+        url = resolve(d.get("link") or d["url"])
         if taken(url):
             continue
         used |= key
@@ -2231,7 +2232,7 @@ def recommend(force_discover=False, user=None):
         g = _title_grams(d["title"], [])
         if any(_similar(g, x) for x in grams) or dedupe.same(d["title"]):
             continue
-        url = sources.resolve_url(d.get("link") or d["url"])
+        url = resolve(d.get("link") or d["url"])
         if taken(url) or any(b["url"] == url for b in boards):
             continue
         if url not in images:
@@ -2257,7 +2258,7 @@ def recommend(force_discover=False, user=None):
     for name in names:
         got = []
         for x in [x for x in found if x["item"] == name][:FOLLOW_PER_ITEM * 2]:
-            url = sources.resolve_url(x["url"])
+            url = resolve(x["url"])
             if url in voted or url in seen_urls or url in on_page or dedupe.same(x["title"]):
                 continue
             if url not in images:

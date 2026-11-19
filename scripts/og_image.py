@@ -69,6 +69,9 @@ def why_of(reason, status=None):
 
 
 def _ts(s):
+    """ISO の時刻か UNIX 秒（user_pages の _up_pick の at）→ 時刻。読めなければ None。"""
+    if isinstance(s, (int, float)) and not isinstance(s, bool):
+        return dt.datetime.fromtimestamp(s, dt.timezone.utc) if s > 0 else None
     try:
         t = dt.datetime.fromisoformat(str(s).replace("Z", "+00:00"))
     except (TypeError, ValueError):
@@ -146,19 +149,32 @@ def read_one(url, page=None, check=None, hard=None, deadline=None):
     return None, why_of("；".join(whys)) if whys else "none"
 
 
-def fill(rows, cache, page=None, check=None, now=None, log=print, hard=None, deadline=None):
+def _lack(rows):
+    return [s for r in (rows or {}).values() for k in ("stories", "pending") for s in r.get(k) or []
+            if isinstance(s, dict) and not s.get("image") and not s.get("_wait") and str(s.get("url") or "").startswith("http")]   # _wait：防盗链の写真の置き場待ち
+
+
+def missing(rows, cache):
+    """写真のない記事のうち、まだ一度も代表の写真を読んでいない網址（覚えに無い。包みの網址・置き場待ちは除く）。
+    user_pages --emblem-only が「前の結果だけで足りるか」を数える（取れなかった記事の試し直しはふつうの回の仕事なので数えない）。"""
+    return [u for u in dict.fromkeys(s["url"] for s in _lack(rows)) if u not in cache and not _google(u)]
+
+
+def fill(rows, cache, page=None, check=None, now=None, log=print, hard=None, deadline=None, limit=None, retry=True):
     """rows = {版面: {"stories": [...], "pending": [...]}}。写真のない記事に image を入れる（覚えから・新しく読んで）。
     cache = 網址 → 覚え（取れた {"img","at"}・取れなかった {"why","at","n"}・前の形の文字列）。
     deadline（time.monotonic）を過ぎたら新しく読まない（覚えは付けない＝次の回に持ち越し。user_pages が 1 回分の時間を全員で分ける）。
+    limit＝新しく読む上限（既定 MAX_NEW）。retry=False は覚えに無い網址だけ読む（取れなかった記事の試し直しをしない：user_pages --emblem-only＝
+    前の結果＋無い分を 1 束だけ。limit=0 なら覚えだけで網に出ない）。
     → 数 {"read", "new", "memo", "wrapped", "saved", "carry", "why": {理由: 数}, "touched": [image を入れた記事の dict]}"""
     now = now or dt.datetime.now(dt.timezone.utc)
     stamp = now.isoformat(timespec="seconds")
-    lack = [s for r in (rows or {}).values() for k in ("stories", "pending") for s in r.get(k) or []
-            if isinstance(s, dict) and not s.get("image") and not s.get("_wait") and str(s.get("url") or "").startswith("http")]   # _wait：防盗链の写真の置き場待ち
+    lack = _lack(rows)
     out = {"read": 0, "new": 0, "memo": 0, "wrapped": 0, "saved": 0, "carry": 0, "why": {}, "touched": []}
     wrapped = {s["url"] for s in lack if _google(s["url"])}
     out["wrapped"] = len(wrapped)
-    todo = [u for u in dict.fromkeys(s["url"] for s in lack) if u not in wrapped and memo_due(cache.get(u), now)][:MAX_NEW]
+    todo = [u for u in dict.fromkeys(s["url"] for s in lack) if u not in wrapped
+            and (memo_due(cache.get(u), now) if retry else u not in cache)][:MAX_NEW if limit is None else limit]
 
     def one(u):
         if deadline is not None and time.monotonic() > deadline:

@@ -128,5 +128,47 @@ class Kpi(unittest.TestCase):
         self.assertFalse(board_kpi.page_has_emblem(html, "丙"))
 
 
+class KickAndFastLog(unittest.TestCase):
+    """2026-11-19：起こし（db/board_added.sql）が入っていなければ保険の道（毎時）だけで最大 60 分遅れ。PC が点検する。
+    速い道の版面ごとの秒（library_emblem.fresh_main の行）を PC がログから読む。"""
+
+    @staticmethod
+    def fq(**over):
+        rows = {"pg_proc": [["1"]], "position": [["1", "1"]], "vault": [["1"]], "pg_extension": [["1"]],
+                "board_kicks": [["2", "2026-11-19 04:00:00+00"]], "_http_response": [["204", "2"]], **over}
+
+        def q(sql):
+            for k, v in rows.items():
+                if k in sql:
+                    if isinstance(v, Exception):
+                        raise v
+                    return v
+            return []
+        return q
+
+    def test_all_in(self):
+        st = board_kpi.kick_state(self.fq())
+        self.assertTrue(st["ok"], st["why"])
+        self.assertEqual(st["kicks_24h"], 2)
+
+    def test_missing_pieces_are_red(self):
+        st = board_kpi.kick_state(self.fq(pg_proc=[["0"]], position=[["0", "0"]], vault=[["0"]], _http_response=[["401", "1"]]))
+        self.assertFalse(st["ok"])
+        self.assertEqual(len(st["why"]), 4)
+        st = board_kpi.kick_state(self.fq(board_kicks=RuntimeError("relation does not exist")))   # 表が無い
+        self.assertIn("kicks_error", st)
+
+    def test_kick_never_reads_the_secret_value(self):
+        self.assertNotIn("decrypted", " ".join(board_kpi.KICK_SQL.values()))
+
+    def test_fast_times_parse_the_library_emblem_line(self):
+        src = (pathlib.Path(board_kpi.ROOT) / "scripts" / "library_emblem.py").read_text(encoding="utf-8")
+        self.assertIn("速い道の時刻 版面 {bid}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m.get('write', '—')}・ページ {m.get('page', '—')}", src)
+        got = board_kpi.fast_times("emblem (1)\t2026 速い道の時刻 版面 41：取り始め +93s・1 枚目 +171s・書いた +174s・ページ +186s（終了 1）\n"
+                                   "速い道の時刻 版面 42：取り始め +95s・1 枚目 —・書いた +190s・ページ —")
+        self.assertEqual(got, [{"board": 41, "claim": 93, "first": 171, "write": 174, "page": 186},
+                               {"board": 42, "claim": 95, "first": None, "write": 190, "page": None}])
+
+
 if __name__ == "__main__":
     unittest.main()

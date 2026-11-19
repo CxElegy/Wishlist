@@ -16,6 +16,11 @@
       テスト用アカウントの本人のページを storage から落として開き、JS の例外・壊れた写真・載っていない版面・字の崩れを数える。
   python harness/board_kpi.py shop
       店長（test1）の固定の版面：直近 7 日の「集めた → AI 編集」の遅れ（git の記録）と、小元素のそろい具合。
+  python harness/board_kpi.py kick [--no-fail]
+      足したその場の起こし（db/board_added.sql：my_keywords_set → kick_board_added → GitHub）が DB に入って動いているか。
+      入っていなければ保険の道（毎時の library.yml）だけで最大 60 分遅れ＝赤・終了コード 1。秘密は数だけ。
+  python harness/board_kpi.py fastlog [--runs 10]
+      直近の board_added.yml のログ（gh）から、版面ごとの「取り始め・1 枚目・書いた・ページ」の秒（起きてから）を出す。
 
 経路（店長のページ／ライブラリ）：
   A＝店長と同じ名前（user_pages が店長の号を写す）・B＝ライブラリにもうある版面（follows だけ足す）・C＝まったく新しい名前（全部の段が走る）。
@@ -26,6 +31,7 @@ import hashlib
 import html as htmlmod
 import json
 import pathlib
+import re
 import subprocess
 import sys
 import time
@@ -445,6 +451,101 @@ def cmd_shop(a):
     OUT.write_text(json.dumps(cur, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
+KICK_SQL = {   # 起こし（db/board_added.sql）が DB に入っているか。秘密は数だけ（中身は読まない）
+    "fn": "select count(*) from pg_proc p join pg_namespace n on n.oid = p.pronamespace where n.nspname = 'private' and p.proname = 'kick_board_added'",
+    "stamps": "select (position('added_at' in d) > 0)::int, (position('kick_board_added' in d) > 0)::int from "
+              "(select pg_get_functiondef('public.my_keywords_set(jsonb)'::regprocedure) d) x",
+    "secret": "select count(*) from vault.secrets where name = 'github_dispatch_token'",
+    "net": "select count(*) from pg_extension where extname = 'pg_net'",
+    "kicks": "select count(*), coalesce(max(at)::text, '') from private.board_kicks where at > now() - interval '24 hours'",
+    "answers": "select coalesce(status_code::text, 'none'), count(*) from net._http_response where created > now() - interval '24 hours' group by 1",
+}
+
+
+def kick_state(query=None):
+    """起こしの道（my_keywords_set → private.kick_board_added → GitHub の workflow_dispatch）が入って動いているか。
+    入っていなければ保険の道（毎時の library.yml → board_added.yml）だけ＝最大 60 分遅れ（5 分の目標は割る）。→ {ok, why: [...], ...数}"""
+    query = query or q
+    out, why = {}, []
+
+    def one(k):
+        try:
+            return query(KICK_SQL[k])
+        except Exception as ex:  # noqa: BLE001  表・拡張が無い（入っていない）
+            out[k + "_error"] = str(ex)[:120]
+            return []
+    out["fn"] = int((one("fn") or [["0"]])[0][0])
+    st = (one("stamps") or [["0", "0"]])[0]
+    out["added_at"], out["kick_call"] = int(st[0]), int(st[1])
+    out["secret"] = int((one("secret") or [["0"]])[0][0])
+    out["pg_net"] = int((one("net") or [["0"]])[0][0])
+    k = (one("kicks") or [["0", ""]])[0]
+    out["kicks_24h"], out["last_kick"] = int(k[0]), k[1] or None
+    out["answers_24h"] = {r[0]: int(r[1]) for r in one("answers")}
+    if not out["fn"]:
+        why.append("private.kick_board_added が無い（db/board_added.sql を流す）")
+    if not (out["added_at"] and out["kick_call"]):
+        why.append("my_keywords_set が古い（added_at を付けない・起こさない。db/board_added.sql を流し直す）")
+    if not out["secret"]:
+        why.append("vault の github_dispatch_token が無い（起こせない）")
+    if not out["pg_net"]:
+        why.append("pg_net が無い（GitHub へ送れない）")
+    bad = {c: n for c, n in out["answers_24h"].items() if c not in ("204", "200")}
+    if bad:
+        why.append(f"GitHub の返事が 204 でない：{bad}（鍵の期限・権限）")
+    out["ok"], out["why"] = not why, why
+    return out
+
+
+def cmd_kick(a):
+    """起こしが入っているかを点検する（PC で）。だめなら 1 行ずつ出して終了コード 1（--no-fail で 0）。harness/kpi/latest.json の kick に。"""
+    st = kick_state()
+    print(json.dumps(st, ensure_ascii=False, indent=1))
+    for w in st["why"]:
+        print("赤 起こし：" + w)
+    cur = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
+    cur["kick"] = {"at": iso(now()), **st}
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(cur, ensure_ascii=False, indent=1), encoding="utf-8")
+    if st["why"] and not a.no_fail:
+        sys.exit(1)
+
+
+FAST_RE = re.compile(r"速い道の時刻 版面 (\d+)：取り始め \+(\d+)s・1 枚目 (?:\+(\d+)s|—)・書いた (?:\+(\d+)s|—)・ページ (?:\+(\d+)s|—)")
+
+
+def fast_times(text):
+    """board_added.yml の job emblem のログ（library_emblem.fresh_main の「速い道の時刻」の行）→ [{board, claim, first, write, page}]（起きてからの秒）。"""
+    out = []
+    for m in FAST_RE.finditer(text or ""):
+        out.append({"board": int(m.group(1)), **{k: (int(v) if v else None) for k, v in zip(("claim", "first", "write", "page"), m.groups()[1:])}})
+    return out
+
+
+def cmd_fastlog(a):
+    """直近の board_added.yml の回のログから、版面ごとの「取り始め・1 枚目・書いた・ページ」（起きてからの秒）を出す（gh が要る）。
+    ページが library_emblem.FRESH_LOG_LIMIT_S（created_at から 295 秒）以上なら赤。"""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import library_emblem
+    limit = library_emblem.FRESH_LOG_LIMIT_S   # 秒は run の created_at から（「起こす」の段はもう中に入っている）。決め方は library_emblem の 1 か所
+    runs = json.loads(subprocess.run(["gh", "run", "list", "--workflow", "board_added.yml", "-L", str(a.runs), "--json", "databaseId,createdAt"],
+                                     capture_output=True, text=True, encoding="utf-8", check=True).stdout)
+    rows, red = [], []
+    for r in runs:
+        log = subprocess.run(["gh", "run", "view", str(r["databaseId"]), "--log"], capture_output=True, text=True, encoding="utf-8").stdout
+        for x in fast_times(log):
+            rows.append({"run": r["databaseId"], "at": r["createdAt"], **x})
+            if x["page"] is None or x["page"] >= limit:
+                red.append(rows[-1])
+    print(json.dumps(rows, ensure_ascii=False, indent=1))
+    for x in red:
+        print(f"赤 速い道 run {x['run']} 版面 {x['board']}：ページ {x['page']} 秒（起きてから {limit} 秒未満が目標）")
+    cur = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
+    cur["fast"] = {"at": iso(now()), "limit_s": limit, "rows": rows, "red": len(red)}
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(cur, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
     sp = ap.add_subparsers(dest="cmd", required=True)
@@ -454,8 +555,10 @@ def main():
     sp.add_parser("shop")
     sp.add_parser("tick")
     sp.add_parser("pages")
+    p = sp.add_parser("kick"); p.add_argument("--no-fail", action="store_true")
+    p = sp.add_parser("fastlog"); p.add_argument("--runs", type=int, default=10)
     a = ap.parse_args()
-    {"add": cmd_add, "watch": cmd_watch, "report": cmd_report, "shop": cmd_shop, "tick": cmd_tick, "pages": cmd_pages}[a.cmd](a)
+    {"add": cmd_add, "watch": cmd_watch, "report": cmd_report, "shop": cmd_shop, "tick": cmd_tick, "pages": cmd_pages, "kick": cmd_kick, "fastlog": cmd_fastlog}[a.cmd](a)
 
 
 if __name__ == "__main__":

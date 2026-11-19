@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AgentBoard 案 1A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- 案 1A「黒・白・ライム 1 色」（Vercel の Geist・Linear の系統）：真っ黒の地に細い線の箱、色はデータだけ（作業中＝ライム）。
+     会話ごとの波が流れていれば動いている・平らなら止まっている。数字・モデル名は JetBrains Mono、字は Noto Sans JP（審美基準 D4）。
+     見本のデータ。本番の画面（docs/board/）にはまだ入れていない。 -->
+<style>
+:root{--ground:#050506;--surface:#0c0d0f;--raised:#16181b;--line:#1d2024;--line2:#2c3036;
+ --text:#f2f2f2;--muted:#aaacb0;--faint:#8c8f94;
+ --live:#c6f24e;--ask:#f5b544;--stuck:#ff5d62;--yours:#f2f2f2;--idle:#62666c;
+ --opus:#b9a4ff;--fable:#ffad73;--sonnet:#e6d37a;--haiku:#8ccfff;
+ --r:14px;--gap:20px;--pad:24px;
+ --sans:"Noto Sans JP",system-ui,sans-serif;--mono:"JetBrains Mono","Noto Sans JP",ui-monospace,monospace}
+*{box-sizing:border-box}
+html{background:var(--ground)}
+body{margin:0;background:var(--ground);color:var(--text);font:400 14px/1.55 var(--sans);-webkit-font-smoothing:antialiased;word-break:auto-phrase;text-wrap:pretty;overflow-wrap:anywhere}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--live);outline-offset:2px;border-radius:8px}
+/* 上の帯：印・作業場所・届いている機械・最後に届いた秒 */
+.top{display:flex;align-items:center;gap:14px;min-height:60px;padding:0 32px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.01em}
+.brand svg{flex:none}
+.slash{color:var(--line2);font-size:22px;font-weight:300;line-height:1}
+.proj{color:var(--muted)}
+.hosts{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.host{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px;border:1px solid var(--line);border-radius:999px;font-size:13px}
+.host i{width:7px;height:7px;border-radius:50%;background:var(--live);flex:none}
+.host em{font:normal 400 13px var(--mono);color:var(--faint)}
+.host.off{color:var(--faint)}.host.off i{background:transparent;box-shadow:inset 0 0 0 1.5px var(--idle)}
+.fresh{display:inline-flex;align-items:center;gap:9px;color:var(--muted);font-size:13px;white-space:nowrap}
+.fresh b{font:500 13px var(--mono);color:var(--text);display:inline-block;min-width:1ch;text-align:right}
+.pulse{position:relative;width:8px;height:8px;border-radius:50%;background:var(--live);flex:none}
+.pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--live);animation:ring 2s cubic-bezier(.2,.6,.3,1) infinite}
+@keyframes ring{from{transform:scale(1);opacity:.55}to{transform:scale(3.2);opacity:0}}
+main{padding:28px 32px 36px;display:flex;flex-direction:column;gap:var(--gap)}
+/* 題の行：いちばん大事な 1 文と、押すボタン 1 つ */
+.title{display:flex;align-items:flex-end;gap:24px}
+.title h1{margin:0;font-size:30px;line-height:1.2;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:14px}
+.livepill{display:inline-flex;align-items:center;gap:8px;height:26px;padding:0 11px;border-radius:999px;background:#18200a;color:var(--live);font:500 13px var(--mono);letter-spacing:.06em}
+.finding{margin:8px 0 0;color:var(--muted);font-size:15px}
+.finding b{color:var(--text);font-weight:600}.finding .a{color:var(--ask)}.finding .s{color:var(--stuck)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:38px;padding:0 18px;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:14px;white-space:nowrap;flex:none;transition:background .15s,border-color .15s}
+.btn.pri{background:#fff;color:#000}.btn.pri:hover{background:#d9d9d9}
+.btn.gho{border-color:var(--line2);background:transparent}.btn.gho:hover{border-color:#5d636b}
+.btn.sm{height:30px;padding:0 14px;font-size:13px}
+.title .btn{margin-left:auto}
+/* 数の帯：1 つの箱を細い線で 5 つに */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.5fr);border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.kpi{padding:18px 22px;border-left:1px solid var(--line);min-width:0}
+.kpi:first-child{border-left:0}
+.kpi .l{color:var(--muted);font-size:13px}
+.kpi .v{font:500 32px/1.15 var(--mono);letter-spacing:-.03em;margin-top:6px;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.kpi .v small{font:400 14px var(--sans);color:var(--faint);letter-spacing:0}
+.kpi .v.live{color:var(--live)}.kpi .v.ask{color:var(--ask)}
+.kpi .s{color:var(--faint);font-size:13px;margin-top:4px}
+.kpi.tools{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 22px;align-items:end}
+.mini{display:flex;align-items:flex-end;gap:2px;height:40px}
+.mini i{flex:1;min-height:2px;border-radius:1px;background:#2a2e34}
+.mini i.on{background:var(--live)}
+/* 箱 */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);min-width:0;position:relative;overflow:hidden}
+.ch{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;padding:18px var(--pad) 14px}
+.ch h2{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.ch .sub{color:var(--faint);font-size:13px}
+.ch .more{margin-left:auto;color:var(--muted);font-size:13px}.ch .more:hover{color:var(--text)}
+/* 作業中の会話があるあいだ、箱の上の縁を細い光が走る */
+.beam{position:absolute;left:0;right:0;top:0;height:1px;overflow:hidden;pointer-events:none}
+.beam::after{content:"";position:absolute;left:0;top:0;width:30%;height:1px;background:linear-gradient(90deg,transparent,var(--live),transparent);transform:translateX(-100%);animation:beam 3.6s linear infinite}
+@keyframes beam{to{transform:translateX(340%)}}
+/* 会話の表（この画面の問い：どの Claude がいま動いていて、どれが私を待っているか） */
+.grid{display:grid;grid-template-columns:112px minmax(210px,1fr) 136px minmax(0,1.7fr) 168px 76px 72px;column-gap:20px;align-items:center;padding:0 var(--pad)}
+.thead{height:36px;color:var(--faint);font-size:13px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.row{min-height:78px;padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line);transition:background .2s}
+.row:last-child{border-bottom:0}
+.row:hover{background:#101214}
+.r{text-align:right;justify-self:end}
+.st{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;white-space:nowrap}
+.st i{position:relative;width:8px;height:8px;border-radius:50%;flex:none}
+.st.working{color:var(--live)}.st.working i{background:var(--live)}
+.st.working i::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--live);animation:ring 1.8s cubic-bezier(.2,.6,.3,1) infinite}
+.st.ask{color:var(--ask)}.st.ask i{background:var(--ask)}
+.st.quiet{color:var(--stuck)}.st.quiet i{background:var(--stuck)}
+.st.yours{color:var(--yours)}.st.yours i{background:var(--yours)}
+.st.idle{color:var(--faint)}.st.idle i{background:var(--idle)}
+.nm b{display:block;font-size:15px;font-weight:600;line-height:1.4}
+.nm span{display:block;color:var(--faint);font-size:13px;margin-top:2px}
+.nm .tmi{display:none}
+.model{display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 12px;border:1px solid var(--line2);border-radius:999px;font:500 13px var(--mono);white-space:nowrap}
+.model i{width:7px;height:7px;border-radius:2px;flex:none}
+.doing{min-width:0}
+.doing .now{font-size:14px;line-height:1.45}
+.doing .now.swap{animation:swap .5s cubic-bezier(.22,1,.36,1)}
+@keyframes swap{from{opacity:0;transform:translateY(5px)}}
+.doing .ask{color:var(--faint);font-size:13px;line-height:1.45;margin-top:3px}
+/* 波：流れていれば動いている。高さは直近の道具の回数。止まっている会話は平らな線 */
+.wave{position:relative;height:36px;overflow:hidden}
+.wave svg{position:absolute;left:0;top:0;width:200%;height:100%;display:block}
+.wave.run svg{animation:flow var(--spd,2.4s) linear infinite}
+@keyframes flow{to{transform:translateX(-50%)}}
+.wave .base{position:absolute;left:0;right:12px;top:50%;border-top:1.5px solid var(--c)}
+.wave.quiet .base{border-top-style:dashed}
+.wave .end{position:absolute;right:0;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--c)}
+.wave.ask .end::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--c);animation:ring 1.6s cubic-bezier(.2,.6,.3,1) infinite}
+.wave.sm{height:28px}
+.tm{font:500 14px/1.45 var(--mono);text-align:right;white-space:nowrap}
+.tm small{display:block;font:400 13px var(--mono);color:var(--faint)}
+.act{justify-self:end}
+/* 係の表 */
+.agrid{display:grid;grid-template-columns:minmax(150px,1fr) minmax(120px,.8fr) 136px minmax(0,1.6fr) 120px 56px 64px;column-gap:20px;align-items:center;padding:0 var(--pad)}
+.arow{min-height:56px;padding-top:10px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.arow:last-child{border-bottom:0}
+.arow .who{font-weight:600}
+.arow .ses{color:var(--faint);font-size:13px}
+.arow .bad{color:var(--stuck)}
+.mob{display:none}
+/* 伝言 */
+.msg{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 16px;align-items:center;padding:14px var(--pad);border-top:1px solid var(--line)}
+.msg b{font-weight:600}
+.msg span{color:var(--faint);font-size:13px}
+.msg .tag{grid-row:1/3;grid-column:2}
+.tag{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;border:1px solid var(--line2);color:var(--muted);font-size:13px;white-space:nowrap}
+.tag.wait{color:var(--ask);border-color:#4a3916}
+.compose{display:flex;align-items:center;gap:10px;padding:16px var(--pad) 20px;border-top:1px solid var(--line)}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:999px;padding:3px;flex:none}
+.seg button{height:30px;padding:0 13px;border:0;border-radius:999px;background:transparent;color:var(--muted);font-size:13px;white-space:nowrap}
+.seg button.on{background:var(--raised);color:var(--text)}
+.compose input{flex:1;min-width:0;height:38px;border-radius:999px;border:1px solid var(--line2);background:var(--ground);padding:0 16px}
+.compose input::placeholder{color:var(--faint)}
+.back{color:var(--faint);font-size:13px;align-self:flex-start}.back:hover{color:var(--text)}
+.paused *,.paused *::after{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){.pulse::after,.st.working i::after,.wave.run svg,.wave.ask .end::after,.doing .now.swap{animation:none}.beam{display:none}}
+/* 中くらいの幅：時間と「開く」を名前の下の行へ */
+@media (max-width:1180px){
+ .grid{grid-template-columns:108px minmax(180px,1fr) 136px minmax(0,1.5fr) 140px;column-gap:16px}
+ .grid>.c-tm,.grid>.c-act{display:none}
+ .nm .tmi{display:inline}
+ .agrid{grid-template-columns:minmax(140px,1fr) 136px minmax(0,1.6fr) 100px 56px;column-gap:16px}
+ .agrid>.c-ses,.agrid>.c-tm{display:none}
+ .kpis{grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.3fr)}
+ .kpi{padding:16px 18px}
+}
+/* スマホ：会話は 1 枚ずつのカード、数は 2 列 */
+@media (max-width:860px){
+ .top{flex-wrap:wrap;padding:12px 16px;gap:10px}
+ .hosts{order:3;width:100%;margin-left:0;gap:14px}
+ .host{border:0;padding:0;height:auto}
+ .fresh{margin-left:auto}
+ main{padding:18px 16px 28px;gap:16px}
+ .title{flex-direction:column;align-items:stretch;gap:16px}
+ .title h1{font-size:26px}
+ .title .btn{margin-left:0;width:100%}
+ .kpis{grid-template-columns:1fr 1fr}
+ .kpi{border-left:0;border-top:1px solid var(--line);padding:14px 16px}
+ .kpi:nth-child(-n+2){border-top:0}
+ .kpi:nth-child(2n){border-left:1px solid var(--line)}
+ .kpi.tools{grid-column:1/-1;border-left:0}
+ .kpi .v{font-size:28px}
+ .ch{padding:16px 16px 12px}
+ .thead{display:none}
+ .grid.row{grid-template-columns:minmax(0,1fr) auto;row-gap:8px;padding:16px}
+ .row>.c-st{grid-column:1;grid-row:1}.row>.c-model{grid-column:2;grid-row:1;justify-self:end}
+ .row>.c-nm,.row>.c-doing,.row>.c-wave{grid-column:1/-1}
+ .row.ask>.c-act{display:block;grid-column:1/-1;justify-self:stretch}.row.ask>.c-act .btn{width:100%}
+ .agrid.arow{grid-template-columns:minmax(0,1fr) auto;row-gap:6px;padding:14px 16px}
+ .arow>.c-who{grid-column:1;grid-row:1}.arow>.c-model{grid-column:2;grid-row:1;justify-self:end}
+ .arow>.c-now,.arow>.c-wave{grid-column:1/-1}.arow>.c-n{grid-column:1/-1;justify-self:start}
+ .agrid.thead{display:none}
+ .mob{display:inline}
+ .arow>.c-n{color:var(--faint);font-size:13px}
+ .msg{padding:14px 16px}
+ .compose{flex-wrap:wrap;padding:14px 16px 18px}
+ .seg{width:100%}.seg button{flex:1}
+}
+</style></head>
+<body>
+<header class="top">
+ <span class="brand"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="7" fill="#c6f24e"/><path d="M5 14h3.2l2.3-5.5 3.4 10 2.4-7 1.6 2.5H21" fill="none" stroke="#050506" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>AgentBoard</span>
+ <span class="slash" aria-hidden="true">/</span><span class="proj">Wishlist</span>
+ <span class="hosts" aria-label="届いている機械">
+  <span class="host"><i></i>pc<em>20 秒前</em></span>
+  <span class="host"><i></i>cloud<em>30 秒前</em></span>
+  <span class="host off"><i></i>pc-old<em>1 時間前</em></span>
+ </span>
+ <span class="fresh"><i class="pulse"></i><span><b id="fresh">4</b> 秒前に更新</span></span>
+</header>
+<main>
+ <section class="title">
+  <div>
+   <h1>いまの Claude <span class="livepill"><i class="pulse"></i>LIVE</span></h1>
+   <p class="finding"><b>2 つが作業中</b>。<b class="a">DB の引っ越し</b>があなたの選択を 2 分 待っています。写真の出どころ調べは <b class="s">18 分 動きがありません</b>。</p>
+  </div>
+  <a class="btn pri" href="#ses-ask">DB の引っ越しに答える</a>
+ </section>
+ <section class="kpis" aria-label="いまの数">
+  <div class="kpi"><div class="l">作業中</div><div class="v live mono">2<small>/ 6 会話</small></div><div class="s">この 10 分で +1</div></div>
+  <div class="kpi"><div class="l">あなた待ち</div><div class="v ask mono">2</div><div class="s">選んで 1・あなたの番 1</div></div>
+  <div class="kpi"><div class="l">動いている係</div><div class="v mono">3</div><div class="s">止まり 1</div></div>
+  <div class="kpi"><div class="l">token</div><div class="v mono">6.0<small>M</small></div><div class="s">いまの回の合計</div></div>
+  <div class="kpi tools"><div><div class="l">道具の回数</div><div class="v mono"><span id="k-tools" style="display:inline-block;min-width:3ch">162</span></div><div class="s">この 30 分</div></div><div class="mini" id="mini" aria-hidden="true"></div></div>
+ </section>
+ <section class="card" aria-label="会話">
+  <span class="beam" aria-hidden="true"></span>
+  <div class="ch"><h2>会話</h2><span class="sub">作業中・あなた待ちが先・6 つ</span><a class="more" href="#">すべて見る →</a></div>
+  <div class="grid thead"><span>状態</span><span>会話</span><span>モデル</span><span>いま</span><span>動き</span><span class="r c-tm">時間</span><span class="c-act"></span></div>
+  <div id="sessions"></div>
+ </section>
+ <section class="card" aria-label="係">
+  <div class="ch"><h2>係</h2><span class="sub">動いている 3・止まり 1</span><a class="more" href="#">すべて見る →</a></div>
+  <div class="agrid thead"><span>係</span><span class="c-ses">会話</span><span>モデル</span><span>いま</span><span>動き</span><span class="r">道具</span><span class="r c-tm">時間</span></div>
+  <div id="agents"></div>
+ </section>
+ <section class="card" aria-label="伝言">
+  <div class="ch"><h2>伝言</h2><span class="sub">店長 → 主の会話・返事待ち 1</span></div>
+  <div class="msg"><b>AgentBoard を作り直して</b><span>クラウドの主へ・4 分前</span><span class="tag wait">まだ返事なし</span></div>
+  <div class="msg"><b>390 の見出し、まだはみ出てるよ</b><span>両方へ・40 分前・PC の主：fix:f1:1 に回しています</span><span class="tag">返事あり</span></div>
+  <form class="compose" onsubmit="return false"><span class="seg" role="group" aria-label="宛先"><button type="button" class="on">クラウドの主</button><button type="button">PC の主</button><button type="button">両方</button></span><input placeholder="主の会話へ書く" aria-label="主の会話へ書く"><button class="btn pri">送る</button></form>
+ </section>
+ <a class="back" href="index.html">← テストグラウンドへ戻る</a>
+</main>
+<script>
+// 見本のデータ（本番は agentboard の live-* の枝から）
+var M={opus:['Opus 5.5','#b9a4ff'],fable:['Fable 5.2','#ffad73'],sonnet:['Sonnet 5.5','#e6d37a'],haiku:['Haiku 5.5','#8ccfff']};
+var LAB={working:'作業中',ask:'選んで',quiet:'動きなし',yours:'あなたの番',idle:'休み'};
+var S=[
+ {st:'working',lv:2,t:'AgentBoard の作り直し',p:'Wishlist · cloud',m:'opus',now:'書き換える：docs/board/index.html',ask:'› この board で、Claude がいま何をしているか実時間で見えるように',tm:'6 分',tl:31},
+ {st:'working',lv:1,t:'ハーネス v2 の回（run 1119a）',p:'Claude · pc',m:'fable',now:'任せる：390 幅の見出しのはみ出しを直す',ask:'› 次の段を 2 つずつ回して',tm:'14 分',tl:23},
+ {st:'ask',t:'DB の引っ越しとバックアップ',p:'Wishlist · pc',m:'opus',now:'選んでほしい質問を出しています',ask:'› 引っ越しの前に、毎日のバックアップを決めて',tm:'2 分前',tl:6,btn:'答える',id:'ses-ask'},
+ {st:'quiet',t:'写真の出どころ調べ',p:'Wishlist · cloud',m:'haiku',now:'コマンド：PR の CI を待つ・18 分 動きなし',ask:'› 写真の出どころを全部調べて',tm:'18 分前',tl:40,btn:'見る'},
+ {st:'yours',t:'新規ユーザーの流れを試す',p:'Wishlist · cloud',m:'sonnet',now:'✓ 5 分以内に小元素が出ました（4 分 12 秒）',ask:'› test-c で試して',tm:'4 分前',tl:12},
+ {st:'idle',t:'写真の置き場の点検',p:'agentboard · pc',m:'sonnet',now:'✓ 3 つとも開けました',ask:'› 置き場を全部開いて',tm:'1 時間前',tl:4}];
+var A=[
+ {st:'quiet',t:'check:f1:2',s:'ハーネス v2 の回',m:'haiku',now:'<span class="bad">止まり 19 分</span>・コマンド：PR の CI を待つ',n:12,tm:'38 分'},
+ {st:'working',lv:1,t:'写真の出どころ調べ',s:'AgentBoard の作り直し',m:'haiku',now:'ページを開く：example.com',n:23,tm:'12 分'},
+ {st:'working',lv:2,t:'fix:f1:1',s:'ハーネス v2 の回',m:'sonnet',now:'書き換える：board.css',n:14,tm:'9 分'},
+ {st:'working',lv:0,t:'新規ユーザーの点検',s:'新規ユーザーの流れ',m:'sonnet',now:'test-c で版面を足して 5 分を測る',n:3,tm:'20 分'}];
+var COL={working:'#c6f24e',ask:'#f5b544',quiet:'#ff5d62',yours:'#f2f2f2',idle:'#62666c'};
+// 160 ごとにくり返す線（-50% ずらすと継ぎ目なく流れる）
+function path(a){var d='';for(var x=0;x<=320;x+=4){var y=18-a*(.62*Math.sin(2*Math.PI*x/80)+.38*Math.sin(2*Math.PI*x/40+1.1));d+=(x?'L':'M')+x+' '+y.toFixed(2)}return d}
+function wave(o,sm){
+  if(o.st==='working'){var a=[5,9,13][o.lv],p=path(a);
+    return '<div class="wave run'+(sm?' sm':'')+'" style="--spd:'+[3.4,2.5,1.7][o.lv]+'s"><svg viewBox="0 0 320 36" preserveAspectRatio="none" aria-hidden="true"><path d="'+p+'L320 36L0 36Z" fill="rgba(198,242,78,.08)"/><path d="'+p+'" fill="none" stroke="#c6f24e" stroke-width="1.6" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>'}
+  return '<div class="wave '+o.st+(sm?' sm':'')+'" style="--c:'+COL[o.st]+'" aria-hidden="true"><span class="base"></span><span class="end"></span></div>'}
+function model(k){return '<span class="model"><i style="background:'+M[k][1]+'"></i>'+M[k][0]+'</span>'}
+document.getElementById('sessions').innerHTML=S.map(function(s,i){
+  return '<div class="grid row '+s.st+'"'+(s.id?' id="'+s.id+'"':'')+'><span class="c-st"><span class="st '+s.st+'"><i></i>'+LAB[s.st]+'</span></span>'+
+   '<span class="c-nm nm"><b>'+s.t+'</b><span>'+s.p+'<span class="tmi"> · '+s.tm+'</span></span></span><span class="c-model">'+model(s.m)+'</span>'+
+   '<span class="c-doing doing"><div class="now" id="now'+i+'">'+s.now+'</div><div class="ask">'+s.ask+'</div></span><span class="c-wave">'+wave(s)+'</span>'+
+   '<span class="c-tm tm"><span id="tm'+i+'">'+s.tm+'</span><small><span id="tl'+i+'">'+s.tl+'</span> 道具</small></span>'+
+   '<span class="c-act act"><a class="btn sm '+(s.st==='ask'?'pri':'gho')+'" href="#">'+(s.btn||'開く')+'</a></span></div>'}).join('');
+document.getElementById('agents').innerHTML=A.map(function(a){
+  return '<div class="agrid arow"><span class="c-who who">'+a.t+'</span><span class="c-ses ses">'+a.s+'</span><span class="c-model">'+model(a.m)+'</span>'+
+   '<span class="c-now">'+a.now+'</span><span class="c-wave">'+wave(a,1)+'</span><span class="c-n r mono">'+a.n+'<span class="mob"> 道具・'+a.tm+'</span></span><span class="c-tm r mono">'+a.tm+'</span></div>'}).join('');
+// 30 分の道具の回数（作業中の会話はライム）
+var B=[3,4,2,6,3,2,5,7,3,1,1,2,6,8,4,3,2,1,2,5,6,7,9,11,8,7,6,9,12,10];
+document.getElementById('mini').innerHTML=B.map(function(v,i){return '<i class="'+(i>=20?'on':'')+'" style="height:'+Math.round(v/12*100)+'%"></i>'}).join('');
+// 生きている感じ：秒が進み、作業中の会話の「いま」が入れ替わり、道具の数が増える
+var NOW=['読む：scripts/collect.py','コマンド：試験を流す','書き換える：docs/board/index.html','探す：「live-」の枝'],k=0,n=4,tools=162,tl0=31;
+var root=document.documentElement;document.addEventListener('visibilitychange',function(){root.classList.toggle('paused',document.hidden)});
+setInterval(function(){if(document.hidden)return;n=n>=5?1:n+1;document.getElementById('fresh').textContent=n;
+  if(n===1){var el=document.getElementById('now0');el.classList.remove('swap');void el.offsetWidth;el.textContent=NOW[k++%NOW.length];el.classList.add('swap');
+    tools+=1+(k%2);tl0+=1;document.getElementById('k-tools').textContent=tools;document.getElementById('tl0').textContent=tl0}},1000);
+</script>
+</body></html>

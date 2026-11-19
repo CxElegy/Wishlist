@@ -9,25 +9,28 @@ name: 版面が足されたとき
 #   board  ：ライブラリの follows・boards（library.py --users）。library.yml と同じ列（group library：follows を 2 か所から同時に書かない）。
 #   feed   ：board のあと。記事集め（userfeed.py）→ 足した人のページだけ（user_pages.py --recent）。記事が先・ページが後
 #            （足したばかりの版面は記事 5 本までページに記事を載せない：user_pages.held）。
-#   emblem ：board を待たずに最初から走る。group library・library-emblem の列には並ばない（cron の回が 30 分走っていても待たない）。
-#            重い道具（rembg・scrapling・模型）を先に入れ、新しい版面の行が DB に現れるのを 5 秒おきに待って、現れたら速い道
-#            （library_emblem.py --fresh：未試行の新しい版面だけ・1 版面 150 秒・名簿の先頭 3 人＝看板の姿から。規則は fill_one のまま）。
-#            小元素が出たら、その版面を追いかけている人のページだけ作り直す。続き（名簿の残り）は library_emblem.yml の列へ。
-# 5 分の内訳（見積もり。emblem の job の実測は run 44376028544 の library_emblem.yml の準備から）：
-#   足す → dispatch → runner 起動 ≈ 5〜20 秒（GitHub の待ちで変わる。測る：board_kpi）
-#   準備（checkout 3・python 3・pip 14・写し 3・--check-fresh 4・rembg 10・scrapling 17・模型 2）≈ 60 秒
-#   版面の行：board の job（checkout＋pip ≈ 20 秒 → library.py --users の plan_users：新しい名前の Wikidata 数回＋1 秒の間 → boards に挿す）
-#             ≈ 30〜45 秒で現れる＝準備の間に済む（library.yml が走っていると、その終わりまで遅れる）
-#   1 枚目：1 版面の上限 150 秒（FRESH_BOARD_S）· 書く（公開の箱へ上げる＋config）≈ 2〜5 秒
-#   計 ≈ 20 + 60 + 150 + 5 ≈ 4 分弱（上限側）。1 枚目が 150 秒で取れなければ時間切れ（指紋・回数なし）で列へ＝目標を割る：board_kpi が数える。
-# 経路 A/B（店長・ライブラリにある名前）：--check-fresh が「未試行の新しい版面 0・まだ版面になっていない名前 0」を見て、重い道具を入れずに 30 秒ほどで終わる。
+#   emblem ：board を待たずに最初から 3 つ並べて走る（matrix shard 0〜2 = library_emblem.FRESH_SHARDS。group は shard ごと：
+#            library・library-emblem の列には並ばない）。重い道具（rembg・scrapling）は同じ step の中で後ろで入れ、その間に
+#            library_emblem.py --fresh が版面の行（＋follows）が DB に現れるのを 5 秒おきに待つ。1 回見て「無い」と決めない
+#            （2026-11-19 run 1：board の job が行を書く前に --check-fresh が「0」を見て終わり、小元素は 31〜34 分後だった）。
+#            現れたら各 shard が未試行の版面を 1 つずつ claim（library.claim_board）して速い道（1 枚目が通った段で書く・上限 90 秒・規則は fill_one のまま）、
+#            書いたらすぐその版面を追う人のページだけ作り直す（user_pages.py --boards-file F --emblem-only：前の測った結果で 10 秒ほど）。
+#            同じ run の board の job が終わったのを見たあとに読んでも新しい版面が無ければ終える（経路 A/B は ≈ 1 分。GitHub の API：actions: read）。
+#            続き（名簿の残り）は library_emblem.yml の列へ。
+# 5 分の割り当て（library_emblem.FRESH_BUDGET。tests が「合計 + 余り 60 秒 ≤ 300」を数える）：
+#   起こす 20（dispatch → runner）・用意 80（checkout・python・pip・写し・模型 ≈ 40 ＋ 後ろで rembg 13・scrapling 26、board の job が行を書く ≈ 50 と重なる）・
+#   1 枚目 90・書く 5・ページ 45 ＝ 240 秒（余り 60）。各段の秒は「速い道の時刻 版面 N：…」の行（起きてからの秒）。
+# 経路 A/B（店長・ライブラリにある名前）：board の job の終わりを見て終わる。重い道具は後ろで入れかけのまま job ごと終わる。
 
 on:
   workflow_dispatch:
 
 permissions:
   contents: write
-  actions: write   # 小元素の続き（library_emblem.yml）を起こす
+  actions: write   # 小元素の続き（library_emblem.yml）を起こす・同じ run の board の job が終わったかを読む（write は read を含む）
+
+env:
+  PYTHONUNBUFFERED: "1"   # ログの各段の時刻がためずに出る（2026-11-19 run 2：「boards PATCH」4 行が全部最後にまとめて出た）
 
 jobs:
   board:
@@ -108,13 +111,18 @@ jobs:
   emblem:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2]   # library_emblem.FRESH_SHARDS：同じ 30 秒に 3 つ足されても 3 つとも 1 回目の割り当てに入る
     concurrency:
-      group: board-added-emblem   # 速い道どうしだけ直列（library・library-emblem の列には並ばない。同じ版面は config.emblem_claim で二重に取らない）
+      group: board-added-emblem-${{ matrix.shard }}   # shard ごと（同じ版面は config.emblem_claim で二重に取らない）。library・library-emblem の列には並ばない
       cancel-in-progress: false
     env:
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
       WL_PHOTO_CACHE: ${{ github.workspace }}/.photo_cache
       WIKIMEDIA_TOKEN: ${{ secrets.WIKIMEDIA_TOKEN }}
+      GH_TOKEN: ${{ github.token }}   # 同じ run の board の job の様子・run の起きた時刻（library_emblem.board_job_done・run_started）
     steps:
       - uses: actions/checkout@v5
         with:
@@ -129,34 +137,25 @@ jobs:
           path: .photo_cache
           key: wl-photo-cache-none
           restore-keys: wl-photo-cache-
-      - name: 新しい版面は来る？（経路 A/B はここで終わる）
-        id: check
-        run: python scripts/library_emblem.py --check-fresh
-      - if: steps.check.outputs.due == 'true'
-        run: pip install -q "rembg[cpu]>=2.0.60,<3"
-      - name: 本物のブラウザ（scrapling・公式サイトの人物の絵）
-        if: steps.check.outputs.due == 'true'
-        continue-on-error: true
-        run: scrapling install && echo "SCRAPLING_BROWSER=1" >> "$GITHUB_ENV"
       - name: 模型的缓存（library_emblem.yml と同じ）
-        if: steps.check.outputs.due == 'true'
         uses: actions/cache/restore@v4
         with:
           path: |
             ~/.rembg
             ~/.cache/wishlist-faces
           key: emblem-models-v1
-      - name: 新しい版面の小元素（速い道：行が現れるのを待って 1 枚目から）
+      - name: 新しい版面の小元素（行を待つ間に重い道具を後ろで入れ、来たら 1 枚目まで・書いたらその人のページ）
         id: fill
-        if: steps.check.outputs.due == 'true'
-        run: python scripts/library_emblem.py --fresh --wait 240 --minutes 9 --pages-file "$RUNNER_TEMP/fresh_boards.json"
-      - name: 小元素が出た版面を追いかけている人のページだけ作り直す
-        if: steps.fill.outputs.worked == 'true'
-        continue-on-error: true
-        timeout-minutes: 8
-        run: python scripts/user_pages.py --boards-file "$RUNNER_TEMP/fresh_boards.json"
+        run: |
+          T="$RUNNER_TEMP/fresh_tools"
+          ( pip install -q "rembg[cpu]>=2.0.60,<3" > "$T.log" 2>&1 && echo rembg=ok >> "$T"
+            echo rembg_done=1 >> "$T"   # 速い道は rembg だけ待つ（scrapling は入った時点で使う）
+            scrapling install >> "$T.log" 2>&1 && echo scrapling=ok >> "$T"
+            echo done=1 >> "$T" ) &
+          python scripts/library_emblem.py --fresh --wait 300 --minutes 9 --shard ${{ matrix.shard }} --tools "$T" --pages-dir "$RUNNER_TEMP"
       - name: 続き（名簿の残り・時間で残した版面）を今までの列へ
         if: steps.fill.outputs.more == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run library_emblem.yml -f minutes=20
+        run: |
+          # 3 本がそれぞれ起こさない：列（library_emblem.yml）に待ち・実行中があれば起こさない（そちらが続きも拾う）
+          n=$(gh run list --workflow library_emblem.yml -L 20 --json status --jq '[.[] | select(.status != "completed")] | length') || n=0
+          if [ "${n:-0}" = 0 ]; then gh workflow run library_emblem.yml -f minutes=20; else echo "小元素の列に待ち・実行中 $n 回：起こさない"; fi

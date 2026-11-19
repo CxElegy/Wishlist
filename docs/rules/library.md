@@ -15,6 +15,7 @@
 ## 版面を足したとき（2026-11-11，用户定的：新規ユーザーの KPI と改善）
 
 - お客さまが版面を足す（my_keywords_set）と、新しい名前に `added_at` を付けて残し、その場で `board_added.yml` を起こす（db/board_added.sql。1 人 1 時間 6 回・全体 30 秒に 1 回）。順番：library.py --users → userfeed.py → user_pages.py → library_emblem.yml。前は全部 cron 待ちだった。
+- **小元素は 5 分未満（2026-11-19 本番の実測で直した）**：`board_added.yml` の小元素の job は 3 つ並べて最初から走り、版面の行（＋follows）が現れるのを待つ。1 枚目が通ったら書いて、その版面を追う人のページだけすぐ作り直す（`user_pages.py --emblem-only`：前の回の測りで作る）。割り当て・ログの読み方は `docs/rules/emblem.md`「新しい版面の小元素は 5 分未満」。`library.yml` から起きた回も同じ道（行はもうあるので待たない）。起こし（db/board_added.sql）が入っているかは PC が `board_kpi.py kick`。
 - かかった時間は `harness/board_kpi.py` で測る（足す → picks・follows・boards・記事・ライブラリの記事・小元素・AI 編集・本人のページ）。経路 A＝店長と同じ名前（店長の号を写す）・B＝ライブラリにある版面・C＝新しい名前。目標（2026-11-19・全部「未満」＝ちょうどは赤）は経路 C で follows・boards 5 分・小元素 5 分（店長の決まり：新しい版面を足したら小元素が出るまで 5 分未満を保つ）・記事 20 分・ライブラリの記事 30 分・本人のページ 20 分・小元素が本人のページに載る 10 分・AI 編集 480 分（gate 待ち）。経路 B は follows 5・記事 20・小元素 1（もうある）・ページ 20 分、経路 A は ページ 15 分（`board_kpi.py` の `TARGETS`）。測り方は PC で `add`（足す）→ `watch`（段ごとの時刻を書き足す。ハーネスは `tick`）→ `report`。`report` は目標を割った段・24 時間たっても出ない段を 1 行ずつ出して**終了コード 1（赤）**、`--no-fail` で 0、`harness/kpi/latest.json` の `red` にも入る。
 - 計測の回は D:/Claude/kpi/runs（本人のデータが入るのでリポジトリの外）。数字だけを harness/kpi/latest.json に。ハーネスのループ（args.newuser）が毎回 tick・report・pages を回し、test-d・test-e で新しい回を作り、目標を越えた段を BACKLOG の【依頼・新規ユーザー】にする。
 - テスト用アカウントのログインは localhost の自前版 Supabase だけ（本番の画面でテスト用の鍵を入れない）。

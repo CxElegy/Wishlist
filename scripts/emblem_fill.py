@@ -80,6 +80,7 @@ RULES = {
 # 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
+FIRST_STOP = False   # fill_one：1 枚でも足せた段で止める（お客さまの新しい版面の速い道 library_emblem.fresh_limits だけが立てる。検査は同じ・範囲だけ。残りは次の回）
 PICK_PASSES = 3   # fill_one：1 つの段で、切り抜きの検査に外れた人の次の候補を取り直す回数（最初を含む）
 NAMES_V = 16   # 16：名簿の全員を人でない名前で見直す（emblem_fill.prune_roster：分類の空のあつ森の Player・Xsq、前からいたスプラ 3 の Maws・Steel Eel）・前に役の語が付いた Old Man（ゼルダの Sword-Giving Old Man）も NOT_CHAR。 15：15：お客さまの版面（library_emblem.board_item）も版が上がった回に _recount（14 はそろった名簿のスプラ 3 が数え直されず Inklings が残った）。 14：種族・敵の型・物のページ（分類 Species・Races・Items・Types of …・Cut characters：スプラ 3 の Inklings・Steel Eel・Maws、ゼルダの Fairy、あつ森の Xsq）を名簿から外す（emblem.THING_CAT）。 13：公式サイトの候補を自動で選ぶ取り方に入れた（AUTO_SOURCES）・回す順で欠けた主役と公式のある人を固定（BLEACH Rukia・Kisuke）。 12：フランチャイズ（subs.kind シリーズ）の名簿は中の作品（P179）の出演者を出た回数の順に（franchise_cast：漫威电影が Avengers: Doomsday 1 作の出演者 33 人で、Iron Man・Cap の主役が入らず 3 枚止まりだった）。 11：種族・役割・名無し（Wyverians・Hunter・Traveler・Manekin）を名簿から外す（emblem.NOT_CHAR）。 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
@@ -2321,6 +2322,8 @@ def fill_one(item, log=print):
                     seen.add(_base_subject(c["subject"]))
                 reasons[why] = reasons.get(why, 0) + 1
             if status(fresh)["state"] == "ok":
+                break
+            if FIRST_STOP and status(fresh)["have"] > before:   # 速い道：看板の姿の 1 枚目が検査を通った段で書いて次の版面へ（残りの段・人は今までの列）
                 break
     finally:
         _live(item["name"], None)

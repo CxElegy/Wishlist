@@ -50,17 +50,41 @@ class BoardAdded(unittest.TestCase):
         self.assertLess(self.at(j, "userfeed.py"), self.at(j, "user_pages.py --recent"))   # 記事が先・ページが後
 
     def test_emblem_job_runs_in_parallel_and_waits_for_the_row(self):
+        import library_emblem
         j = self.jobs()["emblem"]
-        self.assertNotIn("needs", j)   # board の job を待たない：準備（pip・rembg・scrapling・模型）を先に
+        self.assertNotIn("needs", j)   # board の job を待たない：準備を先に
         self.assertNotIn(j["concurrency"]["group"], ("library", "library-emblem"))   # cron の小元素の回（30 分）に並ばない
-        order = [self.at(j, x) for x in ("--check-fresh", "rembg", "scrapling install", "library_emblem.py --fresh --wait",
-                                         "user_pages.py --boards-file", "gh workflow run library_emblem.yml")]
-        self.assertEqual(order, sorted(order))
-        steps = j["steps"]
-        for s in steps[self.at(j, "rembg"):self.at(j, "--fresh --wait") + 1]:   # 経路 A/B は重い道具を入れない
-            self.assertIn("steps.check.outputs.due == 'true'", str(s.get("if")))
-        self.assertIn("worked", steps[self.at(j, "--boards-file")]["if"])
-        self.assertIn("more", steps[self.at(j, "gh workflow run")]["if"])
+        # 2026-11-19 run 1：--check-fresh が board の job より先に 1 回見て「0」で終わった → 1 回見て決める step を置かない
+        self.assertFalse(any("--check-fresh" in r for r in self.runs(j)))
+        fill = j["steps"][self.at(j, "library_emblem.py --fresh")]["run"]
+        # 重い道具は同じ step の中で後ろで（&）入れ、その間に行を待つ。印のファイルを --tools で渡す
+        self.assertLess(fill.index("rembg"), fill.index("library_emblem.py --fresh"))
+        self.assertLess(fill.index("scrapling install"), fill.index("library_emblem.py --fresh"))
+        self.assertIn(") &", fill)
+        self.assertIn("done=1", fill)
+        self.assertLess(fill.index("rembg_done=1"), fill.index("scrapling install"))   # 速い道は rembg だけ待つ
+        for arg in ("--wait", "--shard ${{ matrix.shard }}", "--tools", "--pages-dir"):
+            self.assertIn(arg, fill)
+        self.assertNotIn("if", j["steps"][self.at(j, "library_emblem.py --fresh")])   # 経路 A/B も同じ step（board の job の終わりを見て終える）
+        self.assertFalse(any("user_pages.py" in r for r in self.runs(j)))   # ページは版面ごとに --fresh の中から（全版面の後に 1 回ではない）
+        self.assertIn("more", j["steps"][self.at(j, "gh workflow run library_emblem.yml")]["if"])
+        self.assertLess(self.at(j, "library_emblem.py --fresh"), self.at(j, "gh workflow run library_emblem.yml"))
+        more = j["steps"][self.at(j, "gh workflow run library_emblem.yml")]["run"]
+        self.assertLess(more.index("gh run list --workflow library_emblem.yml"), more.index("gh workflow run"))   # 3 本が 3 回起こさない
+
+    def test_emblem_job_is_sharded_like_the_code(self):
+        import library_emblem
+        j = self.jobs()["emblem"]
+        self.assertEqual(j["strategy"]["matrix"]["shard"], list(range(library_emblem.FRESH_SHARDS)))
+        self.assertIs(j["strategy"]["fail-fast"], False)   # 1 つが落ちてもほかの版面を止めない
+        self.assertIn("${{ matrix.shard }}", j["concurrency"]["group"])   # 列は shard ごと（同じ版面は claim で 1 回）
+        self.assertEqual(j["env"]["GH_TOKEN"], "${{ github.token }}")   # board の job の様子を読む
+
+    def test_logs_are_not_buffered(self):
+        import yaml
+        w = yaml.safe_load((ROOT / ".github" / "workflows" / "board_added.yml").read_text(encoding="utf-8"))
+        self.assertEqual(str(w["env"]["PYTHONUNBUFFERED"]), "1")   # 各段の時刻がためずに出る
+        self.assertIn("actions", w["permissions"])
 
     def test_library_yml_kicks_board_added_when_it_made_boards(self):
         w = (ROOT / ".github" / "workflows" / "library.yml").read_text(encoding="utf-8")
