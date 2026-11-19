@@ -322,12 +322,21 @@ class Budget(unittest.TestCase):
 
 
 class FreshMain(unittest.TestCase):
-    def run_main(self, boards, follows=None, have=1, fill_error=None):
+    def run_main(self, boards, follows=None, have=1, fill_error=None, read_fail=(), put_fail=0, claim_fail=False):
+        """read_fail = 版面の読みの何回目（0 から）を 500 にするか・put_fail = 最初の何回の config の書き込みを 500 にするか。"""
         import digest
+        import urllib.error
         log, rows = [], {b["id"]: b for b in boards}
+        reads, puts = [0], [0]
+
+        def err():
+            return urllib.error.HTTPError("https://db/x", 500, "boom", {}, None)
 
         def sup(path, body=None, prefer=None, method=None):
             if path.startswith("boards?select=id,name,wd,config"):
+                reads[0] += 1
+                if reads[0] - 1 in read_fail:
+                    raise err()
                 return [b for b in rows.values() if not (b.get("config") or {}).get("emblem_state")]
             if path.startswith("follows?board_id=in."):
                 return follows if follows is not None else [{"board_id": b["id"], "section": "生活"} for b in boards]
@@ -340,9 +349,17 @@ class FreshMain(unittest.TestCase):
             return {"emblem_state": {"state": "running", "have": have}, "emblem_claim": None}
 
         def put(bid, add):
+            if puts[0] < put_fail:
+                puts[0] += 1
+                raise err()
             log.append(("write", bid))
             rows[bid] = {**rows[bid], "config": {**(rows[bid].get("config") or {}), **add}}
             return rows[bid]["config"]
+
+        def claim(bid, stamp):
+            if claim_fail:
+                raise err()
+            return True
 
         def runner(d):
             return (lambda bid: log.append(("page", bid))), (lambda timeout: {x[1]: (time.time(), 0) for x in log if x[0] == "page"})
@@ -350,7 +367,8 @@ class FreshMain(unittest.TestCase):
                 mock.patch.dict("os.environ", {"GITHUB_OUTPUT": str(pathlib.Path(d) / "o"), "SUPABASE_SERVICE_KEY": "k"}), \
                 mock.patch.object(digest, "load_config", lambda: ({"supabase_url": BASE}, None)), \
                 mock.patch.object(digest, "supabase", sup), \
-                mock.patch.object(library, "claim_board", lambda bid, stamp: True), \
+                mock.patch.object(library, "claim_board", claim), \
+                mock.patch.object(le.time, "sleep", lambda s: None), \
                 mock.patch.object(library, "put_config", put), \
                 mock.patch.object(le, "fresh_fill", fake_fill), \
                 mock.patch.object(le, "pages_runner", runner), \
@@ -359,6 +377,7 @@ class FreshMain(unittest.TestCase):
                 mock.patch.object(le, "warm", lambda: None):
             le.fresh_main(["--fresh", "--wait", "0", "--minutes", "5", "--pages-dir", d])
             out = (pathlib.Path(d) / "o").read_text()
+        self.rows = rows
         return log, out
 
     def test_each_board_is_written_then_its_page_right_away(self):
@@ -381,6 +400,39 @@ class FreshMain(unittest.TestCase):
     def test_one_failure_does_not_stop_writing(self):
         log, _ = self.run_main([{"id": 1, "name": "a", "config": {}}], fill_error=RuntimeError("x"))
         self.assertEqual(log, [("write", 1)])   # 失敗も書く（指紋なしの failed・印を外す）＝次の見回りですぐ
+
+    def test_one_500_on_read_does_not_stop(self):
+        # DB は店長の PC（Tailscale 経由）：一瞬の 500 で shard ごと落ちない。「無い」とも決めない（board の job が終わっていても）
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], read_fail={0})
+        self.assertEqual(log[:2], [("fill", 1, "生活"), ("write", 1)])
+        self.assertIn("worked=true", out)
+
+    def test_reads_keep_failing_ends_with_outputs(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], read_fail=set(range(50)))
+        self.assertEqual(log, [])
+        self.assertIn("worked=false", out)
+        self.assertIn("more=true", out)   # 読めないまま：続きは列へ
+
+    def test_failed_write_is_retried_and_claim_is_cleared(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], put_fail=1)
+        self.assertIn(("write", 1), log)
+        self.assertIsNone(self.rows[1]["config"].get("emblem_claim"))   # 印が残らない
+
+    def test_write_that_keeps_failing_does_not_crash(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], put_fail=10)
+        self.assertNotIn(("page", 1), log)   # 書けなかった版面のページは作らない
+        self.assertIn("more=true", out)       # 印は期限（CLAIM_S）で戻り、列が拾う
+
+    def test_claim_error_does_not_crash(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], claim_fail=True)
+        self.assertEqual(log, [])
+        self.assertIn("more=true", out)
+
+    def test_outputs_even_if_the_loop_breaks(self):
+        with mock.patch.object(le, "fresh_loop", lambda *a, **k: 1 / 0):
+            log, out = self.run_main([{"id": 1, "name": "a", "config": {}}])
+        self.assertIn("worked=false", out)
+        self.assertIn("more=true", out)
 
     def test_log_has_ids_and_seconds_only(self):
         import contextlib
