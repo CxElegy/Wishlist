@@ -185,6 +185,12 @@ class Loop(unittest.TestCase):
         self.assertEqual(r["done"], [])
         self.assertLess(end, le.FRESH_GRACE_S + le.FRESH_POLL_S + 1)
 
+    def test_unknown_upstream_waits_while_names_are_pending(self):
+        # API が読めない・足したばかりの名前（added_at）がまだ版面になっていない：GRACE を過ぎても wait まで待つ
+        t = [0.0]
+        le.fresh_loop(lambda: [], lambda b: None, 200, 600, clock=lambda: t[0], sleep=lambda s: t.__setitem__(0, t[0] + s), waiting=lambda: 1)
+        self.assertGreaterEqual(t[0], 200)
+
     def test_late_row_is_waited_for_while_board_job_runs(self):
         # 2026-11-19 run 1：行は board の job の終わりごろ（+50 秒）に現れた。前は +10 秒で 1 回見て「0」で終えていた
         r, end, _ = self.run_loop({50: [{"id": 7}]}, upstream=lambda s: s >= 55)

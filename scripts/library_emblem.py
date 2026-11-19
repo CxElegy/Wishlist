@@ -944,7 +944,7 @@ def fresh_loop(list_fresh, take, wait, end, clock=time.time, sleep=time.sleep, u
             break
         if up is False and clock() - start >= wait:
             break
-        if up is None and not waiting() and clock() - (last or start) >= (FRESH_QUIET_S if last else FRESH_GRACE_S):
+        if up is None and clock() - (last or start) >= (FRESH_QUIET_S if last else FRESH_GRACE_S) and not waiting():   # 名前の数は時間が来てから読む（全員の picks を 5 秒ごとに読まない）
             break
         if up is None and clock() - start >= wait:
             break
