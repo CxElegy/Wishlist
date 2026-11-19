@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-19T23:23:22+00:00",
+ "checked": "2026-11-19T23:29:50+00:00",
  "fired": {
-  "at": "2026-11-19T22:18:32+00:00",
+  "at": "2026-11-19T23:29:50+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -49,19 +49,19 @@
    "edit": 14
   },
   "2026-11-20": {
-   "edit": 5
+   "edit": 6
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-19T22:18:32+00:00",
+    "at": "2026-11-19T23:29:50+00:00",
     "attempts": 1,
     "day": "2026-11-20",
-    "prog": 115,
-    "resp": "cse_01W4x6f6rXCqyGymBynjUU8K",
-    "sig": "5f3a40914b65"
+    "prog": 156,
+    "resp": "",
+    "sig": "e458846c5d07"
    },
    "items": [
     "Astrae Oratio",
@@ -90,11 +90,19 @@
    "need": true,
    "prog": 156,
    "prog_day": "2026-11-20",
-   "ripe": [],
-   "sig": "1b9c3524ab35",
+   "ripe": [
+    "Astrae Oratio",
+    "FROM",
+    "The Mandalorian",
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "猫用品"
+   ],
+   "sig": "e458846c5d07",
    "token_cap": 1000000,
    "tokens_today": 253486,
-   "why": "整理待ちの記事 109 件（17 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 109 件（17 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
