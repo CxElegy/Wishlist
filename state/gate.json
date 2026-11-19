@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-19T01:02:06+00:00",
+ "checked": "2026-11-19T01:18:41+00:00",
  "fired": {
   "at": "2026-11-19T00:40:39+00:00",
   "results": {
@@ -61,56 +61,36 @@
     "sig": "665c93d4ad2a"
    },
    "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "lib:サカナクション",
-    "lib:ポケモンGO",
-    "lib:台風・天気",
-    "lib:広島旅行",
-    "lib:牧野植物園",
+    "lib:BTS",
+    "lib:Mrs. GREEN APPLE",
+    "lib:YOASOBI",
+    "lib:サッカー日本代表",
+    "lib:スプラトゥーン3",
+    "lib:大谷翔平",
+    "lib:葬送のフリーレン",
     "lib:藤井風",
     "あつ森",
-    "周杰伦",
     "哈利波特剧集",
-    "星巴克马克杯",
     "滑雪",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-18T23:43:04+00:00",
+   "last_batch": "2026-11-19T00:58:10+00:00",
    "last_error": {
     "at": "2026-11-18T23:39:22+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 221,
+   "prog": 270,
    "prog_day": "2026-11-19",
    "ripe": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
-    "GTA 6",
-    "ILLIT",
-    "The Mandalorian",
-    "dota2",
-    "lib:ポケモンGO",
-    "lib:牧野植物園",
-    "lib:藤井風",
-    "周杰伦",
-    "星巴克马克杯",
-    "漫威电影"
+    "lib:藤井風"
    ],
-   "sig": "9a10be1840b7",
+   "sig": "faa0e2bdd5ed",
    "token_cap": 1000000,
-   "tokens_today": 306567,
-   "why": "整理待ちの記事 118 件（22 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 366091,
+   "why": "整理待ちの記事 104 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -251,12 +231,12 @@
    "runs": 14
   },
   "2026-11-19": {
-   "batches": 6,
-   "cr": 4634949,
-   "cw": 280657,
-   "in": 130,
-   "out": 25780,
-   "runs": 5
+   "batches": 8,
+   "cr": 6203636,
+   "cw": 333795,
+   "in": 172,
+   "out": 32124,
+   "runs": 6
   }
  }
 }
