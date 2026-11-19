@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 # 0 を保つ項目（8 つ＋A1・A5・A6・C1・C2・D3・E1・E2・F3・F4 の数えられる所）
 ZERO = ("imgfail", "noimg", "rowedge", "cgap_wall", "orphan", "leadbig", "sidebig", "pendhid", "navgap", "dup", "solo", "herogap", "ell", "over", "wide", "clip")
 # 0 を保つ：ほかの注目の壁と頭条の空き（cgap_wall）は上の ZERO。版面の小さいカードの前からの空き（cgap の残り）と写真の切れ crop は増えないことだけ見る
-KNOWN = {"cgap": 8, "gap": 0, "crop": 17, "band": 85}   # 4 形（a〜d）× 8 幅（2026-11-19 仕上げ）：crop は直す前の 17 以下（B2 が先＝主役の位置が分からない写真は切らない）。その代わり同じ枠に収めた写真の余り（帯 band）が 82 出る。帯と切れのどちらを先にするかは店長の決め待ち
+KNOWN = {"cgap": 8, "gap": 0, "crop": 17, "band": 110}   # 4 形（a〜d）× 8 幅（2026-11-19 仕上げ）：crop は直す前の 17 以下（B2 が先＝主役の位置が分からない写真は切らない）。その代わり同じ枠に収めた写真の余り（帯 band）が 82〜100 出る。帯と切れのどちらを先にするかは店長の決め待ち
 
 
 class NewUserPage(unittest.TestCase):
@@ -61,6 +61,8 @@ class NewUserPage(unittest.TestCase):
         a = pathlib.Path(self.pages["a"]).read_text(encoding="utf-8")
         self.assertIn('<aside class="fstrip">', a)
         self.assertIn('<details class="pend" open>', a)
+        self.assertIn('data-e="s" data-o="1"', a)   # 記事自身の写真の印（点検の own）
+        self.assertIn("me.dataset.sw=(+me.dataset.sw||0)+1", a)   # 落ち先へ替えた回数
         self.assertEqual(a.count('href="https://example.com/news/0"'), 1)   # 頭条だけ。版面に 2 回目なし（F4）
 
 

@@ -41,14 +41,14 @@ KIND = {"edge": "吸着した位置で小元素・題・札が画面の端で切
         "solo": "記事が 1 本だけの版面", "herogap": "重大の横に大きな空き", "emrel": "空きの小元素がその記事と無関係",
         "cgap": "カードの中に空き（写真の下・字の下・右）", "ell": "見出しが「…」で切れている", "strong": "脇役の部品に強い要素が 2 つ以上",
         "orphan": "見出しの最後の行が 1〜2 字", "leadbig": "ほかの注目の大きい 1 枚が頭条に近い大きさ", "sidebig": "空の脇の箱が 1 行の帯より大きい",
-        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回", "rowedge": "同じ行のカードの下端がそろわない", "imgfail": "記事の写真が読み込めなかった", "noimg": "頭条に写真なし・記事の半分超が写真なし"}
+        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回", "rowedge": "同じ行のカードの下端がそろわない", "imgfail": "記事の写真が読み込めなかった", "pending": "記事の写真が 30 秒で届かない", "noimg": "頭条に写真なし・記事の半分超が写真なし"}
 FIX = {"edge": "scroll-margin-top を小元素のはみ出し分だけ取る（render.CSS section.sec.has-emb）", "hid": "固定のボタンの下に入らない位置で吸着する",
        "solo": "版面の記事を増やす・隣の版面と一緒に組む", "herogap": "重大の横に記事・予定を置くか幅を広げる",
        "emrel": "関係のある小元素が無ければ空きのまま（置かない）", "cgap": "写真を字の高さまで伸ばす・カードを縮める",
        "ell": "行数を増やす・見出しを短くする", "strong": "脇役の箱は墨の地・小さい札だけにする（C4）",
        "orphan": "字の大きさを列に合わせる・text-wrap: balance（render FIT_JS fitHead）", "leadbig": "記事 3 本以下は同じ大きさで並べる・大きい 1 枚は頭条の 7 割まで",
        "sidebig": "空の箱は 1 行の細い帯に畳む（render._side）", "pendhid": "整理待ちの見出しを写真付きで並べる（render._section）",
-       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "imgfail": "写真の網址が開くか・置き場に入ったかを写真を取る段で確かめる（images.pick・photo_store）", "noimg": "写真のない記事は整理待ちへ（og_image.demote）・写真を探し直す", "rowedge": "同じ行は同じ組み・高いほうにそろえ、字の少ないほうは写真の高さで吸う（FIT_JS wall の FEW_WALL）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）"}
+       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "pending": "写真の置き場・網址の速さ（photo_store・hdimg）", "imgfail": "写真の網址が開くか・置き場に入ったかを写真を取る段で確かめる（images.pick・photo_store）", "noimg": "写真のない記事は整理待ちへ（og_image.demote）・写真を探し直す", "rowedge": "同じ行は同じ組み・高いほうにそろえ、字の少ないほうは写真の高さで吸う（FIT_JS wall の FEW_WALL）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）"}
 
 
 def emb_rel_js():
@@ -249,8 +249,18 @@ JS_BODY = r"""
   document.querySelectorAll('.pic img[data-e="s"]').forEach(i => { if (i.complete && !i.naturalWidth && i.closest('#front, section.sec, .wall') && !i.closest('[data-imgfail]')) { fail++; tag(i.closest('.pic'), 'imgfail', (i.getAttribute('src') || '').slice(-40)); } });
   document.querySelectorAll('[data-imgfail]').forEach(e => tag(e, 'imgfail', '落ち先まで開けなかった：' + (e.innerText || '').trim().slice(0, 16)));
   stats.imgfail = fail; stats.arts = arts.length;
-  const none = arts.filter(a => !shown(a)); stats.noimg = none.length; stats.noimgPct = arts.length ? Math.round(none.length / arts.length * 100) : 0;
-  const top = document.querySelector('#front .top:not(.start)'); stats.nohead = top && !shown(top) ? 1 : 0;
+  // 写真の中身（2026-11-19 PC の実測：本物か代わりの絵かを見分ける）。render._pic の data-o（1 記事自身の写真・0 最初から備えの絵）・SWAP_JS の data-sw（落ち先へ替えた回数）
+  const ph = a => a.querySelector('.pic img[data-e="s"]'), got = i => i && i.complete && i.naturalWidth > 0;
+  stats.own = stats.swapped = stats.sub = stats.icon = stats.none = stats.pending = 0;
+  const notOwn = [];
+  arts.forEach(a => { const i = ph(a);
+    if (i && !i.complete) { stats.pending++; return; }   // 読み込み待ち（写真なしとは数えない）
+    if (got(i) && i.dataset.o === '1' && !(+i.dataset.sw)) stats.own++;
+    else { notOwn.push(a); if (got(i) && +i.dataset.sw) stats.swapped++; else if (got(i) && i.dataset.o === '0') stats.sub++; else if (a.querySelector('.pic.icon')) stats.icon++; else stats.none++; } });
+  if (stats.pending) tag(document.body, 'pending', stats.pending + ' 枚が 30 秒で届かない');
+  const hasO = !!document.querySelector('.pic img[data-o]');   // 印の無い古いページは「写真が出ているか」で数える
+  const none = hasO ? notOwn : arts.filter(a => !shown(a) && !(ph(a) && !ph(a).complete)); stats.noimg = none.length; stats.noimgPct = arts.length ? Math.round(none.length / arts.length * 100) : 0;
+  const top = document.querySelector('#front .top:not(.start)'); stats.nohead = top && (hasO ? notOwn.includes(top) : !shown(top)) ? 1 : 0;
   stats.held = document.querySelectorAll('.calm[data-held]').length;
   if (stats.nohead || (arts.length && none.length * 2 > arts.length)) { bump('noimg'); tag(top || document.body, 'noimg', (stats.nohead ? '頭条に写真なし・' : '') + '写真なし ' + none.length + ' / ' + arts.length); }
   // 13. 同じ行に並んだカードの下端の差（主の決め 4・直し 2 回目：「ほかの注目」の 2 枚の下端が 95px ずれた）。同じ親の中で上端が 4px 以内にそろったカードの組
@@ -288,7 +298,7 @@ def measure(pg, start=0):
 # 新しい人のページ（2026-11-19）を数える幅（主経由の店長の決め：どの幅でも同じ決め方・この 8 幅で数える）
 NEW_USER_VIEWS = ((390, 844), (412, 915), (768, 1024), (1000, 800), (1024, 768), (1333, 720), (1440, 900), (1920, 1080))
 # 8 つの指摘 → 数える項目（self_review の band・cgap と、上の 7〜12）。審美基準の番号は aesthetic_map.json
-NEW_USER_KINDS = ("imgfail", "noimg", "rowedge", "orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
+NEW_USER_KINDS = ("imgfail", "pending", "noimg", "rowedge", "orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
                   "solo", "herogap", "ell", "over", "wide", "clip", "gap")
 
 
@@ -306,7 +316,8 @@ def page_counts(pg):
         notes.setdefault(i["kind"], []).append(i["note"])
     out["cgap_wall"] = x["stats"].get("cgap_wall", 0)
     out["imgfail"] = x["stats"].get("imgfail", 0)   # tag の数ではなく写真の数
-    for k in ("noimgPct", "nohead", "held", "arts"):
+    out["pending"] = x["stats"].get("pending", 0)
+    for k in ("noimgPct", "nohead", "held", "arts", "own", "swapped", "sub", "icon", "none"):
         out["_" + k] = x["stats"].get(k, 0)   # cgap のうち「ほかの注目」の壁のカード（版面の小さいカードの前からの分と分けて数える）
     out["_notes"] = {k: v[:6] for k, v in notes.items()}
     out["_stats"] = x["stats"]
@@ -348,6 +359,17 @@ def fake_images(ctx):
     ctx.add_init_script("(()=>{let s=20261119;Math.random=()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};})();")
 
 
+WAIT_PHOTOS_MS = 30000   # 本物のページでは記事の写真が届くまで最大 30 秒待つ（写真 212 枚の test-c は 8 秒で読み終わらない。2026-11-19 PC の実測）
+
+
+def wait_photos(pg, ms=WAIT_PHOTOS_MS):
+    """記事の写真（img[data-e=s]）が全部 complete になるまで待つ。届かない分は page_counts の pending が数える。"""
+    try:
+        pg.wait_for_function("() => [...document.querySelectorAll('.pic img[data-e=\"s\"]')].every(i => i.complete)", timeout=ms)
+    except Exception:   # noqa: BLE001  時間切れ：pending として数える
+        pass
+
+
 def new_user_counts(url, browser_, views=NEW_USER_VIEWS, fake=False):
     """1 つのページを 8 幅で開いて page_counts。{'390x844': {...}, …}。browser_ は harness/browser.launch の返すもの。
     fake=True：写真を作り物にして揺れなく数える（店長のページの前／後の比べ・tests/test_new_user_page.py の上限）。"""
@@ -360,10 +382,13 @@ def new_user_counts(url, browser_, views=NEW_USER_VIEWS, fake=False):
         pg = ctx.new_page()
         pg.goto(url, wait_until="load", timeout=60000)
         self_review.load_all(pg)
+        if not fake:
+            wait_photos(pg)
         res[f"{w}x{h}"] = page_counts(pg)
         if fake:   # 作り物の写真では「届いたか」は意味がない
             res[f"{w}x{h}"].pop("imgfail", None)
             res[f"{w}x{h}"].pop("noimg", None)
+            res[f"{w}x{h}"].pop("pending", None)
         ctx.close()
     return res
 

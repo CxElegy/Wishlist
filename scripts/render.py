@@ -887,7 +887,8 @@ def _headline(story):
 SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest('section'),"
            "f=(me.dataset.fb||'').split(' ').filter(function(u){return u&&!(s&&[].some.call("
            "s.querySelectorAll('.pic img:not(.bg)'),function(i){return i!==me&&i.src===u}))});"
-           "if(f.length){me.removeAttribute('srcset');me.removeAttribute('data-t');me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
+           "if(f.length){me.dataset.sw=(+me.dataset.sw||0)+1;me.removeAttribute('srcset');"   # data-sw：落ち先へ替えた回数（置き場の写真 → 同じ写真の元の網址も 1 回と数える。点検の swapped）
+           "me.removeAttribute('data-t');me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
            "else{var a=p.closest('article.card,article.wc,.pk');if(a){p.remove();a.classList.add('nophoto');a.dataset.imgfail=1}else{"
            "p.dataset.imgfail=1;var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
            "if(ic){p.classList.add('icon');var l=ic.dataset.icons.split(' ');ic.src=l.shift();ic.dataset.icons=l.join(' ')}"
@@ -962,7 +963,9 @@ def _pic(story):
     srcset = f' srcset="{e(small)} 400w, {e(big)} 800w" sizes="(max-width:700px) 100vw, 33vw"' if small else ""
     ms = photo_store.mass_css(chain[0]) if chain else None   # 切る位置の材料（顔・題字の分布）
     dm = f' data-m="{ms}"' if ms else ""
-    tag = (f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer"{dm} data-e="s">') if src else ""
+    # data-o：1＝記事自身の写真が src、0＝最初から備えの絵（作品の表紙）。点検が「本物の写真が届いたか」を見分ける印（2026-11-19）
+    own = "1" if story.get("image") and story.get("image_via") != "作品封面" else "0"   # _borrowed は「版面の表紙と同じ網址」も含む（お客さまの表紙は頭の記事の写真から作る）ので、集めた時の印 image_via で見る
+    tag = (f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer"{dm} data-e="s" data-o="{own}">') if src else ""
     label = f'<span class="ph">{e(name)}</span>' if name else ""
     icons = _icons(story)
     icon = ""

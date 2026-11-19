@@ -498,13 +498,14 @@ COVER_JS = """()=>{const f=document.querySelector('.wl-auth');if(!f)return [];co
   return b.width&&b.height&&b.left<r.right&&r.left<b.right&&b.top<r.bottom&&r.top<b.bottom}).slice(0,3).map(e=>(e.className||e.tagName)+':'+e.innerText.slice(0,12))}"""
 
 
-NEW_USER_BAD = ("imgfail", "noimg", "leadbig", "sidebig", "pendhid", "navgap", "dup")   # imgfail・noimg（2026-11-19 本物の写真が届いたか）   # ✗ にする項目（orphan・cgap は店長のページにも残る既存の問題なので数を出すだけ）
+NEW_USER_BAD = ("imgfail", "pending", "noimg", "leadbig", "sidebig", "pendhid", "navgap", "dup")   # imgfail・noimg（2026-11-19 本物の写真が届いたか）   # ✗ にする項目（orphan・cgap は店長のページにも残る既存の問題なので数を出すだけ）
 
 
 def new_user_bad(pg):
     """開いたページに harness/aesthetic_count.page_counts（新しい人のページの 8 つ＋self_review の数）を当てる。PC の会話が本物の非公開ページに当てる呼び口と同じ。"""
     import aesthetic_count
     try:
+        aesthetic_count.wait_photos(pg)   # 写真が届くまで最大 30 秒（読み込み待ちを写真なしと数えない）
         c = aesthetic_count.page_counts(pg)
     except Exception as ex:   # noqa: BLE001  測れなければ測れないと言う（0 と書かない）
         return [f"審美基準の数を測れなかった（{type(ex).__name__}）"]

@@ -153,5 +153,21 @@ class AestheticCount(unittest.TestCase):
         self.assertEqual((gone["stats"]["nohead"], self.n(gone, "noimg")), (1, 1))   # 頭条に写真なし
 
 
+    def test_own_sub_swapped_pending(self):
+        """本物の写真か代わりの絵か（data-o・data-sw）・届かない写真（pending）を記事の数で（2026-11-19 PC の実測）。"""
+        import aesthetic_count as ac
+        wc = lambda attrs, src=PX: f'<article class="wc"><div class="pic"><img data-e="s" {attrs} src="{src}" style="width:200px;height:120px"></div><b>見出し</b></article>'
+        html = page('<div class="wall">' + wc('data-o="1"') + wc('data-o="1"') + wc('data-o="1" data-sw="1"') + wc('data-o="0"')
+                    + wc('data-o="1"', "http://127.0.0.1/slow.png") + '</div>')
+        pg = self.b.new_page(viewport={"width": 1400, "height": 900})
+        pg.route("**/slow.png", lambda route: None)   # 返事をしない写真＝読み込み待ちのまま
+        pg.set_content(html, wait_until="domcontentloaded")
+        pg.wait_for_function("() => [...document.images].filter(i => i.complete).length >= 4")
+        st = ac.measure(pg)["stats"]
+        pg.close()
+        self.assertEqual((st["own"], st["swapped"], st["sub"], st["pending"]), (2, 1, 1, 1))
+        self.assertEqual(st["noimg"], 2)          # 記事自身の写真が届いていない（替えた・備えの絵）。待ちは写真なしと数えない
+
+
 if __name__ == "__main__":
     unittest.main()
