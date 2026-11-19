@@ -48,7 +48,17 @@ button,input,select{font:inherit;color:inherit}
 .adv .tick{position:absolute;right:-28px;color:var(--dim);font-size:11px}
 .adv .rail{flex:1;min-height:6px}
 /* 中央 */
-.center{display:flex;flex-direction:column;align-items:center;min-width:0}
+.center{display:flex;flex-direction:column;align-items:center;min-width:0;position:relative}
+/* Animated Beam（Magic UI・MIT）：delegate から動いている係の箱へ、光が線を流れる */
+.beams{position:absolute;left:0;top:0;pointer-events:none;z-index:0;overflow:visible}
+.beams .base{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:2 4}
+.beams .glow{fill:none;stroke-width:2;stroke-linecap:round;stroke-dasharray:40 560;animation:beam 2.6s linear infinite}
+.beams .glow.stuck{animation:none;stroke-dasharray:none;opacity:.35}
+@keyframes beam{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+.lead,.route,.ag,.back,.deleg{position:relative;z-index:1}
+.ag{background:var(--win)}
+@media (min-width:761px){.center .deleg{margin-bottom:44px}}
+.ag.stuck{background:var(--redbg)}
 .lead{border:1px solid var(--lead);width:380px;max-width:100%;text-align:center;padding:10px 14px}
 .lead .t{color:var(--lead);font-weight:700}.lead .w{color:var(--white)}
 .lead .h{display:flex;justify-content:center;gap:2px 14px;flex-wrap:wrap}
@@ -140,14 +150,20 @@ fieldset.now legend .mix{font-weight:400;margin-left:6px}
 .card.st-working .stt{color:var(--harness)}
 .card.st-working .stt i{display:inline-block;animation:pulse 1.6s ease-in-out infinite;font-style:normal}
 .card.st-ask .stt{color:var(--lead)}
-.card.st-ask{box-shadow:inset 3px 0 0 var(--lead)}
+/* Border Beam（Magic UI・MIT）：選んでほしい札の縁を光が回る（回るのは大きな正方形の transform だけ） */
+.card .bbeam,.card .cover{display:none;position:absolute;pointer-events:none}
+.card .bbeam{left:50%;top:50%;width:220%;aspect-ratio:1;z-index:-3;background:conic-gradient(from 0deg,transparent 0 68%,var(--lead) 80%,#ffd9b0 86%,var(--opus) 92%,transparent 96%);
+ animation:bspin 3.4s linear infinite;will-change:transform}
+.card .cover{inset:1px;z-index:-2;background:var(--win)}
+.card.st-ask .bbeam,.card.st-ask .cover{display:block}
+@keyframes bspin{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(1turn)}}
 .card.st-quiet{background:var(--redbg)}
 .card.st-quiet .stt{color:var(--red)}
 .card.st-yours .stt{color:var(--haiku)}
 .card.st-idle,.card.st-off{opacity:.62}
 .card.st-idle .stt,.card.st-off .stt{color:var(--dim)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.card.st-working .stt i,.card,.card.st-working::before,.card.st-working::after,.shine,.caret::after{animation:none}
+@media (prefers-reduced-motion:reduce){.beams .glow,.card .bbeam,.log .r.in,.card.st-working .stt i,.card,.card.st-working::before,.card.st-working::after,.shine,.caret::after{animation:none}
  .card.st-working::before,.card.st-working::after{display:none}.spark i{transition:none}.shine{-webkit-text-fill-color:var(--harness)}}
 @media (max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* 下の欄 */
@@ -157,6 +173,9 @@ legend{padding:0 8px;color:var(--fg)}
 .log .r .tx{color:var(--fg);overflow-wrap:anywhere;font-family:'Noto Sans JP',var(--mono);font-size:12px}
 .log .r b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .log .r .tx.err{color:var(--red)}
+/* Animated List（Magic UI・MIT）：新しい出来事の行がはじけるように入る */
+.log .r.in{animation:rowIn .45s cubic-bezier(.34,1.56,.64,1) both;transform-origin:0 0}
+@keyframes rowIn{from{opacity:0;transform:scale(.94) translateY(-6px)}to{opacity:1;transform:none}}
 .site{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px 18px}
 .site>div{overflow-wrap:anywhere;font-family:'Noto Sans JP',var(--mono);font-size:12px}
 .site .k{color:var(--white)}
@@ -203,6 +222,7 @@ legend{padding:0 8px;color:var(--fg)}
  .site{grid-template-columns:1fr}
  .cards{grid-template-columns:1fr}
  .deleg::before{left:0;right:0}
+ .beams{display:none}
 }
 </style></head>
 <body>
@@ -228,7 +248,7 @@ legend{padding:0 8px;color:var(--fg)}
   <fieldset class="now"><legend>now · claude <span id="nowmix" class="mix"></span> <span id="nowage" class="c-dim"></span></legend><div id="now"></div></fieldset>
   <div class="grid">
    <aside class="adv" id="adv"></aside>
-   <div class="center">
+   <div class="center"><svg class="beams" id="beams" aria-hidden="true"></svg>
     <div class="lead" id="lead"></div>
     <div class="vline"></div>
     <div class="route" id="route"></div>
@@ -365,7 +385,7 @@ function setHTML(el,html){if(el._h!==html){el._h=html;el.innerHTML=html}}
 var CARDS={};
 function makeCard(key){
   var e=document.createElement('div');e.dataset.id=key;
-  e.innerHTML='<span class="spot"></span><div class="hd"><span class="stt"></span><span class="tg"></span><span class="r"></span></div>'+
+  e.innerHTML='<span class="bbeam"></span><span class="cover"></span><span class="spot"></span><div class="hd"><span class="stt"></span><span class="tg"></span><span class="r"></span></div>'+
     '<div class="ttl"><span class="tx"></span><small></small></div><div class="mdl"><b></b><span class="role"></span></div>'+
     '<div class="spark">'+new Array(31).join('<i class="z"></i>')+'</div><div class="sx"><span>30m</span><span>今</span></div>'+
     '<div class="you"></div><div class="now"></div><div class="chips"></div>'+
@@ -416,6 +436,26 @@ function renderNow(M,now){
   if(cur.length!==order.length||cur.some(function(x,i){return x!==order[i]}))order.forEach(function(x){grid.appendChild(x)});
   var more=box.querySelector('.more2');if(ss.length>12){if(!more){more=document.createElement('div');more.className='more2 c-dim';more.style.marginTop='6px';box.appendChild(more)}more.textContent='+'+(ss.length-12)+' 会話（休み）'}else if(more)more.remove();
 }
+// ---- Animated Beam（Magic UI〔magicui.design・MIT〕の考え方）：delegate の下から、動いている係の箱の上へ ----
+var COLORS={lead:'#ff9a3c',haiku:'#5ea3ff',sonnet:'#e6c14a',opus:'#a98bff',harness:'#3fd17c',other:'#6c7480',red:'#ff5c57'};
+function beams(){
+  var svg=$('beams');if(!svg||innerWidth<761)return;
+  var c=svg.parentNode, cr=c.getBoundingClientRect(), dl=c.querySelector('.deleg').getBoundingClientRect();
+  svg.setAttribute('width',cr.width);svg.setAttribute('height',cr.height);svg.setAttribute('viewBox','0 0 '+cr.width+' '+cr.height);
+  var sx=dl.left+dl.width/2-cr.left, sy=dl.bottom-cr.top, keep={};
+  Array.prototype.forEach.call(document.querySelectorAll('#agents .ag[data-s="running"],#agents .ag[data-s="stuck"]'),function(a,i){
+    var r=a.getBoundingClientRect(), ex=r.left+r.width/2-cr.left, ey=r.top-cr.top, k=a.dataset.k;keep[k]=1;
+    var d='M'+sx.toFixed(1)+','+sy.toFixed(1)+' C'+sx.toFixed(1)+','+(sy+(ey-sy)*.75).toFixed(1)+' '+ex.toFixed(1)+','+(sy+(ey-sy)*.25).toFixed(1)+' '+ex.toFixed(1)+','+ey.toFixed(1);
+    var g=svg.querySelector('g[data-k="'+CSS.escape(k)+'"]');
+    if(!g){g=document.createElementNS('http://www.w3.org/2000/svg','g');g.dataset.k=k;
+      g.innerHTML='<path class="base"/><path class="glow" pathLength="600"/>';svg.appendChild(g);g.lastChild.style.animationDelay=(-(i*0.37)%2.6).toFixed(2)+'s'}
+    var stuck=a.dataset.s==='stuck', f=(a.className.match(/b-(\w+)/)||[])[1]||'other';
+    g.firstChild.setAttribute('d',d);g.lastChild.setAttribute('d',d);g.lastChild.setAttribute('stroke',stuck?COLORS.red:(COLORS[f]||COLORS.other));
+    g.lastChild.classList.toggle('stuck',stuck);
+  });
+  Array.prototype.forEach.call(svg.querySelectorAll('g'),function(g){if(!keep[g.dataset.k])g.remove()});
+}
+(function(){var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){requestAnimationFrame(beams)},150)})})();
 // ---- ClickSpark：押した所に火花 ----
 (function(){var cv=$('sparkfx'),ctx=cv.getContext('2d'),bursts=[],raf=0;if(RM)return;
   function size(){var r=Math.min(2,window.devicePixelRatio||1);cv.width=innerWidth*r;cv.height=innerHeight*r;ctx.setTransform(r,0,0,r,0,0)}
@@ -481,7 +521,7 @@ function render(d){
   var maxT=1;shown.forEach(function(a){if(a.tools)maxT=Math.max(maxT,a.tools)});
   if(!shown.length)box.innerHTML='<div class="ag" style="grid-column:1/-1"><span class="c-dim">いま動いている係はいません</span></div>';
   shown.slice(0,16).forEach(function(a){
-    var f=famc(a.fam), e=document.createElement('div');e.className='ag b-'+f+(a.status==='stuck'?' stuck':'');
+    var f=famc(a.fam), e=document.createElement('div');e.className='ag b-'+f+(a.status==='stuck'?' stuck':'');e.dataset.k=a.tag+'|'+a.label;e.dataset.s=a.status;
     var st=a.status==='running'?'<span class="c-'+f+'">● running</span>':a.status==='stuck'?'<span class="c-red">■ stuck · '+dur(a.quiet)+' 動きなし</span>':a.status==='failed'?'<span class="c-red">✗ failed</span>':'<span class="c-harness">✓ done'+(a.pr?' · PR #'+esc(a.pr):a.errors?' · 問題あり':'')+'</span>';
     var open=/^session_\w+$/.test(a.session||'')?' · <a class="open" href="https://claude.ai/code/'+encodeURIComponent(a.session)+'" target="_blank" rel="noopener">開く</a>':'';
     e.innerHTML='<div class="nm">'+esc(a.label)+'</div><div class="md c-'+f+'">'+esc(a.model||'—')+' <small>· '+esc(a.tag)+'</small></div>'+
@@ -490,6 +530,7 @@ function render(d){
     box.appendChild(e);
   });
   $('more').textContent=older>0?'+'+older+' 済み（2 時間より前）':'';
+  requestAnimationFrame(beams);
   // back to lead
   var bk=['<h4>back to lead — review + verify</h4>'];
   M.pending.slice(0,3).forEach(function(p){bk.push('<div><span class="'+(p.status==='failed'?'c-red':'c-harness')+'">'+(p.status==='failed'?'✗':'✓')+' '+esc(p.label)+'</span> '+esc(p.text)+'</div>')});
@@ -500,8 +541,16 @@ function render(d){
   if(bk.length===1)bk.push('<div class="c-dim">確認待ちはありません</div>');
   $('back').innerHTML=bk.join('');
   // session log
-  var lg=$('log');lg.innerHTML=M.events.length?'':'<div class="c-dim">まだ記録がありません</div>';
-  M.events.forEach(function(e){var f=famc(e.fam);lg.insertAdjacentHTML('beforeend','<div class="r"><span class="c-dim">'+hms(ts(e.t))+'</span><b class="c-'+f+'" title="'+esc(e.label)+'">'+esc(e.label)+'</b><span class="tx'+(e.err?' err':'')+'">'+esc(e.text)+'</span></div>')});
+  var lg=$('log'), have={}, rows=[], first=!lg._init;
+  Array.prototype.forEach.call(lg.children,function(r){if(r.dataset.k)have[r.dataset.k]=r});
+  M.events.forEach(function(e,i){var k=ts(e.t)+'|'+e.label+'|'+e.text, r=have[k];
+    if(!r){var f=famc(e.fam);r=document.createElement('div');r.className='r in';r.dataset.k=k;if(first)r.style.animationDelay=(i*45)+'ms';
+      r.innerHTML='<span class="c-dim">'+hms(ts(e.t))+'</span><b class="c-'+f+'" title="'+esc(e.label)+'">'+esc(e.label)+'</b><span class="tx'+(e.err?' err':'')+'">'+esc(e.text)+'</span>';
+      r.addEventListener('animationend',function(){r.classList.remove('in');r.style.animationDelay=''},{once:true})}
+    rows.push(r)});
+  if(!rows.length){var em=document.createElement('div');em.className='c-dim';em.textContent='まだ記録がありません';rows.push(em)}
+  var same=lg.children.length===rows.length&&rows.every(function(r,i){return lg.children[i]===r});
+  if(!same)lg.replaceChildren.apply(lg,rows);lg._init=true;
   // site
   var s=M.site||{}, kp=s.kpi, html=[];
   html.push('<div><span class="k">kpi</span> '+(kp&&kp.routes?kp.routes.map(function(r){return esc(r.route)+' <span class="'+(r.ok===r.total?'c-harness':'c-lead')+'">'+r.ok+'/'+r.total+'</span>'+(r.bad&&r.bad.length?' <span class="c-lead">'+esc(r.bad.join(' '))+'</span>':'')}).join(' · ')+(kp.at?' · '+ago(now-ts(kp.at)):''):'<span class="c-dim">–</span>')+'</div>');

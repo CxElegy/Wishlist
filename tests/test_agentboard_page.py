@@ -209,6 +209,12 @@ class Browser(unittest.TestCase):
         self.assertEqual(card.locator(".shine").count(), 1)
         self.assertNotEqual(card.locator(".spark i").first.evaluate("e=>getComputedStyle(e).transform"), "")
         self.assertTrue(p.is_visible("#bgfx"))
+        # Magic UI：Animated Beam（動いている係・止まりの係へ線＝見本は 4 本）・Border Beam（選んでほしい札）・Animated List（記録の行）
+        self.assertEqual(p.locator("#beams g").count(), 4)
+        self.assertEqual(p.locator("#beams .glow.stuck").count(), 1)
+        self.assertEqual(p.locator(".card.st-ask .bbeam").evaluate("e=>getComputedStyle(e).animationName"), "bspin")
+        self.assertEqual(p.locator(".card.st-working .bbeam").first.evaluate("e=>getComputedStyle(e).display"), "none")
+        self.assertGreaterEqual(p.locator("#log .r").count(), 10)
         # 5 秒ごとに読み直しても札は作り直さない（動きが始めからにならない）
         h = card.element_handle()
         p.evaluate("()=>{}")
