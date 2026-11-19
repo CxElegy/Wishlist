@@ -299,12 +299,45 @@ def page_counts(pg):
     return out
 
 
-def new_user_counts(url, browser_, views=NEW_USER_VIEWS):
-    """1 つのページを 8 幅で開いて page_counts。{'390x844': {...}, …}。browser_ は harness/browser.launch の返すもの。"""
+_FAKE = {}
+
+
+def _fake_png(url):
+    """作り物の写真：16:10（render._pic の img は width/height 属性を持たないので決まりの 16:10）・色は網址から（同じ網址 → 同じ絵）。"""
+    import hashlib
+    import io
+    from PIL import Image, ImageDraw
+    k = hashlib.md5(url.encode("utf-8")).digest()
+    if k not in _FAKE:
+        im = Image.new("RGB", (320, 200), (k[0], k[1], k[2]))
+        ImageDraw.Draw(im).ellipse([120, 40, 200, 120], fill=(k[3], k[4], k[5]))   # 単色の帯に見えないよう真ん中に丸
+        buf = io.BytesIO()
+        im.save(buf, "PNG")
+        _FAKE[k] = buf.getvalue()
+    return _FAKE[k]
+
+
+def fake_images(ctx):
+    """写真の読み込みを全部、作り物の写真で返す（2026-11-19 主の指摘 5：網の都合で写真が読めず数が回ごとに揺れ、店長のページの前／後を比べられなかった）。
+    同じ網址は同じ絵・大きさは一定なので、同じページは何度数えても同じ数になる。ページ（HTML・CSS・JS）はそのまま"""
+    def h(route):
+        if route.request.resource_type == "image":
+            return route.fulfill(status=200, content_type="image/png", body=_fake_png(route.request.url))
+        if route.request.url.startswith(("http://127.0.0.1", "http://localhost")):
+            return route.continue_()
+        return route.abort()   # 外（字体・supabase など）は読まない：揺れの元を断つ
+    ctx.route("**/*", h)
+
+
+def new_user_counts(url, browser_, views=NEW_USER_VIEWS, fake=False):
+    """1 つのページを 8 幅で開いて page_counts。{'390x844': {...}, …}。browser_ は harness/browser.launch の返すもの。
+    fake=True：写真を作り物にして揺れなく数える（店長のページの前／後の比べ・tests/test_new_user_page.py の上限）。"""
     import self_review
     res = {}
     for w, h in views:
         ctx = browser_.new_context(viewport={"width": w, "height": h}, locale="ja-JP", has_touch=w <= 760, is_mobile=w <= 760, reduced_motion="reduce")   # 演出（Blur Text）の途中を数えない：描き終わった形を数える
+        if fake:
+            fake_images(ctx)
         pg = ctx.new_page()
         pg.goto(url, wait_until="load", timeout=60000)
         self_review.load_all(pg)
@@ -313,7 +346,33 @@ def new_user_counts(url, browser_, views=NEW_USER_VIEWS):
     return res
 
 
+def stable_main(argv):
+    """python harness/aesthetic_count.py --stable DIR PAGE [OUT.json]：写真を作り物にして 8 幅で数える（店長のページの前／後を同じ条件で）。"""
+    import json as _j
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    import browser
+    import self_review
+    from playwright.sync_api import sync_playwright
+    port = self_review.serve(argv[0])
+    with sync_playwright() as p:
+        b = browser.launch(p)
+        r = new_user_counts(f"http://127.0.0.1:{port}/{argv[1]}", b, fake=True)
+        b.close()
+    tot = {}
+    for v, c in r.items():
+        for k, n in c.items():
+            if not k.startswith("_") and n:
+                tot[k] = tot.get(k, 0) + n
+    out = {"total": tot, "views": {v: {k: n for k, n in c.items() if not k.startswith("_") and n} for v, c in r.items()}}
+    print(_j.dumps(out, ensure_ascii=False))
+    if len(argv) > 2:
+        pathlib.Path(argv[2]).write_text(_j.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    return out
+
+
 def main(argv=None):
+    if (argv or sys.argv[1:])[:1] == ["--stable"]:
+        return stable_main((argv or sys.argv[1:])[1:])
     a = argparse.ArgumentParser()
     a.add_argument("--dir", default="docs")
     a.add_argument("--page", action="append", default=[])
