@@ -703,11 +703,11 @@ def html_weight_bad(html):
     imgs = len(re.findall(r"<img\b", html))
     if imgs > IMG_MAX:
         bad.append(f"<img> {imgs} 枚（上限 {IMG_MAX}）")
-    mains = re.findall(r'<img src="([^"]*)"[^>]*?data-e="s">', html)
+    mains = re.findall(r'<img src="([^"]*)"[^>]*?data-e="s"[^>]*>', html)   # data-e のあとに data-o（2026-11-19）
     kept = sum(is_stored(s) for s in mains)
     if kept and kept * 2 < len(mains):   # 一時保管が動いているのに半分も使われていない（photo_store の取りこぼし・render の外れ）
         bad.append(f"主写真 {len(mains)} 枚のうち写真の一時保管から出たのは {kept} 枚（半分未満）")
-    st = re.findall(r'<img src="[^"]*(?:/storage/v1/object/public/photos/|/Wishlist/p/)[^"]*"([^>]*?)data-e="s">', html)
+    st = re.findall(r'<img src="[^"]*(?:/storage/v1/object/public/photos/|/Wishlist/p/)[^"]*"([^>]*?)data-e="s"[^>]*>', html)
     nosrc = sum("srcset=" not in x for x in st)
     if nosrc:   # 一時保管の幅 400 を置いても srcset で渡さなければ使われない（2026-10-31）
         bad.append(f"一時保管の主写真 {len(st)} 枚のうち srcset がないのが {nosrc} 枚")

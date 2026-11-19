@@ -6777,7 +6777,7 @@ EAGER_N = 3
 def _eager_first(html_, n=EAGER_N):
     """最初の n 枚の記事の写真（主图）だけ lazy を外して先に取る。実行時の JS では先読み（preload scanner）に間に合わない
     ので HTML に直接書く（2026-10-30 最初のニュースを速く）。bg（ぼかし）は lazy のまま。"""
-    pat = r'(<img src="[^"]*"[^>]*?) loading="lazy"([^>]*data-e="s">)'
+    pat = r'(<img src="[^"]*"[^>]*?) loading="lazy"([^>]*data-e="s"[^>]*>)'   # data-e のあとに data-o（2026-11-19）
     first = re.search(pat, html_)
     out = re.sub(pat, r'\1 loading="eager" fetchpriority="high"\2', html_, count=n)
     if first and "<head>" in out:   # 最初の主写真は <head> の先頭で preload（本文の読み取りを待たず、通信を HTML と並べる。2026-10-31 写真 0.5 秒）
