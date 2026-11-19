@@ -938,6 +938,27 @@ def _img_url(u, local=True):
     return u
 
 
+_MARKS = []  # [本站文件（pics/…）→ {m, c, k, p}]：hdimg.fill_marks がそのファイルで測った主役の位置・平均の色・字と人の範囲。最初に使うときに読む
+
+
+def _marks(src, first):
+    """写真の切る位置の材料 → (data-m の文字列, 平均の色, 足す属性)。一時保管（photo_store）の記録は元の網址の指紋で持つので、本站保存の写真（src が pics/…）は
+    hdimg がそのファイルで測った物（主役・色・字の範囲 data-k・人の範囲 data-p）→ 無ければ元の網址（first を local=False で）の記録で引く
+    （2026-11-19：pics/ の 116 枚に data-m が 0 だった。m だけだと cropAt が題字を切ることがあるので、字と人の範囲も一緒に渡す）。"""
+    if not src.startswith("pics/"):
+        return photo_store.mass_css(src), photo_store.tint_css(src), ""
+    if not _MARKS:
+        import hdimg
+        _MARKS.append(hdimg.local_marks())
+    r = _MARKS[0].get(src) or {}
+    orig = _img_url(first, local=False)
+    if orig.startswith("pics/"):   # 記事の写真がもう本站の網址：対応表から元の網址へ
+        orig = next((u for u, v in (_LOCAL[0] if _LOCAL else {}).items() if v == orig), orig)
+    m = ";".join(",".join(map(str, a)) for a in r["m"]) if r.get("m") else photo_store.mass_css(orig)
+    kp = "".join(f' data-{a}="{",".join(map(str, r[a]))}"' for a in ("k", "p") if r.get(a))
+    return m or None, r.get("c") or photo_store.tint_css(orig), kp
+
+
 _STORAGE_RE = re.compile(r"https://[^/]+\.supabase\.co/storage/v1/(?:object|render/image)/public/")
 
 
@@ -963,8 +984,8 @@ def _pic(story):
     src = exp[0] if exp else None
     # 一時保管の写真は幅 400／800 を srcset で渡す（小さい画面・小さい枠は 400）。背景のぼかしは 400 で足りる
     srcset = f' srcset="{e(small)} 400w, {e(big)} 800w" sizes="(max-width:700px) 100vw, 33vw"' if small else ""
-    ms = photo_store.mass_css(chain[0]) if chain else None   # 切る位置の材料（顔・題字の分布）
-    dm = f' data-m="{ms}"' if ms else ""
+    ms, col, kp = _marks(chain[0], next(u for u in [img, *fbs] if u)) if chain else (None, None, "")   # 切る位置の材料（顔・題字の分布）と色だけの下絵（写真が届く前から枠に色が出る）
+    dm = (f' data-m="{ms}"' if ms else "") + kp
     # data-o：1＝記事自身の写真が src、0＝最初から備えの絵（作品の表紙）。点検が「本物の写真が届いたか」を見分ける印（2026-11-19）
     own = "1" if story.get("image") and story.get("image_via") != "作品封面" else "0"   # _borrowed は「版面の表紙と同じ網址」も含む（お客さまの表紙は頭の記事の写真から作る）ので、集めた時の印 image_via で見る
     tag = (f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer"{dm} data-e="s" data-o="{own}">') if src else ""
@@ -977,7 +998,6 @@ def _pic(story):
                 f'alt="" loading="lazy" referrerpolicy="no-referrer" data-e="i" data-l="i">'
                 f'<span class="src">{e(_source_name(story))}</span>')
     cls = "" if src else " icon" if icons else " none"
-    col = photo_store.tint_css(chain[0]) if chain else None   # 色だけの下絵（写真が届く前から枠に色が出る）
     sty = f' style="background:{col}"' if col and re.fullmatch(r"#[0-9a-f]{6}", col) else ""
     return f'<div class="pic{cls}"{sty}>{label}{tag}{icon}</div>'
 
