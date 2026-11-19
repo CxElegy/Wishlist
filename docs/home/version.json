@@ -1,32 +1,32 @@
 {
- "admin": "68c043e6e6c3",
- "admin-ai": "47d91c6dfbc0",
+ "admin": "739f56c5c4f5",
+ "admin-ai": "c192d34c7be2",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "19d85df8"
+   "7a9ff23f"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c4396a31"
+   "85403629"
   ]
  },
- "admin-boards": "792cc6decac4",
+ "admin-boards": "36551326b706",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "2e42ca21"
+   "795219de"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "4e28a8ac8207",
+ "admin-emblem": "c83cac535035",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b3c417ae"
+   "68019498"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e86fbe3fb12f",
  "admin-members_marks": {},
- "admin-now": "87310c92efd6",
+ "admin-now": "e8b9eca7653c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d2995101"
+   "bffd0f71"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "45c58b5d"
+   "02e0074b"
   ],
   "term-panel": [
    "ライブログ",
-   "1a198bde"
+   "572675c5"
   ]
  },
- "admin-system": "5a009a4cdcb1",
+ "admin-system": "7f80a2d95166",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a7277c40"
+   "ea6ce614"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "715c00c3"
+   "756b9a9a"
   ]
  },
  "admin_marks": {},
- "heat": "8caa7b794698",
+ "heat": "6d9b9b575ceb",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "5aaee8f0"
+   "4a9438e9"
   ],
   "ranking": [
    "ランキング",
-   "0797b464"
+   "f6114297"
   ]
  },
- "index": "6a79a282f5e6",
+ "index": "a47e299a7662",
  "index_marks": {
   "front": [
    "トップ",
-   "62f2e764"
+   "635b5150"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "5d14bd2c"
+   "c8c4c9bc"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,11 +145,11 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "082357f4"
+   "8c7c49f3"
   ],
   "w-9cb26dba": [
    "FROM",
-   "079849b8"
+   "1fb30360"
   ],
   "w-b867582f": [
    "あつ森",
@@ -196,6 +196,6 @@
    "64154a8c"
   ]
  },
- "updated": "11.20 08:27",
+ "updated": "11.20 08:34",
  "wishlist": "d1479eee2be4"
 }

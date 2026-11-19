@@ -2265,12 +2265,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hMGfC.img": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hMI0S.img": {
   "w": 1200,
   "h": 675,
@@ -3369,6 +3363,12 @@
  "https://mtnweekly.com/wp-content/uploads/2026/11/Rossignol-Juggernaut-Snowboard-3.jpg": {
   "w": 1090,
   "h": 1200,
+  "target": 1280,
+  "v": 3
+ },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/11/17/179489203108498782_664_2000.JPEG": {
+  "w": 664,
+  "h": 885,
   "target": 1280,
   "v": 3
  },
@@ -5852,12 +5852,6 @@
   "target": 1280,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/38757/32/38757-32-f364540e2133fbf20c201aaab5c63d3f-1794x1274.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 1774,
-  "h": 1260,
-  "target": 720,
-  "v": 3
- },
  "https://prcdn.freetls.fastly.net/release_image/45524/162/45524-162-bc88fc61e35f1f558e83024870283cef-1920x1280.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1890,
   "h": 1260,
@@ -6027,6 +6021,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.362
+ },
+ "https://q3.itc.cn/images01/20261119/e4a4cf6653c84b26aed575b158c65a2c.jpeg": {
+  "w": 664,
+  "h": 846,
+  "target": 1280,
+  "v": 3
  },
  "https://q3.itc.cn/q_70/images03/20261117/6bf8e3aabfb2422a881500331e0a13e4.jpeg": {
   "w": 1024,
@@ -6305,12 +6305,6 @@
   "target": 1280,
   "v": 3
  },
- "https://socialbeta.oss-cn-hangzhou.aliyuncs.com/upload/22771-20260924154059-4f2cc13f.jpg": {
-  "w": 1080,
-  "h": 1440,
-  "target": 1280,
-  "v": 3
- },
  "https://static-cdn.nextapple.tw/prod/2026-11/07DF7BDC4398893472D7589BF4DA8F77/7dee8c1f68be2d1f9b735d8a7ea603c8_1280.webp": {
   "w": 1170,
   "h": 2305,
@@ -6339,12 +6333,6 @@
   "w": 940,
   "h": 529,
   "target": 1280,
-  "v": 3
- },
- "https://static.hkcna.hk/dams-res/editing/image/202611/16/6afae1f3e4b06f03454bc03d.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
   "v": 3
  },
  "https://static.independent.co.uk/2026/11/15/15/06/hp.png?trim=0,211,0,210&width=1200&height=800&crop=1200:800": {
@@ -6590,13 +6578,6 @@
   "h": 856,
   "target": 1280,
   "v": 3
- },
- "https://today-obs.line-scdn.net/0hD5GjnxyQGxp6Ewdi9y5kTUJFF2tJdQETWCZRKFcUTXpeP1xOEndIeVoSTDZeI1REWnQBfVgTFnpVJ1pLRw/w1200": {
-  "w": 720,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.383
  },
  "https://today-obs.line-scdn.net/0hjiIQVYaPNUZ0KCnfGo5KEUx-OTdHTi9PVhp7IFl4aiRcBCJHGBpmJVgqPmoJTyVFVE15d1B4Y35dGXEZHw/w1200": {
   "w": 1200,
@@ -7359,6 +7340,12 @@
   ],
   "p": null
  },
+ "https://www.bing.com/th?id=ONUT.Q4vtI7pS1kRLhoMrxtn27g&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7493,12 +7480,6 @@
    0.518
   ]
  },
- "https://www.bing.com/th?id=ONUT.jM9YZVy03brliN5yr42pzw&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.jdYPkT2FLoh7VE9gZZXxgw&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -7550,12 +7531,6 @@
   ],
   "p": null
  },
- "https://www.bing.com/th?id=ONUT.nfz4D1TGnt9WnAMW0I3JWA&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.nn6MK0AG2-qOL_vC_Rkxow&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7606,6 +7581,12 @@
    0.972
   ],
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.o9Z82Tii5RBrb3tn6yJSmA&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.on6ce_RCbOHtwsZG7RnhRw&pid=News&w=700": {
   "w": 700,
@@ -8145,6 +8126,12 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Anthony-Mackie.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/avengers-doomsday-1.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
