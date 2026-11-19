@@ -169,11 +169,12 @@ def _story(row, weight):
 PICK_RETRY_S = 3 * 3600   # 記事の写真探しで見つからなかった記事は、この間をあけてふつうの作り直しが探し直す（userfeed の「3 時間あけて探し直す」と同じ）
 
 
-def find_images(stories, deadline, cache=None, new=True, now=None):
+def find_images(stories, deadline, cache=None, new=True, now=None, need=None):
     """写真のない記事に、店長と同じ規則（images.pick）で写真を探す。時間の上限を超えたらやめる。
     cache = {記事の網址: {"img": 写真の網址 か ""（見つからなかった）, "at": 探した時刻}}：前の回に探した結果（pages/_fp/all.json の _up_pick）。
     見つかった写真はいつも使う。見つからなかった記事は、ふつうの回（new=True）は PICK_RETRY_S たったら探し直す（images.pick は断られても
-    20 秒で止まっても None を返すので、「無い」を永久に信じない）。new=False（--emblem-only）は前の結果だけ（網に出ない・無いものは無いまま）。"""
+    20 秒で止まっても None を返すので、「無い」を永久に信じない）。new=False（--emblem-only）は前の結果だけ（網に出ない・無いものは無いまま）。
+    need（list）：new=False で前の結果に無く探さなかった記事の網址を足す（呼び側がその人だけふつうに作り直す）。"""
     now = now or time.time()
     # 本物のブラウザ（images._browser_html）は開いた記事の網址を公開の Actions ログに書く。library_emblem.yml は小元素のために
     # SCRAPLING_BROWSER=1 を立てたまま user_pages を回すので、お客さまの記事ではここで切る（userfeed と同じ）
@@ -187,6 +188,8 @@ def find_images(stories, deadline, cache=None, new=True, now=None):
         if got and (got.get("img") or not new or now - float(got.get("at") or 0) < PICK_RETRY_S):
             img = got.get("img") or None   # 見つかった写真・見つからなかったばかりの記事（ふつうの回は間をあけてから探し直す）
         elif not new or time.time() > deadline:
+            if not new and need is not None and not got:
+                need.append(s.get("url"))
             continue
         else:
             e = sources.Entry(title=s["headline"], url=s["url"], published=None, source=s.get("source", ""))
@@ -223,7 +226,7 @@ def held(it, row, now=None):
     return n < MIN_NEW_STORIES
 
 
-def user_issue(items, shop_issue, rows, deadline, themes, picks=None, new=True):
+def user_issue(items, shop_issue, rows, deadline, themes, picks=None, new=True, need=None):
     """本人の 1 号分（render が読む形）。店長と同じ版面は店長の最新号の版面をそのまま、ほかは本人の記事から。"""
     shop_blocks = {b["name"]: b for b in (shop_issue or {}).get("items", [])}
     blocks = []
@@ -243,7 +246,7 @@ def user_issue(items, shop_issue, rows, deadline, themes, picks=None, new=True):
             st = [{k: v for k, v in s.items() if not k.startswith("_") and k != "refs"} for s in (row.get("stories") or [])[:cap]]
         else:
             st = [_story(r, "hero" if i == 0 else "normal") for i, r in enumerate((row.get("stories") or [])[:cap])]
-        st = find_images(st, deadline, picks, new)
+        st = find_images(st, deadline, picks, new, need=need)
         cover = next((s["image"] for s in st if s.get("image")), None)
         blocks.append({"name": it["name"], "section": it.get("section"), "subtitle": "", "stories": st, "facts": [],
                        "pending": row.get("pending") or [], "cover": cover, "theme": theme.resolve(it, cover, themes),
@@ -351,12 +354,12 @@ IMGS_PATH = "/storage/v1/object/pages/_fp/imgs.json"   # 写真の網址の一�
 
 
 def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None, heat_in=None, votes=None,
-          shop_prev=(), pub=None, wishes=(), picks=None, new=True, resolve=None):
+          shop_prev=(), pub=None, wishes=(), picks=None, new=True, resolve=None, need=None):
     """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）、chosen = 本人の nav_schemes {板块: id}。
     pages（dict）を渡すと、設定ページ（settings.html）もそこに入れる。picks・new は find_images の前の結果と「新しく探すか」、
     resolve は「気になるかも？」の Google の跳转を戻す関数（Memo。無ければ digest の既定）。"""
     items = user_items(own_picks(follows, (prefs or {}).get("picks"), (prefs or {}).get("sizes")), shop_items)
-    issue = user_issue(items, shop_issue, rows, deadline, themes, picks, new)
+    issue = user_issue(items, shop_issue, rows, deadline, themes, picks, new, need)
     issues = [issue] + [p for p in (prev_issue(items, s) for s in shop_prev or ()) if p]   # 新しい順（店長のページと同じ並べ方）
     schemes = own_schemes(chosen)
     subs = {i["name"]: own_sub(i, schemes) for i in items}
@@ -452,11 +455,19 @@ def pick_users(users, argv, get):
     return users, False
 
 
+def _stamp(c):
+    return json.dumps((c or {}).get("emblem_state"), sort_keys=True, default=str)
+
+
+def emblem_stamps(follows):
+    """follows の版面ごとの小元素の状態の印 {版面 id（字）: emblem_state}。置いたページの指紋と一緒に pages/_fp/all.json の <account>/_emb に残す。"""
+    return {str((f.get("boards") or {}).get("id")): _stamp((f.get("boards") or {}).get("config")) for f in follows or [] if (f.get("boards") or {}).get("id")}
+
+
 def design_moved(follows, get):
     """作り始めに読んだ follows の版面の小元素の状態（config.emblem_state：枚数 have・時刻 at）が、いまの DB と違うか。読めなければ False（そのまま置く）。
     小元素を書く回は必ず emblem_state も書く（library_emblem.fill_board）ので、これだけを読む（emblem の中身は読まない：読む量を増やさない）。"""
-    def stamp(c):
-        return json.dumps((c or {}).get("emblem_state"), sort_keys=True, default=str)
+    stamp = _stamp
     old = {(f.get("boards") or {}).get("id"): stamp((f.get("boards") or {}).get("config")) for f in follows or [] if (f.get("boards") or {}).get("id")}
     if not old:
         return False
@@ -482,7 +493,7 @@ class Memo:
 
     def __init__(self, old, ask, new=True, keep=lambda u, v: True, miss=lambda u: u, fails_max=None, reuse=True):
         self.old, self.ask, self.new, self.keep, self.miss, self.fails_max = dict(old or {}), ask, new, keep, miss, fails_max
-        self.used, self.fails, self.reuse = {}, 0, reuse
+        self.used, self.fails, self.reuse, self.missed = {}, 0, reuse, 0   # missed：new=False で前の答えが無く聞かなかった数
 
     def __call__(self, u):
         if u in self.used:
@@ -490,7 +501,10 @@ class Memo:
         if self.reuse and u in self.old:
             self.used[u] = self.old[u]
             return self.old[u]
-        if not self.new or (self.fails_max is not None and self.fails >= self.fails_max):
+        if not self.new:
+            self.missed += 1
+            return self.miss(u)
+        if self.fails_max is not None and self.fails >= self.fails_max:
             return self.miss(u)
         v = self.ask(u)
         if self.keep(u, v):
@@ -609,31 +623,52 @@ def main(argv):
             pages = {}
             wishes = _supa(f"/rest/v1/wishes?account=eq.{acct}&select=id,name,status,price,currency,url,shop,note,specs,image,photo,added&order=id.desc") or []
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
-            brows = board_rows(follows, latest, {norm(r["item"]): r for r in rows or []})
+            own = {norm(r["item"]): r for r in rows or []}
             t1 = _lap(lap, "読む", t0)
-            og_image.fill(brows, og, limit=ONLY_NEW_OG if only else None)   # 写真のない記事に記事のページの代表の写真を付ける（2026-11-08 店長「我一定要图」）。--emblem-only は前の結果＋無い分を 1 束だけ
-            og_image.demote(brows)   # それでも写真の無い記事はカードにせず「整理待ち」へ（カードには必ず写真）
-            photo_tally(brows, photos)
-            t1 = _lap(lap, "記事の代表の写真", t1)
-            html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
-                          settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes, picks, not only, res)
-            if design_moved(follows, _supa):   # 作っている間に小元素の回（board_added.yml の速い道）が config を書いた：今の config で作り直す（古い config で上書きして小元素を消さない）
+            # 小元素だけの回（--emblem-only）で前の結果が足りない人（一度もページを作っていない・前の回のあとに写真の無い新しい記事が 1 束より多い）は、
+            # 前のページより写真の少ないページを置かない：この人だけふつうの作り直し（5 分は割れても、ページを悪くしない方が先。秒はログに）
+            full = not only or not fps.get(f"{acct}/index.html") or \
+                len(og_image.missing(board_rows(follows, latest, own), og)) > ONLY_NEW_OG
+            why = "" if not only or not full else "前の結果が足りない"
+
+            def make(follows, full):
+                """この人の 1 枚（と設定・欲しい物・話題度）を組んで測る。→ (html, pages, 前の結果に無く探さなかった数)"""
+                brows = board_rows(follows, latest, own)
+                og_image.fill(brows, og, limit=None if full else ONLY_NEW_OG)   # 写真のない記事に記事のページの代表の写真を付ける（2026-11-08 店長「我一定要图」）
+                og_image.demote(brows)   # それでも写真の無い記事はカードにせず「整理待ち」へ（カードには必ず写真）
+                need = []
+                res_memo.new, res_memo.missed = full, 0
+                pg = {}
+                h = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
+                          settings, deadline, themes, follows, chosen, pg, heat_in, votes, prev, pub, wishes, picks, full, res, need)
+                # 写真に焼き込まれた余白を測って data-t に書く（ブラウザは別のサイトの写真を読めないので、ここで測る。2026-11-08）。
+                # 小元素だけの回は前の結果＋無い分を 1 束だけ。1 束より多ければ全部測る（前のページより悪くしない）
+                urls = [x for t in [h, *pg.values()] for x in photo_bands.urls_in(t)]
+                lack = sum(1 for x in dict.fromkeys(urls) if not isinstance(bands.get(x), dict))
+                photo_bands.measure(urls, bands, photo_store.fetch, limit=ONLY_NEW_PHOTOS if not full and lack <= ONLY_NEW_PHOTOS else None)
+                return photo_bands.inject(h, bands), {k: photo_bands.inject(v, bands) for k, v in pg.items()}, brows, len(need) + res_memo.missed
+            html_, pages, brows, miss = make(follows, full)
+            if not full and miss:   # 前の回に無い記事の写真探し・跳转の戻しがある：この人だけふつうに作り直す
+                full, why = True, "前の結果が足りない"
+                html_, pages, brows, _ = make(follows, True)
+            t1 = _lap(lap, "組む・測る", t1)
+            # 置く直前に、作っている間に小元素の回（board_added.yml の速い道）が config を書いていないか見る（2026-11-19 見直し：組んだ直後に見ると、
+            # 写真の測りの間に書かれた小元素が抜けたページを置いていた）。書かれていれば今の config で作り直す（測りは前の結果で済む）
+            if design_moved(follows, _supa):
                 follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(id,name,config)&order=pos")
-                pages = {}
-                html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
-                              settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes, picks, not only, res)
-            t1 = _lap(lap, "組む", t1)
-            # 写真に焼き込まれた余白を測って data-t に書く（ブラウザは別のサイトの写真を読めないので、ここで測る。2026-11-08）。--emblem-only は前の結果＋無い分を 1 束だけ
-            photo_bands.measure([u for t in [html_, *pages.values()] for u in photo_bands.urls_in(t)], bands, photo_store.fetch,
-                                limit=ONLY_NEW_PHOTOS if only else None)
-            t1 = _lap(lap, "写真の測り", t1)
-            html_ = photo_bands.inject(html_, bands)
-            pages.update({k: photo_bands.inject(v, bands) for k, v in pages.items()})
+                html_, pages, brows, _ = make(follows, full)
+                t1 = _lap(lap, "小元素が書かれたので組み直し", t1)
+            photo_tally(brows, photos)
+            stamps = emblem_stamps(follows)   # このページに入った小元素の状態（版面ごと）。小元素だけの回が「先に置かれたページに入っているか」を見る
             photo_store.scan_text([html_, *pages.values()], set(), imgs)
-            if only and newer_page(fps, fp_path, acct):   # 作っている間にほかの回がこの人のページを置いた：そちらが新しい（小元素も入っている）
-                kept += 1
-                print(f"お客さまのページ：1 人分はほかの回が先に置いた（置かない）・{'・'.join(lap)}", flush=True)
-                continue
+            if only:
+                cur = _fresh_fps(fp_path)
+                if cur is not None and cur.get(f"{acct}/index.html") != fps.get(f"{acct}/index.html") and cur.get(f"{acct}/_emb") == stamps:
+                    kept += 1   # 作っている間にほかの回がこの人のページを置き、そのページに同じ小元素が入っている：そちらが新しい
+                    print(f"お客さまのページ：1 人分はほかの回が先に置いた（小元素も入っている・置かない）・{'・'.join(lap)}", flush=True)
+                    continue
+            if why:
+                print(f"お客さまのページ：1 人分は{why}のでふつうに作った", flush=True)
             for name, h in {"index.html": html_, **pages}.items():
                 fp = hashlib.sha1(h.encode("utf-8")).hexdigest()
                 if not force and fps.get(f"{acct}/{name}") == fp:   # 変わっていないページは落とし直さない（無料枠・置き場の写しも守る）
@@ -641,6 +676,7 @@ def main(argv):
                     continue
                 _supa(f"/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}", h.encode("utf-8"), "POST", "text/html; charset=utf-8")
                 new_fps[f"{acct}/{name}"] = fp
+            new_fps[f"{acct}/_emb"] = stamps
             made += 1
             _lap(lap, "置く", t1)
             if partial:
