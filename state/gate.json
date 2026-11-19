@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-19T06:38:56+00:00",
+ "checked": "2026-11-19T08:19:25+00:00",
  "fired": {
-  "at": "2026-11-19T06:40:10+00:00",
+  "at": "2026-11-19T07:43:04+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -46,37 +46,37 @@
    "edit": 14
   },
   "2026-11-19": {
-   "edit": 9
+   "edit": 10
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-19T06:40:10+00:00",
+    "at": "2026-11-19T07:43:04+00:00",
     "attempts": 1,
     "day": "2026-11-19",
-    "prog": 338,
-    "resp": "cse_01W4x6f7198nPvkZYSKWbX4D",
-    "sig": "3de447c8b31f"
+    "prog": 359,
+    "resp": "cse_01W4x6f8AaBXgQGm6JRwR44y",
+    "sig": "50ab0142f8fa"
    },
    "items": [
     "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "gelato pique",
-    "lib:ちいかわ",
-    "lib:ブラッククローバー 第2期",
-    "lib:ブルーアーカイブ",
-    "lib:ミャクミャク",
-    "lib:星野源",
-    "lib:生徒会にも穴はある！",
-    "lib:薬屋のひとりごと 第3期",
+    "lib:King Gnu",
+    "lib:ガンプラ",
+    "lib:キャンプ",
+    "lib:コーヒー",
+    "lib:ゼルダの伝説",
+    "lib:ポケットモンスター",
+    "lib:ラーメン",
     "lib:観葉植物",
+    "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
@@ -85,50 +85,54 @@
     "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-19T05:48:06+00:00",
+   "last_batch": "2026-11-19T06:49:03+00:00",
    "last_error": {
     "at": "2026-11-18T23:39:22+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 338,
+   "prog": 359,
    "prog_day": "2026-11-19",
    "ripe": [
-    "lib:ブラッククローバー 第2期",
-    "lib:ミャクミャク",
-    "lib:星野源",
-    "lib:生徒会にも穴はある！",
-    "lib:薬屋のひとりごと 第3期"
+    "A2O LITE",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
+    "gelato pique",
+    "三星手机",
+    "周杰伦",
+    "星巴克马克杯",
+    "漫威电影"
    ],
-   "sig": "d7c5f29546ef",
+   "sig": "354b08157052",
    "token_cap": 1000000,
-   "tokens_today": 436028,
-   "why": "整理待ちの記事 103 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 483888,
+   "why": "整理待ちの記事 139 件（23 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "A2O LITE",
     "Astrae Oratio",
-    "绝区零",
-    "The Mandalorian",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "0c905e3db131",
-   "waiting": [
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
-    "ぐでたま"
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 5 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -245,12 +249,12 @@
    "runs": 14
   },
   "2026-11-19": {
-   "batches": 19,
-   "cr": 9008689,
-   "cw": 394146,
-   "in": 244,
-   "out": 41638,
-   "runs": 7
+   "batches": 20,
+   "cr": 9434240,
+   "cw": 440121,
+   "in": 258,
+   "out": 43509,
+   "runs": 8
   }
  }
 }
