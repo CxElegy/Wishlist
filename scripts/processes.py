@@ -479,7 +479,7 @@ PROCESSES = [
     {
         "id": "colors", "name": "トップの配色", "en": "COLORS", "lane": "actions", "when": "ページ生成のたび",
         "trigger": "ページを作るとき。同じ画像の色は state/themes.json に残して使い回す",
-        "summary": "その日の頭条の写真から、トップの地色と強調色を取る。字が必ず読めるように明るさを直す。お客さまのページも同じ殻の CSS（render.py）で、票のボタン・棚を隠さない。休止モードの部品（SB_DEG_TAG）は配色の枠に影響しない。【2026-11-17】票のボタン（VOTE_JS）は访客に押した形を出さない（配色には影響しない）。",
+        "summary": "【2026-11-19 お客さまの防盗链の写真】render._pic は置き場の網址そのもの（/p/<指紋>-800.webp）からも指紋を引く（photo_store.key_of：400 の srcset・平均の色・主役の分布）・先頭と同じ網址を落ち先に並べない。店長のページの出力は変わらない（時刻を除いて同じ）。その日の頭条の写真から、トップの地色と強調色を取る。字が必ず読めるように明るさを直す。お客さまのページも同じ殻の CSS（render.py）で、票のボタン・棚を隠さない。休止モードの部品（SB_DEG_TAG）は配色の枠に影響しない。【2026-11-17】票のボタン（VOTE_JS）は访客に押した形を出さない（配色には影響しない）。",
         "files": ["scripts/theme.py", "scripts/render.py", "state/themes.json"], "doc": "docs/rules/design.md", "uses": ["facefit", "octree"],
         "flow": [
             {"id": "t1", "kind": "step", "lane": "actions", "title": "頭条の写真", "text": "200×200 に縮める"},
@@ -632,7 +632,7 @@ PROCESSES = [
     {
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
-        "summary": "【2026-11-05】小元素が読めないとき（/p/ に無い・外が落ちた）は EMB_JS の WLembNext が同じ版面の次の候補へ替え、尽きたら枠を消して data-emb-gone を数える（pages_served が 0 を確かめる）。収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。全身の小元素の高さは「目から足」をそろえ、しゃがみの見積もりは 1.4 倍まで（体の大きいマスコットが 100px を割らない）。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。ログイン中の右上の役割の札（AUTH_JS）は店長だけ、一般のユーザーは名前だけ。お客さまのページも 👍👎・気になるかも？・これからの予定を店長と同じ部品で出す（票は VOTE_JS が meta wl-own のとき本人の account の関数へ）。Supabase を呼ぶ静的ページには render.with_sb_deg で休止の部品を入れる（入口・本人の殻・見本の審査）。【2026-11-17】记事の 👍👎（VOTE_JS）：押した形は令牌のある店長・本人にだけ塗る。访客は塗らず my_votes も読まない（役目が決まったら wl-role で塗り直す）。",
+        "summary": "【2026-11-19 お客さまの防盗链の写真】render._pic は置き場の網址そのもの（/p/<指紋>-800.webp）からも指紋を引く（photo_store.key_of：400 の srcset・平均の色・主役の分布）・先頭と同じ網址を落ち先に並べない。店長のページの出力は変わらない（時刻を除いて同じ）。【2026-11-05】小元素が読めないとき（/p/ に無い・外が落ちた）は EMB_JS の WLembNext が同じ版面の次の候補へ替え、尽きたら枠を消して data-emb-gone を数える（pages_served が 0 を確かめる）。収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。全身の小元素の高さは「目から足」をそろえ、しゃがみの見積もりは 1.4 倍まで（体の大きいマスコットが 100px を割らない）。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。ログイン中の右上の役割の札（AUTH_JS）は店長だけ、一般のユーザーは名前だけ。お客さまのページも 👍👎・気になるかも？・これからの予定を店長と同じ部品で出す（票は VOTE_JS が meta wl-own のとき本人の account の関数へ）。Supabase を呼ぶ静的ページには render.with_sb_deg で休止の部品を入れる（入口・本人の殻・見本の審査）。【2026-11-17】记事の 👍👎（VOTE_JS）：押した形は令牌のある店長・本人にだけ塗る。访客は塗らず my_votes も読まない（役目が決まったら wl-role で塗り直す）。",
         "files": [".github/workflows/render.yml", ".github/workflows/pages.yml", ".github/workflows/live_clear.yml", "scripts/render.py", "scripts/lang.py", "harness/d5_sample.py", "scripts/layout_sample.py", "scripts/layout_ba.py", "harness/layout_v2_check.py"], "doc": "docs/rules/design.md", "uses": ["pushmain", "facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
             {"id": "p4ulg", "kind": "step", "lane": "web", "title": "ログイン中の user_login は 1 時間に 1 回（同意済みの版も保存〔me.v〕。前は未保存で毎回呼んでいた）（render.AUTH_JS start）", "uses": ["supabase"], "text": "ページを開くたびに呼ぶと last_seen の書き込みと応答が積もる（egress）。規約に同意済み（me.v が TV 以上）で、前に確かめてから 1 時間以内（me.chk）なら呼ばない。同意前・ログイン直後は必ず呼ぶ。"},
