@@ -139,5 +139,35 @@ class AestheticCount(unittest.TestCase):
         self.assertEqual(none["stats"].get("strongUnmeasured"), 1)                  # 測れない（0 とは書かない）
 
 
+    def test_real_photo_arrived(self):
+        """写真が本当に届いたか（2026-11-19 店長）：404・0 バイトの写真は imgfail、写真の出ない頭条は noimg。届いた写真は数えない。"""
+        wc = lambda src: f'<article class="wc"><div class="pic"><img data-e="s" src="{src}" style="width:200px;height:120px"></div><b>見出し</b></article>'
+        top = lambda inner: f'<section id="front"><article class="top"><div class="frame">{inner}</div><h2>頭条</h2></article></section>'
+        ok = self.run_page(page(top(f'<div class="pic"><img data-e="s" src="{PX}" style="width:300px;height:200px"></div>') + '<div class="wall">' + wc(PX) + '</div>'))
+        self.assertEqual((ok["stats"]["imgfail"], ok["stats"]["noimg"], self.n(ok, "noimg")), (0, 0, 0))
+        bad = self.run_page(page(top(f'<div class="pic"><img data-e="s" src="{PX}" style="width:300px;height:200px"></div>') + '<div class="wall">'
+                                 + wc("http://127.0.0.1:9/404.jpg") + wc("data:image/png;base64,") + wc(PX) + '</div>'))
+        self.assertEqual(bad["stats"]["imgfail"], 2)                       # 開けない網址・0 バイト
+        gone = self.run_page(page(top("") + '<div class="wall"><article class="wc nophoto" data-imgfail="1"><b>見出し</b></article></div>'))
+        self.assertEqual(gone["stats"]["imgfail"], 1)                      # 落ち先まで開けず字だけにした印
+        self.assertEqual((gone["stats"]["nohead"], self.n(gone, "noimg")), (1, 1))   # 頭条に写真なし
+
+
+    def test_own_sub_swapped_pending(self):
+        """本物の写真か代わりの絵か（data-o・data-sw）・届かない写真（pending）を記事の数で（2026-11-19 PC の実測）。"""
+        import aesthetic_count as ac
+        wc = lambda attrs, src=PX: f'<article class="wc"><div class="pic"><img data-e="s" {attrs} src="{src}" style="width:200px;height:120px"></div><b>見出し</b></article>'
+        html = page('<div class="wall">' + wc('data-o="1"') + wc('data-o="1"') + wc('data-o="1" data-sw="1"') + wc('data-o="0"')
+                    + wc('data-o="1"', "http://127.0.0.1/slow.png") + '</div>')
+        pg = self.b.new_page(viewport={"width": 1400, "height": 900})
+        pg.route("**/slow.png", lambda route: None)   # 返事をしない写真＝読み込み待ちのまま
+        pg.set_content(html, wait_until="domcontentloaded")
+        pg.wait_for_function("() => [...document.images].filter(i => i.complete).length >= 4")
+        st = ac.measure(pg)["stats"]
+        pg.close()
+        self.assertEqual((st["own"], st["swapped"], st["sub"], st["pending"]), (2, 1, 1, 1))
+        self.assertEqual(st["noimg"], 2)          # 記事自身の写真が届いていない（替えた・備えの絵）。待ちは写真なしと数えない
+
+
 if __name__ == "__main__":
     unittest.main()

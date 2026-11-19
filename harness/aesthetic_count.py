@@ -15,6 +15,7 @@ self_review.py から呼ばれる（review() が MEASURE_JS のあとにこれ�
 """
 import argparse
 import json
+import os
 import pathlib
 import re
 import sys
@@ -28,14 +29,26 @@ CGAP_RIGHT = 0.12
 CGAP_MIN_PX = 24        # 割合を超えても、これ未満の px は数えない
 STRONG_AREA = 0.15      # 強い要素：彩度 0.55 以上の地が箱の面積のこの割合以上
 SNAP_MIN_W = 761        # 吸着は PC だけ（render.FIT_JS の snap が innerWidth <= 760 では動かない）
+# 2026-11-19 新しい人のページ（店長が test-b を不合格にした 8 つ・主経由の底の決め）
+ORPHAN_MIN = 3          # 見出しの最後の行はこの字数以上（1〜2 字の孤立は ✗）
+LEAD_MAX = 0.70         # ほかの注目の大きい 1 枚の写真は頭条の写真の面積の 7 割まで
+FEW_WALL = 3            # ほかの注目がこの本数以下なら、大きい 1 枚を作らず同じ大きさで並べる
+SIDE_LINE_PX = 64       # 空の脇の箱（予定・欲しい物）は 1 行の細い帯（この高さまで）
+ROW_EDGE_PX = 4          # 同じ行に並んだカードの下端の差（これを超えたら ✗）
+NAV_GAP_PX = 80         # 左の目次の中身の底から箱の底・欲しい物のボタンまでの空き
 
 KIND = {"edge": "吸着した位置で小元素・題・札が画面の端で切れている", "hid": "吸着した位置で固定のボタンの下に隠れている",
         "solo": "記事が 1 本だけの版面", "herogap": "重大の横に大きな空き", "emrel": "空きの小元素がその記事と無関係",
-        "cgap": "カードの中に空き（写真の下・字の下・右）", "ell": "見出しが「…」で切れている", "strong": "脇役の部品に強い要素が 2 つ以上"}
+        "cgap": "カードの中に空き（写真の下・字の下・右）", "ell": "見出しが「…」で切れている", "strong": "脇役の部品に強い要素が 2 つ以上",
+        "orphan": "見出しの最後の行が 1〜2 字", "leadbig": "ほかの注目の大きい 1 枚が頭条に近い大きさ", "sidebig": "空の脇の箱が 1 行の帯より大きい",
+        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回", "rowedge": "同じ行のカードの下端がそろわない", "imgfail": "記事の写真が読み込めなかった", "pending": "記事の写真が 30 秒で届かない", "noimg": "頭条に写真なし・記事の半分超が写真なし"}
 FIX = {"edge": "scroll-margin-top を小元素のはみ出し分だけ取る（render.CSS section.sec.has-emb）", "hid": "固定のボタンの下に入らない位置で吸着する",
        "solo": "版面の記事を増やす・隣の版面と一緒に組む", "herogap": "重大の横に記事・予定を置くか幅を広げる",
        "emrel": "関係のある小元素が無ければ空きのまま（置かない）", "cgap": "写真を字の高さまで伸ばす・カードを縮める",
-       "ell": "行数を増やす・見出しを短くする", "strong": "脇役の箱は墨の地・小さい札だけにする（C4）"}
+       "ell": "行数を増やす・見出しを短くする", "strong": "脇役の箱は墨の地・小さい札だけにする（C4）",
+       "orphan": "字の大きさを列に合わせる・text-wrap: balance（render FIT_JS fitHead）", "leadbig": "記事 3 本以下は同じ大きさで並べる・大きい 1 枚は頭条の 7 割まで",
+       "sidebig": "空の箱は 1 行の細い帯に畳む（render._side）", "pendhid": "整理待ちの見出しを写真付きで並べる（render._section）",
+       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "pending": "写真の置き場・網址の速さ（photo_store・hdimg）", "imgfail": "写真の網址が開くか・置き場に入ったかを写真を取る段で確かめる（images.pick・photo_store）", "noimg": "写真のない記事は整理待ちへ（og_image.demote）・写真を探し直す", "rowedge": "同じ行は同じ組み・高いほうにそろえ、字の少ないほうは写真の高さで吸う（FIT_JS wall の FEW_WALL）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）"}
 
 
 def emb_rel_js():
@@ -136,15 +149,17 @@ JS_BODY = r"""
     const pic = kids.find(k => k.classList.contains('pic')), why = [];
     if (pic) {
       const pr = pic.getBoundingClientRect();
-      if (pr.right < il + iw * 0.7) { const g = ib - pr.bottom; if (g > ih * P.cPhoto && g >= P.cMin) why.push('写真の下 ' + Math.round(g) + 'px'); }
+      // 写真の下の空き＝写真の下端から、写真の下にある次の部品（幅いっぱいの要約など）か箱の底まで（2026-11-19：下に回した要約を空きと数えていた）
+      const under = kids.filter(k => k !== pic && !k.matches('.lk') && k.getBoundingClientRect().top >= pr.bottom - 2 && k.getBoundingClientRect().left < pr.right).map(k => k.getBoundingClientRect().top);
+      if (pr.right < il + iw * 0.7) { const g = (under.length ? Math.min(...under) : ib) - pr.bottom; if (g > ih * P.cPhoto && g >= P.cMin) why.push('写真の下 ' + Math.round(g) + 'px'); }
     }
     const txt = kids.filter(k => k !== pic);
     let low = -1e9;
-    txt.forEach(k => k.querySelectorAll('*').forEach(l => { if (!vis(l) || getComputedStyle(l).position === 'absolute') return; if (![...l.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) return; low = Math.max(low, l.getBoundingClientRect().bottom); }));
+    txt.forEach(k => [k, ...k.querySelectorAll('*')].forEach(l => {   /* 2026-11-19：子の要素そのもの（壁の見出し b・要約 p）の字も数える。前は子孫だけを見て、壁のカードは札と日付までで「字の下」を測っていた */ if (!vis(l) || getComputedStyle(l).position === 'absolute') return; if (![...l.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) return; low = Math.max(low, l.getBoundingClientRect().bottom); }));
     if (txt.length && low > -1e8) { const g = ib - low; if (g > ih * P.cText && g >= P.cMin) why.push('字の下 ' + Math.round(g) + 'px'); }
     const right = Math.max(...kids.map(k => k.getBoundingClientRect().right)), gr = ir - right;
     if (gr > iw * P.cRight && gr >= P.cMin) why.push('右 ' + Math.round(gr) + 'px');
-    if (why.length) { bump('cgap'); why.forEach(w => bump('cgap_' + (w[0] === '写' ? 'photo' : w[0] === '字' ? 'text' : 'right'))); tag(c, 'cgap', why.join('・') + '（' + (c.querySelector('h2,h3') ? c.querySelector('h2,h3').innerText.trim().slice(0, 16) : '') + '）'); }
+    if (why.length) { bump('cgap'); if (c.matches('.wc')) bump('cgap_wall'); why.forEach(w => bump('cgap_' + (w[0] === '写' ? 'photo' : w[0] === '字' ? 'text' : 'right'))); tag(c, 'cgap', why.join('・') + '（' + (c.querySelector('h2,h3') ? c.querySelector('h2,h3').innerText.trim().slice(0, 16) : '') + '）'); }
   });
 
   // 5. 見出しの「…」
@@ -176,6 +191,83 @@ JS_BODY = r"""
     });
     if (strong.length >= 2) { bump('strong'); tag(box, 'strong', strong.length + ' 個（' + ((box.querySelector('h4') || {}).innerText || '').trim().slice(0, 14) + '）'); }
   });
+
+  // 7〜12：新しい人のページの形（2026-11-19 店長が test-b を不合格にした 8 つ）。店長のページにも同じに当てる
+  // 7. 見出しの最後の行が 1〜2 字（孤立。P.orphanMin 字未満）
+  const lastLine = el=>{const rg=document.createRange(),bot=el.getBoundingClientRect().bottom+1,ns=[],tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);for(let n;(n=tw.nextNode());)if(n.data.trim())ns.push(n);const at=(n,i)=>{rg.setStart(n,i);rg.setEnd(n,i+1);const q=rg.getClientRects()[0];return q&&q.width&&q.bottom<=bot?q:null;};let f=null;for(const n of ns){for(let i=0;i<n.data.length&&!f;i++)if(n.data[i].trim())f=at(n,i);if(f)break;}if(!f)return 99;let y=null,c=0;for(let k=ns.length-1;k>=0;k--){const n=ns[k];for(let i=n.data.length-1;i>=0;i--){if(!n.data[i].trim())continue;const q=at(n,i);if(!q)continue;const m=q.top+q.height/2;if(y===null){y=m;if(Math.abs(y-(f.top+f.height/2))<f.height*0.5)return 99;}if(Math.abs(m-y)<q.height*0.5){if(++c>=3)return c;}else return c;}}return c;};   // 最後の行の字数（3 まで）。1 行なら 99。後ろから数える（render.NOORPHAN_JS と同じ式）
+  [...document.querySelectorAll('.top h2 .hb, .wall > .wc > b, section.sec article.card h2, section.sec article.card h3, .top p, .wc > .wbl, section.sec article.card p.blurb')].forEach(h => {   // 要約も（11-19 主の指摘 3）
+    if (!vis(h) || h.closest('details:not([open])')) return;
+    bump('orphanHeads'); const n = lastLine(h);
+    if (n < P.orphanMin) { bump('orphan'); tag(h, 'orphan', '最後の行 ' + n + ' 字（' + (h.innerText || '').trim().slice(-8) + '）'); }
+  });
+  // 8. ほかの注目の大きい 1 枚：頭条の写真の面積の P.leadMax 超／記事が P.fewWall 本以下なのに 2 列にまたがる 1 枚
+  const tp = document.querySelector('#front .top .pic'), tpr = tp && vis(tp) ? tp.getBoundingClientRect() : null, TA = tpr ? tpr.width * tpr.height : 0;
+  const wcs = [...document.querySelectorAll('.wall > .wc')].filter(c => vis(c) && !c.hidden);
+  if (TA && wcs.length) {
+    let worst = 0, who = null; wcs.forEach(c => { const p = c.querySelector(':scope > .pic'); if (!p || !vis(p)) return; const r = p.getBoundingClientRect(), a = r.width * r.height; if (a > worst) { worst = a; who = c; } });
+    stats.leadPct = Math.round(worst / TA * 100);
+    const span2 = wcs.length <= P.fewWall && wcs.some(c => c.classList.contains('lead') && /span\s*2|\/\s*span 2/.test(getComputedStyle(c).gridColumn + getComputedStyle(c).gridColumnEnd));
+    if (who && (worst > TA * P.leadMax || span2)) { bump('leadbig'); tag(who, 'leadbig', '頭条の ' + stats.leadPct + '%' + (span2 ? '・' + wcs.length + ' 本で大きい 1 枚' : '')); }
+  }
+  // 9. 脇の箱（予定・欲しい物）が空なのに 1 行の帯より高い（A7・C4。F3 の「箱は出す」は細い帯で満たす）
+  document.querySelectorAll('.fside > *, .fstrip > *').forEach(b => {
+    if (!vis(b) || !b.querySelector('.sempty')) return;
+    bump('sideEmpty'); const h = b.getBoundingClientRect().height;
+    if (h > P.sideLine) { bump('sidebig'); tag(b, 'sidebig', '空の箱 ' + Math.round(h) + 'px'); }
+  });
+  // 10. 版面に記事が 1 本以下なのに、整理待ちを「N 件」とたたんだまま並べていない（A6・合格の見本 4）
+  document.querySelectorAll('section.sec').forEach(sec => {
+    const pd = sec.querySelector('details.pend'); if (!pd || !vis(pd) || pd.open || getComputedStyle(pd).display === 'none') return;
+    bump('pendClosed');
+    const n = [...sec.querySelectorAll('article.card')].filter(c => vis(c) && !c.closest('details:not([open])')).length;
+    if (n <= 1) { bump('pendhid'); tag(sec, 'pendhid', (sec.dataset.k || '') + '：記事 ' + n + ' 本・整理待ちはたたんだまま'); }
+  });
+  // 11. 左の目次の箱の下の空き（PC。中身の底 → 目次の箱の底・欲しい物のボタンまで）
+  const nav = document.querySelector('.nav');
+  if (nav && vis(nav) && innerWidth > 1000) {
+    const nr = nav.getBoundingClientRect(), wish = nav.querySelector('.navwish');
+    const kids = [...nav.querySelectorAll('.nslot, .nhead, .logo')].filter(vis), low = kids.length ? Math.max(...kids.map(k => { const r = k.getBoundingClientRect(); const ins = [...k.querySelectorAll('.pill, .nsec, .nsubs, .nmore')].filter(vis); return ins.length ? Math.max(...ins.map(x => x.getBoundingClientRect().bottom)) : r.bottom; })) : nr.top;
+    const wr = wish && vis(wish) ? wish.getBoundingClientRect() : null, gap = Math.round(Math.max(wr ? wr.top - low : 0, nr.bottom - (wr ? wr.bottom : low)));
+    stats.navGap = gap;
+    if (gap > P.navGap) { bump('navgap'); tag(nav, 'navgap', '目次の下 ' + gap + 'px'); }
+  }
+  // 12. 同じ記事・同じ写真が 1 ページに 2 回（F4）
+  const seenU = new Map(), seenP = new Map();
+  document.querySelectorAll('#front .top, .wall > .wc, section.sec article.card, section.sec .calm, .pendwall li').forEach(c => {
+    if (!vis(c) || c.closest('details:not([open])')) return;
+    const a = c.querySelector('a.lk[href], a[href]'), u = a && a.getAttribute('href');
+    if (u && !/^#|wishlist|settings/.test(u)) { if (seenU.has(u)) { bump('dup'); tag(c, 'dup', '同じ記事：' + (c.innerText || '').trim().slice(0, 16)); } else seenU.set(u, c); }
+    const im = c.querySelector('.pic img:not(.bg):not(.ico)'), s = im && vis(im) && (im.currentSrc || im.src);
+    if (s && !/^data:/.test(s) && !(u && seenU.get(u) !== c)) { if (seenP.has(s)) { bump('dup'); tag(c, 'dup', '同じ写真：' + s.split('/').pop().slice(0, 24)); } else seenP.set(s, c); }
+  });
+  // 14. 写真が本当に届いたか（2026-11-19 店長「点検は、本物の写真が取れるかどうかを含めること」）。作り物の写真で数えるとき（fake）は imgfail を見ない
+  //   imgfail：記事の写真が落ち先まで全部開けなかった（SWAP_JS の data-imgfail）＋読み込みが終わったのに naturalWidth 0 のまま
+  //   noimg：記事（頭条・壁・版面のカード）のうち写真が出ていない数（render が最初から字だけにした nophoto も）。nohead：頭条に写真なし。held：「集めています」の版面
+  const arts = [...document.querySelectorAll('#front .top:not(.start), .wall > .wc, section.sec .grid article.card')].filter(a => vis(a) && !a.hidden && !a.closest('details:not([open])'));
+  const shown = a => [...a.querySelectorAll('.pic img:not(.bg):not(.ico)')].some(i => i.complete && i.naturalWidth > 0 && vis(i));
+  let fail = document.querySelectorAll('[data-imgfail]').length;
+  document.querySelectorAll('.pic img[data-e="s"]').forEach(i => { if (i.complete && !i.naturalWidth && i.closest('#front, section.sec, .wall') && !i.closest('[data-imgfail]')) { fail++; tag(i.closest('.pic'), 'imgfail', (i.getAttribute('src') || '').slice(-40)); } });
+  document.querySelectorAll('[data-imgfail]').forEach(e => tag(e, 'imgfail', '落ち先まで開けなかった：' + (e.innerText || '').trim().slice(0, 16)));
+  stats.imgfail = fail; stats.arts = arts.length;
+  // 写真の中身（2026-11-19 PC の実測：本物か代わりの絵かを見分ける）。render._pic の data-o（1 記事自身の写真・0 最初から備えの絵）・SWAP_JS の data-sw（落ち先へ替えた回数）
+  const ph = a => a.querySelector('.pic img[data-e="s"]'), got = i => i && i.complete && i.naturalWidth > 0;
+  stats.own = stats.swapped = stats.sub = stats.icon = stats.none = stats.pending = 0;
+  const notOwn = [];
+  arts.forEach(a => { const i = ph(a);
+    if (i && !i.complete) { stats.pending++; return; }   // 読み込み待ち（写真なしとは数えない）
+    if (got(i) && i.dataset.o === '1' && !(+i.dataset.sw)) stats.own++;
+    else { notOwn.push(a); if (got(i) && +i.dataset.sw) stats.swapped++; else if (got(i) && i.dataset.o === '0') stats.sub++; else if (a.querySelector('.pic.icon')) stats.icon++; else stats.none++; } });
+  if (stats.pending) tag(document.body, 'pending', stats.pending + ' 枚が 30 秒で届かない');
+  const hasO = !!document.querySelector('.pic img[data-o]');   // 印の無い古いページは「写真が出ているか」で数える
+  const none = hasO ? notOwn : arts.filter(a => !shown(a) && !(ph(a) && !ph(a).complete)); stats.noimg = none.length; stats.noimgPct = arts.length ? Math.round(none.length / arts.length * 100) : 0;
+  const top = document.querySelector('#front .top:not(.start)'); stats.nohead = top && (hasO ? notOwn.includes(top) : !shown(top)) ? 1 : 0;
+  stats.held = document.querySelectorAll('.calm[data-held]').length;
+  if (stats.nohead || (arts.length && none.length * 2 > arts.length)) { bump('noimg'); tag(top || document.body, 'noimg', (stats.nohead ? '頭条に写真なし・' : '') + '写真なし ' + none.length + ' / ' + arts.length); }
+  // 13. 同じ行に並んだカードの下端の差（主の決め 4・直し 2 回目：「ほかの注目」の 2 枚の下端が 95px ずれた）。同じ親の中で上端が 4px 以内にそろったカードの組
+  const rowsOf = cs => { const g = []; cs.forEach(c => { const r = c.getBoundingClientRect(), x = g.find(q => Math.abs(q.t - r.top) <= 4); if (x) x.b.push(r.bottom); else g.push({t: r.top, b: [r.bottom], el: c}); }); return g; };
+  const groups = new Map();
+  document.querySelectorAll('.wall > .wc, section.sec .grid article.card').forEach(c => { if (!vis(c) || c.hidden || c.closest('details:not([open])')) return; const k = c.parentElement; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(c); });
+  groups.forEach(cs => rowsOf(cs).forEach(g => { if (g.b.length < 2) return; bump('rows'); const d = Math.max(...g.b) - Math.min(...g.b); if (d > P.rowEdge) { bump('rowedge'); tag(g.el, 'rowedge', (g.el.matches('.wc') ? 'ほかの注目' : (g.el.closest('section.sec') || {dataset: {}}).dataset.k) + '：下端の差 ' + Math.round(d) + 'px（' + g.b.length + ' 枚）'); } }));
   return {items: out, stats};
 }
 """
@@ -198,11 +290,137 @@ def measure(pg, start=0):
     """開いたページで測る。{items:[{i,kind,note,sel}], stats:{…}}（items は self_review の MEASURE_JS と同じ形）。"""
     body, rel = build_js()
     p = {"snapMinW": SNAP_MIN_W, "heroMax": HERO_SIDE_MAX, "heroMinW": HERO_SIDE_MIN_W, "cPhoto": CGAP_PHOTO, "cText": CGAP_TEXT, "cRight": CGAP_RIGHT,
-         "cMin": CGAP_MIN_PX, "strongArea": STRONG_AREA, "relFn": REL_FN % rel if rel else ""}
+         "cMin": CGAP_MIN_PX, "strongArea": STRONG_AREA, "relFn": REL_FN % rel if rel else "",
+         "orphanMin": ORPHAN_MIN, "rowEdge": ROW_EDGE_PX, "leadMax": LEAD_MAX, "fewWall": FEW_WALL, "sideLine": SIDE_LINE_PX, "navGap": NAV_GAP_PX}
     return pg.evaluate("(a) => (" + body.strip() + ")(a[0], a[1], a[2])", [start, p, bool(rel)])
 
 
+# 新しい人のページ（2026-11-19）を数える幅（主経由の店長の決め：どの幅でも同じ決め方・この 8 幅で数える）
+NEW_USER_VIEWS = ((390, 844), (412, 915), (768, 1024), (1000, 800), (1024, 768), (1333, 720), (1440, 900), (1920, 1080))
+# 8 つの指摘 → 数える項目（self_review の band・cgap と、上の 7〜12）。審美基準の番号は aesthetic_map.json
+NEW_USER_KINDS = ("imgfail", "pending", "noimg", "rowedge", "orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
+                  "solo", "herogap", "ell", "over", "wide", "clip", "gap")
+
+
+def page_counts(pg):
+    """開いて読み込み終えたページ（self_review.load_all のあと）で、self_review の数と上の数を 1 つにした {種類: 件数, '_notes': {種類: [..]}, '_stats': {}}。
+    PC の会話が本物の非公開ページ（ログインして開いた本人のページ）に同じ数え方を当てる呼び口。board_kpi.py pages もここを呼べる。"""
+    import self_review   # self_review が aesthetic_count を import するので、使うときに読む
+    r = pg.evaluate(self_review.MEASURE_JS)
+    x = measure(pg, len(r["items"]))
+    items = r["items"] + x["items"]
+    out = {k: 0 for k in NEW_USER_KINDS}
+    notes = {}
+    for i in items:
+        out[i["kind"]] = out.get(i["kind"], 0) + 1
+        notes.setdefault(i["kind"], []).append(i["note"])
+    out["cgap_wall"] = x["stats"].get("cgap_wall", 0)
+    out["imgfail"] = x["stats"].get("imgfail", 0)   # tag の数ではなく写真の数
+    out["pending"] = x["stats"].get("pending", 0)
+    for k in ("noimgPct", "nohead", "held", "arts", "own", "swapped", "sub", "icon", "none"):
+        out["_" + k] = x["stats"].get(k, 0)   # cgap のうち「ほかの注目」の壁のカード（版面の小さいカードの前からの分と分けて数える）
+    out["_notes"] = {k: v[:6] for k, v in notes.items()}
+    out["_stats"] = x["stats"]
+    return out
+
+
+_FAKE = {}
+
+
+def _fake_png(url):
+    """作り物の写真：16:10（render._pic の img は width/height 属性を持たないので決まりの 16:10）・色は網址から（同じ網址 → 同じ絵）。"""
+    import hashlib
+    import io
+    from PIL import Image, ImageDraw
+    k = hashlib.md5(url.encode("utf-8")).digest()
+    if k not in _FAKE:
+        im = Image.new("RGB", (320, 200), (k[0], k[1], k[2]))
+        ImageDraw.Draw(im).ellipse([120, 40, 200, 120], fill=(k[3], k[4], k[5]))   # 単色の帯に見えないよう真ん中に丸
+        buf = io.BytesIO()
+        im.save(buf, "PNG")
+        _FAKE[k] = buf.getvalue()
+    return _FAKE[k]
+
+
+def fake_images(ctx):
+    """写真の読み込みを全部、作り物の写真で返す（2026-11-19 主の指摘 5：網の都合で写真が読めず数が回ごとに揺れ、店長のページの前／後を比べられなかった）。
+    同じ網址は同じ絵・大きさは一定なので、同じページは何度数えても同じ数になる。ページ（HTML・CSS・JS）はそのまま"""
+    def h(route):
+        if route.request.resource_type == "image":
+            return route.fulfill(status=200, content_type="image/png", body=_fake_png(route.request.url))
+        if route.request.url.split("?")[0].endswith("version.json"):   # 自動更新（LIVE_JS）が版の違いで開き直すと数えている途中のページが消える
+            return route.abort()
+        if route.request.url.startswith(("http://127.0.0.1", "http://localhost")):
+            return route.continue_()
+        return route.abort()   # 外（字体・supabase など）は読まない：揺れの元を断つ
+    ctx.route("**/*", h)
+    # 揺れの元（2026-11-19 調べ）：気になるかも？の並べ替え（SHUFFLE_JS）と小元素の選び方（A8 のランダム）が Math.random で回ごとに違い、
+    # 下の版面の高さ・組みが変わって cgap が ±3 揺れた。数えるときだけ種を固定する（ページの作りはランダムのまま）
+    ctx.add_init_script("(()=>{let s=20261119;Math.random=()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};})();")
+
+
+WAIT_PHOTOS_MS = 30000   # 本物のページでは記事の写真が届くまで最大 30 秒待つ（写真 212 枚の test-c は 8 秒で読み終わらない。2026-11-19 PC の実測）
+
+
+def wait_photos(pg, ms=WAIT_PHOTOS_MS):
+    """記事の写真（img[data-e=s]）が全部 complete になるまで待つ。届かない分は page_counts の pending が数える。"""
+    try:
+        pg.wait_for_function("() => [...document.querySelectorAll('.pic img[data-e=\"s\"]')].every(i => i.complete)", timeout=ms)
+    except Exception:   # noqa: BLE001  時間切れ：pending として数える
+        pass
+
+
+def new_user_counts(url, browser_, views=NEW_USER_VIEWS, fake=False):
+    """1 つのページを 8 幅で開いて page_counts。{'390x844': {...}, …}。browser_ は harness/browser.launch の返すもの。
+    fake=True：写真を作り物にして揺れなく数える（店長のページの前／後の比べ・tests/test_new_user_page.py の上限）。"""
+    import self_review
+    res = {}
+    for w, h in views:
+        ctx = browser_.new_context(viewport={"width": w, "height": h}, locale="ja-JP", has_touch=w <= 760, is_mobile=w <= 760, reduced_motion="reduce")   # 演出（Blur Text）の途中を数えない：描き終わった形を数える
+        if fake:
+            fake_images(ctx)
+        pg = ctx.new_page()
+        pg.goto(url, wait_until="load", timeout=60000)
+        self_review.load_all(pg)
+        if not fake:
+            wait_photos(pg)
+        res[f"{w}x{h}"] = page_counts(pg)
+        if fake:   # 作り物の写真では「届いたか」は意味がない
+            res[f"{w}x{h}"].pop("imgfail", None)
+            res[f"{w}x{h}"].pop("noimg", None)
+            res[f"{w}x{h}"].pop("pending", None)
+        ctx.close()
+    return res
+
+
+def stable_main(argv):
+    """python harness/aesthetic_count.py --stable DIR PAGE [OUT.json]：写真を作り物にして 8 幅で数える（店長のページの前／後を同じ条件で）。"""
+    import json as _j
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    import browser
+    import self_review
+    from playwright.sync_api import sync_playwright
+    port = self_review.serve(argv[0])
+    with sync_playwright() as p:
+        b = browser.launch(p)
+        only = [int(x) for x in os.environ.get("WL_WIDTHS", "").split(",") if x]   # 幅を分けて流す（1 回 5 分以内）
+        r = new_user_counts(f"http://127.0.0.1:{port}/{argv[1]}", b, [v for v in NEW_USER_VIEWS if not only or v[0] in only], fake=True)
+        b.close()
+    tot = {}
+    for v, c in r.items():
+        for k, n in c.items():
+            if not k.startswith("_") and n:
+                tot[k] = tot.get(k, 0) + n
+    out = {"total": tot, "views": {v: {k: n for k, n in c.items() if not k.startswith("_") and n} for v, c in r.items()}}
+    print(_j.dumps(out, ensure_ascii=False))
+    if len(argv) > 2:
+        pathlib.Path(argv[2]).write_text(_j.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    return out
+
+
 def main(argv=None):
+    if (argv or sys.argv[1:])[:1] == ["--stable"]:
+        return stable_main((argv or sys.argv[1:])[1:])
     a = argparse.ArgumentParser()
     a.add_argument("--dir", default="docs")
     a.add_argument("--page", action="append", default=[])
