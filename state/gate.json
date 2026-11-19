@@ -1,8 +1,8 @@
 {
  "changed": false,
- "checked": "2026-11-19T03:18:11+00:00",
+ "checked": "2026-11-19T03:21:15+00:00",
  "fired": {
-  "at": "2026-11-19T02:20:17+00:00",
+  "at": "2026-11-19T03:21:15+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -46,19 +46,19 @@
    "edit": 14
   },
   "2026-11-19": {
-   "edit": 6
+   "edit": 7
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-19T02:20:17+00:00",
+    "at": "2026-11-19T03:21:15+00:00",
     "attempts": 1,
     "day": "2026-11-19",
-    "prog": 270,
-    "resp": "cse_01W4x6f54JaWqBtSDxbkFyWk",
-    "sig": "faa0e2bdd5ed"
+    "prog": 278,
+    "resp": "",
+    "sig": "cc4f628e9e1e"
    },
    "items": [
     "MMORPG 新作",
