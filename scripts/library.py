@@ -291,9 +291,10 @@ LIB_DONE = pathlib.Path("/tmp/wishlist-lib-done.json")   # この回に編んだ
 
 
 def pending_fp(pending):
-    """整理待ちの指紋（記事の網址の集まり）。AI 編集の記事に _fp として残し、同じなら編み直さない・次の日に持ち越す。"""
+    """整理待ちの指紋（記事の網址の集まり）。AI 編集の記事に _fp として残し、同じなら編み直さない・次の日に持ち越す。
+    記事集めが後から Google の包みを原文に戻した記事は、前の網址（gurl）で数える（戻しただけで編み直さない＝token を使わない。2026-11-19）。"""
     import hashlib
-    return hashlib.sha1("\n".join(sorted(str(p.get("url") or "") for p in pending or [])).encode("utf-8")).hexdigest()[:12]
+    return hashlib.sha1("\n".join(sorted(str(p.get("gurl") or p.get("url") or "") for p in pending or [])).encode("utf-8")).hexdigest()[:12]
 
 
 def lib_rows(db, today, shop_names=(), days=2, fresh=False):
@@ -387,11 +388,15 @@ def edited_stories(pending, edit, fp, at):
             continue
         head = str(s.get("headline") or refs[0].get("title") or "").strip()
         hl = str(s.get("highlight") or "")
-        img = s.get("image") if str(s.get("image") or "").startswith("https://") else refs[0].get("image")
+        # 写真は AI が選んだもの → refs の 1 本目 → 同じ出来事の refs の 2 本目から（店長の images.pick の「其它来源」と同じ順）。
+        # 編んだ後に整理待ちへ付いた写真は user_pages.board_rows が refs の網址で引き継ぐ（編み直さない）
+        own = next((p for p in refs if p.get("image")), None)
+        img = s.get("image") if str(s.get("image") or "").startswith("https://") else (own or {}).get("image")
+        ref = next((p.get("img_ref") for p in refs if img and p.get("image") == img and p.get("img_ref")), None)   # 防盗链の写真は Referer の印も（refs のどれから選んでも。user_pages.mask_saved）
         out.append({"headline": head, "highlight": hl if hl and hl in head else "", "blurb": str(s.get("blurb") or ""),
                     "weight": s.get("weight") if s.get("weight") in ("hero", "lead", "normal") else "normal",
                     "url": refs[0]["url"], "source": refs[0].get("source") or "", "date": str(refs[0].get("date") or "")[:10],
-                    "image": img or None, "refs": [p.get("url") for p in refs],
+                    "image": img or None, **({"img_ref": ref} if ref else {}), "refs": [p.get("url") for p in refs],
                     **({"event": s["event"]} if isinstance(s.get("event"), dict) else {}), "_fp": fp, "_at": at})
         if len(out) >= LIB_STORIES:
             break

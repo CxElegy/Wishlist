@@ -103,6 +103,7 @@ class Fetched:
     error: str = ""      # 网络错误 / 超时的说明；HTTP 错误码放在 status 里
     too_big: bool = False
     via: str = ""        # 普通の取り方で拒まれ、scrapling で取れたとき "scrapling"（読者のブラウザでも拒まれる → 本站に保存）
+    final: str = ""      # 転送のあとの最後の網址（harness/photo_why.py が host を数える。取り方には使わない）
 
 
 def _ascii_url(url):
@@ -178,8 +179,9 @@ def _scrape(url, limit, referer=None, page=False):
         from scrapling.fetchers import Fetcher
     except Exception:
         return None
-    # scrapling は取った網址を INFO で出す。Actions のログは公開で、お客さまのページ（user_pages）の記事も通るので出さない
-    logging.getLogger("scrapling").setLevel(logging.WARNING)
+    # scrapling は取った網址を INFO で、取れなかった host を ERROR（「Failed after 1 attempts: … Could not resolve host: <host>」）で出す。
+    # Actions のログは公開で、お客さまの記事（user_pages・og_image・photo_store の Referer 付きの取り方）も通るので全部黙らせる（結果は Fetched で返る）
+    logging.getLogger("scrapling").setLevel(logging.CRITICAL)
     try:
         r = Fetcher.get(url, impersonate="chrome", stealthy_headers=page, timeout=TIMEOUT, retries=1,
                         **({"headers": {"Referer": referer}} if referer else {}))
@@ -248,7 +250,7 @@ def _fetch_plain(url, limit, referer=None):
                 if length.isdigit() and int(length) > limit:
                     return Fetched(resp.status, headers, b"", too_big=True)
                 body = resp.read(limit + 1)
-                return Fetched(resp.status, headers, body[:limit], too_big=len(body) > limit)
+                return Fetched(resp.status, headers, body[:limit], too_big=len(body) > limit, final=str(getattr(resp, "url", "") or ""))
         except urllib.error.HTTPError as e:
             try:
                 body = e.read(4000) if e.fp else b""
@@ -365,6 +367,7 @@ class Page:
     og_label: str = "og:image"                        # og 那一栏的来源名（MSN 接口取到的图写「MSN 接口」）
     icons: list = field(default_factory=list)         # 网站声明的图标（apple-touch-icon / icon），大的在前
     poster: list = field(default_factory=list)        # 视频封面（<video poster>）
+    final: str = ""                                   # 転送のあとの最後の網址（harness/photo_why.py の host。取り方には使わない）
 
     @property
     def gone(self):
@@ -395,6 +398,7 @@ def page(url):
             p = Page(url, False, _http_reason(f, "原文"), status=f.status)
         else:
             p = parse_page(url, f.body.decode("utf-8", "ignore"))
+        p.final = getattr(f, "final", "") or ""
     _pages[url] = p
     return p
 
@@ -749,6 +753,7 @@ class Result:
     source: str = ""                               # 选中的图从哪来：AI 挑选 / 条目自带 / og:image / 转载 xxx ……
     trace: list = field(default_factory=list)      # [(来源, 地址, 结果)]：每张检查过的候选图
     notes: list = field(default_factory=list)      # 拿候选图时的问题：原文 403（Cloudflare）……
+    referer: str = ""                              # SAVED の図を取るときに渡す記事の頁（防盗链。お客さまの写真は photo_store が Referer 付きで置き場へ。2026-11-19）
 
     @property
     def reason(self):
@@ -817,6 +822,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
     seen = set()
     authors = author_seen()
     from_page = {}  # 原文网页（不是转载）里的候选图 → 那一页的地址：防盗链重试时作 Referer
+    sib_page = {}   # 同じ出来事の別の記事の頁で見つけた図 → その頁（SAVED の res.referer だけに使う。防盗链の取り直しの対象は増やさない＝店長の結果は同じ）
     deadline = time.monotonic() + (STORY_BUDGET if budget is None else budget)
 
     def stages():
@@ -847,6 +853,8 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
             if not REDDIT_POST.match(link or ""):
                 p = page(link)
                 found += [(label, u) for u in p.og + p.jsonld]
+                for u in p.og + p.jsonld:
+                    sib_page.setdefault(u, link)
             if e.image and is_bing_thumb(e.image):
                 found.append((label + "（Bing 缩略图）", e.image))
             yield found
@@ -908,6 +916,8 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
         return False
 
     if scan():
+        if SAVED in res.source:
+            res.referer = from_page.get(res.image) or sib_page.get(res.image) or url
         return res
     # 防盗链：原文网页自己的图，带那一页作 Referer 再试（浏览器打不开，hdimg.py 存到本站）
     tries = 0
@@ -920,7 +930,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
         ok, why = check(img, referer=from_page[img])
         res.trace.append((label + SAVED, img, why if not ok else "OK"))
         if ok:
-            res.image, res.source = img, label + SAVED
+            res.image, res.source, res.referer = img, label + SAVED, from_page[img]
             return res
     return res
 

@@ -955,6 +955,8 @@ def _pic(story):
     # 先頭が開けず落ち先へ替わっても原寸の外部画像に戻らない（2026-11-01 dota2：先頭の 17173 が落ち、置き場にある Steam の原寸 jpg が出ていた）
     # 落ち先は置き場の写真「に替える」（原寸を後ろに並べない：SWAP_JS は同じ版面にすでにある網址を飛ばすので、置き場の写真が飛ばされると原寸が代わりに出る）
     exp = ([big] if big else []) + chain[:1] + [photo_store.stored(u) or u for u in chain[1:]]
+    if len(exp) > 1 and exp[0] == exp[1]:   # 先頭が置き場の網址そのもの（お客さまの防盗链の写真：user_pages.mask_saved）：同じ網址を落ち先に並べない
+        del exp[1]
     # 落ち先に Supabase storage の公開網址は入れない（Pages の写しが落ちたとき storage へ戻ると無料枠の egress を使う。2026-11-03 gate 指摘）
     fbl = [u for u in exp[1:] if not _STORAGE_RE.match(u)]
     fb = f' data-fb="{e(" ".join(fbl))}"' if fbl else ""

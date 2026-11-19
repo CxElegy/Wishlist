@@ -715,7 +715,8 @@ _resolved = {}      # 本次运行内缓存：跳转链接 → 原文地址
 
 def resolve_url(url, tries=None):
     """把 Google 新闻的跳转链接还原成原文地址（Google 页面里的签名参数换取真实地址）；失败就原样返回。
-    tries：试几次（默认 RESOLVE_TRIES。お客さまの記事集め userfeed は 1 回だけ：断られているときに 1 本 6 秒待たない）。"""
+    tries：试几次（默认 RESOLVE_TRIES。お客さまの記事集め userfeed も 2026-11-19 から店長と同じ回数。続けて断られたら userfeed.Media が
+    その回は戻すのを休む＝RESOLVE_FAILS。同じ出来事の別の記事は link を入れて渡すので、images.pick からはここに来ない）。"""
     if "news.google.com" not in (url or ""):
         return url
     if url in _resolved:
