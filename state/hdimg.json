@@ -49,6 +49,12 @@
   ],
   "why": "看不清"
  },
+ "http://p0.qhimg.com/t11508c75c8efdf72efad050177.jpg": {
+  "w": 750,
+  "h": 1033,
+  "target": 1280,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -582,12 +588,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.hk01.com/di/media/images/dw/20261119/1200047057260253184264598.jpeg/POGM3r7vMx2IkLi6PF0_xV7XgnmTeaGD8z6aafM-mmk": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.it.chosun.com/news/photo/202611/3000000000883_500975_3347.png": {
   "w": 1280,
   "h": 1323,
@@ -611,12 +611,6 @@
   "w": 600,
   "h": 352,
   "target": 720,
-  "v": 3
- },
- "https://cdn.kfenews.co.kr/news/photo/202611/668014_141321_5557.jpg": {
-  "w": 932,
-  "h": 524,
-  "target": 1280,
   "v": 3
  },
  "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg": {
@@ -864,12 +858,6 @@
   "target": 1280,
   "v": 3
  },
- "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
-  "w": 4525,
-  "h": 3016,
-  "target": 720,
-  "v": 3
- },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
   "w": 1280,
   "h": 670,
@@ -954,6 +942,12 @@
   "target": 720,
   "v": 3
  },
+ "https://escharts.com/metaImage/tournaments/1win-essence-i?v=1795044405": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
   "w": 1200,
   "h": 630,
@@ -970,6 +964,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/res-unchained-4-blast-slam-vii-southeast-asia-open-qualifier-2?v=1795012228": {
@@ -1165,11 +1165,30 @@
   "target": 720,
   "v": 3
  },
+ "https://i.insider.com/6af5d4ecb2c29afb4e56a297?width=1200&format=jpeg": {
+  "w": 1200,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
+ "https://i.tribune.com.pk/media/images/x-men-first-class-640x4801/x-men-first-class-640x4801-640x480.webp": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://i0.wp.com/disneyworldfan.jp/wp-content/uploads/2026/11/disney-starbucks-holiday-mickey-travel-tumbler-2026.jpg?fit=608%2C608&ssl=1": {
+  "w": 608,
+  "h": 608,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.393
  },
  "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-Ultra-AH-2.png?fit=1920%2C1080&ssl=1": {
   "w": 1920,
@@ -1210,6 +1229,12 @@
  },
  "https://ihorror.com/wp-content/uploads/2026/11/From-season-4-official-trailer.webp": {
   "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://image-cdn.hypb.st/https%3A%2F%2Fcn.hypebeast.com%2Ffiles%2F2026%2F11%2F16%2F1.jpg?w=1080&cbr=1&q=90&fit=max": {
+  "w": 1080,
   "h": 720,
   "target": 1280,
   "v": 3
@@ -1280,6 +1305,19 @@
   "h": 720,
   "target": 720,
   "v": 3
+ },
+ "https://images.chinatimes.com/newsphoto/2026-11-19/656/20261119002879.jpg": {
+  "w": 656,
+  "h": 399,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.559,
+  "local": "pics/133d2514c30fa962.webp",
+  "out": [
+   1280,
+   779
+  ],
+  "why": "看不清"
  },
  "https://images.cnbctv18.com/uploads/2026/11/paapa-essiedu-2026-11-2a0b32fa32faf440241bccfa64077ce8.jpg?im=FitAndFill,width=1200,height=675": {
   "w": 1200,
@@ -1811,12 +1849,6 @@
   "target": 720,
   "v": 3
  },
- "https://img5.yna.co.kr/photo/yna/YH/2026/11/13/PYH2026111301290001300_P4.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -1857,18 +1889,6 @@
  "https://jazznews.com.tw/wp-content/uploads/2026/11/20261112165613_0_573f2e.jpg?v=1794473774": {
   "w": 2222,
   "h": 1482,
-  "target": 1280,
-  "v": 3
- },
- "https://jeu.video/images/jUDDXvoIEPnGfswZKFRgFsjSGwHFLYtNtERhHcxjdno/rs:auto:1600:900:1/g:sm/czM6Ly9qZXV2aWRlby1ib2x0LXN0b3JhZ2UvdXBsb2Fkcy8yMDI2LzExL2RvdGEtMi1wYXRjaC03NDIuanBn.webp": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://komonews.com/resources/media2/16x9/1280/1320/center/90/d4073018-af99-405a-b357-6a0a1e8399d7-BlackCat2.jpg": {
-  "w": 1320,
-  "h": 743,
   "target": 1280,
   "v": 3
  },
@@ -2084,12 +2104,6 @@
  "https://news-images.tvbs.com.tw/api/v1/image/01a1ec79-47b1-7103-a625-a0aeb201ba72.jpg?t=16x9&c=0,6,1024,582&w=1200&h=675": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://news-images.tvbs.com.tw/api/v1/image/01a1ef6f-225f-71f0-8e82-7a1de8ab54a5.jpg?w=1024&h=576": {
-  "w": 1024,
-  "h": 576,
   "target": 1280,
   "v": 3
  },
@@ -3071,12 +3085,6 @@
   "target": 1280,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/38757/32/38757-32-f364540e2133fbf20c201aaab5c63d3f-1794x1274.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 1774,
-  "h": 1260,
-  "target": 720,
-  "v": 3
- },
  "https://prcdn.freetls.fastly.net/release_image/45524/162/45524-162-bc88fc61e35f1f558e83024870283cef-1920x1280.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1890,
   "h": 1260,
@@ -3157,6 +3165,12 @@
  "https://q0.itc.cn/q_70/images03/20261112/5c27dd9c44fe40d49f3c453c9fdd0c1c.jpeg": {
   "w": 682,
   "h": 958,
+  "target": 1280,
+  "v": 3
+ },
+ "https://q1.itc.cn/images01/20261119/e7e73596e4c248f28b6bbd3963525ae2.jpeg": {
+  "w": 1080,
+  "h": 1101,
   "target": 1280,
   "v": 3
  },
@@ -3334,6 +3348,12 @@
  "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png": {
   "w": 1434,
   "h": 948,
+  "target": 1280,
+  "v": 3
+ },
+ "https://shattered.io/wp-content/uploads/2026/10/india-smartphone-shipments-fall-20-percent-samsung-leads-q3-2026-gen-1.webp": {
+  "w": 1344,
+  "h": 768,
   "target": 1280,
   "v": 3
  },
@@ -3727,12 +3747,6 @@
   "target": 1280,
   "v": 3
  },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/12/1794477618287_img_4030566e.jpeg": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/13/1794527936990_galaxy-s27-ultra-7-nang-cap-dang-mong-cho-nhat-tren-flagship-sap-ra-mat-3674.png": {
   "w": 1758,
   "h": 941,
@@ -3837,6 +3851,12 @@
    850
   ],
   "why": "看不清"
+ },
+ "https://www.aljazeera.com/wp-content/uploads/2026/11/AP26322012517816-1795060878.jpg?resize=1920%2C1440": {
+  "w": 1920,
+  "h": 1440,
+  "target": 720,
+  "v": 3
  },
  "https://www.androidheadlines.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-AH-999-scaled.png": {
   "w": 2560,
@@ -3965,6 +3985,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.AwiSJHKEma7JnzhA9uxbmg&pid=News&w=700": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.DOK_Vi6TspGTJxAUsjw7Vw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4028,22 +4054,21 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.OOJfb-VcFRjRtGR5auQJ6w&pid=News&w=615": {
-  "w": 615,
-  "h": 443,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.482,
-  "local": "pics/2f336c91cfa9b99b.webp",
-  "out": [
-   1280,
-   922
-  ],
-  "why": "看不清"
+ "https://www.bing.com/th?id=ONUT.NHwS4bqcv-E8uKRGaESTiw&pid=News&w=650": {
+  "w": 650,
+  "h": 292,
+  "target": 720,
+  "v": 3
  },
- "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.PCXHZ_HTDPNy_bZxiKLpVA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.PmBKIconqgsoL1ViHGJ-2A&pid=News&w=550": {
+  "w": 550,
+  "h": 301,
   "target": 720,
   "v": 3
  },
@@ -4058,13 +4083,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.XpeF5G7R8pIpfDFRT1nU-Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 699,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.36
  },
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
@@ -4115,6 +4133,19 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.hxJb0BQDUM-ZU16QaHNw6A&pid=News&w=1024": {
+  "w": 700,
+  "h": 467,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.551,
+  "local": "pics/47f1aad37f3935e2.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.ioi8PD0JlJDLyFyiqXX6fA&pid=News&w=1200": {
   "w": 700,
@@ -4296,12 +4327,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/esports-gaming-setup.png?v=72240b6c111d7c67dbf43f89ddbfc186f0a0c1e5": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg": {
   "w": 1280,
   "h": 720,
@@ -4349,6 +4374,19 @@
   "h": 810,
   "target": 1280,
   "v": 3
+ },
+ "https://www.icloudnews.net/uploadfile/20261114/202611142248026986.webp": {
+  "w": 550,
+  "h": 394,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.452,
+  "local": "pics/7a1f24749cbd542b.webp",
+  "out": [
+   1280,
+   917
+  ],
+  "why": "看不清"
  },
  "https://www.indexbox.io/landing/img/reports/world-kitten-wet-cat-food-market-analysis-forecast-size-trends-and-insights.webp?v=1774179250": {
   "w": 600,
@@ -4454,6 +4492,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Plus-review-3.jpg": {
+  "w": 1920,
+  "h": 1078,
+  "target": 720,
+  "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
@@ -4584,6 +4628,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.369
+ },
+ "https://x0.ifengimg.com/res/2026/9E8BB742A0AA690EA08C3EAAC446BFAE7BD1AAD2_size24_w720_h380.webp": {
+  "w": 720,
+  "h": 380,
+  "target": 720,
+  "v": 3
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-c5107fb3cab563f904aec69918eb1145/images/ed1e92c6-9632-4f56-8421-59c7b32366a0.jpg": {
   "w": 1920,
