@@ -168,6 +168,23 @@ class AestheticCount(unittest.TestCase):
         self.assertEqual((st["own"], st["swapped"], st["sub"], st["pending"]), (2, 1, 1, 1))
         self.assertEqual(st["noimg"], 2)          # 記事自身の写真が届いていない（替えた・備えの絵）。待ちは写真なしと数えない
 
+    def test_small_sizemix_nom(self):
+        """小さすぎる写真 small（B9）・同じ行の 1 大 1 小 sizemix（D1）・主役の位置の無い写真 nom（2026-11-19 店長「図が小さい」）。"""
+        pic = lambda w, h, attrs="": f'<div class="pic" style="width:{w}px;height:{h}px"><img data-e="s" {attrs} src="{PX}" style="width:100%;height:100%;display:block"></div>'
+        card = lambda w, h, cls="", attrs="": f'<article class="card{cls}" style="height:auto">{pic(w, h, attrs)}<h3>見出し</h3></article>'
+        grid = lambda *cs: f'<section class="sec" data-k="作品"><div class="grid">{"".join(cs)}</div></section>'
+        r = self.run_page(page(grid(card(64, 64, attrs='data-m="1,1;1,1"'), card(64, 64))))
+        self.assertEqual(self.n(r, "small"), 2)                                     # 短い辺 64px < 120（PC）
+        self.assertEqual(r["stats"]["nom"], 1)                                      # data-m の無い 1 枚
+        self.assertEqual(r["stats"]["short"]["board"], [0, 2, 0, 0, 0])             # 60〜88 に 2 枚
+        self.assertEqual(self.n(self.run_page(page(grid(card(100, 100), card(100, 100))), width=600), "small"), 0)   # スマホの下限 88
+        ok = self.run_page(page(grid(card(200, 150), card(200, 150))))
+        self.assertEqual((self.n(ok, "small"), self.n(ok, "sizemix")), (0, 0))
+        mix = self.run_page(page(grid(card(240, 180), card(130, 130))))
+        self.assertEqual(self.n(mix, "sizemix"), 1)                                 # 面積 2.6 倍
+        hero = self.run_page(page(grid(card(400, 300, " hero"), card(200, 150), card(200, 150))))
+        self.assertEqual(self.n(hero, "sizemix"), 0)                                # 重大だけ大きいのは C1・C2 で認める
+
 
 if __name__ == "__main__":
     unittest.main()

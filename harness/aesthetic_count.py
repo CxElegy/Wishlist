@@ -12,6 +12,7 @@ self_review.py から呼ばれる（review() が MEASURE_JS のあとにこれ�
 既にある項目（self_review.py の face＝小元素の顔が小さい・I1c）は重ねない。
 
     python harness/aesthetic_count.py --dir docs --page home/index.html [--json OUT.json]    # 基準の数
+    python harness/aesthetic_count.py --compare [origin/main]   # render を変えたとき：REF の render と今の render で店長のページを 3 幅数えて前 → 後
 """
 import argparse
 import json
@@ -36,19 +37,25 @@ FEW_WALL = 3            # ほかの注目がこの本数以下なら、大きい
 SIDE_LINE_PX = 64       # 空の脇の箱（予定・欲しい物）は 1 行の細い帯（この高さまで）
 ROW_EDGE_PX = 4          # 同じ行に並んだカードの下端の差（これを超えたら ✗）
 NAV_GAP_PX = 80         # 左の目次の中身の底から箱の底・欲しい物のボタンまでの空き
+# 2026-11-19 店長「図が小さい」（見本 a の版面の 1 件目が約 65px の正方形）：B9・D1 を数にする（仮の下限。店長の決め待ち）
+SMALL_PC = 120          # 記事の写真の表示の短い辺の下限（幅 760 超）
+SMALL_SP = 88           # 同じ（幅 760 以下）
+SIZE_MIX = 1.5          # 同じ行の記事の写真：面積の大きいほうが小さいほうのこの倍を超えたら 1 大 1 小
 
 KIND = {"edge": "吸着した位置で小元素・題・札が画面の端で切れている", "hid": "吸着した位置で固定のボタンの下に隠れている",
         "solo": "記事が 1 本だけの版面", "herogap": "重大の横に大きな空き", "emrel": "空きの小元素がその記事と無関係",
         "cgap": "カードの中に空き（写真の下・字の下・右）", "ell": "見出しが「…」で切れている", "strong": "脇役の部品に強い要素が 2 つ以上",
         "orphan": "見出しの最後の行が 1〜2 字", "leadbig": "ほかの注目の大きい 1 枚が頭条に近い大きさ", "sidebig": "空の脇の箱が 1 行の帯より大きい",
-        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回", "rowedge": "同じ行のカードの下端がそろわない", "imgfail": "記事の写真が読み込めなかった", "pending": "記事の写真が 30 秒で届かない", "noimg": "頭条に写真なし・記事の半分超が写真なし"}
+        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回", "rowedge": "同じ行のカードの下端がそろわない", "imgfail": "記事の写真が読み込めなかった", "pending": "記事の写真が 30 秒で届かない", "noimg": "頭条に写真なし・記事の半分超が写真なし",
+        "small": "記事の写真の短い辺が下限より小さい（B9）", "sizemix": "同じ行の記事の写真が 1 大 1 小（D1）"}
 FIX = {"edge": "scroll-margin-top を小元素のはみ出し分だけ取る（render.CSS section.sec.has-emb）", "hid": "固定のボタンの下に入らない位置で吸着する",
        "solo": "版面の記事を増やす・隣の版面と一緒に組む", "herogap": "重大の横に記事・予定を置くか幅を広げる",
        "emrel": "関係のある小元素が無ければ空きのまま（置かない）", "cgap": "写真を字の高さまで伸ばす・カードを縮める",
        "ell": "行数を増やす・見出しを短くする", "strong": "脇役の箱は墨の地・小さい札だけにする（C4）",
        "orphan": "字の大きさを列に合わせる・text-wrap: balance（render FIT_JS fitHead）", "leadbig": "記事 3 本以下は同じ大きさで並べる・大きい 1 枚は頭条の 7 割まで",
        "sidebig": "空の箱は 1 行の細い帯に畳む（render._side）", "pendhid": "整理待ちの見出しを写真付きで並べる（render._section）",
-       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "pending": "写真の置き場・網址の速さ（photo_store・hdimg）", "imgfail": "写真の網址が開くか・置き場に入ったかを写真を取る段で確かめる（images.pick・photo_store）", "noimg": "写真のない記事は整理待ちへ（og_image.demote）・写真を探し直す", "rowedge": "同じ行は同じ組み・高いほうにそろえ、字の少ないほうは写真の高さで吸う（FIT_JS wall の FEW_WALL）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）"}
+       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "pending": "写真の置き場・網址の速さ（photo_store・hdimg）", "imgfail": "写真の網址が開くか・置き場に入ったかを写真を取る段で確かめる（images.pick・photo_store）", "noimg": "写真のない記事は整理待ちへ（og_image.demote）・写真を探し直す", "rowedge": "同じ行は同じ組み・高いほうにそろえ、字の少ないほうは写真の高さで吸う（FIT_JS wall の FEW_WALL）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）",
+       "small": "写真の列の幅・枠の下限を上げる（render FIT_JS fitBoard の Rn・Rk・mini）", "sizemix": "同じ行の写真は同じ大きさの段にそろえる（render FIT_JS fitBoard・wall）"}
 
 
 def emb_rel_js():
@@ -268,6 +275,28 @@ JS_BODY = r"""
   const groups = new Map();
   document.querySelectorAll('.wall > .wc, section.sec .grid article.card').forEach(c => { if (!vis(c) || c.hidden || c.closest('details:not([open])')) return; const k = c.parentElement; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(c); });
   groups.forEach(cs => rowsOf(cs).forEach(g => { if (g.b.length < 2) return; bump('rows'); const d = Math.max(...g.b) - Math.min(...g.b); if (d > P.rowEdge) { bump('rowedge'); tag(g.el, 'rowedge', (g.el.matches('.wc') ? 'ほかの注目' : (g.el.closest('section.sec') || {dataset: {}}).dataset.k) + '：下端の差 ' + Math.round(d) + 'px（' + g.b.length + ' 枚）'); } }));
+  // 15. 記事の写真（頭条・ほかの注目・版面のカード・写真付きの整理待ち・静かな版面。.pic img[data-e=s] の見えている枠＝.pic の箱）。目次のアイコン・小元素・欲しい物は入れない
+  //   nom：届いた写真のうち主役の位置（data-m）も字の位置（data-k）も無い数（数だけ。2026-11-19 主：本站保存 pics/… の写真に data-m が付かない）
+  //   small（B9）：表示の短い辺が下限（PC SMALL_PC・スマホ SMALL_SP）未満。short：種類ごとの短い辺の分布 [60 未満, 60〜88, 88〜120, 120〜160, 160 以上]
+  const aimgs = [...document.querySelectorAll('.pic img[data-e="s"]')].filter(i => i.closest('#front .top, .wall, section.sec') && !i.closest('details:not([open])') && vis(i.closest('.pic')));
+  stats.nom = aimgs.filter(i => got(i) && !i.dataset.m && !i.dataset.k).length;
+  const kindOf = i => i.closest('#front .top') ? 'top' : i.closest('.wall') ? 'wall' : i.closest('.calm') ? 'calm' : i.closest('article[data-pd]') ? 'pend' : 'board';
+  const headOf = el => { const a = el.closest('article, .calm'); const h = a && (a.querySelector('h2, h3') || a.querySelector(':scope > b, .last b')); return ((h || a || el).innerText || '').trim().slice(0, 16); };
+  const lim = innerWidth > 760 ? P.smallPc : P.smallSp;
+  stats.short = {};
+  aimgs.forEach(i => { if (!got(i)) return; const r = i.closest('.pic').getBoundingClientRect(), s = Math.min(r.width, r.height), k = kindOf(i);
+    (stats.short[k] = stats.short[k] || [0, 0, 0, 0, 0])[[60, 88, 120, 160].filter(x => s >= x).length]++;
+    if (s < lim) { bump('small'); tag(i.closest('.pic'), 'small', '短い辺 ' + Math.round(s) + 'px（' + headOf(i) + '）'); } });
+  //   sizemix（D1）：同じ行（同じ親・上端が 4px 以内）に並ぶ記事の写真で、面積の大きいほうが小さいほうの SIZE_MIX 倍を超える行の数。
+  //   頭の記事だけ大きい形（壁の大きい 1 枚 .lead・版面の重大 .hero・2 列分〔W・R2・F2〕＝C1・C2 で認めている物）は除く
+  const big = c => c.matches('.wc.lead, .hero') || /span\s*[2-9]/.test(c.style.gridColumn || '');
+  const pg2 = new Map();
+  document.querySelectorAll('.wall > .wc, section.sec .grid article.card').forEach(c => { if (!vis(c) || c.hidden || c.closest('details:not([open])') || big(c)) return;
+    const p = c.querySelector(':scope > .pic'), i = p && p.querySelector('img[data-e="s"]'); if (!i || !got(i) || !vis(p)) return;
+    const k = c.parentElement; if (!pg2.has(k)) pg2.set(k, []); pg2.get(k).push(c); });
+  pg2.forEach(cs => rowsOf(cs).forEach(g => { const row = cs.filter(c => Math.abs(c.getBoundingClientRect().top - g.t) <= 4); if (row.length < 2) return;
+    const ar = row.map(c => { const r = c.querySelector(':scope > .pic').getBoundingClientRect(); return r.width * r.height; }), mx = Math.max(...ar), mn = Math.min(...ar);
+    if (mn > 0 && mx > mn * P.sizeMix) { bump('sizemix'); tag(row[ar.indexOf(mn)], 'sizemix', '面積 ' + (mx / mn).toFixed(1) + ' 倍（' + headOf(row[ar.indexOf(mx)]) + ' ／ ' + headOf(row[ar.indexOf(mn)]) + '）'); } }));
   return {items: out, stats};
 }
 """
@@ -291,7 +320,8 @@ def measure(pg, start=0):
     body, rel = build_js()
     p = {"snapMinW": SNAP_MIN_W, "heroMax": HERO_SIDE_MAX, "heroMinW": HERO_SIDE_MIN_W, "cPhoto": CGAP_PHOTO, "cText": CGAP_TEXT, "cRight": CGAP_RIGHT,
          "cMin": CGAP_MIN_PX, "strongArea": STRONG_AREA, "relFn": REL_FN % rel if rel else "",
-         "orphanMin": ORPHAN_MIN, "rowEdge": ROW_EDGE_PX, "leadMax": LEAD_MAX, "fewWall": FEW_WALL, "sideLine": SIDE_LINE_PX, "navGap": NAV_GAP_PX}
+         "orphanMin": ORPHAN_MIN, "rowEdge": ROW_EDGE_PX, "leadMax": LEAD_MAX, "fewWall": FEW_WALL, "sideLine": SIDE_LINE_PX, "navGap": NAV_GAP_PX,
+         "smallPc": SMALL_PC, "smallSp": SMALL_SP, "sizeMix": SIZE_MIX}
     return pg.evaluate("(a) => (" + body.strip() + ")(a[0], a[1], a[2])", [start, p, bool(rel)])
 
 
@@ -299,7 +329,7 @@ def measure(pg, start=0):
 NEW_USER_VIEWS = ((390, 844), (412, 915), (768, 1024), (1000, 800), (1024, 768), (1333, 720), (1440, 900), (1920, 1080))
 # 8 つの指摘 → 数える項目（self_review の band・cgap と、上の 7〜12）。審美基準の番号は aesthetic_map.json
 NEW_USER_KINDS = ("imgfail", "pending", "noimg", "rowedge", "orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
-                  "solo", "herogap", "ell", "over", "wide", "clip", "gap")
+                  "solo", "herogap", "ell", "over", "wide", "clip", "gap", "small", "sizemix")
 
 
 def page_counts(pg):
@@ -317,7 +347,7 @@ def page_counts(pg):
     out["cgap_wall"] = x["stats"].get("cgap_wall", 0)
     out["imgfail"] = x["stats"].get("imgfail", 0)   # tag の数ではなく写真の数
     out["pending"] = x["stats"].get("pending", 0)
-    for k in ("noimgPct", "nohead", "held", "arts", "own", "swapped", "sub", "icon", "none"):
+    for k in ("noimgPct", "nohead", "held", "arts", "own", "swapped", "sub", "icon", "none", "nom", "short"):
         out["_" + k] = x["stats"].get(k, 0)   # cgap のうち「ほかの注目」の壁のカード（版面の小さいカードの前からの分と分けて数える）
     out["_notes"] = {k: v[:6] for k, v in notes.items()}
     out["_stats"] = x["stats"]
@@ -418,9 +448,75 @@ def stable_main(argv):
     return out
 
 
+COMPARE_WIDTHS = (390, 1333, 1920)
+# 後 ≤ 前 を見る項目（orphan は減ってよい・増えても ✗）
+COMPARE_KINDS = ("orphan", "gap", "cgap", "rowedge", "herogap", "band", "crop", "edge", "solo", "pendhid", "dup", "navgap", "sidebig")
+
+
+def _render_with(render_src, out):
+    """out/ に今の作業場所の写し（scripts は写し・docs は写し・ほかは名前だけ繋ぐ）を作り、render.py を render_src に替えて店長のページを作る。
+    作業場所の docs/ は汚さない。写真の網址が開くかは確かめない（render.OPENS を使わない＝網の都合で頭の記事が変わらない）。"""
+    import shutil
+    import subprocess
+    out.mkdir(parents=True)
+    for x in ROOT.iterdir():
+        if x.name in (".git", "scripts", "docs"):
+            continue
+        (out / x.name).symlink_to(x)
+    shutil.copytree(ROOT / "scripts", out / "scripts", ignore=shutil.ignore_patterns("__pycache__"))
+    shutil.copytree(ROOT / "docs", out / "docs", symlinks=True)
+    (out / "scripts" / "render.py").write_bytes(render_src)
+    env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
+    subprocess.run([sys.executable, "-c", "import digest; digest._write_page()"], cwd=out, check=True, capture_output=True,
+                   env={**env, "PYTHONPATH": str(out / "scripts")})
+    return out / "docs"
+
+
+def compare_main(argv):
+    """python harness/aesthetic_count.py --compare [REF]（既定 origin/main）：REF の render.py と今の render.py で店長のページを作り（一時の所）、
+    作り物の写真・種固定で 390・1333・1920 を数えて「前 → 後」の表を出す。render を変える PR は、この表（後 ≤ 前）を PR 本文に書く
+    （docs/rules/aesthetic.md J）。COMPARE_KINDS のどれかが増えたら終わりの値 1。1920 は 1 回 150 秒ほど（3 幅 × 2 を並べて流す）。"""
+    import concurrent.futures as cf
+    import subprocess
+    import tempfile
+    ref = argv[0] if argv else "origin/main"
+    src = subprocess.run(["git", "show", f"{ref}:scripts/render.py"], cwd=ROOT, check=True, capture_output=True).stdout
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="wl_compare_"))
+    dirs = {"前": _render_with(src, tmp / "before"), "後": _render_with((ROOT / "scripts" / "render.py").read_bytes(), tmp / "after")}
+
+    def one(side, w):
+        o = tmp / f"{side}_{w}.json"
+        subprocess.run([sys.executable, str(pathlib.Path(__file__).resolve()), "--stable", str(dirs[side]), "home/index.html", str(o)],
+                       env={**os.environ, "WL_WIDTHS": str(w)}, check=True, capture_output=True)
+        return side, w, json.loads(o.read_text(encoding="utf-8"))["total"]
+
+    res = {}
+    with cf.ThreadPoolExecutor(3) as ex:
+        for side, w, tot in ex.map(lambda a: one(*a), [(s, w) for w in COMPARE_WIDTHS for s in dirs]):
+            res[(side, w)] = tot
+    worse = []
+    print(f"店長のページ（作り物の写真・種固定）{ref} の render → 今の render")
+    print("| 幅 | " + " | ".join(COMPARE_KINDS) + " |")
+    print("|---" * (len(COMPARE_KINDS) + 1) + "|")
+    for w in COMPARE_WIDTHS:
+        b, a = res[("前", w)], res[("後", w)]
+        cells = []
+        for k in COMPARE_KINDS:
+            x, y = b.get(k, 0), a.get(k, 0)
+            cells.append(str(y) if x == y else f"{x}→{y}" + (" ✗" if y > x else ""))
+            if y > x:
+                worse.append(f"{w} {k} {x}→{y}")
+        print(f"| {w} | " + " | ".join(cells) + " |")
+    print("✗ 増えた：" + "・".join(worse) if worse else "✓ どの幅も後 ≤ 前")
+    print(f"（ページと数：{tmp}）")
+    return 1 if worse else 0
+
+
 def main(argv=None):
     if (argv or sys.argv[1:])[:1] == ["--stable"]:
         return stable_main((argv or sys.argv[1:])[1:])
+    if (argv or sys.argv[1:])[:1] == ["--compare"]:
+        sys.exit(compare_main((argv or sys.argv[1:])[1:]))
     a = argparse.ArgumentParser()
     a.add_argument("--dir", default="docs")
     a.add_argument("--page", action="append", default=[])

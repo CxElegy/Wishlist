@@ -1,7 +1,7 @@
 # 店長の審美基準（2026-11-09 まとめ・店長の言葉から）
 
 画面を作る・直すときは、出す前にこの表で自分で採点する。1 つでも ✗ なら直してから見せる。
-点検の道具（2026-11-19 から新しい人のページの形も：`harness/new_user_sample.py` の 4 形（a〜d）を 8 幅〔390・412・768・1000・1024・1333×720・1440×900・1920〕で `harness/aesthetic_count.page_counts`。見出しの孤立 orphan・壁の大きい 1 枚 leadbig・空の脇の箱 sidebig・整理待ちをたたんだまま pendhid・目次の下 navgap・同じ記事/写真 dup。試験 `tests/test_new_user_page.py`）：`harness/self_review.py`（数えられる項目。2026-11-12 から `harness/aesthetic_count.py` が E4 吸着で切れ・隠れ／1 本の版面／重大の横の空き／空きの小元素の人違い（A8）／カードの中の空き（A1・A5）／見出しの「…」（D3）／脇役の強い要素（C4）を数える。顔の大きさ I1c は self_review の face）＋ 自分の目（数えにくい項目）。新しい指摘はここに足す（日付と店長の言葉）。
+点検の道具（2026-11-19 から新しい人のページの形も：`harness/new_user_sample.py` の 4 形（a〜d）を 8 幅〔390・412・768・1000・1024・1333×720・1440×900・1920〕で `harness/aesthetic_count.page_counts`。見出しの孤立 orphan・壁の大きい 1 枚 leadbig・空の脇の箱 sidebig・整理待ちをたたんだまま pendhid・目次の下 navgap・同じ記事/写真 dup。11-19 から記事の写真が小さすぎる small（B9・仮の下限 PC 120px／スマホ 88px）・同じ行の 1 大 1 小 sizemix（D1・面積 1.5 倍超）・主役の位置の無い写真の数 nom（数だけ）。試験 `tests/test_new_user_page.py`）：`harness/self_review.py`（数えられる項目。2026-11-12 から `harness/aesthetic_count.py` が E4 吸着で切れ・隠れ／1 本の版面／重大の横の空き／空きの小元素の人違い（A8）／カードの中の空き（A1・A5）／見出しの「…」（D3）／脇役の強い要素（C4）を数える。顔の大きさ I1c は self_review の face）＋ 自分の目（数えにくい項目）。新しい指摘はここに足す（日付と店長の言葉）。
 ぶつかる決まりは新しい方が勝つ。下の「古い決まり」に、上書きされたものを残す。
 
 ## A. 空き・余白（いちばん厳しい）

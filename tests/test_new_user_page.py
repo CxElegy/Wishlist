@@ -11,11 +11,12 @@ sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 # 0 を保つ項目（8 つ＋A1・A5・A6・C1・C2・D3・E1・E2・F3・F4 の数えられる所）
-ZERO = ("imgfail", "noimg", "cgap_wall", "orphan", "leadbig", "sidebig", "pendhid", "navgap", "dup", "solo", "herogap", "ell", "over", "wide", "clip")
-# 0 を保つ：ほかの注目の壁と頭条の空き（cgap_wall）は上の ZERO。版面の小さいカードの前からの空き（cgap の残り）と写真の切れ crop は増えないことだけ見る
-KNOWN = {"cgap": 8, "gap": 0, "crop": 18, "band": 0, "rowedge": 44}   # 4 形（a〜d）× 8 幅の合計（2026-11-19 claude/new-user-check で測った数・2 回同じ）。
-# rowedge（同じ行のカードの下端の差）は今の数を上限：次の段（下端をそろえる決め・店長に絵を見せて決める）で 0 にする。
-# crop は整理待ちを写真付きで並べたカード（縦長の写真を枠で切る）と版面の小さいカード。main の render では 0（整理待ちの写真を出していなかった）
+ZERO = ("imgfail", "noimg", "cgap_wall", "orphan", "leadbig", "sidebig", "pendhid", "navgap", "dup", "solo", "herogap", "ell", "over", "wide", "clip",
+        "crop", "band")   # crop・band：写真は切らない・帯で埋めない（B1〜B3・B6・A3。整理待ちのカードの縦長も枠を写真の形に）
+# 0 にならない項目は 4 形（a〜d）× 8 幅の合計を上限（2026-11-19 claude/new-user-check で測った数・2 回同じ）。次の段で 0 にする：
+#   rowedge（同じ行の下端の差）・small（B9 写真の短い辺が下限未満）・sizemix（D1 同じ行の 1 大 1 小）は、店長に絵を見せて決めてから直す。
+#   cgap は縦長の写真を切らずに置いたカードの字の下（写真が字より高い分）と版面の小さいカードの前からの空き
+KNOWN = {"cgap": 20, "gap": 0, "rowedge": 46, "small": 84, "sizemix": 41}
 
 
 class NewUserPage(unittest.TestCase):

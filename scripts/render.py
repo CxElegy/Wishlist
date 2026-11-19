@@ -1085,6 +1085,8 @@ def _play(story):
 
 def _tcard(story, span, i, today, small=False, mini=False):
     html_ = _tcard_(story, span, i, today, small, mini)
+    if story.get("_pend"):   # 版面に並べた整理待ち（_fill_pending）の印：点検が写真の大きさを分けて数える（aesthetic_count small）
+        html_ = html_.replace('<article class="card ', '<article data-pd class="card ', 1)
     if _has_photo(story):
         return html_
     # 写真のない記事（2026-10-25）：出典のアイコンの札で空っぽの箱に見せず、字だけの記事の形（大きな見出し・出典と日付）にする
@@ -4078,7 +4080,7 @@ FIT_JS = """
     const mini = p.closest('.card.mini:not(.nophoto)') || (innerWidth <= 760 && sm && !sm.classList.contains('nophoto') ? sm : null);
     if (mini && mini.parentElement && mini.parentElement.dataset.fit != null && innerWidth > 760) { setTimeout(() => spans(mini.closest('.grid') || 0), 0); return; }   // 版面の組み方（fitBoard）が形を決めた版面：ここでは触らず、組み直しを頼む
     if (mini) {
-      p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar'); mini.style.gridTemplateColumns = '';
+      p.classList.remove('whole'); mini.classList.remove('stk'); p.style.removeProperty('--ar'); mini.style.gridTemplateColumns = p.style.minHeight = '';
       const w = boxW(img, p.clientWidth), h = boxH(img, p.clientHeight), rr = nat / (w / h), q = Math.min(rr, 1 / rr);
       const ok = cropAt(img, rr) || (q >= 0.95 && !img.dataset.k);   // 主役の位置がわからない絵は 5% まで。文字のある絵は cropAt だけ（2026-11-08）
       p.classList.toggle('fill', ok); p.classList.toggle('whole', !ok);
@@ -4086,7 +4088,12 @@ FIT_JS = """
         img.style.objectPosition = ''; delete img.dataset.keep;
         // 切れない横長の絵：写真を上・字を下に積む（切らず・帯なし・写真も大きい）。細い絵は全体を見せて周りを絵の端の色に
         if (nat > 1 && !mini.matches('.tape')) { p.style.setProperty('--ar', nat.toFixed(3)); mini.classList.add('stk'); p.classList.remove('whole'); p.classList.add('fill'); }
-        else if (nat <= 1 && !mini.matches('.tape')) { mini.style.gridTemplateColumns = Math.max(64, Math.round(h * nat)) + 'px minmax(0,1fr)'; p.classList.remove('whole'); p.classList.add('fill'); }   // 縦長：列の幅を絵の幅に（左右の帯なし・字の列が広がる）
+        else if (nat <= 1 && !mini.matches('.tape')) {   // 縦長：列の幅を絵の幅に（左右の帯なし・字の列が広がる）。枠の高さは写真の高さ（字の列に伸ばされて切れない。2026-11-19 B6）
+          const cw = mini.clientWidth; let pw = Math.max(64, Math.round(h * nat));
+          for (let q = 0; q < 3; q++) { mini.style.gridTemplateColumns = pw + 'px minmax(0,1fr)'; p.style.minHeight = '0px'; pw = Math.max(64, Math.ceil(p.clientHeight * nat)); }
+          if (pw <= cw * 0.5) { mini.style.gridTemplateColumns = pw + 'px minmax(0,1fr)'; p.style.minHeight = (pw / nat).toFixed(1) + 'px'; }
+          else { mini.style.gridTemplateColumns = ''; p.style.minHeight = ''; p.style.setProperty('--ar', nat.toFixed(3)); mini.classList.add('stk'); }   // 字の列が細くなりすぎる（スマホの正方形に近い絵）：写真を上・字を下（写真の形のまま）
+          p.classList.remove('whole'); p.classList.add('fill'); }
         else if (img._edge) p.style.background = img._edge;
       }
       return;
@@ -4372,6 +4379,12 @@ FIT_JS = """
         }
         if (fs.length) [0, 0.34, 0.67, 1].map(q => fs[Math.round((fs.length - 1) * q)]).filter((x, j, a) => a.indexOf(x) === j).forEach(x => o.push(x));   // 幅の違う 4 つまで（組の数を増やしすぎない）
       }
+      // どの形も切らずに置けない写真（主役の位置が分からない縦長など）：枠を写真の形のまま左に（Rk）。幅は字の列の高さ × 比率（64px〜5 割）、
+      // 写真が字より高い分は字の下に残す（B6・B4：切るのは主役が残る時だけ。前は CSS の初めの枠〔4 割 × 字の高さ〕のまま 74% 切れた。2026-11-19）
+      if (!o.length) { let pw = Math.max(64, Math.round(100 * nat)), th = 0;
+        for (let q = 0; q < 4; q++) { boardForm(c, {k: 'Rk', s: 1, pw, ph: 20}); th = p.getBoundingClientRect().height; pw = Math.min(Math.round(W * 0.5), Math.max(64, Math.ceil(th * nat))); }
+        boardForm(c, {k: 'Rk', s: 1, pw, ph: 20}); th = p.getBoundingClientRect().height; const ph = pw / nat;
+        if (ph >= th - 1 && !clamped(c)) { boardForm(c, {k: 'Rk', s: 1, pw, ph}); const hh = H(c); o.push({k: 'Rk', s: 1, pw, lo: ph, hi: ph, h: () => hh, a: () => pw * ph, b: () => Math.max(0, ph - th) * (W - pw)}); } }
       if (i === 0 && c.dataset.hero && k >= 2 && o.some(x => x.s > 1)) o.forEach(x => { if (x.s === 1) x.hs = 1; });   // 重大は 2 列分の形が先（審美基準 C1：重大がいちばん大きい）。1 列の形は印を付け、採点で重く（画面 1 枚に入らないときだけ選ばれる）
       return o.length ? o : [fixed(c)];
     };
