@@ -1,32 +1,32 @@
 {
- "admin": "74c7b9ad4395",
- "admin-ai": "2726400ff6f9",
+ "admin": "e5cb6e9130b0",
+ "admin-ai": "e425ffad6262",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "0094364c"
+   "58946b75"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "efeb7685"
+   "828184f5"
   ]
  },
- "admin-boards": "72bd41cc6924",
+ "admin-boards": "be8ac0f69f4c",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "8d4c01ad"
+   "99d65350"
   ],
   "votes": [
    "投票",
    "f735c25e"
   ]
  },
- "admin-emblem": "bbe5a0284fbd",
+ "admin-emblem": "4bf51e390860",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ada7c7b2"
+   "59cff86c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "82e76a5bb4fa",
+ "admin-now": "c096aa70ad6d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0ca60458"
+   "5b156a7f"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "0509394d"
+   "56de080e"
   ],
   "term-panel": [
    "ライブログ",
-   "ddc48ea5"
+   "f4bee3b2"
   ]
  },
- "admin-system": "e9739f4cfbeb",
+ "admin-system": "55703841f7c2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "666cfde6"
+   "f3bc9607"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "50027f52"
+   "84e8ade0"
   ]
  },
  "admin_marks": {},
- "heat": "3a2a55f1966b",
+ "heat": "9a1122f0d748",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "55867a18"
+   "37ecbdcf"
   ],
   "ranking": [
    "ランキング",
-   "885bf333"
+   "76acddb4"
   ]
  },
- "index": "de73455c21b6",
+ "index": "e9dc46d6bdb4",
  "index_marks": {
   "front": [
    "トップ",
-   "348cbc85"
+   "3370c12a"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "73db58d0"
+   "9f780cae"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "5a0a338c"
+   "59d615cd"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "91482904"
+   "01ae06ae"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "fbd020a7"
+   "8310c334"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "28a2a27b"
+   "16dc6cdd"
   ],
   "w-f303ad09": [
    "绝区零",
-   "ae025946"
+   "dc543053"
   ]
  },
- "updated": "11.20 01:55",
- "wishlist": "307bdfd6c446"
+ "updated": "11.20 02:05",
+ "wishlist": "a82477d591ed"
 }

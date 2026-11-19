@@ -1,0 +1,187 @@
+{
+ "GTA 6": [
+  {
+   "headline": "Grand Theft Auto VI launches to global fanfare",
+   "highlight": "launches",
+   "blurb": "Rockstar's long-awaited Grand Theft Auto VI went on sale worldwide, prompting work absences and fake school-closure posts.",
+   "weight": "lead",
+   "refs": [
+    11,
+    22,
+    3,
+    7,
+    4
+   ]
+  },
+  {
+   "headline": "'Unprecedented. Unbelievable. Unmissable.' The 'GTA 6' reviews are in — here's what they're saying.",
+   "highlight": "reviews are in",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    18,
+    14
+   ]
+  },
+  {
+   "headline": "‘GTA VI’ Beats ‘The Odyssey’ Revenue On Release Day, Estimate Says",
+   "highlight": "Beats ‘The Odyssey’",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "GTA 6 is finally here, but PC players are still waiting for one big answer",
+   "highlight": "PC players",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  },
+  {
+   "headline": "The lead actress in 'Grand Theft Auto VI' has finally been revealed.",
+   "highlight": "lead actress",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "漫威电影": [
+  {
+   "headline": "Avengers: Doomsday Teaser Officially Leans Into Marvel’s Messiest Relationship",
+   "highlight": "Avengers: Doomsday",
+   "blurb": "Polygon reports the new Avengers: Doomsday teaser leans into one of Marvel's messiest relationships.",
+   "weight": "lead",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Thor Takes Center Stage in New International ‘Avengers: Doomsday’ Poster Crackling With Green Lightning",
+   "highlight": "New International",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    12,
+    7,
+    14
+   ]
+  },
+  {
+   "headline": "罗素兄弟晒出《复仇者联盟 5》更多角色概念海报：X 教授、万磁王、洛基等悉数登场",
+   "highlight": "内地已定档 12 月 16 日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
+   ],
+   "event": {
+    "date": "2026-12-16",
+    "label": "内地公開日"
+   }
+  },
+  {
+   "headline": "肯德基聯名復仇者聯盟11/24開賣！末日漢堡登場，5款漫威盲盒公仔加購99元",
+   "highlight": "11/24開賣",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    2,
+    10
+   ],
+   "event": {
+    "date": "2026-11-24",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "Avengers Doomsday advance booking: Marvel film eyes biggest Hollywood opening; mints Rs 34 crore",
+   "highlight": "advance booking",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter HBO Original Series Gets Christmas Day Premiere Date",
+   "highlight": "Christmas Day Premiere Date",
+   "blurb": "HBO's Harry Potter series now has a Christmas Day premiere date.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-12-25",
+    "label": "放送開始"
+   }
+  },
+  {
+   "headline": "Harry Potter series drops new posters sparking questions over missing details",
+   "highlight": "new posters",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT 4名成員接連受傷、高燒……「2026 MAMA AWARDS」行程緊急調整",
+   "highlight": "行程緊急調整",
+   "blurb": "ILLIT 4名成員接連受傷、高燒，「2026 MAMA AWARDS」行程緊急調整。",
+   "weight": "lead",
+   "refs": [
+    2,
+    3
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "공급망 소식통에 따르면 갤럭시 S27 울트라는 베젤 두께가 1.28mm에 불과한 베젤리스 디스플레이를 탑재할 가능성이 있다고 합니다.",
+   "highlight": "베젤 두께가 1.28mm",
+   "blurb": "갤럭시 S27 울트라가 베젤 두께 1.28mm의 베젤리스 디스플레이를 탑재할 가능성이 있다는 소식.",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra vs Pixel 11 Pro XL: Main differences to expect",
+   "highlight": "Main differences",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra: Please, Samsung—steal this Huawei camera feature right now",
+   "highlight": "Huawei camera feature",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "_covered": {
+  "GTA 6": 22,
+  "漫威电影": 19,
+  "哈利波特剧集": 3,
+  "ILLIT": 5,
+  "三星手机": 3
+ }
+}
