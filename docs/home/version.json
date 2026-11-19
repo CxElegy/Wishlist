@@ -1,14 +1,14 @@
 {
- "admin": "d45bfd4f67e7",
- "admin-ai": "ec8dd83d7ee1",
+ "admin": "3d986aaef4cd",
+ "admin-ai": "34bc7578ac00",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "0f87a8b2"
+   "9d91b44a"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "24a8b8e7"
+   "8a4942f5"
   ]
  },
  "admin-boards": "426b6f644b43",
@@ -22,11 +22,11 @@
    "f735c25e"
   ]
  },
- "admin-emblem": "e945f8e42ccf",
+ "admin-emblem": "962239a1b031",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "359b2632"
+   "87f0ed2a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "e6bb59274d34",
+ "admin-now": "040e3e17999a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e5af0398"
+   "c41d2829"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "d439b8fb"
+   "3b34ee28"
   ]
  },
- "admin-system": "ef56923b5d0d",
+ "admin-system": "acb86815edef",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "99142c21"
+   "63414871"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0af5b5f1"
+   "86082981"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "54d8a723"
   ]
  },
- "index": "1571de667897",
+ "index": "6394b8999070",
  "index_marks": {
   "front": [
    "トップ",
-   "4aa8e801"
+   "db8d864a"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "84ddd0c7"
+   "23f978d2"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "f1837d11"
+   "4ee7ae5d"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "4da76e14"
+   "a97b8678"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "a64ce1b5"
+   "ef062fbf"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "6041e513"
+   "9cb96dc9"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "be86670e"
+   "0ad5fffd"
   ]
  },
- "updated": "11.19 22:34",
- "wishlist": "77aab4a7256d"
+ "updated": "11.19 22:43",
+ "wishlist": "307bdfd6c446"
 }

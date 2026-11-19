@@ -14,7 +14,11 @@
     86,
     117,
     129,
-    128
+    128,
+    139,
+    141,
+    144,
+    142
    ],
    "event": {
     "date": "2026-12-17",
@@ -62,7 +66,10 @@
     95,
     107,
     131,
-    132
+    132,
+    147,
+    146,
+    134
    ]
   },
   {
@@ -105,7 +112,9 @@
    "weight": "normal",
    "refs": [
     127,
-    126
+    126,
+    135,
+    140
    ]
   }
  ],
@@ -141,7 +150,12 @@
     109,
     94,
     96,
-    139
+    139,
+    163,
+    160,
+    158,
+    155,
+    164
    ],
    "event": {
     "date": "2026-11-19",
@@ -165,7 +179,8 @@
     111,
     114,
     115,
-    152
+    152,
+    157
    ],
    "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/GTA6.jpg?w=1440&h=810&crop=1"
   },
@@ -310,21 +325,24 @@
    "image": "https://cassette.sphdigital.com.sg/image/zaobao/ff28d7efc8d13e40dadb7b8b6461c6d9c14015e3cac0c881a7d860cbb6df659a"
   },
   {
-   "headline": "A2O LITE, 9人 9色 매력",
+   "headline": "A2O LITE 보라, 급성 충수염으로 수술… \"녹화 참여 불가\"[공식]",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    11,
+    15
    ]
   },
   {
-   "headline": "A2O LITE는 5세대 아이돌일까? 이수만의 새 걸그룹이 주목받는 이유",
+   "headline": "43歳ハン・ガイン、元祖美女…2013年生まれA2O LITEオアと「ハッセー」ライン結成",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    12,
+    13,
+    14
    ]
   },
   {
@@ -339,11 +357,12 @@
    ]
   },
   {
-   "headline": "이수만 걸그룹 A2O LITE, 때아닌 상표권 분쟁…상대는 국내 중소기업",
-   "highlight": "상표권 분쟁",
+   "headline": "イ・スマン、A2O LITE＆A2O SOULらの“商標権”めぐり韓国の中小企業と紛争中と報道",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    10,
     9
    ]
   }
@@ -386,7 +405,10 @@
     29,
     30,
     31,
-    32
+    32,
+    38,
+    40,
+    42
    ]
   },
   {
@@ -418,15 +440,24 @@
    "refs": [
     26
    ]
+  },
+  {
+   "headline": "BLAST SLAM IX Dota 2 Tournament Kicks Off Tomorrow: Ukrainian Team NAVI Among the Participants",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    41
+   ]
   }
  ],
  "_covered": {
-  "漫威电影": 132,
-  "GTA 6": 152,
+  "漫威电影": 149,
+  "GTA 6": 165,
   "周杰伦": 22,
-  "A2O LITE": 9,
-  "dota2": 37,
-  "三星手机": 18,
+  "A2O LITE": 15,
+  "dota2": 42,
+  "三星手机": 22,
   "gelato pique": 4,
   "チェーンソーマン": 10,
   "Vaundy": 1,
@@ -487,7 +518,9 @@
    "weight": "normal",
    "refs": [
     7,
-    15
+    15,
+    20,
+    22
    ]
   },
   {
@@ -508,6 +541,15 @@
    "weight": "normal",
    "refs": [
     17
+   ]
+  },
+  {
+   "headline": "One UI 9.5 hints at Open Gate video recording option for the Galaxy S27",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
    ]
   }
  ],

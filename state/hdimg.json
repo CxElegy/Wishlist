@@ -1787,6 +1787,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
+  "w": 4525,
+  "h": 3016,
+  "target": 720,
+  "v": 3
+ },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
   "w": 1280,
   "h": 670,
@@ -1802,12 +1808,6 @@
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/8f9505c6ea91e2fb579db4b06af9bc08d5d093ba.png": {
   "w": 1280,
   "h": 670,
-  "target": 720,
-  "v": 3
- },
- "https://d2phebdq64jyfk.cloudfront.net/media/article/6e08a883c1fb477eb94f339f262d2875.webp": {
-  "w": 800,
-  "h": 449,
   "target": 720,
   "v": 3
  },
@@ -1883,12 +1883,6 @@
   "target": 720,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/1win-essence-i?v=1795044405": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
   "w": 1200,
   "h": 630,
@@ -1905,12 +1899,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/res-unchained-4-blast-slam-vii-southeast-asia-open-qualifier-2?v=1795012228": {
@@ -2017,6 +2005,13 @@
   "h": 674,
   "target": 1280,
   "v": 3
+ },
+ "https://games.app-liv.jp/images/articles/2026/05/gd_586001_-18.png": {
+  "w": 700,
+  "h": 370,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.411
  },
  "https://gdm-universal-media.b-cdn.net/epicstream/5182de2d-finding-harry-potter-the-craft-behind-the-magic.webp?width=1600&height=840": {
   "w": 1493,
@@ -2147,12 +2142,6 @@
  "https://i.cdn.newsbytesapp.com/images/l144_17791794849218.jpg": {
   "w": 1440,
   "h": 809,
-  "target": 720,
-  "v": 3
- },
- "https://i.tribune.com.pk/media/images/x-men-first-class-640x4801/x-men-first-class-640x4801-640x480.webp": {
-  "w": 640,
-  "h": 480,
   "target": 720,
   "v": 3
  },
@@ -2385,6 +2374,12 @@
   "w": 960,
   "h": 1200,
   "target": 1280,
+  "v": 3
+ },
+ "https://images.khan.co.kr/article/2026/11/19/news-p.v1.20261119.0686d7ac136d41c980bfd7d76c4ce559_P1.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://images.mein-mmo.de/medien/2025/06/BitCraft-Online-Early-Access.jpg": {
@@ -2978,10 +2973,10 @@
   "target": 720,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/11/19/2026111921084528816_x.jpg": {
+ "https://img.mydaily.co.kr/photos/2026/11/19/2026111921084528816_l.jpg": {
   "w": 640,
   "h": 817,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://img.tenasia.co.kr/photo/202611/BF.46475392.3.jpg": {
@@ -6235,6 +6230,12 @@
    0.774
   ]
  },
+ "https://players.com.ua/wp-content/uploads/2026/11/blast_slam_ix_1200x675.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://portal.auone.jp/media/thumbnails/2026/11/09/https___news_mynavi_jp_article_20261109-5240755__w600.webp": {
   "w": 600,
   "h": 400,
@@ -7526,12 +7527,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.anewsa.com/news_images/2026/11/18/mark/20261118105200.jpg": {
-  "w": 480,
-  "h": 600,
-  "target": 720,
-  "v": 3
- },
  "https://www.appbank.net/wp-content/uploads/2026/11/20261117_084139_289_01.webp": {
   "w": 1920,
   "h": 1080,
@@ -8100,6 +8095,12 @@
   ],
   "p": null
  },
+ "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.WprRjiZ3TREON37kLgL-PA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -8428,8 +8429,58 @@
  "https://www.chosun.com/resizer/v2/GNSWKOJVGM2DCYZZMU2DEYZSME.png?auth=c85712807a38fe9e725e72e478103e409b6fd6306afd29a11ad131b57706a2c5&width=650&height=341&smart=true": {
   "w": 650,
   "h": 341,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.543,
+  "local": "pics/146b52bb99b64b03.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    12,
+    13,
+    8,
+    7,
+    12,
+    13,
+    7,
+    4,
+    4,
+    9,
+    6
+   ],
+   [
+    2,
+    5,
+    8,
+    16,
+    15,
+    14,
+    10,
+    7,
+    4,
+    3,
+    8,
+    7
+   ]
+  ],
+  "c": "#897268",
+  "k": [
+   0.327,
+   0.852,
+   0.669,
+   0.986
+  ],
+  "p": [
+   0.0,
+   0.074,
+   1.0,
+   1.0
+  ]
  },
  "https://www.computerweekly.com/rms/computerweekly/gta-vi-editorial-do-not-reuse-getty.jpg": {
   "w": 1200,
@@ -8614,6 +8665,12 @@
  "https://www.fashion-press.net/img/news/153462/top.jpg?1794886283": {
   "w": 1398,
   "h": 932,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/esports-gaming-setup.png?v=72240b6c111d7c67dbf43f89ddbfc186f0a0c1e5": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -8862,12 +8919,6 @@
    0.967,
    0.452
   ]
- },
- "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Plus-review-3.jpg": {
-  "w": 1920,
-  "h": 1078,
-  "target": 720,
-  "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
