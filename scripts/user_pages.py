@@ -16,9 +16,10 @@
     python scripts/user_pages.py --boards-file F --emblem-only   # 新しい版面の速い道（library_emblem.pages_runner）：小元素が足されただけの作り直し
 
 --emblem-only（2026-11-19 店長「新しい版面を足したら小元素が出るまで 5 分未満」。前は 1 人分 92 秒）：記事は前の作り直しと同じなので、
-網に聞く物は前の回の結果（pages/_fp/all.json の _og・_bands・_up_pick・_res・_open）を使う：記事の代表の写真（og_image）・写真の余白と主役
-（photo_bands）は無い分だけ 1 束まで（ONLY_NEW_OG・ONLY_NEW_PHOTOS）、記事の写真探し（find_images：1 本 20 秒）・「気になるかも？」の
-Google の跳转の戻し（resolve_url）は前の結果だけ、頭の写真が開くか（photo_opens）は無い網址だけ聞く。前の結果は前のページを作った回が残したものなので、
+網に聞く物は前の回の結果（pages/_fp/all.json の _og・_bands・_up_pick・_res・_open）を使う：記事の代表の写真（og_image）・記事の写真探し
+（find_images：images.pick）・「気になるかも？」の Google の跳转の戻し（resolve_url）は前の結果だけ（網に出ない。前の結果に無い写真なしの記事が
+1 本でもあれば、その人はふつうに作る）、写真の余白と主役（photo_bands）は無い分だけ 1 束まで（ONLY_NEW_PHOTOS）、頭の写真が開くか（photo_opens）は
+無い網址だけ聞く。前の結果は前のページを作った回が残したものなので、
 ページは前と同じ写真・記事に小元素が足されたもの（手元の測り：同じ入力で HTML が一致・1 人分 56 秒 → 10 秒）。無い分は次のふつうの作り直しが測る。
 置く前に指紋を読み直し、作っている間にほかの回がこの人のページを置いていたら置かない（その回のほうが新しい記事・測りを持ち、小元素も design_moved で入っている）。
 """
@@ -537,7 +538,6 @@ def latest_stories(get):
 
 
 READ_DAYS = 2
-ONLY_NEW_OG = 12       # --emblem-only：前の結果に無い記事の代表の写真は、並べて読む 1 束（og_image の並び）まで
 ONLY_NEW_PHOTOS = 16   # --emblem-only：前の結果に無い写真の余白と主役は 1 束（photo_bands の 16 本並び）まで。手元の測りで 1 枚 0.5 秒（400 枚 200 秒）＝ 16 枚 ≈ 8 秒
 IMGS_PATH = "/storage/v1/object/pages/_fp/imgs.json"   # 写真の網址の一覧（非公開の箱・アカウントは持たない）
 
@@ -831,22 +831,23 @@ def main(argv):
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
             own = {norm(r["item"]): r for r in rows or []}
             t1 = _lap(lap, "読む", t0)
-            # 小元素だけの回（--emblem-only）で前の結果が足りない人（一度もページを作っていない・前の回のあとに写真の無い新しい記事が 1 束より多い）は、
-            # 前のページより写真の少ないページを置かない：この人だけふつうの作り直し（5 分は割れても、ページを悪くしない方が先。秒はログに）
+            # 小元素だけの回（--emblem-only）で前の結果が足りない人（一度もページを作っていない・前の回のあとに og の覚えに無い写真なしの記事が 1 本でもある）は、
+            # 前のページより写真の少ないページを置かない：この人だけふつうの作り直し（5 分は割れても、ページを悪くしない方が先。秒はログに）。
+            # 小元素だけの回の og は網に出ない（limit=0）＝その回の秒は前の結果だけで決まる（2026-11-19 見直し 2 回目：1 束読むと 1 人分が数十秒〜3 分）
             full = not only or not fps.get(f"{acct}/index.html") or \
-                len(og_image.missing(split_shop(board_rows(follows, latest, own), shop_items)[0], og)) > ONLY_NEW_OG
+                bool(og_image.missing(split_shop(board_rows(follows, latest, own), shop_items)[0], og))
             why = "" if not only or not full else "前の結果が足りない"
 
             def make(follows, full):
                 """この人の 1 枚（と設定・欲しい物・話題度）を組んで測る。→ (html, pages, brows, 前の結果に無く探さなかった数, og_image.fill の数, 写真の数, 防盗链の写真)
                 写真の段（2026-11-19 お客さまの写真）：AI 編集の記事は整理待ちの写真を引き継ぐ（board_rows）→ 店長と同じ名前の版面は外す（split_shop）→
                 防盗链の写真は置き場に入ったものだけ出し、まだのものは写真なしに（mask_saved）→ 記事のページの代表の写真（og_image.fill：残りの最後の手）→
-                それでも写真の無い記事は整理待ちへ（demote）。小元素だけの回は og を前の結果＋無い分 1 束だけ（取れなかった記事の試し直しはしない）"""
+                それでも写真の無い記事は整理待ちへ（demote）。小元素だけの回は og を前の結果だけ（網に出ない・取れなかった記事の試し直しもしない）"""
                 brows, shopb = split_shop(board_rows(follows, latest, own), shop_items)
                 sv = {}
                 brows = mask_saved(brows, sv, pub)
                 tally = {}
-                got = photo_tally(brows, og, tally, deadline=og_deadline, limit=None if full else ONLY_NEW_OG, retry=full)
+                got = photo_tally(brows, og, tally, deadline=og_deadline, limit=None if full else 0, retry=full)
                 brows = {**shopb, **brows}
                 need = []
                 res_memo.new, res_memo.missed = full, 0

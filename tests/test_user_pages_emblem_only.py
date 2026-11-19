@@ -165,6 +165,7 @@ class EmblemOnlyMain(unittest.TestCase):
         self.acct = user_pages.account_of(self.EMAIL)
         self.db = {"config": {"emblem_state": {"have": 0}}}   # 版面 5 の config（小元素なし）
         self.store = {}
+        self.more = []   # 2 回目から足す記事（前の回の覚えに無い記事）
 
     def page(self):
         return (self.store.get(f"/storage/v1/object/pages/{self.acct}/index.html") or b"").decode("utf-8")
@@ -191,7 +192,7 @@ class EmblemOnlyMain(unittest.TestCase):
             if "follows?account" in path:
                 return follows()
             if "board_stories" in path:
-                return [{"board_id": 5, "day": "2026-11-19", "stories": [], "pending": [story]}]
+                return [{"board_id": 5, "day": "2026-11-19", "stories": [], "pending": [story, *self.more]}]
             if "boards?id=in." in path:
                 return [{"id": 5, "emblem_state": self.db["config"].get("emblem_state")}]
             return []
@@ -231,6 +232,29 @@ class EmblemOnlyMain(unittest.TestCase):
         self.assertEqual(calls["og"], 0)        # 前に読んだ記事の代表の写真は読み直さない
         self.assertEqual(calls["resolve"], 0)   # 跳转の戻しは前の答えだけ
         self.assertEqual(calls["measure_limit"], [user_pages.ONLY_NEW_PHOTOS])   # 測るのは前に無い写真を 1 束まで
+        self.assertIn(self.EMB, self.page())
+
+    def test_emblem_only_does_not_retry_old_misses(self):
+        """見直し 2 回目 3：前の回の「取れなかった」が 4 時間前（ふつうの回なら試し直す間を過ぎた）でも、小元素だけの回は og を読みに行かない（0 回）。"""
+        import datetime as dt
+        self.run_main(["--boards-file", "IDS"])
+        url = "https://n.example/1"
+        old = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=4)).isoformat(timespec="seconds")
+        self.store[FP]["_og"][url] = {"why": "none", "at": old, "n": 1}
+        self.write_emblem()
+        calls = self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertEqual(calls["og"], 0)
+        self.assertEqual(calls["measure_limit"], [user_pages.ONLY_NEW_PHOTOS])   # ふつうに作り直してもいない（小元素だけの回のまま）
+        self.assertIn(self.EMB, self.page())
+
+    def test_one_story_without_previous_result_means_full_build(self):
+        """見直し 2 回目 1：前の結果（og の覚え）に無い写真なしの記事が 1 本でもあれば、その人はふつうに作る（小元素だけの回は og を読まない）。"""
+        self.run_main(["--boards-file", "IDS"])
+        self.more = [{"title": "t2", "url": "https://n.example/2", "summary": "", "source": "s", "date": "2026-11-19"}]
+        self.write_emblem()
+        calls = self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertEqual(calls["og"], 1)                    # ふつうに作った（新しい 1 本だけを読む）
+        self.assertEqual(calls["measure_limit"], [None])
         self.assertIn(self.EMB, self.page())
 
     def test_full_run_still_searches(self):

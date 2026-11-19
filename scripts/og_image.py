@@ -164,8 +164,8 @@ def fill(rows, cache, page=None, check=None, now=None, log=print, hard=None, dea
     """rows = {版面: {"stories": [...], "pending": [...]}}。写真のない記事に image を入れる（覚えから・新しく読んで）。
     cache = 網址 → 覚え（取れた {"img","at"}・取れなかった {"why","at","n"}・前の形の文字列）。
     deadline（time.monotonic）を過ぎたら新しく読まない（覚えは付けない＝次の回に持ち越し。user_pages が 1 回分の時間を全員で分ける）。
-    limit＝新しく読む上限（既定 MAX_NEW）。retry=False は覚えに無い網址だけ読む（取れなかった記事の試し直しをしない：user_pages --emblem-only＝
-    前の結果＋無い分を 1 束だけ。limit=0 なら覚えだけで網に出ない）。
+    limit＝新しく読む上限（既定 MAX_NEW。0 なら覚えだけで網に出ない：user_pages --emblem-only）。retry=False は覚えに無い網址だけ読む
+    （取れなかった記事の試し直しをしない）。
     → 数 {"read", "new", "memo", "wrapped", "saved", "carry", "why": {理由: 数}, "touched": [image を入れた記事の dict]}"""
     now = now or dt.datetime.now(dt.timezone.utc)
     stamp = now.isoformat(timespec="seconds")
