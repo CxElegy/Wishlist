@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "edit_sig": "3ca025997abc",
+ "edit_sig": "d1871fe88e88",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -754,33 +754,6 @@
   {
    "cover": null,
    "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-11-12",
-     "n": 1,
-     "source": "攻略大百科",
-     "title": "【あつ森】漆喰壁のアイテム一覧【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPNkNYQnRGQlpONjlmSUR2V3ZkOU9uOFVxRm1PRDRVbzRWR2N0YVoyMTJxZTUzRVZUcGxfMmZ4UHVSemY1UzJ5Z3FBT1NWalBQb2pVSWxRNmtta0k4VFpFbWxySTZLeGd5WkE4UnF0RFhGZFU2ZmRCdTVmMDFZckFZcmFBb2EySHhzYld0MG81SkhNdTJGaElEUDNOblczS3M?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "周杰伦",
    "section": "演出",
    "stories": [
@@ -1189,6 +1162,31 @@
     "alt_bg": "#211C12",
     "alt_fg": "#F4EEE4",
     "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-18",
+    "headline": "『あつ森』大特集の『ぴこぷり 2027 ヒミツいっぱいスペシャル』が発売！付録は164ページのデザインブック",
+    "url": "https://news.nicovideo.jp/watch/nw20003759?news_ref=watch_70_nw19647428"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
     "split": true
