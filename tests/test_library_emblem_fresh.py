@@ -256,7 +256,9 @@ class Pages(unittest.TestCase):
 
     def test_partial_run_keeps_others_photo_list(self):
         src = inspect.getsource(user_pages.main)
-        self.assertIn("not partial", src)   # 一部の人だけの回は imgs.json（全員分の写真の一覧）を書き換えない
+        # 一部の人だけの回は imgs.json（全員分の写真の一覧）を置き換えず、前の列に足すだけ（2026-11-19：tests/test_saved_photos.MainPartial が中身を確かめる）
+        self.assertIn("if partial or failed:", src)
+        self.assertIn("merge_imgs(old", src)
 
 
 class RegularClaims(unittest.TestCase):
