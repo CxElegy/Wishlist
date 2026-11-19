@@ -4337,7 +4337,7 @@ FIT_JS = """
       // S（1 列）と W（頭の記事だけ、2 列分）：写真を上・字を下。枠の高さは切らない形の 0.45〜1.6 倍（幅の 1.35 倍まで）
       for (const s of i === 0 && k >= 2 ? [1, 2] : [1]) {
         boardForm(c, {k: s > 1 ? 'W' : 'S', s, w: 100, ph: 100}); const w = p.getBoundingClientRect().width; if (!w) continue;
-        if (s === 1 && vis.length <= __FEW_WALL__) { const lo = w / fewRatio(vis); boardForm(c, {k: 'S', s, w, ph: lo}); const t = H(c) - p.getBoundingClientRect().height; if (!clamped(c)) o.push({k: 'S', s, w, lo, hi: lo * 1.8, h: x => t + x, a: x => w * x, few: 1}); continue; }   // 記事が少ない版面：どの写真も同じ 16:10 の枠から（主役の位置で切る・cropAt）。列の底は枠を伸ばしてそろえる（字の下を空けない）
+        if (s === 1 && vis.length <= __FEW_WALL__ && !vis.some(x => x.dataset.hero)) { const lo = w / fewRatio(vis); boardForm(c, {k: 'S', s, w, ph: lo}); const t = H(c) - p.getBoundingClientRect().height; if (!clamped(c)) o.push({k: 'S', s, w, lo, hi: lo * 1.8, h: x => t + x, a: x => w * x, few: 1}); continue; }   // 記事が少ない版面：どの写真も同じ 16:10 の枠から（主役の位置で切る・cropAt）。列の底は枠を伸ばしてそろえる（字の下を空けない）
         const h0 = w / nat, r = phRange(img, w, h0 * 0.45, Math.min(h0 * 2.0, w * 1.35));   // 伸ばす上限は主役・文字の判定（cropAt）に任せる（1.6 倍では鬼滅の刃の真ん中が 130px 足りなかった）
         if (!r && h0 > w * 1.35) continue;
         const lo = r ? r[0] : h0, hi = r ? r[1] : h0;
@@ -4379,7 +4379,7 @@ FIT_JS = """
     for (const k of [...new Set([Math.min(cols0, vis.length), cols0 - 1, cols0 + 1])].filter(k => k >= 2 && k <= vis.length && m.clientWidth / k >= 260)) {   // 列を 1 つ増やす案も（見出しの長い記事が 4 本の版面が画面に収まらなかった）   // 1 列に並べる形は使わない（2026-11-08 店長「一列に羅列するのは全部なし。デザイン性がない」）
       m.style.gridTemplateColumns = 'repeat(' + k + ',minmax(0,1fr))';
       const opts = vis.map((c, i) => measure(c, i, k));
-      if (vis.length <= __FEW_WALL__) { const same = opts.map(o => o.filter(f => f.few)); if (same.every(o => o.length)) same.forEach((o, i) => { opts[i] = o; }); }   // 記事が少ない版面（3 本以下）は全部同じ組み（写真が上・字が下）：写真の大きさをそろえ、列の底は写真の枠の伸び縮みでそろえる（11-19 主の指摘・直し 2 回目。記事が多い店長の版面は今までどおり）
+      if (vis.length <= __FEW_WALL__ && !vis.some(x => x.dataset.hero)) { const same = opts.map(o => o.filter(f => f.few)); if (same.every(o => o.length)) same.forEach((o, i) => { opts[i] = o; }); }   // 記事が少ない版面（3 本以下）は全部同じ組み（写真が上・字が下）：写真の大きさをそろえ、列の底は写真の枠の伸び縮みでそろえる（11-19 主の指摘・直し 2 回目。記事が多い版面・重大のある版面〔重大がいちばん大きい C1〕は今までどおり）
       if (window.WL_FB_DEBUG) (window.WL_FB_LOG = window.WL_FB_LOG || []).push(['opts', m.closest('section') && m.closest('section').dataset.k, k, opts.map(o => o.map(f => f.k + '[' + Math.round(f.lo) + '-' + Math.round(f.hi) + ']').join('|'))]);
       vis.forEach(boardBase);
       for (let n = vis.length; n >= 2; n--) {   // 2 本まで減らしてよい（F1：数は減らしてよい。6 本の版面が 1024×768 で 3 本までしか減らせず入らなかった）   // 入りきらなければ後ろの記事を出さない（2026-11-09 店長：数は少なくてよい・1 画面で見終わる）
@@ -4589,7 +4589,7 @@ FIT_JS = """
     });
   };
   let spg = new Set();   // 写真が届いた版面（引数なしの呼び出しは全部の版面）
-  const spans = g => { spg.add(g || 0); clearTimeout(spt); spt = setTimeout(() => { const s = spg; spg = new Set(); unHero(); document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(s.has(0) ? null : s); fitHeroes(); }, 150); };
+  const spans = g => { spg.add(g || 0); clearTimeout(spt); spt = setTimeout(() => { const s = spg; spg = new Set(); unHero(); document.querySelectorAll('.grid > .lead.nw, .mas > .lead.nw').forEach(l => l._span && l._span()); mason(s.has(0) ? null : s); fitHeroes(); document.dispatchEvent(new Event('wl-laid')); }, 150); };   // 組み終わり：見出しの孤立を同じ組みの中で直す（NOORPHAN_JS）
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     if (img.complete) fit(img);
   });
@@ -4836,7 +4836,7 @@ FIT_JS = """
   // 写真・字体が届いて高さが変わったら詰め直す（1 フレームにまとめる）。足した分で自分の大きさが変わっても、同じ結果になるので繰り返さない
   let wallReady = document.readyState === 'complete'; addEventListener('load', () => { wallReady = true; });
   if (!wallReady) setTimeout(() => { if (!wallReady) { wallReady = true; wallSoon(); } }, 6000);   // load が遅い（広告・動画など）ときも 6 秒で組む
-  let wq = 0; const wallSoon = () => { if (!wq) wq = requestAnimationFrame(() => { wq = 0; wall(); }); };
+  let wq = 0; const wallSoon = () => { if (!wq) wq = requestAnimationFrame(() => { wq = 0; wall(); document.dispatchEvent(new Event('wl-laid')); }); };
   if (window.ResizeObserver) { const ro = new ResizeObserver(wallSoon); document.querySelectorAll('.mgrid > .wall > .wc').forEach(c => ro.observe(c)); }
   wall();
   if (document.fonts) document.fonts.ready.then(wall);
@@ -4867,12 +4867,12 @@ FIT_JS = """
 
 FIT_JS = FIT_JS.replace("// @EMB_REL@", EMB_REL_JS).replace("__FEW_WALL__", str(FEW_WALL))
 # 見出しの最後の行を 1〜2 字にしない（2026-11-19 店長 ①）：CSS の balance で残った見出しだけ、列の幅を保ったまま ① 字間を 0.01em ずつ ② 字を 4% ずつ小さく ③ 字を 4% ずつ大きく、の順に試し、だめなときだけ ④ 幅を 1 字ずつ狭める（主経由の店長の決め 1：列を埋め、最後の行を 3 字以上に。11-19 主の指摘 2）。要約（.top p・.wbl・.blurb）も同じ決め。
-# 全部のニュースの見出しに同じ決め（頭条だけの特例にしない）。幅が変わったときだけやり直す（F5）
+# 全部のニュースの見出しに同じ決め（頭条だけの特例にしない）。幅が変わったときと、FIT_JS が組み終えたとき（wl-laid）にやり直す＝組みの中で 1 回（F5：遅れて 2.5 秒後に直すのをやめた）
 NOORPHAN_JS = r"""(()=>{const S='.top h2,.wc>b,section.sec article.card h2,section.sec article.card h3,.top p,.wc>.wbl,section.sec article.card p.blurb',rg=document.createRange();
 const last=el=>{const rg=document.createRange(),bot=el.getBoundingClientRect().bottom+1,ns=[],tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);for(let n;(n=tw.nextNode());)if(n.data.trim())ns.push(n);const at=(n,i)=>{rg.setStart(n,i);rg.setEnd(n,i+1);const q=rg.getClientRects()[0];return q&&q.width&&q.bottom<=bot?q:null;};let f=null;for(const n of ns){for(let i=0;i<n.data.length&&!f;i++)if(n.data[i].trim())f=at(n,i);if(f)break;}if(!f)return 99;let y=null,c=0;for(let k=ns.length-1;k>=0;k--){const n=ns[k];for(let i=n.data.length-1;i>=0;i--){if(!n.data[i].trim())continue;const q=at(n,i);if(!q)continue;const m=q.top+q.height/2;if(y===null){y=m;if(Math.abs(y-(f.top+f.height/2))<f.height*0.5)return 99;}if(Math.abs(m-y)<q.height*0.5){if(++c>=3)return c;}else return c;}}return c;};
 const go=()=>document.querySelectorAll(S).forEach(h=>{h.style.maxWidth=h.style.fontSize=h.style.letterSpacing='';if(!h.offsetWidth||last(h)>=3)return;const w=h.getBoundingClientRect().width,em=parseFloat(getComputedStyle(h).fontSize)||16;
  for(let s=1;s<=4;s++){h.style.letterSpacing=(-0.01*s).toFixed(2)+'em';if(last(h)>=3)return;}h.style.letterSpacing='';for(let s=1;s<=4;s++){h.style.fontSize=(em*(1-s*0.04)).toFixed(1)+'px';if(last(h)>=3)return;}h.style.fontSize='';for(let s=1;s<=4;s++){h.style.fontSize=(em*(1+s*0.04)).toFixed(1)+'px';if(last(h)>=3&&h.getBoundingClientRect().width<=w+1)return;}h.style.fontSize='';for(let k=1;k<=8&&w-k*em>=4*em;k++){h.style.maxWidth=(w-k*em)+'px';if(last(h)>=3)return;}h.style.maxWidth='';});
-let W=innerWidth;(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(go,300));addEventListener('load',()=>{setTimeout(go,800);setTimeout(go,2500);});addEventListener('resize',()=>{if(innerWidth!==W){W=innerWidth;setTimeout(go,300);}});})();"""
+let W=innerWidth;(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(go,300));addEventListener('load',()=>setTimeout(go,800));let lq=0;document.addEventListener('wl-laid',()=>{clearTimeout(lq);lq=setTimeout(go,30);});addEventListener('resize',()=>{if(innerWidth!==W){W=innerWidth;setTimeout(go,300);}});})();"""
 
 NAV_JS = """
 (() => {
