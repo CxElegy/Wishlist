@@ -160,14 +160,24 @@ class Browser(unittest.TestCase):
         self.assertEqual(json.loads(base64.b64decode(seen["put"]["content"]).decode())["text"], "AgentBoard 見えた")
         p.close()
 
+    def test_token_name_per_device(self):
+        ctx = self.b.new_context(viewport={"width": 390, "height": 844},
+                                 user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1")
+        p = ctx.new_page()
+        p.route(re.compile(r"https://fonts\.(googleapis|gstatic)\.com/.*"), lambda r: r.abort())
+        p.goto(PAGE.as_uri())
+        self.assertRegex(p.locator("#newtok").get_attribute("href"), r"name=agentboard-phone-\d{8}(&|$)")
+        ctx.close()
+
     def test_setup_and_expired_token(self):
         p, errs = self.open(390, 844, q="")
         self.assertEqual(errs, [])
         self.assertTrue(p.is_visible("#setup"))
         href = p.locator("#setup a").first.get_attribute("href")                       # 令牌は 1 回で：作成ページに項目を入れて開く
         self.assertTrue(href.startswith("https://github.com/settings/personal-access-tokens/new?"))
-        for kv in ("name=AgentBoard", "contents=write", "expires_in=366"):
+        for kv in ("contents=write", "expires_in=366", "target_name=CxElegy"):
             self.assertIn(kv, href)
+        self.assertRegex(href, r"name=agentboard-pc-\d{8}(&|$)")                       # 名前はこの端末用（同じ名前は GitHub で作れない）
         self.assertFalse(p.is_visible("#app"))
         p.fill("#tok", "abc")
         p.press("#tok", "Enter")
