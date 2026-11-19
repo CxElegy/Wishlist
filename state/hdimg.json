@@ -49,6 +49,12 @@
   ],
   "why": "看不清"
  },
+ "http://p0.qhimg.com/t11508c75c8220d5d5beea7637c.jpg": {
+  "w": 815,
+  "h": 522,
+  "target": 1280,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -890,12 +896,6 @@
   "target": 1280,
   "v": 3
  },
- "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
-  "w": 4525,
-  "h": 3016,
-  "target": 720,
-  "v": 3
- },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/053ef2a384ffcaceee38a6baf159e0984a48154d.png": {
   "w": 1280,
   "h": 670,
@@ -956,6 +956,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/hakub-goryu.jpg": {
+  "w": 1962,
+  "h": 1104,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/hakuba-happo.jpg": {
   "w": 1962,
   "h": 1102,
@@ -992,6 +998,12 @@
   "target": 720,
   "v": 3
  },
+ "https://escharts.com/metaImage/tournaments/1win-essence-i?v=1795044405": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
   "w": 1200,
   "h": 630,
@@ -1008,6 +1020,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/international-2026-south-america-open-qualifier-2?v=1795033549": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/res-unchained-4-blast-slam-vii-southeast-asia-open-qualifier-2?v=1795012228": {
@@ -1076,13 +1094,6 @@
   "h": 674,
   "target": 1280,
   "v": 3
- },
- "https://games.app-liv.jp/images/articles/2026/05/gd_586001_-18.png": {
-  "w": 700,
-  "h": 370,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.411
  },
  "https://gdm-universal-media.b-cdn.net/epicstream/5182de2d-finding-harry-potter-the-craft-behind-the-magic.webp?width=1600&height=840": {
   "w": 1493,
@@ -1216,11 +1227,24 @@
   "target": 720,
   "v": 3
  },
+ "https://i.tribune.com.pk/media/images/x-men-first-class-640x4801/x-men-first-class-640x4801-640x480.webp": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://i.ytimg.com/vi/L5g3CWeV9pc/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://i0.wp.com/disneyworldfan.jp/wp-content/uploads/2026/11/disney-starbucks-holiday-mickey-travel-tumbler-2026.jpg?fit=608%2C608&ssl=1": {
+  "w": 608,
+  "h": 608,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.393
  },
  "https://i0.wp.com/gazyekichi96.com/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-Ultra-AH-2.png?fit=1920%2C1080&ssl=1": {
   "w": 1920,
@@ -3166,12 +3190,6 @@
   "target": 1280,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/79579/45/79579-45-b53d5215e15367af5e35e1dcb7fa8873-2400x1350.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 2240,
-  "h": 1260,
-  "target": 720,
-  "v": 3
- },
  "https://prtimes.jp/img/165636/12/resize/d165636-12-a415dda3aae89418a36d-0.jpg": {
   "w": 650,
   "h": 366,
@@ -4072,6 +4090,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.EeiSmwLPyt1XarC17pWGqQ&pid=News&w=525": {
+  "w": 525,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.FOoggTFAL_2bZZS_uZ1pTg&pid=News&w=494": {
   "w": 494,
   "h": 640,
@@ -4103,6 +4127,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.J06QUwHopb-uS79Si_i8sA&pid=News&w=1080": {
+  "w": 525,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Je1DGBbrEmnZC1gtylM6Pw&pid=News&w=800": {
   "w": 700,
@@ -4141,12 +4171,6 @@
    922
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Wwmfdj8tWLPOVIVIL5VPfw&pid=News&w=697": {
   "w": 697,
@@ -4220,12 +4244,6 @@
  "https://www.bing.com/th?id=ONUT.fheXwQ87G0MjymhrusPdPw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ioi8PD0JlJDLyFyiqXX6fA&pid=News&w=1200": {
-  "w": 700,
-  "h": 291,
   "target": 720,
   "v": 3
  },
@@ -4403,12 +4421,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/esports-gaming-setup.png?v=72240b6c111d7c67dbf43f89ddbfc186f0a0c1e5": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg": {
   "w": 1280,
   "h": 720,
@@ -4562,6 +4574,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Plus-review-3.jpg": {
+  "w": 1920,
+  "h": 1078,
+  "target": 720,
+  "v": 3
+ },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
   "w": 1200,
   "h": 675,
@@ -4703,12 +4721,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.369
- },
- "https://x0.ifengimg.com/res/2026/9E8BB742A0AA690EA08C3EAAC446BFAE7BD1AAD2_size24_w720_h380.webp": {
-  "w": 720,
-  "h": 380,
-  "target": 720,
-  "v": 3
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-c5107fb3cab563f904aec69918eb1145/images/ed1e92c6-9632-4f56-8421-59c7b32366a0.jpg": {
   "w": 1920,
