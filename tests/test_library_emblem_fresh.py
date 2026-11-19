@@ -449,7 +449,7 @@ class FreshMain(unittest.TestCase):
                 mock.patch.object(le, "pages_runner", runner), \
                 mock.patch.object(le, "board_job_done", lambda: True), \
                 mock.patch.object(le, "run_started", lambda: None), \
-                mock.patch.object(le, "warm", lambda: log.append(("warm",))):
+                mock.patch.object(le, "warm", lambda face=True: log.append(("warm", face))):
             le.fresh_main(["--fresh", "--wait", "0", "--minutes", "5", "--pages-dir", d] + (["--tools", tools] if tools else []))
             out = (pathlib.Path(d) / "o").read_text()
         self.rows = rows
@@ -457,7 +457,7 @@ class FreshMain(unittest.TestCase):
 
     def test_each_board_is_written_then_its_page_right_away(self):
         log, out = self.run_main([{"id": 1, "name": "a", "config": {}}, {"id": 2, "name": "b", "config": {}}])
-        log = [x for x in log if x != ("warm",)]
+        log = [x for x in log if x[0] != "warm"]
         self.assertEqual(log, [("fill", 1, "生活"), ("write", 1), ("page", 1), ("fill", 2, "生活"), ("write", 2), ("page", 2)])
         self.assertIn("worked=true", out)
         self.assertIn("more=true", out)   # running：続きは今までの列
@@ -465,8 +465,9 @@ class FreshMain(unittest.TestCase):
     def test_models_are_warmed_once_before_the_first_fill(self):
         # 行が python の起動前にもうある（待つ間が無い）回：模型の読み込み（≈ 40 秒）を 90 秒の上限の中に入れない
         log, _ = self.run_main([{"id": 1, "name": "a", "config": {}}, {"id": 2, "name": "b", "config": {}}])
-        self.assertEqual(log[0], ("warm",))
-        self.assertEqual(log.count(("warm",)), 1)
+        # rembg の切り抜きは python の始めから後ろの糸で（行を待つ間に）、顔の模型（糸ごと）は取る糸で 1 回。どちらも最初の版面の前
+        self.assertEqual(log[:2], [("warm", False), ("warm", True)])
+        self.assertEqual(sum(1 for x in log if x[0] == "warm"), 2)
         src = inspect.getsource(le.fresh_fill)
         self.assertIn("time.time() + FRESH_BOARD_S", src)   # 上限の時計は fresh_fill の始め＝warm の後から
 
@@ -477,23 +478,23 @@ class FreshMain(unittest.TestCase):
 
     def test_route_ab_ends_without_taking(self):
         log, out = self.run_main([])
-        self.assertEqual(log, [])   # 経路 A/B：版面を取らないので模型も読まない
+        self.assertEqual([x for x in log if x[0] != "warm"], [])   # 経路 A/B：版面を取らない（rembg の切り抜きは始めから後ろで読むだけ）
         self.assertIn("worked=false", out)
         self.assertIn("more=false", out)
 
     def test_one_failure_does_not_stop_writing(self):
         log, _ = self.run_main([{"id": 1, "name": "a", "config": {}}], fill_error=RuntimeError("x"))
-        self.assertEqual([x for x in log if x != ("warm",)], [("write", 1)])   # 失敗も書く（指紋なしの failed・印を外す）＝次の見回りですぐ
+        self.assertEqual([x for x in log if x[0] != "warm"], [("write", 1)])   # 失敗も書く（指紋なしの failed・印を外す）＝次の見回りですぐ
 
     def test_one_500_on_read_does_not_stop(self):
         # DB は店長の PC（Tailscale 経由）：一瞬の 500 で shard ごと落ちない。「無い」とも決めない（board の job が終わっていても）
         log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], read_fail={0})
-        self.assertEqual([x for x in log if x != ("warm",)][:2], [("fill", 1, "生活"), ("write", 1)])
+        self.assertEqual([x for x in log if x[0] != "warm"][:2], [("fill", 1, "生活"), ("write", 1)])
         self.assertIn("worked=true", out)
 
     def test_reads_keep_failing_ends_with_outputs(self):
         log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], read_fail=set(range(50)))
-        self.assertEqual(log, [])
+        self.assertEqual([x for x in log if x[0] != "warm"], [])
         self.assertIn("worked=false", out)
         self.assertIn("more=true", out)   # 読めないまま：続きは列へ
 
@@ -509,7 +510,7 @@ class FreshMain(unittest.TestCase):
 
     def test_claim_error_does_not_crash(self):
         log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], claim_fail=True)
-        self.assertEqual(log, [])
+        self.assertEqual([x for x in log if x[0] != "warm"], [])
         self.assertIn("more=true", out)
 
     def test_tools_wait_is_one_limit_for_the_whole_job(self):
@@ -535,6 +536,8 @@ class FreshMain(unittest.TestCase):
             self.run_main([{"id": 41, "name": "秘密の名前", "config": {}}])
         s = buf.getvalue()
         self.assertIn("速い道の時刻 版面 41：取り始め +", s)
+        self.assertIn("速い道の待ち 版面 41：行が見えた +", s)   # 待ちの内訳（行・rembg・模型・印）
+        self.assertIn("・模型 +", s)
         self.assertIn("・ページ +", s)
         self.assertNotIn("秘密の名前", s)
 

@@ -855,10 +855,12 @@ def tools_ready(path):
     return "rembg_done=1" in lines or "done=1" in lines
 
 
-def warm():
+def warm(face=True):
     """待っている間に重い模型（rembg の切り抜き・顔）を先に読む。1 枚目の版面の時間から読み込みの 40 秒ほどを外す（2026-11-19 run 2：
-    --fresh の最初の 40 秒は onnxruntime の読み込みまで何も出ていなかった）。読めなくても何もしない（取るときに今までどおり読む）。"""
-    for f in (lambda: __import__("emblem")._session("birefnet-general-lite"), lambda: __import__("face_id").engine()):
+    --fresh の最初の 40 秒は onnxruntime の読み込みまで何も出ていなかった）。読めなくても何もしない（取るときに今までどおり読む）。
+    face=False は rembg の切り抜きだけ（後ろの糸で読む：顔の模型は糸ごとに持つので、取る糸＝main で読む。face_id.engine）。"""
+    for f in (lambda: __import__("emblem")._session("birefnet-general-lite"), lambda: __import__("face_id").engine()) if face else \
+            (lambda: __import__("emblem")._session("birefnet-general-lite"),):
         try:
             with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
                 f()
@@ -1107,6 +1109,20 @@ def fresh_main(argv):
     marks = {}   # 版面 id → {claim, first, write, page}（起きてからの秒）
     start_pages, finish_pages = pages_runner(argv[argv.index("--pages-dir") + 1]) if "--pages-dir" in argv else (None, None)
     warmed = [False]
+    import threading
+    waits = {"row": None, "rembg": None, "model": None}   # 待ちの内訳（起きてからの秒）：行が見えた・rembg が使える・模型を読み終えた
+    bg = [None]   # 模型を後ろで読む糸（python の始めから。行を待つ間に済ませる）
+
+    def start_warm():
+        if bg[0] is None and tools_ready(tools):
+            waits["rembg"] = waits["rembg"] or at()
+
+            def run():
+                warm(face=False)
+                waits["model"] = at()
+            bg[0] = threading.Thread(target=run, daemon=True)
+            bg[0].start()
+    start_warm()
 
     tools_stop = t0 + FRESH_TOOLS_S   # 待つ上限は job 全体で 1 つ（版面ごとに 120 秒ずつ待たない）
 
@@ -1116,17 +1132,23 @@ def fresh_main(argv):
             time.sleep(1)
         if not tools_ready(tools):   # 入れ終わらない：入れている途中に import しない。取らずに列へ
             return False
+        start_warm()
+        if bg[0] is not None:
+            bg[0].join()   # 後ろで読んでいる模型を待つ（同じ模型を 2 本で読まない）
         idle()   # 版面の行が python より先にある回（待つ間が無い）も、模型は 1 回だけ先に読む。1 版面の上限の時計は fresh_fill の中＝この後から
         return True
 
     def idle():
-        if not warmed[0] and tools_ready(tools):
+        start_warm()
+        if not warmed[0] and bg[0] is not None and not bg[0].is_alive():
             warmed[0] = True
-            warm()
+            warm()   # 顔の模型（糸ごと）はこの糸で。rembg の切り抜きはもう読んである
 
     def list_fresh():
         try:
             got = fresh_boards(db, time.time(), shop)
+            if got and not waits["row"]:
+                waits["row"] = at()
         except Exception:  # noqa: BLE001  一瞬の失敗は [] で続ける。続けて FRESH_DB_FAILS 回なら終える
             counts["read"] += 1
             streak[0] += 1
@@ -1161,6 +1183,9 @@ def fresh_main(argv):
             counts["tools"] += 1
             unclaim(b["id"])
             return None
+        if not m.get("ready"):
+            m["ready"] = at()
+            print(f"速い道の待ち 版面 {b['id']}：行が見えた {waits['row'] or '—'}・rembg {waits['rembg'] or '—'}・模型 {waits['model'] or '—'}・印 {m['claim']}・始めた {m['ready']}", flush=True)
         try:
             add = fresh_fill(b, b.get("_follow") or {}, up, base, end)
         except library.WdBlocked:   # 種類が決まらない：書かず、印だけ外して列へ（次の見回り）

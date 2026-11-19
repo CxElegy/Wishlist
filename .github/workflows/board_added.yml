@@ -131,7 +131,11 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt
+          cache-dependency-path: |
+            requirements.txt
+            requirements-emblem.txt
+      - name: 依存と rembg（用意の段で 1 回の pip に。cache の鍵に rembg も入る）
+        run: pip install -r requirements.txt -r requirements-emblem.txt
       - uses: actions/cache/restore@v4   # 写しを読むだけ（library_emblem.yml と同じ。storage から落とさない）
         with:
           path: .photo_cache
@@ -144,13 +148,12 @@ jobs:
             ~/.rembg
             ~/.cache/wishlist-faces
           key: emblem-models-v1
-      - name: 新しい版面の小元素（行を待つ間に重い道具を後ろで入れ、来たら 1 枚目まで・書いたらその人のページ）
+      - name: 新しい版面の小元素（行を待つ間に scrapling を後ろで入れ・模型を先に読み、来たら 1 枚目まで・書いたらその人のページ）
         id: fill
         run: |
           T="$RUNNER_TEMP/fresh_tools"
-          ( pip install -q "rembg[cpu]>=2.0.60,<3" > "$T.log" 2>&1 && echo rembg=ok >> "$T"
-            echo rembg_done=1 >> "$T"   # 速い道は rembg だけ待つ（scrapling は入った時点で使う）
-            scrapling install >> "$T.log" 2>&1 && echo scrapling=ok >> "$T"
+          echo rembg_done=1 > "$T"   # rembg は用意の段で入れた（python は始めから模型を読める）
+          ( scrapling install >> "$T.log" 2>&1 && echo scrapling=ok >> "$T"
             echo done=1 >> "$T" ) &
           python scripts/library_emblem.py --fresh --wait 300 --minutes 9 --shard ${{ matrix.shard }} --tools "$T" --pages-dir "$RUNNER_TEMP"
       - name: 続き（名簿の残り・時間で残した版面）を今までの列へ

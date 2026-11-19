@@ -63,6 +63,14 @@ class BoardAdded(unittest.TestCase):
         self.assertIn(") &", fill)
         self.assertIn("done=1", fill)
         self.assertLess(fill.index("rembg_done=1"), fill.index("scrapling install"))   # 速い道は rembg だけ待つ
+        # 2026-11-19 本番 2 回目：後ろで入れる rembg のあとに模型の読み込みが始まり、取り始めが +118〜138 秒 → rembg は用意の段で（pip の cache の鍵にも）
+        self.assertNotIn("pip install", fill)
+        pip = j["steps"][self.at(j, "requirements-emblem.txt")]
+        self.assertIn("pip install -r requirements.txt -r requirements-emblem.txt", pip["run"])
+        self.assertLess(self.at(j, "requirements-emblem.txt"), self.at(j, "library_emblem.py --fresh"))
+        setup = next(s for s in j["steps"] if "setup-python" in str(s.get("uses")))
+        self.assertIn("requirements-emblem.txt", setup["with"]["cache-dependency-path"])
+        self.assertIn("rembg", (ROOT / "requirements-emblem.txt").read_text(encoding="utf-8"))
         for arg in ("--wait", "--shard ${{ matrix.shard }}", "--tools", "--pages-dir"):
             self.assertIn(arg, fill)
         self.assertNotIn("if", j["steps"][self.at(j, "library_emblem.py --fresh")])   # 経路 A/B も同じ step（board の job の終わりを見て終える）
