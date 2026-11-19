@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-19T20:34:48+00:00",
+ "changed": true,
+ "checked": "2026-11-19T21:09:47+00:00",
  "fired": {
   "at": "2026-11-19T20:34:48+00:00",
   "results": {
@@ -64,51 +64,50 @@
     "sig": "1ee6421a97b6"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
-    "BLEACH Mirrors High",
     "FROM",
     "GTA 6",
     "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "gelato pique",
-    "lib:BTS",
-    "lib:F1",
-    "lib:Mrs. GREEN APPLE",
-    "lib:Nintendo Switch 2",
-    "lib:YOASOBI",
-    "lib:サッカー日本代表",
-    "lib:大相撲",
-    "lib:大谷翔平",
+    "lib:iPhone",
+    "lib:ユニクロ",
+    "lib:宇宙・ロケット",
+    "lib:将棋",
+    "lib:恐竜",
+    "lib:温泉",
+    "lib:無印良品",
+    "lib:生成AI",
     "チェーンソーマン",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
+    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-19T18:37:22+00:00",
+   "last_batch": "2026-11-19T20:48:54+00:00",
    "last_error": {
     "at": "2026-11-18T23:39:22+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 82,
+   "prog": 115,
    "prog_day": "2026-11-20",
    "ripe": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
     "GTA 6",
-    "MMORPG 新作",
-    "dota2",
-    "gelato pique"
+    "ILLIT",
+    "gelato pique",
+    "周杰伦",
+    "漫威电影",
+    "绝区零"
    ],
-   "sig": "1ee6421a97b6",
+   "sig": "5f3a40914b65",
    "token_cap": 1000000,
-   "tokens_today": 103890,
-   "why": "整理待ちの記事 133 件（24 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 199783,
+   "why": "整理待ちの記事 145 件（23 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -257,12 +256,12 @@
    "runs": 12
   },
   "2026-11-20": {
-   "batches": 2,
-   "cr": 1824796,
-   "cw": 96442,
-   "in": 58,
-   "out": 7390,
-   "runs": 2
+   "batches": 4,
+   "cr": 3411008,
+   "cw": 185739,
+   "in": 104,
+   "out": 13940,
+   "runs": 4
   }
  }
 }
