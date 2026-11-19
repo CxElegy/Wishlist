@@ -149,9 +149,13 @@ jobs:
         run: |
           T="$RUNNER_TEMP/fresh_tools"
           ( pip install -q "rembg[cpu]>=2.0.60,<3" > "$T.log" 2>&1 && echo rembg=ok >> "$T"
+            echo rembg_done=1 >> "$T"   # 速い道は rembg だけ待つ（scrapling は入った時点で使う）
             scrapling install >> "$T.log" 2>&1 && echo scrapling=ok >> "$T"
             echo done=1 >> "$T" ) &
           python scripts/library_emblem.py --fresh --wait 300 --minutes 9 --shard ${{ matrix.shard }} --tools "$T" --pages-dir "$RUNNER_TEMP"
       - name: 続き（名簿の残り・時間で残した版面）を今までの列へ
         if: steps.fill.outputs.more == 'true'
-        run: gh workflow run library_emblem.yml -f minutes=20
+        run: |
+          # 3 本がそれぞれ起こさない：列（library_emblem.yml）に待ち・実行中があれば起こさない（そちらが続きも拾う）
+          n=$(gh run list --workflow library_emblem.yml -L 20 --json status --jq '[.[] | select(.status != "completed")] | length') || n=0
+          if [ "${n:-0}" = 0 ]; then gh workflow run library_emblem.yml -f minutes=20; else echo "小元素の列に待ち・実行中 $n 回：起こさない"; fi

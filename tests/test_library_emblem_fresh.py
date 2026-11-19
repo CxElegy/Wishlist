@@ -322,7 +322,7 @@ class Budget(unittest.TestCase):
 
 
 class FreshMain(unittest.TestCase):
-    def run_main(self, boards, follows=None, have=1, fill_error=None, read_fail=(), put_fail=0, claim_fail=False):
+    def run_main(self, boards, follows=None, have=1, fill_error=None, read_fail=(), put_fail=0, claim_fail=False, tools=None):
         """read_fail = 版面の読みの何回目（0 から）を 500 にするか・put_fail = 最初の何回の config の書き込みを 500 にするか。"""
         import digest
         import urllib.error
@@ -375,7 +375,7 @@ class FreshMain(unittest.TestCase):
                 mock.patch.object(le, "board_job_done", lambda: True), \
                 mock.patch.object(le, "run_started", lambda: None), \
                 mock.patch.object(le, "warm", lambda: log.append(("warm",))):
-            le.fresh_main(["--fresh", "--wait", "0", "--minutes", "5", "--pages-dir", d])
+            le.fresh_main(["--fresh", "--wait", "0", "--minutes", "5", "--pages-dir", d] + (["--tools", tools] if tools else []))
             out = (pathlib.Path(d) / "o").read_text()
         self.rows = rows
         return log, out
@@ -437,6 +437,15 @@ class FreshMain(unittest.TestCase):
         self.assertEqual(log, [])
         self.assertIn("more=true", out)
 
+    def test_tools_wait_is_one_limit_for_the_whole_job(self):
+        # rembg が入らないまま：版面ごとに 120 秒ずつ待たない。上限を過ぎたら取らずに列へ（印は外す）
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(le, "FRESH_TOOLS_S", 0):
+            tools = pathlib.Path(d) / "t"
+            log, out = self.run_main([{"id": 1, "name": "a", "config": {}}, {"id": 2, "name": "b", "config": {}}], tools=str(tools))
+        self.assertFalse([x for x in log if x[0] == "fill"])
+        self.assertIn("more=true", out)
+        self.assertIsNone(self.rows[1]["config"].get("emblem_claim"))
+
     def test_outputs_even_if_the_loop_breaks(self):
         with mock.patch.object(le, "fresh_loop", lambda *a, **k: 1 / 0):
             log, out = self.run_main([{"id": 1, "name": "a", "config": {}}])
@@ -463,6 +472,7 @@ class Upstream(unittest.TestCase):
         self.assertFalse(le.board_job_done(lambda p: jobs("queued"), run_id=9))   # library.yml の列で待っている
         self.assertIsNone(le.board_job_done(lambda p: None, run_id=9))   # 読めない＝分からない
         self.assertIsNone(le.board_job_done(lambda p: {"jobs": []}, run_id=9))
+        self.assertIsNone(le.board_job_done(lambda p: {"jobs": [{"name": "board", "status": "completed", "conclusion": "cancelled"}]}, run_id=9))   # 置き換えられた：分からない
         with mock.patch.dict("os.environ", {}, clear=True):
             self.assertIsNone(le.board_job_done(lambda p: jobs("completed")))   # 手元（run が無い）
 
@@ -479,10 +489,15 @@ class Upstream(unittest.TestCase):
             f = pathlib.Path(d) / "t"
             self.assertFalse(le.tools_ready(str(f)))
             f.write_text("rembg=ok\n")
-            self.assertFalse(le.tools_ready(str(f)))
-            f.write_text("rembg=ok\nscrapling=ok\ndone=1\n")
+            self.assertFalse(le.tools_ready(str(f)))   # 入れている途中（印の前）は import しない
+            f.write_text("rembg=ok\nrembg_done=1\n")
+            self.assertTrue(le.tools_ready(str(f)))    # 任意の scrapling は待たない
+            self.assertIsNone(os.environ.get("SCRAPLING_BROWSER"))
+            f.write_text("rembg_done=1\nscrapling=ok\n")
             self.assertTrue(le.tools_ready(str(f)))
             self.assertEqual(os.environ.get("SCRAPLING_BROWSER"), "1")
+            f.write_text("done=1\n")   # rembg が入らなくても終わりの印で進む（取るときは EnvFail＝指紋なし）
+            self.assertTrue(le.tools_ready(str(f)))
         self.assertTrue(le.tools_ready(None))
 
 

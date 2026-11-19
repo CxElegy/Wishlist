@@ -62,12 +62,15 @@ class BoardAdded(unittest.TestCase):
         self.assertLess(fill.index("scrapling install"), fill.index("library_emblem.py --fresh"))
         self.assertIn(") &", fill)
         self.assertIn("done=1", fill)
+        self.assertLess(fill.index("rembg_done=1"), fill.index("scrapling install"))   # 速い道は rembg だけ待つ
         for arg in ("--wait", "--shard ${{ matrix.shard }}", "--tools", "--pages-dir"):
             self.assertIn(arg, fill)
         self.assertNotIn("if", j["steps"][self.at(j, "library_emblem.py --fresh")])   # 経路 A/B も同じ step（board の job の終わりを見て終える）
         self.assertFalse(any("user_pages.py" in r for r in self.runs(j)))   # ページは版面ごとに --fresh の中から（全版面の後に 1 回ではない）
         self.assertIn("more", j["steps"][self.at(j, "gh workflow run library_emblem.yml")]["if"])
         self.assertLess(self.at(j, "library_emblem.py --fresh"), self.at(j, "gh workflow run library_emblem.yml"))
+        more = j["steps"][self.at(j, "gh workflow run library_emblem.yml")]["run"]
+        self.assertLess(more.index("gh run list --workflow library_emblem.yml"), more.index("gh workflow run"))   # 3 本が 3 回起こさない
 
     def test_emblem_job_is_sharded_like_the_code(self):
         import library_emblem

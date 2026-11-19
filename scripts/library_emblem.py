@@ -744,7 +744,7 @@ FRESH_POLL_S = 5         # 版面の行（library.py --users が作る）が DB 
 FRESH_UP_S = 15          # 同じ run の board の job（library.py --users）が終わったかを GitHub に聞く間隔（3 つ並べて 1 回 2 分なら 24 回：GITHUB_TOKEN の 1 時間 1000 回に余裕）
 FRESH_GRACE_S = 90       # board の job の様子が分からない（API が読めない）とき：これだけ待っても来ず、足したばかりの名前（added_at）も無ければ終える
 FRESH_QUIET_S = 60       # 同じく分からないとき：1 つでも取ったあと、新しい版面がこれだけ来なければ終える
-FRESH_TOOLS_S = 120      # 後ろで入れる重い道具（rembg・scrapling）を、1 つ目の版面を取る前に待つ上限
+FRESH_TOOLS_S = 120      # 後ろで入れる rembg を待つ上限（job 全体で 1 つ：python が始まってから。過ぎても入らなければ取らずに列へ）
 FRESH_TAIL_S = 30        # 締め切りのこの秒数前からは新しい版面を始めない
 FRESH_DB_FAILS = 6       # 版面の読みが続けてこの回数（5 秒おき＝30 秒）失敗したら、数を出して終える（DB は店長の PC・Tailscale 経由：一瞬の 5xx・時間切れはありうる）
 RECENT_PICK_S = 900      # board の job の様子が分からないとき：足してからこの間で、まだどの版面の名前にも当たらない名前があれば「来る」と見て待つ
@@ -808,7 +808,9 @@ def board_job_done(get=None, run_id=None, name="board"):
     if not isinstance(jobs, list):
         return None
     job = next((j for j in jobs if j.get("name") == name), None)
-    return None if job is None else job.get("status") == "completed"
+    if job is None or job.get("conclusion") == "cancelled":   # concurrency で新しい回に置き換えられた：行を書いたかは分からない
+        return None
+    return job.get("status") == "completed"
 
 
 def run_started(get=None, run_id=None):
@@ -824,8 +826,9 @@ def run_started(get=None, run_id=None):
 
 
 def tools_ready(path):
-    """後ろで入れている重い道具（board_added.yml：rembg・scrapling）が終わったか。path のファイルに done=1 の行が出たら真。
-    scrapling が入ったら SCRAPLING_BROWSER を立てる（前は step の GITHUB_ENV。いまは同じ step の中で入れる）。path が無い（手元・library_emblem.yml）は真。"""
+    """後ろで入れている rembg（board_added.yml）を入れ終えたか。path のファイルに rembg_done=1（入れ終えた・失敗も）か done=1 の行が出たら真。
+    入れている途中は切り抜き・模型を import しない（pip が書き換えている途中のものを読まない）。任意の scrapling は待たない：
+    scrapling=ok が出ていればその時点で SCRAPLING_BROWSER を立てる（前は step の GITHUB_ENV。いまは同じ step の中で入れる）。path が無い（手元・library_emblem.yml）は真。"""
     import os
     if not path:
         return True
@@ -835,7 +838,7 @@ def tools_ready(path):
         return False
     if "scrapling=ok" in lines:
         os.environ["SCRAPLING_BROWSER"] = "1"
-    return "done=1" in lines
+    return "rembg_done=1" in lines or "done=1" in lines
 
 
 def warm():
@@ -1031,17 +1034,22 @@ def fresh_main(argv):
     shard = _arg(argv, "--shard", 0, int)
     tools = argv[argv.index("--tools") + 1] if "--tools" in argv else None
     up = _upload(base, key)
-    counts = {"blocked": 0, "error": 0, "read": 0, "claim": 0, "write": 0, "unclaim": 0}   # 読み・印・書き込みの失敗の数（DB の一瞬の 5xx・時間切れ）
+    counts = {"blocked": 0, "error": 0, "read": 0, "claim": 0, "write": 0, "unclaim": 0, "tools": 0}   # 読み・印・書き込みの失敗の数（DB の一瞬の 5xx・時間切れ）
     streak = [0]
     marks = {}   # 版面 id → {claim, first, write, page}（起きてからの秒）
     start_pages, finish_pages = pages_runner(argv[argv.index("--pages-dir") + 1]) if "--pages-dir" in argv else (None, None)
     warmed = [False]
 
+    tools_stop = t0 + FRESH_TOOLS_S   # 待つ上限は job 全体で 1 つ（版面ごとに 120 秒ずつ待たない）
+
     def ready():
-        stop = time.time() + FRESH_TOOLS_S
-        while not tools_ready(tools) and time.time() < stop:
+        """rembg を入れ終えたか（終えるまで待つ・上限は tools_stop）。→ 取ってよいか。"""
+        while not tools_ready(tools) and time.time() < tools_stop:
             time.sleep(1)
+        if not tools_ready(tools):   # 入れ終わらない：入れている途中に import しない。取らずに列へ
+            return False
         idle()   # 版面の行が python より先にある回（待つ間が無い）も、模型は 1 回だけ先に読む。1 版面の上限の時計は fresh_fill の中＝この後から
+        return True
 
     def idle():
         if not warmed[0] and tools_ready(tools):
@@ -1081,7 +1089,10 @@ def fresh_main(argv):
             counts["claim"] += 1
             return None
         m = marks.setdefault(b["id"], {"claim": at()})
-        ready()
+        if not ready():
+            counts["tools"] += 1
+            unclaim(b["id"])
+            return None
         try:
             add = fresh_fill(b, b.get("_follow") or {}, up, base, end)
         except library.WdBlocked:   # 種類が決まらない：書かず、印だけ外して列へ（次の見回り）
@@ -1117,12 +1128,12 @@ def fresh_main(argv):
                 marks[bid]["page"] = at(t) if rc == 0 else f"{at(t)}（終了 {rc}）"
         for bid, m in marks.items():   # 版面ごとに 1 行：PC の board_kpi が照らせるように（id と秒だけ）
             print(f"速い道の時刻 版面 {bid}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m.get('write', '—')}・ページ {m.get('page', '—')}", flush=True)
-        more = bool(r["left"] or rest is None or rest or counts["blocked"] or crash or r.get("stopped") or any(counts[k] for k in ("claim", "write")))
+        more = bool(r["left"] or rest is None or rest or counts["blocked"] or crash or r.get("stopped") or any(counts[k] for k in ("claim", "write", "tools")))
         _out(worked="true" if r["ids"] else "false", more="true" if more else "false")
     ok = sum(1 for a in r["done"] if a["emblem_state"].get("state") == "ok")
     print(f"新しい版面の小元素：取った {len(r['done'])} 版面（小元素あり {len(r['ids'])}・そろった {ok}・列へ続き {r['left']}）・"
           f"残した未試行 {len(rest or [])}・Wikidata に断られた {counts['blocked']}・失敗 {counts['error']}・"
-          f"DB の失敗 読み {counts['read']}・印 {counts['claim']}・書き {counts['write']}・印を外せず {counts['unclaim']}"
+          f"DB の失敗 読み {counts['read']}・印 {counts['claim']}・書き {counts['write']}・印を外せず {counts['unclaim']}・道具が入らず {counts['tools']}"
           f"{'・読めないので途中で終えた' if r.get('stopped') else ''}{f'・止まった {crash}' if crash else ''}・終わり {at()}")
 
 
