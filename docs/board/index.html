@@ -15,7 +15,8 @@
  --lead:#ff9a3c;--haiku:#5ea3ff;--sonnet:#e6c14a;--harness:#3fd17c;--opus:#a98bff;--red:#ff5c57;--redbg:#2a1215;
  --mono:'JetBrains Mono','Noto Sans JP',ui-monospace,monospace}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--fg);font:400 12.5px/1.6 var(--mono);-webkit-font-smoothing:antialiased}
+html{background:var(--bg)}
+html,body{margin:0;color:var(--fg);font:400 12.5px/1.6 var(--mono);-webkit-font-smoothing:antialiased}
 a{color:inherit}
 button,input,select{font:inherit;color:inherit}
 .win{max-width:1180px;margin:18px auto;border:1px solid var(--line);background:var(--win)}
@@ -85,7 +86,31 @@ fieldset.now{margin:0 0 16px;border-color:var(--harness);padding:8px 12px 12px}
 fieldset.now legend{color:var(--harness);font-weight:700}
 fieldset.now legend .mix{font-weight:400;margin-left:6px}
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.card{border:1px solid var(--line);padding:10px 12px 9px;display:flex;flex-direction:column;gap:5px;cursor:pointer;min-width:0;position:relative}
+.card{border:1px solid var(--line);padding:10px 12px 9px;display:flex;flex-direction:column;gap:5px;cursor:pointer;min-width:0;position:relative;overflow:hidden;isolation:isolate;
+ animation:cardIn .5s cubic-bezier(.22,1,.36,1) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* SpotlightCard：指の先に淡い光（--mx/--my は JS が入れる） */
+.card .spot{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .3s;
+ background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--c,#fff) 16%,transparent),transparent 70%)}
+.card:hover .spot{opacity:1}
+/* StarBorder：作業中の札の上と下の縁を光が走る（transform だけ＝合成だけで動く） */
+.card.st-working::before,.card.st-working::after{content:"";position:absolute;width:45%;height:2px;left:0;pointer-events:none;z-index:2;
+ background:linear-gradient(90deg,transparent,var(--c,#fff) 50%,transparent);box-shadow:0 0 10px 1px var(--c,#fff);opacity:.95;will-change:transform}
+.card.st-working::before{top:-1px;animation:starTop 5s linear infinite}
+.card.st-working::after{bottom:-1px;animation:starBot 5s linear infinite}
+@keyframes starTop{from{transform:translateX(-100%)}to{transform:translateX(200%)}}
+@keyframes starBot{from{transform:translateX(200%)}to{transform:translateX(-100%)}}
+/* ShinyText：「作業中」の字に光が流れる */
+.shine{background:linear-gradient(110deg,var(--harness) 35%,#eafff2 50%,var(--harness) 65%);background-size:250% 100%;
+ -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 2.4s linear infinite}
+@keyframes shine{from{background-position:120% 0}to{background-position:-20% 0}}
+/* TextType：打っている途中の字の後ろに点滅する印 */
+.caret::after{content:"▌";margin-left:1px;animation:blink 1s steps(1) infinite;color:var(--c,var(--white))}
+@keyframes blink{50%{opacity:0}}
+/* 背景（LetterGlitch）と火花（ClickSpark）の画布 */
+#bgfx{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55}
+#sparkfx{position:fixed;inset:0;z-index:50;pointer-events:none}
+.b-lead{--c:var(--lead)}.b-haiku{--c:var(--haiku)}.b-sonnet{--c:var(--sonnet)}.b-opus{--c:var(--opus)}.b-other{--c:var(--dim)}
 .card .hd{display:flex;align-items:center;gap:8px;font-size:12px}
 .card .stt{font-weight:700;white-space:nowrap}
 .card .tg{color:var(--dim);font-size:11px;border:1px solid var(--line);padding:0 5px}
@@ -97,7 +122,8 @@ fieldset.now legend .mix{font-weight:400;margin-left:6px}
 .card .mdl b{font-size:15px;letter-spacing:.04em}
 .card .mdl .role{color:var(--dim);font-size:11.5px}
 .spark{display:grid;grid-template-columns:repeat(30,1fr);gap:1px;align-items:end;height:26px;border-bottom:1px solid var(--line)}
-.spark i{display:block;background:currentColor;min-height:1px;opacity:.85}
+/* Micro Slats 風：細い板が下から伸び縮みする（scaleY だけ） */
+.spark i{display:block;height:100%;background:currentColor;opacity:.85;transform-origin:50% 100%;transform:scaleY(var(--v,.04));transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .6s}
 .spark i.z{opacity:.18}
 .card .sx{display:flex;justify-content:space-between;color:var(--dim);font-size:10.5px;margin-top:-3px}
 .card .you{color:var(--lead);font-family:'Noto Sans JP',var(--mono);font-size:12px;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -121,7 +147,8 @@ fieldset.now legend .mix{font-weight:400;margin-left:6px}
 .card.st-idle,.card.st-off{opacity:.62}
 .card.st-idle .stt,.card.st-off .stt{color:var(--dim)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.card.st-working .stt i{animation:none}}
+@media (prefers-reduced-motion:reduce){.card.st-working .stt i,.card,.card.st-working::before,.card.st-working::after,.shine,.caret::after{animation:none}
+ .card.st-working::before,.card.st-working::after{display:none}.spark i{transition:none}.shine{-webkit-text-fill-color:var(--harness)}}
 @media (max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* 下の欄 */
 fieldset{border:1px solid var(--line);margin:16px 0 0;padding:6px 12px 10px;min-width:0}
@@ -179,6 +206,7 @@ legend{padding:0 8px;color:var(--fg)}
 }
 </style></head>
 <body>
+<canvas id="bgfx" aria-hidden="true"></canvas><canvas id="sparkfx" aria-hidden="true"></canvas>
 <div class="win">
  <div class="bar"><i></i><i></i><i></i><span id="bar">~/agentboard · zsh</span><button id="logout" type="button" hidden>令牌を外す</button></div>
 
@@ -310,42 +338,110 @@ function merge(d,now){
 // ---- 描く ----
 function bar(ratio,cls){var p=Math.max(0,Math.min(1,ratio||0));return '<span class="meter '+cls+'"><i style="width:'+(p*100).toFixed(1)+'%"></i></span>'}
 var OPEN={};   // 開いた札（その会話の流れを出す）
-var STATE={working:['<i>●</i> 作業中','working'],ask:['? 選んで','ask'],quiet:['■ 動きなし','quiet'],yours:['◆ あなたの番','yours'],idle:['休み','idle']};
+var STATE={working:['<i>●</i> <span class="shine">作業中</span>','working'],ask:['? 選んで','ask'],quiet:['■ 動きなし','quiet'],yours:['◆ あなたの番','yours'],idle:['休み','idle']};
 var ROLE={fable:'計画',opus:'難しい判断',sonnet:'ふつうの実装',haiku:'探す・点検',lead:'計画'};
-function spark(arr,f){arr=arr||[];var mx=Math.max.apply(null,[1].concat(arr));
-  return '<div class="spark c-'+f+'" title="この 30 分の 1 分ごとの道具の数">'+arr.map(function(v){return '<i'+(v?'':' class="z"')+' style="height:'+(v?Math.max(12,Math.round(v/mx*100)):4)+'%"></i>'}).join('')+'</div>';}
+var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+// ---- 動き（React Bits〔reactbits.dev・© 2026 David Haz・MIT + Commons Clause〕の DecryptedText・TextType・CountUp・ClickSpark・LetterGlitch を、このページ用に素の JS で） ----
+var GLYPH='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*+=<>?/';
+function decrypt(el,text,ms){ // DecryptedText：乱れた字から本当の字へ
+  if(RM||!text){el.textContent=text;return}
+  var n=text.length,t0=performance.now(),dur=ms||700,id=(el._dec||0)+1;el._dec=id;
+  (function step(now){if(el._dec!==id)return;var p=Math.min(1,(now-t0)/dur),k=Math.floor(p*n),out='';
+    for(var i=0;i<n;i++){var c=text[i];out+=i<k||c===' '||c==='·'?c:GLYPH[(Math.random()*GLYPH.length)|0]}
+    el.textContent=out;if(p<1)requestAnimationFrame(step)})(t0);
+}
+function typeText(el,text){ // TextType：いまの道具を打っていく
+  if(RM||!text){el.textContent=text;el.classList.remove('caret');return}
+  var id=(el._typ||0)+1,i=0,per=Math.max(8,Math.min(28,700/text.length));el._typ=id;el.classList.add('caret');
+  (function step(){if(el._typ!==id)return;i++;el.textContent=text.slice(0,i);if(i<text.length)setTimeout(step,per);else setTimeout(function(){if(el._typ===id)el.classList.remove('caret')},1600)})();
+}
+function countTo(el,to,fmt){ // CountUp：数が変わったら数え上げる
+  var from=el._v==null?to:el._v;el._v=to;fmt=fmt||String;
+  if(RM||from===to){el.textContent=fmt(to);return}
+  var t0=performance.now(),id=(el._cnt||0)+1;el._cnt=id;
+  (function step(now){if(el._cnt!==id)return;var p=Math.min(1,(now-t0)/700),q=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(from+(to-from)*q));if(p<1)requestAnimationFrame(step)})(t0);
+}
+function setHTML(el,html){if(el._h!==html){el._h=html;el.innerHTML=html}}
+var CARDS={};
+function makeCard(key){
+  var e=document.createElement('div');e.dataset.id=key;
+  e.innerHTML='<span class="spot"></span><div class="hd"><span class="stt"></span><span class="tg"></span><span class="r"></span></div>'+
+    '<div class="ttl"><span class="tx"></span><small></small></div><div class="mdl"><b></b><span class="role"></span></div>'+
+    '<div class="spark">'+new Array(31).join('<i class="z"></i>')+'</div><div class="sx"><span>30m</span><span>今</span></div>'+
+    '<div class="you"></div><div class="now"></div><div class="chips"></div>'+
+    '<div class="ft"><span class="fturn"></span><span><b class="ftools">0</b> tools</span><span class="ftok"><b>0</b> tok</span><span class="fsub c-sonnet"></span></div><div class="tl" hidden></div>';
+  e.onclick=function(ev){if(ev.target.closest('a'))return;OPEN[key]=!OPEN[key];e.querySelector('.tl').hidden=!OPEN[key]};
+  e.onpointermove=function(ev){var r=e.getBoundingClientRect();e.style.setProperty('--mx',(ev.clientX-r.left)+'px');e.style.setProperty('--my',(ev.clientY-r.top)+'px')};
+  return {el:e,first:true};
+}
 function renderNow(M,now){
   var box=$('now'), rank={working:0,ask:1,quiet:2,yours:3,idle:4};
   var ss=M.sessions.slice().sort(function(a,b){var ra=a.on?(rank[a.state]||0):5, rb=b.on?(rank[b.state]||0):5;return (ra-rb)||(ts(b.t1)-ts(a.t1))});
-  // 見出し：会話の数とモデルの内訳
   var mix={};ss.forEach(function(s){var f=famc(s.fam);mix[f]=(mix[f]||0)+1});
-  $('nowmix').innerHTML=ss.length?'· '+ss.length+' 会話 '+['lead','opus','sonnet','haiku','other'].filter(function(f){return mix[f]}).map(function(f){return '<span class="c-'+f+'">'+({lead:'Fable',opus:'Opus',sonnet:'Sonnet',haiku:'Haiku',other:'他'}[f])+' '+mix[f]+'</span>'}).join(' '):'';
-  box.innerHTML='';
-  if(!ss.length){box.innerHTML='<div class="c-dim">まだ会話が届いていません（PC とクラウドの集め係が動くと、ここに会話ごとの札が出ます）</div>';return}
-  var grid=document.createElement('div');grid.className='cards';box.appendChild(grid);
+  setHTML($('nowmix'),ss.length?'· '+ss.length+' 会話 '+['lead','opus','sonnet','haiku','other'].filter(function(f){return mix[f]}).map(function(f){return '<span class="c-'+f+'">'+({lead:'Fable',opus:'Opus',sonnet:'Sonnet',haiku:'Haiku',other:'他'}[f])+' '+mix[f]+'</span>'}).join(' '):'');
+  var grid=box.querySelector('.cards');
+  if(!ss.length){CARDS={};setHTML(box,'<div class="c-dim">まだ会話が届いていません（PC とクラウドの集め係が動くと、ここに会話ごとの札が出ます）</div>');return}
+  if(!grid){box.innerHTML='';box._h=null;grid=document.createElement('div');grid.className='cards';box.appendChild(grid)}
+  var keep={}, order=[];
   ss.slice(0,12).forEach(function(s){
+    var key=s.host+'/'+s.id, c=CARDS[key]||(CARDS[key]=makeCard(key)), e=c.el;keep[key]=1;order.push(e);
     var f=famc(s.fam), st=s.on?(STATE[s.state]||STATE.idle):['○ 届いていない','off'];
     var q=s.on?(now-ts(s.t1))/60e3:(now-s.hostT)/60e3;
-    var lab=st[0]+((s.on&&(s.state==='quiet'||s.state==='idle'))||!s.on?' · '+dur(q):'');
-    var key=s.host+'/'+s.id, turn=s.turn_t0?dur((now-ts(s.turn_t0))/60e3):'';
+    var cls='card b-'+f+' st-'+st[1];if(e.className!==cls)e.className=cls;
+    setHTML(e.querySelector('.stt'),st[0]+((s.on&&(s.state==='quiet'||s.state==='idle'))||!s.on?' · '+dur(q):''));
+    setHTML(e.querySelector('.tg'),esc(s.tag));
+    setHTML(e.querySelector('.r'),/^session_\w+$/.test(s.link||'')?'<a class="open" href="https://claude.ai/code/'+encodeURIComponent(s.link)+'" target="_blank" rel="noopener">開く</a>':'');
+    var title=s.title||s.id, tx=e.querySelector('.ttl .tx');
+    if(c.title!==title){c.title=title;decrypt(tx,title,c.first?900:600)}
+    setHTML(e.querySelector('.ttl small'),esc(s.project||''));
+    var mb=e.querySelector('.mdl b');mb.className='c-'+f;setHTML(mb,esc(String(s.model||'?').toUpperCase()));
+    setHTML(e.querySelector('.mdl .role'),esc(ROLE[f]||''));
+    var sp=e.querySelector('.spark');sp.className='spark c-'+f;var arr=s.spark||[],mx=Math.max.apply(null,[1].concat(arr));
+    Array.prototype.forEach.call(sp.children,function(b,i){var v=arr[i]||0;b.className=v?'':'z';b.style.setProperty('--v',v?Math.max(.12,v/mx).toFixed(3):'.04')});
+    var you=e.querySelector('.you');setHTML(you,s.prompt?'› '+esc(s.prompt):'');
+    var act=(s.state==='working'||s.state==='quiet'||s.state==='ask')&&s.action, nw=e.querySelector('.now'), line=act?'▸ '+s.action:(s.said?'✓ '+s.said:'');
+    nw.classList.toggle('said',!act);
+    if(c.line!==line){var was=c.line;c.line=line;if(act&&was!==undefined)typeText(nw,line);else{nw.textContent=line;nw.classList.remove('caret')}}
     var subs=M.agents.filter(function(a){return a.sid===s.id&&a.tag===s.tag&&(a.status==='running'||a.status==='stuck')});
-    var link=/^session_\w+$/.test(s.link||'')?'<a class="open" href="https://claude.ai/code/'+encodeURIComponent(s.link)+'" target="_blank" rel="noopener">開く</a>':'';
-    var act=(s.state==='working'||s.state==='quiet'||s.state==='ask')&&s.action;
-    var e=document.createElement('div');e.className='card b-'+f+' st-'+st[1];e.dataset.id=key;
-    e.innerHTML='<div class="hd"><span class="stt">'+lab+'</span><span class="tg">'+esc(s.tag)+'</span><span class="r">'+link+'</span></div>'+
-      '<div class="ttl">'+esc(s.title||s.id)+(s.project?'<small>'+esc(s.project)+'</small>':'')+'</div>'+
-      '<div class="mdl"><b class="c-'+f+'">'+esc(String(s.model||'?').toUpperCase())+'</b><span class="role">'+esc(ROLE[f]||'')+'</span></div>'+
-      spark(s.spark,f)+'<div class="sx"><span>30m</span><span>今</span></div>'+
-      (s.prompt?'<div class="you">› '+esc(s.prompt)+'</div>':'')+
-      (act?'<div class="now">▸ '+esc(s.action)+'</div>':(s.said?'<div class="now said">✓ '+esc(s.said)+'</div>':''))+
-      (subs.length?'<div class="chips">'+subs.map(function(a){var af=famc(a.fam);return '<span class="chip c-'+af+(a.status==='stuck'?' stuck':'')+'" title="'+esc(a.action||'')+'">'+esc(a.model||'')+' · '+esc(a.label)+'</span>'}).join('')+'</div>':'')+
-      '<div class="ft">'+(turn?'<span>この回 <b>'+turn+'</b></span>':'')+'<span><b>'+(s.turn_tools||0)+'</b> tools</span>'+(s.turn_tok?'<span><b>'+k(s.turn_tok)+'</b> tok</span>':'')+(s.sub?'<span class="c-sonnet">係 '+s.sub+'</span>':'')+'</div>'+
-      '<div class="tl"'+(OPEN[key]?'':' hidden')+'>'+(s.events||[]).slice().reverse().map(function(x){return '<div><span class="c-dim">'+hms(ts(x.t))+'</span><span'+(x.err?' class="err"':'')+'>'+esc(x.text)+'</span></div>'}).join('')+'</div>';
-    e.onclick=function(ev){if(ev.target.closest('a'))return;OPEN[key]=!OPEN[key];e.querySelector('.tl').hidden=!OPEN[key]};
-    grid.appendChild(e);
+    setHTML(e.querySelector('.chips'),subs.map(function(a){var af=famc(a.fam);return '<span class="chip c-'+af+(a.status==='stuck'?' stuck':'')+'" title="'+esc(a.action||'')+'">'+esc(a.model||'')+' · '+esc(a.label)+'</span>'}).join(''));
+    setHTML(e.querySelector('.fturn'),s.turn_t0?'この回 <b>'+dur((now-ts(s.turn_t0))/60e3)+'</b>':'');
+    countTo(e.querySelector('.ftools'),s.turn_tools||0);
+    var tk=e.querySelector('.ftok');tk.hidden=!s.turn_tok;countTo(tk.querySelector('b'),s.turn_tok||0,k);
+    setHTML(e.querySelector('.fsub'),s.sub?'係 '+s.sub:'');
+    var tl=e.querySelector('.tl');setHTML(tl,(s.events||[]).slice().reverse().map(function(x){return '<div><span class="c-dim">'+hms(ts(x.t))+'</span><span'+(x.err?' class="err"':'')+'>'+esc(x.text)+'</span></div>'}).join(''));
+    tl.hidden=!OPEN[key];c.first=false;
   });
-  if(ss.length>12)box.insertAdjacentHTML('beforeend','<div class="c-dim" style="margin-top:6px">+'+(ss.length-12)+' 会話（休み）</div>');
+  Object.keys(CARDS).forEach(function(kk){if(!keep[kk]){CARDS[kk].el.remove();delete CARDS[kk]}});
+  var cur=Array.prototype.slice.call(grid.children);
+  if(cur.length!==order.length||cur.some(function(x,i){return x!==order[i]}))order.forEach(function(x){grid.appendChild(x)});
+  var more=box.querySelector('.more2');if(ss.length>12){if(!more){more=document.createElement('div');more.className='more2 c-dim';more.style.marginTop='6px';box.appendChild(more)}more.textContent='+'+(ss.length-12)+' 会話（休み）'}else if(more)more.remove();
 }
+// ---- ClickSpark：押した所に火花 ----
+(function(){var cv=$('sparkfx'),ctx=cv.getContext('2d'),bursts=[],raf=0;if(RM)return;
+  function size(){var r=Math.min(2,window.devicePixelRatio||1);cv.width=innerWidth*r;cv.height=innerHeight*r;ctx.setTransform(r,0,0,r,0,0)}
+  size();addEventListener('resize',size);
+  addEventListener('pointerdown',function(ev){var col=getComputedStyle(ev.target.closest('.card,.ag')||document.body).getPropertyValue('--c').trim()||'#ffd27a';
+    bursts.push({x:ev.clientX,y:ev.clientY,t:performance.now(),c:col});if(!raf)raf=requestAnimationFrame(draw)});
+  function draw(now){ctx.clearRect(0,0,cv.width,cv.height);
+    bursts=bursts.filter(function(b){var p=(now-b.t)/450;if(p>=1)return false;var e=1-Math.pow(1-p,3);ctx.strokeStyle=b.c;ctx.lineWidth=1.6;ctx.globalAlpha=1-p;
+      for(var i=0;i<8;i++){var a=i*Math.PI/4,r1=6+22*e,r2=r1+8*(1-p);ctx.beginPath();ctx.moveTo(b.x+Math.cos(a)*r1,b.y+Math.sin(a)*r1);ctx.lineTo(b.x+Math.cos(a)*r2,b.y+Math.sin(a)*r2);ctx.stroke()}return true});
+    ctx.globalAlpha=1;raf=bursts.length?requestAnimationFrame(draw):0}
+})();
+// ---- LetterGlitch：窓の外に、ゆっくり入れ替わる字の場（PC の幅だけ・隠れている間は止める） ----
+(function(){var cv=$('bgfx');if(!cv||innerWidth<761){cv&&(cv.hidden=true);return}
+  var ctx=cv.getContext('2d'),fs=14,cols=0,rows=0,cells=[],cs=['#ff9a3c','#5ea3ff','#e6c14a','#3fd17c','#a98bff','#2a313c','#2a313c','#2a313c'],last=0;
+  function size(){var r=Math.min(2,window.devicePixelRatio||1);cv.width=innerWidth*r;cv.height=innerHeight*r;ctx.setTransform(r,0,0,r,0,0);
+    cols=Math.ceil(innerWidth/(fs*.62)/1);rows=Math.ceil(innerHeight/fs);cells=[];for(var i=0;i<cols*rows;i++)cells.push({ch:GLYPH[(Math.random()*GLYPH.length)|0],c:cs[(Math.random()*cs.length)|0]});drawAll()}
+  function drawAll(){ctx.fillStyle='#07090d';ctx.fillRect(0,0,innerWidth,innerHeight);ctx.font=fs+'px JetBrains Mono, monospace';ctx.textBaseline='top';
+    for(var i=0;i<cells.length;i++)drawCell(i)}
+  function drawCell(i){var x=(i%cols)*fs*.62,y=((i/cols)|0)*fs;ctx.fillStyle='#07090d';ctx.fillRect(x,y,fs*.62,fs);ctx.globalAlpha=.32;ctx.fillStyle=cells[i].c;ctx.fillText(cells[i].ch,x,y);ctx.globalAlpha=1}
+  function tick(now){if(!document.hidden&&now-last>90){last=now;var n=Math.max(1,(cells.length*.012)|0);
+      for(var j=0;j<n;j++){var i=(Math.random()*cells.length)|0;cells[i].ch=GLYPH[(Math.random()*GLYPH.length)|0];cells[i].c=cs[(Math.random()*cs.length)|0];drawCell(i)}}
+    if(!RM)requestAnimationFrame(tick)}
+  size();var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(size,200)});if(!RM)requestAnimationFrame(tick);
+})();
+// 見出しの字（DecryptedText）
+Array.prototype.forEach.call(document.querySelectorAll('.title b'),function(b,i){var tx=b.textContent;setTimeout(function(){decrypt(b,tx,900)},i*120)});
 function render(d){
   last=d;var now=Date.now(), M=merge(d,now);
   renderNow(M,now);

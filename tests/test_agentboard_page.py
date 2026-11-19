@@ -69,7 +69,7 @@ class Browser(unittest.TestCase):
         cls.pw.stop()
 
     def open(self, w, h, q="?demo", token=None, gql=None, put=None):
-        ctx = self.b.new_context(viewport={"width": w, "height": h})
+        ctx = self.b.new_context(viewport={"width": w, "height": h}, reduced_motion="reduce")   # 中身の試験は動きなしで（字が打ち終わるのを待たない）
         p = ctx.new_page()
         errs = []
         p.on("pageerror", lambda e: errs.append(str(e)))
@@ -192,6 +192,29 @@ class Browser(unittest.TestCase):
         import base64
         self.assertEqual(json.loads(base64.b64decode(seen["put"]["content"]).decode())["text"], "AgentBoard 見えた")
         p.close()
+
+    def test_motion_effects(self):
+        """React Bits の動き（DecryptedText・StarBorder・ShinyText・Micro Slats 風の棒・LetterGlitch）が動き、最後は正しい字になる"""
+        ctx = self.b.new_context(viewport={"width": 1440, "height": 900})
+        p = ctx.new_page()
+        errs = []
+        p.on("pageerror", lambda e: errs.append(str(e)))
+        p.route(re.compile(r"https://fonts\.(googleapis|gstatic)\.com/.*"), lambda r: r.abort())
+        p.goto(PAGE.as_uri() + "?demo")
+        p.wait_for_timeout(1600)
+        self.assertEqual(errs, [])
+        self.assertEqual(p.inner_text(".title b"), "AGENTBOARD")                         # 乱れた字から戻った
+        card = p.locator("#now .card.st-working").first
+        self.assertNotEqual(p.evaluate("e=>getComputedStyle(e,'::before').animationName", card.element_handle()), "none")   # 縁を光が走る
+        self.assertEqual(card.locator(".shine").count(), 1)
+        self.assertNotEqual(card.locator(".spark i").first.evaluate("e=>getComputedStyle(e).transform"), "")
+        self.assertTrue(p.is_visible("#bgfx"))
+        # 5 秒ごとに読み直しても札は作り直さない（動きが始めからにならない）
+        h = card.element_handle()
+        p.evaluate("()=>{}")
+        p.wait_for_timeout(5600)
+        self.assertTrue(h.evaluate("e=>e.isConnected"))
+        ctx.close()
 
     def test_token_name_per_device(self):
         ctx = self.b.new_context(viewport={"width": 390, "height": 844},
