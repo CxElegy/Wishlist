@@ -1,26 +1,41 @@
 name: 版面が足されたとき
 
 # お客さまが版面を足したら、その場で後ろの仕組みを回す（2026-11-11 店長：新規ユーザーが盤面を追加したときの KPI と改善）。
-# 起こすのは DB の my_keywords_set（db/board_added.sql の private.kick_board_added。1 人 1 時間 6 回・全体 30 秒に 1 回）。
-# 前は全部 cron 待ちで、足してから本人のページに載るまで最大 2 時間、小元素は実測 4〜6 時間かかっていた（harness/board_kpi.py で測る）。
-# 順番：ライブラリの follows・boards（library.py --users）→ その人の記事集め（userfeed.py）→ 本人のページ（user_pages.py）→ 小元素（library_emblem.yml を起こす。終われば本人のページを作り直す）。
-# AI 編集は今までどおり gate.py（lib の版面）が起こす。
+# 起こすのは DB の my_keywords_set（db/board_added.sql の private.kick_board_added。1 人 1 時間 6 回・全体 1 時間 120 回）と、
+# 控えに library.yml（毎時の --users で新しい版面を作った回：起こし損ね・1 人 6 回を超えた分）。
+# 時間は harness/board_kpi.py が測る。AI 編集は今までどおり gate.py（lib の版面）が起こす。
+#
+# 2026-11-19 店長「新しい版面を足したら小元素が出るまでの時間は 5 分未満を保つ」。job を 3 つに分けた：
+#   board  ：ライブラリの follows・boards（library.py --users）。library.yml と同じ列（group library：follows を 2 か所から同時に書かない）。
+#   feed   ：board のあと。記事集め（userfeed.py）→ 足した人のページだけ（user_pages.py --recent）。記事が先・ページが後
+#            （足したばかりの版面は記事 5 本までページに記事を載せない：user_pages.held）。
+#   emblem ：board を待たずに最初から走る。group library・library-emblem の列には並ばない（cron の回が 30 分走っていても待たない）。
+#            重い道具（rembg・scrapling・模型）を先に入れ、新しい版面の行が DB に現れるのを 5 秒おきに待って、現れたら速い道
+#            （library_emblem.py --fresh：未試行の新しい版面だけ・1 版面 150 秒・名簿の先頭 3 人＝看板の姿から。規則は fill_one のまま）。
+#            小元素が出たら、その版面を追いかけている人のページだけ作り直す。続き（名簿の残り）は library_emblem.yml の列へ。
+# 5 分の内訳（見積もり。emblem の job の実測は run 44376028544 の library_emblem.yml の準備から）：
+#   足す → dispatch → runner 起動 ≈ 5〜20 秒（GitHub の待ちで変わる。測る：board_kpi）
+#   準備（checkout 3・python 3・pip 14・写し 3・--check-fresh 4・rembg 10・scrapling 17・模型 2）≈ 60 秒
+#   版面の行：board の job（checkout＋pip ≈ 20 秒 → library.py --users の plan_users：新しい名前の Wikidata 数回＋1 秒の間 → boards に挿す）
+#             ≈ 30〜45 秒で現れる＝準備の間に済む（library.yml が走っていると、その終わりまで遅れる）
+#   1 枚目：1 版面の上限 150 秒（FRESH_BOARD_S）· 書く（公開の箱へ上げる＋config）≈ 2〜5 秒
+#   計 ≈ 20 + 60 + 150 + 5 ≈ 4 分弱（上限側）。1 枚目が 150 秒で取れなければ時間切れ（指紋・回数なし）で列へ＝目標を割る：board_kpi が数える。
+# 経路 A/B（店長・ライブラリにある名前）：--check-fresh が「未試行の新しい版面 0・まだ版面になっていない名前 0」を見て、重い道具を入れずに 30 秒ほどで終わる。
 
 on:
   workflow_dispatch:
 
 permissions:
   contents: write
-  actions: write   # 小元素の workflow を起こす
-
-concurrency:
-  group: library   # library.yml と同じ：follows を 2 か所から同時に書かない
-  cancel-in-progress: false
+  actions: write   # 小元素の続き（library_emblem.yml）を起こす
 
 jobs:
-  run:
+  board:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
+    concurrency:
+      group: library   # library.yml と同じ：follows を 2 か所から同時に書かない
+      cancel-in-progress: false
     env:
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
     steps:
@@ -62,15 +77,86 @@ jobs:
       - name: Wikidata の結果の保存が拒まれたら警告（save は拒まれても緑のまま）
         if: always() && steps.wdchk.outputs.cache-hit != 'true'
         run: echo "::warning::Wikidata の cache が保存できなかった（書き込みが拒まれた？）。次の回は空から始まる"
+
+  feed:
+    needs: board
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    concurrency:
+      group: board-added-feed   # 記事集めは group library を持たない（次に足した人の board の job を 10 分待たせない）
+      cancel-in-progress: false
+    env:
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
       - name: 足された版面の記事集め
         continue-on-error: true
         timeout-minutes: 10
         run: python scripts/userfeed.py
-      - name: お客さまのページを作って置く
+      - name: 足した人のページを作って置く（記事のあと。1 時間以内に足した人だけ）
         continue-on-error: true
         timeout-minutes: 10
-        run: python scripts/user_pages.py
-      - name: 小元素を起こす（新しい版面は待ちの先頭。終われば本人のページを作り直す）
+        run: python scripts/user_pages.py --recent 3600
+
+  emblem:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: board-added-emblem   # 速い道どうしだけ直列（library・library-emblem の列には並ばない。同じ版面は config.emblem_claim で二重に取らない）
+      cancel-in-progress: false
+    env:
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      WL_PHOTO_CACHE: ${{ github.workspace }}/.photo_cache
+      WIKIMEDIA_TOKEN: ${{ secrets.WIKIMEDIA_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - uses: actions/cache/restore@v4   # 写しを読むだけ（library_emblem.yml と同じ。storage から落とさない）
+        with:
+          path: .photo_cache
+          key: wl-photo-cache-none
+          restore-keys: wl-photo-cache-
+      - name: 新しい版面は来る？（経路 A/B はここで終わる）
+        id: check
+        run: python scripts/library_emblem.py --check-fresh
+      - if: steps.check.outputs.due == 'true'
+        run: pip install -q "rembg[cpu]>=2.0.60,<3"
+      - name: 本物のブラウザ（scrapling・公式サイトの人物の絵）
+        if: steps.check.outputs.due == 'true'
+        continue-on-error: true
+        run: scrapling install && echo "SCRAPLING_BROWSER=1" >> "$GITHUB_ENV"
+      - name: 模型的缓存（library_emblem.yml と同じ）
+        if: steps.check.outputs.due == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ~/.rembg
+            ~/.cache/wishlist-faces
+          key: emblem-models-v1
+      - name: 新しい版面の小元素（速い道：行が現れるのを待って 1 枚目から）
+        id: fill
+        if: steps.check.outputs.due == 'true'
+        run: python scripts/library_emblem.py --fresh --wait 240 --minutes 9 --pages-file "$RUNNER_TEMP/fresh_boards.json"
+      - name: 小元素が出た版面を追いかけている人のページだけ作り直す
+        if: steps.fill.outputs.worked == 'true'
+        continue-on-error: true
+        timeout-minutes: 8
+        run: python scripts/user_pages.py --boards-file "$RUNNER_TEMP/fresh_boards.json"
+      - name: 続き（名簿の残り・時間で残した版面）を今までの列へ
+        if: steps.fill.outputs.more == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run library_emblem.yml -f minutes=20
