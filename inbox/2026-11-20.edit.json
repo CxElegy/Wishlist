@@ -189,7 +189,11 @@
   "三星手机": 3,
   "Astrae Oratio": 2,
   "The Mandalorian": 1,
-  "dota2": 5
+  "dota2": 5,
+  "gelato pique": 4,
+  "A2O LITE": 1,
+  "BLEACH Mirrors High": 1,
+  "MMORPG 新作": 1
  },
  "Astrae Oratio": [
   {
@@ -240,6 +244,61 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラート ピケとPEANUTSコラボ10周年を記念した新作コレクション！スヌーピーたちがもこもこルームウェアを着用したデザインがかわいすぎる",
+   "highlight": "PEANUTSコラボ10周年",
+   "blurb": "ジェラート ピケとPEANUTSのコラボ10周年を記念した新作コレクション。10色10キャラクターのボーダー柄ルームウェアなどが登場。",
+   "weight": "lead",
+   "refs": [
+    2,
+    4,
+    1
+   ]
+  },
+  {
+   "headline": "GELATO PIQUE KIDS & BABYが旭山動物園とコラボ！ユキヒョウ・キタキツネ・ペンギンの親子アイテムが登場",
+   "highlight": "旭山動物園とコラボ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "South Korea Announces Probe Into Minor Idols' Rights as A2O LITE Cancels Pre-Recording Over Health Concerns",
+   "highlight": "A2O LITE Cancels Pre-Recording",
+   "blurb": "South Korea announced a probe into minor idols' rights as A2O LITE cancelled a pre-recording over health concerns.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "【ミラハイ】星3浦原喜助の評価と性能【BLEACHミラーズハイ】",
+   "highlight": "星3浦原喜助",
+   "blurb": "星3浦原喜助の評価と性能をまとめた攻略記事。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "【ルミナサーガ レビュー】かわいい使い魔と冒険できる！幻想世界を舞台としたアニメ調MMORPG",
+   "highlight": "ルミナサーガ レビュー",
+   "blurb": "かわいい使い魔と冒険できる、幻想世界が舞台のアニメ調MMORPG「ルミナサーガ」のレビュー。",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]
