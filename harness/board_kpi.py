@@ -23,6 +23,7 @@
 import argparse
 import datetime as dt
 import hashlib
+import html as htmlmod
 import json
 import pathlib
 import subprocess
@@ -167,9 +168,14 @@ def page_html(account):
         return ""
 
 
+def dk(name):
+    """render の data-k と同じ書き方（html.escape：& " < > を実体参照に。見直し 11：名前に & や " があると合わなかった）。"""
+    return f'data-k="{htmlmod.escape(str(name))}"'
+
+
 def page_has_emblem(html, name):
     """本人のページの、この版面の <section> の中に小元素（render._emblem の <div class="emb …">）があるか。"""
-    i = html.find(f'data-k="{name}"')
+    i = html.find(dk(name))
     if i < 0:
         return False
     j = html.find("<section", i)
@@ -181,7 +187,7 @@ PHOTO_MIN = 3   # 版面に本物の写真がこの枚数（カードがそれ�
 
 def section_of(html, name):
     """本人のページの、この版面の <section> の中身（無ければ ""）。"""
-    i = html.find(f'data-k="{name}"')
+    i = html.find(dk(name))
     if i < 0:
         return ""
     j = html.find("<section", i)
@@ -247,7 +253,7 @@ def observe(run):
         if page_at and page_at > parse(run["t0"]) and ("page" not in s or ("page_emblem" not in s and "emblem" in s) or "photo" not in s):
             if html is None:
                 html = page_html(a)
-            if f'data-k="{nm}"' in html or f'>{nm}<' in html:
+            if dk(nm) in html or f'>{htmlmod.escape(nm)}<' in html:
                 s.setdefault("page", iso(page_at))
                 if "emblem" in s and page_has_emblem(html, nm):
                     s["page_emblem"] = iso(page_at)
@@ -308,7 +314,7 @@ def cmd_pages(a):
             if html:
                 f = dirp / (ac + ".html")
                 f.write_text(html, encoding="utf-8")
-                r["missing"] = [n for n in names if f'data-k="{n}"' not in html and f">{n}<" not in html]
+                r["missing"] = [n for n in names if dk(n) not in html and f">{htmlmod.escape(n)}<" not in html]
                 for W, H in ((1333, 677), (390, 844)):
                     pg = br.new_page(viewport={"width": W, "height": H})
                     errs = []
@@ -344,7 +350,7 @@ def judge(run, t=None):
     t = t or now()
     age = (t - parse(run["t0"])).total_seconds() / 60
     red = []
-    for b in run["boards"]:
+    for n, b in enumerate(run["boards"], 1):
         for k, target in TARGETS.get(b["path"], {}).items():
             m = minutes(run, b, k, None)
             if m is None:
@@ -354,7 +360,8 @@ def judge(run, t=None):
                 why = "遅い" if m >= target else None
                 m = round(m, 1)
             if why:
-                red.append({"path": b["path"], "name": b["name"], "stage": k, "minutes": m, "target": target, "why": why})
+                # 版面は番号で（見直し 11：red は repo に入る harness/kpi/latest.json に書く。名前は出さない）
+                red.append({"path": b["path"], "board": b.get("board_id") or f"#{n}", "stage": k, "minutes": m, "target": target, "why": why})
     return red
 
 
@@ -405,7 +412,7 @@ def cmd_report(a):
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"at": iso(now()), "boards": summ, "runs": len(files), "red": red, "photos": mix}, ensure_ascii=False, indent=1), encoding="utf-8")
     for x in red:
-        print(f"赤 経路 {x['path']} {x['run']} {x['name']} {x['stage']}：{x['why']} {x['minutes']:g} 分（目標 {x['target']} 分未満）")
+        print(f"赤 経路 {x['path']} {x['run']} 版面 {x['board']} {x['stage']}：{x['why']} {x['minutes']:g} 分（目標 {x['target']} 分未満）")
     if red and not a.no_fail:
         sys.exit(1)
 

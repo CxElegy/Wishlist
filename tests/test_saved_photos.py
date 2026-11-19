@@ -53,6 +53,8 @@ class Mask(unittest.TestCase):
         self.assertEqual(b["a"]["stories"][0]["image"], IMG)                     # 共有の行・書き戻す行は書き換えない
         P._CACHE[0]["p"][P.key(IMG)] = {"at": 1, "b": 10}                        # photo_store が置いた
         out = user_pages.mask_saved(self.brows(), {})
+        self.assertTrue(out["a"]["stories"][0]["_wait"])                         # 見直し 6：Pages に写るまで（manifest に無い）は待つ（404 にしない）
+        out = user_pages.mask_saved(self.brows(), {}, {P.name(P.key(IMG))})
         self.assertEqual(out["a"]["stories"][0]["image"], f"{P.PAGES_BASE}/{P.key(IMG)}-800.webp")
         self.assertNotIn("img_ref", out["a"]["stories"][0])
 
@@ -87,7 +89,7 @@ class Mask(unittest.TestCase):
         h = user_pages.build("t@example.com", prefs, rows, shop, None, settings, 0, {})
         self.assertNotIn("hard.example/pic", h)
         P._CACHE[0]["p"][P.key(IMG)] = {"at": 1, "b": 10}
-        h = user_pages.build("t@example.com", prefs, user_pages.mask_saved(self.brows(), {}), shop, None, settings, 0, {})
+        h = user_pages.build("t@example.com", prefs, user_pages.mask_saved(self.brows(), {}, {P.name(P.key(IMG))}), shop, None, settings, 0, {})
         self.assertNotIn("hard.example/pic", h)
         self.assertIn(f"{P.key(IMG)}-800.webp", h)
 
@@ -150,6 +152,107 @@ class MainPartial(unittest.TestCase):
         self.assertIn("https://other.example/keep.jpg", [x["u"] for x in got])    # ほかの人の分は残る
         self.assertIn((IMG, REF), [P.user_entry(x) for x in got])                # 防盗链の写真は Referer と一緒に
         self.assertIn("https://ok.example/1.jpg", [x["u"] for x in got])
+
+
+class Small(unittest.TestCase):
+    """見直し 6〜12 の小さい直し。"""
+
+    def test_edited_picks_referer_from_any_ref(self):   # 8
+        pend = [{"title": "t1", "url": "https://x.example/1", "image": "https://x.example/1.jpg"},
+                {"title": "t2", "url": REF, "image": IMG, "img_ref": REF}]
+        st = library.edited_stories(pend, [{"headline": "H", "image": IMG, "refs": [1, 2]}], "fp", "at")
+        self.assertEqual((st[0]["image"], st[0]["img_ref"]), (IMG, REF))
+        st = library.edited_stories(pend, [{"headline": "H", "refs": [1, 2]}], "fp", "at")
+        self.assertNotIn("img_ref", st[0])   # 1 本目のふつうの写真なら付けない
+
+    def test_sibling_page_is_the_referer(self):   # 9
+        sib_url = "https://sib.example/news/2"
+        pages = {"https://main.example/1": images.Page("https://main.example/1", False, "原文 HTTP 403 403", status=403),
+                 sib_url: images.Page(sib_url, True, og=["https://sib.example/pic.jpg"])}
+        with mock.patch.object(images, "page", lambda u: pages.get(u) or images.Page(u, False, "x")), \
+                mock.patch.object(images, "check", lambda u, referer=None: (True, "800×450")), \
+                mock.patch.object(images, "_hard", {"https://sib.example/pic.jpg"}), \
+                mock.patch.object(images, "syndicated_candidates", lambda *a, **k: ([], "")), mock.patch.object(images, "author_seen", lambda: set()):
+            e = images.sources.Entry(title="題", url="https://main.example/1", published=None, source="")
+            s = images.sources.Entry(title="題", url=sib_url, published=None, source="", link=sib_url)
+            res = images.pick(None, [e], e.url, siblings=[s])
+        self.assertEqual((res.image, res.referer), ("https://sib.example/pic.jpg", sib_url))
+        self.assertIn(images.SAVED, res.source)
+
+    def test_shop_boards_are_left_out(self):   # 10
+        brows = {"gta6": {"stories": [{"url": "https://s.example/1"}], "_src": ("bs", 1)}, "mine": {"stories": [{"url": "https://m.example/1"}], "_src": ("bs", 2)}}
+        own, shop = user_pages.split_shop(brows, [{"name": "GTA 6"}])
+        self.assertEqual((sorted(own), sorted(shop)), (["mine"], ["gta6"]))
+        read = []
+        user_pages.photo_tally(own, {}, {}, fill=lambda rows, og, **k: og_image_fill(rows, og, read))
+        self.assertEqual(read, ["https://m.example/1"])   # 店長の版面に og の時間を使わない
+
+    def test_og_deadline_inside_a_page(self):   # 12
+        import og_image
+        import time
+        p = images.Page("https://n.example/1", True, og=["https://i.example/a.jpg", "https://i.example/b.jpg"])
+        seen = []
+
+        def check(u):
+            seen.append(u)
+            return False, "图片 HTTP 404"
+        self.assertEqual(og_image.read_one("https://n.example/1", page=lambda u: p, check=check, hard=set(), deadline=time.monotonic() - 1), (None, "carry"))
+        self.assertEqual(seen, [])
+
+    def test_hard_referer_url_not_in_page(self):   # 試験の穴：記事の網址と別の網址を img_ref にした見本
+        import digest
+        ref = "https://other-site.example/gallery/secret-referer-page"
+        b = {"a": {"stories": [{"title": "t", "url": "https://news.example/a", "image": IMG, "img_ref": ref},
+                               {"title": "u", "url": "https://ok.example/1", "image": "https://ok.example/1.jpg"}]}}
+        settings, shop = digest.load_config()
+        for pub in (set(), {P.name(P.key(IMG))}):
+            on, cache = list(P._ON), list(P._CACHE)
+            try:
+                P._ON[:] = [True]
+                P._CACHE[:] = [{"base": "https://s.example", "p": {P.key(IMG): {"at": 1, "b": 1}}, "x": {}, "stat": {}}]
+                h = user_pages.build("t@example.com", {"picks": [{"name": "A", "sec": "其他"}]}, user_pages.mask_saved(b, {}, pub), shop, None, settings, 0, {})
+            finally:
+                P._ON[:], P._CACHE[:] = on, cache
+            self.assertIn("ok.example/1.jpg", h)   # 版面は描かれている（空のページで通っていない）
+            self.assertNotIn("secret-referer-page", h)
+            self.assertNotIn("hard.example/pic", h)
+
+
+class MainWriteBack(unittest.TestCase):
+    def test_main_fill_then_write_back(self):
+        """試験の穴：main の中の og_image.fill → write_back を、取る層（images.page・images.check）だけ差し替えて通す。"""
+        row = {"item": "A", "sec": "其他", "state": "ok", "checked_at": "2026-11-19T09:00:00+00:00",
+               "stories": [{"title": "t", "url": "https://n.example/1"}, {"title": "u", "url": "https://ok.example/2", "image": "https://ok.example/2.jpg"}]}
+        patches, alljson = [], []
+
+        def fake(path, data=None, method="GET", ctype=""):
+            if path.endswith("_fp/all.json"):
+                if method != "GET":
+                    alljson.append(json.loads(data))
+                return {} if method == "GET" else ""
+            if "userfeed_users" in path:
+                return [{"email": "a@example.com", "prefs": {"picks": [{"name": "A"}]}}]
+            if path.endswith("_fp/imgs.json"):
+                return [] if method == "GET" else ""
+            if "/storage/" in path:
+                return ""
+            if path.startswith("/rest/v1/user_boards"):
+                if method == "PATCH":
+                    patches.append((path, json.loads(data)))
+                    return ""
+                return [json.loads(json.dumps(row))]
+            return []
+        page = images.Page("https://n.example/1", True, og=["https://img.example/og1.jpg"])
+        with mock.patch.object(user_pages, "_supa", fake), mock.patch.object(user_pages.digest, "load_config", lambda: ({}, [])), \
+                mock.patch.object(user_pages.photo_bands, "measure", lambda *a, **k: 0), mock.patch.object(user_pages, "build", lambda *a, **k: "<html></html>"), \
+                mock.patch.object(user_pages.render, "photo_opens", None, create=True), mock.patch.object(user_pages.photo_store, "published", lambda: set()), \
+                mock.patch.object(images, "page", lambda u: page if u == page.url else images.Page(u, False, "x")), \
+                mock.patch.object(images, "check", lambda u, referer=None: (True, "800×450")):
+            user_pages.main([])
+        self.assertEqual(len(patches), 1)
+        self.assertIn("checked_at=eq.2026-11-19T09%3A00%3A00%2B00%3A00", patches[0][0])
+        self.assertEqual(patches[0][1]["stories"][0]["image"], "https://img.example/og1.jpg")
+        self.assertEqual(alljson[-1]["_og"]["https://n.example/1"]["img"], "https://img.example/og1.jpg")   # 覚えにも入る
 
 
 class MainFull(unittest.TestCase):
@@ -221,6 +324,18 @@ class Store(unittest.TestCase):
     def test_referer_fetch_rejects_non_image(self):
         with mock.patch.object(images, "_fetch", lambda u, l, r=None: images.Fetched(200, {"content-type": "text/html"}, b"<html>")):
             self.assertIsNone(P.fetch(IMG, REF))
+
+    def test_shop_photo_keeps_shop_fetch(self):   # 7
+        """店長の網页にも載っている写真は、お客さまの列に Referer 付きであっても店長の取り方（Referer なし）のまま。"""
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            shop_img = "https://x.example/a.jpg"
+            st = self.env(d, [(shop_img, REF)])
+            calls = []
+            with mock.patch.object(P, "fetch", lambda *a: calls.append(a) or None):
+                s = P.run(site=d, path=st, base="https://s.example", keyv="k")
+            self.assertEqual(calls, [(shop_img,)])
+            self.assertEqual(s["saved"], 0)
 
     def test_near_cap_skips_customer_photos(self):
         with tempfile.TemporaryDirectory() as d:

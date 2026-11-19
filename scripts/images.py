@@ -821,6 +821,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
     seen = set()
     authors = author_seen()
     from_page = {}  # 原文网页（不是转载）里的候选图 → 那一页的地址：防盗链重试时作 Referer
+    sib_page = {}   # 同じ出来事の別の記事の頁で見つけた図 → その頁（SAVED の res.referer だけに使う。防盗链の取り直しの対象は増やさない＝店長の結果は同じ）
     deadline = time.monotonic() + (STORY_BUDGET if budget is None else budget)
 
     def stages():
@@ -851,6 +852,8 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
             if not REDDIT_POST.match(link or ""):
                 p = page(link)
                 found += [(label, u) for u in p.og + p.jsonld]
+                for u in p.og + p.jsonld:
+                    sib_page.setdefault(u, link)
             if e.image and is_bing_thumb(e.image):
                 found.append((label + "（Bing 缩略图）", e.image))
             yield found
@@ -913,7 +916,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
 
     if scan():
         if SAVED in res.source:
-            res.referer = from_page.get(res.image) or url
+            res.referer = from_page.get(res.image) or sib_page.get(res.image) or url
         return res
     # 防盗链：原文网页自己的图，带那一页作 Referer 再试（浏览器打不开，hdimg.py 存到本站）
     tries = 0

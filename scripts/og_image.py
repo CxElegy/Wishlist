@@ -117,8 +117,9 @@ def _google(u):
     return "news.google.com" in str(u or "")
 
 
-def read_one(url, page=None, check=None, hard=None):
-    """1 本の記事のページから代表の写真を取る（店長と同じ images.page・images.check）。→ (写真 or None, 理由の大分類 or None)"""
+def read_one(url, page=None, check=None, hard=None, deadline=None):
+    """1 本の記事のページから代表の写真を取る（店長と同じ images.page・images.check）。→ (写真 or None, 理由の大分類 or None)
+    deadline（time.monotonic）を過ぎたら候補の途中でもやめて "carry"（覚えない＝次の回へ）。"""
     import images
     page = page or images.page
     check = check or images.check
@@ -131,6 +132,8 @@ def read_one(url, page=None, check=None, hard=None):
         if images.GENERIC.search(urllib.parse.urlparse(u).path):
             whys.append("logo")
             continue
+        if deadline is not None and time.monotonic() > deadline:
+            return None, "carry"
         ok, w = check(u)
         if ok and u in hard:
             saved = True   # 元のサイトを通さないと開けない（読者のブラウザでは 403）：使わない
@@ -161,7 +164,7 @@ def fill(rows, cache, page=None, check=None, now=None, log=print, hard=None, dea
         if deadline is not None and time.monotonic() > deadline:
             return u, None, "carry"
         try:
-            return u, *read_one(u, page, check, hard)
+            return u, *read_one(u, page, check, hard, deadline)
         except Exception:  # noqa: BLE001  読めないページは「つながらない」として間をあけて試し直す
             return u, None, "network"
     got = {}

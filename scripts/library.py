@@ -392,7 +392,7 @@ def edited_stories(pending, edit, fp, at):
         # 編んだ後に整理待ちへ付いた写真は user_pages.board_rows が refs の網址で引き継ぐ（編み直さない）
         own = next((p for p in refs if p.get("image")), None)
         img = s.get("image") if str(s.get("image") or "").startswith("https://") else (own or {}).get("image")
-        ref = (own or {}).get("img_ref") if own and img == own.get("image") else None   # 防盗链の写真は Referer の印も（user_pages.mask_saved）
+        ref = next((p.get("img_ref") for p in refs if img and p.get("image") == img and p.get("img_ref")), None)   # 防盗链の写真は Referer の印も（refs のどれから選んでも。user_pages.mask_saved）
         out.append({"headline": head, "highlight": hl if hl and hl in head else "", "blurb": str(s.get("blurb") or ""),
                     "weight": s.get("weight") if s.get("weight") in ("hero", "lead", "normal") else "normal",
                     "url": refs[0]["url"], "source": refs[0].get("source") or "", "date": str(refs[0].get("date") or "")[:10],

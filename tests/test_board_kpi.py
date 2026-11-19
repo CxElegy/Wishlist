@@ -104,6 +104,17 @@ class Kpi(unittest.TestCase):
         code, _, j = self.report([[board("C", **{k: v for k, v in GOOD_C.items() if k != "photo"})]], now_min=21)
         self.assertEqual([x["stage"] for x in j["red"]], ["photo"])   # 経路 C は 20 分未満
 
+    def test_names_with_marks_and_red_without_names(self):
+        """見直し 11：名前に & や " があっても render の data-k（html.escape）と合う。red（repo に入る latest.json）に版面の名前を出さない。"""
+        nm = 'A&B "C"'
+        card = '<article class="card a c3"><img src="x" alt="" data-e="s" data-o="1"></article>'
+        html = f'<section class="sec" data-k="{board_kpi.htmlmod.escape(nm)}">' + card * 3 + '<div class="emb x"></div></section>'
+        self.assertTrue(board_kpi.photo_ok(html, nm))
+        self.assertTrue(board_kpi.page_has_emblem(html, nm))
+        code, out, j = self.report([[{**board("C", name="秘密の版面", **{k: v for k, v in GOOD_C.items() if k != "photo"}), "board_id": 42}]], now_min=21)
+        self.assertEqual([(x["board"], x["stage"]) for x in j["red"]], [(42, "photo")])
+        self.assertNotIn("秘密の版面", json.dumps(j["red"], ensure_ascii=False))
+
     def test_photo_mix_in_report(self):
         b = {**board("C", **GOOD_C), "photos": {"n": 10, "img": 7, "wrapped": 2, "waiting": 3}}
         code, out, j = self.report([[b]])

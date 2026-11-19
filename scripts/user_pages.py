@@ -387,7 +387,7 @@ def write_back(brows, latest, rows, og, touched, acct, put):
     return done
 
 
-def mask_saved(brows, want):
+def mask_saved(brows, want, pub=None):
     """防盗链の写真（記事に img_ref＝Referer の印がある：userfeed.Media が SAVED を取った。2026-11-19 店長の決定 1A）を画面に出す形にする。
     置き場（photo_store）に入ったものは置き場の網址（Pages の /p/<指紋>）に替える＝どの描き方でも元のサイトへ直に読みに行かない。
     まだのものは写真を外して _wait の印を付ける（読む人のブラウザでは 403 になる。写真なしとして og_image.demote が整理待ちへ回し、
@@ -400,6 +400,8 @@ def mask_saved(brows, want):
         u = s["image"]
         want[photo_store.key(u)] = [u, s["img_ref"]]
         got = photo_store.stored(u)
+        if got and photo_store.pages_on() and photo_store.name(photo_store.key(u)) not in (pub or ()):
+            got = None   # 見直し 6：置き場に入っても Pages に写るまでは /p/…-800.webp が 404（pub＝Pages の manifest に載った名前）
         return {k: v for k, v in s.items() if k != "img_ref"} | ({"image": got} if got else {"image": None, "_wait": True})
     out = {}
     for k, r in (brows or {}).items():
@@ -408,6 +410,14 @@ def mask_saved(brows, want):
             continue
         out[k] = {**r, **{f: [fix(s) for s in r.get(f) or []] for f in ("stories", "pending") if f in r}}
     return out
+
+
+def split_shop(brows, shop_items):
+    """(店長と同じ名前でない版面, 店長と同じ名前の版面)。店長と同じ名前の版面は店長の号の版面をそのまま出す（user_issue）ので、
+    写真の最後の手（og_image.fill の 180 秒）・書き戻し（店長の版面の board_stories.pending）・置き場待ちの印は外す（見直し 10）。"""
+    shop = {norm(i.get("name")) for i in shop_items or []}
+    own = {k: v for k, v in (brows or {}).items() if k not in shop}
+    return own, {k: v for k, v in (brows or {}).items() if k in shop}
 
 
 def merge_imgs(old, new, today=None, keep=None):
@@ -685,14 +695,15 @@ def main(argv):
             wishes = _supa(f"/rest/v1/wishes?account=eq.{acct}&select=id,name,status,price,currency,url,shop,note,specs,image,photo,added&order=id.desc") or []
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
             urows = {norm(r["item"]): r for r in rows or []}
-            brows = board_rows(follows, latest, urows)
-            brows = mask_saved(brows, saved)   # 防盗链の写真：置き場に入ったものだけ出す。まだのものは写真なしとして demote へ（写しで・fill の前）
+            brows, shopb = split_shop(board_rows(follows, latest, urows), shop_items)
+            brows = mask_saved(brows, saved, pub)   # 防盗链の写真：置き場に入ったものだけ出す。まだのものは写真なしとして demote へ（写しで・fill の前）
             # 写真のない記事に記事のページの代表の写真（2026-11-08 店長「我一定要图」。記事集めで取れなかった残りの最後の手）→ それでも無い記事は
             # カードにせず「整理待ち」へ（カードには必ず写真）。前と後で数える（photo_tally）。取れた写真は記事に書き戻す（write_back）
             got = photo_tally(brows, og, photos, deadline=og_deadline)
             og_image.add(ogt, got)
-            w = write_back(brows, latest, urows, og, got["touched"], acct, _supa)
+            w = write_back(brows, latest, split_shop(urows, shop_items)[0], og, got["touched"], acct, _supa)
             back = [a + b for a, b in zip(back, w)]
+            brows = {**shopb, **brows}
             html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
                           settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
             if design_moved(follows, _supa):   # 作っている間に小元素の回（board_added.yml の速い道）が config を書いた：今の config で作り直す（古い config で上書きして小元素を消さない）

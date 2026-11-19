@@ -198,10 +198,11 @@ def scan(site=None, extra=(), urls=(), refs=None, user=None):
     for x in urls:   # 店長の網页に無いお客さまの写真（後ろに足す：置く順は店長の先頭の写真が先）
         u, ref = x if isinstance(x, tuple) else (x, None)
         k = key(u)
-        if k not in want and user is not None:
+        mine = k not in want   # 店長の網页にも載っている写真は店長の取り方のまま（見直し 7：Referer 付きにしない）
+        if mine and user is not None:
             user.add(k)
         want.setdefault(k, u)
-        if ref and refs is not None:
+        if ref and mine and refs is not None:
             refs[k] = ref
     return seen, want, len(seen | set(want))
 
