@@ -9,12 +9,17 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-# 8 幅の合計の上限。直す前（origin/main）：orphan 48・cgap 10・gap 6・herogap 2・pendhid 0・solo 0・edge 0。
-# 直した後：orphan 0・cgap 13・gap 6・herogap 1。同じページを 2 回数えても cgap は ±3・orphan は ±1 揺れた（壁の組みの候補の選び方）ので、その分だけ足す（main の render のページでも cgap 10〜13 が出たので cgap は 16）
-CEIL = {"orphan": 50, "cgap": 16, "gap": 6, "herogap": 2, "pendhid": 0, "solo": 0, "edge": 0, "dup": 0, "navgap": 0, "sidebig": 0}
+# 幅ごとの上限（2026-11-19 直し 2 回目、Math.random の種を固定して数えた）。直す前（origin/main の render）の数：
+#   390：orphan 5／1333：orphan 10・gap 1・rowedge 14／1920：orphan 7・cgap 6・gap 1・rowedge 16。直した後：390 なし／1333 gap 1・rowedge 14／1920 cgap 2〜5・gap 0〜3・rowedge 13〜14。
+# 1920 幅の「ほかの注目」の壁だけ、同じページでも回ごとに組みが変わる（写真が届く順と壁を組む回の時間の前後。種の固定では止まらない）ので gap は 3 まで。
+# orphan は直す前のページ（NOORPHAN なし）で回ごとに ±1、rowedge（店長の版面の積み上げ）は ±2 揺れたのでその分足す。
+# 1 幅ずつ別のファイル（_b 1333・_c 1920）にして並列で流す（3 幅を 1 本で数えると 174 秒）
+ZERO = {"herogap": 0, "pendhid": 0, "solo": 0, "edge": 0, "dup": 0, "navgap": 0, "sidebig": 0}
+CEILS = {390: {"orphan": 6, "cgap": 0, "gap": 0, "rowedge": 0, **ZERO}, 1333: {"orphan": 11, "cgap": 0, "gap": 1, "rowedge": 16, **ZERO},
+         1920: {"orphan": 8, "cgap": 6, "gap": 3, "rowedge": 18, **ZERO}}
 
 
-WIDTHS = (390, 1333, 1920)   # 試験は 3 幅だけ（全体の時間。8 幅は python harness/aesthetic_count.py --stable docs home/index.html を手で・PC で）
+WIDTHS = (390,)   # 試験は 3 幅だけ（このファイル 390・_b 1333・_c 1920）。8 幅は python harness/aesthetic_count.py --stable docs home/index.html を手で・PC で
 
 
 class ShopStable(unittest.TestCase):
@@ -41,6 +46,7 @@ class ShopStable(unittest.TestCase):
             for k, n in c.items():
                 if not k.startswith("_"):
                     tot[k] = tot.get(k, 0) + n
+        CEIL = CEILS[self.WIDTHS[0]]
         print(f"ℹ 店長のページ（作り物の写真・{self.WIDTHS}）：" + "・".join(f"{k} {tot.get(k, 0)}" for k in CEIL))
         for k, most in CEIL.items():
             with self.subTest(kind=k):
