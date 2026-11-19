@@ -1,6 +1,6 @@
 {
  "admin": "118b606fd22c",
- "admin-ai": "755c95076047",
+ "admin-ai": "b73422ffbb00",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "b87ec734"
+   "2d1347a1"
   ]
  },
  "admin-boards": "98a954c2f6aa",
@@ -43,7 +43,7 @@
  },
  "admin-members": "b1f2381fdb68",
  "admin-members_marks": {},
- "admin-now": "a47946ae668e",
+ "admin-now": "48525f291a93",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a179f2fb"
+   "b9323adc"
   ]
  },
- "admin-system": "c9541ddf18da",
+ "admin-system": "8106a69806e6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "eddc5541"
+   "2184216e"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "cb787e23"
   ]
  },
- "index": "10da041eaaeb",
+ "index": "5d920b9eb9d4",
  "index_marks": {
   "front": [
    "トップ",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "2189f6e6"
+   "0bf9df17"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "b4b9aa88"
   ]
  },
- "updated": "11.19 15:28",
+ "updated": "11.19 15:32",
  "wishlist": "c5b812629fba"
 }
