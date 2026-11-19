@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "edit_sig": "97a3fbc0f8f0",
+ "edit_sig": "df6a1469b417",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -795,44 +795,8 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 8,
-     "source": "今日悉尼",
-     "title": "周杰伦《嘉年华Ⅱ》悉尼站震撼来袭！Homart活曼特集团多年携手周董，现场惊喜好礼送不停！",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE50ei1KX3J6eVVxYVBCTG9EdTNXRFFxSUtWaURtTWs0OU5BZ0lOb3d0T1lHMGlTdXlFLUhtdjE0NEhYTmQzakFwUEtPems3elFYMDNyZ2diWl85RlM1TEUtYjB3?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 11,
-     "source": "中国新闻网",
-     "title": "周杰伦IP牵手涉足智能戒指引关注",
-     "url": "https://www.chinanews.com.cn/cul/2026/11-19/9969694.shtml"
-    }
-   ],
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-19",
-     "headline": "許富凱獻聲台語導覽！北流常設展周杰倫、江蕙演唱會戰袍驚喜亮相",
-     "highlight": "",
-     "image": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/19/35532256.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600",
-     "image_via": "og:image",
-     "url": "https://stars.udn.com/star/amp/story/10092/9888251",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-19",
-     "headline": "周杰伦武汉演唱会，花$112看大屏幕，你要吗？",
-     "highlight": "",
-     "image": "https://dam.mediacorp.sg/image/upload/s--ZE_vpNir--/c_crop,h_626,w_1113,x_1,y_0/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/8world/images/2026/11/19/20261118_ent_e-news-jay-chou-concert_in-wuhanws_.png?itok=6qDXuIoo",
-     "image_via": "og:image",
-     "url": "https://vibes.8world.com/e-news/jay-chou-concert-in-wuhan-3345091",
-     "weight": "hero"
-    },
     {
      "blurb": "",
      "date": "2026-11-18",
@@ -847,6 +811,27 @@
      "image_via": "AI 挑选",
      "url": "https://news.tvbs.com.tw/entertainment/music/4052372",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "别克又搞事情了！全新至境世家MPV官宣即将登场，周杰伦代言背后的门道你看懂了吗？",
+     "highlight": "",
+     "image": "https://img4.wtsimg.com/flashnews/images/images/20261117/crop-3x2-115230522030-302e1081.jpg",
+     "image_via": "JSON-LD",
+     "url": "http://auto.news18a.com/news/storys_316171.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "周杰伦《嘉年华Ⅱ》悉尼站震撼来袭！Homart活曼特集团多年携手周董",
+     "highlight": "悉尼站",
+     "image": null,
+     "source": "今日悉尼",
+     "source_icon": null,
+     "url": "https://www.sydneytoday.com/content-1026610246435004",
+     "weight": "normal"
     }
    ],
    "subtitle": "周杰倫",
