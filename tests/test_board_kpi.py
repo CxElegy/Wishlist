@@ -166,8 +166,22 @@ class KickAndFastLog(unittest.TestCase):
         self.assertIn("速い道の時刻 版面 {bid}：取り始め {m['claim']}・1 枚目 {m.get('first', '—')}・書いた {m.get('write', '—')}・ページ {m.get('page', '—')}", src)
         got = board_kpi.fast_times("emblem (1)\t2026 速い道の時刻 版面 41：取り始め +93s・1 枚目 +171s・書いた +174s・ページ +186s（終了 1）\n"
                                    "速い道の時刻 版面 42：取り始め +95s・1 枚目 —・書いた +190s・ページ —")
-        self.assertEqual(got, [{"board": 41, "claim": 93, "first": 171, "write": 174, "page": 186},
-                               {"board": 42, "claim": 95, "first": None, "write": 190, "page": None}])
+        self.assertEqual(got, [{"board": 41, "claim": 93, "first": 171, "write": 174, "page": 186, "why": "小元素あり"},
+                               {"board": 42, "claim": 95, "first": None, "write": 190, "page": None, "why": "失敗"}])
+        got = board_kpi.fast_times("速い道の時刻 版面 43：取り始め +90s・1 枚目 —・書いた +170s・ページ —・結果 候補が通らず\n"
+                                   "速い道の時刻 版面 44：取り始め +90s・1 枚目 —・書いた +100s・ページ —・結果 候補なし\n"
+                                   "速い道の時刻 版面 45：取り始め +90s・1 枚目 +150s・書いた +155s（書けず）・ページ +200s（終了 1）・結果 小元素あり")
+        self.assertEqual([(x["board"], x["why"], x["page"]) for x in got], [(43, "候補が通らず", None), (44, "候補なし", None), (45, "小元素あり", 200)])
+
+    def test_report_counts_fast_results_apart(self):
+        """2026-11-19 F4：速い道が上限まで試して 0 枚の版面は、小元素の段の「まだ出ない」（赤）にせず「候補が通らず／候補なし」で数える。"""
+        run = {"t0": at(0), "boards": [dict(board("C", "a", **{k: v for k, v in GOOD_C.items() if k not in ("emblem", "page_emblem")}), fast="候補が通らず"),
+                                       board("C", "b", **GOOD_C)]}
+        red = board_kpi.judge(run, T0 + dt.timedelta(minutes=500))
+        self.assertFalse([x for x in red if x["stage"] in ("emblem", "page_emblem")])
+        run["boards"][0].pop("fast")
+        red = board_kpi.judge(run, T0 + dt.timedelta(minutes=500))
+        self.assertTrue([x for x in red if x["stage"] == "emblem"])   # 結果が分からない 0 枚は今までどおり赤
 
 
 if __name__ == "__main__":
