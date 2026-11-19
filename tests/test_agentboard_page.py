@@ -28,6 +28,10 @@ class Static(unittest.TestCase):
         for host in re.findall(r"https://([\w.-]+)/", self.t):
             self.assertIn(host, {"api.github.com", "github.com", "claude.ai", "fonts.googleapis.com", "fonts.gstatic.com", "example.com"}, host)
 
+    def test_live_branches_query(self):
+        # refPrefix は「/」で終わる形だけ（live- を付けた形は GitHub が受け付けないことがある）。名前で絞るのは query
+        self.assertIn('refs(refPrefix:"refs/heads/",query:"live-"', self.t)
+
     def test_same_parts_as_old_board(self):
         for s in ("OPUS 5.5", "advisor", "BRAIN · ", "HARNESS · routing", "delegate to subagents", "back to lead — review + verify",
                   "session log", "<legend>site</legend>", "owner → brain · inbox", "~/agentboard $"):
@@ -183,6 +187,9 @@ class Browser(unittest.TestCase):
         self.assertEqual(now_rows.first.locator("a.open").get_attribute("href"), "https://claude.ai/code/session_01Live")
         self.assertIn("届いていない", now_rows.nth(1).inner_text())                         # 止まった機械の会話は「作業中」と言わない
         self.assertIn("秒前に届いた", p.inner_text("#nowage"))
+        conn = p.inner_text("#conn")                                                  # つながっている機械
+        self.assertIn("● cloud-3136e785", conn)
+        self.assertIn("○ pc-old", conn)
         self.assertIn("クラウドの主", p.inner_text("#lead"))                         # BRAIN の箱に会話の名前と「開く」
         self.assertEqual(p.locator("#lead a.open").get_attribute("href"), "https://claude.ai/code/session_01Cloud")
         p.fill("#text", "AgentBoard 見えた")

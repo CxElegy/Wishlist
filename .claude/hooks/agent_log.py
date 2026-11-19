@@ -60,8 +60,21 @@ def main():
         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
 
+def keep_board():
+    """AgentBoard の集め係が止まっていたら起こし直す（clone が無い会話・Windows では何もしない）"""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("agentboard_start", pathlib.Path(__file__).with_name("agentboard_start.py"))
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    m.main()
+
+
 if __name__ == "__main__":
     try:
         main()
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        keep_board()
     except Exception:  # noqa: BLE001
         pass
