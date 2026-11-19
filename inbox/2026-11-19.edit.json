@@ -347,15 +347,16 @@
   "Vaundy": 1,
   "日本顶级网球赛事": 1,
   "滑雪": 7,
-  "绝区零": 2,
-  "猫用品": 6,
+  "绝区零": 4,
+  "猫用品": 8,
   "星巴克马克杯": 3,
   "ILLIT": 15,
   "MMORPG 新作": 7,
-  "哈利波特剧集": 3,
+  "哈利波特剧集": 4,
   "The Mandalorian": 2,
   "Astrae Oratio": 1,
-  "FROM": 1
+  "FROM": 1,
+  "あつ森": 1
  },
  "三星手机": [
   {
@@ -568,13 +569,17 @@
    ]
   },
   {
-   "headline": "Cat owners warned over fatal hazard lurking in homes this winter",
-   "highlight": "",
+   "headline": "【Neakasa】ブラックフライデー本セールが11月19日より開催！全自動猫トイレが最大33,000円OFF",
+   "highlight": "最大33,000円OFF",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
-   ]
+    7,
+    8
+   ],
+   "price": {
+    "now": "最大33,000円OFF"
+   }
   },
   {
    "headline": "フルーツタルトの具になって寝るだけでかわいい猫用クッションが新登場！",
@@ -767,6 +772,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "5 Harry Potter Characters Who Deserve Bigger Roles In The HBO TV Series",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "The Mandalorian": [
@@ -810,5 +824,6 @@
     1
    ]
   }
- ]
+ ],
+ "あつ森": []
 }
