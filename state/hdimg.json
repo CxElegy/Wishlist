@@ -1082,6 +1082,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameinsight.co.kr/news/photo/202611/37002_91031_72.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/data_center/347/527/20261112142009.webp": {
   "w": 1200,
   "h": 675,
@@ -2467,6 +2473,12 @@
   ],
   "p": null
  },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/496559.png?date=1746576286": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1493566334632657942/origin_1.jpg": {
   "w": 360,
   "h": 240,
@@ -2754,6 +2766,13 @@
    0.424,
    0.42
   ]
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-191002.jpg": {
+  "w": 640,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.306
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-163679.jpg": {
   "w": 640,
@@ -3416,6 +3435,12 @@
  "https://news.mynavi.jp/article/20261116-5337015/ogp_images/ogp.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://news.vocofm.com/wp-content/uploads/2026/10/A20-LITE-1024x575.jpeg": {
+  "w": 1024,
+  "h": 575,
   "target": 1280,
   "v": 3
  },
@@ -6274,6 +6299,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://socialbeta.oss-cn-hangzhou.aliyuncs.com/upload/22771-20260924154059-4f2cc13f.jpg": {
+  "w": 1080,
+  "h": 1440,
+  "target": 1280,
+  "v": 3
+ },
  "https://static-cdn.nextapple.tw/prod/2026-11/07DF7BDC4398893472D7589BF4DA8F77/7dee8c1f68be2d1f9b735d8a7ea603c8_1280.webp": {
   "w": 1170,
   "h": 2305,
@@ -6302,6 +6333,12 @@
   "w": 940,
   "h": 529,
   "target": 1280,
+  "v": 3
+ },
+ "https://static.hkcna.hk/dams-res/editing/image/202611/16/6afae1f3e4b06f03454bc03d.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
   "v": 3
  },
  "https://static.independent.co.uk/2026/11/15/15/06/hp.png?trim=0,211,0,210&width=1200&height=800&crop=1200:800": {
@@ -7128,6 +7165,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.EeiSmwLPyt1XarC17pWGqQ&pid=News&w=525": {
+  "w": 525,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.FOoggTFAL_2bZZS_uZ1pTg&pid=News&w=494": {
   "w": 494,
   "h": 640,
@@ -7443,12 +7486,6 @@
    0.57,
    0.518
   ]
- },
- "https://www.bing.com/th?id=ONUT.gb04mXAYOEa79BecUyXZTQ&pid=News&w=700": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.jM9YZVy03brliN5yr42pzw&pid=News&w=700": {
   "w": 700,
@@ -7896,6 +7933,12 @@
   "w": 1440,
   "h": 810,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Jason_and_Lucia_13.jpg?crop=0px%2C8px%2C3840px%2C2148px&resize=1440%2C810": {
+  "w": 1440,
+  "h": 810,
+  "target": 720,
   "v": 3
  },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/faster-meta-dota-patch-7.42.jpg": {

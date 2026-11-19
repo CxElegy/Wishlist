@@ -10,7 +10,9 @@
     22,
     3,
     7,
-    4
+    4,
+    43,
+    39
    ]
   },
   {
@@ -30,7 +32,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    40,
+    36
    ]
   },
   {
@@ -60,7 +64,9 @@
    "weight": "lead",
    "refs": [
     5,
-    29
+    29,
+    36,
+    40
    ]
   },
   {
@@ -142,11 +148,12 @@
  ],
  "ILLIT": [
   {
-   "headline": "ILLIT 4名成員接連受傷、高燒……「2026 MAMA AWARDS」行程緊急調整",
-   "highlight": "行程緊急調整",
-   "blurb": "ILLIT 4名成員接連受傷、高燒，「2026 MAMA AWARDS」行程緊急調整。",
+   "headline": "ILLIT、活動一部縮小を発表 メンバーの体調不良・足首負傷受け「十分な安静と休息が必要」",
+   "highlight": "活動一部縮小",
+   "blurb": "メンバーの体調不良・足首負傷を受け、「2026 MAMA AWARDS」を含む活動を一部縮小すると発表。",
    "weight": "lead",
    "refs": [
+    7,
     2,
     3
    ]
@@ -182,10 +189,10 @@
   }
  ],
  "_covered": {
-  "GTA 6": 35,
-  "漫威电影": 35,
+  "GTA 6": 49,
+  "漫威电影": 42,
   "哈利波特剧集": 3,
-  "ILLIT": 5,
+  "ILLIT": 9,
   "三星手机": 3,
   "Astrae Oratio": 2,
   "The Mandalorian": 1,
@@ -193,7 +200,9 @@
   "gelato pique": 4,
   "A2O LITE": 1,
   "BLEACH Mirrors High": 1,
-  "MMORPG 新作": 1
+  "MMORPG 新作": 1,
+  "周杰伦": 4,
+  "绝区零": 4
  },
  "Astrae Oratio": [
   {
@@ -299,6 +308,65 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "vivo 邀请周杰伦担任影像大使",
+   "highlight": "影像大使",
+   "blurb": "vivo 宣布邀请周杰伦担任影像大使。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "新航KrisFlyer台灣會員專屬 訂機票抽周杰倫新加坡2027演唱會門票",
+   "highlight": "周杰倫新加坡2027演唱會門票",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "周杰倫概念股與權志龍經紀公司Galaxy將聯合開發AI與機器人產品",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "호요버스, 5종의 타이틀 소개 '인기게임 IP 파워' 현장 확인",
+   "highlight": "",
+   "blurb": "호요버스 코리아가 지스타 2026에서 신작 2종을 포함한 5개 타이틀로 부스를 꾸몄다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "【ゼンレスゾーンゼロ×Razer】これは欲しい！Iskur V2 Xコラボゲーミングチェアが魅力的すぎる理由",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    2
+   ]
+  },
+  {
+   "headline": "ゼンゼロのPC推奨スペック・容量",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]
