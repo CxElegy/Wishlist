@@ -65,6 +65,7 @@ def own_picks(follows, picks, sizes=None):
     size（篇幅）= follows.size、なければ設定ページで選んだ prefs.sizes（follows にまだない版面の分、db/my_layout.sql）。"""
     sizes = {norm(k): v for k, v in (sizes or {}).items() if v in ("S", "M", "L")}
     want = {norm(p.get("name")) for p in picks or [] if str(p.get("name") or "").strip()}
+    added = {norm(p.get("name")): p["added_at"] for p in picks or [] if isinstance(p, dict) and p.get("added_at")}   # 足した時刻（記事 5 本まで待つ held）
     out, seen = [], set()
     for f in sorted(follows or [], key=lambda f: f.get("pos") or 0):
         name = str(((f.get("boards") or {}).get("name")) or "").strip()
@@ -74,6 +75,8 @@ def own_picks(follows, picks, sizes=None):
             out.append({"name": name, "sec": f.get("section") or "", "subs": f.get("subs") or {},
                         "size": f.get("size") or sizes.get(norm(name)),
                         "design": {k: cfg[k] for k in BOARD_DESIGN if cfg.get(k)}})
+            if added.get(norm(name)):
+                out[-1]["added_at"] = added[norm(name)]
     for p in picks or []:
         if norm(p.get("name")) not in seen:
             out.append({**p, "size": sizes.get(norm(p.get("name")))} if sizes.get(norm(p.get("name"))) else p)
@@ -143,6 +146,8 @@ def user_items(picks, shop_items):
                   **(p.get("design") or {})}
         if p.get("size") in ("S", "M", "L"):
             it["size"] = p["size"]
+        if p.get("added_at") and not it.get("_shop"):
+            it["_added"] = p["added_at"]
         out.append(it)
     return out
 
@@ -173,6 +178,27 @@ def find_images(stories, deadline):
     return stories
 
 
+MIN_NEW_STORIES = 5      # 足したばかりの版面は記事がこの本数そろってから載せる（2026-11-19：3 本だけのページで頭条と版面が同じ記事になった）
+NEW_HOLD_S = 6 * 3600    # 待つのは足してからこの間だけ。過ぎたら今ある分で載せる（記事の少ない題材がずっと「集めています」にならない）
+
+
+def _ts(s):
+    try:
+        return dt.datetime.fromisoformat(str(s).replace("Z", "+00:00")).timestamp()
+    except (TypeError, ValueError):
+        return None
+
+
+def held(it, row, now=None):
+    """本人だけの版面（店長の版面でない）で、足して NEW_HOLD_S 以内なのに集めた記事（AI 編集の記事＋整理待ち）が MIN_NEW_STORIES 本未満か。
+    added_at（db/board_added.sql が picks に付ける）が無い前からの版面は待たない。"""
+    at = _ts(it.get("_added"))
+    if it.get("_shop") or at is None or (now or time.time()) - at >= NEW_HOLD_S:
+        return False
+    n = len(row.get("stories") or []) + (len(row.get("pending") or []) if row.get("edited") else 0)
+    return n < MIN_NEW_STORIES
+
+
 def user_issue(items, shop_issue, rows, deadline, themes):
     """本人の 1 号分（render が読む形）。店長と同じ版面は店長の最新号の版面をそのまま、ほかは本人の記事から。"""
     shop_blocks = {b["name"]: b for b in (shop_issue or {}).get("items", [])}
@@ -184,6 +210,11 @@ def user_issue(items, shop_issue, rows, deadline, themes):
             blocks.append({**sb, "stories": (sb.get("stories") or [])[:cap], "section": it.get("section") or sb.get("section")})
             continue
         row = rows.get(norm(it["name"])) or {}
+        if held(it, row):   # 足したばかりで記事がまだ MIN_NEW_STORIES 本未満：版面の場所だけ「集めています」で置き、記事は載せない
+            blocks.append({"name": it["name"], "section": it.get("section"), "subtitle": "", "stories": [], "facts": [], "pending": [],
+                           "cover": None, "theme": theme.resolve(it, None, themes), "quiet": True, "collecting": True,
+                           "status": render.SETTINGS_JA["collecting"]})
+            continue
         if row.get("edited"):   # AI 編集の記事（library.edited_stories：見出し・重さ・要約は AI のまま）
             st = [{k: v for k, v in s.items() if not k.startswith("_") and k != "refs"} for s in (row.get("stories") or [])[:cap]]
         else:
@@ -355,6 +386,44 @@ def _supa(path, data=None, method="GET", ctype="application/json"):
     return json.loads(body) if body.strip().startswith(("[", "{")) else body
 
 
+def recent_adder(u, since):
+    """picks に since（UNIX 秒）より後に足した名前（added_at）がある人か。"""
+    return any(isinstance(p, dict) and (_ts(p.get("added_at")) or 0) >= since for p in ((u.get("prefs") or {}).get("picks") or []))
+
+
+def pick_users(users, argv, get):
+    """作り直す人を絞る（2026-11-19 新しい版面の速い道：全員分 4 分は待てない）。→ (人, 一部だけか)。
+    --boards-file F：F の版面 id（JSON の list。library_emblem.py --fresh が書く）を追いかけている人だけ。
+    --recent S：S 秒以内に版面を足した人だけ（board_added.yml の記事集めのあと）。どちらもなければ全員。"""
+    users = list(users or [])
+    if "--boards-file" in argv:
+        try:
+            ids = [int(x) for x in json.loads(pathlib.Path(argv[argv.index("--boards-file") + 1]).read_text(encoding="utf-8"))]
+        except (OSError, ValueError, TypeError):
+            ids = []
+        accts = {r["account"] for r in (get(f"/rest/v1/follows?board_id=in.({','.join(map(str, ids))})&select=account") or [])} if ids else set()
+        return [u for u in users if account_of(u.get("email")) in accts], True
+    if "--recent" in argv:
+        since = time.time() - float(argv[argv.index("--recent") + 1])
+        return [u for u in users if recent_adder(u, since)], True
+    return users, False
+
+
+def design_moved(follows, get):
+    """作り始めに読んだ follows の版面の小元素の状態（config.emblem_state：枚数 have・時刻 at）が、いまの DB と違うか。読めなければ False（そのまま置く）。
+    小元素を書く回は必ず emblem_state も書く（library_emblem.fill_board）ので、これだけを読む（emblem の中身は読まない：読む量を増やさない）。"""
+    def stamp(c):
+        return json.dumps((c or {}).get("emblem_state"), sort_keys=True, default=str)
+    old = {(f.get("boards") or {}).get("id"): stamp((f.get("boards") or {}).get("config")) for f in follows or [] if (f.get("boards") or {}).get("id")}
+    if not old:
+        return False
+    try:
+        now = get(f"/rest/v1/boards?id=in.({','.join(map(str, sorted(old)))})&select=id,emblem_state:config->emblem_state") or []
+    except Exception:  # noqa: BLE001
+        return False
+    return any(stamp(r) != old.get(r.get("id")) for r in now if r.get("id") in old)
+
+
 def main(argv):
     if argv[:1] != ["--local"]:
         render.OPENS = render.photo_opens   # 頭に選ぶ写真が開くか焼く時に見る（店長と同じ規則）
@@ -383,6 +452,7 @@ def main(argv):
     except sbstate.Limited:
         print("::warning::Supabase が 402（制限中）：お客さまのページ作りを飛ばす。制限が外れたら次の回が作る")
         return
+    users, partial = pick_users(users, argv, _supa)
     made = failed = skipped = 0
     force = "--force" in argv
     fp_path = "/storage/v1/object/pages/_fp/all.json"   # 置いたページの指紋（全員で 1 つ。本人のページと同じ非公開の箱）
@@ -419,6 +489,11 @@ def main(argv):
             og_image.demote(brows)   # それでも写真の無い記事はカードにせず「整理待ち」へ（カードには必ず写真）
             html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
                           settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
+            if design_moved(follows, _supa):   # 作っている間に小元素の回（board_added.yml の速い道）が config を書いた：今の config で作り直す（古い config で上書きして小元素を消さない）
+                follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(id,name,config)&order=pos")
+                pages = {}
+                html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
+                              settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
             # 写真に焼き込まれた余白を測って data-t に書く（ブラウザは別のサイトの写真を読めないので、ここで測る。2026-11-08）
             photo_bands.measure([u for t in [html_, *pages.values()] for u in photo_bands.urls_in(t)], bands, photo_store.fetch)
             html_ = photo_bands.inject(html_, bands)
@@ -445,7 +520,7 @@ def main(argv):
             _supa(fp_path, json.dumps(new_fps, sort_keys=True).encode(), "POST", "application/json")
         except Exception:  # noqa: BLE001  指紋が書けなくても次の回が全部置き直すだけ
             pass
-    if made and not failed:   # 全員作れた回だけ（一部の失敗で前の網址を消さない）。pages/ は読まず、この 1 本だけを photo_store が読む
+    if made and not failed and not partial:   # 全員作れた回だけ（一部の人だけの回 --boards-file／--recent は書かない：ほかの人の網址を消さない・読みを増やさない）（一部の失敗で前の網址を消さない）。pages/ は読まず、この 1 本だけを photo_store が読む
         try:
             _supa(IMGS_PATH, json.dumps(sorted(imgs.values())).encode("utf-8"), "POST", "application/json")
         except Exception:  # noqa: BLE001  書けなくても次の回が書く

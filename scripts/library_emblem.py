@@ -9,6 +9,14 @@
 - Actions のログは公開：版面の名前は出さず、数だけ。
 
     python scripts/library_emblem.py --minutes 25     # library_emblem.yml（SUPABASE_SERVICE_KEY）
+    python scripts/library_emblem.py --check-fresh    # board_added.yml：新しい版面（か、まだ版面になっていない足したばかりの名前）はある？
+    python scripts/library_emblem.py --fresh --wait 240 --minutes 8 --pages-file F   # board_added.yml：新しい版面だけの速い道
+
+新しい版面の速い道（2026-11-19 店長：「新しい版面を足したら小元素が出るまでの時間は 5 分未満を保つ」）：
+- 対象は「まだ一度も試していない（emblem_state なし）＋作られて FRESH_AGE_S 以内」の版面だけ。依頼の反映・候補・全版面の顔の計測・due の列はやらない。
+- 取り始めに config.emblem_claim を条件つきで書いて取る（library.claim_board）。見回りの回（main）も未試行の版面は同じ印で取り、due は新しい印の版面を飛ばす。
+- 規則は fill_board／emblem_fill.fill_one のまま（ゆるめない）。変えるのは範囲だけ：1 回に試す人数 FRESH_STEP（名簿の先頭＝看板の姿）・1 版面 FRESH_BOARD_S 秒。
+  そろわなければ running／指紋なしの failed で残し、続きは今までの列（library_emblem.yml）が STEP 人ずつ。時間切れ・EnvFail は指紋も回数も残さない。
 """
 import contextlib
 import hashlib
@@ -163,7 +171,7 @@ def board_item(board, follow, get=None):
     wd = wd_entity(board.get("wd"), get)
     human, links = wd.get("human", False), wd.get("links") or {}
     old = int((cfg.get("emblem_state") or {}).get("v") or 1) < RULES
-    item = {k: v for k, v in cfg.items() if (k.startswith("emblem") and k != "emblem_state" or k in ("emblem", "theme", "anilist_id", "wiki"))
+    item = {k: v for k, v in cfg.items() if (k.startswith("emblem") and k not in ("emblem_state", "emblem_claim") or k in ("emblem", "theme", "anilist_id", "wiki"))
             and v is not None and not (old and k in REDO)}
     if old and any(x.get("lock") for x in cfg.get("emblem") or []):   # 固定した小元素は規則の版が上がっても残す
         item["emblem"] = [x for x in cfg["emblem"] if x.get("lock")]
@@ -646,6 +654,8 @@ def due(boards, now):
     for b in boards:
         st = (b.get("config") or {}).get("emblem_state") or {}
         zero = not int(st.get("have") or 0)
+        if not st and claimed(b, now):   # 速い道（board_added.yml）がいま取っている新しい版面：二重に取らない（期限 CLAIM_S を過ぎた印は戻る）
+            continue
         if not st:
             out.append((0, b["id"], b))
         elif st.get("state") == "running":
@@ -714,6 +724,177 @@ def _out(**kv):
             f.writelines(f"{k}={v}\n" for k, v in kv.items())
 
 
+FRESH_AGE_S = 6 * 3600   # 速い道の「最近足された」：作られてからこの間の未試行の版面（古い未試行は今までの列）
+FRESH_BOARD_S = 150      # 速い道の 1 版面の上限（秒）。1 枚目（看板の姿）まで。過ぎたら時間切れ＝指紋も回数も残さず列へ
+FRESH_STEP = 3           # 速い道で 1 回に試す人数（名簿の先頭から＝看板の姿。残りは今までの列が STEP 人ずつ）
+FRESH_POLL_S = 5         # 版面の行（library.py --users が作る）が DB に現れるのを待つ間隔
+FRESH_QUIET_S = 60       # 1 つでも取ったあと、新しい版面がこれだけ来なければ終える（30 秒の間に 2 回目に足された版面もこの回が拾う）
+FRESH_TAIL_S = 30        # 締め切りのこの秒数前からは新しい版面を始めない
+RECENT_PICK_S = 900      # --check-fresh：足してからこの間で、まだどの版面の名前にも当たらない名前があれば「来る」と見て待つ
+
+
+def claimed(b, now):
+    """速い道か見回りの回が取り始めた印（config.emblem_claim）が期限（library.CLAIM_S）の中か。"""
+    import library
+    c = cfg(b).get("emblem_claim")
+    try:
+        return c is not None and now - int(c) < library.CLAIM_S
+    except (TypeError, ValueError):
+        return False
+
+
+def _iso(ts):
+    import datetime as dt
+    return dt.datetime.fromtimestamp(ts, dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def fresh_boards(db, now, shop=()):
+    """速い道の対象：未試行（emblem_state なし）・作られて FRESH_AGE_S 以内・店長の版面でない・ほかの回が取っていない。id の順。"""
+    rows = db(f"boards?select=id,name,wd,config,created_at&config->>emblem_state=is.null&created_at=gte.{_iso(now - FRESH_AGE_S)}&order=id") or []
+    return [b for b in rows if b["id"] not in shop and not cfg(b).get("emblem_state") and not claimed(b, now)]
+
+
+def waiting_picks(users, boards, now):
+    """足してから RECENT_PICK_S 以内で、まだどの版面の名前（name・names）にも当たらない名前の数（library.py --users がこれから版面を作る）。
+    経路 A/B（店長・ライブラリにある名前）は当たるので 0：重い道具を入れずに数秒で終わる。"""
+    import datetime as dt
+    import library
+    known = {library.norm_name(n) for b in boards for n in [b.get("name"), *((b.get("names") or {}).values())] if n}
+    n = 0
+    for u in users or []:
+        for p in ((u.get("prefs") or {}).get("picks") or []):
+            if not isinstance(p, dict) or not p.get("added_at"):
+                continue
+            try:
+                at = dt.datetime.fromisoformat(str(p["added_at"]).replace("Z", "+00:00")).timestamp()
+            except ValueError:
+                continue
+            if now - at <= RECENT_PICK_S and library.norm_name(p.get("name")) not in known:
+                n += 1
+    return n
+
+
+@contextlib.contextmanager
+def fresh_limits(end):
+    """速い道の範囲：1 回に試す人数 FRESH_STEP・締め切り end（emblem_fill._deadline）。規則（check・auto_pick・切り抜きの検査）は触らない。"""
+    import emblem_fill
+    saved = (emblem_fill.STEP, emblem_fill._deadline[0])
+    emblem_fill.STEP, emblem_fill._deadline[0] = FRESH_STEP, end
+    try:
+        yield
+    finally:
+        emblem_fill.STEP, emblem_fill._deadline[0] = saved
+
+
+def fresh_fill(board, follow, upload, base, end, fill=None, get=None, now=None, fetch=None):
+    """速い道の版面 1 つ → config に足す分。中身は fill_board（店長と同じ規則）を FRESH_STEP 人・FRESH_BOARD_S 秒で。
+    そろわなかったら：名簿の先頭だけを試したので「届かなかった」とは言えない → 材料の指紋 m を残さず回の番号も進めない
+    （見回りの列が名簿の先頭から STEP 人ずつすぐ続ける）。1 枚でも取れていれば running（列の「途中」）。"""
+    rounds0 = rounds_of(cfg(board))
+    with fresh_limits(min(end, time.time() + FRESH_BOARD_S)):
+        add = fill_board(board, follow, upload, base, fill=fill, get=get, now=now, fetch=fetch)
+    st = add["emblem_state"]
+    if st.get("state") != "ok":
+        st.pop("m", None)
+        if "rounds" in st:
+            st["rounds"] = rounds0
+        if st.get("have"):
+            st["state"] = "running"
+    st["fast"] = 1   # 速い道で始めた印（点検・KPI 用。規則は見ない）
+    add["emblem_claim"] = None
+    return add
+
+
+def fresh_loop(list_fresh, take, wait, end, clock=time.time, sleep=time.sleep):
+    """新しい版面が現れるのを待ちながら、現れたものから取る。
+    list_fresh() → 対象の版面、take(b) → 書いた add か None（取れなかった・飛ばした）。
+    1 つも来ないまま wait 秒たつか、取ったあと FRESH_QUIET_S 秒新しいものが来なければ終える。締め切りの FRESH_TAIL_S 秒前からは始めない。
+    → {"done": [書いた add], "ids": [小元素が 1 枚以上の版面 id], "left": 列に残した数}"""
+    start, last, seen = clock(), None, set()
+    out = {"done": [], "ids": [], "left": 0}
+    while clock() < end - FRESH_TAIL_S:
+        todo = [b for b in list_fresh() if b["id"] not in seen]   # 1 回試した版面（Wikidata に断られた・印を取られた）はこの回では二度と取らない
+        took = False
+        for b in todo:
+            if end - clock() < FRESH_TAIL_S:
+                out["left"] += 1
+                continue
+            seen.add(b["id"])
+            add = take(b)
+            if add is None:
+                continue
+            took = True
+            out["done"].append(add)
+            st = add.get("emblem_state") or {}
+            if int(st.get("have") or 0) > 0:
+                out["ids"].append(b["id"])
+            if st.get("state") != "ok":
+                out["left"] += 1
+        if took:
+            last = clock()
+            continue
+        if clock() - (last or start) >= (FRESH_QUIET_S if last else wait):
+            break
+        sleep(FRESH_POLL_S)
+    return out
+
+
+def fresh_main(argv):
+    """board_added.yml の小元素の job（--check-fresh／--fresh）。ログは数だけ（版面・お客さまの名前を出さない）。"""
+    import os
+    import digest
+    import library
+    import userfeed
+    db = digest.supabase
+    settings, _ = digest.load_config()
+    base, key = settings.get("supabase_url") or "", os.environ.get("SUPABASE_SERVICE_KEY")
+    if not (base and key):
+        raise SystemExit("SUPABASE_SERVICE_KEY がありません")
+    shop = {f["board_id"] for f in db("follows?account=eq.test1&select=board_id") or []}
+    if "--check-fresh" in argv:
+        now = time.time()
+        fresh = fresh_boards(db, now, shop)
+        users, _ = userfeed.fetch_all(db, "rpc/userfeed_users", {})
+        boards, _ = userfeed.fetch_all(db, "boards?select=name,names&order=id")
+        wait = waiting_picks(users, boards or [], now)
+        if sbstate.LIMITED:
+            _out(due="false")
+            print("新しい版面の小元素：Supabase が制限中（402）。何もしない")
+            return
+        _out(due="true" if fresh or wait else "false")
+        print(f"新しい版面の小元素：未試行の新しい版面 {len(fresh)}・まだ版面になっていない足したばかりの名前 {wait}")
+        return
+    wait = float(argv[argv.index("--wait") + 1]) if "--wait" in argv else 240
+    minutes = float(argv[argv.index("--minutes") + 1]) if "--minutes" in argv else 8
+    end = time.time() + minutes * 60
+    up = _upload(base, key)
+    counts = {"blocked": 0, "error": 0}
+
+    def take(b):
+        if not library.claim_board(b["id"], int(time.time())):
+            return None
+        f = (db(f"follows?board_id=eq.{b['id']}&select=section,subs&order=created_at&limit=1") or [{}])[0]
+        try:
+            add = fresh_fill(b, f, up, base, end)
+        except library.WdBlocked:   # 種類が決まらない：書かず、印だけ外して列へ（次の見回り）
+            counts["blocked"] += 1
+            library.put_config(b["id"], {"emblem_claim": None})
+            return None
+        except Exception as ex:  # noqa: BLE001  1 版面の失敗でほかを止めない（名前は出さない・指紋なし＝次の見回りですぐ）
+            counts["error"] += 1
+            add = {"emblem_state": {"state": "failed", "have": 0, "at": int(time.time()), "note": type(ex).__name__, "fast": 1}, "emblem_claim": None}
+        library.put_config(b["id"], add)
+        return add
+    r = fresh_loop(lambda: fresh_boards(db, time.time(), shop), take, wait, end)
+    rest = fresh_boards(db, time.time(), shop)   # 時間で残した未試行の版面
+    if "--pages-file" in argv:   # 小元素が出た版面 → 追いかけている人のページだけ作り直す（user_pages.py --boards-file）
+        pathlib.Path(argv[argv.index("--pages-file") + 1]).write_text(json.dumps(r["ids"]), encoding="utf-8")
+    _out(worked="true" if r["ids"] else "false", more="true" if r["left"] or rest or counts["blocked"] else "false")
+    ok = sum(1 for a in r["done"] if a["emblem_state"].get("state") == "ok")
+    print(f"新しい版面の小元素：取った {len(r['done'])} 版面（小元素あり {len(r['ids'])}・そろった {ok}・列へ続き {r['left']}）・"
+          f"残した未試行 {len(rest)}・Wikidata に断られた {counts['blocked']}・失敗 {counts['error']}")
+
+
 def main(argv):
     import os
     import digest
@@ -769,6 +950,9 @@ def main(argv):
     for b in todo:
         if end - time.time() < PER_BOARD_S:
             break
+        mine = not cfg(b).get("emblem_state")
+        if mine and not library.claim_board(b["id"], int(time.time())):   # 未試行の版面は印を取ってから（速い道が先に取った・もう書いた版面は飛ばす）
+            continue
         tried += 1
         f = (digest.supabase(f"follows?board_id=eq.{b['id']}&select=section,subs&order=created_at&limit=1") or [{}])[0]
         try:
@@ -778,6 +962,8 @@ def main(argv):
             continue
         except Exception as ex:  # noqa: BLE001  1 版面の失敗でほかを止めない（名前は出さない）
             add = {"emblem_state": {"state": "failed", "have": 0, "at": int(time.time()), "note": type(ex).__name__}}
+        if mine:
+            add["emblem_claim"] = None
         library.put_config(b["id"], add)
         st = add["emblem_state"]["state"]
         done[st] = done.get(st, 0) + 1
@@ -791,4 +977,7 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    if "--fresh" in sys.argv or "--check-fresh" in sys.argv:
+        fresh_main(sys.argv[1:])
+    else:
+        main(sys.argv[1:])

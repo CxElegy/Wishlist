@@ -10,6 +10,7 @@
     python scripts/library.py --refresh --push # 番号のない版面の Wikidata を引き直して items.yaml に書き、写す（library.yml、週 1 回）
 """
 import json
+import os
 import pathlib
 import re
 import sys
@@ -223,6 +224,26 @@ def put_config(bid, add):
         print(f"boards PATCH 版面 {bid}：変わった鍵 {','.join(ks)}" + (f"（emblem_state: {','.join(es)}）" if es else ""))
         digest.supabase(f"boards?id=eq.{bid}", {"config": new}, method="PATCH")
     return new
+
+
+CLAIM_S = 600   # 小元素の取り始めの印（config.emblem_claim）の期限（秒）。過ぎた印は無いものとして別の回が取ってよい（落ちた回の印で止めない）
+
+
+def claim_board(bid, stamp, db=None, ttl=CLAIM_S):
+    """まだ一度も試していない版面（config.emblem_state なし）の小元素を、この回が取る印 config.emblem_claim = stamp（2026-11-19 新しい版面の速い道）。
+    同じ版面を速い道（board_added.yml）と見回り（library_emblem.yml）が同時に取って二重に書かないため。条件つきの PATCH 1 回
+    （emblem_state が無く、印が無いか読んだときの印のまま）なので、2 つの回が同時に取っても片方だけが勝つ。→ 取れたか。
+    期限（ttl）より古い印は取り直せる。boards.config の書き込みはこのファイルの中だけ（put_config と同じ決まり）。"""
+    import digest
+    db = db or digest.supabase
+    cur = (db(f"boards?id=eq.{bid}&select=config") or [{}])[0].get("config") or {}
+    old = cur.get("emblem_claim")
+    if cur.get("emblem_state") or (old is not None and stamp - int(old or 0) < ttl):
+        return False
+    cond = "config->>emblem_claim=is.null" if old is None else f"config->>emblem_claim=eq.{int(old)}"
+    rows = db(f"boards?id=eq.{bid}&config->>emblem_state=is.null&{cond}", {"config": {**cur, "emblem_claim": int(stamp)}},
+              prefer="return=representation", method="PATCH")
+    return bool(rows)
 
 
 def _board_of(follows):
@@ -903,4 +924,8 @@ if __name__ == "__main__":
         push_shop(items)
     if "--users" in sys.argv:
         sys.path.insert(0, str(ROOT / "scripts"))
-        push_users()
+        got = push_users()
+        out = os.environ.get("GITHUB_OUTPUT")
+        if out:   # 新しく足した版面の数（library.yml が board_added.yml を起こす控え：起こし損ねた・1 人 1 時間 6 回を超えた分）
+            with open(out, "a", encoding="utf-8") as f:
+                f.write(f"new_boards={len((got or {}).get('new') or {})}\n")

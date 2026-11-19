@@ -4,7 +4,11 @@
 --     全部 cron 待ち（library.yml 毎時・digest.yml 2 時間・library_emblem.yml 実測 4〜6 時間）。足した時刻もどこにも残らなかった。
 -- 今：1. 新しく足した名前には added_at（いつ足したか）を付けて残す（KPI：harness/board_kpi.py）。前からある名前は前の added_at のまま。
 --     2. 新しい名前があれば GitHub の board_added.yml を起こす（library --users → 記事集め → 本人のページ → 小元素）。
---        押しすぎの歯止め：1 人 1 時間に 6 回・全体で 30 秒に 1 回（private.board_kicks）。起こせなくても足すことは失敗しない（cron が拾う）。
+--        押しすぎの歯止め：1 人 1 時間に 6 回・全体で 1 時間に 120 回（private.board_kicks）。起こせなくても足すことは失敗しない（library.yml が拾う）。
+--        【2026-11-19 店長「新しい版面を足したら小元素が出るまでの時間は 5 分未満を保つ」】前の「全体で 30 秒に 1 回」は、30 秒の中で 2 人目が足した版面を
+--        起こさず、走っている回が読み終えたあとだと cron（小元素は実際 8 時間に 1 回）待ちになった。いまは毎回起こし、重なりは GitHub の
+--        concurrency（job ごと：走っている 1 回＋待ちの 1 回。待ちは新しい方に置き換わる）がまとめる。全体の上限は暴走の歯止めだけ。
+-- 何度流してもよい（create table/index if not exists・create or replace function）。関数を変えたら流し直す。
 -- 流し方：店長の PC の会話から（docs/rules/local-pc.md「DB を変える SQL は PC の会話で」）。
 --   docker exec -i supabase-db psql -U postgres -d postgres < db/board_added.sql
 
@@ -22,7 +26,7 @@ begin
   select s.decrypted_secret into tok from vault.decrypted_secrets s where s.name = 'github_dispatch_token' limit 1;
   if coalesce(tok, '') = '' then return; end if;
   if (select count(*) from private.board_kicks k where k.account = a and k.at > now() - interval '1 hour') >= 6 then return; end if;
-  if exists (select 1 from private.board_kicks k where k.at > now() - interval '30 seconds') then return; end if;
+  if (select count(*) from private.board_kicks k where k.at > now() - interval '1 hour') >= 120 then return; end if;
   insert into private.board_kicks (account) values (a);
   perform net.http_post(
     url := 'https://api.github.com/repos/CxElegy/Wishlist/actions/workflows/board_added.yml/dispatches',

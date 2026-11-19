@@ -32,6 +32,7 @@
   **日付が変わったら数え直す（2026-10-22）**：_covered 合计按北京时间的「今天」数，0 点后归 0。叫起时记 `fired.day`（没有的旧记录用 `fired.at` 换成北京时间的日期），不是今天就不算停滞（`none`），交给 9:00 / 18:00 的定时判断（10-19・10-20・10-21 夜里 1〜2 点误叫了 3 次）；北京时间 0 点后也不再补叫前一天 18:00 那回（`gate.slot_pending`），等 9:00。
   管理页的「動いている」只在这次叫起之后的最后一批出刊（`state/log/edit.json`，`gate.last_batch`）30 分钟以内；过了是 `idle`「前回 HH:MM に終わった・次は HH:MM」（这回还没叫时改成「18:00 の回はまもなく」，列标题和「次の実行」卡片也一样 `due`；「あと N 分」由 `data-slots` 在浏览器里数，不写死）；叫起后编辑済み增加了、60 分钟还没有出刊的行 = `unpublished`「出刊されていない」（带最后一条失败 `gate.last_error`，2026-10-22 出刊に失敗：No module named 'requests'）。叫不叫的规则和 progress 一样。
   叫起时记下 API 返回的会话 id（`fired.resp`）。管理页 AI 编辑列有「AI 编辑をもう一度起こす」按钮 = `run_now('edit_now')` → `background.yml` 的 `force_edit` → `GATE_FORCE=edit`（不看 `GATE_FIRE`・间隔・停滞判断）。
+- **版面が足されたときの順と列（2026-11-19，店長：「新しい版面を足したら小元素が出るまでの時間は 5 分未満を保つ」）**：`board_added.yml` は job 3 つ。`board`（`library.py --users` だけ・group `library`）→ `feed`（記事集め → 足した人のページ `user_pages.py --recent`。記事が先・ページが後）、`emblem` は最初から並んで準備し、版面の行を待って速い道（`docs/rules/emblem.md`）。小元素の job は `library`・`library-emblem` の列に並ばない。小元素が出たら、その版面を追う人のページだけ（`--boards-file`）。足したばかりの版面は記事が 5 本そろうまで記事を載せず「集めています」で場所だけ（6 時間たったら今ある分で。ページ全体は止めない）。DB の起こしは毎回（1 人 1 時間 6 回・全体 1 時間 120 回）、起こし損ねは `library.yml` が新しい版面を作った回に起こす。
 - **AI 编辑推上去了、网页却没变（2026-10-19 修）**：收集（digest.yml）排队时是用触发时的提交 checkout 的，等它跑完，AI 编辑早把 `edit.json` push 上去了；
   收集的 `git pull --rebase -X theirs` 之后只 `render`（只从 reports 生成），reports 是没有编排的旧版，网页就一直是「整理待ち」。
   现在：① digest.yml 的 checkout 取 `github.ref`（main 的最新）② 出刊时把 `edit.json` 的指纹写进报告（`edit_sig`）③ `digest.py render` 先看 `stale_report()`，

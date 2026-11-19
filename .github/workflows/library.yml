@@ -30,6 +30,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # 新しい版面を作った回は board_added.yml を起こす（控え。2026-11-19）
 
 concurrency:
   group: library
@@ -72,6 +73,7 @@ jobs:
           key: wd-facts-${{ github.run_id }}
           restore-keys: wd-facts-
       - name: お客さまの選んだものを版面にする
+        id: users
         if: ${{ !inputs.compare }}
         run: |
           python scripts/library.py --users
@@ -96,3 +98,10 @@ jobs:
       - name: Wikidata の結果の保存が拒まれたら警告（save は拒まれても緑のまま。2026-11-04）
         if: always() && !inputs.compare && steps.wdchk.outputs.cache-hit != 'true'
         run: echo "::warning::Wikidata の cache が保存できなかった（書き込みが拒まれた？）。次の回は空から始まる"
+      # 控え（2026-11-19 店長「新しい版面を足したら小元素が出るまでの時間は 5 分未満を保つ」）：この回が新しい版面を作った＝DB が起こし損ねた
+      # （1 人 1 時間 6 回を超えた・鍵が無い・GitHub が断った）。小元素の速い道と記事集めをすぐ回す（cron の小元素は実際 8 時間に 1 回）
+      - name: 新しい版面を作ったら board_added.yml を起こす
+        if: ${{ !inputs.compare && steps.users.outputs.new_boards != '' && steps.users.outputs.new_boards != '0' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run board_added.yml
