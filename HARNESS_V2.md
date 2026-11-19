@@ -152,6 +152,22 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 
 店長の書き込みは `D:/Claude/AgentBoard/inbox.jsonl`（`{t, text}`）、返事は `outbox.jsonl`（`{t, re, text}`）。
 
+### クラウドの AgentBoard（2026-11-19，店長：PC の係とクラウドの係を 1 つの画面で・PC が止まっても見える）
+
+前の AgentBoard（PC の `D:/Claude/AgentBoard`・`https://elegy.tailc8cfff.ts.net/board/`）は PC の中のファイルしか読めず、頭がクラウドにあると係が出なかった。PC の上の仕組みが止まると画面ごと消えた（2026-11-19 に 502）。
+
+| 何 | どこ |
+|---|---|
+| 画面 | https://cxelegy.github.io/Wishlist/board/ （`docs/board/index.html`。ページ自体にデータは無い・noindex） |
+| データ | 非公開のリポジトリ `cxelegy/agentboard`：`agents/<どこ>-<役>-<段>.json`（1 係 1 ファイル）・`pc/summary.json`（PC の要約）・`inbox/<t>.json`（店長）・`outbox/<t>.json`（返事） |
+| 読む鍵 | 店長が端末ごとに 1 回貼る GitHub の令牌（agentboard だけ・Contents read/write）。その端末の localStorage だけに残る。クラウド・リポジトリには置かない |
+| 書く道具 | `agentboard/ab.py`（標準ライブラリだけ）。push は git の認証だけ＝クラウドは会話に agentboard を足す（add_repo・push）、PC は店長の git |
+
+- **クラウドの係**：`python /home/user/agentboard/ab.py beat <役> <段> "<いま>"`（`--where` は自動・会話の id から画面に「開く」）、終わったら `ab.py end <役> <段> done`。Agent の子の係は主の会話が代わりに書く。同じ中身の心拍は 4 分 push しない。
+- **PC の係**：今までどおり `hb.py beat`。見張り（`watchdog.ps1`）が 5 分ごとに `summary.json` を `ab.py summary` で `pc/summary.json` へ（`D:/Claude/agentboard` に clone してあるときだけ）。
+- **店長の書き込み**：画面の「送る」→ `inbox/`（宛先：両方・クラウドの主・PC の主）。主の会話は `ab.py inbox` で読み、`ab.py reply <t> "返事" --who "クラウドの主"` で返す。
+- 画面は 30 秒ごと（タブが隠れている間は読まない）に GraphQL 1 回で全部を読む。20 分 心拍なし＝赤、10 分＝黄。
+
 ## まだ入れていないもの（次の段）
 
 合格の見本の絵との画素の比べ（golden）・店長の判定の記録（owner_verdicts.jsonl）で審査の係を合わせる・1 つの PR に 3 段まとめる合併・本番のページに build の印・ダッシュボードのボタン（優先を変える・飛ばす）・見張りが残ったプロセスを止める。設計は `D:/Claude/hf/research/harness-v2.md`。

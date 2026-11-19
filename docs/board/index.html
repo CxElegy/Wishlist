@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AgentBoard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Anton&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<!-- AgentBoard（2026-11-19，店長：PC の係とクラウドの係を 1 つの画面で）。
+     このページ自体にはデータを置かない。データは非公開のリポジトリ cxelegy/agentboard にあり、
+     店長がこの端末に貼った GitHub の令牌（その 1 つのリポジトリだけ・この端末の localStorage だけ）で読む。
+     書き込み口は agentboard の ab.py（係）と、この画面の「送る」（店長 → inbox/）。 -->
+<style>
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--good:#1F7A55;--line:#1A1C2226;--muted:#1A1C22AA;--chip-c:#E6EEFF;--chip-p:#F5EEDC;--pick:#FFF6D6;--me:#1A1C22;--mefg:#fff;--re:#fff;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono','Noto Sans JP',monospace;--font-num:'Anton',Impact,'Noto Sans JP',sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#ECE8E1;--paper:#15161A;--card:#1F2026;--line:#ECE8E126;--muted:#ECE8E1AA;--chip-c:#26324A;--chip-p:#3A3426;--pick:#3A3420;--me:#ECE8E1;--mefg:#15161A;--re:#2A2B32}}
+:root[data-theme="dark"]{--ink:#ECE8E1;--paper:#15161A;--card:#1F2026;--line:#ECE8E126;--muted:#ECE8E1AA;--chip-c:#26324A;--chip-p:#3A3426;--pick:#3A3420;--me:#ECE8E1;--mefg:#15161A;--re:#2A2B32}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font:500 14px/1.5 var(--font-sans);-webkit-font-smoothing:antialiased}
+body{min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--rose)}
+button{font-family:inherit;cursor:pointer}
+header{display:flex;gap:12px;align-items:center;padding:8px 16px;border-bottom:2px solid var(--ink);background:var(--card)}
+header h1{margin:0;font:900 17px var(--font-sans);letter-spacing:.06em;padding:2px 10px;background:var(--ink);color:var(--paper);box-shadow:3px 3px 0 var(--rose)}
+header .st{margin-left:auto;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header .st b{color:var(--ink)}
+header button{white-space:nowrap;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:700 13px var(--font-sans);padding:3px 10px}
+main{flex:1;display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:minmax(0,1fr) auto;gap:12px;padding:12px 16px;min-height:0}
+@media (min-width:701px){body{height:100vh}#app{flex:1;display:flex;flex-direction:column;min-height:0}#app main{flex:1}}
+section{background:var(--card);border:1.5px solid var(--ink);padding:10px 12px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.scroll{overflow:auto;min-height:0}
+h2{margin:0 0 8px;font:900 16px var(--font-sans);letter-spacing:.04em;display:flex;align-items:baseline;gap:8px}
+h2 small{font:700 13px var(--font-sans);color:var(--muted)}
+h2.sub{margin-top:auto;padding-top:10px}
+.ag{display:grid;grid-template-columns:10px 1fr auto;gap:2px 10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line)}
+.ag:first-child{border-top:0}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--good)}
+.dot.w{background:var(--gold)}.dot.s{background:var(--alert)}.dot.d{background:var(--line)}
+.ag b{font-weight:900}.ag .wh{font:13px var(--font-mono);color:var(--muted)}
+.ag .nt{grid-column:2/4;font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.ag .min{font:18px var(--font-num);text-align:right;white-space:nowrap}.ag .min small{font:13px var(--font-sans)}
+.ag a.open{font:700 13px var(--font-sans);margin-left:4px}
+.tag{font:700 13px var(--font-sans);padding:0 6px;border:1px solid var(--ink);white-space:nowrap}
+.tag.cloud{background:var(--chip-c)}.tag.pc{background:var(--chip-p)}
+.q{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:8px}
+.q div{border:1.5px solid var(--ink);text-align:center;padding:4px 0;font-size:13px}
+.q b{display:block;font:24px var(--font-num);font-weight:400}
+.q .hot{background:var(--gold);color:#1A1C22}
+.q3{grid-template-columns:repeat(3,1fr)}
+ul{list-style:none;margin:0;padding:0}
+li{padding:4px 0;border-top:1px dashed var(--line);font-size:13px;overflow-wrap:anywhere}
+li code{font:13px var(--font-mono);margin-right:6px}
+.why{color:var(--muted)}
+.empty{color:var(--muted);font-size:13px;padding:6px 0}
+.choice{background:var(--pick);border:1.5px solid var(--ink);padding:6px 8px;font-size:13px;margin-bottom:6px}
+.choice a{font-weight:900}
+.msgs{flex:1;overflow:auto;display:flex;flex-direction:column;gap:6px;min-height:0}
+.m{padding:6px 8px;border:1px solid var(--line);font-size:13px;max-width:92%;white-space:pre-wrap;overflow-wrap:anywhere}
+.m.me{align-self:flex-end;background:var(--me);color:var(--mefg)}
+.m.re{align-self:flex-start;background:var(--re)}
+.m small{display:block;opacity:.65}
+form.talk{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+form.talk .row{display:flex;gap:6px}
+form.talk textarea{flex:1;font:500 14px var(--font-sans);padding:7px 8px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);min-width:0;resize:none;height:40px}
+form.talk select{font:700 13px var(--font-sans);border:1.5px solid var(--ink);background:var(--paper);color:var(--ink)}
+.btn{font:900 14px var(--font-sans);padding:0 14px;border:1.5px solid var(--ink);background:var(--rose);color:#fff;box-shadow:3px 3px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.res{grid-column:1/4}
+.res ul{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 14px}
+.ok{color:var(--good);font-weight:900}.ng{color:var(--alert);font-weight:900}
+.tabs{display:none}
+/* 令牌を貼る画面 */
+#setup{max-width:560px;margin:32px auto;width:calc(100% - 32px);padding:20px;background:var(--card);border:1.5px solid var(--ink);box-shadow:5px 5px 0 var(--rose)}
+#setup h2{font-size:20px}
+#setup ol{padding-left:20px;margin:8px 0 14px}#setup li{border:0;padding:3px 0;font-size:14px}
+#setup input{width:100%;font:13px var(--font-mono);padding:9px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);margin-bottom:10px}
+#setup .btn{height:40px}
+#setup .err{color:var(--alert);font-weight:700;min-height:1.5em}
+[hidden]{display:none!important}
+@media (max-width:700px){
+ main{display:block;padding:10px 16px}
+ section{margin-bottom:10px;overflow:visible}
+ .msgs{max-height:none}
+ .tabs{display:flex;gap:6px;padding:8px 16px 0;position:sticky;top:0;background:var(--paper);z-index:2}
+ .tabs a{flex:1;text-align:center;border:1.5px solid var(--ink);padding:6px 0;font:900 13px var(--font-sans);color:var(--ink);text-decoration:none;background:var(--card)}
+ .res ul{grid-template-columns:1fr}
+ .q b{font-size:20px}
+ header .st span.long{display:none}
+}
+</style></head>
+<body>
+<header><h1>AgentBoard</h1><span class="st" id="st">読み込み中…</span><button id="reload" type="button" hidden>今すぐ読む</button><button id="logout" type="button" hidden>令牌を外す</button></header>
+
+<div id="setup" hidden>
+ <h2>この端末で AgentBoard を開く</h2>
+ <p>係の様子は非公開のリポジトリ <b>cxelegy/agentboard</b> にあります。読むための鍵（GitHub の令牌）を 1 回だけ貼ってください。令牌はこの端末の中にだけ残り、ほかへは送りません。</p>
+ <ol>
+  <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub の令牌を作るページ</a>を開く</li>
+  <li>Repository access：<b>Only select repositories</b> → <b>agentboard</b> だけ</li>
+  <li>Permissions：<b>Contents</b> を <b>Read and write</b>（店長の書き込みを送るため）</li>
+  <li>Generate token → 出てきた <code>github_pat_…</code> を下に貼る</li>
+ </ol>
+ <input id="tok" type="password" autocomplete="off" placeholder="github_pat_…" aria-label="GitHub の令牌">
+ <div class="err" id="err"></div>
+ <button class="btn" id="save" type="button">開く</button>
+</div>
+
+<div id="app" hidden>
+<nav class="tabs"><a href="#s-ag" id="t-ag">係</a><a href="#s-q" id="t-q">列</a><a href="#s-talk" id="t-talk">話す</a><a href="#s-res">結果</a></nav>
+<main>
+<section id="s-ag"><h2>動いている係 <small id="ag-n"></small></h2>
+ <div class="scroll" id="agents"></div>
+ <h2 class="sub">見張りの知らせ <small id="al-n"></small></h2>
+ <ul id="alerts"></ul>
+</section>
+<section id="s-q"><h2>段の列 <small id="q-at"></small></h2>
+ <div class="q" id="queue"></div>
+ <div id="choices"></div>
+ <ul class="scroll" id="next"></ul>
+ <h2 class="sub">重さ <small id="cost-run"></small></h2>
+ <div class="q q3" id="cost"></div>
+</section>
+<section id="s-talk"><h2>店長 ⇄ 主の会話 <small id="talk-n"></small></h2>
+ <div class="msgs" id="msgs"></div>
+ <form class="talk" id="talk">
+  <div class="row"><textarea id="text" placeholder="主の会話へ書く" aria-label="主の会話へ書く"></textarea><button class="btn" type="submit">送る</button></div>
+  <label class="why">宛先 <select id="to"><option value="both">両方</option><option value="cloud">クラウドの主</option><option value="pc">PC の主</option></select></label>
+ </form>
+</section>
+<section class="res" id="s-res"><h2>最近の結果 <small id="res-n"></small></h2><ul id="results"></ul></section>
+</main>
+</div>
+
+<script>
+(function(){
+'use strict';
+var OWNER='cxelegy', REPO='agentboard', KEY='agentboard.token', POLL=30000;
+var STALE=20, SLOW=10;            // 分：赤（止まり）・黄（遅い）
+var $=function(id){return document.getElementById(id)};
+var demo=/[?&]demo\b/.test(location.search);   // 見本（試験と絵の確かめ用）
+var tok=null;
+try{tok=localStorage.getItem(KEY)}catch(e){}
+var last=null, timer=null;
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+function hm(t){var d=new Date(t);return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+function ago(min){return min<1?'今':min<60?Math.round(min)+' 分前':min<1440?Math.round(min/60)+' 時間前':Math.round(min/1440)+' 日前'}
+function ts(x){if(x==null)return 0;if(typeof x==='number')return x<1e12?x*1000:x;var n=Date.parse(x);return isNaN(n)?0:n}
+
+function gql(query){
+  return fetch('https://api.github.com/graphql',{method:'POST',headers:{'Authorization':'bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({query:query})})
+   .then(function(r){if(r.status===401)throw {auth:1};return r.json()})
+   .then(function(j){if(j.errors&&!j.data)throw {msg:j.errors[0].message};if(!j.data||!j.data.repository)throw {msg:'リポジトリが読めません（令牌が agentboard を許していない）'};return j.data.repository});
+}
+var Q='fragment F on Tree{entries{name object{... on Blob{text}}}}'+
+ 'query{repository(owner:"'+OWNER+'",name:"'+REPO+'"){'+
+ 'agents:object(expression:"HEAD:agents"){...F} inbox:object(expression:"HEAD:inbox"){...F} outbox:object(expression:"HEAD:outbox"){...F}'+
+ 'pc:object(expression:"HEAD:pc/summary.json"){... on Blob{text}}'+
+ 'ref:defaultBranchRef{target{... on Commit{committedDate}}}}}';
+
+function rows(tree){
+  var out=[];(tree&&tree.entries||[]).forEach(function(e){if(!/\.json$/.test(e.name)||!e.object||e.object.text==null)return;try{out.push(JSON.parse(e.object.text))}catch(x){}});return out;
+}
+function load(){
+  if(demo)return Promise.resolve(DEMO());
+  return gql(Q).then(function(r){
+    var pc=null;try{pc=r.pc&&r.pc.text?JSON.parse(r.pc.text):null}catch(x){}
+    return {agents:rows(r.agents),inbox:rows(r.inbox),outbox:rows(r.outbox),pc:pc,commit:r.ref&&r.ref.target&&r.ref.target.committedDate};
+  });
+}
+
+function agentList(d,now){
+  var list=[];
+  d.agents.forEach(function(a){
+    var t=ts(a.ts||a.beat);
+    if(a.status!=='working'&&now-t>6*3600e3)return;   // 終わって 6 時間たった係は出さない
+    list.push({where:a.where||'cloud',role:a.role,task:a.task,note:a.note,t:t,start:ts(a.started),status:a.status||'working',session:a.session});
+  });
+  var pc=d.pc||{};
+  (pc.agents||[]).forEach(function(a){
+    list.push({where:'pc',role:a.role,task:a.task,note:a.note,t:ts(a.ts||a.at),start:a.elapsed!=null?ts(a.ts)-(a.elapsed-a.quiet)*60e3:0,status:'working'});
+  });
+  list.forEach(function(a){a.quiet=(now-a.t)/60e3});
+  list.sort(function(a,b){return (a.status==='working'?0:1)-(b.status==='working'?0:1)||b.quiet-a.quiet});
+  return list;
+}
+
+function render(d){
+  last=d;
+  var now=Date.now(), pc=d.pc||{};
+  // 係
+  var list=agentList(d,now), box=$('agents'); box.innerHTML='';
+  var live=list.filter(function(a){return a.status==='working'}), stale=live.filter(function(a){return a.quiet>=STALE});
+  $('ag-n').textContent=live.length+' 人'+(stale.length?' · 止まり '+stale.length:'');
+  if(!list.length)box.appendChild(el('div','empty','いま動いている係はいません'));
+  list.forEach(function(a){
+    var c=a.status!=='working'?'d':a.quiet>=STALE?'s':a.quiet>=SLOW?'w':'';
+    var r=el('div','ag');
+    var open=a.where==='cloud'&&a.session?' <a class="open" href="https://claude.ai/code/'+encodeURIComponent(a.session)+'" target="_blank" rel="noopener">開く</a>':'';
+    var min=a.status!=='working'?'<small>'+esc(a.status==='done'?'済':a.status==='failed'?'失敗':'止め')+'</small>':Math.round(a.quiet)+'<small> 分</small>';
+    r.innerHTML='<span class="dot '+c+'" title="'+(c==='s'?'20 分 知らせなし':c==='w'?'10 分 知らせなし':'')+'"></span>'+
+      '<div><b>'+esc(a.role)+'</b> <span class="tag '+(a.where==='pc'?'pc':'cloud')+'">'+(a.where==='pc'?'PC':'クラウド')+'</span> <span class="wh">'+esc(a.task)+'</span>'+open+'</div>'+
+      '<div class="min">'+min+'</div><div class="nt">'+esc(a.note||'')+'</div>';
+    box.appendChild(r);
+  });
+  // 見張り
+  var al=(pc.alerts||[]).slice(-5).reverse(), ul=$('alerts'); ul.innerHTML='';
+  $('al-n').textContent=al.length?'最近 '+al.length:'';
+  if(!al.length)ul.appendChild(el('li','empty','知らせはありません'));
+  al.forEach(function(x){var t=ts(x.t||x.at);ul.appendChild(el('li',null,(t?'<code>'+hm(t)+'</code>':'')+esc(x.text||x.msg||x.note||[x.role,x.task,x.kind].filter(Boolean).join(' '))))});
+  // 列
+  var q=pc.queue||{}, qb=$('queue'); qb.innerHTML='';
+  [['open','開'],['claimed','作業中'],['waiting','店長待ち'],['parked','止め'],['done','済']].forEach(function(k){
+    qb.appendChild(el('div',k[0]==='waiting'&&q.waiting?'hot':null,esc(k[1])+'<b>'+(q[k[0]]!=null?q[k[0]]:'–')+'</b>'));
+  });
+  $('q-at').textContent=pc._pushed?'PC から '+ago((now-ts(pc._pushed))/60e3):'PC の知らせ待ち';
+  var ch=$('choices'); ch.innerHTML='';
+  (pc.choices||[]).forEach(function(c){var e=el('div','choice','選んでください：'+esc(c.task)+' '+esc(c.question||'')+(c.url?' · <a href="'+esc(c.url)+'" target="_blank" rel="noopener">案のページ</a>':''));ch.appendChild(e)});
+  var nx=$('next'); nx.innerHTML='';
+  (pc.next||[]).forEach(function(t){nx.appendChild(el('li',null,'<code>'+esc(t.id)+'</code>'+esc(t.title)))});
+  (pc.waiting||[]).forEach(function(t){nx.appendChild(el('li',null,'<code>'+esc(t.id)+'</code><span class="why">店長待ち：'+esc(t.title)+'</span>'))});
+  (pc.parked||[]).forEach(function(t){nx.appendChild(el('li',null,'<code>'+esc(t.id)+'</code><span class="why">止め：'+esc(t.note||t.title)+'</span>'))});
+  if(!nx.children.length)nx.appendChild(el('li','empty','次の段はありません'));
+  // 重さ
+  var co=pc.cost||{}, cb=$('cost'); cb.innerHTML='';
+  $('cost-run').textContent=co.run?'最後の回 '+co.run:'';
+  var per=co.per_merged!=null?co.per_merged:co.per_shipped;
+  [['係',co.agents],['合併',co.merged!=null?co.merged:co.shipped],['1 段あたり',per!=null?(per>=1e4?Math.round(per/1e4)+'万':per):null]].forEach(function(k){cb.appendChild(el('div',null,esc(k[0])+'<b>'+(k[1]!=null?esc(k[1]):'–')+'</b>'))});
+  // 話す
+  var msgs=[];
+  d.inbox.forEach(function(m){msgs.push({me:1,t:ts(m.t),text:m.text,to:m.to,id:String(m.t)})});
+  d.outbox.forEach(function(m){msgs.push({me:0,t:ts(m.t),text:m.text,who:m.who,re:String(m.re)})});
+  msgs.sort(function(a,b){return a.t-b.t});
+  var answered={};d.outbox.forEach(function(m){answered[String(m.re)]=1});
+  var waiting=d.inbox.filter(function(m){return !answered[String(m.t)]}).length;
+  $('talk-n').textContent=waiting?'返事待ち '+waiting:'';
+  var mb=$('msgs'), stick=mb.scrollTop+mb.clientHeight>=mb.scrollHeight-8; mb.innerHTML='';
+  if(!msgs.length)mb.appendChild(el('div','empty','まだ書き込みはありません。下から主の会話へ書けます'));
+  msgs.slice(-40).forEach(function(m){
+    var to={both:'両方',cloud:'クラウドの主',pc:'PC の主'}[m.to]||'';
+    mb.appendChild(el('div','m '+(m.me?'me':'re'),esc(m.text)+'<small>'+(m.me?(to?to+'へ · ':'')+hm(m.t)+(answered[m.id]?'':' · 未読'):esc(m.who||'主の会話')+' · '+hm(m.t))+'</small>'));
+  });
+  if(stick)mb.scrollTop=mb.scrollHeight;
+  // 結果
+  var res=(pc.results||[]).slice(-10).reverse(), rl=$('results'); rl.innerHTML='';
+  $('res-n').textContent=res.length?res.length+' 件':'';
+  if(!res.length)rl.appendChild(el('li','empty','まだありません'));
+  res.forEach(function(r){var ok=/merged|done|ok|ship/i.test(r.status||'');
+    var pr=r.pr?(/^\d+$/.test(String(r.pr))?' <a href="https://github.com/cxelegy/Wishlist/pull/'+esc(r.pr)+'" target="_blank" rel="noopener">#'+esc(r.pr)+'</a>':' <a href="'+esc(r.pr)+'" target="_blank" rel="noopener">PR</a>'):'';
+    rl.appendChild(el('li',null,'<span class="'+(ok?'ok':'ng')+'">'+esc(ok?'合併':({parked:'止め',failed:'失敗',waiting:'店長待ち'}[r.status]||r.status||'?'))+'</span> '+esc(r.task)+pr+(r.note&&!ok?' <span class="why">'+esc(r.note)+'</span>':'')))});
+  // 頭
+  var cm=d.commit?ts(d.commit):0;
+  $('st').innerHTML='<span class="long">最後の知らせ </span><b>'+(cm?hm(cm):'–')+'</b>'+(cm?' · '+ago((now-cm)/60e3):'')+'<span class="long"> · 30 秒ごとに読む</span>';
+}
+
+function tick(){
+  return load().then(render).catch(function(e){
+    if(e&&e.auth){forget('令牌が使えません（期限切れ・消された）。作り直して貼ってください');return}
+    $('st').textContent='読めませんでした：'+((e&&e.msg)||'通信')+' · 30 秒後にもう一度';
+  });
+}
+function start(){
+  $('setup').hidden=true;$('app').hidden=false;$('reload').hidden=false;$('logout').hidden=demo;
+  tick();clearInterval(timer);timer=setInterval(function(){if(!document.hidden)tick()},POLL);
+}
+function forget(msg){
+  try{localStorage.removeItem(KEY)}catch(e){}
+  tok=null;clearInterval(timer);$('app').hidden=true;$('reload').hidden=true;$('logout').hidden=true;$('setup').hidden=false;$('err').textContent=msg||'';$('st').textContent='';
+}
+$('save').onclick=function(){
+  var v=$('tok').value.trim();
+  if(!/^(github_pat_|ghp_)\w{20,}$/.test(v)){$('err').textContent='github_pat_ で始まる令牌を貼ってください';return}
+  tok=v;$('err').textContent='確かめています…';
+  gql('query{repository(owner:"'+OWNER+'",name:"'+REPO+'"){name}}').then(function(){
+    try{localStorage.setItem(KEY,v)}catch(e){}
+    $('tok').value='';$('err').textContent='';start();
+  }).catch(function(e){tok=null;$('err').textContent=e&&e.auth?'この令牌は使えません':(e&&e.msg)||'読めませんでした'});
+};
+$('logout').onclick=function(){forget('令牌を外しました')};
+$('reload').onclick=tick;
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&(tok||demo))tick()});
+
+// 店長の書き込み → inbox/<t>.json（係は ab.py inbox で読み、ab.py reply で返す）
+$('talk').onsubmit=function(ev){
+  ev.preventDefault();
+  var text=$('text').value.trim();if(!text)return;
+  var t=Date.now(), rec={t:t,text:text,to:$('to').value,at:new Date(t).toISOString()};
+  if(demo){last.inbox.push(rec);render(last);$('text').value='';return}
+  var body=JSON.stringify(rec,null,1)+'\n';
+  var b64=btoa(unescape(encodeURIComponent(body)));
+  var btn=ev.target.querySelector('button');btn.disabled=true;
+  fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/inbox/'+t+'.json',{method:'PUT',headers:{'Authorization':'bearer '+tok,'Accept':'application/vnd.github+json'},
+    body:JSON.stringify({message:'店長の書き込み '+t,content:b64})})
+   .then(function(r){if(!r.ok)throw r.status;$('text').value='';if(last){last.inbox.push(rec);render(last)}})
+   .catch(function(s){alert(s===403||s===404?'送れません：令牌に Contents の書き込みを許してください':'送れませんでした（'+s+'）')})
+   .then(function(){btn.disabled=false});
+};
+$('text').addEventListener('keydown',function(e){if(e.key==='Enter'&&(e.ctrlKey||e.metaKey))$('talk').requestSubmit()});
+
+function DEMO(){
+  var n=Date.now()/1000, m=60;
+  return {commit:new Date((n-2*m)*1000).toISOString(),
+   agents:[{where:'cloud',role:'主の会話',task:'brain',note:'店長の「AgentBoard を作り直す」を係に渡した',ts:n-m,started:new Date((n-40*m)*1000).toISOString(),status:'working',session:'session_demo'},
+           {where:'cloud',role:'作る',task:'T-0241',note:'目次のアイコンの大きさを揃える · 試験を流している',ts:n-3*m,status:'working',session:'session_demo2'}],
+   inbox:[{t:(n-30*m)*1000,text:'ライブラリの写真もう少し大きく',to:'both'},{t:(n-4*m)*1000,text:'AgentBoard 作り直して',to:'cloud'}],
+   outbox:[{t:(n-28*m)*1000,re:String((n-30*m)*1000),text:'T-0242 にしました。次の回で作ります',who:'PC の主'}],
+   pc:{_pushed:new Date((n-2*m)*1000).toISOString(),
+    agents:[{role:'見た目の審査',task:'T-0238',note:'1333×677 の絵を撮って A1〜I2 で採点',ts:n-12*m,quiet:12,elapsed:20},{role:'合併',task:'T-0230',note:'CI を待っている',ts:n-26*m,quiet:26,elapsed:40}],
+    queue:{open:7,claimed:3,waiting:2,parked:1,done:41},
+    next:[{id:'T-0242',title:'写真の下の空きを詰める'},{id:'T-0243',title:'今週の数の重なり'},{id:'T-0244',title:'スマホの目次の字の欠け'}],
+    parked:[{id:'T-0230',title:'合併',note:'CI が 2 回赤（work）'}],
+    choices:[{task:'T-0236',question:'目次の色 3 案',url:'https://cxelegy.github.io/Wishlist/testground/'}],
+    results:[{task:'T-0231',status:'merged',pr:1025},{task:'T-0233',status:'merged',pr:1027},{task:'T-0230',status:'parked',note:'CI'},{task:'T-0235',status:'merged',pr:1029},{task:'T-0237',status:'merged',pr:1032}],
+    alerts:[{t:new Date((n-130*m)*1000).toISOString(),text:'PC が 3 分 つながらなかった'},{t:new Date((n-50*m)*1000).toISOString(),text:'CI の鍵を 25 分 待った'},{t:new Date((n-12*m)*1000).toISOString(),text:'合併 T-0230：20 分 知らせなし'}],
+    cost:{run:'1119a',agents:14,merged:3,per_merged:380000}}};
+}
+
+if(tok||demo)start();else forget('');
+})();
+</script>
+</body></html>
