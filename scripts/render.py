@@ -191,8 +191,8 @@ button{font-family:inherit}
 .kick{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
 .kick em{font:16px/1 var(--font-num);font-style:normal;letter-spacing:.04em;color:var(--deep,var(--ink))}
 .top h2{margin:0;max-width:600px;font:900 clamp(21px,2.2vw,31px)/1.55 var(--font-sans);letter-spacing:.01em;transform:rotate(var(--tilt));transform-origin:left top}
-/* ニュースの見出しは最後の行を 1〜2 字にしない（2026-11-19 店長 ①「始」1 字）：全部の見出しに同じ決め＝行の長さをそろえ（balance）、日本語は文節で折る（auto-phrase）。FIT_JS の noOrphan が残りを直す */
-.top h2,.wc>b,section.sec article.card :is(h2,h3),.pend li a{text-wrap:balance;word-break:auto-phrase}
+/* ニュースの見出しは最後の行を 1〜2 字にしない（2026-11-19 店長 ①「始」1 字）：全部の見出しに同じ決め＝行の長さをそろえる（balance。行の数は増やさない＝版面の高さを変えない）。残りは NOORPHAN_JS が直す */
+.top h2,.wc>b,section.sec article.card :is(h2,h3),.pend li a{text-wrap:balance}
 .top:hover .hb{background:var(--deep,var(--ink))}
 .top p{margin:0;max-width:560px;font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .startgo{display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;min-height:56px;padding:10px 26px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
