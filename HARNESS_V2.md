@@ -165,8 +165,9 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 | 集め係 | `agentboard/collect.py`（標準ライブラリだけ）。前の `server.mjs` と同じく Claude Code の記録を読む：`~/.claude/projects/<作業場所>/<会話>.jsonl`（BRAIN）・`<会話>/subagents/agent-*.jsonl`＋`.meta.json`（単独の係）・`subagents/workflows/wf_*/journal.jsonl`＋`agent-*.jsonl`（workflow の回）。＋ Wishlist の main・kpi・段の列、PC は `summary.json` |
 
 - **PC**：`setup_pc.ps1` を 1 回 → タスク AgentBoardCollector がログオンのたびに `collect.py --host pc --loop 30` を起こす（4747 の server.mjs は要らなくなる）。
-- **クラウドの BRAIN**：会話の始めに `add_repo cxelegy/agentboard（push）`→ `/home/user/agentboard` に clone → `python3 .claude/hooks/agentboard_start.py`。次からは hook（SessionStart・UserPromptSubmit）が、clone があれば 1 つだけ起こす（Windows・clone が無い会話は何もしない）。
-- **ほかのクラウドの会話**（記録が別の容器にあるもの）：その会話か BRAIN が `ab.py beat <役> <段> "<いま>" --session session_… --model claude-…` を書く → 同じ箱に出る（`session_` なら「開く」）。
+- **クラウドの会話（主も、主が作る会話も。店長が 2026-11-19 にまとめて許可）**：会話の始めに `add_repo cxelegy/agentboard（push）`→ `/home/user/agentboard` に clone → `ab.py whoami <session_ id> "<会話の名前>"`（BRAIN の箱に名前と「開く」）→ `python3 .claude/hooks/agentboard_start.py`。次からは hook（SessionStart・UserPromptSubmit）が、clone があれば 1 つだけ起こす（Windows・clone が無い会話は何もしない）。会話ごとに `live-cloud-<id>` の 1 枚。人のいない会話（AI 編集・予約の回）は足さない。
+- 記録を集め係が読めない係（別の機械など）は `ab.py beat <役> <段> "<いま>" --session session_… --model claude-…` → 同じ箱に出る。
+- **令牌は 1 回で**：画面の「GitHub で令牌を作る」は名前・期限・Contents の書き込みを入れた GitHub の作成ページ（template URL）。店長が手で選ぶのは Repository access の agentboard だけ。
 - **店長の伝言**：画面の `owner $` → `inbox/`（宛先：両方・cloud・pc）。BRAIN は `ab.py inbox` で読み、`ab.py reply <t> "返事" --who "クラウドの BRAIN"` で返す。
 - 状態：作業中／完了／失敗／**15 分 記録が増えない＝止まっている（赤）**。機械の 1 枚が 6 分 来なければ、その機械の作業中の係も赤。2 時間より前に終わった係は「+N 済み」。
 - 画面は 15 秒ごと（タブが隠れている間は読まない）に GraphQL 1 回：live-* の全部・main の agents/inbox/outbox・Wishlist の PR と CI。

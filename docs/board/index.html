@@ -50,7 +50,8 @@ button,input,select{font:inherit;color:inherit}
 .center{display:flex;flex-direction:column;align-items:center;min-width:0}
 .lead{border:1px solid var(--lead);width:380px;max-width:100%;text-align:center;padding:10px 14px}
 .lead .t{color:var(--lead);font-weight:700}.lead .w{color:var(--white)}
-.lead .h{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.lead .h{display:flex;justify-content:center;gap:2px 14px;flex-wrap:wrap}
+.lead a.open,.lead a.open:visited{color:var(--dim);font-size:11px;text-decoration:none;border-bottom:1px dotted var(--dim)}
 .vline{width:1px;height:18px;background:var(--line)}
 .route{border:1px solid var(--harness);width:640px;max-width:100%;padding:10px 14px}
 .route .hd{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -141,9 +142,8 @@ legend{padding:0 8px;color:var(--fg)}
   <h2>$ agentboard login</h2>
   <p>係の様子は非公開のリポジトリ <b class="c-white">cxelegy/agentboard</b> にあります。読む鍵（GitHub の令牌）をこの端末に 1 回だけ貼ってください。令牌はこの端末の中にだけ残ります。</p>
   <ol>
-   <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" class="c-lead">GitHub の令牌を作るページ</a>を開く</li>
-   <li>Repository access：<b class="c-white">Only select repositories</b> → <b class="c-white">agentboard</b></li>
-   <li>Permissions → Contents：<b class="c-white">Read and write</b>（伝言を送るため）</li>
+   <li><a href="https://github.com/settings/personal-access-tokens/new?name=AgentBoard&description=AgentBoard%20%E3%81%AE%E7%94%BB%E9%9D%A2%E3%81%8C%20cxelegy%2Fagentboard%20%E3%82%92%E8%AA%AD%E3%82%80%E3%83%BB%E4%BC%9D%E8%A8%80%E3%82%92%E9%80%81%E3%82%8B&target_name=CxElegy&expires_in=366&contents=write" target="_blank" rel="noopener" class="c-lead">GitHub で令牌を作る</a>（名前・期限・Contents の書き込みは入れてあります）</li>
+   <li>Repository access：<b class="c-white">Only select repositories</b> → <b class="c-white">agentboard</b> を選ぶ（ここだけ手で）</li>
    <li>Generate token → <span class="c-white">github_pat_…</span> を下に貼って Enter</li>
   </ol>
   <form class="ln" id="tokf"><label>token $</label><input id="tok" type="password" autocomplete="off" placeholder="github_pat_…" aria-label="GitHub の令牌"><button type="submit">開く</button></form>
@@ -267,7 +267,10 @@ function render(d){
   last=d;var now=Date.now(), M=merge(d,now);
   // BRAIN
   var b0=M.brains[0], bm=b0?b0.model:'Fable 5.2', bf=fam(bm)==='lead'?'fable':fam(bm);
-  var bh=M.brains.length?M.brains.map(function(b){var on=b.on&&b.active;return '<span class="'+(on?'c-harness':'c-dim')+'">● '+(on?'active':'idle · '+dur(b.quiet))+' <span class="c-dim">'+esc(b.tag)+'</span></span>'}).join(''):'<span class="c-dim">● 記録なし</span>';
+  M.brains.sort(function(a,b){return (a.tag==='pc'?0:1)-(b.tag==='pc'?0:1)||a.quiet-b.quiet});
+  var bh=M.brains.length?M.brains.slice(0,4).map(function(b){var on=b.on&&b.active;
+    var lk=/^session_\w+$/.test(b.link||'')?' <a class="open" href="https://claude.ai/code/'+encodeURIComponent(b.link)+'" target="_blank" rel="noopener">開く</a>':'';
+    return '<span class="'+(on?'c-harness':'c-dim')+'">● '+(on?'active':'idle · '+dur(b.quiet))+' <span class="c-dim">'+esc(b.tag)+(b.name?' · '+esc(b.name):'')+'</span>'+lk+'</span>'}).join('')+(M.brains.length>4?'<span class="c-dim">+'+(M.brains.length-4)+'</span>':''):'<span class="c-dim">● 記録なし</span>';
   $('lead').innerHTML='<div class="t">BRAIN · '+esc(bm)+' · lead</div><div class="w">plans only · 計画だけ</div><div class="h">'+bh+'</div><div class="c-dim">--model '+esc(bf)+'</div>';
   // advisor
   var o=M.opus, r0=o.recent[0];

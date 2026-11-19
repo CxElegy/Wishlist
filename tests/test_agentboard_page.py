@@ -120,6 +120,7 @@ class Browser(unittest.TestCase):
                   site={"main": {"sha": "abc1234", "t": now - 600, "msg": "出刊"}, "backlog": {"open": 7, "doing": 1, "ask": 2, "top": "写真の下の空き"}},
                   harness={"queue": {"open": 7, "claimed": 1, "waiting": 2}, "choices": [{"task": "T-0236", "question": "目次の色", "url": "https://example.com/c"}]})
         cl = host("cloud", "cloud-3136e785", now, [ag("写真の出どころ調べ", "Opus 5.5", "opus", "done", now, result="直すのは高さ")], brain_model="Opus 5.5")
+        cl["brain"].update(link="session_01Cloud", name="クラウドの主")          # ab.py whoami の名札
         seen = {"q": 0, "put": None}
 
         def gql(route):
@@ -149,6 +150,8 @@ class Browser(unittest.TestCase):
         self.assertEqual(p.locator("#agents .ag.stuck").count(), 1)                    # 30 分 動かない Haiku
         self.assertEqual(p.locator("#agents a.open").count(), 1)                       # session_ の会話だけ「開く」
         self.assertIn("pc,cloud-3136e785", p.inner_text("#status"))
+        self.assertIn("クラウドの主", p.inner_text("#lead"))                         # BRAIN の箱に会話の名前と「開く」
+        self.assertEqual(p.locator("#lead a.open").get_attribute("href"), "https://claude.ai/code/session_01Cloud")
         p.fill("#text", "AgentBoard 見えた")
         p.press("#text", "Enter")
         p.wait_for_timeout(200)
@@ -161,6 +164,10 @@ class Browser(unittest.TestCase):
         p, errs = self.open(390, 844, q="")
         self.assertEqual(errs, [])
         self.assertTrue(p.is_visible("#setup"))
+        href = p.locator("#setup a").first.get_attribute("href")                       # 令牌は 1 回で：作成ページに項目を入れて開く
+        self.assertTrue(href.startswith("https://github.com/settings/personal-access-tokens/new?"))
+        for kv in ("name=AgentBoard", "contents=write", "expires_in=366"):
+            self.assertIn(kv, href)
         self.assertFalse(p.is_visible("#app"))
         p.fill("#tok", "abc")
         p.press("#tok", "Enter")
