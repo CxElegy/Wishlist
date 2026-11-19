@@ -182,6 +182,27 @@
   "漫威电影": 19,
   "哈利波特剧集": 3,
   "ILLIT": 5,
-  "三星手机": 3
- }
+  "三星手机": 3,
+  "Astrae Oratio": 2
+ },
+ "Astrae Oratio": [
+  {
+   "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+   "highlight": "TGS 2026서",
+   "blurb": "엔씨가 삼성전자와 손잡고 일본 시장 공략에 나서며 TGS 2026에서 ‘아스트라에 오라티오’를 처음 시연한다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Astrae Oratio Introduces Kageyama Wakaba, a Helmet-Wearing Otaku Magician Who Talks to Kaiju",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ]
 }

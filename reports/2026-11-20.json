@@ -1,29 +1,37 @@
 {
  "date": "2026-11-20",
- "edit_sig": "859e392b0133",
+ "edit_sig": "fc2d14b66d36",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "엔씨가 삼성전자와 손잡고 일본 시장 공략에 나서며 TGS 2026에서 ‘아스트라에 오라티오’를 처음 시연한다.",
      "date": "2026-11-18",
-     "n": 1,
+     "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+     "highlight": "TGS 2026서",
+     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+     "image_via": "作品封面",
      "source": "쿠키뉴스",
-     "title": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연 [쿠키 게임]",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE10ODFGNkJDdW00M0RVZ3FqY0p1Rkp1ZEQ4YnE1SmpxVlZNcFRhZXRVU0ZHUWwySmltTzJ3MU9TUVJ0WVlWTkdQTVNid2E1Tk4xc1BQLWoxMGR0VkpPTzRqQ21zaw?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.kukinews.com&sz=128",
+     "url": "https://www.kukinews.com/article/view/kuk202609110059",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-19",
-     "n": 2,
+     "headline": "Astrae Oratio Introduces Kageyama Wakaba, a Helmet-Wearing Otaku Magician Who Talks to Kaiju",
+     "highlight": "",
+     "image": null,
      "source": "GamerBraves",
-     "title": "Astrae Oratio Introduces Kageyama Wakaba, a Helmet-Wearing Otaku Magician Who Talks to Kaiju",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5veFc0OXFNNFRYc3BTR3loZ2hGV0tRcHdWM0VydHdkWTFMd0RQYWJkb1hNZjhWZTZNampqeGNDVzVPTkppajhmTnBKY1JseU1KQVh4ajA5Z3pNSDd3?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.gamerbraves.com&sz=128",
+     "url": "https://www.gamerbraves.com/astrae-oratio-otaku/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -524,7 +532,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "last": {
     "date": "2026-11-19",
