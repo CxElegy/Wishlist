@@ -632,6 +632,29 @@ class Upstream(unittest.TestCase):
         self.assertTrue(le.tools_ready(None))
 
 
+class WarmThread(unittest.TestCase):
+    def test_main_thread_output_survives_background_warm(self):
+        """見直し 4：redirect_stdout は python 全体に効く。後ろの糸が模型を読んでいる間の元の糸の print が捨てられていた。"""
+        import contextlib
+        import io
+        import types
+        started, go = threading.Event(), threading.Event()
+
+        def slow(name):
+            started.set()
+            go.wait(5)
+        fake = types.SimpleNamespace(_session=slow)
+        buf = io.StringIO()
+        with mock.patch.dict(sys.modules, {"emblem": fake}), contextlib.redirect_stdout(buf):
+            th = threading.Thread(target=le.warm, kwargs={"face": False})
+            th.start()
+            started.wait(5)
+            print("元の糸の行")
+            go.set()
+            th.join(5)
+        self.assertIn("元の糸の行", buf.getvalue())
+
+
 class WaitingPicks(unittest.TestCase):
     def test_waiting_picks(self):   # board の job の様子が分からないときだけ使う
         iso = lambda s: time.strftime("%Y-%m-%dT%H:%M:%S+00:00", time.gmtime(NOW - s))  # noqa: E731

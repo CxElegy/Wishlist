@@ -875,10 +875,13 @@ def warm(face=True):
     """待っている間に重い模型（rembg の切り抜き・顔）を先に読む。1 枚目の版面の時間から読み込みの 40 秒ほどを外す（2026-11-19 run 2：
     --fresh の最初の 40 秒は onnxruntime の読み込みまで何も出ていなかった）。読めなくても何もしない（取るときに今までどおり読む）。
     face=False は rembg の切り抜きだけ（後ろの糸で読む：顔の模型は糸ごとに持つので、取る糸＝main で読む。face_id.engine）。"""
+    # 後ろの糸（face=False）では出力を切り替えない：redirect_stdout／stderr は糸ごとでなく python 全体の sys.stdout を替えるので、
+    # 読んでいる間の元の糸の print・traceback まで捨てていた（見直し 4）。rembg の出力（模型の取り込みの行）はそのまま出す（版面の名前は無い）
     for f in (lambda: __import__("emblem")._session("birefnet-general-lite"), lambda: __import__("face_id").engine()) if face else \
             (lambda: __import__("emblem")._session("birefnet-general-lite"),):
         try:
-            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            with (contextlib.redirect_stdout(io.StringIO()) if face else contextlib.nullcontext()), \
+                    (contextlib.redirect_stderr(io.StringIO()) if face else contextlib.nullcontext()):
                 f()
         except Exception:  # noqa: BLE001
             pass
