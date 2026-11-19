@@ -327,6 +327,9 @@ def fake_images(ctx):
             return route.continue_()
         return route.abort()   # 外（字体・supabase など）は読まない：揺れの元を断つ
     ctx.route("**/*", h)
+    # 揺れの元（2026-11-19 調べ）：気になるかも？の並べ替え（SHUFFLE_JS）と小元素の選び方（A8 のランダム）が Math.random で回ごとに違い、
+    # 下の版面の高さ・組みが変わって cgap が ±3 揺れた。数えるときだけ種を固定する（ページの作りはランダムのまま）
+    ctx.add_init_script("(()=>{let s=20261119;Math.random=()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};})();")
 
 
 def new_user_counts(url, browser_, views=NEW_USER_VIEWS, fake=False):
