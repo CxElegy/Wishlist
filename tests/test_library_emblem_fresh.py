@@ -1,10 +1,12 @@
 """新しい版面の速い道（2026-11-19 店長「新しい版面を足したら小元素が出るまでの時間は 5 分未満を保つ」）。
-library_emblem.py --fresh／--check-fresh・library.claim_board・user_pages の 1 人だけの作り直しと記事 5 本まで待つ決まり。網・DB なし。"""
+library_emblem.py --fresh・library.claim_board・user_pages の 1 人だけの作り直しと記事 5 本まで待つ決まり。網・DB なし。
+時計と sleep は差し替える（本当に待たない）。"""
 import inspect
 import json
 import pathlib
 import sys
 import tempfile
+import threading
 import time
 import unittest
 from unittest import mock
@@ -30,12 +32,21 @@ class FreshBoards(unittest.TestCase):
 
         def db(path, *a, **k):
             seen.append(path)
-            return rows
+            return [{"board_id": i, "section": "生活"} for i in (1, 4)] if path.startswith("follows?") else rows
         got = [b["id"] for b in le.fresh_boards(db, NOW, shop={2})]
         self.assertEqual(got, [1, 4])
+        self.assertIn("board_id=in.(1,4)", seen[1])
         self.assertIn("config->>emblem_state=is.null", seen[0])
         self.assertIn("created_at=gte.", seen[0])
         self.assertNotIn("+", seen[0])   # 網址で + が空白にならない（Z で書く）
+
+    def test_board_without_follows_waits(self):
+        # library.py --users は boards を先に、follows を最後に書く：follows の前に取ると板块が分からず種類（kind_for）を間違える
+        rows = [{"id": 1, "config": {}}, {"id": 2, "config": {}}]
+        fol = [{"board_id": 2, "section": "游戏", "subs": {}}, {"board_id": 2, "section": "生活", "subs": {}}]
+        got = le.fresh_boards(lambda path, *a, **k: fol if path.startswith("follows?") else rows, NOW)
+        self.assertEqual([b["id"] for b in got], [2])
+        self.assertEqual(got[0]["_follow"]["section"], "游戏")   # 最初の follows（created_at の順）
 
     def test_due_skips_fresh_claim_only(self):
         b1 = {"id": 1, "config": {"emblem_claim": NOW - 5}}
@@ -89,19 +100,20 @@ class FreshFill(unittest.TestCase):
         seen = {}
 
         def fake(item, log=None):
-            seen["step"], seen["deadline"] = emblem_fill.STEP, emblem_fill._deadline[0]
+            seen["step"], seen["deadline"], seen["first"] = emblem_fill.STEP, emblem_fill._deadline[0], emblem_fill.FIRST_STOP
             if write:
                 import emblem
                 emblem.write_item(item["name"], write, None)
             return result
         step0, dl0 = emblem_fill.STEP, emblem_fill._deadline[0]
         add = le.fresh_fill(self.board, {"section": "生活"}, lambda n, d: None, BASE, time.time() + 600, fill=fake, now=NOW)
-        self.assertEqual((emblem_fill.STEP, emblem_fill._deadline[0]), (step0, dl0))   # 範囲は元に戻る
+        self.assertEqual((emblem_fill.STEP, emblem_fill._deadline[0], emblem_fill.FIRST_STOP), (step0, dl0, False))   # 範囲は元に戻る（店長の後台は止めない）
         return add, seen
 
     def test_scope_is_narrow_but_rules_are_the_same_path(self):
         add, seen = self.fill({"state": "ok", "note": "1 枚"})
         self.assertEqual(seen["step"], le.FRESH_STEP)
+        self.assertTrue(seen["first"])   # 1 枚目が通った段で止める（範囲だけ）
         self.assertLessEqual(seen["deadline"], time.time() + le.FRESH_BOARD_S + 1)   # 1 版面の上限
         self.assertEqual(add["emblem_state"]["state"], "ok")
         self.assertIsNone(add["emblem_claim"])   # 印を外す
@@ -134,10 +146,11 @@ class FreshFill(unittest.TestCase):
 
 
 class Loop(unittest.TestCase):
-    def run_loop(self, appear, wait=240, minutes=9, results=None):
-        """appear = {時刻（秒）: [版面]}：その時刻から DB に現れる。"""
+    def run_loop(self, appear, wait=240, minutes=9, results=None, upstream=None, shard=0):
+        """appear = {時刻（秒）: [版面]}：その時刻から DB に現れる。upstream = 時刻 → True／False／None（board の job の様子）。"""
         t = [0.0]
         done = set()
+        asked = []
 
         def list_fresh():
             return [b for at, bs in appear.items() if t[0] >= at for b in bs if b["id"] not in done]
@@ -151,22 +164,57 @@ class Loop(unittest.TestCase):
 
         def sleep(s):
             t[0] += s
-        r = le.fresh_loop(list_fresh, take, wait, minutes * 60, clock=lambda: t[0], sleep=sleep)
-        return r, t[0]
+
+        def up():
+            asked.append(t[0])
+            return upstream(t[0]) if upstream else None
+        r = le.fresh_loop(list_fresh, take, wait, minutes * 60, clock=lambda: t[0], sleep=sleep, upstream=up, shard=shard)
+        return r, t[0], asked
 
     def test_waits_for_row_then_takes_then_quiet_exit(self):
-        r, end = self.run_loop({40: [{"id": 1}]})
+        r, end, _ = self.run_loop({40: [{"id": 1}]})
         self.assertEqual(r["ids"], [1])
         self.assertLess(end, 40 + 60 + le.FRESH_QUIET_S + 10)
 
     def test_second_board_in_the_quiet_tail_is_taken(self):
-        r, _ = self.run_loop({40: [{"id": 1}], 130: [{"id": 2}]})   # 30 秒の歯止めの間に足された 2 人目
+        r, _, _ = self.run_loop({40: [{"id": 1}], 130: [{"id": 2}]})   # 30 秒の歯止めの間に足された 2 人目
         self.assertEqual(r["ids"], [1, 2])
 
-    def test_gives_up_after_wait_when_nothing_comes(self):
-        r, end = self.run_loop({}, wait=100)
+    def test_unknown_upstream_gives_up_after_grace(self):
+        r, end, _ = self.run_loop({}, wait=300)
         self.assertEqual(r["done"], [])
-        self.assertLess(end, 100 + le.FRESH_POLL_S + 1)
+        self.assertLess(end, le.FRESH_GRACE_S + le.FRESH_POLL_S + 1)
+
+    def test_unknown_upstream_waits_while_names_are_pending(self):
+        # API が読めない・足したばかりの名前（added_at）がまだ版面になっていない：GRACE を過ぎても wait まで待つ
+        t = [0.0]
+        le.fresh_loop(lambda: [], lambda b: None, 200, 600, clock=lambda: t[0], sleep=lambda s: t.__setitem__(0, t[0] + s), waiting=lambda: 1)
+        self.assertGreaterEqual(t[0], 200)
+
+    def test_late_row_is_waited_for_while_board_job_runs(self):
+        # 2026-11-19 run 1：行は board の job の終わりごろ（+50 秒）に現れた。前は +10 秒で 1 回見て「0」で終えていた
+        r, end, _ = self.run_loop({50: [{"id": 7}]}, upstream=lambda s: s >= 55)
+        self.assertEqual(r["ids"], [7])
+
+    def test_row_written_just_before_job_end_is_not_missed(self):
+        # 終わったのを見てから読む：job の最後に書かれた行（終わりと同じ時刻に現れる）も取る
+        r, _, _ = self.run_loop({45: [{"id": 3}]}, upstream=lambda s: s >= 45)
+        self.assertEqual(r["ids"], [3])
+
+    def test_route_ab_ends_when_board_job_ends(self):
+        # 経路 A/B：新しい版面は来ない。board の job が終わったら（+40 秒）すぐ終える（wait 300 秒も GRACE も待たない）
+        r, end, _ = self.run_loop({}, wait=300, upstream=lambda s: s >= 40)
+        self.assertEqual(r["done"], [])
+        self.assertLess(end, 40 + le.FRESH_UP_S + le.FRESH_POLL_S + 1)
+
+    def test_board_job_never_ends_stops_at_wait(self):
+        r, end, _ = self.run_loop({}, wait=200, upstream=lambda s: False)
+        self.assertGreaterEqual(end, 200)
+        self.assertLess(end, 200 + le.FRESH_POLL_S + 1)
+
+    def test_upstream_is_not_asked_every_poll(self):
+        _, end, asked = self.run_loop({}, wait=120, upstream=lambda s: False)
+        self.assertLessEqual(len(asked), end / le.FRESH_UP_S + 2)   # GitHub の API は FRESH_UP_S ごと（DB は FRESH_POLL_S ごと）
 
     def test_skipped_board_is_not_retried_in_the_same_run(self):
         calls = []
@@ -179,34 +227,296 @@ class Loop(unittest.TestCase):
         self.assertEqual(calls, [1])
 
     def test_running_counts_as_left(self):
-        r, _ = self.run_loop({0: [{"id": 1}]}, results={1: {"emblem_state": {"state": "running", "have": 1}}})
+        r, _, _ = self.run_loop({0: [{"id": 1}]}, results={1: {"emblem_state": {"state": "running", "have": 1}}})
         self.assertEqual((r["ids"], r["left"]), ([1], 1))
 
+    def test_shard_starts_at_its_own_board(self):
+        order = []
+        t = [0.0]
+        bs = [{"id": 1}, {"id": 2}, {"id": 3}]
 
-class CheckFresh(unittest.TestCase):
-    def test_waiting_picks(self):
+        def take(b):
+            order.append(b["id"])
+            return None
+        le.fresh_loop(lambda: bs, take, 30, 600, clock=lambda: t[0], sleep=lambda s: t.__setitem__(0, t[0] + s), upstream=lambda: True, shard=1)
+        self.assertEqual(order, [2, 3, 1])
+
+
+class Shards(unittest.TestCase):
+    """同じ 30 秒に 3 つ足された版面を 3 つ並べた回が取る：同じ版面を 2 回取らない（library.claim_board の条件つきの書き込み）。"""
+
+    class DB:
+        def __init__(self, ids):
+            self.cfg = {i: {} for i in ids}
+            self.lock = threading.Lock()
+
+        def __call__(self, path, body=None, prefer=None, method=None):
+            bid = int(path.split("id=eq.")[1].split("&")[0])
+            if method is None:
+                return [{"config": dict(self.cfg[bid])}]
+            with self.lock:   # PostgREST の 1 回の UPDATE … WHERE（条件と書き込みが 1 つ）
+                c = self.cfg[bid]
+                old = c.get("emblem_claim")
+                cond = ("config->>emblem_claim=is.null" in path) if old is None else (f"config->>emblem_claim=eq.{old}" in path)
+                if c.get("emblem_state") or not cond:
+                    return []
+                self.cfg[bid] = dict(body["config"])
+                return [self.cfg[bid]]
+
+    def test_claim_is_won_once_under_threads(self):
+        db = self.DB([5])
+        wins = []
+        barrier = threading.Barrier(3)
+
+        def go():
+            barrier.wait()
+            wins.append(library.claim_board(5, NOW, db=db))
+        ths = [threading.Thread(target=go) for _ in range(3)]
+        [x.start() for x in ths]
+        [x.join() for x in ths]
+        self.assertEqual(sorted(wins), [False, False, True])
+
+    def test_three_shards_take_three_boards_once_each(self):
+        db = self.DB([1, 2, 3])
+        took = {}
+        lock = threading.Lock()
+
+        def shard(i):
+            t = [0.0]
+
+            def list_fresh():
+                return [{"id": b} for b, c in list(db.cfg.items()) if not c.get("emblem_state")]
+
+            def take(b):
+                if not library.claim_board(b["id"], NOW, db=db):
+                    return None
+                time.sleep(0.01)   # 取っている間にほかの回も読む
+                with lock:
+                    took.setdefault(b["id"], []).append(i)
+                db.cfg[b["id"]] = {"emblem_state": {"state": "running", "have": 1}}
+                return {"emblem_state": {"state": "running", "have": 1}}
+            le.fresh_loop(list_fresh, take, 30, 600, clock=lambda: t[0], sleep=lambda s: t.__setitem__(0, t[0] + s), upstream=lambda: True, shard=i)
+        ths = [threading.Thread(target=shard, args=(i,)) for i in range(le.FRESH_SHARDS)]
+        [x.start() for x in ths]
+        [x.join() for x in ths]
+        self.assertEqual(sorted(took), [1, 2, 3])
+        self.assertTrue(all(len(v) == 1 for v in took.values()), took)   # どの版面も 1 回だけ
+
+
+class Budget(unittest.TestCase):
+    def test_budget_fits_under_five_minutes(self):
+        total = sum(s for _, s in le.FRESH_BUDGET)
+        self.assertLess(total, le.FRESH_TOTAL_S)                        # 300 秒「未満」
+        self.assertLessEqual(total + le.FRESH_SPARE_S, le.FRESH_TOTAL_S)   # 余り 60 秒を残す（240 + 60 ≤ 300）
+        self.assertEqual(le.FRESH_TOTAL_S, 300)
+        self.assertEqual([k for k, _ in le.FRESH_BUDGET], ["kick", "setup", "first", "write", "page"])
+        self.assertEqual(le.FRESH_BOARD_S, dict(le.FRESH_BUDGET)["first"])   # 1 版面の上限は割り当ての「1 枚目」
+        self.assertLessEqual(le.FRESH_BOARD_S, 90)
+        self.assertLess(le.FRESH_TOOLS_S + le.FRESH_BOARD_S, library.CLAIM_S)   # 道具を待つ間も印は切れない
+        # ログの秒は run の created_at から（「起こす」の段は中に入っている）：目標は 300 − 足してから run ができるまで。もう一度「起こす 20」を引かない
+        self.assertEqual(le.FRESH_LOG_LIMIT_S, le.FRESH_TOTAL_S - le.FRESH_ADD_TO_RUN_S)
+        import sys as _s
+        _s.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import board_kpi
+        self.assertIn("library_emblem.FRESH_LOG_LIMIT_S", inspect.getsource(board_kpi.cmd_fastlog))
+
+    def test_first_stop_is_only_a_scope(self):
+        src = inspect.getsource(emblem_fill.fill_one)
+        self.assertIn('if FIRST_STOP and status(fresh)["have"] > before:', src)
+        self.assertFalse(emblem_fill.FIRST_STOP)   # 店長の後台・見回りの列は今までどおり
+        self.assertIn("FIRST_STOP", inspect.getsource(le.fresh_limits))
+
+
+class FreshMain(unittest.TestCase):
+    def run_main(self, boards, follows=None, have=1, fill_error=None, read_fail=(), put_fail=0, claim_fail=False, tools=None):
+        """read_fail = 版面の読みの何回目（0 から）を 500 にするか・put_fail = 最初の何回の config の書き込みを 500 にするか。"""
+        import digest
+        import urllib.error
+        log, rows = [], {b["id"]: b for b in boards}
+        reads, puts = [0], [0]
+
+        def err():
+            return urllib.error.HTTPError("https://db/x", 500, "boom", {}, None)
+
+        def sup(path, body=None, prefer=None, method=None):
+            if path.startswith("boards?select=id,name,wd,config"):
+                reads[0] += 1
+                if reads[0] - 1 in read_fail:
+                    raise err()
+                return [b for b in rows.values() if not (b.get("config") or {}).get("emblem_state")]
+            if path.startswith("follows?board_id=in."):
+                return follows if follows is not None else [{"board_id": b["id"], "section": "生活"} for b in boards]
+            return []
+
+        def fake_fill(b, f, up, base, end):
+            if fill_error:
+                raise fill_error
+            log.append(("fill", b["id"], f.get("section")))
+            return {"emblem_state": {"state": "running", "have": have}, "emblem_claim": None}
+
+        def put(bid, add):
+            if puts[0] < put_fail:
+                puts[0] += 1
+                raise err()
+            log.append(("write", bid))
+            rows[bid] = {**rows[bid], "config": {**(rows[bid].get("config") or {}), **add}}
+            return rows[bid]["config"]
+
+        def claim(bid, stamp):
+            if claim_fail:
+                raise err()
+            return True
+
+        def runner(d):
+            return (lambda bid: log.append(("page", bid))), (lambda timeout: {x[1]: (time.time(), 0) for x in log if x[0] == "page"})
+        with tempfile.TemporaryDirectory() as d, \
+                mock.patch.dict("os.environ", {"GITHUB_OUTPUT": str(pathlib.Path(d) / "o"), "SUPABASE_SERVICE_KEY": "k"}), \
+                mock.patch.object(digest, "load_config", lambda: ({"supabase_url": BASE}, None)), \
+                mock.patch.object(digest, "supabase", sup), \
+                mock.patch.object(library, "claim_board", claim), \
+                mock.patch.object(le.time, "sleep", lambda s: None), \
+                mock.patch.object(library, "put_config", put), \
+                mock.patch.object(le, "fresh_fill", fake_fill), \
+                mock.patch.object(le, "pages_runner", runner), \
+                mock.patch.object(le, "board_job_done", lambda: True), \
+                mock.patch.object(le, "run_started", lambda: None), \
+                mock.patch.object(le, "warm", lambda: log.append(("warm",))):
+            le.fresh_main(["--fresh", "--wait", "0", "--minutes", "5", "--pages-dir", d] + (["--tools", tools] if tools else []))
+            out = (pathlib.Path(d) / "o").read_text()
+        self.rows = rows
+        return log, out
+
+    def test_each_board_is_written_then_its_page_right_away(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}, {"id": 2, "name": "b", "config": {}}])
+        log = [x for x in log if x != ("warm",)]
+        self.assertEqual(log, [("fill", 1, "生活"), ("write", 1), ("page", 1), ("fill", 2, "生活"), ("write", 2), ("page", 2)])
+        self.assertIn("worked=true", out)
+        self.assertIn("more=true", out)   # running：続きは今までの列
+
+    def test_models_are_warmed_once_before_the_first_fill(self):
+        # 行が python の起動前にもうある（待つ間が無い）回：模型の読み込み（≈ 40 秒）を 90 秒の上限の中に入れない
+        log, _ = self.run_main([{"id": 1, "name": "a", "config": {}}, {"id": 2, "name": "b", "config": {}}])
+        self.assertEqual(log[0], ("warm",))
+        self.assertEqual(log.count(("warm",)), 1)
+        src = inspect.getsource(le.fresh_fill)
+        self.assertIn("time.time() + FRESH_BOARD_S", src)   # 上限の時計は fresh_fill の始め＝warm の後から
+
+    def test_no_emblem_no_page(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], have=0)
+        self.assertNotIn(("page", 1), log)
+        self.assertIn("worked=false", out)
+
+    def test_route_ab_ends_without_taking(self):
+        log, out = self.run_main([])
+        self.assertEqual(log, [])   # 経路 A/B：版面を取らないので模型も読まない
+        self.assertIn("worked=false", out)
+        self.assertIn("more=false", out)
+
+    def test_one_failure_does_not_stop_writing(self):
+        log, _ = self.run_main([{"id": 1, "name": "a", "config": {}}], fill_error=RuntimeError("x"))
+        self.assertEqual([x for x in log if x != ("warm",)], [("write", 1)])   # 失敗も書く（指紋なしの failed・印を外す）＝次の見回りですぐ
+
+    def test_one_500_on_read_does_not_stop(self):
+        # DB は店長の PC（Tailscale 経由）：一瞬の 500 で shard ごと落ちない。「無い」とも決めない（board の job が終わっていても）
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], read_fail={0})
+        self.assertEqual([x for x in log if x != ("warm",)][:2], [("fill", 1, "生活"), ("write", 1)])
+        self.assertIn("worked=true", out)
+
+    def test_reads_keep_failing_ends_with_outputs(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], read_fail=set(range(50)))
+        self.assertEqual(log, [])
+        self.assertIn("worked=false", out)
+        self.assertIn("more=true", out)   # 読めないまま：続きは列へ
+
+    def test_failed_write_is_retried_and_claim_is_cleared(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], put_fail=1)
+        self.assertIn(("write", 1), log)
+        self.assertIsNone(self.rows[1]["config"].get("emblem_claim"))   # 印が残らない
+
+    def test_write_that_keeps_failing_does_not_crash(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], put_fail=10)
+        self.assertNotIn(("page", 1), log)   # 書けなかった版面のページは作らない
+        self.assertIn("more=true", out)       # 印は期限（CLAIM_S）で戻り、列が拾う
+
+    def test_claim_error_does_not_crash(self):
+        log, out = self.run_main([{"id": 1, "name": "a", "config": {}}], claim_fail=True)
+        self.assertEqual(log, [])
+        self.assertIn("more=true", out)
+
+    def test_tools_wait_is_one_limit_for_the_whole_job(self):
+        # rembg が入らないまま：版面ごとに 120 秒ずつ待たない。上限を過ぎたら取らずに列へ（印は外す）
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(le, "FRESH_TOOLS_S", 0):
+            tools = pathlib.Path(d) / "t"
+            log, out = self.run_main([{"id": 1, "name": "a", "config": {}}, {"id": 2, "name": "b", "config": {}}], tools=str(tools))
+        self.assertFalse([x for x in log if x[0] == "fill"])
+        self.assertIn("more=true", out)
+        self.assertIsNone(self.rows[1]["config"].get("emblem_claim"))
+
+    def test_outputs_even_if_the_loop_breaks(self):
+        with mock.patch.object(le, "fresh_loop", lambda *a, **k: 1 / 0):
+            log, out = self.run_main([{"id": 1, "name": "a", "config": {}}])
+        self.assertIn("worked=false", out)
+        self.assertIn("more=true", out)
+
+    def test_log_has_ids_and_seconds_only(self):
+        import contextlib
+        import io
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            self.run_main([{"id": 41, "name": "秘密の名前", "config": {}}])
+        s = buf.getvalue()
+        self.assertIn("速い道の時刻 版面 41：取り始め +", s)
+        self.assertIn("・ページ +", s)
+        self.assertNotIn("秘密の名前", s)
+
+
+class Upstream(unittest.TestCase):
+    def test_board_job_done(self):
+        jobs = lambda st: {"jobs": [{"name": "emblem (0)", "status": "in_progress"}, {"name": "board", "status": st}]}  # noqa: E731
+        self.assertTrue(le.board_job_done(lambda p: jobs("completed"), run_id=9))
+        self.assertFalse(le.board_job_done(lambda p: jobs("in_progress"), run_id=9))
+        self.assertFalse(le.board_job_done(lambda p: jobs("queued"), run_id=9))   # library.yml の列で待っている
+        self.assertIsNone(le.board_job_done(lambda p: None, run_id=9))   # 読めない＝分からない
+        self.assertIsNone(le.board_job_done(lambda p: {"jobs": []}, run_id=9))
+        self.assertIsNone(le.board_job_done(lambda p: {"jobs": [{"name": "board", "status": "completed", "conclusion": "cancelled"}]}, run_id=9))   # 置き換えられた：分からない
+        with mock.patch.dict("os.environ", {}, clear=True):
+            self.assertIsNone(le.board_job_done(lambda p: jobs("completed")))   # 手元（run が無い）
+
+    def test_run_started(self):
+        import datetime as dt
+        want = dt.datetime(2026, 11, 19, 4, 1, 53, tzinfo=dt.timezone.utc).timestamp()
+        self.assertEqual(le.run_started(lambda p: {"created_at": "2026-11-19T04:01:53Z"}, run_id=1), want)
+        self.assertIsNone(le.run_started(lambda p: None, run_id=1))
+
+    def test_tools_ready(self):
+        import os
+        with tempfile.TemporaryDirectory() as d, mock.patch.dict("os.environ", {}):
+            os.environ.pop("SCRAPLING_BROWSER", None)
+            f = pathlib.Path(d) / "t"
+            self.assertFalse(le.tools_ready(str(f)))
+            f.write_text("rembg=ok\n")
+            self.assertFalse(le.tools_ready(str(f)))   # 入れている途中（印の前）は import しない
+            f.write_text("rembg=ok\nrembg_done=1\n")
+            self.assertTrue(le.tools_ready(str(f)))    # 任意の scrapling は待たない
+            self.assertIsNone(os.environ.get("SCRAPLING_BROWSER"))
+            f.write_text("rembg_done=1\nscrapling=ok\n")
+            self.assertTrue(le.tools_ready(str(f)))
+            self.assertEqual(os.environ.get("SCRAPLING_BROWSER"), "1")
+            f.write_text("done=1\n")   # rembg が入らなくても終わりの印で進む（取るときは EnvFail＝指紋なし）
+            self.assertTrue(le.tools_ready(str(f)))
+        self.assertTrue(le.tools_ready(None))
+
+
+class WaitingPicks(unittest.TestCase):
+    def test_waiting_picks(self):   # board の job の様子が分からないときだけ使う
         iso = lambda s: time.strftime("%Y-%m-%dT%H:%M:%S+00:00", time.gmtime(NOW - s))  # noqa: E731
         users = [{"prefs": {"picks": [{"name": "新しい名前", "added_at": iso(30)},         # 来る
                                       {"name": "大谷翔平", "added_at": iso(30)},           # 経路 A/B：もうある
                                       {"name": "古い名前", "added_at": iso(3600)},          # 足したのは前
-                                      {"name": "時刻なし"}]}}]
+                                      {"name": "時刻なし"}]}}]                              # added_at が無い DB でも落ちない
         boards = [{"name": "大谷 翔平", "names": {"en": "Shohei Ohtani"}}]
         self.assertEqual(le.waiting_picks(users, boards, NOW), 1)
         self.assertEqual(le.waiting_picks(users[:0], boards, NOW), 0)
-
-    def test_check_fresh_output(self):
-        import digest
-        import userfeed
-        for fresh, users, want in (([], [], "false"), ([{"id": 1, "config": {}}], [], "true")):
-            with tempfile.TemporaryDirectory() as d:
-                out = pathlib.Path(d) / "o"
-                sup = lambda path, body=None, prefer=None, method=None, f=fresh: f if path.startswith("boards?select=id,name,wd") else []  # noqa: E731
-                with mock.patch.dict("os.environ", {"GITHUB_OUTPUT": str(out), "SUPABASE_SERVICE_KEY": "k"}), \
-                     mock.patch.object(digest, "load_config", lambda: ({"supabase_url": BASE}, None)), \
-                     mock.patch.object(digest, "supabase", sup), \
-                     mock.patch.object(userfeed, "fetch_all", lambda db, p, b=None, u=users: (u, True)):
-                    le.fresh_main(["--check-fresh"])
-                self.assertEqual(out.read_text().strip(), f"due={want}")
 
 
 class Pages(unittest.TestCase):
