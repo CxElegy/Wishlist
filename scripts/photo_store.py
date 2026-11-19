@@ -124,12 +124,27 @@ def load(path=None):
 _CACHE = []
 
 
+PLACED = re.compile(r"/([0-9a-f]{16})-(?:400|800)\.webp$")
+
+
+def key_of(url):
+    """写真の指紋。置き場の網址そのもの（Pages の /p/<指紋>-<幅>.webp・箱の public/photos/<指紋>-<幅>.webp）はその指紋
+    （防盗链の写真は user_pages.mask_saved が置き場の網址を image にする：その写真の 400・色・主役の分布も引けるように。見直し 2 回目 8）。
+    ほかの網址は key（店長の写真は今までどおり）。"""
+    u = str(url or "")
+    if u.startswith(PAGES_BASE + "/") or f"/storage/v1/object/public/{BUCKET}/" in u:
+        m = PLACED.search(u)
+        if m:
+            return m.group(1)
+    return key(u)
+
+
 def stored(url, w=800):
     """render 用：置いてある写真なら一時保管の幅 w（400／800）の網址、なければ None。"""
     if not _CACHE:
         _CACHE.append(load())
     st = _CACHE[0]
-    k = key(url)
+    k = key_of(url)
     if not (st["base"] and k in st["p"]):
         return None
     return f"{PAGES_BASE}/{name(k, w)}" if pages_on() else public(st["base"], k, w)
@@ -139,7 +154,7 @@ def tint_css(url):
     """render 用：置いてある写真の平均色（#rrggbb）、なければ None。"""
     if not _CACHE:
         _CACHE.append(load())
-    v = _CACHE[0]["p"].get(key(url))
+    v = _CACHE[0]["p"].get(key_of(url))
     return (v or {}).get("c") or None
 
 
@@ -292,7 +307,7 @@ def mass_css(url):
     """render 用：data-m に入れる文字列「横の分布;縦の分布」。測っていない・測れない写真は None。"""
     if not _CACHE:
         _CACHE.append(load())
-    v = (_CACHE[0]["p"].get(key(url)) or {}).get("m")
+    v = (_CACHE[0]["p"].get(key_of(url)) or {}).get("m")
     return ";".join(",".join(map(str, a)) for a in v) if v else None
 
 

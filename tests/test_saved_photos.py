@@ -213,6 +213,26 @@ class Small(unittest.TestCase):
         self.assertEqual(og_image.read_one("https://n.example/1", page=lambda u: p, check=check, hard=set(), deadline=time.monotonic() - 1), (None, "carry"))
         self.assertEqual(seen, [])
 
+    def test_placed_url_gets_srcset_tint_and_mass(self):   # 見直し 2 回目 8
+        """置き場の網址そのもの（mask_saved が入れる /p/<指紋>-800.webp）でも、render._pic が 400 の srcset・平均の色・主役の分布を引ける。落ち先に同じ網址を並べない。"""
+        import render
+        k = P.key(IMG)
+        on, cache = list(P._ON), list(P._CACHE)
+        try:
+            P._ON[:] = [True]
+            P._CACHE[:] = [{"base": "https://s.example", "p": {k: {"at": 1, "b": 1, "c": "#123456", "m": [[50, 50], [50, 50]]}}, "x": {}, "stat": {}}]
+            out = user_pages.mask_saved({"a": {"stories": [{"url": REF, "image": IMG, "img_ref": REF}]}}, {}, {P.name(k)})
+            s = out["a"]["stories"][0]
+            self.assertEqual(s["image"], f"{P.PAGES_BASE}/{k}-800.webp")
+            h = render._pic(s)
+            self.assertIn(f"{P.PAGES_BASE}/{k}-400.webp 400w", h)
+            self.assertIn("#123456", h)
+            self.assertIn('data-m="50,50;50,50"', h)
+            self.assertNotIn("data-fb", h)                 # 落ち先に同じ網址を並べない
+            self.assertEqual(P.key_of("https://other.example/a.jpg"), P.key("https://other.example/a.jpg"))   # ほかの網址は今までどおり
+        finally:
+            P._ON[:], P._CACHE[:] = on, cache
+
     def test_hard_referer_url_not_in_page(self):   # 試験の穴：記事の網址と別の網址を img_ref にした見本
         import digest
         ref = "https://other-site.example/gallery/secret-referer-page"
