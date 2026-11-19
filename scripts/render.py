@@ -191,6 +191,8 @@ button{font-family:inherit}
 .kick{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
 .kick em{font:16px/1 var(--font-num);font-style:normal;letter-spacing:.04em;color:var(--deep,var(--ink))}
 .top h2{margin:0;max-width:600px;font:900 clamp(21px,2.2vw,31px)/1.55 var(--font-sans);letter-spacing:.01em;transform:rotate(var(--tilt));transform-origin:left top}
+/* ニュースの見出しは最後の行を 1〜2 字にしない（2026-11-19 店長 ①「始」1 字）：全部の見出しに同じ決め＝行の長さをそろえ（balance）、日本語は文節で折る（auto-phrase）。FIT_JS の noOrphan が残りを直す */
+.top h2,.wc>b,section.sec article.card :is(h2,h3),.pend li a{text-wrap:balance;word-break:auto-phrase}
 .top:hover .hb{background:var(--deep,var(--ink))}
 .top p{margin:0;max-width:560px;font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .startgo{display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;min-height:56px;padding:10px 26px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
@@ -273,6 +275,18 @@ section.sec:has(article.card:not(.nophoto)) article.card.nophoto:not(.hero):not(
 .fside>.agenda h4 small,.fside>.sbox h4 small{display:none}  /* 網点の角には字を置かない */
 .fside>.agenda li b,.fside>.agenda .nm,.fside>.sbox .wt em{color:var(--gold)}
 .fside>.agenda li b small{color:var(--card0);opacity:.78}
+/* 空の脇の箱は 1 行の細い帯（2026-11-19 店長の決め：A7・C4。F3「箱は出す」はこの帯で満たす）。両方とも空なら右の列を作らず壁の上に 1 本（.fstrip）・壁は横いっぱい */
+.fstrip{display:flex;flex-wrap:wrap;gap:10px 16px}
+.wc>.wbl{margin:0;font-size:13px;line-height:1.7}   /* 記事が少ない壁（FEW_WALL 本以下）は要約も出し、写真の高さまで字で埋める（A1・A6） */
+.fstrip>*{flex:1 1 440px;min-width:0;--ink:var(--card0);--card:var(--ink0);background:var(--ink0);color:var(--card0);border:2px solid var(--ink0);box-shadow:4px 4px 0 var(--rose)}
+.fside>.sline{flex:none!important}
+:is(.fside,.fstrip)>.sline{display:flex!important;align-items:center;flex-wrap:wrap;gap:4px 12px;padding:6px 12px}
+:is(.fside,.fstrip)>.sline h4{margin:0;padding:0;border:0;flex:none}
+:is(.fstrip)>.sline h4>:first-child{background:var(--gold);color:var(--ink0);padding:0 12px;transform:skewX(var(--skew))}
+:is(.fside,.fstrip)>.sline h4 small{display:none}
+:is(.fside,.fstrip)>.sline .sempty{margin:0;flex:1 1 auto;font-size:13px;line-height:1.5;opacity:.85}
+:is(.fside,.fstrip)>.sline .smore{flex:none;padding:2px 12px}
+:is(.fside,.fstrip)>.sline::after{display:none}
 .fside>.agenda li b .wemb{filter:drop-shadow(2px 2px 0 color-mix(in srgb,var(--card0) 38%,transparent))}
 .fside>.sbox .smore{background:var(--gold);color:var(--ink0);box-shadow:3px 3px 0 var(--rose)}
 .fside>.sbox .smore:hover{background:var(--card0)}
@@ -716,7 +730,7 @@ html[data-role=guest] .taste{display:none}  /* 访客に店長の票を「あな
  .wc.nophoto:not(.lead){display:flex;gap:6px}
  .wc:not(.lead){display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto auto 1fr;gap:4px 12px;align-items:start}
  .wc:not(.lead) .pic{grid-column:1;grid-row:1/4}.wc:not(.lead) .tg{grid-column:2;grid-row:1;justify-self:start;font-size:11px}
-  .fside{display:none}  /* スマホは右の列を出さない（欲しい物は報頭のボタン、予定は各版面で） */
+  .fside,.fstrip{display:none}  /* スマホは右の列を出さない（欲しい物は報頭のボタン、予定は各版面で） */
  .shelves{gap:28px 0}.shelf{flex:none;width:100%}
  .tapes{grid-template-columns:minmax(0,1fr);gap:10px;padding:0 4px 0 0}
  .tape{grid-template-columns:6px 110px minmax(0,1fr);align-items:start}.tape .spine{grid-row:auto;align-self:stretch}
@@ -1318,7 +1332,7 @@ def _brief(stories):
 PENDING_SHOW = 20   # 「整理待ち」に並べる最大件数（それ以上は「ほか N 件」）
 
 
-def _pending(items):
+def _pending(items, open_=False):
     """AI 編集がまだ整理していない新着（digest.split_unedited、報告の block["pending"]）。版面には載せず、
     版面の下に折りたたんだ「整理待ち N 件」として原題・出典・日付だけを並べる（ふだんは閉じている）。
     要紧消息はここに入らない（その場で「重大」として版面に載る）。ないときは空文字。リンクは http(s) だけ。"""
@@ -1333,7 +1347,7 @@ def _pending(items):
         lis += f'<li>{title}{f"<small>{meta}</small>" if meta else ""}</li>'
     if len(rows) > PENDING_SHOW:
         lis += f'<li class="more">ほか {len(rows) - PENDING_SHOW} 件</li>'
-    return (f'<details class="pend"><summary>整理待ち · {len(rows)} 件'
+    return (f'<details class="pend"{" open" if open_ else ""}><summary>整理待ち · {len(rows)} 件'
             f'<span>AI 編集がまとめたら記事になります（原題のまま）</span></summary><ul>{lis}</ul></details>')
 
 
@@ -1647,7 +1661,7 @@ def _section(block, anchor=""):
         grid, more = "", []
     else:
         grid, more = _calm({**block, "last": None}), []
-    grid += _brief(texts) + _older(more + older, today, len(more), old_texts) + _pending(block.get("pending"))
+    grid += _brief(texts) + _older(more + older, today, len(more), old_texts) + _pending(block.get("pending"), block.get("_pend_open"))
     recent = recent or texts
     quiet = "" if recent else " quiet"
     quiet += " softalt" if _loud(t["alt_bg"]) else ""
@@ -3362,9 +3376,9 @@ def _side(works, today, wishes=(), taste=()):
         out.append(ag)
     want = [x for x in wishes if (x.get("status") or "想要") in ("想要", "纠结")]
     if not want:   # 0 件でも箱は出す：ここから最初の 1 件を足せる
-        out.append('<div class="sbox swish"><h4><a href="wishlist.html">欲しい物リスト</a><small>0 件</small></h4>'
-                   '<p class="sempty">まだありません。欲しい物の写真を送ると、ここに並びます。</p>'
-                   '<a class="smore" href="wishlist.html#snap">♥ 欲しい物を足す</a></div>')
+        out.append('<div class="sbox swish sline"><h4><a href="wishlist.html">欲しい物リスト</a><small>0 件</small></h4>'
+                   '<p class="sempty">まだありません</p>'
+                   '<a class="smore" href="wishlist.html#snap">♥ 足す</a></div>')
     else:
         rows = []
         for x in want[:7]:  # 入りきらない分は WALL_JS が下から隠す
@@ -3384,7 +3398,12 @@ def _side(works, today, wishes=(), taste=()):
         out.append(f'<div class="sbox swish"><h4><a href="wishlist.html">欲しい物リスト</a><small>{len(want)} 件</small></h4><ol>{"".join(rows)}</ol>'
                    f'<p class="stot"><span>欲しいものの合計</span><b>{e(total)}</b></p>'
                    f'<a class="smore" href="wishlist.html">♥ 全部見る</a></div>')
+    if out and all(' sline"' in x for x in out):   # 両方とも空：右の列を作らず壁の上の 1 本の細い帯に（空いた幅はニュースへ。2026-11-19 店長の決め）
+        return f'<aside class="fstrip">{"".join(out)}</aside>'
     return f'<aside class="fside">{"".join(out)}</aside>' if out else ""
+
+
+FEW_WALL = 3   # ほかの注目がこの本数以下なら大きい 1 枚を作らず同じ大きさで並べる（2026-11-19 店長の決め・C1・C2。harness/aesthetic_count.FEW_WALL と同じ）
 
 
 def _front(works, today, updated, themes=None, wishes=(), taste=(), used=None):
@@ -3399,6 +3418,13 @@ def _front(works, today, updated, themes=None, wishes=(), taste=(), used=None):
     pictured = [p for p in newest if _head_photo(p[1])]
     ranked = sorted(pictured, key=lambda p: (RANK.get(p[1].get("weight"), 2), not _own_photo(p[1])))
     chosen = _front_pick(ranked, SPOT_COUNT)
+    # 版面に記事を 1 本だけ残さない（C2・2026-11-19 店長 ⑧ の続き：トップに出した記事は版面で繰り返さないので、残りが 1 本になる版面は
+    # 壁から 1 本戻して版面を 2 本にする。壁が減るだけ。記事の多い店長の版面ではほぼ起きない）
+    for w in works:
+        mine = [i for i, (cw, _) in enumerate(chosen) if cw is w]
+        left = [x for x in _recent(w, today) if _has_pic(x) and not any(x is y for _, y in chosen)]
+        if len(left) == 1 and len(mine) >= 2:
+            chosen.pop(mine[-1])
     top_w, top = chosen[0] if chosen else (None, None)
     more = chosen[1:]
     if used is not None:
@@ -3433,14 +3459,16 @@ def _front(works, today, updated, themes=None, wishes=(), taste=(), used=None):
     poster = f'<div class="poster"{style}><div class="marks" aria-hidden="true"></div>{head}{top_html}{foot}</div>'
 
     wall = "".join(
-        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}" data-w="{e(x.get("weight") or "normal")}" data-t="{e(_rel_text(x))}"{_fx(w["name"])} style="--sc:{_sec_var(w.get("section"))}">{_lk(x)}'
-        f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}{_from(x)}</em><b>{_headline(x)}</b></article>'
+        f'<article class="wc{" lead" if i == 0 and len(more) > FEW_WALL else ""}" data-k="{e(w["name"])}" data-w="{e(x.get("weight") or "normal")}" data-t="{e(_rel_text(x))}"{_fx(w["name"])} style="--sc:{_sec_var(w.get("section"))}">{_lk(x)}'
+        f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}{_from(x)}</em><b>{_headline(x)}</b>'
+        + (f'<p class="wbl">{e(x["blurb"])}</p>' if len(more) <= FEW_WALL and x.get("blurb") else "") + '</article>'
         for i, (w, x) in enumerate(more))
     side = _side(works, today, wishes, taste)
+    strip = side if side.startswith('<aside class="fstrip"') else ""
     spot = ""
     if more:
-        spot = (f'<div class="spot"><h2 class="sh"><span>ほかの注目ニュース</span><small>直近 {HOLD_DAYS} 日から</small></h2>'
-                + (f'<div class="mgrid"><div class="wall">{wall}</div>{side}</div>' if more else "")
+        spot = (f'<div class="spot"><h2 class="sh"><span>ほかの注目ニュース</span><small>直近 {HOLD_DAYS} 日から</small></h2>' + strip
+                + (f'<div class="mgrid"><div class="wall">{wall}</div>{"" if strip else side}</div>' if more else "")
                 + "</div>")
     return f'<section class="front" data-k="front" id="front">{poster}{spot}</section>'
 
@@ -3469,9 +3497,9 @@ def _agenda(works, today, limit=None):
                 continue
             seen.update({(d[:10], x["headline"]), same})
             rows.append((d[:10], w, x, ev))
-    if not rows:   # 予定が無くても箱は出す（2026-11-09 店長：予定と欲しい物は必ず出す）
-        return ('<div class="agenda"><h4><span>これからの予定</span><small>UPCOMING</small></h4>'
-                '<p class="sempty">発売日・試合・配信など、日付のある記事が入るとここに並びます。</p></div>')
+    if not rows:   # 予定が無くても箱は出す（2026-11-09 店長：予定と欲しい物は必ず出す）。空は 1 行の細い帯（2026-11-19 店長の決め：A7・C4。F3 はこの帯で満たす）
+        return ('<div class="agenda sline"><h4><span>これからの予定</span><small>UPCOMING</small></h4>'
+                '<p class="sempty">日付のある記事が入るとここに並びます</p></div>')
     rows.sort(key=lambda r: r[0])
     items = "".join(
         f'<li data-k="{e(w["name"])}" data-t="{e(_rel_text(x))}" style="--sc:{_sec_var(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
@@ -4632,7 +4660,7 @@ FIT_JS = """
     // ① 切ってよい写真（主役・文字が欠けない）は、枠を字の列の高さに切る ② 切れない写真は、写真の列の幅を「字の列の高さ × 写真の比率」に変えて高さを合わせる
     // ③ 合わない横長の写真は、写真を上・字を下（.ban。枠は写真の形・普通のカードと同じ flex の縦積み） ④ どれも合わなければ小さい形にしない（false：普通の形のまま）
     // 戻すときは fit が決めた枠の比率（inline の aspect-ratio）に戻す（消すと height:auto だけ残り、枠が 0px に潰れた）
-    const cmpUn = c => { c.classList.remove('cmp', 'ban'); c.style.gridTemplateColumns = ''; const p = c.querySelector(':scope > .pic'); if (p && '_a0' in p) { p.style.removeProperty('aspect-ratio'); if (p._a0) p.style.aspectRatio = p._a0; delete p._a0; } };
+    const cmpUn = c => { c.classList.remove('cmp', 'ban'); c.style.gridTemplateColumns = ''; const p = c.querySelector(':scope > .pic'); if (p) p.style.gridRow = ''; if (p && '_a0' in p) { p.style.removeProperty('aspect-ratio'); if (p._a0) p.style.aspectRatio = p._a0; delete p._a0; } };
     const cmpForm = c => {
       cmpUn(c);
       const p = c.querySelector(':scope > .pic'), im = p && img0(p); if (!im || !im.naturalWidth) return false;
@@ -4650,6 +4678,30 @@ FIT_JS = """
       if (nat >= 1.25) { c.classList.add('ban'); p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); return true; }   // ③
       return false;   // ④
     };
+    // 記事が FEW_WALL 本以下（新しい人のページ）：大きい 1 枚を作らず、同じ大きさで横いっぱいに並べる（2026-11-19 店長 ②・C1・C2）。
+    // 1 枚の幅が広いので写真は左・字は右の小さい形（cmpForm）にする：写真は頭条より十分小さく、字の下も空かない（④）
+    if (cards.length && cards.length <= __FEW_WALL__ && !side) {
+      w.style.gridTemplateColumns = 'repeat(' + cards.length + ',minmax(0,1fr))'; w.style.alignItems = 'start';
+      // 写真の枠は写真の形のまま（B6・A3：切らない・帯を足さない）。写真は左・字は右で、写真の列の幅を「字の高さ × 写真の比率」に（幅は 25〜60%）。
+      // 60% でも字より低い横長（パノラマ）は写真を上・字を下（③）。カードは中身の高さ（伸ばして字の下を空けない。④）
+      const pad = c => (parseFloat(getComputedStyle(c).paddingLeft) || 0), cwOf = c => c.clientWidth - 2 * pad(c) - 12;
+      const kids = (c, p) => [...c.children].filter(k => k !== p && !k.matches('.lk, .wemb, .xplay') && k.offsetHeight && getComputedStyle(k).position !== 'absolute');
+      const txh = (c, p) => { const ks = kids(c, p); return ks.length ? Math.max(...ks.map(k => k.getBoundingClientRect().bottom)) - Math.min(...ks.map(k => k.getBoundingClientRect().top)) : 0; };
+      const form = [];
+      const setPw = (c, p, pw) => { c.style.gridTemplateColumns = Math.round(pw) + 'px minmax(0,1fr)'; };
+      cards.forEach((c, i) => { c.classList.remove('lead', 'tall', 'nw', 'ls', 'half'); const p = c.querySelector(':scope > .pic'); if (!p) return; unside(c, p); unnarrow(c, p); cmpUn(c);
+        const im = img0(p); if (!im || !im.naturalWidth) return;
+        const nat = natOf(im), cw = cwOf(c);
+        p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); im.style.objectPosition = ''; c.classList.add('cmp');
+        p.style.gridRow = '1 / span ' + Math.max(1, kids(c, p).length);   // 写真が字の行の数だけまたがる（9 段またぐと行の間の空きが下に残った）
+        let pw = cw * 0.4; for (let q = 0; q < 4; q++) { setPw(c, p, pw); pw = Math.min(cw * 0.6, Math.max(cw * 0.25, txh(c, p) * nat)); }
+        setPw(c, p, pw);
+        { const th = txh(c, p); if (th >= 48 && pw / th < nat * 0.92 && okRatio(im, nat / (pw / th))) p.style.setProperty('aspect-ratio', (pw / th).toFixed(4), 'important'); }   // 縦長で幅の下限に当たった写真：主役・字が欠けない切り方があれば字の高さに切る（B4）。無ければ写真の形のまま
+        if (txh(c, p) * nat > cw * 0.6 + 8) { cmpUn(c); p.style.gridRow = ''; c.classList.add('ban'); p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); }   // ③
+        form[i] = {c, p, nat, cw};
+        if (p.classList.contains('trim') && im._bands) trimFit(im, p, im._bands); });
+      return;
+    }
     const plan = (cols, ord, sH) => {
       const H = cards.map(c => c.offsetHeight), span = cards.map(c => (c.classList.contains('lead') && !c.classList.contains('tall') && cols >= 3) ? 2 : 1);
       const bot = Array(cols).fill(0), col = Array(cols).fill(0).map(() => []), put = [];
@@ -4809,7 +4861,7 @@ FIT_JS = """
 """
 
 
-FIT_JS = FIT_JS.replace("// @EMB_REL@", EMB_REL_JS)
+FIT_JS = FIT_JS.replace("// @EMB_REL@", EMB_REL_JS).replace("__FEW_WALL__", str(FEW_WALL))
 
 NAV_JS = """
 (() => {
@@ -4865,6 +4917,7 @@ NAV_JS = """
     const on = pills[curIdx], k = on && slotOf.has(on) ? slotOf.get(on) : -1, sub = on ? subOf(on) : '';
     if (!force && k === lk && sub === lsub && on === lon && !(on && on.classList.contains('x'))) return;
     lk = k; lsub = sub; lon = on;
+    rail.style.flex = ''; nav.style.height = '';   // 目次の箱を中身の高さに縮めた分を戻してから、使える高さを測る
     const H = Math.floor(rail.getBoundingClientRect().height), n = S.length;
     if (!n || !H) return;
     const L = S.map(s => s.pills.filter(p => !isMed(p))), subsK = k >= 0 && S[k].chips.length > 0;
@@ -4938,6 +4991,8 @@ NAV_JS = """
       // 見出しだけになった板块の空き（作品の駅が 1 つも出ていない・字が入る高さがある）にだけ、作品名の薄い 1〜2 行
       if (s.sum) s.sum.classList.toggle('x', show.size > 0 || h < 84);
     });
+    // 目次の箱は中身の高さ（2026-11-19 店長 ⑦：版面が少ないと下が 600px 空いた）。欲しい物のボタンは目次のすぐ下（画面の下に固定しない）
+    if (y < H - 1) { rail.style.flex = '0 0 ' + Math.ceil(y) + 'px'; nav.style.height = 'auto'; }
   }
 
   // 窄屏：上排の板块のうち読んでいる板块を光らせ、下排にその板块の作品を全部並べる（隠さない）
@@ -5308,7 +5363,34 @@ def _dedupe_parents(works, parents):
 
 def _without(works, urls):
     """L7 同じ記事は 1 ページに 1 回：トップに出した記事（urls）を各版面から外した写し。残りの記事が繰り上がる。"""
-    return [{**w, "stories": [x for x in w["stories"] if x["url"] not in urls]} for w in works] if urls else works
+    # 写真も同じ（2026-11-19 店長 ⑧：頭条と版面の写真が同じ記事）：トップに出した記事の写真は、静かな版面の小さい写真（_thumb）にも使わない
+    imgs = {x.get("image") for w in works for x in w["stories"] if x["url"] in urls and x.get("image")}
+    return [{**w, "stories": [x for x in w["stories"] if x["url"] not in urls],
+             **({"_thumb": None} if w.get("_thumb") in imgs else {})} for w in works] if urls else works
+
+
+def _fill_pending(works, today, taken=()):
+    """版面に残った記事が 1 本以下で整理待ちがあれば、整理待ちの見出しを写真付きで版面に並べる（2026-11-19 店長 ⑥・A6・合格の見本 4：
+    「整理待ち N 件」とだけ書いて並べないのは ✗）。写真のある整理待ちは版面のカード（原題のまま・普通の大きさ）、写真のないものは
+    下の「整理待ち」の一覧を開いたまま。新しい人のページ（版面が少ない・AI 編集がまだ）でも、店長の版面でも同じ決め方。"""
+    cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
+    out, taken = [], set(taken)   # taken：このページで使った写真（トップ・ほかの版面。F4 同じ写真は 1 ページに 1 回）
+    for w in works:
+        recent = [x for x in w["stories"] if x["_issue"] >= cutoff and _has_pic(x)]
+        pend = [p for p in w.get("pending") or [] if isinstance(p, dict) and p.get("title") and _safe_url(p.get("url"))
+                and not _spam(p["title"], p.get("url") or "")]
+        if len(recent) > 1 or not pend:
+            out.append(w)
+            continue
+        have = {x["url"] for x in w["stories"]} | {x.get("image") for x in w["stories"] if x.get("image")}
+        cards = [{"headline": p["title"], "url": p["url"], "image": p["image"], "date": str(p.get("date") or "")[:10] or today,
+                  "source": p.get("source") or "", "weight": "normal", "_issue": today, "_work": w["name"], "_fbs": [], "_pend": True}
+                 for p in pend if p.get("image") and p["url"] not in have and p["image"] not in have and p["image"] not in taken]
+        cards = list({c["image"]: c for c in reversed(cards)}.values())[::-1]   # 整理待ちの中でも同じ写真は 1 回
+        taken |= {c["image"] for c in cards}
+        used = {c["url"] for c in cards}
+        out.append({**w, "stories": w["stories"] + cards, "pending": [p for p in pend if p["url"] not in used], "_pend_open": True})
+    return out
 
 
 def _sub_heads(works, subs, parents):
@@ -5369,7 +5451,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
     front_used = set()
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新 {updated}">'
             + _front(works, latest["date"], updated, themes, wishes, taste, front_used) + _picks(picks, works, fb, front_used)
-            + _sub_heads(_without(works, front_used), subs, parents) + "</div>")
+            + _sub_heads(_fill_pending(_without(works, front_used), latest["date"], {x.get("image") for w in works for x in w["stories"] if x.get("image")}), subs, parents) + "</div>")
     parts = [body]
     return _board_marks(f"""<!doctype html>
 <html lang="ja">

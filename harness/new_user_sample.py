@@ -50,8 +50,10 @@ def story(i, head, img, weight):
             "blurb": "作り物の要約。" + head[:20], "highlight": "", "weight": weight, "source": "例の新聞"}
 
 
-def pend(i, title):
-    return {"title": title, "url": f"https://example.com/pending/{i}", "source": "例の新聞", "date": f"2026-11-{19 - i % 4:02d}"}
+def pend(i, title, img=None):
+    """整理待ち（board_stories.pending・user_boards の記事の形）。写真のある物とない物を混ぜる。"""
+    return {"title": title, "url": f"https://example.com/pending/{i}", "source": "例の新聞", "date": f"2026-11-{19 - i % 4:02d}",
+            **({"image": img} if img else {})}
 
 
 def shapes(imgs):
@@ -62,13 +64,13 @@ def shapes(imgs):
                          for k, (nm, s) in enumerate(names)]
     one = [("広島旅行", "出行")]
     a_rows = {n("広島旅行"): {"edited": True, "stories": [story(k, HEADS[k], imgs[k], "hero" if k == 0 else "normal") for k in range(3)],
-                             "pending": [pend(k, PEND[k]) for k in range(4)]}}
+                             "pending": [pend(k, PEND[k], imgs[k + 3] if k < 3 else None) for k in range(4)]}}
     b_rows = {n("広島旅行"): {"edited": False, "stories": [{"title": PEND[k], "url": f"https://example.com/raw/{k}", "image": imgs[k + 1],
                                                           "date": "2026-11-19", "source": "例の新聞"} for k in range(5)]}}
     three = [("広島旅行", "出行"), ("京都の紅葉", "出行"), ("ゼルダの伝説", "游戏")]
     c_rows = {n("広島旅行"): {"edited": True, "stories": [story(k, HEADS[k], imgs[k], "hero" if k == 0 else "normal") for k in range(4)],
-                             "pending": [pend(k, PEND[k]) for k in range(3)]},
-              n("京都の紅葉"): {"edited": True, "stories": [story(10, HEADS[4], imgs[4], "hero")], "pending": [pend(10, PEND[4]), pend(11, PEND[5])]},
+                             "pending": [pend(k, PEND[k], imgs[k + 5]) for k in range(3)]},
+              n("京都の紅葉"): {"edited": True, "stories": [story(10, HEADS[4], imgs[4], "hero")], "pending": [pend(10, PEND[4], imgs[1]), pend(11, PEND[5])]},
               n("ゼルダの伝説"): {"edited": False, "stories": []}}
     pk = lambda names: {"picks": [{"name": nm, "sec": s} for nm, s in names], "sizes": {}}
     return {"a": (pk(one), a_rows, fol(one)), "b": (pk(one), b_rows, fol(one)), "c": (pk(three), c_rows, fol(three))}
