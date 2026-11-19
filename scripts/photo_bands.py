@@ -261,9 +261,9 @@ def _text_box_mser(data):
     return [round(x0, 3), round(y0, 3), round(x1, 3), round(y1, 3)]
 
 
-def measure(urls, cache, fetch, log=print):
-    """まだ測っていない網址を測って cache に入れる（MAX_NEW まで）。→ 新しく測った数"""
-    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == VERSION and not cache[u].get("dead"))][:MAX_NEW]   # 開けなかった写真は毎回試し直す   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
+def measure(urls, cache, fetch, log=print, limit=None):
+    """まだ測っていない網址を測って cache に入れる（limit、既定 MAX_NEW まで）。→ 新しく測った数"""
+    todo = [u for u in dict.fromkeys(urls) if not (isinstance(cache.get(u), dict) and cache[u].get("v") == VERSION and not cache[u].get("dead"))][:MAX_NEW if limit is None else limit]   # 開けなかった写真は毎回試し直す   # 前の測り方（ぼかし・中の空きを見ない）は測り直す
 
     def one(u):
         try:

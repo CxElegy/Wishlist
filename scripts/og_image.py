@@ -41,11 +41,12 @@ def fetch_page(url):
         return r.read(MAX_BYTES).decode(r.headers.get_content_charset() or "utf-8", "replace")
 
 
-def fill(rows, cache, fetch=fetch_page, log=print):
-    """rows = {版面: {"stories": [...], "pending": [...]}}。写真のない記事に image を入れる。→ 新しく読んだ数"""
+def fill(rows, cache, fetch=fetch_page, log=print, limit=None):
+    """rows = {版面: {"stories": [...], "pending": [...]}}。写真のない記事に image を入れる。→ 新しく読んだ数
+    limit = 新しく読む上限（既定 MAX_NEW）。0 は前の結果（cache）だけ（user_pages --emblem-only：小元素だけの作り直しで網に出ない）。"""
     lack = [s for r in (rows or {}).values() for k in ("stories", "pending") for s in r.get(k) or []
             if isinstance(s, dict) and not s.get("image") and str(s.get("url") or "").startswith("http")]
-    todo = [u for u in dict.fromkeys(s["url"] for s in lack) if u not in cache][:MAX_NEW]
+    todo = [u for u in dict.fromkeys(s["url"] for s in lack) if u not in cache][:MAX_NEW if limit is None else limit]
 
     def one(u):
         try:

@@ -13,6 +13,14 @@
 
     python scripts/user_pages.py            # Actions（SUPABASE_SERVICE_KEY）：全員分を作って置く
     python scripts/user_pages.py --local D  # 手元：ネットの Supabase なし、D/<account>.html に書く（テスト用のデータを渡す）
+    python scripts/user_pages.py --boards-file F --emblem-only   # 新しい版面の速い道（library_emblem.pages_runner）：小元素が足されただけの作り直し
+
+--emblem-only（2026-11-19 店長「新しい版面を足したら小元素が出るまで 5 分未満」。前は 1 人分 92 秒）：記事は前の作り直しと同じなので、
+網に聞く物は前の回の結果（pages/_fp/all.json の _og・_bands・_pick・_res・_open）を使う：記事の代表の写真（og_image）・写真の余白と主役
+（photo_bands）は無い分だけ 1 束まで（ONLY_NEW_OG・ONLY_NEW_PHOTOS）、記事の写真探し（find_images：1 本 20 秒）・「気になるかも？」の
+Google の跳转の戻し（resolve_url）は前の結果だけ、頭の写真が開くか（photo_opens）は無い網址だけ聞く。前の結果は前のページを作った回が残したものなので、
+ページは前と同じ写真・記事に小元素が足されたもの（手元の測り：同じ入力で HTML が一致・1 人分 56 秒 → 10 秒）。無い分は次のふつうの作り直しが測る。
+置く前に指紋を読み直し、作っている間にほかの回がこの人のページを置いていたら置かない（その回のほうが新しい記事・測りを持ち、小元素も design_moved で入っている）。
 """
 import datetime as dt
 import hashlib
@@ -158,20 +166,29 @@ def _story(row, weight):
             "source": row.get("source") or ""}
 
 
-def find_images(stories, deadline):
-    """写真のない記事に、店長と同じ規則（images.pick）で写真を探す。時間の上限を超えたらやめる。"""
+def find_images(stories, deadline, cache=None, new=True):
+    """写真のない記事に、店長と同じ規則（images.pick）で写真を探す。時間の上限を超えたらやめる。
+    cache = {記事の網址: 写真の網址 か ""（探して無かった）}：前の回に探した結果（pages/_fp/all.json の _pick）。あればそれを使い、探した結果は入れる。
+    new=False（--emblem-only）は前の結果だけ（網に出ない）。"""
     # 本物のブラウザ（images._browser_html）は開いた記事の網址を公開の Actions ログに書く。library_emblem.yml は小元素のために
     # SCRAPLING_BROWSER=1 を立てたまま user_pages を回すので、お客さまの記事ではここで切る（userfeed と同じ）
     os.environ.pop("SCRAPLING_BROWSER", None)
     used = set()
     for s in stories[:IMG_PER_BOARD]:
-        if s.get("image") or time.time() > deadline:
+        if s.get("image"):
             continue
-        e = sources.Entry(title=s["headline"], url=s["url"], published=None, source=s.get("source", ""))
-        try:
-            img = digest.find_image(None, [e], s["url"])
-        except Exception:  # noqa: BLE001  写真がなくても版面は出す
-            img = None
+        if cache is not None and s.get("url") in cache:
+            img = cache[s["url"]] or None
+        elif not new or time.time() > deadline:
+            continue
+        else:
+            e = sources.Entry(title=s["headline"], url=s["url"], published=None, source=s.get("source", ""))
+            try:
+                img = digest.find_image(None, [e], s["url"])
+                if cache is not None and s.get("url"):
+                    cache[s["url"]] = img or ""
+            except Exception:  # noqa: BLE001  写真がなくても版面は出す（読めなかったものは覚えない：次の回にまた探す）
+                img = None
         if img and img not in used:
             s["image"] = img
             used.add(img)
@@ -199,7 +216,7 @@ def held(it, row, now=None):
     return n < MIN_NEW_STORIES
 
 
-def user_issue(items, shop_issue, rows, deadline, themes):
+def user_issue(items, shop_issue, rows, deadline, themes, picks=None, new=True):
     """本人の 1 号分（render が読む形）。店長と同じ版面は店長の最新号の版面をそのまま、ほかは本人の記事から。"""
     shop_blocks = {b["name"]: b for b in (shop_issue or {}).get("items", [])}
     blocks = []
@@ -219,7 +236,7 @@ def user_issue(items, shop_issue, rows, deadline, themes):
             st = [{k: v for k, v in s.items() if not k.startswith("_") and k != "refs"} for s in (row.get("stories") or [])[:cap]]
         else:
             st = [_story(r, "hero" if i == 0 else "normal") for i, r in enumerate((row.get("stories") or [])[:cap])]
-        st = find_images(st, deadline)
+        st = find_images(st, deadline, picks, new)
         cover = next((s["image"] for s in st if s.get("image")), None)
         blocks.append({"name": it["name"], "section": it.get("section"), "subtitle": "", "stories": st, "facts": [],
                        "pending": row.get("pending") or [], "cover": cover, "theme": theme.resolve(it, cover, themes),
@@ -260,13 +277,13 @@ def spare_entries(items, rows):
     return out
 
 
-def own_recommend(votes, items, issue, rows=None):
+def own_recommend(votes, items, issue, rows=None, resolve=None):
     """「気になるかも？」と好みの言葉：店長と同じ digest.recommend を本人の票で回す（本人の版面に出ている記事は除く）。
     欲しい物はまだ本人の分がないので空。失敗してもページは出す（おすすめなしで）。"""
     try:
         stories = [s for b in issue["items"] for s in b.get("stories") or []]
         return digest.recommend(user={"votes": votes or [], "wishes": [], "works": {i["name"] for i in items if i.get("_shop")},
-                                      "entries": spare_entries(items, rows or {}),
+                                      "entries": spare_entries(items, rows or {}), "resolve": resolve,
                                       "on_page": ({s["url"] for s in stories}, [s["headline"] for s in stories])})
     except Exception as ex:  # noqa: BLE001
         print(f"::warning::own recommend failed ({type(ex).__name__})")
@@ -305,15 +322,19 @@ def latest_stories(get):
 
 
 READ_DAYS = 2
+ONLY_NEW_OG = 12       # --emblem-only：前の結果に無い記事の代表の写真は、並べて読む 1 束（og_image の 12 本並び・1 本 10 秒）まで
+ONLY_NEW_PHOTOS = 16   # --emblem-only：前の結果に無い写真の余白と主役は 1 束（photo_bands の 16 本並び）まで。手元の測りで 1 枚 0.5 秒（400 枚 200 秒）＝ 16 枚 ≈ 8 秒
+RESOLVE_FAILS = 4   # 「気になるかも？」の Google の跳转が続けてこの回数戻せなかったら、この回は戻すのをやめる（userfeed.RESOLVE_FAILS と同じ）
 IMGS_PATH = "/storage/v1/object/pages/_fp/imgs.json"   # 写真の網址の一覧（非公開の箱・アカウントは持たない）
 
 
 def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None, heat_in=None, votes=None,
-          shop_prev=(), pub=None, wishes=()):
+          shop_prev=(), pub=None, wishes=(), picks=None, new=True, resolve=None):
     """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）、chosen = 本人の nav_schemes {板块: id}。
-    pages（dict）を渡すと、設定ページ（settings.html）もそこに入れる。"""
+    pages（dict）を渡すと、設定ページ（settings.html）もそこに入れる。picks・new は find_images の前の結果と「新しく探すか」、
+    resolve は「気になるかも？」の Google の跳转を戻す関数（Memo。無ければ digest の既定）。"""
     items = user_items(own_picks(follows, (prefs or {}).get("picks"), (prefs or {}).get("sizes")), shop_items)
-    issue = user_issue(items, shop_issue, rows, deadline, themes)
+    issue = user_issue(items, shop_issue, rows, deadline, themes, picks, new)
     issues = [issue] + [p for p in (prev_issue(items, s) for s in shop_prev or ()) if p]   # 新しい順（店長のページと同じ並べ方）
     schemes = own_schemes(chosen)
     subs = {i["name"]: own_sub(i, schemes) for i in items}
@@ -331,7 +352,7 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     heat_scores = {}
     if heat_in:
         heat_scores = heat.compute(items, heat_in[0], [issue] + heat_in[1], *heat_in[2:])   # 本人の号を先に：本人だけの版面の記事も数える（同じ記事は 1 回）
-    rec = own_recommend(votes, items, issue, rows)
+    rec = own_recommend(votes, items, issue, rows, resolve)
     render.PICKS_FLAG = render.SETTINGS_JA["picks_flag"]
     render.AUTH_DB = {"url": settings.get("supabase_url") or "", "key": settings.get("supabase_key") or ""}
     render.AUTH_ITEMS = [[i["name"], digest.section_of(i)] for i in shop_items if not i.get("parent")]
@@ -424,7 +445,74 @@ def design_moved(follows, get):
     return any(stamp(r) != old.get(r.get("id")) for r in now if r.get("id") in old)
 
 
+def _lap(marks, name, t0):
+    """段の秒を覚える（ログ：名前は出さない。小元素だけの作り直しの内訳を本番で照らす。2026-11-19 の 92 秒は内訳が無かった）。"""
+    marks.append(f"{name} {time.time() - t0:.1f}s")
+    return time.time()
+
+
+class Memo:
+    """網に聞く答え（網址 → 答え）を前の回の分から使う。pages/_fp/all.json の 1 つの箱（_res：Google の跳转の戻し先・_open：頭の写真が開くか）。
+    2026-11-19 手元の測り：1 人分の作り直しで「気になるかも？」の跳转を 38 本・頭の写真を 190 本、1 本ずつ網に聞いていた（断られると 1 本 6 秒）。
+    new=False（--emblem-only）は前の答えだけ（無ければ ask の既定 miss を返し、網に出ない）。keep(答え) が真のものだけ覚える（戻せなかった跳转は覚えない）。
+    続けて fails_max 回 keep に外れたら、この回は聞くのをやめる（userfeed の RESOLVE_FAILS と同じ考え）。used = この回に使った分（全員の回はこれだけ残す）。
+    reuse=False は前の答えを使わず聞き直す（変わりうる答え＝写真が開くか。ふつうの作り直しは聞き直し、小元素だけの回が前の答えを使う）。"""
+
+    def __init__(self, old, ask, new=True, keep=lambda u, v: True, miss=lambda u: u, fails_max=None, reuse=True):
+        self.old, self.ask, self.new, self.keep, self.miss, self.fails_max = dict(old or {}), ask, new, keep, miss, fails_max
+        self.used, self.fails, self.reuse = {}, 0, reuse
+
+    def __call__(self, u):
+        if u in self.used:
+            return self.used[u]
+        if self.reuse and u in self.old:
+            self.used[u] = self.old[u]
+            return self.old[u]
+        if not self.new or (self.fails_max is not None and self.fails >= self.fails_max):
+            return self.miss(u)
+        v = self.ask(u)
+        if self.keep(u, v):
+            self.used[u] = v
+            self.fails = 0
+        else:
+            self.fails += 1
+        return v
+
+    def box(self, partial):
+        return {**self.old, **self.used} if partial else dict(self.used)
+
+
+def _fresh_fps(fp_path):
+    """置いたページの指紋を読み直す（読めなければ None）。"""
+    try:
+        got = _supa(fp_path)
+        return got if isinstance(got, dict) else None
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def newer_page(fps, fp_path, acct):
+    """この回が読んだあとに、ほかの回がこの人のページ（index.html）を置いたか（指紋が変わった）。読めなければ False（置く）。"""
+    cur = _fresh_fps(fp_path)
+    return cur is not None and cur.get(f"{acct}/index.html") != fps.get(f"{acct}/index.html")
+
+
+def merge_fps(cur, old, mine):
+    """一部の人だけの回の指紋の書き込み：いまの指紋（cur：ほかの回が書いたもの）に、この回が変えた分（old との差）だけを足す。
+    _og・_bands・_pick の測りは両方の和（同じ網址はいまのもの）。cur が読めなければ mine のまま。"""
+    if cur is None:
+        return mine
+    out = dict(cur)
+    for k, v in mine.items():
+        if k.startswith("_") and isinstance(v, dict):
+            out[k] = {**v, **(cur.get(k) or {})}
+        elif v != old.get(k):
+            out[k] = v
+    return out
+
+
 def main(argv):
+    t_start = time.time()
     if argv[:1] != ["--local"]:
         render.OPENS = render.photo_opens   # 頭に選ぶ写真が開くか焼く時に見る（店長と同じ規則）
     settings, shop_items = digest.load_config()
@@ -453,7 +541,8 @@ def main(argv):
         print("::warning::Supabase が 402（制限中）：お客さまのページ作りを飛ばす。制限が外れたら次の回が作る")
         return
     users, partial = pick_users(users, argv, _supa)
-    made = failed = skipped = 0
+    only = "--emblem-only" in argv   # 小元素が足されただけ：前の測った結果だけで作る（網に出ない・模型を読まない）
+    made = failed = skipped = kept = 0
     force = "--force" in argv
     fp_path = "/storage/v1/object/pages/_fp/all.json"   # 置いたページの指紋（全員で 1 つ。本人のページと同じ非公開の箱）
     try:
@@ -465,6 +554,16 @@ def main(argv):
         fps = {}
     og = dict(fps.get("_og") or {})   # 写真のない記事の代表の写真（og:image。og_image.py）。指紋と同じ 1 本に入れる
     bands = dict(fps.get("_bands") or {})   # 写真に焼き込まれた余白の割合（網址ごと。photo_bands.py）。指紋と同じ 1 本に入れる（storage の読みを増やさない）
+    picks = dict(fps.get("_pick") or {})   # 記事の写真探し（find_images）の結果。同じ 1 本に（--emblem-only が前の結果で同じ写真を付ける）
+    # 網に聞く答えの前の回の分（Memo）。頭の写真が開くか：小元素だけの回も、前に無い網址は聞く（開かない写真を頭にしない）
+    opens = Memo(fps.get("_open"), render.photo_opens, reuse=only) if render.OPENS else None
+    if opens:
+        render.OPENS = opens
+    res_memo = Memo(fps.get("_res"), lambda u: sources.resolve_url(u, tries=1), new=not only,
+                    keep=lambda u, v: v != u, fails_max=RESOLVE_FAILS)   # 「気になるかも？」の Google の跳转の戻し先
+
+    def res(u):   # 跳转でない網址はそのまま（覚えない・失敗に数えない）
+        return res_memo(u) if "news.google.com" in str(u or "") else u
     try:
         latest = latest_stories(_supa)
     except sbstate.Limited:
@@ -475,8 +574,11 @@ def main(argv):
     new_fps = dict(fps)
     pub = photo_store.published()   # Pages に載った写しの名前（外の小元素を /p/ に替えるのは載ったものだけ）
     imgs = {}   # 作ったページの原寸の写真の網址（置き場に未収のもの）。photo_store が読んでお客さまの写真も置き場に入れる
+    if partial:
+        print(f"お客さまのページ：始めて {time.time() - t_start:.1f}s で {len(users or [])} 人分を作り始める{'（小元素だけ：前の測りで）' if only else ''}", flush=True)
     for u in users or []:
         acct = account_of(u["email"])
+        lap, t0 = [], time.time()
         try:
             rows = _supa(f"/rest/v1/user_boards?account=eq.{acct}&select=item,sec,state,stories")
             follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(id,name,config)&order=pos")
@@ -485,20 +587,29 @@ def main(argv):
             wishes = _supa(f"/rest/v1/wishes?account=eq.{acct}&select=id,name,status,price,currency,url,shop,note,specs,image,photo,added&order=id.desc") or []
             votes = digest.latest_votes(_supa(f"/rest/v1/feedback?account=eq.{acct}&select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"))
             brows = board_rows(follows, latest, {norm(r["item"]): r for r in rows or []})
-            og_image.fill(brows, og)   # 写真のない記事に記事のページの代表の写真を付ける（2026-11-08 店長「我一定要图」）
+            t1 = _lap(lap, "読む", t0)
+            og_image.fill(brows, og, limit=ONLY_NEW_OG if only else None)   # 写真のない記事に記事のページの代表の写真を付ける（2026-11-08 店長「我一定要图」）。--emblem-only は前の結果＋無い分を 1 束だけ
             og_image.demote(brows)   # それでも写真の無い記事はカードにせず「整理待ち」へ（カードには必ず写真）
+            t1 = _lap(lap, "記事の代表の写真", t1)
             html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
-                          settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
+                          settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes, picks, not only, res)
             if design_moved(follows, _supa):   # 作っている間に小元素の回（board_added.yml の速い道）が config を書いた：今の config で作り直す（古い config で上書きして小元素を消さない）
                 follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(id,name,config)&order=pos")
                 pages = {}
                 html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
-                              settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
-            # 写真に焼き込まれた余白を測って data-t に書く（ブラウザは別のサイトの写真を読めないので、ここで測る。2026-11-08）
-            photo_bands.measure([u for t in [html_, *pages.values()] for u in photo_bands.urls_in(t)], bands, photo_store.fetch)
+                              settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes, picks, not only, res)
+            t1 = _lap(lap, "組む", t1)
+            # 写真に焼き込まれた余白を測って data-t に書く（ブラウザは別のサイトの写真を読めないので、ここで測る。2026-11-08）。--emblem-only は前の結果＋無い分を 1 束だけ
+            photo_bands.measure([u for t in [html_, *pages.values()] for u in photo_bands.urls_in(t)], bands, photo_store.fetch,
+                                limit=ONLY_NEW_PHOTOS if only else None)
+            t1 = _lap(lap, "写真の測り", t1)
             html_ = photo_bands.inject(html_, bands)
             pages.update({k: photo_bands.inject(v, bands) for k, v in pages.items()})
             photo_store.scan_text([html_, *pages.values()], set(), imgs)
+            if only and newer_page(fps, fp_path, acct):   # 作っている間にほかの回がこの人のページを置いた：そちらが新しい（小元素も入っている）
+                kept += 1
+                print(f"お客さまのページ：1 人分はほかの回が先に置いた（置かない）・{'・'.join(lap)}", flush=True)
+                continue
             for name, h in {"index.html": html_, **pages}.items():
                 fp = hashlib.sha1(h.encode("utf-8")).hexdigest()
                 if not force and fps.get(f"{acct}/{name}") == fp:   # 変わっていないページは落とし直さない（無料枠・置き場の写しも守る）
@@ -507,6 +618,9 @@ def main(argv):
                 _supa(f"/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}", h.encode("utf-8"), "POST", "text/html; charset=utf-8")
                 new_fps[f"{acct}/{name}"] = fp
             made += 1
+            _lap(lap, "置く", t1)
+            if partial:
+                print(f"お客さまのページ：1 人分 {time.time() - t0:.1f}s（{'・'.join(lap)}）", flush=True)
         except sbstate.Limited:
             print("::warning::Supabase が 402（制限中）：残りのお客さまのページ作りを飛ばす")
             return
@@ -515,7 +629,13 @@ def main(argv):
             print(f"::warning::1 人分のページを作れなかった（{type(ex).__name__}）")
     new_fps["_bands"] = bands
     new_fps["_og"] = og
+    new_fps["_pick"] = picks
+    if opens:
+        new_fps["_open"] = opens.box(partial)   # 全員の回はこの回に使った分だけ（増え続けない）
+    new_fps["_res"] = res_memo.box(partial)
     if new_fps != fps:
+        if partial:   # 一部の人だけの回は、作っている間にほかの回が書いた指紋・測りを消さない（読み直して足す）
+            new_fps = merge_fps(_fresh_fps(fp_path), fps, new_fps)
         try:
             _supa(fp_path, json.dumps(new_fps, sort_keys=True).encode(), "POST", "application/json")
         except Exception:  # noqa: BLE001  指紋が書けなくても次の回が全部置き直すだけ
@@ -525,7 +645,7 @@ def main(argv):
             _supa(IMGS_PATH, json.dumps(sorted(imgs.values())).encode("utf-8"), "POST", "application/json")
         except Exception:  # noqa: BLE001  書けなくても次の回が書く
             pass
-    print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}）・失敗 {failed}")
+    print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}・ほかの回が先に置いた {kept}）・失敗 {failed}・{time.time() - t_start:.1f}s")
     if failed and not made:
         raise SystemExit(1)
 

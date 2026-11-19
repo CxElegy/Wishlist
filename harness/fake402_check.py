@@ -43,10 +43,10 @@ ENTRIES = [
     ("library --refresh", ["scripts/library.py", "--refresh"], 300),
     ("library --compare", ["scripts/library.py", "--compare"], 300),
     ("library_emblem --minutes", ["scripts/library_emblem.py", "--minutes", "1"], 300),
-    ("library_emblem --check-fresh", ["scripts/library_emblem.py", "--check-fresh"], 300),   # board_added.yml の速い道（2026-11-19）
-    ("library_emblem --fresh", ["scripts/library_emblem.py", "--fresh", "--wait", "0", "--minutes", "1"], 300),
+    ("library_emblem --fresh", ["scripts/library_emblem.py", "--fresh", "--wait", "0", "--minutes", "1", "--shard", "0"], 300),   # board_added.yml の速い道（2026-11-19。--check-fresh は廃止：1 回見て決めない）
     ("user_pages --recent", ["scripts/user_pages.py", "--recent", "3600"], 300),
     ("user_pages --boards-file", ["scripts/user_pages.py", "--boards-file", "state/none_fresh_boards.json"], 300),   # ファイルが無い＝対象なし
+    ("user_pages --emblem-only", ["scripts/user_pages.py", "--boards-file", "state/none_fresh_boards.json", "--emblem-only"], 300),   # 速い道が版面ごとに起こす小元素だけの作り直し（library_emblem.pages_runner）
     ("take-items", ["scripts/digest.py", "take-items"], 300),
     ("notify-changes", ["scripts/digest.py", "notify-changes"], 300),
     ("notify-wishlist", ["scripts/digest.py", "notify-wishlist"], 300),
