@@ -69,6 +69,7 @@
   "https://www.techradar.com/news/best-tablet": null,
   "https://www.techradar.com/news/top-portable-chargers": null,
   "https://www.teepr.com/1956585/teepr/%E6%BC%AB%E5%A8%81%E5%BD%B1%E6%A5%AD/": "https://www.teepr.com/wp-content/uploads/2026/11/1956585-photo1.jpg",
+  "https://www.tenasia.co.kr/article/2026111961294": "https://img.tenasia.co.kr/photo/202611/BF.46475392.3.jpg",
   "https://www.upmedia.mg/tw/game/pc-game/274204": "https://cdn.upmedia.mg/upfile/img/2026/1113/202611132114154264.webp",
   "https://www.vietnam.vn/ko/iphone-18-pro-max-dan-dau-bai-thu-nghiem-pin-32-mau-cua-cnet-vuot-flagship-android-va-may-gap": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/12/1794477618287_img_4030566e.jpeg",
   "https://www.walkerland.com.tw/subject/view/425707": "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/11/1794975918325-2dbd480da6fe4a49a7788df4dbd16c99-850x446.webp",
@@ -925,6 +926,27 @@
   },
   {
    "batch": 1,
+   "because": "ILLIT",
+   "date": "2026-11-18",
+   "hits": [],
+   "image": "https://img.tenasia.co.kr/photo/202611/BF.46475392.3.jpg",
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "텐아시아",
+   "taste": [
+    [
+     "作品:ILLIT",
+     6
+    ]
+   ],
+   "title": "아일릿 원희, 부상에 고열까지 겹쳤다…멤버 전원 건강 이상",
+   "url": "https://www.tenasia.co.kr/article/2026111961294",
+   "words": [],
+   "work": "ILLIT"
+  },
+  {
+   "batch": 1,
    "because": "猫用品",
    "date": "2026-11-18",
    "hits": [],
@@ -999,7 +1021,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "三星手机",
    "date": "2026-11-18",
    "hits": [
@@ -1124,7 +1146,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "Astrae Oratio",
    "date": "2026-11-16",
    "hits": [],
@@ -1229,7 +1251,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "漫威电影",
    "date": "2026-11-18",
    "hits": [],
@@ -1334,7 +1356,7 @@
    "work": "dota2"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "Vaundy",
    "date": "2026-11-17",
    "hits": [],
@@ -1805,11 +1827,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1821,11 +1843,11 @@
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ]
  ]

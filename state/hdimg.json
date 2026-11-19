@@ -1687,13 +1687,13 @@
  "https://img.tenasia.co.kr/photo/202611/BF.46475392.3.jpg": {
   "w": 400,
   "h": 406,
-  "target": 720,
+  "target": 1280,
   "v": 3,
-  "blur": 0.461,
+  "blur": 0.607,
   "local": "pics/c2690e7f638617ca.webp",
   "out": [
-   709,
-   720
+   1200,
+   1218
   ],
   "why": "看不清"
  },
