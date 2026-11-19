@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-19T00:26:23+00:00",
+ "checked": "2026-11-19T00:40:39+00:00",
  "fired": {
-  "at": "2026-11-18T23:33:22+00:00",
+  "at": "2026-11-19T00:40:39+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -46,24 +46,25 @@
    "edit": 14
   },
   "2026-11-19": {
-   "edit": 4
+   "edit": 5
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-18T23:33:22+00:00",
+    "at": "2026-11-19T00:40:39+00:00",
     "attempts": 1,
     "day": "2026-11-19",
-    "prog": 165,
-    "resp": "cse_01W4x6f95LTHfeBo4Py91Pwk",
-    "sig": "9bf550405694"
+    "prog": 221,
+    "resp": "",
+    "sig": "665c93d4ad2a"
    },
    "items": [
     "A2O LITE",
     "Astrae Oratio",
     "FROM",
+    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
@@ -73,8 +74,11 @@
     "lib:広島旅行",
     "あつ森",
     "周杰伦",
+    "哈利波特剧集",
     "星巴克马克杯",
     "滑雪",
+    "漫威电影",
+    "猫用品",
     "绝区零"
    ],
    "last_batch": "2026-11-18T23:43:04+00:00",
@@ -86,39 +90,46 @@
    "prog": 221,
    "prog_day": "2026-11-19",
    "ripe": [
+    "A2O LITE",
     "Astrae Oratio",
     "FROM",
+    "GTA 6",
+    "ILLIT",
     "The Mandalorian",
-    "星巴克马克杯"
+    "dota2",
+    "周杰伦",
+    "星巴克马克杯",
+    "漫威电影"
    ],
-   "sig": "b369b5bb790b",
+   "sig": "665c93d4ad2a",
    "token_cap": 1000000,
    "tokens_today": 306567,
-   "why": "整理待ちの記事 55 件（15 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 90 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
     "A2O LITE",
+    "绝区零",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "6181970e7012",
+   "waiting": [
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "チェーンソーマン"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
