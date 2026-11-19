@@ -498,7 +498,7 @@ COVER_JS = """()=>{const f=document.querySelector('.wl-auth');if(!f)return [];co
   return b.width&&b.height&&b.left<r.right&&r.left<b.right&&b.top<r.bottom&&r.top<b.bottom}).slice(0,3).map(e=>(e.className||e.tagName)+':'+e.innerText.slice(0,12))}"""
 
 
-NEW_USER_BAD = ("leadbig", "sidebig", "pendhid", "navgap", "dup")   # ✗ にする項目（orphan・cgap は店長のページにも残る既存の問題なので数を出すだけ）
+NEW_USER_BAD = ("imgfail", "noimg", "leadbig", "sidebig", "pendhid", "navgap", "dup")   # imgfail・noimg（2026-11-19 本物の写真が届いたか）   # ✗ にする項目（orphan・cgap は店長のページにも残る既存の問題なので数を出すだけ）
 
 
 def new_user_bad(pg):
@@ -508,7 +508,7 @@ def new_user_bad(pg):
         c = aesthetic_count.page_counts(pg)
     except Exception as ex:   # noqa: BLE001  測れなければ測れないと言う（0 と書かない）
         return [f"審美基準の数を測れなかった（{type(ex).__name__}）"]
-    print(f"  審美基準：orphan {c.get('orphan', 0)}・cgap {c.get('cgap', 0)}（数だけ）")
+    print(f"  審美基準：orphan {c.get('orphan', 0)}・cgap {c.get('cgap', 0)}・写真なし {c.get('_noimgPct', 0)}%・集めています {c.get('_held', 0)}（数だけ）")
     return [f"{aesthetic_count.KIND[k]} {c[k]}：" + "・".join(c["_notes"].get(k, [])[:3]) for k in NEW_USER_BAD if c.get(k)]
 
 

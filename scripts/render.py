@@ -888,8 +888,8 @@ SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest
            "f=(me.dataset.fb||'').split(' ').filter(function(u){return u&&!(s&&[].some.call("
            "s.querySelectorAll('.pic img:not(.bg)'),function(i){return i!==me&&i.src===u}))});"
            "if(f.length){me.removeAttribute('srcset');me.removeAttribute('data-t');me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
-           "else{var a=p.closest('article.card,article.wc,.pk');if(a){p.remove();a.classList.add('nophoto')}else{"
-           "var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
+           "else{var a=p.closest('article.card,article.wc,.pk');if(a){p.remove();a.classList.add('nophoto');a.dataset.imgfail=1}else{"
+           "p.dataset.imgfail=1;var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
            "if(ic){p.classList.add('icon');var l=ic.dataset.icons.split(' ');ic.src=l.shift();ic.dataset.icons=l.join(' ')}"
            "else{p.classList.add('none')}}}")
 # 来源图标打不开、或者只有 16px（Google 图标服务查不到时给的地球图标）：换下一个，都不行才是作品名封面块
@@ -1444,7 +1444,7 @@ def _calm(block):
         tail = (f'<a class="last" href="{e(last["url"])}" target="_blank" rel="noopener">'
                 f'<span class="mono">直近 · {e(last["date"].replace("-", "."))}{_from(last)}</span><b>{e(last["headline"])}</b></a>')
     tag = "収 集 中" if block.get("collecting") else "整 理 待 ち" if block.get("pending") else "は じ め に" if block.get("start") else "新 着 な し"   # 版面 0 個の人に「新着なし」と言わない
-    return (f'<div class="calm{" start" if block.get("start") else ""}">{pic}<div class="txt"><span class="tag">{tag}</span>{status}</div>'
+    return (f'<div class="calm{" start" if block.get("start") else ""}"{" data-held" if block.get("collecting") else ""}>{pic}<div class="txt"><span class="tag">{tag}</span>{status}</div>'
             f"{tail}</div>")
 
 

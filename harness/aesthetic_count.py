@@ -41,14 +41,14 @@ KIND = {"edge": "吸着した位置で小元素・題・札が画面の端で切
         "solo": "記事が 1 本だけの版面", "herogap": "重大の横に大きな空き", "emrel": "空きの小元素がその記事と無関係",
         "cgap": "カードの中に空き（写真の下・字の下・右）", "ell": "見出しが「…」で切れている", "strong": "脇役の部品に強い要素が 2 つ以上",
         "orphan": "見出しの最後の行が 1〜2 字", "leadbig": "ほかの注目の大きい 1 枚が頭条に近い大きさ", "sidebig": "空の脇の箱が 1 行の帯より大きい",
-        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回", "rowedge": "同じ行のカードの下端がそろわない"}
+        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回", "rowedge": "同じ行のカードの下端がそろわない", "imgfail": "記事の写真が読み込めなかった", "noimg": "頭条に写真なし・記事の半分超が写真なし"}
 FIX = {"edge": "scroll-margin-top を小元素のはみ出し分だけ取る（render.CSS section.sec.has-emb）", "hid": "固定のボタンの下に入らない位置で吸着する",
        "solo": "版面の記事を増やす・隣の版面と一緒に組む", "herogap": "重大の横に記事・予定を置くか幅を広げる",
        "emrel": "関係のある小元素が無ければ空きのまま（置かない）", "cgap": "写真を字の高さまで伸ばす・カードを縮める",
        "ell": "行数を増やす・見出しを短くする", "strong": "脇役の箱は墨の地・小さい札だけにする（C4）",
        "orphan": "字の大きさを列に合わせる・text-wrap: balance（render FIT_JS fitHead）", "leadbig": "記事 3 本以下は同じ大きさで並べる・大きい 1 枚は頭条の 7 割まで",
        "sidebig": "空の箱は 1 行の細い帯に畳む（render._side）", "pendhid": "整理待ちの見出しを写真付きで並べる（render._section）",
-       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "rowedge": "同じ行は同じ組み・高いほうにそろえ、字の少ないほうは写真の高さで吸う（FIT_JS wall の FEW_WALL）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）"}
+       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "imgfail": "写真の網址が開くか・置き場に入ったかを写真を取る段で確かめる（images.pick・photo_store）", "noimg": "写真のない記事は整理待ちへ（og_image.demote）・写真を探し直す", "rowedge": "同じ行は同じ組み・高いほうにそろえ、字の少ないほうは写真の高さで吸う（FIT_JS wall の FEW_WALL）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）"}
 
 
 def emb_rel_js():
@@ -240,6 +240,19 @@ JS_BODY = r"""
     const im = c.querySelector('.pic img:not(.bg):not(.ico)'), s = im && vis(im) && (im.currentSrc || im.src);
     if (s && !/^data:/.test(s) && !(u && seenU.get(u) !== c)) { if (seenP.has(s)) { bump('dup'); tag(c, 'dup', '同じ写真：' + s.split('/').pop().slice(0, 24)); } else seenP.set(s, c); }
   });
+  // 14. 写真が本当に届いたか（2026-11-19 店長「点検は、本物の写真が取れるかどうかを含めること」）。作り物の写真で数えるとき（fake）は imgfail を見ない
+  //   imgfail：記事の写真が落ち先まで全部開けなかった（SWAP_JS の data-imgfail）＋読み込みが終わったのに naturalWidth 0 のまま
+  //   noimg：記事（頭条・壁・版面のカード）のうち写真が出ていない数（render が最初から字だけにした nophoto も）。nohead：頭条に写真なし。held：「集めています」の版面
+  const arts = [...document.querySelectorAll('#front .top:not(.start), .wall > .wc, section.sec .grid article.card')].filter(a => vis(a) && !a.hidden && !a.closest('details:not([open])'));
+  const shown = a => [...a.querySelectorAll('.pic img:not(.bg):not(.ico)')].some(i => i.complete && i.naturalWidth > 0 && vis(i));
+  let fail = document.querySelectorAll('[data-imgfail]').length;
+  document.querySelectorAll('.pic img[data-e="s"]').forEach(i => { if (i.complete && !i.naturalWidth && i.closest('#front, section.sec, .wall') && !i.closest('[data-imgfail]')) { fail++; tag(i.closest('.pic'), 'imgfail', (i.getAttribute('src') || '').slice(-40)); } });
+  document.querySelectorAll('[data-imgfail]').forEach(e => tag(e, 'imgfail', '落ち先まで開けなかった：' + (e.innerText || '').trim().slice(0, 16)));
+  stats.imgfail = fail; stats.arts = arts.length;
+  const none = arts.filter(a => !shown(a)); stats.noimg = none.length; stats.noimgPct = arts.length ? Math.round(none.length / arts.length * 100) : 0;
+  const top = document.querySelector('#front .top:not(.start)'); stats.nohead = top && !shown(top) ? 1 : 0;
+  stats.held = document.querySelectorAll('.calm[data-held]').length;
+  if (stats.nohead || (arts.length && none.length * 2 > arts.length)) { bump('noimg'); tag(top || document.body, 'noimg', (stats.nohead ? '頭条に写真なし・' : '') + '写真なし ' + none.length + ' / ' + arts.length); }
   // 13. 同じ行に並んだカードの下端の差（主の決め 4・直し 2 回目：「ほかの注目」の 2 枚の下端が 95px ずれた）。同じ親の中で上端が 4px 以内にそろったカードの組
   const rowsOf = cs => { const g = []; cs.forEach(c => { const r = c.getBoundingClientRect(), x = g.find(q => Math.abs(q.t - r.top) <= 4); if (x) x.b.push(r.bottom); else g.push({t: r.top, b: [r.bottom], el: c}); }); return g; };
   const groups = new Map();
@@ -275,7 +288,7 @@ def measure(pg, start=0):
 # 新しい人のページ（2026-11-19）を数える幅（主経由の店長の決め：どの幅でも同じ決め方・この 8 幅で数える）
 NEW_USER_VIEWS = ((390, 844), (412, 915), (768, 1024), (1000, 800), (1024, 768), (1333, 720), (1440, 900), (1920, 1080))
 # 8 つの指摘 → 数える項目（self_review の band・cgap と、上の 7〜12）。審美基準の番号は aesthetic_map.json
-NEW_USER_KINDS = ("rowedge", "orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
+NEW_USER_KINDS = ("imgfail", "noimg", "rowedge", "orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
                   "solo", "herogap", "ell", "over", "wide", "clip", "gap")
 
 
@@ -291,7 +304,10 @@ def page_counts(pg):
     for i in items:
         out[i["kind"]] = out.get(i["kind"], 0) + 1
         notes.setdefault(i["kind"], []).append(i["note"])
-    out["cgap_wall"] = x["stats"].get("cgap_wall", 0)   # cgap のうち「ほかの注目」の壁のカード（版面の小さいカードの前からの分と分けて数える）
+    out["cgap_wall"] = x["stats"].get("cgap_wall", 0)
+    out["imgfail"] = x["stats"].get("imgfail", 0)   # tag の数ではなく写真の数
+    for k in ("noimgPct", "nohead", "held", "arts"):
+        out["_" + k] = x["stats"].get(k, 0)   # cgap のうち「ほかの注目」の壁のカード（版面の小さいカードの前からの分と分けて数える）
     out["_notes"] = {k: v[:6] for k, v in notes.items()}
     out["_stats"] = x["stats"]
     return out
@@ -345,6 +361,9 @@ def new_user_counts(url, browser_, views=NEW_USER_VIEWS, fake=False):
         pg.goto(url, wait_until="load", timeout=60000)
         self_review.load_all(pg)
         res[f"{w}x{h}"] = page_counts(pg)
+        if fake:   # 作り物の写真では「届いたか」は意味がない
+            res[f"{w}x{h}"].pop("imgfail", None)
+            res[f"{w}x{h}"].pop("noimg", None)
         ctx.close()
     return res
 

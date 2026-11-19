@@ -139,5 +139,19 @@ class AestheticCount(unittest.TestCase):
         self.assertEqual(none["stats"].get("strongUnmeasured"), 1)                  # 測れない（0 とは書かない）
 
 
+    def test_real_photo_arrived(self):
+        """写真が本当に届いたか（2026-11-19 店長）：404・0 バイトの写真は imgfail、写真の出ない頭条は noimg。届いた写真は数えない。"""
+        wc = lambda src: f'<article class="wc"><div class="pic"><img data-e="s" src="{src}" style="width:200px;height:120px"></div><b>見出し</b></article>'
+        top = lambda inner: f'<section id="front"><article class="top"><div class="frame">{inner}</div><h2>頭条</h2></article></section>'
+        ok = self.run_page(page(top(f'<div class="pic"><img data-e="s" src="{PX}" style="width:300px;height:200px"></div>') + '<div class="wall">' + wc(PX) + '</div>'))
+        self.assertEqual((ok["stats"]["imgfail"], ok["stats"]["noimg"], self.n(ok, "noimg")), (0, 0, 0))
+        bad = self.run_page(page(top(f'<div class="pic"><img data-e="s" src="{PX}" style="width:300px;height:200px"></div>') + '<div class="wall">'
+                                 + wc("http://127.0.0.1:9/404.jpg") + wc("data:image/png;base64,") + wc(PX) + '</div>'))
+        self.assertEqual(bad["stats"]["imgfail"], 2)                       # 開けない網址・0 バイト
+        gone = self.run_page(page(top("") + '<div class="wall"><article class="wc nophoto" data-imgfail="1"><b>見出し</b></article></div>'))
+        self.assertEqual(gone["stats"]["imgfail"], 1)                      # 落ち先まで開けず字だけにした印
+        self.assertEqual((gone["stats"]["nohead"], self.n(gone, "noimg")), (1, 1))   # 頭条に写真なし
+
+
 if __name__ == "__main__":
     unittest.main()
