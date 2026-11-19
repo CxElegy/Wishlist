@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-19T18:21:10+00:00",
+ "checked": "2026-11-19T19:18:20+00:00",
  "fired": {
   "at": "2026-11-19T18:14:31+00:00",
   "results": {
@@ -65,37 +65,32 @@
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
     "BLEACH Mirrors High",
     "MMORPG 新作",
-    "The Mandalorian",
     "dota2",
     "gelato pique",
     "lib:BTS",
     "lib:F1",
     "lib:Mrs. GREEN APPLE",
+    "lib:Nintendo Switch 2",
     "lib:YOASOBI",
     "lib:サッカー日本代表",
-    "lib:原神",
     "lib:大相撲",
     "lib:大谷翔平"
    ],
-   "last_batch": "2026-11-19T17:05:30+00:00",
+   "last_batch": "2026-11-19T18:37:22+00:00",
    "last_error": {
     "at": "2026-11-18T23:39:22+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 62,
+   "prog": 66,
    "prog_day": "2026-11-20",
-   "ripe": [
-    "Astrae Oratio",
-    "The Mandalorian"
-   ],
-   "sig": "186cdf2035ff",
+   "ripe": [],
+   "sig": "e63781e95042",
    "token_cap": 1000000,
-   "tokens_today": 54568,
-   "why": "整理待ちの記事 105 件（15 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 103890,
+   "why": "整理待ちの記事 102 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -244,12 +239,12 @@
    "runs": 12
   },
   "2026-11-20": {
-   "batches": 1,
-   "cr": 715553,
-   "cw": 49930,
-   "in": 21,
-   "out": 4617,
-   "runs": 1
+   "batches": 2,
+   "cr": 1824796,
+   "cw": 96442,
+   "in": 58,
+   "out": 7390,
+   "runs": 2
   }
  }
 }

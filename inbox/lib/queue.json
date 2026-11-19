@@ -1,119 +1,14 @@
 {
 "done": {
 "day": "2026-11-20",
-"n": 10
+"n": 11
 },
 "boards": [
-{
-"id": 147,
-"name": "原神",
-"day": "2026-11-20",
-"fp": "cabaacad9cee",
-"fresh": false,
-"rows": [
-{
-"title": "【原神7.4最新リーク】海灯祭で璃月キャラ14名が大幅強化！新キャラ・鍾離の性能調整・無料原石・新スキン情報まとめ",
-"date": "2026-11-19T01:55:59+00:00",
-"source": "MMOEXP",
-"summary": "",
-"url": "https://www.mmoexp.com/News/genshin-impact-7-4-leaks-14-liyue-characters-getting-major-buffs-during-lantern-rite.html",
-"image": "https://assets.mmoexp.com/images/202611/75b0f137b41da19f785e2b21d24b20e8edee0087.jpg"
-},
-{
-"title": "「コミLab.」が三重県初出店！未来屋書店東員店が11月20日リニューアル 『原神』『ゼンレスゾーンゼロ』など公式グッ",
-"date": "2026-11-18T23:48:14+00:00",
-"source": "ニコニコニュース",
-"summary": "",
-"url": "https://news.nicovideo.jp/watch/nw20008229?news_ref=search_search",
-"image": ""
-},
-{
-"title": "【原神】波濤の投錨者の場所(行き方)と倒し方",
-"date": "2026-11-18T14:25:24+00:00",
-"source": "GameWith",
-"summary": "",
-"url": "https://gamewith.jp/genshin/article/show/585942",
-"image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/585942.png?date=1793247575"
-},
-{
-"title": "せかいじゅのほうでファルザンとのがトーコーされてるケド…ばぁちゃんひとりでも撮ってたのよ #原神 #genshinimpact | TikTok",
-"date": "2026-11-18T12:05:51+00:00",
-"source": "Howl.Link",
-"summary": "",
-"url": "https://t.co/WHNpqadSsr",
-"image": ""
-},
-{
-"title": "【原神】アナスターシャ(氷神)はいつ実装？｜性能予想",
-"date": "2026-11-18T09:08:10+00:00",
-"source": "GameWith",
-"summary": "",
-"url": "https://gamewith.jp/genshin/article/show/565492",
-"image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/565492.png?date=1794208143"
-},
-{
-"title": "【原神×マック】ボカロ曲『終わってる料理番組』とコラボ!? 唐揚げと卵からガムが生まれるカオス楽曲",
-"date": "2026-11-18T08:30:00+00:00",
-"source": "電撃オンライン",
-"summary": "",
-"url": "https://dengekionline.com/article/202611/94403",
-"image": "https://cimg.kgl-systems.io/camion/files/94403/ogp_uCyc.jpg?x=1280"
-},
-{
-"title": "11月20日、「コミLab.」が三重県に初出店！ 『原神』『ゼンレスゾーンゼロ』『崩壊：スターレイル』など、 公式グッズ1,400種類以上を取り揃えた売場を展開",
-"date": "2026-11-18T08:00:00+00:00",
-"source": "Infoseek",
-"summary": "",
-"url": "https://news.infoseek.co.jp/article/prtimes_000000166_000152182/",
-"image": "https://prtimes.jp/img/152182/166/resize/d152182-166-aa37dba219472ed99f22-11.jpg"
-},
-{
-"title": "『原神』×マクドナルドコラボが本日開始。ヴァレサ＆エスコフィエのパッケージがかわいい“てりやきマックバーガー”が限定で販売",
-"date": "2026-11-18T02:25:00+00:00",
-"source": "電撃オンライン",
-"summary": "",
-"url": "https://dengekionline.com/article/202611/94342",
-"image": "https://cimg.kgl-systems.io/camion/files/None/ogp_UABB.jpg?x=1280"
-},
-{
-"title": "原神×マックコラボが開始。ヴァレサ＆エスコフィエのパッケがカワイイ限定てりやきバーガーも",
-"date": "2026-11-18T02:25:00+00:00",
-"source": "電撃オンライン",
-"summary": "",
-"url": "https://dengekionline.com/article/202611/94342",
-"image": "https://cimg.kgl-systems.io/camion/files/dengeki/94342/a59da59bbf33422560f4cb814426efb8f.jpg?x=1280"
-},
-{
-"title": "【原神リーク最新情報】Ver.7.4～8.0ガチャ予想まとめ！鍾離・ヌヴィレット復刻、新キャラ5人とダインスレイヴ実装の可能性を徹底解説",
-"date": "2026-11-18T01:38:29+00:00",
-"source": "MMOEXP",
-"summary": "",
-"url": "https://www.mmoexp.com/News/genshin-impact-7-4-8-0-leaks-banner-predictions-zhongli-and-neuvillette-reruns-5-new-characters-and-possible-dainsleif-release-explained.html",
-"image": "https://assets.mmoexp.com/images/202611/f0f3530db37bce18a553327dfafd7bec1fc4bcb8.jpg"
-},
-{
-"title": "『原神』と日本マクドナルドが初コラボ！ヴァレサ＆エスコフィエの限定パッケージや、「風の翼」などゲーム内アイテムを提供",
-"date": "2026-11-17T12:00:03+00:00",
-"source": "インサイド",
-"summary": "",
-"url": "https://www.inside-games.jp/article/2026/11/17/191137.html",
-"image": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1804781.jpg"
-},
-{
-"title": "『原神』よりナヒーダがねんどろいど化!!微笑み顔や好奇心顔などの表情パーツに加え「千夜に浮かぶ夢」や「花冠」などオプションパーツも充実！Amazonで予約受付中",
-"date": "2026-11-17T08:40:00+00:00",
-"source": "電撃ホビーウェブ",
-"summary": "",
-"url": "https://hobby.dengeki.com/news/3235286/",
-"image": "https://hobby.dengeki.com/ss/hobby/2026/11/1200x630_jYCLAPgRiQo8mltdC9URw3TAljKl0TkX_Kl1c1lBOp3kZTw4lmx-eHqJ6ak-_pzX2.jpg"
-}
-]
-},
 {
 "id": 149,
 "name": "YOASOBI",
 "day": "2026-11-20",
-"fp": "2772bed99999",
+"fp": "3f0511d7a187",
 "fresh": false,
 "rows": [
 {
@@ -165,6 +60,14 @@
 "image": "https://www.thefirsttimes.jp/admin/wp-content/uploads/2026/11/20261118-atm-175001-1200x630.jpg"
 },
 {
+"title": "YOASOBI、香港公演のチケットが販売開始から数時間でソールドアウト（THE FIRST TIMES）",
+"date": "2026-11-18T09:21:34+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/b7929d2734e61954a72f51f12a0d25db989256a3",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-00000044-mnet-000-1-view.jpg?exp=10800"
+},
+{
 "title": "【Hot Shot Songs】INI「Present」首位 Stray Kids／YOASOBI／IMP.の新曲がトップ10入り",
 "date": "2026-11-18T07:05:04+00:00",
 "source": "Yahoo!ニュース",
@@ -203,14 +106,6 @@
 "summary": "",
 "url": "https://news.yahoo.co.jp/articles/ae64f6ccecd08b9e1a485fa61c91f40b35272f8b",
 "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-00000003-mynavin-000-1-view.jpg?exp=10800"
-},
-{
-"title": "「エレクトーン STAGEA アーチスト 5級 Vol.52 YOASOBI 『THE BOOK for，』」 11月25日発売！",
-"date": "2026-11-18T03:00:00+00:00",
-"source": "アットプレス",
-"summary": "",
-"url": "https://www.atpress.ne.jp/news/5939022",
-"image": "https://www.atpress.ne.jp/attachments/T1cxGkXlJmYhQcuy6nNp.jpg"
 }
 ]
 },
@@ -841,6 +736,111 @@
 "summary": "",
 "url": "https://www.fox5vegas.com/2026/11/19/hundreds-clark-county-students-visit-f1-academy-paddock/",
 "image": "https://gray-kvvu-prod.gtv-cdn.com/resizer/v2/IOSVPGHSFFFFJKHSS6SFH4BHXA.png?auth=15d945170ba3aeecbba13c13ecbf9b2fe98fb6289796c40d87247cf404227dd3&width=1200&height=600&smart=true"
+}
+]
+},
+{
+"id": 159,
+"name": "Nintendo Switch 2",
+"day": "2026-11-20",
+"fp": "50f3d06a30e8",
+"fresh": false,
+"rows": [
+{
+"title": "Nintendo Storeでホリデーキャンペーンが開催中。Nintendo Switch 2 本体の購入で「アートカードセット」がもらえる",
+"date": "2026-11-19T09:00:00+00:00",
+"source": "Nintendo DREAM WEB",
+"summary": "",
+"url": "https://www.ndw.jp/nintendo-news-261119/",
+"image": "https://www.ndw.jp/ndw/wordpress/wp-content/uploads/2026/11/261119-nintendo-news-02.jpg"
+},
+{
+"title": "Nintendo Switch 2 gets a rare deal ahead of Black Friday: Save $30",
+"date": "2026-11-19T06:48:09+00:00",
+"source": "Mashable",
+"summary": "",
+"url": "https://mashable.com/tech/nov-16-nintendo-switch-2-early-black-friday-deal",
+"image": "https://helios-i.mashable.com/imagery/articles/05AtesMf6A0EcxLQtQTQkx3/hero-image.fill.size_1200x675.v1794822994.jpg"
+},
+{
+"title": "『ウォブリーライフ』Nintendo Switch 2版が2026年11月19日（木）発売開始！",
+"date": "2026-11-19T06:30:53+00:00",
+"source": "GameWith",
+"summary": "",
+"url": "https://gamewith.jp/gamedb/14159/articles/66014",
+"image": "https://img.gamewith.jp/article/thumbnail/gamearticle/14159/rectangle/66014.png?t=1795069860"
+},
+{
+"title": "Nintendo Switch 2「すみっコぐらし ぽかぽか温泉にようこそ」が発売！「すみっコぐらし」のゲームシリーズ最新作",
+"date": "2026-11-19T03:26:59+00:00",
+"source": "Saiga NAK",
+"summary": "",
+"url": "https://saiganak.com/ja/release/nintendo-switch2-sumikkogurashi/",
+"image": "https://i0.wp.com/uploads.saigacdn.com/2026/11/nintendo-switch2-sumikkogurashi-00.jpg?resize=1200,630"
+},
+{
+"title": "追いかけっこアクション『トロイメライの月あかり』Nintendo Switch / Nintendo Switch 2 Edition 本日発売！",
+"date": "2026-11-19T03:00:19+00:00",
+"source": "PR TIMES",
+"summary": "",
+"url": "https://prtimes.jp/main/html/rd/p/000000163.000045335.html",
+"image": "https://prcdn.freetls.fastly.net/release_image/45335/163/45335-163-eff09f32b2819ff5fe4684ca77b775a7-1920x1080.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+},
+{
+"title": "『カラオケJOYSOUND for Nintendo Switch』のNintendo Switch 2 向け無料アップデートを本日より配信。本体の内蔵マイクで、別売のマイクがなくてもカラオケが楽しめる。",
+"date": "2026-11-19T01:14:20+00:00",
+"source": "Nintendo",
+"summary": "",
+"url": "https://www.nintendo.com/jp/topics/article/9e9fce02-b4d6-4f31-a6ad-efced93a24d7",
+"image": "https://assets.topics.apps-jp.nintendo.com/image/2026/11/09070013356241/1280/7e6cb51b17f7413ab1f6d1c0132a6a21.jpg"
+},
+{
+"title": "「Coral Island」のNintendo Switch 2版と大型アップデート“Kids Grow Up”の配信が12月7日に決定、新トレーラーも",
+"date": "2026-11-19T00:59:22+00:00",
+"source": "doope!",
+"summary": "",
+"url": "https://doope.jp/2026/11172983.html",
+"image": "https://doope.jp/media/26q4/img3083_01.jpg"
+},
+{
+"title": "Review: Pikmin 4 - Nintendo Switch 2 Edition + Dandori Academy",
+"date": "2026-11-19T00:03:00+00:00",
+"source": "Hardcore Gamer",
+"summary": "Pikmin 4 - Nintendo Switch 2 Edition + Dandori Academy repacks the most recent console entry in the franchise for the new hardware.",
+"url": "https://hardcoregamer.com/review-pikmin-4-nintendo-switch-2-edition-dandori-academy/",
+"image": "https://www.bing.com/th?id=ONUT.XGhryJrIhAV4eYyWn1lzBQ&pid=News&w=1200"
+},
+{
+"title": "Kernel Hearts Nintendo Switch 2 physical release in the works",
+"date": "2026-11-18T19:06:05+00:00",
+"source": "Nintendo Everything",
+"summary": "",
+"url": "https://nintendoeverything.com/kernel-hearts-nintendo-switch-2-physical-release-in-the-works/",
+"image": "https://nintendoeverything.com/wp-content/uploads/Kernel-Hearts-physical.jpg"
+},
+{
+"title": "Atelier Karia interview: what’s new, Nintendo Switch 2 performance, more",
+"date": "2026-11-18T17:41:02+00:00",
+"source": "Nintendo Everything",
+"summary": "",
+"url": "https://nintendoeverything.com/atelier-karia-interview-whats-new-nintendo-switch-2-performance-more/",
+"image": "https://nintendoeverything.com/wp-content/uploads/Atelier-Karia-interview.jpg"
+},
+{
+"title": "Pikmin 4 - Nintendo Switch 2 Edition + Dandori Academy is retreading old ground",
+"date": "2026-11-18T16:16:33+00:00",
+"source": "GamingTrend",
+"summary": "",
+"url": "https://gamingtrend.com/impressions/pikmin-4-nintendo-switch-2-edition-dandori-academy-is-retreading-old-ground/",
+"image": "https://storage.ghost.io/c/50/c6/50c61f91-0165-4605-93bc-f8598149e466/content/images/size/w1200/2026/11/2026111316145100_s.jpg"
+},
+{
+"title": "Little Rocket Lab receiving Nintendo Switch 2 physical release",
+"date": "2026-11-18T16:06:02+00:00",
+"source": "Nintendo Everything",
+"summary": "",
+"url": "https://nintendoeverything.com/little-rocket-lab-receiving-nintendo-switch-2-physical-release/",
+"image": "https://nintendoeverything.com/wp-content/uploads/Little-Rocket-Lab-physical.jpg"
 }
 ]
 }
