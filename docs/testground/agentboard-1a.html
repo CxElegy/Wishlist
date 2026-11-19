@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AgentBoard 案 1A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- 案 1A「True-black flat」（tasteskill の app 案・Vercel / Linear の系統）：黒い地・明るさの段だけで重ねる・色はデータだけ（ライム 1 色）。
+     見本のデータ。本番の画面（docs/board/）にはまだ入れていない。 -->
+<style>
+:root{--ground:#0c0d0f;--surface:#15171a;--raised:#23262b;--rule:#1d2024;--control:#3a3e45;--text:#fff;--muted:#b4b4b4;--faint:#949494;
+ --accent:#c6f24e;--positive:#c6f24e;--negative:#e5484d;--warning:#e5a93b;
+ --pill-pos-bg:#222a10;--pill-neg-bg:#2c1a20;--pill-warn-bg:#2b2414;--pill-neu-bg:#222;
+ --gap:14px;--pad:22px;--radius:20px;
+ --id-fable:#3a2a1c;--id-fable-ink:#f0b27a;--id-opus:#2a2436;--id-opus-ink:#c9b8f2;--id-sonnet:#33301c;--id-sonnet-ink:#e9d98b;--id-haiku:#1c2a36;--id-haiku-ink:#9cc8ef;
+ --f:"Inter","Noto Sans JP",system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ground);color:var(--text);font:400 14px/1.5 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+.num{font-variant-numeric:tabular-nums}
+/* 殻：横 220 の帯＋上 64 の帯（地は同じ・1px の線だけで分ける） */
+.shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.side{border-right:1px solid var(--rule);padding:18px 14px;display:flex;flex-direction:column;gap:2px}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 22px;font-weight:600;font-size:15px}
+.brand svg{flex:none}
+.nav a{display:flex;align-items:center;justify-content:space-between;height:34px;padding:0 8px;color:#bbb;border-radius:8px;font-size:14px}
+.nav a.on{color:#fff}
+.nav a:hover{color:#fff;background:#131417}
+.nav small{color:var(--faint);font-size:12px}
+.side .grp{color:var(--faint);font-size:12px;padding:18px 8px 6px}
+.top{height:64px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:16px;padding:0 29px}
+.crumb{color:var(--muted)}.crumb b{color:#fff;font-weight:500}
+.search{flex:1;max-width:420px;height:36px;border-radius:999px;background:var(--surface);display:flex;align-items:center;gap:8px;padding:0 14px;color:var(--faint)}
+.fresh{margin-left:auto;color:var(--muted);display:flex;align-items:center;gap:8px}
+.livedot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:breathe 2s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.35}}
+.switch{height:64px;border-left:1px solid var(--rule);padding-left:18px;display:flex;align-items:center;gap:8px;color:#fff}
+main{padding:26px 29px 40px;display:flex;flex-direction:column;gap:var(--gap)}
+/* 題の行 */
+.titlerow{display:flex;align-items:flex-end;gap:18px;padding-bottom:6px}
+.titlerow h1{margin:0;font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:500}
+.pill.pos{background:var(--pill-pos-bg);color:var(--positive)}.pill.neg{background:var(--pill-neg-bg);color:#e5566f}.pill.warn{background:var(--pill-warn-bg);color:var(--warning)}.pill.neu{background:var(--pill-neu-bg);color:#fff}
+.finding{color:var(--muted);margin-top:4px}
+.finding b{color:#fff;font-weight:500}
+.primary{margin-left:auto;height:36px;padding:0 18px;border-radius:999px;background:#fff;color:#000;border:0;font-weight:600;white-space:nowrap}
+.primary:hover{background:#e6e6e6}
+/* 数の帯：1 つの入れ物を線で分ける */
+.kpis{background:var(--surface);border-radius:var(--radius);display:grid;grid-template-columns:repeat(5,1fr)}
+.kpi{padding:18px var(--pad);border-left:1px solid var(--rule)}
+.kpi:first-child{border-left:0}
+.kpi .l{color:var(--muted);font-size:12px}
+.kpi .v{font-size:24px;font-weight:500;margin-top:2px}
+.kpi .s{color:var(--faint);font-size:12px}
+.kpi .v.hue{color:var(--accent)}
+/* 2/3 と 1/3 の段（12 列・間 14：1fr 2fr の比でなく 8:4 の列） */
+.row{display:grid;grid-template-columns:minmax(0,2.35fr) minmax(0,1fr);gap:var(--gap)}
+.card{background:var(--surface);border-radius:var(--radius);padding:var(--pad);min-width:0}
+.card h2{margin:0 0 12px;font-size:16px;font-weight:600;display:flex;align-items:baseline;gap:10px}
+.card h2 small{color:var(--faint);font-size:12px;font-weight:400}
+.card h2 .act{margin-left:auto;font-size:12px;color:var(--muted);font-weight:400}
+/* 会話の一覧（この画面の問い：どの Claude がいま動いていて、どれが私を待っているか） */
+.ses{display:grid;grid-template-columns:104px minmax(0,1.25fr) 92px minmax(0,1.9fr) 96px 58px;align-items:center;gap:14px;
+ min-height:68px;padding:10px 12px;margin:0 -12px;border-radius:14px;border-top:1px solid var(--rule)}
+.ses:first-of-type{border-top:0}
+.ses:hover{background:#1a1c20}
+.ses.flash{animation:flash 1.2s ease-out}
+@keyframes flash{from{background:#1f2416}to{background:transparent}}
+.st{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;white-space:nowrap}
+.st i{width:8px;height:8px;border-radius:50%;flex:none}
+.st.working{color:var(--positive)}.st.working i{background:var(--positive);animation:breathe 1.6s ease-in-out infinite}
+.st.ask{color:var(--warning)}.st.ask i{background:var(--warning)}
+.st.yours{color:#fff}.st.yours i{background:#fff}
+.st.quiet{color:#e5566f}.st.quiet i{background:#e5566f}
+.st.idle{color:var(--faint)}.st.idle i{background:#555}
+.nm b{display:block;font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nm span{color:var(--faint);font-size:12px}
+.model{display:inline-flex;height:24px;align-items:center;padding:0 9px;border-radius:999px;font-size:12px;font-weight:500;white-space:nowrap}
+.m-fable{background:var(--id-fable);color:var(--id-fable-ink)}.m-opus{background:var(--id-opus);color:var(--id-opus-ink)}.m-sonnet{background:var(--id-sonnet);color:var(--id-sonnet-ink)}.m-haiku{background:var(--id-haiku);color:var(--id-haiku-ink)}
+.doing{min-width:0}
+.doing .now{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doing .ask{color:var(--faint);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trace{height:30px}
+.trace svg{width:100%;height:100%;display:block}
+.tm{text-align:right;color:var(--muted);font-size:12px;line-height:1.35}
+.tm b{display:block;color:#fff;font-weight:500;font-size:13px}
+/* 待っているもの */
+.need{display:flex;flex-direction:column;gap:10px}
+.nd{background:var(--raised);border-radius:14px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center}
+.nd .t{font-weight:600;font-size:13px}
+.nd .w{grid-column:1;color:var(--muted);font-size:12px}
+.nd button{grid-row:1/3;grid-column:2;height:30px;padding:0 12px;border-radius:999px;border:0;background:#fff;color:#000;font-size:12px;font-weight:600}
+.nd button.sec{background:var(--control);color:#fff}
+/* 30 分の動き */
+.chart svg{width:100%;height:150px;display:block}
+.legend{display:flex;gap:16px;color:var(--muted);font-size:12px;margin-left:auto;font-weight:400}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.machines .mc{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--rule)}
+.machines .mc:first-of-type{border-top:0}
+.machines .k{color:var(--faint);font-size:12px}
+/* 係の表 */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{color:var(--faint);font-weight:400;text-align:left;font-size:12px;padding:0 8px 8px}
+td{padding:11px 8px;border-top:1px solid var(--rule);white-space:nowrap}
+td.r,th.r{text-align:right}
+td .bad{color:#e5566f}
+.msgs .m{padding:10px 0;border-top:1px solid var(--rule);font-size:13px}
+.msgs .m:first-of-type{border-top:0}
+.msgs .m small{display:block;color:var(--faint);font-size:12px}
+.msgs .in{display:flex;gap:8px;margin-top:10px}
+.msgs input{flex:1;height:36px;border-radius:999px;border:0;background:var(--raised);color:#fff;padding:0 14px;font:inherit}
+.msgs input::placeholder{color:var(--faint)}
+.msgs button{height:36px;padding:0 16px;border-radius:999px;border:0;background:#fff;color:#000;font-weight:600}
+@media (prefers-reduced-motion:reduce){.livedot,.st.working i,.ses.flash{animation:none}}
+/* スマホ：帯は上の 1 行に・数は 2 列・会話は 2 行の行に */
+@media (max-width:860px){
+ .shell{grid-template-columns:1fr}.side{display:none}
+ .top{padding:0 16px;gap:10px}.search{display:none}.crumb{display:none}.switch{display:none}
+ main{padding:16px 16px 32px}
+ .titlerow{flex-wrap:wrap}.primary{margin-left:0;width:100%}
+ .kpis{grid-template-columns:1fr 1fr}.kpi{border-left:0;border-top:1px solid var(--rule)}.kpi:nth-child(-n+2){border-top:0}.kpi:nth-child(5){grid-column:1/-1}
+ .row{grid-template-columns:1fr}
+ .ses{grid-template-columns:1fr auto;gap:4px 10px;min-height:0;padding:12px}
+ .ses .model{grid-column:2;grid-row:1}.ses .nm{grid-column:1;grid-row:2}.ses .doing{grid-column:1/-1}.ses .trace{grid-column:1/-1;height:24px}.ses .tm{display:none}
+ table th:nth-child(3),table td:nth-child(3),table th:nth-child(5),table td:nth-child(5){display:none}
+}
+</style></head>
+<body>
+<div class="shell">
+ <aside class="side">
+  <div class="brand"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#c6f24e"/><path d="M5 13h3l2-5 3 9 2-6 1.5 2H19" fill="none" stroke="#0c0d0f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>AgentBoard</div>
+  <nav class="nav">
+   <a class="on" href="#">いま <small class="num">6</small></a>
+   <a href="#">会話</a>
+   <a href="#">係</a>
+   <a href="#">伝言 <small class="num">1</small></a>
+   <a href="#">機械</a>
+  </nav>
+  <div class="grp">ハーネス</div>
+  <nav class="nav"><a href="#">段の列</a><a href="#">結果</a></nav>
+ </aside>
+ <div>
+  <header class="top">
+   <span class="crumb">店長 / <b>Wishlist</b></span>
+   <span class="search">⌕ 会話・係を探す</span>
+   <span class="fresh"><i class="livedot"></i><span id="fresh" class="num">4 秒前に届いた</span></span>
+   <span class="switch">すべての機械 ▾</span>
+  </header>
+  <main>
+   <div class="titlerow">
+    <div>
+     <h1>いまの Claude <span class="pill pos"><i class="livedot"></i>Live</span></h1>
+     <div class="finding"><b>2 つが作業中</b>・<b>DB の引っ越し</b>があなたの選択を待っています（2 分前から）・写真の出どころ調べが 18 分 止まっています</div>
+    </div>
+    <button class="primary">DB の引っ越しに答える</button>
+   </div>
+   <section class="kpis" aria-label="いまの数">
+    <div class="kpi"><div class="l">作業中</div><div class="v hue num" id="k-work">2</div><div class="s">6 会話のうち</div></div>
+    <div class="kpi"><div class="l">あなた待ち</div><div class="v num">2</div><div class="s">選んで 1・あなたの番 1</div></div>
+    <div class="kpi"><div class="l">動いている係</div><div class="v num">3</div><div class="s">止まり 1</div></div>
+    <div class="kpi"><div class="l">道具の回数</div><div class="v num" id="k-tools">162</div><div class="s">この 30 分</div></div>
+    <div class="kpi"><div class="l">token</div><div class="v num">6.0M</div><div class="s">いまの回の合計</div></div>
+   </section>
+   <div class="row">
+    <section class="card" aria-label="会話">
+     <h2>会話 <small>作業中・あなた待ちが先</small><a class="act" href="#">すべて見る</a></h2>
+     <div id="sessions"></div>
+    </section>
+    <section class="card" aria-label="あなた待ち">
+     <h2>あなた待ち <small>2</small></h2>
+     <div class="need">
+      <div class="nd"><span class="t">DB の引っ越しとバックアップ</span><span class="w">選んでほしい質問を出しています・2 分前</span><button>答える</button></div>
+      <div class="nd"><span class="t">新規ユーザーの流れを本番で試す</span><span class="w">返事を終えました：5 分以内に小元素が出ました（4 分 12 秒）</span><button class="sec">開く</button></div>
+      <div class="nd"><span class="t">写真の出どころ調べ</span><span class="w" style="color:#e5566f">18 分 記録が増えていません・PR の CI を待つ</span><button class="sec">見る</button></div>
+     </div>
+    </section>
+   </div>
+   <div class="row">
+    <section class="card chart" aria-label="この 30 分の動き">
+     <h2>この 30 分の動き <small>1 分ごとの道具の回数</small><span class="legend"><span><i style="background:#c6f24e"></i>作業中の会話</span><span><i style="background:#6b6b6b"></i>ほかの会話</span></span></h2>
+     <div id="chart"></div>
+    </section>
+    <section class="card machines" aria-label="機械">
+     <h2>機械 <small>2 台が届いている</small></h2>
+     <div class="mc"><span class="pill pos">● pc</span><span>店長の PC<br><span class="k">会話 3・係 2</span></span><span class="num k">20 秒前</span></div>
+     <div class="mc"><span class="pill pos">● cloud</span><span>クラウドの会話<br><span class="k">会話 3・係 1</span></span><span class="num k">30 秒前</span></div>
+     <div class="mc"><span class="pill neu">○ pc-old</span><span>前の PC<br><span class="k">1 時間 届いていない</span></span><span class="num k">–</span></div>
+    </section>
+   </div>
+   <div class="row">
+    <section class="card" aria-label="係">
+     <h2>係 <small>動いている 3・止まり 1</small><a class="act" href="#">すべて見る</a></h2>
+     <table><thead><tr><th>係</th><th>モデル</th><th>いま</th><th class="r">道具</th><th class="r">時間</th></tr></thead>
+     <tbody id="agents"></tbody></table>
+    </section>
+    <section class="card msgs" aria-label="伝言">
+     <h2>伝言 <small>店長 → 主の会話</small></h2>
+     <div class="m">390 の見出し、まだはみ出てるよ<small>両方へ・40 分前・PC の主が返事：fix:f1:1 に回しています</small></div>
+     <div class="m">AgentBoard 作り直して<small>クラウドへ・4 分前・まだ返事なし</small></div>
+     <div class="in"><input placeholder="主の会話へ書く" aria-label="主の会話へ書く"><button>送る</button></div>
+    </section>
+   </div>
+  </main>
+ </div>
+</div>
+<script>
+// 見本のデータ（本番は agentboard の live-* の枝から）
+var S=[
+ {st:'working',t:'AgentBoard の会話',p:'Wishlist · cloud',m:'opus',mn:'Opus 5.5',now:'書き換える：docs/board/index.html',ask:'› この board で Claude がいま何をしているか、実時間で見えるように',tm:'6 分',tl:'31 道具',sp:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,5,4,6,7,5]},
+ {st:'working',t:'ハーネス v2 の回（run 1119a）',p:'Claude · pc',m:'fable',mn:'Fable 5.2',now:'任せる：390 幅の見出しのはみ出しを直す',ask:'› 次の段を 2 つずつ回して',tm:'14 分',tl:'23 道具',sp:[0,0,1,2,0,3,4,2,1,0,0,2,5,6,3,2,1,0,0,1,3,4,6,8,5,3,2,4,6,7]},
+ {st:'ask',t:'DB の引っ越しとバックアップ',p:'SupabaseLocal · pc',m:'opus',mn:'Opus 5.5',now:'選んでほしい質問を出しています',ask:'› バックアップを毎日にして',tm:'9 分',tl:'6 道具',sp:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,0,1,1,0,0,0]},
+ {st:'quiet',t:'写真の出どころ調べ',p:'Wishlist · cloud',m:'haiku',mn:'Haiku 5.5',now:'コマンド：PR の CI を待つ・18 分 動きなし',ask:'› 写真の出どころを全部調べて',tm:'40 分',tl:'40 道具',sp:[3,4,2,5,3,2,4,3,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
+ {st:'yours',t:'新規ユーザーの流れを本番で試す',p:'Wishlist · cloud',m:'sonnet',mn:'Sonnet 5.5',now:'✓ 5 分以内に小元素が出ました（4 分 12 秒）',ask:'› test-c で試して',tm:'4 分前',tl:'12 道具',sp:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,1,2,4,2,1,0,0,0,0,0,0,0,0]},
+ {st:'idle',t:'Live2D MCP の確認',p:'LocalServer · pc',m:'sonnet',mn:'Sonnet 5.5',now:'✓ 3 つとも動きました',ask:'› 動いた？',tm:'1 時間前',tl:'4 道具',sp:[]}];
+var LAB={working:'作業中',ask:'選んで',quiet:'動きなし',yours:'あなたの番',idle:'休み'};
+function trace(sp,live){ // 30 分の動きを 1 本の線で（作業中だけライム、ほかは灰色）
+  sp=sp.length?sp:new Array(30).fill(0);var mx=Math.max(1,Math.max.apply(null,sp)),w=120,h=30,pts=sp.map(function(v,i){return (i*w/29).toFixed(1)+','+(h-3-(v/mx)*(h-8)).toFixed(1)});
+  return '<svg viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true"><polyline points="'+pts.join(' ')+'" fill="none" stroke="'+(live?'#c6f24e':'#6b6b6b')+'" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>'+(live?'<circle cx="120" cy="'+pts[29].split(',')[1]+'" r="2.5" fill="#c6f24e"/>':'')+'</svg>';
+}
+document.getElementById('sessions').innerHTML=S.map(function(s){return '<div class="ses" data-st="'+s.st+'"><span class="st '+s.st+'"><i></i>'+LAB[s.st]+'</span>'+
+ '<span class="nm"><b>'+s.t+'</b><span>'+s.p+'</span></span><span><span class="model m-'+s.m+'">'+s.mn+'</span></span>'+
+ '<span class="doing"><div class="now">'+s.now+'</div><div class="ask">'+s.ask+'</div></span><span class="trace">'+trace(s.sp,s.st==='working')+'</span>'+
+ '<span class="tm num"><b>'+s.tm+'</b>'+s.tl+'</span></div>'}).join('');
+var A=[['check:f1:2','haiku','Haiku 5.5','コマンド：PR の CI を待つ',12,'38 分',1],['写真の出どころ調べ','haiku','Haiku 5.5','ページを開く：example.com',23,'12 分',0],['fix:f1:1','sonnet','Sonnet 5.5','書き換える：board.css',14,'9 分',0],['新規ユーザーの点検','sonnet','Sonnet 5.5','test-c で版面を足して 5 分を測る',0,'20 分',0]];
+document.getElementById('agents').innerHTML=A.map(function(a){return '<tr><td>'+a[0]+'</td><td><span class="model m-'+a[1]+'">'+a[2]+'</span></td><td>'+(a[6]?'<span class="bad">止まり 19 分・</span>':'')+a[3]+'</td><td class="r num">'+a[4]+'</td><td class="r num">'+a[5]+'</td></tr>'}).join('');
+// 30 分の棒（作業中の会話はライム、ほかは灰色の 2 段）
+(function(){var live=new Array(30).fill(0),other=new Array(30).fill(0);S.forEach(function(s){(s.sp||[]).forEach(function(v,i){(s.st==='working'?live:other)[i]+=v})});
+  var mx=Math.max.apply(null,live.map(function(v,i){return v+other[i]})),W=600,H=150,bw=W/30,html='<svg viewBox="0 0 600 150" preserveAspectRatio="none" aria-hidden="true">';
+  [0.5,1].forEach(function(f){var y=H-18-(H-30)*f;html+='<line x1="0" x2="600" y1="'+y+'" y2="'+y+'" stroke="#1d2024" stroke-width="1"/>'});
+  live.forEach(function(v,i){var o=other[i],h1=(v/mx)*(H-30),h2=(o/mx)*(H-30),x=i*bw+2;html+='<rect x="'+x+'" y="'+(H-18-h1-h2)+'" width="'+(bw-4)+'" height="'+h2+'" fill="#6b6b6b" rx="2"/><rect x="'+x+'" y="'+(H-18-h1)+'" width="'+(bw-4)+'" height="'+h1+'" fill="#c6f24e" rx="2"/>'});
+  html+='<text x="0" y="148" fill="#949494" font-size="11">30 分前</text><text x="600" y="148" fill="#949494" font-size="11" text-anchor="end">今</text></svg>';
+  document.getElementById('chart').innerHTML=html})();
+// 生きている感じ：数秒ごとに「届いた」が更新され、作業中の行が一瞬光る
+var n=4;setInterval(function(){n=n>=5?1:n+1;document.getElementById('fresh').textContent=n+' 秒前に届いた';
+  if(n===1){var r=document.querySelector('.ses[data-st=working]');if(r){r.classList.remove('flash');void r.offsetWidth;r.classList.add('flash')}}},1000);
+</script>
+</body></html>
