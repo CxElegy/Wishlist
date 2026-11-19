@@ -1,223 +1,13 @@
 {
 "done": {
 "day": "2026-11-20",
-"n": 8
+"n": 10
 },
 "boards": [
 {
-"id": 139,
-"name": "葬送のフリーレン",
-"day": "2026-11-19",
-"fp": "a6d1498c877b",
-"fresh": false,
-"rows": [
-{
-"title": "【葬送のフリーレン】Luminastaにフリーレンが新登場！ とんがり帽子でハロウィンを楽しむ",
-"date": "2026-11-19T03:30:00+00:00",
-"source": "電撃オンライン",
-"summary": "",
-"url": "http://news.dengeki.com/article/202611/94248",
-"image": "https://cimg.kgl-systems.io/camion/files/94248/ogp_dURd.jpg?x=1280"
-},
-{
-"title": "『葬送のフリーレン』より、フリーレンの投げキッスを目撃したフェルンとシュタルクのフィギュアがAmazonで予約受付中 ...",
-"date": "2026-11-18T21:40:00+00:00",
-"source": "電撃ホビーウェブ on MSN",
-"summary": "グッドスマイルカンパニーが展開する、作品中のシーンをモチーフにしたデフォルメフィギュアシリーズ「Mini Memory」に、『葬送のフリーレン』フェルン＆シュタルクが登場！",
-"url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E8%91%AC%E9%80%81%E3%81%AE%E3%83%95%E3%83%AA%E3%83%BC%E3%83%AC%E3%83%B3-%E3%82%88%E3%82%8A-%E3%83%95%E3%83%AA%E3%83%BC%E3%83%AC%E3%83%B3%E3%81%AE%E6%8A%95%E3%81%92%E3%82%AD%E3%83%83%E3%82%B9%E3%82%92%E7%9B%AE%E6%92%83%E3%81%97%E3%81%9F%E3%83%95%E3%82%A7%E3%83%AB%E3%83%B3%E3%81%A8%E3%82%B7%E3%83%A5%E3%82%BF%E3%83%AB%E3%82%AF%E3%81%AE%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%82%A2%E3%81%8Camazon%E3%81%A7%E4%BA%88%E7%B4%84%E5%8F%97%E4%BB%98%E4%B8%AD-%E3%82%B7%E3%83%A5%E3%82%BF%E3%83%AB%E3%82%AF%E3%81%AE%E3%82%BB%E3%83%AA%E3%83%95%E3%83%9C%E3%83%BC%E3%83%89%E4%BB%98%E3%81%8D/ar-AA2hKHhh",
-"image": "https://www.bing.com/th?id=ONUT.uy8PqZtXDWc5YjpHaJC7aA&pid=News&w=1200"
-},
-{
-"title": "「川口におったんか」「それは戦士ゴリラじゃねえよフリーレン」『葬送のフリーレン』が出会ったのは一体？公式Xの投稿にツッコミ続出 (ABEMA TIMES)",
-"date": "2026-11-18T12:41:19+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/289c867bcb75c5b8863776081b269352636e8263/images/000",
-"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26kGOwuYEGS5oDeYd7yC6FaUI7eTPID7_Zubh9hFiBLGGO7ckZs-EMPHb4ILDUbmfBfkVyTVQIym3_O40gUNOlzDHktMAPutIf-oS9RkxJBBXegZhW-Bm056-BdPqdZHV_Q=="
-},
-{
-"title": "Yostar、『雀魂』でTVアニメ『葬送のフリーレン』コラボ開始…フリーレン、フェルン、シュタルク、ユーベルが雀士として登場",
-"date": "2026-11-18T07:10:00+00:00",
-"source": "gamebiz",
-"summary": "Yostar は、対戦型麻雀ゲーム『雀魂-じゃんたま-』において、11 月 18 日(水)アップデート後より TV アニメ『葬送のフリーレン』とのコラボを開始した。本コラボでは、期間限定コラボ雀士・装飾品ピックアップや着せ替え販売、イベントの開催を実施する。・雀魂×葬送のフリーレン コラボ PV■フリーレン、フェルン、",
-"url": "https://gamebiz.jp/news/435678",
-"image": "https://www.bing.com/th?id=ONUT.plh0McdFJmp2pyA6HW1A5A&pid=News&w=1200"
-},
-{
-"title": "『雀魂』×『葬送のフリーレン』コラボがスタート。フリーレン、フェルン、シュタルクらが雀士に。コラボ和了演出として花畑を出す魔法も登場",
-"date": "2026-11-18T07:00:00+00:00",
-"source": "ファミ通",
-"summary": "",
-"url": "https://www.famitsu.com/article/202611/94371",
-"image": "https://cimg.kgl-systems.io/camion/files/94371/thumbnail_ipjr.jpg?x=1280"
-},
-{
-"title": "「雀魂-じゃんたま-」×「葬送のフリーレン」のコラボイベントが開幕。フリーレンをはじめとした4名のキャラクターがコラボ雀士として登場",
-"date": "2026-11-18T06:04:44+00:00",
-"source": "4Gamer.net",
-"summary": "",
-"url": "https://www.4gamer.net/games/456/G045646/20261118017/",
-"image": "https://www.4gamer.net/games/456/G045646/20261118017/SS/001.jpg"
-},
-{
-"title": "「雀魂」×TVアニメ「葬送のフリーレン」のコラボが開催！フリーレン、フェルン、シュタルク、ユーベルが雀士となって参戦",
-"date": "2026-11-17T16:00:00+00:00",
-"source": "Gamer",
-"summary": "Yostarは、iOS/Android/PC向けに配信している「雀魂」において、本日11月18日よりTVアニメ「葬送のフリーレン」とのコラボレーションを開始した。 コラボ雀士としてフリーレン（CV：種﨑敦美）、フェルン（CV：市ノ瀬加那）、シュタルク（CV：小林千晃）、ユーベル（CV：長谷川育美）が登場。期間限定コラボ",
-"url": "https://www.gamer.ne.jp/news/202611180022/",
-"image": "https://www.bing.com/th?id=ONUT.eqwBkqQYvTeSJE_UXr7obA&pid=News&w=1200"
-},
-{
-"title": "「葬送のフリーレン」ポップアップショップバナー [画像ギャラリー 1/8]",
-"date": "2026-11-17T04:40:09+00:00",
-"source": "ナタリー",
-"summary": "",
-"url": "https://natalie.mu/comic/gallery/news/698344/3019997",
-"image": "https://ogre.natalie.mu/media/news/comic/2026/1117/frieren_bellemaison.jpg?impolicy=ogp_face_crop"
-},
-{
-"title": "『葬送のフリーレン』Luminastaに、ハロウィン衣装がかわいいフェルンが新登場！",
-"date": "2026-11-17T03:32:00+00:00",
-"source": "電撃オンライン",
-"summary": "",
-"url": "https://dengekionline.com/article/202611/94247",
-"image": "https://cimg.kgl-systems.io/camion/files/94247/ogp_dPUl.jpg?x=1280"
-},
-{
-"title": "「葬送のフリーレン」“縦ロールになっちゃった”、“ヒンメルはもういないじゃない”…思い出蘇る！場面写アイテム大集合の期間限定ポップアップがJR大阪駅に登場【11月25日～】",
-"date": "2026-11-17T03:18:46+00:00",
-"source": "アニメ！アニメ！",
-"summary": "",
-"url": "https://animeanime.jp/article/2026/11/17/104843.html",
-"image": "https://animeanime.jp/imgs/ogp_f/957077.jpg"
-},
-{
-"title": "『葬送のフリーレン』公式Xの「シュトーレン」投稿に「まさに早々のシュトーレン」「1ヶ月以上早いですよ!」ファンツッコミ",
-"date": "2026-11-17T01:33:00+00:00",
-"source": "ABEMA TIMES on MSN",
-"summary": "『葬送のフリーレン』公式Xにて、「シュトーレン」とのキャプションとともにクリスマスに食べられるドイツの伝統菓子と写ったフリーレンのぬいぐるみの写真が投稿され、ファンの間で話題となっている。美味しそうなシュトーレンだけでなく、載せられた皿にも注目する声が寄せられた。",
-"url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E8%91%AC%E9%80%81%E3%81%AE%E3%83%95%E3%83%AA%E3%83%BC%E3%83%AC%E3%83%B3-%E5%85%AC%E5%BC%8Fx%E3%81%AE-%E3%82%B7%E3%83%A5%E3%83%88%E3%83%BC%E3%83%AC%E3%83%B3-%E6%8A%95%E7%A8%BF%E3%81%AB-%E3%81%BE%E3%81%95%E3%81%AB%E6%97%A9%E3%80%85%E3%81%AE%E3%82%B7%E3%83%A5%E3%83%88%E3%83%BC%E3%83%AC%E3%83%B3-1%E3%83%B6%E6%9C%88%E4%BB%A5%E4%B8%8A%E6%97%A9%E3%81%84%E3%81%A7%E3%81%99%E3%82%88-%E3%83%95%E3%82%A1%E3%83%B3%E3%83%84%E3%83%83%E3%82%B3%E3%83%9F/ar-AA2hC0BC",
-"image": "https://www.bing.com/th?id=ONUT.-_CL8t_awonNdPT_2ICxVg&pid=News&w=724"
-},
-{
-"title": "アニメ『葬送のフリーレン』のベルメゾンオリジナルアイテム初登場！11月25日(水)よりJR大阪駅ポップアップにて先行販売開始",
-"date": "2026-11-16T20:47:00+00:00",
-"source": "時事ドットコム",
-"summary": "［株式会社千趣会］～日常を彩る缶バッジやトートバッグなど～ 株式会社千趣会（本社：大阪市 代表取締役社長：鈴木聡 以下千趣会）の通販事業ベルメゾンは、エルフの魔法使いフリーレンの旅を描く人気TVアニメ『葬送のフリーレン』のオリジナルアイテムを、11月25日(水)よりエキマル ア・ラ・モード JR大阪駅中央口店にて先行販",
-"url": "https://www.jiji.com/jc/article?k=000000493.000013288&g=prt",
-"image": "https://www.bing.com/th?id=ONUT.WO3S70Sgpjsab2b9_oMFvQ&pid=News&w=536"
-}
-]
-},
-{
-"id": 148,
-"name": "スプラトゥーン3",
-"day": "2026-11-19",
-"fp": "e497b5c527d3",
-"fresh": false,
-"rows": [
-{
-"title": "「無料アップデート終わった末期ゲームなのに」――スプラトゥーン3 Ver.12.0.0、対照的な投稿が同時に広がる",
-"date": "2026-11-18T09:14:09+00:00",
-"source": "shiritomo",
-"summary": "",
-"url": "https://hashout.jp/game/14558/",
-"image": "https://hashout.jp/wp-content/uploads/2026/11/2122782919278178379-img-1200x675.png"
-},
-{
-"title": "『スプラトゥーン3』Ver.12.0.0配信開始！ Xマッチのペア参加を12月から試験導入",
-"date": "2026-11-18T08:10:42+00:00",
-"source": "AppBank",
-"summary": "",
-"url": "https://www.appbank.net/2026/11/18/game/3169626.php",
-"image": "https://www.appbank.net/wp-content/uploads/2026/11/20261118_143752_950_01.webp"
-},
-{
-"title": "「スプラトゥーン3」更新データVer.12.0.0が配信開始！多数アイテムが手に入るゲームニュースも同時配信",
-"date": "2026-11-18T06:34:27+00:00",
-"source": "Saiga NAK",
-"summary": "",
-"url": "https://saiganak.com/ja/news/splatoon3-update-ver12-0-0/",
-"image": "https://i0.wp.com/uploads.saigacdn.com/2026/11/splatoon3-ver12-0-0-annoucement-00.jpg?resize=1200,630"
-},
-{
-"title": "画像10 / 10＞『スプラトゥーン3』のデザイン追加など新機能も！スマホプリンター用アプリ「INSTAX mini Link for Nintendo Switch」バージョンアップ版が登場",
-"date": "2026-11-18T05:51:26+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/1119850/image11426653.html",
-"image": "https://news.walkerplus.com/article/1119850/11426632_615.jpg"
-},
-{
-"title": "『スプラトゥーン3』ギアパワーのかけら（全14種類、各100個）などがプレゼント！",
-"date": "2026-11-18T05:06:00+00:00",
-"source": "電撃オンライン",
-"summary": "",
-"url": "https://dengekionline.com/article/202611/94368",
-"image": "https://cimg.kgl-systems.io/camion/files/94368/ogp_yZlk.jpg?x=1280"
-},
-{
-"title": "画像1 / 11＞夏休みは「ららぽーとEXPOCITY」へ！「スプラトゥーン3」コラボイベントや自由研究におすすめの企画も",
-"date": "2026-11-18T01:38:09+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/1204684/image13226259.html",
-"image": "https://news.walkerplus.com/article/1204684/13226259_615.jpg"
-},
-{
-"title": "『スプラトゥーン3』Xマッチがフレンドと2人組で参加可能に！大型アプデVer.12.0.0配信決定",
-"date": "2026-11-17T23:18:32+00:00",
-"source": "ニコニコニュース",
-"summary": "",
-"url": "https://news.nicovideo.jp/watch/nw20003563?news_ref=top_newComments",
-"image": ""
-},
-{
-"title": "【スプラ3】イベントマッチのスケジュール一覧！次の開催はいつ？ルール・結果の見方・上位バッジまとめ！【スプラトゥーン3】",
-"date": "2026-11-17T11:14:59+00:00",
-"source": "攻略大百科",
-"summary": "",
-"url": "https://gamepedia.jp/splatoon3/archives/20646",
-"image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/splatoon3/thumbnail/20646/f2bfc6fc596957a6a430ea96a5023ecd"
-},
-{
-"title": "【スプラ3】最新アップデートVer.12.0.0発表！いつ配信される？新武器追加はある？情報まとめ【スプラトゥーン3】",
-"date": "2026-11-17T05:10:41+00:00",
-"source": "攻略大百科",
-"summary": "",
-"url": "https://gamepedia.jp/splatoon3/archives/38833",
-"image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/splatoon3/thumbnail/38833/724eb38f8f94fb59dbcf392010c2827a"
-},
-{
-"title": "【スプラ3】第15回バイトチームコンテスト(シェケナダム2026)結果発表！ボーダーと上位の記録・次回開催予定【スプラトゥーン3】",
-"date": "2026-11-17T04:14:04+00:00",
-"source": "攻略大百科",
-"summary": "",
-"url": "https://gamepedia.jp/splatoon3/archives/38813",
-"image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/splatoon3/thumbnail/38813/f90701c81100316065876322e0fa389a"
-},
-{
-"title": "『スプラトゥーン3』11/18にアプデ。Xマッチ、バンカラマッチ、イベントマッチに仕様変更",
-"date": "2026-11-17T03:03:00+00:00",
-"source": "電撃オンライン",
-"summary": "",
-"url": "https://dengekionline.com/article/202611/94251",
-"image": "https://cimg.kgl-systems.io/camion/files/None/ogp_IDXW.jpg?x=1280"
-},
-{
-"title": "「スプラトゥーン3」，Xマッチが2人1組でプレイできるように。「2026冬 Chill Season」より試験的に導入",
-"date": "2026-11-17T11:46:46+09:00",
-"source": "4Gamer.net",
-"summary": "任天堂は本日（2026年11月17日），「スプラトゥーン3」の更新データVer.12.0.0を11月18日10：00に配信すると発表した。大きな変更として，Xマッチをフレンドと2人1組でプレイできる機能が追加される。",
-"url": "https://www.4gamer.net/games/553/G055390/20261117006/",
-"image": "https://www.4gamer.net/games/553/G055390/20261117006/SS/001.jpg"
-}
-]
-},
-{
 "id": 149,
 "name": "YOASOBI",
-"day": "2026-11-19",
+"day": "2026-11-20",
 "fp": "2772bed99999",
 "fresh": false,
 "rows": [
@@ -322,7 +112,7 @@
 {
 "id": 150,
 "name": "Mrs. GREEN APPLE",
-"day": "2026-11-19",
+"day": "2026-11-20",
 "fp": "3104809aff5f",
 "fresh": false,
 "rows": [
@@ -427,7 +217,7 @@
 {
 "id": 153,
 "name": "BTS",
-"day": "2026-11-19",
+"day": "2026-11-20",
 "fp": "b44a376fb3f2",
 "fresh": false,
 "rows": [
@@ -532,7 +322,7 @@
 {
 "id": 154,
 "name": "大谷翔平",
-"day": "2026-11-19",
+"day": "2026-11-20",
 "fp": "bd8ae7d773c3",
 "fresh": false,
 "rows": [
@@ -637,7 +427,7 @@
 {
 "id": 155,
 "name": "サッカー日本代表",
-"day": "2026-11-19",
+"day": "2026-11-20",
 "fp": "5a4e9b61930c",
 "fresh": false,
 "rows": [
@@ -742,7 +532,7 @@
 {
 "id": 173,
 "name": "温泉",
-"day": "2026-11-19",
+"day": "2026-11-20",
 "fp": "28ee96b38938",
 "fresh": false,
 "rows": [
@@ -768,7 +558,7 @@
 "source": "Yahoo!ニュース",
 "summary": "",
 "url": "https://news.yahoo.co.jp/articles/f22488863bc453ac7923b00e6e84669919ab2254",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000482-yom-000-5-view.jpg?exp=10800"
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-00000482-yom-000-9-view.jpg?exp=10800"
 },
 {
 "title": "こんなあったかグッズがあったか！？ 急な冷え込みに「肩温泉」「ねおちスト」 電気不要の節電・最新アイテムに注目",
@@ -841,6 +631,216 @@
 "summary": "栃木最古の歴史を誇る「鹿の湯」は、シャワーや洗い場もなくて、昔ながらの温泉の伝統文化をそのまま感じられる共同浴場。ユニークなのは、41度から48度まで温度別に湯船が分かれているところで、とにかくお湯が熱い！ 硫黄の匂いも特別強くて、乳白色のお湯につかると肌もしっとり。",
 "url": "https://www.msn.com/ja-jp/news/other/%E6%B8%A9%E6%B3%89%E3%83%9E%E3%83%8B%E3%82%A2%E3%81%9F%E3%81%A1%E5%8E%B3%E9%81%B8%E3%81%AE%E5%90%8D%E7%A7%98%E6%B9%AF4%E8%BB%92/ar-AA2hLHwc",
 "image": "https://www.bing.com/th?id=ONUT.hqCtCKWwb8WgP1SzGeMidQ&pid=News&w=1200"
+}
+]
+},
+{
+"id": 174,
+"name": "宇宙・ロケット",
+"day": "2026-11-20",
+"fp": "324435de5665",
+"fresh": false,
+"rows": [
+{
+"title": "H3ロケット、火星圏の試料採取へ 「日本の探査機」問われる真価",
+"date": "2026-11-18T18:00:00+00:00",
+"source": "日本経済新聞",
+"summary": "宇宙航空研究開発機構（JAXA）は10月20日、種子島宇宙センター（鹿児島県南種子町）からH3ロケット10号機を打ち上げた。今回の搭載物である火星衛星探査機「MMX」が目指すのは、火星圏にある第1衛星「フォボス」からの天体の試料を持ち帰るという世界初の快挙だ。試料採取が成功すれば、フォボスの拠点化への期待など火星での有",
+"url": "https://www.nikkei.com/article/DGXZQOUC0953B0Z01C26A1000000/",
+"image": "https://www.bing.com/th?id=ONUT.jMVmCIDeAiU78IdL3myZPw&pid=News&w=380"
+},
+{
+"title": "スペースXが世界を驚かせた。 最近、ロケット「スターシップ」の15次試験発射で、地球の軌道を回って帰ってきた2段宇宙船をロボットアームで捕らえ、回収するのに初めて成功した。 発射体を再使用してコストを..",
+"date": "2026-11-18T08:19:00+00:00",
+"source": "매일경제",
+"summary": "",
+"url": "https://www.mk.co.kr/jp/journalist/12212690",
+"image": "https://pimg.mk.co.kr/news/cms/202611/19/20261119_01110138000004_M00.jpg"
+},
+{
+"title": "モデルロケット全国大会「宇宙甲子園」福島県代表・福島工業高校「NOSU（のす）」を表彰｜福島ロケットチャレンジ2026表彰式を11月28日、ロボット航空宇宙フェスタで開催",
+"date": "2026-11-18T07:15:24+00:00",
+"source": "Infoseek",
+"summary": "",
+"url": "https://news.infoseek.co.jp/article/prtimes_000000046_000075397/",
+"image": "https://prtimes.jp/img/75397/46/resize/d75397-46-3961d17e07821c17ae8d-0.jpg"
+},
+{
+"title": "衛星からロケットまで、宇宙スタートアップ11社に投資",
+"date": "2026-11-17T17:24:00+00:00",
+"source": "マイナビニュース",
+"summary": "トヨタ自動車が宇宙事業への参入を探っているという。同社はToyota Ventures、Woven Capital、Toyota Invention Partnersの3つの投資部門を通じ、宇宙関連の11社のスタートアップに2億4000万ドル以上を投資していることを初めて明らかにしたという。",
+"url": "https://news.mynavi.jp/techplus/article/20261118-5352705/",
+"image": "https://www.bing.com/th?id=ONUT.TQTwJOz0NLb_0S8KKaYaIQ&pid=News&w=1200"
+},
+{
+"title": "中国、有人宇宙船「神舟24号」を近く打ち上げへ",
+"date": "2026-11-17T16:00:00+00:00",
+"source": "ライブドアニュース",
+"summary": "【新華社酒泉11月17日】中国の有人宇宙船「神舟24号」を搭載した運搬ロケット「長征2号F遥24」が17日、発射エリアへの移動を終えた。打ち上げは近日中の適切なタイミングで実施する。",
+"url": "https://news.livedoor.com/article/detail/32841487/",
+"image": "https://www.bing.com/th?id=ONUT.RQf2J7OmRqw2ehobkAqPWw&pid=News&w=465"
+},
+{
+"title": "清水建設／ロケット液体燃料タンクを一体造形／金属3Dプリンターで直径1m規模",
+"date": "2026-11-17T13:00:00+00:00",
+"source": "日刊建設工業新聞 on MSN",
+"summary": "清水建設は金属３Ｄプリンターの技術を活用し、直径１メートルのロケット用液体燃料タンクを一体造形した。宇宙航空研究開発機構（ＪＡＸＡ）と研究開発した「大型ハイブリッド積層造形システム」を使った。金属ワイヤを溶かしながら積層造形するロボットアーム型の金属３Ｄプリンターに、積層面の不良を整形する切削加工ロボットを組み合わせた",
+"url": "https://www.msn.com/ja-jp/technology/hardware-and-devices/%E6%B8%85%E6%B0%B4%E5%BB%BA%E8%A8%AD-%E3%83%AD%E3%82%B1%E3%83%83%E3%83%88%E6%B6%B2%E4%BD%93%E7%87%83%E6%96%99%E3%82%BF%E3%83%B3%E3%82%AF%E3%82%92%E4%B8%80%E4%BD%93%E9%80%A0%E5%BD%A2-%E9%87%91%E5%B1%9E%EF%BC%93%EF%BD%84%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%A7%E7%9B%B4%E5%BE%84%EF%BC%91%EF%BD%8D%E8%A6%8F%E6%A8%A1/ar-AA2hDX2K",
+"image": "https://www.bing.com/th?id=ONUT.S4YlYLkoStPFwErbfoaayA&pid=News&w=802"
+},
+{
+"title": "EPSILON CUP 2026 OSUMI-KIMOTSUKI［宇宙甲子園ロケット部門鹿児島大会］学校法人池田学園池田高等学校チームが初優勝、2027年2月全国大会に出場へ - 写真・画像(1/1)",
+"date": "2026-11-17T10:34:57+00:00",
+"source": "西日本新聞me",
+"summary": "",
+"url": "https://www.nishinippon.co.jp/image/1103798/",
+"image": "https://www.bing.com/th?id=ONUT.iDmoTRieLQZj2oeAHSwLLw&pid=News&w=1200"
+},
+{
+"title": "EPSILON CUP 2026 OSUMI-KIMOTSUKI[宇宙甲子園ロケット部門鹿児島大会]学校法人池田学園池田高等学校チームが初優勝、2027年2月全国大会に ...",
+"date": "2026-11-17T09:45:00+00:00",
+"source": "産経ニュース",
+"summary": "第2回大会に向け、これまでの鹿児島県に加え、初めて宮崎県での事前ワークショップを開催（全3回総勢71名が参加）し、結果、当初9校・11チーム（鹿児島県立鶴丸高、甲南高は辞退）が大会エントリーしました。",
+"url": "https://www.sankei.com/pressrelease/prtimes/MLKCEVRNKZNOZPLSYY2IUYZ77Y/",
+"image": "https://www.bing.com/th?id=ONUT.xMtY4KgBk8Oc-dMkhGT5Pg&pid=News&w=1200"
+},
+{
+"title": "EPSILON CUP 2026 OSUMI-KIMOTSUKI［宇宙甲子園ロケット部門鹿児島大会］学校法人池田学園池田高等学校チームが初優勝、2027年2月全国大会に出場へ",
+"date": "2026-11-17T08:45:14+00:00",
+"source": "PR TIMES",
+"summary": "",
+"url": "https://prtimes.jp/main/html/rd/p/000000032.000169767.html",
+"image": "https://prcdn.freetls.fastly.net/release_image/169767/32/169767-32-ce04347049c452a4ca4a2064d41776d9-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+},
+{
+"title": "自作ロケット、無事に卵生還？！ 「宇宙甲子園」地区大会……池田高校が優勝し全国へ",
+"date": "2026-11-17T04:31:00+00:00",
+"source": "南日本新聞",
+"summary": "",
+"url": "https://373news.com/news/local/detail/242899",
+"image": "https://373news.com/_photo/2026/11/20261117D091003-imgIMAG2026111102041_imo_03_GD.jpg"
+},
+{
+"title": "米スペースＸ、大型宇宙船「スターシップ」の空中回収に初成功、完全再使用型ロケット実現へ前進",
+"date": "2026-11-16T08:54:07+00:00",
+"source": "https://kabu-ir.com/",
+"summary": "",
+"url": "https://kabu-ir.com/article/522037322.html",
+"image": "https://www.bing.com/th?id=ONUT.47U08nASYXOnPgr0yE2djQ&pid=News&w=320"
+},
+{
+"title": "ロケット「バルカン」打ち上げ失敗、アマゾンの衛星40基失う",
+"date": "2026-11-16T04:50:00+00:00",
+"source": "Reuters on MSN",
+"summary": "Joey Roulette [１５日 ロイター] - 米ボーイングとロッキード・マーチンの合弁宇宙企業ユナイテッド・ローンチ・アライアンス（ＵＬＡ）のロケット「バルカン」が１５日、フロリダ州からの打ち上げ直後に飛行に失敗し、搭載していたアマゾン・ドット・コムの衛星インターネット網「レオ」向け衛星４０基が失われた。ＵＬＡ",
+"url": "https://www.msn.com/ja-jp/news/world/%E3%83%AD%E3%82%B1%E3%83%83%E3%83%88-%E3%83%90%E3%83%AB%E3%82%AB%E3%83%B3-%E6%89%93%E3%81%A1%E4%B8%8A%E3%81%92%E5%A4%B1%E6%95%97-%E3%82%A2%E3%83%9E%E3%82%BE%E3%83%B3%E3%81%AE%E8%A1%9B%E6%98%9F40%E5%9F%BA%E5%A4%B1%E3%81%86/ar-AA2huEuv",
+"image": "https://www.bing.com/th?id=ORMS.24630e4d1b2447b415403e5fdbdef562&pid=News&w=960"
+}
+]
+},
+{
+"id": 175,
+"name": "生成AI",
+"day": "2026-11-20",
+"fp": "b2a880ec9b35",
+"fresh": false,
+"rows": [
+{
+"title": "生成AI「クロード」開発のアンソロピック上場へ 時価総額240兆円 期待と緊張が交錯するなかAIブームけん引なるか",
+"date": "2026-11-19T10:04:40+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/52b8f05cf4822ae6596629dab1e537314df3fd64",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-07338204-jnn-000-11-view.jpg?exp=10800"
+},
+{
+"title": "コーヒー1杯で生成AIトークンがもらえるカフェ「Token Cafe」、高田馬場にオープン",
+"date": "2026-11-19T09:23:14+00:00",
+"source": "株式会社インプレス",
+"summary": "",
+"url": "https://ai.watch.impress.co.jp/docs/news/2157970.html",
+"image": "https://ai.watch.impress.co.jp/img/aiw/list/2157/970/00.jpg"
+},
+{
+"title": "生成 AI セキュリティを強化する – SATv2 で始めるマルチアカウント環境の LLM ジャッキング対策",
+"date": "2026-11-19T09:17:07+00:00",
+"source": "Amazon Web Services (AWS)",
+"summary": "",
+"url": "https://aws.amazon.com/jp/blogs/news/llmjacking-protection-with-satv2/",
+"image": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/11/18/title-llmjacking-protection-with-satv2.png"
+},
+{
+"title": "YouTubeのCEOが語る生成AI動画時代の「人間性」とは",
+"date": "2026-11-19T08:10:00+00:00",
+"source": "Forbes JAPAN",
+"summary": "",
+"url": "https://forbesjapan.com/articles/detail/106217",
+"image": "https://images.forbesjapan.com/media/article/106217/images/main_image_4980de1818c1a18f5b70b927ca0c05573cb606de.jpg"
+},
+{
+"title": "心の不調の強さは生成AIへの定期的な悩み相談と関連 ―かかりつけ医のいない6,852人を1年間追跡した全国調査から―",
+"date": "2026-11-19T07:36:10+00:00",
+"source": "保健指導リソースガイド",
+"summary": "",
+"url": "https://tokuteikenshin-hokensidou.jp/reference/2026/11/ai-68521.php",
+"image": ""
+},
+{
+"title": "コスプレイヤー伊織もえ、生成AI「Claude」開発企業の新規公開株購入を申し込み 約2500万円～2800万円相当（KAI-YOU）",
+"date": "2026-11-19T07:30:00+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/837fb19c56dd2d3392e0c28b7cb69de94ef928d9",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00097192-kaiyou-000-1-view.jpg?exp=10800"
+},
+{
+"title": "Steam新作の半数が生成AIを使用 ゲーム開発に何が起きているのか",
+"date": "2026-11-19T07:25:00+00:00",
+"source": "CNET Japan",
+"summary": "",
+"url": "https://japan.cnet.com/article/35255149/",
+"image": "https://japan.cnet.com/storage/2026/11/19/50e0e36ceddac4fde09ba93c63a9fabf/Claude-Code.jpg"
+},
+{
+"title": "生成AIの個人活用から組織活用へ 森トラストのAIエージェント人材育成事例を公開",
+"date": "2026-11-19T06:56:42+00:00",
+"source": "PERSOL INNOVATION",
+"summary": "",
+"url": "https://www.persol-innovation.co.jp/news/2026-1124-1",
+"image": ""
+},
+{
+"title": "築26年のごちゃごちゃリビング、生成AIに相談したら15分で変化が 目指せ「1万いいね」の部屋",
+"date": "2026-11-19T06:30:58+00:00",
+"source": "emogram",
+"summary": "",
+"url": "https://emogram.sankei.com/121341",
+"image": "https://emogram.sankei.com/wp-content/uploads/2026/11/ba6b5fecfc15472c3f51d3ec3d28c41f-1024x576.jpg"
+},
+{
+"title": "生成AI「ジェミニ」、20～30秒で修能の国語・数学満点",
+"date": "2026-11-19T06:23:00+00:00",
+"source": "조선일보",
+"summary": "",
+"url": "https://www.chosun.com/jp/politics-national-jp/2026/11/19/FL4VEIEX55FTPJBYXFYQUQ3U5A/",
+"image": "https://www.chosun.com/resizer/v2/VHHOR6KCPZACPJAG44ZCGGPLQQ.png?auth=3de4467e94784b008c76a79d3fd2569e633a0b0b2a400eb6b4e3dca8afbb9241&width=1200&height=630&smart=true"
+},
+{
+"title": "生成AI利用者の約9割が「AIの回答」に不安。足かせはAIではなく「社内情報の管理」",
+"date": "2026-11-19T05:45:30+00:00",
+"source": "Infoseek",
+"summary": "",
+"url": "https://news.infoseek.co.jp/article/prtimes_000000077_000011768/",
+"image": "https://prtimes.jp/img/11768/77/resize/d11768-77-d31566c18a591e6c70e6-6.png"
+},
+{
+"title": "プレスリリース：大学向け｜生成AIの学内利用ルール 見直しの進め方レポート［2026年11月版］（PR TIMES）",
+"date": "2026-11-19T05:22:49+00:00",
+"source": "毎日新聞",
+"summary": "",
+"url": "https://mainichi.jp/articles/20261119/pr2/00m/020/583000c",
+"image": "https://cdn.mainichi.jp/vol1/2026/11/19/20261119pr200m020583000p/0.png?1"
 }
 ]
 }
