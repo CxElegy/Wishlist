@@ -156,7 +156,7 @@ def user_items(picks, shop_items):
 def _story(row, weight):
     return {"headline": row.get("title") or "", "url": row.get("url") or "", "image": row.get("image") or None,
             "date": str(row.get("date") or "")[:10], "blurb": row.get("summary") or "", "highlight": "", "weight": weight,
-            "source": row.get("source") or ""}
+            "source": row.get("source") or "", **({"img_ref": row["img_ref"]} if row.get("img_ref") else {})}
 
 
 FIND = {"tried": 0, "found": 0, "saved": 0}   # find_images の数（1 回分。main が 1 行に出す：数だけ）
@@ -372,15 +372,49 @@ def write_back(brows, latest, rows, og, touched, acct, put):
     return done
 
 
+def mask_saved(brows, want):
+    """防盗链の写真（記事に img_ref＝Referer の印がある：userfeed.Media が SAVED を取った。2026-11-19 店長の決定 1A）を画面に出す形にする。
+    置き場（photo_store）に入ったものは置き場の網址（Pages の /p/<指紋>）に替える＝どの描き方でも元のサイトへ直に読みに行かない。
+    まだのものは写真を外す（読む人のブラウザでは 403 になる。今までの落ち先＝備えの絵・出典のアイコン・札へ）。入った後の作り直しで本物に替わる。
+    どちらも want（{指紋: [網址, Referer]}）に入れ、imgs.json で photo_store へ渡す（入ったものも：使っている印＝14 日で消さない）。
+    → 写しの brows（記事集めの行・全員で共有の行は書き換えない。書き戻し write_back の後に呼ぶ）"""
+    def fix(s):
+        if not (isinstance(s, dict) and s.get("img_ref") and s.get("image")):
+            return s
+        u = s["image"]
+        want[photo_store.key(u)] = [u, s["img_ref"]]
+        got = photo_store.stored(u)
+        return {k: v for k, v in s.items() if k != "img_ref"} | {"image": got or None}
+    out = {}
+    for k, r in (brows or {}).items():
+        if not isinstance(r, dict):
+            out[k] = r
+            continue
+        out[k] = {**r, **{f: [fix(s) for s in r.get(f) or []] for f in ("stories", "pending") if f in r}}
+    return out
+
+
+def merge_imgs(old, new):
+    """imgs.json（写真の置き場の列）を合わせる：前の列に今回の分を足す（--recent・--boards-file の一部の人の回が、ほかの人の分を消さない）。
+    同じ網址は今回の形（防盗链の [網址, Referer]）を先に。→ 指紋の順の list"""
+    out = {}
+    for x in old or []:
+        e = photo_store.user_entry(x)
+        if e:
+            out[photo_store.key(e[0])] = x
+    out.update(new)
+    return [out[k] for k in sorted(out)]
+
+
 def _pics(*lists):
-    """記事の網址（包みの網址 gurl も）→ 写真。整理待ち・本人の user_boards の行から（AI 編集の記事へ引き継ぐ）。"""
+    """記事の網址（包みの網址 gurl も）→ (写真, 防盗链の Referer)。整理待ち・本人の user_boards の行から（AI 編集の記事へ引き継ぐ）。"""
     out = {}
     for st in lists:
         for p in st or []:
             if isinstance(p, dict) and p.get("image"):
                 for u in (p.get("url"), p.get("gurl")):
                     if u:
-                        out.setdefault(u, p["image"])
+                        out.setdefault(u, (p["image"], p.get("img_ref")))
     return out
 
 
@@ -393,10 +427,10 @@ def inherit(ed, *lists):
     out = []
     for s in ed:
         if not s.get("image"):
-            img = next((pics[u] for u in s.get("refs") or [s.get("url")] if pics.get(u) and pics[u] not in used), None)
-            if img:
-                s = {**s, "image": img}
-                used.add(img)
+            hit = next((pics[u] for u in s.get("refs") or [s.get("url")] if pics.get(u) and pics[u][0] not in used), None)
+            if hit:
+                s = {**s, "image": hit[0], **({"img_ref": hit[1]} if hit[1] else {})}
+                used.add(hit[0])
         out.append(s)
     return out
 
@@ -615,6 +649,7 @@ def main(argv):
     new_fps = dict(fps)
     pub = photo_store.published()   # Pages に載った写しの名前（外の小元素を /p/ に替えるのは載ったものだけ）
     imgs = {}   # 作ったページの原寸の写真の網址（置き場に未収のもの）。photo_store が読んでお客さまの写真も置き場に入れる
+    saved = {}  # 防盗链の写真 {指紋: [網址, Referer]}（mask_saved。photo_store が Referer 付きで置き場へ）
     for u in users or []:
         acct = account_of(u["email"])
         try:
@@ -632,6 +667,7 @@ def main(argv):
             og_image.add(ogt, got)
             w = write_back(brows, latest, urows, og, got["touched"], acct, _supa)
             back = [a + b for a, b in zip(back, w)]
+            brows = mask_saved(brows, saved)   # 防盗链の写真：置き場に入ったものだけ出す（書き戻しの後・写しで）
             html_ = build(u["email"], u.get("prefs") or {}, brows, shop_items, shop_issue,
                           settings, deadline, themes, follows, chosen, pages, heat_in, votes, prev, pub, wishes)
             if design_moved(follows, _supa):   # 作っている間に小元素の回（board_added.yml の速い道）が config を書いた：今の config で作り直す（古い config で上書きして小元素を消さない）
@@ -665,10 +701,21 @@ def main(argv):
             _supa(fp_path, json.dumps(new_fps, sort_keys=True).encode(), "POST", "application/json")
         except Exception:  # noqa: BLE001  指紋が書けなくても次の回が全部置き直すだけ
             pass
-    if made and not failed and not partial:   # 全員作れた回だけ（一部の人だけの回 --boards-file／--recent は書かない：ほかの人の網址を消さない・読みを増やさない）（一部の失敗で前の網址を消さない）。pages/ は読まず、この 1 本だけを photo_store が読む
+    # 写真の置き場の列（pages/_fp/imgs.json・非公開の箱。pages/ は読まず、この 1 本だけを photo_store が読む）：
+    # 全員作れた回は今回の分で置き換える（使わなくなった写真を外す）。一部の人だけの回（--boards-file／--recent）・一部が失敗した回は、
+    # 前の列を読んで今回の分を足すだけ（ほかの人の網址を消さない。2026-11-19：足したばかりの人の写真が次の全員の回まで置き場に入らなかった）
+    cur = {photo_store.key(u): u for u in imgs.values()} | saved
+    if made and cur:
         try:
-            _supa(IMGS_PATH, json.dumps(sorted(imgs.values())).encode("utf-8"), "POST", "application/json")
-        except Exception:  # noqa: BLE001  書けなくても次の回が書く
+            if partial or failed:
+                old = _supa(IMGS_PATH)
+                body = merge_imgs(old if isinstance(old, list) else [], cur)
+            else:
+                body = merge_imgs([], cur)
+            _supa(IMGS_PATH, json.dumps(body).encode("utf-8"), "POST", "application/json")
+        except sbstate.Limited:
+            pass
+        except Exception:  # noqa: BLE001  書けなくても次の回が書く（前の列が読めない回は書かない＝消さない）
             pass
     print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}）・失敗 {failed}")
     # 数だけ（名前・網址は出さない：公開のログ）

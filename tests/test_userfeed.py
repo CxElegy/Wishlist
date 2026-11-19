@@ -602,19 +602,41 @@ class MediaRules(unittest.TestCase):
         self.assertEqual(st[0]["gurl"], "https://news.google.com/rss/articles/1")   # 前の網址を残す（AI 編集の refs・整理待ちの指紋）
         self.assertNotIn("img_why", st[0])
 
-    def test_saved_photo_not_used(self):
+    def test_saved_photo_kept_with_referer(self):
+        """2026-11-19 店長の決定（1A）：防盗链の写真（SAVED）も使う。記事の頁を img_ref に付け、置き場に入れてから出す（user_pages.mask_saved）。"""
         import images
-        res = images.Result(image="https://img.example/a.jpg", source="og:image" + images.SAVED)
+        res = images.Result(image="https://img.example/a.jpg", source="og:image" + images.SAVED, referer="https://news.example.jp/1")
         with mock.patch.object(images, "pick", return_value=res):
-            self.assertEqual(userfeed.Media._pick(story(1, "一"), 5, set()), {"image": None, "why": "saved", "saved": True})
+            self.assertEqual(userfeed.Media._pick(story(1, "一"), 5, set()),
+                             {"image": "https://img.example/a.jpg", "why": None, "saved": True, "ref": "https://news.example.jp/1"})
         res = images.Result(image="https://img.example/a.jpg", source="og:image")
         with mock.patch.object(images, "pick", return_value=res):
-            self.assertEqual(userfeed.Media._pick(story(1, "一"), 5, set())["image"], "https://img.example/a.jpg")
-        m = self.media(pick=lambda s, b, a, *_: {"image": None, "why": "saved", "saved": True})
+            self.assertFalse(userfeed.Media._pick(story(1, "一"), 5, set())["saved"])
+        m = self.media(pick=lambda s, b, a, *_: {"image": "https://img.example/h.jpg", "why": None, "saved": True, "ref": s["url"]})
         st = [story(1, "一")]
         m.board(st)
-        self.assertEqual((st[0]["image"], st[0]["img_why"], m.stats["saved"]), ("", "saved", 1))   # 捨てた数を数える
-        self.assertIn("SAVED で捨てた 1", userfeed.media_log(m, 1, 0))
+        self.assertEqual((st[0]["image"], st[0]["img_ref"], m.stats["saved"]), ("https://img.example/h.jpg", "https://news.example.jp/1", 1))
+        self.assertIn("SAVED（置き場に入れてから出す）1", userfeed.media_log(m, 1, 0))
+        m = self.media(pick=lambda s, b, a, *_: "https://img.example/plain.jpg")   # 期限切れで外して、ふつうの写真に替わったら Referer の印も外す
+        m.check = lambda u: False
+        st[0]["image"] = "https://img.example/h.jpg?exp=1"
+        m.board(st)
+        self.assertEqual(st[0]["image"], "https://img.example/plain.jpg")
+        self.assertNotIn("img_ref", st[0])
+
+    def test_pick_returns_referer_for_saved(self):
+        """images.pick：Referer 付きでしか取れなかった図は、取った記事の頁を referer に返す（店長の道は今までどおり source の SAVED だけを見る）。"""
+        import images
+        page = images.Page("https://news.example.jp/9", True, og=["https://img.example/p.jpg"])
+
+        def check(u, referer=None):
+            return (True, "800×450") if referer == "https://news.example.jp/9" else (False, "图片 HTTP 403")
+        with mock.patch.object(images, "page", lambda u: page), mock.patch.object(images, "check", check), \
+                mock.patch.object(images, "syndicated_candidates", lambda *a, **k: ([], "")), mock.patch.object(images, "author_seen", lambda: set()):
+            e = sources.Entry(title="題", url="https://news.example.jp/9", published=None, source="")
+            res = images.pick(None, [e], e.url)
+        self.assertEqual((res.image, res.referer), ("https://img.example/p.jpg", "https://news.example.jp/9"))
+        self.assertIn(images.SAVED, res.source)
 
     def test_same_as_shop_tools(self):
         """店長の道と同じ部品：1 本の時間は images.STORY_BUDGET・戻す回数は sources.RESOLVE_TRIES・同じ出来事の別の記事を渡す。"""

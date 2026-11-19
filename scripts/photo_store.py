@@ -38,6 +38,7 @@ KEEP_DAYS = 14
 CAP = 300 * 1024 * 1024   # 2026-11-07 から置き場は店長の PC の自前版（無料枠の 300MB ではない）。数字を変えるかは店長が決める（PR #photo-store-budget）
 MAX_EVICT = 300           # 1 回に消す枚数の上限（幅 400／800 で 2 倍のファイル）。誤判定があっても一度に大きく消さない
 RETRY_DAYS = 1       # 取れなかった網址は 1 日あけて取り直す
+USER_NEAR = 0.9      # 置き場が上限（CAP）のこの割合を超えたら、お客さまだけの写真（imgs.json の分）は新しく足さない（店長の写真を押し出さない。足さなかった数を stat の user_skip に）
 MAX_FETCH = 12 * 1024 * 1024
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 IMG_RE = re.compile(r'<img\b[^>]*?\bsrc="([^"]*)"[^>]*?data-e="[sr]"')   # 主写真(s)・ぼかし／ギャラリー／欲しい物(r)
@@ -161,23 +162,41 @@ def scan_text(texts, seen, want):
         want[k] = u
 
 
+def user_entry(x):
+    """imgs.json の 1 つ → (網址, Referer or None)。文字列＝ふつうの写真、[網址, 記事の頁]＝防盗链の写真（2026-11-19 店長の決定 1A：
+    元のサイトを通さないと開けない写真も、記事の頁を Referer にして置き場に入れる）。読めない形は None。"""
+    if isinstance(x, str) and x.startswith("http"):
+        return x, None
+    if isinstance(x, list) and len(x) == 2 and all(isinstance(v, str) and v.startswith("http") for v in x):
+        return x[0], x[1]
+    return None
+
+
 def user_imgs(base, keyv):
-    """お客さまのページの写真の網址（user_pages が組み立て時に書く pages/_fp/imgs.json の 1 本だけ・小さい）。pages/ の一覧・本文は読まない。取れなければ空。"""
-    try:   # 読めなかったときは None（空の一覧と区別する：読めない回は「載っていない」と言えない）
+    """お客さまのページの写真の網址（user_pages が組み立て時に書く pages/_fp/imgs.json の 1 本だけ・小さい・非公開の箱）。pages/ の一覧・本文は読まない。
+    → [(網址, Referer or None)]。読めなかったときは None（空の一覧と区別する：読めない回は「載っていない」と言えない）。"""
+    try:
         req = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/pages/_fp/imgs.json", headers={"apikey": keyv, "Authorization": f"Bearer {keyv}"})
-        return [u for u in json.loads(sbstate.sb_open(req, 30).read()) if isinstance(u, str) and u.startswith("http")]
+        return [e for e in (user_entry(x) for x in json.loads(sbstate.sb_open(req, 30).read())) if e]
     except Exception:  # noqa: BLE001
         return None
 
 
-def scan(site=None, extra=(), urls=()):
+def scan(site=None, extra=(), urls=(), refs=None, user=None):
     """公開ページ（＋お客さまのページ extra）の写真を数える。→ (載っている指紋の集合, {指紋: 原寸の網址}（まだ置いていないもの）, 写真の種類の数)。
-    店長もお客さまも、主写真・ぼかし・ギャラリー・欲しい物の写真を同じ置き場で（網址ごとに 1 回）。"""
+    店長もお客さまも、主写真・ぼかし・ギャラリー・欲しい物の写真を同じ置き場で（網址ごとに 1 回）。
+    urls は網址か (網址, Referer)。refs（dict）を渡すと防盗链の写真の {指紋: Referer}、user（set）を渡すとお客さまだけの写真の指紋を入れる。"""
     seen, want = set(), {}
     scan_text([f.read_text(encoding="utf-8") for f in pages(site)], seen, want)
     scan_text(extra, seen, want)
-    for u in urls:   # 店長の網页に無いお客さまの写真（後ろに足す：置く順は店長の先頭の写真が先）
-        want.setdefault(key(u), u)
+    for x in urls:   # 店長の網页に無いお客さまの写真（後ろに足す：置く順は店長の先頭の写真が先）
+        u, ref = x if isinstance(x, tuple) else (x, None)
+        k = key(u)
+        if k not in want and user is not None:
+            user.add(k)
+        want.setdefault(k, u)
+        if ref and refs is not None:
+            refs[k] = ref
     return seen, want, len(seen | set(want))
 
 
@@ -277,7 +296,16 @@ def tint_of(base, k):
         return k, None
 
 
-def fetch(url):
+def fetch(url, referer=None):
+    """原寸の写真のバイト列（画像でなければ None）。referer があるとき（防盗链・お客さまの SAVED の写真）だけ、店長の道（hdimg・images.pick）と同じ
+    images._fetch で記事の頁を Referer に付けて取る（拒まれたら scrapling で 1 回取り直す）。防盗链でない写真の取り方は今までどおり。"""
+    if referer:
+        import images
+        f = images._fetch(url, MAX_FETCH, referer)
+        if f.status != 200 or f.too_big or not f.body:
+            return None
+        ct = (f.headers.get("content-type") or "").lower()
+        return f.body if not ct or ct.startswith(("image/", "application/octet-stream", "binary/")) else None
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"})
     with urllib.request.urlopen(req, timeout=20) as r:
         if not (r.headers.get("Content-Type") or "").startswith("image/"):
@@ -337,9 +365,9 @@ def evict(p, seen, today, keep_days=KEEP_DAYS, cap=CAP, limit=None):
     return gone
 
 
-def one(base, keyv, k, url):
+def one(base, keyv, k, url, ref=None):
     try:
-        data = fetch(url)
+        data = fetch(url, ref) if ref else fetch(url)
         sizes = shrink(data) if data else None
         if not sizes:
             return k, None
@@ -355,13 +383,18 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     p, x = st["p"], st["x"]
     # お客さまのページ（storage の pages/）は読まない：3 時間ごとに全部落とすと cached egress を使う（2026-11-04）。写真の網址の小さな 1 本だけ読む
     ui = user_imgs(base, keyv) if base and keyv else None
-    seen, want, total = scan(site, urls=ui or ())
+    refs, user = {}, set()
+    seen, want, total = scan(site, urls=ui or (), refs=refs, user=user)
     complete = ui is not None and bool(pages(site))   # お客さまの網址の一覧も公開ページも読めた回だけ「載っていない」と言える
     today = day()
     seen |= set(want) & set(p)   # 置いたが、まだ網页を作り直していない分
     for k in seen & set(p):
         p[k]["at"] = today
     todo = [(k, u) for k, u in want.items() if k not in p and today - x.get(k, -9) >= RETRY_DAYS]
+    user_skip = 0
+    if sum(v["b"] for v in p.values()) >= CAP * USER_NEAR:   # 上限に近い：お客さまだけの写真は足さない（店長の写真を古い順の消しで押し出さない）
+        user_skip = sum(1 for k, _ in todo if k in user)
+        todo = [(k, u) for k, u in todo if k not in user]
     new = bad = 0
     if todo and base and keyv:
         end = time.time() + minutes * 60
@@ -369,7 +402,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
             for i in range(0, len(todo), workers * 4):
                 if time.time() > end:
                     break
-                for k, n in ex.map(lambda t: one(base, keyv, *t), todo[i:i + workers * 4]):
+                for k, n in ex.map(lambda t: one(base, keyv, *t, refs.get(t[0])), todo[i:i + workers * 4]):
                     if n:
                         p[k] = {"at": today, "b": n[0], "cc": 1, "c": n[1], "m": n[2]}
                         x.pop(k, None)
@@ -419,7 +452,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     used = sum(v["b"] for v in p.values())
     hit = len(seen)
     stat = {"n": len(p), "bytes": used, "cap": CAP, "gone": len(gone), "new": new, "bad": bad, "pics": total, "hit": hit,
-            "wait": max(0, len(todo) - new - bad), "day": today, "cc": cc, "cc_wait": sum(1 for v in p.values() if not v.get("cc")),
+            "wait": max(0, len(todo) - new - bad), "day": today, "user_skip": user_skip, "saved": len(refs), "cc": cc, "cc_wait": sum(1 for v in p.values() if not v.get("cc")),
             "nc": nc, "tint": sum(1 for v in p.values() if v.get("c")), "nm": nm, "nm_wait": sum(1 for v in p.values() if "m" not in v), "mass": sum(1 for v in p.values() if v.get("m"))}
     out = {"base": base or st["base"], "p": p, "x": x, "stat": stat}
     (path or STATE).parent.mkdir(parents=True, exist_ok=True)
@@ -446,7 +479,8 @@ def main(argv):
     if not (base and keyv):
         raise SystemExit("supabase_url か SUPABASE_SERVICE_KEY がありません")
     s = run(minutes, base, keyv)
-    print(f"写真の一時保管：{s['n']} 枚・{s['bytes'] // 1024 // 1024}MB（上限 {s['cap'] // 1024 // 1024}MB）／新しく {s['new']}・取れず {s['bad']}・消した {s['gone']}・順番待ち {s['wait']}・cache 付け直し {s['cc']}（残り {s['cc_wait']}）／主写真 {s['pics']} 枚のうち一時保管から {s['hit']}")
+    print(f"写真の一時保管：{s['n']} 枚・{s['bytes'] // 1024 // 1024}MB（上限 {s['cap'] // 1024 // 1024}MB）／新しく {s['new']}・取れず {s['bad']}・消した {s['gone']}・順番待ち {s['wait']}・cache 付け直し {s['cc']}（残り {s['cc_wait']}）／主写真 {s['pics']} 枚のうち一時保管から {s['hit']}"
+          + f"／お客さまの防盗链の写真 {s.get('saved', 0)} 枚" + (f"・上限に近いので足さなかった {s['user_skip']}" if s.get("user_skip") else ""))
     path = os.environ.get("GITHUB_OUTPUT")
     if path:
         with open(path, "a", encoding="utf-8") as f:

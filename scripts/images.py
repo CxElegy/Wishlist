@@ -752,6 +752,7 @@ class Result:
     source: str = ""                               # 选中的图从哪来：AI 挑选 / 条目自带 / og:image / 转载 xxx ……
     trace: list = field(default_factory=list)      # [(来源, 地址, 结果)]：每张检查过的候选图
     notes: list = field(default_factory=list)      # 拿候选图时的问题：原文 403（Cloudflare）……
+    referer: str = ""                              # SAVED の図を取るときに渡す記事の頁（防盗链。お客さまの写真は photo_store が Referer 付きで置き場へ。2026-11-19）
 
     @property
     def reason(self):
@@ -911,6 +912,8 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
         return False
 
     if scan():
+        if SAVED in res.source:
+            res.referer = from_page.get(res.image) or url
         return res
     # 防盗链：原文网页自己的图，带那一页作 Referer 再试（浏览器打不开，hdimg.py 存到本站）
     tries = 0
@@ -923,7 +926,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
         ok, why = check(img, referer=from_page[img])
         res.trace.append((label + SAVED, img, why if not ok else "OK"))
         if ok:
-            res.image, res.source = img, label + SAVED
+            res.image, res.source, res.referer = img, label + SAVED, from_page[img]
             return res
     return res
 

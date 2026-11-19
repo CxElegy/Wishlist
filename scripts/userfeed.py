@@ -391,7 +391,8 @@ class Media:
     （残りは次の回）が、写真探しは包みの網址のままでも続ける（images.pick が Bing の縮小画像・同じ出来事の別の記事・転載の検索へ進む）・
     1 本 PICK_S 秒（店長の images.STORY_BUDGET）・回数で諦めず理由ごとに間をあける（og_image.retry_due）。
     同じ網址は 1 回の中で 1 度だけ調べる（同じ版面を何人が追いかけていても）。
-    本站に保存しないと出せない写真（images.SAVED：読者のブラウザでは拒まれる）は使わない（お客さまのページは hdimg を通らない。捨てた数を stats に）。"""
+    本站に保存しないと出せない写真（images.SAVED：読者のブラウザでは拒まれる。防盗链）は、2026-11-19 店長の決定（1A）で使う：記事に img_ref（Referer に渡す
+    記事の頁）を付け、photo_store が Referer 付きで置き場（Pages の /p/・指紋の名前）に入れる。置き場に入るまでは user_pages.mask_saved が画面に出さない。"""
 
     def __init__(self, deadline, now=None, resolve=None, pick=None, check=None):
         import threading
@@ -402,21 +403,21 @@ class Media:
         self.links, self.imgs, self.lock = {}, {}, threading.Lock()
         self.fails = 0
         # 数だけ（名前・題・網址は持たない）：links 原文に戻した・unresolved 戻せなかった（休んで残した分も）・cooled 戻すのを休んだ回・
-        # images 写真を付けた（wrapped_img はそのうち包みのままで見つけた）・saved SAVED で捨てた・timeout 1 本の時間切れ・
+        # images 写真を付けた（wrapped_img はそのうち包みのままで見つけた）・saved そのうち SAVED（置き場に入れてから出す）・timeout 1 本の時間切れ・
         # carry 時間が足りず次の回へ持ち越した記事・miss 見つからなかった理由ごと
         self.stats = {"links": 0, "unresolved": 0, "cooled": 0, "images": 0, "wrapped_img": 0, "expired": 0,
                       "saved": 0, "timeout": 0, "carry": 0, "miss": {}}
 
     @staticmethod
     def _pick(story, budget, avoid, siblings=()):
-        """店長と同じ images.pick。→ {"image", "why"（見つからなかった理由の大分類）, "saved"（SAVED で捨てたか）}"""
+        """店長と同じ images.pick。→ {"image", "why"（見つからなかった理由の大分類）, "saved"（SAVED か）, "ref"（SAVED を取るときの Referer）}"""
         import images
         import og_image
         e = sources.Entry(title=story["title"], url=story["url"], published=None, source=story.get("source") or "",
                           image=story.get("image") or "")
         res = images.pick(None, [e], story["url"], budget=budget, avoid=avoid, siblings=siblings)
         if res.image and images.SAVED in (res.source or ""):
-            return {"image": None, "why": "saved", "saved": True}
+            return {"image": res.image, "why": None, "saved": True, "ref": res.referer or story["url"]}
         if res.image:
             return {"image": res.image, "why": None, "saved": False}
         return {"image": None, "why": og_image.why_of(res.reason), "saved": False}
@@ -439,7 +440,7 @@ class Media:
             s["img_chk"] = self.now.isoformat(timespec="seconds")
         else:
             s["image"] = ""
-            for k in IMG_MARKS:
+            for k in (*IMG_MARKS, "img_ref"):
                 s.pop(k, None)
             with self.lock:
                 self.stats["expired"] += 1
@@ -507,6 +508,10 @@ class Media:
             s["image"] = img
             for k in IMG_MARKS:
                 s.pop(k, None)
+            if hit.get("saved") and hit.get("ref"):
+                s["img_ref"] = hit["ref"]   # 防盗链：photo_store がこの頁を Referer に置き場へ入れる（user_pages.saved_imgs が列に足す）
+            else:
+                s.pop("img_ref", None)
             avoid.add(img)
             with self.lock:
                 self.stats["images"] += 1
@@ -593,7 +598,7 @@ def media_log(m, fixed, cut_n):
             + (f"（戻せず {st['unresolved']}" + ("・続けて断られたので休んだ" if st["cooled"] else "") + "）" if st["unresolved"] else "")
             + f"・写真 {st['images']} 枚" + (f"（うち包みのまま {st['wrapped_img']}）" if st["wrapped_img"] else "")
             + (f"・見つからず {miss}" if miss else "")
-            + (f"・SAVED で捨てた {st['saved']}" if st["saved"] else "")
+            + (f"・うち SAVED（置き場に入れてから出す）{st['saved']}" if st["saved"] else "")
             + (f"・時間切れ {st['timeout']}" if st["timeout"] else "")
             + (f"・期限切れで探し直し {st['expired']} 枚" if st["expired"] else "")
             + (f"・持ち越し {st['carry']} 本" if st["carry"] else "")

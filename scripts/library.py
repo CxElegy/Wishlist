@@ -390,11 +390,13 @@ def edited_stories(pending, edit, fp, at):
         hl = str(s.get("highlight") or "")
         # 写真は AI が選んだもの → refs の 1 本目 → 同じ出来事の refs の 2 本目から（店長の images.pick の「其它来源」と同じ順）。
         # 編んだ後に整理待ちへ付いた写真は user_pages.board_rows が refs の網址で引き継ぐ（編み直さない）
-        img = s.get("image") if str(s.get("image") or "").startswith("https://") else next((p.get("image") for p in refs if p.get("image")), None)
+        own = next((p for p in refs if p.get("image")), None)
+        img = s.get("image") if str(s.get("image") or "").startswith("https://") else (own or {}).get("image")
+        ref = (own or {}).get("img_ref") if own and img == own.get("image") else None   # 防盗链の写真は Referer の印も（user_pages.mask_saved）
         out.append({"headline": head, "highlight": hl if hl and hl in head else "", "blurb": str(s.get("blurb") or ""),
                     "weight": s.get("weight") if s.get("weight") in ("hero", "lead", "normal") else "normal",
                     "url": refs[0]["url"], "source": refs[0].get("source") or "", "date": str(refs[0].get("date") or "")[:10],
-                    "image": img or None, "refs": [p.get("url") for p in refs],
+                    "image": img or None, **({"img_ref": ref} if ref else {}), "refs": [p.get("url") for p in refs],
                     **({"event": s["event"]} if isinstance(s.get("event"), dict) else {}), "_fp": fp, "_at": at})
         if len(out) >= LIB_STORIES:
             break
