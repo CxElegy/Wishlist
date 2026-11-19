@@ -304,6 +304,22 @@ class EmblemOnlyMain(unittest.TestCase):
         self.assertIn("https://n.example/1", self.page())
         return self.page()
 
+    def test_story_restored_to_original_url_is_kept(self):
+        """見直し 6：前のページの後に記事の網址が原文に戻った（Google の網址は gurl に残る）・AI 編集の記事が別の網址になった、でも前の記事として残す。"""
+        g = "https://news.google.com/rss/articles/abc"
+        self.added = "2026-01-01T00:00:00Z"
+        self.more = [{"title": "包みの記事", "url": g, "summary": "", "source": "s", "date": "2026-11-19"}]
+        self.run_main(["--boards-file", "IDS"])
+        self.assertIn("包みの記事", self.page())
+        self.more = [{"title": "包みの記事", "url": "https://origin.example/a", "gurl": g, "summary": "", "source": "s", "date": "2026-11-19"}]   # 原文に戻った
+        self.write_emblem()
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertIn("包みの記事", self.page())
+        self.assertIn("https://n.example/1", self.page())
+        got, cut = user_pages.keep_known({"x": {"stories": [{"url": "https://ai.example/x", "refs": ["https://n.example/1"]}]}},
+                                         user_pages.story_keys({"x": {"pending": [{"url": "https://n.example/1"}]}}))
+        self.assertEqual((len(got["x"]["stories"]), cut), (1, 0))   # AI 編集の記事は refs で当たる
+
     def test_unreadable_fingerprints_place_nothing(self):
         """見直し 1(a)：指紋が一瞬読めない回に作ると known が空になり、前からある記事まで全部消えたページを置いていた → 誰のページも置かない。"""
         before = self._prev_page()

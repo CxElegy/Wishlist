@@ -452,11 +452,17 @@ def mask_saved(brows, want, pub=None):
     return out
 
 
+def _keys_of(s):
+    """記事 1 本の網址の指紋（sha1 の 12 字）：url・包みの網址 gurl・AI 編集の refs の全部（見直し 6：ふつうの回のあとに記事の網址が原文に戻る・
+    AI 編集の記事が別の網址になると、url だけでは前のページの記事が「別の記事」に見えて落ちた）。"""
+    us = [s.get("url"), s.get("gurl"), *(s.get("refs") or [])]
+    return {hashlib.sha1(str(u).encode("utf-8")).hexdigest()[:12] for u in us if isinstance(u, str) and u}
+
+
 def story_keys(brows):
-    """ページに載せた記事（版面の記事・整理待ち）の網址の指紋の集まり（sha1 の 12 字。pages/_fp/all.json の <account>/_urls）。
-    小元素だけの回は、この集まりにある記事だけ載せる（前のページ＋小元素）。"""
-    return sorted({hashlib.sha1(str(s.get("url")).encode("utf-8")).hexdigest()[:12]
-                   for r in (brows or {}).values() for k in ("stories", "pending") for s in r.get(k) or [] if isinstance(s, dict) and s.get("url")})
+    """ページに載せた記事（版面の記事・整理待ち）の網址の指紋の集まり（pages/_fp/all.json の <account>/_urls）。
+    小元素だけの回は、この集まりに 1 つでも当たる記事だけ載せる（前のページ＋小元素）。"""
+    return sorted({k for r in (brows or {}).values() for kk in ("stories", "pending") for s in r.get(kk) or [] if isinstance(s, dict) for k in _keys_of(s)})
 
 
 def keep_known(brows, keys):
@@ -465,7 +471,7 @@ def keep_known(brows, keys):
     for name, r in (brows or {}).items():
         r = dict(r)
         for k in ("stories", "pending"):
-            got = [s for s in r.get(k) or [] if not isinstance(s, dict) or hashlib.sha1(str(s.get("url")).encode("utf-8")).hexdigest()[:12] in keys]
+            got = [s for s in r.get(k) or [] if not isinstance(s, dict) or _keys_of(s) & keys]
             cut += len(r.get(k) or []) - len(got)
             r[k] = got
         out[name] = r
