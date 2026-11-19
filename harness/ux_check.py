@@ -452,6 +452,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"横にはみ出す（{st['sw']}px）")
     bad += cover_bad(covered)
     bad += first_screen_bad(first)
+    if page == "":   # 2026-11-19 新しい人のページの 8 つ（test-b を不合格）：本人のページ・店長のページの最初の画面に同じ数え方（aesthetic_count.page_counts）
+        bad += new_user_bad(pg)
     if st["tofu"]:   # 2026-10-26：数字の書体（Anton）に日本語の字がなく □□□ になった（「（日）」）
         bad.append("日本語の字が日本語の書体でない（□になる）：" + "・".join(map(str, st["tofu"])))
     if st["hero"]:   # 2026-10-26：ポスターの写真が読み込めていない
@@ -494,6 +496,21 @@ COVER_JS = """()=>{const f=document.querySelector('.wl-auth');if(!f)return [];co
  return [...document.querySelectorAll('body *')].filter(e=>!e.closest('.wl-auth,.wl-toast,.wl-live,.wl-gate,.wl-agree')&&[...e.childNodes].some(n=>n.nodeType===3&&n.data.trim())
   &&(!e.checkVisibility||e.checkVisibility({checkVisibilityCSS:true}))&&getComputedStyle(e).position!=='fixed').filter(e=>{const b=e.getBoundingClientRect();
   return b.width&&b.height&&b.left<r.right&&r.left<b.right&&b.top<r.bottom&&r.top<b.bottom}).slice(0,3).map(e=>(e.className||e.tagName)+':'+e.innerText.slice(0,12))}"""
+
+
+NEW_USER_BAD = ("imgfail", "pending", "noimg", "leadbig", "sidebig", "pendhid", "navgap", "dup")   # imgfail・noimg（2026-11-19 本物の写真が届いたか）   # ✗ にする項目（orphan・cgap は店長のページにも残る既存の問題なので数を出すだけ）
+
+
+def new_user_bad(pg):
+    """開いたページに harness/aesthetic_count.page_counts（新しい人のページの 8 つ＋self_review の数）を当てる。PC の会話が本物の非公開ページに当てる呼び口と同じ。"""
+    import aesthetic_count
+    try:
+        aesthetic_count.wait_photos(pg)   # 写真が届くまで最大 30 秒（読み込み待ちを写真なしと数えない）
+        c = aesthetic_count.page_counts(pg)
+    except Exception as ex:   # noqa: BLE001  測れなければ測れないと言う（0 と書かない）
+        return [f"審美基準の数を測れなかった（{type(ex).__name__}）"]
+    print(f"  審美基準：orphan {c.get('orphan', 0)}・cgap {c.get('cgap', 0)}・写真なし {c.get('_noimgPct', 0)}%・集めています {c.get('_held', 0)}（数だけ）")
+    return [f"{aesthetic_count.KIND[k]} {c[k]}：" + "・".join(c["_notes"].get(k, [])[:3]) for k in NEW_USER_BAD if c.get(k)]
 
 
 def cover_bad(c):
@@ -686,11 +703,11 @@ def html_weight_bad(html):
     imgs = len(re.findall(r"<img\b", html))
     if imgs > IMG_MAX:
         bad.append(f"<img> {imgs} 枚（上限 {IMG_MAX}）")
-    mains = re.findall(r'<img src="([^"]*)"[^>]*?data-e="s">', html)
+    mains = re.findall(r'<img src="([^"]*)"[^>]*?data-e="s"[^>]*>', html)   # data-e のあとに data-o（2026-11-19）
     kept = sum(is_stored(s) for s in mains)
     if kept and kept * 2 < len(mains):   # 一時保管が動いているのに半分も使われていない（photo_store の取りこぼし・render の外れ）
         bad.append(f"主写真 {len(mains)} 枚のうち写真の一時保管から出たのは {kept} 枚（半分未満）")
-    st = re.findall(r'<img src="[^"]*(?:/storage/v1/object/public/photos/|/Wishlist/p/)[^"]*"([^>]*?)data-e="s">', html)
+    st = re.findall(r'<img src="[^"]*(?:/storage/v1/object/public/photos/|/Wishlist/p/)[^"]*"([^>]*?)data-e="s"[^>]*>', html)
     nosrc = sum("srcset=" not in x for x in st)
     if nosrc:   # 一時保管の幅 400 を置いても srcset で渡さなければ使われない（2026-10-31）
         bad.append(f"一時保管の主写真 {len(st)} 枚のうち srcset がないのが {nosrc} 枚")
