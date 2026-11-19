@@ -43,7 +43,6 @@
   "https://weisradio.com/2026/11/12/shannon-fagan-football-picks-friday-13th-2026/": "https://weisradio.com/wp-content/uploads/2026/08/shannon-fagan-thinking-football-picks-weis-news.png",
   "https://www.66wz.com/wendu/system/2026/11/12/105871102.shtml": "https://mmbiz.qpic.cn/mmbiz_png/fXeVwORdalR2DH0CBIemW8EjREoAicFtVoO4F01lgoGxNZoAocFmOtHLYoPibuxeJurdDhMn2v9ibAtIZ7Bdib0u598oUicgD3vpNFk7JP5pTIeA/640?wx_fmt=png&from=appmsg#imgIndex=4",
   "https://www.antutu.com/doc/138430": "https://img.antutu.com/2026/11/16/7bb530904d6cfad421a54fdc388a8bcd_Y29tcHJlc3NfZm9ybWF0X2pwZw==.jpg",
-  "https://www.aol.com/articles/5-harry-potter-characters-deserve-221200000.html": "https://www.bing.com/th?id=ONUT._mL0Vw68gCradEQxaJdRPg&pid=News&w=1200",
   "https://www.cleveland.com/food/2026/11/the-nostalgic-detail-hidden-in-starbucks-new-holiday-cups-that-has-everyone-talking.html": "https://www.bing.com/th?id=ONUT.MpghNpWO8ffxSUeE1opjTQ&pid=News&w=700",
   "https://www.donews.com/news/detail/8/6775569.html": null,
   "https://www.famitsu.com/article/202611/94349": "https://cimg.kgl-systems.io/camion/files/94349/thumbnail_Wetg.jpg?x=1280",
@@ -1244,27 +1243,6 @@
   {
    "batch": 4,
    "because": "哈利波特剧集",
-   "date": "2026-11-18",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT._mL0Vw68gCradEQxaJdRPg&pid=News&w=1200",
-   "kind": "board",
-   "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
-   "score": 6,
-   "source": "AOL",
-   "taste": [
-    [
-     "作品:哈利波特剧集",
-     2
-    ]
-   ],
-   "title": "5 Harry Potter Characters Who Deserve Bigger Roles In The HBO TV Series",
-   "url": "https://www.aol.com/articles/5-harry-potter-characters-deserve-221200000.html",
-   "words": [],
-   "work": "哈利波特剧集"
-  },
-  {
-   "batch": 4,
-   "because": "哈利波特剧集",
    "date": "2026-11-17",
    "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.LKuT1oYT-6V6WrWSEG0YAA&pid=News&w=1200",
@@ -1347,7 +1325,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "Vaundy",
    "date": "2026-11-13",
    "hits": [],
@@ -1797,11 +1775,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1809,15 +1787,15 @@
    8
   ],
   [
-   "作品:三星手机",
-   7
-  ],
-  [
    "三星 Galaxy",
    7
   ],
   [
    "galaxy",
+   7
+  ],
+  [
+   "作品:三星手机",
    7
   ]
  ]
