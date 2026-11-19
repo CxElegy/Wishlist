@@ -12,6 +12,7 @@ import concurrent.futures as cf
 import datetime as dt
 import html as htmllib
 import re
+import time
 import urllib.parse
 
 import nostorage  # noqa: F401  公開の箱を落とさない止め（全部の網の道）
@@ -142,20 +143,23 @@ def read_one(url, page=None, check=None, hard=None):
     return None, why_of("；".join(whys)) if whys else "none"
 
 
-def fill(rows, cache, page=None, check=None, now=None, log=print, hard=None):
+def fill(rows, cache, page=None, check=None, now=None, log=print, hard=None, deadline=None):
     """rows = {版面: {"stories": [...], "pending": [...]}}。写真のない記事に image を入れる（覚えから・新しく読んで）。
     cache = 網址 → 覚え（取れた {"img","at"}・取れなかった {"why","at","n"}・前の形の文字列）。
-    → 数 {"read", "new", "memo", "wrapped", "saved", "why": {理由: 数}, "touched": [image を入れた記事の dict]}"""
+    deadline（time.monotonic）を過ぎたら新しく読まない（覚えは付けない＝次の回に持ち越し。user_pages が 1 回分の時間を全員で分ける）。
+    → 数 {"read", "new", "memo", "wrapped", "saved", "carry", "why": {理由: 数}, "touched": [image を入れた記事の dict]}"""
     now = now or dt.datetime.now(dt.timezone.utc)
     stamp = now.isoformat(timespec="seconds")
     lack = [s for r in (rows or {}).values() for k in ("stories", "pending") for s in r.get(k) or []
             if isinstance(s, dict) and not s.get("image") and str(s.get("url") or "").startswith("http")]
-    out = {"read": 0, "new": 0, "memo": 0, "wrapped": 0, "saved": 0, "why": {}, "touched": []}
+    out = {"read": 0, "new": 0, "memo": 0, "wrapped": 0, "saved": 0, "carry": 0, "why": {}, "touched": []}
     wrapped = {s["url"] for s in lack if _google(s["url"])}
     out["wrapped"] = len(wrapped)
     todo = [u for u in dict.fromkeys(s["url"] for s in lack) if u not in wrapped and memo_due(cache.get(u), now)][:MAX_NEW]
 
     def one(u):
+        if deadline is not None and time.monotonic() > deadline:
+            return u, None, "carry"
         try:
             return u, *read_one(u, page, check, hard)
         except Exception:  # noqa: BLE001  読めないページは「つながらない」として間をあけて試し直す
@@ -164,6 +168,9 @@ def fill(rows, cache, page=None, check=None, now=None, log=print, hard=None):
     if todo:
         with cf.ThreadPoolExecutor(max_workers=WORKERS) as ex:
             for u, img, why in ex.map(one, todo):
+                if why == "carry":   # この回の時間切れ：読まずに次の回へ（覚えない）
+                    out["carry"] += 1
+                    continue
                 prev = cache.get(u)
                 if img:
                     cache[u] = {"img": img, "at": stamp}
@@ -173,7 +180,7 @@ def fill(rows, cache, page=None, check=None, now=None, log=print, hard=None):
                     cache[u] = {"why": why, "at": stamp, "n": n + 1}
                     out["why"][why] = out["why"].get(why, 0) + 1
                     out["saved"] += why == "saved"
-    out["read"] = len(todo)
+    out["read"] = len(todo) - out["carry"]
     for s in lack:
         img = _memo_img(cache.get(s["url"]))
         if img:
@@ -200,13 +207,13 @@ def log_line(t, written=None):
     why = "・".join(f"{k} {v}" for k, v in sorted(t["why"].items())) or "なし"
     w = f"・書き戻し 版面 {written[0]}・行 {written[1]}" + (f"（書けず {written[2]}）" if written[2] else "") if written else ""
     return (f"記事の代表の写真：読んだ {t['read']}・新しく取れた {t['new']}・前の覚えから {t['memo']}・包みのまま読まない {t['wrapped']}"
-            f"・SAVED で捨てた {t['saved']}・取れず（理由ごと）{why}{w}")
+            f"・SAVED で捨てた {t['saved']}" + (f"・時間切れで次の回へ {t['carry']}" if t.get("carry") else "") + f"・取れず（理由ごと）{why}{w}")
 
 
 def add(total, t):
     """fill の数を足し合わせる（user_pages が 1 人ずつ呼ぶ分を 1 行にまとめる）。"""
-    for k in ("read", "new", "memo", "wrapped", "saved"):
-        total[k] = total.get(k, 0) + t[k]
+    for k in ("read", "new", "memo", "wrapped", "saved", "carry"):
+        total[k] = total.get(k, 0) + t.get(k, 0)
     for k, v in t["why"].items():
         total.setdefault("why", {})[k] = total.get("why", {}).get(k, 0) + v
     total.setdefault("why", {})

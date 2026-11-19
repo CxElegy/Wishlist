@@ -42,6 +42,7 @@ TYPE_OF_SEC = {"游戏": "game", "影视": "anime", "演出": "event", "运动":
                "生活": "category", "出行": "category", "其他": "category"}
 IMG_PER_BOARD = 3        # 1 版面で写真を探す記事の数（頭から）
 IMG_BUDGET_S = 240       # 1 回の写真探しの合計時間（秒）
+OG_BUDGET_S = 180        # 1 回の og_image.fill（記事のページを新しく読む）の合計時間（秒）。全員で分ける・残りは次の回（読み直しは覚えで減る）
 STORIES_PER_BOARD = 8
 BOARD_DESIGN = ("emblem", "theme", "motif", "like_fx")   # ライブラリの版面の共有のデザイン（boards.config、library_emblem.py が規則で作る）
 FIRST_BOARD = render.SETTINGS_JA["first_board"]   # 版面が 0 個の人のページに置く静かな版面の名前（文字は表）
@@ -304,7 +305,7 @@ def photo_count(brows):
 TALLY_KEYS = ("n", "img", "feed", "page", "demoted", "wrapped", "stored")
 
 
-def photo_tally(brows, og, tally=None, fill=None, now=None):
+def photo_tally(brows, og, tally=None, fill=None, now=None, deadline=None):
     """写真を取る段の数（2026-11-19 店長「点検は、本物の写真が取れるかどうかを含めること」）。og_image.fill（残りの最後の手）と
     og_image.demote（それでも写真の無い記事は整理待ちへ）を、前と後で数えて tally に足す：
     n 版面の記事・img 写真あり（feed＝記事集めで付いていた／page＝ページ作りで付けた）・demoted 整理待ちへ回した・wrapped 包みのまま・
@@ -314,7 +315,7 @@ def photo_tally(brows, og, tally=None, fill=None, now=None):
     for k in TALLY_KEYS:
         t.setdefault(k, 0)
     pre = photo_count(brows)
-    got = (fill or og_image.fill)(brows, og, now=now, log=lambda _m: None)
+    got = (fill or og_image.fill)(brows, og, now=now, log=lambda _m: None, **({"deadline": deadline} if deadline is not None else {}))
     if not isinstance(got, dict):   # 差し替えた fill（試験）
         got = {"read": 0, "new": 0, "memo": 0, "wrapped": 0, "saved": 0, "why": {}, "touched": []}
     mid = photo_count(brows)
@@ -602,6 +603,7 @@ def main(argv):
     og_image.prune(og, dt.datetime.now(dt.timezone.utc))
     global FIND_MEMO
     FIND_MEMO = og
+    og_deadline = time.monotonic() + OG_BUDGET_S
     bands = dict(fps.get("_bands") or {})   # 写真に焼き込まれた余白の割合（網址ごと。photo_bands.py）。指紋と同じ 1 本に入れる（storage の読みを増やさない）
     try:
         latest = latest_stories(_supa)
@@ -626,7 +628,7 @@ def main(argv):
             brows = board_rows(follows, latest, urows)
             # 写真のない記事に記事のページの代表の写真（2026-11-08 店長「我一定要图」。記事集めで取れなかった残りの最後の手）→ それでも無い記事は
             # カードにせず「整理待ち」へ（カードには必ず写真）。前と後で数える（photo_tally）。取れた写真は記事に書き戻す（write_back）
-            got = photo_tally(brows, og, photos)
+            got = photo_tally(brows, og, photos, deadline=og_deadline)
             og_image.add(ogt, got)
             w = write_back(brows, latest, urows, og, got["touched"], acct, _supa)
             back = [a + b for a, b in zip(back, w)]

@@ -102,6 +102,16 @@ class Og(unittest.TestCase):
         self.assertEqual(cache[s]["why"], "saved")          # 防盗链の写真は使わない
         self.assertNotIn(g, cache)
 
+    def test_run_budget_carries_over_without_memory(self):
+        """1 回分の時間（user_pages.OG_BUDGET_S）を過ぎたら読まず、覚えも付けない（次の回へ持ち越し）。"""
+        import time
+        web = FakeWeb(og={"https://n.example/1": "https://img.example/1.jpg"})
+        cache = {}
+        got = og_image.fill({"b": {"stories": [{"url": "https://n.example/1"}]}}, cache, page=web.page, check=web.check, now=NOW,
+                            deadline=time.monotonic() - 1, **QUIET)
+        self.assertEqual((web.read, cache, got["carry"], got["read"]), ([], {}, 1, 0))
+        self.assertIn("時間切れで次の回へ 1", og_image.log_line(og_image.add({}, got)))
+
     def test_generic_logo_is_not_a_photo(self):
         u = "https://n.example/l"
         web = FakeWeb(og={u: "https://n.example/img/logo.png"})
