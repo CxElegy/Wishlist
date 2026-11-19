@@ -215,7 +215,7 @@ class PyWording(unittest.TestCase):
 
     KANA = re.compile(r"[\u3041-\u30fa\u30fc-\u30ff]")   # かな（漢字は中文の板块名と同じ字なので数えない。「・」は区切り）
     # 操作する人が Actions のログで読む文（お客さまの画面に出ない）
-    OPERATOR = {"_supa", "main"}
+    OPERATOR = {"_supa", "main", "tally_line"}   # tally_line：写真の数の 1 行（Actions のログ）
 
     def _literal_kana(self, mod, only=None, skip=()):
         """関数の中の文字列で、かなを含むもの（docstring・コメントは数えない。JS・CSS の中のコメント行は除く）。"""

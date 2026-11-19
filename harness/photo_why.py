@@ -134,11 +134,8 @@ def read_input(path, stdin):
 
 
 def outside_repo(p):
-    try:
-        pathlib.Path(p).resolve().relative_to(ROOT)
-        return False
-    except ValueError:
-        return True
+    p = pathlib.Path(p).resolve()
+    return not (p == ROOT or ROOT in p.parents)
 
 
 def run(items, tools, use_browser=False, quiet=True):
