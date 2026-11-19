@@ -167,6 +167,7 @@ class EmblemOnlyMain(unittest.TestCase):
         self.store = {}
         self.more = []   # 2 回目から足す記事（前の回の覚えに無い記事）
         self.added = "2999-01-01T00:00:00Z"   # 版面 5 を足した時刻（既定は --recent が選ぶ「足したばかり」）
+        self.fps_down = False   # 指紋（all.json）の読みが失敗する回
         self.new_board = None   # 2 回目から足す版面 {"config", "pending"}（新しく足した版面：id 6）
 
     def page(self):
@@ -193,9 +194,12 @@ class EmblemOnlyMain(unittest.TestCase):
                 if method == "POST":
                     self.store[path] = json.loads(data) if ctype.startswith("application/json") else data
                     return {}
+                if path == FP and self.fps_down:
+                    raise OSError("timeout")   # 一瞬読めない（Tailscale 越しの時間切れ）
                 if path in self.store:
                     return json.loads(json.dumps(self.store[path])) if isinstance(self.store[path], dict) else self.store[path]
-                raise OSError("404")
+                import urllib.error
+                raise urllib.error.HTTPError(path, 404, "not found", {}, None)   # まだ無い
             if "follows?board_id=in." in path:
                 return [{"account": self.acct}]
             if "follows?account" in path:
@@ -293,6 +297,40 @@ class EmblemOnlyMain(unittest.TestCase):
         self.assertIn(self.EMB, self.page())
         self.assertIn(user_pages.render.SETTINGS_JA["collecting"], self.page())
         self.assertNotIn("https://n.example/1", self.page())
+
+    def _prev_page(self):
+        self.added = "2026-01-01T00:00:00Z"
+        self.run_main(["--boards-file", "IDS"])
+        self.assertIn("https://n.example/1", self.page())
+        return self.page()
+
+    def test_unreadable_fingerprints_place_nothing(self):
+        """見直し 1(a)：指紋が一瞬読めない回に作ると known が空になり、前からある記事まで全部消えたページを置いていた → 誰のページも置かない。"""
+        before = self._prev_page()
+        self.write_emblem()
+        self.fps_down = True
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertEqual(self.page(), before)
+
+    def test_page_without_story_record_is_left_to_the_normal_run(self):
+        """見直し 1(b)(c)：前のページはあるが載せた記事の記録（_urls）が無い（記録を残す前の回が置いた・その人のふつうの回が失敗した）→ 置かない。"""
+        before = self._prev_page()
+        del self.store[FP][f"{self.acct}/_urls"]
+        self.write_emblem()
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertEqual(self.page(), before)
+        self.assertIn("https://n.example/1", self.page())
+
+    def test_collecting_page_only_for_people_without_any_page(self):
+        """「集めています」だけのページを置いてよいのは、index.html の指紋が無い人（一度もページが無い人）だけ。"""
+        self.write_emblem()
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])   # 一度も無い：置く
+        self.assertIn(user_pages.render.SETTINGS_JA["collecting"], self.page())
+        self.store[FP].pop(f"{self.acct}/_urls", None)
+        self.store[FP][f"{self.acct}/index.html"] = "x"            # ページはあるが記録が無い：置かない
+        self.store.pop(f"/storage/v1/object/pages/{self.acct}/index.html")
+        self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertEqual(self.page(), "")
 
     def test_previous_page_plus_emblem(self):
         """店長の決め（直し 2 回目 F2）：前のページを作る → 新しい版面と新しい記事を足す → 小元素だけの回 →

@@ -837,13 +837,16 @@ def main(argv):
     import concurrent.futures as cf
 
     def read_fps():
+        """→ (指紋, 読めたか)。まだ無い（404・400）は読めた（空）。時間切れ・5xx は読めない（小元素だけの回は誰のページも置かない）。"""
         try:
             got = _supa(fp_path)
-            return got if isinstance(got, dict) else {}
+            return (got if isinstance(got, dict) else {}), True
         except sbstate.Limited:
             raise
-        except Exception:  # noqa: BLE001  まだ無い・読めない → 全部置く
-            return {}
+        except urllib.error.HTTPError as ex:   # まだ無い → 全部置く
+            return {}, ex.code in (400, 404)
+        except Exception:  # noqa: BLE001  読めない → ふつうの回は全部置く・小元素だけの回は置かない
+            return {}, False
 
     def read_latest():
         try:
@@ -859,9 +862,13 @@ def main(argv):
     with cf.ThreadPoolExecutor(max_workers=3) as ex:
         jf, jl, jp = ex.submit(read_fps), ex.submit(read_latest), ex.submit(read_pub)
         try:
-            fps, latest, pub = jf.result(), jl.result(), jp.result()
+            (fps, fps_ok), latest, pub = jf.result(), jl.result(), jp.result()
         except sbstate.Limited:
             return
+    if only and not fps_ok:
+        # 小元素だけの回は前のページの記事の記録（<account>/_urls）で作る：指紋が読めない回に作ると、前からある版面の記事まで全部消えたページを置く
+        print(f"お客さまのページ：指紋（all.json）が読めないので小元素だけの回は置かない（{len(users or [])} 人分・次のふつうの回が作る）")
+        return
     if isinstance(latest, Exception):
         print(f"::warning::board_stories が読めなかった（{type(latest).__name__}）")
         latest = {}
@@ -899,9 +906,15 @@ def main(argv):
     if partial:
         print(f"お客さまのページ：始めて {time.time() - t_start:.1f}s で {len(users or [])} 人分を作り始める{'（小元素だけ：前のページ＋小元素）' if only else ''}"
               f"（{'・'.join(boot)}・DB の読み {DB_CALLS[0]} 回）", flush=True)
+    norec = 0   # 小元素だけの回で、前のページがあるのに載せた記事の記録が無い人（置かない）
     for u in users or []:
         acct = account_of(u["email"])
         lap, t0 = [], time.time()
+        if only and fps.get(f"{acct}/index.html") and f"{acct}/_urls" not in fps:
+            # 前のページはあるが、載せた記事の記録が無い（記録を残す前の回が置いた・その人のふつうの回が失敗した）：「集めています」だけのページで
+            # 前の記事を消さない。ふつうの回に任せる（「集めています」＋小元素を置いてよいのは、一度もページが無い人だけ）
+            norec += 1
+            continue
         try:
             reads = {"rows": f"/rest/v1/user_boards?account=eq.{acct}&select=item,sec,state,stories,checked_at",
                      "chosen": f"/rest/v1/nav_schemes?account=eq.{acct}&select=section,scheme",
@@ -1034,7 +1047,8 @@ def main(argv):
             pass
         except Exception:  # noqa: BLE001  書けなくても次の回が書く（前の列が読めない回は書かない＝消さない）
             pass
-    print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}・ほかの回が先に置いた {kept}）・失敗 {failed}・{time.time() - t_start:.1f}s・DB の読み {DB_CALLS[0]} 回")
+    print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}・ほかの回が先に置いた {kept}"
+          f"{f'・前のページの記事の記録が無いので置かない {norec}' if norec else ''}）・失敗 {failed}・{time.time() - t_start:.1f}s・DB の読み {DB_CALLS[0]} 回")
     # 数だけ（名前・網址は出さない：公開のログ）
     print(og_image.log_line(ogt, back))
     print(f"版面の頭の写真探し（写真が 1 枚も無い版面・images.pick）：{FIND['tried']} 本を探し、{FIND['found']} 本に付けた" + (f"・SAVED で捨てた {FIND['saved']}" if FIND["saved"] else ""))
