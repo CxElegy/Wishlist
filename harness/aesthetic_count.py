@@ -147,11 +147,13 @@ JS_BODY = r"""
     const pic = kids.find(k => k.classList.contains('pic')), why = [];
     if (pic) {
       const pr = pic.getBoundingClientRect();
-      if (pr.right < il + iw * 0.7) { const g = ib - pr.bottom; if (g > ih * P.cPhoto && g >= P.cMin) why.push('写真の下 ' + Math.round(g) + 'px'); }
+      // 写真の下の空き＝写真の下端から、写真の下にある次の部品（幅いっぱいの要約など）か箱の底まで（2026-11-19：下に回した要約を空きと数えていた）
+      const under = kids.filter(k => k !== pic && !k.matches('.lk') && k.getBoundingClientRect().top >= pr.bottom - 2 && k.getBoundingClientRect().left < pr.right).map(k => k.getBoundingClientRect().top);
+      if (pr.right < il + iw * 0.7) { const g = (under.length ? Math.min(...under) : ib) - pr.bottom; if (g > ih * P.cPhoto && g >= P.cMin) why.push('写真の下 ' + Math.round(g) + 'px'); }
     }
     const txt = kids.filter(k => k !== pic);
     let low = -1e9;
-    txt.forEach(k => k.querySelectorAll('*').forEach(l => { if (!vis(l) || getComputedStyle(l).position === 'absolute') return; if (![...l.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) return; low = Math.max(low, l.getBoundingClientRect().bottom); }));
+    txt.forEach(k => [k, ...k.querySelectorAll('*')].forEach(l => {   /* 2026-11-19：子の要素そのもの（壁の見出し b・要約 p）の字も数える。前は子孫だけを見て、壁のカードは札と日付までで「字の下」を測っていた */ if (!vis(l) || getComputedStyle(l).position === 'absolute') return; if (![...l.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) return; low = Math.max(low, l.getBoundingClientRect().bottom); }));
     if (txt.length && low > -1e8) { const g = ib - low; if (g > ih * P.cText && g >= P.cMin) why.push('字の下 ' + Math.round(g) + 'px'); }
     const right = Math.max(...kids.map(k => k.getBoundingClientRect().right)), gr = ir - right;
     if (gr > iw * P.cRight && gr >= P.cMin) why.push('右 ' + Math.round(gr) + 'px');

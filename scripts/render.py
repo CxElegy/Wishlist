@@ -194,7 +194,7 @@ button{font-family:inherit}
 /* ニュースの見出しは最後の行を 1〜2 字にしない（2026-11-19 店長 ①「始」1 字）：全部の見出しに同じ決め＝行の長さをそろえる（balance。行の数は増やさない＝版面の高さを変えない）。残りは NOORPHAN_JS が直す */
 .top h2,.wc>b,section.sec article.card :is(h2,h3),.pend li a{text-wrap:balance}
 .top:hover .hb{background:var(--deep,var(--ink))}
-.top p{margin:0;max-width:560px;font-size:14px;line-height:1.7;max-height:calc(1.7em * 3);overflow:hidden;text-wrap:pretty}   /* 要約は「…」を付けず行の終わりで切る（D3・11-19 主の指摘 3） */
+.top p{margin:0;max-width:560px;font-size:14px;line-height:1.7;text-wrap:pretty}   /* 要約は切らない・「…」も付けない（D3・11-19 主の指摘 3。行の終わりで切っても字の欠けとして数える clip になる） */
 .startgo{display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;min-height:56px;padding:10px 26px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
  font:900 19px/1.3 var(--font-sans);letter-spacing:.04em;text-decoration:none;box-shadow:5px 5px 0 var(--ink);transform:skewX(var(--skew,-10deg))}
 .startgo:hover,.startgo:focus-visible{background:var(--card);box-shadow:2px 2px 0 var(--ink)}
@@ -4617,7 +4617,7 @@ FIT_JS = """
     w.style.gridAutoRows = w.style.rowGap = w.style.alignItems = '';
     let ag = [], wi = [];
     if (side) { side.style.minHeight = side.style.gridColumn = side.style.gridRow = ''; ag = [...side.querySelectorAll('.agenda li')]; wi = [...side.querySelectorAll('.swish li')]; [...ag, ...wi].forEach(l => l.hidden = false); }
-    if (innerWidth <= 760) { if (side && side.parentElement === w) G.append(side); G.classList.remove('one'); w.style.gridTemplateColumns = ''; return; }   // スマホ：右の列は壁の下（今までどおり）
+    if (innerWidth <= 760) { if (side && side.parentElement === w) G.append(side); G.classList.remove('one'); w.style.gridTemplateColumns = ''; if (!(cards.length && cards.length <= __FEW_WALL__ && !side)) return; }   // 記事が少ない壁はスマホも同じ決め（下）   // スマホ：右の列は壁の下（今までどおり）
     if (side && side.parentElement !== w) w.append(side);
     G.classList.add('one');   // 壁が横いっぱい（右の列は壁の中）
     // 画面 1 枚の高さ：壁の上端（見出しの下）から画面の下端まで
@@ -4682,25 +4682,32 @@ FIT_JS = """
     // 記事が FEW_WALL 本以下（新しい人のページ）：大きい 1 枚を作らず、同じ大きさで横いっぱいに並べる（2026-11-19 店長 ②・C1・C2）。
     // 1 枚の幅が広いので写真は左・字は右の小さい形（cmpForm）にする：写真は頭条より十分小さく、字の下も空かない（④）
     if (cards.length && cards.length <= __FEW_WALL__ && !side) {
-      w.style.gridTemplateColumns = 'repeat(' + cards.length + ',minmax(0,1fr))'; w.style.alignItems = 'start';
-      // 写真の枠は写真の形のまま（B6・A3：切らない・帯を足さない）。写真は左・字は右で、写真の列の幅を「字の高さ × 写真の比率」に（幅は 25〜60%）。
-      // 60% でも字より低い横長（パノラマ）は写真を上・字を下（③）。カードは中身の高さ（伸ばして字の下を空けない。④）
+      w.style.gridTemplateColumns = innerWidth <= 760 ? '' : 'repeat(' + cards.length + ',minmax(0,1fr))'; w.style.alignItems = 'start';
+      // 記事が少ない壁（11-19 主の指摘 1・4）。どの幅も同じ決め：写真の枠は写真の形のまま（B6・A3）、写真は左・字は右。
+      // 写真の列の幅 = 字の高さ × 写真の比率（72px〜60%・頭条の写真の面積の 64% まで）で写真と字の底をそろえる（A5）。
+      // 写真が字より低いとき（幅の上限に当たる・スマホ）は要約をカードの幅いっぱいに下へ回して、写真の横は札・日付・見出しだけ（細い列に字を流さない）。
+      // 写真が字より高いときは、主役・字が欠けない切り方があれば字の高さに切る（B4・B2：cropAt が顔・題字の位置を見る）。
+      // それでも字より低い横長（パノラマ）で頭条の 64% に収まるなら写真を上・字を下（③）。カードは中身の高さ（伸ばして字を散らさない）
       const pad = c => (parseFloat(getComputedStyle(c).paddingLeft) || 0), cwOf = c => c.clientWidth - 2 * pad(c) - 12;
       const kids = (c, p) => [...c.children].filter(k => k !== p && !k.matches('.lk, .wemb, .xplay') && k.offsetHeight && getComputedStyle(k).position !== 'absolute');
-      const txh = (c, p) => { const ks = kids(c, p); return ks.length ? Math.max(...ks.map(k => k.getBoundingClientRect().bottom)) - Math.min(...ks.map(k => k.getBoundingClientRect().top)) : 0; };
-      const form = [];
-      const setPw = (c, p, pw) => { c.style.gridTemplateColumns = Math.round(pw) + 'px minmax(0,1fr)'; };
-      cards.forEach((c, i) => { c.classList.remove('lead', 'tall', 'nw', 'ls', 'half'); const p = c.querySelector(':scope > .pic'); if (!p) return; unside(c, p); unnarrow(c, p); cmpUn(c);
-        const im = img0(p); if (!im || !im.naturalWidth) return;
-        const nat = natOf(im), cw = cwOf(c);
+      const span = ks => ks.length ? Math.max(...ks.map(k => k.getBoundingClientRect().bottom)) - Math.min(...ks.map(k => k.getBoundingClientRect().top)) : 0;
+      const HA = headArea();
+      cards.forEach(c => { c.classList.remove('lead', 'tall', 'nw', 'ls', 'half'); const p = c.querySelector(':scope > .pic'); if (!p) return; unside(c, p); unnarrow(c, p); cmpUn(c);
+        const im = img0(p), wb = c.querySelector(':scope > .wbl'); if (wb) wb.style.gridColumn = wb.style.gridRow = ''; if (!im || !im.naturalWidth) return;
+        const nat = natOf(im), cw = cwOf(c), cap = HA ? Math.sqrt(HA * 0.64 * nat) : Infinity, lo = Math.min(72, cw * 0.5);   // 幅の下限 72px：版面の小さいカードの写真（約 64px）と同じ段（B9）
         p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); im.style.objectPosition = ''; c.classList.add('cmp');
-        { const n = Math.max(1, kids(c, p).length); c.style.gridTemplateRows = 'repeat(' + n + ',min-content) 1fr'; p.style.gridRow = '1 / span ' + (n + 1); }   // 写真が字の行の数＋1 だけまたがる：写真が字より高い分は最後の行に入り、札・日付・見出し・要約の間に散らない（11-19 主の指摘 4）
-        const HA = headArea(), cap = HA ? Math.sqrt(HA * 0.64 * nat) : Infinity;   // ② 頭条の写真の面積の 7 割まで
-        let pw = cw * 0.4; for (let q = 0; q < 4; q++) { setPw(c, p, pw); pw = Math.min(cap, cw * 0.6, Math.max(cw * 0.25, txh(c, p) * nat)); }
-        setPw(c, p, pw);
-        { const th = txh(c, p); if (th >= 48 && pw / th < nat * 0.92 && okRatio(im, nat / (pw / th))) p.style.setProperty('aspect-ratio', (pw / th).toFixed(4), 'important'); }   // 縦長で幅の下限に当たった写真：主役・字が欠けない切り方があれば字の高さに切る（B4）。無ければ写真の形のまま
-        if (txh(c, p) * nat > cw * 0.6 + 8 && cw * cw / nat <= HA * 0.64) { cmpUn(c); p.style.gridRow = ''; c.classList.add('ban'); p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); }   // ③
-        form[i] = {c, p, nat, cw};
+        const lay = full => {   // full：要約は幅いっぱいに下へ
+          const ks = kids(c, p).filter(k => !(full && k === wb)), n = Math.max(1, ks.length);
+          c.style.gridTemplateRows = 'repeat(' + n + ',min-content) 1fr' + (full && wb ? ' auto' : ''); p.style.gridRow = '1 / span ' + (n + 1);   // 写真が字より高い分は 1fr の行へ：札・日付・見出しの間に散らない
+          if (wb) { wb.style.gridColumn = full ? '1 / -1' : ''; wb.style.gridRow = full ? String(n + 2) : ''; }
+          let pw = cw * 0.4; for (let q = 0; q < 4; q++) { c.style.gridTemplateColumns = Math.round(pw) + 'px minmax(0,1fr)'; pw = Math.min(cap, cw * 0.6, Math.max(lo, span(ks) * nat)); }
+          c.style.gridTemplateColumns = Math.round(pw) + 'px minmax(0,1fr)';
+          return {pw, th: span(ks)};
+        };
+        let r = lay(innerWidth <= 760);
+        if (wb && innerWidth > 760 && r.pw / nat < r.th - 8) r = lay(true);   // 写真が字より低い：要約を下へ
+        if (r.th >= 48 && r.pw / r.th < nat * 0.92 && okRatio(im, nat / (r.pw / r.th))) p.style.setProperty('aspect-ratio', (r.pw / r.th).toFixed(4), 'important');   // 写真が字より高い：主役が残るなら切る
+        else if (r.th * nat > cw * 0.6 + 8 && HA && cw * cw / nat <= HA * 0.64) { cmpUn(c); if (wb) wb.style.gridColumn = wb.style.gridRow = ''; c.classList.add('ban'); p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); }   // ③
         if (p.classList.contains('trim') && im._bands) trimFit(im, p, im._bands); });
       return;
     }

@@ -11,9 +11,9 @@ sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 # 0 を保つ項目（8 つ＋A1・A5・A6・C1・C2・D3・E1・E2・F3・F4 の数えられる所）
-ZERO = ("orphan", "leadbig", "sidebig", "pendhid", "navgap", "dup", "solo", "herogap", "band", "ell", "over", "wide", "clip")
-# まだ 0 にならない項目（残り：カードの字の下の空き cgap・gap、写真の切れ crop）。前より増えないことだけ見る（店長ページにも多い既存の問題）
-KNOWN = {"cgap": 135, "gap": 12, "crop": 20}   # 4 形（a〜d）× 8 幅の今の数（2026-11-19：cgap 129・gap 8・crop 17）
+ZERO = ("cgap_wall", "orphan", "leadbig", "sidebig", "pendhid", "navgap", "dup", "solo", "herogap", "band", "ell", "over", "wide", "clip")
+# 0 を保つ：ほかの注目の壁と頭条の空き（cgap_wall）は上の ZERO。版面の小さいカードの前からの空き（cgap の残り）と写真の切れ crop は増えないことだけ見る
+KNOWN = {"cgap": 8, "gap": 0, "crop": 17}   # 4 形（a〜d）× 8 幅の今の数（2026-11-19 直しの 1 回目のあと。cgap は全部版面の小さいカード）
 
 
 class NewUserPage(unittest.TestCase):

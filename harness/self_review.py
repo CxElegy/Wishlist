@@ -47,7 +47,9 @@ MEASURE_JS = r"""
   document.querySelectorAll('.wc,.card').forEach(c => {
     const p = c.querySelector(':scope>.pic'); if (!p || !vis(c) || !vis(p) || c.matches('.hero,.lead,.wide')) return;
     const a = c.getBoundingClientRect(), b = p.getBoundingClientRect(), right = b.right < a.left + a.width * 0.7, pb = parseFloat(getComputedStyle(c).paddingBottom) || 0;
-    if (right && a.bottom - pb - b.bottom > 16) tag(c, 'gap', Math.round(a.bottom - pb - b.bottom) + 'px（' + (c.innerText || '').trim().split('\n').pop().slice(0, 20) + '）');
+    const under = [...c.children].filter(k => k !== p && !k.matches('.lk') && vis(k) && getComputedStyle(k).position !== 'absolute' && k.getBoundingClientRect().top >= b.bottom - 2 && k.getBoundingClientRect().left < b.right).map(k => k.getBoundingClientRect().top);   // 写真の下にある次の部品（幅いっぱいの要約）までが空き（2026-11-19）
+    const lim = under.length ? Math.min(...under) : a.bottom - pb;
+    if (right && lim - b.bottom > 16) tag(c, 'gap', Math.round(lim - b.bottom) + 'px（' + (c.innerText || '').trim().split('\n').pop().slice(0, 20) + '）');
   });
   document.querySelectorAll('.pk.big').forEach(c => {
     const t = c.querySelector('.pkt'), n = t && t.parentElement.nextElementSibling; if (!t || !n || !vis(c)) return;
