@@ -4270,6 +4270,7 @@ FIT_JS = """
     else if (f.k === 'F2') { c.classList.add('flt'); p.style.setProperty('--fw', Math.round(f.pw) + 'px'); p.style.setProperty('--ar', (f.pw / f.ph).toFixed(4)); }   // 回り込み：枠は写真の形（切らない）
     else { c.style.gridTemplateColumns = Math.round(f.pw) + 'px minmax(0,1fr)'; p.style.minHeight = Math.round(f.ph) + 'px'; }   // 左の写真の枠は字の列の高さまで伸びる（CSS）：枠の高さは min-height で足す
     const ok = okRatio(img, natOf(img) / ((f.pw || f.w) / f.ph));
+    if (f.few && !(ok && (img.dataset.m || img.dataset.k))) { p.classList.add('whole'); img.style.objectPosition = ''; if (img._edge) p.style.background = img._edge; return; }   // 記事が少ない版面の同じ枠：B2 が先（壁と同じ。主役の位置が分からない・残らない時は切らずに収める）
     p.classList.add('fill');
     if (!ok) img.style.objectPosition = '';
     if (img._bands) trimFit(img, p, img._bands);
@@ -4702,8 +4703,10 @@ FIT_JS = """
       if (innerWidth > 760) {   // 同じ行（PC は全部 1 行）：字の高さの差を写真の高さで吸う
         cards.forEach((c, i) => { const p = pics[i]; if (p) p.style.setProperty('aspect-ratio', (W / (ph + T - tx[i])).toFixed(4), 'important'); });
       }
-      cards.forEach((c, i) => { const p = pics[i], im = p && img0(p); if (!im || !im.naturalWidth) return; const r = W / p.getBoundingClientRect().height; if (im.dataset.m || im.dataset.k) cropAt(im, natOf(im) / r);
-        if (p.classList.contains('trim') && im._bands) trimFit(im, p, im._bands); });   // 切る位置は主役（顔・題字）から（B4・B2）
+      cards.forEach((c, i) => { const p = pics[i], im = p && img0(p); if (!im || !im.naturalWidth) return; const r = W / p.getBoundingClientRect().height;
+        const keep = !!(im.dataset.m || im.dataset.k) && okRatio(im, natOf(im) / r);   // B2 が先：主役の位置が分かって主役が残る時だけ切る。分からない・残らない時は切らずに枠に収め、余りは今の埋め方（.whole・絵の端の色）
+        p.classList.toggle('whole', !keep); p.classList.toggle('fill', keep); if (!keep) { im.style.objectPosition = ''; if (im._edge) p.style.background = im._edge; }
+        if (keep && p.classList.contains('trim') && im._bands) trimFit(im, p, im._bands); });
       return;
     }
     const plan = (cols, ord, sH) => {
