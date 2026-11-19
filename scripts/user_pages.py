@@ -913,6 +913,7 @@ def main(argv):
         print(f"お客さまのページ：始めて {time.time() - t_start:.1f}s で {len(users or [])} 人分を作り始める{'（小元素だけ：前のページ＋小元素）' if only else ''}"
               f"（{'・'.join(boot)}・DB の読み {DB_CALLS[0]} 回）", flush=True)
     norec = 0   # 小元素だけの回で、前のページがあるのに載せた記事の記録が無い人（置かない）
+    unmeasured = [0]   # 小元素だけの回で、前の結果に無く余白と主役を測らなかった写真
     for u in users or []:
         acct = account_of(u["email"])
         lap, t0 = [], time.time()
@@ -966,6 +967,8 @@ def main(argv):
                 urls = [x for t in [h, *pg.values()] for x in photo_bands.urls_in(t)]
                 if full:   # 小元素だけの回は測らない（前の結果だけ・模型を読まない）
                     photo_bands.measure(urls, bands, photo_store.fetch)
+                else:   # 測らなかった写真の数（ログ：数だけ）
+                    unmeasured[0] += sum(1 for x in dict.fromkeys(urls) if not isinstance(bands.get(x), dict))
                 return (photo_bands.inject(h, bands), {k: photo_bands.inject(v, bands) for k, v in pg.items()}, brows,
                         len(need) + res_memo.missed, got, tally, sv)
             html_, pages, brows, miss, got, tally, sv = make(follows, full)
@@ -989,10 +992,25 @@ def main(argv):
             photo_store.scan_text([html_, *pages.values()], set(), imgs)
             if only:
                 cur = _fresh_fps(fp_path)
-                if cur is not None and cur.get(f"{acct}/index.html") != fps.get(f"{acct}/index.html") and cur.get(f"{acct}/_emb") == stamps:
-                    kept += 1   # 作っている間にほかの回がこの人のページを置き、そのページに同じ小元素が入っている：そちらが新しい
-                    print(f"お客さまのページ：1 人分はほかの回が先に置いた（小元素も入っている・置かない）・{'・'.join(lap)}", flush=True)
-                    continue
+                if cur is not None and cur.get(f"{acct}/index.html") != fps.get(f"{acct}/index.html"):
+                    if cur.get(f"{acct}/_emb") == stamps:
+                        kept += 1   # 作っている間にほかの回がこの人のページを置き、そのページに同じ小元素が入っている：そちらが新しい
+                        print(f"お客さまのページ：1 人分はほかの回が先に置いた（小元素も入っている・置かない）・{'・'.join(lap)}", flush=True)
+                        continue
+                    if f"{acct}/_urls" not in cur:   # 記録を残さない回が置いた：記事の分からないページで上書きしない
+                        norec += 1
+                        continue
+                    # 先に置かれたふつうのページ（feed の job：新しい記事あり）に小元素が無い：そのページの記事の記録と測りで作り直して置く
+                    # （前に読んだ記録で作ると、新しい記事のページを前の記事のページで上書きする。見直し 9）
+                    known = cur.get(f"{acct}/_urls") or []
+                    for box, mine in (("_og", og), ("_bands", bands), ("_up_pick", picks)):
+                        mine.update({k: v for k, v in (cur.get(box) or {}).items() if k not in mine})
+                    res_memo.old.update(cur.get("_res") or {})
+                    if opens:
+                        opens.old.update(cur.get("_open") or {})
+                    html_, pages, brows, miss, got, tally, sv = make(follows, full)
+                    stamps = emblem_stamps(follows)
+                    photo_store.scan_text([html_, *pages.values()], set(), imgs)
             if only and (cut[0] or miss):
                 print(f"お客さまのページ：1 人分は前のページの後に来た記事 {cut[0]} 本・前の答えの無い写真探しと跳转 {miss} を載せない（次のふつうの回が載せる）", flush=True)
             for name, h in {"index.html": html_, **pages}.items():
@@ -1056,6 +1074,8 @@ def main(argv):
     print(f"お客さまのページ：{made} 人分を作って置いた（変わらず飛ばしたファイル {skipped}・ほかの回が先に置いた {kept}"
           f"{f'・前のページの記事の記録が無いので置かない {norec}' if norec else ''}）・失敗 {failed}・{time.time() - t_start:.1f}s・DB の読み {DB_CALLS[0]} 回")
     # 数だけ（名前・網址は出さない：公開のログ）
+    if only:   # 小元素だけの回が前の答えに無い写真を「開く」とみなした数・測らなかった写真の数（見直し 8。数だけ）
+        print(f"小元素だけの回：前の答えに無い写真 {opens.missed if opens else 0} 枚は開くとみなし、余白と主役を測っていない写真 {unmeasured[0]} 枚")
     print(og_image.log_line(ogt, back))
     print(f"版面の頭の写真探し（写真が 1 枚も無い版面・images.pick）：{FIND['tried']} 本を探し、{FIND['found']} 本に付けた" + (f"・SAVED で捨てた {FIND['saved']}" if FIND["saved"] else ""))
     if photos:

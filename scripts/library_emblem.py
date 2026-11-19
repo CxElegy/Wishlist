@@ -496,7 +496,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
             got["emblem"], _ = official_swap_board({**item, **got}, got["emblem"], fetch)
         stem = board.get("wd") or f"b{board['id']}"
         cfg = board.get("config") or {}
-        add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}
+        add = {k: v for k, v in got.items() if k not in KEEP and k != "_skip" and v != cfg.get(k)}   # _skip は一時の場所の印（config に書かない）
         if touched and (pend or cfg.get("emblem_closeup")):
             add.update(closeup_fields(pend, item.get("emblem_who") or []))
         if got.get("emblem"):
@@ -1136,8 +1136,12 @@ def fresh_main(argv):
     waits = {"row": None, "rembg": None, "model": None}   # 待ちの内訳（起きてからの秒）：行が見えた・rembg が使える・模型を読み終えた
     bg = [None]   # 模型を後ろで読む糸（python の始めから。行を待つ間に済ませる）
 
+    # 経路 A/B（新しい版面が来ない回）で 3 本とも模型を読まないように：足したばかりでまだ版面になっていない名前がある（読めなければ「ある」）か、
+    # 版面の行が見えたら読み始める（見直し 10。行は board の job が +31〜79 秒に書くので、名前があればすぐ読み始めて F3 の効きを保つ）
+    armed = [_waiting(db, time.time(), unknown=1) > 0]
+
     def start_warm():
-        if bg[0] is None and tools_ready(tools):
+        if armed[0] and bg[0] is None and tools_ready(tools):
             waits["rembg"] = waits["rembg"] or at()
 
             def run():
@@ -1155,6 +1159,7 @@ def fresh_main(argv):
             time.sleep(1)
         if not tools_ready(tools):   # 入れ終わらない：入れている途中に import しない。取らずに列へ
             return False
+        armed[0] = True
         start_warm()
         if bg[0] is not None:
             bg[0].join()   # 後ろで読んでいる模型を待つ（同じ模型を 2 本で読まない）
@@ -1172,6 +1177,7 @@ def fresh_main(argv):
             got = fresh_boards(db, time.time(), shop)
             if got and not waits["row"]:
                 waits["row"] = at()
+                armed[0] = True
         except Exception:  # noqa: BLE001  一瞬の失敗は [] で続ける。続けて FRESH_DB_FAILS 回なら終える
             counts["read"] += 1
             streak[0] += 1
@@ -1256,15 +1262,18 @@ def fresh_main(argv):
           f"{'・読めないので途中で終えた' if r.get('stopped') else ''}{f'・止まった {crash}' if crash else ''}・終わり {at()}")
 
 
-def _waiting(db, now):
-    """board の job の様子が分からないときだけ使う：足したばかりでまだ版面になっていない名前の数（waiting_picks）。読めなければ 0。"""
+def _waiting(db, now, unknown=0):
+    """足したばかりでまだ版面になっていない名前の数（waiting_picks）。board の job の様子が分からないときの終わり方と、模型を読み始めるかに使う。
+    読めなければ unknown（終わり方は 0＝待たない・模型は 1＝読む）。"""
     import userfeed
     try:
         users, _ = userfeed.fetch_all(db, "rpc/userfeed_users", {})
         boards, _ = userfeed.fetch_all(db, "boards?select=name,names&order=id")
+        if users is None:
+            return unknown
         return waiting_picks(users, boards or [], now)
     except Exception:  # noqa: BLE001
-        return 0
+        return unknown
 
 
 def main(argv):

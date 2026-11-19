@@ -320,6 +320,38 @@ class EmblemOnlyMain(unittest.TestCase):
                                          user_pages.story_keys({"x": {"pending": [{"url": "https://n.example/1"}]}}))
         self.assertEqual((len(got["x"]["stories"]), cut), (1, 0))   # AI 編集の記事は refs で当たる
 
+    def test_newer_normal_page_is_rebuilt_not_overwritten(self):
+        """見直し 9：feed の job のふつうのページ（新しい記事あり）が置かれ、その指紋が書かれる前に小元素だけの回が指紋を読んだ →
+        前の記録で作ると新しい記事のページを前の記事のページで上書きする → 先に置かれたページの記録で作り直して置く。"""
+        self.added = "2026-01-01T00:00:00Z"
+        self.run_main(["--boards-file", "IDS"])
+        s1 = json.loads(json.dumps(self.store[FP]))
+        self.more = [{"title": "新しい記事", "url": "https://n.example/2", "summary": "", "source": "s", "date": "2026-11-19"}]
+        self.run_main(["--boards-file", "IDS"])   # feed のふつうの回：新しい記事を載せて置く
+        s2 = json.loads(json.dumps(self.store[FP]))
+        self.assertIn("https://n.example/2", self.page())
+        self.store[FP] = s1   # 小元素だけの回が読む時は、まだ前の指紋
+        self.write_emblem()
+        calls = {"n": 0}
+
+        def fresh(fp_path):
+            calls["n"] += 1
+            return json.loads(json.dumps(s2))   # 置く前に読み直すと、feed の回の指紋
+        with mock.patch.object(user_pages, "_fresh_fps", fresh):
+            self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertIn("https://n.example/2", self.page())   # 新しい記事を消さない
+        self.assertIn(self.EMB, self.page())                # 小元素も入る
+
+    def test_emblem_only_logs_unknown_photos(self):
+        """見直し 8：前の答えに無い写真を「開く」とみなした数・測らなかった写真の数を 1 行（数だけ）。"""
+        import io
+        self._prev_page()
+        self.write_emblem()
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            self.run_main(["--boards-file", "IDS", "--emblem-only"])
+        self.assertIn("小元素だけの回：前の答えに無い写真", buf.getvalue())
+
     def test_unreadable_fingerprints_place_nothing(self):
         """見直し 1(a)：指紋が一瞬読めない回に作ると known が空になり、前からある記事まで全部消えたページを置いていた → 誰のページも置かない。"""
         before = self._prev_page()

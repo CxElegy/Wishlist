@@ -190,6 +190,7 @@ class Continue(unittest.TestCase):
         self.assertEqual(add.get("emblem_who"), ["A", "B", "C", "D", "E", "F", "G"])
         self.assertEqual(add.get("emblem_category"), "Main")
         self.assertEqual(add.get("emblem_reject"), ["https://e.org/bad.png"])
+        self.assertNotIn("_skip", add)   # 見直し 7：一時の場所の印は config に書かない
 
     def test_whole_roster_without_a_pass_is_rejected_not_fingerprinted(self):
         add, seen = self.run_fill([(["A", "B", "C"], 2, 1, False), (["D"], 1, 0, False), (["A"], 0, 0, False)])
@@ -531,7 +532,13 @@ class FreshMain(unittest.TestCase):
 
     def test_route_ab_ends_without_taking(self):
         log, out = self.run_main([])
-        self.assertEqual([x for x in log if x[0] != "warm"], [])   # 経路 A/B：版面を取らない（rembg の切り抜きは始めから後ろで読むだけ）
+        self.assertEqual(log, [])   # 経路 A/B：版面を取らない・足したばかりの名前も無いので模型も読まない（見直し 10）
+
+    def test_models_start_early_when_new_names_are_waiting(self):
+        # 足したばかりでまだ版面になっていない名前がある：行が見える前から後ろで読み始める（F3 の効きを保つ）
+        with mock.patch.object(le, "_waiting", lambda db, now, unknown=0: 1):
+            log, out = self.run_main([])
+        self.assertEqual(log, [("warm", False)])
         self.assertIn("worked=false", out)
         self.assertIn("more=false", out)
 
