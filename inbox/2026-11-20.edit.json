@@ -134,7 +134,8 @@
    "event": {
     "date": "2026-12-25",
     "label": "放送開始"
-   }
+   },
+   "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/sharedimages/2026/11/harry-potter-poster.jpg"
   },
   {
    "headline": "Harry Potter series drops new posters sparking questions over missing details",
@@ -143,6 +144,16 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "HBO’s Harry Potter Posters Reveal Snape’s Wand, Hagrid’s Umbrella, & More",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    4
    ]
   }
  ],
@@ -191,18 +202,20 @@
  "_covered": {
   "GTA 6": 49,
   "漫威电影": 42,
-  "哈利波特剧集": 3,
+  "哈利波特剧集": 5,
   "ILLIT": 9,
   "三星手机": 3,
-  "Astrae Oratio": 2,
-  "The Mandalorian": 1,
+  "Astrae Oratio": 3,
+  "The Mandalorian": 2,
   "dota2": 5,
   "gelato pique": 7,
   "A2O LITE": 1,
   "BLEACH Mirrors High": 1,
   "MMORPG 新作": 1,
   "周杰伦": 4,
-  "绝区零": 4
+  "绝区零": 4,
+  "チェーンソーマン": 2,
+  "FROM": 1
  },
  "Astrae Oratio": [
   {
@@ -222,6 +235,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "Astrae Oratio unveils tokusatsu-obsessed \"denpa girl\" who swears she can communicate with kaiju in latest character showcase",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "The Mandalorian": [
@@ -232,6 +254,15 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "The Mandalorian & Grogu: New Details On \"Gladiator\" Rotta The Hutt And The Star Wars Movie's Villains",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ],
@@ -377,6 +408,30 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Crunchyroll AFA Singapore 2026 booth will put the spotlight on Chainsaw Man, Overgeared, and more",
+   "highlight": "AFA Singapore 2026",
+   "blurb": "Crunchyroll returns to AFA Singapore 2026 with a booth featuring Chainsaw Man, Overgeared and more.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://cdn.pokde.net/wp-content/uploads/2026/11/20040007/crunchyrollafa26cover.jpg"
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "‘From’ Finally Gets Its Big Moment as MGM+’s Horror Hit Takes Over Nielsen After Arriving on Netflix",
+   "highlight": "Takes Over Nielsen",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

@@ -1,14 +1,14 @@
 {
- "admin": "739f56c5c4f5",
- "admin-ai": "c192d34c7be2",
+ "admin": "60d0e749c626",
+ "admin-ai": "225071320d4e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "7a9ff23f"
+   "d950a36e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "85403629"
+   "d53eaa5d"
   ]
  },
  "admin-boards": "36551326b706",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "36bd12f79671",
+ "admin-emblem": "a5b4952e4358",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "89b5e0e4"
+   "e5bbb480"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e86fbe3fb12f",
  "admin-members_marks": {},
- "admin-now": "e8b9eca7653c",
+ "admin-now": "000b2ac4b984",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "bffd0f71"
+   "e85c93c1"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "572675c5"
+   "ee26d583"
   ]
  },
- "admin-system": "3d05a874593f",
+ "admin-system": "9ffff8dfee60",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ea6ce614"
+   "2815277c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "3a54b3f5"
+   "d010fb5d"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "f6114297"
   ]
  },
- "index": "21b7028b734a",
+ "index": "cad5117c46cf",
  "index_marks": {
   "front": [
    "トップ",
-   "f96b42c5"
+   "5a79a864"
   ],
   "picks": [
    "気になるかも？",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "1fb30360"
+   "0547641a"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "01cb5e42"
+   "b834c011"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "5f3d2131"
+   "d0fe6380"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "edc0da5a"
+   "5acc1ad6"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "77d20d56"
+   "74dcd99c"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "64154a8c"
   ]
  },
- "updated": "11.20 08:37",
+ "updated": "11.20 08:42",
  "wishlist": "d1479eee2be4"
 }

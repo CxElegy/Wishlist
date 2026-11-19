@@ -1389,7 +1389,7 @@
  "https://cdn.pokde.net/wp-content/uploads/2026/11/20040007/crunchyrollafa26cover.jpg": {
   "w": 1200,
   "h": 630,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.sacnilk.com/image/news/1000023554.jpg": {
@@ -1859,6 +1859,12 @@
   "target": 720,
   "v": 3
  },
+ "https://hermes.media.transform.aol.com/8bf9d2fbba5ad135b93b06684ee193433f18ce52/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/19/feff663e-2435-3464-b153-917359948e38/7ae5162a-a881-4387-a44c-23ce06c377e9.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://hips.hearstapps.com/hmg-prod/images/d5dfc15d-7d2d-4fe5-a23a-c1b9aa8ff326.png?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
   "w": 1200,
   "h": 600,
@@ -1976,6 +1982,12 @@
    0.595,
    0.675
   ]
+ },
+ "https://ichef.bbci.co.uk/news/1024/branded_news/ff78/live/9b1c3810-e351-11f1-99aa-0f40b013ad11.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 720,
+  "v": 3
  },
  "https://igvofficial.com/wp-content/uploads/2026/11/Featured-Image-61.png": {
   "w": 1280,
@@ -6525,12 +6537,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/dumbledore-in-harry-potter-and-the-goblet-of-fire.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/robert-downey-jr-standing-in-a-spaceship-in-avengers-infinity-war.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6540,6 +6546,12 @@
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/untitled-4.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/sharedimages/2026/11/harry-potter-poster.jpg": {
+  "w": 1280,
+  "h": 1919,
   "target": 1280,
   "v": 3
  },
@@ -7283,12 +7295,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.LKuT1oYT-6V6WrWSEG0YAA&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.OOJfb-VcFRjRtGR5auQJ6w&pid=News&w=615": {
   "w": 615,
   "h": 443,
@@ -7340,9 +7346,9 @@
   ],
   "p": null
  },
- "https://www.bing.com/th?id=ONUT.Q4vtI7pS1kRLhoMrxtn27g&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.PCXHZ_HTDPNy_bZxiKLpVA&pid=News&w=1200": {
   "w": 700,
-  "h": 367,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -7480,6 +7486,18 @@
    0.518
   ]
  },
+ "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500": {
+  "w": 500,
+  "h": 281,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.jM9YZVy03brliN5yr42pzw&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.jdYPkT2FLoh7VE9gZZXxgw&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -7601,6 +7619,62 @@
   "target": 1280,
   "v": 3,
   "blur": 0.35
+ },
+ "https://www.bing.com/th?id=ONUT.zwzfS2O-WRaU57U3vuqwLQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.429,
+  "local": "pics/8dc432b9fb67c0e0.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    6,
+    6,
+    11,
+    9,
+    6,
+    14,
+    10,
+    7,
+    7,
+    10,
+    8,
+    7
+   ],
+   [
+    2,
+    14,
+    14,
+    12,
+    14,
+    10,
+    8,
+    6,
+    6,
+    7,
+    5,
+    3
+   ]
+  ],
+  "c": "#4b524a",
+  "k": [
+   0.469,
+   0.111,
+   0.566,
+   0.216
+  ],
+  "p": [
+   0.0,
+   0.056,
+   0.862,
+   0.414
+  ]
  },
  "https://www.bntnews.co.kr/data/bnt/image/2026/11/13/bnt202611130164.png": {
   "w": 600,

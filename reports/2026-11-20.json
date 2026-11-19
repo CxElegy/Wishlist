@@ -1,20 +1,11 @@
 {
  "date": "2026-11-20",
- "edit_sig": "23d316db3bf4",
+ "edit_sig": "714d4447681c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 3,
-     "source": "AUTOMATON",
-     "title": "Astrae Oratio unveils tokusatsu-obsessed \"denpa girl\" who swears she can communicate with kaiju in latest character showcase",
-     "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNcThZMVRhb0JrOGNlRW5aUmpfc2F4ZEJiRFB2TkZhck45U3pmbUFoSmp3V3lzZkJXc2F0c2dqakRBOXdUM2pyRjNtMUJsNDZoMHVxT3RRRklOUW5RVU9FTmFjbFZUQXNJNjhYR0t6TVcyOHotSDRLZkJHemtURnBmYzBwY1NTaWFvZGlQdUxZREpJaWNMSjFva1ZER2xheEp6UHZvR3RxT3haMEpDRy1xa0JMM1lreWFMWU84b254NDlhdU10eFVWV0U2NFB3aXQ5RTdZR24wWWFNc2NfZGdjUjZ0REJacjhjWExLR2pScVo?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -38,6 +29,16 @@
      "source": "GamerBraves",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.gamerbraves.com&sz=128",
      "url": "https://www.gamerbraves.com/astrae-oratio-otaku/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "Astrae Oratio unveils tokusatsu-obsessed \"denpa girl\" who swears she can communicate with kaiju in latest character showcase",
+     "highlight": "",
+     "image": "https://automaton-media.com/en/wp-content/uploads/2026/11/20261118-75399-header.jpg",
+     "image_via": "og:image",
+     "url": "https://automaton-media.com/en/news/astrae-oratio-unveils-tokusatsu-obsessed-denpa-girl-who-swears-she-can-communicate-with-kaiju-in-latest-character-showcase/",
      "weight": "normal"
     }
    ],
@@ -454,22 +455,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 4,
-     "source": "SuperHeroHype",
-     "title": "‘Literally a Sanded Stick’: Harry Potter Fans Roast HBO Over Dumbledore’s Elder Wand",
-     "url": "https://www.superherohype.com/tv/707683-harry-potter-fans-roast-hbo-dumbledore-elder-wand"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 5,
-     "source": "AOL",
-     "title": "HBO’s Harry Potter Posters Reveal Snape’s Wand, Hagrid’s Umbrella, & More",
-     "url": "https://www.aol.com/articles/hbo-harry-potter-posters-reveal-170836000.html"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -481,8 +466,8 @@
      },
      "headline": "Harry Potter HBO Original Series Gets Christmas Day Premiere Date",
      "highlight": "Christmas Day Premiere Date",
-     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/dumbledore-in-harry-potter-and-the-goblet-of-fire.jpg?w=1600&h=900&fit=crop",
-     "image_via": "og:image",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/sharedimages/2026/11/harry-potter-poster.jpg",
+     "image_via": "AI 挑选",
      "url": "https://screenrant.com/harry-potter-hbo-series-albus-dumbledore-elder-wand-character-poster/",
      "weight": "lead"
     },
@@ -494,6 +479,16 @@
      "image": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/blt8bbf16c2d7a209e5/blt7657167a7515094c/6aff10c5e07c8e20bc40b19a/split_(48).png",
      "image_via": "og:image",
      "url": "https://www.tyla.com/entertainment/tv-and-film/harry-potter-hbo-series-new-photos-debate-wands-364870-20261119",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "HBO’s Harry Potter Posters Reveal Snape’s Wand, Hagrid’s Umbrella, & More",
+     "highlight": "",
+     "image": "https://hermes.media.transform.aol.com/8bf9d2fbba5ad135b93b06684ee193433f18ce52/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/19/feff663e-2435-3464-b153-917359948e38/7ae5162a-a881-4387-a44c-23ce06c377e9.jpg",
+     "image_via": "og:image",
+     "url": "https://www.aol.com/articles/hbo-harry-potter-posters-reveal-170836000.html",
      "weight": "normal"
     }
    ],
@@ -699,24 +694,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Crunchyroll returns to AFA Singapore 2026 with a booth featuring Chainsaw Man, Overgeared and more.",
      "date": "2026-11-19",
-     "n": 1,
-     "source": "UnGeek",
-     "title": "Crunchyroll AFA Singapore 2026 booth will put the spotlight on Chainsaw Man, Overgeared, and more",
-     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQbzJLQ25aVlA2ZDVpRjdHUUZIYW5nakM4bS1Gdnl2bm5KWWNzckxQZDNjaG1aYTdGNzZidFFCeV94MmJJUFc2Y21yZXZmcTk5V2ZRVVA0RDRtVVJaTkx4d2hUTkFyQWlwSWlGVTFnY1Y5Mm5sYWwxWkE3RnlNeDRyaW9mU2wzRkFrT1JJcTJkdFFIaGw2YUlfUGF0TWdrejllWENUN1NMeFNOc2Z5UjEzWWE3MXpOZERTeUt5NjhhMDJyLWxD?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 2,
-     "source": "Pokde.Net",
-     "title": "Crunchyroll Returns to AFA Singapore 2026 With Chainsaw Man, Overgeared & Make-A-Wish Partnership",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBnLUxGU3RMYk9OUkROb3RvcmtDVjgtd0hMQk85aFNnWi1DVVJMMUtaMlVaMFFuY29FY3h6dlJpNm90OWJ6Vmg3RTJRdHBRWXJtelFwRHVSaGdtQ3VDdXktTDdVQVpqdkh4X1E?oc=5"
+     "headline": "Crunchyroll AFA Singapore 2026 booth will put the spotlight on Chainsaw Man, Overgeared, and more",
+     "highlight": "AFA Singapore 2026",
+     "image": "https://cdn.pokde.net/wp-content/uploads/2026/11/20040007/crunchyrollafa26cover.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.ungeek.ph/2026/11/crunchyroll-afa-singapore-2026-booth-will-put-the-spotlight-on-chainsaw-man-overgeared-and-more/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -733,22 +723,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 2,
-     "source": "IMDb",
-     "title": "The Mandalorian & Grogu: New Details On \"Gladiator\" Rotta The Hutt And The Star Wars Movie's Villains",
-     "url": "https://www.imdb.com/news/ni65088646/"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 3,
-     "source": "ABC7 New York",
-     "title": "Mandalorian and Grogu merch: The best products to celebrate the movie's Disney+ release",
-     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNbkVuZGV6N20xcVhXY0tNQWVNMFVjb0lWVjI2ZUVDWmJxbERpbU9CenZJQndwY1hTX1YxN2xtYXZaN3B5OGt1X1NCMFd2bFp1dUl4QU5uU1pzV2M4SjZINmNfT0JOVG41dE9nbVA1TUo5S0RoR1ZFV0R2TVQ1dWYzUWVHa21ZS2Fnb01pRWlUSkpNSlRkZ0dia2RRY3F4ZFlWX0J1MzcyamxNZC1TdDQtbHowajJLZ9IBuwFBVV95cUxNUE05eGpqWUdHQmNtb0hBRl9qN21HVFY5cWYyZkhVWDY5ME12YzB2Mzh6RUx5aG9mcndDX3l6SjlveXV0V2I3Sm1YaF9lVGxGbmlUN0Q4b1R4RnJya21fVVZwcWtRTFRrdUtleEJpOWhYM2hvblE4UXBVVEVCYjBqWXdiMFF2Y3VBZ2lwWWNLLUJyb1Vob2djZmZGZ0FKNFA4TldjbjNZSDI1TWVpS0w4X296MzNad0FINW1Z?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -760,6 +734,16 @@
      "image_via": "og:image",
      "url": "https://foro3d.com/en/2026/noviembre/image-engine-desglosa-sus-154-planos-de-vfx-en-the-mandalorian-grogu.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "The Mandalorian & Grogu: New Details On \"Gladiator\" Rotta The Hutt And The Star Wars Movie's Villains",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://www.imdb.com/news/ni65088646/",
+     "weight": "normal"
     }
    ],
    "subtitle": "ザ・マンダロリアン",
@@ -1043,45 +1027,19 @@
    "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-13",
-     "n": 1,
-     "source": "IMDb",
-     "title": "‘From’ Finally Gets Its Big Moment as MGM+’s Horror Hit Takes Over Nielsen After Arriving on Netflix",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5LYW9hLXNncFViUG9qc3ktblhoTmVEcTFLdTNWZEk2SG5tYVBsUVlSek8xd1NRTG1zbXFXay1SUnpuLUNwNXlVVmF3dVFBUXNoaWtRSGd2Z2l3OXFKT29pNWNR?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 2,
-     "source": "Cosmic Book News",
-     "title": "‘From’ Hits 5 Billion Minutes on Netflix: Is Season 5 Really the End?",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1wNVFHUzh1LWdqbUZMSGF0REZwbDBvTjQ5M3cwTGRRYzNFc2dOcnA0UHZSSEdSSzNHMjd4ZE5BVHBaVlFud2E0enZveUc1YjUzbnZzY0NZMVdSQQ?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 3,
-     "source": "Deadline",
-     "title": "‘From’ Lures Over 5 Billion Minutes Viewed In 3 Weeks After MGM+ Series Lands On Netflix",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNSVhsVzllXzdBLU1aR3FNclV6NHFoQ0lpR0o1VzIwQ1E0QTBPaHJZMTFZQWFWNkJqRzA3NnRDOWM5bTdya3E5SVZSbFo4MkRrV1VUX0VOanRjVjFyRDBVaUZ2SmRTTEJxQkd1T09EemM1V01fa3Z3OXlqRjNjRUpiTzhEejlaU3BhLXc0R1BR?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 4,
-     "source": "The Hollywood Reporter",
-     "title": "Streaming Ratings: Rough Week for Original Series, ‘From’ Remains No. 1 Overall",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPeTdyUDZsQXRabzN0V2NjVzNxbENxYXN1Y1lFRnVZQ1NqZmdWdGtoSlp2c3FlWWVpV3ZSbmlRM3R3UGMwc2V2N0pzaTJ6WmI5YW9XQllBRnU3QTBwaTJOazI5bm50RnM0bTRWRFplMXRXWGxGVnhaZUFnMWZnRENtUkNkdllRZXM0d05MMXNrSVM?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 5,
-     "source": "Deadline on MSN",
-     "title": "'From' lures massive audience as MGM+ series lands on Netflix",
-     "url": "https://www.msn.com/en-us/news/other/from-lures-massive-audience-as-mgm-series-lands-on-netflix/ar-AA2hNZD4"
+     "headline": "‘From’ Finally Gets Its Big Moment as MGM+’s Horror Hit Takes Over Nielsen After Arriving on Netflix",
+     "highlight": "Takes Over Nielsen",
+     "image": "https://www.bing.com/th?id=ONUT.zwzfS2O-WRaU57U3vuqwLQ&pid=News&w=1200",
+     "image_via": "转载 fictionhorizon.com（Bing 缩略图）",
+     "url": "https://www.imdb.com/news/ni66097971/?ref_=int_nwr_6",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
