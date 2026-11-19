@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "edit_sig": "80a0ae66b55c",
+ "edit_sig": "5594f031e59b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -176,15 +176,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 11,
-     "source": "DMKsnowboard",
-     "title": "白馬五竜、新ブランドアイデンティティを制定！公式サイトも全面リニューアル",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5YMjhUUWlTMXhDNjU3aGlPdGdUM1RfN0FGWXhzY3Y1a2NEbG1Ua2JGbWw2ZmppQXR6Y3BXUmtIRm5WVlFyWFY3V09UNEUzaEdHbUdqNHdUTDNBekFoV0UxQWNDV2V3eWQwdzktZmVRbw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1152,8 +1143,8 @@
      "date": "2026-11-19",
      "headline": "A2O LITE 보라, 급성 충수염으로 수술… \"녹화 참여 불가\"[공식]",
      "highlight": "",
-     "image": "https://img.mydaily.co.kr/photos/2026/11/19/2026111921084528816_l.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://img.mydaily.co.kr/photos/2026/11/19/2026111921084528816_x.jpg",
+     "image_via": "og:image",
      "url": "https://www.mydaily.co.kr/page/view/2026111921094006307",
      "weight": "normal"
     },
