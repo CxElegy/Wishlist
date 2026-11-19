@@ -4245,7 +4245,8 @@ FIT_JS = """
   // カードの高さは枠の高さの式で表す（S：字の高さ＋枠、R：字の列と枠の高いほう＋余白）ので、測るのは形ごとに 1〜2 回だけ。
   // 列の数 × 全部の形の組み合わせを「一番低い列へ積む」で置き、列ごとに枠を伸び縮みして底をそろえ、
   // 画面の高さを超えた分・列の底の空き・頭より大きい写真・写真の小ささで採点して、一番良い組を使う
-  const keepForm = c => !!c.querySelector(':scope > .pic.hasduo');   // 2 つの物を並べた写真（duo）は fit が決めた形のまま
+  const keepForm = c => !!c.querySelector(':scope > .pic.hasduo');
+  const fewRatio = cs => { const ns = cs.map(c => { const im = c.querySelector(':scope > .pic img:not(.bg):not(.ico)'); return im && im.naturalWidth ? natOf(im) : 0; }).filter(Boolean); return ns.length ? Math.min(1.78, Math.max(1, Math.exp(ns.reduce((a, n) => a + Math.log(n), 0) / ns.length))) : 1.6; };   // 記事が少ないときの同じ枠の比率：並んだ写真の比率の幾何平均（1〜1.78）＝切る量がいちばん少ない   // 2 つの物を並べた写真（duo）は fit が決めた形のまま
   const boardBase = c => {
     c.style.gridColumn = c.style.gridRow = '';
     if (keepForm(c)) return;
@@ -4336,6 +4337,7 @@ FIT_JS = """
       // S（1 列）と W（頭の記事だけ、2 列分）：写真を上・字を下。枠の高さは切らない形の 0.45〜1.6 倍（幅の 1.35 倍まで）
       for (const s of i === 0 && k >= 2 ? [1, 2] : [1]) {
         boardForm(c, {k: s > 1 ? 'W' : 'S', s, w: 100, ph: 100}); const w = p.getBoundingClientRect().width; if (!w) continue;
+        if (s === 1 && vis.length <= __FEW_WALL__) { const lo = w / fewRatio(vis); boardForm(c, {k: 'S', s, w, ph: lo}); const t = H(c) - p.getBoundingClientRect().height; if (!clamped(c)) o.push({k: 'S', s, w, lo, hi: lo * 1.8, h: x => t + x, a: x => w * x, few: 1}); continue; }   // 記事が少ない版面：どの写真も同じ 16:10 の枠から（主役の位置で切る・cropAt）。列の底は枠を伸ばしてそろえる（字の下を空けない）
         const h0 = w / nat, r = phRange(img, w, h0 * 0.45, Math.min(h0 * 2.0, w * 1.35));   // 伸ばす上限は主役・文字の判定（cropAt）に任せる（1.6 倍では鬼滅の刃の真ん中が 130px 足りなかった）
         if (!r && h0 > w * 1.35) continue;
         const lo = r ? r[0] : h0, hi = r ? r[1] : h0;
@@ -4377,6 +4379,7 @@ FIT_JS = """
     for (const k of [...new Set([Math.min(cols0, vis.length), cols0 - 1, cols0 + 1])].filter(k => k >= 2 && k <= vis.length && m.clientWidth / k >= 260)) {   // 列を 1 つ増やす案も（見出しの長い記事が 4 本の版面が画面に収まらなかった）   // 1 列に並べる形は使わない（2026-11-08 店長「一列に羅列するのは全部なし。デザイン性がない」）
       m.style.gridTemplateColumns = 'repeat(' + k + ',minmax(0,1fr))';
       const opts = vis.map((c, i) => measure(c, i, k));
+      if (vis.length <= __FEW_WALL__) { const same = opts.map(o => o.filter(f => f.few)); if (same.every(o => o.length)) same.forEach((o, i) => { opts[i] = o; }); }   // 記事が少ない版面（3 本以下）は全部同じ組み（写真が上・字が下）：写真の大きさをそろえ、列の底は写真の枠の伸び縮みでそろえる（11-19 主の指摘・直し 2 回目。記事が多い店長の版面は今までどおり）
       if (window.WL_FB_DEBUG) (window.WL_FB_LOG = window.WL_FB_LOG || []).push(['opts', m.closest('section') && m.closest('section').dataset.k, k, opts.map(o => o.map(f => f.k + '[' + Math.round(f.lo) + '-' + Math.round(f.hi) + ']').join('|'))]);
       vis.forEach(boardBase);
       for (let n = vis.length; n >= 2; n--) {   // 2 本まで減らしてよい（F1：数は減らしてよい。6 本の版面が 1024×768 で 3 本までしか減らせず入らなかった）   // 入りきらなければ後ろの記事を出さない（2026-11-09 店長：数は少なくてよい・1 画面で見終わる）
@@ -4683,32 +4686,24 @@ FIT_JS = """
     // 1 枚の幅が広いので写真は左・字は右の小さい形（cmpForm）にする：写真は頭条より十分小さく、字の下も空かない（④）
     if (cards.length && cards.length <= __FEW_WALL__ && !side) {
       w.style.gridTemplateColumns = innerWidth <= 760 ? '' : 'repeat(' + cards.length + ',minmax(0,1fr))'; w.style.alignItems = 'start';
-      // 記事が少ない壁（11-19 主の指摘 1・4）。どの幅も同じ決め：写真の枠は写真の形のまま（B6・A3）、写真は左・字は右。
-      // 写真の列の幅 = 字の高さ × 写真の比率（72px〜60%・頭条の写真の面積の 64% まで）で写真と字の底をそろえる（A5）。
-      // 写真が字より低いとき（幅の上限に当たる・スマホ）は要約をカードの幅いっぱいに下へ回して、写真の横は札・日付・見出しだけ（細い列に字を流さない）。
-      // 写真が字より高いときは、主役・字が欠けない切り方があれば字の高さに切る（B4・B2：cropAt が顔・題字の位置を見る）。
-      // それでも字より低い横長（パノラマ）で頭条の 64% に収まるなら写真を上・字を下（③）。カードは中身の高さ（伸ばして字を散らさない）
-      const pad = c => (parseFloat(getComputedStyle(c).paddingLeft) || 0), cwOf = c => c.clientWidth - 2 * pad(c) - 12;
-      const kids = (c, p) => [...c.children].filter(k => k !== p && !k.matches('.lk, .wemb, .xplay') && k.offsetHeight && getComputedStyle(k).position !== 'absolute');
-      const span = ks => ks.length ? Math.max(...ks.map(k => k.getBoundingClientRect().bottom)) - Math.min(...ks.map(k => k.getBoundingClientRect().top)) : 0;
+      // 記事が少ない壁（11-19 主の決め 4・直し 2 回目）：組みは 1 つだけ。どのカードも「写真が上・字が下」（左右で横組み・縦組みを混ぜない）。
+      // 写真の枠は同じ比率（16:10・頭条の写真の面積の 64% まで）、同じ行のカードは高いほうにそろえ、字の少ないカードは写真の高さで吸う（字の下を空けない）。
+      // スマホ（1 列）も同じ組み（行は 1 枚ずつなので吸う分は無い）
       const HA = headArea();
       cards.forEach(c => { c.classList.remove('lead', 'tall', 'nw', 'ls', 'half'); const p = c.querySelector(':scope > .pic'); if (!p) return; unside(c, p); unnarrow(c, p); cmpUn(c);
-        const im = img0(p), wb = c.querySelector(':scope > .wbl'); if (wb) wb.style.gridColumn = wb.style.gridRow = ''; if (!im || !im.naturalWidth) return;
-        const nat = natOf(im), cw = cwOf(c), cap = HA ? Math.sqrt(HA * 0.64 * nat) : Infinity, lo = Math.min(72, cw * 0.5);   // 幅の下限 72px：版面の小さいカードの写真（約 64px）と同じ段（B9）
-        p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); im.style.objectPosition = ''; c.classList.add('cmp');
-        const lay = full => {   // full：要約は幅いっぱいに下へ
-          const ks = kids(c, p).filter(k => !(full && k === wb)), n = Math.max(1, ks.length);
-          c.style.gridTemplateRows = 'repeat(' + n + ',min-content) 1fr' + (full && wb ? ' auto' : ''); p.style.gridRow = '1 / span ' + (n + 1);   // 写真が字より高い分は 1fr の行へ：札・日付・見出しの間に散らない
-          if (wb) { wb.style.gridColumn = full ? '1 / -1' : ''; wb.style.gridRow = full ? String(n + 2) : ''; }
-          let pw = cw * 0.4; for (let q = 0; q < 4; q++) { c.style.gridTemplateColumns = Math.round(pw) + 'px minmax(0,1fr)'; pw = Math.min(cap, cw * 0.6, Math.max(lo, span(ks) * nat)); }
-          c.style.gridTemplateColumns = Math.round(pw) + 'px minmax(0,1fr)';
-          return {pw, th: span(ks)};
-        };
-        let r = lay(innerWidth <= 760);
-        if (wb && innerWidth > 760 && r.pw / nat < r.th - 8) r = lay(true);   // 写真が字より低い：要約を下へ
-        if (r.th >= 48 && r.pw / r.th < nat * 0.92 && okRatio(im, nat / (r.pw / r.th))) p.style.setProperty('aspect-ratio', (r.pw / r.th).toFixed(4), 'important');   // 写真が字より高い：主役が残るなら切る
-        else if (r.th * nat > cw * 0.6 + 8 && HA && cw * cw / nat <= HA * 0.64) { cmpUn(c); if (wb) wb.style.gridColumn = wb.style.gridRow = ''; c.classList.add('ban'); p.style.setProperty('aspect-ratio', nat.toFixed(4), 'important'); }   // ③
-        if (p.classList.contains('trim') && im._bands) trimFit(im, p, im._bands); });
+        const wb = c.querySelector(':scope > .wbl'); if (wb) wb.style.gridColumn = wb.style.gridRow = '';
+        c.classList.add('ban'); const im = img0(p); if (im) { im.style.objectPosition = ''; delete im.dataset.keep; } });
+      const W = cards[0].querySelector(':scope > .pic') ? cards[0].querySelector(':scope > .pic').getBoundingClientRect().width : 0; if (!W) return;
+      const pics = cards.map(c => c.querySelector(':scope > .pic'));
+      const FR = fewRatio(cards); pics.forEach(p => { if (p) p.style.setProperty('aspect-ratio', FR.toFixed(4), 'important'); });
+      const tx = cards.map((c, i) => c.getBoundingClientRect().height - (pics[i] ? pics[i].getBoundingClientRect().height : 0)), T = Math.max(...tx), D = innerWidth > 760 ? T - Math.min(...tx) : 0;
+      const ph = Math.max(72, Math.min(W / FR, HA ? HA * 0.6 / W - D : Infinity));   // 吸ったあとのいちばん高い写真でも頭条の写真の 6 割まで（C5）
+      pics.forEach(p => { if (p) p.style.setProperty('aspect-ratio', (W / ph).toFixed(4), 'important'); });
+      if (innerWidth > 760) {   // 同じ行（PC は全部 1 行）：字の高さの差を写真の高さで吸う
+        cards.forEach((c, i) => { const p = pics[i]; if (p) p.style.setProperty('aspect-ratio', (W / (ph + T - tx[i])).toFixed(4), 'important'); });
+      }
+      cards.forEach((c, i) => { const p = pics[i], im = p && img0(p); if (!im || !im.naturalWidth) return; const r = W / p.getBoundingClientRect().height; if (im.dataset.m || im.dataset.k) cropAt(im, natOf(im) / r);
+        if (p.classList.contains('trim') && im._bands) trimFit(im, p, im._bands); });   // 切る位置は主役（顔・題字）から（B4・B2）
       return;
     }
     const plan = (cols, ord, sH) => {

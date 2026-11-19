@@ -34,20 +34,21 @@ ORPHAN_MIN = 3          # 見出しの最後の行はこの字数以上（1〜2 
 LEAD_MAX = 0.70         # ほかの注目の大きい 1 枚の写真は頭条の写真の面積の 7 割まで
 FEW_WALL = 3            # ほかの注目がこの本数以下なら、大きい 1 枚を作らず同じ大きさで並べる
 SIDE_LINE_PX = 64       # 空の脇の箱（予定・欲しい物）は 1 行の細い帯（この高さまで）
+ROW_EDGE_PX = 4          # 同じ行に並んだカードの下端の差（これを超えたら ✗）
 NAV_GAP_PX = 80         # 左の目次の中身の底から箱の底・欲しい物のボタンまでの空き
 
 KIND = {"edge": "吸着した位置で小元素・題・札が画面の端で切れている", "hid": "吸着した位置で固定のボタンの下に隠れている",
         "solo": "記事が 1 本だけの版面", "herogap": "重大の横に大きな空き", "emrel": "空きの小元素がその記事と無関係",
         "cgap": "カードの中に空き（写真の下・字の下・右）", "ell": "見出しが「…」で切れている", "strong": "脇役の部品に強い要素が 2 つ以上",
         "orphan": "見出しの最後の行が 1〜2 字", "leadbig": "ほかの注目の大きい 1 枚が頭条に近い大きさ", "sidebig": "空の脇の箱が 1 行の帯より大きい",
-        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回"}
+        "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回", "rowedge": "同じ行のカードの下端がそろわない"}
 FIX = {"edge": "scroll-margin-top を小元素のはみ出し分だけ取る（render.CSS section.sec.has-emb）", "hid": "固定のボタンの下に入らない位置で吸着する",
        "solo": "版面の記事を増やす・隣の版面と一緒に組む", "herogap": "重大の横に記事・予定を置くか幅を広げる",
        "emrel": "関係のある小元素が無ければ空きのまま（置かない）", "cgap": "写真を字の高さまで伸ばす・カードを縮める",
        "ell": "行数を増やす・見出しを短くする", "strong": "脇役の箱は墨の地・小さい札だけにする（C4）",
        "orphan": "字の大きさを列に合わせる・text-wrap: balance（render FIT_JS fitHead）", "leadbig": "記事 3 本以下は同じ大きさで並べる・大きい 1 枚は頭条の 7 割まで",
        "sidebig": "空の箱は 1 行の細い帯に畳む（render._side）", "pendhid": "整理待ちの見出しを写真付きで並べる（render._section）",
-       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）"}
+       "navgap": "目次の箱は中身の高さ（NAV_JS layout）", "rowedge": "同じ行は同じ組み・高いほうにそろえ、字の少ないほうは写真の高さで吸う（FIT_JS wall の FEW_WALL）", "dup": "頭条・ほかの注目に出した記事と写真は版面で使わない（render._without・_calm）"}
 
 
 def emb_rel_js():
@@ -239,6 +240,11 @@ JS_BODY = r"""
     const im = c.querySelector('.pic img:not(.bg):not(.ico)'), s = im && vis(im) && (im.currentSrc || im.src);
     if (s && !/^data:/.test(s) && !(u && seenU.get(u) !== c)) { if (seenP.has(s)) { bump('dup'); tag(c, 'dup', '同じ写真：' + s.split('/').pop().slice(0, 24)); } else seenP.set(s, c); }
   });
+  // 13. 同じ行に並んだカードの下端の差（主の決め 4・直し 2 回目：「ほかの注目」の 2 枚の下端が 95px ずれた）。同じ親の中で上端が 4px 以内にそろったカードの組
+  const rowsOf = cs => { const g = []; cs.forEach(c => { const r = c.getBoundingClientRect(), x = g.find(q => Math.abs(q.t - r.top) <= 4); if (x) x.b.push(r.bottom); else g.push({t: r.top, b: [r.bottom], el: c}); }); return g; };
+  const groups = new Map();
+  document.querySelectorAll('.wall > .wc, section.sec .grid article.card').forEach(c => { if (!vis(c) || c.hidden || c.closest('details:not([open])')) return; const k = c.parentElement; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(c); });
+  groups.forEach(cs => rowsOf(cs).forEach(g => { if (g.b.length < 2) return; bump('rows'); const d = Math.max(...g.b) - Math.min(...g.b); if (d > P.rowEdge) { bump('rowedge'); tag(g.el, 'rowedge', (g.el.matches('.wc') ? 'ほかの注目' : (g.el.closest('section.sec') || {dataset: {}}).dataset.k) + '：下端の差 ' + Math.round(d) + 'px（' + g.b.length + ' 枚）'); } }));
   return {items: out, stats};
 }
 """
@@ -262,14 +268,14 @@ def measure(pg, start=0):
     body, rel = build_js()
     p = {"snapMinW": SNAP_MIN_W, "heroMax": HERO_SIDE_MAX, "heroMinW": HERO_SIDE_MIN_W, "cPhoto": CGAP_PHOTO, "cText": CGAP_TEXT, "cRight": CGAP_RIGHT,
          "cMin": CGAP_MIN_PX, "strongArea": STRONG_AREA, "relFn": REL_FN % rel if rel else "",
-         "orphanMin": ORPHAN_MIN, "leadMax": LEAD_MAX, "fewWall": FEW_WALL, "sideLine": SIDE_LINE_PX, "navGap": NAV_GAP_PX}
+         "orphanMin": ORPHAN_MIN, "rowEdge": ROW_EDGE_PX, "leadMax": LEAD_MAX, "fewWall": FEW_WALL, "sideLine": SIDE_LINE_PX, "navGap": NAV_GAP_PX}
     return pg.evaluate("(a) => (" + body.strip() + ")(a[0], a[1], a[2])", [start, p, bool(rel)])
 
 
 # 新しい人のページ（2026-11-19）を数える幅（主経由の店長の決め：どの幅でも同じ決め方・この 8 幅で数える）
 NEW_USER_VIEWS = ((390, 844), (412, 915), (768, 1024), (1000, 800), (1024, 768), (1333, 720), (1440, 900), (1920, 1080))
 # 8 つの指摘 → 数える項目（self_review の band・cgap と、上の 7〜12）。審美基準の番号は aesthetic_map.json
-NEW_USER_KINDS = ("orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
+NEW_USER_KINDS = ("rowedge", "orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
                   "solo", "herogap", "ell", "over", "wide", "clip", "gap")
 
 
