@@ -187,6 +187,20 @@ class Small(unittest.TestCase):
         user_pages.photo_tally(own, {}, {}, fill=lambda rows, og, **k: og_image_fill(rows, og, read))
         self.assertEqual(read, ["https://m.example/1"])   # 店長の版面に og の時間を使わない
 
+    def test_find_images_uses_the_same_gaps_as_og(self):
+        """合わせ：find_images の覚え（_up_pick）の試し直しの間も og_image.retry_due（2 回目からは理由ごと：断られた 1 日）。"""
+        import og_image
+        u = "https://n.example/9"
+        cache = {u: {"img": "", "at": 1000, "why": "blocked", "n": 2}}
+        calls = []
+        with mock.patch.object(images, "pick", lambda *a, **k: calls.append(1) or images.Result()):
+            user_pages.find_images([{"headline": "h", "url": u}], 9e18, cache, now=1000 + og_image.FIRST_RETRY_H * 3600)
+            self.assertEqual(calls, [])                     # 3 時間では探さない（2 回目の失敗・断られた）
+            user_pages.find_images([{"headline": "h", "url": u}], 9e18, cache, now=1000 + og_image.RETRY_H["blocked"] * 3600)
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(cache[u]["n"], 3)
+        self.assertEqual(user_pages.PICK_RETRY_S, og_image.FIRST_RETRY_H * 3600)
+
     def test_og_deadline_inside_a_page(self):   # 12
         import og_image
         import time
