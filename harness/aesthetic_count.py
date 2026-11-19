@@ -15,6 +15,7 @@ self_review.py から呼ばれる（review() が MEASURE_JS のあとにこれ�
 """
 import argparse
 import json
+import os
 import pathlib
 import re
 import sys
@@ -192,16 +193,7 @@ JS_BODY = r"""
 
   // 7〜12：新しい人のページの形（2026-11-19 店長が test-b を不合格にした 8 つ）。店長のページにも同じに当てる
   // 7. 見出しの最後の行が 1〜2 字（孤立。P.orphanMin 字未満）
-  const lastLine = el => {
-    const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), rg = document.createRange(), lines = [], bot = el.getBoundingClientRect().bottom + 1;   // 切って隠れた行は数えない
-    for (let n; (n = tw.nextNode());) for (let i = 0; i < n.data.length; i++) {
-      if (!n.data[i].trim()) continue;
-      rg.setStart(n, i); rg.setEnd(n, i + 1); const q = rg.getClientRects()[0]; if (!q || !q.width || q.bottom > bot) continue;
-      const y = Math.round(q.top + q.height / 2), L = lines.find(l => Math.abs(l.y - y) < q.height * 0.5);
-      if (L) L.n++; else lines.push({y, n: 1});
-    }
-    lines.sort((a, b) => a.y - b.y); return lines.length >= 2 ? lines[lines.length - 1].n : 99;
-  };
+  const lastLine = el=>{const rg=document.createRange(),bot=el.getBoundingClientRect().bottom+1,ns=[],tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);for(let n;(n=tw.nextNode());)if(n.data.trim())ns.push(n);const at=(n,i)=>{rg.setStart(n,i);rg.setEnd(n,i+1);const q=rg.getClientRects()[0];return q&&q.width&&q.bottom<=bot?q:null;};let f=null;for(const n of ns){for(let i=0;i<n.data.length&&!f;i++)if(n.data[i].trim())f=at(n,i);if(f)break;}if(!f)return 99;let y=null,c=0;for(let k=ns.length-1;k>=0;k--){const n=ns[k];for(let i=n.data.length-1;i>=0;i--){if(!n.data[i].trim())continue;const q=at(n,i);if(!q)continue;const m=q.top+q.height/2;if(y===null){y=m;if(Math.abs(y-(f.top+f.height/2))<f.height*0.5)return 99;}if(Math.abs(m-y)<q.height*0.5){if(++c>=3)return c;}else return c;}}return c;};   // 最後の行の字数（3 まで）。1 行なら 99。後ろから数える（render.NOORPHAN_JS と同じ式）
   [...document.querySelectorAll('.top h2 .hb, .wall > .wc > b, section.sec article.card h2, section.sec article.card h3, .top p, .wc > .wbl, section.sec article.card p.blurb')].forEach(h => {   // 要約も（11-19 主の指摘 3）
     if (!vis(h) || h.closest('details:not([open])')) return;
     bump('orphanHeads'); const n = lastLine(h);
@@ -356,7 +348,8 @@ def stable_main(argv):
     port = self_review.serve(argv[0])
     with sync_playwright() as p:
         b = browser.launch(p)
-        r = new_user_counts(f"http://127.0.0.1:{port}/{argv[1]}", b, fake=True)
+        only = [int(x) for x in os.environ.get("WL_WIDTHS", "").split(",") if x]   # 幅を分けて流す（1 回 5 分以内）
+        r = new_user_counts(f"http://127.0.0.1:{port}/{argv[1]}", b, [v for v in NEW_USER_VIEWS if not only or v[0] in only], fake=True)
         b.close()
     tot = {}
     for v, c in r.items():
