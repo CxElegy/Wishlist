@@ -355,7 +355,7 @@
   "The Mandalorian": 4,
   "dota2": 18,
   "gelato pique": 9,
-  "A2O LITE": 18,
+  "A2O LITE": 22,
   "BLEACH Mirrors High": 1,
   "MMORPG 新作": 11,
   "周杰伦": 24,
@@ -553,7 +553,8 @@
    "blurb": "South Korea announced a probe into minor idols' rights as A2O LITE cancelled a pre-recording over health concerns.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    22
    ]
   },
   {
@@ -578,7 +579,10 @@
     16,
     17,
     18,
-    10
+    10,
+    19,
+    20,
+    21
    ]
   }
  ],
