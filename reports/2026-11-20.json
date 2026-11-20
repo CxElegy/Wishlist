@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "61e3ccf2b026",
+ "edit_sig": "a7a415620df0",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -22,10 +22,8 @@
      "date": "2026-11-18",
      "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
      "highlight": "TGS 2026서",
-     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-     "image_via": "作品封面",
-     "source": "쿠키뉴스",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.kukinews.com&sz=128",
+     "image": "https://cdn.duckhub.co.kr/news/photo/202611/2303_10647_3722.jpg",
+     "image_via": "同一件事的别家报道 www.duckhub.co.kr",
      "url": "https://www.kukinews.com/article/view/kuk202609110059",
      "weight": "lead"
     },
@@ -336,36 +334,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 14,
-     "source": "AFPBB News",
-     "title": "ILLIT、体調不良とけがで音楽番組出演を縮小…大阪「MAMA」は当日の体調に応じて調整",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9COFpKbkRjUVY1eTFEeFVtVXpsdkRfYU5meHhwb25adXJtc3VTbXJscHFONzNqNkxJQkxCVHpaU1p6WF9vTmV0ZmE3UW5GQndfR2fSAVRBVV95cUxNZHBndHliMmhZcmhEa3JDV25HNmdUZkp4emZCSnZuU25vZDhQV1g3SDhrbWE0bEdKOUFqVC1DanU3Y1hqcVNsa2l6RkxncndOUVNfYmY?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 15,
-     "source": "on.cc東網",
-     "title": "ILLIT 4人輪流不適 或缺席本日《MAMA》頒獎禮",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQUFFMUGdKQ2R4M1NCbXM5bF9nQjlJS1ptMnNVdEFnV1dZWFZVVUlENkJLV2JKZW90T1cwWjc1Sjd1OHNZWTBOZk0waHE5YklLU0dJVFhveFF2ckx1TkRwOVpnNzFFYjd3eUhjclJtVG1oLUVJUTNfbGI5WlAyRjkybXVrVmRDb3ZMMjJmOGYtUVozZVlQaHMw?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 16,
-     "source": "JTBC",
-     "title": "아일릿 민주, 남과 다른 ‘주체적 관점’의 팀 방향성 암시",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE43WFFFRUxxdng3YTNyS2J3eEY0Q011ZmhfU3VPeEVBc0ZucTdXeDRYc2JaMHUxX0k4d0hmbXZxOFlUZnIwNC10WFBYZkU0cjQzZGJOWQ?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 17,
-     "source": "VOCO News",
-     "title": "ILLIT Members Fall Ill One After Another! 3 Down with High Fevers, 2 Still Nursing Foot Injuries Ahead of MAMA Performance",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5JWjluNFkzYlBJZ2kxVjhIVVZxMjBYWnJIbjNMQ2VPdVZETFpfelF5eDFIS0VWRkZfWngzVkdNcXZOcFZsRWxjMnJKVURqUFduMFdYVU12OG5HclRPaTJoU2pWeE5vRDNJQzVkUkxTNlhyc3lBeXMxOUVVYw?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -386,6 +354,16 @@
      "image": "https://images.khan.co.kr/article/2026/11/20/news-p.v1.20261120.6b2ae1d6e17e49ca9d08f1bcab07ca1c_P1.png",
      "image_via": "og:image",
      "url": "https://sports.khan.co.kr/en/article/202611200757007",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "아일릿 민주, 남과 다른 ‘주체적 관점’의 팀 방향성 암시",
+     "highlight": "",
+     "image": "https://photo.jtbc.co.kr/news/jam_photo/202403/11/622e0c3f-bb3d-4bcf-b0b5-09401723e3a8.jpg",
+     "image_via": "og:image",
+     "url": "https://news.jtbc.co.kr/article/NB12169239",
      "weight": "normal"
     }
    ],
@@ -821,9 +799,8 @@
      "date": "2026-11-18",
      "headline": "《刀塔2》本来不想出圣剑的，不小心合错了，那就速度推了吧——Yatoro让你知道Goat怎么嘉豪",
      "highlight": "",
-     "image": null,
-     "source": "17173",
-     "source_icon": "https://ue.17173cdn.com/images/lib/v1/favicon-hd.ico",
+     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg",
+     "image_via": "JSON-LD",
      "url": "https://news.17173.com/content/11182026/151335144.shtml",
      "weight": "normal"
     }

@@ -1082,6 +1082,13 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.duckhub.co.kr/news/photo/202611/2303_10647_3722.jpg": {
+  "w": 600,
+  "h": 490,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.399
+ },
  "https://cdn.e-science.co.kr/news/photo/202611/139894_72945_1815.jpg": {
   "w": 600,
   "h": 750,
@@ -1905,6 +1912,12 @@
   "w": 780,
   "h": 1387,
   "target": 1280,
+  "v": 3
+ },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg": {
+  "w": 826,
+  "h": 1153,
+  "target": 720,
   "v": 3
  },
  "https://i.abcnewsfe.com/a/02d94113-efa9-481c-9232-0dfafe5b3238/RyanGosling-gty-sn-260726_1785097233106_hpMain_16x9.jpg?w=1600": {
@@ -5499,6 +5512,12 @@
  "https://phinf.wevpstatic.net/MjAyNjEwMTlfOTAg/MDAxNzkyMzkwMzgzODkx.J5-qTJVzi5Ed7yjnetSTfKJ3lItsNIaMTRfW4G8LBXcg.Md6Y5nozoQIb6ngdYLxGwrvVsjUEm9pZCPzrd7Wrx2wg.JPEG/image.jpg?type=w1414": {
   "w": 1414,
   "h": 1885,
+  "target": 720,
+  "v": 3
+ },
+ "https://photo.jtbc.co.kr/news/jam_photo/202403/11/622e0c3f-bb3d-4bcf-b0b5-09401723e3a8.jpg": {
+  "w": 559,
+  "h": 472,
   "target": 720,
   "v": 3
  },
