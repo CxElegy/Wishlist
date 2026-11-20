@@ -51,7 +51,6 @@
   "https://www.chinatimes.com/realtimenews/20261119002878-260409": "https://images.chinatimes.com/newsphoto/2026-11-19/656/20261119002879.jpg",
   "https://www.famitsu.com/article/202611/94349": "https://cimg.kgl-systems.io/camion/files/94349/thumbnail_Wetg.jpg?x=1280",
   "https://www.fnnews.com/news/202611201041088155": "https://www.bing.com/th?id=ONUT.vmQFkHfpG3qY2FeXJftfog&pid=News&w=1200",
-  "https://www.gamemeca.com/en/view.php?gid=1783889": "https://www.bing.com/th?id=ONUT.gU1puZU1YrjHkSvBOWr8vA&pid=News&w=1200",
   "https://www.hk01.com/%E9%81%8A%E6%88%B2%E5%8B%95%E6%BC%AB/60412213/%E9%8F%88%E9%8B%B8%E4%BA%BA-%E8%95%BE%E6%BD%94%E7%AF%87-%E6%98%8E%E5%B9%B42%E6%9C%88%E6%A9%AB%E6%BF%B1%E8%88%89%E8%A1%8C%E6%94%BE%E6%98%A0%E9%9F%B3%E6%A8%82%E6%9C%83-%E7%89%9B%E5%B0%BE%E6%86%B2%E8%BC%94%E7%8F%BE%E5%A0%B4%E6%BC%94%E5%87%BA": "https://www.bing.com/th?id=ONUT.PCXHZ_HTDPNy_bZxiKLpVA&pid=News&w=1200",
   "https://www.indexbox.io/store/india-kw-kitten-wet-cat-food-840-market-analysis-forecast-size-trends-and-insights/": "https://www.indexbox.io/landing/img/reports/world-kitten-wet-cat-food-market-analysis-forecast-size-trends-and-insights.webp?v=1774179250",
   "https://www.joblo.com/the-strange-cast-of-supergirl-1984/": "https://www.joblo.com/wp-content/uploads/2026/06/wtf-supergirl.jpg",
@@ -1021,27 +1020,6 @@
   },
   {
    "batch": 2,
-   "because": "绝区零",
-   "date": "2026-11-19",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.gU1puZU1YrjHkSvBOWr8vA&pid=News&w=1200",
-   "kind": "board",
-   "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
-   "score": 8,
-   "source": "GameMeca",
-   "taste": [
-    [
-     "作品:绝区零",
-     8
-    ]
-   ],
-   "title": "[G-STAR 26] HoYoverse fandom gathers, a festival at the venue",
-   "url": "https://www.gamemeca.com/en/view.php?gid=1783889",
-   "words": [],
-   "work": "绝区零"
-  },
-  {
-   "batch": 2,
    "because": "三星手机",
    "date": "2026-11-19",
    "hits": [
@@ -1149,7 +1127,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "チェーンソーマン",
    "date": "2026-11-18",
    "hits": [],
@@ -1266,7 +1244,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "周杰伦",
    "date": "2026-11-19",
    "hits": [],
@@ -1371,7 +1349,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "A2O LITE",
    "date": "2026-11-18",
    "hits": [],
@@ -1476,7 +1454,7 @@
    "work": "dota2"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "Vaundy",
    "date": "2026-11-19",
    "hits": [],
@@ -1915,7 +1893,7 @@
    8
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
@@ -1923,7 +1901,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]

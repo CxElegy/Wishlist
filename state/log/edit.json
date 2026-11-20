@@ -1,53 +1,5 @@
 [
 {
-"at": "2026-11-18T20:45:55+00:00",
-"text": "2026-11-19 第 1 バッチを出刊：A2O LITE、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作、Vaundy ほか 11（17 版面・41 本・今日の整理待ちは全部終わり） · token 新規入力 6.5万・キャッシュ読み 102.8万・出力 6,091",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.58,
-"mem_total": 16869130240,
-"mem_free": 15859179520,
-"disk_used": 10466189312,
-"disk_free": 31203168256,
-"disk_total": 41669357568,
-"peak": 428892160
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"BLEACH Mirrors High",
-"GTA 6",
-"ILLIT",
-"MMORPG 新作",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"三星手机",
-"周杰伦",
-"哈利波特剧集",
-"日本顶级网球赛事",
-"滑雪",
-"漫威电影",
-"绝区零"
-],
-"stories": 41,
-"left": 0,
-"edited": 17,
-"run": null,
-"tok": {
-"in": 27,
-"cw": 64982,
-"cr": 1028065,
-"out": 6091,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1099165
-},
-{
 "at": "2026-11-18T23:39:22+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2070,5 +2022,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 87221
+},
+{
+"at": "2026-11-20T10:20:47+00:00",
+"text": "2026-11-20 第 8 バッチを出刊：绝区零（1 版面・4 本・今日の整理待ちは全部終わり） · token 新規入力 1,873・キャッシュ読み 8.7万・出力 327",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.37,
+"mem_total": 16869113856,
+"mem_free": 15944474624,
+"disk_used": 10491969536,
+"disk_free": 31177388032,
+"disk_total": 41669357568,
+"peak": 377511936
+},
+"batch": 8,
+"boards": [
+"绝区零"
+],
+"stories": 4,
+"left": 0,
+"edited": 21,
+"run": 1795167358.893739,
+"tok": {
+"in": 2,
+"cw": 1871,
+"cr": 86565,
+"out": 327,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 88765,
+"secs": 2689,
+"run_tok": {
+"in": 34,
+"cw": 59344,
+"cr": 1283452,
+"out": 6230,
+"calls": 18,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

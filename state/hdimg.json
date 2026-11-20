@@ -1204,12 +1204,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gameinsight.co.kr/news/photo/202611/37002_91031_72.jpg": {
-  "w": 900,
-  "h": 600,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.gamemeca.com/data_center/347/527/20261112142009.webp": {
   "w": 1200,
   "h": 675,
@@ -1226,6 +1220,12 @@
   "w": 1200,
   "h": 670,
   "target": 720,
+  "v": 3
+ },
+ "https://cdn.gamemeca.com/gmdata/0001/783/889/gm130116_3.webp": {
+  "w": 1200,
+  "h": 670,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.gameple.co.kr/news/photo/202611/216958_250662_5345.jpg": {
@@ -7917,12 +7917,6 @@
    0.57,
    0.518
   ]
- },
- "https://www.bing.com/th?id=ONUT.gU1puZU1YrjHkSvBOWr8vA&pid=News&w=1200": {
-  "w": 700,
-  "h": 390,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500": {
   "w": 500,
