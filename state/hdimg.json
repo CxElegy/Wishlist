@@ -889,6 +889,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/337885033/rectangle_large_type_2_51f63c0bfb492ff74eee514ac510a306.png?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://assetsio.gnwcdn.com/mafia-city-of-lost-heaven-car-park-shootout.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp": {
   "w": 1200,
   "h": 630,
@@ -1659,12 +1665,6 @@
  },
  "https://cimg.kgl-systems.io/camion/files/dengeki/94341/a135007e7085979a7d5b41ce54c0e54d7.jpg?x=1280": {
   "w": 958,
-  "h": 1280,
-  "target": 1280,
-  "v": 3
- },
- "https://cimg.kgl-systems.io/camion/files/dengeki/94542/a3b7b67467bafb2e599ec4b8bfe4101d2.jpg?x=1280": {
-  "w": 880,
   "h": 1280,
   "target": 1280,
   "v": 3
@@ -2592,57 +2592,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hQAyy.img": {
-  "w": 600,
-  "h": 338,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.429,
-  "local": "pics/4d339cbe8e4c5590.webp",
-  "out": [
-   1280,
-   721
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    5,
-    5,
-    6,
-    7,
-    9,
-    10,
-    8,
-    12,
-    14,
-    9,
-    9,
-    5
-   ],
-   [
-    7,
-    11,
-    11,
-    10,
-    6,
-    5,
-    5,
-    6,
-    7,
-    11,
-    8,
-    12
-   ]
-  ],
-  "c": "#485777",
-  "k": [
-   0.573,
-   0.68,
-   0.993,
-   0.979
-  ],
-  "p": null
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hhX2K.img": {
   "w": 640,
   "h": 360,
@@ -2832,6 +2781,12 @@
    0.838
   ],
   "p": null
+ },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/496559.png?date=1746576286": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
  },
  "https://img.huffingtonpost.com/asset/66219b89230000370088ea45.jpeg?cache=spEn3zWqGy&ops=1778_1000": {
   "w": 1778,
@@ -3595,52 +3550,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.348
- },
- "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_191334_0-enlarge.jpg": {
-  "w": 640,
-  "h": 359,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.504,
-  "local": "pics/0189441a2fb2763d.webp",
-  "out": [
-   1280,
-   718
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    8,
-    8,
-    12,
-    10,
-    9,
-    12,
-    7,
-    9,
-    11,
-    4,
-    6,
-    3
-   ],
-   [
-    7,
-    8,
-    8,
-    7,
-    8,
-    8,
-    11,
-    10,
-    8,
-    9,
-    8,
-    9
-   ]
-  ],
-  "c": "#717b92",
-  "k": null,
-  "p": null
  },
  "https://media.image.infoseek.co.jp/isnews/photos/iza/iza_25IJUH4SOFHDHIMQVGSKBRGF2M_0-enlarge.jpg": {
   "w": 1200,
@@ -5807,12 +5716,6 @@
   "target": 720,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/c903cf959a864a2ca9f59aed8ab26226.jpg": {
-  "w": 588,
-  "h": 598,
-  "target": 720,
-  "v": 3
- },
  "https://nippon.ismcdn.jp/mwimgs/a/f/1200wm/img_af280962f865e9c21ad1a7042b3a73ac321795.jpg": {
   "w": 1200,
   "h": 674,
@@ -7412,6 +7315,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.appbank.net/wp-content/uploads/2026/11/20261119_013257_154_01.webp": {
+  "w": 1268,
+  "h": 951,
+  "target": 720,
+  "v": 3
+ },
  "https://www.asahi.com/and/ogp/ogp_and.png": {
   "w": 1200,
   "h": 630,
@@ -7658,6 +7567,12 @@
  "https://www.bing.com/th?id=ONUT.52MywKXeOAKgR2BnaxBeRA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.5SybOSvMhwjsLKZWFrPYFw&pid=News&w=588": {
+  "w": 588,
+  "h": 598,
   "target": 720,
   "v": 3
  },
