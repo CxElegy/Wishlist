@@ -5253,6 +5253,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://perfectworld.tokyo/news/wp-content/uploads/2026/08/c34f9f7394c0bad87e25953fd155552f.png": {
+  "w": 1200,
+  "h": 1200,
+  "target": 720,
+  "v": 3
+ },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/16/35523025.jpg&M=1&s=Y&x=0&y=0&sw=1279&sh=852&sl=W&fw=800&exp=3600": {
   "w": 798,
   "h": 532,
@@ -6680,12 +6686,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.4gamer.net/games/630/G063081/20261120048/SS/014.jpg": {
-  "w": 1701,
-  "h": 957,
-  "target": 1280,
-  "v": 3
- },
  "https://www.agara.co.jp/image/article/size1/d/b/c/5/dbc580a479ab6065efcfbfd8941006dd_1.jpg": {
   "w": 640,
   "h": 425,
@@ -6844,6 +6844,12 @@
   "blur": 0.404
  },
  "https://www.bing.com/th?id=ONUT.00q_3SKAZTpUktsTEvv6GQ&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.0YLTaG9pf5YUeZgd1PiFiw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -7115,12 +7121,6 @@
    0.719,
    1.0
   ]
- },
- "https://www.bing.com/th?id=ONUT.8AJk_W7jZLzlGIeJcrio4Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.C7yo6RHIF9O1SXc6EY1Qdw&pid=News&w=1200": {
   "w": 534,
