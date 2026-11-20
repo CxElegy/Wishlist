@@ -128,7 +128,7 @@ class VisualGate(unittest.TestCase):
         md = (ROOT / "docs" / "rules" / "aesthetic.md").read_text(encoding="utf-8")
         ids = set(re.findall(r"^\| ([A-I]\d+[a-z]?) \|", md, re.M))
         self.assertTrue(set(m) <= ids, set(m) - ids)                      # 地図の番号は基準に実在する
-        known = {"gap", "crop", "band", "clip", "icon", "over", "wide", "face", "edge", "hid", "solo", "herogap", "emrel", "cgap", "ell", "strong",
+        known = {"gap", "crop", "band", "clip", "icon", "over", "wide", "face", "edge", "hid", "solo", "herogap", "postergap", "emrel", "cgap", "ell", "strong",
                  "orphan", "leadbig", "sidebig", "pendhid", "navgap", "dup",   # 2026-11-19 新しい人のページの 8 つ（aesthetic_count）
                  "small", "sizemix"}   # 2026-11-19 店長「図が小さい」：B9・D1
         self.assertTrue({c for cs in m.values() for c in cs} <= known)

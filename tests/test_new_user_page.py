@@ -11,12 +11,15 @@ sys.path.insert(0, str(ROOT / "harness"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 # 0 を保つ項目（8 つ＋A1・A5・A6・C1・C2・D3・E1・E2・F3・F4 の数えられる所）
-ZERO = ("imgfail", "noimg", "cgap_wall", "orphan", "leadbig", "sidebig", "pendhid", "navgap", "dup", "solo", "herogap", "ell", "over", "wide", "clip",
+ZERO = ("imgfail", "noimg", "orphan", "leadbig", "sidebig", "pendhid", "navgap", "dup", "solo", "herogap", "ell", "over", "wide", "clip",
         "crop", "band")   # crop・band：写真は切らない・帯で埋めない（B1〜B3・B6・A3。整理待ちのカードの縦長も枠を写真の形に）
 # 0 にならない項目は 4 形（a〜d）× 8 幅の合計を上限（2026-11-19 claude/new-user-check で測った数・2 回同じ）。次の段で 0 にする：
 #   rowedge（同じ行の下端の差）・small（B9 写真の短い辺が下限未満）・sizemix（D1 同じ行の 1 大 1 小）は、店長に絵を見せて決めてから直す。
 #   cgap は縦長の写真を切らずに置いたカードの字の下（写真が字より高い分）と版面の小さいカードの前からの空き
-KNOWN = {"cgap": 20, "gap": 0, "rowedge": 46, "small": 84, "sizemix": 41}
+KNOWN = {"cgap": 21, "gap": 1, "rowedge": 46, "small": 85, "sizemix": 41, "postergap": 4, "cgap_wall": 1}
+# 2026-11-20 頭条の写真と字の列の高さを合わせた（店長「空白のところは多すぎ」）：postergap（頭条の中の空き）は前の render で 18 → 4。
+#   残りの 4 と cgap・gap・cgap_wall・small の +1 は形 b（見出し 2 行・要約なし・縦長の写真）だけ：写真の高さの下限（C1）を守ると字の列が届かず、
+#   頭条が縮んだ分だけ、ほかの注目の横長の写真のカードが「頭条の 64% まで」に当たって写真の下が空く（取り合い）。空いた所を情報で埋める部品は店長に絵で決めてもらってから（A9 ④）
 
 
 class NewUserPage(unittest.TestCase):
