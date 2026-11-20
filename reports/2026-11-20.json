@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "fb362985b453",
+ "edit_sig": "2414592d9705",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -165,43 +165,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 7,
-     "source": "4Gamer.net",
-     "title": "スライムを捕まえて育てるMMORPG「スライムの世界 ぷにっと冒険記」を試遊。親密度が高いスライムは直接操作できる［G-STAR 2026］",
-     "url": "https://www.4gamer.net/games/060/G106010/20261120016/"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 8,
-     "source": "GAME Watch",
-     "title": "吉田P「なんとか白銀を体験していただきたい！」「白銀のワンダラー」に向けて今から「FFXIV」を始めるべき3つの理由",
-     "url": "https://game.watch.impress.co.jp/docs/kikaku/2158046.html"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 9,
-     "source": "아시아경제 on MSN",
-     "title": "넥슨 '템빨: 오버기어드' 사전 다운로드 시작...26일 글로벌 출시",
-     "url": "https://www.msn.com/ko-kr/entertainment/%EC%9D%BC%EB%B0%98/%EB%84%A5%EC%8A%A8-%ED%85%9C%EB%B9%A8-%EC%98%A4%EB%B2%84%EA%B8%B0%EC%96%B4%EB%93%9C-%EC%82%AC%EC%A0%84-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EC%8B%9C%EC%9E%91-26%EC%9D%BC-%EA%B8%80%EB%A1%9C%EB%B2%8C-%EC%B6%9C%EC%8B%9C/ar-AA2hPa43"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 10,
-     "source": "이슈투데이",
-     "title": "넷마블, MMORPG ‘레이븐2’ 신규 서버 ‘마하’ 오픈",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE4yQXI3aDQzdDdKaENtX19oeDJNTXhuVW15WV80MWgtai1FR2ZiSDAySnRfUktIdElrZ2FmeDVQVzNkVWtWVFl3TnF0MmlqajVMVzhOOUFjUmlFRmhHQVc5VFpZYUtBQQ?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 11,
-     "source": "더트래커",
-     "title": "그라비티, 라그나로크 MMORPG 2종 구글플레이 수상…아시아 공략 성과",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE00VVQ0d2NDTWJqbmtKS1Z1b3UtVUE3cktwb1NpcDV5UGZ6bEJNcXZpd0J6cVFqSE5IdjhmVC02MkctYUVqTzI2SHNJbHRDT0Z1V29yU1o0NzQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -953,9 +916,8 @@
      "date": "2026-11-18",
      "headline": "《刀塔2》本来不想出圣剑的，不小心合错了，那就速度推了吧——Yatoro让你知道Goat怎么嘉豪",
      "highlight": "",
-     "image": null,
-     "source": "17173",
-     "source_icon": "https://ue.17173cdn.com/images/lib/v1/favicon-hd.ico",
+     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg",
+     "image_via": "JSON-LD",
      "url": "https://news.17173.com/content/11182026/151335144.shtml",
      "weight": "normal"
     },
