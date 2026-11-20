@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T13:19:22+00:00",
+ "checked": "2026-11-20T13:26:00+00:00",
  "fired": {
   "at": "2026-11-20T12:25:42+00:00",
   "results": {
@@ -82,13 +82,15 @@
    "prog": 521,
    "prog_day": "2026-11-20",
    "ripe": [
+    "MMORPG 新作",
     "lib:FINAL FANTASY VII REBIRTH",
     "lib:FINAL FANTASY VII REMAKE INTERGRADE",
     "lib:世界最強の魔女、始めました",
     "lib:羽生善治",
-    "lib:貸した魔力は【リボ払い】で強制徴収"
+    "lib:貸した魔力は【リボ払い】で強制徴収",
+    "哈利波特剧集"
    ],
-   "sig": "e77ceeac9f58",
+   "sig": "aa8d642a1759",
    "token_cap": 1000000,
    "tokens_today": 716056,
    "why": "整理待ちの記事 27 件（8 版面・AI 編集まで版面に載らない）"
