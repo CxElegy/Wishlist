@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-20T01:21:04+00:00",
+ "changed": true,
+ "checked": "2026-11-20T02:18:05+00:00",
  "fired": {
   "at": "2026-11-20T01:21:04+00:00",
   "results": {
@@ -66,31 +66,28 @@
    "items": [
     "A2O LITE",
     "The Mandalorian",
-    "dota2",
-    "lib:NBA",
-    "lib:ちいかわ",
-    "lib:サカナクション",
-    "lib:ブルーアーカイブ",
-    "lib:台風・天気",
-    "lib:広島旅行",
-    "lib:恐竜",
-    "lib:藤井風"
+    "lib:King Gnu",
+    "lib:SPY×FAMILY",
+    "lib:【推しの子】",
+    "lib:ガンプラ",
+    "lib:キャンプ",
+    "lib:ゼルダの伝説",
+    "lib:呪術廻戦",
+    "lib:鬼滅の刃"
    ],
-   "last_batch": "2026-11-19T23:53:38+00:00",
+   "last_batch": "2026-11-20T01:27:04+00:00",
    "last_error": {
     "at": "2026-11-18T23:39:22+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 227,
+   "prog": 237,
    "prog_day": "2026-11-20",
-   "ripe": [
-    "dota2"
-   ],
-   "sig": "66f1aa84bbbf",
+   "ripe": [],
+   "sig": "85aae3df43a7",
    "token_cap": 1000000,
-   "tokens_today": 323421,
-   "why": "整理待ちの記事 100 件（11 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 365274,
+   "why": "整理待ちの記事 98 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -239,12 +236,12 @@
    "runs": 12
   },
   "2026-11-20": {
-   "batches": 10,
-   "cr": 5931716,
-   "cw": 296297,
-   "in": 172,
-   "out": 26952,
-   "runs": 6
+   "batches": 11,
+   "cr": 6396021,
+   "cw": 336641,
+   "in": 188,
+   "out": 28445,
+   "runs": 7
   }
  }
 }
