@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "4beb303edc71",
+ "edit_sig": "33fb01fad054",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -318,43 +318,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 9,
-     "source": "Zoom TV on MSN",
-     "title": "HBO’s Harry Potter series sparks debate over new Elder Wand design",
-     "url": "https://www.msn.com/en-in/entertainment/tv/hbo-s-harry-potter-series-sparks-debate-over-new-elder-wand-design/ar-AA2hPq1t"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 10,
-     "source": "Comic Book Resources",
-     "title": "It Took 90 Seconds for HBO's Harry Potter Show to Fumble an Iconic 25-Year-Old Hogwarts Moment",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQcEZvV1lZQ2JKdTFGN0VLdFhQWU43TWNYVU1PZ0pndnlnQXZ6SGJfVGtnc0NWb0NydW9hQ2xIWTFVTW9LaHkyc3drTk1ZVEZMUnhMOW9JLXhMWExjdXdhOXZBS2RrOFdhRDJYNXd2THVjX1hzMWlhWnEwWV9tY1RaZll3?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 11,
-     "source": "Softonic",
-     "title": "HBO’s new Harry Potter series could introduce Luna Lovegood early",
-     "url": "https://en.softonic.com/articles/hbos-new-harry-potter-series-could-introduce-luna-lovegood-early"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 12,
-     "source": "Yahoo",
-     "title": "5 Harry Potter Characters The HBO TV Series Could Introduce Earlier Than The Movies",
-     "url": "https://www.yahoo.com/entertainment/articles/5-harry-potter-characters-hbo-111200276.html"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 13,
-     "source": "The Tab",
-     "title": "HBO just released new Harry Potter series posters and everyone’s slating the ‘cheap’ wands",
-     "url": "https://thetab.com/2026/11/20/hbo-just-released-new-harry-potter-series-posters-and-everyones-slating-the-cheap-wands"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -399,6 +362,16 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hAuli.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/en-ca/news/other/hbo-s-harry-potter-series-officially-unveils-most-important-magical-artifact-ever/ar-AA2hOTVd",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "HBO's new Harry Potter series could introduce Luna Lovegood early",
+     "highlight": "",
+     "image": "https://s.yimg.com/lo/mysterio/api/f6ee6c5230441557ecddb982ae6da3c593d0fcc685ebee0b6d4992aab54f2404/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftvline.com%2Fb06b5db2216c2e4eb8284ac44b82d663.jpg",
+     "image_via": "og:image（其它来源）",
+     "url": "https://en.softonic.com/articles/hbos-new-harry-potter-series-could-introduce-luna-lovegood-early",
      "weight": "normal"
     }
    ],
@@ -1021,7 +994,7 @@
      "date": "2026-11-17",
      "headline": "The International 2026: China Open Qualifier #1 - Dota 2 - Viewership, Overview, Prize Pool",
      "highlight": "",
-     "image": "https://www.negitaku.org/wp-content/uploads/2026/11/award-puppey-thumb.png",
+     "image": "https://www.negitaku.org/wp-content/uploads/2026/11/HXXHdDUWQAAb51F-1024x960.jpg",
      "image_via": "同一件事的别家报道 www.negitaku.org",
      "url": "https://escharts.com/tournaments/dota2/international-2026-china-open-qualifier-1",
      "weight": "normal"
@@ -1041,8 +1014,8 @@
      "date": "2026-11-20",
      "headline": "「Puppey」コーチ転身1年目で「Esports Coach of the Year」受賞、Dota 2世界大会『The International 2026』準優勝に導く",
      "highlight": "",
-     "image": "https://www.negitaku.org/wp-content/uploads/2026/11/HXXHdDUWQAAb51F-1024x960.jpg",
-     "image_via": "正文图（4 枚から）",
+     "image": "https://www.negitaku.org/wp-content/uploads/2026/11/award-puppey-thumb.png",
+     "image_via": "og:image",
      "url": "https://www.negitaku.org/news/n-27921",
      "weight": "normal"
     }

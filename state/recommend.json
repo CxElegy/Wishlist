@@ -82,7 +82,6 @@
   "https://www.walkerplus.com/article/40260/image207549.html": "https://news.walkerplus.com/article/40260/207548_615.jpg",
   "https://www.walkerplus.com/article/54135/image297391.html": "https://news.walkerplus.com/article/54135/297391_615.jpg",
   "https://www.walkerplus.com/article/85785/image484216.html": "https://news.walkerplus.com/article/85785/484215_615.jpg",
-  "https://www.yahoo.com/entertainment/articles/5-harry-potter-characters-hbo-111200276.html": "https://www.bing.com/th?id=ONUT.Mu8qYtw_Pf2tbWpMc6k2Lw&pid=News&w=640",
   "https://www.youtube.com/watch?v=v28D3JCv22I": "https://i3.ytimg.com/vi/v28D3JCv22I/hqdefault.jpg"
  },
  "picks": [
@@ -1382,27 +1381,6 @@
   },
   {
    "batch": 5,
-   "because": "哈利波特剧集",
-   "date": "2026-11-20",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.Mu8qYtw_Pf2tbWpMc6k2Lw&pid=News&w=640",
-   "kind": "board",
-   "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
-   "score": 6,
-   "source": "Yahoo",
-   "taste": [
-    [
-     "作品:哈利波特剧集",
-     2
-    ]
-   ],
-   "title": "5 Harry Potter Characters The HBO TV Series Could Introduce Earlier Than The Movies",
-   "url": "https://www.yahoo.com/entertainment/articles/5-harry-potter-characters-hbo-111200276.html",
-   "words": [],
-   "work": "哈利波特剧集"
-  },
-  {
-   "batch": 5,
    "because": "ぐでたま",
    "date": "2026-11-19",
    "hits": [],
@@ -1465,7 +1443,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "dota2",
    "date": "2026-11-20",
    "hits": [],
@@ -1946,7 +1924,7 @@
    8
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
@@ -1954,7 +1932,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ]
  ]

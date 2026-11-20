@@ -6696,6 +6696,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/f6ee6c5230441557ecddb982ae6da3c593d0fcc685ebee0b6d4992aab54f2404/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftvline.com%2Fb06b5db2216c2e4eb8284ac44b82d663.jpg": {
+  "w": 1200,
+  "h": 674,
+  "target": 1280,
+  "v": 3
+ },
  "https://s1.ppllstatics.com/surinenglish/www/multimedia/2026/11/20/226693688.jpg": {
   "w": 1800,
   "h": 958,
@@ -7753,12 +7759,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Mu8qYtw_Pf2tbWpMc6k2Lw&pid=News&w=640": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.PCnQzlrF_Z1PziqArEVA2g&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -8632,7 +8632,7 @@
  "https://www.negitaku.org/wp-content/uploads/2026/11/award-puppey-thumb.png": {
   "w": 1200,
   "h": 625,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.nikkansports.com/sports/news/img/202611200001299-w500_1.jpg": {
