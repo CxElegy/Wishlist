@@ -9,7 +9,6 @@
   "http://www.excite.co.jp/news/article/Allabout_133879/": "https://www.bing.com/th?id=ONUT.R36CPneAFDun3FQozGMepQ&pid=News&w=728",
   "https://animeanime.jp/article/2026/11/13/104757.html": "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/955739.jpg",
   "https://biz.chosun.com/en/en-photo-ent/2026/11/20/FTEJPNUTF5FQNPRREQRENP6UFM/": "https://www.bing.com/th?id=ONUT.tTY0IrMS39pDSdic_EuBzQ&pid=News&w=572",
-  "https://blackamericaweb.com/2026/11/19/trump-weighs-in-on-nvidia-shake-up-pennsylvania-measles-deaths-rise-and-gta-6-arrives/": "https://blackamericaweb.com/wp-content/uploads/sites/10/2025/11/17625286773663.jpg?quality=80&strip=all&crop=0,0,100,400px",
   "https://collabo-cafe.com/en/events/collabo/chainsawman-prize-glitter-glamours-reze-cafe-nimichi-2026/": "https://collabo-cafe.com/wp-content/uploads/chainsawman-prize-glitter-glamours-reze-cafe-nimichi-2026-featured-1.jpg",
   "https://collabo-cafe.com/zh-hans/events/collabo/maho-girls-precure-10th-anniversary-party-2027/": "https://collabo-cafe.com/wp-content/uploads/maho-girls-precure-10th-anniversary-party-2027-kv.jpg",
   "https://collider.com/superhero-movies-2000s-perfect-masterpieces/": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/spider-man-on-flag-pole-blue-sky.jpg?w=1600&h=900&fit=crop",
@@ -19,6 +18,7 @@
   "https://go2senkyo.com/seijika/200828/posts/1585240": "https://www.bing.com/th?id=ONUT.HnKmb2sYrlgGzw7cJALhVA&pid=News&w=1200",
   "https://hawk.live/posts/unannounced-game-event-mentioned-dota-2-files": "https://hawk.live/storage/images/posts/mention-new-event-found-dota-2-files-25503.jpg",
   "https://house.udn.com/house/story/123591/9883527": "https://www.bing.com/th?id=ONUT.00q_3SKAZTpUktsTEvv6GQ&pid=News&w=700",
+  "https://inews.setn.com/news/1942091": "https://attach.setn.com/newsimages/2026/11/20/5795494-XXL.jpg",
   "https://limo.media/articles/-/145994": "https://ismcdn.limo.media/mwimgs/2/a/1200w/img_2a4770e1a0c6b4890860e83eb0cba898279696.png",
   "https://m.sohu.com/a/1102672179_121119309?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334": "https://q6.itc.cn/q_70/images03/20261117/a038ca59e51543b0bb9dea382943fffd.jpeg",
   "https://mashable.com/article/july-23-samsung-galaxy-tab-s6-lite": "https://helios-i.mashable.com/imagery/articles/06cMN7IqDesAqLsJSg3CfjX/hero-image.fill.size_1200x675.v1721746055.png",
@@ -930,6 +930,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-20",
+   "hits": [],
+   "image": "https://attach.setn.com/newsimages/2026/11/20/5795494-XXL.jpg",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "三立新聞網SETN.com",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "【美股盤前】利多出盡！GTA6正式發售 母公司股價不漲反跌",
+   "url": "https://inews.setn.com/news/1942091",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "猫用品",
    "date": "2026-11-20",
    "hits": [],
@@ -1000,7 +1021,7 @@
    "work": "ILLIT"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "gelato pique",
    "date": "2026-11-20",
    "hits": [],
@@ -1038,27 +1059,6 @@
    ],
    "title": "GTA 6 : Should You Choose Saved Cash Or Say Nothing In Buck Me",
    "url": "https://screenrant.com/gta-6-buck-me-saved-cash-say-nothing-choice/",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 2,
-   "because": "GTA 6",
-   "date": "2026-11-20",
-   "hits": [],
-   "image": "https://blackamericaweb.com/wp-content/uploads/sites/10/2025/11/17625286773663.jpg?quality=80&strip=all&crop=0,0,100,400px",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "blackamericaweb.com",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "Trump Weighs In on Nvidia , Measles Deaths Rise , & GTA 6",
-   "url": "https://blackamericaweb.com/2026/11/19/trump-weighs-in-on-nvidia-shake-up-pennsylvania-measles-deaths-rise-and-gta-6-arrives/",
    "words": [],
    "work": "GTA 6"
   },
@@ -1934,11 +1934,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1946,7 +1946,7 @@
    8
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
@@ -1954,7 +1954,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ]
  ]
