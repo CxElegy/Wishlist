@@ -44,7 +44,12 @@
   "漫威电影": 14,
   "三星手机": 9,
   "绝区零": 5,
-  "ILLIT": 4
+  "ILLIT": 4,
+  "MMORPG 新作": 4,
+  "gelato pique": 4,
+  "dota2": 3,
+  "チェーンソーマン": 3,
+  "滑雪": 3
  },
  "漫威电影": [
   {
@@ -172,6 +177,93 @@
     "time": "17:30"
    },
    "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000098-kstylens-000-1-view.jpg?exp=10800"
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "「リネージュ クラシック」，公式番組を11月27日20：00から配信。本作独自のコンテンツを初公開し，オート戦闘支援を実機プレイで披露",
+   "highlight": "11月27日20：00から配信",
+   "blurb": "エヌシージャパンは公式番組「リネクラ通信＃1」を11月27日20：00からYouTubeで配信すると発表。12月2日のプレオープンに先駆け、本作独自のコンテンツを初公開する。",
+   "weight": "hero",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-27",
+    "label": "公式番組配信",
+    "time": "20:00"
+   },
+   "image": "https://www.4gamer.net/games/579/G057943/20261120052/SS/001.jpg"
+  },
+  {
+   "headline": "Browser MMORPG You & Me: Level Up adds a server-wide boss and shared hunting ahead of December 1st launch",
+   "highlight": "December 1st launch",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-12-01",
+    "label": "ローンチ"
+   }
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラートピケがカプセルトイの販売を中止 想定を大幅に上回る来場",
+   "highlight": "販売を中止",
+   "blurb": "ジェラートピケがカプセルトイの販売中止を発表。想定を大幅に上回る来場で、販売を安全に継続することが難しいため。",
+   "weight": "lead",
+   "refs": [
+    1,
+    4,
+    3
+   ]
+  },
+  {
+   "headline": "Gelato Pique 2027 Lucky Bag When does Rakuten start? Amazon sales info and restock updates!",
+   "highlight": "2027 Lucky Bag",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "《刀塔2》全新物品！全新野怪！全新机制！全新技能！DOTA2 7.42版本大更新",
+   "highlight": "7.42版本大更新",
+   "blurb": "《刀塔2》7.42版本大更新，带来全新物品、野怪、机制和技能。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/OHPFVEbuhzlitwE.jpg"
+  }
+ ],
+ "チェーンソーマン": [],
+ "滑雪": [
+  {
+   "headline": "金ジュエ氏が白銀にシュプール描く、正恩氏とスキー場を訪問 リゾート開発に注力する北朝鮮",
+   "highlight": "スキー場を訪問",
+   "blurb": "北朝鮮の金正恩氏が娘のジュエ氏とスキー場を訪れ、ジュエ氏が実際にスキーをする姿も公開された。リゾート開発に注力している。",
+   "weight": "lead",
+   "refs": [
+    2,
+    3
+   ],
+   "image": "https://img.topics.smt.news.goo.ne.jp/picture/japanesejoins/m_japanesejoins-357754.jpg"
+  },
+  {
+   "headline": "シーズン間近 スキー場で安全祈願 群馬・沼田市",
+   "highlight": "安全祈願",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
   }
  ]
 }

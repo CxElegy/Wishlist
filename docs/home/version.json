@@ -1,32 +1,32 @@
 {
- "admin": "b131c2bf2689",
- "admin-ai": "b1f890f9067c",
+ "admin": "128644c17da6",
+ "admin-ai": "76fe43ea2014",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "83c8f27a"
+   "12960c4e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c59951b9"
+   "a196e37e"
   ]
  },
- "admin-boards": "869e9b42ba59",
+ "admin-boards": "ba725a7ab5d5",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "84567b07"
+   "0812d0c7"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "c93f9a49d14d",
+ "admin-emblem": "907b46e1308f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "8e89e05b"
+   "b4f2328f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "aeb5a700a5dd",
+ "admin-now": "c41bffd578c8",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e1a8f2c5"
+   "1d65daf1"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "1765cccf"
+   "0566ac7a"
   ]
  },
- "admin-system": "50d74c9c91d8",
+ "admin-system": "ccece08ff40e",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "fe81c6e2"
+   "cd22bf4e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "47ae82f2"
+   "aa0b8c1a"
   ]
  },
  "admin_marks": {},
- "heat": "bfafbef4e1c1",
+ "heat": "214c4dd49a09",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "a75fd791"
+   "30801c7f"
   ],
   "ranking": [
    "ランキング",
-   "a2a8ac5c"
+   "85eeaf2b"
   ]
  },
- "index": "b0685caad0ef",
+ "index": "ebb600cd516b",
  "index_marks": {
   "front": [
    "トップ",
-   "8ce924f0"
+   "b6cde371"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "e107a4b7"
+   "21649892"
   ],
   "w-130724c0": [
    "猫用品",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "53317d03"
+   "f7641a10"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -165,15 +165,15 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "0bc1cd7a"
+   "bbf2c123"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "7eca0829"
+   "61524969"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "69d4cab6"
+   "98a5a547"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "bb9bc331"
   ]
  },
- "updated": "11.21 01:44",
+ "updated": "11.21 01:50",
  "wishlist": "672c2c7957d6"
 }
