@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T22:24:18+00:00",
+ "checked": "2026-11-20T22:30:39+00:00",
  "fired": {
   "at": "2026-11-20T22:00:24+00:00",
   "results": {
@@ -72,31 +72,26 @@
     "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "gelato pique",
     "あつ森",
     "三星手机",
     "哈利波特剧集",
     "滑雪",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-11-20T22:11:25+00:00",
+   "last_batch": "2026-11-20T22:16:29+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 181,
+   "prog": 189,
    "prog_day": "2026-11-21",
-   "ripe": [
-    "dota2",
-    "绝区零"
-   ],
-   "sig": "abfb0e76ffde",
+   "ripe": [],
+   "sig": "bcec018972bb",
    "token_cap": 1000000,
-   "tokens_today": 275560,
-   "why": "整理待ちの記事 21 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 279412,
+   "why": "整理待ちの記事 13 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -253,11 +248,11 @@
    "runs": 15
   },
   "2026-11-21": {
-   "batches": 11,
-   "cr": 5847743,
-   "cw": 251672,
-   "in": 160,
-   "out": 23728,
+   "batches": 13,
+   "cr": 6151120,
+   "cw": 254469,
+   "in": 168,
+   "out": 24775,
    "runs": 5
   }
  }
