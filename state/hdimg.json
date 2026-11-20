@@ -1528,6 +1528,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.thecoolist.com/wp-content/uploads/2026/11/black-cats-get-very-close-to-their-owners.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.totallythebomb.com/wp-content/uploads/2026/11/starbucks-winter-wonderland-cups-2026-official.jpg": {
   "w": 1600,
   "h": 1130,
@@ -1753,6 +1759,12 @@
  "https://dressy.pla-cole.wedding/wp-content/uploads/2025/10/IMG_5151.jpeg": {
   "w": 1179,
   "h": 1179,
+  "target": 1280,
+  "v": 3
+ },
+ "https://e.usen.com/image/e5c17f22ef612405cd5e866218bb758e28b821df.jpg": {
+  "w": 1000,
+  "h": 561,
   "target": 1280,
   "v": 3
  },
@@ -1982,6 +1994,12 @@
   "target": 720,
   "v": 3
  },
+ "https://helios-i.mashable.com/imagery/articles/06cMN7IqDesAqLsJSg3CfjX/hero-image.fill.size_1200x675.v1721746055.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://hermes.media.static.aol.com/media/2026/11/18/b2fecc17-6867-35eb-893f-232a69589212/525e06a8-8dfe-471f-a5c9-dc01d15ccec5.jpg": {
   "w": 1600,
   "h": 898,
@@ -2142,15 +2160,60 @@
   "target": 720,
   "v": 3
  },
+ "https://image.ajunews.com/content/image/2026/11/18/20261118161007382055.jpg": {
+  "w": 640,
+  "h": 375,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.446,
+  "local": "pics/cefec0cc3046101d.webp",
+  "out": [
+   1280,
+   750
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    4,
+    3,
+    3,
+    10,
+    31,
+    28,
+    4,
+    3,
+    3,
+    4,
+    3
+   ],
+   [
+    7,
+    6,
+    4,
+    3,
+    19,
+    18,
+    18,
+    14,
+    4,
+    3,
+    3,
+    1
+   ]
+  ],
+  "c": "#6a5342",
+  "k": [
+   0.8,
+   0.878,
+   0.92,
+   0.934
+  ],
+  "p": null
+ },
  "https://image.cmoney.tw/attachment/blog/1794931200/f94433d9-4fd3-40ed-9373-f4a4ff191325.jpg": {
   "w": 688,
   "h": 384,
-  "target": 720,
-  "v": 3
- },
- "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg": {
-  "w": 1280,
-  "h": 672,
   "target": 720,
   "v": 3
  },
@@ -2170,6 +2233,12 @@
   "w": 600,
   "h": 407,
   "target": 720,
+  "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/stf/4/d/4d844_1847_2de308cd584360294a2c2a2b415befaf.jpg": {
+  "w": 1000,
+  "h": 667,
+  "target": 1280,
   "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/6/d/6d626_760_2493135_20261116_122419_size640wh_46866926.jpg": {
@@ -2410,6 +2479,12 @@
   "w": 1920,
   "h": 1280,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hKXP7.img": {
+  "w": 1600,
+  "h": 1200,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hKaIG.img": {
@@ -3133,11 +3208,18 @@
   "target": 720,
   "v": 3
  },
- "https://img5.yna.co.kr/photo/yna/YH/2026/11/13/PYH2026111301290001300_P4.jpg": {
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FAllabout%252Fb9%252FAllabout_133879%252FAllabout_133879_1.jpg,zoom=1200,quality=70,type=jpg": {
   "w": 1200,
-  "h": 675,
+  "h": 900,
   "target": 1280,
   "v": 3
+ },
+ "https://imgcloud.cardu.com.tw/201910/20261118/Cardu_6afdbf55e9e00.jpg": {
+  "w": 750,
+  "h": 499,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.371
  },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
@@ -3414,12 +3496,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.mauinow.com/file/mauinow/2026/11/1794625130452310.jpg": {
-  "w": 1024,
-  "h": 576,
-  "target": 1280,
-  "v": 3
- },
  "https://media.pocketgamer.com/artwork/na-38549-1795023259/astrae-oratio-fireworks-keyscreen.png": {
   "w": 1010,
   "h": 505,
@@ -3432,22 +3508,16 @@
   "target": 720,
   "v": 3
  },
+ "https://media.trilltrill.jp/articles/5198062/featured-image.9f5e4fa7bb3d391856ff71a19786e7be?w=1200": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://media.unboxholics.com/media/source/Articles/139067/images/socialMediaImage/harry-potter-fans-hans-zimmer.jpg": {
   "w": 1120,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/11/1794975918325-2dbd480da6fe4a49a7788df4dbd16c99-850x446.webp": {
-  "w": 850,
-  "h": 446,
-  "target": 720,
-  "v": 3
- },
- "https://memeburn.com/wp-content/uploads/2026/11/Galaxy-Tab-S12-vs-Galaxy-Tab-S10-Is-Samsungs-Newer-Tablet-Worth-the-Premium.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
   "v": 3
  },
  "https://mezha.net/eng/wp-content/mezha-og-r205/kd_image_generate/eng/3745119-fc1c0eea235c.jpg": {
@@ -3518,6 +3588,12 @@
    0.703
   ],
   "p": null
+ },
+ "https://moonvoke.com/images/news/donguri-republic-snowman-totoro-banqiao-guide-2026.webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
  },
  "https://mtnweekly.com/wp-content/uploads/2026/11/Rossignol-Juggernaut-Snowboard-3.jpg": {
   "w": 1090,
@@ -5532,12 +5608,6 @@
   "target": 720,
   "v": 3
  },
- "https://oyster.ignimgs.com/mediawiki/apis.ign.com/hello-kitty-island-adventure/6/60/Hello_Kitty_Pochacco_Birthday.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://p.potaufeu.asahi.com/0522-p/picture/31557957/235eedbabe4894881c0efff253edf809.jpg": {
   "w": 1200,
   "h": 800,
@@ -7023,6 +7093,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.appbank.net/wp-content/uploads/2026/11/20261119_013257_154_01.webp": {
+  "w": 1268,
+  "h": 951,
+  "target": 720,
+  "v": 3
+ },
  "https://www.asahi.com/and/ogp/ogp_and.png": {
   "w": 1200,
   "h": 630,
@@ -7528,113 +7604,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.MpghNpWO8ffxSUeE1opjTQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.519,
-  "local": "pics/58cee886d7e6798d.webp",
-  "out": [
-   1280,
-   852
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    1,
-    1,
-    4,
-    4,
-    8,
-    32,
-    33,
-    8,
-    4,
-    3,
-    2,
-    1
-   ],
-   [
-    2,
-    2,
-    4,
-    13,
-    26,
-    25,
-    11,
-    6,
-    6,
-    4,
-    2,
-    1
-   ]
-  ],
-  "c": "#4e5b45",
-  "k": [
-   0.012,
-   0.116,
-   0.855,
-   0.795
-  ],
-  "p": [
-   0.853,
-   0.087,
-   0.952,
-   0.28
-  ]
- },
- "https://www.bing.com/th?id=ONUT.OOJfb-VcFRjRtGR5auQJ6w&pid=News&w=615": {
-  "w": 615,
-  "h": 443,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.482,
-  "local": "pics/2f336c91cfa9b99b.webp",
-  "out": [
-   1280,
-   922
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    12,
-    9,
-    6,
-    7,
-    5,
-    10,
-    11,
-    8,
-    7,
-    8,
-    7,
-    11
-   ],
-   [
-    13,
-    2,
-    3,
-    4,
-    5,
-    10,
-    12,
-    9,
-    8,
-    9,
-    9,
-    15
-   ]
-  ],
-  "c": "#d2cbc5",
-  "k": [
-   0.086,
-   0.174,
-   0.956,
-   0.803
-  ],
-  "p": null
- },
  "https://www.bing.com/th?id=ONUT.PCXHZ_HTDPNy_bZxiKLpVA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7769,12 +7738,6 @@
    0.518
   ]
  },
- "https://www.bing.com/th?id=ONUT.fcbWjHj4vwy0lluht7ccgg&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500": {
   "w": 500,
   "h": 281,
@@ -7895,13 +7858,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.402
- },
- "https://www.bing.com/th?id=ONUT.tiy6Mg2arjYOj9zmJrpxHQ&pid=News&w=745": {
-  "w": 700,
-  "h": 432,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.35
  },
  "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
   "w": 700,
@@ -8547,6 +8503,12 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Anthony-Mackie.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.techadvisor.com/wp-content/uploads/2026/11/3182041-0-17409400-1794583487-Samsung-Galaxy-S26-Ultra-review-13.jpg?quality=50&strip=all&w=1024": {
+  "w": 1024,
+  "h": 574,
   "target": 1280,
   "v": 3
  },

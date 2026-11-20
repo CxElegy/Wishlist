@@ -294,7 +294,7 @@
   "哈利波特剧集": 8,
   "ILLIT": 17,
   "三星手机": 16,
-  "Astrae Oratio": 3,
+  "Astrae Oratio": 4,
   "The Mandalorian": 4,
   "dota2": 13,
   "gelato pique": 7,
@@ -302,11 +302,11 @@
   "BLEACH Mirrors High": 1,
   "MMORPG 新作": 6,
   "周杰伦": 24,
-  "绝区零": 4,
+  "绝区零": 6,
   "チェーンソーマン": 2,
   "FROM": 5,
-  "星巴克马克杯": 1,
-  "猫用品": 1,
+  "星巴克马克杯": 2,
+  "猫用品": 2,
   "滑雪": 7
  },
  "Astrae Oratio": [
@@ -335,6 +335,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "아트북은 한국어로, 상영회는 팝콘과 함께…엔씨 '아스오라' AGF 2026 굿즈 상세 정보 공개",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -582,7 +591,8 @@
    "blurb": "호요버스 코리아가 지스타 2026에서 신작 2종을 포함한 5개 타이틀로 부스를 꾸몄다.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    6
    ]
   },
   {
@@ -603,6 +613,20 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "「コミLab.」が三重県に初出店！『原神』『ゼンレスゾーンゼロ』などグッズ1,400種類以上",
+   "highlight": "11月20日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ],
+   "event": {
+    "date": "2026-11-20",
+    "label": "オープン",
+    "place": "未来屋書店東員店"
+   }
   }
  ],
  "チェーンソーマン": [
@@ -652,6 +676,19 @@
     1
    ],
    "image": "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200"
+  },
+  {
+   "headline": "「開店前並んでゲット」スタバ『ホリデーグッズ』本日発売。オンラインでは売り切れ商品も",
+   "highlight": "本日発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-20",
+    "label": "発売日"
+   }
   }
  ],
  "猫用品": [],

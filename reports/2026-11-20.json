@@ -1,20 +1,11 @@
 {
  "date": "2026-11-20",
- "edit_sig": "3a7f320e7e27",
+ "edit_sig": "80e1bad7ef7b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 4,
-     "source": "www.duckhub.co.kr",
-     "title": "아트북은 한국어로, 상영회는 팝콘과 함께…엔씨 '아스오라' AGF 2026 굿즈 상세 정보 공개",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5ENHd5RDlrNFRqRngtdi1rcGJIRGc3S2dtNE4zR20tNmJ3aW1xSC0xR0N0dV9vX182X004bk83N0E3dlBCZmZSZ2xRcmNULU5UQ0t0RnZ5aDVWZUZEc1pTcEwxblNIZ2NLS3c?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -46,6 +37,17 @@
      "image": "https://automaton-media.com/en/wp-content/uploads/2026/11/20261118-75399-header.jpg",
      "image_via": "og:image",
      "url": "https://automaton-media.com/en/news/astrae-oratio-unveils-tokusatsu-obsessed-denpa-girl-who-swears-she-can-communicate-with-kaiju-in-latest-character-showcase/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "아트북은 한국어로, 상영회는 팝콘과 함께…엔씨 '아스오라' AGF 2026 굿즈 상세 정보 공개",
+     "highlight": "",
+     "image": null,
+     "source": "www.duckhub.co.kr",
+     "source_icon": "https://cdn.duckhub.co.kr/favicon.ico",
+     "url": "https://www.duckhub.co.kr/news/articleView.html?idxno=2303",
      "weight": "normal"
     }
    ],
@@ -718,22 +720,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 5,
-     "source": "AppBank",
-     "title": "「コミLab.」が三重県に初出店！『原神』『ゼンレスゾーンゼロ』などグッズ1,400種類以上、未来屋書店東員店で11月20日オープン",
-     "url": "https://www.appbank.net/2026/11/20/iphone-news/3170342.php"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 6,
-     "source": "AP신문",
-     "title": "[지스타] \"대기시간 120분 돌파\"…호요버스 '젠레스 존 제로' 부스 구름 인파",
-     "url": "https://www.apnews.kr/news/articleView.html?idxno=3053303"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -764,6 +750,21 @@
      "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/496559.png?date=1746576286",
      "image_via": "JSON-LD",
      "url": "https://gamewith.jp/gaming-pc/496559",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "event": {
+      "date": "2026-11-20",
+      "label": "オープン",
+      "place": "未来屋書店東員店"
+     },
+     "headline": "「コミLab.」が三重県に初出店！『原神』『ゼンレスゾーンゼロ』などグッズ1,400種類以上",
+     "highlight": "11月20日",
+     "image": "https://www.appbank.net/wp-content/uploads/2026/11/20261119_013257_154_01.webp",
+     "image_via": "og:image",
+     "url": "https://www.appbank.net/2026/11/20/iphone-news/3170342.php",
      "weight": "normal"
     }
    ],
@@ -943,15 +944,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 2,
-     "source": "朝日新聞デジタル on MSN",
-     "title": "「開店前並んでゲット」スタバ『ホリデーグッズ』本日発売。オンラインでは売り切れ商品も",
-     "url": "https://www.msn.com/ja-jp/news/other/%E9%96%8B%E5%BA%97%E5%89%8D%E4%B8%A6%E3%82%93%E3%81%A7%E3%82%B2%E3%83%83%E3%83%88-%E3%82%B9%E3%82%BF%E3%83%90-%E3%83%9B%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B0%E3%83%83%E3%82%BA-%E6%9C%AC%E6%97%A5%E7%99%BA%E5%A3%B2-%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%A7%E3%81%AF%E5%A3%B2%E3%82%8A%E5%88%87%E3%82%8C%E5%95%86%E5%93%81%E3%82%82/ar-AA2hKSIB"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -963,6 +955,20 @@
      "image_via": "AI 挑选",
      "url": "https://www.msn.com/en-us/news/other/starbucks-japans-first-christmas-advent-calendar-hides-7-surprises/ar-AA2hNFGl",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "event": {
+      "date": "2026-11-20",
+      "label": "発売日"
+     },
+     "headline": "「開店前並んでゲット」スタバ『ホリデーグッズ』本日発売。オンラインでは売り切れ商品も",
+     "highlight": "本日発売",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hKXP7.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/news/other/%E9%96%8B%E5%BA%97%E5%89%8D%E4%B8%A6%E3%82%93%E3%81%A7%E3%82%B2%E3%83%83%E3%83%88-%E3%82%B9%E3%82%BF%E3%83%90-%E3%83%9B%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B0%E3%83%83%E3%82%BA-%E6%9C%AC%E6%97%A5%E7%99%BA%E5%A3%B2-%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%A7%E3%81%AF%E5%A3%B2%E3%82%8A%E5%88%87%E3%82%8C%E5%95%86%E5%93%81%E3%82%82/ar-AA2hKSIB",
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
@@ -974,33 +980,6 @@
     "bg": "#F6F1E7",
     "fg": "#1E3932",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 2,
-     "source": "大人のおしゃれ手帖web on MSN",
-     "title": "愛犬・愛猫の不調に「中医学」という選択肢。獣医師が解説する正しい取り入れ方",
-     "url": "https://www.msn.com/ja-jp/health/%E5%85%A8%E8%88%AC/%E6%84%9B%E7%8A%AC-%E6%84%9B%E7%8C%AB%E3%81%AE%E4%B8%8D%E8%AA%BF%E3%81%AB-%E4%B8%AD%E5%8C%BB%E5%AD%A6-%E3%81%A8%E3%81%84%E3%81%86%E9%81%B8%E6%8A%9E%E8%82%A2-%E7%8D%A3%E5%8C%BB%E5%B8%AB%E3%81%8C%E8%A7%A3%E8%AA%AC%E3%81%99%E3%82%8B%E6%AD%A3%E3%81%97%E3%81%84%E5%8F%96%E3%82%8A%E5%85%A5%E3%82%8C%E6%96%B9/ar-AA2hOOln"
-    }
-   ],
-   "section": "生活",
-   "stories": [],
-   "subtitle": "猫グッズ · 家里两只猫",
-   "theme": {
-    "accent": "#E8875B",
-    "alt_accent": "#F3B6B0",
-    "alt_bg": "#3A2C24",
-    "alt_fg": "#FBF4EA",
-    "bg": "#FBF4EA",
-    "fg": "#3A2C24",
-    "font": "sans",
     "split": true
    }
   },
@@ -1088,6 +1067,31 @@
     "fg": "#F5F7F2",
     "font": "sans",
     "split": false
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-19",
+    "headline": "猫耳と肉球がついたSwitch 2用カバーを発見。やっぱり猫が好きな人にオススメ！",
+    "url": "https://ascii.jp/elem/000/004/452/4452848/"
+   },
+   "name": "猫用品",
+   "quiet": true,
+   "section": "生活",
+   "status": "",
+   "stories": [],
+   "subtitle": "猫グッズ · 家里两只猫",
+   "theme": {
+    "accent": "#E8875B",
+    "alt_accent": "#F3B6B0",
+    "alt_bg": "#3A2C24",
+    "alt_fg": "#FBF4EA",
+    "bg": "#FBF4EA",
+    "fg": "#3A2C24",
+    "font": "sans",
+    "split": true
    }
   },
   {
