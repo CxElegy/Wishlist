@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-20T12:25:42+00:00",
+ "changed": true,
+ "checked": "2026-11-20T13:19:22+00:00",
  "fired": {
   "at": "2026-11-20T12:25:42+00:00",
   "results": {
@@ -65,14 +65,12 @@
    },
    "items": [
     "MMORPG 新作",
-    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
-    "lib:ポケットモンスター",
-    "lib:ユニクロ",
-    "lib:宇宙・ロケット",
-    "lib:将棋",
-    "lib:温泉",
-    "lib:無印良品",
-    "lib:生成AI",
+    "lib:FINAL FANTASY VII REBIRTH",
+    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
+    "lib:世界最強の魔女、始めました",
+    "lib:牧野植物園",
+    "lib:羽生善治",
+    "lib:貸した魔力は【リボ払い】で強制徴収",
     "哈利波特剧集"
    ],
    "last_batch": "2026-11-20T10:45:43+00:00",
@@ -81,15 +79,19 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 513,
+   "prog": 521,
    "prog_day": "2026-11-20",
    "ripe": [
-    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ"
+    "lib:FINAL FANTASY VII REBIRTH",
+    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
+    "lib:世界最強の魔女、始めました",
+    "lib:羽生善治",
+    "lib:貸した魔力は【リボ払い】で強制徴収"
    ],
-   "sig": "834d8e68dd51",
+   "sig": "e77ceeac9f58",
    "token_cap": 1000000,
    "tokens_today": 716056,
-   "why": "整理待ちの記事 94 件（10 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 27 件（8 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
