@@ -378,7 +378,7 @@
   "哈利波特剧集": 13,
   "ILLIT": 36,
   "三星手机": 45,
-  "Astrae Oratio": 4,
+  "Astrae Oratio": 7,
   "The Mandalorian": 4,
   "dota2": 24,
   "gelato pique": 9,
@@ -412,7 +412,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    6
    ]
   },
   {
@@ -421,7 +422,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    7
    ]
   },
   {
@@ -431,6 +433,15 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "엔씨 아스오라 나카노 특촬연구회 3인방의 특별한 우정 미리보기",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
