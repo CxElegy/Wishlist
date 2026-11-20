@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T15:19:26+00:00",
+ "checked": "2026-11-20T16:18:49+00:00",
  "fired": {
   "at": "2026-11-20T14:38:41+00:00",
   "results": {
@@ -64,19 +64,14 @@
     "sig": "23425b4504c4"
    },
    "items": [
-    "MMORPG 新作",
-    "Vaundy",
-    "gelato pique",
+    "lib:Ado",
     "lib:King Gnu",
     "lib:SPY×FAMILY",
     "lib:【推しの子】",
     "lib:ガンプラ",
-    "lib:キャンプ",
     "lib:ゼルダの伝説",
     "lib:呪術廻戦",
-    "lib:鬼滅の刃",
-    "ぐでたま",
-    "チェーンソーマン"
+    "lib:鬼滅の刃"
    ],
    "last_batch": "2026-11-20T14:45:51+00:00",
    "last_error": {
@@ -84,13 +79,13 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 529,
-   "prog_day": "2026-11-20",
+   "prog": 8,
+   "prog_day": "2026-11-21",
    "ripe": [],
-   "sig": "3958c997deca",
+   "sig": "c7154cb9b9ab",
    "token_cap": 1000000,
-   "tokens_today": 843092,
-   "why": "整理待ちの記事 103 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
