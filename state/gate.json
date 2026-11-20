@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T14:01:08+00:00",
+ "checked": "2026-11-20T14:19:20+00:00",
  "fired": {
   "at": "2026-11-20T13:29:02+00:00",
   "results": {
@@ -66,55 +66,46 @@
    "items": [
     "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "Vaundy",
     "dota2",
     "gelato pique",
-    "lib:FINAL FANTASY VII REBIRTH",
-    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
-    "lib:世界最強の魔女、始めました",
+    "lib:NBA",
+    "lib:台風・天気",
+    "lib:広島旅行",
+    "lib:恐竜",
     "lib:牧野植物園",
     "lib:羽生善治",
+    "lib:藤井風",
     "lib:貸した魔力は【リボ払い】で強制徴収",
     "ぐでたま",
     "チェーンソーマン",
-    "三星手机",
     "哈利波特剧集",
     "滑雪",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-11-20T13:46:58+00:00",
+   "last_batch": "2026-11-20T14:07:29+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 544,
+   "prog": 582,
    "prog_day": "2026-11-20",
    "ripe": [
     "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
     "dota2",
-    "lib:FINAL FANTASY VII REBIRTH",
-    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
-    "lib:世界最強の魔女、始めました",
     "lib:羽生善治",
     "lib:貸した魔力は【リボ払い】で強制徴収",
-    "三星手机",
     "哈利波特剧集",
     "滑雪",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "sig": "49e98dfffd0e",
+   "sig": "d06d40db8c7c",
    "token_cap": 1000000,
-   "tokens_today": 766003,
-   "why": "整理待ちの記事 96 件（21 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 778061,
+   "why": "整理待ちの記事 110 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -263,11 +254,11 @@
    "runs": 12
   },
   "2026-11-20": {
-   "batches": 37,
-   "cr": 14997598,
-   "cw": 702007,
-   "in": 428,
-   "out": 63568,
+   "batches": 41,
+   "cr": 15960934,
+   "cw": 710820,
+   "in": 451,
+   "out": 66790,
    "runs": 14
   }
  }
