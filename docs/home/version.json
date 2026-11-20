@@ -1,32 +1,32 @@
 {
- "admin": "4cdf339545c8",
- "admin-ai": "ca0a79a0f7c2",
+ "admin": "a274a39d594b",
+ "admin-ai": "83a8ff68c56b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5e6f4c32"
+   "f1ae5bb3"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "2c6427d8"
+   "e6912432"
   ]
  },
- "admin-boards": "d073b30d6080",
+ "admin-boards": "730d93e15760",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "08820a50"
+   "786391cb"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "de5832fc0c80",
+ "admin-emblem": "204313ebc370",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "2befb846"
+   "234c8873"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e86fbe3fb12f",
  "admin-members_marks": {},
- "admin-now": "18c6c545bc56",
+ "admin-now": "829034eaf028",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0b1c102e"
+   "0b3a98e0"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "20c4400b"
+   "53df5356"
   ]
  },
- "admin-system": "bb243d77a219",
+ "admin-system": "628414f626a2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1dcfefd4"
+   "685fc2d6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8fd51c50"
+   "111933ad"
   ]
  },
  "admin_marks": {},
- "heat": "2a0a0e521f37",
+ "heat": "7adf36de5433",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "49715bec"
+   "bc3c1934"
   ],
   "ranking": [
    "ランキング",
-   "8e8aaf0b"
+   "fa9b26e8"
   ]
  },
- "index": "6eeed7d5efe4",
+ "index": "7c211417c523",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "19a27fb3"
+   "330c042a"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "5d14bd2c"
+   "f25e19b1"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -196,6 +196,6 @@
    "64154a8c"
   ]
  },
- "updated": "11.20 11:34",
+ "updated": "11.20 11:42",
  "wishlist": "1a221a1fb8ac"
 }

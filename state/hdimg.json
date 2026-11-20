@@ -1484,6 +1484,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cimg.kgl-systems.io/camion/files/94349/thumbnail_Wetg.jpg?x=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://cimg.kgl-systems.io/camion/files/dengeki/94341/a135007e7085979a7d5b41ce54c0e54d7.jpg?x=1280": {
   "w": 958,
   "h": 1280,
@@ -6689,12 +6695,6 @@
   "h": 856,
   "target": 1280,
   "v": 3
- },
- "https://times-abema.ismcdn.jp/mwimgs/3/9/1200w/img_39b6d129ab3439549db7c0639abe2c02341504.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-20"
  },
  "https://today-obs.line-scdn.net/0hjiIQVYaPNUZ0KCnfGo5KEUx-OTdHTi9PVhp7IFl4aiRcBCJHGBpmJVgqPmoJTyVFVE15d1B4Y35dGXEZHw/w1200": {
   "w": 1200,
