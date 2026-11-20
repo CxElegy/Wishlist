@@ -1907,6 +1907,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg": {
+  "w": 826,
+  "h": 1153,
+  "target": 720,
+  "v": 3
+ },
  "https://i.abcnewsfe.com/a/02d94113-efa9-481c-9232-0dfafe5b3238/RyanGosling-gty-sn-260726_1785097233106_hpMain_16x9.jpg?w=1600": {
   "w": 1600,
   "h": 900,
@@ -7380,6 +7386,62 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.MpghNpWO8ffxSUeE1opjTQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.519,
+  "local": "pics/58cee886d7e6798d.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    1,
+    1,
+    4,
+    4,
+    8,
+    32,
+    33,
+    8,
+    4,
+    3,
+    2,
+    1
+   ],
+   [
+    2,
+    2,
+    4,
+    13,
+    26,
+    25,
+    11,
+    6,
+    6,
+    4,
+    2,
+    1
+   ]
+  ],
+  "c": "#4e5b45",
+  "k": [
+   0.012,
+   0.116,
+   0.855,
+   0.795
+  ],
+  "p": [
+   0.853,
+   0.087,
+   0.952,
+   0.28
+  ]
  },
  "https://www.bing.com/th?id=ONUT.OOJfb-VcFRjRtGR5auQJ6w&pid=News&w=615": {
   "w": 615,

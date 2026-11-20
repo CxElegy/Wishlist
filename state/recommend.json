@@ -1,9 +1,8 @@
 {
  "image_misses": {
-  "https://gamepedia.jp/ac-switch/items?item_type1=&item_type2=%E6%BC%86%E5%96%B0%E5%A3%81&sort=price": "2026-11-19",
-  "https://hypebeast.cn/2026/11/ut": "2026-11-19",
-  "https://www.cleveland.com/food/2026/11/the-nostalgic-detail-hidden-in-starbucks-new-holiday-cups-that-has-everyone-talking.html": "2026-11-19",
-  "https://www.techradar.com/news/best-tablet": "2026-11-19"
+  "https://gamepedia.jp/ac-switch/items?item_type1=&item_type2=%E6%BC%86%E5%96%B0%E5%A3%81&sort=price": "2026-11-20",
+  "https://hypebeast.cn/2026/11/ut": "2026-11-20",
+  "https://www.techradar.com/news/best-tablet": "2026-11-20"
  },
  "images": {
   "http://www.excite.co.jp/news/article/Atpress_647917/": "https://s.eximg.jp/exnews/feed/Atpress/a0/Atpress_647917/Atpress_647917_1.jpg",
@@ -44,7 +43,7 @@
   "https://www.asiae.co.kr/realtime/sokbo_viewNew.htm?idxno=2026111809161820955": "https://www.bing.com/th?id=ONUT.tiy6Mg2arjYOj9zmJrpxHQ&pid=News&w=745",
   "https://www.bbc.com/news/articles/ckgj3213vjwyo": "https://ichef.bbci.co.uk/news/1024/branded_news/ff78/live/9b1c3810-e351-11f1-99aa-0f40b013ad11.jpg",
   "https://www.chinatimes.com/realtimenews/20261119002878-260409": "https://images.chinatimes.com/newsphoto/2026-11-19/656/20261119002879.jpg",
-  "https://www.cleveland.com/food/2026/11/the-nostalgic-detail-hidden-in-starbucks-new-holiday-cups-that-has-everyone-talking.html": null,
+  "https://www.cleveland.com/food/2026/11/the-nostalgic-detail-hidden-in-starbucks-new-holiday-cups-that-has-everyone-talking.html": "https://www.bing.com/th?id=ONUT.MpghNpWO8ffxSUeE1opjTQ&pid=News&w=1200",
   "https://www.famitsu.com/article/202611/94349": "https://cimg.kgl-systems.io/camion/files/94349/thumbnail_Wetg.jpg?x=1280",
   "https://www.fnnews.com/news/202611191816267022": "https://www.bing.com/th?id=ONUT.EeiSmwLPyt1XarC17pWGqQ&pid=News&w=525",
   "https://www.geeky-gadgets.com/galaxy-s27-ultra-vs-pro/": "https://www.bing.com/th?id=ONUT.dx8u1TnbOJlLJ1eywyL3LA&pid=News&w=1200",
@@ -832,7 +831,7 @@
    "hits": [
     "星巴克"
    ],
-   "image": null,
+   "image": "https://www.bing.com/th?id=ONUT.MpghNpWO8ffxSUeE1opjTQ&pid=News&w=1200",
    "kind": "wish",
    "score": 6,
    "source": "Cleveland.com",
@@ -1931,15 +1930,15 @@
    8
   ],
   [
-   "三星 Galaxy",
-   7
-  ],
-  [
    "作品:三星手机",
    7
   ],
   [
    "galaxy",
+   7
+  ],
+  [
+   "三星 Galaxy",
    7
   ]
  ]

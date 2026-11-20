@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "5e2dfbc0e2b0",
+ "edit_sig": "5d735042f74a",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -654,22 +654,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 6,
-     "source": "17173",
-     "title": "《刀塔2》本来不想出圣剑的，不小心合错了，那就速度推了吧——Yatoro让你知道Goat怎么嘉豪",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBfSzJ4MXNMbGZRejNPZlUyblpkMjBvREdVb3lETDVNekpYbkJiTjlVZXRCUTRDMzBoYjhiaFB1cm55QUdZSGhOY1JQRllOM3hBeDBCbk52ejBPQzlUUU8tenVBYVRSUQ?oc=5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 7,
-     "source": "Esports Charts",
-     "title": "EPL Championship Season 1 - Dota 2 - 視聴率、概要、賞金総額",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBDWFlja29uU2x5ZEtYRjdnZ1M1cGJFaGNjSmJkVDBIdm5Cd2VkbWRyMldzM1YxQlFMQTFHYXFDeDNWaThFWUJwbXlLeERiWEV6ZlZXYV9YazY0MndoNWxYeGl1NUh3X3MtOVY1Ty1oa1F3a0daNWc?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -691,6 +675,27 @@
      "source": "Esports Charts",
      "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
      "url": "https://escharts.com/ja/tournaments/dota2/dreamleague-division-2-season-3",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "EPL Championship Season 1 - Dota 2 - 視聴率、概要、賞金総額",
+     "highlight": "",
+     "image": null,
+     "source": "Esports Charts",
+     "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
+     "url": "https://escharts.com/ja/tournaments/dota2/epl-championship-season-1",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "《刀塔2》本来不想出圣剑的，不小心合错了，那就速度推了吧——Yatoro让你知道Goat怎么嘉豪",
+     "highlight": "",
+     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://news.17173.com/content/11182026/151335144.shtml",
      "weight": "normal"
     }
    ],
