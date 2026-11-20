@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "8a4651b12775",
+ "edit_sig": "123bdbed7f9e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -737,29 +737,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 8,
-     "source": "iXBT.games",
-     "title": "Valve fixed infinite gold bug for Meepo and improved Dota 2 performance — update 7.2 released with extended settings",
-     "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxQQjBmLVdJR2lDSWxaUjUwaTdvYTR2ZnVHaDBuSjZBd3prZ3F0d3VPLW9mTFRYWXdmTjFMV3BjQ0Z5dWI0dWJId19zbmZSY2RNRW1qTTR4eXM2bGh0bVJYV0xtRkFhOUpNbFgtOTBKM005ZnpQQndpN29KZnJyMlNCTWI4WG1GQjdOdHlwM0xFZS10cnBSQjFrNlNKZmJXWHdDTy14XzJRTklfZlZkMlJUMllkQnlINU5HN01ySHVCLUIyVFl1dEdiMG5XejhLVmM4OHkxTnhHX2VsMjMzMm5CNjVSYUFKR2tpSFBBZHI2STFOb3RFRXZfU1pBX3FzVkJGMXNBblZ0ZnFkSnh3VHpV0gGPAkFVX3lxTFBCMGYtV0lHaUNJbFpSNTBpN29hNHZmdUdoMG5KNkF3emtncXR3dU8tb2ZMVFhZd2ZOMUxXcGNDRnl1YjR1Ykh3X3NuZlJjZE1FbWpNNHh5czZsaHRtUlhXTG1GQWE5Sk1sWC05MEozTTlmelBCd2k3b0pmcnIyU0JNYjhYbUZCN050eXAzTEVlLXRycFJCMWs2U0pmYldYd0NPLXhfMlFOSV9mVmQyUlQyWWRCeUg1Tkc3TXJIdUItQjJUWXV0R2Iwbld6OEtWYzg4eTFOeEdfZWwyMzMybkI2NVJhQUpHa2lIUEFkcjZJMU5vdEVFdl9TWkFfcXNWQkYxc0FuVnRmcWRKeHdUelU?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 9,
-     "source": "ESTNN",
-     "title": "Dota 2 Patch 7.42 Notes: Map, Item and Neutral Creep Changes – Esports News Network",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1GYk9xNnJmT1FkUFJrMUc3OHdQZ2VEUWVhczFUVDJvQkFIU1p0ZmVfNUVoOW41eG5nWkFTTmJobHcxRWpUd0dSajJUSGNvNzVPblpKVkVVdm1TdjBiVXhxSFhQdVRpWXF2S2F4MTV3?oc=5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 10,
-     "source": "Esports Charts",
-     "title": "The International 2026: China Open Qualifier #1 - Dota 2 - Viewership, Overview, Prize Pool",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOQUcwbnVMbGlXVHRoOUxoWS1UMTNQcjR3S0VQclVFN21QLU94MDNkUjBTWFc3aWxFOXM0WnZYVzdjZzZqWUdxZURZb19WQ2Vybzc0Nmlib1d4OWh5blNlbkd1Qks4Yk9sX1MwMFZPenMtMXJ1Qm5CTFpQajFaVldwN3ZWY19nelk?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -802,6 +779,17 @@
      "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg",
      "image_via": "JSON-LD",
      "url": "https://news.17173.com/content/11182026/151335144.shtml",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "The International 2026: China Open Qualifier #1 - Dota 2 - Viewership, Overview, Prize Pool",
+     "highlight": "",
+     "image": null,
+     "source": "Esports Charts",
+     "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
+     "url": "https://escharts.com/tournaments/dota2/international-2026-china-open-qualifier-1",
      "weight": "normal"
     }
    ],

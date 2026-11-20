@@ -280,7 +280,7 @@
   "三星手机": 11,
   "Astrae Oratio": 3,
   "The Mandalorian": 2,
-  "dota2": 7,
+  "dota2": 10,
   "gelato pique": 7,
   "A2O LITE": 18,
   "BLEACH Mirrors High": 1,
@@ -350,7 +350,9 @@
    "weight": "lead",
    "refs": [
     1,
-    3
+    3,
+    9,
+    8
    ]
   },
   {
@@ -378,6 +380,15 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "The International 2026: China Open Qualifier #1 - Dota 2 - Viewership, Overview, Prize Pool",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
