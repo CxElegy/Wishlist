@@ -1107,6 +1107,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gameinsight.co.kr/news/photo/202611/37002_91031_72.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/data_center/347/527/20261112142009.webp": {
   "w": 1200,
   "h": 675,
@@ -7653,57 +7659,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.gb04mXAYOEa79BecUyXZTQ&pid=News&w=700": {
-  "w": 700,
-  "h": 466,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.444,
-  "local": "pics/4eba8aae628df0d2.webp",
-  "out": [
-   1280,
-   852
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    7,
-    7,
-    7,
-    8,
-    11,
-    12,
-    8,
-    6,
-    8,
-    8,
-    10,
-    9
-   ],
-   [
-    7,
-    7,
-    10,
-    12,
-    4,
-    9,
-    13,
-    13,
-    10,
-    9,
-    5,
-    3
-   ]
-  ],
-  "c": "#6a6a6b",
-  "k": [
-   0.476,
-   0.122,
-   0.626,
-   0.218
-  ],
-  "p": null
- },
  "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500": {
   "w": 500,
   "h": 281,
@@ -8263,7 +8218,7 @@
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Jason_and_Lucia_13.jpg?crop=0px%2C8px%2C3840px%2C2148px&resize=1440%2C810": {
   "w": 1440,
   "h": 810,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.hotspawn.com/wp-content/uploads/2026/11/faster-meta-dota-patch-7.42.jpg": {
