@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "a7a415620df0",
+ "edit_sig": "8a4651b12775",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -964,36 +964,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 4,
-     "source": "千葉テレビ放送株式会社",
-     "title": "愛媛県久万高原町のスキー場「久万スキーランド」(運営：株式会社久万高原開発、所在地：愛媛県上浮穴郡久...",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9MYS1RS2VDcEFrRFpIUmpZZGt3djV5TllqVHI2d1NuQVFzeTQ5eGNIaE1rNjdFd3V1Nm9SVHZpMzM2UFl3RXBLTkZ5ZWZRY1hGaEoyMkZsclRvaGlZTTRz?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 5,
-     "source": "Infoseek",
-     "title": "愛媛県のスキー場「久万スキーランド」2026-2027シーズンは12月4日(金)オープン！直行シャトルバスに「夜便」「高知便」を新設し松山市街・道後温泉・高知からのアクセスがさらに快適に！",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBHSFhrNEl0YkRuTVpTRU10QjQ5dlFRMEEtSkltYUVRY1psY0JnaVY5YzZhbzFfWmNRV2pzcXlEMTNkRmxITzZfVlNnMmFZZG95Y0FvUk5LdU0wb1lmM3c4ZA?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 6,
-     "source": "PR TIMES",
-     "title": "【JWSC国際スノーボード＆スケートボード専門学校】山田琉聖の2026-2027シーズンいよいよ開幕！FISワールドカップ・The Snow Leagueに出場",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4tQUhEUThzXzI0WjVfWWRlMm5ibkQ3QTFOUE1Ua2VxOFluOGI1eURhb09JUkNtMEZPWlN0VFpldmR5MkxPLTVRa2JnN2FJS2c2VTZqZ0dlYV9vWUgtejVYMWlHZ1U2NFY4LVE?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 7,
-     "source": "POWDER Magazine",
-     "title": "Utah’s Southernmost Ski Resort Claims “First Open” Title for 26/27 Season",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9IQ2c2a3VXd19EUGxuZlVhMk9maTlqV212TndmSGZfQU84aHFaSGQ4dktPZU1tUnU4VzBkaXJhWnBvZEM4el9Ra0FER3llZ3hVc3pmbGNsQzZZSjhvOEl6XzJxZzM1WFE5aWZpOXVhdXNPNldHdXpnZ0ZZQlktWnc?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1014,6 +984,26 @@
      "image": "https://assets.hldycdn.com/64b9e15a-1619-4f07-840d-c5c381ef6945.jpeg",
      "image_via": "og:image",
      "url": "https://www.haveagood-holiday.com/zh-TW/articles/hakuba-cortina-night-park-ar-quiz-rally-2026-27",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "愛媛県のスキー場「久万スキーランド」2026-2027シーズンは12月4日(金)オープン！",
+     "highlight": "12月4日(金)オープン",
+     "image": "https://www.chiba-tv.com/cache/images/news/56/56/3cea7e223ffadc75e6dfbaed8dc60f5269925656.1000x600.none.png",
+     "image_via": "正文图（其它来源）（3 枚から）",
+     "url": "https://news.infoseek.co.jp/article/atpress_642829/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "Utah’s Southernmost Ski Resort Claims “First Open” Title for 26/27 Season",
+     "highlight": "“First Open”",
+     "image": "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200",
+     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "url": "https://www.powder.com/news/utah-southernmost-ski-resort-claims-first-open",
      "weight": "normal"
     }
    ],

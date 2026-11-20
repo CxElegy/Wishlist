@@ -5,6 +5,7 @@
   "https://www.techradar.com/news/best-tablet": "2026-11-20"
  },
  "images": {
+  "http://www.excite.co.jp/news/article/Atpress_647917/": "https://s.eximg.jp/exnews/feed/Atpress/a0/Atpress_647917/Atpress_647917_1.jpg",
   "https://963kklz.com/2026/11/19/from-metallica-to-van-halen-heres-every-major-rock-band-on-gta-6s-soundtrack/": "https://963kklz.com/uploads/2026/11/GettyImages-2305627338.jpg?auto=webp",
   "https://animeanime.jp/article/2026/11/13/104757.html": "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/955739.jpg",
   "https://collabo-cafe.com/en/events/collabo/chainsawman-prize-glitter-glamours-reze-cafe-nimichi-2026/": "https://collabo-cafe.com/wp-content/uploads/chainsawman-prize-glitter-glamours-reze-cafe-nimichi-2026-featured-1.jpg",
@@ -41,7 +42,6 @@
   "https://www.antutu.com/doc/138430": "https://img.antutu.com/2026/11/16/7bb530904d6cfad421a54fdc388a8bcd_Y29tcHJlc3NfZm9ybWF0X2pwZw==.jpg",
   "https://www.asiae.co.kr/realtime/sokbo_viewNew.htm?idxno=2026111809161820955": "https://www.bing.com/th?id=ONUT.tiy6Mg2arjYOj9zmJrpxHQ&pid=News&w=745",
   "https://www.bbc.com/news/articles/ckgj3213vjwyo": "https://ichef.bbci.co.uk/news/1024/branded_news/ff78/live/9b1c3810-e351-11f1-99aa-0f40b013ad11.jpg",
-  "https://www.chiba-tv.com/plus/detail/2026112242033": "https://www.chiba-tv.com/cache/images/news/56/56/3cea7e223ffadc75e6dfbaed8dc60f5269925656.1000x600.none.png",
   "https://www.chinatimes.com/realtimenews/20261119002878-260409": "https://images.chinatimes.com/newsphoto/2026-11-19/656/20261119002879.jpg",
   "https://www.cleveland.com/food/2026/11/the-nostalgic-detail-hidden-in-starbucks-new-holiday-cups-that-has-everyone-talking.html": "https://www.bing.com/th?id=ONUT.MpghNpWO8ffxSUeE1opjTQ&pid=News&w=1200",
   "https://www.famitsu.com/article/202611/94349": "https://cimg.kgl-systems.io/camion/files/94349/thumbnail_Wetg.jpg?x=1280",
@@ -1532,21 +1532,6 @@
   {
    "batch": 6,
    "because": "滑雪",
-   "date": "2026-11-20",
-   "hits": [],
-   "image": "https://www.chiba-tv.com/cache/images/news/56/56/3cea7e223ffadc75e6dfbaed8dc60f5269925656.1000x600.none.png",
-   "kind": "board",
-   "score": 4,
-   "source": "千葉テレビ放送株式会社",
-   "taste": [],
-   "title": "愛媛県久万高原町のスキー場「久万スキーランド」(運営：株式会社久万高原開発、所在地：愛媛県上浮穴郡久...",
-   "url": "https://www.chiba-tv.com/plus/detail/2026112242033",
-   "words": [],
-   "work": "滑雪"
-  },
-  {
-   "batch": 6,
-   "because": "滑雪",
    "date": "2026-11-19",
    "hits": [],
    "image": "https://prcdn.freetls.fastly.net/release_image/32951/2316/32951-2316-83927658c2e4186b1d388903b875106e-3532x2358.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
@@ -1556,6 +1541,21 @@
    "taste": [],
    "title": "【JWSC国際スノーボード＆スケートボード専門学校】山田琉聖の2026-2027シーズンいよいよ開幕！FISワールドカップ・The Snow Leagueに出場",
    "url": "https://prtimes.jp/main/html/rd/p/000002316.000032951.html",
+   "words": [],
+   "work": "滑雪"
+  },
+  {
+   "batch": 6,
+   "because": "滑雪",
+   "date": "2026-11-19",
+   "hits": [],
+   "image": "https://s.eximg.jp/exnews/feed/Atpress/a0/Atpress_647917/Atpress_647917_1.jpg",
+   "kind": "board",
+   "score": 4,
+   "source": "Excite エキサイト",
+   "taste": [],
+   "title": "5万着突破！ゆうちゃみがアンバサダーのレディース スノボブランドBOARDEEが大胆に攻めた新作スノボウェア発売！",
+   "url": "http://www.excite.co.jp/news/article/Atpress_647917/",
    "words": [],
    "work": "滑雪"
   },
@@ -1938,11 +1938,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1950,15 +1950,15 @@
    8
   ],
   [
+   "作品:三星手机",
+   7
+  ],
+  [
    "三星 Galaxy",
    7
   ],
   [
    "galaxy",
-   7
-  ],
-  [
-   "作品:三星手机",
    7
   ]
  ]

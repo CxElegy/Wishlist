@@ -6289,6 +6289,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.eximg.jp/exnews/feed/Atpress/a0/Atpress_647917/Atpress_647917_1.jpg": {
+  "w": 1200,
+  "h": 722,
+  "target": 720,
+  "v": 3
+ },
  "https://s.eximg.jp/exnews/feed/kaiyou_n/1c/kaiyou_n_1493901684021018961/kaiyou_n_1493901684021018961_1.jpg": {
   "w": 360,
   "h": 509,
@@ -7845,6 +7851,12 @@
   "k": null,
   "p": null
  },
+ "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.zwzfS2O-WRaU57U3vuqwLQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7922,7 +7934,7 @@
  "https://www.chiba-tv.com/cache/images/news/56/56/3cea7e223ffadc75e6dfbaed8dc60f5269925656.1000x600.none.png": {
   "w": 1000,
   "h": 563,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.chosun.com/resizer/v2/GNSWKOJVGM2DCYZZMU2DEYZSME.png?auth=c85712807a38fe9e725e72e478103e409b6fd6306afd29a11ad131b57706a2c5&width=650&height=341&smart=true": {

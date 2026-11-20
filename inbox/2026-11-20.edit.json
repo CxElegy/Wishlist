@@ -291,7 +291,7 @@
   "FROM": 5,
   "星巴克马克杯": 1,
   "猫用品": 1,
-  "滑雪": 3
+  "滑雪": 7
  },
  "Astrae Oratio": [
   {
@@ -602,6 +602,25 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "愛媛県のスキー場「久万スキーランド」2026-2027シーズンは12月4日(金)オープン！",
+   "highlight": "12月4日(金)オープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    4
+   ]
+  },
+  {
+   "headline": "Utah’s Southernmost Ski Resort Claims “First Open” Title for 26/27 Season",
+   "highlight": "“First Open”",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ]
