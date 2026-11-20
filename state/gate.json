@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-20T19:22:20+00:00",
+ "changed": true,
+ "checked": "2026-11-20T19:32:18+00:00",
  "fired": {
-  "at": "2026-11-20T17:41:13+00:00",
+  "at": "2026-11-20T19:32:18+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -52,22 +52,29 @@
    "edit": 17
   },
   "2026-11-21": {
-   "edit": 2
+   "edit": 3
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-20T17:41:13+00:00",
+    "at": "2026-11-20T19:32:18+00:00",
     "attempts": 1,
     "day": "2026-11-21",
-    "prog": 79,
-    "resp": "cse_01W4x6f9XjCQBHR8NZ4GDsg3",
-    "sig": "f487b70723a0"
+    "prog": 90,
+    "resp": "",
+    "sig": "c2a9532196d7"
    },
    "items": [
     "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "gelato pique",
     "lib:ブラッククローバー 第2期",
     "lib:ポケモンGO",
     "lib:ミャクミャク",
@@ -77,7 +84,12 @@
     "lib:葬送のフリーレン",
     "lib:薬屋のひとりごと 第3期",
     "あつ森",
-    "哈利波特剧集"
+    "チェーンソーマン",
+    "三星手机",
+    "哈利波特剧集",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-20T17:55:59+00:00",
    "last_error": {
@@ -87,35 +99,43 @@
    "need": true,
    "prog": 90,
    "prog_day": "2026-11-21",
-   "ripe": [],
-   "sig": "9378b01561a2",
+   "ripe": [
+    "GTA 6",
+    "dota2",
+    "チェーンソーマン",
+    "三星手机",
+    "哈利波特剧集",
+    "漫威电影"
+   ],
+   "sig": "c2a9532196d7",
    "token_cap": 1000000,
    "tokens_today": 122214,
-   "why": "整理待ちの記事 100 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 153 件（23 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "The Mandalorian",
+    "绝区零",
+    "Vaundy"
+   ],
+   "need": true,
+   "sig": "d1619518330b",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "周杰伦"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
