@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-20T04:01:41+00:00",
+ "changed": true,
+ "checked": "2026-11-20T04:19:07+00:00",
  "fired": {
   "at": "2026-11-20T04:01:41+00:00",
   "results": {
@@ -65,51 +65,41 @@
    },
    "items": [
     "Astrae Oratio",
-    "GTA 6",
-    "MMORPG 新作",
-    "The Mandalorian",
     "Vaundy",
-    "dota2",
     "gelato pique",
-    "lib:Ado",
-    "lib:コーヒー",
-    "lib:ユニバーサル・スタジオ・ジャパン",
-    "lib:ラーメン",
-    "lib:京都",
-    "lib:東京ディズニーリゾート",
-    "lib:筋トレ",
-    "lib:観葉植物",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
+    "lib:ONE PIECE",
+    "lib:ブラッククローバー 第2期",
+    "lib:ポケモンGO",
+    "lib:ミャクミャク",
+    "lib:モンスターハンターワイルズ",
+    "lib:星野源",
+    "lib:生徒会にも穴はある！",
+    "lib:薬屋のひとりごと 第3期",
     "日本顶级网球赛事",
     "星巴克马克杯",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-20T03:03:30+00:00",
+   "last_batch": "2026-11-20T04:15:05+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 310,
+   "prog": 360,
    "prog_day": "2026-11-20",
    "ripe": [
-    "GTA 6",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影"
+    "lib:ONE PIECE",
+    "lib:ブラッククローバー 第2期",
+    "lib:ミャクミャク",
+    "lib:星野源",
+    "lib:生徒会にも穴はある！",
+    "lib:薬屋のひとりごと 第3期"
    ],
-   "sig": "ff9bcdedfe56",
+   "sig": "19274b6b02ad",
    "token_cap": 1000000,
-   "tokens_today": 423793,
-   "why": "整理待ちの記事 146 件（23 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 494089,
+   "why": "整理待ちの記事 103 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -258,12 +248,12 @@
    "runs": 12
   },
   "2026-11-20": {
-   "batches": 18,
-   "cr": 7679115,
-   "cw": 389135,
-   "in": 224,
-   "out": 34434,
-   "runs": 8
+   "batches": 20,
+   "cr": 9625994,
+   "cw": 452433,
+   "in": 277,
+   "out": 41379,
+   "runs": 9
   }
  }
 }
