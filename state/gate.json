@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T10:36:56+00:00",
+ "checked": "2026-11-20T10:40:15+00:00",
  "fired": {
   "at": "2026-11-20T10:36:56+00:00",
   "results": {
@@ -66,6 +66,13 @@
    "items": [
     "FROM",
     "MMORPG 新作",
+    "lib:FINAL FANTASY VII REBIRTH",
+    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
+    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
+    "lib:世界最強の魔女、始めました",
+    "lib:牧野植物園",
+    "lib:羽生善治",
+    "lib:貸した魔力は【リボ払い】で強制徴収",
     "あつ森",
     "周杰伦",
     "哈利波特剧集",
@@ -81,14 +88,20 @@
    "prog_day": "2026-11-20",
    "ripe": [
     "FROM",
+    "lib:FINAL FANTASY VII REBIRTH",
+    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
+    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
+    "lib:世界最強の魔女、始めました",
+    "lib:羽生善治",
+    "lib:貸した魔力は【リボ払い】で強制徴収",
     "あつ森",
     "周杰伦",
     "猫用品"
    ],
-   "sig": "78fdf8dcf5eb",
+   "sig": "500d95ce7d90",
    "token_cap": 1000000,
    "tokens_today": 666698,
-   "why": "整理待ちの記事 8 件（6 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 39 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
