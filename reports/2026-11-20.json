@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "0c4a3269a5a6",
+ "edit_sig": "f4857cd657b2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -523,22 +523,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 8,
-     "source": "PR TIMES",
-     "title": "【gelato pique cafe】りんごの芳醇な甘みとコーヒーの深い味わいを楽しむ、季節限定フェア“APPLE＆MOCHA”を開催！クレープとソフトクリームに加え、渋谷限定パフェが登場",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1TaHE1OUp5VnJqbFNyWFhRRG9LWDN4Z1ViejFYYlB5bXhGWE94ZHRKQ3dUQ2VYOWFHa0M0Rk1GN1I4M09STGFXdC1kQ0J2V2VWQUF3SnlHaUNUeEpEZkxXRnUxVVdvTE96SWc?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 9,
-     "source": "ファッションプレス",
-     "title": "ジェラート ピケ カフェ「アップルパイ風」限定クレープ、焼きりんごジェラート×コーヒークリーム",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9QdDk4Y3JaSmZITTJHUWZMYTNzNEx3M3JmUi1ONTFURzkwd2RJdGp2cWhLclN0RnllcmJuUTVaSW9hZjJqamo0Nmk5anptdkhIekdr?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -569,6 +553,16 @@
      "image": "https://news.walkerplus.com/article/1251612/14248863_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1251612/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "【gelato pique cafe】りんごの芳醇な甘みとコーヒーの深い味わいを楽しむ、季節限定フェア“APPLE＆MOCHA”を開催！",
+     "highlight": "APPLE＆MOCHA",
+     "image": "https://prcdn.freetls.fastly.net/release_image/18505/4662/18505-4662-5f7b75e5ada4e9d92f8427d290d35093-1200x800.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000004662.000018505.html",
      "weight": "normal"
     }
    ],
