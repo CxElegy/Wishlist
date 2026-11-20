@@ -1,6 +1,6 @@
 {
  "admin": "bcac81f59f3e",
- "admin-ai": "d386bd802abd",
+ "admin-ai": "68374f0c0637",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "fae8d6b2"
+   "9d7869f0"
   ]
  },
  "admin-boards": "06d763457593",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "06e34360461a",
+ "admin-emblem": "62016fc65584",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "18fd9aba"
+   "ca0e7f62"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "7276a1cc23db",
+ "admin-now": "01a53cae37c1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,10 +59,10 @@
   ],
   "term-panel": [
    "ライブログ",
-   "7f1850b0"
+   "779a13ea"
   ]
  },
- "admin-system": "18fab5a47cc8",
+ "admin-system": "4e6196f40b57",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9d447982"
+   "9861a0aa"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "d58c6018"
   ]
  },
- "index": "b365aa65b3a7",
+ "index": "f4fb98dd0c7d",
  "index_marks": {
   "front": [
    "トップ",
-   "ffdcf892"
+   "28e52ef7"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "8610152c"
+   "9da93400"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "bb0c1481"
+   "1427ac64"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "28998fbe"
+   "7a91fff1"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "378a5a0d"
   ]
  },
- "updated": "11.21 04:43",
+ "updated": "11.21 05:31",
  "wishlist": "c6eeaa2bcac9"
 }
