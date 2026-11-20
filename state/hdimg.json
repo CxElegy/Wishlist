@@ -705,6 +705,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/337820760/rectangle_large_type_2_76a69093c75b467f5a5f27372eabbe4a.png?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.st-note.com/production/uploads/images/337885033/rectangle_large_type_2_51f63c0bfb492ff74eee514ac510a306.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -6037,8 +6043,48 @@
  "https://static.sanyonews.jp/image/article/size1/5/b/9/f/5b9fdb04960f4adb5fad34cd6ba312b1_1.jpg": {
   "w": 640,
   "h": 640,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.461,
+  "local": "pics/ab639b719980428f.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    7,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    9,
+    6,
+    6,
+    6,
+    5
+   ],
+   [
+    10,
+    11,
+    10,
+    9,
+    8,
+    10,
+    11,
+    9,
+    5,
+    6,
+    6,
+    6
+   ]
+  ],
+  "c": "#9a8564",
+  "k": null,
+  "p": null
  },
  "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg": {
   "w": 640,
@@ -6847,12 +6893,6 @@
  "https://www.bing.com/th?id=ONUT.C7yo6RHIF9O1SXc6EY1Qdw&pid=News&w=1200": {
   "w": 534,
   "h": 341,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.DPHNjhYNvHF4pQiEGp87Ug&pid=News&w=700": {
-  "w": 700,
-  "h": 366,
   "target": 720,
   "v": 3
  },

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "23a27ac337ca",
+ "edit_sig": "b4b451fb8dc6",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -395,24 +395,29 @@
    "cover": null,
    "facts": [],
    "name": "ぐでたま",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
-     "date": "2026-11-18",
-     "n": 1,
-     "source": "note",
-     "title": "アラフィフオペレーター",
-     "url": "https://note.com/bba_op/n/n113cc614f4a6?hl=ko"
+     "blurb": "サンリオキャラクターズ ガーデンカフェに夏季限定メニュー6品が登場。定番人気のぐでたまかき氷もラインナップ。",
+     "date": "2026-11-19",
+     "headline": "「サンリオキャラクターズ ガーデンカフェ」夏季限定メニューの6品が登場 定番人気の“ぐでたまかき氷”も",
+     "highlight": "夏季限定メニューの6品",
+     "image": "https://static.sanyonews.jp/image/article/size1/5/b/9/f/5b9fdb04960f4adb5fad34cd6ba312b1_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/1946662?kw=%E5%8C%BB%E7%99%82",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-19",
-     "n": 2,
-     "source": "山陽新聞",
-     "title": "【あすから】「サンリオキャラクターズ ガーデンカフェ」夏季限定メニューの6品が登場 定番人気の“ぐでたまかき氷”も",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9NaFdRbGo5TDcyTEZDWjI3ZER3VkhSMGNUNTlGeE9FaFExbE51UkEzVmFQWElhVGFSa0ZsZVR6ZlRoZ21yUld4VU5aMUU1RlZteVBndTAyM0EzSjk1VFJoNERqd25XQVZDYlNRdi1QSQ?oc=5"
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "アラフィフオペレーター",
+     "highlight": "",
+     "image": "https://assets.st-note.com/production/uploads/images/337820760/rectangle_large_type_2_76a69093c75b467f5a5f27372eabbe4a.png?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/bba_op/n/n113cc614f4a6?hl=ko",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Gudetama",
    "theme": {
     "accent": "#885D0C",

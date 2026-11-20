@@ -49,7 +49,8 @@
   "gelato pique": 4,
   "dota2": 3,
   "チェーンソーマン": 3,
-  "滑雪": 3
+  "滑雪": 3,
+  "ぐでたま": 2
  },
  "漫威电影": [
   {
@@ -259,6 +260,27 @@
   {
    "headline": "シーズン間近 スキー場で安全祈願 群馬・沼田市",
    "highlight": "安全祈願",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "「サンリオキャラクターズ ガーデンカフェ」夏季限定メニューの6品が登場 定番人気の“ぐでたまかき氷”も",
+   "highlight": "夏季限定メニューの6品",
+   "blurb": "サンリオキャラクターズ ガーデンカフェに夏季限定メニュー6品が登場。定番人気のぐでたまかき氷もラインナップ。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/5/b/9/f/5b9fdb04960f4adb5fad34cd6ba312b1_1.jpg"
+  },
+  {
+   "headline": "アラフィフオペレーター",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
