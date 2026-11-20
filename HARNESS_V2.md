@@ -166,6 +166,7 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 
 - **PC**：`setup_pc.ps1` を 1 回 → タスク AgentBoardCollector がログオンのたびに `collect.py --host pc --loop 30` を起こす（4747 の server.mjs は要らなくなる）。
 - **クラウドの会話（主も、主が作る会話も。店長が 2026-11-19 にまとめて許可）**：会話の始めに `add_repo cxelegy/agentboard（push）`→ `/home/user/agentboard` に clone → `ab.py whoami <session_ id> "<会話の名前>"`（BRAIN の箱に名前と「開く」）→ `python3 .claude/hooks/agentboard_start.py`。次からは hook（SessionStart・UserPromptSubmit）が、clone があれば 1 つだけ起こす（Windows・clone が無い会話は何もしない）。会話ごとに `live-cloud-<id>` の 1 枚。人のいない会話（AI 編集・予約の回）は足さない。
+  - **worker が再起動しても起き直す（2026-11-20）**：いくつもの作業場所を持つ会話は `/home/user` で始まり、Wishlist の `.claude/settings.json` の hook が読まれない。そのため 11-19 の夜、集め係が 27 時間止まったままだった。`agentboard_start.py` は、クラウドの容器（`CLAUDE_CODE_REMOTE_SESSION_ID` がある）では user の設定 `~/.claude/settings.json` にも SessionStart・UserPromptSubmit の hook を 1 つずつ入れる（PC・手元の機械には触らない）。作業場所が `/home/user` でも、site の欄にはこの hook のある Wishlist を渡す。遅れ：集め係は 5 秒ごとに見て、変わったら 8 秒あけて push、画面は 5 秒ごとに読む → 5〜15 秒。
 - 記録を集め係が読めない係（別の機械など）は `ab.py beat <役> <段> "<いま>" --session session_… --model claude-…` → 同じ箱に出る。
 - **令牌は 1 回で**：画面の「GitHub で令牌を作る」は名前・期限・Contents の書き込みを入れた GitHub の作成ページ（template URL）。店長が手で選ぶのは Repository access の agentboard だけ。
 - **店長の伝言**：画面の `owner $` → `inbox/`（宛先：両方・cloud・pc）。BRAIN は `ab.py inbox` で読み、`ab.py reply <t> "返事" --who "クラウドの BRAIN"` で返す。
