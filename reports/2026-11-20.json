@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "33fb01fad054",
+ "edit_sig": "d5771160aac8",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1209,41 +1209,8 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 11,
-     "source": "Infoseek",
-     "title": "スキーシーズン到来！秋田八幡平スキー場でスキー場開き リフト稼働には積雪不足も…初滑りを楽しむ人の姿が 秋田・鹿角市",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9WbXJ1LXkwYzBZdlAzeXd0dm1HX0hLdUJKN1RaTVNBYVByMWsyZ25ncl9kWFUwMXhncDNpVDJ3QkdxUXZmSFNRVzF4Wm1qMC1samhyS05ZdjlaTlNRdmgydWNRbWVYTkc1S185aNIBckFVX3lxTE5ORzgwVWcwNER5c3RmbjJ5TV9BZEd1Tno0aDRyLWZ6MlQ5bUZKRldVMnkzU3c3cTFCS1RhYjVleVBhZm51U3hxOUNfaDBReFVoY3MwWnNKdWpnX2RXNFNDNnBZOXd4RHVyUG9YYmhMY2czdw?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 13,
-     "source": "note",
-     "title": "白馬山麓つがいけ高原の朝／2026年11月20日",
-     "url": "https://note.com/rapid_allium8734/n/n03ab27e86582"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 14,
-     "source": "SnowBrains",
-     "title": "SnowBrains Forecast: Around 150 cm Possible in Hakuba as Japan’s Early Base Builds",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQY2lIX3RERXRIRDZiU0xqMi13X3otbXhfcjF5QzV3dEVnQndSLUlXZVVHVnlHQ0hmS2xWOHBPNEZ1SlpaRlp6Wk80MExlTVdXaUV4UXJSUTZIS2MzbkQ3NHVaUmp3R3ltTS04RWgyZlU4WGxWZy14ZkdHcHUzY0lnNU10ZGxtRDdqbG0yeVNIeXR0cEpKOFpQQ0pxcDJxRkNQOUtlMFJSaw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-20",
-     "headline": "冬をお得に楽しもう！2026-2027シーズン サンライバスキー場シーズン券発売中！",
-     "highlight": "",
-     "image": "https://www.city.noboribetsu.lg.jp/article/2026111300059/file_contents/file_202611135133348_1.png",
-     "image_via": "正文图",
-     "url": "https://www.city.noboribetsu.lg.jp/article/2026111300059/",
-     "weight": "hero"
-    },
     {
      "blurb": "",
      "date": "2026-11-19",
@@ -1306,6 +1273,28 @@
      "image": "https://storage.tenki.jp/storage/static-images/forecaster_diary/image/4/41/413/41387/main/20261120152254/large.jpg",
      "image_via": "og:image",
      "url": "https://tenki.jp/forecaster/yasuto_takamori/2026/11/20/41387.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "スキーシーズン到来！秋田八幡平スキー場でスキー場開き リフト稼働には積雪不足も…初滑りを楽しむ人の姿",
+     "highlight": "スキー場開き",
+     "image": "https://image.gallery.play.jp/abs-news/articles/e1a623fc06f7413585a75a99c08d190f/585dfbf3-7f64-4d7d-8819-bcade4b1039f.jpg?w=1200",
+     "image_via": "转载 news.ntv.co.jp",
+     "source": "Infoseek",
+     "source_icon": null,
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9WbXJ1LXkwYzBZdlAzeXd0dm1HX0hLdUJKN1RaTVNBYVByMWsyZ25ncl9kWFUwMXhncDNpVDJ3QkdxUXZmSFNRVzF4Wm1qMC1samhyS05ZdjlaTlNRdmgydWNRbWVYTkc1S185aNIBckFVX3lxTE5ORzgwVWcwNER5c3RmbjJ5TV9BZEd1Tno0aDRyLWZ6MlQ5bUZKRldVMnkzU3c3cTFCS1RhYjVleVBhZm51U3hxOUNfaDBReFVoY3MwWnNKdWpnX2RXNFNDNnBZOXd4RHVyUG9YYmhMY2czdw?oc=5",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "SnowBrains Forecast: Around 150 cm Possible in Hakuba as Japan’s Early Base Builds",
+     "highlight": "",
+     "image": "https://snowbrains.com/wp-content/uploads/2026/11/forecast-59.png",
+     "image_via": "og:image",
+     "url": "https://snowbrains.com/snowbrains-forecast-around-150-cm-possible-in-hakuba-as-japans-early-base-builds/",
      "weight": "normal"
     }
    ],

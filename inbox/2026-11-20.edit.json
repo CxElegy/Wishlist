@@ -391,7 +391,7 @@
   "FROM": 6,
   "星巴克马克杯": 2,
   "猫用品": 4,
-  "滑雪": 10,
+  "滑雪": 14,
   "Vaundy": 3,
   "日本顶级网球赛事": 1,
   "あつ森": 1
@@ -910,6 +910,24 @@
    "weight": "normal",
    "refs": [
     10
+   ]
+  },
+  {
+   "headline": "スキーシーズン到来！秋田八幡平スキー場でスキー場開き リフト稼働には積雪不足も…初滑りを楽しむ人の姿",
+   "highlight": "スキー場開き",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
+  },
+  {
+   "headline": "SnowBrains Forecast: Around 150 cm Possible in Hakuba as Japan’s Early Base Builds",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
    ]
   }
  ],

@@ -2316,6 +2316,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.gallery.play.jp/abs-news/articles/e1a623fc06f7413585a75a99c08d190f/585dfbf3-7f64-4d7d-8819-bcade4b1039f.jpg?w=1200": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://image.inews24.com/v1/fc0da764dc14f3.jpg": {
   "w": 400,
   "h": 800,
@@ -3530,12 +3536,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://media.image.infoseek.co.jp/isnews/photos/abs/abs_1496438235354906741_0-enlarge.jpg": {
-  "w": 800,
-  "h": 450,
-  "target": 720,
   "v": 3
  },
  "https://media.image.infoseek.co.jp/isnews/photos/gamespark/gamespark_174870_0-enlarge.jpg": {
@@ -6748,6 +6748,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://snowbrains.com/wp-content/uploads/2026/11/forecast-59.png": {
+  "w": 984,
+  "h": 808,
+  "target": 720,
   "v": 3
  },
  "https://socialbeta.oss-cn-hangzhou.aliyuncs.com/upload/22771-20260924154059-4f2cc13f.jpg": {
