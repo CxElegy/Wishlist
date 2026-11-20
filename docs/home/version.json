@@ -1,32 +1,32 @@
 {
- "admin": "1cc2522f435f",
- "admin-ai": "e086482fecfa",
+ "admin": "4cdf339545c8",
+ "admin-ai": "bd1d076502af",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "612dc673"
+   "5e6f4c32"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ea119194"
   ]
  },
- "admin-boards": "db0eddb44dad",
+ "admin-boards": "d073b30d6080",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "aae4c12e"
+   "08820a50"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "0af09862bf1a",
+ "admin-emblem": "078951d64195",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "5e61a9e0"
+   "41f3ea24"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e86fbe3fb12f",
  "admin-members_marks": {},
- "admin-now": "9adb001172cd",
+ "admin-now": "a560c1317634",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "24c9da09"
+   "0b1c102e"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "02e0074b"
+   "3f7103fe"
   ],
   "term-panel": [
    "ライブログ",
-   "de290f14"
+   "8c048d92"
   ]
  },
- "admin-system": "95176c42643f",
+ "admin-system": "4125dbdd70fc",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a01d2ae6"
+   "1b28d65d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "13a470c8"
+   "655b75eb"
   ]
  },
  "admin_marks": {},
- "heat": "6a6a029c2af4",
+ "heat": "2a0a0e521f37",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "84c82157"
+   "49715bec"
   ],
   "ranking": [
    "ランキング",
-   "dd4b10e6"
+   "8e8aaf0b"
   ]
  },
- "index": "deba5a437ea4",
+ "index": "9928dcb87a9c",
  "index_marks": {
   "front": [
    "トップ",
-   "6f0377c4"
+   "2b9f6804"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "330c042a"
+   "19a27fb3"
   ],
   "w-130724c0": [
    "猫用品",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "6796d6a7"
+   "730ff851"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "7673c614"
+   "1ee33314"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "b834c011"
+   "8d74b98e"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "64154a8c"
   ]
  },
- "updated": "11.20 11:22",
+ "updated": "11.20 11:30",
  "wishlist": "1a221a1fb8ac"
 }
