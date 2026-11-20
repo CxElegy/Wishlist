@@ -2328,6 +2328,57 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/b/2/b287f_230_98f16e0b_325d0d03.jpg": {
+  "w": 217,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.508,
+  "local": "pics/b86ff45422ffe219.webp",
+  "out": [
+   651,
+   1200
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    10,
+    14,
+    7,
+    6,
+    8,
+    9,
+    7,
+    6,
+    8,
+    7,
+    15,
+    4
+   ],
+   [
+    7,
+    7,
+    9,
+    7,
+    6,
+    5,
+    5,
+    10,
+    12,
+    13,
+    11,
+    8
+   ]
+  ],
+  "c": "#757978",
+  "k": [
+   0.218,
+   0.102,
+   0.624,
+   0.291
+  ],
+  "p": null
+ },
  "https://image.news.livedoor.com/newsimage/stf/4/d/4d844_1847_2de308cd584360294a2c2a2b415befaf.jpg": {
   "w": 1000,
   "h": 667,
@@ -4564,12 +4615,6 @@
   ],
   "p": null
  },
- "https://news.walkerplus.com/article/54135/297391_615.jpg": {
-  "w": 615,
-  "h": 1131,
-  "target": 1280,
-  "v": 3
- },
  "https://news.walkerplus.com/article/61968/345189_615.jpg": {
   "w": 615,
   "h": 820,
@@ -5619,61 +5664,6 @@
    0.393
   ]
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-04879982-mdpr-000-2-view.jpg?exp=10800": {
-  "w": 1600,
-  "h": 1065,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/cd5d69a24102da28.webp",
-  "out": [
-   1280,
-   852
-  ],
-  "why": "期限付きの網址",
-  "m": [
-   [
-    10,
-    8,
-    5,
-    7,
-    9,
-    8,
-    4,
-    7,
-    7,
-    14,
-    13,
-    9
-   ],
-   [
-    7,
-    13,
-    7,
-    5,
-    5,
-    6,
-    5,
-    11,
-    12,
-    7,
-    2,
-    22
-   ]
-  ],
-  "c": "#3d3e5e",
-  "k": [
-   0.061,
-   0.022,
-   0.99,
-   0.987
-  ],
-  "p": [
-   0.282,
-   0.054,
-   0.637,
-   0.83
-  ]
- },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
   "h": 840,
@@ -5713,6 +5703,12 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/614d674cbc04425092f91517c1246529.png": {
   "w": 800,
   "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/c903cf959a864a2ca9f59aed8ab26226.jpg": {
+  "w": 588,
+  "h": 598,
   "target": 720,
   "v": 3
  },
@@ -7570,12 +7566,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.5SybOSvMhwjsLKZWFrPYFw&pid=News&w=588": {
-  "w": 588,
-  "h": 598,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
   "h": 502,
@@ -8119,12 +8109,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.402
- },
- "https://www.bing.com/th?id=ONUT.tTY0IrMS39pDSdic_EuBzQ&pid=News&w=572": {
-  "w": 572,
-  "h": 300,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
   "w": 700,
