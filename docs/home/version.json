@@ -1,32 +1,32 @@
 {
- "admin": "73b8babe29f5",
- "admin-ai": "30df0b11eb30",
+ "admin": "47897fd6fb24",
+ "admin-ai": "a3d834ec3f17",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "22862787"
+   "976e517e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "40727de7"
+   "0a8511ad"
   ]
  },
- "admin-boards": "9671bdbe1500",
+ "admin-boards": "a22763184d22",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "3258479c"
+   "f80a23f9"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "671e26e00641",
+ "admin-emblem": "fd929d8b277b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "563b5d49"
+   "36483609"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e86fbe3fb12f",
  "admin-members_marks": {},
- "admin-now": "2e7920745ec5",
+ "admin-now": "6f9eca018770",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4ed1c21c"
+   "c7fbbd09"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "6015271f"
+   "ae54e0b8"
   ]
  },
- "admin-system": "205288cfd923",
+ "admin-system": "cc03c967bebe",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "db8dcb7e"
+   "a0b02c05"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "6439543f"
+   "8e54ba11"
   ]
  },
  "admin_marks": {},
- "heat": "e27581d61278",
+ "heat": "4031e4e22923",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "24e739c6"
+   "01759fd6"
   ],
   "ranking": [
    "ランキング",
-   "bf01245d"
+   "8d322c96"
   ]
  },
- "index": "d1dcbfe71fe4",
+ "index": "1ad2801774f8",
  "index_marks": {
   "front": [
    "トップ",
-   "5ae97ec7"
+   "836bc6a0"
   ],
   "picks": [
    "気になるかも？",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "cfb362b8"
+   "ba1e35c7"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "79987280"
+   "94e1a7ba"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "ba2ee9e1"
   ]
  },
- "updated": "11.20 19:10",
+ "updated": "11.20 19:15",
  "wishlist": "4475ab2ea8e2"
 }

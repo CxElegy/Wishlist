@@ -1,51 +1,5 @@
 [
 {
-"at": "2026-11-18T20:37:43+00:00",
-"text": "2026-11-19 第 1 バッチを出刊：A2O LITE、BLEACH Mirrors High、GTA 6、ILLIT、Vaundy、dota2 ほか 9（15 版面・35 本・残り 2 版面） · token 新規入力 6.2万・キャッシュ読み 66.1万・出力 4,590",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.53,
-"mem_total": 16869130240,
-"mem_free": 15899160576,
-"disk_used": 10458284032,
-"disk_free": 31211073536,
-"disk_total": 41669357568,
-"peak": 604372992
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"BLEACH Mirrors High",
-"GTA 6",
-"ILLIT",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"三星手机",
-"周杰伦",
-"日本顶级网球赛事",
-"滑雪",
-"漫威电影",
-"绝区零"
-],
-"stories": 35,
-"left": 2,
-"edited": 15,
-"run": null,
-"tok": {
-"in": 19,
-"cw": 61776,
-"cr": 661209,
-"out": 4590,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 727594
-},
-{
 "at": "2026-11-18T20:45:55+00:00",
 "text": "2026-11-19 第 1 バッチを出刊：A2O LITE、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作、Vaundy ほか 11（17 版面・41 本・今日の整理待ちは全部終わり） · token 新規入力 6.5万・キャッシュ読み 102.8万・出力 6,091",
 "level": "ok",
@@ -2084,5 +2038,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 85402
+},
+{
+"at": "2026-11-20T10:16:35+00:00",
+"text": "2026-11-20 第 7 バッチを出刊：滑雪（1 版面・6 本・残り 1 版面） · token 新規入力 1,664・キャッシュ読み 8.5万・出力 655",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.28,
+"mem_total": 16869113856,
+"mem_free": 15927132160,
+"disk_used": 10488795136,
+"disk_free": 31180562432,
+"disk_total": 41669357568,
+"peak": 399278080
+},
+"batch": 7,
+"boards": [
+"滑雪"
+],
+"stories": 6,
+"left": 1,
+"edited": 21,
+"run": 1795167358.893739,
+"tok": {
+"in": 1,
+"cw": 1663,
+"cr": 84902,
+"out": 655,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 87221
 }
 ]

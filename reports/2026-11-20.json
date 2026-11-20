@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "e076c2d4539b",
+ "edit_sig": "57b685f9336f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -649,10 +649,8 @@
      "date": "2026-11-19",
      "headline": "Image Engine breaks down its 154 VFX shots in The Mandalorian & Grogu",
      "highlight": "154 VFX shots",
-     "image": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
-     "image_via": "作品封面",
-     "source": "Foro3D",
-     "source_icon": "https://www.google.com/s2/favicons?domain=foro3d.com&sz=128",
+     "image": "https://foro3d.com/2026/noviembre/imagenes/image-engine-desglosa-sus-154-planos-de-vfx-en-the-mandalorian-grogu.webp",
+     "image_via": "og:image",
      "url": "https://foro3d.com/en/2026/noviembre/image-engine-desglosa-sus-154-planos-de-vfx-en-the-mandalorian-grogu.html",
      "weight": "lead"
     },
@@ -1145,34 +1143,8 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 9,
-     "source": "日刊スポーツ",
-     "title": "潮田玲子さん「はっぴはっぴーハッピバースデー」元アルペンスキー代表の「心友」を祝福",
-     "url": "https://www.nikkansports.com/sports/news/202611200001299.html"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 10,
-     "source": "tenki.jp",
-     "title": "2026～2027スキー場 冬の雪の見通し 日本海側は平年より降雪が少ないか(気象予報士 高森 泰人)",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5GQW93VlI1ZXhBREd3Q0kxU3A2Y2J4UER5WV8ydkJRMnNoM1U3VEMzVHB5cWdmdWFHWFZjUUFmeURyRlM4ZHpxbmFOX1Z6YkRwR0UteG1IcTNVU3BRMUZ0Y21JMFZUQXZiSUU3b1F0bHltZmc?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-20",
-     "headline": "グランデコスノーリゾート、11月22日に県内最速プレオープン決定！福島県内でいち早く2026-27シーズンがスタート",
-     "highlight": "",
-     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/fukushima-ski.jpg",
-     "image_via": "og:image",
-     "url": "https://dmksnowboard.com/grandeco-preopen-2026-27/",
-     "weight": "hero"
-    },
     {
      "blurb": "",
      "date": "2026-11-19",
@@ -1182,6 +1154,20 @@
      "image_via": "AI 挑选",
      "url": "https://tabiris.com/archives/happo-shoshinsha/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "event": {
+      "date": "2026-11-22",
+      "label": "プレオープン"
+     },
+     "headline": "グランデコスノーリゾート、11月22日に県内最速プレオープン決定！福島県内でいち早く2026-27シーズンがスタート",
+     "highlight": "11月22日",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/fukushima-ski.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/grandeco-preopen-2026-27/",
+     "weight": "normal"
     },
     {
      "blurb": "",
@@ -1211,6 +1197,16 @@
      "image": "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200",
      "image_via": "转载 www.msn.com（Bing 缩略图）",
      "url": "https://www.powder.com/news/utah-southernmost-ski-resort-claims-first-open",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "2026～2027スキー場 冬の雪の見通し 日本海側は平年より降雪が少ないか",
+     "highlight": "降雪が少ないか",
+     "image": "https://storage.tenki.jp/storage/static-images/forecaster_diary/image/4/41/413/41387/main/20261120152254/large.jpg",
+     "image_via": "og:image",
+     "url": "https://tenki.jp/forecaster/yasuto_takamori/2026/11/20/41387.html",
      "weight": "normal"
     }
    ],
