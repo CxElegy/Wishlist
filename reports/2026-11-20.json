@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "1794e48bd594",
+ "edit_sig": "61e3ccf2b026",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -22,8 +22,10 @@
      "date": "2026-11-18",
      "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
      "highlight": "TGS 2026서",
-     "image": "https://cdn.duckhub.co.kr/news/photo/202611/2303_10647_3722.jpg",
-     "image_via": "同一件事的别家报道 www.duckhub.co.kr",
+     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+     "image_via": "作品封面",
+     "source": "쿠키뉴스",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.kukinews.com&sz=128",
      "url": "https://www.kukinews.com/article/view/kuk202609110059",
      "weight": "lead"
     },
@@ -403,43 +405,6 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 7,
-     "source": "YAHOO!",
-     "title": "Losing the Galaxy S27's telephoto camera could lower prices",
-     "url": "https://tech.yahoo.com/phones/articles/losing-galaxy-s27s-telephoto-camera-130010591.html"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 8,
-     "source": "TechJuice",
-     "title": "Samsung Display to Produce Up to 48 Million Galaxy S27 Panels",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOeDRBM1RfSmJlN0lHZEk5VzZYMkF2VWFsc19TXzhOa0IzZFdHQ3FjWktVeXdTWjdlNXlUZy0yRldrT1ZLU0NyMG1qYklmMUc3T1oyWjduNkJaeWRORU54MUowdEp6RUFWU3JvSHhpeEFZdzN5VVVLRmV4elQ2NllySzUyVERLZVpDQkdablA4b1U?oc=5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 9,
-     "source": "gizchina.net",
-     "title": "Samsung Galaxy S27 Ultra: the insider showed the design of three cameras",
-     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOQVloUTFZbkVIYTJlRjJtdW1nYzQwUnhtVGE2dktyWE00YTZhaVVyNGJxcXA2SmZQN3drLXE1cGMxY0NudE5BRDJCWUllYjg4d0hSb0pZUGJLYlBkRDRrYkFOeE13allMeWdzbU5JSm0wZm9NVnF4MmtianhLREQ4QWZIcE1Sb1BUVjJnaU1LX2ljbWpWVE9IWnVHYTFldDNRR0FBdGVKLWJRcUs5RU9SdTBudXAtN0RFam1Ed0tjNFdqSDZ3VWREYg?oc=5"
-    },
-    {
-     "date": "2026-11-16",
-     "n": 10,
-     "source": "PTTL.gr",
-     "title": "Galaxy S27 Ultra: Will Samsung drop the fourth camera? New sketch shows what could change",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPVVZRbVFQQS0tNkpRY3pkMXNKTTVRT3A2Z09tSjVmTmNyNGlCdFAyUlBBVF92S2lfZ1FmclFFMzFXRnQ4SkJMUk1laWRMSngwNmd2RU80bWE0NnpjanFZY0s3STZrXzlGbEQtaXVKWDczSUFZMFZpZDhuSGNZM1I4ag?oc=5"
-    },
-    {
-     "date": "2026-11-15",
-     "n": 11,
-     "source": "Vietnam.vn",
-     "title": "Galaxy S27 Pro expected at $1,399: With reduced specifications, Samsung bets on a compact flagship.",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQdFZpMzNVSjAtNC1Xdk9yd3RDTldMNFhFajdOQm1jWWQ0VzR1OVJKdFU3V0dmSTZNUzB5SWZ1S2d2LXdGVTlPUGZLRE9lMTI5cWpOQWk0S195aXl1Tk5QXy11Z0lXWnlUOVhfQ0NTUnB6WHlhUlI2RW5UaHJPWHk0c0ZKUXJ0OF9KLXZKQlJMLXBXZDduQllZOFdLY04tZmEzRUtnLVZ3UFpZTTRoR0YxdnBkbmZjTEFs?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -490,6 +455,36 @@
      "image": "https://cdn.factinnews.co.kr/news/photo/202611/301074_50935_130.jpg",
      "image_via": "og:image",
      "url": "https://www.factinnews.co.kr/news/articleViewAmp.html?idxno=301074",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "Losing the Galaxy S27's telephoto camera could lower prices",
+     "highlight": "telephoto camera",
+     "image": "https://s.yimg.com/lo/mysterio/api/5bbfbaabf00cf709fac69afd035c6b8e1c706b1c917d3f909e7ab9a15191c3fb/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2Ff0a25821ded610c43742941d8512777a.png",
+     "image_via": "og:image",
+     "url": "https://tech.yahoo.com/phones/articles/losing-galaxy-s27s-telephoto-camera-130010591.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "Samsung Display to Produce Up to 48 Million Galaxy S27 Panels",
+     "highlight": "48 Million",
+     "image": "https://www.techjuice.pk/wp-content/uploads/2026/10/techjuice-256295.jpg",
+     "image_via": "og:image",
+     "url": "https://www.techjuice.pk/samsung-display-to-produce-up-to-48-million-galaxy-s27-panels/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-15",
+     "headline": "Galaxy S27 Pro expected at $1,399: With reduced specifications, Samsung bets on a compact flagship",
+     "highlight": "$1,399",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/15/1794729171724_img_1015f1d0.png",
+     "image_via": "og:image",
+     "url": "https://www.vietnam.vn/en/galaxy-s27-pro-du-kien-1-399-usd-cau-hinh-bi-cat-giam-samsung-dat-cuoc-vao-flagship-nho-gon",
      "weight": "normal"
     }
    ],
@@ -826,8 +821,9 @@
      "date": "2026-11-18",
      "headline": "《刀塔2》本来不想出圣剑的，不小心合错了，那就速度推了吧——Yatoro让你知道Goat怎么嘉豪",
      "highlight": "",
-     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg",
-     "image_via": "JSON-LD",
+     "image": null,
+     "source": "17173",
+     "source_icon": "https://ue.17173cdn.com/images/lib/v1/favicon-hd.ico",
      "url": "https://news.17173.com/content/11182026/151335144.shtml",
      "weight": "normal"
     }

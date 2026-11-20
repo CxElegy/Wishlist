@@ -1082,13 +1082,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.duckhub.co.kr/news/photo/202611/2303_10647_3722.jpg": {
-  "w": 600,
-  "h": 490,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.399
- },
  "https://cdn.e-science.co.kr/news/photo/202611/139894_72945_1815.jpg": {
   "w": 600,
   "h": 750,
@@ -1912,12 +1905,6 @@
   "w": 780,
   "h": 1387,
   "target": 1280,
-  "v": 3
- },
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg": {
-  "w": 826,
-  "h": 1153,
-  "target": 720,
   "v": 3
  },
  "https://i.abcnewsfe.com/a/02d94113-efa9-481c-9232-0dfafe5b3238/RyanGosling-gty-sn-260726_1785097233106_hpMain_16x9.jpg?w=1600": {
@@ -6314,6 +6301,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/5bbfbaabf00cf709fac69afd035c6b8e1c706b1c917d3f909e7ab9a15191c3fb/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2Ff0a25821ded610c43742941d8512777a.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/83baa46f8eab170e2e2619fd4be6d1b3a946eebe1fa5d802a9218ba7360abbca/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmlive_com_articles_368%2Fb38dd26d671101e32df1e82392404b58.jpg": {
   "w": 1200,
   "h": 675,
@@ -8420,6 +8413,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.techjuice.pk/wp-content/uploads/2026/10/techjuice-256295.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://www.travelvoice.jp/wp-content/uploads/2023/05/b8727131-15d8-4513-a616-51ecaea0908d.jpg": {
