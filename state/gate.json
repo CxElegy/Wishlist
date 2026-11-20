@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T16:33:31+00:00",
+ "checked": "2026-11-20T17:36:55+00:00",
  "fired": {
   "at": "2026-11-20T16:33:31+00:00",
   "results": {
@@ -68,77 +68,59 @@
    },
    "items": [
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "Vaundy",
-    "dota2",
-    "gelato pique",
-    "lib:Ado",
-    "lib:King Gnu",
-    "lib:SPY×FAMILY",
-    "lib:【推しの子】",
-    "lib:ガンプラ",
-    "lib:ゼルダの伝説",
-    "lib:呪術廻戦",
-    "lib:鬼滅の刃",
+    "lib:iPhone",
+    "lib:キャンプ",
+    "lib:コーヒー",
+    "lib:ユニバーサル・スタジオ・ジャパン",
+    "lib:ラーメン",
+    "lib:東京ディズニーリゾート",
+    "lib:筋トレ",
+    "lib:観葉植物",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "三星手机",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
+    "哈利波特剧集"
    ],
-   "last_batch": "2026-11-20T14:45:51+00:00",
+   "last_batch": "2026-11-20T16:50:38+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 8,
+   "prog": 79,
    "prog_day": "2026-11-21",
    "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "dota2",
-    "gelato pique",
-    "チェーンソーマン",
-    "三星手机",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
-   ],
-   "sig": "3153927ebd43",
-   "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 166 件（23 版面・AI 編集まで版面に載らない）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "FROM",
-    "GTA 6",
-    "あつ森",
-    "A2O LITE",
-    "The Mandalorian",
-    "Astrae Oratio",
-    "绝区零",
-    "周杰伦",
     "Vaundy",
     "ぐでたま"
    ],
-   "need": true,
-   "sig": "4b6439f3ae3d",
-   "waiting": [],
-   "why": "足りない 15 版面（Actions で Python が埋める）"
+   "sig": "f487b70723a0",
+   "token_cap": 1000000,
+   "tokens_today": 73676,
+   "why": "整理待ちの記事 103 件（13 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
+   ],
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -269,6 +251,14 @@
    "in": 521,
    "out": 74518,
    "runs": 15
+  },
+  "2026-11-21": {
+   "batches": 3,
+   "cr": 2062935,
+   "cw": 64093,
+   "in": 51,
+   "out": 9532,
+   "runs": 1
   }
  }
 }
