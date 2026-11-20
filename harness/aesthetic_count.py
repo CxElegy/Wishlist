@@ -4,6 +4,7 @@ self_review.py から呼ばれる（review() が MEASURE_JS のあとにこれ�
   edge   吸着した位置（版面の上端を画面の上に。E4・I1b）で、小元素・題・「今週」の札が画面の端で切れている
   hid    同じ位置で、固定のボタン（はじめのページ・ログイン）の下に隠れている
   solo   記事が 1 本だけの版面（C2）
+  postergap 頭条のポスターの中で、写真の枠と字の列（日付・見出し・要約）の高さの差が 48px かつ頭条の高さの 12% 超（A1・A5。2026-11-20）
   herogap 重大（頭条）の横の大きな空き（頭条の高さの帯のうち、40px 以上の幅の空きの面積 / 帯の面積が HERO_SIDE_MAX 超。A1・A6）
   emrel  空きに置いた小元素（.wemb）が、その記事の字に名前（キャラ・役者）が出ない人（A8）。うち作品ロゴ・作品そのもので埋めた数は stats の emlogo
   cgap   カードの中の空き：写真の下（横並びの写真）・字の下・右が割合を超える（A1・A5）
@@ -36,6 +37,8 @@ LEAD_MAX = 0.70         # ほかの注目の大きい 1 枚の写真は頭条の
 FEW_WALL = 3            # ほかの注目がこの本数以下なら、大きい 1 枚を作らず同じ大きさで並べる
 SIDE_LINE_PX = 64       # 空の脇の箱（予定・欲しい物）は 1 行の細い帯（この高さまで）
 ROW_EDGE_PX = 4          # 同じ行に並んだカードの下端の差（これを超えたら ✗）
+POSTER_GAP_PX = 48       # 頭条の中の空き（字の列と写真の高さの差）：この px かつ
+POSTER_GAP = 0.12        # 頭条の高さのこの割合を超えたら ✗（2026-11-20）
 NAV_GAP_PX = 80         # 左の目次の中身の底から箱の底・欲しい物のボタンまでの空き
 # 2026-11-19 店長「図が小さい」（見本 a の版面の 1 件目が約 65px の正方形）：B9・D1 を数にする（仮の下限。店長の決め待ち）
 SMALL_PC = 120          # 記事の写真の表示の短い辺の下限（幅 760 超）
@@ -43,13 +46,13 @@ SMALL_SP = 88           # 同じ（幅 760 以下）
 SIZE_MIX = 1.5          # 同じ行の記事の写真：面積の大きいほうが小さいほうのこの倍を超えたら 1 大 1 小
 
 KIND = {"edge": "吸着した位置で小元素・題・札が画面の端で切れている", "hid": "吸着した位置で固定のボタンの下に隠れている",
-        "solo": "記事が 1 本だけの版面", "herogap": "重大の横に大きな空き", "emrel": "空きの小元素がその記事と無関係",
+        "solo": "記事が 1 本だけの版面", "herogap": "重大の横に大きな空き", "postergap": "頭条の中で写真と字の列の高さが合わず空く", "emrel": "空きの小元素がその記事と無関係",
         "cgap": "カードの中に空き（写真の下・字の下・右）", "ell": "見出しが「…」で切れている", "strong": "脇役の部品に強い要素が 2 つ以上",
         "orphan": "見出しの最後の行が 1〜2 字", "leadbig": "ほかの注目の大きい 1 枚が頭条に近い大きさ", "sidebig": "空の脇の箱が 1 行の帯より大きい",
         "pendhid": "記事 1 本以下の版面で整理待ちをたたんだまま", "navgap": "左の目次の下が空く", "dup": "同じ記事・同じ写真が 2 回", "rowedge": "同じ行のカードの下端がそろわない", "imgfail": "記事の写真が読み込めなかった", "pending": "記事の写真が 30 秒で届かない", "noimg": "頭条に写真なし・記事の半分超が写真なし",
         "small": "記事の写真の短い辺が下限より小さい（B9）", "sizemix": "同じ行の記事の写真が 1 大 1 小（D1）"}
 FIX = {"edge": "scroll-margin-top を小元素のはみ出し分だけ取る（render.CSS section.sec.has-emb）", "hid": "固定のボタンの下に入らない位置で吸着する",
-       "solo": "版面の記事を増やす・隣の版面と一緒に組む", "herogap": "重大の横に記事・予定を置くか幅を広げる",
+       "solo": "版面の記事を増やす・隣の版面と一緒に組む", "herogap": "重大の横に記事・予定を置くか幅を広げる", "postergap": "写真の列の幅を選び直して写真の高さを字の列にそろえる（render FIT_JS 頭条のポスター）",
        "emrel": "関係のある小元素が無ければ空きのまま（置かない）", "cgap": "写真を字の高さまで伸ばす・カードを縮める",
        "ell": "行数を増やす・見出しを短くする", "strong": "脇役の箱は墨の地・小さい札だけにする（C4）",
        "orphan": "字の大きさを列に合わせる・text-wrap: balance（render FIT_JS fitHead）", "leadbig": "記事 3 本以下は同じ大きさで並べる・大きい 1 枚は頭条の 7 割まで",
@@ -121,6 +124,20 @@ JS_BODY = r"""
     if (ratio > P.heroMax) { bump('herogap'); tag(sec, 'herogap', Math.round(ratio * 100) + '%（' + (sec.dataset.k || '') + '）'); }
   });
   stats.heroBoards = heroN; stats.heroWorstPct = Math.round(heroWorst * 100);
+  // 2b. 頭条のポスターの中の空き（2026-11-20 店長「空白のところは多すぎ」：縦長の写真で日付と見出しの間が空いた。herogap は版面の頭の記事だけを見ていた）。
+  // PC で、字の列（日付＋見出し・要約）の高さと写真の枠（余白込み）の高さの差が POSTER_GAP_PX かつ頭条の高さの POSTER_GAP 超なら ✗（A1・A5）
+  { const top = document.querySelector('#front .top'), fr = top && top.querySelector(':scope > .frame');
+    if (top && fr && innerWidth > 760 && vis(top) && vis(fr)) {
+      const pd = top.querySelector(':scope > .pdate'), tx = top.querySelector(':scope > .ptxt'), cs = getComputedStyle(top), fs = getComputedStyle(fr);
+      if (top.classList.contains('pstk')) {   // 写真を上・字を下に積んだ形：写真の横の空き（左右の合計）が POSTER_GAP_PX かつ頭条の幅の 15% 超なら ✗
+        const side = top.clientWidth - fr.offsetWidth - (parseFloat(fs.marginLeft) || 0) - (parseFloat(fs.marginRight) || 0); stats.posterGap = Math.round(side);
+        if (side > P.posterGapPx && side > top.clientWidth * 0.15) { bump('postergap'); tag(top, 'postergap', Math.round(side) + 'px（積んだ写真の横）'); }
+      } else {
+      const left = (pd ? pd.offsetHeight + (parseFloat(cs.rowGap) || 0) : 0) + (tx ? tx.offsetHeight : 0);
+      const right = fr.offsetHeight + (parseFloat(fs.marginTop) || 0) + (parseFloat(fs.marginBottom) || 0);
+      const d = Math.abs(left - right), H = top.getBoundingClientRect().height;
+      stats.posterGap = Math.round(d);
+      if (d > P.posterGapPx && d > H * P.posterGap) { bump('postergap'); tag(top, 'postergap', Math.round(d) + 'px（' + (left > right ? '写真の下' : '字の列') + '・頭条の高さ ' + Math.round(H) + 'px）'); } } } }
 
   // 3. 空きに置いた小元素（.wemb）：その記事の字に名前が出るか／作品そのもので埋めたか
   stats.wemb = 0; stats.emlogo = 0;
@@ -321,7 +338,7 @@ def measure(pg, start=0):
     p = {"snapMinW": SNAP_MIN_W, "heroMax": HERO_SIDE_MAX, "heroMinW": HERO_SIDE_MIN_W, "cPhoto": CGAP_PHOTO, "cText": CGAP_TEXT, "cRight": CGAP_RIGHT,
          "cMin": CGAP_MIN_PX, "strongArea": STRONG_AREA, "relFn": REL_FN % rel if rel else "",
          "orphanMin": ORPHAN_MIN, "rowEdge": ROW_EDGE_PX, "leadMax": LEAD_MAX, "fewWall": FEW_WALL, "sideLine": SIDE_LINE_PX, "navGap": NAV_GAP_PX,
-         "smallPc": SMALL_PC, "smallSp": SMALL_SP, "sizeMix": SIZE_MIX}
+         "posterGapPx": POSTER_GAP_PX, "posterGap": POSTER_GAP, "smallPc": SMALL_PC, "smallSp": SMALL_SP, "sizeMix": SIZE_MIX}
     return pg.evaluate("(a) => (" + body.strip() + ")(a[0], a[1], a[2])", [start, p, bool(rel)])
 
 
@@ -329,7 +346,7 @@ def measure(pg, start=0):
 NEW_USER_VIEWS = ((390, 844), (412, 915), (768, 1024), (1000, 800), (1024, 768), (1333, 720), (1440, 900), (1920, 1080))
 # 8 つの指摘 → 数える項目（self_review の band・cgap と、上の 7〜12）。審美基準の番号は aesthetic_map.json
 NEW_USER_KINDS = ("imgfail", "pending", "noimg", "rowedge", "orphan", "leadbig", "band", "cgap", "sidebig", "pendhid", "navgap", "dup",
-                  "solo", "herogap", "ell", "over", "wide", "clip", "gap", "small", "sizemix")
+                  "solo", "herogap", "postergap", "ell", "over", "wide", "clip", "gap", "small", "sizemix")
 
 
 def page_counts(pg):
@@ -450,7 +467,7 @@ def stable_main(argv):
 
 COMPARE_WIDTHS = (390, 1333, 1920)
 # 後 ≤ 前 を見る項目（orphan は減ってよい・増えても ✗）
-COMPARE_KINDS = ("orphan", "gap", "cgap", "rowedge", "herogap", "band", "crop", "edge", "solo", "pendhid", "dup", "navgap", "sidebig")
+COMPARE_KINDS = ("orphan", "gap", "cgap", "rowedge", "herogap", "postergap", "band", "crop", "edge", "solo", "pendhid", "dup", "navgap", "sidebig")
 
 
 def _render_with(render_src, out):

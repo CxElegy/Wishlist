@@ -190,7 +190,8 @@ button{font-family:inherit}
 .ptxt{display:flex;flex-direction:column;gap:16px;align-self:end;padding-bottom:6px;min-width:0}
 .kick{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
 .kick em{font:16px/1 var(--font-num);font-style:normal;letter-spacing:.04em;color:var(--deep,var(--ink))}
-.top h2{margin:0;max-width:600px;font:900 clamp(21px,2.2vw,31px)/1.55 var(--font-sans);letter-spacing:.01em;transform:rotate(var(--tilt));transform-origin:left top}
+.top h2{margin:0;max-width:600px;font:900 calc(clamp(21px,2.2vw,31px) * var(--hs,1))/1.55 var(--font-sans);letter-spacing:.01em;transform:rotate(var(--tilt));transform-origin:left top}
+.top.pstk{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;gap:18px}.top.pstk>.frame{grid-column:1;grid-row:auto;justify-self:center}   /* 頭条の写真と字の列の高さが合わないとき：写真を上・字を下（FIT_JS 頭条のポスター・A9 ④） */
 /* ニュースの見出しは最後の行を 1〜2 字にしない（2026-11-19 店長 ①「始」1 字）：全部の見出しに同じ決め＝行の長さをそろえる（balance。行の数は増やさない＝版面の高さを変えない）。残りは NOORPHAN_JS が直す */
 .top h2,.wc>b,section.sec article.card :is(h2,h3),.pend li a{text-wrap:balance}
 .top:hover .hb{background:var(--deep,var(--ink))}
@@ -4120,21 +4121,85 @@ FIT_JS = """
       }
       return;
     }
-    // 頭条のポスター：写真が枠の形に合わず切れないときは、枠を写真の形にする（高さはそのまま・幅を写真に合わせて絞り、空いた幅は字の列へ）。
-    // 左右に帯を出さない（2026-11-09 審美基準 A1・A3・B6：頭条の縦長の写真の左右が黄色い帯になった）
+    // 頭条のポスター（PC）：写真の高さと字の列（日付・見出し・要約）の高さを合わせる（2026-11-20 店長「空白のところは多すぎ」「1ヵ所だけでなく、ロジックを学習して全体を直すべき」）。
+    // 前は縦長の写真を画面の 6 割まで伸ばし、字の列を見ていなかった → 日付と見出しの間が空いた（A1・A5）。決め方：写真の列の幅を 30〜64% で試し、
+    // ① 写真の形のまま ② 主役・字が欠けない切り方（cropAt。帯を外す写真は切らない）で、写真の高さが字の列の高さにいちばん近い幅を選ぶ。差が同じなら写真を大きく（C1）。
+    // 枠は写真の形（B6）・空白で埋めない（A3）。スマホは縦に積む（下の前の決め）。残った差は点検の postergap が数える
     const top = p.closest('#front .top');
     if (top) {
       const fr = p.closest('.frame'); p.style.aspectRatio = p.style.width = p.style.height = ''; top.style.gridTemplateColumns = ''; if (fr) fr.style.justifySelf = '';
+      if (innerWidth > 760 && fr) {
+        const cs = getComputedStyle(top), cg = parseFloat(cs.columnGap) || 36, rg = parseFloat(cs.rowGap) || 0, G = top.clientWidth;
+        const pd = top.querySelector(':scope > .pdate'), tx = top.querySelector(':scope > .ptxt'), fs = getComputedStyle(fr);
+        const chW = fr.offsetWidth - p.offsetWidth + (parseFloat(fs.marginLeft) || 0) + (parseFloat(fs.marginRight) || 0);
+        const chV = fr.offsetHeight - p.offsetHeight + (parseFloat(fs.marginTop) || 0) + (parseFloat(fs.marginBottom) || 0);
+        const colH = tw => { top.style.gridTemplateColumns = Math.floor(tw) + 'px minmax(0,1fr)'; return (pd ? pd.offsetHeight + rg : 0) + (tx ? tx.offsetHeight : 0); };
+        // 写真の幅だけで合わないとき、頭条の見出しの大きさで字の列を伸び縮みさせる：字の列が低いなら大きく（1.1〜1.8 倍・40px まで。頭条はいちばん大きく：C1）、
+        // 高いなら小さく（0.92・0.85 倍・18px まで。読む字の下限 D4 より十分上）。差が同じなら元の大きさに近いほう
+        // 倍率は CSS の変数 --hs（字の大きさを直に書かない：見出しの孤立を直す NOORPHAN_JS が字の大きさを消しても倍率は残る＝取り合わない）
+        const h2 = tx && tx.querySelector('h2'), tp = tx && tx.querySelector(':scope > p');
+        [h2, tp].forEach(e => { if (e) e.style.fontSize = e.style.letterSpacing = e.style.maxWidth = ''; });
+        top.style.setProperty('--hs', '1');
+        const fs0 = h2 ? parseFloat(getComputedStyle(h2).fontSize) : 0;
+        // 見出し・要約の最後の行が 1〜2 字になる組は減点（NOORPHAN が後から字を変えて字の列の高さがずれないように、最初から孤立のない組を選ぶ）
+        const orph = el => { if (!el || !el.offsetWidth) return false; const rg = document.createRange(), tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), cs = []; for (let n; (n = tw.nextNode());) for (let i = 0; i < n.data.length; i++) { if (!n.data[i].trim()) continue; rg.setStart(n, i); rg.setEnd(n, i + 1); const q = rg.getClientRects()[0]; if (q && q.width) cs.push(q.top); }
+          if (cs.length < 6) return false; const lt = cs[cs.length - 1]; let k = 0; for (let i = cs.length - 1; i >= 0 && Math.abs(cs[i] - lt) < 4; i--) k++; return k < 3 && k < cs.length; };
+        // 頭条の写真はほかの注目のどのカードの写真より十分大きく（C1・点検 leadbig：ほかの注目の写真は頭条の 7 割まで）：面積の下限＝ふつうのカードの最大 ÷ 0.68。記事が少ない壁の小さい形（.cmp・.ban）は壁の側が頭条の 64% に合わせるので数えない（互いに押し上げて固まらない）
+        const minA = Math.max(0, ...[...document.querySelectorAll('.mgrid .wall > .wc:not(.lead):not(.cmp):not(.ban):not([hidden]) > .pic')].filter(e => e.offsetWidth).map(e => e.offsetWidth * e.offsetHeight)) / 0.68;
+        const minH = Math.max(260, Math.min((window.WLvh || innerHeight) * 0.42, G * 0.45));   // 頭条の写真の高さの下限（C1・B9：見出しが短くても写真を小さくして合わせない。足りない分は見出しを大きく）
+        let best = null;
+        for (const sc of [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.8, 0.92, 0.85]) {
+          if (sc !== 1 && (!h2 || fs0 * sc > 40 || fs0 * sc < 18)) continue;
+          top.style.setProperty('--hs', String(sc));
+          let b0 = null;
+          for (let f = 0.18; f <= 0.641; f += 0.02) {   // とても縦長の写真（1:2）は細い列で字の列の高さに届く（面積の下限 minA は別に守る）
+            const pw = Math.round(G * f), tw = G - cg - pw - chW; if (tw < 300) continue;   // 字の列は 300px 以上（細いと見出しが 1 行 6〜8 字に刻まれ、孤立を直す処理が幅を狭めて高さがずれる）
+            const ph = colH(tw) - chV; if (ph < 120) continue;
+            const r = nat / (pw / ph);
+            let mode = 'nat', err = Math.abs(pw / nat - ph);
+            if (Math.abs(Math.log(r)) < 0.08) { mode = 'exact'; err = 0; } else if (!img._bands && cropAt(img, r)) { mode = 'crop'; err = 0; }
+            const raw = err;
+            if (orph(h2) || orph(tp)) err += 40;
+            if (pw * (mode === 'nat' ? pw / nat : ph) < minA || (mode === 'nat' ? pw / nat : ph) < minH) err += 1000;   // 小さすぎる頭条は最後の手（ほかに無いときだけ）
+            if (!b0 || (err >= 1000 && b0.err >= 1000 ? pw > b0.pw : err < b0.err - 4 || (err <= b0.err + 4 && pw > b0.pw))) b0 = {pw, ph, mode, err, sc, raw};   // 下限に届く候補が無いときは、いちばん大きい写真
+          }
+          if (b0 && (!best || (b0.err >= 1000 && best.err >= 1000 ? b0.pw > best.pw : b0.err < best.err - 4))) best = b0;   // 大きくしても差が縮まらないなら前の大きさのまま
+          if (best && best.err <= 16) break;
+        }
+        top.style.setProperty('--hs', String(best ? best.sc : 1));
+        img.style.objectPosition = ''; delete img.dataset.keep;
+        top.classList.remove('pstk');
+        // 写真の幅と見出しの大きさで合わせきれない（字の列がずっと高い・低い）：横に並べるのをやめ、写真を上・字を下に積む（スマホと同じ並び。A9 ④）。
+        // 写真は写真の形のまま、高さは画面の 55% まで
+        const H0 = best ? Math.max(best.ph, best.pw / nat) + chV : 0;
+        if (nat >= 1 && (!best || best.err >= 1000 || best.raw > Math.max(48, H0 * 0.12))) {   // 並べる形が無い・頭条の写真が下限より小さくなる・高さが合わない（横長の写真だけ：縦長を積むと細い写真の横が空く）
+          top.classList.add('pstk'); top.style.setProperty('--hs', '1'); top.style.gridTemplateColumns = '';
+          const pw = Math.round(Math.min(G - chW, (window.WLvh || innerHeight) * 0.55 * nat));
+          p.style.width = pw + 'px'; p.style.height = Math.round(pw / nat) + 'px'; p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill');
+          top.dataset.pfit = 'stack:' + (best ? Math.round(best.raw) : '-');
+          best = null;
+        }
+        if (best) {
+          const ph = best.mode === 'nat' ? best.pw / nat : best.ph;
+          top.style.gridTemplateColumns = 'minmax(0,1fr) ' + Math.ceil(best.pw + chW) + 'px';
+          p.style.width = best.pw + 'px'; p.style.height = Math.round(ph) + 'px'; p.style.aspectRatio = (best.pw / ph).toFixed(4); p.classList.add('fill');
+          if (best.mode === 'crop') cropAt(img, nat / (best.pw / ph));
+          top.dataset.pfit = best.mode + ':' + Math.round(best.err);
+        } else { top.style.gridTemplateColumns = ''; p.classList.toggle('fill', Math.abs(Math.log(nat / (p.clientWidth / Math.max(1, p.clientHeight)))) < 0.08); }
+        if (img._bands) trimFit(img, p, img._bands);
+        // 字の列があとから変わる（見出しの孤立を直す NOORPHAN_JS・字体の到着）と、合わせた高さがずれる：字の列の高さが変わったら合わせ直す（自分で組んだ分は同じ高さなので動かない）
+        try { wallSoon(); } catch (e) {}   // ほかの注目の大きい 1 枚は頭条の写真の面積で決まる（wall の headArea）：頭条が変わったら組み直す（読み込みの最初は wall がまだ無い：あとで wall() が組む）
+        if (tx) { top._txh = tx.offsetHeight; if (!top._ro && window.ResizeObserver) { top._ro = new ResizeObserver(() => { if (Math.abs(tx.offsetHeight - (top._txh || 0)) < 6) return;
+          const now = Date.now(); top._rn = (top._rn || []).filter(x => now - x < 2000); if (top._rn.length >= 3) return; top._rn.push(now);   // 合わせ直しは 2 秒に 3 回まで（ほかの処理と直し合って回り続けない）
+          clearTimeout(top._rt); top._rt = setTimeout(() => { if (img.naturalWidth) fit(img); }, 60); }); top._ro.observe(tx); } }
+        return;
+      }
+      top.style.removeProperty('--hs');
       const w0 = p.clientWidth, h0 = p.clientHeight, r0 = nat / (w0 / Math.max(1, h0));
       const ok = Math.abs(Math.log(r0)) < 0.08 || cropAt(img, r0);
       p.classList.toggle('fill', ok);
       if (!ok && img._bands) trimFit(img, p, img._bands);
-      if (!ok && r0 < 1 && innerWidth > 760) {
-        const ph = Math.min(w0 / nat, Math.max(h0, (window.WLvh || innerHeight) * 0.6)), w = Math.round(ph * nat); p.style.width = w + 'px'; p.style.height = Math.round(ph) + 'px';   // 頭条はいちばん大きく（C1）：高さは画面の 6 割まで伸ばしてよい
-        p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill'); img.style.objectPosition = '';
-        if (fr) { fr.style.justifySelf = 'end'; const fw = fr.getBoundingClientRect().width; top.style.gridTemplateColumns = 'minmax(0,1fr) ' + Math.ceil(fw + 16) + 'px'; }
-        if (img._bands) trimFit(img, p, img._bands);
-      } else if (!ok && (r0 > 1 || innerWidth <= 760)) {   // 横長の絵・スマホの縦長の絵：枠を写真の形に（縦は幅の 1.3 倍まで、超える分は主役が残るときだけ切る）
+      if (!ok) {   // スマホ：枠を写真の形に（縦は幅の 1.3 倍まで、超える分は主役が残るときだけ切る）
         const ar = Math.max(nat, 1 / 1.3); p.style.height = 'auto'; p.style.aspectRatio = ar.toFixed(4); p.classList.add('fill');
         if (ar > nat * 1.02) cropAt(img, nat / ar); else img.style.objectPosition = '';
         if (img._bands) trimFit(img, p, img._bands);
@@ -4790,7 +4855,7 @@ FIT_JS = """
       let pen = li > 0 ? 0.08 * li : 0;
       if (li >= 0) { const im = cards[li].querySelector('.pic img:not(.bg):not(.ico)'), bb = im && im._bands, cn = im && im.naturalWidth ? im.naturalWidth * (bb ? 1 - bb.l - bb.r : 1) / (im.naturalHeight * (bb ? 1 - bb.t - bb.b : 1)) : 1.5;
         if (cn < 1) pen += 1; }   // 縦長の写真は横長の大きい枠に入らない（左右が空く）
-      if (headA) pen += Math.max(0, L / headA - 0.85) * 4 + Math.max(0, O / headA - 0.65) * 2;
+      if (headA) pen += Math.max(0, L / headA - 0.85) * 4 + Math.max(0, O / headA - 0.65) * 2 + (L > headA * 0.7 ? 100 : 0);   // 頭条の 7 割を超える大きい 1 枚は選ばない（C1・点検 leadbig。2026-11-20：頭条の写真を字の列の高さに合わせて小さくしても順が逆にならない）
       if (L) pen += Math.max(0, O / L - 0.85) * 2;
       if (O && O < 12000) pen += 0.5;
       cards.forEach(c => { c.hidden = false; });
@@ -4882,7 +4947,7 @@ FIT_JS = """
   let wq = 0; const wallSoon = () => { if (!wq) wq = requestAnimationFrame(() => { wq = 0; wall(); document.dispatchEvent(new Event('wl-laid')); }); };
   if (window.ResizeObserver) { const ro = new ResizeObserver(wallSoon); document.querySelectorAll('.mgrid > .wall > .wc').forEach(c => ro.observe(c)); }
   wall();
-  if (document.fonts) document.fonts.ready.then(wall);
+  if (document.fonts) document.fonts.ready.then(() => { const hi = document.querySelector('#front .top .pic img:not(.bg):not(.ico)'); if (hi && hi.naturalWidth) fit(hi); wall(); });   // 字体が届くと頭条の字の列の高さが変わる：写真の高さを合わせ直す
   addEventListener('load', wall);
   // 軽い吸着（PC だけ）：スクロールが止まったとき、版面などの上端が画面の上から 72px 以内なら、そこへそっと合わせる。
   // それより離れていれば何もしない（CSS の scroll-snap は吸い付く範囲がブラウザまかせで強すぎるので使わない）

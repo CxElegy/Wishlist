@@ -97,12 +97,21 @@ class RenderJsBugs(unittest.TestCase):
         self.assertEqual(out, [False, True, 1])
 
     def test_lead_portrait_photo_statements_run(self):
-        # 頭条の縦長の写真：枠の形・fill・objectPosition の 3 文が、直前のコメントに飲まれていた（2026-11-13）
-        s = cut(part("頭条のポスター"), "if (!ok && r0 < 1 && innerWidth > 760) {", "img.style.objectPosition = '';")
+        # 頭条の写真（スマホ）：枠の形・fill・objectPosition の文が、直前のコメントに飲まれていない（2026-11-13。11-20 PC は高さ合わせの別の道へ）
+        s = cut(part("頭条のポスター"), "if (!ok) {   // スマホ", "img.style.objectPosition = '';")
         pre = ("const p={style:{},classList:{s:new Set(),add(c){this.s.add(c)}}};const img={style:{objectPosition:'x'}};"
-               "const window={},ok=false,r0=.7,innerWidth=1200,innerHeight=800,w0=400,h0=300,nat=.7,top={},fr=null,trimFit=()=>{};")
+               "const ok=false,nat=.7,cropAt=i=>{i.style.objectPosition='';return false;},trimFit=()=>{};")   # 本物の cropAt も最初に位置を消す
         out = node(pre + s + "\n}\nconsole.log(JSON.stringify([p.style.aspectRatio,p.classList.s.has('fill'),img.style.objectPosition]))")
-        self.assertEqual(out, ["0.7000", True, ""])
+        self.assertEqual(out, ["0.7692", True, ""])   # 縦は幅の 1.3 倍まで（1/1.3）
+
+    def test_poster_pc_matches_heights(self):
+        # 頭条（PC）：写真の高さを字の列にそろえる道がある・字の大きさを直書きしない（NOORPHAN と取り合わない）・積む形がある（2026-11-20 店長「空白のところは多すぎ」）
+        s = cut(part("頭条のポスター"), "// 頭条のポスター（PC）", "const big = p.closest(")
+        self.assertIn("colH(tw) - chV", s)
+        self.assertIn("setProperty('--hs'", s)
+        self.assertNotIn("h2.style.fontSize = sc", s)
+        self.assertIn("classList.add('pstk')", s)
+        self.assertNotIn("innerHeight) * 0.6", s)   # 前の「縦長は画面の 6 割まで伸ばす」は無い
 
 
 if __name__ == "__main__":
