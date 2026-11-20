@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-20T20:39:14+00:00",
+ "changed": true,
+ "checked": "2026-11-20T21:18:42+00:00",
  "fired": {
   "at": "2026-11-20T20:39:14+00:00",
   "results": {
@@ -67,42 +67,27 @@
     "sig": "a002df42d61e"
    },
    "items": [
-    "FROM",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "gelato pique",
-    "lib:FINAL FANTASY VII REBIRTH",
-    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
-    "lib:ONE PIECE",
-    "lib:モンスターハンターワイルズ",
-    "lib:世界最強の魔女、始めました",
-    "lib:原神",
-    "lib:宮崎駿",
-    "あつ森",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-20T19:43:41+00:00",
+   "last_batch": "2026-11-20T20:47:39+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 145,
+   "prog": 154,
    "prog_day": "2026-11-21",
-   "ripe": [
-    "FROM",
-    "lib:FINAL FANTASY VII REBIRTH",
-    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
-    "lib:世界最強の魔女、始めました",
-    "あつ森"
-   ],
-   "sig": "a002df42d61e",
+   "ripe": [],
+   "sig": "b509a3b7c0b3",
    "token_cap": 1000000,
-   "tokens_today": 179122,
-   "why": "整理待ちの記事 67 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 227120,
+   "why": "整理待ちの記事 8 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -259,12 +244,12 @@
    "runs": 15
   },
   "2026-11-21": {
-   "batches": 7,
-   "cr": 4156782,
-   "cw": 161258,
-   "in": 110,
-   "out": 17754,
-   "runs": 3
+   "batches": 9,
+   "cr": 5091740,
+   "cw": 206166,
+   "in": 137,
+   "out": 20817,
+   "runs": 4
   }
  }
 }
