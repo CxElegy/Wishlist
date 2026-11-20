@@ -2467,6 +2467,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hMGfC.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hhX2K.img": {
   "w": 640,
   "h": 360,
@@ -3248,12 +3254,6 @@
  "https://ismcdn.limo.media/mwimgs/2/a/1200w/img_2a4770e1a0c6b4890860e83eb0cba898279696.png": {
   "w": 1200,
   "h": 631,
-  "target": 1280,
-  "v": 3
- },
- "https://jubileecast-29b4.kxcdn.com/data/images/full/32707/avengers-doomsday.jpeg?w=900&h=472&l=50&t=5": {
-  "w": 900,
-  "h": 472,
   "target": 1280,
   "v": 3
  },
