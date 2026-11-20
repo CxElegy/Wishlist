@@ -1198,12 +1198,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.factinnews.co.kr/news/photo/202611/301074_50935_130.jpg": {
-  "w": 600,
-  "h": 338,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.gameinsight.co.kr/news/photo/202611/37002_91031_72.jpg": {
   "w": 900,
   "h": 600,
@@ -5431,6 +5425,62 @@
   "c": "#67605e",
   "k": null,
   "p": null
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-00010002-tennisnet-000-1-view.jpg?pri=l&w=640&h=480&exp=10800": {
+  "w": 640,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.454,
+  "local": "pics/9f10ab34aa565d5c.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    8,
+    7,
+    8,
+    6,
+    7,
+    25,
+    30,
+    2,
+    3,
+    2,
+    2,
+    2
+   ],
+   [
+    1,
+    21,
+    38,
+    10,
+    5,
+    5,
+    2,
+    4,
+    4,
+    6,
+    4,
+    0
+   ]
+  ],
+  "c": "#b8b0a1",
+  "k": [
+   0.228,
+   0.531,
+   0.266,
+   0.686
+  ],
+  "p": [
+   0.428,
+   0.093,
+   0.591,
+   0.393
+  ]
  },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,

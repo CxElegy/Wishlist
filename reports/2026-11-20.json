@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "f4857cd657b2",
+ "edit_sig": "83e5ebddb1a0",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -471,8 +471,9 @@
      "date": "2026-11-17",
      "headline": "삼성전자, 엑시노스 2700 양산…갤럭시 S27 탑재 확대 주목",
      "highlight": "",
-     "image": "https://cdn.factinnews.co.kr/news/photo/202611/301074_50935_130.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "팩트인뉴스",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.factinnews.co.kr&sz=128",
      "url": "https://www.factinnews.co.kr/news/articleViewAmp.html?idxno=301074",
      "weight": "normal"
     },
@@ -1189,17 +1190,19 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "島根県の県民栄誉賞と松江市の市民栄誉賞を受賞し、錦織圭が自身のSNSで感謝を投稿した。",
      "date": "2026-11-19",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "錦織圭 栄誉賞W受賞に感謝「地元に恩返し…」 “しまねっこ”と2ショット投稿＜男子テニス＞",
-     "url": "https://news.yahoo.co.jp/articles/0101328ded84b4839db6802094fa9d0abf64376d"
+     "headline": "錦織圭 栄誉賞W受賞に感謝「地元に恩返し…」 “しまねっこ”と2ショット投稿＜男子テニス＞",
+     "highlight": "栄誉賞W受賞",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-00010002-tennisnet-000-1-view.jpg?pri=l&w=640&h=480&exp=10800",
+     "image_via": "AI 挑选",
+     "url": "https://news.yahoo.co.jp/articles/0101328ded84b4839db6802094fa9d0abf64376d",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
