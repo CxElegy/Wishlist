@@ -62,7 +62,8 @@
     "チェーンソーマン": 8,
     "滑雪": 3,
     "ぐでたま": 2,
-    "Vaundy": 1
+    "Vaundy": 1,
+    "哈利波特剧集": 3
   },
   "漫威电影": [
     {
@@ -337,5 +338,34 @@
       ]
     }
   ],
-  "Vaundy": []
+  "Vaundy": [],
+  "哈利波特剧集": [
+    {
+      "headline": "Who Will Play Voldemort in the Harry Potter Series?",
+      "highlight": "Voldemort",
+      "blurb": "Find out the latest casting news on who will play Voldemort in HBO's Harry Potter TV series.",
+      "weight": "lead",
+      "refs": [
+        3
+      ]
+    },
+    {
+      "headline": "PopBase and WW_Direct share new HBO Harry Potter series character posters",
+      "highlight": "character posters",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1
+      ]
+    },
+    {
+      "headline": "HBO Reveals Hogwarts Feast in New Harry Potter Series Clip",
+      "highlight": "Hogwarts Feast",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2
+      ]
+    }
+  ]
 }

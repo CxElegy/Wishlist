@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "99e9d9fe928d",
+ "edit_sig": "9a085bb28db7",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -258,31 +258,39 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-11-19",
-     "n": 1,
-     "source": "Digg",
-     "title": "PopBase and WW_Direct share new HBO Harry Potter series character posters",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5HTWRfeERRam9vM1pQN2QxMDczaVc5N0RYWW14V1NrUllCRUppeVB2V0IxRm9ycldXY3VCOVpuRlZ3OGtscUxyaUZ5QnNwSWdI?oc=5"
-    },
-    {
-     "date": "2026-11-16",
-     "n": 2,
-     "source": "Players",
-     "title": "HBO Reveals Hogwarts Feast in New Harry Potter Series Clip",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOZkplRGpCRWVKb0M4UzQ1MVJZZzNvRWxIQjZEQTVpT2VaeTN4c3dVRjBSWHRZZ1pfanZwcGctZVpFakpxakdoWDVrcmxvcXg5Ujd2U1Q4WURxbnJXZUF4ejdPeXJHSXByQndpaFkxQWw1Rm9YUWE4a2JfcXFTY2xMWDNFWWk3NXRucDJISkc2MzZPRENt0gGcAUFVX3lxTFBnRzEzejNYYWgyWFd4UGdQYjFJYUlBNDZUcVBPUUVPaldLaXpZb3VSOU5YNk5sdXQ1UWE0czFwNXdyaFloTU4yeUV6b2FobGlpMkFoX3UxY01qZm9Bcnp6YjV1VjZEdVVGRkpkWUlaTzZrSjEyS3pmVXp2UEZINTd6aU9vSi16YlBTMmxEZm9GREMxM21KTkUxd01JaQ?oc=5"
-    },
-    {
+     "blurb": "Find out the latest casting news on who will play Voldemort in HBO's Harry Potter TV series.",
      "date": "2026-11-20",
-     "n": 3,
-     "source": "Epicstream",
-     "title": "Who Will Play Voldemort in the Harry Potter Series?",
-     "url": "https://epicstream.com/article/who-will-play-voldemort-in-the-harry-potter-series"
+     "headline": "Who Will Play Voldemort in the Harry Potter Series?",
+     "highlight": "Voldemort",
+     "image": "https://gdm-universal-media.b-cdn.net/epicstream/4b5ce965-voldemort-casting-update-harry-potter-reboot.webp?width=1600&height=840",
+     "image_via": "og:image",
+     "url": "https://epicstream.com/article/who-will-play-voldemort-in-the-harry-potter-series",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "PopBase and WW_Direct share new HBO Harry Potter series character posters",
+     "highlight": "character posters",
+     "image": "https://digg.com/entertainment/fg411xiq/opengraph-image?6a9dc854e855d953",
+     "image_via": "og:image",
+     "url": "https://digg.com/entertainment/fg411xiq",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-16",
+     "headline": "HBO Reveals Hogwarts Feast in New Harry Potter Series Clip",
+     "highlight": "Hogwarts Feast",
+     "image": "https://players.com.ua/wp-content/uploads/2026/11/HVuiYyqW0AAn8iT-1024x576.jpg",
+     "image_via": "og:image",
+     "url": "https://players.com.ua/en/news/hbo-reveals-hogwarts-feast-in-new-harry-potter-series-clip/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
