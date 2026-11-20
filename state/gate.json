@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-20T10:31:50+00:00",
+ "checked": "2026-11-20T10:36:56+00:00",
  "fired": {
-  "at": "2026-11-20T09:34:43+00:00",
+  "at": "2026-11-20T10:36:56+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -49,56 +49,46 @@
    "edit": 14
   },
   "2026-11-20": {
-   "edit": 13
+   "edit": 14
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-20T09:34:43+00:00",
+    "at": "2026-11-20T10:36:56+00:00",
     "attempts": 1,
     "day": "2026-11-20",
-    "prog": 413,
-    "resp": "cse_01W4x6f4qgYwwLHeRUffdxe9",
-    "sig": "23329cc81f2e"
+    "prog": 508,
+    "resp": "",
+    "sig": "78fdf8dcf5eb"
    },
    "items": [
     "FROM",
     "MMORPG 新作",
-    "lib:BTS",
-    "lib:F1",
-    "lib:Mrs. GREEN APPLE",
-    "lib:Nintendo Switch 2",
-    "lib:YOASOBI",
-    "lib:サッカー日本代表",
-    "lib:大相撲",
-    "lib:大谷翔平",
     "あつ森",
     "周杰伦",
     "哈利波特剧集",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-11-20T10:16:35+00:00",
+   "last_batch": "2026-11-20T10:20:47+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 497,
+   "prog": 508,
    "prog_day": "2026-11-20",
    "ripe": [
     "FROM",
     "あつ森",
     "周杰伦",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "sig": "c51be81e8e9c",
+   "sig": "78fdf8dcf5eb",
    "token_cap": 1000000,
-   "tokens_today": 664498,
-   "why": "整理待ちの記事 107 件（15 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 666698,
+   "why": "整理待ちの記事 8 件（6 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -247,11 +237,11 @@
    "runs": 12
   },
   "2026-11-20": {
-   "batches": 33,
-   "cr": 13344117,
-   "cw": 607194,
-   "in": 380,
-   "out": 56924,
+   "batches": 34,
+   "cr": 13430682,
+   "cw": 609065,
+   "in": 382,
+   "out": 57251,
    "runs": 12
   }
  }
