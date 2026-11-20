@@ -50,6 +50,45 @@ class Hook(unittest.TestCase):
         s = (ROOT / ".claude" / "hooks" / "agent_log.py").read_text(encoding="utf-8")
         self.assertIn("keep_board()", s)
 
+    def test_user_hook_in_cloud_only(self):
+        """クラウドの容器では user の設定にも hook を入れる（作業場所が /home/user でも、worker の再起動のあと起き直す）。
+        PC・手元の機械（CLAUDE_CODE_REMOTE_SESSION_ID なし）は触らない。2 回でも 1 つ。ほかの設定は残す。読めない設定は書き換えない"""
+        d = pathlib.Path(tempfile.mkdtemp())
+        f = d / ".claude" / "settings.json"
+        old = os.environ.pop("CLAUDE_CODE_REMOTE_SESSION_ID", None)
+        try:
+            self.assertEqual(hook.ensure_user_hook(f), "skip")
+            self.assertFalse(f.exists())
+            os.environ["CLAUDE_CODE_REMOTE_SESSION_ID"] = "cse_test"
+            f.parent.mkdir(parents=True)
+            f.write_text('{"model": "x", "hooks": {"Stop": [{"hooks": [{"type": "command", "command": "echo hi"}]}]}}', encoding="utf-8")
+            self.assertEqual(hook.ensure_user_hook(f), "added")
+            self.assertEqual(hook.ensure_user_hook(f), "present")
+            s = f.read_text(encoding="utf-8")
+            self.assertEqual(s.count("agentboard_start.py"), 2)              # SessionStart と UserPromptSubmit に 1 つずつ
+            self.assertIn('"model": "x"', s)
+            self.assertIn("echo hi", s)
+            f.write_text("{broken", encoding="utf-8")
+            self.assertEqual(hook.ensure_user_hook(f), "unreadable")
+            self.assertEqual(f.read_text(encoding="utf-8"), "{broken")
+        finally:
+            os.environ.pop("CLAUDE_CODE_REMOTE_SESSION_ID", None)
+            if old is not None:
+                os.environ["CLAUDE_CODE_REMOTE_SESSION_ID"] = old
+
+    def test_wishlist_dir_from_home(self):
+        """作業場所が /home/user（harness が無い）でも、site の欄のために hook のある Wishlist を渡す"""
+        old_env, old_cwd = os.environ.get("CLAUDE_PROJECT_DIR"), os.getcwd()
+        try:
+            os.environ["CLAUDE_PROJECT_DIR"] = tempfile.mkdtemp()
+            self.assertEqual(pathlib.Path(hook.wishlist_dir()).resolve(), ROOT.resolve())
+        finally:
+            if old_env is None:
+                os.environ.pop("CLAUDE_PROJECT_DIR", None)
+            else:
+                os.environ["CLAUDE_PROJECT_DIR"] = old_env
+            os.chdir(old_cwd)
+
     def test_registered_in_settings(self):
         s = (ROOT / ".claude" / "settings.json").read_text(encoding="utf-8")
         self.assertEqual(s.count("agentboard_start.py"), 2)                 # SessionStart と UserPromptSubmit
