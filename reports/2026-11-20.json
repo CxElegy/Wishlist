@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "78cdd89f6be3",
+ "edit_sig": "3a7f320e7e27",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -285,29 +285,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 6,
-     "source": "Collider",
-     "title": "‘Harry Potter’ Author’s New Crime Thriller Officially Debuts in 1 Month",
-     "url": "https://collider.com/jk-rowling-strike-the-running-grave-bbc-release-date-december-2026/"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 7,
-     "source": "Screen Rant on MSN",
-     "title": "HBO’s Harry Potter series officially unveils most important magical artifact ever",
-     "url": "https://www.msn.com/en-ca/news/other/hbo-s-harry-potter-series-officially-unveils-most-important-magical-artifact-ever/ar-AA2hOTVd"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 8,
-     "source": "IMDb",
-     "title": "HBO Harry Potter poster reveals new Hogwarts in Harry’s glasses",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9EazNUR1lYSGJDU3dwMjJpbGdTMDFyN0F4WnVzUDljbjVveml6NENzY2FoNTlZbjJZTjVybTZSWGNVWVloaFdzTU9LaHU0dDduNnc?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -342,6 +319,16 @@
      "image": "https://hermes.media.transform.aol.com/8bf9d2fbba5ad135b93b06684ee193433f18ce52/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/19/feff663e-2435-3464-b153-917359948e38/7ae5162a-a881-4387-a44c-23ce06c377e9.jpg",
      "image_via": "og:image",
      "url": "https://www.aol.com/articles/hbo-harry-potter-posters-reveal-170836000.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "HBO’s Harry Potter series officially unveils most important magical artifact ever",
+     "highlight": "officially unveils",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hAuli.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-ca/news/other/hbo-s-harry-potter-series-officially-unveils-most-important-magical-artifact-ever/ar-AA2hOTVd",
      "weight": "normal"
     }
    ],
@@ -602,22 +589,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 3,
-     "source": "ABC7 New York",
-     "title": "Mandalorian and Grogu merch: The best products to celebrate the movie's Disney+ release",
-     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNbkVuZGV6N20xcVhXY0tNQWVNMFVjb0lWVjI2ZUVDWmJxbERpbU9CenZJQndwY1hTX1YxN2xtYXZaN3B5OGt1X1NCMFd2bFp1dUl4QU5uU1pzV2M4SjZINmNfT0JOVG41dE9nbVA1TUo5S0RoR1ZFV0R2TVQ1dWYzUWVHa21ZS2Fnb01pRWlUSkpNSlRkZ0dia2RRY3F4ZFlWX0J1MzcyamxNZC1TdDQtbHowajJLZ9IBuwFBVV95cUxNUE05eGpqWUdHQmNtb0hBRl9qN21HVFY5cWYyZkhVWDY5ME12YzB2Mzh6RUx5aG9mcndDX3l6SjlveXV0V2I3Sm1YaF9lVGxGbmlUN0Q4b1R4RnJya21fVVZwcWtRTFRrdUtleEJpOWhYM2hvblE4UXBVVEVCYjBqWXdiMFF2Y3VBZ2lwWWNLLUJyb1Vob2djZmZGZ0FKNFA4TldjbjNZSDI1TWVpS0w4X296MzNad0FINW1Z?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 4,
-     "source": "コラボカフェ",
-     "title": "\"The Mandalorian: Glittery Postcard Book\" Goes on Sale December 18!",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNc0tkS0o4ZXEtamVrMzNYMWhqMkxQY2xpZmo4RFF1cTkyQkpPT0djSUhaUVJRZ1FnSkFGakQwbXN0bDdrV2VrY01tXzBmRGJVM1o2N25KenE1Z3VrVmZ4V2pRVWw3QWFkUzRBSjF3S3pmbjFXWEpRQmU3azNwdXRRV2FzNU0wX0FBYkVVR3psSQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -638,6 +609,20 @@
      "image": "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500",
      "image_via": "条目自带（Bing 缩略图）",
      "url": "https://www.imdb.com/news/ni65088646/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "event": {
+      "date": "2026-12-18",
+      "label": "発売日"
+     },
+     "headline": "\"The Mandalorian: Glittery Postcard Book\" Goes on Sale December 18!",
+     "highlight": "December 18",
+     "image": "https://collabo-cafe.com/wp-content/uploads/712EDkQmARL._SL1500_.jpg",
+     "image_via": "og:image",
+     "url": "https://collabo-cafe.com/en/events/collabo/starwars-mandalorian-postcard-book-release/",
      "weight": "normal"
     }
    ],
@@ -684,29 +669,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 22,
-     "source": "360娱乐",
-     "title": "周杰伦昆凌婚礼细节曝光，无赞助无直播只有50人见证，却成了所有人羡慕的典范",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBjOFI2R05iWWJSNkxnSFJzZjgzSU1iTDBiTkdrNUFzd3VVUTB2cXZya3ZjdmpsT3daSzQ2dkxsckd2YjZfV0NLTFIwQQ?oc=5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 23,
-     "source": "央视网",
-     "title": "[精彩音乐汇]歌曲《夜曲》 演唱：周杰伦",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE42U3JGeXg5NzJFTVJEYVRkWmVxRUNDbkJXNWNYaTJNeFk1QklOaGpCUDhGY2pRV3RTQTNHeEg4dFdOMjR0V0MxclFkaHFsNHBoT2dCN0k3dUhKa3BXWk1hbDdNU3lnZ0NBZ3ZGZGh5NVFCcjRhV3c?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 24,
-     "source": "民視新聞網",
-     "title": "NBA(影)／林書豪垃圾話狂噴周杰倫互動有趣！網友笑喊：哈佛大學嗆人也很不一樣",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1aakF3QVF2UXFtdFQ2YmZYSXVCYTRHLS1PUGU1c2RNak90V0lPSkRlaGdpbGRWZmczQWpYcHAyNUhmdWV3UE9IWW11WkJscDhhTUUwUm5QZHhsWUdkMk5UaQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {

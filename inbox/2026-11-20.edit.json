@@ -161,7 +161,17 @@
    "weight": "normal",
    "refs": [
     5,
-    4
+    4,
+    8
+   ]
+  },
+  {
+   "headline": "HBO’s Harry Potter series officially unveils most important magical artifact ever",
+   "highlight": "officially unveils",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
@@ -281,17 +291,17 @@
  "_covered": {
   "GTA 6": 93,
   "漫威电影": 79,
-  "哈利波特剧集": 5,
+  "哈利波特剧集": 8,
   "ILLIT": 17,
   "三星手机": 16,
   "Astrae Oratio": 3,
-  "The Mandalorian": 2,
+  "The Mandalorian": 4,
   "dota2": 13,
   "gelato pique": 7,
   "A2O LITE": 18,
   "BLEACH Mirrors High": 1,
   "MMORPG 新作": 6,
-  "周杰伦": 21,
+  "周杰伦": 24,
   "绝区零": 4,
   "チェーンソーマン": 2,
   "FROM": 5,
@@ -346,6 +356,19 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "\"The Mandalorian: Glittery Postcard Book\" Goes on Sale December 18!",
+   "highlight": "December 18",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ],
+   "event": {
+    "date": "2026-12-18",
+    "label": "発売日"
+   }
   }
  ],
  "dota2": [

@@ -1609,7 +1609,7 @@
  "https://collabo-cafe.com/wp-content/uploads/712EDkQmARL._SL1500_.jpg": {
   "w": 810,
   "h": 1200,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://collabo-cafe.com/wp-content/uploads/chainsawman-prize-glitter-glamours-reze-cafe-nimichi-2026-featured-1.jpg": {
@@ -2337,6 +2337,12 @@
   "w": 1456,
   "h": 819,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hAuli.img": {
+  "w": 3352,
+  "h": 1885,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hC471.img": {
