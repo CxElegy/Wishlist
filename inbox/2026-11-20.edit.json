@@ -358,15 +358,16 @@
   "A2O LITE": 22,
   "BLEACH Mirrors High": 1,
   "MMORPG 新作": 11,
-  "周杰伦": 24,
+  "周杰伦": 25,
   "绝区零": 9,
   "チェーンソーマン": 2,
-  "FROM": 5,
+  "FROM": 6,
   "星巴克马克杯": 2,
-  "猫用品": 2,
+  "猫用品": 4,
   "滑雪": 10,
   "Vaundy": 3,
-  "日本顶级网球赛事": 1
+  "日本顶级网球赛事": 1,
+  "あつ森": 1
  },
  "Astrae Oratio": [
   {
@@ -638,7 +639,8 @@
    "refs": [
     5,
     9,
-    12
+    12,
+    25
    ],
    "image": "https://q5.itc.cn/images01/20261119/8771a2ab3fc446a98978b7fc8d7de4d4.jpeg"
   },
@@ -731,7 +733,8 @@
    "weight": "lead",
    "refs": [
     1,
-    4
+    4,
+    6
    ],
    "image": "https://www.bing.com/th?id=ONUT.zwzfS2O-WRaU57U3vuqwLQ&pid=News&w=1200"
   },
@@ -772,7 +775,18 @@
    }
   }
  ],
- "猫用品": [],
+ "猫用品": [
+  {
+   "headline": "This $6 Cat Toy Is 'Worth Its Weight In Gold' — And Behaviorists Say There's A Reason",
+   "highlight": "$6 Cat Toy",
+   "blurb": "HuffPost looks at an inexpensive cat toy and why behaviorists say it works so well for cats.",
+   "weight": "lead",
+   "refs": [
+    4
+   ],
+   "image": "https://img.huffingtonpost.com/asset/66219b89230000370088ea45.jpeg?cache=spEn3zWqGy&ops=1778_1000"
+  }
+ ],
  "滑雪": [
   {
    "headline": "白馬八方尾根、山頂エリアに「初心者専用コース」新設。ファミリーにもやさしく？",
@@ -866,5 +880,6 @@
    ],
    "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-00010002-tennisnet-000-1-view.jpg?pri=l&w=640&h=480&exp=10800"
   }
- ]
+ ],
+ "あつ森": []
 }

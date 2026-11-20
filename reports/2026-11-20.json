@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "fd263eaa9434",
+ "edit_sig": "e6045336382d",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -692,33 +692,6 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 1,
-     "source": "note",
-     "title": "모여봐요 동물의 숲 섬에서 벌어지는 잰말놀이 배틀",
-     "url": "https://note.com/htoyotajpfr/n/n2642ac2caf82?hl=ko"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
@@ -764,16 +737,6 @@
    "section": "演出",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-17",
-     "headline": "周杰伦演唱会580元票只能看大屏，卖的是氛围还是观演",
-     "highlight": "",
-     "image": "https://inews.gtimg.com/news_ls/O_2cjMHjH7TSql2VWxcM9KUgdGCoIcjcb-IV0FEMps_ekAA/0",
-     "image_via": "og:image",
-     "url": "https://news.qq.com/rain/a/20261117V0B7XD00",
-     "weight": "hero"
-    },
-    {
      "blurb": "只花五百八十元，也能在武汉聆听周杰伦的歌声。但别指望看见他本人——这档票仅支持看大屏。",
      "date": "2026-11-17",
      "headline": "周杰伦武汉演唱会最低票价580，见不到真人，只能看大屏",
@@ -791,6 +754,16 @@
      "image": "https://x0.ifengimg.com/res/2026/313F33E3667448FF6E3C5C1B4C6E0CA870EE0697_size36_w720_h380.webp",
      "image_via": "og:image",
      "url": "https://feng.ifeng.com/c/8y7sEUytI8d",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "vivo 邀请周杰伦担任影像大使",
+     "highlight": "",
+     "image": "https://socialbeta.oss-cn-hangzhou.aliyuncs.com/upload/22771-20260924154059-4f2cc13f.jpg",
+     "image_via": "正文图（6 枚から）",
+     "url": "https://socialbeta.com/campaign/28610",
      "weight": "normal"
     }
    ],
@@ -995,15 +968,6 @@
    "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "name": "FROM",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 6,
-     "source": "Facebook",
-     "title": "The first three seasons of MGM+ sci-fi horror series 'From' raked in 1.69 billion minutes viewed from November 2 to 8 Read more below.",
-     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNV1dMNFhLRFI4TUgyY0JsLWNxUXhFYm9WcVZJTHZsdmxuRkxiSEhXOHVCblVEVzVEVGhzaFRrV0FwdXVtRFJVaEpWcXIxLXEzbi16eDd0OEkzbnl3X3dfX05lNzJoUi1UMy1XMWlRbGJaRWhJRXJEbEhzVjlJRWNRa3VPUGJFRlhnbE04VnNKN1kza0podzNYSTg2bWtYTl9mSmJIal9YakJtLVlUZ05ZeHM4T08zYjRic0VESjlDRldJUGg2bUdHQVJMZnhIby1mWUxYVEVR?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -1086,24 +1050,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "HuffPost looks at an inexpensive cat toy and why behaviorists say it works so well for cats.",
      "date": "2026-11-14",
-     "n": 3,
-     "source": "IndexBox",
-     "title": "Odor Control Cat Toys Market Forecast to 2035: Premiumization and Hygiene Demand Drive Growth",
-     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQdEtjX1pZN2NYWXYyaFk1YzYwamFhZmhxSWk3R29PZWNEUnJMSGhWWTJhV3ZEWVdkWW5TWHZVNm5kUjNIbmh4Y2hNWGJsMEM3V3FPRHJQckR2dDV6YVFzWlpMUS0ybmRCZjBIczlFZ1NqMlZSbE5wazZHWmRZVlZwTV9LLWVjSVN5ZkppcDhzR2hyMktoTW9vVWRZYjJLVUVmaHhDRmN3TUh3Wmg4dTlFLWlCQXlaUWo2eTcxdXhocw?oc=5"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 4,
-     "source": "HuffPost",
-     "title": "This $6 Cat Toy Is 'Worth Its Weight In Gold' — And Behaviorists Say There's A Reason",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPVno3VUpPOGhrdUh6UkpuV0RmdWJSVjJRd2dDQ3ZMMkhKeHFXNGJQYkZwWDlwTWZUdFduYzl6LWpuekpHaXRzbDRQZ2JXNW1ObDNKWUo4Y2F1bDdkN3FTaXQyaUk4M3pySm5WYTVuUXZDbVllU2c4NTh2b0JKVDhLQnRRTdIBiAFBVV95cUxPTTNyVUlxLU5aelhYaEVDZ0RmQy1LNENrWkZOV3lTMkR6UjhuU3F4QXFLQ1p4YXZXQ3BWZ2liMEt1WWlxbHppRDdzbWdUakZkUGlMU0thMk45U010QktHU3p0c2YwdXpNNEJuTmpDOGNLTGlsV3pyU1RuR3JDVWNLbjExOEthenE2?oc=5"
+     "headline": "This $6 Cat Toy Is 'Worth Its Weight In Gold' — And Behaviorists Say There's A Reason",
+     "highlight": "$6 Cat Toy",
+     "image": "https://img.huffingtonpost.com/asset/66219b89230000370088ea45.jpeg?cache=spEn3zWqGy&ops=1778_1000",
+     "image_via": "AI 挑选",
+     "url": "https://www.huffpost.com/entry/cat-dancer-toy-2026_l_6af4d14ae4b01d00edaa66f2",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -1248,6 +1207,31 @@
     "alt_bg": "#211C12",
     "alt_fg": "#F4EEE4",
     "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-18",
+    "headline": "『あつ森』大特集の『ぴこぷり 2027 ヒミツいっぱいスペシャル』が発売！付録は164ページのデザインブック",
+    "url": "https://news.nicovideo.jp/watch/nw20003759?news_ref=watch_70_nw19647428"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
     "split": true

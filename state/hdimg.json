@@ -2719,6 +2719,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.huffingtonpost.com/asset/66219b89230000370088ea45.jpeg?cache=spEn3zWqGy&ops=1778_1000": {
+  "w": 1778,
+  "h": 995,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1493566334632657942/origin_1.jpg": {
   "w": 360,
   "h": 240,
@@ -3224,12 +3230,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://inews.gtimg.com/news_ls/O_2cjMHjH7TSql2VWxcM9KUgdGCoIcjcb-IV0FEMps_ekAA/0": {
-  "w": 1080,
-  "h": 1440,
-  "target": 1280,
   "v": 3
  },
  "https://inews.gtimg.com/om_ls/OP11PO3hHxyuukzxslfXwg28QjyN2zp8cN7W6JnrZmOxsAA_330330/0": {
@@ -6715,6 +6715,12 @@
  "https://smhn.info/wp-content/uploads/2026/11/galaxy-s27-ultra-dummy-camera-closeup.webp": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://socialbeta.oss-cn-hangzhou.aliyuncs.com/upload/22771-20260924154059-4f2cc13f.jpg": {
+  "w": 1080,
+  "h": 1440,
   "target": 1280,
   "v": 3
  },
