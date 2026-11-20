@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "88afcb42ca8d",
+ "edit_sig": "0952667416a6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -767,29 +767,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 9,
-     "source": "GosuGamers",
-     "title": "Aurora Gaming vs Astra Invicta Live Score on 2026-11-21 of Dota 2 BLAST SLAM IX",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQZUd2ZlJxMllXV2l0Y2RvdGdJRFlrSXltMjg4dThaZnBoN3hBVlU0bUNkRVFFNlVNQXdJVzk4N2dtejFzN0wzWFkzUWR2czdnX1ZzeWJtR21hc0x1OE5YQTZSRndxUzJIajhaOER2ZzBvSGw3UzhiZjR0RmcwMWlsODBLWTlteXh4ZlROallDX2dEVERpdjZmcEdmTnV5M3ZyQjlEcXFkb094aUJFcVBZ?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 10,
-     "source": "GosuGamers",
-     "title": "PARIVISION vs LEGION Live Score on 2026-11-20 of Dota 2 BLAST SLAM IX",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPemdlYm5fYTZ4R252M0tBb19FNmlfU1Q0aDdvc3FpeHBZSnBXSXVvUjdKanhCV2ZnWDl4TF9DWHFsNm1JZ21iYVpMRzI4TmNpZTZXOFM0NEVwUU5yenZGODlqanZZZDJQVUNKWUJYb0xUMUtCVU9XYk5jOHc2RXpnU2ZiYkpFYTN0Q3d6b21ySDJQZGFvQjhiUWdYRC1JNF9rZWc?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 11,
-     "source": "WIN.gg",
-     "title": "Dota 2’s latest update upended the game economy during a tournament grand final",
-     "url": "https://win.gg/dota-2s-latest-update-upended-the-game-economy-during-a-tournament-grand-final/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -801,6 +778,16 @@
      "image_via": "og:image（本站保存）",
      "url": "https://games.gg/ja/news/dota-2%E3%83%91%E3%83%83%E3%83%81742%E3%81%8C%E9%85%8D%E4%BF%A1%E9%96%8B%E5%A7%8B%E8%A9%A6%E5%90%88%E5%B1%95%E9%96%8B%E3%81%AE%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%A8%E6%96%B0%E3%83%9B%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E5%B0%8E%E5%85%A5/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "Dota 2’s latest update upended the game economy during a tournament grand final",
+     "highlight": "",
+     "image": "https://win.gg/wp-content/uploads/2026/11/image-2026-11-19T122636.407.jpg.webp",
+     "image_via": "og:image",
+     "url": "https://win.gg/dota-2s-latest-update-upended-the-game-economy-during-a-tournament-grand-final/",
+     "weight": "normal"
     }
    ],
    "subtitle": "Dota 2",
