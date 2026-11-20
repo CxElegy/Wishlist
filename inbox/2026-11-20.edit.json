@@ -17,7 +17,8 @@
     50,
     51,
     59
-   ]
+   ],
+   "image": "https://bc.gmg.io/image/upload/c_thumb,q_auto,w_700,f_jpg/media/video/ksat/57000ff1-5097-43fa-a2dd-c648d694d675/image.jpg?api_key=ksat_9a37fc89631abedf"
   },
   {
    "headline": "'Unprecedented. Unbelievable. Unmissable.' The 'GTA 6' reviews are in — here's what they're saying.",
@@ -40,7 +41,9 @@
     71,
     6,
     40,
-    36
+    36,
+    80,
+    88
    ]
   },
   {
@@ -74,7 +77,8 @@
     36,
     40,
     45
-   ]
+   ],
+   "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/24162473/tenoch_huerta_as_namor_in_black_panther_wakanda_forever.jpg?w=1200&h=675&fit=crop"
   },
   {
    "headline": "Thor Takes Center Stage in New International ‘Avengers: Doomsday’ Poster Crackling With Green Lightning",
@@ -121,7 +125,8 @@
    "refs": [
     16,
     27,
-    28
+    28,
+    78
    ]
   }
  ],
@@ -204,7 +209,8 @@
    "refs": [
     3,
     4
-   ]
+   ],
+   "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1794986357296_img_f9d3b9cd.jpeg"
   },
   {
    "headline": "Samsung Galaxy S27 Ultra vs Pixel 11 Pro XL: Main differences to expect",
@@ -273,18 +279,18 @@
   }
  ],
  "_covered": {
-  "GTA 6": 78,
-  "漫威电影": 73,
+  "GTA 6": 93,
+  "漫威电影": 79,
   "哈利波特剧集": 5,
   "ILLIT": 17,
-  "三星手机": 11,
+  "三星手机": 16,
   "Astrae Oratio": 3,
   "The Mandalorian": 2,
-  "dota2": 10,
+  "dota2": 13,
   "gelato pique": 7,
   "A2O LITE": 18,
   "BLEACH Mirrors High": 1,
-  "MMORPG 新作": 1,
+  "MMORPG 新作": 6,
   "周杰伦": 21,
   "绝区零": 4,
   "チェーンソーマン": 2,
@@ -352,8 +358,10 @@
     1,
     3,
     9,
-    8
-   ]
+    8,
+    12
+   ],
+   "image": "https://win.gg/wp-content/uploads/2026/11/image-2026-11-19T122636.407.jpg.webp"
   },
   {
    "headline": "DreamLeague Division 2 Season 3 - Dota 2 - 視聴率、概要、賞金総額",
@@ -389,6 +397,15 @@
    "weight": "normal",
    "refs": [
     10
+   ]
+  },
+  {
+   "headline": "7.42新版本首战！DOTA2 BLAST今天开赛 XG、Spirit、GL、Nem同组",
+   "highlight": "BLAST今天开赛",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -479,6 +496,26 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "[지스타 2026] 넥슨, 신작 MMORPG '템빨: 오버기어드' 사전 다운로드 시작",
+   "highlight": "사전 다운로드",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    6,
+    5
+   ]
+  },
+  {
+   "headline": "買い切り型MMOアクション『ArcheAge Chronicles』大型コンテンツ追加アップデート12月実装！新レイドボスと女戦士登場",
+   "highlight": "12月実装",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],

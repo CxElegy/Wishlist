@@ -14,6 +14,7 @@
   "https://collider.com/superhero-movies-2000s-perfect-masterpieces/": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/spider-man-on-flag-pole-blue-sky.jpg?w=1600&h=900&fit=crop",
   "https://egamersworld.com/blog/dota-2-new-patch-742-all-heroes-changes-YG1qlLGJH0": null,
   "https://enuchi.jp/14622/recolte-kedamatori-202611": "https://image.enuchi.jp/upload/20261110/images/thumb_recolte_kedamatori.jpg",
+  "https://estnn.com/dota-2-patch-7-42-map-item-neutral-changes/": "https://media.estnn.com/main/2026/11/dota-2-7-42-patch-lane-rune-screenshot.jpg",
   "https://gamepedia.jp/ac-switch/items?item_type1=&item_type2=%E6%BC%86%E5%96%B0%E5%A3%81&sort=price": null,
   "https://geektyrant.com/news/will-james-gunns-man-of-tomorrow-suffer-the-same-fate-as-the-flash-dc-studios-is-repeating-its-own-history": "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af5e7623871bd26aa942f34/1794601688835/Will+James+Gunn%E2%80%99s+MAN+OF+TOMORROW+Suffer+the+Same+Fate+as+THE+FLASH%3F+DC+Studios+Is+Repeating+Its+Own+History.jpg?format=1500w",
   "https://getnavi.jp/appliances/1120792/": "https://getnavi.jp/wp-content/uploads/2026/11/51lbbb1HCjL._AC_SL1500_.jpg",
@@ -63,7 +64,6 @@
   "https://www.msn.com/ja-jp/health/%E5%85%A8%E8%88%AC/%E6%84%9B%E7%8A%AC-%E6%84%9B%E7%8C%AB%E3%81%AE%E4%B8%8D%E8%AA%BF%E3%81%AB-%E4%B8%AD%E5%8C%BB%E5%AD%A6-%E3%81%A8%E3%81%84%E3%81%86%E9%81%B8%E6%8A%9E%E8%82%A2-%E7%8D%A3%E5%8C%BB%E5%B8%AB%E3%81%8C%E8%A7%A3%E8%AA%AC%E3%81%99%E3%82%8B%E6%AD%A3%E3%81%97%E3%81%84%E5%8F%96%E3%82%8A%E5%85%A5%E3%82%8C%E6%96%B9/ar-AA2hOOln": "https://www.bing.com/th?id=ONUT.-uISZ1wmHfcOppDMAov4_Q&pid=News&w=700",
   "https://www.msn.com/ja-jp/news/other/%E9%96%8B%E5%BA%97%E5%89%8D%E4%B8%A6%E3%82%93%E3%81%A7%E3%82%B2%E3%83%83%E3%83%88-%E3%82%B9%E3%82%BF%E3%83%90-%E3%83%9B%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B0%E3%83%83%E3%82%BA-%E6%9C%AC%E6%97%A5%E7%99%BA%E5%A3%B2-%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%A7%E3%81%AF%E5%A3%B2%E3%82%8A%E5%88%87%E3%82%8C%E5%95%86%E5%93%81%E3%82%82/ar-AA2hKSIB": "https://www.bing.com/th?id=ONUT.fcbWjHj4vwy0lluht7ccgg&pid=News&w=1200",
   "https://www.nippon.com/cn/articles/-/57111": "https://nippon.ismcdn.jp/mwimgs/a/f/1200wm/img_af280962f865e9c21ad1a7042b3a73ac321795.jpg",
-  "https://www.pcgamesn.com/dota-2/7-42-patch-notes": "https://www.bing.com/th?id=ONUT.WprRjiZ3TREON37kLgL-PA&pid=News&w=1200",
   "https://www.purexbox.com/news/2026/04/open-world-rpg-the-blood-of-dawnwalker-gets-september-2026-release-date-for-xbox-series-xs": "https://images.purexbox.com/d57e4aaafc1fd/1280x720.jpg",
   "https://www.rockpapershotgun.com/each-new-gta-moves-the-series-closer-and-closer-to-the-original-mafia-the-open-world-game-that-bettered-rockstar": "https://assetsio.gnwcdn.com/mafia-city-of-lost-heaven-car-park-shootout.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp",
   "https://www.sanyonews.jp/article/1985192?rct=movie_animation&kw=2024%3Cbr%20/%3E%E2%80%9D%20target=%E2%80%9D_blank%E2%80%9D%3Ehttps://www.sanyonews.jp/ar": "https://static.sanyonews.jp/image/article/size1/f/3/2/6/f326269d8ddcb4c98d77b3cdb2ef639f_1.jpg",
@@ -1469,6 +1469,27 @@
   },
   {
    "batch": 5,
+   "because": "dota2",
+   "date": "2026-11-19",
+   "hits": [],
+   "image": "https://media.estnn.com/main/2026/11/dota-2-7-42-patch-lane-rune-screenshot.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "ESTNN",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "Dota 2 Patch 7.42 Notes: Map, Item and Neutral Creep Changes – Esports News Network",
+   "url": "https://estnn.com/dota-2-patch-7-42-map-item-neutral-changes/",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-11-19",
    "hits": [],
@@ -1487,27 +1508,6 @@
    "url": "https://www.animatetimes.com/news/details.php?id=1794908920",
    "words": [],
    "work": "Vaundy"
-  },
-  {
-   "batch": 6,
-   "because": "dota2",
-   "date": "2026-11-18",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.WprRjiZ3TREON37kLgL-PA&pid=News&w=1200",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "PCGamesN",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "Dota 2 patch 7.42 hauls Valve's MOBA out of the late-game sludge",
-   "url": "https://www.pcgamesn.com/dota-2/7-42-patch-notes",
-   "words": [],
-   "work": "dota2"
   },
   {
    "batch": 6,

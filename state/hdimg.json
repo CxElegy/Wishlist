@@ -130,6 +130,57 @@
   "target": 720,
   "v": 3
  },
+ "http://tu.duoduocdn.com/uploads/day_220926/m_63314fc54ec6e.jpg": {
+  "w": 480,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.653,
+  "local": "pics/0058017d1691d527.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    9,
+    10,
+    9,
+    7,
+    9,
+    10,
+    11,
+    10,
+    6,
+    9,
+    5
+   ],
+   [
+    5,
+    7,
+    7,
+    6,
+    6,
+    8,
+    7,
+    7,
+    9,
+    13,
+    15,
+    8
+   ]
+  ],
+  "c": "#e3c6c0",
+  "k": [
+   0.153,
+   0.085,
+   0.739,
+   0.753
+  ],
+  "p": null
+ },
  "http://tu.duoduocdn.com/uploads/day_261116/202611161358177268_thumb.jpg": {
   "w": 300,
   "h": 200,
@@ -970,6 +1021,52 @@
   "target": 1280,
   "v": 3
  },
+ "https://bc.gmg.io/image/upload/c_thumb,q_auto,w_700,f_jpg/media/video/ksat/57000ff1-5097-43fa-a2dd-c648d694d675/image.jpg?api_key=ksat_9a37fc89631abedf": {
+  "w": 700,
+  "h": 394,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.536,
+  "local": "pics/f63ac03ed2310661.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    7,
+    5,
+    8,
+    7,
+    9,
+    8,
+    7,
+    9,
+    11,
+    13,
+    12
+   ],
+   [
+    5,
+    5,
+    7,
+    11,
+    10,
+    20,
+    20,
+    10,
+    8,
+    3,
+    2,
+    1
+   ]
+  ],
+  "c": "#47443d",
+  "k": null,
+  "p": null
+ },
  "https://biz.chosun.com/resizer/v2/MU4TKZJSGFRWKODFGJSDMNDGMY.jpg?auth=d5d781a08144fc3ecbffab8ddb662f77297fde6b0d303a24484c0e2d684d3c2f&width=572&height=300&smart=true": {
   "w": 572,
   "h": 300,
@@ -1354,6 +1451,13 @@
    0.463
   ]
  },
+ "https://cdn.news33.net/news/photo/202611/119452_85300_3427.jpg": {
+  "w": 600,
+  "h": 337,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.379
+ },
  "https://cdn.newsrpm.com/image/612057?maxWidth=1200": {
   "w": 710,
   "h": 710,
@@ -1658,19 +1762,7 @@
   "target": 720,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/dreamleague-division-2-season-3?v=1795141704": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/epl-championship-season-1?v=1795141706": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -1692,12 +1784,6 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/international-2026-china-open-qualifier-1?v=1795145128": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/res-unchained-4-blast-slam-vii-southeast-asia-open-qualifier-2?v=1795012228": {
@@ -3276,6 +3362,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://media.estnn.com/main/2026/11/dota-2-7-42-patch-lane-rune-screenshot.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://media.image.infoseek.co.jp/isnews/photos/gamespark/gamespark_174870_0-enlarge.jpg": {
@@ -6458,12 +6550,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.dw.com/image/79980440_6.jpg": {
-  "w": 940,
-  "h": 529,
-  "target": 1280,
-  "v": 3
- },
  "https://static.independent.co.uk/2026/11/15/15/06/hp.png?trim=0,211,0,210&width=1200&height=800&crop=1200:800": {
   "w": 1200,
   "h": 800,
@@ -6829,6 +6915,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1794986357296_img_f9d3b9cd.jpeg": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://win.gg/wp-content/uploads/2026/11/image-2026-11-19T122636.407.jpg.webp": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -7555,12 +7647,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.WprRjiZ3TREON37kLgL-PA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.XpeF5G7R8pIpfDFRT1nU-Q&pid=News&w=1200": {
   "w": 700,
   "h": 699,
@@ -8203,6 +8289,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.gamespark.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1219170.png": {
+  "w": 687,
+  "h": 389,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg": {
   "w": 1280,
   "h": 720,
@@ -8254,12 +8346,6 @@
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Jason_and_Lucia_13.jpg?crop=0px%2C8px%2C3840px%2C2148px&resize=1440%2C810": {
   "w": 1440,
   "h": 810,
-  "target": 1280,
-  "v": 3
- },
- "https://www.hotspawn.com/wp-content/uploads/2026/11/faster-meta-dota-patch-7.42.jpg": {
-  "w": 1200,
-  "h": 675,
   "target": 1280,
   "v": 3
  },
