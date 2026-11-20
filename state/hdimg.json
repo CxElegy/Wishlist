@@ -1268,12 +1268,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.factinnews.co.kr/news/photo/202611/301074_50935_130.jpg": {
-  "w": 600,
-  "h": 338,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.gamemeca.com/data_center/347/527/20261112142009.webp": {
   "w": 1200,
   "h": 675,
@@ -5625,6 +5619,56 @@
    0.591,
    0.393
   ]
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-00010027-piaeigat-000-1-view.jpg?exp=10800": {
+  "w": 1080,
+  "h": 1080,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/f230f59103650c80.webp",
+  "out": [
+   1080,
+   1080
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    1,
+    1,
+    2,
+    11,
+    15,
+    18,
+    23,
+    17,
+    7,
+    5,
+    1,
+    1
+   ],
+   [
+    5,
+    5,
+    4,
+    5,
+    6,
+    5,
+    14,
+    17,
+    18,
+    13,
+    4,
+    4
+   ]
+  ],
+  "c": "#c39a9f",
+  "k": [
+   0.379,
+   0.536,
+   0.58,
+   0.752
+  ],
+  "p": null
  },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,

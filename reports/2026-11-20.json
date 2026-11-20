@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "5cfca24f19e0",
+ "edit_sig": "198018ab0507",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -499,8 +499,9 @@
      "date": "2026-11-17",
      "headline": "삼성전자, 엑시노스 2700 양산…갤럭시 S27 탑재 확대 주목",
      "highlight": "",
-     "image": "https://cdn.factinnews.co.kr/news/photo/202611/301074_50935_130.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "팩트인뉴스",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.factinnews.co.kr&sz=128",
      "url": "https://www.factinnews.co.kr/news/articleViewAmp.html?idxno=301074",
      "weight": "normal"
     },
@@ -1144,29 +1145,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 5,
-     "source": "Yahoo!ニュース",
-     "title": "即買いして！ベローチェの「黒ねこ福袋」は“激かわねこグッズ＆フード引換券”が入った神内容（ぴあ）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE4xRzQyYjZnRms3ZV9MNWJhQmFtdWZnVFJ6MVJ3RkwyX0RsbVhLbmNCTld4X2pyRlJ0ODhaX3ZzVXBFaTFGR0JXN1l3dDFXSUxJWnY4ZFNydEZlNWg5ZkFYSnRkR3dhWVhJakgtV3IzZ0J5SGFjaTlQQ2hmZ1c1bm8?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 6,
-     "source": "Sur in English",
-     "title": "Laptops and lap cats: feline co-working",
-     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPelljczc1aHBiSkVIbVloVVNsWlZaU3FreUJCdHNDRW42ZHczLXF6NUZVcDQtOVltajM3dnh6OVlxdHp0QnZSZENNZE81Vl9NMUo5OUpyUVFDaWwzYXpwSnQ1ZUlSRkVGZEtlRlJlVEYyWVVnTnRadVVraWphYUwzb3RMSlFTMU81MGhJbXFXZTdVUW9yYXJZX2JienFuQmR0?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 7,
-     "source": "TBSラジオ",
-     "title": "猫は神様？悪魔？美術でたどる猫の不思議な歴史 白金台・畠山美術館の猫展へ！",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBoUlNiVGt2Snlpcm1zVmtUQkp5Y2VVYmxUNEtJM1FQWXJDQWZ5bXlDZEdtei1XdFhxV3VTXy02YkhXMHpyVFN1Y194UG1CdzZZRUE?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1178,6 +1156,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.huffpost.com/entry/cat-dancer-toy-2026_l_6af4d14ae4b01d00edaa66f2",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "ベローチェの「黒ねこ福袋」は“激かわねこグッズ＆フード引換券”が入った神内容",
+     "highlight": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-00010027-piaeigat-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/459a8f0d9b458aa80927f523c1511f4939bbfa92",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
