@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "25cbb6f48de1",
+ "edit_sig": "70289ed0f609",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -577,17 +577,26 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "ゲオのブラックフライデーセールで『あつまれ どうぶつの森』が2,728円に。『ポケモンレジェンズ Z-A』2,499円なども対象で、11月21日から。",
      "date": "2026-11-20",
-     "n": 1,
-     "source": "インサイド",
-     "title": "『ポケモンレジェンズ Z-A』2,499円、『あつまれ どうぶつの森』2,728円、『マーベルズ ウルヴァリン』『P3R』は2,178円に！ ゲオ店舗＆ストアのブラックフライデーセールは11月21日から",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBXMVRkMWFSaVF3MXc4SkpoXzdkM01BQUY1eU40X2RDcDdjU2d6QjZ3eE9EVWxoR0hOU0pMY3VRZTRxWC1PRVd3YjBlMGpPQm5qZmx3em4zMnlCaGZ1ODJkT25fUy02ZDN2QkE?oc=5"
+     "event": {
+      "date": "2026-11-21",
+      "label": "セール開始"
+     },
+     "headline": "『あつまれ どうぶつの森』2,728円、ゲオ店舗＆ストアのブラックフライデーセールは11月21日から",
+     "highlight": "2,728円",
+     "image": "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1810260.png",
+     "image_via": "JSON-LD",
+     "price": {
+      "now": "¥2,728"
+     },
+     "url": "https://www.inside-games.jp/article/2026/11/20/191336.html",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",

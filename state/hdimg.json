@@ -8103,8 +8103,9 @@
  "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1810260.png": {
   "w": 691,
   "h": 389,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.4
  },
  "https://www.iza.ne.jp/resizer/v2/7XMPAQEKS5BR7EW5WGDZN5UWW4.jpg?auth=67084e060b57a2cc1343e7c7e2248594ee572ab482621ceed943def176606b73&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,
