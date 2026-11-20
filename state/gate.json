@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T22:30:39+00:00",
+ "checked": "2026-11-20T23:18:06+00:00",
  "fired": {
   "at": "2026-11-20T22:00:24+00:00",
   "results": {
@@ -73,6 +73,14 @@
     "The Mandalorian",
     "Vaundy",
     "gelato pique",
+    "lib:BTS",
+    "lib:F1",
+    "lib:Mrs. GREEN APPLE",
+    "lib:Nintendo Switch 2",
+    "lib:YOASOBI",
+    "lib:サッカー日本代表",
+    "lib:大相撲",
+    "lib:大谷翔平",
     "あつ森",
     "三星手机",
     "哈利波特剧集",
@@ -88,10 +96,10 @@
    "prog": 189,
    "prog_day": "2026-11-21",
    "ripe": [],
-   "sig": "bcec018972bb",
+   "sig": "e5c302e349a2",
    "token_cap": 1000000,
    "tokens_today": 279412,
-   "why": "整理待ちの記事 13 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 109 件（19 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
