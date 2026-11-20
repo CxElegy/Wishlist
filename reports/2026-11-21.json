@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "b4b451fb8dc6",
+ "edit_sig": "a72cbe5c9437",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -458,33 +458,6 @@
    }
   },
   {
-   "cover": "https://vaundy.jp/og_image.png",
-   "facts": [],
-   "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 1,
-     "source": "note",
-     "title": "I turned what Vaundy said to Fujii Kaze, 'Rhythm is where the sound cuts off,' into art",
-     "url": "https://note.com/keikaragai/n/n3a8881336aa5?hl=en"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "演唱会",
-   "theme": {
-    "accent": "#B9A6F2",
-    "alt_accent": "#5B43A8",
-    "alt_bg": "#F1EEF8",
-    "alt_fg": "#1C1826",
-    "bg": "#15131C",
-    "fg": "#EEEAF4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
@@ -731,6 +704,31 @@
     "alt_fg": "#1B1D20",
     "bg": "#14161A",
     "fg": "#E8EAEC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "last": {
+    "date": "2026-11-20",
+    "headline": "Vaundy、11月の上海公演中止「予期せぬ事情により」",
+    "url": "https://www.sanyonews.jp/article/1978391?kw=.evbk"
+   },
+   "name": "Vaundy",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
     "font": "serif",
     "split": true
    }
