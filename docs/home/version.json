@@ -1,32 +1,32 @@
 {
- "admin": "a274a39d594b",
- "admin-ai": "83a8ff68c56b",
+ "admin": "ca15190b420f",
+ "admin-ai": "a4cbe90697f5",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f1ae5bb3"
+   "a32bb41d"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e6912432"
+   "cfbc3b67"
   ]
  },
- "admin-boards": "730d93e15760",
+ "admin-boards": "3334e67e6e24",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "786391cb"
+   "31b5a126"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "204313ebc370",
+ "admin-emblem": "96c860ec8a12",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "234c8873"
+   "427aee21"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "e86fbe3fb12f",
  "admin-members_marks": {},
- "admin-now": "829034eaf028",
+ "admin-now": "24fba251e119",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0b3a98e0"
+   "73a4ae45"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "53df5356"
+   "95200e80"
   ]
  },
- "admin-system": "628414f626a2",
+ "admin-system": "8e1df5f86fdd",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "685fc2d6"
+   "7207e745"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "111933ad"
+   "7a213df4"
   ]
  },
  "admin_marks": {},
- "heat": "7adf36de5433",
+ "heat": "46d916119f34",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "bc3c1934"
+   "5ede08ca"
   ],
   "ranking": [
    "ランキング",
-   "fa9b26e8"
+   "8eee7a57"
   ]
  },
- "index": "7c211417c523",
+ "index": "485d59fc507c",
  "index_marks": {
   "front": [
    "トップ",
-   "ac46ddb6"
+   "dc0ba855"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "730ff851"
+   "204a36bf"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "64154a8c"
+   "c298d93f"
   ]
  },
- "updated": "11.20 11:42",
+ "updated": "11.20 11:45",
  "wishlist": "1a221a1fb8ac"
 }
