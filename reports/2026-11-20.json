@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "a3bedf07fd12",
+ "edit_sig": "4beb303edc71",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -972,50 +972,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 19,
-     "source": "Hawk Live",
-     "title": "An unannounced game event was mentioned in the Dota 2 files",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFA1OE54ZU1INW1leEZVWG15eEJTMUgxejBqcTdFa0N6WHJZQ21oemtkVWpyQ05IT2pQSHB5WElLWGowcDhQRmVjalZENV9MakNrd055YWxMWGhRRG1LNnNNTzhuQzNyZU5hREpaejNzYXU2LW1VYjBkbg?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 20,
-     "source": "Negitaku",
-     "title": "「Puppey」コーチ転身1年目で「Esports Coach of the Year」受賞、Dota 2世界大会『The International 2026』準優勝に導く",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5nV2lxVFUtb2xvaGROQkNSVFJ3cjFKWjZpdTUzdUUtc0EwY2FEUDA0Ty04bm1aVWRTazJkODFTS1B0S2VUNzNYWWN3eDhDdw?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 21,
-     "source": "Esports.gg",
-     "title": "All new Dota 2 neutral creeps and their abilities in patch 7.42",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9QTjlhTXJpNFF5TVdHc0ZZeWE4dmVxVGJPSWx6VVFKUEZiZU9Hb2VYZ09XY1o0RDM4cjBOOEZrYS1TQXRlMTd3dlo5TFc2ZW5JOXgzcFNFYWpNNVNqaElyQ0tYUVFuUmIzZ09DUXNXcXFoUDhtNk5PMlRB?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 22,
-     "source": "Sohu",
-     "title": "Dota2 7.42版本更新上线 地图野怪肉山规则全面大改",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQMFRMMDFqSUpSTTQ3TzJNeU1FdE5TcFRjbFk2ZDdmSnNhMXlKSWsta05nVHR4ZTZDM1FXTXBKOGo2UmdaakZZMWFFXzBUcHRnVEQ2TTJEeXpoRmNzbEc0WkdsdDk0R2ZvbHhvWXluOFFnZUpZOVllNm9nQ2RKc3JJbEQ4NVAwcW5iLXpmWQ?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 23,
-     "source": "搜狐",
-     "title": "DOTA2 7.42版本更新：全新机制、物品与野怪全面解析！",
-     "url": "https://www.sohu.com/a/1103634461_122004016"
-    },
-    {
-     "date": "2026-11-14",
-     "n": 24,
-     "source": "新浪网",
-     "title": "【赛事战报】 11月14日 LGD vs Legion 1win Essence III BO3 LGD 2:0 Legion #lgd[超话]##dota2# ​​​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9mU1lRbHljaXhSUUdYdi1NZTB3LUJjTU5jMnVFWGs4N2VRb3Z1TnNOTHEtV1hYQzNkZzBWWVlVQ0xnMzVDNDF5LXNrYkVUVFZ4UE41VWJWSHhlTVduOGNUQ2o1RQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1078,6 +1034,16 @@
      "image": "http://tu.duoduocdn.com/uploads/day_220926/m_63314fc54ec6e.jpg",
      "image_via": "正文图（2 枚から）",
      "url": "https://dotesports.com/dota-2/news/blast-slam-9-schedule-results",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "「Puppey」コーチ転身1年目で「Esports Coach of the Year」受賞、Dota 2世界大会『The International 2026』準優勝に導く",
+     "highlight": "",
+     "image": "https://www.negitaku.org/wp-content/uploads/2026/11/HXXHdDUWQAAb51F-1024x960.jpg",
+     "image_via": "正文图（4 枚から）",
+     "url": "https://www.negitaku.org/news/n-27921",
      "weight": "normal"
     }
    ],

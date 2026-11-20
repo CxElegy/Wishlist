@@ -368,7 +368,7 @@
   "三星手机": 45,
   "Astrae Oratio": 4,
   "The Mandalorian": 4,
-  "dota2": 18,
+  "dota2": 24,
   "gelato pique": 9,
   "A2O LITE": 28,
   "BLEACH Mirrors High": 1,
@@ -468,7 +468,10 @@
     8,
     12,
     16,
-    14
+    14,
+    21,
+    22,
+    23
    ],
    "image": "https://win.gg/wp-content/uploads/2026/11/image-2026-11-19T122636.407.jpg.webp"
   },
@@ -517,6 +520,15 @@
     11,
     17,
     18
+   ]
+  },
+  {
+   "headline": "「Puppey」コーチ転身1年目で「Esports Coach of the Year」受賞、Dota 2世界大会『The International 2026』準優勝に導く",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20
    ]
   }
  ],
