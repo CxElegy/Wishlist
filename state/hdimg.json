@@ -1362,6 +1362,12 @@
   "target": 720,
   "v": 3
  },
+ "https://charagoo.jp/wp-content/uploads/2025/08/D104748_01.jpg": {
+  "w": 1000,
+  "h": 1000,
+  "target": 720,
+  "v": 3
+ },
  "https://charagoo.jp/wp-content/uploads/2026/11/1000260529_1.jpg": {
   "w": 1200,
   "h": 1200,
@@ -1621,6 +1627,12 @@
   "v": 3,
   "blur": 0.411
  },
+ "https://games.gg/api/og/content/?kind=news&key=dota-2%E3%83%91%E3%83%83%E3%83%81742%E3%81%8C%E9%85%8D%E4%BF%A1%E9%96%8B%E5%A7%8B%E8%A9%A6%E5%90%88%E5%B1%95%E9%96%8B%E3%81%AE%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%A8%E6%96%B0%E3%83%9B%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E5%B0%8E%E5%85%A5&lang=ja&u=torcj0&v=3": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://gdm-universal-media.b-cdn.net/epicstream/a8c1ef98-harry-potter.webp?width=1600&height=840": {
   "w": 1493,
   "h": 840,
@@ -1738,12 +1750,6 @@
  "https://hk.on.cc/hk/bkn/cnt/entertainment/20261115/photo/bkn-20261115113442018-1115_00862_001_02b.jpg?20261115115016": {
   "w": 780,
   "h": 1387,
-  "target": 1280,
-  "v": 3
- },
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/OHPFVEbuhzlitwE.jpg": {
-  "w": 1080,
-  "h": 956,
   "target": 1280,
   "v": 3
  },
@@ -2557,6 +2563,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/animeanime/m_animeanime-104369.jpg": {
+  "w": 457,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100643.jpg": {
   "w": 560,
   "h": 560,
@@ -3344,6 +3357,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/11/1183756_1.jpg": {
+  "w": 782,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://news.mynavi.jp/article/20261116-5337015/ogp_images/ogp.jpg": {
@@ -6504,6 +6523,12 @@
   "w": 1200,
   "h": 676,
   "target": 1280,
+  "v": 3
+ },
+ "https://variety.com/wp-content/uploads/2026/11/GTA-6-4.jpg?w=1000&h=563&crop=1": {
+  "w": 1000,
+  "h": 563,
+  "target": 720,
   "v": 3
  },
  "https://vphoto.vietnam.vn/thumb/640x360/vietnam/resource/IMAGE/2026/11/15/1794729171724_img_1015f1d0.png": {
