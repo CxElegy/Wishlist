@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T14:19:20+00:00",
+ "checked": "2026-11-20T14:30:13+00:00",
  "fired": {
   "at": "2026-11-20T13:29:02+00:00",
   "results": {
@@ -64,11 +64,9 @@
     "sig": "aa8d642a1759"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
     "MMORPG 新作",
     "Vaundy",
-    "dota2",
     "gelato pique",
     "lib:NBA",
     "lib:台風・天気",
@@ -80,32 +78,28 @@
     "lib:貸した魔力は【リボ払い】で強制徴収",
     "ぐでたま",
     "チェーンソーマン",
-    "哈利波特剧集",
     "滑雪",
     "猫用品"
    ],
-   "last_batch": "2026-11-20T14:07:29+00:00",
+   "last_batch": "2026-11-20T14:28:17+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 582,
+   "prog": 599,
    "prog_day": "2026-11-20",
    "ripe": [
-    "A2O LITE",
     "Astrae Oratio",
-    "dota2",
     "lib:羽生善治",
     "lib:貸した魔力は【リボ払い】で強制徴収",
-    "哈利波特剧集",
     "滑雪",
     "猫用品"
    ],
-   "sig": "d06d40db8c7c",
+   "sig": "fbfd9857c309",
    "token_cap": 1000000,
-   "tokens_today": 778061,
-   "why": "整理待ちの記事 110 件（19 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 791385,
+   "why": "整理待ちの記事 93 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -254,11 +248,11 @@
    "runs": 12
   },
   "2026-11-20": {
-   "batches": 41,
-   "cr": 15960934,
-   "cw": 710820,
-   "in": 451,
-   "out": 66790,
+   "batches": 44,
+   "cr": 17651677,
+   "cw": 720703,
+   "in": 491,
+   "out": 70191,
    "runs": 14
   }
  }
