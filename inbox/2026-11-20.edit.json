@@ -311,7 +311,8 @@
   "FROM": 5,
   "星巴克马克杯": 2,
   "猫用品": 2,
-  "滑雪": 7
+  "滑雪": 7,
+  "Vaundy": 3
  },
  "Astrae Oratio": [
   {
@@ -734,6 +735,26 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy、11月の上海公演中止「予期せぬ事情により」",
+   "highlight": "上海公演中止",
+   "blurb": "Vaundyの11月の上海公演が「予期せぬ事情により」中止に。報告全文が公開された。",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "【USJ】バック・トゥ・ザ・フューチャーのドクにまた会える！Vaundyが手掛けたテーマソングにも大興奮の25周年イベントレポ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]

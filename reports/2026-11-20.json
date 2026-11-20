@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "edit_sig": "2414592d9705",
+ "edit_sig": "0c4a3269a5a6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -703,33 +703,27 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "画像12 / 23＞【USJ】バック・トゥ・ザ・フューチャーのドクにまた会える！Vaundyが手掛けたテーマソングにも大興奮の25周年イベントレポ",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LUXJiMlpvcEllam5mQjBYTzFZb0ZQVHUyMTZFdHZWcER6cWhIWV9yZXpPNEJoZmdZSVVFWDRUcWJOTzFOeFZTWGpMWHBOSUtfaE1nUVhPMXkzZUw5d1JXZGxITk9OcmNzZ3hZZjZR?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 2,
-     "source": "Real Sound",
-     "title": "Aooo、キタニタツヤ、DISH//ら14組の音楽が“日常雑貨”に 歌詞から曲に出逢う『MASHROOM』体験レポ",
-     "url": "https://realsound.jp/2026/11/post-2590182.html"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "Vaundyの11月の上海公演が「予期せぬ事情により」中止に。報告全文が公開された。",
      "date": "2026-11-19",
-     "headline": "Vaundy、11月の上海公演中止「予期せぬ事情により」【報告全文】",
-     "highlight": "",
+     "headline": "Vaundy、11月の上海公演中止「予期せぬ事情により」",
+     "highlight": "上海公演中止",
      "image": "https://static.sanyonews.jp/image/article/size1/1/0/2/7/10277f53ca257918cfc178239badb31c_1.jpg",
      "image_via": "og:image",
      "url": "https://www.sanyonews.jp/article/1978391?kw=.evbk",
-     "weight": "hero"
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "【USJ】バック・トゥ・ザ・フューチャーのドクにまた会える！Vaundyが手掛けたテーマソングにも大興奮の25周年イベントレポ",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1YHyEN.img",
+     "image_via": "转载 www.msn.com",
+     "url": "https://www.walkerplus.com/article/1332026/image16357060.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "演唱会",
