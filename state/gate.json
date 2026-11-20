@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-20T16:18:49+00:00",
+ "checked": "2026-11-20T16:33:31+00:00",
  "fired": {
-  "at": "2026-11-20T14:38:41+00:00",
+  "at": "2026-11-20T16:33:31+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -50,20 +50,30 @@
   },
   "2026-11-20": {
    "edit": 17
+  },
+  "2026-11-21": {
+   "edit": 1
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-20T14:38:41+00:00",
+    "at": "2026-11-20T16:33:31+00:00",
     "attempts": 1,
-    "day": "2026-11-20",
-    "prog": 606,
-    "resp": "cse_01W4x6f6hjdKH7PgG5P6RHTh",
-    "sig": "23425b4504c4"
+    "day": "2026-11-21",
+    "prog": 8,
+    "resp": "",
+    "sig": "3153927ebd43"
    },
    "items": [
+    "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "Vaundy",
+    "dota2",
+    "gelato pique",
     "lib:Ado",
     "lib:King Gnu",
     "lib:SPY×FAMILY",
@@ -71,7 +81,15 @@
     "lib:ガンプラ",
     "lib:ゼルダの伝説",
     "lib:呪術廻戦",
-    "lib:鬼滅の刃"
+    "lib:鬼滅の刃",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "三星手机",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
    ],
    "last_batch": "2026-11-20T14:45:51+00:00",
    "last_error": {
@@ -81,35 +99,46 @@
    "need": true,
    "prog": 8,
    "prog_day": "2026-11-21",
-   "ripe": [],
-   "sig": "c7154cb9b9ab",
-   "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
+   "ripe": [
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
+    "ILLIT",
+    "MMORPG 新作",
     "dota2",
-    "あつ森",
-    "ぐでたま",
+    "gelato pique",
     "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
+    "三星手机",
+    "滑雪",
     "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "3153927ebd43",
+   "token_cap": 1000000,
+   "tokens_today": 0,
+   "why": "整理待ちの記事 166 件（23 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "BLEACH Mirrors High",
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "FROM",
+    "GTA 6",
+    "あつ森",
+    "A2O LITE",
+    "The Mandalorian",
+    "Astrae Oratio",
+    "绝区零",
+    "周杰伦",
+    "Vaundy",
+    "ぐでたま"
+   ],
+   "need": true,
+   "sig": "4b6439f3ae3d",
+   "waiting": [],
+   "why": "足りない 15 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
