@@ -353,7 +353,7 @@
   "三星手机": 36,
   "Astrae Oratio": 4,
   "The Mandalorian": 4,
-  "dota2": 13,
+  "dota2": 18,
   "gelato pique": 9,
   "A2O LITE": 18,
   "BLEACH Mirrors High": 1,
@@ -450,7 +450,9 @@
     3,
     9,
     8,
-    12
+    12,
+    16,
+    14
    ],
    "image": "https://win.gg/wp-content/uploads/2026/11/image-2026-11-19T122636.407.jpg.webp"
   },
@@ -496,7 +498,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    11
+    11,
+    17,
+    18
    ]
   }
  ],
