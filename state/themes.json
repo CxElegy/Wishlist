@@ -119,6 +119,16 @@
   "font": "serif",
   "split": false
  },
+ "GTA 6|https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW": {
+  "accent": "#CF636F",
+  "alt_accent": "#BB3A48",
+  "alt_bg": "#F0E7F3",
+  "alt_fg": "#1A1C22",
+  "bg": "#201226",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "GTA 6|https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?aeAIuv_0Q73S0kSA-vFkN": {
   "accent": "#CF636F",
   "alt_accent": "#BB3A48",
@@ -1782,6 +1792,16 @@
   "alt_fg": "#F2EEE6",
   "bg": "#F3F0E7",
   "fg": "#1A1C22",
+  "font": "serif",
+  "split": false
+ },
+ "hero|https://www.appbank.net/wp-content/uploads/2026/11/20261120_203835_341_01.webp": {
+  "accent": "#6384CF",
+  "alt_accent": "#3A61BB",
+  "alt_bg": "#E7E9F3",
+  "alt_fg": "#1A1C22",
+  "bg": "#121626",
+  "fg": "#F2EEE6",
   "font": "serif",
   "split": false
  },
