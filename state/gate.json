@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T10:40:15+00:00",
+ "checked": "2026-11-20T11:19:14+00:00",
  "fired": {
   "at": "2026-11-20T10:36:56+00:00",
   "results": {
@@ -64,44 +64,34 @@
     "sig": "78fdf8dcf5eb"
    },
    "items": [
-    "FROM",
     "MMORPG 新作",
-    "lib:FINAL FANTASY VII REBIRTH",
-    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
     "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
-    "lib:世界最強の魔女、始めました",
+    "lib:ユニクロ",
+    "lib:宇宙・ロケット",
+    "lib:温泉",
+    "lib:無印良品",
     "lib:牧野植物園",
     "lib:羽生善治",
     "lib:貸した魔力は【リボ払い】で強制徴収",
-    "あつ森",
-    "周杰伦",
-    "哈利波特剧集",
-    "猫用品"
+    "哈利波特剧集"
    ],
-   "last_batch": "2026-11-20T10:20:47+00:00",
+   "last_batch": "2026-11-20T10:45:43+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 508,
+   "prog": 513,
    "prog_day": "2026-11-20",
    "ripe": [
-    "FROM",
-    "lib:FINAL FANTASY VII REBIRTH",
-    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
     "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
-    "lib:世界最強の魔女、始めました",
     "lib:羽生善治",
-    "lib:貸した魔力は【リボ払い】で強制徴収",
-    "あつ森",
-    "周杰伦",
-    "猫用品"
+    "lib:貸した魔力は【リボ払い】で強制徴収"
    ],
-   "sig": "500d95ce7d90",
+   "sig": "82eb7d677300",
    "token_cap": 1000000,
-   "tokens_today": 666698,
-   "why": "整理待ちの記事 39 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 716056,
+   "why": "整理待ちの記事 74 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -250,12 +240,12 @@
    "runs": 12
   },
   "2026-11-20": {
-   "batches": 34,
-   "cr": 13430682,
-   "cw": 609065,
-   "in": 382,
-   "out": 57251,
-   "runs": 12
+   "batches": 35,
+   "cr": 14137538,
+   "cw": 655154,
+   "in": 403,
+   "out": 60499,
+   "runs": 13
   }
  }
 }
