@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-18T08:56:39+00:00",
-"text": "2026-11-18 第 2 バッチを出刊：猫用品（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 1,811・キャッシュ読み 31.4万・出力 967",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.55,
-"mem_total": 16869130240,
-"mem_free": 15896719360,
-"disk_used": 10460553216,
-"disk_free": 31208804352,
-"disk_total": 41669357568,
-"peak": 400109568
-},
-"batch": 2,
-"boards": [
-"猫用品"
-],
-"stories": 3,
-"left": 0,
-"edited": 21,
-"run": 1794991181.6649494,
-"tok": {
-"in": 7,
-"cw": 1804,
-"cr": 314066,
-"out": 967,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 316844,
-"secs": 1018,
-"run_tok": {
-"in": 30,
-"cw": 50827,
-"cr": 1107147,
-"out": 4410,
-"calls": 16,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-18T11:45:57+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2089,5 +2048,10 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 506158
+},
+{
+"at": "2026-11-20T02:39:03+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]

@@ -36,6 +36,7 @@
   "https://tech.ifeng.com/c/8y65Vy3Liqg": "https://x0.ifengimg.com/res/2026/3BA54408B6394E0C89C02BCC8E89709159DE5B3B_size9_w720_h380.webp",
   "https://tech.udn.com/tech/story/123151/9882099": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/11/16/35523025.jpg&M=1&s=Y&x=0&y=0&sw=1279&sh=852&sl=W&fw=800&exp=3600",
   "https://tech.yahoo.com/gaming/articles/sega-ps5-open-world-reboot-210845158.html": "https://s.yimg.com/lo/mysterio/api/9a0ff82b5c0f9a0f8af238619533223ccfbe780fbff1b33557b24e0f82829bd6/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fplaystation_lifestyle_666%2Ffcb78e37d0ed031cbbe25f6ba9123426.jpg",
+  "https://times.abema.tv/zt/articles/-/10289650": "https://times-abema.ismcdn.jp/mwimgs/3/9/1200w/img_39b6d129ab3439549db7c0639abe2c02341504.jpg",
   "https://topics.smt.docomo.ne.jp/amp/article/insidegames/trend/insidegames-191002": "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-191002.jpg",
   "https://www.animatetimes.com/news/details.php?id=1794908920": "https://img2.animatetimes.com/2026/11/0e4c7b8d9fb50ebe2354a8a499d5d3456afc6f11bcc504_65499051_6b86dfb216456206a2a701b40d2fe89368d1d682.jpg",
   "https://www.antutu.com/doc/138430": "https://img.antutu.com/2026/11/16/7bb530904d6cfad421a54fdc388a8bcd_Y29tcHJlc3NfZm9ybWF0X2pwZw==.jpg",
@@ -44,7 +45,6 @@
   "https://www.chiba-tv.com/plus/detail/2026112242033": "https://www.chiba-tv.com/cache/images/news/56/56/3cea7e223ffadc75e6dfbaed8dc60f5269925656.1000x600.none.png",
   "https://www.chinatimes.com/realtimenews/20261119002878-260409": "https://images.chinatimes.com/newsphoto/2026-11-19/656/20261119002879.jpg",
   "https://www.cleveland.com/food/2026/11/the-nostalgic-detail-hidden-in-starbucks-new-holiday-cups-that-has-everyone-talking.html": "https://www.bing.com/th?id=ONUT.MpghNpWO8ffxSUeE1opjTQ&pid=News&w=1200",
-  "https://www.famitsu.com/article/202611/94349": "https://cimg.kgl-systems.io/camion/files/94349/thumbnail_Wetg.jpg?x=1280",
   "https://www.fnnews.com/news/202611191816267022": "https://www.bing.com/th?id=ONUT.EeiSmwLPyt1XarC17pWGqQ&pid=News&w=525",
   "https://www.geeky-gadgets.com/galaxy-s27-ultra-vs-pro/": "https://www.bing.com/th?id=ONUT.dx8u1TnbOJlLJ1eywyL3LA&pid=News&w=1200",
   "https://www.hk01.com/%E9%81%8A%E6%88%B2%E5%8B%95%E6%BC%AB/60412213/%E9%8F%88%E9%8B%B8%E4%BA%BA-%E8%95%BE%E6%BD%94%E7%AF%87-%E6%98%8E%E5%B9%B42%E6%9C%88%E6%A9%AB%E6%BF%B1%E8%88%89%E8%A1%8C%E6%94%BE%E6%98%A0%E9%9F%B3%E6%A8%82%E6%9C%83-%E7%89%9B%E5%B0%BE%E6%86%B2%E8%BC%94%E7%8F%BE%E5%A0%B4%E6%BC%94%E5%87%BA": "https://www.bing.com/th?id=ONUT.PCXHZ_HTDPNy_bZxiKLpVA&pid=News&w=1200",
@@ -1670,16 +1670,16 @@
   {
    "batch": 1,
    "because": "チェーンソーマン",
-   "date": "2026-11-18",
+   "date": "2026-11-19",
    "hits": [
     "新作动画・动画化"
    ],
-   "image": "https://cimg.kgl-systems.io/camion/files/94349/thumbnail_Wetg.jpg?x=1280",
+   "image": "https://times-abema.ismcdn.jp/mwimgs/3/9/1200w/img_39b6d129ab3439549db7c0639abe2c02341504.jpg",
    "kind": "follow",
-   "source": "ファミ通",
+   "source": "ABEMA TIMES",
    "taste": [],
-   "title": "『第五人格』を学べる『おはスタ第五学園』がショートアニメ化。11月24日より全4話にわたり放送。斎藤千和らキャスト陣のコメントも公開",
-   "url": "https://www.famitsu.com/article/202611/94349",
+   "title": "『鑽石的功罪』確定改編電視動畫！由Lapin Track負責製作 公開動畫化決定視覺圖與原作者紀念插畫",
+   "url": "https://times.abema.tv/zt/articles/-/10289650",
    "words": [],
    "work": "チェーンソーマン"
   },
@@ -1938,11 +1938,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -1950,11 +1950,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
