@@ -214,7 +214,8 @@
    "weight": "normal",
    "refs": [
     10,
-    11
+    11,
+    26
    ]
   },
   {
@@ -225,6 +226,36 @@
    "refs": [
     16
    ]
+  },
+  {
+   "headline": "ILLIT、“ファンの心を掴む切り札”はイロハ「MAMA」大阪でのステージに喜び",
+   "highlight": "MAMA",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27,
+    21,
+    25,
+    22,
+    19,
+    28,
+    20
+   ]
+  },
+  {
+   "headline": "Presented by ILLIT 💌 D-5",
+   "highlight": "PRE-ORDER : 26.11.25",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23,
+    24
+   ],
+   "event": {
+    "date": "2026-11-25",
+    "label": "予約開始",
+    "time": "11:00"
+   }
   }
  ],
  "三星手机": [
@@ -318,7 +349,7 @@
   "GTA 6": 133,
   "漫威电影": 104,
   "哈利波特剧集": 8,
-  "ILLIT": 17,
+  "ILLIT": 28,
   "三星手机": 36,
   "Astrae Oratio": 4,
   "The Mandalorian": 4,

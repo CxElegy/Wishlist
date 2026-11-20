@@ -2158,8 +2158,58 @@
  "https://i4.ytimg.com/vi/szwPlwYM0r0/hqdefault.jpg": {
   "w": 480,
   "h": 360,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.512,
+  "local": "pics/da2a96f0b2bb2141.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    0,
+    19,
+    34,
+    9,
+    10,
+    6,
+    8,
+    4,
+    9,
+    0,
+    0,
+    0
+   ],
+   [
+    1,
+    1,
+    2,
+    8,
+    30,
+    31,
+    9,
+    4,
+    4,
+    5,
+    3,
+    1
+   ]
+  ],
+  "c": "#7f8282",
+  "k": [
+   0.155,
+   0.359,
+   0.563,
+   0.635
+  ],
+  "p": [
+   0.086,
+   0.258,
+   0.524,
+   0.669
+  ]
  },
  "https://igvofficial.com/wp-content/uploads/2026/11/Featured-Image-61.png": {
   "w": 1280,
@@ -5488,6 +5538,61 @@
    0.393
   ]
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-04879982-mdpr-000-1-view.jpg?exp=10800": {
+  "w": 1600,
+  "h": 1065,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/034051f189ac7774.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    10,
+    8,
+    5,
+    7,
+    9,
+    8,
+    4,
+    7,
+    7,
+    14,
+    13,
+    9
+   ],
+   [
+    7,
+    13,
+    7,
+    5,
+    5,
+    6,
+    5,
+    11,
+    12,
+    7,
+    2,
+    22
+   ]
+  ],
+  "c": "#3d3e5e",
+  "k": [
+   0.061,
+   0.022,
+   0.99,
+   0.987
+  ],
+  "p": [
+   0.282,
+   0.054,
+   0.637,
+   0.83
+  ]
+ },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
   "h": 840,
@@ -7927,6 +8032,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.402
+ },
+ "https://www.bing.com/th?id=ONUT.tTY0IrMS39pDSdic_EuBzQ&pid=News&w=572": {
+  "w": 572,
+  "h": 300,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
   "w": 700,

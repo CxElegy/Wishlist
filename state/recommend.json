@@ -10,6 +10,7 @@
   "http://www.excite.co.jp/news/article/Allabout_133879/": "https://www.bing.com/th?id=ONUT.R36CPneAFDun3FQozGMepQ&pid=News&w=728",
   "https://animeanime.jp/article/2026/11/13/104757.html": "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/955739.jpg",
   "https://bamsmackpow.com/marvel-final-new-avengers-doomsday-trailer-release-date-sneak-peek-update": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_137,w_1086,h_610/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m7vaccgmnrmqp9vskp.jpg",
+  "https://biz.chosun.com/en/en-photo-ent/2026/11/20/FTEJPNUTF5FQNPRREQRENP6UFM/": "https://www.bing.com/th?id=ONUT.tTY0IrMS39pDSdic_EuBzQ&pid=News&w=572",
   "https://blackamericaweb.com/2026/11/19/trump-weighs-in-on-nvidia-shake-up-pennsylvania-measles-deaths-rise-and-gta-6-arrives/": "https://blackamericaweb.com/wp-content/uploads/sites/10/2025/11/17625286773663.jpg?quality=80&strip=all&crop=0,0,100,400px",
   "https://collabo-cafe.com/en/events/collabo/chainsawman-prize-glitter-glamours-reze-cafe-nimichi-2026/": "https://collabo-cafe.com/wp-content/uploads/chainsawman-prize-glitter-glamours-reze-cafe-nimichi-2026-featured-1.jpg",
   "https://collabo-cafe.com/zh-hans/events/collabo/maho-girls-precure-10th-anniversary-party-2027/": "https://collabo-cafe.com/wp-content/uploads/maho-girls-precure-10th-anniversary-party-2027-kv.jpg",
@@ -81,7 +82,6 @@
   "https://www.walkerplus.com/article/40260/image207549.html": "https://news.walkerplus.com/article/40260/207548_615.jpg",
   "https://www.walkerplus.com/article/54135/image297391.html": "https://news.walkerplus.com/article/54135/297391_615.jpg",
   "https://www.walkerplus.com/article/85785/image484216.html": "https://news.walkerplus.com/article/85785/484215_615.jpg",
-  "https://www.youtube.com/watch?v=szwPlwYM0r0": "https://i4.ytimg.com/vi/szwPlwYM0r0/hqdefault.jpg",
   "https://www.youtube.com/watch?v=v28D3JCv22I": "https://i3.ytimg.com/vi/v28D3JCv22I/hqdefault.jpg"
  },
  "picks": [
@@ -911,27 +911,6 @@
    "because": "ILLIT",
    "date": "2026-11-20",
    "hits": [],
-   "image": "https://i4.ytimg.com/vi/szwPlwYM0r0/hqdefault.jpg",
-   "kind": "board",
-   "liked": "李沅禧出席香奈儿活动",
-   "score": 8,
-   "source": "YouTube · ILLIT",
-   "taste": [
-    [
-     "作品:ILLIT",
-     6
-    ]
-   ],
-   "title": "Presented by ILLIT 💌 D-5 #WONHEE #IROHA",
-   "url": "https://www.youtube.com/watch?v=szwPlwYM0r0",
-   "words": [],
-   "work": "ILLIT"
-  },
-  {
-   "batch": 1,
-   "because": "ILLIT",
-   "date": "2026-11-20",
-   "hits": [],
    "image": "https://i3.ytimg.com/vi/v28D3JCv22I/hqdefault.jpg",
    "kind": "board",
    "liked": "李沅禧出席香奈儿活动",
@@ -989,6 +968,27 @@
    "url": "https://blackamericaweb.com/2026/11/19/trump-weighs-in-on-nvidia-shake-up-pennsylvania-measles-deaths-rise-and-gta-6-arrives/",
    "words": [],
    "work": "GTA 6"
+  },
+  {
+   "batch": 1,
+   "because": "ILLIT",
+   "date": "2026-11-19",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.tTY0IrMS39pDSdic_EuBzQ&pid=News&w=572",
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "Chosunbiz",
+   "taste": [
+    [
+     "作品:ILLIT",
+     6
+    ]
+   ],
+   "title": "[Photo] ILLIT, 'Wind Fairies'",
+   "url": "https://biz.chosun.com/en/en-photo-ent/2026/11/20/FTEJPNUTF5FQNPRREQRENP6UFM/",
+   "words": [],
+   "work": "ILLIT"
   },
   {
    "batch": 1,
@@ -1915,11 +1915,11 @@
    8
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
