@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "9a085bb28db7",
+ "edit_sig": "25cbb6f48de1",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -231,17 +231,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-20",
-     "n": 1,
-     "source": "Bloody Disgusting",
-     "title": "Horror Series 'FROM' Is a Massive Hit on Netflix With 5 Billion Minutes Viewed Across Three Weeks",
-     "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPUFJBRFg1SlNvUE5fYnVwajF1bnhiQ29vSlkxRE5DQjZwYXFoMU9zVlRnaVlpR2JBbXo0RXEtMUExNWo1QlFlM3dDMkh5NmxWejhWUlZhX0RjX05ad2dDblliMk9neUdfbjJqX0g5UFNoa3VFcnRJLWp6UWlHcUJIakZId0Vpb0I2aDJSRl8yR2J1T3lGVDVnRTZMWTZ5dVA0Wk1CU09KRFVVYzZNa1NPT3VYYW43dE1EMWlZcElmbktHY0Zzdmx4di12MER4TkIxTkJB?oc=5"
+     "headline": "Horror Series 'FROM' Is a Massive Hit on Netflix With 5 Billion Minutes Viewed Across Three Weeks",
+     "highlight": "5 Billion Minutes",
+     "image": "https://bloody-disgusting.com/wp-content/uploads/2026/11/from-s4-poster-thumb-1773088086436.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://bloody-disgusting.com/tv/3976423/horror-series-from-is-a-massive-hit-on-netflix-with-5-billion-minutes-viewed-across-three-weeks/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",

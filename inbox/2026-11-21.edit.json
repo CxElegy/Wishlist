@@ -1,371 +1,384 @@
 {
-  "GTA 6": [
-    {
-      "headline": "GTA 6 Just Sold an Estimated $2.36 Billion in One Day, Nearly Triple GTA V. Take-Two Stock Is Rising",
-      "highlight": "$2.36 Billion in One Day",
-      "blurb": "GTA 6 is estimated to have sold $2.36 billion on launch day, nearly triple GTA V, and Take-Two stock is rising.",
-      "weight": "lead",
-      "refs": [
-        6,
-        9,
-        19,
-        28
-      ],
-      "image": "https://www.vice.com/wp-content/uploads/sites/2/2026/11/How-Much-Money-Has-GTA-6-Made-So-Far-Launch-Sales-Explained.jpg?w=1280"
-    },
-    {
-      "headline": "GTA 6 上市掀 212GB 下載潮 全美固網流量飆破紀錄",
-      "highlight": "212GB",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "Let’s talk about GTA VI",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        7
-      ]
-    },
-    {
-      "headline": "I’ve Played GTA 6 for 110 Hours, Here Are the Weirdest Things I’ve Seen",
-      "highlight": "110 Hours",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "‘GTA 6’: First Half-Hour Reveals Major Plot Twist Rockstar Has Managed to Keep Secret for Years",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        17
-      ]
-    }
-  ],
-  "_covered": {
-    "GTA 6": 28,
-    "漫威电影": 30,
-    "三星手机": 13,
-    "绝区零": 5,
-    "ILLIT": 4,
-    "MMORPG 新作": 4,
-    "gelato pique": 4,
-    "dota2": 8,
-    "チェーンソーマン": 8,
-    "滑雪": 3,
-    "ぐでたま": 2,
-    "Vaundy": 1,
-    "哈利波特剧集": 3
+ "GTA 6": [
+  {
+   "headline": "GTA 6 Just Sold an Estimated $2.36 Billion in One Day, Nearly Triple GTA V. Take-Two Stock Is Rising",
+   "highlight": "$2.36 Billion in One Day",
+   "blurb": "GTA 6 is estimated to have sold $2.36 billion on launch day, nearly triple GTA V, and Take-Two stock is rising.",
+   "weight": "lead",
+   "refs": [
+    6,
+    9,
+    19,
+    28
+   ],
+   "image": "https://www.vice.com/wp-content/uploads/sites/2/2026/11/How-Much-Money-Has-GTA-6-Made-So-Far-Launch-Sales-Explained.jpg?w=1280"
   },
-  "漫威电影": [
-    {
-      "headline": "Avengers: Doomsday Unleashes Fierce New Posters of Thor, Steve Rogers & More",
-      "highlight": "New Posters",
-      "blurb": "Avengers: Doomsday new posters show fierce close-up shots of Thor, Steve Rogers, and more major MCU heroes.",
-      "weight": "lead",
-      "refs": [
-        11,
-        18,
-        15,
-        17
-      ],
-      "image": "https://www.bing.com/th?id=ONUT.brUqRvz65GQmZdeMLEHU2w&pid=News&w=1200"
-    },
-    {
-      "headline": "Marvel’s Avengers: Doomsday Countdown Glitch Has Fans Expecting a Trailer",
-      "highlight": "Countdown Glitch",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        9,
-        5,
-        14
-      ]
-    },
-    {
-      "headline": "Long Range Forecast: DUNE: PART 3 Aims for a Series-High Debut as it Opens Against AVENGERS: DOOMSDAY",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "Channing Tatum addresses Gambit’s accent in Avengers: Doomsday, and he doesn’t think he’s toned it down",
-      "highlight": "Gambit’s accent",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        12,
-        27,
-        26
-      ]
-    }
-  ],
-  "三星手机": [
-    {
-      "headline": "Galaxy S27 ProのGeekbenchスコアが初登場、Exynos 2700と12GB RAMを搭載か",
-      "highlight": "Geekbenchスコアが初登場",
-      "blurb": "Galaxy S27 ProのGeekbenchスコアが初登場。Exynos 2700と12GB RAMを搭載している可能性がある。",
-      "weight": "lead",
-      "refs": [
-        1,
-        6,
-        2,
-        11,
-        10
-      ],
-      "image": "https://sumahodigest.com/wp-content/uploads/2026/11/43534rwewr.jpg"
-    },
-    {
-      "headline": "Samsung fans continue to hate on Galaxy S27 Ultra redesign",
-      "highlight": "hate on",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        5,
-        9,
-        4
-      ]
-    },
-    {
-      "headline": "Galaxy S27 Pro and Ultra Leaks: New Camera Island, Five Colors & Early 2027 Timing",
-      "highlight": "Early 2027",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        7,
-        3,
-        12
-      ]
-    }
-  ],
-  "绝区零": [
-    {
-      "headline": "『ゼンレスゾーンゼロ』Ver.3.4が12月2日配信！『崩壊：スターレイル』コラボでロビン、カフカが参戦",
-      "highlight": "12月2日配信",
-      "blurb": "『ゼンレスゾーンゼロ』Ver.3.4が12月2日に配信。『崩壊：スターレイル』コラボでロビン、カフカが参戦する。",
-      "weight": "hero",
-      "refs": [
-        5,
-        1,
-        2,
-        3
-      ],
-      "event": {
-        "date": "2026-12-02",
-        "label": "Ver.3.4 配信"
-      },
-      "image": "https://www.appbank.net/wp-content/uploads/2026/11/20261120_203835_341_01.webp"
-    },
-    {
-      "headline": "『ゼンレスゾーンゼロ』×GiGOキャンペーン第3弾が12月5日から開催！ 限定景品やボンプ焼きが登場",
-      "highlight": "12月5日から開催",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ],
-      "event": {
-        "date": "2026-12-05",
-        "label": "キャンペーン開始"
-      }
-    }
-  ],
-  "ILLIT": [
-    {
-      "headline": "ILLIT「It’s Me」、『第68回 日本レコード大賞』にて2年連続「優秀作品賞」を受賞！ 海外アーティストで唯一の選出に",
-      "highlight": "2年連続「優秀作品賞」",
-      "blurb": "ILLIT「It’s Me」が『第68回 日本レコード大賞』で2年連続の優秀作品賞を受賞。海外アーティストでは唯一の選出で、K-POPグループ史上初の3年連続での各賞受賞となる。",
-      "weight": "lead",
-      "refs": [
-        2,
-        3,
-        4,
-        1
-      ],
-      "event": {
-        "date": "2026-12-30",
-        "label": "日本レコード大賞 生放送",
-        "time": "17:30"
-      },
-      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000098-kstylens-000-1-view.jpg?exp=10800"
-    }
-  ],
-  "MMORPG 新作": [
-    {
-      "headline": "「リネージュ クラシック」，公式番組を11月27日20：00から配信。本作独自のコンテンツを初公開し，オート戦闘支援を実機プレイで披露",
-      "highlight": "11月27日20：00から配信",
-      "blurb": "エヌシージャパンは公式番組「リネクラ通信＃1」を11月27日20：00からYouTubeで配信すると発表。12月2日のプレオープンに先駆け、本作独自のコンテンツを初公開する。",
-      "weight": "hero",
-      "refs": [
-        2
-      ],
-      "event": {
-        "date": "2026-11-27",
-        "label": "公式番組配信",
-        "time": "20:00"
-      },
-      "image": "https://www.4gamer.net/games/579/G057943/20261120052/SS/001.jpg"
-    },
-    {
-      "headline": "Browser MMORPG You & Me: Level Up adds a server-wide boss and shared hunting ahead of December 1st launch",
-      "highlight": "December 1st launch",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ],
-      "event": {
-        "date": "2026-12-01",
-        "label": "ローンチ"
-      }
-    }
-  ],
-  "gelato pique": [
-    {
-      "headline": "ジェラートピケがカプセルトイの販売を中止 想定を大幅に上回る来場",
-      "highlight": "販売を中止",
-      "blurb": "ジェラートピケがカプセルトイの販売中止を発表。想定を大幅に上回る来場で、販売を安全に継続することが難しいため。",
-      "weight": "lead",
-      "refs": [
-        1,
-        4,
-        3
-      ]
-    },
-    {
-      "headline": "Gelato Pique 2027 Lucky Bag When does Rakuten start? Amazon sales info and restock updates!",
-      "highlight": "2027 Lucky Bag",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    }
-  ],
-  "dota2": [
-    {
-      "headline": "『Dota 2』パッチ7.42が配信開始：試合展開の高速化と新ホットキーを導入",
-      "highlight": "パッチ7.42",
-      "blurb": "パッチ7.42が配信開始。試合展開の高速化と新ホットキーが導入された。",
-      "weight": "lead",
-      "refs": [
-        7,
-        1,
-        8
-      ]
-    }
-  ],
-  "チェーンソーマン": [
-    {
-      "headline": "“私が全部教えてあげる”「チェンソーマン」マキマのスウェット、ポチタのカーディガンにMAPPA描き下ろしまで！",
-      "highlight": "MAPPA描き下ろし",
-      "blurb": "マキマのスウェット、ポチタのカーディガンなど、MAPPA描き下ろしを含む新グッズが登場。",
-      "weight": "lead",
-      "refs": [
-        7
-      ]
-    },
-    {
-      "headline": "チェンソーマン レゼ篇のレゼとボムの大型フィギュアがあみあみで案内中 28年発売へ",
-      "highlight": "28年発売",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        8
-      ]
-    },
-    {
-      "headline": "チェンソーマン パスケースの入荷日・価格",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6
-      ]
-    }
-  ],
-  "滑雪": [
-    {
-      "headline": "金ジュエ氏が白銀にシュプール描く、正恩氏とスキー場を訪問 リゾート開発に注力する北朝鮮",
-      "highlight": "スキー場を訪問",
-      "blurb": "北朝鮮の金正恩氏が娘のジュエ氏とスキー場を訪れ、ジュエ氏が実際にスキーをする姿も公開された。リゾート開発に注力している。",
-      "weight": "lead",
-      "refs": [
-        2,
-        3
-      ],
-      "image": "https://img.topics.smt.news.goo.ne.jp/picture/japanesejoins/m_japanesejoins-357754.jpg"
-    },
-    {
-      "headline": "シーズン間近 スキー場で安全祈願 群馬・沼田市",
-      "highlight": "安全祈願",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    }
-  ],
-  "ぐでたま": [
-    {
-      "headline": "「サンリオキャラクターズ ガーデンカフェ」夏季限定メニューの6品が登場 定番人気の“ぐでたまかき氷”も",
-      "highlight": "夏季限定メニューの6品",
-      "blurb": "サンリオキャラクターズ ガーデンカフェに夏季限定メニュー6品が登場。定番人気のぐでたまかき氷もラインナップ。",
-      "weight": "lead",
-      "refs": [
-        2
-      ],
-      "image": "https://static.sanyonews.jp/image/article/size1/5/b/9/f/5b9fdb04960f4adb5fad34cd6ba312b1_1.jpg"
-    },
-    {
-      "headline": "アラフィフオペレーター",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    }
-  ],
-  "Vaundy": [],
-  "哈利波特剧集": [
-    {
-      "headline": "Who Will Play Voldemort in the Harry Potter Series?",
-      "highlight": "Voldemort",
-      "blurb": "Find out the latest casting news on who will play Voldemort in HBO's Harry Potter TV series.",
-      "weight": "lead",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "PopBase and WW_Direct share new HBO Harry Potter series character posters",
-      "highlight": "character posters",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "HBO Reveals Hogwarts Feast in New Harry Potter Series Clip",
-      "highlight": "Hogwarts Feast",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    }
-  ]
+  {
+   "headline": "GTA 6 上市掀 212GB 下載潮 全美固網流量飆破紀錄",
+   "highlight": "212GB",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Let’s talk about GTA VI",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "I’ve Played GTA 6 for 110 Hours, Here Are the Weirdest Things I’ve Seen",
+   "highlight": "110 Hours",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "‘GTA 6’: First Half-Hour Reveals Major Plot Twist Rockstar Has Managed to Keep Secret for Years",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
+   ]
+  }
+ ],
+ "_covered": {
+  "GTA 6": 28,
+  "漫威电影": 30,
+  "三星手机": 13,
+  "绝区零": 5,
+  "ILLIT": 4,
+  "MMORPG 新作": 4,
+  "gelato pique": 4,
+  "dota2": 8,
+  "チェーンソーマン": 8,
+  "滑雪": 3,
+  "ぐでたま": 2,
+  "Vaundy": 1,
+  "哈利波特剧集": 3,
+  "FROM": 1
+ },
+ "漫威电影": [
+  {
+   "headline": "Avengers: Doomsday Unleashes Fierce New Posters of Thor, Steve Rogers & More",
+   "highlight": "New Posters",
+   "blurb": "Avengers: Doomsday new posters show fierce close-up shots of Thor, Steve Rogers, and more major MCU heroes.",
+   "weight": "lead",
+   "refs": [
+    11,
+    18,
+    15,
+    17
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.brUqRvz65GQmZdeMLEHU2w&pid=News&w=1200"
+  },
+  {
+   "headline": "Marvel’s Avengers: Doomsday Countdown Glitch Has Fans Expecting a Trailer",
+   "highlight": "Countdown Glitch",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    5,
+    14
+   ]
+  },
+  {
+   "headline": "Long Range Forecast: DUNE: PART 3 Aims for a Series-High Debut as it Opens Against AVENGERS: DOOMSDAY",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Channing Tatum addresses Gambit’s accent in Avengers: Doomsday, and he doesn’t think he’s toned it down",
+   "highlight": "Gambit’s accent",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12,
+    27,
+    26
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Galaxy S27 ProのGeekbenchスコアが初登場、Exynos 2700と12GB RAMを搭載か",
+   "highlight": "Geekbenchスコアが初登場",
+   "blurb": "Galaxy S27 ProのGeekbenchスコアが初登場。Exynos 2700と12GB RAMを搭載している可能性がある。",
+   "weight": "lead",
+   "refs": [
+    1,
+    6,
+    2,
+    11,
+    10
+   ],
+   "image": "https://sumahodigest.com/wp-content/uploads/2026/11/43534rwewr.jpg"
+  },
+  {
+   "headline": "Samsung fans continue to hate on Galaxy S27 Ultra redesign",
+   "highlight": "hate on",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    9,
+    4
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Pro and Ultra Leaks: New Camera Island, Five Colors & Early 2027 Timing",
+   "highlight": "Early 2027",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    3,
+    12
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "『ゼンレスゾーンゼロ』Ver.3.4が12月2日配信！『崩壊：スターレイル』コラボでロビン、カフカが参戦",
+   "highlight": "12月2日配信",
+   "blurb": "『ゼンレスゾーンゼロ』Ver.3.4が12月2日に配信。『崩壊：スターレイル』コラボでロビン、カフカが参戦する。",
+   "weight": "hero",
+   "refs": [
+    5,
+    1,
+    2,
+    3
+   ],
+   "event": {
+    "date": "2026-12-02",
+    "label": "Ver.3.4 配信"
+   },
+   "image": "https://www.appbank.net/wp-content/uploads/2026/11/20261120_203835_341_01.webp"
+  },
+  {
+   "headline": "『ゼンレスゾーンゼロ』×GiGOキャンペーン第3弾が12月5日から開催！ 限定景品やボンプ焼きが登場",
+   "highlight": "12月5日から開催",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ],
+   "event": {
+    "date": "2026-12-05",
+    "label": "キャンペーン開始"
+   }
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT「It’s Me」、『第68回 日本レコード大賞』にて2年連続「優秀作品賞」を受賞！ 海外アーティストで唯一の選出に",
+   "highlight": "2年連続「優秀作品賞」",
+   "blurb": "ILLIT「It’s Me」が『第68回 日本レコード大賞』で2年連続の優秀作品賞を受賞。海外アーティストでは唯一の選出で、K-POPグループ史上初の3年連続での各賞受賞となる。",
+   "weight": "lead",
+   "refs": [
+    2,
+    3,
+    4,
+    1
+   ],
+   "event": {
+    "date": "2026-12-30",
+    "label": "日本レコード大賞 生放送",
+    "time": "17:30"
+   },
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000098-kstylens-000-1-view.jpg?exp=10800"
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "「リネージュ クラシック」，公式番組を11月27日20：00から配信。本作独自のコンテンツを初公開し，オート戦闘支援を実機プレイで披露",
+   "highlight": "11月27日20：00から配信",
+   "blurb": "エヌシージャパンは公式番組「リネクラ通信＃1」を11月27日20：00からYouTubeで配信すると発表。12月2日のプレオープンに先駆け、本作独自のコンテンツを初公開する。",
+   "weight": "hero",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-27",
+    "label": "公式番組配信",
+    "time": "20:00"
+   },
+   "image": "https://www.4gamer.net/games/579/G057943/20261120052/SS/001.jpg"
+  },
+  {
+   "headline": "Browser MMORPG You & Me: Level Up adds a server-wide boss and shared hunting ahead of December 1st launch",
+   "highlight": "December 1st launch",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-12-01",
+    "label": "ローンチ"
+   }
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラートピケがカプセルトイの販売を中止 想定を大幅に上回る来場",
+   "highlight": "販売を中止",
+   "blurb": "ジェラートピケがカプセルトイの販売中止を発表。想定を大幅に上回る来場で、販売を安全に継続することが難しいため。",
+   "weight": "lead",
+   "refs": [
+    1,
+    4,
+    3
+   ]
+  },
+  {
+   "headline": "Gelato Pique 2027 Lucky Bag When does Rakuten start? Amazon sales info and restock updates!",
+   "highlight": "2027 Lucky Bag",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "『Dota 2』パッチ7.42が配信開始：試合展開の高速化と新ホットキーを導入",
+   "highlight": "パッチ7.42",
+   "blurb": "パッチ7.42が配信開始。試合展開の高速化と新ホットキーが導入された。",
+   "weight": "lead",
+   "refs": [
+    7,
+    1,
+    8
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "“私が全部教えてあげる”「チェンソーマン」マキマのスウェット、ポチタのカーディガンにMAPPA描き下ろしまで！",
+   "highlight": "MAPPA描き下ろし",
+   "blurb": "マキマのスウェット、ポチタのカーディガンなど、MAPPA描き下ろしを含む新グッズが登場。",
+   "weight": "lead",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "チェンソーマン レゼ篇のレゼとボムの大型フィギュアがあみあみで案内中 28年発売へ",
+   "highlight": "28年発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "チェンソーマン パスケースの入荷日・価格",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "金ジュエ氏が白銀にシュプール描く、正恩氏とスキー場を訪問 リゾート開発に注力する北朝鮮",
+   "highlight": "スキー場を訪問",
+   "blurb": "北朝鮮の金正恩氏が娘のジュエ氏とスキー場を訪れ、ジュエ氏が実際にスキーをする姿も公開された。リゾート開発に注力している。",
+   "weight": "lead",
+   "refs": [
+    2,
+    3
+   ],
+   "image": "https://img.topics.smt.news.goo.ne.jp/picture/japanesejoins/m_japanesejoins-357754.jpg"
+  },
+  {
+   "headline": "シーズン間近 スキー場で安全祈願 群馬・沼田市",
+   "highlight": "安全祈願",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "「サンリオキャラクターズ ガーデンカフェ」夏季限定メニューの6品が登場 定番人気の“ぐでたまかき氷”も",
+   "highlight": "夏季限定メニューの6品",
+   "blurb": "サンリオキャラクターズ ガーデンカフェに夏季限定メニュー6品が登場。定番人気のぐでたまかき氷もラインナップ。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/5/b/9/f/5b9fdb04960f4adb5fad34cd6ba312b1_1.jpg"
+  },
+  {
+   "headline": "アラフィフオペレーター",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Vaundy": [],
+ "哈利波特剧集": [
+  {
+   "headline": "Who Will Play Voldemort in the Harry Potter Series?",
+   "highlight": "Voldemort",
+   "blurb": "Find out the latest casting news on who will play Voldemort in HBO's Harry Potter TV series.",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "PopBase and WW_Direct share new HBO Harry Potter series character posters",
+   "highlight": "character posters",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "HBO Reveals Hogwarts Feast in New Harry Potter Series Clip",
+   "highlight": "Hogwarts Feast",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "Horror Series 'FROM' Is a Massive Hit on Netflix With 5 Billion Minutes Viewed Across Three Weeks",
+   "highlight": "5 Billion Minutes",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://bloody-disgusting.com/wp-content/uploads/2026/11/from-s4-poster-thumb-1773088086436.jpg"
+  }
+ ]
 }
