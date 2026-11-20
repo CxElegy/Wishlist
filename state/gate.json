@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T08:18:53+00:00",
+ "checked": "2026-11-20T09:18:36+00:00",
  "fired": {
   "at": "2026-11-20T07:25:28+00:00",
   "results": {
@@ -68,13 +68,14 @@
     "FROM",
     "ILLIT",
     "dota2",
-    "lib:FINAL FANTASY VII REBIRTH",
-    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
-    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
-    "lib:世界最強の魔女、始めました",
-    "lib:牧野植物園",
-    "lib:羽生善治",
-    "lib:貸した魔力は【リボ払い】で強制徴収",
+    "lib:BTS",
+    "lib:F1",
+    "lib:Mrs. GREEN APPLE",
+    "lib:Nintendo Switch 2",
+    "lib:YOASOBI",
+    "lib:サッカー日本代表",
+    "lib:大相撲",
+    "lib:大谷翔平",
     "あつ森",
     "三星手机",
     "周杰伦",
@@ -89,18 +90,11 @@
    "need": true,
    "prog": 413,
    "prog_day": "2026-11-20",
-   "ripe": [
-    "lib:FINAL FANTASY VII REBIRTH",
-    "lib:FINAL FANTASY VII REMAKE INTERGRADE",
-    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
-    "lib:世界最強の魔女、始めました",
-    "lib:羽生善治",
-    "lib:貸した魔力は【リボ払い】で強制徴収"
-   ],
-   "sig": "a1a0ff9e11fe",
+   "ripe": [],
+   "sig": "7d415034d30f",
    "token_cap": 1000000,
    "tokens_today": 601090,
-   "why": "整理待ちの記事 40 件（16 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 108 件（17 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
