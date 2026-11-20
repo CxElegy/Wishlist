@@ -7103,7 +7103,7 @@
  "https://tbsradio.g.kuroco-img.app/v=1795071928/files/topics/114188_ext_04_0.jpeg?width=1200": {
   "w": 1200,
   "h": 900,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2022/11/28130615/344abd0b2e6359cef023a330754f9c2f.jpg": {
@@ -7411,6 +7411,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.404
+ },
+ "https://www.bing.com/th?id=ONUT.-uISZ1wmHfcOppDMAov4_Q&pid=News&w=700": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.00q_3SKAZTpUktsTEvv6GQ&pid=News&w=700": {
   "w": 700,
