@@ -23,7 +23,6 @@
   "https://mashable.com/article/july-23-samsung-galaxy-tab-s6-lite": "https://helios-i.mashable.com/imagery/articles/06cMN7IqDesAqLsJSg3CfjX/hero-image.fill.size_1200x675.v1721746055.png",
   "https://mixgulfcoast.iheart.com/featured/jeff-stevens/content/2026-11-20-avengers-doomsday-final-official-trailer-marvel-studios/": "https://i.iheart.com/v3/re/assets.getty/6b0034903e93c9a6d13cd412?ops=gravity(%22north%22),fit(1200,675),quality(65)",
   "https://moonvoke.com/posts/donguri-republic-snowman-totoro-banqiao-guide-2026/": "https://moonvoke.com/images/news/donguri-republic-snowman-totoro-banqiao-guide-2026.webp",
-  "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBaN2JoeDdMSkMzQ2N4SnNLYm9Odkdnb1M1MnJodmYwdXdDLWcwZDFTNTZqQlZRcGZoY08tcHg5TmlWRVR4V3J6WXE3WXQ3NjNNcjVvU1k3a19iT3hFMUo1Q2dvV3F6UTZW?oc=5": "https://image.news.livedoor.com/newsimage/b/2/b287f_230_98f16e0b_325d0d03.jpg",
   "https://news.infoseek.co.jp/article/abs_1496438235354906741/": "https://media.image.infoseek.co.jp/isnews/photos/abs/abs_1496438235354906741_0-enlarge.jpg",
   "https://news.livedoor.com/article/image_detail/32830632/?img_id=57643180": "https://image.news.livedoor.com/newsimage/stf/4/d/4d844_1847_2de308cd584360294a2c2a2b415befaf.jpg",
   "https://news.tvbs.com.tw/entertainment/jk-pop/4053680": "https://news-images.tvbs.com.tw/api/v1/image/01a1f8b4-96f0-70de-9eb7-dbb880904fa0.jpg?t=16x9&c=0,0,1188,668&w=1200&h=675",
@@ -81,6 +80,7 @@
   "https://www.walkerplus.com/article/1453739/": "https://news.walkerplus.com/article/1453739/19024802_615.jpg",
   "https://www.walkerplus.com/article/33564/image160126.html": "https://news.walkerplus.com/article/33564/160123_615.jpg",
   "https://www.walkerplus.com/article/40260/image207549.html": "https://news.walkerplus.com/article/40260/207548_615.jpg",
+  "https://www.walkerplus.com/article/54135/image297391.html": "https://news.walkerplus.com/article/54135/297391_615.jpg",
   "https://www.walkerplus.com/article/85785/image484216.html": "https://news.walkerplus.com/article/85785/484215_615.jpg",
   "https://www.yahoo.com/entertainment/articles/5-harry-potter-characters-hbo-111200276.html": "https://www.bing.com/th?id=ONUT.Mu8qYtw_Pf2tbWpMc6k2Lw&pid=News&w=640",
   "https://www.youtube.com/watch?v=v28D3JCv22I": "https://i3.ytimg.com/vi/v28D3JCv22I/hqdefault.jpg"
@@ -781,7 +781,7 @@
     "小屏旗舰",
     "手机"
    ],
-   "image": "https://image.news.livedoor.com/newsimage/b/2/b287f_230_98f16e0b_325d0d03.jpg",
+   "image": "https://news.walkerplus.com/article/54135/297391_615.jpg",
    "kind": "wish",
    "score": 6,
    "source": "ウォーカープラス",
@@ -796,7 +796,7 @@
     ]
    ],
    "title": "安いだけじゃない！mineoのコンパクトスマホを体感",
-   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBaN2JoeDdMSkMzQ2N4SnNLYm9Odkdnb1M1MnJodmYwdXdDLWcwZDFTNTZqQlZRcGZoY08tcHg5TmlWRVR4V3J6WXE3WXQ3NjNNcjVvU1k3a19iT3hFMUo1Q2dvV3F6UTZW?oc=5",
+   "url": "https://www.walkerplus.com/article/54135/image297391.html",
    "words": [
     "小屏"
    ],
@@ -1946,11 +1946,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
