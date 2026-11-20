@@ -619,6 +619,13 @@
   "target": 720,
   "v": 3
  },
+ "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/955739.jpg": {
+  "w": 692,
+  "h": 242,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.415
+ },
  "https://animetv-jp.net/wp-content/uploads/2026/11/images-32.jpeg": {
   "w": 739,
   "h": 415,
@@ -1641,6 +1648,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://cphoto.asiae.co.kr/listimglink/1/2026111810371313798_1794965833.jpg": {
+  "w": 745,
+  "h": 460,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.29
+ },
  "https://creepycatalog.com/wp-content/uploads/sites/2/2026/11/from-became-america-s-no-1-streaming-show-after-netflix-added-its-first-three-se.png?w=1024": {
   "w": 1024,
   "h": 645,
@@ -1767,31 +1781,13 @@
   "target": 1280,
   "v": 3
  },
- "https://e.usen.com/image/e5c17f22ef612405cd5e866218bb758e28b821df.jpg": {
-  "w": 1000,
-  "h": 561,
-  "target": 1280,
-  "v": 3
- },
  "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
   "w": 1200,
   "h": 630,
   "target": 720,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/dreamleague-division-2-season-3?v=1795141704": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://escharts.com/metaImage/tournaments/dreamleague-season-30-china-closed-qualifier?v=1794986946": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/epl-championship-season-1?v=1795141706": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -1813,12 +1809,6 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/international-2026-china-open-qualifier-1?v=1795145128": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/res-unchained-4-blast-slam-vii-southeast-asia-open-qualifier-2?v=1795012228": {
@@ -2059,12 +2049,6 @@
   "target": 1280,
   "v": 3
  },
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg": {
-  "w": 826,
-  "h": 1153,
-  "target": 720,
-  "v": 3
- },
  "https://i.abcnewsfe.com/a/02d94113-efa9-481c-9232-0dfafe5b3238/RyanGosling-gty-sn-260726_1785097233106_hpMain_16x9.jpg?w=1600": {
   "w": 1600,
   "h": 900,
@@ -2177,57 +2161,6 @@
   "target": 720,
   "v": 3
  },
- "https://image.ajunews.com/content/image/2026/11/18/20261118161007382055.jpg": {
-  "w": 640,
-  "h": 375,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.446,
-  "local": "pics/cefec0cc3046101d.webp",
-  "out": [
-   1280,
-   750
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    4,
-    4,
-    3,
-    3,
-    10,
-    31,
-    28,
-    4,
-    3,
-    3,
-    4,
-    3
-   ],
-   [
-    7,
-    6,
-    4,
-    3,
-    19,
-    18,
-    18,
-    14,
-    4,
-    3,
-    3,
-    1
-   ]
-  ],
-  "c": "#6a5342",
-  "k": [
-   0.8,
-   0.878,
-   0.92,
-   0.934
-  ],
-  "p": null
- },
  "https://image.cmoney.tw/attachment/blog/1794931200/f94433d9-4fd3-40ed-9373-f4a4ff191325.jpg": {
   "w": 688,
   "h": 384,
@@ -2335,12 +2268,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.jkn.co.kr/data/images/full/111/64/1116440.jpg?v=1794792282&width=1200": {
-  "w": 960,
-  "h": 1200,
-  "target": 1280,
-  "v": 3
- },
  "https://images.khan.co.kr/article/2026/11/20/news-p.v1.20261120.6b2ae1d6e17e49ca9d08f1bcab07ca1c_P1.png": {
   "w": 1200,
   "h": 756,
@@ -2381,12 +2308,6 @@
   "w": 1758,
   "h": 2200,
   "target": 720,
-  "v": 3
- },
- "https://images.storm.mg/cloud/ae0013aeed0fdf523d853cd77b4414b9aea5dbd3.jpg?url=s3%3A%2F%2Fnew-storm-public-resource%2Fgallery%2F2257087%2FUnyiU7rw4L0cpfobVdK0Bv4k0zBNQ2sFrUZhCfsI.jpg&g=sm&h=900&resize=fill&w=1600&format=jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
   "v": 3
  },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_137,w_1086,h_610/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m7vaccgmnrmqp9vskp.jpg": {
@@ -2519,6 +2440,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hKaIG.img": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hMGfC.img": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -2966,6 +2893,13 @@
    0.424,
    0.42
   ]
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-191002.jpg": {
+  "w": 640,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.306
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-163679.jpg": {
   "w": 640,
@@ -3523,12 +3457,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.trilltrill.jp/articles/5198062/featured-image.9f5e4fa7bb3d391856ff71a19786e7be?w=1200": {
-  "w": 640,
-  "h": 480,
-  "target": 720,
-  "v": 3
- },
  "https://media.unboxholics.com/media/source/Articles/139067/images/socialMediaImage/harry-potter-fans-hans-zimmer.jpg": {
   "w": 1120,
   "h": 630,
@@ -3603,12 +3531,6 @@
    0.703
   ],
   "p": null
- },
- "https://moonvoke.com/images/news/avengers-doomsday-taiwan-presale-doctor-doom-guide-2026.webp": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
  },
  "https://moonvoke.com/images/news/donguri-republic-snowman-totoro-banqiao-guide-2026.webp": {
   "w": 1200,
@@ -5629,12 +5551,6 @@
   "target": 720,
   "v": 3
  },
- "https://p.potaufeu.asahi.com/d769-p/picture/31584697/72243b8d2254b36daa8010677f8b393f.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
-  "v": 3
- },
  "https://pbs.twimg.com/media/HW9Ya5ZXwAE6Ybm?format=jpg&name=large": {
   "w": 1920,
   "h": 1080,
@@ -6790,6 +6706,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/11/chris-evans-steve-rogers-avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2026/11/twitch-giving-away-free-grand-theft-auto-6.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -7707,6 +7629,13 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.XpeF5G7R8pIpfDFRT1nU-Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 699,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.36
+ },
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
   "h": 287,
@@ -7872,12 +7801,6 @@
    0.81
   ],
   "p": null
- },
- "https://www.bing.com/th?id=ONUT.mCG_VyOUnv8Fo9MXdTZ3Cw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.nn6MK0AG2-qOL_vC_Rkxow&pid=News&w=1200": {
   "w": 700,
@@ -8702,6 +8625,13 @@
   "h": 380,
   "target": 720,
   "v": 3
+ },
+ "https://x0.ifengimg.com/res/2026/3BA54408B6394E0C89C02BCC8E89709159DE5B3B_size9_w720_h380.webp": {
+  "w": 720,
+  "h": 380,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.369
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-c5107fb3cab563f904aec69918eb1145/images/ed1e92c6-9632-4f56-8421-59c7b32366a0.jpg": {
   "w": 1920,
