@@ -487,6 +487,12 @@
   "target": 720,
   "v": 3
  },
+ "https://9to5google.com/wp-content/uploads/sites/4/2026/11/samsung-galaxy-s27-ultra-leak-video.jpg?quality=82&strip=all&resize=1200,628": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202611/harry-potter-161027592-16x9_0.png?VersionId=Tsigm3PizjRZGabyq9btzLKVCpsYMe_w&size=1280:720": {
   "w": 1280,
   "h": 720,
@@ -1763,12 +1769,6 @@
  "https://i.iheart.com/v3/re/assets.getty/6b0034903e93c9a6d13cd412?ops=gravity(%22north%22),fit(1200,675),quality(65)": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://i.ytimg.com/vi/IcSLYhp3jmE/maxresdefault.jpg": {
-  "w": 1280,
-  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -4863,6 +4863,56 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000098-kstylens-000-1-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/910ac3f389786914.webp",
+  "out": [
+   1200,
+   675
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    8,
+    6,
+    11,
+    7,
+    8,
+    10,
+    10,
+    7,
+    9,
+    13,
+    7,
+    5
+   ],
+   [
+    10,
+    9,
+    7,
+    4,
+    6,
+    22,
+    17,
+    6,
+    5,
+    3,
+    7,
+    5
+   ]
+  ],
+  "c": "#74715c",
+  "k": [
+   0.023,
+   0.034,
+   0.865,
+   0.6
+  ],
+  "p": null
+ },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
   "h": 840,
@@ -5739,6 +5789,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/be7d6b20064c6a849b2faa245d7e4bc6f04f08c68164636b6f00c6f7a7134472/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2Fd02d77fc6689f4f8953c4bdd37e9587b.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/c7cc9fb40e40c91e72b5fc4d55f537e72b07e61c3dc4caecd1903e08328394bf/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Foxford_mail_251%2F884cb8e89468e71512928715fb14eb50.jpg": {
   "w": 1200,
   "h": 800,
@@ -6080,6 +6136,12 @@
   "target": 720,
   "v": 3
  },
+ "https://sumahodigest.com/wp-content/uploads/2026/11/43534rwewr.jpg": {
+  "w": 1786,
+  "h": 987,
+  "target": 1280,
+  "v": 3
+ },
  "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-15-081420.jpg": {
   "w": 1640,
   "h": 978,
@@ -6331,6 +6393,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.appbank.net/wp-content/uploads/2026/11/20261120_211106_906_01.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://www.atpress.ne.jp/attachments/5hyxKwgznMzJ1AVVM446.jpg": {
@@ -6683,12 +6751,6 @@
    1.0
   ]
  },
- "https://www.bing.com/th?id=ONUT.96K7BII9bfW5dXCZyJcy9A&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.C7yo6RHIF9O1SXc6EY1Qdw&pid=News&w=1200": {
   "w": 534,
   "h": 341,
@@ -6890,6 +6952,57 @@
   "v": 3,
   "blur": 0.36
  },
+ "https://www.bing.com/th?id=ONUT.brUqRvz65GQmZdeMLEHU2w&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.574,
+  "local": "pics/8241434dc859f8a4.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    2,
+    0,
+    1,
+    26,
+    39,
+    18,
+    6,
+    3,
+    1,
+    0,
+    0
+   ],
+   [
+    2,
+    6,
+    16,
+    18,
+    16,
+    12,
+    2,
+    3,
+    5,
+    5,
+    7,
+    7
+   ]
+  ],
+  "c": "#2a291a",
+  "k": null,
+  "p": [
+   0.272,
+   0.0,
+   0.685,
+   1.0
+  ]
+ },
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
   "h": 287,
@@ -7062,12 +7175,6 @@
   ],
   "p": null
  },
- "https://www.bing.com/th?id=ONUT.lrQ0IULmFBlXHwwA4xpTYA&pid=News&w=640": {
-  "w": 640,
-  "h": 640,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.nn6MK0AG2-qOL_vC_Rkxow&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7126,6 +7233,12 @@
   "v": 3,
   "blur": 0.402
  },
+ "https://www.bing.com/th?id=ONUT.s3GR9p1JpaOD9ZMfNSUpGQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7171,6 +7284,12 @@
   "c": "#5d5354",
   "k": null,
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.vmQFkHfpG3qY2FeXJftfog&pid=News&w=1200": {
+  "w": 700,
+  "h": 484,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.xIVTwMTYf8aiPMNzVoJrGA&pid=News&w=480": {
   "w": 480,
@@ -7575,6 +7694,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-1.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-ultra-2.jpg": {
   "w": 1280,
   "h": 721,
@@ -7766,6 +7891,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/doomsday_39dafd.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://www.techadvisor.com/wp-content/uploads/2026/11/3182041-0-17409400-1794583487-Samsung-Galaxy-S26-Ultra-review-13.jpg?quality=50&strip=all&w=1024": {
