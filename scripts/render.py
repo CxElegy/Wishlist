@@ -4134,6 +4134,8 @@ FIT_JS = """
         const chW = fr.offsetWidth - p.offsetWidth + (parseFloat(fs.marginLeft) || 0) + (parseFloat(fs.marginRight) || 0);
         const chV = fr.offsetHeight - p.offsetHeight + (parseFloat(fs.marginTop) || 0) + (parseFloat(fs.marginBottom) || 0);
         const colH = tw => { top.style.gridTemplateColumns = Math.floor(tw) + 'px minmax(0,1fr)'; return (pd ? pd.offsetHeight + rg : 0) + (tx ? tx.offsetHeight : 0); };
+        // 字の列は大きな日付（11.20 と曜日の札）の幅より細くしない：細いと曜日の札が写真の枠の下に隠れる（E1。2026-11-20 test-c 1440px で見つけた）
+        const pdNeed = pd ? [...pd.children].reduce((s, k) => s + k.getBoundingClientRect().width, 0) + (parseFloat(getComputedStyle(pd).columnGap) || 0) * Math.max(0, pd.children.length - 1) + 8 : 0;
         // 写真の幅だけで合わないとき、頭条の見出しの大きさで字の列を伸び縮みさせる：字の列が低いなら大きく（1.1〜1.8 倍・40px まで。頭条はいちばん大きく：C1）、
         // 高いなら小さく（0.92・0.85 倍・18px まで。読む字の下限 D4 より十分上）。差が同じなら元の大きさに近いほう
         // 倍率は CSS の変数 --hs（字の大きさを直に書かない：見出しの孤立を直す NOORPHAN_JS が字の大きさを消しても倍率は残る＝取り合わない）
@@ -4146,14 +4148,14 @@ FIT_JS = """
           if (cs.length < 6) return false; const lt = cs[cs.length - 1]; let k = 0; for (let i = cs.length - 1; i >= 0 && Math.abs(cs[i] - lt) < 4; i--) k++; return k < 3 && k < cs.length; };
         // 頭条の写真はほかの注目のどのカードの写真より十分大きく（C1・点検 leadbig：ほかの注目の写真は頭条の 7 割まで）：面積の下限＝ふつうのカードの最大 ÷ 0.68。記事が少ない壁の小さい形（.cmp・.ban）は壁の側が頭条の 64% に合わせるので数えない（互いに押し上げて固まらない）
         const minA = Math.max(0, ...[...document.querySelectorAll('.mgrid .wall > .wc:not(.lead):not(.cmp):not(.ban):not([hidden]) > .pic')].filter(e => e.offsetWidth).map(e => e.offsetWidth * e.offsetHeight)) / 0.68;
-        const minH = Math.max(260, Math.min((window.WLvh || innerHeight) * 0.42, G * 0.45));   // 頭条の写真の高さの下限（C1・B9：見出しが短くても写真を小さくして合わせない。足りない分は見出しを大きく）
+        const minH = Math.max(260, Math.min((window.WLvh || innerHeight) * 0.42, G * 0.45));   // 下げると、ほかの注目のカードの上限（頭条の 64%）も下がってカードの中が空く（2026-11-20 測った：0.36 で cgap +2）   // 頭条の写真の高さの下限（C1・B9：見出しが短くても写真を小さくして合わせない。足りない分は見出しを大きく）
         let best = null;
         for (const sc of [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.8, 0.92, 0.85]) {
           if (sc !== 1 && (!h2 || fs0 * sc > 40 || fs0 * sc < 18)) continue;
           top.style.setProperty('--hs', String(sc));
           let b0 = null;
           for (let f = 0.18; f <= 0.641; f += 0.02) {   // とても縦長の写真（1:2）は細い列で字の列の高さに届く（面積の下限 minA は別に守る）
-            const pw = Math.round(G * f), tw = G - cg - pw - chW; if (tw < 300) continue;   // 字の列は 300px 以上（細いと見出しが 1 行 6〜8 字に刻まれ、孤立を直す処理が幅を狭めて高さがずれる）
+            const pw = Math.round(G * f), tw = G - cg - pw - chW; if (tw < Math.max(300, pdNeed)) continue;   // 字の列は 300px 以上（細いと見出しが 1 行 6〜8 字に刻まれ、孤立を直す処理が幅を狭めて高さがずれる）
             const ph = colH(tw) - chV; if (ph < 120) continue;
             const r = nat / (pw / ph);
             let mode = 'nat', err = Math.abs(pw / nat - ph);
@@ -4170,12 +4172,14 @@ FIT_JS = """
         img.style.objectPosition = ''; delete img.dataset.keep;
         top.classList.remove('pstk');
         // 写真の幅と見出しの大きさで合わせきれない（字の列がずっと高い・低い）：横に並べるのをやめ、写真を上・字を下に積む（スマホと同じ並び。A9 ④）。
-        // 写真は写真の形のまま、高さは画面の 55% まで
-        const H0 = best ? Math.max(best.ph, best.pw / nat) + chV : 0;
-        if (nat >= 1 && (!best || best.err >= 1000 || best.raw > Math.max(48, H0 * 0.12))) {   // 並べる形が無い・頭条の写真が下限より小さくなる・高さが合わない（横長の写真だけ：縦長を積むと細い写真の横が空く）
+                const H0 = best ? Math.max(best.ph, best.pw / nat) + chV : 0;
+        if (nat >= 1 && innerWidth <= 1100 && (!best || best.err >= 1000 || best.raw > Math.max(48, H0 * 0.12))) {   // 積むのはタブレットの幅だけ（広い画面で積むと頭条が画面 1 枚に入らない：F1）   // 並べる形が無い・頭条の写真が下限より小さくなる・高さが合わない（横長の写真だけ：縦長を積むと細い写真の横が空く）
           top.classList.add('pstk'); top.style.setProperty('--hs', '1'); top.style.gridTemplateColumns = '';
-          const pw = Math.round(Math.min(G - chW, (window.WLvh || innerHeight) * 0.55 * nat));
-          p.style.width = pw + 'px'; p.style.height = Math.round(pw / nat) + 'px'; p.style.aspectRatio = nat.toFixed(4); p.classList.add('fill');
+          // 横いっぱい（G）で高さは画面の 50% まで。高さを抑えた形に主役・字が欠けずに切れるなら切る（横が空かない）。切れなければ写真の形のまま真ん中に
+          const cap = (window.WLvh || innerHeight) * 0.5, fw = Math.round(G - chW), fh = Math.round(Math.min(fw / nat, cap));
+          if (fh >= fw / nat - 2 || (!img._bands && cropAt(img, nat / (fw / fh)))) { p.style.width = fw + 'px'; p.style.height = fh + 'px'; p.style.aspectRatio = (fw / fh).toFixed(4); if (fh < fw / nat - 2) cropAt(img, nat / (fw / fh)); }
+          else { const h2c = Math.min(fw / nat, cap * 1.1), pw = Math.round(h2c * nat); p.style.width = pw + 'px'; p.style.height = Math.round(h2c) + 'px'; p.style.aspectRatio = nat.toFixed(4); }   // 切れない写真は高さを 55% まで許して横の空きを縮める
+          p.classList.add('fill');
           top.dataset.pfit = 'stack:' + (best ? Math.round(best.raw) : '-');
           best = null;
         }
