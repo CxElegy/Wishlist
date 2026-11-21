@@ -1497,6 +1497,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/hakuba47.jpg": {
+  "w": 1962,
+  "h": 1472,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/jr-ski.jpg": {
   "w": 900,
   "h": 600,
@@ -1766,12 +1772,6 @@
   "w": 1440,
   "h": 809,
   "target": 720,
-  "v": 3
- },
- "https://i.epochtimes.com/assets/uploads/2026/11/id14892156-S__1377828886_0-1200x800.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
   "v": 3
  },
  "https://i0.wp.com/disneyworldfan.jp/wp-content/uploads/2026/11/disney-starbucks-holiday-mickey-travel-tumbler-2026.jpg?fit=608%2C608&ssl=1": {
@@ -2248,6 +2248,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hSXR4.img": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hSlKU.img": {
+  "w": 980,
+  "h": 551,
   "target": 720,
   "v": 3
  },
@@ -3056,6 +3062,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://k-plaza.com/wp-content/uploads/2026/11/6e195630a02193f6decbc766d343f233.jpg": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.362
+ },
  "https://local12.com/resources/media2/16x9/1147/1320/0x9/90/c93ed80f-8419-4d26-963c-dc83c029c695-GTA.png": {
   "w": 1320,
   "h": 743,
@@ -3294,12 +3307,6 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
-  "v": 3
- },
- "https://moonvoke.com/images/news/donguri-republic-snowman-totoro-banqiao-guide-2026.webp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://mtnweekly.com/wp-content/uploads/2026/11/Rossignol-Juggernaut-Snowboard-3.jpg": {
@@ -4802,6 +4809,56 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000468-oric-000-1-view.jpg?exp=10800": {
+  "w": 960,
+  "h": 540,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/32ef70cb54351914.webp",
+  "out": [
+   960,
+   540
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    6,
+    7,
+    5,
+    5,
+    4,
+    5,
+    14,
+    13,
+    11,
+    11,
+    11,
+    8
+   ],
+   [
+    5,
+    12,
+    9,
+    9,
+    4,
+    8,
+    8,
+    10,
+    10,
+    10,
+    8,
+    7
+   ]
+  ],
+  "c": "#c09a76",
+  "k": [
+   0.016,
+   0.023,
+   0.987,
+   0.674
+  ],
+  "p": null
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00080112-chosun-000-10-view.jpg?exp=10800": {
   "w": 720,
   "h": 540,
@@ -5056,56 +5113,6 @@
    0.348,
    0.752,
    0.753
-  ],
-  "p": null
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000098-kstylens-000-1-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/910ac3f389786914.webp",
-  "out": [
-   1200,
-   675
-  ],
-  "why": "期限付きの網址",
-  "m": [
-   [
-    8,
-    6,
-    11,
-    7,
-    8,
-    10,
-    10,
-    7,
-    9,
-    13,
-    7,
-    5
-   ],
-   [
-    10,
-    9,
-    7,
-    4,
-    6,
-    22,
-    17,
-    6,
-    5,
-    3,
-    7,
-    5
-   ]
-  ],
-  "c": "#74715c",
-  "k": [
-   0.023,
-   0.034,
-   0.865,
-   0.6
   ],
   "p": null
  },
@@ -7608,6 +7615,13 @@
   "c": "#5d5354",
   "k": null,
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.wp6DmcQa41Lm4NOlQGsmdA&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.419
  },
  "https://www.bing.com/th?id=ONUT.xIVTwMTYf8aiPMNzVoJrGA&pid=News&w=480": {
   "w": 480,

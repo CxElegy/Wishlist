@@ -68,12 +68,12 @@
   "gelato pique": 9,
   "dota2": 11,
   "チェーンソーマン": 8,
-  "滑雪": 3,
+  "滑雪": 4,
   "ぐでたま": 2,
   "Vaundy": 2,
-  "哈利波特剧集": 3,
+  "哈利波特剧集": 4,
   "FROM": 1,
-  "あつ森": 1,
+  "あつ森": 2,
   "The Mandalorian": 1,
   "猫用品": 1,
   "周杰伦": 5,
@@ -380,6 +380,15 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "白馬五竜＆Hakuba47、白馬八方尾根が11月21日より天然雪で営業開始！",
+   "highlight": "11月21日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "ぐでたま": [
@@ -440,6 +449,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "When can you watch HBO’s new Harry Potter show?",
+   "highlight": "Christmas Day",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
