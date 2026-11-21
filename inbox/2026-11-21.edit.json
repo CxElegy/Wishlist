@@ -61,17 +61,18 @@
   "漫威电影": 44,
   "三星手机": 13,
   "绝区零": 10,
-  "ILLIT": 4,
-  "MMORPG 新作": 4,
-  "gelato pique": 4,
+  "ILLIT": 5,
+  "MMORPG 新作": 6,
+  "gelato pique": 6,
   "dota2": 11,
   "チェーンソーマン": 8,
   "滑雪": 3,
   "ぐでたま": 2,
-  "Vaundy": 1,
+  "Vaundy": 2,
   "哈利波特剧集": 3,
   "FROM": 1,
-  "あつ森": 1
+  "あつ森": 1,
+  "The Mandalorian": 1
  },
  "漫威电影": [
   {
@@ -250,6 +251,19 @@
     "date": "2026-12-01",
     "label": "ローンチ"
    }
+  },
+  {
+   "headline": "26日リリースを控える「テムパル ～アイテムの力～」事前ダウンロード開始",
+   "highlight": "26日リリース",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ],
+   "event": {
+    "date": "2026-11-26",
+    "label": "正式リリース"
+   }
   }
  ],
  "gelato pique": [
@@ -265,11 +279,12 @@
    ]
   },
   {
-   "headline": "Gelato Pique 2027 Lucky Bag When does Rakuten start? Amazon sales info and restock updates!",
-   "highlight": "2027 Lucky Bag",
+   "headline": "ジェラピケ福袋2027、予約できるのはどこ？公式の抽選に外れた人は楽天をチェック！！",
+   "highlight": "福袋2027",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    5,
     2
    ]
   }
@@ -368,7 +383,17 @@
    ]
   }
  ],
- "Vaundy": [],
+ "Vaundy": [
+  {
+   "headline": "『ROCK IN JAPAN FESTIVAL 2026』タイムテーブル発表 Vaundy、BUMP OF CHICKEN、Adoらがメインステージのトリに",
+   "highlight": "メインステージのトリ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "哈利波特剧集": [
   {
    "headline": "Who Will Play Voldemort in the Harry Potter Series?",
@@ -427,5 +452,6 @@
     "label": "セール開始"
    }
   }
- ]
+ ],
+ "The Mandalorian": []
 }

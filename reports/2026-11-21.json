@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "0952667416a6",
+ "edit_sig": "d175caa6371e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -102,22 +102,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 5,
-     "source": "GameGrin",
-     "title": "Free-to-Play Cosy MMORPG Eterspire Has Been Making Upgrades!",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNWWFYQWwxX2lnaFBzcVU3RlNxcENIX2NpRFJUR3U1LXp5VW1GTXllVjM2Qk9zZGV3amxiaHloVnlIR0h6QTBkQXFMX0trT29zeGU0MEpYMWhjTFVVcEp3cjN6emdaQkhEUEw5R1VkSGFoWkZJMG5IREY4YWZZVXlGeC1jbUE4WjBhYm1mUEJEek1wRFE3?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 6,
-     "source": "GameMeca",
-     "title": "26日リリースを控える「テムパル ～アイテムの力～」事前ダウンロード開始",
-     "url": "https://www.gamemeca.com/ja/view.php?gid=1783909"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -147,6 +131,20 @@
      "image": "https://static.invenglobal.com/upload/image/2026/11/20/i1795189386895637.jpeg",
      "image_via": "og:image",
      "url": "https://www.invenglobal.com/articles/28905/browser-mmorpg-you-me-level-up-adds-a-server-wide-boss-and-shared-hunting-ahead-of-december-1st-launch",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "event": {
+      "date": "2026-11-26",
+      "label": "正式リリース"
+     },
+     "headline": "26日リリースを控える「テムパル ～アイテムの力～」事前ダウンロード開始",
+     "highlight": "26日リリース",
+     "image": "https://cdn.gamemeca.com/gmdata/0001/783/909/gm745962_thumb_____.webp",
+     "image_via": "og:image",
+     "url": "https://www.gamemeca.com/ja/view.php?gid=1783909",
      "weight": "normal"
     }
    ],
@@ -371,15 +369,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-18",
-     "n": 5,
-     "source": "YouTube · ILLIT",
-     "title": "#체포하겠어 🚨 with @TREASURE #HARUTO #You_re_Under_Arrest #ILLIT #아일릿",
-     "url": "https://www.youtube.com/watch?v=m4OMymMNDpQ"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -472,22 +461,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 5,
-     "source": "note",
-     "title": "ジェラピケ福袋2027、予約できるのはどこ？公式の抽選に外れた人は楽天をチェック！！",
-     "url": "https://note.com/aoikenkou/n/n9390c0c1f6e8"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 6,
-     "source": "note",
-     "title": "Fluffy happiness for your feet at home. Gelato Pique's 3-border long socks",
-     "url": "https://note.com/chotto_dakeyo/n/n3666306c247c?hl=en"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -502,12 +475,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-18",
-     "headline": "Gelato Pique 2027 Lucky Bag When does Rakuten start? Amazon sales info and restock updates!",
-     "highlight": "2027 Lucky Bag",
-     "image": "https://assets.st-note.com/production/uploads/images/337642151/rectangle_large_type_2_46fe02d912eee0827f4bbeb6afe2accf.jpg?fit=bounds&quality=85&width=1280",
+     "date": "2026-11-19",
+     "headline": "ジェラピケ福袋2027、予約できるのはどこ？公式の抽選に外れた人は楽天をチェック！！",
+     "highlight": "福袋2027",
+     "image": "https://assets.st-note.com/production/uploads/images/338188168/rectangle_large_type_2_842aa002bb4a9b4b6847c183e6065bf2.png?fit=bounds&quality=85&width=1280",
      "image_via": "og:image",
-     "url": "https://note.com/tonkotsu99/n/nf7012aafbdcc?hl=en",
+     "url": "https://note.com/aoikenkou/n/n9390c0c1f6e8",
      "weight": "normal"
     }
    ],
@@ -618,33 +591,6 @@
    }
   },
   {
-   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
-   "facts": [],
-   "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 1,
-     "source": "Hollywood in Toto",
-     "title": "‘Mandalorian and Grogu’ Faces Even More Box Office Woes?",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9uclFjUTdCbzh2YlhpZXNZTmtaQjBScVFPR3JOckhTNmRoak5iMjZYSTlSdldVUTI2QTRWd0VfS2RTWWRnRU9yQ1JhRmlFSmtFaGppZlN2RlJ3WWxsbEdZNVhQTmhIYy1qMDcwdkIwNkFjaHRUeDdCdlBB?oc=5"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "ザ・マンダロリアン",
-   "theme": {
-    "accent": "#C9A66B",
-    "alt_accent": "#7A5A1F",
-    "alt_bg": "#ECEAE4",
-    "alt_fg": "#1B1D20",
-    "bg": "#14161A",
-    "fg": "#E8EAEC",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": null,
    "facts": [],
    "name": "あつ森",
@@ -693,17 +639,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-14",
-     "n": 2,
-     "source": "山陽新聞",
-     "title": "『ROCK IN JAPAN FESTIVAL 2026』タイムテーブル発表 Vaundy、BUMP OF CHICKEN、Adoらがメインステージのトリに",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB4VWN2bk1INnNIdXBzVFJNRnRiTWFJNHlTak9YQlVET2pUcHcwVmtFV041UjYtQ2ZDNWM5aC1wQXFfZUhJVGh6aFR0eDFSS3FfQVE?oc=5"
+     "headline": "『ROCK IN JAPAN FESTIVAL 2026』タイムテーブル発表 Vaundy、BUMP OF CHICKEN、Adoらがメインステージのトリに",
+     "highlight": "メインステージのトリ",
+     "image": "https://static.sanyonews.jp/image/article/size1/9/0/f/2/90f2fac13399752a17edd8c356ff1d3e_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1939627",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
@@ -902,6 +850,31 @@
     "fg": "#F5F7F2",
     "font": "sans",
     "split": false
+   }
+  },
+  {
+   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+   "facts": [],
+   "last": {
+    "date": "2026-11-20",
+    "headline": "Image Engine breaks down its 154 VFX shots in The Mandalorian & Grogu",
+    "url": "https://foro3d.com/en/2026/noviembre/image-engine-desglosa-sus-154-planos-de-vfx-en-the-mandalorian-grogu.html"
+   },
+   "name": "The Mandalorian",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "ザ・マンダロリアン",
+   "theme": {
+    "accent": "#C9A66B",
+    "alt_accent": "#7A5A1F",
+    "alt_bg": "#ECEAE4",
+    "alt_fg": "#1B1D20",
+    "bg": "#14161A",
+    "fg": "#E8EAEC",
+    "font": "serif",
+    "split": true
    }
   },
   {
