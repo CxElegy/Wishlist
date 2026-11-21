@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "8445edb0f086",
+ "edit_sig": "8a56a1f226df",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -40,33 +40,6 @@
     "alt_fg": "#1E1A18",
     "bg": "#211212",
     "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
-   "facts": [],
-   "name": "BLEACH Mirrors High",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 2,
-     "source": "AppMedia",
-     "title": "【ミラハイ】ストーリー攻略とおすすめ編成【ブリーチミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9PdkFORzVJdDBJSkx6aHR1eTlDbm1SWF9obl9GNHlfQ0hEYUZLMlNocW5pV1hhdVJNdW5YWW1YWTJRUmlBdEdlTm55cTFXeVU?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "死神 新作手游",
-   "theme": {
-    "accent": "#9A550E",
-    "alt_accent": "#EE9944",
-    "alt_bg": "#211A12",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7F0E9",
-    "fg": "#1E1A18",
     "font": "serif",
     "split": true
    }
@@ -1041,6 +1014,31 @@
     "bg": "#FBF4EA",
     "fg": "#3A2C24",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
+   "facts": [],
+   "last": {
+    "date": "2026-11-20",
+    "headline": "【ミラハイ】星3浦原喜助の評価と性能【BLEACHミラーズハイ】",
+    "url": "https://appmedia.jp/bleach-mh/80569894"
+   },
+   "name": "BLEACH Mirrors High",
+   "quiet": true,
+   "section": "游戏",
+   "status": "事前登录中 · 官方称 2026 年内上线，具体日期未定",
+   "stories": [],
+   "subtitle": "死神 新作手游",
+   "theme": {
+    "accent": "#9A550E",
+    "alt_accent": "#EE9944",
+    "alt_bg": "#211A12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F0E9",
+    "fg": "#1E1A18",
+    "font": "serif",
     "split": true
    }
   },
