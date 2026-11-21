@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-21T19:31:13+00:00",
+ "checked": "2026-11-21T19:35:56+00:00",
  "fired": {
-  "at": "2026-11-21T18:31:57+00:00",
+  "at": "2026-11-21T19:35:56+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -55,19 +55,19 @@
    "edit": 15
   },
   "2026-11-22": {
-   "edit": 1
+   "edit": 2
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-21T18:31:57+00:00",
+    "at": "2026-11-21T19:35:56+00:00",
     "attempts": 1,
     "day": "2026-11-22",
-    "prog": 8,
-    "resp": "cse_01W4x6f4phmYWb6TdbVyvEPx",
-    "sig": "218dad3597dc"
+    "prog": 101,
+    "resp": "",
+    "sig": "ecf8aafb7f1d"
    },
    "items": [
     "BLEACH Mirrors High",
@@ -87,11 +87,14 @@
    "need": true,
    "prog": 101,
    "prog_day": "2026-11-22",
-   "ripe": [],
-   "sig": "d488743aadd0",
+   "ripe": [
+    "The Mandalorian",
+    "あつ森"
+   ],
+   "sig": "ecf8aafb7f1d",
    "token_cap": 1000000,
    "tokens_today": 82940,
-   "why": "整理待ちの記事 99 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 99 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
