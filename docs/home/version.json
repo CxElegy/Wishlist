@@ -1,6 +1,6 @@
 {
  "admin": "6c449bf5341d",
- "admin-ai": "1e916586403e",
+ "admin-ai": "3a15b94b2ad8",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "1078ed65"
+   "45ed5a61"
   ]
  },
  "admin-boards": "53a02b367e49",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "39074f7a2402",
+ "admin-emblem": "5fe159499130",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f6821d70"
+   "c208a8a2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "2baaf65b857e",
+ "admin-now": "4179c76ef100",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "9424e06f"
+   "a13d843f"
   ]
  },
- "admin-system": "e27ada23c9f7",
+ "admin-system": "0d186312edc9",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "970fdd79"
+   "4c81556d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1ce4ccc7"
+   "6eae2ed8"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "3a0d5ccf"
   ]
  },
- "index": "d6ce688320c0",
+ "index": "a7f816f387bd",
  "index_marks": {
   "front": [
    "トップ",
-   "c52215e0"
+   "6b4ed817"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "412adbff"
+   "be3cdedb"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "8a22a53e"
+   "ccbe84c1"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "811dcec6"
+   "c1ce520b"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "7f26cd5f"
+   "2626de53"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "b6dc6ef0"
+   "f4895c3c"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "c11897ae"
+   "548601b7"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "c3a8214e"
+   "c32431d3"
   ],
   "w-f303ad09": [
    "绝区零",
    "e08a50aa"
   ]
  },
- "updated": "11.22 03:28",
+ "updated": "11.22 03:33",
  "wishlist": "5712cb2400c2"
 }
