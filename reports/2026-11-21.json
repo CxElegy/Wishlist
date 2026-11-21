@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "da87bb2269bd",
+ "edit_sig": "96a4667ba1a9",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -791,34 +791,8 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-21",
-     "n": 6,
-     "source": "壹蘋新聞網",
-     "title": "金曲歌后昔公開出櫃 西門町公然跟周杰倫愛徒搶女人！親下去",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNajMwSlBObjhOM3NqbW13SkF2SXBOZTVwUE1fSUEzUlh1NEhJc0F2Ul9ndVZxN1pvWkhmNmRyMG1KejljYzF2dU9tOHNwZlpadHlDMEpSRkwxX1NtczZqOWJPYUJtNTNwYV9rVUZTWG56bzdfZmptWGtEM1hXY0h1WVZ0Sm5BSGdXUlE?oc=5"
-    },
-    {
-     "date": "2026-11-21",
-     "n": 7,
-     "source": "手机新浪网",
-     "title": "#乘风# #浪姐# 不愧是周杰伦看中的人 陈梓潼一首原创歌曲炸翻舞台，那英激动到坐不下！ ​",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1pZ2pnZFFrUTFQN0FoQndWYndnNHZscXJwcTBlbXFRQWFTLS1UVG4teEc2OEMwLXJ2QjVCUzNESkJSWnpFWnNhY24yUzFKLWVsbUlVSGJmdDVWejF3M1RScUpVMHVQZWtwbWpuYVJJZjJzb0k?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-16",
-     "headline": "周杰伦武汉演唱会正式官宣！多场次最低票价580元备注“仅支持看大屏”引争议",
-     "highlight": "",
-     "image": "https://inews.gtimg.com/om_ls/OOQ6GIROEx9Vyf4olan7bhL1vyKfsvCSB4hKj924euOJ0AA_330330/0",
-     "image_via": "og:image",
-     "url": "https://news.qq.com/rain/a/20261116A0BM9N00",
-     "weight": "hero"
-    },
     {
      "blurb": "",
      "date": "2026-11-18",
@@ -1074,7 +1048,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "last": {
     "date": "2026-11-20",
@@ -1094,7 +1068,7 @@
     "alt_fg": "#F4EEE4",
     "bg": "#FBEFF4",
     "fg": "#1E1A18",
-    "font": "sans",
+    "font": "serif",
     "split": true
    }
   }
