@@ -1,14 +1,5 @@
 [
 {
-"at": "2026-11-21T00:21:36+00:00",
-"text": "Claude を起こした：AI 編集",
-"level": "ok",
-"results": {
-"edit": "Claude を起こした",
-"photos": "仕事なし（起こさない）"
-}
-},
-{
 "at": "2026-11-21T00:57:29+00:00",
 "text": "収集の控えの時計：最後の収集から 179 分（定時が抜けた）→ 収集を起こす",
 "level": "warn",
@@ -516,6 +507,15 @@
 "emblem": false,
 "edit": true,
 "photos": false
+}
+},
+{
+"at": "2026-11-21T23:21:52+00:00",
+"text": "Claude を起こした：AI 編集",
+"level": "ok",
+"results": {
+"edit": "Claude を起こした",
+"photos": "仕事なし（起こさない）"
 }
 }
 ]

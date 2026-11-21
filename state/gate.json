@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-11-21T23:18:22+00:00",
+ "changed": false,
+ "checked": "2026-11-21T23:21:50+00:00",
  "fired": {
-  "at": "2026-11-21T20:42:54+00:00",
+  "at": "2026-11-21T23:21:50+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -55,19 +55,19 @@
    "edit": 15
   },
   "2026-11-22": {
-   "edit": 3
+   "edit": 4
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-21T20:42:54+00:00",
+    "at": "2026-11-21T23:21:50+00:00",
     "attempts": 1,
     "day": "2026-11-22",
-    "prog": 111,
-    "resp": "cse_01W4x6f96qVBfE3f2ung7pBn",
-    "sig": "ea5079b8c232"
+    "prog": 158,
+    "resp": "",
+    "sig": "35db673f8044"
    },
    "items": [
     "BLEACH Mirrors High",
