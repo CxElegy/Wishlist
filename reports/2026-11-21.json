@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "11929dedc016",
+ "edit_sig": "e5558d53acc5",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -40,33 +40,6 @@
     "alt_fg": "#1E1A18",
     "bg": "#211212",
     "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
-   "facts": [],
-   "name": "BLEACH Mirrors High",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】ステータス一覧｜ソート機能付き【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5rU1BxV2E3UkF6c1pKTFRTSXVvTThvR2QyNE4zTU1nRDdhRjV2NmJrRnF1dUpNX0F6R24zaWhjVHE2cWtiOXVQdGxtMUJQaDQ?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "死神 新作手游",
-   "theme": {
-    "accent": "#9A550E",
-    "alt_accent": "#EE9944",
-    "alt_bg": "#211A12",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7F0E9",
-    "fg": "#1E1A18",
     "font": "serif",
     "split": true
    }
@@ -144,22 +117,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 7,
-     "source": "게임톡 on MSN",
-     "title": "라그나로크 최초 오픈월드 MMORPG 국내 유저에게 선보인다",
-     "url": "https://www.msn.com/ko-kr/gaming/mmo/%EB%9D%BC%EA%B7%B8%EB%82%98%EB%A1%9C%ED%81%AC-%EC%B5%9C%EC%B4%88-%EC%98%A4%ED%94%88%EC%9B%94%EB%93%9C-mmorpg-%EA%B5%AD%EB%82%B4-%EC%9C%A0%EC%A0%80%EC%97%90%EA%B2%8C-%EC%84%A0%EB%B3%B4%EC%9D%B8%EB%8B%A4/ar-AA2hTipw"
-    },
-    {
-     "date": "2026-11-21",
-     "n": 8,
-     "source": "Seoul Economic Daily",
-     "title": "Nexon Opens Preloads for MMORPG Based on Hit Webtoon 'Overgeared'",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTk5YSXUyeXhzVEt2NTZLRXJkbjRkWFlMSVVZeHdBQndtNHY0MUJRWUlQc1RkLXRqY2J6czFfVlZCd0tWZFpIY0RPaFdwaVN0Z2xsY1FGRndYajZORDhFeHhmdDZrZmVBZmhlalBWLUIwS2ViZU1ZUGdmdWZuTkFXeXRzTTRORVNDcnc0dmdickFRc3hnUnNGM21lVQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -822,15 +779,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 12,
-     "source": "手机新浪网",
-     "title": "鲷哥新版本战绩可以啊 #dota2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBYWllPTHMzSVQtSFFzcFF2cGpGY2twWlBYLVFKNTE1N0sxUjN0b2REWWt1N1ZfV0pSTkJjSDN2d2xtWndXSVh2MUFyX0lZZFR3VllmcEpiTzhFU0hLUGZET0gyNA?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -908,30 +856,28 @@
    }
   },
   {
-   "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
+   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
-   "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 1,
-     "source": "note",
-     "title": "Ce先生と不思議旅 ジャパンオープンテニス観戦旅その2",
-     "url": "https://note.com/reiryuu_33175/n/n21c3d3d5c432"
-    }
-   ],
-   "section": "运动",
+   "last": {
+    "date": "2026-11-20",
+    "headline": "【ミラハイ】星3浦原喜助の評価と性能【BLEACHミラーズハイ】",
+    "url": "https://appmedia.jp/bleach-mh/80569894"
+   },
+   "name": "BLEACH Mirrors High",
+   "quiet": true,
+   "section": "游戏",
+   "status": "事前登录中 · 官方称 2026 年内上线，具体日期未定",
    "stories": [],
-   "subtitle": "ATP・WTA ツアー 日本開催",
+   "subtitle": "死神 新作手游",
    "theme": {
-    "accent": "#D7F03C",
-    "alt_accent": "#2E7D32",
-    "alt_bg": "#F5F7F2",
-    "alt_fg": "#1F4E79",
-    "bg": "#1F4E79",
-    "fg": "#F5F7F2",
-    "font": "sans",
-    "split": false
+    "accent": "#9A550E",
+    "alt_accent": "#EE9944",
+    "alt_bg": "#211A12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F0E9",
+    "fg": "#1E1A18",
+    "font": "serif",
+    "split": true
    }
   },
   {
@@ -957,6 +903,31 @@
     "fg": "#1E3932",
     "font": "serif",
     "split": true
+   }
+  },
+  {
+   "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
+   "facts": [],
+   "last": {
+    "date": "2026-11-20",
+    "headline": "錦織圭 栄誉賞W受賞に感謝「地元に恩返し…」 “しまねっこ”と2ショット投稿＜男子テニス＞",
+    "url": "https://news.yahoo.co.jp/articles/0101328ded84b4839db6802094fa9d0abf64376d"
+   },
+   "name": "日本顶级网球赛事",
+   "quiet": true,
+   "section": "运动",
+   "status": "大阪 WTA250 10/17–25（周末：10/17–18 资格赛、10/24 半决赛、10/25 决赛）· 东京东丽 PPO 10/24–11/1",
+   "stories": [],
+   "subtitle": "ATP・WTA ツアー 日本開催",
+   "theme": {
+    "accent": "#D7F03C",
+    "alt_accent": "#2E7D32",
+    "alt_bg": "#F5F7F2",
+    "alt_fg": "#1F4E79",
+    "bg": "#1F4E79",
+    "fg": "#F5F7F2",
+    "font": "sans",
+    "split": false
    }
   },
   {

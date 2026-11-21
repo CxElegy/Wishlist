@@ -71,9 +71,9 @@
   "三星手机": 19,
   "绝区零": 15,
   "ILLIT": 16,
-  "MMORPG 新作": 6,
+  "MMORPG 新作": 8,
   "gelato pique": 9,
-  "dota2": 11,
+  "dota2": 12,
   "チェーンソーマン": 8,
   "滑雪": 4,
   "ぐでたま": 2,
@@ -84,7 +84,9 @@
   "The Mandalorian": 1,
   "猫用品": 1,
   "周杰伦": 5,
-  "Astrae Oratio": 2
+  "Astrae Oratio": 2,
+  "BLEACH Mirrors High": 1,
+  "日本顶级网球赛事": 1
  },
  "漫威电影": [
   {
@@ -296,7 +298,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    8
    ],
    "event": {
     "date": "2026-11-26",
@@ -566,5 +569,7 @@
     2
    ]
   }
- ]
+ ],
+ "BLEACH Mirrors High": [],
+ "日本顶级网球赛事": []
 }

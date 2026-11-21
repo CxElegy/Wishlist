@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-19T23:53:38+00:00",
-"text": "2026-11-20 第 4 バッチを出刊：FROM（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 3,998・キャッシュ読み 26.2万・出力 1,761",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.54,
-"mem_total": 16869126144,
-"mem_free": 15748554752,
-"disk_used": 10484883456,
-"disk_free": 31184474112,
-"disk_total": 41669357568,
-"peak": 596017152
-},
-"batch": 4,
-"boards": [
-"FROM"
-],
-"stories": 2,
-"left": 0,
-"edited": 19,
-"run": 1795131043.402184,
-"tok": {
-"in": 5,
-"cw": 3993,
-"cr": 261790,
-"out": 1761,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 267549,
-"secs": 1375,
-"run_tok": {
-"in": 41,
-"cw": 61331,
-"cr": 1606014,
-"out": 8563,
-"calls": 22,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-20T01:27:04+00:00",
 "text": "2026-11-20 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT、MMORPG 新作 ほか 14（20 版面・44 本・今日の整理待ちは全部終わり） · token 新規入力 4.0万・キャッシュ読み 46.4万・出力 1,493",
 "level": "ok",
@@ -2098,6 +2057,50 @@
 "cr": 570913,
 "out": 2228,
 "calls": 9,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-21T05:41:00+00:00",
+"text": "2026-11-21 第 1 バッチを出刊：BLEACH Mirrors High、MMORPG 新作、dota2、日本顶级网球赛事（4 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4.7万・キャッシュ読み 130.0万・出力 3,879",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.38,
+"mem_total": 16869113856,
+"mem_free": 15915687936,
+"disk_used": 10465681408,
+"disk_free": 31203676160,
+"disk_total": 41669357568,
+"peak": 363872256
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High",
+"MMORPG 新作",
+"dota2",
+"日本顶级网球赛事"
+],
+"stories": 5,
+"left": 0,
+"edited": 21,
+"run": 1795239389.3022661,
+"tok": {
+"in": 36,
+"cw": 46714,
+"cr": 1300263,
+"out": 3879,
+"calls": 19,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1350892,
+"secs": 271,
+"run_tok": {
+"in": 36,
+"cw": 46714,
+"cr": 1300263,
+"out": 3879,
+"calls": 19,
 "model": "claude-sonnet-5-5"
 }
 }
