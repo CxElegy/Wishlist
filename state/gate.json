@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-21T16:37:05+00:00",
+ "checked": "2026-11-21T18:18:12+00:00",
  "fired": {
   "at": "2026-11-21T15:22:42+00:00",
   "results": {
@@ -69,12 +69,12 @@
    "items": [
     "lib:F1",
     "lib:Nintendo Switch 2",
+    "lib:SPY×FAMILY",
     "lib:iPhone",
+    "lib:ゼルダの伝説",
     "lib:ユニクロ",
-    "lib:宇宙・ロケット",
-    "lib:温泉",
-    "lib:無印良品",
-    "lib:観葉植物"
+    "lib:呪術廻戦",
+    "lib:鬼滅の刃"
    ],
    "last_batch": "2026-11-21T15:35:54+00:00",
    "last_error": {},
@@ -82,7 +82,7 @@
    "prog": 8,
    "prog_day": "2026-11-22",
    "ripe": [],
-   "sig": "33dadbe4b763",
+   "sig": "30bc3c585ca6",
    "token_cap": 1000000,
    "tokens_today": 0,
    "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
