@@ -19,7 +19,35 @@ html{background:var(--bg)}
 html,body{margin:0;color:var(--fg);font:400 12.5px/1.6 var(--mono);-webkit-font-smoothing:antialiased}
 a{color:inherit}
 button,input,select{font:inherit;color:inherit}
-.win{max-width:1180px;margin:18px auto;border:1px solid var(--line);background:var(--win)}
+.win{max-width:1180px;margin:18px auto;border:1px solid var(--line);background:color-mix(in srgb,var(--win) 90%,transparent);position:relative;
+ box-shadow:0 0 0 1px rgba(63,209,124,.06),0 30px 80px -20px rgba(0,0,0,.8),0 0 60px -10px rgba(63,209,124,.12)}
+/* CRT の走査線（止まった模様・重ねるだけ） */
+.win::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:40;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.028) 0 1px,transparent 1px 3px)}
+/* 波：いま動いているかが一目で分かる心拍の線（横に流れるのは transform だけ・振れ幅は scaleY） */
+.wave{position:relative;height:20px;overflow:hidden;color:var(--c,var(--harness));margin:2px 0 1px;flex:none}
+.wave .amp{position:absolute;inset:0;transform:scaleY(var(--amp,1));transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.wave svg{position:absolute;left:0;top:0;width:200%;height:100%;overflow:visible;animation:wave var(--spd,1.2s) linear infinite;will-change:transform}
+.wave svg.b{animation-duration:calc(var(--spd,1.2s)*1.8);opacity:.45}
+.wave path{fill:none;stroke:currentColor;stroke-width:1.7;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.wave svg.a path.g{stroke-width:5;opacity:.18}
+@keyframes wave{to{transform:translateX(-50%)}}
+.wave.run{--amp:1;--spd:1.1s}
+.wave.ask{--amp:.7;--spd:2.2s;color:var(--lead)}
+.wave.ask .amp,.wave.dead .amp{animation:wpulse 1.3s ease-in-out infinite}
+@keyframes wpulse{50%{opacity:.3}}
+.wave.calm{--amp:.3;--spd:4.5s;color:var(--haiku)}
+.wave.flat{--amp:.03}.wave.flat svg{animation:none}
+.wave.dead{color:var(--red)}
+.wave.idle{color:var(--dim);opacity:.55}
+.ag .wave{margin-top:6px}
+.ag .agb{display:flex;flex-direction:column;gap:2px;flex:1}
+.bar .live .wave.mini{position:relative;width:46px;height:12px;margin:0 2px;display:inline-block;color:#ff5c57}
+.bar .live .wave .amp{color:inherit;left:0;right:0}
+.bar .live em{font-style:normal}
+/* LIVE の札 */
+.bar .live{position:relative;left:auto;right:auto;text-align:left;pointer-events:none;margin-left:auto;color:#ff5c57;font-size:11px;font-weight:700;letter-spacing:.12em;display:flex;align-items:center;gap:6px}
+.bar .live i{width:8px!important;height:8px!important;background:#ff5c57!important;box-shadow:0 0 8px #ff5c57;animation:pulse 1.2s ease-in-out infinite}
+.bar .live+button{margin-left:10px}
 .bar{height:32px;display:flex;align-items:center;gap:7px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--bar);position:relative}
 .bar i{width:11px;height:11px;border-radius:50%;display:block}
 .bar i:nth-child(1){background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
@@ -27,7 +55,23 @@ button,input,select{font:inherit;color:inherit}
 .bar button{margin-left:auto;background:none;border:1px solid var(--line);color:var(--dim);font-size:11px;padding:1px 8px;cursor:pointer;position:relative}
 .body{padding:16px 22px 14px}
 .title{text-align:center;font-weight:700;letter-spacing:.06em;padding:10px 0 12px;border-bottom:1px solid var(--line)}
-.title b{margin:0 9px;white-space:nowrap}
+.title b{margin:0 9px;white-space:nowrap;text-shadow:0 0 12px color-mix(in srgb,currentColor 55%,transparent)}
+/* GlitchText：AGENTBOARD がときどき赤と青にずれる（clip-path の小さな字だけ） */
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;pointer-events:none;text-shadow:none}
+.glitch::before{color:#ff2bd6;transform:translate(-2px,0);clip-path:inset(0 0 100% 0);animation:gl1 4.6s steps(1) infinite}
+.glitch::after{color:#28e6ff;transform:translate(2px,0);clip-path:inset(100% 0 0 0);animation:gl2 4.6s steps(1) infinite}
+@keyframes gl1{0%,84%,100%{clip-path:inset(0 0 100% 0)}85%{clip-path:inset(10% 0 60% 0)}87%{clip-path:inset(42% 0 30% 0)}89%{clip-path:inset(70% 0 6% 0)}91%{clip-path:inset(18% 0 55% 0)}}
+@keyframes gl2{0%,84%,100%{clip-path:inset(100% 0 0 0)}86%{clip-path:inset(55% 0 20% 0)}88%{clip-path:inset(4% 0 76% 0)}90%{clip-path:inset(34% 0 40% 0)}}
+/* SplitFlap：いまの数を空港の発車板のように（めくれるのは transform だけ） */
+.flaps{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;padding:4px 0 14px}
+.flaps .k{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--dim);letter-spacing:.08em}
+.flaps .v{display:flex;gap:2px;perspective:300px}
+.fl{display:inline-block;min-width:17px;height:24px;line-height:24px;text-align:center;font:700 15px var(--mono);color:var(--white);
+ background:linear-gradient(#1c222c 0 49%,#0b0e13 49% 51%,#161b23 51%);border:1px solid #262d38;border-radius:2px;box-shadow:inset 0 -1px 0 #000}
+.fl.flip{animation:flip .42s cubic-bezier(.3,1.4,.5,1) both;transform-origin:50% 50%}
+@keyframes flip{from{transform:rotateX(-100deg);filter:brightness(1.8)}to{transform:none;filter:none}}
+.flaps .hot .fl{color:var(--harness);text-shadow:0 0 8px color-mix(in srgb,var(--harness) 70%,transparent)}
 .legend{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 16px;padding:8px 2px 12px;color:var(--fg)}
 .legend span::before{content:"";display:inline-block;width:8px;height:8px;margin-right:7px;background:currentColor;vertical-align:0}
 .legend em{font-style:normal;color:var(--fg)}
@@ -99,7 +143,14 @@ fieldset.now legend .mix{font-weight:400;margin-left:6px}
 .conn .on{color:var(--harness)}.conn .off{color:var(--red)}.conn .miss{color:var(--lead)}
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .card{border:1px solid var(--line);padding:10px 12px 9px;display:flex;flex-direction:column;gap:5px;cursor:pointer;min-width:0;position:relative;overflow:hidden;isolation:isolate;
- animation:cardIn .5s cubic-bezier(.22,1,.36,1) both}
+ animation:cardIn .5s cubic-bezier(.22,1,.36,1) backwards;
+ transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out,box-shadow .25s}
+.card:hover{box-shadow:0 18px 40px -18px color-mix(in srgb,var(--c,#fff) 55%,transparent)}
+.card .mdl b{text-shadow:0 0 14px color-mix(in srgb,currentColor 60%,transparent)}
+/* 更新の波紋：札の中身が変わったら状態の点から輪が広がる */
+.card .ring{position:absolute;left:12px;top:14px;width:12px;height:12px;border-radius:50%;border:2px solid var(--c,#fff);opacity:0;pointer-events:none;z-index:3}
+.card.ping .ring{animation:ring 1s ease-out}
+@keyframes ring{from{transform:scale(.6);opacity:.9}to{transform:scale(12);opacity:0}}
 @keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 /* SpotlightCard：指の先に淡い光（--mx/--my は JS が入れる） */
 .card .spot{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .3s;
@@ -120,7 +171,8 @@ fieldset.now legend .mix{font-weight:400;margin-left:6px}
 .caret::after{content:"▌";margin-left:1px;animation:blink 1s steps(1) infinite;color:var(--c,var(--white))}
 @keyframes blink{50%{opacity:0}}
 /* 背景（LetterGlitch）と火花（ClickSpark）の画布 */
-#bgfx{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55}
+#bgfx{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;width:100vw;height:100vh}
+#bgfx.gl{opacity:1;image-rendering:pixelated}
 #sparkfx{position:fixed;inset:0;z-index:50;pointer-events:none}
 .b-lead{--c:var(--lead)}.b-haiku{--c:var(--haiku)}.b-sonnet{--c:var(--sonnet)}.b-opus{--c:var(--opus)}.b-other{--c:var(--dim)}
 .card .hd{display:flex;align-items:center;gap:8px;font-size:12px}
@@ -165,7 +217,7 @@ fieldset.now legend .mix{font-weight:400;margin-left:6px}
 .card.st-idle,.card.st-off{opacity:.62}
 .card.st-idle .stt,.card.st-off .stt{color:var(--dim)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.beams .glow,.card .bbeam,.log .r.in,.card.st-working .stt i,.card,.card.st-working::before,.card.st-working::after,.shine,.caret::after{animation:none}
+@media (prefers-reduced-motion:reduce){.wave svg,.wave .amp,.glitch::before,.glitch::after,.fl.flip,.card.ping .ring,.live i,.beams .glow,.card .bbeam,.log .r.in,.card.st-working .stt i,.card,.card.st-working::before,.card.st-working::after,.shine,.caret::after{animation:none}
  .card.st-working::before,.card.st-working::after{display:none}.spark i{transition:none}.shine{-webkit-text-fill-color:var(--harness)}}
 @media (max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* 下の欄 */
@@ -230,7 +282,7 @@ legend{padding:0 8px;color:var(--fg)}
 <body>
 <canvas id="bgfx" aria-hidden="true"></canvas><canvas id="sparkfx" aria-hidden="true"></canvas>
 <div class="win">
- <div class="bar"><i></i><i></i><i></i><span id="bar">~/agentboard · zsh</span><button id="logout" type="button" hidden>令牌を外す</button></div>
+ <div class="bar"><i></i><i></i><i></i><span id="bar">~/agentboard · zsh</span><span class="live" id="livebadge" hidden><i></i><b class="wave mini flat dead" id="livewave"></b><em id="livetxt">LIVE</em></span><button id="logout" type="button" hidden>令牌を外す</button></div>
 
  <div id="setup" hidden>
   <h2>$ agentboard login</h2>
@@ -245,8 +297,9 @@ legend{padding:0 8px;color:var(--fg)}
  </div>
 
  <div class="body" id="app" hidden>
-  <div class="title"><b class="c-white">AGENTBOARD</b><b class="c-sonnet">SONNET BUILDS</b><b class="c-haiku">HAIKU SWARMS</b><b class="c-opus">OPUS ADVISES</b></div>
+  <div class="title"><b class="c-white glitch" data-text="AGENTBOARD">AGENTBOARD</b><b class="c-sonnet">SONNET BUILDS</b><b class="c-haiku">HAIKU SWARMS</b><b class="c-opus">OPUS ADVISES</b></div>
   <div class="legend"><span class="c-lead"><em>brain · lead</em></span><span class="c-haiku"><em>haiku · swarm</em></span><span class="c-sonnet"><em>sonnet · build</em></span><span class="c-harness"><em>harness · routing</em></span><span class="c-opus"><em>opus · advisor</em></span></div>
+  <div class="flaps" id="flaps"></div>
   <fieldset class="now"><legend>now · claude <span id="nowmix" class="mix"></span> <span id="nowage" class="c-dim"></span></legend><div class="conn" id="conn"></div><div id="now"></div></fieldset>
   <div class="grid">
    <aside class="adv" id="adv"></aside>
@@ -384,17 +437,43 @@ function countTo(el,to,fmt){ // CountUp：数が変わったら数え上げる
   (function step(now){if(el._cnt!==id)return;var p=Math.min(1,(now-t0)/700),q=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(from+(to-from)*q));if(p<1)requestAnimationFrame(step)})(t0);
 }
 function setHTML(el,html){if(el._h!==html){el._h=html;el.innerHTML=html}}
+// 波の SVG（周期が 200 を割り切る正弦波を 2 本：translateX(-50%) でつなぎ目なく流れる）
+function sinePath(per,amp,ph){var d='';for(var x=0;x<=400;x+=4){d+=(x?'L':'M')+x+','+(10+amp*Math.sin(x/per*2*Math.PI+ph)).toFixed(2)}return d}
+var WAVE_SVG=(function(){var a=sinePath(100,8,0),b=sinePath(50,5,1.3);
+  return '<span class="amp"><svg class="a" viewBox="0 0 400 20" preserveAspectRatio="none" aria-hidden="true"><path class="g" d="'+a+'"/><path d="'+a+'"/></svg>'+
+         '<svg class="b" viewBox="0 0 400 20" preserveAspectRatio="none" aria-hidden="true"><path d="'+b+'"/></svg></span>'})();
+function waveMode(state){return {working:'run',running:'run',ask:'ask',yours:'calm',quiet:'flat dead',stuck:'flat dead',failed:'flat dead'}[state]||'flat idle'}
+function setWave(el,mode){var c='wave '+(el.classList.contains('mini')?'mini ':'')+mode;if(!el.firstChild)el.innerHTML=WAVE_SVG;if(el.className!==c)el.className=c}
 var CARDS={};
 function makeCard(key){
   var e=document.createElement('div');e.dataset.id=key;
-  e.innerHTML='<span class="bbeam"></span><span class="cover"></span><span class="spot"></span><div class="hd"><span class="stt"></span><span class="tg"></span><span class="r"></span></div>'+
-    '<div class="ttl"><span class="tx"></span><small></small></div><div class="mdl"><b></b><span class="role"></span></div>'+
+  e.innerHTML='<span class="bbeam"></span><span class="cover"></span><span class="spot"></span><span class="ring"></span><div class="hd"><span class="stt"></span><span class="tg"></span><span class="r"></span></div>'+
+    '<div class="ttl"><span class="tx"></span><small></small></div><div class="mdl"><b></b><span class="role"></span></div><div class="wave"></div>'+
     '<div class="spark">'+new Array(31).join('<i class="z"></i>')+'</div><div class="sx"><span>30m</span><span>今</span></div>'+
     '<div class="you"></div><div class="now"></div><div class="chips"></div>'+
     '<div class="ft"><span class="fturn"></span><span><b class="ftools">0</b> tools</span><span class="ftok"><b>0</b> tok</span><span class="fsub c-sonnet"></span></div><div class="tl" hidden></div>';
   e.onclick=function(ev){if(ev.target.closest('a'))return;OPEN[key]=!OPEN[key];e.querySelector('.tl').hidden=!OPEN[key]};
-  e.onpointermove=function(ev){var r=e.getBoundingClientRect();e.style.setProperty('--mx',(ev.clientX-r.left)+'px');e.style.setProperty('--my',(ev.clientY-r.top)+'px')};
+  e.onpointermove=function(ev){var r=e.getBoundingClientRect(),x=ev.clientX-r.left,y=ev.clientY-r.top;e.style.setProperty('--mx',x+'px');e.style.setProperty('--my',y+'px');
+    if(!RM&&ev.pointerType==='mouse'){e.style.setProperty('--ry',((x/r.width-.5)*7).toFixed(2)+'deg');e.style.setProperty('--rx',((.5-y/r.height)*7).toFixed(2)+'deg')}};   // TiltedCard
+  e.onpointerleave=function(){e.style.setProperty('--rx','0deg');e.style.setProperty('--ry','0deg')};
   return {el:e,first:true};
+}
+// SplitFlap（React Bits の SplitFlapText の考え方）：数が変わった字だけめくれる
+function flapSet(el,text){
+  text=String(text);var kids=el.children;
+  while(kids.length<text.length){var s=document.createElement('span');s.className='fl';s.textContent=' ';el.appendChild(s)}
+  while(kids.length>text.length)el.removeChild(el.lastChild);
+  for(var i=0;i<text.length;i++){var f=kids[i];if(f.textContent!==text[i]){f.textContent=text[i];if(!RM&&el._init){f.classList.remove('flip');void f.offsetWidth;f.classList.add('flip')}}}
+  el._init=true;
+}
+function flaps(M,ss){
+  var box=$('flaps');if(!box._made){box._made=true;box.innerHTML=[['n','会話'],['w','作業中'],['a','係'],['t','30分の道具'],['k','token'],['h','機械']].map(function(x){return '<span class="k" data-k="'+x[0]+'">'+x[1]+' <span class="v"></span></span>'}).join('')}
+  var on=ss.filter(function(s){return s.on}), working=on.filter(function(s){return s.state==='working'}).length;
+  var agents=M.agents.filter(function(a){return a.status==='running'}).length;
+  var tools=0,tok=0;on.forEach(function(s){(s.spark||[]).forEach(function(v){tools+=v});tok+=s.turn_tok||0});
+  var hosts=M.hosts.filter(function(h){return h.on}).length+'/'+Math.max(1,M.hosts.length);
+  var vals={n:String(on.length).padStart(2,'0'),w:String(working).padStart(2,'0'),a:String(agents).padStart(2,'0'),t:String(tools).padStart(3,'0'),k:k(tok).padStart(4,' '),h:hosts};
+  Object.keys(vals).forEach(function(key){var kEl=box.querySelector('[data-k="'+key+'"]');kEl.classList.toggle('hot',key==='w'&&working>0);flapSet(kEl.querySelector('.v'),vals[key])});
 }
 function renderConn(M,now){
   // つながっている機械：届いている＝●、6 分 来ない＝○、PC がまだ一度も来ていない＝やり方
@@ -408,6 +487,7 @@ function renderNow(M,now){
   var box=$('now'), rank={working:0,ask:1,quiet:2,yours:3,idle:4};
   var ss=M.sessions.slice().sort(function(a,b){var ra=a.on?(rank[a.state]||0):5, rb=b.on?(rank[b.state]||0):5;return (ra-rb)||(ts(b.t1)-ts(a.t1))});
   var mix={};ss.forEach(function(s){var f=famc(s.fam);mix[f]=(mix[f]||0)+1});
+  flaps(M,ss);
   setHTML($('nowmix'),ss.length?'· '+ss.length+' 会話 '+['lead','opus','sonnet','haiku','other'].filter(function(f){return mix[f]}).map(function(f){return '<span class="c-'+f+'">'+({lead:'Fable',opus:'Opus',sonnet:'Sonnet',haiku:'Haiku',other:'他'}[f])+' '+mix[f]+'</span>'}).join(' '):'');
   var grid=box.querySelector('.cards');
   if(!ss.length){CARDS={};setHTML(box,'<div class="c-dim">まだ会話が届いていません（PC とクラウドの集め係が動くと、ここに会話ごとの札が出ます）</div>');return}
@@ -426,12 +506,14 @@ function renderNow(M,now){
     setHTML(e.querySelector('.ttl small'),esc(s.project||''));
     var mb=e.querySelector('.mdl b');mb.className='c-'+f;setHTML(mb,esc(String(s.model||'?').toUpperCase()));
     setHTML(e.querySelector('.mdl .role'),esc(ROLE[f]||''));
+    setWave(e.querySelector('.wave'),s.on?waveMode(s.state):'flat idle');
     var sp=e.querySelector('.spark');sp.className='spark c-'+f;var arr=s.spark||[],mx=Math.max.apply(null,[1].concat(arr));
     Array.prototype.forEach.call(sp.children,function(b,i){var v=arr[i]||0;b.className=v?'':'z';b.style.setProperty('--v',v?Math.max(.12,v/mx).toFixed(3):'.04')});
     var you=e.querySelector('.you');setHTML(you,s.prompt?'› '+esc(s.prompt):'');
     var act=(s.state==='working'||s.state==='quiet'||s.state==='ask')&&s.action, nw=e.querySelector('.now'), line=act?'▸ '+s.action:(s.said?'✓ '+s.said:'');
     nw.classList.toggle('said',!act);
-    if(c.line!==line){var was=c.line;c.line=line;if(act&&was!==undefined)typeText(nw,line);else{nw.textContent=line;nw.classList.remove('caret')}}
+    if(c.line!==line){var was=c.line;c.line=line;if(act&&was!==undefined)typeText(nw,line);else{nw.textContent=line;nw.classList.remove('caret')}
+      if(was!==undefined&&!RM){e.classList.remove('ping');void e.offsetWidth;e.classList.add('ping')}}
     var subs=M.agents.filter(function(a){return a.sid===s.id&&a.tag===s.tag&&(a.status==='running'||a.status==='stuck')});
     setHTML(e.querySelector('.chips'),subs.map(function(a){var af=famc(a.fam);return '<span class="chip c-'+af+(a.status==='stuck'?' stuck':'')+'" title="'+esc(a.action||'')+'">'+esc(a.model||'')+' · '+esc(a.label)+'</span>'}).join(''));
     setHTML(e.querySelector('.fturn'),s.turn_t0?'この回 <b>'+dur((now-ts(s.turn_t0))/60e3)+'</b>':'');
@@ -477,8 +559,41 @@ function beams(){
       for(var i=0;i<8;i++){var a=i*Math.PI/4,r1=6+22*e,r2=r1+8*(1-p);ctx.beginPath();ctx.moveTo(b.x+Math.cos(a)*r1,b.y+Math.sin(a)*r1);ctx.lineTo(b.x+Math.cos(a)*r2,b.y+Math.sin(a)*r2);ctx.stroke()}return true});
     ctx.globalAlpha=1;raf=bursts.length?requestAnimationFrame(draw):0}
 })();
-// ---- LetterGlitch：窓の外に、ゆっくり入れ替わる字の場（PC の幅だけ・隠れている間は止める） ----
-(function(){var cv=$('bgfx');if(!cv||innerWidth<761){cv&&(cv.hidden=true);return}
+// ---- FaultyTerminal（React Bits）の考え方：古い CRT の端末に数字が流れる背景。WebGL2 で、半分の解像度・30fps・隠れたら止める・指に寄って明るくなる ----
+var BG_GL=(function(){var cv=$('bgfx');if(!cv||innerWidth<761)return false;
+  var gl=cv.getContext('webgl2',{antialias:false,alpha:false,powerPreference:'low-power'});if(!gl)return false;
+  var FONT=[[14,25,21,19,14],[4,12,4,4,14],[30,1,14,16,31],[30,1,14,1,30],[18,18,31,2,2],[31,16,30,1,30],[14,16,30,17,14],[31,1,2,4,4],[14,17,14,17,14],[14,17,15,1,14],[0,4,14,4,0],[0,0,14,0,0],[8,4,2,4,8],[1,2,4,8,16],[0,21,14,21,0],[0,31,0,31,0],[0,0,0,0,31]];
+  var bits=FONT.map(function(r){var v=0;for(var y=0;y<5;y++)for(var x=0;x<5;x++)if(r[y]&(16>>x))v+=Math.pow(2,y*5+x);return v+'u'}).join(',');
+  var VS='#version 300 es\nvoid main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));gl_Position=vec4(p*2.0-1.0,0.0,1.0);}';
+  var FS='#version 300 es\nprecision highp float;precision highp int;uniform float t;uniform vec2 res;uniform vec2 mo;uniform float cs;out vec4 o;'+
+   'const uint F['+FONT.length+']=uint['+FONT.length+']('+bits+');'+
+   'float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}'+
+   'float n(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}'+
+   'float fb(vec2 p){float v=0.0,a=0.5;for(int i=0;i<4;i++){v+=a*n(p);p=mat2(1.6,1.2,-1.2,1.6)*p;a*=0.5;}return v;}'+
+   'void main(){vec2 fc=gl_FragCoord.xy;vec2 c=floor(fc/cs),ic=fract(fc/cs);'+
+   'float q=fb(c*0.06+vec2(t*0.035,-t*0.02));float r=fb(c*0.09+vec2(q*2.0,t*0.03));float I=smoothstep(0.42,0.78,r);'+
+   'float md=distance(c*cs,mo);I+=exp(-md/(cs*14.0))*0.9;'+
+   'float g=floor(h(c+floor(t*0.8+h(c*1.7)*20.0))*'+FONT.length+'.0);uint b=F[int(g)];'+
+   'ivec2 px=ivec2(floor(ic*7.0))-ivec2(1);float on=0.0;if(px.x>=0&&px.x<5&&px.y>=0&&px.y<5){int k=(4-px.y)*5+px.x;on=float((b>>uint(k))&1u);}'+
+   'float scan=0.82+0.18*sin(fc.y*3.14159);float fl=0.94+0.06*sin(t*7.0+c.y*0.3);vec2 uv=fc/res;float vg=smoothstep(1.15,0.25,length((uv-0.5)*vec2(1.2,1.0))*1.35);'+
+   'vec3 tint=mix(vec3(0.247,0.82,0.486),vec3(0.66,0.55,1.0),step(0.985,h(c+floor(t*0.5))));'+
+   'vec3 col=vec3(0.027,0.035,0.05)+tint*on*I*scan*fl*vg*0.55;o=vec4(col,1.0);}';
+  function sh(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(s));return null}return s}
+  var vs=sh(gl.VERTEX_SHADER,VS),fs=sh(gl.FRAGMENT_SHADER,FS);if(!vs||!fs)return false;
+  var pg=gl.createProgram();gl.attachShader(pg,vs);gl.attachShader(pg,fs);gl.linkProgram(pg);if(!gl.getProgramParameter(pg,gl.LINK_STATUS))return false;
+  gl.useProgram(pg);gl.bindVertexArray(gl.createVertexArray());
+  var U={t:gl.getUniformLocation(pg,'t'),res:gl.getUniformLocation(pg,'res'),mo:gl.getUniformLocation(pg,'mo'),cs:gl.getUniformLocation(pg,'cs')};
+  var S=0.5,mx=-9999,my=-9999,last=0,t0=performance.now();cv.classList.add('gl');
+  function size(){cv.width=Math.ceil(innerWidth*S);cv.height=Math.ceil(innerHeight*S);gl.viewport(0,0,cv.width,cv.height)}
+  function draw(now){gl.uniform1f(U.t,(now-t0)/1000);gl.uniform2f(U.res,cv.width,cv.height);gl.uniform2f(U.mo,mx*S,(innerHeight-my)*S);gl.uniform1f(U.cs,7.0);gl.drawArrays(gl.TRIANGLES,0,3)}
+  function tick(now){if(!document.hidden&&now-last>=33){last=now;draw(now)}requestAnimationFrame(tick)}
+  addEventListener('pointermove',function(ev){mx=ev.clientX;my=ev.clientY},{passive:true});
+  size();var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){size();draw(performance.now())},200)});
+  if(RM)draw(t0+4000);else requestAnimationFrame(tick);
+  return true;
+})();
+// ---- LetterGlitch：WebGL2 が無いとき、窓の外に、ゆっくり入れ替わる字の場（PC の幅だけ・隠れている間は止める） ----
+(function(){var cv=$('bgfx');if(BG_GL)return;if(!cv||innerWidth<761){cv&&(cv.hidden=true);return}
   var ctx=cv.getContext('2d'),fs=14,cols=0,rows=0,cells=[],cs=['#ff9a3c','#5ea3ff','#e6c14a','#3fd17c','#a98bff','#2a313c','#2a313c','#2a313c'],last=0;
   function size(){var r=Math.min(2,window.devicePixelRatio||1);cv.width=innerWidth*r;cv.height=innerHeight*r;ctx.setTransform(r,0,0,r,0,0);
     cols=Math.ceil(innerWidth/(fs*.62)/1);rows=Math.ceil(innerHeight/fs);cells=[];for(var i=0;i<cols*rows;i++)cells.push({ch:GLYPH[(Math.random()*GLYPH.length)|0],c:cs[(Math.random()*cs.length)|0]});drawAll()}
@@ -525,20 +640,27 @@ function render(d){
    '<div class="row"><span><b>hard</b> <span class="ja c-dim">難しい</span> → Opus</span>'+bar(mo/mx,'c-opus')+'<span class="n"><span class="c-opus">'+mo+'</span> <span class="c-dim">opus</span></span></div>'+
    '<div class="q">queue <b>'+(qo!=null?qo:'–')+'</b> open  <b>'+(qd!=null?qd:'–')+'</b> doing  <b>'+(qa!=null?qa:'–')+'</b> ask owner  <span>24h agents '+tot+' · plan(fable) '+(M.models.fable||0)+'</span></div>';
   // 係の箱
-  var box=$('agents');box.innerHTML='';
+  var box=$('agents'), AGK=box._k||(box._k={}), keepA={}, orderA=[];
   var shown=M.agents.filter(function(a){return a.status!=='done'||now-ts(a.t1)<RECENT_H*3600e3});
   var older=M.older+(M.agents.length-shown.length);
   var maxT=1;shown.forEach(function(a){if(a.tools)maxT=Math.max(maxT,a.tools)});
-  if(!shown.length)box.innerHTML='<div class="ag" style="grid-column:1/-1"><span class="c-dim">いま動いている係はいません</span></div>';
+  if(!shown.length){box._k={};setHTML(box,'<div class="ag" style="grid-column:1/-1"><span class="c-dim">いま動いている係はいません</span></div>');}
+  else if(box._h){box._h=null;box.innerHTML=''}
   shown.slice(0,16).forEach(function(a){
-    var f=famc(a.fam), e=document.createElement('div');e.className='ag b-'+f+(a.status==='stuck'?' stuck':'');e.dataset.k=a.tag+'|'+a.label;e.dataset.s=a.status;
+    var f=famc(a.fam), key=a.tag+'|'+a.label, e=AGK[key];
+    if(!e){e=AGK[key]=document.createElement('div');e.innerHTML='<div class="agb"></div><div class="wave"></div>'}
+    keepA[key]=1;orderA.push(e);
+    var cls='ag b-'+f+(a.status==='stuck'?' stuck':'');if(e.className!==cls)e.className=cls;e.dataset.k=key;e.dataset.s=a.status;
     var st=a.status==='running'?'<span class="c-'+f+'">● running</span>':a.status==='stuck'?'<span class="c-red">■ stuck · '+dur(a.quiet)+' 動きなし</span>':a.status==='failed'?'<span class="c-red">✗ failed</span>':'<span class="c-harness">✓ done'+(a.pr?' · PR #'+esc(a.pr):a.errors?' · 問題あり':'')+'</span>';
     var open=/^session_\w+$/.test(a.session||'')?' · <a class="open" href="https://claude.ai/code/'+encodeURIComponent(a.session)+'" target="_blank" rel="noopener">開く</a>':'';
-    e.innerHTML='<div class="nm">'+esc(a.label)+'</div><div class="md c-'+f+'">'+esc(a.model||'—')+' <small>· '+esc(a.tag)+'</small></div>'+
+    setHTML(e.firstChild,'<div class="nm">'+esc(a.label)+'</div><div class="md c-'+f+'">'+esc(a.model||'—')+' <small>· '+esc(a.tag)+'</small></div>'+
       '<div class="mt">'+(a.tools!=null?bar(a.tools/maxT,'c-'+f):'<span></span>')+'<span>'+(a.tools!=null?a.tools+' tools · ':'')+dur(a.min)+'</span></div>'+
-      '<div class="act">'+esc(a.status==='done'||a.status==='failed'?(a.result||'結果を返す'):(a.action||''))+'</div><div class="st">'+st+open+'</div>';
-    box.appendChild(e);
+      '<div class="act">'+esc(a.status==='done'||a.status==='failed'?(a.result||'結果を返す'):(a.action||''))+'</div><div class="st">'+st+open+'</div>');
+    setWave(e.lastChild,waveMode(a.status));
   });
+  Object.keys(AGK).forEach(function(kk){if(!keepA[kk]){AGK[kk].remove();delete AGK[kk]}});
+  if(shown.length){var curA=Array.prototype.slice.call(box.children);
+    if(curA.length!==orderA.length||curA.some(function(x,i){return x!==orderA[i]}))orderA.forEach(function(x){box.appendChild(x)})}
   $('more').textContent=older>0?'+'+older+' 済み（2 時間より前）':'';
   requestAnimationFrame(beams);
   // back to lead
@@ -586,7 +708,8 @@ function render(d){
 }
 var lastSeen=0;
 function tickBar(){$('bar').textContent='~/agentboard · zsh · '+(demo?'demo':'live')+' · '+hms(Date.now());
-  var a=$('nowage');if(a)a.textContent=lastSeen?'· '+Math.max(0,Math.round((Date.now()-lastSeen)/1000))+' 秒前に届いた':'';}
+  var a=$('nowage');if(a)a.textContent=lastSeen?'· '+Math.max(0,Math.round((Date.now()-lastSeen)/1000))+' 秒前に届いた':'';
+  var lw=$('livewave');if(lw)setWave(lw,lastSeen&&Date.now()-lastSeen<30000?'run':'flat dead');}
 
 function tick(){
   return load().then(render).catch(function(e){
@@ -595,13 +718,13 @@ function tick(){
   });
 }
 function start(){
-  $('setup').hidden=true;$('app').hidden=false;$('logout').hidden=demo;
+  $('setup').hidden=true;$('app').hidden=false;$('logout').hidden=demo;$('livebadge').hidden=false;$('livetxt').textContent=demo?'DEMO':'LIVE';
   tick();clearInterval(timer);timer=setInterval(function(){if(!document.hidden)tick()},POLL);
   clearInterval(clockT);clockT=setInterval(tickBar,1000);
 }
 function forget(msg){
   try{localStorage.removeItem(KEY)}catch(e){}
-  tok=null;clearInterval(timer);clearInterval(clockT);$('app').hidden=true;$('logout').hidden=true;$('setup').hidden=false;$('err').textContent=msg||'';$('bar').textContent='~/agentboard · zsh · login';
+  tok=null;clearInterval(timer);clearInterval(clockT);$('app').hidden=true;$('logout').hidden=true;$('livebadge').hidden=true;$('setup').hidden=false;$('err').textContent=msg||'';$('bar').textContent='~/agentboard · zsh · login';
 }
 $('tokf').onsubmit=function(ev){
   ev.preventDefault();

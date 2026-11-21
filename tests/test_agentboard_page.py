@@ -216,6 +216,26 @@ class Browser(unittest.TestCase):
         self.assertEqual(card.locator(".shine").count(), 1)
         self.assertNotEqual(card.locator(".spark i").first.evaluate("e=>getComputedStyle(e).transform"), "")
         self.assertTrue(p.is_visible("#bgfx"))
+        # もっと派手に：発車板（6 つの数がめくれる）・AGENTBOARD のずれ・更新の波紋・LIVE/DEMO の札・CRT の背景
+        self.assertEqual(p.locator("#flaps .k").count(), 6)
+        self.assertEqual(p.inner_text("#flaps [data-k=n] .v").replace("\n", ""), "06")
+        self.assertEqual(p.get_attribute(".title .glitch", "data-text"), "AGENTBOARD")
+        self.assertEqual(p.locator("#now .card .ring").count(), 6)
+        self.assertEqual(p.inner_text("#livebadge"), "DEMO")
+        bar_dots = p.locator(".bar i").first.bounding_box()
+        live = p.locator("#livebadge").bounding_box()
+        self.assertGreater(live["x"], bar_dots["x"] + 200)                              # LIVE の札は右（3 つの丸に重ならない）
+        # 波：作業中は大きく流れる・選んでは橙・あなたの番は小さく・動きなしは赤い平らな線・休みは灰色の平らな線
+        for state, mode in (("st-working", "run"), ("st-ask", "ask"), ("st-yours", "calm"), ("st-quiet", "dead"), ("st-idle", "idle")):
+            w = p.locator("#now .card." + state + " .wave").first
+            self.assertIn(mode, w.get_attribute("class"), state)
+        self.assertNotEqual(p.locator("#now .card.st-working .wave svg").first.evaluate("e=>getComputedStyle(e).animationName"), "none")
+        self.assertEqual(p.locator("#now .card.st-idle .wave svg").first.evaluate("e=>getComputedStyle(e).animationName"), "none")
+        self.assertEqual(p.locator("#agents .ag.stuck .wave.dead").count(), 1)          # 止まった係は赤い平らな線
+        self.assertGreaterEqual(p.locator("#agents .ag .wave.run").count(), 3)
+        self.assertIn("run", p.get_attribute("#livewave", "class"))                     # データが届いている間、LIVE の波も動く
+        self.assertGreater(p.locator("#livewave").bounding_box()["width"], 30)            # 小さな波に幅がある（mini を落とさない）
+        ag = p.locator("#agents .ag.stuck").element_handle()
         # Magic UI：Animated Beam（動いている係・止まりの係へ線＝見本は 4 本）・Border Beam（選んでほしい札）・Animated List（記録の行）
         self.assertEqual(p.locator("#beams g").count(), 4)
         self.assertEqual(p.locator("#beams .glow.stuck").count(), 1)
@@ -227,6 +247,7 @@ class Browser(unittest.TestCase):
         p.evaluate("()=>{}")
         p.wait_for_timeout(5600)
         self.assertTrue(h.evaluate("e=>e.isConnected"))
+        self.assertTrue(ag.evaluate("e=>e.isConnected"))                                   # 係の箱も作り直さない（波が始めに戻らない）
         ctx.close()
 
     def test_token_name_per_device(self):
