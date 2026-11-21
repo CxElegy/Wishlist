@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-11-21T00:18:02+00:00",
+ "changed": false,
+ "checked": "2026-11-21T00:21:35+00:00",
  "fired": {
-  "at": "2026-11-20T22:00:24+00:00",
+  "at": "2026-11-21T00:21:35+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -52,19 +52,19 @@
    "edit": 17
   },
   "2026-11-21": {
-   "edit": 5
+   "edit": 6
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-20T22:00:24+00:00",
+    "at": "2026-11-21T00:21:35+00:00",
     "attempts": 1,
     "day": "2026-11-21",
-    "prog": 154,
-    "resp": "cse_01W4x6f8JDZVPiWmhgGr1wuq",
-    "sig": "62d65f86b997"
+    "prog": 189,
+    "resp": "",
+    "sig": "a32e9090db6d"
    },
    "items": [
     "Astrae Oratio",
