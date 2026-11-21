@@ -642,6 +642,13 @@
   "target": 720,
   "v": 3
  },
+ "https://attach.setn.com/newsimages/2026/04/04/5507948-PH.jpg": {
+  "w": 800,
+  "h": 451,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.349
+ },
  "https://attach.setn.com/newsimages/2026/08/15/5670686-PH.jpg": {
   "w": 800,
   "h": 450,
@@ -1311,6 +1318,57 @@
   "target": 720,
   "v": 3
  },
+ "https://charagoo.jp/wp-content/uploads/2026/10/668w_668h-58.jpg": {
+  "w": 668,
+  "h": 668,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.502,
+  "local": "pics/dc5f4bae173149a5.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    6,
+    11,
+    10,
+    9,
+    8,
+    7,
+    7,
+    6,
+    9,
+    6,
+    14,
+    6
+   ],
+   [
+    14,
+    6,
+    5,
+    8,
+    11,
+    9,
+    7,
+    5,
+    11,
+    9,
+    7,
+    8
+   ]
+  ],
+  "c": "#4b4d51",
+  "k": [
+   0.041,
+   0.019,
+   0.377,
+   0.079
+  ],
+  "p": null
+ },
  "https://charagoo.jp/wp-content/uploads/2026/11/1000260529_1.jpg": {
   "w": 1200,
   "h": 1200,
@@ -1681,12 +1739,6 @@
  "https://hermes.media.transform.aol.com/8bf9d2fbba5ad135b93b06684ee193433f18ce52/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/19/feff663e-2435-3464-b153-917359948e38/7ae5162a-a881-4387-a44c-23ce06c377e9.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://hiphopwired.com/wp-content/uploads/sites/43/2026/11/17951955376011.jpg": {
-  "w": 1024,
-  "h": 683,
   "target": 720,
   "v": 3
  },
@@ -2272,6 +2324,12 @@
   "w": 1280,
   "h": 720,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hWm9G.img": {
+  "w": 912,
+  "h": 513,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hrAkP.img": {
@@ -3028,12 +3086,6 @@
   "w": 2560,
   "h": 1440,
   "target": 1280,
-  "v": 3
- },
- "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg": {
-  "w": 1200,
-  "h": 600,
-  "target": 720,
   "v": 3
  },
  "https://iphoneislam.com/wp-content/uploads/2026/08/samsung-vs-apple.jpg": {
@@ -4714,6 +4766,12 @@
   "v": 3,
   "blur": 0.402
  },
+ "https://ogre.natalie.mu/media/news/music/2026/0405/Vaundy_art202604.jpg?impolicy=ogp_face_crop": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://otakukart.com/wp-content/uploads/2026/11/Valves-free-to-play-MOBA-generated-an-estimated-94.46-million-in-gross-Steam-revenue-during-October-2026.-Image-via-Valve.jpg": {
   "w": 1527,
   "h": 860,
@@ -6220,12 +6278,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.28098SivGrsYWyyaUZF5nQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.2OyEI7Q8Q2znC2NwuWqeog&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -6506,6 +6558,12 @@
    0.25
   ]
  },
+ "https://www.bing.com/th?id=ONUT.G0KU6J5KbNn4rYxIQRBv1A&pid=News&w=1023": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.GcemEM5BIMcwOa3RsRb-tQ&pid=News&w=400": {
   "w": 400,
   "h": 400,
@@ -6674,12 +6732,6 @@
  "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.X4-y4Sz1Fhmsgcd9JYvyvA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
   "target": 720,
   "v": 3
  },
@@ -6898,6 +6950,12 @@
  "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500": {
   "w": 500,
   "h": 281,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.j52OWUt0hsDtBuBmWWpB5w&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -7259,6 +7317,12 @@
  "https://www.computerweekly.com/rms/computerweekly/gta-vi-editorial-do-not-reuse-getty.jpg": {
   "w": 1200,
   "h": 400,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.crank-in.net/img/db/258035215208318_1200.jpg": {
+  "w": 1200,
+  "h": 1699,
   "target": 720,
   "v": 3
  },
