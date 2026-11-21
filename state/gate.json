@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-21T10:18:50+00:00",
+ "changed": true,
+ "checked": "2026-11-21T10:35:46+00:00",
  "fired": {
-  "at": "2026-11-21T08:50:32+00:00",
+  "at": "2026-11-21T10:35:46+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -52,64 +52,82 @@
    "edit": 17
   },
   "2026-11-21": {
-   "edit": 12
+   "edit": 13
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-21T08:50:32+00:00",
+    "at": "2026-11-21T10:35:46+00:00",
     "attempts": 1,
     "day": "2026-11-21",
-    "prog": 359,
-    "resp": "cse_01W4x6f5Jy83hqYRcCsdBPWX",
-    "sig": "582e57af63e9"
+    "prog": 370,
+    "resp": "",
+    "sig": "69da7e6ebdb9"
    },
    "items": [
+    "BLEACH Mirrors High",
+    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "dota2",
+    "gelato pique",
     "lib:ONE PIECE",
     "lib:モンスターハンターワイルズ",
     "lib:世界最強の魔女、始めました",
     "lib:原神",
-    "lib:宮崎駿"
+    "lib:宮崎駿",
+    "三星手机",
+    "周杰伦",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-21T09:03:30+00:00",
    "last_error": {},
    "need": true,
    "prog": 370,
    "prog_day": "2026-11-21",
-   "ripe": [],
-   "sig": "47e28689a273",
+   "ripe": [
+    "GTA 6",
+    "ILLIT",
+    "三星手机",
+    "周杰伦",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
+   ],
+   "sig": "69da7e6ebdb9",
    "token_cap": 1000000,
    "tokens_today": 690734,
-   "why": "整理待ちの記事 59 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 121 件（17 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "BLEACH Mirrors High",
+    "漫威电影",
+    "GTA 6",
+    "绝区零",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "cda6939b1c7d",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
-    "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "哈利波特剧集"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 10 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
