@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-21T19:35:56+00:00",
+ "checked": "2026-11-21T20:18:46+00:00",
  "fired": {
   "at": "2026-11-21T19:35:56+00:00",
   "results": {
@@ -71,30 +71,28 @@
    },
    "items": [
     "BLEACH Mirrors High",
-    "The Mandalorian",
-    "lib:ガンプラ",
-    "lib:宇宙・ロケット",
-    "lib:将棋",
-    "lib:恐竜",
-    "lib:温泉",
-    "lib:無印良品",
-    "lib:生成AI",
-    "lib:観葉植物",
-    "あつ森"
+    "lib:キャンプ",
+    "lib:コーヒー",
+    "lib:ユニバーサル・スタジオ・ジャパン",
+    "lib:ラーメン",
+    "lib:東京ディズニーリゾート",
+    "lib:筋トレ",
+    "lib:藤井風",
+    "lib:貸した魔力は【リボ払い】で強制徴収"
    ],
-   "last_batch": "2026-11-21T18:49:17+00:00",
-   "last_error": {},
+   "last_batch": "2026-11-21T19:49:51+00:00",
+   "last_error": {
+    "at": "2026-11-21T19:40:20+00:00",
+    "text": "出刊に失敗：No module named 'requests'"
+   },
    "need": true,
-   "prog": 101,
+   "prog": 111,
    "prog_day": "2026-11-22",
-   "ripe": [
-    "The Mandalorian",
-    "あつ森"
-   ],
-   "sig": "ecf8aafb7f1d",
+   "ripe": [],
+   "sig": "db71c002b2fa",
    "token_cap": 1000000,
-   "tokens_today": 82940,
-   "why": "整理待ちの記事 99 件（11 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 141216,
+   "why": "整理待ちの記事 93 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -259,12 +257,12 @@
    "runs": 16
   },
   "2026-11-22": {
-   "batches": 3,
-   "cr": 2007107,
-   "cw": 70412,
-   "in": 47,
-   "out": 12481,
-   "runs": 1
+   "batches": 6,
+   "cr": 3871489,
+   "cw": 123669,
+   "in": 101,
+   "out": 17446,
+   "runs": 2
   }
  }
 }
