@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "fa714a042e05",
+ "edit_sig": "8445edb0f086",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -578,22 +578,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 10,
-     "source": "cocotte on MSN",
-     "title": "gelato pique×ジョエル・ロブションのホリデー新作! カシミヤブレンドのルームウェアや寝具が登場",
-     "url": "https://www.msn.com/ja-jp/news/other/gelato-pique-%E3%82%B8%E3%83%A7%E3%82%A8%E3%83%AB-%E3%83%AD%E3%83%96%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%9B%E3%83%AA%E3%83%87%E3%83%BC%E6%96%B0%E4%BD%9C-%E3%82%AB%E3%82%B7%E3%83%9F%E3%83%A4%E3%83%96%E3%83%AC%E3%83%B3%E3%83%89%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2%E3%82%84%E5%AF%9D%E5%85%B7%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2hTWAr"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 11,
-     "source": "note",
-     "title": "福袋2027は抽選が本番。11月18日カルディ開始、あとからでも間に合う予約カレンダー",
-     "url": "https://note.com/note_suke/n/nd142b5c6a637"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -605,6 +589,20 @@
      "image_via": "og:image",
      "url": "https://news.livedoor.com/topics/detail/32865424/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "event": {
+      "date": "2026-11-20",
+      "label": "発売日"
+     },
+     "headline": "gelato pique×ジョエル・ロブションのホリデー新作! カシミヤブレンドのルームウェアや寝具が登場",
+     "highlight": "ホリデー新作",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hUlv2.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/news/other/gelato-pique-%E3%82%B8%E3%83%A7%E3%82%A8%E3%83%AB-%E3%83%AD%E3%83%96%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%9B%E3%83%AA%E3%83%87%E3%83%BC%E6%96%B0%E4%BD%9C-%E3%82%AB%E3%82%B7%E3%83%9F%E3%83%A4%E3%83%96%E3%83%AC%E3%83%B3%E3%83%89%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2%E3%82%84%E5%AF%9D%E5%85%B7%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2hTWAr",
+     "weight": "normal"
     },
     {
      "blurb": "",
