@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "e7160cc169fa",
+ "edit_sig": "74ff9238c517",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -615,29 +615,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-21",
-     "n": 9,
-     "source": "中日新聞Web",
-     "title": "【実際の投稿】「コレは色んな意味で強過ぎる」三橋くんのチェンソーマン『姫野先輩』コスプレ",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBTa2dDazZFbmJhZ2JZQ29Wc0Rza0hBV2E4TjEtUnBpRmM1VGtibV9LQ3hZdVhBZEJRRkpXaWZPM2hQN2Z2bXNRUWdpUlpTZ1pOQWJCeg?oc=5"
-    },
-    {
-     "date": "2026-11-21",
-     "n": 10,
-     "source": "Anime Trending",
-     "title": "Inside the Performance of ‘Chainsaw Man’The Stage with Actor Naotake Tsuchiya and Director and Playwright Fumiya Matsuzaki",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQZXlROFdnS1Z4d3lQVFg3RkFxNVg1RFg2c2tqQ3dPQm9HVFYxTUVETGJZUkFMcDVfSjUyRzdZWWk5YXFzSFlITHlNY2xkOHJ3UGpGODBLeGk1M2IxUEVOT3VRRHp5ejVkOEpIY1E2T1lpU0VjMmc5OUZBeTV5djgySW5XbVV1V3J4LU1ieEtnTWVRUkEycUhPUDJlOXJSTm4tNFFvbVVnLVIyY0lUaGc?oc=5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 11,
-     "source": "キャラグー",
-     "title": "チェンソーマン Luminasta パワー（2024年1月）の入荷日・価格｜プライズ",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9RbmdzS25GMFBjSWlyY1BiTThzM1pMLUZvMzZHc0lPcDFVSTdPTHB0MFpieFZVWm9RTzVkUzFhT3g3eHllSUJtMFB1ejB4R25HLWZKVjlUQQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -668,6 +645,26 @@
      "image": "https://charagoo.jp/wp-content/uploads/2025/08/D104748_01.jpg",
      "image_via": "og:image",
      "url": "https://charagoo.jp/prize/item/a8def65a59fa/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-21",
+     "headline": "Inside the Performance of ‘Chainsaw Man’The Stage with Actor Naotake Tsuchiya and Director and Playwright Fumiya Matsuzaki",
+     "highlight": "",
+     "image": "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2026/11/CMan_00191edS.jpg?fit=1250%2C834&ssl=1",
+     "image_via": "og:image",
+     "url": "https://anitrendz.net/news/2026/11/20/chainsaw-manthe-stage-interview-naotake-tsuchiya-and-fumikya-matsuzaki/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-21",
+     "headline": "「コレは色んな意味で強過ぎる」三橋くんのチェンソーマン『姫野先輩』コスプレ",
+     "highlight": "姫野先輩",
+     "image": "https://static.chunichi.co.jp/image/article/size1/9/9/e/e/99eef173c63e943807a6a19c3ca5f283_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.chunichi.co.jp/article/1342793",
      "weight": "normal"
     }
    ],
