@@ -10,7 +10,9 @@
     1,
     14,
     16,
-    20
+    20,
+    36,
+    37
    ],
    "image": "https://images.martincid.com/2026/11/take-two-interactive.jpg?f=orig"
   },
@@ -20,7 +22,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    12
+    12,
+    30,
+    28
    ]
   },
   {
@@ -29,16 +33,50 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    13
+    13,
+    26
+   ]
+  },
+  {
+   "headline": "《GTA 6》與《薩爾達傳說：時之笛》重製版陷入刷負評大戰！雙方玩家疑似互灌 Metacritic 零分",
+   "highlight": "刷負評大戰",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    24
+   ]
+  },
+  {
+   "headline": "It’s Official, GTA 6’s Graphics Have Broken My Brain",
+   "highlight": "Graphics",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27
    ]
   }
  ],
  "漫威电影": [
   {
+   "headline": "'This Is Amazing' — Avengers: Doomsday Trailer Coming Monday, According to Captain Carter Star Hayley Atwell",
+   "highlight": "Trailer Coming Monday",
+   "blurb": "Hayley Atwell says the final Avengers: Doomsday trailer drops Monday; multiple outlets report the timing.",
+   "weight": "lead",
+   "refs": [
+    23,
+    31,
+    29,
+    30,
+    33,
+    34
+   ],
+   "image": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/07/chris-hemsworth-in-avengers-doomsday.png?w=1600&h=900&fit=crop"
+  },
+  {
    "headline": "Avengers: Doomsday advance bookings: Marvel fans turn up the heat ahead of release",
    "highlight": "advance bookings",
-   "blurb": "Directed by Anthony and Joe Russo, Avengers: Doomsday is seeing heavy advance bookings; the Indian box office reports 2.6 lakh+ tickets sold for day 1.",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     8,
     5
@@ -51,25 +89,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    22
+    22,
+    36
    ]
   },
   {
-   "headline": "Is Avengers: Doomsday OK for kids? What its PG-13 rating means",
-   "highlight": "PG-13",
+   "headline": "‘Avengers: Doomsday’ Ad May Have Spoiled Three Major Marvel Hero Returns",
+   "highlight": "Three Major Marvel Hero Returns",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
-   ]
-  },
-  {
-   "headline": "Marvel Studios Plans Bold Genre Shift with Avengers: Secret Wars Unveiled",
-   "highlight": "Avengers: Secret Wars",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    11
+    25
    ]
   },
   {
@@ -186,7 +216,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    8
    ]
   },
   {
@@ -195,7 +226,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    9
    ]
   },
   {
@@ -205,7 +237,9 @@
    "weight": "normal",
    "refs": [
     3,
-    4
+    4,
+    10,
+    12
    ]
   },
   {
@@ -216,19 +250,28 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "Galaxy S27 series could be priced higher than previously expected",
+   "highlight": "priced higher",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
   }
  ],
  "_covered": {
-  "GTA 6": 23,
-  "漫威电影": 22,
+  "GTA 6": 37,
+  "漫威电影": 37,
   "ILLIT": 8,
   "绝区零": 8,
-  "三星手机": 7,
-  "周杰伦": 5,
+  "三星手机": 12,
+  "周杰伦": 9,
   "哈利波特剧集": 3,
   "滑雪": 3,
   "A2O LITE": 2,
-  "チェーンソーマン": 2,
+  "チェーンソーマン": 7,
   "FROM": 1,
   "MMORPG 新作": 1,
   "The Mandalorian": 1,
@@ -244,6 +287,24 @@
     1
    ],
    "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261122/photo/bkn-20261122000121422-1122_00862_001_02b.jpg?20261121230942"
+  },
+  {
+   "headline": "周杰倫演唱會「豪砸5億」再創新紀錄！打造14m巨型機甲 震撼場面曝光",
+   "highlight": "豪砸5億",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "周杰伦当面追问阿妹为何退掉《忍者》！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "哈利波特剧集": [
@@ -325,6 +386,38 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "劇場版《鏈鋸人蕾潔篇》快閃店12月10日降臨誠品R79！沉浸式名場面重現與限定周邊攻略",
+   "highlight": "12月10日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ],
+   "event": {
+    "date": "2026-12-10",
+    "label": "快閃店",
+    "place": "誠品R79"
+   }
+  },
+  {
+   "headline": "【2026年11月】チェンソーマンプライズ最新一覧｜クレーンゲーム新作・登場予定",
+   "highlight": "プライズ最新一覧",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "【#コンパス】7月シーズンを振り返り！『チェンソーマン』コラボヒーロー組が健闘!!",
+   "highlight": "コラボヒーロー組が健闘",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],

@@ -50,6 +50,62 @@
    0.486
   ]
  },
+ "http://n.sinaimg.cn/sinakd20261121ac/40/w480h360/20261121/0d02-ddf3cdc9a5b5b1bdf6c246eb42eb0f20.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.493,
+  "local": "pics/095987aa2f6f533d.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    8,
+    36,
+    24,
+    2,
+    4,
+    3,
+    2,
+    2,
+    5,
+    6,
+    3
+   ],
+   [
+    4,
+    3,
+    35,
+    24,
+    5,
+    5,
+    5,
+    5,
+    4,
+    4,
+    2,
+    4
+   ]
+  ],
+  "c": "#94655d",
+  "k": [
+   0.84,
+   0.43,
+   0.938,
+   0.689
+  ],
+  "p": [
+   0.154,
+   0.115,
+   0.864,
+   0.471
+  ]
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af8b61a6b6c3a05a6d731ba/1794841230408/Marvel+Studios+Reportedly+%2522Secretly%2522+Developing+IRON+MAN+4+With+Robert+Downey+Jr.+Potentially+Returning.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -1585,6 +1641,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://fictionhorizon.com/wp-content/uploads/2026/11/Robert-Downey-Jr.-on-Doctor-Doom-1.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://file.osen.co.kr/article/2026/11/20/202611202048779806_6b003e3759c41.png": {
   "w": 650,
   "h": 363,
@@ -1645,6 +1707,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.411
+ },
+ "https://games.app-liv.jp/images/articles/2026/08/gd_589689_-22-e1785911491805.jpg": {
+  "w": 700,
+  "h": 370,
+  "target": 720,
+  "v": 3
  },
  "https://games.gg/api/og/content/?kind=news&key=dota-2%E3%83%91%E3%83%83%E3%83%81742%E3%81%8C%E9%85%8D%E4%BF%A1%E9%96%8B%E5%A7%8B%E8%A9%A6%E5%90%88%E5%B1%95%E9%96%8B%E3%81%AE%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%A8%E6%96%B0%E3%83%9B%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E5%B0%8E%E5%85%A5&lang=ja&u=torcj0&v=3": {
   "w": 1200,
@@ -2302,12 +2370,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hUPnJ.img": {
-  "w": 1456,
-  "h": 819,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hUlv2.img": {
   "w": 700,
   "h": 874,
@@ -2324,12 +2386,6 @@
   "w": 1280,
   "h": 720,
   "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hWm9G.img": {
-  "w": 912,
-  "h": 513,
-  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hrAkP.img": {
@@ -3088,6 +3144,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg": {
+  "w": 1200,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
  "https://iphoneislam.com/wp-content/uploads/2026/08/samsung-vs-apple.jpg": {
   "w": 1080,
   "h": 589,
@@ -3288,6 +3350,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://moonvoke.com/images/news/chainsaw-man-reze-arc-pop-up-store-eslite-r79-guide-2026.webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://moonvoke.com/images/news/donguri-republic-snowman-totoro-banqiao-guide-2026.webp": {
@@ -5756,6 +5824,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/07/chris-hemsworth-in-avengers-doomsday.png?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/avengers_-doomsday-_-special-look-_-in-theaters-december-18-1-40-screenshot.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -5766,6 +5840,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/11/grand-theft-auto-6-jason-with-gun.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/11/gta-6-nba-2k27-macca.jpg?w=1600&h=900&fit=crop": {
@@ -6017,12 +6097,6 @@
   "target": 720,
   "v": 3
  },
- "https://wimg.heraldcorp.com/news/cms/2026/11/21/news-p.v1.20261026.147ea7e1b65a4793b6df955ee31c2ab5_P1.jpg": {
-  "w": 647,
-  "h": 431,
-  "target": 720,
-  "v": 3
- },
  "https://win.gg/wp-content/uploads/2026/11/image-2026-11-19T122636.407.jpg.webp": {
   "w": 1200,
   "h": 675,
@@ -6046,12 +6120,6 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
-  "v": 3
- },
- "https://www.aceshowbiz.com/display/images/photo/2026/11/19/auto_00263379_1795025775.webp": {
-  "w": 1280,
-  "h": 800,
-  "target": 720,
   "v": 3
  },
  "https://www.agara.co.jp/image/article/size1/d/b/c/5/dbc580a479ab6065efcfbfd8941006dd_1.jpg": {
@@ -6275,6 +6343,12 @@
  "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
   "w": 466,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.28098SivGrsYWyyaUZF5nQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -6729,6 +6803,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.WEPGwa_p1ET3lik7Qkq55w&pid=News&w=1200": {
+  "w": 700,
+  "h": 537,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -6900,6 +6980,12 @@
    0.57,
    0.518
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.g-FXJ-uuFLBMlSdFPLEmLA&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.hSK1x_UwmELq3M2x6HEyvg&pid=News&w=1200": {
   "w": 700,
@@ -7521,6 +7607,12 @@
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-ultra-2.jpg": {
   "w": 1280,
   "h": 721,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-price-hike-2.webp": {
+  "w": 2560,
+  "h": 1441,
   "target": 720,
   "v": 3
  },
