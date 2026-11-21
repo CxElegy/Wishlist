@@ -1,22 +1,24 @@
 {
  "date": "2026-11-22",
- "edit_sig": "360d1b00ed8d",
+ "edit_sig": "7b94f7264e0f",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-21",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】星2井上織姫の評価と性能【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1WOUthSV9kcGItTDRIaDBOM3JPWm02ZXNWZC1taHJ5T2dLdm1Lc3J2ZUxYZ0NlekNJT3JObGp1Y25TdTBKRHNzTnRRY2VZV1k?oc=5"
+     "headline": "星2井上織姫の評価と性能",
+     "highlight": "星2井上織姫",
+     "image": "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png",
+     "image_via": "og:image",
+     "url": "https://appmedia.jp/bleach-mh/80523328",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -319,8 +321,8 @@
      "date": "2026-11-20",
      "headline": "일본 팬심 꽉 붙든 아일릿, 레코드대상 3년 연속 수상",
      "highlight": "레코드대상 3년 연속 수상",
-     "image": "https://www.bing.com/th?id=ONUT.WEPGwa_p1ET3lik7Qkq55w&pid=News&w=1200",
-     "image_via": "转载 biz.heraldcorp.com（Bing 缩略图）",
+     "image": "https://wimg.heraldcorp.com/news/cms/2026/11/21/news-p.v1.20261026.147ea7e1b65a4793b6df955ee31c2ab5_P1.jpg",
+     "image_via": "正文图",
      "url": "https://www.heraldk.com/article/2026112018250478125",
      "weight": "normal"
     },
@@ -388,8 +390,8 @@
      "date": "2026-11-21",
      "headline": "Samsung Galaxy S27 Ultra vs. S26 Ultra: Which Flagship Will Actually Be Worth Your Money?",
      "highlight": "S27 Ultra vs. S26 Ultra",
-     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Ultra-vs.-S26-Ultra.jpg",
-     "image_via": "og:image",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/02/Galaxy-S26-Ultra-cover-2.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-vs-s26-ultra/",
      "weight": "normal"
     },
@@ -428,8 +430,8 @@
      "date": "2026-11-21",
      "headline": "Galaxy S27 series could be priced higher than previously expected",
      "highlight": "priced higher",
-     "image": "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-price-hike-2.webp",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.Vsj0nhKfo1rrZub3I_VORQ&pid=News&w=1024",
+     "image_via": "条目自带（Bing 缩略图）",
      "url": "https://www.gizmochina.com/2026/11/21/galaxy-s27-series-could-be-priced-higher-than-previously-expected/",
      "weight": "normal"
     }
