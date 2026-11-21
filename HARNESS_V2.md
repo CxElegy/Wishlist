@@ -159,7 +159,7 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 
 | 何 | どこ |
 |---|---|
-| 画面 | https://cxelegy.github.io/Wishlist/board/ （`docs/board/index.html`。ページ自体にデータは無い・noindex。左に Opus advisor、中央に BRAIN → HARNESS routing → 係の箱 → back to lead、下に session log・site・owner → brain・最後の 2 行。係の箱に pc / cloud の札） |
+| 画面 | https://cxelegy.github.io/agentboard/ （agentboard の `docs/index.html`。2026-11-21 に Wishlist から独立。Wishlist の `docs/board/` は飛ばすだけ。試験は agentboard の `tests/test_page.py`。ページ自体にデータは無い・noindex。左に Opus advisor、中央に BRAIN → HARNESS routing → 係の箱 → back to lead、下に session log・site・owner → brain・最後の 2 行。係の箱に pc / cloud の札） |
 | データ | 非公開のリポジトリ `cxelegy/agentboard`：枝 `live-<機械>` の `host.json`（集め係が機械ごとに 1 枚・親なしの 1 コミットを force-push＝履歴が増えない）・main の `agents/`（`ab.py beat`）・`inbox/`・`outbox/` |
 | 読む鍵 | 店長が端末ごとに 1 回貼る GitHub の令牌（agentboard だけ・Contents read/write）。その端末の localStorage だけ。クラウド・リポジトリには置かない |
 | 集め係 | `agentboard/collect.py`（標準ライブラリだけ）。前の `server.mjs` と同じく Claude Code の記録を読む：`~/.claude/projects/<作業場所>/<会話>.jsonl`（BRAIN）・`<会話>/subagents/agent-*.jsonl`＋`.meta.json`（単独の係）・`subagents/workflows/wf_*/journal.jsonl`＋`agent-*.jsonl`（workflow の回）。＋ Wishlist の main・kpi・段の列、PC は `summary.json` |
@@ -174,7 +174,7 @@ args: { "run": "1112a", "max": 4, "cycles": 1 }
 - 画面は 5 秒ごと（タブが隠れている間は読まない）に GraphQL 1 回：live-* の全部・main の agents/inbox/outbox・Wishlist の PR と CI。集め係は 5 秒ごとに見て、変わったら push（8 秒に 1 回まで）＝だいたい 10 秒遅れ。
 - **now · claude**（2026-11-19，店長：Claude がいま何をしているかを実時間で・「光秃秃的板块」ではなく・どのモデルか）：凡例のすぐ下に、PC とクラウドの会話ごとに 1 枚の札（枠の色＝モデル：Fable 橙・Opus 紫・Sonnet 黄・Haiku 青）。大きなモデル名と役（計画・難しい判断・ふつうの実装・探す・点検）、この 30 分の 1 分ごとの道具の数の棒グラフ、動いている係のチップ（モデルの色・止まりは赤）、この回の時間・道具・token。見出しに会話の数とモデルの内訳。
 - **動き**（2026-11-19，店長：reactbits.dev の使える動効を）：React Bits（© 2026 David Haz・MIT + Commons Clause＝サイトの一部として使ってよい・部品そのものを配る・売るのは不可）の考え方を、このページ用に素の JS/CSS で書いた（React・ライブラリは入れない）。DecryptedText（見出しと札の題が乱れた字から戻る）・StarBorder（作業中の札の上下の縁を光が走る）・ShinyText（「作業中」の字に光）・SpotlightCard（指の先に淡い光）・TextType（いまの道具が変わったら打っていく）・CountUp（道具の数・token が数え上がる）・Micro Slats 風（棒グラフの板が scaleY で伸び縮み）・ClickSpark（押した所に火花）・LetterGlitch（PC の幅だけ、窓の外の字の場）。Magic UI（magicui.design・MIT）からも：Animated Beam（delegate の下から、動いている係の箱へ光が線を流れる・止まりは赤い線）・Border Beam（「選んで」の札の縁を光が回る）・Animated List（session log の新しい行がはじけて入る）。札は 5 秒ごとに作り直さず中身だけ替える（動きが始めに戻らない）。動きは transform・opacity だけ、隠れたタブでは止め、端末の「動きを減らす」では全部止める。1440 で 60fps（最悪 17ms）。状態（作業中・選んで＝AskUserQuestion で待っている・動きなし＝作業の途中で 15 分 記録が増えない・あなたの番＝返事を終えた・休み＝30 分）、店長が最後に頼んだこと（`›`）、いまの道具（`▸`）か最後に言ったこと（`✓`）、この回の時間と道具の数、動いている係の数。押すとその会話の最近 10 の道具の流れ。機械から 6 分 届かなければ「○ 届いていない」。
-- 試験：Wishlist `tests/test_agentboard_page.py`（GitHub を差し替えて読む・合わせる・伝言・令牌切れ）・`tests/test_agentboard_hook.py`、agentboard `tests/test_collect.py`・`tests/test_ab.py`。
+- 試験：Wishlist `tests/test_agentboard_hook.py`、agentboard `tests/test_page.py`（画面：GitHub を差し替えて読む・合わせる・伝言・令牌切れ・Retina の画布）・`tests/test_collect.py`・`tests/test_ab.py`。
 
 ## まだ入れていないもの（次の段）
 
