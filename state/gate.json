@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-20T23:18:06+00:00",
+ "checked": "2026-11-21T00:18:02+00:00",
  "fired": {
   "at": "2026-11-20T22:00:24+00:00",
   "results": {
@@ -95,11 +95,18 @@
    "need": true,
    "prog": 189,
    "prog_day": "2026-11-21",
-   "ripe": [],
-   "sig": "e5c302e349a2",
+   "ripe": [
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy",
+    "gelato pique",
+    "猫用品"
+   ],
+   "sig": "a32e9090db6d",
    "token_cap": 1000000,
    "tokens_today": 279412,
-   "why": "整理待ちの記事 109 件（19 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 109 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
