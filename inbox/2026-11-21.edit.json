@@ -72,7 +72,8 @@
   "哈利波特剧集": 3,
   "FROM": 1,
   "あつ森": 1,
-  "The Mandalorian": 1
+  "The Mandalorian": 1,
+  "猫用品": 1
  },
  "漫威电影": [
   {
@@ -453,5 +454,19 @@
    }
   }
  ],
- "The Mandalorian": []
+ "The Mandalorian": [],
+ "猫用品": [
+  {
+   "headline": "Cat owners are rushing to grab the viral Whisker Litter-Robot before Black Friday deals disappear",
+   "highlight": "Black Friday",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "price": {
+    "now": "最大$150オフ"
+   }
+  }
+ ]
 }

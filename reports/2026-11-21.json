@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "d175caa6371e",
+ "edit_sig": "41a975cc925e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -754,17 +754,22 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-20",
-     "n": 1,
-     "source": "MassLive",
-     "title": "Cat owners are rushing to grab the viral Whisker Litter-Robot before Black Friday deals disappear",
-     "url": "https://www.masslive.com/shopping-deals/2026/11/cat-owners-are-rushing-to-grab-the-viral-whisker-litter-robot-before-black-friday-deals-disappear.html"
+     "headline": "Cat owners are rushing to grab the viral Whisker Litter-Robot before Black Friday deals disappear",
+     "highlight": "Black Friday",
+     "image": "https://www.bing.com/th?id=ONUT.EU78r-YTXYYRvTu7bNz3gw&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
+     "price": {
+      "now": "最大$150オフ"
+     },
+     "url": "https://www.masslive.com/shopping-deals/2026/11/cat-owners-are-rushing-to-grab-the-viral-whisker-litter-robot-before-black-friday-deals-disappear.html",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",

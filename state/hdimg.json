@@ -6861,6 +6861,12 @@
   "v": 3,
   "blur": 0.404
  },
+ "https://www.bing.com/th?id=ONUT.-uISZ1wmHfcOppDMAov4_Q&pid=News&w=700": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.00q_3SKAZTpUktsTEvv6GQ&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -7149,8 +7155,9 @@
  "https://www.bing.com/th?id=ONUT.EU78r-YTXYYRvTu7bNz3gw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
  },
  "https://www.bing.com/th?id=ONUT.FOoggTFAL_2bZZS_uZ1pTg&pid=News&w=494": {
   "w": 494,
