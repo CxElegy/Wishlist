@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-19T22:28:24+00:00",
-"text": "2026-11-20 第 2 バッチを出刊：gelato pique（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 1,524・キャッシュ読み 23.2万・出力 698",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.46,
-"mem_total": 16869126144,
-"mem_free": 15918112768,
-"disk_used": 10466619392,
-"disk_free": 31202738176,
-"disk_total": 41669357568,
-"peak": 376537088
-},
-"batch": 2,
-"boards": [
-"gelato pique"
-],
-"stories": 3,
-"left": 0,
-"edited": 14,
-"run": 1795126777.3698528,
-"tok": {
-"in": 6,
-"cw": 1518,
-"cr": 231825,
-"out": 698,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 234047,
-"secs": 528,
-"run_tok": {
-"in": 27,
-"cw": 49227,
-"cr": 914694,
-"out": 4449,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-19T23:36:50+00:00",
 "text": "2026-11-20 第 1 バッチを出刊：チェーンソーマン（1 版面・1 本・残り 2 版面） · token 新規入力 4.5万・キャッシュ読み 63.5万・出力 2,880",
 "level": "ok",
@@ -2080,5 +2039,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 153096
+},
+{
+"at": "2026-11-21T01:44:18+00:00",
+"text": "2026-11-21 第 3 バッチを出刊：gelato pique（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 4,531・キャッシュ読み 31.5万・出力 1,663",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.71,
+"mem_total": 16869113856,
+"mem_free": 15885406208,
+"disk_used": 11299430400,
+"disk_free": 30369927168,
+"disk_total": 41669357568,
+"peak": 368017408
+},
+"batch": 3,
+"boards": [
+"gelato pique"
+],
+"stories": 2,
+"left": 0,
+"edited": 18,
+"run": 1795224802.7318034,
+"tok": {
+"in": 8,
+"cw": 4523,
+"cr": 315125,
+"out": 1663,
+"calls": 4,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 321319,
+"secs": 656,
+"run_tok": {
+"in": 31,
+"cw": 52609,
+"cr": 1100984,
+"out": 4726,
+"calls": 16,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
