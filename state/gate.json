@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-21T05:35:28+00:00",
+ "changed": true,
+ "checked": "2026-11-21T06:18:27+00:00",
  "fired": {
   "at": "2026-11-21T05:35:28+00:00",
   "results": {
@@ -67,39 +67,30 @@
     "sig": "f2f45ad532ba"
    },
    "items": [
-    "BLEACH Mirrors High",
-    "MMORPG 新作",
-    "dota2",
-    "lib:King Gnu",
-    "lib:SPY×FAMILY",
-    "lib:ガンプラ",
-    "lib:ゼルダの伝説",
-    "lib:呪術廻戦",
-    "lib:鬼滅の刃",
+    "lib:キャンプ",
+    "lib:コーヒー",
+    "lib:ユニバーサル・スタジオ・ジャパン",
+    "lib:ラーメン",
+    "lib:東京ディズニーリゾート",
+    "lib:筋トレ",
     "三星手机",
     "哈利波特剧集",
-    "日本顶级网球赛事",
     "滑雪",
     "猫用品"
    ],
-   "last_batch": "2026-11-21T04:39:02+00:00",
+   "last_batch": "2026-11-21T05:41:00+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 313,
+   "prog": 324,
    "prog_day": "2026-11-21",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "MMORPG 新作",
-    "dota2",
-    "日本顶级网球赛事"
-   ],
-   "sig": "f2f45ad532ba",
+   "ripe": [],
+   "sig": "2204efb0b2ce",
    "token_cap": 1000000,
-   "tokens_today": 536369,
-   "why": "整理待ちの記事 81 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 586998,
+   "why": "整理待ちの記事 76 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -256,12 +247,12 @@
    "runs": 15
   },
   "2026-11-21": {
-   "batches": 21,
-   "cr": 10415913,
-   "cw": 494137,
-   "in": 293,
-   "out": 41939,
-   "runs": 10
+   "batches": 22,
+   "cr": 11716176,
+   "cw": 540851,
+   "in": 329,
+   "out": 45818,
+   "runs": 11
   }
  }
 }
