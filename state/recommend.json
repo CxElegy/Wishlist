@@ -63,7 +63,6 @@
   "https://www.msn.com/ja-jp/health/%E5%85%A8%E8%88%AC/%E6%84%9B%E7%8A%AC-%E6%84%9B%E7%8C%AB%E3%81%AE%E4%B8%8D%E8%AA%BF%E3%81%AB-%E4%B8%AD%E5%8C%BB%E5%AD%A6-%E3%81%A8%E3%81%84%E3%81%86%E9%81%B8%E6%8A%9E%E8%82%A2-%E7%8D%A3%E5%8C%BB%E5%B8%AB%E3%81%8C%E8%A7%A3%E8%AA%AC%E3%81%99%E3%82%8B%E6%AD%A3%E3%81%97%E3%81%84%E5%8F%96%E3%82%8A%E5%85%A5%E3%82%8C%E6%96%B9/ar-AA2hOOln": "https://www.bing.com/th?id=ONUT.-uISZ1wmHfcOppDMAov4_Q&pid=News&w=700",
   "https://www.nikkansports.com/sports/news/202611200001299.html": "https://www.nikkansports.com/sports/news/img/202611200001299-w500_1.jpg",
   "https://www.osen.co.kr/article/G1112913029": "https://file.osen.co.kr/article/2026/11/20/202611202048779806_6b003e3759c41.png",
-  "https://www.pcgamesn.com/dota-2/7-42-patch-notes": "https://www.bing.com/th?id=ONUT.WprRjiZ3TREON37kLgL-PA&pid=News&w=1200",
   "https://www.purexbox.com/news/2026/04/open-world-rpg-the-blood-of-dawnwalker-gets-september-2026-release-date-for-xbox-series-xs": "https://images.purexbox.com/d57e4aaafc1fd/1280x720.jpg",
   "https://www.rockpapershotgun.com/each-new-gta-moves-the-series-closer-and-closer-to-the-original-mafia-the-open-world-game-that-bettered-rockstar": "https://assetsio.gnwcdn.com/mafia-city-of-lost-heaven-car-park-shootout.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp",
   "https://www.salonprivemag.com/can-squirrels-eat-grapes/": "https://salonprivemag.b-cdn.net/wp-content/uploads/2023/10/fghjgh-e1698251019921.png",
@@ -72,6 +71,7 @@
   "https://www.techradar.com/news/best-tablet": null,
   "https://www.thecanadianpressnews.ca/world/former-owner-of-internet-famous-squirrel-charged-with-mortgage-fraud/article_5535a2a3-2d5f-5edd-bca5-70417898d99b.html": "https://bloximages.chicago2.vip.townnews.com/thecanadianpressnews.ca/content/tncms/assets/v3/editorial/1/09/109fefdc-6587-5e74-9e3b-8f11271af871/6af4f3f98e144.image.jpg?crop=1400%2C735%2C0%2C99&resize=1200%2C630&order=crop%2Cresize",
   "https://www.theverge.com/entertainment/1037545/gta-6-discussion": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/STKS540_GTA_VI_A.jpg?quality=90&strip=all&crop=0%2C9.9676601489831%2C100%2C80.064679702034&w=1200",
+  "https://www.tradingview.com/news/binance_news:0ecee35b1094b:0-polymarket-s-inner-circle-win-probability-falls-33-points-in-dota-2-market/": "https://s.tradingview.com/static/images/illustrations/news-story.jpg",
   "https://www.upmedia.mg/tw/game/mobile-game/274821": "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp",
   "https://www.viva100.com/article/20261116501332": "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/11/16/.cache/512/20261116501330.jpg?v=20261121042722",
   "https://www.walkerplus.com/article/1004716/": "https://news.walkerplus.com/article/1004716/10032764_615.jpg",
@@ -1427,6 +1427,27 @@
   },
   {
    "batch": 5,
+   "because": "dota2",
+   "date": "2026-11-20",
+   "hits": [],
+   "image": "https://s.tradingview.com/static/images/illustrations/news-story.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "TradingView",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "Polymarket's Inner Circle Win Probability Falls 33 Points in Dota 2 Market",
+   "url": "https://www.tradingview.com/news/binance_news:0ecee35b1094b:0-polymarket-s-inner-circle-win-probability-falls-33-points-in-dota-2-market/",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 5,
    "because": "Vaundy",
    "date": "2026-11-20",
    "hits": [],
@@ -1447,7 +1468,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "dota2",
    "date": "2026-11-19",
    "hits": [],
@@ -1487,27 +1508,6 @@
    "url": "https://www.animatetimes.com/news/details.php?id=1794908920",
    "words": [],
    "work": "Vaundy"
-  },
-  {
-   "batch": 6,
-   "because": "dota2",
-   "date": "2026-11-18",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.WprRjiZ3TREON37kLgL-PA&pid=News&w=1200",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "PCGamesN",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "Dota 2 patch 7.42 hauls Valve's MOBA out of the late-game sludge",
-   "url": "https://www.pcgamesn.com/dota-2/7-42-patch-notes",
-   "words": [],
-   "work": "dota2"
   },
   {
    "batch": 6,
@@ -1961,15 +1961,15 @@
    8
   ],
   [
-   "galaxy",
-   7
-  ],
-  [
    "三星 Galaxy",
    7
   ],
   [
    "作品:三星手机",
+   7
+  ],
+  [
+   "galaxy",
    7
   ]
  ]
