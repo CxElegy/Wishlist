@@ -106,6 +106,12 @@
    0.471
   ]
  },
+ "http://n.sinaimg.cn/sinakd20261121ac/527/w480h847/20261121/12f6-b601b96312763218391dfd5459522875.jpg": {
+  "w": 480,
+  "h": 847,
+  "target": 1280,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af8b61a6b6c3a05a6d731ba/1794841230408/Marvel+Studios+Reportedly+%2522Secretly%2522+Developing+IRON+MAN+4+With+Robert+Downey+Jr.+Potentially+Returning.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -1461,6 +1467,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/11/The-cast-of-Avengers-Doomsday.jpg?resize=2000,1125": {
+  "w": 2000,
+  "h": 1125,
+  "target": 1280,
+  "v": 3
+ },
  "https://cosmicbook.news/wp-content/uploads/2026/11/from-tv-series-ratings-netflix.webp": {
   "w": 1500,
   "h": 844,
@@ -1708,12 +1720,6 @@
   "v": 3,
   "blur": 0.411
  },
- "https://games.app-liv.jp/images/articles/2026/08/gd_589689_-22-e1785911491805.jpg": {
-  "w": 700,
-  "h": 370,
-  "target": 720,
-  "v": 3
- },
  "https://games.gg/api/og/content/?kind=news&key=dota-2%E3%83%91%E3%83%83%E3%83%81742%E3%81%8C%E9%85%8D%E4%BF%A1%E9%96%8B%E5%A7%8B%E8%A9%A6%E5%90%88%E5%B1%95%E9%96%8B%E3%81%AE%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%A8%E6%96%B0%E3%83%9B%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E5%B0%8E%E5%85%A5&lang=ja&u=torcj0&v=3": {
   "w": 1200,
   "h": 630,
@@ -1810,10 +1816,10 @@
   "target": 720,
   "v": 3
  },
- "https://hiphopwired.com/wp-content/uploads/sites/43/2026/11/image-collage-4.jpg": {
-  "w": 1680,
-  "h": 960,
-  "target": 720,
+ "https://hips.hearstapps.com/hmg-prod/images/ae3dc98e-8759-4a07-af75-9cbce8d4b168.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
+  "w": 1200,
+  "h": 600,
+  "target": 1280,
   "v": 3
  },
  "https://hips.hearstapps.com/hmg-prod/images/ae3dc98e-8759-4a07-af75-9cbce8d4b168.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
@@ -3142,12 +3148,6 @@
   "w": 2560,
   "h": 1440,
   "target": 1280,
-  "v": 3
- },
- "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg": {
-  "w": 1200,
-  "h": 600,
-  "target": 720,
   "v": 3
  },
  "https://iphoneislam.com/wp-content/uploads/2026/08/samsung-vs-apple.jpg": {
@@ -5655,12 +5655,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static.hkcna.hk/dams-res/editing/image/202611/16/6afae1f3e4b06f03454bc03d.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "https://static.independent.co.uk/2026/11/15/15/06/hp.png?trim=0,211,0,210&width=1200&height=800&crop=1200:800": {
   "w": 1200,
   "h": 800,
@@ -5779,6 +5773,12 @@
  "https://static.sanyonews.jp/image/article/size1/e/c/a/0/eca06632b083f3de1ab03c597fe95639_1.jpg": {
   "w": 640,
   "h": 426,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.toiimg.com/thumb/msid-136062588,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -6098,10 +6098,10 @@
   "v": 3
  },
  "https://wimg.heraldcorp.com/news/cms/2026/11/21/news-p.v1.20261026.147ea7e1b65a4793b6df955ee31c2ab5_P1.jpg": {
+  "w": 647,
+  "h": 431,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-22"
+  "v": 3
  },
  "https://win.gg/wp-content/uploads/2026/11/image-2026-11-19T122636.407.jpg.webp": {
   "w": 1200,
@@ -6745,12 +6745,6 @@
    0.723
   ],
   "p": null
- },
- "https://www.bing.com/th?id=ONUT.LK6Mj2xWLk-zYZkBIKCbgw&pid=News&w=692": {
-  "w": 692,
-  "h": 302,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.R36CPneAFDun3FQozGMepQ&pid=News&w=728": {
   "w": 700,
@@ -7904,10 +7898,10 @@
   "target": 720,
   "v": 3
  },
- "https://x0.ifengimg.com/ucms/2026_47/29499CDB99697D415D4D8C78F15DCBA0D7138366_size177_w1280_h960.jpg": {
-  "w": 1280,
-  "h": 960,
-  "target": 720,
+ "https://x0.ifengimg.com/res/2026/C1610C741D50D4D3C47BDD987C9818437CDA6075_size61_w870_h492.jpg": {
+  "w": 870,
+  "h": 492,
+  "target": 1280,
   "v": 3
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-c5107fb3cab563f904aec69918eb1145/images/ed1e92c6-9632-4f56-8421-59c7b32366a0.jpg": {
