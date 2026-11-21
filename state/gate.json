@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-21T00:21:35+00:00",
+ "changed": true,
+ "checked": "2026-11-21T00:58:09+00:00",
  "fired": {
   "at": "2026-11-21T00:21:35+00:00",
   "results": {
@@ -68,45 +68,24 @@
    },
    "items": [
     "Astrae Oratio",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
-    "lib:BTS",
-    "lib:F1",
-    "lib:Mrs. GREEN APPLE",
-    "lib:Nintendo Switch 2",
-    "lib:YOASOBI",
-    "lib:サッカー日本代表",
-    "lib:大相撲",
-    "lib:大谷翔平",
     "あつ森",
     "三星手机",
     "哈利波特剧集",
-    "滑雪",
-    "猫用品"
+    "滑雪"
    ],
-   "last_batch": "2026-11-20T22:16:29+00:00",
+   "last_batch": "2026-11-21T00:36:39+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 189,
+   "prog": 205,
    "prog_day": "2026-11-21",
-   "ripe": [
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
-    "猫用品"
-   ],
-   "sig": "a32e9090db6d",
+   "ripe": [],
+   "sig": "c92269eaa6c7",
    "token_cap": 1000000,
-   "tokens_today": 279412,
-   "why": "整理待ちの記事 109 件（19 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 381340,
+   "why": "整理待ちの記事 5 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -263,12 +242,12 @@
    "runs": 15
   },
   "2026-11-21": {
-   "batches": 13,
-   "cr": 6151120,
-   "cw": 254469,
-   "in": 168,
-   "out": 24775,
-   "runs": 5
+   "batches": 15,
+   "cr": 7764962,
+   "cw": 349085,
+   "in": 216,
+   "out": 32039,
+   "runs": 7
   }
  }
 }
