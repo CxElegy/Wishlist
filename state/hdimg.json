@@ -443,6 +443,13 @@
   "target": 720,
   "v": 3
  },
+ "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/929908.jpg": {
+  "w": 691,
+  "h": 389,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.363
+ },
  "https://animetv-jp.net/wp-content/uploads/2026/11/images-32.jpeg": {
   "w": 739,
   "h": 415,
@@ -1433,7 +1440,7 @@
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/craig-kelly.jpg": {
   "w": 1253,
   "h": 702,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/fukushima-ski.jpg": {
@@ -1700,6 +1707,57 @@
   "h": 1387,
   "target": 1280,
   "v": 3
+ },
+ "https://hk.on.cc/hk/bkn/cnt/entertainment/20261122/photo/bkn-20261122000121422-1122_00862_001_02b.jpg?20261121230942": {
+  "w": 780,
+  "h": 780,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.6,
+  "local": "pics/01ba3d57c399be96.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    0,
+    3,
+    2,
+    5,
+    20,
+    28,
+    25,
+    8,
+    3,
+    2,
+    3,
+    1
+   ],
+   [
+    1,
+    3,
+    6,
+    23,
+    21,
+    17,
+    5,
+    7,
+    9,
+    3,
+    2,
+    2
+   ]
+  ],
+  "c": "#a58768",
+  "k": null,
+  "p": [
+   0.247,
+   0.138,
+   0.741,
+   0.802
+  ]
  },
  "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg": {
   "w": 826,
@@ -1973,6 +2031,12 @@
   "w": 1280,
   "h": 720,
   "target": 720,
+  "v": 3
+ },
+ "https://images.highwise.com/stories/408909-1795279037065.jpg": {
+  "w": 1280,
+  "h": 704,
+  "target": 1280,
   "v": 3
  },
  "https://images.khan.co.kr/article/2026/11/20/news-p.v1.20261120.6b2ae1d6e17e49ca9d08f1bcab07ca1c_P1.png": {
@@ -3201,6 +3265,12 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/885290_1.jpg": {
   "w": 1024,
   "h": 1024,
+  "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/11/1120885_2.jpg": {
+  "w": 1024,
+  "h": 683,
   "target": 1280,
   "v": 3
  },
@@ -5690,6 +5760,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/draco-malfoy-in-harry-potter-tv-show-season-1.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/untitled2.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6013,6 +6089,68 @@
   "h": 1440,
   "target": 1280,
   "v": 3
+ },
+ "https://www.anewsa.com/news_images/2026/11/18/mark/20261118105200.jpg": {
+  "w": 480,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.anewsa.com/news_images/2026/11/20/mark/20261120110835.jpg": {
+  "w": 580,
+  "h": 435,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.502,
+  "local": "pics/53c4180b32c7bc0b.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    3,
+    3,
+    2,
+    3,
+    13,
+    21,
+    14,
+    7,
+    12,
+    11,
+    8,
+    3
+   ],
+   [
+    0,
+    0,
+    0,
+    7,
+    17,
+    7,
+    5,
+    10,
+    19,
+    18,
+    10,
+    7
+   ]
+  ],
+  "c": "#6f749d",
+  "k": [
+   0.738,
+   0.891,
+   0.994,
+   0.984
+  ],
+  "p": [
+   0.052,
+   0.223,
+   0.906,
+   0.517
+  ]
  },
  "https://www.appbank.net/wp-content/uploads/2026/11/20261117_084139_289_01.webp": {
   "w": 1920,
@@ -6990,12 +7128,6 @@
   "k": null,
   "p": null
  },
- "https://www.bing.com/th?id=ONUT.wMZWZGfiqJ_2-Up3isrMZg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.xIVTwMTYf8aiPMNzVoJrGA&pid=News&w=480": {
   "w": 480,
   "h": 480,
@@ -7204,6 +7336,12 @@
  "https://www.computerweekly.com/rms/computerweekly/gta-vi-editorial-do-not-reuse-getty.jpg": {
   "w": 1200,
   "h": 400,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/18/FfMzG-6VEAA3Gtv-e1666114081464.jpg": {
+  "w": 900,
+  "h": 508,
   "target": 720,
   "v": 3
  },
@@ -7483,6 +7621,12 @@
   "w": 1200,
   "h": 625,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.nikkansports.com/sports/news/img/202611200001299-w500_1.jpg": {
+  "w": 500,
+  "h": 873,
+  "target": 720,
   "v": 3
  },
  "https://www.notebookcheck-cn.com/fileadmin/Notebooks/News/_nc5/Severian-launch.jpg": {

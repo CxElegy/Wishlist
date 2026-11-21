@@ -223,6 +223,105 @@
   "漫威电影": 22,
   "ILLIT": 8,
   "绝区零": 8,
-  "三星手机": 7
- }
+  "三星手机": 7,
+  "周杰伦": 5,
+  "哈利波特剧集": 3,
+  "滑雪": 3,
+  "A2O LITE": 2,
+  "チェーンソーマン": 2
+ },
+ "周杰伦": [
+  {
+   "headline": "周杰伦悉尼开唱密会《狂野时速》系列导演惹热话",
+   "highlight": "悉尼开唱",
+   "blurb": "周杰伦悉尼开唱，会后密会《狂野时速》系列导演，引发热议。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261122/photo/bkn-20261122000121422-1122_00862_001_02b.jpg?20261121230942"
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO Sets Harry Potter Series for December 25 Premiere",
+   "highlight": "December 25 Premiere",
+   "blurb": "HBO's Harry Potter series is set to premiere on December 25.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Harry Potter Season 2: new report hints at young Draco photo",
+   "highlight": "Season 2",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "安比高原スキー場とホテルがWorld Ski Awards 2026で本州初のダブル受賞",
+   "highlight": "本州初のダブル受賞",
+   "blurb": "安比高原のスキー場とホテルが World Ski Awards 2026 で、本州初のダブル受賞。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/11/1120885_2.jpg"
+  },
+  {
+   "headline": "Burtonが振り返るスノーボード黄金期。1997〜2007年、競技の進化と映像カルチャーが生んだ新時代",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "NCT DREAM, '쇼! 음악중심'서 리센느·A2O LITE 꺾고 1위!",
+   "highlight": "",
+   "blurb": "쇼! 음악중심 1위 후보에 A2O LITE가 올랐으나 NCT DREAM이 1위를 차지했다.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "A2O LITE，9人 9色魅力",
+   "highlight": "9人 9色",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "劇場版「チェンソーマン レゼ篇」の配信はどこで見れる？9月19日からAmazonプライムビデオで独占配信",
+   "highlight": "Amazonプライムビデオで独占配信",
+   "blurb": "劇場版「チェンソーマン レゼ篇」は 9月19日から Amazonプライムビデオで独占配信。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Chainsaw Man Episode 2 review: Denji’s first day on the job",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }

@@ -1,10 +1,10 @@
 {
- "admin": "5ebb28077394",
- "admin-ai": "c29db9e8bbd4",
+ "admin": "98f0c955fbe1",
+ "admin-ai": "3cdd38e8d193",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1b4025fe"
+   "e7b619a7"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "4a0d020e807d",
+ "admin-emblem": "3de354c7a840",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d959897d"
+   "52e6cf25"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "bfe8e3e4b5f9",
+ "admin-now": "2fafbbdf5b89",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "902b87e2"
+   "5e9fc7a7"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "7ebdf1b5"
   ]
  },
- "admin-system": "0bf3cf63d190",
+ "admin-system": "e3c8158945c3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "778492a1"
+   "cf399ee1"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "aa2e80a3"
+   "4a1d39ff"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "3a0d5ccf"
   ]
  },
- "index": "a3912d1196f6",
+ "index": "a9612dc4f028",
  "index_marks": {
   "front": [
    "トップ",
-   "ed99c9c2"
+   "3ef0b53f"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "be3cdedb"
+   "f35ea214"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -141,11 +141,11 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "a09c3244"
+   "ad29eff1"
   ],
   "w-7a894105": [
    "周杰伦",
-   "c1ce520b"
+   "ca30e67f"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "f4895c3c"
+   "27be4409"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "e7e426f5"
+   "5a3dcde8"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "4f51dc2f"
   ]
  },
- "updated": "11.22 03:39",
+ "updated": "11.22 03:45",
  "wishlist": "8081cd7b9303"
 }
