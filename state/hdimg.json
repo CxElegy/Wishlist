@@ -789,6 +789,62 @@
   "k": null,
   "p": null
  },
+ "https://biz.chosun.com/resizer/v2/GBRTSMBUHE3DCZLFGYYTCYRSME.jpg?auth=1b7bbc5fde70d7b47712f519fe795934dc4ac45c316876b8bf3e3d9adfd46876&width=616": {
+  "w": 616,
+  "h": 534,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.494,
+  "local": "pics/0cdb997093380423.webp",
+  "out": [
+   1280,
+   1110
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    2,
+    3,
+    2,
+    2,
+    2,
+    4,
+    4,
+    38,
+    23,
+    8,
+    8,
+    5
+   ],
+   [
+    3,
+    3,
+    6,
+    18,
+    5,
+    6,
+    2,
+    19,
+    23,
+    6,
+    3,
+    5
+   ]
+  ],
+  "c": "#575a98",
+  "k": [
+   0.003,
+   0.007,
+   0.99,
+   0.968
+  ],
+  "p": [
+   0.227,
+   0.203,
+   0.869,
+   0.406
+  ]
+ },
  "https://biz.chosun.com/resizer/v2/MU4TKZJSGFRWKODFGJSDMNDGMY.jpg?auth=d5d781a08144fc3ecbffab8ddb662f77297fde6b0d303a24484c0e2d684d3c2f&width=572&height=300&smart=true": {
   "w": 572,
   "h": 300,
@@ -944,6 +1000,57 @@
   "h": 338,
   "target": 720,
   "v": 3
+ },
+ "https://cdn.finomy.com/news/thumbnail/202611/267486_261209_145_v150.jpg": {
+  "w": 300,
+  "h": 225,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.586,
+  "local": "pics/151db5b5bf1da7ca.webp",
+  "out": [
+   900,
+   675
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    7,
+    6,
+    7,
+    9,
+    11,
+    11,
+    8,
+    8,
+    7,
+    9,
+    9,
+    9
+   ],
+   [
+    5,
+    5,
+    9,
+    10,
+    9,
+    5,
+    12,
+    15,
+    12,
+    7,
+    7,
+    5
+   ]
+  ],
+  "c": "#616056",
+  "k": [
+   0.182,
+   0.115,
+   0.392,
+   0.28
+  ],
+  "p": null
  },
  "https://cdn.gamemeca.com/gmboard/mobile_userreview/2026/09/13/20260913205623_218538.png": {
   "w": 2560,
@@ -1305,6 +1412,12 @@
   "target": 720,
   "v": 3
  },
+ "https://digg.com/entertainment/xfwm5b5s/opengraph-image?6a9dc854e855d953": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/019e4bcd-3dcd-744f-929d-46a158815c62/compose?aspectRatio=1.78&format=webp&width=1200": {
   "w": 1200,
   "h": 674,
@@ -1508,6 +1621,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://helios-i.mashable.com/imagery/articles/01wYqWza2nwthFr8EnLbnsZ/hero-image.fill.size_1200x675.v1795279249.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://helios-i.mashable.com/imagery/articles/02eaGJEEvgyCPLPEm5KnYyE/hero-image.fill.size_1200x675.v1794995375.jpg": {
@@ -1862,6 +1981,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.martincid.com/2026/11/take-two-interactive.jpg?f=orig": {
+  "w": 1344,
+  "h": 768,
+  "target": 1280,
+  "v": 3
+ },
  "https://images.purexbox.com/28d73798bb173/1280x720.jpg": {
   "w": 1280,
   "h": 720,
@@ -2043,9 +2168,27 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hUPnJ.img": {
+  "w": 1456,
+  "h": 819,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hUlv2.img": {
   "w": 700,
   "h": 874,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hV0kG.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hVrTk.img": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -2803,6 +2946,12 @@
   "w": 2560,
   "h": 1440,
   "target": 1280,
+  "v": 3
+ },
+ "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg": {
+  "w": 1200,
+  "h": 600,
+  "target": 720,
   "v": 3
  },
  "https://iphoneislam.com/wp-content/uploads/2026/08/samsung-vs-apple.jpg": {
@@ -5204,6 +5353,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/1b108eafd04ed847d8a6a998c3fed5677d7dd204c45e16a8da144f7163e9d823/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2F6c270f9ef0d9ad6bf8171902a767b177.jpg_up.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/4cb0fea9f5224f2cbfd43e860d1a8a7d8fefda0f035f5edebf6a125315f5a1e2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Flead-lucia-gta-voice_1661.jpg": {
   "w": 1200,
   "h": 800,
@@ -5451,6 +5606,12 @@
   "v": 3,
   "blur": 0.411
  },
+ "https://static.sanyonews.jp/image/article/size1/a/c/7/9/ac79a8e767665830f3190ef45413e1ef_1.jpg": {
+  "w": 535,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/e/c/a/0/eca06632b083f3de1ab03c597fe95639_1.jpg": {
   "w": 640,
   "h": 426,
@@ -5551,6 +5712,12 @@
   "w": 1280,
   "h": 1919,
   "target": 1280,
+  "v": 3
+ },
+ "https://statics-prod.mirrordaily.news/images/5c203aae-6135-4971-a789-c99845168cbd.jpg": {
+  "w": 3000,
+  "h": 2000,
+  "target": 720,
   "v": 3
  },
  "https://storage.tenki.jp/storage/static-images/forecaster_diary/image/4/41/413/41387/main/20261120152254/large.jpg": {
@@ -5742,10 +5909,28 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/21/1795264006409_3-1795252310683820234456-20-0-396-719-crop-17952523268951665002337.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://wimg.heraldcorp.com/news/cms/2026/11/21/news-p.v1.20261026.147ea7e1b65a4793b6df955ee31c2ab5_P1.jpg": {
+  "w": 647,
+  "h": 431,
+  "target": 720,
+  "v": 3
+ },
  "https://win.gg/wp-content/uploads/2026/11/image-2026-11-19T122636.407.jpg.webp": {
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://wotpack.ru/wp-content/uploads/2026/11/obnovlenie-zzz-3.4-kogda-vyydet-bannery-i-novovvedeniya.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://www.4gamer.net/games/579/G057943/20261111057/TN/001.jpg": {
@@ -5759,6 +5944,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.aceshowbiz.com/display/images/photo/2026/11/19/auto_00263379_1795025775.webp": {
+  "w": 1280,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://www.agara.co.jp/image/article/size1/d/b/c/5/dbc580a479ab6065efcfbfd8941006dd_1.jpg": {
@@ -5850,6 +6041,12 @@
  "https://www.atpress.ne.jp/attachments/5hyxKwgznMzJ1AVVM446.jpg": {
   "w": 2880,
   "h": 1620,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.billboard.com/wp-content/uploads/2026/11/illit.jpg?w=1024": {
+  "w": 1024,
+  "h": 576,
   "target": 1280,
   "v": 3
  },
@@ -6133,12 +6330,6 @@
    0.887,
    0.6
   ]
- },
- "https://www.bing.com/th?id=ONUT.709xrAgeG3j5LMw4z-UWVw&pid=News&w=768": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.C7yo6RHIF9O1SXc6EY1Qdw&pid=News&w=1200": {
   "w": 534,
@@ -6545,6 +6736,52 @@
    0.57,
    0.518
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.hSK1x_UwmELq3M2x6HEyvg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.489,
+  "local": "pics/8d89bea19bc8b910.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    8,
+    6,
+    6,
+    13,
+    14,
+    18,
+    7,
+    5,
+    5,
+    9,
+    5
+   ],
+   [
+    4,
+    6,
+    7,
+    7,
+    7,
+    7,
+    15,
+    11,
+    12,
+    5,
+    6,
+    13
+   ]
+  ],
+  "c": "#645c51",
+  "k": null,
+  "p": null
  },
  "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500": {
   "w": 500,
@@ -6988,6 +7225,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.digitbin.com/wp-content/uploads/2026/11/galaxy-s27-now-bar-dynamic-island-redesign-1280x714.jpg": {
+  "w": 1280,
+  "h": 714,
+  "target": 720,
+  "v": 3
+ },
  "https://www.digitbin.com/wp-content/uploads/2026/11/galaxy-s27-pro-lpddr6-1tb-leak-1280x714.jpg": {
   "w": 1280,
   "h": 714,
@@ -7138,6 +7381,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Ultra-vs.-S26-Ultra.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-1.jpg": {
   "w": 1280,
   "h": 720,
@@ -7240,6 +7489,12 @@
   "w": 1200,
   "h": 900,
   "target": 720,
+  "v": 3
+ },
+ "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA-6-Recomp.jpg": {
+  "w": 2500,
+  "h": 1875,
+  "target": 1280,
   "v": 3
  },
  "https://www.ntoday.co.kr/news/photo/202611/130958_118695_1131.jpg": {

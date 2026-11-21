@@ -1,14 +1,14 @@
 {
- "admin": "6c449bf5341d",
- "admin-ai": "3a15b94b2ad8",
+ "admin": "5ebb28077394",
+ "admin-ai": "c29db9e8bbd4",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "113338ac"
+   "1b4025fe"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "45ed5a61"
+   "ce365d47"
   ]
  },
  "admin-boards": "53a02b367e49",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "5fe159499130",
+ "admin-emblem": "4a0d020e807d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c208a8a2"
+   "d959897d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "4179c76ef100",
+ "admin-now": "bfe8e3e4b5f9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "fe17f8c5"
+   "902b87e2"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "aa4ad423"
+   "c4a6256a"
   ],
   "term-panel": [
    "ライブログ",
-   "a13d843f"
+   "7ebdf1b5"
   ]
  },
- "admin-system": "0d186312edc9",
+ "admin-system": "0bf3cf63d190",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4c81556d"
+   "778492a1"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "6eae2ed8"
+   "aa2e80a3"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "3a0d5ccf"
   ]
  },
- "index": "a7f816f387bd",
+ "index": "a3912d1196f6",
  "index_marks": {
   "front": [
    "トップ",
-   "6b4ed817"
+   "ed99c9c2"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "5ec3633d"
+   "171c0fee"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "978089c3"
+   "30bd41b7"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "ccbe84c1"
+   "fdd0280f"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "c32431d3"
+   "a100b6c8"
   ],
   "w-f303ad09": [
    "绝区零",
-   "e08a50aa"
+   "4f51dc2f"
   ]
  },
- "updated": "11.22 03:33",
- "wishlist": "5712cb2400c2"
+ "updated": "11.22 03:39",
+ "wishlist": "8081cd7b9303"
 }
