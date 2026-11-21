@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "e81cadad54f5",
+ "edit_sig": "2a48afaffc7f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -188,15 +188,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 5,
-     "source": "Infoseekニュース",
-     "title": "リフト1日券が7000円に…値上げで懸念の「客離れ」スキー場やホテルの“道民限定チケット”広がる",
-     "url": "https://news.infoseek.co.jp/article/stv_1496636083793510780/"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -227,6 +218,16 @@
      "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/hakuba47.jpg",
      "image_via": "og:image",
      "url": "https://dmksnowboard.com/hakuba-natural-snow-opening-2026-11-21/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "リフト1日券が7000円に…値上げで懸念の「客離れ」スキー場やホテルの“道民限定チケット”広がる",
+     "highlight": "7000円",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/stv/stv_1496636083793510780_0-enlarge.jpg",
+     "image_via": "og:image",
+     "url": "https://news.infoseek.co.jp/article/stv_1496636083793510780/",
      "weight": "normal"
     }
    ],
