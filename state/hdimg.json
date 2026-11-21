@@ -818,57 +818,6 @@
    0.581
   ]
  },
- "https://attach.setn.com/newsimages/2026/11/20/5795494-XXL.jpg": {
-  "w": 510,
-  "h": 287,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.423,
-  "local": "pics/44122be28caa098a.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    4,
-    7,
-    7,
-    6,
-    9,
-    13,
-    12,
-    10,
-    9,
-    9,
-    9,
-    5
-   ],
-   [
-    7,
-    16,
-    12,
-    13,
-    8,
-    10,
-    9,
-    7,
-    5,
-    4,
-    5,
-    5
-   ]
-  ],
-  "c": "#a8a58c",
-  "k": [
-   0.02,
-   0.053,
-   0.992,
-   0.963
-  ],
-  "p": null
- },
  "https://automaton-media.com/en/wp-content/uploads/2026/11/20261113-75190-header.jpg": {
   "w": 1305,
   "h": 852,
@@ -3290,6 +3239,12 @@
  "https://media.image.infoseek.co.jp/isnews/photos/yorozoonews/yorozoonews_17057073_0.jpg": {
   "w": 640,
   "h": 677,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.nownews.com/nn_media/thumbnail/2026/11/1795171225956-1cef1977fc14485fab7a15f202c6f3c0-1200x675.webp?unShow=false": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
