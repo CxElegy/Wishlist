@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-21T10:35:46+00:00",
+ "checked": "2026-11-21T11:29:10+00:00",
  "fired": {
   "at": "2026-11-21T10:35:46+00:00",
   "results": {
@@ -68,66 +68,47 @@
    },
    "items": [
     "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "dota2",
     "gelato pique",
-    "lib:ONE PIECE",
-    "lib:モンスターハンターワイルズ",
-    "lib:世界最強の魔女、始めました",
-    "lib:原神",
-    "lib:宮崎駿",
-    "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "lib:Ado",
+    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
+    "lib:広島旅行",
+    "lib:転生したら剣でした 第2期",
+    "猫用品"
    ],
-   "last_batch": "2026-11-21T09:03:30+00:00",
+   "last_batch": "2026-11-21T11:12:32+00:00",
    "last_error": {},
    "need": true,
-   "prog": 370,
+   "prog": 438,
    "prog_day": "2026-11-21",
-   "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
-   ],
-   "sig": "69da7e6ebdb9",
+   "ripe": [],
+   "sig": "424fce184b5a",
    "token_cap": 1000000,
-   "tokens_today": 690734,
-   "why": "整理待ちの記事 121 件（17 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 751062,
+   "why": "整理待ちの記事 47 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High",
-    "漫威电影",
-    "GTA 6",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "cda6939b1c7d",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "哈利波特剧集"
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 10 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -260,12 +241,12 @@
    "runs": 15
   },
   "2026-11-21": {
-   "batches": 30,
-   "cr": 13684756,
-   "cw": 636876,
-   "in": 384,
-   "out": 53474,
-   "runs": 13
+   "batches": 39,
+   "cr": 15235324,
+   "cw": 691069,
+   "in": 427,
+   "out": 59566,
+   "runs": 14
   }
  }
 }
