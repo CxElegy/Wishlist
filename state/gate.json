@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-21T04:18:22+00:00",
+ "changed": true,
+ "checked": "2026-11-21T04:33:31+00:00",
  "fired": {
-  "at": "2026-11-21T03:22:42+00:00",
+  "at": "2026-11-21T04:33:31+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -52,25 +52,33 @@
    "edit": 17
   },
   "2026-11-21": {
-   "edit": 8
+   "edit": 9
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-21T03:22:42+00:00",
+    "at": "2026-11-21T04:33:31+00:00",
     "attempts": 1,
     "day": "2026-11-21",
-    "prog": 265,
-    "resp": "cse_01W4x6f8SDH2crYiuwUsx7Wa",
-    "sig": "e17d29fd0c74"
+    "prog": 276,
+    "resp": "",
+    "sig": "158d61b7c0e7"
    },
    "items": [
     "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
     "MMORPG 新作",
     "dota2",
-    "日本顶级网球赛事"
+    "三星手机",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-21T03:43:53+00:00",
    "last_error": {
@@ -80,35 +88,41 @@
    "need": true,
    "prog": 276,
    "prog_day": "2026-11-21",
-   "ripe": [],
-   "sig": "1daa7e0d7778",
+   "ripe": [
+    "GTA 6",
+    "ILLIT",
+    "漫威电影",
+    "绝区零"
+   ],
+   "sig": "158d61b7c0e7",
    "token_cap": 1000000,
    "tokens_today": 487553,
-   "why": "整理待ちの記事 4 件（4 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 46 件（12 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "绝区零"
+   ],
+   "need": true,
+   "sig": "b0be86aead8c",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "周杰伦"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 11 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
