@@ -1466,6 +1466,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://dailytimes.com.pk/assets/uploads/2026/11/21/From-becomes-Netflixs-major-streaming-success.jpg": {
+  "w": 2560,
+  "h": 1920,
+  "target": 720,
+  "v": 3
+ },
  "https://deadline.com/wp-content/uploads/2026/11/X-MEN-Hugh-Jackman-James-Marsden-Patrick-Stewart-Halle-Berry-Famke-Janssen-2000.-TM-and-Copyri-MCDAVDO-WD014-1000.jpg": {
   "w": 1000,
   "h": 563,
@@ -1746,6 +1752,18 @@
  "https://hermes.media.transform.aol.com/8bf9d2fbba5ad135b93b06684ee193433f18ce52/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/19/feff663e-2435-3464-b153-917359948e38/7ae5162a-a881-4387-a44c-23ce06c377e9.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://hiphopwired.com/wp-content/uploads/sites/43/2026/11/17951955376011.jpg": {
+  "w": 1024,
+  "h": 683,
+  "target": 720,
+  "v": 3
+ },
+ "https://hiphopwired.com/wp-content/uploads/sites/43/2026/11/image-collage-4.jpg": {
+  "w": 1680,
+  "h": 960,
   "target": 720,
   "v": 3
  },
@@ -6771,12 +6789,6 @@
   "v": 3,
   "blur": 0.404
  },
- "https://www.bing.com/th?id=ONUT.-uISZ1wmHfcOppDMAov4_Q&pid=News&w=700": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.00q_3SKAZTpUktsTEvv6GQ&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -7069,11 +7081,56 @@
    0.25
   ]
  },
- "https://www.bing.com/th?id=ONUT.GCd2t5u-87U9WGvcjGMVeQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
+ "https://www.bing.com/th?id=ONUT.GcemEM5BIMcwOa3RsRb-tQ&pid=News&w=400": {
+  "w": 400,
+  "h": 400,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "blur": 0.44,
+  "local": "pics/7543a5d8ecf47002.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    14,
+    14,
+    19,
+    7,
+    6,
+    3,
+    10,
+    7,
+    9,
+    5,
+    2
+   ],
+   [
+    0,
+    11,
+    16,
+    14,
+    7,
+    4,
+    6,
+    8,
+    6,
+    8,
+    9,
+    12
+   ]
+  ],
+  "c": "#c7bdb5",
+  "k": null,
+  "p": [
+   0.01,
+   0.141,
+   0.808,
+   0.695
+  ]
  },
  "https://www.bing.com/th?id=ONUT.HYCO0nIL03FSSwLoC54zQg&pid=News&w=1200": {
   "w": 700,
@@ -7189,6 +7246,12 @@
   ],
   "p": null
  },
+ "https://www.bing.com/th?id=ONUT.RJfOq_-cYlIFrW3VZpUfpw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.UeMEqrnIA3h3gJ78C7jvbw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -7210,6 +7273,12 @@
  "https://www.bing.com/th?id=ONUT._vPVIoyfJkD-Bj04ZKa2qA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.bcgo0i7VTyA76tgPvZuF1Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -7267,12 +7336,6 @@
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
   "h": 287,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.codjF04jnNdG2MXaMaexJQ&pid=News&w=800": {
-  "w": 700,
-  "h": 487,
   "target": 720,
   "v": 3
  },
@@ -7901,12 +7964,6 @@
    0.947
   ],
   "p": null
- },
- "https://www.el-balad.com/uploads/2026/11/21/bowling-alley-safe-code-gta-6-0af70a9d_1200w.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
  },
  "https://www.enduins.com/wp-content/uploads/2026/11/19e3d8c2757-f2539405-541e-4806-a27f-29bc4c338b97.jpg": {
   "w": 1920,
