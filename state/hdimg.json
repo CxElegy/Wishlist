@@ -3068,6 +3068,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://k-plaza.com/wp-content/uploads/2026/11/6e195630a02193f6decbc766d343f233.jpg": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.362
+ },
  "https://local12.com/resources/media2/16x9/1147/1320/0x9/90/c93ed80f-8419-4d26-963c-dc83c029c695-GTA.png": {
   "w": 1320,
   "h": 743,
@@ -3372,6 +3379,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/11/1183756_1.jpg": {
+  "w": 782,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://news.mynavi.jp/article/20261116-5337015/ogp_images/ogp.jpg": {
@@ -5115,56 +5128,6 @@
   ],
   "p": null
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000098-kstylens-000-3-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/58577e72f4515b25.webp",
-  "out": [
-   1200,
-   675
-  ],
-  "why": "期限付きの網址",
-  "m": [
-   [
-    8,
-    6,
-    11,
-    7,
-    8,
-    10,
-    10,
-    7,
-    9,
-    13,
-    7,
-    5
-   ],
-   [
-    10,
-    9,
-    7,
-    4,
-    6,
-    22,
-    17,
-    6,
-    5,
-    3,
-    7,
-    5
-   ]
-  ],
-  "c": "#74715c",
-  "k": [
-   0.023,
-   0.034,
-   0.865,
-   0.6
-  ],
-  "p": null
- },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
   "h": 840,
@@ -6446,6 +6409,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.409
+ },
+ "https://sumahodigest.com/wp-content/uploads/2026/11/43534rwewr.jpg": {
+  "w": 1786,
+  "h": 987,
+  "target": 1280,
+  "v": 3
  },
  "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-15-081420.jpg": {
   "w": 1640,

@@ -1,56 +1,5 @@
 [
 {
-"at": "2026-11-20T01:27:04+00:00",
-"text": "2026-11-20 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT、MMORPG 新作 ほか 14（20 版面・44 本・今日の整理待ちは全部終わり） · token 新規入力 4.0万・キャッシュ読み 46.4万・出力 1,493",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.44,
-"mem_total": 16869113856,
-"mem_free": 15735398400,
-"disk_used": 10463010816,
-"disk_free": 31206346752,
-"disk_total": 41669357568,
-"peak": 591093760
-},
-"batch": 1,
-"boards": [
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"ILLIT",
-"MMORPG 新作",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"三星手机",
-"周杰伦",
-"哈利波特剧集",
-"星巴克马克杯",
-"滑雪",
-"漫威电影",
-"猫用品",
-"绝区零"
-],
-"stories": 44,
-"left": 0,
-"edited": 19,
-"run": null,
-"tok": {
-"in": 16,
-"cw": 40344,
-"cr": 464305,
-"out": 1493,
-"calls": 8,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 506158
-},
-{
 "at": "2026-11-20T02:39:03+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2103,5 +2052,37 @@
 "calls": 19,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-21T07:21:43+00:00",
+"text": "2026-11-21 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 4 版面） · token 新規入力 4.3万・キャッシュ読み 49.3万・出力 1,617",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.45,
+"mem_total": 16869113856,
+"mem_free": 15926681600,
+"disk_used": 10465607680,
+"disk_free": 31203749888,
+"disk_total": 41669357568,
+"peak": 390819840
+},
+"batch": 1,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 4,
+"edited": 21,
+"run": 1795245438.5362713,
+"tok": {
+"in": 16,
+"cw": 42561,
+"cr": 492582,
+"out": 1617,
+"calls": 8,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 536776
 }
 ]
