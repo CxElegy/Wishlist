@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "2a48afaffc7f",
+ "edit_sig": "7dfacae7b539",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -875,15 +875,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-17",
-     "n": 2,
-     "source": "DVM360",
-     "title": "What's new in feline care: A parasiticide approval and 3 new nutrition products",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQM2VyRm4yeVhmX0pPMHoxNUgtb3FoZk5EaFNkaVBwYXo1YzVFUWViVXBhUTdsaFBodm16RTZ3NU4zM2FZUnZXQXN1NEI1TVphM01PRFVsVXUzc2lNN3B0V3pOR0JGdHZqOU5KVjNJS0VfVWpQNUFUWHFTQ2xDUlJoNXlwc2QxUk5QYnlRaFFVTUxSVldmYXhTY0d3?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -898,6 +889,16 @@
      },
      "url": "https://www.masslive.com/shopping-deals/2026/11/cat-owners-are-rushing-to-grab-the-viral-whisker-litter-robot-before-black-friday-deals-disappear.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "What's new in feline care: A parasiticide approval and 3 new nutrition products",
+     "highlight": "parasiticide approval",
+     "image": "https://cdn.sanity.io/images/0vv8moc6/dvm360/83e5a9222bdab8e3428709ef4021887883331fa5-5760x3840.jpg?w=1200&fit=max&q=75&fm=jpg",
+     "image_via": "og:image",
+     "url": "https://www.dvm360.com/view/cat-care-news-a-parasiticide-approval-and-3-new-nutrition-products",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
