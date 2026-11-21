@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-21T15:24:14+00:00",
+ "changed": true,
+ "checked": "2026-11-21T16:37:05+00:00",
  "fired": {
   "at": "2026-11-21T15:22:42+00:00",
   "results": {
@@ -67,38 +67,25 @@
     "sig": "6b02f98b3744"
    },
    "items": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
-    "FROM",
-    "ILLIT",
-    "MMORPG 新作",
-    "gelato pique",
-    "lib:BTS",
-    "lib:Mrs. GREEN APPLE",
-    "lib:YOASOBI",
-    "lib:【推しの子】",
-    "lib:サッカー日本代表",
-    "lib:ポケットモンスター",
-    "lib:大相撲",
-    "lib:大谷翔平",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "绝区零"
+    "lib:F1",
+    "lib:Nintendo Switch 2",
+    "lib:iPhone",
+    "lib:ユニクロ",
+    "lib:宇宙・ロケット",
+    "lib:温泉",
+    "lib:無印良品",
+    "lib:観葉植物"
    ],
-   "last_batch": "2026-11-21T12:59:29+00:00",
+   "last_batch": "2026-11-21T15:35:54+00:00",
    "last_error": {},
    "need": true,
-   "prog": 379,
-   "prog_day": "2026-11-21",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "gelato pique"
-   ],
-   "sig": "6b02f98b3744",
+   "prog": 8,
+   "prog_day": "2026-11-22",
+   "ripe": [],
+   "sig": "33dadbe4b763",
    "token_cap": 1000000,
-   "tokens_today": 801079,
-   "why": "整理待ちの記事 109 件（18 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -255,12 +242,12 @@
    "runs": 15
   },
   "2026-11-21": {
-   "batches": 40,
-   "cr": 15820833,
-   "cw": 738850,
-   "in": 444,
-   "out": 61785,
-   "runs": 15
+   "batches": 42,
+   "cr": 16454000,
+   "cw": 781413,
+   "in": 463,
+   "out": 63943,
+   "runs": 16
   }
  }
 }
