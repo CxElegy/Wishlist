@@ -68,6 +68,9 @@
 
 ## 每次回复都贴链接
 
+- **店長に設定を頼むとき（2026-11-21，用户定的）**：GitHub の Pages・Secrets・令牌・公開／非公開・Actions、claude.ai のコネクタ・環境などを店長に頼むときは、毎回
+  1. その設定画面へ直接飛べるリンクを貼る（例 https://github.com/CxElegy/<repo>/settings/pages ・ `/settings/secrets/actions` ・ https://github.com/settings/personal-access-tokens/new ）。店長に GitHub を開いて探させない。
+  2. リンクのすぐ下に「開いたら次に何をするか」を番号付きで書く（どこを押す・何を選ぶ・何を入れる・最後に何を押す・終わったらどうなるか）。
 - 回复提到网页・PR・设置页，就贴能点开的链接：
   简报（店長のページ）https://cxelegy.github.io/Wishlist/home/ 、设置页 https://cxelegy.github.io/Wishlist/home/settings.html 、
   愿望清单 https://cxelegy.github.io/Wishlist/home/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/home/heat.html 、テーマ見本 https://cxelegy.github.io/Wishlist/home/themes.html 、管理ページ https://cxelegy.github.io/Wishlist/home/admin.html 、テストグラウンド https://cxelegy.github.io/Wishlist/testground/ 、PR 用完整网址。
