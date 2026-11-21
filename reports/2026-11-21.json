@@ -1,29 +1,37 @@
 {
  "date": "2026-11-21",
- "edit_sig": "6fc86724f38d",
+ "edit_sig": "a4da9d118ba2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Astrae Oratio の主要キャラクターと物語の世界観が公開された。次回テスト・リリース日は未発表。",
      "date": "2026-11-19",
-     "n": 1,
+     "headline": "Astrae Oratio Reveals Key Characters and Story Universe",
+     "highlight": "Key Characters",
+     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+     "image_via": "作品封面",
      "source": "NC",
-     "title": "Astrae Oratio Reveals Key Characters and Story Universe",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1VM3hoTlBOZXBFbEZSSkpDNzhRSDh6Y0ZKM3J1LVk5bWhLdlE0bmVzS2lBeXFDb0VGalBXMVFIMWcwUmF3a1cxNXNrZ3JtUGpfYWFZa1lNRUlEUm5nc3QzTkEwX0R1MVFEeHZYbzdvSTc?oc=5"
+     "source_icon": "https://assets.playnccdn.com/static-company/blog/img/icon-512.png",
+     "url": "https://about.nc.com/en/news/article/astraeoratio_update_260512",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-14",
-     "n": 2,
+     "headline": "Astrae Oratio Wraps Up Comiket Appearance with Teaser Art Book Sold Out",
+     "highlight": "Sold Out",
+     "image": null,
      "source": "NC",
-     "title": "Astrae Oratio Wraps Up Comiket Appearance with Teaser Art Book Sold Out",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB0cTMyQm5NYmFfaGtaUjJxV25ielFWbGM4NmtMcExBckZsenlQSnhubXdlQnluRVpNS1IzV21jb0tYckhuNUdzclZyaS10Nm5Za2d5TS13UFg4YkZ1LVNlQk8wVDllVXd3YmFndUYzQWs?oc=5"
+     "source_icon": "https://assets.playnccdn.com/static-company/blog/img/icon-512.png",
+     "url": "https://about.nc.com/en/news/article/astraeoratio_update_260818",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",

@@ -1032,6 +1032,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.factinnews.co.kr/news/photo/202611/301074_50935_130.jpg": {
+  "w": 600,
+  "h": 338,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/gmboard/mobile_userreview/2026/09/13/20260913205623_218538.png": {
   "w": 2560,
   "h": 1600,
@@ -1903,12 +1909,6 @@
  "https://ihorror.com/wp-content/uploads/2026/11/From-season-4-official-trailer.webp": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://image-cdn.hypb.st/https%3A%2F%2Fcn.hypebeast.com%2Ffiles%2F2026%2F11%2F16%2F1.jpg?cbr=1&q=90&w=1200&h=630&fit=crop": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -4799,56 +4799,6 @@
    0.736,
    0.476,
    0.854
-  ],
-  "p": null
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000468-oric-000-1-view.jpg?exp=10800": {
-  "w": 960,
-  "h": 540,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/32ef70cb54351914.webp",
-  "out": [
-   960,
-   540
-  ],
-  "why": "期限付きの網址",
-  "m": [
-   [
-    6,
-    7,
-    5,
-    5,
-    4,
-    5,
-    14,
-    13,
-    11,
-    11,
-    11,
-    8
-   ],
-   [
-    5,
-    12,
-    9,
-    9,
-    4,
-    8,
-    8,
-    10,
-    10,
-    10,
-    8,
-    7
-   ]
-  ],
-  "c": "#c09a76",
-  "k": [
-   0.016,
-   0.023,
-   0.987,
-   0.674
   ],
   "p": null
  },

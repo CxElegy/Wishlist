@@ -76,7 +76,8 @@
   "あつ森": 1,
   "The Mandalorian": 1,
   "猫用品": 1,
-  "周杰伦": 5
+  "周杰伦": 5,
+  "Astrae Oratio": 2
  },
  "漫威电影": [
   {
@@ -505,6 +506,26 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "Astrae Oratio Reveals Key Characters and Story Universe",
+   "highlight": "Key Characters",
+   "blurb": "Astrae Oratio の主要キャラクターと物語の世界観が公開された。次回テスト・リリース日は未発表。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Astrae Oratio Wraps Up Comiket Appearance with Teaser Art Book Sold Out",
+   "highlight": "Sold Out",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]
