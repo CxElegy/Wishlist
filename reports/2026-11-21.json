@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "edit_sig": "96a4667ba1a9",
+ "edit_sig": "846c99510400",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -222,29 +222,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-21",
-     "n": 6,
-     "source": "報新聞 Mega News",
-     "title": "長野白馬村滑雪季11/21天然雪開滑 八方尾根6個新區域、五竜夜滑與岩岳雪地摩托車",
-     "url": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxPTndMNExsdk9tcTNrS2IxVTBfNHcxSV9UWHBVRy1EeDJIZ0RiR25ESl9uY1lQeUpzVzNBNzMwOHZ5WlBvb09sVDRnUnlITXR6MWxfT204V0phSkJ6VWtKbmtHVnp6U3VURzltb2d0RmdIQUVtdExnaWNDY0RKdW96WFlZb0xGTWhjcGRFMzBWUFFQZ2hReTZhejBHNjE5VFFsNEZ5YUhZR0UzQW1VR2liSGJWa1BlOGNWN3hMeHFNcUFnLVI4NGdLTE5SVGVrRll3d2JCUno5Q3dRUHh2Q1ZocFBxeFc2WUNzODFOYW5VYl85UlZfSG5BdGMwUS15a2hEZWFHV0JXYkY0LW4yek43aG1VeTBUWEJadkdySkp6NXd6WUFiaU5HVXdRSEJRNUZrcTdwUDlTLWZpeTNLWmlNVk9wMXdCdG1yaF81cTFmX0RKbmk1RUNuWFZXUnZuYXd4a1o4?oc=5"
-    },
-    {
-     "date": "2026-11-21",
-     "n": 7,
-     "source": "https://www.webook.com.tw/",
-     "title": "【銀白開季】長野白馬村天然雪登場5大滑雪場迎冬季新玩法",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9kSmxzVDd1eEVtNGo3S1JUQXItOFpkWEg3eGZ4VzA2MjV4TERPMWktTnUyV0M4Y1VPOWZQZ3k1M21zWG8wZlZqWVVOR0pIY0hFVTBFcHZDamw0al9VUG1rWWQzWnRad1paRWNwQ3hielVTOVNPbHRR?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 8,
-     "source": "DMKsnowboard",
-     "title": "ビッグホリデー、スキー・スノボツアーが最大2万円OFF！11月20日よりブラックフライデーセール開催",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0zd242VjgxdzVWRUtwRWtCM2Z4SXVTeE5WTHY3RW1YcU55U2g4WXNiZEtpdFplcnNhekxWTmNtV0psWmp3MjFFdnI0OXlYRGRCWnNjVlZYcHpMdTYzVjBCWEdydFlVRHBpczNHZA?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -275,6 +252,16 @@
      "image": "https://media.image.infoseek.co.jp/isnews/photos/stv/stv_1496636083793510780_0-enlarge.jpg",
      "image_via": "og:image",
      "url": "https://news.infoseek.co.jp/article/stv_1496636083793510780/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "ビッグホリデー、スキー・スノボツアーが最大2万円OFF！11月20日よりブラックフライデーセール開催",
+     "highlight": "最大2万円OFF",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/bk.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/big-holiday-black-friday-sale-2026/",
      "weight": "normal"
     }
    ],
