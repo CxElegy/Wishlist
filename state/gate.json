@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-21T14:18:15+00:00",
+ "checked": "2026-11-21T15:18:51+00:00",
  "fired": {
   "at": "2026-11-21T12:54:24+00:00",
   "results": {
@@ -89,13 +89,16 @@
    "last_batch": "2026-11-21T12:59:29+00:00",
    "last_error": {},
    "need": true,
-   "prog": 468,
+   "prog": 379,
    "prog_day": "2026-11-21",
-   "ripe": [],
-   "sig": "90e5ec647bd6",
+   "ripe": [
+    "BLEACH Mirrors High",
+    "gelato pique"
+   ],
+   "sig": "6b02f98b3744",
    "token_cap": 1000000,
    "tokens_today": 801079,
-   "why": "整理待ちの記事 109 件（18 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 109 件（18 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
