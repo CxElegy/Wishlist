@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "edit_sig": "38335ef932bb",
+ "edit_sig": "dc4615db6645",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -82,17 +82,19 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Dark Craft is a new free-to-play soulslike MMORPG blending Elden Ring-style combat with Minecraft-style building.",
      "date": "2026-11-21",
-     "n": 1,
-     "source": "The Hype Magazine",
-     "title": "Elden Ring Meets Minecraft in Dark Craft, an Ambitious New Free-to-Play Soulslike MMORPG",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNMnVNY1gxLVNfS0ZHcVJ0dVZkWEgzNTZXNEJ0S01JczFyaUNueVd1UmJMWWdjSUZIUTRNaGJmZmFHZWs1MkFpZTAwRDBWVWVHRjVGZVFCbGVPWVlfVThORWZUOU9CSWkzOWhYbnpPX2gwMHk4N2JzLVBnYjk1cVM5VVdFNWNMLXdhUDBaWDA5Q1VFTlA4?oc=5"
+     "headline": "Elden Ring Meets Minecraft in Dark Craft, an Ambitious New Free-to-Play Soulslike MMORPG",
+     "highlight": "Dark Craft",
+     "image": "https://www.thehypemagazine.com/wp-content/uploads/2026/11/elden-ring-meets-minecraft-dark-craft-free-rpg.jpg",
+     "image_via": "og:image",
+     "url": "https://www.thehypemagazine.com/2026/11/21/elden-ring-meets-minecraft-dark-craft-free-rpg/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -614,17 +616,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "‘From’ has become a major streaming success on Netflix. No news yet on the Season 5 premiere date.",
      "date": "2026-11-21",
-     "n": 1,
-     "source": "Daily Times",
-     "title": "‘From’ becomes Netflix’s major streaming success",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNZmpVOFlCWGpOMUZ5bG1fV2NTUW9rekJRZ2JTZlphdTVRV3liNTBhNWhZaHcyR3JadHF3ejg4SkhoQmttLVV6TDBIWS14WVp5dHR1UTdvR1d2aEhITjBKTlRUaWoxQzNweTVzM0U3OG82WTZ2VGZJdndqUDRoYWY5U3dxQ3kyd0U?oc=5"
+     "headline": "‘From’ becomes Netflix’s major streaming success",
+     "highlight": "major streaming success",
+     "image": "https://dailytimes.com.pk/assets/uploads/2026/11/21/From-becomes-Netflixs-major-streaming-success.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://dailytimes.com.pk/1584945/from-becomes-netflixs-major-streaming-success/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
