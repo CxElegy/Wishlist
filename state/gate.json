@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-21T03:22:42+00:00",
+ "changed": true,
+ "checked": "2026-11-21T04:07:18+00:00",
  "fired": {
   "at": "2026-11-21T03:22:42+00:00",
   "results": {
@@ -67,39 +67,24 @@
     "sig": "e17d29fd0c74"
    },
    "items": [
-    "Astrae Oratio",
     "BLEACH Mirrors High",
     "MMORPG 新作",
     "dota2",
-    "lib:NBA",
-    "lib:恐竜",
-    "lib:牧野植物園",
-    "lib:羽生善治",
-    "lib:藤井風",
-    "lib:貸した魔力は【リボ払い】で強制徴収",
-    "あつ森",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "滑雪"
+    "日本顶级网球赛事"
    ],
-   "last_batch": "2026-11-21T01:44:18+00:00",
+   "last_batch": "2026-11-21T03:43:53+00:00",
    "last_error": {
     "at": "2026-11-20T02:39:03+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 265,
+   "prog": 276,
    "prog_day": "2026-11-21",
-   "ripe": [
-    "Astrae Oratio",
-    "あつ森",
-    "哈利波特剧集",
-    "滑雪"
-   ],
-   "sig": "e17d29fd0c74",
+   "ripe": [],
+   "sig": "1daa7e0d7778",
    "token_cap": 1000000,
-   "tokens_today": 438706,
-   "why": "整理待ちの記事 64 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 487553,
+   "why": "整理待ちの記事 4 件（4 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -256,12 +241,12 @@
    "runs": 15
   },
   "2026-11-21": {
-   "batches": 18,
-   "cr": 8865946,
-   "cw": 401694,
-   "in": 247,
-   "out": 36765,
-   "runs": 8
+   "batches": 20,
+   "cr": 9845000,
+   "cw": 447566,
+   "in": 276,
+   "out": 39711,
+   "runs": 9
   }
  }
 }
