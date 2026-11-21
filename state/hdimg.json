@@ -6402,6 +6402,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2022/11/01095148/8499ea9b9ad1bb3b78dad263a404915b.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2022/11/28130615/344abd0b2e6359cef023a330754f9c2f.jpg": {
   "w": 1200,
   "h": 630,
@@ -7261,12 +7267,6 @@
  "https://www.bing.com/th?id=ONUT.RJfOq_-cYlIFrW3VZpUfpw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.UeMEqrnIA3h3gJ78C7jvbw&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
   "target": 720,
   "v": 3
  },
