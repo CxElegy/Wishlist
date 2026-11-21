@@ -7276,12 +7276,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.bcgo0i7VTyA76tgPvZuF1Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.brUqRvz65GQmZdeMLEHU2w&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -7851,6 +7845,12 @@
  "https://www.city.noboribetsu.lg.jp/article/2026111300059/file_contents/file_202611135133348_1.png": {
   "w": 1672,
   "h": 941,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.cnet.com/wp-content/uploads/sites/2/neakasa-riko-smart-pet-feeder-on-tile-floor-with-cat-sitting-nearby.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },

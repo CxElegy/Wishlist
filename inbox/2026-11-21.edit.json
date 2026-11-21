@@ -34,7 +34,11 @@
     95,
     88,
     83,
-    96
+    96,
+    103,
+    100,
+    107,
+    112
    ],
    "image": "https://www.vice.com/wp-content/uploads/sites/2/2026/11/How-Much-Money-Has-GTA-6-Made-So-Far-Launch-Sales-Explained.jpg?w=1280"
   },
@@ -76,8 +80,8 @@
   }
  ],
  "_covered": {
-  "GTA 6": 99,
-  "漫威电影": 95,
+  "GTA 6": 114,
+  "漫威电影": 103,
   "三星手机": 32,
   "绝区零": 23,
   "ILLIT": 26,
@@ -92,7 +96,7 @@
   "FROM": 1,
   "あつ森": 2,
   "The Mandalorian": 1,
-  "猫用品": 2,
+  "猫用品": 5,
   "周杰伦": 8,
   "Astrae Oratio": 2,
   "BLEACH Mirrors High": 1,
@@ -113,7 +117,8 @@
     72,
     74,
     84,
-    92
+    92,
+    99
    ],
    "image": "https://www.bing.com/th?id=ONUT.brUqRvz65GQmZdeMLEHU2w&pid=News&w=1200"
   },
@@ -151,7 +156,9 @@
     57,
     59,
     70,
-    63
+    63,
+    97,
+    101
    ]
   },
   {
@@ -628,6 +635,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Neakasa Riko: The Future of Wet Cat Food Dispensers Is Here",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
