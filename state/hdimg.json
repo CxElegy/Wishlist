@@ -481,12 +481,6 @@
   "target": 720,
   "v": 3
  },
- "https://9to5google.com/wp-content/uploads/sites/4/2026/11/samsung-galaxy-s27-ultra-leak-video.jpg?quality=82&strip=all&resize=1200,628": {
-  "w": 1200,
-  "h": 628,
-  "target": 720,
-  "v": 3
- },
  "https://agirls.aottercdn.com/media/eb099a90-9721-4190-b187-978d7829b439.jpg": {
   "w": 1200,
   "h": 684,
@@ -6631,6 +6625,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1794995576138_img_743cec74.jpeg": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/21/1795240091340_pin-galaxy-s27-ultra-120261117150742-jpg-v-2.jpeg": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
