@@ -1,6 +1,6 @@
 {
  "admin": "d3a76dddf565",
- "admin-ai": "54f9393dc72e",
+ "admin-ai": "ee0493cbb970",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "9ac2a857"
+   "4fc3c8b5"
   ]
  },
  "admin-boards": "18cf2d4e1ff5",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "ab73a6ba3367",
+ "admin-emblem": "f4718d5b105d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a216cdde"
+   "5194e6e2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "c03b30ac0a27",
+ "admin-now": "61e08d4d50ab",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b08b1a68"
+   "41b78c0d"
   ]
  },
- "admin-system": "7b8ee504e23c",
+ "admin-system": "9f924e85b4d1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "6674f564"
+   "58778aad"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9567c0f4"
+   "fc80982c"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "8c7f7367"
   ]
  },
- "index": "08dedd8ccca4",
+ "index": "075773ae17ac",
  "index_marks": {
   "front": [
    "トップ",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "66db64f7"
+   "a2916c8d"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "7a91fff1"
+   "5479d35b"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "378a5a0d"
   ]
  },
- "updated": "11.21 09:18",
+ "updated": "11.21 09:25",
  "wishlist": "c6eeaa2bcac9"
 }
