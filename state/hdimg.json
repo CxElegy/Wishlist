@@ -2930,12 +2930,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img1.newsis.com/2026/11/21/NISI20261121_0002298760_web.jpg": {
-  "w": 720,
-  "h": 479,
-  "target": 720,
-  "v": 3
- },
  "https://img2.utuku.imgcdc.com/650x0/news/20261117/352ef8dc-c9d2-4e4e-bba6-f2e3371f0361.jpg": {
   "w": 650,
   "h": 946,
@@ -5809,7 +5803,7 @@
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2022/11/01095148/8499ea9b9ad1bb3b78dad263a404915b.jpg": {
   "w": 1200,
   "h": 630,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://thelocalgirl.com/calendar/wp-content/uploads/sites/11/2026/11/Screenshot-2026-11-19-094645.png": {
@@ -5962,6 +5956,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/21/1795264006409_3-1795252310683820234456-20-0-396-719-crop-17952523268951665002337.jpeg": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://wimg.heraldcorp.com/news/cms/2026/11/21/news-p.v1.20261026.147ea7e1b65a4793b6df955ee31c2ab5_P1.jpg": {
+  "w": 647,
+  "h": 431,
   "target": 720,
   "v": 3
  },
@@ -6664,6 +6664,12 @@
    0.494
   ],
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.UeMEqrnIA3h3gJ78C7jvbw&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
   "w": 700,

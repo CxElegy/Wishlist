@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "edit_sig": "549d362e29e2",
+ "edit_sig": "0be55fbc3889",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -275,8 +275,8 @@
      "date": "2026-11-20",
      "headline": "일본 팬심 꽉 붙든 아일릿, 레코드대상 3년 연속 수상",
      "highlight": "레코드대상 3년 연속 수상",
-     "image": "https://img1.newsis.com/2026/11/21/NISI20261121_0002298760_web.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://wimg.heraldcorp.com/news/cms/2026/11/21/news-p.v1.20261026.147ea7e1b65a4793b6df955ee31c2ab5_P1.jpg",
+     "image_via": "正文图",
      "url": "https://www.heraldk.com/article/2026112018250478125",
      "weight": "normal"
     },
@@ -470,17 +470,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "サンクスギビングデーの日程と、隠し味の食材・報酬一覧をまとめた攻略記事。",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "攻略大百科",
-     "title": "【あつ森】サンクスギビングデー(2026版)はいつ？｜隠し味の食材・報酬一覧【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5kZlU2ZnQ5VkxieGpaUGpKMWdwOEM5TDd3VnZtVFI3UUxjVXNGc2ZXMmcxMXBBdnVGSFNDa3dFSnFHNmw3RS1WTmVQVHJCQk1YVFA4WFJDNFg?oc=5"
+     "headline": "【あつ森】サンクスギビングデー(2026版)はいつ？｜隠し味の食材・報酬一覧",
+     "highlight": "サンクスギビングデー(2026版)",
+     "image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2022/11/01095148/8499ea9b9ad1bb3b78dad263a404915b.jpg",
+     "image_via": "og:image",
+     "url": "https://gamepedia.jp/ac-switch/archives/56047",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
