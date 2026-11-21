@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "edit_sig": "dc4615db6645",
+ "edit_sig": "549d362e29e2",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -344,8 +344,8 @@
      "date": "2026-11-21",
      "headline": "Samsung Galaxy S27 Ultra vs. S26 Ultra: Which Flagship Will Actually Be Worth Your Money?",
      "highlight": "S27 Ultra vs. S26 Ultra",
-     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Ultra-vs.-S26-Ultra.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.zCM8pNi_r8swBNiGptIqcQ&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
      "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-vs-s26-ultra/",
      "weight": "normal"
     },
@@ -441,17 +441,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Digital and home video release dates for The Mandalorian and Grogu have been announced.",
      "date": "2026-11-20",
-     "n": 1,
-     "source": "Central Oregon Daily",
-     "title": "'The Mandalorian and Grogu' digital, home video release dates set | Entertainment",
-     "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNRzRCY1BTX0JQSlFaSVJ6YkNPZFViQkRLUzJ3UkRwanhsWkcxb21zb20tcU03MnpJR193RVdHeWFTMGxsVDE2WWFoOGlEM191cjB3alFOeGw1UGxiLWhibHpDSW5hYkJkYm1HQkNSSDdkZk5VMlNfbzZhMnhwTHZHUXZCUU9rWk02UmVoT0V3N2lfRGk0MllrQms1VHRHa0liemZlOFBVVVZqYkR6ZjhtREdXYUFXejJfVmhaLXJ5OUxOYlk3cDJNbF9WbUNMa2VlZGNud2lzcVlfb2Fnc2R1TkZLcElkWG5DTW1McFNDNUVNa2N1bS1xU2lB?oc=5"
+     "headline": "'The Mandalorian and Grogu' digital, home video release dates set",
+     "highlight": "release dates set",
+     "image": "https://bloximages.chicago2.vip.townnews.com/centraloregondaily.com/content/tncms/assets/v3/editorial/4/6d/46da2720-9496-5e88-947a-f504f2ae1593/6a579473df668.image.jpg?crop=800%2C420%2C0%2C56",
+     "image_via": "AI 挑选",
+     "url": "https://www.centraloregondaily.com/news/entertainment/the-mandalorian-and-grogu-digital-home-video-release-dates-set/article_1ee5c1d1-8e79-508e-8b10-cc601dbbc843.html",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
