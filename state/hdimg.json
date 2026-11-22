@@ -745,6 +745,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets-prd.ignimgs.com/2026/08/14/marvel-doomsday-poster-revealed-countdown-stream-change-1786726801531.jpg?width=1280&format=jpg&auto=webp&quality=80": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets-prd.ignimgs.com/2026/11/18/gta6-review-blogroll-1794996674466.jpg?width=1280&height=720&fit=crop&format=jpg&auto=webp&quality=80": {
   "w": 1280,
   "h": 720,
@@ -2314,12 +2320,6 @@
   "target": 1280,
   "v": 3
  },
- "https://images.kbench.com/kbench/article/thumbnail/283335_thumb.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-22"
- },
  "https://images.khan.co.kr/article/2026/11/20/news-p.v1.20261120.6b2ae1d6e17e49ca9d08f1bcab07ca1c_P1.png": {
   "w": 1200,
   "h": 756,
@@ -3411,12 +3411,6 @@
   "target": 1280,
   "v": 3
  },
- "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg": {
-  "w": 1200,
-  "h": 600,
-  "target": 720,
-  "v": 3
- },
  "https://k-plaza.com/wp-content/uploads/2026/11/6e195630a02193f6decbc766d343f233.jpg": {
   "w": 700,
   "h": 466,
@@ -3734,6 +3728,12 @@
  "https://news.dellows.jp/wp-content/uploads/2026/11/1183756_1.jpg": {
   "w": 782,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/11/1209127_1.jpg": {
+  "w": 1024,
+  "h": 544,
   "target": 720,
   "v": 3
  },
@@ -5859,12 +5859,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s1.ppllstatics.com/surinenglish/www/multimedia/2026/11/20/226693688.jpg": {
-  "w": 1800,
-  "h": 958,
-  "target": 720,
-  "v": 3
- },
  "https://salonprivemag.b-cdn.net/wp-content/uploads/2023/10/fghjgh-e1698251019921.png": {
   "w": 1200,
   "h": 686,
@@ -6211,6 +6205,12 @@
  "https://sumahodigest.com/wp-content/uploads/2026/11/Screenshot-2026-11-15-181331.jpg": {
   "w": 1813,
   "h": 992,
+  "target": 720,
+  "v": 3
+ },
+ "https://sumiyoshi-higashisumiyoshi.goguynet.jp/wp-content/uploads/sites/244/2026/11/4BB2EA16-C922-44BD-A242-6D80176E56BCyoko.png": {
+  "w": 1280,
+  "h": 926,
   "target": 720,
   "v": 3
  },
@@ -6635,12 +6635,6 @@
   "v": 3,
   "blur": 0.404
  },
- "https://www.bing.com/th?id=ONUT.0jL3p1dtXiHuBRKoE7hTRg&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-22"
- },
  "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
   "w": 466,
   "h": 700,
@@ -6813,6 +6807,12 @@
   ],
   "p": null
  },
+ "https://www.bing.com/th?id=ONUT.4JxiWMvoAswbIm6bJMkHCA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.6TvYX9duCEeXcZvJkc5f6Q&pid=News&w=650": {
   "w": 650,
   "h": 502,
@@ -6933,57 +6933,6 @@
    0.25
   ]
  },
- "https://www.bing.com/th?id=ONUT.GcemEM5BIMcwOa3RsRb-tQ&pid=News&w=400": {
-  "w": 400,
-  "h": 400,
-  "target": 720,
-  "v": 3,
-  "blur": 0.44,
-  "local": "pics/7543a5d8ecf47002.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    5,
-    14,
-    14,
-    19,
-    7,
-    6,
-    3,
-    10,
-    7,
-    9,
-    5,
-    2
-   ],
-   [
-    0,
-    11,
-    16,
-    14,
-    7,
-    4,
-    6,
-    8,
-    6,
-    8,
-    9,
-    12
-   ]
-  ],
-  "c": "#c7bdb5",
-  "k": null,
-  "p": [
-   0.01,
-   0.141,
-   0.808,
-   0.695
-  ]
- },
  "https://www.bing.com/th?id=ONUT.HnKmb2sYrlgGzw7cJALhVA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7095,6 +7044,18 @@
  "https://www.bing.com/th?id=ONUT.UeMEqrnIA3h3gJ78C7jvbw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.V9oUOErfpMDYxDF0Sjo6Hg&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Vsj0nhKfo1rrZub3I_VORQ&pid=News&w=1024": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -7908,12 +7869,6 @@
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-ultra-2.jpg": {
   "w": 1280,
   "h": 721,
-  "target": 720,
-  "v": 3
- },
- "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-price-hike-2.webp": {
-  "w": 2560,
-  "h": 1441,
   "target": 720,
   "v": 3
  },
