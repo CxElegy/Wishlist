@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "f4902f1b12ea",
+ "edit_sig": "315124be30df",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -95,34 +95,8 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 12,
-     "source": "The TV Cave",
-     "title": "7 Marvel TV Shows to Watch Before ‘Avengers: Doomsday’",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNSS1qSDBKMTdRa0h6UGdPbHlDSHdCRVRRZVZkbUR6ODVGQ3NMaGNCdmtiQmVGcFRuMTlBNEdfNXhXWWE1NGwwQ3VJRUZWNTY4eDRRYkx2cHJsTVZKR2hwcjBzNFIya3FGd0JrS0ZUQlBlRFdfQTRwNWFPZjhuQmVCUzc0aHBXMjNrc2c?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 13,
-     "source": "The News International",
-     "title": "Who convinced Joe Russo to return to Avengers franchise for 'Doomsday'?",
-     "url": "https://www.thenews.com.pk/latest/1424655-who-convinced-joe-russo-to-return-to-the-avengers-franchise-for-doomsday"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-22",
-     "headline": "Joe Russo Talks ‘Doomsday’ Teaser-Trailer Strategy Ahead Of Rumored Monday Drop: “I Have To interact With Fans”",
-     "highlight": "",
-     "image": "https://deadline.com/wp-content/uploads/2026/11/TPW10230.jpg?w=1024",
-     "image_via": "og:image",
-     "url": "https://deadline.com/2026/11/joe-russo-doomsday-trailer-strategy-rumored-monday-fans-1237231111/",
-     "weight": "hero"
-    },
     {
      "blurb": "A new Avengers: Doomsday poster centers on Vanessa Kirby's Invisible Woman ahead of the Doctor Doom showdown.",
      "date": "2026-11-22",
@@ -132,6 +106,16 @@
      "image_via": "转载 comicbookmovie.com",
      "url": "https://www.imdb.com/news/ni66123155/?ref_=int_nwr_1",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "Joe Russo Talks ‘Doomsday’ Teaser-Trailer Strategy Ahead Of Rumored Monday Drop: “I Have To interact With Fans”",
+     "highlight": "Rumored Monday Drop",
+     "image": "https://deadline.com/wp-content/uploads/2026/11/TPW10230.jpg?w=1024",
+     "image_via": "og:image",
+     "url": "https://deadline.com/2026/11/joe-russo-doomsday-trailer-strategy-rumored-monday-fans-1237231111/",
+     "weight": "normal"
     },
     {
      "blurb": "",
