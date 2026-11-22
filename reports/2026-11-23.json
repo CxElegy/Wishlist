@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "c10ed0bc9569",
+ "edit_sig": "2a776959d270",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -315,43 +315,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 6,
-     "source": "조선일보",
-     "title": "ILLIT First K-pop Group with Three Consecutive Japan Wins",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxONENjSGtFMmRzdmtZR2dVOUVwQlNhM2pMR0gxSUZLV1M5c1Z1S181Qi00S2NDdkNiR1J3dkpsOG1pWGU2RUlwMGUzN2RPQnNnUEFKLTVKeV9WT2lJeWtrV1lVNUEzMVZzaS03bUxPVTJFbDFKa0NIdXM0dER0M3dFUlJCNVlFdmp6WklWY3Fn?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 7,
-     "source": "OSEN",
-     "title": "아일릿, K-팝 최초·유일..열도 흔든 ‘아일릿 코어’",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE94d0s1UHhHV1hqYmlNRi04RDVLcjhPMGFUVFZsRnlxbS1yOEZOZDhyOWpGcUdET2xnNTBnUi1WLVpDdXhZcVN4ZXlVTFYycUNVZWd6cA?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 8,
-     "source": "www.bntnews.co.kr",
-     "title": "아일릿, 日 홍백가합전 K팝 유일 출연",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9EdW1oS1IzZEZMSWpZSnVCNGpMYXQ3Wm9uWjQtZFhNU1BJSzZRcU5NWWlGenBUdzBxX0I0SmlKUDItbFZnMnM5ZDVJNzNBU1J2SHQ5TnZHbkRybUFxQTZ4R1lKd2w?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 9,
-     "source": "싱글리스트",
-     "title": "아일릿, K팝 유일 ‘홍백가합전’ 출연…日 레코드 대상 3년 연속 수상",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1RNTF3bURBVy02VlgtdEVScnkxQ2hIZTRaemgxM3pnT1pVVlFOUEoxOU91T0VWaTFMTnZGOXJPV25vQTUxYWM4X0Y3d0RYYlBUTXN5cERVNkZBbFNQbG9jOUxldHdoQQ?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 10,
-     "source": "Chosunbiz",
-     "title": "ILLIT's hit songs and awards cement its popularity in Japan",
-     "url": "https://biz.chosun.com/en/en-entertainment/2026/11/23/AYULWPEOMZBPFFR3HPJX5LB3RI/"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -382,6 +345,26 @@
      "image": "https://static.sanyonews.jp/image/article/size1/c/c/8/a/cc8a68666a0c0ab2af51729864d4d114_1.jpg",
      "image_via": "og:image",
      "url": "https://www.sanyonews.jp/article/1951636?rct=oricon_music&kw=%E7%A6%8F%E7%A5%B1",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "ILLIT's hit songs and awards cement its popularity in Japan",
+     "highlight": "",
+     "image": "https://biz.chosun.com/resizer/v2/GZRTOOJYMUZTAOJVGQ2TCMBWGI.jpg?auth=9fde623d9927b8e3310b3b76976e090183fcf128cfd899ca86c04d90455b90b0&width=572&height=300&smart=true",
+     "image_via": "og:image",
+     "url": "https://biz.chosun.com/en/en-entertainment/2026/11/23/AYULWPEOMZBPFFR3HPJX5LB3RI/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "ILLIT First K-pop Group with Three Consecutive Japan Wins",
+     "highlight": "Three Consecutive",
+     "image": "https://www.chosun.com/resizer/v2/GI2GGZLDMJQTMYLDGFQTANBWG4.jpg?auth=25d3490feb9b7ac8fd4f15807f0dbd16ad9e918d9de2d6f1f20cf67811da9427&width=530&height=278&smart=true",
+     "image_via": "og:image",
+     "url": "https://www.chosun.com/english/kpop-culture-en/2026/11/23/CW74HREUSZA5VF4EFZ3QIKNKQU/",
      "weight": "normal"
     }
    ],
@@ -646,7 +629,7 @@
      "headline": "New Dota 2 patch tries to help games end faster, adds an item that summons super creeps in every lane at once",
      "highlight": "",
      "image": "https://games.gg/api/og/content/?kind=news&key=dota-2742-%E6%9B%B4%E6%96%B0%E4%B8%8A%E7%B7%9A%E9%81%8A%E6%88%B2%E7%AF%80%E5%A5%8F%E5%8A%A0%E5%BF%AB%E4%B8%A6%E6%96%B0%E5%A2%9E%E5%BF%AB%E6%8D%B7%E9%8D%B5&lang=zh-Hant&u=torcjg&v=3",
-     "image_via": "og:image（本站保存）",
+     "image_via": "条目自带（本站保存）",
      "url": "https://www.pcgamer.com/games/moba/new-dota-2-patch-tries-to-help-games-end-faster-adds-an-item-that-summons-super-creeps-in-every-lane-at-once/",
      "weight": "lead"
     }

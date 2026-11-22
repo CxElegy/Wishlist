@@ -61,7 +61,7 @@
   "dota2": 9,
   "周杰伦": 5,
   "猫用品": 1,
-  "ILLIT": 5,
+  "ILLIT": 10,
   "FROM": 1,
   "チェーンソーマン": 3,
   "Vaundy": 1,
@@ -285,6 +285,27 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "아일릿, 日 홍백가합전 K팝 유일 출연",
+   "highlight": "홍백가합전",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "headline": "ILLIT First K-pop Group with Three Consecutive Japan Wins",
+   "highlight": "Three Consecutive",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    7
    ]
   }
  ],
