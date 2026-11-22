@@ -168,6 +168,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261122ac/199/w639h360/20261122/fe7e-de236a7ffad64cbf05f716587b22e92a.jpg": {
+  "w": 639,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af8b61a6b6c3a05a6d731ba/1794841230408/Marvel+Studios+Reportedly+%2522Secretly%2522+Developing+IRON+MAN+4+With+Robert+Downey+Jr.+Potentially+Returning.jpg?format=1500w": {
   "w": 1920,
   "h": 1080,
@@ -327,6 +333,62 @@
   "k": null,
   "p": null
  },
+ "http://wx1.sinaimg.cn/middle/6e48db9egy1ijas187mbnj22j035sb29.jpg": {
+  "w": 2000,
+  "h": 2501,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/62600d613567d3c1.webp",
+  "out": [
+   1024,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    1,
+    5,
+    9,
+    10,
+    12,
+    11,
+    9,
+    11,
+    8,
+    17,
+    6,
+    0
+   ],
+   [
+    5,
+    7,
+    7,
+    9,
+    12,
+    11,
+    15,
+    14,
+    7,
+    6,
+    3,
+    6
+   ]
+  ],
+  "c": "#3d3238",
+  "k": [
+   0.42,
+   0.052,
+   0.516,
+   0.135
+  ],
+  "p": [
+   0.066,
+   0.247,
+   0.424,
+   0.647
+  ]
+ },
  "http://wx2.sinaimg.cn/middle/001gSRX0ly1ijb4h5c0n4j60u01hb42602.jpg": {
   "w": 1080,
   "h": 1919,
@@ -382,6 +444,57 @@
    0.669,
    0.45
   ]
+ },
+ "http://wx2.sinaimg.cn/middle/006ZneWLly1ijb8qxd5v0j32p913rx6p.jpg": {
+  "w": 2000,
+  "h": 817,
+  "target": 720,
+  "v": 3,
+  "local": "pics/9ab0c6dcd077c699.webp",
+  "out": [
+   1280,
+   523
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    14,
+    7,
+    5,
+    4,
+    10,
+    15,
+    11,
+    6,
+    14,
+    3,
+    6,
+    4
+   ],
+   [
+    5,
+    8,
+    8,
+    8,
+    8,
+    7,
+    6,
+    8,
+    14,
+    13,
+    8,
+    9
+   ]
+  ],
+  "c": "#161818",
+  "k": [
+   0.033,
+   0.197,
+   0.995,
+   0.98
+  ],
+  "p": null
  },
  "http://wx2.sinaimg.cn/middle/008eZAxIly1ij58zvht0fj32bk2w01l2.jpg": {
   "w": 2000,
@@ -493,57 +606,6 @@
    0.273,
    0.164,
    0.334
-  ]
- },
- "http://wx2.sinaimg.cn/middle/6e48db9egy1ijbfgf36ibj20ld0nmwim.jpg": {
-  "w": 769,
-  "h": 850,
-  "target": 720,
-  "v": 3,
-  "local": "pics/51c93795014b1833.webp",
-  "out": [
-   769,
-   850
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    10,
-    10,
-    10,
-    11,
-    10,
-    10,
-    8,
-    5,
-    5,
-    7,
-    7,
-    7
-   ],
-   [
-    6,
-    5,
-    7,
-    12,
-    14,
-    10,
-    17,
-    14,
-    4,
-    4,
-    3,
-    2
-   ]
-  ],
-  "c": "#645b4d",
-  "k": null,
-  "p": [
-   0.419,
-   0.483,
-   0.525,
-   0.609
   ]
  },
  "http://wx2.sinaimg.cn/middle/8f742936gy1ij7r3iuo28j212l135n7j.jpg": {
@@ -757,6 +819,18 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://assets-prd.ignimgs.com/2026/11/22/gta-6-console-blogroll-1795364248773.jpg?&format=jpg&auto=webp&quality=80": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets-prd.ignimgs.com/2026/11/22/jason-duval-gta-6-1795371162747.png?&format=jpg&auto=webp&quality=80": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://assets.hldycdn.com/64b9e15a-1619-4f07-840d-c5c381ef6945.jpeg": {
@@ -1443,12 +1517,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cimg.kgl-systems.io/camion/files/94655/ogp_FTFQ.jpg?x=1280": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://cimg.kgl-systems.io/camion/files/dengeki/94341/a135007e7085979a7d5b41ce54c0e54d7.jpg?x=1280": {
   "w": 958,
   "h": 1280,
@@ -1716,6 +1784,18 @@
  "https://foro3d.com/2026/noviembre/imagenes/image-engine-desglosa-sus-154-planos-de-vfx-en-the-mandalorian-grogu.webp": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://foro3d.com/2026/noviembre/imagenes/la-camara-como-decision-editorial-en-la-retransmision-de-dota-2.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://fountmedia.s3.ap-northeast-1.amazonaws.com/article/08/04/446804_6535.webp?v=1795164936": {
+  "w": 1024,
+  "h": 683,
   "target": 1280,
   "v": 3
  },
@@ -3202,12 +3282,6 @@
   "target": 720,
   "v": 3
  },
- "https://imgsrv2.voi.id/GWxKxTVkPVlneFQMNebbC0eH4HGLlv1dAf69YlkHnNo/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTA5NDEvMjAyNjA4MjQwODA5LW1haW4uY3JvcHBlZF8xNzg3NTMzNzc5LmpwZw.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -3401,6 +3475,12 @@
   "target": 720,
   "v": 3
  },
+ "https://media.image.infoseek.co.jp/isnews/photos/hochi/hochi_20261119-OHT1T51260_0-enlarge.jpg": {
+  "w": 908,
+  "h": 1200,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.image.infoseek.co.jp/isnews/photos/iza/iza_25IJUH4SOFHDHIMQVGSKBRGF2M_0-enlarge.jpg": {
   "w": 1200,
   "h": 1200,
@@ -3408,6 +3488,12 @@
   "v": 3
  },
  "https://media.image.infoseek.co.jp/isnews/photos/stv/stv_1496636083793510780_0-enlarge.jpg": {
+  "w": 800,
+  "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/stv/stv_1497325815460200769_0-enlarge.jpg": {
   "w": 800,
   "h": 450,
   "target": 720,
@@ -3422,12 +3508,6 @@
  "https://media.nownews.com/nn_media/thumbnail/2026/11/1795171225956-1cef1977fc14485fab7a15f202c6f3c0-1200x675.webp?unShow=false": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://media.npr.org/include/images/facebook-default-wide-s1400-c85.jpg": {
-  "w": 1400,
-  "h": 787,
   "target": 720,
   "v": 3
  },
@@ -4510,6 +4590,56 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000468-oric-000-1-view.jpg?exp=10800": {
+  "w": 960,
+  "h": 540,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/32ef70cb54351914.webp",
+  "out": [
+   960,
+   540
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    6,
+    7,
+    5,
+    5,
+    4,
+    5,
+    14,
+    13,
+    11,
+    11,
+    11,
+    8
+   ],
+   [
+    5,
+    12,
+    9,
+    9,
+    4,
+    8,
+    8,
+    10,
+    10,
+    10,
+    8,
+    7
+   ]
+  ],
+  "c": "#c09a76",
+  "k": [
+   0.016,
+   0.023,
+   0.987,
+   0.674
+  ],
+  "p": null
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00080112-chosun-000-10-view.jpg?exp=10800": {
   "w": 720,
   "h": 540,
@@ -4857,6 +4987,12 @@
   "blur": 0.402
  },
  "https://ogre.natalie.mu/media/news/music/2026/0405/Vaundy_art202604.jpg?impolicy=ogp_face_crop": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://ogre.natalie.mu/media/news/music/2026/1119/USQ_3046.jpg?impolicy=ogp_face_crop": {
   "w": 1200,
   "h": 630,
   "target": 1280,
@@ -5752,12 +5888,6 @@
   "target": 720,
   "v": 3
  },
- "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/05/denji-from-chainsaw-man-makes-an-array-of-faces.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/09/harry-potter-season-1-paapa-essiedu.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6470,6 +6600,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.7jpUbtfHch9mZXtW3KSK2w&pid=News&w=1061": {
+  "w": 700,
+  "h": 511,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.C7yo6RHIF9O1SXc6EY1Qdw&pid=News&w=1200": {
   "w": 534,
   "h": 341,
@@ -6590,63 +6726,6 @@
    0.695
   ]
  },
- "https://www.bing.com/th?id=ONUT.Gzc23wr_64NjXnOVFk8rAw&pid=News&w=1024": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.HnKmb2sYrlgGzw7cJALhVA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.496,
-  "local": "pics/49774f2f7a4f3a77.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    3,
-    2,
-    3,
-    7,
-    13,
-    13,
-    12,
-    13,
-    11,
-    10,
-    9,
-    5
-   ],
-   [
-    3,
-    13,
-    10,
-    11,
-    13,
-    4,
-    14,
-    8,
-    9,
-    4,
-    7,
-    4
-   ]
-  ],
-  "c": "#c4b6cd",
-  "k": [
-   0.288,
-   0.033,
-   0.956,
-   0.723
-  ],
-  "p": null
- },
  "https://www.bing.com/th?id=ONUT.J6DtkGOpSI-mYvZdSa1pqA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -6664,6 +6743,63 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.QR72xbWuaHZCw53d6qFG0A&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.R36CPneAFDun3FQozGMepQ&pid=News&w=728": {
+  "w": 700,
+  "h": 525,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.538,
+  "local": "pics/fbc3226ee6179bd2.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    11,
+    12,
+    11,
+    8,
+    6,
+    7,
+    6,
+    7,
+    8,
+    8,
+    9,
+    8
+   ],
+   [
+    10,
+    12,
+    14,
+    11,
+    10,
+    7,
+    3,
+    4,
+    1,
+    15,
+    10,
+    4
+   ]
+  ],
+  "c": "#bbb9b7",
+  "k": [
+   0.085,
+   0.428,
+   0.206,
+   0.494
+  ],
+  "p": null
  },
  "https://www.bing.com/th?id=ONUT.V9oUOErfpMDYxDF0Sjo6Hg&pid=News&w=800": {
   "w": 700,
@@ -6737,6 +6873,12 @@
  "https://www.bing.com/th?id=ONUT.cGN-9-sJ4cnSi_-GX5xY7Q&pid=News&w=1200": {
   "w": 700,
   "h": 287,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.dPZ1BVkHLXJtgKQ_rOiB6w&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
   "target": 720,
   "v": 3
  },
@@ -7271,6 +7413,12 @@
   "w": 900,
   "h": 508,
   "target": 720,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2023/03/21/the-mandalorian-season-3-timeline.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/01/04/chainsaw-man-movie.jpg": {

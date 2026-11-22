@@ -1,32 +1,32 @@
 {
- "admin": "8a45b3c90ac9",
- "admin-ai": "667d6862f44a",
+ "admin": "633e0dc74838",
+ "admin-ai": "d51e7587477f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "448ff71d"
+   "25aa0b29"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7b74832c"
+   "9e4c8f4e"
   ]
  },
- "admin-boards": "916320616051",
+ "admin-boards": "11e3d0717c86",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5e6a6ba0"
+   "9eb777e3"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "3844ff191f9b",
+ "admin-emblem": "79f6312abb66",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "40a52756"
+   "6a8fb5e2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "01e8f674f10a",
+ "admin-now": "83ede499e650",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2ad115e7"
+   "54d4092a"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "96f8df2d"
+   "58dfd6af"
   ],
   "term-panel": [
    "ライブログ",
-   "60273882"
+   "3ea1b86b"
   ]
  },
- "admin-system": "584b1de77086",
+ "admin-system": "cf1be4db3ab2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ed03051c"
+   "9035fe2c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e4bd2e75"
+   "76079a00"
   ]
  },
  "admin_marks": {},
- "heat": "8e5970c22859",
+ "heat": "7e0917970ecb",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "f29670d9"
+   "67251499"
   ],
   "ranking": [
    "ランキング",
-   "62da3e7d"
+   "f3db2922"
   ]
  },
- "index": "920ba51c05c8",
+ "index": "3ac2b9972358",
  "index_marks": {
   "front": [
    "トップ",
-   "d20183bc"
+   "3c291702"
   ],
   "picks": [
    "気になるかも？",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "c89b4b6d"
+   "c272b690"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "7e66fdf7"
+   "2c7157a0"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "ebca0076"
+   "5b29bc3a"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "e1fc5dce"
+   "161dfe92"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "7ad3b2fc"
   ]
  },
- "updated": "11.23 06:25",
+ "updated": "11.23 06:29",
  "wishlist": "bcc75e1ff99c"
 }
