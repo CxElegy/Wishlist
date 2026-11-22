@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-22T05:32:10+00:00",
+ "checked": "2026-11-22T06:27:18+00:00",
  "fired": {
   "at": "2026-11-22T05:32:10+00:00",
   "results": {
@@ -70,63 +70,51 @@
     "sig": "73ee85ad92e7"
    },
    "items": [
-    "GTA 6",
-    "ILLIT",
-    "dota2",
     "gelato pique",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
     "滑雪",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-22T04:28:06+00:00",
+   "last_batch": "2026-11-22T05:39:05+00:00",
    "last_error": {
     "at": "2026-11-21T23:26:48+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 262,
+   "prog": 300,
    "prog_day": "2026-11-22",
    "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "dota2",
-    "三星手机",
-    "周杰伦",
-    "漫威电影"
+    "チェーンソーマン"
    ],
-   "sig": "73ee85ad92e7",
+   "sig": "166c24cb4ff7",
    "token_cap": 1000000,
-   "tokens_today": 413327,
-   "why": "整理待ちの記事 47 件（11 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 467251,
+   "why": "整理待ちの記事 9 件（5 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "漫威电影",
-    "GTA 6",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "494944f8a93f",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
-    "哈利波特剧集"
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -267,12 +255,12 @@
    "runs": 16
   },
   "2026-11-22": {
-   "batches": 17,
-   "cr": 7767619,
-   "cw": 376900,
-   "in": 214,
-   "out": 36213,
-   "runs": 7
+   "batches": 18,
+   "cr": 8496294,
+   "cw": 426967,
+   "in": 235,
+   "out": 40049,
+   "runs": 8
   }
  }
 }
