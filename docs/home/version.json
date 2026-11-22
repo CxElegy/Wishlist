@@ -1,32 +1,32 @@
 {
- "admin": "d29c1d0fd002",
- "admin-ai": "00fe565b2572",
+ "admin": "3957399c1200",
+ "admin-ai": "9c93ab292e30",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "036c159b"
+   "896d5c0a"
   ],
   "tokens": [
    "AI 編集のトークン",
    "b5123d4e"
   ]
  },
- "admin-boards": "48c85bc94a0b",
+ "admin-boards": "606675c13265",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "a69aa97f"
+   "61cc91bf"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "b5fab65d1bbf",
+ "admin-emblem": "ed7ce9748ec4",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "6028ce30"
+   "8f947017"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "c796b8b58b70",
+ "admin-now": "2d7f1c33727e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "a147321d"
+   "ba558e15"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "5e248894"
+   "1dcf7d55"
   ],
   "term-panel": [
    "ライブログ",
-   "9025948d"
+   "0db0988b"
   ]
  },
- "admin-system": "90439cd06ee9",
+ "admin-system": "44a84a7fbba4",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "584e2df8"
+   "afc1f933"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f2bd395b"
+   "08f04ee7"
   ]
  },
  "admin_marks": {},
- "heat": "515e1c36b9ae",
+ "heat": "c9e558db1437",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "75d8c68d"
+   "27826b73"
   ],
   "ranking": [
    "ランキング",
-   "244debbd"
+   "19e0cd4e"
   ]
  },
- "index": "cee458285e9a",
+ "index": "76180b47bab0",
  "index_marks": {
   "front": [
    "トップ",
-   "8bd559fa"
+   "48569736"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "7835a0b5"
+   "12485420"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "5118ce40"
+   "37cb92a4"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "4f51dc2f"
+   "bca1f89c"
   ]
  },
- "updated": "11.22 14:22",
+ "updated": "11.22 14:29",
  "wishlist": "8081cd7b9303"
 }
