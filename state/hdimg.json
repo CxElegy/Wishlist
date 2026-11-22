@@ -656,6 +656,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.murphysmultiverse.com/uploads/2026/08/Avengers_Doomsday_Poster3-e1786759588302.jpg": {
+  "w": 1086,
+  "h": 588,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.murphysmultiverse.com/uploads/2026/11/Real3D-Avengers-Doomsday-e1794837338393.jpg": {
   "w": 1086,
   "h": 1097,
@@ -1713,12 +1719,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.411
- },
- "https://games.app-liv.jp/images/articles/2026/08/gd_589689_-22-e1785911491805.jpg": {
-  "w": 700,
-  "h": 370,
-  "target": 720,
-  "v": 3
  },
  "https://games.gg/api/og/content/?kind=news&key=dota-2%E3%83%91%E3%83%83%E3%83%81742%E3%81%8C%E9%85%8D%E4%BF%A1%E9%96%8B%E5%A7%8B%E8%A9%A6%E5%90%88%E5%B1%95%E9%96%8B%E3%81%AE%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%A8%E6%96%B0%E3%83%9B%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E5%B0%8E%E5%85%A5&lang=ja&u=torcj0&v=3": {
   "w": 1200,
@@ -3148,12 +3148,6 @@
   "w": 2560,
   "h": 1440,
   "target": 1280,
-  "v": 3
- },
- "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg": {
-  "w": 1200,
-  "h": 600,
-  "target": 720,
   "v": 3
  },
  "https://iphoneislam.com/wp-content/uploads/2026/08/samsung-vs-apple.jpg": {
@@ -4797,6 +4791,52 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00000003-anmanmv-000-1-view.jpg?exp=10800": {
+  "w": 639,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.407,
+  "local": "pics/faa5f513376075a2.webp",
+  "out": [
+   639,
+   800
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    3,
+    3,
+    7,
+    11,
+    9,
+    3,
+    11,
+    13,
+    17,
+    15,
+    6,
+    2
+   ],
+   [
+    0,
+    0,
+    0,
+    9,
+    12,
+    5,
+    16,
+    21,
+    20,
+    9,
+    1,
+    7
+   ]
+  ],
+  "c": "#e2ceba",
+  "k": null,
+  "p": null
+ },
  "https://nexuspointnews.com/wp-content/uploads/2026/11/The-Childrens-Crusade-Scarlet-Witch.jpg": {
   "w": 1600,
   "h": 840,
@@ -5794,6 +5834,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/05/denji-from-chainsaw-man-makes-an-array-of-faces.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/09/harry-potter-season-1-paapa-essiedu.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6368,12 +6414,6 @@
  "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
   "w": 466,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.28098SivGrsYWyyaUZF5nQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
