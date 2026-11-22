@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-22T15:19:37+00:00",
+ "checked": "2026-11-22T16:18:08+00:00",
  "fired": {
   "at": "2026-11-22T14:33:14+00:00",
   "results": {
@@ -70,9 +70,6 @@
     "sig": "39eb95a52fca"
    },
    "items": [
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
     "lib:ガンプラ",
     "lib:キャンプ",
     "lib:コーヒー",
@@ -80,10 +77,7 @@
     "lib:ラーメン",
     "lib:無印良品",
     "lib:筋トレ",
-    "lib:観葉植物",
-    "周杰伦",
-    "哈利波特剧集",
-    "猫用品"
+    "lib:観葉植物"
    ],
    "last_batch": "2026-11-22T14:41:23+00:00",
    "last_error": {
@@ -91,13 +85,13 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 373,
-   "prog_day": "2026-11-22",
+   "prog": 8,
+   "prog_day": "2026-11-23",
    "ripe": [],
-   "sig": "86cce7e1a7c5",
+   "sig": "94c7a76e59f5",
    "token_cap": 1000000,
-   "tokens_today": 755331,
-   "why": "整理待ちの記事 102 件（14 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
