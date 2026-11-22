@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "426137ac8dc1",
+ "edit_sig": "db9c3d0070ab",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -407,17 +407,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-22",
-     "n": 1,
-     "source": "ｄメニューニュース",
-     "title": "愛猫が「サイレントニャー」するのを見たことはある？ 調査＆獣医師解説（ねこのきもち WEB MAGAZINE）",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPcGE1bk9taFJ5cVRSanNDd3VZS0lXV3JpMlFYbzctUDI0UDBFa1plQTNZXzlwS0t2dGJwZHpDMUlDNmRVLTJJbllWUFc4dTdRNXFITWMyWENsWk12dVZxdEh6UWxYSmo5Q3VReVRVWEtlOS1kOUFCOUJzRnE4eHB5Tw?oc=5"
+     "headline": "愛猫が「サイレントニャー」するのを見たことはある？ 調査＆獣医師解説",
+     "highlight": "サイレントニャー",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100664.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/cat_benesse/life/cat_benesse-100664",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
