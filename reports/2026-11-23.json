@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "315124be30df",
+ "edit_sig": "82c57e88c988",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -164,17 +164,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Decider rounds up what is known about a possible fifth season of FROM.",
      "date": "2026-11-21",
-     "n": 1,
-     "source": "Decider",
-     "title": "Will there be a Season 5 of ‘From’? Everything to know",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPb1NBM3RFX19FZVlkOUxaQ05SUUN2NkNCTDR4NEJyTXJBTE5Yai14YzBhUG85dmRqNGJWNUZYWEl2RERtaGJKWGpicVBVQzRWcTdIVF9lcjNFejdXT3E0eG56d3NsZ0FJbTE3REpTdnlOblVxWUZ4Umk0X1AzVDVMV1JSSVlVT19HVlZxekdBejJXX3pMTnYxenZJbE8zMFZWdldJ?oc=5"
+     "headline": "Will there be a Season 5 of ‘From’? Everything to know",
+     "highlight": "Season 5",
+     "image": "https://decider.com/wp-content/uploads/2026/06/from-finale-2.jpg?quality=75&strip=all&w=1200",
+     "image_via": "og:image",
+     "url": "https://decider.com/2026/11/21/from-season-4-netflix-mgm-plus-will-there-be-from-season-5-watch-free/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
