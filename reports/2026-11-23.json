@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "49148f972ccd",
+ "edit_sig": "426137ac8dc1",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -339,24 +339,29 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-22",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "悉尼演唱会后，周杰伦携亲友继续文青之旅。 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9CNTFjVEhDV1ZlVmh4M2RrSUlOR3EtbklzVGx5ZFdEWEVvV2NHMWRqMF9wQnFJOFpwSjRWMWZJclZMR04wN3c5SmVqWC1Jc1hka0kwZ1N1NnRzdFZ3aTdweE1pVQ?oc=5"
+     "headline": "悉尼演唱会后，周杰伦携亲友继续文青之旅",
+     "highlight": "悉尼演唱会后",
+     "image": "http://wx2.sinaimg.cn/middle/001gSRX0ly1ijb4h5c0n4j60u01hb42602.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5368113988108611.html",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-22",
-     "n": 2,
-     "source": "手机新浪网",
-     "title": "欢子出一首歌火一首，周杰伦也是粉丝",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE8wT3oyT1NCS2d4enF0Q01OSzJMOHNQNGs0d2RRV3BYaXZicTN6UnkxVHJsQ09WVkVuOUs3X25SVGYtdUJyUHdtUl85cVU2NWVvMldMMkg1Sk9XNkxGVnI2a3JxN25MZjdiR1BIalhkMWo5NWM?oc=5"
+     "headline": "欢子出一首歌火一首，周杰伦也是粉丝",
+     "highlight": "",
+     "image": "http://n.sinaimg.cn/sinakd20261121ac/200/w640h360/20261121/0dd4-34c2ed5226b28156217d40d830207c98.jpg",
+     "image_via": "og:image",
+     "url": "https://k.sina.com.cn/article_6579089027_m18824ee830330224q2.html",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",

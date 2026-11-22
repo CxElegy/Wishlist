@@ -47,7 +47,8 @@
   "哈利波特剧集": 4,
   "MMORPG 新作": 2,
   "The Mandalorian": 2,
-  "dota2": 2
+  "dota2": 2,
+  "周杰伦": 2
  },
  "漫威电影": [
   {
@@ -182,6 +183,26 @@
    "highlight": "7.42 更新上線",
    "blurb": "",
    "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "悉尼演唱会后，周杰伦携亲友继续文青之旅",
+   "highlight": "悉尼演唱会后",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "欢子出一首歌火一首，周杰伦也是粉丝",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     2
    ]

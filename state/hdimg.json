@@ -53,8 +53,58 @@
  "http://n.sinaimg.cn/sinakd20261121ac/200/w640h360/20261121/0dd4-34c2ed5226b28156217d40d830207c98.jpg": {
   "w": 640,
   "h": 360,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.611,
+  "local": "pics/80c6efac229cdf98.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    5,
+    5,
+    18,
+    21,
+    20,
+    8,
+    5,
+    4,
+    4,
+    3,
+    4
+   ],
+   [
+    4,
+    5,
+    13,
+    13,
+    13,
+    12,
+    11,
+    9,
+    4,
+    3,
+    4,
+    9
+   ]
+  ],
+  "c": "#866e56",
+  "k": [
+   0.002,
+   0.083,
+   0.993,
+   0.986
+  ],
+  "p": [
+   0.176,
+   0.0,
+   0.731,
+   1.0
+  ]
  },
  "http://n.sinaimg.cn/sinakd20261121ac/40/w480h360/20261121/0d02-ddf3cdc9a5b5b1bdf6c246eb42eb0f20.jpg": {
   "w": 480,
@@ -276,6 +326,62 @@
   "c": "#f3f4f5",
   "k": null,
   "p": null
+ },
+ "http://wx2.sinaimg.cn/middle/001gSRX0ly1ijb4h5c0n4j60u01hb42602.jpg": {
+  "w": 1080,
+  "h": 1919,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/2f0f143e2dceaba6.webp",
+  "out": [
+   720,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    4,
+    3,
+    5,
+    7,
+    7,
+    16,
+    18,
+    17,
+    12,
+    7,
+    4,
+    2
+   ],
+   [
+    1,
+    2,
+    4,
+    10,
+    8,
+    10,
+    10,
+    12,
+    10,
+    4,
+    5,
+    24
+   ]
+  ],
+  "c": "#90817f",
+  "k": [
+   0.434,
+   0.897,
+   0.906,
+   0.993
+  ],
+  "p": [
+   0.377,
+   0.232,
+   0.669,
+   0.45
+  ]
  },
  "http://wx2.sinaimg.cn/middle/008eZAxIly1ij58zvht0fj32bk2w01l2.jpg": {
   "w": 2000,
@@ -653,6 +759,12 @@
  "https://assetsio.gnwcdn.com/mafia-city-of-lost-heaven-car-park-shootout.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://attach.setn.com/newsimages/2026/04/04/5507948-PH.jpg": {
+  "w": 800,
+  "h": 451,
   "target": 720,
   "v": 3
  },
