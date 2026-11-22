@@ -1,32 +1,32 @@
 {
- "admin": "45bde0791341",
- "admin-ai": "1bc2861fe2f8",
+ "admin": "ee2e0f04b6af",
+ "admin-ai": "131d61cf810e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "14d63db6"
+   "3b046e20"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ac64be87"
   ]
  },
- "admin-boards": "9470a16ac0eb",
+ "admin-boards": "8ca0b1469ee3",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "98243c9d"
+   "715fffea"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "f8e0aa9a70b0",
+ "admin-emblem": "a2f56b2de358",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "83c5700e"
+   "f56d2829"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "e25eaefe80ba",
+ "admin-now": "bd7acda1551f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5be3691e"
+   "173c78d1"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "a3881bcc"
+   "41242222"
   ],
   "term-panel": [
    "ライブログ",
-   "662336d3"
+   "13783ba0"
   ]
  },
- "admin-system": "707da29614f8",
+ "admin-system": "5bad01842535",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "eb3340b0"
+   "3fed6748"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "422d51f4"
+   "e498de7b"
   ]
  },
  "admin_marks": {},
- "heat": "5159cb16a144",
+ "heat": "dee884feb829",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "f3b7dfb3"
+   "4f05e3f1"
   ],
   "ranking": [
    "ランキング",
-   "71c64444"
+   "c36d50b8"
   ]
  },
- "index": "959dbc9502ce",
+ "index": "b02a84155fb9",
  "index_marks": {
   "front": [
    "トップ",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "d001f0f0"
+   "52ecaf9d"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "5118ce40"
+   "37cb92a4"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "bca1f89c"
   ]
  },
- "updated": "11.22 18:27",
+ "updated": "11.22 19:02",
  "wishlist": "ac4f7acb1ba4"
 }
