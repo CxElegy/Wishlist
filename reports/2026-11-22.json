@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "edit_sig": "3fa1ba0c28ad",
+ "edit_sig": "e9cd06c752c4",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -173,55 +173,8 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 50,
-     "source": "Collider",
-     "title": "5 MCU Shows That Are Perfect From Start to Finish",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBXQ2lpU3JCWmV6R0tMcU40b2d1MDlCbVV5NV9PVFJBbXBlQlVHdXhBNDh6aVpvQTJiZk5HU1N6UGg0N09Oa09jcEJ0YUN0bnlaUDRxYnh1OElkOXAwTXlzclpBa21KZw?oc=5"
-    },
-    {
-     "date": "2026-11-21",
-     "n": 51,
-     "source": "IMDb",
-     "title": "‘Avengers: Doomsday’ Box Office Tracking Points to a Historic Record-Smashing Opening",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5WMzZjeEZkVHZPOEh2OGtLYmxuUzlTS3hFUkdpeVpDZ1RWX1paVVBlbThXRHFXQ3NnZ0t1LXpyS0NSZVVtOE1rTTJpazg4OTVsM0JJR09BRlU0NkNub3pLWmttN19Ick1yTTVJ?oc=5"
-    },
-    {
-     "date": "2026-11-21",
-     "n": 52,
-     "source": "ComicBook.com",
-     "title": "Ghost Rider Actor Who Previously Ruled Out the MCU Now Open To It: “I’ve Changed My Stance”",
-     "url": "https://comicbook.com/tv-shows/news/ghost-rider-actor-who-previously-ruled-out-the-mcu-now-open-to-it-ive-changed-my-stance/"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 53,
-     "source": "IMDb",
-     "title": "Steve Rogers, Professor X and Magneto Get Their Own ‘Avengers: Doomsday’ Character Posters",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA4T1l5T1FraFJFVlhxMi1aWm1HY3FzLWxoWE9GNWZXYlp4MDJzdjZRX0U3TE1wOHFxeGM5eWlNSU5lN3BPR3lsZUIySUwtbS1UZFlFZWkybmhyRXRoMWpjUEVGa1Q1VGM?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 54,
-     "source": "Yahoo",
-     "title": "New Avengers: Doomsday posters give Nightcrawler first look, tease Namor and Sue Storm relationship",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOS0hYQms0VzVPOVp1UmV5eHdWZ1dMWklnWHFDdGlwRUEtbjIzNnN2WjNzX3ZmaTlIc09GUjB6YzRPdWhmeVFOaHMtOFJXWXhOM3ZtQl92aldnRlI1RXFua0NUb05GMmJucGZkWDBZd0FFd09VT1hFUlhtTVYwSUZHNVhfSUlCMUZQQndTUWdtZDhNZ28xcGU2cUpqcFlfQWI3NzNWY3hVWHpXbFlPeGotWXpqZjMwNjlzbzZ2Xw?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-22",
-     "headline": "Hayley Atwell Accidentally Reveals When the Next ‘Avengers: Doomsday’ Trailer and Calls It “Amazing”",
-     "highlight": "",
-     "image": "https://assets.murphysmultiverse.com/uploads/2026/08/Avengers_Doomsday_Poster3-e1786759588302.jpg",
-     "image_via": "og:image",
-     "url": "https://www.murphysmultiverse.com/avengers-doomsday-new-trailer-release-date-hayley-atwell-november-23/",
-     "weight": "hero"
-    },
     {
      "blurb": "Hayley Atwell says the final Avengers: Doomsday trailer drops Monday; multiple outlets report the timing.",
      "date": "2026-11-21",
@@ -260,6 +213,16 @@
      "image": "https://fictionhorizon.com/wp-content/uploads/2026/11/Robert-Downey-Jr.-on-Doctor-Doom-1.webp",
      "image_via": "转载 fictionhorizon.com",
      "url": "https://www.imdb.com/news/ni66122429/?ref_=int_nwr_3",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-21",
+     "headline": "RUMOR: Robert Downey Jr. Is Playing More Than Just Doctor Doom in 'Avengers: Secret Wars'",
+     "highlight": "RUMOR",
+     "image": "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg",
+     "image_via": "og:image",
+     "url": "https://insidethemagic.net/2026/11/robert-downey-jr-doctor-doom-avengers-secret-wars-new-role-cj1/",
      "weight": "normal"
     }
    ],
