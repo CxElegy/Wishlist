@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-22T04:22:27+00:00",
+ "changed": true,
+ "checked": "2026-11-22T04:23:57+00:00",
  "fired": {
   "at": "2026-11-22T04:22:27+00:00",
   "results": {
@@ -71,6 +71,14 @@
    },
    "items": [
     "The Mandalorian",
+    "lib:BTS",
+    "lib:Mrs. GREEN APPLE",
+    "lib:YOASOBI",
+    "lib:【推しの子】",
+    "lib:サッカー日本代表",
+    "lib:ポケットモンスター",
+    "lib:大相撲",
+    "lib:大谷翔平",
     "チェーンソーマン",
     "周杰伦"
    ],
@@ -85,10 +93,10 @@
    "ripe": [
     "The Mandalorian"
    ],
-   "sig": "9468bca91363",
+   "sig": "8b63b2ff554d",
    "token_cap": 1000000,
    "tokens_today": 370256,
-   "why": "整理待ちの記事 4 件（3 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 100 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
