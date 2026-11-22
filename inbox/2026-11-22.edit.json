@@ -12,7 +12,11 @@
     16,
     20,
     36,
-    37
+    37,
+    40,
+    46,
+    43,
+    48
    ],
    "image": "https://images.martincid.com/2026/11/take-two-interactive.jpg?f=orig"
   },
@@ -68,7 +72,9 @@
     29,
     30,
     33,
-    34
+    34,
+    44,
+    46
    ],
    "image": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/07/chris-hemsworth-in-avengers-doomsday.png?w=1600&h=900&fit=crop"
   },
@@ -109,7 +115,10 @@
    "weight": "normal",
    "refs": [
     15,
-    19
+    19,
+    38,
+    41,
+    42
    ]
   }
  ],
@@ -131,7 +140,8 @@
    "weight": "normal",
    "refs": [
     4,
-    5
+    5,
+    9
    ]
   },
   {
@@ -159,6 +169,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "ILLIT, from high fever and flu to ankle injury... \"Activity schedule scaled down\"",
+   "highlight": "Activity schedule scaled down",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
    ]
   }
  ],
@@ -259,15 +278,34 @@
    "refs": [
     11
    ]
+  },
+  {
+   "headline": "今すぐ買うべきです Galaxy S26 Ultra または待つ S27 Ultra？",
+   "highlight": "S27 Ultra",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    13
+   ]
+  },
+  {
+   "headline": "갤럭시S27 카메라 앱 달라진다…Expert RAW에 최대 30장 RAW 연사·맞춤형 버튼 추가",
+   "highlight": "최대 30장 RAW 연사",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
+   ]
   }
  ],
  "_covered": {
-  "GTA 6": 37,
-  "漫威电影": 37,
-  "ILLIT": 8,
+  "GTA 6": 49,
+  "漫威电影": 48,
+  "ILLIT": 16,
   "绝区零": 8,
-  "三星手机": 12,
-  "周杰伦": 9,
+  "三星手机": 15,
+  "周杰伦": 12,
   "哈利波特剧集": 3,
   "滑雪": 3,
   "A2O LITE": 2,
@@ -290,21 +328,21 @@
    "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261122/photo/bkn-20261122000121422-1122_00862_001_02b.jpg?20261121230942"
   },
   {
-   "headline": "周杰倫演唱會「豪砸5億」再創新紀錄！打造14m巨型機甲 震撼場面曝光",
-   "highlight": "豪砸5億",
+   "headline": "580元只能看大屏！周杰伦武汉演唱会票档引热议",
+   "highlight": "580元只能看大屏",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    12
    ]
   },
   {
-   "headline": "周杰伦当面追问阿妹为何退掉《忍者》！",
-   "highlight": "",
+   "headline": "周杰伦演唱会唱黑色毛衣，回忆学生时代年少温柔",
+   "highlight": "黑色毛衣",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    10
    ]
   }
  ],
