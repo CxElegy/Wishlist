@@ -327,3 +327,21 @@ wishlist:
       Aesop: ["Aesop|イソップ|伊索"]
       洗手液: ["ハンドウォッシュ|ハンドソープ|hand wash|洗手液"]
     basics: [洗手液]
+
+  - name: Haken Continuum Fingerboard（Slim 70）
+    image: haken-continuum.jpg
+    price: 7666
+    currency: US$
+    specs:
+      音域: 70 半音（约 6 个八度）
+      演奏: 平面触摸板，可滑音・揉弦・按压力度
+      型号: Slim Continuum 70（推断）
+    shop: Thomann
+    url: https://www.thomannmusic.com/haken_audio_slim_continuum_s70l6x.htm
+    added: 2026-11-22
+    status: 想要
+    note: 从「腕前を見せたい客 早く帰りたい店員」的短视频截图认的，木头两端＋平面键盘像 Haken Continuum，型号是推断。价格是 Thomann 的 70s8x 标价；2020 年首发预购价 US$5,710
+    likes:
+      Continuum: ["Continuum|コンティニュアム|Haken"]
+      合成器: ["シンセ|シンセサイザー|synthesizer|synth|合成器|MPE"]
+    basics: [合成器]
