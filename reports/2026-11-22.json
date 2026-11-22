@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "edit_sig": "be93a7547e19",
+ "edit_sig": "6817ef6ecfeb",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -600,15 +600,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-21",
-     "n": 2,
-     "source": "Comic Watch",
-     "title": "The Interlude Featuring The Mandalorian, Grogu, Luke And Cad Bane Continues in Star Wars: The Book Of Boba Fett #6",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxORnJLQlRCaWVzVksyUHhrQ3A5MFRjSTZ0SDh1eUVWaWVKd1hkcWI1aW8yUFhSNE5oN1NzbVFhMTRLSC1IQkVaQUVRRG0yZ1plRElKaHdZQ1l5SHpXdkFXUDc2aG9iZFliWU9HVlJ4VnRnb05SY2FqNElDMzlRdUNFQTlhWEI?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -620,6 +611,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.centraloregondaily.com/news/entertainment/the-mandalorian-and-grogu-digital-home-video-release-dates-set/article_1ee5c1d1-8e79-508e-8b10-cc601dbbc843.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-21",
+     "headline": "The Interlude Featuring The Mandalorian, Grogu, Luke And Cad Bane Continues in Star Wars: The Book Of Boba Fett #6",
+     "highlight": "",
+     "image": "https://comic-watch.com/wp-content/uploads/2026/11/Marvel-Boba-Fett2.png",
+     "image_via": "og:image",
+     "url": "https://comic-watch.com/news/comic-book-news/star-wars-book-of-boba-fett-6/amp",
+     "weight": "normal"
     }
    ],
    "subtitle": "ザ・マンダロリアン",
