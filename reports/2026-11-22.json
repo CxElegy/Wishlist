@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "edit_sig": "e22aabb7eb51",
+ "edit_sig": "376164cd28ca",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -900,17 +900,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-17",
-     "n": 1,
-     "source": "NBC News",
-     "title": "Experts say laser pointers are the worst cat toys — here is what to buy instead",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE02djIxa1h3WTVQd01yQ21PQ0ZGNWprbmhUTXhCMVBlX2k0QV84MHJaRnloek1ybjFHUldRcFduY0IxTXg3OV8xY2MxdHhiWXd4R2pEc3N6cXRYaktTMExEQjVBNkhGU0w0bjVxY0RWdXJudw?oc=5"
+     "headline": "Experts say laser pointers are the worst cat toys — here is what to buy instead",
+     "highlight": "laser pointers are the worst cat toys",
+     "image": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2024-04/240430-cat-toys-pet-week-kb-social-04c943.jpg",
+     "image_via": "og:image",
+     "url": "https://www.nbcnews.com/select/shopping/best-cat-toys-rcna151693",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",

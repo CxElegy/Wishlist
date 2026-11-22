@@ -316,7 +316,8 @@
   "あつ森": 1,
   "BLEACH Mirrors High": 1,
   "Vaundy": 2,
-  "dota2": 2
+  "dota2": 2,
+  "猫用品": 1
  },
  "周杰伦": [
   {
@@ -576,6 +577,17 @@
    "weight": "lead",
    "refs": [
     2
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "Experts say laser pointers are the worst cat toys — here is what to buy instead",
+   "highlight": "laser pointers are the worst cat toys",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]
