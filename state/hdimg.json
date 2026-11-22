@@ -775,6 +775,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/336983412/rectangle_large_type_2_6ab3f3f2b8f17348b881bc944d8c523f.jpeg?fit=bounds&quality=85&width=1280": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
+ },
  "https://assets.st-note.com/production/uploads/images/337820760/rectangle_large_type_2_76a69093c75b467f5a5f27372eabbe4a.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -804,6 +810,12 @@
   "h": 630,
   "target": 720,
   "v": 3
+ },
+ "https://attach.setn.com/newsimages/2026/04/04/5507948-PH.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://attach.setn.com/newsimages/2026/08/15/5670686-PH.jpg": {
   "w": 800,
@@ -1689,10 +1701,10 @@
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/carving.jpg": {
-  "w": 1241,
-  "h": 709,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/craig-kelly.jpg": {
   "w": 1253,
@@ -1814,12 +1826,6 @@
   "target": 1280,
   "v": 3
  },
- "https://fountmedia.s3.ap-northeast-1.amazonaws.com/article/08/04/446804_6535.webp?v=1795164936": {
-  "w": 1024,
-  "h": 683,
-  "target": 1280,
-  "v": 3
- },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/15080219/harry-potter-first-clip-divides-fans.jpg": {
   "w": 1600,
   "h": 900,
@@ -1850,6 +1856,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.411
+ },
+ "https://games.app-liv.jp/images/articles/2026/08/gd_589689_-22-e1785911491805.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://games.gg/api/og/content/?kind=news&key=dota-2%E3%83%91%E3%83%83%E3%83%81742%E3%81%8C%E9%85%8D%E4%BF%A1%E9%96%8B%E5%A7%8B%E8%A9%A6%E5%90%88%E5%B1%95%E9%96%8B%E3%81%AE%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%A8%E6%96%B0%E3%83%9B%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E5%B0%8E%E5%85%A5&lang=ja&u=torcj0&v=3": {
   "w": 1200,
@@ -1899,6 +1911,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hawk.live/storage/post-images/streamer-reacted-emotionally-victory-topson-23277.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
+ },
  "https://helios-i.mashable.com/imagery/articles/01wYqWza2nwthFr8EnLbnsZ/hero-image.fill.size_1200x675.v1795279249.png": {
   "w": 1200,
   "h": 675,
@@ -1940,6 +1958,12 @@
   "h": 675,
   "target": 720,
   "v": 3
+ },
+ "https://hips.hearstapps.com/hmg-prod/images/ae3dc98e-8759-4a07-af75-9cbce8d4b168.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://hips.hearstapps.com/vidthumb/images/lucas-1574724071.jpg?crop=1.00xw:1.00xh;0,0": {
   "w": 1920,
@@ -2290,6 +2314,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.kbench.com/kbench/article/thumbnail/283335_thumb.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
+ },
  "https://images.khan.co.kr/article/2026/11/20/news-p.v1.20261120.6b2ae1d6e17e49ca9d08f1bcab07ca1c_P1.png": {
   "w": 1200,
   "h": 756,
@@ -2602,62 +2632,6 @@
   "h": 628,
   "target": 1280,
   "v": 3
- },
- "https://img.eprice.com.hk/img/news_hk/41638/big.jpg": {
-  "w": 720,
-  "h": 378,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.465,
-  "local": "pics/95786f42e93cf461.webp",
-  "out": [
-   1280,
-   672
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    1,
-    1,
-    19,
-    25,
-    10,
-    1,
-    5,
-    9,
-    8,
-    9,
-    9,
-    4
-   ],
-   [
-    1,
-    7,
-    11,
-    18,
-    17,
-    20,
-    9,
-    5,
-    5,
-    5,
-    4,
-    0
-   ]
-  ],
-  "c": "#766a68",
-  "k": [
-   0.522,
-   0.093,
-   0.972,
-   0.894
-  ],
-  "p": [
-   0.102,
-   0.076,
-   0.435,
-   0.95
-  ]
  },
  "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg": {
   "w": 700,
@@ -3331,6 +3305,12 @@
   "target": 720,
   "v": 3
  },
+ "https://iphoneislam.com/wp-content/uploads/2026/08/samsung-vs-apple.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
+ },
  "https://k-plaza.com/wp-content/uploads/2026/11/6e195630a02193f6decbc766d343f233.jpg": {
   "w": 700,
   "h": 466,
@@ -3343,52 +3323,6 @@
   "h": 667,
   "target": 1280,
   "v": 3
- },
- "https://kyodonewsprwire.jp/prwfile/release/M108544/202611200662/_prw_PI14fl_0GIzfNfa.png": {
-  "w": 728,
-  "h": 412,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.44,
-  "local": "pics/49bda2317d7ac092.webp",
-  "out": [
-   1280,
-   724
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    7,
-    8,
-    8,
-    8,
-    6,
-    10,
-    8,
-    8,
-    6,
-    9,
-    10,
-    11
-   ],
-   [
-    4,
-    3,
-    1,
-    4,
-    9,
-    15,
-    18,
-    13,
-    8,
-    7,
-    9,
-    7
-   ]
-  ],
-  "c": "#3f3a37",
-  "k": null,
-  "p": null
  },
  "https://local12.com/resources/media2/16x9/1147/1320/0x9/90/c93ed80f-8419-4d26-963c-dc83c029c695-GTA.png": {
   "w": 1320,
@@ -3537,12 +3471,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.nownews.com/nn_media/thumbnail/2026/11/1795157032892-e3373d74952c44f4a632cae8c0ab08f7-1200x900.webp?unShow=false": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://media.nownews.com/nn_media/thumbnail/2026/11/1795171225956-1cef1977fc14485fab7a15f202c6f3c0-1200x675.webp?unShow=false": {
   "w": 1200,
   "h": 675,
@@ -3603,52 +3531,6 @@
   "target": 1280,
   "v": 3
  },
- "https://n.sinaimg.cn/finance/cece9e13/20240627/655959900_20240627.png": {
-  "w": 300,
-  "h": 300,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.654,
-  "local": "pics/c8f22ca11dd9284a.webp",
-  "out": [
-   900,
-   900
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    7,
-    8,
-    9,
-    10,
-    8,
-    9,
-    10,
-    8,
-    8,
-    8,
-    9,
-    7
-   ],
-   [
-    7,
-    8,
-    8,
-    9,
-    8,
-    9,
-    10,
-    10,
-    9,
-    8,
-    8,
-    6
-   ]
-  ],
-  "c": "#919191",
-  "k": null,
-  "p": null
- },
  "https://news-images.tvbs.com.tw/api/v1/image/01a1deb3-bfc6-73d5-ac23-232d7e8c5ead.jpg?t=16x9&wp=l,t&c=0,285,5472,3363&w=1200&h=675": {
   "w": 1200,
   "h": 675,
@@ -3696,6 +3578,12 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/11/1226909_1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg": {
   "w": 1024,
@@ -4123,6 +4011,12 @@
    0.87
   ],
   "p": null
+ },
+ "https://news.walkerplus.com/article/33564/160123_615.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://news.walkerplus.com/article/40260/207548_615.jpg": {
   "w": 615,
@@ -4762,6 +4656,12 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000468-oric-000-1-view.jpg?exp=10800": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00080112-chosun-000-10-view.jpg?exp=10800": {
   "w": 720,
   "h": 540,
@@ -5100,6 +5000,12 @@
   "target": 720,
   "v": 3
  },
+ "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/09/18/35341616.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
+ },
  "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414": {
   "w": 1414,
   "h": 1207,
@@ -5427,6 +5333,12 @@
   "h": 1260,
   "target": 1280,
   "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/60409/70/60409-70-e9ce2650e3d971a5e093ee593e5b7d16-3900x2925.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://prcdn.freetls.fastly.net/release_image/79579/45/79579-45-b53d5215e15367af5e35e1dcb7fa8873-2400x1350.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 2240,
@@ -5824,6 +5736,12 @@
   "h": 1425,
   "target": 720,
   "v": 3
+ },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Plus-Ultra-Unbox-9.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-recenze-1.jpg": {
   "w": 1900,
@@ -6249,22 +6167,16 @@
   "target": 1280,
   "v": 3
  },
- "https://today-obs.line-scdn.net/0h9hQIWKfuZkdsMHredUoZEFRmajZfVnxOTld9IhozP3dHHChDUQU1JB4yPGsSBydCTAIqcx5iP34VAiUWBw/w1200": {
-  "w": 820,
-  "h": 615,
-  "target": 1280,
-  "v": 3
+ "https://times-abema.ismcdn.jp/mwimgs/3/9/1200w/img_39b6d129ab3439549db7c0639abe2c02341504.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://today-obs.line-scdn.net/0hjiIQVYaPNUZ0KCnfGo5KEUx-OTdHTi9PVhp7IFl4aiRcBCJHGBpmJVgqPmoJTyVFVE15d1B4Y35dGXEZHw/w1200": {
   "w": 1200,
   "h": 676,
   "target": 1280,
-  "v": 3
- },
- "https://v-storage.jp/wp-content/uploads/2026/11/78042ea541338f80de191733f4e53155-1.jpg": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://variety.com/wp-content/uploads/2026/11/GTA-6-4.jpg?w=1000&h=563&crop=1": {
@@ -6582,6 +6494,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.404
+ },
+ "https://www.bing.com/th?id=ONUT.0jL3p1dtXiHuBRKoE7hTRg&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
   "w": 466,
@@ -7040,11 +6958,11 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.V9oUOErfpMDYxDF0Sjo6Hg&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
+ "https://www.bing.com/th?id=ONUT.Vsj0nhKfo1rrZub3I_VORQ&pid=News&w=1024": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-22"
  },
  "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
   "w": 700,
@@ -7841,12 +7759,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Ultra-vs.-S26-Ultra.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-1.jpg": {
   "w": 1280,
   "h": 720,
@@ -7856,12 +7768,6 @@
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/s27-ultra-2.jpg": {
   "w": 1280,
   "h": 721,
-  "target": 720,
-  "v": 3
- },
- "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-price-hike-2.webp": {
-  "w": 2560,
-  "h": 1441,
   "target": 720,
   "v": 3
  },
