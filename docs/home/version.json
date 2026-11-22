@@ -1,32 +1,32 @@
 {
- "admin": "98f0c955fbe1",
- "admin-ai": "1113fd94457a",
+ "admin": "3957399c1200",
+ "admin-ai": "e9ce48850b99",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4cc16c9d"
+   "47f254a8"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "03dc419c"
+   "664146a4"
   ]
  },
- "admin-boards": "c08725886f80",
+ "admin-boards": "d6fab84841d1",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "602174d8"
+   "506920f4"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "2e6c915ef8c4",
+ "admin-emblem": "500409ebf2a3",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f59d5b7a"
+   "df1a3e10"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "da23a16f6957",
+ "admin-now": "d81ede2a208c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "99bc951a"
+   "55fa1bf8"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "41242222"
+   "41655a89"
   ],
   "term-panel": [
    "ライブログ",
-   "e1b64c9f"
+   "aada950c"
   ]
  },
- "admin-system": "039528cfb904",
+ "admin-system": "b37d7636bb72",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "adfbc49b"
+   "bef69570"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ae23a765"
+   "5a59012a"
   ]
  },
  "admin_marks": {},
- "heat": "cbb5d98b8635",
+ "heat": "6d0b20cf7bd6",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "66356c4d"
+   "9a5d0573"
   ],
   "ranking": [
    "ランキング",
-   "441d19c3"
+   "670a68d9"
   ]
  },
- "index": "7f68f912e7d9",
+ "index": "6aa8c192828d",
  "index_marks": {
   "front": [
    "トップ",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "866aea72"
+   "52ecaf9d"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "5118ce40"
+   "37cb92a4"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "bca1f89c"
   ]
  },
- "updated": "11.22 22:19",
+ "updated": "11.22 22:32",
  "wishlist": "ac4f7acb1ba4"
 }
