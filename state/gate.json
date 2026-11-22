@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-22T17:22:28+00:00",
+ "checked": "2026-11-22T17:27:07+00:00",
  "fired": {
   "at": "2026-11-22T16:32:47+00:00",
   "results": {
@@ -78,14 +78,14 @@
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
-    "lib:ユニバーサル・スタジオ・ジャパン",
-    "lib:京都",
-    "lib:宇宙・ロケット",
-    "lib:将棋",
-    "lib:恐竜",
-    "lib:東京ディズニーリゾート",
-    "lib:温泉",
-    "lib:生成AI",
+    "lib:BTS",
+    "lib:Mrs. GREEN APPLE",
+    "lib:YOASOBI",
+    "lib:【推しの子】",
+    "lib:サッカー日本代表",
+    "lib:ポケットモンスター",
+    "lib:大相撲",
+    "lib:大谷翔平",
     "周杰伦",
     "猫用品"
    ],
@@ -97,11 +97,15 @@
    "need": true,
    "prog": 46,
    "prog_day": "2026-11-23",
-   "ripe": [],
-   "sig": "7c930b7acbc2",
+   "ripe": [
+    "MMORPG 新作",
+    "The Mandalorian",
+    "猫用品"
+   ],
+   "sig": "1a4e809f020c",
    "token_cap": 1000000,
    "tokens_today": 57616,
-   "why": "整理待ちの記事 107 件（15 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 107 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
