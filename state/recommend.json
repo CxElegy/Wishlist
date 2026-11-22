@@ -25,6 +25,7 @@
   "https://news.yahoo.co.jp/articles/d4492dc5c8407c37eded1ce359eabc76208f57ee": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000468-oric-000-1-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/e9de9e7613f66d419f0486c2d18de40876fb0cd4": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000010-manetatsun-000-1-view.jpg?exp=10800",
   "https://nijimen.kusuguru.co.jp/topics/660768": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/c903cf959a864a2ca9f59aed8ab26226.jpg",
+  "https://nmiagaming.com/posts/gta-6-and-zelda-ocarina-of-time-remake-hit-by-review-bomb-war-with-zero-score-ratings": "https://dn2rwli0e0lll.cloudfront.net/strapi-uploads-cn/gta6ocarinaoftimeremakenegativereviewuserfi_e2913c3574.webp",
   "https://note.com/chotto_dakeyo/n/n3666306c247c?hl=en": "https://www.bing.com/th?id=ONUT._vPVIoyfJkD-Bj04ZKa2qA&pid=News&w=1200",
   "https://note.com/easy_bee5312/n/n6b92f9a432ea": "https://www.bing.com/th?id=ONUT.dPZ1BVkHLXJtgKQ_rOiB6w&pid=News&w=1200",
   "https://note.com/htoyotajpfr/n/n2642ac2caf82?hl=ko": "https://www.bing.com/th?id=ONUT.UeMEqrnIA3h3gJ78C7jvbw&pid=News&w=1200",
@@ -67,10 +68,10 @@
   "https://www.sacnilk.com/news/filming-of-salman-khans-superhero-film-with-raj-dk-pushed-to-april-2027-as-monster-takes-priority": "https://cdn.sacnilk.com/image/news300/1000028647.jpg",
   "https://www.salonprivemag.com/can-squirrels-eat-grapes/": "https://salonprivemag.b-cdn.net/wp-content/uploads/2023/10/fghjgh-e1698251019921.png",
   "https://www.setn.com/news/1817653": "https://attach.setn.com/newsimages/2026/04/04/5507948-PH.jpg",
-  "https://www.sina.cn/news/detail/5367907372761707.html": "http://wx2.sinaimg.cn/middle/008qwiEkgy1ijagqacux5j310o2tu1cy.jpg",
   "https://www.surinenglish.com/lifestyle/laptops-and-lap-cats-feline-coworking-20261120111331-nt.html": "https://s1.ppllstatics.com/surinenglish/www/multimedia/2026/11/20/226693688.jpg",
   "https://www.techradar.com/news/best-tablet": null,
   "https://www.thecanadianpressnews.ca/world/former-owner-of-internet-famous-squirrel-charged-with-mortgage-fraud/article_5535a2a3-2d5f-5edd-bca5-70417898d99b.html": "https://bloximages.chicago2.vip.townnews.com/thecanadianpressnews.ca/content/tncms/assets/v3/editorial/1/09/109fefdc-6587-5e74-9e3b-8f11271af871/6af4f3f98e144.image.jpg?crop=1400%2C735%2C0%2C99&resize=1200%2C630&order=crop%2Cresize",
+  "https://www.tradingview.com/news/binance_news:0ecee35b1094b:0-polymarket-s-inner-circle-win-probability-falls-33-points-in-dota-2-market/": "https://s.tradingview.com/static/images/illustrations/news-story.jpg",
   "https://www.upmedia.mg/tw/game/mobile-game/274821": "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp",
   "https://www.vietnam.vn/ko/man-hinh-galaxy-khong-vien-samsung-duoc-cho-la-can-nhac-di-truoc-iphone-ky-niem-20-nam-cua-apple": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1794995576138_img_743cec74.jpeg",
   "https://www.walkerplus.com/article/1004716/": "https://news.walkerplus.com/article/1004716/10032764_615.jpg",
@@ -959,6 +960,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-21",
+   "hits": [],
+   "image": "https://dn2rwli0e0lll.cloudfront.net/strapi-uploads-cn/gta6ocarinaoftimeremakenegativereviewuserfi_e2913c3574.webp",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "Nmia Gaming",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "《GTA 6》與《薩爾達傳說：時之笛》重製版陷入刷負評大戰！雙方玩家疑似互灌 Metacritic 零分",
+   "url": "https://nmiagaming.com/posts/gta-6-and-zelda-ocarina-of-time-remake-hit-by-review-bomb-war-with-zero-score-ratings",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "ILLIT",
    "date": "2026-11-21",
    "hits": [],
@@ -1012,7 +1034,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "猫用品",
    "date": "2026-11-21",
    "hits": [
@@ -1137,7 +1159,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "ILLIT",
    "date": "2026-11-20",
    "hits": [],
@@ -1254,7 +1276,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "Astrae Oratio",
    "date": "2026-11-13",
    "hits": [],
@@ -1359,7 +1381,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-20",
    "hits": [],
@@ -1445,26 +1467,26 @@
   {
    "batch": 5,
    "because": "dota2",
-   "date": "2026-11-21",
+   "date": "2026-11-20",
    "hits": [],
-   "image": "http://wx2.sinaimg.cn/middle/008qwiEkgy1ijagqacux5j310o2tu1cy.jpg",
+   "image": "https://s.tradingview.com/static/images/illustrations/news-story.jpg",
    "kind": "board",
    "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
    "score": 5,
-   "source": "手机新浪网",
+   "source": "TradingView",
    "taste": [
     [
      "作品:dota2",
      1
     ]
    ],
-   "title": "XG 战队 DOTA2 赛事战报：BO3 第二轮1-1 战平Spirit|XG 电子竞技俱乐部|Spirit|Ame|dota2|blast slam s9_新浪新闻",
-   "url": "https://www.sina.cn/news/detail/5367907372761707.html",
+   "title": "Polymarket's Inner Circle Win Probability Falls 33 Points in Dota 2 Market",
+   "url": "https://www.tradingview.com/news/binance_news:0ecee35b1094b:0-polymarket-s-inner-circle-win-probability-falls-33-points-in-dota-2-market/",
    "words": [],
    "work": "dota2"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-11-20",
    "hits": [],
@@ -1942,11 +1964,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -1954,11 +1976,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [

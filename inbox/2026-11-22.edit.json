@@ -17,7 +17,12 @@
     46,
     43,
     48,
-    50
+    50,
+    70,
+    62,
+    64,
+    66,
+    69
    ],
    "image": "https://images.martincid.com/2026/11/take-two-interactive.jpg?f=orig"
   },
@@ -48,7 +53,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    24
+    24,
+    63,
+    71
    ]
   },
   {
@@ -88,7 +95,8 @@
    "refs": [
     8,
     5,
-    51
+    51,
+    57
    ],
    "image": "https://www.bing.com/th?id=ONUT.hSK1x_UwmELq3M2x6HEyvg&pid=News&w=1200"
   },
@@ -132,16 +140,19 @@
    "blurb": "MMA 4관왕에 이어 홍백가합전에도 K팝 유일, 3년 연속 출격한다.",
    "weight": "lead",
    "refs": [
-    8
+    8,
+    21,
+    23
    ],
    "image": "https://biz.chosun.com/resizer/v2/GBRTSMBUHE3DCZLFGYYTCYRSME.jpg?auth=1b7bbc5fde70d7b47712f519fe795934dc4ac45c316876b8bf3e3d9adfd46876&width=616"
   },
   {
-   "headline": "일본 팬심 꽉 붙든 아일릿, 레코드대상 3년 연속 수상",
-   "highlight": "레코드대상 3년 연속 수상",
+   "headline": "ILLITとCORTIS 日本レコ大で受賞",
+   "highlight": "日本レコ大",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    20,
     4,
     5,
     9,
@@ -251,7 +262,11 @@
    "weight": "normal",
    "refs": [
     5,
-    9
+    9,
+    26,
+    20,
+    27,
+    25
    ]
   },
   {
@@ -263,7 +278,8 @@
     3,
     4,
     10,
-    12
+    12,
+    24
    ]
   },
   {
@@ -305,12 +321,12 @@
   }
  ],
  "_covered": {
-  "GTA 6": 60,
-  "漫威电影": 54,
-  "ILLIT": 19,
+  "GTA 6": 71,
+  "漫威电影": 61,
+  "ILLIT": 23,
   "绝区零": 8,
-  "三星手机": 19,
-  "周杰伦": 12,
+  "三星手机": 27,
+  "周杰伦": 16,
   "哈利波特剧集": 5,
   "滑雪": 3,
   "A2O LITE": 2,
@@ -321,7 +337,7 @@
   "あつ森": 1,
   "BLEACH Mirrors High": 1,
   "Vaundy": 2,
-  "dota2": 2,
+  "dota2": 6,
   "猫用品": 1,
   "gelato pique": 3
  },
@@ -332,7 +348,9 @@
    "blurb": "周杰伦悉尼开唱，会后密会《狂野时速》系列导演，引发热议。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    14,
+    15
    ],
    "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261122/photo/bkn-20261122000121422-1122_00862_001_02b.jpg?20261121230942"
   },
@@ -592,6 +610,26 @@
    "weight": "lead",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "XG 战队 DOTA2 赛事战报：BO3 第二轮1-1 战平Spirit",
+   "highlight": "1-1 战平Spirit",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    5,
+    3
+   ]
+  },
+  {
+   "headline": "《刀塔2》版本更新 - 7.42 - 英雄技能热键优化及Bug修复",
+   "highlight": "7.42",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
