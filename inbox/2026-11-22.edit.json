@@ -24,7 +24,9 @@
     66,
     69,
     74,
-    72
+    72,
+    89,
+    103
    ],
    "image": "https://images.martincid.com/2026/11/take-two-interactive.jpg?f=orig"
   },
@@ -58,7 +60,9 @@
    "refs": [
     24,
     63,
-    71
+    71,
+    83,
+    102
    ]
   },
   {
@@ -86,7 +90,8 @@
     34,
     44,
     46,
-    49
+    49,
+    70
    ],
    "image": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/07/chris-hemsworth-in-avengers-doomsday.png?w=1600&h=900&fit=crop"
   },
@@ -100,7 +105,11 @@
     5,
     51,
     57,
-    65
+    65,
+    76,
+    75,
+    73,
+    71
    ],
    "image": "https://www.bing.com/th?id=ONUT.hSK1x_UwmELq3M2x6HEyvg&pid=News&w=1200"
   },
@@ -161,7 +170,9 @@
     5,
     9,
     18,
-    19
+    19,
+    24,
+    26
    ]
   },
   {
@@ -198,6 +209,29 @@
    "weight": "normal",
    "refs": [
     16
+   ]
+  },
+  {
+   "headline": "ILLIT 2027 SEASON'S GREETINGS Mood Film (B ver.)",
+   "highlight": "SEASON'S GREETINGS",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27
+   ],
+   "event": {
+    "date": "2026-11-25",
+    "label": "予約開始",
+    "time": "11:00"
+   }
+  },
+  {
+   "headline": "ILLIT・YUNAH、小さい頃の夢は「良いお母さん」 IROHAの意外な回答にはスタジオどよめき",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    28
    ]
   }
  ],
@@ -326,9 +360,9 @@
   }
  ],
  "_covered": {
-  "GTA 6": 81,
-  "漫威电影": 69,
-  "ILLIT": 23,
+  "GTA 6": 103,
+  "漫威电影": 76,
+  "ILLIT": 28,
   "绝区零": 8,
   "三星手机": 31,
   "周杰伦": 21,
@@ -337,13 +371,13 @@
   "A2O LITE": 2,
   "チェーンソーマン": 9,
   "FROM": 2,
-  "MMORPG 新作": 2,
+  "MMORPG 新作": 5,
   "The Mandalorian": 2,
   "あつ森": 1,
   "BLEACH Mirrors High": 1,
   "Vaundy": 2,
   "dota2": 11,
-  "猫用品": 1,
+  "猫用品": 5,
   "gelato pique": 6
  },
  "周杰伦": [
@@ -570,7 +604,8 @@
    "weight": "lead",
    "refs": [
     1
-   ]
+   ],
+   "image": "https://www.thehypemagazine.com/wp-content/uploads/2026/11/elden-ring-meets-minecraft-dark-craft-free-rpg.jpg"
   },
   {
    "headline": "NC Q3 2026 Earnings Report: MMORPGs Continue To Drive NC's Revenue Growth",
@@ -579,6 +614,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "그라비티, 신작 프리뷰 체험회 개최... 출시 전 로드맵 공개",
+   "highlight": "프리뷰 체험회",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -688,6 +732,43 @@
    "weight": "lead",
    "refs": [
     1
+   ],
+   "image": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2024-04/240430-cat-toys-pet-week-kb-social-04c943.jpg"
+  },
+  {
+   "headline": "The 12 Best Cat Trees for Climbers, Scratchers, and Nappers",
+   "highlight": "Best Cat Trees",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Michu sold 2 million bags of tofu cat litter and disrupted cat care",
+   "highlight": "2 million bags",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "猫グッズが3つも…人気チェーンの福袋 ぬいぐるみ付ポーチは、サンドイッチ入れ用に！？",
+   "highlight": "福袋",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "【大阪市住吉区】南田辺駅から徒歩約7分の場所に、猫雑貨のSERO BOXがオープンしたそうです！",
+   "highlight": "SERO BOX",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
