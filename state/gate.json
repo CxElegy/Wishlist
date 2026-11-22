@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-22T10:27:40+00:00",
+ "checked": "2026-11-22T10:35:13+00:00",
  "fired": {
   "at": "2026-11-22T10:03:44+00:00",
   "results": {
@@ -72,46 +72,31 @@
    "items": [
     "A2O LITE",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "lib:Ado",
     "lib:F1",
-    "lib:King Gnu",
     "lib:Nintendo Switch 2",
     "lib:iPhone",
-    "lib:ゼルダの伝説",
+    "lib:ガンプラ",
+    "lib:キャンプ",
     "lib:ユニクロ",
     "lib:無印良品",
     "チェーンソーマン",
     "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "周杰伦"
    ],
-   "last_batch": "2026-11-22T08:54:15+00:00",
+   "last_batch": "2026-11-22T10:22:20+00:00",
    "last_error": {
     "at": "2026-11-22T08:43:56+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 346,
+   "prog": 394,
    "prog_day": "2026-11-22",
-   "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
-   ],
-   "sig": "b44bfc2deb59",
+   "ripe": [],
+   "sig": "be24d5eaec45",
    "token_cap": 1000000,
-   "tokens_today": 581781,
-   "why": "整理待ちの記事 147 件（20 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 644986,
+   "why": "整理待ちの記事 101 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -276,12 +261,12 @@
    "runs": 16
   },
   "2026-11-22": {
-   "batches": 21,
-   "cr": 9968321,
-   "cw": 534406,
-   "in": 278,
-   "out": 47097,
-   "runs": 10
+   "batches": 23,
+   "cr": 10969822,
+   "cw": 592095,
+   "in": 305,
+   "out": 52586,
+   "runs": 11
   }
  }
 }
