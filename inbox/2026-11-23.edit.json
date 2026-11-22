@@ -41,6 +41,46 @@
   }
  ],
  "_covered": {
-  "GTA 6": 12
- }
+  "GTA 6": 12,
+  "漫威电影": 10
+ },
+ "漫威电影": [
+  {
+   "headline": "Avengers: Doomsday Poster Highlights Vanessa Kirby's Invisible Woman Ahead Of Doctor Doom Battle",
+   "highlight": "Doomsday Poster",
+   "blurb": "A new Avengers: Doomsday poster centers on Vanessa Kirby's Invisible Woman ahead of the Doctor Doom showdown.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Avengers: Doomsday TV Spot Brings Back Tom Holland's Spider-Man",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    8
+   ]
+  },
+  {
+   "headline": "Rumor: Avengers: Doomsday Last Minute Reshoots Add New Scene",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Chris Evans says 'I am just Steve Rogers now' in viral response to MCU fan",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ]
 }
