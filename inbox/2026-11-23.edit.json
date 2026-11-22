@@ -50,7 +50,8 @@
   "The Mandalorian": 2,
   "dota2": 2,
   "周杰伦": 2,
-  "猫用品": 1
+  "猫用品": 1,
+  "ILLIT": 5
  },
  "漫威电影": [
   {
@@ -218,6 +219,36 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "아일릿, 멤버 전원 건강 빨간불…\"활동 축소 결정\"",
+   "highlight": "활동 축소 결정",
+   "blurb": "멤버 전원의 건강 이상으로 활동을 축소하기로 결정. MAMA에는 부상을 안고 참석했다.",
+   "weight": "lead",
+   "refs": [
+    4,
+    1
+   ]
+  },
+  {
+   "headline": "ILLIT「Magnetic」、Spotify累計9億回再生突破 K-POPグループのデビュー曲として最速記録",
+   "highlight": "Spotify累計9億回再生突破",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ILLIT、日本の伝説雑誌『FRUiTS』とコラボ 日本ストリートカルチャーで“ILLITコア”表現",
+   "highlight": "『FRUiTS』とコラボ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]

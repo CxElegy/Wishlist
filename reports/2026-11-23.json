@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "e0c7c1f5853a",
+ "edit_sig": "82d19e4ca6ae",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -269,45 +269,39 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-20",
-     "n": 1,
-     "source": "on.cc東網",
-     "title": "MAMA︱朴寶劍第8次任主持 ILLIT抱病帶傷赴會",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNdGRTMzNKX0kxT3h1NHBjWXp4WUpZY2diQzhoTEF1UTMydW5aRUU0a2ctcUhmUWNzZzJubERuN3Jud3RTY0NKX3Z3WFhzQ1dRN3lvS1U3NGJEWDBNaEpPN05SV3Q2c2RnQXh6NG9rZzU5QmZyRmd6cjlPZzN3WWdERlUzdkxVb1FUY3dMTnY0QXQzLVNTc1Jr?oc=5"
+     "headline": "MAMA︱朴寶劍第8次任主持 ILLIT抱病帶傷赴會",
+     "highlight": "",
+     "image": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261120/photo/bkn-20261120165808608-1120_00862_001_02b.jpg?20261120165808",
+     "image_via": "JSON-LD",
+     "url": "https://hk.on.cc/hk/bkn/cnt/entertainment/20261120/bkn-20261120165808608-1120_00862_001.html",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-20",
-     "n": 2,
-     "source": "山陽新聞",
-     "title": "ILLIT、日本の伝説雑誌『FRUiTS』とコラボ 日本ストリートカルチャーで“ILLITコア”表現",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNQ2xCa1pxa05wWm41bDhpM1lXa0VuTjNtcThPd0NTcnFKdmZ1dFJHOGNjbm12NEt0dkk5RENyS2hReGRsczJQMHh6b3l6cXN6Ul9wTVhlcHBXNTZBdjJ0aW5TTkVDZmIyb3pJZDRWb29QWS11U2xkNnlROEsyRHhBT0ZBbERxQQ?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-19",
-     "n": 3,
-     "source": "山陽新聞",
-     "title": "ILLIT「Magnetic」、Spotify累計9億回再生突破 K-POPグループのデビュー曲として最速記録",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE91UkoyREt3RGdKUFZrOTd3OGtkeWZ2RDVaOTYwRGZHX2RlWVBOb3VhX3dsY1pYaEtpaUJpaXlMZlRoN2tGVnYxMU9kamhWWHlqUHR0WkVhUTgwaHk2T0IzVE54cw?oc=5"
+     "headline": "ILLIT「Magnetic」、Spotify累計9億回再生突破 K-POPグループのデビュー曲として最速記録",
+     "highlight": "Spotify累計9億回再生突破",
+     "image": "https://static.sanyonews.jp/image/article/size1/a/d/a/d/adadf5719e09d5f1edb695115c6e2419_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/2007671?kw=%E7%A6%8F",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-18",
-     "n": 4,
-     "source": "JTBC",
-     "title": "아일릿, 멤버 전원 건강 빨간불…\"활동 축소 결정\"",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5yUUp3Umd2TFlocF8waGVTN2ZFS2t4N2xkTHRCS19QWi1JNW50UlpyVS1nOFVFQnEtRHVWU3MxOWZTZ01jZ0V2NFY0RHgzTFpITWl2MA?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 5,
-     "source": "Kagit",
-     "title": "ILLIT慜柱遭酸「填充過量」！MMA得獎致詞臉僵被抓包 網傻眼：以為畫面卡住",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9WVWJrSWRnbE9ianZLdTdiV2pEVkxJdHJ5RHl0SWNwQnk3N0ZlRVNGYjlFM2dLRS1LdldyOHFEN0VXMGZ0bUpNd3pib1VjM2E2WHZNOFNueDI?oc=5"
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "ILLIT、日本の伝説雑誌『FRUiTS』とコラボ 日本ストリートカルチャーで“ILLITコア”表現",
+     "highlight": "『FRUiTS』とコラボ",
+     "image": "https://static.sanyonews.jp/image/article/size1/c/c/8/a/cc8a68666a0c0ab2af51729864d4d114_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1951636?rct=oricon_music&kw=%E7%A6%8F%E7%A5%B1",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",

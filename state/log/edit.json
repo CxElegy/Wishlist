@@ -1,49 +1,5 @@
 [
 {
-"at": "2026-11-21T05:41:00+00:00",
-"text": "2026-11-21 第 1 バッチを出刊：BLEACH Mirrors High、MMORPG 新作、dota2、日本顶级网球赛事（4 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4.7万・キャッシュ読み 130.0万・出力 3,879",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.38,
-"mem_total": 16869113856,
-"mem_free": 15915687936,
-"disk_used": 10465681408,
-"disk_free": 31203676160,
-"disk_total": 41669357568,
-"peak": 363872256
-},
-"batch": 1,
-"boards": [
-"BLEACH Mirrors High",
-"MMORPG 新作",
-"dota2",
-"日本顶级网球赛事"
-],
-"stories": 5,
-"left": 0,
-"edited": 21,
-"run": 1795239389.3022661,
-"tok": {
-"in": 36,
-"cw": 46714,
-"cr": 1300263,
-"out": 3879,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1350892,
-"secs": 271,
-"run_tok": {
-"in": 36,
-"cw": 46714,
-"cr": 1300263,
-"out": 3879,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-21T07:21:43+00:00",
 "text": "2026-11-21 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 4 版面） · token 新規入力 4.3万・キャッシュ読み 49.3万・出力 1,617",
 "level": "ok",
@@ -2064,5 +2020,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 821123
+},
+{
+"at": "2026-11-22T19:27:26+00:00",
+"text": "2026-11-23 第 2 バッチを出刊：ILLIT（1 版面・3 本・残り 1 版面） · token 新規入力 3,057・キャッシュ読み 46.5万・出力 1,737",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.52,
+"mem_total": 16869113856,
+"mem_free": 15864066048,
+"disk_used": 11243212800,
+"disk_free": 62638399488,
+"disk_total": 73881612288,
+"peak": 402788352
+},
+"batch": 2,
+"boards": [
+"ILLIT"
+],
+"stories": 3,
+"left": 1,
+"edited": 10,
+"run": 1795375185.305384,
+"tok": {
+"in": 11,
+"cw": 3046,
+"cr": 464972,
+"out": 1737,
+"calls": 6,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 469766
 }
 ]
