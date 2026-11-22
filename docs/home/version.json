@@ -1,14 +1,14 @@
 {
- "admin": "0e5be172cfed",
- "admin-ai": "942bf38e0150",
+ "admin": "850626a0462c",
+ "admin-ai": "11e2579d5163",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4c59dffb"
+   "85937e16"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "64ad44fa"
+   "bfe21592"
   ]
  },
  "admin-boards": "2b660940a2dc",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "65181ea9117a",
+ "admin-emblem": "e66eed44edba",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "827d573d"
+   "52d17fa1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "6582c076f228",
+ "admin-now": "ae872ae8e910",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "10f9a73e"
+   "76cefde4"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "dc7d82ae"
+   "4ffb1524"
   ]
  },
- "admin-system": "a391d287e098",
+ "admin-system": "6bfe599d1ba7",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "0aa316e5"
+   "c4b1b910"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "14a34121"
+   "751f309f"
   ]
  },
  "admin_marks": {},
- "heat": "c2a53cfcddde",
+ "heat": "eac7736aef26",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "fa57d594"
+   "17126d5e"
   ],
   "ranking": [
    "ランキング",
-   "810322c2"
+   "441d8196"
   ]
  },
- "index": "df1dc44c83d2",
+ "index": "12b20697230a",
  "index_marks": {
   "front": [
    "トップ",
-   "ead9cf50"
+   "b860c2a7"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "0ccce635"
+   "01e995c7"
   ],
   "w-130724c0": [
    "猫用品",
@@ -137,15 +137,15 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "52ecaf9d"
+   "c636c33c"
   ],
   "w-79b3c280": [
    "滑雪",
-   "ad29eff1"
+   "8d37f564"
   ],
   "w-7a894105": [
    "周杰伦",
-   "8388df19"
+   "5a245412"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "37cb92a4"
+   "5118ce40"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "bca1f89c"
   ]
  },
- "updated": "11.22 17:37",
+ "updated": "11.22 17:48",
  "wishlist": "ba1c61bed6ca"
 }
