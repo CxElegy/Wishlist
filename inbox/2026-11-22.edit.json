@@ -292,7 +292,8 @@
    "weight": "normal",
    "refs": [
     1,
-    8
+    8,
+    32
    ]
   },
   {
@@ -366,13 +367,13 @@
   "漫威电影": 76,
   "ILLIT": 28,
   "绝区零": 10,
-  "三星手机": 31,
-  "周杰伦": 21,
+  "三星手机": 32,
+  "周杰伦": 22,
   "哈利波特剧集": 5,
   "滑雪": 12,
-  "A2O LITE": 2,
-  "チェーンソーマン": 9,
-  "FROM": 2,
+  "A2O LITE": 3,
+  "チェーンソーマン": 10,
+  "FROM": 3,
   "MMORPG 新作": 5,
   "The Mandalorian": 2,
   "あつ森": 1,
@@ -413,6 +414,15 @@
    "weight": "normal",
    "refs": [
     10
+   ]
+  },
+  {
+   "headline": "周杰倫搶男主角！喊話韓版《不能說的秘密》 還揪昆凌演…",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22
    ]
   }
  ],
@@ -534,11 +544,12 @@
    ]
   },
   {
-   "headline": "A2O LITE，9人 9色魅力",
-   "highlight": "9人 9色",
+   "headline": "イ・スマンプロデュースA2O LITE、デビュー後初のグラビアで9人9色のビジュアルを披露",
+   "highlight": "9人9色",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    3,
     1
    ]
   }
@@ -602,7 +613,8 @@
    "blurb": "‘From’ has become a major streaming success on Netflix. No news yet on the Season 5 premiere date.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    3
    ],
    "image": "https://dailytimes.com.pk/assets/uploads/2026/11/21/From-becomes-Netflixs-major-streaming-success.jpg"
   },

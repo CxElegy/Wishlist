@@ -1,14 +1,14 @@
 {
- "admin": "3957399c1200",
- "admin-ai": "e9ce48850b99",
+ "admin": "6b0817848929",
+ "admin-ai": "af116a58ccd0",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "47f254a8"
+   "ca3e729a"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "664146a4"
+   "a5f2161f"
   ]
  },
  "admin-boards": "d6fab84841d1",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "b06ed7f2724a",
+ "admin-emblem": "8c2ac9d0369d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "851b6449"
+   "b233fb3b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "d81ede2a208c",
+ "admin-now": "a4118300691b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "55fa1bf8"
+   "5c240987"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "aada950c"
+   "b362964a"
   ]
  },
- "admin-system": "27c188c0ee3f",
+ "admin-system": "755d1f87ca4b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "bef69570"
+   "3adf4a36"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "215f45de"
+   "980b1ed6"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "670a68d9"
   ]
  },
- "index": "765916407351",
+ "index": "74efd7513115",
  "index_marks": {
   "front": [
    "トップ",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "f35ea214"
+   "cfa14670"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -196,6 +196,6 @@
    "bca1f89c"
   ]
  },
- "updated": "11.22 22:36",
+ "updated": "11.22 22:41",
  "wishlist": "ac4f7acb1ba4"
 }
