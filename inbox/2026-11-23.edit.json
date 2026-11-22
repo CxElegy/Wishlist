@@ -46,7 +46,8 @@
   "三星手机": 4,
   "哈利波特剧集": 4,
   "MMORPG 新作": 2,
-  "The Mandalorian": 2
+  "The Mandalorian": 2,
+  "dota2": 2
  },
  "漫威电影": [
   {
@@ -168,6 +169,17 @@
   {
    "headline": "LEGO Star Wars Gets the Black Friday Treatment as The Mandalorian’s N-1 Starfighter Hits an All-Time Low",
    "highlight": "All-Time Low",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "《Dota 2》7.42 更新上線：遊戲節奏加快並新增快捷鍵",
+   "highlight": "7.42 更新上線",
    "blurb": "",
    "weight": "lead",
    "refs": [

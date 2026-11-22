@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "ca927849c67b",
+ "edit_sig": "49148f972ccd",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -373,24 +373,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-20",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "Dota 2 Ranks and MMR Table 2026: Every Medal From Herald to Immortal",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1YU2xzbGZGS0JzbUlKN0RxMDV0c1BoNUxBbnlIcjlPU0NQdWVNU1JfN2FId1BOV1A2VEJWckVMRUtKenVtYzY0MnhyTXp0X1c1OFZMZnBUcmdCQV9fV01GQnB0UDN3RFVjWWdBeHEtS0NrZw?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-19",
-     "n": 2,
-     "source": "games.gg",
-     "title": "《Dota 2》7.42 更新上線：遊戲節奏加快並新增快捷鍵",
-     "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxPVFF0TVd4Nlc4dFpHSURLdzZNRU1RcHRHUjZ6ZEdGcjZmcmw4R1RKeWU4MlcxSEpDNDV4RUJsUkJZN1JKYmpxdF9VeGFSYzhXemljX0hFMlBiM0liNU5Nc0RNbUtSdWwwV0ZPNHVKSTF2bmpnbjUyWjlGUHdCcy1kOWY3a0ZCb0RocjA3cm83US0wR21zbjd3NXlid3ZfMXdZcDM2MGpLc0hpbkdHeHpvaHhBdHNkRXdSZC1CdVJwaHpqWnJuZHZyRXNmbzJZSUNoYTFISk1UVzhzNExKS0VCM2tLeWwzOXkyZ2tyVFV4cUV1RGNYaWlPRjlobTNPSDVLdURtblhETFlhbV9IUzE0aF83NA?oc=5"
+     "headline": "《Dota 2》7.42 更新上線：遊戲節奏加快並新增快捷鍵",
+     "highlight": "7.42 更新上線",
+     "image": "https://games.gg/api/og/content/?kind=news&key=dota-2742-%E6%9B%B4%E6%96%B0%E4%B8%8A%E7%B7%9A%E9%81%8A%E6%88%B2%E7%AF%80%E5%A5%8F%E5%8A%A0%E5%BF%AB%E4%B8%A6%E6%96%B0%E5%A2%9E%E5%BF%AB%E6%8D%B7%E9%8D%B5&lang=zh-Hant&u=torcjg&v=3",
+     "image_via": "og:image（本站保存）",
+     "url": "https://games.gg/zh-Hant/news/dota-2742-%E6%9B%B4%E6%96%B0%E4%B8%8A%E7%B7%9A%E9%81%8A%E6%88%B2%E7%AF%80%E5%A5%8F%E5%8A%A0%E5%BF%AB%E4%B8%A6%E6%96%B0%E5%A2%9E%E5%BF%AB%E6%8D%B7%E9%8D%B5/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
