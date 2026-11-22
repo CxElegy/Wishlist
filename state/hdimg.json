@@ -495,6 +495,57 @@
    0.334
   ]
  },
+ "http://wx2.sinaimg.cn/middle/6e48db9egy1ijbfgf36ibj20ld0nmwim.jpg": {
+  "w": 769,
+  "h": 850,
+  "target": 720,
+  "v": 3,
+  "local": "pics/51c93795014b1833.webp",
+  "out": [
+   769,
+   850
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    10,
+    10,
+    10,
+    11,
+    10,
+    10,
+    8,
+    5,
+    5,
+    7,
+    7,
+    7
+   ],
+   [
+    6,
+    5,
+    7,
+    12,
+    14,
+    10,
+    17,
+    14,
+    4,
+    4,
+    3,
+    2
+   ]
+  ],
+  "c": "#645b4d",
+  "k": null,
+  "p": [
+   0.419,
+   0.483,
+   0.525,
+   0.609
+  ]
+ },
  "http://wx2.sinaimg.cn/middle/8f742936gy1ij7r3iuo28j212l135n7j.jpg": {
   "w": 1389,
   "h": 1409,
@@ -759,12 +810,6 @@
  "https://assetsio.gnwcdn.com/mafia-city-of-lost-heaven-car-park-shootout.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp": {
   "w": 1200,
   "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://attach.setn.com/newsimages/2026/04/04/5507948-PH.jpg": {
-  "w": 800,
-  "h": 451,
   "target": 720,
   "v": 3
  },
@@ -1497,6 +1542,12 @@
  "https://dailytimes.com.pk/assets/uploads/2026/11/21/From-becomes-Netflixs-major-streaming-success.jpg": {
   "w": 2560,
   "h": 1920,
+  "target": 1280,
+  "v": 3
+ },
+ "https://deadline.com/wp-content/uploads/2026/11/TPW10230.jpg?w=1024": {
+  "w": 1024,
+  "h": 683,
   "target": 1280,
   "v": 3
  },
@@ -3126,12 +3177,6 @@
   "target": 720,
   "v": 3
  },
- "https://imgsrv2.voi.id/GWxKxTVkPVlneFQMNebbC0eH4HGLlv1dAf69YlkHnNo/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTA5NDEvMjAyNjA4MjQwODA5LW1haW4uY3JvcHBlZF8xNzg3NTMzNzc5LmpwZw.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -3231,52 +3276,6 @@
   "h": 1280,
   "target": 1280,
   "v": 3
- },
- "https://kyodonewsprwire.jp/prwfile/release/M108544/202611200662/_prw_PI14fl_0GIzfNfa.png": {
-  "w": 728,
-  "h": 412,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.44,
-  "local": "pics/49bda2317d7ac092.webp",
-  "out": [
-   1280,
-   724
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    7,
-    8,
-    8,
-    8,
-    6,
-    10,
-    8,
-    8,
-    6,
-    9,
-    10,
-    11
-   ],
-   [
-    4,
-    3,
-    1,
-    4,
-    9,
-    15,
-    18,
-    13,
-    8,
-    7,
-    9,
-    7
-   ]
-  ],
-  "c": "#3f3a37",
-  "k": null,
-  "p": null
  },
  "https://local12.com/resources/media2/16x9/1147/1320/0x9/90/c93ed80f-8419-4d26-963c-dc83c029c695-GTA.png": {
   "w": 1320,
@@ -3793,6 +3792,13 @@
   "target": 1280,
   "v": 3,
   "blur": 0.304
+ },
+ "https://news.walkerplus.com/article/1454947/19073017_615.jpg": {
+  "w": 615,
+  "h": 769,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.363
  },
  "https://news.walkerplus.com/article/153903/881093_615.jpg": {
   "w": 615,
@@ -5157,6 +5163,52 @@
   ],
   "p": null
  },
+ "https://prcdn.freetls.fastly.net/release_image/30942/1017/30942-1017-9156bd3c0912825ebd9f31d5cee75226-728x412.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 728,
+  "h": 412,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.44,
+  "local": "pics/d9175cbf4050a4fb.webp",
+  "out": [
+   1280,
+   724
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    7,
+    8,
+    8,
+    8,
+    6,
+    10,
+    8,
+    9,
+    6,
+    9,
+    10,
+    11
+   ],
+   [
+    4,
+    3,
+    1,
+    4,
+    9,
+    15,
+    18,
+    13,
+    8,
+    7,
+    9,
+    7
+   ]
+  ],
+  "c": "#3f3a37",
+  "k": null,
+  "p": null
+ },
  "https://prcdn.freetls.fastly.net/release_image/31800/232/31800-232-a96ac789c08e72d24265437f7bf23eba-844x394.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 844,
   "h": 394,
@@ -5791,6 +5843,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/jason-from-behind-gta-6.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/robert-downey-jr-standing-in-a-spaceship-in-avengers-infinity-war.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -5801,12 +5859,6 @@
   "w": 1280,
   "h": 1919,
   "target": 1280,
-  "v": 3
- },
- "https://staticimg.publishstory.co/thumb/136066596.cms?imgsize=601408&width=1280&height=720&resizemode=8": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://statics-prod.mirrordaily.news/images/5c203aae-6135-4971-a789-c99845168cbd.jpg": {
@@ -6578,6 +6630,12 @@
    0.695
   ]
  },
+ "https://www.bing.com/th?id=ONUT.Gzc23wr_64NjXnOVFk8rAw&pid=News&w=1024": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.HnKmb2sYrlgGzw7cJALhVA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -6642,12 +6700,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.N25GKwIH7DzBX1qu8qQziQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.NtE9U06FDtJOwXCRXVh9gQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -6934,6 +6986,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.iY9uG5vAIYegAm4iKUrt2A&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.nn6MK0AG2-qOL_vC_Rkxow&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7139,6 +7197,12 @@
    0.379
   ],
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.ywXg_AYmw60uy8-AEy4TOA&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200": {
   "w": 700,

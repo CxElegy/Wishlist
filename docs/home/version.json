@@ -1,32 +1,32 @@
 {
- "admin": "20f0eb43090e",
- "admin-ai": "b1dee8b5cbcd",
+ "admin": "fab68062b04b",
+ "admin-ai": "63e98f50b69f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "7517fc5d"
+   "f477b6ac"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "46bcbbfd"
+   "21e725eb"
   ]
  },
- "admin-boards": "6b5bfb441f3b",
+ "admin-boards": "d45be15b8e1f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "d5b6f91d"
+   "2651f798"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "5b19c90635d0",
+ "admin-emblem": "3e672ca1adfd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b7c613c8"
+   "b9452e1e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "00e6c43ee080",
+ "admin-now": "edc66ad4c226",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b87bf3a2"
+   "aa08d03f"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "14321181"
+   "96f8df2d"
   ],
   "term-panel": [
    "ライブログ",
-   "ba2a7fd7"
+   "dfaeb6e0"
   ]
  },
- "admin-system": "305a6e851c5d",
+ "admin-system": "6c5aeb364c25",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "8060a447"
+   "fb79da2b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "42f18872"
+   "81c46eeb"
   ]
  },
  "admin_marks": {},
- "heat": "0072a589258b",
+ "heat": "405af3c6b30d",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "514e72cb"
+   "cdc36f12"
   ],
   "ranking": [
    "ランキング",
-   "39826069"
+   "df033358"
   ]
  },
- "index": "b1209eaf001c",
+ "index": "a75449374d6c",
  "index_marks": {
   "front": [
    "トップ",
-   "8e978286"
+   "12d79c71"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "cf8c0a36"
+   "f419ce62"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "c89b4b6d"
+   "c272b690"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "7965e07e"
+   "7441e7d2"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "8deeacb8"
+   "f32f6555"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "7ad3b2fc"
   ]
  },
- "updated": "11.23 02:49",
+ "updated": "11.23 03:04",
  "wishlist": "3dd33d6c5ec5"
 }
