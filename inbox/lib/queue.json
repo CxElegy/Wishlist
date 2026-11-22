@@ -1,331 +1,24 @@
 {
 "done": {
 "day": "2026-11-22",
-"n": 57
+"n": 60
 },
 "boards": [
-{
-"id": 140,
-"name": "呪術廻戦",
-"day": "2026-11-22",
-"fp": "ad64be12861b",
-"fresh": false,
-"rows": [
-{
-"title": "『呪術廻戦』新LINEスタンプ発表 死滅回游の名シーン使用「人の心とかないんか？」",
-"date": "2026-11-21T02:25:23+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1962208?rct=movie_animation",
-"image": "https://static.sanyonews.jp/image/article/size1/b/b/7/1/bb71ff3bb75f41dc5596f32b4a078cbd_1.jpg"
-},
-{
-"title": "『呪術廻戦』第4期「死滅回游 後編」は監督変更 3期の副監督・佐藤威が担当【ティザーPV公開】",
-"date": "2026-11-21T01:43:50+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1941268?rct=movie_animation&kw=%E6%9C%AB%E9%95%B7",
-"image": "https://static.sanyonews.jp/image/article/size1/8/0/3/8/8038da16e7df642fae203790ed47c38f_1.jpg"
-},
-{
-"title": "画像1 / 6＞「呪術廻戦」初の家庭用アクションゲームが登場！呪術師や呪霊たちの「呪術」を使ってバトル",
-"date": "2026-11-21T01:11:08+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/1146310/image11953432.html",
-"image": "https://news.walkerplus.com/article/1146310/11953432_615.jpg"
-},
-{
-"title": "ぷくぷくドロップシール『呪術廻戦』登場 キュートな描き起こしイラスト使用",
-"date": "2026-11-21T00:12:29+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1948515?kw=2024%3Cbr%20/%3E%E2%80%9D%20target=%E2%80%9D_blank%E2%80%9D%3Ehttps://www.sanyonews.jp/article/1815191?kw=2024%3Cbr%20/%3E%20%20%20%20%20%20%3C/a%3E%3C/p%3E%3Cp%3E%20%20%20%20%20%20%3Ca%20href=",
-"image": "https://static.sanyonews.jp/image/article/size1/e/c/b/6/ecb6e842895fd365bddd693c933575e0_1.jpg"
-},
-{
-"title": "画像9 / 15＞舞台『呪術廻戦』最新作は五条＆夏油の青春時代を描く懐玉・玉折編！全キャスト＆ビジュアル解禁",
-"date": "2026-11-20T18:37:50+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/1269242/image14698237.html",
-"image": "https://news.walkerplus.com/article/1269242/14698228_615.jpg"
-},
-{
-"title": "舞台『呪術廻戦』“渋谷事変”上演記念、実際の渋谷でキャンペーン 限定トレカ＆フォトスポット登場",
-"date": "2026-11-20T18:18:37+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1982512?kw=2024%3Cbr%20/%3E%E2%80%9D%20target=%E2%80%9D_blank%E2%80%9D%3Ehttps://www.sanyonews.jp/article/1815191?kw=2024%3Cbr%20/%3E%20%20%20%20%20%20%3C/a%3E%3C/p%3E%3Cp%3E%20%20%20%20%20%20%3Ca%20href=",
-"image": "https://static.sanyonews.jp/image/article/size1/3/5/a/9/35a99bf32024e494f6ae3bfaee28cce2_1.jpg"
-},
-{
-"title": "『呪術廻戦』完結展に新たな展示エリア「領域之≡」登場でネーム公開 新作グッズ情報解禁",
-"date": "2026-11-20T17:16:16+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/2010630?rct=movie_animation&kw=%E7%A6%8F%E7%A5%8F",
-"image": "https://static.sanyonews.jp/image/article/size1/3/1/f/c/31fc56df2bf0ed8429f872c6dcdcbfb5_1.jpg"
-},
-{
-"title": "『呪術廻戦』じゅじゅフェス開催まで「あと25日」 ビジュアル公開で高専時代の五条と夏油の姿",
-"date": "2026-11-20T16:05:59+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1967230?rct=movie_animation&kw=2024%3Cbr%20/%3E%E2%80%9D%20target=%E2%80%9D_blank%E2%80%9D%3Ehttps://www.sanyonews.jp/ar",
-"image": "https://static.sanyonews.jp/image/article/size1/3/8/6/d/386d1463ee9a24dc6d0b3e673b2f93e8_1.jpg"
-},
-{
-"title": "牛角『呪術廻戦』コラボの特典めぐり店舗従業員による開封、私的な持ち出し行為が発覚 全店舗で不正行為の調査実施へ「深くお詫び」",
-"date": "2026-11-20T15:50:40+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1990045?rct=movie_animation&kw=2025",
-"image": "https://static.sanyonews.jp/image/article/size1/0/f/b/8/0fb8c39c4718dde34b9bf97f2adfeb87_1.jpg"
-},
-{
-"title": "「な、直哉の私服だとぉぉ？！」「全員色気隠しきれてなくて神」アニメ『呪術廻戦』死滅回游前編MAPPA描き下ろし私服イラストにファン歓喜 (ABEMA TIMES)",
-"date": "2026-11-20T10:18:16+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/7331ff5a8f5ef03655620e306e90db599191a9ff/images/000",
-"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26hqDhUgwNUUdMfCy9tJGm6BYIbMOBkACxwHxUOXL0g4FEhHxTzGRMRxS7_6jHWx9c39uORvSxgc9vME5CXKq5-6fRQ3Hiqy4fQ4ZTJ2Da6evRrSxefWSSNs5ewYilaSHWw=="
-},
-{
-"title": "「な、直哉の私服だとぉぉ？！」「全員色気隠しきれてなくて神」アニメ『呪術廻戦』死滅回游前編MAPPA描き下ろし私服イラストにファン歓喜 | アニメニュース | アニメフリークス",
-"date": "2026-11-20T10:16:00+00:00",
-"source": "ABEMA TIMES",
-"summary": "",
-"url": "https://times.abema.tv/articles/-/10290929",
-"image": "https://times-abema.ismcdn.jp/mwimgs/2/7/1200w/img_273d64970e5ef8e10416c912774b73b597667.jpg"
-},
-{
-"title": "「AMNIBUS」が「ジャンプフェスタ2027」に出展決定！TVアニメ「呪術廻戦」の新規商品を多数先行販売いたします！",
-"date": "2026-11-20T04:00:00+00:00",
-"source": "PR TIMES",
-"summary": "漫画・アニメのオリジナルグッズを販売する株式会社アルマビアンカは「ジャンプフェスタ2027」にて「AMNIBUS」ブースとして出展いたします。TVアニメ「呪術廻戦」の新規イラストを使用した商品の先行販売を予定しております。",
-"url": "https://prtimes.jp/main/html/rd/p/000009847.000016064.html",
-"image": "https://prcdn.freetls.fastly.net/release_image/16064/9847/16064-9847-39017d8c63ca8c75838f4ec940409d1f-3900x2190.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
-}
-]
-},
-{
-"id": 142,
-"name": "SPY×FAMILY",
-"day": "2026-11-22",
-"fp": "fa47b659f2e4",
-"fresh": false,
-"rows": [
-{
-"title": "「鬼滅の刃」に「ヒロアカ」、「SPY×FAMILY」も！「ジャンプフェスタ2027」AMNIBUSブースグッズ情報（アニメ！アニメ！）",
-"date": "2026-11-21T08:00:03+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/1daa4f88e5434c3827f6e457d98940151f7079a9",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000018-anmanmv-000-1-view.jpg?exp=10800"
-},
-{
-"title": "「鬼滅の刃」に「ヒロアカ」、「SPY×FAMILY」も！「ジャンプフェスタ2027」AMNIBUSブースグッズ情報",
-"date": "2026-11-21T08:00:03+00:00",
-"source": "アニメ！アニメ！",
-"summary": "",
-"url": "https://animeanime.jp/article/2026/11/21/104988.html",
-"image": "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/959131.jpg"
-},
-{
-"title": "「SPY×FAMILY」18巻が2週連続1位 荒川弘「黄泉のツガイ」最新14巻が初登場 「金色のガッシュ!! 2」は7巻発売記念で1・2巻無料キャンペーン中［コミックスベストセラー］（Book Bang）",
-"date": "2026-11-20T22:12:25+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/c3f5a68fd97e59347283a8718ea2f19f1de08ac2?page=2",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00839134-bookbang-000-1-view.jpg?exp=10800"
-},
-{
-"title": "「AMNIBUS」が「ジャンプフェスタ2027」に出展決定！TVアニメ『SPY×FAMILY』の新規描き下ろし商品を多数先行販売いたします！",
-"date": "2026-11-20T05:15:29+00:00",
-"source": "Infoseek",
-"summary": "",
-"url": "https://news.infoseek.co.jp/article/prtimes_000009839_000016064/",
-"image": "https://prtimes.jp/img/16064/9839/resize/d16064-9839-ff2f2b1694267d97878c-0.jpg"
-},
-{
-"title": "SPY×FAMILY＞江口拓也、早見沙織、小野賢章らキャスト陣が描いた“ボンド”にファン爆笑「声優界の画伯が二人揃ってる」",
-"date": "2026-11-19T20:56:12+00:00",
-"source": "WEBザテレビジョン",
-"summary": "",
-"url": "https://thetv.jp/news/detail/1457094/landing/",
-"image": "https://thetv.jp/i/nw/1457094/19165319.jpg?w=1284"
-},
-{
-"title": "Tatsuya Endo ‘SPY×FAMILY' Vol. 18 Holds Atop Japan Book Hot 100",
-"date": "2026-11-19T11:54:23+00:00",
-"source": "Billboard on MSN",
-"summary": "Hiromu Arakawa's fantasy manga Yomi no Tsugai Vol. 14 follows, debuting at No. 2.",
-"url": "https://www.msn.com/en-us/news/other/tatsuya-endo-spy-family-vol-18-holds-atop-japan-book-hot-100/ar-AA2hNpiL",
-"image": "https://www.bing.com/th?id=ONUT.YxogAVbyMgBlfssJueYgkA&pid=News&w=1200"
-},
-{
-"title": "佐倉綾音「SPY×FAMILY」フィオナ風衣装の全身ショット公開に「メガネもお洋服も素敵」「先輩スゥキ」と反響",
-"date": "2026-11-19T10:32:50+00:00",
-"source": "WEBザテレビジョン",
-"summary": "",
-"url": "https://thetv.jp/news/detail/1455994/landing/",
-"image": "https://thetv.jp/i/nw/1455994/19125488.jpg?w=1284"
-},
-{
-"title": "画像3 / 25＞【USJ】アーニャとわくわく！SPY×FAMILYの世界に飛び込むXRライドや、パーク限定グッズに大興奮の体験レポ",
-"date": "2026-11-19T09:08:53+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/1275455/image14858809.html",
-"image": "https://news.walkerplus.com/article/1275455/14858819_615.jpg"
-},
-{
-"title": "【ビルボード】遠藤達哉『SPY×FAMILY 18巻』総合書籍チャート2週連続首位 黄泉のツガイ／雨穴が続く",
-"date": "2026-11-19T07:35:03+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/3c29014fc7a92655ff064a2ab452645963bd24ee",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00167565-exp-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【ビルボード】『SPY×FAMILY 18巻』が“Reiwa Books”2週連続首位、雨穴の最新作がチャートイン",
-"date": "2026-11-19T07:35:03+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/4242be47c7223dd7216c99479e3bb54354cfef94",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00167572-exp-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【ビルボード】遠藤達哉『SPY×FAMILY 18巻』が“Hot Manga”2連覇達成 黄泉のツガイ／悪役令嬢転生おじさんが続く",
-"date": "2026-11-19T07:35:03+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/90c60d81f9b1236632f776e04c0cd556aad56691",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00167570-exp-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【圧巻】SPY×FAMILY公式が20巻分の表紙を一挙公開 - X新機能の活用法に「最適な使い方を見た」「どの表紙もほんとにオシャレ」と話題",
-"date": "2026-11-19T02:51:42+00:00",
-"source": "マイナビニュース",
-"summary": "",
-"url": "https://news.mynavi.jp/article/20261119-5353249/",
-"image": "https://news.mynavi.jp/article/20261119-5353249/ogp_images/ogp.jpg"
-}
-]
-},
-{
-"id": 143,
-"name": "鬼滅の刃",
-"day": "2026-11-22",
-"fp": "3b2a0331c4a5",
-"fresh": false,
-"rows": [
-{
-"title": "『鬼滅の刃』猗窩座役・石田彰の“異例の呼びかけ”にファン「腹立ちました(笑)」「複雑」「締めがさすが」（マグミクス）",
-"date": "2026-11-21T22:41:49+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/04b631beab964ff8f902150235ffea044ad82e19",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00386831-magmix-000-9-view.jpg?exp=10800"
-},
-{
-"title": "ジャンプフェスタ2027にAMNIBUSが出展、鬼滅の刃商品を先行販売",
-"date": "2026-11-21T09:28:37+00:00",
-"source": "Dellows News",
-"summary": "",
-"url": "https://news.dellows.jp/1287872/",
-"image": "https://news.dellows.jp/wp-content/uploads/2026/11/1287872_1.jpg"
-},
-{
-"title": "「鬼滅の刃」胡蝶しのぶの作画の変化に不満の声―中国メディア (2026年11月21日掲載)",
-"date": "2026-11-21T07:00:02+00:00",
-"source": "ライブドアニュース",
-"summary": "",
-"url": "https://news.livedoor.com/topics/detail/32869697/",
-"image": "https://image.news.livedoor.com/newsimage/stf/e/9/e94bd_226_b8fdba34_dfc72f7a.jpg"
-},
-{
-"title": "鬼滅の刃 無限列車編＞第7話「心を燃やせ」 煉獄さんと猗窩座の激闘 こん身の力で奥義繰り出す（MANTANWEB）",
-"date": "2026-11-21T01:13:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/d5c8bba7f7b58e32c0b5ee51255a1a5f28720b7a",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000018-mantan-000-1-view.jpg?exp=10800"
-},
-{
-"title": "鬼滅の刃 無限列車編：第7話「心を燃やせ」 煉獄さんと猗窩座の激闘 こん身の力で奥義繰り出す",
-"date": "2026-11-21T01:03:00+00:00",
-"source": "Mantan Web",
-"summary": "",
-"url": "https://mantan-web.jp/article/20261119dog00m200046000a.html",
-"image": "https://storage.mantan-web.jp/w=1280,h=720,icr=0:0.1:1:1,a=2,g=2,f=webp:auto/images/2026/11/19/20261119dog00m200046000a/001.jpg"
-},
-{
-"title": "「鬼滅の刃」に「ヒロアカ」、「SPY×FAMILY」も! 「ジャンプフェスタ2027」AMNIBUSブースグッズ情報",
-"date": "2026-11-21T00:11:50+00:00",
-"source": "アニメ！アニメ！ on MSN",
-"summary": "「ジャンプフェスタ2027」に、マンガ・アニメのオリジナルグッズを販売するアルマビアンカが「AMNIBUS」ブースを出展する。同ブースでは『鬼滅の刃』や『僕のヒーローアカデミア』の新規商品、および『アオのハコ』や『怪獣8号』、『SPY×FAMILY』の新規描き下ろし商品が多数先行販売される。 「ジャンプフェスタ2027",
-"url": "https://www.msn.com/ja-jp/news/other/%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83-%E3%81%AB-%E3%83%92%E3%83%AD%E3%82%A2%E3%82%AB-spy-family-%E3%82%82-%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%97%E3%83%95%E3%82%A7%E3%82%B9%E3%82%BF2027-amnibus%E3%83%96%E3%83%BC%E3%82%B9%E3%82%B0%E3%83%83%E3%82%BA%E6%83%85%E5%A0%B1/ar-AA2hUqCN",
-"image": "https://www.bing.com/th?id=ONUT.B7Eu-BEAG8U6CBM8VlZfZQ&pid=News&w=640"
-},
-{
-"title": "「鬼滅の刃」胡蝶しのぶの作画の変化に不満の声―中国メディア",
-"date": "2026-11-20T23:06:22+00:00",
-"source": "Record China on MSN",
-"summary": "2026年11月19日、中国のポータルサイト・捜狐に「『鬼滅の刃』胡蝶しのぶの作画の変化に不満の声」と題した論評記事が掲載された。",
-"url": "https://www.msn.com/ja-jp/news/other/%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83-%E8%83%A1%E8%9D%B6%E3%81%97%E3%81%AE%E3%81%B6%E3%81%AE%E4%BD%9C%E7%94%BB%E3%81%AE%E5%A4%89%E5%8C%96%E3%81%AB%E4%B8%8D%E6%BA%80%E3%81%AE%E5%A3%B0-%E4%B8%AD%E5%9B%BD%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2/ar-AA2hUiRi",
-"image": "https://www.bing.com/th?id=ONUT.jUauVZS09N2gwQ-rtYoqRA&pid=News&w=1200"
-},
-{
-"title": "アニメ『鬼滅の刃』の場面写グッズを多数先行販売！幕張メッセ 国際展示場“ジャンプフェスタ2027”AMNIBUSブース",
-"date": "2026-11-20T21:45:43+00:00",
-"source": "Dtimes",
-"summary": "",
-"url": "https://dtimes.jp/post-1475704/",
-"image": "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-9298de8470042e71db9a2533855faedc-20261120-666aea.jpg"
-},
-{
-"title": "「鬼滅の刃の制作会社ってことで、映像は綺麗。でも、中身は…。侵略者っ...」魔法使いの夜 ふーちゃんさんの映画レビュー（感想・評価）",
-"date": "2026-11-20T16:48:45+00:00",
-"source": "映画.com",
-"summary": "",
-"url": "https://eiga.com/movie/96352/review/07236230/",
-"image": "https://media.eiga.com/images/movie/96352/photo/dbc6963b468956c7.jpg"
-},
-{
-"title": "「AMNIBUS」が「ジャンプフェスタ2027」に出展決定！アニメ「鬼滅の刃」の新規商品を多数先行販売いたします！",
-"date": "2026-11-20T05:15:00+00:00",
-"source": "Excite エキサイト",
-"summary": "",
-"url": "http://www.excite.co.jp/news/article/Prtimes_2026-11-20-16064-9840/",
-"image": "https://www.bing.com/th?id=ONUT.esr6qn0p6-FVG6fQGYnlaQ&pid=News&w=1200"
-},
-{
-"title": "東大が皮膚に直接形成できる「ナノメッシュ皮膚センサ」を開発 ネットでは「『鬼滅の刃』の猗窩座じゃん」の声",
-"date": "2026-11-20T02:48:34+00:00",
-"source": "玩具人 TOY PEOPLE",
-"summary": "",
-"url": "https://www.toy-people.com/jp/?p=116794",
-"image": "https://img.toy-people.com/member/179514217824.jpg"
-},
-{
-"title": "キャラクターの過去と現在を描いた箔押し仕様の「極レア」に注目！食玩「にふぉるめーしょん 鬼滅の刃ディフォルメシールウエハース 其ノ十七」20個入りセットがプレバンで予約開始",
-"date": "2026-11-20T00:14:34+00:00",
-"source": "電撃ホビーウェブ",
-"summary": "",
-"url": "https://hobby.dengeki.com/news/3239672/",
-"image": "https://hobby.dengeki.com/ss/hobby/2026/11/1200x630_VAHl8lc6Iv-ybeCQvVg9Batdw-FauoOY_lpUzLRB07wbCS4wXHp_rDaNSxxArl2B0.jpg"
-}
-]
-},
 {
 "id": 145,
 "name": "ゼルダの伝説",
 "day": "2026-11-22",
-"fp": "6b22bd4c666b",
+"fp": "dec31586e7c5",
 "fresh": false,
 "rows": [
+{
+"title": "『ゼルダの伝説 時のオカリナ』リメイクのユーザースコア、GTA 6のレビュー爆撃後に低下",
+"date": "2026-11-22T00:11:33+00:00",
+"source": "news.lavx.hu",
+"summary": "",
+"url": "https://news.lavx.hu/ja/article/zeruda-no-densetsu-toki-no-okarina-rimeiku-no-yuza-sukoa-gta-6-no-rebyu-bakugeki-go-ni-teika",
+"image": "https://news.lavx.hu/api/media/file/zelda-ocarina-of-time-remake-user-score-drops-after-gta-6-review-bombing_gen_1795306290946-1200x630.jpg"
+},
 {
 "title": "「出る出るゼルダの伝説」から35年、時のオカリナ・スマブラDXも重なる11月21日",
 "date": "2026-11-21T04:09:20+00:00",
@@ -413,14 +106,216 @@
 "summary": "",
 "url": "https://www.inside-games.jp/article/2026/11/20/191308.html",
 "image": "https://www.inside-games.jp/imgs/ogp_f/1810116.jpg"
+}
+]
 },
 {
-"title": "「ゼルダの伝説40周年コンサート」東京・京都での追加公演（計2公演）が決定",
-"date": "2026-11-20T04:26:07+00:00",
-"source": "Nintendo DREAM WEB",
+"id": 151,
+"name": "King Gnu",
+"day": "2026-11-22",
+"fp": "7b4546684c3b",
+"fresh": false,
+"rows": [
+{
+"title": "【YouTubeチャート】「呪術廻戦」OPテーマ、King Gnu「SPECIALZ」前週比2.3倍で3位に浮上",
+"date": "2026-11-22T03:13:20+00:00",
+"source": "オリコンニュース",
 "summary": "",
-"url": "https://www.ndw.jp/zelda-news-261120/",
-"image": "https://www.ndw.jp/ndw/wordpress/wp-content/uploads/2026/09/zelda-0925-i.jpeg"
+"url": "https://www.oricon.co.jp/news/2297200/?anc=337",
+"image": "https://contents.oricon.co.jp/upimg/news/2298000/2297200/20231003_111904_p_o_67166665.jpg"
+},
+{
+"title": "気分が上がるKing Gnuデザイン缶「オールフリー」が1本約104円でセール中！",
+"date": "2026-11-20T11:00:00+00:00",
+"source": "ASCII.jp",
+"summary": "",
+"url": "https://ascii.jp/elem/000/004/453/4453622/",
+"image": "https://ascii.jp/img/2026/11/20/4554771/xl/d6de4bfbfea3d9df.jpg?20200122"
+},
+{
+"title": "”今年日本で最も聞かれた曲”は米津玄師さん「IRIS OUT」 海外で聴かれた曲はKing Gnu「AIZO」 Amazon Musicが2026年の再生ランキングを発表",
+"date": "2026-11-20T03:00:00+00:00",
+"source": "徳島新聞デジタル",
+"summary": "",
+"url": "https://www.topics.or.jp/articles/-/1528230",
+"image": "https://tokushima.ismcdn.jp/mwimgs/9/4/1200wm/img_94b87d829a3d929a5af75cfcfa221da5176540.jpg"
+},
+{
+"title": "【King Gnu セトリ】CEN+RAL Tour 2026 全公演セットリストまとめ",
+"date": "2026-11-20T02:43:00+00:00",
+"source": "もとりょこblog -",
+"summary": "",
+"url": "https://motoryokoblog.com/?p=14282",
+"image": "https://motoryokoblog.com/wp-content/uploads/2026/09/kinggnu_14282_fv.jpg"
+},
+{
+"title": "King Gnu、新曲「GO GHOST」MV公開 『攻殻機動隊』本編映像を再解釈した初の試み",
+"date": "2026-11-19T23:02:40+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1967196?kw=%E4%BA%AC",
+"image": "https://static.sanyonews.jp/image/article/size1/e/9/a/a/e9aac337dccd17aac4a9a849b9b627a3_1.jpg"
+},
+{
+"title": "King Gnu、「白日」が自身初の累積再生数7億回突破【オリコンランキング】",
+"date": "2026-11-19T21:17:08+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1989540?rct=oricon_music&kw=%E7%A6%8F%E7%A5%81",
+"image": "https://static.sanyonews.jp/image/article/size1/c/b/3/9/cb395c651b9368739098d3317d615e36_1.jpg"
+},
+{
+"title": "“演技が話題”King Gnu井口理、ドラマ『LOST10』撮影オフショットで見せた姿にファンもん絶「ふたりとも可愛い」",
+"date": "2026-11-19T18:30:51+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/2008099?rct=oricon_geino&kw=.ltjx",
+"image": "https://static.sanyonews.jp/image/article/size1/5/1/9/6/5196282f2615959530195662acfc1629_1.jpg"
+},
+{
+"title": "あいみょん、6thアルバム『スマイル週間』リリース 初回盤には岡本太郎記念館で録音した弾き語りCDも",
+"date": "2026-11-19T16:51:03+00:00",
+"source": "Real Sound",
+"summary": "あいみょんが、6枚目のフルアルバム『スマイル週間』を2027年1月27日にリリースする。 （関連：RADWIMPS、米津玄師、あいみょん、King Gnu……野木亜紀子 脚本ドラマと主題歌の共鳴） 前作『猫にジェラシー』より約2年4カ月ぶりとなる本作には、全13曲が収録。ABCテレビ／テレビ朝日系ドラマ『もうパパ！』主",
+"url": "https://realsound.jp/2026/11/post-2588822.html",
+"image": "https://realsound.jp/wp-content/uploads/2026/11/20261119-aimyong-99.jpg"
+},
+{
+"title": "King Gnu、YouTube「Station」ページ公開 MVなど映像コンテンツを24時間リアルタイム配信",
+"date": "2026-11-19T15:45:45+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1969194?kw=%E7%A6%8F%",
+"image": "https://static.sanyonews.jp/image/article/size1/6/9/0/7/69078dfe16b5bb67e4c8eb45c57ba79a_1.jpg"
+},
+{
+"title": "AIZO - Jurard T Rexford ft. ARMIS | King Gnu【歌ってみた】",
+"date": "2026-11-19T03:00:07+00:00",
+"source": "Howl.Link",
+"summary": "",
+"url": "https://t.co/S0VJYyA92a",
+"image": "https://i.ytimg.com/vi/iurSfnAepfo/maxresdefault.jpg"
+},
+{
+"title": "King Gnu常田大希、半年近く遅れて誕生日を報告「来年は猛牛のように」",
+"date": "2026-11-19T00:13:03+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/2001088?rct=oricon_music&kw=%E7%A6%8F%E7%A5%81",
+"image": "https://static.sanyonews.jp/image/article/size1/a/b/7/d/ab7dde39b703fc382458bdb040b952a8_1.jpg"
+},
+{
+"title": "King Gnu井口理、郷里で主演映画を撮影「里帰りのような気分でした」 薪割りはお手のもの",
+"date": "2026-11-19T00:01:16+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1990797?rct=movie_animation&kw=%E7%A6%8F%E7%A5%88",
+"image": "https://static.sanyonews.jp/image/article/size1/9/f/6/8/9f68cf17d89884f3e8c76cd4d44c4788_1.jpg"
+}
+]
+},
+{
+"id": 152,
+"name": "Ado",
+"day": "2026-11-22",
+"fp": "e7cd540b00e4",
+"fresh": false,
+"rows": [
+{
+"title": "実写映画『ブルーロック』主題歌はAdoの新曲「モンストロ」 予告映像公開「再びGiga & TeddyLoidの最強タッグ」",
+"date": "2026-11-20T20:40:55+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1932788",
+"image": "https://static.sanyonews.jp/image/article/size1/3/8/0/3/38037b1a4d66b66b87cf50fb5fdd89c2_1.jpg"
+},
+{
+"title": "エリック・マーティン（MR.BIG）×Adoの歌声がハードに交錯 B'z松本孝弘率いるTMG、新曲「SAYONARA」MV解禁",
+"date": "2026-11-20T20:11:45+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1999686?rct=oricon_music&kw=2024%3Cbr%20/%3E%20%20%20%20%20%20%3C/a%3E%3C/p%3E%3Cp%3E%20%20%20%20%20%20%3Ca%20href=",
+"image": "https://static.sanyonews.jp/image/article/size1/a/9/0/b/a90bc23cdfe32691ed3f8eb77a717e5b_1.jpg"
+},
+{
+"title": "「返金してほしい」の声まで…NiziU、Snow Man、Adoのライブ演出に批判が相次ぐ時代に考える「お客様は神様です」の意味",
+"date": "2026-11-19T21:18:14+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/f069d28e97247b224bac7ea37ee6be7425b76b0d",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-00965184-toyo-000-1-view.jpg?exp=10800"
+},
+{
+"title": "Adoの50万人ツアーとZipangu開催の原点 クラウドナイン千木良卓也氏に聞く（徳力基彦） - エキスパート",
+"date": "2026-11-19T21:05:36+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/expert/articles/e21b4eda070e1273a4f3c01a92fa51ab78f3006a",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/tokurikimotohiko/02768828/title-1795086572346.jpeg?exp=10800"
+},
+{
+"title": "『Adoの歌ってみたアルバム その２』店舗別購入特典デザイン公開！",
+"date": "2026-11-19T09:15:22+00:00",
+"source": "Adoのドキドキ秘密基地",
+"summary": "",
+"url": "https://ado-dokidokihimitsukichi-daigakuimo.com/articles/news/ar4KKKtwcKKrW4U5yXQ4WzHt",
+"image": ""
+},
+{
+"title": "西武新宿駅前ビジョンでAdoのライブ映像を期間限定放映 「唱」など3曲をフル尺で",
+"date": "2026-11-19T00:08:52+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/2007634?rct=oricon_music&kw=%E7%A6%8F%",
+"image": "https://static.sanyonews.jp/image/article/size1/9/0/4/0/90400e48754024ba6f561646923f92f9_1.jpg"
+},
+{
+"title": "パペットスンスン、自身2作目となる新曲「カラー」配信リリース レギュラーラジオで初OAも",
+"date": "2026-11-18T11:08:56+00:00",
+"source": "Real Sound",
+"summary": "パペットスンスンが、新曲「カラー」を11月25日に配信リリースする。 （関連：Mrs. GREEN APPLE、YOASOBI、Ado、マカロニえんぴつ……連続出場から初の栄誉まで それぞれの『NHK紅白歌合戦』） 自身2作目の新曲となる本作は、見慣れた日々の景色や何気ない瞬間が、少しずつ鮮やかに彩られていく喜びを表現",
+"url": "https://realsound.jp/2026/11/post-2587363.html",
+"image": "https://realsound.jp/wp-content/uploads/2026/11/20261118-sunsun-99.jpeg"
+},
+{
+"title": "菊池ひみこ、フュージョンアルバム『Flying Beagle』再現ライブをビルボードライブ横浜で開催",
+"date": "2026-11-18T10:54:26+00:00",
+"source": "Real Sound",
+"summary": "菊池ひみこが、1987年に発表したアルバム『Flying Beagle』の再現ライブを2027年1月23日にビルボードライブ横浜にて開催する。 （関連：Mrs. GREEN APPLE、YOASOBI、Ado、マカロニえんぴつ……連続出場から初の栄誉まで それぞれの『NHK紅白歌合戦』） 本公演は、今年夏にロンドンで開",
+"url": "https://realsound.jp/2026/11/post-2587318.html",
+"image": "https://realsound.jp/wp-content/uploads/2026/11/20261117-kikuchi-99.jpeg"
+},
+{
+"title": "Mrs. GREEN APPLE、YOASOBI、Ado、マカロニえんぴつ……連続出場から初の栄誉まで それぞれの『NHK紅白歌合戦』",
+"date": "2026-11-17T05:50:40+00:00",
+"source": "Real Sound",
+"summary": "毎年、『NHK紅白歌合戦』（NHK総合）の出場歌手が発表されると、今年も終わりが近づいているのだと実感が湧く。2026年12月31日に放送される『第77回NHK紅白歌合戦』には、8組が初出場（特別企画を含む）。出場歌手には連続出場もいれば、数年ぶりに大舞台に帰ってくるアーティストもいる。本稿では今年の出場者から4組をピ",
+"url": "https://realsound.jp/2026/11/post-2585584.html",
+"image": "https://realsound.jp/wp-content/uploads/2026/11/20261116-kouhaku-99.jpeg"
+},
+{
+"title": "Ado、初の日産スタジアム公演『Ao』の放送・配信決定 歴代ライブ特集も",
+"date": "2026-11-17T01:45:05+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1967856?rct=oricon_music&kw=%E7%A6%8F",
+"image": "https://static.sanyonews.jp/image/article/size1/c/6/2/1/c62189fda9d9a340f8aba3b97fad04c4_1.jpg"
+},
+{
+"title": "Ado“これまでとはひと味異なる”歌声 新曲「好きでいて」配信＆MV公開",
+"date": "2026-11-15T18:36:55+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1985162?rct=oricon_music&kw=%E7%A6%8F%",
+"image": "https://static.sanyonews.jp/image/article/size1/1/8/4/9/18495badc87a175a81df5f16ae6ae29d_1.jpg"
+},
+{
+"title": "Adoの50万人ツアー、Zipangu開催 クラウドナイン千木良卓也氏の原動力",
+"date": "2026-11-15T15:00:00+00:00",
+"source": "日経クロストレンド",
+"summary": "",
+"url": "https://xtrend.nikkei.com/atcl/contents/18/01436/00007/?n_cid=nbpnxr_twbn",
+"image": "https://xtrend.nikkei.com/atcl/contents/18/01436/00007/nxr_m.jpg"
 }
 ]
 },
@@ -428,104 +323,104 @@
 "id": 157,
 "name": "F1",
 "day": "2026-11-22",
-"fp": "34d535230080",
+"fp": "ff798097454c",
 "fresh": false,
 "rows": [
 {
-"title": "【アストンマーティン・ホンダ】ストロール「今のスピードでできることを」予選20番手、決勝21番手から「チャンスに期待」／F1ラスベガスGP（TopNews）",
-"date": "2026-11-21T20:07:23+00:00",
+"title": "【動画】2026年F1第21戦ラスベガスGP ハイライト",
+"date": "2026-11-22T08:22:00+00:00",
+"source": "autosport web",
+"summary": "",
+"url": "https://www.as-web.jp/f1/1375643",
+"image": "https://cdn-image.as-web.jp/2026/11/22172054/XPB_1456202_HiRes.jpg"
+},
+{
+"title": "「スゴ～い楽しそう」 大谷翔平、オフにF1観戦、ロバーツ監督も大はしゃぎ！ 「めちゃくちゃいいとこから観てますね」「いやいやいや」ファン沸く（中日スポーツ）",
+"date": "2026-11-22T08:00:53+00:00",
 "source": "Yahoo!ニュース",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/9f8f5c69d091b00964e7a5b3284dddd811736290",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000020-fliv-000-1-view.jpg?exp=10800"
+"url": "https://news.yahoo.co.jp/articles/a9b508e0a6471981d0023d84dfbff9f2019f0734",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00000086-chuspo-000-1-view.jpg?exp=10800"
 },
 {
-"title": "Antonelli Is Fastest But Verstappen Starts on F1 Pole in Las Vegas",
-"date": "2026-11-21T19:30:00+00:00",
-"source": "Autoweek",
-"summary": "",
-"url": "https://www.autoweek.com/racing/formula-1/a74498090/antonelli-fastest-verstappen-on-f1-pole-las-vegas/",
-"image": "https://hips.hearstapps.com/hmg-prod/images/5bd72bad-0aeb-4ec9-b191-8936bae7c0bb.jpeg?crop=1xw:0.75xh;0xw,0.131xh&resize=1200:*"
-},
-{
-"title": "Celebrities at F1 Las Vegas Grand Prix 2026: See all the stars",
-"date": "2026-11-21T18:55:46+00:00",
-"source": "Page Six",
-"summary": "",
-"url": "https://pagesix.com/2026/11/21/photos/celebrities-at-f1-las-vegas-grand-prix-2026-see-all-the-stars/",
-"image": "https://pagesix.com/wp-content/uploads/sites/3/2026/11/f1-copy.jpg?quality=90&strip=all&w=1024"
-},
-{
-"title": "F1 still 'very small' in US - Domenicali",
-"date": "2026-11-21T15:14:27+00:00",
-"source": "The Race",
-"summary": "",
-"url": "https://www.the-race.com/formula-1/f1-still-very-small-in-us-domenicali/",
-"image": "https://storage.ghost.io/c/dd/af/ddafbd99-2ccd-468c-b622-4b3cccf80b49/content/images/size/w1200/2026/11/Photo-select_Axios2026_EDI-17.jpg"
-},
-{
-"title": "ボッタス、2027年もキャデラックF1残留「関係者各位、僕は残ります！」（TopNews）",
-"date": "2026-11-21T15:10:28+00:00",
+"title": "【ホンダF1】バッテリー問題の対策に手応え「正しい方向に進んでいる」アロンソは最終周にリタイア／ラスベガスGP（TopNews）",
+"date": "2026-11-22T08:00:16+00:00",
 "source": "Yahoo!ニュース",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/38d3bbb8ce2eb47801bd318ef15ac82b7c6be7b9",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00000000-fliv-000-1-view.jpg?exp=10800"
+"url": "https://news.yahoo.co.jp/articles/82ff8406947f5fd03ec2cbb29f7f591253e267d0",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00000010-fliv-000-1-view.jpg?exp=10800"
 },
 {
-"title": "F1 Las Vegas Qualifying: Leclerc, Antonelli, and Other Drivers React",
-"date": "2026-11-21T13:55:07+00:00",
-"source": "Yahoo Sports",
+"title": "F1 – Verstappen wins action-packed Las Vegas Grand Prix as late Mercedes drama delivers McLaren double podium",
+"date": "2026-11-22T07:36:00+00:00",
+"source": "Federation Internationale de l'Automobile",
 "summary": "",
-"url": "https://sports.yahoo.com/articles/f1-las-vegas-qualifying-leclerc-135507697.html",
-"image": "https://s.yimg.com/lo/mysterio/api/5246803db0fd9c55b164a481c4d21dba8239bfa67ea933d3ce94ea3b38fb8a23/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Froundtable_sports_formula_1_814%2Fef9b8234ba727ee0ef2a6dd72b7b7390.jpg"
+"url": "https://www.fia.com/news/f1-verstappen-wins-action-packed-las-vegas-grand-prix-late-mercedes-drama-delivers-mclaren",
+"image": "https://www.fia.com/sites/default/files/news/main_image/dppi_00126024_2685.jpg"
 },
 {
-"title": "【ホンダF1】2台ともQ1敗退 折原チーフ「予想していた通り厳しい」 決勝に向け「準備に集中」／F1ラスベガスGP予選（TopNews）",
-"date": "2026-11-21T12:03:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/e5653a08224c659b9e3cfe40faf572ffd2cc9e46",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000018-fliv-000-1-view.jpg?exp=10800"
-},
-{
-"title": "F1 Seals the Pact: 2.1-Liter Hybrid v8s Arrive in 2030",
-"date": "2026-11-21T11:52:00+00:00",
-"source": "Yahoo Sports",
-"summary": "The FIA, Formula 1, the teams and the manufacturers reach a unanimous agreement to bring back turbocharged V8 engines with sustainable fuels.",
-"url": "https://sports.yahoo.com/articles/f1-seals-pact-2-1-195144022.html",
-"image": "https://www.bing.com/th?id=ONUT.BS667wk1ItOHb7LFd6LHng&pid=News&w=1200"
-},
-{
-"title": "$8 Fries, $24 Pizza, $36 Cocktails: How the Las Vegas GP Is Feeding F1 Fans",
-"date": "2026-11-21T11:44:07+00:00",
-"source": "F1 Chronicle on MSN",
-"summary": "The Las Vegas GP organizers are keeping F1 fans well-fed during this year’s edition of the race in Sin City. F1 photographer and content creator ...",
-"url": "https://www.msn.com/en-us/news/other/8-fries-24-pizza-36-cocktails-how-the-las-vegas-gp-is-feeding-f1-fans/ar-AA2hVACZ",
-"image": "https://www.bing.com/th?id=ONUT.ZYwzG1V6K3Lq5h_zPPkfhQ&pid=News&w=1200"
-},
-{
-"title": "【予選コメント】アントネッリ「もうダメだと思った」 残り1秒で最後のアタックへ、メルセデス代表も驚く最速タイム／F1ラスベガスGP",
-"date": "2026-11-21T09:25:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/1183ccce06dd83a985219c3d420ff646d0a1b720",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000015-fliv-000-1-view.jpg?exp=10800"
-},
-{
-"title": "Alba Larsen charges from ninth to win F1 Academy Las Vegas reverse grid race",
-"date": "2026-11-21T09:20:50+00:00",
+"title": "Alisha Palmowski ends F1 Academy season with Las Vegas victory as Nina Gademan secures Vice-Champion title",
+"date": "2026-11-22T07:33:45+00:00",
 "source": "Racers | Female Racing Drivers",
 "summary": "",
-"url": "https://www.racers-behindthehelmet.com/post/alba-larsen-charges-from-ninth-to-win-f1-academy-las-vegas-reverse-grid-race",
-"image": "https://static.wixstatic.com/media/aed0c4_0708548324064eeb875c5348494709b3~mv2.jpg/v1/fill/w_1080,h_732,al_c,q_85/aed0c4_0708548324064eeb875c5348494709b3~mv2.jpg"
+"url": "https://www.racers-behindthehelmet.com/post/alisha-palmowski-ends-f1-academy-season-with-las-vegas-victory-as-nina-gademan-secures-vice-champion",
+"image": "https://static.wixstatic.com/media/aed0c4_ff5b25e5a9df43169931ec64bfa9f51a~mv2.jpg/v1/fill/w_1500,h_1000,al_c,q_85/aed0c4_ff5b25e5a9df43169931ec64bfa9f51a~mv2.jpg"
 },
 {
-"title": "F1ラスベガスグランプリ予選 “年間王者”アントネッリが最速タイムも降格ペナルティで6番手スタート",
-"date": "2026-11-21T09:16:20+00:00",
+"title": "【F1第21戦決勝の要点】アントネッリ失速。叶わなかったファイナルラップの首位争い",
+"date": "2026-11-22T07:19:00+00:00",
+"source": "autosport web",
+"summary": "",
+"url": "https://www.as-web.jp/f1/1376602",
+"image": "https://cdn-image.as-web.jp/2026/11/22161229/XPB_1454331_HiRes.jpg"
+},
+{
+"title": "'Something that I've never seen before in F1' – Verstappen reflects on Las Vegas GP win after thriller",
+"date": "2026-11-22T07:00:00+00:00",
+"source": "Formula 1",
+"summary": "",
+"url": "https://www.formula1.com/en/latest/article/something-that-ive-never-seen-before-in-f1-verstappen-reflects-on-las-vegas-gp-win-after-slipstream-thriller.11R5Iz64C6PLpqrGDJU5OK",
+"image": "https://media.formula1.com/image/upload/t_16by9Centre/c_lfill,w_2048/q_auto/v1740000001/trackside-images/2026/F1_Grand_Prix_of_Las_Vegas/2306300832.webp"
+},
+{
+"title": "George Russell explains late-race crash in Las Vegas F1 victory bid",
+"date": "2026-11-22T06:40:58+00:00",
+"source": "Motorsport.com",
+"summary": "",
+"url": "https://www.motorsport.com/f1/news/george-russell-explains-late-race-crash-in-las-vegas-f1-victory-bid/10876718/",
+"image": "https://cdn-1.motorsport.com/images/amp/YWKA391Y/s6/george-russell-mercedes.jpg"
+},
+{
+"title": "首位交代35回。「F1史上最もカオス」な一戦をフェルスタッペンが0.639秒差で制す / F1ラスベガスGP 2026《決勝》結果と詳報",
+"date": "2026-11-22T06:39:41+00:00",
+"source": "Formula1-Data",
+"summary": "",
+"url": "https://formula1-data.com/article/las-vegas-race-digest-2026",
+"image": "https://formula1-data.com/lib/thumb/thumb.php?src=%2Fassets%2Fimg%2Fuploads%2F2026%2F11%2Flas-vegas-race-digest-2026-1.jpg&w=1200&hash=18988416bdf1feadfdbe7da155fe4912732ab47a35833222b728f6b5592c3253"
+},
+{
+"title": "大谷翔平、ロバーツ監督とまさかの「デート中」⁉ F1観戦の豪華オフショットにSNS反響（日刊スポーツ）",
+"date": "2026-11-22T06:31:49+00:00",
 "source": "Yahoo!ニュース",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/7617b77628623815c2bde0365a83d134806bd663",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-01257036-fnn-000-1-view.jpg?exp=10800"
+"url": "https://news.yahoo.co.jp/articles/d9bd1732b401feaf30b512db8c3c4bd6f8493c9a",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-41221098-nksports-000-2-view.jpg?exp=10800"
+},
+{
+"title": "【F1ラスベガスGP｜決勝結果】目が離せぬ大激戦！フェルスタッペンが優勝！フェラーリ同士が接触、最終周に波乱（TopNews）",
+"date": "2026-11-22T06:23:49+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/3b28d493ebb31adab6e18f50cd68de6de55f07d4",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00000009-fliv-000-1-view.jpg?exp=10800"
+},
+{
+"title": "【F1】フェルスタッペンが白熱バトル制し今季4勝目！「クレージー。これまで見たことない光景」（スポニチアネックス）",
+"date": "2026-11-22T06:13:05+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/32fff4af40d92295db813edb71c1dc7100d4c1f8",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00000254-spnannex-000-4-view.jpg?exp=10800"
 }
 ]
 },
@@ -841,6 +736,111 @@
 "summary": "",
 "url": "https://news.yahoo.co.jp/articles/c91c9e5fd3b1aca516dd58a8fa4241209bdc31b0?source=rss",
 "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000414-oric-000-13-view.jpg?exp=10800"
+}
+]
+},
+{
+"id": 162,
+"name": "無印良品",
+"day": "2026-11-22",
+"fp": "3c68615b093a",
+"fresh": false,
+"rows": [
+{
+"title": "【無印良品】新作「撥水ダウンジャケット」を30代ママが試着レビュー！1万5000円以下とは思えない超本格ダウンに感動！",
+"date": "2026-11-21T23:00:33+00:00",
+"source": "LEE",
+"summary": "",
+"url": "https://lee.hpplus.jp/column/3799149/",
+"image": ""
+},
+{
+"title": "無印良品で私の情報が漏洩した",
+"date": "2026-11-21T21:50:00+00:00",
+"source": "村上知也",
+"summary": "",
+"url": "https://london3.jp/2026/11/mujirushi-ryouhin/",
+"image": "https://london3.jp/wp-content/uploads/image-196.png"
+},
+{
+"title": "無印良品 不揃いバウム ホワイトチョコがけいちご",
+"date": "2026-11-21T12:06:47+00:00",
+"source": "もぐナビ",
+"summary": "",
+"url": "https://mognavi.jp/assessment/11391178",
+"image": "https://img1.esimg.jp/resize/1024x1024/image/food/02/56/11/2931080_original.jpg"
+},
+{
+"title": "（画像一覧）無印良品「肩の負担を軽減」本気バッグ、ワークマン「収納力2倍」1,900円の優秀トート…ほか【高コスパバッグの人気記事ランキングベスト3】（2026年10月版） | 【公式】モノマックス（MonoMax）｜付録、カバン、時計、家電、カップ麺などの情報を詳しく解説！",
+"date": "2026-11-21T10:00:02+00:00",
+"source": "MonoMax web",
+"summary": "",
+"url": "https://monomax.jp/picture/373377/",
+"image": "https://monomax.jp/official/wp-content/uploads/2026/11/261010-166982-1000x667.webp"
+},
+{
+"title": "無印良品「肩の負担を軽減」本気バッグ、ワークマン「収納力2倍」1,900円の優秀トート…ほか【高コスパバッグの人気記事ランキングベスト3】（2026年10月版）",
+"date": "2026-11-21T10:00:00+00:00",
+"source": "ｄメニューニュース",
+"summary": "",
+"url": "https://topics.smt.docomo.ne.jp/article/monomax/trend/monomax-373377?fm=latestnews",
+"image": "https://img.topics.smt.news.goo.ne.jp/picture/monomax/m_monomax-373377.jpg"
+},
+{
+"title": "【無印良品】メイクボックス用の250円『スタンド』が大活躍！ スッキリ整う『意外な活用法』",
+"date": "2026-11-21T04:30:00+00:00",
+"source": "ｄメニューニュース",
+"summary": "",
+"url": "https://topics.smt.docomo.ne.jp/article/ftnews/trend/ftnews-562582f8877949685a8b073d90cb484a441357ba",
+"image": "https://img.topics.smt.news.goo.ne.jp/picture/ftnews/m_ftnews-562582f8877949685a8b073d90cb484a441357ba.jpg"
+},
+{
+"title": "無印良品で190円だった「カードファイル」 折りたためばコンパクトになる“15ポケット”の便利アイテムに反響（LIMO）",
+"date": "2026-11-21T02:00:33+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/62463311e1acc686dcd78fe1ffff1a6a0857a71f",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-90000441-toushin-000-1-view.jpg?exp=10800"
+},
+{
+"title": "そごう千葉店の冬の大感謝祭は11/29まで｜抽選は10,000円ごと1回、ロフト・無印良品は合算外",
+"date": "2026-11-20T23:27:34+00:00",
+"source": "ジモはる",
+"summary": "",
+"url": "https://jimoharu.net/sogo-chiba-fuyu-no-daikanshasai-1120-1129-black-chance-lottery-lucky-receipt-2026/",
+"image": "https://jimoharu.net/wp-content/uploads/2026/11/sogo-chiba-fuyu-no-daikanshasai-1120-1129-eyecatch.jpg"
+},
+{
+"title": "【無印良品】SNSで話題！家族みんなで愛用できる「神スキンケア＆バスグッズ」4選",
+"date": "2026-11-20T22:27:47+00:00",
+"source": "ヨムーノ",
+"summary": "",
+"url": "https://yomuno.jp/posts/144273",
+"image": "https://image.yomuno.jp/store/article/144273/header_image/large-c0f44efad7a972c5cde8bb44733056b3.jpeg"
+},
+{
+"title": "Super Junior始源逛MUJI被捕獲！網友提醒下週才打折 本人急回「我很care」",
+"date": "2026-11-20T21:14:58+00:00",
+"source": "中時新聞網 on MSN",
+"summary": "韓國天團Super Junior成員崔始源近日在高雄享受難得假期，沒想到逛街也能引發話題！有民眾在Threads分享，於大立百貨MUJI無印良品巧遇始源，照片中他身穿深咖啡色上衣、卡其色長褲，手上還抱著白色收納盒，模樣相當居家。更有趣的是，有網友提醒無印良品下週才開始打折，始源竟親自回覆：「我很care打折」，讓粉絲看",
+"url": "https://www.msn.com/zh-tw/entertainment/news/super-junior%E5%A7%8B%E6%BA%90%E9%80%9Bmuji%E8%A2%AB%E6%8D%95%E7%8D%B2-%E7%B6%B2%E5%8F%8B%E6%8F%90%E9%86%92%E4%B8%8B%E9%80%B1%E6%89%8D%E6%89%93%E6%8A%98-%E6%9C%AC%E4%BA%BA%E6%80%A5%E5%9B%9E-%E6%88%91%E5%BE%88care/ar-AA2hTYc4",
+"image": "https://www.bing.com/th?id=ONUT.TtuZ8bgUsD40qusXvFCmyQ&pid=News&w=656"
+},
+{
+"title": "【スナップ】無印良品「MUJILabo」のロングコートが主役！サテン地のボトムで艶っぽく",
+"date": "2026-11-20T19:35:00+00:00",
+"source": "TRILL",
+"summary": "",
+"url": "https://trilltrill.jp/articles/5198446",
+"image": "https://media.trilltrill.jp/articles/5198446/featured-image.11b9ebb1345685c07d30affccd3073dc?w=1200"
+},
+{
+"title": "始源高雄放假變身觀光客！逛無印良品被認出 一聽有折扣秒回：很care",
+"date": "2026-11-20T17:59:00+00:00",
+"source": "娛樂星聞",
+"summary": "南韓天團Super Junior成員崔始源近日赴高雄工作，私下行程意外曝光引發熱議。有粉絲在百貨公司巧遇低調購物的始源，他不僅幽默回應網友的打折話題，更展現精打細算的一面。此行除了租車體驗、品嚐在地美食鼎王，還收到超商專屬周邊禮物，親切可愛的性格融化大批粉絲。",
+"url": "https://star.setn.com/news/1942741",
+"image": "https://www.bing.com/th?id=ONUT.IYoOQpBADHzO1gB63JX2FQ&pid=News&w=800"
 }
 ]
 }
