@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "caab9961e9c7",
+ "edit_sig": "ca927849c67b",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -310,24 +310,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-11-22",
-     "n": 1,
-     "source": "Bluesky",
-     "title": "This game's advertisement inadvertently envisioned The Mandalorian 17 years ahead of its time. 👌",
-     "url": "https://bsky.app/profile/thespaceshipper.com/post/3n2vpjezd462c"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-21",
-     "n": 2,
-     "source": "Kotaku",
-     "title": "LEGO Star Wars Gets the Black Friday Treatment as The Mandalorian’s N-1 Starfighter Hits an All-Time Low",
-     "url": "https://kotaku.com/lego-star-wars-gets-the-black-friday-treatment-as-the-mandalorians-n-1-starfighter-hits-an-all-time-low-2000759247"
+     "headline": "LEGO Star Wars Gets the Black Friday Treatment as The Mandalorian’s N-1 Starfighter Hits an All-Time Low",
+     "highlight": "All-Time Low",
+     "image": "https://kotaku.com/app/uploads/2026/11/LEGO-Star-Wars-The-Mandalorians-N-1-Starfighter.jpg",
+     "image_via": "og:image",
+     "url": "https://kotaku.com/lego-star-wars-gets-the-black-friday-treatment-as-the-mandalorians-n-1-starfighter-hits-an-all-time-low-2000759247",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",

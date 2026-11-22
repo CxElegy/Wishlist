@@ -45,7 +45,8 @@
   "漫威电影": 10,
   "三星手机": 4,
   "哈利波特剧集": 4,
-  "MMORPG 新作": 2
+  "MMORPG 新作": 2,
+  "The Mandalorian": 2
  },
  "漫威电影": [
   {
@@ -160,6 +161,17 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "LEGO Star Wars Gets the Black Friday Treatment as The Mandalorian’s N-1 Starfighter Hits an All-Time Low",
+   "highlight": "All-Time Low",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
    ]
   }
  ]
