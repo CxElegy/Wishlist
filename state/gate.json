@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-22T06:38:39+00:00",
+ "changed": true,
+ "checked": "2026-11-22T07:18:09+00:00",
  "fired": {
   "at": "2026-11-22T06:38:39+00:00",
   "results": {
@@ -71,26 +71,31 @@
    },
    "items": [
     "gelato pique",
-    "チェーンソーマン",
+    "lib:F1",
+    "lib:Nintendo Switch 2",
+    "lib:SPY×FAMILY",
+    "lib:iPhone",
+    "lib:ゼルダの伝説",
+    "lib:ユニクロ",
+    "lib:呪術廻戦",
+    "lib:鬼滅の刃",
     "滑雪",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-22T05:39:05+00:00",
+   "last_batch": "2026-11-22T06:44:27+00:00",
    "last_error": {
     "at": "2026-11-21T23:26:48+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 300,
+   "prog": 302,
    "prog_day": "2026-11-22",
-   "ripe": [
-    "チェーンソーマン"
-   ],
-   "sig": "166c24cb4ff7",
+   "ripe": [],
+   "sig": "881f13ba9b35",
    "token_cap": 1000000,
-   "tokens_today": 467251,
-   "why": "整理待ちの記事 9 件（5 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 519313,
+   "why": "整理待ちの記事 103 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -255,12 +260,12 @@
    "runs": 16
   },
   "2026-11-22": {
-   "batches": 18,
-   "cr": 8496294,
-   "cw": 426967,
-   "in": 235,
-   "out": 40049,
-   "runs": 8
+   "batches": 19,
+   "cr": 8966980,
+   "cw": 477330,
+   "in": 251,
+   "out": 41732,
+   "runs": 9
   }
  }
 }
