@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "1e664c703466",
+ "edit_sig": "621e67e9f4f0",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -185,38 +185,43 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "HBO's Harry Potter and the Philosopher's Stone premieres on Christmas Day, bringing the Wizarding World back in a new era.",
      "date": "2026-11-22",
-     "n": 1,
-     "source": "Root-Nation.com",
-     "title": "HBO’s Harry Potter Series: Everything About the Reboot",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQQ1RFb1Ffa05KTW1mVVc1UVdhOGl6SkxVMkJMZUhhY0dBTmZOcVBXSzBjaW81eEVIbkNMOXBLTHF1OUtKeG9HaGxXZHhkSzNQc21JMlJjWDJYaXhBTFpkSE4zNTdLX2hjeGNnNktTa0pvNmE0TFVieTV4X1JrY2RZa29seXBZMG9Ma1V2OUdIRTJ6UkJhWV9mdFNHck4xYzc5cXp2a190VQ?oc=5"
+     "event": {
+      "date": "2026-12-25",
+      "label": "放送開始"
+     },
+     "headline": "HBO's Harry Potter Officially Returns to Hogwarts in Just Over a Month",
+     "highlight": "Christmas Day",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/09/harry-potter-2-1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://collider.com/harry-potter-hbo-series-christmas-premiere-30-day-countdown/",
+     "weight": "hero"
     },
     {
+     "blurb": "",
      "date": "2026-11-22",
-     "n": 2,
-     "source": "Collider",
-     "title": "HBO's Harry Potter Officially Returns to Hogwarts in Just Over a Month",
-     "url": "https://collider.com/harry-potter-hbo-series-christmas-premiere-30-day-countdown/"
+     "headline": "HBO's 'Harry Potter' Officially Changes a Classic Book Moment in First Full Scene Release",
+     "highlight": "",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/10/harry-potter-2-1-1.avif?w=1200&h=675&fit=crop",
+     "image_via": "og:image",
+     "url": "https://collider.com/harry-potter-hbo-reboot-first-scene-dumbledore-book-change/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-22",
-     "n": 3,
-     "source": "Collider",
-     "title": "HBO’s ‘Harry Potter’ Officially Changes a Classic Book Moment in First Full Scene Release",
-     "url": "https://collider.com/harry-potter-hbo-reboot-first-scene-dumbledore-book-change/"
-    },
-    {
-     "date": "2026-11-21",
-     "n": 4,
-     "source": "Screen Rant on MSN",
-     "title": "HBO’s Harry Potter narrowly avoids its first big spoiler",
-     "url": "https://www.msn.com/en-ca/entertainment/celebrities/hbo-s-harry-potter-narrowly-avoids-its-first-big-spoiler/ar-AA2hXm1y"
+     "headline": "HBO's Harry Potter Series: Everything About the Reboot",
+     "highlight": "",
+     "image": "https://root-nation.com/wp-content/uploads/2026/11/alastair-stout-dominic-mclaughlin-and-arabella-stanton_photograph-by-aidan-monaghan-hbo.jpg",
+     "image_via": "og:image",
+     "url": "https://root-nation.com/en/articles-en/movies-series-en/en-everything-about-the-new-harry-potter-series/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -710,7 +715,7 @@
    }
   },
   {
-   "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-11-22",
@@ -730,7 +735,7 @@
     "alt_fg": "#F4EEE4",
     "bg": "#FBEFF4",
     "fg": "#1E1A18",
-    "font": "serif",
+    "font": "sans",
     "split": true
    }
   }

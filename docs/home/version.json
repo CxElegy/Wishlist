@@ -1,32 +1,32 @@
 {
- "admin": "117a981cce55",
- "admin-ai": "fd9e458e5a4f",
+ "admin": "1189d8798fe9",
+ "admin-ai": "b4d24ecdf788",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "47c4de5c"
+   "9c2e4f90"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "b8780b37"
+   "3a21c849"
   ]
  },
- "admin-boards": "35ffff50e35c",
+ "admin-boards": "6b5bfb441f3b",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "b30c5379"
+   "d5b6f91d"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "5555567c1e7f",
+ "admin-emblem": "a9476584a677",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a4e295d4"
+   "6d416f48"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "45ca7d174c60",
+ "admin-now": "ba44ce6674eb",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3d9365d3"
+   "bcbb6723"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "996832b0"
+   "e9544a37"
   ]
  },
- "admin-system": "81bbb370f2f0",
+ "admin-system": "c291c04fb048",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "6ac94d04"
+   "a0b02c05"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "49c60361"
+   "e3da9d2f"
   ]
  },
  "admin_marks": {},
- "heat": "3b6ae338da2c",
+ "heat": "0072a589258b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "5408650f"
+   "514e72cb"
   ],
   "ranking": [
    "ランキング",
-   "5750dcd8"
+   "39826069"
   ]
  },
- "index": "75dde1a947bf",
+ "index": "5517b109c7b5",
  "index_marks": {
   "front": [
    "トップ",
-   "d1ccf218"
+   "f223382a"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "9a82d861"
+   "c5bcd452"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "c685b500"
+   "8c7f1d8a"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "7ad3b2fc"
   ]
  },
- "updated": "11.23 01:44",
+ "updated": "11.23 01:47",
  "wishlist": "3dd33d6c5ec5"
 }
