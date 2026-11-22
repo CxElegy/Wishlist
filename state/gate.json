@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-22T17:33:15+00:00",
+ "checked": "2026-11-22T18:04:58+00:00",
  "fired": {
   "at": "2026-11-22T17:33:15+00:00",
   "results": {
@@ -75,39 +75,28 @@
    "items": [
     "FROM",
     "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "lib:BTS",
-    "lib:Mrs. GREEN APPLE",
-    "lib:YOASOBI",
-    "lib:【推しの子】",
-    "lib:サッカー日本代表",
-    "lib:ポケットモンスター",
-    "lib:大相撲",
-    "lib:大谷翔平",
-    "周杰伦",
-    "猫用品"
+    "lib:ユニバーサル・スタジオ・ジャパン",
+    "lib:京都",
+    "lib:宇宙・ロケット",
+    "lib:将棋",
+    "lib:恐竜",
+    "lib:東京ディズニーリゾート",
+    "lib:温泉",
+    "lib:生成AI"
    ],
-   "last_batch": "2026-11-22T16:47:36+00:00",
+   "last_batch": "2026-11-22T17:49:57+00:00",
    "last_error": {
     "at": "2026-11-22T08:43:56+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 46,
+   "prog": 63,
    "prog_day": "2026-11-23",
-   "ripe": [
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "周杰伦",
-    "猫用品"
-   ],
-   "sig": "aa22c0d68dda",
+   "ripe": [],
+   "sig": "24c323756624",
    "token_cap": 1000000,
-   "tokens_today": 57616,
-   "why": "整理待ちの記事 107 件（15 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 108845,
+   "why": "整理待ちの記事 98 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -280,12 +269,12 @@
    "runs": 13
   },
   "2026-11-23": {
-   "batches": 4,
-   "cr": 1203053,
-   "cw": 52230,
-   "in": 32,
-   "out": 5354,
-   "runs": 1
+   "batches": 9,
+   "cr": 2012374,
+   "cw": 99231,
+   "in": 56,
+   "out": 9558,
+   "runs": 2
   }
  }
 }
