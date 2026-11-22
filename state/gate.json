@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-22T08:18:43+00:00",
+ "changed": true,
+ "checked": "2026-11-22T08:36:32+00:00",
  "fired": {
-  "at": "2026-11-22T06:38:39+00:00",
+  "at": "2026-11-22T08:36:32+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -55,21 +55,26 @@
    "edit": 15
   },
   "2026-11-22": {
-   "edit": 9
+   "edit": 10
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-22T06:38:39+00:00",
+    "at": "2026-11-22T08:36:32+00:00",
     "attempts": 1,
     "day": "2026-11-22",
-    "prog": 300,
-    "resp": "cse_01W4x6f6mMfTeVMetVnaVXQv",
-    "sig": "166c24cb4ff7"
+    "prog": 302,
+    "resp": "",
+    "sig": "d9b41f4eaa32"
    },
    "items": [
+    "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "dota2",
     "gelato pique",
     "lib:F1",
     "lib:Nintendo Switch 2",
@@ -79,7 +84,11 @@
     "lib:ユニクロ",
     "lib:呪術廻戦",
     "lib:鬼滅の刃",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
     "滑雪",
+    "漫威电影",
     "猫用品",
     "绝区零"
    ],
@@ -91,35 +100,44 @@
    "need": true,
    "prog": 302,
    "prog_day": "2026-11-22",
-   "ripe": [],
-   "sig": "881f13ba9b35",
+   "ripe": [
+    "GTA 6",
+    "dota2",
+    "gelato pique",
+    "三星手机",
+    "周杰伦",
+    "滑雪",
+    "漫威电影"
+   ],
+   "sig": "d9b41f4eaa32",
    "token_cap": 1000000,
    "tokens_today": 519313,
-   "why": "整理待ちの記事 103 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 146 件（21 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "チェーンソーマン",
+    "dota2",
+    "漫威电影",
+    "FROM",
+    "GTA 6",
+    "绝区零",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "7938db7eddd5",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "哈利波特剧集"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
