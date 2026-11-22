@@ -1,846 +1,459 @@
 {
 "done": {
 "day": "2026-11-22",
-"n": 36
+"n": 44
 },
 "boards": [
 {
-"id": 148,
-"name": "スプラトゥーン3",
+"id": 179,
+"name": "広島旅行",
 "day": "2026-11-22",
-"fp": "8c4ecefb8c5a",
+"fp": "ee78eb3868d1",
 "fresh": false,
 "rows": [
 {
-"title": "「無料アップデート終わった末期ゲームなのに」――スプラトゥーン3 Ver.12.0.0、対照的な投稿が同時に広がる",
-"date": "2026-11-18T09:14:09+00:00",
-"source": "shiritomo",
-"summary": "",
-"url": "https://hashout.jp/game/14558/",
-"image": "https://hashout.jp/wp-content/uploads/2026/11/2122782919278178379-img-1200x675.png"
-},
-{
-"title": "【スプラトゥーン3】⋱参加型！⋰初見さん大歓迎✨計画的な無計画！！バンカラマッチルールであそぼ～ #わかばシューター 【うう/ UU】 #新人vtuber #uu #うう",
-"date": "2026-11-18T08:35:57+00:00",
-"source": "Howl.Link",
-"summary": "",
-"url": "https://t.co/EsVesyIEsb",
-"image": "https://i.ytimg.com/vi/6pJ57CGe0jc/maxresdefault.jpg"
-},
-{
-"title": "『スプラトゥーン3』Ver.12.0.0配信開始！ Xマッチのペア参加を12月から試験導入",
-"date": "2026-11-18T08:10:42+00:00",
-"source": "AppBank",
-"summary": "",
-"url": "https://www.appbank.net/2026/11/18/game/3169626.php",
-"image": "https://www.appbank.net/wp-content/uploads/2026/11/20261118_143752_950_01.webp"
-},
-{
-"title": "「スプラトゥーン3」更新データVer.12.0.0が配信開始！多数アイテムが手に入るゲームニュースも同時配信",
-"date": "2026-11-18T06:34:27+00:00",
-"source": "Saiga NAK",
-"summary": "",
-"url": "https://saiganak.com/ja/news/splatoon3-update-ver12-0-0/",
-"image": "https://i0.wp.com/uploads.saigacdn.com/2026/11/splatoon3-ver12-0-0-annoucement-00.jpg?resize=1200,630"
-},
-{
-"title": "画像10 / 10＞『スプラトゥーン3』のデザイン追加など新機能も！スマホプリンター用アプリ「INSTAX mini Link for Nintendo Switch」バージョンアップ版が登場",
-"date": "2026-11-18T05:51:26+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/1119850/image11426653.html",
-"image": "https://news.walkerplus.com/article/1119850/11426632_615.jpg"
-},
-{
-"title": "『スプラトゥーン3』ギアパワーのかけら（全14種類、各100個）などがプレゼント！",
-"date": "2026-11-18T05:06:00+00:00",
-"source": "電撃オンライン",
-"summary": "",
-"url": "https://dengekionline.com/article/202611/94368",
-"image": "https://cimg.kgl-systems.io/camion/files/94368/ogp_yZlk.jpg?x=1280"
-},
-{
-"title": "画像1 / 11＞夏休みは「ららぽーとEXPOCITY」へ！「スプラトゥーン3」コラボイベントや自由研究におすすめの企画も",
-"date": "2026-11-18T01:38:09+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/1204684/image13226259.html",
-"image": "https://news.walkerplus.com/article/1204684/13226259_615.jpg"
-},
-{
-"title": "「スプラトゥーン レイダース」の体験版が配信開始！「スプラトゥーン3」の更新データVer.12.0.0も11月18日に配信（Saiga NAK）",
-"date": "2026-11-18T01:00:00+00:00",
-"source": "ｄメニューニュース",
-"summary": "",
-"url": "https://topics.smt.docomo.ne.jp/article/funglr_games/trend/funglr_games-202611339046",
-"image": "https://img.topics.smt.news.goo.ne.jp/picture/funglr_games/m_funglr_games-202611339046.jpg"
-},
-{
-"title": "『スプラトゥーン3』Xマッチがフレンドと2人組で参加可能に！大型アプデVer.12.0.0配信決定",
-"date": "2026-11-17T23:18:32+00:00",
-"source": "ニコニコニュース",
-"summary": "",
-"url": "https://news.nicovideo.jp/watch/nw20003563?news_ref=top_newComments",
-"image": ""
-},
-{
-"title": "【スプラ3】イベントマッチのスケジュール一覧！次の開催はいつ？ルール・結果の見方・上位バッジまとめ！【スプラトゥーン3】",
-"date": "2026-11-17T11:14:59+00:00",
-"source": "攻略大百科",
-"summary": "",
-"url": "https://gamepedia.jp/splatoon3/archives/20646",
-"image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/splatoon3/thumbnail/20646/f2bfc6fc596957a6a430ea96a5023ecd"
-},
-{
-"title": "【スプラ3】通信エラー・ネットワーク障害・鯖落ち情報・最新のサーバーメンテナンス期間・不具合と対処法まとめ【スプラトゥーン3】",
-"date": "2026-11-17T05:13:58+00:00",
-"source": "攻略大百科",
-"summary": "",
-"url": "https://gamepedia.jp/splatoon3/archives/5183",
-"image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/splatoon3/thumbnail/5183/2196627e50af5afc268fd3a99bfbc2c4"
-},
-{
-"title": "【スプラ3】最新アップデートVer.12.0.0発表！いつ配信される？新武器追加はある？情報まとめ【スプラトゥーン3】",
-"date": "2026-11-17T05:10:41+00:00",
-"source": "攻略大百科",
-"summary": "",
-"url": "https://gamepedia.jp/splatoon3/archives/38833",
-"image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/splatoon3/thumbnail/38833/724eb38f8f94fb59dbcf392010c2827a"
-}
-]
-},
-{
-"id": 13593,
-"name": "ポケモンGO",
-"day": "2026-11-22",
-"fp": "fa89ecb25600",
-"fresh": false,
-"rows": [
-{
-"title": "【ポケモンGO】GOパス大きな足跡のリワード内容と挑戦期間",
-"date": "2026-11-21T07:31:05+00:00",
-"source": "GameWith",
-"summary": "",
-"url": "https://pokemongo.gamewith.jp/article/show/585785",
-"image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/585785.png?date=1793238889"
-},
-{
-"title": "【ポケモンGO攻略】無限ダイナ復刻イベント速報！マックスバトルの攻略法・マックス粒子の効率的な集め方・強化するべき？",
-"date": "2026-11-21T06:11:51+00:00",
-"source": "MMOEXP",
-"summary": "",
-"url": "https://www.mmoexp.com/News/pok%C3%A9mon-go-guide-eternatus-returns-max-battle-strategies-how-to-farm-max-particles-efficiently-is-it-worth-powering-up.html",
-"image": "https://assets.mmoexp.com/images/202611/75b0f137b41da19f785e2b21d24b20e8edee0087.jpg"
-},
-{
-"title": "【ポケモンGO】大きな足跡イベントの開催期間とボーナス",
-"date": "2026-11-21T03:47:26+00:00",
-"source": "GameWith",
-"summary": "",
-"url": "https://pokemongo.gamewith.jp/article/show/585781",
-"image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/585781.png?date=1793340673"
-},
-{
-"title": "【ポケモンGO】ゆふいんさんのGOバトルリーグレポート2026年11月第3週",
-"date": "2026-11-21T03:10:42+00:00",
-"source": "GameWith",
-"summary": "",
-"url": "https://pokemongo.gamewith.jp/article/show/589529",
-"image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/589529.png?date=1795230643"
-},
-{
-"title": "【ポケモンGO】ドゲザンの性能と覚えるポケモン",
-"date": "2026-11-21T01:27:31+00:00",
-"source": "GameWith",
-"summary": "",
-"url": "https://pokemongo.gamewith.jp/article/show/589520",
-"image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/589520.png?date=1795231401"
-},
-{
-"title": "【ポケモンGO】コマタナコミュニティデイ有料スペシャルリサーチの内容と報酬",
-"date": "2026-11-21T00:37:45+00:00",
-"source": "GameWith",
-"summary": "",
-"url": "https://pokemongo.gamewith.jp/article/show/589507",
-"image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/589507.png?date=1795221467"
-},
-{
-"title": "『ポケモンGO』貴重なドドゲザンを大量育成できる大チャンス！「コマタナ」コミュデイ重要ポイントまとめ",
-"date": "2026-11-20T16:00:00+00:00",
-"source": "エキサイト",
-"summary": "どーも皆さんこんにちは！地元秋田県で『ポケモンGO』を楽しむゆずみんです。 今回のテーマは、11月21日（土）14時～17時に行われる「コマタナ」のコミュデイについて！これまでレア枠でなかなか出現しなかったコマタナを、大量ゲットできる大チャンスです。 ◆コマタナが大量発生！色違いとスペシャル背景が狙える コミュデイ中は",
-"url": "https://www.excite.co.jp/news/article/Inside_191337/",
-"image": "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200"
-},
-{
-"title": "『ポケモンGO』貴重なドドゲザンを大量育成できる大チャンス！「コマタナ」コミュデイ重要ポイントまとめ（インサイド）",
-"date": "2026-11-20T15:18:41+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/fe278f9128dc7b0358616fafd71fc5593a68f39c",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000001-isd-000-1-view.jpg?exp=10800"
-},
-{
-"title": "「ええええ」「会いたかった」大人気女優が「ポケモンGO」リアルイベントに参加していた…山本美月が“推し”明かす",
-"date": "2026-11-20T13:50:00+00:00",
-"source": "スポーツ報知 on MSN",
-"summary": "山本は２０日までに自身のインスタグラムを更新。「行ってました！ポケモンＧＯワイルドエリア２０２６ 仙台 最終日に朝から参戦するはずが、新幹線の遅れで昼からに」と報告。「なので結果ちょこっとだけ！ゆるりと。１番嬉しかったのは、イシツブテさんにお会い出来た事です！！最高なお姿！しっかりと浮遊しておられました！！！仙台、美味",
-"url": "https://www.msn.com/ja-jp/news/other/%E3%81%88%E3%81%88%E3%81%88%E3%81%88-%E4%BC%9A%E3%81%84%E3%81%9F%E3%81%8B%E3%81%A3%E3%81%9F-%E5%A4%A7%E4%BA%BA%E6%B0%97%E5%A5%B3%E5%84%AA%E3%81%8C-%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%EF%BD%87%EF%BD%8F-%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F-%E5%B1%B1%E6%9C%AC%E7%BE%8E%E6%9C%88%E3%81%8C-%E6%8E%A8%E3%81%97-%E6%98%8E%E3%81%8B%E3%81%99/ar-AA2hSyrv",
-"image": "https://www.bing.com/th?id=ONUT.r63_QRPK94kt0_TkXHGQVA&pid=News&w=750"
-},
-{
-"title": "ムゲンダイナのフル強化に必要な課金額は約3万円 →ただし3時間ではアメXLが半分も集まらない【ポケモンGO】",
-"date": "2026-11-20T12:30:00+00:00",
-"source": "ガジェット通信 GetNews",
-"summary": "『ポケモンGO』で11月21日に開催される「ムゲンダイナ再来」では、11時〜14時の3時間限定で「ムゲンダイナ（ムゲンダイマックス）」が大半のパワースポットに登場。 通常であれば入手困難なムゲンダイナのアメとアメXLを一気に稼げるチャンスではありますが、制限時間がかなり短いイベントとなっているので、リワード報酬2倍に毎",
-"url": "https://getnews.jp/archives/3757191",
-"image": "https://www.bing.com/th?id=ONUT.3KdPmNcJJtPjbMjQMRO7Mw&pid=News&w=1200"
-},
-{
-"title": "【ポケモンGO】わくわくPokémon GO Lab.大調査の開催期間と内容",
-"date": "2026-11-20T08:10:07+00:00",
-"source": "GameWith",
-"summary": "",
-"url": "https://pokemongo.gamewith.jp/article/show/580836",
-"image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/580836.png?date=1791530418"
-},
-{
-"title": "【ポケモンGO】GOバトルリーグ黄昏の旅路シーズンのスケジュールと調整内容",
-"date": "2026-11-20T05:12:23+00:00",
-"source": "GameWith",
-"summary": "",
-"url": "https://pokemongo.gamewith.jp/article/show/574389",
-"image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/574389.png?date=1788169180"
-}
-]
-},
-{
-"id": 13688,
-"name": "ミャクミャク",
-"day": "2026-11-22",
-"fp": "35b0f0fd079e",
-"fresh": false,
-"rows": [
-{
-"title": "大阪：ミャクミャク効果来園４倍 ちはや園地：地域ニュース",
-"date": "2026-11-21T20:00:00+00:00",
-"source": "読売新聞",
-"summary": "",
-"url": "https://www.yomiuri.co.jp/local/osaka/news/20261121-GYTNT00208/",
-"image": "https://www.yomiuri.co.jp/media/2026/11/20261121-GYTNI00210-1.jpg?type=ogp"
-},
-{
-"title": "扇町公園で「よ～いドン！フェス」開幕 人気グルメ集結、ミャクミャクも登場",
-"date": "2026-11-21T08:05:41+00:00",
-"source": "osaka style",
-"summary": "",
-"url": "https://osaka.style/news/79801/",
-"image": "https://osaka.style/news/wp-content/uploads/2026/11/11-6.jpg"
-},
-{
-"title": "巨人が「ミャクミャク」と異色コラボ ファンフェスに登場…球団ユニ姿のグッズを販売",
-"date": "2026-11-21T06:42:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "Tシャツやタオルなど全10アイテムが展開される 巨人が「ミャクミャク」とコラボレーションした新商品を発売する【写真提供：読売巨人軍】 巨人は大阪・関西万博の公式キャラクター「ミャクミャク」とコラボレーションした新商品を発売すると発表した。22日正午から球団公式オンラインストア、23日から東京ドームの公式グッズショップ「",
-"url": "https://news.yahoo.co.jp/articles/d32964487ecd3f30c6795ce59417a07306639266",
-"image": "https://www.bing.com/th?id=ONUT.4aY65Xqy9-kJBy2p4bSmJw&pid=News&w=900"
-},
-{
-"title": "＜画像2 / 13＞47都道府県のミャクミャクが集結！「日本ミャク景」グッズ3種を発売",
-"date": "2026-11-21T06:15:28+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/1455270/image19088156.html",
-"image": "https://news.walkerplus.com/article/1455270/19088154_615.jpg"
-},
-{
-"title": "ミャクミャク、はばタンも登場！ 「フィールドパビリオンDAYS 2026」 神戸市",
-"date": "2026-11-21T06:14:00+00:00",
-"source": "ｄメニューニュース",
-"summary": "",
-"url": "https://topics.smt.docomo.ne.jp/article/kisspress/region/kisspress-66864?utm_source=dnews&utm_medium=article&utm_campaign=contentsmatch1",
-"image": "https://img.topics.smt.news.goo.ne.jp/picture/kisspress/m_kisspress-66864.jpg"
-},
-{
-"title": "巨人が「ミャクミャク」と異色コラボ ファンフェスに登場…球団ユニ姿のグッズを販売 (Full-Count)",
-"date": "2026-11-21T05:42:25+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/d32964487ecd3f30c6795ce59417a07306639266/images/000",
-"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26m8ol-txKu8ZBQ02lHUIJGS9PFXMA97QtXL74BcvnueIt4FHwwZxCM7b6J8eAeVGfEPnxRriknzsdCIcE4G-qafA0rT4Ddi1wS3HSUQNPGu_"
-},
-{
-"title": "運が良ければ雪化粧のミャクミャクも？ 金剛山で初冠雪、昨年より14日早く",
-"date": "2026-11-21T02:56:00+00:00",
-"source": "産経ニュース",
-"summary": "大阪府と奈良県にまたがる金剛山（標高1125メートル）で21日、初冠雪が観測された。麓の大阪府千早赤阪村が発表した。昨年より14日早い。山頂にある葛木神社の禰宜、葛城繁さん（38）は「8合目付近から雪が見られます。山頂近くの、ちはや園地には23日まで大阪・関西万博の公式キャラクター『ミャクミャク』の大型像が展示されてお",
-"url": "https://www.sankei.com/article/20261121-SO35S27P3RKMXAYIOJ3ZJX7DPQ/",
-"image": "https://www.bing.com/th?id=ONUT.HwMAOWhEA6DRG-LnqqO36g&pid=News&w=1200"
-},
-{
-"title": "＜画像3 / 13＞47都道府県のミャクミャクが集結！「日本ミャク景」グッズ3種を発売",
-"date": "2026-11-21T01:23:33+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/1455270/image19088157.html",
-"image": "https://www.bing.com/th?id=ONUT._PRcoKT1n937uYyQYTL67w&pid=News&w=615"
-},
-{
-"title": "雪化粧のミャクミャクも？ 金剛山で初冠雪 (2026年11月21日掲載)",
-"date": "2026-11-21T01:03:29+00:00",
+"title": "犬連れ旅行の食事に！ペット同伴で楽しめる広島のお好み焼き店と観光ルート",
+"date": "2026-11-20T09:00:08+00:00",
 "source": "ライブドアニュース",
 "summary": "",
-"url": "https://news.livedoor.com/topics/detail/32867830/",
-"image": "https://image.news.livedoor.com/newsimage/stf/e/a/eac96_1675_f6215b07a151caddba7bd2a23521c75f.jpg"
+"url": "https://news.livedoor.com/article/detail/32864138/",
+"image": "https://image.news.livedoor.com/newsimage/stf/9/7/970e4_1845_740b5689_385bc3e3.jpg"
 },
 {
-"title": "ミャクミャクが日本文学の聖地を案内『ミャクミャクと旅する文学聖地巡礼』11月28日発売（リアルサウンド）",
-"date": "2026-11-21T01:01:33+00:00",
+"title": "「推し活」需要を観光に、ANAが松山・広島でアイドル参加のツアー",
+"date": "2026-11-19T08:15:00+00:00",
+"source": "日本経済新聞",
+"summary": "",
+"url": "https://www.nikkei.com/article/DGXZQOCC167V80W6A111C2000000/",
+"image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3904798019112026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.54&fp-y=0.7&h=630&w=1200&s=d9135dc9575884e680818acaf2c9eca0"
+},
+{
+"title": "水盤の上のカラフルなキューブ…実はこれ、美術館の展示室！「世界で最も美しい美術館」に選ばれた下瀬美術館は広島観光するならマストで訪れたい新名所",
+"date": "2026-11-19T08:00:00+00:00",
+"source": "ウォーカープラス",
+"summary": "",
+"url": "https://www.walkerplus.com/article/1335064/",
+"image": "https://image.news.livedoor.com/newsimage/stf/8/7/87630_230_776bfee8a070dc1bb4804307b4e7726f.jpg"
+},
+{
+"title": "広島の修学旅行生を乗せた遊覧船「定員を大幅超過し運航」壱岐市勝本町の漁協を海保が捜査《長崎》（長崎国際テレビ）",
+"date": "2026-11-18T15:02:00+00:00",
 "source": "Yahoo!ニュース",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/5b5b588afadbaf46b2eaa68e2aa6036a860f3419",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00010012-realsound-000-1-view.jpg?exp=10800"
+"url": "https://news.yahoo.co.jp/articles/a400011bf4eaf2020d5d726936674bc21d99c3b4",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261111-07453762-nib-000-6-thumb.jpg?exp=10800"
 },
 {
-"title": "雪化粧のミャクミャクも？ 金剛山で初冠雪",
-"date": "2026-11-21T00:41:25+00:00",
-"source": "琉球新報デジタル",
+"title": "広島から島根へのインバウンド周遊促進へ 一畑バスなど4社と自治体が高速バス利用拡大プロモーションを開始",
+"date": "2026-11-17T14:00:00+00:00",
+"source": "訪日ラボ",
+"summary": "一畑バス、広島電鉄、JRバス中国、WILLER ACROSSの4社は11月9日、広島から島根へのインバウンド周遊を促進するプロモーションを開始すると発表しました。 島根県、出雲市、松江市とも連携し、広島を訪れるインバウンド観光客の島根への周遊拡大と、高速バス「広島～松江線」「広島～出雲線」の利用促進を図ります。 関連記",
+"url": "https://honichi.com/news/2026/11/18/hiroshima-shimane-bus-promotion/",
+"image": "https://www.bing.com/th?id=ONUT.2ACq-T9f1giiDppK-qoVJw&pid=News&w=1200"
+},
+{
+"title": "【3連休が最後のチャンス】『頭文字D』ポップアップストア広島、初週末2日間で売上640万円の大盛況。AE86実車展示は11月23日まで",
+"date": "2026-11-17T00:29:00+00:00",
+"source": "Newscast.jp",
 "summary": "",
-"url": "https://ryukyushimpo.jp/kyodo/entry-5609907.html",
-"image": "https://ryukyushimpo.jp/tachyon/2026/11/PN2026112101000333.-.-.CI0003.jpg"
+"url": "https://newscast.jp/smart/news/1289963",
+"image": "https://www.atpress.ne.jp/attachments/yceYS38E8oX5gY2srV3J.png"
 },
 {
-"title": "雪化粧のミャクミャクも？ 金剛山で初冠雪（共同通信）",
-"date": "2026-11-21T00:41:22+00:00",
+"title": "【3連休が最後のチャンス】『頭文字D』ポップアップストア広島、初週末2日間で大盛況。AE86実車展示は11月23日まで",
+"date": "2026-11-17T00:29:00+00:00",
+"source": "Newscast.jp",
+"summary": "",
+"url": "https://newscast.jp/smart/news/1289963",
+"image": "https://newscast.jp/attachments/yceYS38E8oX5gY2srV3J.png?w=940&h=940&a=1"
+},
+{
+"title": "原爆の悲惨さを生徒教員が熱演 島田高・公開授業で「父と暮せば」 広島への修学旅行控え事前学習",
+"date": "2026-11-15T21:00:00+00:00",
+"source": "静岡新聞DIGITAL",
+"summary": "",
+"url": "https://news.at-s.com/article/2099196",
+"image": ""
+},
+{
+"title": "「平和教育ってこれでいいの？」８月６日に生まれ、広島で育って感じた疑問 「戦争はダメだね」だけで終わらせたくない。新しい修学旅行に挑戦する高校も",
+"date": "2026-11-14T08:00:00+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1971022",
+"image": "https://static.sanyonews.jp/image/article/size1/a/a/8/0/aa8057fdf6b56a604365ee04736efa4f_1.jpg"
+},
+{
+"title": "神戸市、客船「MSCベリッシマ」の市民クルーズ参加者を募集 2027年4月に広島・鹿児島・済州島・佐世保を巡る8日間、旅行代金1万円引き",
+"date": "2026-11-12T23:54:23+00:00",
+"source": "Funeco",
+"summary": "",
+"url": "https://funeco.jp/news/news-37521/",
+"image": "https://funeco.jp/wp-content/uploads/2023/05/D20I8805s.jpg"
+},
+{
+"title": "【広島呉グルメ】ぶち旨い！阿賀駅前と阿賀中央の老舗３軒食べ歩き【呉観光/広島旅行】",
+"date": "2026-11-12T05:53:47+00:00",
+"source": "ライブドアニュース",
+"summary": "",
+"url": "https://news.livedoor.com/topics/detail/32799730/?_clicked=echoes_list",
+"image": "https://image.news.livedoor.com/newsimage/stf/1/1/1127b_1845_d88ead88_cdae2589.jpg"
+},
+{
+"title": "壱岐の遊覧船が定員１．７倍の８０人超を乗せる 広島の修学旅行生ら 海保、船舶安全法違反疑い（長崎新聞）",
+"date": "2026-11-12T01:10:21+00:00",
 "source": "Yahoo!ニュース",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/15c01016d1dff8aaca910f64f7170b6ba55c0ee0",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/default.jpg?exp=10800"
+"url": "https://news.yahoo.co.jp/articles/5124a0fdc0fe02f2e61ed21a611793f804f19139",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261112-00000001-nagasaki-000-1-view.jpg?exp=10800"
 }
 ]
 },
 {
-"id": 13689,
-"name": "宮崎駿",
+"id": 13764,
+"name": "転生したら剣でした 第2期",
 "day": "2026-11-22",
-"fp": "b6813ef879bd",
+"fp": "5f50c14a87ca",
 "fresh": false,
 "rows": [
 {
-"title": "『ハウルの動く城』当初は宮崎駿監督作品じゃなかった!? ジブリ名作の裏に隠された「幻の初期案」",
-"date": "2026-11-21T22:20:00+00:00",
-"source": "マグミクス",
-"summary": "",
-"url": "https://magmix.jp/post/386534",
-"image": "https://magmix.jp/wp-content/uploads/2027/11/261104-ghiblimoviemaboroshi-00.jpg"
-},
-{
-"title": "宮崎駿にめちゃくちゃ改変された『耳をすませば』原作者はどう思った？「冗談でしょ」（マグミクス）",
-"date": "2026-11-21T07:22:51+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/547ec9a55f488c0cb36f73797fe702e814b71ee5",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00386717-magmix-000-24-view.jpg?exp=10800"
-},
-{
-"title": "作曲家・久石譲さんに名誉博士号授与 イギリス・王立音楽大学 日本人初 「となりのトトロ」など宮崎駿監督作品をはじめ100超の映画音楽など手がける",
-"date": "2026-11-21T03:06:25+00:00",
-"source": "TBS NEWS DIG",
-"summary": "",
-"url": "https://newsdig.tbs.co.jp/articles/-/3103198",
-"image": "https://newsdig.ismcdn.jp/mwimgs/6/e/1200w/img_6eedc116911accabbc8e510ee1018dfe536908.jpg"
-},
-{
-"title": "宮崎駿にめちゃくちゃ改変された『耳をすませば』原作者はどう思った？「冗談でしょ」",
-"date": "2026-11-20T22:33:15+00:00",
-"source": "ｄメニューニュース",
-"summary": "",
-"url": "https://topics.smt.docomo.ne.jp/article/magmix/entertainment/magmix-386717?page=2",
-"image": "https://img.topics.smt.news.goo.ne.jp/picture/magmix/m_magmix-386717.jpg"
-},
-{
-"title": "＜画像17 / 20＞宮崎駿の名作アニメ『パンダコパンダ』40周年記念のランチグッズが新発売！",
-"date": "2026-11-19T21:28:57+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/36553/image182428.html",
-"image": ""
-},
-{
-"title": "『魔女の宅急便』そこなの！？制作で苦労したシーン 宮崎駿監督も大変さ認めた「この爽快感を生みました」",
-"date": "2026-11-18T23:43:58+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1918611?kw=%E6%9C%AB%E9%95%B7",
-"image": "https://static.sanyonews.jp/image/article/size1/3/5/9/2/3592f51dccebda85794ea5d97e66114a_1.jpg"
-},
-{
-"title": "＜画像1 / 20＞宮崎駿の名作アニメ『パンダコパンダ』40周年記念のランチグッズが新発売！",
-"date": "2026-11-17T12:07:17+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/36553/image182402.html",
-"image": "https://news.walkerplus.com/article/36553/182402_615.jpg"
-},
-{
-"title": "＜画像1 / 4＞宮崎駿監督制作！小金井市の「こきんちゃん」グッズに注目",
-"date": "2026-11-17T09:34:28+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/19558/image77085.html",
-"image": "https://news.walkerplus.com/article/19558/77085_615.jpg"
-},
-{
-"title": "「え、そこまでやるのか」 35周年の「ジブリ映画」、巨匠の暴走で宮崎駿も大激怒？（マグミクス）",
-"date": "2026-11-17T08:00:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/532ee411d6d2397687b3c398d0be6e8194d95c19?page=2",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261114-00385138-magmix-000-17-view.jpg?exp=10800"
-},
-{
-"title": "宮崎駿の略歴 [画像ギャラリー 7/7]",
-"date": "2026-11-16T11:38:34+00:00",
-"source": "ナタリー",
-"summary": "",
-"url": "https://natalie.mu/comic/gallery/news/698267/3019634",
-"image": "https://ogre.natalie.mu/media/news/comic/2026/1116/Princess_Mononoke_image_board_015.jpg?impolicy=ogp_face_crop"
-},
-{
-"title": "鈴木敏夫プロデューサー、『もののけ姫』製作当初を回顧「いろんな人から反対された」 宮崎駿監督とのエピソードを披露",
-"date": "2026-11-15T16:10:45+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1933114?kw=%E4%BA%AC",
-"image": "https://static.sanyonews.jp/image/article/size1/8/6/8/f/868fc19e499891cde1733e17636effb1_1.jpg"
-},
-{
-"title": "＜画像2 / 9＞宮崎駿監督引退作『風立ちぬ』へ届いた2万4000通の手紙からスペシャルブックが誕生",
-"date": "2026-11-14T14:03:08+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/42140/image220607.html",
-"image": "https://news.walkerplus.com/article/42140/220606_615.jpg"
-}
-]
-},
-{
-"id": 13690,
-"name": "星野源",
-"day": "2026-11-22",
-"fp": "0d17d363dcad",
-"fresh": false,
-"rows": [
-{
-"title": "第1子誕生の星野源、金髪くるくるヘアの近影公開（写真・画像 1/1）",
-"date": "2026-11-21T01:21:56+00:00",
-"source": "サンスポ",
-"summary": "",
-"url": "https://www.sanspo.com/article/20261121-KN2KJ7GCMJEHLB6TA7HPAML2KM/photo/3LZGWQWJRBBGVJGTCFBFF6L3VA",
-"image": "https://www.sanspo.com/common/images/basic/thumb_default_og.jpg"
-},
-{
-"title": "「何たって新垣結衣を射止めてんだから」第1子誕生の星野源〝激変〟近影にSNS騒然「今コレ?」「びっくりしたびっくりしたびっくりした」「かわいいパパやな」 (西スポWEB OTTO!)",
-"date": "2026-11-20T23:40:39+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/c94cd98c2a280272222ee8c0dd5f63290357aab3/images/000",
-"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26jUWKnHuLJicemmsbA4vXWOWv-WmD3P3Lr66RqfkD5eXnZGwdo7GqYWg4oPXzSJmdLXvQabAujUFc3EEQQuD-iqRBhTpRtTKsmdiaXQI1M4A_METmzA3q1hWe5YA2pFXqg=="
-},
-{
-"title": "（写真）小栗旬＆山田優夫妻、星野源インスタに登場！ ファン騒然「すごいメンツ」 - エンタメ - ニュース",
-"date": "2026-11-20T23:15:00+00:00",
-"source": "クランクイン！",
-"summary": "",
-"url": "https://www.crank-in.net/gallery/news/71453/2",
-"image": "https://www.crank-in.net/img/db/1363538_1200.jpg"
-},
-{
-"title": "「何たって新垣結衣を射止めてんだから」第1子誕生の星野源〝激変〟近影にSNS騒然「今コレ?」「びっくりしたびっくりした ...",
-"date": "2026-11-20T17:12:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "「星野源さんに飾っていただいた表紙が公開されました!」と星野の最新姿をXにアップしたのは書籍「石の刃」 (11月25日発売)の公式アカウント。 作家・ 米澤穂信 が執筆、星野がプロデュース・写真ディレクション・出演を担当するリーガルミステリ小説「石の刃」の刊行を記念して、米澤×星野の特別対談を掲載した11月26日発売の",
-"url": "https://news.yahoo.co.jp/articles/c94cd98c2a280272222ee8c0dd5f63290357aab3",
-"image": "https://www.bing.com/th?id=ONUT.ZmiYk6Pz7uyHFJuhunOg6Q&pid=News&w=640"
-},
-{
-"title": "星野源＆新垣結衣、5年前の『逃げ恥』オフショットに再注目「まさか現実に…」「3人で穏やかで楽しい日々が過ごせますように」",
-"date": "2026-11-20T16:09:46+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/2004064?kw=.qjek",
-"image": "https://static.sanyonews.jp/image/article/size1/4/7/c/8/47c89a4ed07aa9bf790b2a2894628bd2_1.jpg"
-},
-{
-"title": "「何たって新垣結衣を射止めてんだから」第1子誕生の星野源〝激変〟近影にSNS騒然「今コレ?」「びっくりしたびっくりしたびっくりした」「かわいいパパやな」",
-"date": "2026-11-20T09:00:00+00:00",
-"source": "ｄメニューニュース",
-"summary": "",
-"url": "https://topics.smt.docomo.ne.jp/article/nishispo/entertainment/nishispo-1058910?utm_source=dnews&utm_medium=article&utm_campaign=contentsmatch9",
-"image": "https://img.topics.smt.news.goo.ne.jp/picture/nishispo/m_nishispo-1058910.jpg"
-},
-{
-"title": "「星野源は変態で天才」プロが分析する“星野源メロディ”の魅力とは？",
-"date": "2026-11-20T08:00:32+00:00",
-"source": "Howl.Link",
-"summary": "",
-"url": "https://t.co/bw5VEY3TJq",
-"image": "https://i.ytimg.com/vi/Bd61YEw7epE/maxresdefault.jpg"
-},
-{
-"title": "画像3 / 11＞星野源と高畑充希の「共通点はAB型の一人っ子」と判明！ 映画『引っ越し大名！』イベントが兵庫・姫路城で開催",
-"date": "2026-11-19T23:58:27+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/trend/matome/article/201672/image1221847.html",
-"image": "https://news.walkerplus.com/article/201672/1221845_615.jpg"
-},
-{
-"title": "画像1 / 5＞小栗旬が初共演者・星野源に感じた“人間性”とは？「僕とは持っているもの(才能)が全然違う」",
-"date": "2026-11-19T23:09:54+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/trend/matome/article/1007888/image10062557.html",
-"image": ""
-},
-{
-"title": "星野源＆新垣結衣にも第1子 2026年は芸能人夫婦でベビーラッシュ 高畑充希＆岡田将生 山本舞香＆Hiro、玄理&町田啓太らに続き",
-"date": "2026-11-19T18:27:31+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/2003853?kw=2024",
-"image": "https://static.sanyonews.jp/image/article/size1/e/3/6/2/e3620b61c544dba861f9d55830e04ad4_1.jpg"
-},
-{
-"title": "＜画像6 / 9＞石田ゆり子が星野源と絶妙な掛け合い！新ドラマの記者会見で",
-"date": "2026-11-19T09:12:12+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/article/116641/image642794.html",
-"image": "https://news.walkerplus.com/article/116641/642777_615.jpg"
-},
-{
-"title": "画像2 / 5＞小栗旬が初共演者・星野源に感じた“人間性”とは？「僕とは持っているもの(才能)が全然違う」",
-"date": "2026-11-19T07:30:25+00:00",
-"source": "ウォーカープラス",
-"summary": "",
-"url": "https://www.walkerplus.com/trend/matome/article/1007888/image10062558.html",
-"image": ""
-}
-]
-},
-{
-"id": 13691,
-"name": "ブラッククローバー 第2期",
-"day": "2026-11-22",
-"fp": "3de6f2a314d9",
-"fresh": false,
-"rows": [
-{
-"title": "第179話 ブラッククローバー 2nd Season",
-"date": "2026-11-21T09:00:54+00:00",
-"source": "WEBザテレビジョン",
-"summary": "",
-"url": "https://thetv.jp/program/0001077949/11/",
-"image": "https://thetv.jp/i/pgw/series_images/0001204385_v.jpg?w=716"
-},
-{
-"title": "ブラッククローバー2nd Season＞5年ぶりの新作テレビアニメ 第8話「悪魔の心臓」 勝利が近いと確信するユノ ゼノンの様子が一変（MANTANWEB）",
-"date": "2026-11-21T07:05:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/208dc92f8f4e20fb68e0aa5821fa2344b740cbb4",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000041-mantan-000-1-view.jpg?exp=10800"
-},
-{
-"title": "【写真・画像 1/6枚】アニメ「ブラッククローバー」の2nd Seasonの第8話「悪魔の心臓」（C）田畠裕基／集英社・テレビ東京・ブラッククローバー製作委員会",
-"date": "2026-11-21T07:01:00+00:00",
-"source": "Mantan Web",
-"summary": "",
-"url": "https://mantan-web.jp/article/20261115dog00m200003000a/photopage/001.html",
-"image": "https://storage.mantan-web.jp/w=1000,h=563,f=webp:auto/images/2026/11/15/20261115dog00m200003000a/001.jpg"
-},
-{
-"title": "ブラッククローバーアニメどこまで？1期は原作何巻・続きは何話から？",
-"date": "2026-11-21T01:52:52+00:00",
-"source": "はてなブログ",
-"summary": "",
-"url": "https://anisaki.hatenadiary.com/entry/black-clover-anime-dokomade",
-"image": "https://cdn.image.st-hatena.com/image/scale/a023eaf1a6e86124edcbe5bd87fa5535e9351718/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcmoa.akamaized.net%2Fdata%2Fimage%2Ftitle%2Ftitle_0000097670%2FVOLUME%2F100000976700027.jpg"
-},
-{
-"title": "ブラッククローバー(テレ東、2026/11/28 23:00 OA)の番組情報ページ",
-"date": "2026-11-20T20:19:57+00:00",
-"source": "www.tv-tokyo.co.jp",
-"summary": "",
-"url": "https://www.tv-tokyo.co.jp/broad_tvtokyo/program/detail/202611/29313_202611282300.html",
-"image": "https://www.tv-tokyo.co.jp/txcms/media/pg/L/b8/6c/059bf6b18c725d40f890b886d177.jpg"
-},
-{
-"title": "ブラッククローバー #178『悪魔の心臓』(テレ東、2026/11/21 23:00 OA)の番組情報ページ",
-"date": "2026-11-20T18:29:02+00:00",
-"source": "www.tv-tokyo.co.jp",
-"summary": "",
-"url": "https://www.tv-tokyo.co.jp/broad_tvtokyo/program/detail/202611/29313_202611212300.html",
-"image": ""
-},
-{
-"title": "「私はアスタのことが好きなのね」ノエルの恋心自覚に「最高の回!」「ニヤニヤしちゃう」／『ブラッククローバー』177話",
-"date": "2026-11-19T03:30:00+00:00",
-"source": "ABEMA TIMES on MSN",
-"summary": "アニメ『ブラッククローバー』2nd Season第7話となる第177話が、11月14日に放送された（順次放送中）。アスタ（CV：梶原岳人）がピンチに駆け付けるなか、ノエル・シルヴァ（CV：優木かな）が彼への恋心を自覚する一幕に、SNS上の視聴者が「最高の回！」「恋心を認めるシーン良すぎる」と沸き立っていた。",
-"url": "https://www.msn.com/ja-jp/news/other/%E7%A7%81%E3%81%AF%E3%82%A2%E3%82%B9%E3%82%BF%E3%81%AE%E3%81%93%E3%81%A8%E3%81%8C%E5%A5%BD%E3%81%8D%E3%81%AA%E3%81%AE%E3%81%AD-%E3%83%8E%E3%82%A8%E3%83%AB%E3%81%AE%E6%81%8B%E5%BF%83%E8%87%AA%E8%A6%9A%E3%81%AB-%E6%9C%80%E9%AB%98%E3%81%AE%E5%9B%9E-%E3%83%8B%E3%83%A4%E3%83%8B%E3%83%A4%E3%81%97%E3%81%A1%E3%82%83%E3%81%86-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%90%E3%83%BC-177%E8%A9%B1/ar-AA2hMpl3",
-"image": "https://www.bing.com/th?id=ONUT.xLbYq3KJ2zMwnIqrl77BSA&pid=News&w=724"
-},
-{
-"title": "TVアニメ「ブラッククローバー」2nd Season第7話 『不諦の先』",
-"date": "2026-11-18T19:06:00+00:00",
-"source": "ABEMA",
-"summary": "TVアニメ「ブラッククローバー」2nd Season等、今期アニメ(最新作)の見逃し配信から懐かしの名作まで充実したアニメのラインナップを好きな時に何度でも楽しめます。また、ABEMAでは多彩な作品を無料で24時間どこでも視聴できます。",
-"url": "https://abema.tv/video/episode/15-36_s2_p177",
-"image": "https://www.bing.com/th?id=ONUT.LEZURqjLbnTDxWLXjM6NUg&pid=News&w=1200"
-},
-{
-"title": "ブラッククローバー＞メギキュラと戦うノエルに、アスタとラックが加勢…第7話あらすじ、メギキュラ役・望見のコメント公開",
-"date": "2026-11-18T03:44:02+00:00",
-"source": "WEBザテレビジョン",
-"summary": "",
-"url": "https://thetv.jp/news/detail/1455639/landing/",
-"image": "https://thetv.jp/i/nw/1455639/19109038.jpg?w=1284"
-},
-{
-"title": "『ブラッククローバー』第2期の新規映像PV解禁 OPはWANIMA",
-"date": "2026-11-17T21:22:21+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1949737?kw=%E7%A6%8F%E7%A5%B1",
-"image": "https://static.sanyonews.jp/image/article/size1/3/e/4/5/3e45572760ce416f1e4b80cf6da13da1_1.jpg"
-},
-{
-"title": "＜ブラッククローバー＞盟友ロロペチカを操って戦う敵に、ノエルは“聖域”の魔法を放つ…第6話あらすじ＆先行カット公開",
-"date": "2026-11-17T08:34:47+00:00",
-"source": "WEBザテレビジョン",
-"summary": "",
-"url": "https://thetv.jp/news/detail/1454033/19043038/",
-"image": "https://thetv.jp/i/nw/1454033/19043038.jpg?w=1284"
-},
-{
-"title": "『ブラッククローバー』死亡キャラ一覧！死んだはずの団長たちは最終回まで生き残った？",
-"date": "2026-11-16T16:00:00+00:00",
-"source": "ciatr",
-"summary": "『ブラッククローバー』は、魔力を持たない少年アスタが魔法帝を目指す物語です。原作は全38巻で完結し、アニメ2nd Seasonが2026年10月から放送されています。この記事は結末のネタバレを含みます。 物語では、魔法騎士団の仲間から敵の悪魔まで、多くのキャラが命を落としました。 一方で、死んだと思われたキャラが生きて",
-"url": "https://ciatr.jp/topics/340320",
-"image": "https://www.bing.com/th?id=ONUT.TH1z-kZu6mx0oQwOqTeTcw&pid=News&w=828"
-}
-]
-},
-{
-"id": 13692,
-"name": "生徒会にも穴はある！",
-"day": "2026-11-22",
-"fp": "f5bee1303a5a",
-"fresh": false,
-"rows": [
-{
-"title": "ナヲアカリ「ぴ」をナナヲアカリが全部“ぴ“で歌ってみた｜TVアニメ『生徒会にも穴はある！』ノンクレジットED映像公開！",
-"date": "2026-11-21T16:05:07+00:00",
-"source": "Aniplex",
-"summary": "",
-"url": "https://www.aniplex.co.jp/news/detail/?id=71752",
-"image": "https://www.aniplex.co.jp/assets/icons/ogp.png"
-},
-{
-"title": "「一番くじ 生徒会にも穴はある！」全賞品公開！生徒会メンバーに加え、寿子の母・古都吹真幸も参戦！",
-"date": "2026-11-20T13:52:14+00:00",
-"source": "玩具人 TOY PEOPLE",
-"summary": "",
-"url": "https://www.toy-people.com/jp/?p=116805",
-"image": "https://img.toy-people.com/member/179517893866_1200.png"
-},
-{
-"title": "アニメ『生徒会にも穴はある！』本日放送の第8話あらすじが公開。カイロでお金を巻き上げるたんのたくらみとは…？",
-"date": "2026-11-20T08:00:00+00:00",
-"source": "電撃オンライン",
-"summary": "【ページ数が多いビッグボリューム版！】今世紀初頭の発見以来、誰も完成させる事ができなかった『千年パズル』。いじめられっ子の遊戯がそれを解いた時、もう一つの人格が現れ、少年はゲームの達人となった。",
-"url": "https://dengekionline.com/article/202611/94675",
-"image": "https://www.bing.com/th?id=ONUT.6o12a27Dn33bEpgTYah5OQ&pid=News&w=1200"
-},
-{
-"title": "笑いの最後にそっと泣かせるな。『生徒会にも穴はある！』第1話から第7話まで一気におさらい",
-"date": "2026-11-19T17:11:00+00:00",
-"source": "note",
-"summary": "毎週土曜24時30分からTOKYO MXほかにて放送中の『生徒会にも穴はある！』。略称は生穴る 原作はむちまろが週刊少年マガジンで連載する4コマ漫画で次にくるマンガ大賞2023のコミックス部門で第1位を取り累計発行部数は300万部を超えました。制作はパッショーネで監督は龍輪直征、キャラクターデザインは今村亮、シリーズ構",
-"url": "https://note.com/ryosuke_morita/n/n94aea05b82b5",
-"image": "https://www.bing.com/th?id=ONUT.ttocS1yglXJ6SK-RFAJE4w&pid=News&w=1200"
-},
-{
-"title": "TVアニメ『生徒会にも穴はある！』坂田将吾インタビュー【連載第2回】",
-"date": "2026-11-19T04:04:24+00:00",
+"title": "『転生したら剣でした II』第8話「海洋国家はフクザツでした」のあらすじ＆先行場面カット＆予告映像が公開！",
+"date": "2026-11-21T08:59:00+00:00",
 "source": "アニメイトタイムズ",
-"summary": "",
-"url": "https://www.animatetimes.com/news/img.php?id=1792124259&n=1&p=1",
-"image": "https://img2.animatetimes.com/2026/10/df817f665158a8227e78d67f1c2add586ad1a64f609327_94451517_258c350ad3052e30d98f9bc62668387eb648d72e.jpg"
+"summary": "第8話「海洋国家はフクザツでした」より、先行場面カット・あらすじ・WEB予告が公開されました。第8話は地上波で11月25日 (水)から放送開始、ABEMAでは11月18日 (水)から地上波1週間先行・独占配信中です。",
+"url": "https://www.animatetimes.com/news/details.php?id=1795241965",
+"image": "https://www.bing.com/th?id=ONUT.tbtqoDhC3XHbYJw1RlDYmg&pid=News&w=1200"
 },
 {
-"title": "『生徒会にも穴はある！』",
-"date": "2026-11-19T03:00:00+00:00",
-"source": "ORICON NEWS",
-"summary": "10月2日スタートTOKYO MXほか 土曜日 深24:30 アニメ『生徒会にも穴はある！』。進学校の生徒会で個性的な仲間と繰り広げる切ない青春コメディ。放送日、あらすじ、キャスト、スタッフ、配信 ...",
-"url": "https://www.oricon.co.jp/anime/1262/",
-"image": "https://contents.oricon.co.jp/anime/img/1000/1262/base/img1200/tv-program-image-7534820eee6089c3a26bedc0b6c7cd351cc883286fde2f7720e6abbb24b0e8fc.jpg"
-},
-{
-"title": "アニメ『生徒会にも穴はある！』作品情報｜放送日・あらすじ・キャスト・配信情報 【2026年秋アニメ】",
-"date": "2026-11-19T02:00:00+00:00",
-"source": "オリコンニュース",
-"summary": "",
-"url": "https://www.oricon.co.jp/anime/1262/",
-"image": ""
-},
-{
-"title": "生意気そうな表情がかわいい? 『生徒会にも穴はある!』尾鳥たんがPOP UP PARADE L sizeよりフィギュア化! 楽天ブックスで予約受付中!",
-"date": "2026-11-19T01:29:00+00:00",
-"source": "MSN",
-"summary": "「POP UP PARADE 『生徒会にも穴はある！』 尾鳥たん L size」が楽天ブックスで予約受付中！ ※商品ページにアクセスした時点で売り切れている場合もあります。 POP UP PARADE 『生徒会にも穴はある！",
-"url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E7%94%9F%E6%84%8F%E6%B0%97%E3%81%9D%E3%81%86%E3%81%AA%E8%A1%A8%E6%83%85%E3%81%8C%E3%81%8B%E3%82%8F%E3%81%84%E3%81%84-%E7%94%9F%E5%BE%92%E4%BC%9A%E3%81%AB%E3%82%82%E7%A9%B4%E3%81%AF%E3%81%82%E3%82%8B-%E5%B0%BE%E9%B3%A5%E3%81%9F%E3%82%93%E3%81%8Cpop-up-parade-l-size%E3%82%88%E3%82%8A%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%82%A2%E5%8C%96-%E6%A5%BD%E5%A4%A9%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9%E3%81%A7%E4%BA%88%E7%B4%84%E5%8F%97%E4%BB%98%E4%B8%AD/ar-AA2hL8ec",
-"image": "https://www.bing.com/th?id=ONUT.e7f6O1DbEcwWUi-jacstmQ&pid=News&w=1200"
-},
-{
-"title": "TVアニメ「生徒会にも穴はある！」【公式】｜2026年10月放送中！ (@nama_anaru) on X",
-"date": "2026-11-19T01:00:01+00:00",
-"source": "Howl.Link",
-"summary": "",
-"url": "https://t.co/UUmtc858j3",
-"image": "https://pbs.twimg.com/tweet_video_thumb/HXZhRc6akAAnGQU?format=webp&name=large"
-},
-{
-"title": "【写真・画像】アニメ『生徒会にも穴はある！』第7話にあわせ新OP映像公開、古都吹真幸役は日笠陽子に決定 1枚目",
-"date": "2026-11-17T11:50:00+00:00",
-"source": "ABEMA TIMES",
-"summary": "",
-"url": "https://times.abema.tv/articles/photo/10289864",
-"image": "https://times-abema.ismcdn.jp/mwimgs/1/6/1200w/img_16c892bafc209a0ff0f77ac2688f598a3105519.jpg"
-},
-{
-"title": "生徒会にも穴はある！の配信はどこ？U-NEXTほか見放題サブスクと規制解除版",
-"date": "2026-11-17T08:00:00+00:00",
-"source": "株式会社ピクセラ",
-"summary": "",
-"url": "https://pixela.co.jp/delivery/seitokai-nimo-ana-wa-aru-streaming/",
-"image": "https://pixela.co.jp/delivery/wp-content/uploads/seitokai-nimo-ana-wa-aru-streaming-eyecatch.jpg"
-},
-{
-"title": "アニメ『生徒会にも穴はある!』第7話にあわせ新OP映像公開、古都吹真幸役は日笠陽子に決定",
-"date": "2026-11-17T03:50:00+00:00",
-"source": "ABEMA TIMES on MSN",
-"summary": "TVアニメ『生徒会にも穴はある！』の第7話放送にあわせて、新オープニング映像がYouTubeにて公開された。また、注目されていた古都吹真幸役は日笠陽子に決定し、コメントも到着している。 『生徒会にも穴はある！』は、『週刊少年マガジン』（講談社）で連載中のむちまろ氏によるショート4コマ漫画が原作。私立藤成学園の生徒会が繰",
-"url": "https://www.msn.com/ja-jp/news/other/%E3%82%A2%E3%83%8B%E3%83%A1-%E7%94%9F%E5%BE%92%E4%BC%9A%E3%81%AB%E3%82%82%E7%A9%B4%E3%81%AF%E3%81%82%E3%82%8B-%E7%AC%AC7%E8%A9%B1%E3%81%AB%E3%81%82%E3%82%8F%E3%81%9B%E6%96%B0op%E6%98%A0%E5%83%8F%E5%85%AC%E9%96%8B-%E5%8F%A4%E9%83%BD%E5%90%B9%E7%9C%9F%E5%B9%B8%E5%BD%B9%E3%81%AF%E6%97%A5%E7%AC%A0%E9%99%BD%E5%AD%90%E3%81%AB%E6%B1%BA%E5%AE%9A/ar-AA2hC9pm",
-"image": "https://www.bing.com/th?id=ONUT.YwGt3AQIUSFdgKTKQLmf8w&pid=News&w=724"
-}
-]
-},
-{
-"id": 13717,
-"name": "薬屋のひとりごと 第3期",
-"day": "2026-11-22",
-"fp": "1c8f89be23ca",
-"fresh": false,
-"rows": [
-{
-"title": "『薬屋のひとりごと』皇帝と阿多妃（アードゥオ）の関係は？「あの子」は壬氏？アニメ第56話の伏線【原作ネタバレなし】",
-"date": "2026-11-21T17:43:56+00:00",
-"source": "aniradarjp.com",
-"summary": "",
-"url": "https://aniradarjp.com/kusuriya-emperor-ata-relationship/",
-"image": "https://aniradarjp.com/wp-content/uploads/2026/11/aniradar-kusuriya-emperor-ata-eyecatch.webp"
-},
-{
-"title": "薬屋のひとりごと 第3期 第56話 | Lemino(レミノ) - 映画・ドラマ・アニメや音楽・ライブが見放題",
-"date": "2026-11-21T17:27:41+00:00",
-"source": "Lemino",
-"summary": "",
-"url": "https://lemino.docomo.ne.jp/contents/Y3JpZDovL3BsYWxhLmlwdHZmLmpwL3ZvZC8wMDAwMDAwMDAwXzJjcXZ0bGhucTc=",
-"image": "https://img.lemino.docomo.ne.jp/cms/a14f307/a14f307_w1.jpg"
-},
-{
-"title": "【薬屋】56話『麻と民間信仰』感想＆考察！阿多と帝の過去、皇弟の奥方選びとは？【薬屋のひとりごと】",
-"date": "2026-11-21T06:28:13+00:00",
-"source": "攻略大百科",
-"summary": "",
-"url": "https://gamepedia.jp/story/archives/17904",
-"image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/story/thumbnail/17904/bfbcd37dbf831806e398186278a12383"
-},
-{
-"title": "「薬屋のひとりごと」第3期阿多・里樹妃・翠苓キャラビジュアル",
-"date": "2026-11-21T03:13:00+00:00",
+"title": "「転生したら剣でしたII」8話。海賊の正体を暴いて拠点に同行すると…",
+"date": "2026-11-21T08:04:00+00:00",
 "source": "おた☆スケ",
 "summary": "",
-"url": "https://www.ota-suke.jp/news/292861",
+"url": "https://www.ota-suke.jp/news/292863",
 "image": ""
 },
 {
-"title": "湯あみ後の壬氏さま…だと!?「薬屋のひとりごと」×極楽湯コラボ第2弾！ グッズにグルメ、もちろんコラボ風呂まで楽しめる",
-"date": "2026-11-21T03:00:03+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/d08454324dff9b9562c35c5500b2c319bd1f83c5",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00000010-anmanmv-000-1-view.jpg?exp=10800"
+"title": "＜転生したら剣でしたII＞海賊の拠点に到着したフランたちにシードラン海軍が接近…第8話あらすじ&先行カット公開",
+"date": "2026-11-21T02:49:28+00:00",
+"source": "WEBザテレビジョン on MSN",
+"summary": "アニメ「転生したら剣でしたII」(毎週水曜深夜0:00-0:30ほか、TOKYO MXほか／ABEMAにて地上波1週間先行・独占配信)の第8話「海洋国家はフクザツでした」が、11月25日(水)に放送される。放送に先駆け、あらすじと先行カット、WEB予告動画が公開された。 「無機物転生」ファンタジーの続編は「進化」を目指",
+"url": "https://www.msn.com/ja-jp/news/other/%E8%BB%A2%E7%94%9F%E3%81%97%E3%81%9F%E3%82%89%E5%89%A3%E3%81%A7%E3%81%97%E3%81%9Fii-%E6%B5%B7%E8%B3%8A%E3%81%AE%E6%8B%A0%E7%82%B9%E3%81%AB%E5%88%B0%E7%9D%80%E3%81%97%E3%81%9F%E3%83%95%E3%83%A9%E3%83%B3%E3%81%9F%E3%81%A1%E3%81%AB%E3%82%B7%E3%83%BC%E3%83%89%E3%83%A9%E3%83%B3%E6%B5%B7%E8%BB%8D%E3%81%8C%E6%8E%A5%E8%BF%91-%E7%AC%AC8%E8%A9%B1%E3%81%82%E3%82%89%E3%81%99%E3%81%98-%E5%85%88%E8%A1%8C%E3%82%AB%E3%83%83%E3%83%88%E5%85%AC%E9%96%8B/ar-AA2hUxep",
+"image": "https://www.bing.com/th?id=ONUT.UiHsWE8ecDRPHZJdTIUYUw&pid=News&w=615"
 },
 {
-"title": "「デートだ！」「ドM壬氏」…「薬屋のひとりごと」壬猫の街ぶらデートにファン歓喜！若き日の阿多妃と帝に「尊い」「泣いちゃ",
-"date": "2026-11-21T02:42:13+00:00",
-"source": "ニコニコニュース",
+"title": "2026年11月18日(水)24:00～「転生したら剣でしたⅡ」＃７「海の魔獣はデカすぎでした」",
+"date": "2026-11-18T15:36:58+00:00",
+"source": "TOKYO MX",
 "summary": "",
-"url": "https://news.nicovideo.jp/watch/nw20018539?news_ref=watch_70_nw19948355",
-"image": "https://animeanime.jp/imgs/ogp_f/959122.jpg"
+"url": "https://s.mxtv.jp/bangumi/program.html?date=20261119&ch=1&hm=0000",
+"image": ""
 },
 {
-"title": "『薬屋のひとりごと』第49話あらすじ＆場面カット解禁 国を襲う災害の予兆に悩む壬氏",
-"date": "2026-11-21T02:23:10+00:00",
+"title": "TVアニメ『転生したら剣でした』2期7話のあらすじ公開！ フランたちは船旅を満喫するが…",
+"date": "2026-11-18T08:34:55+00:00",
+"source": "eeo",
+"summary": "",
+"url": "https://eeo.today/media/2026/11/18/414016/",
+"image": "https://eeo.today/media/wp-content/uploads/2026/11/★TN2_07_0035.jpg"
+},
+{
+"title": "加隈亜衣、師匠の親心感をアピール！『転生したら剣でしたII』シードラン編突入特番",
+"date": "2026-11-17T09:59:36+00:00",
+"source": "千葉テレビ放送",
+"summary": "",
+"url": "https://www.chiba-tv.com/plus/detail/2026112232844",
+"image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1495363219950945754/origin_1.jpg"
+},
+{
+"title": "【写真・画像】加隈亜衣、師匠の親心感をアピール！『転生したら剣でしたII』シードラン編突入特番 2枚目",
+"date": "2026-11-17T09:45:00+00:00",
+"source": "ABEMA TIMES",
+"summary": "",
+"url": "https://times.abema.tv/articles/photo/10289826?pn=2",
+"image": "https://times-abema.ismcdn.jp/mwimgs/a/9/1200w/img_a9b21139e7ce52c61497528a90ca73ff471672.jpg"
+},
+{
+"title": "三木眞一郎＆加隈亜衣が『転生したら剣でしたII』新章の見どころ解説",
+"date": "2026-11-17T04:26:00+00:00",
+"source": "UQライフ",
+"summary": "",
+"url": "https://portal.uqmobile.jp/detail/1/5/9/10465_9_r_20261117_1794889786767869",
+"image": "https://www.uqwimax.jp/common2/images/ogp.png"
+},
+{
+"title": "TVアニメ「転生したら剣でしたII」、第7話のあらすじと場面カット、WEB予告動画を公開",
+"date": "2026-11-16T16:00:00+00:00",
+"source": "＠S[アットエス]",
+"summary": "©棚架ユウ・るろお／マイクロマガジン社／転剣II製作委員会 TVアニメ『転生したら剣でしたII』（転剣2期）第7話「海の魔獣はデカすぎでした」のあらすじ・場面カット・WEB予告動画が解禁！大商都バルボラへ向かう師匠とフランの船旅に迫る巨大な影とは？放送・配信情報やBlu-ray特典も網羅。",
+"url": "https://www.at-s.com/media/articles/anime/tenken-anime-s2-ep07-synopsis-preview/",
+"image": "https://www.bing.com/th?id=ONUT.JgJ8xz7kLuks9wJ1iSL_HA&pid=News&w=1024"
+},
+{
+"title": "ABEMA、アニメ「転生したら剣でしたII」新章記念特番と一挙放送を11月8日に実施",
+"date": "2026-11-15T17:17:09+00:00",
+"source": "Dellows News",
+"summary": "",
+"url": "https://news.dellows.jp/1041430/",
+"image": "https://news.dellows.jp/wp-content/uploads/2026/11/1041430_1.jpg"
+},
+{
+"title": "転生したら剣でしたII【試し見#1 続きはABEMAビデオへ】",
+"date": "2026-11-15T09:01:23+00:00",
+"source": "ABEMA",
+"summary": "",
+"url": "https://abema.tv/channels/abema-anime-3/slots/9ZwwemR2YbsQrT",
+"image": ""
+},
+{
+"title": "＜転生したら剣でしたII＞大商都バルボラへ向かう船旅を満喫するフランたちに巨大な影が迫る…第7話あらすじ＆先行カット公開",
+"date": "2026-11-14T13:49:00+00:00",
+"source": "WEBザテレビジョン",
+"summary": "アニメ「 転生したら剣でしたII 」 (毎週水曜深夜0:00-0:30ほか、TOKYO MXほか／ABEMAにて地上波1週間先行・独占配信)の第7話「海の魔獣はデカすぎでした」が、11月18日 (水)に放送される。放送に先駆け、あらすじと先行カット、WEB予告動画が公開された。",
+"url": "https://thetv.jp/news/detail/1457414/",
+"image": "https://thetv.jp/i/nw/1457414/19176937.jpg?w=1284"
+}
+]
+},
+{
+"id": 13765,
+"name": "ONE PIECE",
+"day": "2026-11-22",
+"fp": "05b0abdbfd6a",
+"fresh": false,
+"rows": [
+{
+"title": "Netflix Is Adding 76 More Hours of One Piece in Just 4 Weeks",
+"date": "2026-11-21T21:30:18+00:00",
+"source": "ScreenRant",
+"summary": "",
+"url": "https://screenrant.com/one-piece-netflix-wano-arc/",
+"image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2020/01/One-Piece-Straw-Hat-Crew-Netflix.jpg?w=1600&h=900&fit=crop"
+},
+{
+"title": "『ONE PIECE』チョッパーの特別パーティー渋谷で開催決定 ステージの一部はYouTubeライブ配信",
+"date": "2026-11-21T02:17:59+00:00",
 "source": "山陽新聞",
 "summary": "",
-"url": "https://www.sanyonews.jp/article/1998008?rct=movie_animation&kw=2024%3Cbr%20/%3E%E2%80%9D%20target=%E2%80%9D_blank%E2%80%9D%3Ehttps://www.sanyonews.jp/article/1815191?kw=",
-"image": "https://static.sanyonews.jp/image/article/size1/b/c/8/3/bc8346b17d1239476f6bda57b756d3ca_1.jpg"
+"url": "https://www.sanyonews.jp/article/2013247?kw=%E7%A6%8F%E7%A5%B1",
+"image": "https://static.sanyonews.jp/image/article/size1/1/2/8/f/128ff0dd099f0a1b1f50d9bd852d660e_1.jpg"
 },
 {
-"title": "【劇場版 薬屋のひとりごと】ファミリーマートとコラボで謎解きにチャレンジ！（アニメージュプラス）",
-"date": "2026-11-21T02:00:00+00:00",
+"title": "『ONE PIECE』サンジがついに覚醒！ 新世界編での“急成長”を振り返る（リアルサウンド）",
+"date": "2026-11-21T01:31:12+00:00",
 "source": "Yahoo!ニュース",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/ace9e8fb6c806a4694f33de1ad6e279c3b966da2",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00068288-animage-000-1-view.jpg?exp=10800"
+"url": "https://news.yahoo.co.jp/articles/c2ffc07bee8feb19eb605ed4bd39478807dababf",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261121-00010013-realsound-000-1-view.jpg?exp=10800"
 },
 {
-"title": "「デートだ！」「ドM壬氏」…「薬屋のひとりごと」壬猫の街ぶらデートにファン歓喜！若き日の阿多妃と帝に「尊い」「泣いちゃう」の声も【第56話ネタバレあり反応まとめ】",
-"date": "2026-11-21T01:41:41+00:00",
-"source": "アニメ！アニメ！",
+"title": "『ONE PIECE』サンジがついに覚醒！ 新世界編での“急成長”を振り返る",
+"date": "2026-11-20T23:00:20+00:00",
+"source": "リアルサウンド",
 "summary": "",
-"url": "https://animeanime.jp/article/2026/11/21/104974.html",
-"image": "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/959122.jpg"
+"url": "https://realsound.jp/book/2026/11/post-2590304.html",
+"image": "https://realsound.jp/wp-content/uploads/2026/11/20261121-sanji-01.jpg"
 },
 {
-"title": "honto、小学館コミックほぼ全商品が対象の50％OFFクーポン！『名探偵コナン』『薬屋のひとりごと』など11月20日から",
-"date": "2026-11-20T23:15:00+00:00",
-"source": "AppBank",
-"summary": "ハイブリッド型総合書店「honto」は11月20日、小学館のコミックほぼ全商品を対象とした50％OFFクーポンキャンペーンを同日より実施すると発表しました。 運営は大日本印刷株式会社（DNP）、株式会社丸善ジュンク堂書店、株式会社文教堂、株 ...",
-"url": "https://www.appbank.net/2026/11/21/iphone-news/3172778.php",
-"image": "https://www.bing.com/th?id=ONUT.ZERiubuZJmW27YDNvEikYA&pid=News&w=1200"
+"title": "半立体の重厚なピンズで20キャラクターをコレクション！ONE PIECE 麦わらストア「メモリアルピンズコレクション -東の海（イーストブルー）編- Vol.1」",
+"date": "2026-11-20T21:35:38+00:00",
+"source": "Dtimes",
+"summary": "",
+"url": "https://dtimes.jp/post-1475744/",
+"image": "https://dtimes.jp/wp-content/uploads/2026/11/dtimes-engine-35bd69016b63d255aa198985936f2114-20261120-2ae568.jpg"
 },
 {
-"title": "『薬屋のひとりごと』映画を楽しむ猫猫と壬氏のデフォルメフィギュアが2026年12月に発売",
-"date": "2026-11-20T23:02:13+00:00",
+"title": "『FF』天野喜孝、『ONE PIECEカード』絵柄担当 ロキ、シャムロックのイラスト公開",
+"date": "2026-11-20T16:35:15+00:00",
+"source": "山陽新聞",
+"summary": "",
+"url": "https://www.sanyonews.jp/article/1976561?rct=movie_animation&kw=%E7%A6%8F%E7%A5%88",
+"image": "https://static.sanyonews.jp/image/article/size1/c/7/3/c/c73c1f3b34265f3f211a0f01e35f7101_1.jpg"
+},
+{
+"title": "9/4・9/12・9/25発売｜ONE PIECE × Nike Air Max Plus \"Devil Fruits\" collection｜抽選/販売/定価情報",
+"date": "2026-11-20T15:56:14+00:00",
+"source": "SNKRDUNK",
+"summary": "",
+"url": "https://snkrdunk.com/articles/30889/",
+"image": "https://cdn.snkrdunk.com/uploads/media/8a002889-f19c-49eb-b0e0-f64555f455ef.jpeg"
+},
+{
+"title": "Hollywood Star Declares One Piece His Favorite Anime, Says He Would Love to Join Luffy's Crew",
+"date": "2026-11-20T10:20:00+00:00",
+"source": "KbizoOm",
+"summary": "",
+"url": "https://kbizoom.com/samuel-l-jackson-one-piece-favorite-anime-straw-hat-pirates/",
+"image": ""
+},
+{
+"title": "【OP】ONE PIECEカードゲーム エクストラ3on3の開催情報",
+"date": "2026-11-20T09:22:22+00:00",
+"source": "カードラボ",
+"summary": "",
+"url": "https://www.c-labo.jp/event/624427/",
+"image": "https://www.c-labo.jp/wordpress/wp-content/uploads/2026/11/45339cfbccbf7693ced66078e1b4cadf.png"
+},
+{
+"title": "『ONE PIECE』東の海編のルフィ・シャンクスら全20種がピンズに！麦わらストア「メモリアルピンズコレクション」11月20日発売、額縁入りコンプリートセットも予約受付",
+"date": "2026-11-20T07:33:31+00:00",
+"source": "ニコニコニュース",
+"summary": "",
+"url": "https://news.nicovideo.jp/watch/nw20015043?news_ref=search_search",
+"image": "https://prcdn.freetls.fastly.net/release_image/147608/176/147608-176-535731e490baf374f11ac9e29a74458c-1080x1080.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+},
+{
+"title": "【実物フォトレポート】ONE PIECEとNikeが初コラボ！Air Max Plus \"メラメラの実\"のディテールをチェック | スニーカーダンク",
+"date": "2026-11-20T06:47:21+00:00",
+"source": "SNKRDUNK",
+"summary": "",
+"url": "https://snkrdunk.com/articles/33207/",
+"image": "https://cdn.snkrdunk.com/uploads/media/8d9f4d67-9083-44cd-a069-6fbf53a28294.jpeg"
+},
+{
+"title": "【ONE PIECE 麦わらストア】歴代のキャラクターたちがピンズになった「メモリアルピンズコレクション」が登場！記念すべきVol.1は東の海（イーストブルー）編！",
+"date": "2026-11-20T06:15:00+00:00",
+"source": "Excite エキサイト",
+"summary": "",
+"url": "http://www.excite.co.jp/news/article/Prtimes_2026-11-20-147608-176/",
+"image": "https://www.bing.com/th?id=ONUT.Zl2c0SO3HwXJquBHYQMSNA&pid=News&w=650"
+}
+]
+},
+{
+"id": 13693,
+"name": "貸した魔力は【リボ払い】で強制徴収",
+"day": "2026-11-22",
+"fp": "2cbeb83af6c3",
+"fresh": false,
+"rows": [
+{
+"title": "大開脚ストレッチ！しなやかボディランに注目♪「貸した魔力は【リボ払い】で強制徴収」普段着姿のリンカが立体化",
+"date": "2026-11-20T20:30:00+00:00",
+"source": "アニメ！アニメ！",
+"summary": "「貸した魔力は【リボ払い】で強制徴収 リンカ普段着Ver. 1/7スケール 完成品フィギュア」が、現在ホビー通販大手「あみあみ」にて予約受付中。価格は17,600円（税込）で、発売は2027年6月を予定している。",
+"url": "https://animeanime.jp/article/2026/11/21/104991.html",
+"image": "https://www.bing.com/th?id=ONUT.2VmCeR9JX95GYbPEezzQEw&pid=News&w=600"
+},
+{
+"title": "『貸した魔力は【リボ払い】で強制徴収』第8話「【決闘】」のあらすじ＆先行場面カットが公開！",
+"date": "2026-11-18T20:03:00+00:00",
+"source": "アニメイトタイムズ",
+"summary": "【アニメイトタイムズ】2026年10月3日（土）よりテレビ朝日系全国24局ネット“NUMAnimation”枠で放送中のTVアニメ『貸した魔力は【リボ払い】で強制徴収』。このたび、第8話「【決闘】」のあらすじ＆先行場面カットが公開されました！ 関連記事 ...",
+"url": "https://www.animatetimes.com/news/details.php?id=1795051534",
+"image": "https://www.bing.com/th?id=ONUT.l28nWizOSa8NqEtGFzMBSQ&pid=News&w=700"
+},
+{
+"title": "TVアニメ『貸した魔力は【リボ払い】で強制徴収』第8話あらすじ＆先行カットを公開！",
+"date": "2026-11-18T16:01:00+00:00",
+"source": "時事ドットコム",
+"summary": "［株式会社ブシロード］株式会社ブシロード（本社：東京都中野区、代表取締役社長：根本雄貴）のグループ会社にあたる株式会社ブシロードムーブ（本社：東京都中野区、代表取締役社長：大貫佑介）は、累計発行部数210万部を突破したフレックスコミックス「COMICメテオ」連載のパーティー追放から始まる魔力回収＆運用ファンタジー作品『",
+"url": "https://www.jiji.com/jc/article?k=000009888.000014827&g=prt",
+"image": "https://prcdn.freetls.fastly.net/release_image/14827/9888/14827-9888-3f7c322815a2cbf620fb57b628bc6536-1920x1080.png"
+},
+{
+"title": "関根明良『貸した魔力は【リボ払い】で強制徴収』での衝撃演技指導告白",
+"date": "2026-11-17T16:00:00+00:00",
+"source": "アメーバニュース",
+"summary": "新しい未来のテレビ「ABEMA（アベマ）」は、「ABEMAアニメチャンネル」にて11月13日（金）夜９時より、『SHIBUYA ANIME BASE（#シブアニ）』#106を生放送。今回は、ゲストに声優・関根明良、鈴木愛奈が登場。秋アニメ『貸した魔力は【リボ払い】で強制徴収～用済みとパーティー追放された俺は、可愛いサポ",
+"url": "https://news.ameba.jp/entry/20261118-29146519/",
+"image": "https://www.bing.com/th?id=ONUT.uo1Qaqv8olfMTI__ZqJCng&pid=News&w=500"
+},
+{
+"title": "TVアニメ『貸した魔力は【リボ払い】で強制徴収』より、「リンカ」が普段着の姿でフィギュア化。あみあみにて予約受付中。",
+"date": "2026-11-17T10:30:01+00:00",
+"source": "PR TIMES",
+"summary": "",
+"url": "https://prtimes.jp/main/html/rd/p/000003981.000025615.html",
+"image": "https://prcdn.freetls.fastly.net/release_image/25615/3981/25615-3981-480c96ea075a382e2d5facda29aa1e0e-800x534.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+},
+{
+"title": "アニメ『貸した魔力は【リボ払い】で強制徴収』はどこで見れる？サブスク・配信サービスを全調査 | VODB! by チバテレ",
+"date": "2026-11-16T05:31:10+00:00",
 "source": "千葉テレビ放送株式会社",
 "summary": "",
-"url": "https://www.chiba-tv.com/plus/detail/2026112245732",
-"image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1496647332762551733/origin_1.jpg"
+"url": "https://www.chiba-tv.com/vod-db/kashita-maryoku-anime/",
+"image": "https://www.chiba-tv.com/vod-db/wp-content/uploads/2026/09/eyecatch_kashita-maryoku-anime.png"
 },
 {
-"title": "【薬屋のひとりごと 第3期＆映画化記念 】富山の薬売りは今も健在！「配置薬」はお得？江戸時代から続く300年の知恵",
-"date": "2026-11-20T22:02:00+00:00",
+"title": "貸した魔力は【リボ払い】で強制徴収 - シーズン1 - 7話 (アニメ) | 無料動画・見逃し配信を見るなら",
+"date": "2026-11-14T17:00:00+00:00",
+"source": "ABEMA",
+"summary": "",
+"url": "https://abema.tv/video/episode/12-32_s1_p7",
+"image": "https://image.p-c2-x.abema-tv.com/image/programs/12-32_s1_p7/thumb002.png?height=720&quality=75&version=1794821833&width=1280"
+},
+{
+"title": "エムピー役・加藤英美里さんが撮影＆魅力を語る！ アニメ『貸した魔力は【リボ払い】で強制徴収』フィギュアインタビュー",
+"date": "2026-11-13T04:00:00+00:00",
+"source": "アニメイトタイムズ",
+"summary": "",
+"url": "https://www.animatetimes.com/news/details.php?id=1792569945",
+"image": "https://img2.animatetimes.com/2026/11/be243c7d7ae5695aef5db902910fe28f6ae80348997ad9_27881803_73bb3bd1d031ed4eef3c3729b4d1efb1c9396af8.jpg"
+}
+]
+},
+{
+"id": 13687,
+"name": "羽生善治",
+"day": "2026-11-22",
+"fp": "3217d34efe48",
+"fresh": false,
+"rows": [
+{
+"title": "「高速の寄せ」…将棋の谷川浩司十七世名人、棋士人生50年",
+"date": "2026-11-20T17:00:00+00:00",
+"source": "読売新聞オンライン",
+"summary": "【読売新聞】 将棋界の第一線で長年活躍してきた谷川浩司十七世名人（６４）が今年、勤続５０年を迎えた。終盤の鋭さは「光速の寄せ」とも称され、指した公式戦は約２４００局。大棋士や好敵手・羽生善治九段（５６）との名勝負、阪神大震災での経験 ...",
+"url": "https://www.yomiuri.co.jp/local/kansai/feature/CO070356/20261121-GYTAT00030/",
+"image": "https://www.bing.com/th?id=ONUT.K2uW9HQBZXs9F4QGhNoF1g&pid=News&w=1200"
+},
+{
+"title": "11.18(水) 順位戦 B2 羽生善治 石井健太郎 10時～棋譜速報",
+"date": "2026-11-18T14:41:11+00:00",
+"source": "ふわりと将棋",
+"summary": "",
+"url": "https://fuwalete.com/habu-367608/",
+"image": "https://fuwalete.com/wp-content/uploads/D-205.webp"
+},
+{
+"title": "松本大洋『ピンポン』スマイルのメガネは羽生善治がモデル！？ 公式Xの秘話に羽生本人も反応（リアルサウンド）",
+"date": "2026-11-18T06:02:27+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/f125bfde756fc7354b864d068e7f30976fbc74a6",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261118-00010044-realsound-000-1-view.jpg?exp=10800"
+},
+{
+"title": "11月17日は「将棋の日」！ 所沢で棋士との交流も",
+"date": "2026-11-16T13:03:00+00:00",
 "source": "note",
-"summary": "皆さんの家には、薬箱がありますか？ 風邪をひいたときに買った薬、花粉症の時期に使った鼻炎薬、たまに飲む胃腸薬……。 「そういえば、あの薬ってまだ家にあったかな？」 そんな経験はありませんか？🤔 私も、体調が悪くなって薬を買ったものの、使い切らずにそのまま保管していることがあります。 気づいたときには使用期限が切れていた",
-"url": "https://note.com/ninninninja2/n/n4321bb814eeb",
-"image": "https://www.bing.com/th?id=ONUT.lOKLOb8WVh2HyJTNJ78VfA&pid=News&w=1200"
+"summary": "【30秒でわかる話題】 11月17日は「将棋の日」。埼玉県所沢市では14・15日に第52回将棋の日in所沢が設定され、羽生善治九段の講演や棋士による指導対局などが案内されました。市の公式ページでは行事を「終了しました」と表示しています。盤を囲んだ昔の思い出を話すのにぴったりの日です。 【こんなふうに話しかけられます】 ",
+"url": "https://note.com/kaigo_talk/n/n3b71153c5459",
+"image": "https://www.bing.com/th?id=ONUT.OK0LEqQAJd4IDnpohTz02w&pid=News&w=700"
+},
+{
+"title": "「永世七冠」羽生善治",
+"date": "2026-11-16T13:00:00+00:00",
+"source": "朝日新聞デジタル",
+"summary": "羽生善治（はぶ・よしはる） １９７０年９月２７日生まれ。埼玉県所沢市出身。二上達也九段門下。 ８５年、プロ四段。史上３人目の中学生棋士。８９年に初タイトルとなる竜王を獲得。９４年、Ａ級初参加で名人挑戦者となり、第５２期名人戦で米長邦雄名人を破って初の名人に。竜王も奪還し、２４歳で史上初の六冠王となった。将棋界の記録を次",
+"url": "https://www.asahi.com/topics/word/%E7%BE%BD%E7%94%9F%E5%96%84%E6%B2%BB.html",
+"image": "https://www.asahicom.jp/articles/images/AS20261116003712_commL.jpg"
+},
+{
+"title": "【終了しました】第52回将棋の日in所沢「オープニングセレモニー・羽生善治九段講演会・棋士トークショー」",
+"date": "2026-11-16T08:00:00+00:00",
+"source": "所沢市",
+"summary": "",
+"url": "https://www.city.tokorozawa.saitama.jp/iitokoro/enjoy/bunkakyoyo/bunkageijutu/shoginohi/opening.html",
+"image": "https://www.city.tokorozawa.saitama.jp/iitokoro/enjoy/bunkakyoyo/bunkageijutu/shoginohi/opening.images/oorr.png"
+},
+{
+"title": "羽生善治九段の講演会や将棋めしコンテストを開催！第52回将棋の日in所沢のイベント申込受付を開始！",
+"date": "2026-11-14T08:00:00+00:00",
+"source": "PR TIMES",
+"summary": "",
+"url": "https://prtimes.jp/main/html/rd/p/000000022.000183804.html",
+"image": "https://prcdn.freetls.fastly.net/release_image/183804/22/183804-22-a9e5564ab4118aeeebda63f599feaeca-900x1257.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
 }
 ]
 }
