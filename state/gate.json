@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-22T16:18:08+00:00",
+ "checked": "2026-11-22T16:32:47+00:00",
  "fired": {
-  "at": "2026-11-22T14:33:14+00:00",
+  "at": "2026-11-22T16:32:47+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -56,20 +56,29 @@
   },
   "2026-11-22": {
    "edit": 13
+  },
+  "2026-11-23": {
+   "edit": 1
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-22T14:33:14+00:00",
+    "at": "2026-11-22T16:32:47+00:00",
     "attempts": 1,
-    "day": "2026-11-22",
-    "prog": 399,
-    "resp": "cse_01W4x6f4pJwqx4YAfXfcQnZB",
-    "sig": "39eb95a52fca"
+    "day": "2026-11-23",
+    "prog": 8,
+    "resp": "",
+    "sig": "02d66cb17f4e"
    },
    "items": [
+    "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
     "lib:ガンプラ",
     "lib:キャンプ",
     "lib:コーヒー",
@@ -77,7 +86,12 @@
     "lib:ラーメン",
     "lib:無印良品",
     "lib:筋トレ",
-    "lib:観葉植物"
+    "lib:観葉植物",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "猫用品"
    ],
    "last_batch": "2026-11-22T14:41:23+00:00",
    "last_error": {
@@ -87,35 +101,41 @@
    "need": true,
    "prog": 8,
    "prog_day": "2026-11-23",
-   "ripe": [],
-   "sig": "94c7a76e59f5",
+   "ripe": [
+    "GTA 6",
+    "三星手机",
+    "哈利波特剧集",
+    "漫威电影"
+   ],
+   "sig": "02d66cb17f4e",
    "token_cap": 1000000,
    "tokens_today": 0,
-   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 137 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
+   "items": [
     "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
+    "dota2",
     "哈利波特剧集",
     "漫威电影",
-    "绝区零"
+    "GTA 6",
+    "あつ森",
+    "A2O LITE",
+    "Astrae Oratio",
+    "绝区零",
+    "The Mandalorian",
+    "Vaundy",
+    "周杰伦"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "need": true,
+   "sig": "62804f9dfd90",
+   "waiting": [
+    "FROM",
+    "ぐでたま"
+   ],
+   "why": "足りない 13 版面（Actions で Python が埋める）・失敗 2 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
