@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "edit_sig": "61966421c9c4",
+ "edit_sig": "358d712a2539",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -154,29 +154,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 10,
-     "source": "Dellows News",
-     "title": "川場スキー場、2026-27シーズンから地域限定リフト券を販売",
-     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE8taEhzc3ViLW5sSzIwVUlldTY5SDJ6UzFqd2dPLU1tYmtoTW4wX2h6MlRmbzN0eWNOaWpCTDAzWkt0MDBHWUU0?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 11,
-     "source": "白馬八方尾根スキー場",
-     "title": "【スキー場オープンのお知らせ】2026-27シーズン 11月22日（日）グランドオープン!",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5DVjhXWFFwMUFCSThfX2hIY3VCUUJkc1B0M3FHOHZ5S1A3RHJKenVmbE5rRk0zM2x0VTlJRklhMUNKZXJoU3lHdnl2a0E?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 12,
-     "source": "dmksnowboard.com",
-     "title": "ノルウェーでシーズン最後のスノーボードセッション！Sindre Tveitenら出演の「BEACH PARTY」公開",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBSS2xaMVNDbjNxUG5MOGdvZGRrNkJrdkQ0WWowTE94akU3NE53bnIweC1JVE5PUHpWZXN0alV5b1ZaVjdSSDVnQkFQOGRXcXFCM0tGdmMtazZDcjM4Mk9uaFBMaW8xM0RGcVI1ZGhqeEF0WTg?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -237,6 +214,26 @@
      "image": "https://prcdn.freetls.fastly.net/release_image/60409/70/60409-70-e9ce2650e3d971a5e093ee593e5b7d16-3900x2925.jpg",
      "image_via": "og:image",
      "url": "https://www.jiji.com/jc/article?k=000000070.000060409&g=prt",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "【スキー場オープンのお知らせ】2026-27シーズン 11月22日（日）グランドオープン!",
+     "highlight": "11月22日（日）グランドオープン",
+     "image": "https://www.happo-one.jp/wp2019/wp-content/uploads/2026/01/mainvisual_sp_3x4_390x520.jpg",
+     "image_via": "og:image",
+     "url": "https://www.happo-one.jp/news/36487/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "川場スキー場、2026-27シーズンから地域限定リフト券を販売",
+     "highlight": "地域限定リフト券",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/11/1209127_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/1209127/",
      "weight": "normal"
     }
    ],
@@ -897,25 +894,15 @@
     {
      "blurb": "",
      "date": "2026-11-21",
-     "headline": "『ゼンレスゾーンゼロ』Ver.3.4、12月2日リリース。『崩壊：スターレイル』コラボ開催、ロビンはログインで無料配布",
-     "highlight": "",
-     "image": "https://corriente.jp/wp-content/uploads/2026/11/hero-6.webp",
-     "image_via": "og:image",
-     "url": "https://corriente.jp/zenless-zone-zero-version-3-4-update/",
-     "weight": "hero"
-    },
-    {
-     "blurb": "Everything revealed in the 3.4 Special Program: new agents, banners, outfits, events and rewards. 3.4 \"The Finality of the Day\" lands December 2.",
-     "date": "2026-11-21",
      "event": {
       "date": "2026-12-02",
       "label": "3.4 アップデート"
      },
-     "headline": "Zenless Zone Zero 3.4 special program: Everything revealed",
+     "headline": "『ゼンレスゾーンゼロ』Ver.3.4、12月2日リリース。『崩壊：スターレイル』コラボ開催、ロビンはログインで無料配布",
      "highlight": "3.4",
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hV0kG.img",
      "image_via": "AI 挑选",
-     "url": "https://www.msn.com/en-us/entertainment/general/zenless-zone-zero-3-4-special-program-everything-revealed/ar-AA2hUS8D",
+     "url": "https://corriente.jp/zenless-zone-zero-version-3-4-update/",
      "weight": "hero"
     },
     {

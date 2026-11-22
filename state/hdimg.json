@@ -1592,12 +1592,6 @@
   "target": 1280,
   "v": 3
  },
- "https://corriente.jp/wp-content/uploads/2026/11/hero-6.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
-  "v": 3
- },
  "https://cosmicbook.news/wp-content/uploads/2026/11/from-tv-series-ratings-netflix.webp": {
   "w": 1500,
   "h": 844,
@@ -3809,7 +3803,7 @@
  "https://news.dellows.jp/wp-content/uploads/2026/11/1209127_1.jpg": {
   "w": 1024,
   "h": 544,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://news.dellows.jp/wp-content/uploads/2026/11/1226909_1.jpg": {
@@ -6534,12 +6528,6 @@
   "target": 1280,
   "v": 3
  },
- "https://wotpack.ru/wp-content/uploads/2026/11/obnovlenie-zzz-3.4-kogda-vyydet-bannery-i-novovvedeniya.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://www.4gamer.net/games/579/G057943/20261111057/TN/001.jpg": {
   "w": 512,
   "h": 288,
@@ -6994,6 +6982,12 @@
    0.887,
    0.6
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.709xrAgeG3j5LMw4z-UWVw&pid=News&w=768": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.C7yo6RHIF9O1SXc6EY1Qdw&pid=News&w=1200": {
   "w": 534,
@@ -7808,6 +7802,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.city.noboribetsu.lg.jp/article/2026111300059/file_contents/file_202611135133348_1.png": {
+  "w": 1672,
+  "h": 941,
+  "target": 720,
+  "v": 3
+ },
  "https://www.cnet.com/wp-content/uploads/sites/2/neakasa-riko-smart-pet-feeder-on-tile-floor-with-cat-sitting-nearby.jpg": {
   "w": 1200,
   "h": 675,
@@ -8039,6 +8039,12 @@
  "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-price-hike-2.webp": {
   "w": 2560,
   "h": 1441,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.happo-one.jp/wp2019/wp-content/uploads/2026/01/mainvisual_sp_3x4_390x520.jpg": {
+  "w": 390,
+  "h": 520,
   "target": 720,
   "v": 3
  },

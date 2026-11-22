@@ -1,10 +1,10 @@
 {
- "admin": "31fbd23e2150",
- "admin-ai": "26ad00a873dc",
+ "admin": "98f0c955fbe1",
+ "admin-ai": "e214bebd7c18",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "2d8f5be4"
+   "4cc16c9d"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "4971b96e0e22",
+ "admin-emblem": "ab00bb823880",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "738189db"
+   "b50a39a2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "65a5728fcb07",
+ "admin-now": "e67c4bb4d216",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8389672f"
+   "1bad05a1"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "c0401c4d"
   ]
  },
- "admin-system": "8a1754400413",
+ "admin-system": "801f3dc66e46",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "645605ae"
+   "cf399ee1"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -78,7 +78,7 @@
   ]
  },
  "admin_marks": {},
- "heat": "72fbdf8d444a",
+ "heat": "cbb5d98b8635",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "a217be3e"
+   "66356c4d"
   ],
   "ranking": [
    "ランキング",
-   "b6cd415c"
+   "441d19c3"
   ]
  },
- "index": "b69b2eea5558",
+ "index": "d7006ff69ecf",
  "index_marks": {
   "front": [
    "トップ",
-   "b860c2a7"
+   "df36cf3a"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "57276e1b"
+   "82de6e34"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "4ad03504"
+   "c4b777de"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -196,6 +196,6 @@
    "bca1f89c"
   ]
  },
- "updated": "11.22 19:13",
+ "updated": "11.22 19:21",
  "wishlist": "ac4f7acb1ba4"
 }
