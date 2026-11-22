@@ -1,6 +1,6 @@
 {
  "admin": "0f8b0b2cdac1",
- "admin-ai": "5228d17f3605",
+ "admin-ai": "e848738373ab",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0a34e8b4"
+   "417cae3d"
   ]
  },
  "admin-boards": "35ffff50e35c",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "b5999b2a1485",
+ "admin-emblem": "86458bb73b59",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "117f27e5"
+   "c4148812"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "2c0a05095bdf",
+ "admin-now": "7956242c3973",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "9eb2722b"
+   "f2748eb4"
   ]
  },
- "admin-system": "f720b0098bcd",
+ "admin-system": "bed99fb429e3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "61f77ceb"
+   "318f39d7"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a58c26e7"
+   "4f1c2b51"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "5750dcd8"
   ]
  },
- "index": "cf37dcb3a2a1",
+ "index": "8380a0998c70",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "ccb1b9f7"
+   "7a69aa53"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -121,11 +121,11 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "5b46fff0"
+   "6fbfe7a4"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "3bcfe5c2"
+   "67404549"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "8370b720"
+   "e3d46915"
   ],
   "w-6676e624": [
    "三星手机",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "0fb8e6fc"
+   "5b429dd5"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "ab3968b4"
+   "c9498c2f"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "7ad3b2fc"
   ]
  },
- "updated": "11.23 01:30",
+ "updated": "11.23 01:33",
  "wishlist": "ac4f7acb1ba4"
 }
