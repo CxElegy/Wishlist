@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "e510033e65aa",
+ "edit_sig": "1e664c703466",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -260,38 +260,39 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Leaks show Samsung's Galaxy S27 Pro and S27 Ultra sharing a new triple-camera island ahead of early 2027, but zoom sensors differ.",
      "date": "2026-11-22",
-     "n": 1,
-     "source": "Nokiapoweruser",
-     "title": "Why the Galaxy S27 Ultra Camera Bump Is Dividing Fans Right Now",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1aRkthZmY3Uy1QUjlaUzNWWW1DMDNzOUNsSDE5bEVIMjJjV05fLTFpQUpuU09XSWNuLUFzcVFXZ1ZadklsOFFKRGZub09xXzllYTExNHJUZUZfS2EwcldDUFBONjhscDNDS0hEYmJMSDdCVThKSjFNNzZIcEV1cDg?oc=5"
+     "headline": "Galaxy S27 Pro vs. S27 Ultra: Same New Camera Design, Very Different Zoom Hardware",
+     "highlight": "Very Different Zoom Hardware",
+     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-ultra-design-10.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-leaks-26/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-22",
-     "n": 2,
-     "source": "Geeky Gadgets",
-     "title": "Galaxy S27 Pro vs. S27 Ultra: Same New Camera Design, Very Different Zoom Hardware",
-     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-leaks-26/"
+     "headline": "Why the Galaxy S27 Ultra Camera Bump Is Dividing Fans Right Now",
+     "highlight": "",
+     "image": "https://nokiapoweruser.com/wp-content/uploads/2026/09/Samsung-Galaxy-S27-Ultra.jpeg",
+     "image_via": "og:image",
+     "url": "https://nokiapoweruser.com/galaxy-s27-ultra-camera-island-design-identity/",
+     "weight": "normal"
     },
     {
-     "date": "2026-11-22",
-     "n": 3,
-     "source": "VOI.ID",
-     "title": "갤럭시 S27 프로와 S27 울트라, 새 셀카 카메라 사용",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVkY5dXF6SVBqUDVVNnZON0xWUUdXRi04eHA3SFpDM3Fxb18td29DOXZsdF80ZllVUWJ0ZHdtYUxjdWl5SUhsOGZnUlJ5VktWa3NBaF9OVjBZNDZnbzJlbUhvRkJNWWNoTHBMQVhNOWc3MnVmWjUyMzdBLUZpbldmUUFUaHBvb0R2YUNkelBnYlZJSWFPNW5ITmlwYnRlZw?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-21",
-     "n": 4,
-     "source": "VOI.ID",
-     "title": "삼성, 카메라 바가 달린 Galaxy S27 디자인을 되살린다",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE11UHhiSVEwdTluVVdMZ24wMWZVckJWN2FuX1gxMGtBU3JFS3FZdTI1VUtDQ1ZqZ21ONk9QemYzdGNLZWFtd0FRSERGOEZCa295cnJEQWNBNXhuUHZ6bmxBOW1MT0d1WFczd3dDYjhRcE8?oc=5"
+     "headline": "삼성, 카메라 바가 달린 Galaxy S27 디자인을 되살린다",
+     "highlight": "",
+     "image": "https://imgsrv2.voi.id/GWxKxTVkPVlneFQMNebbC0eH4HGLlv1dAf69YlkHnNo/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTA5NDEvMjAyNjA4MjQwODA5LW1haW4uY3JvcHBlZF8xNzg3NTMzNzc5LmpwZw.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://voi.id/kr/teknologi/590941/desain-galaxy-s27-camera-bar",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",

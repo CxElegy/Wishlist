@@ -42,7 +42,8 @@
  ],
  "_covered": {
   "GTA 6": 12,
-  "漫威电影": 10
+  "漫威电影": 10,
+  "三星手机": 4
  },
  "漫威电影": [
   {
@@ -52,7 +53,8 @@
    "weight": "lead",
    "refs": [
     2
-   ]
+   ],
+   "image": "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-poster-highlights-vanessa-kirbys-invisible-woman-ahead-of-doctor-doom-battle-ab231128.jpg"
   },
   {
    "headline": "Avengers: Doomsday TV Spot Brings Back Tom Holland's Spider-Man",
@@ -80,6 +82,37 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Galaxy S27 Pro vs. S27 Ultra: Same New Camera Design, Very Different Zoom Hardware",
+   "highlight": "Very Different Zoom Hardware",
+   "blurb": "Leaks show Samsung's Galaxy S27 Pro and S27 Ultra sharing a new triple-camera island ahead of early 2027, but zoom sensors differ.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-ultra-design-10.jpg"
+  },
+  {
+   "headline": "Why the Galaxy S27 Ultra Camera Bump Is Dividing Fans Right Now",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "삼성, 카메라 바가 달린 Galaxy S27 디자인을 되살린다",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    3
    ]
   }
  ]
