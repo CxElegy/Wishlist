@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-22T02:58:53+00:00",
+ "checked": "2026-11-22T04:18:01+00:00",
  "fired": {
   "at": "2026-11-22T02:29:49+00:00",
   "results": {
@@ -82,11 +82,13 @@
    "need": true,
    "prog": 253,
    "prog_day": "2026-11-22",
-   "ripe": [],
-   "sig": "ec67d0e23681",
+   "ripe": [
+    "The Mandalorian"
+   ],
+   "sig": "9468bca91363",
    "token_cap": 1000000,
    "tokens_today": 370256,
-   "why": "整理待ちの記事 4 件（3 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 4 件（3 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
