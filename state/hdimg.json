@@ -3177,6 +3177,12 @@
   "target": 720,
   "v": 3
  },
+ "https://imgsrv2.voi.id/GWxKxTVkPVlneFQMNebbC0eH4HGLlv1dAf69YlkHnNo/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTA5NDEvMjAyNjA4MjQwODA5LW1haW4uY3JvcHBlZF8xNzg3NTMzNzc5LmpwZw.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -3276,6 +3282,52 @@
   "h": 1280,
   "target": 1280,
   "v": 3
+ },
+ "https://kyodonewsprwire.jp/prwfile/release/M108544/202611200662/_prw_PI14fl_0GIzfNfa.png": {
+  "w": 728,
+  "h": 412,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.44,
+  "local": "pics/49bda2317d7ac092.webp",
+  "out": [
+   1280,
+   724
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    7,
+    8,
+    8,
+    8,
+    6,
+    10,
+    8,
+    8,
+    6,
+    9,
+    10,
+    11
+   ],
+   [
+    4,
+    3,
+    1,
+    4,
+    9,
+    15,
+    18,
+    13,
+    8,
+    7,
+    9,
+    7
+   ]
+  ],
+  "c": "#3f3a37",
+  "k": null,
+  "p": null
  },
  "https://local12.com/resources/media2/16x9/1147/1320/0x9/90/c93ed80f-8419-4d26-963c-dc83c029c695-GTA.png": {
   "w": 1320,
@@ -5161,52 +5213,6 @@
    0.365,
    0.247
   ],
-  "p": null
- },
- "https://prcdn.freetls.fastly.net/release_image/30942/1017/30942-1017-9156bd3c0912825ebd9f31d5cee75226-728x412.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 728,
-  "h": 412,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.44,
-  "local": "pics/d9175cbf4050a4fb.webp",
-  "out": [
-   1280,
-   724
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    7,
-    8,
-    8,
-    8,
-    6,
-    10,
-    8,
-    9,
-    6,
-    9,
-    10,
-    11
-   ],
-   [
-    4,
-    3,
-    1,
-    4,
-    9,
-    15,
-    18,
-    13,
-    8,
-    7,
-    9,
-    7
-   ]
-  ],
-  "c": "#3f3a37",
-  "k": null,
   "p": null
  },
  "https://prcdn.freetls.fastly.net/release_image/31800/232/31800-232-a96ac789c08e72d24265437f7bf23eba-844x394.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -7197,12 +7203,6 @@
    0.379
   ],
   "p": null
- },
- "https://www.bing.com/th?id=ONUT.ywXg_AYmw60uy8-AEy4TOA&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200": {
   "w": 700,
