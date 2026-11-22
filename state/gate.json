@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-22T10:35:13+00:00",
+ "checked": "2026-11-22T12:18:49+00:00",
  "fired": {
   "at": "2026-11-22T10:03:44+00:00",
   "results": {
@@ -74,12 +74,12 @@
     "FROM",
     "lib:Ado",
     "lib:F1",
+    "lib:NBA",
     "lib:Nintendo Switch 2",
     "lib:iPhone",
-    "lib:ガンプラ",
-    "lib:キャンプ",
     "lib:ユニクロ",
-    "lib:無印良品",
+    "lib:原神",
+    "lib:葬送のフリーレン",
     "チェーンソーマン",
     "三星手机",
     "周杰伦"
@@ -93,7 +93,7 @@
    "prog": 394,
    "prog_day": "2026-11-22",
    "ripe": [],
-   "sig": "be24d5eaec45",
+   "sig": "a7d20a8db3cf",
    "token_cap": 1000000,
    "tokens_today": 644986,
    "why": "整理待ちの記事 101 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
