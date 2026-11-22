@@ -7,7 +7,8 @@
    "weight": "lead",
    "refs": [
     4,
-    5
+    5,
+    29
    ],
    "image": "https://images.ctee.com.tw/newsphoto/2026-11-22/1024/20261122700634.jpg"
   },
@@ -42,17 +43,20 @@
   }
  ],
  "_covered": {
-  "GTA 6": 26,
-  "漫威电影": 13,
-  "三星手机": 4,
-  "哈利波特剧集": 4,
+  "GTA 6": 46,
+  "漫威电影": 22,
+  "三星手机": 8,
+  "哈利波特剧集": 5,
   "MMORPG 新作": 2,
   "The Mandalorian": 2,
-  "dota2": 2,
-  "周杰伦": 2,
+  "dota2": 9,
+  "周杰伦": 5,
   "猫用品": 1,
   "ILLIT": 5,
-  "FROM": 1
+  "FROM": 1,
+  "チェーンソーマン": 3,
+  "Vaundy": 1,
+  "gelato pique": 1
  },
  "漫威电影": [
   {
@@ -94,12 +98,13 @@
    ]
   },
   {
-   "headline": "Chris Evans says 'I am just Steve Rogers now' in viral response to MCU fan",
-   "highlight": "",
+   "headline": "'Avengers: Doomsday' Runtime Officially Confirmed, And It Breaks a Major MCU Precedent",
+   "highlight": "Runtime Officially Confirmed",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    16,
+    18
    ]
   }
  ],
@@ -131,6 +136,16 @@
    "refs": [
     4,
     3
+   ]
+  },
+  {
+   "headline": "Galaxy S27 could cost more than Samsung planned",
+   "highlight": "cost more",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    8
    ]
   }
  ],
@@ -197,7 +212,8 @@
    "blurb": "",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    4
    ]
   }
  ],
@@ -268,6 +284,29 @@
    "headline": "Will there be a Season 5 of ‘From’? Everything to know",
    "highlight": "Season 5",
    "blurb": "Decider rounds up what is known about a possible fifth season of FROM.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man, Jujutsu Kaisen, More Manga Rank on NYT November Bestseller List",
+   "highlight": "NYT November Bestseller",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Vaundy": [],
+ "gelato pique": [
+  {
+   "headline": "ジェラート ピケ カフェからPEANUTSコラボ10周年にちなんだアニバーサリーメニューが登場",
+   "highlight": "PEANUTSコラボ10周年",
+   "blurb": "",
    "weight": "lead",
    "refs": [
     1
