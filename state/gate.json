@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-22T02:18:06+00:00",
+ "changed": true,
+ "checked": "2026-11-22T02:29:49+00:00",
  "fired": {
-  "at": "2026-11-22T00:32:59+00:00",
+  "at": "2026-11-22T02:29:49+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -55,28 +55,34 @@
    "edit": 15
   },
   "2026-11-22": {
-   "edit": 5
+   "edit": 6
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-22T00:32:59+00:00",
+    "at": "2026-11-22T02:29:49+00:00",
     "attempts": 1,
     "day": "2026-11-22",
-    "prog": 167,
-    "resp": "cse_01W4x6f6zq2j67Vh6WgX2WM8",
-    "sig": "ab02d942537c"
+    "prog": 221,
+    "resp": "",
+    "sig": "02412419d9f7"
    },
    "items": [
+    "GTA 6",
+    "ILLIT",
     "The Mandalorian",
     "gelato pique",
     "lib:ONE PIECE",
     "lib:広島旅行",
     "lib:羽生善治",
     "lib:貸した魔力は【リボ払い】で強制徴収",
-    "lib:転生したら剣でした 第2期"
+    "lib:転生したら剣でした 第2期",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
    ],
    "last_batch": "2026-11-22T00:49:49+00:00",
    "last_error": {
@@ -86,35 +92,42 @@
    "need": true,
    "prog": 221,
    "prog_day": "2026-11-22",
-   "ripe": [],
-   "sig": "a76864a4463f",
+   "ripe": [
+    "GTA 6",
+    "ILLIT",
+    "gelato pique",
+    "三星手机",
+    "漫威电影"
+   ],
+   "sig": "02412419d9f7",
    "token_cap": 1000000,
    "tokens_today": 315831,
-   "why": "整理待ちの記事 54 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 82 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "チェーンソーマン",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "a32eab2a4190",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
     "哈利波特剧集",
-    "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 11 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
