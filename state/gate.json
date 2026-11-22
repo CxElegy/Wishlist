@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-22T17:27:07+00:00",
+ "checked": "2026-11-22T17:33:15+00:00",
  "fired": {
-  "at": "2026-11-22T16:32:47+00:00",
+  "at": "2026-11-22T17:33:15+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -58,19 +58,19 @@
    "edit": 13
   },
   "2026-11-23": {
-   "edit": 1
+   "edit": 2
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-22T16:32:47+00:00",
+    "at": "2026-11-22T17:33:15+00:00",
     "attempts": 1,
     "day": "2026-11-23",
-    "prog": 8,
-    "resp": "cse_01W4x6f7nok3qRktwS9J6Mq9",
-    "sig": "02d66cb17f4e"
+    "prog": 46,
+    "resp": "",
+    "sig": "aa22c0d68dda"
    },
    "items": [
     "FROM",
@@ -100,9 +100,11 @@
    "ripe": [
     "MMORPG 新作",
     "The Mandalorian",
+    "dota2",
+    "周杰伦",
     "猫用品"
    ],
-   "sig": "1a4e809f020c",
+   "sig": "aa22c0d68dda",
    "token_cap": 1000000,
    "tokens_today": 57616,
    "why": "整理待ちの記事 107 件（15 版面・AI 編集まで版面に載らない）"
