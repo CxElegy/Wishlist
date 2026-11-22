@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-22T04:23:57+00:00",
+ "checked": "2026-11-22T05:18:46+00:00",
  "fired": {
   "at": "2026-11-22T04:22:27+00:00",
   "results": {
@@ -70,33 +70,22 @@
     "sig": "9468bca91363"
    },
    "items": [
-    "The Mandalorian",
-    "lib:BTS",
-    "lib:Mrs. GREEN APPLE",
-    "lib:YOASOBI",
-    "lib:【推しの子】",
-    "lib:サッカー日本代表",
-    "lib:ポケットモンスター",
-    "lib:大相撲",
-    "lib:大谷翔平",
     "チェーンソーマン",
     "周杰伦"
    ],
-   "last_batch": "2026-11-22T02:50:54+00:00",
+   "last_batch": "2026-11-22T04:28:06+00:00",
    "last_error": {
     "at": "2026-11-21T23:26:48+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 253,
+   "prog": 262,
    "prog_day": "2026-11-22",
-   "ripe": [
-    "The Mandalorian"
-   ],
-   "sig": "8b63b2ff554d",
+   "ripe": [],
+   "sig": "d78c98f8af5e",
    "token_cap": 1000000,
-   "tokens_today": 370256,
-   "why": "整理待ちの記事 100 件（11 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 413327,
+   "why": "整理待ちの記事 3 件（2 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -261,12 +250,12 @@
    "runs": 16
   },
   "2026-11-22": {
-   "batches": 16,
-   "cr": 7336866,
-   "cw": 335384,
-   "in": 200,
-   "out": 34672,
-   "runs": 6
+   "batches": 17,
+   "cr": 7767619,
+   "cw": 376900,
+   "in": 214,
+   "out": 36213,
+   "runs": 7
   }
  }
 }
