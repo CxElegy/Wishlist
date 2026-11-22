@@ -1,32 +1,32 @@
 {
- "admin": "6f929b2a6ebf",
- "admin-ai": "30314e11db43",
+ "admin": "4d66eaab30c5",
+ "admin-ai": "62d12a4b559a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "78da837e"
+   "6977e039"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "fe3d7cca"
+   "6bcfe106"
   ]
  },
- "admin-boards": "238579f7ac2c",
+ "admin-boards": "48c85bc94a0b",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "2b111606"
+   "a69aa97f"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "7bef8189e322",
+ "admin-emblem": "07e494f9979f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3adf2152"
+   "5d422790"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "ceb3a204a308",
+ "admin-now": "668fe041c696",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f1f81362"
+   "0cf3ec13"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "4fec6ddb"
+   "a9ad9dad"
   ]
  },
- "admin-system": "50920af5fad5",
+ "admin-system": "5c59f190ba89",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9b64ed80"
+   "5cfcc69a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d1bcd1e3"
+   "a2bf662f"
   ]
  },
  "admin_marks": {},
- "heat": "ed83c836e78e",
+ "heat": "515e1c36b9ae",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "f343db54"
+   "75d8c68d"
   ],
   "ranking": [
    "ランキング",
-   "e5986c6f"
+   "244debbd"
   ]
  },
- "index": "5ba7ddf4e0c7",
+ "index": "d33398caeda4",
  "index_marks": {
   "front": [
    "トップ",
-   "c29e39e7"
+   "8bd559fa"
   ],
   "picks": [
    "気になるかも？",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "da282aa2"
+   "ddf69e26"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "4f51dc2f"
   ]
  },
- "updated": "11.22 11:46",
+ "updated": "11.22 11:50",
  "wishlist": "8081cd7b9303"
 }

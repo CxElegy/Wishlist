@@ -322,7 +322,8 @@
   "BLEACH Mirrors High": 1,
   "Vaundy": 2,
   "dota2": 2,
-  "猫用品": 1
+  "猫用品": 1,
+  "gelato pique": 3
  },
  "周杰伦": [
   {
@@ -594,6 +595,29 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "「PEANUTS」スヌーピーたちとホット＆美味しいな冬を♪「ジェラート ピケ カフェ」カラフルなボーダーやケーキで彩るコラボメニュー登場",
+   "highlight": "ジェラート ピケ カフェ",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "【Amazon初売り特集】ジェラート ピケのパーカーが10％OFFはうれしい",
+   "highlight": "10％OFF",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ],
+   "price": {
+    "now": "10％OFF"
+   }
   }
  ]
 }

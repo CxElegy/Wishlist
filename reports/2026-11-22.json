@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "edit_sig": "0263874e1695",
+ "edit_sig": "be93a7547e19",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -469,33 +469,30 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 1,
-     "source": "ニコニコニュース",
-     "title": "gelato pique",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1Sd1FNRW0xbHkyZjIwQ0pHRkxLUjNQLWxyYWJwUXY2VmZmNmp6Q19YWWotWWZGUjlPRVI1MDA0bWVDUGtfODNyZ2lXRmdRWFFKQ21IYndjS0ZJeERWaGdoSkNsQ25wbVB6UVd1bUFyX2FQOWFSNmFkUg?oc=5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 2,
-     "source": "ウォーカープラス",
-     "title": "画像15 / 36＞【Amazon初売り特集】編集部がお得なアイテムを厳選！‎ジェラート ピケのパーカーが10％OFFはうれしい",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1QYW9iRWc0RUxzbUxQYWR0UE9ydlltVmdGNTNReEJkUHlCSU5mNTdoRFhSdFEyenNuVjQwYUs2c1ppeERkYWhGY3NqUFRUeFM4VzdmM3J6bXJVNEltc3A2aG9WRkxRRTl3OE53Z1dR?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
      "blurb": "",
      "date": "2026-11-22",
-     "headline": "「PEANUTS」スヌーピーたちとホット＆美味しいな冬を♪「ジェラート ピケ カフェ」カラフルなボーダーやケーキで彩るコラボメニュー登場（アニメ！アニメ！）",
-     "highlight": "",
+     "headline": "「PEANUTS」スヌーピーたちとホット＆美味しいな冬を♪「ジェラート ピケ カフェ」カラフルなボーダーやケーキで彩るコラボメニュー登場",
+     "highlight": "ジェラート ピケ カフェ",
      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00000003-anmanmv-000-1-view.jpg?exp=10800",
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/3749c83894feb78af73eb0d09851aeb510fa05bc",
-     "weight": "hero"
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "【Amazon初売り特集】ジェラート ピケのパーカーが10％OFFはうれしい",
+     "highlight": "10％OFF",
+     "image": "https://news.walkerplus.com/article/1175526/12541471_615.jpg",
+     "image_via": "og:image",
+     "price": {
+      "now": "10％OFF"
+     },
+     "url": "https://www.walkerplus.com/article/1175526/image12541449.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",
