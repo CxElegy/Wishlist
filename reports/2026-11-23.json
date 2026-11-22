@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "621e67e9f4f0",
+ "edit_sig": "caab9961e9c7",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?TfXRuFEcaoj7Q2oKW_PXW",
@@ -65,24 +65,20 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-22",
-     "n": 1,
+     "headline": "Indie MMO Spotlight: Engines of War",
+     "highlight": "Engines of War",
+     "image": null,
      "source": "MMORPG.com",
-     "title": "Indie MMO Spotlight: Engines of War",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPdHAyUERNS0lFQlgzZG8xRmF3d2twbkxyblZfckt4V253V2Y3YWEtTFlfWG80Ul84aTQ3YTFmRndNbnRfdGJjRDRWNzJ2TXVBYkNEX3RiazhfVHBiMEs5RnN1RFZhWTN4OHgtZHhhVmN1dW5yOThYMk9PTFRFQVpuazhR?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 2,
-     "source": "アプリ島",
-     "title": "スマホMMORPGのおすすめ50選！新作・老舗の人気アプリをランキング",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1Edldkb1UwYndudzhxejMxR25fVWVSMndwaF9pRlBUeXVBanhBbEF0SE5vT200RFpsbkVFTWhhMl80aWVUMWhhT3NNQUFTZVk?oc=5"
+     "source_icon": null,
+     "url": "https://www.mmorpg.com/columns/indie-mmo-spotlight-engines-of-war-2000139358",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -715,7 +711,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "last": {
     "date": "2026-11-22",
@@ -735,7 +731,7 @@
     "alt_fg": "#F4EEE4",
     "bg": "#FBEFF4",
     "fg": "#1E1A18",
-    "font": "sans",
+    "font": "serif",
     "split": true
    }
   }

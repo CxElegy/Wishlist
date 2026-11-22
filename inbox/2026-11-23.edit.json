@@ -44,7 +44,8 @@
   "GTA 6": 12,
   "漫威电影": 10,
   "三星手机": 4,
-  "哈利波特剧集": 4
+  "哈利波特剧集": 4,
+  "MMORPG 新作": 2
  },
  "漫威电影": [
   {
@@ -146,6 +147,17 @@
    "highlight": "",
    "blurb": "",
    "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "Indie MMO Spotlight: Engines of War",
+   "highlight": "Engines of War",
+   "blurb": "",
+   "weight": "lead",
    "refs": [
     1
    ]
