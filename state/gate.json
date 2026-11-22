@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-21T23:21:50+00:00",
+ "changed": true,
+ "checked": "2026-11-22T00:30:30+00:00",
  "fired": {
   "at": "2026-11-21T23:21:50+00:00",
   "results": {
@@ -70,38 +70,47 @@
     "sig": "35db673f8044"
    },
    "items": [
-    "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
+    "The Mandalorian",
     "Vaundy",
     "dota2",
-    "lib:NBA",
-    "lib:モンスターハンターワイルズ",
-    "lib:ユニバーサル・スタジオ・ジャパン",
-    "lib:京都",
-    "lib:原神",
-    "lib:東京ディズニーリゾート",
-    "lib:葬送のフリーレン",
-    "lib:藤井風",
+    "gelato pique",
+    "lib:スプラトゥーン3",
+    "lib:ブラッククローバー 第2期",
+    "lib:ポケモンGO",
+    "lib:ミャクミャク",
+    "lib:宮崎駿",
+    "lib:星野源",
+    "lib:生徒会にも穴はある！",
+    "lib:薬屋のひとりごと 第3期",
+    "三星手机",
+    "周杰伦",
     "哈利波特剧集",
+    "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-11-21T20:50:36+00:00",
+   "last_batch": "2026-11-21T23:29:42+00:00",
    "last_error": {
-    "at": "2026-11-21T19:40:20+00:00",
+    "at": "2026-11-21T23:26:48+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 158,
+   "prog": 167,
    "prog_day": "2026-11-22",
    "ripe": [
-    "BLEACH Mirrors High"
+    "GTA 6",
+    "ILLIT",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
    ],
-   "sig": "35db673f8044",
+   "sig": "ab02d942537c",
    "token_cap": 1000000,
-   "tokens_today": 206540,
-   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 250322,
+   "why": "整理待ちの記事 145 件（21 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -266,12 +275,12 @@
    "runs": 16
   },
   "2026-11-22": {
-   "batches": 7,
-   "cr": 4783208,
-   "cw": 183649,
-   "in": 127,
-   "out": 22764,
-   "runs": 3
+   "batches": 8,
+   "cr": 5391726,
+   "cw": 225479,
+   "in": 146,
+   "out": 24697,
+   "runs": 4
   }
  }
 }
