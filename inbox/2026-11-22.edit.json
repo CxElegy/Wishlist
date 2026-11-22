@@ -306,15 +306,17 @@
   "绝区零": 8,
   "三星手机": 15,
   "周杰伦": 12,
-  "哈利波特剧集": 3,
+  "哈利波特剧集": 5,
   "滑雪": 3,
   "A2O LITE": 2,
   "チェーンソーマン": 7,
-  "FROM": 1,
-  "MMORPG 新作": 1,
+  "FROM": 2,
+  "MMORPG 新作": 2,
   "The Mandalorian": 1,
   "あつ森": 1,
-  "BLEACH Mirrors High": 1
+  "BLEACH Mirrors High": 1,
+  "Vaundy": 2,
+  "dota2": 2
  },
  "周杰伦": [
   {
@@ -363,7 +365,17 @@
    "weight": "normal",
    "refs": [
     2,
-    3
+    3,
+    4
+   ]
+  },
+  {
+   "headline": "What Is Coming to HBO Max in December 2026: Full List of TV Shows and Movies",
+   "highlight": "December 2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -470,6 +482,15 @@
     1
    ],
    "image": "https://dailytimes.com.pk/assets/uploads/2026/11/21/From-becomes-Netflixs-major-streaming-success.jpg"
+  },
+  {
+   "headline": "Will there be a season 5 of ‘From’? Seasons 4 and 5 of ‘From’ Netflix/MGM+ info",
+   "highlight": "season 5",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "MMORPG 新作": [
@@ -480,6 +501,15 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "NC Q3 2026 Earnings Report: MMORPGs Continue To Drive NC's Revenue Growth",
+   "highlight": "Q3 2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ],
@@ -515,6 +545,37 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy、2027年から開催するアリーナツアーの追加公演を発表",
+   "highlight": "追加公演を発表",
+   "blurb": "2027年から開催するアリーナツアーの追加公演が発表された。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Vaundy、超特急、NEXZら出演 「バズリズム LIVE 2026【配信版】」全3公演の独占疑似ライブ配信決定",
+   "highlight": "独占疑似ライブ配信決定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "OG Defeat PlayTime 2-1 at Dota 2 BLAST SLAM IX",
+   "highlight": "OG Defeat PlayTime 2-1",
+   "blurb": "BLAST SLAM IX で OG が PlayTime を 2-1 で下した。",
+   "weight": "lead",
+   "refs": [
+    2
    ]
   }
  ]

@@ -924,6 +924,7 @@
     {
      "date": "2026-11-21T20:00:00+00:00",
      "image": "",
+     "link": "https://www.mmorpg.com/news/nc-q3-2026-earnings-report-mmorpgs-continue-to-drive-ncs-revenue-growth-as-company-expands-into-new-genres-2000139352",
      "n": 2,
      "seen": "2026-11-21T20:38:50+00:00",
      "site": "https://www.mmorpg.com",
@@ -1633,6 +1634,7 @@
     {
      "date": "2026-11-21T19:19:55+00:00",
      "image": "",
+     "link": "https://www.cbr.com/hbo-harry-potter-season-2-casting-call-young-draco-malfoy/",
      "n": 4,
      "seen": "2026-11-21T20:38:52+00:00",
      "site": "https://www.cbr.com",
@@ -1798,7 +1800,8 @@
     },
     {
      "date": "2026-11-21T07:46:00+00:00",
-     "image": "",
+     "image": "https://www.diarypoint.com/media/51c92956-28c2-4779-938c-e89e3fcb25f9.jpg",
+     "image_via": "og:image",
      "link": "https://www.diarypoint.com/en/news/7490/illit-s-it-s-me-named-a-japan-record-awards-excellence-award-winner-eyes-grand-p",
      "n": 9,
      "seen": "2026-11-21T20:38:54+00:00",
@@ -2694,7 +2697,9 @@
    "entries": [
     {
      "date": "2026-11-19T19:55:34+00:00",
-     "image": "",
+     "image": "https://thetv.jp/i/nw/1455297/19089153.jpg?w=1284",
+     "image_via": "JSON-LD",
+     "link": "https://thetv.jp/news/detail/1455297/landing/",
      "n": 1,
      "seen": "2026-11-21T20:39:14+00:00",
      "site": "https://thetv.jp",
@@ -3118,6 +3123,7 @@
     {
      "date": "2026-11-21T21:09:57+00:00",
      "image": "",
+     "link": "https://egamersworld.com/dota2/news/38639/og-defeat-playtime-2-1-at-blast-slam-ix-group-stag-0Gz8t9Bzy",
      "n": 2,
      "seen": "2026-11-21T23:26:51+00:00",
      "site": "https://egamersworld.com",

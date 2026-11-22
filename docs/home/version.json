@@ -1,32 +1,32 @@
 {
- "admin": "e2163c2f1646",
- "admin-ai": "1008abe62989",
+ "admin": "4d66eaab30c5",
+ "admin-ai": "4dac1f5f22ad",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "204a8018"
+   "1efb8a28"
   ],
   "tokens": [
    "AI 編集のトークン",
    "0ac9e493"
   ]
  },
- "admin-boards": "de15e8947ff6",
+ "admin-boards": "b0b672f2271f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "6912cfc4"
+   "c4b82827"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "fe675f901292",
+ "admin-emblem": "2cc6bbf74c92",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "8b4e5d0f"
+   "9da800b9"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "612ae9f78554",
+ "admin-now": "a30abb98f473",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "42b9c506"
+   "10db014a"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "88cc0fe4"
   ]
  },
- "admin-system": "af1500f1d608",
+ "admin-system": "99c80579e90d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "60e68be1"
+   "5cfcc69a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -78,7 +78,7 @@
   ]
  },
  "admin_marks": {},
- "heat": "ad679985dfba",
+ "heat": "b8c96c3ed99e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "d1b454d8"
+   "68eb3e3f"
   ],
   "ranking": [
    "ランキング",
-   "40330967"
+   "9de298eb"
   ]
  },
- "index": "f2492b9ae8ce",
+ "index": "6fddbcc2e1fc",
  "index_marks": {
   "front": [
    "トップ",
-   "797315d6"
+   "bbabd26c"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "50ae714c"
+   "389f918c"
   ],
   "w-130724c0": [
    "猫用品",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "ca8571ba"
+   "aa2853e4"
   ],
   "w-b867582f": [
    "あつ森",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "6845d239"
+   "24dd290f"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -181,11 +181,11 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "c15cd4a8"
+   "4611fd83"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "942b60c2"
+   "50c4b8f0"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "4f51dc2f"
   ]
  },
- "updated": "11.22 09:39",
+ "updated": "11.22 09:46",
  "wishlist": "8081cd7b9303"
 }
