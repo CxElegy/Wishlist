@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "edit_sig": "907bc2d7b2e5",
+ "edit_sig": "c93c7941015b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -277,24 +277,29 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Full cast list of HBO's Harry Potter series and who plays which role.",
      "date": "2026-11-23",
-     "n": 1,
-     "source": "Nacionale",
-     "title": "Who's in the cast of HBO's Harry Potter series? The full list of who plays who",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNRzNLX05XRVZiUzlfWDBtM25nQS1kLTE3dmxBUW1wWnVLZ0JnLTVwdDNXNEtiZnJCdFFxU3U5bDhfZnA5LUxUN0lKMXlhU3JiY0pkeVA3WUo0d0pRS29rYVEtazNIaG1oT1BTYzlGdGo3cnBXZnlIRzNxTEM2b3Ewek9NUXo5c3pyS0VISk9n?oc=5"
+     "headline": "Who's in the cast of HBO's Harry Potter series? The full list of who plays who",
+     "highlight": "full list",
+     "image": "https://media.nacionale.kabineti.net/uploads/large_desk_fcebce3884_834fa36ca9.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.nacionale.com/en/articles/hbo-harry-potter-series-cast-list-who-plays-who",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-19",
-     "n": 2,
-     "source": "Foro3D",
-     "title": "Nicola Coughlan distances herself from the new Harry Potter series over J. K. Rowling's stances",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQWnA3ekF0QUJRUVk0eUZTSjdRS3U0OXhEUG5pZk96MFdjT3NOTk5KY1p6TmxrM2FiUWd4cEprYkZqUmpTaVo1VnNvRHdfek81cGpzRlBNLVpwWmZKQlhZSjZMMTZzVXVxUFFwU3JQV2QxLXVIVmpfOFBvWEZ6cTRpeDRvRFNqZGlma1VGaFM5aHdkWDIyNXZvYkdka0l1RktSamM2RlN4NnpnQ2RiZURDWHpR?oc=5"
+     "headline": "Nicola Coughlan distances herself from the new Harry Potter series over J. K. Rowling's stances",
+     "highlight": "",
+     "image": "https://foro3d.com/2026/noviembre/imagenes/nicola-coughlan-se-distancia-de-la-nueva-serie-de-harry-potter-por-las.webp",
+     "image_via": "og:image",
+     "url": "https://foro3d.com/en/2026/noviembre/nicola-coughlan-se-distancia-de-la-nueva-serie-de-harry-potter-por-las.html",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",

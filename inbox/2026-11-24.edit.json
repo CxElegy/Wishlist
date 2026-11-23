@@ -124,7 +124,8 @@
   "gelato pique": 3,
   "周杰伦": 3,
   "绝区零": 3,
-  "Astrae Oratio": 2
+  "Astrae Oratio": 2,
+  "哈利波特剧集": 2
  },
  "GTA 6": [
   {
@@ -453,6 +454,27 @@
     "place": "킨텍스 제1전시장"
    },
    "image": "https://www.socialvalue.kr/news/data/20261123/p1065599241139836_749_thum.jpg"
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Who's in the cast of HBO's Harry Potter series? The full list of who plays who",
+   "highlight": "full list",
+   "blurb": "Full cast list of HBO's Harry Potter series and who plays which role.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://media.nacionale.kabineti.net/uploads/large_desk_fcebce3884_834fa36ca9.jpg"
+  },
+  {
+   "headline": "Nicola Coughlan distances herself from the new Harry Potter series over J. K. Rowling's stances",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }
