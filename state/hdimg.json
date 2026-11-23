@@ -1249,57 +1249,6 @@
    0.774
   ]
  },
- "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg": {
-  "w": 600,
-  "h": 337,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.436,
-  "local": "pics/fc21b389facd5a1a.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    5,
-    5,
-    6,
-    7,
-    9,
-    10,
-    8,
-    12,
-    15,
-    10,
-    9,
-    3
-   ],
-   [
-    7,
-    10,
-    11,
-    10,
-    6,
-    5,
-    5,
-    6,
-    9,
-    13,
-    8,
-    9
-   ]
-  ],
-  "c": "#495878",
-  "k": [
-   0.567,
-   0.612,
-   0.997,
-   0.96
-  ],
-  "p": null
- },
  "https://cdn.livedoor.jp/kstyle/424ab55ca9afb3a344907449a662ec69_WI.jpg": {
   "w": 1024,
   "h": 576,
@@ -1501,12 +1450,6 @@
   "w": 1500,
   "h": 844,
   "target": 1280,
-  "v": 3
- },
- "https://comicbookmovie.com/images/articles/banners/rumor-avengers-doomsday-last-minute-reshoots-add-new-scene-with-spoiler-and-it-could-set-up-secret-wars-ab231130.jpg": {
-  "w": 1500,
-  "h": 844,
-  "target": 720,
   "v": 3
  },
  "https://cosmicbook.news/wp-content/uploads/2026/11/from-tv-series-ratings-netflix.webp": {
@@ -2305,6 +2248,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/1000014624.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_426,y_237,w_1864,h_1048/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/357/01m7ndtf0a2j0mmy6brs.jpg": {
   "w": 1440,
   "h": 810,
@@ -2513,6 +2462,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hwwYo.img": {
   "w": 900,
   "h": 600,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i0dpI.img": {
+  "w": 1378,
+  "h": 775,
   "target": 1280,
   "v": 3
  },
