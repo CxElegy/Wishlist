@@ -2735,12 +2735,6 @@
    0.837
   ]
  },
- "https://img.mydaily.co.kr/photos/2026/11/18/2026111809404532902_x.jpg": {
-  "w": 1280,
-  "h": 1594,
-  "target": 720,
-  "v": 3
- },
  "https://img.mydaily.co.kr/photos/2026/11/19/2026111921084528816_x.jpg": {
   "w": 640,
   "h": 817,
@@ -6649,6 +6643,12 @@
  "https://www.bing.com/th?id=ONUT.7jpUbtfHch9mZXtW3KSK2w&pid=News&w=1061": {
   "w": 700,
   "h": 511,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.9bO-bDzjv1-cjORGwqTyjg&pid=News&w=1200": {
+  "w": 562,
+  "h": 700,
   "target": 720,
   "v": 3
  },
