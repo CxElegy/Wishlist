@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-23T15:30:40+00:00",
+ "checked": "2026-11-23T16:18:25+00:00",
  "fired": {
   "at": "2026-11-23T14:38:52+00:00",
   "results": {
@@ -73,9 +73,6 @@
     "sig": "c15e2a292882"
    },
    "items": [
-    "FROM",
-    "MMORPG 新作",
-    "The Mandalorian",
     "lib:SPY×FAMILY",
     "lib:ポケモンGO",
     "lib:宇宙・ロケット",
@@ -83,12 +80,7 @@
     "lib:恐竜",
     "lib:温泉",
     "lib:生成AI",
-    "lib:藤井風",
-    "あつ森",
-    "チェーンソーマン",
-    "日本顶级网球赛事",
-    "滑雪",
-    "猫用品"
+    "lib:藤井風"
    ],
    "last_batch": "2026-11-23T14:59:23+00:00",
    "last_error": {
@@ -96,16 +88,13 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 519,
-   "prog_day": "2026-11-23",
-   "ripe": [
-    "FROM",
-    "あつ森"
-   ],
-   "sig": "c473cdee86e0",
+   "prog": 8,
+   "prog_day": "2026-11-24",
+   "ripe": [],
+   "sig": "9fd819d56c68",
    "token_cap": 1000000,
-   "tokens_today": 842732,
-   "why": "整理待ちの記事 105 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
