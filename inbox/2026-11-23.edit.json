@@ -10,9 +10,25 @@
     5,
     29,
     66,
-    69
+    69,
+    77,
+    82,
+    87
    ],
    "image": "https://images.ctee.com.tw/newsphoto/2026-11-22/1024/20261122700634.jpg"
+  },
+  {
+   "headline": "媒體99分、玩家卻狂刷0分！《GTA 6》上市爆「6大爭議」，昔日犯罪神作竟被酸「男友模擬器」？",
+   "highlight": "玩家卻狂刷0分",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    75,
+    84,
+    80,
+    81,
+    86
+   ]
   },
   {
    "headline": "GTA 6 PC Version Release Date Update Suggests It's Closer Than We Thought",
@@ -23,16 +39,6 @@
     17,
     13,
     70
-   ]
-  },
-  {
-   "headline": "GTA 6 Glitch Unlocks The FPS On Xbox Series X|S, But With Multiple Drawbacks",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1,
-    7
    ]
   },
   {
@@ -55,9 +61,9 @@
   }
  ],
  "_covered": {
-  "GTA 6": 74,
-  "漫威电影": 25,
-  "三星手机": 8,
+  "GTA 6": 91,
+  "漫威电影": 42,
+  "三星手机": 15,
   "哈利波特剧集": 7,
   "MMORPG 新作": 2,
   "The Mandalorian": 4,
@@ -66,13 +72,14 @@
   "猫用品": 3,
   "ILLIT": 16,
   "FROM": 1,
-  "チェーンソーマン": 3,
+  "チェーンソーマン": 10,
   "Vaundy": 1,
   "gelato pique": 1,
   "滑雪": 2,
   "A2O LITE": 2,
   "星巴克马克杯": 1,
-  "BLEACH Mirrors High": 1
+  "BLEACH Mirrors High": 1,
+  "绝区零": 9
  },
  "漫威电影": [
   {
@@ -86,31 +93,17 @@
    "image": "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-poster-highlights-vanessa-kirbys-invisible-woman-ahead-of-doctor-doom-battle-ab231128.jpg"
   },
   {
-   "headline": "Joe Russo Talks ‘Doomsday’ Teaser-Trailer Strategy Ahead Of Rumored Monday Drop: “I Have To interact With Fans”",
-   "highlight": "Rumored Monday Drop",
+   "headline": "Marvel Confirms Kate Bishop Actress Hailee Steinfeld Will Appear in Avengers: Doomsday",
+   "highlight": "Hailee Steinfeld",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    11
-   ]
-  },
-  {
-   "headline": "Avengers: Doomsday TV Spot Brings Back Tom Holland's Spider-Man",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5,
-    8
-   ]
-  },
-  {
-   "headline": "Rumor: Avengers: Doomsday Last Minute Reshoots Add New Scene",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1
+    36,
+    28,
+    29,
+    30,
+    42,
+    37
    ]
   },
   {
@@ -120,7 +113,29 @@
    "weight": "normal",
    "refs": [
     16,
-    18
+    18,
+    13,
+    40
+   ]
+  },
+  {
+   "headline": "Is the New Doomsday Trailer Coming Monday? MCU Star’s Post Makes It Even More Likely",
+   "highlight": "Coming Monday",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    41,
+    11
+   ]
+  },
+  {
+   "headline": "Marvel Studios Celebrates Elizabeth Olsen's MCU Return With New Scarlet Witch Poster",
+   "highlight": "Scarlet Witch Poster",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    26,
+    31
    ]
   }
  ],
@@ -162,6 +177,27 @@
    "refs": [
     7,
     8
+   ]
+  },
+  {
+   "headline": "次期Galaxy S27 Proのサムスン独自チップ、最新Snapdragon機に迫るスコアを叩き出す。",
+   "highlight": "最新Snapdragon機に迫る",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    10,
+    14
+   ]
+  },
+  {
+   "headline": "Leak ties faster Galaxy S27 Ultra memory and storage to 512 GB model and up",
+   "highlight": "512 GB",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11,
+    13
    ]
   }
  ],
@@ -379,6 +415,33 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "【USJ】デンジやパワーがパークで大暴れ！ツノ付きパーカーなどクールなグッズも充実のチェンソーマン初コラボ徹底レポ",
+   "highlight": "初コラボ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "MAPPA、レゼ描く15周年キービジュアル解禁 19日に『呪術廻戦』『チェンソーマン』など新情報の発表会実施",
+   "highlight": "15周年キービジュアル",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  },
+  {
+   "headline": "ブランチ・アウトが劇場版チェンソーマン レゼ篇のアパレル商品化許諾を取得",
+   "highlight": "アパレル商品化",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "Vaundy": [],
@@ -444,6 +507,28 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "Zenless Zone Zero version 3.4 update set for December 2",
+   "highlight": "December 2",
+   "blurb": "Version 3.4 “End of Long Days” goes live December 2 with a Honkai: Star Rail collab; logging in gives a free S-rank Robin.",
+   "weight": "hero",
+   "refs": [
+    3,
+    2,
+    4,
+    5,
+    8,
+    7,
+    9
+   ],
+   "event": {
+    "date": "2026-12-02",
+    "label": "更新日"
+   },
+   "image": "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg"
   }
  ]
 }

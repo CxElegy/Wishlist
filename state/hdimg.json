@@ -620,12 +620,6 @@
   "target": 720,
   "v": 3
  },
- "https://andro-news.com/wp-content/uploads/2026/11/samsung-galaxy-s27-pro-s27-ultra-2.webp": {
-  "w": 2048,
-  "h": 1153,
-  "target": 720,
-  "v": 3
- },
  "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/929908.jpg": {
   "w": 691,
   "h": 389,
@@ -776,9 +770,21 @@
   "target": 720,
   "v": 3
  },
+ "https://assets-prd.ignimgs.com/2026/11/23/hailee-steinfeld-kate-bishop-1795398586995.png?width=1280&format=jpg&auto=webp&quality=80": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.hldycdn.com/64b9e15a-1619-4f07-840d-c5c381ef6945.jpeg": {
   "w": 1920,
   "h": 1280,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets.juksy.com/files/articles/155350/6afc99035cb60.jpg": {
+  "w": 1200,
+  "h": 628,
   "target": 720,
   "v": 3
  },
@@ -1293,6 +1299,57 @@
    0.774
   ]
  },
+ "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg": {
+  "w": 600,
+  "h": 337,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.436,
+  "local": "pics/fc21b389facd5a1a.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    5,
+    6,
+    7,
+    9,
+    10,
+    8,
+    12,
+    15,
+    10,
+    9,
+    3
+   ],
+   [
+    7,
+    10,
+    11,
+    10,
+    6,
+    5,
+    5,
+    6,
+    9,
+    13,
+    8,
+    9
+   ]
+  ],
+  "c": "#495878",
+  "k": [
+   0.567,
+   0.612,
+   0.997,
+   0.96
+  ],
+  "p": null
+ },
  "https://cdn.livedoor.jp/kstyle/424ab55ca9afb3a344907449a662ec69_WI.jpg": {
   "w": 1024,
   "h": 576,
@@ -1490,12 +1547,6 @@
   "target": 1280,
   "v": 3
  },
- "https://comicbook.com/wp-content/uploads/sites/4/2026/11/Shang-Chi-in-the-MCU.jpg?resize=2000,1125": {
-  "w": 2000,
-  "h": 1125,
-  "target": 1280,
-  "v": 3
- },
  "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-poster-highlights-vanessa-kirbys-invisible-woman-ahead-of-doctor-doom-battle-ab231128.jpg": {
   "w": 1500,
   "h": 844,
@@ -1664,6 +1715,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://en.koreadaily.com/wp-content/uploads/2026/11/202611221017776477_6b0248454f40e.jpg": {
+  "w": 650,
+  "h": 433,
+  "target": 720,
+  "v": 3
+ },
  "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
   "w": 1200,
   "h": 630,
@@ -1734,6 +1791,12 @@
   "w": 1024,
   "h": 683,
   "target": 1280,
+  "v": 3
+ },
+ "https://gagadget.com/media/cache/5e/c6/5ec6d0b4cbbfb0e1015dd7f11b499c2d.webp": {
+  "w": 1524,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/15/1794743922440.jpg#joomlaImage://local-images/1_2026/NEWS/Q4/nov/15/1794743922440.jpg?width=2752&height=1536": {
@@ -2244,16 +2307,16 @@
   "target": 720,
   "v": 3
  },
- "https://images.purexbox.com/d6d0ddc82be6c/1280x720.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://images.static-bluray.com/movies/covers/414975_front.jpg": {
   "w": 1758,
   "h": 2200,
   "target": 720,
+  "v": 3
+ },
+ "https://images.storm.mg/cloud/199eb2b816401612d93438c558f48a0682545c5d.jpg?url=s3%3A%2F%2Fnew-storm-public-resource%2Fgallery%2F2259385%2FK1xGqW9weX0Jwah1ROr0qjAp93hqEK0I9ZKSFVF2.jpeg&g=sm&h=900&resize=fill&w=1600&format=jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/1000014555.jpg": {
@@ -2262,10 +2325,10 @@
   "target": 720,
   "v": 3
  },
- "https://images.thedirect.com/media/article_full/1000014615.jpg": {
+ "https://images.thedirect.com/media/article_full/1000014624.jpg": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
+  "target": 720,
   "v": 3
  },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_426,y_237,w_1864,h_1048/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/357/01m7ndtf0a2j0mmy6brs.jpg": {
@@ -3231,6 +3294,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://imgsrv2.voi.id/GWxKxTVkPVlneFQMNebbC0eH4HGLlv1dAf69YlkHnNo/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTA5NDEvMjAyNjA4MjQwODA5LW1haW4uY3JvcHBlZF8xNzg3NTMzNzc5LmpwZw.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -3621,6 +3690,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/960137_1.jpg": {
+  "w": 729,
+  "h": 1024,
+  "target": 720,
+  "v": 3
+ },
  "https://news.dellows.jp/wp-content/uploads/2026/11/1120885_2.jpg": {
   "w": 1024,
   "h": 683,
@@ -3649,6 +3724,12 @@
   "w": 1024,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://news.lavx.hu/api/media/file/leak-ties-faster-galaxy-s27-ultra-memory-and-storage-to-512-gb-model-and-up_gen_1795407079761-1200x630.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://news.mynavi.jp/article/20261116-5337015/ogp_images/ogp.jpg": {
@@ -3833,6 +3914,52 @@
    ]
   ],
   "c": "#e0c2b9",
+  "k": null,
+  "p": null
+ },
+ "https://news.walkerplus.com/article/1216593/13500416_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.43,
+  "local": "pics/d590df133907a390.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    7,
+    7,
+    9,
+    10,
+    11,
+    10,
+    9,
+    8,
+    9,
+    8,
+    8,
+    5
+   ],
+   [
+    7,
+    9,
+    12,
+    12,
+    12,
+    7,
+    7,
+    9,
+    7,
+    6,
+    6,
+    7
+   ]
+  ],
+  "c": "#6e5a3e",
   "k": null,
   "p": null
  },
@@ -5110,12 +5237,6 @@
   "target": 1280,
   "v": 3
  },
- "https://phinf.wevpstatic.net/MjAyNjExMjFfMjYy/MDAxNzk1MjYzNjQwNTk5.WCsvRE9z7ZQM9qhDI-cJk_mERLBLKdICaC02LSDOPFkg.NADFoeMyIHrwEMBph8dBYeQVNZfE9F53cijnQxyEsewg.JPEG/image.jpg?type=w1414": {
-  "w": 1414,
-  "h": 1885,
-  "target": 720,
-  "v": 3
- },
  "https://photo.jtbc.co.kr/news/jam_photo/202403/11/622e0c3f-bb3d-4bcf-b0b5-09401723e3a8.jpg": {
   "w": 559,
   "h": 472,
@@ -5789,6 +5910,12 @@
   "target": 720,
   "v": 3
  },
+ "https://smhn.info/wp-content/uploads/2026/08/galaxy-s27-pro-leak-size-comparison-onl-1.webp": {
+  "w": 1500,
+  "h": 750,
+  "target": 1280,
+  "v": 3
+ },
  "https://snowbrains.com/wp-content/uploads/2026/11/forecast-59.png": {
   "w": 984,
   "h": 808,
@@ -5946,6 +6073,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/d/2/7/9/d279786f71916414f12a466a0f0d91a0_1.jpg": {
+  "w": 452,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/e/c/a/0/eca06632b083f3de1ab03c597fe95639_1.jpg": {
   "w": 640,
   "h": 426,
@@ -6004,6 +6137,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/08/doctor-doom-avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/avengers_-doomsday-_-special-look-_-in-theaters-december-18-1-40-screenshot.jpg?w=1600&h=900&fit=crop": {
@@ -6403,57 +6542,6 @@
    0.906,
    0.517
   ]
- },
- "https://www.animenewsnetwork.com/thumbnails/crop600x315gL1/cms/daily-briefs/244054/713pf8p6eyl.sl1500.jpg": {
-  "w": 600,
-  "h": 315,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.421,
-  "local": "pics/564461d533aba361.webp",
-  "out": [
-   1280,
-   672
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    1,
-    2,
-    7,
-    9,
-    12,
-    11,
-    16,
-    14,
-    10,
-    11,
-    4,
-    3
-   ],
-   [
-    7,
-    4,
-    8,
-    12,
-    11,
-    10,
-    10,
-    11,
-    10,
-    8,
-    4,
-    5
-   ]
-  ],
-  "c": "#886d53",
-  "k": [
-   0.166,
-   0.321,
-   0.258,
-   0.374
-  ],
-  "p": null
  },
  "https://www.appbank.net/wp-content/uploads/2026/11/20261117_084139_289_01.webp": {
   "w": 1920,
