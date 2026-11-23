@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-23T00:12:37+00:00",
+ "checked": "2026-11-23T01:11:39+00:00",
  "fired": {
-  "at": "2026-11-22T23:48:53+00:00",
+  "at": "2026-11-23T01:11:39+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -58,34 +58,40 @@
    "edit": 13
   },
   "2026-11-23": {
-   "edit": 6
+   "edit": 7
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-22T23:48:53+00:00",
+    "at": "2026-11-23T01:11:39+00:00",
     "attempts": 1,
     "day": "2026-11-23",
-    "prog": 151,
-    "resp": "cse_01W4x6f8VWxznEoZueucf3RT",
-    "sig": "3ef7dcbdfa10"
+    "prog": 183,
+    "resp": "",
+    "sig": "a19449d99b76"
    },
    "items": [
     "A2O LITE",
     "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
     "lib:世界最強の魔女、始めました",
     "lib:美術館の企画展",
     "lib:羽生善治",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
     "滑雪",
-    "猫用品"
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-23T00:03:04+00:00",
    "last_error": {
@@ -95,35 +101,39 @@
    "need": true,
    "prog": 183,
    "prog_day": "2026-11-23",
-   "ripe": [],
-   "sig": "a6a52833087f",
+   "ripe": [
+    "GTA 6",
+    "ILLIT"
+   ],
+   "sig": "a19449d99b76",
    "token_cap": 1000000,
    "tokens_today": 326610,
-   "why": "整理待ちの記事 43 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 70 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "绝区零"
+   ],
+   "need": true,
+   "sig": "b0be86aead8c",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "周杰伦"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 11 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
