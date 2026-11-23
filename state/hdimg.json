@@ -3578,6 +3578,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1168007/12392132_615.jpg": {
+  "w": 615,
+  "h": 820,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/1175526/12541471_615.jpg": {
   "w": 615,
   "h": 821,
@@ -7417,6 +7423,13 @@
   "h": 900,
   "target": 720,
   "v": 3
+ },
+ "https://www.socialvalue.kr/news/data/20261123/p1065599241139836_749_thum.jpg": {
+  "w": 699,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.376
  },
  "https://www.starwarsnewsnet.com/wp-content/uploads/2026/04/The-Mandalorian-and-Grogu-Poster-Banner-e1776671838138.jpeg": {
   "w": 1080,

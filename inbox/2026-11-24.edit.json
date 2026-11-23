@@ -123,7 +123,8 @@
   "日本顶级网球赛事": 1,
   "gelato pique": 3,
   "周杰伦": 3,
-  "绝区零": 3
+  "绝区零": 3,
+  "Astrae Oratio": 2
  },
  "GTA 6": [
   {
@@ -434,6 +435,24 @@
    "refs": [
     3
    ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "엔씨 ′아스오라′, AGF 2026 메인 스폰서 참가…첫 PC 시연·팬 참여 행사 마련",
+   "highlight": "AGF 2026 메인 스폰서",
+   "blurb": "AGF 2026은 12월 4일부터 6일까지 고양시 킨텍스 제1전시장에서 열린다. 게임 시연, 시나리오 상영회, 굿즈 샵, 스탬프 랠리 등을 운영한다.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "event": {
+    "date": "2026-12-04",
+    "label": "AGF 2026",
+    "place": "킨텍스 제1전시장"
+   },
+   "image": "https://www.socialvalue.kr/news/data/20261123/p1065599241139836_749_thum.jpg"
   }
  ]
 }

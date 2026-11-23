@@ -1,29 +1,29 @@
 {
  "date": "2026-11-24",
- "edit_sig": "cfdd52d8a269",
+ "edit_sig": "907bc2d7b2e5",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "AGF 2026은 12월 4일부터 6일까지 고양시 킨텍스 제1전시장에서 열린다. 게임 시연, 시나리오 상영회, 굿즈 샵, 스탬프 랠리 등을 운영한다.",
      "date": "2026-11-23",
-     "n": 1,
-     "source": "소셜밸류",
-     "title": "엔씨 ′아스오라′, AGF 2026 메인 스폰서 참가…첫 PC 시연·팬 참여 행사 마련",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1qNVAyUEYyMnk4VmE0RGZfV05MdDQwWmxET2VtRF9LOVZXSElLMjRKNk15Ukg1ZDJmTVQ0N3JYdWZZTFhjZmExOF9xeGI0bEpyM3VKakVVTkxQWDlKcVRyRm1YcFRtNFh3Tmc3VtIBbEFVX3lxTE1qNVAyUEYyMnk4VmE0RGZfV05MdDQwWmxET2VtRF9LOVZXSElLMjRKNk15Ukg1ZDJmTVQ0N3JYdWZZTFhjZmExOF9xeGI0bEpyM3VKakVVTkxQWDlKcVRyRm1YcFRtNFh3Tmc3Vg?oc=5"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 2,
-     "source": "내외경제TV",
-     "title": "[AGF 2026] 아스트라에 오라티오, 새로운 꿈이 시작된다",
-     "url": "https://www.nbntv.co.kr/news/articleView.html?idxno=4027851"
+     "event": {
+      "date": "2026-12-04",
+      "label": "AGF 2026",
+      "place": "킨텍스 제1전시장"
+     },
+     "headline": "엔씨 ′아스오라′, AGF 2026 메인 스폰서 참가…첫 PC 시연·팬 참여 행사 마련",
+     "highlight": "AGF 2026 메인 스폰서",
+     "image": "https://www.socialvalue.kr/news/data/20261123/p1065599241139836_749_thum.jpg",
+     "image_via": "AI 挑选",
+     "url": "http://m.socialvalue.kr/news/amp.html?ncode=1065599241139836",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -449,6 +449,16 @@
      "image": "https://news.walkerplus.com/article/1445517/18700633_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1445517/image18700631.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-18",
+     "headline": "ジェラピケ×セサミストリートのコラボアイテムが発売！渡辺直美も「かわいい」と大絶賛",
+     "highlight": "セサミストリート",
+     "image": "https://news.walkerplus.com/article/1168007/12392132_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1168007/image12392178.html",
      "weight": "normal"
     }
    ],
