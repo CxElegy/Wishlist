@@ -1,10 +1,10 @@
 {
- "admin": "557976ad0fae",
- "admin-ai": "0d161ccc31ab",
+ "admin": "5b6bdd275e6c",
+ "admin-ai": "7dfb2146d6d2",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "42b8ca00"
+   "f8bc5c6b"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "685729a29a4b",
+ "admin-emblem": "4483532e5992",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "2486fa08"
+   "7333f088"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "1e7827507e63",
+ "admin-now": "2d3558c66508",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "afebc853"
+   "a64e77a8"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "de090e6a"
   ]
  },
- "admin-system": "6a1ab72ce1c8",
+ "admin-system": "bcd717bdf122",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e402382b"
+   "ac4016e3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0cd55e43"
+   "c70f2aee"
   ]
  },
  "admin_marks": {},
- "heat": "a93db533bc26",
+ "heat": "76ddd4a014cc",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "36a3bd52"
+   "ad2a71df"
   ],
   "ranking": [
    "ランキング",
-   "1e769f8e"
+   "186bc55d"
   ]
  },
- "index": "0c9a42811d54",
+ "index": "5e12f19f586c",
  "index_marks": {
   "front": [
    "トップ",
-   "77e2ada2"
+   "a30e483a"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "188e83d9"
+   "5c8cfc31"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "be92a2b7"
+   "b141734b"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "3790c064"
+   "12c7aaf9"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,11 +149,11 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "e0e4caf6"
+   "1a82534f"
   ],
   "w-b867582f": [
    "あつ森",
-   "cb26f042"
+   "77a00394"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -196,6 +196,6 @@
    "1e3543b3"
   ]
  },
- "updated": "11.24 02:43",
- "wishlist": "55af58fcf8d4"
+ "updated": "11.24 02:50",
+ "wishlist": "f608c7b0dec7"
 }

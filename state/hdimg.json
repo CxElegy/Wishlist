@@ -1352,6 +1352,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://consequence.net/wp-content/uploads/2026/10/Power-Trip.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://consequence.net/wp-content/uploads/2026/11/Grand-Theft-Auto-VI-The-Album-Deluxe.jpeg": {
+  "w": 1280,
+  "h": 721,
+  "target": 720,
+  "v": 3
+ },
  "https://cosmicbook.news/wp-content/uploads/2026/11/from-tv-series-ratings-netflix.webp": {
   "w": 1500,
   "h": 844,
@@ -1592,6 +1604,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/23/sdsimzsdsimzs_gpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/nov/23/sdsimzsdsimzs_gpu.webp?width=2752&height=1536": {
+  "w": 2752,
+  "h": 1536,
+  "target": 720,
+  "v": 3
+ },
  "https://games.app-liv.jp/images/articles/2026/05/gd_586001_-18.png": {
   "w": 700,
   "h": 370,
@@ -1817,6 +1835,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://i.pcmag.com/imagery/articles/06urdG5uq5dA4iuVN7r9JeM-9.fit_lim.size_1200x630.v1795191546.jpg": {
+  "w": 1120,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2026/11/CMan_00191edS.jpg?fit=1250%2C834&ssl=1": {
@@ -4889,6 +4913,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://rockstarintel.com/wp-content/uploads/2026/11/Lucia_Caminos_14-0-6_io7qeozm6-1-copy.webp": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://s-max.jp/wp-content/uploads/2026/11/dc98d45a-s.jpg": {
   "w": 480,
   "h": 270,
@@ -5018,6 +5048,12 @@
   "target": 720,
   "v": 3
  },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Plus-Ultra-Unbox-11.jpg": {
+  "w": 1900,
+  "h": 1425,
+  "target": 720,
+  "v": 3
+ },
  "https://sm.ign.com/t/ign_ap/news/g/gta-6-vice/gta-6-vice-city-nba-court-revealed-by-miami-heat_cf38.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -5066,6 +5102,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static.arynews.tv/zip-archives/wp-content/uploads/2026/11/From-1.jpg": {
+  "w": 1200,
+  "h": 650,
+  "target": 1280,
+  "v": 3
+ },
  "https://static.chunichi.co.jp/image/article/size1/9/9/e/e/99eef173c63e943807a6a19c3ca5f283_1.jpg": {
   "w": 843,
   "h": 1220,
@@ -5089,6 +5131,12 @@
   "w": 427,
   "h": 640,
   "target": 720,
+  "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/4/0/9/7/4097c362f104b02fedfba25d41e912a0_1.jpg": {
+  "w": 855,
+  "h": 1220,
+  "target": 1280,
   "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/4/0/e/2/40e2f70bbd3700dd0b35cd4fb1252459_1.jpg": {
@@ -5357,7 +5405,7 @@
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/gamepedia/wp-content/uploads/sites/25/2020/03/24090642/306320508312598283fb0f4253365a4c-2.jpg": {
   "w": 1200,
   "h": 630,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/gamepedia/wp-content/uploads/sites/25/2020/10/29045558/6c2b15c009984d71862435fc618c4296.png": {
@@ -6090,6 +6138,57 @@
    1.0
   ]
  },
+ "https://www.bing.com/th?id=ONUT.ccmLD2fGGZK2AXa8MHkabA&pid=News&w=450": {
+  "w": 450,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.58,
+  "local": "pics/8c32564d5ffdd8bf.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    3,
+    3,
+    4,
+    4,
+    12,
+    8,
+    14,
+    10,
+    12,
+    26,
+    3,
+    2
+   ],
+   [
+    1,
+    1,
+    6,
+    3,
+    6,
+    23,
+    17,
+    11,
+    9,
+    2,
+    16,
+    5
+   ]
+  ],
+  "c": "#9d947b",
+  "k": null,
+  "p": [
+   0.365,
+   0.374,
+   0.716,
+   0.741
+  ]
+ },
  "https://www.bing.com/th?id=ONUT.dPZ1BVkHLXJtgKQ_rOiB6w&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -6371,11 +6470,12 @@
    0.603
   ]
  },
- "https://www.bing.com/th?id=ONUT.uYFnAX1aTQ48jd6oQ0rojQ&pid=News&w=1032": {
+ "https://www.bing.com/th?id=ONUT.uGwyvKGd1AMwSR5v2KPJZw&pid=News&w=1200": {
   "w": 700,
-  "h": 417,
-  "target": 720,
-  "v": 3
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.419
  },
  "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
   "w": 700,
@@ -6866,6 +6966,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-Ultra-.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Ultra-vs.-S26-Ultra.jpg": {
   "w": 1280,
   "h": 720,
@@ -6968,6 +7074,12 @@
   "w": 801,
   "h": 1200,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.naijaandroidarena.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Pro-certification.jpeg": {
+  "w": 997,
+  "h": 642,
+  "target": 720,
   "v": 3
  },
  "https://www.negitaku.org/wp-content/uploads/2026/11/HXXHdDUWQAAb51F-1024x960.jpg": {
@@ -7128,6 +7240,12 @@
    0.786
   ],
   "p": null
+ },
+ "https://www.trustedreviews.com/wp-content/uploads/sites/7/2026/11/3a794511-7979-4356-81b4-68d70b871a78.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
  },
  "https://www.tvline.com/img/gallery/harry-potter-hbo-tv-series-posters-spotlight-dumbledore-mcgonagall-snape-and-hagrid/l-intro-1795425317.jpg": {
   "w": 1600,

@@ -81,6 +81,164 @@
   }
  ],
  "_covered": {
-  "漫威电影": 40
- }
+  "漫威电影": 40,
+  "GTA 6": 24,
+  "三星手机": 7,
+  "FROM": 3,
+  "猫用品": 3,
+  "あつ森": 1
+ },
+ "GTA 6": [
+  {
+   "headline": "GTA 6 Update Now Live On Xbox Series X|S, Includes Seven Official Fixes",
+   "highlight": "Seven Official Fixes",
+   "blurb": "Rockstar's first post-release update (01.002.002) is live on Xbox Series X|S with seven official fixes, including phone-call bugs that blocked story progress.",
+   "weight": "lead",
+   "refs": [
+    19,
+    11,
+    14,
+    3,
+    8,
+    20,
+    10
+   ],
+   "image": "https://rockstarintel.com/wp-content/uploads/2026/11/Lucia_Caminos_14-0-6_io7qeozm6-1-copy.webp"
+  },
+  {
+   "headline": "Hear POWER TRIP’s new song for 'Grand Theft Auto VI' \"Mutual Death Warrant\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    12
+   ]
+  },
+  {
+   "headline": "Rockstar Releases Deluxe Edition of Grand Theft Auto VI: The Album",
+   "highlight": "Deluxe Edition",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22,
+    18
+   ]
+  },
+  {
+   "headline": "GTA 6's unofficial PC port has an 8GB GPU claim, but the game still won’t boot",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    24,
+    4,
+    16
+   ]
+  },
+  {
+   "headline": "You Don't Need a PS5 Pro. GTA 6 Still Stuns on the Xbox Series S",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    21
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Leaked Galaxy S27 build reveals Dynamic Island makeover for Live notifications",
+   "highlight": "Dynamic Island",
+   "blurb": "An early Galaxy S27 series build suggests the Now Bar’s live notifications could take cues from Apple's Dynamic Island.",
+   "weight": "lead",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "Galaxy S27 予想以上に高価になるかもしれない。サムスンが値上げする理由は他にもある。",
+   "highlight": "値上げ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Base Galaxy S27 Ultra model set to miss out on top-tier internals",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Pro Spotted on BIS With Dual-SIM Model Number",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    6
+   ]
+  },
+  {
+   "headline": "Your First Look at the New Samsung Galaxy S27 Ultra Design",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "MGM+ renews From for fifth and final season",
+   "highlight": "fifth and final season",
+   "blurb": "MGM+ has officially renewed the sci-fi horror series From for a fifth and final season; filming has wrapped in Halifax.",
+   "weight": "lead",
+   "refs": [
+    2,
+    3
+   ],
+   "image": "https://static.arynews.tv/zip-archives/wp-content/uploads/2026/11/From-1.jpg"
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "ペット家電ブランド「PETKIT」から新型「自動猫トイレ(P9906)」登場！猫も飼い主も快適に使えるよう進化",
+   "highlight": "新型「自動猫トイレ(P9906)」",
+   "blurb": "ウエニ貿易はPETKITの新型自動猫トイレ「P9906」を11月13日に発売した。",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.ccmLD2fGGZK2AXa8MHkabA&pid=News&w=450"
+  },
+  {
+   "headline": "猫用品や雑貨販売 津山で１３日マルシェ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "【あつ森】上の段に行くには？崖・高台の登り方やはしごの入手方法",
+   "highlight": "",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }
