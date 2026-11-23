@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "6c153ce8705f",
+ "edit_sig": "8feafbcac278",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -768,33 +768,6 @@
    }
   },
   {
-   "cover": "https://vaundy.jp/og_image.png",
-   "facts": [],
-   "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-23",
-     "n": 2,
-     "source": "中時新聞網",
-     "title": "袁澧林曾當日本巨星MV女主角！唱游鴻明〈繁華攏是夢〉釣出Vaundy按讚",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBWeEpDTEZfRWpRTjRzNzhvWUVtUzRyMlpIV3dTMlg0YzBHYnpIel9FUDFySTdVU08tUlBDcjR6MWx4YWJleHBrNmc3WndhcWtkSnMtR3FZUEF3UDFzbW0yTUxDTTdVd2xFTW0wSTdR?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "演唱会",
-   "theme": {
-    "accent": "#B9A6F2",
-    "alt_accent": "#5B43A8",
-    "alt_bg": "#F1EEF8",
-    "alt_fg": "#1C1826",
-    "bg": "#15131C",
-    "fg": "#EEEAF4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": null,
    "facts": [],
    "name": "周杰伦",
@@ -862,7 +835,7 @@
       "label": "更新日"
      },
      "headline": "ロスキャリパーの運命を賭けた戦闘、ゼンレスゾーンゼロ 3.4 予告",
-     "highlight": "ゼンレスゾーンゼロ 3.4",
+     "highlight": "3.4 予告",
      "image": "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg",
      "image_via": "AI 挑选",
      "url": "https://www.gamemeca.com/ja/view.php?gid=1783989",
@@ -1159,6 +1132,31 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "last": {
+    "date": "2026-11-22",
+    "headline": "Vaundy、2027年から開催するアリーナツアーの追加公演を発表",
+    "url": "https://natalie.mu/music/gallery/news/697069/2841686"
+   },
+   "name": "Vaundy",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
+    "font": "serif",
     "split": true
    }
   }
