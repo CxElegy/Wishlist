@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "83085f8dd3fd",
+ "edit_sig": "56dd80651ea8",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -931,36 +931,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 16,
-     "source": "手机新浪网",
-     "title": "现在魔方还掉落大战斗号角，可以为己方每条兵线上召唤一波超级士兵。 #dota2# #7.42# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBvc3QwaHdKQUJLWjFUTGtJbGV6bEtlOC1scW9pV25DSXVyWi1sVVJWeWF2a2p5V1RucHQzQWtDQWJRWjZzUVdIc0FubGZyU3BlQkRaTWNEMVJsYmdqMEZWWmVscw?oc=5"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 17,
-     "source": "新浪游戏",
-     "title": "DOTA2.RU专栏：新版地图13处细节改动——重点变化一览",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQUjJVU3B1SGFrNV85TGhSS1F3RlY1VExhbUlXVWxObWdGaHYwWEdBWkxoM0RkRGJKdmpMbWcxWmtiMjB1LWxPdFBwOVdhNC11MzNWSmhYNDlaY0dCSmlESFJ0Qkt5T2pITWxLZXZfQWtCNGVxaEdvUTByU1ZYMWhMQzlmMzhDcVQ1ai00Wg?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 18,
-     "source": "集微网",
-     "title": "聚焦智慧生活全场景，DOTA2菠菜竞猜网 2.0 焕新上线 — 打造AI驱动的沉浸式服务入口与生态升级",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5jS1hObVFsVkVXOHhrWlNRdVJkUFRzTmxTWEc1VlZfOWhZQllNUlZ4OW1RWm9USHA0YnJLeDlJZC0wb25tN1kxV1JhUzBzT21rN1FicVZHeEktclBwY21ZeFdQdnhkX2htUlAtalFKUVlvYWFmcWc?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 19,
-     "source": "蕃新聞",
-     "title": "Dota 2 BLAST Slam IX爆冷 Team Spirit小組賽兩連敗出局 PARIVISION晉級種子戰",
-     "url": "https://n.yam.com/Article/20261123530879"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -981,6 +951,16 @@
      "image": "https://hawk.live/storage/images/posts/dota-2s-new-hero-kez-25446.jpg",
      "image_via": "og:image",
      "url": "https://hawk.live/posts/dota-2-kez-hero-guide",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "Dota 2 BLAST Slam IX爆冷 Team Spirit小組賽兩連敗出局 PARIVISION晉級種子戰",
+     "highlight": "Team Spirit小組賽兩連敗出局",
+     "image": "https://ni.yam.com/20261123/dota2-online-tournament-streaming-studio-20261123-88b55bb77031cc11.webp",
+     "image_via": "og:image",
+     "url": "https://n.yam.com/Article/20261123530879",
      "weight": "normal"
     }
    ],

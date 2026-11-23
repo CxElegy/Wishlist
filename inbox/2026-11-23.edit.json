@@ -79,7 +79,7 @@
   "哈利波特剧集": 10,
   "MMORPG 新作": 13,
   "The Mandalorian": 7,
-  "dota2": 15,
+  "dota2": 19,
   "周杰伦": 25,
   "猫用品": 4,
   "ILLIT": 24,
@@ -395,7 +395,9 @@
     10,
     11,
     12,
-    13
+    13,
+    16,
+    17
    ]
   },
   {
@@ -406,6 +408,15 @@
    "refs": [
     14,
     15
+   ]
+  },
+  {
+   "headline": "Dota 2 BLAST Slam IX爆冷 Team Spirit小組賽兩連敗出局 PARIVISION晉級種子戰",
+   "highlight": "Team Spirit小組賽兩連敗出局",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
    ]
   }
  ],
