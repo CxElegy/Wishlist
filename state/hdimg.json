@@ -62,6 +62,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261122ac/199/w639h360/20261122/fe7e-de236a7ffad64cbf05f716587b22e92a.jpg": {
+  "w": 639,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261122ac/321/w480h641/20261122/8c0a-e78903a0cf98cab6480b3e9568f5c1f3.jpg": {
   "w": 480,
   "h": 641,
@@ -1282,6 +1288,57 @@
    0.668,
    0.774
   ]
+ },
+ "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg": {
+  "w": 600,
+  "h": 337,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.436,
+  "local": "pics/fc21b389facd5a1a.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    5,
+    6,
+    7,
+    9,
+    10,
+    8,
+    12,
+    15,
+    10,
+    9,
+    3
+   ],
+   [
+    7,
+    10,
+    11,
+    10,
+    6,
+    5,
+    5,
+    6,
+    9,
+    13,
+    8,
+    9
+   ]
+  ],
+  "c": "#495878",
+  "k": [
+   0.567,
+   0.612,
+   0.997,
+   0.96
+  ],
+  "p": null
  },
  "https://cdn.livedoor.jp/kstyle/424ab55ca9afb3a344907449a662ec69_WI.jpg": {
   "w": 1024,
@@ -2625,12 +2682,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i0dpI.img": {
-  "w": 1378,
-  "h": 775,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i0irI.img": {
   "w": 1000,
   "h": 667,
@@ -3350,13 +3401,6 @@
   "h": 720,
   "target": 1280,
   "v": 3
- },
- "https://inews.gtimg.com/om_ls/O0gu10wy3dNF_j7DwPgZhO041XdpS6IJxE_LqLtG0GeC8AA/0": {
-  "w": 540,
-  "h": 721,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.379
  },
  "https://inews.gtimg.com/om_ls/OP11PO3hHxyuukzxslfXwg28QjyN2zp8cN7W6JnrZmOxsAA_330330/0": {
   "w": 330,
@@ -6925,6 +6969,12 @@
  "https://www.bing.com/th?id=ONUT.N25GKwIH7DzBX1qu8qQziQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Ne8O4bA28riAr6z1EpiBBg&pid=News&w=1200": {
+  "w": 700,
+  "h": 428,
   "target": 720,
   "v": 3
  },
