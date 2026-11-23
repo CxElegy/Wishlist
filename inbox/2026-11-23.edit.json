@@ -91,7 +91,7 @@
   "A2O LITE": 4,
   "星巴克马克杯": 1,
   "BLEACH Mirrors High": 1,
-  "绝区零": 9,
+  "绝区零": 13,
   "Astrae Oratio": 18,
   "あつ森": 1
  },
@@ -719,18 +719,22 @@
  ],
  "绝区零": [
   {
-   "headline": "Zenless Zone Zero version 3.4 update set for December 2",
-   "highlight": "December 2",
+   "headline": "ロスキャリパーの運命を賭けた戦闘、ゼンレスゾーンゼロ 3.4 予告",
+   "highlight": "ゼンレスゾーンゼロ 3.4",
    "blurb": "Version 3.4 “End of Long Days” goes live December 2 with a Honkai: Star Rail collab; logging in gives a free S-rank Robin.",
    "weight": "hero",
    "refs": [
+    11,
     3,
     2,
     4,
     5,
     8,
     7,
-    9
+    9,
+    10,
+    12,
+    13
    ],
    "event": {
     "date": "2026-12-02",

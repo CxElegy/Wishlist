@@ -51,9 +51,9 @@
   "https://www.chinatimes.com/realtimenews/20261123002656-260404": "https://images.chinatimes.com/newsphoto/2026-11-23/656/20261123002657.jpg",
   "https://www.cosmopolitan.com/tw/beauty/make-up/g73481037/2026-cat-eye-nails-winter/": "https://hips.hearstapps.com/hmg-prod/images/ae3dc98e-8759-4a07-af75-9cbce8d4b168.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*",
   "https://www.epochtimes.com/b5/26/11/20/n14892147.htm": "https://i.epochtimes.com/assets/uploads/2026/11/id14892156-S__1377828886_0-1200x800.jpg",
+  "https://www.fomos.kr/game/news_view?entry_id=157559": "https://www.bing.com/th?id=ONUT.HDYu5bHkhewdG_JseAla_A&pid=News&w=1200",
   "https://www.fomos.kr/game/news_view?entry_id=157572&news_cate_id=2": "https://www.bing.com/th?id=ONUT.6dCCTfjI_QU6zZzUOBoFWA&pid=News&w=1200",
   "https://www.fountmedia.io/article/446804": "https://fountmedia.s3.ap-northeast-1.amazonaws.com/article/08/04/446804_6535.webp?v=1795164936",
-  "https://www.gamemeca.com/ja/view.php?gid=1783989": "https://www.bing.com/th?id=ONUT.2IND3-UjK2sr0l13dXLnMw&pid=News&w=1200",
   "https://www.gamesradar.com/best-superhero-movies/": null,
   "https://www.imdb.com/news/ni66124078/?ref_=int_nwr_1": "https://images2.minutemediacdn.com/image/upload/c_crop,x_214,y_421,w_698,h_392/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m82w25xjg52h53j964.jpg",
   "https://www.itsdw.cn/news/51512.html": "https://www.itsdw.cn/wp-content/uploads/2026/11/20261122231159172600.png",
@@ -1034,27 +1034,6 @@
    "because": "绝区零",
    "date": "2026-11-22",
    "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.2IND3-UjK2sr0l13dXLnMw&pid=News&w=1200",
-   "kind": "board",
-   "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
-   "score": 8,
-   "source": "GameMeca",
-   "taste": [
-    [
-     "作品:绝区零",
-     8
-    ]
-   ],
-   "title": "ロスキャリパーの運命を賭けた戦闘、ゼンレスゾーンゼロ 3.4 予告",
-   "url": "https://www.gamemeca.com/ja/view.php?gid=1783989",
-   "words": [],
-   "work": "绝区零"
-  },
-  {
-   "batch": 2,
-   "because": "绝区零",
-   "date": "2026-11-22",
-   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.kCA-8igxNqj9HwA70LtKoQ&pid=News&w=1200",
    "kind": "board",
    "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
@@ -1112,6 +1091,27 @@
    "url": "https://biz.chosun.com/en/en-entertainment/2026/11/23/AYULWPEOMZBPFFR3HPJX5LB3RI/",
    "words": [],
    "work": "ILLIT"
+  },
+  {
+   "batch": 2,
+   "because": "绝区零",
+   "date": "2026-11-22",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.HDYu5bHkhewdG_JseAla_A&pid=News&w=1200",
+   "kind": "board",
+   "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
+   "score": 8,
+   "source": "포모스",
+   "taste": [
+    [
+     "作品:绝区零",
+     8
+    ]
+   ],
+   "title": "젠레스 존 제로, 3.4 버전에 '태양을 가져 온 자' 등장",
+   "url": "https://www.fomos.kr/game/news_view?entry_id=157559",
+   "words": [],
+   "work": "绝区零"
   },
   {
    "batch": 2,
@@ -2063,11 +2063,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2075,15 +2075,15 @@
    8
   ],
   [
-   "galaxy",
-   7
-  ],
-  [
    "三星 Galaxy",
    7
   ],
   [
    "作品:三星手机",
+   7
+  ],
+  [
+   "galaxy",
    7
   ]
  ]

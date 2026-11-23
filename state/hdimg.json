@@ -395,52 +395,6 @@
    0.45
   ]
  },
- "http://wx2.sinaimg.cn/middle/005PGxqHly1ij8wb35k8pj31o02807wh.jpg": {
-  "w": 2000,
-  "h": 2667,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/8a0241ce68552a97.webp",
-  "out": [
-   960,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    4,
-    5,
-    4,
-    6,
-    6,
-    8,
-    36,
-    18,
-    3,
-    3,
-    4,
-    3
-   ],
-   [
-    3,
-    3,
-    4,
-    14,
-    44,
-    4,
-    6,
-    5,
-    4,
-    4,
-    4,
-    5
-   ]
-  ],
-  "c": "#a49095",
-  "k": null,
-  "p": null
- },
  "http://wx2.sinaimg.cn/middle/008eZAxIly1ij58zvht0fj32bk2w01l2.jpg": {
   "w": 2000,
   "h": 2489,
@@ -1209,6 +1163,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gamemeca.com/gmdata/0001/783/989/gm508765_thumb____.webp": {
+  "w": 1200,
+  "h": 670,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/gmdata/0001/784/020/gm684589_thumb____AGF_2026.webp": {
   "w": 1200,
   "h": 670,
@@ -1288,57 +1248,6 @@
    0.668,
    0.774
   ]
- },
- "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg": {
-  "w": 600,
-  "h": 337,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.436,
-  "local": "pics/fc21b389facd5a1a.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    5,
-    5,
-    6,
-    7,
-    9,
-    10,
-    8,
-    12,
-    15,
-    10,
-    9,
-    3
-   ],
-   [
-    7,
-    10,
-    11,
-    10,
-    6,
-    5,
-    5,
-    6,
-    9,
-    13,
-    8,
-    9
-   ]
-  ],
-  "c": "#495878",
-  "k": [
-   0.567,
-   0.612,
-   0.997,
-   0.96
-  ],
-  "p": null
  },
  "https://cdn.livedoor.jp/kstyle/424ab55ca9afb3a344907449a662ec69_WI.jpg": {
   "w": 1024,
@@ -6610,12 +6519,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.2IND3-UjK2sr0l13dXLnMw&pid=News&w=1200": {
-  "w": 700,
-  "h": 390,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.2OyEI7Q8Q2znC2NwuWqeog&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -6965,6 +6868,12 @@
    0.808,
    0.695
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.HDYu5bHkhewdG_JseAla_A&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.KUGdmGv_5sFGlc8qpnP1hQ&pid=News&w=1200": {
   "w": 700,

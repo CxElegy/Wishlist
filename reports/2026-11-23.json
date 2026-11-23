@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "56dd80651ea8",
+ "edit_sig": "f8a1823ca846",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -865,41 +865,8 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-23",
-     "n": 10,
-     "source": "게임메카",
-     "title": "决战罗斯卡利珀命运，《绝区零》3.4版本预告",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5OSXlLV0ZZM2VTdDRxM3d1QVFLRkhUeXFRTnhLOUlqdTNzSGZYQlJnYzFaV3ZTcU9WOVRZSmRJaE51TnRxVnc5WkVrbUN4TEZCcTlPLV9DOWVzTXZG?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 11,
-     "source": "GameMeca",
-     "title": "ロスキャリパーの運命を賭けた戦闘、ゼンレスゾーンゼロ 3.4 予告",
-     "url": "https://www.gamemeca.com/ja/view.php?gid=1783989"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 12,
-     "source": "搜狐",
-     "title": "《绝区零》3.4版本「长日终尽」将于12月2日上线 ｜#游戏资讯# #绝区零# #版本更新#",
-     "url": "https://www.sohu.com/a/1105302614_122598898"
-    }
-   ],
    "section": "游戏",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-20",
-     "headline": "#绝区零[超话]##绝区零##绝区零3.4##热点优质创作计划# 这就是免费送的知更鸟！！[抱一抱] ​",
-     "highlight": "",
-     "image": "http://wx2.sinaimg.cn/middle/005PGxqHly1ij8wb35k8pj31o02807wh.jpg",
-     "image_via": "正文图（本站保存）",
-     "url": "https://www.sina.cn/news/detail/5367415892607776.html",
-     "weight": "hero"
-    },
     {
      "blurb": "Version 3.4 “End of Long Days” goes live December 2 with a Honkai: Star Rail collab; logging in gives a free S-rank Robin.",
      "date": "2026-11-22",
@@ -907,11 +874,11 @@
       "date": "2026-12-02",
       "label": "更新日"
      },
-     "headline": "Zenless Zone Zero version 3.4 update set for December 2",
-     "highlight": "December 2",
-     "image": "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg",
-     "image_via": "AI 挑选",
-     "url": "https://www.msn.com/en-us/gaming/general/zenless-zone-zero-version-3-4-update-set-for-december-2/ar-AA2hZWmy",
+     "headline": "ロスキャリパーの運命を賭けた戦闘、ゼンレスゾーンゼロ 3.4 予告",
+     "highlight": "ゼンレスゾーンゼロ 3.4",
+     "image": "https://cdn.gamemeca.com/gmdata/0001/783/989/gm508765_thumb____.webp",
+     "image_via": "og:image",
+     "url": "https://www.gamemeca.com/ja/view.php?gid=1783989",
      "weight": "hero"
     }
    ],
