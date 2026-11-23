@@ -64,7 +64,7 @@
   "dota2": 9,
   "周杰伦": 5,
   "猫用品": 1,
-  "ILLIT": 10,
+  "ILLIT": 16,
   "FROM": 1,
   "チェーンソーマン": 3,
   "Vaundy": 1,
@@ -291,24 +291,38 @@
    ]
   },
   {
-   "headline": "아일릿, 日 홍백가합전 K팝 유일 출연",
-   "highlight": "홍백가합전",
+   "headline": "ILLIT、K-POP初のレコ大3年連続受賞…紅白唯一の出場",
+   "highlight": "レコ大3年連続受賞",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    13,
+    12,
+    11,
     8,
     9,
-    10
+    10,
+    6,
+    7
    ]
   },
   {
-   "headline": "ILLIT First K-pop Group with Three Consecutive Japan Wins",
-   "highlight": "Three Consecutive",
+   "headline": "ILLIT MAMA Awards — 3-Win Triumph and 1 Million Views in 5 Hours",
+   "highlight": "3-Win",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6,
-    7
+    15,
+    16
+   ]
+  },
+  {
+   "headline": "【ILLIT セトリ】\"PRESS START♥︎\" 2026全公演セットリストまとめ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
    ]
   }
  ],

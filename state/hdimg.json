@@ -1006,12 +1006,6 @@
    0.406
   ]
  },
- "https://biz.chosun.com/resizer/v2/GZRTOOJYMUZTAOJVGQ2TCMBWGI.jpg?auth=9fde623d9927b8e3310b3b76976e090183fcf128cfd899ca86c04d90455b90b0&width=572&height=300&smart=true": {
-  "w": 572,
-  "h": 300,
-  "target": 720,
-  "v": 3
- },
  "https://biz.chosun.com/resizer/v2/MU4TKZJSGFRWKODFGJSDMNDGMY.jpg?auth=d5d781a08144fc3ecbffab8ddb662f77297fde6b0d303a24484c0e2d684d3c2f&width=572&height=300&smart=true": {
   "w": 572,
   "h": 300,
@@ -1662,6 +1656,12 @@
   "w": 1179,
   "h": 1179,
   "target": 1280,
+  "v": 3
+ },
+ "https://en.koreadaily.com/wp-content/uploads/2026/11/202611221017776477_6b0248454f40e.jpg": {
+  "w": 650,
+  "h": 433,
+  "target": 720,
   "v": 3
  },
  "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
@@ -3575,6 +3575,12 @@
  "https://moonvoke.com/images/news/donguri-republic-snowman-totoro-banqiao-guide-2026.webp": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://motoryokoblog.com/wp-content/uploads/2026/09/illit_18226_fv.png": {
+  "w": 1200,
+  "h": 628,
   "target": 720,
   "v": 3
  },
@@ -6198,12 +6204,6 @@
   "target": 720,
   "v": 3
  },
- "https://wimg.heraldcorp.com/news/cms/2026/11/21/news-p.v1.20261026.147ea7e1b65a4793b6df955ee31c2ab5_P1.jpg": {
-  "w": 647,
-  "h": 431,
-  "target": 720,
-  "v": 3
- },
  "https://win.gg/wp-content/uploads/2026/11/image-2026-11-19T122636.407.jpg.webp": {
   "w": 1200,
   "h": 675,
@@ -7035,6 +7035,12 @@
  "https://www.bing.com/th?id=ONUT.iY9uG5vAIYegAm4iKUrt2A&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ihgjr88of819VJzMvHM7xQ&pid=News&w=572": {
+  "w": 572,
+  "h": 300,
   "target": 720,
   "v": 3
  },
