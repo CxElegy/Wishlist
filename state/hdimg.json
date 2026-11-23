@@ -758,12 +758,6 @@
   "target": 720,
   "v": 3
  },
- "https://assetsio.gnwcdn.com/mafia-city-of-lost-heaven-car-park-shootout.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg": {
   "w": 618,
   "h": 348,
@@ -1016,12 +1010,6 @@
   "k": null,
   "p": null
  },
- "https://bloximages.chicago2.vip.townnews.com/thecanadianpressnews.ca/content/tncms/assets/v3/editorial/1/09/109fefdc-6587-5e74-9e3b-8f11271af871/6af4f3f98e144.image.jpg?crop=1400%2C735%2C0%2C99&resize=1200%2C630&order=crop%2Cresize": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://businessupturn.com/uploads/media/1794830799107-r6g345-untitled-design---2026-11-16t173622-305.webp": {
   "w": 1200,
   "h": 675,
@@ -1064,6 +1052,18 @@
   "w": 600,
   "h": 348,
   "target": 720,
+  "v": 3
+ },
+ "https://cdn.essential-japan.com/wp-content/uploads/2026/11/Farmer-Pikachu-Plush.webp": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn.essential-japan.com/wp-content/uploads/2026/11/Pompompurin-x-Starbucks-Collab-Main.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.factinnews.co.kr/news/photo/202611/301074_50935_130.jpg": {
@@ -1612,6 +1612,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://eeo.today/media/wp-content/uploads/2026/11/1026_ijihaji_KV.jpg": {
+  "w": 1359,
+  "h": 1920,
+  "target": 720,
+  "v": 3
+ },
  "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
   "w": 1200,
   "h": 630,
@@ -1682,12 +1688,6 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
-  "v": 3
- },
- "https://fountmedia.s3.ap-northeast-1.amazonaws.com/article/08/04/446804_6535.webp?v=1795164936": {
-  "w": 1024,
-  "h": 683,
-  "target": 1280,
   "v": 3
  },
  "https://gagadget.com/media/cache/5e/c6/5ec6d0b4cbbfb0e1015dd7f11b499c2d.webp": {
@@ -2091,57 +2091,6 @@
   "h": 600,
   "target": 720,
   "v": 3
- },
- "https://image.ajunews.com/content/image/2026/11/18/20261118161007382055.jpg": {
-  "w": 640,
-  "h": 375,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.446,
-  "local": "pics/cefec0cc3046101d.webp",
-  "out": [
-   1280,
-   750
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    4,
-    4,
-    3,
-    3,
-    10,
-    31,
-    28,
-    4,
-    3,
-    3,
-    4,
-    3
-   ],
-   [
-    7,
-    6,
-    4,
-    3,
-    19,
-    18,
-    18,
-    14,
-    4,
-    3,
-    3,
-    1
-   ]
-  ],
-  "c": "#6a5342",
-  "k": [
-   0.8,
-   0.878,
-   0.92,
-   0.934
-  ],
-  "p": null
  },
  "https://image.cmoney.tw/attachment/blog/1794931200/f94433d9-4fd3-40ed-9373-f4a4ff191325.jpg": {
   "w": 688,
@@ -3465,12 +3414,6 @@
   "target": 1280,
   "v": 3
  },
- "https://media.nownews.com/nn_media/thumbnail/2026/11/1795157032892-e3373d74952c44f4a632cae8c0ab08f7-1200x900.webp?unShow=false": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://media.nownews.com/nn_media/thumbnail/2026/11/1795171225956-1cef1977fc14485fab7a15f202c6f3c0-1200x675.webp?unShow=false": {
   "w": 1200,
   "h": 675,
@@ -3909,6 +3852,57 @@
   "h": 400,
   "target": 720,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/85785/484215_615.jpg": {
+  "w": 615,
+  "h": 656,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.503,
+  "local": "pics/358e5b1de1c605df.webp",
+  "out": [
+   1200,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    5,
+    7,
+    11,
+    13,
+    10,
+    12,
+    12,
+    11,
+    8,
+    5,
+    4
+   ],
+   [
+    7,
+    3,
+    4,
+    7,
+    14,
+    14,
+    16,
+    14,
+    4,
+    6,
+    7,
+    3
+   ]
+  ],
+  "c": "#e3cb95",
+  "k": [
+   0.268,
+   0.278,
+   0.708,
+   0.952
+  ],
+  "p": null
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261102-00035871-tennismagv-000-2-view.jpg?exp=10800": {
   "w": 1280,
@@ -4528,6 +4522,56 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-41201171-nksports-000-2-view.jpg?exp=10800": {
+  "w": 1500,
+  "h": 1140,
+  "target": 720,
+  "v": 3,
+  "local": "pics/aa6cd4cfc0b1e2b7.webp",
+  "out": [
+   1280,
+   973
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    0,
+    8,
+    11,
+    18,
+    12,
+    9,
+    10,
+    11,
+    12,
+    10,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    7,
+    13,
+    13,
+    14,
+    8,
+    8,
+    19,
+    7,
+    9,
+    0
+   ]
+  ],
+  "c": "#bbbfac",
+  "k": [
+   0.224,
+   0.348,
+   0.752,
+   0.753
+  ],
+  "p": null
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00000003-anmanmv-000-1-view.jpg?exp=10800": {
   "w": 639,
   "h": 800,
@@ -4881,52 +4925,6 @@
    0.365,
    0.247
   ],
-  "p": null
- },
- "https://prcdn.freetls.fastly.net/release_image/30942/1017/30942-1017-9156bd3c0912825ebd9f31d5cee75226-728x412.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 728,
-  "h": 412,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.44,
-  "local": "pics/d9175cbf4050a4fb.webp",
-  "out": [
-   1280,
-   724
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    7,
-    8,
-    8,
-    8,
-    6,
-    10,
-    8,
-    9,
-    6,
-    9,
-    10,
-    11
-   ],
-   [
-    4,
-    3,
-    1,
-    4,
-    9,
-    15,
-    18,
-    13,
-    8,
-    7,
-    9,
-    7
-   ]
-  ],
-  "c": "#3f3a37",
-  "k": null,
   "p": null
  },
  "https://prcdn.freetls.fastly.net/release_image/31800/232/31800-232-a96ac789c08e72d24265437f7bf23eba-844x394.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -6821,6 +6819,13 @@
    0.603
   ]
  },
+ "https://www.bing.com/th?id=ONUT.tiy6Mg2arjYOj9zmJrpxHQ&pid=News&w=700": {
+  "w": 700,
+  "h": 432,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.35
+ },
  "https://www.bing.com/th?id=ONUT.uGwyvKGd1AMwSR5v2KPJZw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -6873,6 +6878,62 @@
   "c": "#5d5354",
   "k": null,
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.usVEej-Jg1eNqzoWeM0qsw&pid=News&w=600": {
+  "w": 600,
+  "h": 440,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.517,
+  "local": "pics/f4254473b03f26c4.webp",
+  "out": [
+   1280,
+   939
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    4,
+    3,
+    3,
+    3,
+    4,
+    34,
+    28,
+    4,
+    6,
+    4,
+    3
+   ],
+   [
+    5,
+    3,
+    8,
+    33,
+    24,
+    4,
+    3,
+    6,
+    7,
+    3,
+    1,
+    2
+   ]
+  ],
+  "c": "#304260",
+  "k": [
+   0.014,
+   0.0,
+   0.996,
+   0.719
+  ],
+  "p": [
+   0.472,
+   0.213,
+   0.67,
+   0.541
+  ]
  },
  "https://www.bing.com/th?id=ONUT.uxRIX98KIMnmPN8bgKUr5A&pid=News&w=700": {
   "w": 700,
@@ -7451,12 +7512,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.nikkansports.com/baseball/news/img/202611200001171-w1300_0.jpg": {
-  "w": 1300,
-  "h": 988,
-  "target": 720,
-  "v": 3
- },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA-6-Recomp.jpg": {
   "w": 2500,
   "h": 1875,
@@ -7478,12 +7533,6 @@
  "https://www.pcgames.de/screenshots/original/2026/10/Harry-Potter-HBO-pc-games_artwork31.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/11/14.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -7522,6 +7571,12 @@
   "w": 1080,
   "h": 608,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/09/Untitled-design-2026-09-21T171424.351.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/doomsday_39dafd.jpg?resize=1200,630": {
