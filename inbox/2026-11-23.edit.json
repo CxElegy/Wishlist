@@ -86,7 +86,8 @@
   "A2O LITE": 2,
   "星巴克马克杯": 1,
   "BLEACH Mirrors High": 1,
-  "绝区零": 9
+  "绝区零": 9,
+  "Astrae Oratio": 14
  },
  "漫威电影": [
   {
@@ -578,6 +579,44 @@
     "label": "更新日"
    },
    "image": "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg"
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "Astrae Oratio unveils AGF 2026 on-site program",
+   "highlight": "AGF 2026",
+   "blurb": "NC has unveiled its on-site program for Astrae Oratio at AGF 2026 (Dec 4–6, KINTEX), showcasing the PC build for the first time alongside a scenario screening, goods shop and stamp rally.",
+   "weight": "lead",
+   "refs": [
+    12,
+    13,
+    14,
+    10,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    11
+   ],
+   "event": {
+    "date": "2026-12-04",
+    "label": "AGF 2026",
+    "place": "KINTEX 第1展示場"
+   },
+   "image": "https://game.donga.com/media/__sized__/images/2026/11/23/0ef2b3877af14464-thumbnail-1920x1080-70.jpg"
+  },
+  {
+   "headline": "[AGF 26] 신규 캐릭터 6종 시연, 아스오라 전시 내용 공개",
+   "highlight": "신규 캐릭터 6종",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ]
 }
