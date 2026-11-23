@@ -16,6 +16,7 @@
   "https://finance.biggo.jp/news/3f6b4203-2c86-4ce7-ac41-649807c8447b": "https://img.biggo.com/NM082c6nQeLtDI0by5nTiE4EBs-uuE9M0xYKYP--DiQ/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExLzNmNmI0MjAzLTJjODYtNGNlNy1hYzQxLTY0OTgwN2M4NDQ3Yl8xNzk0OTA0MTM0X2RlZmF1bHQud2VicA.jpg",
   "https://games.sina.cn/esports/2026-11-23/edetail-iniztfmy5504549.d.html?vt=4&pos=108": "http://n.sinaimg.cn/games/crawl/59/w550h309/20261123/5696-dcbc649567ae93fd119b5c6b9326184d.png",
   "https://hochi.news/articles/20261119-OHT1T51260.html": "https://hochi.news/images/2026/11/19/20261119-OHT1I51373-C.jpg",
+  "https://hollywoodlife.com/feature/why-was-avengers-doomsday-release-date-delayed-5556364/": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/92DE7AEDE1BF449FFEEBFC4ABC6141324A6BDDA275DA7407E44DCFE42D4AF46E/scale?format=webp&width=1200",
   "https://life.tw/article/%E8%90%AC%E8%81%96%E8%8B%B1%E8%AA%9E%E9%96%B1%E8%AE%80%E9%97%96%E9%97%9C-%E5%85%83%E6%99%BA%E5%AD%B8%E7%94%9F%E9%BC%93%E5%8B%B5%E5%AD%B8%E7%AB%A5%E9%80%8F%E9%81%8E%E5%AF%A6%E9%9A%9B%E6%93%8D%E4%BD%9C%E8%88%87%E4%BA%92%E5%8B%95%E5%AD%B8%E8%8B%B1%E8%AA%9E-3226258": "https://focusnews.com.tw/wp-content/uploads/2026/11/圖二元智大學英語學士班師生與龜山國小學童開心合影。1.jpg",
   "https://m.sohu.com/a/1102672179_121119309?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334": "https://q6.itc.cn/q_70/images03/20261117/a038ca59e51543b0bb9dea382943fffd.jpeg",
   "https://moonvoke.com/posts/donguri-republic-snowman-totoro-banqiao-guide-2026/": "https://moonvoke.com/images/news/donguri-republic-snowman-totoro-banqiao-guide-2026.webp",
@@ -34,6 +35,7 @@
   "https://prtimes.jp/main/html/rd/p/000001017.000030942.html": "https://prcdn.freetls.fastly.net/release_image/30942/1017/30942-1017-9156bd3c0912825ebd9f31d5cee75226-728x412.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://s-max.jp/archives/1807053.html": "https://s-max.jp/wp-content/uploads/2026/11/dc98d45a-s.jpg",
   "https://startefacts.com/news/one-lost-actress-still-wont-talk-to-froms-harold-perrineau": "https://startefacts.com/k2/news/canvas/1200x630/upload/upload/news/115295097017.jpg",
+  "https://thedirect.com/article/avengers-doomsday-historic-rating-marvel-studios-movie": "https://www.bing.com/th?id=ONUT.iy1fCvsCIAb8EjBVLjB8mQ&pid=News&w=1200",
   "https://thelocalgirl.com/calendar/event/washington-spirit-championship-watch-party-at-chubby-squirrel-brewing-company-in-fairfax/": "https://thelocalgirl.com/calendar/wp-content/uploads/sites/11/2026/11/Screenshot-2026-11-19-094645.png",
   "https://trilltrill.jp/articles/5198062": "https://media.trilltrill.jp/articles/5198062/featured-image.9f5e4fa7bb3d391856ff71a19786e7be?w=1200",
   "https://v-storage.jp/anime/etc-anime/291207/": "https://v-storage.jp/wp-content/uploads/2026/11/78042ea541338f80de191733f4e53155-1.jpg",
@@ -1297,6 +1299,48 @@
   },
   {
    "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-23",
+   "hits": [],
+   "image": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/92DE7AEDE1BF449FFEEBFC4ABC6141324A6BDDA275DA7407E44DCFE42D4AF46E/scale?format=webp&width=1200",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "Hollywood Life",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Why Was ‘Avengers: Doomsday’ Delayed? Release Date & More",
+   "url": "https://hollywoodlife.com/feature/why-was-avengers-doomsday-release-date-delayed-5556364/",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-23",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.iy1fCvsCIAb8EjBVLjB8mQ&pid=News&w=1200",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "The Direct",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Avengers: Doomsday Achieves Historic Rating No Marvel Studios Movie Has Before",
+   "url": "https://thedirect.com/article/avengers-doomsday-historic-rating-marvel-studios-movie",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
    "because": "A2O LITE",
    "date": "2026-11-22",
    "hits": [],
@@ -1338,7 +1382,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "哈利波特剧集",
    "date": "2026-11-21",
    "hits": [],
@@ -1359,7 +1403,7 @@
    "work": "哈利波特剧集"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-11-19",
    "hits": [],
@@ -1443,7 +1487,7 @@
    "work": "dota2"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "Vaundy",
    "date": "2026-11-20",
    "hits": [],
@@ -1464,7 +1508,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "FROM",
    "date": "2026-11-23",
    "hits": [],
