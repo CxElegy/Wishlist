@@ -1540,6 +1540,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/92DE7AEDE1BF449FFEEBFC4ABC6141324A6BDDA275DA7407E44DCFE42D4AF46E/scale?format=webp&width=1200": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/Japan-Ski-Resort-Cost-Comparison-2026-2027-Infographic.jpg": {
   "w": 1055,
   "h": 1491,
@@ -2415,12 +2421,6 @@
   "target": 720,
   "v": 3
  },
- "https://images2.minutemediacdn.com/image/upload/c_crop,x_214,y_421,w_698,h_392/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m82w25xjg52h53j964.jpg": {
-  "w": 1440,
-  "h": 810,
-  "target": 1280,
-  "v": 3
- },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_426,y_237,w_1864,h_1048/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/357/01m7ndtf0a2j0mmy6brs.jpg": {
   "w": 1440,
   "h": 810,
@@ -2724,6 +2724,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/585637.png?date=1793164765": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://img.huffingtonpost.com/asset/66219b89230000370088ea45.jpeg?cache=spEn3zWqGy&ops=1778_1000": {
@@ -3184,6 +3190,57 @@
   "target": 1280,
   "v": 3
  },
+ "https://inews.gtimg.com/om_ls/OjP-cgaCZ1_ewW7pjSvK2DJZhP52fxAsOMpbS4KTyQFL8AA_330330/0": {
+  "w": 330,
+  "h": 330,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.716,
+  "local": "pics/550e96bf27e49960.webp",
+  "out": [
+   990,
+   990
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    3,
+    3,
+    4,
+    11,
+    10,
+    12,
+    11,
+    14,
+    11,
+    9,
+    5,
+    6
+   ],
+   [
+    0,
+    5,
+    4,
+    6,
+    9,
+    9,
+    22,
+    16,
+    12,
+    6,
+    5,
+    5
+   ]
+  ],
+  "c": "#3a3a3e",
+  "k": null,
+  "p": [
+   0.319,
+   0.094,
+   0.703,
+   0.693
+  ]
+ },
  "https://insider-gaming.com/wp-content/uploads/2026/08/GTA-6-Lucia-Prison.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3393,12 +3450,6 @@
  "https://media.image.infoseek.co.jp/isnews/photos/yorozoonews/yorozoonews_17057073_0.jpg": {
   "w": 640,
   "h": 677,
-  "target": 720,
-  "v": 3
- },
- "https://media.nacionale.kabineti.net/uploads/desk_406c611d83_cf4211ab83.jpg": {
-  "w": 1920,
-  "h": 1279,
   "target": 720,
   "v": 3
  },
@@ -5261,12 +5312,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/f307d276b3477a7b2f8fc09f4335f98d0f6b4474bae8404f6fecb4e3652941be/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fwealth_of_geeks_188%2F614475b2414c21c7a86f77dc011f0b2c.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/f6ee6c5230441557ecddb982ae6da3c593d0fcc685ebee0b6d4992aab54f2404/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftvline.com%2Fb06b5db2216c2e4eb8284ac44b82d663.jpg": {
   "w": 1200,
   "h": 674,
@@ -6201,6 +6246,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.C3f6BfAaDA75VWUnvfIW8A&pid=News&w=640": {
+  "w": 640,
+  "h": 335,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.C7yo6RHIF9O1SXc6EY1Qdw&pid=News&w=1200": {
   "w": 534,
   "h": 341,
@@ -7044,6 +7095,12 @@
    1.0
   ]
  },
+ "https://www.cnet.com/wp-content/uploads/sites/2/marvel-doomsday-final.jpg": {
+  "w": 3714,
+  "h": 2092,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.cnet.com/wp-content/uploads/sites/2/neakasa-riko-smart-pet-feeder-on-tile-floor-with-cat-sitting-nearby.jpg": {
   "w": 1200,
   "h": 675,
@@ -7059,6 +7116,12 @@
  "https://www.computerweekly.com/rms/computerweekly/gta-vi-editorial-do-not-reuse-getty.jpg": {
   "w": 1200,
   "h": 400,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dailyvoa.com/storage/share/p/0/p929-18362249e3b4.jpg": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -7308,7 +7371,7 @@
   "target": 1280,
   "v": 3
  },
- "https://www.indexbox.io/landing/img/blog/custom-report-v2/world-kw-kitten-cat-litter-box-840-market-analysis-forecast-size-trends-and-insights-1795453286.webp": {
+ "https://www.indexbox.io/landing/img/blog/custom-report-v2-localized/ja/cat-milk-market-forecast-to-2035-premiumization-and-feline-health-focus-drive-growth-414ef638991a0efa.webp": {
   "w": 1600,
   "h": 900,
   "target": 720,
