@@ -84,11 +84,11 @@
   "GTA 6": 169,
   "漫威电影": 108,
   "三星手机": 57,
-  "哈利波特剧集": 10,
+  "哈利波特剧集": 13,
   "MMORPG 新作": 13,
   "The Mandalorian": 7,
   "dota2": 19,
-  "周杰伦": 25,
+  "周杰伦": 28,
   "猫用品": 4,
   "ILLIT": 32,
   "FROM": 1,
@@ -99,7 +99,7 @@
   "A2O LITE": 9,
   "星巴克马克杯": 1,
   "BLEACH Mirrors High": 1,
-  "绝区零": 13,
+  "绝区零": 18,
   "Astrae Oratio": 18,
   "あつ森": 1
  },
@@ -340,12 +340,14 @@
    ]
   },
   {
-   "headline": "HBO's Harry Potter Series: Everything About the Reboot",
-   "highlight": "",
+   "headline": "Harry Potter HBO TV Series Posters Spotlight Dumbledore, McGonagall, Snape And Hagrid",
+   "highlight": "Posters",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    12,
+    13,
+    11
    ]
   },
   {
@@ -487,12 +489,12 @@
  ],
  "周杰伦": [
   {
-   "headline": "悉尼演唱会后，周杰伦携亲友继续文青之旅",
-   "highlight": "悉尼演唱会后",
-   "blurb": "",
+   "headline": "11月25日，周杰伦三亚演唱会开启三次售票！",
+   "highlight": "三次售票",
+   "blurb": "11月25日，周杰伦三亚演唱会开启三次售票。",
    "weight": "lead",
    "refs": [
-    1
+    26
    ]
   },
   {
@@ -516,36 +518,9 @@
    "weight": "normal",
    "refs": [
     9,
-    8
-   ]
-  },
-  {
-   "headline": "周杰伦演唱会武汉站最低票档仅能“大屏观演”，合规提示不是遮挡座位的售卖通行证",
-   "highlight": "武汉站",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    25,
-    23
-   ]
-  },
-  {
-   "headline": "《速度与激情》周杰伦密会导演粉丝期待两人合作",
-   "highlight": "密会导演",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    13
-   ]
-  },
-  {
-   "headline": "周杰倫曬照被林書豪嫌「每張表情都一樣」！周董回嘴「看到你才覺得可笑」",
-   "highlight": "周董回嘴",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    15,
-    17
+    8,
+    28,
+    1
    ]
   }
  ],
@@ -841,13 +816,42 @@
     9,
     10,
     12,
-    13
+    13,
+    14,
+    18
    ],
    "event": {
     "date": "2026-12-02",
     "label": "更新日"
    },
    "image": "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg"
+  },
+  {
+   "headline": "\"젠존제 OST를 리듬게임으로?\" 디제이맥스 콜라보 깜짝 발표",
+   "highlight": "디제이맥스 콜라보",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
+  },
+  {
+   "headline": "『ゼンレスゾーンゼロ』儀玄が“墨まとう影の足跡”コスチュームで1/8フィギュア化！",
+   "highlight": "1/8フィギュア化",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
+   ]
+  },
+  {
+   "headline": "I'll Be Skipping Zenless Zone Zero's New Meta Unit in Favour of My All-Time Fave Waifu",
+   "highlight": "stealth minigame",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
+   ]
   }
  ],
  "Astrae Oratio": [

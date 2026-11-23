@@ -1,32 +1,32 @@
 {
- "admin": "5ebb28077394",
- "admin-ai": "8ad3f5c7c53d",
+ "admin": "f5adb1ecdcdc",
+ "admin-ai": "b6819a2d46da",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ecf8f89f"
+   "fcb7e195"
   ],
   "tokens": [
    "AI 編集のトークン",
    "b918744b"
   ]
  },
- "admin-boards": "9e5732efef21",
+ "admin-boards": "ae98b0285dfd",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "4b99fb1c"
+   "6a635460"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "29a7e9397c68",
+ "admin-emblem": "7e53084db0ae",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e46faa4b"
+   "28f40247"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "70cf366fcf9b",
+ "admin-now": "e2b7ebb5e9f2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "1e438157"
+   "677f4872"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "68d4cb06"
   ]
  },
- "admin-system": "abdf3ecb8839",
+ "admin-system": "6e50d237d252",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "39483768"
+   "c4a79cb6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8d745874"
+   "4285b8e1"
   ]
  },
  "admin_marks": {},
- "heat": "9b123078508b",
+ "heat": "7e38562f2f24",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "d85510e9"
+   "45697c69"
   ],
   "ranking": [
    "ランキング",
-   "590682a8"
+   "14ef4e62"
   ]
  },
- "index": "af0642d96183",
+ "index": "ccbdd77429c3",
  "index_marks": {
   "front": [
    "トップ",
-   "15845208"
+   "53dafa48"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "402f150d"
+   "72a93034"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "10c3b499"
+   "99d0e2a0"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "1f05e1ec"
+   "40407e2f"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "76a008b0"
+   "1dc629c1"
   ]
  },
- "updated": "11.23 23:50",
+ "updated": "11.23 23:58",
  "wishlist": "55af58fcf8d4"
 }
