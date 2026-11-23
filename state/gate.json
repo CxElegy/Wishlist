@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-23T22:27:06+00:00",
+ "changed": true,
+ "checked": "2026-11-23T23:18:01+00:00",
  "fired": {
   "at": "2026-11-23T22:27:06+00:00",
   "results": {
@@ -77,36 +77,24 @@
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
     "ILLIT",
     "MMORPG 新作",
     "dota2",
-    "lib:BTS",
-    "lib:Nintendo Switch 2",
-    "lib:YOASOBI",
-    "lib:【推しの子】",
-    "lib:サッカー日本代表",
-    "lib:ポケットモンスター",
-    "lib:大相撲",
-    "lib:大谷翔平",
+    "lib:美術館の企画展",
     "ぐでたま",
-    "哈利波特剧集",
     "日本顶级网球赛事",
     "星巴克马克杯"
    ],
-   "last_batch": "2026-11-23T20:45:00+00:00",
+   "last_batch": "2026-11-23T22:35:47+00:00",
    "last_error": {},
    "need": true,
-   "prog": 179,
+   "prog": 191,
    "prog_day": "2026-11-24",
-   "ripe": [
-    "Astrae Oratio",
-    "哈利波特剧集"
-   ],
-   "sig": "96863dcc1c8f",
+   "ripe": [],
+   "sig": "89c8032e6b39",
    "token_cap": 1000000,
-   "tokens_today": 224907,
-   "why": "整理待ちの記事 109 件（17 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 272469,
+   "why": "整理待ちの記事 11 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -287,12 +275,12 @@
    "runs": 14
   },
   "2026-11-24": {
-   "batches": 8,
-   "cr": 3883515,
-   "cw": 206242,
-   "in": 106,
-   "out": 18559,
-   "runs": 4
+   "batches": 10,
+   "cr": 4737652,
+   "cw": 250650,
+   "in": 131,
+   "out": 21688,
+   "runs": 5
   }
  }
 }
