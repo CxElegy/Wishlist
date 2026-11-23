@@ -1,32 +1,32 @@
 {
- "admin": "28f5375aae26",
- "admin-ai": "b142ea2c808e",
+ "admin": "18dd118748a2",
+ "admin-ai": "7037cd8c5b19",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "e58d6f29"
+   "6e98502a"
   ],
   "tokens": [
    "AI 編集のトークン",
    "abb7830a"
   ]
  },
- "admin-boards": "f06dc9edb00e",
+ "admin-boards": "c5ebd8ad3523",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "ad61cd5c"
+   "af1e9478"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "dadb446b8a40",
+ "admin-emblem": "4fd8b93ed3e2",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "72569522"
+   "0bf8d2de"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "3023dcfd362d",
+ "admin-now": "c57db5f171ad",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0917188b"
+   "dd56762a"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "dfdbb57e"
+   "e53782d2"
   ],
   "term-panel": [
    "ライブログ",
-   "ae8cd85c"
+   "5ff0d81d"
   ]
  },
- "admin-system": "8727b9ab73df",
+ "admin-system": "7b9f23096652",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1829609a"
+   "d0c581c0"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "5c19e0ce"
+   "23b74ae1"
   ]
  },
  "admin_marks": {},
- "heat": "76ddd4a014cc",
+ "heat": "06ee3f90d057",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "ad2a71df"
+   "1a429185"
   ],
   "ranking": [
    "ランキング",
-   "186bc55d"
+   "fafd5e45"
   ]
  },
- "index": "548f67bab82d",
+ "index": "185551800822",
  "index_marks": {
   "front": [
    "トップ",
-   "9097d645"
+   "bdeb85d9"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "9abcdbfd"
+   "b5417c72"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "9b137f6d"
+   "ebba4819"
   ],
   "w-6676e624": [
    "三星手机",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "16a7a879"
+   "09f90c68"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "1e3543b3"
   ]
  },
- "updated": "11.24 04:23",
- "wishlist": "f608c7b0dec7"
+ "updated": "11.24 05:24",
+ "wishlist": "fdd925d86871"
 }
