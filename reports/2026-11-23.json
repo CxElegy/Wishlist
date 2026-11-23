@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "f6e465675d7c",
+ "edit_sig": "f140fcd02ca5",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -798,24 +798,29 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "札幌国際スキー場が今シーズンの営業を開始、山頂の積雪は1メートル。",
      "date": "2026-11-22",
-     "n": 1,
-     "source": "Infoseek",
-     "title": "待ちわびた人たちが初滑り 今シーズンの営業がスタート 山頂の積雪は1メートル 札幌国際スキー場",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE11VVNMUFJ0OWhXUkhNUHhScXRUVGM0ZGFfV3BsRURUdUNISVFzVnY5RFBCMG1Qa1hkalpqazZZVml2ODlHX1pPM1U5Y3dXVFd1TkdEVTQ2N0xwMk5IZ0tQbFFOdGtSMTA5Rl9WctIBckFVX3lxTE1IbTJCOHdBX3lIX01UV1RtNUJQR2lOcmdyYmVnNHZ2cG5McHhUX1J1bzkwUzFQMGdBZmZYcWtEZTZSazFPQUhkX1RZNTcyS1owYUtfNWxQbWZaTUdLN0pGTnFjdUJsWTNhNUVMTy15NGVVQQ?oc=5"
+     "headline": "待ちわびた人たちが初滑り 今シーズンの営業がスタート 山頂の積雪は1メートル 札幌国際スキー場",
+     "highlight": "山頂の積雪は1メートル",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/stv/stv_1497325815460200769_0-enlarge.jpg",
+     "image_via": "og:image",
+     "url": "https://news.infoseek.co.jp/article/stv_1497325815460200769/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-23",
-     "n": 2,
-     "source": "dmksnowboard.com",
-     "title": "世界25カ国63リゾートの旅行費用調査、志賀高原と白馬バレーが欧米より割安",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9iek9oQnJkY3k3ZTBCSnFCVDRFdGpnc2o1VHRCRjl4aDdEVU80UWZib0tTMmFRVVBBZi0wT0p5aV90bWljeDgtdGE0empXdTFPeFpqcC16dEpPQlMxbTJFM2VwOW41eVFta3I1aU5OdEJEdmNTeVE?oc=5"
+     "headline": "世界25カ国63リゾートの旅行費用調査、志賀高原と白馬バレーが欧米より割安",
+     "highlight": "志賀高原と白馬バレーが欧米より割安",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/Japan-Ski-Resort-Cost-Comparison-2026-2027-Infographic.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/japan-ski-holiday-cost-comparison-2026-27/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",

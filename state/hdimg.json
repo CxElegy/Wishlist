@@ -1607,7 +1607,7 @@
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/Japan-Ski-Resort-Cost-Comparison-2026-2027-Infographic.jpg": {
   "w": 1055,
   "h": 1491,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/bk.jpg": {
@@ -1643,6 +1643,12 @@
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/hakuba47.jpg": {
   "w": 1962,
   "h": 1472,
+  "target": 720,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/nowway-summer-snowboarding.jpg": {
+  "w": 1196,
+  "h": 654,
   "target": 720,
   "v": 3
  },
@@ -3503,8 +3509,9 @@
  "https://media.image.infoseek.co.jp/isnews/photos/stv/stv_1497325815460200769_0-enlarge.jpg": {
   "w": 800,
   "h": 450,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.366
  },
  "https://media.image.infoseek.co.jp/isnews/photos/yorozoonews/yorozoonews_17057073_0.jpg": {
   "w": 640,
