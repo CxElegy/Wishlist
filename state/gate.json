@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-23T09:19:25+00:00",
+ "checked": "2026-11-23T09:29:37+00:00",
  "fired": {
   "at": "2026-11-23T08:44:04+00:00",
   "results": {
@@ -77,14 +77,14 @@
     "MMORPG 新作",
     "Vaundy",
     "dota2",
-    "lib:Nintendo Switch 2",
     "lib:ガンプラ",
     "lib:キャンプ",
     "lib:コーヒー",
     "lib:ユニクロ",
     "lib:ラーメン",
-    "lib:大相撲",
     "lib:無印良品",
+    "lib:筋トレ",
+    "lib:観葉植物",
     "チェーンソーマン"
    ],
    "last_batch": "2026-11-23T09:09:19+00:00",
@@ -93,10 +93,10 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 406,
+   "prog": 408,
    "prog_day": "2026-11-23",
    "ripe": [],
-   "sig": "6f69433c8ee0",
+   "sig": "a38ee00c99d1",
    "token_cap": 1000000,
    "tokens_today": 652390,
    "why": "整理待ちの記事 104 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
