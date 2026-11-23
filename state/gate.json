@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-23T14:38:52+00:00",
+ "checked": "2026-11-23T15:30:40+00:00",
  "fired": {
   "at": "2026-11-23T14:38:52+00:00",
   "results": {
@@ -73,78 +73,63 @@
     "sig": "c15e2a292882"
    },
    "items": [
-    "A2O LITE",
     "FROM",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
-    "lib:キャンプ",
-    "lib:コーヒー",
-    "lib:ユニバーサル・スタジオ・ジャパン",
-    "lib:ラーメン",
-    "lib:京都",
-    "lib:東京ディズニーリゾート",
-    "lib:筋トレ",
-    "lib:観葉植物",
+    "lib:SPY×FAMILY",
+    "lib:ポケモンGO",
+    "lib:宇宙・ロケット",
+    "lib:将棋",
+    "lib:恐竜",
+    "lib:温泉",
+    "lib:生成AI",
+    "lib:藤井風",
     "あつ森",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
     "日本顶级网球赛事",
     "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-11-23T13:04:31+00:00",
+   "last_batch": "2026-11-23T14:59:23+00:00",
    "last_error": {
     "at": "2026-11-22T08:43:56+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 504,
+   "prog": 519,
    "prog_day": "2026-11-23",
    "ripe": [
+    "FROM",
+    "あつ森"
+   ],
+   "sig": "c473cdee86e0",
+   "token_cap": 1000000,
+   "tokens_today": 842732,
+   "why": "整理待ちの記事 105 件（16 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
     "GTA 6",
-    "ILLIT",
-    "三星手机",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
     "周杰伦",
     "哈利波特剧集",
     "漫威电影",
     "绝区零"
    ],
-   "sig": "c15e2a292882",
-   "token_cap": 1000000,
-   "tokens_today": 771285,
-   "why": "整理待ちの記事 192 件（24 版面・AI 編集まで版面に載らない）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE",
-    "The Mandalorian",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "81408715660e",
-   "waiting": [
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま"
-   ],
-   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -293,12 +278,12 @@
    "runs": 13
   },
   "2026-11-23": {
-   "batches": 50,
-   "cr": 19934525,
-   "cw": 699556,
-   "in": 536,
-   "out": 71193,
-   "runs": 13
+   "batches": 52,
+   "cr": 21317130,
+   "cw": 762395,
+   "in": 570,
+   "out": 79767,
+   "runs": 14
   }
  }
 }
