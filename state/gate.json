@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-23T08:30:12+00:00",
+ "checked": "2026-11-23T08:44:04+00:00",
  "fired": {
-  "at": "2026-11-23T07:37:08+00:00",
+  "at": "2026-11-23T08:44:04+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -58,23 +58,23 @@
    "edit": 13
   },
   "2026-11-23": {
-   "edit": 10
+   "edit": 11
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-23T07:37:08+00:00",
+    "at": "2026-11-23T08:44:04+00:00",
     "attempts": 1,
     "day": "2026-11-23",
-    "prog": 295,
-    "resp": "cse_01W4x6f9EeHxetRWfyuMFTHw",
-    "sig": "a8ed7a63da76"
+    "prog": 381,
+    "resp": "",
+    "sig": "39dd9a48df41"
    },
    "items": [
     "A2O LITE",
-    "ILLIT",
+    "Astrae Oratio",
     "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
@@ -88,57 +88,58 @@
     "lib:大相撲",
     "lib:大谷翔平",
     "あつ森",
+    "チェーンソーマン",
     "周杰伦",
     "哈利波特剧集",
     "滑雪",
     "猫用品"
    ],
-   "last_batch": "2026-11-23T08:10:43+00:00",
+   "last_batch": "2026-11-23T08:37:05+00:00",
    "last_error": {
     "at": "2026-11-22T08:43:56+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 349,
+   "prog": 381,
    "prog_day": "2026-11-23",
    "ripe": [
     "A2O LITE",
-    "ILLIT",
+    "The Mandalorian",
     "あつ森",
     "周杰伦",
     "哈利波特剧集",
     "滑雪",
     "猫用品"
    ],
-   "sig": "e8bdaba412ed",
+   "sig": "39dd9a48df41",
    "token_cap": 1000000,
-   "tokens_today": 570079,
-   "why": "整理待ちの記事 122 件（19 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 584168,
+   "why": "整理待ちの記事 123 件（20 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "GTA 6"
-   ],
-   "need": true,
-   "sig": "b926cfd63a17",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
+    "dota2",
     "哈利波特剧集",
     "漫威电影",
+    "GTA 6",
+    "Astrae Oratio",
+    "The Mandalorian",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "bae2004b664d",
+   "waiting": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "FROM",
+    "Vaundy",
+    "あつ森",
+    "ぐでたま",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -287,11 +288,11 @@
    "runs": 13
   },
   "2026-11-23": {
-   "batches": 32,
-   "cr": 13777448,
-   "cw": 519346,
-   "in": 378,
-   "out": 50355,
+   "batches": 35,
+   "cr": 15062361,
+   "cw": 530528,
+   "in": 408,
+   "out": 53232,
    "runs": 10
   }
  }
