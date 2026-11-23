@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "edit_sig": "0dc1c3707752",
+ "edit_sig": "4aa14dd034ae",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -109,24 +109,29 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "ウインターシーズン本番を前に降雪に恵まれた長野県白馬村で、スキー場の合同安全祈願祭が開かれ、今後の一層の雪と安全を祈りました。",
      "date": "2026-11-23",
-     "n": 1,
-     "source": "NBS 長野放送 on MSN",
-     "title": "雪に恵まれた白馬で「スキー場安全祈願祭」 例年は雪が少ない時期…先週末の雪で会場を変更 既に3か所のスキー場がオープン 60 ...",
-     "url": "https://www.msn.com/ja-jp/travel/outdoor-activities/%E9%9B%AA%E3%81%AB%E6%81%B5%E3%81%BE%E3%82%8C%E3%81%9F%E7%99%BD%E9%A6%AC%E3%81%A7-%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4%E5%AE%89%E5%85%A8%E7%A5%88%E9%A1%98%E7%A5%AD-%E4%BE%8B%E5%B9%B4%E3%81%AF%E9%9B%AA%E3%81%8C%E5%B0%91%E3%81%AA%E3%81%84%E6%99%82%E6%9C%9F-%E5%85%88%E9%80%B1%E6%9C%AB%E3%81%AE%E9%9B%AA%E3%81%A7%E4%BC%9A%E5%A0%B4%E3%82%92%E5%A4%89%E6%9B%B4-%E6%97%A2%E3%81%AB3%E3%81%8B%E6%89%80%E3%81%AE%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4%E3%81%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3-60%E4%BA%BA%E3%81%8C%E4%B8%80%E5%B1%A4%E3%81%AE%E9%9B%AA%E3%81%A8%E5%AE%89%E5%85%A8%E7%A5%88%E3%82%8B-%E3%81%93%E3%82%8C%E3%81%8C%E5%AF%9D%E9%9B%AA%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6-150%E4%B8%87%E4%BA%BA%E3%81%AE%E5%85%A5%E3%82%8A%E8%BE%BC%E3%81%BF%E8%A6%8B%E8%BE%BC%E3%82%80/ar-AA2i1CX9"
+     "headline": "雪に恵まれた白馬で「スキー場安全祈願祭」 既に3か所のスキー場がオープン",
+     "highlight": "既に3か所のスキー場がオープン",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i2YhK.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/travel/outdoor-activities/%E9%9B%AA%E3%81%AB%E6%81%B5%E3%81%BE%E3%82%8C%E3%81%9F%E7%99%BD%E9%A6%AC%E3%81%A7-%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4%E5%AE%89%E5%85%A8%E7%A5%88%E9%A1%98%E7%A5%AD-%E4%BE%8B%E5%B9%B4%E3%81%AF%E9%9B%AA%E3%81%8C%E5%B0%91%E3%81%AA%E3%81%84%E6%99%82%E6%9C%9F-%E5%85%88%E9%80%B1%E6%9C%AB%E3%81%AE%E9%9B%AA%E3%81%A7%E4%BC%9A%E5%A0%B4%E3%82%92%E5%A4%89%E6%9B%B4-%E6%97%A2%E3%81%AB3%E3%81%8B%E6%89%80%E3%81%AE%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4%E3%81%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3-60%E4%BA%BA%E3%81%8C%E4%B8%80%E5%B1%A4%E3%81%AE%E9%9B%AA%E3%81%A8%E5%AE%89%E5%85%A8%E7%A5%88%E3%82%8B-%E3%81%93%E3%82%8C%E3%81%8C%E5%AF%9D%E9%9B%AA%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6-150%E4%B8%87%E4%BA%BA%E3%81%AE%E5%85%A5%E3%82%8A%E8%BE%BC%E3%81%BF%E8%A6%8B%E8%BE%BC%E3%82%80/ar-AA2i1CX9",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-21",
-     "n": 2,
-     "source": "note",
-     "title": "スキー場オープン続々！白馬八方尾根は今日グランドオープン、モリスポ11/22限定の狙い目まとめ",
-     "url": "https://note.com/mild_rabbit1745/n/nb081b2f66acc"
+     "headline": "スキー場オープン続々！白馬八方尾根は今日グランドオープン",
+     "highlight": "白馬八方尾根は今日グランドオープン",
+     "image": "https://d2l930y2yx77uc.cloudfront.net/production/social_images/52c5b5b642d9832dd839d95af7acc50ffe303888.png",
+     "image_via": "og:image",
+     "url": "https://note.com/mild_rabbit1745/n/nb081b2f66acc",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -393,17 +398,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "淀治、蕾潔與早川秋等五位角色秋冬私服造型亮相。",
      "date": "2026-11-23",
-     "n": 1,
-     "source": "SouNova 少女星",
-     "title": "《劇場版鏈鋸人蕾潔篇》公開 Jump Festa 2027 全新繪製視覺圖，淀治、蕾潔與早川秋等五位角色秋冬私服造型亮相",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNNlgwbGtYZlNjSGpjOXhQaWpwZmdrVnF1YUF5ODNpVGowelpQYU92OEg1Ni1malkybnhTb0NIQnAwVlM5RWtTMjhkX2M1M2tfVlBqcWY3Z0NZNWF6ekJOZlZ0LWNEX0NGSjhZVjM0N0NkWS1NRWg2Q1ZyVm9YMzlvYlJ6OFFzZw?oc=5"
+     "headline": "《劇場版鏈鋸人蕾潔篇》公開 Jump Festa 2027 全新繪製視覺圖",
+     "highlight": "Jump Festa 2027 全新繪製視覺圖",
+     "image": "https://cdn.sounova.com/upload/Y2qH9W4ebPiGDfuXGMsFD.webp",
+     "image_via": "og:image",
+     "url": "https://sounova.com/anime/chainsaw-man-the-movie-reze-arc-mappa-jump-festa-2027",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -420,17 +427,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Mashable explains how to make Grogu mess with your Google search results.",
      "date": "2026-11-23",
-     "n": 1,
-     "source": "Mashable",
-     "title": "How to make Grogu from 'The Mandalorian' mess with your Google search results",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFA4bTRnWnptVkdqYVFrUWx2WDUwSGhjT2lMMEJWSjl3RGZfTjF3X3RYX0RBUUNsYVZsMVpheDNiWUVROVJ4UkZuM0dmLXpGRHNGQzB6ZW5uSUhLNWZwZTVjeEpOZw?oc=5"
+     "headline": "How to make Grogu from 'The Mandalorian' mess with your Google search results",
+     "highlight": "Grogu",
+     "image": "https://helios-i.mashable.com/imagery/articles/00dDrbqFpo0mbX0aD80wXT6/hero-image.fill.size_1200x675.v1681316975.jpg",
+     "image_via": "og:image",
+     "url": "https://mashable.com/article/grogu-google-mandalorian",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -548,17 +557,19 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "東レ パン パシフィック オープン女子ダブルス1回戦のハイライト。小堀桃子・清水綾乃組がハンター/ジョイント組と対戦。",
      "date": "2026-11-21",
-     "n": 1,
-     "source": "ABEMA",
-     "title": "女子ダブルス1回戦 【ハイライト】S.ハンター(AUS) / M.ジョイント(AUS) vs 小堀 桃子(JPN) / 清水 綾乃(JPN) 【東レ パン パシフィック オープンテニス 2026】 - 東レ パン パシフィック オープンテニス - 東レ パン パシフィック オープンテニス 2026 (スポーツ) | 無料動画・見逃し配信を",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9obDQ3R3Q2RVhSckJORGV2RGJsUkVrd3QzWFROaXNrX0F1Zk5UaHY0ZnU2SElTaW00N2tzMEFwUlF0cllEYkZObUk4MDAwYmNvckxF?oc=5"
+     "headline": "女子ダブルス1回戦 ハイライト 小堀桃子/清水綾乃 vs ハンター/ジョイント【東レ パン パシフィック オープン 2026】",
+     "highlight": "東レ パン パシフィック オープン 2026",
+     "image": "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228144/thumb001.png?height=720&quality=75&version=1793187431&width=1280",
+     "image_via": "og:image",
+     "url": "https://abema.tv/video/episode/wo_C228144",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",

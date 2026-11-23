@@ -86,7 +86,11 @@
   "三星手机": 7,
   "FROM": 3,
   "猫用品": 3,
-  "あつ森": 1
+  "あつ森": 1,
+  "滑雪": 2,
+  "The Mandalorian": 1,
+  "チェーンソーマン": 1,
+  "日本顶级网球赛事": 1
  },
  "GTA 6": [
   {
@@ -235,6 +239,59 @@
    "headline": "【あつ森】上の段に行くには？崖・高台の登り方やはしごの入手方法",
    "highlight": "",
    "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "雪に恵まれた白馬で「スキー場安全祈願祭」 既に3か所のスキー場がオープン",
+   "highlight": "既に3か所のスキー場がオープン",
+   "blurb": "ウインターシーズン本番を前に降雪に恵まれた長野県白馬村で、スキー場の合同安全祈願祭が開かれ、今後の一層の雪と安全を祈りました。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "スキー場オープン続々！白馬八方尾根は今日グランドオープン",
+   "highlight": "白馬八方尾根は今日グランドオープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "How to make Grogu from 'The Mandalorian' mess with your Google search results",
+   "highlight": "Grogu",
+   "blurb": "Mashable explains how to make Grogu mess with your Google search results.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "《劇場版鏈鋸人蕾潔篇》公開 Jump Festa 2027 全新繪製視覺圖",
+   "highlight": "Jump Festa 2027 全新繪製視覺圖",
+   "blurb": "淀治、蕾潔與早川秋等五位角色秋冬私服造型亮相。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "女子ダブルス1回戦 ハイライト 小堀桃子/清水綾乃 vs ハンター/ジョイント【東レ パン パシフィック オープン 2026】",
+   "highlight": "東レ パン パシフィック オープン 2026",
+   "blurb": "東レ パン パシフィック オープン女子ダブルス1回戦のハイライト。小堀桃子・清水綾乃組がハンター/ジョイント組と対戦。",
    "weight": "lead",
    "refs": [
     1

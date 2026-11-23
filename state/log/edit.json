@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-22T08:54:15+00:00",
-"text": "2026-11-22 第 2 バッチを出刊：三星手机（1 版面・8 本・今日の整理待ちは全部終わり） · token 新規入力 832・キャッシュ読み 17.1万・出力 453",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.42,
-"mem_total": 16869113856,
-"mem_free": 15775330304,
-"disk_used": 11300769792,
-"disk_free": 30368587776,
-"disk_total": 41669357568,
-"peak": 525201408
-},
-"batch": 2,
-"boards": [
-"三星手机"
-],
-"stories": 8,
-"left": 0,
-"edited": 19,
-"run": 1795336662.240138,
-"tok": {
-"in": 4,
-"cw": 828,
-"cr": 171287,
-"out": 453,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 172572,
-"secs": 993,
-"run_tok": {
-"in": 27,
-"cw": 57076,
-"cr": 1001341,
-"out": 5365,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-22T10:12:59+00:00",
 "text": "2026-11-22 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 2 版面） · token 新規入力 5.4万・キャッシュ読み 66.4万・出力 4,171",
 "level": "ok",
@@ -2087,5 +2046,53 @@
 "calls": 18,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-23T18:40:29+00:00",
+"text": "2026-11-24 第 1 バッチを出刊：A2O LITE、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作、The Mandalorian ほか 11（17 版面・24 本・今日の整理待ちは全部終わり） · token 新規入力 4.7万・キャッシュ読み 57.8万・出力 3,228",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.55,
+"mem_total": 16869113856,
+"mem_free": 15895207936,
+"disk_used": 10464481280,
+"disk_free": 63417131008,
+"disk_total": 73881612288,
+"peak": 464449536
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"MMORPG 新作",
+"The Mandalorian",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"三星手机",
+"日本顶级网球赛事",
+"滑雪",
+"漫威电影",
+"猫用品"
+],
+"stories": 24,
+"left": 0,
+"edited": 10,
+"run": null,
+"tok": {
+"in": 17,
+"cw": 47309,
+"cr": 578122,
+"out": 3228,
+"calls": 9,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 628676
 }
 ]
