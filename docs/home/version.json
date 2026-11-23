@@ -1,6 +1,6 @@
 {
  "admin": "3473c7da1f83",
- "admin-ai": "6eeddc125860",
+ "admin-ai": "302dcbe3104e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "75355573"
+   "196774aa"
   ]
  },
  "admin-boards": "45bc474fe5fe",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "2c453d2c3164",
+ "admin-emblem": "b5a905f92dc1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a6503094"
+   "862eccb7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "c7ba0c15c29a",
+ "admin-now": "77c4b0a13143",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "98f89df3"
+   "d790e8c5"
   ]
  },
- "admin-system": "7dd72afc57cd",
+ "admin-system": "77a879db75af",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "5130ef52"
+   "fd57b2a5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1382be98"
+   "68beff53"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "9314bff5"
   ]
  },
- "index": "789b52026a8b",
+ "index": "0360ac42a6d0",
  "index_marks": {
   "front": [
    "トップ",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "b11baee2"
+   "75ef618d"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "53427e42"
+   "76a008b0"
   ]
  },
- "updated": "11.23 23:34",
+ "updated": "11.23 23:40",
  "wishlist": "55af58fcf8d4"
 }
