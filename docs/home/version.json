@@ -1,32 +1,32 @@
 {
- "admin": "65568fc00dd4",
- "admin-ai": "e102dbbacd0e",
+ "admin": "67ea06628bb0",
+ "admin-ai": "2af16340e8d0",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "647f332f"
+   "ce685fb5"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "166a04bc"
+   "9e9eefc3"
   ]
  },
- "admin-boards": "e2a3a280a52d",
+ "admin-boards": "7af69d1a9437",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "074d801f"
+   "159ff27d"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "276fc48fa2bf",
+ "admin-emblem": "99ec022cbe31",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f350d09e"
+   "35a76618"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "4838172229b0",
+ "admin-now": "a96c265747f6",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "46ccca71"
+   "07b2728c"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "6a1dff03"
+   "92fa41a5"
   ]
  },
- "admin-system": "c6affc3558ec",
+ "admin-system": "66bb6821eeb4",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "39483768"
+   "63414871"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "343932e6"
+   "59ba2923"
   ]
  },
  "admin_marks": {},
- "heat": "7761a30bd274",
+ "heat": "1b71dfbeb454",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "44a0426d"
+   "796ccfd0"
   ],
   "ranking": [
    "ランキング",
-   "04045437"
+   "0afe323c"
   ]
  },
- "index": "ddf2370898be",
+ "index": "837a5f7a4fdd",
  "index_marks": {
   "front": [
    "トップ",
-   "61e8334c"
+   "ed099387"
   ],
   "picks": [
    "気になるかも？",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "1a35dd75"
+   "51899239"
   ],
   "w-b867582f": [
    "あつ森",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "31c30825"
+   "584854b7"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "7ad3b2fc"
   ]
  },
- "updated": "11.23 17:53",
+ "updated": "11.23 17:56",
  "wishlist": "55af58fcf8d4"
 }
