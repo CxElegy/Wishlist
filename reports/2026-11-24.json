@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "edit_sig": "7cc8b22839e7",
+ "edit_sig": "cfdd52d8a269",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -429,26 +429,27 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "画像2 / 19＞Mrs. GREEN APPLE×ジェラート ピケ初コラボ！オリジナルキャラクター“グリベア”をデザインしたルームウェア＆雑貨が登場",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5EcnZldjlVUlZNZm5ZcVlqb3FuUnRBVk1vMVZRVFJ6LVJET251OUVvazNOeTRJcDhObXVWc1BSOVBSZ1RybFVBWXhiUThaMGFjbXpHcGZJVWE2UTZUcDFSLXZsbjhIWjJLSHhCRExR?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "旭山動物園とのスペシャルコラボで、動物モチーフの親子向けアイテムが登場。",
      "date": "2026-11-22",
-     "headline": "画像15 / 17＞ジェラートピケと旭山動物園のスペシャルコラボが実現！動物モチーフの親子向けアイテムが登場",
-     "highlight": "",
+     "headline": "ジェラートピケと旭山動物園のスペシャルコラボが実現！動物モチーフの親子向けアイテムが登場",
+     "highlight": "旭山動物園",
      "image": "https://news.walkerplus.com/article/1003055/10019309_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1003055/image10019323.html",
-     "weight": "hero"
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "Mrs. GREEN APPLE×ジェラート ピケ初コラボ！オリジナルキャラクター“グリベア”をデザインしたルームウェア＆雑貨が登場",
+     "highlight": "Mrs. GREEN APPLE",
+     "image": "https://news.walkerplus.com/article/1445517/18700633_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1445517/image18700631.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",
@@ -587,31 +588,30 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "周杰倫在澳洲巡唱前出席粉絲見面會，並在廣告燈箱上親筆簽名留念。",
      "date": "2026-11-23",
-     "n": 1,
+     "headline": "超寵粉周杰倫澳洲巡唱前出席見面會 在廣告燈箱親筆簽名留念",
+     "highlight": "澳洲巡唱",
+     "image": null,
      "source": "香港經濟日報HKET",
-     "title": "WATCH｜TUDOR｜超寵粉周杰倫澳洲巡唱前出席見面會 在廣告燈箱親筆簽名留念",
-     "url": "https://news.google.com/rss/articles/CBMi0wNBVV95cUxPcWdFQ1pIWlNiVWwtNnhVdy1fbzJlSE9Cc3VBcXVWZnZTOWNZbEJrR0FucTJIWXY1X0x1akc1Q29XMzlFdG5UZDA0MWowS2JPWF9aMlNXOU9UYVZhbFBVSTFsRDY3NXNRb05GMzl4MVRzV094SVFoeUNibVV3RWVWMldTM3RmNnA5Z2M1bmV1bm1mZUh4dnhGdnpmem5QaXZPM1FIVjNsQ2FzOVlOY3VWVHJ1dFdhZTd0VlJUdUZnSU1OVS0zWFlyQUJrSWpySnhoMFF4bVczTUQ1OUd0WXJhWFJjYjI0YTN1U1RiTmY3ZXRySGhHd2Q3WVNtZVRhTUZzV0JpUDRHWloxQTl4VktPeG9CRm15NE8tQU9zd2NvQmVYeTM5RG1ZdFpELUtYaXV5aGw5YU5rV2x4QWhPUDJYVWl3blk3cHRtN2N5OEw4NkRLSDhSMm1FclBEVHo5UC1UNWFncU82ekIyTldLYmRTelVFeG9DdlJEY0dvdjlwRm9qVkdrZHZKZHV0SGF4Z0tXZDhKemNNXzJhenY3Z3lFNEZfTVpza1lpNkk5dU1BSUt4UFBibDd6XzlZTWtKSEhJQTVKd2JzajczNThObzY0ZXF5OA?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=inews.hket.com&sz=128",
+     "url": "https://inews.hket.com/article/4229774/WATCH%EF%BD%9CTUDOR%EF%BD%9C%E8%B6%85%E5%AF%B5%E7%B2%89%E5%91%A8%E6%9D%B0%E5%80%AB%E6%BE%B3%E6%B4%B2%E5%B7%A1%E5%94%B1%E5%89%8D%E5%87%BA%E5%B8%AD%E8%A6%8B%E9%9D%A2%E6%9C%83%E3%80%80%E5%9C%A8%E5%BB%A3%E5%91%8A%E7%87%88%E7%AE%B1%E8%A6%AA%E7%AD%86%E7%B0%BD%E5%90%8D%E7%95%99%E5%BF%B5?mtc=20093",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-23",
-     "n": 2,
-     "source": "news.qq.com",
-     "title": "韩流到底有多强？几乎首首神曲，看完你就知道周杰伦当初抗住了多大的压力",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFAzTklsbDVFSXRLZzNDSW90MnlmMXJxdWJPMDlvR2Z1Y1Zhb2ZkZzZrVnppdVRsZjB1MWNCVmJmb3J2NkJkNzdlQ3poM182Ui1yY3dUbU5B?oc=5"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 3,
-     "source": "手机新浪网",
-     "title": "周杰伦在大S节目中谈初恋经历，最完整最详细的一段采访",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5wUzQzX0NNeWM1a3FRMVhYbkVtbVVjT3NBS1pGM01jaFVOLXFMb0hsR3FSYldLQjZsSllCWjJTWmFPQ0w0YzZhZV9KOHlCZ0NValNYQ0dpNXNMWGQ5c2V1dmtSTENqSm1Ua25CMXV1RTgyTkE?oc=5"
+     "headline": "周杰伦在大S节目中谈初恋经历，最完整最详细的一段采访",
+     "highlight": "初恋经历",
+     "image": "http://n.sinaimg.cn/sinakd20261123ac/202/w642h360/20261123/21c9-090daa571120cbf12251f829237b26cc.jpg",
+     "image_via": "og:image",
+     "url": "https://k.sina.com.cn/article_7879923704_m1d5ae17f80330227ug.html",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",
@@ -628,33 +628,41 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-23",
-     "n": 1,
-     "source": "Siliconera on MSN",
-     "title": "Angels of delusion Zenless Zone Zero update teases Cecilia",
-     "url": "https://www.msn.com/en-us/news/other/angels-of-delusion-zenless-zone-zero-update-teases-cecilia/ar-AA2i44sM"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 3,
-     "source": "手机新浪网",
-     "title": "绝区零3.3 前瞻：剧情反转与角色新动态|绝区零|法厄同|知更鸟|挽昼|卫星|老米_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1IWENxMjZFMUI3b3p3UFJoYUtLMUR5ZzJ0Z2dnMmVjV2Vyc3IyUzFITjNGSWJJY3NMTEMxc3NOS3VyaGlGUDJtTkZZZ2w3SlJaNDFaZUQtamtEU3BYYXpLd2pZaw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "Ver. 3.4 arrives December 2nd; the Star Rail collab features a free Robin, per the November 20 official preview program.",
      "date": "2026-11-21",
+     "event": {
+      "date": "2026-12-02",
+      "label": "Ver.3.4 配信"
+     },
      "headline": "[Zenless Zone Zero] Ver. 3.4 arrives December 2nd. The Star Rail collab featuring a free Robin is huge",
-     "highlight": "",
+     "highlight": "Ver. 3.4 arrives December 2nd",
      "image": "https://d2l930y2yx77uc.cloudfront.net/production/social_images/cbb84c860cb3272f4e2d50fca3911bcc3e5092f0.png",
      "image_via": "og:image",
      "url": "https://note.com/luke_hoyo/n/nb62faed6e4fd?hl=en",
      "weight": "hero"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-23",
+     "headline": "Angels of delusion Zenless Zone Zero update teases Cecilia",
+     "highlight": "Cecilia",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i3KvH.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/angels-of-delusion-zenless-zone-zero-update-teases-cecilia/ar-AA2i44sM",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "绝区零3.3 前瞻：剧情反转与角色新动态",
+     "highlight": "",
+     "image": "http://wx1.sinaimg.cn/middle/007bPoe5gy1ij8vrmel79j30z90ewqgp.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5367411308233918.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",

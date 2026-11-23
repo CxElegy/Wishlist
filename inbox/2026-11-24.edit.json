@@ -120,7 +120,10 @@
   "滑雪": 2,
   "The Mandalorian": 1,
   "チェーンソーマン": 1,
-  "日本顶级网球赛事": 1
+  "日本顶级网球赛事": 1,
+  "gelato pique": 3,
+  "周杰伦": 3,
+  "绝区零": 3
  },
  "GTA 6": [
   {
@@ -349,6 +352,88 @@
     1
    ],
    "image": "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228144/thumb001.png?height=720&quality=75&version=1793187431&width=1280"
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラートピケと旭山動物園のスペシャルコラボが実現！動物モチーフの親子向けアイテムが登場",
+   "highlight": "旭山動物園",
+   "blurb": "旭山動物園とのスペシャルコラボで、動物モチーフの親子向けアイテムが登場。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Mrs. GREEN APPLE×ジェラート ピケ初コラボ！オリジナルキャラクター“グリベア”をデザインしたルームウェア＆雑貨が登場",
+   "highlight": "Mrs. GREEN APPLE",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "ジェラピケ×セサミストリートのコラボアイテムが発売！渡辺直美も「かわいい」と大絶賛",
+   "highlight": "セサミストリート",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "超寵粉周杰倫澳洲巡唱前出席見面會 在廣告燈箱親筆簽名留念",
+   "highlight": "澳洲巡唱",
+   "blurb": "周杰倫在澳洲巡唱前出席粉絲見面會，並在廣告燈箱上親筆簽名留念。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "周杰伦在大S节目中谈初恋经历，最完整最详细的一段采访",
+   "highlight": "初恋经历",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "[Zenless Zone Zero] Ver. 3.4 arrives December 2nd. The Star Rail collab featuring a free Robin is huge",
+   "highlight": "Ver. 3.4 arrives December 2nd",
+   "blurb": "Ver. 3.4 arrives December 2nd; the Star Rail collab features a free Robin, per the November 20 official preview program.",
+   "weight": "hero",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-12-02",
+    "label": "Ver.3.4 配信"
+   }
+  },
+  {
+   "headline": "Angels of delusion Zenless Zone Zero update teases Cecilia",
+   "highlight": "Cecilia",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "绝区零3.3 前瞻：剧情反转与角色新动态",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ]
 }
