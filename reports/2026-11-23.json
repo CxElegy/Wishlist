@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "e1ed0a8fa8f0",
+ "edit_sig": "b222c7de97c8",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -733,17 +733,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "あつまれ どうぶつの森の「もみじのはっぱ」の入手方法とレシピをまとめた攻略記事。",
      "date": "2026-11-17",
-     "n": 1,
-     "source": "攻略大百科",
-     "title": "【あつ森】もみじのはっぱの入手方法とレシピ一覧【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1qMUJ4QVUwUlZWU3U1ekd3bVJvNXc3WkJVQjVGekZCNFJ5My1XdzJkVURPZnZZdFhPbEpzXzd2NnF6aktwMlRFUXYtUnpjRjl1MVNNTDQ2NWw?oc=5"
+     "headline": "もみじのはっぱの入手方法とレシピ一覧",
+     "highlight": "",
+     "image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/gamepedia/wp-content/uploads/sites/25/2020/10/29045558/6c2b15c009984d71862435fc618c4296.png",
+     "image_via": "og:image",
+     "url": "https://gamepedia.jp/ac-switch/archives/35059",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -968,15 +970,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 4,
-     "source": "ねこちゃんホンポ on MSN",
-     "title": "猫の身に起こる「冬の危険なトラブル」4つ 思わぬ事故や病気を防ぐための対策方法も解説",
-     "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%AE%E8%BA%AB%E3%81%AB%E8%B5%B7%E3%81%93%E3%82%8B-%E5%86%AC%E3%81%AE%E5%8D%B1%E9%99%BA%E3%81%AA%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB-4%E3%81%A4-%E6%80%9D%E3%82%8F%E3%81%AC%E4%BA%8B%E6%95%85%E3%82%84%E7%97%85%E6%B0%97%E3%82%92%E9%98%B2%E3%81%90%E3%81%9F%E3%82%81%E3%81%AE%E5%AF%BE%E7%AD%96%E6%96%B9%E6%B3%95%E3%82%82%E8%A7%A3%E8%AA%AC/ar-AA2hZP0l"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -997,6 +990,16 @@
      "image": "https://news.walkerplus.com/article/8540/22863_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/8540/image22877.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "猫の身に起こる「冬の危険なトラブル」4つ 思わぬ事故や病気を防ぐための対策方法も解説",
+     "highlight": "冬の危険なトラブル",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i0irI.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%AE%E8%BA%AB%E3%81%AB%E8%B5%B7%E3%81%93%E3%82%8B-%E5%86%AC%E3%81%AE%E5%8D%B1%E9%99%BA%E3%81%AA%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB-4%E3%81%A4-%E6%80%9D%E3%82%8F%E3%81%AC%E4%BA%8B%E6%95%85%E3%82%84%E7%97%85%E6%B0%97%E3%82%92%E9%98%B2%E3%81%90%E3%81%9F%E3%82%81%E3%81%AE%E5%AF%BE%E7%AD%96%E6%96%B9%E6%B3%95%E3%82%82%E8%A7%A3%E8%AA%AC/ar-AA2hZP0l",
      "weight": "normal"
     }
    ],

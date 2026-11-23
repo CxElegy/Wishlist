@@ -1920,6 +1920,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://helios-i.mashable.com/imagery/articles/05xd2sxV4Xs7qVNkbrM5HVb/hero-image.fill.size_1200x675.v1623390709.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://helios-i.mashable.com/imagery/articles/07ntDZAd0Rbc8foJuJkFKpU/hero-image.fill.size_1200x675.v1623391745.jpg": {
   "w": 1200,
   "h": 675,
@@ -2588,6 +2594,12 @@
   "w": 900,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i0irI.img": {
+  "w": 1000,
+  "h": 667,
+  "target": 720,
   "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2d59wD.img": {
@@ -6320,6 +6332,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/gamepedia/wp-content/uploads/sites/25/2020/10/29045558/6c2b15c009984d71862435fc618c4296.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/media.gamepedia.jp/wp-content/uploads/sites/25/2022/11/01095148/8499ea9b9ad1bb3b78dad263a404915b.jpg": {
   "w": 1200,
   "h": 630,
@@ -6940,52 +6958,6 @@
   "v": 3,
   "blur": 0.402
  },
- "https://www.bing.com/th?id=ONUT.EwLPRPSjl0_oS3fxKRbwhA&pid=News&w=400": {
-  "w": 400,
-  "h": 400,
-  "target": 720,
-  "v": 3,
-  "blur": 0.47,
-  "local": "pics/f09f248524e77091.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    15,
-    10,
-    8,
-    10,
-    15,
-    5,
-    3,
-    6,
-    7,
-    7,
-    6,
-    7
-   ],
-   [
-    4,
-    4,
-    8,
-    11,
-    10,
-    10,
-    10,
-    7,
-    9,
-    10,
-    12,
-    6
-   ]
-  ],
-  "c": "#7f8b93",
-  "k": null,
-  "p": null
- },
  "https://www.bing.com/th?id=ONUT.FOoggTFAL_2bZZS_uZ1pTg&pid=News&w=494": {
   "w": 494,
   "h": 640,
@@ -7042,6 +7014,57 @@
    0.25
   ]
  },
+ "https://www.bing.com/th?id=ONUT.GcemEM5BIMcwOa3RsRb-tQ&pid=News&w=400": {
+  "w": 400,
+  "h": 400,
+  "target": 720,
+  "v": 3,
+  "blur": 0.44,
+  "local": "pics/7543a5d8ecf47002.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    14,
+    14,
+    19,
+    7,
+    6,
+    3,
+    10,
+    7,
+    9,
+    5,
+    2
+   ],
+   [
+    0,
+    11,
+    16,
+    14,
+    7,
+    4,
+    6,
+    8,
+    6,
+    8,
+    9,
+    12
+   ]
+  ],
+  "c": "#c7bdb5",
+  "k": null,
+  "p": [
+   0.01,
+   0.141,
+   0.808,
+   0.695
+  ]
+ },
  "https://www.bing.com/th?id=ONUT.HDYu5bHkhewdG_JseAla_A&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7057,6 +7080,12 @@
  "https://www.bing.com/th?id=ONUT.Ne8O4bA28riAr6z1EpiBBg&pid=News&w=1200": {
   "w": 700,
   "h": 428,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.QR72xbWuaHZCw53d6qFG0A&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
   "target": 720,
   "v": 3
  },
