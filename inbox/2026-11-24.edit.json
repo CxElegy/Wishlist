@@ -113,7 +113,7 @@
  "_covered": {
   "漫威电影": 80,
   "GTA 6": 35,
-  "三星手机": 7,
+  "三星手机": 11,
   "FROM": 3,
   "猫用品": 3,
   "あつ森": 1,
@@ -215,7 +215,8 @@
    "weight": "normal",
    "refs": [
     2,
-    3
+    3,
+    9
    ]
   },
   {
@@ -234,7 +235,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    10
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 May Auto-Turn Your Photos Into Video Clips",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ],

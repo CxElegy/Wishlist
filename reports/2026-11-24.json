@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "edit_sig": "362bc3622eb2",
+ "edit_sig": "7cc8b22839e7",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -350,36 +350,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-23",
-     "n": 8,
-     "source": "YAHOO!",
-     "title": "Samsung Galaxy S27 May Auto-Turn Your Photos Into Video Clips",
-     "url": "https://tech.yahoo.com/phones/articles/samsung-galaxy-s27-may-auto-192645867.html"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 9,
-     "source": "Notebookcheck CN",
-     "title": "据报道，Galaxy S27 Ultra 买家需购买512 GB 或更高容量的机型，才能获得速度更快的内存和存储",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE4wVXRtbnhLcnd5dXBDbTlRTldvX09yUVRONHJxc1c4c0U1LXVyc3Q1dnZPdWNSYnpSd0MwbWJqNUJoV1MwYm14WDdkYzRLRHg2M2stNW5zcVJ5QVZObk9PSGRZM21kRGpnUVlrY1ZyMVh4Z2VPRGdrZ3N4dw?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 10,
-     "source": "VOI.ID",
-     "title": "サムスンギャラクシーS27 ProとUltraは、 新しいカメラデザインを導入すると噂されています",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNMFF0bEwwaV9RaFJCUTFtalh5d0tUckVNckdXU3ZJdV9JWTJRZzZfd0ctUzRrSF9saElhTU1pdmtVQ21yN3VrajZObWE1bzkwNTZaM0ItbmJQSHVBd3lLM3RkNEhTYVRNOVRhdTFFdUxaTkxfNkpLZUFMQjQzRHpiSTI3X0tSMGJaNjBkaXVNVm9vQWFlSEEzZTdGWnlrOFJsTlE?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 11,
-     "source": "Digit",
-     "title": "Xiaomi 18 Pro vs Samsung Galaxy S27 Pro vs Vivo X500 Pro: Price in India, cameras, performance, battery and more expected differences",
-     "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxQY0JWN05QRy1aTVpJWmhyUlVZRkN6UmJKYTUwOERyMW8zMU9rNW0wOW1FSjhhRUx4amVRNndKZkI3Rmh2ZWZlZDl5LTRsWG5QV0FMR2N3b1lPemdDd1VUakdmRW1CV25FS2QwcGdzTk54ZU5SNGxfQmRNS1hoVDFjLVM0WjlPb0R1Z0RxYzNaSmRlejZTcjBVRjJ4b2pEZnd2akJVUlFIV0RBQS1fNktxcG95cmI0bkxjQ2xWeGxPaXVfOHVLdmtvRGN0V1ZZTGRIaGRWUzF4N3lTVzZ3QkxKWURtczRRZ3Ewd3RlRnRJaXBTbFpPSWJfNFRBd1cwZERTZGNRbtIBiwJBVV95cUxPbXljanUtd1Z6dVAwbS1kblJzOWZ0MzE5WGI2TjQ4dkdXZldwTnRkb2ItX3VSN1BJcENDODV3a25oanRBcHNjTGFMUTJ4QTcxTnZYWXAtSGg3RFJNNWJuN24wRVFtMjBybDVDcHNQOUtlczVGU21sS0R1TVlsaHk4ZENXQVEtMEJDRWVkMHI4OGhKbTFmSjZ3QVoyUVJtN05zeTFCTnJVekdKTnNzcmRTQk5GdVFlcjl1WmxHSkEtMGwydnIyNUpLa1V6RnRJWWs2VjllaVE5TGwxRDRrbVpUN01mczRwdC1HejVlemkxTDBENzZMcnJDX3B6RWdIOWRsVW83TWtGRnVtd2s?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -424,12 +394,22 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-23",
-     "headline": "Your First Look at the New Samsung Galaxy S27 Ultra Design",
+     "date": "2026-11-22",
+     "headline": "サムスンギャラクシーS27 ProとUltraは、 新しいカメラデザインを導入すると噂されています",
      "highlight": "",
      "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-Ultra-.jpg",
      "image_via": "og:image",
-     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-three-camera-m16-oled-leaks/",
+     "url": "https://voi.id/ja/teknologi/599110/samsung-galaxy-s27-pro-dan-ultra-disebut-usung-desain-kamera-baru",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-23",
+     "headline": "Samsung Galaxy S27 May Auto-Turn Your Photos Into Video Clips",
+     "highlight": "",
+     "image": "https://s.yimg.com/lo/mysterio/api/221ad03ab83665ea15a16813d7ca3a4dd09719f3aa066ee4cd3ab1f76418a9c2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgadget_review_articles_822%2F74d9c6e125256d38669f04e353fe4ec3.jpg",
+     "image_via": "og:image",
+     "url": "https://tech.yahoo.com/phones/articles/samsung-galaxy-s27-may-auto-192645867.html",
      "weight": "normal"
     }
    ],
