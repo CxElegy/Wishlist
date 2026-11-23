@@ -56,62 +56,6 @@
   "target": 720,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261121ac/200/w640h360/20261121/0dd4-34c2ed5226b28156217d40d830207c98.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.611,
-  "local": "pics/80c6efac229cdf98.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    5,
-    5,
-    5,
-    18,
-    21,
-    20,
-    8,
-    5,
-    4,
-    4,
-    3,
-    4
-   ],
-   [
-    4,
-    5,
-    13,
-    13,
-    13,
-    12,
-    11,
-    9,
-    4,
-    3,
-    4,
-    9
-   ]
-  ],
-  "c": "#866e56",
-  "k": [
-   0.002,
-   0.083,
-   0.993,
-   0.986
-  ],
-  "p": [
-   0.176,
-   0.0,
-   0.731,
-   1.0
-  ]
- },
  "http://n.sinaimg.cn/sinakd20261121ac/527/w480h847/20261121/12f6-b601b96312763218391dfd5459522875.jpg": {
   "w": 480,
   "h": 847,
@@ -123,6 +67,62 @@
   "h": 360,
   "target": 720,
   "v": 3
+ },
+ "http://n.sinaimg.cn/sinakd20261122ac/321/w480h641/20261122/8c0a-e78903a0cf98cab6480b3e9568f5c1f3.jpg": {
+  "w": 480,
+  "h": 641,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.509,
+  "local": "pics/24dc821e1f73510c.webp",
+  "out": [
+   959,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    0,
+    2,
+    16,
+    15,
+    13,
+    17,
+    21,
+    5,
+    5,
+    6,
+    0,
+    0
+   ],
+   [
+    1,
+    26,
+    13,
+    4,
+    6,
+    3,
+    5,
+    5,
+    6,
+    6,
+    17,
+    7
+   ]
+  ],
+  "c": "#bcbac2",
+  "k": [
+   0.132,
+   0.077,
+   0.832,
+   0.938
+  ],
+  "p": [
+   0.167,
+   0.3,
+   0.432,
+   0.634
+  ]
  },
  "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6af8b61a6b6c3a05a6d731ba/1794841230408/Marvel+Studios+Reportedly+%2522Secretly%2522+Developing+IRON+MAN+4+With+Robert+Downey+Jr.+Potentially+Returning.jpg?format=1500w": {
   "w": 1920,
@@ -1653,6 +1653,12 @@
   "target": 720,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/nowway-summer-snowboarding.jpg": {
+  "w": 1196,
+  "h": 654,
+  "target": 720,
+  "v": 3
+ },
  "https://dn2rwli0e0lll.cloudfront.net/strapi-uploads-cn/gta6ocarinaoftimeremakenegativereviewuserfi_e2913c3574.webp": {
   "w": 1920,
   "h": 1080,
@@ -1917,7 +1923,7 @@
  "https://helios-i.mashable.com/imagery/articles/07ntDZAd0Rbc8foJuJkFKpU/hero-image.fill.size_1200x675.v1623391745.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://hermes.media.static.aol.com/media/2026/11/18/b2fecc17-6867-35eb-893f-232a69589212/525e06a8-8dfe-471f-a5c9-dc01d15ccec5.jpg": {
@@ -2249,7 +2255,7 @@
  "https://image.gallery.play.jp/knb-news/articles/d2e68ec95ab844e4a54a60f468bc55d5/aab9d0a3-ef57-434b-95c2-04f04d04c86c.jpg?w=1200": {
   "w": 1024,
   "h": 576,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://image.inews24.com/v1/fc0da764dc14f3.jpg": {
@@ -2461,6 +2467,12 @@
   "w": 1200,
   "h": 660,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hGtxW.img": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hH6Uq.img": {
@@ -5344,8 +5356,9 @@
  "https://photo.newsen.com/news_photo/2026/11/23/202611231347140310_1.jpg": {
   "w": 650,
   "h": 731,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.361
  },
  "https://pimg.mk.co.kr/news/cms/202611/15/news-p.v1.20261115.9f6b4a481b034cd9a61aaaf7d3d6a627_R.jpg": {
   "w": 700,
@@ -7357,12 +7370,6 @@
    0.972
   ],
   "p": null
- },
- "https://www.bing.com/th?id=ONUT.ozOCo9o7GVzTY1oa6imRrg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.rojF35hX97EOkPXd7hU4zg&pid=News&w=1200": {
   "w": 700,
