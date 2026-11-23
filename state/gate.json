@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-23T12:30:36+00:00",
+ "checked": "2026-11-23T12:39:53+00:00",
  "fired": {
-  "at": "2026-11-23T11:30:57+00:00",
+  "at": "2026-11-23T12:39:53+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -58,28 +58,25 @@
    "edit": 13
   },
   "2026-11-23": {
-   "edit": 12
+   "edit": 13
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-23T11:30:57+00:00",
+    "at": "2026-11-23T12:39:53+00:00",
     "attempts": 1,
     "day": "2026-11-23",
-    "prog": 408,
-    "resp": "cse_01W4x6f64eBsNGtTbn453b49",
-    "sig": "9024dcc08854"
+    "prog": 488,
+    "resp": "",
+    "sig": "3af3693de82c"
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
     "FROM",
     "ILLIT",
-    "MMORPG 新作",
     "Vaundy",
-    "dota2",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
     "lib:ガンプラ",
@@ -90,31 +87,26 @@
     "lib:鬼滅の刃",
     "あつ森",
     "チェーンソーマン",
-    "周杰伦",
     "哈利波特剧集",
     "绝区零"
    ],
-   "last_batch": "2026-11-23T12:14:11+00:00",
+   "last_batch": "2026-11-23T12:34:05+00:00",
    "last_error": {
     "at": "2026-11-22T08:43:56+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 469,
+   "prog": 488,
    "prog_day": "2026-11-23",
    "ripe": [
-    "Astrae Oratio",
-    "MMORPG 新作",
     "Vaundy",
-    "dota2",
     "チェーンソーマン",
-    "周杰伦",
     "绝区零"
    ],
-   "sig": "1e469d1740c6",
+   "sig": "3af3693de82c",
    "token_cap": 1000000,
-   "tokens_today": 710754,
-   "why": "整理待ちの記事 131 件（20 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 718174,
+   "why": "整理待ちの記事 112 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -287,11 +279,11 @@
    "runs": 13
   },
   "2026-11-23": {
-   "batches": 43,
-   "cr": 18284404,
-   "cw": 644710,
-   "in": 493,
-   "out": 65551,
+   "batches": 47,
+   "cr": 18962964,
+   "cw": 649921,
+   "in": 509,
+   "out": 67744,
    "runs": 12
   }
  }
