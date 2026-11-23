@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "edit_sig": "b51d27587a61",
+ "edit_sig": "231689cf42d0",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -690,41 +690,8 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-23",
-     "n": 4,
-     "source": "手机新浪网",
-     "title": "《星晴》从被嫌弃到爆火，黄舒骏：没能签下周杰伦是我的终身遗憾！",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5td2JoOHp6MnJuVkdWc3d1b3FleFROLXNNb2hRVGxYYlFrOXFxMjNmMUcwdEkwRXBWcUh1d0FrbkxyOHdGMDJOOHE1OFdCdllNTWh6Ry01eEJlNC1qZW9HUWlZZUhFQmlxa1BZT3NsNTFBVEU?oc=5"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 5,
-     "source": "手机新浪网",
-     "title": "百大华语流行音乐歌手排行榜 罗大佑登顶，邓丽君、周杰伦紧随前三！",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4tVWliZ2hzUGo1RDhockw5cHNRNTFDZm9HbDJZRlFCaHhDYkkyd3VHZGRoem9CYWZhbkhHZ0RiNDRWZUJlS1RrWGVtcnNmcDQ1amp2ZHYtcVBLREtEd1o1dW1ydUxPTHJRZjVpajVFeDJmYjQ?oc=5"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 6,
-     "source": "手机新浪网",
-     "title": "后来才懂，很多告别没有拥抱，只有默默退场｜大S｜小S｜周杰伦",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBXWGx3dlF2RlNrWXhiWEx1VVV1ZEprd3gzaVdNVjZoQ1ZITFFWcHFiVWhUVXFUMmpnWTFtTTJ2Vjh2Tk1oWjJpdTlxeFJrM3Z5ZmlEektTLVhwU3IwMnRybzBrMG9pYmFTVWxMa2VOTGd4Sjg?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-23",
-     "headline": "三开！周杰伦三亚演唱会",
-     "highlight": "",
-     "image": "https://inews.gtimg.com/om_ls/OjP-cgaCZ1_ewW7pjSvK2DJZhP52fxAsOMpbS4KTyQFL8AA_330330/0",
-     "image_via": "og:image",
-     "url": "https://news.qq.com/rain/a/20261123A07FMR00",
-     "weight": "hero"
-    },
     {
      "blurb": "周杰倫在澳洲巡唱前出席粉絲見面會，並在廣告燈箱上親筆簽名留念。",
      "date": "2026-11-23",
@@ -744,6 +711,16 @@
      "image": "http://n.sinaimg.cn/sinakd20261123ac/202/w642h360/20261123/21c9-090daa571120cbf12251f829237b26cc.jpg",
      "image_via": "og:image",
      "url": "https://k.sina.com.cn/article_7879923704_m1d5ae17f80330227ug.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-23",
+     "headline": "三开！周杰伦三亚演唱会",
+     "highlight": "三开",
+     "image": "https://inews.gtimg.com/om_ls/OjP-cgaCZ1_ewW7pjSvK2DJZhP52fxAsOMpbS4KTyQFL8AA_330330/0",
+     "image_via": "og:image",
+     "url": "https://news.qq.com/rain/a/20261123A07FMR00",
      "weight": "normal"
     }
    ],

@@ -148,7 +148,7 @@
   "チェーンソーマン": 1,
   "日本顶级网球赛事": 1,
   "gelato pique": 3,
-  "周杰伦": 3,
+  "周杰伦": 7,
   "绝区零": 3,
   "Astrae Oratio": 2,
   "哈利波特剧集": 2,
@@ -436,6 +436,24 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "三开！周杰伦三亚演唱会",
+   "highlight": "三开",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "百大华语流行音乐歌手排行榜 罗大佑登顶，邓丽君、周杰伦紧随前三",
+   "highlight": "紧随前三",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
