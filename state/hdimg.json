@@ -1249,6 +1249,57 @@
    0.774
   ]
  },
+ "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg": {
+  "w": 600,
+  "h": 337,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.436,
+  "local": "pics/fc21b389facd5a1a.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    5,
+    6,
+    7,
+    9,
+    10,
+    8,
+    12,
+    15,
+    10,
+    9,
+    3
+   ],
+   [
+    7,
+    10,
+    11,
+    10,
+    6,
+    5,
+    5,
+    6,
+    9,
+    13,
+    8,
+    9
+   ]
+  ],
+  "c": "#495878",
+  "k": [
+   0.567,
+   0.612,
+   0.997,
+   0.96
+  ],
+  "p": null
+ },
  "https://cdn.livedoor.jp/kstyle/424ab55ca9afb3a344907449a662ec69_WI.jpg": {
   "w": 1024,
   "h": 576,
@@ -2462,12 +2513,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hwwYo.img": {
   "w": 900,
   "h": 600,
-  "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i0dpI.img": {
-  "w": 1378,
-  "h": 775,
   "target": 1280,
   "v": 3
  },
