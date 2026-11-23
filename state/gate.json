@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-23T08:59:22+00:00",
+ "checked": "2026-11-23T09:19:25+00:00",
  "fired": {
   "at": "2026-11-23T08:44:04+00:00",
   "results": {
@@ -73,46 +73,33 @@
     "sig": "39dd9a48df41"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
     "MMORPG 新作",
-    "The Mandalorian",
     "Vaundy",
     "dota2",
-    "lib:BTS",
     "lib:Nintendo Switch 2",
-    "lib:YOASOBI",
-    "lib:【推しの子】",
-    "lib:サッカー日本代表",
-    "lib:ポケットモンスター",
+    "lib:ガンプラ",
+    "lib:キャンプ",
+    "lib:コーヒー",
+    "lib:ユニクロ",
+    "lib:ラーメン",
     "lib:大相撲",
-    "lib:大谷翔平",
-    "あつ森",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "滑雪",
-    "猫用品"
+    "lib:無印良品",
+    "チェーンソーマン"
    ],
-   "last_batch": "2026-11-23T08:49:17+00:00",
+   "last_batch": "2026-11-23T09:09:19+00:00",
    "last_error": {
     "at": "2026-11-22T08:43:56+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 388,
+   "prog": 406,
    "prog_day": "2026-11-23",
-   "ripe": [
-    "A2O LITE",
-    "The Mandalorian",
-    "あつ森",
-    "哈利波特剧集",
-    "滑雪",
-    "猫用品"
-   ],
-   "sig": "1a0b7d58d421",
+   "ripe": [],
+   "sig": "6f69433c8ee0",
    "token_cap": 1000000,
-   "tokens_today": 588403,
-   "why": "整理待ちの記事 116 件（19 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 652390,
+   "why": "整理待ちの記事 104 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -285,12 +272,12 @@
    "runs": 13
   },
   "2026-11-23": {
-   "batches": 36,
-   "cr": 15527393,
-   "cw": 533461,
-   "in": 418,
-   "out": 54524,
-   "runs": 10
+   "batches": 39,
+   "cr": 16984393,
+   "cw": 591557,
+   "in": 457,
+   "out": 60376,
+   "runs": 11
   }
  }
 }
