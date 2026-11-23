@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-23T19:18:15+00:00",
+ "checked": "2026-11-23T20:26:26+00:00",
  "fired": {
-  "at": "2026-11-23T18:36:20+00:00",
+  "at": "2026-11-23T20:26:26+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -61,22 +61,28 @@
    "edit": 14
   },
   "2026-11-24": {
-   "edit": 2
+   "edit": 3
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-23T18:36:20+00:00",
+    "at": "2026-11-23T20:26:26+00:00",
     "attempts": 1,
     "day": "2026-11-24",
-    "prog": 94,
-    "resp": "cse_01W4x6f7me3YLtHZw41nJCLn",
-    "sig": "63d7fff6ff22"
+    "prog": 107,
+    "resp": "",
+    "sig": "88a39e8452c1"
    },
    "items": [
+    "A2O LITE",
     "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "dota2",
+    "gelato pique",
     "lib:FINAL FANTASY VII REBIRTH",
     "lib:ONE PIECE",
     "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
@@ -85,8 +91,13 @@
     "lib:薬屋のひとりごと 第3期",
     "lib:貸した魔力は【リボ払い】で強制徴収",
     "lib:転生したら剣でした 第2期",
+    "ぐでたま",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "漫威电影",
     "绝区零"
    ],
    "last_batch": "2026-11-23T18:42:43+00:00",
@@ -94,35 +105,43 @@
    "need": true,
    "prog": 107,
    "prog_day": "2026-11-24",
-   "ripe": [],
-   "sig": "2008184cab8c",
-   "token_cap": 1000000,
-   "tokens_today": 166576,
-   "why": "整理待ちの記事 93 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
+   "ripe": [
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
+    "gelato pique",
+    "三星手机",
     "周杰伦",
-    "哈利波特剧集",
     "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "88a39e8452c1",
+   "token_cap": 1000000,
+   "tokens_today": 166576,
+   "why": "整理待ちの記事 162 件（23 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "dota2",
+    "漫威电影",
+    "GTA 6",
+    "A2O LITE",
+    "绝区零",
+    "ぐでたま",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "691e61463ff7",
+   "waiting": [
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "The Mandalorian",
+    "Vaundy",
+    "あつ森",
+    "チェーンソーマン",
+    "哈利波特剧集"
+   ],
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 8 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
