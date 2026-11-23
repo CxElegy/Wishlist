@@ -333,62 +333,6 @@
    0.819
   ]
  },
- "http://wx1.sinaimg.cn/middle/6e48db9egy1ijas187mbnj22j035sb29.jpg": {
-  "w": 2000,
-  "h": 2501,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/62600d613567d3c1.webp",
-  "out": [
-   1024,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    1,
-    5,
-    9,
-    10,
-    12,
-    11,
-    9,
-    11,
-    8,
-    17,
-    6,
-    0
-   ],
-   [
-    5,
-    7,
-    7,
-    9,
-    12,
-    11,
-    15,
-    14,
-    7,
-    6,
-    3,
-    6
-   ]
-  ],
-  "c": "#3d3238",
-  "k": [
-   0.42,
-   0.052,
-   0.516,
-   0.135
-  ],
-  "p": [
-   0.066,
-   0.247,
-   0.424,
-   0.647
-  ]
- },
  "http://wx2.sinaimg.cn/middle/001gSRX0ly1ijb4h5c0n4j60u01hb42602.jpg": {
   "w": 1080,
   "h": 1919,
@@ -626,6 +570,12 @@
   "target": 720,
   "v": 3
  },
+ "https://andro-news.com/wp-content/uploads/2026/11/samsung-galaxy-s27-pro-s27-ultra-2.webp": {
+  "w": 2048,
+  "h": 1153,
+  "target": 720,
+  "v": 3
+ },
  "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/929908.jpg": {
   "w": 691,
   "h": 389,
@@ -770,12 +720,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets-prd.ignimgs.com/2026/11/22/jason-duval-gta-6-1795371162747.png?&format=jpg&auto=webp&quality=80": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://assets-prd.ignimgs.com/2026/11/23/hailee-steinfeld-kate-bishop-1795398586995.png?width=1280&format=jpg&auto=webp&quality=80": {
   "w": 1280,
   "h": 720,
@@ -785,12 +729,6 @@
  "https://assets.hldycdn.com/64b9e15a-1619-4f07-840d-c5c381ef6945.jpeg": {
   "w": 1920,
   "h": 1280,
-  "target": 720,
-  "v": 3
- },
- "https://assets.juksy.com/files/articles/155350/6afc99035cb60.jpg": {
-  "w": 1200,
-  "h": 628,
   "target": 720,
   "v": 3
  },
@@ -1231,6 +1169,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gametoc.co.kr/news/photo/202611/113340_328832_4428.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.hk01.com/di/media/images/dw/20261117/1199397595915489280194028.png/KOtAcXYeVasFnI6FZrBf_1RIh92zgvoZR4UTjUeFE40?v=w1280r16_9": {
   "w": 1200,
   "h": 675,
@@ -1607,6 +1551,12 @@
   "target": 720,
   "v": 3
  },
+ "https://d1rldr9jdodfaa.cloudfront.net/images/01M81J1QBJPSYHDA95F945EWV7/8bdec437-d70c-4694-ae30-86136395a82a_1795348815.webp": {
+  "w": 1422,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/627911e8eaf3b2c41f56397f72badb4fcf28d87c.png": {
   "w": 1280,
   "h": 670,
@@ -1799,12 +1749,6 @@
   "target": 1280,
   "v": 3
  },
- "https://gagadget.com/media/cache/5e/c6/5ec6d0b4cbbfb0e1015dd7f11b499c2d.webp": {
-  "w": 1524,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/15/1794743922440.jpg#joomlaImage://local-images/1_2026/NEWS/Q4/nov/15/1794743922440.jpg?width=2752&height=1536": {
   "w": 2752,
   "h": 1536,
@@ -1906,6 +1850,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://helios-i.mashable.com/imagery/articles/05TkvXOgbPtwF3YdEEhVKvu/hero-image.fill.size_1200x675.v1678798745.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://hermes.media.static.aol.com/media/2026/11/18/b2fecc17-6867-35eb-893f-232a69589212/525e06a8-8dfe-471f-a5c9-dc01d15ccec5.jpg": {
@@ -2097,6 +2047,12 @@
   "v": 3,
   "blur": 0.419
  },
+ "https://i3n.news1.kr/system/photos/2026/11/23/8228169/high.jpg": {
+  "w": 1400,
+  "h": 788,
+  "target": 1280,
+  "v": 3
+ },
  "https://i4.ytimg.com/vi/3BVH9sgwC9o/hqdefault.jpg": {
   "w": 480,
   "h": 360,
@@ -2277,6 +2233,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.chinatimes.com/newsphoto/2026-11-23/656/20261123002657.jpg": {
+  "w": 656,
+  "h": 491,
+  "target": 720,
+  "v": 3
+ },
  "https://images.ctee.com.tw/newsphoto/2026-11-22/1024/20261122700634.jpg": {
   "w": 1024,
   "h": 683,
@@ -2332,12 +2294,6 @@
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/1000014555.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
- "https://images.thedirect.com/media/article_full/1000014624.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
@@ -3669,6 +3625,12 @@
  "https://motoryokoblog.com/wp-content/uploads/2026/09/illit_18226_fv.png": {
   "w": 1200,
   "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://news-cdn.para-daily.com/wp-content/uploads/2026/11/1795414376-r0m94yqmmv5dydiipd7z.webp": {
+  "w": 2560,
+  "h": 1799,
   "target": 720,
   "v": 3
  },
@@ -5323,6 +5285,12 @@
    0.379
   ]
  },
+ "https://photo.newsen.com/news_photo/2026/11/23/202611231347140310_1.jpg": {
+  "w": 650,
+  "h": 731,
+  "target": 720,
+  "v": 3
+ },
  "https://pimg.mk.co.kr/news/cms/202611/15/news-p.v1.20261115.9f6b4a481b034cd9a61aaaf7d3d6a627_R.jpg": {
   "w": 700,
   "h": 1091,
@@ -6157,6 +6125,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/11/jason-meditating-in-grand-theft-auto-vi-gta-6-screenshot-brightened-edit.jpg?&fit=crop": {
+  "w": 2560,
+  "h": 1440,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/07/chris-hemsworth-in-avengers-doomsday.png?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6567,6 +6541,57 @@
    0.517
   ]
  },
+ "https://www.animenewsnetwork.com/thumbnails/crop600x315gL1/cms/daily-briefs/244054/713pf8p6eyl.sl1500.jpg": {
+  "w": 600,
+  "h": 315,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.421,
+  "local": "pics/564461d533aba361.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    1,
+    2,
+    7,
+    9,
+    12,
+    11,
+    16,
+    14,
+    10,
+    11,
+    4,
+    3
+   ],
+   [
+    7,
+    4,
+    8,
+    12,
+    11,
+    10,
+    10,
+    11,
+    10,
+    8,
+    4,
+    5
+   ]
+  ],
+  "c": "#886d53",
+  "k": [
+   0.166,
+   0.321,
+   0.258,
+   0.374
+  ],
+  "p": null
+ },
  "https://www.appbank.net/wp-content/uploads/2026/11/20261117_084139_289_01.webp": {
   "w": 1920,
   "h": 1080,
@@ -6653,6 +6678,12 @@
    0.764,
    0.978
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.182CoHFWLw74k7ksFy-3IQ&pid=News&w=888": {
+  "w": 583,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
   "w": 466,
@@ -7005,6 +7036,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.Ne8O4bA28riAr6z1EpiBBg&pid=News&w=1200": {
+  "w": 700,
+  "h": 428,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.QR72xbWuaHZCw53d6qFG0A&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -7256,6 +7293,12 @@
  "https://www.bing.com/th?id=ONUT.ihgjr88of819VJzMvHM7xQ&pid=News&w=572": {
   "w": 572,
   "h": 300,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.muf-elARY8Ok-_PdQihMkA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },

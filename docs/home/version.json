@@ -1,32 +1,32 @@
 {
- "admin": "c76bf920781f",
- "admin-ai": "516d691fc8f9",
+ "admin": "b99873b81b6a",
+ "admin-ai": "55bee20e11d0",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ffa09e5c"
+   "4bc43143"
   ],
   "tokens": [
    "AI 編集のトークン",
    "e8050182"
   ]
  },
- "admin-boards": "4f1b13f48c06",
+ "admin-boards": "b60eeac172a7",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5999801c"
+   "9bee36d8"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "7ec90156e59b",
+ "admin-emblem": "bff627a8db30",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "01b5e4ff"
+   "938f9f8c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "2c644afef5be",
+ "admin-now": "3301009d4980",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8e01dc14"
+   "eea6c0c9"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "ccb6b900"
+   "eab11e1b"
   ],
   "term-panel": [
    "ライブログ",
-   "f837b7c9"
+   "eba9b865"
   ]
  },
- "admin-system": "05bde991f22d",
+ "admin-system": "cf1b15896ec3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "eee7f671"
+   "13f84073"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "5d761a00"
+   "1d641c6d"
   ]
  },
  "admin_marks": {},
- "heat": "c31e5271e75f",
+ "heat": "bf44dbb078d7",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "8766f834"
+   "93877075"
   ],
   "ranking": [
    "ランキング",
-   "2c981406"
+   "43150044"
   ]
  },
- "index": "4e22124fbdfc",
+ "index": "aeea0de8ac9c",
  "index_marks": {
   "front": [
    "トップ",
-   "6876b788"
+   "86fdce79"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "5475125c"
+   "c1ce885e"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "5e9bac12"
+   "5296ef7e"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "c16413cd"
+   "47678f86"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "51899239"
+   "1a35dd75"
   ],
   "w-b867582f": [
    "あつ森",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "83f0c362"
+   "f49d85da"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "11797835"
+   "ac0511ab"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "7ad3b2fc"
   ]
  },
- "updated": "11.23 16:20",
+ "updated": "11.23 16:34",
  "wishlist": "55af58fcf8d4"
 }
