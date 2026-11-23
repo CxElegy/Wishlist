@@ -151,7 +151,8 @@
   "周杰伦": 3,
   "绝区零": 3,
   "Astrae Oratio": 2,
-  "哈利波特剧集": 2
+  "哈利波特剧集": 2,
+  "A2O LITE": 4
  },
  "GTA 6": [
   {
@@ -507,6 +508,37 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "The rise of rookie girl group A2O LITE: Nostalgic or unsettling?",
+   "highlight": "",
+   "blurb": "Girl group A2O LITE sparks debate over AI usage, “payola” claims and whether the K-pop industry is protecting its market.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://www.michigandaily.com/wp-content/uploads/2026/11/The-rise-of-rookie-girl-group-A2O-LITE.jpg"
+  },
+  {
+   "headline": "【韩区🇰🇷】2026.11.22 Spotify日榜 A2O LITE-NEON日冠×35",
+   "highlight": "日冠×35",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "A2O LITE× BAZAAR KOREA单人封面公开",
+   "highlight": "单人封面公开",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    4
    ]
   }
  ]

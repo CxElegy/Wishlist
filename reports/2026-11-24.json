@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "edit_sig": "8d4af31eaebe",
+ "edit_sig": "b51d27587a61",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -853,38 +853,39 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "Girl group A2O LITE sparks debate over AI usage, “payola” claims and whether the K-pop industry is protecting its market.",
      "date": "2026-11-23",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "【韩区🇰🇷】2026.11.22 Spotify日榜 #SpotifyChart# [来抱抱]A2O LITE-NEON日冠×35👑 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9IWnVlTjRBQlBRVk55UnpqaU9mbEFzd090VjhyREkxazJJUnMxOG4tMEpqVzdPVUxGNGR5YnVhcW9CYW9NN3oxbEFVc1V5Tks5WUp3eWEtdmhXdDB3a2JCcl9MMA?oc=5"
+     "headline": "The rise of rookie girl group A2O LITE: Nostalgic or unsettling?",
+     "highlight": "",
+     "image": "https://www.michigandaily.com/wp-content/uploads/2026/11/The-rise-of-rookie-girl-group-A2O-LITE.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.michigandaily.com/arts/music/the-rise-of-rookie-girl-group-a2o-lite-nostalgic-or-unsettling/",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-17",
-     "n": 2,
-     "source": "手机新浪网",
-     "title": "#A2OLITE首封#A2O LITE× BAZAAR KOREA单人封面公开 #kpop年末大赏# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5JQ1FEdi0wYVp3eDA5b252NUFXMzNxb281S0FBZ21OSWtCN0Q3b01uajljbEc4UTdvd0M0cVBCYXlNT19ydGJrcWNjaTlqdGpPZVBoVWFFdmFaTjRnUFItdnZRSQ?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-23",
-     "n": 3,
-     "source": "The Michigan Daily",
-     "title": "The rise of rookie girl group A2O LITE: Nostalgic or unsettling?",
-     "url": "https://www.michigandaily.com/arts/music/the-rise-of-rookie-girl-group-a2o-lite-nostalgic-or-unsettling/"
+     "headline": "【韩区🇰🇷】2026.11.22 Spotify日榜 A2O LITE-NEON日冠×35",
+     "highlight": "日冠×35",
+     "image": "http://wx2.sinaimg.cn/middle/006dNg2Pgy1ijciuvbjqxj30xi1cn440.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5368552555025182.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-17",
-     "n": 4,
-     "source": "微博",
-     "title": "A2O LITE女团登《Harper's BAZAAR》12月特刊封面",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9LanROT05vMWJVbWtYaW9wMGxkMXJRMDNFLW9iTTg3UDVqZGR4Z1hhU2N1cHJmbHlHNVotUFBxZ3h4R1pXeFkyRG1BVFR0dUFqQ0tnLUlHWTBBSTM1bF9tMVNld3AySThDeXNF?oc=5"
+     "headline": "A2O LITE× BAZAAR KOREA单人封面公开",
+     "highlight": "单人封面公开",
+     "image": "http://wx4.sinaimg.cn/middle/0067sxldgy1ij5a9htiozj30j60nvtcx.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5366283545874725.html",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
