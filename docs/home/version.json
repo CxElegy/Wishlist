@@ -1,32 +1,32 @@
 {
- "admin": "4a144ede95b4",
- "admin-ai": "45adc424fe3a",
+ "admin": "e42f6a0e47e5",
+ "admin-ai": "2cdc4a1e3db8",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5026e5b3"
+   "dd67268b"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ec4cd935"
   ]
  },
- "admin-boards": "18d10893c845",
+ "admin-boards": "9086c1cb9e5e",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "64259da7"
+   "886a9667"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "69344475e431",
+ "admin-emblem": "0c43733c8566",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "78e3a65c"
+   "3afaae08"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "4a75ef9c5b25",
+ "admin-now": "0ddc42179fc4",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b4ab92eb"
+   "c575019f"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "69aae728"
   ]
  },
- "admin-system": "d58f844ec743",
+ "admin-system": "0c24cb38f49c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "876f690a"
+   "3a9bded7"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -78,7 +78,7 @@
   ]
  },
  "admin_marks": {},
- "heat": "1460778c4a2f",
+ "heat": "468becafc610",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "04d288ea"
+   "bdaa749c"
   ],
   "ranking": [
    "ランキング",
-   "6fa52823"
+   "05a073da"
   ]
  },
- "index": "474bae5ecd82",
+ "index": "1f100f326a59",
  "index_marks": {
   "front": [
    "トップ",
-   "46647ed5"
+   "24143b67"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "3f0f5551"
+   "c43baaa5"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "930efc68"
+   "b011d7c6"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "1e3543b3"
   ]
  },
- "updated": "11.24 05:32",
+ "updated": "11.24 05:38",
  "wishlist": "fdd925d86871"
 }
