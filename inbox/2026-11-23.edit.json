@@ -63,7 +63,7 @@
   "The Mandalorian": 4,
   "dota2": 9,
   "周杰伦": 5,
-  "猫用品": 1,
+  "猫用品": 3,
   "ILLIT": 16,
   "FROM": 1,
   "チェーンソーマン": 3,
@@ -268,6 +268,15 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "本能くすぐりまくり!?米国老舗の“猫グッズ”が日本上陸",
+   "highlight": "日本上陸",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],

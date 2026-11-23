@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "edit_sig": "fedd6eb06abd",
+ "edit_sig": "86620e6920f0",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -309,8 +309,9 @@
      "date": "2026-11-22",
      "headline": "HBO's Harry Potter Series: Everything About the Reboot",
      "highlight": "",
-     "image": "https://root-nation.com/wp-content/uploads/2026/11/alastair-stout-dominic-mclaughlin-and-arabella-stanton_photograph-by-aidan-monaghan-hbo.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "Root-Nation.com",
+     "source_icon": "https://www.google.com/s2/favicons?domain=root-nation.com&sz=128",
      "url": "https://root-nation.com/en/articles-en/movies-series-en/en-everything-about-the-new-harry-potter-series/",
      "weight": "normal"
     }
@@ -739,22 +740,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 2,
-     "source": "Comité Asesor de Vacunas de la AEP",
-     "title": "# Cat Blood Sugar 600: When Your Feline's Glucose Is This High, Here's What Owners Actually See",
-     "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOOUpZYUptVmo2RTlmb2VZN1NHTUVLdnQ3dlZ5enlvR0YwaFRFUVJXY01KQ3dhQ0lhOE82Mm1TN1FWenhRMUlZMnZuNkxkQ0FTUkZwSHpISXYyeTgwQkpBT0E0eEtxVFhSeWxVOFExaG55Z3kwM2poTWxzbF8wbDFUdmZSbWJ1WUxkeDk5dVlwTllsUFpHQVVvek9qWEl5N0JiUmtvc2tqbDhsX1NNT3Y5eWNGNnBTVkxyUndqRERJcDFXdEZDNDBwWmJtZjF1bWx0WW1ZM1F2S0xGWFJtTkpRNERtRThNYzg?oc=5"
-    },
-    {
-     "date": "2026-11-17",
-     "n": 3,
-     "source": "ウォーカープラス",
-     "title": "＜画像15 / 16＞本能くすぐりまくり!?米国老舗の“猫グッズ”が日本上陸",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5yR1kyejZpUC1oTXVybmNmUTViWTZjbEdDVzFkemo2dThLanRqLUVTekxiQnFWUjRJdHQ0XzZmdHdsdVVGSTdkRGJtQ3BmXzl2V3BOb2xESTIzUG1VU2NvV3lELXFTZw?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -766,6 +751,16 @@
      "image_via": "og:image",
      "url": "https://topics.smt.docomo.ne.jp/article/cat_benesse/life/cat_benesse-100664",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-17",
+     "headline": "本能くすぐりまくり!?米国老舗の“猫グッズ”が日本上陸",
+     "highlight": "日本上陸",
+     "image": "https://news.walkerplus.com/article/8540/22863_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/8540/image22877.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
