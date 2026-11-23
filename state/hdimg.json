@@ -570,12 +570,6 @@
   "target": 720,
   "v": 3
  },
- "https://andro-news.com/wp-content/uploads/2026/11/samsung-galaxy-s27-pro-s27-ultra-2.webp": {
-  "w": 2048,
-  "h": 1153,
-  "target": 720,
-  "v": 3
- },
  "https://animeanime.jp/imgs/p/rQC-FVStleeQ4uCDm4cdn6GgF60oy6_oqaqr/929908.jpg": {
   "w": 691,
   "h": 389,
@@ -714,12 +708,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets-prd.ignimgs.com/2026/11/22/gta-6-console-blogroll-1795364248773.jpg?&format=jpg&auto=webp&quality=80": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://assets-prd.ignimgs.com/2026/11/23/hailee-steinfeld-kate-bishop-1795398586995.png?width=1280&format=jpg&auto=webp&quality=80": {
   "w": 1280,
   "h": 720,
@@ -729,6 +717,12 @@
  "https://assets.hldycdn.com/64b9e15a-1619-4f07-840d-c5c381ef6945.jpeg": {
   "w": 1920,
   "h": 1280,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets.juksy.com/files/articles/155350/6afc99035cb60.jpg": {
+  "w": 1200,
+  "h": 628,
   "target": 720,
   "v": 3
  },
@@ -1747,6 +1741,12 @@
   "w": 1024,
   "h": 683,
   "target": 1280,
+  "v": 3
+ },
+ "https://gagadget.com/media/cache/5e/c6/5ec6d0b4cbbfb0e1015dd7f11b499c2d.webp": {
+  "w": 1524,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://gamegpu.com/images/1_2026/NEWS/Q4/nov/15/1794743922440.jpg#joomlaImage://local-images/1_2026/NEWS/Q4/nov/15/1794743922440.jpg?width=2752&height=1536": {
@@ -6540,57 +6540,6 @@
    0.906,
    0.517
   ]
- },
- "https://www.animenewsnetwork.com/thumbnails/crop600x315gL1/cms/daily-briefs/244054/713pf8p6eyl.sl1500.jpg": {
-  "w": 600,
-  "h": 315,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.421,
-  "local": "pics/564461d533aba361.webp",
-  "out": [
-   1280,
-   672
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    1,
-    2,
-    7,
-    9,
-    12,
-    11,
-    16,
-    14,
-    10,
-    11,
-    4,
-    3
-   ],
-   [
-    7,
-    4,
-    8,
-    12,
-    11,
-    10,
-    10,
-    11,
-    10,
-    8,
-    4,
-    5
-   ]
-  ],
-  "c": "#886d53",
-  "k": [
-   0.166,
-   0.321,
-   0.258,
-   0.374
-  ],
-  "p": null
  },
  "https://www.appbank.net/wp-content/uploads/2026/11/20261117_084139_289_01.webp": {
   "w": 1920,
