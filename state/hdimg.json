@@ -1163,12 +1163,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.gamemeca.com/gmdata/0001/783/989/gm508765_thumb____.webp": {
-  "w": 1200,
-  "h": 670,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.gamemeca.com/gmdata/0001/784/020/gm684589_thumb____AGF_2026.webp": {
   "w": 1200,
   "h": 670,
@@ -1248,6 +1242,57 @@
    0.668,
    0.774
   ]
+ },
+ "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg": {
+  "w": 600,
+  "h": 337,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.436,
+  "local": "pics/fc21b389facd5a1a.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    5,
+    6,
+    7,
+    9,
+    10,
+    8,
+    12,
+    15,
+    10,
+    9,
+    3
+   ],
+   [
+    7,
+    10,
+    11,
+    10,
+    6,
+    5,
+    5,
+    6,
+    9,
+    13,
+    8,
+    9
+   ]
+  ],
+  "c": "#495878",
+  "k": [
+   0.567,
+   0.612,
+   0.997,
+   0.96
+  ],
+  "p": null
  },
  "https://cdn.livedoor.jp/kstyle/424ab55ca9afb3a344907449a662ec69_WI.jpg": {
   "w": 1024,
@@ -2596,6 +2641,13 @@
   "h": 667,
   "target": 720,
   "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i1Vlc.img": {
+  "w": 565,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.373
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2d59wD.img": {
   "w": 1440,
