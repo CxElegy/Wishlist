@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-21T18:49:17+00:00",
-"text": "2026-11-22 第 3 バッチを出刊：FROM（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 2,920・キャッシュ読み 39.1万・出力 1,558",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.53,
-"mem_total": 16869113856,
-"mem_free": 15850545152,
-"disk_used": 10479116288,
-"disk_free": 31190241280,
-"disk_total": 41669357568,
-"peak": 418254848
-},
-"batch": 3,
-"boards": [
-"FROM"
-],
-"stories": 1,
-"left": 0,
-"edited": 12,
-"run": 1795285971.960454,
-"tok": {
-"in": 8,
-"cw": 2912,
-"cr": 390528,
-"out": 1558,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 395006,
-"secs": 986,
-"run_tok": {
-"in": 47,
-"cw": 70412,
-"cr": 2007107,
-"out": 12481,
-"calls": 25,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-21T19:40:20+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2067,5 +2026,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 164405
+},
+{
+"at": "2026-11-23T08:31:33+00:00",
+"text": "2026-11-23 第 7 バッチを出刊：GTA 6（1 版面・5 本・残り 8 版面） · token 新規入力 7,576・キャッシュ読み 94.2万・出力 1,689",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.49,
+"mem_total": 16869113856,
+"mem_free": 15878275072,
+"disk_used": 10505404416,
+"disk_free": 63376207872,
+"disk_total": 73881612288,
+"peak": 441159680
+},
+"batch": 7,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 8,
+"edited": 20,
+"run": 1795419496.8582897,
+"tok": {
+"in": 23,
+"cw": 7553,
+"cr": 942338,
+"out": 1689,
+"calls": 11,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 951603
 }
 ]
