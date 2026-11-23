@@ -10,6 +10,7 @@
   "https://appmedia.jp/bleach-mh/80526232": "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png",
   "https://appmedia.jp/bleach-mh/80529790": "https://appmedia.jp/wp-content/uploads/2026/10/183409_bxkne.webp",
   "https://article.auone.jp/34cd21ab-3681-4097-996f-03ffcb93b1f4": "https://portal.auone.jp/media/thumbnails/2026/11/22/89007_w1280.webp",
+  "https://biz.chosun.com/en/en-entertainment/2026/11/19/7MT6SDCBTNGPXPPK4YIKSMFRNA/": "https://www.bing.com/th?id=ONUT.l0j_yqmQTwhp5DHcVIJ7Qw&pid=News&w=530",
   "https://biz.chosun.com/en/en-entertainment/2026/11/23/AYULWPEOMZBPFFR3HPJX5LB3RI/": "https://www.bing.com/th?id=ONUT.ihgjr88of819VJzMvHM7xQ&pid=News&w=572",
   "https://charagoo.jp/prize/item/0832a7362bd9/": "https://charagoo.jp/wp-content/uploads/2026/02/magicalchiikawa_momonga_BIGnuigurumi_1.jpg",
   "https://dmksnowboard.com/beach-party-norway-snowboard-video-2026/": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/nowway-summer-snowboarding.jpg",
@@ -61,7 +62,6 @@
   "https://www.msn.com/en-ca/entertainment/celebrities/hbo-s-harry-potter-narrowly-avoids-its-first-big-spoiler/ar-AA2hXm1y": "https://www.bing.com/th?id=ONUT.N25GKwIH7DzBX1qu8qQziQ&pid=News&w=1200",
   "https://www.msn.com/en-us/technology/consumer-electronics/samsung-galaxy-s27-ultra-could-debut-with-a-brilliant-new-galaxy-feature-you-ll-love/ar-AA2i2rTN": "https://www.bing.com/th?id=ONUT.4Gae9VS2F_YB4bMKBGgnrw&pid=News&w=1200",
   "https://www.msn.com/ja-jp/lifestyle/other/%E7%8C%AB%E5%90%B8%E3%81%84-%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AB%E6%B3%A8%E6%84%8F%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A84%E3%81%A4-%E9%85%8D%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E8%B5%B7%E3%81%93%E3%82%8A%E3%81%86%E3%82%8B%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%81%BE%E3%81%A7/ar-AA2hUnaZ": "https://www.bing.com/th?id=ONUT.GcemEM5BIMcwOa3RsRb-tQ&pid=News&w=400",
-  "https://www.mt.co.kr/index.php/en/entertainment/2026/11/20/2026112009301448899": "https://www.bing.com/th?id=ONUT.XxTUlFtsMFL2rvgr5LSE6A&pid=News&w=1200",
   "https://www.mydaily.co.kr/page/view/2026111809431688157": "https://img.mydaily.co.kr/photos/2026/11/18/2026111809404532902_x.jpg",
   "https://www.ndtv.com/entertainment/salman-khans-superhero-film-gets-new-shoot-date-set-to-go-on-floors-in-april-2027-report-12349287": "https://www.bing.com/th?id=ONUT.KUGdmGv_5sFGlc8qpnP1hQ&pid=News&w=1200",
   "https://www.newyorker.com/culture/the-lede/what-its-like-to-go-birding-in-grand-theft-auto-vi": "https://www.bing.com/th?id=ONUT.-Npj0ZxL96ODS-hVlqO4xA&pid=News&w=1200",
@@ -1436,27 +1436,6 @@
   },
   {
    "batch": 5,
-   "because": "A2O LITE",
-   "date": "2026-11-20",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.XxTUlFtsMFL2rvgr5LSE6A&pid=News&w=1200",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "Money Today",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "A20 LITE's Bora recovering after surgery for acute appendicitis",
-   "url": "https://www.mt.co.kr/index.php/en/entertainment/2026/11/20/2026112009301448899",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-19",
    "hits": [],
@@ -1475,6 +1454,27 @@
    "url": "https://appmedia.jp/bleach-mh/80526232",
    "words": [],
    "work": "BLEACH Mirrors High"
+  },
+  {
+   "batch": 5,
+   "because": "A2O LITE",
+   "date": "2026-11-19",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.l0j_yqmQTwhp5DHcVIJ7Qw&pid=News&w=530",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "Chosunbiz",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "Han Gain recreates Olivia Hussey's look alongside A2O LITE's OA",
+   "url": "https://biz.chosun.com/en/en-entertainment/2026/11/19/7MT6SDCBTNGPXPPK4YIKSMFRNA/",
+   "words": [],
+   "work": "A2O LITE"
   },
   {
    "batch": 6,
@@ -2031,7 +2031,7 @@
    8
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
@@ -2039,7 +2039,7 @@
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ]
  ]

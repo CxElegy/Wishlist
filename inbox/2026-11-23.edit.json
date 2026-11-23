@@ -19,7 +19,9 @@
     99,
     103,
     129,
-    130
+    130,
+    153,
+    167
    ],
    "image": "https://images.ctee.com.tw/newsphoto/2026-11-22/1024/20261122700634.jpg"
   },
@@ -53,15 +55,6 @@
    ]
   },
   {
-   "headline": "GTA 6 is facing its first plagiarism claim just two days after its release",
-   "highlight": "first plagiarism claim",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    8
-   ]
-  },
-  {
    "headline": "TGA 2026入圍名單公布，《GTA 6》8項提名闖年度遊戲6強，12/10頒獎！",
    "highlight": "8項提名",
    "blurb": "",
@@ -70,25 +63,40 @@
     60,
     122
    ]
+  },
+  {
+   "headline": "GTA 6 Update 01.002.002 Rolling Out Now, Although There Are No Patch Notes Yet",
+   "highlight": "Update 01.002.002",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    154,
+    165,
+    168,
+    169,
+    157,
+    160,
+    161
+   ]
   }
  ],
  "_covered": {
-  "GTA 6": 147,
-  "漫威电影": 78,
-  "三星手机": 46,
+  "GTA 6": 169,
+  "漫威电影": 108,
+  "三星手机": 57,
   "哈利波特剧集": 10,
   "MMORPG 新作": 13,
   "The Mandalorian": 7,
   "dota2": 19,
   "周杰伦": 25,
   "猫用品": 4,
-  "ILLIT": 24,
+  "ILLIT": 32,
   "FROM": 1,
   "チェーンソーマン": 13,
   "Vaundy": 2,
   "gelato pique": 1,
   "滑雪": 4,
-  "A2O LITE": 4,
+  "A2O LITE": 9,
   "星巴克马克杯": 1,
   "BLEACH Mirrors High": 1,
   "绝区零": 13,
@@ -97,14 +105,36 @@
  },
  "漫威电影": [
   {
-   "headline": "Avengers: Doomsday Poster Highlights Vanessa Kirby's Invisible Woman Ahead Of Doctor Doom Battle",
-   "highlight": "Doomsday Poster",
-   "blurb": "A new Avengers: Doomsday poster centers on Vanessa Kirby's Invisible Woman ahead of the Doctor Doom showdown.",
+   "headline": "‘Avengers: Doomsday’ Final Trailer: Captain America’s Son Revealed, Fantastic Four Rescues Steve Rogers",
+   "highlight": "Final Trailer",
+   "blurb": "The final Avengers: Doomsday trailer is out ahead of the Dec. 18 release, with Steve Rogers' story, Cap's son and the X-Men assembling.",
    "weight": "lead",
    "refs": [
-    2
+    100,
+    79,
+    93,
+    98,
+    101,
+    80,
+    81,
+    82,
+    99,
+    83,
+    85,
+    107,
+    41,
+    11,
+    51,
+    54,
+    55,
+    56,
+    75
    ],
-   "image": "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-poster-highlights-vanessa-kirbys-invisible-woman-ahead-of-doctor-doom-battle-ab231128.jpg"
+   "event": {
+    "date": "2026-12-18",
+    "label": "公開日"
+   },
+   "image": "https://www.bing.com/th?id=ONUT.t58_K2H_x7qIrD4RUb5dqA&pid=News&w=1000"
   },
   {
    "headline": "Marvel Confirms Kate Bishop Actress Hailee Steinfeld Will Appear in Avengers: Doomsday",
@@ -125,7 +155,11 @@
     53,
     66,
     74,
-    76
+    76,
+    96,
+    106,
+    108,
+    86
    ]
   },
   {
@@ -152,21 +186,6 @@
    ]
   },
   {
-   "headline": "Is the New Doomsday Trailer Coming Monday? MCU Star’s Post Makes It Even More Likely",
-   "highlight": "Coming Monday",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    41,
-    11,
-    51,
-    54,
-    55,
-    56,
-    75
-   ]
-  },
-  {
    "headline": "Joe Russo Reveals the Fan-Driven Strategy Behind the ‘Avengers: Doomsday’ Teaser Rollout",
    "highlight": "Teaser Rollout",
    "blurb": "",
@@ -174,6 +193,15 @@
    "refs": [
     75,
     72
+   ]
+  },
+  {
+   "headline": "《復仇者聯盟5》全球預售破1.25億美元 港澳KFC推斑蘭葡撻",
+   "highlight": "全球預售破1.25億美元",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    92
    ]
   }
  ],
@@ -184,7 +212,8 @@
    "blurb": "Leaks show Samsung's Galaxy S27 Pro and S27 Ultra sharing a new triple-camera island ahead of early 2027, but zoom sensors differ.",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    55
    ],
    "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-ultra-design-10.jpg"
   },
@@ -198,7 +227,9 @@
     8,
     31,
     35,
-    43
+    43,
+    53,
+    54
    ]
   },
   {
@@ -244,7 +275,41 @@
     33,
     34,
     37,
-    41
+    41,
+    52,
+    56,
+    21,
+    32
+   ]
+  },
+  {
+   "headline": "Galaxy S27シリーズ、LPDDR6メモリとUFS 5.0ストレージ採用は上位3モデルのみに限定か",
+   "highlight": "上位3モデルのみ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    47,
+    50,
+    57,
+    48
+   ]
+  },
+  {
+   "headline": "Galaxy S27 leak reveals Dynamic Island-style Now Bar in One UI 9.5",
+   "highlight": "Now Bar",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    49
+   ]
+  },
+  {
+   "headline": "Galaxy AI Premium may Introduce Gen Video and Shorts with Galaxy S27",
+   "highlight": "Gen Video",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    51
    ]
   }
  ],
@@ -558,7 +623,10 @@
     6,
     7,
     17,
-    21
+    21,
+    26,
+    29,
+    30
    ]
   },
   {
@@ -570,7 +638,8 @@
     20,
     23,
     15,
-    16
+    16,
+    32
    ]
   },
   {
@@ -580,6 +649,15 @@
    "weight": "normal",
    "refs": [
     14
+   ]
+  },
+  {
+   "headline": "『K-POP スーパースター！THE DEBUT』、日本公開決定 ILLITがカメオ出演",
+   "highlight": "日本公開決定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27
    ]
   }
  ],
@@ -691,7 +769,8 @@
    "weight": "lead",
    "refs": [
     1,
-    3
+    3,
+    6
    ]
   },
   {
@@ -701,6 +780,25 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "A2O LITE's Bora undergoes emergency appendix surgery, misses pre-recording",
+   "highlight": "emergency appendix surgery",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    8
+   ]
+  },
+  {
+   "headline": "“イ・スマン制作”「A2O LITE」の独創性は？…「NMIXX」＆「IVE」＆「BABYMONSTER」＆「ILLIT」が同じ時期にカムバック",
+   "highlight": "独創性",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
