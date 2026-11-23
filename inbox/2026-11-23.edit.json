@@ -65,10 +65,10 @@
   "漫威电影": 42,
   "三星手机": 15,
   "哈利波特剧集": 7,
-  "MMORPG 新作": 2,
+  "MMORPG 新作": 7,
   "The Mandalorian": 4,
-  "dota2": 11,
-  "周杰伦": 6,
+  "dota2": 15,
+  "周杰伦": 11,
   "猫用品": 3,
   "ILLIT": 16,
   "FROM": 1,
@@ -253,6 +253,26 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "終身刑を宣告された“受刑者”となって監獄で生き残るMMORPG『Prison Legacy』発売。連続殺人鬼か、怪人食人鬼か、とっておきの凶悪犯になれる",
+   "highlight": "『Prison Legacy』発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "엔씨, '아이온2' 출시 1주년 기념 OST 2집 발매…49곡 수록",
+   "highlight": "OST 2집 발매",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    3,
+    4
+   ]
   }
  ],
  "The Mandalorian": [
@@ -285,7 +305,19 @@
     2,
     4,
     10,
-    11
+    11,
+    12,
+    13
+   ]
+  },
+  {
+   "headline": "Dota 2's New Hero Kez: Guide for the Dual-Style Fighter",
+   "highlight": "Kez",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    15
    ]
   }
  ],
@@ -306,6 +338,16 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "2026周杰伦“海洋悉尼·嘉年华Ⅱ”震撼开唱！双彩虹拉开序幕，万人合唱点燃悉尼之夜",
+   "highlight": "万人合唱",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    8
    ]
   }
  ],

@@ -1,32 +1,32 @@
 {
- "admin": "6fe50041b834",
- "admin-ai": "085fc8c40344",
+ "admin": "c76bf920781f",
+ "admin-ai": "69c84ddb464c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8debf629"
+   "ffa09e5c"
   ],
   "tokens": [
    "AI 編集のトークン",
    "2e286159"
   ]
  },
- "admin-boards": "6c2d3f940644",
+ "admin-boards": "4f1b13f48c06",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "4829883c"
+   "5999801c"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "8f155d456a9b",
+ "admin-emblem": "d2743b9ee4ad",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "cb94f960"
+   "f0af6350"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "cd4f4ded49bd",
+ "admin-now": "f01575fd0d42",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3a641547"
+   "8e01dc14"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "b1434f53"
   ]
  },
- "admin-system": "9cd2a6a3f869",
+ "admin-system": "a5d9e77c7f15",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c7510a85"
+   "14ae19fe"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -78,7 +78,7 @@
   ]
  },
  "admin_marks": {},
- "heat": "aa91b00e2247",
+ "heat": "c31e5271e75f",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "e54abca4"
+   "8766f834"
   ],
   "ranking": [
    "ランキング",
-   "f00c0ba0"
+   "2c981406"
   ]
  },
- "index": "795e225c6a1e",
+ "index": "badee64ce364",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "68f0ae50"
+   "b02a6bcb"
   ],
   "w-130724c0": [
    "猫用品",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "65050fbe"
+   "36499bb7"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "7441e7d2"
+   "37a0ec45"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "7ad3b2fc"
   ]
  },
- "updated": "11.23 14:49",
+ "updated": "11.23 14:58",
  "wishlist": "55af58fcf8d4"
 }
