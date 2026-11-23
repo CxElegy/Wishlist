@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-23T11:19:15+00:00",
+ "changed": true,
+ "checked": "2026-11-23T11:30:57+00:00",
  "fired": {
-  "at": "2026-11-23T08:44:04+00:00",
+  "at": "2026-11-23T11:30:57+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -58,19 +58,19 @@
    "edit": 13
   },
   "2026-11-23": {
-   "edit": 11
+   "edit": 12
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-23T08:44:04+00:00",
+    "at": "2026-11-23T11:30:57+00:00",
     "attempts": 1,
     "day": "2026-11-23",
-    "prog": 381,
-    "resp": "cse_01W4x6f6hUkDKu2YoU5haBSH",
-    "sig": "39dd9a48df41"
+    "prog": 408,
+    "resp": "",
+    "sig": "9024dcc08854"
    },
    "items": [
     "Astrae Oratio",
@@ -95,11 +95,15 @@
    "need": true,
    "prog": 408,
    "prog_day": "2026-11-23",
-   "ripe": [],
-   "sig": "b14930df6bf7",
+   "ripe": [
+    "MMORPG 新作",
+    "Vaundy",
+    "dota2"
+   ],
+   "sig": "9024dcc08854",
    "token_cap": 1000000,
    "tokens_today": 652390,
-   "why": "整理待ちの記事 104 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 104 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
