@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-23T11:30:57+00:00",
+ "checked": "2026-11-23T12:30:36+00:00",
  "fired": {
   "at": "2026-11-23T11:30:57+00:00",
   "results": {
@@ -73,37 +73,48 @@
     "sig": "9024dcc08854"
    },
    "items": [
+    "A2O LITE",
     "Astrae Oratio",
+    "FROM",
+    "ILLIT",
     "MMORPG 新作",
     "Vaundy",
     "dota2",
+    "lib:King Gnu",
+    "lib:Mrs. GREEN APPLE",
     "lib:ガンプラ",
-    "lib:キャンプ",
-    "lib:コーヒー",
+    "lib:ゼルダの伝説",
     "lib:ユニクロ",
-    "lib:ラーメン",
     "lib:呪術廻戦",
     "lib:無印良品",
     "lib:鬼滅の刃",
-    "チェーンソーマン"
+    "あつ森",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "绝区零"
    ],
-   "last_batch": "2026-11-23T09:09:19+00:00",
+   "last_batch": "2026-11-23T12:14:11+00:00",
    "last_error": {
     "at": "2026-11-22T08:43:56+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 408,
+   "prog": 469,
    "prog_day": "2026-11-23",
    "ripe": [
+    "Astrae Oratio",
     "MMORPG 新作",
     "Vaundy",
-    "dota2"
+    "dota2",
+    "チェーンソーマン",
+    "周杰伦",
+    "绝区零"
    ],
-   "sig": "9024dcc08854",
+   "sig": "1e469d1740c6",
    "token_cap": 1000000,
-   "tokens_today": 652390,
-   "why": "整理待ちの記事 104 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 710754,
+   "why": "整理待ちの記事 131 件（20 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -276,12 +287,12 @@
    "runs": 13
   },
   "2026-11-23": {
-   "batches": 39,
-   "cr": 16984393,
-   "cw": 591557,
-   "in": 457,
-   "out": 60376,
-   "runs": 11
+   "batches": 43,
+   "cr": 18284404,
+   "cw": 644710,
+   "in": 493,
+   "out": 65551,
+   "runs": 12
   }
  }
 }
