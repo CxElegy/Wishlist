@@ -1551,12 +1551,6 @@
   "target": 720,
   "v": 3
  },
- "https://d1rldr9jdodfaa.cloudfront.net/images/01M81J1QBJPSYHDA95F945EWV7/8bdec437-d70c-4694-ae30-86136395a82a_1795348815.webp": {
-  "w": 1422,
-  "h": 800,
-  "target": 1280,
-  "v": 3
- },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/627911e8eaf3b2c41f56397f72badb4fcf28d87c.png": {
   "w": 1280,
   "h": 670,
@@ -2362,6 +2356,12 @@
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/1000014555.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.thedirect.com/media/article_full/1000014624.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
