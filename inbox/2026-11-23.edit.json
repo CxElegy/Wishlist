@@ -58,11 +58,11 @@
   "GTA 6": 74,
   "漫威电影": 25,
   "三星手机": 8,
-  "哈利波特剧集": 5,
+  "哈利波特剧集": 7,
   "MMORPG 新作": 2,
   "The Mandalorian": 4,
-  "dota2": 9,
-  "周杰伦": 5,
+  "dota2": 11,
+  "周杰伦": 6,
   "猫用品": 3,
   "ILLIT": 16,
   "FROM": 1,
@@ -70,7 +70,9 @@
   "Vaundy": 1,
   "gelato pique": 1,
   "滑雪": 2,
-  "A2O LITE": 2
+  "A2O LITE": 2,
+  "星巴克马克杯": 1,
+  "BLEACH Mirrors High": 1
  },
  "漫威电影": [
   {
@@ -195,6 +197,15 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "HBO Officially Makes Severus Snape the New Harry Potter",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "MMORPG 新作": [
@@ -236,7 +247,9 @@
    "weight": "lead",
    "refs": [
     2,
-    4
+    4,
+    10,
+    11
    ]
   }
  ],
@@ -405,6 +418,28 @@
    "headline": "还没出道就登上封面，A2O LITE 把首秀留在了芭莎",
    "highlight": "还没出道就登上封面",
    "blurb": "还没出道就登上封面，A2O LITE 把首秀留在了芭莎。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "「こういうのをずっと待ってた」 スタバの“新作タンブラー”が話題",
+   "highlight": "新作タンブラー",
+   "blurb": "スタバの新作タンブラーがSNSで「好みにドンピシャ」と話題に。「争奪戦の予感しかしない」との声も。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "【ミラハイ】星1阿散井恋次の評価と性能",
+   "highlight": "阿散井恋次",
+   "blurb": "",
    "weight": "lead",
    "refs": [
     1

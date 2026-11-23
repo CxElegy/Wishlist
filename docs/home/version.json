@@ -1,14 +1,14 @@
 {
- "admin": "e5a593da7b71",
- "admin-ai": "6bd0afdf6e7b",
+ "admin": "8a45b3c90ac9",
+ "admin-ai": "3da298e61e73",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9151e83f"
+   "ddbdfdfe"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "68d61243"
+   "647ce77d"
   ]
  },
  "admin-boards": "ba6922b9c810",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "4e7bcf179646",
+ "admin-emblem": "d430ed4d7a3e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "fe783973"
+   "a38353c5"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "4655ff1ecc27",
+ "admin-now": "e98e846a0daa",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "91761bd2"
+   "467ccb21"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "ba6acec7"
+   "0880ed50"
   ]
  },
- "admin-system": "a63507d74326",
+ "admin-system": "6b16c7576ca4",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "31de3b92"
+   "9b64ed80"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9c35e052"
+   "fa3ec26a"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "518aada1"
   ]
  },
- "index": "f2b6361f85a7",
+ "index": "5791f48c435a",
  "index_marks": {
   "front": [
    "トップ",
-   "0f1dc634"
+   "6876b788"
   ],
   "picks": [
    "気になるかも？",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "e3d46915"
+   "712dafcd"
   ],
   "w-6676e624": [
    "三星手机",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "b7325b0a"
+   "e812f667"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "50b51c43"
+   "09372ecc"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "7ad3b2fc"
   ]
  },
- "updated": "11.23 13:19",
+ "updated": "11.23 13:30",
  "wishlist": "24d333d4e306"
 }

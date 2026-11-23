@@ -4829,6 +4829,56 @@
   "k": null,
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-10178037-it_nlab-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1826,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/b5805c71a0953081.webp",
+  "out": [
+   1280,
+   1062
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    0,
+    0,
+    4,
+    4,
+    14,
+    30,
+    30,
+    10,
+    3,
+    4,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    2,
+    14,
+    28,
+    28,
+    10,
+    6,
+    6,
+    4,
+    1,
+    0
+   ]
+  ],
+  "c": "#2b4534",
+  "k": [
+   0.169,
+   0.183,
+   0.908,
+   0.855
+  ],
+  "p": null
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-00010002-tennisnet-000-1-view.jpg?pri=l&w=640&h=480&exp=10800": {
   "w": 640,
   "h": 480,
@@ -5687,6 +5737,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://root-nation.com/wp-content/uploads/2026/11/alastair-stout-dominic-mclaughlin-and-arabella-stanton_photograph-by-aidan-monaghan-hbo.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.tgstc.com/ogp3/760f2926a6e28e8c47578d75d690ef03-1200x630.jpeg": {
   "w": 1200,
   "h": 630,
@@ -5968,6 +6024,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/harry-potter-paapa-essiedu-severus-snape-1.jpeg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday-chris-hemsworth.jpg?w=1600&h=900&fit=crop": {

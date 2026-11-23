@@ -1,22 +1,24 @@
 {
  "date": "2026-11-23",
- "edit_sig": "86620e6920f0",
+ "edit_sig": "a43fa51754aa",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-21",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】星1阿散井恋次の評価と性能【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5pM29QLUhpNDR6WVJZT2wweUdpRk83bHhKNWItWlFuWUl1M2pEMzFOR3FhTUNOM1FsbzNBYW0zLXhibFhEejIxSUxEQXhKTjQ?oc=5"
+     "headline": "【ミラハイ】星1阿散井恋次の評価と性能",
+     "highlight": "阿散井恋次",
+     "image": "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png",
+     "image_via": "og:image",
+     "url": "https://appmedia.jp/bleach-mh/80523190",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -262,22 +264,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-16",
-     "n": 6,
-     "source": "Digg",
-     "title": "HPTVNews shares a music preview for HBO's Harry Potter series",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBOSlkwVjdQS3MtYVN3anpaOWZleWxobEE2eGF3ZUJ6cGpqMXdrUW0wNXZSaVRyTE43OTlwOUdyb0Fza0N3Rk9ERDhmUXdxVEJt?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 7,
-     "source": "Collider",
-     "title": "HBO Officially Makes Severus Snape the New Harry Potter",
-     "url": "https://collider.com/hbo-harry-potter-severus-snape-forehead-scar-new-posters/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -309,10 +295,19 @@
      "date": "2026-11-22",
      "headline": "HBO's Harry Potter Series: Everything About the Reboot",
      "highlight": "",
-     "image": null,
-     "source": "Root-Nation.com",
-     "source_icon": "https://www.google.com/s2/favicons?domain=root-nation.com&sz=128",
+     "image": "https://root-nation.com/wp-content/uploads/2026/11/alastair-stout-dominic-mclaughlin-and-arabella-stanton_photograph-by-aidan-monaghan-hbo.jpg",
+     "image_via": "og:image",
      "url": "https://root-nation.com/en/articles-en/movies-series-en/en-everything-about-the-new-harry-potter-series/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "HBO Officially Makes Severus Snape the New Harry Potter",
+     "highlight": "",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/harry-potter-paapa-essiedu-severus-snape-1.jpeg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://collider.com/hbo-harry-potter-severus-snape-forehead-scar-new-posters/",
      "weight": "normal"
     }
    ],
@@ -591,15 +586,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 6,
-     "source": "手机新浪网",
-     "title": "这个采访问句都很冒犯， 周杰伦明明就是超级大帅哥， #周杰伦[超话]##微博视频精选大赏##二创有戏# ​",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5iVndKdkxnbXNhYnpEX1p1ZzdlbGlsaHdDRWFNR0ZSZmZYMm1JMjkyZXJrU0FTUlR0OFBnTjQwTV9rME9tUnNWRVRMVWY2UVNpOERUZjBpM2RNMHZ2RmdNblExVEJBMDAyVVp4aWVKOEh5c1k?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -666,22 +652,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 10,
-     "source": "www.itsdw.cn",
-     "title": "Dota 2 7.42版本上线 新道具一次召唤全路超兵",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBZZTFyN2xkWW11QlJzQmtrSUgyN3BBUlpsNjVDckFxWFByQzdOX05SRURwZVpjNjh2QTNpbmk2LUwxVHlHN3YySWNYWkY?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 11,
-     "source": "3DM",
-     "title": "《DOTA2》7.42版本更新 重写底层规则的大版本来了",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB2QzJ1cXAwV0tfR2tabmVLdFpVeW00bEVkTjFWTElhNmVlNF9qZ2Y1c0xsUWduMEJOcTM4eDQteW5VUmUwVVlNVC1PM3RJaFdFVlVPQk5jMnRsQQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -818,17 +788,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "スタバの新作タンブラーがSNSで「好みにドンピシャ」と話題に。「争奪戦の予感しかしない」との声も。",
      "date": "2026-11-18",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "「こういうのをずっと待ってた」 スタバの“新作タンブラー”が話題 「争奪戦の予感しかしない」「今年だけで何個買ってるんだ ...",
-     "url": "https://news.yahoo.co.jp/articles/8963a4c319e02b93269e00f14f524e1b0fe8f5f6"
+     "headline": "「こういうのをずっと待ってた」 スタバの“新作タンブラー”が話題",
+     "highlight": "新作タンブラー",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-10178037-it_nlab-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/8963a4c319e02b93269e00f14f524e1b0fe8f5f6",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
