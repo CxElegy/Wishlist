@@ -2054,6 +2054,12 @@
    0.802
   ]
  },
+ "https://hochi.news/images/2026/11/19/20261119-OHT1I51373-C.jpg": {
+  "w": 1200,
+  "h": 1586,
+  "target": 1280,
+  "v": 3
+ },
  "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg": {
   "w": 826,
   "h": 1153,
@@ -2654,61 +2660,11 @@
   "target": 1280,
   "v": 3
  },
- "https://img.eprice.com.hk/img/news_hk/41638/big.jpg": {
-  "w": 720,
-  "h": 378,
+ "https://img.biggo.com/NM082c6nQeLtDI0by5nTiE4EBs-uuE9M0xYKYP--DiQ/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExLzNmNmI0MjAzLTJjODYtNGNlNy1hYzQxLTY0OTgwN2M4NDQ3Yl8xNzk0OTA0MTM0X2RlZmF1bHQud2VicA.jpg": {
+  "w": 1200,
+  "h": 1444,
   "target": 1280,
-  "v": 3,
-  "blur": 0.465,
-  "local": "pics/95786f42e93cf461.webp",
-  "out": [
-   1280,
-   672
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    1,
-    1,
-    19,
-    25,
-    10,
-    1,
-    5,
-    9,
-    8,
-    9,
-    9,
-    4
-   ],
-   [
-    1,
-    7,
-    11,
-    18,
-    17,
-    20,
-    9,
-    5,
-    5,
-    5,
-    4,
-    0
-   ]
-  ],
-  "c": "#766a68",
-  "k": [
-   0.522,
-   0.093,
-   0.972,
-   0.894
-  ],
-  "p": [
-   0.102,
-   0.076,
-   0.435,
-   0.95
-  ]
+  "v": 3
  },
  "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg": {
   "w": 700,
@@ -3456,12 +3412,6 @@
   "w": 1200,
   "h": 600,
   "target": 720,
-  "v": 3
- },
- "https://iphoneislam.com/wp-content/uploads/2026/08/samsung-vs-apple.jpg": {
-  "w": 1080,
-  "h": 589,
-  "target": 1280,
   "v": 3
  },
  "https://k-plaza.com/wp-content/uploads/2026/11/6e195630a02193f6decbc766d343f233.jpg": {
@@ -5075,6 +5025,12 @@
   ],
   "p": null
  },
+ "https://newsfield.net/wp-content/uploads/2026/11/%EB%8C%80%ED%91%9C_%EA%B0%A4%EB%9F%AD%EC%8B%9CZ%ED%8F%B4%EB%93%9C7_%ED%94%8C%EB%A6%BD7_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%EC%A0%9C%EA%B3%B5.jpg": {
+  "w": 1344,
+  "h": 410,
+  "target": 1280,
+  "v": 3
+ },
  "https://ni.yam.com/20261116/1116---7-a5592e45c78adf3e.webp": {
   "w": 1024,
   "h": 427,
@@ -5321,7 +5277,7 @@
   "target": 1280,
   "v": 3
  },
- "https://portal.auone.jp/media/thumbnails/2026/11/19/79973_w1280.webp": {
+ "https://portal.auone.jp/media/thumbnails/2026/11/22/89007_w1280.webp": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -5469,6 +5425,52 @@
    0.365,
    0.247
   ],
+  "p": null
+ },
+ "https://prcdn.freetls.fastly.net/release_image/30942/1017/30942-1017-9156bd3c0912825ebd9f31d5cee75226-728x412.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 728,
+  "h": 412,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.44,
+  "local": "pics/d9175cbf4050a4fb.webp",
+  "out": [
+   1280,
+   724
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    7,
+    8,
+    8,
+    8,
+    6,
+    10,
+    8,
+    9,
+    6,
+    9,
+    10,
+    11
+   ],
+   [
+    4,
+    3,
+    1,
+    4,
+    9,
+    15,
+    18,
+    13,
+    8,
+    7,
+    9,
+    7
+   ]
+  ],
+  "c": "#3f3a37",
+  "k": null,
   "p": null
  },
  "https://prcdn.freetls.fastly.net/release_image/31800/232/31800-232-a96ac789c08e72d24265437f7bf23eba-844x394.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -5750,6 +5752,57 @@
   "target": 720,
   "v": 3
  },
+ "https://s-max.jp/wp-content/uploads/2026/11/dc98d45a-s.jpg": {
+  "w": 480,
+  "h": 270,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.531,
+  "local": "pics/ade56eccc4f29815.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    6,
+    9,
+    7,
+    7,
+    9,
+    11,
+    13,
+    8,
+    7,
+    9,
+    11
+   ],
+   [
+    4,
+    3,
+    6,
+    6,
+    7,
+    6,
+    10,
+    13,
+    7,
+    11,
+    10,
+    15
+   ]
+  ],
+  "c": "#8b889f",
+  "k": [
+   0.383,
+   0.575,
+   0.648,
+   0.646
+  ],
+  "p": null
+ },
  "https://s.tgstc.com/ogp3/760f2926a6e28e8c47578d75d690ef03-1200x630.jpeg": {
   "w": 1200,
   "h": 630,
@@ -5787,12 +5840,6 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/5bbfbaabf00cf709fac69afd035c6b8e1c706b1c917d3f909e7ab9a15191c3fb/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2Ff0a25821ded610c43742941d8512777a.png": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/9a0ff82b5c0f9a0f8af238619533223ccfbe780fbff1b33557b24e0f82829bd6/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fplaystation_lifestyle_666%2Ffcb78e37d0ed031cbbe25f6ba9123426.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -6144,6 +6191,18 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/11/jason-meditating-in-grand-theft-auto-vi-gta-6-screenshot-brightened-edit.jpg?&fit=crop": {
+  "w": 2560,
+  "h": 1440,
+  "target": 720,
+  "v": 3
+ },
+ "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/01/img_2026-01-03-161834.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/07/chris-hemsworth-in-avengers-doomsday.png?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6354,12 +6413,6 @@
  "https://thetv.jp/i/nw/1457877/19194822.jpg?w=1284": {
   "w": 1284,
   "h": 856,
-  "target": 1280,
-  "v": 3
- },
- "https://today-obs.line-scdn.net/0h9hQIWKfuZkdsMHredUoZEFRmajZfVnxOTld9IhozP3dHHChDUQU1JB4yPGsSBydCTAIqcx5iP34VAiUWBw/w1200": {
-  "w": 820,
-  "h": 615,
   "target": 1280,
   "v": 3
  },
@@ -7128,6 +7181,12 @@
    0.723
   ],
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.KUGdmGv_5sFGlc8qpnP1hQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.N25GKwIH7DzBX1qu8qQziQ&pid=News&w=1200": {
   "w": 700,
@@ -8049,18 +8108,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.joblo.com/wp-content/uploads/2026/06/supergirl-first-reactions.jpg": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://www.joblo.com/wp-content/uploads/2026/06/wtf-supergirl.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://www.moneydigest.sg/wp-content/uploads/2026/11/Unknown-1385.jpg": {
   "w": 699,
   "h": 366,
@@ -8113,6 +8160,12 @@
  "https://www.pcgames.de/screenshots/original/2026/10/Harry-Potter-HBO-pc-games_artwork31.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/11/14.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
