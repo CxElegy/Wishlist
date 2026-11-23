@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-23T01:11:39+00:00",
+ "checked": "2026-11-23T01:29:21+00:00",
  "fired": {
   "at": "2026-11-23T01:11:39+00:00",
   "results": {
@@ -102,38 +102,41 @@
    "prog": 183,
    "prog_day": "2026-11-23",
    "ripe": [
+    "A2O LITE",
     "GTA 6",
-    "ILLIT"
+    "ILLIT",
+    "The Mandalorian",
+    "滑雪",
+    "猫用品"
    ],
-   "sig": "a19449d99b76",
+   "sig": "e4544fe0c4a8",
    "token_cap": 1000000,
    "tokens_today": 326610,
    "why": "整理待ちの記事 70 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "绝区零"
-   ],
-   "need": true,
-   "sig": "b0be86aead8c",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
-    "周杰伦"
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 11 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
