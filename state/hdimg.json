@@ -4982,12 +4982,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/0a108e08c7c87a870679a2e728167fe369112c42dc39cf8abafd185aa6f256a9/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2Fb5bac6859362cfd8a5f7362b9cf94d1f.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/1b108eafd04ed847d8a6a998c3fed5677d7dd204c45e16a8da144f7163e9d823/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2F6c270f9ef0d9ad6bf8171902a767b177.jpg_up.jpg": {
   "w": 1200,
   "h": 800,
@@ -5016,12 +5010,6 @@
   "w": 1200,
   "h": 800,
   "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/ce7bcf40a5978aa33a11215795d462ebdc7f65b56472d42dc053043f58620137/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2F35062e092bd6f90a2aae782283a90ada.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/e0f2315d9bf5132ffeb978bcd12cb57d44879eebfe88fa00da685fd4528a25ff/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fpethelpful.com%2F.image%2FNDowMDAwMDAwMDAwMzIwNTI0%2F71lbdsjmiwl-_ac_sl1402_-jpg.avif%3Fprofile%3Dfull%26x%3D50%26y%3D50": {
@@ -5345,6 +5333,12 @@
   "v": 3
  },
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/08/doctor-doom-avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/12/avengers_-doomsday-_-only-in-theaters-december-18-2026-0-52-screenshot.jpeg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 720,
@@ -7024,6 +7018,12 @@
   ]
  },
  "https://www.cnet.com/wp-content/uploads/sites/2/neakasa-riko-smart-pet-feeder-on-tile-floor-with-cat-sitting-nearby.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.comicbasics.com/wp-content/uploads/2023/11/The-young-avengers.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,

@@ -44,6 +44,7 @@
   "https://tecnologiageek.com/galaxy-s27-ultra-enfoque-laser/": "https://www.bing.com/th?id=ONUT.7gPYVExGrdL73L1eFKJ8xw&pid=News&w=1200",
   "https://tecnologiageek.com/zenless-zone-zero-3-4-robin-gratis/": "https://www.bing.com/th?id=ONUT.DsFJQ5vJcsRCrbQYKI4vMg&pid=News&w=1200",
   "https://thelocalgirl.com/calendar/event/washington-spirit-championship-watch-party-at-chubby-squirrel-brewing-company-in-fairfax/": "https://thelocalgirl.com/calendar/wp-content/uploads/sites/11/2026/11/Screenshot-2026-11-19-094645.png",
+  "https://thetab.com/filmshrine/2026/11/24/will-spider-man-and-dr-strange-be-in-avengers-doomsday-here-are-all-major-characters-missing/": "https://cdn.filmshrine.com/uploads/2026/11/Suchis-The-Tab-masterpiece-36-1.png",
   "https://trilltrill.jp/articles/5198062": "https://media.trilltrill.jp/articles/5198062/featured-image.9f5e4fa7bb3d391856ff71a19786e7be?w=1200",
   "https://tw.news.yahoo.com/%E5%86%AC%E5%AD%A3%E8%AD%B7%E6%89%8B%E6%96%B0%E5%93%81-%E6%AC%A1%E7%9C%8B-sk-ii%E9%A6%96%E6%AC%BE%E8%AD%B7%E6%89%8B%E9%9C%9C-paul-054001554.html": "https://s.yimg.com/lo/mysterio/api/e2c3c934d1a42a4cb3922e5ab30f795040c7607fcaf0e74d436a23b27396f1cf/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fctwant_styletc_883%2F4f880a680e5c394286f2638ace1e34f0.jpg_up.jpg",
   "https://wisevoter.com/world/2026/11/23/mgm-confirms-from-final-season-five": "https://images.highwise.com/stories/415537-1795438037164.jpg",
@@ -82,7 +83,6 @@
   "https://www.walkerplus.com/article/33564/image160126.html": "https://news.walkerplus.com/article/33564/160123_615.jpg",
   "https://www.walkerplus.com/article/40260/image207549.html": "https://news.walkerplus.com/article/40260/207548_615.jpg",
   "https://www.walkerplus.com/article/85785/image484216.html": "https://news.walkerplus.com/article/85785/484215_615.jpg",
-  "https://www.yahoo.com/entertainment/movies/trailers/articles/marvel-fans-notice-bob-barely-120215493.html": "https://s.yimg.com/lo/mysterio/api/ce7bcf40a5978aa33a11215795d462ebdc7f65b56472d42dc053043f58620137/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2F35062e092bd6f90a2aae782283a90ada.jpg",
   "https://www.youtube.com/watch?v=4qdBgbg-iYs": "https://i1.ytimg.com/vi/4qdBgbg-iYs/hqdefault.jpg",
   "https://www.youtube.com/watch?v=b9-X7Ayu_2I": "https://i3.ytimg.com/vi/b9-X7Ayu_2I/hqdefault.jpg"
  },
@@ -1387,6 +1387,27 @@
   },
   {
    "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-24",
+   "hits": [],
+   "image": "https://cdn.filmshrine.com/uploads/2026/11/Suchis-The-Tab-masterpiece-36-1.png",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "The Tab",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Will Spider-Man and Dr Strange be in Avengers: Doomsday? Here are all major characters missing",
+   "url": "https://thetab.com/filmshrine/2026/11/24/will-spider-man-and-dr-strange-be-in-avengers-doomsday-here-are-all-major-characters-missing/",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-24",
    "hits": [],
@@ -1407,7 +1428,7 @@
    "work": "BLEACH Mirrors High"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-11-24",
    "hits": [],
@@ -1445,27 +1466,6 @@
    ],
    "title": "10 Biggest Avengers: Doomsday Theories After The New Trailer, Ranked By How Exciting They Are",
    "url": "https://screenrant.com/avengers-doomsday-mcu-theories-after-final-trailer-ranked/",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 5,
-   "because": "漫威电影",
-   "date": "2026-11-24",
-   "hits": [],
-   "image": "https://s.yimg.com/lo/mysterio/api/ce7bcf40a5978aa33a11215795d462ebdc7f65b56472d42dc053043f58620137/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2F35062e092bd6f90a2aae782283a90ada.jpg",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "Yahoo",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Marvel fans notice Bob is barely in the Doomsday trailer and wonder what it means for his role",
-   "url": "https://www.yahoo.com/entertainment/movies/trailers/articles/marvel-fans-notice-bob-barely-120215493.html",
    "words": [],
    "work": "漫威电影"
   },
@@ -2068,11 +2068,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2080,15 +2080,15 @@
    8
   ],
   [
-   "三星 Galaxy",
-   7
-  ],
-  [
    "作品:三星手机",
    7
   ],
   [
    "galaxy",
+   7
+  ],
+  [
+   "三星 Galaxy",
    7
   ]
  ]
