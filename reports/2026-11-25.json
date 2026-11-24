@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "67da4a525a91",
+ "edit_sig": "a8704b2cd11d",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -945,17 +945,19 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-19",
-     "n": 1,
-     "source": "note",
-     "title": "Ce-sensei and the Mysterious Journey: Japan Open Tennis Spectating Trip Part 2",
-     "url": "https://note.com/reiryuu_33175/n/n21c3d3d5c432?hl=en"
+     "headline": "Ce-sensei and the Mysterious Journey: Japan Open Tennis Spectating Trip Part 2",
+     "highlight": "",
+     "image": "https://assets.st-note.com/production/uploads/images/338357095/rectangle_large_type_2_3efadbee5ff02b28b40296f50464823e.jpeg?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/reiryuu_33175/n/n21c3d3d5c432?hl=en",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
