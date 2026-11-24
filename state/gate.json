@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-24T17:18:08+00:00",
+ "changed": true,
+ "checked": "2026-11-24T17:38:04+00:00",
  "fired": {
-  "at": "2026-11-24T14:33:23+00:00",
+  "at": "2026-11-24T17:38:04+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -62,20 +62,30 @@
   },
   "2026-11-24": {
    "edit": 15
+  },
+  "2026-11-25": {
+   "edit": 1
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-24T14:33:23+00:00",
+    "at": "2026-11-24T17:38:04+00:00",
     "attempts": 1,
-    "day": "2026-11-24",
-    "prog": 642,
-    "resp": "cse_01W4x6f84ucwLdQCMMc2SNXz",
-    "sig": "a72e29b252d3"
+    "day": "2026-11-25",
+    "prog": 3,
+    "resp": "",
+    "sig": "154017dc7ba1"
    },
    "items": [
+    "A2O LITE",
+    "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
     "lib:ブラッククローバー 第2期",
     "lib:台風・天気",
     "lib:星野源",
@@ -83,7 +93,15 @@
     "lib:生徒会にも穴はある！",
     "lib:薬屋のひとりごと 第3期",
     "lib:貸した魔力は【リボ払い】で強制徴収",
-    "lib:転生したら剣でした 第2期"
+    "lib:転生したら剣でした 第2期",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-24T15:08:27+00:00",
    "last_error": {
@@ -93,35 +111,48 @@
    "need": true,
    "prog": 3,
    "prog_day": "2026-11-25",
-   "ripe": [],
-   "sig": "9c76c5309b9b",
-   "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "ripe": [
     "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
     "FROM",
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
+    "ILLIT",
+    "MMORPG 新作",
     "dota2",
-    "あつ森",
-    "ぐでたま",
     "チェーンソーマン",
+    "三星手机",
     "周杰伦",
-    "哈利波特剧集",
+    "滑雪",
     "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "154017dc7ba1",
+   "token_cap": 1000000,
+   "tokens_today": 0,
+   "why": "整理待ちの記事 201 件（23 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "BLEACH Mirrors High",
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "FROM",
+    "GTA 6",
+    "あつ森",
+    "A2O LITE",
+    "Astrae Oratio",
+    "The Mandalorian",
+    "绝区零",
+    "Vaundy",
+    "ぐでたま",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "f3724428239f",
+   "waiting": [],
+   "why": "足りない 15 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
