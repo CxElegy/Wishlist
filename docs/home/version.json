@@ -1,14 +1,14 @@
 {
- "admin": "fc16a1c1d430",
- "admin-ai": "e2818c27ab5e",
+ "admin": "3957399c1200",
+ "admin-ai": "f389515b7c0f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ecc91dff"
+   "5d3049d9"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "575de2fd"
+   "b17423e8"
   ]
  },
  "admin-boards": "2433a1da6edc",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "815a06c2ec11",
+ "admin-emblem": "2e7d2c61812a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "679fc9ee"
+   "5bc60ea7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "83c16961f979",
+ "admin-now": "850c2627aaf1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4289ce6c"
+   "74e4575d"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2317c695"
+   "990bf36d"
   ]
  },
- "admin-system": "832e37c98a74",
+ "admin-system": "a225265bf963",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "8b6a8d6b"
+   "d00f716e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "162a7d83"
+   "4f3aeaca"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "7e85870e"
   ]
  },
- "index": "87cd1c0d46d1",
+ "index": "e2d2a2a13f07",
  "index_marks": {
   "front": [
    "トップ",
-   "f215b4fa"
+   "c1975bb6"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "d56c8445"
+   "e2c2594f"
   ],
   "w-130724c0": [
    "猫用品",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "e6382a93"
+   "a00aab54"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "806682b1"
+   "d12afb8c"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "6393d9b2"
+   "f2d32fb8"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "e78e4215"
+   "af12cb8b"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "48cd39d4"
+   "107fcaa7"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "84909331"
   ]
  },
- "updated": "11.25 04:18",
+ "updated": "11.25 04:30",
  "wishlist": "ad051c775cb3"
 }

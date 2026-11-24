@@ -5290,12 +5290,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.toiimg.com/thumb/msid-136122242,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/11/doctor-doom-raising-the-sentinels-in-avengers-doomsday-trailer.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -5538,6 +5532,12 @@
   "h": 722,
   "target": 1280,
   "v": 3
+ },
+ "https://times-abema.ismcdn.jp/mwimgs/0/7/1200w/img_07a0337a33c5d9e521379612ace5b4ed372833.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-25"
  },
  "https://today-obs.line-scdn.net/0hjiIQVYaPNUZ0KCnfGo5KEUx-OTdHTi9PVhp7IFl4aiRcBCJHGBpmJVgqPmoJTyVFVE15d1B4Y35dGXEZHw/w1200": {
   "w": 1200,
@@ -6322,17 +6322,17 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.XMOeIlHRHTUaf9Ktmgq1yg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Z69zFYxxEHpPjgo4yiUpQg&pid=News&w=900": {
   "w": 525,
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ar-MlMsFrgR4w4DWbs3Tzw&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-25"
  },
  "https://www.bing.com/th?id=ONUT.bRJoNHBRMXZiQbv2ETMAVQ&pid=News&w=1200": {
   "w": 700,
@@ -6658,6 +6658,12 @@
   "h": 366,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.lnSndiMWFEbIO7nSDNSnog&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-25"
  },
  "https://www.bing.com/th?id=ONUT.n7l_EWuc19wiD2F1U1h3wg&pid=News&w=1200": {
   "w": 700,
@@ -7018,12 +7024,6 @@
   ]
  },
  "https://www.cnet.com/wp-content/uploads/sites/2/neakasa-riko-smart-pet-feeder-on-tile-floor-with-cat-sitting-nearby.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://www.comicbasics.com/wp-content/uploads/2023/11/The-young-avengers.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
