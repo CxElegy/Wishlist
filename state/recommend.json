@@ -19,7 +19,6 @@
   "https://games.sina.cn/esports/2026-11-23/edetail-iniztfmy5504549.d.html?vt=4&pos=108": "http://n.sinaimg.cn/games/crawl/59/w550h309/20261123/5696-dcbc649567ae93fd119b5c6b9326184d.png",
   "https://go2senkyo.com/seijika/200828/posts/1589751": null,
   "https://hochi.news/articles/20261119-OHT1T51260.html": "https://hochi.news/images/2026/11/19/20261119-OHT1I51373-C.jpg",
-  "https://hollywoodlife.com/feature/why-was-avengers-doomsday-release-date-delayed-5556364/": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/92DE7AEDE1BF449FFEEBFC4ABC6141324A6BDDA275DA7407E44DCFE42D4AF46E/scale?format=webp&width=1200",
   "https://life.tw/article/%E8%90%AC%E8%81%96%E8%8B%B1%E8%AA%9E%E9%96%B1%E8%AE%80%E9%97%96%E9%97%9C-%E5%85%83%E6%99%BA%E5%AD%B8%E7%94%9F%E9%BC%93%E5%8B%B5%E5%AD%B8%E7%AB%A5%E9%80%8F%E9%81%8E%E5%AF%A6%E9%9A%9B%E6%93%8D%E4%BD%9C%E8%88%87%E4%BA%92%E5%8B%95%E5%AD%B8%E8%8B%B1%E8%AA%9E-3226258": "https://focusnews.com.tw/wp-content/uploads/2026/11/圖二元智大學英語學士班師生與龜山國小學童開心合影。1.jpg",
   "https://m.sohu.com/a/1102672179_121119309?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334": "https://q6.itc.cn/q_70/images03/20261117/a038ca59e51543b0bb9dea382943fffd.jpeg",
   "https://m.sohu.com/a/1105741060_114760?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334": "https://q9.itc.cn/q_70/images03/20261124/2c3b15bb2d804e1cae9381a93873d879.jpeg",
@@ -74,6 +73,7 @@
   "https://www.sina.cn/news/detail/5367057067807445.html": "http://wx2.sinaimg.cn/middle/8f742936gy1ij7r3iuo28j212l135n7j.jpg",
   "https://www.sohu.com/a/1105302614_122598898": "https://www.bing.com/th?id=ONUT.kCA-8igxNqj9HwA70LtKoQ&pid=News&w=1200",
   "https://www.superherohype.com/news/708323-batman-knightfall-part-1-hbo-max-streaming-release-date": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/09/Untitled-design-2026-09-21T171424.351.jpg?resize=1200,630",
+  "https://www.thenationalnews.com/arts-culture/film-tv/2026/11/24/avengers-doomsday-trailer-takeaways-avengers-x-men-fantastic-four/": "https://www.thenationalnews.com/resizer/v2/OQSO2CMT3ZAPHGUQP3OQ3XOYTE.jpg?auth=cd83361e943b257c4c996c0f090036147d8e52c9d382f0d855ac8929163eb29e&smart=true&width=1200&height=630",
   "https://www.upmedia.mg/tw/game/mobile-game/274821": "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp",
   "https://www.upmedia.mg/tw/game/pc-game/275105": "https://cdn.upmedia.mg/upfile/img/2026/1123/202611231735558135.webp",
   "https://www.walkerland.com.tw/subject/view/425746": "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/11/1795265411810-5f16989da27141be94c40fd9afa2b6f8-850x446.webp",
@@ -1324,6 +1324,27 @@
   },
   {
    "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-24",
+   "hits": [],
+   "image": "https://www.thenationalnews.com/resizer/v2/OQSO2CMT3ZAPHGUQP3OQ3XOYTE.jpg?auth=cd83361e943b257c4c996c0f090036147d8e52c9d382f0d855ac8929163eb29e&smart=true&width=1200&height=630",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "The National",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Eight key takeaways from the Avengers: Doomsday trailers",
+   "url": "https://www.thenationalnews.com/arts-culture/film-tv/2026/11/24/avengers-doomsday-trailer-takeaways-avengers-x-men-fantastic-four/",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
    "because": "哈利波特剧集",
    "date": "2026-11-24",
    "hits": [],
@@ -1342,27 +1363,6 @@
    "url": "https://wisevoter.com/world/2026/11/23/harry-potter-tv-tie-in-edition-hbo-series",
    "words": [],
    "work": "哈利波特剧集"
-  },
-  {
-   "batch": 4,
-   "because": "漫威电影",
-   "date": "2026-11-23",
-   "hits": [],
-   "image": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/92DE7AEDE1BF449FFEEBFC4ABC6141324A6BDDA275DA7407E44DCFE42D4AF46E/scale?format=webp&width=1200",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "Hollywood Life",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Why Was ‘Avengers: Doomsday’ Delayed? Release Date & More",
-   "url": "https://hollywoodlife.com/feature/why-was-avengers-doomsday-release-date-delayed-5556364/",
-   "words": [],
-   "work": "漫威电影"
   },
   {
    "batch": 4,
@@ -1995,11 +1995,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2007,15 +2007,15 @@
    8
   ],
   [
-   "作品:三星手机",
-   7
-  ],
-  [
    "galaxy",
    7
   ],
   [
    "三星 Galaxy",
+   7
+  ],
+  [
+   "作品:三星手机",
    7
   ]
  ]

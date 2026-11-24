@@ -1689,12 +1689,6 @@
   "target": 1280,
   "v": 3
  },
- "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/92DE7AEDE1BF449FFEEBFC4ABC6141324A6BDDA275DA7407E44DCFE42D4AF46E/scale?format=webp&width=1200": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/Japan-Ski-Resort-Cost-Comparison-2026-2027-Infographic.jpg": {
   "w": 1055,
   "h": 1491,
@@ -1704,6 +1698,12 @@
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/bk.jpg": {
   "w": 1800,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/blackcomb-open-day.jpg": {
+  "w": 1200,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -2717,6 +2717,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i5YQe.img": {
+  "w": 640,
+  "h": 427,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2d59wD.img": {
   "w": 1440,
   "h": 2133,
@@ -2741,13 +2747,13 @@
   "target": 1280,
   "v": 3
  },
- "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795509122773": {
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795509682895": {
   "w": 320,
   "h": 270,
   "target": 1280,
   "v": 3,
   "blur": 0.667,
-  "local": "pics/43db6d8c6594a50e.webp",
+  "local": "pics/353f1d6e5047c5fd.webp",
   "out": [
    960,
    810
@@ -3582,6 +3588,12 @@
   "target": 720,
   "v": 3
  },
+ "https://media.nacionale.kabineti.net/uploads/desk_406c611d83_cf4211ab83.jpg": {
+  "w": 1920,
+  "h": 1279,
+  "target": 720,
+  "v": 3
+ },
  "https://media.nacionale.kabineti.net/uploads/large_desk_fcebce3884_834fa36ca9.jpg": {
   "w": 1000,
   "h": 667,
@@ -3676,6 +3688,12 @@
   "v": 3
  },
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2620851-144b920405f1.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2623338-fbdbe59466f5.jpg": {
   "w": 1200,
   "h": 630,
   "target": 1280,
@@ -5347,6 +5365,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/48878/24/48878-24-565d33261e4e01182c47f739d4b82013-1254x1254.jpg": {
+  "w": 1254,
+  "h": 1254,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/56867/133/56867-133-0346b10904255db8b7d06d0f91f298be-2646x1764.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1890,
   "h": 1260,
@@ -6233,12 +6257,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://www.3elife.net/Uploads/Article/images/202611/16/1906533598912.jpg": {
-  "w": 600,
-  "h": 545,
-  "target": 720,
   "v": 3
  },
  "https://www.4gamer.net/games/579/G057943/20261111057/TN/001.jpg": {
@@ -7938,6 +7956,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.naijaandroidarena.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Pro-certification.jpeg": {
+  "w": 997,
+  "h": 642,
+  "target": 720,
+  "v": 3
+ },
  "https://www.negitaku.org/wp-content/uploads/2026/11/HXXHdDUWQAAb51F-1024x960.jpg": {
   "w": 1024,
   "h": 960,
@@ -8113,7 +8137,7 @@
  "https://www.trustedreviews.com/wp-content/uploads/sites/7/2026/11/3a794511-7979-4356-81b4-68d70b871a78.jpg": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.tvline.com/img/gallery/harry-potter-hbo-tv-series-posters-spotlight-dumbledore-mcgonagall-snape-and-hagrid/l-intro-1795425317.jpg": {

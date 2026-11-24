@@ -1,32 +1,32 @@
 {
- "admin": "b9091728c4dc",
- "admin-ai": "a2bd20c840b1",
+ "admin": "e428cbf3e8f8",
+ "admin-ai": "ae405c6808dd",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "373b1943"
+   "50667e61"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "dda0bf8d"
+   "a60a7a42"
   ]
  },
- "admin-boards": "ce147f0553f1",
+ "admin-boards": "5d753bc0e432",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "1e8ccd21"
+   "4f6ccb92"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "2edee4a9f01f",
+ "admin-emblem": "4fe69f475631",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "7bf8572c"
+   "a6bb18ef"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "8e67805780bd",
+ "admin-now": "939eb165f66b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "11292f52"
+   "9938e6b8"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "0716788b"
+   "58990546"
   ]
  },
- "admin-system": "78f880eeeca0",
+ "admin-system": "59160fd82fbb",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "97e55c37"
+   "62a0445b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "6d260421"
+   "d0439723"
   ]
  },
  "admin_marks": {},
- "heat": "7569d2837aa3",
+ "heat": "066a9e44caa2",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "0aef9ebf"
+   "6573cf7e"
   ],
   "ranking": [
    "ランキング",
-   "16787d9a"
+   "f258695d"
   ]
  },
- "index": "a7800285c001",
+ "index": "b3f2c73f8980",
  "index_marks": {
   "front": [
    "トップ",
-   "ee8e2a28"
+   "7996b7d8"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "4d2e7de5"
+   "9abcdbfd"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,11 +137,11 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "248d2c3b"
+   "8491ea71"
   ],
   "w-79b3c280": [
    "滑雪",
-   "96487497"
+   "0035b76c"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -196,6 +196,6 @@
    "2a65a94d"
   ]
  },
- "updated": "11.24 17:38",
- "wishlist": "fdd925d86871"
+ "updated": "11.24 17:45",
+ "wishlist": "2c80c5c91804"
 }

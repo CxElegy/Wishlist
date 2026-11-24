@@ -1,50 +1,5 @@
 [
 {
-"at": "2026-11-22T21:26:26+00:00",
-"text": "2026-11-23 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 8（14 版面・16 本・今日の整理待ちは全部終わり） · token 新規入力 4.2万・キャッシュ読み 57.6万・出力 1,903",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.52,
-"mem_total": 16869113856,
-"mem_free": 15685148672,
-"disk_used": 10461769728,
-"disk_free": 63419842560,
-"disk_total": 73881612288,
-"peak": 625549312
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"ILLIT",
-"MMORPG 新作",
-"The Mandalorian",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"漫威电影",
-"猫用品",
-"绝区零"
-],
-"stories": 16,
-"left": 0,
-"edited": 11,
-"run": null,
-"tok": {
-"in": 17,
-"cw": 42071,
-"cr": 575507,
-"out": 1903,
-"calls": 9,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 619498
-},
-{
 "at": "2026-11-22T22:35:50+00:00",
 "text": "2026-11-23 第 1 バッチを出刊：哈利波特剧集（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 5.0万・キャッシュ読み 118.6万・出力 4,372",
 "level": "ok",
@@ -2146,5 +2101,37 @@
 "calls": 21,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-24T08:45:25+00:00",
+"text": "2026-11-24 第 1 バッチを出刊：漫威电影（1 版面・5 本・残り 4 版面） · token 新規入力 5.3万・キャッシュ読み 80.6万・出力 3,690",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.39,
+"mem_total": 16868675584,
+"mem_free": 15652265984,
+"disk_used": 10405027840,
+"disk_free": 63408070656,
+"disk_total": 73813098496,
+"peak": 680628224
+},
+"batch": 1,
+"boards": [
+"漫威电影"
+],
+"stories": 5,
+"left": 4,
+"edited": 21,
+"run": 1795509510.3829224,
+"tok": {
+"in": 23,
+"cw": 52784,
+"cr": 806087,
+"out": 3690,
+"calls": 12,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 862584
 }
 ]
