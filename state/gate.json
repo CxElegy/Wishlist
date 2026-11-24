@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-24T12:30:54+00:00",
+ "checked": "2026-11-24T12:36:37+00:00",
  "fired": {
-  "at": "2026-11-24T11:33:56+00:00",
+  "at": "2026-11-24T12:36:37+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -61,52 +61,47 @@
    "edit": 14
   },
   "2026-11-24": {
-   "edit": 13
+   "edit": 14
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-24T11:33:56+00:00",
+    "at": "2026-11-24T12:36:37+00:00",
     "attempts": 1,
     "day": "2026-11-24",
-    "prog": 552,
-    "resp": "cse_01W4x6f8GFFRJVBfoFWGDh6N",
-    "sig": "67c325042816"
+    "prog": 633,
+    "resp": "",
+    "sig": "25c9a6050f0e"
    },
    "items": [
     "A2O LITE",
     "dota2",
     "lib:Nintendo Switch 2",
-    "lib:YOASOBI",
     "lib:iPhone",
     "lib:サッカー日本代表",
-    "lib:ポケットモンスター",
     "lib:大相撲",
     "lib:大谷翔平",
     "lib:将棋",
     "あつ森",
-    "哈利波特剧集",
-    "滑雪",
-    "绝区零"
+    "哈利波特剧集"
    ],
-   "last_batch": "2026-11-24T12:15:52+00:00",
+   "last_batch": "2026-11-24T12:25:30+00:00",
    "last_error": {
     "at": "2026-11-24T11:39:47+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 625,
+   "prog": 633,
    "prog_day": "2026-11-24",
    "ripe": [
-    "滑雪",
-    "绝区零"
+    "あつ森"
    ],
-   "sig": "c3647258e1ed",
+   "sig": "25c9a6050f0e",
    "token_cap": 1000000,
-   "tokens_today": 790495,
-   "why": "整理待ちの記事 106 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 793686,
+   "why": "整理待ちの記事 76 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -287,11 +282,11 @@
    "runs": 14
   },
   "2026-11-24": {
-   "batches": 31,
-   "cr": 14746233,
-   "cw": 726957,
-   "in": 413,
-   "out": 63125,
+   "batches": 33,
+   "cr": 14921590,
+   "cw": 729233,
+   "in": 416,
+   "out": 64037,
    "runs": 14
   }
  }
