@@ -1,8 +1,6 @@
 {
  "image_misses": {
-  "https://vacunasaep.org/sites/all/libraries/fckeditor/editor/filemanager/browser/default/browser.html?CONNECTOR=%2F%5C%2Fwtsap.wiki%2Fbs%2F%3Fwiki=41rFu5": "2026-11-23",
-  "https://www.walkerplus.com/article/142825/image804287.html": "2026-11-23",
-  "https://www.walkerplus.com/article/40260/image207549.html": "2026-11-23"
+  "https://vacunasaep.org/sites/all/libraries/fckeditor/editor/filemanager/browser/default/browser.html?CONNECTOR=%2F%5C%2Fwtsap.wiki%2Fbs%2F%3Fwiki=41rFu5": "2026-11-24"
  },
  "images": {
   "http://www.excite.co.jp/news/article/Allabout_133879/": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FAllabout%252Fb9%252FAllabout_133879%252FAllabout_133879_1.jpg,zoom=1200,quality=70,type=jpg",
@@ -79,10 +77,10 @@
   "https://www.walkerplus.com/article/1004716/": "https://image.news.livedoor.com/newsimage/stf/6/2/62c67_230_3e259e62_00ffef64.jpg",
   "https://www.walkerplus.com/article/1047944/image10448709.html": "https://image.news.livedoor.com/newsimage/stf/3/5/350c1_230_cf6c6eb3_2524c276.jpg",
   "https://www.walkerplus.com/article/1178257/": "https://news.walkerplus.com/article/1178257/12605406_615.jpg",
-  "https://www.walkerplus.com/article/142825/image804287.html": null,
+  "https://www.walkerplus.com/article/142825/image804287.html": "https://news.walkerplus.com/article/142825/804281_615.jpg",
   "https://www.walkerplus.com/article/1453739/": "https://news.walkerplus.com/article/1453739/19024802_615.jpg",
   "https://www.walkerplus.com/article/33564/image160126.html": "https://news.walkerplus.com/article/33564/160123_615.jpg",
-  "https://www.walkerplus.com/article/40260/image207549.html": null,
+  "https://www.walkerplus.com/article/40260/image207549.html": "https://news.walkerplus.com/article/40260/207548_615.jpg",
   "https://www.walkerplus.com/article/85785/image484216.html": "https://news.walkerplus.com/article/85785/484215_615.jpg"
  },
  "picks": [
@@ -95,7 +93,7 @@
     "万圣节",
     "限定款"
    ],
-   "image": null,
+   "image": "https://news.walkerplus.com/article/40260/207548_615.jpg",
    "kind": "wish",
    "score": 10,
    "source": "ウォーカープラス",
@@ -722,7 +720,7 @@
    "hits": [
     "动物 / 角色造型"
    ],
-   "image": null,
+   "image": "https://news.walkerplus.com/article/142825/804281_615.jpg",
    "kind": "wish",
    "score": 6,
    "source": "ウォーカープラス",

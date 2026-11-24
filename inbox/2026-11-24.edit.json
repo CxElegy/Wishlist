@@ -146,13 +146,18 @@
   "滑雪": 2,
   "The Mandalorian": 1,
   "チェーンソーマン": 1,
-  "日本顶级网球赛事": 1,
+  "日本顶级网球赛事": 3,
   "gelato pique": 3,
   "周杰伦": 7,
   "绝区零": 3,
   "Astrae Oratio": 2,
   "哈利波特剧集": 2,
-  "A2O LITE": 4
+  "A2O LITE": 4,
+  "MMORPG 新作": 2,
+  "星巴克马克杯": 2,
+  "ILLIT": 1,
+  "dota2": 1,
+  "ぐでたま": 1
  },
  "GTA 6": [
   {
@@ -558,6 +563,71 @@
    "refs": [
     2,
     4
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "Everything we know about Riot’s new League of Legends MMO: Raids & more",
+   "highlight": "League of Legends MMO",
+   "blurb": "Dexerto rounds up what is known so far about Riot’s League of Legends MMO, including raids.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "MMOs You’ve Never Heard Of: Mythwake, Saltwarden Online, and Lugh World",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "＜画像4 / 5＞出雲大社店限定！スタバがオシャレなご当地マグカップを発売",
+   "highlight": "出雲大社店限定",
+   "blurb": "出雲大社店限定のご当地マグカップが発売。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/49841/268601_615.jpg"
+  },
+  {
+   "headline": "＜画像2 / 4＞40cm10kg！スタバ“どでか”マグカップが登場",
+   "highlight": "40cm10kg",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT、「It's Me」が自身3作目の累積再生数1億回突破",
+   "highlight": "累積再生数1億回突破",
+   "blurb": "ILLITの「It's Me」が自身3作目となる累積再生数1億回を突破した。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size3/9/2/e/e/92ee1b6557b4ffafdf6577accec1fa6f_1.jpg"
+  }
+ ],
+ "dota2": [],
+ "ぐでたま": [
+  {
+   "headline": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升♥",
+   "highlight": "蛋黃哥人氣急上升",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]

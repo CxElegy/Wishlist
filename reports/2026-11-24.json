@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "edit_sig": "029e338eec4c",
+ "edit_sig": "07b7e590e3dc",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -118,24 +118,29 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Dexerto rounds up what is known so far about Riot’s League of Legends MMO, including raids.",
      "date": "2026-11-17",
-     "n": 1,
-     "source": "Dexerto",
-     "title": "Everything we know about Riot’s new League of Legends MMO: Raids & more",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNR2ViVHdqS3VuRFpRY1NtWGtScW5xSkw5MHZkQWxmcWN5N0E2SnZsRWY0NXNsT3B6a0hldWx5MXFCTGc0Wk5ucG9GV0t3QmhEOUlWVG8yc1VIUGVwa0hIeUN5ckU1MEU3N0g3b0VuSHhxUk8tV2tCTUt2dnRJcUNnTDhyZG1BVE0zXzhScGtVaFpReWk2VWJxdg?oc=5"
+     "headline": "Everything we know about Riot’s new League of Legends MMO: Raids & more",
+     "highlight": "League of Legends MMO",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2021/01/everything-we-know-about-league-of-legends-mmo-rpg-riot-games-release-date-regions-more.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/league-of-legends/league-of-legends-riot-mmo-regions-classes-1488806/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-23",
-     "n": 2,
-     "source": "Massively Overpowered",
-     "title": "MMOs You’ve Never Heard Of: Mythwake, Saltwarden Online, and Lugh World",
-     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNN1l0M3RXOUlQZTE1UEx6NGdTbTB4Z2gxV2piTXdjSjBCelM1bWR0ODVCZnVWNEUyUE5lMTE1VklUSF9sUGFhTVFvN016U0hUWWpHOW5uSXpSeFFEdlBpVWF3RW1mTVhkRlVENDdoV0JJMFFvU3p0RUhHUU9mc2tXaGNkS1F5UjI4TXdHOTdBc2NoRjkweV82NWtrV3VOM3BnZGdXVlF3?oc=5"
+     "headline": "MMOs You’ve Never Heard Of: Mythwake, Saltwarden Online, and Lugh World",
+     "highlight": "",
+     "image": "https://massivelyop.com/wp-content/uploads/2026/11/lugh-world-just-a-guy-and-his-scalie.jpg",
+     "image_via": "og:image",
+     "url": "https://massivelyop.com/2026/11/23/mmos-youve-never-heard-of-mythwake-saltwarden-online-and-lugh-world/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -531,17 +536,19 @@
    "cover": null,
    "facts": [],
    "name": "ぐでたま",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-21",
-     "n": 1,
-     "source": "三立新聞",
-     "title": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升♥",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE14RWlHbFMza2trY3FLeXcxNGJfVjhYNDBQdTM1aG9vS1J1VEZXV3hXbUx4d3dJR0JzNXo5UFdKS3RnUEtxbUE?oc=5"
+     "headline": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升♥",
+     "highlight": "蛋黃哥人氣急上升",
+     "image": "https://attach.setn.com/newsimages/2014/05/09/78724-PH.jpg",
+     "image_via": "og:image",
+     "url": "https://www.setn.com/news/22762",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Gudetama",
    "theme": {
     "accent": "#885D0C",
@@ -777,33 +784,6 @@
    }
   },
   {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
-   "facts": [],
-   "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-23",
-     "n": 1,
-     "source": "Esports Charts",
-     "title": "BLAST Slam IX Dota 2 players stats - Age & Country",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5pdjlRRlVjZ0JCbFZfSmVLcHgtX0g0SlZaTkJJdTRiM2JHOGFWczVMM1puUGRwc1VId3FaUEtkQzVDZW1fTlpEbFR6ODRQdEwxUVpFckZ1RXlMaEE1SmdLaUpSUFFON0Qyekc3Rg?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "Dota 2",
-   "theme": {
-    "accent": "#E0503C",
-    "alt_accent": "#A63A28",
-    "alt_bg": "#F6EDEA",
-    "alt_fg": "#1E1A18",
-    "bg": "#17100F",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
@@ -856,22 +836,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 2,
-     "source": "ウォーカープラス",
-     "title": "画像9 / 29＞テニスウェア姿の限定ペコちゃん缶も！40回大会を迎えた「東レPPOテニス2025」は記念グッズやフード、体験型コンテンツもめじろ押し",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1CcGlQaGlaTzRMcUNZZVpldXRoTm0wNzA1ODVhRHRFM3hld3BYQmtaVmlwSVVmSll2em13dVhfc3NacVVuVFMwQ01HODJTZ0JYczJGSFdVYTUtdEFEY29UaUVZMFBneXJYaDBHbXZR?oc=5"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 3,
-     "source": "朝日新聞デジタル",
-     "title": "フォロワー210万人のナダル門下生 留学経てテニス界の「推し」に",
-     "url": "https://www.asahi.com/articles/ASVCL31QMVCLUTQP00HM.html"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -901,17 +865,19 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "ILLITの「It's Me」が自身3作目となる累積再生数1億回を突破した。",
      "date": "2026-11-22",
-     "n": 1,
-     "source": "山陽新聞",
-     "title": "ILLIT、「It's Me」が自身3作目の累積再生数1億回突破【オリコンランキング】",
-     "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPVzk2ajlKbUNNVVROV3hNdDlnM1d0Tm5EcnR0N2FJYWJzWFBfdXFZeU1lcG9FRHFxUy1HOThsN3RVakdJV0F6aGwyWDFYVzJucGhXcmZpMXFBeVZXeWIxX0tickxNRkJZV3hCeDdQbzRvdXB1N05mS1l1SnpPd04xSV9MMWRETXdQeEwzajNSM2NzWVJDUGRxTTNhVXRFTUM1YmRZWXdDU2ZZREF4c3ozVWJXaU5kZTlEOXhYc3RTalNCS1Bad1Fxb0dFajJNcUpsNVV3MlFZd0xZSjh0NHJLbjlUMVU?oc=5"
+     "headline": "ILLIT、「It's Me」が自身3作目の累積再生数1億回突破",
+     "highlight": "累積再生数1億回突破",
+     "image": "https://static.sanyonews.jp/image/article/size3/9/2/e/e/92ee1b6557b4ffafdf6577accec1fa6f_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/1989539?kw=2024%3Cbr%20/%3E%E2%80%9D%20target=%E2%80%9D_blank%E2%80%9D%3Ehttps://www.sanyonews.jp/article/1815191?kw=",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",
@@ -931,24 +897,24 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "出雲大社店限定のご当地マグカップが発売。",
      "date": "2026-11-22",
      "headline": "＜画像4 / 5＞出雲大社店限定！スタバがオシャレなご当地マグカップを発売",
-     "highlight": "",
-     "image": "https://image.news.livedoor.com/newsimage/0/2/0286c_230_1a8c314f_b01783dd.jpg",
-     "image_via": "转载 news.livedoor.com",
+     "highlight": "出雲大社店限定",
+     "image": "https://news.walkerplus.com/article/49841/268601_615.jpg",
+     "image_via": "AI 挑选",
      "url": "https://www.walkerplus.com/article/49841/image268600.html",
-     "weight": "hero"
+     "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-11-22",
      "headline": "＜画像2 / 4＞40cm10kg！スタバ“どでか”マグカップが登場",
-     "highlight": "",
+     "highlight": "40cm10kg",
      "image": "https://news.walkerplus.com/article/68792/385520_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/68792/image385522.html",
-     "weight": "hero"
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
@@ -1009,6 +975,31 @@
     "alt_fg": "#1C1826",
     "bg": "#15131C",
     "fg": "#EEEAF4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+   "facts": [],
+   "last": {
+    "date": "2026-11-23",
+    "headline": "New Dota 2 patch tries to help games end faster, adds an item that summons super creeps in every lane at once",
+    "url": "https://www.pcgamer.com/games/moba/new-dota-2-patch-tries-to-help-games-end-faster-adds-an-item-that-summons-super-creeps-in-every-lane-at-once/"
+   },
+   "name": "dota2",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "Dota 2",
+   "theme": {
+    "accent": "#E0503C",
+    "alt_accent": "#A63A28",
+    "alt_bg": "#F6EDEA",
+    "alt_fg": "#1E1A18",
+    "bg": "#17100F",
+    "fg": "#F4EEE4",
     "font": "serif",
     "split": true
    }
