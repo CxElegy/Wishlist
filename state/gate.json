@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-24T03:34:19+00:00",
+ "changed": true,
+ "checked": "2026-11-24T04:18:04+00:00",
  "fired": {
   "at": "2026-11-24T03:34:19+00:00",
   "results": {
@@ -76,34 +76,25 @@
     "sig": "047234f60e0c"
    },
    "items": [
-    "Astrae Oratio",
     "ILLIT",
-    "The Mandalorian",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
     "lib:ガンプラ",
     "lib:ゼルダの伝説",
     "lib:ユニクロ",
     "lib:無印良品",
-    "星巴克马克杯",
-    "猫用品",
-    "绝区零"
+    "星巴克马克杯"
    ],
-   "last_batch": "2026-11-24T02:40:13+00:00",
+   "last_batch": "2026-11-24T03:40:36+00:00",
    "last_error": {},
    "need": true,
-   "prog": 332,
+   "prog": 340,
    "prog_day": "2026-11-24",
-   "ripe": [
-    "Astrae Oratio",
-    "The Mandalorian",
-    "猫用品",
-    "绝区零"
-   ],
-   "sig": "047234f60e0c",
+   "ripe": [],
+   "sig": "537a90f13446",
    "token_cap": 1000000,
-   "tokens_today": 440981,
-   "why": "整理待ちの記事 83 件（12 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 497254,
+   "why": "整理待ちの記事 75 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -284,12 +275,12 @@
    "runs": 14
   },
   "2026-11-24": {
-   "batches": 17,
-   "cr": 7885168,
-   "cw": 405383,
-   "in": 219,
-   "out": 35379,
-   "runs": 8
+   "batches": 18,
+   "cr": 9102630,
+   "cw": 457625,
+   "in": 256,
+   "out": 39373,
+   "runs": 9
   }
  }
 }
