@@ -1,6 +1,6 @@
 {
  "admin": "f4f319b664ea",
- "admin-ai": "4100b4a5f125",
+ "admin-ai": "d09d9eeb4468",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "8f7979e1"
+   "639d9225"
   ]
  },
  "admin-boards": "a526392848d5",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "0afe3b75bd25",
+ "admin-emblem": "53583847b050",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "adb1829c"
+   "6089cbbe"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "a9ba98bf04eb",
+ "admin-now": "7ee0418eca5e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "74256156"
+   "90ffda60"
   ]
  },
- "admin-system": "6d3dfe6c58ff",
+ "admin-system": "d69d5d521393",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "38cc14e5"
+   "c4a79cb6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "cda861b8"
+   "d8ad3233"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "9d3e1f92"
   ]
  },
- "index": "1b5065afc0b9",
+ "index": "4f3ed6793c88",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "4c3053f3"
+   "0a7f38fc"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "420a6a6b"
+   "fad895a2"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "8422c9ea"
+   "555be4ba"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "84909331"
   ]
  },
- "updated": "11.25 07:30",
+ "updated": "11.25 07:34",
  "wishlist": "ad051c775cb3"
 }
