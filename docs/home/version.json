@@ -1,32 +1,32 @@
 {
- "admin": "d402013e6a15",
- "admin-ai": "65b990095d48",
+ "admin": "9a70bb3ec8cf",
+ "admin-ai": "38f836b8f7e1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ffa300ea"
+   "883e8906"
   ],
   "tokens": [
    "AI 編集のトークン",
    "c8c1556a"
   ]
  },
- "admin-boards": "aca6e4c1fe55",
+ "admin-boards": "e8a7cfeac11f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "b0947dec"
+   "2b61aeb4"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "ee921c6660fe",
+ "admin-emblem": "1ba6226c8044",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4cb02459"
+   "afafbfcf"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "bbdb45840b50",
+ "admin-now": "b8f1b3e775f1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "20698859"
+   "10d29029"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "58507cf4"
+   "af95b93e"
   ],
   "term-panel": [
    "ライブログ",
-   "30a42371"
+   "d6261fa8"
   ]
  },
- "admin-system": "12ea57dbb597",
+ "admin-system": "731912226370",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4990930e"
+   "4dfea65a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "61618aaf"
+   "8b319c2b"
   ]
  },
  "admin_marks": {},
- "heat": "2a68c5d1ffd0",
+ "heat": "45cd7b60635a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "3ed5697a"
+   "da557094"
   ],
   "ranking": [
    "ランキング",
-   "314ef536"
+   "5245b175"
   ]
  },
- "index": "8cbcf2ecb71d",
+ "index": "388d53b1c511",
  "index_marks": {
   "front": [
    "トップ",
-   "cf1a9ca0"
+   "2ff5c252"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "9abcdbfd"
+   "4d2e7de5"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "ccb69c25"
+   "9eab35bf"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "280dcd6a"
+   "2a65a94d"
   ]
  },
- "updated": "11.24 13:18",
+ "updated": "11.24 14:01",
  "wishlist": "fdd925d86871"
 }
