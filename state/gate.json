@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-24T15:27:14+00:00",
+ "checked": "2026-11-24T16:18:08+00:00",
  "fired": {
   "at": "2026-11-24T14:33:23+00:00",
   "results": {
@@ -76,11 +76,6 @@
     "sig": "a72e29b252d3"
    },
    "items": [
-    "A2O LITE",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
     "lib:ブラッククローバー 第2期",
     "lib:台風・天気",
     "lib:星野源",
@@ -88,8 +83,7 @@
     "lib:生徒会にも穴はある！",
     "lib:薬屋のひとりごと 第3期",
     "lib:貸した魔力は【リボ払い】で強制徴収",
-    "lib:転生したら剣でした 第2期",
-    "绝区零"
+    "lib:転生したら剣でした 第2期"
    ],
    "last_batch": "2026-11-24T15:08:27+00:00",
    "last_error": {
@@ -97,16 +91,13 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 632,
-   "prog_day": "2026-11-24",
-   "ripe": [
-    "A2O LITE",
-    "dota2"
-   ],
-   "sig": "e456cc10b2e7",
+   "prog": 3,
+   "prog_day": "2026-11-25",
+   "ripe": [],
+   "sig": "9c76c5309b9b",
    "token_cap": 1000000,
-   "tokens_today": 898968,
-   "why": "整理待ちの記事 103 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
