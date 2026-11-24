@@ -1153,6 +1153,12 @@
   "k": null,
   "p": null
  },
+ "https://bloximages.chicago2.vip.townnews.com/lufkindailynews.com/content/tncms/assets/v3/editorial/8/ae/8aec6595-878e-589f-abff-f671a582b0d4/6aff53b48dd7e.image.jpg?crop=800%2C420%2C0%2C56": {
+  "w": 800,
+  "h": 420,
+  "target": 720,
+  "v": 3
+ },
  "https://businessupturn.com/uploads/media/1794830799107-r6g345-untitled-design---2026-11-16t173622-305.webp": {
   "w": 1200,
   "h": 675,
@@ -1627,12 +1633,6 @@
   "w": 1280,
   "h": 670,
   "target": 720,
-  "v": 3
- },
- "https://d2l930y2yx77uc.cloudfront.net/production/social_images/cbb84c860cb3272f4e2d50fca3911bcc3e5092f0.png": {
-  "w": 1280,
-  "h": 670,
-  "target": 1280,
   "v": 3
  },
  "https://d3lmgsai2rsy7d.cloudfront.net/xuan/media/uploads/image/2026-11/XUAN_HXAbnNtaQAE7r_fd.jpg?VersionId=u1aQnn50rRk8l6ovlnakt3KFw0YTtFhX": {
@@ -2711,13 +2711,13 @@
   "target": 1280,
   "v": 3
  },
- "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795487794386": {
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795491417146": {
   "w": 320,
   "h": 270,
   "target": 1280,
   "v": 3,
   "blur": 0.667,
-  "local": "pics/73ade07acadc168d.webp",
+  "local": "pics/8c60fe24e9526eb0.webp",
   "out": [
    960,
    810

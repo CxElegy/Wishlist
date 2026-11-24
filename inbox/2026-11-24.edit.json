@@ -160,16 +160,16 @@
   "GTA 6": 65,
   "三星手机": 20,
   "FROM": 3,
-  "猫用品": 3,
+  "猫用品": 5,
   "あつ森": 1,
   "滑雪": 2,
-  "The Mandalorian": 1,
+  "The Mandalorian": 3,
   "チェーンソーマン": 1,
   "日本顶级网球赛事": 3,
   "gelato pique": 3,
   "周杰伦": 15,
-  "绝区零": 3,
-  "Astrae Oratio": 2,
+  "绝区零": 5,
+  "Astrae Oratio": 4,
   "哈利波特剧集": 5,
   "A2O LITE": 4,
   "MMORPG 新作": 8,
@@ -403,6 +403,15 @@
     1
    ],
    "image": "https://helios-i.mashable.com/imagery/articles/00dDrbqFpo0mbX0aD80wXT6/hero-image.fill.size_1200x675.v1681316975.jpg"
+  },
+  {
+   "headline": "Sigourney Weaver makes her \"Star Wars\" debut, in a X-wing jumpsuit no less, as Colonel Ward in \"The Mandalorian and Grogu.\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "チェーンソーマン": [
@@ -519,12 +528,14 @@
  ],
  "绝区零": [
   {
-   "headline": "[Zenless Zone Zero] Ver. 3.4 arrives December 2nd. The Star Rail collab featuring a free Robin is huge",
-   "highlight": "Ver. 3.4 arrives December 2nd",
-   "blurb": "Ver. 3.4 arrives December 2nd; the Star Rail collab features a free Robin, per the November 20 official preview program.",
+   "headline": "【崩壊スターレイル】アストラ(ゼンゼロコラボ)はいつ実装される？性能予想と声優",
+   "highlight": "ゼンゼロコラボ",
+   "blurb": "ゼンゼロ Ver.3.4 は12月2日配信。崩壊スターレイルとのコラボで、ロビンが無料で入手できる。",
    "weight": "hero",
    "refs": [
-    2
+    4,
+    2,
+    5
    ],
    "event": {
     "date": "2026-12-02",
@@ -558,7 +569,9 @@
    "weight": "lead",
    "refs": [
     1,
-    2
+    2,
+    3,
+    4
    ],
    "event": {
     "date": "2026-12-04",
