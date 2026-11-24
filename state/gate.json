@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-24T14:18:05+00:00",
+ "changed": true,
+ "checked": "2026-11-24T14:33:23+00:00",
  "fired": {
-  "at": "2026-11-24T12:36:37+00:00",
+  "at": "2026-11-24T14:33:23+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -61,22 +61,26 @@
    "edit": 14
   },
   "2026-11-24": {
-   "edit": 14
+   "edit": 15
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-24T12:36:37+00:00",
+    "at": "2026-11-24T14:33:23+00:00",
     "attempts": 1,
     "day": "2026-11-24",
-    "prog": 633,
-    "resp": "cse_01W4x6f5mKtpLVpNxvfABsLR",
-    "sig": "25c9a6050f0e"
+    "prog": 642,
+    "resp": "",
+    "sig": "a72e29b252d3"
    },
    "items": [
     "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
     "dota2",
     "lib:ブラッククローバー 第2期",
     "lib:ポケモンGO",
@@ -86,7 +90,11 @@
     "lib:羽生善治",
     "lib:薬屋のひとりごと 第3期",
     "lib:貸した魔力は【リボ払い】で強制徴収",
-    "哈利波特剧集"
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
    "last_batch": "2026-11-24T12:43:13+00:00",
    "last_error": {
@@ -96,35 +104,42 @@
    "need": true,
    "prog": 642,
    "prog_day": "2026-11-24",
-   "ripe": [],
-   "sig": "0a01f9cc42e1",
+   "ripe": [
+    "GTA 6",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影"
+   ],
+   "sig": "a72e29b252d3",
    "token_cap": 1000000,
    "tokens_today": 837121,
-   "why": "整理待ちの記事 99 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 166 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "The Mandalorian",
+    "绝区零",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "fb1cf67a2aa2",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "チェーンソーマン"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 9 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
