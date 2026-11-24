@@ -2379,6 +2379,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/a/c/ac2e9_1847_77de4f8cdd794e63ffd9b11f26e5c4d5.jpg": {
+  "w": 1000,
+  "h": 667,
+  "target": 720,
+  "v": 3
+ },
  "https://image.news.livedoor.com/newsimage/stf/c/4/c4e85_929_dd7b7839_d2b43321.jpg": {
   "w": 805,
   "h": 500,
@@ -2747,13 +2753,13 @@
   "target": 1280,
   "v": 3
  },
- "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795509682895": {
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795510253140": {
   "w": 320,
   "h": 270,
   "target": 1280,
   "v": 3,
   "blur": 0.667,
-  "local": "pics/353f1d6e5047c5fd.webp",
+  "local": "pics/60c3403ecc301e92.webp",
   "out": [
    960,
    810
@@ -5260,6 +5266,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/18505/4522/18505-4522-07e624aa4e3f158508c312e7abc24baf-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1008,
+  "h": 1260,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/18505/4600/18505-4600-f5483b6687a3148c15338c473be2cf52-1801x2700.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff": {
   "w": 901,
   "h": 1350,
@@ -5726,6 +5738,13 @@
   "h": 1425,
   "target": 720,
   "v": 3
+ },
+ "https://senken.co.jp/production/uploads/file_content/file/430147/facebook_gelatopiqu.jpg": {
+  "w": 760,
+  "h": 397,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.413
  },
  "https://sm.ign.com/t/ign_ap/news/g/gta-6-vice/gta-6-vice-city-nba-court-revealed-by-miami-heat_cf38.1200.jpg": {
   "w": 1200,
@@ -6872,12 +6891,6 @@
  "https://www.bing.com/th?id=ONUT.V9oUOErfpMDYxDF0Sjo6Hg&pid=News&w=800": {
   "w": 700,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.VfVuOdLV4Xal8h2q6doTjQ&pid=News&w=760": {
-  "w": 700,
-  "h": 365,
   "target": 720,
   "v": 3
  },
