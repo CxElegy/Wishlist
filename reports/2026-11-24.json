@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "edit_sig": "04c4dbede7c8",
+ "edit_sig": "be9cdc71cc04",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -191,29 +191,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-24",
-     "n": 16,
-     "source": "日テレNEWS NNN",
-     "title": "大山のスキー場が新たに大山マウンテンリゾートへ 県内すべての児童に無料一日リフト券を配布 全国からの誘客を目指す 鳥取県大山町（2026年11月24日掲載）｜日本海テレビNEWS NNN",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNeW5Fc2U0Z2doSThBYjVFVDJpSHdZb3MyQWlrUHVHLWxET1JtNFQxNGliWW9td0NEaS1KWGdPU0tIRWhGbjR3Y2did1VXNVUwaUpvLTBNXzF6bnJZZHA5ZWpvd1VyVlBYcl9RMlZwTXhfWUM1N1lnbW85Q1RQcnl6eHpnQjRubFk?oc=5"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 17,
-     "source": "Dellows News",
-     "title": "ふじてんスノーリゾートが40周年、2026年12月中旬営業開始へ",
-     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE1XLVdEYUFXY1dEQXowUXp0OW5ValJLR3RTLXZIalpGR2ZXRjdEMGRfTmtlaFk0VTNlNURWTnJ0b3lsSWpSeDhr?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 18,
-     "source": "日テレNEWS NNN",
-     "title": "中国地方最高峰・大山のふもとで今年初めて積雪を観測 スキー場も断続的に雪が降り積もり すっかり雪景色 に 鳥取県大山町",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOUmlsNnNNLWx2ZmgyRkwtVElRVW1XT29yTndWVHEzdWVHc1RoOUpxNTM1cUg2X0FHWkdWYmdFR095eFdVNk9TN3VJdHVrTTc4Um1wV0E3LUtqZHlBOWxkQ2xXTWlPdnBLN0pwQUIyejIwR2pLbE1PNFp4cWhiQXU0TTQyZU1yLW8?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -284,6 +261,16 @@
      "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/blackcomb-open-day.jpg",
      "image_via": "og:image",
      "url": "https://dmksnowboard.com/blackcomb-opening-first-ride-2026/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-24",
+     "headline": "大山のスキー場が新たに大山マウンテンリゾートへ 県内すべての児童に無料一日リフト券を配布",
+     "highlight": "無料一日リフト券",
+     "image": "https://image.gallery.play.jp/nkt-news/articles/78722f1d3c11450687efa68fd245606d/c1f81040-eec8-40a7-b989-4a36c7225903.jpg?w=1200",
+     "image_via": "og:image",
+     "url": "https://news.ntv.co.jp/n/nkt/category/society/nk2328519b79f54bf2b82bcd0b8595314c",
      "weight": "normal"
     }
    ],

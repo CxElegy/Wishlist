@@ -1,54 +1,5 @@
 [
 {
-"at": "2026-11-23T04:30:48+00:00",
-"text": "2026-11-23 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 12（18 版面・30 本・今日の整理待ちは全部終わり） · token 新規入力 4.7万・キャッシュ読み 57.7万・出力 2,222",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.85,
-"mem_total": 16869113856,
-"mem_free": 15702245376,
-"disk_used": 10463145984,
-"disk_free": 63418466304,
-"disk_total": 73881612288,
-"peak": 612274176
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"ILLIT",
-"The Mandalorian",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"周杰伦",
-"哈利波特剧集",
-"星巴克马克杯",
-"滑雪",
-"猫用品"
-],
-"stories": 30,
-"left": 0,
-"edited": 18,
-"run": null,
-"tok": {
-"in": 18,
-"cw": 46499,
-"cr": 577443,
-"out": 2222,
-"calls": 9,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 626182
-},
-{
 "at": "2026-11-23T05:49:30+00:00",
 "text": "2026-11-23 第 1 バッチを出刊：GTA 6（1 版面・5 本・残り 3 版面） · token 新規入力 6.2万・キャッシュ読み 196.6万・出力 6,665",
 "level": "ok",
@@ -2097,5 +2048,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 87463
+},
+{
+"at": "2026-11-24T12:20:39+00:00",
+"text": "2026-11-24 第 8 バッチを出刊：滑雪（1 版面・9 本・残り 1 版面） · token 新規入力 1,274・キャッシュ読み 8.7万・出力 496",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.54,
+"mem_total": 16868675584,
+"mem_free": 15924109312,
+"disk_used": 11208441856,
+"disk_free": 62604656640,
+"disk_total": 73813098496,
+"peak": 421367808
+},
+"batch": 8,
+"boards": [
+"滑雪"
+],
+"stories": 9,
+"left": 1,
+"edited": 22,
+"run": 1795520088.9457645,
+"tok": {
+"in": 1,
+"cw": 1273,
+"cr": 87042,
+"out": 496,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 88812
 }
 ]
