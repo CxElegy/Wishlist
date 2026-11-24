@@ -1852,12 +1852,6 @@
   "target": 1280,
   "v": 3
  },
- "https://foro3d.com/2026/noviembre/imagenes/nicola-coughlan-se-distancia-de-la-nueva-serie-de-harry-potter-por-las.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/23140308/hbo-harry-potter-biggest-change.jpg": {
   "w": 1600,
   "h": 900,
@@ -2419,12 +2413,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.kbench.com/kbench/article/thumbnail/283533_thumb.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-24"
- },
  "https://images.khan.co.kr/article/2026/11/20/news-p.v1.20261120.6b2ae1d6e17e49ca9d08f1bcab07ca1c_P1.png": {
   "w": 1200,
   "h": 756,
@@ -2726,6 +2714,57 @@
   "h": 900,
   "target": 720,
   "v": 3
+ },
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795523933223": {
+  "w": 320,
+  "h": 270,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.667,
+  "local": "pics/45e31126cbdb0cf1.webp",
+  "out": [
+   960,
+   810
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    0,
+    0,
+    2,
+    8,
+    15,
+    14,
+    12,
+    2,
+    36,
+    10,
+    1,
+    0
+   ],
+   [
+    1,
+    13,
+    14,
+    14,
+    11,
+    4,
+    4,
+    5,
+    5,
+    7,
+    10,
+    11
+   ]
+  ],
+  "c": "#e5d6d0",
+  "k": [
+   0.351,
+   0.179,
+   0.462,
+   0.301
+  ],
+  "p": null
  },
  "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg": {
   "w": 700,
@@ -6802,12 +6841,6 @@
    0.25
   ]
  },
- "https://www.bing.com/th?id=ONUT.HXCQT7kVDiRWmctAKX5nNw&pid=News&w=1200": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-24"
- },
  "https://www.bing.com/th?id=ONUT.JZFbtPnm41nr0WyFrwNjMw&pid=News&w=480": {
   "w": 480,
   "h": 480,
@@ -7895,6 +7928,12 @@
   "w": 1280,
   "h": 720,
   "target": 720,
+  "v": 3
+ },
+ "https://www.michigandaily.com/wp-content/uploads/2026/11/The-rise-of-rookie-girl-group-A2O-LITE.jpg": {
+  "w": 2400,
+  "h": 1600,
+  "target": 1280,
   "v": 3
  },
  "https://www.moneydigest.sg/wp-content/uploads/2026/11/Unknown-1385.jpg": {
