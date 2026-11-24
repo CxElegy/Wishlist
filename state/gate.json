@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-24T04:18:04+00:00",
+ "checked": "2026-11-24T05:02:06+00:00",
  "fired": {
-  "at": "2026-11-24T03:34:19+00:00",
+  "at": "2026-11-24T05:02:06+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -61,64 +61,90 @@
    "edit": 14
   },
   "2026-11-24": {
-   "edit": 8
+   "edit": 9
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-24T03:34:19+00:00",
+    "at": "2026-11-24T05:02:06+00:00",
     "attempts": 1,
     "day": "2026-11-24",
-    "prog": 332,
-    "resp": "cse_01W4x6f71VxJjyWc9nMKjv41",
-    "sig": "047234f60e0c"
+    "prog": 340,
+    "resp": "",
+    "sig": "b9a9156fa58e"
    },
    "items": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
+    "dota2",
+    "gelato pique",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
     "lib:ガンプラ",
     "lib:ゼルダの伝説",
     "lib:ユニクロ",
     "lib:無印良品",
-    "星巴克马克杯"
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-24T03:40:36+00:00",
    "last_error": {},
    "need": true,
    "prog": 340,
    "prog_day": "2026-11-24",
-   "ripe": [],
-   "sig": "537a90f13446",
-   "token_cap": 1000000,
-   "tokens_today": 497254,
-   "why": "整理待ちの記事 75 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
+   "ripe": [
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
+    "ILLIT",
+    "MMORPG 新作",
     "チェーンソーマン",
     "周杰伦",
     "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "滑雪",
+    "漫威电影"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "b9a9156fa58e",
+   "token_cap": 1000000,
+   "tokens_today": 497254,
+   "why": "整理待ちの記事 162 件（24 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "BLEACH Mirrors High",
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "FROM",
+    "GTA 6",
+    "A2O LITE",
+    "Astrae Oratio",
+    "绝区零",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "4b7a6c812456",
+   "waiting": [
+    "The Mandalorian",
+    "Vaundy",
+    "あつ森",
+    "ぐでたま"
+   ],
+   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 4 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
