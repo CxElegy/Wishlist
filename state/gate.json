@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-24T22:33:18+00:00",
+ "changed": true,
+ "checked": "2026-11-24T23:18:11+00:00",
  "fired": {
   "at": "2026-11-24T22:33:18+00:00",
   "results": {
@@ -80,41 +80,30 @@
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
     "The Mandalorian",
     "gelato pique",
-    "lib:SPY×FAMILY",
-    "lib:ユニバーサル・スタジオ・ジャパン",
-    "lib:ラーメン",
-    "lib:京都",
-    "lib:温泉",
-    "lib:筋トレ",
-    "lib:葬送のフリーレン",
-    "lib:観葉植物",
-    "チェーンソーマン",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "绝区零"
+    "lib:FINAL FANTASY VII REBIRTH",
+    "lib:ONE PIECE",
+    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
+    "lib:宇宙・ロケット",
+    "lib:宮崎駿",
+    "lib:広島旅行",
+    "lib:牧野植物園",
+    "lib:生成AI"
    ],
-   "last_batch": "2026-11-24T21:49:42+00:00",
+   "last_batch": "2026-11-24T23:03:47+00:00",
    "last_error": {
     "at": "2026-11-24T19:26:49+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 260,
+   "prog": 274,
    "prog_day": "2026-11-25",
-   "ripe": [
-    "Astrae Oratio",
-    "チェーンソーマン",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "绝区零"
-   ],
-   "sig": "6cc69c95e1ff",
+   "ripe": [],
+   "sig": "23bdc94ba0fb",
    "token_cap": 1000000,
-   "tokens_today": 199765,
-   "why": "整理待ちの記事 105 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 249130,
+   "why": "整理待ちの記事 87 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -303,12 +292,12 @@
    "runs": 16
   },
   "2026-11-25": {
-   "batches": 10,
-   "cr": 4314143,
-   "cw": 176855,
-   "in": 113,
-   "out": 22797,
-   "runs": 3
+   "batches": 15,
+   "cr": 5290538,
+   "cw": 222352,
+   "in": 142,
+   "out": 26636,
+   "runs": 4
   }
  }
 }
