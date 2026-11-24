@@ -256,6 +256,164 @@
   "三星手机": 16,
   "漫威电影": 16,
   "绝区零": 15,
-  "MMORPG 新作": 6
- }
+  "MMORPG 新作": 6,
+  "ILLIT": 5,
+  "dota2": 4,
+  "チェーンソーマン": 4,
+  "周杰伦": 4,
+  "A2O LITE": 3,
+  "FROM": 3,
+  "滑雪": 3
+ },
+ "ILLIT": [
+  {
+   "headline": "아일릿, 日 연말 무대 싹쓸이 '홍백가합전'부터 레코드 대상까지",
+   "highlight": "홍백가합전",
+   "blurb": "아일릿은 12월 2일 후지TV '2026 FNS 가요제'와 31일 '제77회 NHK 홍백가합전'에 출연한다.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2026-12-02",
+    "label": "FNS歌謡祭"
+   },
+   "image": "https://www.bing.com/th?id=ONUT.2Zbyf4oTJ8KqhH9pWFjs9w&pid=News&w=650"
+  },
+  {
+   "headline": "ILLIT earn fourth 'You're under arrest' win and triple crown on 'SHOW K-POP'",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "「MAMA AWARDS」にENHYPEN、NCT WISH、ILLITらが集結！道枝駿佑もプレゼンターで登場",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "[2026 MAMA] 公式パフォ再生数ランキング：1位Bigbang(560万), 2位ベビモン(530万), 3位ILLIT(440万)",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "Dota 2 Patch 7.42: Greater Horn of Battle Explained",
+   "highlight": "Patch 7.42",
+   "blurb": "Valve released Dota 2 patch 7.42 on November 18; this explainer covers the Greater Horn of Battle change.",
+   "weight": "lead",
+   "refs": [
+    4,
+    3
+   ],
+   "image": "https://everythingedinburgh.com/wp-content/uploads/2026/11/ee-img-dota-2-patch-7-42-greater-horn-of-battle.jpg"
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "「待ってました」など歓喜の反響！劇場版『チェンソーマン レゼ篇』9月19日よりPrime Video配信決定、新ビジュアルも",
+   "highlight": "Prime Video配信決定",
+   "blurb": "劇場版『チェンソーマン レゼ篇』のPrime Video配信が決定し、新ビジュアルも公開された。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://times-abema.ismcdn.jp/mwimgs/0/7/1200w/img_07a0337a33c5d9e521379612ace5b4ed372833.jpg"
+  },
+  {
+   "headline": "FuRyu推出《鏈鋸人》蕾潔30公分模型 官網預購附贈表情特典",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦首档网球综艺官宣！J-Team队长携手李娜",
+   "highlight": "周杰伦首档网球综艺官宣",
+   "blurb": "浙江卫视新综艺《挥拍吧！搭子》官宣周杰伦加盟并担任 J-Team 游学队长，这是他首个网球主题综艺。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "A2O LITE 16歲VORA盲腸炎送醫！手術缺席《K-POPCON》錄製行程",
+   "highlight": "盲腸炎送醫",
+   "blurb": "經紀公司 A2O Entertainment 證實成員 VORA 確診急性闌尾炎並安排手術，將缺席《K-POPCON》錄製。",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.C8ZWrZSnnpRz05U0ZkMw1Q&pid=News&w=974"
+  },
+  {
+   "headline": "A2O LITE首组时尚画报公开！登《Harper's BAZAAR》韩国版12月号别册封面",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "Viewers Can’t Stop Binge-Watching the MGM+ Horror Series ‘From,’ now topping Netflix charts worldwide",
+   "highlight": "topping Netflix charts",
+   "blurb": "MGM+ horror series 'From' is now topping Netflix charts worldwide as viewers binge it.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "From's Harold Perrineau says Lost let him go over one request",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "Japan Ski Resorts Open Ahead of Schedule",
+   "highlight": "Open Ahead of Schedule",
+   "blurb": "Japan's 2026-2027 ski season has had an unusually strong start, with heavy November snowfall letting resorts open early.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "2026年自由式滑雪和单板滑雪大跳台世界杯因斯布鲁克站前瞻：苏翊鸣再战木村葵来开启巅峰对决新篇章",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }

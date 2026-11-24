@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "9347abfc99d3",
+ "edit_sig": "41e631c7679d",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?6wC5t2qhtJZtllO-YhLcO",
@@ -130,31 +130,29 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
-     "date": "2026-11-24",
-     "n": 1,
-     "source": "奥林匹克运动会",
-     "title": "2026年自由式滑雪和单板滑雪大跳台世界杯因斯布鲁克站前瞻：苏翊鸣再战木村葵来开启巅峰对决新篇章",
-     "url": "https://www.olympics.com/zh/news/2026-freestyle-skiing-snowboarding-big-air-world-cup-innsbruck-preview"
-    },
-    {
+     "blurb": "Japan's 2026-2027 ski season has had an unusually strong start, with heavy November snowfall letting resorts open early.",
      "date": "2026-11-22",
-     "n": 2,
-     "source": "NewsOnJapan",
-     "title": "Japan Ski Resorts Open Ahead of Schedule",
-     "url": "https://newsonjapan.com/article/151490.php"
+     "headline": "Japan Ski Resorts Open Ahead of Schedule",
+     "highlight": "Open Ahead of Schedule",
+     "image": "https://i2.ytimg.com/vi/Y7T4zr_A9WQ/maxresdefault.jpg",
+     "image_via": "og:image",
+     "url": "https://newsonjapan.com/article/151490.php",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-19",
-     "n": 3,
-     "source": "tenki.jp",
-     "title": "野沢温泉 スキー場・天気積雪情報【1時間天気】",
-     "url": "https://tenki.jp/season/ski/3/23/15115/1hour.html"
+     "blurb": "",
+     "date": "2026-11-24",
+     "headline": "2026年自由式滑雪和单板滑雪大跳台世界杯因斯布鲁克站前瞻：苏翊鸣再战木村葵来开启巅峰对决新篇章",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.ARaDbxGSBeRr5nKGq3tR5Q&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://www.olympics.com/zh/news/2026-freestyle-skiing-snowboarding-big-air-world-cup-innsbruck-preview",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -240,31 +238,29 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "MGM+ horror series 'From' is now topping Netflix charts worldwide as viewers binge it.",
      "date": "2026-11-24",
-     "n": 1,
-     "source": "High On Films",
-     "title": "Viewers Can’t Stop Binge-Watching the MGM+ Horror Series ‘From,’ now topping Netflix charts worldwide",
-     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPY2FBcUtOWEIycnpMUF94a3FFYkxqWnRSOFd2UXdhN05sc3Y1eVRreTF2NGRaenB0cVN2M1pmaGJnWW5tUG90ZDlQYmdOT19sUnJFUHFmUkFQWWk3QWlSZmVCQnc3MjcyX1U4N2FKYXJRYi1BUkxDRzhzdjFIS0czdktmeHVRTDFnN3VUZ3NuWnpYZw?oc=5"
+     "headline": "Viewers Can’t Stop Binge-Watching the MGM+ Horror Series ‘From,’ now topping Netflix charts worldwide",
+     "highlight": "topping Netflix charts",
+     "image": "https://www.highonfilms.com/wp-content/uploads/2026/11/From-Netflix-Binge-watching.jpg",
+     "image_via": "og:image",
+     "url": "https://www.highonfilms.com/from-netflix-viewers-cant-stop-binge-watching-horror-series/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-24",
-     "n": 2,
-     "source": "Startefacts",
-     "title": "From's Harold Perrineau says Lost let him go over one request",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNbF9SRVotb1FBT0xEUDFHSk9zNlVRM2llN1h1N2dtdklVY1c5eFRYQzBBNC1ycHdvQjZ0V1hTdkpQdFRiZUl5dktfTVNRcUkzdFA0RmFkYVNLMk9tLUtpY1VCVDFFaUNXdVVkOFZpcGFQTGE5ejQ0a0M2ZGhpUnM5aWppS3RaVkoxM2RKLXZEeGVjeUE?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 3,
-     "source": "Nación Flix on MSN",
-     "title": "‘From’ conquista Netflix con 96% en Rotten Tomatoes, pero hay una mala noticia para México",
-     "url": "https://www.msn.com/es-mx/entretenimiento/tv/from-conquista-netflix-con-96-en-rotten-tomatoes-pero-hay-una-mala-noticia-para-m%C3%A9xico/ar-AA2hYXhc"
+     "headline": "From's Harold Perrineau says Lost let him go over one request",
+     "highlight": "",
+     "image": "https://startefacts.com/k2/news/canvas/1200x630/upload/upload/news/671683521188.jpg",
+     "image_via": "og:image",
+     "url": "https://startefacts.com/news/froms-harold-perrineau-says-lost-let-him-go-over-one-request",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
@@ -308,45 +304,53 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
-     "date": "2026-11-24",
-     "n": 1,
-     "source": "デバク",
-     "title": "[2026 MAMA] 公式パフォ再生数ランキング：1位Bigbang(560万), 2位ベビモン(530万), 3位ILLIT(440万), 4位Cortis(380万)...最下位は「INI」(21万)",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9NeWdCQ2pBTXoycW5PRUlqU1h3VEduWER0ZDFwb0FkOVV4YjFlLVpqTDRIQVp3Y0xVYXR6cnhSR1lOcUQ2Y2s4X29qUjlKalpyZmJLWEtVQklmWlA0M1dPNFJkdzU1MUZwc2JrUHEwV2FqckE4?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 2,
-     "source": "Kpopstarz on MSN",
-     "title": "ILLIT earn fourth 'You're under arrest' win and triple crown on 'SHOW K-POP'",
-     "url": "https://www.msn.com/en-us/news/other/illit-earn-fourth-youre-under-arrest-win-and-triple-crown-on-show-k-pop/ar-AA2i7VDq"
-    },
-    {
+     "blurb": "아일릿은 12월 2일 후지TV '2026 FNS 가요제'와 31일 '제77회 NHK 홍백가합전'에 출연한다.",
      "date": "2026-11-22",
-     "n": 3,
-     "source": "뉴스엔 on MSN",
-     "title": "아일릿, 日 연말 무대 싹쓸이 '홍백가합전'부터 레코드 대상까지",
-     "url": "https://www.msn.com/ko-kr/entertainment/music/%EC%95%84%EC%9D%BC%EB%A6%BF-%E6%97%A5-%EC%97%B0%EB%A7%90-%EB%AC%B4%EB%8C%80-%EC%8B%B9%EC%93%B8%EC%9D%B4-%ED%99%8D%EB%B0%B1%EA%B0%80%ED%95%A9%EC%A0%84-%EB%B6%80%ED%84%B0-%EB%A0%88%EC%BD%94%EB%93%9C-%EB%8C%80%EC%83%81%EA%B9%8C%EC%A7%80/ar-AA2hZDHe"
+     "event": {
+      "date": "2026-12-02",
+      "label": "FNS歌謡祭"
+     },
+     "headline": "아일릿, 日 연말 무대 싹쓸이 '홍백가합전'부터 레코드 대상까지",
+     "highlight": "홍백가합전",
+     "image": "https://www.bing.com/th?id=ONUT.2Zbyf4oTJ8KqhH9pWFjs9w&pid=News&w=650",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/ko-kr/entertainment/music/%EC%95%84%EC%9D%BC%EB%A6%BF-%E6%97%A5-%EC%97%B0%EB%A7%90-%EB%AC%B4%EB%8C%80-%EC%8B%B9%EC%93%B8%EC%9D%B4-%ED%99%8D%EB%B0%B1%EA%B0%80%ED%95%A9%EC%A0%84-%EB%B6%80%ED%84%B0-%EB%A0%88%EC%BD%94%EB%93%9C-%EB%8C%80%EC%83%81%EA%B9%8C%EC%A7%80/ar-AA2hZDHe",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-21",
-     "n": 4,
-     "source": "tribunaviajera.com",
-     "title": "Miembros de ILLIT: las cinco integrantes y la pausa de Moka",
-     "url": "https://tribunaviajera.com/2026/11/21/viajes/festivales/miembros-de-illit-14265/"
+     "blurb": "",
+     "date": "2026-11-24",
+     "headline": "ILLIT earn fourth 'You're under arrest' win and triple crown on 'SHOW K-POP'",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i8TNF.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/illit-earn-fourth-youre-under-arrest-win-and-triple-crown-on-show-k-pop/ar-AA2i7VDq",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-20",
-     "n": 5,
-     "source": "au Webポータル",
-     "title": "「MAMA AWARDS」にENHYPEN、NCT WISH、ILLITらが集結！道枝駿佑もプレゼンターで登場",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBEWHhnTnhCT3FUSmpyUVBockd2eHdUNmc2Tk5tX24tZ0xuT09WQ3hQYkNHOUk0aDl4dmJDSG9EdWVLTi1IcmxtOFFJMmEzNFd2ejV1TjBOZnpmdnJkemEyU2Fwa3llcE1LWU56M0Zn?oc=5"
+     "headline": "「MAMA AWARDS」にENHYPEN、NCT WISH、ILLITらが集結！道枝駿佑もプレゼンターで登場",
+     "highlight": "",
+     "image": "https://portal.auone.jp/media/thumbnails/2026/11/20/https___news_jp_i_1496495620959076655_w1280.webp",
+     "image_via": "og:image",
+     "url": "https://article.auone.jp/2b1b53c7-1775-4ab8-9249-8bee0a01ce6f",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-24",
+     "headline": "[2026 MAMA] 公式パフォ再生数ランキング：1位Bigbang(560万), 2位ベビモン(530万), 3位ILLIT(440万)",
+     "highlight": "",
+     "image": "https://daebak.tokyo/wp-content/uploads/2026/11/thumb_2_thumb_2_2026-11-24-221855_20261124_20261124.webp",
+     "image_via": "og:image",
+     "url": "https://daebak.tokyo/2026/11/24/2026-mama-performance-video-views/",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",
@@ -473,38 +477,29 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "劇場版『チェンソーマン レゼ篇』のPrime Video配信が決定し、新ビジュアルも公開された。",
      "date": "2026-11-24",
-     "n": 1,
-     "source": "ABEMA TIMES",
-     "title": "「待ってました」など歓喜の反響！劇場版『チェンソーマン レゼ篇』9月19日よりPrime Video配信決定、新ビジュアルも",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5veWkwRFhEazZWU3pwT3ZpZVpDeGZGNzR4SlNtNGwwcVl5S0liSEJUOTN4aUIyM0lFWllYNEkwblhyLVluOENlQWNTM2JtRVJXVXlLdg?oc=5"
+     "headline": "「待ってました」など歓喜の反響！劇場版『チェンソーマン レゼ篇』9月19日よりPrime Video配信決定、新ビジュアルも",
+     "highlight": "Prime Video配信決定",
+     "image": "https://times-abema.ismcdn.jp/mwimgs/0/7/1200w/img_07a0337a33c5d9e521379612ace5b4ed372833.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://times.abema.tv/articles/-/10269021",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-24",
-     "n": 2,
-     "source": "gachapolitan.com",
-     "title": "FuRyu推出《鏈鋸人》蕾潔30公分模型 官網預購附贈表情特典",
-     "url": "https://gachapolitan.com/chainsaw-man-reze-tenitol-tall-figure-preorder/"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 3,
-     "source": "freakelitex.com",
-     "title": "Chainsaw Man sigue subiendo y ya pelea por el podio en EE. UU.",
-     "url": "https://freakelitex.com/chainsaw-man-volumen-22-ventas-bookscan-estados-unidos/"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 4,
-     "source": "multianime",
-     "title": "Chainsaw Man vol. 22 alcanza el #2 en ventas de novelas gráficas en EE. UU. | #Manga #ChainsawMan #Ranking",
-     "url": "https://multianime.com.mx/2026/11/22/chainsaw-man-vol-22-alcanza-el-2-en-ventas-de-novelas-graficas-en-ee-uu-manga-chainsawman-ranking/"
+     "headline": "FuRyu推出《鏈鋸人》蕾潔30公分模型 官網預購附贈表情特典",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.Z69zFYxxEHpPjgo4yiUpQg&pid=News&w=900",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://gachapolitan.com/chainsaw-man-reze-tenitol-tall-figure-preorder/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -555,38 +550,20 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "浙江卫视新综艺《挥拍吧！搭子》官宣周杰伦加盟并担任 J-Team 游学队长，这是他首个网球主题综艺。",
      "date": "2026-11-24",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "周杰伦在《挥拍吧！搭子》中担任的J-Team游学队长具体负责什么？",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOVVJyS2t4clJLN3UtbV9UQXRnZ0pGQ3VNSHdvc19fME5YR0Z0Q3BYT1VVQVNDdURMR0lsRDU2V3VlTVdORjFsS3JGekZ4dE5hN0hZdEJWUUFDRzhOV0pNaldybE44N0dwS3lqbFk0NEF6MmE3OXBQb3BFeWhIUVR2Qk9KeWVPbDM0WXd5am1PcndKZ2pMTXlrdXZhcF9CRDJBNG5r?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 2,
+     "headline": "周杰伦首档网球综艺官宣！J-Team队长携手李娜",
+     "highlight": "周杰伦首档网球综艺官宣",
+     "image": null,
      "source": "手机新浪网娱乐频道",
-     "title": "周杰伦首档网球综艺官宣！J-Team队长携手李娜",
-     "url": "https://ent.sina.cn/2026-11-25/detail-inizwfrc4683513.d.html?vt=4"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 3,
-     "source": "手机新浪网",
-     "title": "“我不给，你不能抢” 中式美学张艺谋周杰伦混剪产粮团青年创作者成长计划",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE82NmhtNTdOaGwxaVpkdVctdE1fTGdmOHZIRUI0NTM2dTVpVE9JTTZ6QnJSclM4Q3BfNm1IYk1MUElNMHRaSVNZSHk5Nl9obm5VQWp4VlY1Ymh5N1NkVnlVN2lhUzVCNVV1cm9uRU5WMmwtX3c?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 4,
-     "source": "三立新聞",
-     "title": "【哇潮】陳偉殷超愛周董？這些球員的登場曲超熱血一定要聽| 專欄",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE13bU5CNkVReGRhLVNwVHd3QkFJZGlVX1MzVTN2S0w2dXNWY0JMTzlMMVhsZ2JIUm9NMlZ2TVR3VEs0ODNNNlE?oc=5"
+     "source_icon": "https://mjs.sinaimg.cn/wap/online/public/images/addToHome/sina_114x114_v1.png",
+     "url": "https://ent.sina.cn/2026-11-25/detail-inizwfrc4683513.d.html?vt=4",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",
@@ -670,38 +647,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Valve released Dota 2 patch 7.42 on November 18; this explainer covers the Greater Horn of Battle change.",
      "date": "2026-11-24",
-     "n": 1,
-     "source": "Hotspawn",
-     "title": "Top 10 Best Dota 2 Streamers [English-Speaking]",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1ISXh4aUpWMWlRNHQyM3YwUDRFU2F3STJ6cGFBOEJLY2VmVlBwRXFiOTNhcWxzYkl5RGJqNkVuVDU0ZF82eVlteF80cWo3aHZPR0p1Q2xOcEM0b1RQTlM1V003WmhUc3V0SGc?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 2,
-     "source": "Hotspawn",
-     "title": "What Is Lakad Matatag In Dota 2? [Meaning And Origin Explained]",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1FTFFIdGhEVXd4LVpLcVBpTWE4YTZTc1YwQ05JbW1oRVV0WVpGRlhIYUx4OHo5eHRfcEw4RmRHckpJdlFKNWpTV1JBMkg3eXNrakZBeFFPVXA4LUJ1UmN3b3VMQW1RelRFblE0dk54TmZTOEpLNUxr?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 3,
-     "source": "escorenews",
-     "title": "В Dota 2 вышел патч 7.42. Игру ускорили и провели ребаланс здоровья",
-     "url": "https://escorenews.com/ru/dota-2/news/82795-v-dota-2-vyshel-patch-7-42-igru-uskorili-i-proveli-rebalans-zdorovya"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 4,
-     "source": "Everything Edinburgh",
-     "title": "Dota 2 Patch 7.42: Greater Horn of Battle Explained",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPRjJEdTV3akFsQjM0Y3hzSHIwNk9mNjd5RWxGdFRYSkFPT0wzeXNKa0hvdVh1SnJxTGlEd1RRcmlUYnlNTDhSZ0xrUTFtU05aZ1pQR1R2NW1QbGMzLXpjWGU3ZlVDdWhqb1VESERickR0WG12MlMyYXVSRXlfTDhvelJKUXFNZzhoSEVCRw?oc=5"
+     "headline": "Dota 2 Patch 7.42: Greater Horn of Battle Explained",
+     "highlight": "Patch 7.42",
+     "image": "https://everythingedinburgh.com/wp-content/uploads/2026/11/ee-img-dota-2-patch-7-42-greater-horn-of-battle.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://everythingedinburgh.com/games/news/dota-2-patch-7-42-greater-horn-of-battle/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -718,31 +676,29 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "經紀公司 A2O Entertainment 證實成員 VORA 確診急性闌尾炎並安排手術，將缺席《K-POPCON》錄製。",
      "date": "2026-11-20",
-     "n": 1,
-     "source": "NOWnews今日新聞",
-     "title": "A2O LITE 16歲VORA盲腸炎送醫！手術缺席《K-POPCON》錄製行程",
-     "url": "https://www.nownews.com/news/6893954"
+     "headline": "A2O LITE 16歲VORA盲腸炎送醫！手術缺席《K-POPCON》錄製行程",
+     "highlight": "盲腸炎送醫",
+     "image": "https://www.bing.com/th?id=ONUT.C8ZWrZSnnpRz05U0ZkMw1Q&pid=News&w=974",
+     "image_via": "AI 挑选",
+     "url": "https://www.nownews.com/news/6893954",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-19",
-     "n": 2,
-     "source": "ETtoday星光雲",
-     "title": "A2O LITE 16歲成員突發腹痛就醫！ 「決定動手術」公司取消行程",
-     "url": "https://star.ettoday.net/news/3275219"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-18",
-     "n": 3,
-     "source": "中国娱乐网",
-     "title": "A2O LITE首组时尚画报公开！登《Harper's BAZAAR》韩国版12月号别册封面",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5nTy0wTHEwazRtbDVyTjdSQlNrcFBLNHk0c3ozT0pOb2pGRnRnOEN2X2pxWEhYTFpIWkhVVmxtQi1DTVo2YjFqU29sd1N4RkZ6U2lwQllhYzFqTjQ?oc=5"
+     "headline": "A2O LITE首组时尚画报公开！登《Harper's BAZAAR》韩国版12月号别册封面",
+     "highlight": "",
+     "image": "http://news.yule.com.cn/uploadfile/2026/1118/20261118102907998.jpg",
+     "image_via": "正文图",
+     "url": "http://news.yule.com.cn/html/202611/362083.html",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",

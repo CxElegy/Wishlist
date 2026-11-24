@@ -1,10 +1,10 @@
 {
- "admin": "1802285313d6",
- "admin-ai": "e776960854ea",
+ "admin": "84c901fbeb3a",
+ "admin-ai": "3433acd92210",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1a434c76"
+   "68e1d31d"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "27bb71f710b8",
+ "admin-emblem": "1fdc6b2d03f7",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "de6cf0ac"
+   "7e5ba8a0"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "1b1172739648",
+ "admin-now": "e9ea670b0de9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "fdc94a7c"
+   "cec409c3"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "f74c5dad"
   ]
  },
- "admin-system": "a07b9fb5992b",
+ "admin-system": "febd2f71a88c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e168fe8e"
+   "5accc0c3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ee12b1d5"
+   "44050ca8"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "52aa489a"
   ]
  },
- "index": "f24ba57708f1",
+ "index": "143d3db83ac9",
  "index_marks": {
   "front": [
    "トップ",
-   "96682b43"
+   "2d9b9981"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "d56c8445"
+   "e2c2594f"
   ],
   "w-130724c0": [
    "猫用品",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "0f35c812"
+   "c154638a"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -141,15 +141,15 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "667d147f"
+   "af54ddb2"
   ],
   "w-7a894105": [
    "周杰伦",
-   "93fc0214"
+   "c8e8815e"
   ],
   "w-9cb26dba": [
    "FROM",
-   "ca4f4200"
+   "5b580d8d"
   ],
   "w-b867582f": [
    "あつ森",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "d62adaed"
+   "107fcaa7"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "0320b03e"
+   "0cd81c41"
   ],
   "w-f303ad09": [
    "绝区零",
    "0b8f37d0"
   ]
  },
- "updated": "11.25 02:48",
+ "updated": "11.25 02:56",
  "wishlist": "ad051c775cb3"
 }
