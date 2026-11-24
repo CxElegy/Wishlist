@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-24T09:46:20+00:00",
+ "changed": true,
+ "checked": "2026-11-24T10:18:12+00:00",
  "fired": {
   "at": "2026-11-24T09:46:20+00:00",
   "results": {
@@ -76,40 +76,27 @@
     "sig": "73675bf6c352"
    },
    "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
     "ILLIT",
-    "dota2",
-    "lib:SPY×FAMILY",
-    "lib:ユニバーサル・スタジオ・ジャパン",
-    "lib:京都",
-    "lib:宇宙・ロケット",
-    "lib:温泉",
-    "lib:生成AI",
-    "lib:筋トレ",
-    "lib:葬送のフリーレン",
-    "あつ森",
-    "绝区零"
+    "lib:ブラッククローバー 第2期",
+    "lib:ポケモンGO",
+    "lib:ミャクミャク",
+    "lib:将棋",
+    "lib:恐竜",
+    "lib:星野源",
+    "lib:生徒会にも穴はある！",
+    "lib:藤井風",
+    "あつ森"
    ],
-   "last_batch": "2026-11-24T08:54:23+00:00",
+   "last_batch": "2026-11-24T09:54:31+00:00",
    "last_error": {},
    "need": true,
-   "prog": 536,
+   "prog": 552,
    "prog_day": "2026-11-24",
-   "ripe": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
-    "dota2",
-    "绝区零"
-   ],
-   "sig": "73675bf6c352",
+   "ripe": [],
+   "sig": "3e17dee3ccac",
    "token_cap": 1000000,
-   "tokens_today": 671286,
-   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 726371,
+   "why": "整理待ちの記事 98 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -290,12 +277,12 @@
    "runs": 14
   },
   "2026-11-24": {
-   "batches": 23,
-   "cr": 12959590,
-   "cw": 617018,
-   "in": 363,
-   "out": 53905,
-   "runs": 12
+   "batches": 24,
+   "cr": 13604069,
+   "cw": 669007,
+   "in": 382,
+   "out": 56982,
+   "runs": 13
   }
  }
 }
