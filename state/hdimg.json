@@ -5525,12 +5525,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/221ad03ab83665ea15a16813d7ca3a4dd09719f3aa066ee4cd3ab1f76418a9c2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgadget_review_articles_822%2F74d9c6e125256d38669f04e353fe4ec3.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/4cb0fea9f5224f2cbfd43e860d1a8a7d8fefda0f035f5edebf6a125315f5a1e2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Flead-lucia-gta-voice_1661.jpg": {
   "w": 1200,
   "h": 800,
@@ -5589,6 +5583,12 @@
   "w": 1024,
   "h": 576,
   "target": 720,
+  "v": 3
+ },
+ "https://samsungmagazine.eu/wp-content/uploads/2024/02/Galaxy-AI-cover.jpg": {
+  "w": 1900,
+  "h": 1425,
+  "target": 1280,
   "v": 3
  },
  "https://samsungmagazine.eu/wp-content/uploads/2026/02/Galaxy-S26-Ultra-cover-2.jpg": {

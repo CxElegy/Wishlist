@@ -181,7 +181,7 @@
  "_covered": {
   "漫威电影": 189,
   "GTA 6": 137,
-  "三星手机": 46,
+  "三星手机": 61,
   "FROM": 4,
   "猫用品": 8,
   "あつ森": 1,
@@ -353,7 +353,8 @@
     24,
     29,
     33,
-    31
+    31,
+    57
    ]
   },
   {
@@ -380,11 +381,12 @@
    ]
   },
   {
-   "headline": "Samsung Galaxy S27 May Auto-Turn Your Photos Into Video Clips",
+   "headline": "Galaxy S27、写真を動画に変換するAI機能を準備",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    58,
     8
    ]
   },
@@ -398,11 +400,13 @@
    ]
   },
   {
-   "headline": "Galaxy S27 Ultra may lose laser autofocus alongside 3x telephoto camera",
+   "headline": "サムスンの「Galaxy S27 Ultra」、レーザーオートフォーカスと3倍ズームを廃止へ",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    56,
+    54,
     28,
     37,
     46,
@@ -415,7 +419,14 @@
     39,
     40,
     41,
-    23
+    23,
+    47,
+    49,
+    55,
+    52,
+    53,
+    59,
+    60
    ]
   }
  ],
