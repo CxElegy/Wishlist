@@ -4894,6 +4894,62 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261124-00000016-cdj-000-1-view.jpg?exp=10800": {
+  "w": 640,
+  "h": 427,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.485,
+  "local": "pics/98ed9960c8893e84.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    0,
+    0,
+    3,
+    22,
+    9,
+    25,
+    9,
+    7,
+    20,
+    6,
+    1,
+    0
+   ],
+   [
+    2,
+    11,
+    7,
+    27,
+    27,
+    7,
+    5,
+    5,
+    5,
+    2,
+    2,
+    1
+   ]
+  ],
+  "c": "#403d48",
+  "k": [
+   0.292,
+   0.071,
+   0.694,
+   0.295
+  ],
+  "p": [
+   0.242,
+   0.216,
+   0.785,
+   0.547
+  ]
+ },
  "https://newsfield.net/wp-content/uploads/2026/11/%EB%8C%80%ED%91%9C_%EA%B0%A4%EB%9F%AD%EC%8B%9CZ%ED%8F%B4%EB%93%9C7_%ED%94%8C%EB%A6%BD7_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%EC%A0%9C%EA%B3%B5.jpg": {
   "w": 1344,
   "h": 410,
@@ -5644,6 +5700,12 @@
   "w": 1080,
   "h": 1440,
   "target": 1280,
+  "v": 3
+ },
+ "https://sportsseoulweb.jp/files/user/2026/ic202651220162156165867.jpg": {
+  "w": 1280,
+  "h": 959,
+  "target": 720,
   "v": 3
  },
  "https://startefacts.com/k2/news/canvas/1200x630/upload/upload/news/115295097017.jpg": {
