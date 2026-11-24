@@ -120,7 +120,12 @@
     191,
     193,
     198,
-    204
+    204,
+    213,
+    205,
+    215,
+    220,
+    221
    ],
    "image": "https://krcrtv.com/resources/media2/16x9/976/1320/169x0/90/81b0a9df-a565-4fa6-b6ff-93f597a7f559-Screenshot20261123at9.07.24AM.png"
   },
@@ -137,7 +142,9 @@
     41,
     73,
     98,
-    113
+    113,
+    207,
+    214
    ]
   },
   {
@@ -188,10 +195,21 @@
     "date": "2027-12-17",
     "label": "公開日"
    }
+  },
+  {
+   "headline": "Avengers: Doomsday to skip BAFTA, Golden Globes screenings: Reports",
+   "highlight": "skip BAFTA, Golden Globes screenings",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    217,
+    208,
+    209
+   ]
   }
  ],
  "_covered": {
-  "漫威电影": 204,
+  "漫威电影": 222,
   "GTA 6": 162,
   "三星手机": 61,
   "FROM": 4,

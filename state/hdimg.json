@@ -1628,12 +1628,6 @@
   "target": 1280,
   "v": 3
  },
- "https://comic-watch.com/wp-content/uploads/2026/11/1.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
-  "v": 3
- },
  "https://comic-watch.com/wp-content/uploads/2026/11/Marvel-Boba-Fett2.png": {
   "w": 1022,
   "h": 536,
@@ -2767,13 +2761,13 @@
   "target": 720,
   "v": 3
  },
- "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795531057085": {
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795531702522": {
   "w": 320,
   "h": 270,
   "target": 1280,
   "v": 3,
   "blur": 0.667,
-  "local": "pics/3c1de1fac6f7dc10.webp",
+  "local": "pics/63150041728dbaec.webp",
   "out": [
    960,
    810
@@ -3376,6 +3370,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://krcrtv.com/resources/media2/16x9/976/1320/170x0/90/cd8039ca-ec55-4638-b85a-96400a055bed-Screenshot20261123at9.07.38AM.png": {
+  "w": 1320,
+  "h": 743,
+  "target": 720,
+  "v": 3
+ },
  "https://local12.com/resources/media2/16x9/1147/1320/0x9/90/c93ed80f-8419-4d26-963c-dc83c029c695-GTA.png": {
   "w": 1320,
   "h": 743,
@@ -3548,6 +3548,12 @@
  "https://media.image.infoseek.co.jp/isnews/photos/yorozoonews/yorozoonews_17057073_0.jpg": {
   "w": 640,
   "h": 677,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.nacionale.kabineti.net/uploads/desk_406c611d83_cf4211ab83.jpg": {
+  "w": 1920,
+  "h": 1279,
   "target": 720,
   "v": 3
  },
@@ -5669,6 +5675,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/f307d276b3477a7b2f8fc09f4335f98d0f6b4474bae8404f6fecb4e3652941be/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fwealth_of_geeks_188%2F614475b2414c21c7a86f77dc011f0b2c.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/f6ee6c5230441557ecddb982ae6da3c593d0fcc685ebee0b6d4992aab54f2404/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftvline.com%2Fb06b5db2216c2e4eb8284ac44b82d663.jpg": {
   "w": 1200,
   "h": 674,
@@ -6837,12 +6849,6 @@
   ]
  },
  "https://www.bing.com/th?id=ONUT.KUGdmGv_5sFGlc8qpnP1hQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.L8BoCyDIqMBT-4d48eleTA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -8057,12 +8063,6 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
-  "v": 3
- },
- "https://www.thenationalnews.com/resizer/v2/OQSO2CMT3ZAPHGUQP3OQ3XOYTE.jpg?auth=cd83361e943b257c4c996c0f090036147d8e52c9d382f0d855ac8929163eb29e&smart=true&width=1200&height=630": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://www.thenews.com.pk/assets/uploads/2026-11-22/1424655_103946_updates.jpg": {
