@@ -663,12 +663,6 @@
   "target": 720,
   "v": 3
  },
- "https://agirls.aottercdn.com/media/eb099a90-9721-4190-b187-978d7829b439.jpg": {
-  "w": 1200,
-  "h": 684,
-  "target": 1280,
-  "v": 3
- },
  "https://andro-news.com/wp-content/uploads/2026/11/One-UI-9.5-samsung-2.webp": {
   "w": 1120,
   "h": 630,
@@ -969,6 +963,13 @@
    0.581
   ]
  },
+ "https://attach.setn.com/newsimages/2026/11/20/5796262-PH.jpg": {
+  "w": 800,
+  "h": 533,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.4
+ },
  "https://automaton-media.com/en/wp-content/uploads/2026/11/20261118-75399-header.jpg": {
   "w": 1631,
   "h": 906,
@@ -1163,6 +1164,12 @@
   "w": 800,
   "h": 420,
   "target": 720,
+  "v": 3
+ },
+ "https://bloximages.chicago2.vip.townnews.com/thecanadianpressnews.ca/content/tncms/assets/v3/editorial/1/09/109fefdc-6587-5e74-9e3b-8f11271af871/6af4f3f98e144.image.jpg?crop=1400%2C735%2C0%2C99&resize=1200%2C630&order=crop%2Cresize": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://businessupturn.com/uploads/media/1794830799107-r6g345-untitled-design---2026-11-16t173622-305.webp": {
@@ -1755,12 +1762,6 @@
   "target": 1280,
   "v": 3
  },
- "https://eeo.today/media/wp-content/uploads/2026/11/1026_ijihaji_KV.jpg": {
-  "w": 1359,
-  "h": 1920,
-  "target": 720,
-  "v": 3
- },
  "https://escharts.com/metaImage/teams/dk-1?game=2&v=1794867975": {
   "w": 1200,
   "h": 630,
@@ -2002,12 +2003,6 @@
   "target": 720,
   "v": 3
  },
- "https://hips.hearstapps.com/hmg-prod/images/ae3dc98e-8759-4a07-af75-9cbce8d4b168.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
-  "w": 1200,
-  "h": 600,
-  "target": 1280,
-  "v": 3
- },
  "https://hips.hearstapps.com/vidthumb/images/lucas-1574724071.jpg?crop=1.00xw:1.00xh;0,0": {
   "w": 1920,
   "h": 1080,
@@ -2094,6 +2089,12 @@
   "w": 1440,
   "h": 809,
   "target": 720,
+  "v": 3
+ },
+ "https://i.epochtimes.com/assets/uploads/2026/11/id14892156-S__1377828886_0-1200x800.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
   "v": 3
  },
  "https://i.pcmag.com/imagery/articles/06urdG5uq5dA4iuVN7r9JeM-9.fit_lim.size_1200x630.v1795191546.jpg": {
@@ -2294,57 +2295,6 @@
   "h": 800,
   "target": 720,
   "v": 3
- },
- "https://image.news.livedoor.com/newsimage/stf/3/5/350c1_230_cf6c6eb3_2524c276.jpg": {
-  "w": 615,
-  "h": 300,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.46,
-  "local": "pics/953fc4b0cd7f8292.webp",
-  "out": [
-   1280,
-   624
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    4,
-    9,
-    5,
-    8,
-    4,
-    7,
-    8,
-    8,
-    13,
-    11,
-    14,
-    10
-   ],
-   [
-    0,
-    0,
-    3,
-    20,
-    18,
-    8,
-    12,
-    15,
-    11,
-    8,
-    2,
-    2
-   ]
-  ],
-  "c": "#928c8a",
-  "k": [
-   0.0,
-   0.154,
-   0.651,
-   0.902
-  ],
-  "p": null
  },
  "https://image.news.livedoor.com/newsimage/stf/6/2/62c67_230_3e259e62_00ffef64.jpg": {
   "w": 615,
@@ -2771,12 +2721,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.biggo.com/NM082c6nQeLtDI0by5nTiE4EBs-uuE9M0xYKYP--DiQ/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExLzNmNmI0MjAzLTJjODYtNGNlNy1hYzQxLTY0OTgwN2M4NDQ3Yl8xNzk0OTA0MTM0X2RlZmF1bHQud2VicA.jpg": {
-  "w": 1200,
-  "h": 1444,
-  "target": 1280,
-  "v": 3
- },
  "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg": {
   "w": 700,
   "h": 394,
@@ -2907,6 +2851,12 @@
   "w": 640,
   "h": 817,
   "target": 1280,
+  "v": 3
+ },
+ "https://img.sportsbull.jp/raw/20261120160508462393.jpg": {
+  "w": 980,
+  "h": 745,
+  "target": 720,
   "v": 3
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/animeanime/m_animeanime-104369.jpg": {
@@ -3286,12 +3236,6 @@
   "target": 720,
   "v": 3
  },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FAllabout%252Fb9%252FAllabout_133879%252FAllabout_133879_1.jpg,zoom=1200,quality=70,type=jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -3660,6 +3604,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2623338-fbdbe59466f5.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://moonvoke.com/images/news/chainsaw-man-reze-arc-pop-up-store-eslite-r79-guide-2026.webp": {
   "w": 1200,
   "h": 630,
@@ -3767,6 +3717,13 @@
   "h": 575,
   "target": 1280,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/100256/555161_615.jpg": {
+  "w": 615,
+  "h": 411,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.411
  },
  "https://news.walkerplus.com/article/1003055/10019309_615.jpg": {
   "w": 615,
@@ -4317,56 +4274,6 @@
    0.607
   ]
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00000010-manetatsun-000-1-view.jpg?exp=10800": {
-  "w": 800,
-  "h": 450,
-  "target": 720,
-  "v": 3,
-  "local": "pics/bbac4bac088137c7.webp",
-  "out": [
-   800,
-   450
-  ],
-  "why": "期限付きの網址",
-  "m": [
-   [
-    1,
-    8,
-    14,
-    15,
-    10,
-    11,
-    10,
-    4,
-    11,
-    11,
-    2,
-    2
-   ],
-   [
-    1,
-    2,
-    1,
-    3,
-    11,
-    18,
-    41,
-    10,
-    3,
-    6,
-    2,
-    2
-   ]
-  ],
-  "c": "#cbdce4",
-  "k": [
-   0.335,
-   0.736,
-   0.651,
-   0.869
-  ],
-  "p": null
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261117-00010009-tennisnet-000-1-view.jpg?pri=l&w=640&h=481&exp=10800": {
   "w": 640,
   "h": 481,
@@ -4885,56 +4792,6 @@
   ],
   "p": null
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261120-41201171-nksports-000-2-view.jpg?exp=10800": {
-  "w": 1500,
-  "h": 1140,
-  "target": 720,
-  "v": 3,
-  "local": "pics/aa6cd4cfc0b1e2b7.webp",
-  "out": [
-   1280,
-   973
-  ],
-  "why": "期限付きの網址",
-  "m": [
-   [
-    0,
-    8,
-    11,
-    18,
-    12,
-    9,
-    10,
-    11,
-    12,
-    10,
-    0,
-    0
-   ],
-   [
-    0,
-    1,
-    7,
-    13,
-    13,
-    14,
-    8,
-    8,
-    19,
-    7,
-    9,
-    0
-   ]
-  ],
-  "c": "#bbbfac",
-  "k": [
-   0.224,
-   0.348,
-   0.752,
-   0.753
-  ],
-  "p": null
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261122-00000003-anmanmv-000-1-view.jpg?exp=10800": {
   "w": 639,
   "h": 800,
@@ -5053,12 +4910,6 @@
   "w": 772,
   "h": 1000,
   "target": 1280,
-  "v": 3
- },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/c903cf959a864a2ca9f59aed8ab26226.jpg": {
-  "w": 588,
-  "h": 598,
-  "target": 720,
   "v": 3
  },
  "https://nokiapoweruser.com/wp-content/uploads/2026/11/galxy-s27-pro.jpg": {
@@ -5308,6 +5159,52 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/30942/1017/30942-1017-9156bd3c0912825ebd9f31d5cee75226-728x412.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 728,
+  "h": 412,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.44,
+  "local": "pics/d9175cbf4050a4fb.webp",
+  "out": [
+   1280,
+   724
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    7,
+    8,
+    8,
+    8,
+    6,
+    10,
+    8,
+    9,
+    6,
+    9,
+    10,
+    11
+   ],
+   [
+    4,
+    3,
+    1,
+    4,
+    9,
+    15,
+    18,
+    13,
+    8,
+    7,
+    9,
+    7
+   ]
+  ],
+  "c": "#3f3a37",
+  "k": null,
+  "p": null
+ },
  "https://prcdn.freetls.fastly.net/release_image/31800/232/31800-232-a96ac789c08e72d24265437f7bf23eba-844x394.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 844,
   "h": 394,
@@ -5499,9 +5396,9 @@
    0.631
   ]
  },
- "https://q6.itc.cn/q_70/images03/20261117/a038ca59e51543b0bb9dea382943fffd.jpeg": {
-  "w": 1080,
-  "h": 996,
+ "https://q6.itc.cn/images01/20261104/0de91037a7cd4c35b1243fa192c81c8a.jpeg": {
+  "w": 1067,
+  "h": 800,
   "target": 1280,
   "v": 3
  },
@@ -5610,6 +5507,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://rurubu.jp/img_srw/andmore/images/0000757572/l_uBtSB0lIfY8JoBIu1xbN4PDVOXBCcinzSEY1tvpT.jpg": {
+  "w": 804,
+  "h": 402,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.tgstc.com/ogp3/760f2926a6e28e8c47578d75d690ef03-1200x630.jpeg": {
   "w": 1200,
   "h": 630,
@@ -5664,6 +5567,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/e2c3c934d1a42a4cb3922e5ab30f795040c7607fcaf0e74d436a23b27396f1cf/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fctwant_styletc_883%2F4f880a680e5c394286f2638ace1e34f0.jpg_up.jpg": {
+  "w": 1200,
+  "h": 728,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/f1c81ed44c079d93b8cde1eb7e0551afe299016a263eb0a0424e1970afb20c79/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmandatory_995%2Fc3c351cede7deb8b1a58e4e54d650e57.jpg": {
   "w": 1200,
   "h": 675,
@@ -5673,12 +5582,6 @@
  "https://s.yimg.com/lo/mysterio/api/f6ee6c5230441557ecddb982ae6da3c593d0fcc685ebee0b6d4992aab54f2404/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftvline.com%2Fb06b5db2216c2e4eb8284ac44b82d663.jpg": {
   "w": 1200,
   "h": 674,
-  "target": 1280,
-  "v": 3
- },
- "https://salonprivemag.b-cdn.net/wp-content/uploads/2023/10/fghjgh-e1698251019921.png": {
-  "w": 1200,
-  "h": 686,
   "target": 1280,
   "v": 3
  },
@@ -6173,6 +6076,12 @@
   "target": 720,
   "v": 3
  },
+ "https://times-abema.ismcdn.jp/mwimgs/c/8/1200w/img_c890d5ab93e334469a75101cff779db186607.jpg": {
+  "w": 1200,
+  "h": 671,
+  "target": 1280,
+  "v": 3
+ },
  "https://today-obs.line-scdn.net/0hjiIQVYaPNUZ0KCnfGo5KEUx-OTdHTi9PVhp7IFl4aiRcBCJHGBpmJVgqPmoJTyVFVE15d1B4Y35dGXEZHw/w1200": {
   "w": 1200,
   "h": 676,
@@ -6216,6 +6125,12 @@
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1794986357296_img_f9d3b9cd.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1795001058159_img_af34ace4.jpeg": {
   "w": 1200,
   "h": 630,
   "target": 1280,
@@ -7084,6 +6999,62 @@
    0.518
   ]
  },
+ "https://www.bing.com/th?id=ONUT.fogSdM729QmGExn_UUfh7g&pid=News&w=1200": {
+  "w": 700,
+  "h": 449,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.579,
+  "local": "pics/4983f4ed21cb586c.webp",
+  "out": [
+   1280,
+   821
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    0,
+    1,
+    7,
+    21,
+    22,
+    13,
+    2,
+    8,
+    9,
+    6,
+    6,
+    4
+   ],
+   [
+    3,
+    12,
+    15,
+    16,
+    17,
+    14,
+    6,
+    4,
+    3,
+    5,
+    2,
+    2
+   ]
+  ],
+  "c": "#808690",
+  "k": [
+   0.288,
+   0.198,
+   0.964,
+   0.853
+  ],
+  "p": [
+   0.128,
+   0.018,
+   0.562,
+   0.861
+  ]
+ },
  "https://www.bing.com/th?id=ONUT.hSK1x_UwmELq3M2x6HEyvg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7261,12 +7232,6 @@
    0.303
   ]
  },
- "https://www.bing.com/th?id=ONUT.rvH4HEhCINUtDiyDBMyFzg&pid=News&w=1200": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-24"
- },
  "https://www.bing.com/th?id=ONUT.t58_K2H_x7qIrD4RUb5dqA&pid=News&w=1000": {
   "w": 700,
   "h": 466,
@@ -7317,13 +7282,6 @@
    0.851,
    0.603
   ]
- },
- "https://www.bing.com/th?id=ONUT.tiy6Mg2arjYOj9zmJrpxHQ&pid=News&w=700": {
-  "w": 700,
-  "h": 432,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.35
  },
  "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
   "w": 700,
@@ -7376,52 +7334,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.vPUoNearTSYFrl0EZ2uqMQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.432,
-  "local": "pics/7fd67f375dc89a0d.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    5,
-    11,
-    14,
-    8,
-    6,
-    11,
-    6,
-    6,
-    14,
-    12,
-    3,
-    4
-   ],
-   [
-    7,
-    6,
-    12,
-    8,
-    6,
-    8,
-    10,
-    11,
-    11,
-    7,
-    6,
-    7
-   ]
-  ],
-  "c": "#8b8c8a",
-  "k": null,
-  "p": null
  },
  "https://www.bing.com/th?id=ONUT.xIVTwMTYf8aiPMNzVoJrGA&pid=News&w=480": {
   "w": 480,
@@ -7535,12 +7447,6 @@
    0.862,
    0.414
   ]
- },
- "https://www.businesspost.co.kr/news/photo/202611/20261123170224_255630.png": {
-  "w": 1376,
-  "h": 768,
-  "target": 1280,
-  "v": 3
  },
  "https://www.cgames.com/upload/images/2026/11/s_34c4856fd634954b.jpg": {
   "w": 1080,
