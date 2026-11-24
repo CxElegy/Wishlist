@@ -69,7 +69,25 @@
     85,
     95,
     101,
-    106
+    106,
+    130,
+    124,
+    122,
+    144,
+    133,
+    137,
+    121,
+    125,
+    131,
+    136,
+    142,
+    43,
+    118,
+    140,
+    141,
+    127,
+    126,
+    143
    ],
    "image": "https://krcrtv.com/resources/media2/16x9/976/1320/169x0/90/81b0a9df-a565-4fa6-b6ff-93f597a7f559-Screenshot20261123at9.07.24AM.png"
   },
@@ -117,7 +135,8 @@
     70,
     78,
     91,
-    118
+    118,
+    124
    ]
   },
   {
@@ -137,9 +156,9 @@
   }
  ],
  "_covered": {
-  "漫威电影": 120,
-  "GTA 6": 52,
-  "三星手机": 14,
+  "漫威电影": 145,
+  "GTA 6": 65,
+  "三星手机": 20,
   "FROM": 3,
   "猫用品": 3,
   "あつ森": 1,
@@ -148,12 +167,12 @@
   "チェーンソーマン": 1,
   "日本顶级网球赛事": 3,
   "gelato pique": 3,
-  "周杰伦": 7,
+  "周杰伦": 15,
   "绝区零": 3,
   "Astrae Oratio": 2,
-  "哈利波特剧集": 2,
+  "哈利波特剧集": 5,
   "A2O LITE": 4,
-  "MMORPG 新作": 2,
+  "MMORPG 新作": 8,
   "星巴克马克杯": 2,
   "ILLIT": 1,
   "dota2": 1,
@@ -218,7 +237,8 @@
     34,
     25,
     42,
-    52
+    52,
+    62
    ]
   },
   {
@@ -240,7 +260,9 @@
    "blurb": "An early Galaxy S27 series build suggests the Now Bar’s live notifications could take cues from Apple's Dynamic Island.",
    "weight": "lead",
    "refs": [
-    7
+    7,
+    19,
+    17
    ]
   },
   {
@@ -249,7 +271,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    18
    ]
   },
   {
@@ -281,7 +304,8 @@
    "weight": "normal",
    "refs": [
     1,
-    10
+    10,
+    20
    ]
   },
   {
@@ -291,6 +315,15 @@
    "weight": "normal",
    "refs": [
     8
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 line may debut with a security feature Pixel 11 and iPhone 18 Pro owners will envy",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
    ]
   }
  ],
@@ -441,7 +474,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    8
    ]
   },
   {
@@ -450,7 +484,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    13,
+    14
    ]
   },
   {
@@ -460,6 +496,24 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "周杰伦27年演唱会官宣 舞美持续升级，冰封开场、机甲炸水",
+   "highlight": "27年演唱会官宣",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
+   ]
+  },
+  {
+   "headline": "周杰倫藏了11年！「古堡下跪求婚」昆凌當眾大哭 周董「首度公開」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
    ]
   }
  ],
@@ -533,6 +587,24 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "HBO Reveals Harry Potter Series Great Hall Scene",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "HBO Harry Potter Posters Tease Mark on Snape's Forehead",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "A2O LITE": [
@@ -568,10 +640,23 @@
  ],
  "MMORPG 新作": [
   {
+   "headline": "카카오게임즈, 신작 MMORPG ‘오딘Q: 발키리스콜’ 2027년 1월 26일 출시",
+   "highlight": "2027년 1월 26일 출시",
+   "blurb": "카카오게임즈가 신작 MMORPG ‘오딘Q: 발키리스콜’을 2027년 1월 26일 출시한다.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2027-01-26",
+    "label": "発売日"
+   }
+  },
+  {
    "headline": "Everything we know about Riot’s new League of Legends MMO: Raids & more",
    "highlight": "League of Legends MMO",
    "blurb": "Dexerto rounds up what is known so far about Riot’s League of Legends MMO, including raids.",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     1
    ]
@@ -583,6 +668,29 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "넥슨, 26일 ‘아주르’·‘템빨’ 동시 출격…서브컬처·MMORPG 정조준",
+   "highlight": "26일",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    5
+   ],
+   "event": {
+    "date": "2026-11-26",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "150,000 Steam Wishlists: Zombie MMORPG Persist Online Reveals New Gameplay in Thank-You Video",
+   "highlight": "150,000 Steam Wishlists",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],

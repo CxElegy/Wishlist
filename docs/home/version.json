@@ -1,32 +1,32 @@
 {
- "admin": "f95f4b5bba60",
- "admin-ai": "44aa16b7ebd8",
+ "admin": "1dcbddd27308",
+ "admin-ai": "400711997d70",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "612e2fff"
+   "8fe8db61"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "1f8eb9ea"
+   "babbbc99"
   ]
  },
- "admin-boards": "6bdfae83a62a",
+ "admin-boards": "aca6e4c1fe55",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "bbfb7a9f"
+   "b0947dec"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "2803cd278442",
+ "admin-emblem": "b5c3b27bef20",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "39f133ec"
+   "a11159ba"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "7c8744839b70",
+ "admin-now": "56124f541875",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "958f31b9"
+   "ecfb17d3"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b6551f73"
+   "1883ef87"
   ]
  },
- "admin-system": "39a182acdd7a",
+ "admin-system": "147384a20e32",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f38d8e75"
+   "4e9c84c2"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "01e2e839"
+   "4642da7f"
   ]
  },
  "admin_marks": {},
- "heat": "84a17a809ba2",
+ "heat": "82a1dd19f106",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "6ed694a3"
+   "c66f5d9d"
   ],
   "ranking": [
    "ランキング",
-   "fa2833cf"
+   "e5395208"
   ]
  },
- "index": "a605dfa77b97",
+ "index": "5efe30449286",
  "index_marks": {
   "front": [
    "トップ",
-   "1738e53e"
+   "2653e1fd"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "96e90e3a"
+   "9abcdbfd"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "3d3a00f9"
+   "ccb69c25"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "70a62510"
+   "3374e35f"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "64ac1988"
+   "4885d6d1"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "bcd38fc0"
+   "cdc7c822"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "280dcd6a"
   ]
  },
- "updated": "11.24 11:28",
+ "updated": "11.24 11:39",
  "wishlist": "fdd925d86871"
 }

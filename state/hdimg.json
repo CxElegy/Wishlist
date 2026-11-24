@@ -555,57 +555,6 @@
    0.334
   ]
  },
- "http://wx2.sinaimg.cn/middle/65252eably1ij4zomdo5mj20gw0u0417.jpg": {
-  "w": 608,
-  "h": 1080,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/b99a78577bdb4d46.webp",
-  "out": [
-   608,
-   1080
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    11,
-    9,
-    5,
-    4,
-    4,
-    6,
-    6,
-    15,
-    17,
-    14,
-    5,
-    4
-   ],
-   [
-    7,
-    9,
-    11,
-    16,
-    16,
-    13,
-    5,
-    4,
-    4,
-    4,
-    6,
-    5
-   ]
-  ],
-  "c": "#763d97",
-  "k": null,
-  "p": [
-   0.493,
-   0.155,
-   0.91,
-   0.453
-  ]
- },
  "http://wx2.sinaimg.cn/middle/8f742936gy1ij7r3iuo28j212l135n7j.jpg": {
   "w": 1389,
   "h": 1409,
@@ -1927,6 +1876,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://geeksandgamers.com/wp-content/uploads/2026/11/Harry-Potter-Great-Hall.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://hashout.jp/wp-content/uploads/2026/11/2122068646058991771-img-1200x675.png": {
   "w": 1200,
   "h": 675,
@@ -2726,6 +2681,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i4TvC.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2d59wD.img": {
   "w": 1440,
   "h": 2133,
@@ -2749,6 +2710,57 @@
   "h": 1444,
   "target": 1280,
   "v": 3
+ },
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795487794386": {
+  "w": 320,
+  "h": 270,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.667,
+  "local": "pics/73ade07acadc168d.webp",
+  "out": [
+   960,
+   810
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    0,
+    0,
+    2,
+    8,
+    15,
+    14,
+    12,
+    2,
+    36,
+    10,
+    1,
+    0
+   ],
+   [
+    1,
+    13,
+    14,
+    14,
+    11,
+    4,
+    4,
+    5,
+    5,
+    7,
+    10,
+    11
+   ]
+  ],
+  "c": "#e5d6d0",
+  "k": [
+   0.351,
+   0.179,
+   0.462,
+   0.301
+  ],
+  "p": null
  },
  "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg": {
   "w": 700,
@@ -3537,6 +3549,12 @@
  "https://media.image.infoseek.co.jp/isnews/photos/yorozoonews/yorozoonews_17057073_0.jpg": {
   "w": 640,
   "h": 677,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.nacionale.kabineti.net/uploads/desk_406c611d83_cf4211ab83.jpg": {
+  "w": 1920,
+  "h": 1279,
   "target": 720,
   "v": 3
  },
@@ -5700,12 +5718,6 @@
   "target": 720,
   "v": 3
  },
- "https://sm.ign.com/t/ign_in/news/a/avengers-d/avengers-doomsday-poster-gives-us-our-closest-look-at-doctor_d5hu.1200.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://sm.ign.com/t/ign_nordic/feature/i/ive-played/ive-played-gta-6-for-110-hours-here-are-the-weirdest-things_4488.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -5751,6 +5763,12 @@
  "https://static.chunichi.co.jp/image/article/size1/9/9/e/e/99eef173c63e943807a6a19c3ca5f283_1.jpg": {
   "w": 843,
   "h": 1220,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static.inven.co.kr/column/2026/11/24/news/i1071389623.jpg": {
+  "w": 1010,
+  "h": 691,
   "target": 1280,
   "v": 3
  },
@@ -6579,12 +6597,6 @@
   "k": null,
   "p": null
  },
- "https://www.bing.com/th?id=ONUT.4Gae9VS2F_YB4bMKBGgnrw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.4Hpz4Ai7jxyXy8Q8d4teng&pid=News&w=566": {
   "w": 566,
   "h": 435,
@@ -6784,6 +6796,12 @@
  "https://www.bing.com/th?id=ONUT.N25GKwIH7DzBX1qu8qQziQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Ne8O4bA28riAr6z1EpiBBg&pid=News&w=1200": {
+  "w": 700,
+  "h": 428,
   "target": 720,
   "v": 3
  },
@@ -7207,13 +7225,6 @@
   "v": 3,
   "blur": 0.35
  },
- "https://www.bing.com/th?id=ONUT.uGwyvKGd1AMwSR5v2KPJZw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.419
- },
  "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7570,6 +7581,12 @@
  "https://www.computerweekly.com/rms/computerweekly/gta-vi-editorial-do-not-reuse-getty.jpg": {
   "w": 1200,
   "h": 400,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dailyvoa.com/storage/share/p/0/p929-18362249e3b4.jpg": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
