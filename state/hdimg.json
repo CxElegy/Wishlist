@@ -2761,57 +2761,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795531702522": {
-  "w": 320,
-  "h": 270,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.667,
-  "local": "pics/63150041728dbaec.webp",
-  "out": [
-   960,
-   810
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    0,
-    0,
-    2,
-    8,
-    15,
-    14,
-    12,
-    2,
-    36,
-    10,
-    1,
-    0
-   ],
-   [
-    1,
-    13,
-    14,
-    14,
-    11,
-    4,
-    4,
-    5,
-    5,
-    7,
-    10,
-    11
-   ]
-  ],
-  "c": "#e5d6d0",
-  "k": [
-   0.351,
-   0.179,
-   0.462,
-   0.301
-  ],
-  "p": null
- },
  "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg": {
   "w": 700,
   "h": 394,
@@ -3452,6 +3401,12 @@
   "v": 3
  },
  "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2024-04/240430-cat-toys-pet-week-kb-social-04c943.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://media.assettype.com/deccanherald%2F2026-07-28%2F0f37nips%2FSamsung-Galaxy-S26-Ultra-cs-5.jpg?rect=0%2C19%2C990%2C520&w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop": {
   "w": 1200,
   "h": 630,
   "target": 1280,
