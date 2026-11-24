@@ -34,7 +34,10 @@
     3,
     5,
     22,
-    32
+    32,
+    53,
+    54,
+    55
    ]
   },
   {
@@ -44,7 +47,10 @@
    "weight": "normal",
    "refs": [
     14,
-    37
+    37,
+    50,
+    51,
+    56
    ]
   },
   {
@@ -54,7 +60,9 @@
    "weight": "normal",
    "refs": [
     7,
-    17
+    17,
+    58,
+    46
    ]
   }
  ],
@@ -77,7 +85,10 @@
     13,
     17,
     18,
-    21
+    21,
+    25,
+    23,
+    24
    ],
    "image": "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-ultra-camera-leak.jpg"
   },
@@ -88,7 +99,8 @@
    "weight": "normal",
    "refs": [
     4,
-    14
+    14,
+    28
    ]
   },
   {
@@ -97,7 +109,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    26
    ]
   },
   {
@@ -132,7 +145,9 @@
     7,
     11,
     31,
-    28
+    28,
+    62,
+    63
    ],
    "image": "https://img.youtube.com/vi/Oae1ZnQ15gQ/maxresdefault.jpg"
   },
@@ -164,7 +179,8 @@
     23,
     26,
     17,
-    18
+    18,
+    46
    ]
   },
   {
@@ -268,20 +284,21 @@
   }
  ],
  "_covered": {
-  "GTA 6": 43,
-  "三星手机": 22,
-  "漫威电影": 33,
+  "GTA 6": 62,
+  "三星手机": 28,
+  "漫威电影": 63,
   "绝区零": 15,
   "MMORPG 新作": 6,
   "ILLIT": 5,
-  "dota2": 4,
+  "dota2": 9,
   "チェーンソーマン": 4,
-  "周杰伦": 4,
+  "周杰伦": 10,
   "A2O LITE": 3,
   "FROM": 3,
   "滑雪": 3,
   "BLEACH Mirrors High": 8,
-  "The Mandalorian": 2
+  "The Mandalorian": 2,
+  "哈利波特剧集": 4
  },
  "ILLIT": [
   {
@@ -337,6 +354,16 @@
     3
    ],
    "image": "https://everythingedinburgh.com/wp-content/uploads/2026/11/ee-img-dota-2-patch-7-42-greater-horn-of-battle.jpg"
+  },
+  {
+   "headline": "38 分钟 12 比 33，XG 在最后一局BO3 中遗憾告负",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    9
+   ]
   }
  ],
  "チェーンソーマン": [
@@ -368,7 +395,26 @@
    "weight": "lead",
    "refs": [
     2,
-    1
+    1,
+    8
+   ]
+  },
+  {
+   "headline": "周杰伦演唱会门票惹争议！580元只能看大屏，这合理么？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "广州演唱会季群星云集 孙燕姿周杰伦李荣浩王嘉尔轮番开唱",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
@@ -484,6 +530,44 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO Max enseña nuevas imágenes de los profesores de su serie Harry Potter",
+   "highlight": "",
+   "blurb": "Dumbledore, McGonagall, Snape y Hagrid aparecen en nuevas imágenes de la serie de HBO.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Why is Warner Bros. taking down Malfoid? Popular creator questions copyright strike on HBO’s Harry Potter series ahead of premiere",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Harry Potter | Six fashionable findings from the HBO Original Harry Potter series costume department",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Harry Potter | Fantastic facts behind the creatures in the HBO Original Harry Potter series",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]

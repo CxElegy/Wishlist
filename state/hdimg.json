@@ -601,6 +601,103 @@
   ],
   "p": null
  },
+ "http://wx4.sinaimg.cn/middle/008qwiEkgy1ijdsjw8xghj310o2u37nw.jpg": {
+  "w": 1320,
+  "h": 3675,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/d37153a572cc3538.webp",
+  "out": [
+   460,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    8,
+    13,
+    13,
+    14,
+    14,
+    11,
+    10,
+    9,
+    3,
+    2,
+    2,
+    2
+   ],
+   [
+    1,
+    9,
+    4,
+    9,
+    9,
+    10,
+    12,
+    6,
+    11,
+    11,
+    9,
+    9
+   ]
+  ],
+  "c": "#b4b9b8",
+  "k": [
+   0.022,
+   0.1,
+   0.978,
+   0.97
+  ],
+  "p": null
+ },
+ "http://wx4.sinaimg.cn/middle/008tBTpAgy1ijdbs18snfj31ba0zg4pu.jpg": {
+  "w": 1702,
+  "h": 1276,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/c912d0dde6ed8ed6.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    9,
+    11,
+    7,
+    9,
+    10,
+    10,
+    12,
+    10,
+    5,
+    6,
+    5,
+    6
+   ],
+   [
+    5,
+    6,
+    5,
+    11,
+    17,
+    11,
+    8,
+    4,
+    7,
+    9,
+    6,
+    10
+   ]
+  ],
+  "c": "#455662",
+  "k": null,
+  "p": null
+ },
  "https://0.soompi.io/wp-content/uploads/2026/11/19054506/A2O-LITE-NCT-WISH-ILLIT.jpg": {
   "w": 1200,
   "h": 800,
@@ -1505,6 +1602,18 @@
  "https://consequence.net/wp-content/uploads/2026/11/Grand-Theft-Auto-VI-The-Album-Deluxe.jpeg": {
   "w": 1280,
   "h": 721,
+  "target": 720,
+  "v": 3
+ },
+ "https://contentful.harrypotter.com/usf1vwtuqyxm/4oVLJ6i731a5LU5HcrXcj/d3d5614dca9b4afc357c69a1d05b8e73/DAT_102_042826_AM_0221_R.jpg?w=1200&fit=fill&f=top": {
+  "w": 1200,
+  "h": 676,
+  "target": 1280,
+  "v": 3
+ },
+ "https://contentful.harrypotter.com/usf1vwtuqyxm/J1pnqF3nNjqFvjJ7ppYVD/98d1309eb5f85677e277e43641b77a62/hbo-s1-bts-creatures-owl.jpg?w=1200&fit=fill&f=top": {
+  "w": 1200,
+  "h": 677,
   "target": 720,
   "v": 3
  },
@@ -2539,6 +2648,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i4kkT.img": {
+  "w": 2048,
+  "h": 1363,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i5YQe.img": {
   "w": 640,
   "h": 427,
@@ -3035,6 +3150,12 @@
  "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg": {
   "w": 1200,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://jamonline.ph/wp-content/uploads/2026/11/samsung-galaxy-s27-pro-s27-ultra-dummy-hands-on.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -5083,12 +5204,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/8c60fb899d798e3ea6defbf0c39208f2094de6942d940a6fbed0c940e280cca7/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fsuperherohype_979%2F5e187b422dbf2f4328e317a4855aa5ea": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/b14a17eecf13f2880986bb6d0f3bca99710c77825a206349d8726aaf02f35b0f/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Flead-gta-6-reviews-2_3628.jpg": {
   "w": 1200,
   "h": 800,
@@ -5490,6 +5605,12 @@
  "https://static06.hket.com/res/v3/image/content/4225000/4229774/8rr2a3np826_1_1200.jpeg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://staticimg.publishstory.co/thumb/136140520.cms?imgsize=172080&width=1280&height=720&resizemode=8": {
+  "w": 1280,
+  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -6794,12 +6915,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.nexp9wOR1qy07txXIhS47w&pid=News&w=700": {
-  "w": 700,
-  "h": 465,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.q7Z8FmtUUsSUJnTPUsimDw&pid=News&w=330": {
   "w": 330,
   "h": 330,
@@ -7158,6 +7273,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.comicbasics.com/wp-content/uploads/2023/11/The-young-avengers.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://www.comicsbeat.com/wp-content/uploads/2026/11/avengers-doomsday.png": {
   "w": 1200,
   "h": 564,
@@ -7378,12 +7499,6 @@
  "https://www.lanacion.com.ar/resizer/v2/la-oficinas-de-rockstar-north-en-edimburgo-el-dia-6H2XLSKT5FBP7OLF44NGDHUSJE.jpg?auth=e2a3a72a51066a2c6ebf2d7cf8d20efc58cd23703a7befb5501ff193b921b127&width=1200&height=800&quality=70&smart=true": {
   "w": 1200,
   "h": 800,
-  "target": 720,
-  "v": 3
- },
- "https://www.macobserver.com/wp-content/uploads/2026/05/How-to-Hide-Your-Caller-ID-When-Making-Calls-on-iOS-26.jpg": {
-  "w": 1920,
-  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -7656,6 +7771,57 @@
    0.261,
    0.129,
    0.771,
+   1.0
+  ]
+ },
+ "https://wx3.sinaimg.cn/orj480/9710175aly1ijck5mpasaj20g00sgq40.jpg": {
+  "w": 576,
+  "h": 1024,
+  "target": 720,
+  "v": 3,
+  "local": "pics/36a263650a2a8309.webp",
+  "out": [
+   576,
+   1024
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    5,
+    5,
+    5,
+    15,
+    17,
+    14,
+    18,
+    6,
+    4,
+    4,
+    5,
+    3
+   ],
+   [
+    1,
+    4,
+    7,
+    8,
+    7,
+    8,
+    7,
+    13,
+    10,
+    8,
+    12,
+    14
+   ]
+  ],
+  "c": "#35272a",
+  "k": null,
+  "p": [
+   0.307,
+   0.123,
+   0.881,
    1.0
   ]
  },
