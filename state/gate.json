@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-23T23:32:07+00:00",
+ "checked": "2026-11-24T00:27:31+00:00",
  "fired": {
   "at": "2026-11-23T23:32:07+00:00",
   "results": {
@@ -76,65 +76,59 @@
     "sig": "fd86acfc5fdb"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
-    "lib:美術館の企画展",
     "ぐでたま",
-    "三星手机",
-    "周杰伦",
     "哈利波特剧集",
     "日本顶级网球赛事",
     "星巴克马克杯",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-23T22:35:47+00:00",
+   "last_batch": "2026-11-23T23:56:14+00:00",
    "last_error": {},
    "need": true,
-   "prog": 191,
+   "prog": 260,
    "prog_day": "2026-11-24",
    "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "三星手机",
-    "周杰伦",
-    "漫威电影"
+    "ILLIT",
+    "MMORPG 新作",
+    "dota2",
+    "ぐでたま",
+    "日本顶级网球赛事",
+    "星巴克马克杯"
    ],
-   "sig": "fd86acfc5fdb",
+   "sig": "8c20eabad9ef",
    "token_cap": 1000000,
-   "tokens_today": 272469,
-   "why": "整理待ちの記事 87 件（17 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 333810,
+   "why": "整理待ちの記事 17 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "A2O LITE",
     "Astrae Oratio",
-    "The Mandalorian",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "6979563eb494",
-   "waiting": [
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン"
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -291,12 +285,12 @@
    "runs": 14
   },
   "2026-11-24": {
-   "batches": 10,
-   "cr": 4737652,
-   "cw": 250650,
-   "in": 131,
-   "out": 21688,
-   "runs": 5
+   "batches": 15,
+   "cr": 6239330,
+   "cw": 306240,
+   "in": 171,
+   "out": 27399,
+   "runs": 6
   }
  }
 }
