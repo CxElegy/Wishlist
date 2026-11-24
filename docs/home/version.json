@@ -1,6 +1,6 @@
 {
  "admin": "57637a79ac8f",
- "admin-ai": "df336ed8f4da",
+ "admin-ai": "159a6dcc894a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "d11cd5dc"
+   "9b0a1353"
   ]
  },
  "admin-boards": "a7879ea91518",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "1a8392cf3091",
+ "admin-emblem": "516be82046c6",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ab4f47ad"
+   "aab71da8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "e9fb4db5a500",
+ "admin-now": "5b107f9d160b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "792f628e"
+   "2677033b"
   ]
  },
- "admin-system": "7ce5c81a92be",
+ "admin-system": "fed1b4fb48d1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c587bfb4"
+   "9a23b27d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2cc3289c"
+   "f9c6731c"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "27b44613"
   ]
  },
- "index": "9556fd00a1e1",
+ "index": "e5f50112db9b",
  "index_marks": {
   "front": [
    "トップ",
-   "6295d676"
+   "083722d3"
   ],
   "picks": [
    "気になるかも？",
@@ -141,11 +141,11 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "7992accb"
+   "667d147f"
   ],
   "w-7a894105": [
    "周杰伦",
-   "f958b79e"
+   "93fc0214"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "c422b6d0"
+   "fea8df70"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "c1beaa06"
+   "7f38662f"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "aea5ee3f"
+   "0f711994"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "b8b49694"
+   "dd007a55"
   ]
  },
- "updated": "11.25 02:30",
+ "updated": "11.25 02:39",
  "wishlist": "e369ed299671"
 }
