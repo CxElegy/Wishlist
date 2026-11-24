@@ -1,14 +1,14 @@
 {
- "admin": "0fdfa23442ec",
- "admin-ai": "d9cf1038aafa",
+ "admin": "f5adb1ecdcdc",
+ "admin-ai": "aa282f6bb91e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "b6d29ec7"
+   "651a9083"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "72f5fdb7"
+   "6c40cbeb"
   ]
  },
  "admin-boards": "25c48fc33151",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "7e94d88a0dd8",
+ "admin-emblem": "03cf73741535",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "21f24fe9"
+   "f7879cd9"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "f23cff5463d0",
+ "admin-now": "ec7b7e2217f1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5ee7b885"
+   "c2832139"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "27719659"
+   "47fde652"
   ]
  },
- "admin-system": "f476033fb1bd",
+ "admin-system": "095c6a44fa81",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cbb34eab"
+   "f7c8d34b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9d14bfd6"
+   "ca03851e"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "93465e18"
   ]
  },
- "index": "13273ca79614",
+ "index": "80fa9704277f",
  "index_marks": {
   "front": [
    "トップ",
-   "bcf21fa3"
+   "a4ea25bb"
   ],
   "picks": [
    "気になるかも？",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "47d82976"
+   "156d0eb9"
   ],
   "w-6676e624": [
    "三星手机",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "4584e66a"
+   "96487497"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -196,6 +196,6 @@
    "2a65a94d"
   ]
  },
- "updated": "11.24 16:22",
+ "updated": "11.24 16:30",
  "wishlist": "fdd925d86871"
 }
