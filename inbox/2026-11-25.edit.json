@@ -275,7 +275,8 @@
   "周杰伦": 4,
   "A2O LITE": 3,
   "FROM": 3,
-  "滑雪": 3
+  "滑雪": 3,
+  "BLEACH Mirrors High": 8
  },
  "ILLIT": [
   {
@@ -424,6 +425,39 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
+    1
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "ガチャのおすすめとスケジュール｜どれを引くべき？",
+   "highlight": "どれを引くべき",
+   "blurb": "ガチャの開催スケジュールとおすすめの引き方をまとめた攻略記事。引き直しガチャの選び方も掲載。",
+   "weight": "lead",
+   "refs": [
+    6,
+    3
+   ]
+  },
+  {
+   "headline": "リセマラ当たりランキング",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    2
+   ]
+  },
+  {
+   "headline": "キャラ一覧",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    4,
     1
    ]
   }

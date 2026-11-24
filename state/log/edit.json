@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-23T09:09:19+00:00",
-"text": "2026-11-23 第 12 バッチを出刊：A2O LITE（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 2,632・キャッシュ読み 39.2万・出力 1,288",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.54,
-"mem_total": 16869113856,
-"mem_free": 15646629888,
-"disk_used": 10543935488,
-"disk_free": 63337676800,
-"disk_total": 73881612288,
-"peak": 651849728
-},
-"batch": 12,
-"boards": [
-"A2O LITE"
-],
-"stories": 2,
-"left": 0,
-"edited": 21,
-"run": 1795419496.8582897,
-"tok": {
-"in": 8,
-"cw": 2624,
-"cr": 392233,
-"out": 1288,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 396153,
-"secs": 5462,
-"run_tok": {
-"in": 92,
-"cw": 70803,
-"cr": 3827575,
-"out": 11554,
-"calls": 47,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-23T11:40:16+00:00",
 "text": "2026-11-23 第 1 バッチを出刊：MMORPG 新作（1 版面・3 本・残り 2 版面） · token 新規入力 4.2万・キャッシュ読み 53.8万・出力 1,776",
 "level": "ok",
@@ -2080,5 +2039,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 224450
+},
+{
+"at": "2026-11-24T19:38:10+00:00",
+"text": "2026-11-25 第 3 バッチを出刊：BLEACH Mirrors High（1 版面・3 本・残り 2 版面） · token 新規入力 1,374・キャッシュ読み 15.2万・出力 763",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.68,
+"mem_total": 16868675584,
+"mem_free": 15876239360,
+"disk_used": 11188568064,
+"disk_free": 62624530432,
+"disk_total": 73813098496,
+"peak": 449761280
+},
+"batch": 3,
+"boards": [
+"BLEACH Mirrors High"
+],
+"stories": 3,
+"left": 2,
+"edited": 13,
+"run": 1795548197.5357118,
+"tok": {
+"in": 4,
+"cw": 1370,
+"cr": 151948,
+"out": 763,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 154085
 }
 ]
