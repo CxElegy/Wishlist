@@ -1203,6 +1203,13 @@
   "v": 3,
   "blur": 0.406
  },
+ "https://cdn.duckhub.co.kr/news/photo/202611/2476_11412_325.jpg": {
+  "w": 600,
+  "h": 338,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.371
+ },
  "https://cdn.e-science.co.kr/news/photo/202611/139894_72945_1815.jpg": {
   "w": 600,
   "h": 750,
@@ -1461,6 +1468,12 @@
  "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp": {
   "w": 1264,
   "h": 848,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.upmedia.mg/upfile/img/2026/1123/202611231735558135.webp": {
+  "w": 1200,
+  "h": 800,
   "target": 720,
   "v": 3
  },
@@ -6254,12 +6267,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.401
- },
- "https://www.bing.com/th?id=ONUT.6dCCTfjI_QU6zZzUOBoFWA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.7gPYVExGrdL73L1eFKJ8xw&pid=News&w=1200": {
   "w": 700,

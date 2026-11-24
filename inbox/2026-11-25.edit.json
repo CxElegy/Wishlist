@@ -302,7 +302,8 @@
   "The Mandalorian": 2,
   "哈利波特剧集": 4,
   "あつ森": 3,
-  "猫用品": 2
+  "猫用品": 2,
+  "Astrae Oratio": 1
  },
  "ILLIT": [
   {
@@ -592,6 +593,17 @@
    "highlight": "",
    "blurb": "",
    "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "카루타에 깃든 언령의 마법은 어떤 방식일까? 엔씨 '아스오라' 신규 캐릭터 '후미즈키 토와' 공개",
+   "highlight": "후미즈키 토와 공개",
+   "blurb": "",
+   "weight": "lead",
    "refs": [
     1
    ]

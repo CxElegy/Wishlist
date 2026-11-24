@@ -1,10 +1,10 @@
 {
- "admin": "128644c17da6",
- "admin-ai": "2290009aad03",
+ "admin": "a641beeca20a",
+ "admin-ai": "418be0856e03",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "569eed84"
+   "3070db8b"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "5682001b3711",
+ "admin-emblem": "1f8080cb8b5a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "987e7c35"
+   "7b28347d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "6de03d36fe33",
+ "admin-now": "71d2f5095f2f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9dfc036f"
+   "a12c406d"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "96a11c31"
   ]
  },
- "admin-system": "786589fc109e",
+ "admin-system": "d445ea5ddbc1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "171f4dc9"
+   "c3fe71f0"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,11 +93,11 @@
    "9d3e1f92"
   ]
  },
- "index": "fd9bcd9d3c26",
+ "index": "155b2e049871",
  "index_marks": {
   "front": [
    "トップ",
-   "b104524c"
+   "39425bd2"
   ],
   "picks": [
    "気になるかも？",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "5125e4e5"
+   "6e66aee0"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "84909331"
   ]
  },
- "updated": "11.25 07:39",
+ "updated": "11.25 07:48",
  "wishlist": "ad051c775cb3"
 }

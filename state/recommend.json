@@ -56,7 +56,6 @@
   "https://www.chinatimes.com/realtimenews/20261123002656-260404": "https://images.chinatimes.com/newsphoto/2026-11-23/656/20261123002657.jpg",
   "https://www.epochtimes.com/b5/26/11/20/n14892147.htm": "https://i.epochtimes.com/assets/uploads/2026/11/id14892156-S__1377828886_0-1200x800.jpg",
   "https://www.eprice.com.hk/mobile/talk/4568/228373/1": null,
-  "https://www.fomos.kr/game/news_view?entry_id=157572&news_cate_id=2": "https://www.bing.com/th?id=ONUT.6dCCTfjI_QU6zZzUOBoFWA&pid=News&w=1200",
   "https://www.hotspawn.com/dota2/guide/best-dota-2-streamers": "https://www.hotspawn.com/wp-content/uploads/2026/01/image_2026-01-04_033134556.png",
   "https://www.hotspawn.com/dota2/guide/what-is-lakad-matatag-in-dota-2": "https://www.hotspawn.com/wp-content/uploads/2026/04/dota-2-creep-equilibrium.jpg",
   "https://www.indexbox.io/ja/blog/cat-milk-market-forecast-to-2035-premiumization-and-feline-health-focus-drive-growth/": "https://www.indexbox.io/landing/img/blog/custom-report-v2-localized/ja/cat-milk-market-forecast-to-2035-premiumization-and-feline-health-focus-drive-growth-414ef638991a0efa.webp",
@@ -76,6 +75,7 @@
   "https://www.superherohype.com/news/708323-batman-knightfall-part-1-hbo-max-streaming-release-date": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/09/Untitled-design-2026-09-21T171424.351.jpg?resize=1200,630",
   "https://www.thecanadianpressnews.ca/world/former-owner-of-internet-famous-squirrel-charged-with-mortgage-fraud/article_5535a2a3-2d5f-5edd-bca5-70417898d99b.html": "https://bloximages.chicago2.vip.townnews.com/thecanadianpressnews.ca/content/tncms/assets/v3/editorial/1/09/109fefdc-6587-5e74-9e3b-8f11271af871/6af4f3f98e144.image.jpg?crop=1400%2C735%2C0%2C99&resize=1200%2C630&order=crop%2Cresize",
   "https://www.upmedia.mg/tw/game/mobile-game/274821": "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp",
+  "https://www.upmedia.mg/tw/game/pc-game/275105": "https://cdn.upmedia.mg/upfile/img/2026/1123/202611231735558135.webp",
   "https://www.vtechgraphy.com/android/samsung-galaxy-s27-ultra-%e9%9b%b7%e5%b0%84%e5%b0%8d%e7%84%a6/": "https://www.bing.com/th?id=ONUT.ar-MlMsFrgR4w4DWbs3Tzw&pid=News&w=1200",
   "https://www.walkerland.com.tw/subject/view/425746": "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/11/1795265411810-5f16989da27141be94c40fd9afa2b6f8-850x446.webp",
   "https://www.walkerplus.com/article/100256/": "https://news.walkerplus.com/article/100256/555161_615.jpg",
@@ -1241,6 +1241,27 @@
   },
   {
    "batch": 3,
+   "because": "Astrae Oratio",
+   "date": "2026-11-23",
+   "hits": [],
+   "image": "https://cdn.upmedia.mg/upfile/img/2026/1123/202611231735558135.webp",
+   "kind": "board",
+   "liked": "AGF 2026 主赞助，设 150 台试玩",
+   "score": 8,
+   "source": "上報Up Media",
+   "taste": [
+    [
+     "作品:Astrae Oratio",
+     7
+    ]
+   ],
+   "title": "《阿索拉：星之祈願》參展 AGF 2026！PC版首度開放試玩 6名新角色與全新BOSS登場",
+   "url": "https://www.upmedia.mg/tw/game/pc-game/275105",
+   "words": [],
+   "work": "Astrae Oratio"
+  },
+  {
+   "batch": 3,
    "because": "猫用品",
    "date": "2026-11-23",
    "hits": [
@@ -1311,7 +1332,7 @@
    "work": "Astrae Oratio"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "チェーンソーマン",
    "date": "2026-11-23",
    "hits": [],
@@ -1330,27 +1351,6 @@
    "url": "https://freakelitex.com/chainsaw-man-volumen-22-ventas-bookscan-estados-unidos/",
    "words": [],
    "work": "チェーンソーマン"
-  },
-  {
-   "batch": 4,
-   "because": "Astrae Oratio",
-   "date": "2026-11-22",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.6dCCTfjI_QU6zZzUOBoFWA&pid=News&w=1200",
-   "kind": "board",
-   "liked": "AGF 2026 主赞助，设 150 台试玩",
-   "score": 8,
-   "source": "포모스",
-   "taste": [
-    [
-     "作品:Astrae Oratio",
-     7
-    ]
-   ],
-   "title": "엔씨의 RPG '아스트라에 오라티오(이하 아스오라)'가 'AGF 2026'의 프로그램을 공개했다.",
-   "url": "https://www.fomos.kr/game/news_view?entry_id=157572&news_cate_id=2",
-   "words": [],
-   "work": "Astrae Oratio"
   },
   {
    "batch": 4,

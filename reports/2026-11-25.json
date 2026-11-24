@@ -1,22 +1,24 @@
 {
  "date": "2026-11-25",
- "edit_sig": "1c7bc94ee797",
+ "edit_sig": "ec888d8cd03a",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-24",
-     "n": 1,
-     "source": "www.duckhub.co.kr",
-     "title": "카루타에 깃든 언령의 마법은 어떤 방식일까? 엔씨 '아스오라' 신규 캐릭터 '후미즈키 토와' 공개",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBUem9maENWUHM1ajZWeTJJY3hqU3ZSeThoMHczdmlwTzd1a3d0c3F3THRCOV9RSjF2MURpaEZGZVd0cy1NUTlMRTJBa29RSEw1LXNfQnQzYlJYNWxualA2NGszQTU1M3VxUEE?oc=5"
+     "headline": "카루타에 깃든 언령의 마법은 어떤 방식일까? 엔씨 '아스오라' 신규 캐릭터 '후미즈키 토와' 공개",
+     "highlight": "후미즈키 토와 공개",
+     "image": "https://cdn.duckhub.co.kr/news/photo/202611/2476_11412_325.jpg",
+     "image_via": "og:image",
+     "url": "https://www.duckhub.co.kr/news/articleView.html?idxno=2476",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
