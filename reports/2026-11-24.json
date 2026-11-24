@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "edit_sig": "b1abaf5b73fd",
+ "edit_sig": "3592c1a68f4b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -237,7 +237,7 @@
      "highlight": "",
      "image": "https://www.sankei.com/resizer/v2/https%3A%2F%2Fdpgdieoe6npux.cloudfront.net%2Fprtimes%2F3YDJRU7ZD5OZPFRSM6ZUALNJHQ?auth=fad8bf963c2921cfc2c2a591c4301ea0b2afd0495b6c61c9489267d3188a1cc2&quality=50&smart=true&width=1200&height=675",
      "image_via": "转载 www.sankei.com",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE93U0xtR25EbGNObVJIdkFEdEFpY3Q3SGNZRjhFM3BGbm54bndoQ3hBWHo5QUx6dkRxd2x5RG5hampQTjE3STlkbFB4bnAybkFWeUVtNjd2UGJRd3I2Si1rX24zWmVCTl90U2NqUDBJQi11QzY3a1BwYXBZSQ?oc=5",
+     "url": "https://news.nicovideo.jp/watch/nw20012444?news_ref=watch_20_nw13507908",
      "weight": "normal"
     }
    ],
@@ -501,7 +501,7 @@
      "date": "2026-11-23",
      "headline": "Leaked Galaxy S27 build reveals Dynamic Island makeover for Live notifications",
      "highlight": "Dynamic Island",
-     "image": "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795497087439",
+     "image": "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795505031836",
      "image_via": "og:image（其它来源）",
      "url": "https://www.androidauthority.com/samsung-galaxy-s27-one-ui-9-5-live-notifications-dynamic-island-3738347/",
      "weight": "lead"
@@ -1069,22 +1069,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 3,
-     "source": "ウォーカープラス",
-     "title": "＜画像1 / 32＞熊本のスターバックス発、パートナーの声を形にした限定マグカップを体験してきた",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE81UGxEX3B5V0drUjZYMlp3ekdEQjZWRUNFMXMyeU9HMERSS3pyanI4OVlpN29fajljamZwSDlOWW9DX0dWbi1FTmdDb1ZfdVY3UEFOSzFzNVB2aTZic0JsU1VpeWRpTWRVWl9v?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 4,
-     "source": "TRILL",
-     "title": "【世界のスタバ】ポーランド・ワルシャワ中央駅のスタバで買うべき限定マグ＆ご当地フード！",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9aei1QR29ZZ3FfYlA1N3hZeTVodmpmeC1feHJfeGdpb1RMMnhWWHdaWkZnSXRpQ09WQnY5RFFsaGRnVUQ4VDNDQ1UzampETWM?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -1105,6 +1089,26 @@
      "image": "https://news.walkerplus.com/article/68792/385520_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/68792/image385522.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "熊本のスターバックス発、パートナーの声を形にした限定マグカップを体験してきた",
+     "highlight": "熊本のスターバックス発",
+     "image": "https://news.walkerplus.com/article/198145/1195520_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/198145/image1195520.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "headline": "【世界のスタバ】ポーランド・ワルシャワ中央駅のスタバで買うべき限定マグ＆ご当地フード！",
+     "highlight": "ワルシャワ中央駅",
+     "image": "https://media.trilltrill.jp/articles/5197751/featured-image.67644a28809fe041d4f12e64da30f60b?w=1200",
+     "image_via": "og:image",
+     "url": "https://trilltrill.jp/articles/5197751",
      "weight": "normal"
     }
    ],

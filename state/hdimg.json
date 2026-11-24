@@ -1209,6 +1209,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.essential-japan.com/wp-content/uploads/2026/11/Pompompurin-x-Starbucks-Collab-Main.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.factinnews.co.kr/news/photo/202611/301074_50935_130.jpg": {
   "w": 600,
   "h": 338,
@@ -2741,13 +2747,13 @@
   "target": 1280,
   "v": 3
  },
- "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795497087439": {
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795505031836": {
   "w": 320,
   "h": 270,
   "target": 1280,
   "v": 3,
   "blur": 0.667,
-  "local": "pics/ccd00bf9fa4c4d95.webp",
+  "local": "pics/a7823e34326abecf.webp",
   "out": [
    960,
    810
@@ -4031,6 +4037,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.363
+ },
+ "https://news.walkerplus.com/article/198145/1195520_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/33564/160123_615.jpg": {
   "w": 615,
