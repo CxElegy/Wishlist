@@ -1,10 +1,10 @@
 {
- "admin": "2f2900ea6882",
- "admin-ai": "20eab8ffd47e",
+ "admin": "f4f319b664ea",
+ "admin-ai": "f143c18e2a91",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6a73e32c"
+   "00bb6faf"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "14317d0b7ef4",
+ "admin-emblem": "c4a6a9b1dcc3",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e52ffeb9"
+   "849122f0"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "5cb447669535",
+ "admin-now": "1521698647f4",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "6df09234"
+   "81519f75"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "73261f55"
   ]
  },
- "admin-system": "f11940a2003c",
+ "admin-system": "34ba31b9e8dd",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "fd97c677"
+   "c4a79cb6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "93f7bf06"
+   "595e5810"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "9d3e1f92"
   ]
  },
- "index": "5990905adbea",
+ "index": "1b5065afc0b9",
  "index_marks": {
   "front": [
    "トップ",
-   "a93c9df7"
+   "b104524c"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "d6a9fcbb"
+   "4c3053f3"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "8e750b25"
+   "91b77eb3"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "84909331"
   ]
  },
- "updated": "11.25 06:40",
+ "updated": "11.25 06:49",
  "wishlist": "ad051c775cb3"
 }

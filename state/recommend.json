@@ -22,6 +22,7 @@
   "https://natalie.mu/music/gallery/news/698080/3022110": "https://ogre.natalie.mu/media/news/music/2026/1119/USQ_3046.jpg?impolicy=ogp_face_crop",
   "https://news.dellows.jp/992392/": "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg",
   "https://news.infoseek.co.jp/article/itmedia_nlab_4103220/": "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4103220_0-enlarge.jpg",
+  "https://news.livedoor.com/topics/detail/32880834/": "https://image.news.livedoor.com/newsimage/stf/a/c/ac2e9_1847_77de4f8cdd794e63ffd9b11f26e5c4d5.jpg",
   "https://news.qq.com/rain/a/20261123A07FMR00": "https://inews.gtimg.com/om_ls/OjP-cgaCZ1_ewW7pjSvK2DJZhP52fxAsOMpbS4KTyQFL8AA_330330/0",
   "https://news.qq.com/rain/a/20261123A0A79R00": "https://www.bing.com/th?id=ONUT.q7Z8FmtUUsSUJnTPUsimDw&pid=News&w=330",
   "https://news.yahoo.co.jp/articles/d4492dc5c8407c37eded1ce359eabc76208f57ee": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000468-oric-000-1-view.jpg?exp=10800",
@@ -66,7 +67,6 @@
   "https://www.mydaily.co.kr/page/view/2026111809431688157": "https://img.mydaily.co.kr/photos/2026/11/18/2026111809404532902_x.jpg",
   "https://www.nbntv.co.kr/news/articleView.html?idxno=4027851": "https://www.bing.com/th?id=ONUT.TJqab9vqFdhEjyRN6z6hgg&pid=News&w=600",
   "https://www.ndtv.com/entertainment/salman-khans-superhero-film-gets-new-shoot-date-set-to-go-on-floors-in-april-2027-report-12349287": "https://www.bing.com/th?id=ONUT.KUGdmGv_5sFGlc8qpnP1hQ&pid=News&w=1200",
-  "https://www.petfoodindustry.com/business-strategy/news/16542634/dog-treats-drag-cat-food-lifts-smucker-as-pet-food-profit-falls-17-in-q2fy27": "https://img.petfoodindustry.com/mindful/watt/workspaces/default/uploads/2026/11/recycled-family-and-cats-in-a-dollhouse.lJdqsUhZ4n.png?auto=format%2Ccompress&bg=ffffff&fit=crop&h=675&q=70&w=1200",
   "https://www.purexbox.com/news/2026/04/open-world-rpg-the-blood-of-dawnwalker-gets-september-2026-release-date-for-xbox-series-xs": "https://images.purexbox.com/d57e4aaafc1fd/1280x720.jpg",
   "https://www.setn.com/ampnews/1942415": "https://attach.setn.com/newsimages/2026/11/20/5796262-PH.jpg",
   "https://www.setn.com/news/897693": "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg",
@@ -987,27 +987,6 @@
   },
   {
    "batch": 1,
-   "because": "猫用品",
-   "date": "2026-11-24",
-   "hits": [],
-   "image": "https://img.petfoodindustry.com/mindful/watt/workspaces/default/uploads/2026/11/recycled-family-and-cats-in-a-dollhouse.lJdqsUhZ4n.png?auto=format%2Ccompress&bg=ffffff&fit=crop&h=675&q=70&w=1200",
-   "kind": "board",
-   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
-   "score": 8,
-   "source": "PetfoodIndustry",
-   "taste": [
-    [
-     "作品:猫用品",
-     5
-    ]
-   ],
-   "title": "Dog treats drag, cat food lifts Smucker as pet food profit falls 17% in Q2FY27",
-   "url": "https://www.petfoodindustry.com/business-strategy/news/16542634/dog-treats-drag-cat-food-lifts-smucker-as-pet-food-profit-falls-17-in-q2fy27",
-   "words": [],
-   "work": "猫用品"
-  },
-  {
-   "batch": 1,
    "because": "ILLIT",
    "date": "2026-11-24",
    "hits": [],
@@ -1070,7 +1049,7 @@
    "work": "GTA 6"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "三星手机",
    "date": "2026-11-24",
    "hits": [
@@ -1211,7 +1190,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "猫用品",
    "date": "2026-11-23",
    "hits": [
@@ -1259,6 +1238,35 @@
    "url": "https://note.com/tabokiti/n/ncd86abc38482",
    "words": [],
    "work": "绝区零"
+  },
+  {
+   "batch": 3,
+   "because": "猫用品",
+   "date": "2026-11-23",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://image.news.livedoor.com/newsimage/stf/a/c/ac2e9_1847_77de4f8cdd794e63ffd9b11f26e5c4d5.jpg",
+   "kind": "board",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "score": 8,
+   "source": "ライブドアニュース",
+   "taste": [
+    [
+     "猫",
+     6
+    ],
+    [
+     "作品:猫用品",
+     5
+    ]
+   ],
+   "title": "猫との生活を快適にする『ペット家電』4つ 導入するメリットや使用時の注意点まで (2026年11月23日掲載)",
+   "url": "https://news.livedoor.com/topics/detail/32880834/",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
   },
   {
    "batch": 3,
@@ -2090,11 +2098,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2102,7 +2110,7 @@
    8
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
@@ -2110,7 +2118,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ]
  ]

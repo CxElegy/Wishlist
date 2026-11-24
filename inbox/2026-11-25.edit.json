@@ -249,11 +249,13 @@
  ],
  "MMORPG 新作": [
   {
-   "headline": "카카오게임즈, '오딘Q' 내년 1월 3개국 출시...내달 29일 사전예약 돌입",
-   "highlight": "내년 1월 3개국 출시",
-   "blurb": "카카오게임즈는 신작 MMORPG '오딘Q: 발키리스콜'을 내년 1월 26일 한국·대만·일본에 동시 출시하며, 사전예약은 다음 달 29일부터 시작한다.",
+   "headline": "「ODIN Q: VALKYRIE’S CALL」，2027年1月26日に日本，韓国，台湾でサービス開始",
+   "highlight": "2027年1月26日",
+   "blurb": "カカオゲームズは「ODIN Q: VALKYRIE’S CALL」を2027年1月26日に日本・韓国・台湾で開始すると発表。事前登録は12月29日から。",
    "weight": "hero",
    "refs": [
+    9,
+    7,
     1,
     2
    ],
@@ -288,7 +290,7 @@
   "三星手机": 28,
   "漫威电影": 63,
   "绝区零": 15,
-  "MMORPG 新作": 6,
+  "MMORPG 新作": 9,
   "ILLIT": 5,
   "dota2": 9,
   "チェーンソーマン": 4,
@@ -298,7 +300,9 @@
   "滑雪": 3,
   "BLEACH Mirrors High": 8,
   "The Mandalorian": 2,
-  "哈利波特剧集": 4
+  "哈利波特剧集": 4,
+  "あつ森": 3,
+  "猫用品": 2
  },
  "ILLIT": [
   {
@@ -568,6 +572,28 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "あつ森": [],
+ "猫用品": [
+  {
+   "headline": "「はなさないニャ！」猫が飼い主さんの腕や足にしがみつく行動を獣医師が解説",
+   "highlight": "",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://img.benesse-cms.jp/pet-cat/item/image/normal/resized/resized_9393374b-f281-46ff-8bd9-144fe0f3318c(3).jpg"
+  },
+  {
+   "headline": "Dog treats drag, cat food lifts Smucker as pet food profit falls 17% in Q2FY27",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]

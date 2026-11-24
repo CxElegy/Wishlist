@@ -2340,6 +2340,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/a/c/ac2e9_1847_77de4f8cdd794e63ffd9b11f26e5c4d5.jpg": {
+  "w": 1000,
+  "h": 667,
+  "target": 720,
+  "v": 3
+ },
  "https://image.news.livedoor.com/newsimage/stf/c/4/c4e85_929_dd7b7839_d2b43321.jpg": {
   "w": 805,
   "h": 500,
@@ -2684,6 +2690,52 @@
   "target": 720,
   "v": 3
  },
+ "https://img.benesse-cms.jp/pet-cat/item/image/normal/resized/resized_9393374b-f281-46ff-8bd9-144fe0f3318c(3).jpg": {
+  "w": 560,
+  "h": 560,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.426,
+  "local": "pics/d0e3507e2782638b.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    6,
+    5,
+    5,
+    7,
+    10,
+    8,
+    10,
+    12,
+    12,
+    11,
+    10
+   ],
+   [
+    6,
+    8,
+    9,
+    10,
+    9,
+    10,
+    10,
+    9,
+    8,
+    7,
+    7,
+    7
+   ]
+  ],
+  "c": "#88807e",
+  "k": null,
+  "p": null
+ },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/496559.png?date=1746576286": {
   "w": 1200,
   "h": 630,
@@ -2712,12 +2764,6 @@
   "w": 640,
   "h": 817,
   "target": 1280,
-  "v": 3
- },
- "https://img.petfoodindustry.com/mindful/watt/workspaces/default/uploads/2026/11/recycled-family-and-cats-in-a-dollhouse.lJdqsUhZ4n.png?auto=format%2Ccompress&bg=ffffff&fit=crop&h=675&q=70&w=1200": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  },
  "https://img.sportsbull.jp/raw/20261120160508462393.jpg": {
@@ -6976,6 +7022,13 @@
   "h": 369,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.qaW6Oxk4b1RCeFSRLmJCsw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
  },
  "https://www.bing.com/th?id=ONUT.t58_K2H_x7qIrD4RUb5dqA&pid=News&w=1000": {
   "w": 700,

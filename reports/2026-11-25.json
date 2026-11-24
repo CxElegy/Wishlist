@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "e0537429f522",
+ "edit_sig": "0d9db4adc12d",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -151,44 +151,21 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-24",
-     "n": 7,
-     "source": "IT 조선 on MSN",
-     "title": "카카오게임즈 ‘오딘Q’, 2027년 1월 26일 韓·日·臺 출시",
-     "url": "https://www.msn.com/ko-kr/news/other/%EC%B9%B4%EC%B9%B4%EC%98%A4%EA%B2%8C%EC%9E%84%EC%A6%88-%EC%98%A4%EB%94%98q-2027%EB%85%84-1%EC%9B%94-26%EC%9D%BC-%E9%9F%93-%E6%97%A5-%E8%87%BA-%EC%B6%9C%EC%8B%9C/ar-AA2i6sIy"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 8,
-     "source": "MMORPG.com",
-     "title": "Five Casual MMORPG Picks for Players With No Time to Raid",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOSm5kQUR2LWJ2WjNIZlJ3ZkFZYVJFMF9kZ0lZSm92UUJpRWNZLXlvT0RXX1NITWdBekxNZHRuMGZaTTFRUjg0Q3JvREVwMDNTdUJCN0VUTmxjcUdYYTZudG5nYnQ5NTN2Tm9TeEdMcEZqanV5MzB4RGpzV1g0UU83Nk1nR2puNWlGbXFiUV9WVGJlaUN0S0NaVnZn?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 9,
-     "source": "4Gamer.net",
-     "title": "「ODIN Q: VALKYRIE’S CALL」，2027年1月26日に日本，韓国，台湾でサービス開始。「オーディン：ヴァルハラ・ライジング」の世界観を継承する新作MMORPG",
-     "url": "https://www.4gamer.net/games/701/G070144/20261124006/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
-     "blurb": "카카오게임즈는 신작 MMORPG '오딘Q: 발키리스콜'을 내년 1월 26일 한국·대만·일본에 동시 출시하며, 사전예약은 다음 달 29일부터 시작한다.",
+     "blurb": "カカオゲームズは「ODIN Q: VALKYRIE’S CALL」を2027年1月26日に日本・韓国・台湾で開始すると発表。事前登録は12月29日から。",
      "date": "2026-11-24",
      "event": {
       "date": "2027-01-26",
       "label": "発売日",
       "place": "韓国・台湾・日本"
      },
-     "headline": "카카오게임즈, '오딘Q' 내년 1월 3개국 출시...내달 29일 사전예약 돌입",
-     "highlight": "내년 1월 3개국 출시",
+     "headline": "「ODIN Q: VALKYRIE’S CALL」，2027年1月26日に日本，韓国，台湾でサービス開始",
+     "highlight": "2027年1月26日",
      "image": "https://www.bing.com/th?id=ONUT.AMkXmyoYFhmKgWYKxHNylw&pid=News&w=600",
      "image_via": "AI 挑选",
-     "url": "https://www.asiaa.co.kr/news/articleView.html?idxno=272599",
+     "url": "https://www.4gamer.net/games/701/G070144/20261124006/",
      "weight": "hero"
     },
     {
@@ -498,24 +475,29 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
-     "date": "2026-11-24",
-     "n": 1,
-     "source": "PetfoodIndustry",
-     "title": "Dog treats drag, cat food lifts Smucker as pet food profit falls 17% in Q2FY27",
-     "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOZXI1YnpNckRPMnRGZzB4akhiR1BJSkpnSzZoNVRhQTVud0Z2d1NIVFZFY19kZlB6SWJlZkRiLWszc3FudExvaTJmUkdBVHNpNWNfLU82TUg0ZWFLek9ORXNIeDFla3RZTGVsZFJFd1dFTUpPSmZNRmk4NF9uNjMxM2hRODNEem9qQkJTR2RzTWlkYkhSM3I5S3pIWUhTY2FWa1Qzc0g5cTAtbWx6eHdnaUlBbThCZjBXcGswazg5cXNJUHdBLVU3S1kyYkNJZk9IRzZJWFpJbw?oc=5"
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "「はなさないニャ！」猫が飼い主さんの腕や足にしがみつく行動を獣医師が解説",
+     "highlight": "",
+     "image": "https://img.benesse-cms.jp/pet-cat/item/image/normal/resized/resized_9393374b-f281-46ff-8bd9-144fe0f3318c(3).jpg",
+     "image_via": "AI 挑选",
+     "url": "https://cat.benesse.ne.jp/withcat/content/?id=221222",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-22",
-     "n": 2,
-     "source": "ねこのきもちWEB MAGAZINE",
-     "title": "「はなさないニャ！」猫が飼い主さんの腕や足にしがみつく行動を獣医師が解説",
-     "url": "https://cat.benesse.ne.jp/withcat/content/?id=221222"
+     "blurb": "",
+     "date": "2026-11-24",
+     "headline": "Dog treats drag, cat food lifts Smucker as pet food profit falls 17% in Q2FY27",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.qaW6Oxk4b1RCeFSRLmJCsw&pid=News&w=1200",
+     "image_via": "Bing 缩略图",
+     "url": "https://www.petfoodindustry.com/business-strategy/news/16542634/dog-treats-drag-cat-food-lifts-smucker-as-pet-food-profit-falls-17-in-q2fy27",
+     "weight": "normal"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -723,47 +705,6 @@
     "bg": "#14161A",
     "fg": "#E8EAEC",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-11-24",
-     "n": 1,
-     "source": "note",
-     "title": "久しぶりのあつ森",
-     "url": "https://note.com/fine_avocet511/n/nd5a4bd9d4e12"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 2,
-     "source": "note",
-     "title": "GEO 세일 덕분에 6년 만에 『모여봐요 동물의 숲』 무인도로. 지금이기에 알 수 있는, 슬로 라이프의 진정한 재미",
-     "url": "https://note.com/pokobara/n/ne74291d210e7?hl=ko"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 3,
-     "source": "note",
-     "title": "Returning to a Deserted Island in Animal Crossing: New Horizons for the First Time in 6 Years Thanks to a GEO Sale: Discovering the True Charm of the Slow Life Only Now",
-     "url": "https://note.com/pokobara/n/ne74291d210e7?hl=en"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
     "split": true
    }
   },
@@ -1060,6 +1001,31 @@
     "alt_bg": "#211C12",
     "alt_fg": "#F4EEE4",
     "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-24",
+    "headline": "【あつ森】上の段に行くには？崖・高台の登り方やはしごの入手方法",
+    "url": "https://gamepedia.jp/ac-switch/archives/7486"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
     "split": true
