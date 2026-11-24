@@ -1827,6 +1827,12 @@
   "target": 720,
   "v": 3
  },
+ "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/23140308/hbo-harry-potter-biggest-change.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://gagadget.com/media/cache/5e/c6/5ec6d0b4cbbfb0e1015dd7f11b499c2d.webp": {
   "w": 1524,
   "h": 900,
@@ -2427,6 +2433,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.highwise.com/stories/415596-1795438556578.jpg": {
+  "w": 1280,
+  "h": 704,
+  "target": 720,
+  "v": 3
+ },
  "https://images.khan.co.kr/article/2026/11/20/news-p.v1.20261120.6b2ae1d6e17e49ca9d08f1bcab07ca1c_P1.png": {
   "w": 1200,
   "h": 756,
@@ -2729,13 +2741,13 @@
   "target": 1280,
   "v": 3
  },
- "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795496731822": {
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795497087439": {
   "w": 320,
   "h": 270,
   "target": 1280,
   "v": 3,
   "blur": 0.667,
-  "local": "pics/75873c7f0247cf85.webp",
+  "local": "pics/ccd00bf9fa4c4d95.webp",
   "out": [
    960,
    810
@@ -3256,6 +3268,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://img.youtube.com/vi/PTtxgeJG3C4/maxresdefault.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://img2.utuku.imgcdc.com/650x0/news/20261117/352ef8dc-c9d2-4e4e-bba6-f2e3371f0361.jpg": {
@@ -5305,6 +5323,12 @@
   ],
   "p": null
  },
+ "https://prcdn.freetls.fastly.net/release_image/27368/308/27368-308-9e35e4c5d1ca610b49448f6fece35ca4-1920x1008.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1920,
+  "h": 1008,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/31800/232/31800-232-a96ac789c08e72d24265437f7bf23eba-844x394.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 844,
   "h": 394,
@@ -5787,12 +5811,6 @@
  "https://static.chunichi.co.jp/image/article/size1/9/9/e/e/99eef173c63e943807a6a19c3ca5f283_1.jpg": {
   "w": 843,
   "h": 1220,
-  "target": 1280,
-  "v": 3
- },
- "https://static.inven.co.kr/column/2026/11/24/news/i1071389623.jpg": {
-  "w": 1010,
-  "h": 691,
   "target": 1280,
   "v": 3
  },
@@ -6455,6 +6473,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.appbank.net/wp-content/uploads/2026/11/20261124_112202_829_01.webp": {
+  "w": 1010,
+  "h": 691,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.atpress.ne.jp/attachments/5hyxKwgznMzJ1AVVM446.jpg": {
   "w": 2880,
   "h": 1620,
@@ -6960,6 +6984,12 @@
    0.716,
    0.741
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.dPZ1BVkHLXJtgKQ_rOiB6w&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.dcrOy8pNXC-oSihoH6vvcg&pid=News&w=1200": {
   "w": 700,
@@ -7973,6 +8003,12 @@
  "https://www.sammyfans.com/wp-content/uploads/2026/11/galaxy-s27-ultra-demo-dummy-cover-img-1000x600.webp": {
   "w": 1000,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sankei.com/resizer/v2/https%3A%2F%2Fdpgdieoe6npux.cloudfront.net%2Fprtimes%2F3YDJRU7ZD5OZPFRSM6ZUALNJHQ?auth=fad8bf963c2921cfc2c2a591c4301ea0b2afd0495b6c61c9489267d3188a1cc2&quality=50&smart=true&width=1200&height=675": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },

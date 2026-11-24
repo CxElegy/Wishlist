@@ -176,15 +176,15 @@
   "FROM": 3,
   "猫用品": 5,
   "あつ森": 1,
-  "滑雪": 2,
+  "滑雪": 5,
   "The Mandalorian": 3,
-  "チェーンソーマン": 1,
+  "チェーンソーマン": 4,
   "日本顶级网球赛事": 3,
   "gelato pique": 3,
   "周杰伦": 22,
   "绝区零": 5,
   "Astrae Oratio": 4,
-  "哈利波特剧集": 5,
+  "哈利波特剧集": 8,
   "A2O LITE": 4,
   "MMORPG 新作": 20,
   "星巴克马克杯": 2,
@@ -439,6 +439,24 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "スキー・スノボ好き必見！日本最大級の品揃え『冬スポ!! WINTER SPORTS FESTA』",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "草津温泉スキー場がグッドフェローズの発券・入場管理システムを導入",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "The Mandalorian": [
@@ -472,6 +490,24 @@
     1
    ],
    "image": "https://cdn.sounova.com/upload/Y2qH9W4ebPiGDfuXGMsFD.webp"
+  },
+  {
+   "headline": "【AVIOT】AVIOT ×劇場版『チェンソーマン レゼ篇』コラボワイヤレスイヤホン・関連グッズが本日11月24日（火）より予約開始",
+   "highlight": "11月24日（火）より予約開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "チェンソーマン お守り風アクリルの入荷日・価格",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "日本顶级网球赛事": [
@@ -674,6 +710,24 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "HBO’s Harry Potter Is Officially Setting Up Its Biggest Reveal That Changes TV History",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "Harry Potter TV Tie-In Edition Hits Shelves",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
