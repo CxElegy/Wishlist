@@ -499,6 +499,57 @@
    0.568
   ]
  },
+ "http://wx2.sinaimg.cn/middle/9b213501ly1ijdhc2hesfj20qo0z1qa2.jpg": {
+  "w": 960,
+  "h": 1261,
+  "target": 720,
+  "v": 3,
+  "local": "pics/75144c3182d3c247.webp",
+  "out": [
+   960,
+   1261
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    10,
+    14,
+    15,
+    13,
+    10,
+    11,
+    7,
+    4,
+    5,
+    4,
+    3,
+    4
+   ],
+   [
+    5,
+    10,
+    2,
+    10,
+    17,
+    5,
+    7,
+    7,
+    7,
+    9,
+    9,
+    12
+   ]
+  ],
+  "c": "#a8b9cb",
+  "k": [
+   0.242,
+   0.955,
+   0.96,
+   0.995
+  ],
+  "p": null
+ },
  "http://wx4.sinaimg.cn/middle/0067sxldgy1ij5a9htiozj30j60nvtcx.jpg": {
   "w": 690,
   "h": 859,
@@ -1494,6 +1545,12 @@
   "v": 3
  },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/52c5b5b642d9832dd839d95af7acc50ffe303888.png": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
+ "https://d2l930y2yx77uc.cloudfront.net/production/social_images/c8d89e7055a22c38ddbcc48ad44ef2b0bf3c4116.png": {
   "w": 1280,
   "h": 670,
   "target": 720,
@@ -5026,6 +5083,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/8c60fb899d798e3ea6defbf0c39208f2094de6942d940a6fbed0c940e280cca7/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fsuperherohype_979%2F5e187b422dbf2f4328e317a4855aa5ea": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/b14a17eecf13f2880986bb6d0f3bca99710c77825a206349d8726aaf02f35b0f/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Flead-gta-6-reviews-2_3628.jpg": {
   "w": 1200,
   "h": 800,
@@ -5864,12 +5927,6 @@
    0.978
   ]
  },
- "https://www.bing.com/th?id=ONUT.-gFsPBh5TtjwkhG0l6M0PA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
   "w": 466,
   "h": 700,
@@ -6306,6 +6363,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.LzFykkSZ2Qp_aH6aIg7KcA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.N25GKwIH7DzBX1qu8qQziQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -6399,12 +6462,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-25"
- },
- "https://www.bing.com/th?id=ONUT.bRJoNHBRMXZiQbv2ETMAVQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.brUqRvz65GQmZdeMLEHU2w&pid=News&w=1200": {
   "w": 700,
@@ -6953,6 +7010,12 @@
   ],
   "p": null
  },
+ "https://www.bing.com/th?id=ONUT.zcbY8S6hh5ZZ2Xkc3_OEbg&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7090,12 +7153,6 @@
   ]
  },
  "https://www.cnet.com/wp-content/uploads/sites/2/neakasa-riko-smart-pet-feeder-on-tile-floor-with-cat-sitting-nearby.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://www.comicbasics.com/wp-content/uploads/2023/11/The-young-avengers.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -7321,6 +7378,12 @@
  "https://www.lanacion.com.ar/resizer/v2/la-oficinas-de-rockstar-north-en-edimburgo-el-dia-6H2XLSKT5FBP7OLF44NGDHUSJE.jpg?auth=e2a3a72a51066a2c6ebf2d7cf8d20efc58cd23703a7befb5501ff193b921b127&width=1200&height=800&quality=70&smart=true": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.macobserver.com/wp-content/uploads/2026/05/How-to-Hide-Your-Caller-ID-When-Making-Calls-on-iOS-26.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -7600,6 +7663,12 @@
   "w": 720,
   "h": 380,
   "target": 720,
+  "v": 3
+ },
+ "https://x0.ifengimg.com/res/2026/41542A6698301CBDB380091A044E19D331EFE3AA_size70_w1080_h460.jpg": {
+  "w": 1080,
+  "h": 460,
+  "target": 1280,
   "v": 3
  },
  "https://x0.ifengimg.com/res/2026/C1610C741D50D4D3C47BDD987C9818437CDA6075_size61_w870_h492.jpg": {
