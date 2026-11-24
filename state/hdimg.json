@@ -1672,6 +1672,12 @@
   "target": 720,
   "v": 3
  },
+ "https://d1j71ui15yt4f9.cloudfront.net/wp-content/uploads/2026/11/18165724/09-6-1024x576.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
  "https://d1rldr9jdodfaa.cloudfront.net/images/01M7PS5PC096MN9QBZ493CPGP1/20261118_073306_2287657022.webp": {
   "w": 4525,
   "h": 3016,
@@ -2141,18 +2147,6 @@
    0.741,
    0.802
   ]
- },
- "https://hochi.news/images/2026/11/19/20261119-OHT1I51373-C.jpg": {
-  "w": 1200,
-  "h": 1586,
-  "target": 1280,
-  "v": 3
- },
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/DNnhuPbuibjzkxg.png": {
-  "w": 1224,
-  "h": 378,
-  "target": 1280,
-  "v": 3
  },
  "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg": {
   "w": 826,
@@ -3336,12 +3330,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.image.infoseek.co.jp/isnews/photos/itmedia_nlab/itmedia_nlab_4103220_0-enlarge.jpg": {
-  "w": 1200,
-  "h": 1200,
-  "target": 1280,
-  "v": 3
- },
  "https://media.image.infoseek.co.jp/isnews/photos/iza/iza_25IJUH4SOFHDHIMQVGSKBRGF2M_0-enlarge.jpg": {
   "w": 1200,
   "h": 1200,
@@ -3650,6 +3638,57 @@
   "target": 1280,
   "v": 3,
   "blur": 0.404
+ },
+ "https://news.walkerplus.com/article/1004716/10032764_615.jpg": {
+  "w": 615,
+  "h": 362,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.438,
+  "local": "pics/6d39f906f4a785f0.webp",
+  "out": [
+   1280,
+   753
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    9,
+    5,
+    6,
+    7,
+    14,
+    12,
+    14,
+    11,
+    6,
+    7,
+    5
+   ],
+   [
+    2,
+    6,
+    7,
+    4,
+    5,
+    10,
+    8,
+    11,
+    10,
+    9,
+    7,
+    20
+   ]
+  ],
+  "c": "#c39576",
+  "k": [
+   0.028,
+   0.04,
+   0.949,
+   0.971
+  ],
+  "p": null
  },
  "https://news.walkerplus.com/article/1005392/10038375_615.jpg": {
   "w": 615,
@@ -4806,12 +4845,6 @@
   "target": 1280,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/4263a587dc0e48ecbb9118fc98d20b5f.png": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://ogre.natalie.mu/media/news/music/2026/0405/Vaundy_art202604.jpg?impolicy=ogp_face_crop": {
   "w": 1200,
   "h": 630,
@@ -5814,6 +5847,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-25"
  },
+ "https://times-abema.ismcdn.jp/mwimgs/c/8/1200w/img_c890d5ab93e334469a75101cff779db186607.jpg": {
+  "w": 1200,
+  "h": 671,
+  "target": 1280,
+  "v": 3
+ },
  "https://today-obs.line-scdn.net/0hjiIQVYaPNUZ0KCnfGo5KEUx-OTdHTi9PVhp7IFl4aiRcBCJHGBpmJVgqPmoJTyVFVE15d1B4Y35dGXEZHw/w1200": {
   "w": 1200,
   "h": 676,
@@ -5839,6 +5878,12 @@
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1794986357296_img_f9d3b9cd.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1795001058159_img_af34ace4.jpeg": {
   "w": 1200,
   "h": 630,
   "target": 1280,
@@ -7093,6 +7138,13 @@
    0.851,
    0.603
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.tg1aU_1Il1yjg6YjV-zyow&pid=News&w=908": {
+  "w": 529,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.352
  },
  "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
   "w": 700,

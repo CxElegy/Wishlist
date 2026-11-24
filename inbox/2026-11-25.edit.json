@@ -304,7 +304,8 @@
   "あつ森": 3,
   "猫用品": 2,
   "Astrae Oratio": 1,
-  "日本顶级网球赛事": 1
+  "日本顶级网球赛事": 1,
+  "星巴克马克杯": 1
  },
  "ILLIT": [
   {
@@ -622,6 +623,17 @@
  "日本顶级网球赛事": [
   {
    "headline": "Ce-sensei and the Mysterious Journey: Japan Open Tennis Spectating Trip Part 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "Starbucks Just Dropped The Cutest Cloudy Cups & Mugs",
    "highlight": "",
    "blurb": "",
    "weight": "lead",

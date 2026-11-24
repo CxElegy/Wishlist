@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "a8704b2cd11d",
+ "edit_sig": "937cf94fc44f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -918,17 +918,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-24",
-     "n": 1,
-     "source": "Sporked",
-     "title": "Starbucks Just Dropped The Cutest Cloudy Cups & Mugs",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQaXNmcG5rTEMzaGFqdGFsYjJDNmJLb2hvWW5aTVpudzNwaUFZNDk5Rm9DdzFUYVlxOVpFZ3pUZ3FvVjVpNVNSNEg1X3lpVzFpem8zcUNpVWExMi00TTk1V1J0WFRxaldzbGEzMFh5bUZiUHBHc212czk4ZTRFT2tNb2NWRkdZUQ?oc=5"
+     "headline": "Starbucks Just Dropped The Cutest Cloudy Cups & Mugs",
+     "highlight": "",
+     "image": "https://sporked.com/wp-content/uploads/2026/04/starbucks-65-subscription.jpg",
+     "image_via": "og:image",
+     "url": "https://sporked.com/article/starbucks-just-dropped-the-cutest-cloudy-cups-mugs/",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
