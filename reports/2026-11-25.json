@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "ec888d8cd03a",
+ "edit_sig": "67da4a525a91",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -618,15 +618,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-23",
-     "n": 5,
-     "source": "note",
-     "title": "Chainsaw Man: Reze Arc in Jimbocho — Walk the Phone Box, the Stairs, and the Café in Half a Day",
-     "url": "https://note.com/major_okapi9980/n/n7d9d3aa05a3c?hl=en"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -647,6 +638,16 @@
      "image": "https://www.bing.com/th?id=ONUT.Z69zFYxxEHpPjgo4yiUpQg&pid=News&w=900",
      "image_via": "条目自带（Bing 缩略图）",
      "url": "https://gachapolitan.com/chainsaw-man-reze-tenitol-tall-figure-preorder/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-23",
+     "headline": "Chainsaw Man: Reze Arc in Jimbocho — Walk the Phone Box, the Stairs, and the Café in Half a Day",
+     "highlight": "",
+     "image": "https://assets.st-note.com/production/uploads/images/339718870/rectangle_large_type_2_c83a5a36a9d6bf2a52203ab65b406b5b.png?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/major_okapi9980/n/n7d9d3aa05a3c?hl=en",
      "weight": "normal"
     }
    ],
