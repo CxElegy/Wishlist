@@ -280,7 +280,8 @@
   "A2O LITE": 3,
   "FROM": 3,
   "滑雪": 3,
-  "BLEACH Mirrors High": 8
+  "BLEACH Mirrors High": 8,
+  "The Mandalorian": 2
  },
  "ILLIT": [
   {
@@ -462,6 +463,26 @@
    "refs": [
     8,
     4,
+    1
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "LEGO’s Mandalorian N-1 Starfighter (Mando, Grogu, Peli Motto, BD Droid, 412 Pieces) Is 30% Off",
+   "highlight": "30% Off",
+   "blurb": "Just in time for holiday shopping, the LEGO Star Wars Mandalorian N-1 Starfighter 75325 is 30% off.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Mandalorian and Han Solo Vehicles in Star Wars: Galactic Racer Next Month",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
     1
    ]
   }

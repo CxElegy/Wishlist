@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "a493a568daba",
+ "edit_sig": "eb4ac3e3a175",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -610,24 +610,29 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Just in time for holiday shopping, the LEGO Star Wars Mandalorian N-1 Starfighter 75325 is 30% off.",
      "date": "2026-11-24",
-     "n": 1,
-     "source": "Push Square",
-     "title": "Mandalorian and Han Solo Vehicles in Star Wars: Galactic Racer Next Month",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTmtDUU5hR3BKUnB1QzZVVDRYYWwxRzFrUmItVDk1M1NtMWgtVGE2cmRkenM5dUtuQ3E2UGxBV1praVpnc0xBMHE3ZUpBa25PSDNPOWxBTThlbDhsb0oweHBJU09ZRHljakVOZnNxamlSMGlLU0pVU2hNX1dUbjJPbDlIVmFoSWMyMFoxN2FBWnZyV2RzdV9NYlVtV3RtX09XWk5pQ20weDVSdk1VaHlVZlBB?oc=5"
+     "headline": "LEGO’s Mandalorian N-1 Starfighter (Mando, Grogu, Peli Motto, BD Droid, 412 Pieces) Is 30% Off",
+     "highlight": "30% Off",
+     "image": "https://www.bing.com/th?id=ONUT.XjCfDZEZAmMcbkQrHGIWDA&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://gizmodo.com/legos-mandalorian-n-1-starfighter-mando-grogu-peli-motto-bd-droid-412-pieces-is-30-off-2000844554",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-24",
-     "n": 2,
-     "source": "Gizmodo",
-     "title": "LEGO’s Mandalorian N-1 Starfighter (Mando, Grogu, Peli Motto, BD Droid, 412 Pieces) Is 30% Off",
-     "url": "https://gizmodo.com/legos-mandalorian-n-1-starfighter-mando-grogu-peli-motto-bd-droid-412-pieces-is-30-off-2000844554"
+     "headline": "Mandalorian and Han Solo Vehicles in Star Wars: Galactic Racer Next Month",
+     "highlight": "",
+     "image": "https://images.pushsquare.com/7e4e61ccfb897/1280x720.jpg",
+     "image_via": "og:image",
+     "url": "https://www.pushsquare.com/news/2026/11/mandalorian-and-han-solo-vehicles-in-star-wars-galactic-racer-next-month",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
