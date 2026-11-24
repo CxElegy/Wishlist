@@ -1,6 +1,6 @@
 {
  "admin": "6d425dba733e",
- "admin-ai": "8bfac8ffaf58",
+ "admin-ai": "1b73bdd055b3",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "1ce07be7"
+   "b68e0df0"
   ]
  },
  "admin-boards": "e0b0915cf392",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "c72b9aa20fb3",
+ "admin-emblem": "7fe1c853851e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "27f0dad8"
+   "81969769"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "ee82938bc886",
+ "admin-now": "edd228ed53e0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "8f85b6b2"
+   "9b36aa75"
   ]
  },
- "admin-system": "861540e5289d",
+ "admin-system": "db7122861265",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "f78519a1"
+   "d922a3cc"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "3cffa9ca"
+   "7b26e8ba"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "433db6a8"
   ]
  },
- "index": "2d9db74d88b0",
+ "index": "66e013d9ae58",
  "index_marks": {
   "front": [
    "トップ",
-   "05487d0f"
+   "a2b96761"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "dfaa78a8"
+   "e658d0c2"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "514a8a08"
+   "b946fd6e"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -196,6 +196,6 @@
    "b3bdc047"
   ]
  },
- "updated": "11.24 23:30",
+ "updated": "11.24 23:34",
  "wishlist": "e369ed299671"
 }
