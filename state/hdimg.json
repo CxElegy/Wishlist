@@ -443,6 +443,52 @@
   "k": null,
   "p": null
  },
+ "http://wx2.sinaimg.cn/middle/006kvRjAly1ij92k32xuwj31hy0u4u0x.jpg": {
+  "w": 1942,
+  "h": 1084,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/ceb1772b6fe20017.webp",
+  "out": [
+   1280,
+   714
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    15,
+    8,
+    9,
+    8,
+    11,
+    8,
+    12,
+    12,
+    8,
+    5,
+    2,
+    3
+   ],
+   [
+    12,
+    3,
+    4,
+    6,
+    8,
+    8,
+    5,
+    10,
+    11,
+    6,
+    11,
+    16
+   ]
+  ],
+  "c": "#2f3f4b",
+  "k": null,
+  "p": null
+ },
  "http://wx2.sinaimg.cn/middle/008eZAxIly1ij58zvht0fj32bk2w01l2.jpg": {
   "w": 2000,
   "h": 2489,
@@ -1786,12 +1832,6 @@
   "target": 720,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/blast-slam-ix?v=1795530472": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://escharts.com/metaImage/tournaments/dreamleague-division-2-season-3?v=1795141704": {
   "w": 1200,
   "h": 630,
@@ -2726,6 +2766,57 @@
   "h": 900,
   "target": 720,
   "v": 3
+ },
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795531057085": {
+  "w": 320,
+  "h": 270,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.667,
+  "local": "pics/3c1de1fac6f7dc10.webp",
+  "out": [
+   960,
+   810
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    0,
+    0,
+    2,
+    8,
+    15,
+    14,
+    12,
+    2,
+    36,
+    10,
+    1,
+    0
+   ],
+   [
+    1,
+    13,
+    14,
+    14,
+    11,
+    4,
+    4,
+    5,
+    5,
+    7,
+    10,
+    11
+   ]
+  ],
+  "c": "#e5d6d0",
+  "k": [
+   0.351,
+   0.179,
+   0.462,
+   0.301
+  ],
+  "p": null
  },
  "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg": {
   "w": 700,
@@ -6175,12 +6266,6 @@
  "https://www.4gamer.net/games/579/G057943/20261120052/SS/001.jpg": {
   "w": 1920,
   "h": 1080,
-  "target": 1280,
-  "v": 3
- },
- "https://www.androidauthority.com/wp-content/uploads/2026/11/S26-in-hand-showing-One-UI-9.5-welcome-screen-scaled.jpg": {
-  "w": 2560,
-  "h": 1440,
   "target": 1280,
   "v": 3
  },
