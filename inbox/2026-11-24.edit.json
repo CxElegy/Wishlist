@@ -87,7 +87,20 @@
     141,
     127,
     126,
-    143
+    143,
+    158,
+    148,
+    152,
+    157,
+    146,
+    147,
+    149,
+    150,
+    151,
+    153,
+    154,
+    156,
+    161
    ],
    "image": "https://krcrtv.com/resources/media2/16x9/976/1320/169x0/90/81b0a9df-a565-4fa6-b6ff-93f597a7f559-Screenshot20261123at9.07.24AM.png"
   },
@@ -136,7 +149,8 @@
     78,
     91,
     118,
-    124
+    124,
+    162
    ]
   },
   {
@@ -156,8 +170,8 @@
   }
  ],
  "_covered": {
-  "漫威电影": 145,
-  "GTA 6": 65,
+  "漫威电影": 162,
+  "GTA 6": 95,
   "三星手机": 20,
   "FROM": 3,
   "猫用品": 5,
@@ -167,14 +181,14 @@
   "チェーンソーマン": 1,
   "日本顶级网球赛事": 3,
   "gelato pique": 3,
-  "周杰伦": 15,
+  "周杰伦": 22,
   "绝区零": 5,
   "Astrae Oratio": 4,
   "哈利波特剧集": 5,
   "A2O LITE": 4,
-  "MMORPG 新作": 8,
+  "MMORPG 新作": 20,
   "星巴克马克杯": 2,
-  "ILLIT": 1,
+  "ILLIT": 5,
   "dota2": 1,
   "ぐでたま": 1
  },
@@ -195,7 +209,10 @@
     30,
     33,
     38,
-    39
+    39,
+    74,
+    87,
+    78
    ],
    "image": "https://rockstarintel.com/wp-content/uploads/2026/11/Lucia_Caminos_14-0-6_io7qeozm6-1-copy.webp"
   },
@@ -249,7 +266,38 @@
    "refs": [
     9,
     21,
-    37
+    37,
+    88
+   ]
+  },
+  {
+   "headline": "GTA 6 Officially the Biggest Launch in PlayStation History with Over 39 Million Players",
+   "highlight": "39 Million Players",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    84,
+    70,
+    71
+   ]
+  },
+  {
+   "headline": "GTA 6 Owners Can Now Stream the Game to PS5, PS Portal with PS Plus Premium",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    82
+   ]
+  },
+  {
+   "headline": "GTA 6 Has Sold Through 44.9 Million Copies Over the Weekend – Rumor",
+   "highlight": "44.9 Million",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    83,
+    85
    ]
   }
  ],
@@ -524,6 +572,15 @@
    "refs": [
     9
    ]
+  },
+  {
+   "headline": "阿信曝光私下聊天記錄！周杰倫「溫馨提醒」笑翻全網",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
+   ]
   }
  ],
  "绝区零": [
@@ -653,12 +710,21 @@
  ],
  "MMORPG 新作": [
   {
-   "headline": "카카오게임즈, 신작 MMORPG ‘오딘Q: 발키리스콜’ 2027년 1월 26일 출시",
-   "highlight": "2027년 1월 26일 출시",
-   "blurb": "카카오게임즈가 신작 MMORPG ‘오딘Q: 발키리스콜’을 2027년 1월 26일 출시한다.",
+   "headline": "カカオゲームズの新作MMORPG『ODIN Q』が2027年1月26日にリリース決定！ 日韓台で同時展開",
+   "highlight": "2027年1月26日",
+   "blurb": "事前予約は12月29日開始。日本・韓国・台湾で同時展開。",
    "weight": "lead",
    "refs": [
-    3
+    19,
+    20,
+    12,
+    3,
+    11,
+    13,
+    16,
+    18,
+    9,
+    17
    ],
    "event": {
     "date": "2027-01-26",
@@ -703,7 +769,10 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    10,
+    4,
+    14,
+    15
    ]
   }
  ],
@@ -738,6 +807,25 @@
     1
    ],
    "image": "https://static.sanyonews.jp/image/article/size3/9/2/e/e/92ee1b6557b4ffafdf6577accec1fa6f_1.jpg"
+  },
+  {
+   "headline": "ILLIT、「第39回 ゴールデンディスクアワード」で新人賞・本賞の2冠獲得",
+   "highlight": "2冠獲得",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    2
+   ]
+  },
+  {
+   "headline": "[NOTICE] ILLIT 2027 SEASON'S GREETINGS Release announcement",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "dota2": [],

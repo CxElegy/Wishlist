@@ -2729,6 +2729,57 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795496731822": {
+  "w": 320,
+  "h": 270,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.667,
+  "local": "pics/75873c7f0247cf85.webp",
+  "out": [
+   960,
+   810
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    0,
+    0,
+    2,
+    8,
+    15,
+    14,
+    12,
+    2,
+    36,
+    10,
+    1,
+    0
+   ],
+   [
+    1,
+    13,
+    14,
+    14,
+    11,
+    4,
+    4,
+    5,
+    5,
+    7,
+    10,
+    11
+   ]
+  ],
+  "c": "#e5d6d0",
+  "k": [
+   0.351,
+   0.179,
+   0.462,
+   0.301
+  ],
+  "p": null
+ },
  "https://img.etnews.com/news/article/2026/11/03/news-p.v1.20261103.e04e565947f542c3949ee5bcf21897d2_P1.jpg": {
   "w": 700,
   "h": 394,
@@ -3516,6 +3567,12 @@
  "https://media.image.infoseek.co.jp/isnews/photos/yorozoonews/yorozoonews_17057073_0.jpg": {
   "w": 640,
   "h": 677,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.nacionale.kabineti.net/uploads/desk_406c611d83_cf4211ab83.jpg": {
+  "w": 1920,
+  "h": 1279,
   "target": 720,
   "v": 3
  },
@@ -6153,6 +6210,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://thetv.jp/i/nw/1236954/13963747.jpg?w=1284": {
+  "w": 1284,
+  "h": 963,
+  "target": 720,
+  "v": 3
+ },
  "https://thetv.jp/i/nw/1455297/19089153.jpg?w=1284": {
   "w": 1284,
   "h": 722,
@@ -6235,12 +6298,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://www.3elife.net/Uploads/Article/images/202611/16/1906533598912.jpg": {
-  "w": 600,
-  "h": 545,
-  "target": 720,
   "v": 3
  },
  "https://www.4gamer.net/games/579/G057943/20261111057/TN/001.jpg": {
@@ -7192,13 +7249,6 @@
   "v": 3,
   "blur": 0.35
  },
- "https://www.bing.com/th?id=ONUT.uGwyvKGd1AMwSR5v2KPJZw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.419
- },
  "https://www.bing.com/th?id=ONUT.uhBO2hHPcK5dftSlGkGEdw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7866,6 +7916,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.naijaandroidarena.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Pro-certification.jpeg": {
+  "w": 997,
+  "h": 642,
+  "target": 720,
+  "v": 3
+ },
  "https://www.negitaku.org/wp-content/uploads/2026/11/HXXHdDUWQAAb51F-1024x960.jpg": {
   "w": 1024,
   "h": 960,
@@ -8030,12 +8086,6 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
-  "v": 3
- },
- "https://www.tvinsider.com/wp-content/uploads/2026/11/Hayle-Atwell-Chris-Evans-Avengers-Doomsday-final-trailer-1-1420x798.jpg": {
-  "w": 1420,
-  "h": 798,
-  "target": 1280,
   "v": 3
  },
  "https://www.tvline.com/img/gallery/harry-potter-hbo-tv-series-posters-spotlight-dumbledore-mcgonagall-snape-and-hagrid/l-intro-1795425317.jpg": {
