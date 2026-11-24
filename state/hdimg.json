@@ -50,12 +50,6 @@
    0.486
   ]
  },
- "http://n.sinaimg.cn/games/crawl/59/w550h309/20261123/5696-dcbc649567ae93fd119b5c6b9326184d.png": {
-  "w": 550,
-  "h": 309,
-  "target": 720,
-  "v": 3
- },
  "http://n.sinaimg.cn/sinakd20261121ac/527/w480h847/20261121/12f6-b601b96312763218391dfd5459522875.jpg": {
   "w": 480,
   "h": 847,
@@ -440,52 +434,6 @@
    ]
   ],
   "c": "#1e1e23",
-  "k": null,
-  "p": null
- },
- "http://wx2.sinaimg.cn/middle/006kvRjAly1ij92k32xuwj31hy0u4u0x.jpg": {
-  "w": 1942,
-  "h": 1084,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/ceb1772b6fe20017.webp",
-  "out": [
-   1280,
-   714
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    15,
-    8,
-    9,
-    8,
-    11,
-    8,
-    12,
-    12,
-    8,
-    5,
-    2,
-    3
-   ],
-   [
-    12,
-    3,
-    4,
-    6,
-    8,
-    8,
-    5,
-    10,
-    11,
-    6,
-    11,
-    16
-   ]
-  ],
-  "c": "#2f3f4b",
   "k": null,
   "p": null
  },
@@ -1783,12 +1731,6 @@
   "target": 720,
   "v": 3
  },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/sachi-tanaka-happy-scaled.jpg": {
-  "w": 1810,
-  "h": 2560,
-  "target": 720,
-  "v": 3
- },
  "https://dn2rwli0e0lll.cloudfront.net/strapi-uploads-cn/gta6ocarinaoftimeremakenegativereviewuserfi_e2913c3574.webp": {
   "w": 1920,
   "h": 1080,
@@ -1817,6 +1759,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/blast-slam-ix?v=1795519635": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/dreamleague-division-2-season-3?v=1795141704": {
@@ -1859,6 +1807,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://everythingedinburgh.com/wp-content/uploads/2026/11/ee-img-dota-2-patch-7-42-greater-horn-of-battle.jpg": {
+  "w": 1280,
+  "h": 756,
+  "target": 720,
   "v": 3
  },
  "https://fictionhorizon.com/wp-content/uploads/2026/11/Robert-Downey-Jr.-on-Doctor-Doom-1.webp": {
@@ -2167,6 +2121,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i1.ytimg.com/vi/4qdBgbg-iYs/hqdefault.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://i3.ytimg.com/vi/Fk526q1hOwg/hqdefault.jpg": {
   "w": 480,
   "h": 360,
@@ -2224,6 +2184,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.419
+ },
+ "https://i3.ytimg.com/vi/b9-X7Ayu_2I/hqdefault.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 720,
+  "v": 3
  },
  "https://i4.ytimg.com/vi/szwPlwYM0r0/hqdefault.jpg": {
   "w": 480,
@@ -2287,6 +2253,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://image-cdn.hypb.st/https%3A%2F%2Fhk.hypebeast.com%2Ffiles%2F2026%2F11%2Fmarvel-avengers-doomsday-robert-downey-jr-doctor-doom-official-final-trailer-release-info-tw.jpg?cbr=1&q=90&w=1200&h=630&fit=crop": {
+  "w": 1000,
+  "h": 500,
+  "target": 1280,
+  "v": 3
+ },
  "https://image-cdn.pluang.com/web/news-cards/v2/GSS/c2d77a3b85d81d0725ba420279e1592b94974ad2185b2997d705f1a2aba94fbd-en.webp": {
   "w": 1200,
   "h": 600,
@@ -2309,6 +2281,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.gallery.play.jp/nkt-news/articles/78722f1d3c11450687efa68fd245606d/c1f81040-eec8-40a7-b989-4a36c7225903.jpg?w=1200": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://image.inews24.com/v1/fc0da764dc14f3.jpg": {
@@ -2480,12 +2458,6 @@
   "v": 3
  },
  "https://images.highwise.com/stories/415537-1795438037164.jpg": {
-  "w": 1280,
-  "h": 704,
-  "target": 720,
-  "v": 3
- },
- "https://images.highwise.com/stories/415596-1795438556578.jpg": {
   "w": 1280,
   "h": 704,
   "target": 720,
@@ -2799,13 +2771,13 @@
   "target": 1280,
   "v": 3
  },
- "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795513821454": {
+ "https://img.danawa.com/images/attachFiles/7/86/6085810_21.jpeg?_v=1795519550194": {
   "w": 320,
   "h": 270,
   "target": 1280,
   "v": 3,
   "blur": 0.667,
-  "local": "pics/c5f87752f2ebdbfd.webp",
+  "local": "pics/66d6f158be49a523.webp",
   "out": [
    960,
    810
@@ -3459,12 +3431,6 @@
   "target": 1280,
   "v": 3
  },
- "https://krcrtv.com/resources/media2/16x9/976/1320/170x0/90/cd8039ca-ec55-4638-b85a-96400a055bed-Screenshot20261123at9.07.38AM.png": {
-  "w": 1320,
-  "h": 743,
-  "target": 1280,
-  "v": 3
- },
  "https://local12.com/resources/media2/16x9/1147/1320/0x9/90/c93ed80f-8419-4d26-963c-dc83c029c695-GTA.png": {
   "w": 1320,
   "h": 743,
@@ -3637,12 +3603,6 @@
  "https://media.image.infoseek.co.jp/isnews/photos/yorozoonews/yorozoonews_17057073_0.jpg": {
   "w": 640,
   "h": 677,
-  "target": 720,
-  "v": 3
- },
- "https://media.nacionale.kabineti.net/uploads/desk_406c611d83_cf4211ab83.jpg": {
-  "w": 1920,
-  "h": 1279,
   "target": 720,
   "v": 3
  },
@@ -5689,6 +5649,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://resource02.ulifestyle.com.hk/ulcms/content/article/thumbnail/1280x720/2026/11/20261124163851_b06b9cefd7e3d3e4c90b0cb002774d26e236411c.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://rockstarintel.com/wp-content/uploads/2026/11/Lucia_Caminos_14-0-6_io7qeozm6-1-copy.webp": {
   "w": 1280,
   "h": 720,
@@ -5725,6 +5691,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/9726d97f4908a04c98d85c94e4d2e2aa943e1dbd09f00ef3ab81efcd4c7d2bf6/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fsuperherohype_979%2F61d7ef6f4c60ddb15e42ea0aefc39614": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/b14a17eecf13f2880986bb6d0f3bca99710c77825a206349d8726aaf02f35b0f/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Flead-gta-6-reviews-2_3628.jpg": {
   "w": 1200,
   "h": 800,
@@ -5744,12 +5716,6 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/f1c81ed44c079d93b8cde1eb7e0551afe299016a263eb0a0424e1970afb20c79/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmandatory_995%2Fc3c351cede7deb8b1a58e4e54d650e57.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/f307d276b3477a7b2f8fc09f4335f98d0f6b4474bae8404f6fecb4e3652941be/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fwealth_of_geeks_188%2F614475b2414c21c7a86f77dc011f0b2c.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -6250,6 +6216,12 @@
   "w": 1284,
   "h": 856,
   "target": 1280,
+  "v": 3
+ },
+ "https://times-abema.ismcdn.jp/mwimgs/3/6/1200w/img_3607a6ab8a6ca90a1220fca57a2dc03c211087.jpg": {
+  "w": 1200,
+  "h": 1696,
+  "target": 720,
   "v": 3
  },
  "https://today-obs.line-scdn.net/0hjiIQVYaPNUZ0KCnfGo5KEUx-OTdHTi9PVhp7IFl4aiRcBCJHGBpmJVgqPmoJTyVFVE15d1B4Y35dGXEZHw/w1200": {
@@ -6904,7 +6876,19 @@
    0.25
   ]
  },
+ "https://www.bing.com/th?id=ONUT.JZFbtPnm41nr0WyFrwNjMw&pid=News&w=480": {
+  "w": 480,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.KUGdmGv_5sFGlc8qpnP1hQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.L8BoCyDIqMBT-4d48eleTA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -7047,12 +7031,6 @@
    0.716,
    0.741
   ]
- },
- "https://www.bing.com/th?id=ONUT.dPZ1BVkHLXJtgKQ_rOiB6w&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.dcrOy8pNXC-oSihoH6vvcg&pid=News&w=1200": {
   "w": 700,
@@ -7212,12 +7190,6 @@
  "https://www.bing.com/th?id=ONUT.iY9uG5vAIYegAm4iKUrt2A&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ihgjr88of819VJzMvHM7xQ&pid=News&w=572": {
-  "w": 572,
-  "h": 300,
   "target": 720,
   "v": 3
  },
