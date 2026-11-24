@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-23T01:55:38+00:00",
-"text": "2026-11-23 第 6 バッチを出刊：猫用品（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 1,073・キャッシュ読み 17.0万・出力 536",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.68,
-"mem_total": 16869113856,
-"mem_free": 15915778048,
-"disk_used": 10499616768,
-"disk_free": 63381995520,
-"disk_total": 73881612288,
-"peak": 381157376
-},
-"batch": 6,
-"boards": [
-"猫用品"
-],
-"stories": 2,
-"left": 0,
-"edited": 16,
-"run": 1795396357.1176243,
-"tok": {
-"in": 3,
-"cw": 1070,
-"cr": 169538,
-"out": 536,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 171147,
-"secs": 2582,
-"run_tok": {
-"in": 53,
-"cw": 56404,
-"cr": 2044113,
-"out": 6771,
-"calls": 27,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-23T04:30:48+00:00",
 "text": "2026-11-23 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 12（18 版面・30 本・今日の整理待ちは全部終わり） · token 新規入力 4.7万・キャッシュ読み 57.7万・出力 2,222",
 "level": "ok",
@@ -2106,5 +2065,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 86326
+},
+{
+"at": "2026-11-24T12:15:52+00:00",
+"text": "2026-11-24 第 7 バッチを出刊：MMORPG 新作（1 版面・5 本・残り 2 版面） · token 新規入力 1,333・キャッシュ読み 8.6万・出力 419",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.48,
+"mem_total": 16868675584,
+"mem_free": 15979560960,
+"disk_used": 11205394432,
+"disk_free": 62607704064,
+"disk_total": 73813098496,
+"peak": 379052032
+},
+"batch": 7,
+"boards": [
+"MMORPG 新作"
+],
+"stories": 5,
+"left": 2,
+"edited": 22,
+"run": 1795520088.9457645,
+"tok": {
+"in": 2,
+"cw": 1331,
+"cr": 85711,
+"out": 419,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 87463
 }
 ]

@@ -207,7 +207,7 @@
   "Astrae Oratio": 5,
   "哈利波特剧集": 8,
   "A2O LITE": 5,
-  "MMORPG 新作": 25,
+  "MMORPG 新作": 28,
   "星巴克马克杯": 4,
   "ILLIT": 14,
   "dota2": 3,
@@ -973,7 +973,8 @@
    "weight": "normal",
    "refs": [
     7,
-    5
+    5,
+    28
    ],
    "event": {
     "date": "2026-11-26",
@@ -986,6 +987,7 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
+    26,
     10,
     4,
     14,
