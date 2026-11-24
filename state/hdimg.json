@@ -555,6 +555,57 @@
    0.334
   ]
  },
+ "http://wx2.sinaimg.cn/middle/65252eably1ij4zomdo5mj20gw0u0417.jpg": {
+  "w": 608,
+  "h": 1080,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/b99a78577bdb4d46.webp",
+  "out": [
+   608,
+   1080
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    11,
+    9,
+    5,
+    4,
+    4,
+    6,
+    6,
+    15,
+    17,
+    14,
+    5,
+    4
+   ],
+   [
+    7,
+    9,
+    11,
+    16,
+    16,
+    13,
+    5,
+    4,
+    4,
+    4,
+    6,
+    5
+   ]
+  ],
+  "c": "#763d97",
+  "k": null,
+  "p": [
+   0.493,
+   0.155,
+   0.91,
+   0.453
+  ]
+ },
  "http://wx2.sinaimg.cn/middle/8f742936gy1ij7r3iuo28j212l135n7j.jpg": {
   "w": 1389,
   "h": 1409,
@@ -1198,12 +1249,6 @@
   "v": 3
  },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/11/Farmer-Pikachu-Plush.webp": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://cdn.essential-japan.com/wp-content/uploads/2026/11/Pompompurin-x-Starbucks-Collab-Main.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -3495,12 +3540,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.nacionale.kabineti.net/uploads/desk_406c611d83_cf4211ab83.jpg": {
-  "w": 1920,
-  "h": 1279,
-  "target": 720,
-  "v": 3
- },
  "https://media.nacionale.kabineti.net/uploads/large_desk_fcebce3884_834fa36ca9.jpg": {
   "w": 1000,
   "h": 667,
@@ -3518,6 +3557,57 @@
   "h": 505,
   "target": 1280,
   "v": 3
+ },
+ "https://media.trilltrill.jp/articles/5197751/featured-image.67644a28809fe041d4f12e64da30f60b?w=1200": {
+  "w": 640,
+  "h": 427,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.58,
+  "local": "pics/88798a1be81edae3.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    7,
+    7,
+    9,
+    7,
+    14,
+    16,
+    10,
+    5,
+    5,
+    5,
+    8
+   ],
+   [
+    1,
+    6,
+    10,
+    7,
+    8,
+    12,
+    14,
+    10,
+    13,
+    6,
+    6,
+    7
+   ]
+  ],
+  "c": "#8d826d",
+  "k": [
+   0.0,
+   0.235,
+   0.633,
+   1.0
+  ],
+  "p": null
  },
  "https://media.trilltrill.jp/articles/5198062/featured-image.9f5e4fa7bb3d391856ff71a19786e7be?w=1200": {
   "w": 640,
@@ -5610,6 +5700,12 @@
   "target": 720,
   "v": 3
  },
+ "https://sm.ign.com/t/ign_in/news/a/avengers-d/avengers-doomsday-poster-gives-us-our-closest-look-at-doctor_d5hu.1200.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://sm.ign.com/t/ign_nordic/feature/i/ive-played/ive-played-gta-6-for-110-hours-here-are-the-weirdest-things_4488.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -6691,12 +6787,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Ne8O4bA28riAr6z1EpiBBg&pid=News&w=1200": {
-  "w": 700,
-  "h": 428,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.QR72xbWuaHZCw53d6qFG0A&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -6993,12 +7083,6 @@
  "https://www.bing.com/th?id=ONUT.ihgjr88of819VJzMvHM7xQ&pid=News&w=572": {
   "w": 572,
   "h": 300,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.iy1fCvsCIAb8EjBVLjB8mQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -7486,12 +7570,6 @@
  "https://www.computerweekly.com/rms/computerweekly/gta-vi-editorial-do-not-reuse-getty.jpg": {
   "w": 1200,
   "h": 400,
-  "target": 720,
-  "v": 3
- },
- "https://www.dailyvoa.com/storage/share/p/0/p929-18362249e3b4.jpg": {
-  "w": 1200,
-  "h": 630,
   "target": 720,
   "v": 3
  },
