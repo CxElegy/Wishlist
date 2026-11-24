@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-24T01:18:49+00:00",
+ "changed": true,
+ "checked": "2026-11-24T01:20:00+00:00",
  "fired": {
   "at": "2026-11-24T01:18:49+00:00",
   "results": {
@@ -81,6 +81,14 @@
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
+    "lib:King Gnu",
+    "lib:Mrs. GREEN APPLE",
+    "lib:ガンプラ",
+    "lib:ゼルダの伝説",
+    "lib:ユニクロ",
+    "lib:呪術廻戦",
+    "lib:無印良品",
+    "lib:鬼滅の刃",
     "ぐでたま",
     "哈利波特剧集",
     "日本顶级网球赛事",
@@ -101,10 +109,10 @@
     "日本顶级网球赛事",
     "星巴克马克杯"
    ],
-   "sig": "8c20eabad9ef",
+   "sig": "38a4944fdf4f",
    "token_cap": 1000000,
    "tokens_today": 333810,
-   "why": "整理待ちの記事 17 件（11 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 113 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
