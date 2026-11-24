@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-24T17:38:04+00:00",
+ "checked": "2026-11-24T18:26:52+00:00",
  "fired": {
   "at": "2026-11-24T17:38:04+00:00",
   "results": {
@@ -79,80 +79,73 @@
     "sig": "154017dc7ba1"
    },
    "items": [
-    "A2O LITE",
-    "FROM",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
     "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
-    "lib:ブラッククローバー 第2期",
-    "lib:台風・天気",
-    "lib:星野源",
-    "lib:東京ディズニーリゾート",
-    "lib:生徒会にも穴はある！",
-    "lib:薬屋のひとりごと 第3期",
-    "lib:貸した魔力は【リボ払い】で強制徴収",
-    "lib:転生したら剣でした 第2期",
+    "lib:Ado",
+    "lib:BTS",
+    "lib:ONE PIECE",
+    "lib:【推しの子】",
+    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
+    "lib:原神",
+    "lib:宮崎駿",
+    "lib:広島旅行",
     "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
-    "滑雪",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
     "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-24T15:08:27+00:00",
+   "last_batch": "2026-11-24T17:56:48+00:00",
    "last_error": {
     "at": "2026-11-24T11:39:47+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 3,
+   "prog": 111,
    "prog_day": "2026-11-25",
    "ripe": [
-    "A2O LITE",
-    "FROM",
+    "BLEACH Mirrors High",
     "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "dota2",
-    "チェーンソーマン",
+    "The Mandalorian",
     "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
+    "漫威电影"
    ],
-   "sig": "154017dc7ba1",
+   "sig": "81ac12778366",
    "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 201 件（23 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 81669,
+   "why": "整理待ちの記事 165 件（23 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "FROM",
-    "GTA 6",
-    "あつ森",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
     "The Mandalorian",
-    "绝区零",
     "Vaundy",
+    "dota2",
+    "あつ森",
     "ぐでたま",
-    "周杰伦"
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "need": true,
-   "sig": "f3724428239f",
-   "waiting": [],
-   "why": "足りない 15 版面（Actions で Python が埋める）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -315,6 +308,14 @@
    "in": 478,
    "out": 70857,
    "runs": 16
+  },
+  "2026-11-25": {
+   "batches": 3,
+   "cr": 1397683,
+   "cw": 70113,
+   "in": 34,
+   "out": 11522,
+   "runs": 1
   }
  }
 }
