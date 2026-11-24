@@ -6138,12 +6138,6 @@
   "target": 1280,
   "v": 3
  },
- "https://times-abema.ismcdn.jp/mwimgs/3/6/1200w/img_3607a6ab8a6ca90a1220fca57a2dc03c211087.jpg": {
-  "w": 1200,
-  "h": 1696,
-  "target": 720,
-  "v": 3
- },
  "https://times-abema.ismcdn.jp/mwimgs/c/8/1200w/img_c890d5ab93e334469a75101cff779db186607.jpg": {
   "w": 1200,
   "h": 671,
@@ -6957,6 +6951,12 @@
    0.716,
    0.741
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.dPZ1BVkHLXJtgKQ_rOiB6w&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.dcrOy8pNXC-oSihoH6vvcg&pid=News&w=1200": {
   "w": 700,
