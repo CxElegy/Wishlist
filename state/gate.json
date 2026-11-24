@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-24T05:19:01+00:00",
+ "checked": "2026-11-24T05:26:50+00:00",
  "fired": {
   "at": "2026-11-24T05:02:06+00:00",
   "results": {
@@ -80,46 +80,25 @@
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "dota2",
     "gelato pique",
-    "lib:King Gnu",
-    "lib:Mrs. GREEN APPLE",
     "lib:ガンプラ",
-    "lib:ゼルダの伝説",
-    "lib:ユニクロ",
     "lib:無印良品",
-    "チェーンソーマン",
     "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
     "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-24T03:40:36+00:00",
+   "last_batch": "2026-11-24T05:15:59+00:00",
    "last_error": {},
    "need": true,
-   "prog": 340,
+   "prog": 423,
    "prog_day": "2026-11-24",
-   "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影"
-   ],
-   "sig": "b9a9156fa58e",
+   "ripe": [],
+   "sig": "cea0fb28896a",
    "token_cap": 1000000,
-   "tokens_today": 497254,
-   "why": "整理待ちの記事 162 件（24 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 560699,
+   "why": "整理待ちの記事 35 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -300,12 +279,12 @@
    "runs": 14
   },
   "2026-11-24": {
-   "batches": 18,
-   "cr": 9102630,
-   "cw": 457625,
-   "in": 256,
-   "out": 39373,
-   "runs": 9
+   "batches": 20,
+   "cr": 10453481,
+   "cw": 514436,
+   "in": 292,
+   "out": 45971,
+   "runs": 10
   }
  }
 }
