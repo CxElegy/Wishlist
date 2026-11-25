@@ -314,6 +314,16 @@
  "hero|http://wx2.sinaimg.cn/middle/87fc3b5egy1iik5j5zxt3j22dc35cu0y.jpg": null,
  "hero|http://wx3.sinaimg.cn/middle/87fc3b5egy1iik5j7qoihj22dc35c7wi.jpg": null,
  "hero|http://wx4.sinaimg.cn/middle/66104c95gy1iiqh1y4fjmj210o27ou0x.jpg": null,
+ "hero|https://applealmond.com/wp-content/uploads/2026/11/1795570707-bd6a5f826014b7cba72047200ea13784.jpg": {
+  "accent": "#5E8CE8",
+  "alt_accent": "#1F5BD6",
+  "alt_bg": "#ECEEEC",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1E1A",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "hero|https://assets-prd.ignimgs.com/2026/08/03/doomsday-doom-1785773171623.jpg?width=1280&format=jpg&auto=webp&quality=80": {
   "accent": "#C9A569",
   "alt_accent": "#876730",
