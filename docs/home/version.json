@@ -1,32 +1,32 @@
 {
- "admin": "aeaba534933d",
- "admin-ai": "977e742459bc",
+ "admin": "39ebdad17b50",
+ "admin-ai": "659a05bf4c84",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d6df36b7"
+   "1a5613ed"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "2e8fdcae"
+   "e2535dcb"
   ]
  },
- "admin-boards": "3d169b00d32b",
+ "admin-boards": "4bb06d1161e7",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "153809da"
+   "326f6fd2"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "adbaea74c0a1",
+ "admin-emblem": "1a72dc263241",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c351058b"
+   "c4a9d5fb"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "6185189c1256",
+ "admin-now": "2e4c903f3f8f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "df8d25e9"
+   "bb456a33"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "025643cb"
+   "94da9d61"
   ],
   "term-panel": [
    "ライブログ",
-   "371b81c7"
+   "08c54aed"
   ]
  },
- "admin-system": "5cdbfff72ac4",
+ "admin-system": "bb39572a61df",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "eb289ef3"
+   "a27ee72d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c9e1dec2"
+   "a6eee125"
   ]
  },
  "admin_marks": {},
- "heat": "0217efc8c60b",
+ "heat": "697847f8fc78",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "d626ffff"
+   "116b21dc"
   ],
   "ranking": [
    "ランキング",
-   "3c8b92b3"
+   "a094f796"
   ]
  },
- "index": "4f799a3a8a73",
+ "index": "85caf2ac437b",
  "index_marks": {
   "front": [
    "トップ",
-   "4fdcc20a"
+   "f69d384c"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "08f774f2"
+   "fe8adf01"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "e3e3f706"
+   "557dd060"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "9ad1a83a"
+   "e0969ed5"
   ]
  },
- "updated": "11.25 23:54",
+ "updated": "11.25 23:56",
  "wishlist": "31a8c10c3327"
 }

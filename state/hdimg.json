@@ -1867,6 +1867,12 @@
   "target": 720,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg": {
+  "w": 1962,
+  "h": 1308,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/snow-achooter.jpg": {
   "w": 1572,
   "h": 900,
@@ -2998,6 +3004,12 @@
  "https://img.newspim.com/news/2026/11/20/2611201257513550.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img.petfoodindustry.com/mindful/watt/workspaces/default/uploads/2026/11/recycled-family-and-cats-in-a-dollhouse.lJdqsUhZ4n.png?auto=format%2Ccompress&bg=ffffff&fit=crop&h=675&q=70&w=1200": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -4959,6 +4971,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://nypost.com/wp-content/uploads/sites/2/2026/11/149994206.jpg?quality=75&strip=all": {
+  "w": 2000,
+  "h": 1333,
+  "target": 720,
+  "v": 3
+ },
  "https://ogre.natalie.mu/media/news/music/2026/0405/Vaundy_art202604.jpg?impolicy=ogp_face_crop": {
   "w": 1200,
   "h": 630,
@@ -5391,12 +5409,6 @@
  "https://s.yimg.com/lo/mysterio/api/834d7d301bc33c51650b429e266f3ee4f3f1f4a03b2f085b60dbf4bdbe324f45/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fctwant_styletc_883%2F93b8f1c8a1f5e0eb9c66aff32ba74b98.jpg_up.jpg": {
   "w": 1200,
   "h": 728,
-  "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/97df3a90a1696d0dea7323cf93d10b9a2cf18af453be46df18dd18d61aab0b5c/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fcomplex_131%2Fb0ac964e2f968ed3f007b321ee9831fa.jpg": {
-  "w": 1200,
-  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -5964,12 +5976,6 @@
    0.977
   ],
   "p": null
- },
- "https://thetraveler.s3.amazonaws.com/images/hero/hakuba-nozawa-transport-guide_1200x675.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
  },
  "https://thetv.jp/i/nw/1236954/13963747.jpg?w=1284": {
   "w": 1284,
@@ -7263,13 +7269,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-25"
  },
- "https://www.bing.com/th?id=ONUT.qaW6Oxk4b1RCeFSRLmJCsw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402
- },
  "https://www.bing.com/th?id=ONUT.t58_K2H_x7qIrD4RUb5dqA&pid=News&w=1000": {
   "w": 700,
   "h": 466,
@@ -7644,6 +7643,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.gdnonline.com/gdnimages/20261125%5C20261125153511Carolweb(45).jpg": {
+  "w": 800,
+  "h": 540,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg": {
   "w": 1280,
   "h": 720,
@@ -7738,12 +7743,6 @@
  "https://www.iza.ne.jp/resizer/v2/E6KL7R452VHM5E4DRZTV2NOXOE.jpg?auth=572cdcf59c1695096878faad7052a2bdc166a860fd9376549362efe02f541741&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://www.jalopnik.com/img/gallery/from-key-cloning-to-car-trackers-how-gta-6-is-making-car-theft-a-bigger-hassle/l-intro-1795524480.jpg": {
-  "w": 1600,
-  "h": 899,
   "target": 720,
   "v": 3
  },
