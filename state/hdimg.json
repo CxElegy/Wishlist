@@ -912,7 +912,7 @@
  "https://assets.hldycdn.com/b203cda0-1eab-4304-8df8-85af6e1e8abc.jpeg": {
   "w": 1800,
   "h": 1350,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://assets.st-note.com/production/uploads/images/336983412/rectangle_large_type_2_6ab3f3f2b8f17348b881bc944d8c523f.jpeg?fit=bounds&quality=85&width=1280": {
@@ -3337,6 +3337,12 @@
  "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg": {
   "w": 1200,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://jamonline.ph/wp-content/uploads/2026/11/samsung-galaxy-s27-pro-s27-ultra-dummy-hands-on.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -5821,6 +5827,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/12/avengers_-doomsday-_-only-in-theaters-december-18-2026-0-52-screenshot.jpeg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/jason_and_lucia_09.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6032,6 +6044,12 @@
   "w": 1200,
   "h": 676,
   "target": 1280,
+  "v": 3
+ },
+ "https://travelweekly.com.au/wp-content/uploads/2026/11/Shinkanzen-run-pass-Mt-scaled.jpg": {
+  "w": 2048,
+  "h": 1152,
+  "target": 720,
   "v": 3
  },
  "https://variety.com/wp-content/uploads/2026/11/GTA-6-4.jpg?w=1000&h=563&crop=1": {
@@ -6344,57 +6362,6 @@
    0.764,
    0.978
   ]
- },
- "https://www.bing.com/th?id=ONUT.0ekGUGfYCqfY9j9bbKXxhA&pid=News&w=720": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.475,
-  "local": "pics/f31ac3099ac91ad9.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    1,
-    6,
-    8,
-    9,
-    11,
-    15,
-    15,
-    11,
-    10,
-    10,
-    3,
-    0
-   ],
-   [
-    0,
-    0,
-    4,
-    12,
-    18,
-    15,
-    15,
-    22,
-    11,
-    3,
-    0,
-    0
-   ]
-  ],
-  "c": "#1b231e",
-  "k": [
-   0.051,
-   0.217,
-   0.931,
-   0.764
-  ],
-  "p": null
  },
  "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
   "w": 466,
@@ -7768,12 +7735,6 @@
  "https://www.lanacion.com.ar/resizer/v2/la-oficinas-de-rockstar-north-en-edimburgo-el-dia-6H2XLSKT5FBP7OLF44NGDHUSJE.jpg?auth=e2a3a72a51066a2c6ebf2d7cf8d20efc58cd23703a7befb5501ff193b921b127&width=1200&height=800&quality=70&smart=true": {
   "w": 1200,
   "h": 800,
-  "target": 720,
-  "v": 3
- },
- "https://www.macobserver.com/wp-content/uploads/2026/05/How-to-Hide-Your-Caller-ID-When-Making-Calls-on-iOS-26.jpg": {
-  "w": 1920,
-  "h": 1080,
   "target": 720,
   "v": 3
  },
