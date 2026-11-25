@@ -138,7 +138,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    9
    ]
   },
   {
@@ -148,6 +149,15 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra Charging Speed Revealed, and It’s No Surprise",
+   "highlight": "Charging Speed",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ],
@@ -217,6 +227,15 @@
    }
   },
   {
+   "headline": "『チェンソーマン 刺客篇』制作決定！興収96億円突破の『レゼ篇』に続く新作",
+   "highlight": "刺客篇』制作決定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
    "headline": "AVIOT鏈鋸人聯名耳機開預購！13種語音要價22,880日圓！",
    "highlight": "",
    "blurb": "",
@@ -236,16 +255,25 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "チェンソーマンが東急グループとコラボ！デンジたちとホテルに閉じ込められる…!?",
+   "highlight": "東急グループ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "_covered": {
   "漫威电影": 57,
   "GTA 6": 44,
-  "三星手机": 7,
+  "三星手机": 10,
   "ILLIT": 9,
-  "チェーンソーマン": 5,
+  "チェーンソーマン": 8,
   "周杰伦": 5,
-  "dota2": 4,
+  "dota2": 8,
   "Astrae Oratio": 3,
   "The Mandalorian": 3,
   "星巴克马克杯": 3,
@@ -255,7 +283,9 @@
   "绝区零": 1,
   "Vaundy": 2,
   "滑雪": 2,
-  "BLEACH Mirrors High": 10
+  "BLEACH Mirrors High": 10,
+  "MMORPG 新作": 2,
+  "A2O LITE": 1
  },
  "周杰伦": [
   {
@@ -303,6 +333,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Dota 2 will return to the Esports World Cup in 2027",
+   "highlight": "Esports World Cup in 2027",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ],
@@ -530,5 +569,26 @@
     6
    ]
   }
- ]
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "넥슨, 대작 '템빨'로 3년 만에 하드코어 MMORPG 시장 출격",
+   "highlight": "3년 만에",
+   "blurb": "넥슨이 신작 '템빨'로 3년 만에 하드코어 MMORPG 시장에 출격한다.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Perfect Ten: MMOs that thrive in 2-D only",
+   "highlight": "2-D",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "A2O LITE": []
 }

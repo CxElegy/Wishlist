@@ -1,32 +1,32 @@
 {
- "admin": "85ea36d65128",
- "admin-ai": "0b056889457a",
+ "admin": "6f9755ae52ca",
+ "admin-ai": "e62065db87c5",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4e67606b"
+   "24e34be0"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c3739875"
+   "e2261887"
   ]
  },
- "admin-boards": "6ee103927878",
+ "admin-boards": "5946455762ec",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "ecc7d84d"
+   "b7e582ea"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "af84676b5ab1",
+ "admin-emblem": "a5776d1e1871",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b3efbb23"
+   "f77c4875"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "84a85b8b3eaf",
+ "admin-now": "46e6af5780e3",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0598d309"
+   "234f4d1e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c1343027"
+   "de14116d"
   ]
  },
- "admin-system": "8d46134b4e62",
+ "admin-system": "385f55db074f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b58c0b23"
+   "c98a9a1e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ccde0e53"
+   "1d067488"
   ]
  },
  "admin_marks": {},
- "heat": "e52a177b021f",
+ "heat": "f7229ffd8139",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e6013494"
+   "0ceaa41b"
   ],
   "ranking": [
    "ランキング",
-   "1671caff"
+   "840bd70b"
   ]
  },
- "index": "928a29158616",
+ "index": "321414fceb2c",
  "index_marks": {
   "front": [
    "トップ",
-   "822fbfc5"
+   "a344e695"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "b3ee5d02"
+   "dca1f21a"
   ],
   "w-130724c0": [
    "猫用品",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "c2a0ceca"
+   "1e4e0374"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "d6d304c2"
+   "7298c37e"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "c1094ec3"
+   "82c78e1c"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "834fa979"
+   "ac502c66"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "c9528ac2"
   ]
  },
- "updated": "11.26 06:54",
+ "updated": "11.26 07:19",
  "wishlist": "3e9f37f6223d"
 }

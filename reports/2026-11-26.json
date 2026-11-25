@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "e766aeec6cca",
+ "edit_sig": "60f498bb3ae2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -153,24 +153,29 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "넥슨이 신작 '템빨'로 3년 만에 하드코어 MMORPG 시장에 출격한다.",
      "date": "2026-11-25",
-     "n": 1,
-     "source": "Massively Overpowered",
-     "title": "Perfect Ten: MMOs that thrive in 2-D only",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZEphQWtJOE03VDhjQzZoWmlyWWlVeVA5WWFlZlB4cGRuVGtxU0d1NGFkZ1AyOXJCbGE5cUU0RjBpX3RYeEJDNGxJUk9Cc2Q4elY0OWpadzF1UGZJcWlnLVZjY1pWQm9RQzRqMENmcXFrZ3RJWEpxQWc2OV8tOFg0enh3?oc=5"
+     "headline": "넥슨, 대작 '템빨'로 3년 만에 하드코어 MMORPG 시장 출격",
+     "highlight": "3년 만에",
+     "image": "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20260917151040028510eb81adcc4e1839820252.jpg&nmt=26",
+     "image_via": "og:image",
+     "url": "https://www.dailygame.co.kr/view.php?ud=20261125121809616743da15d9d2_26",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-25",
-     "n": 2,
-     "source": "데일리게임",
-     "title": "넥슨, 대작 '템빨'로 3년 만에 하드코어 MMORPG 시장 출격",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9ySmw3OWVaT0tWNG9uTlJJcmFpUW5rNHJJbXd4VTF6RmVtajNqdjN6QjZPODhBVFV0d19PNWVPcE1acHViTFgtVzRkMXBrUzhoQ1I0NG40c2Z3VmV6T2U1SlM1T2h3Sld0d1VFR0ZEZG82YVZKVGpvdGFxbw?oc=5"
+     "headline": "Perfect Ten: MMOs that thrive in 2-D only",
+     "highlight": "2-D",
+     "image": "https://massivelyop.com/wp-content/uploads/2026/07/necesse-love.jpg",
+     "image_via": "og:image",
+     "url": "https://massivelyop.com/2026/11/25/perfect-ten-mmos-that-thrive-in-2-d-only/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -459,29 +464,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 8,
-     "source": "SammyGuru",
-     "title": "Galaxy S27 Ultra Charging Speed Revealed, and It’s No Surprise",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9GcUY0cVpOdEFwZzJHSVRoT1V0aGpjVW1jUE5lSkZvLWk2d2pRQXFQazZ6R2VOSElRdWFYX3h4RmNLTmVVcTFoVWRPMHY0R1FORFN1NWFMZWdHU2hVaVNBWkZWN3NkOVlhSlVZMVBQcHc?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 9,
-     "source": "Andro-News",
-     "title": "Galaxy S27: Only 3 Variants Get LPDDR6 RAM & UFS 5.0",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPeVc5R0tseFAyaWNmY1loRFdKSHc3WmdwTWZNczlVanhiLV96bTFEOFQ0T0VUWi11dGZodmN0a0tpN3FWdkllWGlwTnJzS29qb2lxMjQyY05qMGhhM09BRmxKYUtreXNRLWIzcTJEN1hqQmhtX0FWSC1zUWhkTERIcFR5LVE3ZVZ6ZVNFeWlSQlU?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 10,
-     "source": "Digit on MSN",
-     "title": "Samsung Galaxy S27 Ultra vs iPhone 18 Pro Max vs Xiaomi 18 Pro: India price, display, camera, battery and other expected differences",
-     "url": "https://www.msn.com/en-in/news/other/samsung-galaxy-s27-ultra-vs-iphone-18-pro-max-vs-xiaomi-18-pro-india-price-display-camera-battery-and-other-expected-differences/ar-AA2ibR0n"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -522,6 +504,16 @@
      "image": "https://img-cdn.publive.online/fit-in/1200x675/pcq/media/media_files/2026/11/25/will-samsung-galaxy-s27-become-more-expensive-in-india-2026-11-25-12-05-21.jpeg",
      "image_via": "og:image",
      "url": "https://www.pcquest.com/smartphones/samsung-galaxy-s27-price-india-memory-costs-pro-model-12839183",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-25",
+     "headline": "Galaxy S27 Ultra Charging Speed Revealed, and It’s No Surprise",
+     "highlight": "Charging Speed",
+     "image": "https://sammyguru.com/wp-content/uploads/2026/10/S27_Blue_Featured_1728x1080.png",
+     "image_via": "转载 sammyguru.com",
+     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9GcUY0cVpOdEFwZzJHSVRoT1V0aGpjVW1jUE5lSkZvLWk2d2pRQXFQazZ6R2VOSElRdWFYX3h4RmNLTmVVcTFoVWRPMHY0R1FORFN1NWFMZWdHU2hVaVNBWkZWN3NkOVlhSlVZMVBQcHc?oc=5",
      "weight": "normal"
     }
    ],
@@ -638,9 +630,8 @@
      "date": "2026-11-22",
      "headline": "ブルボンから「ぐでたま」をデザインした「ぐでたまのおもち」新発売",
      "highlight": "ぐでたまのおもち",
-     "image": null,
-     "source": "ウォーカープラス",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.walkerplus.com&sz=128",
+     "image": "https://news.walkerplus.com/article/139337/781089_615.jpg",
+     "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/139337/image781091.html",
      "weight": "normal"
     },
@@ -677,34 +668,8 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-21",
-     "n": 7,
-     "source": "ウォーカープラス",
-     "title": "画像3 / 4＞劇場版『チェンソーマン レゼ篇』9月公開！デンジを狙う刺客レゼとの甘美で残酷な恋の行方は？",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFA3ODIyRGJHOV9FNjMzNzM1S0JkLVpGR3NZWUoxUkpaQTctTEM2N0JmNUswTDFRT0YtQzJmcFl0U1ZxbFJXUHgtVVdXLWlpXzhkcVpacG82cEIzcFppRVF2d01YaUt3Q3dVMFZQcXd3?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 8,
-     "source": "ウォーカープラス",
-     "title": "＜画像8 / 12＞チェンソーマンが東急グループとコラボ！デンジたちとホテルに閉じ込められる…!?",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WajBaZjZLRVZva2p2d1JPZWsyREtmazN1OXQ1RjNHUmJtd0pWZFR3OFhCemYxUDBzSjBnQnN2Y3NOYlJzMGg2YXowSExfWURJdUEzcXhuU3ZHVllITVpvTmpoQktzQnFGa3FLNUVn?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-22",
-     "headline": "画像3 / 7＞『チェンソーマン 刺客篇』制作決定！興収96億円突破の『レゼ篇』に続く新作、クァンシら新たな刺客たちの姿が解禁",
-     "highlight": "",
-     "image": "https://image.news.livedoor.com/newsimage/stf/4/6/46f36_230_ac92457885bd6e65046a9b89c3b0c124.jpg",
-     "image_via": "转载 news.livedoor.com",
-     "url": "https://www.walkerplus.com/article/1317098/image15915680.html",
-     "weight": "hero"
-    },
     {
      "blurb": "GSCが「ねんどろいどFUNS 2026 December」のラインナップを公開。『チェンソーマン』などの新作が12月3日に解禁される。",
      "date": "2026-11-25",
@@ -718,6 +683,16 @@
      "image_via": "og:image",
      "url": "https://www.toy-people.com/jp/?p=116983",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "『チェンソーマン 刺客篇』制作決定！興収96億円突破の『レゼ篇』に続く新作",
+     "highlight": "刺客篇』制作決定",
+     "image": "https://image.news.livedoor.com/newsimage/stf/4/6/46f36_230_ac92457885bd6e65046a9b89c3b0c124.jpg",
+     "image_via": "转载 news.livedoor.com",
+     "url": "https://www.walkerplus.com/article/1317098/image15915680.html",
+     "weight": "normal"
     },
     {
      "blurb": "",
@@ -740,6 +715,17 @@
      "image": "https://s.yimg.jp/images/news-web/versions/20261125-0f1c0fc/all/images/ogp_user_commentPerma.jpg",
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/profile/expert/comments/b46f06e7-1a7c-49c3-8bc5-7ac03c338ea2",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "チェンソーマンが東急グループとコラボ！デンジたちとホテルに閉じ込められる…!?",
+     "highlight": "東急グループ",
+     "image": null,
+     "source": "ウォーカープラス",
+     "source_icon": null,
+     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1WajBaZjZLRVZva2p2d1JPZWsyREtmazN1OXQ1RjNHUmJtd0pWZFR3OFhCemYxUDBzSjBnQnN2Y3NOYlJzMGg2YXowSExfWURJdUEzcXhuU3ZHVllITVpvTmpoQktzQnFGa3FLNUVn?oc=5",
      "weight": "normal"
     }
    ],
@@ -922,36 +908,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 5,
-     "source": "手机新浪网",
-     "title": "第二轮结果 2-0：查理斯队、zyd队 1-1：鲷哥队、彬哥队、眼哥队、水瓶座队 0-2：aq队、哈哈队 #dota2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5CejZvNkZVdFFCTEtOTWdwcW9VVWVRRm11VEUtUWFuZXRQRWJyNnUxa0tWTjBPaGItYjVFa2tqQW55OGNDdTdibDZ5VFN4U2hwQ1JvYXRRcXdrc0p5RnU2MEFIUQ?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 6,
-     "source": "Bluesky",
-     "title": "Hoodwink Comic Page 1 The Giant Ring is an actual item in Dota 2 that lets u walk over terrain. In the hands of a trickster like hoodwink... thats no good XD. #dota2 #hoodwink #furry #squirrel",
-     "url": "https://bsky.app/profile/jonathanchimney.bsky.social/post/3n35eitvxls2n"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 7,
-     "source": "手机新浪网",
-     "title": "第一轮分组，鲷老英雄这班子有味啊。 #dota2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hV2xhWlRHSzlRR3h5REhMSHlYUWF4cXF0QXBHYU0ySXQzbkJUenFhWF8zU0VJaWZjeGVxUUVMRkxxaGptUnJ1dnJzUnprcnBoWFNfQnNtVkRIMkhVc2NJMnZQbw?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 8,
-     "source": "WIN.gg",
-     "title": "Dota 2 will return to the Esports World Cup in 2027",
-     "url": "https://win.gg/dota-2-will-return-to-the-esports-world-cup-in-2027/"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -973,6 +929,16 @@
      "image_via": "og:image",
      "url": "https://www.dexerto.com/dota2/best-dota-2-launch-options-optimize-game-performance-1792226/",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "Dota 2 will return to the Esports World Cup in 2027",
+     "highlight": "Esports World Cup in 2027",
+     "image": "https://win.gg/wp-content/uploads/2026/11/16x9_7_a67e4e48a8.jpg.webp",
+     "image_via": "og:image",
+     "url": "https://win.gg/dota-2-will-return-to-the-esports-world-cup-in-2027/",
+     "weight": "normal"
     }
    ],
    "subtitle": "Dota 2",
@@ -983,33 +949,6 @@
     "alt_fg": "#1E1A18",
     "bg": "#17100F",
     "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
-   "facts": [],
-   "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "A2OLITE #HIMEKI[超话]#是被李秀满预告图陷害了吧，团综里好突出的美貌！ ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE80aUhMTUdSOTNlcjhINWVCT1I3UDJtQWszQW5EbzhPRG93LUFTLTN6eFQtSy1Wc3NndkZuLXdCTFBQQ3hCemNHVmthY0tvVXF2bl9ndEp5ZXNja1VBNkdYenJXWQ?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "",
-   "theme": {
-    "accent": "#B5285F",
-    "alt_accent": "#F07AA8",
-    "alt_bg": "#1E1218",
-    "alt_fg": "#F4EEE4",
-    "bg": "#FBEFF4",
-    "fg": "#1E1A18",
     "font": "serif",
     "split": true
    }
@@ -1156,6 +1095,31 @@
     "alt_fg": "#1E1A18",
     "bg": "#1E1516",
     "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
+   "facts": [],
+   "last": {
+    "date": "2026-11-25",
+    "headline": "A2O LITE 16歲VORA盲腸炎送醫！手術缺席《K-POPCON》錄製行程",
+    "url": "https://www.nownews.com/news/6893954"
+   },
+   "name": "A2O LITE",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "",
+   "theme": {
+    "accent": "#B5285F",
+    "alt_accent": "#F07AA8",
+    "alt_bg": "#1E1218",
+    "alt_fg": "#F4EEE4",
+    "bg": "#FBEFF4",
+    "fg": "#1E1A18",
     "font": "serif",
     "split": true
    }
