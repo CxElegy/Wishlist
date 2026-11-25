@@ -2517,6 +2517,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.kbench.com/kbench/article/thumbnail/283607_thumb.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-25"
+ },
  "https://images.khan.co.kr/article/2026/11/18/news-p.v1.20261118.c65f173b29f149b3b2f3b06f09a7680a_P1.jpg": {
   "w": 1200,
   "h": 801,
@@ -4346,56 +4352,6 @@
    0.736,
    0.476,
    0.854
-  ],
-  "p": null
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000468-oric-000-1-view.jpg?exp=10800": {
-  "w": 960,
-  "h": 540,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/32ef70cb54351914.webp",
-  "out": [
-   960,
-   540
-  ],
-  "why": "期限付きの網址",
-  "m": [
-   [
-    6,
-    7,
-    5,
-    5,
-    4,
-    5,
-    14,
-    13,
-    11,
-    11,
-    11,
-    8
-   ],
-   [
-    5,
-    12,
-    9,
-    9,
-    4,
-    8,
-    8,
-    10,
-    10,
-    10,
-    8,
-    7
-   ]
-  ],
-  "c": "#c09a76",
-  "k": [
-   0.016,
-   0.023,
-   0.987,
-   0.674
   ],
   "p": null
  },
@@ -6781,15 +6737,60 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.KtYu-YvjpOSE9OeWKtYMmQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.481,
+  "local": "pics/0e65de4f9acc567e.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    6,
+    7,
+    5,
+    5,
+    4,
+    5,
+    14,
+    13,
+    11,
+    11,
+    11,
+    8
+   ],
+   [
+    5,
+    12,
+    9,
+    9,
+    4,
+    8,
+    8,
+    10,
+    10,
+    10,
+    7,
+    7
+   ]
+  ],
+  "c": "#be9b77",
+  "k": [
+   0.01,
+   0.011,
+   0.99,
+   0.673
+  ],
+  "p": null
+ },
  "https://www.bing.com/th?id=ONUT.LzFykkSZ2Qp_aH6aIg7KcA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.N-3M5mcDNLd7dOCgVILAWA&pid=News&w=480": {
-  "w": 480,
-  "h": 480,
   "target": 720,
   "v": 3
  },
