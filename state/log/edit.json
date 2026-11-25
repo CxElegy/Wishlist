@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-23T13:04:31+00:00",
-"text": "2026-11-23 第 3 バッチを出刊：Vaundy（1 版面・0 本・今日の整理待ちは全部終わり） · token 新規入力 911・キャッシュ読み 15.5万・出力 445",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.62,
-"mem_total": 16869113856,
-"mem_free": 16001662976,
-"disk_used": 10482593792,
-"disk_free": 63399018496,
-"disk_total": 73881612288,
-"peak": 375066624
-},
-"batch": 3,
-"boards": [
-"Vaundy"
-],
-"stories": 0,
-"left": 0,
-"edited": 21,
-"run": 1795437672.2073267,
-"tok": {
-"in": 4,
-"cw": 907,
-"cr": 154593,
-"out": 445,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 155949,
-"secs": 1399,
-"run_tok": {
-"in": 29,
-"cw": 48789,
-"cr": 1004588,
-"out": 3601,
-"calls": 15,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-23T14:50:38+00:00",
 "text": "2026-11-23 第 1 バッチを出刊：A2O LITE、GTA 6、ILLIT、三星手机、漫威电影（5 版面・29 本・残り 3 版面） · token 新規入力 6.0万・キャッシュ読み 111.4万・出力 6,552",
 "level": "ok",
@@ -2105,6 +2064,47 @@
 "cr": 2250331,
 "out": 8000,
 "calls": 29,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-25T02:30:14+00:00",
+"text": "2026-11-25 第 1 バッチを出刊：gelato pique（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 4.6万・キャッシュ読み 64.6万・出力 2,522",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.9,
+"mem_total": 16868675584,
+"mem_free": 15970734080,
+"disk_used": 10406686720,
+"disk_free": 63406411776,
+"disk_total": 73813098496,
+"peak": 413466624
+},
+"batch": 1,
+"boards": [
+"gelato pique"
+],
+"stories": 2,
+"left": 0,
+"edited": 21,
+"run": 1795573355.1595786,
+"tok": {
+"in": 19,
+"cw": 46048,
+"cr": 645685,
+"out": 2522,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 694274,
+"secs": 460,
+"run_tok": {
+"in": 19,
+"cw": 46048,
+"cr": 645685,
+"out": 2522,
+"calls": 10,
 "model": "claude-sonnet-5-5"
 }
 }

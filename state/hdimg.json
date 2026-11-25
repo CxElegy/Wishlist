@@ -877,6 +877,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/338544800/rectangle_large_type_2_255f997c430c6d0060b804381fbf08f3.jpeg?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.st-note.com/production/uploads/images/339718870/rectangle_large_type_2_c83a5a36a9d6bf2a52203ab65b406b5b.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -2434,6 +2440,12 @@
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/1000014555.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.thedirect.com/media/article_full/1000014649.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
@@ -6233,6 +6245,12 @@
    0.978
   ]
  },
+ "https://www.bing.com/th?id=ONUT.-JUTM7dW0pTlBrMcFBFUbg&pid=News&w=480": {
+  "w": 480,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.1PNyximpeDHKapt5A1M7gQ&pid=News&w=466": {
   "w": 466,
   "h": 700,
@@ -7298,12 +7316,6 @@
    0.379
   ],
   "p": null
- },
- "https://www.bing.com/th?id=ONUT.zcbY8S6hh5ZZ2Xkc3_OEbg&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200": {
   "w": 700,
