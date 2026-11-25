@@ -14,7 +14,6 @@
   "https://chibimegane.jp/galaxy-s26-review/": "https://chibimegane.jp/wp-content/uploads/2026/03/galaxys26.jpg",
   "https://collabo-cafe.com/zh-hans/events/collabo/zenless-shop-tieup-gigo-vol3-2026-2027/?amp=1": "https://collabo-cafe.com/wp-content/uploads/zenless-shop-tieup-gigo-vol3-2026-2027-featured.jpg",
   "https://dmksnowboard.com/eretic-snow-scooter-japan-2027/": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/snow-achooter.jpg",
-  "https://dmksnowboard.com/rhythm-japan-summit-hakuba-store-expansion-2026/": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg",
   "https://essential-japan.com/news/pokemon-center-reveals-new-and-exclusive-farmer-pikachu-plush/": "https://cdn.essential-japan.com/wp-content/uploads/2026/11/Farmer-Pikachu-Plush.webp",
   "https://freakelitex.com/chainsaw-man-volumen-22-ventas-bookscan-estados-unidos/": "https://www.bing.com/th?id=ONUT.QxWhfW98wLjVWjWyoKYN-w&pid=News&w=1200",
   "https://games.sina.cn/esports/2026-11-25/edetail-inizxxye8585178.d.html?vt=4&pos=108": "http://n.sinaimg.cn/games/crawl/59/w550h309/20261125/fce6-7709fe58ce8eb73bce63f661340f87ca.png",
@@ -73,6 +72,7 @@
   "https://www.setn.com/news/897693": "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg",
   "https://www.sina.cn/news/detail/5369300087212083.html": "http://wx3.sinaimg.cn/middle/8b511c18ly1ijewotmbulj22nm3ji1l3.jpg",
   "https://www.superherohype.com/news/708323-batman-knightfall-part-1-hbo-max-streaming-release-date": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/09/Untitled-design-2026-09-21T171424.351.jpg?resize=1200,630",
+  "https://www.thetraveler.org/hakuba-vs-nozawa-onsen-practical-transport-guide-2026-27/": "https://thetraveler.s3.amazonaws.com/images/hero/hakuba-nozawa-transport-guide_1200x675.jpg",
   "https://www.upmedia.mg/tw/game/mobile-game/274821": "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp",
   "https://www.vietnam.vn/ja/samsung-galaxy-a24-nhan-one-ui-9-dua-tren-android-17-dot-nang-cap-lon-cuoi-cung-cua-may": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/18/1795001058159_img_af34ace4.jpeg",
   "https://www.voicemag.uk/blog/17137/avengers-doomsday-final-trailer-marvel-gamble": "https://cdn.abcotvs.com/dip/images/20070618_1123-otrc-avengersdoomsday-img.jpg?w=1600",
@@ -1503,13 +1503,13 @@
    "because": "滑雪",
    "date": "2026-11-25",
    "hits": [],
-   "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg",
+   "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/snow-achooter.jpg",
    "kind": "board",
    "score": 4,
    "source": "DMKsnowboard",
    "taste": [],
-   "title": "リズムジャパン、白馬の「リズムサミット店」を2店舗体制に拡大！2026年冬シーズンから新ブランドも展開",
-   "url": "https://dmksnowboard.com/rhythm-japan-summit-hakuba-store-expansion-2026/",
+   "title": "スノーボードの合間にも楽しめる？世界最新ジャンルの雪上フリースタイルスクーター「Ereticスノースクーター」日本初上陸",
+   "url": "https://dmksnowboard.com/eretic-snow-scooter-japan-2027/",
    "words": [],
    "work": "滑雪"
   },
@@ -1518,13 +1518,13 @@
    "because": "滑雪",
    "date": "2026-11-25",
    "hits": [],
-   "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/snow-achooter.jpg",
+   "image": "https://thetraveler.s3.amazonaws.com/images/hero/hakuba-nozawa-transport-guide_1200x675.jpg",
    "kind": "board",
    "score": 4,
-   "source": "DMKsnowboard",
+   "source": "https://www.thetraveler.org/",
    "taste": [],
-   "title": "スノーボードの合間にも楽しめる？世界最新ジャンルの雪上フリースタイルスクーター「Ereticスノースクーター」日本初上陸",
-   "url": "https://dmksnowboard.com/eretic-snow-scooter-japan-2027/",
+   "title": "Hakuba vs Nozawa Onsen: Practical Transport Guide 2026–27",
+   "url": "https://www.thetraveler.org/hakuba-vs-nozawa-onsen-practical-transport-guide-2026-27/",
    "words": [],
    "work": "滑雪"
   },
@@ -1956,15 +1956,15 @@
    8
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
    "作品:三星手机",
    7
   ],
   [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "galaxy",
    7
   ]
  ]

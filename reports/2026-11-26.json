@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "b2af8edb139e",
+ "edit_sig": "989f734c0694",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -138,24 +138,29 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "岩手・八幡平市の安比高原スキー場で、シーズンオープンを前に安全祈願祭が行われた。",
      "date": "2026-11-25",
-     "n": 1,
-     "source": "IAT岩手朝日テレビ",
-     "title": "安比高原スキー場でオープンを前に安全祈願祭【岩手・八幡平市】",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1UVWVYZnVSWjY2bDF1MXhlUFN2aXRTMDlycm5xQ0VTS2VGRjJoMko2Z2ZoWkZjemQwcC1RX09yWGo5VUFaNmRvaDZzVTZoVXI2X2JrM1lNVQ?oc=5"
+     "headline": "安比高原スキー場でオープンを前に安全祈願祭",
+     "highlight": "オープンを前に",
+     "image": "https://ssl-cache.stream.ne.jp/www50/eqb972zbds/jmc_pub/thumbnail/00130/f84e05a4a86e4a90a49cde2ad0b79836_17_15.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.iat.co.jp/news-iat/news-2301641/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-25",
-     "n": 2,
-     "source": "DMKsnowboard",
-     "title": "リズムジャパン、白馬の「リズムサミット店」を2店舗体制に拡大！2026年冬シーズンから新ブランドも展開",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBSUVlXYy0tZFJ3N0t1NXpvVVo0cEJXYmVsUy1veE9rX1dqSnFYNTVfUTJTTW9aLUpjREpnRktuNzU5R2ZJU2d4cjl5WGc0WXY4QnpYTnZlT3ZwM1BGa0M0MmlXNmFySk9MZFlXUXNQYTBZTmFwTVZ5TF9UUF9Idw?oc=5"
+     "headline": "リズムジャパン、白馬の「リズムサミット店」を2店舗体制に拡大",
+     "highlight": "2店舗体制に拡大",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/rhythm-japan-summit-hakuba-store-expansion-2026/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",

@@ -241,7 +241,8 @@
   "ぐでたま": 1,
   "猫用品": 1,
   "绝区零": 1,
-  "Vaundy": 2
+  "Vaundy": 2,
+  "滑雪": 2
  },
  "周杰伦": [
   {
@@ -424,6 +425,27 @@
   {
    "headline": "Nulbarich・JQ、ヨルシカn-buna＆Vaundyとのコラボ曲でJOYSOUNDキャンペーン 直筆サイン入りグッズ当たる",
    "highlight": "JOYSOUNDキャンペーン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "安比高原スキー場でオープンを前に安全祈願祭",
+   "highlight": "オープンを前に",
+   "blurb": "岩手・八幡平市の安比高原スキー場で、シーズンオープンを前に安全祈願祭が行われた。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://ssl-cache.stream.ne.jp/www50/eqb972zbds/jmc_pub/thumbnail/00130/f84e05a4a86e4a90a49cde2ad0b79836_17_15.jpg"
+  },
+  {
+   "headline": "リズムジャパン、白馬の「リズムサミット店」を2店舗体制に拡大",
+   "highlight": "2店舗体制に拡大",
    "blurb": "",
    "weight": "normal",
    "refs": [
