@@ -1,32 +1,32 @@
 {
- "admin": "c7f04939d652",
- "admin-ai": "7f3271e21076",
+ "admin": "95cfb01c0c1a",
+ "admin-ai": "a58d4c91f51a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "238b677c"
+   "e7e73a65"
   ],
   "tokens": [
    "AI 編集のトークン",
    "d8263e5d"
   ]
  },
- "admin-boards": "a526392848d5",
+ "admin-boards": "2e3924d013a8",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "eb72c434"
+   "4a6f5dde"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "03bfcc236c3c",
+ "admin-emblem": "5a656caf24ef",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c569d10e"
+   "1f4bbd35"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "9886177bce20",
+ "admin-now": "9aed5821930b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9e11103b"
+   "b1ecd302"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "cb0aad8a"
+   "96f45b1d"
   ],
   "term-panel": [
    "ライブログ",
-   "bf4d917d"
+   "8a41ead9"
   ]
  },
- "admin-system": "d454e82adaef",
+ "admin-system": "50a0f1012150",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "0f79adc3"
+   "3fb76734"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "5e4a6a5d"
+   "d8afa916"
   ]
  },
  "admin_marks": {},
- "heat": "f3895649d0e1",
+ "heat": "4ef07508bd25",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "fd3a9e04"
+   "700eaf08"
   ],
   "ranking": [
    "ランキング",
-   "9d3e1f92"
+   "678a9016"
   ]
  },
- "index": "4e904eb72c78",
+ "index": "04985a8981c6",
  "index_marks": {
   "front": [
    "トップ",
-   "ee7a2e54"
+   "036c98c8"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "548ca551"
+   "3d22d585"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "e32eae67"
+   "aea12246"
   ],
   "w-b867582f": [
    "あつ森",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "7f38662f"
+   "ff0b29cf"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "84909331"
+   "92d3e441"
   ]
  },
- "updated": "11.25 09:25",
- "wishlist": "f44e93e42519"
+ "updated": "11.25 09:30",
+ "wishlist": "f117ffb29c67"
 }
