@@ -461,7 +461,7 @@
   "绝区零": 21,
   "MMORPG 新作": 20,
   "ILLIT": 10,
-  "dota2": 19,
+  "dota2": 25,
   "チェーンソーマン": 11,
   "周杰伦": 36,
   "A2O LITE": 7,
@@ -552,7 +552,9 @@
    "refs": [
     10,
     12,
-    16
+    16,
+    22,
+    24
    ]
   },
   {
@@ -565,7 +567,27 @@
     9,
     13,
     17,
-    18
+    18,
+    21
+   ]
+  },
+  {
+   "headline": "Larl named the best heroes of patch 7.42 for playing on the midlane in Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20
+   ]
+  },
+  {
+   "headline": "電競世界盃 2027 首波 5 個項目公開 《英雄聯盟》《特戰英豪》與《Dota 2》入列",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23,
+    25
    ]
   }
  ],
