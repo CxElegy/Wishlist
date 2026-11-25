@@ -1595,6 +1595,12 @@
   "target": 720,
   "v": 3
  },
+ "https://d2l930y2yx77uc.cloudfront.net/production/social_images/b8cc85dc53199030eaefc70093620c14884c79fa.png": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/c8d89e7055a22c38ddbcc48ad44ef2b0bf3c4116.png": {
   "w": 1280,
   "h": 670,
@@ -2541,6 +2547,57 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ibTRi.img": {
+  "w": 322,
+  "h": 581,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.568,
+  "local": "pics/2b73dfc2fce7f380.webp",
+  "out": [
+   709,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    9,
+    9,
+    7,
+    6,
+    8,
+    6,
+    7,
+    9,
+    10,
+    10,
+    11,
+    7
+   ],
+   [
+    15,
+    16,
+    10,
+    14,
+    14,
+    9,
+    7,
+    2,
+    2,
+    6,
+    2,
+    2
+   ]
+  ],
+  "c": "#cb9b7d",
+  "k": [
+   0.477,
+   0.15,
+   0.55,
+   0.182
+  ],
+  "p": null
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2iddbD.img": {
   "w": 1280,
   "h": 720,
@@ -2857,8 +2914,53 @@
  "https://img.topics.smt.news.goo.ne.jp/picture/cocotte/m_cocotte-652855.jpg": {
   "w": 512,
   "h": 466,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.501,
+  "local": "pics/b3d5149e9abd9e31.webp",
+  "out": [
+   1280,
+   1165
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    2,
+    2,
+    3,
+    12,
+    17,
+    10,
+    13,
+    16,
+    13,
+    5,
+    3,
+    3
+   ],
+   [
+    7,
+    16,
+    18,
+    8,
+    2,
+    5,
+    11,
+    6,
+    8,
+    12,
+    3,
+    4
+   ]
+  ],
+  "c": "#aa8c8b",
+  "k": [
+   0.244,
+   0.112,
+   0.784,
+   0.848
+  ],
+  "p": null
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/japanesejoins/m_japanesejoins-357754.jpg": {
   "w": 640,
@@ -6318,12 +6420,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT._j7WkWjm5UU7zejxzfFoEw&pid=News&w=322": {
-  "w": 322,
-  "h": 581,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.aeUo3esKts-H04KlWVE6KQ&pid=News&w=480": {
   "w": 480,
   "h": 480,
@@ -7123,6 +7219,12 @@
   "w": 1440,
   "h": 810,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.indexbox.io/landing/img/blog/custom-report-v2-localized/ja/cat-milk-market-forecast-to-2035-premiumization-and-feline-health-focus-drive-growth-414ef638991a0efa.webp": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://www.indiewire.com/wp-content/uploads/2026/11/ar6w52.png": {
