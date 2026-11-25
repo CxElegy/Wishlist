@@ -1,6 +1,6 @@
 {
  "admin": "2935a574f3f1",
- "admin-ai": "fadaad6e162a",
+ "admin-ai": "fe9e95f66991",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "b351672a"
+   "aeca23d0"
   ]
  },
  "admin-boards": "66d26b6275b2",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "547805a89971",
+ "admin-emblem": "007f513b9c4c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b438b06a"
+   "df8bceef"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "8a2c2e22af8e",
+ "admin-now": "7ba331c23a01",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2e4af3e3"
+   "5cb1b5b1"
   ]
  },
- "admin-system": "95558490af43",
+ "admin-system": "91a6721f11dd",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a629f577"
+   "9b64ed80"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9421268b"
+   "91c1cb53"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "45ef9c81"
   ]
  },
- "index": "a5fb487593cd",
+ "index": "c3eed3a7e9db",
  "index_marks": {
   "front": [
    "トップ",
-   "a2ba50b6"
+   "4fb3ed52"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "675f9eca"
+   "3ee7b7b4"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "44e8b80d"
+   "89496263"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "8b5b85c3"
+   "d6d304c2"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1c9e1524"
+   "67f0b9d5"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -169,15 +169,15 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "23318e45"
+   "dcf327b9"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "3957cb08"
+   "773ed86c"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "ee70572a"
+   "fea2f076"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "2dd298ff"
+   "56e90385"
   ],
   "w-f303ad09": [
    "绝区零",
    "c9528ac2"
   ]
  },
- "updated": "11.26 03:35",
+ "updated": "11.26 03:42",
  "wishlist": "3e9f37f6223d"
 }
