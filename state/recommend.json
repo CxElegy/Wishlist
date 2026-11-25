@@ -57,6 +57,7 @@
   "https://www.epochtimes.com/b5/26/11/20/n14892147.htm": "https://i.epochtimes.com/assets/uploads/2026/11/id14892156-S__1377828886_0-1200x800.jpg",
   "https://www.fountmedia.io/article/446804": "https://fountmedia.s3.ap-northeast-1.amazonaws.com/article/08/04/446804_6535.webp?v=1795164936",
   "https://www.gdnonline.com:443/Details/1413938": "https://www.gdnonline.com/gdnimages/20261125%5C20261125153511Carolweb(45).jpg",
+  "https://www.imdb.com/news/ni66127452/?ref_=nmnw_art_perm": "https://cdn.abcotvs.com/dip/images/20070618_1123-otrc-avengersdoomsday-img.jpg",
   "https://www.laoyaoba.com/wiki/QTi7LfhNJEGW.php": null,
   "https://www.m-i.kr/news/articleView.html?idxno=2021148": "https://cdn.m-i.kr/news/photo/202611/2021148_2021850_3855.jpg",
   "https://www.mirror.co.uk/tv/tv-news/harry-potter-tv-series-director-37912319": "https://www.bing.com/th?id=ONUT.f4QZ0VIySVJrVzNFFgoQaQ&pid=News&w=1200",
@@ -1434,6 +1435,27 @@
   },
   {
    "batch": 5,
+   "because": "漫威电影",
+   "date": "2026-11-25",
+   "hits": [],
+   "image": "https://cdn.abcotvs.com/dip/images/20070618_1123-otrc-avengersdoomsday-img.jpg",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "IMDb",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "‘Avengers: Doomsday’ Final Trailer Just Rewrote Disney History, and Only One Web-Slinger Still Stands Above It",
+   "url": "https://www.imdb.com/news/ni66127452/?ref_=nmnw_art_perm",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-11-25",
    "hits": [],
@@ -1496,7 +1518,7 @@
    "work": "哈利波特剧集"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "哈利波特剧集",
    "date": "2026-11-24",
    "hits": [],
@@ -1595,7 +1617,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "滑雪",
    "date": "2026-11-25",
    "hits": [],

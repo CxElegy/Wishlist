@@ -815,6 +815,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.juksy.com/files/articles/155694/6b06976792acd.png": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.st-note.com/production/uploads/images/336983412/rectangle_large_type_2_6ab3f3f2b8f17348b881bc944d8c523f.jpeg?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -1120,6 +1126,12 @@
  "https://cdn-origin.cool-style.com.tw/cool/2026/11/snlkrh.webp": {
   "w": 600,
   "h": 315,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.abcotvs.com/dip/images/20070618_1123-otrc-avengersdoomsday-img.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -2080,6 +2092,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i.pcmag.com/imagery/articles/02Pn5pl9xI8TSNIf0rFNbTx-1.fit_lim.size_1200x630.v1795262084.png": {
+  "w": 1120,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://i.pcmag.com/imagery/articles/06urdG5uq5dA4iuVN7r9JeM-9.fit_lim.size_1200x630.v1795191546.jpg": {
   "w": 1120,
   "h": 630,
@@ -2270,6 +2288,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.digitalfoundry.net/5b5fb7858d826/1280x720.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://images.highwise.com/stories/408909-1795279037065.jpg": {
   "w": 1280,
   "h": 704,
@@ -2346,6 +2370,12 @@
  "https://images.thedirect.com/media/article_full/1000014649.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-cdn.publive.online/fit-in/1200x675/pcq/media/media_files/2026/11/25/will-samsung-galaxy-s27-become-more-expensive-in-india-2026-11-25-12-05-21.jpeg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -2528,6 +2558,18 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i9b5M.img": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i9cTE.img": {
+  "w": 1600,
+  "h": 899,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2idg1g.img": {
+  "w": 1500,
+  "h": 1000,
   "target": 720,
   "v": 3
  },
@@ -2985,6 +3027,12 @@
    0.555
   ]
  },
+ "https://img.toy-people.com/member/179561542855_1200.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.youtube.com/vi/Oae1ZnQ15gQ/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
@@ -3113,6 +3161,12 @@
   "w": 880,
   "h": 290,
   "target": 1280,
+  "v": 3
+ },
+ "https://maxblizz.com/wp-content/uploads/2026/11/Secret-Wars.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2024-04/240430-cat-toys-pet-week-kb-social-04c943.jpg": {
@@ -4148,6 +4202,61 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261124-00000003-jisin-000-7-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 948,
+  "target": 720,
+  "v": 3,
+  "local": "pics/b43c84b6e9d25f5b.webp",
+  "out": [
+   1200,
+   948
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    8,
+    14,
+    4,
+    6,
+    14,
+    5,
+    9,
+    9,
+    6,
+    7,
+    13,
+    5
+   ],
+   [
+    0,
+    23,
+    36,
+    10,
+    5,
+    4,
+    5,
+    5,
+    3,
+    3,
+    2,
+    4
+   ]
+  ],
+  "c": "#878098",
+  "k": [
+   0.03,
+   0.123,
+   1.0,
+   0.616
+  ],
+  "p": [
+   0.017,
+   0.053,
+   0.945,
+   0.425
+  ]
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261124-00000016-cdj-000-1-view.jpg?exp=10800": {
   "w": 640,
   "h": 427,
@@ -4742,6 +4851,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/68aa33ce96779d44d2c1d6a658b947a32330ea312e0294adabe44425015c905e/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fdeadline.com%2Fdc26a223296153258e40f00c0f81fd4d.jpg_up.jpg": {
+  "w": 1200,
+  "h": 676,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/834d7d301bc33c51650b429e266f3ee4f3f1f4a03b2f085b60dbf4bdbe324f45/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fctwant_styletc_883%2F93b8f1c8a1f5e0eb9c66aff32ba74b98.jpg_up.jpg": {
   "w": 1200,
   "h": 728,
@@ -4770,6 +4885,12 @@
   "w": 1200,
   "h": 674,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.jp/images/news-web/versions/20261125-0f1c0fc/all/images/ogp_user_commentPerma.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://sammyguru.com/wp-content/uploads/2026/04/Galaxy-S26-SammyGuru-Galaxy-AI-1024x576.jpg": {
@@ -4859,6 +4980,12 @@
    0.484
   ]
  },
+ "https://shira-treat.com/wp-content/uploads/2026/11/illit-nenmatsu-music-1200.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://sm.ign.com/t/ign_nordic/feature/i/ive-played/ive-played-gta-6-for-110-hours-here-are-the-weirdest-things_4488.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -4895,6 +5022,12 @@
   "target": 720,
   "v": 3
  },
+ "https://sportsseoulweb.jp/files/user/2026/ic2026892738968952365892738956289895987895.jpg": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3
+ },
  "https://startefacts.com/k2/news/canvas/1200x630/upload/upload/news/671683521188.jpg": {
   "w": 1200,
   "h": 630,
@@ -4910,6 +5043,12 @@
  "https://static.chunichi.co.jp/image/article/size1/9/9/e/e/99eef173c63e943807a6a19c3ca5f283_1.jpg": {
   "w": 843,
   "h": 1220,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static.gameinformer.com/sites/default/files/styles/og_image/public/2026/11/25/73e7e9ea/cooldog2-header.jpeg.webp": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -5268,6 +5407,12 @@
  "https://thetv.jp/i/nw/1455297/19089153.jpg?w=1284": {
   "w": 1284,
   "h": 722,
+  "target": 1280,
+  "v": 3
+ },
+ "https://thetv.jp/i/nw/1460315/19283144.jpg?w=1284": {
+  "w": 1284,
+  "h": 856,
   "target": 1280,
   "v": 3
  },
@@ -6321,6 +6466,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.l6fTuWepC332HFAO4XlN3Q&pid=News&w=960": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.lnSndiMWFEbIO7nSDNSnog&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -6808,6 +6959,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-3.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Galaxy-S27-Ultra-.jpg": {
   "w": 1280,
   "h": 720,
@@ -6874,6 +7031,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.indiewire.com/wp-content/uploads/2026/11/ar6w52.png": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.inside-games.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1810260.png": {
   "w": 691,
   "h": 389,
@@ -6929,6 +7092,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.381
+ },
+ "https://www.mymobileindia.com/wp-content/uploads/2026/11/samsung-serice.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
  },
  "https://www.naijaandroidarena.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Pro-certification.jpeg": {
   "w": 997,
