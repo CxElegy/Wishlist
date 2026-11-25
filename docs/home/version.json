@@ -1,6 +1,6 @@
 {
  "admin": "b8d563743909",
- "admin-ai": "ac18402e322a",
+ "admin-ai": "07e7bb9e6c82",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "968b68f6"
+   "de506268"
   ]
  },
  "admin-boards": "373e4ae86e24",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "179d50a0b7aa",
+ "admin-emblem": "874d83fd982e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "58fb88e4"
+   "3a4b2242"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "b7dcfec34c6f",
+ "admin-now": "85dafee95e93",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2fd1264f"
+   "b13de0f9"
   ]
  },
- "admin-system": "87f3a2c90569",
+ "admin-system": "5fdf3fe00dab",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "fac74415"
+   "5c2387ba"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "3582dd5f"
+   "f65a2f3a"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "1c737bf5"
   ]
  },
- "index": "53e6d52ba1a7",
+ "index": "402499f4f2e9",
  "index_marks": {
   "front": [
    "トップ",
-   "549bf50a"
+   "370b5a18"
   ],
   "picks": [
    "気になるかも？",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "2c70099d"
+   "d7ef7dba"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "01dd84aa"
+   "6a12ff02"
   ],
   "w-6676e624": [
    "三星手机",
@@ -173,11 +173,11 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "94d64ecb"
+   "ccc58134"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "618b4d2c"
+   "fcb4c142"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "e1e37bd9"
+   "d58edeb6"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "e32d7ae8"
+   "6f97e24a"
   ],
   "w-f303ad09": [
    "绝区零",
-   "9e1ef310"
+   "c9528ac2"
   ]
  },
- "updated": "11.26 02:36",
+ "updated": "11.26 02:39",
  "wishlist": "31a8c10c3327"
 }
