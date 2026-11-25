@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "e8888a2fed8f",
+ "edit_sig": "626e9aba35aa",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -652,15 +652,6 @@
    "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "name": "FROM",
-   "pending": [
-    {
-     "date": "2026-11-24",
-     "n": 4,
-     "source": "Just Jared on MSN",
-     "title": "Prime Video’s MGM+ deal lets ‘From’ fans watch season 4 for $1.99 a month",
-     "url": "https://www.msn.com/en-us/entertainment/tv/prime-video-s-mgm-deal-lets-from-fans-watch-season-4-for-1-99-a-month/ar-AA2i9vgR"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -681,6 +672,16 @@
      "image": "https://startefacts.com/k2/news/canvas/1200x630/upload/upload/news/671683521188.jpg",
      "image_via": "og:image",
      "url": "https://startefacts.com/news/froms-harold-perrineau-says-lost-let-him-go-over-one-request",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-24",
+     "headline": "Prime Video’s MGM+ deal lets ‘From’ fans watch season 4 for $1.99 a month",
+     "highlight": "$1.99 a month",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2i9b5M.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/entertainment/tv/prime-video-s-mgm-deal-lets-from-fans-watch-season-4-for-1-99-a-month/ar-AA2i9vgR",
      "weight": "normal"
     }
    ],
