@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-25T09:29:18+00:00",
+ "checked": "2026-11-25T10:18:01+00:00",
  "fired": {
   "at": "2026-11-25T08:34:30+00:00",
   "results": {
@@ -82,10 +82,14 @@
     "A2O LITE",
     "ILLIT",
     "dota2",
+    "lib:F1",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
+    "lib:NBA",
     "lib:ゼルダの伝説",
+    "lib:ユニクロ",
     "lib:原神",
+    "lib:無印良品",
     "哈利波特剧集",
     "绝区零"
    ],
@@ -100,10 +104,10 @@
    "ripe": [
     "绝区零"
    ],
-   "sig": "647694743e66",
+   "sig": "f3f93da95178",
    "token_cap": 1000000,
    "tokens_today": 543666,
-   "why": "整理待ちの記事 56 件（9 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 104 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
