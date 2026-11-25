@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "eb4953240d27",
+ "edit_sig": "e8888a2fed8f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -921,38 +921,8 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-24",
-     "n": 19,
-     "source": "note",
-     "title": "I Played Zenless Zone Zero for Two Years and Quit While I Still Loved It",
-     "url": "https://note.com/vast_flax7702/n/n00f994a15750?hl=en"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 20,
-     "source": "手机新浪网",
-     "title": "绝区零3.4 前瞻：兑换码与卡池福利汇总|绝区零|知更鸟|卡芙卡|爱丽丝|挽昼|帕姆_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE50S1pUejdTMllpZHFhbU1LMUx1M1JZd0x3SzlNc1FhS0o3TlMwel9ZWDR2dDJpbGdaR1hjZk50MXJtYVcwNW00OWdFblIxS3BVeFhHQldidGh5d0FDSkNGVmZ1Yw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-20",
-     "event": {
-      "date": "2026-12-05",
-      "label": "開催"
-     },
-     "headline": "GiGOとゼンレスゾーンゼロが第3弾コラボ、12月5日から開催",
-     "highlight": "",
-     "image": "https://collabo-cafe.com/wp-content/uploads/zenless-shop-tieup-gigo-vol3-2026-2027-featured.jpg",
-     "image_via": "JSON-LD",
-     "url": "https://news.dellows.jp/1302180/",
-     "weight": "hero"
-    },
     {
      "blurb": "",
      "date": "2026-11-20",
@@ -985,6 +955,20 @@
      "image": "https://media.ixbt.games/1600x900/smart/jpeg/ixbt-images/1744323/media-745e3dbebc1e2fb5a929b8d077789dd20274c55efc210916ddc821676a6859ac.png",
      "image_via": "og:image",
      "url": "https://ixbt.games/es/news/2026/11/20/zenless-zone-zero-polucit-kollab-s-ritm-igroi-djmax-respect-v-pervyi-tizer.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-20",
+     "event": {
+      "date": "2026-12-05",
+      "label": "開催"
+     },
+     "headline": "GiGOとゼンレスゾーンゼロが第3弾コラボ、12月5日から開催",
+     "highlight": "12月5日から開催",
+     "image": "https://collabo-cafe.com/wp-content/uploads/zenless-shop-tieup-gigo-vol3-2026-2027-featured.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://news.dellows.jp/1302180/",
      "weight": "normal"
     }
    ],
