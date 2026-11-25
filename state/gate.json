@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-25T01:23:37+00:00",
+ "checked": "2026-11-25T02:18:06+00:00",
  "fired": {
   "at": "2026-11-25T00:32:29+00:00",
   "results": {
@@ -104,11 +104,15 @@
    "need": true,
    "prog": 354,
    "prog_day": "2026-11-25",
-   "ripe": [],
-   "sig": "1b4e831646aa",
+   "ripe": [
+    "A2O LITE",
+    "The Mandalorian",
+    "gelato pique"
+   ],
+   "sig": "371df84af2ba",
    "token_cap": 1000000,
    "tokens_today": 316249,
-   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
