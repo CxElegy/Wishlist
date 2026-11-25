@@ -1167,6 +1167,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn-origin.cool-style.com.tw/cool/2026/11/snlkrh.webp": {
+  "w": 600,
+  "h": 315,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.abcotvs.com/dip/images/20070618_1123-otrc-avengersdoomsday-img.jpg": {
   "w": 1280,
   "h": 720,
@@ -2918,6 +2924,62 @@
   "h": 995,
   "target": 1280,
   "v": 3
+ },
+ "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1498140860871820890/origin_1.jpg": {
+  "w": 360,
+  "h": 265,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.601,
+  "local": "pics/59cb835065185c7c.webp",
+  "out": [
+   1080,
+   795
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    2,
+    4,
+    16,
+    5,
+    9,
+    12,
+    8,
+    12,
+    5,
+    16,
+    4,
+    6
+   ],
+   [
+    1,
+    33,
+    28,
+    7,
+    4,
+    5,
+    4,
+    2,
+    3,
+    2,
+    4,
+    7
+   ]
+  ],
+  "c": "#6f7393",
+  "k": [
+   0.676,
+   0.276,
+   1.0,
+   0.976
+  ],
+  "p": [
+   0.136,
+   0.028,
+   0.862,
+   0.364
+  ]
  },
  "https://img.kai-you.net/storage/2026/11/544857dd-1374-4c12-b524-1b1a160c4f20/main/karubi-momareru.webp": {
   "w": 840,
