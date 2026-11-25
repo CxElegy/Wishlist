@@ -1,32 +1,32 @@
 {
- "admin": "1ebc20afbe66",
- "admin-ai": "485ed570d56b",
+ "admin": "0ed6ccfe6c9a",
+ "admin-ai": "8203411f61b1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "04520d61"
+   "c1453662"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "4278f699"
+   "9122e2ba"
   ]
  },
- "admin-boards": "66d26b6275b2",
+ "admin-boards": "471f54b7e6c7",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "348236e9"
+   "0e12bb98"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "4ca7e63d0c48",
+ "admin-emblem": "a6f82e6f411f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d929dbcd"
+   "85bd7548"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "4c2f176fb5f5",
+ "admin-now": "668646a51fd4",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "75002977"
+   "36fe40d5"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "aa5ab028"
+   "2442aa5a"
   ],
   "term-panel": [
    "ライブログ",
-   "ffcf51dc"
+   "3f2415b6"
   ]
  },
- "admin-system": "292c6a98a408",
+ "admin-system": "accff0af730d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "44f88dc2"
+   "9b6a9429"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "81fff68c"
+   "c6db81ad"
   ]
  },
  "admin_marks": {},
- "heat": "347063d79e1f",
+ "heat": "37afb285fd93",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e31eb547"
+   "1c29ee48"
   ],
   "ranking": [
    "ランキング",
-   "45ef9c81"
+   "00aa7eb3"
   ]
  },
- "index": "4d722c0a725d",
+ "index": "af4f9a40c31f",
  "index_marks": {
   "front": [
    "トップ",
-   "f36102b5"
+   "a0ce73f2"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "ecda9d93"
+   "f2db15ae"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "1ab2ff14"
+   "bb8cee0f"
   ],
   "w-b867582f": [
    "あつ森",
@@ -169,11 +169,11 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "dcf327b9"
+   "288268c8"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "773ed86c"
+   "17cc4c85"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "489daac7"
+   "1a6f44cf"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "c9528ac2"
   ]
  },
- "updated": "11.26 05:20",
+ "updated": "11.26 05:26",
  "wishlist": "3e9f37f6223d"
 }
