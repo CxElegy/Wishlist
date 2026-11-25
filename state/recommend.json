@@ -7,7 +7,6 @@
  },
  "images": {
   "http://www.excite.co.jp/news/article/Nijimen_0000000000662935/": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/4263a587dc0e48ecbb9118fc98d20b5f.png",
-  "https://applealmond.com/posts/333532": "https://applealmond.com/wp-content/uploads/2026/11/1795570707-bd6a5f826014b7cba72047200ea13784.jpg",
   "https://appmedia.jp/bleach-mh/80520952": "https://appmedia.jp/wp-content/uploads/2026/10/161816_2lqg4.webp",
   "https://appmedia.jp/bleach-mh/80521930": "https://appmedia.jp/wp-content/uploads/2026/10/171909_ap0ce.webp",
   "https://article.auone.jp/34cd21ab-3681-4097-996f-03ffcb93b1f4": "https://portal.auone.jp/media/thumbnails/2026/11/22/89007_w1280.webp",
@@ -45,7 +44,6 @@
   "https://prtimes.jp/main/html/rd/p/000000162.000045524.html": "https://prcdn.freetls.fastly.net/release_image/45524/162/45524-162-bc88fc61e35f1f558e83024870283cef-1920x1280.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://prtimes.jp/main/html/rd/p/000001017.000030942.html": "https://prcdn.freetls.fastly.net/release_image/30942/1017/30942-1017-9156bd3c0912825ebd9f31d5cee75226-728x412.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://rurubu.jp/andmore/article/16584?page=3": "https://rurubu.jp/img_srw/andmore/images/0000757572/l_uBtSB0lIfY8JoBIu1xbN4PDVOXBCcinzSEY1tvpT.jpg",
-  "https://screenrant.com/avengers-doomsday-final-trailer-supports-young-avengers-secret-wars-theory/": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/superheroes-assembled-on-the-poster-for-avengers-doomsday.jpg?w=1600&h=900&fit=crop",
   "https://sporked.com/article/starbucks-just-dropped-the-cutest-cloudy-cups-mugs/": "https://sporked.com/wp-content/uploads/2026/04/starbucks-65-subscription.jpg",
   "https://thelocalgirl.com/calendar/event/washington-spirit-championship-watch-party-at-chubby-squirrel-brewing-company-in-fairfax/": "https://thelocalgirl.com/calendar/wp-content/uploads/sites/11/2026/11/Screenshot-2026-11-19-094645.png",
   "https://times.abema.tv/articles/photo/10290918": "https://times-abema.ismcdn.jp/mwimgs/f/3/1200w/img_f34f772640081f865a820431509d2d1d71994.jpg",
@@ -64,6 +62,7 @@
   "https://www.epochtimes.com/b5/26/11/20/n14892147.htm": "https://i.epochtimes.com/assets/uploads/2026/11/id14892156-S__1377828886_0-1200x800.jpg",
   "https://www.eprice.com.hk/mobile/talk/4568/228373/1": "https://img.eprice.com.hk/img/news_hk/41638/big.jpg",
   "https://www.fomos.kr/game/news_view?entry_id=157572&news_cate_id=2": "https://www.bing.com/th?id=ONUT.6dCCTfjI_QU6zZzUOBoFWA&pid=News&w=1200",
+  "https://www.imdb.com/news/ni66127452/?ref_=nmnw_art_perm": "https://cdn.abcotvs.com/dip/images/20070618_1123-otrc-avengersdoomsday-img.jpg",
   "https://www.jalopnik.com/2326363/gta-6-grand-theft-auto-car-theft-key-cloning-slim-jim-tracker/": "https://www.jalopnik.com/img/gallery/from-key-cloning-to-car-trackers-how-gta-6-is-making-car-theft-a-bigger-hassle/l-intro-1795524480.jpg",
   "https://www.laoyaoba.com/wiki/QTi7LfhNJEGW.php": null,
   "https://www.ludens.com.tw/ewc-2027-first-five-titles-announced/": null,
@@ -83,6 +82,7 @@
   "https://www.superherohype.com/news/708323-batman-knightfall-part-1-hbo-max-streaming-release-date": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/09/Untitled-design-2026-09-21T171424.351.jpg?resize=1200,630",
   "https://www.thetraveler.org/hakuba-vs-nozawa-onsen-practical-transport-guide-2026-27/": "https://thetraveler.s3.amazonaws.com/images/hero/hakuba-nozawa-transport-guide_1200x675.jpg",
   "https://www.upmedia.mg/tw/game/mobile-game/274821": "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp",
+  "https://www.voicemag.uk/blog/17137/avengers-doomsday-final-trailer-marvel-gamble": "https://cdn.abcotvs.com/dip/images/20070618_1123-otrc-avengersdoomsday-img.jpg?w=1600",
   "https://www.walkerland.com.tw/subject/view/425746": "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/11/1795265411810-5f16989da27141be94c40fd9afa2b6f8-850x446.webp",
   "https://www.walkerplus.com/article/100256/": "https://news.walkerplus.com/article/100256/555161_615.jpg",
   "https://www.walkerplus.com/article/1178257/": "https://news.walkerplus.com/article/1178257/12605406_615.jpg",
@@ -1410,6 +1410,48 @@
   },
   {
    "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-25",
+   "hits": [],
+   "image": "https://cdn.abcotvs.com/dip/images/20070618_1123-otrc-avengersdoomsday-img.jpg?w=1600",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "Voice Magazine",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Avengers: Doomsday's final trailer delivers hype, but can Marvel's big gamble pay off?",
+   "url": "https://www.voicemag.uk/blog/17137/avengers-doomsday-final-trailer-marvel-gamble",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 5,
+   "because": "漫威电影",
+   "date": "2026-11-25",
+   "hits": [],
+   "image": "https://cdn.abcotvs.com/dip/images/20070618_1123-otrc-avengersdoomsday-img.jpg",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "IMDb",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "‘Avengers: Doomsday’ Final Trailer Just Rewrote Disney History, and Only One Web-Slinger Still Stands Above It",
+   "url": "https://www.imdb.com/news/ni66127452/?ref_=nmnw_art_perm",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-11-25",
    "hits": [],
@@ -1431,27 +1473,6 @@
   },
   {
    "batch": 5,
-   "because": "漫威电影",
-   "date": "2026-11-25",
-   "hits": [],
-   "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/superheroes-assembled-on-the-poster-for-avengers-doomsday.jpg?w=1600&h=900&fit=crop",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "ScreenRant",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Avengers: Doomsday’s Final Trailer Supports The Biggest Young Avengers Theory",
-   "url": "https://screenrant.com/avengers-doomsday-final-trailer-supports-young-avengers-secret-wars-theory/",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 5,
    "because": "ぐでたま",
    "date": "2026-11-25",
    "hits": [],
@@ -1470,27 +1491,6 @@
    "url": "https://www.msn.com/en-us/entertainment/general/kfc-x-sanrio-gudetama-suitcase-unboxing/vi-AA1vDAls",
    "words": [],
    "work": "ぐでたま"
-  },
-  {
-   "batch": 5,
-   "because": "漫威电影",
-   "date": "2026-11-25",
-   "hits": [],
-   "image": "https://applealmond.com/wp-content/uploads/2026/11/1795570707-bd6a5f826014b7cba72047200ea13784.jpg",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "蘋果仁",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "《復仇者聯盟：末日崛起》12款限定小卡公開！12/2全版本預售、購票領取攻略",
-   "url": "https://applealmond.com/posts/333532",
-   "words": [],
-   "work": "漫威电影"
   },
   {
    "batch": 5,
@@ -2143,15 +2143,15 @@
    8
   ],
   [
-   "galaxy",
-   7
-  ],
-  [
    "三星 Galaxy",
    7
   ],
   [
    "作品:三星手机",
+   7
+  ],
+  [
+   "galaxy",
    7
   ]
  ]
