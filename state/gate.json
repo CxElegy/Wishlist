@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-25T05:21:35+00:00",
+ "changed": true,
+ "checked": "2026-11-25T06:26:45+00:00",
  "fired": {
   "at": "2026-11-25T05:21:35+00:00",
   "results": {
@@ -79,14 +79,25 @@
     "sig": "e155af070884"
    },
    "items": [
-    "FROM",
+    "A2O LITE",
     "ILLIT",
     "MMORPG 新作",
     "Vaundy",
+    "dota2",
+    "gelato pique",
+    "lib:ブラッククローバー 第2期",
+    "lib:モンスターハンターワイルズ",
+    "lib:星野源",
+    "lib:東京ディズニーリゾート",
+    "lib:生徒会にも穴はある！",
+    "lib:薬屋のひとりごと 第3期",
     "チェーンソーマン",
     "哈利波特剧集",
     "日本顶级网球赛事",
-    "星巴克马克杯"
+    "星巴克马克杯",
+    "滑雪",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-11-25T04:00:23+00:00",
    "last_error": {
@@ -94,16 +105,21 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 433,
+   "prog": 494,
    "prog_day": "2026-11-25",
    "ripe": [
-    "FROM",
-    "哈利波特剧集"
+    "A2O LITE",
+    "MMORPG 新作",
+    "dota2",
+    "gelato pique",
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "猫用品"
    ],
-   "sig": "e155af070884",
+   "sig": "f85a901b5b92",
    "token_cap": 1000000,
    "tokens_today": 429673,
-   "why": "整理待ちの記事 10 件（8 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 99 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
