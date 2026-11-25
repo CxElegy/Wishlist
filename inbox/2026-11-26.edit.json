@@ -231,6 +231,135 @@
   "GTA 6": 31,
   "三星手机": 7,
   "ILLIT": 5,
-  "チェーンソーマン": 5
- }
+  "チェーンソーマン": 5,
+  "周杰伦": 5,
+  "dota2": 4,
+  "Astrae Oratio": 3,
+  "The Mandalorian": 3,
+  "星巴克马克杯": 3
+ },
+ "周杰伦": [
+  {
+   "headline": "周杰伦悉尼街头回味演唱会余温 原来在海外的周杰伦演唱会是会走下舞台的",
+   "highlight": "",
+   "blurb": "周杰伦在悉尼街头回味演唱会余温，海外场的演唱会他会走下舞台与观众互动。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "周杰倫新節目大咖嘉賓曝光！轉發預告101標「中國台北」引熱議",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "周杰伦听妈妈的话续集AI戒指用科技守护长辈",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "BetBoom Team Dota 2: Roster and Results 2026",
+   "highlight": "",
+   "blurb": "BetBoom Team の 2026 年のロースターと戦績まとめ。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "The best Dota 2 launch options to optimize game performance",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "엔씨, 신작 마법 RPG ‘아스트라에 오라티오’ AGF 2026 특설 페이지 공개",
+   "highlight": "AGF 2026 특설 페이지 공개",
+   "blurb": "엔씨가 AGF 2026 특설 페이지를 열고 티저 아트북을 20명에게 추첨 증정한다.",
+   "weight": "lead",
+   "refs": [
+    1,
+    3,
+    2
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "The Mandalorian Officially Returns With a New Release This Week",
+   "highlight": "Officially Returns",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Mandalore the Ultimate made Mandalorians a multi-species culture",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Film theory: The problem with Baby Yoda (Star Wars: The Mandalorian)",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "スタバのホリデー新作グッズ全18品！ ネイビー×チェックの大人っぽいタンブラー、可愛いベア型のマグカップやポーチ",
+   "highlight": "全18品",
+   "blurb": "スターバックスのホリデー新作グッズが全18品。ベア型のマグカップやポーチなどが並ぶ。",
+   "weight": "lead",
+   "refs": [
+    3,
+    2
+   ]
+  },
+  {
+   "headline": "スターバックスから「星と雲」の限定コラボグッズが登場、かわいすぎるタンブラーやマグ全6種",
+   "highlight": "全6種",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "【スタバ】クマの顔になる限定マグがかわいい！3,050円のホリデー2026、宮崎でも買える？",
+   "highlight": "3,050円",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ],
+   "price": {
+    "now": "3,050円"
+   }
+  }
+ ]
 }
