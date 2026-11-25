@@ -568,57 +568,6 @@
   ],
   "p": null
  },
- "http://wx4.sinaimg.cn/middle/006ZneWLly1ijewzkz0xbj30qo0i9tde.jpg": {
-  "w": 960,
-  "h": 657,
-  "target": 720,
-  "v": 3,
-  "local": "pics/8e8fa0d79e6f3680.webp",
-  "out": [
-   960,
-   657
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    0,
-    2,
-    2,
-    24,
-    17,
-    7,
-    8,
-    17,
-    19,
-    0,
-    1,
-    1
-   ],
-   [
-    0,
-    14,
-    11,
-    13,
-    12,
-    1,
-    9,
-    12,
-    10,
-    12,
-    4,
-    1
-   ]
-  ],
-  "c": "#fafafa",
-  "k": [
-   0.107,
-   0.107,
-   0.737,
-   0.856
-  ],
-  "p": null
- },
  "http://wx4.sinaimg.cn/middle/008tBTpAgy1ijdbs18snfj31ba0zg4pu.jpg": {
   "w": 1702,
   "h": 1276,
@@ -741,6 +690,13 @@
   ],
   "p": null
  },
+ "https://appmedia.jp/wp-content/uploads/2025/06/191728_mp1i0.webp": {
+  "w": 740,
+  "h": 389,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.3
+ },
  "https://appmedia.jp/wp-content/uploads/2026/10/161816_2lqg4.webp": {
   "w": 710,
   "h": 373,
@@ -753,6 +709,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.38
+ },
+ "https://appmedia.jp/wp-content/uploads/2026/10/174545_dg6c9.webp": {
+  "w": 740,
+  "h": 389,
+  "target": 720,
+  "v": 3
  },
  "https://appmedia.jp/wp-content/uploads/2026/10/191812_mw1x4.webp": {
   "w": 710,
@@ -812,6 +774,12 @@
  "https://assets.hldycdn.com/b203cda0-1eab-4304-8df8-85af6e1e8abc.jpeg": {
   "w": 1800,
   "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
+ "https://assets.juksy.com/files/articles/155694/6b06976792acd.png": {
+  "w": 1200,
+  "h": 628,
   "target": 1280,
   "v": 3
  },
@@ -1129,6 +1097,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.decrypt.co/resize/1024/height/512/wp-content/uploads/2025/05/grand-theft-auto-vi-gta-vi-gta-6-decrypt-style-gID_7.jpg": {
+  "w": 1024,
+  "h": 512,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.duckhub.co.kr/news/photo/202611/2303_10647_3722.jpg": {
   "w": 600,
   "h": 490,
@@ -1424,12 +1398,6 @@
  "https://cdn.sounova.com/upload/qPx_J7lz-efqlVEzmsTsJ.webp": {
   "w": 1200,
   "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp": {
-  "w": 1264,
-  "h": 848,
   "target": 720,
   "v": 3
  },
@@ -2498,12 +2466,6 @@
   "target": 1280,
   "v": 3
  },
- "https://images.purexbox.com/d57e4aaafc1fd/1280x720.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://images.pushsquare.com/1c1c7d7a7f5d6/1280x720.jpg": {
   "w": 1280,
   "h": 720,
@@ -3010,22 +2972,10 @@
   "target": 1280,
   "v": 3
  },
- "https://img.newspim.com/news/2026/11/23/2611231012089150.jpg": {
-  "w": 1200,
-  "h": 750,
-  "target": 1280,
-  "v": 3
- },
  "https://img.petfoodindustry.com/mindful/watt/workspaces/default/uploads/2026/11/recycled-family-and-cats-in-a-dollhouse.lJdqsUhZ4n.png?auto=format%2Ccompress&bg=ffffff&fit=crop&h=675&q=70&w=1200": {
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://img.sportsbull.jp/raw/20261120160508462393.jpg": {
-  "w": 980,
-  "h": 745,
-  "target": 720,
   "v": 3
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/animeanime/m_animeanime-104369.jpg": {
@@ -3624,12 +3574,6 @@
   ],
   "p": null
  },
- "https://media.trilltrill.jp/articles/5198062/featured-image.9f5e4fa7bb3d391856ff71a19786e7be?w=1200": {
-  "w": 640,
-  "h": 480,
-  "target": 720,
-  "v": 3
- },
  "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/11/1795265411810-5f16989da27141be94c40fd9afa2b6f8-850x446.webp": {
   "w": 850,
   "h": 446,
@@ -3661,6 +3605,12 @@
   "v": 3
  },
  "https://moonvoke.com/images/news/chainsaw-man-reze-arc-pop-up-store-eslite-r79-guide-2026.webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://moonvoke.com/images/news/donguri-republic-snowman-totoro-banqiao-guide-2026.webp": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -4083,6 +4033,12 @@
   "c": "#8d846a",
   "k": null,
   "p": null
+ },
+ "https://news.walkerplus.com/article/75130/431003_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/8540/22863_615.jpg": {
   "w": 615,
@@ -4789,12 +4745,6 @@
   "target": 1280,
   "v": 3
  },
- "https://nypost.com/wp-content/uploads/sites/2/2026/11/149994206.jpg?quality=75&strip=all": {
-  "w": 2000,
-  "h": 1333,
-  "target": 720,
-  "v": 3
- },
  "https://ogre.natalie.mu/media/news/music/2026/0405/Vaundy_art202604.jpg?impolicy=ogp_face_crop": {
   "w": 1200,
   "h": 630,
@@ -5214,12 +5164,6 @@
  "https://s.yimg.com/lo/mysterio/api/68aa33ce96779d44d2c1d6a658b947a32330ea312e0294adabe44425015c905e/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fdeadline.com%2Fdc26a223296153258e40f00c0f81fd4d.jpg_up.jpg": {
   "w": 1200,
   "h": 676,
-  "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/834d7d301bc33c51650b429e266f3ee4f3f1f4a03b2f085b60dbf4bdbe324f45/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fctwant_styletc_883%2F93b8f1c8a1f5e0eb9c66aff32ba74b98.jpg_up.jpg": {
-  "w": 1200,
-  "h": 728,
   "target": 720,
   "v": 3
  },
@@ -6903,6 +6847,57 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.qGMQOBuunFhughkubIHa0Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 437,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.526,
+  "local": "pics/6631192877ff64a8.webp",
+  "out": [
+   1280,
+   799
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    9,
+    16,
+    10,
+    9,
+    10,
+    10,
+    9,
+    8,
+    9,
+    5,
+    0
+   ],
+   [
+    6,
+    6,
+    1,
+    1,
+    11,
+    13,
+    29,
+    23,
+    2,
+    2,
+    4,
+    1
+   ]
+  ],
+  "c": "#101416",
+  "k": [
+   0.194,
+   0.553,
+   0.674,
+   0.618
+  ],
+  "p": null
+ },
  "https://www.bing.com/th?id=ONUT.rsrxlT6LA_Pywv7IT7a5EQ&pid=News&w=700": {
   "w": 700,
   "h": 393,
@@ -7214,6 +7209,12 @@
    0.862,
    0.414
   ]
+ },
+ "https://www.breaknews.com/data/breaknews_com/bigimg/1630_2026110311244623.jpg": {
+  "w": 690,
+  "h": 518,
+  "target": 720,
+  "v": 3
  },
  "https://www.cgames.com/upload/images/2026/11/s_34c4856fd634954b.jpg": {
   "w": 1080,

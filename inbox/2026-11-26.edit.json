@@ -25,7 +25,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    19
+    19,
+    40
    ]
   },
   {
@@ -53,7 +54,8 @@
    "refs": [
     9,
     12,
-    27
+    27,
+    36
    ]
   }
  ],
@@ -86,7 +88,8 @@
    "refs": [
     28,
     13,
-    14
+    14,
+    33
    ]
   },
   {
@@ -99,12 +102,12 @@
    ]
   },
   {
-   "headline": "Grand Theft Auto VI’s Breakout Star is Cool Dog – Here’s How to Meet Them",
-   "highlight": "Cool Dog",
+   "headline": "Take-Two Hits GTA 6 PC Port Leonida With DMCA, Taking Down 3,007 GitHub Repos",
+   "highlight": "3,007 GitHub Repos",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    44
    ]
   }
  ],
@@ -186,6 +189,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "리센느, 아이돌차트 11월 3주차 아차랭킹 1위..2위 A2O LITE·3위 아일릿",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "チェーンソーマン": [
@@ -227,10 +239,10 @@
   }
  ],
  "_covered": {
-  "漫威电影": 34,
-  "GTA 6": 31,
+  "漫威电影": 57,
+  "GTA 6": 44,
   "三星手机": 7,
-  "ILLIT": 5,
+  "ILLIT": 9,
   "チェーンソーマン": 5,
   "周杰伦": 5,
   "dota2": 4,
@@ -238,11 +250,12 @@
   "The Mandalorian": 3,
   "星巴克马克杯": 3,
   "gelato pique": 2,
-  "ぐでたま": 1,
+  "ぐでたま": 7,
   "猫用品": 1,
   "绝区零": 1,
   "Vaundy": 2,
-  "滑雪": 2
+  "滑雪": 2,
+  "BLEACH Mirrors High": 10
  },
  "周杰伦": [
   {
@@ -397,6 +410,42 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "テーマはトロピカルリゾート！なんばパークス「ぐでたま」コラボカフェ",
+   "highlight": "なんばパークス",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "ぐでたまふぇすてぃばる！ゆる～い“卵キャラ”がピューロランドをジャック",
+   "highlight": "ピューロランド",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ブルボンから「ぐでたま」をデザインした「ぐでたまのおもち」新発売",
+   "highlight": "ぐでたまのおもち",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "ぐでたまが博多弁!?天神にぐでたまカフェがオープン",
+   "highlight": "天神",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "猫用品": [
@@ -450,6 +499,35 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "【ミラハイ】最強編成とおすすめパーティ",
+   "highlight": "最強編成",
+   "blurb": "BLEACH Mirrors High の最強編成とおすすめパーティをまとめた攻略記事。",
+   "weight": "lead",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "【ミラハイ】データ引き継ぎのやり方と設定方法",
+   "highlight": "データ引き継ぎ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "【ミラハイ】星2日番谷冬獅郎の評価と性能",
+   "highlight": "日番谷冬獅郎",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ]

@@ -1,32 +1,32 @@
 {
- "admin": "0ed6ccfe6c9a",
- "admin-ai": "bd62b0c99f45",
+ "admin": "85ea36d65128",
+ "admin-ai": "0b056889457a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c1453662"
+   "4e67606b"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "28cac011"
+   "c3739875"
   ]
  },
- "admin-boards": "471f54b7e6c7",
+ "admin-boards": "6ee103927878",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "0e12bb98"
+   "ecc7d84d"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "8f98ad14db2b",
+ "admin-emblem": "af84676b5ab1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "0206c0f9"
+   "b3efbb23"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "872e9c585de2",
+ "admin-now": "84a85b8b3eaf",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "11781469"
+   "0598d309"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "8a2d1bcb"
+   "c1343027"
   ]
  },
- "admin-system": "2cec3f97f85d",
+ "admin-system": "8d46134b4e62",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "efb4660f"
+   "b58c0b23"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "7285db35"
+   "ccde0e53"
   ]
  },
  "admin_marks": {},
- "heat": "37afb285fd93",
+ "heat": "e52a177b021f",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "1c29ee48"
+   "e6013494"
   ],
   "ranking": [
    "ランキング",
-   "00aa7eb3"
+   "1671caff"
   ]
  },
- "index": "b2af495df673",
+ "index": "928a29158616",
  "index_marks": {
   "front": [
    "トップ",
-   "58a1b5c8"
+   "822fbfc5"
   ],
   "picks": [
    "気になるかも？",
@@ -113,11 +113,11 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "f2db15ae"
+   "c2a0ceca"
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "3ee7b7b4"
+   "1b6f5914"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "bb8cee0f"
+   "1ab2ff14"
   ],
   "w-b867582f": [
    "あつ森",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "aa21ded9"
+   "ff9ca5e5"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "288268c8"
+   "834fa979"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "56e90385"
+   "0b121a2a"
   ],
   "w-f303ad09": [
    "绝区零",
    "c9528ac2"
   ]
  },
- "updated": "11.26 06:31",
+ "updated": "11.26 06:54",
  "wishlist": "3e9f37f6223d"
 }
