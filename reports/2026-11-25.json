@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "b967072a2e20",
+ "edit_sig": "aaa8b60a8bb1",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -248,34 +248,8 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 10,
-     "source": "DMKsnowboard",
-     "title": "スノーボードの合間にも楽しめる？世界最新ジャンルの雪上フリースタイルスクーター「Ereticスノースクーター」日本初上陸",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8tTVVyQW9tLUxMTlpIZmFXQlpITXpXLXBXcW00Sm1GSm93bTR6T0NFQXVUNTNlX3A2eFRkblB2Zy05VFlRN1NEdVIxejlhOXRBSy12cmRoaDg1dkNnVjN1Nmx2bG03ekU?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 12,
-     "source": "FNNプライムオンライン",
-     "title": "安比高原スキー場で安全祈願祭 12月5日オープン「自信をもって“日本一”」 岩手県八幡平市",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE54bUlTbVBzdUZPRFRydTFrYURFdkZEeUdaaFNNRUtVem5rbXJXQ09scGREQ0ZWbTk4Z3dJSFB3N2NnS0RfOTBCUG85ZDRCdw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-25",
-     "headline": "【信州 北八ヶ岳標高 1830ｍ：八千穂高原スキー場】民営化して8シーズン目で、過去最速の11/27（金）オープン決定！！",
-     "highlight": "",
-     "image": "https://prcdn.freetls.fastly.net/release_image/188268/32/188268-32-c7056ebfde4d79089f0fbc4da3643282-3900x2406.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
-     "image_via": "og:image",
-     "url": "https://prtimes.jp/main/html/rd/p/000000032.000188268.html",
-     "weight": "hero"
-    },
     {
      "blurb": "Japan's 2026-2027 ski season has had an unusually strong start, with heavy November snowfall letting resorts open early.",
      "date": "2026-11-22",
@@ -304,6 +278,36 @@
      "image": "https://assets.hldycdn.com/b203cda0-1eab-4304-8df8-85af6e1e8abc.jpeg",
      "image_via": "og:image",
      "url": "https://www.haveagood-holiday.com/zh-TW/articles/hakuba-village-five-ski-resorts-2026-27-winter-opening",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-25",
+     "event": {
+      "date": "2026-11-27",
+      "label": "オープン",
+      "place": "八千穂高原スキー場"
+     },
+     "headline": "【信州 北八ヶ岳標高 1830ｍ：八千穂高原スキー場】民営化して8シーズン目で、過去最速の11/27（金）オープン決定！！",
+     "highlight": "11/27（金）オープン",
+     "image": "https://prcdn.freetls.fastly.net/release_image/188268/32/188268-32-c7056ebfde4d79089f0fbc4da3643282-3900x2406.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000032.000188268.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-25",
+     "event": {
+      "date": "2026-12-05",
+      "label": "オープン",
+      "place": "安比高原スキー場"
+     },
+     "headline": "安比高原スキー場で安全祈願祭 12月5日オープン「自信をもって“日本一”」",
+     "highlight": "12月5日オープン",
+     "image": "https://fnn.ismcdn.jp/mwimgs/6/7/1200/img_67ce7c2fca3105eddf646f80cf460cbb289270.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://www.fnn.jp/articles/-/1159431",
      "weight": "normal"
     }
    ],
