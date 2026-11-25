@@ -375,9 +375,10 @@
   "あつ森": 3,
   "猫用品": 5,
   "Astrae Oratio": 8,
-  "日本顶级网球赛事": 1,
-  "星巴克马克杯": 1,
-  "gelato pique": 6
+  "日本顶级网球赛事": 2,
+  "星巴克马克杯": 2,
+  "gelato pique": 6,
+  "Vaundy": 2
  },
  "ILLIT": [
   {
@@ -832,15 +833,25 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "西岡良仁 肩の手術を報告「復帰はまだ先」 世界1018位から再起目指す",
+   "highlight": "肩の手術",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "星巴克马克杯": [
   {
-   "headline": "Starbucks Just Dropped The Cutest Cloudy Cups & Mugs",
-   "highlight": "",
-   "blurb": "",
+   "headline": "「かわいいいいいい」 スタバの“新作マグカップ”が話題",
+   "highlight": "新作マグカップ",
+   "blurb": "スタバの新作マグカップがSNSで話題に。チェック柄のかわいさに「買わずにいられなかった」との声。",
    "weight": "lead",
    "refs": [
+    2,
     1
    ]
   }
@@ -891,6 +902,17 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Jeremy Quartus『僕らの事にさせて (Prod. Vaundy)』リリース記念！JOYSOUNDのカラオケで歌って、直筆サイン入りステッカーを当てよう！",
+   "highlight": "Prod. Vaundy",
+   "blurb": "Vaundyがプロデュースした楽曲のリリース記念キャンペーン。JOYSOUNDで歌うと直筆サイン入りステッカーが当たる。",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

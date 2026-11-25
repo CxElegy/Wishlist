@@ -1,32 +1,32 @@
 {
- "admin": "128644c17da6",
- "admin-ai": "2dc7363cfbc1",
+ "admin": "c7f04939d652",
+ "admin-ai": "dca18e77a6dd",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5b01da08"
+   "9dac5ef0"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e404d818"
+   "cf5b691d"
   ]
  },
- "admin-boards": "f225528e42f5",
+ "admin-boards": "8b849d23eb84",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5f961b6a"
+   "82a79334"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "09bcde5b17ec",
+ "admin-emblem": "96c12218379a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ad6e1b2d"
+   "ba7c27c5"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "0b4b911d4470",
+ "admin-now": "c4b7ec78b19e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f34eabaf"
+   "c6f19367"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "7613b14a"
+   "c935e660"
   ]
  },
- "admin-system": "e248694291a2",
+ "admin-system": "29fb81459369",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cd22bf4e"
+   "44f88dc2"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "fd171caa"
+   "f38fd9ce"
   ]
  },
  "admin_marks": {},
- "heat": "15d2a4418324",
+ "heat": "1bc86d2779fb",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "adbf5136"
+   "a97e73ee"
   ],
   "ranking": [
    "ランキング",
-   "b7d06a2a"
+   "4662d279"
   ]
  },
- "index": "027cd10ec46e",
+ "index": "7a7fd552b970",
  "index_marks": {
   "front": [
    "トップ",
-   "5b8e39d1"
+   "8be6cb31"
   ],
   "picks": [
    "気になるかも？",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "18de33ef"
+   "4cca9435"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "7766d7cf"
+   "64c56ff3"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "044c9247"
+   "a1287e5f"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "9ad1a83a"
   ]
  },
- "updated": "11.25 16:05",
- "wishlist": "2c04757dd0bf"
+ "updated": "11.25 16:12",
+ "wishlist": "18e95e19a970"
 }
