@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-25T03:04:10+00:00",
+ "checked": "2026-11-25T03:20:05+00:00",
  "fired": {
   "at": "2026-11-25T02:21:46+00:00",
   "results": {
@@ -86,7 +86,10 @@
     "Vaundy",
     "dota2",
     "lib:FINAL FANTASY VII REMAKE INTERGRADE",
+    "lib:ポケモンGO",
+    "lib:ミャクミャク",
     "lib:美術館の企画展",
+    "lib:羽生善治",
     "lib:藤井風",
     "チェーンソーマン",
     "三星手机",
@@ -113,10 +116,10 @@
     "漫威电影",
     "绝区零"
    ],
-   "sig": "d8b170bdba86",
+   "sig": "1a854225eef8",
    "token_cap": 1000000,
    "tokens_today": 364838,
-   "why": "整理待ちの記事 90 件（17 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 126 件（20 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
