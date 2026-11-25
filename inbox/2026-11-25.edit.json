@@ -361,23 +361,23 @@
   "三星手机": 54,
   "漫威电影": 125,
   "绝区零": 20,
-  "MMORPG 新作": 14,
+  "MMORPG 新作": 17,
   "ILLIT": 8,
-  "dota2": 15,
-  "チェーンソーマン": 8,
+  "dota2": 19,
+  "チェーンソーマン": 11,
   "周杰伦": 29,
-  "A2O LITE": 4,
+  "A2O LITE": 7,
   "FROM": 4,
   "滑雪": 3,
   "BLEACH Mirrors High": 8,
   "The Mandalorian": 3,
-  "哈利波特剧集": 4,
+  "哈利波特剧集": 5,
   "あつ森": 3,
-  "猫用品": 2,
+  "猫用品": 5,
   "Astrae Oratio": 8,
   "日本顶级网球赛事": 1,
   "星巴克马克杯": 1,
-  "gelato pique": 2
+  "gelato pique": 6
  },
  "ILLIT": [
   {
@@ -451,7 +451,8 @@
    "weight": "normal",
    "refs": [
     10,
-    12
+    12,
+    16
    ]
   },
   {
@@ -462,7 +463,9 @@
    "refs": [
     7,
     9,
-    13
+    13,
+    17,
+    18
    ]
   }
  ],
@@ -502,7 +505,8 @@
    "weight": "normal",
    "refs": [
     6,
-    8
+    8,
+    10
    ]
   },
   {
@@ -591,6 +595,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "'골든디스크어워즈' 본상 후보…A2O LITE·알디원·에반 등 신인상 15팀 경쟁",
+   "highlight": "골든디스크어워즈",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -741,6 +754,15 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "HBO's Harry Potter Reboot Confirms Big Change From the Movie Costumes That's Book Accurate",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "あつ森": [],
@@ -762,6 +784,15 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "「満員電車みたいになってるｗ」パパ猫がキャットタワーのベッドで寝ていると…まさかの展開が15万再生",
+   "highlight": "15万再生",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -831,6 +862,34 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "チョコのマフラーを巻いたベアのクレープが登場！gelato pique cafe “Merry Bear Holiday”",
+   "highlight": "Merry Bear Holiday",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    5
+   ]
+  },
+  {
+   "headline": "【GELATO PIQUE HOMME】松坂屋名古屋店にて「LIMITED CONCEPT STORE」を期間限定オープン",
+   "highlight": "松坂屋名古屋店",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "ジェラピケのクリスマスマーケット、カプセルトイ販売を中止 表参道ヒルズで想定超える来場",
+   "highlight": "カプセルトイ販売を中止",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ]
