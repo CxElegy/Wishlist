@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-25T12:31:01+00:00",
+ "checked": "2026-11-25T12:36:39+00:00",
  "fired": {
-  "at": "2026-11-25T11:35:02+00:00",
+  "at": "2026-11-25T12:36:39+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -64,54 +64,44 @@
    "edit": 15
   },
   "2026-11-25": {
-   "edit": 12
+   "edit": 13
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-25T11:35:02+00:00",
+    "at": "2026-11-25T12:36:39+00:00",
     "attempts": 1,
     "day": "2026-11-25",
-    "prog": 598,
-    "resp": "cse_01W4x6f67iVScMsSGjiusBwA",
-    "sig": "bdefbbce1ad0"
+    "prog": 676,
+    "resp": "",
+    "sig": "8837a83e99e5"
    },
    "items": [
     "A2O LITE",
     "gelato pique",
-    "lib:SPY×FAMILY",
-    "lib:ガンプラ",
-    "lib:キャンプ",
-    "lib:コーヒー",
-    "lib:ラーメン",
-    "lib:筋トレ",
-    "lib:葬送のフリーレン",
-    "lib:観葉植物",
     "ぐでたま",
     "周杰伦",
-    "哈利波特剧集",
     "滑雪",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-25T12:14:32+00:00",
+   "last_batch": "2026-11-25T12:19:21+00:00",
    "last_error": {
     "at": "2026-11-25T10:27:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 665,
+   "prog": 676,
    "prog_day": "2026-11-25",
    "ripe": [
-    "A2O LITE",
-    "哈利波特剧集"
+    "A2O LITE"
    ],
-   "sig": "ea598a2f5a10",
+   "sig": "8837a83e99e5",
    "token_cap": 1000000,
-   "tokens_today": 652238,
-   "why": "整理待ちの記事 110 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 654221,
+   "why": "整理待ちの記事 11 件（7 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -300,11 +290,11 @@
    "runs": 16
   },
   "2026-11-25": {
-   "batches": 35,
-   "cr": 14738253,
-   "cw": 590195,
-   "in": 405,
-   "out": 61638,
+   "batches": 36,
+   "cr": 14824587,
+   "cw": 591565,
+   "in": 407,
+   "out": 62249,
    "runs": 11
   }
  }
