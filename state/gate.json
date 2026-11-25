@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-25T15:14:49+00:00",
+ "checked": "2026-11-25T17:18:08+00:00",
  "fired": {
   "at": "2026-11-25T14:36:30+00:00",
   "results": {
@@ -79,12 +79,6 @@
     "sig": "715cbf6aaa53"
    },
    "items": [
-    "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
-    "Vaundy",
-    "dota2",
-    "gelato pique",
     "lib:Ado",
     "lib:BTS",
     "lib:Nintendo Switch 2",
@@ -92,15 +86,7 @@
     "lib:サッカー日本代表",
     "lib:ポケットモンスター",
     "lib:大相撲",
-    "lib:大谷翔平",
-    "ぐでたま",
-    "チェーンソーマン",
-    "三星手机",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "lib:大谷翔平"
    ],
    "last_batch": "2026-11-25T14:54:36+00:00",
    "last_error": {
@@ -108,17 +94,13 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 656,
-   "prog_day": "2026-11-25",
-   "ripe": [
-    "GTA 6",
-    "チェーンソーマン",
-    "漫威电影"
-   ],
-   "sig": "1271e3bbde53",
+   "prog": 5,
+   "prog_day": "2026-11-26",
+   "ripe": [],
+   "sig": "b66ed2ca9777",
    "token_cap": 1000000,
-   "tokens_today": 762353,
-   "why": "整理待ちの記事 140 件（22 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
