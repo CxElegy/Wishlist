@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-25T21:34:46+00:00",
+ "changed": true,
+ "checked": "2026-11-25T22:18:02+00:00",
  "fired": {
   "at": "2026-11-25T21:34:46+00:00",
   "results": {
@@ -83,48 +83,38 @@
    },
    "items": [
     "A2O LITE",
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "Vaundy",
     "dota2",
     "gelato pique",
     "lib:呪術廻戦",
     "lib:鬼滅の刃",
-    "ぐでたま",
     "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
-    "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-11-25T20:21:13+00:00",
+   "last_batch": "2026-11-25T21:55:15+00:00",
    "last_error": {
     "at": "2026-11-25T10:27:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 134,
+   "prog": 190,
    "prog_day": "2026-11-26",
    "ripe": [
     "A2O LITE",
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "dota2",
-    "ぐでたま",
     "チェーンソーマン",
-    "三星手机",
-    "漫威电影"
+    "三星手机"
    ],
-   "sig": "29cb4bc2d95c",
+   "sig": "60631e2e20d4",
    "token_cap": 1000000,
-   "tokens_today": 173401,
-   "why": "整理待ちの記事 103 件（18 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 229132,
+   "why": "整理待ちの記事 47 件（13 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -321,12 +311,12 @@
    "runs": 13
   },
   "2026-11-26": {
-   "batches": 5,
-   "cr": 2477777,
-   "cw": 160467,
-   "in": 66,
-   "out": 12868,
-   "runs": 3
+   "batches": 6,
+   "cr": 3551591,
+   "cw": 211980,
+   "in": 97,
+   "out": 17055,
+   "runs": 4
   }
  }
 }
