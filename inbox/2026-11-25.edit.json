@@ -109,7 +109,13 @@
     43,
     54,
     49,
-    57
+    57,
+    78,
+    64,
+    65,
+    69,
+    70,
+    71
    ],
    "image": "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-ultra-camera-leak.jpg"
   },
@@ -124,7 +130,10 @@
     28,
     33,
     48,
-    58
+    58,
+    76,
+    77,
+    63
    ]
   },
   {
@@ -183,7 +192,37 @@
     53,
     59,
     60,
-    55
+    55,
+    68
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra may retain 60W charging, certification suggests",
+   "highlight": "60W charging",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    74
+   ]
+  },
+  {
+   "headline": "케이스 업체가 직접 '갤럭시S27' 모형 공개…일반·프로·울트라 디자인 비교",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    75,
+    72
+   ]
+  },
+  {
+   "headline": "性能对比如何？ Galaxy S27 Pro 与 iPhone 18 Pro基准测试结果",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    66,
+    67
    ]
   }
  ],
@@ -376,7 +415,7 @@
  ],
  "_covered": {
   "GTA 6": 138,
-  "三星手机": 62,
+  "三星手机": 80,
   "漫威电影": 140,
   "绝区零": 21,
   "MMORPG 新作": 20,

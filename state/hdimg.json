@@ -2557,6 +2557,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2a1kd6.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cpRlT.img": {
   "w": 2800,
   "h": 1400,
@@ -3305,6 +3311,12 @@
  "https://insidethemagic.net/wp-content/uploads/2022/12/iron3-1.jpg": {
   "w": 1200,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://jamonline.ph/wp-content/uploads/2026/11/samsung-galaxy-s27-pro-s27-ultra-dummy-hands-on.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -5525,7 +5537,7 @@
   "target": 720,
   "v": 3
  },
- "https://scontent-iad3-1.xx.fbcdn.net/v/t51.71878-15/926937107_29396327733339703_4601832070739929343_n.png?stp=dst-jpg_tt6&cstp=mx1088x1344&ctp=p600x600&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=cae128&_nc_ohc=_8pmNWw0InMQ7kNvwF8jSAw&_nc_oc=AdrFTPEADYnObUTMlHTEzV1J-wyIAokZJfJGeccFTMu4DW0aKjv2tPu0Bk79pbSdqqg&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=FbiIdxn_EsM_BLNWxemgYg&_nc_ss=7b30f&oh=00_AQQyZbEFBLSKs1hPRgyqZb24elZpeWr4CPcobR_xDmSsgQ&oe=6B0CA827": {
+ "https://scontent-ord5-1.xx.fbcdn.net/v/t51.71878-15/926937107_29396327733339703_4601832070739929343_n.png?stp=dst-jpg_tt6&cstp=mx1088x1344&ctp=p600x600&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=cae128&_nc_ohc=_8pmNWw0InMQ7kNvwHz0Fo0&_nc_oc=AdqCV8uAQwfOfAFC6Ta9aNTGWXgk-UMFF3U4-FpP4X86TnCksi1t7VinE1SGW-tJpgM&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&_nc_gid=fbkzNQQztnlmALlc4tHnjw&_nc_ss=7b30f&oh=00_AQSYjRQeUlxHFd9cZTq-HgxgefVkMkE_2laIhGi2Rg465A&oe=6B0CA827": {
   "w": 600,
   "h": 741,
   "target": 720,
@@ -7737,12 +7749,6 @@
  "https://www.lanacion.com.ar/resizer/v2/la-oficinas-de-rockstar-north-en-edimburgo-el-dia-6H2XLSKT5FBP7OLF44NGDHUSJE.jpg?auth=e2a3a72a51066a2c6ebf2d7cf8d20efc58cd23703a7befb5501ff193b921b127&width=1200&height=800&quality=70&smart=true": {
   "w": 1200,
   "h": 800,
-  "target": 720,
-  "v": 3
- },
- "https://www.macobserver.com/wp-content/uploads/2026/05/How-to-Hide-Your-Caller-ID-When-Making-Calls-on-iOS-26.jpg": {
-  "w": 1920,
-  "h": 1080,
   "target": 720,
   "v": 3
  },
