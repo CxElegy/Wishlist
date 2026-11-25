@@ -1460,7 +1460,8 @@
     },
     {
      "date": "2026-11-25T09:00:00+09:00",
-     "image": "",
+     "image": "https://www.4gamer.net/games/579/G057943/20261124047/SS/006.jpg",
+     "image_via": "og:image",
      "n": 11,
      "seen": "2026-11-25T00:25:14+00:00",
      "source": "4Gamer.net",
@@ -2327,7 +2328,9 @@
     },
     {
      "date": "2026-11-25T00:14:50+00:00",
-     "image": "",
+     "image": "https://www.joblo.com/wp-content/uploads/2026/11/avengers-doomsday-patrick-stewart.jpg",
+     "image_via": "og:image（其它来源）",
+     "link": "https://www.imdb.com/de/news/ni66127157/?ref_=nwc_art_perm",
      "n": 64,
      "seen": "2026-11-25T00:25:15+00:00",
      "site": "https://www.imdb.com",
@@ -2426,6 +2429,7 @@
     {
      "date": "2026-11-24T22:52:33+00:00",
      "image": "",
+     "link": "https://people.com/marvel-planning-patrick-stewart-tribute-avengers-doomsday-kevin-feige-12278131",
      "n": 72,
      "seen": "2026-11-25T00:25:15+00:00",
      "site": "https://people.com",
@@ -2969,6 +2973,7 @@
     {
      "date": "2026-11-24T23:03:30+00:00",
      "image": "",
+     "link": "https://www.bntnews.co.kr/article/view/bnt202611250073",
      "n": 6,
      "seen": "2026-11-25T00:25:18+00:00",
      "site": "https://www.bntnews.co.kr",
@@ -2992,7 +2997,9 @@
     },
     {
      "date": "2026-11-18T10:35:00+00:00",
-     "image": "",
+     "image": "https://images.khan.co.kr/article/2026/11/18/news-p.v1.20261118.c65f173b29f149b3b2f3b06f09a7680a_P1.jpg",
+     "image_via": "og:image",
+     "link": "https://sports.khan.co.kr/en/article/202611181935007",
      "n": 8,
      "seen": "2026-11-25T00:25:18+00:00",
      "site": "https://sports.khan.co.kr",
@@ -3381,6 +3388,7 @@
     {
      "date": "2026-11-24T23:52:00+00:00",
      "image": "",
+     "link": "https://gazlog.jp/entry/galaxy-s27-ultra-pro-no-more-laser-af/",
      "n": 29,
      "seen": "2026-11-25T00:25:45+00:00",
      "site": "https://gazlog.jp",
@@ -3707,7 +3715,9 @@
     },
     {
      "date": "2026-11-24T22:52:47+00:00",
-     "image": "",
+     "image": "https://hashout.jp/wp-content/uploads/2026/11/2125239850337267722-img-1200x675.png",
+     "image_via": "og:image",
+     "link": "https://hashout.jp/gadget/14868/",
      "n": 6,
      "seen": "2026-11-25T00:25:48+00:00",
      "site": "https://hashout.jp",
@@ -3719,7 +3729,9 @@
     },
     {
      "date": "2026-11-24T22:20:02+00:00",
-     "image": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261125-00000005-isd-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "link": "https://news.yahoo.co.jp/articles/34d71e44a4168edede5006c2944b0b045253fbfd",
      "n": 7,
      "seen": "2026-11-25T00:25:48+00:00",
      "site": "https://news.yahoo.co.jp",
@@ -3732,6 +3744,7 @@
     {
      "date": "2026-11-24T21:28:00+00:00",
      "image": "",
+     "link": "https://nijimen.kusuguru.co.jp/topics/666694",
      "n": 8,
      "seen": "2026-11-25T00:25:48+00:00",
      "site": "https://nijimen.kusuguru.co.jp",

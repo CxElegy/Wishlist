@@ -13,6 +13,7 @@
   "https://essential-japan.com/news/pokemon-center-reveals-new-and-exclusive-farmer-pikachu-plush/": "https://cdn.essential-japan.com/wp-content/uploads/2026/11/Farmer-Pikachu-Plush.webp",
   "https://essential-japan.com/news/pompompurin-finally-gets-a-job-for-new-30th-anniversary-starbucks-collab-collection/": "https://cdn.essential-japan.com/wp-content/uploads/2026/11/Pompompurin-x-Starbucks-Collab-Main.jpg",
   "https://freakelitex.com/chainsaw-man-volumen-22-ventas-bookscan-estados-unidos/": "https://www.bing.com/th?id=ONUT.QxWhfW98wLjVWjWyoKYN-w&pid=News&w=1200",
+  "https://gizmodo.com/samsung-galaxy-s27-ultra-no-3x-telephoto-laser-autofocus-2000844603": "https://www.bing.com/th?id=ONUT.XMOeIlHRHTUaf9Ktmgq1yg&pid=News&w=1200",
   "https://gnn.gamer.com.tw/detail.php?sn=315483": "https://p2.bahamut.com.tw/B/2KU/43/05701cef7d2a3ffdd4d9cac633217oj5.JPG",
   "https://gnn.gamer.com.tw/detail.php?sn=315488": "https://p2.bahamut.com.tw/B/2KU/22/1704db57c3c7041543681553ed217qq5.JPG",
   "https://hochi.news/articles/20261119-OHT1T51260.html": "https://hochi.news/images/2026/11/19/20261119-OHT1I51373-C.jpg",
@@ -43,7 +44,6 @@
   "https://rockinon.com/live/detail/216294": "https://rockinon.com/images/entry/width:1200/216294/1",
   "https://rurubu.jp/andmore/article/16584?page=3": "https://rurubu.jp/img_srw/andmore/images/0000757572/l_uBtSB0lIfY8JoBIu1xbN4PDVOXBCcinzSEY1tvpT.jpg",
   "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1850460852979142": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/capsule_616x353.jpg",
-  "https://tecnologiageek.com/galaxy-s27-ultra-enfoque-laser/": "https://www.bing.com/th?id=ONUT.7gPYVExGrdL73L1eFKJ8xw&pid=News&w=1200",
   "https://thelocalgirl.com/calendar/event/washington-spirit-championship-watch-party-at-chubby-squirrel-brewing-company-in-fairfax/": "https://thelocalgirl.com/calendar/wp-content/uploads/sites/11/2026/11/Screenshot-2026-11-19-094645.png",
   "https://thetab.com/filmshrine/2026/11/24/will-spider-man-and-dr-strange-be-in-avengers-doomsday-here-are-all-major-characters-missing/": "https://cdn.filmshrine.com/uploads/2026/11/Suchis-The-Tab-masterpiece-36-1.png",
   "https://times.abema.tv/articles/photo/10289837": "https://times-abema.ismcdn.jp/mwimgs/c/8/1200w/img_c890d5ab93e334469a75101cff779db186607.jpg",
@@ -1080,11 +1080,11 @@
    "hits": [
     "三星 Galaxy"
    ],
-   "image": "https://www.bing.com/th?id=ONUT.7gPYVExGrdL73L1eFKJ8xw&pid=News&w=1200",
+   "image": "https://www.bing.com/th?id=ONUT.XMOeIlHRHTUaf9Ktmgq1yg&pid=News&w=1200",
    "kind": "board",
    "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
    "score": 8,
-   "source": "Tecnología Geek",
+   "source": "Gizmodo",
    "taste": [
     [
      "galaxy",
@@ -1099,8 +1099,8 @@
      7
     ]
    ],
-   "title": "Galaxy S27 Ultra perdería el enfoque láser tras seis años",
-   "url": "https://tecnologiageek.com/galaxy-s27-ultra-enfoque-laser/",
+   "title": "Shrinkflation Is Coming for Samsung’s Galaxy S27 Ultra",
+   "url": "https://gizmodo.com/samsung-galaxy-s27-ultra-no-3x-telephoto-laser-autofocus-2000844603",
    "words": [
     "galaxy"
    ],
@@ -2103,11 +2103,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2115,15 +2115,15 @@
    8
   ],
   [
+   "三星 Galaxy",
+   7
+  ],
+  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
-   7
-  ],
-  [
-   "三星 Galaxy",
    7
   ]
  ]

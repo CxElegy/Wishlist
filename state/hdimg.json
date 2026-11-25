@@ -1370,12 +1370,6 @@
   "v": 3,
   "blur": 0.377
  },
- "https://cdn.mediaplaynews.com/wp-content/uploads/2026/11/avengers-doomsday-photos.jpg": {
-  "w": 900,
-  "h": 600,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.mos.cms.futurecdn.net/3GRMih55Lhb8xiQTfctXgP-2560-80.jpg": {
   "w": 2560,
   "h": 1442,
@@ -1869,12 +1863,6 @@
   "target": 720,
   "v": 3
  },
- "https://files.value-press.com/czMjZXllY2F0Y2gjODkwNzEjODkwNzFfSUJEbGpuWUxrSS5qcGc.jpg": {
-  "w": 1200,
-  "h": 650,
-  "target": 1280,
-  "v": 3
- },
  "https://focusnews.com.tw/wp-content/uploads/2026/11/圖二元智大學英語學士班師生與龜山國小學童開心合影。1.jpg": {
   "w": 860,
   "h": 503,
@@ -1954,6 +1942,12 @@
   "target": 720,
   "v": 3
  },
+ "https://hashout.jp/wp-content/uploads/2026/11/2125239850337267722-img-1200x675.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://hawk.live/storage/images/posts/dota-2s-new-hero-kez-25446.jpg": {
   "w": 1200,
   "h": 628,
@@ -1988,6 +1982,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://helios-i.mashable.com/imagery/articles/01dcdOgTHme7HFYnAgwR3A0/hero-image.fill.size_1200x675.v1795536118.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://helios-i.mashable.com/imagery/articles/01wYqWza2nwthFr8EnLbnsZ/hero-image.fill.size_1200x675.v1795279249.png": {
@@ -2144,12 +2144,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.393
- },
- "https://i0.wp.com/tarreo.buscafs.com/2026/11/portada-gta-6-en-pc-personajes-3d-1200x675-1.jpg?fit=1200,675&quality=75&strip=all": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
  },
  "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/11/google-play-best-of-2026-games.png?fit=1200%2C675&ssl=1": {
   "w": 1200,
@@ -2388,6 +2382,12 @@
  "https://images.highwise.com/stories/415537-1795438037164.jpg": {
   "w": 1280,
   "h": 704,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.khan.co.kr/article/2026/11/18/news-p.v1.20261118.c65f173b29f149b3b2f3b06f09a7680a_P1.jpg": {
+  "w": 1200,
+  "h": 801,
   "target": 720,
   "v": 3
  },
@@ -4793,6 +4793,61 @@
    0.547
   ]
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261125-00000005-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/a9d2e6d7066d4472.webp",
+  "out": [
+   800,
+   800
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    6,
+    13,
+    18,
+    12,
+    8,
+    6,
+    5,
+    3,
+    7,
+    9,
+    9,
+    4
+   ],
+   [
+    19,
+    10,
+    18,
+    14,
+    5,
+    6,
+    5,
+    4,
+    4,
+    5,
+    4,
+    7
+   ]
+  ],
+  "c": "#6c5042",
+  "k": [
+   0.039,
+   0.024,
+   0.392,
+   0.086
+  ],
+  "p": [
+   0.102,
+   0.16,
+   0.665,
+   0.671
+  ]
+ },
  "https://ni.yam.com/20261123/dota2-online-tournament-streaming-studio-20261123-88b55bb77031cc11.webp": {
   "w": 1200,
   "h": 675,
@@ -4932,6 +4987,12 @@
   "w": 997,
   "h": 552,
   "target": 1280,
+  "v": 3
+ },
+ "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/STKS540_GTA_VI_2_A.jpg?quality=90&strip=all&crop=0%2C9.9676601489831%2C100%2C80.064679702034": {
+  "w": 2040,
+  "h": 1067,
+  "target": 720,
   "v": 3
  },
  "https://players.com.ua/wp-content/uploads/2026/11/HVuiYyqW0AAn8iT-1024x576.jpg": {
@@ -5284,12 +5345,6 @@
   "w": 1200,
   "h": 800,
   "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/4ea3a6b3564e57021478943b133ace66beab38bee27462b06f376328db05c034/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2F679be64d24c9b43cae27c1dfcd8a6ec8.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/5bbfbaabf00cf709fac69afd035c6b8e1c706b1c917d3f909e7ab9a15191c3fb/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fandroid_police_756%2Ff0a25821ded610c43742941d8512777a.png": {
@@ -5648,6 +5703,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/12/avengers_-doomsday-_-only-in-theaters-december-18-2026-0-52-screenshot.jpeg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/jason_and_lucia_09.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -5919,6 +5980,12 @@
  "https://www.4gamer.net/games/579/G057943/20261120052/SS/001.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.4gamer.net/games/579/G057943/20261124047/SS/006.jpg": {
+  "w": 1920,
+  "h": 1081,
   "target": 1280,
   "v": 3
  },
@@ -6327,12 +6394,6 @@
   "v": 3,
   "blur": 0.401
  },
- "https://www.bing.com/th?id=ONUT.7gPYVExGrdL73L1eFKJ8xw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.AMkXmyoYFhmKgWYKxHNylw&pid=News&w=600": {
   "w": 600,
   "h": 410,
@@ -6627,6 +6688,12 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.WTiqqTALU_v2H4Es_cX3VA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.XMOeIlHRHTUaf9Ktmgq1yg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -7452,12 +7519,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.ellitoral.com/images/2026/11/24/c8TpIxsnn_1300x655__1.jpg": {
-  "w": 1300,
-  "h": 655,
-  "target": 720,
-  "v": 3
- },
  "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/esports-gaming-setup.png?v=72240b6c111d7c67dbf43f89ddbfc186f0a0c1e5": {
   "w": 1200,
   "h": 630,
@@ -7583,6 +7644,12 @@
   "w": 1280,
   "h": 720,
   "target": 720,
+  "v": 3
+ },
+ "https://www.joblo.com/wp-content/uploads/2026/11/avengers-doomsday-patrick-stewart.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://www.kukinews.com/data/kuk/image/2026/09/11/kuk20260911000105.jpg": {

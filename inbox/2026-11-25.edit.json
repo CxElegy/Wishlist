@@ -50,7 +50,8 @@
     37,
     50,
     51,
-    56
+    56,
+    73
    ]
   },
   {
@@ -62,17 +63,19 @@
     7,
     17,
     58,
-    46
+    46,
+    75
    ]
   }
  ],
  "三星手机": [
   {
-   "headline": "Samsung Galaxy S27 Ultra Might Drop Two Big Camera Features",
-   "highlight": "Drop Two Big Camera Features",
-   "blurb": "A leaker says the Galaxy S27 Ultra may drop laser autofocus for the first time since 2021, and earlier leaks point to the 3x telephoto camera going away too.",
+   "headline": "Galaxy S27 UltraはレーザーAFも廃止へ。コストダウンで暗所や接写のピントはセンサー頼みに",
+   "highlight": "レーザーAFも廃止",
+   "blurb": "Galaxy S27 Ultraはレーザー AF を廃止し、3倍望遠も外れる可能性があると報じられている。",
    "weight": "lead",
    "refs": [
+    29,
     2,
     1,
     3,
@@ -88,7 +91,9 @@
     21,
     25,
     23,
-    24
+    24,
+    30,
+    31
    ],
    "image": "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-ultra-camera-leak.jpg"
   },
@@ -100,7 +105,8 @@
    "refs": [
     4,
     14,
-    28
+    28,
+    33
    ]
   },
   {
@@ -131,6 +137,15 @@
    "refs": [
     16
    ]
+  },
+  {
+   "headline": "'갤럭시S27 울트라' 글로벌 인증 대열 합류…출시 준비 속도",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    32
+   ]
   }
  ],
  "漫威电影": [
@@ -147,17 +162,23 @@
     31,
     28,
     62,
-    63
+    63,
+    84,
+    97,
+    92,
+    83
    ],
    "image": "https://img.youtube.com/vi/Oae1ZnQ15gQ/maxresdefault.jpg"
   },
   {
-   "headline": "Disney+ Partners With Fandango for In-App Movie Ticketing for U.S. Subs Ahead of Marvel Studios’ 'Avengers: Doomsday'",
-   "highlight": "",
+   "headline": "‘Avengers: Doomsday’ Final Trailer Clocks 563M Views, Best Ever For Disney; 2nd Most Viewed Of All-Time",
+   "highlight": "563M Views",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    65,
+    67,
+    66
    ]
   },
   {
@@ -171,6 +192,22 @@
    ]
   },
   {
+   "headline": "Patrick Stewart Was ‘Struggling With His Health’ on Last Day of Filming ‘Avengers: Doomsday’; Marvel Plans to Add Tribute to Movie",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    64,
+    72,
+    87,
+    86,
+    89,
+    94,
+    75,
+    74
+   ]
+  },
+  {
    "headline": "Avengers: Doomsday Officially Skips Awards Screenings to Avoid Spoiler Leaks",
    "highlight": "",
    "blurb": "",
@@ -181,15 +218,6 @@
     17,
     18,
     46
-   ]
-  },
-  {
-   "headline": "‘Young Avengers’ Movie Reportedly Gets a Filming Update Teasing One Young Avenger’s Bright Future in the MCU",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    14
    ]
   }
  ],
@@ -257,7 +285,8 @@
     9,
     7,
     1,
-    2
+    2,
+    14
    ],
    "event": {
     "date": "2027-01-26",
@@ -276,24 +305,24 @@
    ]
   },
   {
-   "headline": "プレイヤーが経済と政治を動かすブラウザ中世MMO『Feudera』、城・領地・戦争を加えたバージョン0.6を公開",
-   "highlight": "バージョン0.6",
+   "headline": "「リネージュ クラシック」に新都市“トリア”と史上最速のクラス“ローグ”が登場。シーズン2の構想が語られたメディア懇談会をレポート",
+   "highlight": "新都市“トリア”",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    11
    ]
   }
  ],
  "_covered": {
-  "GTA 6": 62,
-  "三星手机": 28,
-  "漫威电影": 63,
+  "GTA 6": 84,
+  "三星手机": 33,
+  "漫威电影": 97,
   "绝区零": 17,
-  "MMORPG 新作": 9,
-  "ILLIT": 5,
+  "MMORPG 新作": 14,
+  "ILLIT": 8,
   "dota2": 9,
-  "チェーンソーマン": 5,
+  "チェーンソーマン": 8,
   "周杰伦": 10,
   "A2O LITE": 3,
   "FROM": 3,
@@ -348,6 +377,16 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "아일릿, 빌보드 200 3주 연속 진입",
+   "highlight": "3주 연속",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    8
+   ]
   }
  ],
  "dota2": [
@@ -400,6 +439,25 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "AVIOT×チェンソーマン レゼ篇コラボイヤホン予約開始、ベースは25万台出荷の人気モデル",
+   "highlight": "予約開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    8
+   ]
+  },
+  {
+   "headline": "劇場版「チェンソーマン」より、「レゼ」がプライズフィギュアに！エプロンの紐を後ろで結ぶ姿が可愛らしい",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
