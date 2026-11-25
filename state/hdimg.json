@@ -306,57 +306,6 @@
    0.47
   ]
  },
- "http://wx2.sinaimg.cn/middle/001gSRX0ly1ijdooojssgj60hs0vkabc02.jpg": {
-  "w": 640,
-  "h": 1136,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/f4cae8d18d70837f.webp",
-  "out": [
-   640,
-   1136
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    3,
-    2,
-    2,
-    5,
-    5,
-    5,
-    5,
-    5,
-    4,
-    7,
-    37,
-    18
-   ],
-   [
-    1,
-    2,
-    3,
-    5,
-    3,
-    20,
-    47,
-    5,
-    4,
-    5,
-    3,
-    1
-   ]
-  ],
-  "c": "#8b5f3d",
-  "k": [
-   0.267,
-   0.542,
-   0.45,
-   0.595
-  ],
-  "p": null
- },
  "http://wx2.sinaimg.cn/middle/006dNg2Pgy1ijciuvbjqxj30xi1cn440.jpg": {
   "w": 1206,
   "h": 1751,
@@ -503,6 +452,57 @@
    0.273,
    0.164,
    0.334
+  ]
+ },
+ "http://wx2.sinaimg.cn/middle/8f742936gy1ij7r3iuo28j212l135n7j.jpg": {
+  "w": 1389,
+  "h": 1409,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/c8e75c186da392b0.webp",
+  "out": [
+   1262,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    4,
+    4,
+    4,
+    4,
+    21,
+    24,
+    17,
+    3,
+    5,
+    5,
+    5,
+    4
+   ],
+   [
+    3,
+    6,
+    26,
+    25,
+    12,
+    5,
+    5,
+    4,
+    3,
+    4,
+    4,
+    4
+   ]
+  ],
+  "c": "#a89893",
+  "k": null,
+  "p": [
+   0.283,
+   0.098,
+   0.633,
+   0.568
   ]
  },
  "http://wx2.sinaimg.cn/middle/9b213501ly1ijdhc2hesfj20qo0z1qa2.jpg": {
@@ -1606,12 +1606,6 @@
   "target": 1280,
   "v": 3
  },
- "https://chibimegane.jp/wp-content/uploads/2026/03/galaxys26.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://cimg.kgl-systems.io/camion/files/dengeki/94341/a135007e7085979a7d5b41ce54c0e54d7.jpg?x=1280": {
   "w": 958,
   "h": 1280,
@@ -1933,6 +1927,12 @@
   "target": 720,
   "v": 3
  },
+ "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-southeast-asia-and-oceania-qualifier-dota2?v=1795616998": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://escharts.com/metaImage/tournaments/esports-world-cup-2026-south-america-closed-qualifier?v=1795121421": {
   "w": 1200,
   "h": 630,
@@ -2102,6 +2102,12 @@
   "target": 720,
   "v": 3
  },
+ "https://helios-i.mashable.com/imagery/articles/02THNY75hx3iavt8X3aAnQq/hero-image.fill.size_1200x675.v1795450004.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://helios-i.mashable.com/imagery/articles/02eaGJEEvgyCPLPEm5KnYyE/hero-image.fill.size_1200x675.v1794995375.jpg": {
   "w": 1200,
   "h": 675,
@@ -2207,12 +2213,6 @@
    0.741,
    0.802
   ]
- },
- "https://hochi.news/images/2026/11/19/20261119-OHT1I51373-C.jpg": {
-  "w": 1200,
-  "h": 1586,
-  "target": 1280,
-  "v": 3
  },
  "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/pDBqXibuhwybCFn.jpg": {
   "w": 826,
@@ -2799,6 +2799,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s.msn.cn/tenant/amp/entityid/AA2icjvU.img": {
+  "w": 1080,
+  "h": 607,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.4gamers.com.tw/news-image/1d65dc96-a5c8-49f2-bc8e-161d5b9a29e6.jpg": {
   "w": 1600,
   "h": 900,
@@ -2988,9 +2994,9 @@
   "target": 1280,
   "v": 3
  },
- "https://img.newspim.com/news/2026/11/23/2611231012089150.jpg": {
+ "https://img.newspim.com/news/2026/11/20/2611201257513550.jpg": {
   "w": 1200,
-  "h": 750,
+  "h": 800,
   "target": 1280,
   "v": 3
  },
@@ -3388,10 +3394,10 @@
   "target": 720,
   "v": 3
  },
- "https://jamonline.ph/wp-content/uploads/2026/11/samsung-galaxy-s27-pro-s27-ultra-dummy-hands-on.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
+ "https://irei.com/wp-content/uploads/2026/07/logistics2026_GettyImages-2158949678.jpg": {
+  "w": 940,
+  "h": 514,
+  "target": 1280,
   "v": 3
  },
  "https://k-plaza.com/wp-content/uploads/2026/11/6e195630a02193f6decbc766d343f233.jpg": {
@@ -4130,57 +4136,6 @@
   "target": 720,
   "v": 3
  },
- "https://news.walkerplus.com/article/85785/484215_615.jpg": {
-  "w": 615,
-  "h": 656,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.503,
-  "local": "pics/358e5b1de1c605df.webp",
-  "out": [
-   1200,
-   1280
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    4,
-    5,
-    7,
-    11,
-    13,
-    10,
-    12,
-    12,
-    11,
-    8,
-    5,
-    4
-   ],
-   [
-    7,
-    3,
-    4,
-    7,
-    14,
-    14,
-    16,
-    14,
-    4,
-    6,
-    7,
-    3
-   ]
-  ],
-  "c": "#e3cb95",
-  "k": [
-   0.268,
-   0.278,
-   0.708,
-   0.952
-  ],
-  "p": null
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261102-00035871-tennismagv-000-2-view.jpg?exp=10800": {
   "w": 1280,
   "h": 960,
@@ -4439,56 +4394,6 @@
    0.736,
    0.476,
    0.854
-  ],
-  "p": null
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261119-00000468-oric-000-1-view.jpg?exp=10800": {
-  "w": 960,
-  "h": 540,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/32ef70cb54351914.webp",
-  "out": [
-   960,
-   540
-  ],
-  "why": "期限付きの網址",
-  "m": [
-   [
-    6,
-    7,
-    5,
-    5,
-    4,
-    5,
-    14,
-    13,
-    11,
-    11,
-    11,
-    8
-   ],
-   [
-    5,
-    12,
-    9,
-    9,
-    4,
-    8,
-    8,
-    10,
-    10,
-    10,
-    8,
-    7
-   ]
-  ],
-  "c": "#c09a76",
-  "k": [
-   0.016,
-   0.023,
-   0.987,
-   0.674
   ],
   "p": null
  },
@@ -5029,6 +4934,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1d8476de05e44deebb7ff1142c14112a.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/4263a587dc0e48ecbb9118fc98d20b5f.png": {
   "w": 1200,
   "h": 675,
@@ -5452,12 +5363,6 @@
   "target": 1280,
   "v": 3
  },
- "https://rurubu.jp/img_srw/andmore/images/0000757572/l_uBtSB0lIfY8JoBIu1xbN4PDVOXBCcinzSEY1tvpT.jpg": {
-  "w": 804,
-  "h": 402,
-  "target": 1280,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/1b108eafd04ed847d8a6a998c3fed5677d7dd204c45e16a8da144f7163e9d823/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2F6c270f9ef0d9ad6bf8171902a767b177.jpg_up.jpg": {
   "w": 1200,
   "h": 800,
@@ -5479,6 +5384,12 @@
  "https://s.yimg.com/lo/mysterio/api/834d7d301bc33c51650b429e266f3ee4f3f1f4a03b2f085b60dbf4bdbe324f45/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fctwant_styletc_883%2F93b8f1c8a1f5e0eb9c66aff32ba74b98.jpg_up.jpg": {
   "w": 1200,
   "h": 728,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/97df3a90a1696d0dea7323cf93d10b9a2cf18af453be46df18dd18d61aab0b5c/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fcomplex_131%2Fb0ac964e2f968ed3f007b321ee9831fa.jpg": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
@@ -5870,12 +5781,6 @@
   "target": 720,
   "v": 3
  },
- "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/12/avengers_-doomsday-_-only-in-theaters-december-18-2026-0-52-screenshot.jpeg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/jason_and_lucia_09.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6070,12 +5975,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-11-25"
- },
- "https://times-abema.ismcdn.jp/mwimgs/f/3/1200w/img_f34f772640081f865a820431509d2d1d71994.jpg": {
-  "w": 1200,
-  "h": 671,
-  "target": 1280,
-  "v": 3
  },
  "https://today-obs.line-scdn.net/0hjiIQVYaPNUZ0KCnfGo5KEUx-OTdHTi9PVhp7IFl4aiRcBCJHGBpmJVgqPmoJTyVFVE15d1B4Y35dGXEZHw/w1200": {
   "w": 1200,
@@ -6337,12 +6236,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.betanews.net/data/beta/image/2026/11/20/beta20261120000208.png": {
-  "w": 1672,
-  "h": 941,
-  "target": 1280,
-  "v": 3
- },
  "https://www.billboard.com/wp-content/uploads/2026/11/illit.jpg?w=1024": {
   "w": 1024,
   "h": 576,
@@ -6455,6 +6348,62 @@
    0.229,
    0.809,
    0.694
+  ]
+ },
+ "https://www.bing.com/th?id=ONUT.3lwpnzLfbl0eK-jUlsS2CA&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.48,
+  "local": "pics/4addb2773dd3f0a0.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    2,
+    3,
+    8,
+    12,
+    4,
+    3,
+    14,
+    18,
+    8,
+    15,
+    10,
+    3
+   ],
+   [
+    6,
+    9,
+    17,
+    17,
+    13,
+    2,
+    1,
+    3,
+    11,
+    10,
+    8,
+    3
+   ]
+  ],
+  "c": "#887154",
+  "k": [
+   0.363,
+   0.681,
+   0.979,
+   0.892
+  ],
+  "p": [
+   0.042,
+   0.0,
+   1.0,
+   0.647
   ]
  },
  "https://www.bing.com/th?id=ONUT.4CCKgEEUcJtphSyLQjNbpQ&pid=News&w=640": {
@@ -6611,18 +6560,6 @@
    1.0,
    0.962
   ]
- },
- "https://www.bing.com/th?id=ONUT.6dCCTfjI_QU6zZzUOBoFWA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.8JrRkHhfRoQcLizC7XZQ4Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 350,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.AMkXmyoYFhmKgWYKxHNylw&pid=News&w=600": {
   "w": 600,
@@ -6880,6 +6817,57 @@
   "h": 480,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.N9Clc4_97v3jzS138S-6Mg&pid=News&w=400": {
+  "w": 400,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.656,
+  "local": "pics/4109c585a86fc1d5.webp",
+  "out": [
+   1200,
+   1200
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    5,
+    5,
+    6,
+    13,
+    16,
+    11,
+    8,
+    7,
+    5,
+    8,
+    8,
+    8
+   ],
+   [
+    3,
+    5,
+    9,
+    14,
+    17,
+    10,
+    8,
+    9,
+    10,
+    5,
+    5,
+    5
+   ]
+  ],
+  "c": "#62454a",
+  "k": [
+   0.743,
+   0.039,
+   0.826,
+   0.367
+  ],
+  "p": null
  },
  "https://www.bing.com/th?id=ONUT.QR72xbWuaHZCw53d6qFG0A&pid=News&w=1200": {
   "w": 700,
@@ -7250,6 +7238,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.irz1gtYDx2ALk3XykmxOCg&pid=News&w=800": {
+  "w": 700,
+  "h": 395,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.iwNsFgb4iqKadLd37Q6IoA&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -7553,6 +7547,62 @@
    1.0
   ]
  },
+ "https://www.chosun.com/resizer/v2/HAZTQZJZGA2WIZRRGBQTAODDHA.jpg?auth=5f691742d5989558d0dce86d3b3521938c35afb1d6f28dc37874b797298abc2c&width=650&height=341&smart=true": {
+  "w": 650,
+  "h": 341,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.518,
+  "local": "pics/ac02b7a583ad9e71.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    6,
+    6,
+    4,
+    2,
+    14,
+    21,
+    13,
+    15,
+    7,
+    6,
+    5,
+    3
+   ],
+   [
+    5,
+    4,
+    6,
+    10,
+    16,
+    13,
+    16,
+    14,
+    5,
+    4,
+    4,
+    4
+   ]
+  ],
+  "c": "#504e48",
+  "k": [
+   0.473,
+   0.318,
+   0.598,
+   0.559
+  ],
+  "p": [
+   0.375,
+   0.217,
+   0.575,
+   0.667
+  ]
+ },
  "https://www.cnet.com/wp-content/uploads/sites/2/neakasa-riko-smart-pet-feeder-on-tile-floor-with-cat-sitting-nearby.jpg": {
   "w": 1200,
   "h": 675,
@@ -7752,12 +7802,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.joblo.com/wp-content/uploads/2026/11/avengers-doomsday-patrick-stewart.jpg": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://www.kukinews.com/data/kuk/image/2026/09/11/kuk20260911000105.jpg": {
   "w": 1920,
   "h": 1080,
@@ -7770,9 +7814,21 @@
   "target": 720,
   "v": 3
  },
+ "https://www.macobserver.com/wp-content/uploads/2026/05/How-to-Hide-Your-Caller-ID-When-Making-Calls-on-iOS-26.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://www.michigandaily.com/wp-content/uploads/2026/11/The-rise-of-rookie-girl-group-A2O-LITE.jpg": {
   "w": 2400,
   "h": 1600,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.miyazakihonto.com/wp-content/uploads/2026/11/stabakumagatamagu.jpg": {
+  "w": 1280,
+  "h": 706,
   "target": 1280,
   "v": 3
  },
