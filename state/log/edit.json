@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-24T02:40:13+00:00",
-"text": "2026-11-24 第 1 バッチを出刊：哈利波特剧集（1 版面・4 本・今日の整理待ちは全部終わり） · token 新規入力 5.2万・キャッシュ読み 93.4万・出力 4,364",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.6,
-"mem_total": 16868675584,
-"mem_free": 15694532608,
-"disk_used": 10404175872,
-"disk_free": 63408922624,
-"disk_total": 73813098496,
-"peak": 699285504
-},
-"batch": 1,
-"boards": [
-"哈利波特剧集"
-],
-"stories": 4,
-"left": 0,
-"edited": 21,
-"run": 1795487609.3968096,
-"tok": {
-"in": 27,
-"cw": 52022,
-"cr": 934038,
-"out": 4364,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 990451,
-"secs": 404,
-"run_tok": {
-"in": 27,
-"cw": 52022,
-"cr": 934038,
-"out": 4364,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-24T03:40:36+00:00",
 "text": "2026-11-24 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、MMORPG 新作 ほか 15（21 版面・53 本・今日の整理待ちは全部終わり） · token 新規入力 5.2万・キャッシュ読み 121.7万・出力 3,994",
 "level": "ok",
@@ -2021,5 +1980,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 85520
+},
+{
+"at": "2026-11-25T12:14:32+00:00",
+"text": "2026-11-25 第 7 バッチを出刊：MMORPG 新作（1 版面・3 本・残り 1 版面） · token 新規入力 1,512・キャッシュ読み 8.5万・出力 547",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.47,
+"mem_total": 16868675584,
+"mem_free": 15950872576,
+"disk_used": 10432806912,
+"disk_free": 63380291584,
+"disk_total": 73813098496,
+"peak": 398663680
+},
+"batch": 7,
+"boards": [
+"MMORPG 新作"
+],
+"stories": 3,
+"left": 1,
+"edited": 22,
+"run": 1795606555.2664928,
+"tok": {
+"in": 2,
+"cw": 1510,
+"cr": 84824,
+"out": 547,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 86883
 }
 ]
