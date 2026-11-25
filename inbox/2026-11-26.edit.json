@@ -240,7 +240,8 @@
   "gelato pique": 2,
   "ぐでたま": 1,
   "猫用品": 1,
-  "绝区零": 1
+  "绝区零": 1,
+  "Vaundy": 2
  },
  "周杰伦": [
   {
@@ -408,5 +409,26 @@
    ]
   }
  ],
- "绝区零": []
+ "绝区零": [],
+ "Vaundy": [
+  {
+   "headline": "VaundyファンクラブがSWEET LOVE SHOWER舞台裏映像を限定公開",
+   "highlight": "舞台裏映像を限定公開",
+   "blurb": "VaundyファンクラブがSWEET LOVE SHOWERの舞台裏映像を会員限定で公開した。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://pbs.twimg.com/media/HX-FDyLaMAE6k9t?format=jpg&name=medium"
+  },
+  {
+   "headline": "Nulbarich・JQ、ヨルシカn-buna＆Vaundyとのコラボ曲でJOYSOUNDキャンペーン 直筆サイン入りグッズ当たる",
+   "highlight": "JOYSOUNDキャンペーン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ]
 }

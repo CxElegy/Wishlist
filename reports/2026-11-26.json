@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "2ed14fa6858a",
+ "edit_sig": "b2af8edb139e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -590,24 +590,29 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "VaundyファンクラブがSWEET LOVE SHOWERの舞台裏映像を会員限定で公開した。",
      "date": "2026-11-25",
-     "n": 1,
-     "source": "X",
-     "title": "VaundyファンクラブがSWEET LOVE SHOWER舞台裏映像を限定公開",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1Melg3VDMyTGxlV1VqcTBqQ1RWZ29ONTNjbDZGeUsxa09wLW5qZkFTSlcyZExqNUF3NmNrLW9QVzVsNzF1SF9LRHBqQW1TWkh3SklnWVZqTQ?oc=5"
+     "headline": "VaundyファンクラブがSWEET LOVE SHOWER舞台裏映像を限定公開",
+     "highlight": "舞台裏映像を限定公開",
+     "image": "https://pbs.twimg.com/media/HX-FDyLaMAE6k9t?format=jpg&name=medium",
+     "image_via": "AI 挑选",
+     "url": "https://x.com/i/trending/2125601386087719056",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-25",
-     "n": 2,
-     "source": "au Webポータル",
-     "title": "Nulbarich・JQ、ヨルシカn-buna＆Vaundyとのコラボ曲でJOYSOUNDキャンペーン 直筆サイン入りグッズ当たる",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1QeVpRempIcEV5azdYVlpHRVBzS041cGhWdVNvTWpGbl9rZGs1SkQ5a1dtWnpiRnJ2bUZDdGpGYWFZUmZwbkVYTlRRdEtOeVlNTWlQMjdWT0FLOG9NOXo1TU52RUFKTnQxS2hwRDhB?oc=5"
+     "headline": "Nulbarich・JQ、ヨルシカn-buna＆Vaundyとのコラボ曲でJOYSOUNDキャンペーン 直筆サイン入りグッズ当たる",
+     "highlight": "JOYSOUNDキャンペーン",
+     "image": "https://portal.auone.jp/media/thumbnails/2026/11/25/https___news_mynavi_jp_article_20261125-5408221__w1200.webp",
+     "image_via": "og:image",
+     "url": "https://article.auone.jp/c165cb27-2f0b-421c-ada4-8d858fb8017e",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
