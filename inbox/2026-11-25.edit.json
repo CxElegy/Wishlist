@@ -348,7 +348,7 @@
   "绝区零": 17,
   "MMORPG 新作": 14,
   "ILLIT": 8,
-  "dota2": 9,
+  "dota2": 15,
   "チェーンソーマン": 8,
   "周杰伦": 19,
   "A2O LITE": 4,
@@ -430,13 +430,24 @@
    "image": "https://everythingedinburgh.com/wp-content/uploads/2026/11/ee-img-dota-2-patch-7-42-greater-horn-of-battle.jpg"
   },
   {
+   "headline": "7.42a Gameplay Patch",
+   "highlight": "7.42a",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    12
+   ]
+  },
+  {
    "headline": "38 分钟 12 比 33，XG 在最后一局BO3 中遗憾告负",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
     7,
-    9
+    9,
+    13
    ]
   }
  ],

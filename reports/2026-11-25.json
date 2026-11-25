@@ -1,6 +1,6 @@
 {
  "date": "2026-11-25",
- "edit_sig": "03354da9c6c5",
+ "edit_sig": "eb4953240d27",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1004,50 +1004,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-24",
-     "n": 10,
-     "source": "Steam 官方公告",
-     "title": "7.42a Gameplay Patch",
-     "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1850460852979142"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 11,
-     "source": "手机新浪网",
-     "title": "DOTA2 7.42 版本新物品介绍与讨论|DOTA2|血腥投带_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFAxSUQ1M0I3elhoNXhBTE53SGN3c21TbmpEYUVGLVppVXFoMDE4RFBfMlhiM1BhRm1xa21zMW5VSG5Xd01QcHU0YklYR21sRXdkZDZQZWRqdlRhcTNwZHM4ek1YSQ?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 12,
-     "source": "escorenews.com",
-     "title": "Patch 7.42a is released in Dota 2, nerfing Riki, Sven, Phantom Assassin, Phantom Lancer",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNTGJaSnFKM1JiQkIzeXIwUDdrTkQ3bGNXTXVXNVpGNWtmSXM3emJfS1g5djl5Q1FzWlgzVnFiWDhqMGowWUs4VnI5dkgzcEhTUFBIcjd1cUt3LWNKM1FVb0lWQ0dzWkpMZ09rSmpyQllYS0t3STVXNTk1aXNQNmozalUxcEluN2tUN3NFakhIU2s0YzFVRWtqV1BCUndOcDFJRGpTQ1pRbDJodG9zSVE2NzlNeGoxdzB5aDVLa2ZkejJsSFFyOVE?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 13,
-     "source": "手机新浪网",
-     "title": "63 分钟拿下第二局，XG 用 32 比 28 的人头比扳平比分|XG 电子竞技俱乐部|Liquid|dota2|blast slam s9_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBFVDJ0RmZFa09TdnF2b3YwNDZ6bFNNeElqUjdTY0plRmp5dkZESnF6bWVvV1Z2elAyVFQwVV9Ma2pfc2dpOXBwZVNkZG5xbmtrakZRdDZsaVhkMkxPV1FGLTQ1SQ?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 14,
-     "source": "Hawk Live",
-     "title": "How The International Trophy Became the Dota 2 Victory Symbol",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9qZ0xpRENDa3JpWTdzSnZXdjdOVWIxSzFldk9DcVB2R0lfWVJ3OUFlVDhSRlVHUzkxWmFBSzRHVGtyZEhsdGVWbVdPSXNRcUNDR0tQclctdVQ4ZmFPNktqOEQtLUZ0eHlEZFV0QVhR?oc=5"
-    },
-    {
-     "date": "2026-11-18",
-     "n": 15,
-     "source": "Hawk Live",
-     "title": "How long are dota 2 games: average match time",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBYMlJ4eDdkbWgxbVRqUGE4dEtaOHNaUlNCSXMtQjhEdjF1dTFXa3psNHdOTXdZeFNOcUdXTkg2cERQdFdWVmY5bUVJUXd0SlB6U3YxRENyd0M?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1059,6 +1015,16 @@
      "image_via": "AI 挑选",
      "url": "https://everythingedinburgh.com/games/news/dota-2-patch-7-42-greater-horn-of-battle/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-24",
+     "headline": "7.42a Gameplay Patch",
+     "highlight": "7.42a",
+     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/capsule_616x353.jpg",
+     "image_via": "og:image",
+     "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1850460852979142",
+     "weight": "normal"
     },
     {
      "blurb": "",

@@ -5466,6 +5466,62 @@
   "v": 3,
   "blur": 0.413
  },
+ "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/capsule_616x353.jpg": {
+  "w": 616,
+  "h": 353,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.484,
+  "local": "pics/1c105090740e9f27.webp",
+  "out": [
+   1280,
+   734
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    3,
+    3,
+    7,
+    10,
+    11,
+    16,
+    13,
+    13,
+    10,
+    4,
+    5,
+    4
+   ],
+   [
+    5,
+    8,
+    11,
+    14,
+    12,
+    8,
+    6,
+    3,
+    2,
+    2,
+    20,
+    7
+   ]
+  ],
+  "c": "#573928",
+  "k": [
+   0.281,
+   0.825,
+   0.692,
+   0.958
+  ],
+  "p": [
+   0.446,
+   0.098,
+   0.893,
+   0.484
+  ]
+ },
  "https://sm.ign.com/t/ign_ap/feature/e/every-team/every-team-well-see-in-avengers-doomsday_s9kk.1200.jpg": {
   "w": 1200,
   "h": 675,
