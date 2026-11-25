@@ -97,7 +97,10 @@
     23,
     24,
     30,
-    31
+    31,
+    36,
+    44,
+    43
    ],
    "image": "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-ultra-camera-leak.jpg"
   },
@@ -120,7 +123,8 @@
    "weight": "normal",
    "refs": [
     6,
-    26
+    26,
+    37
    ]
   },
   {
@@ -149,6 +153,19 @@
    "weight": "normal",
    "refs": [
     32
+   ]
+  },
+  {
+   "headline": "情報提供者によると、Exynos 2700がGalaxy S27 Ultraに採用されなかったのは、チップの品質ではなくコストが理由だった。",
+   "highlight": "コストが理由",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    40,
+    35,
+    41,
+    39,
+    34
    ]
   }
  ],
@@ -326,7 +343,7 @@
  ],
  "_covered": {
   "GTA 6": 98,
-  "三星手机": 33,
+  "三星手机": 46,
   "漫威电影": 113,
   "绝区零": 17,
   "MMORPG 新作": 14,
