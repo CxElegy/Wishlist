@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-25T18:40:17+00:00",
+ "changed": true,
+ "checked": "2026-11-25T19:10:49+00:00",
  "fired": {
   "at": "2026-11-25T18:40:17+00:00",
   "results": {
@@ -84,32 +84,25 @@
    "items": [
     "A2O LITE",
     "MMORPG 新作",
-    "Vaundy",
-    "lib:Nintendo Switch 2",
-    "lib:ポケモンGO",
-    "lib:大相撲",
-    "lib:将棋",
-    "lib:広島旅行",
-    "lib:恐竜",
-    "lib:羽生善治",
-    "lib:藤井風",
+    "lib:ミャクミャク",
+    "lib:美術館の企画展",
     "滑雪"
    ],
-   "last_batch": "2026-11-25T17:56:04+00:00",
+   "last_batch": "2026-11-25T18:45:28+00:00",
    "last_error": {
     "at": "2026-11-25T10:27:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 116,
+   "prog": 126,
    "prog_day": "2026-11-26",
    "ripe": [
-    "Vaundy"
+    "滑雪"
    ],
-   "sig": "75073569f89a",
+   "sig": "5f1335055a82",
    "token_cap": 1000000,
-   "tokens_today": 80302,
-   "why": "整理待ちの記事 103 件（12 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 128035,
+   "why": "整理待ちの記事 22 件（5 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -306,12 +299,12 @@
    "runs": 13
   },
   "2026-11-26": {
-   "batches": 3,
-   "cr": 1266863,
-   "cw": 71487,
-   "in": 30,
-   "out": 8785,
-   "runs": 1
+   "batches": 4,
+   "cr": 1768344,
+   "cw": 117201,
+   "in": 45,
+   "out": 10789,
+   "runs": 2
   }
  }
 }
