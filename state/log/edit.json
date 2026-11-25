@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-23T20:45:00+00:00",
-"text": "2026-11-24 第 4 バッチを出刊：gelato pique（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 1,898・キャッシュ読み 24.3万・出力 1,565",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.38,
-"mem_total": 16869113856,
-"mem_free": 15835475968,
-"disk_used": 10480095232,
-"disk_free": 63401517056,
-"disk_total": 73881612288,
-"peak": 553230336
-},
-"batch": 4,
-"boards": [
-"gelato pique"
-],
-"stories": 3,
-"left": 0,
-"edited": 13,
-"run": 1795465672.7514496,
-"tok": {
-"in": 5,
-"cw": 1893,
-"cr": 242645,
-"out": 1565,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 246108,
-"secs": 1028,
-"run_tok": {
-"in": 34,
-"cw": 53114,
-"cr": 1281870,
-"out": 5183,
-"calls": 18,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-23T22:32:17+00:00",
 "text": "2026-11-24 第 1 バッチを出刊：Astrae Oratio（1 版面・1 本・残り 1 版面） · token 新規入力 4.2万・キャッシュ読み 56.5万・出力 2,033",
 "level": "ok",
@@ -2071,5 +2030,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 708433
+},
+{
+"at": "2026-11-25T08:50:33+00:00",
+"text": "2026-11-25 第 2 バッチを出刊：Astrae Oratio（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 821・キャッシュ読み 16.3万・出力 648",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.59,
+"mem_total": 16868675584,
+"mem_free": 15969427456,
+"disk_used": 10417258496,
+"disk_free": 63395840000,
+"disk_total": 73813098496,
+"peak": 392019968
+},
+"batch": 2,
+"boards": [
+"Astrae Oratio"
+],
+"stories": 2,
+"left": 0,
+"edited": 22,
+"run": 1795595728.4555814,
+"tok": {
+"in": 4,
+"cw": 817,
+"cr": 162790,
+"out": 648,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 164259,
+"secs": 905,
+"run_tok": {
+"in": 23,
+"cw": 52745,
+"cr": 816248,
+"out": 3676,
+"calls": 12,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
