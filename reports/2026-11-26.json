@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "f268a94b92b2",
+ "edit_sig": "14890450fe8d",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1203,43 +1203,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-19",
-     "n": 16,
-     "source": "QQ News",
-     "title": "央视六台报道《影之刃零》 ；《DOTA2》发布大更新，幻象系加强 | 每日B报",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9sUU1EZXhjT3UzYjJoUUJER3k1WklWRUNWOEljUS1BNjRwemZqaC1GSnZ5YjNiVDk1Q0hnTnZRMGdXd2ZucGd5N2Q5ZmJfa0JsMWFDNFFB?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 17,
-     "source": "Foro3D",
-     "title": "OmGTU climbs to second place in the Dota 2 Heroes Cup",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQeFJITHFveWd2OTczMWVnaFF3b2VlbjNQMllQMFJHRWQyWGdJOC1IeFFpZF9MZUdwREdHcUxYcU1UUi1oS3pVRXphano2RWxnUGRlVzlGRER6TGZiMnJRdUk0cTZtbUNBenBKLTkzWTY0RVdMdnFEZE5JTU1BS2JlTDJmSWR3di1IMGc1RThSaks4X2p6dUEtOUFVLVZKcmQtSjFEV2stZVFFdlE?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 18,
-     "source": "Foro3D",
-     "title": "Minsk hosts the NOVA festival final with sixteen teams in CS2 and Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOdGNmMzl3Q2lIdkI2OHdDTG9vTHVYakVyNHNycjlxLWJMNWlOQU5zUUY0dG5XQ3RoSVFRc1VaWFRkZzhLSDlPUkJfeF9kSm5rOVFwOXdkcjVnLVRfXzQ2ME9FNDQxYmEzSmRIRmlpbWNxTl9RcGNQckZkUzFSZFprdDdBRnQ0a09Gb0psbFFwZkZHMTJtOVh5eUNwaDNkazFfd1lsajlhajU1Rnl2SWpRVg?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 19,
-     "source": "Your Thurrock",
-     "title": "The Dota 2 Market: How it Works Differently From CS2",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOVHh2SEw0WE5CV1ZkZDdRUG1vZGxWS1VJcmd6Zl8wTHdReVdmdTZWZElBdHFPNkxkSXRXS0I2dDktWm56UERGeTN3TkdsNVZVZVY0b3FoZHZ5XzF5dXpHZ3lvM0YzaDNmc2RyTWtEVFAwdnVPVktvdXdwRjhWX0MxRFZHRGpnUmxCR2tHUnFGLTJDMDFuVl84?oc=5"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 20,
-     "source": "手机新浪网",
-     "title": "59 分钟才拿下第一局，XG 用翻盘证明Nemesis 阵容后劲不足|BLAST SLAM|Nemesis|XG|DOTA2_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE4weVNManN2Wk5TQlB2TTdveHNndHVzNkNnZUV6WVliVGZlMzUxNmlCVzJiQkVqLUJFOFVaYTBPb3Yxc0h5elFCdjJsVlE4LXgxelBTN3dQU3lCQlp3a0N5bTdpSQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1280,6 +1243,16 @@
      "image": "https://players.com.ua/wp-content/uploads/2026/11/ch-urk-m-ready.png",
      "image_via": "og:image",
      "url": "https://players.com.ua/en/news/stage-5-of-the-2026-uesf-ukrainian-dota-2-championship-has-concluded/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "《DOTA2》发布大更新，幻象系加强",
+     "highlight": "大更新",
+     "image": "https://inews.gtimg.com/om_ls/O9m4vz0q99Xm19bjmDHDwiQ6mltF7l9IxevjuNYQ7YMH8AA_330330/0",
+     "image_via": "og:image",
+     "url": "https://news.qq.com/rain/a/20261119A0FK5U00",
      "weight": "normal"
     }
    ],
