@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-25T08:50:33+00:00",
-"text": "2026-11-25 第 2 バッチを出刊：Astrae Oratio（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 821・キャッシュ読み 16.3万・出力 648",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.59,
-"mem_total": 16868675584,
-"mem_free": 15969427456,
-"disk_used": 10417258496,
-"disk_free": 63395840000,
-"disk_total": 73813098496,
-"peak": 392019968
-},
-"batch": 2,
-"boards": [
-"Astrae Oratio"
-],
-"stories": 2,
-"left": 0,
-"edited": 22,
-"run": 1795595728.4555814,
-"tok": {
-"in": 4,
-"cw": 817,
-"cr": 162790,
-"out": 648,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 164259,
-"secs": 905,
-"run_tok": {
-"in": 23,
-"cw": 52745,
-"cr": 816248,
-"out": 3676,
-"calls": 12,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-25T10:27:19+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -2034,6 +1993,51 @@
 "cr": 1435141,
 "out": 7741,
 "calls": 19,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-11-26T18:45:18+00:00",
+"text": "2026-11-27 第 1 バッチを出刊：ILLIT、The Mandalorian、チェーンソーマン、星巴克马克杯、猫用品（5 版面・6 本・今日の整理待ちは全部終わり） · token 新規入力 4.4万・キャッシュ読み 49.7万・出力 2,672",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.53,
+"mem_total": 16868675584,
+"mem_free": 15581339648,
+"disk_used": 10409136128,
+"disk_free": 63403962368,
+"disk_total": 73813098496,
+"peak": 763150336
+},
+"batch": 1,
+"boards": [
+"ILLIT",
+"The Mandalorian",
+"チェーンソーマン",
+"星巴克马克杯",
+"猫用品"
+],
+"stories": 6,
+"left": 0,
+"edited": 12,
+"run": 1795718483.5412397,
+"tok": {
+"in": 16,
+"cw": 43913,
+"cr": 497215,
+"out": 2672,
+"calls": 8,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 543816,
+"secs": 235,
+"run_tok": {
+"in": 16,
+"cw": 43913,
+"cr": 497215,
+"out": 2672,
+"calls": 8,
 "model": "claude-sonnet-5-5"
 }
 }

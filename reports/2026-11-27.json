@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "ba4dca4155df",
+ "edit_sig": "6100bbfd07a1",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -253,24 +253,29 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "Sportal Korea interview with ILLIT on their year and what they hope fans feel.",
      "date": "2026-11-20",
-     "n": 1,
-     "source": "Sportal Korea",
-     "title": "[Exclusive] ILLIT, whom I met on 'Mama,' says, \"I have many new challenges this year; I hope you feel a lot of something special\" (Interview)",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9FVHFrVkVrOU1EOHVQN0h4RGlpZjRoSmdNVUtXaWlNOU1fR1JyWEMyRjI5U3ZJN084WEZfX3NYSm52RThaUXpNNEYwcFV2bVBMUGZHSkVZVWZsX1pUeDdJNGthaUFEODQtcXk4UkRn?oc=5"
+     "headline": "[Exclusive] ILLIT, whom I met on 'Mama,' says, \"I have many new challenges this year\"",
+     "highlight": "many new challenges this year",
+     "image": "https://cdn.en.sportalkorea.com/news/photo/202611/48939_94327_1795165857.jpg",
+     "image_via": "og:image",
+     "url": "https://en.sportalkorea.com/news/articleView.html?idxno=48939",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-26",
-     "n": 2,
-     "source": "YouTube · ILLIT",
-     "title": "교복 확대범 달달하게 체포하러왔지 말입니다 I 돌아온 릿반장",
-     "url": "https://www.youtube.com/watch?v=BaLU8RQ1GEo"
+     "headline": "교복 확대범 달달하게 체포하러왔지 말입니다 I 돌아온 릿반장",
+     "highlight": "",
+     "image": "https://i3.ytimg.com/vi/BaLU8RQ1GEo/hqdefault.jpg",
+     "image_via": "条目自带",
+     "url": "https://www.youtube.com/watch?v=BaLU8RQ1GEo",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",
@@ -369,17 +374,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "キャラグーでチェンソーマン缶バッジの入荷日と価格が公開。プライズ景品。",
      "date": "2026-11-26",
-     "n": 1,
-     "source": "キャラグー",
-     "title": "チェンソーマン 缶バッジの入荷日・価格｜プライズ",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE90OTl3T0RwXzdlcWZGc0t3Skt6TnZrOTdIaTM5Mk9LZUNYcUU1VkpobEVTQkJEZS11Z01uV3VuMHcxVG9RcGFDOTg4a2I0WnlkSVlZdlV5SQ?oc=5"
+     "headline": "チェンソーマン 缶バッジの入荷日・価格",
+     "highlight": "入荷日・価格",
+     "image": "https://charagoo.jp/wp-content/uploads/2025/08/L101043_01.jpg",
+     "image_via": "og:image",
+     "url": "https://charagoo.jp/prize/item/2ba5f9538a4d/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -396,17 +403,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "ScreenRant on The Mandalorian's official return, framed as a tribute to Seasons 1-2.",
      "date": "2026-11-26",
-     "n": 1,
-     "source": "ScreenRant",
-     "title": "The Mandalorian Officially Returns In The Perfect Tribute To Seasons 1-2",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5mWTNnenFfUjZsMjJrUFZ1aDE5SzNOMWNRZ0djUTU5SUFlSWNtLWpHYzl4MkI2RXd5ZzNPVG5SNi1DamVXXzBxbnVFQVloS2JHWmhsdU4yejEyeVg4LXQyOUtQdmNEZWxwaVFnVkpVUzIteTQ2?oc=5"
+     "headline": "The Mandalorian Officially Returns In The Perfect Tribute To Seasons 1-2",
+     "highlight": "Officially Returns",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/the-mandalorian_l8vafq.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/the-mandalorian-and-grogu-pop-up-storybook/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -570,17 +579,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "スタバのクリスマス商品、耐熱グラスがSNSで話題。オンラインにはまだ在庫あり。",
      "date": "2026-11-26",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "「見た瞬間に、欲しい！とすぐ買った」 スタバの“耐熱グラス”が話題 「かっこいいしかわいい〜」「オンラインにはまだ在庫 ...",
-     "url": "https://news.yahoo.co.jp/articles/ab7a366033e2490a420554cca517a1622bd21cd3"
+     "headline": "「見た瞬間に、欲しい！とすぐ買った」 スタバの“耐熱グラス”が話題",
+     "highlight": "スタバの“耐熱グラス”が話題",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-10179095-it_nlab-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/ab7a366033e2490a420554cca517a1622bd21cd3",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
@@ -597,17 +608,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-11-26",
-     "n": 1,
-     "source": "ねこちゃんホンポ on MSN",
-     "title": "猫の『ウンチ』から健康を確認する5つの方法 注意が必要な状態や取るべき対応を解説",
-     "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%AE-%E3%82%A6%E3%83%B3%E3%83%81-%E3%81%8B%E3%82%89%E5%81%A5%E5%BA%B7%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B5%E3%81%A4%E3%81%AE%E6%96%B9%E6%B3%95-%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E7%8A%B6%E6%85%8B%E3%82%84%E5%8F%96%E3%82%8B%E3%81%B9%E3%81%8D%E5%AF%BE%E5%BF%9C%E3%82%92%E8%A7%A3%E8%AA%AC/ar-AA2ihNYa"
+     "headline": "猫の『ウンチ』から健康を確認する5つの方法 注意が必要な状態や取るべき対応を解説",
+     "highlight": "5つの方法",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2iheCH.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%AE-%E3%82%A6%E3%83%B3%E3%83%81-%E3%81%8B%E3%82%89%E5%81%A5%E5%BA%B7%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B5%E3%81%A4%E3%81%AE%E6%96%B9%E6%B3%95-%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E7%8A%B6%E6%85%8B%E3%82%84%E5%8F%96%E3%82%8B%E3%81%B9%E3%81%8D%E5%AF%BE%E5%BF%9C%E3%82%92%E8%A7%A3%E8%AA%AC/ar-AA2ihNYa",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
