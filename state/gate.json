@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-26T22:07:27+00:00",
+ "checked": "2026-11-26T22:18:10+00:00",
  "fired": {
   "at": "2026-11-26T21:37:42+00:00",
   "results": {
@@ -85,55 +85,35 @@
     "sig": "4f75b7da21fc"
    },
    "items": [
-    "A2O LITE",
     "BLEACH Mirrors High",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
     "gelato pique",
-    "lib:ONE PIECE",
-    "lib:ブラッククローバー 第2期",
-    "lib:宇宙・ロケット",
-    "lib:生徒会にも穴はある！",
-    "lib:羽生善治",
-    "lib:薬屋のひとりごと 第3期",
-    "lib:貸した魔力は【リボ払い】で強制徴収",
-    "lib:転生したら剣でした 第2期",
-    "あつ森",
-    "チェーンソーマン",
+    "lib:Nintendo Switch 2",
+    "lib:世界最強の魔女、始めました",
+    "lib:大相撲",
+    "lib:将棋",
+    "lib:恐竜",
+    "lib:東京ディズニーリゾート",
+    "lib:生成AI",
+    "lib:藤井風",
     "周杰伦",
-    "哈利波特剧集",
     "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-11-26T20:58:41+00:00",
+   "last_batch": "2026-11-26T22:04:02+00:00",
    "last_error": {
     "at": "2026-11-26T06:40:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 172,
+   "prog": 222,
    "prog_day": "2026-11-27",
-   "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "The Mandalorian",
-    "dota2",
-    "gelato pique",
-    "あつ森",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
-   ],
-   "sig": "0417f81d0dbd",
+   "ripe": [],
+   "sig": "53db7870c23a",
    "token_cap": 1000000,
-   "tokens_today": 176930,
-   "why": "整理待ちの記事 148 件（24 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 235523,
+   "why": "整理待ちの記事 106 件（15 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -338,12 +318,12 @@
    "runs": 12
   },
   "2026-11-27": {
-   "batches": 10,
-   "cr": 2922951,
-   "cw": 160819,
-   "in": 79,
-   "out": 16032,
-   "runs": 3
+   "batches": 12,
+   "cr": 4390633,
+   "cw": 213603,
+   "in": 119,
+   "out": 21801,
+   "runs": 4
   }
  }
 }
