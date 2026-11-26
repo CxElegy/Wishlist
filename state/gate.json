@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-26T01:18:04+00:00",
+ "checked": "2026-11-26T01:28:11+00:00",
  "fired": {
   "at": "2026-11-26T00:40:01+00:00",
   "results": {
@@ -82,12 +82,6 @@
     "sig": "5e354b90e4d4"
    },
    "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "ILLIT",
-    "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
     "lib:SPY×FAMILY",
@@ -95,36 +89,21 @@
     "lib:原神",
     "lib:呪術廻戦",
     "lib:葬送のフリーレン",
-    "lib:鬼滅の刃",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "lib:鬼滅の刃"
    ],
-   "last_batch": "2026-11-26T01:08:34+00:00",
+   "last_batch": "2026-11-26T01:11:53+00:00",
    "last_error": {
     "at": "2026-11-25T10:27:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 305,
+   "prog": 25,
    "prog_day": "2026-11-26",
-   "ripe": [
-    "Vaundy",
-    "gelato pique",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "猫用品"
-   ],
-   "sig": "aa1d729284e1",
+   "ripe": [],
+   "sig": "d8a5f8150cd9",
    "token_cap": 1000000,
-   "tokens_today": 296120,
-   "why": "整理待ちの記事 118 件（22 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 290148,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -322,11 +301,11 @@
   },
   "2026-11-26": {
    "batches": 9,
-   "cr": 5717721,
-   "cw": 271900,
-   "in": 152,
-   "out": 24068,
-   "runs": 6
+   "cr": 5196596,
+   "cw": 267640,
+   "in": 144,
+   "out": 22364,
+   "runs": 5
   }
  }
 }
