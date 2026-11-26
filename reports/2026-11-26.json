@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "855afde9d11e",
+ "edit_sig": "2a7c99d53236",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -341,22 +341,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 6,
-     "source": "Collider",
-     "title": "Fred and George Weasley Officially Arrive in New Look at HBO’s ‘Harry Potter’",
-     "url": "https://collider.com/hbo-harry-potter-series-fred-george-weasley-first-look/"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 7,
-     "source": "Comic Book Resources on MSN",
-     "title": "HBO Max's biggest fantasy series is finally premiering in just 1 month",
-     "url": "https://www.msn.com/en-us/news/other/hbo-maxs-biggest-fantasy-series-is-finally-premiering-in-just-1-month/ar-AA2if2Rd"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -396,11 +380,21 @@
       "date": "2026-12-25",
       "label": "放送開始"
      },
-     "headline": "乐高公布4款基于HBO版《哈利·波特》剧集的全新套装",
-     "highlight": "4款",
-     "image": "https://i.17173cdn.com/gdthue/YWxqaGBf/kidhub/20261126/sQuAXbbuiklBCCi.jpg",
-     "image_via": "正文图",
-     "url": "https://news.17173.com/content/11262026/060936949.shtml",
+     "headline": "HBO Max's biggest fantasy series is finally premiering in just 1 month",
+     "highlight": "1 month",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1NPPee.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/hbo-maxs-biggest-fantasy-series-is-finally-premiering-in-just-1-month/ar-AA2if2Rd",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-25",
+     "headline": "Fred and George Weasley Officially Arrive in New Look at HBO’s ‘Harry Potter’",
+     "highlight": "Fred and George Weasley",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/arabella-stanton-hermione-dominic-mclaughlin-harry-alastair-stout-ron-harry-potter-hbo.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://collider.com/hbo-harry-potter-series-fred-george-weasley-first-look/",
      "weight": "normal"
     }
    ],

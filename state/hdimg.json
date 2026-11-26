@@ -2714,6 +2714,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1NPPee.img": {
+  "w": 2800,
+  "h": 1400,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1YHyEN.img": {
   "w": 615,
   "h": 410,
@@ -3946,6 +3952,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26kKYoBarLHUFwatb7F7WO9PwmQfKFr93ahHBuUAZEItHFNZkHttm4PV72_EutMF9IpplSHwZJWle04ef5bc53UL5ezMuwnG_VW5UndLdXjXsoRpAsc8t7mo7HLdOJBtp_Q==": {
+  "w": 934,
+  "h": 657,
+  "target": 1280,
+  "v": 3
+ },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnbKO4yRvCMedPqwW7GIyRes6Dq0-b0horielnHQmI9zAruanx6ZKZWl6cDtpTc45KsWtFHrAtf0hY-u3uVJ2J_0vwb3XyyKGnBDcA-AiRgVr8i_xiyB76dzWC-cmpqoEog==": {
   "w": 934,
   "h": 701,
@@ -4970,51 +4982,6 @@
    0.671
   ]
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261125-00010002-cancam-000-1-view.jpg?exp=10800": {
-  "w": 1280,
-  "h": 900,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/78fa4ae75c04b1a9.webp",
-  "out": [
-   1280,
-   900
-  ],
-  "why": "期限付きの網址",
-  "m": [
-   [
-    3,
-    6,
-    17,
-    35,
-    18,
-    5,
-    4,
-    3,
-    3,
-    3,
-    2,
-    1
-   ],
-   [
-    0,
-    6,
-    3,
-    3,
-    5,
-    13,
-    25,
-    25,
-    10,
-    3,
-    6,
-    0
-   ]
-  ],
-  "c": "#6d6c79",
-  "k": null,
-  "p": null
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261125-00015002-tennisnet-000-1-view.jpg?exp=10800": {
   "w": 1980,
   "h": 1356,
@@ -5872,6 +5839,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/arabella-stanton-hermione-dominic-mclaughlin-harry-alastair-stout-ron-harry-potter-hbo.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/harry-potter-paapa-essiedu-severus-snape-1.jpeg?w=1600&h=900&fit=crop": {
@@ -7095,12 +7068,6 @@
  "https://www.bing.com/th?id=ONUT.f4QZ0VIySVJrVzNFFgoQaQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.f5ME3cJefqnIVxIYTZjisg&pid=News&w=1200": {
-  "w": 700,
-  "h": 334,
   "target": 720,
   "v": 3
  },
