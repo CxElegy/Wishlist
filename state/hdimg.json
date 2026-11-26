@@ -5663,6 +5663,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/harry-potter-hagrid.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/jason-from-behind-gta-6.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6995,6 +7001,57 @@
   "k": null,
   "p": null
  },
+ "https://www.bing.com/th?id=ONUT.wMDJDLbYtJdMj5WoIR677w&pid=News&w=1200": {
+  "w": 700,
+  "h": 390,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.431,
+  "local": "pics/5f0aa73a2336f64a.webp",
+  "out": [
+   1280,
+   713
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    11,
+    8,
+    9,
+    8,
+    8,
+    5,
+    6,
+    7,
+    11,
+    8,
+    9,
+    9
+   ],
+   [
+    4,
+    7,
+    10,
+    8,
+    6,
+    8,
+    10,
+    10,
+    6,
+    12,
+    14,
+    5
+   ]
+  ],
+  "c": "#aab3bb",
+  "k": [
+   0.65,
+   0.81,
+   0.958,
+   0.894
+  ],
+  "p": null
+ },
  "https://www.bing.com/th?id=ONUT.wVLSKtCbow8pj59yEvb88A&pid=News&w=300": {
   "w": 300,
   "h": 249,
@@ -7311,6 +7368,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.enduins.com/wp-content/uploads/2026/11/i1795486631629415.jpeg": {
+  "w": 1010,
+  "h": 691,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.fashion-press.net/img/news/153772/top.jpg?1795500792": {
   "w": 1088,
   "h": 726,
@@ -7502,6 +7565,12 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/harry-potter-1.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.techjuice.pk/wp-content/uploads/2026/09/hbos-harry-potter-reboot-just-split-the-fandom-in-two-techjuice-252142.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 1280,
   "v": 3
  },

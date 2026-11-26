@@ -177,6 +177,52 @@
   "GTA 6": 18,
   "三星手机": 6,
   "周杰伦": 4,
-  "Astrae Oratio": 3
- }
+  "Astrae Oratio": 3,
+  "MMORPG 新作": 3,
+  "哈利波特剧集": 3
+ },
+ "MMORPG 新作": [
+  {
+   "headline": "Gravity、ラグナロク8種のグローバル展開を予告",
+   "highlight": "ラグナロク8種",
+   "blurb": "GravityがラグナロクIP基盤の新作ゲーム8種の計画を公開。正式ナンバリングやMMORPGなど多彩なジャンルを含む。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.wMDJDLbYtJdMj5WoIR677w&pid=News&w=1200"
+  },
+  {
+   "headline": "Kakao Games Confirms January 26, 2027 Launch for MMORPG Odin Q: Valkyrie’s Call",
+   "highlight": "January 26, 2027",
+   "blurb": "Kakao Games has confirmed the launch date of Odin Q: Valkyrie’s Call.",
+   "weight": "hero",
+   "refs": [
+    2
+   ],
+   "image": "https://www.enduins.com/wp-content/uploads/2026/11/i1795486631629415.jpeg"
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter TV Series Sets Christmas 2026 Premiere on HBO Max",
+   "highlight": "Christmas 2026 Premiere",
+   "blurb": "The Harry Potter TV series is set to premiere on HBO Max at Christmas 2026.",
+   "weight": "hero",
+   "refs": [
+    3,
+    1
+   ],
+   "image": "https://www.techjuice.pk/wp-content/uploads/2026/09/hbos-harry-potter-reboot-just-split-the-fandom-in-two-techjuice-252142.jpg"
+  },
+  {
+   "headline": "HBO's Harry Potter Season 1's Major Location Unveiled In Sneak Peek",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ]
 }
