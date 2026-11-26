@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-26T18:40:34+00:00",
+ "changed": true,
+ "checked": "2026-11-26T18:58:42+00:00",
  "fired": {
   "at": "2026-11-26T18:40:34+00:00",
   "results": {
@@ -86,43 +86,32 @@
    },
    "items": [
     "A2O LITE",
-    "ILLIT",
-    "The Mandalorian",
     "dota2",
     "gelato pique",
-    "lib:F1",
-    "lib:King Gnu",
-    "lib:NBA",
-    "lib:ガンプラ",
-    "lib:キャンプ",
-    "lib:コーヒー",
-    "lib:ユニクロ",
-    "lib:無印良品",
+    "lib:ONE PIECE",
+    "lib:ブラッククローバー 第2期",
+    "lib:ラーメン",
+    "lib:世界最強の魔女、始めました",
+    "lib:生徒会にも穴はある！",
+    "lib:薬屋のひとりごと 第3期",
+    "lib:貸した魔力は【リボ払い】で強制徴収",
+    "lib:転生したら剣でした 第2期",
     "あつ森",
-    "チェーンソーマン",
-    "星巴克马克杯",
-    "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-26T17:45:20+00:00",
+   "last_batch": "2026-11-26T18:45:18+00:00",
    "last_error": {
     "at": "2026-11-26T06:40:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 83,
+   "prog": 97,
    "prog_day": "2026-11-27",
-   "ripe": [
-    "ILLIT",
-    "The Mandalorian",
-    "チェーンソーマン",
-    "星巴克马克杯",
-    "猫用品"
-   ],
-   "sig": "4d0b6f3f2d56",
+   "ripe": [],
+   "sig": "b8ce6e5ea903",
    "token_cap": 1000000,
-   "tokens_today": 70258,
-   "why": "整理待ちの記事 107 件（18 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 116859,
+   "why": "整理待ちの記事 101 件（13 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -327,12 +316,12 @@
    "runs": 12
   },
   "2026-11-27": {
-   "batches": 2,
-   "cr": 1435141,
-   "cw": 62481,
-   "in": 36,
-   "out": 7741,
-   "runs": 1
+   "batches": 3,
+   "cr": 1932356,
+   "cw": 106394,
+   "in": 52,
+   "out": 10413,
+   "runs": 2
   }
  }
 }
