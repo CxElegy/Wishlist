@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "2cb7288e4b2e",
+ "edit_sig": "a01c754b7642",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -361,6 +361,41 @@
    "pending": [
     {
      "date": "2026-11-25",
+     "n": 1,
+     "source": "cwibc.co.id",
+     "title": "Harry Potter Series Reveals New Costumes and Film Connections",
+     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBkQWNHRDQ0Yy05ZlZHNXJ3d2FxNERzZ0xSNGw3aWRtdWgyWXZzUkpQdXdFVHRWcl9xX2F1SlBSZEtCMXJRb0Q3WGVyQWloSlJIRVFqa2l1QzRKYkZsU0l6UmxVakN1RFJY?oc=5"
+    },
+    {
+     "date": "2026-11-25",
+     "n": 2,
+     "source": "SuperHeroHype",
+     "title": "HBO’s Harry Potter Set Photos Bring Back Two Magical Fan-Favorite Locations",
+     "url": "https://www.superherohype.com/tv/709100-harry-potter-hbo-set-photos-diagon-alley-gringotts"
+    },
+    {
+     "date": "2026-11-25",
+     "n": 3,
+     "source": "AOL.com",
+     "title": "Harry Potter TV Show Fans Get First Glimpse of Mysterious Gryffindor Figure",
+     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1LX0VRRzI5OVRBRU8yNUZTQTRPVC1fcjNCeWRwTm1pRHZsN2dGczU3WXBNdXU3M1ZieFo0SHczV1pFSGk3c0dtQkUzRlJmS2lEbDF6YmFOTDhEeDNZaTB1M00wQ2ItOFdLazRkbGhiSUxzcmdlUmdMRg?oc=5"
+    },
+    {
+     "date": "2026-11-25",
+     "n": 4,
+     "source": "Demokratis.co.id",
+     "title": "HBO Reveals Harry Potter Series Costumes and Production Details",
+     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBreEoyLU5QbEhXRVBnRFVUc0dDQ2dIZDNGVkFyV3BKdF9JMTd1VGFGYUVzeXhCWmxXbFNOcVN5eUpZSGNYOWNZRklGeVpmdTBnOFBqVWt3Nnd3cnBXN0x5OGllMXdxb1llSWZxSFRTSQ?oc=5"
+    },
+    {
+     "date": "2026-11-25",
+     "n": 5,
+     "source": "17173游戏新闻中心",
+     "title": "乐高公布4款基于HBO版《哈利·波特》剧集的全新套装",
+     "url": "https://news.17173.com/content/11262026/060936949.shtml"
+    },
+    {
+     "date": "2026-11-25",
      "n": 6,
      "source": "Collider",
      "title": "Fred and George Weasley Officially Arrive in New Look at HBO’s ‘Harry Potter’",
@@ -368,53 +403,7 @@
     }
    ],
    "section": "影视",
-   "stories": [
-    {
-     "blurb": "Latest set photos from HBO's Harry Potter series offer a first look at major wizarding world locations.",
-     "date": "2026-11-25",
-     "headline": "HBO’s Harry Potter Set Photos Bring Back Two Magical Fan-Favorite Locations",
-     "highlight": "Set Photos",
-     "image": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/harry-potter-1.jpg?resize=1200,630",
-     "image_via": "og:image",
-     "url": "https://www.superherohype.com/tv/709100-harry-potter-hbo-set-photos-diagon-alley-gringotts",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-25",
-     "headline": "Harry Potter Series Reveals New Costumes and Film Connections",
-     "highlight": "New Costumes",
-     "image": null,
-     "source": "cwibc.co.id",
-     "source_icon": "https://www.google.com/s2/favicons?domain=cwibc.co.id&sz=128",
-     "url": "https://cwibc.co.id/en/harry-potter-series-costume-design",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-25",
-     "headline": "Harry Potter TV Show Fans Get First Glimpse of Mysterious Gryffindor Figure",
-     "highlight": "",
-     "image": "https://hermes.media.transform.aol.com/d68e965ce48f2104246db95a76261c974a35bce0/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/25/7f89eb46-88b7-3088-8a4d-e0348a501657/3c67c7e7-9b15-4149-8011-f15899946b60.jpg",
-     "image_via": "og:image",
-     "url": "https://www.aol.com/articles/harry-potter-tv-show-fans-200638000.html",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-25",
-     "event": {
-      "date": "2026-12-25",
-      "label": "放送開始"
-     },
-     "headline": "乐高公布4款基于HBO版《哈利·波特》剧集的全新套装",
-     "highlight": "4款",
-     "image": "https://i.17173cdn.com/gdthue/YWxqaGBf/kidhub/20261126/sQuAXbbuiklBCCi.jpg",
-     "image_via": "正文图",
-     "url": "https://news.17173.com/content/11262026/060936949.shtml",
-     "weight": "normal"
-    }
-   ],
+   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -461,16 +450,6 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-25",
-     "headline": "ILLIT、青龍映画賞をまた沸かす…チョン・ホヨンらを「逮捕」",
-     "highlight": "青龍映画賞",
-     "image": "https://www.chosun.com/resizer/v2/MQ3TENDBG5QTQYRWMNSTMYJUHA.jpg?auth=2a44185fe76f4e28e919023dc81814dc8f7b4a5bd34d7cb09d81883ce3a70462&width=530&height=278&smart=true",
-     "image_via": "og:image",
-     "url": "https://www.chosun.com/jp/culture-life-jp/2026/11/26/XUFJPUZWF5HC5KMTCEKL3N35EY/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-11-23",
      "headline": "「5人→4人→2人」紅白出場ILLIT 道枝駿佑がプレゼンターを務めた『MAMA』で見せた圧巻ステージの裏でファンから相次ぐ“懸念”",
      "highlight": "",
@@ -497,6 +476,16 @@
      "image": "https://shira-treat.com/wp-content/uploads/2026/11/illit-nenmatsu-music-1200.webp",
      "image_via": "JSON-LD",
      "url": "https://shira-treat.com/illit-nenmatsu-music/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-25",
+     "headline": "ILLITが青龍映画賞をまた沸かす…チョン・ホヨンらを「逮捕」",
+     "highlight": "青龍映画賞",
+     "image": "https://www.chosun.com/resizer/v2/MQ3TENDBG5QTQYRWMNSTMYJUHA.jpg?auth=2a44185fe76f4e28e919023dc81814dc8f7b4a5bd34d7cb09d81883ce3a70462&width=530&height=278&smart=true",
+     "image_via": "og:image",
+     "url": "https://www.chosun.com/jp/culture-life-jp/2026/11/26/XUFJPUZWF5HC5KMTCEKL3N35EY/",
      "weight": "normal"
     }
    ],
@@ -580,6 +569,41 @@
    "pending": [
     {
      "date": "2026-11-25",
+     "n": 11,
+     "source": "GSMArena.com",
+     "title": "Galaxy S27 series cases leak in hands-on video - GSMArena.com news",
+     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQR0tzOHNKMGpnXy1ud3hfc3R1a3BDVkRqZEJYRDZBNjJ6bUtZVGpDQXdNdzg4MFNaeEZqZlFJTEI1c2x1VGVFUnBFcVRNdUF0NnVVZE1PbHdqUlBXdl9DcHdBMDc4VzVNOXpvdkNiWUJTSWVCUUNQY2VSS0JFOG5SNHFRQlBTTVJUajN0WWNLMFA0a0J3MVNheFh2YWxiUdIBmgFBVV95cUxQTW5hUkpnaDZQeHFzSVNyZ2RMVGJEZjBtbU1yRWh2SUMwNngxRWVlejBYLXFacl92d25vSWN4YTJJYjUtSHNnUWQ2U1dxT0FMWnlJSl90Q203Y01RV2s2WEpjcnExcWVON08xOTJOcGxVVXh0QmM1UTBZcDJReElzR3Job1VfOVNJWTlydkI4R2FXb2tRTi1OdFV3?oc=5"
+    },
+    {
+     "date": "2026-11-25",
+     "n": 12,
+     "source": "PhoneArena on MSN",
+     "title": "New report reveals all the reasons why the Galaxy S27 Ultra can't use the Exynos 2700 chipset",
+     "url": "https://www.msn.com/en-us/technology/general/new-report-reveals-all-the-reasons-why-the-galaxy-s27-ultra-can-t-use-the-exynos-2700-chipset/ar-AA2idNxE"
+    },
+    {
+     "date": "2026-11-25",
+     "n": 13,
+     "source": "nokiapoweruser.com",
+     "title": "Galaxy S27 Ultra Leaks Point to Bold Camera Cuts and Display Upgrades Ahead of Launch",
+     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPYy11M1Ftek9OLXVSbnRRZkc0NHBzLS1fVm5DSDU4VnZrblZacUpTTkhHRDdTSGpQaVRmSXg0T1VKekNtSUJaTEYwQVpqX2FyUVNTVEFLUGpEMmhhSl9QNXIzN3FuWUY1VDJuakpuTEtEY1ZMSFZORGZkTDRDLXVPMjFWcXNsaTVtbGZsaExn?oc=5"
+    },
+    {
+     "date": "2026-11-24",
+     "n": 14,
+     "source": "Phandroid",
+     "title": "Samsung Galaxy S27 Ultra leak: no laser autofocus, no 3x telephoto",
+     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQSll4RlpOZU1CUDJCc0tyOEtUSHg3SGFUUnNEMDNBMkNFSGp1NGhIdEdvckJnVnFucjZnVkhNa251WmNyUkF6eWVUTld4SGFwSXZBNjViX3BFVWgta1B3N0xyUUVvbGlSbnNFQUN6R05qSGF0YllFd19nQURjV1pYazhjbi0wRDRnRnZXaHNJeHZjUEg1SXN2ampjeFA5ZmfSAaQBQVVfeXFMTUZXaWxVcTNoRXlQYnh4dksxQXlYSnk1TWFUVndZa0hac202NER2dzgxek40QzF3UmxUaWxhUi1jSTgzYXd0UHoxWkxhZTRrUGRpeXZZRnJ2ODhTa2VJX1BrVW10UzhheE82eHJHMXdxQjRBaXpleWUyMmhfVGRRaU5zN1NCZzRmdFI0T3hZNEhBWG56bGtfa3F5a1FjLW1DdzdWODI?oc=5"
+    },
+    {
+     "date": "2026-11-23",
+     "n": 15,
+     "source": "VOI.ID",
+     "title": "삼성 갤럭시 S27 프로, 화면에 반사 방지 기능을 갖춘 것으로 알려져 있습니다.",
+     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPTEdBZVNsWGNWcFdqUXFPeHVCOHpCSlpHX0ppSmJsbmhWQ3ZnVkkxNlhBTlZnbGZtTDNpeDN0N3NLRWJwT0psem9wNWdjeXJVc2UxaDk1ZFc5Nk1fUGpTZHhCWU5JRGRZajB4X1dpWnNWWE9lTnVNMXh6OUVQQVZnX1dUWmI0OVZfOXZZYndHR0tkclZuTHNONFZOTm5reXho?oc=5"
+    },
+    {
+     "date": "2026-11-25",
      "n": 16,
      "source": "S-MAX（エスマックス）",
      "title": "次期最上級スマホ「Galaxy S27 Ultra」のNTTドコモ版「SC-54H」やソフトバンク版「SM-S958Z」、メーカー版「SM-S958Q」が認証通過",
@@ -636,26 +660,6 @@
      "image": "https://sammyguru.com/wp-content/uploads/2026/10/S27_Blue_Featured_1728x1080.png",
      "image_via": "转载 sammyguru.com",
      "url": "https://sammyguru.com/galaxy-s27-ultra-charging-speed-ul-demko/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-25",
-     "headline": "New report reveals all the reasons why the Galaxy S27 Ultra can't use the Exynos 2700 chipset",
-     "highlight": "Exynos 2700",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2iexpt.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/en-us/technology/general/new-report-reveals-all-the-reasons-why-the-galaxy-s27-ultra-can-t-use-the-exynos-2700-chipset/ar-AA2idNxE",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-24",
-     "headline": "Samsung Galaxy S27 Ultra leak: no laser autofocus, no 3x telephoto",
-     "highlight": "no 3x telephoto",
-     "image": "https://phandroid.com/wp-content/uploads/2026/02/Samsung-galaxy-s26-ultra-1.jpg",
-     "image_via": "og:image",
-     "url": "https://phandroid.com/2026/11/24/samsung-galaxy-s27-ultra-leak-no-laser-autofocus-no-3x-telephoto/",
      "weight": "normal"
     }
    ],
@@ -992,6 +996,41 @@
    "facts": [],
    "name": "周杰伦",
    "pending": [
+    {
+     "date": "2026-11-24",
+     "n": 6,
+     "source": "手机新浪网",
+     "title": "投稿：单依纯粉丝评价邓紫棋、张靓颖、易烊千玺、刘雨昕、周杰伦、蔡徐坤、宁艺卓、 宋雨琦、王源、希林娜依高、李宇春。 ​",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE95ZXVRVnRmcEVJRl9sUW96bmNWUTNzZXN4VDJsUTh0amY2MGRURlU3a0REck5ZcS1Jb1k3cHhfWHVJdVd4SDJtVzRFQkFfdkRuci1BOXBXaEpsR2FrT2pwNnE3TQ?oc=5"
+    },
+    {
+     "date": "2026-11-24",
+     "n": 7,
+     "source": "三立新聞",
+     "title": "聽媽媽的話！周杰倫身價9億擁北市4豪宅",
+     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9DX2FPSzFfeWJjSXViclhycHMxVWlfVDJoTldzU0oySlR1SkFpZjRqbVdjbDBzWGpuUmh3MzJGSUhlXzJjNmc?oc=5"
+    },
+    {
+     "date": "2026-11-25",
+     "n": 8,
+     "source": "Facebook",
+     "title": "王仁甫曝女兒沒回台看BTS 「她選擇了周杰倫」XD",
+     "url": "https://news.google.com/rss/articles/CBMivgJBVV95cUxQOTFHdE12STBhYnNtZUM3X2FYZnAwdGdEakJ6SWVoaGdzLW1sQmYwdFpCOWNIZlNJeHhtaElBTF9oUnpYSXlGaWh0NGZ5ZUYySGVoSEI0Skw4V1hCV3lMZmFGVzZrek5Yekp1WGVtRHgtYUpHY2lRQ0N6YVVJTmZtYUx3Yi1lNElFanBjMDUyYzNOSHJfSnRxQVVEUmc4V3ZTNUdJMVI1aE93ZjM5LUlMOTZCdXk5aktQbXVpdWVHdU1zRDZHQ3ZfY2ZLRUtra1BYUnFVSXo3R3RrVllWRi1nVzlYekdLT19udGRqQU5pbHNGYWpIX2FVTW9nODNDSDhZNm9laDBOd09oT1NuSFVwYmw2MmFKYTVnZTE0VmVPNmhVUk5mbm81TzJITENyN2o3QmlvNHJHcFl5UUFGZGc?oc=5"
+    },
+    {
+     "date": "2026-11-25",
+     "n": 9,
+     "source": "娛樂星聞 on MSN",
+     "title": "周杰倫《周遊記4》爆爭議! 台北101竟遭標「中國台北」網全炸鍋了",
+     "url": "https://www.msn.com/zh-tw/news/national/%E5%91%A8%E6%9D%B0%E5%80%AB-%E5%91%A8%E9%81%8A%E8%A8%984-%E7%88%86%E7%88%AD%E8%AD%B0-%E5%8F%B0%E5%8C%97101%E7%AB%9F%E9%81%AD%E6%A8%99-%E4%B8%AD%E5%9C%8B%E5%8F%B0%E5%8C%97-%E7%B6%B2%E5%85%A8%E7%82%B8%E9%8D%8B%E4%BA%86/ar-AA2ieJWP"
+    },
+    {
+     "date": "2026-11-25",
+     "n": 10,
+     "source": "手机新浪网",
+     "title": "从日落以后到跨年倒数，广州的冬天被音乐填满了|丁禹兮|孙燕姿|周杰伦|谢霆锋|黄丽玲|张韶涵_新浪新闻",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1JZDNEbzByWXNLV2ItVlZvWVNyN1dzVUtVUS01eG5yME1PeGpkeGZIZ3pEcktIckRaYTZNOEtkVi10OW1aQW5sYTBsQjBsdlhjQlhYWWpLc1l1NXIwbDNobHdDaw?oc=5"
+    },
     {
      "date": "2026-11-25",
      "n": 11,
