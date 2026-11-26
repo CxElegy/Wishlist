@@ -2053,12 +2053,6 @@
   "target": 720,
   "v": 3
  },
- "https://hermes.media.transform.aol.com/d68e965ce48f2104246db95a76261c974a35bce0/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/11/25/7f89eb46-88b7-3088-8a4d-e0348a501657/3c67c7e7-9b15-4149-8011-f15899946b60.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://hips.hearstapps.com/vidthumb/images/lucas-1574724071.jpg?crop=1.00xw:1.00xh;0,0": {
   "w": 1920,
   "h": 1080,
@@ -2826,6 +2820,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2idg1g.img": {
+  "w": 1500,
+  "h": 1000,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2idwPa.img": {
@@ -3828,6 +3828,68 @@
  "https://news.walkerplus.com/article/1018080/10157455_615.jpg": {
   "w": 615,
   "h": 435,
+  "target": 720,
+  "v": 3
+ },
+ "https://news.walkerplus.com/article/1133751/11694997_615.jpg": {
+  "w": 615,
+  "h": 323,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.489,
+  "local": "pics/6d8f572f20bd47d2.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    1,
+    4,
+    6,
+    4,
+    28,
+    33,
+    3,
+    6,
+    5,
+    5,
+    5,
+    0
+   ],
+   [
+    0,
+    7,
+    4,
+    0,
+    16,
+    33,
+    12,
+    7,
+    7,
+    6,
+    4,
+    2
+   ]
+  ],
+  "c": "#d7cac0",
+  "k": [
+   0.117,
+   0.079,
+   0.886,
+   0.194
+  ],
+  "p": [
+   0.159,
+   0.341,
+   0.902,
+   0.664
+  ]
+ },
+ "https://news.walkerplus.com/article/1142795/11888484_615.jpg": {
+  "w": 615,
+  "h": 347,
   "target": 720,
   "v": 3
  },
@@ -5317,12 +5379,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/b12643594a07a3a0c52923141cb3cd6f091bdb48b8a295e512a6717364d58a07/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fcomingsoon_net_477%2F97bfbbfed8db1cfff5f43763cc76d911.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/b14a17eecf13f2880986bb6d0f3bca99710c77825a206349d8726aaf02f35b0f/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Flead-gta-6-reviews-2_3628.jpg": {
   "w": 1200,
   "h": 800,
@@ -5939,6 +5995,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/21/1795264006409_3-1795252310683820234456-20-0-396-719-crop-17952523268951665002337.jpeg": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://win.gg/wp-content/uploads/2026/11/16x9_7_a67e4e48a8.jpg.webp": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -6673,12 +6735,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.QJioqqy-lxAV0vgw4MijRg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.QxWhfW98wLjVWjWyoKYN-w&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -6918,6 +6974,12 @@
  "https://www.bing.com/th?id=ONUT.f4QZ0VIySVJrVzNFFgoQaQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.f5ME3cJefqnIVxIYTZjisg&pid=News&w=1200": {
+  "w": 700,
+  "h": 334,
   "target": 720,
   "v": 3
  },
@@ -7758,12 +7820,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/avengers-doomsday-4.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/doomsday_39dafd.jpg?resize=1200,630": {
