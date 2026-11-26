@@ -2493,6 +2493,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://image-cdn.hypb.st/https%3A%2F%2Fhk.hypebeast.com%2Ffiles%2F2026%2F11%2FPanini-Rockstar-Games-grand-theft-auto-gta-vi-Trading-Cards-Announcement-Info-0.jpg?cbr=1&q=90&w=1200&h=630&fit=crop": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://image.entabe.jp/upload/20260518/images/000_1.jpg": {
   "w": 1280,
   "h": 853,
@@ -2836,6 +2842,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_93,w_1086,h_610/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m8ar6mztqb3jaxahsa.jpg": {
+  "w": 1440,
+  "h": 810,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-cdn.publive.online/fit-in/1200x675/pcq/media/media_files/2026/11/25/will-samsung-galaxy-s27-become-more-expensive-in-india-2026-11-25-12-05-21.jpeg": {
   "w": 1200,
   "h": 675,
@@ -3071,6 +3083,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2iiyiV.img": {
   "w": 1280,
   "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ijjWa.img": {
+  "w": 1280,
+  "h": 718,
   "target": 1280,
   "v": 3
  },
@@ -5382,6 +5400,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/eb78016f169b573700ff6433fe47c745442d20f39a7e102448d76f8934eb4a30/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fparade_250%2F59535541df7c841980f20061600fbe88.jpg": {
+  "w": 1200,
+  "h": 499,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/f307d276b3477a7b2f8fc09f4335f98d0f6b4474bae8404f6fecb4e3652941be/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fwealth_of_geeks_188%2F614475b2414c21c7a86f77dc011f0b2c.jpg": {
   "w": 1200,
   "h": 675,
@@ -5506,12 +5530,6 @@
   ]
  },
  "https://shira-treat.com/wp-content/uploads/2026/11/illit-nenmatsu-music-1200.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://sm.ign.com/t/ign_in/news/s/spider-man/spider-man-brand-new-day-rerelease-includes-a-scene-cut-from_846f.1200.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -6575,62 +6593,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.LzBe5qGhy783dnx8QyB9kw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.572,
-  "local": "pics/f888447d524d13da.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    6,
-    18,
-    18,
-    18,
-    5,
-    9,
-    4,
-    3,
-    3,
-    6,
-    6,
-    3
-   ],
-   [
-    3,
-    2,
-    2,
-    6,
-    13,
-    13,
-    14,
-    15,
-    14,
-    9,
-    5,
-    4
-   ]
-  ],
-  "c": "#39342e",
-  "k": [
-   0.147,
-   0.461,
-   0.293,
-   0.708
-  ],
-  "p": [
-   0.0,
-   0.058,
-   1.0,
-   1.0
-  ]
- },
  "https://www.bing.com/th?id=ONUT.N7fw1dA9xM_la0pD1pmieQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -6698,12 +6660,6 @@
  "https://www.bing.com/th?id=ONUT.V9oUOErfpMDYxDF0Sjo6Hg&pid=News&w=800": {
   "w": 700,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.WqcEiLFfGen6SFiGQOM4Kw&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -6815,6 +6771,12 @@
    0.685,
    1.0
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.cFtPS1qYsCZmghAxvkQ1HQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ccmLD2fGGZK2AXa8MHkabA&pid=News&w=450": {
   "w": 450,
