@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "2a7c99d53236",
+ "edit_sig": "776dfdd6ca8a",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1006,40 +1006,6 @@
    }
   },
   {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-   "facts": [],
-   "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 2,
-     "source": "手机新浪网",
-     "title": "肉肉，想捏 X:anzai_teachco #绝区零# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE0zS1NsZFpvMVFtTktWVmV4N2pRZUFWdWRNak56ZVJ2QU5OVHpzTFJhTDFIdHBIcFZSTG9xaWV3aWdTMzZGXzlIMFIwanYzRW04cXhfTFNhZG8xOUhmSG5MYVpYUQ?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 3,
-     "source": "手机网易网",
-     "title": "在海外玩国服绝区零总卡顿？几个方法结合起来解决",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE4tSkxpMnd1MWl1OEoyODA0TTgwUm0xNmo4d2pOOVVzR3cxd1U4OTYtb0pIUERPQzk5dG1xMm9CRjVNVEsybFhLNEZrdUc0N1F5LVJMaUwzdi1mNWFscllCdVNn?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "ゼンレスゾーンゼロ",
-   "theme": {
-    "accent": "#A9898A",
-    "alt_accent": "#856062",
-    "alt_bg": "#F2EDEE",
-    "alt_fg": "#1E1A18",
-    "bg": "#1E1516",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
@@ -1237,6 +1203,31 @@
     "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
+   "facts": [],
+   "last": {
+    "date": "2026-11-25",
+    "headline": "Zenless Zone Zero Collab Events – Collabo Cafe",
+    "url": "https://collabo-cafe.com/en/events/category/zenless/"
+   },
+   "name": "绝区零",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#A9898A",
+    "alt_accent": "#856062",
+    "alt_bg": "#F2EDEE",
+    "alt_fg": "#1E1A18",
+    "bg": "#1E1516",
+    "fg": "#F4EEE4",
+    "font": "serif",
     "split": true
    }
   }
