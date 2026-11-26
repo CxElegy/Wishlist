@@ -1,6 +1,6 @@
 {
  "admin": "d82975c61c9d",
- "admin-ai": "9e704c99959e",
+ "admin-ai": "ed044bed8826",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0d036f1b"
+   "972633b0"
   ]
  },
  "admin-boards": "c50883d9b926",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "22d5db21f1a9",
+ "admin-emblem": "ca3745ad100b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "2fc013e0"
+   "a95b5e84"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "aeed4c539310",
+ "admin-now": "6f4f6fa10745",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "0fa0c019"
+   "b98ab0dd"
   ]
  },
- "admin-system": "41c25dc2933c",
+ "admin-system": "a9a919085ffa",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "82aa76d5"
+   "0ae77099"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f5fc5bfc"
+   "8eac9933"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "f071715a"
   ]
  },
- "index": "06eafd4cea39",
+ "index": "97f4ccd26f99",
  "index_marks": {
   "front": [
    "トップ",
-   "f1a54e90"
+   "f479b2c0"
   ],
   "picks": [
    "気になるかも？",
@@ -169,11 +169,11 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "60f5e450"
+   "e1da1b42"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "265a8086"
+   "3bab345b"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "fffc18e3"
+   "6b0d1df8"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "4f672be5"
   ]
  },
- "updated": "11.26 12:18",
+ "updated": "11.26 12:22",
  "wishlist": "3e9f37f6223d"
 }
