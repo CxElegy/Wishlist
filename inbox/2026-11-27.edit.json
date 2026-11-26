@@ -217,7 +217,8 @@
   "The Mandalorian": 1,
   "チェーンソーマン": 1,
   "星巴克马克杯": 1,
-  "猫用品": 1
+  "猫用品": 1,
+  "dota2": 4
  },
  "MMORPG 新作": [
   {
@@ -324,6 +325,26 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "29 分钟就结束，XG 这次没进淘汰赛，但前八名够下届直邀了",
+   "highlight": "前八名够下届直邀",
+   "blurb": "BLAST SLAM 小组赛 XG 29 分钟结束比赛，未进淘汰赛，但前八名成绩足够获得下届直邀。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Esports Nations Cup 2026: Europe West Qualifier - Dota 2 - Viewership, Overview, Prize Pool",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]

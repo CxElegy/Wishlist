@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "688cbe9ebbb0",
+ "edit_sig": "741737ac6c56",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -638,38 +638,30 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "BLAST SLAM 小组赛 XG 29 分钟结束比赛，未进淘汰赛，但前八名成绩足够获得下届直邀。",
      "date": "2026-11-24",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "29 分钟就结束，XG 这次没进淘汰赛，但前八名够下届直邀了|BLAST SLAM|XG 战队|液体战队|DOTA2_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBYYTJxcW9hb2lqX0dINnpuYzdqRFFYUW82WHhlNDBCTHhFQ3FVeDJ2S205cEJORjdRQ2xaVV9zYnV5ZVhSUUpMYmUxeC1PSGQ2OTV1ekpoWHdaanJyT3ROTThhQQ?oc=5"
+     "headline": "29 分钟就结束，XG 这次没进淘汰赛，但前八名够下届直邀了",
+     "highlight": "前八名够下届直邀",
+     "image": "http://wx4.sinaimg.cn/middle/006kvRjAly1ijdwgze6xij31ku0vyx6p.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5368990224613688.html",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-25",
-     "n": 2,
+     "headline": "Esports Nations Cup 2026: Europe West Qualifier - Dota 2 - Viewership, Overview, Prize Pool",
+     "highlight": "",
+     "image": null,
      "source": "Esports Charts",
-     "title": "Esports Nations Cup 2026: Europe West Qualifier - Dota 2 - Viewership, Overview, Prize Pool",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNd2JjUXluMnpJeFI3akhSeDQtTGpNNktyc0h6YWF2WVQweThwQVJYME1OaG9yZFJnVlFoamJOTHZOcGV0el9vSzVnU2J1RzNPWXp6T1RHVjFudU1falphOWR6dng0QTdlMHlkbjlfaFZrbWtnbmFGZ253TXJDSVpVTkdRWFdUV21tOEFHVGVjenFsUDI5eWZRaA?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 3,
-     "source": "Hawk Live",
-     "title": "Dota 2 on a Low-End PC (2026): Settings and Launch Options for More FPS",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5XaWpxS0dnZFNHdTFVTjZ2SDRaUG1LSVVpXzVwN3YxR2Q4WWJCcU9RUWI0eXl2cVQxd3V1LWkwWXhXQ19XZ3Y3SUNzNVlHdVBHaXJpMDlJd2Vpakh4?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 4,
-     "source": "sina",
-     "title": "DOTA2更新资讯_HOHO：",
-     "url": "https://sina.cn/news/detail/5366885638210980.html"
+     "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
+     "url": "https://escharts.com/tournaments/dota2/esports-nations-cup-2026-europe-west-qualifier-dota2-2",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
