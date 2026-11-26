@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-26T15:38:22+00:00",
+ "checked": "2026-11-26T16:18:02+00:00",
  "fired": {
   "at": "2026-11-26T14:21:27+00:00",
   "results": {
@@ -82,24 +82,14 @@
     "sig": "7c462fcefa46"
    },
    "items": [
-    "Astrae Oratio",
-    "FROM",
-    "ILLIT",
-    "The Mandalorian",
-    "Vaundy",
-    "gelato pique",
-    "lib:ONE PIECE",
-    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
-    "lib:ブラッククローバー 第2期",
-    "lib:世界最強の魔女、始めました",
-    "lib:生徒会にも穴はある！",
-    "lib:薬屋のひとりごと 第3期",
-    "lib:貸した魔力は【リボ払い】で強制徴収",
-    "lib:転生したら剣でした 第2期",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "星巴克马克杯",
-    "猫用品"
+    "lib:King Gnu",
+    "lib:Mrs. GREEN APPLE",
+    "lib:SPY×FAMILY",
+    "lib:ゼルダの伝説",
+    "lib:原神",
+    "lib:呪術廻戦",
+    "lib:葬送のフリーレン",
+    "lib:鬼滅の刃"
    ],
    "last_batch": "2026-11-26T15:19:00+00:00",
    "last_error": {
@@ -107,13 +97,13 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 637,
-   "prog_day": "2026-11-26",
+   "prog": 8,
+   "prog_day": "2026-11-27",
    "ripe": [],
-   "sig": "b087b04f9d65",
+   "sig": "d8a5f8150cd9",
    "token_cap": 1000000,
-   "tokens_today": 691189,
-   "why": "整理待ちの記事 107 件（18 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "tokens_today": 0,
+   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
