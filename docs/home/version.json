@@ -1,32 +1,32 @@
 {
- "admin": "6f9755ae52ca",
- "admin-ai": "6b9c05d9444f",
+ "admin": "d82975c61c9d",
+ "admin-ai": "9e704c99959e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "b45008c1"
+   "d157d879"
   ],
   "tokens": [
    "AI 編集のトークン",
    "0d036f1b"
   ]
  },
- "admin-boards": "2d5142cc14f6",
+ "admin-boards": "c50883d9b926",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "7bbbfa13"
+   "92c2f804"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "2413f42fb22e",
+ "admin-emblem": "22d5db21f1a9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "0f6d3aee"
+   "2fc013e0"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "511cc542950b",
+ "admin-now": "aeed4c539310",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "fd116270"
+   "2ab6d7ed"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "3e1953e8"
+   "dc4c01c4"
   ],
   "term-panel": [
    "ライブログ",
-   "f4486b4a"
+   "0fa0c019"
   ]
  },
- "admin-system": "802643edcb0d",
+ "admin-system": "41c25dc2933c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "07961d6d"
+   "82aa76d5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "3938f043"
+   "f5fc5bfc"
   ]
  },
  "admin_marks": {},
- "heat": "090cb4796c37",
+ "heat": "ba91369855b0",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "b5a16ee4"
+   "c500f603"
   ],
   "ranking": [
    "ランキング",
-   "b020f109"
+   "f071715a"
   ]
  },
- "index": "55e5c0b1c94d",
+ "index": "06eafd4cea39",
  "index_marks": {
   "front": [
    "トップ",
-   "5ebdabdb"
+   "f1a54e90"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "89496263"
+   "713f369f"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "1ab2ff14"
+   "bb8cee0f"
   ],
   "w-b867582f": [
    "あつ森",
@@ -169,11 +169,11 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "9f4a104b"
+   "60f5e450"
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "25fcfe67"
+   "265a8086"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "8c0ebad2"
+   "fffc18e3"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "2accfd99"
+   "710ac0fe"
   ],
   "w-f303ad09": [
    "绝区零",
    "4f672be5"
   ]
  },
- "updated": "11.26 12:08",
+ "updated": "11.26 12:18",
  "wishlist": "3e9f37f6223d"
 }
