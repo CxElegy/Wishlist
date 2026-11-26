@@ -1260,12 +1260,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.bountyhunter.co/file-presign/f99ff99a-aab3-4997-9385-80ae7c6bf3e6.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.cwibc.co.id/media/images/2026/11/oRQLd5csgB.jpeg?location=1&width=1200&height=674&quality=80&watermark=1": {
   "w": 1200,
   "h": 674,
@@ -1318,12 +1312,6 @@
   "v": 3
  },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/11/AVIOT-x-Chainsaw-Man-Reze-Arc-Collab-Earphones-Main.webp": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://cdn.essential-japan.com/wp-content/uploads/2026/11/Pompompurin-x-Starbucks-Collab-Main.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -2401,12 +2389,6 @@
   "target": 1280,
   "v": 3
  },
- "https://i.insider.com/6b05b3170b69407d788a60fd?width=1200&format=jpeg": {
-  "w": 1200,
-  "h": 600,
-  "target": 1280,
-  "v": 3
- },
  "https://i.pcmag.com/imagery/articles/06urdG5uq5dA4iuVN7r9JeM-9.fit_lim.size_1200x630.v1795191546.jpg": {
   "w": 1120,
   "h": 630,
@@ -2425,12 +2407,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.393
- },
- "https://i0.wp.com/news.qoo-app.com/wp-content/uploads/2026/11/ogp01cover.jpg": {
-  "w": 1116,
-  "h": 630,
-  "target": 720,
-  "v": 3
  },
  "https://i2-prod.birminghammail.co.uk/incoming/article34957733.ece/ALTERNATES/s1200/0_GettyImages-2206898952.jpg": {
   "w": 1200,
@@ -2528,12 +2504,6 @@
  "https://image.cmoney.tw/attachment/blog/1794931200/f94433d9-4fd3-40ed-9373-f4a4ff191325.jpg": {
   "w": 688,
   "h": 384,
-  "target": 720,
-  "v": 3
- },
- "https://image.entabe.jp/upload/20260518/images/000_1.jpg": {
-  "w": 1280,
-  "h": 853,
   "target": 720,
   "v": 3
  },
@@ -3874,12 +3844,6 @@
   "target": 1280,
   "v": 3
  },
- "https://lifehacker.com/imagery/articles/01M75Z3JJZJKEP3CXDTBW36G1M/hero-image.fill.size_1200x675.png": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://m.media-amazon.com/images/I/41GOidvp9JL._SL500_.jpg": {
   "w": 500,
   "h": 500,
@@ -3958,12 +3922,6 @@
  "https://media.assettype.com/deccanherald%2F2026-07-28%2F0f37nips%2FSamsung-Galaxy-S26-Ultra-cs-5.jpg?rect=0%2C19%2C990%2C520&w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop": {
   "w": 1200,
   "h": 630,
-  "target": 1280,
-  "v": 3
- },
- "https://media.gq-magazine.co.uk/photos/6b05bba1c41c6d0bb3b0643d/16:9/w_1280,c_limit/Untitled-4.jpg": {
-  "w": 1280,
-  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -5912,6 +5870,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static.independent.co.uk/2026/09/14/12/29/October-Half-Term-Days-Out-2026.png?trim=0,0,0,0&width=1200&height=800&crop=1200:800": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://static.invenglobal.com/upload/image/2026/11/20/i1795189386895637.jpeg": {
   "w": 1672,
   "h": 941,
@@ -6211,6 +6175,12 @@
   "w": 1280,
   "h": 926,
   "target": 720,
+  "v": 3
+ },
+ "https://sunmattu.jp/wp-content/uploads/2024/02/20240205_135922-scaled-1.jpg": {
+  "w": 1920,
+  "h": 1081,
+  "target": 1280,
   "v": 3
  },
  "https://tabiris.com/wp1/images/2026/11/happo20262.jpg": {
@@ -7227,52 +7197,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.e0ERRRVpR23Y9Iy7oCAJ7Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.47,
-  "local": "pics/c3de485914bcf737.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    5,
-    15,
-    11,
-    3,
-    4,
-    11,
-    9,
-    12,
-    5,
-    7,
-    12,
-    6
-   ],
-   [
-    0,
-    3,
-    9,
-    7,
-    14,
-    10,
-    11,
-    9,
-    10,
-    12,
-    10,
-    4
-   ]
-  ],
-  "c": "#6e6595",
-  "k": null,
-  "p": null
- },
  "https://www.bing.com/th?id=ONUT.ee8EAM65b_DJm8yBWHC1TQ&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -8138,12 +8062,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://www.shefinds.com/feed-img/files/2026/11/salma-hayek.jpg": {
-  "w": 1280,
-  "h": 1280,
-  "target": 1280,
   "v": 3
  },
  "https://www.slashfilm.com/img/gallery/avengers-the-kang-dynastys-scrapped-doctor-doom-twist-explained-by-marvels-kevin-feige/l-intro-1795013877.jpg": {
