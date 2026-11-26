@@ -1,10 +1,10 @@
 {
- "admin": "1283d6e03430",
- "admin-ai": "c59d9ed62ebd",
+ "admin": "dff7fac9a572",
+ "admin-ai": "4f104024100d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c00b28bf"
+   "dad55d9d"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "da80870dcd1f",
+ "admin-emblem": "859898db4bdb",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e5c77365"
+   "38a560c7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "137594e6e94d",
+ "admin-now": "93bd382187c3",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4b3e9d54"
+   "a59ba844"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "2c94f30b"
   ]
  },
- "admin-system": "b22d04589b0f",
+ "admin-system": "54799ae86306",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "8a3315d6"
+   "c5727eed"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "27b9f464"
   ]
  },
- "index": "f9812289fd5f",
+ "index": "612eec98f9fb",
  "index_marks": {
   "front": [
    "トップ",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "6c4f5066"
+   "75ab37b0"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "f898da78"
+   "e3e67c71"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -196,6 +196,6 @@
    "c9528ac2"
   ]
  },
- "updated": "11.26 18:41",
+ "updated": "11.26 18:50",
  "wishlist": "8eb6c5403642"
 }

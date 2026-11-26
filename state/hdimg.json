@@ -1582,6 +1582,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.stardailynews.co.kr/news/photo/202611/603273_603615_714.jpg": {
+  "w": 500,
+  "h": 468,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp": {
   "w": 1264,
   "h": 848,
@@ -3241,6 +3247,52 @@
    0.862,
    0.364
   ]
+ },
+ "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1498531108083074175/origin_1.png": {
+  "w": 360,
+  "h": 221,
+  "target": 720,
+  "v": 3,
+  "blur": 0.456,
+  "local": "pics/79e2b4a0d54b8bca.webp",
+  "out": [
+   720,
+   442
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    10,
+    13,
+    12,
+    13,
+    13,
+    10,
+    5,
+    3,
+    4,
+    6,
+    5,
+    6
+   ],
+   [
+    1,
+    3,
+    12,
+    15,
+    10,
+    11,
+    14,
+    8,
+    8,
+    5,
+    4,
+    7
+   ]
+  ],
+  "c": "#5c495e",
+  "k": null,
+  "p": null
  },
  "https://img.mydaily.co.kr/photos/2026/11/19/2026111921084528816_x.jpg": {
   "w": 640,
@@ -5299,6 +5351,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/55787/1090/55787-1090-d092d2d5728e09cda55a9aa06dec93a0-1996x1331.jpg": {
+  "w": 1996,
+  "h": 1331,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/60409/70/60409-70-e9ce2650e3d971a5e093ee593e5b7d16-3900x2925.jpg": {
   "w": 3900,
   "h": 2925,
@@ -6187,12 +6245,6 @@
   "target": 720,
   "v": 3
  },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/26/1795677877444_ava-2026-11-26t134539652-png.webp": {
-  "w": 900,
-  "h": 540,
-  "target": 720,
-  "v": 3
- },
  "https://win.gg/wp-content/uploads/2026/11/16x9_7_a67e4e48a8.jpg.webp": {
   "w": 1920,
   "h": 1080,
@@ -6484,12 +6536,6 @@
    0.809,
    0.694
   ]
- },
- "https://www.bing.com/th?id=ONUT.3AxVdRUCQL1CFyHhA2y8FA&pid=News&w=792": {
-  "w": 700,
-  "h": 254,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.4CCKgEEUcJtphSyLQjNbpQ&pid=News&w=640": {
   "w": 640,
@@ -7294,6 +7340,12 @@
   "c": "#5d5354",
   "k": null,
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.vu7u_AQC8l1KWSyu32O-EA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.wVLSKtCbow8pj59yEvb88A&pid=News&w=300": {
   "w": 300,
