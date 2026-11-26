@@ -358,6 +358,57 @@
   "k": null,
   "p": null
  },
+ "http://wx2.sinaimg.cn/middle/006dNg2Pgy1ijfrkvmnucj31kw1kw44t.jpg": {
+  "w": 2000,
+  "h": 2000,
+  "target": 720,
+  "v": 3,
+  "local": "pics/98f582d43d5d3f1e.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    1,
+    14,
+    18,
+    17,
+    10,
+    7,
+    6,
+    3,
+    4,
+    6,
+    13,
+    1
+   ],
+   [
+    5,
+    19,
+    16,
+    12,
+    6,
+    6,
+    9,
+    1,
+    14,
+    3,
+    7,
+    1
+   ]
+  ],
+  "c": "#682029",
+  "k": [
+   0.066,
+   0.133,
+   0.891,
+   0.207
+  ],
+  "p": null
+ },
  "http://wx2.sinaimg.cn/middle/006kvRjAly1ij92k32xuwj31hy0u4u0x.jpg": {
   "w": 1942,
   "h": 1084,
@@ -756,6 +807,12 @@
  "https://assets-prd.ignimgs.com/2026/11/23/hailee-steinfeld-kate-bishop-1795398586995.png?width=1280&format=jpg&auto=webp&quality=80": {
   "w": 1280,
   "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://assets-prd.ignimgs.com/2026/11/26/doom-1795687852612.png?width=1280&format=jpg&auto=webp&quality=80": {
+  "w": 1280,
+  "h": 717,
   "target": 1280,
   "v": 3
  },
@@ -1582,12 +1639,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.stardailynews.co.kr/news/photo/202611/603273_603615_714.jpg": {
-  "w": 500,
-  "h": 468,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp": {
   "w": 1264,
   "h": 848,
@@ -2302,12 +2353,6 @@
   "v": 3,
   "blur": 0.393
  },
- "https://i1.ytimg.com/vi/4qdBgbg-iYs/hqdefault.jpg": {
-  "w": 480,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "https://i2-prod.birminghammail.co.uk/incoming/article34957733.ece/ALTERNATES/s1200/0_GettyImages-2206898952.jpg": {
   "w": 1200,
   "h": 630,
@@ -2318,6 +2363,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://i2.ytimg.com/vi/YFzfou-8GGo/hqdefault.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 720,
   "v": 3
  },
  "https://i2.ytimg.com/vi/exMczBuR3FU/hqdefault.jpg": {
@@ -2665,6 +2716,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.filmibeat.com/img/2026/11/avengersdoomsday-94901795689340.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://images.highwise.com/stories/408909-1795279037065.jpg": {
   "w": 1280,
   "h": 704,
@@ -2993,12 +3050,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2idg1g.img": {
-  "w": 1500,
-  "h": 1000,
-  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2idwPa.img": {
@@ -3756,12 +3807,6 @@
   "w": 880,
   "h": 290,
   "target": 1280,
-  "v": 3
- },
- "https://maxblizz.com/wp-content/uploads/2026/11/Secret-Wars.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2024-04/240430-cat-toys-pet-week-kb-social-04c943.jpg": {
@@ -5297,6 +5342,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/165726/367/165726-367-2bf2f7d3ae69325d10c091286c61a3e4-3405x1817.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2361,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/18505/4522/18505-4522-07e624aa4e3f158508c312e7abc24baf-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1008,
   "h": 1260,
@@ -6590,6 +6641,12 @@
   "v": 3,
   "blur": 0.401
  },
+ "https://www.bing.com/th?id=ONUT.7iKLFzotTkBjey5jwsMKWQ&pid=News&w=700": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.AMkXmyoYFhmKgWYKxHNylw&pid=News&w=600": {
   "w": 600,
   "h": 410,
@@ -7122,12 +7179,6 @@
   "k": null,
   "p": null
  },
- "https://www.bing.com/th?id=ONUT.f4QZ0VIySVJrVzNFFgoQaQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.hSK1x_UwmELq3M2x6HEyvg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7340,12 +7391,6 @@
   "c": "#5d5354",
   "k": null,
   "p": null
- },
- "https://www.bing.com/th?id=ONUT.vu7u_AQC8l1KWSyu32O-EA&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.wVLSKtCbow8pj59yEvb88A&pid=News&w=300": {
   "w": 300,
