@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "05eaf05138f5",
+ "edit_sig": "6612d4893fc6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1085,22 +1085,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-11-20",
-     "n": 9,
-     "source": "手机新浪网",
-     "title": "黄仁勋玩LOL 只出收集者？这 AI 编的离谱理由我信了|黄仁勋|英伟达|DOTA2|英雄联盟_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1XQWd2bE1UT1pvdi0xWmwyWllxaDNCbFdIRm9CNWIwQ1lDYW5kajRJSzBKVVBDZFlfWkxsWVNXOTlTdXhsUUpKSndacWlkUWZhNzZmYWd5WklFZjN3TUtibzNBWQ?oc=5"
-    },
-    {
-     "date": "2026-11-22",
-     "n": 10,
-     "source": "Players",
-     "title": "Stage 5 of the 2026 UESF Ukrainian Dota 2 Championship Has Concluded",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOU0p6clA0NVFnb1N1T2tSeXppSHhkbHp4eF9oZTBuRWc0aVkyZlB4bW1nc2VOSmpIUlhiMEVKZzRMYk5yVXhZeURXbVNhMEJLa1Bod25vRndhYV85Q2VQaE9wd2dpaEZnSEFCNi1tNlRSZF85RldXbDlJRTdSQ05VSDM4N0dYSTZsbV9LUG96Wk9xOUZmVkYyN2d5cUdQdzVHRlHSAaoBQVVfeXFMTUlnLW1jLU55WGo0X2FDRzdYMXVSMjdFNjhUT1BzNXpNbElwRVNvUDBFdndhM25UUmZZcDRUeGowY00xVnJMZXkxbjllR3dtWTh1WXE4cE1PMHVyRHpla0ZfTXBwU0ZDZmdtMnc1a19wLXhCUmRIeUhJdkZ3ZDVBVW9TNVlQdzJXVjFWTE51ZWUxa2FETTFYVGZDMWJSYjkyS0FBV2tJOHBBYVE?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1131,6 +1115,16 @@
      "image": "https://win.gg/wp-content/uploads/2026/11/16x9_7_a67e4e48a8.jpg.webp",
      "image_via": "og:image",
      "url": "https://win.gg/dota-2-will-return-to-the-esports-world-cup-in-2027/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "Stage 5 of the 2026 UESF Ukrainian Dota 2 Championship Has Concluded",
+     "highlight": "Stage 5",
+     "image": "https://players.com.ua/wp-content/uploads/2026/11/ch-urk-m-ready.png",
+     "image_via": "og:image",
+     "url": "https://players.com.ua/en/news/stage-5-of-the-2026-uesf-ukrainian-dota-2-championship-has-concluded/",
      "weight": "normal"
     }
    ],
