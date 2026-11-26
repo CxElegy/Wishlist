@@ -165,7 +165,10 @@
    "weight": "lead",
    "refs": [
     2,
-    1
+    1,
+    6,
+    8,
+    9
    ],
    "image": "https://inews.gtimg.com/news_ls/O-W9SvRzLrl0AWkOU22nFjHs7dtycvo9N88WR5zHL3OQUAA/0"
   },
@@ -176,6 +179,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "周杰伦拒说韩语坚持中文，华流才是最顶的",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -197,7 +209,7 @@
   "漫威电影": 60,
   "GTA 6": 34,
   "三星手机": 13,
-  "周杰伦": 4,
+  "周杰伦": 9,
   "Astrae Oratio": 3,
   "MMORPG 新作": 3,
   "哈利波特剧集": 3,
