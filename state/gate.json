@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-26T10:26:49+00:00",
+ "checked": "2026-11-26T11:09:48+00:00",
  "fired": {
-  "at": "2026-11-26T09:32:40+00:00",
+  "at": "2026-11-26T11:09:48+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -67,22 +67,27 @@
    "edit": 14
   },
   "2026-11-26": {
-   "edit": 10
+   "edit": 11
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-26T09:32:40+00:00",
+    "at": "2026-11-26T11:09:48+00:00",
     "attempts": 1,
     "day": "2026-11-26",
-    "prog": 475,
-    "resp": "cse_01W4x6f5WRhyM5rFjQb7Wyuq",
-    "sig": "1134c8cbc53e"
+    "prog": 563,
+    "resp": "",
+    "sig": "76156bb70f48"
    },
    "items": [
+    "A2O LITE",
     "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "dota2",
     "gelato pique",
     "lib:Ado",
     "lib:BTS",
@@ -93,7 +98,11 @@
     "lib:星野源",
     "lib:生徒会にも穴はある！",
     "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
     "哈利波特剧集",
+    "滑雪",
+    "漫威电影",
     "猫用品",
     "绝区零"
    ],
@@ -107,37 +116,44 @@
    "prog_day": "2026-11-26",
    "ripe": [
     "BLEACH Mirrors High",
-    "哈利波特剧集",
-    "绝区零"
-   ],
-   "sig": "83f32bc48afb",
-   "token_cap": 1000000,
-   "tokens_today": 545233,
-   "why": "整理待ちの記事 105 件（14 版面・AI 編集まで版面に載らない）"
-  },
-  "emblem": {
-   "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
+    "ILLIT",
     "チェーンソーマン",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "漫威电影",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "sig": "76156bb70f48",
+   "token_cap": 1000000,
+   "tokens_today": 545233,
+   "why": "整理待ちの記事 159 件（23 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [
+    "チェーンソーマン",
+    "dota2",
+    "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "A2O LITE",
+    "绝区零",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "8a9dc92a4b3d",
+   "waiting": [
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "The Mandalorian",
+    "Vaundy",
+    "あつ森",
+    "ぐでたま"
+   ],
+   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
