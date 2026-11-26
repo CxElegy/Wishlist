@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "084da7aa41a7",
+ "edit_sig": "2cb7288e4b2e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -162,61 +162,17 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 3,
-     "source": "ER 이코노믹리뷰",
-     "title": "넥슨 템빨 오버기어드 정식 출시 \"14억뷰 웹툰 IP로 MMORPG 승부수\"",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1jVVR1TUtlTWxFbUpMdGxWd0tBRHVDb185bXJqcmxiQnFGbkp4Nk1ndHNKXy1iMktoc1pXODBLa0w1enBjMEY5VThrNFRjLUoyUFlMZTZ3bDJWU2FySDZEZjNCc2J0b1RRMjZYTw?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 4,
-     "source": "글로벌E",
-     "title": "넥슨, MMORPG 〈템빨: 오버기어드〉 한국·대만·홍콩·마카오 동시 출격",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE83Sy1weW1DY2I1YlV4RXljbGpYclB5MUVmdmxleHRTZDJvZnRoVktoTmExVTRld0lfVFNWOExJTHZOM042STFpZ2pYWFNjeUc2ZFk5M1NrUWM4VWI0V1Y3dHd3c3VlMnhPMjVn0gFvQVVfeXFMTlYtNTJYM3RzdjhmR0VmZGIzRFpHZlF6OGpVX0JfLTRSVmMyXzZDTGktblNHeWVmSWFJOWxHb1NUMXdNeGcyZHBJTUNDTy1rMUJMemoxRi1kRnZYUE9GNFVlQjB0b1J3aHd5b3k4bUgw?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 5,
-     "source": "테크M",
-     "title": "[템빨 MMORPG] 넥슨 '템빨: 오버기어드' PC·모바일 출격...장비 성장부터 차원 경쟁까지 콘텐츠 풍성",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1maFhSa3pOaFo0bEhtLUhzZGI0aVBKcVc2SzNjbzNzY204dkV3aGJPdDNJZzlGS3ptbGhVcUhxSnBieGNSd1lEbnprbjhRTTNEdzhreTRKVm9CRUM5N2tNYmdiWU5HUdIBakFVX3lxTE92cWZWOVNteUZSZ2lTNEZ3Q3dYSUxtTXZXZktIRHlRRlRLSTZxbk5mcDNHdUl4V2FuTlExVWkwUWd2UzJ3VXNkQnBTUkoyZ1NwYXdnZ0F1T0tRS3p1RV93MjctZW4wNU93anc?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 6,
-     "source": "아주경제",
-     "title": "넥슨, 신작 MMORPG 템빨: 오버기어드 출시…한국·대만 등 4개 지역 공략",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1NTmt6a0d5Ym1JSjdvZVFtbjJfeUV0bVpIWDVzRDZILXlhRm9RS2k0LXp5aVJFRngxZFdaV2NUX0JLSzZPMnp1UGVZYXNZNUlHT2Nnb20xV3I2Z9IBWEFVX3lxTE5ocExMVTdua0ZidHhvcHNaWHhRQUhHZXkzbWJudDdOUGFhbnVZY3R1U0FvNWtlWkxCRmpBa1dYMm9wX3pBeHBqQVBKcFVTOHVhb0cxVHdDX3c?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 7,
-     "source": "재경일보",
-     "title": "넥슨, 인기 IP ‘템빨’ 기반 MMORPG 정식 출시 : 기업·산업",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5YVDBNM2lCLTc2SUNIcnBWY0pURDVOMTg5U2RhTHo2YTJhMllpdmszY28zNW9JYzFSZm55VjZFWG5TWXNITFh3aXdvUQ?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 8,
-     "source": "뉴스1 on MSN",
-     "title": "넥슨, 신작 MMORPG '템빨: 오버기어드' 출시…웹툰·웹소설 원작",
-     "url": "https://www.msn.com/ko-kr/entertainment/%EC%9D%BC%EB%B0%98/%EB%84%A5%EC%8A%A8-%EC%8B%A0%EC%9E%91-mmorpg-%ED%85%9C%EB%B9%A8-%EC%98%A4%EB%B2%84%EA%B8%B0%EC%96%B4%EB%93%9C-%EC%B6%9C%EC%8B%9C-%EC%9B%B9%ED%88%B0-%EC%9B%B9%EC%86%8C%EC%84%A4-%EC%9B%90%EC%9E%91/ar-AA2ieg8N"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
-     "blurb": "넥슨이 신작 '템빨'로 3년 만에 하드코어 MMORPG 시장에 출격한다.",
+     "blurb": "넥슨이 웹툰 IP 기반 신작 MMORPG '템빨: 오버기어드'를 한국·대만·홍콩·마카오에 PC·모바일로 정식 출시했다.",
      "date": "2026-11-25",
-     "headline": "넥슨, 대작 '템빨'로 3년 만에 하드코어 MMORPG 시장 출격",
-     "highlight": "3년 만에",
+     "headline": "넥슨, MMORPG 〈템빨: 오버기어드〉 한국·대만·홍콩·마카오 동시 출격",
+     "highlight": "동시 출격",
      "image": "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20260917151040028510eb81adcc4e1839820252.jpg&nmt=26",
      "image_via": "og:image",
-     "url": "https://www.dailygame.co.kr/view.php?ud=20261125121809616743da15d9d2_26",
-     "weight": "lead"
+     "url": "https://www.globale.co.kr/news/articleView.html?idxno=41853",
+     "weight": "hero"
     },
     {
      "blurb": "",
@@ -402,6 +358,15 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
+   "pending": [
+    {
+     "date": "2026-11-25",
+     "n": 6,
+     "source": "Collider",
+     "title": "Fred and George Weasley Officially Arrive in New Look at HBO’s ‘Harry Potter’",
+     "url": "https://collider.com/hbo-harry-potter-series-fred-george-weasley-first-look/"
+    }
+   ],
    "section": "影视",
    "stories": [
     {
@@ -421,8 +386,8 @@
      "highlight": "New Costumes",
      "image": null,
      "source": "cwibc.co.id",
-     "source_icon": null,
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBkQWNHRDQ0Yy05ZlZHNXJ3d2FxNERzZ0xSNGw3aWRtdWgyWXZzUkpQdXdFVHRWcl9xX2F1SlBSZEtCMXJRb0Q3WGVyQWloSlJIRVFqa2l1QzRKYkZsU0l6UmxVakN1RFJY?oc=5",
+     "source_icon": "https://www.google.com/s2/favicons?domain=cwibc.co.id&sz=128",
+     "url": "https://cwibc.co.id/en/harry-potter-series-costume-design",
      "weight": "normal"
     },
     {
@@ -466,6 +431,22 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
+   "pending": [
+    {
+     "date": "2026-11-25",
+     "n": 15,
+     "source": "www.bntnews.co.kr",
+     "title": "'청룡영화상' 아일릿, 축하 무대",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1pU2xiVFFBWjhsMGlCN2lxcW5DTEVfYlF6SXE3cWt4eXcxblVNd3VfY3BhT29nN3I0TndkLU5yQkVRdWhWZ0JSVTQxai00bjRiUnlRVDFQS3R6dHZhdUk3ZkJYWXI?oc=5"
+    },
+    {
+     "date": "2026-11-23",
+     "n": 16,
+     "source": "이머니뉴스",
+     "title": "K-팝 최초·유일 행보...아일릿, 日이 주목하는 ‘톱 티어 걸그룹’",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1MWWRoYTRWV0VSY0ZKcTBMTXhOU0V3SUZKUldVR3c4RGpTVkNLallIMnBFTzRGcTA4QVVZOUVrXy14MGhqbG9hcTFFQVpJeVBhZ05JLVhZWDh6OEZydjNkdVNVaFhBMU5XMzFSRg?oc=5"
+    }
+   ],
    "section": "演出",
    "stories": [
     {
@@ -596,6 +577,15 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
+   "pending": [
+    {
+     "date": "2026-11-25",
+     "n": 16,
+     "source": "S-MAX（エスマックス）",
+     "title": "次期最上級スマホ「Galaxy S27 Ultra」のNTTドコモ版「SC-54H」やソフトバンク版「SM-S958Z」、メーカー版「SM-S958Q」が認証通過",
+     "url": "https://s-max.jp/archives/1802813.html"
+    }
+   ],
    "section": "好物",
    "stories": [
     {
@@ -818,29 +808,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 9,
-     "source": "Essential Japan",
-     "title": "Chainsaw Man Reveals New Official Reze Arc Earbuds Featuring Over 270 Exclusive Voice Lines",
-     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQU3kyNXdRaHB2X2NBbC1hRkQzdXNvU0JOZ0thb1FDRkVWdTVmVlBneEMyYk1RWUNtRGpMQkJTYmI2TGFyZ0syWFdLVXo5a1dXMG5ZSW5kd3JDaVN5WE1LamVRelJabi1HRmRILW8tNmdPMGVfZHJFeXczM0RWMV9tX01nZ242X0prTnh3dkdwblZBTEExMmRUbFFMN1dIVXcwTVQwZGx3ZUFLTkhQYkdWUDRXUzFkb0lRV0IySVdyQjhvanc?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 10,
-     "source": "キャラグー",
-     "title": "劇場版『チェンソーマン レゼ篇』 GLITTER&GLAMOURS-REZE-カフェ二道ver.の入荷日・取扱店舗｜プライズ",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1QbjktSkxWOEFrbHlZNzdSaUtvNGQ0V04yLWhnRHRvLUo2QkE2XzJuX3NSbGFWYkZmM3o5QldKa3lCakRxaXFJNURMNGFIREN3WkQwUml1WQ?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 11,
-     "source": "キャラグー",
-     "title": "チェンソーマンの漫画を無料で読む方法【2026年11月】全巻無料・読み放題を比較",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9sQ1NmZ3JOUTNma0pWcFFkMTJqM0hRVnNfZEVTakVmaVFpVER5SUhWbEF0UnJSUkttazFkd3NyR1dZamRKbFZHcHRKQUE0Vk5nbFlSM1d3?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -870,14 +837,14 @@
     {
      "blurb": "",
      "date": "2026-11-25",
-     "headline": "AVIOT鏈鋸人聯名耳機開預購！13種語音要價22,880日圓！",
+     "headline": "Chainsaw Man Reveals New Official Reze Arc Earbuds Featuring Over 270 Exclusive Voice Lines",
      "highlight": "",
      "image": "https://assets.juksy.com/files/articles/155694/6b06976792acd.png",
      "image_via": "og:image",
      "price": {
       "now": "22,880日圓"
      },
-     "url": "https://www.juksy.com/article/155694",
+     "url": "https://essential-japan.com/news/chainsaw-man-reveals-new-official-reze-arc-earbuds-featuring-over-270-exclusive-voice-lines/",
      "weight": "normal"
     },
     {
@@ -1024,6 +991,15 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
+   "pending": [
+    {
+     "date": "2026-11-25",
+     "n": 11,
+     "source": "手机新浪网",
+     "title": "小S摸阮经天腹肌 周杰伦也逃不掉",
+     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9zbzBnOV84TEt5MDk0dkNmeFdzVXJPVFJsUjhaeENXWFcwRzFxWUh0aUNyX2FLYXBna3BBbnhTUEd0ZjlYWUZkanRuX283NnIzbmZYdGF5ZjNEYUtVN3puckk0blRmR2tMNXVQOC1JaEhTME0?oc=5"
+    }
+   ],
    "section": "演出",
    "stories": [
     {

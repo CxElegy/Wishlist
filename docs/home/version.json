@@ -1,14 +1,14 @@
 {
- "admin": "9300c694b3d4",
- "admin-ai": "9abe7ee10475",
+ "admin": "bc01ca3618d4",
+ "admin-ai": "a369511ff256",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "7eab900b"
+   "1c1264da"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0deb1ace"
+   "e4e28c7f"
   ]
  },
  "admin-boards": "a40b0ba2c3d9",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "79554315915f",
+ "admin-emblem": "e3aa88573f6e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "0f6858b2"
+   "0afc1a78"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "51ad7779e240",
+ "admin-now": "dbf6689f8103",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "15e64d3d"
+   "106900a7"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "3e03fb8e"
+   "274a321c"
   ]
  },
- "admin-system": "7c042ee2451f",
+ "admin-system": "0cd65423aae7",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "5f912b51"
+   "3ad84207"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ef3a154d"
+   "b802c3af"
   ]
  },
  "admin_marks": {},
- "heat": "4e13fe55c790",
+ "heat": "5b794b5a03ee",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "98708b51"
+   "f8375a46"
   ],
   "ranking": [
    "ランキング",
-   "3c318643"
+   "c8e0f8af"
   ]
  },
- "index": "6fa70f0d3d9a",
+ "index": "f6d82ee426b8",
  "index_marks": {
   "front": [
    "トップ",
-   "06de19bb"
+   "7f8e555f"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "00c6f1ef"
+   "1e00734a"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "d0a3a8c8"
+   "8f29dd18"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -165,11 +165,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "cc7c7a27"
+   "3ef8739f"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "b6a0dc19"
+   "9f4a104b"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "37a49ee0"
+   "8c0ebad2"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "d93c9e63"
+   "710ac0fe"
   ],
   "w-f303ad09": [
    "绝区零",
-   "c9528ac2"
+   "4f672be5"
   ]
  },
- "updated": "11.26 10:05",
+ "updated": "11.26 10:08",
  "wishlist": "3e9f37f6223d"
 }
