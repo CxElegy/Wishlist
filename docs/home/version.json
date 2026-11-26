@@ -1,32 +1,32 @@
 {
- "admin": "2927705af84e",
- "admin-ai": "f910b0ef6394",
+ "admin": "4aa814ae496b",
+ "admin-ai": "742934667507",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1cc2aac1"
+   "21e10cb8"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "d7c5a325"
+   "fc1e4181"
   ]
  },
- "admin-boards": "fe8901a22b2d",
+ "admin-boards": "9fec05e5fa38",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "d2430f81"
+   "aceeea27"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "bfe379968185",
+ "admin-emblem": "c3c925ee91c2",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b921b9d8"
+   "7480badc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "aae5b90ff9d7",
+ "admin-now": "e15085bc212e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e57fbde1"
+   "06c45450"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "fa208108"
+   "46f478da"
   ]
  },
- "admin-system": "5f283d5d0f00",
+ "admin-system": "cea6530a3fe2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4f42d470"
+   "c57ef0ac"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b6704baa"
+   "5066d99a"
   ]
  },
  "admin_marks": {},
- "heat": "356a44c84d15",
+ "heat": "1fc335205a0a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "d4063ea7"
+   "d5575991"
   ],
   "ranking": [
    "ランキング",
-   "e0815a65"
+   "649d5648"
   ]
  },
- "index": "9753cac2788b",
+ "index": "25a50d3eca0c",
  "index_marks": {
   "front": [
    "トップ",
-   "162b9711"
+   "f202068e"
   ],
   "picks": [
    "気になるかも？",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "f96982d1"
+   "0d1e5a88"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -196,6 +196,6 @@
    "c9528ac2"
   ]
  },
- "updated": "11.26 15:45",
- "wishlist": "0f30601e261b"
+ "updated": "11.26 15:49",
+ "wishlist": "8eb6c5403642"
 }
