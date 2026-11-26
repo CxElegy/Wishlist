@@ -980,6 +980,62 @@
   "k": null,
   "p": null
  },
+ "https://biz.chosun.com/resizer/v2/B3XEXTQVOZGNPM64ORXFODGLRY.jpg?auth=3121660b40e3f1261375086702b774e33632535c5e622ab683b1ac5a6d019d65&width=718&height=376&smart=true": {
+  "w": 718,
+  "h": 376,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.421,
+  "local": "pics/c8355cd6d66e1509.webp",
+  "out": [
+   1280,
+   670
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    3,
+    4,
+    7,
+    7,
+    8,
+    4,
+    3,
+    14,
+    35,
+    8,
+    4,
+    3
+   ],
+   [
+    1,
+    4,
+    2,
+    25,
+    24,
+    23,
+    6,
+    5,
+    4,
+    3,
+    1,
+    1
+   ]
+  ],
+  "c": "#493c37",
+  "k": [
+   0.031,
+   0.059,
+   0.488,
+   0.823
+  ],
+  "p": [
+   0.607,
+   0.227,
+   0.801,
+   0.711
+  ]
+ },
  "https://biz.chosun.com/resizer/v2/GBRTSMBUHE3DCZLFGYYTCYRSME.jpg?auth=1b7bbc5fde70d7b47712f519fe795934dc4ac45c316876b8bf3e3d9adfd46876&width=616": {
   "w": 616,
   "h": 534,
@@ -1542,12 +1598,6 @@
  "https://cdnweb01.wikitree.co.kr/webdata/editor/202611/25/img_20261125220943_0d9fd23a.jpeg": {
   "w": 1200,
   "h": 676,
-  "target": 1280,
-  "v": 3
- },
- "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20260917151040028510eb81adcc4e1839820252.jpg&nmt=26": {
-  "w": 1280,
-  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -5391,6 +5441,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s-max.jp/wp-content/uploads/2026/11/26_galaxys27ultra_01.jpg": {
+  "w": 1920,
+  "h": 1280,
+  "target": 720,
+  "v": 3
+ },
  "https://s.eximg.jp/exnews/feed/Nijimen/56/Nijimen_0000000000662935/Nijimen_0000000000662935_1.jpg": {
   "w": 1200,
   "h": 1200,
@@ -5424,12 +5480,6 @@
  "https://s.yimg.com/lo/mysterio/api/63cfb4f8eed3148b8be79b3f320c7bf20f9784ab19b7ef486cef870e7b6071b2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmoneywise_327%2Fa9b0902cadd54ab73d787d9899f43fd2.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/68aa33ce96779d44d2c1d6a658b947a32330ea312e0294adabe44425015c905e/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fdeadline.com%2Fdc26a223296153258e40f00c0f81fd4d.jpg_up.jpg": {
-  "w": 1200,
-  "h": 676,
   "target": 720,
   "v": 3
  },
@@ -5716,6 +5766,12 @@
   "c": "#9a8564",
   "k": null,
   "p": null
+ },
+ "https://static.sanyonews.jp/image/article/size1/6/b/d/5/6bd5ae98a8676317af2175d8ef86b187_1.jpg": {
+  "w": 450,
+  "h": 640,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/7/a/9/8/7a9874075471c27e646838f53ce747be_1.jpg": {
   "w": 640,
