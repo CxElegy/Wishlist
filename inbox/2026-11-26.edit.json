@@ -1,337 +1,16 @@
 {
-  "漫威电影": [
-    {
-      "headline": "Avengers: Doomsday Final Trailer Becomes Second Most-Viewed Trailer Of All Time With 563M Views in 24 Hours",
-      "highlight": "563M Views",
-      "blurb": "The final Avengers: Doomsday trailer drew 563M views in its first 24 hours, the second-most-viewed trailer ever.",
-      "weight": "lead",
-      "refs": [
-        14,
-        60,
-        89
-      ],
-      "image": "https://www.bing.com/th?id=ONUT.rsrxlT6LA_Pywv7IT7a5EQ&pid=News&w=700"
-    },
-    {
-      "headline": "\"You Shall All Kneel Before Doom\" - New AVENGERS: DOOMSDAY International Trailer Goes Hard with New Footage",
-      "highlight": "International Trailer",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        20
-      ]
-    },
-    {
-      "headline": "‘Avengers: Doomsday’ $270M+ Opening Is Highest Pic Ever On NRG Tracking",
-      "highlight": "$270M+",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        19,
-        40,
-        91,
-        73,
-        58,
-        67,
-        78,
-        71
-      ]
-    },
-    {
-      "headline": "Patrick Stewart’s Final Day on ‘Avengers: Doomsday’ Was More Emotional Than Fans Knew, and Marvel Is Planning a Tribute",
-      "highlight": "Marvel Is Planning a Tribute",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        24,
-        21,
-        31,
-        23,
-        29,
-        30,
-        17,
-        1,
-        25,
-        75,
-        72,
-        63,
-        92
-      ]
-    },
-    {
-      "headline": "Kevin Feige Calls Battleworld in Secret Wars “Imagination Gone Wild”",
-      "highlight": "Battleworld",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        9,
-        12,
-        27,
-        36
-      ]
-    }
-  ],
-  "GTA 6": [
-    {
-      "headline": "GTA VI首發3天銷量達4,550萬套",
-      "highlight": "4,550萬套",
-      "blurb": "GTA VI 発売から3日間で4,550万本を販売したと報じられた。",
-      "weight": "lead",
-      "refs": [
-        17,
-        15
-      ]
-    },
-    {
-      "headline": "The Big GTA 6 Console Comparison: PS5 vs PS5 Pro, Xbox Series X and Series S",
-      "highlight": "Console Comparison",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        23,
-        16,
-        60,
-        58
-      ]
-    },
-    {
-      "headline": "Desperate Gamers Are Trying Bring GTA 6 To PCs And Break Free Of Its 30 Fps Cap",
-      "highlight": "30 Fps Cap",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        28,
-        13,
-        14,
-        33,
-        53,
-        61,
-        71,
-        75
-      ]
-    },
-    {
-      "headline": "‘Grand Theft Auto VI’ Player Discovers Portal Back to 2002 Game ‘GTA Vice City’",
-      "highlight": "Portal Back to 2002",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        31
-      ]
-    },
-    {
-      "headline": "Take-Two Hits GTA 6 PC Port Leonida With DMCA, Taking Down 3,007 GitHub Repos",
-      "highlight": "3,007 GitHub Repos",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        44,
-        47,
-        59
-      ]
-    }
-  ],
-  "三星手机": [
-    {
-      "headline": "Case maker reveals camera layout of Galaxy S27, S27+, S27 Pro, and S27 Ultra",
-      "highlight": "camera layout",
-      "blurb": "Case maker dummy units show the camera layouts of the Galaxy S27, S27+, S27 Pro and S27 Ultra.",
-      "weight": "lead",
-      "refs": [
-        3,
-        2,
-        11
-      ],
-      "image": "https://www.mymobileindia.com/wp-content/uploads/2026/11/samsung-serice.webp"
-    },
-    {
-      "headline": "Galaxy S27 Ultra Release Date: Samsung To Swap Camera Hardware For AI",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "Samsung Galaxy S27 Ultra Rumored to Feature UFS 5.0 and LPDDR6",
-      "highlight": "UFS 5.0 and LPDDR6",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        5,
-        9
-      ]
-    },
-    {
-      "headline": "Will Samsung Galaxy S27 become more expensive in India?",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        7
-      ]
-    },
-    {
-      "headline": "Galaxy S27 Ultra Charging Speed Revealed, and It’s No Surprise",
-      "highlight": "Charging Speed",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        8
-      ]
-    },
-    {
-      "headline": "New report reveals all the reasons why the Galaxy S27 Ultra can't use the Exynos 2700 chipset",
-      "highlight": "Exynos 2700",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        12
-      ]
-    },
-    {
-      "headline": "Samsung Galaxy S27 Ultra leak: no laser autofocus, no 3x telephoto",
-      "highlight": "no 3x telephoto",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        14,
-        13
-      ]
-    }
-  ],
-  "ILLIT": [
-    {
-      "headline": "ILLIT「2026 MAMA」で3冠達成「私たちの楽曲とパフォーマンスを愛してくださった皆さまに感謝」",
-      "highlight": "3冠達成",
-      "blurb": "「2026 MAMA」で3冠を達成したILLIT。受賞後に感謝のコメントを寄せた。",
-      "weight": "lead",
-      "refs": [
-        1,
-        5
-      ],
-      "image": "https://thetv.jp/i/nw/1460315/19283144.jpg?w=1284"
-    },
-    {
-      "headline": "ILLIT、青龍映画賞をまた沸かす…チョン・ホヨンらを「逮捕」",
-      "highlight": "青龍映画賞",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        14,
-        10,
-        13,
-        11,
-        12
-      ]
-    },
-    {
-      "headline": "「5人→4人→2人」紅白出場ILLIT 道枝駿佑がプレゼンターを務めた『MAMA』で見せた圧巻ステージの裏でファンから相次ぐ“懸念”",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "発熱・負傷で心配の声も…ILLITが大阪「2026 MAMA AWARDS」に登場、モカ不在も4人で笑顔のポーズ",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "ILLITがベストアーティスト・紅白で歌うのは何時から？年末の音楽番組2026",
-      "highlight": "紅白",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    }
-  ],
-  "チェーンソーマン": [
-    {
-      "headline": "GSC「ねんどろいどFUNS 2026 December」発表ラインナップ公開！『チェンソーマン』『呪術廻戦』などの新作が12月3日に解禁！",
-      "highlight": "12月3日に解禁",
-      "blurb": "GSCが「ねんどろいどFUNS 2026 December」のラインナップを公開。『チェンソーマン』などの新作が12月3日に解禁される。",
-      "weight": "lead",
-      "refs": [
-        2,
-        1,
-        5
-      ],
-      "event": {
-        "date": "2026-12-03",
-        "label": "解禁日"
-      }
-    },
-    {
-      "headline": "『チェンソーマン 刺客篇』制作決定！興収96億円突破の『レゼ篇』に続く新作",
-      "highlight": "刺客篇』制作決定",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6
-      ]
-    },
-    {
-      "headline": "AVIOT鏈鋸人聯名耳機開預購！13種語音要價22,880日圓！",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3,
-        9
-      ],
-      "price": {
-        "now": "22,880日圓"
-      }
-    },
-    {
-      "headline": "劇場版「チェンソーマン」が世界で200億円超え。単独出資の「賭け」に勝った意義。",
-      "highlight": "200億円超え",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "チェンソーマンが東急グループとコラボ！デンジたちとホテルに閉じ込められる…!?",
-      "highlight": "東急グループ",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        8
-      ]
-    }
-  ],
-  "_covered": {
-    "漫威电影": 95,
-    "GTA 6": 79,
-    "三星手机": 15,
-    "ILLIT": 14,
-    "チェーンソーマン": 11,
-    "周杰伦": 10,
-    "dota2": 8,
-    "Astrae Oratio": 3,
-    "The Mandalorian": 3,
-    "星巴克马克杯": 3,
-    "gelato pique": 2,
-    "ぐでたま": 7,
-    "猫用品": 1,
-    "绝区零": 1,
-    "Vaundy": 2,
-    "滑雪": 2,
-    "BLEACH Mirrors High": 10,
-    "MMORPG 新作": 8,
-    "A2O LITE": 1,
-    "哈利波特剧集": 5
+ "漫威电影": [
+  {
+   "headline": "Avengers: Doomsday Final Trailer Becomes Second Most-Viewed Trailer Of All Time With 563M Views in 24 Hours",
+   "highlight": "563M Views",
+   "blurb": "The final Avengers: Doomsday trailer drew 563M views in its first 24 hours, the second-most-viewed trailer ever.",
+   "weight": "lead",
+   "refs": [
+    14,
+    60,
+    89
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.rsrxlT6LA_Pywv7IT7a5EQ&pid=News&w=700"
   },
   {
    "headline": "\"You Shall All Kneel Before Doom\" - New AVENGERS: DOOMSDAY International Trailer Goes Hard with New Footage",
@@ -410,7 +89,9 @@
    "weight": "normal",
    "refs": [
     23,
-    16
+    16,
+    60,
+    58
    ]
   },
   {
@@ -422,7 +103,11 @@
     28,
     13,
     14,
-    33
+    33,
+    53,
+    61,
+    71,
+    75
    ]
   },
   {
@@ -440,7 +125,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    44
+    44,
+    47,
+    59
    ]
   }
  ],
@@ -452,7 +139,8 @@
    "weight": "lead",
    "refs": [
     3,
-    2
+    2,
+    11
    ],
    "image": "https://www.mymobileindia.com/wp-content/uploads/2026/11/samsung-serice.webp"
   },
@@ -492,6 +180,25 @@
    "refs": [
     8
    ]
+  },
+  {
+   "headline": "New report reveals all the reasons why the Galaxy S27 Ultra can't use the Exynos 2700 chipset",
+   "highlight": "Exynos 2700",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra leak: no laser autofocus, no 3x telephoto",
+   "highlight": "no 3x telephoto",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    13
+   ]
   }
  ],
  "ILLIT": [
@@ -505,6 +212,19 @@
     5
    ],
    "image": "https://thetv.jp/i/nw/1460315/19283144.jpg?w=1284"
+  },
+  {
+   "headline": "ILLIT、青龍映画賞をまた沸かす…チョン・ホヨンらを「逮捕」",
+   "highlight": "青龍映画賞",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    10,
+    13,
+    11,
+    12
+   ]
   },
   {
    "headline": "「5人→4人→2人」紅白出場ILLIT 道枝駿佑がプレゼンターを務めた『MAMA』で見せた圧巻ステージの裏でファンから相次ぐ“懸念”",
@@ -522,15 +242,6 @@
    "weight": "normal",
    "refs": [
     4
-   ]
-  },
-  {
-   "headline": "ILLITがベストアーティスト・紅白で歌うのは何時から？年末の音楽番組2026",
-   "highlight": "紅白",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3
    ]
   },
   {
@@ -579,7 +290,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    9
    ],
    "price": {
     "now": "22,880日圓"
@@ -607,10 +319,10 @@
  "_covered": {
   "漫威电影": 95,
   "GTA 6": 79,
-  "三星手机": 10,
+  "三星手机": 15,
   "ILLIT": 16,
-  "チェーンソーマン": 8,
-  "周杰伦": 5,
+  "チェーンソーマン": 11,
+  "周杰伦": 10,
   "dota2": 8,
   "Astrae Oratio": 3,
   "The Mandalorian": 3,
@@ -622,8 +334,9 @@
   "Vaundy": 2,
   "滑雪": 2,
   "BLEACH Mirrors High": 10,
-  "MMORPG 新作": 2,
-  "A2O LITE": 1
+  "MMORPG 新作": 8,
+  "A2O LITE": 1,
+  "哈利波特剧集": 5
  },
  "周杰伦": [
   {
@@ -641,7 +354,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    9
    ]
   },
   {
@@ -910,11 +624,17 @@
  ],
  "MMORPG 新作": [
   {
-   "headline": "넥슨, 대작 '템빨'로 3년 만에 하드코어 MMORPG 시장 출격",
-   "highlight": "3년 만에",
-   "blurb": "넥슨이 신작 '템빨'로 3년 만에 하드코어 MMORPG 시장에 출격한다.",
-   "weight": "lead",
+   "headline": "넥슨, MMORPG 〈템빨: 오버기어드〉 한국·대만·홍콩·마카오 동시 출격",
+   "highlight": "동시 출격",
+   "blurb": "넥슨이 웹툰 IP 기반 신작 MMORPG '템빨: 오버기어드'를 한국·대만·홍콩·마카오에 PC·모바일로 정식 출시했다.",
+   "weight": "hero",
    "refs": [
+    4,
+    6,
+    3,
+    5,
+    7,
+    8,
     2
    ]
   },
@@ -928,5 +648,48 @@
    ]
   }
  ],
- "A2O LITE": []
+ "A2O LITE": [],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO’s Harry Potter Set Photos Bring Back Two Magical Fan-Favorite Locations",
+   "highlight": "Set Photos",
+   "blurb": "Latest set photos from HBO's Harry Potter series offer a first look at major wizarding world locations.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Harry Potter Series Reveals New Costumes and Film Connections",
+   "highlight": "New Costumes",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    4
+   ]
+  },
+  {
+   "headline": "Harry Potter TV Show Fans Get First Glimpse of Mysterious Gryffindor Figure",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "乐高公布4款基于HBO版《哈利·波特》剧集的全新套装",
+   "highlight": "4款",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ],
+   "event": {
+    "date": "2026-12-25",
+    "label": "放送開始"
+   }
+  }
+ ]
 }
