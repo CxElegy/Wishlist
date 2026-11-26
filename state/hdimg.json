@@ -4291,12 +4291,64 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.vocofm.com/wp-content/uploads/2026/11/SaveClip.App_914585069_17977538262150563_5188789442050482441_n-scaled-e1795225303198-1024x576.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/1003055/10019309_615.jpg": {
   "w": 615,
   "h": 746,
   "target": 1280,
   "v": 3,
   "blur": 0.404
+ },
+ "https://news.walkerplus.com/article/1006798/10051123_615.jpg": {
+  "w": 615,
+  "h": 462,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.556,
+  "local": "pics/0313a65d6dfa1837.webp",
+  "out": [
+   1280,
+   962
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    11,
+    12,
+    12,
+    16,
+    11,
+    10,
+    12,
+    7,
+    4,
+    2,
+    3,
+    1
+   ],
+   [
+    11,
+    11,
+    11,
+    11,
+    11,
+    5,
+    3,
+    3,
+    10,
+    8,
+    7,
+    10
+   ]
+  ],
+  "c": "#908371",
+  "k": null,
+  "p": null
  },
  "https://news.walkerplus.com/article/1018080/10157455_615.jpg": {
   "w": 615,

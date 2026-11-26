@@ -219,7 +219,11 @@
   "星巴克马克杯": 1,
   "猫用品": 1,
   "dota2": 4,
-  "BLEACH Mirrors High": 3
+  "BLEACH Mirrors High": 3,
+  "绝区零": 2,
+  "A2O LITE": 1,
+  "gelato pique": 1,
+  "あつ森": 1
  },
  "MMORPG 新作": [
   {
@@ -388,5 +392,29 @@
     3
    ]
   }
- ]
+ ],
+ "绝区零": [],
+ "A2O LITE": [
+  {
+   "headline": "ゴールデンディスク賞の出演者第1弾発表！CORTIS、A2O LITE、RESCENEらが出演",
+   "highlight": "出演者第1弾発表",
+   "blurb": "ゴールデンディスク賞の出演者第1弾が発表され、A2O LITEの出演が決まった。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "「ジェラート ピケ」初のクリスマスケーキが登場！“かわいすぎるピケベア”をセブン-イレブンで予約しよう",
+   "highlight": "初のクリスマスケーキ",
+   "blurb": "ジェラート ピケ初のクリスマスケーキがセブン-イレブンで予約できる。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "あつ森": []
 }

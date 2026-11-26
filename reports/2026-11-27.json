@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "68493bbfec2b",
+ "edit_sig": "31b1d257bc38",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -620,24 +620,19 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "ジェラート ピケ初のクリスマスケーキがセブン-イレブンで予約できる。",
      "date": "2026-11-20",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "「ジェラート ピケ」初のクリスマスケーキが登場！“かわいすぎるピケベア”をセブン-イレブンで予約しよう",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1aRUVUbmhsSXNBYzJYWWJ2Z3hwWTVTNko3VU4xVDdjcU0wRm1VR0I0dC1PZlJ3M2RieFNRelhoZFZmRVp2ZVc1eURjTWZYSHBZMklFbnl30gFbQVVfeXFMTnhlYllxeHdzZExXZHF5RWoyWEcxMURRcS1jMkxZa0g2dzVkNXk4bF8zUXptaDJQeFZOVE5TMUNiMEoxcEdDQ2w4SGxMd0NQTy1uclJlX2FLa0U0SQ?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 2,
-     "source": "ウォーカープラス",
-     "title": "今夏のスヌーピー×人気ブランドとのコラボまとめ！ジェラピケやSHIPS、パトリックのおしゃれなアイテムずらり",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBSZ1kxWWk0RUJTenhoZ2dtM293YkJ6dGNGa2hlTzR4VVBrWEdzaFhPS1VaTzZjR3NkeXdIZl9qR29tNFZ3M19XUkVHbU45UmcxaHdKalJn0gFbQVVfeXFMUFU2SWZfelFzZi1wQ1ItUUFRYnJiaGlKdXI0dmU4a2N1ekllSHNRbnZhelpEajl4bDhpZE9NUEtEWXgzR1EzOER6ai1YNTRfRVhJLTVfcnllRFdtQQ?oc=5"
+     "headline": "「ジェラート ピケ」初のクリスマスケーキが登場！“かわいすぎるピケベア”をセブン-イレブンで予約しよう",
+     "highlight": "初のクリスマスケーキ",
+     "image": "https://news.walkerplus.com/article/1006798/10051123_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1006798/",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",
@@ -763,33 +758,6 @@
   {
    "cover": null,
    "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 1,
-     "source": "ライブドアニュース",
-     "title": "【Amazonブラックフライデー】「ホリパッド」各種がお買い得！ Switch 2/Steam/PC向けなど【2026.11】あつ森「フーコ」柄Switch 2向けホリパッドも登場 (2026年11月27日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5lU25vNjJxSnQwdzVoV252dnh3VVFKNXVmNWZWWjJONHZVTnBRcmNCazdaS2U5VktaT3A5cHVDZnFVNFdoY0dzdDBDZ3FaYUVZaUsydEFMNU9XMU1iLXc?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "周杰伦",
    "pending": [
     {
@@ -849,40 +817,6 @@
     "bg": "#F6F2EA",
     "fg": "#1D2430",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
-   "facts": [],
-   "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-11-23",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "#绝区零# ODD🦈 @ odd_sky475 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9VSWdORlUtallHN2ZGWnBtcmVCeTY4RWlfbzh6WWhzMkw0YU5nZDdoME1YN1JncXI4YkJYT3FjUk56ejQzVTk0ZlJjekFNbDFZWmRCX3ltQUdmV0NfX2RlVlptNA?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 2,
-     "source": "マクリン",
-     "title": "ゼンレスゾーンゼロの推奨スペックとおすすめのゲーミングPCを紹介",
-     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1VeW90eWY1aFJBUXNoRkl5T0podWFVSkwzMlMzd3prWmJHWF9Ba2h4MHE3RW8zZ2dWQVV0akIwQ096SGZoQm95bw?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "ゼンレスゾーンゼロ",
-   "theme": {
-    "accent": "#A9898A",
-    "alt_accent": "#856062",
-    "alt_bg": "#F2EDEE",
-    "alt_fg": "#1E1A18",
-    "bg": "#1E1516",
-    "fg": "#F4EEE4",
-    "font": "serif",
     "split": true
    }
   },
@@ -959,17 +893,19 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "ゴールデンディスク賞の出演者第1弾が発表され、A2O LITEの出演が決まった。",
      "date": "2026-11-26",
-     "n": 1,
-     "source": "VOCO News",
-     "title": "ゴールデンディスク賞の出演者第1弾発表！CORTIS、A2O LITE、RESCENEらが出演",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBWNjQtYWM3blJyRHdyODlHWWhoNVJ3VGY4bVhTRzFsekZfUFpqNVV0M2FsNElBRy1MU3RFNnF5b0NfRVJkVFNMVFBBcEhhcS0xN2d0cFdRc3YxWWRjNTJ6YnFCMjhzZnp2TmoxX0pORkVMZmNnUmNQOGFvNA?oc=5"
+     "headline": "ゴールデンディスク賞の出演者第1弾発表！CORTIS、A2O LITE、RESCENEらが出演",
+     "highlight": "出演者第1弾発表",
+     "image": "https://news.vocofm.com/wp-content/uploads/2026/11/SaveClip.App_914585069_17977538262150563_5188789442050482441_n-scaled-e1795225303198-1024x576.jpg",
+     "image_via": "og:image",
+     "url": "https://news.vocofm.com/ja/%E5%A8%9B%E6%A8%82%E6%96%B0%E8%81%9E/212765/",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
@@ -1166,6 +1102,31 @@
    }
   },
   {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-11-24",
+    "headline": "【あつ森】上の段に行くには？崖・高台の登り方やはしごの入手方法",
+    "url": "https://gamepedia.jp/ac-switch/archives/7486"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "last": {
@@ -1186,6 +1147,31 @@
     "alt_fg": "#1C1826",
     "bg": "#15131C",
     "fg": "#EEEAF4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
+   "facts": [],
+   "last": {
+    "date": "2026-11-26",
+    "headline": "Zenless Zone Zero - Official Sunbringer character demo trailer",
+    "url": "https://www.msn.com/en-us/news/other/zenless-zone-zero-official-sunbringer-character-demo-trailer/vi-AA2ifHrp"
+   },
+   "name": "绝区零",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#A9898A",
+    "alt_accent": "#856062",
+    "alt_bg": "#F2EDEE",
+    "alt_fg": "#1E1A18",
+    "bg": "#1E1516",
+    "fg": "#F4EEE4",
     "font": "serif",
     "split": true
    }
