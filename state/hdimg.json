@@ -155,6 +155,12 @@
   "target": 720,
   "v": 3
  },
+ "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6b06eea4f5172560ea312ac7/1795707054117/Kevin+Feige+Confirms+Battleworld+for+AVENGERS-+SECRET+WARS+and+Tells+Fans+Where+to+Find+Spoilers.jpg?format=1500w": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "http://tu.duoduocdn.com/uploads/day_220926/m_63314fc54ec6e.jpg": {
   "w": 480,
   "h": 480,
@@ -317,6 +323,57 @@
    0.601,
    0.47
   ]
+ },
+ "http://wx2.sinaimg.cn/middle/006bWoNYly1ij8ooyr58nj30pg1kwdjf.jpg": {
+  "w": 916,
+  "h": 2048,
+  "target": 720,
+  "v": 3,
+  "local": "pics/b7b305763d125ead.webp",
+  "out": [
+   572,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    4,
+    10,
+    17,
+    13,
+    10,
+    13,
+    7,
+    6,
+    6,
+    7,
+    4,
+    2
+   ],
+   [
+    18,
+    32,
+    13,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    5,
+    5,
+    5
+   ]
+  ],
+  "c": "#ebecee",
+  "k": [
+   0.043,
+   0.015,
+   0.925,
+   0.24
+  ],
+  "p": null
  },
  "http://wx2.sinaimg.cn/middle/006dNg2Pgy1ijciuvbjqxj30xi1cn440.jpg": {
   "w": 1206,
@@ -1142,6 +1199,12 @@
   "target": 720,
   "v": 3
  },
+ "https://blackamericaweb.com/wp-content/uploads/sites/10/2026/11/image-collage-25.jpg": {
+  "w": 1680,
+  "h": 960,
+  "target": 720,
+  "v": 3
+ },
  "https://blog.enjoymovie.net/wp-content/uploads/2026/11/avengers5-reasons-doom-thor-lightning.jpg": {
   "w": 1000,
   "h": 410,
@@ -1363,6 +1426,19 @@
   "v": 3,
   "blur": 0.42
  },
+ "https://cdn.gameple.co.kr/news/photo/202611/217080_251246_4232.png": {
+  "w": 800,
+  "h": 367,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.357
+ },
+ "https://cdn.hk01.com/di/media/images/dw/20261126/1202600187491520512530179.jpeg/jm9dGkhtaD6Xi5LKoqbK9ah0p21V0g1gJ4-QmSePkJk": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.iwate-np.co.jp/media-static/article/198833/thumbnail/sw4b0-tm6b0779a8_fd5e5f980.jpg": {
   "w": 1200,
   "h": 675,
@@ -1580,6 +1656,12 @@
  "https://cdn.upmedia.mg/upfile/img/2026/1125/202611250118243699.webp": {
   "w": 1800,
   "h": 1200,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn.upmedia.mg/upfile/img/2026/1126/202611261256355726.webp": {
+  "w": 1200,
+  "h": 800,
   "target": 1280,
   "v": 3
  },
@@ -2906,6 +2988,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2iiyiV.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2d59wD.img": {
   "w": 1440,
   "h": 2133,
@@ -2921,6 +3009,12 @@
  "https://img-s.msn.cn/tenant/amp/entityid/AA2icjvU.img": {
   "w": 1080,
   "h": 607,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img.4gamers.com.tw/news-image/2b59cd55-bb59-40c1-88da-561bc076066b.jpg": {
+  "w": 1600,
+  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -3537,6 +3631,12 @@
  "https://imgs.niusnews.com/upload/posts/posts_image3_142881_1795694877.jpg": {
   "w": 1200,
   "h": 628,
+  "target": 1280,
+  "v": 3
+ },
+ "https://inews.gtimg.com/news_ls/O-W9SvRzLrl0AWkOU22nFjHs7dtycvo9N88WR5zHL3OQUAA/0": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -5104,6 +5204,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/2afcefaa447c37c214854d8bb7ecd3ab151101db722fdf2130cb2f6a8a4b3d94/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbbc_us_articles_995%2F64f68d93b7ec1b82597074ef63dcf9ba.png_up.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/4cb0fea9f5224f2cbfd43e860d1a8a7d8fefda0f035f5edebf6a125315f5a1e2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Flead-lucia-gta-voice_1661.jpg": {
   "w": 1200,
   "h": 800,
@@ -5270,6 +5376,12 @@
   ]
  },
  "https://shira-treat.com/wp-content/uploads/2026/11/illit-nenmatsu-music-1200.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://sm.ign.com/t/ign_in/news/s/spider-man/spider-man-brand-new-day-rerelease-includes-a-scene-cut-from_846f.1200.jpg": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -6042,11 +6154,51 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.8eVSoIkKkLgpx9xT_pKs_w&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.889u-8VWT14BKF74jIsDhw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.515,
+  "local": "pics/5c21b4e07e05a5c6.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    3,
+    3,
+    3,
+    11,
+    10,
+    10,
+    14,
+    11,
+    24,
+    7,
+    3,
+    0
+   ],
+   [
+    5,
+    6,
+    6,
+    9,
+    5,
+    5,
+    22,
+    14,
+    7,
+    8,
+    6,
+    6
+   ]
+  ],
+  "c": "#38512e",
+  "k": null,
+  "p": null
  },
  "https://www.bing.com/th?id=ONUT.AMkXmyoYFhmKgWYKxHNylw&pid=News&w=600": {
   "w": 600,
@@ -6281,12 +6433,6 @@
   "v": 3,
   "blur": 0.402
  },
- "https://www.bing.com/th?id=ONUT.JlmgJAPlkF1VmxBKlQFwmQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.LzBe5qGhy783dnx8QyB9kw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -6399,6 +6545,13 @@
    0.367
   ],
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.NftOrlMlp0dZymF9YFbJsw&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.391
  },
  "https://www.bing.com/th?id=ONUT.RzEhlGtmMPsRakdagb95ZQ&pid=News&w=400": {
   "w": 400,
@@ -7183,6 +7336,12 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/Samsung-Galaxy-S27-Ultra-vs.-S26-Ultra.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/galaxy-s27-5.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
