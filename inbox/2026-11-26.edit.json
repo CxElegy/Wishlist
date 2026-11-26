@@ -89,7 +89,9 @@
       "weight": "normal",
       "refs": [
         23,
-        16
+        16,
+        60,
+        58
       ]
     },
     {
@@ -101,7 +103,8 @@
         28,
         13,
         14,
-        33
+        33,
+        53
       ]
     },
     {
@@ -119,7 +122,9 @@
       "blurb": "",
       "weight": "normal",
       "refs": [
-        44
+        44,
+        47,
+        59
       ]
     }
   ],
@@ -131,7 +136,8 @@
       "weight": "lead",
       "refs": [
         3,
-        2
+        2,
+        11
       ],
       "image": "https://www.mymobileindia.com/wp-content/uploads/2026/11/samsung-serice.webp"
     },
@@ -171,6 +177,25 @@
       "refs": [
         8
       ]
+    },
+    {
+      "headline": "New report reveals all the reasons why the Galaxy S27 Ultra can't use the Exynos 2700 chipset",
+      "highlight": "Exynos 2700",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        12
+      ]
+    },
+    {
+      "headline": "Samsung Galaxy S27 Ultra leak: no laser autofocus, no 3x telephoto",
+      "highlight": "no 3x telephoto",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        14,
+        13
+      ]
     }
   ],
   "ILLIT": [
@@ -184,6 +209,19 @@
         5
       ],
       "image": "https://thetv.jp/i/nw/1460315/19283144.jpg?w=1284"
+    },
+    {
+      "headline": "ILLIT、青龍映画賞をまた沸かす…チョン・ホヨンらを「逮捕」",
+      "highlight": "青龍映画賞",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        14,
+        10,
+        13,
+        11,
+        12
+      ]
     },
     {
       "headline": "「5人→4人→2人」紅白出場ILLIT 道枝駿佑がプレゼンターを務めた『MAMA』で見せた圧巻ステージの裏でファンから相次ぐ“懸念”",
@@ -210,15 +248,6 @@
       "weight": "normal",
       "refs": [
         3
-      ]
-    },
-    {
-      "headline": "리센느, 아이돌차트 11월 3주차 아차랭킹 1위..2위 A2O LITE·3위 아일릿",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        7
       ]
     }
   ],
@@ -280,11 +309,11 @@
   ],
   "_covered": {
     "漫威电影": 95,
-    "GTA 6": 44,
-    "三星手机": 10,
-    "ILLIT": 9,
+    "GTA 6": 60,
+    "三星手机": 15,
+    "ILLIT": 14,
     "チェーンソーマン": 8,
-    "周杰伦": 5,
+    "周杰伦": 10,
     "dota2": 8,
     "Astrae Oratio": 3,
     "The Mandalorian": 3,
@@ -297,7 +326,8 @@
     "滑雪": 2,
     "BLEACH Mirrors High": 10,
     "MMORPG 新作": 2,
-    "A2O LITE": 1
+    "A2O LITE": 1,
+    "哈利波特剧集": 5
   },
   "周杰伦": [
     {
@@ -315,7 +345,8 @@
       "blurb": "",
       "weight": "normal",
       "refs": [
-        1
+        1,
+        9
       ]
     },
     {
@@ -602,5 +633,48 @@
       ]
     }
   ],
-  "A2O LITE": []
+  "A2O LITE": [],
+  "哈利波特剧集": [
+    {
+      "headline": "HBO’s Harry Potter Set Photos Bring Back Two Magical Fan-Favorite Locations",
+      "highlight": "Set Photos",
+      "blurb": "Latest set photos from HBO's Harry Potter series offer a first look at major wizarding world locations.",
+      "weight": "lead",
+      "refs": [
+        2
+      ]
+    },
+    {
+      "headline": "Harry Potter Series Reveals New Costumes and Film Connections",
+      "highlight": "New Costumes",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1,
+        4
+      ]
+    },
+    {
+      "headline": "Harry Potter TV Show Fans Get First Glimpse of Mysterious Gryffindor Figure",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3
+      ]
+    },
+    {
+      "headline": "乐高公布4款基于HBO版《哈利·波特》剧集的全新套装",
+      "highlight": "4款",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5
+      ],
+      "event": {
+        "date": "2026-12-25",
+        "label": "放送開始"
+      }
+    }
+  ]
 }
