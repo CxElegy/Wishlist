@@ -1,10 +1,10 @@
 {
- "admin": "3957399c1200",
- "admin-ai": "777d22a15423",
+ "admin": "31fbd23e2150",
+ "admin-ai": "2742bc77bd06",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5c30982f"
+   "bc214cf2"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "02586f815e1c",
+ "admin-emblem": "414e894fef85",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a768efb7"
+   "7ea41d95"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "bce50e6eed79",
+ "admin-now": "e37c6c65a7ea",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "6647c9c0"
+   "6be734ce"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "f28ba488"
   ]
  },
- "admin-system": "4c01767c00b2",
+ "admin-system": "8bf36b4f6e44",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "6c03827c"
+   "645605ae"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,11 +93,11 @@
    "0f044555"
   ]
  },
- "index": "7336ea66524f",
+ "index": "bf7461b77be9",
  "index_marks": {
   "front": [
    "トップ",
-   "5a9e2426"
+   "5f4748da"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "5dedb28b"
+   "5c20cd98"
   ],
   "w-130724c0": [
    "猫用品",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "9aab6235"
+   "c2e60038"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "e8f8a4ba"
+   "6eee61d1"
   ],
   "w-b867582f": [
    "あつ森",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "8d793857"
+   "943a45fd"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "da217e0c"
+   "e2670aba"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "2748e0de"
   ]
  },
- "updated": "11.27 06:52",
+ "updated": "11.27 07:03",
  "wishlist": "1dd4d0c77972"
 }

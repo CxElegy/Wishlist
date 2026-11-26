@@ -1603,12 +1603,6 @@
   "v": 3,
   "blur": 0.357
  },
- "https://cdn.hk01.com/di/media/images/dw/20261126/1202600187491520512530179.jpeg/jm9dGkhtaD6Xi5LKoqbK9ah0p21V0g1gJ4-QmSePkJk": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.iwate-np.co.jp/media-static/article/198833/thumbnail/sw4b0-tm6b0779a8_fd5e5f980.jpg": {
   "w": 1200,
   "h": 675,
@@ -1976,6 +1970,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/11/Harry-Potter-HBO-TV-Show-Forbidden-Forest-Set-Facts-2.jpg?w=1200": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://consequence.net/wp-content/uploads/2026/10/Power-Trip.jpg": {
   "w": 1200,
   "h": 675,
@@ -2183,12 +2183,6 @@
   "target": 720,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-europe-west-qualifier-dota2-2?v=1795729309": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://everythingedinburgh.com/wp-content/uploads/2026/11/ee-img-dota-2-patch-7-42-greater-horn-of-battle.jpg": {
   "w": 1280,
   "h": 756,
@@ -2232,6 +2226,12 @@
   "v": 3
  },
  "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/25151004/avengers-doomsday-legendary-weapons.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/26162315/chainsaw-man-beats-naruto-in-japan.jpg": {
   "w": 1600,
   "h": 900,
   "target": 1280,
@@ -2657,9 +2657,9 @@
   "target": 1280,
   "v": 3
  },
- "https://image-cdn.hypb.st/https%3A%2F%2Fhk.hypebeast.com%2Ffiles%2F2026%2F11%2FPanini-Rockstar-Games-grand-theft-auto-gta-vi-Trading-Cards-Announcement-Info-0.jpg?cbr=1&q=90&w=1200&h=630&fit=crop": {
-  "w": 1200,
-  "h": 630,
+ "https://image.entabe.jp/upload/20260518/images/000_1.jpg": {
+  "w": 1280,
+  "h": 853,
   "target": 720,
   "v": 3
  },
@@ -5259,6 +5259,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://nielseniq.com/wp-content/uploads/sites/4/2026/11/GettyImages-1482737223-600x400-bf06395.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
+  "v": 3
+ },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1611ed0e350f4aae827a46188684efd2.png": {
   "w": 736,
   "h": 414,
@@ -5312,6 +5318,12 @@
   "w": 997,
   "h": 552,
   "target": 1280,
+  "v": 3
+ },
+ "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/1a20dbee8d365-screenshotUrl.jpg?quality=90&strip=all&crop=0%2C3.4613147178592%2C100%2C93.077370564282&w=1200": {
+  "w": 1200,
+  "h": 627,
+  "target": 720,
   "v": 3
  },
  "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/STKS540_GTA_VI_2_A.jpg?quality=90&strip=all&crop=0%2C9.9676601489831%2C100%2C80.064679702034": {
