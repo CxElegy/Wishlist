@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-26T20:31:28+00:00",
+ "checked": "2026-11-26T21:34:44+00:00",
  "fired": {
   "at": "2026-11-26T20:31:28+00:00",
   "results": {
@@ -86,75 +86,64 @@
    },
    "items": [
     "A2O LITE",
-    "BLEACH Mirrors High",
-    "GTA 6",
     "ILLIT",
-    "MMORPG 新作",
-    "dota2",
     "gelato pique",
-    "lib:YOASOBI",
-    "lib:サッカー日本代表",
-    "lib:ユニバーサル・スタジオ・ジャパン",
-    "lib:ラーメン",
-    "lib:京都",
-    "lib:大谷翔平",
-    "lib:温泉",
-    "lib:筋トレ",
+    "lib:ONE PIECE",
+    "lib:ブラッククローバー 第2期",
+    "lib:宇宙・ロケット",
+    "lib:生徒会にも穴はある！",
+    "lib:羽生善治",
+    "lib:薬屋のひとりごと 第3期",
+    "lib:貸した魔力は【リボ払い】で強制徴収",
+    "lib:転生したら剣でした 第2期",
     "あつ森",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
     "哈利波特剧集",
     "滑雪",
-    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-26T18:45:18+00:00",
+   "last_batch": "2026-11-26T20:58:41+00:00",
    "last_error": {
     "at": "2026-11-26T06:40:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 97,
+   "prog": 172,
    "prog_day": "2026-11-27",
    "ripe": [
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "MMORPG 新作",
-    "dota2",
-    "三星手机",
-    "周杰伦",
-    "漫威电影"
+    "A2O LITE",
+    "gelato pique",
+    "あつ森",
+    "绝区零"
    ],
-   "sig": "c29581f8ff71",
+   "sig": "4f75b7da21fc",
    "token_cap": 1000000,
-   "tokens_today": 116859,
-   "why": "整理待ちの記事 173 件（23 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 176930,
+   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "88254f6c2b0e",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
+    "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
-    "ぐでたま"
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 7 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -335,12 +324,12 @@
    "runs": 12
   },
   "2026-11-27": {
-   "batches": 3,
-   "cr": 1932356,
-   "cw": 106394,
-   "in": 52,
-   "out": 10413,
-   "runs": 2
+   "batches": 10,
+   "cr": 2922951,
+   "cw": 160819,
+   "in": 79,
+   "out": 16032,
+   "runs": 3
   }
  }
 }
