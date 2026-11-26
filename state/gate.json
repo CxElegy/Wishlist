@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-26T17:30:18+00:00",
+ "checked": "2026-11-26T18:37:53+00:00",
  "fired": {
   "at": "2026-11-26T17:30:18+00:00",
   "results": {
@@ -86,76 +86,67 @@
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
-    "GTA 6",
     "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "gelato pique",
+    "lib:F1",
     "lib:King Gnu",
-    "lib:Mrs. GREEN APPLE",
-    "lib:SPY×FAMILY",
-    "lib:ゼルダの伝説",
-    "lib:原神",
-    "lib:呪術廻戦",
-    "lib:葬送のフリーレン",
-    "lib:鬼滅の刃",
+    "lib:NBA",
+    "lib:ガンプラ",
+    "lib:キャンプ",
+    "lib:コーヒー",
+    "lib:ユニクロ",
+    "lib:無印良品",
     "あつ森",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
     "星巴克马克杯",
-    "漫威电影",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-26T15:19:00+00:00",
+   "last_batch": "2026-11-26T17:45:20+00:00",
    "last_error": {
     "at": "2026-11-26T06:40:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 8,
+   "prog": 83,
    "prog_day": "2026-11-27",
    "ripe": [
-    "Astrae Oratio",
-    "GTA 6",
-    "MMORPG 新作",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影"
+    "ILLIT",
+    "The Mandalorian",
+    "チェーンソーマン",
+    "星巴克马克杯",
+    "猫用品"
    ],
-   "sig": "04ce2bc65838",
+   "sig": "4d0b6f3f2d56",
    "token_cap": 1000000,
-   "tokens_today": 0,
-   "why": "整理待ちの記事 175 件（25 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 70258,
+   "why": "整理待ちの記事 107 件（18 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
     "FROM",
     "GTA 6",
-    "あつ森",
-    "A2O LITE",
     "The Mandalorian",
-    "Astrae Oratio",
-    "绝区零",
+    "Vaundy",
+    "dota2",
+    "あつ森",
     "ぐでたま",
+    "チェーンソーマン",
     "周杰伦",
-    "Vaundy"
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "need": true,
-   "sig": "d9ce2bee1897",
-   "waiting": [],
-   "why": "足りない 15 版面（Actions で Python が埋める）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -334,6 +325,14 @@
    "in": 428,
    "out": 62427,
    "runs": 12
+  },
+  "2026-11-27": {
+   "batches": 2,
+   "cr": 1435141,
+   "cw": 62481,
+   "in": 36,
+   "out": 7741,
+   "runs": 1
   }
  }
 }
