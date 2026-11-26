@@ -330,6 +330,52 @@
    0.47
   ]
  },
+ "http://wx2.sinaimg.cn/middle/006ZneWLly1ijfyt4ytnmj30wu0pc7e8.jpg": {
+  "w": 1182,
+  "h": 912,
+  "target": 720,
+  "v": 3,
+  "local": "pics/76345791d094aee4.webp",
+  "out": [
+   1182,
+   912
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    3,
+    2,
+    12,
+    3,
+    19,
+    10,
+    8,
+    21,
+    4,
+    16,
+    1,
+    1
+   ],
+   [
+    6,
+    11,
+    10,
+    16,
+    11,
+    10,
+    13,
+    2,
+    6,
+    7,
+    6,
+    1
+   ]
+  ],
+  "c": "#f9f9f9",
+  "k": null,
+  "p": null
+ },
  "http://wx2.sinaimg.cn/middle/006bWoNYly1ij8ooyr58nj30pg1kwdjf.jpg": {
   "w": 916,
   "h": 2048,
@@ -629,6 +675,53 @@
    0.827,
    0.989
   ],
+  "p": null
+ },
+ "http://wx4.sinaimg.cn/middle/006ZneWLly1ijfyi2kj92j308l099q42.jpg": {
+  "w": 309,
+  "h": 333,
+  "target": 720,
+  "v": 3,
+  "blur": 0.514,
+  "local": "pics/a1f664b519511d88.webp",
+  "out": [
+   668,
+   720
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    0,
+    1,
+    18,
+    16,
+    14,
+    14,
+    10,
+    9,
+    8,
+    7,
+    2,
+    2
+   ],
+   [
+    4,
+    14,
+    11,
+    12,
+    16,
+    11,
+    5,
+    7,
+    7,
+    7,
+    0,
+    5
+   ]
+  ],
+  "c": "#374849",
+  "k": null,
   "p": null
  },
  "http://wx4.sinaimg.cn/middle/006kvRjAly1ijdwgze6xij31ku0vyx6p.jpg": {
@@ -2090,6 +2183,12 @@
   "target": 720,
   "v": 3
  },
+ "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-europe-west-qualifier-dota2-2?v=1795729309": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://everythingedinburgh.com/wp-content/uploads/2026/11/ee-img-dota-2-patch-7-42-greater-horn-of-battle.jpg": {
   "w": 1280,
   "h": 756,
@@ -2120,19 +2219,7 @@
   "target": 1280,
   "v": 3
  },
- "https://foro3d.com/2026/noviembre/imagenes/minsk-acoge-la-final-del-festival-nova-con-16-equipos-en-cs2-y-dota-2.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://foro3d.com/2026/noviembre/imagenes/nicola-coughlan-se-distancia-de-la-nueva-serie-de-harry-potter-por-las.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
- "https://foro3d.com/2026/noviembre/imagenes/omgtu-sube-al-segundo-puesto-en-la-cupula-de-los-heroes-de-dota-2.webp": {
   "w": 1920,
   "h": 1080,
   "target": 720,
@@ -2576,12 +2663,6 @@
   "target": 720,
   "v": 3
  },
- "https://image.entabe.jp/upload/20260518/images/000_1.jpg": {
-  "w": 1280,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
  "https://image.gallery.play.jp/knb-news/articles/d2e68ec95ab844e4a54a60f468bc55d5/aab9d0a3-ef57-434b-95c2-04f04d04c86c.jpg?w=1200": {
   "w": 1024,
   "h": 576,
@@ -2771,12 +2852,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.411
- },
- "https://image.news.livedoor.com/newsimage/stf/8/0/80955_1847_5a3e1f5ca6ef51290a9e1dfadc261f1d.jpg": {
-  "w": 1000,
-  "h": 667,
-  "target": 720,
-  "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/9/9/992be_1838_52303757c3fef1b5ce51d52f2bfde838.jpg": {
   "w": 799,
@@ -5924,12 +5999,6 @@
   "target": 720,
   "v": 3
  },
- "https://storage.tenki.jp/storage/static-images/suppl/article/image/3/32/328/32850/1/large.jpg": {
-  "w": 692,
-  "h": 519,
-  "target": 720,
-  "v": 3
- },
  "https://sumahodigest.com/wp-content/uploads/2026/11/43534rwewr.jpg": {
   "w": 1786,
   "h": 987,
@@ -5960,10 +6029,22 @@
   "target": 1280,
   "v": 3
  },
+ "https://tab-prod-public.s3.ap-northeast-1.amazonaws.com/asset_files/uploaded/2026-11/1d1c625f/ffcfcc4c-fd59-4301-a7a5-6e77d2421d5f.jpg?w=1200": {
+  "w": 795,
+  "h": 1170,
+  "target": 720,
+  "v": 3
+ },
  "https://tabiris.com/wp1/images/2026/11/happo20262.jpg": {
   "w": 1280,
   "h": 853,
   "target": 1280,
+  "v": 3
+ },
+ "https://tabiris.com/wp1/images/2026/11/niseko2026gondla.webp": {
+  "w": 800,
+  "h": 533,
+  "target": 720,
   "v": 3
  },
  "https://tbsradio.g.kuroco-img.app/v=1795071928/files/topics/114188_ext_04_0.jpeg?width=1200": {
@@ -6470,12 +6551,6 @@
   ],
   "p": null
  },
- "https://www.bing.com/th?id=ONUT.AO7krq9Hwow_paX0VxFQxQ&pid=News&w=1080": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ARaDbxGSBeRr5nKGq3tR5Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -6643,6 +6718,57 @@
    0.225,
    0.653,
    0.607
+  ]
+ },
+ "https://www.bing.com/th?id=ONUT.CxnPybknNpWoA7HVWzHZlQ&pid=News&w=404": {
+  "w": 404,
+  "h": 227,
+  "target": 720,
+  "v": 3,
+  "blur": 0.51,
+  "local": "pics/664cf0149bfefaed.webp",
+  "out": [
+   720,
+   405
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    10,
+    13,
+    15,
+    9,
+    7,
+    7,
+    8,
+    7,
+    6,
+    4,
+    6,
+    8
+   ],
+   [
+    4,
+    6,
+    10,
+    9,
+    10,
+    10,
+    12,
+    11,
+    12,
+    7,
+    5,
+    5
+   ]
+  ],
+  "c": "#8e8377",
+  "k": null,
+  "p": [
+   0.412,
+   0.035,
+   0.773,
+   0.403
   ]
  },
  "https://www.bing.com/th?id=ONUT.EU78r-YTXYYRvTu7bNz3gw&pid=News&w=1200": {
@@ -6837,12 +6963,6 @@
    1.0
   ]
  },
- "https://www.bing.com/th?id=ONUT.cFtPS1qYsCZmghAxvkQ1HQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ccmLD2fGGZK2AXa8MHkabA&pid=News&w=450": {
   "w": 450,
   "h": 450,
@@ -6894,9 +7014,9 @@
    0.741
   ]
  },
- "https://www.bing.com/th?id=ONUT.fkbfWst-bQxv54_XSvK1xw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.e3vyHg86bLX36GpIe4Mn_g&pid=News&w=1200": {
   "w": 700,
-  "h": 359,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -7327,6 +7447,12 @@
    0.862,
    0.414
   ]
+ },
+ "https://www.bing.com/th?id=ORMS.2f23377f0677cdba466b70d45afd11c2&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.chiba-tv.com/cache/images/news/56/56/3cea7e223ffadc75e6dfbaed8dc60f5269925656.1000x600.none.png": {
   "w": 1000,
