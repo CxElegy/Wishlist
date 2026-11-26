@@ -410,7 +410,7 @@
   "三星手机": 53,
   "ILLIT": 34,
   "チェーンソーマン": 15,
-  "周杰伦": 29,
+  "周杰伦": 32,
   "dota2": 15,
   "Astrae Oratio": 5,
   "The Mandalorian": 5,
@@ -418,13 +418,13 @@
   "gelato pique": 5,
   "ぐでたま": 7,
   "猫用品": 8,
-  "绝区零": 3,
+  "绝区零": 6,
   "Vaundy": 3,
   "滑雪": 15,
-  "BLEACH Mirrors High": 10,
+  "BLEACH Mirrors High": 11,
   "MMORPG 新作": 36,
   "A2O LITE": 10,
-  "哈利波特剧集": 7
+  "哈利波特剧集": 10
  },
  "周杰伦": [
   {
@@ -452,7 +452,10 @@
     21,
     23,
     27,
-    22
+    22,
+    30,
+    31,
+    32
    ]
   },
   {
@@ -700,7 +703,36 @@
    ]
   }
  ],
- "绝区零": [],
+ "绝区零": [
+  {
+   "headline": "Zenless Zone Zero - Official Sunbringer character demo trailer",
+   "highlight": "Sunbringer",
+   "blurb": "\"It was as if that unbearably heavy sun had sentenced her to her fate.\" Meet Sunbringer and get to know this Agent in the new character demo.",
+   "weight": "lead",
+   "refs": [
+    4
+   ],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2if93i.img"
+  },
+  {
+   "headline": "『ゼンレスゾーンゼロ×閃魂 (Glorious Soul) コレクションカード第一弾 発売記念POP UP in あみあみ』が開催。",
+   "highlight": "POP UP",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "绝区零艾莲乔1/8 手办情报公开",
+   "highlight": "手办情报公开",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  }
+ ],
  "Vaundy": [
   {
    "headline": "VaundyファンクラブがSWEET LOVE SHOWER舞台裏映像を限定公開",
@@ -986,7 +1018,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    8
    ],
    "event": {
     "date": "2026-12-25",

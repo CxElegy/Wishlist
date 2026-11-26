@@ -659,6 +659,62 @@
   "k": null,
   "p": null
  },
+ "http://wx4.sinaimg.cn/middle/6f5ef307gy1ijfjvmeg3kj20xc18gjxg.jpg": {
+  "w": 1200,
+  "h": 1600,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/2337a68515a04f2f.webp",
+  "out": [
+   960,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    3,
+    9,
+    9,
+    9,
+    9,
+    8,
+    8,
+    9,
+    11,
+    10,
+    12,
+    4
+   ],
+   [
+    2,
+    14,
+    20,
+    12,
+    7,
+    6,
+    8,
+    11,
+    5,
+    5,
+    6,
+    4
+   ]
+  ],
+  "c": "#504c51",
+  "k": [
+   0.1,
+   0.128,
+   0.917,
+   0.932
+  ],
+  "p": [
+   0.418,
+   0.187,
+   0.625,
+   0.39
+  ]
+ },
  "https://0.soompi.io/wp-content/uploads/2026/11/19054506/A2O-LITE-NCT-WISH-ILLIT.jpg": {
   "w": 1200,
   "h": 800,
@@ -3058,6 +3114,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2if93i.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2d59wD.img": {
   "w": 1440,
   "h": 2133,
@@ -5378,6 +5440,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/25615/4009/25615-4009-3434cc7ccff1bca416a7d527ec969a7e-1415x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 891,
+  "h": 1260,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/27368/308/27368-308-9e35e4c5d1ca610b49448f6fece35ca4-1920x1008.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1920,
   "h": 1008,
@@ -6531,12 +6599,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.0YRYN51mpjJwaoRHZhRLwg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.2Zbyf4oTJ8KqhH9pWFjs9w&pid=News&w=650": {
   "w": 537,
   "h": 700,
@@ -6889,6 +6951,12 @@
  "https://www.bing.com/th?id=ONUT.EbgsVSeJ_xtmG4mWKpf00Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.K9kHYxjXqfwSX8wFQm9hrA&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
   "target": 720,
   "v": 3
  },
