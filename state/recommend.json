@@ -44,7 +44,6 @@
   "https://nlab.itmedia.co.jp/research/articles/4114058/2/": "https://www.bing.com/th?id=ONUT.wVLSKtCbow8pj59yEvb88A&pid=News&w=300",
   "https://note.com/fine_avocet511/n/nd5a4bd9d4e12": "https://d2l930y2yx77uc.cloudfront.net/production/social_images/c8d89e7055a22c38ddbcc48ad44ef2b0bf3c4116.png",
   "https://note.com/pokobara/n/ne74291d210e7?hl=ko": "https://www.bing.com/th?id=ONUT.LzFykkSZ2Qp_aH6aIg7KcA&pid=News&w=1200",
-  "https://note.com/tabokiti/n/ncd86abc38482": "https://www.bing.com/th?id=ONUT.K9kHYxjXqfwSX8wFQm9hrA&pid=News&w=1200",
   "https://prtimes.jp/main/html/rd/p/000000067.000116479.html": "https://prcdn.freetls.fastly.net/release_image/116479/67/116479-67-61616e1b557e03befdc76402362991bd-1774x1330.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://prtimes.jp/main/html/rd/p/000000367.000165726.html": "https://prcdn.freetls.fastly.net/release_image/165726/367/165726-367-2bf2f7d3ae69325d10c091286c61a3e4-3405x1817.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://screenrant.com/the-mandalorian-and-grogu-pop-up-storybook/": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/the-mandalorian_l8vafq.jpg?w=1600&h=900&fit=crop",
@@ -80,6 +79,7 @@
   "https://www.newspim.com/news/view/20261120000640": "https://img.newspim.com/news/2026/11/20/2611201257513550.jpg",
   "https://www.purexbox.com/news/2026/04/open-world-rpg-the-blood-of-dawnwalker-gets-september-2026-release-date-for-xbox-series-xs": "https://images.purexbox.com/d57e4aaafc1fd/1280x720.jpg",
   "https://www.setn.com/news/897693": "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg",
+  "https://www.sina.cn/news/detail/5369525912207572.html": "http://wx4.sinaimg.cn/middle/6f5ef307gy1ijfjvmeg3kj20xc18gjxg.jpg",
   "https://www.sina.cn/news/detail/5369568873943605.html": "http://wx2.sinaimg.cn/middle/006dNg2Pgy1ijfrkvmnucj31kw1kw44t.jpg",
   "https://www.sohu.com/a/1106599455_100033958": "https://www.bing.com/th?id=ONUT.-HS8acaIM0I6P-jfA86RMA&pid=News&w=568",
   "https://www.sportsdunia.com/gaming/honkai-nexus-anima-closed-beta-download": "https://sdprodstorage.blob.core.windows.net/sd-cms-prod/cms-post/Honkai%20Nexus%20Anima%20CBT-1795555183364.webp",
@@ -991,6 +991,27 @@
   },
   {
    "batch": 1,
+   "because": "绝区零",
+   "date": "2026-11-26",
+   "hits": [],
+   "image": "http://wx4.sinaimg.cn/middle/6f5ef307gy1ijfjvmeg3kj20xc18gjxg.jpg",
+   "kind": "board",
+   "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
+   "score": 8,
+   "source": "手机新浪网",
+   "taste": [
+    [
+     "作品:绝区零",
+     8
+    ]
+   ],
+   "title": "绝区零艾莲乔1/8 手办情报公开|miHoYo|APEX|艾莲·乔|绝区零|LIMEPIE 系列",
+   "url": "https://www.sina.cn/news/detail/5369525912207572.html",
+   "words": [],
+   "work": "绝区零"
+  },
+  {
+   "batch": 1,
    "because": "猫用品",
    "date": "2026-11-26",
    "hits": [
@@ -1052,7 +1073,7 @@
    "work": "星巴克马克杯"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "GTA 6",
    "date": "2026-11-26",
    "hits": [],
@@ -1177,7 +1198,7 @@
    "work": "チェーンソーマン"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "チェーンソーマン",
    "date": "2026-11-25",
    "hits": [],
@@ -1294,7 +1315,7 @@
    "work": "gelato pique"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "あつ森",
    "date": "2026-11-23",
    "hits": [],
@@ -1313,27 +1334,6 @@
    "url": "https://note.com/pokobara/n/ne74291d210e7?hl=ko",
    "words": [],
    "work": "あつ森"
-  },
-  {
-   "batch": 4,
-   "because": "绝区零",
-   "date": "2026-11-23",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.K9kHYxjXqfwSX8wFQm9hrA&pid=News&w=1200",
-   "kind": "board",
-   "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
-   "score": 8,
-   "source": "note",
-   "taste": [
-    [
-     "作品:绝区零",
-     8
-    ]
-   ],
-   "title": "ゼンゼロVer.3.4とスタレコラボ、まのさば新作延期、GTA6のレビュー爆撃｜今日もゲーム日和",
-   "url": "https://note.com/tabokiti/n/ncd86abc38482",
-   "words": [],
-   "work": "绝区零"
   },
   {
    "batch": 4,
@@ -2130,11 +2130,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2142,15 +2142,15 @@
    8
   ],
   [
-   "作品:三星手机",
-   7
-  ],
-  [
    "galaxy",
    7
   ],
   [
    "三星 Galaxy",
+   7
+  ],
+  [
+   "作品:三星手机",
    7
   ]
  ]
