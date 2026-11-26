@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-26T01:28:11+00:00",
+ "checked": "2026-11-26T02:17:59+00:00",
  "fired": {
   "at": "2026-11-26T00:40:01+00:00",
   "results": {
@@ -82,6 +82,10 @@
     "sig": "5e354b90e4d4"
    },
    "items": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "ILLIT",
+    "The Mandalorian",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
     "lib:SPY×FAMILY",
@@ -89,21 +93,25 @@
     "lib:原神",
     "lib:呪術廻戦",
     "lib:葬送のフリーレン",
-    "lib:鬼滅の刃"
+    "lib:鬼滅の刃",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "绝区零"
    ],
-   "last_batch": "2026-11-26T01:11:53+00:00",
+   "last_batch": "2026-11-26T01:23:29+00:00",
    "last_error": {
     "at": "2026-11-25T10:27:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 25,
+   "prog": 317,
    "prog_day": "2026-11-26",
    "ripe": [],
-   "sig": "d8a5f8150cd9",
+   "sig": "9755304c22f0",
    "token_cap": 1000000,
-   "tokens_today": 290148,
-   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "tokens_today": 300292,
+   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -300,12 +308,12 @@
    "runs": 13
   },
   "2026-11-26": {
-   "batches": 9,
-   "cr": 5196596,
-   "cw": 267640,
-   "in": 144,
-   "out": 22364,
-   "runs": 5
+   "batches": 10,
+   "cr": 6206215,
+   "cw": 274709,
+   "in": 162,
+   "out": 25421,
+   "runs": 6
   }
  }
 }
