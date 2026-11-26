@@ -417,7 +417,7 @@
   "星巴克马克杯": 4,
   "gelato pique": 7,
   "ぐでたま": 7,
-  "猫用品": 8,
+  "猫用品": 10,
   "绝区零": 6,
   "Vaundy": 3,
   "滑雪": 15,
@@ -718,6 +718,15 @@
    "weight": "normal",
    "refs": [
     8
+   ]
+  },
+  {
+   "headline": "窓辺に取り付ける吸盤式猫用ベッド「JOYCAT雲形ハンモック」",
+   "highlight": "JOYCAT雲形ハンモック",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "58a6e5fda0d6",
+ "edit_sig": "92d6d2afe1e2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1781,29 +1781,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 9,
-     "source": "ライブドアニュース",
-     "title": "「そっちかーい！」シニア猫2匹のためにキャットタワーを新調したら… 2日後、飼い主が目にした光景に「あるある」反響",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5TZE5tWjhER2wxa1pjWGp2dDg0akk2bTNDRjZUaG1SMHluTVludkdSUjdYc0RabmY1aXIxTVBxRThnQU9UVFg5bjNCb1d6VDRwSWQ2NWMwVGhObmJBcmtv?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 10,
-     "source": "ドリームニュース",
-     "title": "まるで雲の上でひと休み。窓辺に取り付ける吸盤式猫用ベッド「JOYCAT雲形ハンモック」ミスターカード株式会社",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFB4TFRINlgzb3dRb096OVd1a0FrbWxLZ1pZeGFHT2ZGWHAyVE01RU5IZWpnbkQ2elZldC15QTAtNG1jUVJ4bkM4Ny15TjE1bjBOYnRZ?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 11,
-     "source": "ねこちゃんホンポ on MSN",
-     "title": "猫の『ウンチ』から健康を確認する5つの方法 注意が必要な状態や取るべき対応を解説",
-     "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%AE-%E3%82%A6%E3%83%B3%E3%83%81-%E3%81%8B%E3%82%89%E5%81%A5%E5%BA%B7%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B5%E3%81%A4%E3%81%AE%E6%96%B9%E6%B3%95-%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E7%8A%B6%E6%85%8B%E3%82%84%E5%8F%96%E3%82%8B%E3%81%B9%E3%81%8D%E5%AF%BE%E5%BF%9C%E3%82%92%E8%A7%A3%E8%AA%AC/ar-AA2ihNYa"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1844,6 +1821,16 @@
      "image": "https://i2-prod.birminghammail.co.uk/incoming/article34957733.ece/ALTERNATES/s1200/0_GettyImages-2206898952.jpg",
      "image_via": "og:image",
      "url": "https://www.cheshire-live.co.uk/news/property/cat-owners-urged-check-homes-34957735",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-24",
+     "headline": "窓辺に取り付ける吸盤式猫用ベッド「JOYCAT雲形ハンモック」",
+     "highlight": "JOYCAT雲形ハンモック",
+     "image": "https://www.dreamnews.jp/press/0000369694/images/bodyimage1",
+     "image_via": "og:image",
+     "url": "https://www.dreamnews.jp/press/0000369694",
      "weight": "normal"
     }
    ],
