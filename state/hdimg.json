@@ -3125,12 +3125,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2iexpt.img": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2if93i.img": {
   "w": 1280,
   "h": 720,
@@ -5727,6 +5721,12 @@
   "w": 1900,
   "h": 1425,
   "target": 720,
+  "v": 3
+ },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-AH-997-1420x799-1.webp": {
+  "w": 1420,
+  "h": 799,
+  "target": 1280,
   "v": 3
  },
  "https://sdprodstorage.blob.core.windows.net/sd-cms-prod/cms-post/Honkai%20Nexus%20Anima%20CBT-1795555183364.webp": {
