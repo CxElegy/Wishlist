@@ -387,7 +387,7 @@
   "星巴克马克杯": 4,
   "gelato pique": 4,
   "ぐでたま": 7,
-  "猫用品": 3,
+  "猫用品": 8,
   "绝区零": 3,
   "Vaundy": 3,
   "滑雪": 10,
@@ -630,6 +630,24 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "猫グッズ尽くしだった……人気チェーンの福袋 ポーチに猫のぬいぐるみ付",
+   "highlight": "福袋",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "Cat owners urged to check homes for common winter item that 'could be fatal'",
+   "highlight": "could be fatal",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ],

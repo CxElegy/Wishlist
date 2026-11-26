@@ -2364,6 +2364,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i2-prod.birminghammail.co.uk/incoming/article34957733.ece/ALTERNATES/s1200/0_GettyImages-2206898952.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://i2.ytimg.com/vi/Y7T4zr_A9WQ/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
@@ -2664,6 +2670,13 @@
   "h": 500,
   "target": 1280,
   "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/stf/f/4/f4330_1717_10f53be6_a0e4830e.jpg": {
+  "w": 640,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.397
  },
  "https://image.news.livedoor.com/newsimage/stf/f/5/f5ad3_1682_d34914d9_204701f0.jpg": {
   "w": 1200,

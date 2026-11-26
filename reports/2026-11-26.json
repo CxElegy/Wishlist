@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "dd2a31ddfe6c",
+ "edit_sig": "547cb76bbca1",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1225,43 +1225,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 4,
-     "source": "ライブドアニュース",
-     "title": "シニア猫2匹にキャットタワー新調 2日後に見た光景 (2026年11月26日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1qeGRfNndkUGZ2LUZvOFQxMnVnNmx4MldBWXJCbmFKLTM3anZlMEFzMnl0T2ZJOWk0ZGZhOGJBTHJnU0xiZ3BLZERNbHdQdmFpQUo0ekEzYmxGUGpnUVE?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 5,
-     "source": "ライブドアニュース",
-     "title": "猫を苦しめる『猫風邪』の症状5選 命を落とす可能性も…治療法や予防法も解説",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9HTjgwSFZOQzZsbUtmMG9rZ2toUzRKejJxQmY0MUZzT1RLOGo0Zk1BN3J0NWdWYl9jbDB6MTlqMGRaYzFrNWR3TjFIeHV5U0xPVXctcHBkRmVsdDNuWk1V?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 6,
-     "source": "ライブドアニュース",
-     "title": "猫グッズ尽くしだった……人気チェーンの福袋 ポーチに猫のぬいぐるみ付「くっついてて可愛い〜」「今回、一番刺さった」",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5jMXlrdUxzX2RndF9FVkJSVEc0SmFvc1V6bGozYzVEakk0S1hnaDc4MXFLYlpkWmVxZVlTN1RQRXY5QTZtUXRpVm5KcXpKeWZwVS1yamJ4SXNQYkFfMnc?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 7,
-     "source": "ライブドアニュース",
-     "title": "先輩猫が『猫用ドア』から出入りするのを見た『赤ちゃん猫たち』…まさかの展開が可愛すぎると64万再生「必死ｗ」「声が聞こえてきそうｗ」",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1ObnNwdHE2dUE0enctMHJoMjdjZFRld3EweC1TWG85SkFfSlJIbnpXVG5SVUdSTkFoNllZVlh1X1FPXzFwb3U5d0UzdGstX2lDb2dxcFNjd2ExYlBLWjhz?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 8,
-     "source": "Cheshire Live",
-     "title": "Cat owners urged to check homes for common winter item that 'could be fatal'",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQazY2Si1XLTYwY3dpR3BSa2ROU2w5QjIzVWhwejloeGNTWWItNmdwUE9JTENldkh3N2hvQ0k4LU45WU9kQzlpckFqSm16UlBqOWd5S2Jja2NTMVVGMm1uMTFqU0JHVHNUaVN2RUh4eFl0ZWJiOEFhdGdKbkdhRzVMX09wZmhId2tZR3Rj?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1282,6 +1245,26 @@
      "image": "https://s.yimg.com/lo/mysterio/api/63cfb4f8eed3148b8be79b3f320c7bf20f9784ab19b7ef486cef870e7b6071b2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmoneywise_327%2Fa9b0902cadd54ab73d787d9899f43fd2.jpg",
      "image_via": "og:image",
      "url": "https://finance.yahoo.com/technology/ai/articles/walmart-target-macys-pull-ai-163000521.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-26",
+     "headline": "猫グッズ尽くしだった……人気チェーンの福袋 ポーチに猫のぬいぐるみ付",
+     "highlight": "福袋",
+     "image": "https://image.news.livedoor.com/newsimage/stf/f/4/f4330_1717_10f53be6_a0e4830e.jpg",
+     "image_via": "og:image",
+     "url": "https://news.livedoor.com/topics/detail/32904127/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-24",
+     "headline": "Cat owners urged to check homes for common winter item that 'could be fatal'",
+     "highlight": "could be fatal",
+     "image": "https://i2-prod.birminghammail.co.uk/incoming/article34957733.ece/ALTERNATES/s1200/0_GettyImages-2206898952.jpg",
+     "image_via": "og:image",
+     "url": "https://www.cheshire-live.co.uk/news/property/cat-owners-urged-check-homes-34957735",
      "weight": "normal"
     }
    ],
