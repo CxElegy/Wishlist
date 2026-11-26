@@ -23,7 +23,6 @@
   "https://foro3d.com/en/2026/noviembre/omgtu-sube-al-segundo-puesto-en-la-cupula-de-los-heroes-de-dota-2.html": "https://foro3d.com/2026/noviembre/imagenes/omgtu-sube-al-segundo-puesto-en-la-cupula-de-los-heroes-de-dota-2.webp",
   "https://gamewith.jp/pokemon-champions/554986": "https://img.gamewith.jp/article/thumbnail/rectangle_l/554986.png?date=1775803395",
   "https://gamewith.jp/pokemon-champions/559841": "https://img.gamewith.jp/article/thumbnail/rectangle_l/559841.png?date=1784519404",
-  "https://geektyrant.com/news/kevin-feige-confirms-battleworld-for-avengers-secret-wars-and-tells-fans-where-to-find-spoilers": "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6b06eea4f5172560ea312ac7/1795707054117/Kevin+Feige+Confirms+Battleworld+for+AVENGERS-+SECRET+WARS+and+Tells+Fans+Where+to+Find+Spoilers.jpg?format=1500w",
   "https://gnn.gamer.com.tw/detail.php?sn=315488": "https://p2.bahamut.com.tw/B/2KU/22/1704db57c3c7041543681553ed217qq5.JPG",
   "https://ktar.com/arizona-water-news/upper-lake-mary-rises": "https://ktar.com/wp-content/uploads/2026/11/Upper-Lake-Mary-rises-from-16-to-82-full-after-Halloween-rain.jpg",
   "https://lee.hpplus.jp/column/3457347/?utm_source=news.yahoo.co.jp&utm_medium=referral&utm_campaign=lee_ynews.261124.4": null,
@@ -67,6 +66,7 @@
   "https://www.dexerto.com/fifa/fifa-19-halloween-cards-predictions-fut-ultimate-scream-team-193106/": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/193104/FIFA-19-Halloween-Cards-Predictions-FUT-19-Ultimate-Scream-Team.jpg",
   "https://www.epochtimes.com/b5/26/11/20/n14892147.htm": "https://i.epochtimes.com/assets/uploads/2026/11/id14892156-S__1377828886_0-1200x800.jpg",
   "https://www.fashion-press.net/news/153772": "https://www.fashion-press.net/img/news/153772/top.jpg?1795500792",
+  "https://www.flickeringmyth.com/magneto-challenges-doctor-doom-in-new-avengers-doomsday-promo/": "https://www.bing.com/th?id=ONUT.fkbfWst-bQxv54_XSvK1xw&pid=News&w=1200",
   "https://www.geeky-gadgets.com/galaxy-s27-19/": "https://www.bing.com/th?id=ONUT.b9ZyMAcn2gUy1ktY8P8ZrQ&pid=News&w=1200",
   "https://www.independent.co.uk/deals/travel/things-to-do-october-half-term-halloween-b3047961.html": "https://static.independent.co.uk/2026/09/14/12/29/October-Half-Term-Days-Out-2026.png?trim=0,0,0,0&width=1200&height=800&crop=1200:800",
   "https://www.juksy.com/article/155694": "https://assets.juksy.com/files/articles/155694/6b06976792acd.png",
@@ -1348,27 +1348,6 @@
    "because": "漫威电影",
    "date": "2026-11-26",
    "hits": [],
-   "image": "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6b06eea4f5172560ea312ac7/1795707054117/Kevin+Feige+Confirms+Battleworld+for+AVENGERS-+SECRET+WARS+and+Tells+Fans+Where+to+Find+Spoilers.jpg?format=1500w",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "GeekTyrant",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Kevin Feige Confirms Battleworld for AVENGERS: SECRET WARS and Tells Fans Where to Find Spoilers",
-   "url": "https://geektyrant.com/news/kevin-feige-confirms-battleworld-for-avengers-secret-wars-and-tells-fans-where-to-find-spoilers",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 4,
-   "because": "漫威电影",
-   "date": "2026-11-26",
-   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.cFtPS1qYsCZmghAxvkQ1HQ&pid=News&w=1200",
    "kind": "board",
    "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
@@ -1405,6 +1384,27 @@
    "url": "https://www.sina.cn/news/detail/5369568873943605.html",
    "words": [],
    "work": "A2O LITE"
+  },
+  {
+   "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-11-26",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.fkbfWst-bQxv54_XSvK1xw&pid=News&w=1200",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "Flickering Myth",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Magneto challenges Doctor Doom in new Avengers: Doomsday promo",
+   "url": "https://www.flickeringmyth.com/magneto-challenges-doctor-doom-in-new-avengers-doomsday-promo/",
+   "words": [],
+   "work": "漫威电影"
   },
   {
    "batch": 5,
@@ -2108,11 +2108,11 @@
    9
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
@@ -2120,11 +2120,11 @@
    8
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
