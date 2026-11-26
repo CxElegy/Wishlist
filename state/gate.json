@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-26T14:21:27+00:00",
+ "changed": true,
+ "checked": "2026-11-26T15:31:56+00:00",
  "fired": {
   "at": "2026-11-26T14:21:27+00:00",
   "results": {
@@ -82,9 +82,11 @@
     "sig": "7c462fcefa46"
    },
    "items": [
-    "A2O LITE",
-    "MMORPG 新作",
-    "dota2",
+    "Astrae Oratio",
+    "FROM",
+    "ILLIT",
+    "The Mandalorian",
+    "Vaundy",
     "gelato pique",
     "lib:Ado",
     "lib:BTS",
@@ -94,25 +96,27 @@
     "lib:モンスターハンターワイルズ",
     "lib:宮崎駿",
     "lib:星野源",
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "星巴克马克杯",
     "滑雪",
     "猫用品"
    ],
-   "last_batch": "2026-11-26T11:32:33+00:00",
+   "last_batch": "2026-11-26T15:15:10+00:00",
    "last_error": {
     "at": "2026-11-26T06:40:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 618,
+   "prog": 635,
    "prog_day": "2026-11-26",
    "ripe": [
-    "gelato pique",
-    "猫用品"
+    "滑雪"
    ],
-   "sig": "7c462fcefa46",
+   "sig": "6a42e479791d",
    "token_cap": 1000000,
-   "tokens_today": 617099,
-   "why": "整理待ちの記事 104 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 688846,
+   "why": "整理待ちの記事 109 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -309,12 +313,12 @@
    "runs": 13
   },
   "2026-11-26": {
-   "batches": 32,
-   "cr": 13864085,
-   "cw": 563303,
-   "in": 363,
-   "out": 53433,
-   "runs": 11
+   "batches": 42,
+   "cr": 16319621,
+   "cw": 626530,
+   "in": 424,
+   "out": 61892,
+   "runs": 12
   }
  }
 }
