@@ -1,6 +1,6 @@
 {
  "admin": "31fbd23e2150",
- "admin-ai": "4b535327e7a3",
+ "admin-ai": "c6840f22a78f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "9fb8317f"
+   "71ab443b"
   ]
  },
  "admin-boards": "51fed2a97583",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "ff55f1bcae00",
+ "admin-emblem": "f47e5b17c12b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3ad1cd6b"
+   "2d9cfa2a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "f7f681ba1bf3",
+ "admin-now": "ec5ecbcbaf3f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2847897b"
+   "e9ad19d0"
   ]
  },
- "admin-system": "137b2103c13b",
+ "admin-system": "9569e4cf18c8",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "64344970"
+   "c970c51a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "491fd0fb"
+   "923e7c50"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "04f7dcb9"
   ]
  },
- "index": "12daa57ce50a",
+ "index": "29135be48f1b",
  "index_marks": {
   "front": [
    "トップ",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "847c7fb2"
+   "0fe41471"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "558fd677"
+   "a2a7da45"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "120fe854"
+   "f43a07a0"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "2748e0de"
   ]
  },
- "updated": "11.27 06:34",
+ "updated": "11.27 06:39",
  "wishlist": "1dd4d0c77972"
 }
