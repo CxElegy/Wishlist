@@ -1,14 +1,14 @@
 {
- "admin": "ffcfd28ba630",
- "admin-ai": "cdf8cd8d1cb7",
+ "admin": "9300c694b3d4",
+ "admin-ai": "9abe7ee10475",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9ca23f0c"
+   "7eab900b"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0f63dd3f"
+   "0deb1ace"
   ]
  },
  "admin-boards": "a40b0ba2c3d9",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "09545a93d7a0",
+ "admin-emblem": "31bd79086ff3",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "857d87bd"
+   "67faa3d8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "ddbbb9f13604",
+ "admin-now": "d31ad5af235d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "75f5bdcc"
+   "ad100fbe"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "86645487"
+   "9e1529c2"
   ]
  },
- "admin-system": "471d3a850963",
+ "admin-system": "7d0a511fcbe2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "43621ef3"
+   "5f912b51"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d3d20dfb"
+   "b1756759"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "3c318643"
   ]
  },
- "index": "9bef693529d1",
+ "index": "6fa70f0d3d9a",
  "index_marks": {
   "front": [
    "トップ",
-   "de2fbc78"
+   "06de19bb"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "0e850164"
+   "00c6f1ef"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "bb8cee0f"
+   "1ab2ff14"
   ],
   "w-b867582f": [
    "あつ森",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "0ed0da90"
+   "b6a0dc19"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "c9528ac2"
   ]
  },
- "updated": "11.26 09:47",
+ "updated": "11.26 10:00",
  "wishlist": "3e9f37f6223d"
 }

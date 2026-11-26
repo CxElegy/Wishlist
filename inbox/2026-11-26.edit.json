@@ -1,680 +1,606 @@
 {
-  "漫威电影": [
-    {
-      "headline": "Avengers: Doomsday Final Trailer Becomes Second Most-Viewed Trailer Of All Time With 563M Views in 24 Hours",
-      "highlight": "563M Views",
-      "blurb": "The final Avengers: Doomsday trailer drew 563M views in its first 24 hours, the second-most-viewed trailer ever.",
-      "weight": "lead",
-      "refs": [
-        14,
-        60,
-        89
-      ],
-      "image": "https://www.bing.com/th?id=ONUT.rsrxlT6LA_Pywv7IT7a5EQ&pid=News&w=700"
-    },
-    {
-      "headline": "\"You Shall All Kneel Before Doom\" - New AVENGERS: DOOMSDAY International Trailer Goes Hard with New Footage",
-      "highlight": "International Trailer",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        20
-      ]
-    },
-    {
-      "headline": "‘Avengers: Doomsday’ $270M+ Opening Is Highest Pic Ever On NRG Tracking",
-      "highlight": "$270M+",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        19,
-        40,
-        91,
-        73,
-        58,
-        67,
-        78,
-        71
-      ]
-    },
-    {
-      "headline": "Patrick Stewart’s Final Day on ‘Avengers: Doomsday’ Was More Emotional Than Fans Knew, and Marvel Is Planning a Tribute",
-      "highlight": "Marvel Is Planning a Tribute",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        24,
-        21,
-        31,
-        23,
-        29,
-        30,
-        17,
-        1,
-        25,
-        75,
-        72,
-        63,
-        92
-      ]
-    },
-    {
-      "headline": "Kevin Feige Calls Battleworld in Secret Wars “Imagination Gone Wild”",
-      "highlight": "Battleworld",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        9,
-        12,
-        27,
-        36
-      ]
-    }
-  ],
-  "GTA 6": [
-    {
-      "headline": "GTA VI首發3天銷量達4,550萬套",
-      "highlight": "4,550萬套",
-      "blurb": "GTA VI 発売から3日間で4,550万本を販売したと報じられた。",
-      "weight": "lead",
-      "refs": [
-        17,
-        15
-      ]
-    },
-    {
-      "headline": "The Big GTA 6 Console Comparison: PS5 vs PS5 Pro, Xbox Series X and Series S",
-      "highlight": "Console Comparison",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        23,
-        16,
-        60,
-        58
-      ]
-    },
-    {
-      "headline": "Desperate Gamers Are Trying Bring GTA 6 To PCs And Break Free Of Its 30 Fps Cap",
-      "highlight": "30 Fps Cap",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        28,
-        13,
-        14,
-        33,
-        53
-      ]
-    },
-    {
-      "headline": "‘Grand Theft Auto VI’ Player Discovers Portal Back to 2002 Game ‘GTA Vice City’",
-      "highlight": "Portal Back to 2002",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        31
-      ]
-    },
-    {
-      "headline": "Take-Two Hits GTA 6 PC Port Leonida With DMCA, Taking Down 3,007 GitHub Repos",
-      "highlight": "3,007 GitHub Repos",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        44,
-        47,
-        59
-      ]
-    }
-  ],
-  "三星手机": [
-    {
-      "headline": "Case maker reveals camera layout of Galaxy S27, S27+, S27 Pro, and S27 Ultra",
-      "highlight": "camera layout",
-      "blurb": "Case maker dummy units show the camera layouts of the Galaxy S27, S27+, S27 Pro and S27 Ultra.",
-      "weight": "lead",
-      "refs": [
-        3,
-        2,
-        11
-      ],
-      "image": "https://www.mymobileindia.com/wp-content/uploads/2026/11/samsung-serice.webp"
-    },
-    {
-      "headline": "Galaxy S27 Ultra Release Date: Samsung To Swap Camera Hardware For AI",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "Samsung Galaxy S27 Ultra Rumored to Feature UFS 5.0 and LPDDR6",
-      "highlight": "UFS 5.0 and LPDDR6",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        5,
-        9
-      ]
-    },
-    {
-      "headline": "Will Samsung Galaxy S27 become more expensive in India?",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        7
-      ]
-    },
-    {
-      "headline": "Galaxy S27 Ultra Charging Speed Revealed, and It’s No Surprise",
-      "highlight": "Charging Speed",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        8
-      ]
-    },
-    {
-      "headline": "New report reveals all the reasons why the Galaxy S27 Ultra can't use the Exynos 2700 chipset",
-      "highlight": "Exynos 2700",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        12
-      ]
-    },
-    {
-      "headline": "Samsung Galaxy S27 Ultra leak: no laser autofocus, no 3x telephoto",
-      "highlight": "no 3x telephoto",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        14,
-        13
-      ]
-    }
-  ],
-  "ILLIT": [
-    {
-      "headline": "ILLIT「2026 MAMA」で3冠達成「私たちの楽曲とパフォーマンスを愛してくださった皆さまに感謝」",
-      "highlight": "3冠達成",
-      "blurb": "「2026 MAMA」で3冠を達成したILLIT。受賞後に感謝のコメントを寄せた。",
-      "weight": "lead",
-      "refs": [
-        1,
-        5
-      ],
-      "image": "https://thetv.jp/i/nw/1460315/19283144.jpg?w=1284"
-    },
-    {
-      "headline": "ILLIT、青龍映画賞をまた沸かす…チョン・ホヨンらを「逮捕」",
-      "highlight": "青龍映画賞",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        14,
-        10,
-        13,
-        11,
-        12
-      ]
-    },
-    {
-      "headline": "「5人→4人→2人」紅白出場ILLIT 道枝駿佑がプレゼンターを務めた『MAMA』で見せた圧巻ステージの裏でファンから相次ぐ“懸念”",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "発熱・負傷で心配の声も…ILLITが大阪「2026 MAMA AWARDS」に登場、モカ不在も4人で笑顔のポーズ",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "ILLITがベストアーティスト・紅白で歌うのは何時から？年末の音楽番組2026",
-      "highlight": "紅白",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    }
-  ],
-  "チェーンソーマン": [
-    {
-      "headline": "GSC「ねんどろいどFUNS 2026 December」発表ラインナップ公開！『チェンソーマン』『呪術廻戦』などの新作が12月3日に解禁！",
-      "highlight": "12月3日に解禁",
-      "blurb": "GSCが「ねんどろいどFUNS 2026 December」のラインナップを公開。『チェンソーマン』などの新作が12月3日に解禁される。",
-      "weight": "lead",
-      "refs": [
-        2,
-        1,
-        5
-      ],
-      "event": {
-        "date": "2026-12-03",
-        "label": "解禁日"
-      }
-    },
-    {
-      "headline": "『チェンソーマン 刺客篇』制作決定！興収96億円突破の『レゼ篇』に続く新作",
-      "highlight": "刺客篇』制作決定",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6
-      ]
-    },
-    {
-      "headline": "AVIOT鏈鋸人聯名耳機開預購！13種語音要價22,880日圓！",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ],
-      "price": {
-        "now": "22,880日圓"
-      }
-    },
-    {
-      "headline": "劇場版「チェンソーマン」が世界で200億円超え。単独出資の「賭け」に勝った意義。",
-      "highlight": "200億円超え",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "チェンソーマンが東急グループとコラボ！デンジたちとホテルに閉じ込められる…!?",
-      "highlight": "東急グループ",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        8
-      ]
-    }
-  ],
-  "_covered": {
-    "漫威电影": 95,
-    "GTA 6": 60,
-    "三星手机": 15,
-    "ILLIT": 14,
-    "チェーンソーマン": 8,
-    "周杰伦": 10,
-    "dota2": 8,
-    "Astrae Oratio": 3,
-    "The Mandalorian": 3,
-    "星巴克马克杯": 3,
-    "gelato pique": 2,
-    "ぐでたま": 7,
-    "猫用品": 1,
-    "绝区零": 1,
-    "Vaundy": 2,
-    "滑雪": 2,
-    "BLEACH Mirrors High": 10,
-    "MMORPG 新作": 2,
-    "A2O LITE": 1,
-    "哈利波特剧集": 5
+ "漫威电影": [
+  {
+   "headline": "Avengers: Doomsday Final Trailer Becomes Second Most-Viewed Trailer Of All Time With 563M Views in 24 Hours",
+   "highlight": "563M Views",
+   "blurb": "The final Avengers: Doomsday trailer drew 563M views in its first 24 hours, the second-most-viewed trailer ever.",
+   "weight": "lead",
+   "refs": [
+    14,
+    60,
+    89
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.rsrxlT6LA_Pywv7IT7a5EQ&pid=News&w=700"
   },
-  "周杰伦": [
-    {
-      "headline": "周杰伦悉尼街头回味演唱会余温 原来在海外的周杰伦演唱会是会走下舞台的",
-      "highlight": "",
-      "blurb": "周杰伦在悉尼街头回味演唱会余温，海外场的演唱会他会走下舞台与观众互动。",
-      "weight": "lead",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "周杰倫新節目大咖嘉賓曝光！轉發預告101標「中國台北」引熱議",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1,
-        9
-      ]
-    },
-    {
-      "headline": "周杰伦听妈妈的话续集AI戒指用科技守护长辈",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    }
-  ],
-  "dota2": [
-    {
-      "headline": "BetBoom Team Dota 2: Roster and Results 2026",
-      "highlight": "",
-      "blurb": "BetBoom Team の 2026 年のロースターと戦績まとめ。",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "The best Dota 2 launch options to optimize game performance",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "Dota 2 will return to the Esports World Cup in 2027",
-      "highlight": "Esports World Cup in 2027",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        8
-      ]
-    }
-  ],
-  "Astrae Oratio": [
-    {
-      "headline": "엔씨, 신작 마법 RPG ‘아스트라에 오라티오’ AGF 2026 특설 페이지 공개",
-      "highlight": "AGF 2026 특설 페이지 공개",
-      "blurb": "엔씨가 AGF 2026 특설 페이지를 열고 티저 아트북을 20명에게 추첨 증정한다.",
-      "weight": "lead",
-      "refs": [
-        1,
-        3,
-        2
-      ]
-    }
-  ],
-  "The Mandalorian": [
-    {
-      "headline": "The Mandalorian Officially Returns With a New Release This Week",
-      "highlight": "Officially Returns",
-      "blurb": "",
-      "weight": "lead",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "Mandalore the Ultimate made Mandalorians a multi-species culture",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "Film theory: The problem with Baby Yoda (Star Wars: The Mandalorian)",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    }
-  ],
-  "星巴克马克杯": [
-    {
-      "headline": "スタバのホリデー新作グッズ全18品！ ネイビー×チェックの大人っぽいタンブラー、可愛いベア型のマグカップやポーチ",
-      "highlight": "全18品",
-      "blurb": "スターバックスのホリデー新作グッズが全18品。ベア型のマグカップやポーチなどが並ぶ。",
-      "weight": "lead",
-      "refs": [
-        3,
-        2
-      ]
-    },
-    {
-      "headline": "スターバックスから「星と雲」の限定コラボグッズが登場、かわいすぎるタンブラーやマグ全6種",
-      "highlight": "全6種",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "【スタバ】クマの顔になる限定マグがかわいい！3,050円のホリデー2026、宮崎でも買える？",
-      "highlight": "3,050円",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ],
-      "price": {
-        "now": "3,050円"
-      }
-    }
-  ],
-  "gelato pique": [
-    {
-      "headline": "gelato pique cafeのホリデーシーズン限定ベアクレープ♡クリスマスを彩る2種類が登場",
-      "highlight": "ベアクレープ",
-      "blurb": "gelato pique cafeがホリデーシーズン限定のベアクレープ2種類を発売する。",
-      "weight": "lead",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "Quick Reference: Key points for Lucky Bags and Black Friday",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    }
-  ],
-  "ぐでたま": [
-    {
-      "headline": "KFC x Sanrio Gudetama suitcase unboxing",
-      "highlight": "",
-      "blurb": "KFC x Sanrio のぐでたまスーツケースの開封動画。デザインと細部、コレクション性を紹介。",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "テーマはトロピカルリゾート！なんばパークス「ぐでたま」コラボカフェ",
-      "highlight": "なんばパークス",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "ぐでたまふぇすてぃばる！ゆる～い“卵キャラ”がピューロランドをジャック",
-      "highlight": "ピューロランド",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "ブルボンから「ぐでたま」をデザインした「ぐでたまのおもち」新発売",
-      "highlight": "ぐでたまのおもち",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "ぐでたまが博多弁!?天神にぐでたまカフェがオープン",
-      "highlight": "天神",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6
-      ]
-    }
-  ],
-  "猫用品": [
-    {
-      "headline": "キッチンに『ダイソーホルダー』を置くだけ！ 意外と便利な100均『猫グッズ』【3選】",
-      "highlight": "100均『猫グッズ』",
-      "blurb": "",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    }
-  ],
-  "绝区零": [],
-  "Vaundy": [
-    {
-      "headline": "VaundyファンクラブがSWEET LOVE SHOWER舞台裏映像を限定公開",
-      "highlight": "舞台裏映像を限定公開",
-      "blurb": "VaundyファンクラブがSWEET LOVE SHOWERの舞台裏映像を会員限定で公開した。",
-      "weight": "lead",
-      "refs": [
-        1
-      ],
-      "image": "https://pbs.twimg.com/media/HX-FDyLaMAE6k9t?format=jpg&name=medium"
-    },
-    {
-      "headline": "Nulbarich・JQ、ヨルシカn-buna＆Vaundyとのコラボ曲でJOYSOUNDキャンペーン 直筆サイン入りグッズ当たる",
-      "highlight": "JOYSOUNDキャンペーン",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    }
-  ],
-  "滑雪": [
-    {
-      "headline": "安比高原スキー場でオープンを前に安全祈願祭",
-      "highlight": "オープンを前に",
-      "blurb": "岩手・八幡平市の安比高原スキー場で、シーズンオープンを前に安全祈願祭が行われた。",
-      "weight": "lead",
-      "refs": [
-        1
-      ],
-      "image": "https://ssl-cache.stream.ne.jp/www50/eqb972zbds/jmc_pub/thumbnail/00130/f84e05a4a86e4a90a49cde2ad0b79836_17_15.jpg"
-    },
-    {
-      "headline": "リズムジャパン、白馬の「リズムサミット店」を2店舗体制に拡大",
-      "highlight": "2店舗体制に拡大",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    }
-  ],
-  "BLEACH Mirrors High": [
-    {
-      "headline": "【ミラハイ】最強編成とおすすめパーティ",
-      "highlight": "最強編成",
-      "blurb": "BLEACH Mirrors High の最強編成とおすすめパーティをまとめた攻略記事。",
-      "weight": "lead",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "【ミラハイ】データ引き継ぎのやり方と設定方法",
-      "highlight": "データ引き継ぎ",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "【ミラハイ】星2日番谷冬獅郎の評価と性能",
-      "highlight": "日番谷冬獅郎",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6
-      ]
-    }
-  ],
-  "MMORPG 新作": [
-    {
-      "headline": "넥슨, 대작 '템빨'로 3년 만에 하드코어 MMORPG 시장 출격",
-      "highlight": "3년 만에",
-      "blurb": "넥슨이 신작 '템빨'로 3년 만에 하드코어 MMORPG 시장에 출격한다.",
-      "weight": "lead",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "Perfect Ten: MMOs that thrive in 2-D only",
-      "highlight": "2-D",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    }
-  ],
-  "A2O LITE": [],
-  "哈利波特剧集": [
-    {
-      "headline": "HBO’s Harry Potter Set Photos Bring Back Two Magical Fan-Favorite Locations",
-      "highlight": "Set Photos",
-      "blurb": "Latest set photos from HBO's Harry Potter series offer a first look at major wizarding world locations.",
-      "weight": "lead",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "Harry Potter Series Reveals New Costumes and Film Connections",
-      "highlight": "New Costumes",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1,
-        4
-      ]
-    },
-    {
-      "headline": "Harry Potter TV Show Fans Get First Glimpse of Mysterious Gryffindor Figure",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "乐高公布4款基于HBO版《哈利·波特》剧集的全新套装",
-      "highlight": "4款",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        5
-      ],
-      "event": {
-        "date": "2026-12-25",
-        "label": "放送開始"
-      }
-    }
-  ]
+  {
+   "headline": "\"You Shall All Kneel Before Doom\" - New AVENGERS: DOOMSDAY International Trailer Goes Hard with New Footage",
+   "highlight": "International Trailer",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20
+   ]
+  },
+  {
+   "headline": "‘Avengers: Doomsday’ $270M+ Opening Is Highest Pic Ever On NRG Tracking",
+   "highlight": "$270M+",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19,
+    40,
+    91,
+    73,
+    58,
+    67,
+    78,
+    71
+   ]
+  },
+  {
+   "headline": "Patrick Stewart’s Final Day on ‘Avengers: Doomsday’ Was More Emotional Than Fans Knew, and Marvel Is Planning a Tribute",
+   "highlight": "Marvel Is Planning a Tribute",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    24,
+    21,
+    31,
+    23,
+    29,
+    30,
+    17,
+    1,
+    25,
+    75,
+    72,
+    63,
+    92
+   ]
+  },
+  {
+   "headline": "Kevin Feige Calls Battleworld in Secret Wars “Imagination Gone Wild”",
+   "highlight": "Battleworld",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    12,
+    27,
+    36
+   ]
+  }
+ ],
+ "GTA 6": [
+  {
+   "headline": "GTA VI首發3天銷量達4,550萬套",
+   "highlight": "4,550萬套",
+   "blurb": "GTA VI 発売から3日間で4,550万本を販売したと報じられた。",
+   "weight": "lead",
+   "refs": [
+    17,
+    15
+   ]
+  },
+  {
+   "headline": "The Big GTA 6 Console Comparison: PS5 vs PS5 Pro, Xbox Series X and Series S",
+   "highlight": "Console Comparison",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23,
+    16
+   ]
+  },
+  {
+   "headline": "Desperate Gamers Are Trying Bring GTA 6 To PCs And Break Free Of Its 30 Fps Cap",
+   "highlight": "30 Fps Cap",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    28,
+    13,
+    14,
+    33
+   ]
+  },
+  {
+   "headline": "‘Grand Theft Auto VI’ Player Discovers Portal Back to 2002 Game ‘GTA Vice City’",
+   "highlight": "Portal Back to 2002",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    31
+   ]
+  },
+  {
+   "headline": "Take-Two Hits GTA 6 PC Port Leonida With DMCA, Taking Down 3,007 GitHub Repos",
+   "highlight": "3,007 GitHub Repos",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    44
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Case maker reveals camera layout of Galaxy S27, S27+, S27 Pro, and S27 Ultra",
+   "highlight": "camera layout",
+   "blurb": "Case maker dummy units show the camera layouts of the Galaxy S27, S27+, S27 Pro and S27 Ultra.",
+   "weight": "lead",
+   "refs": [
+    3,
+    2
+   ],
+   "image": "https://www.mymobileindia.com/wp-content/uploads/2026/11/samsung-serice.webp"
+  },
+  {
+   "headline": "Galaxy S27 Ultra Release Date: Samsung To Swap Camera Hardware For AI",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra Rumored to Feature UFS 5.0 and LPDDR6",
+   "highlight": "UFS 5.0 and LPDDR6",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    9
+   ]
+  },
+  {
+   "headline": "Will Samsung Galaxy S27 become more expensive in India?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra Charging Speed Revealed, and It’s No Surprise",
+   "highlight": "Charging Speed",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT「2026 MAMA」で3冠達成「私たちの楽曲とパフォーマンスを愛してくださった皆さまに感謝」",
+   "highlight": "3冠達成",
+   "blurb": "「2026 MAMA」で3冠を達成したILLIT。受賞後に感謝のコメントを寄せた。",
+   "weight": "lead",
+   "refs": [
+    1,
+    5
+   ],
+   "image": "https://thetv.jp/i/nw/1460315/19283144.jpg?w=1284"
+  },
+  {
+   "headline": "「5人→4人→2人」紅白出場ILLIT 道枝駿佑がプレゼンターを務めた『MAMA』で見せた圧巻ステージの裏でファンから相次ぐ“懸念”",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "発熱・負傷で心配の声も…ILLITが大阪「2026 MAMA AWARDS」に登場、モカ不在も4人で笑顔のポーズ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "ILLITがベストアーティスト・紅白で歌うのは何時から？年末の音楽番組2026",
+   "highlight": "紅白",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "리센느, 아이돌차트 11월 3주차 아차랭킹 1위..2위 A2O LITE·3위 아일릿",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "GSC「ねんどろいどFUNS 2026 December」発表ラインナップ公開！『チェンソーマン』『呪術廻戦』などの新作が12月3日に解禁！",
+   "highlight": "12月3日に解禁",
+   "blurb": "GSCが「ねんどろいどFUNS 2026 December」のラインナップを公開。『チェンソーマン』などの新作が12月3日に解禁される。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1,
+    5
+   ],
+   "event": {
+    "date": "2026-12-03",
+    "label": "解禁日"
+   }
+  },
+  {
+   "headline": "『チェンソーマン 刺客篇』制作決定！興収96億円突破の『レゼ篇』に続く新作",
+   "highlight": "刺客篇』制作決定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "AVIOT鏈鋸人聯名耳機開預購！13種語音要價22,880日圓！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ],
+   "price": {
+    "now": "22,880日圓"
+   }
+  },
+  {
+   "headline": "劇場版「チェンソーマン」が世界で200億円超え。単独出資の「賭け」に勝った意義。",
+   "highlight": "200億円超え",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "チェンソーマンが東急グループとコラボ！デンジたちとホテルに閉じ込められる…!?",
+   "highlight": "東急グループ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  }
+ ],
+ "_covered": {
+  "漫威电影": 95,
+  "GTA 6": 79,
+  "三星手机": 10,
+  "ILLIT": 9,
+  "チェーンソーマン": 8,
+  "周杰伦": 5,
+  "dota2": 8,
+  "Astrae Oratio": 3,
+  "The Mandalorian": 3,
+  "星巴克马克杯": 3,
+  "gelato pique": 2,
+  "ぐでたま": 7,
+  "猫用品": 1,
+  "绝区零": 1,
+  "Vaundy": 2,
+  "滑雪": 2,
+  "BLEACH Mirrors High": 10,
+  "MMORPG 新作": 2,
+  "A2O LITE": 1
+ },
+ "周杰伦": [
+  {
+   "headline": "周杰伦悉尼街头回味演唱会余温 原来在海外的周杰伦演唱会是会走下舞台的",
+   "highlight": "",
+   "blurb": "周杰伦在悉尼街头回味演唱会余温，海外场的演唱会他会走下舞台与观众互动。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "周杰倫新節目大咖嘉賓曝光！轉發預告101標「中國台北」引熱議",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "周杰伦听妈妈的话续集AI戒指用科技守护长辈",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "BetBoom Team Dota 2: Roster and Results 2026",
+   "highlight": "",
+   "blurb": "BetBoom Team の 2026 年のロースターと戦績まとめ。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "The best Dota 2 launch options to optimize game performance",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Dota 2 will return to the Esports World Cup in 2027",
+   "highlight": "Esports World Cup in 2027",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "엔씨, 신작 마법 RPG ‘아스트라에 오라티오’ AGF 2026 특설 페이지 공개",
+   "highlight": "AGF 2026 특설 페이지 공개",
+   "blurb": "엔씨가 AGF 2026 특설 페이지를 열고 티저 아트북을 20명에게 추첨 증정한다.",
+   "weight": "lead",
+   "refs": [
+    1,
+    3,
+    2
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "The Mandalorian Officially Returns With a New Release This Week",
+   "highlight": "Officially Returns",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Mandalore the Ultimate made Mandalorians a multi-species culture",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Film theory: The problem with Baby Yoda (Star Wars: The Mandalorian)",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "スタバのホリデー新作グッズ全18品！ ネイビー×チェックの大人っぽいタンブラー、可愛いベア型のマグカップやポーチ",
+   "highlight": "全18品",
+   "blurb": "スターバックスのホリデー新作グッズが全18品。ベア型のマグカップやポーチなどが並ぶ。",
+   "weight": "lead",
+   "refs": [
+    3,
+    2
+   ]
+  },
+  {
+   "headline": "スターバックスから「星と雲」の限定コラボグッズが登場、かわいすぎるタンブラーやマグ全6種",
+   "highlight": "全6種",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "【スタバ】クマの顔になる限定マグがかわいい！3,050円のホリデー2026、宮崎でも買える？",
+   "highlight": "3,050円",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ],
+   "price": {
+    "now": "3,050円"
+   }
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "gelato pique cafeのホリデーシーズン限定ベアクレープ♡クリスマスを彩る2種類が登場",
+   "highlight": "ベアクレープ",
+   "blurb": "gelato pique cafeがホリデーシーズン限定のベアクレープ2種類を発売する。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Quick Reference: Key points for Lucky Bags and Black Friday",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "KFC x Sanrio Gudetama suitcase unboxing",
+   "highlight": "",
+   "blurb": "KFC x Sanrio のぐでたまスーツケースの開封動画。デザインと細部、コレクション性を紹介。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "テーマはトロピカルリゾート！なんばパークス「ぐでたま」コラボカフェ",
+   "highlight": "なんばパークス",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "ぐでたまふぇすてぃばる！ゆる～い“卵キャラ”がピューロランドをジャック",
+   "highlight": "ピューロランド",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ブルボンから「ぐでたま」をデザインした「ぐでたまのおもち」新発売",
+   "highlight": "ぐでたまのおもち",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "ぐでたまが博多弁!?天神にぐでたまカフェがオープン",
+   "highlight": "天神",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "キッチンに『ダイソーホルダー』を置くだけ！ 意外と便利な100均『猫グッズ』【3選】",
+   "highlight": "100均『猫グッズ』",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "绝区零": [],
+ "Vaundy": [
+  {
+   "headline": "VaundyファンクラブがSWEET LOVE SHOWER舞台裏映像を限定公開",
+   "highlight": "舞台裏映像を限定公開",
+   "blurb": "VaundyファンクラブがSWEET LOVE SHOWERの舞台裏映像を会員限定で公開した。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://pbs.twimg.com/media/HX-FDyLaMAE6k9t?format=jpg&name=medium"
+  },
+  {
+   "headline": "Nulbarich・JQ、ヨルシカn-buna＆Vaundyとのコラボ曲でJOYSOUNDキャンペーン 直筆サイン入りグッズ当たる",
+   "highlight": "JOYSOUNDキャンペーン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "安比高原スキー場でオープンを前に安全祈願祭",
+   "highlight": "オープンを前に",
+   "blurb": "岩手・八幡平市の安比高原スキー場で、シーズンオープンを前に安全祈願祭が行われた。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://ssl-cache.stream.ne.jp/www50/eqb972zbds/jmc_pub/thumbnail/00130/f84e05a4a86e4a90a49cde2ad0b79836_17_15.jpg"
+  },
+  {
+   "headline": "リズムジャパン、白馬の「リズムサミット店」を2店舗体制に拡大",
+   "highlight": "2店舗体制に拡大",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "【ミラハイ】最強編成とおすすめパーティ",
+   "highlight": "最強編成",
+   "blurb": "BLEACH Mirrors High の最強編成とおすすめパーティをまとめた攻略記事。",
+   "weight": "lead",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "【ミラハイ】データ引き継ぎのやり方と設定方法",
+   "highlight": "データ引き継ぎ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "【ミラハイ】星2日番谷冬獅郎の評価と性能",
+   "highlight": "日番谷冬獅郎",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "넥슨, 대작 '템빨'로 3년 만에 하드코어 MMORPG 시장 출격",
+   "highlight": "3년 만에",
+   "blurb": "넥슨이 신작 '템빨'로 3년 만에 하드코어 MMORPG 시장에 출격한다.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Perfect Ten: MMOs that thrive in 2-D only",
+   "highlight": "2-D",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "A2O LITE": []
 }
