@@ -810,12 +810,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets-prd.ignimgs.com/2026/11/26/doom-1795687852612.png?width=1280&format=jpg&auto=webp&quality=80": {
-  "w": 1280,
-  "h": 717,
-  "target": 1280,
-  "v": 3
- },
  "https://assets.hldycdn.com/64b9e15a-1619-4f07-840d-c5c381ef6945.jpeg": {
   "w": 1920,
   "h": 1280,
@@ -2716,12 +2710,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.filmibeat.com/img/2026/11/avengersdoomsday-94901795689340.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://images.highwise.com/stories/408909-1795279037065.jpg": {
   "w": 1280,
   "h": 704,
@@ -3050,6 +3038,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2idg1g.img": {
+  "w": 1500,
+  "h": 1000,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2idwPa.img": {
@@ -3807,6 +3801,12 @@
   "w": 880,
   "h": 290,
   "target": 1280,
+  "v": 3
+ },
+ "https://maxblizz.com/wp-content/uploads/2026/11/Secret-Wars.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2024-04/240430-cat-toys-pet-week-kb-social-04c943.jpg": {
@@ -7442,12 +7442,6 @@
    0.703
   ],
   "p": null
- },
- "https://www.bing.com/th?id=ONUT.wz8uyZYwFJUK4jLk2iHxZA&pid=News&w=515": {
-  "w": 515,
-  "h": 628,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.xIVTwMTYf8aiPMNzVoJrGA&pid=News&w=480": {
   "w": 480,
