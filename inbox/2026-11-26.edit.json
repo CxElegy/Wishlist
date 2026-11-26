@@ -432,7 +432,7 @@
   "猫用品": 10,
   "绝区零": 9,
   "Vaundy": 3,
-  "滑雪": 15,
+  "滑雪": 17,
   "BLEACH Mirrors High": 11,
   "MMORPG 新作": 41,
   "A2O LITE": 14,
@@ -878,7 +878,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    17
    ]
   },
   {
@@ -924,7 +925,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    11
+    11,
+    16
    ]
   }
  ],
