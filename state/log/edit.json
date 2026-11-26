@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-24T19:45:53+00:00",
-"text": "2026-11-25 第 5 バッチを出刊：The Mandalorian（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 685・キャッシュ読み 7.9万・出力 645",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.68,
-"mem_total": 16868675584,
-"mem_free": 15764754432,
-"disk_used": 11195113472,
-"disk_free": 62617985024,
-"disk_total": 73813098496,
-"peak": 572112896
-},
-"batch": 5,
-"boards": [
-"The Mandalorian"
-],
-"stories": 2,
-"left": 0,
-"edited": 14,
-"run": 1795548197.5357118,
-"tok": {
-"in": 2,
-"cw": 683,
-"cr": 78777,
-"out": 645,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 80107,
-"secs": 1356,
-"run_tok": {
-"in": 35,
-"cw": 50368,
-"cr": 1217974,
-"out": 4916,
-"calls": 18,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-24T21:39:59+00:00",
 "text": "2026-11-25 第 1 バッチを出刊：哈利波特剧集（1 版面・4 本・残り 3 版面） · token 新規入力 5.1万・キャッシュ読み 95.9万・出力 4,005",
 "level": "ok",
@@ -2041,5 +2000,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 179103
+},
+{
+"at": "2026-11-26T07:26:03+00:00",
+"text": "2026-11-26 第 11 バッチを出刊：gelato pique（1 版面・3 本・残り 1 版面） · token 新規入力 948・キャッシュ読み 18.0万・出力 422",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.64,
+"mem_total": 16868675584,
+"mem_free": 15922348032,
+"disk_used": 11463639040,
+"disk_free": 62349459456,
+"disk_total": 73813098496,
+"peak": 395579392
+},
+"batch": 11,
+"boards": [
+"gelato pique"
+],
+"stories": 3,
+"left": 1,
+"edited": 20,
+"run": 1795674894.9359975,
+"tok": {
+"in": 4,
+"cw": 944,
+"cr": 179505,
+"out": 422,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 180875
 }
 ]
