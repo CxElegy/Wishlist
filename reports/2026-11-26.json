@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "ddccddb198e4",
+ "edit_sig": "58a6e5fda0d6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -705,22 +705,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 6,
-     "source": "いいものタウン",
-     "title": "「ジェラート ピケ カフェ」が季節限定フェア“APPLE＆MOCHA”を開催。りんごの甘味やコーヒーの風味を味わうスイーツが販売",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9rWW5IZktMd2tYakxsRElLTklGbFhDY3VmOC1pOTdOejlxYjRhbHhxVXB4TlMtdDY5cWN5eFBuUXRNUndMVUNWOXFuT1JoV29nYWEw?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 7,
-     "source": "Dream & Hunter",
-     "title": "GELATO PIQUE三麗鷗聯名第二彈正式販售啦！Hello Kitty、大耳狗喜拿、美樂蒂與酷洛米全要買，價格品項一次看- 文章",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9JQUtILWdIRlExaVRlbktCOTF2WHppUjlqbHZ2R1dNOUhoTURuRUtpLVVpN0YxbDJwNkRHR2VPdDYzNGlCcFFTbjFybFFPb0IzbHpZSHd5YjEzM3JFRGdiTlhIY1p4c01Qc0lNMjNsSWVBMjh5YXhEc2RFdzk?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -751,6 +735,26 @@
      "image": "https://news.walkerplus.com/article/1133751/11694997_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1133751/image11694989.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-26",
+     "headline": "「ジェラート ピケ カフェ」が季節限定フェア“APPLE＆MOCHA”を開催",
+     "highlight": "APPLE＆MOCHA",
+     "image": "https://iimono.town/wp-content/uploads/2026/11/main_R-5.jpg",
+     "image_via": "og:image",
+     "url": "https://iimono.town/topic/gourmet/190602/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-26",
+     "headline": "GELATO PIQUE三麗鷗聯名第二彈正式販售啦！Hello Kitty、大耳狗喜拿、美樂蒂與酷洛米全要買",
+     "highlight": "三麗鷗聯名第二彈",
+     "image": "https://cdn.bountyhunter.co/file-presign/f99ff99a-aab3-4997-9385-80ae7c6bf3e6.jpg",
+     "image_via": "og:image",
+     "url": "https://dream.bhuntr.com/article/gelato-pique-sanrio-collaboration-vol-2",
      "weight": "normal"
     }
    ],

@@ -415,7 +415,7 @@
   "Astrae Oratio": 5,
   "The Mandalorian": 5,
   "星巴克马克杯": 4,
-  "gelato pique": 5,
+  "gelato pique": 7,
   "ぐでたま": 7,
   "猫用品": 8,
   "绝区零": 6,
@@ -614,6 +614,24 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "「ジェラート ピケ カフェ」が季節限定フェア“APPLE＆MOCHA”を開催",
+   "highlight": "APPLE＆MOCHA",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "GELATO PIQUE三麗鷗聯名第二彈正式販售啦！Hello Kitty、大耳狗喜拿、美樂蒂與酷洛米全要買",
+   "highlight": "三麗鷗聯名第二彈",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
