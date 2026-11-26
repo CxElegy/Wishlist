@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "ec68ec1d485f",
+ "edit_sig": "68493bbfec2b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -153,29 +153,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 4,
-     "source": "게임메카",
-     "title": "Gravity dark fantasy MMO 'Requiem M' European pre-registration",
-     "url": "https://www.gamemeca.com/en/view.php?gid=1784240"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 5,
-     "source": "디스이즈게임",
-     "title": "14억 뷰 '템빨' MMORPG로, PC·모바일 동시 출시",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE83cGxaWTN4ZEVaQnJ6QWhQT0Q2MWdlV2pRRjhZQkZDSVRsN2xuWG91czUzYjVROS1xNTh6R1duS1lmZ0RLSVg5NzBHcDQweU90a2M5VA?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 6,
-     "source": "DigitalToday",
-     "title": "Nexon、「テンパル：Overgeared」正式サービス開始 PC・モバイルで配信",
-     "url": "https://www.digitaltoday.co.kr/jp/view/130958/nexon-launches-item-collecting-overgeared-on-pc-and-mobile"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -197,6 +174,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.enduins.com/news/kakao-games-confirms-january-26-2027-launch-for-mmorpg-odin-q-valkyries-call",
      "weight": "hero"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-26",
+     "headline": "Nexon、「テンパル：Overgeared」正式サービス開始 PC・モバイルで配信",
+     "highlight": "正式サービス開始",
+     "image": "https://cdn.digitaltoday.co.kr/news/photo/202611/718255_665502_3947.jpg",
+     "image_via": "og:image",
+     "url": "https://www.digitaltoday.co.kr/jp/view/130958/nexon-launches-item-collecting-overgeared-on-pc-and-mobile",
+     "weight": "normal"
     }
    ],
    "subtitle": "近期上线 · 测试 · 新公布的网游",

@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-25T12:04:58+00:00",
-"text": "2026-11-25 第 5 バッチを出刊：Astrae Oratio（1 版面・3 本・残り 3 版面） · token 新規入力 1,459・キャッシュ読み 8.2万・出力 604",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.47,
-"mem_total": 16868675584,
-"mem_free": 15950012416,
-"disk_used": 10425958400,
-"disk_free": 63387140096,
-"disk_total": 73813098496,
-"peak": 408522752
-},
-"batch": 5,
-"boards": [
-"Astrae Oratio"
-],
-"stories": 3,
-"left": 3,
-"edited": 22,
-"run": 1795606555.2664928,
-"tok": {
-"in": 2,
-"cw": 1457,
-"cr": 81637,
-"out": 604,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 83700
-},
-{
 "at": "2026-11-25T12:09:47+00:00",
 "text": "2026-11-25 第 6 バッチを出刊：ILLIT（1 版面・7 本・残り 2 版面） · token 新規入力 1,732・キャッシュ読み 8.3万・出力 694",
 "level": "ok",
@@ -2058,5 +2026,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 83041
+},
+{
+"at": "2026-11-26T20:58:41+00:00",
+"text": "2026-11-27 第 7 バッチを出刊：MMORPG 新作（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 1,181・キャッシュ読み 8.2万・出力 531",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.46,
+"mem_total": 16868675584,
+"mem_free": 15955525632,
+"disk_used": 10435006464,
+"disk_free": 63378092032,
+"disk_total": 73813098496,
+"peak": 410955776
+},
+"batch": 7,
+"boards": [
+"MMORPG 新作"
+],
+"stories": 3,
+"left": 0,
+"edited": 14,
+"run": 1795725146.244598,
+"tok": {
+"in": 2,
+"cw": 1179,
+"cr": 82393,
+"out": 531,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 84105,
+"secs": 1575,
+"run_tok": {
+"in": 27,
+"cw": 54425,
+"cr": 990595,
+"out": 5619,
+"calls": 14,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

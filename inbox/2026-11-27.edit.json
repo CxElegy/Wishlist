@@ -211,7 +211,7 @@
   "三星手机": 13,
   "周杰伦": 9,
   "Astrae Oratio": 3,
-  "MMORPG 新作": 3,
+  "MMORPG 新作": 6,
   "哈利波特剧集": 3,
   "ILLIT": 2,
   "The Mandalorian": 1,
@@ -228,7 +228,8 @@
    "blurb": "GravityがラグナロクIP基盤の新作ゲーム8種の計画を公開。正式ナンバリングやMMORPGなど多彩なジャンルを含む。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    4
    ],
    "image": "https://www.bing.com/th?id=ONUT.wMDJDLbYtJdMj5WoIR677w&pid=News&w=1200"
   },
@@ -241,6 +242,16 @@
     2
    ],
    "image": "https://www.enduins.com/wp-content/uploads/2026/11/i1795486631629415.jpeg"
+  },
+  {
+   "headline": "Nexon、「テンパル：Overgeared」正式サービス開始 PC・モバイルで配信",
+   "highlight": "正式サービス開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    5
+   ]
   }
  ],
  "哈利波特剧集": [
