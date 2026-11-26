@@ -352,8 +352,8 @@
   "チェーンソーマン": 11,
   "周杰伦": 15,
   "dota2": 8,
-  "Astrae Oratio": 3,
-  "The Mandalorian": 3,
+  "Astrae Oratio": 5,
+  "The Mandalorian": 5,
   "星巴克马克杯": 4,
   "gelato pique": 4,
   "ぐでたま": 7,
@@ -363,7 +363,7 @@
   "滑雪": 5,
   "BLEACH Mirrors High": 10,
   "MMORPG 新作": 18,
-  "A2O LITE": 1,
+  "A2O LITE": 3,
   "哈利波特剧集": 5
  },
  "周杰伦": [
@@ -436,7 +436,9 @@
    "refs": [
     1,
     3,
-    2
+    2,
+    5,
+    4
    ]
   }
  ],
@@ -447,7 +449,8 @@
    "blurb": "",
    "weight": "lead",
    "refs": [
-    3
+    3,
+    5
    ]
   },
   {
@@ -739,7 +742,17 @@
    ]
   }
  ],
- "A2O LITE": [],
+ "A2O LITE": [
+  {
+   "headline": "イ・スマンプロデュース新ガールズグループ「A2O LITE」メンバーの国籍構成が話題に",
+   "highlight": "国籍構成",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "哈利波特剧集": [
   {
    "headline": "HBO’s Harry Potter Set Photos Bring Back Two Magical Fan-Favorite Locations",
