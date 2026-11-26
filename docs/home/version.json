@@ -1,6 +1,6 @@
 {
  "admin": "a09901d2ff68",
- "admin-ai": "25ba64d1252a",
+ "admin-ai": "5f4cb1494a34",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "774b8a3a"
+   "8d5af6cc"
   ]
  },
  "admin-boards": "51fed2a97583",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "dc58ac3d3273",
+ "admin-emblem": "13c87c25198b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "5ef55c63"
+   "5d38a149"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "6d5542c3ee0a",
+ "admin-now": "35ac86c32b6f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b633fe70"
+   "2d2a0a05"
   ]
  },
- "admin-system": "c66b00ea66c9",
+ "admin-system": "b6a6c8a230aa",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4b8c7b5c"
+   "821e97da"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8408b12d"
+   "68e1d6a6"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "7a56b524"
   ]
  },
- "index": "9480748ed80b",
+ "index": "94846236d723",
  "index_marks": {
   "front": [
    "トップ",
-   "d47eea7e"
+   "ad177e5c"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "e42e0fca"
+   "9aab6235"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "ed809ffd"
+   "13fe0152"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -196,6 +196,6 @@
    "2748e0de"
   ]
  },
- "updated": "11.27 05:28",
+ "updated": "11.27 05:32",
  "wishlist": "1c0868565223"
 }
