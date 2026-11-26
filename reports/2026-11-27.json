@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "741737ac6c56",
+ "edit_sig": "ec68ec1d485f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -35,31 +35,39 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "BLEACH Mirrors High のターゲットブレイクの攻略法と報酬をまとめた攻略記事。",
      "date": "2026-11-24",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】ターゲットブレイクの攻略と報酬【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE40NlcxVXo2S09uc1Ixa21yWWVQdXZiZDFLT3Q3MUVRN1otb0RIOTdRTWlFZFROU19aMzdBTHhwU01jY2dseWpiNXJqVUlNbWs?oc=5"
+     "headline": "ターゲットブレイクの攻略と報酬",
+     "highlight": "攻略と報酬",
+     "image": "https://appmedia.jp/wp-content/uploads/2026/10/173706_th2s4.webp",
+     "image_via": "og:image",
+     "url": "https://appmedia.jp/bleach-mh/80530717",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-11-24",
-     "n": 2,
-     "source": "AppMedia",
-     "title": "【ミラハイ】所属隊のおすすめは？変えられる？【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1FWF9hWmUtb1FCaWU5M05wNWE0ckdlWjk0YnZ4ZjQ4T0pxTGZvS0h3X1k2NjZFQ0hyTUpKRkdwdnVzbUVRMWowN1AzM1dBZlk?oc=5"
+     "headline": "所属隊のおすすめは？変えられる？",
+     "highlight": "",
+     "image": "https://appmedia.jp/wp-content/uploads/2026/10/151001_cb6v7.webp",
+     "image_via": "og:image",
+     "url": "https://appmedia.jp/bleach-mh/80529382",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-24",
-     "n": 3,
-     "source": "AppMedia",
-     "title": "【ミラハイ】戦術カスタムのやり方【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBkQmk4czRYMXdJM3FMTjV4QjJlUXJVZTE2NkNJNTVuWXdYMV8xaUtMOFJDNUt2WFg4MTVFb01qbU9hVUp4OWFnMlpxVjRiMUU?oc=5"
+     "headline": "戦術カスタムのやり方",
+     "highlight": "",
+     "image": "https://appmedia.jp/wp-content/uploads/2026/10/143855_7yzfg.webp",
+     "image_via": "og:image",
+     "url": "https://appmedia.jp/bleach-mh/80525497",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",

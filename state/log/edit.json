@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-25T12:00:24+00:00",
-"text": "2026-11-25 第 4 バッチを出刊：dota2（1 版面・5 本・残り 4 版面） · token 新規入力 1,464・キャッシュ読み 16.1万・出力 862",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.62,
-"mem_total": 16868675584,
-"mem_free": 15963136000,
-"disk_used": 10422607872,
-"disk_free": 63390490624,
-"disk_total": 73813098496,
-"peak": 407818240
-},
-"batch": 4,
-"boards": [
-"dota2"
-],
-"stories": 5,
-"left": 4,
-"edited": 22,
-"run": 1795606555.2664928,
-"tok": {
-"in": 4,
-"cw": 1460,
-"cr": 160871,
-"out": 862,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 163197
-},
-{
 "at": "2026-11-25T12:04:58+00:00",
 "text": "2026-11-25 第 5 バッチを出刊：Astrae Oratio（1 版面・3 本・残り 3 版面） · token 新規入力 1,459・キャッシュ読み 8.2万・出力 604",
 "level": "ok",
@@ -2058,5 +2026,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 82154
+},
+{
+"at": "2026-11-26T20:55:20+00:00",
+"text": "2026-11-27 第 6 バッチを出刊：BLEACH Mirrors High（1 版面・3 本・残り 1 版面） · token 新規入力 835・キャッシュ読み 8.2万・出力 646",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.41,
+"mem_total": 16868675584,
+"mem_free": 15916916736,
+"disk_used": 10431799296,
+"disk_free": 63381299200,
+"disk_total": 73813098496,
+"peak": 447381504
+},
+"batch": 6,
+"boards": [
+"BLEACH Mirrors High"
+],
+"stories": 3,
+"left": 1,
+"edited": 14,
+"run": 1795725146.244598,
+"tok": {
+"in": 2,
+"cw": 833,
+"cr": 81560,
+"out": 646,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 83041
 }
 ]

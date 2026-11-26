@@ -1,14 +1,14 @@
 {
- "admin": "850626a0462c",
- "admin-ai": "5248a4e3c75f",
+ "admin": "832be4b253b0",
+ "admin-ai": "4f3070e47604",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "b7645225"
+   "0c9f6f0f"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "6bcf6df4"
+   "a2d212dd"
   ]
  },
  "admin-boards": "51fed2a97583",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "f3ae9b48a728",
+ "admin-emblem": "06a91387dcdf",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "7bfa70b8"
+   "57653661"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "b5351616088f",
+ "admin-now": "8c1fd8878478",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "70a00425"
+   "75459f9f"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "bb22a5ad"
+   "39b91dcf"
   ]
  },
- "admin-system": "d918781f714a",
+ "admin-system": "e5354f85f288",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d1e94329"
+   "0fa1b208"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2d941d18"
+   "5490a5a7"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "04f7dcb9"
   ]
  },
- "index": "3def663c4081",
+ "index": "512a00472d7a",
  "index_marks": {
   "front": [
    "トップ",
-   "57f171be"
+   "01500901"
   ],
   "picks": [
    "気になるかも？",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "26b8bd1c"
+   "c2848747"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -196,6 +196,6 @@
    "2748e0de"
   ]
  },
- "updated": "11.27 05:51",
+ "updated": "11.27 05:54",
  "wishlist": "1dd4d0c77972"
 }

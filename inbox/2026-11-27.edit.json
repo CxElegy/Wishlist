@@ -218,7 +218,8 @@
   "チェーンソーマン": 1,
   "星巴克马克杯": 1,
   "猫用品": 1,
-  "dota2": 4
+  "dota2": 4,
+  "BLEACH Mirrors High": 3
  },
  "MMORPG 新作": [
   {
@@ -345,6 +346,35 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "ターゲットブレイクの攻略と報酬",
+   "highlight": "攻略と報酬",
+   "blurb": "BLEACH Mirrors High のターゲットブレイクの攻略法と報酬をまとめた攻略記事。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "所属隊のおすすめは？変えられる？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "戦術カスタムのやり方",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ]
