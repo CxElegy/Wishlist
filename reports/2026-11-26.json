@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "617d2856eeab",
+ "edit_sig": "dd2a31ddfe6c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -211,43 +211,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 6,
-     "source": "ｄメニューニュース",
-     "title": "【妙高市】今年のスキー場はいつから？ 2026-2027シーズンのオープン予定日をチェック！",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNUTdUeEpIcGlVNlhGVUtmMlNvcm55aElUNzVyWXFpdDI2U0N3eWswdUMyQ3ZwYTRRMFhJSVlDN294UmxxV3BMVHhWdGhzRGxDQVV3ZlVvSDhydHRKRHdDUVNXVkdreDAtdjJtYVFlSWJUSm5KZEs0VXZfT2dscTBxa3liNTNzNTg5VWfSAY8BQVVfeXFMTjFNZ0syMTNFeXVTZ3c5UUVKZDl6blh3dlVQd0x0VVVVd3lPd284aFlsX0FpQTNWVlhxamxwWWNnalZMLWRMY3VFVmpiWHBOS2ZMU2xRRE11SGV2ZFpncUl4bHJtOGtaVFNlaVJWWWI4U29WUUFNNG9zYlhzOWFrckFmTlFMVXczbm11Wlhpb0k?oc=5"
-    },
-    {
-     "date": "2026-11-19",
-     "n": 7,
-     "source": "tenki.jp",
-     "title": "山梨県のスキー場・天気積雪情報(全3件)",
-     "url": "https://tenki.jp/season/ski/category/3/22/"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 8,
-     "source": "蕃新聞",
-     "title": "白馬兩滑雪場合稱「HAKUBA NORTH」 乘鞍溫泉與Cortina纜椅直通、雪票共通",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBWSmVnc3NPLVlIak1FLVpldy1IYk5IUzZ0Q0RXRVM5cDdMeUVSWkVrV0NwSFlVai1YYWVSN2R2REVVVFBpS0xrYUtfaW10MVpIdWc?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 9,
-     "source": "岩手日報",
-     "title": "くのへスキー場が廃止 九戸村、2026年度も営業せず",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5OYy0wekt3MVpBcVlpLUNmSGw0SGFEQW9yQkozNktnUEZzYmZYV0xKcEc5elFSNFBTN1FOY2hmaEhwODY5cDZCZU8xN1FQLUV4ZDRQRFF0dzFZSmVqa2dXUlpR?oc=5"
-    },
-    {
-     "date": "2026-11-21",
-     "n": 10,
-     "source": "レッツエンジョイ東京",
-     "title": "ウィンターリゾート郡上 鷲ヶ岳スキー場 オープン｜レッツエンジョイ東京",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1rMFZrcnZYWm9ZRkQ0TExkYkhKZVpkMlZEQnFuODA5U19qQWJmWWs2SHE2c2V3VVBfZGJCMTRycjgtOUM2NlkyZzh0dnVmZ05Ed0E?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -293,6 +256,26 @@
      "source": "Unofficial Networks",
      "source_icon": "https://www.google.com/s2/favicons?domain=unofficialnetworks.com&sz=128",
      "url": "https://unofficialnetworks.com/2026/11/25/niseko-hirafu-fast-pass-price/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-26",
+     "headline": "【妙高市】今年のスキー場はいつから？ 2026-2027シーズンのオープン予定日をチェック！",
+     "highlight": "オープン予定日",
+     "image": "https://img.topics.smt.news.goo.ne.jp/_/picture/goguynet/m_goguynet-20261126103049985.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/goguynet/region/goguynet-20261126103049985",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-25",
+     "headline": "くのへスキー場が廃止 九戸村、2026年度も営業せず",
+     "highlight": "廃止",
+     "image": "https://cdn.iwate-np.co.jp/media-static/article/198833/thumbnail/sw4b0-tm6b0779a8_fd5e5f980.jpg",
+     "image_via": "og:image",
+     "url": "https://www.iwate-np.co.jp/article/2026/11/25/198833",
      "weight": "normal"
     }
    ],

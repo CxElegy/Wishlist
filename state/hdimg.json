@@ -1405,6 +1405,12 @@
   ],
   "p": null
  },
+ "https://cdn.iwate-np.co.jp/media-static/article/198833/thumbnail/sw4b0-tm6b0779a8_fd5e5f980.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.khgames.co.kr/news/photo/202611/310609_319087_2925.jpg": {
   "w": 600,
   "h": 337,
@@ -1989,6 +1995,12 @@
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg": {
   "w": 1962,
   "h": 1308,
+  "target": 720,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/snow-achooter.jpg": {
+  "w": 1572,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -3318,8 +3330,9 @@
  "https://img.topics.smt.news.goo.ne.jp/_/picture/goguynet/m_goguynet-20261126103049985.jpg": {
   "w": 600,
   "h": 390,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.363
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/animeanime/m_animeanime-104369.jpg": {
   "w": 457,
