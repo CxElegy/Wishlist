@@ -155,12 +155,6 @@
   "target": 720,
   "v": 3
  },
- "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6b06f0edca84fe02d83cecf9/1795624154876/Screenshot+2026-11-25+at+6.32.58%E2%80%AFAM.jpg?format=1500w": {
-  "w": 2476,
-  "h": 1356,
-  "target": 1280,
-  "v": 3
- },
  "http://tu.duoduocdn.com/uploads/day_220926/m_63314fc54ec6e.jpg": {
   "w": 480,
   "h": 480,
@@ -3044,6 +3038,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2idg1g.img": {
+  "w": 1500,
+  "h": 1000,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2idwPa.img": {
   "w": 1280,
   "h": 720,
@@ -3069,12 +3069,6 @@
   "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2icjvU.img": {
-  "w": 1080,
-  "h": 607,
-  "target": 1280,
-  "v": 3
- },
- "https://img-s.msn.cn/tenant/amp/entityid/AA2ifdhR.img": {
   "w": 1080,
   "h": 607,
   "target": 1280,
@@ -7420,6 +7414,12 @@
    0.379
   ],
   "p": null
+ },
+ "https://www.bing.com/th?id=ONUT.xrQOIvIM9tRUQPqdkgtqSA&pid=News&w=1080": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200": {
   "w": 700,

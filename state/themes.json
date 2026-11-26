@@ -310,6 +310,16 @@
   "split": false
  },
  "hero|http://n.sinaimg.cn/sinakd20261123s/640/w720h720/20261123/4289-14719d3287ffdc1a7697218391cc38bb.jpg": null,
+ "hero|http://n.sinaimg.cn/sinakd20261125ac/533/w480h853/20261125/17e0-0a75b5b706ac90fe4a3d1c45a4bd4491.jpg": {
+  "accent": "#4CE6E0",
+  "alt_accent": "#0F6B68",
+  "alt_bg": "#EAEDF1",
+  "alt_fg": "#1A1C22",
+  "bg": "#171C21",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "hero|http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6b06f0edca84fe02d83cecf9/1795624154876/Screenshot+2026-11-25+at+6.32.58%E2%80%AFAM.jpg?format=1500w": {
   "accent": "#D4C35E",
   "alt_accent": "#71641E",
