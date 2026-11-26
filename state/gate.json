@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-26T21:37:42+00:00",
+ "changed": true,
+ "checked": "2026-11-26T22:07:27+00:00",
  "fired": {
   "at": "2026-11-26T21:37:42+00:00",
   "results": {
@@ -86,7 +86,12 @@
    },
    "items": [
     "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
     "gelato pique",
     "lib:ONE PIECE",
     "lib:ブラッククローバー 第2期",
@@ -98,8 +103,11 @@
     "lib:転生したら剣でした 第2期",
     "あつ森",
     "チェーンソーマン",
+    "周杰伦",
     "哈利波特剧集",
     "滑雪",
+    "漫威电影",
+    "猫用品",
     "绝区零"
    ],
    "last_batch": "2026-11-26T20:58:41+00:00",
@@ -112,14 +120,20 @@
    "prog_day": "2026-11-27",
    "ripe": [
     "A2O LITE",
+    "GTA 6",
+    "The Mandalorian",
+    "dota2",
     "gelato pique",
     "あつ森",
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "sig": "4f75b7da21fc",
+   "sig": "0417f81d0dbd",
    "token_cap": 1000000,
    "tokens_today": 176930,
-   "why": "整理待ちの記事 106 件（16 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 148 件（24 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
