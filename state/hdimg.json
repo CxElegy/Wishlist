@@ -460,57 +460,6 @@
    0.334
   ]
  },
- "http://wx3.sinaimg.cn/middle/8b511c18ly1ijewotmbulj22nm3ji1l3.jpg": {
-  "w": 2000,
-  "h": 2667,
-  "target": 720,
-  "v": 3,
-  "local": "pics/cd0c245afe58bf74.webp",
-  "out": [
-   960,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    2,
-    7,
-    11,
-    13,
-    8,
-    2,
-    3,
-    10,
-    15,
-    15,
-    9,
-    5
-   ],
-   [
-    5,
-    13,
-    19,
-    9,
-    3,
-    3,
-    4,
-    13,
-    18,
-    8,
-    3,
-    3
-   ]
-  ],
-  "c": "#9f8e88",
-  "k": null,
-  "p": [
-   0.037,
-   0.029,
-   0.975,
-   0.984
-  ]
- },
  "http://wx4.sinaimg.cn/middle/0067sxldgy1ij5a9htiozj30j60nvtcx.jpg": {
   "w": 690,
   "h": 859,
@@ -1095,6 +1044,12 @@
  "https://biz.chosun.com/resizer/v2/MZSGCYJQMU2TKZJZMFQWMZDEGY.jpg?auth=8f7b1e13511a5e94603cf80c934628cd70eb2e1c23b43c0a6088e65ef0fba802&width=572&height=300&smart=true": {
   "w": 572,
   "h": 300,
+  "target": 720,
+  "v": 3
+ },
+ "https://blackamericaweb.com/wp-content/uploads/sites/10/2026/11/image-collage-25.jpg": {
+  "w": 1680,
+  "h": 960,
   "target": 720,
   "v": 3
  },
@@ -1987,12 +1942,6 @@
   "target": 720,
   "v": 3
  },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/snow-achooter.jpg": {
-  "w": 1572,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/yachihokogen.jpg": {
   "w": 1909,
   "h": 1349,
@@ -2440,12 +2389,6 @@
   "target": 720,
   "v": 3
  },
- "https://image.entabe.jp/upload/20260518/images/000_1.jpg": {
-  "w": 1280,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
  "https://image.fnnews.com/resource/media/image/2026/11/19/202611191816264459_e.jpg": {
   "w": 1050,
   "h": 1400,
@@ -2835,6 +2778,12 @@
   "w": 3352,
   "h": 1885,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hFxx2.img": {
+  "w": 3456,
+  "h": 1450,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2hGK2E.img": {
@@ -3305,16 +3254,62 @@
    0.364
   ]
  },
- "https://img.kai-you.net/storage/2026/11/544857dd-1374-4c12-b524-1b1a160c4f20/main/karubi-momareru.webp": {
-  "w": 840,
-  "h": 1191,
+ "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1498531108083074175/origin_1.png": {
+  "w": 360,
+  "h": 221,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "blur": 0.456,
+  "local": "pics/79e2b4a0d54b8bca.webp",
+  "out": [
+   720,
+   442
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    10,
+    13,
+    12,
+    13,
+    13,
+    10,
+    5,
+    3,
+    4,
+    6,
+    5,
+    6
+   ],
+   [
+    1,
+    3,
+    12,
+    15,
+    10,
+    11,
+    14,
+    8,
+    8,
+    5,
+    4,
+    7
+   ]
+  ],
+  "c": "#5c495e",
+  "k": null,
+  "p": null
  },
  "https://img.mydaily.co.kr/photos/2026/11/19/2026111921084528816_x.jpg": {
   "w": 640,
   "h": 817,
   "target": 1280,
+  "v": 3
+ },
+ "https://img.mydaily.co.kr/photos/2026/11/22/2026112212184734213_x.jpg": {
+  "w": 1280,
+  "h": 1720,
+  "target": 720,
   "v": 3
  },
  "https://img.newspim.com/news/2026/11/23/2611231012089150.jpg": {
@@ -3676,12 +3671,6 @@
   "target": 1280,
   "v": 3
  },
- "https://kotaku.com/app/uploads/2026/11/GTa-6-cameo-blur.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://kotaku.com/app/uploads/2026/11/LEGO-Star-Wars-The-Mandalorians-N-1-Starfighter.jpg": {
   "w": 1920,
   "h": 1280,
@@ -3773,12 +3762,6 @@
   "w": 880,
   "h": 290,
   "target": 1280,
-  "v": 3
- },
- "https://maxblizz.com/wp-content/uploads/2026/11/Secret-Wars.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2024-04/240430-cat-toys-pet-week-kb-social-04c943.jpg": {
@@ -5137,12 +5120,6 @@
   "target": 1280,
   "v": 3
  },
- "https://ni.yam.com/20261126/jp-prt-101433-33-1-261126032552940-d9237f3b0c5e7644.webp": {
-  "w": 1910,
-  "h": 1350,
-  "target": 720,
-  "v": 3
- },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/e4db5b7bacc2449bbf5251e07587361b.jpg": {
   "w": 1000,
   "h": 800,
@@ -6061,6 +6038,12 @@
   "target": 720,
   "v": 3
  },
+ "https://storage.tenki.jp/storage/static-images/suppl/article/image/3/32/328/32850/1/large.jpg": {
+  "w": 692,
+  "h": 519,
+  "target": 720,
+  "v": 3
+ },
  "https://sumahodigest.com/wp-content/uploads/2026/11/43534rwewr.jpg": {
   "w": 1786,
   "h": 987,
@@ -6208,6 +6191,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://unofficialnetworks.com/wp-content/uploads/2026/11/niseko-grand-hirafu-lift-ticket-line-16x9-1.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://variety.com/wp-content/uploads/2026/11/GTA-6-4.jpg?w=1000&h=563&crop=1": {
   "w": 1000,
   "h": 563,
@@ -6241,6 +6230,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/21/1795264006409_3-1795252310683820234456-20-0-396-719-crop-17952523268951665002337.jpeg": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/26/1795677877444_ava-2026-11-26t134539652-png.webp": {
+  "w": 900,
+  "h": 540,
   "target": 720,
   "v": 3
  },
@@ -6459,6 +6454,18 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.-HS8acaIM0I6P-jfA86RMA&pid=News&w=568": {
+  "w": 525,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.0Bsli3qqrMhaIQPtTP3ABw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.0YRYN51mpjJwaoRHZhRLwg&pid=News&w=1200": {
@@ -6822,6 +6829,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.N7fw1dA9xM_la0pD1pmieQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.N9Clc4_97v3jzS138S-6Mg&pid=News&w=400": {
   "w": 400,
   "h": 400,
@@ -6940,12 +6953,6 @@
  "https://www.bing.com/th?id=ONUT.Z69zFYxxEHpPjgo4yiUpQg&pid=News&w=900": {
   "w": 525,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.aeUo3esKts-H04KlWVE6KQ&pid=News&w=480": {
-  "w": 480,
-  "h": 480,
   "target": 720,
   "v": 3
  },
@@ -7224,12 +7231,6 @@
   ],
   "p": null
  },
- "https://www.bing.com/th?id=ONUT.rx7eYgE9ukgee2UTMa5qBQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.sjI9owlE0YZK_hqyw64qEw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7385,6 +7386,12 @@
   ],
   "p": null
  },
+ "https://www.bing.com/th?id=ONUT.wz8uyZYwFJUK4jLk2iHxZA&pid=News&w=515": {
+  "w": 515,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.xIVTwMTYf8aiPMNzVoJrGA&pid=News&w=480": {
   "w": 480,
   "h": 480,
@@ -7435,12 +7442,6 @@
    0.379
   ],
   "p": null
- },
- "https://www.bing.com/th?id=ONUT.xrQOIvIM9tRUQPqdkgtqSA&pid=News&w=1080": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200": {
   "w": 700,
