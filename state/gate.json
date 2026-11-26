@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-26T00:59:51+00:00",
+ "checked": "2026-11-26T01:18:04+00:00",
  "fired": {
   "at": "2026-11-26T00:40:01+00:00",
   "results": {
@@ -84,9 +84,7 @@
    "items": [
     "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
     "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
     "gelato pique",
@@ -98,7 +96,6 @@
     "lib:呪術廻戦",
     "lib:葬送のフリーレン",
     "lib:鬼滅の刃",
-    "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
@@ -108,33 +105,26 @@
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-11-25T22:20:27+00:00",
+   "last_batch": "2026-11-26T01:08:34+00:00",
    "last_error": {
     "at": "2026-11-25T10:27:19+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 241,
+   "prog": 305,
    "prog_day": "2026-11-26",
    "ripe": [
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "Vaundy",
     "gelato pique",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
     "星巴克马克杯",
     "滑雪",
     "漫威电影",
     "猫用品"
    ],
-   "sig": "6de05933c447",
+   "sig": "aa1d729284e1",
    "token_cap": 1000000,
-   "tokens_today": 237580,
-   "why": "整理待ちの記事 182 件（25 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 296120,
+   "why": "整理待ちの記事 118 件（22 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -331,12 +321,12 @@
    "runs": 13
   },
   "2026-11-26": {
-   "batches": 7,
-   "cr": 4050152,
-   "cw": 218440,
-   "in": 108,
-   "out": 19032,
-   "runs": 4
+   "batches": 9,
+   "cr": 5717721,
+   "cw": 271900,
+   "in": 152,
+   "out": 24068,
+   "runs": 6
   }
  }
 }
