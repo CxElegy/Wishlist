@@ -375,7 +375,7 @@
   "Vaundy": 3,
   "滑雪": 5,
   "BLEACH Mirrors High": 10,
-  "MMORPG 新作": 18,
+  "MMORPG 新作": 26,
   "A2O LITE": 3,
   "哈利波特剧集": 7
  },
@@ -741,7 +741,12 @@
     12,
     13,
     15,
-    16
+    16,
+    20,
+    22,
+    24,
+    25,
+    26
    ],
    "image": "https://biz.chosun.com/resizer/v2/B3XEXTQVOZGNPM64ORXFODGLRY.jpg?auth=3121660b40e3f1261375086702b774e33632535c5e622ab683b1ac5a6d019d65&width=718&height=376&smart=true"
   },
@@ -752,6 +757,33 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "방치형에 MMORPG 결합한 '길드랜즈' 스팀 테스트 진행",
+   "highlight": "스팀 테스트",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
+   ]
+  },
+  {
+   "headline": "Classic Turn-Based MMORPG Fairyland Online Opens Global Closed Beta on PC",
+   "highlight": "Global Closed Beta",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    21
+   ]
+  },
+  {
+   "headline": "그라비티, 레퀴엠M 유럽·튀르키예 사전예약 시작",
+   "highlight": "사전예약 시작",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23
    ]
   }
  ],
