@@ -1,6 +1,6 @@
 {
  "date": "2026-11-26",
- "edit_sig": "729bb7e1e15b",
+ "edit_sig": "45078f4036cd",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -201,34 +201,8 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 3,
-     "source": "Unofficial Networks",
-     "title": "Niseko Is Charging Nearly $2,000 a Day to Skip the Lift Line",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1FWEVKMkhkT0pYRTBfQWM2WElkM3NsVHVOeGQ5N0lxRkhsdzZRNlhFMzI0UkdqdVpoN1o4bEo5ckFWZGtPU25xMGF2TVBES3l0ZkNTbGlMX1ppU1huS2x5bzhXbkg0MHNjNEpwVWVMRTIxd0dmaEZZNmNrdm0?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 5,
-     "source": "Infoseek",
-     "title": "リズムジャパン: 白馬のリテールストア「リズムサミット店｜白馬」の規模拡大",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5OM1FZRGRYVU0tVGFhMkczODNudzZHdTdVazBxbzlqd3hia2dTWFVZRG5SSENuOC1jSEw1Q1lmdlA5S2VQSW90cHp0RFk0eUEwR2Y1YW1SOXZsakt5MkFLS1d1LXFUX3BDLU02SFJMUWYydw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-25",
-     "headline": "八千穂高原スキー場、11月27日（金）オープン決定！人工降雪設備の強化で予定より3日早く",
-     "highlight": "",
-     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/yachihokogen.jpg",
-     "image_via": "og:image",
-     "url": "https://dmksnowboard.com/yachiho-kogen-ski-resort-opening-2026/",
-     "weight": "hero"
-    },
     {
      "blurb": "岩手・八幡平市の安比高原スキー場で、シーズンオープンを前に安全祈願祭が行われた。",
      "date": "2026-11-25",
@@ -242,11 +216,36 @@
     {
      "blurb": "",
      "date": "2026-11-25",
+     "event": {
+      "date": "2026-11-27",
+      "label": "オープン"
+     },
+     "headline": "八千穂高原スキー場、11月27日（金）オープン決定！人工降雪設備の強化で予定より3日早く",
+     "highlight": "11月27日（金）オープン決定",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/yachihokogen.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/yachiho-kogen-ski-resort-opening-2026/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-25",
      "headline": "リズムジャパン、白馬の「リズムサミット店」を2店舗体制に拡大",
      "highlight": "2店舗体制に拡大",
      "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg",
      "image_via": "og:image",
      "url": "https://dmksnowboard.com/rhythm-japan-summit-hakuba-store-expansion-2026/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-25",
+     "headline": "Niseko Is Charging Nearly $2,000 a Day to Skip the Lift Line",
+     "highlight": "$2,000 a Day",
+     "image": null,
+     "source": "Unofficial Networks",
+     "source_icon": "https://www.google.com/s2/favicons?domain=unofficialnetworks.com&sz=128",
+     "url": "https://unofficialnetworks.com/2026/11/25/niseko-hirafu-fast-pass-price/",
      "weight": "normal"
     }
    ],
@@ -266,29 +265,6 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 96,
-     "source": "MovieWeb",
-     "title": "Marvel Studios Officially Addresses Major Villain Casting After 'Avengers: Doomsday'",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE52eGFvZExBREJESlVtZDZkZWR1SVY1NUcxTzhIaFlfX0JkZXhtLS1JdWRLMGEwWmg4RzlzRVRUZHNQRll4UklKakVDZ0RtXzJjTHB6bUN3cjhYOEhIV1NBZGdIZGJYdzYtaVYycFVVTHRXTFpL?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 97,
-     "source": "Yahoo",
-     "title": "Avengers: Doomsday is on track to earn 260% more at the box office than Dune 3",
-     "url": "https://www.yahoo.com/entertainment/movies/box-office-results/articles/avengers-doomsday-track-earn-260-220734841.html"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 98,
-     "source": "Yahoo",
-     "title": "Avengers: Doomsday Reveals Its Coolest Doctor Doom Popcorn Bucket Yet",
-     "url": "https://www.yahoo.com/entertainment/movies/trailers/articles/avengers-doomsday-reveals-coolest-doctor-181937825.html"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -501,15 +477,6 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-11-24",
-     "n": 4,
-     "source": "ねとらぼ",
-     "title": "10位：サンリオ(SANRIO) ハローキティ マグカップ 電子レンジ・食器洗浄機・食器乾燥機の使用可 陶磁器 422100",
-     "url": "https://nlab.itmedia.co.jp/research/articles/4114058/2/"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -660,27 +627,8 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 3,
-     "source": "ウォーカープラス",
-     "title": "画像6 / 22＞ジェラート ピケ×サンリオ第2弾！クロミ・マイメロディなど5キャラのもこもこウェアが10月21日発売",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5QenIwUlZhZnZXYzVCX08zaWx6cl9NdVliMHkwWVBTa3paNXVETmhGR29OQW5UTW1KVTNXUFE1Q0w1NzFvUjhTRHZlaTlYZ3dPY3VfYnFXN0dBVGxINDU4NkJBd1pIZl80V1V5Y2d3?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-19",
-     "headline": "画像12 / 14＞スヌーピー×ジェラピケの新作コラボアイテムが登場！おうち時間を幸せにするルームウェアをももクロが着こなす",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/1133751/11694997_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/1133751/image11694989.html",
-     "weight": "hero"
-    },
     {
      "blurb": "gelato pique cafeがホリデーシーズン限定のベアクレープ2種類を発売する。",
      "date": "2026-11-25",
@@ -699,6 +647,16 @@
      "image": "https://d2l930y2yx77uc.cloudfront.net/production/social_images/b8cc85dc53199030eaefc70093620c14884c79fa.png",
      "image_via": "og:image",
      "url": "https://note.com/uresuji_note/n/n25841162d560?hl=en",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-19",
+     "headline": "スヌーピー×ジェラピケの新作コラボアイテムが登場！おうち時間を幸せにするルームウェアをももクロが着こなす",
+     "highlight": "スヌーピー×ジェラピケ",
+     "image": "https://news.walkerplus.com/article/1133751/11694997_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1133751/image11694989.html",
      "weight": "normal"
     }
    ],
@@ -930,16 +888,6 @@
    "section": "演出",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-11-22",
-     "headline": "RADWIMPS × Vaundy セトリ | 20th ANNIVERSARY LIVE TOUR",
-     "highlight": "",
-     "image": "https://motoryokoblog.com/wp-content/uploads/2026/09/radwimps_4843_fv.png",
-     "image_via": "og:image",
-     "url": "https://motoryokoblog.com/?p=4843",
-     "weight": "hero"
-    },
-    {
      "blurb": "VaundyファンクラブがSWEET LOVE SHOWERの舞台裏映像を会員限定で公開した。",
      "date": "2026-11-25",
      "headline": "VaundyファンクラブがSWEET LOVE SHOWER舞台裏映像を限定公開",
@@ -957,6 +905,16 @@
      "image": "https://portal.auone.jp/media/thumbnails/2026/11/25/https___news_mynavi_jp_article_20261125-5408221__w1200.webp",
      "image_via": "og:image",
      "url": "https://article.auone.jp/c165cb27-2f0b-421c-ada4-8d858fb8017e",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-22",
+     "headline": "RADWIMPS × Vaundy セトリ | 20th ANNIVERSARY LIVE TOUR",
+     "highlight": "セトリ",
+     "image": "https://motoryokoblog.com/wp-content/uploads/2026/09/radwimps_4843_fv.png",
+     "image_via": "og:image",
+     "url": "https://motoryokoblog.com/?p=4843",
      "weight": "normal"
     }
    ],
@@ -1144,22 +1102,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-23",
-     "n": 2,
-     "source": "Yahoo Finance",
-     "title": "Walmart, Target, and Macy's pull AI cat toy after it described executions — and worse — to children",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNM085cHVULU4tM1R4VkxKdWhQWEFNMFR2VG4yemRvSmxwQmV2NzJIRmNUSHlnMFMxejFJN0o2ODVZeUo0MXRRVzBDNDA3Mk4wb0lmcWtaUk5sa2NqUEY2Yjl4VENXU1FVSkJOTDhVNExzLXh2WDNtOTM1TXBLbnNlNmh5WURmYjllZTZmZjhlNVJ1Tm5PYXpj?oc=5"
-    },
-    {
-     "date": "2026-11-20",
-     "n": 3,
-     "source": "TRILL",
-     "title": "【ダイソー】大当たりなの売ってた……。思わず欲しくなる猫グッズ3選",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE80UWdnb0Y2UzVmOWIzaFM2cVlrOG9fcmlIbDlPNWp5SmVTd2dPRUZoS2Q4NkpibUhmQ0lhT0hhaV81aUZ3b1JqRldVWEl6UG8?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1167,11 +1109,20 @@
      "date": "2026-11-25",
      "headline": "キッチンに『ダイソーホルダー』を置くだけ！ 意外と便利な100均『猫グッズ』【3選】",
      "highlight": "100均『猫グッズ』",
-     "image": null,
-     "source": "ニコニコニュース",
-     "source_icon": "https://www.google.com/s2/favicons?domain=nicovideo.jp&sz=128",
+     "image": "https://media.trilltrill.jp/articles/5200764/featured-image.3011cce4b2c671aaa87c814845d2486e?w=1200",
+     "image_via": "og:image（其它来源）",
      "url": "https://news.nicovideo.jp/watch/nw20030219?news_ref=50_50",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-23",
+     "headline": "Walmart, Target, and Macy's pull AI cat toy after it described executions — and worse — to children",
+     "highlight": "pull AI cat toy",
+     "image": "https://s.yimg.com/lo/mysterio/api/63cfb4f8eed3148b8be79b3f320c7bf20f9784ab19b7ef486cef870e7b6071b2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmoneywise_327%2Fa9b0902cadd54ab73d787d9899f43fd2.jpg",
+     "image_via": "og:image",
+     "url": "https://finance.yahoo.com/technology/ai/articles/walmart-target-macys-pull-ai-163000521.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
