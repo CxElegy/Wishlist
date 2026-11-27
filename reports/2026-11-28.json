@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "776765316a80",
+ "edit_sig": "386934836400",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -92,38 +92,29 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "NEXONが11月26日、新作2タイトルを同時にリリース。MMORPG『テムパル ～アイテムの力～』と、モンスター収集とハウジングのアズールプロミリアが順調に滑り出した。",
      "date": "2026-11-27",
-     "n": 1,
-     "source": "MMORPG.com",
-     "title": "MMORPG x Redragon Hardware Sweepstakes",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQcmdBZ0piR3g0Q2o4MVp0UUY4WGk0UGhYMk5SeEhPd3hyTHQ3Sy10cFZRdUpOb1BLR1ZKVnNyRWpfSUJvZ1NFLTQwMW9xdHlyT1kxR0ZLSk41ZXc5ellpUy01NUd5bkVmODJuMnh4Qnp4RmJwUmdWSTM2UXJhTDNDTFZ1Z181c2hVZUpzZA?oc=5"
+     "headline": "NEXONパブリッシング2連発ホームラン、『テムパル ～アイテムの力～』とアズールプロミリアが順調なすべり出し",
+     "highlight": "11月26日",
+     "image": "https://cdn.gamemeca.com/gmdata/0001/784/342/gm349080_261127-risell-tt3.webp",
+     "image_via": "og:image",
+     "url": "https://www.gamemeca.com/ja/view.php?gid=1784342",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-27",
-     "n": 2,
-     "source": "MMORPG.com",
-     "title": "Level Up Your MMORPG Experience: The Ultimate Redragon Gaming Gear Guide (SPONSORED)",
-     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQQkd6clpTajllU2k2cWthMXNWRFcya3RFUTFEamVIRG9nOTd6dGpJYThVN3FjRVdveENFa0pRYUpWMG1Xb2IzYVNtVDVtSXB0ZUxJYlc5OG16TzVqSTQ3aTd1Tl9QXzI3Yy1fMHVpVEkzN2hrWGtEanFLeGlPVERQRFM3RFQzVld6S2l0V0xnaXgtZjNtelNEeFA3OHpmcWRWY1llaUlLYVFoRHgwVHd4RzdYMDdMN211dS1PWk9lX3Rmd9IBzgFBVV95cUxNWVhkVmNueHcwV1pobWl2MHd3SndpSkVOQk93UVBHeVVXaVhQVmxsQXVRMGNwa1RtNExOTHE1OV9RZ2VIRThIemdQWWVsZTRXM2stVGc3TEdxOURLX0JCWS16UTNVdlh4MmYzNkpUdERrakJVY1dVQkRraG1pTUdWdUN2TXNydEN6ZVpNaVFFUE5iNFBuc1hsS1VkWGE1ODI5cFhxWDl3UGlZRnNWOXdUMGtUZjdXTlZlX2ZQN25JVWdKRjM4NjZGVFZzSnN6QQ?oc=5"
-    },
-    {
-     "date": "2026-11-27",
-     "n": 3,
-     "source": "GameMeca",
-     "title": "NEXONパブリッシング2連発ホームラン、『템파르 ～アイテムの力～』とアズールプロミリアが順調なすべり出し",
-     "url": "https://www.gamemeca.com/ja/view.php?gid=1784342"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-26",
-     "n": 4,
-     "source": "창업일보",
-     "title": "리니지2 레볼루션 10주년 업데이트, 신서버 ‘아덴’과 신규 클래스 ‘소울 하베스터’ 12월 10일 공개",
-     "url": "https://www.news33.net/news/articleView.html?idxno=119639"
+     "headline": "리니지2 레볼루션 10주년 업데이트, 신서버 ‘아덴’과 신규 클래스 ‘소울 하베스터’ 12월 10일 공개",
+     "highlight": "12월 10일",
+     "image": "https://cdn.news33.net/news/photo/202611/119639_85460_199.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://www.news33.net/news/articleView.html?idxno=119639",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -406,33 +397,6 @@
     "alt_fg": "#1E1A18",
     "bg": "#211712",
     "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
-   "facts": [],
-   "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 1,
-     "source": "IMDb",
-     "title": "Favorite \"The Mandalorian\" Moment",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxORXlZRmJva3IyUTNScGY0TUdVUkhLZklIUkRwNHR1SDRMbVRzVzBPa0F2T2RCeldZbm1RLVh3Q1loem96bWRWZWVEekdNdGhXRXA0VS0taUhqNFBkbGVUSlYtMFdESTdGU0oya2xPTjd1LUlHR1Faa1hXZEowY1ZzSjN6c2hkdw?oc=5"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "ザ・マンダロリアン",
-   "theme": {
-    "accent": "#C9A66B",
-    "alt_accent": "#7A5A1F",
-    "alt_bg": "#ECEAE4",
-    "alt_fg": "#1B1D20",
-    "bg": "#14161A",
-    "fg": "#E8EAEC",
     "font": "serif",
     "split": true
    }
@@ -775,6 +739,31 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+   "facts": [],
+   "last": {
+    "date": "2026-11-27",
+    "headline": "The Mandalorian Officially Returns In The Perfect Tribute To Seasons 1-2",
+    "url": "https://screenrant.com/the-mandalorian-and-grogu-pop-up-storybook/"
+   },
+   "name": "The Mandalorian",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "ザ・マンダロリアン",
+   "theme": {
+    "accent": "#C9A66B",
+    "alt_accent": "#7A5A1F",
+    "alt_bg": "#ECEAE4",
+    "alt_fg": "#1B1D20",
+    "bg": "#14161A",
+    "fg": "#E8EAEC",
+    "font": "serif",
     "split": true
    }
   },
